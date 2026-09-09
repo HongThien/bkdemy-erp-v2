@@ -2,14 +2,15 @@
 // UI chỉ gọi qua đây. Engine thuần ở src/gami/*.js (đã test). Buổi pure-derive: đẻ dòng khi MỞ.
 import { supabase } from './supabase'
 import { getMyProfile } from './nhansu'
-import { getETByBuoi, getETCaus, getBTVNByBuoi, getBTVNCaus, getGiaoTrinhBuoiDoc, khoCuaMon } from './tailieu'
+import { getETByBuoi, getETCaus, getBTVNByBuoi, getBTVNCaus, getGiaoTrinhBuoiDoc, khoCuaMon, laMaHinh } from './tailieu'
 import { getMTInstanceByBuoi, getMTPhanCaus, type MTPhanCaus } from './mt'
 import { loadHinhForBuoi, type HinhDapAn } from './kho/hinhGiaoTrinh'
 import { getBaiTestByDoc, getBaiTestCaus, type BaiTest, type BaiTestCau } from './testonline'
 import type { CauHoi } from './kho/api'
-import { computeEloUpdate } from '../gami/elo.js'
-import { problemPoints, rankSession, etRankExp, monthlyBtvnExp } from '../gami/exp.js'
-import { ATTEND_FLOOR_EXP, SEASON } from '../gami/config.js'
+// Engine Elo/EXP đã XUỐNG DB (fn_dong_phase/fn_recompute_exp_thang — mig 202608300240, §2.0).
+// src/gami/elo.js + exp.js chỉ còn problemPoints (điểm 1 bài lúc chấm) + tham chiếu công thức.
+import { problemPoints } from '../gami/exp.js'
+import { SEASON } from '../gami/config.js'
 import { seasonOf, seasonLabel, seasonStartUtc } from '../gami/season.js'
 import { vnInstant, congNgay } from './tuan'
 
@@ -167,6 +168,24 @@ export async function huyBuoiCuaNgay(lopId: string, ngay: string, slot: { gio_ba
     trang_thai: 'huy', ly_do_huy: lyDo, created_by: user?.id ?? null,
   })
   if (error) throw error
+}
+
+// Mở lại buổi ĐÃ HUỶ (hủy nhầm). Đảo đúng đường đã hủy: trang_thai → mo, xoá lý do. Buổi hủy TRƯỚC khi mở
+// (dòng do huyBuoiCuaNgay đẻ, chưa có sĩ số, chưa có GV) thì seed y hệt moBuoi: GV chính của lớp + roster
+// từ ghi danh (qua dongBoSiSo — chỉ THÊM HS thiếu, nên buổi hủy SAU khi mở giữ nguyên điểm danh/chấm cũ).
+// Không xoá dòng để quay về "Chưa mở": giữ vết + tránh cấp lại id; kết quả = buổi "Đang mở".
+export async function moLaiBuoiDaHuy(buoiId: string): Promise<void> {
+  const { data: b, error } = await supabase.from('buoi_hoc').select('lop_id, trang_thai, nguoi_day').eq('id', buoiId).single()
+  if (error) throw error
+  if ((b as any).trang_thai !== 'huy') return
+  const patch: Record<string, unknown> = { trang_thai: 'mo', ly_do_huy: null, updated_at: new Date().toISOString() }
+  if (!(b as any).nguoi_day && (b as any).lop_id) {
+    const { data: pc } = await supabase.from('phan_cong_lop').select('nhan_su_id').eq('lop_id', (b as any).lop_id).eq('vai_tro', 'gv').eq('la_chinh', true).maybeSingle()
+    if ((pc as any)?.nhan_su_id) patch.nguoi_day = (pc as any).nhan_su_id
+  }
+  const { error: eUp } = await supabase.from('buoi_hoc').update(patch).eq('id', buoiId).eq('trang_thai', 'huy')
+  if (eUp) throw eUp
+  await dongBoSiSo(buoiId)
 }
 
 // ── Sĩ số + điểm danh (OPS) ───────────────────────────────────────
@@ -480,6 +499,40 @@ export async function loadMTForBuoi(buoiId: string): Promise<{ mtId: string | nu
 // MT/BTVN dùng CHUNG syncDocProblems với ET — cùng một bản chất "lưới bám đề", đừng đẻ 3 bản logic
 // lệch nhau (bug ET lặp lại y hệt ở MT/BTVN vì trước đây copy-paste `if (cur.length) return`).
 export const syncMTProblems = (buoiId: string, caus: CauHoi[], daDong?: boolean) => syncDocProblems(buoiId, 'mt', caus, daDong)
+
+// ⭐ Thùy 02/09: "câu hỏi phải đi theo thứ tự trong builder — câu nào nằm phía trên thì tính trước" (Hình xen giữa
+// Đại thì số cũng xen theo, mỗi Ý Hình = 1 số). syncDocProblems/syncHinhProblems chỉ cấp SLOT (nối max) nên sau khi
+// cả hai sync xong phải ĐÁNH SỐ LẠI problem_no theo thứ tự đề. Số trên phiếu (MTPrintView) và số ở tab chấm phải
+// là MỘT — lệch là chấm nhầm câu → bẩn mastery (bài học 07-21).
+/** Thứ tự ô chấm MT theo đề: duyệt maCaus từng phần — câu kho khớp ma_cau; hàng Hình thứ k khớp các ô Hình có
+ *  hinh_nhan bắt đầu bằng số k (nhãn "k"/"kA","kB"… — thứ tự pick trong hinh_gt_bai = thứ tự hàng Hình lúc gán). Ô
+ *  không khớp (mồ côi) xếp cuối, giữ thứ tự cũ. */
+export function thuTuMTTheoDe(probs: Problem[], phans: MTPhanCaus[]): Problem[] {
+  const conLai = [...probs]
+  const out: Problem[] = []
+  let k = 0
+  for (const ph of phans) for (const ma of ph.maCaus) {
+    if (laMaHinh(ma)) {
+      k++
+      const cua = conLai.filter((p) => !!p.hinh_baitoan_id && parseInt(p.hinh_nhan ?? '', 10) === k).sort((a, b) => (a.hinh_nhan ?? '').localeCompare(b.hinh_nhan ?? ''))
+      for (const p of cua) { out.push(p); conLai.splice(conLai.indexOf(p), 1) }
+    } else {
+      const i = conLai.findIndex((p) => !p.hinh_baitoan_id && p.ma_cau === ma)
+      if (i >= 0) out.push(conLai.splice(i, 1)[0])
+    }
+  }
+  return [...out, ...conLai]
+}
+/** Đánh số lại problem_no = vị trí trong `thuTu` (1-based). Không đổi gì nếu đã đúng; phase đã đóng → không đụng.
+ *  Unique (buoi,phase,problem_no) ⇒ 2 bước: dời các ô đổi số lên vùng tạm (+100000) rồi hạ về số đích. */
+export async function danhSoLaiTheoDe(buoiId: string, phase: Phase, thuTu: Problem[], daDong?: boolean): Promise<void> {
+  if (daDong) return
+  const doi = thuTu.map((p, i) => ({ p, no: i + 1 })).filter((x) => x.p.problem_no !== x.no)
+  if (!doi.length) return
+  for (const x of doi) { const { error } = await supabase.from('gami_session_problems').update({ problem_no: 100000 + x.no }).eq('id', x.p.id); if (error) throw error }
+  for (const x of doi) { const { error } = await supabase.from('gami_session_problems').update({ problem_no: x.no }).eq('id', x.p.id); if (error) throw error }
+  void buoiId; void phase
+}
 export const syncBTVNProblems = (buoiId: string, caus: CauHoi[], daDong?: boolean) => syncDocProblems(buoiId, 'btvn', caus, daDong)
 
 // ── CHẤM Hình (mô hình) — nạp từ giáo trình Hình đã gán (lớp+ngày) ─────────────────
@@ -612,6 +665,29 @@ export async function gradeETBulk(p: { buoiId: string; hocSinhId: string; proble
   if (error) throw error
 }
 
+// ET ONLINE → lưới chấm ET của buổi (Thùy 03/09: "dữ liệu ET HS làm từ điện thoại chưa đi thẳng vào
+// chỗ nhập liệu ET buổi học"). Toàn bộ ở DB — fn_et_online_dong_bo (mig 202609031709): verdict của
+// bai_lam_cau (đã nộp) → gami_grades phase='et', khớp ô↔câu qua ma_cau, ghi khoá nguồn
+// gami_grades.bai_lam_cau_id. KHÔNG ghi đè ô chấm tay (bai_lam_cau_id null) · KHÔNG đụng phase đã
+// đóng · HS nộp mà không trong roster buổi thì đếm `khongTrongBuoi` để người xem. Idempotent — gọi
+// mỗi lần mở tab ET (sau syncDocProblems để ô đã có) và khi GV bấm "Lấy lại".
+export type ETOnlineDongBo = { daDong?: boolean; khongCoTest?: boolean; hsNop?: number; moi?: number; capNhat?: number; giuTay?: number; khongKhopO?: number; khongTrongBuoi?: number }
+export async function dongBoETOnline(buoiId: string): Promise<ETOnlineDongBo> {
+  const { data, error } = await supabase.rpc('fn_et_online_dong_bo', { p_buoi: buoiId })
+  if (error) throw error
+  return (data ?? {}) as ETOnlineDongBo
+}
+// BTVN ONLINE → lưới BTVN của buổi (Thùy 07/09: "BTVN HS làm trên app chưa tự nhảy vào phần BTVN trong
+// buổi học"). fn_btvn_online_dong_bo (mig 202609071643): như ET nhưng lấy CẢ bài dở (BTVN chấm ngay từng
+// câu) + tự điền trạng thái nộp (đúng hạn/muộn theo deadline) cho HS đã làm HẾT và TA chưa tick.
+// Không đè ô/trạng thái TA đã tick · không đụng BTVN đã đóng. hsLam = HS có ≥1 phép đo · hsNop = làm hết.
+export type BTVNOnlineDongBo = ETOnlineDongBo & { hsLam?: number; nopMoi?: number }
+export async function dongBoBTVNOnline(buoiId: string): Promise<BTVNOnlineDongBo> {
+  const { data, error } = await supabase.rpc('fn_btvn_online_dong_bo', { p_buoi: buoiId })
+  if (error) throw error
+  return (data ?? {}) as BTVNOnlineDongBo
+}
+
 // Bỏ chấm 1 ô (HS × bài): xoá dòng grade (anti-NULL: chưa đo = không có dòng). Dùng khi click lại mức đang chọn.
 export async function deleteGrade(problemId: string, hocSinhId: string): Promise<void> {
   const { error } = await supabase.from('gami_grades').delete().match({ problem_id: problemId, hoc_sinh_id: hocSinhId })
@@ -656,9 +732,11 @@ export async function listCanhBao(buoiId: string): Promise<CanhBao[]> {
   if (error) throw error
   return (data ?? []) as CanhBao[]
 }
-export async function themCanhBao(p: { buoiId: string; hocSinhId: string; maDang: string; ghiChu?: string }): Promise<void> {
+// `nguon` mặc định 'btvn' (chỗ gọi cũ giữ nguyên); app GV/ERP DanhGiaTab truyền 'danhgia'
+// (CEO 31/08 — chuông ở đánh giá sau buổi). CHECK canh_bao_yeu_nguon_chk giữ tập giá trị.
+export async function themCanhBao(p: { buoiId: string; hocSinhId: string; maDang: string; ghiChu?: string; nguon?: 'btvn' | 'danhgia' }): Promise<void> {
   const { data: { user } } = await supabase.auth.getUser()
-  const { error } = await supabase.from('canh_bao_yeu').insert({ buoi_hoc_id: p.buoiId, hoc_sinh_id: p.hocSinhId, ma_dang: p.maDang, ghi_chu: p.ghiChu ?? null, nguon: 'btvn', created_by: user?.id ?? null })
+  const { error } = await supabase.from('canh_bao_yeu').insert({ buoi_hoc_id: p.buoiId, hoc_sinh_id: p.hocSinhId, ma_dang: p.maDang, ghi_chu: p.ghiChu ?? null, nguon: p.nguon ?? 'btvn', created_by: user?.id ?? null })
   if (error) throw error
 }
 export async function xoaCanhBao(id: string): Promise<void> {
@@ -668,63 +746,50 @@ export async function xoaCanhBao(id: string): Promise<void> {
 
 // ════ EXP THÁNG (redesign 07-28, Thùy chốt) — EXP = CHĂM CHỈ, TÍNH LẠI theo (lớp × tháng) ════
 // EXP mỗi buổi (ET rank) + phần THÁNG (BTVN: base/bài × thái độ + thưởng/phạt so lớp). Tháng = Σ buổi.
-// Lưu 1 dòng ledger source='exp_thang', note=ym / (HS×môn×tháng). TỰ recompute khi buổi đổi (đóng/mở ET|BTVN).
-// Nguồn chính = recompute (idempotent) → không còn ghi rank_*/btvn per-buổi. Bù/bổ trợ vẫn 'attend_floor' riêng.
+// CHI TIẾT THEO HOẠT ĐỘNG (08-29, giống gami_elo_history — mỗi sự kiện 1 dòng, tổng tháng = Σ dòng):
+//   'exp_et'         per (HS×buổi), ref_buoi_hoc_id = buổi   — EXP hạng ET buổi đó
+//   'exp_btvn'       per (HS×buổi), ref_buoi_hoc_id = buổi   — EXP BTVN buổi đó (base×thời điểm×thái độ)
+//   'exp_btvn_thang' per (HS×lớp×tháng)                      — điều chỉnh tháng (đủ tháng/so lớp/phạt miss),
+//       CÓ THỂ ÂM; = monthlyBtvnExp.total − subtotal. ref_buoi_hoc_id = BUỔI CUỐI tháng của lớp — không phải
+//       "thuộc buổi đó" mà để dòng LỚP-SCOPED: HS chuyển lớp giữa tháng giữ điều chỉnh CẢ 2 lớp (model gộp
+//       cũ per-lớp ghi đè nhau, mất phần lớp kia), và recompute lớp nào chỉ xoá dòng lớp đó (theo ref_buoi).
+// MỌI dòng đều note=ym (tháng EXP THUỘC VỀ) — reader lọc tháng/mùa theo note, KHÔNG theo created_at.
+// Tổng (HS×tháng) = et + max(0, subtotal+bonus/phạt) — ĐÚNG BẰNG số exp_thang gộp cũ (chỉ đổi độ mịn).
+// TỰ recompute khi buổi đổi (đóng/mở ET|BTVN); idempotent. Bù/bổ trợ vẫn 'attend_floor' riêng.
+// 'exp_thang' (gộp cũ) không ghi nữa nhưng reader vẫn cộng — data cũ convert bằng scripts/recalc_exp_chitiet.mjs.
 
-// BTVN grades → độ-đúng per (hs×buổi). PHÂN TRANG: 1 lớp/tháng cũng có thể >1000 grades (PostgREST cap).
-async function fetchBtvnAcc(buoiIds: string[]): Promise<Map<string, number[]>> {
-  const accByHs = new Map<string, number[]>()
-  if (!buoiIds.length) return accByHs
-  const agg = new Map<string, { pts: number; n: number }>()
-  const PAGE = 1000
-  for (let fromR = 0; fromR < 200000; fromR += PAGE) {
-    const { data, error } = await supabase.from('gami_grades')
-      .select('hoc_sinh_id, points, prob:problem_id!inner(buoi_hoc_id, phase)')
-      .eq('prob.phase', 'btvn').in('prob.buoi_hoc_id', buoiIds)
-      .order('problem_id').order('hoc_sinh_id').range(fromR, fromR + PAGE - 1)
+// (fetchBtvnAcc đã xuống DB — nằm trong fn_recompute_exp_thang, §2.0.)
+
+// Nguồn EXP hợp lệ khi CỘNG TỔNG: nhóm key theo note=ym (chi tiết mới + exp_thang gộp legacy) và
+// attend_floor (bù/bổ trợ, không note → lọc created_at). Reader nào cộng EXP đều dùng 2 hằng này.
+export const EXP_NOTE_SOURCES = ['exp_thang', 'exp_et', 'exp_btvn', 'exp_btvn_thang']
+export const EXP_SOURCES = [...EXP_NOTE_SOURCES, 'attend_floor']
+
+// ⚠ PostgREST cắt cứng 1000 dòng/response — `.limit(10000)` KHÔNG vượt được (đã ghi ở fetchBtvnAcc).
+// Ledger chi tiết (08-29) đẩy các query EXP diện-rộng qua ngưỡng này → HS bị cắt hiện "0 EXP" (bug
+// Lâm Anh 6S2 08-29). Mọi chỗ đọc ledger có thể >1000 dòng PHẢI phân trang qua đây; `order` bắt buộc
+// (range không order = trang không ổn định, dòng trùng/sót).
+export async function pagedLedger(build: (q: any) => any): Promise<any[]> {
+  const PAGE = 1000, out: any[] = []
+  for (let from = 0; from < 200000; from += PAGE) {
+    const { data, error } = await build(supabase.from('gami_exp_ledger')).order('id').range(from, from + PAGE - 1)
     if (error) throw error
     const rows = (data ?? []) as any[]
-    for (const g of rows) { const bId = g.prob?.buoi_hoc_id; if (!bId) continue; const k = g.hoc_sinh_id + ':' + bId; const a = agg.get(k) ?? { pts: 0, n: 0 }; a.pts += Number(g.points); a.n += 1; agg.set(k, a) }
+    out.push(...rows)
     if (rows.length < PAGE) break
   }
-  for (const [k, v] of agg) { const hs = k.split(':')[0]; const acc = v.n ? v.pts / (v.n * 100) : 0; (accByHs.get(hs) ?? accByHs.set(hs, []).get(hs)!).push(acc) }
-  return accByHs
+  return out
 }
 
 // Tính lại EXP THÁNG cho 1 lớp (idempotent). Thay MỌI EXP của (lớp×tháng): xoá per-buổi cũ (ref_buoi trong
-// tháng: rank_*/btvn) + exp_thang cũ → chèn exp_thang. KHÔNG đụng bù/bổ trợ (buổi loai≠'thuong', attend_floor).
+// tháng: rank_*/btvn/exp_et/exp_btvn) + dòng tháng cũ (exp_thang/exp_btvn_thang) → chèn dòng CHI TIẾT.
+// KHÔNG đụng bù/bổ trợ (buổi loai≠'thuong', attend_floor).
 export async function recomputeExpThang(lopId: string, ym: string): Promise<{ hs: number; tong: number }> {
-  const { data: lopRow } = await supabase.from('lop').select('mon').eq('id', lopId).maybeSingle()
-  const mon = (lopRow as any)?.mon ?? 'Toán'
-  const [Y, M] = ym.split('-').map(Number)
-  const from = `${ym}-01`, to = M === 12 ? `${Y + 1}-01-01` : `${Y}-${String(M + 1).padStart(2, '0')}-01`
-  const { data: bs } = await supabase.from('buoi_hoc').select('id').eq('lop_id', lopId).eq('loai', 'thuong').neq('trang_thai', 'huy').gte('ngay', from).lt('ngay', to).limit(LIMIT)
-  const buoiIds = ((bs ?? []) as any[]).map((b) => b.id)
-
-  type Acc = { et: number; bais: { trangThai: string; thaiDo: string }[]; acc: number[] }
-  const perHs = new Map<string, Acc>()
-  const ensure = (id: string) => perHs.get(id) ?? perHs.set(id, { et: 0, bais: [], acc: [] }).get(id)!
-  if (buoiIds.length) {
-    const { data: eh } = await supabase.from('gami_elo_history').select('hoc_sinh_id, rank, rank_total').eq('phase', 'et').in('buoi_hoc_id', buoiIds).limit(LIMIT)
-    for (const r of (eh ?? []) as any[]) if (r.rank != null && r.rank_total != null) ensure(r.hoc_sinh_id).et += etRankExp(r.rank, r.rank_total)
-    const { data: kq } = await supabase.from('btvn_ket_qua').select('hoc_sinh_id, trang_thai_nop, thai_do').in('buoi_hoc_id', buoiIds).limit(LIMIT)
-    for (const r of (kq ?? []) as any[]) ensure(r.hoc_sinh_id).bais.push({ trangThai: r.trang_thai_nop, thaiDo: r.thai_do })
-    for (const [hs, arr] of await fetchBtvnAcc(buoiIds)) ensure(hs).acc = arr
-  }
-  const means = [...perHs.values()].map((p) => p.acc.length ? p.acc.reduce((s, x) => s + x, 0) / p.acc.length : null).filter((x): x is number => x != null)
-  const classMean = means.length ? means.reduce((s, x) => s + x, 0) / means.length : null
-
-  const rows = [] as { hoc_sinh_id: string; source: string; amount: number; mon: string; note: string }[]
-  for (const [hs, p] of perHs) {
-    const studentAcc = p.acc.length ? p.acc.reduce((s, x) => s + x, 0) / p.acc.length : null
-    const total = p.et + monthlyBtvnExp(p.bais, studentAcc, classMean).total   // MT = 0 (diem_thi rỗng)
-    if (total > 0) rows.push({ hoc_sinh_id: hs, source: 'exp_thang', amount: total, mon, note: ym })
-  }
-  if (buoiIds.length) await supabase.from('gami_exp_ledger').delete().in('ref_buoi_hoc_id', buoiIds)   // per-buổi cũ
-  const hsList = [...perHs.keys()]
-  if (hsList.length) await supabase.from('gami_exp_ledger').delete().eq('source', 'exp_thang').eq('mon', mon).eq('note', ym).in('hoc_sinh_id', hsList)
-  if (rows.length) await supabase.from('gami_exp_ledger').insert(rows)
-  return { hs: rows.length, tong: rows.reduce((s, r) => s + r.amount, 0) }
+  // §2.0 (30/08): toàn bộ engine EXP tháng (ET theo hạng + BTVN theo bài + điều chỉnh
+  // tháng + xoá-ghi ledger) chạy NGUYÊN TỬ trong fn_recompute_exp_thang (mig 202608300240).
+  const { data, error } = await supabase.rpc('fn_recompute_exp_thang', { p_lop_id: lopId, p_ym: ym })
+  if (error) throw error
+  return { hs: Number((data as any)?.hs ?? 0), tong: Number((data as any)?.tong ?? 0) }
 }
 
 // Đóng BTVN: CHỐT trạng thái buổi → recompute EXP tháng (idempotent). KHÔNG Elo.
@@ -732,15 +797,12 @@ export async function recomputeExpThang(lopId: string, ym: string): Promise<{ hs
 // = trước ca kế tiếp), nên nếu bắt buộc mới "Hoàn tất" thì buổi treo "chưa xong" cả tuần dù trong-buổi đã xong
 // sạch. CEO xác nhận muốn đổi: "Hoàn tất" giờ ĐÚNG NGHĨA ĐEN — đủ cả 4 — chấp nhận đánh đổi buổi treo lâu hơn.
 export async function closeBTVN(buoiId: string): Promise<{ already?: boolean; thuong: number }> {
-  const { data: b, error } = await supabase.from('buoi_hoc').select('btvn_dong_at, lop_id, ngay').eq('id', buoiId).single()
+  // §2.0 (30/08): claim + recompute EXP + hoàn tất trong MỘT transaction (fn_dong_btvn).
+  const { data, error } = await supabase.rpc('fn_dong_btvn', { p_buoi_id: buoiId })
   if (error) throw error
-  if ((b as any).btvn_dong_at) return { already: true, thuong: 0 }
-  const claim = await supabase.from('buoi_hoc').update({ btvn_dong_at: new Date().toISOString(), updated_at: new Date().toISOString() }).eq('id', buoiId).is('btvn_dong_at', null).select('id')
-  if (claim.error) throw claim.error
-  if (!claim.data?.length) return { already: true, thuong: 0 }
-  const res = await recomputeExpThang((b as any).lop_id, String((b as any).ngay).slice(0, 7))
-  await recomputeHoanTat(buoiId)
-  return { thuong: res.hs }
+  const r = (data ?? {}) as any
+  if (r.already) return { already: true, thuong: 0 }
+  return { thuong: Number(r.thuong ?? 0) }
 }
 export async function reopenBTVN(buoiId: string): Promise<void> {
   const { data: b } = await supabase.from('buoi_hoc').select('lop_id, ngay').eq('id', buoiId).maybeSingle()
@@ -755,7 +817,7 @@ export type EloBreakdown = { hoc_sinh_id: string; ho_ten: string; points: number
 export async function getEloBreakdown(buoiId: string, phase: Phase): Promise<EloBreakdown[]> {
   const [{ data: hist }, { data: expRows }] = await Promise.all([
     supabase.from('gami_elo_history').select('hoc_sinh_id, expected, actual, delta, elo_before, elo_after').eq('buoi_hoc_id', buoiId).eq('phase', phase).limit(LIMIT),
-    supabase.from('gami_exp_ledger').select('hoc_sinh_id, amount').eq('ref_buoi_hoc_id', buoiId).in('source', ['rank_' + phase, 'attend_floor']).limit(LIMIT),
+    supabase.from('gami_exp_ledger').select('hoc_sinh_id, amount').eq('ref_buoi_hoc_id', buoiId).in('source', ['rank_' + phase, 'exp_' + phase, 'attend_floor']).limit(LIMIT),
   ])
   const probs = await listProblems(buoiId, phase)
   const probIds = probs.map((p) => p.id)
@@ -783,123 +845,18 @@ export type RevealRow = { hoc_sinh_id: string; rawPoints: number; rank: number; 
 // khongCoDuLieu = đã ĐÓNG phase nhưng KHÔNG tính Elo/EXP vì không có dòng chấm nào. UI PHẢI nói ra —
 // im lặng bỏ qua chính là cách bug 07-21 sống sót cả tháng.
 export async function closePhase(buoiId: string, phase: Phase): Promise<{ already?: boolean; khongCoDuLieu?: boolean; reveal?: RevealRow[] }> {
-  const { data: buoi, error: eB } = await supabase.from('buoi_hoc').select('*').eq('id', buoiId).single()
-  if (eB) throw eB
-  const b = buoi as BuoiHoc
-  // MT giờ là 1 phase CỦA buổi thường (cùng mô hình ET — Thùy 07-08), cần cột đóng RIÊNG `mt_dong_at`
-  // (KHÔNG dùng chung ingame_dong_at nữa — buổi thường có ingame THẬT, dùng chung sẽ đụng độ).
-  const dongCol = phase === 'et' ? 'et_dong_at' : phase === 'mt' ? 'mt_dong_at' : 'ingame_dong_at'
-  if ((b as any)[dongCol]) return { already: true }
-  // ── KHÓA THỨ TỰ (ET): chỉ đóng ET khi MỌI buổi thường TRƯỚC (cùng lớp) đã đóng ET. ──
-  // Elo mới có λ (kéo về mean) phụ thuộc TRẠNG THÁI → phải áp tuần tự theo ngày, cấm đóng nhảy cóc.
-  if (phase === 'et' && b.loai === 'thuong') {
-    const { data: earlier } = await supabase.from('buoi_hoc')
-      .select('ngay').eq('lop_id', b.lop_id).eq('loai', 'thuong').neq('trang_thai', 'huy')
-      .lt('ngay', b.ngay).is('et_dong_at', null).order('ngay', { ascending: true }).limit(1)
-    if (earlier && earlier.length) throw new Error(`Chưa đóng ET buổi ${(earlier[0] as any).ngay}. Phải đóng ET các buổi theo đúng thứ tự ngày (Elo tính tuần tự).`)
-  }
-  // CLAIM cờ đóng NGAY + atomic (chỉ set được khi đang null) → chống đóng 2 lần (double-click/race tính Elo×2).
-  const claim = await supabase.from('buoi_hoc').update({ [dongCol]: new Date().toISOString(), updated_at: new Date().toISOString() }).eq('id', buoiId).is(dongCol, null).select('id')
-  if (claim.error) throw claim.error
-  if (!claim.data || !claim.data.length) return { already: true }
-  const coRank = b.loai === 'thuong' || b.loai === 'mt'   // buổi có xếp hạng (ingame/et/mt) → EXP theo hạng
-  // Elo TẠM chỉ tính ET. Ingame & MT đều CHƯA vào Elo:
-  //  · ingame (chấm lớp): data chưa ổn định.
-  //  · MT: cần ĐIỂM CHI TIẾT thang 10 riêng (chưa có) — điểm thô 0/50/100 theo bài không đủ mịn.
-  //    Engine MT×4 (isMT) giữ nguyên; bật lại `|| phase === 'mt'` + nguồn điểm MT khi có luồng chấm thang 10.
-  const coElo = coRank && phase === 'et'
-  // Phase KIA đã đóng chưa? buổi thường = hoàn tất khi ingame + et + (mt NẾU buổi này có gán MT) đều đóng.
-  // MT không auto-tồn-tại trên mọi buổi (khác ingame/et luôn có) → phải hỏi thật có gami_session_problems phase='mt' không.
-  const hasMT = phase === 'mt' ? true : !!(await supabase.from('gami_session_problems').select('id', { count: 'exact', head: true }).eq('buoi_hoc_id', buoiId).eq('phase', 'mt')).count
-  const otherClosed = phase === 'et' ? !!(b as any).ingame_dong_at && (!hasMT || !!(b as any).mt_dong_at)
-    : phase === 'mt' ? !!(b as any).ingame_dong_at && !!(b as any).et_dong_at
-    : !!(b as any).et_dong_at && (!hasMT || !!(b as any).mt_dong_at)
-  // Elo/EXP TÁCH THEO MÔN của lớp (cùng buổi = cùng lớp = cùng môn).
-  const { data: lopRow } = await supabase.from('lop').select('mon').eq('id', b.lop_id).maybeSingle()
-  const mon = (lopRow as any)?.mon ?? 'Toán'
-
-  // HS có mặt (R-ET: chấm = có mặt)
-  const { data: rosterRows } = await supabase.from('buoi_hoc_hs').select('hoc_sinh_id, diem_danh').eq('buoi_hoc_id', buoiId).eq('diem_danh', 'co_mat').limit(LIMIT)
-  const hsIds = (rosterRows ?? []).map((r: any) => r.hoc_sinh_id)
-  if (!hsIds.length) { await markClosed(buoiId, dongCol, b.loai, otherClosed); return { reveal: [] } }
-
-  // điểm thô = Σ điểm bài của phase
-  const probs = await listProblems(buoiId, phase)
-  const probIds = probs.map((p) => p.id)
-  const grades = probIds.length ? (await supabase.from('gami_grades').select('hoc_sinh_id, problem_id, points').in('problem_id', probIds).limit(LIMIT)).data ?? [] : []
-  const raw: Record<string, number> = {}
-  for (const id of hsIds) raw[id] = 0
-  for (const g of grades as any[]) if (g.hoc_sinh_id in raw) raw[g.hoc_sinh_id] += Number(g.points)
-
-  // ⭐ BUG THẬT 07-21 (Thùy): KHÔNG CÓ DÒNG CHẤM NÀO ⇒ HUỶ LUÔN PHIÊN ELO, đừng tính.
-  // Đời cũ khởi tạo raw[id]=0 cho mọi HS rồi cứ thế chạy → 0 dữ liệu bị hiểu thành "CẢ LỚP HOÀ".
-  // Hoà thì actual đều nhau nhưng expected phụ thuộc Elo ⇒ HS Elo CAO mất điểm, HS Elo THẤP được
-  // điểm: một buổi không ai chấm âm thầm kéo cả lớp về trung bình. Thực đo: 81/329 phiên trống,
-  // 8955 điểm Elo biến động vô nghĩa, HS lệch tới ±245.
-  // Đây đúng §1.5: "thiếu data = KHÔNG có dòng", KHÔNG phải "mọi người 0 điểm". Cùng khuôn với
-  // nhánh !hsIds.length ở trên — vẫn ĐÓNG phase (vận hành xong), chỉ không sinh phép đo.
-  // Áp cho MỌI phase có Elo (ingame/et/mt): cùng một bản chất, đừng để lệch nhau (§1.6 symmetry).
-  if (coElo && grades.length === 0) { await markClosed(buoiId, dongCol, b.loai, otherClosed); return { reveal: [], khongCoDuLieu: true } }
-
-  const reveal: RevealRow[] = []
-  if (coRank) {
-    // ── ELO: CHỈ ET + MT (ingame chưa tính — data chấm lớp chưa ổn định). eloOf rỗng khi ingame. ──
-    const eloOf = new Map<string, any>()   // studentId → update (chỉ có khi coElo)
-    let eloMap = new Map<string, any>()
-    if (coElo) {
-      // đảm bảo có dòng elo (mặc định 1000)
-      const { data: eloRows } = await supabase.from('gami_elo').select('*').eq('mon', mon).in('hoc_sinh_id', hsIds).limit(LIMIT)
-      eloMap = new Map((eloRows ?? []).map((e: any) => [e.hoc_sinh_id, e]))
-      const missing = hsIds.filter((id) => !eloMap.has(id))
-      if (missing.length) {
-        const { data: created } = await supabase.from('gami_elo').insert(missing.map((id) => ({ hoc_sinh_id: id, mon }))).select()
-        for (const e of (created ?? []) as any[]) eloMap.set(e.hoc_sinh_id, e)
-      }
-      // pre = elo hiện tại TRỪ delta của CHÍNH buổi này đã áp (phase Elo kia, nếu có). Model cộng-dồn.
-      const { data: priorHist } = await supabase.from('gami_elo_history').select('hoc_sinh_id, delta').eq('buoi_hoc_id', buoiId).limit(LIMIT)
-      const priorDelta = new Map<string, number>()
-      for (const h of (priorHist ?? []) as any[]) priorDelta.set(h.hoc_sinh_id, (priorDelta.get(h.hoc_sinh_id) ?? 0) + h.delta)
-      const students = hsIds.map((id) => ({ studentId: id, elo: eloMap.get(id).elo - (priorDelta.get(id) ?? 0), points: raw[id] }))
-      // isMT=false: hiện chỉ ET vào Elo. Khi bật MT (có điểm thang 10) → truyền isMT=(phase==='mt').
-      const updates = computeEloUpdate(students, { isMT: false, classSize: hsIds.length } as any)
-      for (const u of updates) eloOf.set(u.studentId, u)
-    }
-    // ── HẠNG buổi (theo điểm thô, eloDelta là tie-break) — cho MỌI phase xếp hạng ──
-    const ranks = rankSession(hsIds.map((id) => ({ studentId: id, rawPoints: raw[id], eloDelta: eloOf.get(id)?.delta ?? 0 })))
-    const rankMap = new Map(ranks.map((r) => [r.studentId, r.rank]))
-    const rankTotal = hsIds.length
-    // ghi Elo (chỉ ET/MT): elo_before/after = mốc TRƯỚC BUỔI → +delta. gami_elo CỘNG DỒN delta.
-    if (coElo) for (const [id, u] of eloOf) {
-      await supabase.from('gami_elo_history').insert({ hoc_sinh_id: id, buoi_hoc_id: buoiId, phase, mon, elo_before: u.eloBefore, expected: u.expected, actual: u.actual, delta: u.delta, elo_after: u.eloAfter, rank: rankMap.get(id) ?? null, rank_total: rankTotal })
-      await supabase.from('gami_elo').update({ elo: eloMap.get(id).elo + u.delta, updated_at: new Date().toISOString() }).eq('hoc_sinh_id', id).eq('mon', mon)
-    }
-    // EXP KHÔNG ghi per-buổi nữa (nguồn chính = recomputeExpThang cuối hàm). Reveal chỉ HIỂN THỊ đóng góp
-    // buổi: ET = etRankExp(hạng) · ingame/mt = 0 (không vào EXP). EXP THÁNG thật được tính lại sau markClosed.
-    for (const r of ranks) {
-      const exp = phase === 'et' ? etRankExp(r.rank, hsIds.length) : 0
-      const u: any = eloOf.get(r.studentId)
-      reveal.push({ hoc_sinh_id: r.studentId, rawPoints: raw[r.studentId], rank: r.rank, exp, eloBefore: u?.eloBefore, eloAfter: u?.eloAfter, delta: u?.delta })
-    }
-  } else {
-    // bù/bổ trợ: không Elo, EXP sàn (đi học là có) — GIỮ per-buổi, KHÔNG vào model tháng
-    for (const id of hsIds) {
-      await supabase.from('gami_exp_ledger').insert({ hoc_sinh_id: id, source: 'attend_floor', amount: ATTEND_FLOOR_EXP, ref_buoi_hoc_id: buoiId, mon })
-      reveal.push({ hoc_sinh_id: id, rawPoints: raw[id], rank: 0, exp: ATTEND_FLOOR_EXP })
-    }
-  }
-  await markClosed(buoiId, dongCol, b.loai, otherClosed)
-  // TỰ cập nhật EXP tháng khi đóng ET buổi thường (ET là nguồn EXP; ingame/mt không đổi EXP).
-  if (phase === 'et' && b.loai === 'thuong' && b.lop_id) { try { await recomputeExpThang(b.lop_id, String(b.ngay).slice(0, 7)) } catch (e) { console.error('recomputeExpThang lỗi sau đóng ET:', e) } }
-  return { reveal }
+  // §2.0 (30/08): TOÀN BỘ engine đóng phase (order-lock, claim, Elo pairwise, hạng, EXP)
+  // chạy trong MỘT transaction ở DB — fn_dong_phase (mig 202608300240/0243). Test vàng
+  // reopen+reclose buổi thật: mọi số Elo khớp lịch sử per-HS; hạng nhóm hoà giờ TẤT ĐỊNH
+  // (JS cũ hên xui theo thứ tự fetch roster). Client chỉ gọi + hiển thị reveal.
+  const { data, error } = await supabase.rpc('fn_dong_phase', { p_buoi_id: buoiId, p_phase: phase })
+  if (error) throw error
+  const r = (data ?? {}) as any
+  if (r.already) return { already: true }
+  return { reveal: (r.reveal ?? []) as RevealRow[], khongCoDuLieu: r.khongCoDuLieu === true ? true : undefined }
 }
-async function markClosed(buoiId: string, dongCol: string, loai: string, _otherClosed: boolean): Promise<void> {
-  const patch: Record<string, unknown> = { [dongCol]: new Date().toISOString(), updated_at: new Date().toISOString() }
-  // bù/mt/... = 1 phase → đóng là hoàn tất luôn (không có đánh giá/BTVN riêng để chờ).
-  if (loai !== 'thuong') patch.trang_thai = 'hoan_tat'
-  await supabase.from('buoi_hoc').update(patch).eq('id', buoiId)
-  // Buổi thường: KHÔNG tự set ở đây — trang_thai suy theo CẢ 4 việc (đọc fresh, gồm patch vừa ghi ở trên).
-  if (loai === 'thuong') await recomputeHoanTat(buoiId)
-}
+
+// (markClosed đã xuống DB — nằm trong fn_dong_phase, §2.0.)
 
 // Buổi THƯỜNG "hoàn tất" = ingame + ET + Đánh giá sau buổi + BTVN đều đã đóng (+ MT nếu buổi có gán).
 // CEO 21/08: trước đây chỉ xét ingame+ET(+MT) — nhãn xanh "Hoàn tất" ở màn Buổi học nói dối phần Đánh
@@ -1016,8 +973,26 @@ export async function setDanhGiaDang(buoiId: string, hsId: string, maDang: strin
 // 'baosai' = duyệt HS báo sai ở test online — KHÔNG phải khâu của buổi như 5 tab kia:
 // nó mở màn "Duyệt chấm online", không mở BuoiDetail (xem TaskCard ở NhanSuHome).
 export type TabKey = 'diemdanh' | 'danhgia' | 'ingame' | 'et' | 'btvn' | 'mt' | 'baosai'
-// deadline (Thùy chốt): chấm bài + đánh giá = 23h59 ngày buổi · ET = 12h trưa hôm sau · BTVN = 2h TRƯỚC ca học tiếp theo của lớp · MT = 23h59 ngày thi (giống chấm bài).
-export type MyTask = { buoiId: string; lopId: string; lop: string; ngay: string; vai: 'gv' | 'tg'; tab: TabKey; label: string; done: boolean; doneAt: string | null; deadline: number | null; loai?: 'bu' | 'bo_tro_duoi' | 'bo_tro_yeu' }
+// Hạn + owner việc BUỔI THƯỜNG tính ở DB (fn_han_viec / fn_viec_buoi_thuong, mig 202609062312) — client KHÔNG tính lại.
+// vai 'tk' = trưởng khối (khối × môn) nhận Chấm MT; không có trưởng khối → về GV lớp (vai 'gv', tab 'mt').
+export type VaiViec = 'gv' | 'tg' | 'tk'
+export type MyTask = { buoiId: string; lopId: string; lop: string; ngay: string; vai: VaiViec; tab: TabKey; label: string; done: boolean; doneAt: string | null; deadline: number | null; loai?: 'bu' | 'bo_tro_duoi' | 'bo_tro_yeu'; refKey: string }
+const LABEL_BY_TAB: Record<string, string> = { danhgia: 'Đánh giá sau buổi', ingame: 'Chấm bài trên lớp', et: 'Chấm ET', btvn: 'Chấm BTVN', mt: 'Chấm MT' }
+// ref_key: khoá gậy tự động (vh:buoi|tab|nhansu) — tính SẴN ở fn_viec_buoi_thuong (§2.0), gay.ts đọc
+// THẲNG cột này, không tự ghép chuỗi lần 2 (1 nguồn duy nhất, đổi công thức chỉ sửa 1 chỗ).
+type ViecBuoiThuongRow = { nhan_su_id: string; buoi_id: string; lop_id: string; ten_lop: string; ngay: string; vai: VaiViec; tab: TabKey; dong_at: string | null; han: string | null; et_online: boolean; ref_key: string }
+async function viecBuoiThuong(tu: string | null, den: string | null, tatCa: boolean): Promise<ViecBuoiThuongRow[]> {
+  const { data, error } = await supabase.rpc('fn_viec_buoi_thuong', { p_tu: tu, p_den: den, p_tat_ca: tatCa }).limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as ViecBuoiThuongRow[]
+}
+// Buổi có ET online: máy đã chấm + đổ lưới, việc còn lại là bấm xác nhận — nhãn nói rõ để TA khỏi đi tìm bài giấy.
+const taskTuRow = (r: ViecBuoiThuongRow): MyTask => ({
+  buoiId: r.buoi_id, lopId: r.lop_id, lop: r.ten_lop, ngay: r.ngay, vai: r.vai, tab: r.tab,
+  label: r.tab === 'et' && r.et_online ? 'Xác nhận ET (online)' : (LABEL_BY_TAB[r.tab] ?? r.tab),
+  done: !!r.dong_at, doneAt: r.dong_at, deadline: r.han ? new Date(r.han).getTime() : null,
+  refKey: r.ref_key,
+})
 // Export: trợ lý cần ĐÚNG bảng vai→khâu này để dựng rổ "dự kiến hôm nay" cho buổi CHƯA MỞ
 // (chưa có dòng buoi_hoc ⇒ chưa có task để đọc). Chép lại một bản thứ hai ở troly.ts là đẻ
 // hai nguồn sự thật rồi lệch — thêm khâu ở đây mà quên bên kia thì rổ dự kiến thiếu âm thầm.
@@ -1028,85 +1003,11 @@ export const TASKS_BY_VAI: Record<'gv' | 'tg', { tab: TabKey; label: string }[]>
 export async function getMyTasks(): Promise<MyTask[]> {
   const prof = await getMyProfile()
   if (!prof) return []
-  // 1 người có thể giữ NHIỀU vai trên CÙNG lớp (vd gv-phụ + tg) → gom TẤT CẢ vai, đừng gộp về 1.
-  const rolesByLop = new Map<string, Set<'gv' | 'tg'>>()
-  for (const pc of prof.phanCong) {
-    const v = pc.vai_tro === 'gv' ? 'gv' : 'tg'
-    if (!rolesByLop.has(pc.lop_id)) rolesByLop.set(pc.lop_id, new Set())
-    rolesByLop.get(pc.lop_id)!.add(v)
-  }
-  const lopIds = [...rolesByLop.keys()]
-  if (!lopIds.length) return []
-  // mo + hoan_tat (bỏ huy): task XONG vẫn trả về (cờ done + doneAt) để hiện ở nhóm "Đã xong" — mở lại xem/sửa được.
-  const { data: buois, error } = await supabase.from('buoi_hoc')
-    .select('id, lop_id, ngay, ingame_dong_at, et_dong_at, danh_gia_xong_at, btvn_dong_at, mt_dong_at, lop:lop_id(ten_lop)').neq('trang_thai', 'huy').eq('loai', 'thuong').in('lop_id', lopIds).order('ngay').limit(LIMIT)
-  if (error) throw error
-  // MT (Thùy 07-08: "phải hiện trong buổi học giống ET") KHÔNG tự có trên MỌI buổi (khác ingame/et/btvn
-  // luôn có) → phải hỏi thật buổi nào ĐÃ được gán MT (tai_lieu loai='mt_buoi' khớp lớp+ngày), tránh vỡ
-  // "Việc của tôi" với "Chấm MT" rỗng ở 99% ngày thường.
-  const mtKeys = new Set<string>()
-  if ((buois ?? []).length) {
-    const { data: mtDocs } = await supabase.from('tai_lieu').select('lop_id, ngay').eq('loai', 'mt_buoi').in('lop_id', lopIds).limit(LIMIT)
-    for (const d of (mtDocs ?? []) as any[]) mtKeys.add(`${d.lop_id}|${d.ngay}`)
-  }
-  // TKB cho deadline BTVN (= 2h trước ca học tiếp theo của lớp). Tải 1 lần, suy ca-kế client.
-  const { data: tkb } = await supabase.from('thoi_khoa_bieu')
-    .select('lop_id, thu, gio_bat_dau, hieu_luc_tu, hieu_luc_den, lop:lop_id(ngay_khai_giang)').in('lop_id', lopIds).limit(LIMIT)
-  const tkbByLop = new Map<string, any[]>()
-  for (const s of (tkb ?? []) as any[]) { if (!tkbByLop.has(s.lop_id)) tkbByLop.set(s.lop_id, []); tkbByLop.get(s.lop_id)!.push(s) }
-  // ⭐ Fix 07-19 (Thùy: "kiểm tra lại deadline BTVN, phải trước buổi tiếp theo"): TKB chỉ là LỊCH LẶP —
-  // ngày TKB dự đoán "buổi tiếp theo" có thể đã bị HUỶ ad-hoc (huyBuoi/huyBuoiCuaNgay, vd "GV bận") mà TKB
-  // không biết. Trước đây caTiepTheo bỏ qua việc này → tính deadline theo 1 buổi ĐÃ HUỶ, cắt ngắn hạn nộp
-  // BTVN vô lý (buổi thật kế tiếp có thể xa hơn nhiều). Nạp danh sách buổi 'thuong' đã huỷ để SKIP qua.
-  const { data: huyRows } = await supabase.from('buoi_hoc')
-    .select('lop_id, ngay').eq('loai', 'thuong').eq('trang_thai', 'huy').in('lop_id', lopIds).limit(LIMIT)
-  const huyKeys = new Set((huyRows ?? []).map((r: any) => `${r.lop_id}|${r.ngay}`))
-  const caTiepTheo = (lopId: string, after: string): number | null => {
-    for (let i = 1; i <= 21; i++) {
-      const day = congNgay(after, i); const thu = thuOf(day)
-      if (huyKeys.has(`${lopId}|${day}`)) continue // buổi ngày này đã huỷ → không phải "buổi tiếp theo" thật
-      const slot = (tkbByLop.get(lopId) ?? []).find((s: any) => s.thu === thu && s.hieu_luc_tu <= day && (!s.hieu_luc_den || s.hieu_luc_den >= day) && (!s.lop?.ngay_khai_giang || s.lop.ngay_khai_giang <= day))
-      if (slot) return vnInstant(day, String(slot.gio_bat_dau).slice(0, 5))
-    }
-    return null
-  }
-  // ⭐ ET ONLINE = auto-chấm ⇒ BỎ task "Chấm ET" của buổi đó (spec test-online §9).
-  // Điều kiện theo TỪNG BUỔI (lớp+ngày có `bai_test` loại 'et'), KHÔNG bỏ đại trà: ET giấy
-  // vẫn là đường chính, bỏ hết là TG mất task chấm thật.
-  const etOnlineKeys = new Set<string>()
-  {
-    const { data: etTests } = await supabase.from('bai_test')
-      .select('lop_id, ngay').eq('loai', 'et').in('lop_id', lopIds).limit(LIMIT)
-    for (const t of (etTests ?? []) as any[]) etOnlineKeys.add(`${t.lop_id}|${t.ngay}`)
-  }
-
-  const out: MyTask[] = []
-  for (const b of (buois ?? []) as any[]) {
-    const doneAtTab: Record<TabKey, string | null> = { diemdanh: null, ingame: b.ingame_dong_at, danhgia: b.danh_gia_xong_at, et: b.et_dong_at, btvn: b.btvn_dong_at, mt: b.mt_dong_at, baosai: null }
-    const deadlineOf = (tab: TabKey): number | null => {
-      if (tab === 'ingame' || tab === 'danhgia' || tab === 'mt') return vnInstant(b.ngay, '23:59')
-      if (tab === 'et') return vnInstant(congNgay(b.ngay, 1), '12:00')
-      if (tab === 'btvn') { const ca = caTiepTheo(b.lop_id, b.ngay); return ca == null ? null : ca - 2 * 3600000 }
-      return null
-    }
-    const roles = rolesByLop.get(b.lop_id)!
-    const seen = new Set<TabKey>() // dedup tab trùng (chấm bài có ở cả gv lẫn tg)
-    for (const vai of ['gv', 'tg'] as const) {
-      if (!roles.has(vai)) continue
-      for (const t of TASKS_BY_VAI[vai]) {
-        if (seen.has(t.tab)) continue
-        // Buổi này đã phát hành ET online ⇒ máy chấm rồi, không còn việc chấm tay.
-        if (t.tab === 'et' && etOnlineKeys.has(`${b.lop_id}|${b.ngay}`)) { seen.add(t.tab); continue }
-        seen.add(t.tab)
-        out.push({ buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab, label: t.label, done: !!doneAtTab[t.tab], doneAt: doneAtTab[t.tab], deadline: deadlineOf(t.tab) })
-      }
-      // MT — CHỈ khi buổi này thật sự có gán MT (mtKeys). TG chấm (giống ET); GV không có task riêng.
-      if (vai === 'tg' && mtKeys.has(`${b.lop_id}|${b.ngay}`) && !seen.has('mt')) {
-        seen.add('mt')
-        out.push({ buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai: 'tg', tab: 'mt', label: 'Chấm MT', done: !!b.mt_dong_at, doneAt: b.mt_dong_at, deadline: deadlineOf('mt') })
-      }
-    }
-  }
+  // Buổi THƯỜNG: owner + hạn + MT-thay-hẳn-các-khâu đều derive ở DB (fn_viec_buoi_thuong). Task XONG vẫn
+  // trả về (done + doneAt) để hiện ở nhóm "Đã xong" — mở lại xem/sửa được.
+  const rows = await viecBuoiThuong(null, null, false)
+  const out: MyTask[] = rows.map(taskTuRow)
+  const tgLops = new Set(prof.phanCong.filter((pc) => pc.vai_tro === 'tg').map((pc) => pc.lop_id))
   // ── DUYỆT BÁO SAI test online (spec test-online §9) — THAY cho task "Chấm ET" đã bỏ ở trên.
   // Pure-derive đúng nghĩa: report `moi` TỒN TẠI ⇒ task; duyệt xong (dung/sai) là task tự biến
   // mất, không có cờ done nào phải dọn. Gom về 1 task / (lớp × buổi) để không vỡ list khi 1 câu
@@ -1114,7 +1015,6 @@ export async function getMyTasks(): Promise<MyTask[]> {
   // ⚠ PostgREST không filter được quan hệ LỒNG (CLAUDE.md §2) — bảng report nhỏ nên tải hết
   // rồi lọc client theo lớp của tôi, đừng cố nhét filter vào select lồng 3 tầng.
   {
-    const tgLops = new Set([...rolesByLop.entries()].filter(([, r]) => r.has('tg')).map(([id]) => id))
     if (tgLops.size) {
       const { data: reps } = await supabase.from('bai_test_report')
         .select('created_at, blc:bai_lam_cau_id(cau:bai_test_cau_id(test:bai_test_id(lop_id, ngay)))')
@@ -1130,12 +1030,13 @@ export async function getMyTasks(): Promise<MyTask[]> {
       }
       for (const [k, v] of gom) {
         const [lopId, ngay] = k.split('|')
-        const b = (buois ?? []).find((x: any) => x.lop_id === lopId && x.ngay === ngay) as any
+        const b = rows.find((x) => x.lop_id === lopId && x.ngay === ngay)
         out.push({
-          buoiId: b?.id ?? '', lopId, lop: b?.lop?.ten_lop ?? '?', ngay, vai: 'tg', tab: 'baosai',
+          buoiId: b?.buoi_id ?? '', lopId, lop: b?.ten_lop ?? '?', ngay, vai: 'tg', tab: 'baosai',
           label: `Duyệt báo sai (${v.n})`,
           done: false, doneAt: null,
           deadline: Number.isFinite(v.sinh) ? v.sinh + 24 * 3600000 : null, // 24h từ báo sai đầu tiên
+          refKey: `vh:${b?.buoi_id ?? lopId}|baosai|${prof.nhanSu.id}`, // ngoài phạm vi gậy/dashboard hiện tại — chỉ cần khoá ổn định
         })
       }
     }
@@ -1175,8 +1076,8 @@ export async function getMyTasks(): Promise<MyTask[]> {
     // HS chưa điểm danh. CHỈ bỏ qua khi điểm danh XONG mà 0 ai có mặt (toàn vắng — không có gì để chấm).
     if ((coMatCountBu.get(b.id) ?? 0) === 0 && (chuaDDBu.get(b.id) ?? 0) === 0) continue
     const vaiBu: 'gv' | 'tg' = b.nguoi_day_tg ? 'tg' : 'gv' // nhãn vai theo slot owner thật (fallback GV khi thiếu TA)
-    out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: vaiBu, tab: 'et', label: 'Chấm ET (bù)', done: !!b.et_dong_at, doneAt: b.et_dong_at, deadline: vnInstant(congNgay(b.ngay, 1), '12:00'), loai: 'bu' })
-    out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: vaiBu, tab: 'danhgia', label: 'Đánh giá buổi bù', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bu' })
+    out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: vaiBu, tab: 'et', label: 'Chấm ET (bù)', done: !!b.et_dong_at, doneAt: b.et_dong_at, deadline: vnInstant(congNgay(b.ngay, 1), '12:00'), loai: 'bu', refKey: `vh:${b.id}|et|${myId}` })
+    out.push({ buoiId: b.id, lopId: '', lop: 'Buổi bù', ngay: b.ngay, vai: vaiBu, tab: 'danhgia', label: 'Đánh giá buổi bù', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bu', refKey: `vh:${b.id}|danhgia|${myId}` })
   }
   // ── BUỔI BỔ TRỢ YẾU (loai='bo_tro_yeu'): TA/GV cao cấp đứng lớp (nguoi_day_tg) làm CẢ chấm ET LẪN
   // đánh giá, ĐỐI XỨNG buổi bù (khác đuổi — đuổi không đo mastery nên không có ET). 1 buổi = 1 HS,
@@ -1196,11 +1097,14 @@ export async function getMyTasks(): Promise<MyTask[]> {
       else if (r.diem_danh == null) chuaDDBy.set(r.buoi_hoc_id, (chuaDDBy.get(r.buoi_hoc_id) ?? 0) + 1)
     }
   }
+  // ⭐ 09-03 (PLAN-botro-yeu-ca.md): ca bổ trợ yếu KHÔNG có ET — em luyện + test trên iPad, hệ tự chấm. TA
+  // "điều hành ca" trên app TA (điểm danh → đóng ca → nhận xét → hoàn tất = danh_gia_xong_at). Nên chỉ còn 1
+  // task, bỏ "Chấm ET (bổ trợ yếu)". Retest tầng 2 (bài riêng sau ET buổi thường) là task theo BÀI, không theo
+  // buổi → sống ở app TA qua fn_btyeu_viec_cua_toi, không nhét vào đây.
   for (const b of byMine) {
     if ((coMatCountBy.get(b.id) ?? 0) === 0 && (chuaDDBy.get(b.id) ?? 0) === 0) continue
     const vaiBy: 'gv' | 'tg' = b.nguoi_day_tg ? 'tg' : 'gv'
-    out.push({ buoiId: b.id, lopId: '', lop: 'Bổ trợ yếu', ngay: b.ngay, vai: vaiBy, tab: 'et', label: 'Chấm ET (bổ trợ yếu)', done: !!b.et_dong_at, doneAt: b.et_dong_at, deadline: vnInstant(congNgay(b.ngay, 1), '12:00'), loai: 'bo_tro_yeu' })
-    out.push({ buoiId: b.id, lopId: '', lop: 'Bổ trợ yếu', ngay: b.ngay, vai: vaiBy, tab: 'danhgia', label: 'Đánh giá bổ trợ yếu', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bo_tro_yeu' })
+    out.push({ buoiId: b.id, lopId: '', lop: 'Bổ trợ yếu', ngay: b.ngay, vai: vaiBy, tab: 'danhgia', label: 'Điều hành ca bổ trợ (app TA)', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bo_tro_yeu', refKey: `vh:${b.id}|danhgia|${myId}` })
   }
   // ── BUỔI ĐUỔI (loai='bo_tro_duoi'): TA đứng lớp (nguoi_day_tg) nhận xét + tick "dạng đã dạy" ở
   // BuoiDuoiDetail. Buổi đuổi do TA chạy như buổi bù (Thùy chốt 07-26 — nhất quán với buổi bù); GV
@@ -1212,7 +1116,7 @@ export async function getMyTasks(): Promise<MyTask[]> {
   for (const b of (duoi ?? []) as any[]) {
     if ((b.nguoi_day_tg ?? b.nguoi_day) !== myId) continue // owner = TA đứng lớp, fallback GV khi buổi chưa gán TA
     const vaiDuoi: 'gv' | 'tg' = b.nguoi_day_tg ? 'tg' : 'gv'
-    out.push({ buoiId: b.id, lopId: '', lop: 'Buổi đuổi', ngay: b.ngay, vai: vaiDuoi, tab: 'danhgia', label: 'Đánh giá buổi đuổi', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bo_tro_duoi' })
+    out.push({ buoiId: b.id, lopId: '', lop: 'Buổi đuổi', ngay: b.ngay, vai: vaiDuoi, tab: 'danhgia', label: 'Đánh giá buổi đuổi', done: !!b.danh_gia_xong_at, doneAt: b.danh_gia_xong_at, deadline: vnInstant(b.ngay, '23:59'), loai: 'bo_tro_duoi', refKey: `vh:${b.id}|danhgia|${myId}` })
   }
   return out
 }
@@ -1224,83 +1128,8 @@ export async function getMyTasks(): Promise<MyTask[]> {
 // chưa attribute được theo TỪNG NGƯỜI (xem listOpsDiemDanhTeam bên dưới, đo theo TEAM).
 export type StaffTaskRow = MyTask & { nhan_su_id: string; lop: string }
 export async function listAllStaffTasks(tu: string, den: string): Promise<StaffTaskRow[]> {
-  const { data: pcAll, error: e1 } = await supabase.from('phan_cong_lop').select('nhan_su_id, lop_id, vai_tro').limit(LIMIT)
-  if (e1) throw e1
-  const rolesByLop = new Map<string, Map<string, Set<'gv' | 'tg'>>>() // lop_id -> nhan_su_id -> roles
-  const lopIdsSet = new Set<string>()
-  for (const pc of (pcAll ?? []) as any[]) {
-    lopIdsSet.add(pc.lop_id)
-    const v: 'gv' | 'tg' = pc.vai_tro === 'gv' ? 'gv' : 'tg'
-    if (!rolesByLop.has(pc.lop_id)) rolesByLop.set(pc.lop_id, new Map())
-    const byNs = rolesByLop.get(pc.lop_id)!
-    if (!byNs.has(pc.nhan_su_id)) byNs.set(pc.nhan_su_id, new Set())
-    byNs.get(pc.nhan_su_id)!.add(v)
-  }
-  const lopIds = [...lopIdsSet]
-  if (!lopIds.length) return []
-  const { data: buois, error } = await supabase.from('buoi_hoc')
-    .select('id, lop_id, ngay, ingame_dong_at, et_dong_at, danh_gia_xong_at, btvn_dong_at, mt_dong_at, lop:lop_id(ten_lop)')
-    .neq('trang_thai', 'huy').eq('loai', 'thuong').in('lop_id', lopIds).gte('ngay', tu).lte('ngay', den).order('ngay').limit(LIMIT)
-  if (error) throw error
-  // MT KHÔNG tự có trên mọi buổi (khác ingame/et/btvn) → hỏi thật buổi nào đã gán MT (tai_lieu loai='mt_buoi'
-  // khớp lớp+ngày), CÙNG logic getMyTasks — trước đây bị bỏ sót ở đây (comment cũ "buổi thường không có phase mt").
-  const mtKeys = new Set<string>()
-  if ((buois ?? []).length) {
-    const { data: mtDocs } = await supabase.from('tai_lieu').select('lop_id, ngay').eq('loai', 'mt_buoi').in('lop_id', lopIds).limit(LIMIT)
-    for (const d of (mtDocs ?? []) as any[]) mtKeys.add(`${d.lop_id}|${d.ngay}`)
-  }
-  const { data: tkb } = await supabase.from('thoi_khoa_bieu')
-    .select('lop_id, thu, gio_bat_dau, hieu_luc_tu, hieu_luc_den, lop:lop_id(ngay_khai_giang)').in('lop_id', lopIds).limit(LIMIT)
-  const tkbByLop = new Map<string, any[]>()
-  for (const s of (tkb ?? []) as any[]) { if (!tkbByLop.has(s.lop_id)) tkbByLop.set(s.lop_id, []); tkbByLop.get(s.lop_id)!.push(s) }
-  // ⭐ Fix 07-19 — cùng bug với getMyTasks (xem comment ở đó): TKB không biết buổi bị huỷ ad-hoc.
-  const { data: huyRows } = await supabase.from('buoi_hoc')
-    .select('lop_id, ngay').eq('loai', 'thuong').eq('trang_thai', 'huy').in('lop_id', lopIds).limit(LIMIT)
-  const huyKeys = new Set((huyRows ?? []).map((r: any) => `${r.lop_id}|${r.ngay}`))
-  const caTiepTheo = (lopId: string, after: string): number | null => {
-    for (let i = 1; i <= 21; i++) {
-      const day = congNgay(after, i); const thu = thuOf(day)
-      if (huyKeys.has(`${lopId}|${day}`)) continue
-      const slot = (tkbByLop.get(lopId) ?? []).find((s: any) => s.thu === thu && s.hieu_luc_tu <= day && (!s.hieu_luc_den || s.hieu_luc_den >= day) && (!s.lop?.ngay_khai_giang || s.lop.ngay_khai_giang <= day))
-      if (slot) return vnInstant(day, String(slot.gio_bat_dau).slice(0, 5))
-    }
-    return null
-  }
-  const out: StaffTaskRow[] = []
-  for (const b of (buois ?? []) as any[]) {
-    const doneAtTab: Record<TabKey, string | null> = { diemdanh: null, ingame: b.ingame_dong_at, danhgia: b.danh_gia_xong_at, et: b.et_dong_at, btvn: b.btvn_dong_at, mt: b.mt_dong_at, baosai: null }
-    const deadlineOf = (tab: TabKey): number | null => {
-      if (tab === 'ingame' || tab === 'danhgia' || tab === 'mt') return vnInstant(b.ngay, '23:59')
-      if (tab === 'et') return vnInstant(congNgay(b.ngay, 1), '12:00')
-      if (tab === 'btvn') { const ca = caTiepTheo(b.lop_id, b.ngay); return ca == null ? null : ca - 2 * 3600000 }
-      return null
-    }
-    const byNs = rolesByLop.get(b.lop_id)
-    if (!byNs) continue
-    for (const [nsId, roles] of byNs) {
-      const seen = new Set<TabKey>()
-      for (const vai of ['gv', 'tg'] as const) {
-        if (!roles.has(vai)) continue
-        for (const t of TASKS_BY_VAI[vai]) {
-          if (seen.has(t.tab)) continue
-          seen.add(t.tab)
-          out.push({
-            nhan_su_id: nsId, buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai, tab: t.tab,
-            label: t.label, done: !!doneAtTab[t.tab], doneAt: doneAtTab[t.tab], deadline: deadlineOf(t.tab),
-          })
-        }
-        // MT — CHỈ khi buổi này thật sự có gán MT (mtKeys), CHỈ TG chấm (giống getMyTasks/ET).
-        if (vai === 'tg' && mtKeys.has(`${b.lop_id}|${b.ngay}`) && !seen.has('mt')) {
-          seen.add('mt')
-          out.push({
-            nhan_su_id: nsId, buoiId: b.id, lopId: b.lop_id, lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, vai: 'tg', tab: 'mt',
-            label: 'Chấm MT', done: !!b.mt_dong_at, doneAt: b.mt_dong_at, deadline: deadlineOf('mt'),
-          })
-        }
-      }
-    }
-  }
-  return out
+  const rows = await viecBuoiThuong(tu, den, true)
+  return rows.map((r) => ({ ...taskTuRow(r), nhan_su_id: r.nhan_su_id }))
 }
 
 // OPS điểm danh — team-wide (KHÔNG per-person, xem comment listAllStaffTasks): tỉ lệ HS đã điểm danh /
@@ -1408,21 +1237,11 @@ export async function timBuoiTheoLop(q: string): Promise<BuoiTim[]> {
 // MỞ LẠI 1 phase đã đóng để SỬA (vd TA sửa điểm ET): rollback Elo/EXP của phase đó rồi gỡ cờ đóng + về 'mo'.
 // Idempotent với đóng lại: xoá elo_history + exp_ledger của phase, hoàn elo về elo_before, trừ session nếu phase tính session.
 export async function reopenPhase(buoiId: string, phase: Phase): Promise<void> {
-  const dongCol = phase === 'et' ? 'et_dong_at' : phase === 'mt' ? 'mt_dong_at' : 'ingame_dong_at'
-  const { data: hist } = await supabase.from('gami_elo_history').select('*').eq('buoi_hoc_id', buoiId).eq('phase', phase).limit(LIMIT)
-  const incSession = phase !== 'et'
-  for (const h of (hist ?? []) as any[]) {
-    const mon = h.mon ?? 'Toán'
-    // model cộng-dồn: gỡ phase = TRỪ delta khỏi elo hiện tại (KHÔNG revert về elo_before — sẽ xoá delta phase kia).
-    const { data: e } = await supabase.from('gami_elo').select('elo, sessions_played').eq('hoc_sinh_id', h.hoc_sinh_id).eq('mon', mon).maybeSingle()
-    if (!e) continue
-    await supabase.from('gami_elo').update({ elo: (e as any).elo - h.delta, sessions_played: Math.max(0, ((e as any).sessions_played ?? 0) - (incSession ? 1 : 0)), updated_at: new Date().toISOString() }).eq('hoc_sinh_id', h.hoc_sinh_id).eq('mon', mon)
-  }
-  await supabase.from('gami_elo_history').delete().eq('buoi_hoc_id', buoiId).eq('phase', phase)
-  await supabase.from('gami_exp_ledger').delete().eq('ref_buoi_hoc_id', buoiId).in('source', ['rank_' + phase, 'attend_floor'])
-  await supabase.from('buoi_hoc').update({ [dongCol]: null, trang_thai: 'mo', updated_at: new Date().toISOString() }).eq('id', buoiId)
-  // Mở lại ET buổi thường → EXP tháng đổi → tự tính lại.
-  if (phase === 'et') { const { data: b } = await supabase.from('buoi_hoc').select('lop_id, ngay, loai').eq('id', buoiId).maybeSingle(); if (b && (b as any).loai === 'thuong' && (b as any).lop_id) try { await recomputeExpThang((b as any).lop_id, String((b as any).ngay).slice(0, 7)) } catch (e) { console.error('recomputeExpThang lỗi sau mở ET:', e) } }
+  // §2.0 (30/08): rollback Elo (trừ delta cộng dồn) + xoá history/ledger + gỡ cờ + recompute
+  // EXP tháng — NGUYÊN TỬ trong fn_mo_lai_phase (mig 202608300240). Bản cũ N update rời,
+  // đứt giữa chừng là Elo lệch vĩnh viễn (đúng ca audit nêu).
+  const { error } = await supabase.rpc('fn_mo_lai_phase', { p_buoi_id: buoiId, p_phase: phase })
+  if (error) throw error
 }
 
 // ── QUẢN LÝ ĐIỂM (Elo/EXP) — bảng tổng + hồ sơ HS ─────────────────
@@ -1444,11 +1263,11 @@ export async function listGamiBangTong(mon?: string): Promise<DiemRow[]> {
   const muaStart = seasonStartUtc(seasonOf(nowVn))
   const startY = Number(seasonOf(nowVn).split('-')[0])
   const startYm = `${startY}-${String(SEASON.START_MONTH).padStart(2, '0')}`, nextStartYm = `${startY + 1}-${String(SEASON.START_MONTH).padStart(2, '0')}`
-  const { data: exp } = await supabase.from('gami_exp_ledger').select('hoc_sinh_id, mon, amount, source, note, created_at')
-    .in('source', ['exp_thang', 'attend_floor']).limit(LIMIT)
+  // Ledger chi tiết = vài nghìn dòng/mùa (>cap 1000) → PHẢI pagedLedger, không .limit() trần.
+  const exp = await pagedLedger((q) => q.select('hoc_sinh_id, mon, amount, source, note, created_at').in('source', EXP_SOURCES))
   const expMap = new Map<string, number>()
-  for (const r of (exp ?? []) as any[]) {
-    const keep = r.source === 'exp_thang' ? (r.note >= startYm && r.note < nextStartYm) : r.created_at >= muaStart
+  for (const r of exp as any[]) {
+    const keep = r.source === 'attend_floor' ? r.created_at >= muaStart : (r.note >= startYm && r.note < nextStartYm)
     if (keep) { const k = r.hoc_sinh_id + '|' + (r.mon ?? ''); expMap.set(k, (expMap.get(k) ?? 0) + Number(r.amount)) }
   }
   // Ghi danh ĐANG HỌC → (HS × môn) ⇒ hệ + tên lớp. Lấy TOÀN BỘ rồi lọc ở client, KHÔNG `.in(hsIds)`:
@@ -1491,11 +1310,13 @@ export type ExpRow = { source: string; amount: number; mon: string | null; creat
 export type DiemHS = { elo: { mon: string; elo: number; sessions: number; exp: number }[]; hist: EloHist[]; exp: ExpRow[] }
 // Hồ sơ điểm 1 HS: Elo per môn (+EXP môn) · lịch sử Elo (timeline) · dòng EXP.
 export async function getDiemHS(hocSinhId: string): Promise<DiemHS> {
-  const [eloR, histR, expR] = await Promise.all([
+  // exp: 1 HS ledger chi tiết cả mùa ~vài trăm dòng, cuối mùa CÓ THỂ >1000 (cap PostgREST) → pagedLedger.
+  const [eloR, histR, expRows] = await Promise.all([
     supabase.from('gami_elo').select('mon, elo, sessions_played').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     supabase.from('gami_elo_history').select('buoi_hoc_id, phase, mon, elo_before, delta, elo_after, created_at, buoi:buoi_hoc_id(ngay, lop:lop_id(ten_lop))').eq('hoc_sinh_id', hocSinhId).order('created_at', { ascending: false }).limit(LIMIT),
-    supabase.from('gami_exp_ledger').select('source, amount, mon, created_at, buoi:ref_buoi_hoc_id(ngay, lop:lop_id(ten_lop))').eq('hoc_sinh_id', hocSinhId).order('created_at', { ascending: false }).limit(LIMIT),
+    pagedLedger((q) => q.select('source, amount, mon, created_at, buoi:ref_buoi_hoc_id(ngay, lop:lop_id(ten_lop))').eq('hoc_sinh_id', hocSinhId)),
   ])
+  const expR = { data: [...expRows].sort((a: any, b: any) => (a.created_at < b.created_at ? 1 : -1)) }
   const expByMon = new Map<string, number>()
   for (const r of (expR.data ?? []) as any[]) expByMon.set(r.mon ?? '', (expByMon.get(r.mon ?? '') ?? 0) + Number(r.amount))
   return {
@@ -1618,17 +1439,19 @@ export async function getBangEloExp(hocSinhIds: string[], mon: string): Promise<
   const v = new Date(Date.now() + 7 * 3600 * 1000)
   const ym = `${v.getUTCFullYear()}-${String(v.getUTCMonth() + 1).padStart(2, '0')}`
   const monthStart = new Date(Date.UTC(v.getUTCFullYear(), v.getUTCMonth(), 1, -7, 0, 0)).toISOString()
-  const [eloR, expR] = await Promise.all([
+  // Lọc THÁNG ngay trên server (note=ym / attend_floor theo created_at) — ledger chi tiết cả mùa của 1 lớp
+  // có thể >1000 dòng (cap PostgREST), còn 1 THÁNG 1 lớp thì luôn nhỏ → khỏi phân trang.
+  const [eloR, expNoteR, expFloorR] = await Promise.all([
     supabase.from('gami_elo').select('hoc_sinh_id, elo').eq('mon', mon).in('hoc_sinh_id', ids).limit(LIMIT),
-    supabase.from('gami_exp_ledger').select('hoc_sinh_id, amount, source, note, created_at')
-      .eq('mon', mon).in('hoc_sinh_id', ids).in('source', ['exp_thang', 'attend_floor']).limit(LIMIT),
+    supabase.from('gami_exp_ledger').select('hoc_sinh_id, amount')
+      .eq('mon', mon).in('hoc_sinh_id', ids).in('source', EXP_NOTE_SOURCES).eq('note', ym).limit(LIMIT),
+    supabase.from('gami_exp_ledger').select('hoc_sinh_id, amount')
+      .eq('mon', mon).in('hoc_sinh_id', ids).eq('source', 'attend_floor').gte('created_at', monthStart).limit(LIMIT),
   ])
   const eloMap = new Map(((eloR.data ?? []) as any[]).map((e) => [e.hoc_sinh_id, Number(e.elo)]))
   const expMap = new Map<string, number>()
-  for (const r of (expR.data ?? []) as any[]) {
-    const keep = r.source === 'exp_thang' ? r.note === ym : r.created_at >= monthStart // attend_floor: theo created_at
-    if (keep) expMap.set(r.hoc_sinh_id, (expMap.get(r.hoc_sinh_id) ?? 0) + Number(r.amount))
-  }
+  for (const r of [...(expNoteR.data ?? []), ...(expFloorR.data ?? [])] as any[])
+    expMap.set(r.hoc_sinh_id, (expMap.get(r.hoc_sinh_id) ?? 0) + Number(r.amount))
   return ids.map((id) => ({ hoc_sinh_id: id, elo: eloMap.get(id) ?? 1000, expThang: expMap.get(id) ?? 0 }))
 }
 

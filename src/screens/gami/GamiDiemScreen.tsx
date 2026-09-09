@@ -10,7 +10,10 @@ type Phase = 'ingame' | 'et' | 'mt'
 // định, và bảng này chỉ cần SẮP XẾP; nếu sau có bậc mới thì nó vẫn hiện, chỉ rơi xuống cuối.
 const HE_THU_TU: Record<string, number> = { S: 4, A: 3, B: 2, C: 1 }
 const HE_TONE: Record<string, string> = { S: 'bg-amber-100 text-amber-800', A: 'bg-indigo-100 text-indigo-800', B: 'bg-sky-100 text-sky-800', C: 'bg-slate-100 text-slate-600' }
-const EXP_SRC: Record<string, string> = { rank_ingame: 'Hạng chấm bài', rank_et: 'Hạng ET', rank_mt: 'Hạng MT', attend_floor: 'Đi học (sàn)' }
+const EXP_SRC: Record<string, string> = {
+  exp_et: 'ET (hạng buổi)', exp_btvn: 'BTVN', exp_btvn_thang: 'BTVN tháng (thưởng/phạt)', exp_thang: 'EXP tháng (gộp cũ)',
+  rank_ingame: 'Hạng chấm bài', rank_et: 'Hạng ET', rank_mt: 'Hạng MT', attend_floor: 'Đi học (sàn)',
+}
 const srcLbl = (s: string) => EXP_SRC[s] ?? s
 const fmtNgay = (iso?: string | null) => (iso ? new Date(iso + 'T00:00:00').toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '—')
 const phaseLbl = (p: Phase) => (p === 'et' ? 'Elo ET' : p === 'mt' ? 'Elo MT' : 'Elo lớp')
@@ -284,7 +287,7 @@ function HoSoDiem({ row, onClose, onOpenBang }: { row: DiemRow; onClose: () => v
                     <div key={i} className="flex items-center gap-2 rounded-md border border-slate-100 px-2.5 py-1.5 text-[12px]">
                       <span className="text-slate-400">{fmtNgay(x.ngay)}</span><span className="text-slate-600">{srcLbl(x.source)}</span>
                       {x.mon && <span className="rounded bg-slate-100 px-1 text-[10px] text-slate-500">{x.mon}</span>}
-                      <span className="ml-auto font-semibold text-violet-600">+{x.amount}</span>
+                      <span className={`ml-auto font-semibold ${x.amount >= 0 ? 'text-violet-600' : 'text-rose-600'}`}>{x.amount >= 0 ? '+' : ''}{x.amount}</span>
                     </div>
                   ))}
                 </div>

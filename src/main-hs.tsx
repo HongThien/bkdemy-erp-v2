@@ -2,12 +2,20 @@
 // KHÔNG có nhánh in-PDF (#pvjob, chỉ worker server dùng), KHÔNG chạy fitZoom (mật độ desktop staff).
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { registerSW } from 'virtual:pwa-register'
 import AppHS from './AppHS'
 import './index.css'
 import 'katex/dist/katex.min.css'
 import { initErrorBuffer } from './lib/errorBuffer'
 
 initErrorBuffer()
+
+// ⚠ Đăng ký SW phải qua virtual module NÀY, không dựa vào registerSW.js plugin tự inject: script
+// inject chỉ register suông — SW mới activate xong nhưng trang đang mở vẫn chạy JS CŨ, HS "vào lại
+// app" (PWA còn trong RAM, không re-navigate) thì kẹt bản cũ vô hạn (dính thật 29/08: deploy bỏ trần
+// tự luyện xong HS vẫn thấy UI 30 câu). Virtual module lắng nghe 'activated' (isUpdate) → tự
+// window.location.reload() — mở app là vài giây sau tự nhảy sang bản mới.
+registerSW({ immediate: true })
 
 // ⚠ BUG THẬT gây "trang chủ cuộn dọc" dù đã khoá h-screen (Thùy 21/08, verify trên production):
 // `index.css` có `:root { --app-z: 1.15 }` (mặc định — comment gốc ghi rõ "Fallback nếu JS chưa

@@ -1,0 +1,149 @@
+// MathDoc = RichMath + toàn bộ dây nối "cụm": click/gõ tắt/phím tắt cụm → chèn; `$`/Ctrl+M → bảng dựng; click công thức
+// → sửa (+ nút "Đổi tên điểm" nếu công thức có tên điểm); cụm-ĐOẠN có TÊN ĐIỂM → bảng đổi tên điểm trước khi chèn (bộ
+// điểm nhớ theo bài). Dùng ở 2 chỗ: vùng soạn chính (AppSoan, bộ điểm do App giữ để hiện chip) và ô soạn cụm-đoạn trong
+// CumModal (bộ điểm nội bộ).
+// 08/09 Thùy: "gõ phím tắt thì ra ĐÚNG công thức đấy; muốn chuyển điểm thì click vào công thức rồi mới có option" →
+// cụm CÔNG THỨC chèn thẳng, không hỏi; đổi tên điểm dời sang bảng Sửa công thức. Cụm ĐOẠN vẫn hỏi trước (điểm nằm rải
+// trong cả lời văn lẫn nhiều công thức — sửa sau từng công thức thì mất luôn phần chữ).
+import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
+import { RichMath, type RichMathHandle } from './RichMath'
+import { MathBuilder } from './MathBuilder'
+import { DoiDiemModal } from './DoiDiemModal'
+import { doiDiem, timDiem } from './diem'
+import { findCumByCombo, findCumByGoTat, hasBlank, insertRawOf, needsFill, type Cum } from './cum'
+import { fixAccentScript } from '../lib/math/latex-fix'
+
+export type DiemMap = Record<string, string>
+export type MathDocHandle = RichMathHandle & { useCum: (c: Cum) => void }
+type Modal =
+  | { kind: 'new'; prefill?: string }
+  | { kind: 'edit'; el: HTMLElement; latex: string }
+  | { kind: 'diem'; cum: Cum; raw: string; diem: string[] }
+  | { kind: 'diem_edit'; el: HTMLElement; raw: string; diem: string[] }   // đổi tên điểm của 1 công thức ĐÃ có trong bài
+type Props = {
+  initial: string; cums: Cum[]; className?: string; placeholder?: string; onChange?: (raw: string) => void
+  diemMap?: DiemMap; onDiemMap?: (m: DiemMap) => void   // bộ điểm của bài (không truyền → tự giữ nội bộ)
+}
+
+export const MathDoc = forwardRef<MathDocHandle, Props>(function MathDoc({ initial, cums, className, placeholder, onChange, diemMap, onDiemMap }, ref) {
+  const ed = useRef<RichMathHandle>(null)
+  const [modal, setModal] = useState<Modal | null>(null)
+  const [localMap, setLocalMap] = useState<DiemMap>({})
+  const map = diemMap ?? localMap
+  const setMap = (m: DiemMap) => { if (onDiemMap) onDiemMap(m); else setLocalMap(m) }
+  const cumsRef = useRef(cums); cumsRef.current = cums
+
+  // MathLive gỡ khỏi DOM còn dọn focus ASYNC → trả focus bằng setTimeout (không chỉ rAF), bài học HANDOFF.
+  const refocus = () => setTimeout(() => ed.current?.focus(), 60)
+  const closeModal = () => { setModal(null); refocus() }
+  // Cụm công thức có ô trống → bảng dựng nạp sẵn để điền · cụm ĐOẠN có tên điểm → hỏi đổi tên · còn lại → chèn thẳng
+  // (cụm công thức có tên điểm CŨNG chèn thẳng — đổi điểm sau bằng click vào công thức).
+  const useCum = (c: Cum) => {
+    if (needsFill(c)) { setModal({ kind: 'new', prefill: c.noiDung }); return }
+    const raw = insertRawOf(c)
+    const diem = c.loai === 'doan' ? timDiem(raw) : []
+    if (diem.length) setModal({ kind: 'diem', cum: c, raw, diem })
+    else ed.current?.insertRaw(raw)
+  }
+  // GÕ TẮT CÓ THAM SỐ (Thùy 08/09: "gocabc cho góc ABC, nhưng góc MIN thì không thể đặt phím tắt cho từng góc — hệ
+  // phải hiểu `goc` là ký hiệu góc, phần sau là tên góc: goc_ABC"; chốt thêm: dấu phân cách = `_` "chuẩn nhất", và
+  // "nhiều cái có thể có tham số" → áp cho MỌI cụm). Từ gõ = <gõ tắt cụm>_<tham số 1>_<tham số 2>…
+  //   · Cụm CÓ ô trống `#?` (công thức hay đoạn): tham số điền lần lượt vào từng ô — ss.AB.CD → AB ∥ CD. THỪA tham số →
+  //     phần thừa gộp vào ô CUỐI. THIẾU → mở bảng dựng với phần đã điền để gõ nốt. Chỉ số dưới gõ bằng `_` ngay trong tham
+  //     số: goc.A_1 → \widehat{A_1} → lưu \widehat{A}_1.
+  //   · Cụm KHÔNG ô trống nhưng CÓ TÊN ĐIỂM (đoạn bổ đề, công thức cố định): tham số = tên điểm MỚI — ghép mọi phần lại,
+  //     thay từng chữ theo thứ tự điểm xuất hiện (timDiem): hbh_MNPQ → "Vì MNPQ là hình bình hành nên MN ∥ PQ và MN = PQ";
+  //     gg_MNP_DEF ≡ gg_MNPDEF. Thiếu chữ → điểm còn lại giữ nguyên. Bộ điểm được nhớ cho bài như bảng đổi điểm.
+  //   · Gõ tắt NGUYÊN (goc / hbh) → như cũ.
+  const useCumVoi = (c: Cum, args: string[]) => {
+    if (hasBlank(c.noiDung)) {
+      const n = (c.noiDung.match(/#\?/g) ?? []).length
+      const parts = args.length > n ? [...args.slice(0, n - 1), args.slice(n - 1).join('.')] : args
+      let k = 0
+      const filled = c.noiDung.replace(/#\?/g, () => parts[k++]?.trim() || '#?')
+      if (hasBlank(filled)) { setModal({ kind: 'new', prefill: filled }); return }
+      ed.current?.insertRaw(c.loai === 'doan' ? filled : `$${fixAccentScript(filled)}$`)
+      return
+    }
+    const raw = insertRawOf(c)
+    const diem = timDiem(raw)
+    const chu = args.join('').replace(/[^A-Za-z]/g, '').toUpperCase()
+    if (!diem.length || !chu) { useCum(c); return }
+    const bo: DiemMap = Object.fromEntries(diem.map((d, i) => [d, chu[i] ?? d]))
+    setMap({ ...map, ...bo })
+    ed.current?.insertRaw(doiDiem(raw, bo))
+  }
+  // Thùy 08/09 (tiếp): "_ phải bấm 2 phím, dấu . chỉ 1 phím — goc.abc thì dấu . làm sao nhầm được" → phân cách = `.`;
+  // 09/09 chốt: CHỈ `.`, `_` không bao giờ tách — `_` là chỉ số dưới (goc.A_1 → góc A₁). Và "có chỗ setup công thức tham số không, ví dụ
+  // 50_do là 50 độ" → chỗ setup = chính form Cụm: gõ tắt được viết có `#` đánh dấu VỊ TRÍ tham số: `#.do` (50.do → 50°),
+  // `goc.#`, `ss.#.#`. Gõ tắt KHÔNG có `#` thì ngầm hiểu = <gõ tắt>.<tham số>… như trước.
+  const resolveGoTat = (w: string): (() => void) | null => {
+    const c = findCumByGoTat(cumsRef.current, w)
+    if (c) return () => useCum(c)
+    // 1) Mẫu tường minh có `#`: khớp phần chữ (không phân biệt hoa/thường), mỗi `#` bắt 1 tham số (≥1 ký tự).
+    for (const m of cumsRef.current) {
+      const gt = m.goTat?.trim()
+      if (!gt || !gt.includes('#')) continue
+      const re = new RegExp('^' + gt.split('#').map((s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('(.+?)') + '$', 'i')
+      const hit = re.exec(w)
+      if (hit) return () => useCumVoi(m, hit.slice(1))
+    }
+    // 2) Mẫu ngầm: <gõ tắt>.<tham số>.<tham số>… — CHỈ `.` (Thùy 09/09: "để . hết cho thống nhất, _ là chỉ số đi xuống").
+    const parts = w.split('.')
+    if (parts.length < 2 || !parts[0]) return null
+    const base = findCumByGoTat(cumsRef.current, parts[0])
+    if (!base) return null
+    return () => useCumVoi(base, parts.slice(1))
+  }
+  // Nút trong bảng Sửa công thức: chỉ hiện khi công thức có tên điểm. Đổi xong thay đúng khối đó, nhớ bộ điểm cho bài.
+  const nutDoiDiem = (el: HTMLElement, latex: string) => {
+    const raw = `$${latex}$`
+    const diem = timDiem(raw)
+    if (!diem.length) return null
+    return (
+      <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => setModal({ kind: 'diem_edit', el, raw, diem })}
+        className="rounded-md border border-slate-300 px-2.5 py-1.5 text-[12.5px] font-medium text-slate-600 hover:border-indigo-400 hover:text-indigo-700">
+        Đổi tên điểm <span className="font-mono text-slate-400">{diem.join(' ')}</span>
+      </button>
+    )
+  }
+
+  useImperativeHandle(ref, () => ({
+    useCum,
+    insertMath: (l) => ed.current?.insertMath(l),
+    insertRaw: (r) => ed.current?.insertRaw(r),
+    replaceMath: (el, l) => ed.current?.replaceMath(el, l),
+    getValue: () => ed.current?.getValue() ?? '',
+    getSelectionRaw: () => ed.current?.getSelectionRaw() ?? '',
+    setValue: (r) => ed.current?.setValue(r),
+    focus: () => ed.current?.focus(),
+  }))
+
+  return (
+    <>
+      <RichMath ref={ed} initial={initial} placeholder={placeholder} className={className} onChange={onChange}
+        onEditMath={(el, latex) => setModal({ kind: 'edit', el, latex })}
+        onRequestNew={(prefill) => setModal({ kind: 'new', prefill })}
+        onCombo={(combo) => { const c = findCumByCombo(cumsRef.current, combo); if (!c) return false; useCum(c); return true }}
+        resolveGoTat={resolveGoTat} />
+      {modal?.kind === 'new' && (
+        <MathBuilder title="Chèn công thức" initial={modal.prefill ?? ''} cums={cums} onCancel={closeModal}
+          onCommit={(latex) => { setModal(null); ed.current?.insertMath(latex); refocus() }} />
+      )}
+      {modal?.kind === 'edit' && (
+        <MathBuilder title="Sửa công thức" initial={modal.latex} cums={cums} commitLabel="Cập nhật" onCancel={() => { modal.el.classList.remove('rm-f--sel'); closeModal() }}
+          onCommit={(latex) => { const el = modal.el; setModal(null); ed.current?.replaceMath(el, latex); refocus() }}
+          footer={nutDoiDiem(modal.el, modal.latex)} />
+      )}
+      {modal?.kind === 'diem' && (
+        <DoiDiemModal ten={modal.cum.ten} raw={modal.raw} diem={modal.diem} initialMap={map} onCancel={closeModal}
+          onCommit={(raw, m) => { setModal(null); setMap({ ...map, ...m }); ed.current?.insertRaw(raw); refocus() }} />
+      )}
+      {modal?.kind === 'diem_edit' && (
+        <DoiDiemModal ten="công thức đang sửa" raw={modal.raw} diem={modal.diem} initialMap={map} commitLabel="Cập nhật"
+          onCancel={() => { modal.el.classList.remove('rm-f--sel'); closeModal() }}
+          onCommit={(raw, m) => { const el = modal.el; setModal(null); setMap({ ...map, ...m }); ed.current?.replaceMath(el, raw.replace(/^\$|\$$/g, '')); refocus() }} />
+      )}
+    </>
+  )
+})

@@ -3,13 +3,13 @@
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
 > ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `6` BẢNG
-> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `qlht_smoke_test`
+> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `thong_bao_hs`
 > Các bảng này bật RLS với policy `to authenticated`, nên `SELECT` từ script/CLI trả **0 dòng,
 > im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-150 bảng · 0 view · 0 enum · 15 trigger · 64 function
+208 bảng · 18 view · 0 enum · 49 trigger · 309 function
 
 ## _app_secrets
 
@@ -78,7 +78,7 @@
 | nguon_tai_lieu_id | uuid | Y |  | FK→tai_lieu.id |  |
 | lop_id | uuid |  |  | FK→lop.id |  |
 | ngay | date |  |  |  |  |
-| loai | text |  |  |  | `et` · `btvn` · `giao_trinh` · `de_thi` · `tu_luyen` |
+| loai | text |  |  |  | `et` · `btvn` · `giao_trinh` · `de_thi` · `tu_luyen` · `bo_tro` · `bo_tro_test` · `retest` |
 | mon | text |  | 'Toán'::text |  |  |
 | trang_thai | text |  | 'mo'::text |  | `mo` · `dong` |
 | mo_at | timestamp with time zone |  | now() |  |  |
@@ -90,6 +90,7 @@
 | so_cau | integer |  | 0 |  |  |
 | co_nhieu_ma_de | boolean |  | false |  |  |
 | hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |  |
+| buoi_hoc_id | uuid | Y |  | FK→buoi_hoc.id |  |
 
 ## bai_test_cau
 
@@ -111,6 +112,12 @@
 | ly_thuyet | text | Y |  |  |  |
 | anh_de | text | Y |  |  |  |
 | bien_the | smallint |  | 1 |  |  |
+| ma_cum | text | Y |  |  |  |
+| form_tn_id | uuid | Y |  | FK→dai_cau_form_tn.id |  |
+| lua_chon_rule | text[] | Y |  |  |  |
+| dien | jsonb | Y |  |  |  |
+| form_dien_id | uuid | Y |  | FK→hinh_form_dien.id |  |
+| o_rule | jsonb | Y |  |  |  |
 
 ## bai_test_cham_lai_log
 
@@ -199,6 +206,7 @@
 | created_by | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| loai | text |  | 'bug'::text |  | `bug` · `yeu_cau` |
 
 ## bao_loi_log
 
@@ -301,8 +309,44 @@
 | dung_han | boolean | Y |  |  |  |
 | ti_le_dung | numeric | Y |  |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
-| trang_thai_nop | text | Y |  |  |  |
-| thai_do | text | Y |  |  |  |
+| trang_thai_nop | text | Y |  |  | `nop_dung_han` · `nop_muon` · `xin_phep` · `khong_lam` |
+| thai_do | text | Y |  |  | `nghiem_tuc` · `chua_het_suc` · `chua_nghiem_tuc` · `chong_doi` |
+
+## btvn_nhan_xet_mau
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  |  | PK |  |
+| noi_dung | text |  |  |  |  |
+| thu_tu | integer |  | 0 |  |  |
+| active | boolean |  | true |  |  |
+
+## btvn_nop
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
+| buoi_hoc_id | uuid |  |  | PK FK→buoi_hoc.id |  |
+| nop_at | timestamp with time zone |  | now() |  |  |
+| nguon | text |  | 'ph_app'::text |  |  |
+| nhan_xet_ma | text[] |  | '{}'::text[] |  |  |
+| tra_at | timestamp with time zone | Y |  |  |  |
+| tra_boi | uuid | Y |  | FK→nhan_su.id |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+| buoi_xac_nhan_at | timestamp with time zone | Y |  |  |  |
+| buoi_xac_nhan_boi | uuid | Y |  | FK→nhan_su.id |  |
+
+## btvn_nop_anh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→btvn_nop.hoc_sinh_id |  |
+| buoi_hoc_id | uuid |  |  | FK→btvn_nop.buoi_hoc_id |  |
+| path | text |  |  |  |  |
+| path_cham | text | Y |  |  |  |
+| thu_tu | integer |  | 0 |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## btvn_ontap_config
 
@@ -459,12 +503,125 @@
 | hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
 | ma_dang | text |  |  |  |  |
 | buoi_hoc_id | uuid | Y |  | FK→buoi_hoc.id |  |
-| nguon | text |  | 'btvn'::text |  |  |
+| nguon | text |  | 'btvn'::text |  | `btvn` · `danhgia` |
 | ghi_chu | text | Y |  |  |  |
 | created_by | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | hinh_y_id | uuid | Y |  | FK→hinh_y.id |  |
 | ngu_canh_luot | text | Y |  |  | `mo_hinh` · `dang` · `luyen_de` |
+
+## chi_cau_hinh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  |  | PK |  |
+| gia_tri | numeric |  |  |  |  |
+| ghi_chu | text | Y |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## chi_danh_muc
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ten | text |  |  |  |  |
+| thu_tu | integer |  | 0 |  |  |
+| active | boolean |  | true |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## chi_khoan
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ma | text |  | ('CHI'::text \|\| lpad((nextval('chi_khoan_seq'::regclass))::text, 4, '0'::text)) |  |  |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
+| so_tien_bao | numeric |  |  |  |  |
+| muc_dich | text |  |  |  |  |
+| ngay_chi | date |  |  |  |  |
+| danh_muc_de_xuat_id | uuid | Y |  | FK→chi_danh_muc.id |  |
+| anh_paths | text[] |  | '{}'::text[] |  |  |
+| trang_thai | text |  | 'cho_duyet'::text |  | `cho_duyet` · `da_thanh_toan` · `tu_choi` · `huy` |
+| tu_choi_ly_do | text | Y |  |  |  |
+| xu_ly_boi | uuid | Y |  | FK→nhan_su.id |  |
+| xu_ly_at | timestamp with time zone | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## chi_khoan_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  | nextval('chi_khoan_log_id_seq'::regclass) | PK |  |
+| chi_khoan_id | uuid |  |  | FK→chi_khoan.id |  |
+| actor | uuid | Y |  | FK→nhan_su.id |  |
+| at | timestamp with time zone |  | now() |  |  |
+| tu | text | Y |  |  |  |
+| den | text |  |  |  |  |
+| ghi_chu | text | Y |  |  |  |
+
+## chi_ky
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ma | text |  | ('KY'::text \|\| lpad((nextval('chi_ky_seq'::regclass))::text, 3, '0'::text)) |  |  |
+| tu_at | timestamp with time zone |  |  |  |  |
+| den_at | timestamp with time zone |  |  |  |  |
+| so_khoan | integer |  |  |  |  |
+| tong_tien | numeric |  |  |  |  |
+| ghi_chu | text | Y |  |  |  |
+| chot_boi | uuid | Y |  | FK→nhan_su.id |  |
+| chot_at | timestamp with time zone |  | now() |  |  |
+
+## chi_ky_danh_muc
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ky_id | uuid |  |  | PK FK→chi_ky.id |  |
+| danh_muc_id | uuid |  |  | PK FK→chi_danh_muc.id |  |
+| ten_danh_muc | text |  |  |  |  |
+| so_khoan | integer |  |  |  |  |
+| so_tien | numeric |  |  |  |  |
+
+## chi_nhan_tien
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| so_tien | numeric |  |  |  |  |
+| ngay | date |  |  |  |  |
+| ghi_chu | text | Y |  |  |  |
+| tao_boi | uuid | Y |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## chi_nhan_tien_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  | nextval('chi_nhan_tien_log_id_seq'::regclass) | PK |  |
+| nhan_tien_id | uuid |  |  |  |  |
+| actor | uuid | Y |  |  |  |
+| at | timestamp with time zone |  | now() |  |  |
+| op | text |  |  |  |  |
+| truoc | jsonb | Y |  |  |  |
+| sau | jsonb | Y |  |  |  |
+
+## chi_so
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| chi_khoan_id | uuid |  |  | FK→chi_khoan.id |  |
+| ngay | date |  |  |  |  |
+| so_tien | numeric |  |  |  |  |
+| muc_dich | text |  |  |  |  |
+| danh_muc_id | uuid |  |  | FK→chi_danh_muc.id |  |
+| luu_y | text | Y |  |  |  |
+| ghi_so_boi | uuid | Y |  | FK→nhan_su.id |  |
+| ghi_so_at | timestamp with time zone |  | now() |  |  |
+| ky_id | uuid | Y |  | FK→chi_ky.id |  |
 
 ## dai_ban_do
 
@@ -489,6 +646,27 @@
 | ma_cau | text |  |  | PK FK→dai_cau_hoi.ma_cau |  |
 | id_bo_de | text |  |  | PK FK→dai_danh_muc_bo_de.id |  |
 
+## dai_cau_form_tn
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ma_cau | text |  |  | FK→dai_cau_hoi.ma_cau |  |
+| lua_chon | jsonb |  |  |  |  |
+| dap_an | text |  |  |  | `A` · `B` · `C` · `D` |
+| key_gia_tri | text |  |  |  |  |
+| nguon | text |  | 'ai'::text |  | `ai` · `nguoi` |
+| ai_model | text | Y |  |  |  |
+| sinh_at | timestamp with time zone |  | now() |  |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| sua_truoc_duyet | boolean |  | false |  |  |
+| tu_choi_ly_do | text | Y |  |  |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+| tu_choi_boi | uuid | Y |  | FK→nhan_su.id |  |
+
 ## dai_cau_hoi
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -510,6 +688,85 @@
 | nguon_giai | text |  | 'nguoi'::text |  |  |
 | xoa_at | timestamp with time zone | Y |  |  |  |
 | ma_cum | text | Y |  | FK→dai_cum_bai.ma_cum |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| giai_method | text | Y |  |  |  |
+| loi_giai_ai | text | Y |  |  |  |
+| dap_an_ai | text | Y |  |  |  |
+| ai_model | text | Y |  |  |  |
+| ai_de_xuat_at | timestamp with time zone | Y |  |  |  |
+| kiem_may | text | Y |  |  | `khop` · `nghi` · `khong_kiem_duoc` |
+| kiem_may_at | timestamp with time zone | Y |  |  |  |
+| kiem_may_boi | text | Y |  |  | `mcq-auto` · `claude_code` · `nguoi` |
+| kiem_may_ghi | text | Y |  |  |  |
+| duyet_nguon | text | Y |  |  | `nguoi` · `may` · `ai` |
+| kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at) |  |  |
+| dang_ai_de_xuat | text | Y |  |  |  |
+| kiem_may_lo | uuid | Y |  | FK→kho_kiem_lo.id |  |
+
+## dai_cau_hoi_clone_cho_duyet
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| yeu_cau_id | uuid | Y |  | FK→dai_cau_hoi_yeu_cau_clone.id |  |
+| dang_chinh | text |  |  |  |  |
+| loai_cau | text |  |  |  |  |
+| noi_dung | text |  |  |  |  |
+| lua_chon | jsonb | Y |  |  |  |
+| dap_an | text | Y |  |  |  |
+| loi_giai | text | Y |  |  |  |
+| parent_ma_cau | text | Y |  | FK→dai_cau_hoi.ma_cau |  |
+| clone_method | text |  | 'claude_code_batch'::text |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| tu_choi_boi | uuid | Y |  | FK→nhan_su.id |  |
+| tu_choi_at | timestamp with time zone | Y |  |  |  |
+| tu_choi_ly_do | text | Y |  |  |  |
+
+## dai_cau_hoi_yeu_cau_clone
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ma_cau_goc | text |  |  | FK→dai_cau_hoi.ma_cau |  |
+| so_bien_the | integer |  | 5 |  |  |
+| ghi_chu | text | Y |  |  |  |
+| nguoi_yeu_cau | uuid | Y |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| xu_ly_at | timestamp with time zone | Y |  |  |  |
+
+## dai_cau_hoi_yeu_cau_giai
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ma_cau | text |  |  | FK→dai_cau_hoi.ma_cau |  |
+| ghi_chu | text | Y |  |  |  |
+| nguoi_yeu_cau | uuid | Y |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| xu_ly_at | timestamp with time zone | Y |  |  |  |
+| nguoi_giai | uuid | Y |  | FK→nhan_su.id |  |
+| trang_thai | text |  | 'cho_claude'::text |  | `cho_claude` · `da_xong` · `dang_giai` · `cho_duyet` · `can_sua` · `da_duyet` · `da_tra` · `qua_han` · `tu_choi_3` · `cho_claude` · `da_xong` |
+| han_at | timestamp with time zone | Y |  |  |  |
+| nop_at | timestamp with time zone | Y |  |  |  |
+| cap_nhat_at | timestamp with time zone | Y |  |  |  |
+| loi_giai_nhap | text | Y |  |  |  |
+| anh_nhap | text | Y |  |  |  |
+| dap_an_nhap | text | Y |  |  |  |
+| tu_choi_lan | integer |  | 0 |  |  |
+| ly_do_tu_choi | text | Y |  |  |  |
+| tu_choi_at | timestamp with time zone | Y |  |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| so_ky_tu | integer | Y | length(COALESCE(loi_giai_nhap, ''::text)) |  |  |
+| so_cong_thuc | integer | Y | ((length(COALESCE(loi_giai_nhap, ''::text)) - length(replace(COALESCE(loi_giai_nhap, ''::text), '$'::text, ''::text))) / 2) |  |  |
+| loi_giai_ai | text | Y |  |  |  |
+| ai_model | text | Y |  |  |  |
+| che_do | text |  | 'giai'::text |  | `giai` · `hoan_thien` |
+| y_nhap | jsonb | Y |  |  |  |
 
 ## dai_chuyen_de_ly_thuyet
 
@@ -577,6 +834,20 @@
 |---|---|---|---|---|---|
 | id | text |  | ('TT'::text \|\| lpad((nextval('dai_tt_seq'::regclass))::text, 4, '0'::text)) | PK |  |
 | ten | text |  |  |  |  |
+
+## dai_mcq_rule
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  |  | PK |  |
+| ten | text |  |  |  |  |
+| mo_ta | text |  |  |  |  |
+| vi_du | text | Y |  |  |  |
+| nhom | text |  |  |  | `khai_niem` · `tinh` |
+| ap_dung | text[] |  | '{}'::text[] |  |  |
+| du_phong | boolean |  | false |  |  |
+| active | boolean |  | true |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## danhgia_ai_job
 
@@ -680,6 +951,7 @@
 | graded_at | timestamp with time zone |  | now() |  |  |
 | loi | jsonb |  | '[]'::jsonb |  |  |
 | muc | smallint | Y |  |  |  |
+| bai_lam_cau_id | uuid | Y |  | FK→bai_lam_cau.id |  |
 
 ## gami_session_problems
 
@@ -700,6 +972,97 @@
 | hinh_baitoan_id | uuid | Y |  | FK→hinh_baitoan.id |  |
 | hinh_bien_the_id | uuid | Y |  | FK→hinh_baitoan_bien_the.id |  |
 | hinh_nhan | text | Y |  |  |  |
+
+## gay_chot_thang
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ky | date |  |  | PK |  |
+| nhan_su_id | uuid |  |  | PK FK→nhan_su.id |  |
+| so_gay_danh | integer |  |  |  |  |
+| so_gay_go | integer |  |  |  |  |
+| so_gay_chot | integer |  |  |  |  |
+| don_gia | integer |  |  |  |  |
+| tien_phat | integer |  |  |  |  |
+| snapshot | jsonb |  |  |  |  |
+| nguoi_chot | uuid |  |  | FK→nhan_su.id |  |
+| chot_at | timestamp with time zone |  | now() |  |  |
+
+## gay_de_xuat
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
+| nguon | text |  |  |  | `vanhanh` · `giaoviec` |
+| ref_key | text |  |  |  |  |
+| mo_ta | text |  |  |  |  |
+| deadline_at | timestamp with time zone | Y |  |  |  |
+| tre_phut | integer | Y |  |  |  |
+| trang_thai | text |  | 'cho'::text |  | `cho` · `da_danh` · `bo_qua` |
+| so_gay | integer |  | 1 |  |  |
+| nguoi_quyet | uuid | Y |  | FK→nhan_su.id |  |
+| quyet_at | timestamp with time zone | Y |  |  |  |
+| ly_do_bo_qua | text | Y |  |  |  |
+| ledger_id | uuid | Y |  | FK→gay_ledger.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## gay_hoat_dong
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ten | text |  |  |  |  |
+| mo_ta | text | Y |  |  |  |
+| so_gay_mac_dinh | integer |  | 1 |  |  |
+| active | boolean |  | true |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## gay_ledger
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
+| ky | date |  | (date_trunc('month'::text, (now() AT TIME ZONE 'Asia/Ho_Chi_Minh'::text)))::date |  |  |
+| so_gay | integer |  |  |  |  |
+| loai | text |  |  |  | `tu_dong` · `thu_cong` · `go` |
+| loi_id | uuid | Y |  | FK→gay_loi.id |  |
+| hoat_dong_id | uuid | Y |  | FK→gay_hoat_dong.id |  |
+| ly_do | text | Y |  |  |  |
+| ref_loai | text | Y |  |  |  |
+| ref_id | text | Y |  |  |  |
+| nguoi_tao | uuid |  |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| thu_hoi_at | timestamp with time zone | Y |  |  |  |
+| nguoi_thu_hoi | uuid | Y |  | FK→nhan_su.id |  |
+| thu_hoi_ly_do | text | Y |  |  |  |
+| ref_mo_ta | text | Y |  |  |  |
+
+## gay_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| bang | text |  |  |  |  |
+| row_id | uuid |  |  |  |  |
+| hanh_dong | text |  |  |  |  |
+| truoc | jsonb | Y |  |  |  |
+| sau | jsonb |  |  |  |  |
+| actor | uuid | Y |  |  |  |
+| ts | timestamp with time zone |  | now() |  |  |
+
+## gay_loi
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ma | text | Y |  |  |  |
+| ten | text |  |  |  |  |
+| mo_ta | text | Y |  |  |  |
+| so_gay_mac_dinh | integer |  | 1 |  |  |
+| active | boolean |  | true |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## giai_thuong
 
@@ -723,6 +1086,41 @@
 | thang | date |  |  | PK |  |
 | hoan_thanh_at | timestamp with time zone | Y |  |  |  |
 | hoan_thanh_boi | uuid | Y |  | FK→nhan_su.id |  |
+
+## han_nop_ngoai_le
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| lop_id | uuid |  |  | PK FK→lop.id |  |
+| loai | text |  |  | PK | `et` · `btvn` |
+| so_phut_lech | integer |  |  |  |  |
+| ly_do | text | Y |  |  |  |
+| created_by | uuid | Y |  | FK→nhan_su.id |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+| thu_bat_dau | smallint |  | 0 | PK |  |
+
+## han_nop_ngoai_le_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  | nextval('han_nop_ngoai_le_log_id_seq'::regclass) | PK |  |
+| lop_id | uuid |  |  |  |  |
+| loai | text |  |  |  |  |
+| actor | uuid | Y |  | FK→nhan_su.id |  |
+| at | timestamp with time zone |  | now() |  |  |
+| so_phut_cu | integer | Y |  |  |  |
+| so_phut_moi | integer | Y |  |  |  |
+| ly_do | text | Y |  |  |  |
+| thu_bat_dau | smallint | Y |  |  |  |
+
+## he_thong_bi_mat
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| khoa | text |  |  | PK |  |
+| gia_tri | text |  |  |  |  |
+| ghi_chu | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## hgt_ban_do
 
@@ -761,6 +1159,52 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | xoa_at | timestamp with time zone | Y |  |  |  |
 | ma_cum | text | Y |  | FK→hgt_cum_bai.ma_cum |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| giai_method | text | Y |  |  |  |
+| loi_giai_ai | text | Y |  |  |  |
+| dap_an_ai | text | Y |  |  |  |
+| ai_model | text | Y |  |  |  |
+| ai_de_xuat_at | timestamp with time zone | Y |  |  |  |
+| kiem_may | text | Y |  |  | `khop` · `nghi` · `khong_kiem_duoc` |
+| kiem_may_at | timestamp with time zone | Y |  |  |  |
+| kiem_may_boi | text | Y |  |  | `mcq-auto` · `claude_code` · `nguoi` |
+| kiem_may_ghi | text | Y |  |  |  |
+| duyet_nguon | text | Y |  |  | `nguoi` · `may` · `ai` |
+| kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at) |  |  |
+| dang_ai_de_xuat | text | Y |  |  |  |
+| kiem_may_lo | uuid | Y |  | FK→kho_kiem_lo.id |  |
+
+## hgt_cau_hoi_yeu_cau_giai
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ma_cau | text |  |  | FK→hgt_cau_hoi.ma_cau |  |
+| ghi_chu | text | Y |  |  |  |
+| nguoi_yeu_cau | uuid | Y |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| xu_ly_at | timestamp with time zone | Y |  |  |  |
+| nguoi_giai | uuid | Y |  | FK→nhan_su.id |  |
+| trang_thai | text |  | 'cho_claude'::text |  | `cho_claude` · `da_xong` · `dang_giai` · `cho_duyet` · `can_sua` · `da_duyet` · `da_tra` · `qua_han` · `tu_choi_3` · `cho_claude` · `da_xong` |
+| han_at | timestamp with time zone | Y |  |  |  |
+| nop_at | timestamp with time zone | Y |  |  |  |
+| cap_nhat_at | timestamp with time zone | Y |  |  |  |
+| loi_giai_nhap | text | Y |  |  |  |
+| anh_nhap | text | Y |  |  |  |
+| dap_an_nhap | text | Y |  |  |  |
+| tu_choi_lan | integer |  | 0 |  |  |
+| ly_do_tu_choi | text | Y |  |  |  |
+| tu_choi_at | timestamp with time zone | Y |  |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| so_ky_tu | integer | Y | length(COALESCE(loi_giai_nhap, ''::text)) |  |  |
+| so_cong_thuc | integer | Y | ((length(COALESCE(loi_giai_nhap, ''::text)) - length(replace(COALESCE(loi_giai_nhap, ''::text), '$'::text, ''::text))) / 2) |  |  |
+| loi_giai_ai | text | Y |  |  |  |
+| ai_model | text | Y |  |  |  |
+| che_do | text |  | 'giai'::text |  | `giai` · `hoan_thien` |
+| y_nhap | jsonb | Y |  |  |  |
 
 ## hgt_chuyen_de_ly_thuyet
 
@@ -842,6 +1286,10 @@
 | gia_thiet_phu | text | Y |  |  |  |
 | gia_thiet_rieng | text | Y |  |  |  |
 | gt_thay_the | boolean |  | false |  |  |
+| loi_giai_ai | text | Y |  |  |  |
+| dap_an_ai | text | Y |  |  |  |
+| ai_model | text | Y |  |  |  |
+| ai_de_xuat_at | timestamp with time zone | Y |  |  |  |
 
 ## hinh_baitoan_bien_the
 
@@ -861,6 +1309,45 @@
 | updated_at | timestamp with time zone |  | now() |  |  |
 | lua_id | uuid | Y |  |  |  |
 | tien_de_ids | uuid[] |  | '{}'::uuid[] |  |  |
+| nguon_giai | text |  | 'nguoi'::text |  |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| giai_method | text | Y |  |  |  |
+| loi_giai_ai | text | Y |  |  |  |
+| dap_an_ai | text | Y |  |  |  |
+| ai_model | text | Y |  |  |  |
+| ai_de_xuat_at | timestamp with time zone | Y |  |  |  |
+
+## hinh_baitoan_yeu_cau_giai
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| baitoan_id | uuid |  |  | FK→hinh_baitoan.id |  |
+| ghi_chu | text | Y |  |  |  |
+| nguoi_yeu_cau | uuid | Y |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| xu_ly_at | timestamp with time zone | Y |  |  |  |
+| nguoi_giai | uuid | Y |  | FK→nhan_su.id |  |
+| trang_thai | text |  | 'cho_claude'::text |  | `cho_claude` · `da_xong` · `dang_giai` · `cho_duyet` · `can_sua` · `da_duyet` · `da_tra` · `qua_han` · `tu_choi_3` · `cho_claude` · `da_xong` |
+| han_at | timestamp with time zone | Y |  |  |  |
+| nop_at | timestamp with time zone | Y |  |  |  |
+| cap_nhat_at | timestamp with time zone | Y |  |  |  |
+| loi_giai_nhap | text | Y |  |  |  |
+| anh_nhap | text | Y |  |  |  |
+| dap_an_nhap | text | Y |  |  |  |
+| tu_choi_lan | integer |  | 0 |  |  |
+| ly_do_tu_choi | text | Y |  |  |  |
+| tu_choi_at | timestamp with time zone | Y |  |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| so_ky_tu | integer | Y | length(COALESCE(loi_giai_nhap, ''::text)) |  |  |
+| so_cong_thuc | integer | Y | ((length(COALESCE(loi_giai_nhap, ''::text)) - length(replace(COALESCE(loi_giai_nhap, ''::text), '$'::text, ''::text))) / 2) |  |  |
+| loi_giai_ai | text | Y |  |  |  |
+| ai_model | text | Y |  |  |  |
+| che_do | text |  | 'giai'::text |  | `giai` · `hoan_thien` |
+| y_nhap | jsonb | Y |  |  |  |
 
 ## hinh_ban_do
 
@@ -875,6 +1362,36 @@
 | ten_dang | text |  |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | bac_toi_thieu | text |  |  | FK→lop_bac.ma |  |
+
+## hinh_bien_the_yeu_cau_giai
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| bien_the_id | uuid |  |  | FK→hinh_baitoan_bien_the.id |  |
+| ghi_chu | text | Y |  |  |  |
+| nguoi_yeu_cau | uuid | Y |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| xu_ly_at | timestamp with time zone | Y |  |  |  |
+| nguoi_giai | uuid | Y |  | FK→nhan_su.id |  |
+| trang_thai | text |  | 'cho_claude'::text |  | `cho_claude` · `da_xong` · `dang_giai` · `cho_duyet` · `can_sua` · `da_duyet` · `da_tra` · `qua_han` · `tu_choi_3` · `cho_claude` · `da_xong` |
+| han_at | timestamp with time zone | Y |  |  |  |
+| nop_at | timestamp with time zone | Y |  |  |  |
+| cap_nhat_at | timestamp with time zone | Y |  |  |  |
+| loi_giai_nhap | text | Y |  |  |  |
+| anh_nhap | text | Y |  |  |  |
+| dap_an_nhap | text | Y |  |  |  |
+| tu_choi_lan | integer |  | 0 |  |  |
+| ly_do_tu_choi | text | Y |  |  |  |
+| tu_choi_at | timestamp with time zone | Y |  |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| so_ky_tu | integer | Y | length(COALESCE(loi_giai_nhap, ''::text)) |  |  |
+| so_cong_thuc | integer | Y | ((length(COALESCE(loi_giai_nhap, ''::text)) - length(replace(COALESCE(loi_giai_nhap, ''::text), '$'::text, ''::text))) / 2) |  |  |
+| loi_giai_ai | text | Y |  |  |  |
+| ai_model | text | Y |  |  |  |
+| che_do | text |  | 'giai'::text |  | `giai` · `hoan_thien` |
+| y_nhap | jsonb | Y |  |  |  |
 
 ## hinh_bo_de
 
@@ -921,6 +1438,11 @@
 | thu_tu | integer |  | 0 |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| nguon_giai | text |  | 'nguoi'::text |  |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| giai_method | text | Y |  |  |  |
 
 ## hinh_cach_tien_de
 
@@ -954,6 +1476,28 @@
 | file_url | text | Y |  |  |  |
 | ten_file | text | Y |  |  |  |
 | cap_nhat_at | timestamp with time zone |  | now() |  |  |
+
+## hinh_form_dien
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| cach_giai_id | uuid | Y |  | FK→hinh_cach_giai.id |  |
+| bien_the_id | uuid | Y |  | FK→hinh_baitoan_bien_the.id |  |
+| loi_giai_bam | text |  |  |  |  |
+| buoc | jsonb |  |  |  |  |
+| o | jsonb |  |  |  |  |
+| nguon | text |  | 'ai'::text |  | `ai` · `nguoi` |
+| ai_model | text | Y |  |  |  |
+| sinh_at | timestamp with time zone |  | now() |  |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| sua_truoc_duyet | boolean |  | false |  |  |
+| tu_choi_boi | uuid | Y |  | FK→nhan_su.id |  |
+| tu_choi_ly_do | text | Y |  |  |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
 
 ## hinh_giao_trinh
 
@@ -1008,12 +1552,35 @@
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | buoi_id | uuid |  |  | PK |  |
-| phan | text |  |  | PK | `lop` · `nha` |
+| phan | text |  |  | PK | `lop` · `nha` · `et` |
 | status | text |  | 'pending'::text |  | `pending` · `processing` · `done` · `failed` |
 | attempt | integer |  | 0 |  |  |
 | error | text | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+
+## hinh_loi_cm
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  |  | PK |  |
+| ten | text |  |  |  |  |
+| mo_ta | text | Y |  |  |  |
+| nhom_hoan_doi | text[] |  | '{}'::text[] |  |  |
+
+## hinh_ly_do
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  |  | PK |  |
+| nhom | text |  |  |  |  |
+| ten | text |  |  |  |  |
+| phat_bieu | text | Y |  |  |  |
+| tuong_duong | text[] |  | '{}'::text[] |  |  |
+| khoi | text[] |  | '{}'::text[] |  |  |
+| duc | boolean |  | true |  |  |
+| active | boolean |  | true |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## hinh_mo_hinh
 
@@ -1225,6 +1792,15 @@
 | he_so_nguon | text |  | 'auto'::text |  | `auto` · `manual` |
 | ngay_nghi | date | Y |  |  |  |
 | ly_do_nghi | text | Y |  |  |  |
+| lop_truong | text | Y |  |  |  |
+| noi_o_loai | text | Y |  |  | `chung_cu` · `nha_dat` |
+| toa | text | Y |  |  |  |
+| tang | smallint | Y |  |  |  |
+| khu | text | Y |  |  |  |
+| ly_do_vao | text | Y |  |  | `ban_ru` · `bo_me_quyet` · `bo_me_hoi_con_chon` · `khac` |
+| bo_me_ban_ph_lop | text | Y |  |  | `co` · `khong` · `khong_biet` |
+| bo_me_chuc_vu_toa | text | Y |  |  | `co` · `khong` · `khong_biet` |
+| nghe_bo_me | text | Y |  |  |  |
 
 ## hoc_sinh_he_so
 
@@ -1273,6 +1849,31 @@
 | loai_key | text |  |  | PK FK→thanh_tich_loai.key |  |
 | thu_tu | integer |  | 0 |  |  |
 
+## hoi_dap_bot
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | integer |  | 1 | PK |  |
+| may | text |  |  |  |  |
+| alive_at | timestamp with time zone |  | now() |  |  |
+
+## hoi_dap_nhan_su
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| nguoi | uuid |  |  |  |  |
+| cau_hoi | text |  |  |  |  |
+| trang_thai | text |  | 'pending'::text |  | `pending` · `processing` · `done` · `failed` |
+| so_lan | integer |  | 0 |  |  |
+| tra_loi | text | Y |  |  |  |
+| error | text | Y |  |  |  |
+| model | text | Y |  |  |  |
+| usage | jsonb | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| claimed_at | timestamp with time zone | Y |  |  |  |
+| done_at | timestamp with time zone | Y |  |  |  |
+
 ## hs_level
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -1299,6 +1900,35 @@
 | actor | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## khao_sat_hs
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  |  | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| dot | smallint |  | 1 |  |  |
+| tra_loi | jsonb |  |  |  |  |
+| nguoi_bam_ho | uuid | Y |  | FK→nhan_su.id |  |
+| nop_luc | timestamp with time zone |  | now() |  |  |
+
+## khao_sat_hs_quan_he
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  |  | PK |  |
+| khao_sat_id | bigint |  |  | FK→khao_sat_hs.id |  |
+| tu_hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| loai | text |  |  |  | `biet` · `duoc_ru_boi` · `da_ru` · `muon_ru` |
+| ten_goc | text |  |  |  |  |
+| ghi_chu_goc | text | Y |  |  |  |
+| quen_tu | text | Y |  |  | `cung_lop_truong` · `cung_toa` · `khac` |
+| quan_he | text | Y |  |  | `con_voi_ban` · `bo_me_voi_bo_me` · `ca_hai` |
+| ket_qua_ru | text | Y |  |  | `co` · `khong` · `chua_biet` |
+| den_hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |  |
+| ngoai_bk | boolean |  | false |  |  |
+| khop_luc | timestamp with time zone | Y |  |  |  |
+| khop_boi | uuid | Y |  | FK→nhan_su.id |  |
+
 ## kho_cau_log
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -1311,6 +1941,22 @@
 | sau | jsonb | Y |  |  |  |
 | actor | uuid | Y |  |  |  |
 | ts | timestamp with time zone |  | now() |  |  |
+
+## kho_kiem_lo
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| kho | text |  |  |  | `dai` · `khtn` · `hgt` |
+| boi | text |  |  |  | `mcq-auto` · `claude_code` |
+| ten | text |  |  |  |  |
+| ky | boolean |  | true |  |  |
+| so_cau | integer |  | 0 |  |  |
+| so_khop | integer |  | 0 |  |  |
+| so_nghi | integer |  | 0 |  |  |
+| so_khong_kiem | integer |  | 0 |  |  |
+| ghi_chu | text | Y |  |  |  |
+| tao_at | timestamp with time zone |  | now() |  |  |
 
 ## kho_tag_log
 
@@ -1364,6 +2010,52 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | xoa_at | timestamp with time zone | Y |  |  |  |
 | ma_cum | text | Y |  | FK→khtn_cum_bai.ma_cum |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| giai_method | text | Y |  |  |  |
+| loi_giai_ai | text | Y |  |  |  |
+| dap_an_ai | text | Y |  |  |  |
+| ai_model | text | Y |  |  |  |
+| ai_de_xuat_at | timestamp with time zone | Y |  |  |  |
+| kiem_may | text | Y |  |  | `khop` · `nghi` · `khong_kiem_duoc` |
+| kiem_may_at | timestamp with time zone | Y |  |  |  |
+| kiem_may_boi | text | Y |  |  | `mcq-auto` · `claude_code` · `nguoi` |
+| kiem_may_ghi | text | Y |  |  |  |
+| duyet_nguon | text | Y |  |  | `nguoi` · `may` · `ai` |
+| kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at) |  |  |
+| dang_ai_de_xuat | text | Y |  |  |  |
+| kiem_may_lo | uuid | Y |  | FK→kho_kiem_lo.id |  |
+
+## khtn_cau_hoi_yeu_cau_giai
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ma_cau | text |  |  | FK→khtn_cau_hoi.ma_cau |  |
+| ghi_chu | text | Y |  |  |  |
+| nguoi_yeu_cau | uuid | Y |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| xu_ly_at | timestamp with time zone | Y |  |  |  |
+| nguoi_giai | uuid | Y |  | FK→nhan_su.id |  |
+| trang_thai | text |  | 'cho_claude'::text |  | `cho_claude` · `da_xong` · `dang_giai` · `cho_duyet` · `can_sua` · `da_duyet` · `da_tra` · `qua_han` · `tu_choi_3` · `cho_claude` · `da_xong` |
+| han_at | timestamp with time zone | Y |  |  |  |
+| nop_at | timestamp with time zone | Y |  |  |  |
+| cap_nhat_at | timestamp with time zone | Y |  |  |  |
+| loi_giai_nhap | text | Y |  |  |  |
+| anh_nhap | text | Y |  |  |  |
+| dap_an_nhap | text | Y |  |  |  |
+| tu_choi_lan | integer |  | 0 |  |  |
+| ly_do_tu_choi | text | Y |  |  |  |
+| tu_choi_at | timestamp with time zone | Y |  |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| so_ky_tu | integer | Y | length(COALESCE(loi_giai_nhap, ''::text)) |  |  |
+| so_cong_thuc | integer | Y | ((length(COALESCE(loi_giai_nhap, ''::text)) - length(replace(COALESCE(loi_giai_nhap, ''::text), '$'::text, ''::text))) / 2) |  |  |
+| loi_giai_ai | text | Y |  |  |  |
+| ai_model | text | Y |  |  |  |
+| che_do | text |  | 'giai'::text |  | `giai` · `hoan_thien` |
+| y_nhap | jsonb | Y |  |  |  |
 
 ## khtn_chuyen_de_ly_thuyet
 
@@ -1475,6 +2167,7 @@
 | ma | text |  |  | PK |  |
 | ten | text |  |  |  |  |
 | thu_tu | smallint |  |  |  |  |
+| si_so_toi_da | smallint | Y |  |  |  |
 
 ## luong_bac
 
@@ -1482,6 +2175,26 @@
 |---|---|---|---|---|---|
 | min_exp | integer |  |  | PK |  |
 | xu | integer |  |  |  |  |
+
+## may_man_cau_hinh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  |  | PK |  |
+| gia_tri | numeric |  |  |  |  |
+| mo_ta | text | Y |  |  |  |
+
+## may_man_luot
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
+| ngay | date |  |  |  |  |
+| tien | integer |  |  |  |  |
+| rnd | numeric |  |  |  |  |
+| vuot_tran | boolean |  | false |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## muc_hoc_duoi
 
@@ -1537,6 +2250,13 @@
 | ma_ns | text | Y | ('NS'::text \|\| lpad((nextval('ns_seq'::regclass))::text, 3, '0'::text)) |  |  |
 | anh_url | text | Y |  |  |  |
 | la_admin_he_thong | boolean |  | false |  |  |
+| giao_dien | text |  | 'sang'::text |  | `sang` · `toi` |
+| mien_gay | boolean |  | false |  |  |
+| an_xep_hang | boolean |  | false |  |  |
+| bank_bin | text | Y |  |  |  |
+| bank_stk | text | Y |  |  |  |
+| bank_chu_tk | text | Y |  |  |  |
+| phim_tat_cong_thuc | jsonb |  | '{}'::jsonb |  |  |
 
 ## nhan_su_mon
 
@@ -1583,6 +2303,7 @@
 | nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
 | khoi | text |  |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| mon | text |  |  |  |  |
 
 ## phan_cong_lop
 
@@ -1652,6 +2373,99 @@
 | leader_chot_at | timestamp with time zone | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## push_dang_ky
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
+| endpoint | text |  |  |  |  |
+| p256dh | text |  |  |  |  |
+| auth | text |  |  |  |  |
+| thiet_bi | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| gui_ok_at | timestamp with time zone | Y |  |  |  |
+| loi_at | timestamp with time zone | Y |  |  |  |
+| loi_ma | integer | Y |  |  |  |
+| app | text |  | 'pt'::text |  | `pt` · `ta` |
+
+## qlht_doi_qua
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| qua_id | uuid |  |  | FK→qlht_qua.id |  |
+| so_luong | integer |  | 1 |  |  |
+| xu_tru | integer |  |  |  |  |
+| trang_thai | text |  | 'cho_giao'::text |  | `cho_giao` · `da_giao` · `huy` |
+| nguoi_tao | uuid |  |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| giao_luc | timestamp with time zone | Y |  |  |  |
+| nguoi_giao | uuid | Y |  | FK→nhan_su.id |  |
+| ly_do_huy | text | Y |  |  |  |
+
+## qlht_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| bang | text |  |  |  |  |
+| row_id | uuid |  |  |  |  |
+| hanh_dong | text |  |  |  |  |
+| truoc | jsonb | Y |  |  |  |
+| sau | jsonb | Y |  |  |  |
+| actor | uuid | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## qlht_qua
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ten | text |  |  |  |  |
+| gia_xu | integer |  |  |  |  |
+| anh_url | text | Y |  |  |  |
+| mo_ta | text | Y |  |  |  |
+| dang_ban | boolean |  | true |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## qlht_qua_nhap
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| qua_id | uuid |  |  | FK→qlht_qua.id |  |
+| so_luong | integer |  |  |  |  |
+| nguoi_tao | uuid |  |  | FK→nhan_su.id |  |
+| ghi_chu | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| trang_thai | text |  | 'cho_vao_kho'::text |  | `cho_vao_kho` · `da_vao_kho` · `huy` |
+| so_luong_thuc | integer | Y |  |  |  |
+| nguoi_xac_nhan | uuid | Y |  | FK→nhan_su.id |  |
+| xac_nhan_luc | timestamp with time zone | Y |  |  |  |
+| ly_do_huy | text | Y |  |  |  |
+
+## qlht_qua_order
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| mo_ta | text |  |  |  |  |
+| link_tham_khao | text | Y |  |  |  |
+| gia_xu | integer | Y |  |  |  |
+| trang_thai | text |  | 'cho_duyet'::text |  | `cho_duyet` · `da_duyet` · `da_ve` · `da_giao` · `tu_choi` · `huy` |
+| ghi_chu | text | Y |  |  |  |
+| nguoi_tao | uuid |  |  | FK→nhan_su.id |  |
+| nguoi_duyet | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_luc | timestamp with time zone | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| ve_luc | timestamp with time zone | Y |  |  |  |
+| giao_luc | timestamp with time zone | Y |  |  |  |
+| nguoi_giao | uuid | Y |  | FK→nhan_su.id |  |
+| ly_do_huy | text | Y |  |  |  |
+
 ## qlht_smoke_test
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -1660,6 +2474,23 @@
 | nguoi_tao | uuid |  |  | FK→nhan_su.id |  |
 | noi_dung | text |  |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+
+## qlht_xu_ledger
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| amount | integer |  |  |  |  |
+| loai | text |  |  |  | `cong_tay` · `tru_tay` · `doi_qua` · `hoan` · `chot_thang` · `chot_lai` |
+| ly_do | text | Y |  |  |  |
+| ref_id | uuid | Y |  |  |  |
+| ref_loai | text | Y |  |  | `doi_qua` · `order` |
+| nguoi_tao | uuid |  |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| mon | text | Y |  |  |  |
+| thang | text | Y |  |  |  |
+| exp_snapshot | integer | Y |  |  |  |
 
 ## question_accepted_answers
 
@@ -1672,6 +2503,128 @@
 | source | text |  | 'manual'::text |  |  |
 | ai_reason | text | Y |  |  |  |
 | hit_count | integer |  | 1 |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## quy_trinh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| tieu_de | text |  |  |  |  |
+| tom_tat | text | Y |  |  |  |
+| noi_dung | text |  | ''::text |  |  |
+| vai_tro | text[] |  | '{}'::text[] |  |  |
+| thu_tu | integer |  | 100 |  |  |
+| active | boolean |  | true |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## shop_don
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
+| vat_pham_id | uuid | Y |  | FK→shop_vat_pham.id |  |
+| ten_vat_pham | text |  |  |  |  |
+| gia_diem | integer |  |  |  |  |
+| trang_thai | text |  | 'cho_giao'::text |  | `cho_giao` · `da_giao` · `huy` |
+| created_at | timestamp with time zone |  | now() |  |  |
+| giao_at | timestamp with time zone | Y |  |  |  |
+| nguoi_giao | uuid | Y |  | FK→nhan_su.id |  |
+| ghi_chu | text | Y |  |  |  |
+
+## shop_vat_pham
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ten | text |  |  |  |  |
+| mo_ta | text | Y |  |  |  |
+| anh_url | text | Y |  |  |  |
+| gia_diem | integer |  |  |  |  |
+| active | boolean |  | true |  |  |
+| thu_tu | integer |  | 100 |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+| loai | text |  | 'khac'::text |  | `do_an` · `do_uong` · `khac` |
+| nhan | text | Y |  |  | `hot` · `moi` |
+
+## soan_cum
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ten | text |  |  |  |  |
+| loai | text |  |  |  | `cong_thuc` · `doan` |
+| noi_dung | text |  |  |  |  |
+| go_tat | text | Y |  |  |  |
+| phim | text | Y |  |  |  |
+| mon | text |  |  |  |  |
+| nhanh | text | Y |  |  |  |
+| thu_muc_id | uuid | Y |  | FK→soan_thu_muc.id |  |
+| tab | smallint |  | 1 |  |  |
+| thu_tu | integer | Y |  |  |  |
+| tao_boi | uuid | Y |  | FK→nhan_su.id |  |
+| sua_boi | uuid | Y |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+
+## soan_cum_lich_su
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  |  | PK |  |
+| cum_id | uuid |  |  |  |  |
+| truoc | jsonb | Y |  |  |  |
+| sau | jsonb | Y |  |  |  |
+| boi | uuid | Y |  |  |  |
+| luc | timestamp with time zone |  | now() |  |  |
+
+## soan_tab_chung
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| tab | smallint |  |  | PK |  |
+| ten | text |  |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## soan_thu_muc
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ten | text |  |  |  |  |
+| mon | text |  |  |  |  |
+| nhanh | text | Y |  |  |  |
+| khoi | smallint | Y |  |  |  |
+| tab_ten | jsonb |  | '{}'::jsonb |  |  |
+| thu_tu | integer | Y |  |  |  |
+| tao_boi | uuid | Y |  | FK→nhan_su.id |  |
+| sua_boi | uuid | Y |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+
+## ta_dinh_muc
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  |  | PK |  |
+| gia_tri | numeric |  |  |  |  |
+| mo_ta | text | Y |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## ta_vang
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| buoi_hoc_id | uuid |  |  | FK→buoi_hoc.id |  |
+| nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
+| ly_do | text | Y |  |  |  |
+| nguoi_ghi | uuid |  |  | FK→nhan_su.id |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
 ## tai_khoan
@@ -1781,6 +2734,28 @@
 | hieu_luc_tu | date |  |  |  |  |
 | hieu_luc_den | date | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+
+## thong_bao_hs
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| mon | text |  |  |  |  |
+| noi_dung | text |  |  |  |  |
+| doc_at | timestamp with time zone | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## tich_luy_chot_thang
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ky | date |  |  | PK |  |
+| nhan_su_id | uuid |  |  | PK FK→nhan_su.id |  |
+| diem | integer |  |  |  |  |
+| chuoi | integer |  |  |  |  |
+| nguoi_chot | uuid |  |  | FK→nhan_su.id |  |
+| chot_at | timestamp with time zone |  | now() |  |  |
 
 ## tln_ai_cham_log
 
@@ -2052,43 +3027,1695 @@
 | ngay_vao_backlog | date | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## Views
+
+> BỀ MẶT trợ lý AI đọc. Đổi cột ở đây = ĐỔI HỢP ĐỒNG ⇒ phải sửa prompt kèm.
+
+### qlht_v_so_du_xu
+
+| cột | kiểu |
+|---|---|
+| hoc_sinh_id | uuid |
+| ho_ten | text |
+| exp_total | bigint |
+| xu_kiem | integer |
+| xu_dieu_chinh | bigint |
+| so_du | bigint |
+| ma_hs | text |
+| khoi | text |
+| anh_url | text |
+| trang_thai | text |
+
+```sql
+SELECT hs.id AS hoc_sinh_id,
+    hs.ho_ten,
+    COALESCE(e.exp_total, 0::bigint) AS exp_total,
+    COALESCE(k.xu_chot, 0::bigint)::integer AS xu_kiem,
+    COALESCE(l.dieu_chinh, 0::bigint) AS xu_dieu_chinh,
+    COALESCE(k.xu_chot, 0::bigint) + COALESCE(l.dieu_chinh, 0::bigint) AS so_du,
+    hs.ma_hs,
+    hs.khoi,
+    hs.anh_url,
+    hs.trang_thai
+   FROM hoc_sinh hs
+     LEFT JOIN ( SELECT gami_exp_ledger.hoc_sinh_id,
+            sum(gami_exp_ledger.amount) AS exp_total
+           FROM gami_exp_ledger
+          GROUP BY gami_exp_ledger.hoc_sinh_id) e ON e.hoc_sinh_id = hs.id
+     LEFT JOIN ( SELECT qlht_xu_ledger.hoc_sinh_id,
+            sum(qlht_xu_ledger.amount) AS xu_chot
+           FROM qlht_xu_ledger
+          WHERE qlht_xu_ledger.loai = ANY (ARRAY['chot_thang'::text, 'chot_lai'::text])
+          GROUP BY qlht_xu_ledger.hoc_sinh_id) k ON k.hoc_sinh_id = hs.id
+     LEFT JOIN ( SELECT qlht_xu_ledger.hoc_sinh_id,
+            sum(qlht_xu_ledger.amount) AS dieu_chinh
+           FROM qlht_xu_ledger
+          WHERE qlht_xu_ledger.loai = ANY (ARRAY['cong_tay'::text, 'tru_tay'::text, 'doi_qua'::text, 'hoan'::text])
+          GROUP BY qlht_xu_ledger.hoc_sinh_id) l ON l.hoc_sinh_id = hs.id
+  WHERE la_thanh_vien();
+```
+
+### qlht_v_ton_qua
+
+| cột | kiểu |
+|---|---|
+| qua_id | uuid |
+| ten | text |
+| gia_xu | integer |
+| anh_url | text |
+| mo_ta | text |
+| dang_ban | boolean |
+| ton | bigint |
+
+```sql
+SELECT q.id AS qua_id,
+    q.ten,
+    q.gia_xu,
+    q.anh_url,
+    q.mo_ta,
+    q.dang_ban,
+    COALESCE(n.nhap, 0::bigint) - COALESCE(d.giao, 0::bigint) AS ton
+   FROM qlht_qua q
+     LEFT JOIN ( SELECT qlht_qua_nhap.qua_id,
+            sum(COALESCE(qlht_qua_nhap.so_luong_thuc, qlht_qua_nhap.so_luong)) AS nhap
+           FROM qlht_qua_nhap
+          WHERE qlht_qua_nhap.trang_thai = 'da_vao_kho'::text
+          GROUP BY qlht_qua_nhap.qua_id) n ON n.qua_id = q.id
+     LEFT JOIN ( SELECT qlht_doi_qua.qua_id,
+            sum(qlht_doi_qua.so_luong) AS giao
+           FROM qlht_doi_qua
+          WHERE qlht_doi_qua.trang_thai <> 'huy'::text
+          GROUP BY qlht_doi_qua.qua_id) d ON d.qua_id = q.id
+  WHERE la_thanh_vien();
+```
+
+### v_btvn_dap_an
+
+| cột | kiểu |
+|---|---|
+| hoc_sinh_id | uuid |
+| buoi_hoc_id | uuid |
+| problem_no | integer |
+| ma_dang | text |
+| ma_cau | text |
+| loai_cau | text |
+| de_bai | text |
+| lua_chon | jsonb |
+| menh_de | jsonb |
+| dap_an | text |
+| loi_giai | text |
+| anh_de | text |
+| anh_dap_an | text |
+
+```sql
+SELECT n.hoc_sinh_id,
+    n.buoi_hoc_id,
+    sp.problem_no,
+    sp.ma_dang,
+    sp.ma_cau,
+    COALESCE(d.loai_cau, kk.loai_cau) AS loai_cau,
+    COALESCE(d.noi_dung, kk.noi_dung) AS de_bai,
+    COALESCE(d.lua_chon, kk.lua_chon) AS lua_chon,
+    COALESCE(d.menh_de, kk.menh_de) AS menh_de,
+    COALESCE(d.dap_an, kk.dap_an) AS dap_an,
+    COALESCE(d.loi_giai, kk.loi_giai) AS loi_giai,
+    COALESCE(d.anh_de, kk.anh_de) AS anh_de,
+    COALESCE(d.anh_dap_an, kk.anh_dap_an) AS anh_dap_an
+   FROM btvn_nop n
+     JOIN buoi_hoc b ON b.id = n.buoi_hoc_id
+     LEFT JOIN lop l ON l.id = b.lop_id
+     JOIN gami_session_problems sp ON sp.buoi_hoc_id = n.buoi_hoc_id AND sp.phase = 'btvn'::text AND sp.ma_cau IS NOT NULL
+     LEFT JOIN dai_cau_hoi d ON l.mon = 'Toán'::text AND d.ma_cau = sp.ma_cau
+     LEFT JOIN khtn_cau_hoi kk ON l.mon = 'KHTN'::text AND kk.ma_cau = sp.ma_cau
+  WHERE n.tra_at IS NOT NULL;
+```
+
+### v_btvn_nop_ph
+
+| cột | kiểu |
+|---|---|
+| hoc_sinh_id | uuid |
+| buoi_hoc_id | uuid |
+| ngay | date |
+| mon | text |
+| ten_lop | text |
+| nop_at | timestamp with time zone |
+| tra_at | timestamp with time zone |
+| so_anh | bigint |
+| buoi_da_chot | boolean |
+
+```sql
+SELECT n.hoc_sinh_id,
+    n.buoi_hoc_id,
+    b.ngay,
+    l.mon,
+    l.ten_lop,
+    n.nop_at,
+    n.tra_at,
+    ( SELECT count(*) AS count
+           FROM btvn_nop_anh a
+          WHERE a.hoc_sinh_id = n.hoc_sinh_id AND a.buoi_hoc_id = n.buoi_hoc_id) AS so_anh,
+    n.buoi_xac_nhan_at IS NOT NULL AS buoi_da_chot
+   FROM btvn_nop n
+     JOIN buoi_hoc b ON b.id = n.buoi_hoc_id
+     LEFT JOIN lop l ON l.id = b.lop_id;
+```
+
+### v_btvn_tra_anh
+
+| cột | kiểu |
+|---|---|
+| hoc_sinh_id | uuid |
+| buoi_hoc_id | uuid |
+| thu_tu | integer |
+| path | text |
+
+```sql
+SELECT a.hoc_sinh_id,
+    a.buoi_hoc_id,
+    a.thu_tu,
+    COALESCE(a.path_cham, a.path) AS path
+   FROM btvn_nop_anh a
+     JOIN btvn_nop n ON n.hoc_sinh_id = a.hoc_sinh_id AND n.buoi_hoc_id = a.buoi_hoc_id
+  WHERE n.tra_at IS NOT NULL;
+```
+
+### v_btvn_tra_cau
+
+| cột | kiểu |
+|---|---|
+| hoc_sinh_id | uuid |
+| buoi_hoc_id | uuid |
+| problem_no | integer |
+| ma_dang | text |
+| result | text |
+
+```sql
+SELECT n.hoc_sinh_id,
+    n.buoi_hoc_id,
+    sp.problem_no,
+    sp.ma_dang,
+    g.result
+   FROM btvn_nop n
+     JOIN gami_session_problems sp ON sp.buoi_hoc_id = n.buoi_hoc_id AND sp.phase = 'btvn'::text
+     JOIN gami_grades g ON g.problem_id = sp.id AND g.hoc_sinh_id = n.hoc_sinh_id
+  WHERE n.tra_at IS NOT NULL;
+```
+
+### v_btvn_tra_ket_qua
+
+| cột | kiểu |
+|---|---|
+| hoc_sinh_id | uuid |
+| buoi_hoc_id | uuid |
+| tra_at | timestamp with time zone |
+| trang_thai_nop | text |
+| thai_do | text |
+| nhan_xet | text[] |
+
+```sql
+SELECT n.hoc_sinh_id,
+    n.buoi_hoc_id,
+    n.tra_at,
+    k.trang_thai_nop,
+    k.thai_do,
+    COALESCE(( SELECT array_agg(m.noi_dung ORDER BY m.thu_tu) AS array_agg
+           FROM btvn_nhan_xet_mau m
+          WHERE m.ma = ANY (n.nhan_xet_ma)), '{}'::text[]) AS nhan_xet
+   FROM btvn_nop n
+     LEFT JOIN btvn_ket_qua k ON k.hoc_sinh_id = n.hoc_sinh_id AND k.buoi_hoc_id = n.buoi_hoc_id
+  WHERE n.tra_at IS NOT NULL;
+```
+
+### v_dien_loi_hs
+
+| cột | kiểu |
+|---|---|
+| hoc_sinh_id | uuid |
+| ma_cau | text |
+| form_dien_id | uuid |
+| o_thu | bigint |
+| loi_ma | text |
+| cham_at | timestamp with time zone |
+
+```sql
+SELECT bl.hoc_sinh_id,
+    btc.ma_cau,
+    btc.form_dien_id,
+    t.i AS o_thu,
+    (btc.o_rule -> (t.i - 1)::integer) ->> t.v::integer AS loi_ma,
+    blc.cham_at
+   FROM bai_lam_cau blc
+     JOIN bai_test_cau btc ON btc.id = blc.bai_test_cau_id
+     JOIN bai_lam bl ON bl.id = blc.bai_lam_id
+     CROSS JOIN LATERAL jsonb_array_elements(blc.dap_an_hs) WITH ORDINALITY t(v, i)
+  WHERE btc.loai_cau = 'dien_o'::text AND jsonb_typeof(t.v) = 'number'::text AND ((btc.o_rule -> (t.i - 1)::integer) ->> t.v::integer) IS NOT NULL;
+```
+
+### v_giaibai_bai
+
+| cột | kiểu |
+|---|---|
+| nhanh | text |
+| key | text |
+| ma | text |
+| khoi | text |
+| nhom_ten | text |
+| nhom_ma | text |
+| nhom_truoc | text |
+| muc_do | smallint |
+| loai_cau | text |
+| de_bai | text |
+| gia_thiet | text |
+| anh | text |
+| lua_chon | jsonb |
+| menh_de | jsonb |
+| dap_an | text |
+| nguon | text |
+| created_at | timestamp with time zone |
+| mon | text |
+| yc_id | uuid |
+| yc_nguoi_giai | uuid |
+| yc_nguoi_giai_ten | text |
+| yc_trang_thai | text |
+| yc_han_at | timestamp with time zone |
+| yc_created_at | timestamp with time zone |
+| yc_ghi_chu | text |
+| loi_giai_ai | text |
+| dap_an_ai | text |
+| ai_model | text |
+| ai_de_xuat_at | timestamp with time zone |
+
+```sql
+WITH k AS (
+         SELECT 'toan'::text AS nhanh,
+            c.ma_cau AS key,
+            c.ma_cau AS ma,
+            b.khoi,
+            b.ten_dang AS nhom_ten,
+            b.ma_dang AS nhom_ma,
+            b.ten_chuyen_de AS nhom_truoc,
+            b.muc_do,
+            c.loai_cau,
+            c.noi_dung AS de_bai,
+            NULL::text AS gia_thiet,
+            c.anh_de AS anh,
+            c.lua_chon,
+            c.menh_de,
+            c.dap_an,
+            c.nguon,
+            c.created_at,
+            c.loi_giai_ai,
+            c.dap_an_ai,
+            c.ai_model,
+            c.ai_de_xuat_at
+           FROM dai_cau_hoi c
+             JOIN dai_ban_do b ON b.ma_dang = c.dang_chinh
+          WHERE c.xoa_at IS NULL AND c.loi_giai IS NULL AND c.anh_dap_an IS NULL AND c.dap_an IS NULL
+        UNION ALL
+         SELECT 'khtn'::text,
+            c.ma_cau,
+            c.ma_cau,
+            b.khoi,
+            b.ten_dang,
+            b.ma_dang,
+            b.ten_chuyen_de,
+            b.muc_do,
+            c.loai_cau,
+            c.noi_dung,
+            NULL::text,
+            c.anh_de,
+            c.lua_chon,
+            c.menh_de,
+            c.dap_an,
+            c.nguon,
+            c.created_at,
+            c.loi_giai_ai,
+            c.dap_an_ai,
+            c.ai_model,
+            c.ai_de_xuat_at
+           FROM khtn_cau_hoi c
+             JOIN khtn_ban_do b ON b.ma_dang = c.dang_chinh
+          WHERE c.xoa_at IS NULL AND c.loi_giai IS NULL AND c.anh_dap_an IS NULL AND c.dap_an IS NULL
+        UNION ALL
+         SELECT 'hgt'::text,
+            c.ma_cau,
+            c.ma_cau,
+            b.khoi,
+            b.ten_dang,
+            b.ma_dang,
+            b.ten_chuyen_de,
+            b.muc_do,
+            c.loai_cau,
+            c.noi_dung,
+            NULL::text,
+            c.anh_de,
+            c.lua_chon,
+            c.menh_de,
+            c.dap_an,
+            c.nguon,
+            c.created_at,
+            c.loi_giai_ai,
+            c.dap_an_ai,
+            c.ai_model,
+            c.ai_de_xuat_at
+           FROM hgt_cau_hoi c
+             JOIN hgt_ban_do b ON b.ma_dang = c.dang_chinh
+          WHERE c.xoa_at IS NULL AND c.loi_giai IS NULL AND c.anh_dap_an IS NULL AND c.dap_an IS NULL
+        UNION ALL
+         SELECT
+                CASE h.loai
+                    WHEN 'baitoan'::text THEN 'hinh_baitoan'::text
+                    ELSE 'hinh_bien_the'::text
+                END AS "case",
+            h.id::text AS id,
+            h.ma,
+            h.khoi,
+            h.mo_hinh_ten,
+            h.mo_hinh_ma,
+            'Mô hình'::text,
+            NULL::smallint AS int2,
+                CASE h.loai
+                    WHEN 'baitoan'::text THEN 'bai_toan_goc'::text
+                    ELSE 'bien_the_'::text || h.kieu
+                END AS "case",
+            h.de_bai,
+            h.gia_thiet,
+            h.anh,
+            NULL::jsonb AS jsonb,
+            NULL::jsonb AS jsonb,
+            NULL::text AS text,
+            'le'::text,
+            h.created_at,
+            h.loi_giai_ai,
+            h.dap_an_ai,
+            h.ai_model,
+            h.ai_de_xuat_at
+           FROM v_hinh_chua_giai h
+          WHERE NOT (h.loai = 'baitoan'::text AND fn_hinh_co_phu_thuoc_cho(h.id))
+        )
+ SELECT k.nhanh,
+    k.key,
+    k.ma,
+    k.khoi,
+    k.nhom_ten,
+    k.nhom_ma,
+    k.nhom_truoc,
+    k.muc_do,
+    k.loai_cau,
+    k.de_bai,
+    k.gia_thiet,
+    k.anh,
+    k.lua_chon,
+    k.menh_de,
+    k.dap_an,
+    k.nguon,
+    k.created_at,
+    fn_giaibai_mon(k.nhanh) AS mon,
+    y.id AS yc_id,
+    y.nguoi_giai AS yc_nguoi_giai,
+    y.nguoi_giai_ten AS yc_nguoi_giai_ten,
+    y.trang_thai AS yc_trang_thai,
+    y.han_at AS yc_han_at,
+    y.created_at AS yc_created_at,
+    y.ghi_chu AS yc_ghi_chu,
+    k.loi_giai_ai,
+    k.dap_an_ai,
+    k.ai_model,
+    k.ai_de_xuat_at
+   FROM k
+     LEFT JOIN LATERAL ( SELECT n.nhanh,
+            n.id,
+            n.key,
+            n.ghi_chu,
+            n.nguoi_yeu_cau,
+            n.created_at,
+            n.xu_ly_at,
+            n.nguoi_giai,
+            n.trang_thai,
+            n.han_at,
+            n.nop_at,
+            n.cap_nhat_at,
+            n.loi_giai_nhap,
+            n.anh_nhap,
+            n.dap_an_nhap,
+            n.tu_choi_lan,
+            n.ly_do_tu_choi,
+            n.tu_choi_at,
+            n.duyet_boi,
+            n.duyet_at,
+            n.so_ky_tu,
+            n.so_cong_thuc,
+            n.ma,
+            n.khoi,
+            n.nhom_ten,
+            n.nhom_ma,
+            n.nhom_truoc,
+            n.muc_do,
+            n.loai_cau,
+            n.de_bai,
+            n.gia_thiet,
+            n.anh,
+            n.lua_chon,
+            n.menh_de,
+            n.dap_an,
+            n.bai_loi_giai,
+            n.mon,
+            n.dang_giu,
+            n.qua_han,
+            n.nguoi_giai_ten,
+            n.duyet_boi_ten,
+            n.giay_giai,
+            n.loi_giai_ai,
+            n.ai_model,
+            n.che_do
+           FROM v_giaibai_nhan n
+          WHERE n.nhanh = k.nhanh AND n.key = k.key AND n.dang_giu
+         LIMIT 1) y ON true;
+```
+
+### v_giaibai_hoan_thien
+
+| cột | kiểu |
+|---|---|
+| nhanh | text |
+| key | text |
+| ma | text |
+| khoi | text |
+| nhom_ten | text |
+| nhom_ma | text |
+| nhom_truoc | text |
+| muc_do | smallint |
+| loai_cau | text |
+| de_bai | text |
+| gia_thiet | text |
+| anh | text |
+| lua_chon | jsonb |
+| menh_de | jsonb |
+| dap_an | text |
+| nguon | text |
+| created_at | timestamp with time zone |
+| mon | text |
+| yc_id | uuid |
+| yc_nguoi_giai | uuid |
+| yc_nguoi_giai_ten | text |
+| yc_trang_thai | text |
+| yc_han_at | timestamp with time zone |
+| yc_created_at | timestamp with time zone |
+| yc_ghi_chu | text |
+| loi_giai_ai | text |
+| dap_an_ai | text |
+| ai_model | text |
+| ai_de_xuat_at | timestamp with time zone |
+
+```sql
+WITH k AS (
+         SELECT 'toan'::text AS nhanh,
+            c.ma_cau AS key,
+            c.ma_cau AS ma,
+            b.khoi,
+            b.ten_dang AS nhom_ten,
+            b.ma_dang AS nhom_ma,
+            b.ten_chuyen_de AS nhom_truoc,
+            b.muc_do,
+            c.loai_cau,
+            c.noi_dung AS de_bai,
+            NULL::text AS gia_thiet,
+            c.anh_de AS anh,
+            c.lua_chon,
+            c.menh_de,
+            c.dap_an,
+            c.nguon,
+            c.created_at,
+            c.loi_giai AS loi_giai_ai,
+            NULL::text AS dap_an_ai,
+            'claude_code'::text AS ai_model,
+            c.ai_de_xuat_at
+           FROM dai_cau_hoi c
+             JOIN dai_ban_do b ON b.ma_dang = c.dang_chinh
+          WHERE c.xoa_at IS NULL AND c.nguon_giai = 'ai'::text AND c.giai_method = 'claude_code'::text AND c.da_duyet = false
+        UNION ALL
+         SELECT 'khtn'::text,
+            c.ma_cau,
+            c.ma_cau,
+            b.khoi,
+            b.ten_dang,
+            b.ma_dang,
+            b.ten_chuyen_de,
+            b.muc_do,
+            c.loai_cau,
+            c.noi_dung,
+            NULL::text,
+            c.anh_de,
+            c.lua_chon,
+            c.menh_de,
+            c.dap_an,
+            c.nguon,
+            c.created_at,
+            c.loi_giai,
+            NULL::text AS text,
+            'claude_code'::text AS text,
+            c.ai_de_xuat_at
+           FROM khtn_cau_hoi c
+             JOIN khtn_ban_do b ON b.ma_dang = c.dang_chinh
+          WHERE c.xoa_at IS NULL AND c.nguon_giai = 'ai'::text AND c.giai_method = 'claude_code'::text AND c.da_duyet = false
+        UNION ALL
+         SELECT 'hgt'::text,
+            c.ma_cau,
+            c.ma_cau,
+            b.khoi,
+            b.ten_dang,
+            b.ma_dang,
+            b.ten_chuyen_de,
+            b.muc_do,
+            c.loai_cau,
+            c.noi_dung,
+            NULL::text,
+            c.anh_de,
+            c.lua_chon,
+            c.menh_de,
+            c.dap_an,
+            c.nguon,
+            c.created_at,
+            c.loi_giai,
+            NULL::text AS text,
+            'claude_code'::text AS text,
+            c.ai_de_xuat_at
+           FROM hgt_cau_hoi c
+             JOIN hgt_ban_do b ON b.ma_dang = c.dang_chinh
+          WHERE c.xoa_at IS NULL AND c.nguon_giai = 'ai'::text AND c.giai_method = 'claude_code'::text AND c.da_duyet = false
+        UNION ALL
+         SELECT 'hinh_baitoan'::text,
+            b.id::text AS id,
+            b.ma,
+            m.khoi,
+            m.ten,
+            m.ma,
+            'Mô hình'::text,
+            NULL::smallint AS int2,
+            'bai_toan_goc'::text,
+            b.phat_bieu,
+            concat_ws('
+'::text, m.gia_thiet, m.gia_thiet_them, b.gia_thiet_phu, b.gia_thiet_rieng) AS concat_ws,
+            COALESCE(b.anh_chuan, m.anh_cau_hinh) AS "coalesce",
+            NULL::jsonb AS jsonb,
+            NULL::jsonb AS jsonb,
+            NULL::text AS text,
+            'le'::text,
+            b.created_at,
+            cg.loi_giai,
+            NULL::text AS text,
+            'claude_code'::text AS text,
+            cg.updated_at
+           FROM hinh_cach_giai cg
+             JOIN hinh_baitoan b ON b.id = cg.baitoan_id
+             JOIN hinh_mo_hinh m ON m.id = b.mo_hinh_id
+          WHERE cg.nguon_giai = 'ai'::text AND cg.giai_method = 'claude_code'::text AND cg.da_duyet = false AND NOT (EXISTS ( SELECT 1
+                   FROM hinh_cach_giai x
+                  WHERE x.baitoan_id = b.id AND x.id <> cg.id AND (x.loi_giai IS NOT NULL OR x.anh_loi_giai IS NOT NULL))) AND NOT fn_hinh_co_phu_thuoc_cho(b.id)
+        UNION ALL
+         SELECT 'hinh_bien_the'::text,
+            v.id::text AS id,
+            (b.ma || ' · BT'::text) || v.thu_tu,
+            m.khoi,
+            m.ten,
+            m.ma,
+            'Mô hình'::text,
+            NULL::smallint AS int2,
+            'bien_the_'::text || v.kieu,
+            v.de_bai,
+            concat_ws('
+'::text, m.gia_thiet, m.gia_thiet_them, b.gia_thiet_phu, b.gia_thiet_rieng) AS concat_ws,
+            COALESCE(v.anh, b.anh_chuan, m.anh_cau_hinh) AS "coalesce",
+            NULL::jsonb AS jsonb,
+            NULL::jsonb AS jsonb,
+            NULL::text AS text,
+            'le'::text,
+            v.created_at,
+            v.loi_giai,
+            NULL::text AS text,
+            'claude_code'::text AS text,
+            v.updated_at
+           FROM hinh_baitoan_bien_the v
+             JOIN hinh_baitoan b ON b.id = v.baitoan_id
+             JOIN hinh_mo_hinh m ON m.id = b.mo_hinh_id
+          WHERE v.nguon_giai = 'ai'::text AND v.giai_method = 'claude_code'::text AND v.da_duyet = false
+        )
+ SELECT k.nhanh,
+    k.key,
+    k.ma,
+    k.khoi,
+    k.nhom_ten,
+    k.nhom_ma,
+    k.nhom_truoc,
+    k.muc_do,
+    k.loai_cau,
+    k.de_bai,
+    k.gia_thiet,
+    k.anh,
+    k.lua_chon,
+    k.menh_de,
+    k.dap_an,
+    k.nguon,
+    k.created_at,
+    fn_giaibai_mon(k.nhanh) AS mon,
+    y.id AS yc_id,
+    y.nguoi_giai AS yc_nguoi_giai,
+    y.nguoi_giai_ten AS yc_nguoi_giai_ten,
+    y.trang_thai AS yc_trang_thai,
+    y.han_at AS yc_han_at,
+    y.created_at AS yc_created_at,
+    y.ghi_chu AS yc_ghi_chu,
+    k.loi_giai_ai,
+    k.dap_an_ai,
+    k.ai_model,
+    k.ai_de_xuat_at
+   FROM k
+     LEFT JOIN LATERAL ( SELECT n.nhanh,
+            n.id,
+            n.key,
+            n.ghi_chu,
+            n.nguoi_yeu_cau,
+            n.created_at,
+            n.xu_ly_at,
+            n.nguoi_giai,
+            n.trang_thai,
+            n.han_at,
+            n.nop_at,
+            n.cap_nhat_at,
+            n.loi_giai_nhap,
+            n.anh_nhap,
+            n.dap_an_nhap,
+            n.tu_choi_lan,
+            n.ly_do_tu_choi,
+            n.tu_choi_at,
+            n.duyet_boi,
+            n.duyet_at,
+            n.so_ky_tu,
+            n.so_cong_thuc,
+            n.ma,
+            n.khoi,
+            n.nhom_ten,
+            n.nhom_ma,
+            n.nhom_truoc,
+            n.muc_do,
+            n.loai_cau,
+            n.de_bai,
+            n.gia_thiet,
+            n.anh,
+            n.lua_chon,
+            n.menh_de,
+            n.dap_an,
+            n.bai_loi_giai,
+            n.mon,
+            n.dang_giu,
+            n.qua_han,
+            n.nguoi_giai_ten,
+            n.duyet_boi_ten,
+            n.giay_giai,
+            n.loi_giai_ai,
+            n.ai_model,
+            n.che_do
+           FROM v_giaibai_nhan n
+          WHERE n.nhanh = k.nhanh AND n.key = k.key AND n.dang_giu
+         LIMIT 1) y ON true;
+```
+
+### v_giaibai_nhan
+
+| cột | kiểu |
+|---|---|
+| nhanh | text |
+| id | uuid |
+| key | text |
+| ghi_chu | text |
+| nguoi_yeu_cau | uuid |
+| created_at | timestamp with time zone |
+| xu_ly_at | timestamp with time zone |
+| nguoi_giai | uuid |
+| trang_thai | text |
+| han_at | timestamp with time zone |
+| nop_at | timestamp with time zone |
+| cap_nhat_at | timestamp with time zone |
+| loi_giai_nhap | text |
+| anh_nhap | text |
+| dap_an_nhap | text |
+| tu_choi_lan | integer |
+| ly_do_tu_choi | text |
+| tu_choi_at | timestamp with time zone |
+| duyet_boi | uuid |
+| duyet_at | timestamp with time zone |
+| so_ky_tu | integer |
+| so_cong_thuc | integer |
+| ma | text |
+| khoi | text |
+| nhom_ten | text |
+| nhom_ma | text |
+| nhom_truoc | text |
+| muc_do | smallint |
+| loai_cau | text |
+| de_bai | text |
+| gia_thiet | text |
+| anh | text |
+| lua_chon | jsonb |
+| menh_de | jsonb |
+| dap_an | text |
+| bai_loi_giai | text |
+| mon | text |
+| dang_giu | boolean |
+| qua_han | boolean |
+| nguoi_giai_ten | text |
+| duyet_boi_ten | text |
+| giay_giai | integer |
+| loi_giai_ai | text |
+| ai_model | text |
+| che_do | text |
+| y_nhap | jsonb |
+
+```sql
+WITH k AS (
+         SELECT 'toan'::text AS nhanh,
+            y.id,
+            y.ma_cau,
+            y.ghi_chu,
+            y.nguoi_yeu_cau,
+            y.created_at,
+            y.xu_ly_at,
+            y.nguoi_giai,
+            y.trang_thai,
+            y.han_at,
+            y.nop_at,
+            y.cap_nhat_at,
+            y.loi_giai_nhap,
+            y.anh_nhap,
+            y.dap_an_nhap,
+            y.tu_choi_lan,
+            y.ly_do_tu_choi,
+            y.tu_choi_at,
+            y.duyet_boi,
+            y.duyet_at,
+            y.so_ky_tu,
+            y.so_cong_thuc,
+            y.loi_giai_ai,
+            y.ai_model,
+            y.che_do,
+            y.y_nhap,
+            y.ma_cau AS key,
+            c.ma_cau AS ma,
+            b.khoi,
+            b.ten_dang AS nhom_ten,
+            b.ma_dang AS nhom_ma,
+            b.ten_chuyen_de AS nhom_truoc,
+            b.muc_do,
+            c.loai_cau,
+            c.noi_dung AS de_bai,
+            NULL::text AS gia_thiet,
+            c.anh_de AS anh,
+            c.lua_chon,
+            c.menh_de,
+            c.dap_an,
+            c.loi_giai AS bai_loi_giai
+           FROM dai_cau_hoi_yeu_cau_giai y
+             JOIN dai_cau_hoi c ON c.ma_cau = y.ma_cau
+             JOIN dai_ban_do b ON b.ma_dang = c.dang_chinh
+        UNION ALL
+         SELECT 'khtn'::text,
+            y.id,
+            y.ma_cau,
+            y.ghi_chu,
+            y.nguoi_yeu_cau,
+            y.created_at,
+            y.xu_ly_at,
+            y.nguoi_giai,
+            y.trang_thai,
+            y.han_at,
+            y.nop_at,
+            y.cap_nhat_at,
+            y.loi_giai_nhap,
+            y.anh_nhap,
+            y.dap_an_nhap,
+            y.tu_choi_lan,
+            y.ly_do_tu_choi,
+            y.tu_choi_at,
+            y.duyet_boi,
+            y.duyet_at,
+            y.so_ky_tu,
+            y.so_cong_thuc,
+            y.loi_giai_ai,
+            y.ai_model,
+            y.che_do,
+            y.y_nhap,
+            y.ma_cau,
+            c.ma_cau,
+            b.khoi,
+            b.ten_dang,
+            b.ma_dang,
+            b.ten_chuyen_de,
+            b.muc_do,
+            c.loai_cau,
+            c.noi_dung,
+            NULL::text,
+            c.anh_de,
+            c.lua_chon,
+            c.menh_de,
+            c.dap_an,
+            c.loi_giai
+           FROM khtn_cau_hoi_yeu_cau_giai y
+             JOIN khtn_cau_hoi c ON c.ma_cau = y.ma_cau
+             JOIN khtn_ban_do b ON b.ma_dang = c.dang_chinh
+        UNION ALL
+         SELECT 'hgt'::text,
+            y.id,
+            y.ma_cau,
+            y.ghi_chu,
+            y.nguoi_yeu_cau,
+            y.created_at,
+            y.xu_ly_at,
+            y.nguoi_giai,
+            y.trang_thai,
+            y.han_at,
+            y.nop_at,
+            y.cap_nhat_at,
+            y.loi_giai_nhap,
+            y.anh_nhap,
+            y.dap_an_nhap,
+            y.tu_choi_lan,
+            y.ly_do_tu_choi,
+            y.tu_choi_at,
+            y.duyet_boi,
+            y.duyet_at,
+            y.so_ky_tu,
+            y.so_cong_thuc,
+            y.loi_giai_ai,
+            y.ai_model,
+            y.che_do,
+            y.y_nhap,
+            y.ma_cau,
+            c.ma_cau,
+            b.khoi,
+            b.ten_dang,
+            b.ma_dang,
+            b.ten_chuyen_de,
+            b.muc_do,
+            c.loai_cau,
+            c.noi_dung,
+            NULL::text,
+            c.anh_de,
+            c.lua_chon,
+            c.menh_de,
+            c.dap_an,
+            c.loi_giai
+           FROM hgt_cau_hoi_yeu_cau_giai y
+             JOIN hgt_cau_hoi c ON c.ma_cau = y.ma_cau
+             JOIN hgt_ban_do b ON b.ma_dang = c.dang_chinh
+        ), h AS (
+         SELECT 'hinh_baitoan'::text AS nhanh,
+            y.id,
+            y.baitoan_id::text AS key,
+            y.ghi_chu,
+            y.nguoi_yeu_cau,
+            y.created_at,
+            y.xu_ly_at,
+            y.nguoi_giai,
+            y.trang_thai,
+            y.han_at,
+            y.nop_at,
+            y.cap_nhat_at,
+            y.loi_giai_nhap,
+            y.anh_nhap,
+            y.dap_an_nhap,
+            y.tu_choi_lan,
+            y.ly_do_tu_choi,
+            y.tu_choi_at,
+            y.duyet_boi,
+            y.duyet_at,
+            y.so_ky_tu,
+            y.so_cong_thuc,
+            b.ma,
+            m.khoi,
+            m.ten AS nhom_ten,
+            m.ma AS nhom_ma,
+            'Mô hình'::text AS nhom_truoc,
+            NULL::smallint AS muc_do,
+            'bai_toan_goc'::text AS loai_cau,
+            b.phat_bieu AS de_bai,
+            concat_ws('
+'::text, m.gia_thiet, m.gia_thiet_them, b.gia_thiet_phu, b.gia_thiet_rieng) AS gia_thiet,
+            COALESCE(b.anh_chuan, m.anh_cau_hinh) AS anh,
+            NULL::jsonb AS lua_chon,
+            NULL::jsonb AS menh_de,
+            NULL::text AS dap_an,
+            ( SELECT cg.loi_giai
+                   FROM hinh_cach_giai cg
+                  WHERE cg.baitoan_id = b.id AND (cg.loi_giai IS NOT NULL OR cg.anh_loi_giai IS NOT NULL)
+                  ORDER BY cg.la_mac_dinh DESC, cg.thu_tu
+                 LIMIT 1) AS bai_loi_giai,
+            y.loi_giai_ai,
+            y.ai_model,
+            y.che_do,
+            y.y_nhap
+           FROM hinh_baitoan_yeu_cau_giai y
+             JOIN hinh_baitoan b ON b.id = y.baitoan_id
+             JOIN hinh_mo_hinh m ON m.id = b.mo_hinh_id
+        UNION ALL
+         SELECT 'hinh_bien_the'::text,
+            y.id,
+            y.bien_the_id::text AS bien_the_id,
+            y.ghi_chu,
+            y.nguoi_yeu_cau,
+            y.created_at,
+            y.xu_ly_at,
+            y.nguoi_giai,
+            y.trang_thai,
+            y.han_at,
+            y.nop_at,
+            y.cap_nhat_at,
+            y.loi_giai_nhap,
+            y.anh_nhap,
+            y.dap_an_nhap,
+            y.tu_choi_lan,
+            y.ly_do_tu_choi,
+            y.tu_choi_at,
+            y.duyet_boi,
+            y.duyet_at,
+            y.so_ky_tu,
+            y.so_cong_thuc,
+            (b.ma || ' · BT'::text) || v.thu_tu,
+            m.khoi,
+            m.ten,
+            m.ma,
+            'Mô hình'::text,
+            NULL::smallint AS int2,
+            'bien_the_'::text || v.kieu,
+            v.de_bai,
+            concat_ws('
+'::text, m.gia_thiet, m.gia_thiet_them, b.gia_thiet_phu, b.gia_thiet_rieng) AS concat_ws,
+            COALESCE(v.anh, b.anh_chuan, m.anh_cau_hinh) AS "coalesce",
+            NULL::jsonb AS jsonb,
+            NULL::jsonb AS jsonb,
+            NULL::text AS text,
+            v.loi_giai,
+            y.loi_giai_ai,
+            y.ai_model,
+            y.che_do,
+            y.y_nhap
+           FROM hinh_bien_the_yeu_cau_giai y
+             JOIN hinh_baitoan_bien_the v ON v.id = y.bien_the_id
+             JOIN hinh_baitoan b ON b.id = v.baitoan_id
+             JOIN hinh_mo_hinh m ON m.id = b.mo_hinh_id
+        ), u AS (
+         SELECT k.nhanh,
+            k.id,
+            k.key,
+            k.ghi_chu,
+            k.nguoi_yeu_cau,
+            k.created_at,
+            k.xu_ly_at,
+            k.nguoi_giai,
+            k.trang_thai,
+            k.han_at,
+            k.nop_at,
+            k.cap_nhat_at,
+            k.loi_giai_nhap,
+            k.anh_nhap,
+            k.dap_an_nhap,
+            k.tu_choi_lan,
+            k.ly_do_tu_choi,
+            k.tu_choi_at,
+            k.duyet_boi,
+            k.duyet_at,
+            k.so_ky_tu,
+            k.so_cong_thuc,
+            k.ma,
+            k.khoi,
+            k.nhom_ten,
+            k.nhom_ma,
+            k.nhom_truoc,
+            k.muc_do,
+            k.loai_cau,
+            k.de_bai,
+            k.gia_thiet,
+            k.anh,
+            k.lua_chon,
+            k.menh_de,
+            k.dap_an,
+            k.bai_loi_giai,
+            k.loi_giai_ai,
+            k.ai_model,
+            k.che_do,
+            k.y_nhap
+           FROM k
+        UNION ALL
+         SELECT h.nhanh,
+            h.id,
+            h.key,
+            h.ghi_chu,
+            h.nguoi_yeu_cau,
+            h.created_at,
+            h.xu_ly_at,
+            h.nguoi_giai,
+            h.trang_thai,
+            h.han_at,
+            h.nop_at,
+            h.cap_nhat_at,
+            h.loi_giai_nhap,
+            h.anh_nhap,
+            h.dap_an_nhap,
+            h.tu_choi_lan,
+            h.ly_do_tu_choi,
+            h.tu_choi_at,
+            h.duyet_boi,
+            h.duyet_at,
+            h.so_ky_tu,
+            h.so_cong_thuc,
+            h.ma,
+            h.khoi,
+            h.nhom_ten,
+            h.nhom_ma,
+            h.nhom_truoc,
+            h.muc_do,
+            h.loai_cau,
+            h.de_bai,
+            h.gia_thiet,
+            h.anh,
+            h.lua_chon,
+            h.menh_de,
+            h.dap_an,
+            h.bai_loi_giai,
+            h.loi_giai_ai,
+            h.ai_model,
+            h.che_do,
+            h.y_nhap
+           FROM h
+        )
+ SELECT u.nhanh,
+    u.id,
+    u.key,
+    u.ghi_chu,
+    u.nguoi_yeu_cau,
+    u.created_at,
+    u.xu_ly_at,
+    u.nguoi_giai,
+    u.trang_thai,
+    u.han_at,
+    u.nop_at,
+    u.cap_nhat_at,
+    u.loi_giai_nhap,
+    u.anh_nhap,
+    u.dap_an_nhap,
+    u.tu_choi_lan,
+    u.ly_do_tu_choi,
+    u.tu_choi_at,
+    u.duyet_boi,
+    u.duyet_at,
+    u.so_ky_tu,
+    u.so_cong_thuc,
+    u.ma,
+    u.khoi,
+    u.nhom_ten,
+    u.nhom_ma,
+    u.nhom_truoc,
+    u.muc_do,
+    u.loai_cau,
+    u.de_bai,
+    u.gia_thiet,
+    u.anh,
+    u.lua_chon,
+    u.menh_de,
+    u.dap_an,
+    u.bai_loi_giai,
+    fn_giaibai_mon(u.nhanh) AS mon,
+    fn_giaibai_dang_giu(u.trang_thai, u.han_at, u.xu_ly_at) AS dang_giu,
+    u.xu_ly_at IS NULL AND (u.trang_thai = ANY (ARRAY['dang_giai'::text, 'can_sua'::text])) AND u.han_at < now() AS qua_han,
+    ns.ho_ten AS nguoi_giai_ten,
+    nd.ho_ten AS duyet_boi_ten,
+    EXTRACT(epoch FROM u.nop_at - u.created_at)::integer AS giay_giai,
+    u.loi_giai_ai,
+    u.ai_model,
+    u.che_do,
+    u.y_nhap
+   FROM u
+     LEFT JOIN nhan_su ns ON ns.id = u.nguoi_giai
+     LEFT JOIN nhan_su nd ON nd.id = u.duyet_boi;
+```
+
+### v_hinh_chua_giai
+
+| cột | kiểu |
+|---|---|
+| loai | text |
+| id | uuid |
+| ma | text |
+| khoi | text |
+| mo_hinh_ma | text |
+| mo_hinh_ten | text |
+| gia_thiet | text |
+| de_bai | text |
+| anh | text |
+| kieu | text |
+| created_at | timestamp with time zone |
+| yeu_cau_id | uuid |
+| yeu_cau_at | timestamp with time zone |
+| yeu_cau_ghi_chu | text |
+| yeu_cau_nguoi_giai | uuid |
+| yeu_cau_nguoi_giai_ten | text |
+| yeu_cau_trang_thai | text |
+| loi_giai_ai | text |
+| dap_an_ai | text |
+| ai_model | text |
+| ai_de_xuat_at | timestamp with time zone |
+
+```sql
+SELECT 'baitoan'::text AS loai,
+    b.id,
+    b.ma,
+    m.khoi,
+    m.ma AS mo_hinh_ma,
+    m.ten AS mo_hinh_ten,
+    concat_ws('
+'::text, m.gia_thiet, m.gia_thiet_them, b.gia_thiet_phu, b.gia_thiet_rieng) AS gia_thiet,
+    b.phat_bieu AS de_bai,
+    COALESCE(b.anh_chuan, m.anh_cau_hinh) AS anh,
+    NULL::text AS kieu,
+    b.created_at,
+    y.id AS yeu_cau_id,
+    y.created_at AS yeu_cau_at,
+    y.ghi_chu AS yeu_cau_ghi_chu,
+    y.nguoi_giai AS yeu_cau_nguoi_giai,
+    ns.ho_ten AS yeu_cau_nguoi_giai_ten,
+    y.trang_thai AS yeu_cau_trang_thai,
+    b.loi_giai_ai,
+    b.dap_an_ai,
+    b.ai_model,
+    b.ai_de_xuat_at
+   FROM hinh_baitoan b
+     JOIN hinh_mo_hinh m ON m.id = b.mo_hinh_id
+     LEFT JOIN hinh_baitoan_yeu_cau_giai y ON y.baitoan_id = b.id AND fn_giaibai_dang_giu(y.trang_thai, y.han_at, y.xu_ly_at)
+     LEFT JOIN nhan_su ns ON ns.id = y.nguoi_giai
+  WHERE NOT (EXISTS ( SELECT 1
+           FROM hinh_cach_giai cg
+          WHERE cg.baitoan_id = b.id AND (cg.loi_giai IS NOT NULL OR cg.anh_loi_giai IS NOT NULL)))
+UNION ALL
+ SELECT 'bien_the'::text AS loai,
+    v.id,
+    (b.ma || ' · BT'::text) || v.thu_tu AS ma,
+    m.khoi,
+    m.ma AS mo_hinh_ma,
+    m.ten AS mo_hinh_ten,
+    concat_ws('
+'::text, m.gia_thiet, m.gia_thiet_them, b.gia_thiet_phu, b.gia_thiet_rieng) AS gia_thiet,
+    v.de_bai,
+    COALESCE(v.anh, b.anh_chuan, m.anh_cau_hinh) AS anh,
+    v.kieu,
+    v.created_at,
+    y.id AS yeu_cau_id,
+    y.created_at AS yeu_cau_at,
+    y.ghi_chu AS yeu_cau_ghi_chu,
+    y.nguoi_giai AS yeu_cau_nguoi_giai,
+    ns.ho_ten AS yeu_cau_nguoi_giai_ten,
+    y.trang_thai AS yeu_cau_trang_thai,
+    v.loi_giai_ai,
+    v.dap_an_ai,
+    v.ai_model,
+    v.ai_de_xuat_at
+   FROM hinh_baitoan_bien_the v
+     JOIN hinh_baitoan b ON b.id = v.baitoan_id
+     JOIN hinh_mo_hinh m ON m.id = b.mo_hinh_id
+     LEFT JOIN hinh_bien_the_yeu_cau_giai y ON y.bien_the_id = v.id AND fn_giaibai_dang_giu(y.trang_thai, y.han_at, y.xu_ly_at)
+     LEFT JOIN nhan_su ns ON ns.id = y.nguoi_giai
+  WHERE v.loi_giai IS NULL AND v.anh_loi_giai IS NULL;
+```
+
+### v_khao_sat_cum_toa
+
+| cột | kiểu |
+|---|---|
+| toa | text |
+| tang | smallint |
+| so_hs | bigint |
+| don_doc | boolean |
+| hs | text[] |
+
+```sql
+SELECT toa,
+    tang,
+    count(*) AS so_hs,
+    count(*) = 1 AS don_doc,
+    array_agg(ho_ten ORDER BY ho_ten) AS hs
+   FROM hoc_sinh
+  WHERE trang_thai = 'dang_hoc'::text AND noi_o_loai = 'chung_cu'::text AND toa IS NOT NULL
+  GROUP BY toa, tang;
+```
+
+### v_khao_sat_cum_truong
+
+| cột | kiểu |
+|---|---|
+| truong_hoc | text |
+| lop_truong | text |
+| so_hs | bigint |
+| don_doc | boolean |
+| hs | text[] |
+
+```sql
+SELECT truong_hoc,
+    lop_truong,
+    count(*) AS so_hs,
+    count(*) = 1 AS don_doc,
+    array_agg(ho_ten ORDER BY ho_ten) AS hs
+   FROM hoc_sinh
+  WHERE trang_thai = 'dang_hoc'::text AND truong_hoc IS NOT NULL
+  GROUP BY truong_hoc, lop_truong;
+```
+
+### v_khao_sat_kenh
+
+| cột | kiểu |
+|---|---|
+| quen_tu | text |
+| quan_he | text |
+| so_canh | bigint |
+| so_hai_chieu | bigint |
+
+```sql
+SELECT quen_tu,
+    quan_he,
+    count(*) AS so_canh,
+    count(*) FILTER (WHERE (EXISTS ( SELECT 1
+           FROM khao_sat_hs_quan_he r
+          WHERE r.loai = 'biet'::text AND r.tu_hoc_sinh_id = q.den_hoc_sinh_id AND r.den_hoc_sinh_id = q.tu_hoc_sinh_id))) AS so_hai_chieu
+   FROM khao_sat_hs_quan_he q
+  WHERE loai = 'biet'::text AND den_hoc_sinh_id IS NOT NULL
+  GROUP BY quen_tu, quan_he;
+```
+
+### v_khao_sat_lead
+
+| cột | kiểu |
+|---|---|
+| hoc_sinh_id | uuid |
+| ho_ten | text |
+| khoi | text |
+| ph_ten | text |
+| ph_sdt | text |
+| uu_tien | boolean |
+| so_lead | bigint |
+| leads | jsonb |
+
+```sql
+SELECT h.id AS hoc_sinh_id,
+    h.ho_ten,
+    h.khoi,
+    ph.ho_ten AS ph_ten,
+    ph.so_dien_thoai AS ph_sdt,
+    h.bo_me_ban_ph_lop = 'co'::text OR h.bo_me_chuc_vu_toa = 'co'::text AS uu_tien,
+    count(*) AS so_lead,
+    jsonb_agg(jsonb_build_object('id', r.id, 'ten', r.ten_goc, 'ghi_chu', r.ghi_chu_goc, 'da_khop', r.den_hoc_sinh_id IS NOT NULL) ORDER BY r.id) AS leads
+   FROM khao_sat_hs_quan_he r
+     JOIN hoc_sinh h ON h.id = r.tu_hoc_sinh_id
+     LEFT JOIN phu_huynh ph ON ph.id = h.phu_huynh_id
+  WHERE r.loai = 'muon_ru'::text
+  GROUP BY h.id, h.ho_ten, h.khoi, ph.ho_ten, ph.so_dien_thoai, h.bo_me_ban_ph_lop, h.bo_me_chuc_vu_toa
+  ORDER BY (count(*)) DESC, h.ho_ten;
+```
+
+### v_khao_sat_vector
+
+| cột | kiểu |
+|---|---|
+| hoc_sinh_id | uuid |
+| ho_ten | text |
+| khoi | text |
+| truong_hoc | text |
+| lop_truong | text |
+| toa | text |
+| tang | smallint |
+| ly_do_vao | text |
+| bo_me_ban_ph_lop | text |
+| bo_me_chuc_vu_toa | text |
+| nghe_bo_me | text |
+| ph_ten | text |
+| ph_sdt | text |
+| nguoi_ru | text |
+| so_da_ru | bigint |
+| so_da_ru_co | bigint |
+| so_muon_ru | bigint |
+| so_biet | bigint |
+| uu_tien | boolean |
+| nop_luc | timestamp with time zone |
+
+```sql
+SELECT h.id AS hoc_sinh_id,
+    h.ho_ten,
+    h.khoi,
+    h.truong_hoc,
+    h.lop_truong,
+    h.toa,
+    h.tang,
+    h.ly_do_vao,
+    h.bo_me_ban_ph_lop,
+    h.bo_me_chuc_vu_toa,
+    h.nghe_bo_me,
+    ph.ho_ten AS ph_ten,
+    ph.so_dien_thoai AS ph_sdt,
+    ( SELECT string_agg(r.ten_goc, ', '::text) AS string_agg
+           FROM khao_sat_hs_quan_he r
+          WHERE r.tu_hoc_sinh_id = h.id AND r.loai = 'duoc_ru_boi'::text) AS nguoi_ru,
+    ( SELECT count(*) AS count
+           FROM khao_sat_hs_quan_he r
+          WHERE r.tu_hoc_sinh_id = h.id AND r.loai = 'da_ru'::text) AS so_da_ru,
+    ( SELECT count(*) AS count
+           FROM khao_sat_hs_quan_he r
+          WHERE r.tu_hoc_sinh_id = h.id AND r.loai = 'da_ru'::text AND r.ket_qua_ru = 'co'::text) AS so_da_ru_co,
+    ( SELECT count(*) AS count
+           FROM khao_sat_hs_quan_he r
+          WHERE r.tu_hoc_sinh_id = h.id AND r.loai = 'muon_ru'::text) AS so_muon_ru,
+    ( SELECT count(*) AS count
+           FROM khao_sat_hs_quan_he r
+          WHERE r.tu_hoc_sinh_id = h.id AND r.loai = 'biet'::text) AS so_biet,
+    h.bo_me_ban_ph_lop = 'co'::text OR h.bo_me_chuc_vu_toa = 'co'::text AS uu_tien,
+    k.nop_luc
+   FROM khao_sat_hs k
+     JOIN hoc_sinh h ON h.id = k.hoc_sinh_id
+     LEFT JOIN phu_huynh ph ON ph.id = h.phu_huynh_id
+  ORDER BY (( SELECT count(*) AS count
+           FROM khao_sat_hs_quan_he r
+          WHERE r.tu_hoc_sinh_id = h.id AND r.loai = 'da_ru'::text AND r.ket_qua_ru = 'co'::text)) DESC, (h.bo_me_ban_ph_lop = 'co'::text OR h.bo_me_chuc_vu_toa = 'co'::text) DESC, h.ho_ten;
+```
+
+### v_mcq_loi_hs
+
+| cột | kiểu |
+|---|---|
+| hoc_sinh_id | uuid |
+| mon | text |
+| ma_dang | text |
+| ma_cau | text |
+| form_tn_id | uuid |
+| rule_ma | text |
+| cham_at | timestamp with time zone |
+
+```sql
+SELECT bl.hoc_sinh_id,
+    bt.mon,
+    btc.ma_dang,
+    btc.ma_cau,
+    btc.form_tn_id,
+    btc.lua_chon_rule[((blc.dap_an_hs #>> '{}'::text[])::integer) + 1] AS rule_ma,
+    blc.cham_at
+   FROM bai_lam_cau blc
+     JOIN bai_test_cau btc ON btc.id = blc.bai_test_cau_id
+     JOIN bai_lam bl ON bl.id = blc.bai_lam_id
+     JOIN bai_test bt ON bt.id = bl.bai_test_id
+  WHERE btc.form_tn_id IS NOT NULL AND blc.verdict = 'wrong'::text AND jsonb_typeof(blc.dap_an_hs) = 'number'::text;
+```
+
 ## Triggers
 
 | bảng | trigger | timing | event | function |
 |---|---|---|---|---|
+| bai_lam | trg_btyeu_retest_lam | AFTER | UPDATE | _trg_btyeu_retest_lam |
+| bai_lam_cau | trg_btyeu_retest_cau | AFTER | INSERT/UPDATE | _trg_btyeu_retest_cau |
 | bao_loi | trg_log_bao_loi | BEFORE | UPDATE | log_bao_loi |
+| btvn_nop_anh | tg_btvn_nop_anh_touch | AFTER | INSERT/DELETE/UPDATE | fn_btvn_nop_touch |
 | ca_test | trg_log_ca_test | AFTER | INSERT/UPDATE | log_ca_test |
+| ca_test_cau_kq | tg_ca_test_kq_diem | BEFORE | INSERT/UPDATE | fn_ca_test_kq_diem |
+| chi_khoan | tg_chi_khoan_bf | BEFORE | INSERT/UPDATE | trg_chi_khoan_bf |
+| chi_khoan | tg_chi_khoan_log | AFTER | INSERT/UPDATE | trg_chi_khoan_log |
+| chi_nhan_tien | tg_chi_nhan_tien_log | BEFORE | INSERT/DELETE/UPDATE | trg_chi_nhan_tien_log |
+| chi_so | tg_chi_so_bf | BEFORE | INSERT/DELETE/UPDATE | trg_chi_so_bf |
+| dai_cau_form_tn | dai_cau_form_tn_kiem | BEFORE | INSERT/UPDATE | dai_cau_form_tn_kiem |
+| dai_cau_hoi | trg_kho_cau_duyet_nguon | BEFORE | INSERT/UPDATE | _kho_cau_duyet_nguon |
 | dai_cau_hoi | trg_log_kho_cau_dai | AFTER | DELETE/UPDATE | log_kho_cau |
+| dai_cau_hoi_yeu_cau_giai | dai_cau_hoi_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
+| diem_thi | tg_diem_thi_tinh | BEFORE | INSERT/UPDATE | fn_diem_thi_tinh |
+| gay_de_xuat | trg_log_gay_de_xuat | AFTER | INSERT/UPDATE | log_gay_de_xuat |
+| gay_ledger | trg_log_gay_ledger | AFTER | INSERT/UPDATE | log_gay_ledger |
 | giai_thuong | trg_giai_thuong_check_slot | BEFORE | INSERT | giai_thuong_check_slot |
+| han_nop_ngoai_le | tg_han_nop_ngoai_le_log | AFTER | INSERT/DELETE/UPDATE | trg_han_nop_ngoai_le_log |
+| hgt_cau_hoi | trg_kho_cau_duyet_nguon | BEFORE | INSERT/UPDATE | _kho_cau_duyet_nguon |
 | hgt_cau_hoi | trg_log_kho_cau_hgt | AFTER | DELETE/UPDATE | log_kho_cau |
+| hgt_cau_hoi_yeu_cau_giai | hgt_cau_hoi_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
 | hinh_baitoan | hinh_baitoan_gen_ma_trg | BEFORE | INSERT | hinh_baitoan_gen_ma |
+| hinh_baitoan_bien_the | hinh_bien_the_thu_hoi_dien | AFTER | UPDATE | hinh_form_dien_thu_hoi |
+| hinh_baitoan_yeu_cau_giai | hinh_baitoan_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
+| hinh_bien_the_yeu_cau_giai | hinh_bien_the_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
+| hinh_cach_giai | hinh_cach_giai_thu_hoi_dien | AFTER | UPDATE | hinh_form_dien_thu_hoi |
+| hinh_form_dien | hinh_form_dien_kiem | BEFORE | INSERT/UPDATE | hinh_form_dien_kiem |
 | hoa_don | trg_log_hoa_don | AFTER | INSERT/UPDATE | log_hoa_don |
 | hoat_dong_phong | trg_log_hoat_dong_phong | AFTER | INSERT/UPDATE | log_hoat_dong_phong |
 | hoc_sinh | trg_hs_nghi_tu_roi_lop | AFTER | UPDATE | hs_nghi_tu_roi_lop |
 | hoc_sinh | trg_log_he_so_hoc_phi | AFTER | UPDATE | log_he_so_hoc_phi |
 | hoc_sinh_lop | trg_log_hoc_sinh_lop | AFTER | INSERT/UPDATE | log_hoc_sinh_lop |
+| khtn_cau_hoi | trg_kho_cau_duyet_nguon | BEFORE | INSERT/UPDATE | _kho_cau_duyet_nguon |
 | khtn_cau_hoi | trg_log_kho_cau_khtn | AFTER | DELETE/UPDATE | log_kho_cau |
+| khtn_cau_hoi_yeu_cau_giai | khtn_cau_hoi_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
+| qlht_doi_qua | trg_log_qlht_doi_qua | AFTER | INSERT/UPDATE | log_qlht |
+| qlht_qua | trg_log_qlht_qua | AFTER | INSERT/UPDATE | log_qlht |
+| qlht_qua_nhap | trg_log_qlht_qua_nhap | AFTER | INSERT/UPDATE | log_qlht |
+| qlht_qua_order | trg_log_qlht_qua_order | AFTER | INSERT/UPDATE | log_qlht |
+| soan_cum | trg_soan_cum_log | AFTER | INSERT/DELETE/UPDATE | fn_soan_cum_log |
+| soan_cum | trg_soan_cum_touch | BEFORE | UPDATE | fn_soan_touch |
+| soan_thu_muc | trg_soan_thu_muc_touch | BEFORE | UPDATE | fn_soan_touch |
+| thanh_toan | tg_thanh_toan_trang_thai | AFTER | INSERT/DELETE/UPDATE | fn_hoa_don_cap_nhat_trang_thai |
 | ung_vien | trg_log_ung_vien | AFTER | INSERT/UPDATE | log_ung_vien |
+| viec | tg_viec_nghiem_thu_tinh | BEFORE | INSERT/UPDATE | fn_viec_nghiem_thu_tinh |
 | viec | trg_giaoviec_auto_dong_task_me | AFTER | UPDATE | giaoviec_auto_dong_task_me |
 | viec | trg_log_viec | AFTER | INSERT/UPDATE | log_viec |
+| viec_van_hanh_duyet | tg_vvhd_tinh | BEFORE | INSERT/UPDATE | fn_vvhd_tinh |
 
 ## Functions
 
+- `_btyeu_buoi(p_buoi uuid)` → TABLE(buoi_id uuid, hoc_sinh_id uuid, bo_tro_yeu_id uuid, mon text, ngay date, trang_thai text, diem_danh text, nguoi_day_tg uuid, danh_gia_xong_at timestamp with time zone, buoi_hoc_hs_id uuid)
+- `_btyeu_chon_cau(p_cautbl text, p_ma_dang text, p_ma_cum text, p_tru text[], p_n integer)` → text[]
+- `_btyeu_my_ns()` → uuid
+- `_btyeu_tien_do(p_buoi uuid)` → TABLE(ma_dang text, ma_cum text, so_cau bigint, so_dung bigint, so_goi_y bigint, cau_cuoi_at timestamp with time zone)
+- `_btyeu_today()` → date
+- `_chi_ky_json(p_ky uuid)` → jsonb
+- `_dien_buoc_hs(p_buoc jsonb, p_o jsonb)` → jsonb
+- `_dien_hs_view(p_o jsonb)` → jsonb
 - `_kho_ban_do_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
+- `_kho_cau_chuan(p_da_duyet boolean, p_kiem_may text, p_created_at timestamp with time zone)` → boolean
+- `_kho_cau_duyet_nguon()` → trigger
 - `_kho_cau_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
+- `_kho_cum_tbl(p_cautbl text)` → text
+- `_kho_dk_online_sql(p_cautbl text)` → text
+- `_kho_form_tn_cua(p_cautbl text)` → text
+- `_kho_form_tn_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
+- `_kho_loc_duyet_sql(p_loc text)` → text
 - `_kho_lt_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
+- `_kho_ngay_bat()` → timestamp with time zone
+- `_kho_snapshot_cau(p_bt_id uuid, p_cautbl text, p_lttbl text, p_ma_cau text, p_thu_tu integer, p_ma_cum text DEFAULT NULL::text)` → void
+- `_mcq_kiem_kho(p_kho text)` → void
+- `_tich_luy_cua(p_ns uuid, p_ym text)` → TABLE(diem_thang integer, chuoi integer, ngay_cuoi date, ngay_trot date)
+- `_trg_btyeu_retest_cau()` → trigger
+- `_trg_btyeu_retest_lam()` → trigger
 - `bai_test_con_han(p_bai_test uuid)` → boolean
 - `buoi_ke_tiep(p_lop uuid, p_tu date)` → date
+- `chi_me_id()` → uuid
 - `co_chuc_nang(p_chuc_nang text)` → boolean
 - `co_quyen_ghi(p_chuc_nang text)` → boolean
 - `count_cau_by_dang(p_tbl text)` → jsonb
 - `current_nhan_su_id()` → uuid
+- `dai_cau_form_tn_kiem()` → trigger
 - `dai_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `dai_cum_tien_de_bao_dong(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `dai_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `dai_dang_tien_de_bao_dong(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `et_de(p_bai_test uuid)` → jsonb
 - `et_nop(p_bai_lam uuid)` → jsonb
+- `fn_bo_dau(p text)` → text
+- `fn_btvn_buoi_cua_lop(p_lop_id uuid)` → TABLE(id uuid, ngay date, dong boolean)
+- `fn_btvn_chuyen_buoi(p_hoc_sinh_id uuid, p_buoi_cu uuid, p_buoi_moi uuid)` → void
+- `fn_btvn_de_xuat_trang_thai(p_buoi_hoc_id uuid)` → TABLE(hoc_sinh_id uuid, nop_at timestamp with time zone, de_xuat text)
+- `fn_btvn_nop_tao(p_hoc_sinh_id uuid, p_buoi_hoc_id uuid, p_paths text[])` → jsonb
+- `fn_btvn_nop_tao_auto(p_hoc_sinh_id uuid, p_paths text[])` → jsonb
+- `fn_btvn_nop_touch()` → trigger
+- `fn_btvn_online_dong_bo(p_buoi uuid)` → jsonb
+- `fn_btvn_tra_bai(p_hoc_sinh_id uuid, p_buoi_hoc_id uuid)` → void
+- `fn_btvn_tra_bai_buoi(p_buoi_hoc_id uuid)` → integer
+- `fn_btvn_xac_nhan_buoi(p_hoc_sinh_id uuid, p_buoi_hoc_id uuid)` → void
+- `fn_btyeu_ca_cua_toi()` → jsonb
+- `fn_btyeu_ca_ta(p_buoi uuid)` → jsonb
+- `fn_btyeu_dong_ca(p_buoi uuid)` → jsonb
+- `fn_btyeu_hoan_tat(p_buoi uuid, p_nhan_xet text, p_muc_ma text DEFAULT NULL::text, p_khong_test_ly_do text DEFAULT NULL::text)` → void
+- `fn_btyeu_luyen_sinh(p_buoi uuid, p_ma_dang text, p_ma_cum text DEFAULT NULL::text, p_so_cau integer DEFAULT 3)` → jsonb
+- `fn_btyeu_retest_cua_toi()` → jsonb
+- `fn_btyeu_retest_ghi(p_bai_lam uuid)` → void
+- `fn_btyeu_viec_cua_toi()` → jsonb
+- `fn_buoi_recompute_hoan_tat(p_buoi_id uuid)` → void
+- `fn_ca_cua_gio(p_gio time without time zone)` → text
+- `fn_ca_test_kq_diem()` → trigger
+- `fn_chap_nhan_dap_an(p_ma_cau text, p_dap_an_raw text)` → jsonb
+- `fn_chi_cong_no()` → jsonb
+- `fn_chi_cua_toi()` → TABLE(id uuid, ma text, so_tien_bao numeric, muc_dich text, ngay_chi date, danh_muc_de_xuat_id uuid, danh_muc_de_xuat_ten text, anh_paths text[], trang_thai text, tu_choi_ly_do text, xu_ly_at timestamp with time zone, created_at timestamp with time zone, so_tien_duyet numeric, luu_y_duyet text, ghi_so_at timestamp with time zone, danh_muc_duyet_ten text)
+- `fn_chi_de_xuat_danh_muc(p_chi_khoan_id uuid)` → uuid
+- `fn_chi_huy(p_id uuid)` → void
+- `fn_chi_khoan_duyet(p_trang_thai text DEFAULT 'cho_duyet'::text)` → TABLE(id uuid, ma text, nhan_su_id uuid, ma_ns text, ho_ten text, bank_bin text, bank_stk text, bank_chu_tk text, so_tien_bao numeric, muc_dich text, ngay_chi date, danh_muc_de_xuat_id uuid, danh_muc_de_xuat_ten text, anh_paths text[], trang_thai text, tu_choi_ly_do text, xu_ly_boi_ten text, xu_ly_at timestamp with time zone, created_at timestamp with time zone)
+- `fn_chi_ky_chi_tiet(p_ky_id uuid)` → jsonb
+- `fn_chi_ky_chot(p_ghi_chu text DEFAULT NULL::text)` → uuid
+- `fn_chi_ky_list()` → TABLE(id uuid, ma text, tu_at timestamp with time zone, den_at timestamp with time zone, so_khoan integer, tong_tien numeric, ghi_chu text, chot_at timestamp with time zone, chot_boi_ten text)
+- `fn_chi_ky_xem_truoc()` → jsonb
+- `fn_chi_nhan_su_bank()` → TABLE(id uuid, ma_ns text, ho_ten text, bank_bin text, bank_stk text, bank_chu_tk text, so_khoan_cho integer, so_khoan_tong integer)
+- `fn_chi_nhan_tien_list()` → TABLE(id uuid, so_tien numeric, ngay date, ghi_chu text, tao_boi_ten text, created_at timestamp with time zone)
+- `fn_chi_nhan_tien_them(p_so_tien numeric, p_ngay date, p_ghi_chu text DEFAULT NULL::text)` → uuid
+- `fn_chi_so_list(p_tu date DEFAULT NULL::date, p_den date DEFAULT NULL::date, p_danh_muc_id uuid DEFAULT NULL::uuid, p_nhan_su_id uuid DEFAULT NULL::uuid, p_ky_id uuid DEFAULT NULL::uuid, p_chua_chot boolean DEFAULT false)` → TABLE(id uuid, chi_khoan_id uuid, ma text, ma_ns text, ho_ten text, ngay date, so_tien numeric, so_tien_bao numeric, muc_dich text, danh_muc_id uuid, danh_muc_ten text, luu_y text, ghi_so_at timestamp with time zone, ghi_so_boi_ten text, ky_id uuid, ky_ma text, anh_paths text[])
+- `fn_chi_sua(p_id uuid, p_so_tien numeric, p_muc_dich text, p_ngay_chi date, p_danh_muc_id uuid DEFAULT NULL::uuid, p_anh_paths text[] DEFAULT '{}'::text[])` → void
+- `fn_chi_tao(p_so_tien numeric, p_muc_dich text, p_ngay_chi date, p_danh_muc_id uuid DEFAULT NULL::uuid, p_anh_paths text[] DEFAULT '{}'::text[])` → uuid
+- `fn_chi_thanh_toan_ghi_so(p_id uuid, p_so_tien numeric, p_muc_dich text, p_danh_muc_id uuid, p_ngay date, p_luu_y text DEFAULT NULL::text)` → uuid
+- `fn_chi_tong_quan()` → jsonb
+- `fn_chi_tu_choi(p_id uuid, p_ly_do text)` → void
+- `fn_completion_theo_lop(p_mon text, p_phase text, p_ym text)` → TABLE(lop_id uuid, buoi_count bigint, expected bigint, done bigint)
+- `fn_diem_thi_tinh()` → trigger
+- `fn_dien_cham(p_key jsonb, p_hs jsonb)` → TABLE(verdict text, ti_le numeric)
+- `fn_dien_form_cho_duyet(p_khoi text DEFAULT NULL::text, p_da_duyet boolean DEFAULT false)` → TABLE(id uuid, loai text, ref_id uuid, ma text, khoi text, de text, gia_thiet text, anh text, buoc jsonb, o jsonb, sinh_at timestamp with time zone, da_duyet boolean, sua_truoc_duyet boolean, ai_model text)
+- `fn_dien_form_duyet(p_id uuid, p_nguoi uuid, p_o jsonb DEFAULT NULL::jsonb)` → void
+- `fn_dien_form_tu_choi(p_id uuid, p_nguoi uuid, p_ly_do text)` → void
+- `fn_dong_btvn(p_buoi_id uuid)` → jsonb
+- `fn_dong_phase(p_buoi_id uuid, p_phase text)` → jsonb
+- `fn_et_online_dong_bo(p_buoi uuid)` → jsonb
+- `fn_exp_btvn_bai(p_trang_thai text, p_thai_do text)` → numeric
+- `fn_exp_et_rank(p_rank integer, p_n integer)` → numeric
+- `fn_exp_for_rank(p_rank integer, p_n integer, p_bands numeric[])` → numeric
+- `fn_gami_exp_xu_thang(p_ym text, p_hoc_sinh_id uuid DEFAULT NULL::uuid, p_mon text DEFAULT NULL::text)` → TABLE(hoc_sinh_id uuid, mon text, exp integer, xu integer, moc_ke integer, xu_moc_ke integer)
+- `fn_gay_bang(p_ky date)` → TABLE(nhan_su_id uuid, ns_ten text, so_gay_danh bigint, so_gay_go bigint, con_lai bigint, don_gia numeric, tien_phat numeric)
+- `fn_gay_bang_khoang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ns_ten text, so_gay_danh bigint, so_gay_go bigint, con_lai bigint, so_task_khong_dat bigint, don_gia numeric, tien_phat numeric)
+- `fn_gay_chot_thang(p_ky date)` → integer
+- `fn_gay_dang_hieu_luc(p_ref_key text)` → boolean
+- `fn_gay_theo_task(p_nhan_su_id uuid DEFAULT NULL::uuid)` → TABLE(nhan_su_id uuid, ref_loai text, ref_id text, so_gay bigint, lan_cuoi timestamp with time zone)
+- `fn_giaibai_bao_cao_chi_tiet(p_tu date, p_den date)` → SETOF v_giaibai_nhan
+- `fn_giaibai_bao_cao_tong(p_tu date, p_den date)` → TABLE(nguoi_giai uuid, ho_ten text, so_bai bigint, md1 bigint, md2 bigint, md3 bigint, md4 bigint, md5 bigint, md_khac bigint, tong_ky_tu bigint, tong_cong_thuc bigint, tb_giay_giai integer)
+- `fn_giaibai_cho_duyet(p_nhanh text[])` → SETOF v_giaibai_nhan
+- `fn_giaibai_chuoi(p_nhanh text, p_keys text[])` → TABLE(key text, chuoi jsonb)
+- `fn_giaibai_cua_toi(p_me uuid)` → SETOF v_giaibai_nhan
+- `fn_giaibai_dang_giu(p_trang_thai text, p_han_at timestamp with time zone, p_xu_ly_at timestamp with time zone)` → boolean
+- `fn_giaibai_dashboard(p_nhanh text[], p_me uuid)` → TABLE(nhan_su_id uuid, ho_ten text, dang_giu bigint, qua_han bigint, cho_duyet bigint, da_duyet bigint, tu_choi_3 bigint, da_tra bigint)
+- `fn_giaibai_dem_cho_ai(p_nhanh text[])` → TABLE(nhanh text, so_cau bigint)
+- `fn_giaibai_dem_pool(p_nhanh text[], p_che_do text DEFAULT 'giai'::text)` → TABLE(khoi text, so_bai bigint)
+- `fn_giaibai_dong_qua_han(p_nhanh text, p_key text)` → void
+- `fn_giaibai_duyet(p_nhanh text, p_id uuid, p_me uuid)` → void
+- `fn_giaibai_la_nguoi_duyet(p_me uuid, p_nhanh text)` → boolean
+- `fn_giaibai_luu_nhap(p_nhanh text, p_id uuid, p_me uuid, p_loi_giai text, p_anh text, p_dap_an text, p_y_nhap jsonb DEFAULT NULL::jsonb)` → void
+- `fn_giaibai_mon(p_nhanh text)` → text
+- `fn_giaibai_nhan(p_nhanh text, p_key text, p_me uuid)` → uuid
+- `fn_giaibai_nop(p_nhanh text, p_id uuid, p_me uuid, p_loi_giai text, p_anh text, p_dap_an text, p_y_nhap jsonb DEFAULT NULL::jsonb)` → void
+- `fn_giaibai_pool(p_nhanh text[], p_khoi text, p_limit integer DEFAULT 500, p_che_do text DEFAULT 'giai'::text)` → SETOF v_giaibai_bai
+- `fn_giaibai_src(p_nhanh text, OUT src text, OUT src_key text)` → record
+- `fn_giaibai_tbl(p_nhanh text, OUT yc text, OUT key_col text, OUT key_cast text)` → record
+- `fn_giaibai_tg_claude_dong()` → trigger
+- `fn_giaibai_tra(p_nhanh text, p_id uuid, p_me uuid)` → void
+- `fn_giaibai_tu_choi(p_nhanh text, p_id uuid, p_me uuid, p_ly_do text)` → void
+- `fn_gv_dashboard(p_ym text)` → jsonb
+- `fn_gv_phan_tram(p_tien_do numeric, p_chat_luong numeric)` → numeric
+- `fn_gv_tien_do(p_deadline date, p_ngay_nop date)` → numeric
+- `fn_gv_tran_chat_luong(p_so_lan_tra_lai integer)` → numeric
+- `fn_gv_viec_thang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ho_ten text, an_xep_hang boolean, ten_lop text, ngay date, tab text, kq text, ly_do text)
+- `fn_han_viec(p_lop uuid, p_ngay date, p_gio_bat_dau time without time zone, p_tab text)` → timestamp with time zone
+- `fn_hinh_cau_chua_giai(p_khoi text, p_limit integer DEFAULT 500)` → SETOF v_hinh_chua_giai
+- `fn_hinh_chuoi_json(p_loai text, p_id uuid)` → jsonb
+- `fn_hinh_co_phu_thuoc_cho(p_id uuid)` → boolean
+- `fn_hinh_dat_giai(p_loai text, p_ids uuid[], p_ghi_chu text, p_nguoi uuid)` → integer
+- `fn_hinh_ghi_loi_giai(p_loai text, p_id uuid, p_loi_giai text, p_anh text, p_nguon text)` → void
+- `fn_hinh_luu_loi_giai_nguoi(p_loai text, p_id uuid, p_loi_giai text, p_anh text)` → void
+- `fn_hinh_tt_bien_the(p_id uuid)` → text
+- `fn_hinh_tt_node(p_id uuid)` → TABLE(trang_thai text, loi_giai text, anh_loi_giai text, cach_id uuid)
+- `fn_hinh_yeu_cau_giai_cho()` → TABLE(yeu_cau_id uuid, yeu_cau_at timestamp with time zone, ghi_chu text, loai text, id uuid, ma text, khoi text, mo_hinh_ma text, mo_hinh_ten text, gia_thiet text, de_bai text, anh text, kieu text, da_co_loi_giai boolean, mau_loi_giai text, mau_anh text, chuoi jsonb)
+- `fn_hoa_don_cap_nhat_trang_thai()` → trigger
+- `fn_hocphi_chi_tiet_ky(p_ky date)` → TABLE(phu_huynh_id uuid, loai text, hoc_sinh_id uuid, hoc_sinh_ten text, lop_id uuid, lop_ten text, mo_ta text, so_luong numeric, don_gia numeric, he_so numeric, thanh_tien numeric)
+- `fn_hocphi_chot_ky(p_ph uuid, p_ky date, p_phat_sinh jsonb DEFAULT '[]'::jsonb)` → jsonb
+- `fn_hocphi_he_so_goi_y(p_hs uuid DEFAULT NULL::uuid)` → TABLE(hoc_sinh_id uuid, mons text[], lops text[], so_mon integer, anh_chi_em_ten text, mon_chung text[], he_so_goi_y numeric)
+- `fn_hocphi_he_so_hieu_luc(p_hs uuid[], p_ky date)` → TABLE(hoc_sinh_id uuid, he_so numeric)
+- `fn_hocphi_no_theo_ph()` → TABLE(phu_huynh_id uuid, no_khoi_tao numeric, no_he_thong numeric)
+- `fn_hocphi_phieu_ao(p_ph uuid, p_ky date)` → jsonb
+- `fn_hocphi_so_du_no(p_ph uuid)` → numeric
+- `fn_hocphi_tin_dung_con_lai(p_phs uuid[], p_ky date)` → TABLE(phu_huynh_id uuid, con_lai numeric)
+- `fn_hocphi_tong_hop_ky(p_ky date)` → TABLE(phu_huynh_id uuid, tien_chinh numeric, tien_duoi numeric)
+- `fn_js_parsefloat(p text)` → double precision
+- `fn_jsround(x numeric)` → integer
+- `fn_khao_sat_canh()` → TABLE(id bigint, loai text, ten_goc text, ghi_chu_goc text, quen_tu text, quan_he text, ket_qua_ru text, tu_hoc_sinh_id uuid, tu_ho_ten text, tu_khoi text, tu_truong text, tu_lop_truong text, tu_toa text, den_hoc_sinh_id uuid, den_ho_ten text, ngoai_bk boolean, khop_luc timestamp with time zone, nop_luc timestamp with time zone)
+- `fn_khao_sat_danh_sach()` → jsonb
+- `fn_khao_sat_goi_y_khop(p_qh bigint)` → TABLE(hoc_sinh_id uuid, ho_ten text, ma_hs text, khoi text, anh_url text, truong_hoc text, lop_truong text, toa text, diem integer, ly_do text)
+- `fn_khao_sat_hs_nop(p jsonb)` → bigint
+- `fn_khao_sat_khop(p_qh bigint, p_hoc_sinh uuid, p_ngoai_bk boolean DEFAULT false)` → void
+- `fn_khao_sat_lop_tien_do(p_dot integer DEFAULT 1)` → TABLE(lop_id uuid, ten_lop text, mon text, khoi text, si_so bigint, da_lam bigint)
+- `fn_khao_sat_luoi_lop(p_lop uuid, p_dot integer DEFAULT 1)` → TABLE(hoc_sinh_id uuid, ho_ten text, anh_url text, gioi_tinh text, khoi text, truong_hoc text, lop_truong text, noi_o_loai text, toa text, tang smallint, khu text, da_lam boolean, nop_luc timestamp with time zone)
+- `fn_khao_sat_tong_quan(p_dot integer DEFAULT 1)` → jsonb
+- `fn_kho_cau_chua_giai(p_mon text, p_khoi text, p_limit integer DEFAULT 500)` → TABLE(ma_cau text, dang_chinh text, ten_dang text, ten_chuyen_de text, khoi text, loai_cau text, noi_dung text, lua_chon jsonb, menh_de jsonb, dap_an text, anh_de text, nguon text, created_at timestamp with time zone, yeu_cau_id uuid, yeu_cau_at timestamp with time zone, yeu_cau_ghi_chu text, yeu_cau_nguoi_giai uuid, yeu_cau_nguoi_giai_ten text, yeu_cau_trang_thai text)
+- `fn_kho_dat_giai(p_mon text, p_ma_cau text[], p_ghi_chu text, p_nguoi uuid)` → integer
+- `fn_kho_dem_cau_chua_giai(p_nhanh text[])` → TABLE(khoi text, so_cau bigint, so_cho_giai bigint)
+- `fn_kho_dem_hang_duyet(p_nhanh text[])` → TABLE(loc text, khoi text, so_cau bigint)
+- `fn_kho_duyet_cau(p_mon text, p_ma_cau text, p_nguoi uuid, p_sua jsonb DEFAULT '{}'::jsonb)` → jsonb
+- `fn_kho_giai_nguoi_xong(p_mon text, p_ma_cau text)` → void
+- `fn_kho_hang_duyet(p_mon text, p_loc text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 300)` → TABLE(ma_cau text, dang_chinh text, ten_dang text, ten_chuyen_de text, khoi text, loai_cau text, noi_dung text, lua_chon jsonb, menh_de jsonb, dap_an text, loi_giai text, anh_de text, anh_dap_an text, nguon text, nguon_giai text, giai_method text, created_at timestamp with time zone, ma_cum text, ten_cum text, da_duyet boolean, kho_chuan boolean, kiem_may text, kiem_may_boi text, kiem_may_ghi text, kiem_may_at timestamp with time zone, dang_ai_de_xuat text)
+- `fn_kho_kiem_lo_thong_ke(p_kho text DEFAULT NULL::text)` → TABLE(id uuid, kho text, boi text, ten text, ky boolean, tao_at timestamp with time zone, so_cau integer, so_khop integer, so_nghi integer, so_khong_kiem integer, nguoi_xac_nhan bigint, nguoi_sua bigint, tu_choi bigint, precision_nguoi numeric)
+- `fn_kho_tbl(p_mon text)` → text
+- `fn_kho_tu_choi_cau(p_mon text, p_ma_cau text, p_nguoi uuid, p_ly_do text)` → void
+- `fn_kho_yeu_cau_giai_cho(p_mon text)` → TABLE(yeu_cau_id uuid, yeu_cau_at timestamp with time zone, ghi_chu text, ma_cau text, dang_chinh text, ten_dang text, khoi text, loai_cau text, noi_dung text, lua_chon jsonb, menh_de jsonb, dap_an text, anh_de text, ma_cum text, da_co_loi_giai boolean)
+- `fn_mastery_cells(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone, p_window integer DEFAULT 5, p_tin_cao integer DEFAULT 5, p_tin_tb integer DEFAULT 3)` → TABLE(hoc_sinh_id uuid, ma_dang text, score numeric, n bigint, muc text, tin text)
+- `fn_mastery_cells_hinh(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, hinh_baitoan_id uuid, score numeric, n bigint, muc text, tin text)
+- `fn_mastery_rollup(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, dat bigint, can_luyen bigint, yeu bigint, tin_thap bigint)
+- `fn_matrix_lop(p_lop uuid, p_phase text, p_ym text DEFAULT NULL::text)` → TABLE(hoc_sinh_id uuid, buoi_hoc_id uuid, pct integer, status text)
+- `fn_may_man_cua_toi()` → jsonb
+- `fn_may_man_quay()` → jsonb
+- `fn_mcq_form_cho_duyet(p_kho text, p_khoi text DEFAULT NULL::text, p_da_duyet boolean DEFAULT false)` → TABLE(id uuid, ma_cau text, dang_chinh text, ten_dang text, khoi text, noi_dung text, anh_de text, loi_giai text, dap_an_kho text, lua_chon jsonb, dap_an text, key_gia_tri text, ai_model text, sinh_at timestamp with time zone, da_duyet boolean, sua_truoc_duyet boolean)
+- `fn_mcq_form_duyet(p_kho text, p_id uuid, p_nguoi uuid, p_lua_chon jsonb DEFAULT NULL::jsonb)` → void
+- `fn_mcq_form_tu_choi(p_kho text, p_id uuid, p_nguoi uuid, p_ly_do text)` → void
+- `fn_mcq_loi_theo_dang(p_ma_dang text)` → jsonb
+- `fn_mcq_loi_theo_hs(p_hoc_sinh uuid, p_mon text)` → jsonb
+- `fn_mcq_metric(p_kho text, p_tu date DEFAULT NULL::date, p_den date DEFAULT NULL::date)` → jsonb
+- `fn_mcq_rule(p_kho text)` → TABLE(ma text, ten text, nhom text, du_phong boolean)
+- `fn_mo_lai_phase(p_buoi_id uuid, p_phase text)` → void
+- `fn_nguoi_truc_ca(p_thu smallint, p_ca text, p_ngay date)` → uuid
+- `fn_ops_dashboard(p_ym text)` → jsonb
+- `fn_ops_viec_nhom_thang(p_tu date, p_den date, p_tat_ca boolean DEFAULT false)` → TABLE(nhan_su_id uuid, ten_viec text, ngay date, tab text, kq_raw text, so_dat integer, so_tong integer, han timestamp with time zone, ref_key text)
+- `fn_ops_viec_thang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ho_ten text, an_xep_hang boolean, ten_viec text, ngay date, tab text, kq text, ly_do text)
+- `fn_pt_push_danh_sach(p_secret text, p_app text DEFAULT 'pt'::text)` → TABLE(id uuid, endpoint text, p256dh text, auth text)
+- `fn_pt_push_ghi_ket_qua(p_secret text, p_ket_qua jsonb)` → integer
+- `fn_pt_viec_can_cap_nhat(p_ns uuid)` → TABLE(id uuid, tieu_de text, trang_thai text, deadline date, task_me_id uuid, qua_han boolean, da_cap_nhat_hom_nay boolean, cap_nhat_cuoi_at timestamp with time zone, tien_do_bao_cao numeric, so_ngay_im integer)
+- `fn_pt_viec_cua_toi()` → TABLE(id uuid, tieu_de text, trang_thai text, deadline date, task_me_id uuid, muc_tieu text, output text, mo_ta text, khoi_luong numeric, nguoi_giao_ten text, phan_tram numeric, tien_do numeric, chat_luong numeric, so_lan_gia_han integer, gia_han_xin_deadline date, ghi_chu_nghiem_thu text, evidence text, so_con integer, so_con_dat integer, dang_mo boolean, qua_han boolean, da_cap_nhat_hom_nay boolean, cap_nhat_cuoi_at timestamp with time zone, tien_do_bao_cao numeric, created_at timestamp with time zone, hoan_thanh_at timestamp with time zone)
+- `fn_pt_viec_hom_nay()` → TABLE(id uuid, tieu_de text, trang_thai text, deadline date, task_me_id uuid, qua_han boolean, da_cap_nhat_hom_nay boolean, cap_nhat_cuoi_at timestamp with time zone, tien_do_bao_cao numeric, so_ngay_im integer)
+- `fn_rank_diem_mt(p_hs uuid, p_lop_ids uuid[], p_mon text, p_ym text)` → TABLE(rank_now integer, rank_total integer)
+- `fn_rank_diem_mt_lop(p_lop uuid, p_mon text, p_ym text)` → TABLE(hoc_sinh_id uuid, tb numeric, rank_now integer, rank_total integer)
+- `fn_recompute_exp_thang(p_lop_id uuid, p_ym text)` → jsonb
+- `fn_shop_doi(p_vat_pham uuid)` → shop_don
+- `fn_shop_don_cua_toi()` → SETOF shop_don
+- `fn_soan_cum_log()` → trigger
+- `fn_soan_touch()` → trigger
+- `fn_sua_key_va_cham_lai(p_bai_test_cau_id uuid, p_key jsonb, p_ly_do text)` → jsonb
+- `fn_ta_buoi_thang(p_ns uuid, p_ym text)` → TABLE(buoi_id uuid, ten_lop text, ngay date, gio_bat_dau time without time zone, vang boolean, ly_do text)
+- `fn_ta_dashboard(p_ym text)` → jsonb
+- `fn_ta_tien_trinh(p_ym text)` → jsonb
+- `fn_ta_viec_thang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ho_ten text, an_xep_hang boolean, ten_lop text, ngay date, tab text, kq text, ly_do text)
+- `fn_thu_cua_ngay(p_ngay date)` → smallint
+- `fn_tich_luy(p_ym text)` → jsonb
+- `fn_tich_luy_chot_thang(p_ky date)` → integer
+- `fn_tln_check(p_user text, p_key text)` → boolean
+- `fn_tln_normalize(p_val text)` → text
+- `fn_tuqua_actor()` → uuid
+- `fn_tuqua_doi(p_hoc_sinh_id uuid, p_qua_id uuid, p_so_luong integer DEFAULT 1, p_giao_ngay boolean DEFAULT true)` → TABLE(doi_qua_id uuid, so_du_moi integer)
+- `fn_tuqua_doi_giao(p_doi_qua_id uuid)` → void
+- `fn_tuqua_doi_huy(p_doi_qua_id uuid, p_ly_do text)` → TABLE(so_du_moi integer)
+- `fn_tuqua_nhap_huy(p_nhap_id uuid, p_ly_do text DEFAULT NULL::text)` → void
+- `fn_tuqua_nhap_tao(p_qua_id uuid, p_so_luong integer, p_ghi_chu text DEFAULT NULL::text)` → TABLE(nhap_id uuid, trang_thai_moi text)
+- `fn_tuqua_nhap_xac_nhan(p_nhap_id uuid, p_so_luong_thuc integer DEFAULT NULL::integer)` → TABLE(ton_moi integer)
+- `fn_tuqua_order_duyet(p_order_id uuid, p_gia_xu integer)` → TABLE(so_du_moi integer)
+- `fn_tuqua_order_giao(p_order_id uuid)` → void
+- `fn_tuqua_order_huy(p_order_id uuid, p_ly_do text)` → TABLE(so_du_moi integer)
+- `fn_tuqua_order_tao(p_hoc_sinh_id uuid, p_mo_ta text, p_link text DEFAULT NULL::text)` → uuid
+- `fn_tuqua_order_tu_choi(p_order_id uuid, p_ly_do text)` → void
+- `fn_tuqua_order_ve(p_order_id uuid)` → void
+- `fn_tuqua_qua_dang_ban(p_qua_id uuid, p_dang_ban boolean)` → void
+- `fn_tuqua_qua_sua(p_qua_id uuid, p_ten text, p_gia_xu integer, p_anh_url text DEFAULT NULL::text, p_mo_ta text DEFAULT NULL::text)` → void
+- `fn_tuqua_qua_them(p_ten text, p_gia_xu integer, p_anh_url text DEFAULT NULL::text, p_mo_ta text DEFAULT NULL::text)` → uuid
+- `fn_tuqua_so_du(p_hoc_sinh_id uuid)` → integer
+- `fn_tuqua_ton(p_qua_id uuid)` → integer
+- `fn_vh_hieu_suat(p_tien_do numeric, p_chat_luong numeric)` → numeric
+- `fn_viec_buoi_thuong(p_tu date DEFAULT NULL::date, p_den date DEFAULT NULL::date, p_tat_ca boolean DEFAULT false)` → TABLE(nhan_su_id uuid, buoi_id uuid, lop_id uuid, ten_lop text, ngay date, vai text, tab text, dong_at timestamp with time zone, han timestamp with time zone, et_online boolean, ref_key text)
+- `fn_viec_nghiem_thu_tinh()` → trigger
+- `fn_viec_ops_thuong(p_tu date, p_den date, p_tat_ca boolean DEFAULT false)` → TABLE(nhan_su_id uuid, ten_viec text, ngay date, ca text, tab text, dong_at timestamp with time zone, han timestamp with time zone, chat_luong numeric, ref_key text)
+- `fn_vvhd_tinh()` → trigger
+- `fn_xephang_chung(p_ym text)` → jsonb
+- `fn_xu_tu_exp(p_exp integer)` → integer
 - `giai_thuong_check_slot()` → trigger
 - `giaoviec_auto_dong_task_me()` → trigger
 - `giaoviec_housekeeping()` → void
@@ -2099,11 +4726,19 @@
 - `hgt_dang_tien_de_bao_dong(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `hinh_baitoan_gen_ma()` → trigger
 - `hinh_bao_dong_tien_de(goc uuid)` → TABLE(id uuid, do_sau integer)
+- `hinh_form_dien_kiem()` → trigger
+- `hinh_form_dien_thu_hoi()` → trigger
 - `hinh_mo_hinh_hau_due(goc uuid)` → TABLE(id uuid, do_sau integer)
 - `hinh_mo_hinh_to_tien(nut uuid)` → TABLE(id uuid, do_sau integer)
+- `hoc_phi_theo_mon_ky(p_ky date)` → jsonb
+- `hoi_dap_duoc_dung()` → boolean
 - `hs_cap1_cua_toi()` → boolean
 - `hs_cham_tln_ai(p_bai_lam_cau_id uuid)` → jsonb
 - `hs_dang_evals(p_mon text, p_nhanh text DEFAULT NULL::text)` → jsonb
+- `hs_dien_tra_loi(p_bai_lam_id uuid, p_bai_test_cau_id uuid, p_dap_an_hs jsonb)` → jsonb
+- `hs_doi_anh_dai_dien(p_url text)` → void
+- `hs_gioi_tinh_cua_toi()` → text
+- `hs_ho_so_cua_toi()` → jsonb
 - `hs_khoi_cua_toi()` → text
 - `hs_mon_cua_toi()` → text[]
 - `hs_nghi_tu_roi_lop()` → trigger
@@ -2119,11 +4754,14 @@
 - `la_thanh_vien()` → boolean
 - `log_bao_loi()` → trigger
 - `log_ca_test()` → trigger
+- `log_gay_de_xuat()` → trigger
+- `log_gay_ledger()` → trigger
 - `log_he_so_hoc_phi()` → trigger
 - `log_hoa_don()` → trigger
 - `log_hoat_dong_phong()` → trigger
 - `log_hoc_sinh_lop()` → trigger
 - `log_kho_cau()` → trigger
+- `log_qlht()` → trigger
 - `log_ung_vien()` → trigger
 - `log_viec()` → trigger
 - `my_hoc_sinh_id()` → uuid
@@ -2133,10 +4771,29 @@
 - `postgres_fdw_get_connections(OUT server_name text, OUT valid boolean)` → SETOF record
 - `postgres_fdw_handler()` → fdw_handler
 - `postgres_fdw_validator(text[], oid)` → void
+- `qlht_dieu_chinh_xu(p_hoc_sinh_id uuid, p_amount integer, p_ly_do text)` → TABLE(so_du_moi integer)
+- `qlht_doi_giao_dien(p_giao_dien text)` → void
+- `qlht_doi_qua_moi(p_hoc_sinh_id uuid, p_qua_id uuid, p_so_luong integer DEFAULT 1)` → TABLE(doi_qua_id uuid, so_du_moi integer)
+- `qlht_nhan_su_doi_avatar(p_anh_url text)` → void
+- `qlht_nhap_huy(p_nhap_id uuid, p_ly_do text DEFAULT NULL::text)` → void
+- `qlht_nhap_xac_nhan(p_nhap_id uuid, p_so_luong_thuc integer DEFAULT NULL::integer)` → TABLE(ton_moi integer)
+- `qlht_order_duyet(p_order_id uuid, p_gia_xu integer)` → TABLE(so_du_moi integer)
+- `qlht_order_huy(p_order_id uuid, p_ly_do text)` → void
+- `qlht_order_tao(p_hoc_sinh_id uuid, p_mo_ta text, p_link text DEFAULT NULL::text)` → uuid
+- `qlht_qua_doi_trang_thai(p_qua_id uuid, p_dang_ban boolean)` → void
+- `qlht_qua_nhap_kho(p_qua_id uuid, p_so_luong integer, p_ghi_chu text DEFAULT NULL::text)` → TABLE(nhap_id uuid, trang_thai_moi text)
+- `qlht_qua_sua(p_qua_id uuid, p_ten text, p_gia_xu integer, p_anh_url text DEFAULT NULL::text, p_mo_ta text DEFAULT NULL::text)` → void
+- `qlht_qua_them(p_ten text, p_gia_xu integer, p_anh_url text DEFAULT NULL::text, p_mo_ta text DEFAULT NULL::text)` → uuid
 - `resolve_bien_the(p_bai_test uuid)` → smallint
 - `self_link_account()` → uuid
 - `tln_cache_check(p_ma_cau text, p_norm text)` → boolean
 - `tln_norm(t text)` → text
+- `trg_chi_khoan_bf()` → trigger
+- `trg_chi_khoan_log()` → trigger
+- `trg_chi_nhan_tien_log()` → trigger
+- `trg_chi_so_bf()` → trigger
+- `trg_han_nop_ngoai_le_log()` → trigger
+- `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
 ## Checks khác (không phải dạng enum)
@@ -2155,19 +4812,36 @@
 | bo_tro_yeu | bo_tro_yeu_dong_du_ck | `CHECK (((trang_thai <> 'hoan_thanh'::text) OR ((ket_qua IS NOT NULL) AND (hoan_thanh_at IS NOT NULL))))` |
 | bo_tro_yeu | bo_tro_yeu_muc_ck | `CHECK (((muc IS NULL) OR (muc = ANY (ARRAY[1, 2, 3]))))` |
 | bo_tro_yeu | bo_tro_yeu_muc_may_ck | `CHECK (((muc_may_de_xuat IS NULL) OR (muc_may_de_xuat = ANY (ARRAY[1, 2, 3]))))` |
+| btvn_nop | btvn_nop_nguon_check | `CHECK ((nguon = 'ph_app'::text))` |
 | buoi_danh_gia | buoi_danh_gia_hoan_thanh_pct_check | `CHECK (((hoan_thanh_pct IS NULL) OR (((hoan_thanh_pct >= 0) AND (hoan_thanh_pct <= 100)) AND (((hoan_thanh_pct)::integer % 5) = 0))))` |
 | buoi_danh_gia | buoi_danh_gia_muc_chk | `CHECK (((muc IS NULL) OR ((muc >= 1) AND (muc <= 5))))` |
 | buoi_danh_gia | buoi_danh_gia_muc_ma_khop_muc_chk | `CHECK (((muc_ma IS NULL) OR ((muc IS NOT NULL) AND (("left"(muc_ma, 1))::smallint = muc))))` |
 | buoi_danh_gia_dang | buoi_danh_gia_dang_diem_check | `CHECK ((diem = ANY (ARRAY[(0)::numeric, 0.5, (1)::numeric])))` |
 | ca_test | ca_test_thoi_luong_phut_check | `CHECK ((thoi_luong_phut = ANY (ARRAY[45, 60, 75, 90, 120])))` |
+| chi_khoan | chi_khoan_muc_dich_check | `CHECK ((length(TRIM(BOTH FROM muc_dich)) > 0))` |
+| chi_khoan | chi_khoan_so_tien_bao_check | `CHECK ((so_tien_bao > (0)::numeric))` |
+| chi_ky | chi_ky_check | `CHECK ((den_at >= tu_at))` |
+| chi_nhan_tien | chi_nhan_tien_so_tien_check | `CHECK ((so_tien > (0)::numeric))` |
+| chi_so | chi_so_muc_dich_check | `CHECK ((length(TRIM(BOTH FROM muc_dich)) > 0))` |
+| chi_so | chi_so_so_tien_check | `CHECK ((so_tien > (0)::numeric))` |
 | dai_ban_do | dai_ban_do_muc_do_check | `CHECK (((muc_do >= 1) AND (muc_do <= 5)))` |
 | dai_cum_tien_de | dai_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | dai_dang_tien_de | dai_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
+| gay_de_xuat | gay_de_xuat_so_gay_check | `CHECK ((so_gay > 0))` |
+| gay_hoat_dong | gay_hoat_dong_so_gay_mac_dinh_check | `CHECK ((so_gay_mac_dinh > 0))` |
+| gay_ledger | gay_ledger_danh_co_loi | `CHECK (((loai = 'go'::text) OR (loi_id IS NOT NULL)))` |
+| gay_ledger | gay_ledger_dau | `CHECK ((((loai = 'go'::text) AND (so_gay < 0)) OR ((loai <> 'go'::text) AND (so_gay > 0))))` |
+| gay_ledger | gay_ledger_go_co_hoat_dong | `CHECK (((loai <> 'go'::text) OR (hoat_dong_id IS NOT NULL)))` |
+| gay_ledger | gay_ledger_so_gay_check | `CHECK ((so_gay <> 0))` |
+| gay_loi | gay_loi_so_gay_mac_dinh_check | `CHECK ((so_gay_mac_dinh > 0))` |
+| han_nop_ngoai_le | han_nop_ngoai_le_thu_check | `CHECK ((thu_bat_dau = ANY (ARRAY[0, 2, 3, 4, 5, 6, 7, 8])))` |
 | hgt_cum_tien_de | hgt_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | hgt_dang_tien_de | hgt_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
+| hinh_form_dien | hinh_form_dien_check | `CHECK (((cach_giai_id IS NULL) <> (bien_the_id IS NULL)))` |
 | hinh_mo_hinh | hinh_mo_hinh_cap_mo_hinh_check | `CHECK (((cap_mo_hinh >= 1) AND (cap_mo_hinh <= 4)))` |
 | hinh_mo_hinh_cha | hinh_mo_hinh_cha_check | `CHECK ((mo_hinh_id <> cha_id))` |
 | hoc_phi_phat_sinh | hoc_phi_phat_sinh_dung_loai | `CHECK ((((loai = 'lop'::text) AND (lop_id IS NOT NULL) AND (hoc_sinh_id IS NULL)) OR ((loai = 'ca_nhan'::text) AND (hoc_sinh_id IS NOT NULL) AND (lop_id IS NULL))))` |
+| hoi_dap_bot | hoi_dap_bot_id_check | `CHECK ((id = 1))` |
 | hs_level | hs_level_level_check | `CHECK (((level >= 0) AND (level <= 3)))` |
 | hs_level_log | hs_level_log_level_chot_check | `CHECK (((level_chot >= 0) AND (level_chot <= 3)))` |
 | hs_level_log | hs_level_log_level_cu_check | `CHECK (((level_cu >= 0) AND (level_cu <= 3)))` |
@@ -2175,8 +4849,14 @@
 | khtn_cum_tien_de | khtn_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | khtn_dang_tien_de | khtn_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
 | ky_thi | ky_thi_he_so_check | `CHECK ((he_so = ANY (ARRAY[1, 2])))` |
+| may_man_luot | may_man_luot_tien_check | `CHECK ((tien >= 0))` |
 | muc_nang_luc | muc_nang_luc_muc_check | `CHECK (((muc >= 1) AND (muc <= 3)))` |
 | phan_cong_ca | phan_cong_ca_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
+| qlht_doi_qua | qlht_doi_qua_so_luong_check | `CHECK ((so_luong > 0))` |
+| qlht_qua | qlht_qua_gia_xu_check | `CHECK ((gia_xu > 0))` |
+| qlht_qua_order | qlht_qua_order_gia_xu_check | `CHECK ((gia_xu > 0))` |
+| qlht_xu_ledger | qlht_xu_ledger_amount_check | `CHECK ((amount <> 0))` |
+| shop_vat_pham | shop_vat_pham_gia_diem_check | `CHECK ((gia_diem > 0))` |
 | thoi_khoa_bieu | thoi_khoa_bieu_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | troly_nhan_dinh | troly_nhan_dinh_gac_ck | `CHECK (((quyet_dinh = 'gac'::text) = (gac_den IS NOT NULL)))` |
 | troly_ra_soat | troly_ra_soat_gac_ck | `CHECK (((ket_luan = 'gac'::text) = (gac_den IS NOT NULL)))` |

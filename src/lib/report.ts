@@ -109,40 +109,23 @@ export async function upsertBaoCaoPH(hocSinhId: string, mon: string, thang: stri
 // ⚠ NGOẠI LỆ CÓ CHỦ ĐÍCH so §5 CLAUDE.md ("chưa-đo ≠ 0"): Thùy 08-19 chốt RIÊNG cho bảng xếp hạng này —
 // HS đang học mà CHƯA có điểm MT trong cửa sổ → tính 0đ để rank đủ TOÀN BỘ roster (không loại khỏi mẫu
 // số như mastery bình thường). Chỉ áp cho xếp hạng — không áp cho ô "Điểm MT" hiển thị (vẫn "—").
-function mtWindow(ym: string): { from: string; to: string } {
-  const [Y, M] = ym.split('-').map(Number)
-  const nextY = M === 12 ? Y + 1 : Y, nextM = M === 12 ? 1 : M + 1
-  return { from: `${ym}-25`, to: `${nextY}-${String(nextM).padStart(2, '0')}-11` } // < ngày 11 = qua hết mùng 10
-}
+// (mtWindow — cửa sổ 25/tháng → hết mùng 10 tháng sau — giờ nằm TRONG fn_rank_diem_mt, §2.0.)
 // ⚠ CHỐT (Thùy 08-21, sau 2 lần sửa hụt với Trần Thị Vân Khánh & Phan Bảo Nhi): điểm MT là CỦA EM, ĐI
 // THEO EM — thi ở lớp nào không quan trọng, đề chung nên điểm nào cũng dùng được. Cái ĐỔI theo phạm vi
 // (lớp/hệ/khối) chỉ là ROSTER — ai được đem ra so sánh — KHÔNG PHẢI cách tính điểm của từng em. Vậy: điểm
 // của 1 HS = TRUNG BÌNH mọi diem_thi (mt_sat_hach, đúng môn, đúng cửa sổ tháng) của CHÍNH em, bất kể kỳ
 // thi đó tổ chức ở lớp/hệ nào. (2 bản sửa trước đều SAI vì cố khớp lớp/hệ của kỳ thi với lớp/hệ hiện tại
 // của em — đúng hướng "chống lẫn điểm" nhưng SAI chỗ áp dụng: đúng ra không cần khớp gì cả.)
-async function rankByDiemMT(hocSinhId: string, rosterIds: string[], mon: string, ym: string): Promise<{ rankNow: number; rankTotal: number } | null> {
-  if (!rosterIds.includes(hocSinhId)) return null // HS không thuộc roster (đã rời lớp/môn…) → không có peer để xếp
-  const { from, to } = mtWindow(ym)
-  // ky_thi.ngay thực tế luôn NULL cho MT (xem comment ở mastery.ts) → lấy ngày qua buoi_hoc.ngay.
-  const { data: dt } = await supabase.from('diem_thi')
-    .select('hoc_sinh_id, diem, ky_thi:ky_thi_id!inner(loai, mon, buoi:buoi_hoc_id(ngay))')
-    .in('hoc_sinh_id', rosterIds).eq('ky_thi.loai', 'mt_sat_hach').eq('ky_thi.mon', mon).limit(LIMIT)
-  const sums = new Map<string, { sum: number; n: number }>()
-  for (const r of (dt ?? []) as any[]) {
-    if (r.diem == null) continue
-    const d = r.ky_thi?.buoi?.ngay
-    if (!d || d < from || d >= to) continue
-    const a = sums.get(r.hoc_sinh_id) ?? { sum: 0, n: 0 }; a.sum += Number(r.diem); a.n++; sums.set(r.hoc_sinh_id, a)
-  }
-  const scoreOf = (id: string) => { const s = sums.get(id); return s ? s.sum / s.n : 0 } // chưa có điểm → 0
-  const myAvg = scoreOf(hocSinhId)
-  const allAvg = rosterIds.map(scoreOf)
-  return { rankNow: 1 + allAvg.filter((x) => x > myAvg).length, rankTotal: allAvg.length }
-}
-async function loadRosterIds(lopIds: string[]): Promise<string[]> {
-  if (!lopIds.length) return []
-  const { data: gd } = await supabase.from('hoc_sinh_lop').select('hoc_sinh_id').eq('trang_thai', 'dang_hoc').in('lop_id', lopIds).limit(LIMIT)
-  return [...new Set(((gd ?? []) as any[]).map((r) => r.hoc_sinh_id as string))]
+// §2.0 (30/08): xếp hạng tính ở DB — fn_rank_diem_mt (roster + avg cửa sổ + rank trong 1 câu
+// SQL; parity 14/14 với thuật toán JS trên lớp 9A1). Client chỉ resolve DANH SÁCH LỚP theo
+// phạm vi (lớp/hệ/khối) rồi gọi fn. Luật giữ nguyên: điểm của em đi theo em; chưa điểm = 0đ
+// (ngoại lệ 08-19 riêng bảng xếp hạng).
+async function rankByDiemMT(hocSinhId: string, lopIds: string[], mon: string, ym: string): Promise<{ rankNow: number; rankTotal: number } | null> {
+  if (!lopIds.length) return null
+  const { data, error } = await supabase.rpc('fn_rank_diem_mt', { p_hs: hocSinhId, p_lop_ids: lopIds, p_mon: mon, p_ym: ym })
+  if (error) throw error
+  const r = ((data ?? []) as any[])[0]
+  return r ? { rankNow: Number(r.rank_now), rankTotal: Number(r.rank_total) } : null
 }
 
 export type KhoiRankMT = { rankNow: number; rankTotal: number; khoi: string }
@@ -151,15 +134,13 @@ export async function getKhoiRankDiemMT(hocSinhId: string, mon: string, ym: stri
   const khoi = (hs as any)?.khoi as string | null
   if (!khoi) return null
   const { data: lops } = await supabase.from('lop').select('id').eq('mon', mon).eq('khoi', khoi).limit(LIMIT)
-  const rosterIds = await loadRosterIds(((lops ?? []) as any[]).map((l) => l.id as string))
-  const r = await rankByDiemMT(hocSinhId, rosterIds, mon, ym)
+  const r = await rankByDiemMT(hocSinhId, ((lops ?? []) as any[]).map((l) => l.id as string), mon, ym)
   return r ? { ...r, khoi } : null
 }
 
 export type LopRankMT = { rankNow: number; rankTotal: number }
 export async function getLopRankDiemMT(hocSinhId: string, lopId: string, mon: string, ym: string): Promise<LopRankMT | null> {
-  const rosterIds = await loadRosterIds([lopId])
-  return rankByDiemMT(hocSinhId, rosterIds, mon, ym)
+  return rankByDiemMT(hocSinhId, [lopId], mon, ym)
 }
 
 // Hạng TRONG HỆ (lop.bac — band S/A/B/C… GV chọn khi xếp lớp, vd "lớp 7A1" → hệ "A") — 3 hạng lớp/hệ/khối
@@ -172,7 +153,19 @@ export async function getHeRankDiemMT(hocSinhId: string, mon: string, ym: string
   const he = (lopHS as any)?.lop?.bac as string | null
   if (!khoi || !he) return null
   const { data: lops } = await supabase.from('lop').select('id').eq('mon', mon).eq('khoi', khoi).eq('bac', he).limit(LIMIT)
-  const rosterIds = await loadRosterIds(((lops ?? []) as any[]).map((l) => l.id as string))
-  const r = await rankByDiemMT(hocSinhId, rosterIds, mon, ym)
+  const r = await rankByDiemMT(hocSinhId, ((lops ?? []) as any[]).map((l) => l.id as string), mon, ym)
   return r ? { ...r, he, khoi } : null
+}
+
+// ── Rank MT CẢ LỚP 1 call (app GV tab Lớp — CEO 31/08: hiện MT theo THÁNG + rank khối nhỏ) ──
+// §2.0: bản BATCH của fn_rank_diem_mt (gọi per-HS cho cả lớp là N+1 RPC). Cùng luật nguyên văn
+// (điểm của em đi theo em · cửa sổ 25→10 · chưa thi = 0đ CHỈ trong xếp hạng); `tb` = null khi
+// chưa thi trong cửa sổ → ô hiển thị "—".
+export type RankMTRow = { hocSinhId: string; tb: number | null; rankNow: number; rankTotal: number }
+export async function rankDiemMTLop(lopId: string, mon: string, ym: string): Promise<Map<string, RankMTRow>> {
+  const { data, error } = await supabase.rpc('fn_rank_diem_mt_lop', { p_lop: lopId, p_mon: mon, p_ym: ym })
+  if (error) throw error
+  return new Map(((data ?? []) as any[]).map((r) => [r.hoc_sinh_id as string, {
+    hocSinhId: r.hoc_sinh_id, tb: r.tb == null ? null : Number(r.tb), rankNow: Number(r.rank_now), rankTotal: Number(r.rank_total),
+  }]))
 }

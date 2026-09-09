@@ -41,7 +41,7 @@ const files = readdirSync(dir).filter((f) => f.endsWith('.sql')).sort()
 const argv = process.argv.slice(2)
 const laBaseline = argv.includes('--baseline')
 const laStatus = argv.includes('--status')
-const denFile = argv.find((a) => !a.startsWith('--')) ?? null
+const denFile = argv.find((a, i) => !a.startsWith('--') && argv[i - 1] !== '--only') ?? null
 
 // --status chỉ ĐỌC ⇒ dùng được role chỉ-đọc. Hai đường kia GHI ⇒ bắt buộc role ghi.
 // Ưu tiên DATABASE_URL_RW truyền lúc gọi: giữ chuỗi kết nối GHI ra khỏi đĩa hoàn toàn,
@@ -98,7 +98,13 @@ if (denFile && !files.includes(denFile)) {
 
 // Vân tay nội dung — để phát hiện file ĐÃ ÁP nhưng sau đó bị sửa (lịch sử migration phải bất biến;
 // sửa file cũ = DB thật và repo nói hai chuyện khác nhau, và không ai nhận ra).
-const bam = (f) => createHash('sha256').update(readFileSync(join(dir, f))).digest('hex').slice(0, 16)
+// CHUẨN HOÁ XUỐNG DÒNG TRƯỚC KHI BĂM: cùng một file áp từ máy Windows (CRLF) và từ Linux/cloud
+// (LF) ra hai vân tay khác nhau ⇒ `--status` la làng "62 file bị sửa" trong khi nội dung y hệt
+// (cắn 01/09: cả 62 file lệch đều CHỈ vì CRLF — không file nào đổi nội dung thật).
+// Băm theo nội dung LOGIC: bỏ ký tự CR trước khi băm, không băm theo kiểu xuống dòng.
+const bam = (f) => createHash('sha256')
+  .update(readFileSync(join(dir, f), 'utf8').replace(/\r/g, ''), 'utf8')
+  .digest('hex').slice(0, 16)
 
 const c = new pg.Client({ connectionString: url })
 await c.connect()
@@ -114,9 +120,18 @@ try {
       : new Map()
     const treo0 = files.filter((f) => !daAp0.has(f))
     const sua0 = files.filter((f) => daAp0.has(f) && daAp0.get(f) !== bam(f))
+    // Dòng sổ KHÔNG còn file trong repo: SQL đã chạy trên DB thật nhưng file không nằm trong repo
+    // (áp tay qua SQL Editor rồi quên commit, hoặc file sống ở nhánh chưa merge). Repo hết là
+    // source of truth cho phần đó ⇒ dựng lại DB từ repo sẽ THIẾU. Phải nói ra, đừng để im.
+    const moCoi0 = [...daAp0.keys()].filter((t) => !files.includes(t)).sort()
     if (!co.so) console.log('(chưa có sổ `_migrations` — dựng bằng --baseline)')
     console.log(`Đã áp: ${daAp0.size}/${files.length}`)
     console.log(treo0.length ? `\nCÒN TREO (${treo0.length}):\n  ${treo0.join('\n  ')}` : '\nKhông còn file treo.')
+    if (moCoi0.length) {
+      console.log(`\n⚠ CÓ TRONG SỔ NHƯNG KHÔNG CÒN FILE TRONG REPO (${moCoi0.length}) — DB có, repo không:`)
+      console.log(`  ${moCoi0.join('\n  ')}`)
+      console.log('  Dựng lại DB từ repo sẽ THIẾU phần này. Tìm lại file (nhánh chưa merge?) rồi commit.')
+    }
     if (sua0.length) {
       console.log(`\n⚠ ĐÃ ÁP NHƯNG FILE BỊ SỬA SAU ĐÓ (${sua0.length}) — DB và repo đang nói khác nhau:`)
       console.log(`  ${sua0.join('\n  ')}`)
@@ -178,8 +193,15 @@ try {
     console.warn('  Không áp lại. Muốn đổi thì viết migration MỚI đè lên.\n')
   }
   if (!conTreo.length) { console.log(`Không có file nào treo (đã áp ${daAp.size}/${files.length}).`); process.exit(0) }
+  // --only <file>: áp ĐÚNG 1 file treo, ghi sổ 1 dòng — dùng khi có file treo của NGƯỜI KHÁC (08/09: `npm run migrate` áp
+  // luôn template rỗng của phiên khác, `--baseline` lại đánh dấu "tới và gồm" — cả hai đều đụng việc người ta).
+  const onlyIdx = argv.indexOf('--only')
+  const only = onlyIdx >= 0 ? argv[onlyIdx + 1] : null
+  if (only && !conTreo.includes(only)) { console.error(`❌ --only: "${only}" không nằm trong danh sách treo: ${conTreo.join(', ')}`); process.exit(1) }
+  const seAp = only ? [only] : conTreo
+  if (!only && conTreo.length > 1) console.warn(`⚠ Sẽ áp ${conTreo.length} file treo — có file của người khác thì dùng --only <file>.`)
 
-  for (const f of conTreo) {
+  for (const f of seAp) {
     process.stdout.write(`Applying ${f} ... `)
     try {
       await c.query('begin')
@@ -194,7 +216,7 @@ try {
       throw e
     }
   }
-  console.log(`— Đã áp ${conTreo.length} file. Nhớ chạy \`npm run schema\` rồi commit schema.md kèm migration.`)
+  console.log(`— Đã áp ${seAp.length} file. Nhớ chạy \`npm run schema\` rồi commit schema.md kèm migration.`)
 } catch (e) {
   console.error('❌', e.message)
   process.exitCode = 1

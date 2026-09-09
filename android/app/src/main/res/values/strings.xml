@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">BK Academy</string>
+    <string name="title_activity_main">BK Academy</string>
+    <string name="package_name">vn.edu.bkacademy.hs</string>
+    <string name="custom_url_scheme">vn.edu.bkacademy.hs</string>
+</resources>

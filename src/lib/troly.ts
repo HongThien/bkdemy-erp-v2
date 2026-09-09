@@ -22,7 +22,7 @@
 //   sai hoàn toàn vì đó là luồng test ONLINE, xem DEVLOG 12/08.)
 // ============================================================================
 import { listDotDuoi, listDotChoDuyetDuoi, type DotDuoi } from './botro_duoi'
-import { getMyTasks, buoiAoCuaNgay, diemDanhTienDo, TASKS_BY_VAI } from './gami'
+import { getMyTasks, buoiAoCuaNgay, diemDanhTienDo, TASKS_BY_VAI, type VaiViec } from './gami'
 import { getMyProfile, getMyScope } from './nhansu'
 import { myBuoiAoCuaKhoang, getMyOpsTasks, getMyPrepTasks, OPS_TASK_LABEL } from './opsvanhanh'
 import { listCanScanDaCham } from './detest'
@@ -219,7 +219,7 @@ export type KetLuanRaSoat = 'thieu_that' | 'lop_khong_lam' | 'lam_ngoai_he'
 
 export type MucRaSoat = {
   buoiId: string; lopId: string; lop: string; ngay: string; tuoiNgay: number
-  tab: TabRaSoat; nhan: string; vai: 'gv' | 'tg'
+  tab: TabRaSoat; nhan: string; vai: VaiViec
   ketLuan: KetLuanRaSoat | null   // null = chưa rà
   ghiChu: string | null
 }
@@ -315,7 +315,7 @@ export type QuyetDinh = 'lam' | 'huy' | 'gac'
 
 export type ViecNhac = {
   buoiId: string; lopId: string; lop: string; ngay: string; tuoiNgay: number
-  tab: string; nhan: string; vai: 'gv' | 'tg'
+  tab: string; nhan: string; vai: VaiViec
   deadline: number | null
   quaHan: boolean
   quyetDinh: QuyetDinh | null   // null = chưa quyết

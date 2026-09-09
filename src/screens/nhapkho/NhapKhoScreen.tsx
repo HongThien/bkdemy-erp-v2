@@ -2,9 +2,10 @@
 // 1 người làm full luồng 1 phiên → giữ ở client-state (KHÔNG draft table). Duyệt TỪNG câu chiếm màn.
 // Hiển thị PREVIEW-FIRST (render công thức); bấm ✎ Sửa mới ra code LaTeX.
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useMonScope } from '../../lib/mon'
+import { useMonScope } from '../../hooks/useMonScope'
 import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdfRender'
 import { MathText, inp, readClipboardImageFile } from '../kho/ui'
+import { MathTextarea } from '../../components/math/MathTextarea'
 import { CauEditor, type ReviewItem } from '../kho/DangHub'
 import {
   KHOI_OPTIONS, DEFAULT_KHOI,
@@ -410,7 +411,7 @@ function DungSaiEditor({ r, cands, candMap, recent, edit, onPatch, onPick }: { r
       {chuyenDe && <div className="mb-2 inline-flex rounded-full bg-indigo-50 px-2.5 py-1 text-[11px] text-indigo-700">📁 Cả câu neo chuyên đề: {chuyenDe}</div>}
       <div className="mb-1 text-[12px] text-slate-400">Đề chung</div>
       {edit
-        ? <textarea value={r.noi_dung} onChange={(e) => onPatch({ noi_dung: e.target.value })} className={`${code} min-h-[64px]`} />
+        ? <MathTextarea value={r.noi_dung} onChange={(v) => onPatch({ noi_dung: v })} className={`${code} min-h-[64px]`} />
         : <div className={preBox}><MathText>{r.noi_dung}</MathText></div>}
       {r.anhDe && <img src={r.anhDe} alt="hình đề" className="mt-2 max-h-56 rounded-lg border border-slate-200" />}
       <div className="mt-3 text-[12px] text-slate-400">4 mệnh đề — mỗi mệnh đề 1 dạng riêng</div>

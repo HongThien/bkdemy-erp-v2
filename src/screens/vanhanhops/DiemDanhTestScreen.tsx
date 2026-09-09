@@ -50,7 +50,7 @@ export default function DiemDanhTestScreen() {
           <h2 className="text-[20px] font-semibold text-slate-800">Điểm danh test</h2>
           <p className="text-[12px] text-slate-400">HS tới test đầu vào (đặt lịch trước hoặc walk-in) — đếm ngược tới giờ kết thúc dự kiến.</p>
         </div>
-        <button onClick={() => setForm(true)} className="ml-auto rounded-xl bg-indigo-600 px-4 py-2 text-[14px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Tạo test đầu vào</button>
+        <button onClick={() => setForm(true)} className="ml-auto min-h-[44px] rounded-xl bg-indigo-600 px-4 py-2 text-[14px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Tạo test đầu vào</button>
       </div>
 
       {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : dangChay.length === 0 ? (
@@ -146,33 +146,33 @@ function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deL
           <span className="text-[11px] text-amber-600" title='Học thuật chưa tạo đề test đầu vào cho khối×môn này ở tab "Đề test".'>⚠ Chưa có đề test đầu vào cho khối này</span>
         ) : (
           <>
-            <select className="rounded-md border border-slate-200 px-2 py-1 text-[12px]" value={chonMT} onChange={(e) => setChonMT(e.target.value)}>
+            <select className="min-h-[36px] rounded-md border border-slate-200 px-2 py-1.5 text-[12px]" value={chonMT} onChange={(e) => setChonMT(e.target.value)}>
               <option value="">{deDaGan ? 'Đổi đề khác…' : 'Chọn đề…'}</option>
               {cands.map((d) => <option key={d.id} value={d.id}>{d.ten}{d.laHienTai ? ' · đang dùng' : ' · lịch sử'}</option>)}
             </select>
-            {chonMT && <button onClick={ganDe} disabled={busy} className="rounded-md bg-slate-700 px-2 py-1 text-[11px] font-medium text-white hover:bg-slate-600 disabled:opacity-40">{deDaGan ? 'Đổi đề' : 'Gán đề'}</button>}
+            {chonMT && <button onClick={ganDe} disabled={busy} className="min-h-[36px] rounded-md bg-slate-700 px-2.5 py-1.5 text-[11px] font-medium text-white hover:bg-slate-600 disabled:opacity-40">{deDaGan ? 'Đổi đề' : 'Gán đề'}</button>}
           </>
         )}
       </div>
 
       <div className="mb-2 grid grid-cols-2 gap-1.5">
-        <select className="rounded-md border border-slate-200 px-2 py-1 text-[12px]" value={nguoiCham} onChange={(e) => doiNguoiCham(e.target.value)} disabled={busy} title="Người dự kiến chấm — hàng đợi Chấm vẫn chung, ai mở cũng làm được">
+        <select className="min-h-[36px] rounded-md border border-slate-200 px-2 py-1.5 text-[12px]" value={nguoiCham} onChange={(e) => doiNguoiCham(e.target.value)} disabled={busy} title="Người dự kiến chấm — hàng đợi Chấm vẫn chung, ai mở cũng làm được">
           <option value="">👤 Người chấm…</option>
           <AssignOptions list={choCham} />
         </select>
-        <select className="rounded-md border border-slate-200 px-2 py-1 text-[12px]" value={nguoiTraBai} onChange={(e) => doiNguoiTraBai(e.target.value)} disabled={busy} title="Người dự kiến trả bài — hàng đợi Trả bài vẫn chung, ai mở cũng làm được">
+        <select className="min-h-[36px] rounded-md border border-slate-200 px-2 py-1.5 text-[12px]" value={nguoiTraBai} onChange={(e) => doiNguoiTraBai(e.target.value)} disabled={busy} title="Người dự kiến trả bài — hàng đợi Trả bài vẫn chung, ai mở cũng làm được">
           <option value="">👤 Người trả bài…</option>
           <AssignOptions list={choTraBai} />
         </select>
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
-        <label className="cursor-pointer rounded-md border border-slate-200 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-300">
+        <label className="flex min-h-[36px] cursor-pointer items-center rounded-md border border-slate-200 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-300">
           {baiUrl ? '📄 Đổi bài' : '📎 Upload bài'}
           <input type="file" accept="application/pdf,image/*" className="hidden" onChange={chonFile} disabled={busy} />
         </label>
         {baiUrl && <a href={baiUrl} target="_blank" rel="noreferrer" className="text-[12px] text-indigo-500 hover:underline">Xem bài</a>}
-        <button onClick={hoanTat} disabled={busy || !baiUrl} title={!baiUrl ? 'Cần upload bài mới hoàn tất được' : ''} className="ml-auto rounded-md bg-emerald-600 px-3 py-1.5 text-[12px] font-semibold text-white hover:bg-emerald-500 disabled:opacity-40">✓ Hoàn tất</button>
+        <button onClick={hoanTat} disabled={busy || !baiUrl} title={!baiUrl ? 'Cần upload bài mới hoàn tất được' : ''} className="ml-auto min-h-[36px] rounded-md bg-emerald-600 px-3 py-1.5 text-[12px] font-semibold text-white hover:bg-emerald-500 disabled:opacity-40">✓ Hoàn tất</button>
       </div>
       {err && <p className="mt-1.5 text-[12px] text-rose-600">{err}</p>}
     </div>
@@ -234,8 +234,8 @@ function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: () =
           </div>
 
           {!ungVienId ? (
-            <div className="grid grid-cols-2 gap-3 rounded-xl bg-slate-50 p-3">
-              <div className="col-span-2"><Lbl>Tên học sinh *</Lbl><input className={inputCls} value={f.hoTenHs} onChange={(e) => set('hoTenHs', e.target.value)} autoFocus /></div>
+            <div className="grid grid-cols-1 gap-3 rounded-xl bg-slate-50 p-3 sm:grid-cols-2">
+              <div className="sm:col-span-2"><Lbl>Tên học sinh *</Lbl><input className={inputCls} value={f.hoTenHs} onChange={(e) => set('hoTenHs', e.target.value)} autoFocus /></div>
               <div><Lbl>Môn</Lbl><select className={inputCls} value={f.mon} onChange={(e) => set('mon', e.target.value)}>{MON_OPTIONS.map((m) => <option key={m} value={m}>{m}</option>)}</select></div>
               <div><Lbl>Lớp</Lbl><select className={inputCls} value={f.khoi} onChange={(e) => set('khoi', e.target.value)}>{KHOI_OPTIONS.map((k) => <option key={k} value={k}>{k}</option>)}</select></div>
               <div><Lbl>Ngày sinh</Lbl><input type="date" max={homNayVN()} className={inputCls} value={f.ngaySinh} onChange={(e) => set('ngaySinh', e.target.value)} /></div>
@@ -268,7 +268,7 @@ function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: () =
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <div>
               <Lbl>Người chấm (dự kiến)</Lbl>
               <select className={inputCls} value={f.nguoiChamId} onChange={(e) => set('nguoiChamId', e.target.value)}>
@@ -288,8 +288,8 @@ function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: () =
 
           {err && <p className="text-[12px] text-rose-600">{err}</p>}
           <div className="flex justify-end gap-2 pt-1">
-            <button onClick={onClose} className="rounded-lg border border-slate-200 px-4 py-2 text-[14px] text-slate-600 hover:bg-slate-50">Huỷ</button>
-            <button onClick={save} disabled={busy} className="rounded-lg bg-indigo-600 px-4 py-2 text-[14px] font-medium text-white hover:bg-indigo-500 disabled:opacity-50">{busy ? 'Đang tạo…' : 'Hoàn thành'}</button>
+            <button onClick={onClose} className="min-h-[44px] rounded-lg border border-slate-200 px-4 py-2 text-[14px] text-slate-600 hover:bg-slate-50">Huỷ</button>
+            <button onClick={save} disabled={busy} className="min-h-[44px] rounded-lg bg-indigo-600 px-4 py-2 text-[14px] font-medium text-white hover:bg-indigo-500 disabled:opacity-50">{busy ? 'Đang tạo…' : 'Hoàn thành'}</button>
           </div>
         </div>
       </div>

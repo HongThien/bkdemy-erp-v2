@@ -135,7 +135,7 @@ export function NguoiPicker({ nguoi, value, onChange, exclude }: {
 export function NguoiChip({ ten }: { ten?: string | null }) {
   if (!ten) return <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-medium text-amber-700 ring-1 ring-amber-200">◌ chưa gán</span>
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-semibold text-indigo-700 ring-1 ring-indigo-200">
+    <span className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-semibold text-indigo-700 ring-1 ring-indigo-200">
       <span className="flex h-4 w-4 items-center justify-center rounded-full bg-indigo-600 text-[8px] font-bold text-white">{initials(ten)}</span>
       {ten}
     </span>
@@ -150,8 +150,9 @@ export function DeadlineChip({ deadline, active = true }: { deadline?: string | 
     : con < 0 ? 'bg-rose-50 text-rose-700 ring-rose-200'
     : con <= 2 ? 'bg-amber-50 text-amber-700 ring-amber-200'
     : 'bg-slate-100 text-slate-600 ring-slate-200'
-  const nhan = con < 0 && active ? ` (trễ ${-con}d)` : con === 0 && active ? ' (hôm nay)' : ''
-  return <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold ring-1 ${cls}`}>📅 {fmtNgay(deadline)}{nhan}</span>
+  // CEO 05/09: bỏ đếm ngày trễ — chip đỏ là đủ biết quá hạn, chữ thêm chỉ làm card dày.
+  const nhan = con === 0 && active ? ' (hôm nay)' : ''
+  return <span className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] font-semibold ring-1 ${cls}`}>📅 {fmtNgay(deadline)}{nhan}</span>
 }
 
 // Chọn giá trị/cỡ theo thang FIBONACCI (1·2·3·5·8) — pill. CEO chốt 07-31.

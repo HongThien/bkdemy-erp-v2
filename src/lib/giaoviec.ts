@@ -6,9 +6,8 @@
 // Hằng số/công thức: giaoviec-config.ts (§4.8). UI KHÔNG gọi supabase trực tiếp.
 // ============================================================================
 import { supabase } from './supabase'
-import { getMyScope } from './nhansu'
 import {
-  GV, tinhTienDo, tinhChatLuong, gopPhanTram,
+  GV, // tinhTienDo/tinhChatLuong/gopPhanTram đã xuống DB (fn_gv_*, mig 202608300228 — §2.0)
   todayVN, kyTuanHienTai, thangCuaKyTuan, soNgayLech,
 } from './giaoviec-config'
 
@@ -135,19 +134,21 @@ export function ideaQuaHanTriage(created_at: string): boolean {
 }
 
 // ════════════════════════════════════════════════════════════════════════════
-// 3) AI GIAO ĐƯỢC CHO AI — reuse span-of-control (getMyScope), §5
+// 3) AI GIAO ĐƯỢC CHO AI — toàn bộ nhân sự đang làm, org-wide (§5, chốt 08-13)
 // ════════════════════════════════════════════════════════════════════════════
 export type NguoiDuocGiao = { nhan_su_id: string; ho_ten: string; ma_ns?: string }
+// Ai giao được cho ai (§0 spec: data ORG-WIDE, phi-học-tập — KHÔNG chia theo môn/team).
+// Trước đây lọc qua span-of-control (getMyScope, dựng cho task-scope VẬN HÀNH theo lớp/môn)
+// → GV môn không đứng dưới ai trong cây đó (vd Phạm Ngọc — KHTN) bị lọt khỏi danh sách dù việc
+// phát triển không hề phân theo môn. CEO chốt 08-13: bỏ lọc, cho chọn TOÀN BỘ nhân sự đang làm.
 export async function listNguoiDuocGiao(): Promise<NguoiDuocGiao[]> {
-  const scope = await getMyScope()
-  if (!scope) return []
-  const seen = new Map<string, NguoiDuocGiao>()
-  // Tự nhận việc = tự-giao cho mình (§5).
-  seen.set(scope.nhanSu.id, { nhan_su_id: scope.nhanSu.id, ho_ten: scope.nhanSu.ho_ten + ' (tôi)', ma_ns: (scope.nhanSu as any).ma_ns })
-  for (const r of [...scope.giamSatTrucTiep, ...scope.giamSatSau]) {
-    if (!seen.has(r.nhan_su_id)) seen.set(r.nhan_su_id, { nhan_su_id: r.nhan_su_id, ho_ten: r.ho_ten, ma_ns: r.ma_ns })
-  }
-  return [...seen.values()]
+  const me = await myNhanSuId()
+  const { data, error } = await supabase.from('nhan_su').select('id, ho_ten, ma_ns').eq('trang_thai', 'dang_lam').order('ho_ten').limit(LIMIT)
+  if (error) throw error
+  return ((data ?? []) as any[]).map((n) => ({
+    nhan_su_id: n.id, ma_ns: n.ma_ns,
+    ho_ten: n.id === me ? `${n.ho_ten} (tôi)` : n.ho_ten,
+  }))
 }
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -249,12 +250,35 @@ export async function listTaskCon(taskMeId: string): Promise<ViecFull[]> {
   return decorateViec((data ?? []) as Viec[])
 }
 
-// WEEKLY PLANNING (story §4): mọi task của tuần (mẹ + con + lẻ). UI gom cụm theo task_me_id.
+// WEEKLY PLANNING (story §4, sửa 08-18 "task mẹ kéo dài nhiều tuần"): mọi task của tuần
+// (mẹ + con + lẻ) CỘNG mọi task MỞ từ các tuần TRƯỚC còn dang dở — trước đây task neo cứng
+// vào ky_tuan lúc tạo nên hễ kéo dài sang tuần sau là "biến mất" khỏi Weekly Planning (phải
+// bấm lùi đúng tuần cũ mới thấy lại), dù người làm vẫn thấy nó bình thường ở "Việc của tôi"
+// (không lọc ky_tuan). KHÔNG đổi ky_tuan gốc (đó là tuần LẬP KẾ HOẠCH, dùng tính hiệu suất
+// tháng) — chỉ mở rộng tập kết quả ở tầng VIEW, đúng PURE-DERIVE (CLAUDE §1), không ghi đè state.
 export async function listWeeklyPlanning(kyTuan: string): Promise<ViecFull[]> {
-  const { data, error } = await supabase.from('viec').select('*').eq('ky_tuan', kyTuan)
-    .not('trang_thai', 'in', '("huy","chuyen")').order('created_at', { ascending: true }).limit(LIMIT)
-  if (error) throw error
-  return decorateViec((data ?? []) as Viec[])
+  const [tuanNay, meCuKeoDai] = await Promise.all([
+    supabase.from('viec').select('*').eq('ky_tuan', kyTuan)
+      .not('trang_thai', 'in', '("huy","chuyen")').limit(LIMIT),
+    // Root (không phải con) của tuần TRƯỚC mà vẫn còn MỞ thật sự. Mẹ chỉ 'dat' khi TOÀN BỘ
+    // con đã 'dat' (trigger giaoviec_auto_dong_task_me), nên loại 'dat' ở đây là an toàn —
+    // không có ca "mẹ dat mà còn con dở" lọt lưới.
+    supabase.from('viec').select('*').lt('ky_tuan', kyTuan).is('task_me_id', null)
+      .not('trang_thai', 'in', '("dat","huy","chuyen")').limit(LIMIT),
+  ])
+  if (tuanNay.error) throw tuanNay.error
+  if (meCuKeoDai.error) throw meCuKeoDai.error
+  const meIds = (meCuKeoDai.data ?? []).map((r: any) => r.id)
+  // Mọi con của các mẹ-cũ-kéo-dài đó — bất kể trạng thái/ky_tuan riêng (con kế thừa ky_tuan mẹ
+  // lúc tách, nhưng lấy thẳng theo task_me_id cho chắc, không dựa vào ky_tuan của con).
+  const conCuKeoDai = meIds.length
+    ? await supabase.from('viec').select('*').in('task_me_id', meIds).not('trang_thai', 'in', '("huy","chuyen")').limit(LIMIT)
+    : { data: [] as any[], error: null }
+  if (conCuKeoDai.error) throw conCuKeoDai.error
+  const gop = new Map<string, Viec>()
+  for (const v of [...(tuanNay.data ?? []), ...(meCuKeoDai.data ?? []), ...(conCuKeoDai.data ?? [])] as Viec[]) gop.set(v.id, v)
+  const rows = [...gop.values()].sort((a, b) => a.created_at.localeCompare(b.created_at))
+  return decorateViec(rows)
 }
 
 // NS bắt đầu làm (rời 'moi_giao').
@@ -295,7 +319,9 @@ export async function duyetGiaHan(id: string, dongY: boolean): Promise<void> {
 }
 
 // LEADER NGHIỆM THU (§4.2 một chạm). Đạt = chất lượng 100 mặc định; HẠ điểm mới bắt gõ lý do.
-// Tiến độ = MÁY tính (ngay_nop vs deadline). Chất lượng bị chặn trần theo số lần trả lại.
+// §2.0 (30/08): client gửi ĐIỂM LEADER THÔ vào chat_luong — trigger tg_viec_nghiem_thu_tinh
+// (mig 202608300228) tự áp trần trả-lại + tính tien_do/phan_tram trong DB. Công thức duy
+// nhất = fn_gv_* — hết cảnh housekeeping (SQL) và client (JS) mỗi bên một bản.
 export async function nghiemThu(id: string, p: { dat: boolean; chat_luong?: number; ly_do?: string | null }): Promise<void> {
   const { data: v, error: e0 } = await supabase.from('viec').select('*').eq('id', id).single()
   if (e0) throw e0
@@ -304,11 +330,9 @@ export async function nghiemThu(id: string, p: { dat: boolean; chat_luong?: numb
     const diemLeader = p.chat_luong ?? 100
     if (diemLeader < 100 && !p.ly_do?.trim()) throw new Error('Hạ chất lượng dưới 100 thì phải ghi lý do.')
     const ngayNop = (viec.hoan_thanh_at ? new Date(viec.hoan_thanh_at).toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' }) : todayVN())
-    const tienDo = tinhTienDo(viec.deadline, ngayNop)
-    const chatLuong = tinhChatLuong(diemLeader, viec.so_lan_tra_lai)
     const { error } = await supabase.from('viec').update({
-      trang_thai: 'dat', ngay_nop: ngayNop, tien_do: tienDo, chat_luong: chatLuong,
-      phan_tram: gopPhanTram(tienDo, chatLuong), nghiem_thu_at: new Date().toISOString(),
+      trang_thai: 'dat', ngay_nop: ngayNop, chat_luong: diemLeader, // thô — DB áp trần + tính nốt
+      nghiem_thu_at: new Date().toISOString(),
       nghiem_thu_nguon: 'nguoi', // đối trọng với 'tu_dong' của giaoviec_housekeeping()
       ghi_chu_nghiem_thu: p.ly_do?.trim() || null,
     }).eq('id', id)
@@ -408,6 +432,18 @@ export async function listCapNhat(viecId: string): Promise<CapNhatViec[]> {
   const nsMap = await nhanSuTenMap(rows.map((r) => r.nguoi_id))
   return rows.map((r) => ({ ...r, nguoi_ten: nsMap.get(r.nguoi_id) ?? '?' }))
 }
+// CẬP NHẬT MỚI NHẤT của nhiều task 1 lượt (story 08-18 "cập nhật lên bảng chung") — dùng ở
+// CongKhaiTab để CEO/leader review nhanh mà không phải click từng task. Batch 1 query, giữ
+// dòng ĐẦU TIÊN mỗi viec_id (đã order created_at desc) — không cần N+1 hay RPC riêng.
+export async function listCapNhatMoiNhat(viecIds: string[]): Promise<Map<string, CapNhatViec>> {
+  if (!viecIds.length) return new Map()
+  const { data, error } = await supabase.from('viec_cap_nhat').select('*').in('viec_id', viecIds)
+    .order('created_at', { ascending: false }).limit(LIMIT)
+  if (error) throw error
+  const map = new Map<string, CapNhatViec>()
+  for (const r of (data ?? []) as CapNhatViec[]) if (!map.has(r.viec_id)) map.set(r.viec_id, r)
+  return map
+}
 // CHỈ người đang làm (nguoi_lam_id) được tự báo cáo tiến độ việc của mình.
 export async function themCapNhat(viecId: string, p: { noiDung: string; tienDoBaoCao?: number | null }): Promise<void> {
   if (!p.noiDung.trim()) throw new Error('Nội dung cập nhật không được trống.')
@@ -430,6 +466,18 @@ export async function listViecCuaToi(nhanSuId: string): Promise<ViecFull[]> {
 }
 export async function listViecToiGiao(nguoiGiaoId: string): Promise<ViecFull[]> {
   const { data, error } = await supabase.from('viec').select('*').eq('nguoi_giao_id', nguoiGiaoId).order('created_at', { ascending: false }).limit(LIMIT)
+  if (error) throw error
+  return decorateViec((data ?? []) as Viec[])
+}
+// DUYỆT (§4.2, người giao) — hộp duyệt CÁ NHÂN: task TÔI giao, người làm đã nộp, đang
+// CHỜ TÔI nghiệm thu. Trước đây chỉ có ở tab Weekly Planning (phải lần đúng tuần + đào qua
+// cụm mẹ/con mới thấy nút Nghiệm thu) — CEO 06/09: thiếu hẳn 1 màn "việc cần tôi duyệt" gom
+// thẳng, giống DuyetTab.tsx. Cũ nhất nộp trước lên đầu (FIFO — ai chờ lâu nhất duyệt trước).
+export async function listChoNghiemThuCuaToi(): Promise<ViecFull[]> {
+  const me = await myNhanSuId()
+  const { data, error } = await supabase.from('viec').select('*')
+    .eq('nguoi_giao_id', me).eq('trang_thai', 'cho_nghiem_thu')
+    .order('hoan_thanh_at', { ascending: true }).limit(LIMIT)
   if (error) throw error
   return decorateViec((data ?? []) as Viec[])
 }
@@ -523,4 +571,38 @@ export async function demViecHuyTheoNguoiGiao(): Promise<Record<string, number>>
 export function holdQuaHan(ngayHold: string | null): boolean {
   if (!ngayHold) return false
   return Math.floor(soNgayLech(ngayHold.slice(0, 10), todayVN()) / 7) >= GV.HOLD_CANH_BAO_TUAN
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// 8) APP PHÁT TRIỂN (pt) — việc CẦN CẬP NHẬT TÌNH TRẠNG hôm nay (mig 202609051300)
+// ════════════════════════════════════════════════════════════════════════════
+// Derive ở DB (fn_pt_viec_hom_nay): việc tôi đang cầm (moi_giao/dang_lam/tra_lai, không phải
+// mẹ-có-con) + cờ "đã có viec_cap_nhat trong ngày VN". Chỉ tab Hôm nay dùng — push 10:30 là
+// tin chung, không đọc danh sách này.
+export type ViecHomNay = {
+  id: string; tieu_de: string; trang_thai: TrangThaiViec; deadline: string | null; task_me_id: string | null
+  qua_han: boolean; da_cap_nhat_hom_nay: boolean; cap_nhat_cuoi_at: string | null
+  tien_do_bao_cao: number | null; so_ngay_im: number
+}
+export async function listViecHomNay(): Promise<ViecHomNay[]> {
+  const { data, error } = await supabase.rpc('fn_pt_viec_hom_nay')
+  if (error) throw error
+  return (data ?? []) as ViecHomNay[]
+}
+
+// ── APP pt: MỌI việc của tôi + cột suy ra, 1 nguồn cho cả Hôm nay lẫn Việc của tôi (mig 202609051451) ──
+// Hôm nay = lọc `dang_mo` trên cùng tập (lọc UI thuần). tien_do_bao_cao = % tự báo GẦN NHẤT có giá trị.
+export type ViecPt = {
+  id: string; tieu_de: string; trang_thai: TrangThaiViec; deadline: string | null; task_me_id: string | null
+  muc_tieu: string | null; output: string | null; mo_ta: string | null; khoi_luong: number
+  nguoi_giao_ten: string | null; phan_tram: number | null; tien_do: number | null; chat_luong: number | null
+  so_lan_gia_han: number; gia_han_xin_deadline: string | null; ghi_chu_nghiem_thu: string | null; evidence: string | null
+  so_con: number; so_con_dat: number; dang_mo: boolean
+  qua_han: boolean; da_cap_nhat_hom_nay: boolean; cap_nhat_cuoi_at: string | null; tien_do_bao_cao: number | null
+  created_at: string; hoan_thanh_at: string | null
+}
+export async function listViecCuaToiPt(): Promise<ViecPt[]> {
+  const { data, error } = await supabase.rpc('fn_pt_viec_cua_toi')
+  if (error) throw error
+  return (data ?? []) as ViecPt[]
 }

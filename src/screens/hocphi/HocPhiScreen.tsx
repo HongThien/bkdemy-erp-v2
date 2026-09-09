@@ -10,9 +10,9 @@ import {
   themTinDung, listTinDung, xoaTinDung,
   kyHienTai,
   listHocPhiTheoMonV2, setCongThucHocPhi, getDiemDanhTheoLop,
-  listHeSoHocSinh, setHeSoHieuLuc, boManualHeSo,
+  listHeSoHocSinh, getHeSoHocSinh, setHeSoHieuLuc, boManualHeSo,
   listPhatSinhTheoKy, themPhatSinhLop, themPhatSinhCaNhan, xoaPhatSinh,
-  layTenConDangHoc, soanThongBao, danhDauDaBao,
+  layTenConDangHoc, soanThongBao, danhDauDaBao, TRANG_THAI_TB_LABEL,
   type MucHocPhi, type MucHocDuoi, type MucHocLieu, type DongSoHang, type DongDuoiSoHang, type DongNo, type PHOpt, type PHNoOpt, type HocSinhHeSo, type PhatSinhEntry,
   type DongTheoMonV2, type CongThuc, type DiemDanhLop,
 } from '../../lib/hocphi'
@@ -394,12 +394,12 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
       if (!r.daChot) {
         if (!confirm(`Chốt học phí kỳ này cho ${r.ho_ten} = ${tienVN(tong)}?\nĐông cứng số này để thu tiền (sửa được sau bằng bỏ tích Chốt).`)) return
         const { hoaDonId, tongTien } = await chotKy(r.phu_huynh_id, ky, [])
-        setR({ ...r, daChot: true, hoaDonId, tongTien, trangThai: 'chua_thu', baoLan1At: null, daThuKy: 0 })
+        setR({ ...r, daChot: true, hoaDonId, tongTien, trangThai: 'chua_thu', trangThaiTB: 'thong_bao_1', baoLan1At: null, daThuKy: 0 })
       } else {
         const cb = r.daThuKy > 0 ? `\n⚠ Đã thu ${tienVN(r.daThuKy)} — huỷ sẽ xoá bản ghi thu.` : ''
         if (!confirm(`Huỷ chốt phiếu này để sửa lại?${cb}`)) return
         await huyChot(r.hoaDonId!)
-        setR({ ...r, daChot: false, hoaDonId: null, trangThai: null, baoLan1At: null, daThuKy: 0, tongTien: r.tienChinh + r.tienDuoi + r.tienNo })
+        setR({ ...r, daChot: false, hoaDonId: null, trangThai: null, trangThaiTB: null, baoLan1At: null, daThuKy: 0, tongTien: r.tienChinh + r.tienDuoi + r.tienNo })
       }
     } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
   }
@@ -419,7 +419,8 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
     try {
       await ghiThanhToan(r.hoaDonId!, so)
       const daThuMoi = r.daThuKy + so
-      setR({ ...r, daThuKy: daThuMoi, trangThai: daThuMoi >= tong ? 'da_thu' : 'thu_mot_phan' })
+      // Khớp trigger tg_thanh_toan_trang_thai: thu đủ → trạng thái thông báo tự thành "Đã hoàn thành"
+      setR({ ...r, daThuKy: daThuMoi, trangThai: daThuMoi >= tong ? 'da_thu' : 'thu_mot_phan', trangThaiTB: daThuMoi >= tong ? 'hoan_thanh' : r.trangThaiTB })
       setShowThu(false); setThuSo('')
     } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
   }
@@ -438,7 +439,9 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
           <div className="truncate text-[13px] font-semibold text-slate-800">{r.ho_ten} <span className="font-mono text-[10px] font-normal text-slate-400">{r.ma_ph}</span></div>
           {r.tenCon.length > 0 && <div className="truncate text-[11px] text-slate-500">{r.tenCon.join(', ')}</div>}
         </div>
-        <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-bold ${NHOM_MAU[nhom].pill}`}>{NHOM.find((n) => n.key === nhom)?.label}</span>
+        <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-bold ${NHOM_MAU[nhom].pill}`}>
+          {nhom === 'da_thu' && r.trangThaiTB === 'hoan_thanh' ? `✓ ${TRANG_THAI_TB_LABEL.hoan_thanh}` : NHOM.find((n) => n.key === nhom)?.label}
+        </span>
         <span className="whitespace-nowrap text-[15px] font-extrabold text-indigo-700">{tienVN(tong)}</span>
         <button onClick={() => setOpen((o) => !o)} className="rounded-md border border-slate-200 px-1.5 py-1 text-[11px] text-slate-500 hover:border-indigo-300">{open ? '▴' : '▾'}</button>
       </div>
@@ -766,18 +769,34 @@ function HeSoTab() {
   async function reload() { setLoading(true); try { setRows(await listHeSoHocSinh()) } finally { setLoading(false) } }
   useEffect(() => { reload() }, [])
 
+  // Sửa/xác nhận 1 HS không cần fetch lại CẢ TRƯỜNG — chỉ refetch + patch đúng dòng đó rồi sort lại
+  // tại chỗ (nguyên nhân lag 3-4s cũ: reload() toàn bảng sau MỖI thao tác 1 dòng).
+  async function patchRow(hocSinhId: string) {
+    const fresh = await getHeSoHocSinh(hocSinhId)
+    if (!fresh) return
+    setRows((prev) => {
+      const next = prev.map((r) => (r.id === hocSinhId ? fresh : r))
+      return next.sort((a, b) => {
+        const lechA = a.he_so_nguon !== 'manual' && a.heSoGoiY !== a.he_so_hoc_phi ? 0 : 1
+        const lechB = b.he_so_nguon !== 'manual' && b.heSoGoiY !== b.he_so_hoc_phi ? 0 : 1
+        if (lechA !== lechB) return lechA - lechB
+        return a.ho_ten.localeCompare(b.ho_ten, 'vi')
+      })
+    })
+  }
+
   async function xacNhan(hocSinhId: string, heSo: number) {
     setBusyId(hocSinhId)
-    try { await setHeSoHieuLuc(hocSinhId, heSo, apDungTu, 'auto'); await reload() } finally { setBusyId(null) }
+    try { await setHeSoHieuLuc(hocSinhId, heSo, apDungTu, 'auto'); await patchRow(hocSinhId) } finally { setBusyId(null) }
   }
   async function luuTay(hocSinhId: string) {
     const v = Number(suaVal); if (!v || v <= 0) return
     setBusyId(hocSinhId)
-    try { await setHeSoHieuLuc(hocSinhId, v, apDungTu, 'manual'); setSuaId(null); await reload() } finally { setBusyId(null) }
+    try { await setHeSoHieuLuc(hocSinhId, v, apDungTu, 'manual'); setSuaId(null); await patchRow(hocSinhId) } finally { setBusyId(null) }
   }
   async function boTay(hocSinhId: string) {
     setBusyId(hocSinhId)
-    try { await boManualHeSo(hocSinhId); await reload() } finally { setBusyId(null) }
+    try { await boManualHeSo(hocSinhId); await patchRow(hocSinhId) } finally { setBusyId(null) }
   }
 
   const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
@@ -806,8 +825,10 @@ function HeSoTab() {
                 <tr><th className="px-4 py-2">Học sinh</th><th className="px-2 py-2">Phụ huynh</th><th className="px-2 py-2">Lớp</th><th className="px-2 py-2">Môn đang học</th><th className="px-2 py-2">Hệ số hiện tại</th><th className="px-2 py-2">Gợi ý</th><th className="px-2 py-2">Lý do</th><th className="px-4 py-2 text-right">Thao tác</th></tr>
               </thead>
               <tbody>
-                {filtered.map((r) => (
-                  <tr key={r.id} className="border-t border-slate-100 align-top">
+                {filtered.map((r) => {
+                  const lech = r.he_so_nguon !== 'manual' && r.heSoGoiY !== r.he_so_hoc_phi
+                  return (
+                  <tr key={r.id} className={`border-t border-slate-100 align-top ${lech ? 'bg-amber-50' : ''}`}>
                     <td className="px-4 py-2 font-medium text-slate-800">{r.ho_ten}</td>
                     <td className="px-2 py-2 text-slate-500">{r.phu_huynh_ten ?? '—'}</td>
                     <td className="px-2 py-2 text-slate-500">{r.lops.join(', ') || '—'}</td>
@@ -827,14 +848,14 @@ function HeSoTab() {
                       )}
                     </td>
                     <td className="px-2 py-2">
-                      {r.he_so_nguon !== 'manual' && r.heSoGoiY !== r.he_so_hoc_phi
+                      {lech
                         ? <span className="font-semibold text-amber-700">× {r.heSoGoiY}</span>
                         : <span className="text-slate-300">—</span>}
                     </td>
                     <td className="px-2 py-2 text-[12px] text-slate-500">{r.lyDoGoiY || '—'}</td>
                     <td className="px-4 py-2">
                       <div className="flex flex-wrap justify-end gap-1.5">
-                        {r.he_so_nguon !== 'manual' && r.heSoGoiY !== r.he_so_hoc_phi && (
+                        {lech && (
                           <button disabled={busyId === r.id} onClick={() => xacNhan(r.id, r.heSoGoiY)} className="rounded-md border border-indigo-200 bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100 disabled:opacity-40">✓ Xác nhận</button>
                         )}
                         {suaId !== r.id && <button onClick={() => { setSuaId(r.id); setSuaVal(String(r.he_so_hoc_phi)) }} className="rounded-md border border-slate-200 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Sửa tay</button>}
@@ -842,7 +863,8 @@ function HeSoTab() {
                       </div>
                     </td>
                   </tr>
-                ))}
+                  )
+                })}
               </tbody>
             </table>
           </div>

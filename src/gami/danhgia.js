@@ -100,6 +100,12 @@ export function cuoiCuaSo(win) {
 //   nhất TÍNH TỚI mốc cắt (đúng engine masteryOfDang), chỉ bỏ những lần đo SAU mốc. Nếu chỉ dùng
 //   các lần đo NẰM TRONG cửa sổ thì 1 cửa sổ vắng bài sẽ thành "tụt hạng" giả.
 const BUCKET_RANK = { dat: 2, can_luyen: 1, yeu: 0 }
+export { BUCKET_RANK }
+// Bucket của 1 SCORE thô (0..1) theo cùng ngưỡng masteryOfDang (DAT=0.8, CAN_LUYEN=0.5) — dùng cho
+// tầng CHUYÊN ĐỀ, nơi score đã có sẵn từ `diemChuyenDe` (không phải mảng lần đo để chạy masteryOfDang).
+export function bucketOfScore(score) {
+  return score >= MASTERY_CONFIG.DAT ? 'dat' : score >= MASTERY_CONFIG.CAN_LUYEN ? 'can_luyen' : 'yeu'
+}
 export function bucketTaiThoiDiem(evals, cutoffMs) {
   const tr = (evals ?? []).filter((e) => Date.parse(e.t) <= cutoffMs)
   if (!tr.length) return null
@@ -254,7 +260,7 @@ export function deXuatLevelKienThuc(input) {
 
   // ③④ — flag CỨNG của người: vọt thẳng L2+, bỏ qua nấc (spec §4.1).
   if (coChuongDo || coLoTienQuyet) {
-    lyDo.push(coChuongDo ? '③ chuông đỏ (TA báo lỗi rất nghiêm trọng ở bài đang học)' : '④ lỗ hổng tiên quyết (GV báo hổng kiến thức nền)')
+    lyDo.push(coChuongDo ? '③ chuông đỏ (GV/TA báo lỗi rất nghiêm trọng ở bài đang học)' : '④ lỗ hổng tiên quyết (GV báo hổng kiến thức nền)')
     return ket(Math.max(levelHienTai, 2), lyDo, { dien, yeuThieuDo, canLuyen, btvnChe, nhay: true })
   }
 

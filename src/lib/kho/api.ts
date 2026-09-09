@@ -72,6 +72,18 @@ export type CauHoi = {
   parent_ma_cau: string | null
   clone_method: string | null
   ma_cum: string | null         // CỤM BÀI = lớp tương đương (thay được cho nhau ở mã đề). null = CHƯA phân cụm.
+  xoa_at?: string | null        // kho rác — NULL = còn sống
+  // ⭐ 20/08 (Thùy: "kho có rất nhiều câu, câu xịn câu không, cần nhãn chất lượng — đã/chưa kiểm duyệt.
+  // Clone xong phải có người check"). Mặc định false — câu MỚI (clone/nhập) luôn vào hàng chờ duyệt.
+  da_duyet: boolean
+  duyet_boi: string | null      // nhan_su.id — ai duyệt (ghi vết, không chỉ 1 cờ boolean trơ)
+  duyet_at: string | null
+  // ⭐ KHO CHUẨN (spec-kho-chuan.md §1, mig 202609080912): `kho_chuan` = cột generated từ hàm `_kho_cau_chuan` — câu mới
+  // (sau NGÀY BẬT 08/09/2026 09:12) cần da_duyet; câu cũ tạm dùng trừ khi máy/AI NGHI đáp số. Chỗ CHỌN câu chỉ lấy kho_chuan.
+  kho_chuan?: boolean
+  kiem_may?: 'khop' | 'nghi' | 'khong_kiem_duoc' | null   // kết quả máy/AI kiểm đáp số; null = chưa kiểm
+  kiem_may_at?: string | null; kiem_may_boi?: 'mcq-auto' | 'claude_code' | 'nguoi' | null; kiem_may_ghi?: string | null
+  duyet_nguon?: 'nguoi' | 'may' | 'ai' | null              // ai ký da_duyet — trigger DB tự điền 'nguoi' khi client duyệt
   created_at?: string
 }
 
@@ -92,11 +104,15 @@ export const cumKey = (c: Pick<CauHoi, 'ma_cum' | 'parent_ma_cau' | 'ma_cau'>): 
 // LUẬT: chỗ CHỌN câu lọc `xoa_at is null` · chỗ RESOLVE câu (getTaiLieuFull/bản in/chấm) KHÔNG lọc.
 const CHUA_XOA = 'xoa_at' // tên cột, gom 1 chỗ cho dễ grep
 
-// CHỌN câu → chỉ câu đang dùng.
+// CHỌN câu → chỉ câu đang dùng VÀ thuộc KHO CHUẨN (`kho_chuan`, spec-kho-chuan.md §1 — cửa 1). Mặc định lọc vì mọi
+// caller ngoài màn Kho đều là chỗ CHỌN (soạn ET/BTVN/giáo trình/mã đề/KhoPicker). Màn quản kho (DangHub) và chỗ RESOLVE
+// câu đã nằm trong tài liệu (ET mở lại để sửa) truyền `{ tatCa: true }` — câu bị rút khỏi kho chuẩn vẫn phải hiện ra,
+// không được lặng lẽ rụng khỏi đề đã soạn (cùng luật với kho rác ở trên).
 // tbl = bảng câu theo MÔN (default Toán 'dai_cau_hoi'; KHTN 'khtn_cau_hoi'). Giữ default → Toán không đổi hành vi.
-export async function listCauByDang(maDang: string, tbl = 'dai_cau_hoi'): Promise<CauHoi[]> {
-  const { data, error } = await supabase.from(tbl).select('*')
-    .eq('dang_chinh', maDang).is(CHUA_XOA, null).order('created_at').limit(LIMIT)
+export async function listCauByDang(maDang: string, tbl = 'dai_cau_hoi', opts: { tatCa?: boolean } = {}): Promise<CauHoi[]> {
+  let q = supabase.from(tbl).select('*').eq('dang_chinh', maDang).is(CHUA_XOA, null)
+  if (!opts.tatCa) q = q.eq('kho_chuan', true)
+  const { data, error } = await q.order('created_at').limit(LIMIT)
   if (error) throw error
   return (data ?? []) as CauHoi[]
 }
@@ -125,6 +141,47 @@ export async function deleteCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<vo
     .update({ xoa_at: new Date().toISOString() })
     .eq('ma_cau', ma_cau).is(CHUA_XOA, null)
   if (error) throw error
+}
+// ⭐ Kiểm duyệt nội dung (Thùy 20/08) — GHI VẾT ai + lúc nào (khuôn duyet_boi/duyet_at đã dùng ở
+// bai_test_report/hoc_phi_xet_duyet…), không chỉ 1 cờ boolean trơ. Bỏ duyệt = về lại "chưa duyệt", KHÔNG
+// giữ lịch sử ai đã từng duyệt (đơn giản hoá — cần audit sâu hơn thì có kho_cau_log/trigger sau).
+// ⚠ Fix 02/09 (Thùy báo "violates foreign key constraint dai_cau_hoi_duyet_boi_fkey"): `duyet_boi` FK →
+// nhan_su.id, nhưng code cũ ghi auth user id (auth.users) → FK chặn mọi lượt duyệt ở DangHub/DungSaiBank.
+// Các đường duyệt khác (DuyetLoiGiaiScreen/ChoDuyetPanel) vốn đã map qua tai_khoan.nhan_su_id — làm y hệt.
+async function nhanSuIdCuaToi(): Promise<string> {
+  const { data: au } = await supabase.auth.getUser()
+  const { data: tk } = await supabase.from('tai_khoan').select('nhan_su_id').eq('id', au.user?.id ?? '').maybeSingle()
+  const id = (tk as { nhan_su_id?: string | null } | null)?.nhan_su_id
+  if (!id) throw new Error('Tài khoản chưa link nhân sự — không ghi được ai duyệt.')
+  return id
+}
+export async function duyetCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<void> {
+  const nguoiDuyet = await nhanSuIdCuaToi()
+  const { error } = await supabase.from(tbl)
+    .update({ da_duyet: true, duyet_boi: nguoiDuyet, duyet_at: new Date().toISOString() })
+    .eq('ma_cau', ma_cau)
+  if (error) throw error
+}
+export async function boDuyetCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<void> {
+  const { error } = await supabase.from(tbl)
+    .update({ da_duyet: false, duyet_boi: null, duyet_at: null })
+    .eq('ma_cau', ma_cau)
+  if (error) throw error
+}
+
+// Tìm 1 câu THEO ma_cau xuyên suốt CẢ 3 bảng kho — dùng cho Duyệt chấm "Sửa trong Kho": chỗ gọi chỉ
+// có `ma_cau` (text, KHÔNG FK — CLAUDE.md §2 "tham chiếu bằng TEXT"), không biết trước câu thuộc
+// nhánh nào. Đã kiểm DB thật: `dai_cau_hoi` không có chữ cái đầu, `khtn_cau_hoi` bắt đầu 'K',
+// `hgt_cau_hoi` bắt đầu 'T' — nhưng đó KHÔNG phải quy ước chính thức (không có ràng buộc nào ép),
+// nên dò TỪNG bảng thay vì đoán theo tiền tố. Trả `null` nếu không thấy ở bảng nào (câu đã bị xoá
+// cứng ngoài luồng kho rác, hoặc `ma_cau` không còn đúng — báo rõ ở nơi gọi, không giả định).
+export async function findCauInKho(ma_cau: string): Promise<{ cau: CauHoi; cauTbl: string } | null> {
+  for (const cauTbl of Object.keys(CUM_TBL)) {
+    const { data, error } = await supabase.from(cauTbl).select('*').eq('ma_cau', ma_cau).maybeSingle()
+    if (error) throw error
+    if (data) return { cau: data as CauHoi, cauTbl }
+  }
+  return null
 }
 
 // ══ CỤM BÀI + TIỀN ĐỀ (spec-cum-bai.md) ═══════════════════════════════════════
@@ -631,6 +688,194 @@ export async function saveCloneVariants(a: {
   return rows.length
 }
 
+// ── HÀNG ĐỢI CLONE (26/08) — nút "✨ Clone" thêm lựa chọn "đưa vào hàng đợi" thay vì gọi API
+// ngay: nhân sự đặt yêu cầu (không cần credential gì), Claude Code quét định kỳ/theo lệnh xử lý
+// cả lô, ghi kết quả vào bảng NHÁP riêng — KHÔNG chọc thẳng vào dai_cau_hoi thật. Lý do tách:
+// `da_duyet` trên dai_cau_hoi chỉ là nhãn HẬU KIỂM (không chặn dùng, câu cũ vẫn sống bình thường
+// dù chưa duyệt) — còn câu CLONE MỚI phải bị chặn HẲN tới khi có người duyệt, 2 khái niệm khác
+// nhau dù cùng tên cột (thảo luận 26/08, đừng gộp lại tưởng trùng).
+export type YeuCauClone = {
+  id: string; ma_cau_goc: string; so_bien_the: number; ghi_chu: string | null
+  nguoi_yeu_cau: string | null; created_at: string; xu_ly_at: string | null
+}
+export async function createYeuCauClone(a: { maCauGoc: string; soBienThe: number; ghiChu: string; nguoiYeuCau?: string | null }): Promise<void> {
+  const { error } = await supabase.from('dai_cau_hoi_yeu_cau_clone').insert({
+    ma_cau_goc: a.maCauGoc, so_bien_the: a.soBienThe, ghi_chu: a.ghiChu || null, nguoi_yeu_cau: a.nguoiYeuCau ?? null,
+  })
+  if (error) throw error
+}
+// xu_ly_at NULL = chưa xử lý — hàng đợi thật (không suy ra được, khác Story 2 bên dưới).
+export async function listYeuCauCloneCho(): Promise<YeuCauClone[]> {
+  const { data, error } = await supabase.from('dai_cau_hoi_yeu_cau_clone').select('*')
+    .is('xu_ly_at', null).order('created_at').limit(LIMIT)
+  if (error) throw error
+  return data ?? []
+}
+export async function danhDauYeuCauXuLy(id: string): Promise<void> {
+  const { error } = await supabase.from('dai_cau_hoi_yeu_cau_clone').update({ xu_ly_at: new Date().toISOString() }).eq('id', id)
+  if (error) throw error
+}
+
+export type CloneChoDuyet = {
+  id: string; yeu_cau_id: string | null; dang_chinh: string; loai_cau: string
+  noi_dung: string; lua_chon: string[] | null; dap_an: string | null; loi_giai: string | null
+  parent_ma_cau: string | null; clone_method: string; created_at: string
+  duyet_boi: string | null; duyet_at: string | null
+  tu_choi_boi: string | null; tu_choi_at: string | null; tu_choi_ly_do: string | null
+}
+export async function saveCloneChoDuyet(a: {
+  yeuCauId?: string | null; dangChinh: string; loaiCau: string; variants: CauNoiDung[]
+  parentMaCau?: string | null; cloneMethod?: string
+}): Promise<number> {
+  if (!a.variants.length) return 0
+  const rows = a.variants.map((v) => ({
+    yeu_cau_id: a.yeuCauId ?? null, dang_chinh: a.dangChinh, loai_cau: a.loaiCau,
+    noi_dung: v.noi_dung, dap_an: v.dap_an, loi_giai: v.loi_giai, lua_chon: v.lua_chon ?? null,
+    parent_ma_cau: a.parentMaCau ?? null, clone_method: a.cloneMethod ?? 'claude_code_batch',
+  }))
+  const { error } = await supabase.from('dai_cau_hoi_clone_cho_duyet').insert(rows)
+  if (error) throw error
+  return rows.length
+}
+export async function listCloneChoDuyet(): Promise<CloneChoDuyet[]> {
+  const { data, error } = await supabase.from('dai_cau_hoi_clone_cho_duyet').select('*')
+    .is('tu_choi_at', null).order('created_at').limit(LIMIT)
+  if (error) throw error
+  return data ?? []
+}
+// Duyệt = promote sang dai_cau_hoi thật (da_duyet=true LUÔN — vừa được người kiểm xong, không
+// cần qua vòng hậu kiểm chung nữa), dùng ĐÚNG nextCauSeq/maCau như saveCloneVariants — rồi xoá khỏi nháp.
+export async function duyetCloneChoDuyet(row: CloneChoDuyet, nguoiDuyet: string): Promise<string> {
+  const start = await nextCauSeq(row.dang_chinh, 'dai_cau_hoi')
+  const ma_cau_moi = maCau(row.dang_chinh, start)
+  const { error: e1 } = await supabase.from('dai_cau_hoi').insert({
+    ma_cau: ma_cau_moi, dang_chinh: row.dang_chinh, loai_cau: row.loai_cau,
+    noi_dung: row.noi_dung, dap_an: row.dap_an, loi_giai: row.loi_giai, lua_chon: row.lua_chon,
+    nguon: 'clone', nguon_giai: 'ai', parent_ma_cau: row.parent_ma_cau, clone_method: row.clone_method,
+    da_duyet: true, duyet_boi: nguoiDuyet, duyet_at: new Date().toISOString(),
+  })
+  if (e1) throw e1
+  const { error: e2 } = await supabase.from('dai_cau_hoi_clone_cho_duyet').delete().eq('id', row.id)
+  if (e2) throw e2
+  return ma_cau_moi
+}
+// Từ chối: CHỈ đánh dấu trong bảng nháp (giữ lại để soát/audit), không đụng dai_cau_hoi.
+export async function tuChoiCloneChoDuyet(id: string, nguoiTuChoi: string, lyDo: string): Promise<void> {
+  const { error } = await supabase.from('dai_cau_hoi_clone_cho_duyet')
+    .update({ tu_choi_at: new Date().toISOString(), tu_choi_boi: nguoiTuChoi, tu_choi_ly_do: lyDo || null })
+    .eq('id', id)
+  if (error) throw error
+}
+
+// ── STORY 2 (26/08): GIẢI CÂU CHƯA CÓ ĐÁP ÁN — hàng đợi = `loi_giai IS NULL` trực tiếp, KHÔNG
+// thêm cột trạng thái — đúng nguyên tắc invariant CLAUDE.md §1 ("việc của tôi" = query, không
+// phải bảng tasks). Khác Story 1 ở trên (đó là YÊU CẦU thật, không suy ra được nên phải lưu). ──
+export async function listCauChuaGiai(tbl = 'dai_cau_hoi'): Promise<CauHoi[]> {
+  const { data, error } = await supabase.from(tbl).select('*')
+    .is('loi_giai', null).is('xoa_at', null).limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as CauHoi[]
+}
+// Mẫu tham khảo cách trình bày: ưu tiên CÙNG CỤM (ma_cum, đơn vị tương đương đã có sẵn) đã duyệt;
+// rơi về CÙNG DẠNG nếu câu chưa thuộc cụm nào. Chỉ lấy vài câu — không đọc cả dạng (tốn token vô ích).
+export async function layMauThamKhao(cau: Pick<CauHoi, 'ma_cau' | 'dang_chinh' | 'ma_cum'>, tbl = 'dai_cau_hoi', soLuong = 2): Promise<CauHoi[]> {
+  let q = supabase.from(tbl).select('*').eq('da_duyet', true).not('loi_giai', 'is', null).neq('ma_cau', cau.ma_cau)
+  q = cau.ma_cum ? q.eq('ma_cum', cau.ma_cum) : q.eq('dang_chinh', cau.dang_chinh)
+  const { data, error } = await q.limit(soLuong)
+  if (error) throw error
+  return (data ?? []) as CauHoi[]
+}
+// giai_method: NULL = câu cũ (tồn đọng, không rõ nguồn — vd từ tính năng Clone lâu rồi) ·
+// 'claude_code' = MỚI, do đúng luồng "giải bài chưa có đáp án" ghi (28/08 — tách khỏi backlog cũ).
+export async function giaiCauAI(maCauGiai: string, a: { loiGiai: string; dapAn: string | null }, tbl = 'dai_cau_hoi'): Promise<void> {
+  const { error } = await supabase.from(tbl)
+    .update({ loi_giai: a.loiGiai, dap_an: a.dapAn, nguon_giai: 'ai', giai_method: 'claude_code' })
+    .eq('ma_cau', maCauGiai)
+  if (error) throw error
+}
+
+// ── DUYỆT LỜI GIẢI AI (27/08) — màn gộp theo khối, dùng chung cho Đại/KHTN/HGT (xem hinh.ts
+// cho nhánh Hình — bảng khác hẳn nên hàm riêng, không ép vào registry này). ──
+export type CauChoDuyetLoiGiai = {
+  nhanh: KhoMon; maCau: string; khoi: string; noiDung: string; dapAn: string | null; loiGiai: string
+}
+// chiMoi: true = chỉ lời giải MỚI (giai_method='claude_code', luồng hôm nay) ·
+//         false/undefined = "câu trong kho" — backlog cũ (giai_method IS NULL, chủ yếu từ Clone).
+export async function listCauChoDuyetLoiGiai(mon: KhoMon, khoi?: string, chiMoi?: boolean): Promise<CauChoDuyetLoiGiai[]> {
+  const { cauTbl, banDoTbl } = khoTbls(mon)
+  let q = supabase.from(cauTbl).select(`ma_cau, noi_dung, dap_an, loi_giai, ${banDoTbl}!inner(khoi)`)
+    .eq('nguon_giai', 'ai').eq('da_duyet', false).limit(LIMIT)
+  q = chiMoi ? q.eq('giai_method', 'claude_code') : q.is('giai_method', null)
+  if (khoi) q = q.eq(`${banDoTbl}.khoi`, khoi)
+  const { data, error } = await q
+  if (error) throw error
+  return (data ?? []).map((r: any) => ({
+    nhanh: mon, maCau: r.ma_cau, khoi: r[banDoTbl]?.khoi ?? '', noiDung: r.noi_dung, dapAn: r.dap_an, loiGiai: r.loi_giai ?? '',
+  }))
+}
+export async function duyetLoiGiaiCau(mon: KhoMon, maCau: string, nguoiDuyet: string): Promise<void> {
+  const { cauTbl } = khoTbls(mon)
+  const { error } = await supabase.from(cauTbl).update({ da_duyet: true, duyet_boi: nguoiDuyet, duyet_at: new Date().toISOString() }).eq('ma_cau', maCau)
+  if (error) throw error
+}
+
+// ── TAB "CHƯA CÓ LỜI GIẢI" + HÀNG ĐỢI GIẢI (04/09, mig 202609041808) — Thùy: thay vì nhờ Claude giải
+// trong chat, ERP liệt kê câu CHƯA CÓ LỜI GIẢI (loi_giai IS NULL và anh_dap_an IS NULL) để người biết mà
+// làm; mỗi câu 2 lựa chọn: (1) tự giải/up ảnh tại chỗ · (2) đặt Claude giải = đưa vào hàng đợi
+// `{dai,khtn,hgt}_cau_hoi_yeu_cau_giai` (như hàng đợi clone 26/08), worker = scripts/hangdoi-giai.mjs.
+// List/đếm/đặt/đóng đều là function Postgres (§2.0) — client chỉ gọi rpc, không join/đếm ở JS. ──
+export type CauChuaGiai = {
+  ma_cau: string; dang_chinh: string; ten_dang: string; ten_chuyen_de: string; khoi: string; loai_cau: string
+  noi_dung: string; lua_chon: string[] | null; menh_de: MenhDe[] | null; dap_an: string | null; anh_de: string | null; nguon: string; created_at: string
+  yeu_cau_id: string | null; yeu_cau_at: string | null; yeu_cau_ghi_chu: string | null
+  // 06/09 (mig 202609060122): dòng yêu cầu giờ có thể là NGƯỜI đang giữ trên tool giaibai (nguoi_giai ≠ null) chứ không chỉ Claude.
+  yeu_cau_nguoi_giai: string | null; yeu_cau_nguoi_giai_ten: string | null; yeu_cau_trang_thai: string | null
+}
+export async function listCauChuaGiaiTab(mon: KhoMon, khoi: string): Promise<CauChuaGiai[]> {
+  const { data, error } = await supabase.rpc('fn_kho_cau_chua_giai', { p_mon: mon, p_khoi: khoi, p_limit: LIMIT })
+  if (error) throw error
+  return (data ?? []) as CauChuaGiai[]
+}
+export type DemChuaGiai = { khoi: string; so_cau: number; so_cho_giai: number }
+// ⭐ MÔN ≠ NHÁNH (Thùy 04/09: "KHTN là MÔN. Ai phụ trách môn nào mới thấy môn đó"): màn duyệt/giải scope theo
+// MÔN (nhãn nhan_su_mon, khớp MON_LIST) → mỗi môn gồm các NHÁNH kho của nó. Toán = Đại + Hình giải tích + Hình;
+// KHTN = 1 cây. Registry 1 chỗ, mọi màn gộp-nhánh dùng cái này, KHÔNG tự liệt kê ['toan','khtn','hgt'] rồi trộn môn.
+export type KhoNhanh = KhoMon | 'hinh'
+export const NHANH_LABEL: Record<KhoNhanh, string> = { toan: 'Đại', khtn: 'KHTN', hgt: 'Hình giải tích', hinh: 'Hình' }
+export const KHO_MON: { mon: string; nhanh: KhoNhanh[] }[] = [
+  { mon: 'Toán', nhanh: ['toan', 'hgt', 'hinh'] },
+  { mon: 'KHTN', nhanh: ['khtn'] },
+]
+export const nhanhCuaMon = (mon: string): KhoNhanh[] => KHO_MON.find((m) => m.mon === mon)?.nhanh ?? []
+// Đếm câu chưa có lời giải theo khối cho đúng TẬP NHÁNH của môn đang chọn (không cộng chéo môn).
+export async function demCauChuaGiai(nhanh: KhoNhanh[]): Promise<DemChuaGiai[]> {
+  const { data, error } = await supabase.rpc('fn_kho_dem_cau_chua_giai', { p_nhanh: nhanh })
+  if (error) throw error
+  return (data ?? []) as DemChuaGiai[]
+}
+// Trả SỐ câu thật sự được đặt (bỏ câu đã có lời giải / đã có yêu cầu treo — DB tự lọc).
+export async function datClaudeGiai(mon: KhoMon, maCaus: string[], ghiChu: string, nguoiYeuCau: string): Promise<number> {
+  const { data, error } = await supabase.rpc('fn_kho_dat_giai', { p_mon: mon, p_ma_cau: maCaus, p_ghi_chu: ghiChu, p_nguoi: nguoiYeuCau })
+  if (error) throw error
+  return Number(data ?? 0)
+}
+// Huỷ yêu cầu còn treo (chưa xử lý) — xoá dòng: yêu cầu chưa ai làm thì không có gì để giữ vết.
+export async function huyYeuCauGiai(mon: KhoMon, id: string): Promise<void> {
+  const { yeuCauGiaiTbl } = khoTbls(mon)
+  const { error } = await supabase.from(yeuCauGiaiTbl).delete().eq('id', id).is('xu_ly_at', null)
+  if (error) throw error
+}
+// Người tự giải: ghi loi_giai/anh_dap_an (PostgREST) rồi gọi fn đóng dấu nguon_giai='nguoi' + gỡ yêu cầu treo.
+export async function luuLoiGiaiNguoi(mon: KhoMon, maCau: string, a: { loiGiai: string | null; anhDapAn: string | null; dapAn?: string | null }): Promise<void> {
+  const { cauTbl } = khoTbls(mon)
+  const patch: Record<string, unknown> = { loi_giai: a.loiGiai || null, anh_dap_an: a.anhDapAn || null }
+  if (a.dapAn !== undefined) patch.dap_an = a.dapAn || null
+  const { error } = await supabase.from(cauTbl).update(patch).eq('ma_cau', maCau)
+  if (error) throw error
+  const { error: e2 } = await supabase.rpc('fn_kho_giai_nguoi_xong', { p_mon: mon, p_ma_cau: maCau })
+  if (e2) throw e2
+}
+
 // ── NHẬP CHUỖI CÂU CÓ SẴN (batch): prompt tách + parse + lưu (tất cả 'le') ──
 // Luật lời giải theo 2 luồng: bóc-nguyên (người, tin) vs AI-tự-giải (cần duyệt).
 const giaiRule = (giaiAI?: boolean) => giaiAI
@@ -973,12 +1218,12 @@ export function parseIngestJson(text: string): IngestCau[] {
 // Bóc/crop hình chạy ở SCREEN (DOM); ở đây = prompt + parse + phân loại grounded + verify + AI-giải + save + log.
 // ════════════════════════════════════════════════════════════════
 export type KhoMon = 'toan' | 'khtn' | 'hgt'
-export function khoTbls(mon: KhoMon): { cauTbl: string; banDoTbl: string; lyThuyetTbl: string } {
+export function khoTbls(mon: KhoMon): { cauTbl: string; banDoTbl: string; lyThuyetTbl: string; yeuCauGiaiTbl: string } {
   return mon === 'khtn'
-    ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', lyThuyetTbl: 'khtn_dang_ly_thuyet' }
+    ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', lyThuyetTbl: 'khtn_dang_ly_thuyet', yeuCauGiaiTbl: 'khtn_cau_hoi_yeu_cau_giai' }
     : mon === 'hgt'
-    ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', lyThuyetTbl: 'hgt_dang_ly_thuyet' }
-    : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', lyThuyetTbl: 'dai_dang_ly_thuyet' }
+    ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', lyThuyetTbl: 'hgt_dang_ly_thuyet', yeuCauGiaiTbl: 'hgt_cau_hoi_yeu_cau_giai' }
+    : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', lyThuyetTbl: 'dai_dang_ly_thuyet', yeuCauGiaiTbl: 'dai_cau_hoi_yeu_cau_giai' }
 }
 
 // Chủ đề trong 1 khối — chọn ở ĐẦU luồng (tài liệu chung 1 chủ đề, người biết sẵn).
@@ -1979,3 +2224,111 @@ export async function deleteHgtChuyenDeLyThuyet(ma_chuyen_de: string): Promise<v
 // Ở FILE RIÊNG `hinh.ts` cho dễ đọc; re-export tại đây để UI chỉ cần 1 cửa `kho/api`.
 export * from './hinh'
 export * from './hinhConfig'
+
+// ── MCQ FORM — phiên bản TRẮC NGHIỆM (distractor theo lỗi) của câu, spec-mcq-form.md (CEO chốt 08/09) ──
+// Mọi đọc/ghi qua RPC fn_mcq_* (dispatch theo tiền tố kho ở DB; kho chưa có bảng → list rỗng, không nổ).
+export type LuaChonTn = { text: string; dung: boolean; rule?: string; duong_sai?: string }
+export type FormTnChoDuyet = {
+  id: string; ma_cau: string; dang_chinh: string; ten_dang: string; khoi: string; noi_dung: string; anh_de: string | null
+  loi_giai: string | null; dap_an_kho: string | null; lua_chon: LuaChonTn[]; dap_an: string; key_gia_tri: string
+  ai_model: string | null; sinh_at: string; da_duyet: boolean; sua_truoc_duyet: boolean
+}
+export type McqRule = { ma: string; ten: string; nhom: 'khai_niem' | 'tinh'; du_phong: boolean }
+export type McqMetric = {
+  tong: number; cho_duyet: number; duyet: number; duyet_khong_sua: number; sua: number; tu_choi: number
+  precision: number | null; ti_le_sua: number | null; ly_do_tu_choi: { ly_do: string; n: number }[]
+  phan_bo: Record<string, number>; do_lua: { ma_cau: string; luot: number; chon: number[] }[]
+}
+export const khoPrefix = (mon: KhoMon): 'dai' | 'khtn' | 'hgt' => (mon === 'khtn' ? 'khtn' : mon === 'hgt' ? 'hgt' : 'dai')
+export async function listFormTnChoDuyet(mon: KhoMon, khoi?: string, daDuyet = false): Promise<FormTnChoDuyet[]> {
+  const { data, error } = await supabase.rpc('fn_mcq_form_cho_duyet', { p_kho: khoPrefix(mon), p_khoi: khoi || null, p_da_duyet: daDuyet })
+  if (error) throw error
+  return (data ?? []) as FormTnChoDuyet[]
+}
+// luaChon truyền khi người SỬA trước khi duyệt — DB tự so với bản cũ để ghi sua_truoc_duyet (metric).
+export async function duyetFormTn(mon: KhoMon, id: string, nguoiDuyet: string, luaChon?: LuaChonTn[]): Promise<void> {
+  const { error } = await supabase.rpc('fn_mcq_form_duyet', { p_kho: khoPrefix(mon), p_id: id, p_nguoi: nguoiDuyet, p_lua_chon: luaChon ?? null })
+  if (error) throw error
+}
+export async function tuChoiFormTn(mon: KhoMon, id: string, nguoi: string, lyDo: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_mcq_form_tu_choi', { p_kho: khoPrefix(mon), p_id: id, p_nguoi: nguoi, p_ly_do: lyDo })
+  if (error) throw error
+}
+// ══ HÀNG DUYỆT HỢP NHẤT (spec-kho-chuan.md §3, mig 202609080938) — màn "Duyệt lời giải AI" thành 1 hàng đợi nhiều bộ lọc ══
+// Bộ lọc = trạng thái thật trong bảng câu (da_duyet=false / kiem_may), KHÔNG có bảng hàng đợi riêng. List/đếm/duyệt/từ chối
+// đều là function Postgres; ở đây chỉ gọi rpc + render. `cau_moi` = câu sau NGÀY BẬT chưa duyệt — cửa 1 đang chặn khỏi HS.
+export type HangDuyetLoc = 'cau_moi' | 'moi' | 'nghi' | 'khong_kiem' | 'ton_dong'
+export const HANG_DUYET_LABEL: Record<HangDuyetLoc, string> = {
+  cau_moi: 'Câu mới chờ duyệt', moi: 'Lời giải mới từ Claude', nghi: 'Máy nghi đáp số', khong_kiem: 'Không kiểm được', ton_dong: 'Tồn đọng (AI cũ)',
+}
+export type CauHangDuyet = {
+  ma_cau: string; dang_chinh: string; ten_dang: string; ten_chuyen_de: string; khoi: string; loai_cau: string
+  noi_dung: string; lua_chon: string[] | null; menh_de: MenhDe[] | null; dap_an: string | null; loi_giai: string | null
+  anh_de: string | null; anh_dap_an: string | null; nguon: string; nguon_giai: string; giai_method: string | null; created_at: string
+  ma_cum: string | null; ten_cum: string | null; da_duyet: boolean; kho_chuan: boolean
+  kiem_may: 'khop' | 'nghi' | 'khong_kiem_duoc' | null; kiem_may_boi: string | null; kiem_may_ghi: string | null; kiem_may_at: string | null
+  dang_ai_de_xuat: string | null
+}
+export async function listHangDuyet(mon: KhoMon, loc: HangDuyetLoc, khoi?: string | null): Promise<CauHangDuyet[]> {
+  const { data, error } = await supabase.rpc('fn_kho_hang_duyet', { p_mon: mon, p_loc: loc, p_khoi: khoi || null, p_limit: LIMIT })
+  if (error) throw error
+  return (data ?? []) as CauHangDuyet[]
+}
+// khoi = null ⇒ tổng của bộ lọc (grouping sets ở DB)
+export type DemHangDuyet = { loc: HangDuyetLoc; khoi: string | null; so_cau: number }
+export async function demHangDuyet(nhanh: KhoNhanh[]): Promise<DemHangDuyet[]> {
+  const { data, error } = await supabase.rpc('fn_kho_dem_hang_duyet', { p_nhanh: nhanh })
+  if (error) throw error
+  return ((data ?? []) as any[]).map((r) => ({ loc: r.loc, khoi: r.khoi, so_cau: Number(r.so_cau) }))
+}
+// Duyệt = áp sửa (key vắng = giữ nguyên; '' = xoá) + da_duyet + duyet_nguon='nguoi' trong 1 transaction.
+// Sửa đáp số ⇒ DB thu hồi mọi form TN của câu (trả thu_hoi_form để báo người).
+export type SuaCauDuyet = { noi_dung?: string; dap_an?: string | null; loi_giai?: string | null; dang_chinh?: string; ma_cum?: string | null }
+export async function duyetCauHangDuyet(mon: KhoMon, maCau: string, nguoi: string, sua: SuaCauDuyet = {}): Promise<{ thu_hoi_form: number; doi_dap_an: boolean; doi_dang: boolean }> {
+  const { data, error } = await supabase.rpc('fn_kho_duyet_cau', { p_mon: mon, p_ma_cau: maCau, p_nguoi: nguoi, p_sua: sua })
+  if (error) throw error
+  return data as { thu_hoi_form: number; doi_dap_an: boolean; doi_dang: boolean }
+}
+// Từ chối = kho rác (xoa_at) + lý do bắt buộc — không xoá cứng (CLAUDE.md §2 kho rác).
+export async function tuChoiCauHangDuyet(mon: KhoMon, maCau: string, nguoi: string, lyDo: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_kho_tu_choi_cau', { p_mon: mon, p_ma_cau: maCau, p_nguoi: nguoi, p_ly_do: lyDo })
+  if (error) throw error
+}
+
+export async function listMcqRule(mon: KhoMon): Promise<McqRule[]> {
+  const { data, error } = await supabase.rpc('fn_mcq_rule', { p_kho: khoPrefix(mon) })
+  if (error) throw error
+  return (data ?? []) as McqRule[]
+}
+export async function mcqMetric(mon: KhoMon): Promise<McqMetric | null> {
+  const { data, error } = await supabase.rpc('fn_mcq_metric', { p_kho: khoPrefix(mon) })
+  if (error) throw error
+  return data && Object.keys(data).length ? (data as McqMetric) : null
+}
+
+// ── ĐIỀN Ô chứng minh hình (spec-dien-o.md §0b) — form thứ 3 của bài, kho hình (không có ma_cau). RPC fn_dien_form_* ──
+export type DienPhuongAn = { text?: string; ma?: string; dung: boolean; loi?: string; vi_sao_sai?: string | null }
+export type DienO = { id: string; kieu: 'ket_luan' | 'ly_do'; buoc: number; key: string; dap_an: string; phuong_an: DienPhuongAn[] }
+export type FormDienChoDuyet = {
+  id: string; loai: 'cach' | 'bien_the'; ref_id: string; ma: string; khoi: string; de: string; gia_thiet: string | null; anh: string | null
+  buoc: { k: number; text: string }[]; o: DienO[]; sinh_at: string; da_duyet: boolean; sua_truoc_duyet: boolean; ai_model: string | null
+}
+export type HinhLyDo = { ma: string; nhom: string; ten: string; phat_bieu: string | null; duc: boolean }
+export async function listFormDienChoDuyet(khoi?: string, daDuyet = false): Promise<FormDienChoDuyet[]> {
+  const { data, error } = await supabase.rpc('fn_dien_form_cho_duyet', { p_khoi: khoi || null, p_da_duyet: daDuyet })
+  if (error) throw error
+  return (data ?? []) as FormDienChoDuyet[]
+}
+export async function duyetFormDien(id: string, nguoiDuyet: string, o?: DienO[]): Promise<void> {
+  const { error } = await supabase.rpc('fn_dien_form_duyet', { p_id: id, p_nguoi: nguoiDuyet, p_o: o ?? null })
+  if (error) throw error
+}
+export async function tuChoiFormDien(id: string, nguoi: string, lyDo: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_dien_form_tu_choi', { p_id: id, p_nguoi: nguoi, p_ly_do: lyDo })
+  if (error) throw error
+}
+export async function listHinhLyDo(): Promise<HinhLyDo[]> {
+  const { data, error } = await supabase.from('hinh_ly_do').select('ma, nhom, ten, phat_bieu, duc').eq('active', true).order('ma').limit(500)
+  if (error) throw error
+  return (data ?? []) as HinhLyDo[]
+}

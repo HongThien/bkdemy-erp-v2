@@ -4,15 +4,129 @@
     {
       "name": "dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
       "port": 5173,
       "autoPort": true
     },
     {
+      "name": "dev-hs",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:hs"
+      ],
+      "port": 5173,
+      "autoPort": true
+    },
+    {
+      "name": "dev-ops",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:ops"
+      ],
+      "port": 5173,
+      "autoPort": true
+    },
+    {
+      "name": "dev-ta",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:ta"
+      ],
+      "port": 5173,
+      "autoPort": true
+    },
+    {
+      "name": "dev-gv",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:gv"
+      ],
+      "port": 5173,
+      "autoPort": true
+    },
+    {
+      "name": "dev-pt",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:pt"
+      ],
+      "port": 5173,
+      "autoPort": true
+    },
+    {
+      "name": "dev-alt",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "5202"
+      ],
+      "port": 5202
+    },
+    {
+      "name": "dev-soan",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:soan"
+      ],
+      "port": 5180
+    },
+    {
+      "name": "dev-giaibai",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:giaibai"
+      ],
+      "port": 5181
+    },
+    {
       "name": "bkdemy-web-dev",
       "runtimeExecutable": "cmd",
-      "runtimeArgs": ["/c", "cd /d C:\\Users\\WBPC\\Desktop\\BKERP\\bkdemy-web && npm run dev"],
+      "runtimeArgs": [
+        "/c",
+        "cd /d C:\\Users\\WBPC\\Desktop\\BKERP\\bkdemy-web && npm run dev"
+      ],
       "port": 3000
+    },
+    {
+      "name": "dev-hs-wt",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "C:/Users/Admin/Desktop/BKERP/wt-app-hs",
+        "run",
+        "dev:hs",
+        "--",
+        "--port",
+        "5190",
+        "--host",
+        "127.0.0.1"
+      ],
+      "port": 5190
+    },
+    {
+      "name": "dev-khaosat",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev:khaosat"],
+      "port": 5184
+    },
+    {
+      "name": "preview-khaosat",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "preview:khaosat", "--", "--port", "5185", "--strictPort"],
+      "port": 5185
     }
   ]
 }

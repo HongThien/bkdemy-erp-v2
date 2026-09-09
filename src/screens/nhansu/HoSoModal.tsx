@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { getMyProfile, getMyScope, updateMyProfile, uploadAvatar, type MyProfile, type MyScope } from '../../lib/nhansu'
 import { Shell, Field, inp } from '../kho/ui'
+import PhimTatModal from '../../components/math/PhimTatModal'
 
 const CAP_LABEL: Record<string, string> = { truong: 'Trưởng', pho: 'Phó', thanh_vien: 'Thành viên' }
 const VT_LABEL: Record<string, string> = { gv: 'Giáo viên', tg: 'Trợ giảng' }
@@ -17,6 +18,7 @@ export default function HoSoModal({ onClose }: { onClose: () => void }) {
   const [saved, setSaved] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [scope, setScope] = useState<MyScope | null>(null)
+  const [ptOpen, setPtOpen] = useState(false)   // trang gán phím tắt công thức (cá nhân)
   const fileRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -143,10 +145,12 @@ export default function HoSoModal({ onClose }: { onClose: () => void }) {
 
             {error && <p className="mt-2 text-xs text-rose-600">{error}</p>}
             <div className="mt-4 flex items-center justify-end gap-2">
+              <button onClick={() => setPtOpen(true)} className="mr-auto rounded-md border border-slate-200 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-300 hover:text-indigo-700" title="Gán phím tắt cho mẫu công thức (lưu theo tài khoản, không có bộ mặc định)">⌨ Phím tắt công thức</button>
               {saved && <span className="text-[12px] font-medium text-emerald-600">✓ Đã lưu</span>}
               <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Đóng</button>
               <button onClick={save} disabled={busy} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang lưu…' : 'Lưu'}</button>
             </div>
+            {ptOpen && <PhimTatModal onClose={() => setPtOpen(false)} />}
           </>
         )}
     </Shell>

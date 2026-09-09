@@ -15,7 +15,9 @@ const HS_DOMAIN = 'hs.bkdemy.local'
 
 // hsOnly = true khi chạy trong bundle riêng hs.bkacademy.edu.vn (main-hs.tsx) — ẩn hẳn tab
 // "Nhân sự" (HS không cần thấy, và bundle đó vốn không import gì thuộc màn staff).
-export default function Login({ hsOnly = false }: { hsOnly?: boolean } = {}) {
+// staffOnly = true cho bundle app OPS (main-ops.tsx) — ẩn tab "Học sinh" (đối xứng hsOnly);
+// title/subtitle cho bundle đặt tên riêng ("BK Vận hành"…), không ảnh hưởng 2 bundle cũ.
+export default function Login({ hsOnly = false, staffOnly = false, title, subtitle }: { hsOnly?: boolean; staffOnly?: boolean; title?: string; subtitle?: string } = {}) {
   const [mode, setMode] = useState<'staff' | 'hs'>(hsOnly ? 'hs' : 'staff')
   const [email, setEmail] = useState('')
   const [maHS, setMaHS] = useState('')
@@ -42,10 +44,10 @@ export default function Login({ hsOnly = false }: { hsOnly?: boolean } = {}) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4">
       <form onSubmit={submit} className="w-[380px] rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
-        <h1 className="text-lg font-semibold text-slate-900">{hsOnly ? 'BK Academy' : 'BKdemy ERP'}</h1>
-        <p className="mb-4 text-sm text-slate-400">{hsOnly ? 'Đăng nhập học sinh' : 'Đăng nhập để tiếp tục'}</p>
+        <h1 className="text-lg font-semibold text-slate-900">{title ?? (hsOnly ? 'BK Academy' : 'BKdemy ERP')}</h1>
+        <p className="mb-4 text-sm text-slate-400">{subtitle ?? (hsOnly ? 'Đăng nhập học sinh' : 'Đăng nhập để tiếp tục')}</p>
 
-        {!hsOnly && (
+        {!hsOnly && !staffOnly && (
           <div className="mb-5 grid grid-cols-2 gap-1 rounded-lg bg-slate-100 p-1">
             {(['staff', 'hs'] as const).map((m) => (
               <button key={m} type="button" onClick={() => { setMode(m); setErr(null) }}

@@ -1,7 +1,7 @@
 // Panel ĐÚNG/SAI — CON của 1 CHUYÊN ĐỀ (mở từ header chuyên đề trong BanDo, cạnh "Lý thuyết chung").
 // Câu = 1 đề chung + 4 mệnh đề, MỖI mệnh đề 1 dạng riêng (chọn dạng bất kỳ trong khối). Lưu ở dai_cau_hoi (menh_de jsonb).
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { listDungSaiByDang, createCauDungSai, updateCau, deleteCau, uploadKhoImage, callGeminiJson, buildDungSaiIngestPrompt, parseDungSaiJson, DUNGSAI_SCHEMA, type CauHoi, type MenhDe, type MapRow } from '../../lib/kho/api'
+import { listDungSaiByDang, createCauDungSai, updateCau, deleteCau, duyetCau, boDuyetCau, uploadKhoImage, callGeminiJson, buildDungSaiIngestPrompt, parseDungSaiJson, DUNGSAI_SCHEMA, type CauHoi, type MenhDe, type MapRow } from '../../lib/kho/api'
 import { inp, MathText } from './ui'
 import SearchSelect from '../../components/SearchSelect'
 import { ImgInsertBar, insertImageAtCursor } from '../../components/ImgInsertBar'
@@ -34,6 +34,12 @@ export default function DungSaiPanel({ t2Ma, t2Ten, tbl, allDang, onClose }: {
     if (!confirm('Xoá câu đúng/sai này?')) return
     try { await deleteCau(c.ma_cau, tbl); await reload() } catch (e: any) { alert(e.message ?? String(e)) }
   }
+  // ⭐ 20/08 (Thùy: nhãn đã/chưa kiểm duyệt) — cùng cột da_duyet với câu thường (chung bảng dai_cau_hoi/
+  // khtn_cau_hoi), nên áp y hệt ở đây cho đối xứng, không để câu Đúng/Sai thành lỗ hổng không duyệt được.
+  async function onToggleDuyet(c: CauHoi) {
+    try { await (c.da_duyet ? boDuyetCau(c.ma_cau, tbl) : duyetCau(c.ma_cau, tbl)); await reload() }
+    catch (e: any) { alert(e.message ?? String(e)) }
+  }
 
   return (
     <div className="fixed inset-0 z-[70] flex flex-col bg-[#fafafb]">
@@ -57,7 +63,12 @@ export default function DungSaiPanel({ t2Ma, t2Ten, tbl, allDang, onClose }: {
                     <div key={c.ma_cau} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
                       <div className="mb-2 flex items-start gap-2">
                         <div className="min-w-0 flex-1 text-[15px] leading-relaxed text-slate-800"><MathText>{c.noi_dung}</MathText></div>
-                        <div className="flex shrink-0 gap-1.5">
+                        <div className="flex shrink-0 items-center gap-1.5">
+                          <button onClick={() => onToggleDuyet(c)}
+                            title={c.da_duyet ? 'Đã duyệt — bấm để bỏ duyệt' : 'Chưa duyệt — bấm để duyệt'}
+                            className={`rounded-lg px-2.5 py-1 text-[12px] font-medium ${c.da_duyet ? 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100' : 'bg-rose-50 text-rose-600 hover:bg-rose-100'}`}>
+                            {c.da_duyet ? '✓ Đã duyệt' : '○ Chưa duyệt'}
+                          </button>
                           <button onClick={() => setEditing(c)} className="rounded-lg border border-slate-200 px-2.5 py-1 text-[12px] text-slate-500 hover:border-indigo-300 hover:text-indigo-700">Sửa</button>
                           <button onClick={() => onDelete(c)} className="rounded-lg border border-slate-200 px-2.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">Xoá</button>
                         </div>

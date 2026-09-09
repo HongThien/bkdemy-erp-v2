@@ -10,7 +10,7 @@
 // vẫn giữ, dùng để bổ sung câu sau này.
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useStore } from '../../store/useStore'
-import { useMonScope } from '../../lib/mon'
+import { useMonScope } from '../../hooks/useMonScope'
 import {
   listDeThi, createDeThi, renameDeThi, deThiMeta, updateDeThiMeta, attachPdfGoc,
   addPhanDeThi, getPhanCauList, type DeThi, type DeThiMeta,

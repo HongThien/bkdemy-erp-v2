@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import { loadLuoi, type Luoi } from '../../lib/kho/hinh'
-import { useMonScope } from '../../lib/mon'
+import { useMonScope } from '../../hooks/useMonScope'
 import GiaoTrinhScreen from '../kho/hinh/GiaoTrinhScreen'
 
 export default function GiaoTrinhHinhEntry() {

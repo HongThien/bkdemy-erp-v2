@@ -87,8 +87,9 @@ function ChamCard({ item, onClose, onDone }: { item: CaTestChoCham; onClose: () 
 
   async function chon(c: CaTestCau, kq: 'correct' | 'partial' | 'wrong') {
     const next = c.ketQua === kq ? null : kq
-    await chamCauTest(c.id, c.diemToiDa, next)
-    setCau((s) => s.map((x) => (x.id === c.id ? { ...x, ketQua: next, diem: next ? c.diemToiDa * (next === 'correct' ? 1 : next === 'partial' ? 0.5 : 0) : null } : x)))
+    // §2.0: diem do trigger DB tính — hiển thị đúng số DB trả về, không tự nhân hệ số ở đây.
+    const diemDb = await chamCauTest(c.id, next)
+    setCau((s) => s.map((x) => (x.id === c.id ? { ...x, ketQua: next, diem: diemDb } : x)))
   }
   async function dong() {
     setBusy(true); setErr(null)

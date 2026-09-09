@@ -1,6 +1,8 @@
 // ============================================================================
-// tuluyen.ts — TỰ LUYỆN (Thùy 18-20/08): mỗi ngày HS mở → hệ tự sinh 10 câu, làm thêm được
-// tối đa 30/ngày. 40% ngẫu nhiên trong dạng ĐÃ HỌC · 60% trong dạng đang YẾU.
+// tuluyen.ts — TỰ LUYỆN (Thùy 18-20/08; sửa lớn 29/08): MỖI LƯỢT = 1 bai_test RIÊNG 10 câu,
+// luyện bao nhiêu lượt tuỳ em (Thùy 29/08: bỏ trần 30/ngày + "mỗi lần luyện phải độc lập" —
+// KHÔNG append cộng dồn vào 1 bài/ngày như bản đầu). Mở app: lượt hôm nay đang DỞ thì làm
+// tiếp, hết dở thì sinh lượt mới. 40% ngẫu nhiên trong dạng ĐÃ HỌC · 60% trong dạng đang YẾU.
 //
 // KIẾN TRÚC: tái dùng NGUYÊN bai_test/bai_test_cau/bai_lam/bai_lam_cau (loai='tu_luyen',
 // bai_test.hoc_sinh_id set — bài CÁ NHÂN, khác ET/BTVN dùng chung cả lớp). Chọn CÂU + snapshot
@@ -14,22 +16,30 @@ import { supabase } from './supabase'
 import { masteryOfDang, MASTERY_CONFIG } from '../gami/mastery.js'
 
 const SO_CAU_MOI_LUOT = 10
-const TRAN_NGAY = 30
 
-export type TuLuyenHomNay = { baiTestId: string; soCau: number; daNop: boolean }
+export type LuotHomNay = { dangDo: { baiTestId: string } | null; tongCau: number }
 
-// Bài tự luyện CỦA HÔM NAY nếu đã có (mở lại, hoặc vừa "làm thêm" ở tab khác) — không tạo mới.
-export async function timTuLuyenHomNay(mon: string): Promise<TuLuyenHomNay | null> {
+// Các LƯỢT tự luyện hôm nay: lượt MỚI NHẤT chưa nộp (để làm tiếp thay vì sinh lượt mới đè lên
+// lượt dở) + tổng số câu đã sinh hôm nay (hiển thị động viên ở màn kết quả). Chỉ soi 20 lượt gần
+// nhất — quá đủ cho "dở", tổng câu vẫn đếm đúng qua sum so_cau của TOÀN BỘ lượt trong ngày.
+export async function luotTuLuyenHomNay(mon: string): Promise<LuotHomNay> {
   const { data: hocSinhId } = await supabase.rpc('my_hoc_sinh_id')
-  if (!hocSinhId) return null
+  if (!hocSinhId) return { dangDo: null, tongCau: 0 }
   const homNay = ngayVN()
-  const { data: bt, error } = await supabase.from('bai_test').select('id, so_cau')
-    .eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('loai', 'tu_luyen').eq('ngay', homNay).limit(1)
+  const { data: bts, error } = await supabase.from('bai_test').select('id, so_cau')
+    .eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('loai', 'tu_luyen').eq('ngay', homNay)
+    .order('created_at', { ascending: false }).limit(100)
   if (error) throw error
-  const row = (bt as { id: string; so_cau: number }[])?.[0]
-  if (!row) return null
-  const { data: lam } = await supabase.from('bai_lam').select('trang_thai').eq('bai_test_id', row.id).limit(1)
-  return { baiTestId: row.id, soCau: row.so_cau, daNop: (lam as { trang_thai: string }[])?.[0]?.trang_thai === 'da_nop' }
+  const rows = (bts ?? []) as { id: string; so_cau: number }[]
+  const tongCau = rows.reduce((s, r) => s + r.so_cau, 0)
+  if (!rows.length) return { dangDo: null, tongCau }
+  const gan = rows.slice(0, 20)
+  const { data: lams } = await supabase.from('bai_lam').select('bai_test_id, trang_thai')
+    .in('bai_test_id', gan.map((r) => r.id)).limit(20)
+  const daNop = new Set(((lams ?? []) as { bai_test_id: string; trang_thai: string }[])
+    .filter((l) => l.trang_thai === 'da_nop').map((l) => l.bai_test_id))
+  const dangDo = gan.find((r) => !daNop.has(r.id))
+  return { dangDo: dangDo ? { baiTestId: dangDo.id } : null, tongCau }
 }
 
 // Ngày hôm nay giờ VN dạng 'YYYY-MM-DD' — KHÔNG dùng toISOString()/new Date('...') (CLAUDE.md §2 cấm).
@@ -66,7 +76,7 @@ export function chonDangTuLuyen(evals: RawEval[], soCau = SO_CAU_MOI_LUOT): stri
 
 export type SinhTuLuyenKetQua = { baiTestId: string; them: number; tong: number }
 
-// Sinh 1 đợt câu (mặc định 10, "làm thêm" cũng gọi lại đúng hàm này) — RPC tự cộng dồn/chặn trần.
+// Sinh 1 LƯỢT MỚI (bai_test riêng, mặc định 10 câu) — "làm thêm" gọi lại đúng hàm này, ra lượt mới.
 export async function sinhTuLuyen(mon: string, soCau = SO_CAU_MOI_LUOT): Promise<SinhTuLuyenKetQua> {
   const { data: evals, error: e1 } = await supabase.rpc('hs_dang_evals', { p_mon: mon })
   if (e1) throw e1
@@ -77,7 +87,6 @@ export async function sinhTuLuyen(mon: string, soCau = SO_CAU_MOI_LUOT): Promise
   return { baiTestId: data.bai_test_id, them: data.them, tong: data.tong }
 }
 
-export const TU_LUYEN_TRAN_NGAY = TRAN_NGAY
 export const TU_LUYEN_SO_CAU_MOI_LUOT = SO_CAU_MOI_LUOT
 
 // Môn HS đang học — cần đọc THẲNG qua RPC vì `lop`/`hoc_sinh_lop` staff-only (verify: HS SELECT
@@ -104,6 +113,28 @@ export async function khoiCuaHS(): Promise<string | null> {
   const { data, error } = await supabase.rpc('hs_khoi_cua_toi')
   if (error) throw error
   return (data as string | null) ?? null
+}
+
+// Giới tính — màn chính cấp 2/3 có 2 biến thể nam/nữ (kit hs-home-v4). Null/khác = mặc định nam.
+export async function gioiTinhCuaHS(): Promise<'nam' | 'nu' | null> {
+  const { data, error } = await supabase.rpc('hs_gioi_tinh_cua_toi')
+  if (error) throw error
+  return data === 'nu' ? 'nu' : data === 'nam' ? 'nam' : null
+}
+
+// Hồ sơ gộp cho màn chính (giới tính → theme · anh_url → avatar) — 1 RPC thay vì mỗi cột 1 RPC (mig 202609080215).
+export type HoSoHS = { ho_ten: string; ma_hs: string; gioi_tinh: 'nam' | 'nu' | null; anh_url: string | null }
+export async function hoSoCuaToi(): Promise<HoSoHS | null> {
+  const { data, error } = await supabase.rpc('hs_ho_so_cua_toi')
+  if (error) throw error
+  if (!data) return null
+  const d = data as Record<string, unknown>
+  return { ho_ten: String(d.ho_ten ?? ''), ma_hs: String(d.ma_hs ?? ''), gioi_tinh: d.gioi_tinh === 'nu' ? 'nu' : d.gioi_tinh === 'nam' ? 'nam' : null, anh_url: (d.anh_url as string | null) ?? null }
+}
+// Đổi ảnh đại diện — HS không UPDATE hoc_sinh thẳng được (RLS staff-only) → RPC chỉ sửa anh_url của chính mình.
+export async function doiAnhDaiDienHS(url: string): Promise<void> {
+  const { error } = await supabase.rpc('hs_doi_anh_dai_dien', { p_url: url })
+  if (error) throw error
 }
 
 export const SRC_LABEL: Record<RawEval['src'], string> = { et: 'ET', mt: 'MT', btvn: 'BTVN', bt: 'BT', tu_luyen: 'TL' }
@@ -152,4 +183,19 @@ export async function xepHangTuLuyen(khoi: string): Promise<XepHangRow[]> {
   const { data, error } = await supabase.rpc('hs_xep_hang_tu_luyen', { p_khoi: khoi })
   if (error) throw error
   return (data ?? []) as XepHangRow[]
+}
+
+// ── LUYỆN CHỨNG MINH (điền ô) — spec-dien-o.md §0b, D2. Mỗi lượt = 1 bai_test loai 'tu_luyen' gồm N bài hình có form điền ô
+// đã duyệt (RPC tu_luyen_dien_sinh: chọn + snapshot ở server, bản HS thấy đã cắt key). Chấm ở DB (hs_dien_tra_loi → fn_dien_cham:
+// đúng hết Đ, sai >60% ô S, còn lại C — CEO 09/09). Client chỉ hiển thị và đến ô nào hiện đúng/sai ô đó. ──
+export type DienHsView = { buoc: { k: number; text: string }[]; o: { id: string; kieu: 'ket_luan' | 'ly_do'; buoc: number; key_len: number; phuong_an: string[] }[] }
+export async function sinhTuLuyenDienO(mon: string, soBai = 3): Promise<{ baiTestId: string; soCau: number }> {
+  const { data, error } = await supabase.rpc('tu_luyen_dien_sinh', { p_mon: mon, p_n: soBai })
+  if (error) throw error
+  return { baiTestId: data.bai_test_id, soCau: data.so_cau }
+}
+export async function traLoiDienO(baiLamId: string, baiTestCauId: string, dapAnHs: number[]): Promise<{ verdict: string; ti_le: number; key: string[]; bai_lam_cau_id: string }> {
+  const { data, error } = await supabase.rpc('hs_dien_tra_loi', { p_bai_lam_id: baiLamId, p_bai_test_cau_id: baiTestCauId, p_dap_an_hs: dapAnHs })
+  if (error) throw error
+  return data as { verdict: string; ti_le: number; key: string[]; bai_lam_cau_id: string }
 }

@@ -8,7 +8,7 @@ import {
   type ViecFull, type HieuSuatKy, type CapNhatViec,
 } from '../../lib/giaoviec'
 import { thangCuaKyTuan, kyTuanHienTai } from '../../lib/giaoviec-config'
-import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Badge, VIEC_TT, Section, Empty, ErrBar, Stat, Modal, Field, fmtNgay } from './ui'
+import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Badge, VIEC_TT, Section, Empty, ErrBar, Stat, Modal, Field, fmtNgay, DeadlineChip } from './ui'
 import GiaoViecModal, { type GiaoPrefill } from './GiaoViecModal'
 import { TaskDetailModal } from './WeeklyPlanningTab'
 import { NghiemThuModal, HuyModal, ChuyenModal } from './TaskActions'
@@ -132,16 +132,20 @@ function MyTaskCard({ v, conVersion, onOpenCon, children }: {
 }) {
   const coCon = !v.task_me_id && !!v.so_con
   return (
-    <div className="rounded-2xl bg-white p-4 shadow-sm">
-      <div className="flex flex-wrap items-start gap-2">
-        <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2">
-            <span className="font-semibold text-slate-800">{v.tieu_de}</span>
+    // CEO 05/09 (nhìn trên iPhone dọc): KHÔNG chia cột — tên task full chiều ngang dòng 1, chip trạng thái
+    // + người giao/deadline chữ nhỏ dòng dưới, nút thao tác xuống HÀNG RIÊNG cuối card (trước đây nút nằm
+    // cột phải shrink-0 → bóp nội dung còn một dải hẹp).
+    <div className="rounded-2xl border border-slate-200/70 bg-white p-4 shadow-sm">
+      <div>
+        <div className="min-w-0">
+          <div className="text-[14px] font-semibold leading-snug text-slate-800">{v.tieu_de}</div>
+          <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
             <Badge map={VIEC_TT} k={v.trang_thai} />
             {v.phan_tram !== null && <span className="text-[12px] font-semibold text-slate-700">{v.phan_tram}%</span>}
+            {v.deadline && <DeadlineChip deadline={v.deadline} active={!['dat', 'huy', 'chuyen'].includes(v.trang_thai)} />}
           </div>
-          <div className="mt-0.5 text-[12px] text-slate-500">
-            Giao bởi {v.nguoi_giao_ten} · KL {v.khoi_luong}{v.deadline && <> · hạn {fmtNgay(v.deadline)}</>}
+          <div className="mt-1 text-[12px] text-slate-500">
+            Giao bởi {v.nguoi_giao_ten} · KL {v.khoi_luong}
           </div>
           {/* Đọc đầy đủ thông tin leader viết lúc giao — trước đây chỉ hiện output, thiếu mục tiêu. */}
           {v.muc_tieu && <div className="mt-0.5 text-[12px] text-slate-600">🎯 {v.muc_tieu}</div>}
@@ -149,9 +153,12 @@ function MyTaskCard({ v, conVersion, onOpenCon, children }: {
           {v.trang_thai === 'tra_lai' && v.ghi_chu_nghiem_thu && <div className="mt-1 rounded-lg bg-rose-50 px-2.5 py-1.5 text-[12px] text-rose-600">Bị trả lại: {v.ghi_chu_nghiem_thu}</div>}
           {v.trang_thai === 'dat' && <div className="mt-1 text-[11px] text-slate-400">Tiến độ {v.tien_do} · Chất lượng {v.chat_luong}</div>}
           {coCon && <ConCumSection v={v} refreshKey={conVersion ?? 0} onOpenCon={onOpenCon!} />}
-          {!coCon && !['dat', 'huy', 'chuyen'].includes(v.trang_thai) && <CapNhatSection v={v} />}
+          {/* Người cầm task mẹ vẫn cần 1 chỗ cập nhật CHUNG cho cả cụm (khác cập nhật riêng
+              của từng task con, vẫn giữ nguyên như cũ) — story 08-18. Cập nhật này lên thẳng
+              bảng "Công khai" chung cả team để leader review nhanh, không phải mở từng task. */}
+          {!['dat', 'huy', 'chuyen'].includes(v.trang_thai) && <CapNhatSection v={v} laMe={coCon} />}
         </div>
-        {children && <div className="flex shrink-0 items-center gap-1.5">{children}</div>}
+        {children && <div className="mt-3 flex flex-wrap items-center gap-1.5">{children}</div>}
       </div>
     </div>
   )
@@ -192,7 +199,7 @@ function ConCumSection({ v, refreshKey, onOpenCon }: { v: ViecFull; refreshKey: 
 // Cập nhật tiến độ trong lúc làm (story 08-18) — TƯỜNG THUẬT của người làm, khác hẳn
 // v.tien_do (điểm máy chấm lúc nghiệm thu). Append-only: mỗi lần gửi thêm 1 dòng mới,
 // không sửa dòng cũ — history hiện đủ để leader theo dõi cả quá trình, không chỉ bản mới nhất.
-function CapNhatSection({ v }: { v: ViecFull }) {
+function CapNhatSection({ v, laMe }: { v: ViecFull; laMe?: boolean }) {
   const [mo, setMo] = useState(false)
   const [ds, setDs] = useState<CapNhatViec[] | null>(null)
   const [dangTai, setDangTai] = useState(false)
@@ -223,13 +230,14 @@ function CapNhatSection({ v }: { v: ViecFull }) {
   return (
     <div className="mt-1.5">
       <button onClick={toggle} className="text-[12px] font-medium text-indigo-600 hover:underline">
-        📝 Cập nhật tiến độ{moiNhat?.tien_do_bao_cao != null ? ` · ${moiNhat.tien_do_bao_cao}%` : ''} {mo ? '▲' : '▼'}
+        📝 {laMe ? 'Cập nhật chung (cả cụm)' : 'Cập nhật tiến độ'}{moiNhat?.tien_do_bao_cao != null ? ` · ${moiNhat.tien_do_bao_cao}%` : ''} {mo ? '▲' : '▼'}
       </button>
       {mo && (
         <div className="mt-1.5 space-y-2 border-l-2 border-slate-100 pl-3">
+          {laMe && <p className="text-[11px] text-slate-400">Cập nhật CHUNG cho cả cụm — lên thẳng bảng "Công khai" cả team xem. Từng task con vẫn tự cập nhật riêng như cũ.</p>}
           <div className="flex flex-wrap items-end gap-2">
             <div className="min-w-[200px] flex-1">
-              <textarea value={noiDung} onChange={(e) => setNoiDung(e.target.value)} rows={2} placeholder="Hôm nay làm gì, còn vướng gì…"
+              <textarea value={noiDung} onChange={(e) => setNoiDung(e.target.value)} rows={2} placeholder={laMe ? 'Tình hình chung cả cụm hôm nay…' : 'Hôm nay làm gì, còn vướng gì…'}
                 className="w-full rounded-lg border border-slate-300 px-2.5 py-1.5 text-[12.5px] outline-none focus:border-indigo-400" />
             </div>
             <div className="flex items-center gap-1.5">

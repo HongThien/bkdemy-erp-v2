@@ -4,11 +4,13 @@
 // Mastery đọc bai_lam_cau LIVE (suy động) → tự đúng theo, không sync gì thêm.
 // Nhóm 2 tầng: CÂU (theo ma_cau) → từng ĐÁP ÁN HS distinct (đơn vị duyệt).
 import { useEffect, useMemo, useState } from 'react'
-import { listTLNSai, listAcceptedAnswers, chapNhanDapAn, tuChoiReports, type TLNSaiRow } from '../../lib/testonline'
+import { listTLNSai, listAcceptedAnswers, chapNhanDapAn, tuChoiReports, listBaoSaiDe, type TLNSaiRow } from '../../lib/testonline'
 import { smartNormalize } from '../../gami/testgrade'
 import { MathText } from '../kho/ui'
 import { tenHienThiDs } from '../../lib/hoten'
 import ChamLaiKeyPanel from './ChamLaiKeyPanel'
+import { findCauInKho, type CauHoi } from '../../lib/kho/api'
+import { CauModal } from '../kho/DangHub'
 
 type RepMoi = { id: string; nguon: 'hs_bao_sai' | 'ai_de_xuat' }
 type AnsGroup = { norm: string; raw: string; rows: TLNSaiRow[]; repsMoi: RepMoi[] }
@@ -16,6 +18,7 @@ type CauGroup = { key: string; maCau: string | null; noiDung: string | null; dap
 
 const fmtNgay = (iso: string) => { const [y, m, d] = iso.split('-'); return `${d}/${m}/${y}` }
 const LOAI_LABEL: Record<string, string> = { et: 'ET', btvn: 'BTVN', giao_trinh: 'Giáo trình' }
+const khoiSort = (a: string, b: string) => a.localeCompare(b, 'vi', { numeric: true })
 
 export default function DuyetChamScreen() {
   const [rows, setRows] = useState<TLNSaiRow[]>([])
@@ -25,21 +28,33 @@ export default function DuyetChamScreen() {
   const [filter, setFilter] = useState<'baosai' | 'all' | 'keysai'>('baosai')
   const [busy, setBusy] = useState<string | null>(null) // norm key đang xử lý
   const [flash, setFlash] = useState<string | null>(null)
+  const [suaKhoBusy, setSuaKhoBusy] = useState<string | null>(null) // maCau đang dò trong Kho
+  const [suaKho, setSuaKho] = useState<{ cau: CauHoi; cauTbl: string } | null>(null)
+  // 🚩 báo sai ĐỀ (TN/ĐS — giáo trình) đang chờ: nằm ở tab ⚠ (đường KEY SAI), đếm để hiện badge —
+  // task "Duyệt báo sai" (gami) đếm MỌI report 'moi', không có badge này thì tab 🚩 hiện 0 mà task vẫn treo.
+  const [nBaoSaiDe, setNBaoSaiDe] = useState(0)
+  // Lọc theo KHỐI (Thùy 04/09 — nhiều khối cùng báo, khó thấy HS của khối mình). Khối = lop.khoi của test.
+  // Áp cho cả 3 tab; tab ⚠ tự lọc trong panel, panel báo ngược tập khối nó có để chip hiện đủ.
+  const [khoi, setKhoi] = useState<string | null>(null)
+  const [khoiKeySai, setKhoiKeySai] = useState<string[]>([])
 
   async function reload() {
     setLoading(true); setErr(null)
     try {
-      const r = await listTLNSai()
-      setRows(r)
+      const [r, bsd] = await Promise.all([listTLNSai(), listBaoSaiDe()])
+      setRows(r); setNBaoSaiDe(bsd.length)
       setAccepted(await listAcceptedAnswers([...new Set(r.map((x) => x.cau.ma_cau).filter(Boolean) as string[])]))
     } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [])
 
+  const khoiOpts = useMemo(() => [...new Set([...rows.map((r) => r.test.khoi), ...khoiKeySai].filter(Boolean) as string[])].sort(khoiSort), [rows, khoiKeySai])
+  const rowsKhoi = useMemo(() => (khoi ? rows.filter((r) => r.test.khoi === khoi) : rows), [rows, khoi])
+
   // Nhóm CÂU → ĐÁP ÁN (distinct theo smartNormalize — cùng đơn vị với cache/backfill).
   const groups = useMemo<CauGroup[]>(() => {
     const byCau = new Map<string, CauGroup>()
-    for (const r of rows) {
+    for (const r of rowsKhoi) {
       const key = r.cau.ma_cau ?? r.cau.id
       let g = byCau.get(key)
       if (!g) { g = { key, maCau: r.cau.ma_cau, noiDung: r.cau.noi_dung, dapAnKey: r.cau.dapAnKey, loiGiai: r.cau.loi_giai, answers: [], repsMoi: 0 }; byCau.set(key, g) }
@@ -54,7 +69,7 @@ export default function DuyetChamScreen() {
     // Câu có báo sai lên đầu, rồi câu nhiều lượt sai.
     out.sort((x, y) => y.repsMoi - x.repsMoi || y.answers.reduce((s, a) => s + a.rows.length, 0) - x.answers.reduce((s, a) => s + a.rows.length, 0))
     return out
-  }, [rows])
+  }, [rowsKhoi])
 
   const totalRepsMoi = useMemo(() => groups.reduce((s, g) => s + g.repsMoi, 0), [groups])
   const shown = filter === 'baosai' ? groups.filter((g) => g.repsMoi > 0) : groups
@@ -77,6 +92,19 @@ export default function DuyetChamScreen() {
     } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(null) }
   }
 
+  // "Sửa trong Kho" — sửa câu GỐC (áp dụng đề PHÁT SAU này), TÁCH BIỆT khỏi "Chấp nhận đúng" (chỉ xử
+  // lý lượt HS đang xem). Thùy chốt 22/08: không gộp 2 hành động, không tự re-chấm lượt đang báo sai.
+  async function onSuaKho(g: CauGroup) {
+    if (!g.maCau) return
+    setSuaKhoBusy(g.key)
+    try {
+      const found = await findCauInKho(g.maCau)
+      if (!found) { setErr(`Không tìm thấy câu ${g.maCau} trong Kho — có thể đã bị xoá.`); return }
+      if ((found.cau as any).xoa_at) { setErr(`Câu ${g.maCau} đã bị xoá khỏi Kho — không sửa được ở đây.`); return }
+      setSuaKho(found)
+    } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setSuaKhoBusy(null) }
+  }
+
   const tab = (on: boolean) => `h-7 rounded-md px-2.5 text-xs font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
 
   return (
@@ -86,8 +114,19 @@ export default function DuyetChamScreen() {
         <button onClick={() => setFilter('baosai')} className={tab(filter === 'baosai')}>🚩 HS báo sai{totalRepsMoi ? ` (${totalRepsMoi})` : ''}</button>
         <button onClick={() => setFilter('all')} className={tab(filter === 'all')}>Tất cả câu bị chấm sai ({groups.length})</button>
         {/* Đường THỨ HAI, đừng lẫn với hai tab trên: trên = key đúng/HS viết khác · đây = KEY SAI. */}
-        <button onClick={() => setFilter('keysai')} className={tab(filter === 'keysai')}>⚠ Nghi sai đáp án — chấm lại</button>
+        <button onClick={() => setFilter('keysai')} className={tab(filter === 'keysai')}>⚠ Nghi sai đáp án — chấm lại{nBaoSaiDe ? ` (🚩 ${nBaoSaiDe})` : ''}</button>
         <button onClick={reload} className="rounded-md border border-slate-300 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">↻ Tải lại</button>
+        {khoiOpts.length > 0 && (
+          <span className="ml-2 inline-flex items-center gap-1.5">
+            <span className="text-[11px] font-semibold uppercase tracking-wide text-slate-400">Khối</span>
+            <span className="inline-flex flex-wrap gap-0.5 rounded-lg border border-slate-200 bg-slate-50 p-0.5">
+              <button onClick={() => setKhoi(null)} className={`rounded-md px-2 py-0.5 text-[12px] font-medium transition ${khoi === null ? 'bg-white text-indigo-700 shadow-sm ring-1 ring-slate-200' : 'text-slate-500 hover:bg-white'}`}>Tất cả</button>
+              {khoiOpts.map((k) => (
+                <button key={k} onClick={() => setKhoi(k)} className={`rounded-md px-2 py-0.5 text-[12px] font-medium transition ${khoi === k ? 'bg-white text-indigo-700 shadow-sm ring-1 ring-slate-200' : 'text-slate-500 hover:bg-white'}`}>{k}</button>
+              ))}
+            </span>
+          </span>
+        )}
         <span className="ml-auto text-[12px] text-slate-400">
           {filter === 'keysai' ? 'Cả lớp cùng sai 1 câu ⇒ nghi ĐÁP ÁN sai trước, nghi HS sau.' : 'Chấp nhận đúng = thêm vào bộ đáp án (lần sau tự đúng) + sửa mọi bài làm trùng.'}
         </span>
@@ -96,11 +135,11 @@ export default function DuyetChamScreen() {
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {flash && <div className="mb-3 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-[13px] text-emerald-700">{flash}</div>}
         {err && <div className="mb-3 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-600">Lỗi: {err}</div>}
-        {filter === 'keysai' ? <ChamLaiKeyPanel />
+        {filter === 'keysai' ? <ChamLaiKeyPanel khoi={khoi} onKhoiOpts={setKhoiKeySai} />
           : loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : shown.length === 0 ? (
             <div className="rounded-xl border border-dashed border-slate-300 bg-white py-14 text-center text-sm text-slate-400">
-              {filter === 'baosai' ? 'Không có báo sai nào đang chờ duyệt. 🎉' : 'Không có câu trả lời ngắn nào đang bị chấm sai.'}
+              {khoi ? `Khối ${khoi}: ` : ''}{filter === 'baosai' ? 'Không có báo sai nào đang chờ duyệt. 🎉' : 'Không có câu trả lời ngắn nào đang bị chấm sai.'}
             </div>
           ) : (
             <div className="mx-auto max-w-[980px] space-y-4">
@@ -115,6 +154,11 @@ export default function DuyetChamScreen() {
                         <span key={i} className="rounded-full bg-sky-50 px-2 py-0.5 text-sky-700 ring-1 ring-sky-200">cũng đúng: {s}</span>
                       ))}
                       {g.repsMoi > 0 && <span className="rounded-full bg-rose-50 px-2 py-0.5 font-semibold text-rose-600 ring-1 ring-rose-200">🚩 {g.repsMoi} báo sai</span>}
+                      <button disabled={!g.maCau || suaKhoBusy === g.key} onClick={() => onSuaKho(g)}
+                        title="Sửa câu GỐC trong Kho — chỉ áp dụng cho đề phát SAU này, không đụng lượt đang xem"
+                        className="ml-auto rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-[12px] font-semibold text-slate-600 transition hover:border-indigo-300 hover:text-indigo-700 disabled:opacity-40">
+                        {suaKhoBusy === g.key ? 'Đang mở…' : '✏️ Sửa trong Kho'}
+                      </button>
                     </div>
                     <div className="text-[14px] leading-relaxed text-slate-800"><MathText>{g.noiDung}</MathText></div>
                   </div>
@@ -156,6 +200,11 @@ export default function DuyetChamScreen() {
             </div>
           )}
       </div>
+
+      {suaKho && (
+        <CauModal editing={suaKho.cau} cauTbl={suaKho.cauTbl} onClose={() => setSuaKho(null)}
+          onSaved={() => { setSuaKho(null); setFlash('Đã cập nhật câu trong Kho — áp dụng cho đề phát SAU này, không đụng lượt đang báo sai.') }} />
+      )}
     </div>
   )
 }

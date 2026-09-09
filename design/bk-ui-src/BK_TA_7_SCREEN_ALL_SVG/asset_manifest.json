@@ -1,0 +1,109 @@
+{
+  "package_name": "BK_TA_7_SCREEN_SVG_HANDOFF",
+  "reference_screens": [
+    "01_home.png",
+    "02_attendance.png",
+    "03_report.png",
+    "04_prep.png",
+    "05_test.png",
+    "06_gift.png",
+    "07_my.png"
+  ],
+  "assets": {
+    "assets/prep": [
+      "broom_large.svg",
+      "header_girl.svg",
+      "sparkle.svg"
+    ],
+    "assets/gift": [
+      "coin_star.svg",
+      "header_bk_bag.svg",
+      "header_gift_box.svg",
+      "ice_cream.svg",
+      "milk_tea.svg",
+      "notebook_bk.svg",
+      "rules_robot_with_gift.svg",
+      "snack_bag.svg",
+      "streak_flame.svg",
+      "tab_all_grid.svg",
+      "tab_drink.svg",
+      "tab_favorite.svg",
+      "tab_food.svg",
+      "tab_hot.svg",
+      "tokbokki_bowl.svg",
+      "voucher_card.svg"
+    ],
+    "assets/my": [
+      "icon_gavel.svg",
+      "icon_guide.svg",
+      "icon_logout.svg",
+      "icon_lucky.svg",
+      "icon_progress.svg",
+      "icon_rank.svg",
+      "icon_shopping.svg",
+      "my_avatar.svg",
+      "progress_ring.svg"
+    ],
+    "assets/attendance": [
+      "header_calendar_badge.svg",
+      "open_class_badge.svg"
+    ],
+    "assets/home": [
+      "arrow_blue.svg",
+      "arrow_gray.svg",
+      "arrow_green.svg",
+      "arrow_lilac.svg",
+      "arrow_pink.svg",
+      "arrow_yellow.svg",
+      "avatar_student.svg",
+      "back_button_alt.svg",
+      "badge_red_1.svg",
+      "books_and_cup_decor.svg",
+      "bottom_left_lightbulb_doodle.svg",
+      "bottom_right_books_and_cup.svg",
+      "card_arrow_button.svg",
+      "classwork_book.svg",
+      "classwork_card_book.svg",
+      "doodle_lightbulb.svg",
+      "doodle_small_steps_chart.svg",
+      "et_document.svg",
+      "hero_student.svg",
+      "homework_house.svg",
+      "mock_exam_locked_doc.svg",
+      "new_badge.svg",
+      "self_practice_target.svg",
+      "study_chart.svg",
+      "top_right_blue_sparkle.svg",
+      "top_right_yellow_star.svg"
+    ],
+    "assets/report": [
+      "empty_envelope.svg",
+      "header_boy.svg"
+    ],
+    "assets/common": [
+      "avatar_ta_girl_sign.svg",
+      "back_arrow.svg",
+      "calendar.svg",
+      "chevron_left.svg",
+      "chevron_right.svg",
+      "key_icon.svg",
+      "nav_attendance.svg",
+      "nav_gift.svg",
+      "nav_home.svg",
+      "nav_more.svg",
+      "nav_my.svg",
+      "nav_notifications.svg",
+      "nav_prep.svg",
+      "nav_report.svg",
+      "nav_tasks.svg",
+      "nav_test.svg",
+      "notification_bell.svg",
+      "settings_gear.svg",
+      "sleeping_cat.svg"
+    ],
+    "assets/test": [
+      "header_boy_clipboard.svg",
+      "star_large.svg"
+    ]
+  }
+}

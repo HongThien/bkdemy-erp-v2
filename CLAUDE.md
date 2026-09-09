@@ -99,6 +99,31 @@
 
 ---
 
+## 2.0 ⭐ LUẬT QUERY & TÍNH TOÁN (CEO chốt 30/08/2026 — sau audit 177 chỗ vi phạm)
+
+- **MỌI query tổng hợp và MỌI phép tính nghiệp vụ PHẢI nằm ở Postgres** (function/view/
+  trigger/generated column). **Người gọi hay AI gọi thì CHỈ GỌI HÀM SẴN** — client qua
+  `supabase.rpc(...)`, bot hỏi–đáp qua catalog `scripts/hoidap/tools.mjs`.
+- Cụ thể hoá — trong TS/TSX **CẤM**:
+  - `reduce`/`filter().length`/đếm/cộng/trung bình/tỉ lệ/xếp hạng trên dữ liệu NGHIỆP VỤ
+    fetch về (tiền, điểm, mastery, hiệu suất, SLA, sĩ số…).
+  - fetch ≥2 bảng rồi join bằng JS để ra con số/trạng thái nghiệp vụ.
+  - **tính ở client rồi ghi kết quả vào DB** (nặng nhất — hư dữ liệu vĩnh viễn, đã có
+    tiền lệ: bug tiền thật do limit cắt cụt, xem `AUDIT-client-tinh-toan.md`).
+  - công thức nghiệp vụ tồn tại 2 nơi (JS + SQL, hoặc 2 bản JS) — nguồn công thức DUY
+    NHẤT là function Postgres, tên `fn_*`.
+- Client CÒN ĐƯỢC làm gì: CRUD dòng đơn qua PostgREST · list thô để render · format hiển
+  thị (ngày, tiền tệ, nhãn) · sort/filter thuần túy theo lựa chọn UI đang mở · đếm items
+  đang render (badge). Nghi ngờ ranh giới → mặc định đẩy xuống DB.
+- Quy ước: hàm đọc `fn_<domain>_<viec>` trả bảng/jsonb; hàm ghi có tính toán = RPC
+  transactional (tính + ghi trong CÙNG transaction); cột suy được từ cột khác cùng dòng =
+  generated column; trạng thái suy từ bảng khác = trigger. `security definer` chỉ khi thật
+  cần, mặc định invoker + RLS.
+- Mẫu tham chiếu đúng: `xep_hang_tu_luyen` (rank ở RPC) · `count_cau_by_dang`.
+  Chiến dịch trả nợ 177 chỗ cũ: `AUDIT-client-tinh-toan.md` (lộ trình 4 phase).
+
+---
+
 ## 2.1 Truy cập schema (read-only — single source = DB)
 
 - **Nguồn chuẩn của schema = DB Postgres THẬT.** `schema.md` trong repo là **bản chiếu auto-gen**, KHÔNG sửa tay.
@@ -217,6 +242,16 @@
 
 ### Spec build (trong repo — nguồn cho đợt code hiện tại)
 - `spec-kho-v2.md` — Kho Canonical Knowledge (Đại + Hình). Schema đã build vào DB v2.
+- **`spec-giai-bai-ai.md` — ĐỌC BẮT BUỘC trước khi chạy "quét/giải câu chưa có đáp án" bằng AI**
+  (Đại/KHTN/HGT/Hình). Rule quan trọng nhất: bài nhiều ý phải dùng lại kết quả ý trước, không chứng
+  minh lại từ đầu; cách xử lý khi `gia_thiet_rieng` mâu thuẫn hình vẽ; verify trước khi ghi DB.
+- `spec-kho-chuan.md` — KHO CHUẨN (CEO chốt 09/09): 1 cửa duyệt câu hợp nhất, "vào kho" định nghĩa bằng hàm `_kho_cau_chuan`
+  (câu mới phải `da_duyet`; câu cũ tạm dùng tới khi quét), quét lại toàn kho 3 mức (máy → Claude → người). Cửa 2 = form trắc nghiệm.
+- `spec-dien-o.md` — Form ĐIỀN Ô (CEO chốt 09/09): lời giải chi tiết có 2–3 ô trống, mỗi ô 4 phương án (faded worked examples);
+  ô = "vừa thực hiện một phép tính con" tìm bằng máy, tách bước theo dấu `=`; đo theo CÂU (Đ/C/S, S khi sai >60% ô); hiện
+  đúng/sai từng ô; logic chọn form cho HS (yếu → ĐIỀN, ổn → TN; TLN/tự luận để sau).
+- `spec-mcq-form.md` — Phiên bản TRẮC NGHIỆM (distractor theo lỗi) của câu tính toán, pool 1 lớp 7 "Số hữu tỉ".
+  CEO chốt 08/09: MCQ ưu tiên, là form THÊM (bảng `dai_cau_form_tn`), **không đổ `lua_chon` vào câu gốc**.
 - `erp-v2-ui-spec.md` — Shell UI/UX **view-first**: React + Vite + Zustand + Tailwind, **mock data, CHƯA đụng Supabase**. Đơn vị = ROLE; derive nav/queue theo role; 2 loại việc (vận hành derive / phát triển giao tay) tách hẳn. Kho = 1 lá "Bản đồ kiến thức" trong cây Admin.
 ## Luật xoá (bắt buộc)
 Trước khi XOÁ bất cứ gì — xoá file, drop/alter/delete bảng/cột/dòng DB,
