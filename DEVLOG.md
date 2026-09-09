@@ -10271,3 +10271,11 @@ ngữ cảnh* ⇒ vá phần tử tại chỗ, callback trả kết quả vừa 
 
 **Còn treo (đích, chưa làm):** F5 lại thì HS đã duyệt VẪN vào hàng đợi vì `listCandidatesLop` không biết "đã duyệt trong cửa sổ này"
 (`hs_level_log` có timestamp — có thể loại candidate đã duyệt ≥1 lần trong cửa sổ hiện tại). Chờ Thùy chốt.
+
+## 2026-09-09 — Rời màn quay lại vẫn đúng chỗ cũ (Thùy: "đang click ở HS a, sang màn khác quay lại vẫn ở đấy")
+
+Màn unmount khi đổi tab (`NhanSuHome` render có điều kiện) ⇒ mọi state (filter, list, cuộn, khối đang soi) mất, quét lại 3s.
+**Sửa:** `DuyetBoTroYeuScreen` + `DashboardHocTapScreen` nhớ module-level `NHO = { mon/khoi | lopId, cands, scrollTop }` (sống tới F5):
+mount lại đúng filter ⇒ dùng cache, bỏ qua fetch đầu (`coCache` ref), `useLayoutEffect` trả `scrollTop`; đổi filter/bấm ↻ ⇒ quét lại.
+`CandidateDetailBody` nhớ khối đang mở theo HS (`MO_CHI_TIET_NHO` Map) — data soi chuyên đề fetch lại qua effect theo `moChiTiet`
+(chỉ cache "đang mở gì", không cache data). tsc sạch. Luật thêm vào CLAUDE.md §2 (cùng mục "sau mutation không reload").

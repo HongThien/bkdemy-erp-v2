@@ -8,7 +8,7 @@
 //   con số phán xét — mỗi kênh bắt một thứ khác nhau, nên luôn hiện `kenh[]` kèm lý do.
 // ⭐ KHÔNG cắt âm thầm: dưới ngưỡng digest vẫn hiện (khu riêng), vì ẩn đi sẽ đọc thành
 //   "chỉ ngần này em cần chú ý".
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { supabase } from '../../lib/supabase'
 import { listCandidatesLop, duyetLevel, getLevelLog, cuaSoHienTai, taoAiJob, getAiJob, listAiJobs, tienCuaLuot, getLichSuChuyenDe, MODEL_CHON, MODEL_MAC_DINH, type Candidate, type LevelLogRow, type AiJob, type LanLamChuyenDe, type DangStat } from '../../lib/danhgia'
@@ -61,12 +61,18 @@ export function CandidateHeader({ c, phu, uuTien, onDong }: { c: Candidate; phu?
   )
 }
 
+// Thùy 09-09: rời màn rồi quay lại phải ở đúng chỗ cũ (lớp, list đã vá, vị trí cuộn) — màn unmount khi
+// đổi tab nên nhớ module-level (sống tới F5). `cands = null` = chưa/đang tính ⇒ mount lại thì tính.
+const NHO: { lopId: string; cands: Candidate[] | null; scrollTop: number } = { lopId: '', cands: null, scrollTop: 0 }
+
 export default function DashboardHocTapScreen() {
   const [lops, setLops] = useState<{ id: string; ten_lop: string; mon: string }[]>([])
-  const [lopId, setLopId] = useState<string>('')
-  const [cands, setCands] = useState<Candidate[]>([])
+  const [lopId, setLopId] = useState<string>(NHO.lopId)
+  const [cands, setCands] = useState<Candidate[]>(NHO.cands ?? [])
   const [loading, setLoading] = useState(false)
   const [moHS, setMoHS] = useState<Candidate | null>(null)
+  const secRef = useRef<HTMLElement>(null)
+  const coCache = useRef(NHO.cands != null)
 
   useEffect(() => {
     supabase.from('lop').select('id, ten_lop, mon').eq('trang_thai', 'dang_hoc').order('ten_lop').limit(500)
@@ -79,13 +85,17 @@ export default function DashboardHocTapScreen() {
 
   useEffect(() => {
     if (!lopId) return
+    if (coCache.current) { coCache.current = false; return } // mount lại với cache ⇒ không tính lại
     let huy = false
+    NHO.cands = null; NHO.scrollTop = 0
     setLoading(true); setCands([])
     listCandidatesLop(lopId)
       .then((r) => { if (!huy) setCands(r) })
       .finally(() => { if (!huy) setLoading(false) })
     return () => { huy = true }
   }, [lopId])
+  useEffect(() => { NHO.lopId = lopId; if (!loading) NHO.cands = cands }, [lopId, cands, loading])
+  useLayoutEffect(() => { if (!loading && secRef.current) secRef.current.scrollTop = NHO.scrollTop }, [loading])
 
   const digest = useMemo(() => cands.filter((c) => c.trongDigest), [cands])
   const duoiNguong = useMemo(() => cands.filter((c) => !c.trongDigest), [cands])
@@ -100,7 +110,7 @@ export default function DashboardHocTapScreen() {
   }
 
   return (
-    <section className="min-h-0 overflow-auto bg-[#f5f5f7] p-8">
+    <section ref={secRef} onScroll={(e) => { NHO.scrollTop = e.currentTarget.scrollTop }} className="min-h-0 overflow-auto bg-[#f5f5f7] p-8">
       <div className="mx-auto max-w-[1200px]">
         <header className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <div>
@@ -361,6 +371,7 @@ function CandCard({ c, onMo }: { c: Candidate; onMo: () => void }) {
 // duyệt bổ trợ thiếu hẳn context, cần y hệt info của modal Dashboard, không phải bản rút gọn).
 // `children` = chỗ chèn khối Duyệt (Vùng 4) — mỗi nơi gọi cần widget khác nhau (Dashboard: cả kiến
 // thức lẫn thái độ; Duyệt bổ trợ: chỉ kiến thức) nên để caller tự quyết, không cứng trong này.
+const MO_CHI_TIET_NHO = new Map<string, string | null>() // hoc_sinh_id → khối đang mở (sống tới F5)
 export function CandidateDetailBody({ c, children }: { c: Candidate; children?: React.ReactNode }) {
   const [log, setLog] = useState<LevelLogRow[]>([])
   // Deps có cả level: cha vá level tại chỗ sau duyệt (không reload) ⇒ "Lịch sử duyệt" tự nạp lại.
@@ -368,19 +379,25 @@ export function CandidateDetailBody({ c, children }: { c: Candidate; children?: 
 
   // Detail lười (Thùy 08-18): "soi" chuyên đề = lịch sử làm bài; "soi" thái độ = danh sách buổi.
   // Chỉ 1 khối mở tại 1 thời điểm (đơn giản UI) — mở khối khác thì đóng khối cũ.
-  const [moChiTiet, setMoChiTiet] = useState<string | null>(null) // 'thaido' | `cd:${ma_chuyen_de}` | null
+  // Khối đang mở nhớ theo HS ở module-level (Thùy 09-09: rời màn quay lại vẫn đang "soi" đúng chỗ đó).
+  const [moChiTiet, setMoChiTietRaw] = useState<string | null>(() => MO_CHI_TIET_NHO.get(c.hoc_sinh_id) ?? null) // 'thaido' | `cd:${ma_chuyen_de}` | null
+  const setMoChiTiet = (v: string | null | ((p: string | null) => string | null)) =>
+    setMoChiTietRaw((p) => { const n = typeof v === 'function' ? v(p) : v; MO_CHI_TIET_NHO.set(c.hoc_sinh_id, n); return n })
   const [lichSuCd, setLichSuCd] = useState<Record<string, LanLamChuyenDe[]>>({})
   const [dangTaiCd, setDangTaiCd] = useState<string | null>(null)
-  async function toggleCd(ma: string) {
-    const key = `cd:${ma}`
-    if (moChiTiet === key) { setMoChiTiet(null); return }
-    setMoChiTiet(key)
-    if (!lichSuCd[ma]) {
-      setDangTaiCd(ma)
-      try { const rows = await getLichSuChuyenDe(c.hoc_sinh_id, ma, c.mon); setLichSuCd((m) => ({ ...m, [ma]: rows })) }
-      finally { setDangTaiCd(null) }
-    }
-  }
+  const toggleCd = (ma: string) => setMoChiTiet((p) => p === `cd:${ma}` ? null : `cd:${ma}`)
+  // Nạp lịch sử theo khối đang mở (kể cả khi mount lại từ cache — data fetch không cache, chỉ cache "đang mở gì").
+  useEffect(() => {
+    if (!moChiTiet?.startsWith('cd:')) return
+    const ma = moChiTiet.slice(3)
+    if (lichSuCd[ma]) return
+    let huy = false
+    setDangTaiCd(ma)
+    getLichSuChuyenDe(c.hoc_sinh_id, ma, c.mon)
+      .then((rows) => { if (!huy) setLichSuCd((m) => ({ ...m, [ma]: rows })) })
+      .finally(() => { if (!huy) setDangTaiCd(null) })
+    return () => { huy = true }
+  }, [moChiTiet]) // eslint-disable-line
 
   const dangs = c.sheet.dangs
   // Vùng 1: dạng đổi MỨC giữa 2 cửa sổ (cần có `mucTruoc` mới so được).

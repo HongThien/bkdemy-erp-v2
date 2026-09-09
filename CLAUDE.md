@@ -89,6 +89,10 @@
   lại (trắng màn 3s, cuộn về đầu, `key` unmount, ca vừa duyệt lại hiện vì tín hiệu chưa đổi). Người dùng
   đứng nguyên vị trí, làm ca kế tiếp. Nếu server có thể đổi thêm dòng khác ⇒ refetch NỀN không xoá
   list (giữ `rows` cũ tới khi có `rows` mới), không bao giờ blank.
+  **Rời màn rồi quay lại = đúng chỗ cũ.** Màn unmount khi đổi tab (`NhanSuHome` render có điều kiện)
+  ⇒ màn "làm việc theo hàng đợi" nhớ **filter + list đã vá + scrollTop + khối đang mở** ở module-level
+  (`const NHO = {...}` sống tới F5), mount lại thì dùng cache, bỏ qua fetch đầu; có nút ↻ ép quét lại.
+  Mẫu: `DuyetBoTroYeuScreen.tsx` / `DashboardHocTapScreen.tsx`.
 - **⭐ DANH TÍNH bám KHOÁ TỰ NHIÊN, KHÔNG bám VỊ TRÍ.** Nối 2 tập bằng "phần tử thứ i ↔ phần tử thứ i"
   là **sai ngay khi một bên thêm/bớt ở giữa** — và hỏng ÂM THẦM (không lỗi, chỉ gắn nhầm). Lưu thẳng
   khoá của bên kia (`ma_cau`, `ma_dang`…), vị trí chỉ để HIỂN THỊ. *(Đã dính: ô chấm ET ↔ câu trong đề
