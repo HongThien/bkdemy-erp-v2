@@ -10,9 +10,9 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import * as api from '../../../lib/kho/api'
-import type { BaiToan, BienThe, Luoi, MoHinh, Y, Bai } from '../../../lib/kho/hinh'
+import { loiGiaiDungDuoc, type BaiToan, type BienThe, type Luoi, type MoHinh, type Y, type Bai } from '../../../lib/kho/hinh'
 import { MathText } from '../ui'
-import { AnhInput, Btn, Cap, Chip, Empty, Fig, FieldCard, IngestBaiButton, KV, Ma, MaPill, OcrButton, Panel, Seg, Sol, Tag, fileToBase64, inpCls, tron } from './hinhUi'
+import { AnhInput, Btn, Cap, Chip, Empty, Fig, FieldCard, IngestBaiButton, KV, Ma, MaPill, NhanChuaDuyet, OcrButton, Panel, Seg, Sol, Tag, fileToBase64, inpCls, tron } from './hinhUi'
 import { FormMoHinh } from './Ho'
 import FormBaiToan from './FormBaiToan'
 import type { Nhay } from './KhoHinhScreen'
@@ -434,6 +434,7 @@ function DetailBaiToan({ L, bt, onSua, onTaoKeTiep, onChon, onClose, reload }: {
                 <div key={c.id} className="rounded-lg border border-slate-200 p-2">
                   <div className="mb-1 flex items-center gap-1.5 text-[16px] font-medium text-slate-600">
                     {c.ten ?? 'cách giải'} {c.la_mac_dinh && <span className="rounded bg-slate-100 px-1.5 text-[14px] text-slate-500">mặc định</span>}
+                    {!loiGiaiDungDuoc(c) && <NhanChuaDuyet />}
                   </div>
                   {/* Tiền đề của MỘT cách = AND: cần CẢ. Vẽ dấu "+" giữa các tiền đề để không đọc nhầm là "một trong số". */}
                   <div className="flex flex-wrap items-center gap-1.5">
@@ -458,6 +459,7 @@ function DetailBaiToan({ L, bt, onSua, onTaoKeTiep, onChon, onClose, reload }: {
             })}
 
             <p className="mt-1 text-[16px] font-semibold uppercase tracking-wide text-slate-400">Đáp án đầy đủ</p>
+            {cachMd && !loiGiaiDungDuoc(cachMd) && <NhanChuaDuyet />}
             <Sol big>{cachMd?.loi_giai}</Sol>
             {cachMd?.anh_loi_giai && <div><Fig src={cachMd.anh_loi_giai} cap="Hình lời giải" /></div>}
 
@@ -482,6 +484,7 @@ function DetailBaiToan({ L, bt, onSua, onTaoKeTiep, onChon, onClose, reload }: {
                   </div>
                   {v.de_bai && <div className="text-[15px] leading-relaxed text-slate-700"><MathText>{deBaiHienThi(v.de_bai)}</MathText></div>}
                   {v.anh && <img src={v.anh} alt="" className="mt-1 max-h-44 rounded border border-slate-100 bg-white object-contain" />}
+                  {v.loi_giai && !loiGiaiDungDuoc(v) && <NhanChuaDuyet />}
                   {v.loi_giai && <div className="mt-1 rounded bg-white/70 p-1.5 text-[14px] leading-relaxed text-slate-600"><MathText>{v.loi_giai}</MathText></div>}
                 </div>
               ))}

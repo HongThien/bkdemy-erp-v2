@@ -10094,3 +10094,24 @@ diff ra gần cả repo (nhánh tách quá xa) — Vercel không dùng cha thứ
 chạy khi Thùy deploy tay; log này vẫn có giá trị lúc đó.
 **Cách commit:** làm trong worktree tạm từ origin/main (checkout chung đang dính ~14 file dở của phiên khác + 3 commit chiều 09/09
 của Thùy chưa pull) — chỉ mang đúng 1 file này + DEVLOG, không đụng việc của ai.
+
+## 2026-09-09 (chiều) — Luật "Claude giải phải duyệt mới được dùng" (CEO chốt) — Đại/KHTN/HGT + Hình
+**Thùy:** "Tất cả câu Claude giải từ ngày xây tới giờ đều KHÔNG đạt. Gemini giải: tạm đạt, dùng được. Claude giải: không đạt,
+phải duyệt. Sau này: tất cả phải duyệt mới được dùng." Dấu nhận diện duy nhất: `giai_method='claude_code'` + chưa `da_duyet`.
+**Phát hiện trước đó (cùng chiều):** (1) Đại: `_kho_cau_chuan` cho câu cũ tạm dùng bất kể da_duyet ⇒ 54 Đại + 8 KHTN + 2 HGT câu
+Claude giải chưa duyệt vẫn kho_chuan=true, 52 câu đang nằm trong 28 tài liệu. (2) Hình khối 7: 12/33 bài có cách giải Claude
+chưa duyệt, đều `la_mac_dinh`; `loadLuoi` nạp `hinh_cach_giai` không lọc cờ, SoDo hiện thẳng, không nhãn; bản in/đáp án
+tham chiếu (`dapAnHaiBac`) lấy cách mặc định ⇒ in ra lời giải AI chưa duyệt.
+**Làm (worktree `.claude/worktrees/duyet-gate`, nhánh `worktree-duyet-gate` từ origin/main 293f4ce):**
+- Mig `202609091448_kho_chuan_claude_phai_duyet.sql`: `_kho_cau_chuan(da_duyet, kiem_may, created_at, giai_method)` — câu cũ
+  tạm dùng thêm điều kiện `giai_method is distinct from 'claude_code'`. kho_chuan là generated stored ⇒ drop/add cột trên 3 bảng
+  + dựng lại 3 index partial; drop bản 3 tham số. Kiểm sau áp: Claude-chưa-duyệt-mà-kho_chuan = 0/0/0; Gemini cũ vẫn 4.706 tạm
+  dùng (đúng câu chốt); Đại kho_chuan 17.093/18.404. `npm run schema` xong.
+- Hình (`hinh.ts`): `loiGiaiDungDuoc(c)`; `dapAnHaiBac` bậc tham chiếu bỏ qua cách Claude chưa duyệt (in ra "—");
+  `layCachMacDinhBaiToan` (mẫu cho Claude) lọc theo đó; type CachGiai/BienThe thêm `nguon_giai/da_duyet/giai_method`.
+  `SoDo.tsx` nhãn đỏ `NhanChuaDuyet` (hinhUi) ở danh sách cách, lời giải mặc định, biến thể. KHÔNG đổi `cachMacDinh` vì
+  cấu trúc (tiền đề/dạng/cấp/bổ đề) đi theo cách mặc định — chỉ gate nội dung. tsc sạch. Chưa verify màn hình (cần login app).
+- `spec-kho-chuan.md` thêm mục "Bổ sung 09/09".
+**Còn:** 28 tài liệu chứa 52 câu Đại (lời giải Claude chưa duyệt) — tài liệu cũ vẫn in ra lời giải đó; chưa có quyết định
+chặn ở chỗ in. Hai worktree đang có thay đổi chưa commit: -auto (scheduler/hangdoi-clone/2 mig pool) và duyet-gate (mig này +
+Hình). Bẫy: file trong worktree là CRLF — patch bằng anchor có `\n` phải normalize trước.
