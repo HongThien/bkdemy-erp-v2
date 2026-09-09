@@ -10013,4 +10013,6 @@ dòng, không dựng lại UI để đo.
   định, không phải thứ tự chữ — đừng đặt màu mặc định ở phần tĩnh rồi "đè" bằng phần động.
 - **Còn:** data seed test (1 btvn_nop, 2 anh, ket_qua, 18 grades, 4 file storage) là data thật của HS Chu Bảo Ngọc — cần dọn (chờ
   CEO gật); `scripts/_seed_btvn_nop.mjs` xoá sau khi dọn. PH-app xem bài đã chấm (repo `bkdemy-ph`) chưa test.
+- **Đã dọn (CEO gật "dọn"):** xoá lá→gốc grades 18 · ket_qua 1 · anh 2 · nop 1 · storage 4 file; `gami_session_problems` buổi giữ 18;
+  xoá `_seed_btvn_nop.mjs`. Push `7cda2e8` + `8e42ae0`.
 - **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).
