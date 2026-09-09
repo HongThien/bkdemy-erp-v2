@@ -315,7 +315,7 @@ function ChotBuoiBanner({ lopId, buoiNgay, onDungBuoi, onChuyen }: {
   }
   return (
     <div className="mb-2.5 rounded-xl border border-amber-300 bg-amber-50 p-2.5">
-      <p className="mb-1.5 text-[12px] font-medium text-amber-800">⚠ PH nộp không chọn buổi — hệ <b>gán tạm</b> vào buổi này. Chốt đúng buổi rồi mới trả bài được.</p>
+      <p className="mb-1.5 text-[12px] font-medium text-amber-800">⚠ PH nộp không chọn buổi — hệ <b>gán tạm</b> vào buổi học gần nhất. Nộp muộn/nộp bù thì chuyển sang đúng buổi; chốt rồi mới trả bài được.</p>
       <div className="flex flex-wrap gap-1.5">
         <button onClick={onDungBuoi} className="min-h-[36px] rounded-lg bg-amber-600 px-3 text-[12.5px] font-bold text-white active:bg-amber-500">✓ Đúng buổi này</button>
         <button onClick={moChuyen} className="min-h-[36px] rounded-lg border border-amber-400 px-3 text-[12.5px] font-semibold text-amber-800 active:bg-amber-100">→ Bài thuộc buổi khác</button>
@@ -325,12 +325,16 @@ function ChotBuoiBanner({ lopId, buoiNgay, onDungBuoi, onChuyen }: {
           <div className="max-h-[70dvh] w-full max-w-[440px] overflow-auto rounded-2xl bg-white p-4 shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <p className="mb-2 text-[14px] font-bold text-slate-900">Chuyển bài sang buổi nào?</p>
             {dsBuoi === null ? <p className="text-[12px] text-slate-400">Đang tải…</p>
-              : dsBuoi.filter((b) => b.ngay !== buoiNgay).length === 0 ? <p className="text-[12px] text-slate-400">Lớp không có buổi BTVN nào khác gần đây.</p>
+              : dsBuoi.filter((b) => b.ngay !== buoiNgay).length === 0 ? <p className="text-[12px] text-slate-400">Lớp không có buổi nào khác trong 60 ngày gần đây.</p>
               : dsBuoi.filter((b) => b.ngay !== buoiNgay).map((b) => (
                 <button key={b.id} onClick={() => { setMoPicker(false); onChuyen(b.id) }}
                   className="mb-1.5 flex min-h-[44px] w-full items-center gap-2 rounded-xl border border-slate-200 px-3 text-left active:bg-slate-50">
                   <span className="text-[13.5px] font-semibold text-slate-800">{thuCuaNgay(b.ngay)} · {ddmmVN(b.ngay)}</span>
-                  {b.dong && <span className="ml-auto rounded bg-slate-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-slate-500">BTVN đã đóng</span>}
+                  <span className="ml-auto flex gap-1">
+                    {b.co_phieu ? <span className="rounded bg-teal-50 px-1.5 py-0.5 text-[10.5px] font-semibold text-teal-700">có phiếu BTVN</span>
+                      : <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-slate-400">không có phiếu</span>}
+                    {b.dong && <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-slate-500">đã đóng</span>}
+                  </span>
                 </button>
               ))}
             <button onClick={() => setMoPicker(false)} className="mt-1 min-h-[40px] w-full rounded-lg text-[13px] text-slate-500">Huỷ</button>

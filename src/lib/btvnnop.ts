@@ -92,13 +92,14 @@ export async function chuyenBuoi(hocSinhId: string, buoiCu: string, buoiMoi: str
   if (error) throw error
 }
 
-// Buổi có phiếu BTVN của lớp — cho picker "chuyển buổi". Join buổi×tai_lieu không có FK
+// Buổi gần đây của lớp — cho picker "chuyển buổi" (CEO 09/09: hệ gán buổi gần nhất, TA tự gán lại khi nộp
+// muộn/bù ⇒ picker phải có MỌI buổi, kèm cờ có phiếu BTVN / đã đóng). Join buổi×tai_lieu không có FK
 // (bám lop+ngay) nên nằm ở DB (fn_btvn_buoi_cua_lop, §2.0), client chỉ gọi.
-export type BuoiBtvn = { id: string; ngay: string; dong: boolean }
+export type BuoiBtvn = { id: string; ngay: string; dong: boolean; co_phieu: boolean }
 export async function listBuoiBtvnCuaLop(lopId: string): Promise<BuoiBtvn[]> {
   const { data, error } = await supabase.rpc('fn_btvn_buoi_cua_lop', { p_lop_id: lopId })
   if (error) throw error
-  return ((data ?? []) as { id: string; ngay: string; dong: boolean }[])
+  return ((data ?? []) as BuoiBtvn[])
 }
 
 // Đếm lượt nộp app theo LÔ buổi (badge 📱 cho ERP BtvnTab + card Việc-của-tôi).
