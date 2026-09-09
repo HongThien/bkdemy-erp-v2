@@ -3,7 +3,10 @@
 // ĐỊNH ở DB (fn_xu_tu_exp), không phải bảng khúc luong_bac (mig 09-03 lũy tiến TẠM NGƯNG dùng, chưa xoá).
 // Đóng băng sau chốt; data trễ/sửa điểm làm lệch → nút chốt hiện "điều chỉnh ±" (dòng chot_lai, kiểu học phí).
 // ⭐ CHỐT THEO LỚP (Thùy chốt 07-09, siết lại 09-09: "ko có nút chốt theo lớp à, t có chốt toàn bộ
-// đâu"): BẮT BUỘC chọn đúng 1 lớp mới bấm Chốt được — KHÔNG có đường chốt cả tháng/cả khối 1 lượt.
+// đâu"): BẮT BUỘC chọn đúng 1 lớp mới bấm Chốt (cả lớp) được — KHÔNG có đường chốt cả tháng/cả khối 1 lượt.
+// ⭐ CHỐT TỪNG HS (Thùy 09-09: "phải có cả chốt từng học sinh nữa chứ, tưởng nút Ghi là chốt theo
+// học sinh" — Ghi chỉ ghi PHÁT SINH tay, không phải chốt EXP→xu): mỗi dòng có nút Chốt RIÊNG, gọi
+// đúng chotXu(ym, [dòng đó]) — không cần lọc lớp, chốt lẻ 1 HS×môn bất cứ lúc nào.
 import { useEffect, useMemo, useState } from 'react'
 import { addBacXu, updateBacXu, deleteBacXu, previewChotXu, chotXu, themPhatSinh, listViXu, type BacXu, type ChotRow } from '../../lib/xu'
 
@@ -84,8 +87,9 @@ export default function ChotXuScreen() {
       <p className="text-[12px] text-slate-400">
         Quy đổi TỪNG MÔN theo công thức cố định EXP:100 (làm tròn lên) rồi cộng ví chung. Chốt xong là đóng băng —
         nếu EXP tháng đã chốt thay đổi (nhập trễ/sửa điểm), bảng hiện cột lệch và nút chuyển thành "Chốt lại" ghi dòng điều chỉnh ±.
-        "Phát sinh" = xu thưởng/phạt TAY, gõ trực tiếp ở cột cuối. <b>Bắt buộc chọn 1 LỚP bên dưới mới chốt được</b> —
-        chốt dần từng lớp, KHÔNG có đường chốt cả tháng/cả khối một lượt.
+        "Phát sinh" = xu thưởng/phạt TAY, gõ trực tiếp ở cột cuối (KHÔNG phải chốt). <b>2 cách chốt:</b> nút
+        "Chốt lớp" trên đầu trang (bắt buộc chọn 1 LỚP, KHÔNG có đường chốt cả tháng/cả khối) — hoặc cột
+        "Chốt" ngay từng dòng để chốt lẻ 1 HS×môn bất kỳ lúc nào, không cần lọc lớp.
       </p>
       <div className="flex flex-wrap items-center gap-2">
         <select value={khoiF} onChange={(e) => { setKhoiF(e.target.value); setLopF('') }} className="h-8 rounded-lg border border-slate-300 px-2 text-[13px]">
@@ -113,6 +117,7 @@ export default function ChotXuScreen() {
                   <th className="px-3 py-2">Học sinh</th><th className="px-3 py-2">Lớp</th><th className="px-3 py-2">Môn</th>
                   <th className="px-3 py-2 text-right">EXP tháng</th><th className="px-3 py-2 text-right">Xu theo thang</th>
                   <th className="px-3 py-2 text-right">Đã phát</th><th className="px-3 py-2 text-right">Lệch</th>
+                  <th className="px-3 py-2 text-center">Chốt</th>
                   <th className="px-3 py-2 text-right">Phát sinh</th><th className="px-3 py-2 text-right">Ví hiện tại</th>
                 </tr>
               </thead>
@@ -132,6 +137,7 @@ export default function ChotXuScreen() {
                         <td className="px-3 py-1.5 text-right tabular-nums text-slate-500">{r.daChot ? r.xuDaPhat : '—'}</td>
                         <td className={`px-3 py-1.5 text-right font-semibold tabular-nums ${!r.daChot ? 'text-slate-300' : r.lech === 0 ? 'text-slate-300' : r.lech > 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
                           {!r.daChot || r.lech === 0 ? '—' : (r.lech > 0 ? '+' : '') + r.lech}</td>
+                        <td className="px-3 py-1.5 text-center"><ChotOneCell r={r} ym={ym} onDone={load} /></td>
                         <td className="px-3 py-1.5 text-right">
                           {first ? <PhatSinhCell hocSinhId={r.hoc_sinh_id} value={r.phatSinh} onDone={load} /> : <span className="text-slate-200">—</span>}</td>
                         <td className={`px-3 py-1.5 text-right tabular-nums text-amber-700 ${first ? '' : 'opacity-30'}`}>{(vi.get(r.hoc_sinh_id) ?? 0).toLocaleString('vi-VN')}</td>
@@ -147,6 +153,7 @@ export default function ChotXuScreen() {
                   <td className="px-3 py-2 text-right tabular-nums text-indigo-700">{hienThi.reduce((s, r) => s + r.xu, 0).toLocaleString('vi-VN')}</td>
                   <td className="px-3 py-2 text-right tabular-nums text-slate-500">{hienThi.reduce((s, r) => s + r.xuDaPhat, 0).toLocaleString('vi-VN')}</td>
                   <td className="px-3 py-2" />
+                  <td className="px-3 py-2" />
                   {/* Phát sinh cộng PER HS (Set) — cộng theo dòng sẽ đếm trùng HS học 2 môn */}
                   <td className="px-3 py-2 text-right tabular-nums">{(() => { const s = new Set<string>(); let t = 0; for (const r of hienThi) if (!s.has(r.hoc_sinh_id)) { s.add(r.hoc_sinh_id); t += r.phatSinh } return (t > 0 ? '+' : '') + t.toLocaleString('vi-VN') })()}</td>
                   <td className="px-3 py-2" />
@@ -158,6 +165,33 @@ export default function ChotXuScreen() {
         <BangMoc bacs={bacs} onChanged={load} />
       </div>
     </section>
+  )
+}
+
+// ── CHỐT 1 HS×MÔN — nút riêng từng dòng, KHÔNG phụ thuộc filter lớp (khác nút Chốt-cả-lớp trên đầu trang).
+// Tái dùng đúng chotXu(ym, [1 dòng]) — cùng invariant chưa-chốt→chot_thang / lệch→chot_lai.
+function ChotOneCell({ r, ym, onDone }: { r: ChotRow; ym: string; onDone: () => void }) {
+  const [busy, setBusy] = useState(false)
+  const [err, setErr] = useState<string | null>(null)
+  const chot = async () => {
+    if (busy) return
+    setBusy(true); setErr(null)
+    try { await chotXu(ym, [{ hoc_sinh_id: r.hoc_sinh_id, mon: r.mon }]); onDone() }
+    catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
+  }
+  return (
+    <div className="flex flex-col items-center gap-0.5">
+      {!r.daChot ? (
+        r.xu <= 0
+          ? <span className="text-[11px] text-slate-300">0 xu</span>
+          : <button onClick={chot} disabled={busy} className="rounded bg-emerald-600 px-2 py-0.5 text-[11px] font-semibold text-white hover:bg-emerald-700 disabled:opacity-40">{busy ? '…' : 'Chốt'}</button>
+      ) : r.lech !== 0 ? (
+        <button onClick={chot} disabled={busy} className="rounded bg-amber-600 px-2 py-0.5 text-[11px] font-semibold text-white hover:bg-amber-700 disabled:opacity-40">{busy ? '…' : `Chốt lại ${r.lech > 0 ? '+' : ''}${r.lech}`}</button>
+      ) : (
+        <span className="text-[13px] text-emerald-600" title="Đã chốt">✓</span>
+      )}
+      {err && <span className="max-w-[90px] text-center text-[10px] text-rose-600">{err}</span>}
+    </div>
   )
 }
 
