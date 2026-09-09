@@ -54,7 +54,11 @@ export default function DuyetBoTroYeuScreen() {
       // động HOẶC case đang mở cần xử — xem `duTinHieuKienThuc` ở listCandidatesLop). KHÔNG suy
       // luận lại từ `kenh` (bug đã bắt: 1 kênh riêng lẻ vẫn push vào `kenh` để hiện lý do dù chưa
       // đủ ≥2/4, nên `kenh.some(k => k !== 'thai_do')` từng lọt sai candidate chỉ có 1 kênh yếu).
-      const flat = per.flat().filter((c) => c.duTinHieuKienThuc)
+      // Thùy 09-09: "HS nào đã có cờ bổ trợ thì KHÔNG xuất hiện trong danh sách này nữa" — hàng đợi này
+      // chỉ để MỞ cờ (levelKienThuc = 0). HS đã có cờ (L1-L3, case đang mở) xử ở Nội dung/Trạng thái/Đánh
+      // giá ca bổ trợ, không quay lại đây. Cũng loại HS đã chốt (kể cả giữ L0) trong cửa sổ hiện tại
+      // (`daDuyetKienThucAt`) — F5/quét lại không hiện lại ca vừa quyết.
+      const flat = per.flat().filter((c) => c.duTinHieuKienThuc && c.sheet.levelKienThuc === 0 && !c.daDuyetKienThucAt)
       flat.sort((a, b) => b.uuTien - a.uuTien)
       setCands(flat)
     } finally { setLoading(false) }

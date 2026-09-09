@@ -10279,3 +10279,14 @@ Màn unmount khi đổi tab (`NhanSuHome` render có điều kiện) ⇒ mọi s
 mount lại đúng filter ⇒ dùng cache, bỏ qua fetch đầu (`coCache` ref), `useLayoutEffect` trả `scrollTop`; đổi filter/bấm ↻ ⇒ quét lại.
 `CandidateDetailBody` nhớ khối đang mở theo HS (`MO_CHI_TIET_NHO` Map) — data soi chuyên đề fetch lại qua effect theo `moChiTiet`
 (chỉ cache "đang mở gì", không cache data). tsc sạch. Luật thêm vào CLAUDE.md §2 (cùng mục "sau mutation không reload").
+
+## 2026-09-09 — Hàng đợi Duyệt bổ trợ: HS đã có cờ KHÔNG hiện lại (Thùy: "chốt bổ trợ rồi vẫn nằm trong danh sách là sao??")
+
+**Nguyên nhân:** engine đề xuất từ tín hiệu dữ liệu (không đổi trong nửa tháng) + `caseDangMoCanXu` cố ý giữ HS có case mở
+⇒ duyệt xong, F5 là HS lại hiện y nguyên. Luật mới (Thùy chốt): **HS nào đã có cờ bổ trợ (levelKienThuc ≥1) thì không vào hàng
+đợi này nữa** — hàng đợi chỉ để MỞ cờ; HS có cờ xử ở Nội dung/Trạng thái/Đánh giá ca. Thêm: đã chốt (kể cả giữ L0) trong cửa sổ
+hiện tại cũng loại (`Candidate.daDuyetKienThucAt` — đọc `hs_level_log` loai=kien_thuc từ 00:00 VN ngày đầu cửa sổ, 1 query/lớp).
+Dashboard học tập KHÔNG đổi (vẫn hiện để đọc/quản lý case).
+**Đo thật Toán 2026-09-A, 36 lớp:** 236 đủ tín hiệu → loại 4 đã có cờ (7B2 ×2, 8B1 ×2 — đúng các ca Thùy vừa duyệt), 0 chốt L0 kỳ này
+→ còn 232. Script `scripts/_diag_hangdoi_loai.ts` (read-only). tsc sạch.
+"Mỗi lần bật lại reset danh sách" = bản cache-chỗ-cũ (`7d8c739`) lúc đó Vercel chưa build xong; F5 vẫn quét lại (cache sống trong tab).
