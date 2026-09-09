@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-208 bảng · 18 view · 0 enum · 49 trigger · 309 function
+208 bảng · 18 view · 0 enum · 49 trigger · 310 function
 
 ## _app_secrets
 
@@ -503,7 +503,7 @@
 | hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
 | ma_dang | text |  |  |  |  |
 | buoi_hoc_id | uuid | Y |  | FK→buoi_hoc.id |  |
-| nguon | text |  | 'btvn'::text |  | `btvn` · `danhgia` |
+| nguon | text |  | 'btvn'::text |  | `btvn` · `danhgia` · `et` · `mt` |
 | ghi_chu | text | Y |  |  |  |
 | created_by | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
@@ -4599,7 +4599,7 @@ SELECT bl.hoc_sinh_id,
 - `fn_giaibai_mon(p_nhanh text)` → text
 - `fn_giaibai_nhan(p_nhanh text, p_key text, p_me uuid)` → uuid
 - `fn_giaibai_nop(p_nhanh text, p_id uuid, p_me uuid, p_loi_giai text, p_anh text, p_dap_an text, p_y_nhap jsonb DEFAULT NULL::jsonb)` → void
-- `fn_giaibai_pool(p_nhanh text[], p_khoi text, p_limit integer DEFAULT 500, p_che_do text DEFAULT 'giai'::text)` → SETOF v_giaibai_bai
+- `fn_giaibai_pool(p_nhanh text[], p_khoi text, p_limit integer DEFAULT 500, p_che_do text DEFAULT 'giai'::text, p_bo_khoi text[] DEFAULT NULL::text[], p_bo_claude_da_bo boolean DEFAULT false)` → SETOF v_giaibai_bai
 - `fn_giaibai_src(p_nhanh text, OUT src text, OUT src_key text)` → record
 - `fn_giaibai_tbl(p_nhanh text, OUT yc text, OUT key_col text, OUT key_cast text)` → record
 - `fn_giaibai_tg_claude_dong()` → trigger
@@ -4659,6 +4659,7 @@ SELECT bl.hoc_sinh_id,
 - `fn_may_man_quay()` → jsonb
 - `fn_mcq_form_cho_duyet(p_kho text, p_khoi text DEFAULT NULL::text, p_da_duyet boolean DEFAULT false)` → TABLE(id uuid, ma_cau text, dang_chinh text, ten_dang text, khoi text, noi_dung text, anh_de text, loi_giai text, dap_an_kho text, lua_chon jsonb, dap_an text, key_gia_tri text, ai_model text, sinh_at timestamp with time zone, da_duyet boolean, sua_truoc_duyet boolean)
 - `fn_mcq_form_duyet(p_kho text, p_id uuid, p_nguoi uuid, p_lua_chon jsonb DEFAULT NULL::jsonb)` → void
+- `fn_mcq_form_duyet_batch(p_kho text, p_ids uuid[], p_nguoi uuid)` → jsonb
 - `fn_mcq_form_tu_choi(p_kho text, p_id uuid, p_nguoi uuid, p_ly_do text)` → void
 - `fn_mcq_loi_theo_dang(p_ma_dang text)` → jsonb
 - `fn_mcq_loi_theo_hs(p_hoc_sinh uuid, p_mon text)` → jsonb

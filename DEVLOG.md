@@ -9974,3 +9974,37 @@ dòng, không dựng lại UI để đo.
   `package.json`/`launch.json` (của phiên khác). CEO test app HS không thấy câu hình: vì prod chưa deploy bản này + nút "Luyện chứng
   minh" nằm ở màn KẾT QUẢ tự luyện (luồng riêng, không trộn lượt thường). 23/23 form CEO đã duyệt.
 - **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).
+
+## 2026-09-09 (chiều) — 🚨 Chuông báo động DÙNG CHUNG 4 chỗ chấm (Đánh giá · ET · BTVN · MT) + luật "dạng trong tài liệu"
+
+CEO: "cần báo động ở Đánh giá trên lớp, ET, MT. Đánh giá trên ERP không bấm được, app thì bấm được. ET/MT chưa có.
+Logic chung MỌI chuông kể cả BTVN: bấm chuông → danh sách dạng CÓ TRONG TÀI LIỆU đó + 1 chỗ ghi note."
+
+**Hiện trạng soi code (không đoán):** ERP đã có 3 chuông chép tay (`AlertModal` ở BtvnTab/ETChamTab/DanhGiaTab) nhưng
+`disabled={!dangs.length}` với dạng lấy từ LƯỚI CHẤM (ingame/ET/BTVN problems) ⇒ Đánh giá mờ ở 41/44 buổi (ingame không
+gắn dạng — đúng bệnh app GV đã sửa 04/09, DEVLOG có ghi "ERP chưa sửa"); ET/BTVN mờ khi lưới trống hoặc đã đóng; MT
+KHÔNG có chuông. App GV `ChuongDo` + app TA `NutChuongDo` = 2 bản nữa. CHECK `canh_bao_yeu_nguon_chk` chỉ cho
+`btvn|danhgia` ⇒ ET/MT sẽ chết đúng lúc lưu nếu chỉ thêm giá trị TS (§2.1).
+
+**Làm:**
+- Mig `202609091428_canh_bao_yeu_nguon_et_mt.sql` (đã áp, `npm run schema`): CHECK nới `btvn|danhgia|et|mt` (NOT VALID như cũ).
+- `lib/gami.ts`: `NguonCanhBao` + `TEN_NGUON_CANH_BAO` · **`loadDangTaiLieuBuoi(buoiId, nguon, mon)`** = dạng trong TÀI LIỆU
+  của phase (danhgia→giáo trình buổi `loai_phan='dang'` · et→đề ET · mt→đề MT · btvn→phiếu BTVN; khớp lớp+ngày như lưới),
+  distinct + tra tên. Là list thô cho dropdown, không phải tính toán nghiệp vụ (§2.0).
+- **`components/ChuongBaoDong.tsx` (1 component chung):** `useDangTaiLieu` (tab nạp 1 lần, truyền xuống hàng HS) ·
+  `ChuongBaoDong` (nút 🚨 + popup: chip dạng tài liệu TICK NHIỀU, "+ Chọn dạng khác trong kho" = DangPickerOne, ô ghi chú;
+  mỗi dạng chọn = 1 dòng canh_bao_yeu chung ghi chú; nút KHÔNG BAO GIỜ disabled) · `ChipCanhBao` (chip đã báo + ✕, tự tra
+  tên dạng lạ) · `hopDang` (tài liệu có dạng → CHỈ tài liệu; rỗng → tạm lấy dạng lưới).
+  Đánh giá giữ ghi chú BẮT BUỘC (CEO 31/08); ET/BTVN/MT tuỳ chọn.
+- Gắn: ERP `BuoiHocScreen` 4 tab (xoá `AlertModal`) · app GV `ChamBuoiGv.DanhGiaPanel` (xoá `ChuongDo`) · app TA
+  `ChamBtvn` (xoá `NutChuongDo`, không còn ẩn khi BTVN đóng). `danhgia.ts` kênh ③ chuông đỏ nhận thêm `et|mt`.
+- **2 lỗi lộ khi verify, sửa luôn:** ① modal render trong ô `sticky` của bảng chấm ⇒ cột "Học sinh"/thead z-30 ĐÈ LÊN
+  modal z-50 (stacking context) → `createPortal(document.body)` cho modal + picker. ② MT 9S1 06/09 hiện mã trần
+  `T309…` = dạng nhánh **Hình giải tích** (`hgt_ban_do`) — `getDangTen(mds, mon)` chỉ tra `khoCuaMon(mon).banDoTbl`
+  (dai_ban_do). Sửa tra MỌI nhánh theo registry `nhanhCuaMon` ⇒ header lưới MT cũng hết mã trần (bug có sẵn).
+
+**Verify (dev ERP port 55874, admin dev):** 9S1 08/09 (0 dạng ingame — ca trước đây chuông mờ): Đánh giá → 🚨 bấm được, popup
+đúng 2 dạng của giáo trình buổi (T109030101/02, đối chiếu DB) → tick + gõ ghi chú → "Gửi báo động" bật → **Huỷ, không gửi**
+(không ghi báo động giả lên HS thật). ET/BTVN cùng buổi: popup đúng "Chỗ bấm: ET/BTVN", 2 dạng của đề. 9S1 06/09 tab MT
+(đã đóng): 🚨 có, popup 23 dạng của đề (17 Đại + 6 Hình GT, tên đầy đủ sau fix ②). tsc 0 lỗi, console 0 lỗi.
+Chưa verify trên app GV/TA (chỉ tsc). CHƯA commit (memory: chỉ commit khi được yêu cầu).
