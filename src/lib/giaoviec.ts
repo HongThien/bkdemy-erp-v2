@@ -346,6 +346,14 @@ export async function nghiemThu(id: string, p: { dat: boolean; chat_luong?: numb
     if (error) throw error
   }
 }
+// LEADER ĐÓNG CỤM (task mẹ) — CHỦ ĐỘNG, không còn tự đóng khi 100% con hiện có
+// đạt (Thùy 10/09: con có thể tách thêm sau, "100% con hiện có" ≠ "việc đã xong").
+// RPC fn_giaoviec_dong_task_me (mig 202609101512) tính weighted-average tiến
+// độ/chất lượng từ con trong CÙNG transaction + vẫn chặn nếu còn con chưa đạt.
+export async function dongTaskMe(meId: string, ghiChu?: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_giaoviec_dong_task_me', { p_me_id: meId, p_ghi_chu: ghiChu?.trim() || null })
+  if (error) throw error
+}
 // NS gửi lại nghiệm thu sau khi bị trả lại (đính lại evidence).
 export async function guiLaiNghiemThu(id: string, evidence: string): Promise<void> {
   await banHoanThanh(id, evidence)
