@@ -697,7 +697,7 @@ const deltaCls = (d: number) => d < -0.005 ? 'text-rose-600' : d > 0.005 ? 'text
 function thaiDoTomTat(td: { thai_do: string; t: string }[]): string {
   if (!td.length) return 'chưa có dữ liệu thái độ'
   const duoi = td.filter((x) => x.thai_do !== 'nghiem_tuc').length
-  return duoi === 0 ? `${td.length}/${td.length} buổi nghiêm túc — không có tín hiệu` : `${duoi}/${td.length} buổi dưới nghiêm túc`
+  return duoi === 0 ? `${td.length}/${td.length} buổi nghiêm túc (2 cửa sổ) — không có tín hiệu` : `${duoi}/${td.length} buổi dưới nghiêm túc (2 cửa sổ gần nhất)`
 }
 
 // Người duyệt: mặc định = đề xuất của máy, sửa được. Ghi log CẢ HAI VẾ ⇒ delta tự lộ.

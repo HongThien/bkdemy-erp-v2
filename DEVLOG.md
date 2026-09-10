@@ -10516,3 +10516,13 @@ tsc sạch · verify_danhgia 77/77.
 yếu · ③ ET dưới TB lớp · ④ MT dưới TB lớp · 🚨 Báo động GV/TA · 🚨 Hổng nền · ⑤ Thái độ · "Case mở · máy đề xuất Lx ≠ Ly" (suy tại chỗ,
 không nằm trong `kenh[]`). Dùng ở `CandidateHeader` (Duyệt bổ trợ + modal Dashboard) và `CandCard` (list Dashboard — thay pill ③④ cũ,
 gỡ `KENH_UI` chết). tsc sạch.
+
+## 2026-09-10 — BUG cross-môn: thái độ BTVN + báo động không scope môn (Thùy: "9K1 Hoàng Nhật Minh BTVN 4/25 thiếu nghiêm túc, lấy đâu ra 25 buổi")
+
+**Nguyên nhân:** `napThaiDo(hsIds)` lấy MỌI `btvn_ket_qua.thai_do` của HS — không lọc môn, không giới hạn thời gian. Minh học 9K1 (KHTN)
++ 9A1 (Toán): 25 = 3 KHTN (08) + 22 Toán (06–08); cả 4 "chưa nghiêm túc" đều bên Toán mà hiện trên card KHTN — vi phạm §1.6.
+`napCanhBao(hsIds)` cùng lỗi (36 dòng canh_bao_yeu đều có buổi, đều Toán). 46 HS đang học ≥2 môn ⇒ diện ảnh hưởng thật.
+**Sửa (`danhgia.ts`):** cả 2 hàm nhận `mon`, scope theo `lop.mon` của buổi (buổi bù lùi về lớp gốc như napLanDo). Thái độ thêm
+recency 2 cửa sổ (hiện tại + liền trước) — cùng nguyên tắc kênh ①–④ (Thùy 08-23); báo động GIỮ all-time (cờ cứng của người), dòng
+không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa sổ gần nhất)".
+**Kiểm lại Minh:** 9K1/KHTN → mất kênh ⑤ (còn ①③, uuTien 52→32); 9A1/Toán → giữ ⑤ (2 buổi chưa nghiêm túc 08). tsc sạch · 77/77.
