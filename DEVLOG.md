@@ -10509,3 +10509,10 @@ Sát biên 10–15% chỉ vì ② (5 em): D loại 4 nền tốt (Bình 10B1, Di
 tsc sạch · verify_danhgia 77/77.
 **Bối cảnh số:** hàng đợi Duyệt bổ trợ Toán còn 48 (không phải 232 như sáng) vì Thùy đã duyệt 154 HS hôm nay (79 chốt ≥L1; 111 case
 đang mở) — ngưỡng kênh ② giờ ảnh hưởng ≤13 HS; khối lượng đến từ kênh khác (③ ET/④ MT/①) — chưa tách số theo kênh, làm khi Thùy hỏi.
+
+## 2026-09-10 — Chip "chạm kênh nào" trên card Duyệt bổ trợ + Dashboard (Thùy: "ghi luôn để t đỡ confuse")
+
+`KenhChips` (DashboardHocTapScreen.tsx) — chip màu từng kênh ngay cạnh tên, cùng số hiệu với lý do: ① Chuyên đề tụt ngưỡng · ② % dạng
+yếu · ③ ET dưới TB lớp · ④ MT dưới TB lớp · 🚨 Báo động GV/TA · 🚨 Hổng nền · ⑤ Thái độ · "Case mở · máy đề xuất Lx ≠ Ly" (suy tại chỗ,
+không nằm trong `kenh[]`). Dùng ở `CandidateHeader` (Duyệt bổ trợ + modal Dashboard) và `CandCard` (list Dashboard — thay pill ③④ cũ,
+gỡ `KENH_UI` chết). tsc sạch.

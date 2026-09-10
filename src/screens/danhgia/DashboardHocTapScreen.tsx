@@ -28,12 +28,6 @@ const TEN_KT = ['Bình thường', 'Bổ trợ mức 1 · sau giờ', 'Bổ tr�
 const TEN_TD = ['Bình thường', 'Nhắc học sinh', 'Nhắc phụ huynh', 'Nhắc phụ huynh']
 const lvUI = (lv: number, loai: 'kien_thuc' | 'thai_do') =>
   ({ ten: `L${lv} · ${(loai === 'thai_do' ? TEN_TD : TEN_KT)[lv]}`, cls: CLS[lv] })
-const KENH_UI: Record<string, { ten: string; cls: string }> = {
-  trend: { ten: 'Trend', cls: 'bg-sky-50 text-sky-700 ring-sky-200' },
-  thai_do: { ten: 'Thái độ', cls: 'bg-violet-50 text-violet-700 ring-violet-200' },
-  chuong_do: { ten: '③ Chuông đỏ', cls: 'bg-rose-50 text-rose-700 ring-rose-200' },
-  tien_quyet: { ten: '④ Lỗ nền', cls: 'bg-rose-50 text-rose-700 ring-rose-200' },
-}
 const Pill = ({ ten, cls }: { ten: string; cls: string }) => (
   <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-[12px] font-semibold ring-1 ${cls}`}>{ten}</span>
 )
@@ -42,6 +36,27 @@ const Pill = ({ ten, cls }: { ten: string; cls: string }) => (
 // cho vừa 1 màn hình") — CHỈ còn avatar+tên+chip+ưu tiên, 1 hàng gọn. 3 thẻ tóm tắt (level/thái độ/
 // yếu ổn định) đã CHUYỂN vào cột trái ngay trên khối Duyệt (xem `MiniStat`/`ThongTinNhanh` trong
 // `CandidateDetailBody`) — đúng nơi có không gian trống, đỡ header cao lêu nghêu.
+// Thùy 09-10: "ghi luôn nó chạm kênh nào để đỡ confuse" — chip từng kênh ngay cạnh tên, cùng số hiệu ①②③④ với
+// lý do bên dưới. `kenh[]` do engine đẩy (listCandidatesLop); "case mở cần xử" không nằm trong `kenh` nên suy tại đây.
+const KENH_CHIP: Record<Candidate['kenh'][number], { ten: string; cls: string }> = {
+  trend:      { ten: '① Chuyên đề tụt ngưỡng', cls: 'border-rose-200 bg-rose-50 text-rose-700' },
+  pct_yeu:    { ten: '② % dạng yếu', cls: 'border-amber-200 bg-amber-50 text-amber-700' },
+  so_lop_et:  { ten: '③ ET dưới TB lớp', cls: 'border-orange-200 bg-orange-50 text-orange-700' },
+  so_lop_mt:  { ten: '④ MT dưới TB lớp', cls: 'border-orange-200 bg-orange-50 text-orange-700' },
+  chuong_do:  { ten: '🚨 Báo động GV/TA', cls: 'border-red-300 bg-red-50 text-red-700' },
+  tien_quyet: { ten: '🚨 Hổng nền', cls: 'border-red-300 bg-red-50 text-red-700' },
+  thai_do:    { ten: '⑤ Thái độ', cls: 'border-violet-200 bg-violet-50 text-violet-700' },
+}
+export function KenhChips({ c }: { c: Candidate }) {
+  const caseMo = c.sheet.levelKienThuc > 0 && c.deXuatKienThuc.deXuat !== c.sheet.levelKienThuc
+  return (
+    <>
+      {c.kenh.map((k) => <span key={k} className={`whitespace-nowrap rounded-full border px-2 py-0.5 text-[10.5px] font-bold ${KENH_CHIP[k].cls}`}>{KENH_CHIP[k].ten}</span>)}
+      {caseMo && <span className="whitespace-nowrap rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[10.5px] font-bold text-indigo-700">Case mở · máy đề xuất L{c.deXuatKienThuc.deXuat} ≠ L{c.sheet.levelKienThuc}</span>}
+      {c.kenh.length === 0 && !caseMo && <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10.5px] font-bold text-slate-500">không chạm kênh nào</span>}
+    </>
+  )
+}
 export function CandidateHeader({ c, phu, uuTien, onDong }: { c: Candidate; phu?: string; uuTien?: number; onDong?: () => void }) {
   const initials = c.ho_ten.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()
   return (
@@ -52,6 +67,8 @@ export function CandidateHeader({ c, phu, uuTien, onDong }: { c: Candidate; phu?
       <div className="flex min-w-0 flex-1 flex-wrap items-center gap-2">
         <span className="text-[15px] font-extrabold tracking-tight text-slate-800">{c.ho_ten}</span>
         {phu && <span className="rounded-full border border-blue-100 bg-blue-50 px-2 py-0.5 text-[10.5px] font-bold text-blue-700">{phu}</span>}
+        <span className="mx-0.5 text-[10.5px] font-semibold text-slate-400">chạm:</span>
+        <KenhChips c={c} />
       </div>
       <div className="flex flex-none items-center gap-2">
         {uuTien != null && <span className="whitespace-nowrap rounded-full border border-rose-200 bg-rose-50 px-2 py-1 text-[11px] font-extrabold text-rose-600">★ ưu tiên {uuTien}</span>}
@@ -342,14 +359,13 @@ function CandCard({ c, onMo }: { c: Candidate; onMo: () => void }) {
   const ktDoi = c.deXuatKienThuc.deXuat !== c.sheet.levelKienThuc
   const tdDoi = c.deXuatThaiDo.deXuat !== c.sheet.levelThaiDo
   const tier = Math.max(c.deXuatKienThuc.deXuat, c.deXuatThaiDo.deXuat)
-  const co34 = c.kenh.filter((k) => k === 'chuong_do' || k === 'tien_quyet')
   return (
     <button onClick={onMo} className="flex w-full items-center gap-3 rounded-2xl bg-white p-4 text-left ring-1 ring-slate-200 transition hover:ring-indigo-300">
       <span className={`h-9 w-1 flex-shrink-0 rounded ${BAR[tier] ?? BAR[0]}`} />
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-[15px] font-semibold text-slate-800">{c.ho_ten}</span>
-          {co34.map((k) => <Pill key={k} {...KENH_UI[k]} />)}
+          <KenhChips c={c} />
         </div>
         <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-0.5 text-[12px] text-slate-500">
           {ktDoi
