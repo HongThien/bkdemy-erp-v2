@@ -186,8 +186,8 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
   const [doRows, levels, thaiDoRows, canhBao, dangDangMo] = await Promise.all([
     napLanDo(hsIds, mon),
     getLevels(hsIds, mon),
-    napThaiDo(hsIds),
-    napCanhBao(hsIds),
+    napThaiDo(hsIds, mon),
+    napCanhBao(hsIds, mon),
     napDangDangMo(hsIds, mon),
   ])
   const banDo = await napBanDo(mon, [...new Set(doRows.map((r) => r.ma_dang))])
@@ -532,7 +532,7 @@ export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
       uuTien += 12
     }
 
-    // Kênh 2 — % dạng yếu / tổng dạng đã đo > 10% (Thùy 08-23: thay "dạng yếu tuyệt đối tự đủ vào
+    // Kênh 2 — % dạng yếu / tổng dạng đã đo (ngưỡng: xem sig2 bên dưới) (Thùy 08-23: thay "dạng yếu tuyệt đối tự đủ vào
     // danh sách" cũ — 1 dạng yếu lẻ giữa hàng chục dạng ổn không còn tự kéo HS vào hàng đợi nữa,
     // phải chiếm tỉ trọng đáng kể mới tính). Thùy 08-23 (vòng 2): PHẠM VI TỐI ĐA 2 CỬA SỔ — chỉ tính
     // trên dạng có lần đo GẦN NHẤT (`cuoiCungAt`) rơi vào cửa sổ hiện tại hoặc liền trước, cùng
@@ -541,11 +541,17 @@ export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
     const dangGanDay = s.dangs.filter((d) => { const w = cuaSoCua(d.cuoiCungAt); return w === hienTaiK2 || w === truocK2 })
     const nDangDo = dangGanDay.length
     const nYeu = dangGanDay.filter((d) => d.muc === 'yeu').length
+    const nDat = dangGanDay.filter((d) => d.muc === 'dat').length
     const pctYeu = nDangDo > 0 ? nYeu / nDangDo : 0
-    const sig2 = nDangDo > 0 && pctYeu > 0.10
+    const pctDat = nDangDo > 0 ? nDat / nDangDo : 1
+    // Thùy 09-10 chốt (sau ca Đỗ Ngọc Tuấn 7K1: 2/19 = 11% yếu nhưng 14/19 đạt, ET trên TB lớp — không đáng đi bổ trợ):
+    // >15% yếu, HOẶC >10% yếu VÀ tỉ lệ đạt < 50% (nền mỏng: yếu ít nhưng "cần luyện" nhiều). Đo Toán 09-10: kênh ②
+    // 126 → 100 HS, "chỉ vì ②" 13 → 9; 4/5 ca sát biên 10–15% có nền tốt rớt đúng, giữ Trần Khánh Vy 7B2 (2/16 yếu, 7/16 đạt).
+    const sig2 = nDangDo > 0 && (pctYeu > 0.15 || (pctYeu > 0.10 && pctDat < 0.5))
     if (sig2) {
       kenh.push('pct_yeu')
-      lyDo.push(`② % dạng yếu (2 cửa sổ gần nhất): ${nYeu}/${nDangDo} = ${Math.round(pctYeu * 100)}%`)
+      lyDo.push(`② % dạng yếu (2 cửa sổ gần nhất): ${nYeu}/${nDangDo} = ${Math.round(pctYeu * 100)}%`
+        + (pctYeu <= 0.15 ? ` · đạt chỉ ${nDat}/${nDangDo} = ${Math.round(pctDat * 100)}%` : ''))
       uuTien += 10
     }
 
@@ -622,15 +628,33 @@ export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
   return out.sort((a, b) => b.uuTien - a.uuTien)
 }
 
-async function napThaiDo(hsIds: string[]): Promise<{ hoc_sinh_id: string; thai_do: string; t: string }[]> {
+// ⚠ BUG THẬT 09-10 (Thùy: "9K1 Hoàng Nhật Minh ghi BTVN 4/25 thiếu nghiêm túc, lấy đâu ra 25 buổi"): hàm này
+// từng lấy MỌI `btvn_ket_qua.thai_do` của HS — KHÔNG scope môn (Minh học 9K1 KHTN + 9A1 Toán ⇒ 22/25 dòng là
+// Toán, cả 4 buổi "chưa nghiêm túc" đều bên Toán mà hiện trên card KHTN — vi phạm §1.6) và KHÔNG giới hạn thời
+// gian (từ tháng 6). Giờ: scope MÔN theo `lop.mon` của buổi (buổi bù lùi về lớp gốc, như napLanDo) + chỉ 2 cửa sổ
+// gần nhất (hiện tại + liền trước) — cùng nguyên tắc recency Thùy chốt 08-23 cho kênh ①–④.
+async function napThaiDo(hsIds: string[], mon: string): Promise<{ hoc_sinh_id: string; thai_do: string; t: string }[]> {
+  if (!hsIds.length) return []
   // Cùng bẫy cap-1000 với `napLanDo` (1 dòng/HS/buổi có BTVN — 1 lớp cả học kỳ đủ vượt) → phân trang.
   const data = await fetchAllRows<any>((from, to) => supabase.from('btvn_ket_qua')
-    .select('hoc_sinh_id, thai_do, buoi:buoi_hoc_id(ngay)')
+    .select('hoc_sinh_id, thai_do, buoi_hoc_id, buoi:buoi_hoc_id(ngay, lop:lop_id(mon))')
     .in('hoc_sinh_id', hsIds).not('thai_do', 'is', null)
     .order('hoc_sinh_id', { ascending: true }).order('buoi_hoc_id', { ascending: true })
     .range(from, to))
-  return (data as any[])
-    .filter((r) => r.buoi?.ngay)
+  const rows = (data as any[]).filter((r) => r.buoi?.ngay)
+  // Buổi bù (lop null) → môn theo lớp gốc của từng HS.
+  const buoiBu = [...new Set(rows.filter((r) => !r.buoi.lop?.mon).map((r) => r.buoi_hoc_id))]
+  const monBu = new Map<string, string>()
+  if (buoiBu.length) {
+    const { data: links } = await supabase.from('buoi_hoc_hs')
+      .select('buoi_hoc_id, hoc_sinh_id, goc:bu_cho_buoi_id(lop:lop_id(mon))')
+      .in('buoi_hoc_id', buoiBu).in('hoc_sinh_id', hsIds).limit(LIMIT)
+    for (const l of (links ?? []) as any[]) if (l.goc?.lop?.mon) monBu.set(`${l.buoi_hoc_id}|${l.hoc_sinh_id}`, l.goc.lop.mon)
+  }
+  const hienTai = cuaSoHienTai(), truoc = cuaSoTruoc(hienTai)
+  return rows
+    .filter((r) => (r.buoi.lop?.mon ?? monBu.get(`${r.buoi_hoc_id}|${r.hoc_sinh_id}`)) === mon)
+    .filter((r) => { const w = cuaSoCua(r.buoi.ngay); return w === hienTai || w === truoc })
     .map((r) => ({ hoc_sinh_id: r.hoc_sinh_id, thai_do: r.thai_do, t: r.buoi.ngay }))
 }
 
@@ -657,10 +681,27 @@ async function napDangDangMo(hsIds: string[], mon: string): Promise<Map<string, 
 }
 
 // ③ chuông đỏ + ④ lỗ tiên quyết — flag CỨNG của NGƯỜI, Claude KHÔNG xét lại (spec §2.A③④).
-async function napCanhBao(hsIds: string[]): Promise<{ hoc_sinh_id: string; ma_dang: string; nguon: string; ghi_chu: string | null }[]> {
+// Scope MÔN (§1.6) theo `lop.mon` của buổi bấm chuông (cùng lỗi cross-môn với napThaiDo, bắt 09-10): HS học 2 môn
+// mà báo động bên Toán từng hiện trên card KHTN. Buổi bù → lớp gốc; dòng không có buổi (không suy được môn) → GIỮ
+// (báo động là cờ cứng của người, thà thừa hơn rơi — khác dữ liệu đo).
+async function napCanhBao(hsIds: string[], mon: string): Promise<{ hoc_sinh_id: string; ma_dang: string; nguon: string; ghi_chu: string | null }[]> {
+  if (!hsIds.length) return []
   const { data } = await supabase.from('canh_bao_yeu')
-    .select('hoc_sinh_id, ma_dang, nguon, ghi_chu').in('hoc_sinh_id', hsIds).limit(LIMIT)
-  return (data ?? []) as any
+    .select('hoc_sinh_id, ma_dang, nguon, ghi_chu, buoi_hoc_id, buoi:buoi_hoc_id(lop:lop_id(mon))').in('hoc_sinh_id', hsIds).limit(LIMIT)
+  const rows = (data ?? []) as any[]
+  const buoiBu = [...new Set(rows.filter((r) => r.buoi && !r.buoi.lop?.mon).map((r) => r.buoi_hoc_id))]
+  const monBu = new Map<string, string>()
+  if (buoiBu.length) {
+    const { data: links } = await supabase.from('buoi_hoc_hs')
+      .select('buoi_hoc_id, hoc_sinh_id, goc:bu_cho_buoi_id(lop:lop_id(mon))')
+      .in('buoi_hoc_id', buoiBu).in('hoc_sinh_id', hsIds).limit(LIMIT)
+    for (const l of (links ?? []) as any[]) if (l.goc?.lop?.mon) monBu.set(`${l.buoi_hoc_id}|${l.hoc_sinh_id}`, l.goc.lop.mon)
+  }
+  return rows.filter((r) => {
+    if (!r.buoi) return true
+    const m = r.buoi.lop?.mon ?? monBu.get(`${r.buoi_hoc_id}|${r.hoc_sinh_id}`)
+    return !m || m === mon
+  }).map(({ hoc_sinh_id, ma_dang, nguon, ghi_chu }) => ({ hoc_sinh_id, ma_dang, nguon, ghi_chu }))
 }
 
 // ── LEVEL: đọc / duyệt ────────────────────────────────────────────────────────────────

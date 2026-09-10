@@ -10474,6 +10474,14 @@ có mặt (để vào luyện). Không có "lịch" — xếp xong HS/PH không 
 **Verify SQL thật (`scripts/_diag_hs_lich.mjs`, read-only):** Tùng → 2 buổi yếu 09/09 16:00 P102 (1 đã co_mat ⇒ vao_ca=true);
 toàn hệ buổi mở sắp tới: 16 đuổi · 3 bù · 2 yếu ⇒ từ giờ HS các ca đó thấy lịch. tsc sạch. Chưa login HS thật để bấm (không có tài
 khoản HS trong VITE_DEV_ACCOUNTS) — Thùy test full luồng.
+
+## 2026-09-10 — Dọn dữ liệu test bổ trợ yếu Triệu Đức Tùng (Thùy OK "Xóa và duyệt lại")
+
+Theo Luật xoá (liệt kê → gật → làm), 1 transaction (`scripts/_once_xoa_tung_0909.mjs`): xoá 2 `buoi_hoc` bo_tro_yeu 09/09 16:00 P102
+(2de89692, 4a3678d5) + 2 `buoi_hoc_hs` + 5 `bai_test` (3 lô luyện, 1 test cuối ca, 1 retest) → 14 `bai_test_cau`, 4 `bai_lam`, 8 `bai_lam_cau`;
+reset `bo_tro_yeu_dang` T108020104 `day_at/day_buoi_id` = null. GIỮ case 55b97f6c (02/09), 2 buổi 03/09 hoàn tất, `hs_level_log`.
+Khôi phục level: `duyetLevel` L0→L1 qua đúng đường app (`scripts/_once_duyet_lai_tung.ts`, actor = admin dev) — log mới, không sửa log cũ.
+Sau dọn: case Tùng về "chờ xếp lịch" 2 dạng, level L1 — như trước khi test.
 ## 2026-09-09 (tối) — TEST ĐẦU VÀO: audit đủ luồng theo CEO + 8 quyết định + migration phiếu (code màn CHƯA sửa — dừng giữa chừng, về nhà làm tiếp)
 - **Mở đầu:** Thùy: "test đầu vào chưa có chỗ nhập Đ/C/S từng câu". Dò: ô Đ/C/S CÓ trong code (`ChamTestScreen` → card → 3 nút), nhưng hàng đợi Chấm chỉ nhận ca `hoan_thanh` + `tai_lieu_id` not null. DB thật: **6/6 ca_test đều `tai_lieu_id` NULL** (5 hoàn thành + 1 đang chạy) ⇒ hàng đợi rỗng, không ai thấy ô Đ/C/S ở đâu.
 - **Ca Nguyễn Thắng Tùng (K7 Toán, 07/09):** Thùy nói "Tùng đã gán đề rồi". `ca_test_log` (trigger log mọi UPDATE) chỉ có 3 sự kiện: tạo → `bai_url` → `hoan_thanh` trong 51 giây, **không sự kiện nào đổi `tai_lieu_id`**, `ca_test_cau` không có dòng nào của ca này. Đề K7 có sẵn 34 câu. ⇒ đề CHƯA từng được lưu. Nguyên nhân khả dĩ nhất: UI 2 bước — chọn đề trong dropdown chưa lưu, phải bấm thêm nút "Gán đề" chỉ hiện sau khi chọn; nút Hoàn tất chỉ đòi bài upload, không đòi đề ⇒ đi lọt.
@@ -10485,3 +10493,61 @@ khoản HS trong VITE_DEV_ACCOUNTS) — Thùy test full luồng.
 - **CHƯA LÀM (code, thứ tự dự định):** (A) `detest.ts`: `ganDeCaTest` snapshot nhanh/muc_do/ten_chuyen_de qua `getTaiLieuFull` + `nhanhCuaCau` + `khoCuaMon(...).banDoTbl` (hgt→'hinh', dai→'dai', KHTN→null); hàng HÌNH `HINH:<uuid>` (MT K7 có 3, K8 có 2) hiện bị `layCauTheoThuTu` bỏ rơi im lặng ⇒ phải snapshot với nhanh='hinh', nội dung lấy qua `loadLuoi` + `pickCuaHinhRow` + `banInTheoMoHinh` (mucs kieu 'de' → deBai + ys) — chấm HOLISTIC 1 dòng/bài · `ganDeDangDung(caTestId, khoi, mon)` · `listCanCham` gộp cả ca thiếu đề (cờ `thieuDe`, card có nút "Gán đề đang dùng" — đường cứu Tùng + 4 ca cũ, không sửa DB tay) · `listCanChamCuaToi/listCanTraBaiCuaToi(nhanSuId)` · `setDiemNhap` · `dongChamTest` đòi thêm `diem_nhap` · `getPhieuKetQua` → `supabase.rpc('fn_test_dau_vao_phieu')`, XOÁ `tongDiem`/`getBieuDoChuyenDe` (JS cộng điểm). (B) `DiemDanhTestScreen`: chọn đề = lưu ngay (bỏ nút Gán đề); card mount mà chưa có đề + có đề đang dùng ⇒ tự gán; sau `taoCaTest` ⇒ `ganDeDangDung`; Hoàn tất disable khi chưa có đề. (C) `ChamTestScreen`: hàng câu bên trái có Đ/C/S inline (kiểu `ET_KQ` ChamBuoi.tsx), ô "Điểm" nhập tay, tổng/% lấy từ rpc sau mỗi click, toggle "Của tôi/Tất cả". (D) `TraBaiTestScreen`: 3 khối % từ rpc (ẩn khối `soCau===0`), KHÔNG hiện GV. (E) `PhieuTestDauVao`: thêm điểm nhập + 3 khối % + GV + lịch (THU_LABEL 2..8, 8=CN). (F) `NhanSuHome`: 2 khối flat "Test đầu vào — cần chấm (của tôi)" / "cần trả bài (của tôi)" theo `me.nhanSu.id`, click → `moTabTestDauVao('cham'|'tra_bai')` + `setStaffLeaf('test_dau_vao')`; (G) `TestDauVaoScreen`: export setter tab module-level.
 - **Ngoài lề phát hiện:** `--status` báo **11 migration có trong sổ DB nhưng KHÔNG có file trong repo main** (202608151600, 202609041045, 202609051251, 202609081858, 202609091354/1411/1416/1428/1750/1810/1959) — nằm ở worktree/nhánh chưa merge. Dựng lại DB từ repo sẽ thiếu. Chưa xử lý.
 - **Working tree lúc bắt đầu phiên đã có sẵn 6 file sửa chưa commit, không có log** (mastery.ts neo report theo NGÀY BUỔI thay graded_at · mt.ts + MTScreen: loại đề/tháng `cau_hinh.mtMeta` + bảng lọc · tailieu.ts/TaiLieuBuilder: `getTaiLieuFull(onlyBuoiId)` load 1 buổi · PrintView) + `scripts/_diag_rls_tailieu.mjs`. tsc pass. Thùy bảo commit+push ⇒ gom thành commit RIÊNG trước commit test đầu vào, để không mất.
+
+## 2026-09-10 — Kênh ② đổi ngưỡng: >15% yếu HOẶC (>10% yếu VÀ đạt <50%) (Thùy chốt sau ca Đỗ Ngọc Tuấn 7K1)
+
+**Ca mồi:** Tuấn 7K1 KHTN vào hàng đợi CHỈ vì kênh ② 2/19 = 11% (K07030304 0.20 · K07070101 0.40), còn 14/19 đạt, chuyên đề lên,
+ET trên TB lớp, thái độ ổn — Thùy: không đáng đi bổ trợ. Làm rõ 2 tầng: mức yếu của dạng = mastery 5 lần đo gần nhất (không giới hạn
+ngày, cùng engine Kết quả học tập); cửa sổ chỉ quyết dạng có ĐƯỢC ĐẾM vào tỉ lệ (lần đo cuối ∈ cửa sổ hiện tại/liền trước).
+Thùy giữ tầng 1, chỉnh tầng 2. (Ý "đếm thêm tự luyện" = dạng mức "cần luyện" — đã thể hiện qua vế "đạt < 50%"; KHÔNG phải bài tự luyện
+online — t hiểu nhầm, đã gỡ code thử nghiệm `TINH_TU_LUYEN` trước khi commit. Lưu ý phát hiện phụ: engine bổ trợ CHƯA đếm BTVN
+online lẫn tự luyện online — chỉ gami_grades; chưa quyết.)
+**Đo Toán 09-10 (`scripts/_diag_kenh2_nguong.ts`, roster 306):** vào vì kênh khác (①③④/báo động/case mở) 238; kênh ② theo ngưỡng:
+A >10% → 126 (chỉ-vì-② 13) · B >15% → 90 (8) · C >10%&đạt<50% → 66 (4) · **D = B∨C → 100 (9)** · E ≥3 yếu&>10% → 109 (8).
+Sát biên 10–15% chỉ vì ② (5 em): D loại 4 nền tốt (Bình 10B1, Diệp 6S1, Thảo 6S1, Việt Anh 6A1), giữ Trần Khánh Vy 7B2 (2/16 yếu, 7/16 đạt).
+**Chốt D.** `sig2 = nDangDo>0 && (pctYeu>0.15 || (pctYeu>0.10 && pctDat<0.5))`; lý do hiện thêm "đạt chỉ x/y" khi lọt qua vế 2.
+tsc sạch · verify_danhgia 77/77.
+**Bối cảnh số:** hàng đợi Duyệt bổ trợ Toán còn 48 (không phải 232 như sáng) vì Thùy đã duyệt 154 HS hôm nay (79 chốt ≥L1; 111 case
+đang mở) — ngưỡng kênh ② giờ ảnh hưởng ≤13 HS; khối lượng đến từ kênh khác (③ ET/④ MT/①) — chưa tách số theo kênh, làm khi Thùy hỏi.
+
+## 2026-09-10 — Chip "chạm kênh nào" trên card Duyệt bổ trợ + Dashboard (Thùy: "ghi luôn để t đỡ confuse")
+
+`KenhChips` (DashboardHocTapScreen.tsx) — chip màu từng kênh ngay cạnh tên, cùng số hiệu với lý do: ① Chuyên đề tụt ngưỡng · ② % dạng
+yếu · ③ ET dưới TB lớp · ④ MT dưới TB lớp · 🚨 Báo động GV/TA · 🚨 Hổng nền · ⑤ Thái độ · "Case mở · máy đề xuất Lx ≠ Ly" (suy tại chỗ,
+không nằm trong `kenh[]`). Dùng ở `CandidateHeader` (Duyệt bổ trợ + modal Dashboard) và `CandCard` (list Dashboard — thay pill ③④ cũ,
+gỡ `KENH_UI` chết). tsc sạch.
+
+## 2026-09-10 — BUG cross-môn: thái độ BTVN + báo động không scope môn (Thùy: "9K1 Hoàng Nhật Minh BTVN 4/25 thiếu nghiêm túc, lấy đâu ra 25 buổi")
+
+**Nguyên nhân:** `napThaiDo(hsIds)` lấy MỌI `btvn_ket_qua.thai_do` của HS — không lọc môn, không giới hạn thời gian. Minh học 9K1 (KHTN)
++ 9A1 (Toán): 25 = 3 KHTN (08) + 22 Toán (06–08); cả 4 "chưa nghiêm túc" đều bên Toán mà hiện trên card KHTN — vi phạm §1.6.
+`napCanhBao(hsIds)` cùng lỗi (36 dòng canh_bao_yeu đều có buổi, đều Toán). 46 HS đang học ≥2 môn ⇒ diện ảnh hưởng thật.
+**Sửa (`danhgia.ts`):** cả 2 hàm nhận `mon`, scope theo `lop.mon` của buổi (buổi bù lùi về lớp gốc như napLanDo). Thái độ thêm
+recency 2 cửa sổ (hiện tại + liền trước) — cùng nguyên tắc kênh ①–④ (Thùy 08-23); báo động GIỮ all-time (cờ cứng của người), dòng
+không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa sổ gần nhất)".
+**Kiểm lại Minh:** 9K1/KHTN → mất kênh ⑤ (còn ①③, uuTien 52→32); 9A1/Toán → giữ ⑤ (2 buổi chưa nghiêm túc 08). tsc sạch · 77/77.
+
+## 2026-09-10 — Bộ đo PH DÙNG app (màn "Đăng nhập Phụ huynh" mở rộng) — 2 repo, chưa commit, chưa deploy
+- **Hỏi:** tháng 9 bao nhiêu PH vào app, ai. Đo từ DB bkdemy-ph: `auth.users.last_sign_in_at` + `auth.sessions.refreshed_at` + `auth.refresh_tokens.updated_at` (mở app với phiên còn hạn = phiên làm mới). `auth.audit_log_entries` **RỖNG** (Supabase không giữ) ⇒ chỉ biết LẦN CUỐI, không đếm được số lượt. Kết quả 1–9/9: **71 PH** có hoạt động / 183 tài khoản / 273 PH có con đang học; 11 đăng nhập lại bằng MK; 3 tài khoản mới.
+- **CEO yêu cầu:** màn ERP để nhân sự follow ai dùng/chưa dùng: tên PH · tên HS · lần đăng nhập gần nhất · màn hình theo dõi (CTO đề xuất cách làm).
+- **Cách làm (đã code):**
+  - **bkdemy-ph mig `0028_ph_xem_log_admin_parent_usage.sql` (đổi từ 0027 vì origin đã có `0027_btvn_nop_fdw.sql`) (ĐÃ ÁP, 0.36s/276 dòng):** bảng `ph_xem` (phu_huynh_id, user_id, hoc_sinh_id, man_hinh, tab, chi_tiet, at; RLS bật không policy, service_role bypass) + hàm `admin_parent_usage()` (1 dòng/PH có SĐT + ≥1 con đang học; `hoat_dong_cuoi` = greatest(đăng nhập, phiên làm mới, token, màn cuối); `so_lan_xem_30n`, `man_hinh_cuoi/tab_cuoi/man_hinh_cuoi_at`, `xem_theo_man` jsonb, `con` jsonb [{id,ho_ten,lop}], `trang_thai` chua/chua_doi/dang_dung(≤14 ngày)/lau) + `admin_parent_usage_tong()` jsonb (đếm ở DB — §2.0). FDW: `erp_live.hoc_sinh`/`enroll_live` kéo 1 lần vào CTE materialized (tránh subquery tương quan qua FDW).
+  - **ph-app:** `app/actions/xem.ts` `ghiXem()` (service_role insert `ph_xem`, phu_huynh_id từ app_metadata, nuốt lỗi); `PhApp.tsx` useEffect theo `JSON.stringify(cur)` + `child.id` ⇒ mỗi đổi màn/tab = 1 dòng; **bỏ qua khi `previewToken`** (staff xem thử không tính). Route `/api/admin/parent-logins` đổi sang gọi 2 RPC mới (giữ tên endpoint, thêm field — `HocSinhScreen` vẫn dùng `last_sign_in_at`/`phu_huynh_id`).
+  - **ERP:** `ph-login.ts` thêm type + `PH_MAN_HINH`/`PH_TAB` (nhãn tiếng Việt cho khoá route app PH); `PhDangNhapScreen.tsx` viết lại: 4 tile bấm được = filter (Đang dùng / Lâu không vào / Chưa đổi MK / Chưa vào), cột Học sinh (tên + chip lớp, "chưa xếp lớp" nếu không có enroll), Đăng nhập gần nhất + Hoạt động gần nhất ("3 ngày trước" + ngày giờ), Màn hình theo dõi (màn cuối + top 3 màn 30 ngày + tổng lượt), tìm theo tên con/lớp/PH/SĐT. Bỏ query `hoc_sinh` + lọc con đang học ở client (DB đã lọc). Reset MK ⇒ vá dòng tại chỗ, không reload list.
+- **VERIFY:** API local (ph-app 3100, CRON_SECRET) trả 276 dòng đủ field; ERP build `--mode development` + `vite preview` 5261 (vite dev 5260 bị full-reload liên tục vì phiên Claude khác đang sửa file trong cùng checkout — HMR invalidate `PrintJobPage.tsx`) ⇒ màn hiện 64% (178/276), 84 đang dùng, 89 lâu, 5 chưa đổi MK, 98 chưa vào; filter "Lâu không vào" + tìm "9A2" đúng. Login bản build: copy `sb-*-auth-token` localStorage từ 5260 (DEV quick login) sang 5261.
+- **CHƯA verify:** ghi `ph_xem` thật từ app PH (cần đăng nhập PH thật — không tự nhập mật khẩu). Cột "Màn hình theo dõi" trống cho tới khi deploy ph-app và PH mở app.
+- **Chờ Thùy:** deploy ph-app (`npx vercel --prod --yes`, deploy tay) + deploy ERP; commit 2 repo (ERP: `ph-login.ts`, `PhDangNhapScreen.tsx`, `.gitignore`; ph-app: mig 0027, `xem.ts`, `PhApp.tsx`, route). `dist-verify/` = build tạm để verify, đã thêm `.gitignore`, xoá được.
+- Bẫy: `.claude/launch.json` config `dev-ph` trỏ path máy cũ (`C:/Users/Admin/...`) — không dùng được, phải `npx next dev -p 3100` tay.
+
+## 2026-09-10 (tối) — Kho tài liệu + màn thư viện builder tải cực lâu: mặc định "20 gần nhất" + search/facet server-side
+- Thùy: "Kho tài liệu cũng ko tải hết nữa. tải 20 tài liệu gần nhất thôi... rất nhiều builder dùng trang trực tiếp, khi số lượng lớn thì tải cực lâu. Gặp vấn đề ở cả kho, builder." (tiếp nối fix buổi trước cùng ngày: `getTaiLieuFull(onlyBuoiId)` cho TaiLieuBuilder chỉ nạp 1 buổi — đã lên f0552f8).
+- **Audit (agent):** `listAllTaiLieu()` (KhoTaiLieuScreen) và `listBT()` (BTScreen) KHÔNG lọc gì cả — full-scan `tai_lieu` (`.limit(LIMIT=10000)`) mỗi lần mở màn dù UI có sẵn tab Loại/Môn + ô tìm. `listTaiLieu`/`listMT`/`listDeThi` đã scope khối/môn nhưng vẫn không limit/offset. `listAllBuoiHinh` (nhánh Hình) cùng hình dạng — driver query `hinh_gt_buoi` không limit.
+- **Fix:**
+  - `tailieu.ts`: `listAllTaiLieu`/`listTaiLieu` nhận `opts:{before,search,limit,loai}` — mặc định 20 dòng mới nhất (`order created_at desc`); có `search` → quét rộng hơn (200, ilike `ten`) vì đây là hành động CHỦ ĐỘNG, chấp nhận chờ hơn để tìm đúng tài liệu cũ. `bt.ts`/`mt.ts`/`dethi.ts` cùng mẫu; riêng BT search phải 2 bước (tra `hoc_sinh` ilike ho_ten/mã trước, rồi `.or(ten.ilike,hoc_sinh_id.in(...))`) vì PostgREST không OR được vào cột của resource nhúng.
+  - `hinhGiaoTrinh.ts`: `listAllBuoiHinh` cap thẳng trên `hinh_gt_buoi` (driver) — các query phụ (hinh_gt_bai/lop) tự nhẹ theo vì chỉ join đúng buoiIds/lopIds đã cắt, không cần sửa riêng. `unbounded:true` khi search (tên hiển thị ghép SAU join lớp+ngày, không ilike thẳng được → chấp nhận full-scan lúc chủ động tìm).
+  - Tab Loại/Môn ở Kho tài liệu không được suy từ trang đang tải (tab sẽ rụng dần theo trang) — DISTINCT là phép tổng hợp (§2.0) → hàm Postgres mới `fn_tai_lieu_facets()` (mig `202609101159`, invoker rights — RLS `tai_lieu` hiện không lọc theo môn nên không cần security definer).
+  - Hook mới `usePagedList` (`src/hooks`) — {rows,loading,loadingMore,hasMore,err,reload,loadMore}, debounce 300ms cho ô tìm; dùng chung cho `TaiLieuScreen`/`BTScreen`/`DeThiScreen`. `KhoTaiLieuScreen` viết tay riêng (2 nguồn Đại+Hình, mỗi nguồn 1 cursor RAW theo created_at TRƯỚC khi lọc loai — lọc loai SAU khi fetch, vì 1 buổi Hình sinh NHIỀU dòng hiển thị nên cursor phải theo buổi thật, lọc theo dòng-đã-lọc sẽ làm "Tải thêm" đứng yên/lặp trang).
+  - Refresh ngầm (poll job link-gen 8s) đổi sang tải lại TRANG ĐẦU thay vì toàn bộ — đánh đổi: có thể rớt tiến độ "Tải thêm" nếu job xong đúng lúc đang cuộn sâu (hiếm, chấp nhận được).
+  - **KHÔNG đụng MTScreen** (`listMT`) — MT master là tập nhỏ (soạn theo kỳ thi, không theo buổi×lớp×ngày như ET/BTVN), tab lọc tháng/loại đề/khối hiện derive từ `list` đầy đủ, cap sẽ vỡ facet đó mà lợi ích thấp (không phải nguồn chậm thật). Để dành nếu Thùy báo gặp chậm ở đây.
+- **Verify:** `npm run migrate` + `npm run schema` áp mig thật (335→336 function). tsc sạch cả repo. Browser (admin DEV login, data thật, port tự nhận 60710 vì 5173 đang bận phiên khác): Kho tài liệu load 20 dòng mới nhất, tab Loại/Môn đủ (facet không rụng dù chỉ tải trang đầu), "Tải thêm" nối thêm không mất dòng cũ (26→46 dòng), search "8A1" tìm xuyên nhiều tháng cũ (23/08, 20/08, 16/08…) đúng ý "search chủ động thì quét rộng". BTScreen search "Ngọc Linh" ra đúng theo TÊN HỌC SINH (2 bước ilike+in hoạt động, không chỉ khớp tên BT).
+- Chưa commit — chờ Thùy bảo (theo lệ thường của repo này).

@@ -70,3 +70,4 @@ dist-khaosat
 
 # token OAuth/clone (24KB, nằm ở repo root) — không bao giờ commit
 token.txt
+dist-verify/
