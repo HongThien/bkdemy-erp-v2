@@ -43,13 +43,15 @@ export type TraoGiaiSlot = {
   confirmed: boolean; giaiThuongId: string | null
   congBoAt: string | null // chỉ có nghĩa khi confirmed: NULL = chờ "Chốt kết quả tháng", NOT NULL = đã công bố ra app PH/HS
 }
-export type TraoGiaiAward = { loaiGiai: LoaiGiai; slotCount: number; slots: TraoGiaiSlot[] }
+export type GiaiTrangThai = 'da_chot' | 'dang_xet' | 'cho'
+export type TraoGiaiAward = { loaiGiai: LoaiGiai; slotCount: number; slots: TraoGiaiSlot[]; trangThai: GiaiTrangThai; chotAt: string | null }
 export type TraoGiaiClass = {
   lopId: string; tenLop: string; mon: string; khoi: string | null
   siSo: number
   hoanThanhAt: string | null; hoanThanhBoi: string | null
   daXacNhan: number; daCongBo: number
   tongSlot: number; slotCauHinh: SlotCauHinh
+  giaiDangXet: LoaiGiai | null // null = đã chốt cả 3 giải
   roster: RosterHS[]
   metricsCuaHs: Record<string, HsMetric>
   awards: TraoGiaiAward[]
@@ -125,6 +127,16 @@ export async function moLaiLop(lopId: string, thangYm: string): Promise<void> {
   const { error } = await supabase.rpc('fn_traogiai_mo_lai_lop', { p_ym: thangYm, p_lop: lopId })
   if (error) throw rpcErr(error)
 }
+// Chốt / mở lại từng giải của 1 lớp (workflow theo giai đoạn: Xuất sắc → Tiến bộ → Chăm chỉ). DB kiểm đúng lượt.
+export async function chotGiaiLop(lopId: string, thangYm: string, loaiGiai: LoaiGiai): Promise<void> {
+  const { error } = await supabase.rpc('fn_traogiai_chot_giai', { p_ym: thangYm, p_lop: lopId, p_loai: loaiGiai })
+  if (error) throw rpcErr(error)
+}
+export async function moLaiGiaiLop(lopId: string, thangYm: string, loaiGiai: LoaiGiai): Promise<void> {
+  const { error } = await supabase.rpc('fn_traogiai_mo_lai_giai', { p_ym: thangYm, p_lop: lopId, p_loai: loaiGiai })
+  if (error) throw rpcErr(error)
+}
+
 // Chốt kết quả THÁNG (toàn trung tâm) — công bố MỌI giải chưa công bố của tháng. Trả số dòng.
 export async function chotKetQuaThang(thangYm: string): Promise<number> {
   const { data, error } = await supabase.rpc('fn_traogiai_chot_thang', { p_ym: thangYm })

@@ -10608,3 +10608,14 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
   `metricsCuaHs` (cùng nguồn công thức với Report PH: MT/hạng = fn_rank_diem_mt_lop, ET%/BTVN% = TB buổi của Σđiểm/(100×câu đã
   chấm)). "Ảnh chụp" = suy động theo tháng giải (không lưu bản sao — §1.5), tháng đã qua thì số không đổi nữa.
 - Thấy DB tháng 8 đã có 24 giải CEO chốt (sau sự cố xoá nhầm 09/09). Verify tab với 24 dòng thật; không đụng dữ liệu.
+- **Chốt theo GIAI ĐOẠN từng giải (CEO 10/09):** "Chốt Xuất sắc riêng, xong mới tính Tiến bộ từ HS còn lại, rồi Chăm chỉ". Mig
+  `202609101719`: bảng `giai_thuong_lop_giai` (lop_id, thang, loai_giai — có dòng = giải đó ĐÃ CHỐT); `fn_traogiai_giai_dang_xet`
+  = giải đầu tiên chưa chốt theo thứ tự XS→TB→CC; `fn_traogiai_thang` chỉ đề xuất cho giải đang xét. Hàm mới `fn_traogiai_chot_giai`
+  (phải đúng lượt, chốt giải cuối tự set hoan_thanh_at) / `fn_traogiai_mo_lai_giai` (chỉ mở giải chốt sau cùng, xoá dấu hoàn thành).
+  fn_traogiai_xac_nhan/bo/doi_nguoi kiểm giai đoạn. Bỏ nút "Hoàn thành lớp" của card, mỗi nhóm giải có nút "Chốt (n/m)" khi đang
+  xét / "Đã chốt · mở lại" khi đã chốt; nhóm "Chờ lượt" mờ + disable tick.
+- **Mig `202609102128` nới pool Tiến bộ:** trước = "cả 2 hạng đều tăng" (loại HS tụt hạng); giờ = mọi HS có MT cả 2 tháng đều vào
+  pool, xếp theo Δ giảm dần. Slot_max ràng buộc, CEO chọn thủ công trong dropdown khi cần bỏ em tụt hạng. Trả về đúng chữ 22/08
+  ("cả 2 đều tăng NHIỀU NHẤT trong lớp" = xếp hạng, không loại).
+- **Test:** verify trên app port 5252 lớp 7S3 tháng 8 — Xuất sắc "đang xét" nút Chốt, TB/CC "Chờ lượt" mờ; bấm Chốt XS → dry-run
+  cho thấy Nguyễn Văn Anh Quân (Δ -2) rơi xuống pool TB đúng ý CEO. Dọn hành động thử qua rpc mở lại.

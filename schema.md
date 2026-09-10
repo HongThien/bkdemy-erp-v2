@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-209 bảng · 18 view · 0 enum · 52 trigger · 335 function
+210 bảng · 18 view · 0 enum · 52 trigger · 339 function
 
 ## _app_secrets
 
@@ -1081,6 +1081,16 @@
 | duyet_boi | uuid |  |  | FK→nhan_su.id |  |
 | duyet_at | timestamp with time zone |  | now() |  |  |
 | cong_bo_at | timestamp with time zone | Y |  |  |  |
+
+## giai_thuong_lop_giai
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| lop_id | uuid |  |  | PK FK→lop.id |  |
+| thang | date |  |  | PK |  |
+| loai_giai | text |  |  | PK | `xuat_sac` · `tien_bo` · `cham_chi` |
+| chot_at | timestamp with time zone |  | now() |  |  |
+| chot_boi | uuid | Y |  | FK→nhan_su.id |  |
 
 ## giai_thuong_lop_thang
 
@@ -4727,11 +4737,15 @@ SELECT bl.hoc_sinh_id,
 - `fn_tln_normalize(p_val text)` → text
 - `fn_traogiai_actor()` → uuid
 - `fn_traogiai_bo_xac_nhan(p_id uuid)` → void
+- `fn_traogiai_chot_giai(p_ym text, p_lop uuid, p_loai text)` → void
 - `fn_traogiai_chot_thang(p_ym text)` → integer
 - `fn_traogiai_dat_slot(p_ym text, p_lop uuid, p_xuat_sac integer, p_tien_bo integer, p_cham_chi integer)` → void
 - `fn_traogiai_doi_nguoi(p_id uuid, p_hs_moi uuid)` → uuid
+- `fn_traogiai_giai_da_chot(p_lop uuid, p_thang date, p_loai text)` → boolean
+- `fn_traogiai_giai_dang_xet(p_lop uuid, p_thang date)` → text
 - `fn_traogiai_hoan_thanh_lop(p_ym text, p_lop uuid)` → void
 - `fn_traogiai_kiem_khoa(p_lop uuid, p_thang date)` → void
+- `fn_traogiai_mo_lai_giai(p_ym text, p_lop uuid, p_loai text)` → void
 - `fn_traogiai_mo_lai_lop(p_ym text, p_lop uuid)` → void
 - `fn_traogiai_slot_max(p_lop uuid, p_thang date, p_loai text)` → integer
 - `fn_traogiai_thang(p_ym text, p_khoi text DEFAULT NULL::text)` → jsonb

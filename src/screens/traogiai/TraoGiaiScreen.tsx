@@ -8,7 +8,7 @@
 // dropdown CHƯA xác nhận (state UI thuần).
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import {
-  getTraoGiaiThang, xacNhanSlot, boXacNhanSlot, doiNguoiSlotDaXacNhan, hoanThanhLop, moLaiLop, chotKetQuaThang, datSlotLop, metricChips,
+  getTraoGiaiThang, xacNhanSlot, boXacNhanSlot, doiNguoiSlotDaXacNhan, chotGiaiLop, moLaiGiaiLop, chotKetQuaThang, datSlotLop, metricChips,
   curYM, shiftYM, LOAI_GIAI_TEN, LOAI_GIAI_THU_TU, TONG_SLOT,
   type TraoGiaiThang, type TraoGiaiClass, type TraoGiaiAward, type TraoGiaiSlot, type LoaiGiai, type MetricChip, type SlotCauHinh,
 } from '../../lib/traogiai'
@@ -183,23 +183,32 @@ export default function TraoGiaiScreen() {
     finally { setBusy((s) => { const n = new Set(s); n.delete(`slot:${card.lopId}`); return n }) }
   }
 
-  async function toggleCompleteClass(card: TraoGiaiClass) {
-    setBusy((s) => new Set(s).add(`class:${card.lopId}`))
+  // Chốt / mở lại 1 GIẢI của lớp (không phải "hoàn thành lớp" nữa — chốt Xuất sắc xong DB tự chuyển sang Tiến bộ).
+  // Chốt giải cuối cùng ⇒ DB tự set hoan_thanh_at (lopHoanThanh++). Mở lại giải chốt cuối ⇒ xoá dấu hoàn thành.
+  async function chotGiai(card: TraoGiaiClass, loaiGiai: LoaiGiai) {
+    const award = card.awards.find((a) => a.loaiGiai === loaiGiai); if (!award) return
+    const daXn = award.slots.filter((s) => s.confirmed).length
+    if (daXn < award.slotCount && !confirm(`Giải ${LOAI_GIAI_TEN[loaiGiai]} lớp ${card.tenLop} mới xác nhận ${daXn}/${award.slotCount} slot. Chốt giải này (không thể sửa cho tới khi mở lại)?`)) return
+    setBusy((s) => new Set(s).add(`chot:${card.lopId}:${loaiGiai}`))
     try {
-      if (card.hoanThanhAt) {
-        await moLaiLop(card.lopId, ym)
-        vaLop(card.lopId, (c) => ({ ...c, hoanThanhAt: null, hoanThanhBoi: null }))
-        vaSummary((s) => ({ ...s, lopHoanThanh: s.lopHoanThanh - 1 }))
-        flash(`Đã mở lại lớp ${card.tenLop}`)
-      } else {
-        if (card.daXacNhan < card.tongSlot && !confirm(`Lớp ${card.tenLop} mới xác nhận ${card.daXacNhan}/${card.tongSlot} slot. Bạn vẫn muốn hoàn thành lớp này chứ?`)) return
-        await hoanThanhLop(card.lopId, ym)
-        vaLop(card.lopId, (c) => ({ ...c, hoanThanhAt: new Date().toISOString() }))
-        vaSummary((s) => ({ ...s, lopHoanThanh: s.lopHoanThanh + 1 }))
-        flash(`Đã hoàn thành lớp ${card.tenLop}`)
-      }
+      await chotGiaiLop(card.lopId, ym, loaiGiai)
+      flash(`Đã chốt giải ${LOAI_GIAI_TEN[loaiGiai]} lớp ${card.tenLop}`)
+      await refetchDongBo(card.lopId) // rank Tiến bộ đổi theo pool mới → lấy lại từ DB (không tự suy được ở client)
     } catch (e) { flash('⚠️ ' + (e as Error).message) }
-    finally { setBusy((s) => { const n = new Set(s); n.delete(`class:${card.lopId}`); return n }) }
+    finally { setBusy((s) => { const n = new Set(s); n.delete(`chot:${card.lopId}:${loaiGiai}`); return n }) }
+  }
+  async function moLaiGiai(card: TraoGiaiClass, loaiGiai: LoaiGiai) {
+    setBusy((s) => new Set(s).add(`chot:${card.lopId}:${loaiGiai}`))
+    try {
+      await moLaiGiaiLop(card.lopId, ym, loaiGiai)
+      flash(`Đã mở lại giải ${LOAI_GIAI_TEN[loaiGiai]} lớp ${card.tenLop}`)
+      await refetchDongBo(card.lopId)
+    } catch (e) { flash('⚠️ ' + (e as Error).message) }
+    finally { setBusy((s) => { const n = new Set(s); n.delete(`chot:${card.lopId}:${loaiGiai}`); return n }) }
+  }
+  // Refetch cả màn (không optimistic được vì DB tính lại đề xuất giai đoạn kế theo pool mới) — nhanh (~1s).
+  async function refetchDongBo(_lopId: string) {
+    try { setData(await getTraoGiaiThang(ym, khoi || undefined)) } catch (e) { flash('⚠️ ' + (e as Error).message) }
   }
 
   async function chotThang() {
@@ -265,7 +274,7 @@ export default function TraoGiaiScreen() {
             <div className="grid grid-cols-1 gap-3">
               {filtered.map((card) => (
                 <ClassCard key={card.lopId} card={card} busy={busy} effectiveSlot={effectiveSlot}
-                  onToggleConfirm={toggleConfirm} onChangePerson={changePerson} onToggleComplete={toggleCompleteClass} onDatSlot={datSlot} />
+                  onToggleConfirm={toggleConfirm} onChangePerson={changePerson} onChotGiai={chotGiai} onMoLaiGiai={moLaiGiai} onDatSlot={datSlot} />
               ))}
             </div>
           )}
@@ -346,17 +355,17 @@ function StatCard({ label, value, pct, tone }: { label: string; value: string | 
 
 // ── Card NGANG full màn (CEO 09/09: "card dọc phải kéo đi kéo lại") — trái = lớp + trạng thái + nút, phải = 6 slot
 //    trên 1 hàng (3 Xuất sắc · 2 Tiến bộ · 1 Chăm chỉ). Dưới xl thì 3 nhóm giải xếp dọc, không tràn ngang.
-function ClassCard({ card, busy, effectiveSlot, onToggleConfirm, onChangePerson, onToggleComplete, onDatSlot }: {
+function ClassCard({ card, busy, effectiveSlot, onToggleConfirm, onChangePerson, onChotGiai, onMoLaiGiai, onDatSlot }: {
   card: TraoGiaiClass
   busy: Set<string>
   effectiveSlot: (card: TraoGiaiClass, award: TraoGiaiAward, slot: TraoGiaiSlot) => EffSlot
   onToggleConfirm: (card: TraoGiaiClass, award: TraoGiaiAward, eff: TraoGiaiSlot) => void
   onChangePerson: (card: TraoGiaiClass, award: TraoGiaiAward, eff: TraoGiaiSlot, newId: string) => void
-  onToggleComplete: (card: TraoGiaiClass) => void
+  onChotGiai: (card: TraoGiaiClass, loaiGiai: LoaiGiai) => void
+  onMoLaiGiai: (card: TraoGiaiClass, loaiGiai: LoaiGiai) => void
   onDatSlot: (card: TraoGiaiClass, c: { xuat_sac: number; tien_bo: number; cham_chi: number }) => Promise<boolean>
 }) {
-  const locked = !!card.hoanThanhAt
-  const classBusy = busy.has(`class:${card.lopId}`)
+  const locked = !!card.hoanThanhAt // = tất cả giải đã chốt
   const slotBusy = busy.has(`slot:${card.lopId}`)
   // Editor slot (state UI thuần): mở → 3 ô số → Lưu. Tổng ≤ 6 kiểm ở DB, đây chỉ hiện tổng để người thấy trước.
   const [suaSlot, setSuaSlot] = useState(false)
@@ -399,16 +408,13 @@ function ClassCard({ card, busy, effectiveSlot, onToggleConfirm, onChangePerson,
               )}
             </div>
           </div>
-          <button disabled={classBusy} onClick={() => onToggleComplete(card)}
-            className={`shrink-0 rounded-lg px-3 py-1.5 text-[12px] font-bold transition disabled:opacity-50 xl:w-full ${locked ? 'border border-slate-200 bg-white text-slate-700' : 'bg-emerald-600 text-white hover:bg-emerald-700'}`}>
-            {classBusy ? 'Đang lưu…' : locked ? 'Mở lại' : 'Hoàn thành'}
-          </button>
+          {locked && <div className="shrink-0 rounded-md bg-emerald-50 px-2 py-1 text-center text-[11px] font-bold text-emerald-700 xl:w-full">✓ Đã chốt cả 3 giải</div>}
         </div>
 
         {/* ── Phải: 6 slot trên 1 hàng ── */}
         <div className="flex flex-1 flex-col gap-2 p-3 xl:flex-row">
           {card.awards.filter((a) => a.slotCount > 0).map((award) => (
-            <AwardBlock key={award.loaiGiai} card={card} award={award} locked={locked} busy={busy} effectiveSlot={effectiveSlot} onToggleConfirm={onToggleConfirm} onChangePerson={onChangePerson} />
+            <AwardBlock key={award.loaiGiai} card={card} award={award} busy={busy} effectiveSlot={effectiveSlot} onToggleConfirm={onToggleConfirm} onChangePerson={onChangePerson} onChotGiai={onChotGiai} onMoLaiGiai={onMoLaiGiai} />
           ))}
         </div>
       </div>
@@ -416,21 +422,39 @@ function ClassCard({ card, busy, effectiveSlot, onToggleConfirm, onChangePerson,
   )
 }
 
-function AwardBlock({ card, award, locked, busy, effectiveSlot, onToggleConfirm, onChangePerson }: {
-  card: TraoGiaiClass; award: TraoGiaiAward; locked: boolean; busy: Set<string>
+function AwardBlock({ card, award, busy, effectiveSlot, onToggleConfirm, onChangePerson, onChotGiai, onMoLaiGiai }: {
+  card: TraoGiaiClass; award: TraoGiaiAward; busy: Set<string>
   effectiveSlot: (card: TraoGiaiClass, award: TraoGiaiAward, slot: TraoGiaiSlot) => EffSlot
   onToggleConfirm: (card: TraoGiaiClass, award: TraoGiaiAward, eff: TraoGiaiSlot) => void
   onChangePerson: (card: TraoGiaiClass, award: TraoGiaiAward, eff: TraoGiaiSlot, newId: string) => void
+  onChotGiai: (card: TraoGiaiClass, loaiGiai: LoaiGiai) => void
+  onMoLaiGiai: (card: TraoGiaiClass, loaiGiai: LoaiGiai) => void
 }) {
   const ui = AWARD_UI[award.loaiGiai]
+  const locked = award.trangThai !== 'dang_xet' // chỉ giải ĐANG XÉT được tick
+  const chotBusy = busy.has(`chot:${card.lopId}:${award.loaiGiai}`)
+  const daXn = award.slots.filter((s) => s.confirmed).length
   return (
     // Rộng theo SỐ SLOT (3 slot = gấp 3 lần 1 slot) — chỉ ở xl (hàng ngang); dưới xl xếp dọc, không áp tỉ lệ.
-    <div className={`min-w-0 rounded-xl border border-slate-200 p-2 ring-1 xl:[flex:var(--n)_1_0%] ${ui.ring}`} style={{ ['--n' as string]: award.slotCount } as CSSProperties}>
+    <div className={`min-w-0 rounded-xl border p-2 ring-1 xl:[flex:var(--n)_1_0%] ${award.trangThai === 'da_chot' ? 'border-emerald-200 bg-emerald-50/30 ring-emerald-100' : award.trangThai === 'cho' ? 'border-slate-200 bg-slate-50/60 ring-slate-100 opacity-70' : `border-slate-200 ${ui.ring}`}`} style={{ ['--n' as string]: award.slotCount } as CSSProperties}>
       <div className="mb-1.5 flex items-center justify-between gap-2 px-0.5">
         <div className="flex items-center gap-1.5 whitespace-nowrap text-[12px] font-extrabold text-slate-800" title={ui.rule}>
           <span className={`flex h-6 w-6 items-center justify-center rounded-md text-[13px] ${ui.iconBg}`}>{ui.icon}</span>
           {ui.ten}
+          {award.trangThai === 'cho' && <span className="rounded bg-slate-200 px-1.5 py-0.5 text-[9.5px] font-bold text-slate-500">Chờ lượt</span>}
         </div>
+        {award.trangThai === 'dang_xet' && (
+          <button disabled={chotBusy} onClick={() => onChotGiai(card, award.loaiGiai)} title={`Chốt giải ${ui.ten} (đề xuất Tiến bộ/Chăm chỉ sẽ tính lại từ HS còn lại)`}
+            className="rounded bg-emerald-600 px-2 py-0.5 text-[10.5px] font-bold text-white hover:bg-emerald-700 disabled:opacity-50">
+            {chotBusy ? '…' : `Chốt (${daXn}/${award.slotCount})`}
+          </button>
+        )}
+        {award.trangThai === 'da_chot' && (
+          <button disabled={chotBusy} onClick={() => onMoLaiGiai(card, award.loaiGiai)} title="Mở lại giải này để sửa (chỉ mở được giải chốt sau cùng)"
+            className="rounded border border-emerald-200 bg-white px-2 py-0.5 text-[10.5px] font-semibold text-emerald-700 disabled:opacity-50">
+            {chotBusy ? '…' : '✓ Đã chốt · mở lại'}
+          </button>
+        )}
       </div>
       <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${award.slotCount}, minmax(0, 1fr))` }}>
         {award.slots.length === 0 && <div className="col-span-full rounded-lg border border-dashed border-slate-200 px-2 py-3 text-center text-[10.5px] text-slate-400">Chưa có đề xuất — chưa đủ dữ liệu tháng này</div>}
