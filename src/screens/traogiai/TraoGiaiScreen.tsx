@@ -29,7 +29,8 @@ const monthLabel = (ym: string) => { const [y, m] = ym.split('-'); return `Thán
 
 // ⭐ "Rời màn rồi quay lại = đúng chỗ cũ" (CLAUDE.md §2 React — Thùy 09-09): màn unmount khi đổi lá ở NhanSuHome,
 // nên filter + data đã vá + scrollTop nhớ ở MODULE-LEVEL (sống tới F5). Mount lại: dùng cache, bỏ fetch đầu; ↻ ép quét.
-const NHO: { ym: string; khoi: string; q: string; tab: 'all' | 'chua' | 'da'; data: TraoGiaiThang | null; scrollTop: number; fetchedFor: string } = {
+type Tab = 'all' | 'chua' | 'da' | 'chot'
+const NHO: { ym: string; khoi: string; q: string; tab: Tab; data: TraoGiaiThang | null; scrollTop: number; fetchedFor: string } = {
   ym: curYM(), khoi: '', q: '', tab: 'all', data: null, scrollTop: 0, fetchedFor: '',
 }
 
@@ -37,7 +38,7 @@ export default function TraoGiaiScreen() {
   const [ym, setYm] = useState(NHO.ym)
   const [khoi, setKhoi] = useState(NHO.khoi)
   const [q, setQ] = useState(NHO.q)
-  const [tab, setTab] = useState<'all' | 'chua' | 'da'>(NHO.tab)
+  const [tab, setTab] = useState<Tab>(NHO.tab)
   const [data, setData] = useState<TraoGiaiThang | null>(NHO.data)
   const [loading, setLoading] = useState(!NHO.data)
   const [refreshing, setRefreshing] = useState(false)
@@ -98,6 +99,19 @@ export default function TraoGiaiScreen() {
     return list
   }, [cards, tab, q])
 
+  // Tab "Đã chốt giải" = PHẲNG HOÁ các slot đã xác nhận từ cùng `data` (không rpc riêng, không tính gì thêm —
+  // số liệu học tập của em đó là `metricsCuaHs` DB đã tính, cùng nguồn công thức với Report PH: MT/hạng từ
+  // fn_rank_diem_mt_lop, ET%/BTVN% = TB các buổi của Σđiểm/(100×số câu đã chấm)). Chỉ lọc theo ô tìm + sắp xếp hiển thị.
+  const daChot = useMemo(() => {
+    const qq = q.trim().toLowerCase()
+    const rows: { card: TraoGiaiClass; loaiGiai: LoaiGiai; slot: TraoGiaiSlot }[] = []
+    for (const card of cards) for (const a of card.awards) for (const slot of a.slots) if (slot.confirmed) rows.push({ card, loaiGiai: a.loaiGiai, slot })
+    const thuTu: Record<LoaiGiai, number> = { xuat_sac: 0, tien_bo: 1, cham_chi: 2 }
+    return rows
+      .filter((r) => !qq || r.card.tenLop.toLowerCase().includes(qq) || r.slot.hoTen.toLowerCase().includes(qq))
+      .sort((a, b) => a.card.tenLop.localeCompare(b.card.tenLop) || thuTu[a.loaiGiai] - thuTu[b.loaiGiai] || a.slot.slotIndex - b.slot.slotIndex)
+  }, [cards, q])
+
   // Tổng hợp do DB trả (fn_traogiai_thang.summary) — không reduce ở client (§2.0).
   const summary = data?.summary ?? { soLop: 0, tongSlot: 0, daXacNhan: 0, lopDuSlot: 0, lopHoanThanh: 0, daCongBo: 0 }
   const choDuyet = summary.tongSlot - summary.daXacNhan
@@ -112,7 +126,7 @@ export default function TraoGiaiScreen() {
     if (!ov || ov === slot.hocSinhId) return { ...slot, taken: takenElsewhere.has(slot.hocSinhId), metrics: chips(slot.hocSinhId) }
     const person = card.roster.find((r) => r.id === ov)
     if (!person) return { ...slot, taken: takenElsewhere.has(slot.hocSinhId), metrics: chips(slot.hocSinhId) }
-    return { slotIndex: slot.slotIndex, hocSinhId: ov, hoTen: person.ho_ten, maHs: person.ma_hs, confirmed: false, giaiThuongId: null, metrics: chips(ov), taken: takenElsewhere.has(ov) }
+    return { slotIndex: slot.slotIndex, hocSinhId: ov, hoTen: person.ho_ten, maHs: person.ma_hs, confirmed: false, giaiThuongId: null, congBoAt: null, metrics: chips(ov), taken: takenElsewhere.has(ov) }
   }
 
   async function toggleConfirm(card: TraoGiaiClass, award: TraoGiaiAward, eff: TraoGiaiSlot) {
@@ -127,7 +141,7 @@ export default function TraoGiaiScreen() {
         flash(`Đã bỏ xác nhận · ${eff.hoTen}`)
       } else {
         const idMoi = await xacNhanSlot({ thangYm: ym, lopId: card.lopId, hocSinhId: eff.hocSinhId, loaiGiai: award.loaiGiai })
-        vaLop(card.lopId, (c) => ({ ...c, daXacNhan: c.daXacNhan + 1, awards: c.awards.map((a) => a.loaiGiai !== award.loaiGiai ? a : { ...a, slots: a.slots.map((s) => s.slotIndex === eff.slotIndex ? { ...s, hocSinhId: eff.hocSinhId, hoTen: eff.hoTen, maHs: eff.maHs, confirmed: true, giaiThuongId: idMoi } : s) }) }))
+        vaLop(card.lopId, (c) => ({ ...c, daXacNhan: c.daXacNhan + 1, awards: c.awards.map((a) => a.loaiGiai !== award.loaiGiai ? a : { ...a, slots: a.slots.map((s) => s.slotIndex === eff.slotIndex ? { ...s, hocSinhId: eff.hocSinhId, hoTen: eff.hoTen, maHs: eff.maHs, confirmed: true, giaiThuongId: idMoi, congBoAt: null } : s) }) }))
         vaSummary((s) => ({ ...s, daXacNhan: s.daXacNhan + 1 }))
         setOverrides((o) => { const n = { ...o }; delete n[key]; return n })
         flash(`Đã xác nhận · ${eff.hoTen} · ${LOAI_GIAI_TEN[award.loaiGiai]}`)
@@ -233,9 +247,9 @@ export default function TraoGiaiScreen() {
           {/* ── Toolbar ── */}
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
             <div className="flex gap-1 rounded-lg bg-slate-200/60 p-1">
-              {(['all', 'chua', 'da'] as const).map((t) => (
+              {(['all', 'chua', 'da', 'chot'] as const).map((t) => (
                 <button key={t} onClick={() => setTab(t)} className={`rounded-md px-3 py-1.5 text-[13px] font-semibold transition ${tab === t ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
-                  {t === 'all' ? 'Tất cả lớp' : t === 'chua' ? 'Chưa hoàn thành' : 'Đã hoàn thành'}
+                  {t === 'all' ? 'Tất cả lớp' : t === 'chua' ? 'Chưa hoàn thành' : t === 'da' ? 'Đã hoàn thành' : `Đã chốt giải (${summary.daXacNhan})`}
                 </button>
               ))}
             </div>
@@ -243,7 +257,9 @@ export default function TraoGiaiScreen() {
           </div>
 
           {err && <div className="mb-4 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-600">Lỗi: {err}</div>}
-          {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : filtered.length === 0 ? (
+          {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : tab === 'chot' ? (
+            <BangDaChot rows={daChot} />
+          ) : filtered.length === 0 ? (
             <p className="rounded-xl border border-dashed border-slate-300 bg-white px-4 py-8 text-center text-[13px] text-slate-400">Không có lớp nào khớp bộ lọc.</p>
           ) : (
             <div className="grid grid-cols-1 gap-3">
@@ -264,6 +280,52 @@ export default function TraoGiaiScreen() {
       </div>
 
       {toast && <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-xl bg-slate-800 px-5 py-3 text-sm font-medium text-white shadow-lg">{toast}</div>}
+    </div>
+  )
+}
+
+// ── Bảng "Đã chốt giải": Lớp · HS · Giải · ảnh chụp học tập tháng (MT + hạng lớp/khối · ET% · BTVN%) · trạng thái ──
+const fmtPct = (v: number | null) => v == null ? '—' : `${Math.round(v * 100)}%`
+const fmtMT = (v: number | null) => v == null ? '—' : Number(v).toFixed(2).replace(/\.?0+$/, '')
+const fmtNgay = (iso: string) => { const d = new Date(iso); return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}` }
+function BangDaChot({ rows }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiGiai; slot: TraoGiaiSlot }[] }) {
+  if (rows.length === 0) return <p className="rounded-xl border border-dashed border-slate-300 bg-white px-4 py-8 text-center text-[13px] text-slate-400">Chưa có học sinh nào được chốt giải trong tháng này.</p>
+  return (
+    <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
+      <table className="w-full min-w-[900px] text-[12.5px]">
+        <thead className="bg-slate-50 text-[11px] uppercase tracking-wide text-slate-500">
+          <tr>
+            <th className="px-3 py-2.5 text-left font-semibold">Lớp</th>
+            <th className="px-3 py-2.5 text-left font-semibold">Học sinh</th>
+            <th className="px-3 py-2.5 text-left font-semibold">Giải</th>
+            <th className="px-3 py-2.5 text-right font-semibold">MT</th>
+            <th className="px-3 py-2.5 text-right font-semibold">Hạng lớp</th>
+            <th className="px-3 py-2.5 text-right font-semibold">Hạng khối</th>
+            <th className="px-3 py-2.5 text-right font-semibold">ET</th>
+            <th className="px-3 py-2.5 text-right font-semibold">BTVN</th>
+            <th className="px-3 py-2.5 text-left font-semibold">Trạng thái</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(({ card, loaiGiai, slot }) => {
+            const m = card.metricsCuaHs[slot.hocSinhId]
+            const ui = AWARD_UI[loaiGiai]
+            return (
+              <tr key={slot.giaiThuongId ?? `${card.lopId}:${slot.hocSinhId}`} className="border-t border-slate-100 hover:bg-slate-50/60">
+                <td className="px-3 py-2 font-bold text-slate-800">{card.tenLop} <span className="font-normal text-slate-400">· {card.mon}</span></td>
+                <td className="px-3 py-2 font-semibold text-slate-800">{slot.hoTen} {slot.maHs && <span className="font-normal text-slate-400">({slot.maHs})</span>}</td>
+                <td className="px-3 py-2"><span className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] font-bold ${ui.iconBg} ${ui.iconText}`}>{ui.icon} {ui.ten}</span></td>
+                <td className="px-3 py-2 text-right font-bold text-slate-800">{fmtMT(m?.mt ?? null)}</td>
+                <td className="px-3 py-2 text-right text-slate-600">{m?.rankLopNay != null ? `#${m.rankLopNay}/${card.siSo}` : '—'}{m?.rankLopTruoc != null && m?.rankLopNay != null && m.rankLopTruoc !== m.rankLopNay ? <span className={`ml-1 text-[10.5px] ${m.rankLopTruoc > m.rankLopNay ? 'text-emerald-600' : 'text-rose-500'}`}>({m.rankLopTruoc > m.rankLopNay ? '↑' : '↓'}{Math.abs(m.rankLopTruoc - m.rankLopNay)})</span> : null}</td>
+                <td className="px-3 py-2 text-right text-slate-600">{m?.rankKhoiNay != null ? `#${m.rankKhoiNay}/${m.khoiTotal ?? '?'}` : '—'}{m?.rankKhoiTruoc != null && m?.rankKhoiNay != null && m.rankKhoiTruoc !== m.rankKhoiNay ? <span className={`ml-1 text-[10.5px] ${m.rankKhoiTruoc > m.rankKhoiNay ? 'text-emerald-600' : 'text-rose-500'}`}>({m.rankKhoiTruoc > m.rankKhoiNay ? '↑' : '↓'}{Math.abs(m.rankKhoiTruoc - m.rankKhoiNay)})</span> : null}</td>
+                <td className="px-3 py-2 text-right text-slate-600">{fmtPct(m?.et ?? null)}</td>
+                <td className="px-3 py-2 text-right text-slate-600">{fmtPct(m?.btvn ?? null)}{m?.btvnTong ? <span className="ml-1 text-[10.5px] text-slate-400">({m.btvnHoanThanh}/{m.btvnTong} buổi)</span> : null}</td>
+                <td className="px-3 py-2">{slot.congBoAt ? <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-bold text-blue-700">Đã công bố {fmtNgay(slot.congBoAt)}</span> : <span className="whitespace-nowrap rounded-full bg-orange-50 px-2 py-0.5 text-[11px] font-bold text-orange-700">Chờ chốt tháng</span>}</td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
     </div>
   )
 }

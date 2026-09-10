@@ -41,6 +41,7 @@ export type RosterHS = { id: string; ho_ten: string; ma_hs: string | null }
 export type TraoGiaiSlot = {
   slotIndex: number; hocSinhId: string; hoTen: string; maHs: string | null
   confirmed: boolean; giaiThuongId: string | null
+  congBoAt: string | null // chỉ có nghĩa khi confirmed: NULL = chờ "Chốt kết quả tháng", NOT NULL = đã công bố ra app PH/HS
 }
 export type TraoGiaiAward = { loaiGiai: LoaiGiai; slotCount: number; slots: TraoGiaiSlot[] }
 export type TraoGiaiClass = {

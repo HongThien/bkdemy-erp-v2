@@ -10565,3 +10565,16 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
 - Chưa commit — chờ Thùy bảo (theo lệ thường của repo này).
 - **(10/09 tiếp) CEO: "màn chấm chỉ cần Câu 1, Câu 2… và Đ/C/S, không cần hiện đề, ẩn đi click mới thấy"** → `ChamCard` viết lại: bảng 2 cột hàng "▸ Câu N | Đ C S" (nút 44px), bấm số câu mới xổ đề (chuyên đề · độ khó · nhánh · đề · phương án · đáp án), bỏ cột chi tiết + prev/next; thanh dưới = ô Điểm bài + nút Xác nhận. Verify app: 39 câu hiện gọn 2 cột, Câu 3 xổ đúng đề, header "Đã tích 2/39 · đúng 75%", tsc pass.
 - **⚠ Hạ tầng phát hiện lúc verify:** repo chính **MẤT `.env.local`** (VITE_SUPABASE_URL/KEY…) — server dev báo "supabaseUrl is required"; mọi worktree vẫn còn bản 990 byte giống hệt nhau ⇒ copy `.claude/worktrees/gamification/.env.local` (mới nhất 07/09) về `.env.local` gốc (gitignored). Không rõ phiên nào xoá; `.env` gốc giờ là bố cục RO (chỉ `DATABASE_URL`=claude_ro, mtime 05/06?!) — bắt đầu 10/09 node script đọc data qua claude_ro OK. **Port 5173 do vite của worktree `app-pt` giữ** (phiên khác) ⇒ preview_start "dev" của repo chính nhảy sang port ngẫu nhiên; đừng tin URL 5173 là repo chính.
+
+## 2026-09-10 — Trao giải: tab "Đã chốt giải" + bỏ loại trừ chéo đề xuất (câu hỏi 7S3)
+- Merge origin/main (de50d03, fast-forward) vào worktree feat/trao-giai.
+- **CEO hỏi "7S3 sao không hiện HS tiến bộ?"** Đo trên DB: 7S3 tháng 8 chỉ có 2 em lên hạng MT (Nguyễn Tường Anh +10, Lê Thành An
+  +3) — CEO ĐÃ CHỐT cả 2 em Xuất sắc (UNIQUE 1 giải/HS/tháng ⇒ loại khỏi Tiến bộ là đúng); 4 em còn lại đều TỤT hạng (−2, −8, −14,
+  −20) nên pool Tiến bộ rỗng ⇒ **không phải bug**, là dữ liệu. Tuy vậy phát hiện luật "đề xuất tham lam" tao tự thêm 09/09 làm em
+  được đề xuất Xuất sắc thì KHÔNG hiện ở Tiến bộ dù chưa chốt gì (8S1: Đào Tùng Chi/Đào Tô Uyên Nhi) — sai ý mockup 22/08 (người duyệt
+  phải THẤY ứng viên rồi chọn). Mig `202609101659`: mỗi giải đề xuất độc lập, chỉ loại HS đã CHỐT; kèm `congBoAt` từng slot.
+- **Tab "Đã chốt giải (n)"** trong thanh tab: bảng Lớp · HS · Giải · MT · Hạng lớp (↑/↓ so tháng trước) · Hạng khối · ET% · BTVN%
+  (x/y buổi) · Trạng thái (Đã công bố dd/mm | Chờ chốt tháng). KHÔNG rpc riêng — phẳng hoá slot confirmed từ cùng `data` +
+  `metricsCuaHs` (cùng nguồn công thức với Report PH: MT/hạng = fn_rank_diem_mt_lop, ET%/BTVN% = TB buổi của Σđiểm/(100×câu đã
+  chấm)). "Ảnh chụp" = suy động theo tháng giải (không lưu bản sao — §1.5), tháng đã qua thì số không đổi nữa.
+- Thấy DB tháng 8 đã có 24 giải CEO chốt (sau sự cố xoá nhầm 09/09). Verify tab với 24 dòng thật; không đụng dữ liệu.
