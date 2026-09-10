@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-209 bảng · 18 view · 0 enum · 49 trigger · 323 function
+209 bảng · 18 view · 0 enum · 49 trigger · 324 function
 
 ## _app_secrets
 
@@ -451,6 +451,7 @@
 | bai_da_cham_url | text | Y |  |  |  |
 | nguoi_cham_id | uuid | Y |  | FK→nhan_su.id |  |
 | nguoi_tra_bai_id | uuid | Y |  | FK→nhan_su.id |  |
+| diem_nhap | numeric | Y |  |  |  |
 
 ## ca_test_cau
 
@@ -471,6 +472,9 @@
 | loi_giai | text | Y |  |  |  |
 | anh_de | text | Y |  |  |  |
 | anh_dap_an | text | Y |  |  |  |
+| nhanh | text | Y |  |  | `dai` · `hinh` |
+| muc_do | smallint | Y |  |  |  |
+| ten_chuyen_de | text | Y |  |  |  |
 
 ## ca_test_cau_kq
 
@@ -4537,7 +4541,7 @@ SELECT bl.hoc_sinh_id,
 - `et_de(p_bai_test uuid)` → jsonb
 - `et_nop(p_bai_lam uuid)` → jsonb
 - `fn_bo_dau(p text)` → text
-- `fn_btvn_buoi_cua_lop(p_lop_id uuid)` → TABLE(id uuid, ngay date, dong boolean)
+- `fn_btvn_buoi_cua_lop(p_lop_id uuid)` → TABLE(id uuid, ngay date, dong boolean, co_phieu boolean)
 - `fn_btvn_chuyen_buoi(p_hoc_sinh_id uuid, p_buoi_cu uuid, p_buoi_moi uuid)` → void
 - `fn_btvn_de_xuat_trang_thai(p_buoi_hoc_id uuid)` → TABLE(hoc_sinh_id uuid, nop_at timestamp with time zone, de_xuat text)
 - `fn_btvn_nop_tao(p_hoc_sinh_id uuid, p_buoi_hoc_id uuid, p_paths text[])` → jsonb
@@ -4700,6 +4704,7 @@ SELECT bl.hoc_sinh_id,
 - `fn_ta_dashboard(p_ym text)` → jsonb
 - `fn_ta_tien_trinh(p_ym text)` → jsonb
 - `fn_ta_viec_thang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ho_ten text, an_xep_hang boolean, ten_lop text, ngay date, tab text, kq text, ly_do text)
+- `fn_test_dau_vao_phieu(p_ca_test_id uuid)` → jsonb
 - `fn_thu_cua_ngay(p_ngay date)` → smallint
 - `fn_tich_luy(p_ym text)` → jsonb
 - `fn_tich_luy_chot_thang(p_ky date)` → integer

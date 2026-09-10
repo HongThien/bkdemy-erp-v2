@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {
   getTaiLieuFull, updateTaiLieu, updatePhan, setCauOfPhan,
-  addBuoi, deleteBuoi, setDangOfBuoi, reorderDangInBuoi, autoSuggestByLoai, autoSuggestBtvn, trichXuatBuoi, listTrichXuat, listGiaoTrinhLop, renumberBuoiLop, tieuDeBuoiLop, khoCuaMon, setPhanHienLt,
+  addBuoi, deleteBuoi, setDangOfBuoi, reorderDangInBuoi, autoSuggestByLoai, autoSuggestBtvn, trichXuatBuoi, listTrichXuat, listGiaoTrinhLop, renumberBuoiLop, tieuDeBuoiLop, khoCuaMon, setPhanHienLt, listBuoiTaiLieu,
   DEFAULT_LUYEN_COUNTS, DEFAULT_BTVN_COUNTS, DEFAULT_BTVN_LINES,
   type TaiLieuFull, type PhanResolved, type CauHinh, type TrichState, type BuoiLop,
 } from '../../lib/tailieu'
@@ -36,6 +36,9 @@ function groupBuois(phans: PhanResolved[]): BuoiUI[] {
   return out
 }
 
+// Lọc buổi lưu theo TỪNG tài liệu (mở lại đúng buổi đang soạn dở, khỏi phải chọn lại mỗi lần).
+const filterKey = (id: string) => `tlb_buoi_${id}`
+
 export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: () => void }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [ten, setTen] = useState('')
@@ -50,11 +53,44 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   const markSaved = () => setSaved(true)
   useEffect(() => { if (!saved) return; const t = setTimeout(() => setSaved(false), 2000); return () => clearTimeout(t) }, [saved])
 
-  async function reload() {
-    const f = await getTaiLieuFull(id)
+  // ⭐ 07/09 (Thùy: giáo trình dài ra load càng nặng) — builder chỉ NẠP 1 BUỔI mỗi lần, có dropdown lọc.
+  // 'all' = nạp cả giáo trình (chỉ cần lúc Xem/Xuất PDF cả bộ). buoiList = danh sách mốc buổi RIÊNG, nhẹ,
+  // luôn đủ (không phụ thuộc buổi đang lọc) để dropdown + StructureTree biết còn những buổi nào khác.
+  const [buoiList, setBuoiList] = useState<{ id: string; tieu_de: string | null; thu_tu: number }[]>([])
+  const [filterBuoi, setFilterBuoi] = useState<string>('all')
+
+  async function reload(scope?: string) {
+    const s = scope ?? filterBuoi
+    const f = await getTaiLieuFull(id, s !== 'all' ? { onlyBuoiId: s } : undefined)
     setFull(f); setTen(f.taiLieu.ten); setCh(f.taiLieu.cau_hinh ?? {})
   }
-  useEffect(() => { reload().catch((e) => setErr(e.message ?? String(e))) }, [id]) // eslint-disable-line
+  async function switchBuoi(v: string) {
+    setFilterBuoi(v)
+    try { localStorage.setItem(filterKey(id), v) } catch { /* ignore (private mode…) */ }
+    await reload(v)
+  }
+  useEffect(() => {
+    (async () => {
+      try {
+        const list = await listBuoiTaiLieu(id)
+        setBuoiList(list)
+        let saved: string | null = null
+        try { saved = localStorage.getItem(filterKey(id)) } catch { /* ignore */ }
+        // Mặc định: buổi đã lọc lần trước (nếu còn) → buổi CUỐI (đang soạn dở, hợp lý nhất) → 'all' nếu doc rỗng.
+        const initial = saved && (saved === 'all' || list.some((b) => b.id === saved)) ? saved : (list.length ? list[list.length - 1].id : 'all')
+        setFilterBuoi(initial)
+        await reload(initial)
+      } catch (e: any) { setErr(e.message ?? String(e)) }
+    })()
+  }, [id]) // eslint-disable-line
+  // Buổi đang lọc bị xoá ở nơi khác (vd danh sách đổi sau addBuoi/deleteBuoi) → tự lùi về buổi hợp lệ gần nhất.
+  async function refreshBuoiListAndSettle(preferId?: string) {
+    const list = await listBuoiTaiLieu(id)
+    setBuoiList(list)
+    const want = preferId ?? filterBuoi
+    const v = want === 'all' || list.some((b) => b.id === want) ? want : (list.length ? list[list.length - 1].id : 'all')
+    await switchBuoi(v)
+  }
 
   async function saveTen() { if (full && ten.trim() && ten.trim() !== full.taiLieu.ten) { await updateTaiLieu(id, { ten: ten.trim() }); markSaved() } }
   async function saveCh(patch: Partial<CauHinh>) { const next = { ...ch, ...patch }; setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved() }
@@ -109,6 +145,13 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
         <button onClick={() => { useStore.getState().enqueueLinkGen(id, 'giao_trinh'); onClose() }} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Thư viện</button>
         <input value={ten} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className={`${inp} h-9 max-w-[420px] flex-1 font-semibold`} placeholder="Tên giáo trình" />
         <span className="text-[12px] text-slate-400">Khối {full.taiLieu.khoi}</span>
+        <label className="flex items-center gap-1.5 text-[12px] text-slate-500" title="Giáo trình càng nhiều buổi, chỉ nạp 1 buổi cho nhẹ — chọn 'Tất cả' để xem/soạn toàn bộ">
+          Buổi
+          <select value={filterBuoi} onChange={(e) => switchBuoi(e.target.value)} className={sel}>
+            <option value="all">Tất cả ({buoiList.length})</option>
+            {buoiList.map((b) => <option key={b.id} value={b.id}>{b.tieu_de || `Buổi ${b.thu_tu + 1}`}</option>)}
+          </select>
+        </label>
         <span className={`rounded-md px-2 py-0.5 text-[11px] font-medium transition ${saved ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'}`} title="Mọi thay đổi được lưu tự động — không cần nút Lưu">{saved ? '✓ Đã lưu' : '↻ Tự động lưu'}</span>
         <button onClick={() => setTrichOpen(true)} className="ml-auto rounded-md border border-violet-300 px-3 py-1.5 text-sm font-medium text-violet-700 hover:bg-violet-50" title="Gán giáo trình cho 1 lớp → trích từng buổi thành GT buổi + BTVN bám ngày">⬇ Trích xuất / Gán lớp</button>
         <button onClick={() => setPrinting(true)} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500">🖨 Xem / Xuất PDF</button>
@@ -137,8 +180,8 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
               return (
                 <BuoiCard
                   key={b.marker.id} buoi={b} linesByCau={linesByCau} colByCau={colByCau} onCol={onCol} onLine={onLine} onLineAll={onLineAll}
-                  onRename={(t) => updatePhan(b.marker.id, { tieu_de: t }).then(reload).then(markSaved)}
-                  onDelete={async () => { if (confirm('Xoá cả buổi này (gồm dạng trên lớp + BTVN)?')) { await deleteBuoi(id, b.marker.id); await reload(); markSaved() } }}
+                  onRename={(t) => updatePhan(b.marker.id, { tieu_de: t }).then(() => reload()).then(markSaved)}
+                  onDelete={async () => { if (confirm('Xoá cả buổi này (gồm dạng trên lớp + BTVN)?')) { await deleteBuoi(id, b.marker.id); await refreshBuoiListAndSettle(); markSaved() } }}
                   onChonDang={() => setDangPicker({ buoiId: b.marker.id, selected: b.dangs.map((d) => d.ref_ma!).filter(Boolean) })}
                   onReorderDang={async (order) => { await reorderDangInBuoi(id, b.marker.id, order); await reload(); markSaved() }}
                   onApply={applyCaus} openPicker={openPicker} cauTbl={cauTbl} onSetHienLt={onSetHienLt} usedExcept={usedExcept}
@@ -146,14 +189,14 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
                 />
               )
             })}
-            <button onClick={async () => { await addBuoi(id); await reload(); markSaved() }} className="w-full rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 py-3 text-[14px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm buổi</button>
+            <button onClick={async () => { await addBuoi(id); const list = await listBuoiTaiLieu(id); setBuoiList(list); await switchBuoi(list.length ? list[list.length - 1].id : 'all'); markSaved() }} className="w-full rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 py-3 text-[14px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm buổi</button>
           </div>
         </div>
       </div>
 
       {dangPicker && <DangPicker khoi={full.taiLieu.khoi} mon={mon} nhanh={nhanh} selected={dangPicker.selected} onClose={() => setDangPicker(null)} onConfirm={async (maDangs) => { const bid = dangPicker.buoiId; setDangPicker(null); await setDangOfBuoi(id, bid, maDangs, cauTbl); await reload(); markSaved() }} />}
       {picker && <KhoPicker {...picker} cauTbl={cauTbl} onClose={() => setPicker(null)} onConfirm={async (m) => { await applyCaus(picker.phanId, m); setPicker(null) }} />}
-      {trichOpen && <TrichPanel masterId={id} khoi={full.taiLieu.khoi} nhanh={nhanh} buois={buois} onClose={() => setTrichOpen(false)} />}
+      {trichOpen && <TrichPanel masterId={id} khoi={full.taiLieu.khoi} nhanh={nhanh} onClose={() => setTrichOpen(false)} />}
       {printing && <PrintView id={id} onClose={() => setPrinting(false)} />}
       {previewBuoiId && <PrintView id={id} onlyBuoiId={previewBuoiId} onClose={() => setPreviewBuoiId(null)} />}
     </div>
@@ -409,7 +452,12 @@ function StructureTree({ buois, ten, onJump }: { buois: BuoiUI[]; ten: string; o
 }
 
 // TRÍCH XUẤT cấp GIÁO TRÌNH: chọn LỚP → hiện 10 buổi + TRẠNG THÁI đã gán (ngày nào) cho lớp đó → gán buổi chưa gán.
-function TrichPanel({ masterId, khoi, nhanh, buois, onClose }: { masterId: string; khoi: string; nhanh?: string | null; buois: BuoiUI[]; onClose: () => void }) {
+// ⭐ Panel này cần TOÀN BỘ buổi của master (gán buổi bất kỳ, không chỉ buổi đang lọc ở Builder) — tự nạp
+// riêng `getTaiLieuFull(masterId)` (full, không onlyBuoiId) lúc mở, KHÔNG ăn theo `full` đã lọc của Builder.
+// Đây là hành động HIẾM (mở khi cần gán, không phải mỗi lần gõ phím) nên trả giá load nặng ở đây là chấp nhận được.
+function TrichPanel({ masterId, khoi, nhanh, onClose }: { masterId: string; khoi: string; nhanh?: string | null; onClose: () => void }) {
+  const [buois, setBuois] = useState<BuoiUI[]>([])
+  useEffect(() => { getTaiLieuFull(masterId).then((f) => setBuois(groupBuois(f.phans))).catch(() => { }) }, [masterId])
   const [lops, setLops] = useState<Lop[]>([])
   const [lopId, setLopId] = useState<string | null>(null)
   const [state, setState] = useState<Record<string, TrichState>>({})

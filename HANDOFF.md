@@ -874,6 +874,8 @@ năng quản lý học tập, cần chốt người cụ thể.)
 Minh Phúc (4T · 29 ngày → Thùy) · Lã Gia Huy (K11 · 34 ngày → chưa định được) ·
 Nguyễn Bá Thiện Minh (K7 · 32 ngày → Trang) · Nguyễn Test QA (K8 · data QA).
 **Đây đúng loại việc CEO hay miss — nằm sẵn trong DB hơn 1 tháng, chỉ chưa ai nhìn.**
+*(Cập nhật 09/09: 4 ca này + Nguyễn Thắng Tùng 07/09 vẫn treo, và nguyên nhân gốc đã rõ — cả 5 đều KHÔNG có đề
+gán nên không vào được hàng đợi chấm. Đường cứu = card "Gán đề đang dùng" trong Chấm test, xem mục 09/09 tối.)*
 
 **⚠ ĐỪNG KHAI HÀNG LOẠT:** khai 2–3 chuỗi rồi **CHẠY THẬT 1 TUẦN** xem nhắc có đổi hành vi không.
 Hệ này đã 4 lần dựng năng lực rồi bỏ không dùng (`viec` 15 dòng đứng im · `bo_tro_yeu` không có đường
@@ -1005,9 +1007,37 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
   task 2 lớp **8S0 + 12A1**. Luật của loại thao tác này: chỉ điền mốc đang NULL, **mốc = 23:00 VN
   NGÀY BUỔI** (không phải `now()`) để dashboard không tính "đóng muộn" trừ oan bar của GV/TA; buổi
   `trang_thai='huy'` cố ý bỏ qua (còn 47 buổi NULL đều là huỷ — ĐÚNG, không phải sót).
-- **CÒN TREO:** e2e đường GHI của PH mới chạy 1 lượt nộp thật · bucket `btvn-nop` chưa verify được
-  từ CLI (`claude_build` cấm đọc schema `storage` — xem Dashboard) · dashboard GV tầng B/C · 4 nhánh
-  chưa merge (`feat/app-ops`, `feat/app-ops-ui`, `feat/fix-lane-v2`, `hocphi/phat-sinh-hs-nghi`).
+- **CÒN TREO (31/08):** dashboard GV tầng B/C · 4 nhánh chưa merge (`feat/app-ops`, `feat/app-ops-ui`,
+  `feat/fix-lane-v2`, `hocphi/phat-sinh-hs-nghi`). (E2E nộp BTVN ảnh đã xong 09/09 — khối dưới.)
+
+### ⭐ BTVN ẢNH end-to-end — ĐÃ CHẠY THẬT TRÊN PROD (09/09)
+- **Luồng:** PH (`ph.bkacademy.edu.vn`, repo `bkdemy-ph-app`, Supabase riêng) chụp/chọn ≤12 ảnh → **nén ở client**
+  (HEIC→JPEG `heic2any`, cạnh dài ≤1600, q0.8 → ~200–450KB/ảnh) → PUT thẳng lên storage ERP `btvn-nop` bằng **signed upload
+  URL** server cấp → `nopBtvn(childId, paths)` kiểm path/size/mime qua `storage.list` → pg role `ph_nop` gọi
+  `fn_btvn_nop_tao_auto` → ERP gán **buổi thường gần nhất ≤ hôm nay, KHÔNG có `mt_buoi`** (mig 202609091810 + 1959; CEO: nộp
+  muộn/bù thì TA chuyển buổi). TA (`ta.bkacademy.edu.vn`, `src/screens/ta/ChamBtvn.tsx`) chốt buổi → vẽ → Đ/C/S → nhận xét
+  → Trả bài → PH xem ảnh chấm + kết quả từng câu + nhận xét (4 view FDW, mig PH `0027` đã áp).
+- **Màn chấm TA (v2):** full-screen 1 HS, `landscape:` 70/30 (ảnh+tool | form) · portrait xếp dọc · HS không ảnh = chấm giấy chỉ form.
+  Tool: Màu 🔴🔵⚫ (áp Bút + Chữ) · Bút · Tẩy (`destination-out`, chỉ xoá nét) · **Đ / S** đỏ · ◯ Khoanh / ▭ Khung kéo · Aa Chữ (ô nhập
+  tại chỗ, Enter/blur lưu) · Cỡ chữ số kiểu Paint 14–72 (px = co × W/800) · ↩ Hoàn tác/Ctrl+Z (theo TRANG) · **↺ Làm lại trang**
+  (`path_cham=null`, ẩn khi đã trả) · "✓ Đã lưu trang" flash 2.5s. Nét = canvas trong suốt đè `<img>`; Lưu = ghép 2 lớp → PNG
+  mới (`uploadAnhCham`, ảnh gốc immutable, PNG cũ thành mồ côi — bucket không policy delete). Nháp theo trang giữ ở `marksRef`
+  (memory, mất khi đóng màn). Phím tắt 1/2/3 màu · B · E · D · S · O · R · T.
+- **Hạ tầng đã chốt:** `ERP_SUPABASE_SERVICE_ROLE_KEY` nằm trên Vercel PH (CEO chốt giữ thiết kế 30/08; Storage REST cần JWT,
+  `ph_nop` không thay được; `lib/erp.ts` có `import "server-only"`, build → 0 client chunk chứa key). `PH_NOP_DATABASE_URL` phải
+  dạng **pooler** `ph_nop.<ref>@aws-1-ap-southeast-1.pooler…` (host `db.<ref>` chỉ IPv6 → ENOTFOUND ở dev lẫn Vercel).
+  TaHome "Đã xong" sắp theo ngày buổi, 60 dòng. Prod TA phải **Create Deployment tay** — auto-deploy Git của project
+  `bkdemy-erp-v2-ta-v2` không bắn (chưa rõ vì sao; gv/ops/hs có thể cùng cảnh).
+- **CÒN TREO (09/09):** Apple Pencil trên iPad với tool v2 · object mồ côi trong `btvn-nop` khi RPC fail sau upload · PH xem
+  ảnh đã nộp TRƯỚC khi trả (cần view ERP mới + FDW) · `BtvnTab` ERP desktop vẫn tool cũ · push "bài đã chấm" · **sau pilot:**
+  bot account Auth ERP thay service key (HANDOFF PH §12.1) · tìm vì sao Vercel TA không auto-build.
+
+### Role `claude_ro` THẬT (09/09) — `npm run schema` + dò dữ liệu từ máy Claude
+- Mãi tới 09/09 DB **chưa từng có** role này (CLAUDE.md §2.1 mô tả ý định từ 12/08). Tạo qua SQL Editor: `pg_read_all_data` +
+  policy `claude_ro_select for select using(true)` trên 202 bảng RLS (bypassrls cần superuser, `postgres` Supabase không phải).
+  Tạo policy cần chủ bảng → `grant claude_build to postgres`. Verify: đọc `hoc_sinh` 442 dòng, INSERT/CREATE "permission denied".
+- `.env` checkout `Desktop\2\…` có `DATABASE_URL_RO` (pooler `claude_ro.<ref>`). `migrate.mjs` tự thêm policy cho bảng RLS mới
+  (chỉ bảng role ghi sở hữu; 6 bảng của `postgres` phải chạy DO block tay). Canary `introspect.mjs` giờ xét policy — hết cảnh báo giả.
 
 ### Bố trí worktree trên máy CEO (ĐỔI 01/09 — CEO chốt)
 - **Nhánh `main` đứng ở checkout chính `bkdemy-erp-v2`** (trước 01/09 là `wt-bot` giữ). Làm việc
@@ -1315,6 +1345,45 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
 **E. Hạ tầng:** `node scripts/migrate.mjs --only <file>` (áp đúng 1 file treo — dùng khi có file treo của phiên khác; `npm run migrate`
 và `--baseline` đều đụng file người khác, đã dính 2 lần 08/09).
 
+
+### ⭐ 09/09 tối — TEST ĐẦU VÀO: audit đủ luồng + 8 quyết định CEO + DB ĐÃ SẴN, CODE MÀN CHƯA SỬA (làm tiếp ở nhà)
+**Sự thật hiện tại (đo DB 09/09):** 6/6 `ca_test` đều `tai_lieu_id` NULL ⇒ hàng đợi Chấm rỗng, không ai thấy ô Đ/C/S
+(ô này CÓ trong `ChamTestScreen`, chỉ hiện khi ca có đề). Ca Nguyễn Thắng Tùng (K7, 07/09): `ca_test_log` chứng
+minh đề chưa từng được lưu (UI 2 bước chọn→bấm "Gán đề", Hoàn tất không đòi đề). Ca hoàn thành thiếu đề **biến
+mất im lặng** khỏi mọi hàng đợi (Chấm lọc `tai_lieu_id not null`, Điểm danh chỉ liệt kê hôm nay). 1 dòng `ca_test_cau`
+mồ côi (ca Test QA 07/07). Chi tiết: DEVLOG 09/09 tối.
+
+**8 quyết định CEO (chốt, đừng hỏi lại):** ① gán đề = **mặc định đề đang dùng** của (khối×môn), Ops chỉ đổi khi
+cần · ② + ⑤ chấm test (TA được gán) và trả bài (GV được gán) **phải nằm trong "Việc của tôi"** · ③ màn chấm hiện
+tại (1 HS, Đ/C/S từng câu) là đủ, **không cần mã lỗi** · ④ **điểm test NHẬP RIÊNG**, độc lập Đ/C/S (`ca_test.diem_nhap`)
+· ⑥ ứng viên chưa là HS vẫn tính ở Postgres (khoá = `ca_test_id`) · ⑦ **Đại/Hình = pick từ bản đồ nào thì tính từ
+đấy** (Đại→'dai'; Hình + Hình giải tích→'hinh'); đề không có câu hình thì **bỏ qua khối đó**, không hiện 0% · ⑧ tên
+GV + lịch lớp đề xuất **chỉ trên ẢNH gửi PH**, không trên UI trả bài. Trả bài phải hiện: % theo CHUYÊN ĐỀ · % cơ
+bản (`muc_do` ≤3) / nâng cao (≥4) · % Đại/Hình · thang Trình bày–Tính toán · nhận xét thêm · lớp đề xuất (+GV+lịch
+trên ảnh) · **xuất ảnh** (đã có html2canvas popup, chỉ cần thêm khối).
+
+**ĐÃ ÁP DB (mig `202609092245_test_dau_vao_phieu_rpc.sql`, schema.md đã refresh):** `ca_test.diem_nhap` ·
+`ca_test_cau.nhanh/muc_do/ten_chuyen_de` = **SNAPSHOT lúc gán đề** (không join lại kho; NULL = không áp dụng) ·
+**`fn_test_dau_vao_phieu(uuid) → jsonb`** trả TOÀN BỘ số liệu phiếu (tong · theoChuyenDe · theoMucDo{coBan,nangCao}
+· theoNhanh{dai,hinh} · nhanXet · lopDeXuat{tenLop,gv[],lich[]}). % = Σdiem/Σtoi_da trên câu ĐÃ CHẤM. ⚠ Nhóm rỗng
+trả `{soCau:0,pct:null}` — client ẩn khi `soCau===0` (hoặc mig nhỏ `create or replace`, KHÔNG sửa file đã áp).
+
+**VIỆC TIẾP (thứ tự A→G, chi tiết từng hàm ở DEVLOG 09/09 tối):** (A) `detest.ts` — snapshot 3 cột khi gán
+(`getTaiLieuFull` + `nhanhCuaCau` + `khoCuaMon(..).banDoTbl`; **hàng HÌNH `HINH:<uuid>` đang bị bỏ rơi im lặng**,
+phải snapshot nhanh='hinh' qua `loadLuoi`+`pickCuaHinhRow`+`banInTheoMoHinh`) · `ganDeDangDung` · `listCanCham`
+gộp cả ca thiếu đề + nút "Gán đề đang dùng" (đường cứu Tùng + 4 ca cũ, KHÔNG sửa DB tay) · list "của tôi" theo
+`nguoi_cham_id`/`nguoi_tra_bai_id` · `setDiemNhap` · đóng chấm đòi `diem_nhap` · `getPhieuKetQua` → rpc, XOÁ
+`tongDiem`/`getBieuDoChuyenDe` (JS cộng điểm, vi phạm §2.0). (B) `DiemDanhTestScreen`: chọn = lưu ngay, tự gán
+đề đang dùng lúc tạo ca/mount card, Hoàn tất chặn khi chưa có đề. (C) `ChamTestScreen`: Đ/C/S inline trên hàng
+câu (khuôn `ET_KQ` ChamBuoi.tsx), ô Điểm, tổng/% từ rpc, toggle Của tôi/Tất cả. (D) `TraBaiTestScreen`: 3 khối %
+từ rpc, không GV. (E) `PhieuTestDauVao`: điểm nhập + 3 khối % + GV + lịch (`THU_LABEL` 2..8, 8=CN). (F) `NhanSuHome`:
+2 khối flat "cần chấm / cần trả bài (của tôi)" theo `me.nhanSu.id` → `setStaffLeaf('test_dau_vao')` + (G) setter
+tab module-level ở `TestDauVaoScreen`. Dữ liệu thô cần học thuật rà: đề K7 34/34 câu `muc_do`=3 (kể cả chuyên đề
+"Nâng cao") ⇒ phiếu sẽ ra 100% cơ bản; 8 câu "Hình học" đề K7 pick từ kho Đại ⇒ đếm là Đại theo ⑦.
+
+**Cảnh báo hạ tầng:** `migrate --status` thấy **11 migration có trong sổ DB nhưng không có file ở main** (nhánh/
+worktree chưa merge: 202608151600 · 202609041045 · 202609051251 · 202609081858 · 202609091354/1411/1416/1428/1750/
+1810/1959). Dựng lại DB từ repo sẽ thiếu — gom file về main trước khi tin `npm run migrate` trên máy mới.
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
@@ -1735,6 +1804,36 @@ và `--baseline` đều đụng file người khác, đã dính 2 lần 08/09).
 - **Prod báo "Invalid API key"** = key nướng trong bundle sai. Đừng đoán: tải `assets/*.js` đang chạy, grep key, so với `.env.local` **từng ký tự** (09/09: thừa đúng 1 chữ "W" cuối key trên Vercel). Vite nướng env lúc build ⇒ sửa env xong PHẢI Redeploy.
 - **Commit của mình chỉ chứa hunk của mình** khi nhiều phiên cùng sửa `package.json`/`launch.json`: dựng blob từ `git show HEAD:file` + đúng dòng mình thêm rồi `git update-index --cacheinfo`, không `git add` cả file. "commit đi" của CEO = commit + push luôn (Vercel tắt auto-deploy).
 - **Scale app riêng:** mỗi app một project Vercel (blast radius, rollback/env riêng); trần build/ngày là chuyện gói Hobby → lên Pro, không gộp project. Gộp chỉ cân nhắc cho tầng "công cụ/chiến dịch" khi ≥5 app, bằng rewrite theo host.
+### Bài học 09/09 — BTVN ảnh xuyên 2 repo, tool vẽ, role RO
+- **Bước 0 trước khi tin spec:** spec "tạo bảng btvn_nop/btvn_anh" hoá ra bảng + RPC + màn đã có từ 30/08; và audit repo PH bản
+  CŨ cho kết luận "chưa có luồng nộp" sai hoàn toàn. Rule: grep repo TRƯỚC, và hỏi "bản này final chưa" trước khi audit repo khác.
+- **Server action Next mặc định trần body 1MB (Vercel function 4.5MB)** — nộp ảnh qua FormData là chết với ảnh điện thoại thật.
+  Ảnh đi thẳng client → storage bằng signed upload URL; action chỉ nhận mảng path rồi kiểm lại bằng `storage.list` (size/mimetype).
+- **Tailwind v4: 2 utility cùng property trong 1 className thì thứ tự CSS quyết định** (`bg-white` đè `bg-emerald-600`) — màu
+  mặc định đặt trong nhánh idle, không đặt tĩnh rồi "đè" bằng nhánh động (bug Đ/C/S mất chữ có từ 30/08).
+- **Listener đăng ký với deps `[]` gọi hàm đóng state → state đọc trong đó phải qua ref** (Ctrl+Z ở trang 2 xoá mark trang 1).
+- **Input mount trong `pointerdown`:** `mousedown` mặc định dời focus (canvas không focus được) → `e.preventDefault()` + `autoFocus`
+  (đồng bộ lúc commit; `setTimeout` chậm hơn người gõ ngay) + bỏ qua blur <300ms.
+- **Sau lưu phải có tín hiệu** ("✓ Đã lưu" 2.5s) — nút chỉ mờ đi thì CEO tưởng treo dù DB đã ghi.
+- **Task engine = must-exist:** buổi có `mt_buoi` không sinh task BTVN (`where not b.co_mt`) → bài PH gán vào buổi MT là tàng hình
+  với TA. Mọi "tự gán" phải kiểm cùng điều kiện với engine sinh task, nếu không dữ liệu rơi vào chỗ không ai thấy.
+- **`pg.Pool` module-scope giữ chuỗi kết nối cũ** sau khi `.env.local` đổi — Next nạp lại env nhưng pool không; restart dev.
+- **Key nhầm project cùng độ dài** (service key PH vs ERP đều 219 ký tự) — kiểm bằng claim `ref` trong JWT, không so độ dài.
+- **Host `db.<ref>.supabase.co` chỉ IPv6** — dev Windows lẫn Vercel đều ENOTFOUND; luôn dùng pooler với user `role.<ref>`.
+- **Automation trình duyệt:** phím "Return" của tool KHÔNG phải Enter (dùng "Enter"); `read_console_messages` trả log tích luỹ cả
+  lỗi HMR trung gian → reload + tsc trước khi tin; `prompt()` thật bị tự đóng.
+- **Test trên data thật:** đọc snapshot trước, chỉ đụng dòng test, không "Mở lại/Đóng" phase của lớp thật (đổi `btvn_dong_at` →
+  dashboard TA "đóng muộn", EXP hoàn/thưởng lại); dọn lá→gốc theo danh sách đã gật, kiểm snapshot khớp sau dọn.
+- **Deploy tay khi auto-deploy im:** kiểm bằng cách curl bundle prod grep chuỗi UI mới, không tin "đã push = đã lên".
+
+### Bài học 09/09 tối — test đầu vào (luồng "biến mất im lặng")
+- **"Chọn rồi phải bấm thêm nút mới lưu" = mất dữ liệu im lặng.** Dropdown chọn đề + nút "Gán đề" chỉ hiện sau khi chọn: người thao tác chọn → upload → Hoàn tất trong 51 giây, đề chưa từng tới DB, không lỗi nào hiện. Lựa chọn có 1 giá trị hợp lý mặc định (đề đang dùng) thì **tự gán**, chọn là lưu ngay; nút xác nhận riêng chỉ cho thao tác có hậu quả.
+- **Gate "hoàn tất" phải đòi ĐỦ bằng chứng mà khâu SAU cần.** Hoàn tất chỉ đòi bài upload, còn Chấm cần đề ⇒ ca lọt qua rồi kẹt vĩnh viễn. Hỏi "khâu kế tiếp cần gì để chạy" trước khi viết điều kiện đóng.
+- **Hàng đợi LỌC BỎ ≠ hàng đợi TRỐNG.** `.not('tai_lieu_id','is',null)` làm 5 ca thiếu đề biến mất khỏi mọi màn, kể cả màn có thể sửa nó. Đúng luật invariant §4: thiếu bằng chứng ⇒ **nổi lên thành việc** (card "chưa có đề → gán"), không lọc đi. Lọc theo ngày ("hoàn thành hôm nay") cũng là một dạng lọc bỏ.
+- **Trigger log là nhân chứng tốt nhất khi người nói "tôi đã làm rồi".** `ca_test_log` ghi mọi UPDATE, đọc diff từng cột ra ngay đề chưa từng được set — không cần đoán, không cần cãi. Đầu tư trigger log cho entity vận hành trả lãi đúng lúc này.
+- **"Nhãn" (`nguoi_cham_id`) không phải "việc".** Cột gán người tồn tại từ 14/08 nhưng không màn nào lọc theo nó và Việc của tôi không có card ⇒ với người dùng bằng không có. Thêm cột assign thì phải thêm luôn đường "việc của tôi" trong cùng lượt.
+- **Snapshot thuộc tính phân loại lúc neo, đừng join live để tính báo cáo.** `nhanh`/`muc_do`/`ten_chuyen_de` ghi vào `ca_test_cau` lúc gán đề ⇒ hàm phiếu chỉ gom 2 bảng, không nhân đôi registry môn→bảng trong SQL, đề/dạng sửa sau không làm lệch phiếu cũ.
+- **Hàng "không ở kho câu" (`HINH:<uuid>`) bị `layCauTheoThuTu` bỏ rơi không báo** — cùng họ với `.filter(Boolean)` nuốt tham chiếu chết. Mọi chỗ "resolve mã → nội dung" phải nói ra số hàng KHÔNG resolve được.
 
 ## ③ Nhật ký
 → Chuyển sang **`DEVLOG.md`** (log thô append-only, theo ngày, KHÔNG load khi làm). Là nguồn bất biến để truy lại / tổng hợp lại HANDOFF nếu bản này sai logic.

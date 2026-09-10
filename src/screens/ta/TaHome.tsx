@@ -337,7 +337,8 @@ function ViecTab({ nv, tasks, nopCount, now, homNay, onOpen }: {
 }) {
   const [xemXong, setXemXong] = useState(false)
   const canLam = tasks.filter((t) => !t.done).sort((a, b) => a.ngay.localeCompare(b.ngay) || a.lop.localeCompare(b.lop))
-  const daXong = tasks.filter((t) => t.done).sort((a, b) => (b.doneAt ?? '').localeCompare(a.doneAt ?? '')).slice(0, 20)
+  // Sắp theo NGÀY BUỔI (TA tìm theo ngày, không theo lúc đóng — backfill đóng hàng loạt làm buổi cũ nhảy lên đầu), 60 dòng.
+  const daXong = tasks.filter((t) => t.done).sort((a, b) => b.ngay.localeCompare(a.ngay) || a.lop.localeCompare(b.lop)).slice(0, 60)
   const ngays = [...new Set(canLam.map((t) => t.ngay))]
   return (
     <div>

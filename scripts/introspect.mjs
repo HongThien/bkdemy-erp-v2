@@ -135,13 +135,21 @@ try {
   // ⇒ schema nhìn hoàn hảo mà mọi query dữ liệu trả rỗng, không lỗi, không cảnh báo.
   // 116/124 bảng đang bật RLS với policy `to authenticated`; role không-sở-hữu và không
   // bypassrls sẽ khớp 0 policy. Nêu cờ ngay đây, đừng để phát hiện bằng một kết luận sai.
+  // 09/09: claude_ro đi đường "policy claude_ro_select using(true)" (bypassrls cần superuser, SQL Editor
+  // không gán được) ⇒ chỉ cờ bảng KHÔNG có policy SELECT/ALL cho current_user hoặc public — không thì
+  // canary cảnh báo giả 202 bảng trong khi đọc được thật.
   const { rows: [rq] } = await client.query(`
     select current_user as ai,
            coalesce((select rolbypassrls from pg_roles where rolname = current_user), false) as bo_qua_rls,
            coalesce((select array_agg(c.relname::text order by c.relname)
                      from pg_class c join pg_namespace n on n.oid = c.relnamespace
                      where n.nspname='public' and c.relkind in ('r','p') and c.relrowsecurity
-                       and pg_get_userbyid(c.relowner) <> current_user),
+                       and pg_get_userbyid(c.relowner) <> current_user
+                       and not exists (
+                         select 1 from pg_policies p
+                         where p.schemaname = n.nspname and p.tablename = c.relname
+                           and p.cmd in ('SELECT', 'ALL')
+                           and (p.roles::text[] @> array[current_user::text] or p.roles::text[] @> array['public']))),
                     array[]::text[]) as bang_bi_cat`)
   const biCat = rq.bo_qua_rls ? [] : rq.bang_bi_cat
   if (biCat.length) {

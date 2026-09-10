@@ -14,7 +14,7 @@ import {
   listCanhBao,
   type BuoiHocHS, type Problem, type Grade, type ETResult, type BtvnKQ, type BtvnTrangThai, type BtvnThaiDo, type CanhBao, type DangTaiLieu,
 } from '../../lib/gami'
-import { listNopTheoBuoi, deXuatTrangThai, signUrls, uploadAnhCham, listNhanXetMau, setNhanXet, traBai, xacNhanBuoi, chuyenBuoi, listBuoiBtvnCuaLop, type BtvnNop, type BtvnNopAnh, type NhanXetMau, type BuoiBtvn } from '../../lib/btvnnop'
+import { listNopTheoBuoi, deXuatTrangThai, signUrls, uploadAnhCham, boAnhCham, listNhanXetMau, setNhanXet, traBai, xacNhanBuoi, chuyenBuoi, listBuoiBtvnCuaLop, type BtvnNop, type BtvnNopAnh, type NhanXetMau, type BuoiBtvn } from '../../lib/btvnnop'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { tenHienThiDs } from '../../lib/hoten'
 import { ET_KQ, DongBar, type BuoiFull } from './ChamBuoi'
@@ -220,7 +220,7 @@ function ChamMotHS({ r, ten, buoi, n, dx, v, probs, gradeOf, dong, urls, nxMau, 
       <div className="flex min-h-0 flex-1 flex-col landscape:flex-row">
         {coAnh && (
           <div className="flex min-h-0 flex-col border-slate-200 portrait:h-[55%] portrait:border-b landscape:w-[70%] landscape:border-r">
-            <VeAnh key={hsId} anhDs={n!.anh} urls={urls} reloadNop={reloadNop} />
+            <VeAnh key={hsId} anhDs={n!.anh} urls={urls} reloadNop={reloadNop} daTra={!!n!.tra_at} />
           </div>
         )}
         <div className="min-h-0 flex-1 overflow-y-auto bg-white px-3 py-2.5">
@@ -315,7 +315,7 @@ function ChotBuoiBanner({ lopId, buoiNgay, onDungBuoi, onChuyen }: {
   }
   return (
     <div className="mb-2.5 rounded-xl border border-amber-300 bg-amber-50 p-2.5">
-      <p className="mb-1.5 text-[12px] font-medium text-amber-800">⚠ PH nộp không chọn buổi — hệ <b>gán tạm</b> vào buổi này. Chốt đúng buổi rồi mới trả bài được.</p>
+      <p className="mb-1.5 text-[12px] font-medium text-amber-800">⚠ PH nộp không chọn buổi — hệ <b>gán tạm</b> vào buổi học gần nhất. Nộp muộn/nộp bù thì chuyển sang đúng buổi; chốt rồi mới trả bài được.</p>
       <div className="flex flex-wrap gap-1.5">
         <button onClick={onDungBuoi} className="min-h-[36px] rounded-lg bg-amber-600 px-3 text-[12.5px] font-bold text-white active:bg-amber-500">✓ Đúng buổi này</button>
         <button onClick={moChuyen} className="min-h-[36px] rounded-lg border border-amber-400 px-3 text-[12.5px] font-semibold text-amber-800 active:bg-amber-100">→ Bài thuộc buổi khác</button>
@@ -325,12 +325,16 @@ function ChotBuoiBanner({ lopId, buoiNgay, onDungBuoi, onChuyen }: {
           <div className="max-h-[70dvh] w-full max-w-[440px] overflow-auto rounded-2xl bg-white p-4 shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <p className="mb-2 text-[14px] font-bold text-slate-900">Chuyển bài sang buổi nào?</p>
             {dsBuoi === null ? <p className="text-[12px] text-slate-400">Đang tải…</p>
-              : dsBuoi.filter((b) => b.ngay !== buoiNgay).length === 0 ? <p className="text-[12px] text-slate-400">Lớp không có buổi BTVN nào khác gần đây.</p>
+              : dsBuoi.filter((b) => b.ngay !== buoiNgay).length === 0 ? <p className="text-[12px] text-slate-400">Lớp không có buổi nào khác trong 60 ngày gần đây.</p>
               : dsBuoi.filter((b) => b.ngay !== buoiNgay).map((b) => (
                 <button key={b.id} onClick={() => { setMoPicker(false); onChuyen(b.id) }}
                   className="mb-1.5 flex min-h-[44px] w-full items-center gap-2 rounded-xl border border-slate-200 px-3 text-left active:bg-slate-50">
                   <span className="text-[13.5px] font-semibold text-slate-800">{thuCuaNgay(b.ngay)} · {ddmmVN(b.ngay)}</span>
-                  {b.dong && <span className="ml-auto rounded bg-slate-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-slate-500">BTVN đã đóng</span>}
+                  <span className="ml-auto flex gap-1">
+                    {b.co_phieu ? <span className="rounded bg-teal-50 px-1.5 py-0.5 text-[10.5px] font-semibold text-teal-700">có phiếu BTVN</span>
+                      : <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-slate-400">không có phiếu</span>}
+                    {b.dong && <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-slate-500">đã đóng</span>}
+                  </span>
                 </button>
               ))}
             <button onClick={() => setMoPicker(false)} className="mt-1 min-h-[40px] w-full rounded-lg text-[13px] text-slate-500">Huỷ</button>
@@ -345,42 +349,72 @@ function ChotBuoiBanner({ lopId, buoiNgay, onDungBuoi, onChuyen }: {
 // ── VẼ ĐÁNH DẤU lên xấp ảnh. Ảnh = <img> lớp dưới, nét vẽ = canvas TRONG SUỐT lớp trên (tẩy chỉ xoá nét,
 // không đụng ảnh); Lưu = ghép 2 lớp thành PNG MỚI (path_cham) — ảnh gốc immutable. Nét CHƯA LƯU của từng
 // trang giữ trong memory khi chuyển trang (mất khi đóng màn). Toạ độ chạm map qua tỉ lệ rect (né zoom CSS).
-type Tool = 'do' | 'xanh' | 'tay' | 'check' | 'cross' | 'text'
+// Bộ tool (CEO 09/09): bút đỏ/xanh (iPad) · tẩy · dấu Đ/S đỏ · khoanh ◯ / khung ▭ kéo to nhỏ · chữ (laptop,
+// ô nhập tại chỗ) · cỡ Nhỏ/Vừa/Lớn áp cho chữ + dấu + nét · phím tắt 1 2 3 D S T O R, Ctrl+Z.
+type Tool = 'but' | 'tay' | 'D' | 'S' | 'text' | 'tron' | 'cn'
+type Co = number // cỡ chữ kiểu Paint (14…72) — px trên ảnh rộng 800, ảnh khác tự tỉ lệ
 type Mark =
   | { k: 'net'; mau: string; tay: boolean; pts: { x: number; y: number }[] }
-  | { k: 'dau'; loai: 'check' | 'cross'; x: number; y: number }
-  | { k: 'text'; x: number; y: number; text: string }
-const TOOLS: { t: Tool; lbl: string; cls: string }[] = [
-  { t: 'do', lbl: '🔴 Đỏ', cls: 'bg-rose-600 text-white border-transparent' },
-  { t: 'xanh', lbl: '🔵 Xanh', cls: 'bg-blue-600 text-white border-transparent' },
-  { t: 'tay', lbl: '🧹 Tẩy', cls: 'bg-slate-600 text-white border-transparent' },
-  { t: 'check', lbl: '✓', cls: 'bg-emerald-600 text-white border-transparent' },
-  { t: 'cross', lbl: '✗', cls: 'bg-rose-600 text-white border-transparent' },
-  { t: 'text', lbl: 'Aa', cls: 'bg-slate-800 text-white border-transparent' },
+  | { k: 'dau'; loai: 'D' | 'S'; x: number; y: number; co: Co }
+  | { k: 'text'; x: number; y: number; text: string; co: Co; mau: string }
+  | { k: 'hinh'; loai: 'tron' | 'cn'; x1: number; y1: number; x2: number; y2: number }
+const DO = '#e11d48', XANH = '#2563eb', DEN = '#111827'
+// Màu áp cho Bút + Chữ (CEO 09/09: cần đen ngoài đỏ/xanh). Đ/S/khoanh/khung luôn đỏ.
+const MAUS: { v: string; lbl: string; cls: string; phim: string }[] = [
+  { v: DO, lbl: 'Đỏ', cls: 'bg-rose-600', phim: '1' },
+  { v: XANH, lbl: 'Xanh', cls: 'bg-blue-600', phim: '2' },
+  { v: DEN, lbl: 'Đen', cls: 'bg-slate-900', phim: '3' },
 ]
+const TOOLS: { t: Tool; lbl: string; phim: string; cls: string }[] = [
+  { t: 'but', lbl: '✏️ Bút', phim: 'B', cls: 'bg-slate-700 text-white border-transparent' },
+  { t: 'tay', lbl: '🧹 Tẩy', phim: 'E', cls: 'bg-slate-600 text-white border-transparent' },
+  { t: 'D', lbl: 'Đ', phim: 'D', cls: 'bg-rose-600 text-white border-transparent' },
+  { t: 'S', lbl: 'S', phim: 'S', cls: 'bg-rose-600 text-white border-transparent' },
+  { t: 'tron', lbl: '◯ Khoanh', phim: 'O', cls: 'bg-rose-600 text-white border-transparent' },
+  { t: 'cn', lbl: '▭ Khung', phim: 'R', cls: 'bg-rose-600 text-white border-transparent' },
+  { t: 'text', lbl: 'Aa Chữ', phim: 'T', cls: 'bg-slate-700 text-white border-transparent' },
+]
+const PHIM_TOOL: Record<string, Tool> = { b: 'but', e: 'tay', d: 'D', s: 'S', o: 'tron', r: 'cn', t: 'text' }
+const CO_LIST: Co[] = [14, 16, 18, 20, 22, 24, 26, 28, 32, 36, 40, 48, 56, 64, 72]
+const pxChu = (co: Co, W: number) => Math.round(co * (W / 800))
 
-function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<string, string>; reloadNop: () => Promise<void> }) {
+function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: Record<string, string>; reloadNop: () => Promise<void>; daTra: boolean }) {
   // Bản local của xấp ảnh + URL: sau Lưu tự cập nhật path_cham ngay, không chờ cha reload.
   const [anhs, setAnhs] = useState<BtvnNopAnh[]>(anhDs)
   const [localUrls, setLocalUrls] = useState<Record<string, string>>(urls)
   const [idx, setIdx] = useState(0)
-  const [tool, setTool] = useState<Tool>('do')
+  const [tool, setTool] = useState<Tool>('but')
+  const [mau, setMau] = useState<string>(DO)
+  const [co, setCo] = useState<Co>(24)
   const [ready, setReady] = useState(false)
   const [busy, setBusy] = useState(false)
+  const [daLuu, setDaLuu] = useState(false) // flash "✓ Đã lưu" 2.5s (§6: feedback sau lưu, không alert)
   const [tick, setTick] = useState(0)
+  // ô nhập chữ tại chỗ: toạ độ canvas + vị trí % để đặt input đè lên ảnh
+  const [nhap, setNhap] = useState<{ x: number; y: number; px: number; py: number } | null>(null)
+  const [nhapText, setNhapText] = useState('')
+  const nhapMoAt = useRef(0)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const imgRef = useRef<HTMLImageElement | null>(null)
   const marksRef = useRef<Record<string, Mark[]>>({}) // nháp theo TRANG (key = anh.id)
   const drawing = useRef(false)
+  const toolRef = useRef<Tool>('but')
+  toolRef.current = tool
+  const mauRef = useRef(DO)
+  mauRef.current = mau
 
   useEffect(() => { setLocalUrls((cur) => ({ ...urls, ...cur })) }, [urls])
 
   const anh = anhs[idx]
   const src = anh ? localUrls[anh.path_cham ?? anh.path] : undefined
-  const marks = () => (marksRef.current[anh.id] ??= [])
+  // Đọc id trang qua REF: handler phím tắt (đăng ký 1 lần) gọi undo/paint từ closure cũ — bám `anh` của
+  // lần render đầu thì Ctrl+Z ở trang 2 xoá nhầm mark trang 1 rồi vẽ đè nét trang 1 lên canvas (bug 09/09).
+  const anhIdRef = useRef(anh?.id ?? '')
+  anhIdRef.current = anh?.id ?? ''
+  const marks = () => (marksRef.current[anhIdRef.current] ??= [])
 
   useEffect(() => {
-    setReady(false); imgRef.current = null
+    setReady(false); imgRef.current = null; setNhap(null)
     if (!src) return
     const img = new Image()
     img.crossOrigin = 'anonymous' // signed URL Supabase có CORS * — cần để canvas export không taint
@@ -389,6 +423,22 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
     img.src = src
     // eslint-disable-next-line
   }, [src])
+
+  // Phím tắt laptop (bỏ qua khi đang gõ trong ô nhập).
+  useEffect(() => {
+    const h = (e: KeyboardEvent) => {
+      if ((e.target as HTMLElement)?.tagName === 'INPUT' || (e.target as HTMLElement)?.tagName === 'TEXTAREA') return
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undo(); return }
+      if (e.ctrlKey || e.metaKey || e.altKey) return
+      const m = MAUS.find((x) => x.phim === e.key)
+      if (m) { setMau(m.v); if (toolRef.current !== 'text') setTool('but'); return }
+      const t = PHIM_TOOL[e.key.toLowerCase()]
+      if (t) { setTool(t); setNhap(null) }
+    }
+    window.addEventListener('keydown', h)
+    return () => window.removeEventListener('keydown', h)
+    // eslint-disable-next-line
+  }, [])
 
   function paint() {
     const cv = canvasRef.current, img = imgRef.current
@@ -400,6 +450,7 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
     const lw = Math.max(3, W / 300)
     ctx.lineCap = 'round'; ctx.lineJoin = 'round'
     for (const m of marks()) {
+      ctx.globalCompositeOperation = 'source-over'
       if (m.k === 'net') {
         ctx.globalCompositeOperation = m.tay ? 'destination-out' : 'source-over'
         ctx.strokeStyle = m.mau; ctx.lineWidth = m.tay ? lw * 4 : lw
@@ -408,49 +459,67 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
         if (m.pts.length === 1) ctx.lineTo(m.pts[0].x + 0.1, m.pts[0].y)
         ctx.stroke()
       } else if (m.k === 'dau') {
-        ctx.globalCompositeOperation = 'source-over'
-        const s = Math.max(28, W / 14)
-        ctx.lineWidth = lw * 1.6
-        ctx.beginPath()
-        if (m.loai === 'check') { ctx.strokeStyle = '#059669'; ctx.moveTo(m.x - s * 0.45, m.y); ctx.lineTo(m.x - s * 0.1, m.y + s * 0.4); ctx.lineTo(m.x + s * 0.5, m.y - s * 0.45) }
-        else { ctx.strokeStyle = '#e11d48'; ctx.moveTo(m.x - s * 0.4, m.y - s * 0.4); ctx.lineTo(m.x + s * 0.4, m.y + s * 0.4); ctx.moveTo(m.x + s * 0.4, m.y - s * 0.4); ctx.lineTo(m.x - s * 0.4, m.y + s * 0.4) }
-        ctx.stroke()
-      } else {
-        ctx.globalCompositeOperation = 'source-over'
-        ctx.fillStyle = '#b91c1c'
-        ctx.font = `bold ${Math.max(20, Math.round(W / 28))}px sans-serif`
-        ctx.textBaseline = 'middle'
+        ctx.fillStyle = DO
+        ctx.font = `bold ${pxChu(m.co * 1.6, W)}px sans-serif`
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle'
+        ctx.fillText(m.loai === 'D' ? 'Đ' : 'S', m.x, m.y)
+      } else if (m.k === 'text') {
+        ctx.fillStyle = m.mau
+        ctx.font = `bold ${pxChu(m.co, W)}px sans-serif`
+        ctx.textAlign = 'left'; ctx.textBaseline = 'middle'
         ctx.fillText(m.text, m.x, m.y)
+      } else {
+        const x = Math.min(m.x1, m.x2), y = Math.min(m.y1, m.y2), w = Math.abs(m.x2 - m.x1), h = Math.abs(m.y2 - m.y1)
+        ctx.strokeStyle = DO; ctx.lineWidth = lw * 1.2
+        ctx.beginPath()
+        if (m.loai === 'cn') ctx.rect(x, y, w, h)
+        else ctx.ellipse(x + w / 2, y + h / 2, Math.max(1, w / 2), Math.max(1, h / 2), 0, 0, Math.PI * 2)
+        ctx.stroke()
       }
     }
     ctx.globalCompositeOperation = 'source-over'
   }
-  function toaDo(e: React.PointerEvent): { x: number; y: number } {
+  function toaDo(e: React.PointerEvent): { x: number; y: number; px: number; py: number } {
     const cv = canvasRef.current!
     const rect = cv.getBoundingClientRect()
-    return { x: ((e.clientX - rect.left) / rect.width) * cv.width, y: ((e.clientY - rect.top) / rect.height) * cv.height }
+    const px = (e.clientX - rect.left) / rect.width, py = (e.clientY - rect.top) / rect.height
+    return { x: px * cv.width, y: py * cv.height, px, py }
   }
   function down(e: React.PointerEvent) {
     if (!ready) return
+    if (nhap) { setNhap(null); return } // đang có ô nhập → chạm ngoài = huỷ
     const p = toaDo(e)
-    if (tool === 'check' || tool === 'cross') { marks().push({ k: 'dau', loai: tool, x: p.x, y: p.y }); paint(); setTick((t) => t + 1); return }
-    if (tool === 'text') {
-      const text = (prompt('Ghi chú ngắn:') ?? '').trim()
-      if (text) { marks().push({ k: 'text', x: p.x, y: p.y, text }); paint(); setTick((t) => t + 1) }
-      return
-    }
+    const t = toolRef.current
+    if (t === 'D' || t === 'S') { marks().push({ k: 'dau', loai: t, x: p.x, y: p.y, co }); paint(); setTick((n) => n + 1); return }
+    // preventDefault: chặn mousedown mặc định dời focus khỏi ô nhập vừa mount (canvas không focus được → blur → ô biến mất)
+    if (t === 'text') { e.preventDefault(); nhapMoAt.current = Date.now(); setNhapText(''); setNhap(p); return }
     drawing.current = true
-    marks().push({ k: 'net', mau: tool === 'xanh' ? '#2563eb' : '#e11d48', tay: tool === 'tay', pts: [p] });
-    (e.target as Element).setPointerCapture(e.pointerId)
+    if (t === 'tron' || t === 'cn') marks().push({ k: 'hinh', loai: t, x1: p.x, y1: p.y, x2: p.x, y2: p.y })
+    else marks().push({ k: 'net', mau: mauRef.current, tay: t === 'tay', pts: [p] })
+    ;(e.target as Element).setPointerCapture(e.pointerId)
     paint()
   }
   function move(e: React.PointerEvent) {
     if (!drawing.current) return
-    const ms = marks(); const m = ms[ms.length - 1]
-    if (m?.k === 'net') { m.pts.push(toaDo(e)); paint() }
+    const ms = marks(); const m = ms[ms.length - 1]; const p = toaDo(e)
+    if (m?.k === 'net') m.pts.push(p)
+    else if (m?.k === 'hinh') { m.x2 = p.x; m.y2 = p.y }
+    paint()
   }
-  function up() { if (drawing.current) { drawing.current = false; setTick((t) => t + 1) } }
-  function undo() { marks().pop(); paint(); setTick((t) => t + 1) }
+  function up() {
+    if (!drawing.current) return
+    drawing.current = false
+    const ms = marks(); const m = ms[ms.length - 1]
+    // khung/khoanh kéo quá nhỏ (chạm nhầm) → bỏ
+    if (m?.k === 'hinh' && Math.abs(m.x2 - m.x1) < 8 && Math.abs(m.y2 - m.y1) < 8) { ms.pop(); paint() }
+    setTick((n) => n + 1)
+  }
+  function undo() { marks().pop(); paint(); setTick((n) => n + 1) }
+  function xacNhanText() {
+    const text = nhapText.trim()
+    if (nhap && text) { marks().push({ k: 'text', x: nhap.x, y: nhap.y, text, co, mau }); paint() }
+    setNhap(null); setNhapText(''); setTick((n) => n + 1)
+  }
 
   async function luu() {
     const cv = canvasRef.current, img = imgRef.current
@@ -468,19 +537,53 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
       setLocalUrls((cur) => ({ ...cur, ...u }))
       setAnhs((cur) => cur.map((a) => (a.id === anh.id ? { ...a, path_cham: path } : a)))
       reloadNop().catch(() => {})
+      setDaLuu(true); setTimeout(() => setDaLuu(false), 2500)
     } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
   }
 
   const soNet = marks().length
   const chuaLuu = (id: string) => (marksRef.current[id]?.length ?? 0) > 0
+  // "Làm lại trang": bỏ bản chấm đã lưu (nét đã ghép vào ảnh không hoàn tác được) → về ảnh gốc PH nộp.
+  async function lamLai() {
+    if (!anh?.path_cham || busy) return
+    if (!confirm('Bỏ bản chấm của trang này và quay về ảnh gốc? Nét đã vẽ trên trang này sẽ mất.')) return
+    setBusy(true)
+    try {
+      await boAnhCham(anh.id)
+      marksRef.current[anh.id] = []
+      setAnhs((cur) => cur.map((a) => (a.id === anh.id ? { ...a, path_cham: null } : a)))
+      setNhap(null); setTick((n) => n + 1)
+      reloadNop().catch(() => {})
+    } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
+  }
+  const conTro = tool === 'text' || tool === 'D' || tool === 'S' ? 'cursor-cell' : 'cursor-crosshair'
   return (
     <div className="flex min-h-0 flex-1 flex-col">
       <div className="flex flex-wrap items-center gap-1.5 border-b border-slate-200 bg-white px-2 py-1.5">
-        {TOOLS.map((t) => (
-          <button key={t.t} onClick={() => setTool(t.t)} className={`min-h-[36px] min-w-[40px] rounded-lg border px-2 text-[12.5px] font-bold ${tool === t.t ? t.cls : 'border-slate-200 bg-white text-slate-600'}`}>{t.lbl}</button>
+        {MAUS.map((m) => (
+          <button key={m.v} onClick={() => { setMau(m.v); if (tool !== 'text') setTool('but') }} title={`${m.lbl} (phím ${m.phim})`} aria-label={`Màu ${m.lbl}`}
+            className={`h-9 w-9 rounded-full border-2 ${m.cls} ${mau === m.v ? 'border-slate-900 ring-2 ring-slate-300' : 'border-white'}`} />
         ))}
-        <button onClick={undo} disabled={!soNet} className="min-h-[36px] rounded-lg border border-slate-200 px-2.5 text-[12.5px] font-semibold text-slate-600 disabled:opacity-30">↩ Hoàn tác</button>
-        <button onClick={luu} disabled={busy || !soNet || !ready} className="ml-auto min-h-[36px] rounded-lg bg-teal-600 px-3.5 text-[12.5px] font-bold text-white active:bg-teal-500 disabled:opacity-40">{busy ? 'Đang lưu…' : '💾 Lưu trang này'}</button>
+        <span className="mx-0.5 h-6 w-px bg-slate-200" />
+        {TOOLS.map((t) => (
+          <button key={t.t} onClick={() => { setTool(t.t); setNhap(null) }} title={`phím ${t.phim}`}
+            className={`min-h-[36px] min-w-[40px] rounded-lg border px-2 text-[12.5px] font-bold ${tool === t.t ? t.cls : 'border-slate-200 bg-white text-slate-600'}`}>{t.lbl}</button>
+        ))}
+        <span className="mx-1 h-6 w-px bg-slate-200" />
+        <label className="flex items-center gap-1 text-[11px] font-semibold text-slate-400">Cỡ chữ
+          <select value={co} onChange={(e) => setCo(Number(e.target.value))} title="Cỡ chữ (áp cho Chữ và dấu Đ/S)"
+            className="h-9 rounded-lg border border-slate-200 bg-white px-1.5 text-[13px] font-bold text-slate-700">
+            {CO_LIST.map((c) => <option key={c} value={c}>{c}</option>)}
+          </select>
+        </label>
+        <button onClick={undo} disabled={!soNet} title="Ctrl+Z" className="min-h-[36px] rounded-lg border border-slate-200 px-2.5 text-[12.5px] font-semibold text-slate-600 disabled:opacity-30">↩ Hoàn tác</button>
+        {anh?.path_cham && !daTra && (
+          <button onClick={lamLai} disabled={busy} title="Bỏ bản chấm đã lưu của trang này, quay về ảnh gốc"
+            className="min-h-[36px] rounded-lg border border-rose-200 px-2.5 text-[12.5px] font-semibold text-rose-600 active:bg-rose-50 disabled:opacity-40">↺ Làm lại trang</button>
+        )}
+        <button onClick={luu} disabled={busy || !soNet || !ready}
+          className={`ml-auto min-h-[36px] rounded-lg px-3.5 text-[12.5px] font-bold text-white active:bg-teal-500 ${daLuu ? 'bg-emerald-600 disabled:opacity-100' : 'bg-teal-600 disabled:opacity-40'}`}>
+          {busy ? 'Đang lưu…' : daLuu ? '✓ Đã lưu trang' : '💾 Lưu trang này'}</button>
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto bg-slate-800 p-2">
@@ -489,7 +592,15 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
           <div className="relative mx-auto w-full max-w-[1100px]">
             <img src={src} alt="" className="block h-auto w-full select-none rounded-lg" draggable={false} />
             <canvas ref={canvasRef} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up}
-              className={`absolute inset-0 h-full w-full touch-none select-none rounded-lg ${tool === 'text' || tool === 'check' || tool === 'cross' ? 'cursor-cell' : 'cursor-crosshair'}`} data-tick={tick} />
+              className={`absolute inset-0 h-full w-full touch-none select-none rounded-lg ${conTro}`} data-tick={tick} />
+            {nhap && (
+              <input autoFocus ref={(el) => { if (el && document.activeElement !== el) setTimeout(() => el.focus(), 0) }}
+                value={nhapText} onChange={(e) => setNhapText(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') xacNhanText(); if (e.key === 'Escape') { setNhap(null); setNhapText('') } }}
+                onBlur={(e) => { if (Date.now() - nhapMoAt.current < 300) { e.target.focus(); return } xacNhanText() }} placeholder="Gõ rồi Enter" maxLength={80}
+                style={{ left: `${nhap.px * 100}%`, top: `${nhap.py * 100}%`, transform: 'translateY(-50%)', fontSize: `${Math.max(13, Math.min(28, co * 0.7))}px`, color: mau, borderColor: mau }}
+                className="absolute z-10 w-[220px] max-w-[60%] rounded-md border-2 bg-white/95 px-2 py-1 font-bold shadow-lg outline-none" />
+            )}
           </div>
         )}
       </div>
@@ -500,7 +611,7 @@ function VeAnh({ anhDs, urls, reloadNop }: { anhDs: BtvnNopAnh[]; urls: Record<s
           {anhs.map((a, i) => {
             const s = localUrls[a.path_cham ?? a.path]
             return (
-              <button key={a.id} onClick={() => setIdx(i)} className={`relative shrink-0 overflow-hidden rounded-md border-2 ${i === idx ? 'border-teal-500' : 'border-transparent'}`}>
+              <button key={a.id} onClick={() => { setIdx(i); setNhap(null) }} className={`relative shrink-0 overflow-hidden rounded-md border-2 ${i === idx ? 'border-teal-500' : 'border-transparent'}`}>
                 {s ? <img src={s} alt="" className="h-14 w-10 object-cover" draggable={false} /> : <span className="flex h-14 w-10 items-center justify-center bg-slate-100 text-[9px] text-slate-400">…</span>}
                 {a.path_cham && <span className="absolute right-0.5 top-0.5 rounded bg-rose-600 px-0.5 text-[8px] font-bold text-white">✎</span>}
                 {chuaLuu(a.id) && <span className="absolute bottom-0.5 left-0.5 h-2 w-2 rounded-full bg-amber-400" title="chưa lưu" />}
