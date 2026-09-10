@@ -14,6 +14,7 @@ import { demNopTheoBuois } from '../../lib/btvnnop'
 import { taDashboard, type TaDash } from '../../lib/tadash'
 import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline, nhanConLai } from '../../lib/tuan'
 import { kiemTraHoTro, trangThaiNhacViec } from '../../lib/push'
+import { setAppBadgeCount } from '../../lib/appBadge'
 import { NhacViecNutHeader } from '../../components/NhacViecCaiDat'
 import { BK_TROI, BKTabHeader, BKRowCard } from '../../components/bk/BKUI'
 import ChamBuoi from './ChamBuoi'
@@ -93,6 +94,8 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
 
   const canLam = tasks.filter((t) => !t.done)
   const noCua = (k: NvKey) => canLam.filter((t) => t.tab === k).length
+  // Icon MH chính — số = 3 nghiệp vụ (bubble nav dưới) + bổ trợ (cùng số hiện ở tab Bổ trợ).
+  useEffect(() => { setAppBadgeCount(canLam.length + demNoBoTro(boTro)) }, [canLam.length, boTro])
 
   return (
     <div className="flex h-[100dvh] flex-col" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif", background: BK_TROI }}>
