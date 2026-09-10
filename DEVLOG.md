@@ -10566,6 +10566,36 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
 - **(10/09 tiếp) CEO: "màn chấm chỉ cần Câu 1, Câu 2… và Đ/C/S, không cần hiện đề, ẩn đi click mới thấy"** → `ChamCard` viết lại: bảng 2 cột hàng "▸ Câu N | Đ C S" (nút 44px), bấm số câu mới xổ đề (chuyên đề · độ khó · nhánh · đề · phương án · đáp án), bỏ cột chi tiết + prev/next; thanh dưới = ô Điểm bài + nút Xác nhận. Verify app: 39 câu hiện gọn 2 cột, Câu 3 xổ đúng đề, header "Đã tích 2/39 · đúng 75%", tsc pass.
 - **⚠ Hạ tầng phát hiện lúc verify:** repo chính **MẤT `.env.local`** (VITE_SUPABASE_URL/KEY…) — server dev báo "supabaseUrl is required"; mọi worktree vẫn còn bản 990 byte giống hệt nhau ⇒ copy `.claude/worktrees/gamification/.env.local` (mới nhất 07/09) về `.env.local` gốc (gitignored). Không rõ phiên nào xoá; `.env` gốc giờ là bố cục RO (chỉ `DATABASE_URL`=claude_ro, mtime 05/06?!) — bắt đầu 10/09 node script đọc data qua claude_ro OK. **Port 5173 do vite của worktree `app-pt` giữ** (phiên khác) ⇒ preview_start "dev" của repo chính nhảy sang port ngẫu nhiên; đừng tin URL 5173 là repo chính.
 
+## 2026-09-10 — Bỏ tự động đóng task mẹ (Weekly Planning) — leader đóng cụm CHỦ ĐỘNG
+- **Thùy phản ánh 10/09:** task mẹ tự đóng ngay khi 100% task con HIỆN CÓ đạt (trigger
+  `trg_giaoviec_auto_dong_task_me`, mig 202608181833) — nhưng "100% con hiện có" ≠ "việc đã xong": có
+  nhiều việc còn cần tách thêm task con mà nhân sự CHƯA NGHĨ KỊP lúc tách đợt đầu. Tự đóng sớm làm mẹ
+  đóng trong khi việc thực tế còn dở. Chốt qua hỏi: bỏ tự động, GIỮ NGUYÊN điều kiện an toàn "100% con
+  hiện có phải đạt" — leader chủ động bấm đóng khi chắc chắn không còn con nào cần tách nữa.
+- **Mig `202609101512_giaoviec_dong_task_me_chu_dong`:** drop trigger + function
+  `giaoviec_auto_dong_task_me()` cũ; thêm `fn_giaoviec_dong_task_me(p_me_id, p_ghi_chu)` — RPC leader tự
+  gọi (invoker + RLS `viec_member_all`, không cần security definer — logic tính weighted-average tiến
+  độ/chất lượng từ con y hệt bản cũ, chỉ đổi từ "trigger tự gọi" → "người gọi qua RPC"), `nghiem_thu_nguon`
+  đổi `'tu_dong'` → `'nguoi'` (đúng ngữ nghĩa hơn — giờ luôn do người bấm). Vẫn `raise exception` nếu còn
+  con chưa đạt hoặc cụm đã đóng rồi.
+- **Code:** `dongTaskMe()` mới trong `giaoviec.ts` (gọi RPC) · `DongCumModal` mới trong `TaskActions.tsx`
+  (hiện rõ "còn X/Y con chưa đạt" nếu chưa sẵn sàng, ghi chú tuỳ chọn khi đủ điều kiện) · nút "Đóng cụm"
+  trong `MeDetailModal` (WeeklyPlanningTab.tsx), sửa câu mô tả không còn nói "tự đóng".
+- **Bài học nhân tiện phát hiện (KHÔNG sửa, ngoài scope):** trigger `tg_viec_nghiem_thu_tinh` (mig
+  202608300228, BEFORE UPDATE mọi dòng `viec`) tự GHI ĐÈ `tien_do` bằng công thức từ DEADLINE/NGÀY NỘP
+  của chính dòng đó — bất cứ UPDATE nào set `trang_thai='dat'` + `chat_luong`/`ngay_nop` not null đều bị
+  ghi đè `tien_do`, kể cả update tính weighted-average từ con của task mẹ. Test 2 xác nhận: gửi `tien_do`
+  tính tay (trung bình từ con) nhưng cột lưu thật lại = 100 (vì `deadline` mẹ null → công thức mặc định).
+  `chat_luong` KHÔNG bị ảnh hưởng (trần theo `so_lan_tra_lai=0` = 100, không hạ). Tồn tại từ trước
+  (202608300228 ra sau 202608181833, tự áp cho cả 2 nhánh) — không phải bug do đổi hôm nay, chỉ ghi nhận.
+- **Verify:** `tsc --noEmit` 0 lỗi · migration đã áp (`npm run migrate` + `npm run schema`) · SQL test
+  4 ca trong 1 transaction ROLLBACK (không đụng data thật): (1) còn con chưa đạt → chặn đúng lỗi ·
+  (2) đủ điều kiện → đóng đúng, `nghiem_thu_nguon='nguoi'`, ghi chú lưu đúng · (3) gọi lại cụm đã đóng →
+  chặn đúng · (4) con DUY NHẤT đạt 100% → mẹ **KHÔNG** tự đóng (`trang_thai` vẫn `moi_giao`, xác nhận
+  trigger cũ đã mất tác dụng). Browser dev `app-pt` (localhost:5173, đăng nhập Admin dev quick-login) →
+  Phát triển › Tạo & giao việc phát triển › Weekly Planning → mở "Task mẹ — Tài liệu Hình 9 - Lượng
+  giác" (3 con, 0 đạt) → nút "Đóng cụm (0/3 con đạt)" hiện đúng, bấm ra modal cảnh báo "Còn 3/3 task con
+  chưa đạt — đóng hết con trước đã", nút Đóng cụm disable đúng.
 ## 2026-09-10 — Trao giải: tab "Đã chốt giải" + bỏ loại trừ chéo đề xuất (câu hỏi 7S3)
 - Merge origin/main (de50d03, fast-forward) vào worktree feat/trao-giai.
 - **CEO hỏi "7S3 sao không hiện HS tiến bộ?"** Đo trên DB: 7S3 tháng 8 chỉ có 2 em lên hạng MT (Nguyễn Tường Anh +10, Lê Thành An
