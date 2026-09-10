@@ -10411,3 +10411,11 @@ có mặt (để vào luyện). Không có "lịch" — xếp xong HS/PH không 
 **Verify SQL thật (`scripts/_diag_hs_lich.mjs`, read-only):** Tùng → 2 buổi yếu 09/09 16:00 P102 (1 đã co_mat ⇒ vao_ca=true);
 toàn hệ buổi mở sắp tới: 16 đuổi · 3 bù · 2 yếu ⇒ từ giờ HS các ca đó thấy lịch. tsc sạch. Chưa login HS thật để bấm (không có tài
 khoản HS trong VITE_DEV_ACCOUNTS) — Thùy test full luồng.
+
+## 2026-09-10 — Dọn dữ liệu test bổ trợ yếu Triệu Đức Tùng (Thùy OK "Xóa và duyệt lại")
+
+Theo Luật xoá (liệt kê → gật → làm), 1 transaction (`scripts/_once_xoa_tung_0909.mjs`): xoá 2 `buoi_hoc` bo_tro_yeu 09/09 16:00 P102
+(2de89692, 4a3678d5) + 2 `buoi_hoc_hs` + 5 `bai_test` (3 lô luyện, 1 test cuối ca, 1 retest) → 14 `bai_test_cau`, 4 `bai_lam`, 8 `bai_lam_cau`;
+reset `bo_tro_yeu_dang` T108020104 `day_at/day_buoi_id` = null. GIỮ case 55b97f6c (02/09), 2 buổi 03/09 hoàn tất, `hs_level_log`.
+Khôi phục level: `duyetLevel` L0→L1 qua đúng đường app (`scripts/_once_duyet_lai_tung.ts`, actor = admin dev) — log mới, không sửa log cũ.
+Sau dọn: case Tùng về "chờ xếp lịch" 2 dạng, level L1 — như trước khi test.
