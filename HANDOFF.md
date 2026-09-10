@@ -1385,6 +1385,31 @@ tab module-level ở `TestDauVaoScreen`. Dữ liệu thô cần học thuật r�
 worktree chưa merge: 202608151600 · 202609041045 · 202609051251 · 202609081858 · 202609091354/1411/1416/1428/1750/
 1810/1959). Dựng lại DB từ repo sẽ thiếu — gom file về main trước khi tin `npm run migrate` trên máy mới.
 
+
+### ⭐ 10/09 (tối) — NHẬP CÂU HGT QUA CLAUDE: 25 câu Phần A Toán Tứ Tâm PT mặt phẳng vào chờ-duyệt (worktree `nhap-bando`)
+**CEO chốt luồng nhập kho:** đưa file docx/pdf → Claude tách đề+giải+phương án + gán `dang_chinh` → INSERT `hgt_cau_hoi` với `da_duyet=false` + `dang_ai_de_xuat=dang_chinh` → CEO duyệt ở màn duyệt hợp nhất (`DuyetCauTab`). Precision AI đo được sau (count(dang_ai_de_xuat=dang_chinh)/count(dang_ai_de_xuat not null)).
+
+**Worktree mới `.claude/worktrees/nhap-bando`** (branch `worktree-nhap-bando`, base `de50d03`). Có `.env`/`.env.local` copy + `node_modules` symlink về gốc.
+
+**Nguồn file phải là PDF, không docx.** Toán Tứ Tâm DOCX dùng MathType kiểu cũ — mọi công thức = ảnh vector `.wmf` (file 2 MB có 758 wmf, 0 OMML); pandoc convert docx→md mù toàn bộ math ("VTPT của mp ![image47.wmf]"). PDF export chính hãng thì Claude `Read pages=1-N` render vision đọc math sharp (đọc thẳng LaTeX được). **Ai đưa docx → hỏi có PDF không**; PDF không có thì convert bằng Word/LibreOffice ở máy CEO rồi mới nạp.
+
+**Convention `hgt_cau_hoi` (đo từ code + sample thật):**
+- `loai_cau='trac_nghiem'` (không phải `'tn'`; giá trị hợp lệ: `trac_nghiem`·`dung_sai`·`tra_loi_ngan`·`tu_luan`).
+- `lua_chon` jsonb array 4 chuỗi, mỗi chuỗi kết thúc `.`, KHÔNG tiền tố "A."/"B."; `dap_an` = chữ đơn "A/B/C/D".
+- `noi_dung`/`loi_giai` KaTeX inline `$…$` (`\dfrac`, `\vec{…}`, `\begin{cases}…\\…\end{cases}`, `\Rightarrow`, `\alpha`…).
+- `nguon='le'`, `nguon_giai='nguoi'`, `da_duyet=false` (default).
+- **`ma_cau` phải EXPLICIT** = `<dang_chinh><STT 3 số>` theo `src/lib/kho/api.ts:447` — đừng để default `('GC'||nextval)` (chỉ dùng khi ma_cau chưa có convention). STT = `MAX(ma_cau) WHERE ma_cau LIKE '<dang>%'` + 1.
+- **`dang_ai_de_xuat = dang_chinh`** khi Claude gán (spec `202609080938_kho_duyet_hop_nhat.sql`). Người duyệt đổi `dang_chinh` nếu sai; `dang_ai_de_xuat` giữ vết bản gốc AI.
+- **Ảnh vào `anh_de`** (không `anh_dap_an`) khi HS cần thấy khi ĐỌC đề để định vị tên đỉnh/vật thể; upload trực tiếp qua HTTP `POST {SUPABASE_URL}/storage/v1/object/kho-anh/<uuid>.png` với `SUPABASE_SERVICE_ROLE` bearer (env.local) — hoặc dùng helper `uploadKhoImage` từ UI (`src/lib/kho/api.ts:429`).
+
+**Bảng đích khoi=12 (31 dạng trong `hgt_ban_do`):** chuyên đề "Phương trình Mặt phẳng" chỉ 4 dạng (T312010101 VTPT+kiểm tra điểm · T312010102 viết PT qua điểm+VTPT · T312010103 qua 3 điểm · T312010107 tìm tham số); các dạng liên quan chéo chuyên đề (khoảng cách/vị trí/góc): T312010105 · T312010106 · T312010505 · T312010601 · T312010602 · T312010701. Có duplicate ngữ nghĩa T312010105 vs T312010503 (khoảng cách điểm-mp) và T312010106 vs T312010701 (vị trí tương đối 2 mp) — chưa gộp, chọn theo chuyên đề của tài liệu.
+
+**Đã INSERT lô đầu (25 câu Phần A `C5-BÀI 1 PT Mặt phẳng P2`):** 13 câu T312010101081..093 · 7 câu T312010102040..046 · 2 câu T312010103019..020 · T312010105023 · T312010106016 · T312010107026. Câu 1, 2 có ảnh (`anh_de`=URL bucket `kho-anh`, hình lập phương ABCD.A'B'C'D'). CEO đã duyệt 8/25 (câu 3-10 lô đầu tiên) trong lúc Claude đang chạy fix — trạng thái này bình thường (song phiên).
+
+**Script mẫu ở scratchpad (không commit repo, chỉ để refer):** `insert_cau.mjs` (validate + 1 transaction INSERT với RETURNING, ROLLBACK cả lô nếu 1 câu lỗi) · `upload_and_fix.mjs` (upload ảnh HTTP + UPDATE `anh_de` + rename ma_cau cascade). Chạy qua stdin từ cwd repo (`cat script.mjs | node --input-type=module`) vì `pg` chỉ có trong `node_modules` repo.
+
+**Scope lô đầu = chỉ Phần A trắc nghiệm.** Phần B (Đúng-sai — có `menh_de` jsonb, `loai_cau='dung_sai'`), C (TLN, `loai_cau='tra_loi_ngan'`), D (Tự luận, `loai_cau='tu_luan'`) chưa xử — làm sau khi CEO thấy chất lượng lô đầu OK.
+
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
 - **⭐⭐ Đưa script kiểm cho bên bị kiểm = Goodhart (hs-home v3, 08/09):** ChatGPT cầm `design-check.mjs` trong tay → sinh asset để
@@ -1834,6 +1859,13 @@ worktree chưa merge: 202608151600 · 202609041045 · 202609051251 · 2026090818
 - **"Nhãn" (`nguoi_cham_id`) không phải "việc".** Cột gán người tồn tại từ 14/08 nhưng không màn nào lọc theo nó và Việc của tôi không có card ⇒ với người dùng bằng không có. Thêm cột assign thì phải thêm luôn đường "việc của tôi" trong cùng lượt.
 - **Snapshot thuộc tính phân loại lúc neo, đừng join live để tính báo cáo.** `nhanh`/`muc_do`/`ten_chuyen_de` ghi vào `ca_test_cau` lúc gán đề ⇒ hàm phiếu chỉ gom 2 bảng, không nhân đôi registry môn→bảng trong SQL, đề/dạng sửa sau không làm lệch phiếu cũ.
 - **Hàng "không ở kho câu" (`HINH:<uuid>`) bị `layCauTheoThuTu` bỏ rơi không báo** — cùng họ với `.filter(Boolean)` nuốt tham chiếu chết. Mọi chỗ "resolve mã → nội dung" phải nói ra số hàng KHÔNG resolve được.
+
+### Bài học 10/09 tối — Claude nhập câu vào kho (HGT PT mặt phẳng)
+- **⭐ Nguồn công thức MathType cũ = docx MÙ, phải dùng PDF vision.** DOCX Toán Tứ Tâm 2 MB có 758 `.wmf` (ảnh vector rời từ MathType 6/7 khi paste) + 0 OMML — pandoc chỉ trả text + `![](imageXX.wmf)`; Claude không đọc được nội dung công thức. Cùng file export PDF: Claude `Read pages=1-N` render vision đọc math sharp, extract LaTeX ổn định. Áp dụng cho MỌI tài liệu Toán VN trước ~2020 (thời MathType thống trị) — hỏi có PDF không, có thì dùng PDF; không thì export tay trước.
+- **⭐ Kiểm HÌNH VẼ TRƯỚC bulk INSERT, không phải sau.** Bỏ qua `anh_de` cho câu có hình lập phương/tứ diện = HS đọc câu vẫn tưởng tượng được, nhưng LỜI GIẢI gốc ghi "Dựa vào hình vẽ" thành đứt logic. Pass đầu tách câu cũng phải grep pandoc md `![](image...png)` (PNG = hình vẽ, WMF = công thức) → nhận diện câu có ảnh → upload cùng lượt, không tách pha. Đặt vào `anh_de` (không `anh_dap_an`) khi HS cần thấy khi ĐỌC ĐỀ để định vị tên đỉnh — không phải sau khi làm xong.
+- **⭐ `ma_cau` phải EXPLICIT theo convention `<dang><STT 3 số>` (`src/lib/kho/api.ts:447`), đừng để default `GC000001`.** Column default `('GC'||nextval)` là legacy — mọi câu thật đều dùng convention TS. STT = `MAX(ma_cau WHERE ma_cau LIKE '<dang>%')` + 1. FK `parent_ma_cau` + `hgt_cau_hoi_yeu_cau_giai.ma_cau` đều ON UPDATE CASCADE nên rename sau cũng an toàn (đã test) — nhưng vẫn nên đúng ngay từ đầu để CEO không phải sửa tay lúc duyệt.
+- **⭐ Verify script phải in `duyet_at` để phân biệt "trigger tự set" vs "người bấm".** Sau UPDATE nếu thấy `da_duyet=true` bất ngờ, đọc `duyet_at`: đồng loạt cùng timestamp = trigger; rải rác vài giây/câu = CEO đang bấm duyệt SONG SONG (Claude làm việc trong lúc CEO mở màn duyệt). Đã suýt gọi bug oan 1 lần. Trigger `_kho_cau_duyet_nguon` thực chất chỉ trigger `BEFORE INSERT OR UPDATE OF da_duyet, duyet_nguon` — không chạm khi rename `ma_cau` hay set `anh_de`.
+- **`dang_ai_de_xuat=dang_chinh` khi AI đề xuất, không NULL.** Spec `202609080938_kho_duyet_hop_nhat.sql` dùng cột này đo precision AI = count(ai=chính)/count(ai not null). Nếu bỏ NULL thì mất mọi câu AI nạp trong mẫu số ⇒ số precision không đo được. Người duyệt đổi `dang_chinh` khi sai; `dang_ai_de_xuat` giữ vết bản gốc.
 
 ## ③ Nhật ký
 → Chuyển sang **`DEVLOG.md`** (log thô append-only, theo ngày, KHÔNG load khi làm). Là nguồn bất biến để truy lại / tổng hợp lại HANDOFF nếu bản này sai logic.
