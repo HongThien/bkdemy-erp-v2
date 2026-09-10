@@ -532,7 +532,7 @@ export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
       uuTien += 12
     }
 
-    // Kênh 2 — % dạng yếu / tổng dạng đã đo > 10% (Thùy 08-23: thay "dạng yếu tuyệt đối tự đủ vào
+    // Kênh 2 — % dạng yếu / tổng dạng đã đo (ngưỡng: xem sig2 bên dưới) (Thùy 08-23: thay "dạng yếu tuyệt đối tự đủ vào
     // danh sách" cũ — 1 dạng yếu lẻ giữa hàng chục dạng ổn không còn tự kéo HS vào hàng đợi nữa,
     // phải chiếm tỉ trọng đáng kể mới tính). Thùy 08-23 (vòng 2): PHẠM VI TỐI ĐA 2 CỬA SỔ — chỉ tính
     // trên dạng có lần đo GẦN NHẤT (`cuoiCungAt`) rơi vào cửa sổ hiện tại hoặc liền trước, cùng
@@ -541,11 +541,17 @@ export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
     const dangGanDay = s.dangs.filter((d) => { const w = cuaSoCua(d.cuoiCungAt); return w === hienTaiK2 || w === truocK2 })
     const nDangDo = dangGanDay.length
     const nYeu = dangGanDay.filter((d) => d.muc === 'yeu').length
+    const nDat = dangGanDay.filter((d) => d.muc === 'dat').length
     const pctYeu = nDangDo > 0 ? nYeu / nDangDo : 0
-    const sig2 = nDangDo > 0 && pctYeu > 0.10
+    const pctDat = nDangDo > 0 ? nDat / nDangDo : 1
+    // Thùy 09-10 chốt (sau ca Đỗ Ngọc Tuấn 7K1: 2/19 = 11% yếu nhưng 14/19 đạt, ET trên TB lớp — không đáng đi bổ trợ):
+    // >15% yếu, HOẶC >10% yếu VÀ tỉ lệ đạt < 50% (nền mỏng: yếu ít nhưng "cần luyện" nhiều). Đo Toán 09-10: kênh ②
+    // 126 → 100 HS, "chỉ vì ②" 13 → 9; 4/5 ca sát biên 10–15% có nền tốt rớt đúng, giữ Trần Khánh Vy 7B2 (2/16 yếu, 7/16 đạt).
+    const sig2 = nDangDo > 0 && (pctYeu > 0.15 || (pctYeu > 0.10 && pctDat < 0.5))
     if (sig2) {
       kenh.push('pct_yeu')
-      lyDo.push(`② % dạng yếu (2 cửa sổ gần nhất): ${nYeu}/${nDangDo} = ${Math.round(pctYeu * 100)}%`)
+      lyDo.push(`② % dạng yếu (2 cửa sổ gần nhất): ${nYeu}/${nDangDo} = ${Math.round(pctYeu * 100)}%`
+        + (pctYeu <= 0.15 ? ` · đạt chỉ ${nDat}/${nDangDo} = ${Math.round(pctDat * 100)}%` : ''))
       uuTien += 10
     }
 
