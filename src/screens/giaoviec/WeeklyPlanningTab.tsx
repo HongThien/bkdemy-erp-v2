@@ -11,7 +11,7 @@ import {
 } from '../../lib/giaoviec'
 import { kyTuanHienTai, kyTuanCuaNgay, nhanKyTuan } from '../../lib/giaoviec-config'
 import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Badge, VIEC_TT, Empty, ErrBar, Modal, Field, NguoiChip, NguoiPicker, DeadlineChip, fmtNgay } from './ui'
-import { NghiemThuModal, HuyModal, ChuyenModal } from './TaskActions'
+import { NghiemThuModal, HuyModal, ChuyenModal, DongCumModal } from './TaskActions'
 import GiaoViecModal, { type GiaoPrefill } from './GiaoViecModal'
 
 export default function WeeklyPlanningTab() {
@@ -26,6 +26,7 @@ export default function WeeklyPlanningTab() {
   const [nghiemModal, setNghiemModal] = useState<ViecFull | null>(null)
   const [huyModal, setHuyModal] = useState<ViecFull | null>(null)
   const [chuyenModal, setChuyenModal] = useState<ViecFull | null>(null)
+  const [dongCumModal, setDongCumModal] = useState<ViecFull | null>(null)
 
   async function reload() {
     setLoading(true); setErr(null)
@@ -116,8 +117,10 @@ export default function WeeklyPlanningTab() {
         <MeDetailModal
           v={rows.find((r) => r.id === meDetail.id) ?? meDetail}
           soCon={(conByMe.get(meDetail.id) ?? []).length}
+          soConDat={(conByMe.get(meDetail.id) ?? []).filter((c) => c.trang_thai === 'dat').length}
           onClose={() => setMeDetail(null)}
           onTachCon={() => { setGiaoPrefill(tachConPrefill(meDetail)); setMeDetail(null) }}
+          onDongCum={() => { setDongCumModal(meDetail); setMeDetail(null) }}
           onSaved={reload}
         />
       )}
@@ -139,6 +142,15 @@ export default function WeeklyPlanningTab() {
       {nghiemModal && <NghiemThuModal v={nghiemModal} onClose={() => setNghiemModal(null)} onDone={() => { setNghiemModal(null); reload() }} />}
       {huyModal && <HuyModal v={huyModal} onClose={() => setHuyModal(null)} onDone={() => { setHuyModal(null); reload() }} />}
       {chuyenModal && <ChuyenModal v={chuyenModal} onClose={() => setChuyenModal(null)} onDone={() => { setChuyenModal(null); reload() }} />}
+      {dongCumModal && (
+        <DongCumModal
+          v={dongCumModal}
+          soCon={(conByMe.get(dongCumModal.id) ?? []).length}
+          soConDat={(conByMe.get(dongCumModal.id) ?? []).filter((c) => c.trang_thai === 'dat').length}
+          onClose={() => setDongCumModal(null)}
+          onDone={() => { setDongCumModal(null); reload() }}
+        />
+      )}
     </div>
   )
 }
@@ -270,8 +282,8 @@ function CapNhatXem({ viecId }: { viecId: string }) {
 
 // DETAIL + SỬA task mẹ (container) — mục tiêu/output/deadline ở đây sẽ được các con
 // "theo scope" kế thừa. Mẹ KHÔNG có PIC/khối lượng/trạng thái riêng (con mới là đơn vị làm).
-function MeDetailModal({ v, soCon, onClose, onTachCon, onSaved }: {
-  v: ViecFull; soCon: number; onClose: () => void; onTachCon: () => void; onSaved: () => void
+function MeDetailModal({ v, soCon, soConDat, onClose, onTachCon, onDongCum, onSaved }: {
+  v: ViecFull; soCon: number; soConDat: number; onClose: () => void; onTachCon: () => void; onDongCum: () => void; onSaved: () => void
 }) {
   const [sua, setSua] = useState(false)
   const [mt, setMt] = useState(v.muc_tieu ?? ''); const [out, setOut] = useState(v.output ?? ''); const [dl, setDl] = useState(v.deadline ?? '')
@@ -302,7 +314,7 @@ function MeDetailModal({ v, soCon, onClose, onTachCon, onSaved }: {
         <p className="text-[12px] text-slate-500">
           {v.nguoi_lam_id
             ? (soCon > 0
-              ? 'Giao cho 1 người + đã tách con — trạng thái TỰ đóng khi 100% con đạt, không có nút hoàn thành riêng.'
+              ? 'Giao cho 1 người + đã tách con — bạn CHỦ ĐỘNG đóng cụm khi chắc chắn không còn con nào cần tách thêm (không tự đóng nữa).'
               : 'Đã giao cho 1 người, chưa tách con nào — vẫn là task bình thường (xem ở "Việc của tôi").')
             : 'Container — không tự làm, gồm ' + soCon + ' task con.'} Mục tiêu/output ở đây là CHUẨN CHUNG mà con "theo scope" sẽ kế thừa.
         </p>
@@ -344,7 +356,14 @@ function MeDetailModal({ v, soCon, onClose, onTachCon, onSaved }: {
           </div>
         )}
         <div className="flex justify-between border-t border-slate-100 pt-3">
-          <button onClick={onTachCon} className="rounded-md border border-indigo-300 px-2.5 py-1.5 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">+ Tách task con</button>
+          <div className="flex gap-2">
+            <button onClick={onTachCon} className="rounded-md border border-indigo-300 px-2.5 py-1.5 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">+ Tách task con</button>
+            {soCon > 0 && v.trang_thai !== 'dat' && (
+              <button onClick={onDongCum} className="rounded-md border border-emerald-300 px-2.5 py-1.5 text-[12px] font-medium text-emerald-700 hover:bg-emerald-50">
+                {soConDat === soCon ? '✓ Đóng cụm' : `Đóng cụm (${soConDat}/${soCon} con đạt)`}
+              </button>
+            )}
+          </div>
           <button onClick={onClose} className={CX_BTN_GHOST}>Đóng</button>
         </div>
       </div>
