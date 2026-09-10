@@ -55,9 +55,15 @@ export async function updateMtMeta(id: string, patch: Partial<MTMeta>): Promise<
 }
 
 // ── MT MASTER (CRUD) ──────────────────────────────────────────────────────
-export async function listMT(mon?: string): Promise<TaiLieu[]> {
-  let q = supabase.from('tai_lieu').select('*').eq('loai', 'mt').is('lop_id', null).order('created_at', { ascending: false }).limit(LIMIT)
+// PAGE_MOI_NHAT/PAGE_SEARCH — cùng chủ trương "20 gần nhất" 09-10 với listAllTaiLieu/listBT (§tailieu.ts).
+const PAGE_MOI_NHAT = 20
+const PAGE_SEARCH = 200
+export async function listMT(mon?: string, opts?: { before?: string; search?: string }): Promise<TaiLieu[]> {
+  let q = supabase.from('tai_lieu').select('*').eq('loai', 'mt').is('lop_id', null).order('created_at', { ascending: false })
   if (mon) q = q.eq('mon', mon)
+  const s = opts?.search?.trim()
+  if (s) q = q.ilike('ten', `%${s}%`).limit(PAGE_SEARCH)
+  else { if (opts?.before) q = q.lt('created_at', opts.before); q = q.limit(PAGE_MOI_NHAT) }
   const { data, error } = await q
   if (error) throw error
   return (data ?? []) as TaiLieu[]

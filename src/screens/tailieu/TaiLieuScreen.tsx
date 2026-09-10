@@ -3,8 +3,11 @@ import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import { listTaiLieu, createTaiLieu, deleteTaiLieu, type TaiLieu } from '../../lib/tailieu'
 import { useStore } from '../../store/useStore'
 import { useMonScope } from '../../hooks/useMonScope'
+import { usePagedList } from '../../hooks/usePagedList'
 import { Shell, Field, inp } from '../kho/ui'
 import TaiLieuBuilder from './TaiLieuBuilder'
+
+const PAGE = 20 // "20 tài liệu gần nhất" (Thùy 09-10) — xem usePagedList
 
 // Môn CÓ KHO (soạn tài liệu được). Anh/Văn chưa có kho.
 const KHO_MON = ['Toán', 'KHTN']
@@ -19,12 +22,11 @@ const ALL = '__all__'
 
 export default function TaiLieuScreen() {
   const [khoi, setKhoi] = useState<string>(DEFAULT_KHOI)
-  const [list, setList] = useState<TaiLieu[]>([])
-  const [loading, setLoading] = useState(true)
-  const [err, setErr] = useState<string | null>(null)
   const [creating, setCreating] = useState(false)
   const [openId, setOpenId] = useState<string | null>(null)
+  const [qLive, setQLive] = useState('')
   const [q, setQ] = useState('')
+  useEffect(() => { const t = setTimeout(() => setQ(qLive), 300); return () => clearTimeout(t) }, [qLive])
   const [sort, setSort] = useState<'moi' | 'ten'>('moi')
   // Scope④ MÔN (useMonScope): admin/Ops/Media/Marketing = mọi môn có kho; staff = môn được phân ∩ môn-có-kho.
   const me = useStore((s) => s.me)
@@ -37,17 +39,15 @@ export default function TaiLieuScreen() {
   // null = Đại (mặc định, không đổi hành vi cũ) · 'hinh_gt' = Hình giải tích.
   const [nhanh, setNhanh] = useState<string | null>(null)
 
-  async function reload() {
-    if (!mon) { setList([]); setLoading(false); return }
-    setLoading(true); setErr(null)
-    try { setList(await listTaiLieu(khoi === ALL ? undefined : khoi, 'giao_trinh', mon, mon === 'Toán' ? nhanh : undefined)) } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
-  }
-  useEffect(() => { reload() }, [khoi, mon, nhanh]) // eslint-disable-line
-
-  // search + sort ở client (list 1 khối/ tất cả đều nhỏ)
-  const shown = list
-    .filter((t) => !q.trim() || t.ten.toLowerCase().includes(q.trim().toLowerCase()))
-    .sort((a, b) => sort === 'ten' ? a.ten.localeCompare(b.ten, 'vi') : (b.created_at ?? '').localeCompare(a.created_at ?? ''))
+  // ⭐ 09-10 (Thùy: "rất nhiều builder tải cực lâu khi số lượng lớn") — mặc định chỉ PAGE giáo trình mới
+  // nhất/khối+môn (+"Tải thêm"); gõ tìm → server-side ilike, không còn lọc trên list đã tải hết.
+  const { rows: list, loading, loadingMore, hasMore, err, reload, loadMore } = usePagedList<TaiLieu>(
+    async ({ before, search }) => mon ? listTaiLieu(khoi === ALL ? undefined : khoi, 'giao_trinh', mon, mon === 'Toán' ? nhanh : undefined, { before, search, limit: PAGE }) : [],
+    (t) => t.created_at,
+    PAGE, q, [khoi, mon, nhanh],
+  )
+  // sort ở client — CHỈ sắp lại trang đã tải (không phải tính toán nghiệp vụ, thuần UI).
+  const shown = [...list].sort((a, b) => sort === 'ten' ? a.ten.localeCompare(b.ten, 'vi') : (b.created_at ?? '').localeCompare(a.created_at ?? ''))
 
   if (openId) return <TaiLieuBuilder id={openId} onClose={() => { setOpenId(null); reload() }} />
 
@@ -70,7 +70,7 @@ export default function TaiLieuScreen() {
           </div>
         )}
         <div className="ml-auto flex items-center gap-1">
-          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm theo tên…" className="mr-2 h-7 w-44 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
+          <input value={qLive} onChange={(e) => setQLive(e.target.value)} placeholder="Tìm theo tên…" className="mr-2 h-7 w-44 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
           <button onClick={() => setSort(sort === 'moi' ? 'ten' : 'moi')} className="mr-2 h-7 rounded-md border border-slate-200 px-2.5 text-[12px] font-medium text-slate-500 hover:bg-slate-100">{sort === 'moi' ? '↓ Mới nhất' : 'A→Z Tên'}</button>
           <span className="mr-1 text-[12px] font-semibold uppercase tracking-wider text-slate-600">Khối</span>
           <button onClick={() => setKhoi(ALL)} className={`h-7 rounded-md px-2 text-xs font-semibold transition ${khoi === ALL ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`}>Tất cả</button>
@@ -88,7 +88,7 @@ export default function TaiLieuScreen() {
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
           : shown.length === 0 ? (
             <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">
-              {q.trim() ? <>Không có giáo trình khớp “{q}”.</> : <>Chưa có giáo trình {khoi === ALL ? '' : `khối ${khoi}`}. Bấm <b className="text-slate-600">+ Tạo giáo trình</b>.</>}
+              {qLive.trim() ? <>Không có giáo trình khớp “{qLive}”.</> : <>Chưa có giáo trình {khoi === ALL ? '' : `khối ${khoi}`}. Bấm <b className="text-slate-600">+ Tạo giáo trình</b>.</>}
             </div>
           ) : (
             <>
@@ -106,6 +106,11 @@ export default function TaiLieuScreen() {
                 </div>
               ))}
             </div>
+            {hasMore && !qLive.trim() && (
+              <div className="mt-4 flex justify-center">
+                <button onClick={loadMore} disabled={loadingMore} className="rounded-md border border-slate-200 bg-white px-4 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-300 disabled:opacity-40">{loadingMore ? 'Đang tải…' : `↓ Tải thêm ${PAGE}`}</button>
+              </div>
+            )}
             </>
           )}
       </div>

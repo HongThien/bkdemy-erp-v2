@@ -25,9 +25,15 @@ export type DeThi = {
   created_at?: string; updated_at?: string
 }
 
-export async function listDeThi(mon?: string): Promise<DeThi[]> {
-  let q = supabase.from('tai_lieu').select('*').eq('loai', 'de_thi').order('created_at', { ascending: false }).limit(1000)
+// PAGE_MOI_NHAT/PAGE_SEARCH — cùng chủ trương "20 gần nhất" 09-10 (§tailieu.ts listAllTaiLieu).
+const PAGE_MOI_NHAT = 20
+const PAGE_SEARCH = 200
+export async function listDeThi(mon?: string, opts?: { before?: string; search?: string }): Promise<DeThi[]> {
+  let q = supabase.from('tai_lieu').select('*').eq('loai', 'de_thi').order('created_at', { ascending: false })
   if (mon) q = q.eq('mon', mon)
+  const s = opts?.search?.trim()
+  if (s) q = q.ilike('ten', `%${s}%`).limit(PAGE_SEARCH)
+  else { if (opts?.before) q = q.lt('created_at', opts.before); q = q.limit(PAGE_MOI_NHAT) }
   const { data, error } = await q
   if (error) throw error
   return (data ?? []) as DeThi[]

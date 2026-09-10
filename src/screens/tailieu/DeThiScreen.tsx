@@ -11,6 +11,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useStore } from '../../store/useStore'
 import { useMonScope } from '../../hooks/useMonScope'
+import { usePagedList } from '../../hooks/usePagedList'
 import {
   listDeThi, createDeThi, renameDeThi, deThiMeta, updateDeThiMeta, attachPdfGoc,
   addPhanDeThi, getPhanCauList, type DeThi, type DeThiMeta,
@@ -34,6 +35,7 @@ import DeThiPrintView from './DeThiPrintView'
 const MONS = ['Toán', 'KHTN']
 const LOAI_LABEL: Record<string, string> = { trac_nghiem: 'Trắc nghiệm', dung_sai: 'Đúng / sai', tra_loi_ngan: 'Trả lời ngắn', tu_luan: 'Tự luận' }
 const readB64 = (f: File) => new Promise<string>((res, rej) => { const r = new FileReader(); r.onload = () => res(String(r.result).split(',')[1]); r.onerror = rej; r.readAsDataURL(f) })
+const PAGE = 20 // "20 tài liệu gần nhất" (Thùy 09-10) — xem usePagedList
 
 // ═══════════ LIST (leaf lamtailieu:de_thi) — chọn đề để sửa / tạo mới ═══════════
 export default function DeThiScreen() {
@@ -41,14 +43,14 @@ export default function DeThiScreen() {
   const allowedMons = isAll ? MONS : MONS.filter((m) => monScope.includes(m))
   const [mon, setMon] = useState(allowedMons[0] ?? 'Toán')
   useEffect(() => { if (allowedMons.length && !allowedMons.includes(mon)) setMon(allowedMons[0]) }, [allowedMons.join(',')]) // eslint-disable-line
-  const [list, setList] = useState<DeThi[]>([])
-  const [loading, setLoading] = useState(true)
   const [openId, setOpenId] = useState<string | null>(null)
   const [creating, setCreating] = useState(false)
   const [nhap, setNhap] = useState(false)
 
-  async function reload() { setLoading(true); try { setList(await listDeThi(mon)) } finally { setLoading(false) } }
-  useEffect(() => { reload() }, [mon]) // eslint-disable-line
+  // ⭐ 09-10 (Thùy: "rất nhiều builder tải cực lâu khi số lượng lớn") — mặc định chỉ PAGE đề thi mới nhất/môn.
+  const { rows: list, loading, loadingMore, hasMore, reload, loadMore } = usePagedList<DeThi>(
+    ({ before, search }) => listDeThi(mon, { before, search }), (d) => d.created_at, PAGE, '', [mon],
+  )
 
   if (openId) return <DeThiEditor id={openId} onClose={() => { setOpenId(null); reload() }} />
 
@@ -69,6 +71,7 @@ export default function DeThiScreen() {
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : list.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 bg-white py-14 text-center text-sm text-slate-400">Chưa có đề thi nào ở môn {mon}.</div>
           : (
+            <>
             <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
               {list.map((d) => {
                 const m = deThiMeta(d)
@@ -80,6 +83,12 @@ export default function DeThiScreen() {
                 )
               })}
             </div>
+            {hasMore && (
+              <div className="mt-4 flex justify-center">
+                <button onClick={loadMore} disabled={loadingMore} className="rounded-md border border-slate-200 bg-white px-4 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-300 disabled:opacity-40">{loadingMore ? 'Đang tải…' : `↓ Tải thêm ${PAGE}`}</button>
+              </div>
+            )}
+            </>
           )}
       </div>
       {creating && <TaoDeThiModal mon={mon} onClose={() => setCreating(false)} onCreated={(id) => { setCreating(false); setOpenId(id) }} />}

@@ -169,26 +169,49 @@ export type HinhRowInfo = { kind: 'ghep' | 'bienthe' | 'y'; luaId?: string | nul
 export type TaiLieuFull = { taiLieu: TaiLieu; phans: PhanResolved[]; ltChuyenDe: Record<string, LtRow | null>; tenChuyenDe: Record<string, string> }
 
 // ── Thư viện (CRUD tài liệu) ──────────────────────────────────────
+// ⭐ 09-10 (Thùy: "Kho tài liệu cũng ko tải hết nữa, rất nhiều builder dùng trang trực tiếp") — thư viện
+// càng lớn (ET/BTVN/giáo trình buổi tích luỹ theo lớp×ngày) thì list KHÔNG limit/offset càng chậm. Mặc
+// định chỉ tải `PAGE_MOI_NHAT` dòng mới nhất; `opts.search` = người dùng CHỦ ĐỘNG tìm — quét rộng hơn
+// (PAGE_SEARCH) vì tài liệu khớp tên có thể cũ hơn trang mặc định; `opts.before` = cursor (created_at
+// của dòng cuối trang trước) cho "Tải thêm". Xem hook dùng chung `usePagedList` (src/hooks).
+export const PAGE_MOI_NHAT = 20
+const PAGE_SEARCH = 200
+export type ListPageOpts = { before?: string; search?: string; limit?: number }
 // nhanh: undefined = không lọc (mọi nhánh) · null = CHỈ Đại (nhanh is null) · string = CHỈ nhánh đó.
-export async function listTaiLieu(khoi?: string, loai = 'giao_trinh', mon?: string, nhanh?: string | null): Promise<TaiLieu[]> {
+export async function listTaiLieu(khoi?: string, loai = 'giao_trinh', mon?: string, nhanh?: string | null, opts?: ListPageOpts): Promise<TaiLieu[]> {
   // khoi = undefined → tất cả khối. mon = undefined → mọi môn.
-  let q = supabase.from('tai_lieu').select('*').eq('loai', loai).order('created_at', { ascending: false }).limit(LIMIT)
+  let q = supabase.from('tai_lieu').select('*').eq('loai', loai).order('created_at', { ascending: false })
   if (khoi) q = q.eq('khoi', khoi)
   if (mon) q = q.eq('mon', mon)
   if (nhanh === null) q = q.is('nhanh', null)
   else if (nhanh) q = q.eq('nhanh', nhanh)
+  if (opts?.before) q = q.lt('created_at', opts.before)
+  if (opts?.search?.trim()) q = q.ilike('ten', `%${opts.search.trim()}%`)
+  q = q.limit(opts?.limit ?? (opts?.search?.trim() ? PAGE_SEARCH : PAGE_MOI_NHAT))
   const { data, error } = await q
   if (error) throw error
   return (data ?? []) as TaiLieu[]
 }
 // Kho tài liệu = MỌI loại (giáo trình/ET/…). lop_id/ngay cho ET. mon = undefined → mọi môn (admin); set → lọc môn.
-export async function listAllTaiLieu(mon?: string | string[]): Promise<TaiLieu[]> {
-  let q = supabase.from('tai_lieu').select('*').order('created_at', { ascending: false }).limit(LIMIT)
+export async function listAllTaiLieu(mon?: string | string[], opts?: ListPageOpts & { loai?: string }): Promise<TaiLieu[]> {
+  let q = supabase.from('tai_lieu').select('*').order('created_at', { ascending: false })
   if (Array.isArray(mon)) { if (mon.length) q = q.in('mon', mon) }
   else if (mon) q = q.eq('mon', mon)
+  if (opts?.loai) q = q.eq('loai', opts.loai)
+  if (opts?.before) q = q.lt('created_at', opts.before)
+  if (opts?.search?.trim()) q = q.ilike('ten', `%${opts.search.trim()}%`)
+  q = q.limit(opts?.limit ?? (opts?.search?.trim() ? PAGE_SEARCH : PAGE_MOI_NHAT))
   const { data, error } = await q
   if (error) throw error
   return (data ?? []) as TaiLieu[]
+}
+// Facet cho tab lọc Loại/Môn ở Kho tài liệu — cần THẤY HẾT giá trị phân biệt kể cả ở tài liệu cũ (ngoài
+// trang "20 mới nhất"). DISTINCT = phép tổng hợp (§2.0 CLAUDE.md) → chạy Ở POSTGRES (fn_tai_lieu_facets,
+// mig 202609101159), không fetch cột về rồi new Set() ở client (vẫn phải quét hết dù chỉ 2 cột).
+export async function listTaiLieuFacets(): Promise<{ loai: string; mon: string }[]> {
+  const { data, error } = await supabase.rpc('fn_tai_lieu_facets')
+  if (error) throw error
+  return (data ?? []) as { loai: string; mon: string }[]
 }
 export async function createTaiLieu(input: { loai?: string; ten: string; khoi: string; mon?: string; nhanh?: string | null; ma_chuyen_de?: string | null; theme?: string }): Promise<TaiLieu> {
   const { data: { user } } = await supabase.auth.getUser() // người tạo = session hiện tại
