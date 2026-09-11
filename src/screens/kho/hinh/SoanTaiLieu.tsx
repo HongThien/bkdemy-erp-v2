@@ -563,21 +563,44 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
   // vào 1 saveNow, tránh race. Không có onBulk → 2 call rời (backward-compat, race hiếm khi cắn).
   // Setup so_dong mặc định cho pick Nha/ET mới: nếu đã có bài cùng phần thì lấy soDong bài cuối
   // (giữ số dòng "cả chuỗi" người dùng đã set); không thì DONG_BTVN.
+  // ⭐ 11/09 v2 (Thùy: "Các câu trong cùng 1 chuỗi phải ghép thành 1 bài có ý a,b,c,d cơ mà") —
+  // add pick 'ghep' luaId=null (đề chuẩn) của chuỗi X → MERGE vào pick 'ghep' luaId=null đang có
+  // của cùng chuỗi + phần (nếu có), thay vì tạo pick lẻ. Thứ tự nodeIds giữ theo THỨ TỰ CẤP của
+  // chuỗi (component) để in ra a,b,c đúng chiều dữ kiện→đích. Picks 'bienthe'/'y' cùng chuỗi
+  // KHÔNG động (biến thể lứa/ý thật là lựa chọn có chủ đích, tách riêng đúng).
   const addManyPicks = (adds: PickItem[]) => {
     if (!adds.length) return
-    const nextPicks = [...picks, ...adds]
-    const needSoDong = adds.filter((a) => a.phan === 'nha' || a.phan === 'et')
-    let nextSoDong: Record<string, number> | null = null
-    if (needSoDong.length) {
-      const patch: Record<string, number> = { ...soDong }
-      for (const a of needSoDong) {
-        const dsCu = picks.filter((p) => p.phan === a.phan)
-        patch[a.key] = dsCu.length ? (soDong[dsCu[dsCu.length - 1].key] ?? DONG_BTVN) : DONG_BTVN
+    const nextPicks = [...picks]
+    const nextSoDong: Record<string, number> = { ...soDong }
+    let soDongChanged = false
+    for (const a of adds) {
+      // Đề chuẩn (ghep + luaId=null) → tìm chuỗi + merge vào pick đề chuẩn của cùng chuỗi (nếu có)
+      if (a.kind === 'ghep' && a.luaId === null && a.nodeIds.length) {
+        let comp = components.find((c) => a.nodeIds.every((id) => c.some((bt) => bt.id === id))) ?? null
+        if (!comp) comp = api.chuoiKetNoi(L, a.nodeIds[0])
+        const compIds = new Set(comp.map((b) => b.id))
+        const idx = nextPicks.findIndex((p) =>
+          p.phan === a.phan && p.kind === 'ghep' && p.luaId === null &&
+          p.nodeIds.length > 0 && p.nodeIds.every((id) => compIds.has(id)))
+        if (idx >= 0) {
+          const merged = new Set([...nextPicks[idx].nodeIds, ...a.nodeIds])
+          // Sắp theo thứ tự cấp của comp (đảm bảo a,b,c đúng dữ kiện→đích).
+          const sortedIds = comp.filter((b) => merged.has(b.id)).map((b) => b.id)
+          nextPicks[idx] = { ...nextPicks[idx], nodeIds: sortedIds }
+          continue // KHÔNG add pick mới, giữ nguyên key/soDong/cheDo của pick cũ
+        }
       }
-      nextSoDong = patch
+      // Không merge được → add pick mới như cũ
+      nextPicks.push(a)
+      if (a.phan === 'nha' || a.phan === 'et') {
+        const dsCu = picks.filter((p) => p.phan === a.phan)
+        nextSoDong[a.key] = dsCu.length ? (soDong[dsCu[dsCu.length - 1].key] ?? DONG_BTVN) : DONG_BTVN
+        soDongChanged = true
+      }
     }
-    if (onBulk) onBulk(nextSoDong ? { picks: nextPicks, soDong: nextSoDong } : { picks: nextPicks })
-    else { onChangePicks(nextPicks); if (nextSoDong) onChangeSoDong(nextSoDong) }
+    const patch = soDongChanged ? { picks: nextPicks, soDong: nextSoDong } : { picks: nextPicks }
+    if (onBulk) onBulk(patch)
+    else { onChangePicks(nextPicks); if (soDongChanged) onChangeSoDong(nextSoDong) }
   }
 
   // ⭐ 11/09 — click 1 dòng bài đã chọn → mở ChonChuoiPopup (đổi bản/ý) như hiện tại. State nâng
