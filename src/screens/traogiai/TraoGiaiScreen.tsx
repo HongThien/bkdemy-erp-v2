@@ -395,7 +395,7 @@ function BangDaChot({ rows, ym }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiG
               const dangChup = busy.has(k) || !!bulk
               return (
                 <tr key={slot.giaiThuongId ?? `${card.lopId}:${slot.hocSinhId}`} className="border-t border-slate-100 hover:bg-slate-50/60">
-                  <td className="px-3 py-2 font-bold text-slate-800">{card.tenLop} <span className="font-normal text-slate-400">· {card.mon}</span></td>
+                  <td className="px-3 py-2 font-bold text-slate-800">{card.tenLop} <span className="font-normal text-slate-400">· {card.mon} · {card.siSo} HS</span></td>
                   <td className="px-3 py-2 font-semibold text-slate-800">{slot.hoTen} {slot.maHs && <span className="font-normal text-slate-400">({slot.maHs})</span>}</td>
                   <td className="px-3 py-2"><span className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] font-bold ${ui.iconBg} ${ui.iconText}`}>{ui.icon} {ui.ten}</span></td>
                   <td className="px-3 py-2 text-right font-bold text-slate-800">{fmtMT(m?.mt ?? null)}</td>
@@ -474,6 +474,7 @@ function ClassCard({ card, busy, effectiveSlot, onToggleConfirm, onChangePerson,
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-[12px] font-extrabold text-blue-600">{card.tenLop.slice(0, 4)}</div>
             <div className="min-w-0">
               <h3 className="truncate text-[14px] font-bold text-slate-900">Lớp {card.tenLop}</h3>
+              <div className="text-[11px] font-medium text-slate-500">{card.siSo} HS · {card.mon}</div>
               <div className={`text-[11px] font-semibold ${locked ? 'text-emerald-600' : card.daXacNhan ? 'text-orange-600' : 'text-slate-400'}`}>
                 {card.daXacNhan}/{card.tongSlot}{locked ? ' · đã HT' : ''}{card.daCongBo > 0 ? ` · CB ${card.daCongBo}` : ''}
               </div>
