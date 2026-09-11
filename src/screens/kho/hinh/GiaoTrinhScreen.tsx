@@ -356,7 +356,8 @@ function BuoiCardHinh({ L, buoi, no, onDeleted, onPreview }: {
       <div className="p-3">
         {!nhap ? <div className="p-4 text-[12.5px] text-slate-400">Đang tải…</div> : (
           <BuoiPickEditor L={L} picks={nhap.picks} cheDo={nhap.cheDo} soDong={nhap.soDong} filterKey={buoi.id}
-            onChangePicks={(picks) => saveNow({ picks })} onChangeCheDo={(cheDo) => saveNow({ cheDo })} onChangeSoDong={(soDong) => saveNow({ soDong })} />
+            onChangePicks={(picks) => saveNow({ picks })} onChangeCheDo={(cheDo) => saveNow({ cheDo })} onChangeSoDong={(soDong) => saveNow({ soDong })}
+            onBulk={saveNow} />
         )}
       </div>
     </div>
