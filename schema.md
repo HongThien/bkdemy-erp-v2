@@ -708,6 +708,7 @@
 | dang_ai_de_xuat | text | Y |  |  |  |
 | kiem_may_lo | uuid | Y |  | FK→kho_kiem_lo.id |  |
 | kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at, giai_method) |  |  |
+| ten_de_goc | text | Y |  |  |  |
 
 ## dai_cau_hoi_clone_cho_duyet
 
@@ -1201,6 +1202,7 @@
 | dang_ai_de_xuat | text | Y |  |  |  |
 | kiem_may_lo | uuid | Y |  | FK→kho_kiem_lo.id |  |
 | kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at, giai_method) |  |  |
+| ten_de_goc | text | Y |  |  |  |
 
 ## hgt_cau_hoi_yeu_cau_giai
 
@@ -2052,6 +2054,7 @@
 | dang_ai_de_xuat | text | Y |  |  |  |
 | kiem_may_lo | uuid | Y |  | FK→kho_kiem_lo.id |  |
 | kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at, giai_method) |  |  |
+| ten_de_goc | text | Y |  |  |  |
 
 ## khtn_cau_hoi_yeu_cau_giai
 
