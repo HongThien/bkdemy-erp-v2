@@ -1,7 +1,7 @@
 // KHO TÀI LIỆU = bảng tổng MỌI tài liệu đã tạo trong hệ (giáo trình · ET · MT · chuyên đề…).
 // Cột thông tin + nút IN (giáo trình→PrintView, ET→ETPrintView) + Nhân bản (tái sử dụng) + Xoá.
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { listAllTaiLieu, deleteTaiLieu, duplicateTaiLieu, updateTaiLieu, renumberBuoiLop, type TaiLieu } from '../../lib/tailieu'
+import { listAllTaiLieu, listTaiLieuFacets, deleteTaiLieu, duplicateTaiLieu, updateTaiLieu, renumberBuoiLop, type TaiLieu } from '../../lib/tailieu'
 import { phatHanhTest, PHAT_HANH_DUOC } from '../../lib/testonline'
 import { listLinkGenJobs, type LinkGenJobRow } from '../../lib/linkgen'
 import { listLop, type Lop } from '../../lib/nhansu'
@@ -38,6 +38,11 @@ const EDITABLE = new Set(['et', 'giao_trinh', 'giao_trinh_buoi', 'btvn', 'de_thi
 
 type DaiRow = TaiLieu & { nguon: 'dai'; lop_id?: string | null; ngay?: string | null; nguon_id?: string | null; nguon_buoi?: string | null }
 type Row = DaiRow | (HinhKhoRow & { nguon: 'hinh' })
+// loai mà Hình CÓ THỂ tạo ra (chung vocabulary với Đại, xem HinhKhoRow.loai) — chọn tab loai khác thì
+// Hình chắc chắn không khớp, khỏi tốn 1 lượt query (§"Kho tài liệu tải cực lâu" 09-10).
+const LOAI_HINH_CO_THE = new Set(['giao_trinh_buoi', 'btvn', 'et'])
+// "20 tài liệu gần nhất" (Thùy 09-10) — mỗi lượt "Tải thêm" nạp thêm PAGE dòng theo cursor created_at.
+const PAGE = 20
 // ⭐ 21/08: Hình dùng CHUNG các khoá 'giao_trinh'/'giao_trinh_buoi'/'btvn' với Đại (HinhKhoRow.loai) —
 // để rơi vào ĐÚNG 1 tab lọc thay vì tự đẻ nhãn "Giáo trình Hình" riêng (Thùy: "vẫn thấy Hình riêng
 // không chung ở tab Tất cả"). KHÔNG còn 'hinh_giao_trinh*' — cột "Loại" tự nhiên đọc đúng nhãn Đại.
@@ -46,13 +51,31 @@ const loaiTen = (l: string) => LOAI_TEN[l] ?? l
 const fmt = (iso?: string | null) => (iso ? new Date(iso).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '—')
 
 export default function KhoTaiLieuScreen() {
-  const [rows, setRows] = useState<Row[]>([])
+  // ⭐ 09-10 (Thùy: "Kho tài liệu cũng ko tải hết nữa, tải 20 tài liệu gần nhất thôi — rất nhiều builder
+  // dùng trang trực tiếp") — Đại + Hình giữ 2 mảng RIÊNG (mỗi nguồn 1 cursor created_at của riêng nó),
+  // merge+sort CHỈ để RENDER (useMemo `rows` dưới). Trước đây `fetchAllRows` tải TOÀN BỘ 2 bảng mỗi lần
+  // mở màn — không limit/offset, không lọc server-side dù UI có sẵn tab Loại/Môn + ô tìm.
+  const [daiRows, setDaiRows] = useState<DaiRow[]>([])
+  const [hinhRows, setHinhRows] = useState<(HinhKhoRow & { nguon: 'hinh' })[]>([])
+  const [hasMoreDai, setHasMoreDai] = useState(false)
+  const [hasMoreHinh, setHasMoreHinh] = useState(false)
+  const [facets, setFacets] = useState<{ loai: string; mon: string }[]>([]) // cho tab Loại/Môn — DISTINCT toàn bảng ở Postgres (fn_tai_lieu_facets), KHÔNG suy từ trang đang tải (sẽ rụng dần theo trang)
   const [lops, setLops] = useState<Lop[]>([])
   const [loading, setLoading] = useState(true)
+  const [loadingMore, setLoadingMore] = useState(false)
   const [q, setQ] = useState('')
+  const [qLive, setQLive] = useState('') // ô nhập gõ tự do; debounce 300ms mới thật sự query (đỡ gõ 1 chữ = 1 query)
+  useEffect(() => { const t = setTimeout(() => setQ(qLive), 300); return () => clearTimeout(t) }, [qLive])
   const [loai, setLoai] = useState<string>('__all__')
   const [monF, setMonF] = useState<string>('__all__')
   const { allowedMons: myMons, isAll: laAdmin } = useMonScope()
+  // Tham số `mon` đẩy server-side: tab đang chọn 1 môn cụ thể → đúng môn đó; "Mọi môn" → theo RBAC
+  // (admin/Ops = không lọc, staff = ĐÚNG tập môn được phân — trước đây lọc SAU KHI tải hết, giờ đẩy
+  // xuống query luôn, staff không còn kéo về dữ liệu môn mình không được xem nữa).
+  const monParam = monF !== '__all__' ? monF : (laAdmin ? undefined : myMons)
+  const hinhKhopMon = monF === '__all__' ? (laAdmin || myMons.includes('Toán')) : monF === 'Toán'
+  const hinhKhopLoai = loai === '__all__' || LOAI_HINH_CO_THE.has(loai)
+  const canHinh = hinhKhopMon && hinhKhopLoai
   // Trạng thái gen-link ĐỜI 2: đọc từ bảng `linkgen_jobs` (worker server xử lý — xem lib/linkgen.ts),
   // KHÔNG còn từ store client. Poll nhẹ khi đang mở màn để nhãn "⏳ đang tạo…" tự đổi thành link.
   const [linkJobs, setLinkJobs] = useState<LinkGenJobRow[]>([])
@@ -89,27 +112,58 @@ export default function KhoTaiLieuScreen() {
     } finally { setPhBusy(null) }
   }
 
-  // Fetch CẢ 2 nguồn (Đại + Hình) — tách khỏi `reload()` để lượt refresh NGẦM (poll job xong, dưới) không
-  // phải bật `loading` (xoá bảng ra "Đang tải…" giữa lúc Thùy đang lướt — đúng bug từng sửa 07-12).
-  // ⭐ 21/08 (Thùy: "8A1 20/8 tài liệu hình ko thấy đâu luôn" — data CÓ THẬT, chỉ là NỐI 2 mảng rồi
-  // không sort lại: Đại (đã sort created_at desc từ listAllTaiLieu) đứng TRƯỚC, Hình bị dồn hết XUỐNG
-  // CUỐI bất kể ngày tạo — dòng Hình mới nhất bị chôn dưới hàng trăm dòng Đại cũ hơn). Sort LẠI TOÀN BỘ
-  // sau khi gộp, cùng 1 tiêu chí created_at desc cho cả 2 nguồn — mới thật sự là "1 danh sách chung".
-  async function fetchAllRows(): Promise<Row[]> {
-    const [d, h] = await Promise.all([listAllTaiLieu(), listAllBuoiHinh()])
-    const all = [...(d as TaiLieu[]).map((r) => ({ ...r, nguon: 'dai' as const })), ...h.map((r) => ({ ...r, nguon: 'hinh' as const }))]
-    all.sort((a, b) => (b.created_at ?? '').localeCompare(a.created_at ?? ''))
-    return all
+  // Cursor RAW (created_at của dòng CUỐI batch vừa fetch, TRƯỚC khi lọc loai/search phía dưới) — dùng
+  // ref vì chỉ "Tải thêm" đọc, không cần render lại khi đổi. Lọc theo loai SAU khi fetch (client, trên
+  // 1 trang nhỏ ~20 buổi) vì `listAllBuoiHinh` chưa nhận tham số loai — buổi Hình có thể sinh NHIỀU dòng
+  // hiển thị (lop/nha/et) nên cursor phải theo BUỔI thật, không theo dòng đã lọc (lọc hết dòng của 1
+  // trang vẫn phải trỏ đúng buổi kế tiếp, không thì "Tải thêm" lặp lại đúng trang cũ, đứng yên mãi).
+  const daiCursor = useRef<string | undefined>(undefined)
+  const hinhCursor = useRef<string | undefined>(undefined)
+  const mapHinh = (h: HinhKhoRow[]): (HinhKhoRow & { nguon: 'hinh' })[] => {
+    let out = h.map((r) => ({ ...r, nguon: 'hinh' as const }))
+    if (loai !== '__all__') out = out.filter((r) => r.loai === loai)
+    if (q.trim()) out = out.filter((r) => r.ten.toLowerCase().includes(q.trim().toLowerCase()))
+    return out
+  }
+  // Trang ĐẦU (mở màn / đổi tab Loại-Môn / gõ tìm) — reset cursor, tải lại từ đầu.
+  async function fetchFirstPage(): Promise<{ dai: DaiRow[]; hinh: (HinhKhoRow & { nguon: 'hinh' })[] }> {
+    const isSearch = !!q.trim()
+    const [d, h] = await Promise.all([
+      listAllTaiLieu(monParam, { loai: loai !== '__all__' ? loai : undefined, search: q || undefined }),
+      canHinh ? listAllBuoiHinh({ unbounded: isSearch }) : Promise.resolve([] as HinhKhoRow[]),
+    ])
+    daiCursor.current = d.length ? d[d.length - 1].created_at : undefined
+    hinhCursor.current = h.length ? h[h.length - 1].created_at : undefined
+    setHasMoreDai(!isSearch && d.length === PAGE)
+    setHasMoreHinh(!isSearch && canHinh && h.length === PAGE)
+    return { dai: (d as TaiLieu[]).map((r) => ({ ...r, nguon: 'dai' as const })), hinh: mapHinh(h) }
   }
   async function reload() {
     setLoading(true)
     try {
-      const [rows, l] = await Promise.all([fetchAllRows(), listLop()])
-      setRows(rows); setLops(l)
-      return rows
+      const [{ dai, hinh }, l, fc] = await Promise.all([fetchFirstPage(), listLop(), listTaiLieuFacets()])
+      setDaiRows(dai); setHinhRows(hinh); setLops(l); setFacets(fc)
     } finally { setLoading(false) }
   }
-  useEffect(() => { reload() }, []) // eslint-disable-line
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { reload() }, [monParam, loai, q])
+
+  // "Tải thêm" — nạp tiếp PAGE dòng theo cursor, nối vào cuối (không tải lại từ đầu). Không cho gọi khi
+  // đang search (search đã quét rộng 1 lượt, xem PAGE_SEARCH ở lib/tailieu.ts).
+  async function loadMore() {
+    if (loadingMore || q.trim()) return
+    setLoadingMore(true)
+    try {
+      const [d, h] = await Promise.all([
+        hasMoreDai ? listAllTaiLieu(monParam, { loai: loai !== '__all__' ? loai : undefined, before: daiCursor.current }) : Promise.resolve([] as TaiLieu[]),
+        hasMoreHinh && canHinh ? listAllBuoiHinh({ before: hinhCursor.current }) : Promise.resolve([] as HinhKhoRow[]),
+      ])
+      if (d.length) { daiCursor.current = d[d.length - 1].created_at; setDaiRows((prev) => [...prev, ...(d as TaiLieu[]).map((r) => ({ ...r, nguon: 'dai' as const }))]) }
+      if (h.length) { hinhCursor.current = h[h.length - 1].created_at; setHinhRows((prev) => [...prev, ...mapHinh(h)]) }
+      setHasMoreDai(hasMoreDai && d.length === PAGE)
+      setHasMoreHinh(hasMoreHinh && canHinh && h.length === PAGE)
+    } finally { setLoadingMore(false) }
+  }
 
   // In 1 phiếu Hình — mọi dòng ở Kho đều ĐÃ GÁN LỚP (xem listAllBuoiHinh), in đúng phan của chính dòng
   // đó. Cần loadLuoi(khoi) trước (Hình không id-based như Đại).
@@ -175,7 +229,9 @@ export default function KhoTaiLieuScreen() {
         setLinkJobs(jobs); setHinhLinkJobs(hinhJobs)
         const pending = jobs.filter((j) => j.status === 'pending' || j.status === 'processing').length
           + hinhJobs.filter((j) => j.status === 'pending' || j.status === 'processing').length
-        if (pending < prevPendingRef.current) fetchAllRows().then((rows) => { if (!stop) setRows(rows) }).catch(() => {})
+        // Refresh ngầm = tải lại TRANG ĐẦU (không đụng `loading`/cursor "Tải thêm" đang có) — job xong
+        // luôn rơi vào trang gần nhất (docs vừa sửa/tạo), đủ để dòng đó hiện link ngay không cần F5.
+        if (pending < prevPendingRef.current) fetchFirstPage().then(({ dai, hinh }) => { if (!stop) { setDaiRows(dai); setHinhRows(hinh) } }).catch(() => {})
         prevPendingRef.current = pending
       } catch { /* mạng chớp — lượt poll sau tự bù */ }
     }
@@ -196,13 +252,15 @@ export default function KhoTaiLieuScreen() {
   // thuật/TG chỉ tài liệu môn mình — STRICT (chưa gán môn nào = KHÔNG thấy môn nào). Trước đây suy cross-
   // môn từ "myMons rỗng" là BUG: đúng cho Media/Marketing (họ vốn không gán môn) nhưng SAI cho ai khác lỡ
   // chưa được gán môn (leak thấy hết thay vì thấy rỗng) — giờ cross-môn suy từ TEAM, không suy từ rỗng.
-  const visibleRows = useMemo(() => laAdmin ? rows : rows.filter((r) => myMons.includes(r.mon)), [rows, laAdmin, myMons])
-  const monsCo = useMemo(() => [...new Set(visibleRows.map((r) => r.mon).filter(Boolean))].sort(), [visibleRows])
-  const loais = useMemo(() => [...new Set(visibleRows.map((r) => r.loai))], [visibleRows])
-  const shown = visibleRows
-    .filter((r) => monF === '__all__' || r.mon === monF)
-    .filter((r) => loai === '__all__' || r.loai === loai)
-    .filter((r) => !q.trim() || r.ten.toLowerCase().includes(q.trim().toLowerCase()))
+  // rows đã lọc mon/loai/search SERVER-SIDE (dai) hoặc ngay-lúc-fetch (hinh, xem mapHinh) — chỉ còn GỘP
+  // 2 nguồn + sort lại theo created_at (mẫu cũ 21/08 vẫn đúng: nối 2 mảng KHÔNG sort lại là Hình mới
+  // nhất bị chôn dưới Đại cũ hơn).
+  const shown = useMemo(() => [...daiRows, ...hinhRows].sort((a, b) => (b.created_at ?? '').localeCompare(a.created_at ?? '')), [daiRows, hinhRows])
+  // Tab Loại/Môn — facet DISTINCT toàn bảng (fn_tai_lieu_facets), lọc theo RBAC môn rồi mới hiện, KHÔNG
+  // còn suy từ trang đang tải (sẽ rụng tab dần theo trang — đúng bug phải tránh khi thêm phân trang).
+  const facetsRbac = useMemo(() => laAdmin ? facets : facets.filter((f) => myMons.includes(f.mon)), [facets, laAdmin, myMons])
+  const monsCo = useMemo(() => [...new Set(facetsRbac.map((f) => f.mon).filter(Boolean))].sort(), [facetsRbac])
+  const loais = useMemo(() => [...new Set(facetsRbac.map((f) => f.loai))], [facetsRbac])
 
   // Nhân bản = MỘT LƯỢT GÁN (Thùy 07-12: "phải được coi như 1 lần gán... như gán ET bình thường, khác
   // cái là có nội dung sẵn") — KHÔNG còn prompt() tên tự do + lop_id/ngay null. Mở modal bắt buộc chọn
@@ -282,7 +340,7 @@ export default function KhoTaiLieuScreen() {
         )}
         <button onClick={() => setLoai('__all__')} className={tab(loai === '__all__')}>Tất cả</button>
         {loais.map((l) => <button key={l} onClick={() => setLoai(l)} className={tab(loai === l)}>{loaiTen(l)}</button>)}
-        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm theo tên…" className="ml-auto h-7 w-52 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
+        <input value={qLive} onChange={(e) => setQLive(e.target.value)} placeholder="Tìm theo tên…" className="ml-auto h-7 w-52 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto p-6">
@@ -403,6 +461,13 @@ export default function KhoTaiLieuScreen() {
               </table>
             </div>
           )}
+        {!loading && !q.trim() && (hasMoreDai || hasMoreHinh) && (
+          <div className="mt-3 flex justify-center">
+            <button onClick={loadMore} disabled={loadingMore} className="rounded-md border border-slate-200 bg-white px-4 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-300 disabled:opacity-40">
+              {loadingMore ? 'Đang tải…' : `↓ Tải thêm ${PAGE}`}
+            </button>
+          </div>
+        )}
       </div>
 
       {print && (print.loai === 'et'

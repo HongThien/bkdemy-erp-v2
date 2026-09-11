@@ -424,10 +424,18 @@ const PHAN_NHAN_KHO: Record<'lop' | 'nha', string> = { lop: 'GT', nha: 'BTVN' }
 /** Mọi buổi Hình (master + gán lớp) → hình chiếu liệt kê chung với `tai_lieu` ở Kho tài liệu bảng-tổng.
  *  KHÔNG đụng bảng `tai_lieu` — Hình vẫn 100% bảng riêng (Thùy chốt "2 giáo trình riêng, không gộp"),
  *  hàm này chỉ SUY dữ liệu hiển thị tương thích để 1 màn liệt kê được cả 2 nguồn. */
-export async function listAllBuoiHinh(): Promise<HinhKhoRow[]> {
+// ⭐ 09-10 (Thùy: "Kho tài liệu tải cực lâu khi số lượng lớn") — `hinh_gt_buoi` là bảng tích luỹ không
+// giới hạn giống ET/BTVN bên Đại (1 buổi × 1 lớp × 1 ngày). Mặc định chỉ nạp PAGE_MOI_NHAT buổi mới nhất
+// (bai/lop chỉ join theo ĐÚNG buoiIds/lopIds đã cắt nên tự động nhẹ theo). `opts.before` = cursor cho
+// "Tải thêm"; `opts.unbounded` = đang search (tên hiển thị ghép SAU join lớp+ngày nên không ilike thẳng
+// trên `hinh_gt_buoi` được — search chấp nhận quét rộng, khớp bù bằng cách bỏ cap thay vì cap+lọc sai).
+const PAGE_MOI_NHAT_HINH = 20
+export async function listAllBuoiHinh(opts?: { before?: string; unbounded?: boolean }): Promise<HinhKhoRow[]> {
+  let buoiQ = supabase.from('hinh_gt_buoi').select('id, tieu_de, giao_trinh_id, lop_id, ngay, nguon_buoi_id, created_at, file_urls').order('created_at', { ascending: false })
+  buoiQ = opts?.unbounded ? buoiQ.limit(LIMIT) : (opts?.before ? buoiQ.lt('created_at', opts.before).limit(PAGE_MOI_NHAT_HINH) : buoiQ.limit(PAGE_MOI_NHAT_HINH))
   const [{ data: gts, error: e1 }, { data: buois, error: e2 }] = await Promise.all([
     supabase.from('hinh_giao_trinh').select('id, ten, khoi, mon').limit(LIMIT),
-    supabase.from('hinh_gt_buoi').select('id, tieu_de, giao_trinh_id, lop_id, ngay, nguon_buoi_id, created_at, file_urls').limit(LIMIT),
+    buoiQ,
   ])
   if (e1) throw e1; if (e2) throw e2
   const gtMap = new Map(((gts ?? []) as { id: string; ten: string; khoi: string; mon: string }[]).map((g) => [g.id, g]))

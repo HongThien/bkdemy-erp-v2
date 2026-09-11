@@ -59,7 +59,8 @@ export default function DanhGiaCaBoTroScreen() {
           </div>
         )}
       </div>
-      {moCase && <DanhGiaModal c={moCase} onDong={() => setMoId(null)} onXong={() => { setMoId(null); reload() }} />}
+      {/* Đóng case xong = gỡ đúng case đó tại chỗ, KHÔNG reload (trắng màn + mất vị trí cuộn) — CLAUDE.md §2 React. */}
+      {moCase && <DanhGiaModal c={moCase} onDong={() => setMoId(null)} onXong={() => { const id = moCase.id; setItems((prev) => prev.filter((x) => x.id !== id)); setMoId(null) }} />}
     </section>
   )
 }

@@ -5,7 +5,7 @@ import { getMyScope, type MyScope } from '../lib/nhansu'
 import { useIsMobile } from '../hooks/useIsMobile'
 import { getMyTasks, moBuoi, diemDanhTienDo, danhGiaTienDo, type MyTask, type BuoiAo, type TabKey, type VaiViec } from '../lib/gami'
 import { getMyOpsTasks, getMyPrepTasks, myBuoiAoCuaKhoang, OPS_TASK_LABEL, type OpsTask, type MyPrepTask } from '../lib/opsvanhanh'
-import { listCanScanDaCham, type CaTestChoScanDaCham } from '../lib/detest'
+import { listCanScanDaCham, listCanChamCuaToi, listCanTraBaiCuaToi, type CaTestChoScanDaCham, type CaTestChoCham } from '../lib/detest'
 import { homNayVN, tuanCuaNgay, khoangTuan, nhanTuan, mucDeadline, nhanConLai, thuCuaNgay, ddmmVN, ngayCuaTs, type DeadlineMuc } from '../lib/tuan'
 import { BuoiDetail } from './gami/BuoiHocScreen'
 import { BuoiBuDetail } from './botro/BoTroScreen'
@@ -31,6 +31,7 @@ import GamiDiemScreen from './gami/GamiDiemScreen'
 import ThanhTichScreen from './gami/ThanhTichScreen'
 import KetQuaScreen from './ketqua/KetQuaScreen'
 import ReportPHScreen from './report/ReportPHScreen'
+import TraoGiaiScreen from './traogiai/TraoGiaiScreen'
 import DuyetChamScreen from './duyetcham/DuyetChamScreen'
 import DuyetLoiGiaiScreen from './duyetloigiai/DuyetLoiGiaiScreen'
 import HocPhiScreen from './hocphi/HocPhiScreen'
@@ -51,7 +52,7 @@ import PhongHocScreen from './phonghoc/PhongHocScreen'
 import PhanCongOpsScreen from './vanhanhops/PhanCongOpsScreen'
 import ScanDaChamScreen from './vanhanhops/ScanDaChamScreen'
 import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
-import TestDauVaoScreen from './tuyensinh/TestDauVaoScreen'
+import TestDauVaoScreen, { moTabTestDauVao } from './tuyensinh/TestDauVaoScreen'
 import KhaoSatScreen from './khaosat/KhaoSatScreen'
 import BoTroScreen from './botro/BoTroScreen'
 import BoTroDuoiScreen from './botro/BoTroDuoiScreen'
@@ -250,7 +251,17 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   // Test đầu vào — Scan bài đã chấm (Ops) — Thùy 07-19 lần 2: "không cần tab riêng, chỉ cần derive task
   // cho Ops". Pool chung (như Chấm test), KHÔNG lọc theo người — ai mở thì làm.
   const [scanTest, setScanTest] = useState<CaTestChoScanDaCham[]>([])
+  // ⭐ CEO ②⑤ 09/09: chấm test (TA được gán `nguoi_cham_id`) + trả bài (GV được gán `nguoi_tra_bai_id`) PHẢI
+  // nằm trong "Việc của tôi" — trước đó 2 cột assign chỉ là nhãn, không màn nào lọc theo nó.
+  const [chamTestToi, setChamTestToi] = useState<CaTestChoCham[]>([])
+  const [traBaiTestToi, setTraBaiTestToi] = useState<CaTestChoCham[]>([])
   const me = useStore((s) => s.me)
+  useEffect(() => {
+    const id = me?.nhanSu.id
+    if (!id) { setChamTestToi([]); setTraBaiTestToi([]); return }
+    listCanChamCuaToi(id).then(setChamTestToi).catch(() => setChamTestToi([]))
+    listCanTraBaiCuaToi(id).then(setTraBaiTestToi).catch(() => setTraBaiTestToi([]))
+  }, [me?.nhanSu.id])
   const setStaffLeaf = useStore((s) => s.setStaffLeaf)
   const isMobile = useIsMobile()
   // Ngày TƯƠNG LAI chủ động bấm mở xem trước — hôm nay + ngày ĐÃ QUA (còn nợ) LUÔN mở sẵn (Thùy 07-06:
@@ -321,8 +332,9 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const prepFiltered = prepTasks
   const prepActive = prepFiltered.filter((t) => !t.done)
   const prepDone = prepFiltered.filter((t) => t.done)
-  const hasActive = opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length + scanTest.length > 0
-  const canLam = opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length + scanTest.length
+  const testToi = scanTest.length + chamTestToi.length + traBaiTestToi.length
+  const hasActive = opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length + testToi > 0
+  const canLam = opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length + testToi
   const quaHan = taskActive.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
     + opsExtraActive.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
     + prepActive.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
@@ -419,6 +431,39 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
             </div>
           )}
 
+          {/* Test đầu vào — CHẤM (TA được gán) / TRẢ BÀI (GV được gán) — CEO ②⑤ 09/09. Khối flat như scan. */}
+          {chamTestToi.length > 0 && (
+            <div className="mt-3">
+              <div className="mb-1.5 text-[12px] font-semibold text-slate-500">✍️ Test đầu vào — cần chấm ({chamTestToi.length})</div>
+              <div className="grid gap-1.5 [grid-template-columns:repeat(auto-fill,minmax(220px,1fr))]">
+                {chamTestToi.map((c) => (
+                  <button key={c.id} onClick={() => { moTabTestDauVao('cham'); setStaffLeaf('test_dau_vao') }} className="flex flex-col gap-0.5 rounded-lg border-l-4 border-l-violet-400 bg-white px-2.5 py-2 text-left shadow-sm hover:shadow-md">
+                    <div className="flex items-center gap-1.5">
+                      <span className="shrink-0 text-[15px]">✍️</span>
+                      <span className="min-w-0 flex-1 text-[13px] font-medium text-slate-800">{c.hoTenHs} · {c.mon}{c.khoi ? ` · K${c.khoi}` : ''}</span>
+                    </div>
+                    <div className="pl-[21px] text-[11px] text-slate-400">test {ddmmVN(c.ngay)}{c.thieuDe ? ' · ⚠ chưa có đề' : ''}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          {traBaiTestToi.length > 0 && (
+            <div className="mt-3">
+              <div className="mb-1.5 text-[12px] font-semibold text-slate-500">📨 Test đầu vào — cần trả bài ({traBaiTestToi.length})</div>
+              <div className="grid gap-1.5 [grid-template-columns:repeat(auto-fill,minmax(220px,1fr))]">
+                {traBaiTestToi.map((c) => (
+                  <button key={c.id} onClick={() => { moTabTestDauVao('tra_bai'); setStaffLeaf('test_dau_vao') }} className="flex flex-col gap-0.5 rounded-lg border-l-4 border-l-sky-400 bg-white px-2.5 py-2 text-left shadow-sm hover:shadow-md">
+                    <div className="flex items-center gap-1.5">
+                      <span className="shrink-0 text-[15px]">📨</span>
+                      <span className="min-w-0 flex-1 text-[13px] font-medium text-slate-800">{c.hoTenHs} · {c.mon}{c.khoi ? ` · K${c.khoi}` : ''}</span>
+                    </div>
+                    <div className="pl-[21px] text-[11px] text-slate-400">test {ddmmVN(c.ngay)}{c.diemNhap != null ? ` · ${c.diemNhap}đ` : ' · chờ chấm'}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
           {/* Test đầu vào — Scan bài đã chấm (Ops, pool chung — không lọc theo người, cùng cơ chế Chấm
               test). Không có deadline/ngày riêng để gom theo NgàyRow nên để RIÊNG 1 khối flat. */}
           {scanTest.length > 0 && (
@@ -632,6 +677,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'thanhtich' ? <ThanhTichScreen />
       : staffLeaf === 'ketqua' ? <KetQuaScreen />
       : staffLeaf === 'report_ph' ? <ReportPHScreen />
+      : staffLeaf === 'traogiai' ? <TraoGiaiScreen />
       : staffLeaf === 'duyetcham' ? <DuyetChamScreen />
       : staffLeaf === 'duyetloigiai' ? <DuyetLoiGiaiScreen />
       : staffLeaf === 'quanlylevel' ? <QuanLyLevelScreen />

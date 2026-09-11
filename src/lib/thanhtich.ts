@@ -143,6 +143,27 @@ export async function getOrCreateKyThiMTChoBuoi(buoiId: string, ten: string, mon
   }
 }
 
+// ── BXH ĐIỂM MT TẠI TRUNG TÂM (Thùy 09-11): 1 BXH per (mon × khoi × ym) — mọi HS đang học các lớp
+// cùng (mon, khoi) đứng chung 1 bảng, sort theo điểm MT tb giảm dần. Điểm + rank do fn_bxh_diem_mt_khoi
+// tính ở DB (§2.0). Luật giữ nguyên văn của MT (Thùy 08-19 + 08-21): điểm CỦA EM ĐI THEO EM (avg mọi
+// diem_thi mt_sat_hach đúng môn trong cửa sổ 25/tháng → hết mùng 10 tháng sau); chưa thi = 0đ CHỈ
+// trong rank, `tb` = null hiển thị "—". Rank riêng trong từng khối (kh 6..12 không so ngang).
+export type BXHDiemMTRow = {
+  hoc_sinh_id: string; ho_ten: string; ma_hs: string | null
+  lop_id: string | null; ten_lop: string | null
+  tb: number | null; rank_now: number; rank_total: number
+}
+export async function getBXHDiemMTKhoi(mon: string, khoi: string, ym: string): Promise<BXHDiemMTRow[]> {
+  const { data, error } = await supabase.rpc('fn_bxh_diem_mt_khoi', { p_mon: mon, p_khoi: khoi, p_ym: ym })
+  if (error) throw error
+  return ((data ?? []) as any[]).map((r) => ({
+    hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.ho_ten, ma_hs: r.ma_hs,
+    lop_id: r.lop_id, ten_lop: r.ten_lop,
+    tb: r.tb == null ? null : Number(r.tb),
+    rank_now: Number(r.rank_now), rank_total: Number(r.rank_total),
+  }))
+}
+
 // ── ĐIỂM THI TRÊN TRƯỜNG (pivot, tab riêng trong Kết quả học tập) — mỗi HS × 4 đợt (GK1/GK2/CK1/CK2),
 // nguồn NHẬP THỦ CÔNG loai='truong' (ky_thi/diem_thi, cùng hạ tầng "Nhập điểm"). Roster theo lớp/khối/toàn
 // bộ (giống loadMasteryCells) — KHÔNG gọi getMasteryHS, đây là điểm số nhập tay, không phải mastery suy động.

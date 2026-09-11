@@ -28,6 +28,7 @@ import { useMonScope } from '../../hooks/useMonScope'
 import { useStore } from '../../store/useStore'
 
 const HINH_LABEL = { bien_the: 'Hình (biến thể)', bai_toan_goc: 'Hình (bài toán gốc)' }
+const BATCH_SIZE = 20
 type Row = { key: string; nhanh: string; khoi: string; deBai: string; loiGiai: string; duyet: () => Promise<void> }
 // 'tn' = "Trắc nghiệm AI" (spec-mcq-form.md §6, 08/09): phiên bản 4 phương án AI sinh cho câu tính toán — sống ở TracNghiemAiTab.tsx.
 // 'dien' = "Điền ô AI" (spec-dien-o.md, 09/09): lời giải chứng minh hình có ô trống — sống ở DienOAiTab.tsx (chỉ môn Toán, kho hình).
@@ -103,12 +104,18 @@ export default function DuyetLoiGiaiScreen() {
     try { await r.duyet(); setRows((a) => a.filter((x) => x.key !== r.key)) }
     catch (e: any) { alert(e.message ?? String(e)) } finally { setBusyKey(null) }
   }
+  // Batch 20 (CEO 11/09) — cùng nhịp với các tab kho khác.
+  const batchHinh = rows.slice(0, BATCH_SIZE)
   async function onDuyetTatCa() {
-    if (!rows.length || !confirm(`Duyệt cả ${rows.length} bài Hình đang lọc?`)) return
+    if (!batchHinh.length || !confirm(`Duyệt cả ${batchHinh.length} bài Hình trong batch này? Câu không đạt hãy Từ chối trước.`)) return
     setBusyAll(true)
     try {
-      for (const r of rows) { try { await r.duyet() } catch { /* bỏ qua câu lỗi, tiếp tục */ } }
-      await reload()
+      const done = new Set<string>()
+      for (const r of batchHinh) {
+        try { await r.duyet(); done.add(r.key) }
+        catch { /* bỏ qua câu lỗi, tiếp tục */ }
+      }
+      setRows((a) => a.filter((x) => !done.has(x.key)))
     } finally { setBusyAll(false) }
   }
 
@@ -154,10 +161,13 @@ export default function DuyetLoiGiaiScreen() {
           </div>
         )}
         {hienHinh && (
-          <button onClick={onDuyetTatCa} disabled={!rows.length || busyAll}
-            className="ml-auto rounded-md bg-emerald-600 px-3.5 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
-            {busyAll ? '⏳ Đang duyệt…' : `✓ Duyệt tất cả Hình đang lọc (${rows.length})`}
-          </button>
+          <>
+            <span className="ml-auto text-[12px] text-slate-500">Batch <b className="text-slate-800">{batchHinh.length}</b>/<b>{rows.length}</b> bài Hình</span>
+            <button onClick={onDuyetTatCa} disabled={!batchHinh.length || busyAll}
+              className="rounded-md bg-emerald-600 px-3.5 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
+              {busyAll ? '⏳ Đang duyệt…' : `✓ Duyệt tất cả batch (${batchHinh.length})`}
+            </button>
+          </>
         )}
       </div>
       {profileLoading ? <p className="px-6 py-4 text-sm text-slate-400">Đang tải hồ sơ…</p>
@@ -171,8 +181,9 @@ export default function DuyetLoiGiaiScreen() {
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
           : rows.length === 0 ? <p className="text-sm text-slate-400">Không có bài Hình nào chờ duyệt ở khối {khoi}.</p>
           : (
+            <>
             <ul className="space-y-3">
-              {rows.map((r) => (
+              {batchHinh.map((r) => (
                 <li key={r.key} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
                   <div className="mb-2 flex items-center gap-2 text-[12px] text-slate-400">
                     <span className="rounded bg-sky-50 px-2 py-0.5 font-medium text-sky-700">{r.nhanh}</span>
@@ -195,6 +206,10 @@ export default function DuyetLoiGiaiScreen() {
                 </li>
               ))}
             </ul>
+            {rows.length > batchHinh.length && (
+              <p className="mt-4 text-center text-[12px] text-slate-400">Còn <b>{rows.length - batchHinh.length}</b> bài Hình — sẽ hiện sau khi duyệt/từ chối xong batch này.</p>
+            )}
+            </>
           )}
       </div>
       )}

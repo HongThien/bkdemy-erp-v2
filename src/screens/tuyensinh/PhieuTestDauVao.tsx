@@ -3,9 +3,11 @@
 // (đa môn → N phiếu riêng, quyết định đã chốt ở PLAN). Card inline-hex (KHÔNG class màu Tailwind — v4 oklch).
 import { useRef } from 'react'
 import { createPortal } from 'react-dom'
-import type { PhieuKetQua } from '../../lib/detest'
+import { coNhom, type PhieuKetQua } from '../../lib/detest'
 
 const KY_NANG_LABEL: Record<string, string> = { tot: 'Tốt', on: 'Ổn', kem: 'Kém' }
+// thoi_khoa_bieu.thu: 2..7 = Thứ 2..7, 8 = CN (cùng khuôn TKBScreen).
+const THU_LABEL: Record<number, string> = { 2: 'Thứ 2', 3: 'Thứ 3', 4: 'Thứ 4', 5: 'Thứ 5', 6: 'Thứ 6', 7: 'Thứ 7', 8: 'CN' }
 const KY_NANG_COLOR: Record<string, string> = { tot: '#16a34a', on: '#d97706', kem: '#dc2626' }
 const safeFileName = (s: string) => (s || 'phieu').replace(/[\\/:*?"<>|]/g, '').replace(/\s+/g, ' ').trim().slice(0, 120)
 
@@ -25,7 +27,9 @@ function BarRow({ chuyenDe, pct }: { chuyenDe: string; pct: number }) {
 
 export function PhieuCard({ p }: { p: PhieuKetQua }) {
   const ngayVN = new Date(p.ngay + 'T00:00:00').toLocaleDateString('vi-VN')
-  const nx = p.nhanXet
+  // Nhận xét rỗng ({} lưu nháp) → không in tiêu đề trống trên phiếu.
+  const nx0 = p.nhanXet
+  const nx = nx0 && (nx0.trinhBay || nx0.tinhToan || nx0.khac || Object.values(nx0.kienThuc ?? {}).some(Boolean)) ? nx0 : null
   return (
     <div style={{ width: 500, overflow: 'hidden', borderRadius: 16, background: '#ffffff', color: '#1e293b', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)', fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif' }}>
       <div style={{ background: 'linear-gradient(90deg, #4338CA 0%, #6366F1 50%, #818CF8 100%)', padding: '16px 20px', color: '#ffffff' }}>
@@ -34,16 +38,33 @@ export function PhieuCard({ p }: { p: PhieuKetQua }) {
         <div style={{ fontSize: 12, opacity: 0.95 }}>{p.hoTenHs}{p.khoi ? ` · Lớp ${p.khoi}` : ''} · {ngayVN}</div>
       </div>
       <div style={{ padding: '16px 20px' }}>
+        {/* Điểm NHẬP TAY (CEO ④ 09/09) là con số chính; % đúng Đ/C/S đứng cạnh. */}
         <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 8, padding: '8px 0 14px', borderBottom: '1px solid #f1f5f9' }}>
-          <span style={{ fontSize: 34, fontWeight: 800, color: '#4338CA' }}>{p.diem}</span>
-          <span style={{ fontSize: 14, color: '#94a3b8' }}>/ {p.toiDa} điểm</span>
-          <span style={{ fontSize: 15, fontWeight: 700, color: '#64748b', marginLeft: 6 }}>({p.pct}%)</span>
+          <span style={{ fontSize: 34, fontWeight: 800, color: '#4338CA' }}>{p.diemNhap ?? '—'}</span>
+          <span style={{ fontSize: 14, color: '#94a3b8' }}>điểm</span>
+          <span style={{ fontSize: 15, fontWeight: 700, color: '#64748b', marginLeft: 6 }}>· đúng {p.tong.pct}% ({p.tong.daCham}/{p.tong.soCau} câu)</span>
         </div>
 
-        {p.bieuDo.length > 0 && (
+        {p.theoChuyenDe.length > 0 && (
           <div style={{ padding: '12px 0', borderBottom: '1px solid #f1f5f9' }}>
             <div style={{ fontSize: 11, fontWeight: 700, color: '#64748b', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Tổng hợp theo chuyên đề</div>
-            {p.bieuDo.map((b) => <BarRow key={b.chuyenDe} chuyenDe={b.chuyenDe} pct={b.pct} />)}
+            {p.theoChuyenDe.map((b) => <BarRow key={b.chuyenDe} chuyenDe={b.chuyenDe} pct={b.pct} />)}
+          </div>
+        )}
+
+        {/* Cơ bản/nâng cao · Đại/Hình — nhóm không có câu thì bỏ qua (CEO ⑦). 2 cột song song cho gọn phiếu. */}
+        {(coNhom(p.theoMucDo.coBan) || coNhom(p.theoMucDo.nangCao) || coNhom(p.theoNhanh.dai) || coNhom(p.theoNhanh.hinh)) && (
+          <div style={{ padding: '12px 0', borderBottom: '1px solid #f1f5f9', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+            <div>
+              {(coNhom(p.theoMucDo.coBan) || coNhom(p.theoMucDo.nangCao)) && <div style={{ fontSize: 11, fontWeight: 700, color: '#64748b', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Cơ bản · Nâng cao</div>}
+              {coNhom(p.theoMucDo.coBan) && <BarRow chuyenDe={`Cơ bản (${p.theoMucDo.coBan.soCau} câu)`} pct={p.theoMucDo.coBan.pct!} />}
+              {coNhom(p.theoMucDo.nangCao) && <BarRow chuyenDe={`Nâng cao (${p.theoMucDo.nangCao.soCau} câu)`} pct={p.theoMucDo.nangCao.pct!} />}
+            </div>
+            <div>
+              {(coNhom(p.theoNhanh.dai) || coNhom(p.theoNhanh.hinh)) && <div style={{ fontSize: 11, fontWeight: 700, color: '#64748b', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Đại · Hình</div>}
+              {coNhom(p.theoNhanh.dai) && <BarRow chuyenDe={`Đại số (${p.theoNhanh.dai.soCau} câu)`} pct={p.theoNhanh.dai.pct!} />}
+              {coNhom(p.theoNhanh.hinh) && <BarRow chuyenDe={`Hình học (${p.theoNhanh.hinh.soCau} câu)`} pct={p.theoNhanh.hinh.pct!} />}
+            </div>
           </div>
         )}
 
@@ -68,9 +89,23 @@ export function PhieuCard({ p }: { p: PhieuKetQua }) {
           </div>
         )}
 
-        <div style={{ paddingTop: 12, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span style={{ fontSize: 12, color: '#64748b' }}>Lớp đề xuất</span>
-          <span style={{ fontSize: 15, fontWeight: 800, color: p.lopDeXuatTen ? '#4338CA' : '#94a3b8' }}>{p.lopDeXuatTen ?? 'Chưa chọn'}</span>
+        {/* Lớp đề xuất + GV + lịch — CHỈ trên ảnh gửi PH (CEO ⑧ 09/09), UI trả bài không hiện. */}
+        <div style={{ paddingTop: 12 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: 12, color: '#64748b' }}>Lớp đề xuất</span>
+            <span style={{ fontSize: 15, fontWeight: 800, color: p.lopDeXuat ? '#4338CA' : '#94a3b8' }}>{p.lopDeXuat?.tenLop ?? 'Chưa chọn'}</span>
+          </div>
+          {p.lopDeXuat && p.lopDeXuat.gv.length > 0 && (
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4, fontSize: 12, color: '#475569' }}>
+              <span style={{ color: '#64748b' }}>Giáo viên</span><span style={{ fontWeight: 600 }}>{p.lopDeXuat.gv.join(' · ')}</span>
+            </div>
+          )}
+          {p.lopDeXuat && p.lopDeXuat.lich.length > 0 && (
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4, fontSize: 12, color: '#475569', gap: 12 }}>
+              <span style={{ color: '#64748b', flexShrink: 0 }}>Lịch học</span>
+              <span style={{ fontWeight: 600, textAlign: 'right', whiteSpace: 'pre-line' }}>{p.lopDeXuat.lich.map((l) => `${THU_LABEL[l.thu] ?? `Thứ ${l.thu}`} ${l.gioBatDau}–${l.gioKetThuc}${l.phong ? ` · ${l.phong}` : ''}`).join('\n')}</span>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@
 //   con số phán xét — mỗi kênh bắt một thứ khác nhau, nên luôn hiện `kenh[]` kèm lý do.
 // ⭐ KHÔNG cắt âm thầm: dưới ngưỡng digest vẫn hiện (khu riêng), vì ẩn đi sẽ đọc thành
 //   "chỉ ngần này em cần chú ý".
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { supabase } from '../../lib/supabase'
 import { listCandidatesLop, duyetLevel, getLevelLog, cuaSoHienTai, taoAiJob, getAiJob, listAiJobs, tienCuaLuot, getLichSuChuyenDe, MODEL_CHON, MODEL_MAC_DINH, type Candidate, type LevelLogRow, type AiJob, type LanLamChuyenDe, type DangStat } from '../../lib/danhgia'
@@ -28,12 +28,6 @@ const TEN_KT = ['Bình thường', 'Bổ trợ mức 1 · sau giờ', 'Bổ tr�
 const TEN_TD = ['Bình thường', 'Nhắc học sinh', 'Nhắc phụ huynh', 'Nhắc phụ huynh']
 const lvUI = (lv: number, loai: 'kien_thuc' | 'thai_do') =>
   ({ ten: `L${lv} · ${(loai === 'thai_do' ? TEN_TD : TEN_KT)[lv]}`, cls: CLS[lv] })
-const KENH_UI: Record<string, { ten: string; cls: string }> = {
-  trend: { ten: 'Trend', cls: 'bg-sky-50 text-sky-700 ring-sky-200' },
-  thai_do: { ten: 'Thái độ', cls: 'bg-violet-50 text-violet-700 ring-violet-200' },
-  chuong_do: { ten: '③ Chuông đỏ', cls: 'bg-rose-50 text-rose-700 ring-rose-200' },
-  tien_quyet: { ten: '④ Lỗ nền', cls: 'bg-rose-50 text-rose-700 ring-rose-200' },
-}
 const Pill = ({ ten, cls }: { ten: string; cls: string }) => (
   <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-[12px] font-semibold ring-1 ${cls}`}>{ten}</span>
 )
@@ -42,6 +36,27 @@ const Pill = ({ ten, cls }: { ten: string; cls: string }) => (
 // cho vừa 1 màn hình") — CHỈ còn avatar+tên+chip+ưu tiên, 1 hàng gọn. 3 thẻ tóm tắt (level/thái độ/
 // yếu ổn định) đã CHUYỂN vào cột trái ngay trên khối Duyệt (xem `MiniStat`/`ThongTinNhanh` trong
 // `CandidateDetailBody`) — đúng nơi có không gian trống, đỡ header cao lêu nghêu.
+// Thùy 09-10: "ghi luôn nó chạm kênh nào để đỡ confuse" — chip từng kênh ngay cạnh tên, cùng số hiệu ①②③④ với
+// lý do bên dưới. `kenh[]` do engine đẩy (listCandidatesLop); "case mở cần xử" không nằm trong `kenh` nên suy tại đây.
+const KENH_CHIP: Record<Candidate['kenh'][number], { ten: string; cls: string }> = {
+  trend:      { ten: '① Chuyên đề tụt ngưỡng', cls: 'border-rose-200 bg-rose-50 text-rose-700' },
+  pct_yeu:    { ten: '② % dạng yếu', cls: 'border-amber-200 bg-amber-50 text-amber-700' },
+  so_lop_et:  { ten: '③ ET dưới TB lớp', cls: 'border-orange-200 bg-orange-50 text-orange-700' },
+  so_lop_mt:  { ten: '④ MT dưới TB lớp', cls: 'border-orange-200 bg-orange-50 text-orange-700' },
+  chuong_do:  { ten: '🚨 Báo động GV/TA', cls: 'border-red-300 bg-red-50 text-red-700' },
+  tien_quyet: { ten: '🚨 Hổng nền', cls: 'border-red-300 bg-red-50 text-red-700' },
+  thai_do:    { ten: '⑤ Thái độ', cls: 'border-violet-200 bg-violet-50 text-violet-700' },
+}
+export function KenhChips({ c }: { c: Candidate }) {
+  const caseMo = c.sheet.levelKienThuc > 0 && c.deXuatKienThuc.deXuat !== c.sheet.levelKienThuc
+  return (
+    <>
+      {c.kenh.map((k) => <span key={k} className={`whitespace-nowrap rounded-full border px-2 py-0.5 text-[10.5px] font-bold ${KENH_CHIP[k].cls}`}>{KENH_CHIP[k].ten}</span>)}
+      {caseMo && <span className="whitespace-nowrap rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[10.5px] font-bold text-indigo-700">Case mở · máy đề xuất L{c.deXuatKienThuc.deXuat} ≠ L{c.sheet.levelKienThuc}</span>}
+      {c.kenh.length === 0 && !caseMo && <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10.5px] font-bold text-slate-500">không chạm kênh nào</span>}
+    </>
+  )
+}
 export function CandidateHeader({ c, phu, uuTien, onDong }: { c: Candidate; phu?: string; uuTien?: number; onDong?: () => void }) {
   const initials = c.ho_ten.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()
   return (
@@ -52,6 +67,8 @@ export function CandidateHeader({ c, phu, uuTien, onDong }: { c: Candidate; phu?
       <div className="flex min-w-0 flex-1 flex-wrap items-center gap-2">
         <span className="text-[15px] font-extrabold tracking-tight text-slate-800">{c.ho_ten}</span>
         {phu && <span className="rounded-full border border-blue-100 bg-blue-50 px-2 py-0.5 text-[10.5px] font-bold text-blue-700">{phu}</span>}
+        <span className="mx-0.5 text-[10.5px] font-semibold text-slate-400">chạm:</span>
+        <KenhChips c={c} />
       </div>
       <div className="flex flex-none items-center gap-2">
         {uuTien != null && <span className="whitespace-nowrap rounded-full border border-rose-200 bg-rose-50 px-2 py-1 text-[11px] font-extrabold text-rose-600">★ ưu tiên {uuTien}</span>}
@@ -61,12 +78,18 @@ export function CandidateHeader({ c, phu, uuTien, onDong }: { c: Candidate; phu?
   )
 }
 
+// Thùy 09-09: rời màn rồi quay lại phải ở đúng chỗ cũ (lớp, list đã vá, vị trí cuộn) — màn unmount khi
+// đổi tab nên nhớ module-level (sống tới F5). `cands = null` = chưa/đang tính ⇒ mount lại thì tính.
+const NHO: { lopId: string; cands: Candidate[] | null; scrollTop: number } = { lopId: '', cands: null, scrollTop: 0 }
+
 export default function DashboardHocTapScreen() {
   const [lops, setLops] = useState<{ id: string; ten_lop: string; mon: string }[]>([])
-  const [lopId, setLopId] = useState<string>('')
-  const [cands, setCands] = useState<Candidate[]>([])
+  const [lopId, setLopId] = useState<string>(NHO.lopId)
+  const [cands, setCands] = useState<Candidate[]>(NHO.cands ?? [])
   const [loading, setLoading] = useState(false)
   const [moHS, setMoHS] = useState<Candidate | null>(null)
+  const secRef = useRef<HTMLElement>(null)
+  const coCache = useRef(NHO.cands != null)
 
   useEffect(() => {
     supabase.from('lop').select('id, ten_lop, mon').eq('trang_thai', 'dang_hoc').order('ten_lop').limit(500)
@@ -79,22 +102,32 @@ export default function DashboardHocTapScreen() {
 
   useEffect(() => {
     if (!lopId) return
+    if (coCache.current) { coCache.current = false; return } // mount lại với cache ⇒ không tính lại
     let huy = false
+    NHO.cands = null; NHO.scrollTop = 0
     setLoading(true); setCands([])
     listCandidatesLop(lopId)
       .then((r) => { if (!huy) setCands(r) })
       .finally(() => { if (!huy) setLoading(false) })
     return () => { huy = true }
   }, [lopId])
+  useEffect(() => { NHO.lopId = lopId; if (!loading) NHO.cands = cands }, [lopId, cands, loading])
+  useLayoutEffect(() => { if (!loading && secRef.current) secRef.current.scrollTop = NHO.scrollTop }, [loading])
 
   const digest = useMemo(() => cands.filter((c) => c.trongDigest), [cands])
   const duoiNguong = useMemo(() => cands.filter((c) => !c.trongDigest), [cands])
   const lopOpts: Opt[] = lops.map((l) => ({ id: l.id, label: l.ten_lop, sub: l.mon }))
 
-  const reload = () => { const id = lopId; setLopId(''); setTimeout(() => setLopId(id), 0) }
+  // Thùy 09-09: duyệt xong KHÔNG reload cả lớp (3s trắng màn + cuộn về đầu + HS vừa duyệt lại hiện).
+  // Cùng ngữ cảnh (vẫn lớp này) ⇒ vá đúng 1 phần tử tại chỗ; chỉ đổi lớp mới reset+fetch lại (CLAUDE.md §2 React).
+  const apDungDuyet = (kq: DuyetKetQua) => {
+    setCands((prev) => prev.map((x) => x.hoc_sinh_id !== kq.hocSinhId ? x
+      : { ...x, sheet: { ...x.sheet, [kq.loai === 'kien_thuc' ? 'levelKienThuc' : 'levelThaiDo']: kq.level } }))
+    setMoHS(null)
+  }
 
   return (
-    <section className="min-h-0 overflow-auto bg-[#f5f5f7] p-8">
+    <section ref={secRef} onScroll={(e) => { NHO.scrollTop = e.currentTarget.scrollTop }} className="min-h-0 overflow-auto bg-[#f5f5f7] p-8">
       <div className="mx-auto max-w-[1200px]">
         <header className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <div>
@@ -143,7 +176,7 @@ export default function DashboardHocTapScreen() {
           </>
         )}
       </div>
-      {moHS && <ChiTietModal c={moHS} onDong={() => setMoHS(null)} onXong={() => { setMoHS(null); reload() }} />}
+      {moHS && <ChiTietModal c={moHS} onDong={() => setMoHS(null)} onXong={apDungDuyet} />}
     </section>
   )
 }
@@ -326,14 +359,13 @@ function CandCard({ c, onMo }: { c: Candidate; onMo: () => void }) {
   const ktDoi = c.deXuatKienThuc.deXuat !== c.sheet.levelKienThuc
   const tdDoi = c.deXuatThaiDo.deXuat !== c.sheet.levelThaiDo
   const tier = Math.max(c.deXuatKienThuc.deXuat, c.deXuatThaiDo.deXuat)
-  const co34 = c.kenh.filter((k) => k === 'chuong_do' || k === 'tien_quyet')
   return (
     <button onClick={onMo} className="flex w-full items-center gap-3 rounded-2xl bg-white p-4 text-left ring-1 ring-slate-200 transition hover:ring-indigo-300">
       <span className={`h-9 w-1 flex-shrink-0 rounded ${BAR[tier] ?? BAR[0]}`} />
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-[15px] font-semibold text-slate-800">{c.ho_ten}</span>
-          {co34.map((k) => <Pill key={k} {...KENH_UI[k]} />)}
+          <KenhChips c={c} />
         </div>
         <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-0.5 text-[12px] text-slate-500">
           {ktDoi
@@ -355,25 +387,33 @@ function CandCard({ c, onMo }: { c: Candidate; onMo: () => void }) {
 // duyệt bổ trợ thiếu hẳn context, cần y hệt info của modal Dashboard, không phải bản rút gọn).
 // `children` = chỗ chèn khối Duyệt (Vùng 4) — mỗi nơi gọi cần widget khác nhau (Dashboard: cả kiến
 // thức lẫn thái độ; Duyệt bổ trợ: chỉ kiến thức) nên để caller tự quyết, không cứng trong này.
+const MO_CHI_TIET_NHO = new Map<string, string | null>() // hoc_sinh_id → khối đang mở (sống tới F5)
 export function CandidateDetailBody({ c, children }: { c: Candidate; children?: React.ReactNode }) {
   const [log, setLog] = useState<LevelLogRow[]>([])
-  useEffect(() => { getLevelLog(c.hoc_sinh_id, c.mon).then(setLog) }, [c.hoc_sinh_id, c.mon])
+  // Deps có cả level: cha vá level tại chỗ sau duyệt (không reload) ⇒ "Lịch sử duyệt" tự nạp lại.
+  useEffect(() => { getLevelLog(c.hoc_sinh_id, c.mon).then(setLog) }, [c.hoc_sinh_id, c.mon, c.sheet.levelKienThuc, c.sheet.levelThaiDo])
 
   // Detail lười (Thùy 08-18): "soi" chuyên đề = lịch sử làm bài; "soi" thái độ = danh sách buổi.
   // Chỉ 1 khối mở tại 1 thời điểm (đơn giản UI) — mở khối khác thì đóng khối cũ.
-  const [moChiTiet, setMoChiTiet] = useState<string | null>(null) // 'thaido' | `cd:${ma_chuyen_de}` | null
+  // Khối đang mở nhớ theo HS ở module-level (Thùy 09-09: rời màn quay lại vẫn đang "soi" đúng chỗ đó).
+  const [moChiTiet, setMoChiTietRaw] = useState<string | null>(() => MO_CHI_TIET_NHO.get(c.hoc_sinh_id) ?? null) // 'thaido' | `cd:${ma_chuyen_de}` | null
+  const setMoChiTiet = (v: string | null | ((p: string | null) => string | null)) =>
+    setMoChiTietRaw((p) => { const n = typeof v === 'function' ? v(p) : v; MO_CHI_TIET_NHO.set(c.hoc_sinh_id, n); return n })
   const [lichSuCd, setLichSuCd] = useState<Record<string, LanLamChuyenDe[]>>({})
   const [dangTaiCd, setDangTaiCd] = useState<string | null>(null)
-  async function toggleCd(ma: string) {
-    const key = `cd:${ma}`
-    if (moChiTiet === key) { setMoChiTiet(null); return }
-    setMoChiTiet(key)
-    if (!lichSuCd[ma]) {
-      setDangTaiCd(ma)
-      try { const rows = await getLichSuChuyenDe(c.hoc_sinh_id, ma, c.mon); setLichSuCd((m) => ({ ...m, [ma]: rows })) }
-      finally { setDangTaiCd(null) }
-    }
-  }
+  const toggleCd = (ma: string) => setMoChiTiet((p) => p === `cd:${ma}` ? null : `cd:${ma}`)
+  // Nạp lịch sử theo khối đang mở (kể cả khi mount lại từ cache — data fetch không cache, chỉ cache "đang mở gì").
+  useEffect(() => {
+    if (!moChiTiet?.startsWith('cd:')) return
+    const ma = moChiTiet.slice(3)
+    if (lichSuCd[ma]) return
+    let huy = false
+    setDangTaiCd(ma)
+    getLichSuChuyenDe(c.hoc_sinh_id, ma, c.mon)
+      .then((rows) => { if (!huy) setLichSuCd((m) => ({ ...m, [ma]: rows })) })
+      .finally(() => { if (!huy) setDangTaiCd(null) })
+    return () => { huy = true }
+  }, [moChiTiet]) // eslint-disable-line
 
   const dangs = c.sheet.dangs
   // Vùng 1: dạng đổi MỨC giữa 2 cửa sổ (cần có `mucTruoc` mới so được).
@@ -624,7 +664,7 @@ function YeuOnDinhDrawer({ tut, len, dienYen, onClose }: { tut: DangStat[]; len:
 
 // Modal chrome (header/close/overlay) — nội dung THẬT nằm ở `CandidateDetailBody` (tái dùng ở
 // DuyetBoTroYeuScreen.tsx). Tách để không lặp code chrome/nội dung.
-function ChiTietModal({ c, onDong, onXong }: { c: Candidate; onDong: () => void; onXong: () => void }) {
+function ChiTietModal({ c, onDong, onXong }: { c: Candidate; onDong: () => void; onXong: (kq: DuyetKetQua) => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center overflow-auto bg-slate-900/40 p-8" onClick={onDong}>
       <div className="w-full max-w-[1300px] rounded-[24px] border border-slate-200 bg-white p-6 shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -657,14 +697,16 @@ const deltaCls = (d: number) => d < -0.005 ? 'text-rose-600' : d > 0.005 ? 'text
 function thaiDoTomTat(td: { thai_do: string; t: string }[]): string {
   if (!td.length) return 'chưa có dữ liệu thái độ'
   const duoi = td.filter((x) => x.thai_do !== 'nghiem_tuc').length
-  return duoi === 0 ? `${td.length}/${td.length} buổi nghiêm túc — không có tín hiệu` : `${duoi}/${td.length} buổi dưới nghiêm túc`
+  return duoi === 0 ? `${td.length}/${td.length} buổi nghiêm túc (2 cửa sổ) — không có tín hiệu` : `${duoi}/${td.length} buổi dưới nghiêm túc (2 cửa sổ gần nhất)`
 }
 
 // Người duyệt: mặc định = đề xuất của máy, sửa được. Ghi log CẢ HAI VẾ ⇒ delta tự lộ.
 // Export cho `DuyetBoTroYeuScreen.tsx` tái dùng nguyên logic duyệt + mở case (Thùy 08-18: tách
 // "Duyệt bổ trợ" thành 1 tab riêng, KHÔNG viết lại — DRY, tránh 2 đường mở case lệch nhau).
+// `onXong` nhận KẾT QUẢ vừa ghi để cha vá state tại chỗ (không reload cả danh sách — Thùy 09-09).
+export type DuyetKetQua = { hocSinhId: string; mon: string; loai: 'kien_thuc' | 'thai_do'; level: number }
 export function DuyetKhoi({ c, loai, ten, hienTai, deXuat, onXong }: {
-  c: Candidate; loai: 'kien_thuc' | 'thai_do'; ten: string; hienTai: number; deXuat: any; onXong: () => void
+  c: Candidate; loai: 'kien_thuc' | 'thai_do'; ten: string; hienTai: number; deXuat: any; onXong: (kq: DuyetKetQua) => void
 }) {
   const [chot, setChot] = useState<number>(deXuat.deXuat)
   const [lyDo, setLyDo] = useState('')
@@ -691,7 +733,7 @@ export function DuyetKhoi({ c, loai, ten, hienTai, deXuat, onXong }: {
           nguon, lyDo: lyDo.trim() || deXuat.lyDo.join('; ') || null,
         })
       }
-      onXong()
+      onXong({ hocSinhId: c.hoc_sinh_id, mon: c.mon, loai, level: chot })
     } finally { setBusy(false) }
   }
   return (

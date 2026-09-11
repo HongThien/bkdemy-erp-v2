@@ -2,7 +2,7 @@
 // UI chỉ gọi qua đây. Engine thuần ở src/gami/*.js (đã test). Buổi pure-derive: đẻ dòng khi MỞ.
 import { supabase } from './supabase'
 import { getMyProfile } from './nhansu'
-import { getETByBuoi, getETCaus, getBTVNByBuoi, getBTVNCaus, getGiaoTrinhBuoiDoc, khoCuaMon, laMaHinh } from './tailieu'
+import { getETByBuoi, getETCaus, getBTVNByBuoi, getBTVNCaus, getGiaoTrinhBuoiDoc, getTaiLieuFull, khoCuaMon, nhanhCuaMon, laMaHinh } from './tailieu'
 import { getMTInstanceByBuoi, getMTPhanCaus, type MTPhanCaus } from './mt'
 import { loadHinhForBuoi, type HinhDapAn } from './kho/hinhGiaoTrinh'
 import { getBaiTestByDoc, getBaiTestCaus, type BaiTest, type BaiTestCau } from './testonline'
@@ -132,7 +132,11 @@ export async function getDangTen(maDangs: string[], mon?: string): Promise<Recor
   const uniq = [...new Set(maDangs.filter(Boolean))]
   if (!uniq.length) return {}
   const out: Record<string, string> = {}
-  const tbls = mon ? [khoCuaMon(mon).banDoTbl] : ['dai_ban_do', 'khtn_ban_do']
+  // Tra MỌI NHÁNH của môn theo registry (Toán = Đại + Hình giải tích): MT trộn nhánh (nhanhByCau) nên câu Hình GT
+  // có dang_chinh 'T309…' nằm ở hgt_ban_do — chỉ tra dai_ban_do thì header MT + popup chuông hiện mã trần (09/09).
+  const tbls = mon
+    ? [...new Set([khoCuaMon(mon).banDoTbl, ...nhanhCuaMon(mon).map((n) => khoCuaMon(mon, n.ma).banDoTbl)])]
+    : ['dai_ban_do', 'khtn_ban_do', 'hgt_ban_do']
   for (const tbl of tbls) {
     const { data } = await supabase.from(tbl).select('ma_dang, ten_dang').in('ma_dang', uniq).limit(LIMIT)
     for (const r of (data ?? []) as any[]) out[r.ma_dang] = r.ten_dang
@@ -732,9 +736,11 @@ export async function listCanhBao(buoiId: string): Promise<CanhBao[]> {
   if (error) throw error
   return (data ?? []) as CanhBao[]
 }
-// `nguon` mặc định 'btvn' (chỗ gọi cũ giữ nguyên); app GV/ERP DanhGiaTab truyền 'danhgia'
-// (CEO 31/08 — chuông ở đánh giá sau buổi). CHECK canh_bao_yeu_nguon_chk giữ tập giá trị.
-export async function themCanhBao(p: { buoiId: string; hocSinhId: string; maDang: string; ghiChu?: string; nguon?: 'btvn' | 'danhgia' }): Promise<void> {
+// `nguon` = CHỖ BẤM chuông (CEO 31/08 'danhgia'; CEO 09/09 thêm 'et' | 'mt' — chuông ở cả 4 chỗ chấm).
+// Tập giá trị = CHECK canh_bao_yeu_nguon_chk (mig 202609091428) — thêm giá trị mới PHẢI kèm migration nới CHECK.
+export type NguonCanhBao = 'btvn' | 'danhgia' | 'et' | 'mt'
+export const TEN_NGUON_CANH_BAO: Record<NguonCanhBao, string> = { btvn: 'BTVN', danhgia: 'Đánh giá sau buổi', et: 'ET', mt: 'MT' }
+export async function themCanhBao(p: { buoiId: string; hocSinhId: string; maDang: string; ghiChu?: string; nguon?: NguonCanhBao }): Promise<void> {
   const { data: { user } } = await supabase.auth.getUser()
   const { error } = await supabase.from('canh_bao_yeu').insert({ buoi_hoc_id: p.buoiId, hoc_sinh_id: p.hocSinhId, ma_dang: p.maDang, ghi_chu: p.ghiChu ?? null, nguon: p.nguon ?? 'btvn', created_by: user?.id ?? null })
   if (error) throw error
@@ -742,6 +748,28 @@ export async function themCanhBao(p: { buoiId: string; hocSinhId: string; maDang
 export async function xoaCanhBao(id: string): Promise<void> {
   const { error } = await supabase.from('canh_bao_yeu').delete().eq('id', id)
   if (error) throw error
+}
+// ⭐ LUẬT CHUNG mọi chuông (CEO 09/09): bấm chuông → danh sách DẠNG CÓ TRONG TÀI LIỆU của phase đó + ô ghi chú.
+// Tài liệu theo phase: danhgia → giáo trình buổi (loai='giao_trinh_buoi', phần loai_phan='dang') · et → đề ET ·
+// mt → đề MT (mọi phần) · btvn → phiếu BTVN. Đều khớp buổi qua (lớp+ngày) như lưới chấm. Thứ tự = thứ tự trong tài liệu.
+// KHÔNG lấy từ lưới chấm đã gắn dạng (bài học 04/09: 41/44 buổi ingame không gắn dạng ⇒ chuông mờ suốt).
+// Đây chỉ là LIST THÔ để render dropdown (distinct + tra tên), không phải phép tính nghiệp vụ (§2.0).
+export type DangTaiLieu = { ma_dang: string; ten: string }
+export async function loadDangTaiLieuBuoi(buoiId: string, nguon: NguonCanhBao, mon?: string | null): Promise<DangTaiLieu[]> {
+  let mds: (string | null | undefined)[] = []
+  if (nguon === 'danhgia') {
+    const { data: b, error } = await supabase.from('buoi_hoc').select('lop_id, ngay').eq('id', buoiId).single()
+    if (error) throw error
+    const lopId = (b as any).lop_id as string | null
+    const doc = lopId ? await getGiaoTrinhBuoiDoc(lopId, (b as any).ngay) : null
+    if (doc) mds = (await getTaiLieuFull(doc.id)).phans.filter((p) => p.loai_phan === 'dang').map((p) => p.ref_ma)
+  } else if (nguon === 'et') mds = (await loadETForBuoi(buoiId)).caus.map((c) => c.dang_chinh)
+  else if (nguon === 'mt') mds = (await loadMTForBuoi(buoiId)).caus.map((c) => c.dang_chinh)
+  else mds = (await loadBTVNForBuoi(buoiId)).caus.map((c) => c.dang_chinh)
+  const uniq = [...new Set(mds.filter(Boolean))] as string[]
+  if (!uniq.length) return []
+  const ten = await getDangTen(uniq, mon ?? undefined)
+  return uniq.map((ma_dang) => ({ ma_dang, ten: ten[ma_dang] ?? ma_dang }))
 }
 
 // ════ EXP THÁNG (redesign 07-28, Thùy chốt) — EXP = CHĂM CHỈ, TÍNH LẠI theo (lớp × tháng) ════

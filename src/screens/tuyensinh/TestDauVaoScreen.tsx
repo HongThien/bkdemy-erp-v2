@@ -17,8 +17,13 @@ const TABS: { v: Tab; lbl: string }[] = [
   { v: 'diem_danh', lbl: 'Điểm danh test' }, { v: 'cham', lbl: 'Chấm test' }, { v: 'tra_bai', lbl: 'Trả bài' }, { v: 'de', lbl: 'Đề test' },
 ]
 
+// Card "Việc của tôi" (chấm test / trả bài — CEO ②⑤ 09/09) nhảy thẳng vào đúng tab: đặt tab yêu cầu ở
+// module-level TRƯỚC khi setStaffLeaf('test_dau_vao'); màn mount đọc 1 lần rồi xoá (không dính lần mở sau).
+let TAB_YEU_CAU: Tab | null = null
+export function moTabTestDauVao(tab: Tab) { TAB_YEU_CAU = tab }
+
 export default function TestDauVaoScreen() {
-  const [tab, setTab] = useState<Tab>('diem_danh')
+  const [tab, setTab] = useState<Tab>(() => { const t = TAB_YEU_CAU ?? 'diem_danh'; TAB_YEU_CAU = null; return t })
   return (
     <div className="flex h-full min-h-0 flex-col overflow-hidden bg-[#f5f5f7]">
       <div className="shrink-0 p-6 pb-0">

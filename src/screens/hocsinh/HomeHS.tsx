@@ -9,6 +9,17 @@
 // ============================================================================
 import type { ReactNode } from 'react'
 import AvatarHS from './AvatarHS'
+import { LOAI_BO_TRO_TEN, type LichBoTro } from '../../lib/botro_yeu_ca'
+import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
+
+// Dòng tóm tắt ca bổ trợ GẦN NHẤT cho box "Bổ trợ" (Thùy 09-09: 2 box màn chính — Bổ trợ · Bài tập được giao).
+export function tomTatLich(lich: LichBoTro[]): { sub: string; co: boolean } {
+  const c = lich[0]
+  if (!c) return { sub: 'Chưa có lịch', co: false }
+  const gio = c.gio_bat_dau ? ` · ${String(c.gio_bat_dau).slice(0, 5)}` : ''
+  const ngay = c.hom_nay ? 'Hôm nay' : `${thuCuaNgay(c.ngay)} ${ddmmVN(c.ngay)}`
+  return { sub: `${LOAI_BO_TRO_TEN[c.loai]} · ${ngay}${gio}${c.phong ? ` · ${c.phong}` : ''}`, co: true }
+}
 
 const A = '/bk-ui/hs' // thư mục asset đã tối ưu (xuất từ kit bằng scripts PowerShell — file gốc ở design/handoff)
 
@@ -72,12 +83,14 @@ function NutTron({ onClick, title, children }: { onClick: () => void; title: str
   )
 }
 
-export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, anhUrl, onAnhChanged, chuaDoc, coCa, soRetest, cards, onHopThu, onDoiMK, onThoat, onCa, onRetest }: {
+export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, anhUrl, onAnhChanged, chuaDoc, lich, soRetest, cards, onHopThu, onDoiMK, onThoat, onLich, onRetest }: {
   hoTen: string; maHS: string; lopMon: string | null; gioiTinh: 'nam' | 'nu' | null
   anhUrl: string | null; onAnhChanged: (url: string) => void
-  chuaDoc: number; coCa: boolean; soRetest: number; cards: HomeCard[]
-  onHopThu: () => void; onDoiMK: () => void; onThoat: () => void; onCa: () => void; onRetest: () => void
+  chuaDoc: number; lich: LichBoTro[]; soRetest: number; cards: HomeCard[]
+  onHopThu: () => void; onDoiMK: () => void; onThoat: () => void; onLich: () => void; onRetest: () => void
 }) {
+  const tt = tomTatLich(lich)
+  const vaoCa = lich.some((c) => c.vao_ca)
   const t = THEME[gioiTinh === 'nu' ? 'nu' : 'nam']
   const tu = hoTen.trim().split(/\s+/)
   const initials = tu.slice(-2).map((w) => w[0]).join('').toUpperCase()
@@ -139,11 +152,15 @@ export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, anhUrl, onAnhCha
           <div className="font-hand pointer-events-none absolute bottom-1.5 left-2.5 -rotate-[8deg] text-[9px] leading-[1.05] text-white/80">Better Student<br />Brighter You!</div>
         </div>
 
-        {/* BANNER trạng thái — chỉ hiện khi có ca bổ trợ / bài kiểm tra lại (reference_support_banner) */}
-        {(coCa || soRetest > 0) && (
+        {/* 2 BOX (Thùy 09-09): "Bổ trợ" (lịch 3 loại yếu/bù/đuổi — trigger cái nào hiện cái đó) · "Bài tập được giao"
+            (bàn sau — placeholder). LUÔN hiện 2 box, kể cả chưa có lịch, để em biết chỗ xem. */}
+        <div className="mt-2.5 grid shrink-0 grid-cols-2 gap-2.5">
+          <BoxNho onClick={onLich} title="Bổ trợ" sub={vaoCa ? 'Vào ca ngay →' : tt.sub} mau={tt.co ? '#d8921c' : SEC} nen={tt.co ? 'linear-gradient(135deg,#fffbe6,#fff3c4)' : '#ffffff'} vien={tt.co ? '#ffe28a' : '#e6ebf5'} icon="🧑‍🏫" badge={lich.length || undefined} />
+          <BoxNho title="Bài tập được giao" sub="Sắp có" mau={SEC} nen="linear-gradient(135deg,#f9fbff,#eef0f4)" vien="#e6ebf5" icon="📚" disabled />
+        </div>
+        {soRetest > 0 && (
           <div className="mt-2.5 flex shrink-0 flex-col gap-2">
-            {coCa && <Banner onClick={onCa} title="Hôm nay có ca bổ trợ" sub="Đến sớm 15 phút để ôn lại phần còn yếu nhé!" doodle="Cùng cố gắng hơn nhé! ♡" />}
-            {soRetest > 0 && <Banner onClick={onRetest} title="Bài kiểm tra lại" sub={`${soRetest} bài chờ làm sau ET · nộp 1 lần`} doodle="Làm được mà! ♡" badge={soRetest} />}
+            <Banner onClick={onRetest} title="Bài kiểm tra lại" sub={`${soRetest} bài chờ làm sau ET · nộp 1 lần`} doodle="Làm được mà! ♡" badge={soRetest} />
           </div>
         )}
 
@@ -187,6 +204,21 @@ export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, anhUrl, onAnhCha
         </div>
       </div>
     </div>
+  )
+}
+
+// Box nhỏ 2 cột giữa hero và lưới (Thùy 09-09) — icon + tiêu đề + dòng trạng thái + badge số ca.
+function BoxNho({ onClick, title, sub, mau, nen, vien, icon, badge, disabled }: { onClick?: () => void; title: string; sub: string; mau: string; nen: string; vien: string; icon: string; badge?: number; disabled?: boolean }) {
+  return (
+    <button onClick={onClick} disabled={disabled} className={`relative flex items-center gap-2 rounded-[18px] py-2 pl-2.5 pr-2 text-left ${disabled ? 'opacity-75 saturate-50' : 'active:scale-[0.98]'}`}
+      style={{ background: nen, border: `1.5px solid ${vien}`, boxShadow: disabled ? 'none' : SHADOW }}>
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[12px] bg-white text-[18px]" style={{ boxShadow: '0 2px 6px rgba(67,92,160,.08)' }}>{icon}</span>
+      <span className="min-w-0 flex-1">
+        <span className="block truncate text-[13.5px] font-extrabold leading-tight" style={{ color: NAVY }}>{title}</span>
+        <span className="mt-0.5 block truncate text-[10.5px] font-semibold leading-snug" style={{ color: mau }}>{sub}</span>
+      </span>
+      {!!badge && <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-[11px] font-extrabold text-white" style={{ background: '#FF315E' }}>{badge}</span>}
+    </button>
   )
 }
 

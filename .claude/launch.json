@@ -117,6 +117,12 @@
       "port": 5190
     },
     {
+      "name": "dev-ph",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "C:/Users/Admin/Desktop/2/PH-App/bkdemy-ph-app", "run", "dev", "--", "--port", "3010"],
+      "port": 3010
+    },
+    {
       "name": "dev-khaosat",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev:khaosat"],

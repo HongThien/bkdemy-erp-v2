@@ -22,6 +22,12 @@
 //   VITE_SUPABASE_URL / VITE_SUPABASE_KEY (anon — đã có sẵn như mọi project)
 //
 // Test tay (không đợi 10:30): curl -H "Authorization: Bearer <CRON_SECRET>" https://pt.bkacademy.edu.vn/api/pt-nhac-viec
+//
+// ⭐ BADGE ICON (CEO 10/09, "ko mở thì vẫn phải có số báo"): payload giờ kèm `count` = số
+// việc thật của ĐÚNG người nhận (fn_pt_push_dem, secret-gated, đếm lại đúng hàm LÕI đang
+// dùng cho màn Hôm nay — không đoán). sw-push.js đọc `count` để gọi setAppBadge lúc app
+// ĐÓNG. Ai không có việc (count=0) VẪN nhận tin nhắc (tin chung, CEO 05/09) nhưng badge
+// tự về 0 — không hiện số sai.
 // ============================================================================
 import webpush from 'web-push'
 import { createClient } from '@supabase/supabase-js'
@@ -52,11 +58,14 @@ export default async function handler(req, res) {
 
   const { data: ds, error } = await sb.rpc('fn_pt_push_danh_sach', { p_secret: CRON_SECRET })
   if (error) return res.status(500).json({ error: `DB: ${error.message}` })
+  const { data: dem, error: eDem } = await sb.rpc('fn_pt_push_dem', { p_secret: CRON_SECRET })
+  if (eDem) return res.status(500).json({ error: `DB đếm: ${eDem.message}` })
+  const demTheoNs = new Map((dem ?? []).map((r) => [r.nhan_su_id, r.so_viec]))
 
-  const payload = JSON.stringify(NOI_DUNG)
   const ketQua = []   // [{id, ok, ma}] — ghi vết từng thiết bị
   let guiOk = 0, guiLoi = 0
   for (const d of ds ?? []) {
+    const payload = JSON.stringify({ ...NOI_DUNG, count: demTheoNs.get(d.nhan_su_id) ?? 0 })
     try {
       await webpush.sendNotification({ endpoint: d.endpoint, keys: { p256dh: d.p256dh, auth: d.auth } }, payload, { TTL: 6 * 3600, urgency: 'normal' })
       ketQua.push({ id: d.id, ok: true, ma: null }); guiOk++

@@ -42,8 +42,8 @@ function DemoHome() {
     { id: 'de_thi_thu', ten: 'Làm đề thi thử', sub: 'Sắp có', subMau: 'xam', doodle: 'Sắp ra mắt! Hãy chờ nhé!', ill: 'mock_exam_locked', tone: 'gray', disabled: true },
   ]
   return <HomeHS hoTen={nu ? 'Trần Mai Anh' : 'Nguyễn Văn Đức Huy'} maHS={nu ? 'hs0088' : 'hs0059'} lopMon={nu ? '11A2 - Toán' : '11A1 - Toán'} gioiTinh={nu ? 'nu' : 'nam'}
-    anhUrl={null} onAnhChanged={noop} chuaDoc={3} coCa={q.has('ca')} soRetest={q.has('ca') ? 1 : 0} cards={cards}
-    onHopThu={noop} onDoiMK={noop} onThoat={noop} onCa={noop} onRetest={noop} />
+    anhUrl={null} onAnhChanged={noop} chuaDoc={3} lich={q.has('ca') ? [{ buoi_id: 'x', loai: 'bo_tro_yeu', ngay: '2026-09-10', gio_bat_dau: '16:00:00', gio_ket_thuc: '17:00:00', phong: 'P102', mon: 'Toán', nguoi: 'Cô Thùy', diem_danh: null, hom_nay: true, vao_ca: false }] : []} soRetest={q.has('ca') ? 1 : 0} cards={cards}
+    onHopThu={noop} onDoiMK={noop} onThoat={noop} onLich={noop} onRetest={noop} />
 }
 
 export default function AppHS() {

@@ -195,7 +195,7 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
   useEffect(() => {
     let cancelled = false
     setFull(null); setLopTen(null)
-    getTaiLieuFull(id).then((f) => {
+    getTaiLieuFull(id, onlyBuoiId ? { onlyBuoiId } : undefined).then((f) => {
       if (cancelled) return
       setFull(f)
       const lopId = (f.taiLieu as { lop_id?: string | null }).lop_id

@@ -8,6 +8,7 @@ import {
   listBT, getBT, createBT, renameBT, deleteBT, addDangBT, timHocSinhBT, monCuaHS,
   getBTGrades, gradeBTCau, deleteBTGrade, type BT, type BTGrade, type BTGradeResult,
 } from '../../lib/bt'
+import { usePagedList } from '../../hooks/usePagedList'
 import {
   getTaiLieuFull, updateTaiLieu, deletePhan, setCauOfPhan, autoSuggestByLoai, khoCuaMon,
   DEFAULT_LUYEN_COUNTS, DEFAULT_BTVN_LINES, ET_FORMS, etFormOf, type PhanResolved, type CauHinh, type ETForm as ETFormKind,
@@ -31,35 +32,38 @@ const BT_KQ: { v: BTGradeResult; lbl: string; idle: string; sel: string }[] = [
   { v: 'wrong', lbl: 'S', idle: 'border-slate-200 text-rose-700 hover:bg-rose-50', sel: 'border-transparent bg-rose-600 text-white' },
 ]
 
+const PAGE = 20 // "20 tài liệu gần nhất" (Thùy 09-10) — BT tích luỹ không giới hạn giống ET/BTVN, xem usePagedList
+
 // ═══════════ LIST (Kho BT riêng) ═══════════
 export default function BTScreen() {
+  const [qLive, setQLive] = useState('')
   const [q, setQ] = useState('')
-  const [list, setList] = useState<BT[]>([])
-  const [loading, setLoading] = useState(true)
+  useEffect(() => { const t = setTimeout(() => setQ(qLive), 300); return () => clearTimeout(t) }, [qLive])
   const [creating, setCreating] = useState(false)
   const [openId, setOpenId] = useState<string | null>(null)
   const [printId, setPrintId] = useState<string | null>(null)
 
-  async function reload() { setLoading(true); try { setList(await listBT()) } finally { setLoading(false) } }
-  useEffect(() => { reload() }, [])
+  // ⭐ 09-10 — mặc định chỉ PAGE dòng mới nhất; gõ tìm → server-side (tên BT + tên/mã HS, xem listBT).
+  const { rows: filtered, loading, loadingMore, hasMore, reload, loadMore } = usePagedList<BT>(
+    ({ before, search }) => listBT(undefined, { before, search }),
+    (d) => d.created_at, PAGE, q, [],
+  )
 
   if (openId) return <BTEditor id={openId} onClose={() => { setOpenId(null); reload() }} />
-
-  const ql = q.trim().toLowerCase()
-  const filtered = list.filter((d) => !ql || d.ten.toLowerCase().includes(ql) || d.hoc_sinh?.ho_ten.toLowerCase().includes(ql) || d.hoc_sinh?.ma_hs?.toLowerCase().includes(ql))
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="text-sm font-semibold text-slate-900">BT</span>
         <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-700">tài liệu bổ trợ — gán theo học sinh, riêng Kho tài liệu chung</span>
-        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm theo tên HS / mã HS / tên BT…" className={`${inp} w-64`} />
+        <input value={qLive} onChange={(e) => setQLive(e.target.value)} placeholder="Tìm theo tên HS / mã HS / tên BT…" className={`${inp} w-64`} />
         <button onClick={() => setCreating(true)} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Tạo BT mới</button>
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
-          : filtered.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 bg-white py-14 text-center text-sm text-slate-400">{ql ? 'Không tìm thấy BT khớp.' : 'Chưa có BT nào.'}</div>
+          : filtered.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 bg-white py-14 text-center text-sm text-slate-400">{qLive.trim() ? 'Không tìm thấy BT khớp.' : 'Chưa có BT nào.'}</div>
           : (
+            <>
             <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
               {filtered.map((d) => (
                 <div key={d.id} className="group relative rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-indigo-300 hover:shadow-md">
@@ -80,6 +84,12 @@ export default function BTScreen() {
                 </div>
               ))}
             </div>
+            {hasMore && (
+              <div className="mt-4 flex justify-center">
+                <button onClick={loadMore} disabled={loadingMore} className="rounded-md border border-slate-200 bg-white px-4 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-300 disabled:opacity-40">{loadingMore ? 'Đang tải…' : `↓ Tải thêm ${PAGE}`}</button>
+              </div>
+            )}
+            </>
           )}
       </div>
       {creating && <ChonHocSinhModal onClose={() => setCreating(false)} onCreated={(id) => { setCreating(false); setOpenId(id) }} />}

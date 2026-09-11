@@ -10,6 +10,7 @@ import type { PtGate } from '../../AppPt'
 import { listViecCuaToiPt, listChoNghiemThuCuaToi, type ViecPt } from '../../lib/giaoviec'
 import { homNayVN, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { kiemTraHoTro, trangThaiNhacViec } from '../../lib/push'
+import { setAppBadgeCount } from '../../lib/appBadge'
 import { NhacViecCard } from '../../components/NhacViecCaiDat'
 import { ErrBar } from '../giaoviec/ui'
 import { ViecPtCard, ChiTietModal } from './ViecPt'
@@ -53,6 +54,8 @@ export default function PtHome({ gate }: { gate: PtGate }) {
 
   const homNay = rows.filter((r) => r.dang_mo)
   const chuaCapNhat = homNay.filter((r) => !r.da_cap_nhat_hom_nay).length
+  // Icon MH chính — số = việc chưa cập nhật hôm nay + việc chờ tôi nghiệm thu (2 bubble đang hiện ở tab dưới).
+  useEffect(() => { setAppBadgeCount(chuaCapNhat + choDuyet) }, [chuaCapNhat, choDuyet])
   const onChanged = () => reload(true)
   // modal chi tiết đọc bản MỚI NHẤT của việc sau mỗi reload (không giữ snapshot cũ)
   const chiTietRow = chiTiet ? (rows.find((r) => r.id === chiTiet.id) ?? chiTiet) : null

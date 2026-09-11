@@ -13,7 +13,7 @@ import {
   listNguoiChoCham, listNguoiChoTraBai, ganNguoiChamCaTest, ganNguoiTraBaiCaTest,
   type CaTest, type TaoCaTestInput, type MonTS, type NguoiChoAssign,
 } from '../../lib/tuyensinh'
-import { ganDeCaTest, listDeTestDauVao, type DeTestRow } from '../../lib/detest'
+import { ganDeCaTest, ganDeDangDung, listDeTestDauVao, type DeTestRow } from '../../lib/detest'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import { homNayVN, mucDeadline, nhanConLai, type DeadlineMuc } from '../../lib/tuan'
 import SearchSelect from '../../components/SearchSelect'
@@ -84,7 +84,6 @@ export default function DiemDanhTestScreen() {
 function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deList: DeTestRow[]; onChanged: () => void }) {
   const [baiUrl, setBaiUrl] = useState<string | null>(c.baiUrl)
   const [taiLieuId, setTaiLieuId] = useState(c.taiLieuId)
-  const [chonMT, setChonMT] = useState('')
   const [nguoiCham, setNguoiCham] = useState(c.nguoiChamId ?? '')
   const [nguoiTraBai, setNguoiTraBai] = useState(c.nguoiTraBaiId ?? '')
   const [choCham, setChoCham] = useState<NguoiChoAssign[]>([])
@@ -115,13 +114,25 @@ function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deL
     try { const url = await uploadCaTestBai(f); await ganBaiCaTest(c.id, url); setBaiUrl(url) }
     catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
   }
-  // Đổi đề bất kỳ lúc nào tại phòng (HS kêu khó quá) — dropdown luôn mở, KHÔNG khoá sau khi đã gán 1 lần.
-  async function ganDe() {
-    if (!chonMT) return
+  // ⭐ CEO ① 09/09: chọn đề trong dropdown = LƯU NGAY (bỏ nút "Gán đề" — UI 2 bước làm ca của Tùng
+  // 07/09 hoàn tất mà đề chưa từng tới DB). Đổi đề bất kỳ lúc nào tại phòng (HS kêu khó) — dropdown luôn mở.
+  async function ganDe(id: string) {
+    if (!id || id === taiLieuId) return
     setBusy(true); setErr(null)
-    try { await ganDeCaTest(c.id, chonMT); setTaiLieuId(chonMT); setChonMT('') }
+    try { await ganDeCaTest(c.id, id); setTaiLieuId(id) }
     catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
   }
+  // Ca chưa có đề mà (khối × môn) đã có đề ĐANG DÙNG → tự gán lúc card hiện (mặc định, không bắt Ops bấm).
+  useEffect(() => {
+    if (taiLieuId || chuaCoDe) return
+    let alive = true
+    setBusy(true)
+    ganDeDangDung(c.id, c.ungVien.khoi, c.mon)
+      .then((de) => { if (alive && de) setTaiLieuId(de.id) })
+      .catch((ex) => { if (alive) setErr(ex.message ?? String(ex)) })
+      .finally(() => { if (alive) setBusy(false) })
+    return () => { alive = false }
+  }, [c.id]) // eslint-disable-line
   async function hoanTat() {
     setBusy(true); setErr(null)
     try { await hoanThanhCaTest(c.id, baiUrl); onChanged() }
@@ -146,11 +157,10 @@ function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deL
           <span className="text-[11px] text-amber-600" title='Học thuật chưa tạo đề test đầu vào cho khối×môn này ở tab "Đề test".'>⚠ Chưa có đề test đầu vào cho khối này</span>
         ) : (
           <>
-            <select className="min-h-[36px] rounded-md border border-slate-200 px-2 py-1.5 text-[12px]" value={chonMT} onChange={(e) => setChonMT(e.target.value)}>
-              <option value="">{deDaGan ? 'Đổi đề khác…' : 'Chọn đề…'}</option>
+            <select className="min-h-[36px] rounded-md border border-slate-200 px-2 py-1.5 text-[12px]" value={taiLieuId ?? ''} onChange={(e) => ganDe(e.target.value)} disabled={busy} title="Chọn là lưu ngay">
+              <option value="" disabled>{busy ? 'Đang gán đề…' : 'Chọn đề…'}</option>
               {cands.map((d) => <option key={d.id} value={d.id}>{d.ten}{d.laHienTai ? ' · đang dùng' : ' · lịch sử'}</option>)}
             </select>
-            {chonMT && <button onClick={ganDe} disabled={busy} className="min-h-[36px] rounded-md bg-slate-700 px-2.5 py-1.5 text-[11px] font-medium text-white hover:bg-slate-600 disabled:opacity-40">{deDaGan ? 'Đổi đề' : 'Gán đề'}</button>}
           </>
         )}
       </div>
@@ -172,7 +182,8 @@ function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deL
           <input type="file" accept="application/pdf,image/*" className="hidden" onChange={chonFile} disabled={busy} />
         </label>
         {baiUrl && <a href={baiUrl} target="_blank" rel="noreferrer" className="text-[12px] text-indigo-500 hover:underline">Xem bài</a>}
-        <button onClick={hoanTat} disabled={busy || !baiUrl} title={!baiUrl ? 'Cần upload bài mới hoàn tất được' : ''} className="ml-auto min-h-[36px] rounded-md bg-emerald-600 px-3 py-1.5 text-[12px] font-semibold text-white hover:bg-emerald-500 disabled:opacity-40">✓ Hoàn tất</button>
+        {/* ⭐ 09/09: gate Hoàn tất đòi ĐỦ bằng chứng khâu Chấm cần — có bài + có đề (thiếu đề = ca rơi khỏi hàng đợi chấm im lặng). */}
+        <button onClick={hoanTat} disabled={busy || !baiUrl || !taiLieuId} title={!baiUrl ? 'Cần upload bài mới hoàn tất được' : !taiLieuId ? 'Cần gán đề trước (khâu chấm cần câu của đề)' : ''} className="ml-auto min-h-[36px] rounded-md bg-emerald-600 px-3 py-1.5 text-[12px] font-semibold text-white hover:bg-emerald-500 disabled:opacity-40">✓ Hoàn tất</button>
       </div>
       {err && <p className="mt-1.5 text-[12px] text-rose-600">{err}</p>}
     </div>
@@ -218,7 +229,10 @@ function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: () =
       const input: TaoCaTestInput = ungVienId
         ? { ungVienId, ...chung }
         : { ungVienMoi: { hoTenHs: f.hoTenHs, mon: f.mon, khoi: f.khoi, ngaySinh: f.ngaySinh || null, hoTenPh: f.hoTenPh, sdtPh: f.sdtPh, truongHoc: f.truongHoc }, ...chung }
-      await taoCaTest(input)
+      const ca = await taoCaTest(input)
+      // CEO ① 09/09: đề mặc định = đề đang dùng của (khối × môn), gán NGAY lúc tạo ca. Chưa có đề thì
+      // card sẽ báo ⚠ (không chặn tạo ca — HS đang đứng ở quầy).
+      try { await ganDeDangDung(ca.id, ca.ungVien.khoi, ca.mon) } catch { /* card báo sau */ }
       onDone()
     } catch (e: any) { setErr(e.message ?? String(e)); setBusy(false) }
   }
