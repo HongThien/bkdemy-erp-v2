@@ -10631,3 +10631,22 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
 - **Trạng thái cuối:** 25 câu ma_cau đúng convention · 2 câu có `anh_de` · CEO đã duyệt 8/25 (câu 3-10) · 17 còn chờ duyệt (câu 1,2,11-25). Ma cau: `T312010101081..093` (13) · `T312010102040..046` (7) · `T312010103019..020` (2) · `T312010105023` · `T312010106016` · `T312010107026`. Precision AI đo được nếu CEO đổi `dang_chinh` khi duyệt.
 - **Ghi 3 bài học mới vào memory `nhap-cau-hgt-tu-pdf.md`:** ① kiểm hình TRƯỚC bulk INSERT (grep pandoc md `![](image...png)` phát hiện câu có ảnh) · ② `ma_cau` phải explicit `<dang><STT>` từ đầu, đừng để default gen · ③ Verify script phải in `duyet_at` để phân biệt trigger vs người. Memory index `MEMORY.md` cũng bổ sung link.
 - **Chưa test dev server / UI** — chỉ ghi DB. CEO tự thấy 25 câu ở màn Duyệt câu (`src/screens/duyetloigiai/DuyetCauTab.tsx`).
+
+## 2026-09-11 — Trao giải tab "Đã chốt giải": chụp ảnh Y HỆT Report PH (CEO 11/09)
+- **CEO: "cần có trước cả report cơ mà, tính năng lấy y hệt bên report phụ huynh luôn"** — hôm qua tôi hiểu "ảnh chụp" =
+  bảng số liệu (sai). Ý CEO: nút chụp PNG y hệt Report PH, chụp trước cả khi Report PH chốt.
+- Tách `src/screens/report/ReportPHScreen.tsx` → file mới `src/screens/report/ReportCard.tsx` chứa `ReportCardView` +
+  `renderCardToUrl` + helper mới `captureReportSnapshot(hsId,mon,ym,lopId,...)` gọi đủ getTongQuanHS/getReportBuoiHS/
+  getBaoCaoPH/getKhoiRank/getLopRank/getHeRank/getGVChinhLop rồi renderCardToUrl. ReportPHScreen import lại (giảm 165 dòng
+  inline, giữ hành vi cũ). Card = template hiển thị dùng chung — tách để không lệch 2 nơi.
+- TraoGiaiScreen tab "Đã chốt giải": thêm cột "Ảnh" với nút "📸 Chụp" từng dòng + thumbnail nếu đã có (click phóng to,
+  nút 🔄 chụp lại) + nút bulk "📸 Chụp cả bảng (n chưa có)" (tuần tự, tránh quá tải upload). Ảnh ghi vào
+  `bao_cao_ph.anh_bao_cao_url` (dùng CHUNG với Report PH — 1 ảnh cho (HS, mon, ym); Report PH chốt sau tự dùng). KHÔNG đụng
+  `cong_bo_at` → PH chưa thấy tới khi chốt Report riêng.
+- **Test app 5252:** đăng nhập admin, chụp Ngọc Mai (HS0555 11A1 Toán) → ảnh 776×1546 lên storage (bao-cao/e06e4a5e-…_2026-08.png),
+  ghi anh_bao_cao_url thành công, thumbnail hiện ngay, counter "chưa có" giảm 31→30. Nội dung ảnh đúng template Report PH.
+- **⚠ SỰ CỐ (tao suýt gây, đã dọn):** patch script tạo `src/screens/report/ReportCard.tsx` + sửa `ReportPHScreen.tsx` chạy ở
+  cwd repo GỐC (`bkdemy-erp-v2`), không phải worktree — Bash tool reset cwd sau mỗi lệnh. Phát hiện khi typecheck worktree fail
+  "Cannot find module '../report/ReportCard'". Dọn: copy 2 file sang worktree, `git checkout HEAD` phục hồi ReportPHScreen gốc,
+  xoá ReportCard mới ở gốc. Repo gốc trả về sạch (chỉ scripts _diag/_tmp còn). BÀI HỌC: cwd Bash tool luôn về mặc định giữa các
+  lệnh — khi làm trong worktree phải `cd` mỗi lần, KHÔNG assume cwd còn.
