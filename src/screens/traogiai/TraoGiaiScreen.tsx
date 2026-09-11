@@ -7,6 +7,9 @@
 // mọi nút ghi = 1 rpc transactional, kiểm khoá/trùng ở DB. Client chỉ render + format chip + giữ lựa chọn
 // dropdown CHƯA xác nhận (state UI thuần).
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
+import { createPortal } from 'react-dom'
+import { captureReportSnapshot } from '../report/ReportCard'
+import { upsertBaoCaoPH, getBaoCaoPH } from '../../lib/report'
 import {
   getTraoGiaiThang, xacNhanSlot, boXacNhanSlot, doiNguoiSlotDaXacNhan, chotGiaiLop, moLaiGiaiLop, chotKetQuaThang, datSlotLop, metricChips,
   curYM, shiftYM, LOAI_GIAI_TEN, LOAI_GIAI_THU_TU, TONG_SLOT,
@@ -267,7 +270,7 @@ export default function TraoGiaiScreen() {
 
           {err && <div className="mb-4 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-600">Lỗi: {err}</div>}
           {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : tab === 'chot' ? (
-            <BangDaChot rows={daChot} />
+            <BangDaChot rows={daChot} ym={ym} />
           ) : filtered.length === 0 ? (
             <p className="rounded-xl border border-dashed border-slate-300 bg-white px-4 py-8 text-center text-[13px] text-slate-400">Không có lớp nào khớp bộ lọc.</p>
           ) : (
@@ -297,45 +300,129 @@ export default function TraoGiaiScreen() {
 const fmtPct = (v: number | null) => v == null ? '—' : `${Math.round(v * 100)}%`
 const fmtMT = (v: number | null) => v == null ? '—' : Number(v).toFixed(2).replace(/\.?0+$/, '')
 const fmtNgay = (iso: string) => { const d = new Date(iso); return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}` }
-function BangDaChot({ rows }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiGiai; slot: TraoGiaiSlot }[] }) {
+// Ảnh chụp học tập = dùng CHUNG với Report PH (cột bao_cao_ph.anh_bao_cao_url). Tab này chụp trước khi
+// Report PH chốt được (CEO 11/09 "trao giải trước cả report"). Ghi ảnh KHÔNG động cong_bo_at nên PH chưa thấy;
+// khi Report PH chốt về sau tự dùng ảnh này (hoặc chụp lại đè). Template + logic số Y HỆT Report PH.
+function BangDaChot({ rows, ym }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiGiai; slot: TraoGiaiSlot }[]; ym: string }) {
+  const [anh, setAnh] = useState<Record<string, string | null>>({}) // key = hsId|mon|ym → URL đã có / null = chưa
+  const [busy, setBusy] = useState<Set<string>>(new Set())
+  const [bulk, setBulk] = useState<{ done: number; total: number } | null>(null)
+  const [xemAnh, setXemAnh] = useState<string | null>(null) // URL đang phóng to
+  const [toast, setToast] = useState<string | null>(null)
+  const flash = (m: string) => { setToast(m); setTimeout(() => setToast(null), 3000) }
+  const anhKey = (hsId: string, mon: string) => `${hsId}|${mon}|${ym}`
+
+  // Load ảnh đã có (bao_cao_ph.anh_bao_cao_url) mỗi khi rows đổi — chỉ những dòng chưa cache.
+  useEffect(() => {
+    let huy = false
+    async function tai() {
+      const canTai = rows.filter((r) => !(anhKey(r.slot.hocSinhId, r.card.mon) in anh))
+      if (canTai.length === 0) return
+      const kq = await Promise.all(canTai.map(async (r) => {
+        try { const bc = await getBaoCaoPH(r.slot.hocSinhId, r.card.mon, ym); return [anhKey(r.slot.hocSinhId, r.card.mon), bc.anh_bao_cao_url] as const }
+        catch { return [anhKey(r.slot.hocSinhId, r.card.mon), null] as const }
+      }))
+      if (huy) return
+      setAnh((prev) => ({ ...prev, ...Object.fromEntries(kq) }))
+    }
+    void tai(); return () => { huy = true }
+  }, [rows, ym]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  async function chupMot(r: { card: TraoGiaiClass; loaiGiai: LoaiGiai; slot: TraoGiaiSlot }): Promise<string | null> {
+    const k = anhKey(r.slot.hocSinhId, r.card.mon)
+    setBusy((s) => new Set(s).add(k))
+    try {
+      const url = await captureReportSnapshot({
+        hsId: r.slot.hocSinhId, mon: r.card.mon, ym, lopId: r.card.lopId,
+        hsName: r.slot.hoTen, hsImg: null, lopTen: r.card.tenLop,
+      })
+      await upsertBaoCaoPH(r.slot.hocSinhId, r.card.mon, ym, { anh_bao_cao_url: url })
+      setAnh((prev) => ({ ...prev, [k]: url }))
+      return url
+    } catch (e) { flash('⚠️ ' + (e as Error).message); return null }
+    finally { setBusy((s) => { const n = new Set(s); n.delete(k); return n }) }
+  }
+  async function chupCaBang() {
+    const canChup = rows.filter((r) => !anh[anhKey(r.slot.hocSinhId, r.card.mon)])
+    if (canChup.length === 0) { flash('Cả bảng đã có ảnh — bấm 🔄 để chụp lại.'); return }
+    setBulk({ done: 0, total: canChup.length })
+    // TUẦN TỰ (không parallel) vì render off-screen dùng chung DOM + tránh quá tải upload.
+    for (let i = 0; i < canChup.length; i++) { await chupMot(canChup[i]); setBulk({ done: i + 1, total: canChup.length }) }
+    setBulk(null); flash(`Đã chụp ${canChup.length} ảnh.`)
+  }
+
   if (rows.length === 0) return <p className="rounded-xl border border-dashed border-slate-300 bg-white px-4 py-8 text-center text-[13px] text-slate-400">Chưa có học sinh nào được chốt giải trong tháng này.</p>
+  const soChua = rows.filter((r) => !anh[anhKey(r.slot.hocSinhId, r.card.mon)]).length
   return (
-    <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
-      <table className="w-full min-w-[900px] text-[12.5px]">
-        <thead className="bg-slate-50 text-[11px] uppercase tracking-wide text-slate-500">
-          <tr>
-            <th className="px-3 py-2.5 text-left font-semibold">Lớp</th>
-            <th className="px-3 py-2.5 text-left font-semibold">Học sinh</th>
-            <th className="px-3 py-2.5 text-left font-semibold">Giải</th>
-            <th className="px-3 py-2.5 text-right font-semibold">MT</th>
-            <th className="px-3 py-2.5 text-right font-semibold">Hạng lớp</th>
-            <th className="px-3 py-2.5 text-right font-semibold">Hạng khối</th>
-            <th className="px-3 py-2.5 text-right font-semibold">ET</th>
-            <th className="px-3 py-2.5 text-right font-semibold">BTVN</th>
-            <th className="px-3 py-2.5 text-left font-semibold">Trạng thái</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map(({ card, loaiGiai, slot }) => {
-            const m = card.metricsCuaHs[slot.hocSinhId]
-            const ui = AWARD_UI[loaiGiai]
-            return (
-              <tr key={slot.giaiThuongId ?? `${card.lopId}:${slot.hocSinhId}`} className="border-t border-slate-100 hover:bg-slate-50/60">
-                <td className="px-3 py-2 font-bold text-slate-800">{card.tenLop} <span className="font-normal text-slate-400">· {card.mon}</span></td>
-                <td className="px-3 py-2 font-semibold text-slate-800">{slot.hoTen} {slot.maHs && <span className="font-normal text-slate-400">({slot.maHs})</span>}</td>
-                <td className="px-3 py-2"><span className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] font-bold ${ui.iconBg} ${ui.iconText}`}>{ui.icon} {ui.ten}</span></td>
-                <td className="px-3 py-2 text-right font-bold text-slate-800">{fmtMT(m?.mt ?? null)}</td>
-                <td className="px-3 py-2 text-right text-slate-600">{m?.rankLopNay != null ? `#${m.rankLopNay}/${card.siSo}` : '—'}{m?.rankLopTruoc != null && m?.rankLopNay != null && m.rankLopTruoc !== m.rankLopNay ? <span className={`ml-1 text-[10.5px] ${m.rankLopTruoc > m.rankLopNay ? 'text-emerald-600' : 'text-rose-500'}`}>({m.rankLopTruoc > m.rankLopNay ? '↑' : '↓'}{Math.abs(m.rankLopTruoc - m.rankLopNay)})</span> : null}</td>
-                <td className="px-3 py-2 text-right text-slate-600">{m?.rankKhoiNay != null ? `#${m.rankKhoiNay}/${m.khoiTotal ?? '?'}` : '—'}{m?.rankKhoiTruoc != null && m?.rankKhoiNay != null && m.rankKhoiTruoc !== m.rankKhoiNay ? <span className={`ml-1 text-[10.5px] ${m.rankKhoiTruoc > m.rankKhoiNay ? 'text-emerald-600' : 'text-rose-500'}`}>({m.rankKhoiTruoc > m.rankKhoiNay ? '↑' : '↓'}{Math.abs(m.rankKhoiTruoc - m.rankKhoiNay)})</span> : null}</td>
-                <td className="px-3 py-2 text-right text-slate-600">{fmtPct(m?.et ?? null)}</td>
-                <td className="px-3 py-2 text-right text-slate-600">{fmtPct(m?.btvn ?? null)}{m?.btvnTong ? <span className="ml-1 text-[10.5px] text-slate-400">({m.btvnHoanThanh}/{m.btvnTong} buổi)</span> : null}</td>
-                <td className="px-3 py-2">{slot.congBoAt ? <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-bold text-blue-700">Đã công bố {fmtNgay(slot.congBoAt)}</span> : <span className="whitespace-nowrap rounded-full bg-orange-50 px-2 py-0.5 text-[11px] font-bold text-orange-700">Chờ chốt tháng</span>}</td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
-    </div>
+    <>
+      <div className="mb-3 flex items-center justify-between">
+        <div className="text-[12px] text-slate-500">Ảnh chụp lấy y hệt Report PH (điểm ET/BTVN/MT, hạng lớp/khối). Chụp trước, PH chưa thấy tới khi chốt Report riêng.</div>
+        <button disabled={!!bulk || soChua === 0} onClick={() => void chupCaBang()}
+          className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-indigo-500 disabled:opacity-50">
+          {bulk ? `Đang chụp ${bulk.done}/${bulk.total}…` : `📸 Chụp cả bảng (${soChua} chưa có)`}
+        </button>
+      </div>
+      <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
+        <table className="w-full min-w-[900px] text-[12.5px]">
+          <thead className="bg-slate-50 text-[11px] uppercase tracking-wide text-slate-500">
+            <tr>
+              <th className="px-3 py-2.5 text-left font-semibold">Lớp</th>
+              <th className="px-3 py-2.5 text-left font-semibold">Học sinh</th>
+              <th className="px-3 py-2.5 text-left font-semibold">Giải</th>
+              <th className="px-3 py-2.5 text-right font-semibold">MT</th>
+              <th className="px-3 py-2.5 text-right font-semibold">Hạng lớp</th>
+              <th className="px-3 py-2.5 text-right font-semibold">Hạng khối</th>
+              <th className="px-3 py-2.5 text-right font-semibold">ET</th>
+              <th className="px-3 py-2.5 text-right font-semibold">BTVN</th>
+              <th className="px-3 py-2.5 text-center font-semibold">Ảnh</th>
+              <th className="px-3 py-2.5 text-left font-semibold">Trạng thái</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => {
+              const { card, loaiGiai, slot } = r
+              const m = card.metricsCuaHs[slot.hocSinhId]
+              const ui = AWARD_UI[loaiGiai]
+              const k = anhKey(slot.hocSinhId, card.mon)
+              const url = anh[k]
+              const dangChup = busy.has(k) || !!bulk
+              return (
+                <tr key={slot.giaiThuongId ?? `${card.lopId}:${slot.hocSinhId}`} className="border-t border-slate-100 hover:bg-slate-50/60">
+                  <td className="px-3 py-2 font-bold text-slate-800">{card.tenLop} <span className="font-normal text-slate-400">· {card.mon}</span></td>
+                  <td className="px-3 py-2 font-semibold text-slate-800">{slot.hoTen} {slot.maHs && <span className="font-normal text-slate-400">({slot.maHs})</span>}</td>
+                  <td className="px-3 py-2"><span className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] font-bold ${ui.iconBg} ${ui.iconText}`}>{ui.icon} {ui.ten}</span></td>
+                  <td className="px-3 py-2 text-right font-bold text-slate-800">{fmtMT(m?.mt ?? null)}</td>
+                  <td className="px-3 py-2 text-right text-slate-600">{m?.rankLopNay != null ? `#${m.rankLopNay}/${card.siSo}` : '—'}{m?.rankLopTruoc != null && m?.rankLopNay != null && m.rankLopTruoc !== m.rankLopNay ? <span className={`ml-1 text-[10.5px] ${m.rankLopTruoc > m.rankLopNay ? 'text-emerald-600' : 'text-rose-500'}`}>({m.rankLopTruoc > m.rankLopNay ? '↑' : '↓'}{Math.abs(m.rankLopTruoc - m.rankLopNay)})</span> : null}</td>
+                  <td className="px-3 py-2 text-right text-slate-600">{m?.rankKhoiNay != null ? `#${m.rankKhoiNay}/${m.khoiTotal ?? '?'}` : '—'}{m?.rankKhoiTruoc != null && m?.rankKhoiNay != null && m.rankKhoiTruoc !== m.rankKhoiNay ? <span className={`ml-1 text-[10.5px] ${m.rankKhoiTruoc > m.rankKhoiNay ? 'text-emerald-600' : 'text-rose-500'}`}>({m.rankKhoiTruoc > m.rankKhoiNay ? '↑' : '↓'}{Math.abs(m.rankKhoiTruoc - m.rankKhoiNay)})</span> : null}</td>
+                  <td className="px-3 py-2 text-right text-slate-600">{fmtPct(m?.et ?? null)}</td>
+                  <td className="px-3 py-2 text-right text-slate-600">{fmtPct(m?.btvn ?? null)}{m?.btvnTong ? <span className="ml-1 text-[10.5px] text-slate-400">({m.btvnHoanThanh}/{m.btvnTong} buổi)</span> : null}</td>
+                  <td className="px-3 py-2 text-center">
+                    {url ? (
+                      <div className="flex items-center justify-center gap-1">
+                        <button onClick={() => setXemAnh(url)} title="Xem ảnh"><img src={url} alt="" className="h-10 w-10 rounded border border-slate-200 object-cover" /></button>
+                        <button disabled={dangChup} onClick={() => void chupMot(r)} title="Chụp lại (đè ảnh cũ)" className="rounded p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-700 disabled:opacity-50">🔄</button>
+                      </div>
+                    ) : (
+                      <button disabled={dangChup} onClick={() => void chupMot(r)} className="rounded bg-indigo-50 px-2 py-1 text-[11px] font-bold text-indigo-700 hover:bg-indigo-100 disabled:opacity-50">
+                        {busy.has(k) ? '⏳' : '📸 Chụp'}
+                      </button>
+                    )}
+                  </td>
+                  <td className="px-3 py-2">{slot.congBoAt ? <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-bold text-blue-700">Đã công bố {fmtNgay(slot.congBoAt)}</span> : <span className="whitespace-nowrap rounded-full bg-orange-50 px-2 py-0.5 text-[11px] font-bold text-orange-700">Chờ chốt tháng</span>}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+      {xemAnh && createPortal(
+        <div onClick={() => setXemAnh(null)} className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-black/70 p-4">
+          <img src={xemAnh} alt="" className="max-h-full max-w-full rounded-xl shadow-2xl" />
+        </div>,
+        document.body,
+      )}
+      {toast && <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-xl bg-slate-800 px-5 py-3 text-sm font-medium text-white shadow-lg">{toast}</div>}
+    </>
   )
 }
 

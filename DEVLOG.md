@@ -10619,3 +10619,22 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
   ("cả 2 đều tăng NHIỀU NHẤT trong lớp" = xếp hạng, không loại).
 - **Test:** verify trên app port 5252 lớp 7S3 tháng 8 — Xuất sắc "đang xét" nút Chốt, TB/CC "Chờ lượt" mờ; bấm Chốt XS → dry-run
   cho thấy Nguyễn Văn Anh Quân (Δ -2) rơi xuống pool TB đúng ý CEO. Dọn hành động thử qua rpc mở lại.
+
+## 2026-09-11 — Trao giải tab "Đã chốt giải": chụp ảnh Y HỆT Report PH (CEO 11/09)
+- **CEO: "cần có trước cả report cơ mà, tính năng lấy y hệt bên report phụ huynh luôn"** — hôm qua tôi hiểu "ảnh chụp" =
+  bảng số liệu (sai). Ý CEO: nút chụp PNG y hệt Report PH, chụp trước cả khi Report PH chốt.
+- Tách `src/screens/report/ReportPHScreen.tsx` → file mới `src/screens/report/ReportCard.tsx` chứa `ReportCardView` +
+  `renderCardToUrl` + helper mới `captureReportSnapshot(hsId,mon,ym,lopId,...)` gọi đủ getTongQuanHS/getReportBuoiHS/
+  getBaoCaoPH/getKhoiRank/getLopRank/getHeRank/getGVChinhLop rồi renderCardToUrl. ReportPHScreen import lại (giảm 165 dòng
+  inline, giữ hành vi cũ). Card = template hiển thị dùng chung — tách để không lệch 2 nơi.
+- TraoGiaiScreen tab "Đã chốt giải": thêm cột "Ảnh" với nút "📸 Chụp" từng dòng + thumbnail nếu đã có (click phóng to,
+  nút 🔄 chụp lại) + nút bulk "📸 Chụp cả bảng (n chưa có)" (tuần tự, tránh quá tải upload). Ảnh ghi vào
+  `bao_cao_ph.anh_bao_cao_url` (dùng CHUNG với Report PH — 1 ảnh cho (HS, mon, ym); Report PH chốt sau tự dùng). KHÔNG đụng
+  `cong_bo_at` → PH chưa thấy tới khi chốt Report riêng.
+- **Test app 5252:** đăng nhập admin, chụp Ngọc Mai (HS0555 11A1 Toán) → ảnh 776×1546 lên storage (bao-cao/e06e4a5e-…_2026-08.png),
+  ghi anh_bao_cao_url thành công, thumbnail hiện ngay, counter "chưa có" giảm 31→30. Nội dung ảnh đúng template Report PH.
+- **⚠ SỰ CỐ (tao suýt gây, đã dọn):** patch script tạo `src/screens/report/ReportCard.tsx` + sửa `ReportPHScreen.tsx` chạy ở
+  cwd repo GỐC (`bkdemy-erp-v2`), không phải worktree — Bash tool reset cwd sau mỗi lệnh. Phát hiện khi typecheck worktree fail
+  "Cannot find module '../report/ReportCard'". Dọn: copy 2 file sang worktree, `git checkout HEAD` phục hồi ReportPHScreen gốc,
+  xoá ReportCard mới ở gốc. Repo gốc trả về sạch (chỉ scripts _diag/_tmp còn). BÀI HỌC: cwd Bash tool luôn về mặc định giữa các
+  lệnh — khi làm trong worktree phải `cd` mỗi lần, KHÔNG assume cwd còn.
