@@ -32,6 +32,10 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
   const [err, setErr] = useState<string | null>(null)
   const [thongBao, setThongBao] = useState<string | null>(null)
   const [busyAll, setBusyAll] = useState(false)
+  // Chip lọc nhánh — cùng khuôn ChuaGiaiTab, chỉ hiện khi môn có >1 nhánh câu (Toán = Đại+HGT).
+  // Không tách nhánh trong hàng đợi gộp thì 24 câu HGT bị lẫn 58 câu Đại (K12), batch đầu toàn Đại,
+  // HGT chỉ trồi lên sau khi duyệt hết Đại — quá phiền khi CEO nạp lô lớn theo nhánh (11/09).
+  const [nhanh, setNhanh] = useState<KhoMon | 'all'>('all')
   const reqId = useRef(0)
 
   async function reload() {
@@ -44,13 +48,15 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
     } catch (e: any) { if (my === reqId.current) setErr(e.message ?? String(e)) }
     finally { if (my === reqId.current) setLoading(false) }
   }
-  useEffect(() => { reload() }, [mon, khoi, loc]) // eslint-disable-line
+  useEffect(() => { setNhanh('all'); reload() }, [mon, khoi, loc]) // eslint-disable-line
 
   function bao(msg: string) { setThongBao(msg); setTimeout(() => setThongBao(null), 2500) }
   function xong(r: Row, msg: string) { setRows((a) => a.filter((x) => !(x.mon === r.mon && x.ma_cau === r.ma_cau))); bao(msg); onChanged?.() }
 
-  // Batch 20 câu / lần (CEO 11/09). Sau khi duyệt/từ chối trong batch, câu bị filter khỏi rows → batch tự dịch xuống.
-  const batch = rows.slice(0, BATCH_SIZE)
+  // Lọc theo chip nhánh; batch 20 câu / lần (CEO 11/09). Sau khi duyệt/từ chối trong batch, câu bị filter khỏi rows → batch tự dịch xuống.
+  const rowsShown = nhanh === 'all' ? rows : rows.filter((r) => r.mon === nhanh)
+  const batch = rowsShown.slice(0, BATCH_SIZE)
+  const demNhanh = (m: KhoMon) => rows.filter((r) => r.mon === m).length
   async function onDuyetTatCa() {
     if (!batch.length || !confirm(`Duyệt cả ${batch.length} câu trong batch này (không sửa gì)? Câu không đạt hãy Từ chối trước.`)) return
     setBusyAll(true)
@@ -67,12 +73,26 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
     } finally { setBusyAll(false) }
   }
 
+  const chip = (n: KhoMon | 'all', label: string, count: number) => (
+    <button key={n} onClick={() => setNhanh(n)}
+      className={`rounded-full px-3 py-0.5 text-[12px] font-medium transition ${nhanh === n ? 'bg-violet-600 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'} ${count === 0 && n !== 'all' ? 'opacity-50' : ''}`}>
+      {label} <span className={nhanh === n ? 'text-violet-200' : 'text-slate-400'}>{count}</span>
+    </button>
+  )
+
   return (
     <div className="flex h-full min-h-0 flex-col">
       <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="text-[12px] text-slate-500">
-          Batch <b className="text-slate-800">{batch.length}</b>/<b>{rows.length}</b> câu · {HANG_DUYET_LABEL[loc]} · khối {khoi}
+          Batch <b className="text-slate-800">{batch.length}</b>/<b>{rowsShown.length}</b> câu · {HANG_DUYET_LABEL[loc]} · khối {khoi}
+          {nhanh !== 'all' && <> · <span className="text-slate-700">{NHANH_LABEL[nhanh]}</span></>}
         </span>
+        {kho.length > 1 && (
+          <div className="flex items-center gap-1.5">
+            {chip('all', 'Tất cả', rows.length)}
+            {kho.map((n) => chip(n, NHANH_LABEL[n], demNhanh(n)))}
+          </div>
+        )}
         {loc === 'nghi' && <span className="text-[12px] text-amber-700">Máy/AI tính ra khác đáp số kho. Xem đề, tự tính; kho sai thì sửa đáp số rồi Duyệt — form trắc nghiệm của câu sẽ tự thu hồi để sinh lại.</span>}
         {loc === 'cau_moi' && <span className="text-[12px] text-slate-500">Câu vào kho sau 08/09 — HS chưa thấy tới khi duyệt.</span>}
         {thongBao && <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700">{thongBao}</span>}
@@ -84,12 +104,12 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
       <div className="flex-1 overflow-auto px-6 py-4">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
-          : rows.length === 0 ? <p className="text-sm text-slate-400">Không có câu nào ở {mon} · khối {khoi} · {HANG_DUYET_LABEL[loc]}. 🎉</p>
+          : rowsShown.length === 0 ? <p className="text-sm text-slate-400">Không có câu nào ở {mon}{nhanh !== 'all' ? ` · ${NHANH_LABEL[nhanh]}` : ''} · khối {khoi} · {HANG_DUYET_LABEL[loc]}. 🎉</p>
           : (
             <>
               <ul className="space-y-4">{batch.map((r) => <The key={`${r.mon}:${r.ma_cau}`} r={r} mon={mon} busyAll={busyAll} onXong={(msg) => xong(r, msg)} />)}</ul>
-              {rows.length > batch.length && (
-                <p className="mt-4 text-center text-[12px] text-slate-400">Còn <b>{rows.length - batch.length}</b> câu — sẽ hiện sau khi duyệt/từ chối xong batch này.</p>
+              {rowsShown.length > batch.length && (
+                <p className="mt-4 text-center text-[12px] text-slate-400">Còn <b>{rowsShown.length - batch.length}</b> câu — sẽ hiện sau khi duyệt/từ chối xong batch này.</p>
               )}
             </>
           )}
