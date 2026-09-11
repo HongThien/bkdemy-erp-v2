@@ -8,8 +8,8 @@ import { listHSDangHoc } from '../../lib/tuyensinh'
 import { listLop, listHSCuaLop, listLopCuaHS, type Lop, type HSTrongLop } from '../../lib/nhansu'
 import { getMasteryHS, getHinhMasteryHS, listBuoiHoatDong, getMasteryRollup, getMasteryByDang, getMasteryByChuyenDe, getTongQuanHS, getClassMatrix, getAllClassesCompletion, bucketMucDo, SRC_LABEL, type DangMastery, type HinhMastery, type DangEval, type BuoiActivity, type HSRollup, type TongQuanHS, type ClassMatrix, type MatrixPhase, type MatrixCell, type ClassCompletion, type ActPct, type BucketPct, type HoanThanhCard as HoanThanhCardT, type MucDoFilter } from '../../lib/mastery'
 import {
-  listKyThi, createKyThi, listDiemThiByKyThi, upsertDiemThi, currentMua, getDiemThiTruong,
-  LOAI_KY_THI, HE_SO_KY_THI, DOT_LABEL, DOT_ORDER, type KyThi, type DiemThi, type Verdict, type TruongDiemRow,
+  listKyThi, createKyThi, listDiemThiByKyThi, upsertDiemThi, currentMua, getDiemThiTruong, getBXHDiemMTKhoi,
+  LOAI_KY_THI, HE_SO_KY_THI, DOT_LABEL, DOT_ORDER, type KyThi, type DiemThi, type Verdict, type TruongDiemRow, type BXHDiemMTRow,
 } from '../../lib/thanhtich'
 import { BuoiDetail } from '../gami/BuoiHocScreen'
 import type { TabKey } from '../../lib/gami'
@@ -992,16 +992,145 @@ function PivotRow({ it }: { it: PivotItem }) {
 // 2 sub-tab: Điểm thi trên trường (view+filter+sort, đúng cột Thùy yêu cầu) · Nhập điểm (port nguyên khối
 // UI cũ của Quản lý Level: chọn lớp → kì thi → nhập Điểm/Verdict/Vượt-band từng HS).
 function DiemThiTab() {
-  const [sub, setSub] = useState<'truong' | 'nhap'>('truong')
+  const [sub, setSub] = useState<'truong' | 'bxh_mt' | 'nhap'>('truong')
   const subBtn = (on: boolean) => `-mb-px border-b-2 px-3 py-2 text-[13px] font-medium transition ${on ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`
   return (
     <>
       <div className="mb-4 flex items-center gap-1 border-b border-slate-200">
         <button onClick={() => setSub('truong')} className={subBtn(sub === 'truong')}>Điểm thi trên trường</button>
+        <button onClick={() => setSub('bxh_mt')} className={subBtn(sub === 'bxh_mt')}>Xếp hạng MT trung tâm</button>
         <button onClick={() => setSub('nhap')} className={subBtn(sub === 'nhap')}>Nhập điểm</button>
       </div>
-      {sub === 'truong' ? <DiemThiTruongView /> : <NhapDiemView />}
+      {sub === 'truong' ? <DiemThiTruongView /> : sub === 'bxh_mt' ? <BXHDiemMTView /> : <NhapDiemView />}
     </>
+  )
+}
+
+// BXH ĐIỂM MT TẠI TRUNG TÂM — mỗi khối 1 BXH riêng (kh 6..12 không so ngang, CEO chốt); tháng chọn qua
+// navigator ‹ tháng M/YYYY ›; lớp = filter tuỳ chọn "chỉ hiện HS lớp đó" (không đổi thứ hạng — vẫn rank
+// trong CẢ khối). Nguồn: getBXHDiemMTKhoi → fn_bxh_diem_mt_khoi (avg cửa sổ 25→10, chưa thi = 0đ trong
+// rank, `tb` null hiển thị "—" — luật MT giữ nguyên văn, xem thanhtich.ts §BXH).
+function BXHDiemMTView() {
+  const [mon, setMon] = useState('Toán')
+  const [ym, setYm] = useState(curYM())
+  const [khoi, setKhoi] = useState<string | null>(null)
+  const [khoiOpts, setKhoiOpts] = useState<string[]>([])
+  const [lopOpts, setLopOpts] = useState<Opt[]>([])
+  const [lopId, setLopId] = useState<string | null>(null)
+  const [rows, setRows] = useState<BXHDiemMTRow[] | null>(null)
+  const [loading, setLoading] = useState(false)
+
+  // Nạp lớp theo môn → suy khối có sẵn (chỉ hiện tab khối mà môn này thực có lớp).
+  useEffect(() => {
+    setLopId(null); setRows(null)
+    listLop().then((ls) => {
+      const mine = (ls as any[]).filter((l) => l.mon === mon)
+      const ks = [...new Set(mine.map((l) => l.khoi).filter(Boolean))].sort((a: any, b: any) => String(a).localeCompare(String(b), 'vi', { numeric: true }))
+      setKhoiOpts(ks as string[])
+      if (!khoi || !ks.includes(khoi)) setKhoi(ks[0] ? String(ks[0]) : null)
+      setLopOpts(mine.map((l: any) => ({ id: l.id, label: l.ten_lop, sub: l.khoi ? `K${l.khoi}` : undefined })))
+    }).catch(() => { setKhoiOpts([]); setLopOpts([]); setKhoi(null) })
+  }, [mon]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Đổi khối → reset filter lớp (lớp thuộc khối khác thì không có nghĩa).
+  useEffect(() => { setLopId(null) }, [khoi])
+
+  useEffect(() => {
+    if (!khoi) { setRows(null); return }
+    setLoading(true)
+    getBXHDiemMTKhoi(mon, khoi, ym).then(setRows).catch(() => setRows([])).finally(() => setLoading(false))
+  }, [mon, khoi, ym])
+
+  const shown = useMemo(() => {
+    if (!rows) return []
+    if (!lopId) return rows
+    return rows.filter((r) => r.lop_id === lopId)
+  }, [rows, lopId])
+
+  const monBtn = (on: boolean) => `h-7 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
+  const khBtn = (on: boolean) => `h-7 rounded-md px-3 text-[12px] font-semibold transition ${on ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`
+  const lopOptsInKhoi = khoi ? lopOpts.filter((o) => o.sub === `K${khoi}`) : []
+  const [yy, mm] = ym.split('-')
+
+  return (
+    <>
+      <div className="mb-3 flex flex-wrap items-center gap-2">
+        <span className="text-[12px] font-semibold uppercase tracking-wider text-slate-500">Môn</span>
+        {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
+        <div className="ml-2 flex items-center gap-0.5 rounded-md ring-1 ring-slate-200">
+          <button onClick={() => setYm(shiftYM(ym, -1))} className="h-7 rounded-l-md px-2 text-slate-500 hover:bg-slate-100" title="Tháng trước">‹</button>
+          <span className="min-w-[92px] text-center text-[13px] font-semibold tabular-nums text-slate-700">Tháng {Number(mm)}/{yy}</span>
+          <button onClick={() => setYm(shiftYM(ym, +1))} className="h-7 rounded-r-md px-2 text-slate-500 hover:bg-slate-100" title="Tháng sau">›</button>
+        </div>
+        {khoiOpts.length > 0 && (
+          <div className="ml-2 flex items-center gap-1">
+            <span className="text-[12px] font-semibold uppercase tracking-wider text-slate-500">Khối</span>
+            {khoiOpts.map((k) => <button key={k} onClick={() => setKhoi(k)} className={khBtn(khoi === k)}>K{k}</button>)}
+          </div>
+        )}
+        {khoi && lopOptsInKhoi.length > 0 && (
+          <div className="ml-2 w-48"><SearchSelect value={lopId} onChange={setLopId} options={lopOptsInKhoi} placeholder="Lọc theo lớp (tuỳ chọn)…" /></div>
+        )}
+      </div>
+
+      {!khoi ? (
+        <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chưa có khối nào có lớp môn {mon}.</div>
+      ) : loading ? (
+        <p className="text-sm text-slate-500">Đang tải…</p>
+      ) : !rows || rows.length === 0 ? (
+        <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Khối {khoi} chưa có HS đang học môn {mon}.</div>
+      ) : (
+        <>
+          <div className="mb-2 flex flex-wrap items-center gap-2 text-[12px] text-slate-500">
+            <span className="rounded bg-indigo-50 px-2 py-0.5 font-medium text-indigo-600">
+              {shown.length}{lopId ? ` / ${rows.length}` : ''} học sinh
+            </span>
+            <span>· Rank trong khối {khoi} (tháng {Number(mm)}/{yy})</span>
+            <span className="ml-auto text-[11px] text-slate-400">Cửa sổ tính điểm: 25/{Number(mm)} → 10/{Number(mm) === 12 ? 1 : Number(mm) + 1}</span>
+          </div>
+          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+            <table className="w-full min-w-[640px] text-[13px]">
+              <thead>
+                <tr className="border-b border-slate-200 bg-slate-50 text-left text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                  <th className="w-16 px-3 py-2 text-center">Hạng</th>
+                  <th className="px-3 py-2">Tên HS</th>
+                  <th className="px-3 py-2">Mã HS</th>
+                  <th className="px-3 py-2">Lớp</th>
+                  <th className="w-24 px-3 py-2 text-center">Điểm MT TB</th>
+                </tr>
+              </thead>
+              <tbody>
+                {shown.map((r) => <BXHRow key={r.hoc_sinh_id} r={r} />)}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-2 text-[11px] text-slate-400">
+            Rank tính trong TOÀN BỘ khối {khoi} môn {mon} (kể cả HS lớp khác); filter lớp chỉ giới hạn HS hiển thị, không đổi thứ hạng.
+            HS chưa thi trong cửa sổ tháng → tính 0đ trong xếp hạng (điểm hiển thị "—").
+          </p>
+        </>
+      )}
+    </>
+  )
+}
+
+function BXHRow({ r }: { r: BXHDiemMTRow }) {
+  const medal = r.rank_now === 1 ? 'bg-amber-100 text-amber-700 ring-amber-200'
+    : r.rank_now === 2 ? 'bg-slate-200 text-slate-700 ring-slate-300'
+    : r.rank_now === 3 ? 'bg-orange-100 text-orange-700 ring-orange-200'
+    : 'bg-slate-50 text-slate-600 ring-slate-200'
+  return (
+    <tr className="border-b border-slate-100 last:border-0 hover:bg-indigo-50/30">
+      <td className="px-3 py-1.5 text-center">
+        <span className={`inline-flex h-7 min-w-[36px] items-center justify-center rounded-full px-2 text-[12px] font-bold tabular-nums ring-1 ${medal}`}>#{r.rank_now}</span>
+      </td>
+      <td className="px-3 py-1.5 font-medium text-slate-800">{r.ho_ten}</td>
+      <td className="px-3 py-1.5 font-mono text-[12px] text-slate-500">{r.ma_hs ?? '—'}</td>
+      <td className="px-3 py-1.5 text-slate-600">{r.ten_lop ?? '—'}</td>
+      <td className="px-3 py-1.5 text-center font-mono font-semibold text-slate-700">
+        {r.tb == null ? <span className="text-slate-300">—</span> : r.tb.toFixed(2)}
+      </td>
+    </tr>
   )
 }
 
