@@ -1049,12 +1049,16 @@ function BXHDiemMTView() {
 
   const monBtn = (on: boolean) => `h-7 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
   const khBtn = (on: boolean) => `h-7 rounded-md px-3 text-[12px] font-semibold transition ${on ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`
-  const lopOptsInKhoi = khoi ? lopOpts.filter((o) => o.sub === `K${khoi}`) : []
+  const lpBtn = (on: boolean) => `h-7 rounded-md px-3 text-[12px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`
+  const lopOptsInKhoi = useMemo(
+    () => (khoi ? lopOpts.filter((o) => o.sub === `K${khoi}`).sort((a, b) => a.label.localeCompare(b.label, 'vi', { numeric: true })) : []),
+    [lopOpts, khoi],
+  )
   const [yy, mm] = ym.split('-')
 
   return (
     <>
-      <div className="mb-3 flex flex-wrap items-center gap-2">
+      <div className="mb-2 flex flex-wrap items-center gap-2">
         <span className="text-[12px] font-semibold uppercase tracking-wider text-slate-500">Môn</span>
         {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
         <div className="ml-2 flex items-center gap-0.5 rounded-md ring-1 ring-slate-200">
@@ -1068,10 +1072,17 @@ function BXHDiemMTView() {
             {khoiOpts.map((k) => <button key={k} onClick={() => setKhoi(k)} className={khBtn(khoi === k)}>K{k}</button>)}
           </div>
         )}
-        {khoi && lopOptsInKhoi.length > 0 && (
-          <div className="ml-2 w-48"><SearchSelect value={lopId} onChange={setLopId} options={lopOptsInKhoi} placeholder="Lọc theo lớp (tuỳ chọn)…" /></div>
-        )}
       </div>
+      {/* Thanh LỚP: chip song song thanh khối cho mượt (thay dropdown cũ). Mặc định "Cả khối". */}
+      {khoi && lopOptsInKhoi.length > 0 && (
+        <div className="mb-3 flex flex-wrap items-center gap-1">
+          <span className="mr-1 text-[12px] font-semibold uppercase tracking-wider text-slate-500">Lớp</span>
+          <button onClick={() => setLopId(null)} className={lpBtn(lopId === null)}>Cả khối {khoi}</button>
+          {lopOptsInKhoi.map((o) => (
+            <button key={o.id} onClick={() => setLopId(o.id)} className={lpBtn(lopId === o.id)}>{o.label}</button>
+          ))}
+        </div>
+      )}
 
       {!khoi ? (
         <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chưa có khối nào có lớp môn {mon}.</div>
