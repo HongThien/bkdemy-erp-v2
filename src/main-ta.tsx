@@ -7,8 +7,10 @@ import { registerSW } from 'virtual:pwa-register'
 import AppTa from './AppTa'
 import './index.css'
 import { initErrorBuffer } from './lib/errorBuffer'
+import { initAppBadgeBridge } from './lib/appBadge'
 
 initErrorBuffer()
+initAppBadgeBridge()
 registerSW({ immediate: true })
 document.documentElement.style.setProperty('--app-z', '1')
 

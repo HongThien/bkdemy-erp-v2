@@ -16,3 +16,15 @@ export function setAppBadgeCount(n: number) {
   const p = n > 0 ? nav.setAppBadge(n) : nav.clearAppBadge()
   p.catch((e) => console.error(`appBadge: setAppBadgeCount(${n}) lỗi — ${e?.name ?? ''}: ${e?.message ?? String(e)}`))
 }
+
+// Nghe kết quả setAppBadge chạy TRONG service worker (lúc nhận push, app đóng) — SW không chung
+// console với trang nên phải bắn postMessage về mới log được (xem sw-push.js). Gọi 1 lần ở main.
+export function initAppBadgeBridge() {
+  if (!('serviceWorker' in navigator)) return
+  navigator.serviceWorker.addEventListener('message', (e) => {
+    const m = e.data
+    if (!m || m.type !== 'appBadgeResult') return
+    if (!m.supported) { console.error('appBadge(SW): navigator.setAppBadge không tồn tại trong service worker trên máy này.'); return }
+    if (!m.ok) console.error(`appBadge(SW): set count=${m.count} lỗi — ${m.error ?? '(không rõ)'}`)
+  })
+}
