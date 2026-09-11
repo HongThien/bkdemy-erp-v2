@@ -32,7 +32,10 @@ export type HomeCard = {
   subMau: 'ton' | 'do' | 'xam' | 'xanh'
   badge?: number
   doodle: string
-  ill: string // tên file trong public/bk-ui/hs (không đuôi)
+  /** Nếu có emoji thì render emoji trong khung 31% thay cho ảnh PNG (dùng cho ô cấp 2 mới chưa có cutout PNG:
+   *  Thành tựu · May mắn · Bài tập được giao). ill vẫn giữ để backward-compat với cards cũ có PNG. */
+  emoji?: string
+  ill: string // tên file trong public/bk-ui/hs (không đuôi) — bỏ qua nếu có emoji
   tone: HomeTone
   disabled?: boolean
   onClick?: () => void
@@ -174,7 +177,9 @@ export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, anhUrl, onAnhCha
                 className={`relative flex flex-col justify-between overflow-hidden rounded-[22px] p-3 text-left transition ${c.disabled ? 'opacity-75 saturate-50' : 'active:scale-[0.98]'}`}
                 style={{ background: tone.bg, boxShadow: c.disabled ? 'none' : SHADOW, aspectRatio: '417 / 280' }}>
                 <span className="flex w-[31%] shrink-0 items-center justify-center rounded-[15px]" style={{ background: tone.ill, aspectRatio: '1 / 1' }}>
-                  <img src={`${A}/ill_${c.ill}.png`} alt="" className="h-[76%] w-[76%] object-contain" />
+                  {c.emoji
+                    ? <span className="text-[34px] leading-none" aria-hidden>{c.emoji}</span>
+                    : <img src={`${A}/ill_${c.ill}.png`} alt="" className="h-[76%] w-[76%] object-contain" />}
                 </span>
                 <span className={`font-hand pointer-events-none absolute right-3.5 max-w-[84px] rotate-[-7deg] text-right text-[10.5px] leading-[1.1] ${c.badge ? 'top-9' : 'top-3.5'}`} style={{ color: tone.c, opacity: 0.9 }}>{c.doodle}</span>
                 <span className="pr-8">

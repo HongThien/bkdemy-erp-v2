@@ -12,6 +12,9 @@ import HocSinhApp from './screens/hocsinh/HocSinhApp'
 import DoiMatKhau from './screens/hocsinh/DoiMatKhau'
 import HomeHS, { type HomeCard } from './screens/hocsinh/HomeHS'
 import DanhSachHS, { type DsRow } from './screens/hocsinh/DanhSachHS'
+import MayManHS from './screens/hocsinh/MayManHS'
+import ThanhTuuHS from './screens/hocsinh/ThanhTuuHS'
+import BaiTapGiaoHS from './screens/hocsinh/BaiTapGiaoHS'
 import { getMyHocSinhId } from './lib/testonline'
 
 // DEMO màn chính (CHỈ bản dev, không vào build): `hs.html?demo` · `?demo=nu` (nữ) · thêm `&ca` (banner bổ trợ)
@@ -21,6 +24,13 @@ function DemoHome() {
   const q = new URLSearchParams(location.search)
   const nu = q.get('demo') === 'nu' || q.get('nu') !== null
   const khong = q.has('khong')
+  const noopBack = () => history.back()
+  // ?demo=thanhtuu / ?demo=baitapgiao — verify UI static (Thùy 11/09).
+  // ?demo=maymai KHÔNG hoạt động vì screen thật gọi supabase.rpc — cần HS thật, không hack ở đây.
+  if (q.get('demo') === 'thanhtuu') return <ThanhTuuHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
+  if (q.get('demo') === 'baitapgiao') return <BaiTapGiaoHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
+  if (q.get('demo') === 'maymai') return <MayManHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
+  void MayManHS  // giữ import cho các bản build sau, hiện tại demo maymai vẫn cần lib DB
   // `?demo=list` (+`&nu`, +`&rong`) — màn danh sách bài (kit hs-bai-tap-tren-lop-v1) với 4 trạng thái suy sẵn
   if (q.get('demo') === 'list') {
     const noop = () => {}
@@ -33,7 +43,21 @@ function DemoHome() {
       rows={rows} dangTai={false} onBack={noop} onTab={noop} empty={<div className="rounded-[26px] bg-white/90 p-8 text-center">🎉 Không có bài nào cần làm</div>} />
   }
   const noop = () => {}
-  const cards: HomeCard[] = [
+  // ?demo=cap2 · ?demo=cap2&luot (có 1 lượt May Mắn để quay) — kit HS cấp 2 (Thùy 11/09):
+  // ẩn Bài tập trên lớp/ET/BTVN, thêm Bài tập được giao/Thành tựu/May mắn. Dùng emoji trong khung
+  // (chưa có PNG cutout — mở rộng HomeCard `emoji?` optional).
+  const cap2 = q.get('demo') === 'cap2'
+  const coLuot = q.has('luot')
+  // Trong DemoHome cap2, click từng box sẽ navigate sang màn demo tương ứng (giữ `?nu` để theme khớp).
+  const goDemo = (name: string) => { location.href = `/hs.html?demo=${name}${nu ? '&nu' : ''}` }
+  const cards: HomeCard[] = cap2 ? [
+    { id: 'tu_luyen',      ten: 'Tự luyện',           sub: 'Luyện theo dạng yếu',                     subMau: 'xam', doodle: 'Small Steps Big Progress', ill: 'self_practice_target', tone: 'green', onClick: noop },
+    { id: 'thong_tin',     ten: 'Thông tin học tập',  sub: 'Dạng đang yếu',                           subMau: 'xam', doodle: 'Hiểu mình để tiến bộ hơn!', ill: 'study_progress_chart', tone: 'blue', onClick: noop },
+    { id: 'de_thi_thu',    ten: 'Làm đề thi thử',     sub: 'Sắp có',                                  subMau: 'xam', doodle: 'Sắp ra mắt! Hãy chờ nhé!', ill: 'mock_exam_locked', tone: 'gray', disabled: true },
+    { id: 'bai_tap_giao',  ten: 'Bài tập được giao',  sub: 'Đang phát triển',                         subMau: 'xam', doodle: 'Sắp có nè!', ill: 'mock_exam_locked', emoji: '📚', tone: 'blue', onClick: () => goDemo('baitapgiao') },
+    { id: 'thanh_tuu',     ten: 'Thành tựu',          sub: 'Xem giải thưởng của em',                  subMau: 'xam', doodle: 'Đầy tự hào ♡', ill: 'self_practice_target', emoji: '🏆', tone: 'orange', onClick: () => goDemo('thanhtuu') },
+    { id: 'may_man',       ten: 'May mắn',            sub: coLuot ? 'Có 1 lượt quay!' : 'Luyện 10 câu đúng ≥70%', subMau: coLuot ? 'ton' : 'xam', badge: coLuot ? 1 : 0, doodle: 'Luyện chăm là quay!', ill: 'self_practice_target', emoji: '🎰', tone: 'pink', onClick: () => goDemo('maymai') },
+  ] : [
     { id: 'giao_trinh', ten: 'Bài tập trên lớp', sub: khong ? 'Chưa có bài' : '1 bài chưa làm', subMau: khong ? 'xam' : 'ton', badge: khong ? 0 : 1, doodle: 'Cố lên!', ill: 'purple_bookmark_book', tone: 'pink', onClick: noop },
     { id: 'et', ten: 'ET', sub: 'Chưa có bài', subMau: 'xam', doodle: 'Kiến thức là sức mạnh', ill: 'orange_documents', tone: 'purple', onClick: noop },
     { id: 'btvn', ten: 'BTVN', sub: khong ? 'Chưa có bài' : '2 bài quá hạn', subMau: khong ? 'xam' : 'do', doodle: 'Ôn tập mỗi ngày nhé!', ill: 'homework_house', tone: 'orange', onClick: noop },

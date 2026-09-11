@@ -127,7 +127,11 @@ function balanceDollars(s: string): string {
 // `editable`: bọc mỗi công thức $…$ trong <span class="mt-f" data-fi="i"> (i = thứ tự trong raw) để preview
 // click-để-sửa (MathTextarea). Mặc định TẮT → trang in / test online / mọi chỗ khác HTML y như cũ.
 function buildLines(rawIn: string, editable = false): string[] {
-  const raw = balanceDollars(rawIn)
+  // ⭐ 11/09 (Thùy: "sao a) cứ xuống dòng, cách 1 dòng với b" — BT.08.257 phat_bieu="...cân.\n" ở DB dơ)
+  // — TRIM outer whitespace TRƯỚC khi split: trailing \n biến "cân." thành 2 lines (["cân.", ""]) →
+  // MathText đổi từ <span> inline sang <div> block + mline &nbsp; đẻ thêm dòng trống. Trim → 1 line, span
+  // inline, nhãn "a) " ở TRƯỚC nằm cùng dòng. Áp cho MỌI MathText (universal fix, không phải per-caller).
+  const raw = balanceDollars((rawIn ?? '').replace(/^[\s﻿\xA0]+|[\s﻿\xA0]+$/g, ''))
   const lines: string[] = ['']
   let fi = 0
   const pushText = (txt: string) => {

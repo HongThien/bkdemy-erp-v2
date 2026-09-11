@@ -19,12 +19,16 @@ import {
   luotTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, khoiCuaHS, hoSoCuaToi, layDangHocTap, xepHangTuLuyen,
   TU_LUYEN_SO_CAU_MOI_LUOT, SRC_LABEL, type DangHocTap, type RecentEval, type XepHangRow,
 } from '../../lib/tuluyen'
+import { laCap2HS, mayManHSCuaToi } from '../../lib/maymai_hs'
 import DoiMatKhau from './DoiMatKhau'
 import CaBoTroHS, { RetestHS, BoTroBanner, LichBoTroHS } from './CaBoTroHS'
 import { caCuaToi, retestCuaToi, lichBoTroCuaToi, type LichBoTro } from '../../lib/botro_yeu_ca'
 import { listThongBaoHS, docTatCaThongBao, type ThongBaoHS } from '../../lib/thongbaohs'
 import HomeHS, { type HomeCard } from './HomeHS'
 import DanhSachHS, { type DsRow } from './DanhSachHS'
+import MayManHS from './MayManHS'
+import ThanhTuuHS from './ThanhTuuHS'
+import BaiTapGiaoHS from './BaiTapGiaoHS'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
 type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
@@ -46,7 +50,7 @@ const THI_LOAI = new Set(['et', 'de_thi', 'bo_tro_test', 'retest'])
 // Bảng xếp hạng (Thùy 21/08: "ko phải chỉ 5T. Hiện cho các khối tiểu học") — mọi khối cấp 1, MỖI
 // EM xếp hạng với ĐÚNG khối của mình (BangXepHang tự đọc khoiCuaHS(), không hardcode '5T' nữa).
 const KHU_CHI_CAP1 = new Set<KhuId>(['xep_hang'])
-type KhuId = 'giao_trinh' | 'et' | 'btvn' | 'tu_luyen' | 'thong_tin' | 'de_thi_thu' | 'xep_hang'
+type KhuId = 'giao_trinh' | 'et' | 'btvn' | 'tu_luyen' | 'thong_tin' | 'de_thi_thu' | 'xep_hang' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao'
 // direct = ô này KHÔNG đi qua màn "danh sách nhiều bài" (setKhu+tab) — bấm vào thẳng 1 màn riêng.
 // Tự luyện là 1 PHIÊN đang-tiếp-diễn trong ngày (không phải danh sách bài đã phát hành theo ngày
 // như ET/BTVN), nên không hợp mô hình list+tab dùng chung — mỗi màn direct tự lo dữ liệu riêng.
@@ -61,15 +65,32 @@ const KHU: { id: KhuId; ten: string; icon: string; loai?: string; direct?: boole
   { id: 'xep_hang', ten: 'Bảng xếp hạng', icon: '🏆', direct: true, mau: 'ph-orange' },
   { id: 'de_thi_thu', ten: 'Làm đề thi thử', icon: '📄', mau: 'ph-purple' },
 ]
+// ── KHU cấp 2 (lớp 6-9) — Thùy 11/09: ẨN Bài tập trên lớp/ET/BTVN, thêm 3 ô mới ─────────────────
+// (Bài tập được giao "sắp có" — sau này nối bổ trợ; Thành tựu = giai_thuong đã công bố; May mắn =
+//  vòng quay 4 EXP có điều kiện 10 câu tự luyện đúng ≥70% + tối đa 1 lượt/ngày.)
+// Cấp 3 (khối 10-12) — Thùy CHƯA nói đổi, giữ KHU cũ. Cấp 1 dùng HomeCap1 riêng, không đụng.
+const KHU_CAP2: { id: KhuId; ten: string; icon: string; direct?: boolean; sapCo?: boolean }[] = [
+  { id: 'tu_luyen',      ten: 'Tự luyện',           icon: '🎯', direct: true },
+  { id: 'thong_tin',     ten: 'Thông tin học tập',  icon: '📈', direct: true },
+  { id: 'de_thi_thu',    ten: 'Làm đề thi thử',     icon: '📄', sapCo: true },
+  { id: 'bai_tap_giao',  ten: 'Bài tập được giao',  icon: '📚', direct: true },  // placeholder — vào màn "đang phát triển"
+  { id: 'thanh_tuu',     ten: 'Thành tựu',          icon: '🏆', direct: true },
+  { id: 'may_man',       ten: 'May mắn',            icon: '🎰', direct: true },
+]
 // Kit hs-home-v4: minh hoạ (PNG cutout ở public/bk-ui/hs) + doodle chữ tay (Itim, TEXT) + tông màu từng ô.
-const KIT_O: Record<KhuId, Pick<HomeCard, 'ill' | 'doodle' | 'tone'>> = {
-  giao_trinh: { ill: 'purple_bookmark_book', doodle: 'Cố lên!', tone: 'pink' },
-  et:         { ill: 'orange_documents', doodle: 'Kiến thức là sức mạnh', tone: 'purple' },
-  btvn:       { ill: 'homework_house', doodle: 'Ôn tập mỗi ngày nhé!', tone: 'orange' },
-  tu_luyen:   { ill: 'self_practice_target', doodle: 'Small Steps Big Progress', tone: 'green' },
-  thong_tin:  { ill: 'study_progress_chart', doodle: 'Hiểu mình để tiến bộ hơn!', tone: 'blue' },
-  xep_hang:   { ill: 'self_practice_target', doodle: 'Thi đua vui!', tone: 'green' },
-  de_thi_thu: { ill: 'mock_exam_locked', doodle: 'Sắp ra mắt! Hãy chờ nhé!', tone: 'gray' },
+// KIT_O — mỗi ô có (ill|emoji · doodle · tone). Ô cấp 2 mới CHƯA có PNG cutout — dùng emoji cho khung
+// icon (HomeHS ưu tiên emoji nếu có, fallback về ill file PNG). Sau này export PNG thì bỏ emoji.
+const KIT_O: Record<KhuId, Pick<HomeCard, 'ill' | 'emoji' | 'doodle' | 'tone'>> = {
+  giao_trinh:   { ill: 'purple_bookmark_book', doodle: 'Cố lên!', tone: 'pink' },
+  et:           { ill: 'orange_documents', doodle: 'Kiến thức là sức mạnh', tone: 'purple' },
+  btvn:         { ill: 'homework_house', doodle: 'Ôn tập mỗi ngày nhé!', tone: 'orange' },
+  tu_luyen:     { ill: 'self_practice_target', doodle: 'Small Steps Big Progress', tone: 'green' },
+  thong_tin:    { ill: 'study_progress_chart', doodle: 'Hiểu mình để tiến bộ hơn!', tone: 'blue' },
+  xep_hang:     { ill: 'self_practice_target', doodle: 'Thi đua vui!', tone: 'green' },
+  de_thi_thu:   { ill: 'mock_exam_locked', doodle: 'Sắp ra mắt! Hãy chờ nhé!', tone: 'gray' },
+  bai_tap_giao: { ill: 'mock_exam_locked', emoji: '📚', doodle: 'Sắp có nè!', tone: 'blue' },
+  thanh_tuu:    { ill: 'self_practice_target', emoji: '🏆', doodle: 'Đầy tự hào ♡', tone: 'orange' },
+  may_man:      { ill: 'self_practice_target', emoji: '🎰', doodle: 'Luyện chăm là quay!', tone: 'pink' },
 }
 const SHADOW = 'shadow-[0_8px_24px_rgba(28,38,61,0.07)]' // ĐÚNG --shadow của bkdemy-ph-app/app/ph-v3.css
 
@@ -202,8 +223,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
-  const [direct, setDirect] = useState<'tu_luyen' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'lich_bo_tro' | 'retest' | 'hop_thu' | null>(null)
+  const [direct, setDirect] = useState<'tu_luyen' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | null>(null)
   const [cap1, setCap1] = useState<boolean | null>(null) // null = chưa biết — chờ trước khi vẽ lưới ô
+  const [cap2, setCap2] = useState<boolean | null>(null) // Thùy 11/09: cấp 2 (lớp 6-9) có layout KHU riêng
+  const [maymanCoLuot, setMaymanCoLuot] = useState<boolean>(false) // badge ô "May mắn" (đủ điều kiện + chưa quay hôm nay)
   const [gioiTinh, setGioiTinh] = useState<'nam' | 'nu' | null>(null) // theme nam/nữ màn chính cấp 2/3 (kit hs-home-v4)
   const [anhUrl, setAnhUrl] = useState<string | null>(null) // avatar HS (đổi ngay trong app — ốp từ TA, mig 202609080215)
   // Ca yếu hôm nay (đã điểm danh) + retest đến hạn + LỊCH bổ trợ 3 loại (Thùy 09-09: box "Bổ trợ" LUÔN hiện, có lịch thì liệt kê).
@@ -214,8 +237,15 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 
   useEffect(() => { listBaiTestCuaHS().then(setTests).catch(() => setTests([])) }, [])
   useEffect(() => { laCap1HS().then(setCap1).catch(() => setCap1(false)) }, [])
+  useEffect(() => { laCap2HS().then(setCap2).catch(() => setCap2(false)) }, [])
   useEffect(() => { hoSoCuaToi().then((h) => { setGioiTinh(h?.gioi_tinh ?? null); setAnhUrl(h?.anh_url ?? null) }).catch(() => setGioiTinh(null)) }, [])
   useEffect(() => { taiChuaDoc() }, [])
+  // Badge ô "May mắn" — có 1 lượt để quay khi (đủ điều kiện + chưa quay hôm nay + active). Chỉ tải cho cấp 2.
+  // Refetch khi rời màn quay (direct đổi) để badge cập nhật ngay sau khi HS quay xong.
+  useEffect(() => {
+    if (!cap2 || direct || khu) return
+    mayManHSCuaToi().then((d) => setMaymanCoLuot(!!d.active && !d.hom_nay && !!d.du_dieu_kien.du)).catch(() => setMaymanCoLuot(false))
+  }, [cap2, direct, khu])
   useEffect(() => {
     const tai = () => Promise.all([caCuaToi().catch(() => null), retestCuaToi().catch(() => []), lichBoTroCuaToi().catch(() => [] as LichBoTro[])])
       .then(([ca, rt, lich]) => setBoTro({ coCa: !!ca, soRetest: rt.filter((r) => !r.da_nop).length, lich }))
@@ -233,6 +263,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'retest') return <RetestHS hocSinhId={hocSinhId} onXong={() => setDirect(null)} LamET={LamET} />
   if (direct === 'lich_bo_tro') return <LichBoTroHS lich={boTro.lich} coCa={boTro.coCa} onXong={() => setDirect(null)} onVaoCa={() => setDirect('bo_tro')} />
   if (direct === 'hop_thu') return <HopThuHS onXong={() => { setDirect(null); taiChuaDoc() }} />
+  if (direct === 'may_man') return <MayManHS gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
+  if (direct === 'thanh_tuu') return <ThanhTuuHS gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
+  if (direct === 'bai_tap_giao') return <BaiTapGiaoHS gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
 
   if (active) {
     const back = () => { setActive(null); listBaiTestCuaHS().then(setTests) }
@@ -252,7 +285,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const CHU_DUOI: Partial<Record<KhuId, string>> = { tu_luyen: 'Luyện theo dạng yếu', thong_tin: 'Dạng đang yếu', xep_hang: 'Thi đua tự luyện' }
 
   // ── MÀN CHÍNH: ô vuông (theo cấp/khối), 2 cột ─────────────────────────────
-  if (!khu && cap1 === null) return <div className="flex min-h-screen items-center justify-center bg-ios text-sm text-ph-label-2">Đang tải…</div>
+  if (!khu && (cap1 === null || cap2 === null)) return <div className="flex min-h-screen items-center justify-center bg-ios text-sm text-ph-label-2">Đang tải…</div>
   // Cấp 1 (Thùy 21/08: "học sinh làm ở nhà trên máy tính/iPad, không phải điện thoại") — màn RIÊNG
   // desktop/iPad-first theo mockup HTML CEO gửi, KHÔNG dùng lưới mobile-first bên dưới (cấp 3 vẫn
   // giữ nguyên màn cũ — CEO xác nhận "cấp 3 chưa dùng màn này", bàn sau).
@@ -262,24 +295,44 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Cấp 2/3 — màn chính theo KIT hs-home-v4 (HomeHS.tsx). Ở đây CHỈ tính số/trạng thái từng ô rồi
   // truyền xuống; HomeHS thuần vẽ. Badge = việc CÒN LÀM ĐƯỢC (bài quá hạn vẫn hiện trong danh sách —
   // Thùy: "hiện quá hạn thôi" — nhưng không đếm vào badge; badge đếm cả thứ không bấm được thì thành nhiễu).
+  // Thùy 11/09: CẤP 2 (lớp 6-9) đổi KHU — ẨN Bài tập trên lớp/ET/BTVN, thêm Bài tập được giao/Thành
+  // tựu/May mắn. Cấp 3 (khối 10-12) giữ KHU cũ để không đụng flow đang chạy.
   if (!khu) {
-    const cards: HomeCard[] = KHU.filter((k) => !KHU_CHI_CAP1.has(k.id)).map((k) => {
-      const sapCo = !k.loai && !k.direct
-      const ds = k.loai ? cuaKhu(k.id) : []
-      const nChuaLam = ds.filter((t) => !xongCua(t) && !daHetHan(t)).length
-      const nQuaHan = ds.filter((t) => !xongCua(t) && daHetHan(t)).length
-      const [sub, subMau]: [string, HomeCard['subMau']] =
-        sapCo ? ['Sắp có', 'xam']
-        : k.direct ? [CHU_DUOI[k.id] ?? '', 'xam']
-        : tests === null ? ['…', 'xam']
-        : nChuaLam > 0 ? [`${nChuaLam} bài chưa làm`, 'ton']
-        : nQuaHan > 0 ? [`${nQuaHan} bài quá hạn`, 'do']
-        : ds.length ? ['Xong hết rồi', 'xanh'] : ['Chưa có bài', 'xam']
-      return {
-        id: k.id, ten: k.ten, sub, subMau, badge: nChuaLam, disabled: sapCo, ...KIT_O[k.id],
-        onClick: sapCo ? undefined : k.direct ? () => setDirect(k.id as 'tu_luyen' | 'thong_tin' | 'xep_hang') : () => { setKhu(k.id); setTab('chua') },
-      }
-    })
+    const cards: HomeCard[] = cap2
+      ? KHU_CAP2.map((k) => {
+          const [sub, subMau]: [string, HomeCard['subMau']] =
+            k.sapCo ? ['Sắp có', 'xam']
+            : k.id === 'thanh_tuu' ? ['Xem giải thưởng của em', 'xam']
+            : k.id === 'may_man' ? (maymanCoLuot ? ['Có 1 lượt quay!', 'ton'] : ['Luyện 10 câu đúng ≥70%', 'xam'])
+            : k.id === 'bai_tap_giao' ? ['Đang phát triển', 'xam']
+            : k.id === 'tu_luyen' ? ['Luyện theo dạng yếu', 'xam']
+            : k.id === 'thong_tin' ? ['Dạng đang yếu', 'xam']
+            : ['', 'xam']
+          const badge = k.id === 'may_man' && maymanCoLuot ? 1 : 0
+          return {
+            id: k.id, ten: k.ten, sub, subMau, badge, disabled: !!k.sapCo, ...KIT_O[k.id],
+            onClick: k.sapCo ? undefined : k.direct
+              ? () => setDirect(k.id as 'tu_luyen' | 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao')
+              : () => { setKhu(k.id); setTab('chua') },
+          }
+        })
+      : KHU.filter((k) => !KHU_CHI_CAP1.has(k.id)).map((k) => {
+          const sapCo = !k.loai && !k.direct
+          const ds = k.loai ? cuaKhu(k.id) : []
+          const nChuaLam = ds.filter((t) => !xongCua(t) && !daHetHan(t)).length
+          const nQuaHan = ds.filter((t) => !xongCua(t) && daHetHan(t)).length
+          const [sub, subMau]: [string, HomeCard['subMau']] =
+            sapCo ? ['Sắp có', 'xam']
+            : k.direct ? [CHU_DUOI[k.id] ?? '', 'xam']
+            : tests === null ? ['…', 'xam']
+            : nChuaLam > 0 ? [`${nChuaLam} bài chưa làm`, 'ton']
+            : nQuaHan > 0 ? [`${nQuaHan} bài quá hạn`, 'do']
+            : ds.length ? ['Xong hết rồi', 'xanh'] : ['Chưa có bài', 'xam']
+          return {
+            id: k.id, ten: k.ten, sub, subMau, badge: nChuaLam, disabled: sapCo, ...KIT_O[k.id],
+            onClick: sapCo ? undefined : k.direct ? () => setDirect(k.id as 'tu_luyen' | 'thong_tin' | 'xep_hang') : () => { setKhu(k.id); setTab('chua') },
+          }
+        })
     return <HomeHS hoTen={hoTen} maHS={maHS} lopMon={lopMon} gioiTinh={gioiTinh} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
       lich={boTro.lich} soRetest={boTro.soRetest} cards={cards}
       onHopThu={() => setDirect('hop_thu')} onDoiMK={() => setDoiMK(true)} onThoat={() => supabase.auth.signOut()}
