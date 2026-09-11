@@ -10650,3 +10650,8 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
   "Cannot find module '../report/ReportCard'". Dọn: copy 2 file sang worktree, `git checkout HEAD` phục hồi ReportPHScreen gốc,
   xoá ReportCard mới ở gốc. Repo gốc trả về sạch (chỉ scripts _diag/_tmp còn). BÀI HỌC: cwd Bash tool luôn về mặc định giữa các
   lệnh — khi làm trong worktree phải `cd` mỗi lần, KHÔNG assume cwd còn.
+- **Mở lại 1 giải = RESET toàn bộ luồng từ giải đó (CEO 11/09):** bản 1719 chỉ cho mở giải chốt sau cùng → ca cắn:
+  chốt Tiến bộ xong muốn đưa em từ Tiến bộ lên Xuất sắc thì UNIQUE(hs,thang,mon) chặn insert Xuất sắc. Mig `202609111211`:
+  fn_traogiai_mo_lai_giai(p_loai) giờ xoá dấu chốt + xác nhận (chưa công bố) của p_loai và MỌI giải SAU; xoá luôn dấu hoàn
+  thành lớp. Chặn khi tháng đã công bố. Idempotent. Client: nút "Đã chốt · mở lại" giờ hoạt động cho MỌI giải đã chốt, kèm
+  confirm đếm số slot sẽ mất "sẽ xoá dấu chốt + N slot của Tiến bộ, Chăm chỉ".

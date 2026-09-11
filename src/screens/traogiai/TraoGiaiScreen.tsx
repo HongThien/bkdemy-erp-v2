@@ -201,10 +201,17 @@ export default function TraoGiaiScreen() {
     finally { setBusy((s) => { const n = new Set(s); n.delete(`chot:${card.lopId}:${loaiGiai}`); return n }) }
   }
   async function moLaiGiai(card: TraoGiaiClass, loaiGiai: LoaiGiai) {
+    // CEO 11/09: mở lại 1 giải = RESET toàn bộ luồng từ đó (DB fn_traogiai_mo_lai_giai xoá cả xác nhận giải SAU).
+    // Đếm slot sẽ mất để confirm rõ.
+    const thuTu: Record<LoaiGiai, number> = { xuat_sac: 0, tien_bo: 1, cham_chi: 2 }
+    const cacGiaiMat = card.awards.filter((a) => thuTu[a.loaiGiai] >= thuTu[loaiGiai])
+    const soSlotMat = cacGiaiMat.reduce((n, a) => n + a.slots.filter((s) => s.confirmed).length, 0)
+    const tenGiaiMat = cacGiaiMat.map((a) => LOAI_GIAI_TEN[a.loaiGiai]).join(', ')
+    if (!confirm(`Mở lại giải ${LOAI_GIAI_TEN[loaiGiai]} lớp ${card.tenLop} sẽ RESET luồng: xoá dấu chốt + ${soSlotMat} slot đã xác nhận của các giải ${tenGiaiMat}. Bạn tick lại từ đầu. Tiếp?`)) return
     setBusy((s) => new Set(s).add(`chot:${card.lopId}:${loaiGiai}`))
     try {
       await moLaiGiaiLop(card.lopId, ym, loaiGiai)
-      flash(`Đã mở lại giải ${LOAI_GIAI_TEN[loaiGiai]} lớp ${card.tenLop}`)
+      flash(`Đã mở lại giải ${LOAI_GIAI_TEN[loaiGiai]} lớp ${card.tenLop} — reset ${soSlotMat} slot`)
       await refetchDongBo(card.lopId)
     } catch (e) { flash('⚠️ ' + (e as Error).message) }
     finally { setBusy((s) => { const n = new Set(s); n.delete(`chot:${card.lopId}:${loaiGiai}`); return n }) }
@@ -537,7 +544,7 @@ function AwardBlock({ card, award, busy, effectiveSlot, onToggleConfirm, onChang
           </button>
         )}
         {award.trangThai === 'da_chot' && (
-          <button disabled={chotBusy} onClick={() => onMoLaiGiai(card, award.loaiGiai)} title="Mở lại giải này để sửa (chỉ mở được giải chốt sau cùng)"
+          <button disabled={chotBusy} onClick={() => onMoLaiGiai(card, award.loaiGiai)} title="Mở lại giải này — sẽ xoá cả xác nhận giải sau, tick lại từ đầu"
             className="rounded border border-emerald-200 bg-white px-2 py-0.5 text-[10.5px] font-semibold text-emerald-700 disabled:opacity-50">
             {chotBusy ? '…' : '✓ Đã chốt · mở lại'}
           </button>
