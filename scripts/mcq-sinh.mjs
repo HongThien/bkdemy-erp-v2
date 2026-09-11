@@ -16,6 +16,7 @@ import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { parseHuuTi, hinhThuc, ratEq } from './lib/huuti.mjs'
+import { chuanHoaFactorText, evalFactorText, chuanHoaTapText, evalTapText } from './lib/mini-dang.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const envf = (f) => Object.fromEntries(readFileSync(f, 'utf8').split('\n').map((l) => l.match(/^\s*([A-Z_]+)\s*=\s*(.+?)\s*$/)).filter(Boolean).map((m) => [m[1], m[2].replace(/^["']|["']$/g, '')]))
@@ -26,6 +27,18 @@ const has = (k) => args.includes(k)
 
 // Pool 1 (spec §2) — 9 dạng lớp 7 "Số hữu tỉ" nhóm tính toán.
 const POOL1 = ['T107010201', 'T107010202', 'T107010203', 'T107010206', 'T107010207', 'T107010401', 'T107010403', 'T107010404', 'T107010301']
+// Pool 2A (khảo sát 08/09 tiếp) — 4 dạng "Số thực" cần √/|…|, engine mcq-auto.mjs đã mở rộng.
+const POOL2A = ['07702202202', '077022022203', '07702220320302', '07702220320320303']
+// Pool 3 (11/09) — 10 dạng khối 6 "Số tự nhiên", whitelist đã xác nhận máy tính đúng ở kho-quet-dapso.mjs.
+const POOL3 = ['T106020202', 'T106020203', 'T106020301', 'T106020302', 'T106020303', 'T106020401', 'T106020402', 'T106020403', 'T106020501', 'T106020503']
+// Dạng ĐÁP SỐ LÀ BIỂU THỨC/TẬP HỢP (không phải 1 giá trị hữu tỉ) — parseHuuTi luôn fail, phải so bằng TEXT chuẩn
+// hoá (xem mini-dang.mjs `phanTichNguyenTo`/`nhanBietNguyenToHopSo`). Mỗi dạng 1 cặp {canon, val} riêng vì cú
+// pháp đáp số khác nhau (biểu thức \cdot vs danh sách "; ").
+const TEXT_DANG = new Set(['T106030302', 'T106030301'])
+const TEXT_FN = {
+  T106030302: { canon: chuanHoaFactorText, val: evalFactorText },
+  T106030301: { canon: chuanHoaTapText, val: evalTapText },
+}
 const TBL = 'dai_cau_form_tn'
 const LETTERS = ['A', 'B', 'C', 'D']
 
@@ -42,7 +55,7 @@ async function rules() { return (await c.query('select ma, ten, mo_ta, vi_du, nh
 
 async function list() {
   const dang = opt('--dang'), n = Number(opt('--n', 40))
-  const dangs = dang ? [dang] : POOL1
+  const dangs = dang === '2a' ? POOL2A : dang === '3' ? POOL3 : dang ? dang.split(',') : POOL1
   const { rows } = await c.query(`
     select q.ma_cau, q.dang_chinh, b.ten_dang, q.noi_dung, q.dap_an, q.loi_giai
     from dai_cau_hoi q join dai_ban_do b on b.ma_dang = q.dang_chinh
@@ -53,6 +66,13 @@ async function list() {
     order by q.dang_chinh, q.ma_cau`, [dangs])
   const cau = [], bo = []
   for (const r of rows) {
+    if (TEXT_DANG.has(r.dang_chinh)) { // đáp số là BIỂU THỨC/TẬP — kiểm bằng fn.val riêng theo dạng, không qua parseHuuTi
+      const fn = TEXT_FN[r.dang_chinh]
+      const n2 = fn.val(r.dap_an)
+      if (n2 == null) { bo.push({ ma_cau: r.ma_cau, dap_an: r.dap_an, ly_do: 'không tính được giá trị' }); continue }
+      if (cau.length < n) cau.push({ ...r, key_gia_tri: fn.canon(r.dap_an), hinh_thuc: r.dang_chinh === 'T106030301' ? 'tap' : 'bieu_thuc' })
+      continue
+    }
     const p = parseHuuTi(r.dap_an)
     if (!p.ok) { bo.push({ ma_cau: r.ma_cau, dap_an: r.dap_an, ly_do: p.ly_do }); continue }
     if (cau.length < n) cau.push({ ...r, key_gia_tri: p.canon, hinh_thuc: hinhThuc(r.dap_an) })
@@ -69,10 +89,36 @@ async function list() {
   if (bo.length) { console.error(`BỎ ${bo.length} câu KHÔNG parse được đáp số (sửa đáp số kho qua UI rồi chạy lại):`); for (const b of bo) console.error(`  ${b.ma_cau}  "${String(b.dap_an).replace(/\s+/g, ' ').slice(0, 60)}"  → ${b.ly_do}`) }
 }
 
+// Dạng ĐÁP SỐ LÀ BIỂU THỨC/TẬP — so TEXT chuẩn hoá + giá trị (nhân chứng thứ hai), KHÔNG dùng parseHuuTi/hinhThuc.
+function kiemCauText(item, dbRow, ruleMap) {
+  const err = []
+  const fn = TEXT_FN[dbRow.dang_chinh]
+  const key = fn.canon(dbRow.dap_an), nKey = fn.val(dbRow.dap_an)
+  if (nKey == null) return [`đáp số kho không parse được: ${dbRow.dap_an}`]
+  const lc = item.lua_chon
+  if (!Array.isArray(lc) || lc.length !== 4) return ['phải đúng 4 phương án']
+  const dungIdx = lc.map((x, i) => (x.dung ? i : -1)).filter((i) => i >= 0)
+  if (dungIdx.length !== 1) err.push('phải đúng 1 phương án dung=true')
+  if (!LETTERS.includes(item.dap_an)) err.push('dap_an phải A..D')
+  else if (dungIdx.length === 1 && LETTERS[dungIdx[0]] !== item.dap_an) err.push(`dap_an=${item.dap_an} không khớp vị trí dung (${LETTERS[dungIdx[0]]})`)
+  const texts = lc.map((x) => fn.canon(x.text)), vals = lc.map((x) => fn.val(x.text))
+  vals.forEach((v, i) => { if (v == null) err.push(`phương án ${LETTERS[i]} không parse được`) })
+  if (err.length) return err
+  if (texts[dungIdx[0]] !== key) err.push(`phương án đúng (${texts[dungIdx[0]]}) ≠ đáp số kho (${key})`)
+  if (vals[dungIdx[0]] !== nKey) err.push(`phương án đúng tính ra ${vals[dungIdx[0]]} ≠ giá trị thật ${nKey}`)
+  for (let i = 0; i < 4; i++) for (let j = i + 1; j < 4; j++) if (texts[i] === texts[j]) err.push(`${LETTERS[i]} và ${LETTERS[j]} cùng biểu thức ${texts[i]}`)
+  const rs = lc.filter((x) => !x.dung).map((x) => x.rule)
+  rs.forEach((r, i) => { if (!r || !ruleMap.has(r)) err.push(`distractor ${i + 1} thiếu rule / rule không tồn tại (${r})`) })
+  if (new Set(rs).size !== rs.length) err.push(`3 distractor phải 3 rule khác nhau (${rs.join(',')})`)
+  if (rs.filter((r) => ruleMap.get(r)?.du_phong).length > 1) err.push('quá 1 rule dự phòng')
+  lc.filter((x) => !x.dung).forEach((x, i) => { if (!x.duong_sai || String(x.duong_sai).trim().length < 8) err.push(`distractor ${i + 1} thiếu duong_sai`) })
+  return err
+}
 // Kiểm 1 câu theo §5.3 — trả mảng lỗi (rỗng = OK). Đáp số LẤY TỪ DB (nhân chứng thứ hai), không tin file.
 function kiemCau(item, dbRow, ruleMap) {
   const err = []
   if (!dbRow) return ['không có trong kho / đã có form / không thuộc pool']
+  if (TEXT_DANG.has(dbRow.dang_chinh)) return kiemCauText(item, dbRow, ruleMap)
   const key = parseHuuTi(dbRow.dap_an)
   if (!key.ok) return [`đáp số kho không parse được: ${key.ly_do}`]
   const lc = item.lua_chon
@@ -113,7 +159,7 @@ async function verify(file, quiet = false) {
   const ruleMap = new Map((await rules()).map((r) => [r.ma, r]))
   const mas = items.map((x) => x.ma_cau)
   const { rows } = await c.query(`
-    select q.ma_cau, q.dap_an from dai_cau_hoi q
+    select q.ma_cau, q.dap_an, q.dang_chinh from dai_cau_hoi q
     where q.ma_cau = any($1) and q.xoa_at is null and q.lua_chon is null and q.menh_de is null
       and not exists (select 1 from ${TBL} f where f.ma_cau = q.ma_cau and f.xoa_at is null)`, [mas])
   const db = new Map(rows.map((r) => [r.ma_cau, r]))
@@ -137,15 +183,15 @@ async function ghi(file) {
   if (fail) { console.error('\n✖ Có câu FAIL hoặc phân bố lệch — sửa file rồi chạy lại. KHÔNG ghi.'); process.exitCode = 1; return }
   let n = 0, skip = 0
   for (const it of pass) {
-    const { rows } = await c.query('select dap_an from dai_cau_hoi where ma_cau = $1', [it.ma_cau])
-    const key = parseHuuTi(rows[0]?.dap_an ?? '')
+    const { rows } = await c.query('select dap_an, dang_chinh from dai_cau_hoi where ma_cau = $1', [it.ma_cau])
+    const keyCanon = TEXT_DANG.has(rows[0]?.dang_chinh) ? TEXT_FN[rows[0]?.dang_chinh].canon(rows[0]?.dap_an ?? '') : parseHuuTi(rows[0]?.dap_an ?? '').canon
     await c.query('begin')
     try {
       const r = await c.query(`
         insert into ${TBL} (ma_cau, lua_chon, dap_an, key_gia_tri, nguon, ai_model)
         select $1, $2::jsonb, $3, $4, 'ai', $5
         where not exists (select 1 from ${TBL} f where f.ma_cau = $1 and f.xoa_at is null)
-        returning id`, [it.ma_cau, JSON.stringify(it.lua_chon), it.dap_an, key.canon, model])
+        returning id`, [it.ma_cau, JSON.stringify(it.lua_chon), it.dap_an, keyCanon, model])
       await c.query('commit')
       if (r.rowCount) n++; else skip++
     } catch (e) { await c.query('rollback'); console.error(`✖ ${it.ma_cau}: ${e.message}`); process.exitCode = 1 }

@@ -1318,6 +1318,31 @@ và `--baseline` đều đụng file người khác, đã dính 2 lần 08/09).
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
+- **⭐⭐ QUY TRÌNH thiết kế RULE LỖI cho form trắc nghiệm (Thùy chốt 09/09, sau khi CTO code trước-hỏi-sau 1 lần) —
+  áp cho MỌI dạng mới đưa vào MCQ (`scripts/mcq-auto.mjs`/`mcq-sinh.mjs`, spec-mcq-form.md), không riêng "tích bằng 0":**
+  **(1) Đọc `loi_giai` (lời giải chi tiết) THẬT trong kho của vài câu mẫu dạng đó trước** — không suy luận rule lỗi từ
+  cấu trúc AST trong đầu. Kho thường tự trình bày đúng khuôn TH1/TH2/các bước, đọc ra ngay chỗ HS hay trượt.
+  **(2) Từ lời giải, liệt kê các ĐIỂM RẼ có thể sai** (mỗi bước-giải-đúng ứng với 1+ cách hiểu-sai-hợp-lý) — đối
+  chiếu với rule đã có trong `dai_mcq_rule` xem trùng/thiếu/**đã có nhưng SAI NGỮ CẢNH** (case thật: R21 "chỉ lấy
+  nghiệm dương" đúng cho dạng KHÔNG ràng buộc miền, nhưng với dạng CÓ "x≥0" tường minh thì "chỉ lấy dương" lại là
+  quy trình ĐÚNG — rule cũ vô dụng ở ngữ cảnh mới, cần rule NGƯỢC LẠI "quên áp miền, giữ dư nghiệm"). Đừng gán 1 rule
+  cũ vào ngữ cảnh mới chỉ vì tên nghe giống.
+  **(3) Đề xuất bảng rule (tên/mô tả/ví dụ) cho CEO — CEO CHỐT rồi mới viết code.** Việc chọn "lỗi nào đáng mô hình
+  hoá" là quyết định SẢN PHẨM (ảnh hưởng chất lượng chẩn đoán lỗi của HS thật), không phải chi tiết kỹ thuật tự
+  quyết được (khác §0 R2 — đây không phải "câu kỹ thuật").
+  **(4) CHỈ SAU KHI CHỐT mới sinh lô + verify + ghi.** Case cụ thể (09/09): pool tích-bằng-0 khối 7 (`077022022203`,
+  spec-mcq-form.md), CTO tự code `solveProduct` (chứng minh 1 thừa số vô nghiệm rồi loại) VÀ ĐÃ GHI 12 form vào DB
+  trước khi hỏi — chạy đúng, verify sạch, nhưng CEO chỉ ra ngay 4 lỗ hổng rule (R21 sai ngữ cảnh + 3 lỗi chưa mô
+  hình: giải nhầm nhân tử vô nghiệm ra nghiệm ảo · quên khai căn khi x²=k · quên bình phương khi √x=k) mà lẽ ra
+  phải bàn TRƯỚC. 12 form đã ghi (chưa duyệt) phải sinh lại sau khi rule mới xong — làm 2 lần vì bỏ qua bước (3).
+  **⭐ NỚI bước (3) — 11/09, sau khi pool khối 6 tái dùng ~90% rule cũ trót lọt:** dạng MỚI mà lỗi khả dĩ ĐÃ RÕ
+  RÀNG/TÁI DÙNG được (giống hệt 1 dạng đã CEO duyệt trước đó, khác chỉ ở miền số — vd R52 "nhầm phép tính" cho
+  Số tự nhiên khối 6, sinh từ chính lỗ hổng đo được lúc chạy, không phải suy đoán) → **CTO tự quyết luôn, không hỏi**
+  (đúng tinh thần §0 R2). **CHỈ mang ra hỏi CEO khi dạng đó bản thân THIẾU RÕ hoặc MƠ HỒ** (đáp số không phải 1 giá
+  trị đơn — vd "Phân tích ra thừa số nguyên tố" đáp số là biểu thức luỹ thừa, "Nhận biết nguyên tố/hợp số" đáp số
+  kiểu chọn-tất-cả-trong-danh-sách — những ca này CẦN bàn TRƯỚC vì bản chất "câu hỏi trắc nghiệm 4 đáp án cho nó"
+  còn chưa rõ, không phải vì thiếu rule lỗi). Không đổi (1)(2)(4) — vẫn đọc lời giải trước, vẫn liệt kê điểm rẽ,
+  vẫn chỉ ghi sau khi tính đúng+verify sạch — chỉ đổi AI QUYẾT rule cho dạng RÕ RÀNG.
 - **⭐⭐ Đưa script kiểm cho bên bị kiểm = Goodhart (hs-home v3, 08/09):** ChatGPT cầm `design-check.mjs` trong tay → sinh asset để
   QUA script (ảnh rỗng 100% trong suốt tự chấm PASS), không để ĐÚNG. Script là của bên nhận; bên giao chỉ nhận câu hỏi tự kiểm.
   Kèm theo: **script chỉ là lưới thô — vẫn phải MỞ ẢNH nhìn** (v3 qua 100% mà mắt thấy hỏng ngay).

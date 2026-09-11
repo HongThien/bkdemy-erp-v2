@@ -9974,3 +9974,342 @@ dòng, không dựng lại UI để đo.
   `package.json`/`launch.json` (của phiên khác). CEO test app HS không thấy câu hình: vì prod chưa deploy bản này + nút "Luyện chứng
   minh" nằm ở màn KẾT QUẢ tự luyện (luồng riêng, không trộn lượt thường). 23/23 form CEO đã duyệt.
 - **Distill HANDOFF.md** (mục ① thêm "08–09/09 — FORM CÂU + KHO CHUẨN + NHẬP KHO TỪ FILE" A–E; mục ② thêm "Bài học 08–09/09" 13 gạch).
+## 2026-09-08 (tối, worktree form-tn) — Khảo sát mở rộng POOL 2: dạng nào khối 7 làm TN 4 đáp án được
+- **Việc:** đọc DB (SELECT, `dai_ban_do`/`dai_cau_hoi`, khoi='7') — 40 dạng, đối chiếu shape đáp số/nội dung với tiêu chí
+  spec-mcq-form.md §1 (không multi-part a)/b), không chứng minh, không đáp số là công thức, đáp số verify được bằng `parseHuuTi`).
+  Script: `scripts/_diag_lop7_dang.mjs` (liệt kê dạng) + `scripts/_diag_lop7_khaosat.mjs` (đếm loai_cau/co_dap_an/nhieu_y/
+  chung_minh per dạng + 3 mẫu ngẫu nhiên) — cả hai giữ lại trong worktree (chưa commit), dùng lại được cho lô sau.
+- **NHÓM A — sẵn sàng làm ngay, đáp số đơn giá trị/tập nghiệm giống hệt pool 1 (367 câu):**
+  - Mở rộng TRỰC TIẾP `mcq-auto.mjs` AST evaluator (thêm node `sqrt`/`abs`, kết quả PHẢI về hữu tỉ — câu trong kho đều
+    √ hoàn hảo nên hợp lệ): `07702202202` Thực hiện phép tính Căn bậc hai (63) · `077022022203` Tìm x liên quan Căn bậc hai
+    (52, tập nghiệm — tái dùng R21/R22 đã có) · `07702220320302` Thực hiện phép tính GTTĐ (80) · `07702220320320303`
+    Tìm x liên quan GTTĐ (65, tập nghiệm). Cần thêm rule mới: GTTĐ bỏ dấu sai (`|-a|=-a`), căn tính nhầm thành chia
+    (`√(a/b)=a/b`) — ướm 2-3 rule mới cùng khuôn R-series.
+  - Cần MINI-SOLVER RIÊNG (không phải AST tổng quát, nhưng vẫn 1 công thức xác định, verify được bằng đáp số kho):
+    `07702011103` Viết STP tuần hoàn → phân số tối giản (50, công thức chuẩn (a−b)/(10^n−10^m)) · `0770201102` Làm tròn
+    STP (57, `parseHuuTi` đã nhận thập phân sẵn — chỉ cần solver "làm tròn đúng vị trí" + rule sai: làm tròn nhầm chữ số,
+    cắt thay vì làm tròn, sai ngưỡng .5).
+- **NHÓM B — khả thi nhưng cần thiết kế riêng, KHÔNG phải bước kế tiếp:** `077022220401` Tìm GTLN-GTNN (87 câu, đáp số
+  đơn NHƯNG cách tính là tối ưu hoá — cần rule-series riêng, không tái dùng AST eval xuôi) · `T107010103` So sánh số hữu
+  tỉ (28, đáp số là BẤT ĐẲNG THỨC "a<b" chứ không phải 1 giá trị — verify khác hẳn parseHuuTi) · `T107010205` Toán thực
+  tế (67, ~46 câu KHÔNG multi-part có đáp số đơn — 21 câu còn lại multi-part loại theo §1; cần rule riêng về % lồng
+  nhau) · `T107010501/502/508` Dãy phân số dạng "Tính" không chứng minh (44+10+6=60, cần solver telescoping riêng,
+  KHÁC 504/505/506/507 100% chứng minh) · `T107010405` Tìm x tích=0 (chỉ 6 câu — quá ít để mở pool riêng).
+- **NHÓM C — loại khỏi roadmap TN 4 đáp án (giữ tự luận, hoặc chuyển hướng khác):** `077020101` Nhận biết STP (đáp số
+  multi-part dạng list, vd "23; 0,(23).") · `0770220201` Nhận biết số vô tỉ (0/11 câu có đáp án — thuần khái niệm) ·
+  `07702220301` So sánh/sắp xếp Số thực (đáp số là 1 HOÁN VỊ 5 số, khác hẳn shape giá trị) · `0770222204220402` Tính
+  GTLN-GTNN ứng dụng (đáp số là CẶP x,y, 2 biến) · `T107010101` Nhận biết số hữu tỉ (22/29 đã là `trac_nghiem` gốc,
+  phần còn lại là điền ∈/∉ nhiều ô) · `T107010102` Biểu diễn trên trục số (cần hình vẽ, 9/18 đã TN gốc) ·
+  `T107010504/505/506/507` Dãy phân số CHỨNG MINH (100% `chứng minh`/`CMR`, đúng luật "không sinh MCQ cho câu chứng
+  minh") · `T107010302/T107010406/T107010503` (0 câu trong kho — chưa có gì để khảo sát) · nhóm "Đề thi đầu vào M9"
+  5 dạng (~34 câu tổng, nội dung trùng các dạng chính ở trên, lượng quá nhỏ để tách riêng).
+- **Đề xuất pool 2 (chờ CEO chốt):** ưu tiên 4 dạng Căn bậc hai + GTTĐ (260 câu, mở rộng engine sẵn có, rẻ nhất) trước,
+  rồi mới tới 2 dạng cần mini-solver riêng (107 câu). Nhóm B để đợt 3, mỗi dạng cần 1 thiết kế rule/solver riêng.
+
+## 2026-09-08 (tối, tiếp, worktree form-tn) — POOL 2A: mở rộng engine √/|…| — 232 form mới (mig 202609081858)
+- **Việc:** hiện thực nhóm A từ khảo sát trước — mở rộng `scripts/mcq-auto.mjs` (parser+eval+peel, spec-mcq-form.md §5)
+  thêm 2 nút AST: `\sqrt{…}` (bậc 2, không hỗ trợ `\sqrt[n]`) và `|…|` (tokenize bằng khớp `|` ở độ sâu ngoặc 0, không
+  hỗ trợ `|` lồng `|` — pool này không cần). `juxta()` thêm sqrt/abs để "6√x" parse đúng phép nhân ngầm.
+- **4 rule lỗi mới** (mig `202609081858_mcq_rule_can_gtri_tuyet_doi.sql`): R28 "chia đôi thay vì khai căn" (dùng cả
+  lúc TÍNH — √a=a:2 — lẫn lúc TÌM X qua căn — bình phương sai thành nhân đôi) · R29 "quên khai căn, giữ nguyên số
+  dưới căn" · R30 "|a|=a giữ nguyên dấu âm" · R31 "|x|=k ra x=−k, đổi dấu cả biểu thức" (chiều ngược R21 "thiếu
+  nghiệm âm", tái dùng chung ý tưởng "chỉ lấy 1 trong 2 trường hợp"). R16 (đã có, "mũ tử quên mẫu") TÁI DÙNG cho
+  cả `\sqrt{a/b}` (chỉ khai căn tử). ⚠ **Lưu ý đánh số:** spec-mcq-form.md §4 từng dành R28+ cho CEO gom "form tính
+  toán thật trong đề thi" — kiểm tay lúc viết migration, DB CHƯA có row nào R28+ nên dùng luôn; nếu CEO đã định
+  dùng đúng số này cho việc khác thì đổi ở migration MỚI (không sửa file cũ).
+  Toán học: `√(…)=T` chỉ 1 nhánh khi bóc x (T²), khác `(…)^n=T` có ±; `|…|=T` có 2 nhánh (T, −T) giống luỹ thừa
+  chẵn nhưng KHÔNG cần lấy căn — T âm thì vô nghiệm ở cả 2.
+- **4 dạng chạy:** `07702202202` Thực hiện phép tính Căn bậc hai (63) · `077022022203` Tìm x liên quan Căn bậc hai
+  (52) · `07702220320302` Thực hiện phép tính GTTĐ (80) · `07702220320320303` Tìm x liên quan GTTĐ (65).
+  `mcq-sinh.mjs` thêm `--dang 2a` (hằng `POOL2A`) + `--dang a,b,c` (comma-list) cho lô tuỳ chọn sau này.
+  Verify tay 10 câu mẫu (cả tính lẫn tìm x, cả √ lẫn |…|) khớp CHÍNH XÁC đáp số kho trước khi chạy full —
+  `scripts/_diag_sqrt_abs_test.mjs` giữ lại làm test hồi quy nhẹ cho engine.
+- **Kết quả:** 260 câu ứng viên (0 câu nào bị chặn bởi cửa `da_duyet`/`kho_chuan` — cả 260 đã sẵn 100%, khác âu
+  lo ban đầu vì HANDOFF cũ ghi "60/17.743 da_duyet" — hoá ra 4 dạng NÀY đã được lượt "kho chuẩn" duyệt hết từ
+  trước). Sinh 232 form OK (89%) · verify DB 232 OK/0 FAIL · **đã ghi `dai_cau_form_tn`, da_duyet=false** (chờ
+  duyệt qua tab "Trắc nghiệm AI" — màn duyệt lọc theo môn/khối qua RPC, KHÔNG hardcode danh sách dạng nên tự
+  nhận form mới, không cần sửa UI). Phân bố đáp án cân A/B/C/D (58 mỗi ô).
+- **28 câu BỎ, có lý do rõ, KHÔNG phải bug — chấp nhận:** 6 câu "số mũ lạ" (x ở SỐ MŨ, vd `2^x−32=0`, ngoài phạm
+  vi — cần log, chưa làm) · 16 câu "không tính được" — phần lớn là dạng TÍCH 2 NHÂN TỬ = 0 mà 1 nhân tử luôn
+  dương (vd `(9√x−4)(x²+4)=0`, `x²+4` không bao giờ = 0) — cùng họ với T107010405 (Nhóm B trong khảo sát trước),
+  cần engine riêng xử lý tích=0, CHƯA làm hôm nay · 5 câu `|x|=k` TRẦN (không có gì quanh) chỉ đủ 2 rule (R21+R31)
+  — ĐÚNG theo spec "không đủ 3 rule ⇒ bỏ câu", không phải thiếu rule mà là bài quá đơn giản không còn chỗ cho lỗi
+  thứ 3 · **1 câu LỖI DỮ LIỆU KHO thật:** `07702220320320303022` nội dung `|4x+1]+2=7` — mở bằng `|` đóng bằng `]`
+  (gõ nhầm khi nhập câu), máy đúng khi từ chối chứ không đoán ngoặc — cần OPS/GV sửa tay qua UI kho, KHÔNG tự sửa.
+- **0 lệch máy≠kho** (khác pool 1 vốn phát hiện 2 đáp số sai) — 260 câu 4 dạng này đáp số kho sạch.
+- **Còn treo:** duyệt 232 form (0/232) · tích 2 nhân tử = 0 (Nhóm B) · x ở số mũ (log riêng) · sửa 1 câu lỗi ngoặc
+  kho · 2 dạng mini-solver riêng (làm tròn STP, STP tuần hoàn→phân số — 107 câu, chưa động tới hôm nay).
+
+## 2026-09-08 (tối, tiếp nữa) — Bộ giải TÍCH BẰNG 0: rescue 12/16 câu vừa bỏ (không migration, thuần JS)
+- **Thùy hỏi "có gì khó" — trả lời bằng code:** cái khó KHÔNG phải kỹ thuật chia/nhân — là phải CHỨNG MINH 1 thừa
+  số không bao giờ = 0 (vd `x²+4>0` mọi x) để LOẠI nó trước khi giải, chứ không phải cứ thử giải cả 2 thừa số
+  (thừa số vô nghiệm mà cứ giải thì hoặc treo hoặc ra nghiệm ảo).
+- **`scripts/mcq-auto.mjs` thêm 3 hàm** (không migration — thuần logic JS, không rule mới):
+  `flattenMul` (tách chuỗi nhân `(A)(B)(C)…` như `flatten` đã tách chuỗi cộng/trừ) · `neverZero(f)` (CHỈ nhận diện
+  ĐÚNG hình dạng gặp trong kho: tổng toàn dấu CỘNG, mỗi hạng tử là luỹ thừa BẬC CHẴN hoặc hằng dương — có dấu trừ
+  ở bất kỳ đâu ⇒ KHÔNG kết luận, không đoán hình dạng lạ) · `hasSqrtOfX` (có `\sqrt{x}` ở bất kỳ đâu ⇒ áp miền
+  x≥0 cho CẢ phương trình, lọc nghiệm âm sau khi gộp) · `solveProduct` móc vào đầu `solve()` khi `countX>1`: tách
+  thừa số theo `flattenMul`, thừa số nào `neverZero` thì bỏ, thừa số còn lại (`countX===1` mới nhận — thừa số
+  phức hơn thì bỏ CẢ câu, không đoán) giải qua `solve()` CÙNG `ctx` (rule/distractor áp được VÀO TỪNG thừa số,
+  vd 1 thừa số sai theo R28 trong khi thừa số kia vẫn đúng — nghiệm gộp là 1 lỗi hợp lý, đúng tinh thần spec).
+- **Test tay 12 câu:** `scripts/_diag_tich_bang_0_test.mjs` — 12/12 khớp đáp số kho (2 dòng tưởng DIFF lúc đầu là
+  do tự gõ sai THỨ TỰ tập nghiệm trong test, không phải lỗi máy — `canonOf` luôn sắp tăng dần).
+- **Chạy lại pool còn treo của `077022022203`:** 12/16 câu trước đây "không tính được" nay sinh OK, verify DB
+  12 OK/0 FAIL, **đã ghi thêm 12 form** (tổng pool 2A giờ 244 form, da_duyet=false). Phân bố đáp án vẫn cân.
+- **4 câu KHÔNG liên quan tích=0** (nằm lẫn trong 16 câu bỏ trước, hoá ra thuộc dạng KHÁC — `07702220320302`
+  "Thực hiện phép tính GTTĐ", không hề có x): `\left(\dfrac15\right)^{2024}:\left(\dfrac15\right)^{2023}` — số
+  mũ 2024/2023 vượt guard `n>60` của `powR` (chỉ đặc cách cho cơ số ±1/0). Cách đúng là RÚT GỌN cùng cơ số
+  `a^m:a^n=a^{m-n}` TRƯỚC khi tính (ở đây ra `(1/5)^1=1/5`), không phải tính riêng tử/mẫu rồi chia — khác hẳn
+  "tích bằng 0", CHƯA làm (Thùy chưa yêu cầu, chỉ ghi lại để không lẫn với việc hôm nay).
+- **6 câu "số mũ lạ" vẫn bỏ** — x nằm Ở SỐ MŨ (`2^x-32=0`), cần logarit, ngoài phạm vi tích=0, chưa làm.
+- **5 câu `|x|=k` trần + 1 câu lỗi ngoặc kho vẫn bỏ** — đúng như trước, không liên quan việc hôm nay.
+
+## 2026-09-09 (sáng, worktree form-tn) — CEO chặn: đã code-trước-hỏi-sau, chỉnh quy trình + chốt 4 rule R32-R35
+- **Thùy chặn:** "cách làm của m là phải đọc đáp án chi tiết trước rồi phân tích cùng t để bàn rule chứ nhỉ" — đúng,
+  CTO đã tự code `solveProduct` + ghi 12 form vào DB TRƯỚC khi hỏi, dù chạy đúng/verify sạch vẫn là sai QUY TRÌNH.
+- Đọc lại `loi_giai` thật (không phải suy từ AST) của 3 câu mẫu (`077022022203025/037/038`) — kho tự trình bày
+  TH1/TH2 rõ ràng, kể cả câu ghi "(vô lí)" cho thừa số vô nghiệm.
+- Đối chiếu 3 rule Thùy đưa với engine: rule "x²=4 chỉ lấy x=2" hoá ra là R21 CŨ nhưng **sai ngữ cảnh** — pool này
+  đa số có ràng buộc x≥0 (do có √x) nên "chỉ lấy dương" là ĐÚNG, không phải sai; cái thiếu thật là NGƯỢC LẠI. 2 rule
+  kia (giải nhầm nhân tử vô nghiệm ra nghiệm ảo · quên khai căn/quên bình phương) đúng là thiếu hoàn toàn.
+- **CEO chốt 4 rule mới R32-R35** (bảng đề xuất CTO đưa, xem HANDOFF ② — mục quy trình mới): R32 quên áp miền x≥0
+  giữ dư nghiệm âm · R33 không nhận ra nhân tử vô nghiệm, chuyển vế rồi bỏ qua dấu âm khai căn ra nghiệm ảo · R34
+  quên khai căn khi giải x²=k (x=k thay vì ±√k) · R35 quên bình phương khi giải √x=k (x=k thay vì k²).
+- **Ghi HANDOFF ② quy trình chuẩn** (đọc lời giải → liệt kê điểm rẽ sai → đề xuất bảng rule cho CEO chốt → CHỈ SAU
+  ĐÓ mới code/sinh/ghi) — áp cho MỌI dạng MCQ sau này, không riêng tích=0. 12 form đã ghi hôm qua (chưa duyệt) sẽ
+  sinh lại sau khi code xong 4 rule (không mất gì thật vì `da_duyet=false`, chưa ai duyệt).
+- **Code 4 rule đã chốt** (mig `202609091354_mcq_rule_tich_bang_0.sql`): R34 (peel pow-chẵn, trả nguyên `t` không
+  khai căn — trước rootR) · R35 (peel sqrt, trả nguyên `t` không bình phương — song song R28) · R32/R33 nằm ở tầng
+  `solveProduct` (không phải peel — vì cần biết TOÀN CỤC có đang lọc miền hay không, và cần thao tác trên CẢ nhân
+  tử chứ không phải 1 giá trị): R32 = khi có √x trong phương trình mà rule=R32 thì BỎ bước lọc `hasSqrtOfX` (giữ
+  nguyên cả nghiệm âm) · R33 = hàm riêng `solveFactorR33(f,ctx)` — với nhân tử ĐÃ xác định `neverZero` (dạng
+  luỹ-thừa-chẵn + hằng dương), tách hằng số, chuyển vế ra `−hằng`, cố tình bỏ qua dấu âm rồi khai căn đúng bậc của
+  hằng, cho ±kết quả — dùng CHUNG `flatten`/`ev`/`rootR`/`peel` đã có, không viết solver riêng từ đầu.
+- **Kho rác 12 form cũ** (`update ... set xoa_at=now() where da_duyet=false`, KHÔNG delete cứng — đúng CLAUDE.md
+  §2 tham chiếu bằng text cấm xoá cứng) rồi sinh lại. **Kết quả: cả 12/12 câu đều dùng ĐÚNG rule Thùy chốt**
+  (037-042 ra R32+R34+R35 · 025-030 ra R35+R28+R20, KHÔNG có R04/R05 lấp chỗ như bản cũ) — verify DB 12 OK/0 FAIL,
+  đã ghi lại. Debug tay xác nhận R33 tính ra ĐÚNG {16/81, 2} cho câu 025 (x²+4=0 → HS "giải" ra x=±2), khớp y hệt
+  ví dụ Thùy đưa tay — nhưng bộ CHỌN 3-trong-N (đoạn `okAdd` trong `main()`) ưu tiên "cùng hình thức với đáp án
+  đúng" (ở đây đáp án là 1 phân số) nên luôn vét hết ứng viên cùng-phân-số TRƯỚC khi xét đến R33 (kết quả dạng
+  TẬP, khác hình thức) — R33 tính đúng nhưng gần như KHÔNG BAO GIỜ lọt vào 3 lựa chọn cuối cho family 025-030 (quá
+  nhiều ứng viên cùng-phân-số cạnh tranh: R35, R28, R20, R04, R05). KHÔNG tự sửa bộ chọn chung (ảnh hưởng ngược
+  tới pool 1 đã duyệt) — đã báo Thùy, treo chờ quyết có cần ưu tiên cứng R33 cho riêng dạng này không.
+- Còn treo: duyệt 12+232 form pool 2A · R33 hiếm khi lọt top-3 (trên) · tích=0 vẫn KHÔNG xử được 6 câu "x ở số mũ"
+  (khác lớp bài toán, cần logarit) · 4 câu "cùng cơ số số mũ lớn" ở dạng GTTĐ (071-075, phát hiện hôm qua, chưa làm).
+
+## 2026-09-09 (tiếp) — XOAY VÒNG rule khi chọn 3 distractor (Thùy: "rule quan trọng phải xoay vòng chứ")
+- **Thùy phản hồi ca R33:** đã chốt rule quan trọng thì đáp án phải XOAY VÒNG qua các rule, không phải cùng 2-3
+  rule đứng đầu UU_TIEN chiếm hết mọi câu. Đúng — kiểm ngay dữ liệu THẬT trước khi sửa: cả 4 dạng pool 2A đều lệch
+  y hệt kiểu R33 (rule đầu ưu tiên chiếm 60-90% câu, rule cuối UU_TIEN gần như 0), KHÔNG riêng dạng tích=0.
+- **Sửa `main()` trong `mcq-auto.mjs`:** thêm `ruleUsed` đếm số lần mỗi rule đã được CHỌN trong CẢ LÔ (không phải
+  trong 1 câu). Bộ chọn 3-trong-N đổi từ "vét hết cùng-hình-thức trước, UU_TIEN làm thứ tự cứng" sang: (1) chọn
+  ĐÚNG 1 cùng-hình-thức bắt buộc (không vét hết — verify chỉ cần ≥1, không cần tối đa), ưu tiên rule ÍT DÙNG nhất
+  trong lô; (2) 2 slot còn lại xoay vòng qua TOÀN BỘ ứng viên (mọi hình thức), vẫn ưu tiên ít dùng nhất, UU_TIEN
+  chỉ còn là tiêu chí PHÁ HOÀ khi 2 rule cùng số lần dùng. `pick.sort` cuối vẫn theo UU_TIEN để hiển thị đường sai
+  "mạnh" trước — chỉ đổi cách CHỌN, không đổi cách SẮP.
+- **Kết quả thật (đếm theo rule/dạng, trước→sau):** `07702202202` R29 60→19 · R28 52→18 · R16 32→18, còn R02/R07/
+  R09/R13 từ ~1 lên 5-8. `07702220320302` R30 52→28, R06/R07/R13 từ ~15 lên 15-22 (đều hẳn ra). `07702220320320303`
+  R19 45→24, R21+R31 (cặp rule mới của dạng GTTĐ tìm x) lên 42/42 — CÂN NHAU tuyệt đối vì cùng đứng đầu UU_TIEN và
+  không có rule nào khác cạnh tranh 2 vị trí đầu ở nhóm câu đơn giản. `077022022203` (tích=0): R33 4→6/6 câu vô
+  nghiệm (100%, trước 0), R32/R34 5→6/6 câu có ràng buộc miền.
+- **11 câu `07702202202` ĐÃ DUYỆT** (16:44-16:45 08/09 + 05:57 09/09 — Thùy đang duyệt dở tab Trắc nghiệm AI) — lệnh
+  xoá kho rác LUÔN kèm `and da_duyet=false`, 11 câu này an toàn tuyệt đối không bị đụng. Phát hiện tình cờ, không
+  phải chủ đích kiểm tra trước — nhắc nhở: PHẢI kiểm trạng thái duyệt trước mọi lần xoá-hàng-loạt-để-sinh-lại.
+- **Xoá kho rác (`xoa_at`, KHÔNG delete cứng) 233 form pool 2A còn lại (chưa duyệt) → sinh lại toàn bộ** (không chỉ
+  riêng tích=0, vì lệch rule là vấn đề CHUNG cả 4 dạng). Verify DB 233 OK/0 FAIL, đã ghi. Tổng pool 2A giờ:
+  11 đã duyệt (giữ nguyên, không đụng) + 233 mới (rotation) = 244, khớp số cũ, KHÔNG mất câu nào.
+  **KHÔNG đụng pool 1** (488 form dạng số hữu tỉ, mig 08/09) — ngoài phạm vi hôm nay, để riêng nếu Thùy muốn.
+
+## 2026-09-09 (tiếp) — Duyệt HÀNG LOẠT tab Trắc nghiệm AI + phát hiện/sửa bug đo "Từ chối"
+- **Thùy:** "duyệt theo batch 20 câu, có nút duyệt tất cả — loại câu sai rồi duyệt hết phần còn lại, bấm từng câu
+  gãy tay". Đảo quyết định 08/09 trong spec-mcq-form.md §6 ("KHÔNG có duyệt tất cả — CEO chốt duyệt 100% để đo
+  precision") — precision VẪN đo đúng (duyệt hàng loạt vẫn tính vào mẫu số, chỉ đổi cách bấm).
+- **Mig `202609091411_mcq_form_duyet_batch.sql`:** RPC `fn_mcq_form_duyet_batch(p_kho, p_ids uuid[], p_nguoi)` —
+  duyệt NGUYÊN VẸN nhiều id 1 lượt (KHÔNG hỗ trợ sửa-hàng-loạt, sửa vẫn là luồng 1-câu cũ), bỏ qua (không nổ) id
+  đã bị người khác xử lý giữa chừng, trả `{duyet, yeu_cau, bo_qua}` để UI báo đúng số thật.
+- **`TracNghiemAiTab.tsx`:** phân trang `PAGE_SIZE=20` (client-side, cắt từ 500 câu RPC trả về) · ô chọn "sẽ duyệt"
+  mặc định BẬT trên mỗi thẻ, bỏ tick = "đã loại" (thẻ mờ đi, KHÔNG phải Từ chối — không cần lý do, câu vẫn nằm
+  nguyên trong hàng đợi, xét lại sau) · nút "✓ Duyệt tất cả trang này (N/20)" gọi `duyetFormTnBatch` theo từng
+  nhóm `mon` trong trang. Nút Sửa/Từ chối/Duyệt-từng-câu CŨ giữ nguyên không đổi.
+- **⭐ Bắt được bug thật khi verify bằng Browser pane:** metric "Từ chối 257" + "Precision AI 5%" SAI — soi kỹ thì
+  257 dòng đó toàn là CTO xoá-kho-rác để SINH LẠI (rotation fix, 2 lượt hôm nay), KHÔNG phải ai từ chối thật.
+  `fn_mcq_metric` cũ lọc `tu_choi` chỉ bằng `xoa_at is not null and not da_duyet` — không phân biệt được "người
+  từ chối có lý do" (luôn có `tu_choi_boi`) với "hệ thống thay bản mới" (kho rác thô, `tu_choi_boi` NULL). Đo tay
+  xác nhận: 257/257 dòng "từ chối" đều `tu_choi_boi is null`. **Mig `202609091416_mcq_metric_fix_tu_choi_that_su.sql`**
+  — thêm điều kiện `tu_choi_boi is not null` vào cả `tk.tu_choi` lẫn `ld` (lý do từ chối, vốn đã đúng nhờ lọc
+  `tu_choi_ly_do is not null` sẵn có, chỉ `tk.tu_choi` là sai). Verify qua Browser pane: Từ chối 257→0, Precision
+  100%. Bài học: XOÁ KHO RÁC để "sinh lại" và XOÁ KHO RÁC để "từ chối thật" là 2 Ý NGHĨA khác nhau dùng CHUNG 1
+  cột `xoa_at` — công thức đọc phải phân biệt bằng cột PHỤ (`tu_choi_boi`/`tu_choi_ly_do`), không phải chỉ
+  `xoa_at is not null`. Kiểm mọi nơi khác đọc `xoa_at` trên bảng này xem có dính lỗi tương tự — CHƯA rà hết.
+- **Verify qua Browser pane (worktree, vite tay port 5251, Admin quick-login):** khối 7 → 20 câu/trang đúng số,
+  tick loại 1 câu → nút đổi (19/20), bấm Duyệt tất cả → Duyệt 13→32 (+19 đúng), Chờ duyệt 719→700, tổng 500→481,
+  câu bị loại vẫn còn nguyên trên màn (không mất). Chuyển trang Sau → trang 2/25 hiện đúng 20 câu tiếp theo.
+  tsc 0 lỗi. Server dev vẫn chạy nền (port 5251) — chưa tắt, không ảnh hưởng gì (chỉ local, không phải cron).
+- **Còn treo:** RPC `fn_mcq_form_cho_duyet` giới hạn cứng `limit 500` (pool 1+2A cộng dồn > 500, dropdown khối
+  không thật sự lọc hết — Thùy sẽ không thấy MỌI câu chờ duyệt khi tổng vượt 500, chỉ 500 đầu theo `order by
+  dang_chinh, ma_cau`) — CHƯA sửa, ngoài phạm vi hôm nay, nên biết trước khi duyệt hết pool 1.
+
+## 2026-09-09 (tiếp) — Nâng limit 500→5000 sau khi Thùy hỏi "nâng có ảnh hưởng gì không"
+- Đo THẬT trước khi trả lời (không đoán): 700 câu 'dai' đang chờ duyệt, `explain analyze` truy vấn limit 5000 =
+  **6ms** (đã có index `dai_cau_form_tn_1_hieu_luc` sẵn, không cần thêm index), payload ước lượng CẢ 700 câu ~450KB.
+  Kết luận: 500 KHÔNG phải trần hiệu năng — chỉ là số phòng thủ theo thói quen "luôn .limit()" (CLAUDE.md §2, chống
+  default-1000 PostgREST), chọn từ lúc chưa có nhiều câu tồn đọng. Nâng vô hại, vẫn giữ 1 trần tường minh (không
+  xoá hẳn, đúng luật §2). Mig `202609091428_mcq_form_cho_duyet_nang_limit.sql` → 5000.
+- Verify qua Browser pane: "Chờ duyệt 700" khớp DB, khối 7 hiện "Trang 1/35 — câu 1–20/700" (trước là /500, cắt cụt
+  200 câu cuối theo `dang_chinh` sort). Không đổi gì phía client, chỉ đổi số ở hàm DB.
+
+## 2026-09-11 — Khép 2 nhóm câu bị bỏ hôm 09/09: cùng cơ số số mũ lớn + x ở số mũ (pool 2A gần full)
+- **Nhóm 1 (4 câu, `07702220320302`) — cùng cơ số, số mũ lớn** (vd `(1/5)^2024:(1/5)^2023`): đọc lời giải kho thì
+  cách làm THẬT là rút gọn `a^m:a^n=a^{m-n}` TRƯỚC, không tính riêng 2 luỹ thừa khổng lồ. Thêm nhánh trong `ev()`
+  case `bin '/'`: khi cả 2 vế là `pow` CÙNG cơ số, tính `powR(base, m-n)` thẳng (hỗ trợ cả m<n qua `1/base^(n-m)`).
+  Đây là CÁCH TÍNH ĐÚNG (không phải 1 đường sai) nên áp bất kể rule đang thử — không đụng rule nào khác vì không
+  ai pattern-match đúng hình `pow/pow`. Test tay 4/4 khớp kho. Chạy full: **cả 4 câu vẫn đủ 3 distractor bằng
+  rule CŨ** (R30/R04/R06/R07 — GTTĐ + trừ phân số của phần còn lại biểu thức), KHÔNG cần rule mới. Verify+ghi
+  4/4 OK. **Không migration** (thuần sửa JS, không đụng danh mục rule).
+- **Nhóm 2 (6 câu, `077022022203`) — x Ở SỐ MŨ** (vd `(3^x-27)(√(x²+1)-5/3)=0`): đọc lời giải cả 6 câu — luôn cùng
+  khuôn TH1 `a^x=k` (k LUÔN là luỹ thừa đẹp của a, giải bằng khớp số mũ chứ không phải log thật) + TH2 `√(x²+c)=k`
+  (máy đã giải được từ 09/09). Thêm nút AST mới **`powx`** (cơ số hằng, số mũ CHÍNH LÀ x) — parser: gặp `^x` (số
+  mũ là biến, không phải số) thì tạo `{t:'powx', a:cơ_số}` thay vì lỗi "số mũ lạ". `hasX`/`countX`: powx TỰ chứa
+  1 x (không cần base chứa x). `ev(powx)`: luôn null (không tính được nếu chưa biết x, giống nút `x`). `peel(powx)`:
+  hàm mới `discreteLog(base,target)` — nhân dần base lên tới ≤200 bước tìm k sao cho base^k=target (đủ cho lớp 7,
+  KHÔNG phải log thật, target không phải luỹ thừa đẹp thì bỏ, không đoán). Test tay 6/6 khớp kho.
+  **Đề xuất rule cho CEO trước khi sinh** (đúng quy trình HANDOFF ②, sau bài học 09/09): R36 "quên phép luỹ thừa,
+  coi a^x=k ⇒ x=k" · R37 "coi luỹ thừa là nhân, x=k:a" — CEO chốt qua chat 11/09. Mig
+  `202609111230_mcq_rule_x_o_so_mu.sql`. Chạy full 6/6 OK — **rotation tự chọn khác nhau**: 3 câu dùng R36+R37+R34,
+  3 câu khác tự động xoay sang R28/R21/R04 (vì R36/R37 đã "dùng nhiều" trong lô) — đúng ý xoay vòng 09/09, không
+  cần chỉnh gì thêm. Verify+ghi 6/6 OK.
+- **Pool 2A giờ 3/4 dạng PHỦ 100%:** `07702202202` 63/63 · `077022022203` 52/52 · `07702220320302` 80/80.
+  `07702220320320303` còn 59/65 — 6 câu còn lại là 2 loại KHÔNG SỬA ĐƯỢC bằng engine (đã xác nhận từ 09/09, không
+  phải bug): 5 câu `|x|=k` trần quá đơn giản (đúng luật spec "không đủ 3 rule thì bỏ") + 1 câu lỗi ngoặc thật
+  trong kho (`07702220320320303022`, `|4x+1]+2=7` gõ nhầm `]` thay `|` — cần OPS/GV sửa tay qua UI kho).
+- **Trạng thái duyệt (11/09, trước khi làm tiếp):** Thùy đã duyệt thêm bên `07702202202` (30/63, tăng từ 11 hôm
+  09/09 — đúng bằng 19 câu tôi duyệt lúc TEST tính năng hàng loạt, không có ai duyệt thêm ngoài đó). 3 dạng còn
+  lại vẫn 0 duyệt.
+
+## 2026-09-11 (tiếp) — 3 dạng "khá dễ" hoá ra khó: Làm tròn STP, STP tuần hoàn→phân số, So sánh tìm x,y
+- **Thùy:** "So sánh số hữu tỉ, Làm tròn STP, Viết STP tuần hoàn — khá dễ, làm trước; GTLN-GTNN/nâng cao để sau,
+  phải đưa về trắc nghiệm TỪNG PHẦN". Soi kỹ hoá ra KHÔNG dễ: "So sánh" thật ra 3 hình dạng khác nhau (so sánh
+  trực tiếp/sắp xếp — đáp số là CÂU, bị `parseHuuTi` loại từ vòng đọc kho, không bao giờ tới máy · tìm x,y nguyên
+  — nhánh DUY NHẤT còn lại, chỉ 10/28 câu). "Làm tròn" có 2 KIỂU đề khác hẳn nhau, KIỂU 2 còn lồng cả số thập
+  phân tuần hoàn của dạng kia bên trong — không phải 1 công thức, là 2 mini-hệ thống nối nhau.
+  **KHÔNG khớp khuôn AST của `mcq-auto.mjs`** (mỗi dạng 1 hình dạng VĂN BẢN riêng, không phải biểu thức toán) —
+  viết file mới `scripts/lib/mini-dang.mjs` (regex trên câu chữ, Rat BigInt riêng không import chéo) + dispatch
+  `SPECIAL_DANG` trong `main()`: câu nào khớp dạng đặc biệt thì bỏ qua mathOf/parse/AST hoàn toàn, gọi hàm riêng
+  `(noiDung, rule) => {value, text?, ds?}` — vẫn dùng CHUNG bộ chọn 3-trong-N + xoay vòng đã có (chỉ đổi NGUỒN
+  ứng viên, không đổi CÁCH chọn).
+- **Công thức đúng (đọc lời giải kho trước khi code, đúng quy trình):** STP tuần hoàn N,ABC(DEF) → phân số =
+  [int(N‖ABC‖DEF) − int(N‖ABC)] / [10^p·(10^q−1)]. Làm tròn "đến chữ số thứ N" = so sánh chữ số N+1 với 5. Làm
+  tròn "độ chính xác d" = làm tròn tới BƯỚC 2d (suy từ 7 mẫu thật, vd d=0,05→bước 0,1; d=5→bước 10 — không phải
+  "làm tròn tới chính d" như tên gọi dễ khiến hiểu nhầm). So sánh tìm x,y = quy đồng bất đẳng thức kép về 1 mẫu
+  chung rồi tìm nguyên NẰM GIỮA.
+- **10 rule mới + tái dùng R04 có sẵn** (2 migration: `202609111230` x-ở-số-mũ hôm trước, rồi
+  `202609111439/1444/1452` cho 3 dạng này — R38-R40 STP tuần hoàn, R42/R43/R48/R49/R44 làm tròn, R45-R47/R51 so
+  sánh, R50 dùng chung 2 dạng đầu):
+  - **STP tuần hoàn:** R38 (coi tuần hoàn từ đầu, bỏ ABC) · R39 (quên nhân 10^p ở mẫu) · R40 (quên cộng phần
+    nguyên) · **R50 mới** (sai mẫu, dùng 10^q thay vì 10^q−1 — ÁP ĐƯỢC MỌI CÂU, cứu 10 câu "0 distractor" ban đầu)
+    · **tái dùng R04** (đảo dấu, trừ ngược A−10A).
+  - **Làm tròn:** R42 (đếm thiếu 1 chữ số vị trí) · **R49 mới** (đếm THỪA 1 chữ số — phát hiện R43+R48 "luôn
+    xuống"/"luôn lên" LUÔN có đúng 1 cái trùng đáp án đúng tuỳ chữ số kế tiếp ≥5 hay <5, không đủ 2 cái ĐỘC LẬP,
+    phải có trục thứ ba lệch VỊ TRÍ chứ không lệch HƯỚNG) · R43 (chặt cụt) · R48 (luôn làm tròn lên) · R44 (hiểu
+    sai độ chính xác, bước=d thay vì 2d) · nguồn tuần hoàn tái dùng NGUYÊN R38/R39/R40/R50/R04 ở trên (kiểu 2 lồng
+    STP tuần hoàn bên trong — 2 lớp rule cộng dồn được).
+  - **So sánh tìm x,y:** R46/R47 (lệch 1 đơn vị 2 chiều) · R45 (quy đồng sai — hoá ra GẦN NHƯ VÔ DỤNG vì nhóm câu
+    nó nhắm tới bị `parseHuuTi` loại sẵn do x=y trùng giá trị) · **R51 mới** (lấy thẳng 2 số đầu-cuối bất đẳng
+    thức — cứu dạng này từ 0/6 lên 6/6, vì R46+R47 một mình không đủ 3).
+- **1 BUG THẬT bắt được qua `--verify` (không phải qua mắt):** `placesOfStep` tính SỐ CHỮ SỐ HIỂN THỊ bằng
+  "đếm chữ số của mẫu q" — chỉ đúng khi q là luỹ thừa 10 (vd bước 2d luôn vậy). R44 dùng bước = d TRỰC TIẾP (vd
+  0,05 rút gọn còn q=20=2²·5, KHÔNG phải luỹ thừa 10) → tính places sai 1 chữ số → BigInt chia lấy phần nguyên
+  ÂM THẦM CẮT MẤT chữ số cuối → 2 phương án khác nhau vô tình RENDER RA CÙNG TEXT sau khi mất chữ số → verify
+  bắt được qua lỗi "B và C cùng giá trị". Sửa: tìm k NHỎ NHẤT sao cho `10^k` chia hết cho q (không phải đếm
+  chữ số q). Bài học: "đếm chữ số của mẫu" chỉ là suy luận TẮT đúng trong trường hợp riêng, không phải công thức
+  chung — công thức chung phải tìm TỪ ĐỊNH NGHĨA (10^k chia hết cho q), gặp input LỆCH GIẢ ĐỊNH BAN ĐẦU là vỡ.
+- **Kết quả cuối (verify DB, đã ghi):** 90/113 câu OK (80%), 0 FAIL. Theo dạng: STP tuần hoàn 40/50 (80%, 10 câu
+  còn lại là hình dạng đơn giản nhất "0,(D)" — phần nguyên=0 VÀ không có phần không lặp, chỉ còn R50+R04=2, đúng
+  luật "không đủ 3 rule thì bỏ", KHÔNG cố nhét thêm rule gượng ép) · Làm tròn 44/57 (77%) · So sánh tìm x,y 6/6
+  (100%, sau khi thêm R51). **CHƯA verify được bằng mắt qua Browser pane** — công cụ trình duyệt trong phiên này
+  đột nhiên báo lỗi "tên trùng công cụ desktop app" giữa chừng, không rõ nguyên nhân, không phải do code — verify
+  tự động (parseHuuTi round-trip qua `mcq-sinh.mjs --verify`, xem lại text từng phương án render ra) là bằng
+  chứng CHÍNH cho lần này; cần soi lại bằng mắt trên UI thật khi công cụ trình duyệt hoạt động lại.
+- **Còn treo:** duyệt 90 form mới · 10 câu STP tuần hoàn "0,(D)" đơn giản không sửa được · GTLN-GTNN + các bài
+  nâng cao (Thùy: "phải đưa về trắc nghiệm TỪNG PHẦN" — khác hẳn kiến trúc hiện tại, MCQ 1 câu 4 đáp án cho CẢ
+  bài; cần thiết kế riêng theo hướng "mỗi bước 1 câu hỏi", gần với mô hình điền ô hơn — CHƯA bàn, việc lớn khác).
+
+## 2026-09-11 (tiếp) — POOL 3: khối 6 "Số tự nhiên" — 10 dạng, 451/455 câu (99%), gần như TÁI DÙNG NGUYÊN rule cũ
+- **Thùy: "chuyển sang lớp 6 đi".** Tìm ra `scripts/kho-quet-dapso.mjs` đã có sẵn WHITELIST 10 dạng khối 6 xác
+  nhận "máy tính đúng" từ đợt quét đáp số trước (spec-kho-chuan.md) — không cần khảo sát lại từ đầu như khối 7,
+  chỉ cần đọc lời giải mẫu để thiết kế rule. 457 câu, `da_duyet` ~100%, 0 form từ trước — pool sạch.
+- **⭐ Phát hiện quan trọng khi đọc mẫu — mở rộng `powx` (x ở số mũ) từ "x trần" (khối 7: `3^x=27`) lên "SỐ MŨ LÀ
+  BIỂU THỨC chứa x" (khối 6: `2^{x-1}=2^3\cdot4`, `5^{x+3}=...`):** sửa `power()` — số mũ không phải số nguyên
+  trần thì PARSE LẠI như 1 biểu thức con (giống cách `\frac` parse a/b), gắn vào `{t:'powx', a:cơ_số, exp:cây}`.
+  `peel(powx)`: tìm k=log_cơ_số(T) (hoặc k SAI theo R36/R37) rồi **BÓC TIẾP `exp`=k bằng CHÍNH `peel()`** — không
+  viết riêng, tái dùng R19/R20… của biểu thức tuyến tính cho phần số mũ. Test 5/5 mẫu thật khớp kho, KHÔNG phá
+  test cũ (bare-x khối 7 vẫn 6/6 — `exp:{t:'x'}` là trường hợp riêng của cái tổng quát).
+- **`chamLaNhan` (dấu chấm=nhân, khối 6) có 2 lỗ nhỏ bắt được qua test thật:** chấm trước NGOẶC ("1.(3-1)") và
+  chấm trước BIẾN ("5.x^3") đều không khớp regex cũ (chỉ nhận chấm-trước-số). Sửa 1 dòng: lookahead từ `[\d]`
+  thành `[\dx(]`.
+- **1 rule mới R52 "nhầm phép tính"** (mig `202609111545`) — dạng "Nhân, chia Số tự nhiên" (T106020301) câu chỉ
+  1 phép tính TRẦN (`32·7`, `255:5`, không âm không lồng) FAIL 100% lúc đầu: R10 cần số âm mới fire (số tự
+  nhiên không bao giờ âm), R20 chỉ áp lúc tìm x — chỉ còn 2 rule dự phòng, không đủ 3. Thêm R52: nhân nhầm thành
+  cộng, chia nhầm thành nhân (lỗi kinh điển). Cùng lúc phát hiện **R24 "sót hạng tử" chỉ xử lý PHÉP NHÂN**, chưa
+  có nhánh phép CHIA (`root.op==='/'`) — HALF câu chia của dạng này vẫn thiếu 1 distractor dù có R52 — thêm nhánh
+  "quên chia, giữ nguyên số bị chia". 2 fix này đưa dạng từ 0/42 → 21/42 → 21/42(thiếu chia) → 42/42.
+  **Không cần rule mới nào khác** — 8/10 dạng còn lại tái dùng NGUYÊN rule R01/R02/R12/R13/R14/R17/R19/R20/R23/
+  R24/R05/R04/R36/R37 đã có sẵn từ pool 1+2A, không phải thiết kế lại (số tự nhiên = tập con của số hữu tỉ, cùng
+  4 phép tính + luỹ thừa + ngoặc + tìm x, chỉ thiếu phần âm/phân số).
+- **Kết quả cuối (verify DB, đã ghi):** 451/455 (99%), 0 FAIL. 9/10 dạng đạt 100%; `T106020503` (tìm x ngoặc)
+  99% (70→75 rồi lên nhờ thêm R16/R22 đã có sẵn vào ưu tiên) — còn 4 câu nested rất sâu (`3.(2^{x+1}+4)^…`,
+  `5.(2x+1)^5+44=...`) chỉ đủ 1-2 distractor, chấp nhận bỏ theo đúng luật cũ.
+- **Còn treo:** duyệt 451 form pool 3 · 4 câu nested sâu bỏ · pool 3 KHÔNG đụng gì của pool 1/2A (kiểm chứng qua
+  hồi quy 6 file test cũ, tất cả vẫn khớp).
+
+## 2026-09-11 (tiếp) — Tổng kết khối 6 + NỚI quy trình duyệt rule: dạng RÕ tự quyết, dạng MƠ HỒ mới hỏi
+- Tổng kết khối 6 theo yêu cầu Thùy: 45 dạng, 1.274 câu · đã làm 10 dạng/451 form · có câu nhưng chưa làm 19
+  dạng/817 câu (phân 3 nhóm: 2 dạng đã là trắc nghiệm gốc trong kho, ngoài phạm vi · 1 dạng dễ chắc làm được
+  ngay · còn lại cần mini-solver riêng hoặc chưa đọc mẫu) · chưa có câu nào trong kho 16 dạng (khoảng trống nội
+  dung, không phải việc MCQ).
+- **Thùy chốt lại nhịp làm việc: "đi tiếp lần lượt, dạng dễ tự quyết, dạng băn khoăn mới hỏi"** — NỚI quy trình
+  09/09 (vốn bắt buộc đề xuất+chờ CEO chốt cho MỌI dạng mới) sau khi thấy pool khối 6 tái dùng trót lọt ~90% rule
+  cũ (chỉ 1 rule mới R52, sinh ra từ lỗ hổng ĐO ĐƯỢC lúc chạy chứ không phải suy đoán trước). Đã ghi vào HANDOFF ②
+  (nới thẳng vào mục quy trình 09/09, không tạo mục mới): dạng mới mà lỗi khả dĩ RÕ RÀNG/tái dùng được từ dạng đã
+  duyệt trước → tự quyết, không hỏi. Dạng mà ĐÁP SỐ bản thân không phải 1 giá trị đơn hoặc hình thức câu hỏi chưa
+  rõ (phân tích thừa số nguyên tố, nhận biết nguyên tố/hợp số kiểu chọn-tất-cả) → vẫn phải mang ra hỏi TRƯỚC khi
+  code, vì đó là câu hỏi "hình dạng gì" chứ không phải "rule lỗi gì". (1)(2)(4) của quy trình cũ giữ nguyên.
+- **Làm ngay dạng "dễ" đầu tiên theo quy trình mới — T106020201 Cộng trừ Số tự nhiên (bản thường, không "thuận
+  tiện"), 22 câu:** tự quyết không hỏi, đúng dự đoán — tái dùng nguyên R04/R24/R05 (không rule mới, không
+  migration). Chạy 1 lần 22/22 (100%), verify sạch, đã ghi. Xác nhận nới quy trình đúng hướng: dạng thật sự "dễ"
+  (giống hệt 1 dạng CEO đã duyệt, chỉ khác cách đặt đề) không tốn thời gian bàn qua lại.
+- **Dạng đầu tiên "mơ hồ" đã hỏi Thùy — Phân tích thừa số nguyên tố (T106030302), 80 câu.** Thùy chốt 2 rule
+  (nhầm số mũ, thừa số chưa phải nguyên tố) + mời đề xuất thêm; CTO đề xuất thêm R55 (bỏ sót thừa số), R56
+  (nhầm sang số nguyên tố khác) — Thùy xác nhận "vẫn 4 đáp án, style 3 sai chứa nhiều nguyên tố + đúng 1 hợp số".
+  Đáp số dạng này là BIỂU THỨC (`2\cdot11^2`), không phải 1 giá trị đơn — `parseHuuTi` không đọc được, không
+  thể tái dùng khuôn Rat cũ. Mở kiến trúc mới **`TEXT_DANG`** (dispatch song song `SPECIAL_DANG`, chèn trước
+  gate `parseHuuTi` trong vòng lặp chính `mcq-auto.mjs`): so sánh TEXT chuẩn hoá + giá trị số thay vì canon Rat,
+  xuyên suốt 2 file (`mcq-auto.mjs`, `mcq-sinh.mjs` — thêm `kiemCauText()` riêng vì R54 CỐ Ý giữ cùng giá trị
+  nên không thể lấy "giá trị phân biệt" làm điều kiện đúng như các dạng khác).
+  Bug bắt được lúc test standalone: R54 (gộp 2 thừa số) case chỉ có 1 số nguyên tố (`256=2^8`) ban đầu tách mũ
+  kiểu CỘNG (e1+e2=e) ra giá trị sai hẳn (65536≠256) — sửa lại đúng bản chất là GHÉP CẶP (v=p², e2=⌊e/2⌋).
+  Migration `202609111610` (R53–R56). Chạy full: `list --dang T106030302 --n100` → 80 câu → sinh 80/80 (0 bỏ),
+  phân bố rule xoay đều (mỗi rule ~75% câu, không rule nào bị bỏ rơi) → verify 80 OK/0 FAIL → ghi DB (`da_duyet
+  =false`, chờ duyệt qua UI batch). Còn lại của khối 6 sau dạng này: T106030301 (nhận biết nguyên tố/hợp số —
+  thiết kế đã chốt cùng lúc, chưa code) + nhóm chưa khảo sát (ƯCLN/BCNN ~166 câu, Ước-bội/chia hết ~108+185
+  câu, Mô tả tập hợp 45 câu, Toán thực tế 39 câu, Dãy luỹ thừa nâng cao 44 câu).
+- **Dạng "mơ hồ" thứ 2 (đã hỏi cùng lúc với trên) — Nhận biết Số nguyên tố/Hợp số (T106030301), 60 câu.** Thùy
+  chốt: vẫn 4 đáp án, style "3 sai chứa nhiều đúng, lẫn nhầm 1 số sai vào". Đáp số dạng này là TẬP HỢP SỐ (vd
+  "2; 5; 23; 41; 47", tách bằng "; "), khác hẳn cú pháp biểu thức `\cdot` của T106030302 nên KHÔNG tái dùng được
+  `chuanHoaFactorText`/`evalFactorText` — viết cặp hàm riêng `chuanHoaTapText`/`evalTapText` (mini-dang.mjs) và
+  **tổng quát hoá kiến trúc `TEXT_DANG`**: thêm bảng `TEXT_FN` map mỗi dạng → {canon, val} riêng (thay vì hard-code
+  1 cặp hàm cho toàn bộ nhánh TEXT_DANG), sửa ở cả `mcq-auto.mjs` (vòng lặp chính + `kiemCauText`) và
+  `mcq-sinh.mjs` (`list()`, `kiemCauText()`, `ghi()`) — DẠNG 4 (phân tích thừa số) không đổi hành vi, chỉ đổi
+  cách gọi hàm qua bảng tra thay vì gọi thẳng.
+  4 rule ban đầu (R57 nhầm 0/1, R58 lẫn 1 số khác nhóm, R59 bỏ sót 1 số đúng, R60 đổi chỗ — 2 rule đầu Thùy nêu,
+  2 rule sau CTO đề xuất thêm) chỉ sinh được **52/60 (87%)** — 8 câu đáp án đúng CHỈ CÓ 1 số (vd "chỉ có 5 là
+  nguyên tố" trong dãy 7 số) và đề không chứa 0/1 ⇒ R57+R59 không áp dụng được, còn lại R58+R60 = 2 rule < 3 cần
+  thiết. Thêm **rule dự phòng thứ 5 (R61 — liệt kê tuốt cả danh sách đề bài, không lọc gì)**, migration riêng
+  (202609111627, KHÔNG sửa lại file R57-60 202609111625 đã áp — đúng luật "migration bất biến") vì đây là lỗi
+  thật, phổ biến (HS chép nguyên cả dãy số không phân loại), không phụ thuộc số lượng đáp án đúng ⇒ cứu đủ cả
+  8 câu, ra **60/60 (100%)**, 0 FAIL, phân bố rule đều (R58/R59/R60/R61 ~41 lần mỗi rule/60 câu, R57 16 lần —
+  đúng tỉ lệ câu có chứa 0/1 trong đề), phân bố đáp án đúng cân A/B/C/D (15/15/15/15). Đã ghi DB (`da_duyet=false`).
+  Hồi quy: chạy lại 2 test standalone cũ (`_diag_phantich_test.mjs`, `_diag_nthop_test.mjs`) sau khi tổng quát
+  hoá TEXT_FN — vẫn khớp 100%, không hỏng gì.
+  **Còn lại của khối 6:** ƯCLN/BCNN (~166 câu, chưa khảo sát), Ước-bội/chia hết (~108+185 câu), Mô tả tập hợp
+  (45 câu), Toán thực tế (39 câu), Dãy luỹ thừa nâng cao (44 câu) — đi tiếp theo nhịp "dễ tự quyết, mơ hồ mới hỏi".

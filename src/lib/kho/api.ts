@@ -2254,6 +2254,13 @@ export async function tuChoiFormTn(mon: KhoMon, id: string, nguoi: string, lyDo:
   const { error } = await supabase.rpc('fn_mcq_form_tu_choi', { p_kho: khoPrefix(mon), p_id: id, p_nguoi: nguoi, p_ly_do: lyDo })
   if (error) throw error
 }
+// Duyệt HÀNG LOẠT — mig 202609091411 (Thùy: loại câu sai trên màn rồi duyệt hết phần còn lại 1 lượt, không sửa).
+// Trả số thật đã duyệt (form bị người khác duyệt/từ chối giữa chừng thì bị BỎ QUA, không nổ giữa batch).
+export async function duyetFormTnBatch(mon: KhoMon, ids: string[], nguoiDuyet: string): Promise<{ duyet: number; yeu_cau: number; bo_qua: number }> {
+  const { data, error } = await supabase.rpc('fn_mcq_form_duyet_batch', { p_kho: khoPrefix(mon), p_ids: ids, p_nguoi: nguoiDuyet })
+  if (error) throw error
+  return data as { duyet: number; yeu_cau: number; bo_qua: number }
+}
 // ══ HÀNG DUYỆT HỢP NHẤT (spec-kho-chuan.md §3, mig 202609080938) — màn "Duyệt lời giải AI" thành 1 hàng đợi nhiều bộ lọc ══
 // Bộ lọc = trạng thái thật trong bảng câu (da_duyet=false / kiem_may), KHÔNG có bảng hàng đợi riêng. List/đếm/duyệt/từ chối
 // đều là function Postgres; ở đây chỉ gọi rpc + render. `cau_moi` = câu sau NGÀY BẬT chưa duyệt — cửa 1 đang chặn khỏi HS.
