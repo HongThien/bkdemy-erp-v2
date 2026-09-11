@@ -10994,3 +10994,108 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
   fn_traogiai_mo_lai_giai(p_loai) giờ xoá dấu chốt + xác nhận (chưa công bố) của p_loai và MỌI giải SAU; xoá luôn dấu hoàn
   thành lớp. Chặn khi tháng đã công bố. Idempotent. Client: nút "Đã chốt · mở lại" giờ hoạt động cho MỌI giải đã chốt, kèm
   confirm đếm số slot sẽ mất "sẽ xoá dấu chốt + N slot của Tiến bộ, Chăm chỉ".
+
+## 2026-09-11 (tiếp 3, sau merge main) — Nhóm ƯCLN/BCNN khối 6 (T106040102/104/202/204)
+- Merge `origin/main` vào `worktree-form-tn` (nhánh chậm 85 commit) rồi push fast-forward thẳng lên `main` (CEO
+  chốt "gộp cả nhánh" khi được hỏi có cần push fix UI lời giải hay không). 2 xung đột: DEVLOG.md (giữ cả 2 khối
+  append song song) và `TracNghiemAiTab.tsx` — main đã có 1 bản "duyệt hàng loạt" KHÁC (đơn giản hơn, confirm()
+  + duyệt thẳng 20 câu đầu, KHÔNG có bước loại câu sai trước) do phiên khác làm độc lập cùng ngày; giữ bản của
+  worktree này vì khớp đúng yêu cầu CEO 09/09 ("loại câu sai rồi duyệt tất cả 1 lượt còn lại"), bỏ bản kia.
+- Tự quyết đi tiếp nhóm ƯCLN/BCNN (166 câu, 6/9 dạng con có câu) theo quy trình nới 11/09 — đọc lời giải kho
+  trước: T106040102/202 ("Tìm ƯCLN/BCNN") dùng "định nghĩa" hoặc "phân tích thừa số nguyên tố" tuỳ đề nhưng ĐÁP
+  SỐ luôn 1 giá trị; T106040104/204 ("Tìm n...") TRỘN 2 kiểu con trong CÙNG 1 mã dạng — "n lớn nhất/nhỏ nhất"
+  (1 giá trị) và "n biết...và n<C / C<n<D" (TẬP ước/bội thoả khoảng, dùng luôn cú pháp $...$ bọc quanh so sánh,
+  phải sửa regex 2 lần mới bắt đúng) — nên phải đi TEXT_DANG (dùng lại `chuanHoaTapText` của DẠNG 5) cho cả
+  dạng dù có câu chỉ ra 1 số (1 phần tử vẫn hợp lệ qua khuôn tập).
+  8 rule đầu (R62 nhầm ƯCLN↔BCNN, R63 sai số mũ ở thừa số chung, R64 bỏ sót thừa số, R65 BCNN nhân trực tiếp
+  không rút gọn, R66 sai gốc rồi liệt kê theo khoảng, R67 nhầm khoảng mở/đóng, R68 bỏ sót phần tử, R69 quên điều
+  kiện/chỉ xét 1 phần) suy trực tiếp từ cách giải "phân tích thừa số nguyên tố" trong lời giải kho.
+  Chạy thật lộ 2 lỗ hổng liên tiếp, vá bằng rule dự phòng mới (đúng mẫu đã làm ở DẠNG 4/5):
+  1. T106040102 (ƯCLN 1 giá trị) chỉ 20/40 (50%) — ƯCLN chỉ có ĐÚNG 1 thừa số chung thì R64 (cần ≥2 thừa số)
+     không áp dụng, còn R62+R63 < 3. Thêm R70 (tính nhầm bằng hiệu 2 số a−b, luôn tính được) + R71 (rule dự
+     phòng: lấy nhầm ước/bội chung nhỏ nhất/đầu tiên — 1 hoặc 0, luôn tính được) → 37/40 (92%).
+  2. T106040104 (tập theo khoảng) chỉ 17/44 (39%) — R66 hầu như không fire vì BCNN(a;b) thường LỚN HƠN NHIỀU
+     khoảng hẹp "n<15" nên không có bội nào lọt vào; R67 cần biên trùng đúng 1 ước/bội (hiếm). Thêm R72 (nhầm
+     bài toán "liệt kê cả tập" thành "tìm 1 số duy nhất" — hợp lý vì 2 sub-shape này SONG SONG cùng 1 dạng, HS
+     dễ lẫn) → 37/44 (84%).
+- **Kết quả ghi DB:** T106040102 37/40 (3 bỏ, edge case ƯCLN 3-số chỉ 1 thừa số chung, chấp nhận) · T106040202
+  32/32 (100%) · T106040104 37/44 (7 bỏ, tương tự). **T106040204 (Tìm n qua BCNN) 0/32 — KHÔNG phải lỗi engine:
+  cả 32 câu trong kho chưa qua Cửa 1 (`da_duyet=false`)**, đã tự khảo sát ra khi pool rỗng bất thường; engine đã
+  test đúng qua `_diag_ucln_bcnn_test.mjs` (chiều BCNN), chỉ cần đợi câu được duyệt Cửa 1 rồi chạy `--list --dang
+  T106040204` là ra ngay, không cần code thêm gì.
+- Hồi quy 3 file diag cũ (phantich, nthop, ucln_bcnn) sau khi chạy hết — không hỏng gì.
+- **Còn lại khối 6:** Ước/bội & tính chất chia hết (~108 câu, chưa khảo sát) · chia hết nâng cao (~185 câu, chưa
+  khảo sát) · Mô tả tập hợp (45 câu) · Toán thực tế (39 câu) · Dãy luỹ thừa nâng cao (44 câu) · 5 dạng còn lại
+  của nhóm ƯCLN/BCNN (Toán thực tế + 2 số biết ƯCLN/BCNN + tìm số dư) hiện 0 câu trong kho, ngoài phạm vi.
+
+## 2026-09-11 (tiếp 4) — Ước/Bội cơ bản (T106030101/T106040101/T106040201) + khảo sát toàn bộ khối 6 còn lại
+- Khảo sát TOÀN BỘ khối 6 (query `dai_ban_do` join đếm câu đã duyệt/đã có form) để biết chính xác còn thiếu gì —
+  phát hiện 2 dạng tưởng đang thiếu (T106010102 "Quan hệ phần tử/tập hợp", T106020101 "Số La Mã") thực ra ĐÃ LÀ
+  trắc nghiệm gốc trong kho (`lua_chon` có sẵn 100% câu, `dap_an` là chữ A/B/C/D) — KHÔNG thuộc phạm vi pipeline
+  form-tn (vốn chỉ nhận câu `lua_chon is null`), loại khỏi danh sách việc.
+- **Dễ, tự làm — T106030101 "Ước/Bội của số tự nhiên" (41 câu, 6 sub-shape văn bản khác nhau)**: mở DẠNG 7 mới
+  trong mini-dang.mjs (`uocBoiCoBan`) — "Tìm năm bội của N" (= B(N) đoạn [0,5N) mở), "Tìm tất cả ước của N",
+  "N⋮x" (= tất cả ước), "x∈Ư(N)/U(N) và x>K/x≥K", "x∈B(N) và LO≤x≤HI/x<HI" — quy hết về 1 hàm lõi `dsUocBoi`
+  (kind, N, lo, loInc, hi, hiInc) tái dùng `uocCua` đã có ở DẠNG 6. Bug bắt lúc test standalone: regex "x∈Ư(N)
+  và..." fail vì thiếu `\$?` giữa `)` và `và` (kho bọc "$...$" quanh SO SÁNH, không quanh cả câu — giống lỗi đã
+  gặp 2 lần ở DẠNG 6, giờ thành phản xạ kiểm tra ngay). 4 rule R73-R76 (nhầm Ư↔B, nhầm biên đóng/mở, bỏ sót
+  phần tử lớn nhất, lẫn nhầm 1 số liền kề) → 35/41 (85%), 0 FAIL, đã ghi.
+- **Dễ hơn dự kiến — T106040101/201 "Tìm ƯC(a;b)"/"Tìm BC(a;b)"** (30 câu, mẫu đề CỐ ĐỊNH 100% 1 pattern mỗi
+  dạng, ban đầu định xếp vào nhóm "mơ hồ" vì BC có ký hiệu tập VÔ HẠN "0;L;2L;...." nhưng khảo sát kỹ thấy luôn
+  đúng 1 khuôn, không đa dạng) — tự quyết làm luôn. UC(a;b) tái dùng NGUYÊN rule R73-R76 (= Ước của ƯCLN(a;b),
+  mở rộng `ap_dung` của R73-R76 thêm T106040101 qua upsert, không sửa migration cũ). BC(a;b) 4 rule mới R77-R80
+  (nhầm BCNN→ƯCLN, chỉ xét bội 1 số, quên số 0 mở đầu, nhân trực tiếp không rút gọn) — `chuanHoaTapText` tự lọc
+  "...." ra khỏi canon (Number("....")=NaN) nên so khớp đúng/sai không bị ảnh hưởng, chỉ TEXT hiển thị giữ "....".
+  T106040101: 15/15 (100%). T106040201: 15/15 (100%). Cả 2 0 FAIL, đã ghi.
+- Hồi quy 5 file diag cũ sau khi thêm DẠNG 7/8 — không hỏng gì.
+- **Còn lại khối 6, phân loại theo độ khó sau khảo sát kỹ:**
+  - *Khó/mơ hồ, cần bàn với Thùy trước khi code* (đọc lời giải thấy KHÔNG đơn giản như tưởng ban đầu):
+    1. T106030401 "Tìm n để an+b ⋮ cn+d" (139 câu, LỚN NHẤT còn lại) — 9 khuôn văn bản khác hẳn nhau (hệ số a,c
+       có thể ≠1, dấu +/-), cần biến đổi đại số (nhân chéo rồi trừ) MỖI khuôn ra 1 công thức riêng mới quy về
+       "N ⋮ (cn+d)" — rủi ro bug đại số cao, giống ca "tích bằng 0" 09/09 từng phải dừng lại hỏi trước.
+    2. T106020601 "Dãy luỹ thừa cơ số cùng dấu" (44 câu) — TRỘN ít nhất 3 kiểu đáp số khác hẳn: công thức tổng
+       hình học đóng (vd `(3^101-1)/2`), tổng ĐAN DẤU (+,-,+,-... công thức khác), và "biết kC+m=b^m, tìm m"
+       (giải NGƯỢC ra số mũ — đáp số là 1 số nguyên, không phải công thức). ~30 khuôn văn bản khác nhau, nhiều
+       khuôn chỉ có 1 mẫu — không đủ dữ liệu để tự tin thiết kế rule mà không bàn trước.
+    3. T106030102 "Tính chất chia hết của tổng/hiệu/tích" (67 câu) và T106030403 "Chia hết dãy tổng luỹ thừa"
+       (26 câu) — đáp số kho là **"Có"/"Không"** (dạng chứng minh Đúng/Sai), không phải giá trị hay tập số. 4
+       đáp án trắc nghiệm không có "kết quả tính sai" tự nhiên để làm distractor kiểu cũ — cần THIẾT KẾ HÌNH
+       THỨC MỚI (vd 4 mệnh đề Đúng/Sai, hoặc 4 lý do lập luận) trước khi code, đúng loại "hình dạng câu hỏi
+       chưa rõ" phải hỏi theo quy trình 09/09.
+  - *Không có câu / ngoài phạm vi:* nhóm dạng con còn lại của ƯCLN-BCNN (0 câu), T106030402 (20 câu, 0 câu qua
+    Cửa 1 — cùng tình trạng T106040204), Dấu hiệu chia hết 2/5/3/9 (0 câu), Tìm tất cả ước 1 số kiểu khác (0 câu).
+  - Toán thực tế (T106020304, 39 câu) — đã xác định từ trước (12/09 sáng) thuộc nhóm "trắc nghiệm từng phần",
+    kiến trúc chưa thiết kế, KHÔNG lặp lại khảo sát.
+
+## 2026-09-12 — Thùy chốt: T106030401, T106020601, T106030102+T106030403 đều thuộc "trắc nghiệm từng phần"
+- Đưa 3 dạng khó/mơ hồ (đã khảo sát kỹ 11/09 tối) ra hỏi Thùy: T106030401 (139 câu, 9 khuôn đại số "an+b⋮cn+d"),
+  T106020601 (44 câu, trộn 3 kiểu đáp số công thức/đan dấu/giải-ngược-số-mũ), T106030102+T106030403 (93 câu,
+  đáp số "Có"/"Không" kiểu chứng minh). **Thùy chốt cả 3 đều là "trắc nghiệm từng phần"** — cùng nhóm với
+  GTLN-GTNN/toán nâng cao đã deferred từ trước (khối 7, phiên đầu ngày 11/09) và Toán thực tế T106020304 —
+  KHÔNG làm theo khuôn "4 đáp án nguyên câu" hiện tại, chờ thiết kế kiến trúc "trắc nghiệm từng phần" (lời giải
+  chi tiết tách nhiều bước, mỗi bước 1 câu hỏi/4 đáp án — gần giống spec-dien-o.md "Form ĐIỀN Ô" nhưng có thể
+  không hẳn giống, CHƯA thiết kế cụ thể).
+- **Danh sách dạng đang chờ kiến trúc "trắc nghiệm từng phần" (cộng dồn, KHÔNG khảo sát lại mỗi lần)：**
+  khối 7: GTLN-GTNN + bài nâng cao đề cập từ 11/09 sáng. khối 6: T106020304 (Toán thực tế, 39 câu), T106030401
+  (139 câu), T106020601 (44 câu), T106030102 (67 câu), T106030403 (26 câu). Tổng ~315+ câu khối 6 riêng nhóm
+  này — SẼ CÒN TĂNG khi khảo sát các dạng còn lại (Mô tả tập hợp T106010103 44 câu chưa khảo sát kỹ, có thể
+  cũng rơi vào nhóm này).
+- Việc còn lại khối 6 CHƯA thuộc nhóm trắc nghiệm-từng-phần và CHƯA khảo sát: T106010103 (Mô tả tập hợp, 44
+  câu — cần khảo sát trước khi xếp loại).
+
+## 2026-09-12 (tiếp) — T106010103 "Tổng các phần tử {x<K}" + kết luận khảo sát khối 6
+- Khảo sát T106010103 (Mô tả tập hợp, 44 câu) để xếp loại: 34/45 câu **ĐÃ LÀ trắc nghiệm gốc** (`lua_chon` có
+  sẵn), chỉ 11 câu tự luận thật, chia 3 kiểu — "viết tập hợp bằng liệt kê" (3 câu, đáp số "M = {0;2;4;...}" có
+  tiền tố tên biến, không khớp `parseHuuTi`), "viết tập hợp bằng tính đặc trưng" (3 câu, đáp số là 1 CÔNG THỨC
+  mở dạng "$A=\{x∈ℕ|x⋮3;x≤18\}$" — về bản chất KHÔNG DUY NHẤT, "x=3k,k≤6" cũng đúng — không hợp so khớp tự động),
+  "Tổng các phần tử của A" (4 câu, đáp số là SỐ). Chỉ làm nhóm cuối (4 câu, quá nhỏ để hỏi Thùy, tự quyết bỏ
+  qua 7 câu kia — không đáng thiết kế riêng cho 6 câu 2 kiểu khác nhau).
+  DẠNG 9 mới (`tongTapHopNhoHon`, SPECIAL_DANG) — A={x∈ℕ|x<K}, tổng=K(K−1)/2. 4 rule R81-84 (quên x<K nghiêm
+  ngặt cộng thêm K, công thức Gauss quên chia đôi, cộng thiếu phần tử lớn nhất, nhầm đếm-số-phần-tử với
+  tính-tổng). Bug bắt lúc test: R81 (dung+K) và bản R82 gốc (K(K+1)/2) LUÔN CÙNG GIÁ TRỊ (toán học: K(K−1)/2+K
+  ≡ K(K+1)/2) — sửa R82 thành "công thức Gauss quên chia đôi" (K(K−1), giá trị khác hẳn). 3/4 ghi được (1 bỏ,
+  K=3 trùng ngẫu nhiên R81=R82 do đặc thù số nhỏ, còn 2 rule < 3 cần thiết — chấp nhận).
+- **Kết luận khảo sát khối 6 (đã đi hết các dạng có câu đã duyệt):** hoàn tất mọi dạng "dễ" tìm được. Còn lại
+  100% thuộc nhóm "trắc nghiệm từng phần" (Thùy chốt 12/09 sáng, xem mục trên) hoặc 0 câu/ngoài phạm vi. KHÔNG
+  còn dạng khối 6 nào "dễ, tự làm được ngay" theo khuôn hiện tại — bước tiếp theo BẮT BUỘC phải thiết kế kiến
+  trúc "trắc nghiệm từng phần" trước (việc lớn, cần bàn kỹ với Thùy, không phải việc tự quyết được).

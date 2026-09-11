@@ -12,7 +12,7 @@
 // Hình thức: đáp án đúng phải có ≥1 distractor CÙNG kiểu (nguyên/phân số/tập); kiểu khác được phép (xem verify).
 import { readFileSync, writeFileSync } from 'node:fs'
 import { parseHuuTi } from './lib/huuti.mjs'
-import { tinhTuanHoan, layTron, soSanhTimXY, phanTichNguyenTo, chuanHoaFactorText, evalFactorText, nhanBietNguyenToHopSo, chuanHoaTapText, evalTapText } from './lib/mini-dang.mjs'
+import { tinhTuanHoan, layTron, soSanhTimXY, phanTichNguyenTo, chuanHoaFactorText, evalFactorText, nhanBietNguyenToHopSo, chuanHoaTapText, evalTapText, uclnBcnnDinhNghia, tapUcBc, uocBoiCoBan, ucBcCoBan, tongTapHopNhoHon } from './lib/mini-dang.mjs'
 
 // ── Rat (BigInt) ──────────────────────────────────────────────────────────────────────────────────────────────
 const gcd = (a, b) => { a = a < 0n ? -a : a; b = b < 0n ? -b : b; while (b) { [a, b] = [b, a % b] } return a }
@@ -581,6 +581,18 @@ const DS = {
   R57: 'nhận biết nguyên tố/hợp số: nhầm 0 hoặc 1 vào danh sách', R58: 'nhận biết nguyên tố/hợp số: lẫn 1 số thuộc nhóm ngược lại vào danh sách',
   R59: 'nhận biết nguyên tố/hợp số: bỏ sót 1 số đúng trong danh sách', R60: 'nhận biết nguyên tố/hợp số: đổi chỗ 1 số đúng bằng 1 số sai',
   R61: 'nhận biết nguyên tố/hợp số: liệt kê tuốt cả danh sách đề bài, không lọc',
+  R62: 'ƯCLN/BCNN: nhầm ƯCLN thành BCNN (hoặc ngược lại)', R63: 'ƯCLN/BCNN: sai quy tắc số mũ ở thừa số chung',
+  R64: 'ƯCLN/BCNN: bỏ sót 1 thừa số khi nhân lại', R65: 'ƯCLN/BCNN: nhân trực tiếp các số, không rút gọn (chỉ BCNN)',
+  R66: 'ƯCLN/BCNN (tập theo khoảng): sai ƯCLN/BCNN gốc rồi liệt kê lại', R67: 'ƯCLN/BCNN (tập theo khoảng): nhầm khoảng mở thành đóng',
+  R68: 'ƯCLN/BCNN (tập theo khoảng): bỏ sót 1 phần tử đúng', R69: 'ƯCLN/BCNN (tập theo khoảng): quên điều kiện/chỉ xét 1 phần',
+  R70: 'ƯCLN/BCNN: tính nhầm bằng hiệu 2 số (a−b)', R71: 'ƯCLN/BCNN: lấy nhầm ước/bội chung nhỏ nhất/đầu tiên (1 hoặc 0)',
+  R72: 'ƯCLN/BCNN (tập theo khoảng): nhầm sang tìm 1 số duy nhất thay vì liệt kê cả tập',
+  R73: 'Ước/Bội: nhầm Ước thành Bội (hoặc ngược lại)', R74: 'Ước/Bội: nhầm biên đóng/mở của khoảng',
+  R75: 'Ước/Bội: bỏ sót phần tử lớn nhất', R76: 'Ước/Bội: lẫn nhầm 1 số liền kề không phải ước/bội thật',
+  R77: 'ƯC/BC: nhầm BCNN thành ƯCLN', R78: 'ƯC/BC: chỉ liệt kê bội của 1 trong 2 số',
+  R79: 'ƯC/BC: quên số 0, bắt đầu liệt kê từ chính BCNN', R80: 'ƯC/BC: nhân trực tiếp 2 số làm BCNN',
+  R81: 'Tổng tập {x<K}: quên x<K nghiêm ngặt, cộng luôn cả K', R82: 'Tổng tập {x<K}: dùng công thức Gauss nhưng quên chia đôi',
+  R83: 'Tổng tập {x<K}: cộng thiếu phần tử lớn nhất', R84: 'Tổng tập {x<K}: nhầm đếm số phần tử với tính tổng',
 }
 const UU_TIEN = {
   T107010201: ['R06', 'R26', 'R07', 'R04', 'R10'], T107010202: ['R10', 'R08', 'R27', 'R11', 'R26', 'R09', 'R06'], T107010203: ['R19', 'R20', 'R06', 'R26', 'R08', 'R10', 'R04'],
@@ -602,6 +614,14 @@ const UU_TIEN = {
   T106020503: ['R19', 'R20', 'R01', 'R36', 'R37', 'R22', 'R16'], // Tìm x biểu thức chứa ngoặc (có câu số mũ chứa x, luỹ thừa lẻ)
   T106030302: ['R53', 'R54', 'R55', 'R56'], // Phân tích thừa số nguyên tố (ĐẶC BIỆT — đáp số là biểu thức, xem TEXT_DANG)
   T106030301: ['R57', 'R58', 'R59', 'R60', 'R61'], // Nhận biết nguyên tố/hợp số (ĐẶC BIỆT — đáp số là tập hợp số, xem TEXT_DANG)
+  T106040102: ['R62', 'R63', 'R64', 'R70', 'R71'], // Tìm ƯCLN (định nghĩa/phân tích, 2 hoặc 3 số) — ĐẶC BIỆT, xem SPECIAL_DANG
+  T106040202: ['R62', 'R63', 'R64', 'R65', 'R70', 'R71'], // Tìm BCNN (định nghĩa/phân tích, 2 hoặc 3 số) — ĐẶC BIỆT, xem SPECIAL_DANG
+  T106040104: ['R62', 'R63', 'R64', 'R70', 'R71', 'R68', 'R69', 'R72', 'R66', 'R67'], // Tìm n lớn nhất / n<C / C<n<D qua ƯCLN — ĐẶC BIỆT, xem TEXT_DANG
+  T106040204: ['R62', 'R63', 'R64', 'R65', 'R70', 'R71', 'R68', 'R69', 'R72', 'R66', 'R67'], // Tìm n nhỏ nhất / D<n<E qua BCNN — ĐẶC BIỆT, xem TEXT_DANG
+  T106030101: ['R73', 'R75', 'R76', 'R74'], // Ước/Bội cơ bản của 1 số — ĐẶC BIỆT, xem TEXT_DANG
+  T106040101: ['R73', 'R75', 'R76', 'R74'], // Tìm ƯC(a;b) — ĐẶC BIỆT, xem TEXT_DANG
+  T106040201: ['R77', 'R78', 'R80', 'R79'], // Tìm BC(a;b) — ĐẶC BIỆT, xem TEXT_DANG
+  T106010103: ['R81', 'R82', 'R83', 'R84'], // Tổng các phần tử của {x<K} — ĐẶC BIỆT, xem SPECIAL_DANG
   // Pool 2A (08/09 tiếp — spec-mcq-form.md khảo sát, mở rộng engine với √/|…|):
   '07702202202': ['R29', 'R28', 'R16', 'R03', 'R14', 'R08', 'R04', 'R10', 'R11'], // Thực hiện phép tính Căn bậc hai
   '077022022203': ['R36', 'R37', 'R33', 'R32', 'R34', 'R35', 'R28', 'R19', 'R20', 'R16', 'R11', 'R06', 'R10'], // Tìm x liên quan Căn bậc hai (nhiều câu là tích=0, vài câu x ở số mũ)
@@ -611,18 +631,23 @@ const UU_TIEN = {
   '07702220320302': ['R30', 'R29', 'R28', 'R16', 'R03', 'R18', 'R08', 'R10', 'R04'], // Thực hiện phép tính GTTĐ
   '07702220320320303': ['R21', 'R31', 'R19', 'R20', 'R11', 'R06', 'R10', 'R04'], // Tìm x liên quan GTTĐ
 }
-const ALL = ['R01', 'R02', 'R03', 'R06', 'R07', 'R08', 'R09', 'R10', 'R11', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18', 'R19', 'R20', 'R21', 'R22', 'R23', 'R26', 'R27', 'R28', 'R29', 'R30', 'R31', 'R32', 'R33', 'R34', 'R35', 'R36', 'R37', 'R38', 'R39', 'R40', 'R42', 'R43', 'R44', 'R45', 'R46', 'R47', 'R48', 'R49', 'R50', 'R51', 'R52', 'R53', 'R54', 'R55', 'R56', 'R57', 'R58', 'R59', 'R60', 'R61', 'R04', 'R24', 'R05']
+const ALL = ['R01', 'R02', 'R03', 'R06', 'R07', 'R08', 'R09', 'R10', 'R11', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18', 'R19', 'R20', 'R21', 'R22', 'R23', 'R26', 'R27', 'R28', 'R29', 'R30', 'R31', 'R32', 'R33', 'R34', 'R35', 'R36', 'R37', 'R38', 'R39', 'R40', 'R42', 'R43', 'R44', 'R45', 'R46', 'R47', 'R48', 'R49', 'R50', 'R51', 'R52', 'R53', 'R54', 'R55', 'R56', 'R57', 'R58', 'R59', 'R60', 'R61', 'R62', 'R63', 'R64', 'R65', 'R66', 'R67', 'R68', 'R69', 'R70', 'R71', 'R72', 'R73', 'R74', 'R75', 'R76', 'R77', 'R78', 'R79', 'R80', 'R81', 'R82', 'R83', 'R84', 'R04', 'R24', 'R05']
 // Dạng có KHUÔN VĂN BẢN riêng, không phải biểu thức LaTeX chung — mini-solver ở lib/mini-dang.mjs, KHÔNG qua
 // mathOf/parse/AST. Mỗi hàm nhận (noiDung, rule) → {value, text?, ds?} | null (rule=null ⇒ đáp số đúng).
-const SPECIAL_DANG = { '07702011103': tinhTuanHoan, '0770201102': layTron, T107010103: soSanhTimXY }
+const SPECIAL_DANG = { '07702011103': tinhTuanHoan, '0770201102': layTron, T107010103: soSanhTimXY, T106040102: uclnBcnnDinhNghia, T106040202: uclnBcnnDinhNghia, T106010103: tongTapHopNhoHon }
 // Dạng ĐÁP SỐ LÀ BIỂU THỨC/TẬP HỢP (không phải 1 giá trị hữu tỉ) — so khớp bằng TEXT chuẩn hoá, KHÔNG qua
 // Rat/canonOf (xem mini-dang.mjs: R54 của DẠNG 4 cố ý giữ nguyên giá trị số nhưng sai hình thức, so giá trị sẽ
 // coi là trùng đáp án đúng). Mỗi dạng có 1 cặp {canon, val} hàm chuẩn hoá/kiểm riêng — KHÔNG dùng chung 1 cặp
 // cho mọi dạng vì cú pháp đáp số khác hẳn nhau (biểu thức \cdot vs danh sách "; ").
-const TEXT_DANG = { T106030302: phanTichNguyenTo, T106030301: nhanBietNguyenToHopSo }
+const TEXT_DANG = { T106030302: phanTichNguyenTo, T106030301: nhanBietNguyenToHopSo, T106040104: tapUcBc, T106040204: tapUcBc, T106030101: uocBoiCoBan, T106040101: ucBcCoBan, T106040201: ucBcCoBan }
 const TEXT_FN = {
   T106030302: { canon: chuanHoaFactorText, val: evalFactorText },
   T106030301: { canon: chuanHoaTapText, val: evalTapText },
+  T106040104: { canon: chuanHoaTapText, val: evalTapText },
+  T106040204: { canon: chuanHoaTapText, val: evalTapText },
+  T106030101: { canon: chuanHoaTapText, val: evalTapText },
+  T106040101: { canon: chuanHoaTapText, val: evalTapText },
+  T106040201: { canon: chuanHoaTapText, val: evalTapText },
 }
 // Dạng khối 6 số tự nhiên: dấu CHẤM giữa 2 số là phép NHÂN (không phải thập phân) — khớp whitelist kho-quet-dapso.mjs.
 const CHAM_LA_NHAN = new Set(['T106020201', 'T106020202', 'T106020203', 'T106020301', 'T106020302', 'T106020303', 'T106020401', 'T106020402', 'T106020403', 'T106020501', 'T106020503'])

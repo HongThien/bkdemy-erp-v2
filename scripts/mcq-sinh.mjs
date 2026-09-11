@@ -34,10 +34,15 @@ const POOL3 = ['T106020202', 'T106020203', 'T106020301', 'T106020302', 'T1060203
 // Dạng ĐÁP SỐ LÀ BIỂU THỨC/TẬP HỢP (không phải 1 giá trị hữu tỉ) — parseHuuTi luôn fail, phải so bằng TEXT chuẩn
 // hoá (xem mini-dang.mjs `phanTichNguyenTo`/`nhanBietNguyenToHopSo`). Mỗi dạng 1 cặp {canon, val} riêng vì cú
 // pháp đáp số khác nhau (biểu thức \cdot vs danh sách "; ").
-const TEXT_DANG = new Set(['T106030302', 'T106030301'])
+const TEXT_DANG = new Set(['T106030302', 'T106030301', 'T106040104', 'T106040204', 'T106030101', 'T106040101', 'T106040201'])
 const TEXT_FN = {
   T106030302: { canon: chuanHoaFactorText, val: evalFactorText },
   T106030301: { canon: chuanHoaTapText, val: evalTapText },
+  T106040104: { canon: chuanHoaTapText, val: evalTapText },
+  T106040204: { canon: chuanHoaTapText, val: evalTapText },
+  T106030101: { canon: chuanHoaTapText, val: evalTapText },
+  T106040101: { canon: chuanHoaTapText, val: evalTapText },
+  T106040201: { canon: chuanHoaTapText, val: evalTapText },
 }
 const TBL = 'dai_cau_form_tn'
 const LETTERS = ['A', 'B', 'C', 'D']

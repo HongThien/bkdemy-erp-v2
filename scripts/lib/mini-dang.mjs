@@ -289,3 +289,289 @@ export function nhanBietNguyenToHopSo(noiDung, rule) {
   }
   return null
 }
+
+// ── DẠNG 6: ƯCLN/BCNN (T106040102/202 — 1 giá trị; T106040104/204 — trộn 1 giá trị + tập ước/bội trong khoảng) ──
+// T106040102/202 luôn ra 1 SỐ (đi qua SPECIAL_DANG/parseHuuTi như thường). T106040104/204 trộn 2 kiểu đề trong
+// CÙNG 1 dạng: "n lớn nhất/nhỏ nhất" → 1 số; "n biết ... và n<C / C<n<D" → TẬP ước/bội thoả khoảng — vì 1 dạng chỉ
+// dispatch qua 1 nhánh (TEXT_DANG hoặc SPECIAL_DANG), dùng TEXT_DANG cho cả 2 (1 số = tập 1 phần tử, vẫn hợp lệ
+// qua chuanHoaTapText). T106040104 luôn chiều ƯCLN (n | A, n | B), T106040204 luôn chiều BCNN (A | n, B | n, C | n).
+function gcdLcmFactor(nums, op) { // nums: BigInt[] → { value, factors:[[p,e],...] tăng dần theo prime }
+  const facts = nums.map((n) => new Map(phanTichThat(n)))
+  const primes = [...new Set(facts.flatMap((f) => [...f.keys()]))].sort((a, b) => (a < b ? -1 : 1))
+  const factors = []
+  for (const p of primes) {
+    const es = facts.map((f) => Number(f.get(p) ?? 0))
+    const e = op === 'ucln' ? Math.min(...es) : Math.max(...es)
+    if (e > 0) factors.push([p, e])
+  }
+  let value = 1n; for (const [p, e] of factors) for (let k = 0; k < e; k++) value *= p
+  return { value, factors }
+}
+function uocCua(n) { // BigInt n>0 → mọi ước, tăng dần
+  const out = []
+  for (let i = 1n; i * i <= n; i++) { if (n % i === 0n) { out.push(i); if (i !== n / i) out.push(n / i) } }
+  return out.sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
+}
+function boiTrongKhoang(n, lo, hi) { // bội dương của n (BigInt, n>0) trong khoảng MỞ (lo,hi)
+  const out = []; for (let v = n; v < hi; v += n) if (v > lo) out.push(v); return out
+}
+// R62-R65: rule cho câu ĐÁP SỐ = 1 GIÁ TRỊ (T106040102/202, và sub-shape "lớn nhất/nhỏ nhất" của 104/204).
+function uclnBcnnRule(op, nums, trueValue, trueFactors, rule) {
+  if (rule === 'R62') { // nhầm ƯCLN <-> BCNN — tính ngược khái niệm
+    const opp = op === 'ucln' ? 'bcnn' : 'ucln'
+    const { value } = gcdLcmFactor(nums, opp)
+    if (value === trueValue || value <= 0n) return null
+    return { value, ds: `nhầm ${op === 'ucln' ? 'ƯCLN' : 'BCNN'} thành ${op === 'ucln' ? 'BCNN' : 'ƯCLN'} — tính ngược khái niệm` }
+  }
+  if (rule === 'R63') { // sai quy tắc số mũ ở thừa số CHUNG (ƯCLN: lấy max thay vì min; BCNN: lấy min thay vì max)
+    const facts = nums.map((n) => new Map(phanTichThat(n)))
+    const primesAll = [...new Set(facts.flatMap((f) => [...f.keys()]))]
+    const common = primesAll.filter((p) => facts.every((f) => (f.get(p) ?? 0) > 0))
+    if (!common.length) return null
+    let v = 1n
+    if (op === 'ucln') { for (const p of common) { const e = Math.max(...facts.map((f) => Number(f.get(p)))); for (let k = 0; k < e; k++) v *= p } }
+    else { for (const p of primesAll) { const es = facts.map((f) => Number(f.get(p) ?? 0)); const isCommon = es.every((e) => e > 0); const e = isCommon ? Math.min(...es) : Math.max(...es); if (e > 0) for (let k = 0; k < e; k++) v *= p } }
+    if (v === trueValue || v <= 0n) return null
+    return { value: v, ds: op === 'ucln' ? 'lấy số mũ LỚN NHẤT thay vì nhỏ nhất ở thừa số chung' : 'lấy số mũ NHỎ NHẤT thay vì lớn nhất ở thừa số chung' }
+  }
+  if (rule === 'R64') { // bỏ sót 1 thừa số (lớn nhất) khi nhân lại
+    if (trueFactors.length < 2) return null
+    const [pBo, eBo] = trueFactors[trueFactors.length - 1]
+    let v = 1n; for (const [p, e] of trueFactors.slice(0, -1)) for (let k = 0; k < e; k++) v *= p
+    if (v === trueValue || v <= 0n) return null
+    return { value: v, ds: `bỏ sót thừa số ${pBo}${eBo > 1 ? `^${eBo}` : ''} khi nhân lại` }
+  }
+  if (rule === 'R65') { // BCNN: nhân trực tiếp các số với nhau, không rút gọn theo ước chung
+    if (op !== 'bcnn') return null
+    let v = 1n; for (const n of nums) v *= n
+    if (v === trueValue) return null
+    return { value: v, ds: 'nhân trực tiếp các số với nhau, không rút gọn theo ước chung' }
+  }
+  if (rule === 'R70') { // tính nhầm bằng hiệu 2 số — chỉ áp dụng câu 2 số (cứu các câu ƯCLN/BCNN chỉ có 1 thừa số chung)
+    if (nums.length !== 2) return null
+    const v = nums[0] > nums[1] ? nums[0] - nums[1] : nums[1] - nums[0]
+    if (v === trueValue || v <= 0n) return null
+    return { value: v, ds: 'tính nhầm bằng hiệu 2 số (a−b) thay vì phân tích thừa số nguyên tố' }
+  }
+  if (rule === 'R71') { // rule dự phòng: ƯCLN lấy nhầm ước chung nhỏ nhất (=1); BCNN lấy nhầm bội chung đầu liệt kê (=0)
+    if (op === 'ucln') { if (trueValue === 1n) return null; return { value: 1n, ds: 'lấy nhầm ước chung NHỎ NHẤT (luôn bằng 1) thay vì lớn nhất' } }
+    return { value: 0n, ds: 'lấy nhầm bội chung ĐẦU TIÊN khi liệt kê (0) thay vì bội chung nhỏ nhất khác 0' }
+  }
+  return null
+}
+function giaiDonGia(op, nums, rule) {
+  const { value, factors } = gcdLcmFactor(nums, op)
+  if (value <= 0n) return null
+  if (!rule) return { text: value.toString() }
+  const r = uclnBcnnRule(op, nums, value, factors, rule)
+  return r ? { text: r.value.toString(), ds: r.ds } : null
+}
+// R66-R69: rule cho câu ĐÁP SỐ = TẬP ước/bội thoả khoảng (sub-shape "n<C"/"C<n<D" của 104/204).
+function giaiTapKhoang(op, nums, lo, hi, rule) {
+  const { value: coreVal } = gcdLcmFactor(nums, op)
+  if (coreVal <= 0n) return null
+  const dungArr = op === 'ucln' ? uocCua(coreVal).filter((v) => v > lo && v < hi) : boiTrongKhoang(coreVal, lo, hi)
+  if (!dungArr.length) return null
+  const dungText = dungArr.join('; ')
+  if (!rule) return { text: dungText }
+  if (rule === 'R66') { // sai ƯCLN/BCNN gốc (đảo khái niệm) rồi liệt kê lại theo khoảng
+    const oppOp = op === 'ucln' ? 'bcnn' : 'ucln'
+    const { value: wrongVal } = gcdLcmFactor(nums, oppOp)
+    if (wrongVal <= 0n || wrongVal === coreVal) return null
+    const wrongArr = oppOp === 'ucln' ? uocCua(wrongVal).filter((v) => v > lo && v < hi) : boiTrongKhoang(wrongVal, lo, hi)
+    if (!wrongArr.length) return null
+    const t = wrongArr.join('; '); if (t === dungText) return null
+    return { text: t, ds: `nhầm ${op === 'ucln' ? 'ƯCLN' : 'BCNN'} thành ${op === 'ucln' ? 'BCNN' : 'ƯCLN'} rồi liệt kê theo khoảng` }
+  }
+  if (rule === 'R67') { // nhầm khoảng MỞ thành ĐÓNG — lấy thêm số ở biên nếu biên đúng là ước/bội thật
+    const extra = []
+    const laUocBoi = (x) => (op === 'ucln' ? (x > 0n && coreVal % x === 0n) : (x > 0n && x % coreVal === 0n))
+    if (laUocBoi(lo) && !dungArr.includes(lo)) extra.push(lo)
+    if (laUocBoi(hi) && !dungArr.includes(hi)) extra.push(hi)
+    if (!extra.length) return null
+    const t = [...dungArr, ...extra].sort((a, b) => (a < b ? -1 : 1)).join('; ')
+    return { text: t, ds: `nhầm khoảng mở thành đóng — lấy thêm ${extra.join(', ')} ở biên` }
+  }
+  if (rule === 'R68') { // bỏ sót 1 phần tử đúng (phần tử lớn nhất trong khoảng)
+    if (dungArr.length < 2) return null
+    return { text: dungArr.slice(0, -1).join('; '), ds: `bỏ sót ${dungArr[dungArr.length - 1]}, liệt kê thiếu` }
+  }
+  if (rule === 'R69') { // quên áp điều kiện khoảng / quên xét đủ điều kiện chia hết
+    if (op === 'ucln') {
+      const t = uocCua(coreVal).join('; '); if (t === dungText) return null
+      return { text: t, ds: 'tìm đúng ƯC nhưng quên lọc theo điều kiện khoảng của đề, liệt kê hết' }
+    }
+    if (nums.length < 3) return null // bỏ bớt 1 số cần đủ ≥3 số mới còn ý nghĩa (câu 2 số dùng R66/R67/R68 là đủ)
+    const bo = nums[nums.length - 1]
+    const { value: wrongVal } = gcdLcmFactor(nums.slice(0, -1), 'bcnn'); if (wrongVal <= 0n) return null
+    const wrongArr = boiTrongKhoang(wrongVal, lo, hi); if (!wrongArr.length || wrongArr.length > 6) return null
+    const t = wrongArr.join('; '); if (t === dungText) return null
+    return { text: t, ds: `quên điều kiện chia hết cho ${bo}, chỉ xét BCNN của các số còn lại` }
+  }
+  if (rule === 'R72') { // nhầm sang kiểu "tìm 1 số duy nhất" (lớn nhất/nhỏ nhất) thay vì liệt kê CẢ tập thoả khoảng
+    if (dungArr.length < 2) return null
+    const one = op === 'ucln' ? dungArr[dungArr.length - 1] : dungArr[0]
+    return { text: one.toString(), ds: `nhầm bài toán "liệt kê cả tập thoả khoảng" thành "tìm 1 số duy nhất" — chỉ chọn 1 phần tử` }
+  }
+  return null
+}
+export function uclnBcnnDinhNghia(noiDung, rule) { // T106040102/202: "Tìm UCLN/BCNN bằng định nghĩa/phân tích... của A[; B] và C."
+  const m = String(noiDung).match(/(UCLN|BCNN)\s+bằng[^.]*?của\s+(.+?)\.\s*$/)
+  if (!m) return null
+  const op = m[1] === 'UCLN' ? 'ucln' : 'bcnn'
+  const nums = [...m[2].matchAll(/\d+/g)].map((x) => BigInt(x[0]))
+  if (nums.length < 2) return null
+  const { value, factors } = gcdLcmFactor(nums, op)
+  if (value <= 0n) return null
+  if (!rule) return { value: R(value) }
+  const r = uclnBcnnRule(op, nums, value, factors, rule)
+  return r ? { value: R(r.value), ds: r.ds } : null
+}
+export function tapUcBc(noiDung, rule) { // T106040104/T106040204 — trộn "n lớn nhất/nhỏ nhất" (1 số) + "n<C"/"C<n<D" (tập)
+  const nd = String(noiDung)
+  let m = nd.match(/n\$?\s+lớn nhất sao cho\s+(.+?)\.\s*$/)
+  if (m) { const nums = [...m[1].matchAll(/\d+/g)].map((x) => BigInt(x[0])); return nums.length >= 2 ? giaiDonGia('ucln', nums, rule) : null }
+  m = nd.match(/n\$?\s+nhỏ nhất khác\s+\$?0\$?\s+biết rằng\s+(.+?)\.\s*$/)
+  if (m) { const nums = [...m[1].matchAll(/\d+/g)].map((x) => BigInt(x[0])); return nums.length >= 2 ? giaiDonGia('bcnn', nums, rule) : null }
+  m = nd.match(/n\$?\s+biết rằng\s+(.+?)\s+và\s+\$?n\s*<\s*(\d+)\$?\.\s*$/)
+  if (m && /\\vdots\s*n/.test(m[1])) {
+    const nums = [...m[1].matchAll(/\d+/g)].map((x) => BigInt(x[0]))
+    return nums.length >= 2 ? giaiTapKhoang('ucln', nums, 0n, BigInt(m[2]), rule) : null
+  }
+  m = nd.match(/n\$?\s+biết rằng\s+(.+?)\s+và\s+\$?(\d+)\s*<\s*n\s*<\s*(\d+)\$?\.\s*$/)
+  if (m) {
+    const nums = [...m[1].matchAll(/\d+/g)].map((x) => BigInt(x[0]))
+    if (nums.length < 2) return null
+    if (/\\vdots\s*n/.test(m[1])) return giaiTapKhoang('ucln', nums, BigInt(m[2]), BigInt(m[3]), rule)
+    if (/n\s*:/.test(m[1])) return giaiTapKhoang('bcnn', nums, BigInt(m[2]), BigInt(m[3]), rule)
+  }
+  return null
+}
+
+// ── DẠNG 7: Ước/Bội cơ bản của 1 SỐ (T106030101) — "5 bội đầu" / "tất cả ước" / "ước hoặc bội thoả khoảng" ────
+// Đáp số luôn là TẬP (kể cả "tất cả ước" — dùng chung khuôn chuanHoaTapText). Không cần gcd/lcm 2 số như DẠNG 6
+// — chỉ 1 số N, nhưng cùng nhóm ước/bội nên tái dùng `uocCua` đã có.
+function dsUocBoi(kind, N, lo, loInc, hi, hiInc) { // kind: 'uoc'|'boi'; lo/hi=null nghĩa là không chặn phía đó
+  if (kind === 'uoc') return uocCua(N).filter((x) => (lo == null || (loInc ? x >= lo : x > lo)) && (hi == null || (hiInc ? x <= hi : x < hi)))
+  const out = []
+  for (let v = 0n; out.length < 200; v += N) {
+    if (hi != null && (hiInc ? v > hi : v >= hi)) break
+    if (lo == null || (loInc ? v >= lo : v > lo)) out.push(v)
+  }
+  return out
+}
+function ruleUocBoi(kind, N, lo, loInc, hi, hiInc, dungArr, rule) {
+  const dungText = dungArr.join('; ')
+  if (rule === 'R73') { // nhầm Ước <-> Bội (giữ cùng điều kiện khoảng; ước không hi tường minh thì lấy N làm mốc)
+    const kind2 = kind === 'uoc' ? 'boi' : 'uoc'
+    const arr = dsUocBoi(kind2, N, lo, lo == null ? true : loInc, hi ?? N, hi == null ? true : hiInc)
+    if (!arr.length) return null
+    const t = arr.join('; '); if (t === dungText) return null
+    return { text: t, ds: `nhầm ${kind === 'uoc' ? 'Ước' : 'Bội'} thành ${kind === 'uoc' ? 'Bội' : 'Ước'} của ${N}` }
+  }
+  if (rule === 'R74') { // nhầm biên đóng/mở của khoảng
+    if (lo == null && hi == null) return null
+    const arr = dsUocBoi(kind, N, lo, lo == null ? true : !loInc, hi, hi == null ? true : !hiInc)
+    const t = arr.join('; '); if (!arr.length || t === dungText) return null
+    return { text: t, ds: 'nhầm biên đóng/mở của khoảng — lấy thừa hoặc thiếu 1 số ở biên' }
+  }
+  if (rule === 'R75') { // bỏ sót phần tử lớn nhất
+    if (dungArr.length < 2) return null
+    return { text: dungArr.slice(0, -1).join('; '), ds: `bỏ sót ${dungArr[dungArr.length - 1]}, liệt kê thiếu` }
+  }
+  if (rule === 'R76') { // lẫn nhầm 1 số liền kề không phải ước/bội thật vào danh sách
+    if (!dungArr.length) return null
+    const last = dungArr[dungArr.length - 1]
+    const w = last + 1n
+    if (kind === 'uoc' && N % w === 0n) return null
+    return { text: [...dungArr, w].join('; '), ds: `lẫn nhầm ${w} vào danh sách — không phải ${kind === 'uoc' ? 'ước' : 'bội'} thật của ${N}` }
+  }
+  return null
+}
+export function uocBoiCoBan(noiDung, rule) {
+  const nd = String(noiDung)
+  let kind, N, lo = null, loInc = true, hi = null, hiInc = true
+  let m = nd.match(/Tìm năm bội của\s*\$?(\d+)\$?\.?\s*$/)
+  if (m) { kind = 'boi'; N = BigInt(m[1]); lo = 0n; loInc = true; hi = 5n * N; hiInc = false }
+  else {
+    m = nd.match(/Tìm tất cả các ước của\s*\$?(\d+)\$?\.?\s*$/)
+    if (m) { kind = 'uoc'; N = BigInt(m[1]) }
+    else {
+      m = nd.match(/\$?(\d+)\s*\\vdots\s*[a-zA-Z]\$?\.?\s*$/)
+      if (m) { kind = 'uoc'; N = BigInt(m[1]) }
+      else {
+        m = nd.match(/[a-zA-Z]\s*\\in\s*(B|U|\\text\{Ư\})\((\d+)\)\$?\s*và\s*(.+?)\.?\s*$/)
+        if (!m) return null
+        kind = m[1] === 'B' ? 'boi' : 'uoc'; N = BigInt(m[2])
+        const cond = m[3]
+        let mm = cond.match(/(\d+)\s*\\le\s*[a-zA-Z]\s*\\le\s*(\d+)/)
+        if (mm) { lo = BigInt(mm[1]); loInc = true; hi = BigInt(mm[2]); hiInc = true }
+        else if ((mm = cond.match(/[a-zA-Z]\s*<\s*(\d+)/))) { lo = 0n; loInc = true; hi = BigInt(mm[1]); hiInc = false }
+        else if ((mm = cond.match(/[a-zA-Z]\s*\\ge\s*(\d+)/))) { lo = BigInt(mm[1]); loInc = true }
+        else if ((mm = cond.match(/[a-zA-Z]\s*>\s*(\d+)/))) { lo = BigInt(mm[1]); loInc = false }
+        else return null
+      }
+    }
+  }
+  if (N <= 0n) return null
+  const dungArr = dsUocBoi(kind, N, lo, loInc, hi, hiInc)
+  if (!dungArr.length) return null
+  if (!rule) return { text: dungArr.join('; ') }
+  return ruleUocBoi(kind, N, lo, loInc, hi, hiInc, dungArr, rule)
+}
+
+// ── DẠNG 8: ƯC/BC của 2 số (T106040101/201) — "Tìm UC(a;b)" (tập hữu hạn = ước của ƯCLN) / "Tìm BC(a;b)"
+// (tập VÔ HẠN, kho viết "0;L;2L;...." — giữ nguyên "...." trong TEXT hiển thị; chuanHoaTapText tự lọc "...."
+// ra khỏi canon vì Number("....")=NaN, không ảnh hưởng so khớp đúng/sai vì áp dụng NHẤT QUÁN 2 bên).
+function boiVoHanText(l) { return `0; ${l}; ${2n * l}; ....` }
+export function ucBcCoBan(noiDung, rule) {
+  const nd = String(noiDung)
+  let m = nd.match(/\\text\{UC\}\((\d+)\s*;\s*(\d+)\)/)
+  if (m) {
+    const nums = [BigInt(m[1]), BigInt(m[2])]
+    const { value: g } = gcdLcmFactor(nums, 'ucln')
+    if (g <= 0n) return null
+    const dungArr = uocCua(g)
+    if (!dungArr.length) return null
+    if (!rule) return { text: dungArr.join('; ') }
+    return ruleUocBoi('uoc', g, null, true, null, true, dungArr, rule)
+  }
+  m = nd.match(/BC\((\d+)\s*;\s*(\d+)\)/)
+  if (m) {
+    const nums = [BigInt(m[1]), BigInt(m[2])]
+    const { value: l } = gcdLcmFactor(nums, 'bcnn')
+    if (l <= 0n) return null
+    if (!rule) return { text: boiVoHanText(l) }
+    if (rule === 'R77') { // nhầm BCNN thành ƯCLN
+      const { value: g } = gcdLcmFactor(nums, 'ucln')
+      if (g <= 0n || g === l) return null
+      return { text: boiVoHanText(g), ds: 'nhầm BCNN thành ƯCLN — liệt kê bội của ƯCLN thay vì BCNN' }
+    }
+    if (rule === 'R78') { // chỉ xét bội của 1 trong 2 số
+      const n0 = nums[0]; if (n0 === l) return null
+      return { text: boiVoHanText(n0), ds: `chỉ liệt kê bội của ${n0}, quên số còn lại phải cùng chia hết` }
+    }
+    if (rule === 'R79') { // quên số 0, bắt đầu liệt kê từ chính BCNN
+      return { text: `${l}; ${2n * l}; ${3n * l}; ....`, ds: 'quên số 0 (B(a) luôn bắt đầu từ 0 theo định nghĩa), bắt đầu liệt kê từ chính BCNN' }
+    }
+    if (rule === 'R80') { // nhân trực tiếp 2 số làm BCNN
+      const p = nums[0] * nums[1]; if (p === l) return null
+      return { text: boiVoHanText(p), ds: 'nhân trực tiếp 2 số với nhau làm BCNN, không rút gọn theo ước chung' }
+    }
+  }
+  return null
+}
+
+// ── DẠNG 9: Tổng các phần tử của tập {x∈N | x<K} (T106010103, sub-shape nhỏ — 4 câu) — ĐÁP SỐ LÀ 1 GIÁ TRỊ ──
+export function tongTapHopNhoHon(noiDung, rule) {
+  const m = String(noiDung).match(/x\s*<\s*(\d+)[^.]*?\.\s*Tổng các phần tử/)
+  if (!m) return null
+  const K = BigInt(m[1]); if (K <= 0n) return null
+  const dung = (K * (K - 1n)) / 2n
+  if (!rule) return { value: R(dung) }
+  if (rule === 'R81') { const v = dung + K; return { value: R(v), ds: 'quên x<K là nghiêm ngặt, cộng luôn cả K vào tổng' } }
+  if (rule === 'R82') { const v = K * (K - 1n); if (v === dung || K < 2n) return null; return { value: R(v), ds: 'dùng công thức cặp số (Gauss) nhưng quên chia đôi' } }
+  if (rule === 'R83') { if (K < 2n) return null; const v = dung - (K - 1n); return { value: R(v), ds: 'cộng thiếu phần tử lớn nhất (K−1)' } }
+  if (rule === 'R84') { if (K === dung) return null; return { value: R(K), ds: 'nhầm bài toán "đếm số phần tử" với "tính tổng các phần tử"' } }
+  return null
+}

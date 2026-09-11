@@ -1299,14 +1299,34 @@ thẳng `ca_test.nguoi_cham_id`/`nguoi_tra_bai_id`, data đã sẵn, không cầ
 **Nguyên tắc CEO chốt 09/09:** mỗi câu rồi sẽ có đủ hình thái (TN 4 phương án · trả lời ngắn · điền ô · tự luận); **thứ tự xây theo
 độ dễ**: dễ trắc nghiệm → TN trước; khó (chứng minh, hình) → ĐIỀN Ô trước. HS **không** thấy "đường sai"/nhãn lỗi — chỉ để staff.
 
-**A. Form TRẮC NGHIỆM AI (spec-mcq-form.md, mig 202609080230/0246/0259/0318) — xong M1–M4, đang chờ duyệt**
+**A. Form TRẮC NGHIỆM AI (spec-mcq-form.md, mig 202609080230 → 202609120003) — pool 1-3 + nhóm ƯCLN/BCNN/Ước-Bội
+khối 6 đã xong, đang chờ duyệt. ĐÃ MERGE + PUSH `main` (96861b7, 11/09 tối — fast-forward, không mất commit ai)**
 - Form = bảng riêng `dai_cau_form_tn` khoá `ma_cau` (KHÔNG đổ `lua_chon` vào câu gốc — etFormOf coi "có lua_chon" = TN ⇒ ET in giấy tự
-  đổi form). 1 form hiệu lực/câu, từ chối = `xoa_at`. Distractor = kết quả THẬT của 1 rule lỗi (`dai_mcq_rule` R01–R27, nhóm
+  đổi form). 1 form hiệu lực/câu, từ chối = `xoa_at`. Distractor = kết quả THẬT của 1 rule lỗi (`dai_mcq_rule` R01–R84, nhóm
   khai_niem/tinh). HS chọn sai ⇒ rule ghi 100% chắc (`bai_test_cau.lua_chon_rule[]` song song `lua_chon`, view `v_mcq_loi_hs`).
-- **Pool 1** = lớp 7 "Số hữu tỉ" 9 dạng tính toán: **488 form** (35 tay + 453 máy sinh `scripts/mcq-auto.mjs`: parser LaTeX + Rat
-  BigInt + 27 đường sai + solver tìm x; đáp án máy PHẢI = đáp số kho). Tab **"Trắc nghiệm AI"** (Duyệt lời giải AI) duyệt/sửa/từ
-  chối + `fn_mcq_metric`. Tự luyện/bổ trợ yếu/retest đã coi câu có form duyệt là chấm online được (mở khoá 282 câu tu_luan).
-  ET online lấy form khi GV chọn form TN cho câu không có phương án (`phatHanhTest`); in giấy CHƯA.
+- **Pool 1** = lớp 7 "Số hữu tỉ" 9 dạng tính toán: 488 form (35 tay + 453 máy). **Pool 2A** (08-09/09, lớp 7 "Số
+  thực" cần √/|…|) + "tích bằng 0" (R32-R35, sau khi Thùy chỉ ra 4 lỗ hổng thiết kế — xem bài học §②). **Pool 3**
+  (11/09, khối 6 "Số tự nhiên" 10 dạng, `CHAM_LA_NHAN`): 451/455 (99%).
+- **⭐ Kiến trúc `TEXT_DANG` (11-12/09)** — cho dạng đáp số KHÔNG phải 1 giá trị hữu tỉ đơn: bảng `TEXT_FN`
+  `{canon, val}` riêng theo `dang_chinh` (không hard-code 1 cặp hàm chung — mini-dang.mjs mỗi DẠNG có cú pháp
+  đáp số khác hẳn nhau). Đã dùng cho 6 dạng: phân tích thừa số nguyên tố (R53-56, đáp số BIỂU THỨC luỹ thừa) ·
+  nhận biết nguyên tố/hợp số (R57-61, đáp số TẬP số) · Tìm n qua ƯCLN/BCNN T106040104/204 (R62-72, TRỘN 1-giá-trị
+  + tập-theo-khoảng trong CÙNG 1 mã dạng) · Ước/Bội cơ bản T106030101 + Tìm ƯC/BC T106040101/201 (R73-80, tập
+  hữu hạn hoặc VÔ HẠN "0;L;2L;...." — `chuanHoaTapText` tự lọc "...." khỏi canon, không ảnh hưởng so đúng/sai) ·
+  Tổng tập {x<K} T106010103 (R81-84). Dạng đáp số 1 giá trị đơn (Tìm ƯCLN/BCNN T106040102/202) vẫn đi
+  `SPECIAL_DANG`/`parseHuuTi` như cũ.
+- **Tổng khối 6 đã ghi form: ~700 câu qua 12 dạng** (chi tiết từng dạng: DEVLOG 11-12/09). **Đã khảo sát HẾT
+  khối 6 — không còn dạng nào "dễ".** Phần còn lại (T106030401 139 câu "an+b⋮cn+d" · T106020601 44 câu dãy luỹ
+  thừa · T106030102+T106030403 93 câu đáp số "Có/Không" kiểu chứng minh · T106020304 Toán thực tế 39 câu) +
+  GTLN-GTNN/nâng cao khối 7 (deferred từ đầu) **Thùy chốt 12/09: TẤT CẢ thuộc nhóm "TRẮC NGHIỆM TỪNG PHẦN"** —
+  kiến trúc CHƯA THIẾT KẾ (không phải khuôn "1 câu → 4 đáp án nguyên câu" hiện tại), việc lớn cần bàn kỹ trước
+  khi code, KHÔNG tự quyết được. T106010102/T106020101/phần lớn T106010103 hoá ra **ĐÃ LÀ trắc nghiệm gốc**
+  trong kho (`lua_chon` có sẵn) — ngoài phạm vi pipeline này, không phải việc cần làm.
+- **UI duyệt** (`TracNghiemAiTab.tsx`): duyệt theo lô 20 câu + nút "Duyệt tất cả trang này" (loại câu sai trước
+  bằng checkbox, KHÔNG phải duyệt-từng-câu — CEO 09/09, RPC `fn_mcq_form_duyet_batch`); lời giải kho hiện SẴN
+  dưới đề (11/09 tối, trước đó ẩn sau `<details>` phải click). ⚠ Lúc merge lên main gặp 1 bản "duyệt hàng loạt"
+  KHÁC do phiên song song khác làm cùng ngày (confirm() + duyệt thẳng 20 câu đầu, không có bước loại) — đã giữ
+  bản khớp đúng spec CEO, bỏ bản kia; coi chừng phiên khác có thể lại tạo bản khác nữa.
 - Clone đổi số `mcq-clone-doi-so.mjs`: 56 clone chờ duyệt (0201 +36…). Máy phát hiện **2 đáp số kho sai**: T107010202053 (13/16→37/24),
   T107010403036 (8/5→8/3) — chưa sửa kho.
 - Luật "cùng hình thức" ĐÃ NỚI: đáp án đúng phải có ≥1 phương án cùng kiểu (không phải cả 4); tập nghiệm ≤2 phương án đơn.
@@ -1437,6 +1457,23 @@ worktree chưa merge: 202608151600 · 202609041045 · 202609051251 · 2026090818
   kiểu chọn-tất-cả-trong-danh-sách — những ca này CẦN bàn TRƯỚC vì bản chất "câu hỏi trắc nghiệm 4 đáp án cho nó"
   còn chưa rõ, không phải vì thiếu rule lỗi). Không đổi (1)(2)(4) — vẫn đọc lời giải trước, vẫn liệt kê điểm rẽ,
   vẫn chỉ ghi sau khi tính đúng+verify sạch — chỉ đổi AI QUYẾT rule cho dạng RÕ RÀNG.
+- **⭐ Quy trình chạy pool MCQ mới (đúc kết 11-12/09, lặp lại ~10 lần): list → auto (debug 1 câu mẫu) → nếu tỉ lệ
+  "chỉ tìm được N<3 distractor" cao (>20-30%) → debug câu bỏ cụ thể xem THIẾU RULE GÌ (không phải bug) → thêm 1-2
+  rule "dự phòng" (luôn tính được, không phụ thuộc đặc điểm số cụ thể — vd R61/R71/R72/R84) qua MIGRATION MỚI
+  (không sửa migration rule cũ đã áp) → chạy lại → verify → ghi. Coverage 85-100% là bình thường, phần dư bỏ vì
+  đặc thù số (vd chỉ 1 thừa số chung, dữ liệu quá nhỏ) — KHÔNG cần cố vét 100%.
+- **⭐ Bẫy regex lặp lại 3 lần (T106040104, T106030101, T106040101) — kho bọc `$…$` quanh TỪNG PHẦN so sánh/biểu
+  thức, KHÔNG bọc quanh cả câu:** `"...biết rằng $36 \vdots n$ và $n<15$."` — dấu `$` xen giữa các cụm điều kiện.
+  Regex nối 2 cụm bằng `\s*và\s*` mà không cho phép `\$?` ở ranh giới sẽ FAIL SILENT (trả `null`, không lỗi) —
+  luôn test regex bằng `.match()` trên CHUỖI THẬT lấy từ DB trước khi tin, đừng suy từ cách kho hiển thị.
+- **⭐ 2 rule tưởng khác nhau có thể LUÔN RA CÙNG GIÁ TRỊ về mặt toán học** (T106010103 R81 "cộng thêm K" vs R82
+  gốc "công thức 1..K" — `K(K−1)/2+K ≡ K(K+1)/2` luôn đúng, không phải trùng ngẫu nhiên) — trước khi đăng ký 1
+  rule mới, thử vài giá trị xem có suy ra CÙNG CÔNG THỨC ĐẠI SỐ với rule đã có không, đừng chỉ nhìn "tên nghe
+  khác nhau" rồi coi là đủ đa dạng.
+- **⭐ Trước khi thiết kế rule cho dạng "mới" — kiểm `lua_chon`/`menh_de` có NULL không trước.** 2 lần hụt (khối
+  6, 12/09): T106010102/T106020101/phần lớn T106010103 tưởng là câu tự luận cần convert, khảo sát ra mới biết
+  ĐÃ LÀ trắc nghiệm gốc trong kho — pipeline form-tn tự động loại (`q.lua_chon is null`) nên không sao, nhưng
+  tốn công khảo sát/thiết kế nhầm nếu không kiểm trước.
 - **⭐⭐ Đưa script kiểm cho bên bị kiểm = Goodhart (hs-home v3, 08/09):** ChatGPT cầm `design-check.mjs` trong tay → sinh asset để
   QUA script (ảnh rỗng 100% trong suốt tự chấm PASS), không để ĐÚNG. Script là của bên nhận; bên giao chỉ nhận câu hỏi tự kiểm.
   Kèm theo: **script chỉ là lưới thô — vẫn phải MỞ ẢNH nhìn** (v3 qua 100% mà mắt thấy hỏng ngay).
