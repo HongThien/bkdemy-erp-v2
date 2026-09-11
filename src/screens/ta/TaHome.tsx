@@ -90,12 +90,17 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
     return () => document.removeEventListener('visibilitychange', h)
   }, [view]) // eslint-disable-line
 
-  if (view) return <ChamBuoi view={view} onBack={() => { setView(null); reload(true) }} />
-
   const canLam = tasks.filter((t) => !t.done)
   const noCua = (k: NvKey) => canLam.filter((t) => t.tab === k).length
   // Icon MH chính — số = 3 nghiệp vụ (bubble nav dưới) + bổ trợ (cùng số hiện ở tab Bổ trợ).
+  // ⚠ PHẢI gọi TRƯỚC `if (view) return` ngay dưới — hook đứng sau 1 early-return bị bỏ qua đúng
+  // lúc chuyển view (bấm vào 1 buổi), lệch số hook giữa 2 lần render ⇒ React crash trắng màn hình
+  // TOÀN BỘ app (không có error boundary hứng). Bài học đau 11/09: tưởng lỗi cache/thiết bị, hỏi
+  // qua lại rồi mới lộ ra là Rules of Hooks — lần sau thấy "trắng hoàn toàn không còn gì" thì nghi
+  // hook-order trước, không nghi cache trước.
   useEffect(() => { setAppBadgeCount(canLam.length + demNoBoTro(boTro)) }, [canLam.length, boTro])
+
+  if (view) return <ChamBuoi view={view} onBack={() => { setView(null); reload(true) }} />
 
   return (
     <div className="flex h-[100dvh] flex-col" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif", background: BK_TROI }}>
