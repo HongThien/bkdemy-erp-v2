@@ -1405,8 +1405,23 @@ function ChonBaiPopup({ L, phan, components, daChonList, onClose, onConfirm }: {
   const [tick, setTick] = useState<Set<string>>(new Set())
   const [full, setFull] = useState<BaiToan | null>(null)
   const toggle = (id: string) => setTick((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
+  // ⭐ 11/09 (Thùy: "Chuỗi ko tự ghép các câu với nhau rồi") — TRƯỚC tick N câu là ra N pick lẻ, khi in
+  // ra là N bài rời chứ không phải 1 bài a,b,c như "Đề chuẩn (gốc)" cũ (ChonChuoiPopup + CayTickPopup gộp
+  // node cùng chuỗi thành 1 pick). Giờ: gom tick THEO CHUỖI — mỗi chuỗi có câu tick thành 1 pick 'ghep'
+  // với nodeIds = list câu đã tick của chuỗi đó (xếp theo cấp, đúng thứ tự component); banInTheoMoHinh
+  // gặp pick nhiều node là tự nở a,b,c qua mucGhep/noDapAn. Câu ngoài components (do bộ lọc mô hình khác
+  // — hiếm) rơi vào chuỗi thật của node đó qua chuoiKetNoi để không mất.
   const confirm = () => {
-    const adds: PickItem[] = [...tick].map((id) => ({ key: crypto.randomUUID(), phan, kind: 'ghep', luaId: null, nodeIds: [id] }))
+    const adds: PickItem[] = []
+    const assigned = new Set<string>()
+    for (const comp of components) {
+      const nodeIds = comp.filter((bt) => tick.has(bt.id)).map((bt) => bt.id)
+      if (!nodeIds.length) continue
+      nodeIds.forEach((id) => assigned.add(id))
+      adds.push({ key: crypto.randomUUID(), phan, kind: 'ghep', luaId: null, nodeIds })
+    }
+    // Câu tick không thuộc component nào đang thấy (bộ lọc mô hình mới đổi giữa 2 lần mở popup) — mỗi câu 1 pick lẻ.
+    for (const id of tick) if (!assigned.has(id)) adds.push({ key: crypto.randomUUID(), phan, kind: 'ghep', luaId: null, nodeIds: [id] })
     onConfirm(adds)
   }
   return createPortal(
