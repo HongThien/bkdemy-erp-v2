@@ -603,6 +603,46 @@ export function BuoiPickEditor({ L, picks, cheDo, soDong, onChangePicks, onChang
     else { onChangePicks(nextPicks); if (soDongChanged) onChangeSoDong(nextSoDong) }
   }
 
+  // ⭐ 11/09 v3 (Thùy: "chuỗi ko tự ghép" — screenshot Về nhà cho thấy chuỗi 2 câu / 3 câu vẫn hiện 2/3
+  // dòng "Đề chuẩn" lẻ) — buổi cũ được soạn ở flow v1 (mỗi pick 1 node từ ChonBaiPopup gốc, chưa merge)
+  // hoặc CayTickPopup cũ khi user chỉ tick 1 node — DB còn N picks 'ghep' luaId=null lẻ cùng chuỗi. Fix
+  // v2 (addManyPicks) chỉ áp cho lần confirm mới. Auto-coalesce ở mount + mỗi lần picks/components đổi:
+  // gom mọi 'ghep' luaId=null cùng phần + cùng chuỗi thành 1 pick (nodeIds sort theo cấp; giữ key/soDong
+  // /cheDo của pick ĐẦU tiên tìm thấy, drop key/soDong/cheDo của pick sau). Idempotent — sau merge hết
+  // duplicate, effect chạy lại chỉ no-op. KHÔNG đụng 'bienthe'/'y'/'ghep' có luaId (Lứa) — chủ đích tách.
+  useEffect(() => {
+    if (!picks.length) return
+    type G = { key: string; phan: 'lop' | 'nha' | 'et' | 'mt'; comp: BaiToan[]; picks: PickItem[] }
+    const groups = new Map<string, G>()
+    for (const p of picks) {
+      if (p.kind !== 'ghep' || p.luaId !== null || !p.nodeIds.length) continue
+      let comp = components.find((c) => p.nodeIds.every((id) => c.some((bt) => bt.id === id))) ?? null
+      if (!comp) comp = api.chuoiKetNoi(L, p.nodeIds[0])
+      if (comp.length <= 1) continue // câu lẻ (component=1) — không có gì để ghép
+      const gk = `${p.phan}::${[...comp].map((b) => b.id).sort().join(',')}`
+      const g = groups.get(gk) ?? { key: gk, phan: p.phan, comp, picks: [] }
+      g.picks.push(p); groups.set(gk, g)
+    }
+    const dups = [...groups.values()].filter((g) => g.picks.length > 1)
+    if (!dups.length) return
+    let nextPicks = [...picks]
+    const nextSoDong = { ...soDong }
+    const nextCheDo = { ...cheDo }
+    for (const g of dups) {
+      const first = g.picks[0]
+      const rest = g.picks.slice(1)
+      const merged = new Set(g.picks.flatMap((p) => p.nodeIds))
+      const sortedIds = g.comp.filter((b) => merged.has(b.id)).map((b) => b.id)
+      nextPicks = nextPicks.map((p) => (p.key === first.key ? { ...p, nodeIds: sortedIds } : p))
+      const dropKeys = new Set(rest.map((p) => p.key))
+      nextPicks = nextPicks.filter((p) => !dropKeys.has(p.key))
+      for (const k of dropKeys) { delete nextSoDong[k]; delete nextCheDo[k] }
+    }
+    if (onBulk) onBulk({ picks: nextPicks, soDong: nextSoDong, cheDo: nextCheDo })
+    else { onChangePicks(nextPicks); onChangeSoDong(nextSoDong); onChangeCheDo(nextCheDo) }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [picks, components])
+
   // ⭐ 11/09 — click 1 dòng bài đã chọn → mở ChonChuoiPopup (đổi bản/ý) như hiện tại. State nâng
   // lên đây (trước ở trong ChuoiRow) vì mỗi KhuPickList tự có nhiều nhóm chuỗi, phải trung tâm hoá.
   const [editPickBan, setEditPickBan] = useState<{ phan: 'lop' | 'nha' | 'et' | 'mt'; key: string; chuoi: BaiToan[] } | null>(null)
