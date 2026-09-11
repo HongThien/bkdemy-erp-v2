@@ -2,14 +2,19 @@
 // tính toán. Mỗi thẻ: đề · 4 phương án (xanh = đúng) · mỗi phương án sai kèm rule + đường sai (chỉ staff thấy — CEO 08/09:
 // HS không thấy đường sai, HS đọc lời giải). Hành động: Duyệt · Sửa rồi duyệt (sửa text/rule/đường sai của phương án
 // SAI — DB tự so bản cũ để ghi sua_truoc_duyet cho metric precision) · Từ chối (lý do bắt buộc → kho rác, câu quay lại
-// pool sinh lại). KHÔNG có "duyệt tất cả": CEO chốt duyệt 100% pool 1 để đo precision.
+// pool sinh lại).
 // Metric strip đọc fn_mcq_metric (tính ở DB §2.0) — client chỉ hiển thị.
+//
+// ⭐ 11/09 (CEO Thùy): BATCH 20 câu / lần + "Duyệt tất cả batch". Ghi đè chốt cũ ("duyệt 100% từng câu để đo precision"):
+// vẫn đo precision qua metric strip (sua_truoc_duyet vẫn ghi khi thẻ được sửa rồi duyệt riêng), nhưng phần lớn thẻ TA nhìn
+// là đạt — không cần bấm 20 lần. Duyệt tất cả gọi duyetFormTn KHÔNG kèm sửa (chỉ áp sửa cho các thẻ TA bấm duyệt riêng).
 import { useEffect, useRef, useState } from 'react'
 import { nhanhCuaMon, NHANH_LABEL, listFormTnChoDuyet, duyetFormTn, tuChoiFormTn, listMcqRule, mcqMetric, type FormTnChoDuyet, type LuaChonTn, type KhoMon, type McqRule, type McqMetric } from '../../lib/kho/api'
 import { MathText, inp } from '../kho/ui'
 import { myNhanSuId } from '../../lib/giaoviec'
 
 const CHU = ['A', 'B', 'C', 'D']
+const BATCH_SIZE = 20
 type Row = FormTnChoDuyet & { mon: KhoMon }
 
 export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: string }) {
@@ -20,6 +25,7 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
   const [busy, setBusy] = useState<string | null>(null)
+  const [busyAll, setBusyAll] = useState(false)
   const [edit, setEdit] = useState<Record<string, LuaChonTn[]>>({})      // id → bản đang sửa
   const [tuChoi, setTuChoi] = useState<Record<string, string>>({})      // id → lý do đang gõ (mở ô từ chối)
   const [thongBao, setThongBao] = useState<string | null>(null)
@@ -70,6 +76,25 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
     setEdit((e) => { const cur = e[id] ?? goc.map((x) => ({ ...x })); const next = cur.map((x, j) => (j === i ? { ...x, ...patch } : x)); return { ...e, [id]: next } })
   }
 
+  // Batch 20 (CEO 11/09). Duyệt tất cả gọi duyetFormTn KHÔNG kèm sửa cho từng câu trong batch.
+  const batch = rows.slice(0, BATCH_SIZE)
+  async function onDuyetTatCa() {
+    if (!batch.length || !confirm(`Duyệt cả ${batch.length} form trắc nghiệm trong batch này (không sửa gì)? Câu không đạt hãy Từ chối trước.`)) return
+    setBusyAll(true)
+    try {
+      const nguoi = await myNhanSuId()
+      const idsOk = new Set<string>()
+      for (const r of batch) {
+        try { await duyetFormTn(r.mon, r.id, nguoi); idsOk.add(r.id) }
+        catch { /* bỏ qua câu lỗi, tiếp tục */ }
+      }
+      setRows((a) => a.filter((x) => !idsOk.has(x.id)))
+      setEdit((e) => Object.fromEntries(Object.entries(e).filter(([id]) => !idsOk.has(id))))
+      bao(`✓ Đã duyệt ${idsOk.size}/${batch.length} form trong batch`)
+      if (kho.length) mcqMetric(kho[0]).then(setMetric).catch(() => {})
+    } finally { setBusyAll(false) }
+  }
+
   const pct = (x: number | null) => (x == null ? '—' : `${Math.round(x * 100)}%`)
   return (
     <div className="flex-1 overflow-auto px-6 py-4">
@@ -90,8 +115,16 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
       {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
         : rows.length === 0 ? <p className="text-sm text-slate-400">Không có phiên bản trắc nghiệm nào chờ duyệt ở {mon} khối {khoi}.</p>
         : (
+          <>
+            <div className="mb-3 flex flex-wrap items-center gap-3">
+              <span className="text-[12px] text-slate-500">Batch <b className="text-slate-800">{batch.length}</b>/<b>{rows.length}</b> form</span>
+              <button onClick={onDuyetTatCa} disabled={!batch.length || busyAll}
+                className="ml-auto rounded-md bg-emerald-600 px-3.5 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
+                {busyAll ? '⏳ Đang duyệt…' : `✓ Duyệt tất cả batch (${batch.length})`}
+              </button>
+            </div>
           <ul className="space-y-3">
-            {rows.map((r) => {
+            {batch.map((r) => {
               const lc = edit[r.id] ?? r.lua_chon
               const dangSua = !!edit[r.id]
               const moTuChoi = r.id in tuChoi
@@ -174,6 +207,10 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
               )
             })}
           </ul>
+          {rows.length > batch.length && (
+            <p className="mt-4 text-center text-[12px] text-slate-400">Còn <b>{rows.length - batch.length}</b> form — sẽ hiện sau khi duyệt/từ chối xong batch này.</p>
+          )}
+          </>
         )}
     </div>
   )

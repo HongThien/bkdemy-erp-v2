@@ -1,12 +1,15 @@
 // Tab "Điền ô AI" (spec-dien-o.md §0b, D2) — duyệt form ĐIỀN Ô cho chứng minh hình: lời giải với 1–4 ô trống, mỗi ô 4 phương án.
 // Thẻ: đề + hình + các bước (ô tô cam) + phương án (xanh = đúng; sai kèm nhãn lỗi E0x + vì sao sai — HS không thấy).
 // Hành động D2: Duyệt · Từ chối (lý do bắt buộc → kho rác, sinh lại). Sửa tại chỗ chưa có (D3): ô chọn sai thì từ chối + ghi rõ.
+//
+// ⭐ 11/09 (CEO Thùy): BATCH 20 câu / lần + "Duyệt tất cả batch". TA loại câu không đạt (✕ Từ chối) → Duyệt tất cả phần còn lại.
 import { useEffect, useRef, useState } from 'react'
 import { listFormDienChoDuyet, duyetFormDien, tuChoiFormDien, listHinhLyDo, type FormDienChoDuyet, type HinhLyDo } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import { myNhanSuId } from '../../lib/giaoviec'
 
 const CHU = ['A', 'B', 'C', 'D']
+const BATCH_SIZE = 20
 // Cắt key khỏi bước để hiện ô: key trong $…$ → \boxed{?} (KaTeX vẽ ô), key chữ thường → ⟦ ? ⟧
 function buocCoO(text: string, key: string): string {
   const i = text.indexOf(key); if (i < 0) return text
@@ -20,6 +23,7 @@ export default function DienOAiTab({ khoi }: { mon: string; khoi: string }) {
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
   const [busy, setBusy] = useState<string | null>(null)
+  const [busyAll, setBusyAll] = useState(false)
   const [tuChoi, setTuChoi] = useState<Record<string, string>>({})
   const [thongBao, setThongBao] = useState<string | null>(null)
   const reqId = useRef(0)
@@ -48,6 +52,23 @@ export default function DienOAiTab({ khoi }: { mon: string; khoi: string }) {
     catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(null) }
   }
 
+  // Batch 20 (CEO 11/09).
+  const batch = rows.slice(0, BATCH_SIZE)
+  async function onDuyetTatCa() {
+    if (!batch.length || !confirm(`Duyệt cả ${batch.length} form điền ô trong batch này? Câu không đạt hãy Từ chối trước.`)) return
+    setBusyAll(true)
+    try {
+      const nguoi = await myNhanSuId()
+      const idsOk = new Set<string>()
+      for (const r of batch) {
+        try { await duyetFormDien(r.id, nguoi); idsOk.add(r.id) }
+        catch { /* bỏ qua câu lỗi, tiếp tục */ }
+      }
+      setRows((a) => a.filter((x) => !idsOk.has(x.id)))
+      bao(`✓ Đã duyệt ${idsOk.size}/${batch.length} form trong batch`)
+    } finally { setBusyAll(false) }
+  }
+
   return (
     <div className="flex-1 overflow-auto px-6 py-4">
       {thongBao && <div className="mb-3 rounded-lg bg-emerald-50 px-3 py-2 text-[13px] text-emerald-800">{thongBao}</div>}
@@ -55,8 +76,16 @@ export default function DienOAiTab({ khoi }: { mon: string; khoi: string }) {
       {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
         : rows.length === 0 ? <p className="text-sm text-slate-400">Không có bài điền ô nào chờ duyệt ở khối {khoi}.</p>
         : (
+          <>
+            <div className="mb-3 flex flex-wrap items-center gap-3">
+              <span className="text-[12px] text-slate-500">Batch <b className="text-slate-800">{batch.length}</b>/<b>{rows.length}</b> form</span>
+              <button onClick={onDuyetTatCa} disabled={!batch.length || busyAll}
+                className="ml-auto rounded-md bg-emerald-600 px-3.5 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
+                {busyAll ? '⏳ Đang duyệt…' : `✓ Duyệt tất cả batch (${batch.length})`}
+              </button>
+            </div>
           <ul className="space-y-3">
-            {rows.map((r) => {
+            {batch.map((r) => {
               const oByBuoc = new Map(r.o.map((o) => [o.buoc, o]))
               const mo = r.id in tuChoi
               return (
@@ -115,6 +144,10 @@ export default function DienOAiTab({ khoi }: { mon: string; khoi: string }) {
               )
             })}
           </ul>
+          {rows.length > batch.length && (
+            <p className="mt-4 text-center text-[12px] text-slate-400">Còn <b>{rows.length - batch.length}</b> form — sẽ hiện sau khi duyệt/từ chối xong batch này.</p>
+          )}
+          </>
         )}
     </div>
   )

@@ -4,8 +4,13 @@
 //   · Dạng: bấm mở DangPickerOne (browse + ô tìm, KHÔNG dropdown) — đổi dạng thì cụm reset (cụm nằm gọn trong 1 dạng).
 //   · Cụm: pill lọc theo dạng đang chọn (listCumBai) · Đề / Đáp số / Lời giải: sửa thẳng, preview MathText.
 //   · ✓ Duyệt = fn_kho_duyet_cau (áp sửa + ký, 1 transaction; sửa đáp số ⇒ DB thu hồi form TN của câu, báo số form).
-//   · ✕ Từ chối = fn_kho_tu_choi_cau (kho rác, lý do bắt buộc). KHÔNG có "duyệt tất cả" cho hàng nghi/không kiểm (spec §3).
+//   · ✕ Từ chối = fn_kho_tu_choi_cau (kho rác, lý do bắt buộc).
 // Badge kiểm đáp số: máy/AI ký khớp · NGHI kèm ghi chú "máy X ≠ kho Y" — người nhìn đề, tự tính, sửa đáp số nếu kho sai.
+//
+// ⭐ 11/09 (CEO Thùy): TẤT CẢ bộ lọc render theo BATCH 20 câu / lần + nút "Duyệt tất cả batch". Luồng: fetch cả list, hiện
+// 20 câu đầu; TA loại câu không đạt (✕ Từ chối vào kho rác) → bấm Duyệt tất cả cho số còn lại → 20 câu kế lộ ra. Trước đây
+// nghi/không kiểm/câu mới bắt đi từng thẻ (spec §3 cũ) — quá chậm, đảo lại: "loại xấu + duyệt phần còn lại" là hành vi tự
+// nhiên khi TA nhìn 20 câu cùng lúc. "Duyệt tất cả" gọi fn_kho_duyet_cau KHÔNG kèm sửa (bỏ qua state sửa cục bộ của thẻ).
 import { useEffect, useRef, useState } from 'react'
 import { nhanhCuaMon, NHANH_LABEL, LOAI_CAU, listHangDuyet, duyetCauHangDuyet, tuChoiCauHangDuyet, listCumBai, tenCum, khoTbls, HANG_DUYET_LABEL,
   type CauHangDuyet, type KhoMon, type HangDuyetLoc, type CumBai, type SuaCauDuyet } from '../../lib/kho/api'
@@ -18,6 +23,7 @@ type Row = CauHangDuyet & { mon: KhoMon }
 const LOAI_LABEL = Object.fromEntries(LOAI_CAU.map((x) => [x.value, x.label])) as Record<string, string>
 const NHANH_HGT = 'hinh_gt' // nhánh của DangPickerOne/khoCuaMon cho kho hgt (registry tailieu.ts NHANH_CUA_MON)
 const fmtTs = (s: string) => new Date(s).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' })
+const BATCH_SIZE = 20
 
 export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string; khoi: string; loc: HangDuyetLoc; onChanged?: () => void }) {
   const kho = nhanhCuaMon(mon).filter((n): n is KhoMon => n !== 'hinh')
@@ -43,37 +49,50 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
   function bao(msg: string) { setThongBao(msg); setTimeout(() => setThongBao(null), 2500) }
   function xong(r: Row, msg: string) { setRows((a) => a.filter((x) => !(x.mon === r.mon && x.ma_cau === r.ma_cau))); bao(msg); onChanged?.() }
 
-  // "Duyệt tất cả" CHỈ cho 2 hàng lời giải (moi/ton_dong) như màn cũ — hàng nghi/không kiểm/câu mới phải đi từng thẻ.
-  const choDuyetLo = loc === 'moi' || loc === 'ton_dong'
+  // Batch 20 câu / lần (CEO 11/09). Sau khi duyệt/từ chối trong batch, câu bị filter khỏi rows → batch tự dịch xuống.
+  const batch = rows.slice(0, BATCH_SIZE)
   async function onDuyetTatCa() {
-    if (!rows.length || !confirm(`Duyệt cả ${rows.length} câu đang lọc (không sửa gì)?`)) return
+    if (!batch.length || !confirm(`Duyệt cả ${batch.length} câu trong batch này (không sửa gì)? Câu không đạt hãy Từ chối trước.`)) return
     setBusyAll(true)
     try {
       const nguoi = await myNhanSuId()
-      for (const r of rows) { try { await duyetCauHangDuyet(r.mon, r.ma_cau, nguoi) } catch { /* bỏ qua câu lỗi, tiếp tục */ } }
-      await reload(); onChanged?.()
+      const idsOk = new Set<string>()
+      for (const r of batch) {
+        try { await duyetCauHangDuyet(r.mon, r.ma_cau, nguoi); idsOk.add(`${r.mon}:${r.ma_cau}`) }
+        catch { /* bỏ qua câu lỗi, tiếp tục */ }
+      }
+      setRows((a) => a.filter((x) => !idsOk.has(`${x.mon}:${x.ma_cau}`)))
+      bao(`✓ Đã duyệt ${idsOk.size}/${batch.length} câu trong batch`)
+      onChanged?.()
     } finally { setBusyAll(false) }
   }
 
   return (
     <div className="flex h-full min-h-0 flex-col">
       <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-6 py-2.5">
-        <span className="text-[12px] text-slate-500"><b className="text-slate-800">{rows.length}</b> câu · {HANG_DUYET_LABEL[loc]} · khối {khoi}</span>
+        <span className="text-[12px] text-slate-500">
+          Batch <b className="text-slate-800">{batch.length}</b>/<b>{rows.length}</b> câu · {HANG_DUYET_LABEL[loc]} · khối {khoi}
+        </span>
         {loc === 'nghi' && <span className="text-[12px] text-amber-700">Máy/AI tính ra khác đáp số kho. Xem đề, tự tính; kho sai thì sửa đáp số rồi Duyệt — form trắc nghiệm của câu sẽ tự thu hồi để sinh lại.</span>}
         {loc === 'cau_moi' && <span className="text-[12px] text-slate-500">Câu vào kho sau 08/09 — HS chưa thấy tới khi duyệt.</span>}
         {thongBao && <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700">{thongBao}</span>}
-        {choDuyetLo && (
-          <button onClick={onDuyetTatCa} disabled={!rows.length || busyAll}
-            className="ml-auto rounded-md bg-emerald-600 px-3.5 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
-            {busyAll ? '⏳ Đang duyệt…' : `✓ Duyệt tất cả đang lọc (${rows.length})`}
-          </button>
-        )}
+        <button onClick={onDuyetTatCa} disabled={!batch.length || busyAll}
+          className="ml-auto rounded-md bg-emerald-600 px-3.5 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
+          {busyAll ? '⏳ Đang duyệt…' : `✓ Duyệt tất cả batch (${batch.length})`}
+        </button>
       </div>
       <div className="flex-1 overflow-auto px-6 py-4">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
           : rows.length === 0 ? <p className="text-sm text-slate-400">Không có câu nào ở {mon} · khối {khoi} · {HANG_DUYET_LABEL[loc]}. 🎉</p>
-          : <ul className="space-y-4">{rows.map((r) => <The key={`${r.mon}:${r.ma_cau}`} r={r} mon={mon} busyAll={busyAll} onXong={(msg) => xong(r, msg)} />)}</ul>}
+          : (
+            <>
+              <ul className="space-y-4">{batch.map((r) => <The key={`${r.mon}:${r.ma_cau}`} r={r} mon={mon} busyAll={busyAll} onXong={(msg) => xong(r, msg)} />)}</ul>
+              {rows.length > batch.length && (
+                <p className="mt-4 text-center text-[12px] text-slate-400">Còn <b>{rows.length - batch.length}</b> câu — sẽ hiện sau khi duyệt/từ chối xong batch này.</p>
+              )}
+            </>
+          )}
       </div>
     </div>
   )
