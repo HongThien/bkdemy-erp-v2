@@ -113,14 +113,19 @@ function Head({ title, sub, onBack }: { title: string; sub?: string; onBack: () 
 // có backend (Bài tập được giao/Sự kiện học tập/Huy hiệu) hiện "Sắp có", KHÔNG bấm được — tránh
 // hứa tính năng chưa tồn tại. Bảng màu RIÊNG (không phải bảng ph-* dùng cho cấp 3 — mockup này là
 // hướng thiết kế khác hẳn, tươi/nhiều màu hơn, không cố match app PH nữa).
-type BoxCap1 = { id: 'tu_luyen' | 'thong_tin' | 'xep_hang'; ten: string; mo_ta: string; icon: string; grad: string } | { id: string; ten: string; mo_ta: string; icon: string; grad: string; sapCo: true }
+// Thùy 12/09: HS cấp 1 KHÔNG dùng điện thoại — chỉ iPad/laptop → HomeCap1 desktop/iPad-first (grid
+// 3 cột full màn, không max-w 430 centered như HomeHS). Nội dung đồng bộ KHU_CAP2 (đã build cho cấp
+// 2): 6 ô Tự luyện · Thông tin học tập · Đề thi thử (sắp có) · Bài tập được giao · Thành tựu · May
+// mắn. Bảng xếp hạng cũ chuyển vào Thành tựu tương lai (huy hiệu/mốc — placeholder trong ThanhTuuHS).
+type BoxCap1DirectId = 'tu_luyen' | 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao'
+type BoxCap1 = { id: BoxCap1DirectId; ten: string; mo_ta: string; icon: string; grad: string } | { id: string; ten: string; mo_ta: string; icon: string; grad: string; sapCo: true }
 const BOX_CAP1: BoxCap1[] = [
-  { id: 'tu_luyen', ten: 'Tự luyện', mo_ta: 'Luyện theo dạng bài còn yếu hoặc chủ động chọn nội dung muốn ôn tập.', icon: '🎯', grad: 'from-[#f0e9ff] to-[#faf8ff]' },
-  { id: 'bai_tap_giao', ten: 'Bài tập được giao', mo_ta: 'Làm các bài tập giáo viên giao thêm cho cá nhân hoặc cả lớp.', icon: '📋', grad: 'from-[#e8f4ff] to-[#f7fbff]', sapCo: true },
-  { id: 'thong_tin', ten: 'Thông tin học tập', mo_ta: 'Xem kết quả gần nhất, dạng đang yếu, nhận xét và gợi ý ôn tập.', icon: '📘', grad: 'from-[#e9f9ff] to-[#f6fdff]' },
-  { id: 'xep_hang', ten: 'Bảng xếp hạng', mo_ta: 'Theo dõi thứ hạng và tạo động lực thi đua cùng các bạn.', icon: '🏅', grad: 'from-[#e7f9f1] to-[#f5fffb]' },
-  { id: 'su_kien', ten: 'Sự kiện học tập', mo_ta: 'Các cuộc thi, thử thách và hoạt động học tập theo từng thời điểm.', icon: '🎉', grad: 'from-[#fff1de] to-[#fffaf1]', sapCo: true },
-  { id: 'huy_hieu', ten: 'Huy hiệu', mo_ta: 'Xem các huy hiệu, thành tích và mốc học tập đã đạt được.', icon: '🏆', grad: 'from-[#ffedf5] to-[#fff8fb]', sapCo: true },
+  { id: 'tu_luyen',     ten: 'Tự luyện',           mo_ta: 'Luyện theo dạng bài còn yếu hoặc chủ động chọn nội dung muốn ôn tập.', icon: '🎯', grad: 'from-[#f0e9ff] to-[#faf8ff]' },
+  { id: 'thong_tin',    ten: 'Thông tin học tập',  mo_ta: 'Xem kết quả gần nhất, dạng đang yếu, nhận xét và gợi ý ôn tập.',      icon: '📘', grad: 'from-[#e9f9ff] to-[#f6fdff]' },
+  { id: 'de_thi_thu',   ten: 'Làm đề thi thử',     mo_ta: 'Đề trường/sở để em luyện làm bài thi thật — sắp mở.',                 icon: '📄', grad: 'from-[#eef2ff] to-[#f7f9ff]', sapCo: true },
+  { id: 'bai_tap_giao', ten: 'Bài tập được giao',  mo_ta: 'Làm các bài tập giáo viên giao thêm cho cá nhân hoặc cả lớp.',        icon: '📚', grad: 'from-[#e8f4ff] to-[#f7fbff]' },
+  { id: 'thanh_tuu',    ten: 'Thành tựu',          mo_ta: 'Xem giải thưởng cuối tháng, huy hiệu và mốc học tập đã đạt được.',    icon: '🏆', grad: 'from-[#fff8de] to-[#fffbef]' },
+  { id: 'may_man',      ten: 'May mắn',            mo_ta: 'Luyện đủ 10 câu đúng ≥70% mỗi ngày → mở 1 lượt quay may mắn nhận EXP.', icon: '🎰', grad: 'from-[#ffedf5] to-[#fff8fb]' },
 ]
 // Thùy 22/08 gửi thẳng file mockup tỉ lệ đúng ý (`BK_Academy_Student_Desktop.html`) sau khi bản
 // trước "hộp quá to chữ quá nhỏ". Port lại ĐÚNG số đo từ file đó (hero 2 cột kèm art bên phải, hộp
@@ -128,7 +133,7 @@ const BOX_CAP1: BoxCap1[] = [
 // Bỏ khoá `h-screen overflow-hidden` — mockup gốc của Thùy vốn là trang cuộn tự nhiên theo nội dung
 // (không ép vừa 1 màn hình), thân trang cao hơn viewport 13-14" thì cuộn nhẹ là đúng theo THIẾT KẾ
 // gốc, không phải bug — khác hẳn bug 21/08 (cuộn do zoom 1.15 lỗi, xem main-hs.tsx).
-export function HomeCap1({ hoTen, maHS, onOpen, extra, chuaDoc, onHopThu }: { hoTen: string; maHS: string; onOpen: (d: 'tu_luyen' | 'thong_tin' | 'xep_hang') => void; extra?: React.ReactNode; chuaDoc: number; onHopThu: () => void }) {
+export function HomeCap1({ hoTen, maHS, onOpen, extra, chuaDoc, onHopThu, maymanCoLuot }: { hoTen: string; maHS: string; onOpen: (d: BoxCap1DirectId) => void; extra?: React.ReactNode; chuaDoc: number; onHopThu: () => void; maymanCoLuot?: boolean }) {
   const initials = hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()
   return (
     <div className="min-h-screen" style={{ background: 'radial-gradient(circle at 85% 5%, rgba(115,87,245,.10), transparent 24rem), radial-gradient(circle at 8% 25%, rgba(47,128,237,.08), transparent 22rem), #f4f7fb' }}>
@@ -193,12 +198,17 @@ export function HomeCap1({ hoTen, maHS, onOpen, extra, chuaDoc, onHopThu }: { ho
           <div className="grid grid-cols-3 gap-[18px]">
             {BOX_CAP1.map((b) => {
               const sapCo = 'sapCo' in b && b.sapCo
+              // Badge May mắn: có 1 lượt quay khi đủ điều kiện + chưa quay hôm nay (giống HomeHS cấp 2).
+              const badgeSo = !sapCo && b.id === 'may_man' && maymanCoLuot ? 1 : 0
               return (
-                <button key={b.id} disabled={sapCo} onClick={() => !sapCo && onOpen(b.id as 'tu_luyen' | 'thong_tin' | 'xep_hang')}
+                <button key={b.id} disabled={sapCo} onClick={() => !sapCo && onOpen(b.id as BoxCap1DirectId)}
                   className={`group relative flex min-h-[208px] flex-col items-start rounded-[26px] border border-white/76 bg-gradient-to-br p-6 text-left shadow-[0_16px_40px_rgba(31,47,79,0.08)] transition ${b.grad} ${sapCo ? 'opacity-60' : 'hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(31,47,79,0.12)]'}`}>
                   <div className="mb-[18px] flex h-[58px] w-[58px] items-center justify-center rounded-[18px] bg-white/72 text-[30px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.5)]">{b.icon}</div>
                   <h3 className="m-0 mb-2 text-[21px] font-extrabold text-[#171a2b]">{b.ten}</h3>
                   <p className="m-0 max-w-[88%] text-[13px] leading-[1.55] text-[#626c80]">{b.mo_ta}</p>
+                  {badgeSo > 0 && (
+                    <span className="absolute right-[17px] top-[17px] flex h-7 min-w-7 items-center justify-center rounded-full bg-[#FF315E] px-2 text-[13px] font-extrabold text-white shadow-[0_6px_14px_rgba(255,49,94,.35)]">{badgeSo}</span>
+                  )}
                   {sapCo ? (
                     <span className="absolute bottom-[17px] right-[17px] rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-bold text-[#7b8499]">Sắp có</span>
                   ) : (
@@ -289,16 +299,18 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 
   // ── MÀN CHÍNH: ô vuông (theo cấp/khối), 2 cột ─────────────────────────────
   if (!khu && (cap1 === null || cap2 === null)) return <div className="flex min-h-screen items-center justify-center bg-ios text-sm text-ph-label-2">Đang tải…</div>
-  // Cấp 1 + Cấp 2 (Thùy 12/09: "đưa về giao diện như cấp 2 luôn") — DÙNG CHUNG kit HomeHS mobile-first
-  // + KHU_CAP2 (Tự luyện · Thông tin học tập · Đề thi thử sắp có · Bài tập được giao · Thành tựu ·
-  // May mắn). Trước đây cấp 1 có riêng HomeCap1 desktop/iPad-first — HomeCap1 giữ trong code để
-  // rollback nhanh + demo=cap1 đối chiếu, không route qua nó nữa.
-  // Cấp 3 (khối 10-12): giữ KHU cũ (BTL/ET/BTVN) để không đụng flow đang chạy — CEO chưa đổi cấp 3.
-  // HomeHS thuần vẽ. Badge = việc CÒN LÀM ĐƯỢC (bài quá hạn vẫn hiện trong danh sách nhưng không
-  // đếm vào badge — Thùy: đếm cả thứ không bấm được thì thành nhiễu).
+  // CẤP 1 (Thùy 12/09: "cấp 1 học sinh không dùng điện thoại — chỉ iPad hoặc laptop") — HomeCap1
+  // desktop/iPad-first (grid 3 cột full màn theo mockup CEO), KHÔNG dùng HomeHS mobile centered
+  // (max-w 430 hoang phí 2 bên trên iPad/laptop). BOX_CAP1 đã đồng bộ nội dung KHU_CAP2: Tự luyện ·
+  // Thông tin học tập · Đề thi thử (sắp có) · Bài tập được giao · Thành tựu · May mắn.
+  if (!khu && cap1) return <HomeCap1 hoTen={hoTen} maHS={maHS} maymanCoLuot={maymanCoLuot}
+    onOpen={(d) => setDirect(d)} chuaDoc={chuaDoc} onHopThu={() => setDirect('hop_thu')}
+    extra={<BoTroBanner lich={boTro.lich} coCa={boTro.coCa} soRetest={boTro.soRetest} desktop onLich={() => setDirect('lich_bo_tro')} onCa={() => setDirect('bo_tro')} onRetest={() => setDirect('retest')} />} />
+  // CẤP 2 (khối 6-9) — HomeHS mobile-first + KHU_CAP2 (đã build cho phone: em cấp 2 có thể dùng
+  // điện thoại). CẤP 3 (khối 10-12): giữ KHU cũ (BTL/ET/BTVN), không đụng flow đang chạy.
+  // HomeHS thuần vẽ. Badge = việc CÒN LÀM ĐƯỢC (bài quá hạn không đếm vào badge — nhiễu).
   if (!khu) {
-    const capMoi = cap1 || cap2
-    const cards: HomeCard[] = capMoi
+    const cards: HomeCard[] = cap2
       ? KHU_CAP2.map((k) => {
           const [sub, subMau]: [string, HomeCard['subMau']] =
             k.sapCo ? ['Sắp có', 'xam']
