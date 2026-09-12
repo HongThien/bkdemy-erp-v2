@@ -144,9 +144,17 @@ ghi 1 mục `DEVLOG.md`.
 
 ## 8. Ngoài phạm vi hiện tại — nhóm "TRẮC NGHIỆM TỪNG PHẦN"
 
-Thùy chốt 12/09: các dạng sau **KHÔNG cố nhét vào khuôn "1 câu → 4 đáp án nguyên câu" hiện tại** — cần 1
-kiến trúc khác (lời giải tách nhiều bước, mỗi bước 1 câu hỏi/4 đáp án — có thể gần giống `spec-dien-o.md`
-"Form ĐIỀN Ô" nhưng CHƯA CHẮC giống hệt, **chưa thiết kế cụ thể tại thời điểm viết tài liệu này**):
+Thùy chốt 12/09: các dạng sau **KHÔNG cố nhét vào khuôn "1 câu → 4 đáp án nguyên câu" hiện tại**.
+
+**⭐ ĐÍNH CHÍNH (12/09, sau khi đọc lại `spec-dien-o.md`): kiến trúc cho nhóm này ĐÃ ĐƯỢC CEO CHỐT SẴN, KHÔNG
+phải "chưa thiết kế" như bản đầu tài liệu này viết.** `spec-dien-o.md` §1/§3/§4 (phase 2 — "câu tính toán")
+chính là "trắc nghiệm từng phần": lời giải tách bước theo dấu `=`, mỗi bước có **ô** là 1 phép tính con, mỗi
+ô 4 phương án sinh bằng RULE LỖI CÓ SẴN (R01–R84, dùng chung bảng `dai_mcq_rule` với pipeline TN) — **100%
+máy, không cần AI** cho loại ô "Giá trị"/"Biểu thức sau chuyển vế". Vấn đề duy nhất: **spec này ĐÃ CHỐT 09/09
+nhưng CHƯA XÂY cho Đại** — `scripts/mcq-dien.mjs` (D1) và bảng `dai_cau_form_dien` (D2) chưa tồn tại; chỉ có
+nhánh HÌNH chứng minh (`scripts/hinh-dien.mjs` + `hinh_form_dien`, đã pilot 23 form khối 7) được build, vì
+đó là Phase 1 của cùng spec (§0b). Xem `spec-mcq-tung-phan.md` (file riêng, viết 12/09) — cầu nối cụ thể giữa
+`spec-dien-o.md` và hàng đợi dạng đang chờ.
 
 - GTLN-GTNN / bài toán nâng cao (khối 7, và tương tự ở khối khác nếu gặp).
 - Toán thực tế (mọi khối — bản chất nhiều bước lập luận theo ngữ cảnh, không phải 1 phép tính).

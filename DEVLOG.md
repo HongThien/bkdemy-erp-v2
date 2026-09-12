@@ -11161,3 +11161,28 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
   cần khảo sát lại: kho dùng kỹ thuật bình phương để so sánh số hữu tỉ với căn bậc hai (`$\dfrac{9}{4}=\sqrt{
   \dfrac{81}{16}}<\sqrt{6}$`), 3 loại token cần parse (số nguyên/thập phân có dấu phẩy kiểu VN, `\dfrac{}{}`,
   `\sqrt{}`, và `|...|`/`\left|...\right|` giá trị tuyệt đối bọc quanh số âm).
+
+## 2026-09-12 (tiếp) — Tìm ra "trắc nghiệm 1 phần" đã có spec sẵn (spec-dien-o.md Phase 2), viết cầu nối
+- Thùy chốt phân công cuối cùng: context `form-tn` (đây) đi tiếp khối 8-9, chuyên "đưa câu về trắc nghiệm 4
+  đáp án"; Thùy mở 1 context RIÊNG làm "trắc nghiệm 1 phần" — yêu cầu bổ sung tài liệu cần thiết cho context đó.
+- **Phát hiện quan trọng khi soát lại trước khi viết tài liệu mới: "trắc nghiệm 1 phần" KHÔNG PHẢI khái niệm
+  chưa thiết kế như tôi viết nhầm trong `spec-mcq-quy-trinh-sinh.md` bản đầu (12/09 sáng).** Đọc lại
+  `spec-dien-o.md` (CEO chốt 09/09, "Form ĐIỀN Ô") thì thấy §1/§3/§4 ("phase 2 — câu tính toán") CHÍNH LÀ nó:
+  lời giải tách bước theo `=`, mỗi bước có ô, sinh 4 phương án bằng RULE LỖI CÓ SẴN (R01-R84) áp lên biểu thức
+  con — **100% máy, không cần AI**, dùng CHUNG bảng `dai_mcq_rule` với pipeline trắc nghiệm 4-đáp-án đang làm.
+  Kiểm bằng file thật: `scripts/mcq-dien.mjs` (D1 lộ trình spec) **chưa tồn tại**, bảng `dai_cau_form_dien`
+  (D2) **chưa có trong DB** (`schema.md` không có, chỉ có `hinh_form_dien` — bảng SONG SONG nhưng dành riêng
+  Hình chứng minh, đã pilot 23 form qua `scripts/hinh-dien.mjs`, khoá theo `cach_giai_id` chứ không phải
+  `ma_cau` nên không dùng chung được cho Đại). Tức: spec đã chốt, ĐÃ BUILD nhánh Hình (Phase 1), CHƯA BUILD
+  nhánh Đại tính toán (Phase 2) — đúng thứ context mới cần làm.
+  Đã sửa lại `spec-mcq-quy-trinh-sinh.md` §8 (đính chính rõ, không xoá bản cũ, ghi thẳng "ĐÍNH CHÍNH 12/09").
+- **Viết `spec-mcq-tung-phan.md`** (file cầu nối, không phải spec mới) cho context sắp mở: chỉ thẳng việc
+  CHƯA làm (mcq-dien.mjs, bảng dai_cau_form_dien) và việc ĐÃ CÓ dùng lại được (`fn_dien_cham` đã tồn tại
+  trong DB, `scripts/hinh-dien.mjs`/`_do_dien_o.mjs` tham khảo cấu trúc) — kèm bảng hàng đợi 9 dạng cụ thể
+  (T106030401 139 câu, T106020601 44 câu, T106030102 67 câu, T106030403 26 câu, T106020304 39 câu,
+  T107010205 66 câu, 077022220401 87 câu, 0770222204220402 27 câu, T107010501-508 nhóm ~120 câu chưa khảo
+  sát kỹ) — mỗi dòng ghi rõ nghi ngờ hợp ô loại "Giá trị" (máy) hay "lý do" (như Hình, cần AI) để context
+  mới biết ưu tiên cái nào trước (máy trước, giống nhịp đã làm ở form-tn). Thêm mục quy ước dùng chung để 2
+  context không đụng độ (chung bảng `dai_mcq_rule`, `select max(ma)` trước khi đặt rule mới, không sửa
+  `mcq-auto.mjs`/`mcq-sinh.mjs` nếu không bắt buộc).
+  Thêm 2 dòng tham chiếu vào `CLAUDE.md` §7.

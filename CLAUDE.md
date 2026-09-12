@@ -271,6 +271,10 @@
   RÕ RÀNG (tự quyết) vs MƠ HỒ (phải hỏi CEO) · kiến trúc `SPECIAL_DANG`/`TEXT_DANG` · cách xử lý 1 `dang_chinh`
   trộn nhiều sub-shape · quy ước đặt mã rule khi 2 luồng (khối 8-9 / khối 6-7) chạy song song · bẫy kỹ thuật
   hay gặp. Viết 12/09 theo yêu cầu Thùy tách 2 luồng riêng.
+- **`spec-mcq-tung-phan.md` — ĐỌC trước khi mở context mới làm "trắc nghiệm 1 phần"/từng bước.** Cầu nối
+  cụ thể: "trắc nghiệm 1 phần" = triển khai **Phase 2 (Đại) của `spec-dien-o.md`** đã CEO chốt 09/09 nhưng
+  CHƯA XÂY (`scripts/mcq-dien.mjs` + bảng `dai_cau_form_dien` chưa tồn tại) — không phải spec mới. Kèm hàng
+  đợi cụ thể các dạng đã xác nhận không hợp khuôn "4 đáp án nguyên câu" (12/09).
 - `erp-v2-ui-spec.md` — Shell UI/UX **view-first**: React + Vite + Zustand + Tailwind, **mock data, CHƯA đụng Supabase**. Đơn vị = ROLE; derive nav/queue theo role; 2 loại việc (vận hành derive / phát triển giao tay) tách hẳn. Kho = 1 lá "Bản đồ kiến thức" trong cây Admin.
 ## Luật xoá (bắt buộc)
 Trước khi XOÁ bất cứ gì — xoá file, drop/alter/delete bảng/cột/dòng DB,
