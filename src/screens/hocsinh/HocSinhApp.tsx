@@ -128,7 +128,7 @@ const BOX_CAP1: BoxCap1[] = [
 // Bỏ khoá `h-screen overflow-hidden` — mockup gốc của Thùy vốn là trang cuộn tự nhiên theo nội dung
 // (không ép vừa 1 màn hình), thân trang cao hơn viewport 13-14" thì cuộn nhẹ là đúng theo THIẾT KẾ
 // gốc, không phải bug — khác hẳn bug 21/08 (cuộn do zoom 1.15 lỗi, xem main-hs.tsx).
-function HomeCap1({ hoTen, maHS, onOpen, extra, chuaDoc, onHopThu }: { hoTen: string; maHS: string; onOpen: (d: 'tu_luyen' | 'thong_tin' | 'xep_hang') => void; extra?: React.ReactNode; chuaDoc: number; onHopThu: () => void }) {
+export function HomeCap1({ hoTen, maHS, onOpen, extra, chuaDoc, onHopThu }: { hoTen: string; maHS: string; onOpen: (d: 'tu_luyen' | 'thong_tin' | 'xep_hang') => void; extra?: React.ReactNode; chuaDoc: number; onHopThu: () => void }) {
   const initials = hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()
   return (
     <div className="min-h-screen" style={{ background: 'radial-gradient(circle at 85% 5%, rgba(115,87,245,.10), transparent 24rem), radial-gradient(circle at 8% 25%, rgba(47,128,237,.08), transparent 22rem), #f4f7fb' }}>
@@ -137,7 +137,10 @@ function HomeCap1({ hoTen, maHS, onOpen, extra, chuaDoc, onHopThu }: { hoTen: st
         <div className="mb-[18px] flex items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <img src="/Logo.png" alt="BK Academy" className="h-9 w-auto" />
-            <span className="rounded-full border border-[#e8edf5] bg-white/90 px-3.5 py-2 text-[13px] font-bold text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]">📚 App học tập cho học sinh</span>
+            {/* Chip "App học tập..." ẨN dưới 900px (iPad mini portrait 744): topbar chật, chip
+                bị squeeze thành cột dọc. Logo BK ACADEMY vẫn đủ danh tính; card user + chuông
+                + Thoát phải fit. Bật lại từ ~900px khi có chỗ. */}
+            <span className="hidden rounded-full border border-[#e8edf5] bg-white/90 px-3.5 py-2 text-[13px] font-bold text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)] min-[900px]:inline-flex">📚 App học tập cho học sinh</span>
           </div>
           <div className="flex items-center gap-2.5">
             <div className="flex min-w-[220px] items-center gap-3 rounded-[18px] bg-white py-2 pl-2 pr-3 shadow-[0_6px_16px_rgba(31,47,79,0.06)]">
