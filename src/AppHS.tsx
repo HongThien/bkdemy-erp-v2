@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import type { Session } from '@supabase/supabase-js'
 import { supabase } from './lib/supabase'
 import Login from './auth/Login'
-import HocSinhApp from './screens/hocsinh/HocSinhApp'
+import HocSinhApp, { HomeCap1 } from './screens/hocsinh/HocSinhApp'
 import DoiMatKhau from './screens/hocsinh/DoiMatKhau'
 import HomeHS, { type HomeCard } from './screens/hocsinh/HomeHS'
 import DanhSachHS, { type DsRow } from './screens/hocsinh/DanhSachHS'
@@ -30,6 +30,7 @@ function DemoHome() {
   if (q.get('demo') === 'thanhtuu') return <ThanhTuuHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
   if (q.get('demo') === 'baitapgiao') return <BaiTapGiaoHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
   if (q.get('demo') === 'maymai') return <MayManHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
+  if (q.get('demo') === 'cap1') return <HomeCap1 hoTen="Nguyễn Minh Quân" maHS="hs0012" chuaDoc={2} onHopThu={noopBack} onOpen={noopBack} />
   void MayManHS  // giữ import cho các bản build sau, hiện tại demo maymai vẫn cần lib DB
   // `?demo=list` (+`&nu`, +`&rong`) — màn danh sách bài (kit hs-bai-tap-tren-lop-v1) với 4 trạng thái suy sẵn
   if (q.get('demo') === 'list') {
