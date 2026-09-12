@@ -289,19 +289,16 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 
   // ── MÀN CHÍNH: ô vuông (theo cấp/khối), 2 cột ─────────────────────────────
   if (!khu && (cap1 === null || cap2 === null)) return <div className="flex min-h-screen items-center justify-center bg-ios text-sm text-ph-label-2">Đang tải…</div>
-  // Cấp 1 (Thùy 21/08: "học sinh làm ở nhà trên máy tính/iPad, không phải điện thoại") — màn RIÊNG
-  // desktop/iPad-first theo mockup HTML CEO gửi, KHÔNG dùng lưới mobile-first bên dưới (cấp 3 vẫn
-  // giữ nguyên màn cũ — CEO xác nhận "cấp 3 chưa dùng màn này", bàn sau).
-  if (!khu && cap1) return <HomeCap1 hoTen={hoTen} maHS={maHS} onOpen={(d) => setDirect(d)}
-    chuaDoc={chuaDoc} onHopThu={() => setDirect('hop_thu')}
-    extra={<BoTroBanner lich={boTro.lich} coCa={boTro.coCa} soRetest={boTro.soRetest} desktop onLich={() => setDirect('lich_bo_tro')} onCa={() => setDirect('bo_tro')} onRetest={() => setDirect('retest')} />} />
-  // Cấp 2/3 — màn chính theo KIT hs-home-v4 (HomeHS.tsx). Ở đây CHỈ tính số/trạng thái từng ô rồi
-  // truyền xuống; HomeHS thuần vẽ. Badge = việc CÒN LÀM ĐƯỢC (bài quá hạn vẫn hiện trong danh sách —
-  // Thùy: "hiện quá hạn thôi" — nhưng không đếm vào badge; badge đếm cả thứ không bấm được thì thành nhiễu).
-  // Thùy 11/09: CẤP 2 (lớp 6-9) đổi KHU — ẨN Bài tập trên lớp/ET/BTVN, thêm Bài tập được giao/Thành
-  // tựu/May mắn. Cấp 3 (khối 10-12) giữ KHU cũ để không đụng flow đang chạy.
+  // Cấp 1 + Cấp 2 (Thùy 12/09: "đưa về giao diện như cấp 2 luôn") — DÙNG CHUNG kit HomeHS mobile-first
+  // + KHU_CAP2 (Tự luyện · Thông tin học tập · Đề thi thử sắp có · Bài tập được giao · Thành tựu ·
+  // May mắn). Trước đây cấp 1 có riêng HomeCap1 desktop/iPad-first — HomeCap1 giữ trong code để
+  // rollback nhanh + demo=cap1 đối chiếu, không route qua nó nữa.
+  // Cấp 3 (khối 10-12): giữ KHU cũ (BTL/ET/BTVN) để không đụng flow đang chạy — CEO chưa đổi cấp 3.
+  // HomeHS thuần vẽ. Badge = việc CÒN LÀM ĐƯỢC (bài quá hạn vẫn hiện trong danh sách nhưng không
+  // đếm vào badge — Thùy: đếm cả thứ không bấm được thì thành nhiễu).
   if (!khu) {
-    const cards: HomeCard[] = cap2
+    const capMoi = cap1 || cap2
+    const cards: HomeCard[] = capMoi
       ? KHU_CAP2.map((k) => {
           const [sub, subMau]: [string, HomeCard['subMau']] =
             k.sapCo ? ['Sắp có', 'xam']
