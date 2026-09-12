@@ -287,29 +287,53 @@ function LanDo({ e, t }: { e: RecentEval; t: Theme }) {
   )
 }
 
+// BXHList — TOP 10 (Thùy 12/09: "hiện top 10, top 3 đẹp giống xếp hạng ở app trợ giảng"). Style
+// mượn XepHangBlock ở src/components/CuaToiWidgets.tsx (widget dùng chung TA/GV/OPS): 3 đầu emoji
+// medal to 🥇🥈🥉, hạng 4-10 số nhỏ; dòng "Bạn" highlight nền brand + border.
+const MEDAL = ['🥇', '🥈', '🥉'] as const
 function BXHList({ t, rows, emptyText }: { t: Theme; rows: { ma_hs: string; ho_ten: string; la_toi: boolean; nhan: string; phu: string }[]; emptyText: string }) {
   if (rows.length === 0) return <p className="py-4 text-center text-[12.5px]" style={{ color: t.sec }}>{emptyText}</p>
+  const top10 = rows.slice(0, 10)
+  const banRank = rows.findIndex((r) => r.la_toi)   // hạng của HS đang xem (0-based)
+  const banInTop = banRank >= 0 && banRank < 10
   return (
-    <div className="flex flex-col">
-      {rows.slice(0, 30).map((r, i) => (
-        <div key={r.ma_hs || `${i}-${r.ho_ten}`}
-          className="grid grid-cols-[34px_1fr_auto] items-center gap-2.5 px-2 py-1.5 text-[13px]"
-          style={{
-            background: r.la_toi ? `${t.primary}12` : 'transparent',
-            borderRadius: r.la_toi ? 12 : 0,
-            borderTop: i > 0 && !r.la_toi ? '1px solid rgba(0,0,0,.04)' : 'none',
-          }}>
-          <span className="flex h-7 w-7 items-center justify-center rounded-[9px] text-[11.5px] font-black text-white"
-            style={{ background: r.la_toi ? t.primary : i === 0 ? '#E08A1E' : i === 1 ? '#8790A8' : i === 2 ? '#C77E4A' : '#dfe4ee', color: i > 2 && !r.la_toi ? '#7b8499' : '#fff' }}>{i + 1}</span>
+    <>
+      <div className="flex flex-col divide-y divide-black/[0.05]">
+        {top10.map((r, i) => (
+          <div key={r.ma_hs || `${i}-${r.ho_ten}`}
+            className="grid grid-cols-[36px_1fr_auto] items-center gap-2.5 px-2 py-2 text-[13px]"
+            style={{
+              background: r.la_toi ? `${t.primary}14` : 'transparent',
+              borderRadius: r.la_toi ? 12 : 0,
+            }}>
+            {i < 3
+              ? <span className="text-center text-[22px] leading-none">{MEDAL[i]}</span>
+              : <span className="text-center text-[13px] font-black" style={{ color: t.sec }}>#{i + 1}</span>}
+            <div className="min-w-0">
+              <p className="truncate font-bold" style={{ color: r.la_toi ? t.primary : NAVY }}>
+                {r.ho_ten}{r.la_toi ? ' (Bạn)' : ''}
+              </p>
+              {r.phu && <p className="truncate text-[10.5px]" style={{ color: t.sec }}>{r.phu}</p>}
+            </div>
+            <span className="shrink-0 rounded-full px-2.5 py-1 text-[12px] font-black text-white"
+              style={{ background: r.la_toi ? t.primary : i < 3 ? '#E08A1E' : '#20A886' }}>{r.nhan}</span>
+          </div>
+        ))}
+      </div>
+      {/* Nếu "Bạn" không nằm trong top 10 → hiện dòng riêng ở đáy (để em vẫn biết hạng) */}
+      {banRank >= 0 && !banInTop && (
+        <div className="mt-2 grid grid-cols-[36px_1fr_auto] items-center gap-2.5 rounded-[12px] px-2 py-2 text-[13px]"
+          style={{ background: `${t.primary}14` }}>
+          <span className="text-center text-[13px] font-black" style={{ color: t.primary }}>#{banRank + 1}</span>
           <div className="min-w-0">
-            <p className="truncate font-bold" style={{ color: r.la_toi ? t.primary : NAVY }}>{r.ho_ten}{r.la_toi ? ' (Bạn)' : ''}</p>
-            {r.phu && <p className="truncate text-[10.5px]" style={{ color: t.sec }}>{r.phu}</p>}
+            <p className="truncate font-bold" style={{ color: t.primary }}>{rows[banRank].ho_ten} (Bạn)</p>
+            {rows[banRank].phu && <p className="truncate text-[10.5px]" style={{ color: t.sec }}>{rows[banRank].phu}</p>}
           </div>
           <span className="shrink-0 rounded-full px-2.5 py-1 text-[12px] font-black text-white"
-            style={{ background: r.la_toi ? t.primary : '#20A886' }}>{r.nhan}</span>
+            style={{ background: t.primary }}>{rows[banRank].nhan}</span>
         </div>
-      ))}
-    </div>
+      )}
+    </>
   )
 }
 
