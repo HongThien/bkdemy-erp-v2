@@ -16,12 +16,9 @@ import {
 import { mucDeadline, nhanConLai } from '../../lib/tuan'
 import { seededShuffleWithOrig, seededPermByDang } from '../../lib/shuffle'
 import {
-  luotTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, khoiCuaHS, hoSoCuaToi, layDangHocTap, xepHangTuLuyen,
-  layLichSuLamBai, xepHangTiLeDat,
-  TU_LUYEN_SO_CAU_MOI_LUOT, SRC_LABEL, type DangHocTap, type RecentEval, type XepHangRow,
-  type LichSuLamBaiRow, type XepHangTiLeRow,
+  luotTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, khoiCuaHS, hoSoCuaToi, xepHangTuLuyen,
+  TU_LUYEN_SO_CAU_MOI_LUOT, type XepHangRow,
 } from '../../lib/tuluyen'
-import { getBXHDiemMTKhoi, type BXHDiemMTRow } from '../../lib/thanhtich'
 import { laCap2HS, mayManHSCuaToi } from '../../lib/maymai_hs'
 import DoiMatKhau from './DoiMatKhau'
 import CaBoTroHS, { RetestHS, BoTroBanner, LichBoTroHS } from './CaBoTroHS'
@@ -32,6 +29,7 @@ import DanhSachHS, { type DsRow } from './DanhSachHS'
 import MayManHS from './MayManHS'
 import ThanhTuuHS from './ThanhTuuHS'
 import BaiTapGiaoHS from './BaiTapGiaoHS'
+import ThongTinHocTap from './ThongTinHocTap'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
 type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
@@ -273,7 +271,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (doiMK) return <DoiMatKhau maHS={maHS} batBuoc={false} onXong={() => setDoiMK(false)} />
 
   if (direct === 'tu_luyen') return <LamTuLuyen hocSinhId={hocSinhId} onXong={() => setDirect(null)} desktop={!!cap1} />
-  if (direct === 'thong_tin') return <ThongTinHocTap hocSinhId={hocSinhId} onXong={() => setDirect(null)} desktop={!!cap1} />
+  if (direct === 'thong_tin') return <ThongTinHocTap hocSinhId={hocSinhId} gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
   if (direct === 'xep_hang') return <BangXepHang onXong={() => setDirect(null)} />
   if (direct === 'bo_tro') return <CaBoTroHS hocSinhId={hocSinhId} desktop={!!cap1} onXong={() => setDirect(null)} LamBai={LamBai} LamET={LamET} />
   if (direct === 'retest') return <RetestHS hocSinhId={hocSinhId} onXong={() => setDirect(null)} LamET={LamET} />
@@ -759,243 +757,6 @@ function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong:
         </div>
       }
     />
-  )
-}
-
-// ── THÔNG TIN HỌC TẬP (Thùy 21/08: "giống app phụ huynh" · sửa 12/09 thành 3 box CON) — hero % +
-// (1) Danh sách dạng yếu · (2) Lịch sử làm bài trên app · (3) Bảng xếp hạng 3 tab (tỉ lệ đạt / MT
-// / số câu tự luyện). Tính toán TẤT CẢ ở DB (§2.0) qua fn_hs_lich_su_lam_bai · fn_hs_xep_hang_ti_le_dat
-// · fn_bxh_diem_mt_khoi · hs_xep_hang_tu_luyen. Fetch song song đầu vào (Promise.all) — dữ liệu HS
-// mỗi ngày không nhiều, không cần lazy.
-type BxhKind = 'ti_le' | 'mt' | 'tu_luyen'
-function ThongTinHocTap({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong: () => void; desktop?: boolean }) {
-  const [state, setState] = useState<'dang_tai' | 'san_sang' | 'trong'>('dang_tai')
-  const [data, setData] = useState<{ dangs: DangHocTap[]; dat: number; canLuyen: number; yeu: number } | null>(null)
-  const [lichSu, setLichSu] = useState<LichSuLamBaiRow[]>([])
-  const [bxhKind, setBxhKind] = useState<BxhKind>('ti_le')
-  const [bxhTiLe, setBxhTiLe] = useState<XepHangTiLeRow[]>([])
-  const [bxhMT, setBxhMT] = useState<BXHDiemMTRow[]>([])
-  const [bxhTuLuyen, setBxhTuLuyen] = useState<XepHangRow[]>([])
-  const daGoi = useRef(false)
-
-  useEffect(() => {
-    if (daGoi.current) return
-    daGoi.current = true
-    ;(async () => {
-      const mon = await monCuaHS()
-      if (!mon) { setState('trong'); return }
-      const khoi = await khoiCuaHS()
-      // Fetch song song 4 nguồn — mỗi cái là RPC riêng, không phụ thuộc nhau.
-      const [dangs, ls, bTl, bMt, bTL] = await Promise.all([
-        layDangHocTap(mon),
-        layLichSuLamBai(30).catch(() => [] as LichSuLamBaiRow[]),
-        khoi ? xepHangTiLeDat(mon, khoi).catch(() => [] as XepHangTiLeRow[]) : Promise.resolve([] as XepHangTiLeRow[]),
-        khoi ? getBXHDiemMTKhoi(mon, khoi, ymHomNay()).catch(() => [] as BXHDiemMTRow[]) : Promise.resolve([] as BXHDiemMTRow[]),
-        khoi ? xepHangTuLuyen(khoi).catch(() => [] as XepHangRow[]) : Promise.resolve([] as XepHangRow[]),
-      ])
-      setData(dangs); setLichSu(ls); setBxhTiLe(bTl); setBxhMT(bMt); setBxhTuLuyen(bTL)
-      setState(dangs.dat + dangs.canLuyen + dangs.yeu === 0 && ls.length === 0 ? 'trong' : 'san_sang')
-    })().catch(() => setState('trong'))
-  }, [])
-
-  if (state === 'dang_tai') return <div className={`flex min-h-screen items-center justify-center text-sm text-ph-label-2 ${desktop ? 'bg-[#f4f7fb]' : 'bg-ios'}`}>Đang tải…</div>
-
-  const tong = data ? data.dat + data.canLuyen + data.yeu : 0
-  const tiLe = data && tong > 0 ? Math.round(((data.dat + data.canLuyen * 0.5) / tong) * 100) : 0
-  const canChuY = data ? data.dangs.filter((d) => d.muc !== 'dat').slice(0, 10) : []
-
-  return (
-    <div className={desktop ? 'mx-auto min-h-screen max-w-3xl bg-[#f4f7fb] px-8 py-6' : 'mx-auto min-h-screen max-w-md bg-ios px-4 pb-10'}>
-      {desktop ? (
-        <div className="mb-5 flex items-center gap-4">
-          <button onClick={onXong} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[18px] text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]">‹</button>
-          <h1 className="text-[26px] font-black tracking-tight text-[#171a2b]">Thông tin học tập</h1>
-        </div>
-      ) : <Head title="Thông tin học tập" onBack={onXong} />}
-
-      {state === 'trong' ? (
-        <div className={`mt-3 rounded-[21px] bg-white p-8 text-center ${SHADOW}`}>
-          <p className="text-3xl">🌱</p>
-          <p className="mt-2 text-[15px] font-medium text-ph-label">Chưa có dữ liệu học tập</p>
-          <p className="mt-1 text-[13px] text-ph-label-2">Học vài buổi trên lớp hoặc làm Tự luyện rồi quay lại nhé.</p>
-        </div>
-      ) : (
-        <>
-          {/* ĐÚNG ".card"+".summary"+".sum" (ph-v3.css) — hero % + 3 ô đạt/cần luyện/yếu */}
-          <div className={`mt-3 rounded-[22px] bg-white ${SHADOW} ${desktop ? 'p-7' : 'p-4'}`}>
-            <h3 className={`font-bold text-ph-label ${desktop ? 'text-[18px]' : 'text-[15px]'}`}>Tỉ lệ thành thạo kiến thức</h3>
-            <div className="mt-1.5 flex items-baseline gap-1">
-              <span className={`font-extrabold leading-none tracking-tight text-ph-label ${desktop ? 'text-[52px]' : 'text-[38px]'}`}>{tiLe}</span>
-              <span className={`font-bold text-ph-label-2 ${desktop ? 'text-[20px]' : 'text-[17px]'}`}>%</span>
-            </div>
-            <div className={`mt-3.5 grid grid-cols-3 ${desktop ? 'gap-4' : 'gap-2.5'}`}>
-              <div className={`rounded-[14px] bg-[#f7f8fb] text-center ${desktop ? 'p-4' : 'p-2.5'}`}>
-                <b className={`block font-extrabold text-ph-green ${desktop ? 'text-[22px]' : 'text-[17px]'}`}>{data!.dat}</b>
-                <span className="text-[9px] font-bold uppercase tracking-wide text-ph-label-2">Đạt</span>
-              </div>
-              <div className={`rounded-[14px] bg-[#f7f8fb] text-center ${desktop ? 'p-4' : 'p-2.5'}`}>
-                <b className={`block font-extrabold text-ph-orange ${desktop ? 'text-[22px]' : 'text-[17px]'}`}>{data!.canLuyen}</b>
-                <span className="text-[9px] font-bold uppercase tracking-wide text-ph-label-2">Cần luyện</span>
-              </div>
-              <div className={`rounded-[14px] bg-[#f7f8fb] text-center ${desktop ? 'p-4' : 'p-2.5'}`}>
-                <b className={`block font-extrabold text-ph-red ${desktop ? 'text-[22px]' : 'text-[17px]'}`}>{data!.yeu}</b>
-                <span className="text-[9px] font-bold uppercase tracking-wide text-ph-label-2">Yếu</span>
-              </div>
-            </div>
-          </div>
-
-          {/* BOX 1 — Danh sách dạng yếu (Thùy 12/09: đổi tên "Dạng cần chú ý" → "Danh sách dạng yếu";
-              hiện TÊN dạng, không mã — hs_dang_evals đã sửa COALESCE cả nhánh Đại+Hình cho Toán) */}
-          <p className="ml-0.5 mb-2 mt-5 text-[12px] font-black uppercase tracking-wide text-[#596376]">Danh sách dạng yếu</p>
-          {canChuY.length === 0 ? (
-            <div className={`rounded-[21px] bg-white p-6 text-center ${SHADOW}`}>
-              <p className="text-[15px] font-medium text-ph-label">🎉 Không có dạng nào yếu</p>
-              <p className="mt-1 text-[13px] text-ph-label-2">Tất cả dạng đã học đều đạt.</p>
-            </div>
-          ) : (
-            // ĐÚNG ".dangList"+".dangRow" (ph-v3.css) — nền xám phẳng #F7F8FB, KHÔNG card viền.
-            // Desktop: 2 cột (bề rộng thừa, 1 cột dài lê thê nhìn rất mobile).
-            <div className={desktop ? 'grid grid-cols-2 gap-3' : 'grid gap-2.5'}>
-              {canChuY.map((d) => (
-                <div key={d.ma_dang} className="rounded-[13px] bg-[#f7f8fb] p-3">
-                  <div className="flex items-center gap-2.5">
-                    <span className={`h-[9px] w-[9px] shrink-0 rounded-full ${d.muc === 'yeu' ? 'bg-ph-red' : 'bg-ph-orange'}`} />
-                    <div className="min-w-0 flex-1">
-                      <p className="truncate text-[12.5px] font-bold text-[#3b4250]">{d.ten_dang}</p>
-                      {d.ten_chuyen_de && <p className="truncate text-[10.5px] text-ph-label-2">{d.ten_chuyen_de}</p>}
-                    </div>
-                    <span className={`shrink-0 rounded-full px-2 py-1 text-[10px] font-black ${
-                      d.muc === 'yeu' ? 'bg-ph-red/10 text-ph-red' : 'bg-ph-orange/10 text-ph-orange'}`}>
-                      {d.muc === 'yeu' ? 'Yếu' : 'Cần luyện'}
-                    </span>
-                  </div>
-                  {/* Thùy 21/08: "đánh giá từng câu giống Kết quả học tập ERP — 5 lần gần nhất" */}
-                  <div className="mt-2.5 flex gap-1 border-t border-black/[0.06] pt-2.5">
-                    {d.recent.length === 0 && <span className="text-[10.5px] text-ph-label-2">Chưa có lần đo nào</span>}
-                    {d.recent.map((e, i) => <LanDo key={i} e={e} />)}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* BOX 2 — Lịch sử làm bài trên app (Thùy 12/09) */}
-          <p className="ml-0.5 mb-2 mt-6 text-[12px] font-black uppercase tracking-wide text-[#596376]">Lịch sử làm bài trên app</p>
-          {lichSu.length === 0 ? (
-            <div className={`rounded-[21px] bg-white p-6 text-center ${SHADOW}`}>
-              <p className="text-[15px] font-medium text-ph-label">📓 Chưa có lịch sử làm bài</p>
-              <p className="mt-1 text-[13px] text-ph-label-2">Vào Tự luyện làm 10 câu đầu tiên để thấy lịch sử ở đây.</p>
-            </div>
-          ) : (
-            <div className={`overflow-hidden rounded-[16px] bg-white ${SHADOW}`}>
-              <div className="grid grid-cols-[minmax(90px,1.2fr)_1fr_1fr_1.1fr] px-3.5 py-2 text-[10.5px] font-black uppercase tracking-wide text-ph-label-2 [border-bottom:1px_solid_rgba(0,0,0,.06)]">
-                <span>Ngày</span><span className="text-center">Số câu</span><span className="text-center">Đúng / Sai</span><span className="text-right">Thời gian in-app</span>
-              </div>
-              {lichSu.map((r) => (
-                <div key={r.ngay} className="grid grid-cols-[minmax(90px,1.2fr)_1fr_1fr_1.1fr] items-center px-3.5 py-2 text-[13px] text-ph-label [border-bottom:1px_solid_rgba(0,0,0,.04)] last:border-0">
-                  <span className="font-semibold">{fmtNgayVN(r.ngay)}</span>
-                  <span className="text-center font-semibold">{r.so_cau}</span>
-                  <span className="text-center">
-                    <b className="text-ph-green">{r.so_dung}</b>
-                    <span className="mx-1 text-ph-label-2">/</span>
-                    <b className="text-ph-red">{r.so_sai}</b>
-                  </span>
-                  <span className="text-right font-medium text-ph-label-2">{fmtThoiGian(r.thoi_gian_giay)}</span>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* BOX 3 — Bảng xếp hạng: 3 tab (tỉ lệ đạt / MT / số câu tự luyện) */}
-          <p className="ml-0.5 mb-2 mt-6 text-[12px] font-black uppercase tracking-wide text-[#596376]">Bảng xếp hạng</p>
-          <div className={`rounded-[16px] bg-white p-2.5 ${SHADOW}`}>
-            <div className="mb-2 grid grid-cols-3 gap-1 rounded-full bg-black/[0.04] p-1">
-              {(['ti_le', 'mt', 'tu_luyen'] as const).map((k) => (
-                <button key={k} onClick={() => setBxhKind(k)}
-                  className={`rounded-full py-1.5 text-[11.5px] font-bold transition ${bxhKind === k ? 'bg-white text-ph-label shadow-sm' : 'text-ph-label-2'}`}>
-                  {k === 'ti_le' ? 'Tỉ lệ đạt' : k === 'mt' ? 'Điểm MT' : 'Tự luyện'}
-                </button>
-              ))}
-            </div>
-            {bxhKind === 'ti_le' && <BXHList rows={bxhTiLe.map((r) => ({
-              ma_hs: r.ma_hs, ho_ten: r.ho_ten, la_toi: r.la_toi,
-              nhan: r.ti_le == null ? '—' : `${r.ti_le}%`,
-              phu: `${r.so_dat}/${r.so_dang} dạng`,
-            }))} emptyText="Chưa có bạn nào đo dạng." />}
-            {bxhKind === 'mt' && <BXHList rows={bxhMT.map((r) => ({
-              ma_hs: r.ma_hs ?? '', ho_ten: r.ho_ten,
-              la_toi: r.hoc_sinh_id === hocSinhId,  // BXH MT fn không trả la_toi → so id trực tiếp
-              nhan: r.tb == null ? '—' : r.tb.toFixed(2),
-              phu: r.ten_lop ?? '',
-            }))} emptyText="Chưa có điểm MT tháng này." />}
-            {bxhKind === 'tu_luyen' && <BXHList rows={bxhTuLuyen.map((r) => ({
-              ma_hs: r.ma_hs, ho_ten: r.ho_ten, la_toi: r.la_toi,
-              nhan: `${r.so_cau_dung}`,
-              phu: 'câu đúng',
-            }))} emptyText="Chưa có ai làm tự luyện." />}
-          </div>
-        </>
-      )}
-    </div>
-  )
-}
-
-// ── BXH item chung cho 3 tab (dùng CHUNG 1 component, mỗi tab chỉ khác `nhan` + `phu` label) ──
-function BXHList({ rows, emptyText }: { rows: { ma_hs: string; ho_ten: string; la_toi: boolean; nhan: string; phu: string }[]; emptyText: string }) {
-  if (rows.length === 0) return <p className="py-4 text-center text-[12.5px] text-ph-label-2">{emptyText}</p>
-  return (
-    <div className="flex flex-col">
-      {rows.slice(0, 20).map((r, i) => (
-        <div key={r.ma_hs || `${i}-${r.ho_ten}`}
-          className={`grid grid-cols-[34px_1fr_auto] items-center gap-2.5 px-2.5 py-2 text-[13px] ${i > 0 ? '[border-top:1px_solid_rgba(0,0,0,.04)]' : ''} ${r.la_toi ? 'bg-brand/10 rounded-[10px]' : ''}`}>
-          <span className={`flex h-7 w-7 items-center justify-center rounded-[9px] text-[11.5px] font-black ${
-            r.la_toi ? 'bg-brand text-white' : i === 0 ? 'bg-ph-orange text-white' : i === 1 ? 'bg-ph-label-2 text-white' : i === 2 ? 'bg-[#c77e4a] text-white' : 'bg-black/[0.05] text-ph-label-2'}`}>{i + 1}</span>
-          <div className="min-w-0">
-            <p className={`truncate font-bold ${r.la_toi ? 'text-brand' : 'text-ph-label'}`}>{r.ho_ten}{r.la_toi ? ' (Bạn)' : ''}</p>
-            {r.phu && <p className="truncate text-[10.5px] text-ph-label-2">{r.phu}</p>}
-          </div>
-          <span className={`shrink-0 rounded-full px-2.5 py-1 text-[12px] font-black ${r.la_toi ? 'bg-brand text-white' : 'bg-ph-green/10 text-ph-green'}`}>{r.nhan}</span>
-        </div>
-      ))}
-    </div>
-  )
-}
-
-// Ngày hôm nay giờ VN dạng 'YYYY-MM' cho fn_bxh_diem_mt_khoi.
-function ymHomNay(): string {
-  const vn = new Date(Date.now() + 7 * 3600 * 1000)
-  return `${vn.getUTCFullYear()}-${String(vn.getUTCMonth() + 1).padStart(2, '0')}`
-}
-// 'YYYY-MM-DD' → '12/09' (giờ VN). Ngày hôm nay → "Hôm nay", hôm qua → "Hôm qua".
-function fmtNgayVN(s: string): string {
-  const [y, m, d] = s.split('-').map(Number)
-  const vn = new Date(Date.now() + 7 * 3600 * 1000)
-  const ty = vn.getUTCFullYear(), tm = vn.getUTCMonth() + 1, td = vn.getUTCDate()
-  if (y === ty && m === tm && d === td) return 'Hôm nay'
-  const yesterday = new Date(Date.UTC(ty, tm - 1, td - 1))
-  if (y === yesterday.getUTCFullYear() && m === yesterday.getUTCMonth() + 1 && d === yesterday.getUTCDate()) return 'Hôm qua'
-  return `${String(d).padStart(2, '0')}/${String(m).padStart(2, '0')}`
-}
-// Giây → nhãn ngắn. 0 = "—", < 60s = "Ns", < 1h = "Nph", else "Nh Mph".
-function fmtThoiGian(giay: number): string {
-  if (!giay) return '—'
-  if (giay < 60) return `${giay}s`
-  if (giay < 3600) return `${Math.round(giay / 60)}ph`
-  const h = Math.floor(giay / 3600), ph = Math.round((giay - h * 3600) / 60)
-  return ph ? `${h}h ${ph}ph` : `${h}h`
-}
-
-// 1 lần đo trong "5 lần gần nhất" — ĐÚNG pattern Slot của KetQuaScreen.tsx (staff, mastery.ts):
-// ✓ đạt (value≥1) · ◐ nửa (value>0) · ✗ sai (value=0). Màu theo GIÁ TRỊ lần đó, không phải mức dạng.
-function LanDo({ e }: { e: RecentEval }) {
-  const icon = e.value >= 1 ? '✓' : e.value > 0 ? '◐' : '✗'
-  const cls = e.value >= 1 ? 'bg-ph-green/15 text-ph-green' : e.value > 0 ? 'bg-ph-orange/15 text-ph-orange' : 'bg-ph-red/15 text-ph-red'
-  return (
-    <div className="flex flex-1 flex-col items-center gap-0.5" title={`${SRC_LABEL[e.src]} · ${fmtShort(e.t)}`}>
-      <span className={`flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-bold ${cls}`}>{icon}</span>
-      <span className="text-[8px] font-bold leading-none text-ph-label-2">{SRC_LABEL[e.src]}</span>
-      <span className="text-[7.5px] font-medium leading-none text-ph-label-2/70">{fmtShort(e.t)}</span>
-    </div>
   )
 }
 
