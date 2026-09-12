@@ -329,6 +329,8 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, presetGoc, onClose, o
   const [items, setItems] = useState<ReviewItem[]>([])
   const [showVariants, setShowVariants] = useState(false)
   const [vi, setVi] = useState(0)  // biến thể đang xem
+  // Duyệt luôn lúc clone (Thùy 12/09) — nhân sự tự tin đúng thì tích, khỏi để hậu kiểm sau.
+  const [duyetLuon, setDuyetLuon] = useState(false)
   const [parseErr, setParseErr] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
   const [showPrompt, setShowPrompt] = useState(false)
@@ -471,11 +473,11 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, presetGoc, onClose, o
         const variants = items.filter((v) => v.approved && v.noi_dung.trim())
         if (presetGoc) {
           // Clone từ bài CÓ SẴN: không đẻ gốc mới, biến thể bám vào câu đó + thừa kế cụm của nó.
-          const n = await saveCloneVariants({ goc: presetGoc, variants: variants.map(toCND) }, cauTbl)
-          alert(`Đã lưu ${n} biến thể cho ${presetGoc.ma_cau}${presetGoc.ma_cum ? ' (cùng cụm bài)' : ''}.`)
+          const n = await saveCloneVariants({ goc: presetGoc, variants: variants.map(toCND), daDuyet: duyetLuon }, cauTbl)
+          alert(`Đã lưu ${n} biến thể cho ${presetGoc.ma_cau}${presetGoc.ma_cum ? ' (cùng cụm bài)' : ''}${duyetLuon ? ' — đã duyệt.' : ' — chờ hậu kiểm.'}`)
         } else {
-          const res = await saveCloneBatch({ dangChinh, loaiCau: loai, goc: toCND(goc), variants: variants.map(toCND) }, cauTbl)
-          alert(`Đã lưu: 1 gốc + ${res.soClone} biến thể.`)
+          const res = await saveCloneBatch({ dangChinh, loaiCau: loai, goc: toCND(goc), variants: variants.map(toCND), daDuyet: duyetLuon }, cauTbl)
+          alert(`Đã lưu: 1 gốc + ${res.soClone} biến thể${duyetLuon ? ' — đã duyệt.' : ' — chờ hậu kiểm.'}`)
         }
       } else {
         const n = await saveCauBatch({ dangChinh, loaiCau: loai, items: items.filter((v) => v.approved && v.noi_dung.trim()).map(toCND) }, cauTbl)
@@ -731,8 +733,13 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, presetGoc, onClose, o
 
         <div className="flex items-center justify-end gap-2 border-t border-slate-200 px-6 py-4">
           {parsed && <span className="mr-auto text-[13px] text-slate-500"><b>{nApproved}</b> câu sẽ lưu</span>}
+          {isClone && (
+            <label className="flex cursor-pointer items-center gap-1.5 text-[13px] font-medium text-slate-600" title="Tích = lưu xong đánh dấu Đã duyệt ngay (ghi tôi + giờ duyệt), khỏi chờ hậu kiểm sau. Để trống = lưu xong vẫn Chưa duyệt như cũ.">
+              <input type="checkbox" checked={duyetLuon} onChange={(e) => setDuyetLuon(e.target.checked)} />✓ Duyệt luôn
+            </label>
+          )}
           <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
-          <button onClick={save} disabled={!canSave || saving} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{saving ? 'Đang lưu…' : `Lưu ${nApproved} câu`}</button>
+          <button onClick={save} disabled={!canSave || saving} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{saving ? 'Đang lưu…' : duyetLuon ? `Lưu & duyệt ${nApproved} câu` : `Lưu ${nApproved} câu`}</button>
         </div>
       </div>
     </div>
