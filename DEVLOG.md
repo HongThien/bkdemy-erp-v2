@@ -11099,3 +11099,65 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
   100% thuộc nhóm "trắc nghiệm từng phần" (Thùy chốt 12/09 sáng, xem mục trên) hoặc 0 câu/ngoài phạm vi. KHÔNG
   còn dạng khối 6 nào "dễ, tự làm được ngay" theo khuôn hiện tại — bước tiếp theo BẮT BUỘC phải thiết kế kiến
   trúc "trắc nghiệm từng phần" trước (việc lớn, cần bàn kỹ với Thùy, không phải việc tự quyết được).
+## 2026-09-12 (tiếp) — Khối 6 hết dạng dễ, quay sang rà khối 7 dư + khởi động khảo sát khối 8/9
+- Khảo sát toàn hệ (mọi khối) để biết còn gì: khối 6/7 đã có form (787/832), **khối 8 (50 dạng có câu) và khối
+  9 (58 dạng) CHƯA ĐỤNG TỚI GÌ** — lãnh thổ hoàn toàn mới, chưa khảo sát nội dung (đại số đa thức/phân thức,
+  khác hẳn số học khối 6-7 mà engine hiện có hỗ trợ tốt).
+- Rà lại khối 7: dù đã 832 form, vẫn còn ~15 dạng tự luận chưa làm (077020101 Nhận biết STP 56 câu,
+  07702220301 So sánh/sắp xếp Số thực 30 câu, T107010205 Toán thực tế 66 câu, T107010405 Tích=0 6 câu,
+  T107010501-508 nhóm Dãy phân số ~120 câu, T107010103 còn 21/27 câu chưa làm, vài nhánh mã lạ T1077xxx nhỏ).
+- **T107010405 "Tìm x — tích 2 biểu thức bằng 0" (6 câu) — làm xong, tái dùng nguyên rule R33-37 đã có.** Phát
+  hiện + sửa 1 bug ENGINE thật trong `neverZero()`/`mcq-auto.mjs`: hàm chỉ nhận diện hạng tử luỹ thừa chẵn TRẦN
+  (`x²`) là "luôn ≥0", KHÔNG nhận diện hạng tử có HỆ SỐ (`4x²`) — khiến câu dạng `(4x²+9)(...)=0` không tính được
+  đáp án đúng (thất bại từ gốc, không phải thiếu rule). Đã vá cho cả `neverZero` (tính đáp án đúng) — R33 tự
+  nhiên vẫn hoạt động cho câu nào hệ số=1 nhờ đường bare-pow cũ, không đụng gì thêm. 6/6 (100%), 0 FAIL, đã ghi.
+- **T107010103 (khối 7, "So sánh số hữu tỉ") — dạng NÀY CÓ 3 SUB-SHAPE trộn trong cùng `dang_chinh`, không phải
+  1:** (a) "tìm x,y nguyên" — ĐÃ có 6 form từ trước (SPECIAL_DANG `soSanhTimXY`). (b) "sắp xếp 5 số hữu tỉ theo
+  thứ tự tăng dần" — 6 câu, ĐÃ LÀM MỚI hôm nay. (c) "so sánh A và B, kết luận A<B/A>B/A=B" — 14 câu, **KHÔNG LÀM**
+  (xem bài học ②, đây là ca "mơ hồ" thật sự, không phải thiếu rule).
+  **Vướng kiến trúc phải vá:** 1 `ma_dang` chỉ dispatch qua ĐÚNG 1 trong 2 nhánh (`TEXT_DANG` hoặc `SPECIAL_DANG`)
+  — không thể vừa DÙNG SPECIAL_DANG cho sub-shape (a) vừa TEXT_DANG cho sub-shape (b) như thiết kế cũ. Sửa
+  `mcq-auto.mjs`: khi `textFn(noiDung, null)` trả `null` (câu không khớp sub-shape TEXT_DANG) thì KHÔNG bỏ ngay
+  — rơi xuống thử `parseHuuTi`/SPECIAL_DANG/AST như thể dạng không nằm trong TEXT_DANG (thay đổi tối thiểu, chỉ
+  ảnh hưởng đúng lúc `res` null, không đụng hành vi các dạng TEXT_DANG hiện có vì chúng luôn match 100% câu).
+  Sửa song song `mcq-sinh.mjs`: thêm `laHinhThucText(dang, dapAn)` — với T107010103 riêng, nhận diện sub-shape
+  bằng đáp số kho CÓ CHỨA `<` hay không (sub-shape (a) "x=..; y=.." không có, (b)/(c) đáp số so sánh có), thay vì
+  `TEXT_DANG.has(dang)` chung chung — áp cho cả `list()`, `kiemCau()`, `ghi()`.
+  DẠNG 10 mới (`sapXepSoHuuTi`, mini-dang.mjs) — 4 rule R85-88 (nhầm so sánh 2 số âm/quên đổi dấu, nhầm so sánh
+  2 số dương/quy đồng sai, sắp giảm dần thay tăng dần, đặt 0 sai vị trí). 5/6 câu ghi được (0 FAIL); câu 013 có
+  vẻ kho tự mâu thuẫn (noi_dung ghi -7/4 nhưng loi_giai/dap_an dùng -7/5) — không sửa kho, chỉ ghi nhận.
+- Hồi quy 12 file diag liên quan (không chạy toàn bộ ~150+ file `_diag_*.mjs` cũ của cả repo — glob quá rộng,
+  đã dừng giữa chừng 1 lần vì lố phạm vi) — tất cả pass, không hỏng gì.
+
+## ② BÀI HỌC MỚI
+- **⭐ "So sánh A và B, kết luận A<B hay A>B" KHÔNG PHẢI dạng 4-đáp-án hợp lý** — với 2 số CỐ ĐỊNH từ đề, chỉ có
+  tối đa 3 kết luận khả dĩ (A<B / A>B / A=B), không đủ 4 văn bản phân biệt cho 1 câu trắc nghiệm thật (khác hẳn
+  "sắp xếp N số" hay "tìm ước/bội" — những dạng có KHÔNG GIAN LỜI GIẢI đủ rộng để sinh 3 đường sai riêng biệt).
+  Nhận diện dấu hiệu: nếu đáp số kho về bản chất chỉ là 1 trong ≤3 giá trị rời rạc cố định (không phải 1 trong
+  vô số giá trị/tập hợp có thể), dừng lại hỏi trước khi thiết kế rule — đừng cố nhét ép 4 phương án.
+- **⭐ 1 `ma_dang` có thể trộn NHIỀU sub-shape đáp số khác nhau — kiểm bằng cách bẫy 1 CHỮ KÝ trong CHÍNH đáp số
+  kho** (vd có ký tự `<` hay không), KHÔNG suy từ nội dung câu hỏi hay giả định "1 dạng = 1 hình dạng". Khi gặp
+  ca này, sửa dispatch (`mcq-auto.mjs`/`mcq-sinh.mjs`) theo hướng "thử nhánh A trước, KHÔNG khớp thì rơi xuống
+  thử nhánh B" — không hard-code 1 dạng chỉ đi 1 nhánh duy nhất.
+
+## 2026-09-12 (tiếp) — Tách 2 luồng MCQ (khối 8-9 / khối 6-7) + viết spec quy trình
+- Thùy chốt (giữa lúc đang code 07702220301 So sánh/sắp xếp Số thực): thay vì 1 luồng làm tuần tự hết khối
+  này tới khối khác, tách **2 LUỒNG SONG SONG** — luồng A làm khối 8-9 (lãnh thổ mới, đại số đa thức/phân
+  thức), luồng B làm tiếp phần còn lại khối 6-7. Yêu cầu viết 1 file MD RIÊNG (không phải thêm vào
+  spec-mcq-form.md — đó là quyết định phạm vi Pool 1 gốc) đúc kết QUY TRÌNH kỹ thuật để cả 2 luồng tuân theo
+  nhất quán, tránh mỗi luồng tự phát minh lại cách làm hoặc đụng độ khi 2 bên cùng sửa file dùng chung.
+- **Đã viết `spec-mcq-quy-trinh-sinh.md`** (repo root) — nội dung: quy trình bắt buộc 5 bước cho mỗi dạng mới
+  (đọc lời giải thật → khảo sát hết sub-shape bằng regexp_replace group-by → liệt kê điểm rẽ sai → phân loại
+  rõ ràng/mơ hồ → verify sạch mới ghi); bảng tiêu chí quyết định nhanh rõ-ràng-vs-mơ-hồ (đúc kết từ toàn bộ
+  case thật đã gặp 08-12/09: 1 giá trị/tập = rõ, ≤3 kết luận rời rạc hoặc "Có/Không" = mơ hồ, nhiều bước lập
+  luận = ngoài phạm vi/"trắc nghiệm từng phần"); kiến trúc 3 file (mini-dang.mjs/mcq-auto.mjs/mcq-sinh.mjs,
+  SPECIAL_DANG vs TEXT_DANG); cách xử lý 1 dạng trộn nhiều sub-shape (fallback pattern + chữ ký trong đáp số
+  kho); quy ước đặt mã rule khi 2 luồng chạy song song (luôn `select max(ma)` trước khi đặt mã mới, tránh
+  đụng độ R89 khi merge); 4 bẫy kỹ thuật hay gặp đúc kết thực chiến; danh sách nhóm "ngoài phạm vi hiện tại".
+  Đã thêm 1 dòng tham chiếu bắt buộc-đọc vào `CLAUDE.md` §7 (Spec build), ngay dưới `spec-mcq-form.md`.
+- **Tạm dừng việc code 07702220301** (So sánh/sắp xếp Số thực có căn, khối 7) giữa chừng — đã khảo sát xong
+  3 sub-shape (14+11+5 câu, gồm cả token `|-...|` giá trị tuyệt đối), CHƯA code/CHƯA ghi gì. Nối lại việc này
+  thuộc luồng B (khối 6-7) theo phân công mới — người tiếp quản đọc mục "khảo sát" ở đây rồi làm tiếp, không
+  cần khảo sát lại: kho dùng kỹ thuật bình phương để so sánh số hữu tỉ với căn bậc hai (`$\dfrac{9}{4}=\sqrt{
+  \dfrac{81}{16}}<\sqrt{6}$`), 3 loại token cần parse (số nguyên/thập phân có dấu phẩy kiểu VN, `\dfrac{}{}`,
+  `\sqrt{}`, và `|...|`/`\left|...\right|` giá trị tuyệt đối bọc quanh số âm).

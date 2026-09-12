@@ -12,7 +12,7 @@
 // Hình thức: đáp án đúng phải có ≥1 distractor CÙNG kiểu (nguyên/phân số/tập); kiểu khác được phép (xem verify).
 import { readFileSync, writeFileSync } from 'node:fs'
 import { parseHuuTi } from './lib/huuti.mjs'
-import { tinhTuanHoan, layTron, soSanhTimXY, phanTichNguyenTo, chuanHoaFactorText, evalFactorText, nhanBietNguyenToHopSo, chuanHoaTapText, evalTapText, uclnBcnnDinhNghia, tapUcBc, uocBoiCoBan, ucBcCoBan, tongTapHopNhoHon } from './lib/mini-dang.mjs'
+import { tinhTuanHoan, layTron, soSanhTimXY, phanTichNguyenTo, chuanHoaFactorText, evalFactorText, nhanBietNguyenToHopSo, chuanHoaTapText, evalTapText, uclnBcnnDinhNghia, tapUcBc, uocBoiCoBan, ucBcCoBan, tongTapHopNhoHon, sapXepSoHuuTi, chuanHoaThuTu, evalThuTu } from './lib/mini-dang.mjs'
 
 // ── Rat (BigInt) ──────────────────────────────────────────────────────────────────────────────────────────────
 const gcd = (a, b) => { a = a < 0n ? -a : a; b = b < 0n ? -b : b; while (b) { [a, b] = [b, a % b] } return a }
@@ -472,6 +472,11 @@ function neverZero(f, ctx) {
     if (t.s < 0) return false
     const s2 = strip(t.n)
     if (s2.t === 'pow' && s2.n % 2 === 0) continue
+    if (s2.t === 'bin' && s2.op === '*') { // hạng tử "hệ_số·x^chẵn" (vd 4x²) — cùng loại ≥0 như x^chẵn trần, KHÔNG tính là "hạng dương chắc chắn"
+      const l = strip(s2.a), r = strip(s2.b)
+      const powSide = (l.t === 'pow' && l.n % 2 === 0) ? l : (r.t === 'pow' && r.n % 2 === 0) ? r : null
+      if (powSide) { const coefSide = powSide === l ? r : l; const cv = ev(coefSide, ctx); if (cv && !isNeg(cv) && cv.p !== 0n) continue }
+    }
     const v = ev(s2, ctx); if (v && !isNeg(v) && v.p !== 0n) { coHangDuong = true; continue }
     return false
   }
@@ -593,6 +598,8 @@ const DS = {
   R79: 'ƯC/BC: quên số 0, bắt đầu liệt kê từ chính BCNN', R80: 'ƯC/BC: nhân trực tiếp 2 số làm BCNN',
   R81: 'Tổng tập {x<K}: quên x<K nghiêm ngặt, cộng luôn cả K', R82: 'Tổng tập {x<K}: dùng công thức Gauss nhưng quên chia đôi',
   R83: 'Tổng tập {x<K}: cộng thiếu phần tử lớn nhất', R84: 'Tổng tập {x<K}: nhầm đếm số phần tử với tính tổng',
+  R85: 'Sắp xếp: so sánh nhầm 2 số âm (quên đổi dấu)', R86: 'Sắp xếp: so sánh nhầm 2 số dương (quy đồng sai)',
+  R87: 'Sắp xếp: giảm dần thay vì tăng dần', R88: 'Sắp xếp: đặt 0 sai vị trí',
 }
 const UU_TIEN = {
   T107010201: ['R06', 'R26', 'R07', 'R04', 'R10'], T107010202: ['R10', 'R08', 'R27', 'R11', 'R26', 'R09', 'R06'], T107010203: ['R19', 'R20', 'R06', 'R26', 'R08', 'R10', 'R04'],
@@ -625,13 +632,14 @@ const UU_TIEN = {
   // Pool 2A (08/09 tiếp — spec-mcq-form.md khảo sát, mở rộng engine với √/|…|):
   '07702202202': ['R29', 'R28', 'R16', 'R03', 'R14', 'R08', 'R04', 'R10', 'R11'], // Thực hiện phép tính Căn bậc hai
   '077022022203': ['R36', 'R37', 'R33', 'R32', 'R34', 'R35', 'R28', 'R19', 'R20', 'R16', 'R11', 'R06', 'R10'], // Tìm x liên quan Căn bậc hai (nhiều câu là tích=0, vài câu x ở số mũ)
+  T107010405: ['R36', 'R37', 'R33', 'R34', 'R35'], // Tích các biểu thức bằng 0 (1 thừa số vô nghiệm × 1 thừa số x ở số mũ) — tái dùng nguyên rule đã có
   '07702011103': ['R38', 'R39', 'R40', 'R50', 'R04'], // Viết STP tuần hoàn thành phân số (dạng ĐẶC BIỆT, không qua AST — xem SPECIAL_DANG)
   '0770201102': ['R38', 'R39', 'R40', 'R50', 'R42', 'R49', 'R43', 'R48', 'R44'], // Làm tròn STP (ĐẶC BIỆT — nguồn tuần hoàn dùng chung rule với 07702011103)
-  'T107010103': ['R51', 'R45', 'R46', 'R47'], // So sánh số hữu tỉ — nhánh tìm x,y nguyên (ĐẶC BIỆT)
+  'T107010103': ['R51', 'R45', 'R46', 'R47', 'R85', 'R86', 'R87', 'R88'], // So sánh số hữu tỉ — trộn: tìm x,y nguyên (SPECIAL_DANG) + sắp xếp tăng dần (TEXT_DANG)
   '07702220320302': ['R30', 'R29', 'R28', 'R16', 'R03', 'R18', 'R08', 'R10', 'R04'], // Thực hiện phép tính GTTĐ
   '07702220320320303': ['R21', 'R31', 'R19', 'R20', 'R11', 'R06', 'R10', 'R04'], // Tìm x liên quan GTTĐ
 }
-const ALL = ['R01', 'R02', 'R03', 'R06', 'R07', 'R08', 'R09', 'R10', 'R11', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18', 'R19', 'R20', 'R21', 'R22', 'R23', 'R26', 'R27', 'R28', 'R29', 'R30', 'R31', 'R32', 'R33', 'R34', 'R35', 'R36', 'R37', 'R38', 'R39', 'R40', 'R42', 'R43', 'R44', 'R45', 'R46', 'R47', 'R48', 'R49', 'R50', 'R51', 'R52', 'R53', 'R54', 'R55', 'R56', 'R57', 'R58', 'R59', 'R60', 'R61', 'R62', 'R63', 'R64', 'R65', 'R66', 'R67', 'R68', 'R69', 'R70', 'R71', 'R72', 'R73', 'R74', 'R75', 'R76', 'R77', 'R78', 'R79', 'R80', 'R81', 'R82', 'R83', 'R84', 'R04', 'R24', 'R05']
+const ALL = ['R01', 'R02', 'R03', 'R06', 'R07', 'R08', 'R09', 'R10', 'R11', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18', 'R19', 'R20', 'R21', 'R22', 'R23', 'R26', 'R27', 'R28', 'R29', 'R30', 'R31', 'R32', 'R33', 'R34', 'R35', 'R36', 'R37', 'R38', 'R39', 'R40', 'R42', 'R43', 'R44', 'R45', 'R46', 'R47', 'R48', 'R49', 'R50', 'R51', 'R52', 'R53', 'R54', 'R55', 'R56', 'R57', 'R58', 'R59', 'R60', 'R61', 'R62', 'R63', 'R64', 'R65', 'R66', 'R67', 'R68', 'R69', 'R70', 'R71', 'R72', 'R73', 'R74', 'R75', 'R76', 'R77', 'R78', 'R79', 'R80', 'R81', 'R82', 'R83', 'R84', 'R85', 'R86', 'R87', 'R88', 'R04', 'R24', 'R05']
 // Dạng có KHUÔN VĂN BẢN riêng, không phải biểu thức LaTeX chung — mini-solver ở lib/mini-dang.mjs, KHÔNG qua
 // mathOf/parse/AST. Mỗi hàm nhận (noiDung, rule) → {value, text?, ds?} | null (rule=null ⇒ đáp số đúng).
 const SPECIAL_DANG = { '07702011103': tinhTuanHoan, '0770201102': layTron, T107010103: soSanhTimXY, T106040102: uclnBcnnDinhNghia, T106040202: uclnBcnnDinhNghia, T106010103: tongTapHopNhoHon }
@@ -639,7 +647,7 @@ const SPECIAL_DANG = { '07702011103': tinhTuanHoan, '0770201102': layTron, T1070
 // Rat/canonOf (xem mini-dang.mjs: R54 của DẠNG 4 cố ý giữ nguyên giá trị số nhưng sai hình thức, so giá trị sẽ
 // coi là trùng đáp án đúng). Mỗi dạng có 1 cặp {canon, val} hàm chuẩn hoá/kiểm riêng — KHÔNG dùng chung 1 cặp
 // cho mọi dạng vì cú pháp đáp số khác hẳn nhau (biểu thức \cdot vs danh sách "; ").
-const TEXT_DANG = { T106030302: phanTichNguyenTo, T106030301: nhanBietNguyenToHopSo, T106040104: tapUcBc, T106040204: tapUcBc, T106030101: uocBoiCoBan, T106040101: ucBcCoBan, T106040201: ucBcCoBan }
+const TEXT_DANG = { T106030302: phanTichNguyenTo, T106030301: nhanBietNguyenToHopSo, T106040104: tapUcBc, T106040204: tapUcBc, T106030101: uocBoiCoBan, T106040101: ucBcCoBan, T106040201: ucBcCoBan, T107010103: sapXepSoHuuTi }
 const TEXT_FN = {
   T106030302: { canon: chuanHoaFactorText, val: evalFactorText },
   T106030301: { canon: chuanHoaTapText, val: evalTapText },
@@ -648,6 +656,7 @@ const TEXT_FN = {
   T106030101: { canon: chuanHoaTapText, val: evalTapText },
   T106040101: { canon: chuanHoaTapText, val: evalTapText },
   T106040201: { canon: chuanHoaTapText, val: evalTapText },
+  T107010103: { canon: chuanHoaThuTu, val: evalThuTu },
 }
 // Dạng khối 6 số tự nhiên: dấu CHẤM giữa 2 số là phép NHÂN (không phải thập phân) — khớp whitelist kho-quet-dapso.mjs.
 const CHAM_LA_NHAN = new Set(['T106020201', 'T106020202', 'T106020203', 'T106020301', 'T106020302', 'T106020303', 'T106020401', 'T106020402', 'T106020403', 'T106020501', 'T106020503'])
@@ -716,40 +725,44 @@ for (const q of pool.cau) {
   if (debug && q.ma_cau !== debug) continue
   // ── Dạng ĐÁP SỐ LÀ BIỂU THỨC (vd phân tích thừa số nguyên tố) — nhánh RIÊNG, so bằng TEXT, không qua parseHuuTi
   // (đáp số kho không phải 1 giá trị hữu tỉ, parseHuuTi sẽ luôn fail và loại hết câu ngay từ đầu nếu đi nhánh cũ).
+  // Dạng có NHIỀU SUB-SHAPE trộn lẫn (vd T107010103: vừa "so sánh tìm x,y" qua SPECIAL_DANG, vừa "sắp xếp" qua
+  // TEXT_DANG) — nếu textFn(null) không nhận diện được câu này (trả null) thì KHÔNG bỏ ngay, rơi xuống thử nhánh
+  // parseHuuTi/SPECIAL_DANG/AST bình thường bên dưới, như thể dạng đó không nằm trong TEXT_DANG.
   const textFn = TEXT_DANG[q.dang_chinh]
   if (textFn) {
     const fn = TEXT_FN[q.dang_chinh]
-    const correctText = fn.canon(q.dap_an), nCorrect = fn.val(q.dap_an)
     let res; try { res = textFn(q.noi_dung, null) } catch { res = null }
-    if (!res || !res.text) { bo.push([q.ma_cau, 'không tính được']); continue }
-    const cText = fn.canon(res.text), nOurs = fn.val(res.text)
-    if (nOurs == null || nCorrect == null || nOurs !== nCorrect || cText !== correctText) {
-      lech.push([q.ma_cau, cText, correctText, q.noi_dung.slice(0, 70)]); bo.push([q.ma_cau, `máy ra ${cText} ≠ đáp số kho ${correctText}`]); continue
+    if (res && res.text) {
+      const correctText = fn.canon(q.dap_an), nCorrect = fn.val(q.dap_an)
+      const cText = fn.canon(res.text), nOurs = fn.val(res.text)
+      if (nOurs == null || nCorrect == null || nOurs !== nCorrect || cText !== correctText) {
+        lech.push([q.ma_cau, cText, correctText, q.noi_dung.slice(0, 70)]); bo.push([q.ma_cau, `máy ra ${cText} ≠ đáp số kho ${correctText}`]); continue
+      }
+      const uu = UU_TIEN[q.dang_chinh] ?? []
+      const order = [...uu, ...ALL.filter((r) => !uu.includes(r))]
+      const cands = []; const seen = new Set([cText])
+      for (const r of order) {
+        let rres; try { rres = textFn(q.noi_dung, r) } catch { rres = null }
+        if (!rres || !rres.text) continue
+        const c = fn.canon(rres.text); if (seen.has(c)) continue
+        seen.add(c); cands.push({ r, c, ds: rres.ds || DS[r], text: rres.text })
+      }
+      if (debug) { console.log(q.noi_dung); console.log('đúng', cText); for (const c of cands) console.log('  ', c.r, c.c, '|', c.ds) }
+      const byXoayVong = (a, b) => (ruleUsed[a.r] ?? 0) - (ruleUsed[b.r] ?? 0) || order.indexOf(a.r) - order.indexOf(b.r)
+      const pick = [...cands].sort(byXoayVong).slice(0, 3)
+      if (pick.length < 3) { bo.push([q.ma_cau, `chỉ tìm được ${pick.length} distractor hợp lệ (${cands.map((c) => c.r + '=' + c.c).join(', ')})`]); continue }
+      for (const p of pick) ruleUsed[p.r] = (ruleUsed[p.r] ?? 0) + 1
+      pick.sort((a, b) => order.indexOf(a.r) - order.indexOf(b.r))
+      const L = ['A', 'B', 'C', 'D']; const pos = L.reduce((mm, l) => (counts[l] ?? 0) < (counts[mm] ?? 0) ? l : mm, 'A'); counts[pos] = (counts[pos] ?? 0) + 1
+      const pi = L.indexOf(pos)
+      const lua_chon = []; let di = 0
+      for (let i = 0; i < 4; i++) {
+        if (i === pi) lua_chon.push({ text: res.text, dung: true })
+        else { const d = pick[di++]; lua_chon.push({ text: d.text, dung: false, rule: d.r, duong_sai: d.ds }) }
+      }
+      out.push({ ma_cau: q.ma_cau, dap_an: pos, lua_chon })
+      continue
     }
-    const uu = UU_TIEN[q.dang_chinh] ?? []
-    const order = [...uu, ...ALL.filter((r) => !uu.includes(r))]
-    const cands = []; const seen = new Set([cText])
-    for (const r of order) {
-      let rres; try { rres = textFn(q.noi_dung, r) } catch { rres = null }
-      if (!rres || !rres.text) continue
-      const c = fn.canon(rres.text); if (seen.has(c)) continue
-      seen.add(c); cands.push({ r, c, ds: rres.ds || DS[r], text: rres.text })
-    }
-    if (debug) { console.log(q.noi_dung); console.log('đúng', cText); for (const c of cands) console.log('  ', c.r, c.c, '|', c.ds) }
-    const byXoayVong = (a, b) => (ruleUsed[a.r] ?? 0) - (ruleUsed[b.r] ?? 0) || order.indexOf(a.r) - order.indexOf(b.r)
-    const pick = [...cands].sort(byXoayVong).slice(0, 3)
-    if (pick.length < 3) { bo.push([q.ma_cau, `chỉ tìm được ${pick.length} distractor hợp lệ (${cands.map((c) => c.r + '=' + c.c).join(', ')})`]); continue }
-    for (const p of pick) ruleUsed[p.r] = (ruleUsed[p.r] ?? 0) + 1
-    pick.sort((a, b) => order.indexOf(a.r) - order.indexOf(b.r))
-    const L = ['A', 'B', 'C', 'D']; const pos = L.reduce((mm, l) => (counts[l] ?? 0) < (counts[mm] ?? 0) ? l : mm, 'A'); counts[pos] = (counts[pos] ?? 0) + 1
-    const pi = L.indexOf(pos)
-    const lua_chon = []; let di = 0
-    for (let i = 0; i < 4; i++) {
-      if (i === pi) lua_chon.push({ text: res.text, dung: true })
-      else { const d = pick[di++]; lua_chon.push({ text: d.text, dung: false, rule: d.r, duong_sai: d.ds }) }
-    }
-    out.push({ ma_cau: q.ma_cau, dap_an: pos, lua_chon })
-    continue
   }
   const key = parseHuuTi(q.dap_an); if (!key.ok) { bo.push([q.ma_cau, 'đáp số kho không parse']); continue }
   const special = SPECIAL_DANG[q.dang_chinh]

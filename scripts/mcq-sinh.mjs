@@ -16,7 +16,7 @@ import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { parseHuuTi, hinhThuc, ratEq } from './lib/huuti.mjs'
-import { chuanHoaFactorText, evalFactorText, chuanHoaTapText, evalTapText } from './lib/mini-dang.mjs'
+import { chuanHoaFactorText, evalFactorText, chuanHoaTapText, evalTapText, chuanHoaThuTu, evalThuTu } from './lib/mini-dang.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const envf = (f) => Object.fromEntries(readFileSync(f, 'utf8').split('\n').map((l) => l.match(/^\s*([A-Z_]+)\s*=\s*(.+?)\s*$/)).filter(Boolean).map((m) => [m[1], m[2].replace(/^["']|["']$/g, '')]))
@@ -34,7 +34,7 @@ const POOL3 = ['T106020202', 'T106020203', 'T106020301', 'T106020302', 'T1060203
 // Dạng ĐÁP SỐ LÀ BIỂU THỨC/TẬP HỢP (không phải 1 giá trị hữu tỉ) — parseHuuTi luôn fail, phải so bằng TEXT chuẩn
 // hoá (xem mini-dang.mjs `phanTichNguyenTo`/`nhanBietNguyenToHopSo`). Mỗi dạng 1 cặp {canon, val} riêng vì cú
 // pháp đáp số khác nhau (biểu thức \cdot vs danh sách "; ").
-const TEXT_DANG = new Set(['T106030302', 'T106030301', 'T106040104', 'T106040204', 'T106030101', 'T106040101', 'T106040201'])
+const TEXT_DANG = new Set(['T106030302', 'T106030301', 'T106040104', 'T106040204', 'T106030101', 'T106040101', 'T106040201', 'T107010103'])
 const TEXT_FN = {
   T106030302: { canon: chuanHoaFactorText, val: evalFactorText },
   T106030301: { canon: chuanHoaTapText, val: evalTapText },
@@ -43,6 +43,14 @@ const TEXT_FN = {
   T106030101: { canon: chuanHoaTapText, val: evalTapText },
   T106040101: { canon: chuanHoaTapText, val: evalTapText },
   T106040201: { canon: chuanHoaTapText, val: evalTapText },
+  T107010103: { canon: chuanHoaThuTu, val: evalThuTu },
+}
+// T107010103 TRỘN 2 sub-shape: "sắp xếp tăng dần" (đáp số kho là chuỗi "A < B < …", đi TEXT_DANG) và "tìm x,y
+// nguyên" (đáp số kho "x=..; y=..", đi parseHuuTi/SPECIAL_DANG như cũ, ĐÃ có 6 form từ trước) — nhận diện bằng
+// việc đáp số kho có ký tự "<" hay không, KHÔNG dùng blanket TEXT_DANG.has() cho riêng dạng này.
+function laHinhThucText(dang, dapAn) {
+  if (dang === 'T107010103') return /</.test(String(dapAn ?? ''))
+  return TEXT_DANG.has(dang)
 }
 const TBL = 'dai_cau_form_tn'
 const LETTERS = ['A', 'B', 'C', 'D']
@@ -71,7 +79,7 @@ async function list() {
     order by q.dang_chinh, q.ma_cau`, [dangs])
   const cau = [], bo = []
   for (const r of rows) {
-    if (TEXT_DANG.has(r.dang_chinh)) { // đáp số là BIỂU THỨC/TẬP — kiểm bằng fn.val riêng theo dạng, không qua parseHuuTi
+    if (laHinhThucText(r.dang_chinh, r.dap_an)) { // đáp số là BIỂU THỨC/TẬP — kiểm bằng fn.val riêng theo dạng, không qua parseHuuTi
       const fn = TEXT_FN[r.dang_chinh]
       const n2 = fn.val(r.dap_an)
       if (n2 == null) { bo.push({ ma_cau: r.ma_cau, dap_an: r.dap_an, ly_do: 'không tính được giá trị' }); continue }
@@ -123,7 +131,7 @@ function kiemCauText(item, dbRow, ruleMap) {
 function kiemCau(item, dbRow, ruleMap) {
   const err = []
   if (!dbRow) return ['không có trong kho / đã có form / không thuộc pool']
-  if (TEXT_DANG.has(dbRow.dang_chinh)) return kiemCauText(item, dbRow, ruleMap)
+  if (laHinhThucText(dbRow.dang_chinh, dbRow.dap_an)) return kiemCauText(item, dbRow, ruleMap)
   const key = parseHuuTi(dbRow.dap_an)
   if (!key.ok) return [`đáp số kho không parse được: ${key.ly_do}`]
   const lc = item.lua_chon
@@ -189,7 +197,7 @@ async function ghi(file) {
   let n = 0, skip = 0
   for (const it of pass) {
     const { rows } = await c.query('select dap_an, dang_chinh from dai_cau_hoi where ma_cau = $1', [it.ma_cau])
-    const keyCanon = TEXT_DANG.has(rows[0]?.dang_chinh) ? TEXT_FN[rows[0]?.dang_chinh].canon(rows[0]?.dap_an ?? '') : parseHuuTi(rows[0]?.dap_an ?? '').canon
+    const keyCanon = laHinhThucText(rows[0]?.dang_chinh, rows[0]?.dap_an) ? TEXT_FN[rows[0]?.dang_chinh].canon(rows[0]?.dap_an ?? '') : parseHuuTi(rows[0]?.dap_an ?? '').canon
     await c.query('begin')
     try {
       const r = await c.query(`

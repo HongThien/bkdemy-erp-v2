@@ -266,6 +266,11 @@
   đúng/sai từng ô; logic chọn form cho HS (yếu → ĐIỀN, ổn → TN; TLN/tự luận để sau).
 - `spec-mcq-form.md` — Phiên bản TRẮC NGHIỆM (distractor theo lỗi) của câu tính toán, pool 1 lớp 7 "Số hữu tỉ".
   CEO chốt 08/09: MCQ ưu tiên, là form THÊM (bảng `dai_cau_form_tn`), **không đổ `lua_chon` vào câu gốc**.
+- **`spec-mcq-quy-trinh-sinh.md` — ĐỌC BẮT BUỘC trước khi thêm 1 dạng mới vào pipeline MCQ** (mọi khối,
+  không riêng Pool 1). QUY TRÌNH kỹ thuật (khác `spec-mcq-form.md` là quyết định phạm vi): tiêu chí dạng
+  RÕ RÀNG (tự quyết) vs MƠ HỒ (phải hỏi CEO) · kiến trúc `SPECIAL_DANG`/`TEXT_DANG` · cách xử lý 1 `dang_chinh`
+  trộn nhiều sub-shape · quy ước đặt mã rule khi 2 luồng (khối 8-9 / khối 6-7) chạy song song · bẫy kỹ thuật
+  hay gặp. Viết 12/09 theo yêu cầu Thùy tách 2 luồng riêng.
 - `erp-v2-ui-spec.md` — Shell UI/UX **view-first**: React + Vite + Zustand + Tailwind, **mock data, CHƯA đụng Supabase**. Đơn vị = ROLE; derive nav/queue theo role; 2 loại việc (vận hành derive / phát triển giao tay) tách hẳn. Kho = 1 lá "Bản đồ kiến thức" trong cây Admin.
 ## Luật xoá (bắt buộc)
 Trước khi XOÁ bất cứ gì — xoá file, drop/alter/delete bảng/cột/dòng DB,

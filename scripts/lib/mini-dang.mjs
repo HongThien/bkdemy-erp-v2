@@ -575,3 +575,48 @@ export function tongTapHopNhoHon(noiDung, rule) {
   if (rule === 'R84') { if (K === dung) return null; return { value: R(K), ds: 'nhầm bài toán "đếm số phần tử" với "tính tổng các phần tử"' } }
   return null
 }
+
+// ── DẠNG 10: Sắp xếp số hữu tỉ theo thứ tự tăng dần (T107010103, sub-shape 6 câu) — ĐÁP SỐ LÀ CHUỖI BẤT ĐẲNG
+// THỨC giữ NGUYÊN VĂN các số như đề cho (không rút gọn) — so khớp bằng TEXT (thứ tự PHẢI đúng, không phải tập).
+export function chuanHoaThuTu(s) { return String(s ?? '').replace(/\$/g, '').replace(/\s+/g, ' ').trim() }
+export function evalThuTu(s) { const t = chuanHoaThuTu(s); return t || null }
+export function sapXepSoHuuTi(noiDung, rule) {
+  const m = String(noiDung).match(/Sắp xếp các số hữu tỉ theo thứ tự tăng dần:\s*(.+?)\s*$/)
+  if (!m) return null
+  const raw = m[1].split(';').map((s) => s.trim()).filter(Boolean)
+  const items = raw.map((t) => {
+    if (/^0$/.test(t)) return { text: t, value: R(0n), neg: false, zero: true }
+    const fm = t.match(/\\dfrac\{(-?\d+)\}\{(-?\d+)\}/)
+    if (!fm) return null
+    const v = R(BigInt(fm[1]), BigInt(fm[2])); if (!v) return null
+    return { text: t, value: v, neg: v.p < 0n, zero: false }
+  })
+  if (items.length < 3 || items.some((x) => !x)) return null
+  const sorted = [...items].sort((a, b) => cmp(a.value, b.value))
+  const dungText = sorted.map((x) => x.text).join(' < ')
+  if (!rule) return { text: dungText }
+  const negs = items.filter((x) => x.neg), poss = items.filter((x) => !x.neg && !x.zero)
+  if (rule === 'R85') { // nhầm so sánh 2 số âm — lấy trực tiếp tử số/giá trị tuyệt đối mà quên đổi dấu (đảo thứ tự 2 số âm)
+    if (negs.length !== 2) return null
+    const swapped = sorted.map((x) => (x === negs[0] ? negs[1] : x === negs[1] ? negs[0] : x))
+    const t = swapped.map((x) => x.text).join(' < '); if (t === dungText) return null
+    return { text: t, ds: 'so sánh nhầm 2 số âm — lấy trực tiếp tử số/giá trị tuyệt đối, quên đổi dấu' }
+  }
+  if (rule === 'R86') { // nhầm so sánh 2 số dương tương tự (quy đồng sai)
+    if (poss.length !== 2) return null
+    const swapped = sorted.map((x) => (x === poss[0] ? poss[1] : x === poss[1] ? poss[0] : x))
+    const t = swapped.map((x) => x.text).join(' < '); if (t === dungText) return null
+    return { text: t, ds: 'quy đồng sai khi so sánh 2 số dương, đảo nhầm thứ tự' }
+  }
+  if (rule === 'R87') { // sắp xếp giảm dần thay vì tăng dần
+    const t = [...sorted].reverse().map((x) => x.text).join(' < '); if (t === dungText) return null
+    return { text: t, ds: 'sắp xếp giảm dần thay vì tăng dần (đọc nhầm đề)' }
+  }
+  if (rule === 'R88') { // đặt 0 sai vị trí (đưa lên đầu)
+    const zeroItem = items.find((x) => x.zero); if (!zeroItem) return null
+    const rest = sorted.filter((x) => !x.zero)
+    const t = [zeroItem, ...rest].map((x) => x.text).join(' < '); if (t === dungText) return null
+    return { text: t, ds: 'đặt nhầm 0 lên đầu — quên xét dấu âm/dương của các số hữu tỉ khác' }
+  }
+  return null
+}
