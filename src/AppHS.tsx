@@ -15,6 +15,7 @@ import DanhSachHS, { type DsRow } from './screens/hocsinh/DanhSachHS'
 import MayManHS from './screens/hocsinh/MayManHS'
 import ThanhTuuHS from './screens/hocsinh/ThanhTuuHS'
 import BaiTapGiaoHS from './screens/hocsinh/BaiTapGiaoHS'
+import ThongTinHocTap from './screens/hocsinh/ThongTinHocTap'
 import { getMyHocSinhId } from './lib/testonline'
 
 // DEMO màn chính (CHỈ bản dev, không vào build): `hs.html?demo` · `?demo=nu` (nữ) · thêm `&ca` (banner bổ trợ)
@@ -31,6 +32,7 @@ function DemoHome() {
   if (q.get('demo') === 'baitapgiao') return <BaiTapGiaoHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
   if (q.get('demo') === 'maymai') return <MayManHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
   if (q.get('demo') === 'cap1') return <HomeCap1 hoTen="Nguyễn Minh Quân" maHS="hs0012" chuaDoc={2} onHopThu={noopBack} onOpen={noopBack} />
+  if (q.get('demo') === 'thongtin') return <ThongTinHocTap hocSinhId="00000000-0000-0000-0000-000000000000" gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
   void MayManHS  // giữ import cho các bản build sau, hiện tại demo maymai vẫn cần lib DB
   // `?demo=list` (+`&nu`, +`&rong`) — màn danh sách bài (kit hs-bai-tap-tren-lop-v1) với 4 trạng thái suy sẵn
   if (q.get('demo') === 'list') {
