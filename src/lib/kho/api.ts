@@ -2264,9 +2264,12 @@ export async function duyetFormTnBatch(mon: KhoMon, ids: string[], nguoiDuyet: s
 // ══ HÀNG DUYỆT HỢP NHẤT (spec-kho-chuan.md §3, mig 202609080938) — màn "Duyệt lời giải AI" thành 1 hàng đợi nhiều bộ lọc ══
 // Bộ lọc = trạng thái thật trong bảng câu (da_duyet=false / kiem_may), KHÔNG có bảng hàng đợi riêng. List/đếm/duyệt/từ chối
 // đều là function Postgres; ở đây chỉ gọi rpc + render. `cau_moi` = câu sau NGÀY BẬT chưa duyệt — cửa 1 đang chặn khỏi HS.
-export type HangDuyetLoc = 'cau_moi' | 'moi' | 'nghi' | 'khong_kiem' | 'ton_dong'
+// 'dung_sai' (CEO 12/09, mig 202609122218): câu Đúng/Sai là LOẠI RIÊNG — 5 bộ lọc cũ loại nó ra; duyệt theo TỪNG MỆNH ĐỀ
+// (bảng con <mon>_cau_menh_de, mỗi mệnh đề 1 dạng) ở DuyetDungSaiTab, không đi qua thẻ DuyetCauTab.
+export type HangDuyetLoc = 'cau_moi' | 'moi' | 'nghi' | 'khong_kiem' | 'ton_dong' | 'dung_sai'
 export const HANG_DUYET_LABEL: Record<HangDuyetLoc, string> = {
   cau_moi: 'Câu mới chờ duyệt', moi: 'Lời giải mới từ Claude', nghi: 'Máy nghi đáp số', khong_kiem: 'Không kiểm được', ton_dong: 'Tồn đọng (AI cũ)',
+  dung_sai: 'Đúng/Sai',
 }
 export type CauHangDuyet = {
   ma_cau: string; dang_chinh: string; ten_dang: string; ten_chuyen_de: string; khoi: string; loai_cau: string
@@ -2300,6 +2303,41 @@ export async function duyetCauHangDuyet(mon: KhoMon, maCau: string, nguoi: strin
 export async function tuChoiCauHangDuyet(mon: KhoMon, maCau: string, nguoi: string, lyDo: string): Promise<void> {
   const { error } = await supabase.rpc('fn_kho_tu_choi_cau', { p_mon: mon, p_ma_cau: maCau, p_nguoi: nguoi, p_ly_do: lyDo })
   if (error) throw error
+}
+
+// ══ DUYỆT ĐÚNG/SAI THEO MỆNH ĐỀ (CEO 12/09, mig 202609121432 + 202609122218) ══
+// Mỗi mệnh đề là 1 dạng riêng ⇒ 1 câu ĐS ~ N KP đo cùng lúc. Dòng bảng con <mon>_cau_menh_de = chân lý về dạng/duyệt của
+// mệnh đề; jsonb menh_de trên câu cha là đường ghi cũ (createCauDungSai), trigger sync xuống. `con === null` = mệnh đề chưa có
+// dòng con (ma_dang jsonb rớt sau renumber) ⇒ người phải chọn dạng rồi duyệt. Câu cha chỉ duyệt được khi MỌI mệnh đề đã duyệt.
+export type MenhDeCon = {
+  id: string; dang_chinh: string; ten_dang: string; ten_chuyen_de: string; noi_dung: string; dung: boolean; loi_giai: string | null
+  da_duyet: boolean; duyet_at: string | null; dang_ai_de_xuat: string | null
+}
+export type MenhDeHop = { thu_tu: number; noi_dung: string | null; dap_an: 'D' | 'S' | null; ma_dang: string | null; loi_giai: string | null; con: MenhDeCon | null }
+export type CauDungSaiDuyet = {
+  ma_cau: string; dang_chinh: string; ten_dang: string; ten_chuyen_de: string; khoi: string
+  noi_dung: string; loi_giai: string | null; anh_de: string | null; anh_dap_an: string | null; nguon: string; nguon_giai: string; created_at: string
+  ma_cum: string | null; ten_cum: string | null; da_duyet: boolean; kho_chuan: boolean; dang_ai_de_xuat: string | null; ten_de_goc: string | null
+  so_menh_de: number; so_da_duyet: number; so_thieu_dang: number; menh_de_hop: MenhDeHop[]
+}
+export async function listHangDuyetDs(mon: KhoMon, khoi?: string | null): Promise<CauDungSaiDuyet[]> {
+  const { data, error } = await supabase.rpc('fn_kho_hang_duyet_ds', { p_mon: mon, p_khoi: khoi || null, p_limit: LIMIT })
+  if (error) throw error
+  return (data ?? []) as CauDungSaiDuyet[]
+}
+// Duyệt 1 mệnh đề = áp sửa (key vắng = giữ) + ký; DB ghi cả bảng con và jsonb cha trong 1 tx. Trả mệnh đề sau ghi để cha vá tại chỗ.
+export type SuaMenhDe = { dang_chinh?: string; noi_dung?: string; dung?: boolean; loi_giai?: string | null }
+export async function duyetMenhDe(mon: KhoMon, maCau: string, thuTu: number, nguoi: string, sua: SuaMenhDe = {}): Promise<MenhDeCon & { thu_tu: number }> {
+  const { data, error } = await supabase.rpc('fn_kho_duyet_menh_de', { p_mon: mon, p_ma_cau: maCau, p_thu_tu: thuTu, p_nguoi: nguoi, p_sua: sua })
+  if (error) throw error
+  return data as MenhDeCon & { thu_tu: number }
+}
+// Duyệt câu cha ĐS — DB từ chối nếu còn mệnh đề chưa duyệt/chưa gán dạng. duyetHet=true: ký hết mệnh đề theo hiện trạng trước
+// (nút "Duyệt tất cả batch"); câu có mệnh đề thiếu dạng sẽ RAISE ⇒ batch bỏ qua câu đó.
+export async function duyetCauDs(mon: KhoMon, maCau: string, nguoi: string, sua: SuaCauDuyet = {}, duyetHet = false): Promise<{ so_menh_de: number; doi_dang: boolean }> {
+  const { data, error } = await supabase.rpc('fn_kho_duyet_cau_ds', { p_mon: mon, p_ma_cau: maCau, p_nguoi: nguoi, p_sua: sua, p_duyet_het: duyetHet })
+  if (error) throw error
+  return data as { so_menh_de: number; doi_dang: boolean }
 }
 
 export async function listMcqRule(mon: KhoMon): Promise<McqRule[]> {

@@ -19,6 +19,7 @@ import { KHOI_OPTIONS, KHO_MON, nhanhCuaMon, demCauChuaGiai, demHangDuyet, HANG_
 import ChuaGiaiTab from './ChuaGiaiTab'
 import TracNghiemAiTab from './TracNghiemAiTab'
 import DuyetCauTab from './DuyetCauTab'
+import DuyetDungSaiTab from './DuyetDungSaiTab'
 import DienOAiTab from './DienOAiTab'
 import { listBienTheChoDuyetLoiGiai, duyetLoiGiaiBienThe, type BienTheChoDuyetLoiGiai, listCachGiaiChoDuyetLoiGiai, duyetLoiGiaiCachGiai, type CachGiaiChoDuyetLoiGiai } from '../../lib/kho/hinh'
 import { MathText } from '../kho/ui'
@@ -32,8 +33,10 @@ const BATCH_SIZE = 20
 type Row = { key: string; nhanh: string; khoi: string; deBai: string; loiGiai: string; duyet: () => Promise<void> }
 // 'tn' = "Trắc nghiệm AI" (spec-mcq-form.md §6, 08/09): phiên bản 4 phương án AI sinh cho câu tính toán — sống ở TracNghiemAiTab.tsx.
 // 'dien' = "Điền ô AI" (spec-dien-o.md, 09/09): lời giải chứng minh hình có ô trống — sống ở DienOAiTab.tsx (chỉ môn Toán, kho hình).
+// 'dung_sai' (CEO 12/09): câu Đúng/Sai là LOẠI RIÊNG — bộ lọc riêng trên thanh tab, UI duyệt theo từng mệnh đề (DuyetDungSaiTab).
+// Đếm vẫn qua fn_kho_dem_hang_duyet như các bộ lọc khác (DB chỉ đếm nhánh có bảng con mệnh đề: Đại/HGT; KHTN hold).
 type Tab = 'chua' | HangDuyetLoc | 'tn' | 'dien'
-const TAB_LOC: HangDuyetLoc[] = ['cau_moi', 'moi', 'nghi', 'khong_kiem', 'ton_dong']
+const TAB_LOC: HangDuyetLoc[] = ['cau_moi', 'moi', 'nghi', 'khong_kiem', 'ton_dong', 'dung_sai']
 const TAB_CO_HINH = new Set<Tab>(['moi', 'ton_dong']) // 2 tab lời giải có thêm phần Hình (biến thể / cách giải)
 const readMon = () => localStorage.getItem('duyetlg.mon') ?? ''
 
@@ -175,6 +178,7 @@ export default function DuyetLoiGiaiScreen() {
       : tab === 'chua' ? <ChuaGiaiTab mon={mon} khoi={khoi} onChanged={reloadDem} />
       : tab === 'tn' ? <TracNghiemAiTab mon={mon} khoi={khoi} />
       : tab === 'dien' ? <DienOAiTab mon={mon} khoi={khoi} />
+      : tab === 'dung_sai' ? <DuyetDungSaiTab mon={mon} khoi={khoi} onChanged={reloadDem} />
       : !hienHinh ? <DuyetCauTab mon={mon} khoi={khoi} loc={tab as HangDuyetLoc} onChanged={reloadDem} /> : (
       <div className="flex-1 overflow-auto px-6 py-4">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
