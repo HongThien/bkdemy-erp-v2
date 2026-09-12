@@ -16,8 +16,8 @@ import {
 import { mucDeadline, nhanConLai } from '../../lib/tuan'
 import { seededShuffleWithOrig, seededPermByDang } from '../../lib/shuffle'
 import {
-  luotTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, khoiCuaHS, hoSoCuaToi, layDangHocTap, xepHangTuLuyen,
-  TU_LUYEN_SO_CAU_MOI_LUOT, SRC_LABEL, type DangHocTap, type RecentEval, type XepHangRow,
+  luotTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, khoiCuaHS, hoSoCuaToi, xepHangTuLuyen,
+  TU_LUYEN_SO_CAU_MOI_LUOT, type XepHangRow,
 } from '../../lib/tuluyen'
 import { laCap2HS, mayManHSCuaToi } from '../../lib/maymai_hs'
 import DoiMatKhau from './DoiMatKhau'
@@ -29,6 +29,7 @@ import DanhSachHS, { type DsRow } from './DanhSachHS'
 import MayManHS from './MayManHS'
 import ThanhTuuHS from './ThanhTuuHS'
 import BaiTapGiaoHS from './BaiTapGiaoHS'
+import ThongTinHocTap from './ThongTinHocTap'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
 type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
@@ -270,7 +271,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (doiMK) return <DoiMatKhau maHS={maHS} batBuoc={false} onXong={() => setDoiMK(false)} />
 
   if (direct === 'tu_luyen') return <LamTuLuyen hocSinhId={hocSinhId} onXong={() => setDirect(null)} desktop={!!cap1} />
-  if (direct === 'thong_tin') return <ThongTinHocTap onXong={() => setDirect(null)} desktop={!!cap1} />
+  if (direct === 'thong_tin') return <ThongTinHocTap hocSinhId={hocSinhId} gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
   if (direct === 'xep_hang') return <BangXepHang onXong={() => setDirect(null)} />
   if (direct === 'bo_tro') return <CaBoTroHS hocSinhId={hocSinhId} desktop={!!cap1} onXong={() => setDirect(null)} LamBai={LamBai} LamET={LamET} />
   if (direct === 'retest') return <RetestHS hocSinhId={hocSinhId} onXong={() => setDirect(null)} LamET={LamET} />
@@ -756,126 +757,6 @@ function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong:
         </div>
       }
     />
-  )
-}
-
-// ── THÔNG TIN HỌC TẬP (Thùy 21/08: "giống app phụ huynh") — mirror card "Tỉ lệ thành thạo kiến
-// thức" + list dạng yếu/cần luyện của app PH (Kết quả tab), dựng từ ĐÚNG masteryOfDang qua
-// layDangHocTap() — không có công thức thứ hai nào.
-// desktop: TUỲ CHỌN (Thùy 22/08) — chỉ đổi khung ngoài (header/bề rộng/lưới 2 cột), số liệu/logic
-// vẫn NGUYÊN layDangHocTap() — cấp 3 (mobile, từ ô "Thông tin học tập" cũ) không truyền → giữ y hệt.
-function ThongTinHocTap({ onXong, desktop }: { onXong: () => void; desktop?: boolean }) {
-  const [state, setState] = useState<'dang_tai' | 'san_sang' | 'trong'>('dang_tai')
-  const [data, setData] = useState<{ dangs: DangHocTap[]; dat: number; canLuyen: number; yeu: number } | null>(null)
-  const daGoi = useRef(false)
-
-  useEffect(() => {
-    if (daGoi.current) return
-    daGoi.current = true
-    ;(async () => {
-      const mon = await monCuaHS()
-      if (!mon) { setState('trong'); return }
-      const d = await layDangHocTap(mon)
-      setData(d)
-      setState(d.dat + d.canLuyen + d.yeu === 0 ? 'trong' : 'san_sang')
-    })().catch(() => setState('trong'))
-  }, [])
-
-  if (state === 'dang_tai') return <div className={`flex min-h-screen items-center justify-center text-sm text-ph-label-2 ${desktop ? 'bg-[#f4f7fb]' : 'bg-ios'}`}>Đang tải…</div>
-
-  const tong = data ? data.dat + data.canLuyen + data.yeu : 0
-  const tiLe = data && tong > 0 ? Math.round(((data.dat + data.canLuyen * 0.5) / tong) * 100) : 0
-  const canChuY = data ? data.dangs.filter((d) => d.muc !== 'dat').slice(0, 10) : []
-
-  return (
-    <div className={desktop ? 'mx-auto min-h-screen max-w-3xl bg-[#f4f7fb] px-8 py-6' : 'mx-auto min-h-screen max-w-md bg-ios px-4 pb-10'}>
-      {desktop ? (
-        <div className="mb-5 flex items-center gap-4">
-          <button onClick={onXong} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[18px] text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]">‹</button>
-          <h1 className="text-[26px] font-black tracking-tight text-[#171a2b]">Thông tin học tập</h1>
-        </div>
-      ) : <Head title="Thông tin học tập" onBack={onXong} />}
-
-      {state === 'trong' ? (
-        <div className={`mt-3 rounded-[21px] bg-white p-8 text-center ${SHADOW}`}>
-          <p className="text-3xl">🌱</p>
-          <p className="mt-2 text-[15px] font-medium text-ph-label">Chưa có dữ liệu học tập</p>
-          <p className="mt-1 text-[13px] text-ph-label-2">Học vài buổi trên lớp hoặc làm Tự luyện rồi quay lại nhé.</p>
-        </div>
-      ) : (
-        <>
-          {/* ĐÚNG ".card"+".summary"+".sum" (ph-v3.css) — hero % + 3 ô đạt/cần luyện/yếu */}
-          <div className={`mt-3 rounded-[22px] bg-white ${SHADOW} ${desktop ? 'p-7' : 'p-4'}`}>
-            <h3 className={`font-bold text-ph-label ${desktop ? 'text-[18px]' : 'text-[15px]'}`}>Tỉ lệ thành thạo kiến thức</h3>
-            <div className="mt-1.5 flex items-baseline gap-1">
-              <span className={`font-extrabold leading-none tracking-tight text-ph-label ${desktop ? 'text-[52px]' : 'text-[38px]'}`}>{tiLe}</span>
-              <span className={`font-bold text-ph-label-2 ${desktop ? 'text-[20px]' : 'text-[17px]'}`}>%</span>
-            </div>
-            <div className={`mt-3.5 grid grid-cols-3 ${desktop ? 'gap-4' : 'gap-2.5'}`}>
-              <div className={`rounded-[14px] bg-[#f7f8fb] text-center ${desktop ? 'p-4' : 'p-2.5'}`}>
-                <b className={`block font-extrabold text-ph-green ${desktop ? 'text-[22px]' : 'text-[17px]'}`}>{data!.dat}</b>
-                <span className="text-[9px] font-bold uppercase tracking-wide text-ph-label-2">Đạt</span>
-              </div>
-              <div className={`rounded-[14px] bg-[#f7f8fb] text-center ${desktop ? 'p-4' : 'p-2.5'}`}>
-                <b className={`block font-extrabold text-ph-orange ${desktop ? 'text-[22px]' : 'text-[17px]'}`}>{data!.canLuyen}</b>
-                <span className="text-[9px] font-bold uppercase tracking-wide text-ph-label-2">Cần luyện</span>
-              </div>
-              <div className={`rounded-[14px] bg-[#f7f8fb] text-center ${desktop ? 'p-4' : 'p-2.5'}`}>
-                <b className={`block font-extrabold text-ph-red ${desktop ? 'text-[22px]' : 'text-[17px]'}`}>{data!.yeu}</b>
-                <span className="text-[9px] font-bold uppercase tracking-wide text-ph-label-2">Yếu</span>
-              </div>
-            </div>
-          </div>
-
-          <p className="ml-0.5 mb-2 mt-5 text-[12px] font-black uppercase tracking-wide text-[#596376]">Dạng cần chú ý</p>
-          {canChuY.length === 0 ? (
-            <div className={`rounded-[21px] bg-white p-6 text-center ${SHADOW}`}>
-              <p className="text-[15px] font-medium text-ph-label">🎉 Không có dạng nào yếu</p>
-              <p className="mt-1 text-[13px] text-ph-label-2">Tất cả dạng đã học đều đạt.</p>
-            </div>
-          ) : (
-            // ĐÚNG ".dangList"+".dangRow" (ph-v3.css) — nền xám phẳng #F7F8FB, KHÔNG card viền.
-            // Desktop: 2 cột (bề rộng thừa, 1 cột dài lê thê nhìn rất mobile).
-            <div className={desktop ? 'grid grid-cols-2 gap-3' : 'grid gap-2.5'}>
-              {canChuY.map((d) => (
-                <div key={d.ma_dang} className="rounded-[13px] bg-[#f7f8fb] p-3">
-                  <div className="flex items-center gap-2.5">
-                    <span className={`h-[9px] w-[9px] shrink-0 rounded-full ${d.muc === 'yeu' ? 'bg-ph-red' : 'bg-ph-orange'}`} />
-                    <div className="min-w-0 flex-1">
-                      <p className="truncate text-[12.5px] font-bold text-[#3b4250]">{d.ten_dang}</p>
-                      {d.ten_chuyen_de && <p className="truncate text-[10.5px] text-ph-label-2">{d.ten_chuyen_de}</p>}
-                    </div>
-                    <span className={`shrink-0 rounded-full px-2 py-1 text-[10px] font-black ${
-                      d.muc === 'yeu' ? 'bg-ph-red/10 text-ph-red' : 'bg-ph-orange/10 text-ph-orange'}`}>
-                      {d.muc === 'yeu' ? 'Yếu' : 'Cần luyện'}
-                    </span>
-                  </div>
-                  {/* Thùy 21/08: "đánh giá từng câu giống Kết quả học tập ERP — 5 lần gần nhất" */}
-                  <div className="mt-2.5 flex gap-1 border-t border-black/[0.06] pt-2.5">
-                    {d.recent.length === 0 && <span className="text-[10.5px] text-ph-label-2">Chưa có lần đo nào</span>}
-                    {d.recent.map((e, i) => <LanDo key={i} e={e} />)}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </>
-      )}
-    </div>
-  )
-}
-
-// 1 lần đo trong "5 lần gần nhất" — ĐÚNG pattern Slot của KetQuaScreen.tsx (staff, mastery.ts):
-// ✓ đạt (value≥1) · ◐ nửa (value>0) · ✗ sai (value=0). Màu theo GIÁ TRỊ lần đó, không phải mức dạng.
-function LanDo({ e }: { e: RecentEval }) {
-  const icon = e.value >= 1 ? '✓' : e.value > 0 ? '◐' : '✗'
-  const cls = e.value >= 1 ? 'bg-ph-green/15 text-ph-green' : e.value > 0 ? 'bg-ph-orange/15 text-ph-orange' : 'bg-ph-red/15 text-ph-red'
-  return (
-    <div className="flex flex-1 flex-col items-center gap-0.5" title={`${SRC_LABEL[e.src]} · ${fmtShort(e.t)}`}>
-      <span className={`flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-bold ${cls}`}>{icon}</span>
-      <span className="text-[8px] font-bold leading-none text-ph-label-2">{SRC_LABEL[e.src]}</span>
-      <span className="text-[7.5px] font-medium leading-none text-ph-label-2/70">{fmtShort(e.t)}</span>
-    </div>
   )
 }
 
