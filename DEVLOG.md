@@ -11212,3 +11212,43 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
 - **Duyệt ĐS là LOẠI RIÊNG (CEO):** mig `202609122218_kho_duyet_dung_sai_rieng`: 5 bộ lọc cũ loại `loai_cau='dung_sai'`; thêm loc `dung_sai`; trigger sync đổi DELETE+INSERT → UPSERT giữ chữ ký khi nội dung không đổi + cờ phiên `kho.skip_sync_menh_de`; RPC `fn_kho_hang_duyet_ds` (ghép jsonb↔bảng con, `con=null` = chưa gán dạng) · `fn_kho_duyet_menh_de` (khoá tự nhiên (ma_cau, thu_tu), ghi cả 2 bên) · `fn_kho_duyet_cau_ds` (chặn khi còn mệnh đề chưa duyệt; `p_duyet_het` cho batch). 2 mig nhỏ theo sau: `…2224` trả `ten_dang` để UI vá tại chỗ; `…2228` **fix bug smoke test lộ**: `set_config(..., is_local=true)` sống hết TX không phải hết function ⇒ reset cờ '0' cuối RPC.
 - **UI:** `DuyetDungSaiTab.tsx` (tab "Đúng/Sai" trên DuyetLoiGiaiScreen; thẻ = câu cha + N hàng mệnh đề: nội dung · Đ/S · dạng riêng (DangPickerOne) · lời giải · ✓ Duyệt riêng; hàng thiếu dạng tô vàng; "Duyệt câu" chỉ mở khi N/N). api.ts thêm `listHangDuyetDs/duyetMenhDe/duyetCauDs`. Verify DB bằng smoke script trong TX rồi rollback (8/8 sau fix) + verify UI thật qua dev server: duyệt a) 0/4→1/4 vá tại chỗ, gán dạng T312010501 cho mệnh đề gap → tên thật hiện, 4/4 → Duyệt câu → thẻ rút, badge tab 53→52. Đã hoàn tác các lượt duyệt thử (câu `T312010101136` về chưa duyệt, giữ dạng mới của mệnh đề 4). **Chưa commit.**
 - **Còn treo:** bóc 127 câu còn lại của `Phương trình mặt phẳng.pdf`; task tách KHTN → Lý/Hoá/Sinh; pha 2 đề thi (HS thi + chấm); đo mastery per mệnh đề (bảng đo chưa có); drop jsonb `menh_de` sau khi refactor `createCauDungSai` ghi thẳng bảng con.
+
+---
+
+## 2026-09-13 — App HS cấp 2 màn Thông tin học tập + BXH + LIVE giáo trình theo dạng + BTVN không hạn + fix TN kho
+
+### 1. Thông tin học tập HS — chia menu 3 box + màn con backdrop mây (`ThongTinHocTap.tsx` mới, chuyển ra khỏi HocSinhApp)
+- **Migration `202609121500_ttht_hs_boxes.sql`**: sửa `hs_dang_evals` LEFT JOIN cả `dai_ban_do` + `hgt_ban_do` cho Toán (COALESCE ten_dang) — trước chỉ join 1 bảng theo `p_nhanh` nên câu Hình bị INNER JOIN loại → HS thấy mã dạng. Test Nam An K7: 315 dòng, 17 dòng vẫn NULL (ma_dang đã renumber, kho không còn). Thêm `fn_hs_lich_su_lam_bai(p_so_ngay)` — group bai_lam_cau theo ngày VN, thoi_gian_giay = MAX-MIN(cham_at). Thêm `fn_hs_xep_hang_ti_le_dat(mon,khoi)` — dạng đạt = tổng câu >=3 và tỉ lệ đúng >=75%.
+- **UI**: menu 3 box CLICKABLE (Danh sách dạng yếu / Lịch sử làm bài / Bảng xếp hạng). Mỗi màn con dùng shell `Kung` chung: backdrop `bg_home_*.jpg` + decor sách + quote handwritten Pacifico + header squircle theo giới tính (nam/nữ theme).
+- **BXH**: top 10, top 3 dùng **BỤC TRAO GIẢI** `/bk-ui/buc_trao_giai.png` (aspect 1448/770) — copy nguyên VI_TRI từ `src/components/bk/XepHangScreen.tsx` (module BXH TA/GV/OPS): 3 lỗ tròn avatar + 3 thẻ tên đặt theo % đo trên ảnh. Hạng 4-10 dùng DongHS (card ngang, pill động viên). Nếu "Bạn" ngoài top 10 → dòng riêng cuối. 3 tab: Tỉ lệ đạt / Điểm MT (`fn_bxh_diem_mt_khoi`) / Tự luyện (`hs_xep_hang_tu_luyen`) — tất cả xếp theo KHỐI.
+- **Demo verify**: `hs.html?demo=thongtin` (menu + 3 màn con) và `hs.html?demo=podium` (12 HS mock).
+
+### 2. Tự luyện HS — chỉ TRẮC NGHIỆM 4 ĐÁP ÁN (CEO chốt tạm)
+- **Ban đầu** `202609131145_tu_luyen_bo_tra_loi_ngan.sql`: bỏ `tra_loi_ngan` (giữ TN + Đ/S) — vì HS nhập text hay lệch dấu/khoảng.
+- **Sửa lại** `202609131530_tu_luyen_chi_trac_nghiem.sql`: CEO chốt tiếp — bỏ luôn `dung_sai`, chỉ giữ `trac_nghiem` (đáp án 1 chữ A/B/C/D) + câu có `form_tn` đã duyệt (snapshot sang trac_nghiem). Chỉ áp cho `tu_luyen_sinh`; `_btyeu_chon_cau` (bổ trợ yếu/retest) và giáo trình/BTVN/ET giữ nguyên (staff chấm).
+- **Đo kho K7 pool 1**: cũ 416 tra_loi_ngan + 31 trac_nghiem → mới CHỈ 31 TN + form đã duyệt. **811 form MCQ đang treo chưa duyệt (32/1100 đã duyệt)** — CEO đang duyệt.
+
+### 3. LIVE giáo trình GV (BuoiHocScreen.tsx tab live)
+- **Group câu theo DẠNG + reset số câu**: header 2 hàng (hàng 1 = tên dạng qua `getDangTen` + chip D1/D2/...; hàng 2 = Câu N reset trong dạng, khớp `DangBlock` PrintView). Vạch ngăn dạng bằng border-trái dày. Truyền `mon` từ `buoi.lop?.mon`.
+- **Phát hành theo TỪNG DẠNG (CEO chốt: nhịp học đồng bộ)**:
+  - `202609131720_bt_phat_hanh_dang.sql`: bảng `bai_test_dang_phat_hanh(bai_test_id, ma_dang, phat_hanh_at, phat_hanh_by)`. Trigger `tg_bt_dang_ph_auto_dang1` — AFTER INSERT bai_test_cau khi thu_tu=1 và loai='giao_trinh' → auto mở dạng câu 1 (publish flow không sửa). Backfill 16 giáo trình đang publish → đã mở dạng 1. RPC `fn_bt_phat_hanh_dang` + `fn_bt_thu_hoi_dang`.
+  - Client: `getBaiTestFull` với loai='giao_trinh' → filter caus theo dạng đã mở. `getLiveSnapshot` trả thêm `dangDaMo`. Header dạng có nút `▶ Phát hành` (amber) hoặc `✓ HH:MM` (emerald).
+  - **Fix bug `permission denied for schema auth`** (`202609131940_fix_phat_hanh_dang_sd.sql`): 2 RPC ban đầu KHÔNG SD → user gọi qua PostgREST → chuỗi quyền vỡ. Bọc SD → chạy quyền owner claude_build (đã có auth). Không grant được `schema auth` cho claude_build vì không phải superuser. NOTIFY pgrst reload schema đã chạy.
+
+### 4. BTVN không giới hạn thời gian nộp (CEO 13/09 chốt tạm)
+- **Migration `202609131900_btvn_khong_gioi_han_han_nop.sql`**: nới `bai_test_con_han(uuid)` — thêm `bt.loai='btvn' OR ...` → RLS insert/update `bai_lam` + `bai_lam_cau` cho phép HS ghi BTVN bất kể deadline. ET/đề thi/giáo trình vẫn dùng deadline. Staff `trang_thai='dong'` VẪN chặn.
+- **Client**: `laNopMuon(baiLam, deadline)` helper. `DsRow` thêm `nopMuon` + trạng thái `qua_han_mo`. Đã nộp muộn → badge inline "⏰ Muộn" cạnh tên. Chưa nộp, BTVN quá hạn → pill amber "muộn · vẫn nộp được".
+
+### 5. Layout LamBai — nút Xác nhận luôn trong viewport (Thùy phàn nàn phải kéo trang)
+- Wrapper: `min-h-screen` → `h-[100dvh] flex flex-col` (an toàn iOS Safari address bar). Header + footer thêm `shrink-0`, content wrap `flex-1 min-h-0 overflow-y-auto`. Áp CHUNG desktop (cấp 1) + mobile (cấp 2/3).
+
+### 6. FIX DATA BUG câu 4 phương án bị gán loai_cau='tra_loi_ngan'
+- **Sai**: Thùy publish giáo trình K12 → HS thấy "Nhập đáp án" cho câu Oxyz đường thẳng (T312010201019-023, HGT). Kho render đúng 4 nút A/B/C/D (đọc `lua_chon`) nhưng `loai_cau='tra_loi_ngan'`. Snapshot copy loai_cau thô → bai_test_cau giữ TLN → app render input text.
+- **Migration `202609132030_fix_loai_cau_tn_bi_gan_tln.sql`**: UPDATE `dai_cau_hoi`/`hgt_cau_hoi`/`khtn_cau_hoi` set `loai_cau='trac_nghiem'` cho câu có `lua_chon` jsonb array (≥2 phần tử) và `dap_an ~ '^[A-Fa-f]$'`. Backfill `bai_test_cau` tương tự với dap_an_key. Verify: 0 câu còn sai ở cả 3 bảng kho + bai_test_cau.
+
+### Các nguyên tắc rút ra hôm nay
+- **Function RPC gọi từ PostgREST mà bên trong dùng chuỗi `current_nhan_su_id()`/`la_thanh_vien()` → PHẢI security definer**, kể cả khi hàm con là SD. Nếu không có SD → user gọi cần USAGE `auth`, không có → lỗi im lặng.
+- **RLS `bai_test_con_han` là 1 chỗ chặn deadline chuẩn** — muốn nới cho 1 loại nào đó, sửa function này thay vì viết policy riêng.
+- **DATA BUG "câu có 4 phương án nhưng loai_cau='tra_loi_ngan'"** — dạng bug im lặng (builder render đúng, app render sai) — kiểm tra `lua_chon` + `dap_an` là cách phát hiện + fix hàng loạt bằng migration.
+- **Không tự quyết SECURITY DEFINER**: đọc migration mẫu 0026 (jwt_uid, la_thanh_vien, my_hoc_sinh_id) — chuẩn phải là SD; nếu tạo hàm mới mà quên → phát sinh lỗi runtime `permission denied for schema auth`.
+
