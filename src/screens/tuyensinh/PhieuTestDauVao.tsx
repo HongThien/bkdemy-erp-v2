@@ -32,6 +32,18 @@ const THANH_GRAD = `linear-gradient(90deg, ${NAVY} 0%, ${NAVY} 45%, ${GOLD} 85%,
 const DIA_CHI = 'Số 17 lô A10, KĐT Geleximco'
 const HOTLINE = '0963.209.309'
 const LOGO_URL = '/bk-ui/logobk.png'
+// ⭐ 13/09 asset ChatGPT (CEO đưa `*_testdauvao.png`, dẫn xuất thành `td_*.png` bằng pngjs — xem DEVLOG 13/09):
+// nền header/footer, cúp, badge lớp, avatar nam/nữ, ngoặc kép = ẢNH THẬT, đè lên phần vector (thiếu file ⇒
+// trong suốt ⇒ vector/glyph bên dưới lộ ra). Icon nhỏ vẫn SVG inline (sheet icon của ChatGPT không cắt sạch).
+const BG_HEADER = '/bk-ui/td_header.png'
+const BG_FOOTER = '/bk-ui/td_footer.png'
+const IMG_CUP = '/bk-ui/td_cup.png'
+const IMG_BADGE = '/bk-ui/td_badge.png'
+const IMG_BOY = '/bk-ui/td_boy.png'
+const IMG_GIRL = '/bk-ui/td_girl.png'
+const IMG_QUOTE = '/bk-ui/td_quote.png'
+const ASSETS = [LOGO_URL, BG_HEADER, BG_FOOTER, IMG_CUP, IMG_BADGE, IMG_BOY, IMG_GIRL, IMG_QUOTE] as const
+const PX_TRONG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=='
 export const PHIEU_W = 720
 
 // Google Fonts cho bản xem trong ERP (popup xuất ảnh tự nạp riêng). Nạp 1 lần/trang.
@@ -56,26 +68,41 @@ export const I = {
   pin: () => `<svg width="16" height="16" viewBox="0 0 24 24" fill="${GOLD_SANG}"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>`,
   phone: () => `<svg width="16" height="16" viewBox="0 0 24 24" fill="${GOLD_SANG}"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg>`,
 }
-// Nền navy + dải gold nhiều lớp + sparkle (kit: "background navy gold", "bóng bẩy"). preserveAspectRatio none.
+// Nền navy + RUY BĂNG gold (kit: "background navy gold", "bóng bẩy"). Ảnh reference là minh hoạ raster:
+// ruy băng dày uốn lượn ở 2 góc, có bóng đổ, vệt sáng, glow + bokeh. Dựng lại bằng SVG 3 lớp/ruy băng
+// (bóng mờ → thân gradient → vệt sáng) + bokeh blur + sparkle 4 cánh. Inline SVG được browser rasterize
+// nguyên khối nên feGaussianBlur dùng được trong html2canvas (chỉ <img> svg mới lỗi). preserveAspectRatio none.
 function svgNenNavyGold(w: number, h: number, id: string, chieu: 'dau' | 'cuoi'): string {
-  const grad = `<linearGradient id="${id}g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#B07A18"/><stop offset=".3" stop-color="#F0C462"/><stop offset=".55" stop-color="#FFF1BF"/><stop offset=".8" stop-color="#E5B24A"/><stop offset="1" stop-color="#A66E12"/></linearGradient>
-  <radialGradient id="${id}r" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#3B63A8" stop-opacity=".55"/><stop offset="1" stop-color="#3B63A8" stop-opacity="0"/></radialGradient>
-  <radialGradient id="${id}s"><stop offset="0" stop-color="#FFF7DD"/><stop offset=".5" stop-color="#F3C96B" stop-opacity=".9"/><stop offset="1" stop-color="#F3C96B" stop-opacity="0"/></radialGradient>`
-  const star = (x: number, y: number, r: number, o = 0.9) => `<path d="M${x} ${y - r} L${x + r * 0.28} ${y - r * 0.28} L${x + r} ${y} L${x + r * 0.28} ${y + r * 0.28} L${x} ${y + r} L${x - r * 0.28} ${y + r * 0.28} L${x - r} ${y} L${x - r * 0.28} ${y - r * 0.28} Z" fill="#FFF1BF" opacity="${o}"/><circle cx="${x}" cy="${y}" r="${r * 1.8}" fill="url(#${id}s)" opacity=".35"/>`
-  const bands = chieu === 'dau'
-    ? `<path d="M0 0 L 300 0 C 210 30, 120 80, 60 ${h} L 0 ${h} Z" fill="url(#${id}g)" opacity=".92"/>
-       <path d="M0 0 L 230 0 C 150 30, 80 75, 30 ${h} L 0 ${h} Z" fill="#0F2A55" opacity=".55"/>
-       <path d="M0 0 L 165 0 C 100 30, 45 70, 10 ${h} L 0 ${h} Z" fill="url(#${id}g)" opacity=".8"/>
-       <path d="M720 0 L 720 ${h * 0.95} C 640 ${h * 0.55}, 560 ${h * 0.3}, 420 0 Z" fill="url(#${id}g)" opacity=".9"/>
-       <path d="M720 0 L 720 ${h * 0.7} C 660 ${h * 0.42}, 600 ${h * 0.22}, 490 0 Z" fill="#0F2A55" opacity=".55"/>
-       <path d="M720 0 L 720 ${h * 0.45} C 680 ${h * 0.28}, 640 ${h * 0.14}, 560 0 Z" fill="url(#${id}g)" opacity=".85"/>
-       <ellipse cx="360" cy="${h * 0.55}" rx="260" ry="${h * 0.6}" fill="url(#${id}r)"/>
-       ${star(662, 26, 7)}${star(690, 62, 4, 0.7)}${star(628, 12, 3.5, 0.7)}${star(58, 18, 5, 0.75)}${star(24, 60, 3.5, 0.6)}${star(700, 118, 3, 0.55)}`
-    : `<path d="M0 ${h} L 0 ${h * 0.35} C 120 ${h * 0.55}, 300 ${h * 0.9}, 720 ${h * 0.25} L 720 ${h} Z" fill="url(#${id}g)" opacity=".92"/>
-       <path d="M0 ${h} L 0 ${h * 0.6} C 130 ${h * 0.75}, 320 ${h * 1.02}, 720 ${h * 0.5} L 720 ${h} Z" fill="#0F2A55" opacity=".5"/>
-       <path d="M0 ${h} L 0 ${h * 0.78} C 140 ${h * 0.9}, 340 ${h * 1.08}, 720 ${h * 0.68} L 720 ${h} Z" fill="url(#${id}g)" opacity=".8"/>
-       ${star(40, h * 0.3, 5, 0.75)}${star(690, h * 0.18, 4.5, 0.7)}${star(660, h * 0.5, 3, 0.55)}`
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 720 ${h}" preserveAspectRatio="none" style="display:block"><defs>${grad}</defs>${bands}</svg>`
+  const defs = `
+  <linearGradient id="${id}g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8C5A0C"/><stop offset=".22" stop-color="#E4B24C"/><stop offset=".45" stop-color="#FFF0BE"/><stop offset=".62" stop-color="#F1C466"/><stop offset=".85" stop-color="#C9911F"/><stop offset="1" stop-color="#7E4F08"/></linearGradient>
+  <linearGradient id="${id}h" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFF8E1" stop-opacity="0"/><stop offset=".5" stop-color="#FFFBEA" stop-opacity=".95"/><stop offset="1" stop-color="#FFF8E1" stop-opacity="0"/></linearGradient>
+  <radialGradient id="${id}b"><stop offset="0" stop-color="#F3C96B" stop-opacity=".55"/><stop offset="1" stop-color="#F3C96B" stop-opacity="0"/></radialGradient>
+  <radialGradient id="${id}v" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#2E579E" stop-opacity=".5"/><stop offset="1" stop-color="#2E579E" stop-opacity="0"/></radialGradient>
+  <filter id="${id}blur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="7"/></filter>
+  <filter id="${id}soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.2"/></filter>`
+  // 1 ruy băng = bóng (tối, mờ, lệch xuống) + thân (gradient, đầu tròn) + vệt sáng (mảnh, lệch lên) + viền sáng mép.
+  const ruyBang = (d: string, wid: number) => `
+    <path d="${d}" fill="none" stroke="#3E2604" stroke-width="${wid + 8}" stroke-linecap="round" opacity=".45" filter="url(#${id}blur)" transform="translate(4 10)"/>
+    <path d="${d}" fill="none" stroke="url(#${id}g)" stroke-width="${wid}" stroke-linecap="round"/>
+    <path d="${d}" fill="none" stroke="#7E4F08" stroke-width="${wid}" stroke-linecap="round" opacity=".18" transform="translate(0 ${Math.round(wid * 0.22)})"/>
+    <path d="${d}" fill="none" stroke="url(#${id}h)" stroke-width="${Math.round(wid * 0.28)}" stroke-linecap="round" opacity=".9" transform="translate(-2 -${Math.round(wid * 0.26)})" filter="url(#${id}soft)"/>`
+  const star = (x: number, y: number, r: number, o = 0.95) => `<path d="M${x} ${y - r} L${x + r * 0.22} ${y - r * 0.22} L${x + r} ${y} L${x + r * 0.22} ${y + r * 0.22} L${x} ${y + r} L${x - r * 0.22} ${y + r * 0.22} L${x - r} ${y} L${x - r * 0.22} ${y - r * 0.22} Z" fill="#FFF6D8" opacity="${o}"/><circle cx="${x}" cy="${y}" r="${r * 2.2}" fill="url(#${id}b)" opacity=".5"/>`
+  const bokeh = (x: number, y: number, r: number, o: number) => `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#${id}b)" opacity="${o}" filter="url(#${id}blur)"/>`
+  const body = chieu === 'dau'
+    ? `<ellipse cx="360" cy="${h * 0.5}" rx="300" ry="${h * 0.7}" fill="url(#${id}v)"/>
+       ${bokeh(120, h * 0.75, 70, 0.35)}${bokeh(600, h * 0.85, 90, 0.3)}${bokeh(680, 20, 40, 0.5)}
+       ${ruyBang(`M -60 ${h * 0.18} C 40 ${h * -0.05}, 150 ${h * 0.2}, 105 ${h * 0.62} S 30 ${h * 1.05}, -40 ${h * 1.15}`, 46)}
+       ${ruyBang(`M -50 ${h * 0.55} C 20 ${h * 0.45}, 70 ${h * 0.7}, 40 ${h * 1.05}`, 18)}
+       ${ruyBang(`M 780 ${h * 0.05} C 660 ${h * 0.05}, 560 ${h * 0.45}, 610 ${h * 0.85} S 720 ${h * 1.2}, 790 ${h * 1.1}`, 54)}
+       ${ruyBang(`M 790 ${h * 0.48} C 700 ${h * 0.55}, 660 ${h * 0.8}, 700 ${h * 1.15}`, 20)}
+       ${star(655, 30, 8)}${star(690, 66, 5, 0.8)}${star(618, 14, 4, 0.75)}${star(52, 22, 6, 0.85)}${star(20, 70, 4, 0.7)}${star(700, 128, 3.5, 0.6)}${star(560, 176, 3, 0.55)}`
+    : `<ellipse cx="360" cy="${h * 0.5}" rx="300" ry="${h * 0.9}" fill="url(#${id}v)"/>
+       ${bokeh(90, h * 0.4, 60, 0.3)}${bokeh(640, h * 0.5, 70, 0.3)}
+       ${ruyBang(`M -60 ${h * 0.95} C 40 ${h * 0.55}, 160 ${h * 0.45}, 250 ${h * 1.1}`, 40)}
+       ${ruyBang(`M 780 ${h * 0.9} C 690 ${h * 0.45}, 580 ${h * 0.35}, 470 ${h * 1.12}`, 44)}
+       ${ruyBang(`M 790 ${h * 1.05} C 730 ${h * 0.8}, 690 ${h * 0.75}, 640 ${h * 1.15}`, 16)}
+       ${star(48, h * 0.28, 5, 0.8)}${star(688, h * 0.2, 5, 0.75)}${star(650, h * 0.62, 3, 0.55)}`
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 720 ${h}" preserveAspectRatio="none" style="display:block"><defs>${defs}</defs>${body}</svg>`
 }
 
 export function Icon({ svg }: { svg: string }) { return <span style={{ display: 'inline-flex', lineHeight: 0 }} dangerouslySetInnerHTML={{ __html: svg }} /> }
@@ -188,7 +215,7 @@ function KhoiNhanXet({ para }: { para: string }) {
         {para
           ? <div style={{ fontSize: 14, color: CHU, lineHeight: 1.7, whiteSpace: 'pre-line' }}>{para}</div>
           : <div style={{ fontSize: 13, color: CHU_PHU, fontStyle: 'italic' }}>Nhận xét đang được cập nhật.</div>}
-        <div style={{ position: 'absolute', right: 16, bottom: 0, fontSize: 68, lineHeight: 1, fontWeight: 800, color: '#C5D1E4', fontFamily: 'Georgia, serif', pointerEvents: 'none' }}>”</div>
+        <img src={IMG_QUOTE} alt="" style={{ position: 'absolute', right: 14, bottom: 10, width: 46, height: 'auto', opacity: 0.9, pointerEvents: 'none' }} />
       </div>
     </div>
   )
@@ -201,10 +228,13 @@ function KhoiLopDeXuat({ tenLop }: { tenLop: string | null }) {
       <div style={{ position: 'absolute', right: 18, bottom: -6, opacity: 0.16, lineHeight: 0, pointerEvents: 'none' }} dangerouslySetInnerHTML={{ __html: I.book(GOLD, 96) }} />
       <TieuDe icon={I.cap()} text="5. Đề xuất lớp phù hợp" />
       <div style={{ display: 'flex', alignItems: 'center', gap: 20, position: 'relative' }}>
-        <div style={{ width: 118, height: 112, borderRadius: 16, background: `linear-gradient(160deg, #1C3C74 0%, ${NAVY} 60%, ${NAVY_DAM} 100%)`, border: `3px solid ${GOLD}`, boxShadow: '0 8px 18px rgba(16,43,85,0.28)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 3, flexShrink: 0 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: GOLD_SANG, letterSpacing: '2px' }}>LỚP</div>
-          <div style={{ fontSize: tenLop && tenLop.length > 4 ? 26 : 34, fontWeight: 800, color: '#fff', lineHeight: 1 }}>{tenLop ?? '—'}</div>
-          <Icon svg={I.book(GOLD_SANG, 20)} />
+        {/* Badge = ảnh (nguyệt quế + vương miện + ruy băng, kit 13/09); khung xanh chiếm ~y 17%→68% của ảnh ⇒ chữ đè vào đó. */}
+        <div style={{ position: 'relative', width: 134, height: 128, flexShrink: 0 }}>
+          <img src={IMG_BADGE} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
+          <div style={{ position: 'absolute', left: 0, right: 0, top: '20%', height: '46%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 2, pointerEvents: 'none' }}>
+            <div style={{ fontSize: 10, fontWeight: 700, color: GOLD_SANG, letterSpacing: '2px' }}>LỚP</div>
+            <div style={{ fontSize: tenLop && tenLop.length > 4 ? 22 : 30, fontWeight: 800, color: '#fff', lineHeight: 1, textShadow: '0 2px 4px rgba(0,0,0,0.35)' }}>{tenLop ?? '—'}</div>
+          </div>
         </div>
         {tenLop
           ? <div style={{ fontSize: 13.5, color: CHU, lineHeight: 1.6 }}>Phù hợp với năng lực hiện tại của con,<br />giúp con phát huy điểm mạnh và tiếp tục tiến bộ.</div>
@@ -225,6 +255,7 @@ export function PhieuCard({ p, logoSrc = LOGO_URL }: { p: PhieuKetQua; logoSrc?:
       {/* ─── HEADER navy + dải gold + sparkle ─── */}
       <div style={{ position: 'relative', background: NAVY_BG, padding: '22px 26px 24px', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', lineHeight: 0 }} dangerouslySetInnerHTML={{ __html: svgNenNavyGold(PHIEU_W, 190, 'phHead', 'dau') }} />
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', backgroundImage: `url(${BG_HEADER})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
         <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 16 }}>
           <div style={{ background: '#fff', borderRadius: 12, padding: '6px 12px', lineHeight: 0, boxShadow: '0 4px 14px rgba(0,0,0,0.3)' }}>
             <img src={logoSrc} alt="BK Academy" style={{ height: 34, width: 'auto', display: 'block' }} />
@@ -244,7 +275,11 @@ export function PhieuCard({ p, logoSrc = LOGO_URL }: { p: PhieuKetQua; logoSrc?:
         {/* ─── PROFILE + ĐIỂM ─── */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 250px', gap: 12 }}>
           <div style={cardStyle({ display: 'flex', alignItems: 'center', gap: 16 })}>
-            <div style={{ width: 84, height: 84, borderRadius: '50%', background: 'linear-gradient(160deg, #E9F0FA, #D5E1F3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, lineHeight: 0, boxShadow: 'inset 0 0 0 3px #fff, 0 2px 8px rgba(16,43,85,0.15)' }} dangerouslySetInnerHTML={{ __html: I.avatar() }} />
+            {p.gioiTinh === 'nam' || p.gioiTinh === 'nu' ? (
+              <img src={p.gioiTinh === 'nu' ? IMG_GIRL : IMG_BOY} alt="" style={{ width: 92, height: 92, display: 'block', flexShrink: 0 }} />
+            ) : (
+              <div style={{ width: 84, height: 84, borderRadius: '50%', background: 'linear-gradient(160deg, #E9F0FA, #D5E1F3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, lineHeight: 0, boxShadow: 'inset 0 0 0 3px #fff, 0 2px 8px rgba(16,43,85,0.15)' }} dangerouslySetInnerHTML={{ __html: I.avatar() }} />
+            )}
             <div style={{ minWidth: 0 }}>
               <div style={{ fontSize: 24, fontWeight: 800, color: NAVY, lineHeight: 1.15, marginBottom: 4 }}>{p.hoTenHs}</div>
               <div style={{ fontSize: 13, color: CHU, lineHeight: 1.6 }}>
@@ -254,7 +289,7 @@ export function PhieuCard({ p, logoSrc = LOGO_URL }: { p: PhieuKetQua; logoSrc?:
             </div>
           </div>
           <div style={{ background: 'linear-gradient(135deg, #FFF7E4 0%, #F8E7BF 100%)', borderRadius: 16, padding: '14px 16px', boxShadow: BONG, border: '1px solid #EDD9A6', display: 'flex', alignItems: 'center', gap: 12 }}>
-            <Icon svg={I.trophy()} />
+            <img src={IMG_CUP} alt="" style={{ width: 58, height: 62, objectFit: 'contain', display: 'block', flexShrink: 0 }} />
             <div>
               <div style={{ fontSize: 13, color: CHU, fontWeight: 600 }}>Điểm test</div>
               <div style={{ lineHeight: 1 }}>
@@ -277,6 +312,7 @@ export function PhieuCard({ p, logoSrc = LOGO_URL }: { p: PhieuKetQua; logoSrc?:
       {/* ─── FOOTER navy + dải gold ─── */}
       <div style={{ position: 'relative', marginTop: 10, background: NAVY_BG, padding: '24px 26px 20px', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', lineHeight: 0 }} dangerouslySetInnerHTML={{ __html: svgNenNavyGold(PHIEU_W, 96, 'phFoot', 'cuoi') }} />
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', backgroundImage: `url(${BG_FOOTER})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
         <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 14 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12.5, color: '#fff' }}><Icon svg={I.pin()} />{DIA_CHI}</div>
           <div style={{ width: 1, height: 18, background: GOLD, opacity: 0.8 }} />
@@ -294,10 +330,17 @@ async function blobToDataUrl(blob: Blob): Promise<string> {
 }
 export async function moPopupXuatAnh(el: HTMLElement, p: PhieuKetQua): Promise<void> {
   let cardHTML = el.outerHTML
-  try {
-    const b = await (await fetch(LOGO_URL)).blob()
-    cardHTML = cardHTML.split(LOGO_URL).join(await blobToDataUrl(b))
-  } catch (e: any) { alert('Không tải được logo: ' + (e?.message ?? String(e))); return }
+  // Mọi asset → data URL (popup about:blank không resolve URL tương đối). Thiếu file (404) ⇒ bỏ url đó
+  // (nền ảnh về trong suốt, ruy băng vector bên dưới lộ ra); riêng logo thiếu thì báo.
+  for (const u of ASSETS) {
+    try {
+      const r = await fetch(u); if (!r.ok) throw new Error(String(r.status))
+      cardHTML = cardHTML.split(u).join(await blobToDataUrl(await r.blob()))
+    } catch (e: any) {
+      if (u === LOGO_URL) { alert('Không tải được logo: ' + (e?.message ?? String(e))); return }
+      cardHTML = cardHTML.split(u).join(PX_TRONG) // thiếu file ⇒ pixel trong suốt (dùng được cho cả <img src> lẫn background url)
+    }
+  }
   const safe = (s: string) => (s || 'phieu').replace(/[\\/:*?"<>|]/g, '').replace(/\s+/g, ' ').trim().slice(0, 120)
   const fname = `TestDauVao_${safe(p.hoTenHs)}_${safe(p.mon)}.png`
   const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">

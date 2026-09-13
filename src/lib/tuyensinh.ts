@@ -262,6 +262,37 @@ export async function ganNguoiTraBaiCaTest(id: string, nguoiTraBaiId: string | n
   const { error } = await supabase.from('ca_test').update({ nguoi_tra_bai_id: nguoiTraBaiId }).eq('id', id)
   if (error) throw error
 }
+
+// ⭐ 13/09 (CEO): PHÂN CÔNG MẶC ĐỊNH theo (khối × môn) — bảng `test_dau_vao_phan_cong` (mig 202609131705).
+// Ops KHÔNG chọn người từng ca nữa; trigger `tg_ca_test_phan_cong` (DB) điền nguoi_cham_id/nguoi_tra_bai_id
+// lúc tạo ca từ bảng này. Sửa phân công ⇒ chỉ áp cho ca tạo SAU đó (ca cũ giữ nguyên — muốn đổi thì
+// ganNguoiChamCaTest/ganNguoiTraBaiCaTest trên từng ca). Log tự ghi ở DB (trg_log_test_dau_vao_phan_cong).
+export type PhanCongTestRow = {
+  khoi: string; mon: string
+  nguoiChamId: string | null; nguoiChamTen: string | null
+  nguoiTraBaiId: string | null; nguoiTraBaiTen: string | null
+  updatedAt: string | null
+}
+export async function listPhanCongTest(mon: string): Promise<PhanCongTestRow[]> {
+  const { data, error } = await supabase.from('test_dau_vao_phan_cong')
+    .select('khoi, mon, nguoi_cham_id, nguoi_tra_bai_id, updated_at, nguoi_cham:nguoi_cham_id(ho_ten), nguoi_tra_bai:nguoi_tra_bai_id(ho_ten)')
+    .eq('mon', mon).limit(LIMIT)
+  if (error) throw error
+  return ((data ?? []) as any[]).map((r) => ({
+    khoi: r.khoi, mon: r.mon,
+    nguoiChamId: r.nguoi_cham_id ?? null, nguoiChamTen: r.nguoi_cham?.ho_ten ?? null,
+    nguoiTraBaiId: r.nguoi_tra_bai_id ?? null, nguoiTraBaiTen: r.nguoi_tra_bai?.ho_ten ?? null,
+    updatedAt: r.updated_at ?? null,
+  }))
+}
+// Upsert 1 ô (khối × môn) — chỉ gửi cột được đổi (PostgREST ON CONFLICT chỉ SET cột có trong payload).
+export async function upsertPhanCongTest(khoi: string, mon: string, patch: { nguoiChamId?: string | null; nguoiTraBaiId?: string | null }): Promise<void> {
+  const row: Record<string, unknown> = { khoi, mon }
+  if ('nguoiChamId' in patch) row.nguoi_cham_id = patch.nguoiChamId ?? null
+  if ('nguoiTraBaiId' in patch) row.nguoi_tra_bai_id = patch.nguoiTraBaiId ?? null
+  const { error } = await supabase.from('test_dau_vao_phan_cong').upsert(row, { onConflict: 'khoi,mon' })
+  if (error) throw error
+}
 // Deadline (epoch ms) hiển thị đếm ngược — tái dùng vnInstant/mucDeadline/nhanConLai (tuan.ts).
 export function gioKetThucCaTest(t: Pick<CaTest, 'ngay' | 'gioBatDau' | 'thoiLuongPhut'>): number {
   return vnInstant(t.ngay, t.gioBatDau.slice(0, 5)) + t.thoiLuongPhut * 60000
