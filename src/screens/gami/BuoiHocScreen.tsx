@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 // (Ảnh gửi PH dùng html2canvas tải từ CDN TRONG popup — đúng pattern V1, không import vào bundle.)
 import {
@@ -12,7 +12,7 @@ import {
   loadHinhForBuoiPhase, syncHinhProblems, danhSoLaiTheoDe, thuTuMTTheoDe, dongBoETOnline, type ETOnlineDongBo, dongBoBTVNOnline, type BTVNOnlineDongBo,
   type BuoiAo, type BuoiTim, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync, type EloExpRow,
 } from '../../lib/gami'
-import { getLiveSnapshot, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
+import { getLiveSnapshot, phatHanhDang, thuHoiDang, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
 import type { MTPhanCaus } from '../../lib/mt'
 import { getOrCreateKyThiMTChoBuoi, listDiemThiByKyThi, upsertDiemThi, setKhungMT, tinhDiemMT, currentMua, type KyThi, type DiemThi } from '../../lib/thanhtich'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
@@ -1449,32 +1449,51 @@ async function copyImg(){
 // án (reveal-ngay) — KHÔNG cần chấm-ngầm như ET. Poll 7s (Thùy 07-07: 5-10s đủ dùng, không cần realtime).
 const LIVE_TONE: Record<string, string> = { correct: 'bg-emerald-500 text-white', partial: 'bg-amber-400 text-white', wrong: 'bg-rose-500 text-white' }
 const LIVE_LETTER: Record<string, string> = { correct: 'Đ', partial: 'C', wrong: 'S' }
+// Giờ:phút VN — cho nhãn "✓ HH:MM" ở nút phát hành. Không toISOString cho ngày local (CLAUDE.md §2),
+// nhưng đây là timestamptz nên +7h rồi lấy UTC parts an toàn.
+function fmtGioVN(iso: string): string {
+  const vn = new Date(new Date(iso).getTime() + 7 * 3600 * 1000)
+  return `${String(vn.getUTCHours()).padStart(2, '0')}:${String(vn.getUTCMinutes()).padStart(2, '0')}`
+}
 function LiveTab({ buoiId, roster, mon }: { buoiId: string; roster: BuoiHocHS[]; mon: string }) {
   const [loading, setLoading] = useState(true)
   const [baiTest, setBaiTest] = useState<BaiTest | null>(null)
   const [caus, setCaus] = useState<BaiTestCau[]>([])
   const [baiLam, setBaiLam] = useState<Record<string, BaiLam>>({})
   const [answers, setAnswers] = useState<LiveAnswer[]>([])
-  const [tenDangs, setTenDangs] = useState<Record<string, string>>({})   // Thùy 13/09: header hiện tên dạng, khớp bản in
+  const [dangDaMo, setDangDaMo] = useState<Record<string, string>>({})   // ma_dang → phat_hanh_at (Thùy 13/09)
+  const [tenDangs, setTenDangs] = useState<Record<string, string>>({})   // header hiện tên dạng, khớp bản in
+  const [busyDang, setBusyDang] = useState<string | null>(null)
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
 
+  const refresh = useCallback(async () => {
+    const found = await loadLiveTestForBuoi(buoiId)
+    if (!found) { setLoading(false); return null }
+    const snap = await getLiveSnapshot(found.baiTest.id)
+    setBaiTest(found.baiTest); setCaus(found.caus)
+    setBaiLam(snap.baiLam); setAnswers(snap.answers); setDangDaMo(snap.dangDaMo); setLoading(false)
+    return found.baiTest.id
+  }, [buoiId])
+
   useEffect(() => {
     let stop = false
-    let found: { baiTest: BaiTest; caus: BaiTestCau[] } | null = null
-    async function tick() {
-      try {
-        if (!found) found = await loadLiveTestForBuoi(buoiId)
-        if (!found) { if (!stop) setLoading(false); return }
-        const snap = await getLiveSnapshot(found.baiTest.id)
-        if (stop) return
-        setBaiTest(found.baiTest); setCaus(found.caus); setBaiLam(snap.baiLam); setAnswers(snap.answers); setLoading(false)
-      } catch { if (!stop) setLoading(false) }
-    }
+    async function tick() { try { if (!stop) await refresh() } catch { if (!stop) setLoading(false) } }
     tick()
     const t = setInterval(tick, 7000)
     return () => { stop = true; clearInterval(t) }
-  }, [buoiId])
+  }, [refresh])
+
+  async function togglePhatHanh(maDang: string) {
+    if (!baiTest || busyDang) return
+    setBusyDang(maDang)
+    try {
+      if (dangDaMo[maDang]) await thuHoiDang(baiTest.id, maDang)
+      else await phatHanhDang(baiTest.id, maDang)
+      await refresh()
+    } catch (e: any) { alert(e.message ?? String(e)) }
+    finally { setBusyDang(null) }
+  }
 
   // Fetch tên dạng cho header (giống builder/bản in — trước hiện `Câu N` cộng dồn nên khó khớp giấy)
   useEffect(() => {
@@ -1502,20 +1521,38 @@ function LiveTab({ buoiId, roster, mon }: { buoiId: string; roster: BuoiHocHS[];
 
   return (
     <div className="flex h-full flex-col">
-      <div className="mb-3 text-[12px] text-slate-400">{caus.length} câu · {groups.length} dạng · {coMat.length} HS · tự làm mới ~7s. Số câu reset theo từng dạng (khớp bản in).</div>
+      <div className="mb-3 text-[12px] text-slate-400">
+        {caus.length} câu · {groups.length} dạng · {coMat.length} HS · tự làm mới ~7s. Số câu reset theo dạng (khớp bản in).
+        <span className="ml-2 text-slate-500">📣 Bấm nút <b className="text-emerald-600">Phát hành</b> ở header dạng để lớp bắt đầu dạng đó. HS chỉ thấy câu của dạng đã phát hành.</span>
+      </div>
       <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
         <table className="w-auto border-collapse text-sm">
           <thead>
-            {/* Hàng 1: tên dạng (colspan = số câu trong dạng) — khớp builder/PrintView giáo trình */}
+            {/* Hàng 1: tên dạng + NÚT phát hành/thu hồi (Thùy 13/09: GV chủ động nhịp học) */}
             <tr className="bg-slate-50">
               <th rowSpan={2} className="sticky left-0 top-0 z-30 whitespace-nowrap border border-slate-200 bg-slate-50 px-4 py-1.5 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
-              {groups.map((g, i) => (
-                <th key={g.ma_dang} colSpan={g.caus.length} className="sticky top-0 z-10 border border-slate-200 bg-indigo-50 px-2 py-1.5 text-center text-[11.5px] font-bold text-indigo-700"
-                  title={g.ma_dang === '__none__' ? '' : g.ma_dang}>
-                  <span className="mr-1 rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-black text-indigo-600">D{i + 1}</span>
-                  <span className="truncate">{tenCua(g.ma_dang, i)}</span>
-                </th>
-              ))}
+              {groups.map((g, i) => {
+                const daMo = g.ma_dang !== '__none__' && !!dangDaMo[g.ma_dang]
+                const canBtn = g.ma_dang !== '__none__'
+                const busy = busyDang === g.ma_dang
+                return (
+                  <th key={g.ma_dang} colSpan={g.caus.length}
+                    className={`sticky top-0 z-10 border border-slate-200 px-2 py-1.5 text-center text-[11.5px] font-bold ${daMo ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700'}`}
+                    title={g.ma_dang === '__none__' ? '' : g.ma_dang}>
+                    <div className="flex items-center justify-center gap-1.5">
+                      <span className={`rounded px-1.5 py-0.5 text-[10px] font-black ${daMo ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}`}>D{i + 1}</span>
+                      <span className="truncate">{tenCua(g.ma_dang, i)}</span>
+                      {canBtn && (
+                        <button onClick={() => togglePhatHanh(g.ma_dang)} disabled={busy}
+                          title={daMo ? `Đã phát hành ${fmtGioVN(dangDaMo[g.ma_dang])} — bấm để thu hồi` : 'Bấm để phát hành dạng này cho HS'}
+                          className={`shrink-0 rounded-md px-2 py-0.5 text-[10.5px] font-bold shadow-sm transition ${daMo ? 'bg-emerald-600 text-white hover:bg-emerald-500' : 'bg-white text-emerald-700 ring-1 ring-emerald-300 hover:bg-emerald-100'} disabled:opacity-50`}>
+                          {busy ? '…' : daMo ? `✓ ${fmtGioVN(dangDaMo[g.ma_dang])}` : '▶ Phát hành'}
+                        </button>
+                      )}
+                    </div>
+                  </th>
+                )
+              })}
             </tr>
             {/* Hàng 2: "Câu N" với N reset trong mỗi dạng — như builder/giấy in */}
             <tr className="bg-slate-100">
