@@ -45,6 +45,23 @@ Subject dispatch theo tên file + nội dung câu:
 
 Read PDF: `Read` tool với `pages="1-20"` (nếu PDF > 20 trang thì đọc theo range). Vision đọc math trực tiếp, không OCR.
 
+### Bước 2b: HÌNH VẼ — cắt từ PDF, upload, gắn `anh_de` (CEO 13/09: "không thấy câu nào có hình")
+
+Câu mà đề **cần hình mới giải được** (hình chóp/lăng trụ có ký hiệu trên hình, "gắn hệ trục như hình vẽ", đồ thị, bảng biến thiên) **KHÔNG bỏ nữa** — cắt hình và gắn vào câu:
+1. Nhìn trang PDF (ảnh ~827×1169), ước lượng khung hình theo **tỷ lệ trang** `x0,y0,x1,y1` (0..1, gốc trên-trái), chừa mép ~2%.
+2. `node scripts/kho_anh.mjs cat --pdf "<file>" --page <N> --bbox 0.33,0.55,0.72,0.82 --out <scratchpad>/h_<tên>.png` → **Read PNG kiểm tra** (thiếu nhãn/đứt cạnh ⇒ nới bbox, chạy lại).
+3. `node scripts/kho_anh.mjs up --png <png> --ten <tên>` → `{url}` (bucket `kho-anh/nhap_kho/<YYYY-MM>/…`, dùng `SUPABASE_SERVICE_ROLE` trong `.env.local`; anon key bị RLS chặn). Hoặc `anh` = cat + up một lệnh.
+4. Đưa URL vào JSON câu: `"anh_de": "<url>"` (hình trong LỜI GIẢI ⇒ `"anh_dap_an"`). Câu hình chỉ minh hoạ (chữ đủ giải) ⇒ không bắt buộc, nhưng có thì tốt.
+
+### Bước 3.0: đọc BÀI HỌC ĐỔI DẠNG trước khi gán (CEO 13/09)
+
+**Query bản đồ NGAY TRƯỚC lúc gán dạng của MỖI lô, không dùng danh sách lấy đầu phiên.** 13/09: bản đồ K12 thêm 702–706/901–902/109 lúc 12:00–12:26, tôi nhập 4 file lúc 12:31–12:56 bằng danh sách cũ ⇒ ~60 câu + 36 mệnh đề lệch dạng, CEO duyệt kế thừa luôn, phải chuyển lại tay.
+
+```bash
+node scripts/kho_doi_dang.mjs --subject hgt --khoi 12
+```
+In các cặp `dạng cũ → dạng mới` người duyệt đã sửa (bảng `kho_doi_dang_log`, trigger tự ghi khi `dang_chinh` đổi) kèm 3 ví dụ đề. Đề lô mới **giống ví dụ đã bị sửa ⇒ gán thẳng dạng MỚI**, không lặp lỗi cũ. Cặp có `(dạng không còn)` = renumber bản đồ, không phải lỗi gán.
+
 ### Bước 3: gán `dang_chinh` — quy trình chống đoán bừa
 
 1. Query bản đồ theo khối để lấy dạng ứng viên (không có psql trên Windows — viết 1 node one-off vào scratchpad):

@@ -57,14 +57,20 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
   const rowsShown = nhanh === 'all' ? rows : rows.filter((r) => r.mon === nhanh)
   const batch = rowsShown.slice(0, BATCH_SIZE)
   const demNhanh = (m: KhoMon) => rows.filter((r) => r.mon === m).length
+  // ⭐ 13/09 (Thùy: "t phân vào toạ độ hoá nhiều nhưng kho chỉ có 1 câu"): batch cũ gọi duyệt với sua={} ⇒ dạng/đề/đáp số
+  // người vừa sửa trên từng thẻ bị BỎ, câu duyệt với dạng cũ (mất 140 lượt chọn dạng tối 13/09). Thẻ báo sửa đang chờ lên
+  // đây (suaRef), batch áp ĐÚNG sửa của từng thẻ. Không lift state lên cha (thẻ vẫn tự quản form), chỉ gương lại kết quả.
+  const suaRef = useRef(new Map<string, SuaCauDuyet>())
+  const keyOf = (r: Row) => `${r.mon}:${r.ma_cau}`
   async function onDuyetTatCa() {
-    if (!batch.length || !confirm(`Duyệt cả ${batch.length} câu trong batch này (không sửa gì)? Câu không đạt hãy Từ chối trước.`)) return
+    const soSua = batch.filter((r) => suaRef.current.has(keyOf(r))).length
+    if (!batch.length || !confirm(`Duyệt cả ${batch.length} câu trong batch này${soSua ? ` — áp dụng sửa đang chờ trên ${soSua} thẻ (dạng/đề/đáp số/lời giải)` : ' (không thẻ nào có sửa)'}? Câu không đạt hãy Từ chối trước.`)) return
     setBusyAll(true)
     try {
       const nguoi = await myNhanSuId()
       const idsOk = new Set<string>()
       for (const r of batch) {
-        try { await duyetCauHangDuyet(r.mon, r.ma_cau, nguoi); idsOk.add(`${r.mon}:${r.ma_cau}`) }
+        try { await duyetCauHangDuyet(r.mon, r.ma_cau, nguoi, suaRef.current.get(keyOf(r)) ?? {}); idsOk.add(keyOf(r)); suaRef.current.delete(keyOf(r)) }
         catch { /* bỏ qua câu lỗi, tiếp tục */ }
       }
       setRows((a) => a.filter((x) => !idsOk.has(`${x.mon}:${x.ma_cau}`)))
@@ -111,7 +117,8 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
           : rowsShown.length === 0 ? <p className="text-sm text-slate-400">Không có câu nào ở {mon}{nhanh !== 'all' ? ` · ${NHANH_LABEL[nhanh]}` : ''} · khối {khoi} · {HANG_DUYET_LABEL[loc]}. 🎉</p>
           : (
             <>
-              <ul className="space-y-4">{batch.map((r) => <The key={`${r.mon}:${r.ma_cau}`} r={r} mon={mon} busyAll={busyAll} onXong={(msg) => xong(r, msg)} />)}</ul>
+              <ul className="space-y-4">{batch.map((r) => <The key={`${r.mon}:${r.ma_cau}`} r={r} mon={mon} busyAll={busyAll} onXong={(msg) => xong(r, msg)}
+                onSua={(s) => { if (s) suaRef.current.set(keyOf(r), s); else suaRef.current.delete(keyOf(r)) }} />)}</ul>
               {rowsShown.length > batch.length && (
                 <p className="mt-4 text-center text-[12px] text-slate-400">Còn <b>{rowsShown.length - batch.length}</b> câu — sẽ hiện sau khi duyệt/từ chối xong batch này.</p>
               )}
@@ -123,7 +130,7 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
 }
 
 // 1 thẻ duyệt: state sửa cục bộ, so với bản gốc để chỉ gửi key ĐÃ ĐỔI (DB: key vắng = giữ nguyên).
-function The({ r, mon, busyAll, onXong }: { r: Row; mon: string; busyAll: boolean; onXong: (msg: string) => void }) {
+function The({ r, mon, busyAll, onXong, onSua }: { r: Row; mon: string; busyAll: boolean; onXong: (msg: string) => void; onSua: (s: SuaCauDuyet | null) => void }) {
   const [de, setDe] = useState(r.noi_dung)
   const [dapAn, setDapAn] = useState(r.dap_an ?? '')
   const [loiGiai, setLoiGiai] = useState(r.loi_giai ?? '')
@@ -153,15 +160,22 @@ function The({ r, mon, busyAll, onXong }: { r: Row; mon: string; busyAll: boolea
     setDang({ ma: maDang, ten: maDang === r.dang_chinh ? r.ten_dang : maDang, cd: maDang === r.dang_chinh ? r.ten_chuyen_de : '' })
     setCum(maDang === r.dang_chinh ? r.ma_cum : null); setPickDang(false)
   }
+  // Gói sửa gửi DB (key vắng = giữ nguyên) — dùng cho nút Duyệt lẻ VÀ gương lên cha để "Duyệt tất cả batch" áp đúng.
+  function tinhSua(): SuaCauDuyet {
+    const sua: SuaCauDuyet = {}
+    if (doiDe) sua.noi_dung = de.trim()
+    if (doiDap) sua.dap_an = dapAn.trim()
+    if (doiLg) sua.loi_giai = loiGiai.trim()
+    if (doiDang) sua.dang_chinh = dang.ma
+    if (doiCum || doiDang) sua.ma_cum = cum
+    return sua
+  }
+  useEffect(() => { onSua(coSua ? tinhSua() : null) }, [de, dapAn, loiGiai, dang.ma, cum, coSua]) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => () => onSua(null), []) // eslint-disable-line react-hooks/exhaustive-deps
   async function onDuyet() {
     setBusy(true); setErr(null)
     try {
-      const sua: SuaCauDuyet = {}
-      if (doiDe) sua.noi_dung = de.trim()
-      if (doiDap) sua.dap_an = dapAn.trim()
-      if (doiLg) sua.loi_giai = loiGiai.trim()
-      if (doiDang) sua.dang_chinh = dang.ma
-      if (doiCum || doiDang) sua.ma_cum = cum
+      const sua = tinhSua()
       const kq = await duyetCauHangDuyet(r.mon, r.ma_cau, await myNhanSuId(), sua)
       onXong(`✓ Đã duyệt ${r.ma_cau}${coSua ? ' (có sửa)' : ''}${kq.thu_hoi_form ? ` · thu hồi ${kq.thu_hoi_form} form trắc nghiệm để sinh lại` : ''}`)
     } catch (e: any) { setErr(e.message ?? String(e)); setBusy(false) }
