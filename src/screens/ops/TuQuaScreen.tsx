@@ -10,7 +10,7 @@ import {
   taoNhap, xacNhanNhap, huyNhap, listNhapChoXacNhan,
   type SoDuXu, type TonQua, type DoiQua, type QuaOrder, type QuaNhap, type XuLedgerRow,
 } from '../../lib/tuqua'
-import SearchSelect, { type Opt } from '../../components/SearchSelect'
+import SearchSelect, { norm, type Opt } from '../../components/SearchSelect'
 import { OpsHero } from '../../components/ops/OpsUI'
 
 type Muc = 'doi' | 'don' | 'kho'
@@ -92,6 +92,7 @@ function DoiTab({ bao }: { bao: (m: string) => void }) {
   const [lichSu, setLichSu] = useState<DoiQua[]>([])
   const [soXu, setSoXu] = useState<XuLedgerRow[]>([])
   const [chonQua, setChonQua] = useState<TonQua | null>(null)
+  const [timQua, setTimQua] = useState('')
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
 
@@ -114,7 +115,9 @@ function DoiTab({ bao }: { bao: (m: string) => void }) {
 
   const hs = hsList.find((h) => h.hoc_sinh_id === hsId) ?? null
   const opts: Opt[] = hsList.map((h) => ({ id: h.hoc_sinh_id, label: h.ho_ten, sub: `${h.ma_hs ?? ''} · ${h.so_du} xu${h.khoi ? ` · K${h.khoi}` : ''}`, img: h.anh_url }))
-  const catalog = tonList.filter((q) => q.dang_ban)
+  const banHet = tonList.filter((q) => q.dang_ban)
+  const kw = norm(timQua.trim())
+  const catalog = kw ? banHet.filter((q) => norm(q.ten).includes(kw)) : banHet
 
   async function huy(d: DoiQua) {
     const lyDo = prompt(`Hủy lượt đổi "${d.qlht_qua?.ten}" (hoàn ${d.xu_tru} xu)?\nNhập lý do:`)
@@ -147,9 +150,23 @@ function DoiTab({ bao }: { bao: (m: string) => void }) {
         </div>
       )}
 
+      {hsId && banHet.length > 0 && (
+        <div className="relative">
+          <input value={timQua} onChange={(e) => setTimQua(e.target.value)}
+            placeholder={`🔎 Tìm quà theo tên (${banHet.length} quà đang bán)…`}
+            className="w-full rounded-2xl border border-slate-200 bg-white px-3.5 py-2.5 text-[13.5px] outline-none focus:border-rose-400" />
+          {timQua && (
+            <button onClick={() => setTimQua('')} aria-label="Xoá tìm"
+              className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full px-2 py-1 text-[13px] text-slate-400 active:bg-slate-100">✕</button>
+          )}
+        </div>
+      )}
+
       {hsId && (
-        catalog.length === 0 ? (
+        banHet.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-slate-300 py-12 text-center text-sm text-slate-400">Tủ chưa có quà đang bán — thêm ở mục Kho.</div>
+        ) : catalog.length === 0 ? (
+          <div className="rounded-2xl border border-dashed border-slate-300 py-10 text-center text-[13px] text-slate-400">Không thấy quà khớp “{timQua}”.</div>
         ) : (
           <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
             {catalog.map((q) => {
@@ -459,6 +476,7 @@ function KhoTab({ bao }: { bao: (m: string) => void }) {
   const [phieuCho, setPhieuCho] = useState<QuaNhap[]>([])
   const [formQua, setFormQua] = useState<TonQua | 'moi' | null>(null)
   const [formNhap, setFormNhap] = useState<TonQua | null>(null)
+  const [timKho, setTimKho] = useState('')
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
 
@@ -507,8 +525,26 @@ function KhoTab({ bao }: { bao: (m: string) => void }) {
         </Section>
       )}
 
-      <Section title={`Quà trong tủ · ${tonList.length}`} empty={tonList.length === 0 ? 'Tủ chưa có quà nào' : undefined}>
-        {tonList.map((q) => (
+      {tonList.length > 0 && (
+        <div className="relative">
+          <input value={timKho} onChange={(e) => setTimKho(e.target.value)}
+            placeholder={`🔎 Tìm quà theo tên (${tonList.length} quà trong tủ)…`}
+            className="w-full rounded-2xl border border-slate-200 bg-white px-3.5 py-2.5 text-[13.5px] outline-none focus:border-rose-400" />
+          {timKho && (
+            <button onClick={() => setTimKho('')} aria-label="Xoá tìm"
+              className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full px-2 py-1 text-[13px] text-slate-400 active:bg-slate-100">✕</button>
+          )}
+        </div>
+      )}
+
+      {(() => {
+        const kw = norm(timKho.trim())
+        const rows = kw ? tonList.filter((q) => norm(q.ten).includes(kw)) : tonList
+        return (
+          <Section
+            title={`Quà trong tủ · ${kw ? `${rows.length}/${tonList.length}` : tonList.length}`}
+            empty={tonList.length === 0 ? 'Tủ chưa có quà nào' : rows.length === 0 ? `Không thấy quà khớp “${timKho}”` : undefined}>
+            {rows.map((q) => (
           <div key={q.qua_id} className={`flex items-center gap-2.5 rounded-2xl border border-slate-200/70 bg-white p-2.5 shadow-sm ${q.dang_ban ? '' : 'opacity-55'}`}>
             <AnhQua url={q.anh_url} cls="h-12 w-12" />
             <div className="min-w-0 flex-1">
@@ -519,8 +555,10 @@ function KhoTab({ bao }: { bao: (m: string) => void }) {
             <button onClick={() => setFormQua(q)} className="min-h-[40px] shrink-0 rounded-xl px-2 text-[13px] text-slate-400 active:bg-slate-100">✎</button>
             <button onClick={() => toggleBan(q)} className={`min-h-[40px] shrink-0 rounded-xl px-2.5 text-[12px] font-bold ${q.dang_ban ? 'text-emerald-600 active:bg-emerald-50' : 'text-slate-400 active:bg-slate-100'}`}>{q.dang_ban ? 'Bán' : 'Tắt'}</button>
           </div>
-        ))}
-      </Section>
+            ))}
+          </Section>
+        )
+      })()}
 
       {formQua && <QuaModal qua={formQua === 'moi' ? null : formQua} onClose={() => setFormQua(null)}
         onDone={async (m) => { setFormQua(null); await reload(); bao(m) }} />}

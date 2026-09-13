@@ -185,6 +185,24 @@ export async function xepHangTuLuyen(khoi: string): Promise<XepHangRow[]> {
   return (data ?? []) as XepHangRow[]
 }
 
+// ── LỊCH SỬ LÀM BÀI TRÊN APP (Thùy 12/09) — group theo ngày VN, mỗi ngày trả số câu/đúng/sai +
+// thời gian in-app đo bằng MAX-MIN cham_at trong bai_lam_cau. 30 ngày gần nhất. ──
+export type LichSuLamBaiRow = { ngay: string; so_cau: number; so_dung: number; so_sai: number; thoi_gian_giay: number }
+export async function layLichSuLamBai(soNgay = 30): Promise<LichSuLamBaiRow[]> {
+  const { data, error } = await supabase.rpc('fn_hs_lich_su_lam_bai', { p_so_ngay: soNgay })
+  if (error) throw error
+  return (data ?? []) as LichSuLamBaiRow[]
+}
+
+// ── BXH tỉ lệ đạt DẠNG BÀI theo khối (Thùy 12/09). Định nghĩa "đạt" ở DB: tổng câu >=3 và
+// tỉ lệ đúng >=75%. Trả list rank giảm dần; HS chưa đo dạng nào → ti_le = null (rank cuối). ──
+export type XepHangTiLeRow = { ma_hs: string; ho_ten: string; ti_le: number | null; so_dat: number; so_dang: number; la_toi: boolean }
+export async function xepHangTiLeDat(mon: string, khoi: string): Promise<XepHangTiLeRow[]> {
+  const { data, error } = await supabase.rpc('fn_hs_xep_hang_ti_le_dat', { p_mon: mon, p_khoi: khoi })
+  if (error) throw error
+  return (data ?? []) as XepHangTiLeRow[]
+}
+
 // ── LUYỆN CHỨNG MINH (điền ô) — spec-dien-o.md §0b, D2. Mỗi lượt = 1 bai_test loai 'tu_luyen' gồm N bài hình có form điền ô
 // đã duyệt (RPC tu_luyen_dien_sinh: chọn + snapshot ở server, bản HS thấy đã cắt key). Chấm ở DB (hs_dien_tra_loi → fn_dien_cham:
 // đúng hết Đ, sai >60% ô S, còn lại C — CEO 09/09). Client chỉ hiển thị và đến ô nào hiện đúng/sai ô đó. ──

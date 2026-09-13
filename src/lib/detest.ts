@@ -351,7 +351,21 @@ export async function dongScanDaCham(caTestId: string, url: string): Promise<voi
 // NHẬN XÉT — biểu đồ chuyên đề (derive từ Đ/C/S per câu, "chỉ để trông xịn") + nhận xét tay + lớp đề
 // xuất. Thùy chốt 07-19: KHÔNG còn là bước/gate riêng — nhập NGAY TRONG Trả bài (xem mục dưới).
 // ============================================================================
-export type NhanXet = { trinhBay?: 'tot' | 'on' | 'kem'; tinhToan?: 'tot' | 'on' | 'kem'; kienThuc?: { hinhCoBan?: string; daiCoBan?: string; hinhNangCao?: string; daiNangCao?: string }; khac?: string }
+// ⭐ 12/09 (CEO, kit v2): kỹ năng THANG 5 MỨC (1..5). Dữ liệu cũ 'tot'|'on'|'kem' vẫn đọc được qua mucKyNang().
+// Nhận xét = 1 paragraph ở `khac`; `kienThuc.coBan/nangCao` chỉ còn cho dữ liệu cũ (gộp khi hiển thị).
+export type MucKyNangCu = 'tot' | 'on' | 'kem'
+export type NhanXet = { trinhBay?: number | MucKyNangCu; tinhToan?: number | MucKyNangCu; kienThuc?: { coBan?: string; nangCao?: string }; trinhBayNhanXet?: string; tinhToanNhanXet?: string; khac?: string }
+const MUC_CU: Record<MucKyNangCu, number> = { tot: 5, on: 3, kem: 1 }
+export function mucKyNang(v: number | MucKyNangCu | null | undefined): number | null {
+  if (v == null) return null
+  if (typeof v === 'number') return Number.isFinite(v) && v >= 1 && v <= 5 ? Math.round(v) : null
+  return MUC_CU[v] ?? null
+}
+// Paragraph nhận xét in trên phiếu: `khac` (mới) + gộp `kienThuc` cũ nếu còn.
+export function paragraphNhanXet(nx: NhanXet | null | undefined): string {
+  if (!nx) return ''
+  return [nx.kienThuc?.coBan, nx.kienThuc?.nangCao, nx.khac].map((s) => (s ?? '').trim()).filter(Boolean).join(' ')
+}
 // (§2.0) `getBieuDoChuyenDe` gom ở JS đã BỎ 09/09 — mọi tỉ lệ (chuyên đề · cơ bản/nâng cao · Đại/Hình) lấy từ
 // `getPhieuKetQua` (fn_test_dau_vao_phieu), xem section PHIẾU KẾT QUẢ cuối file.
 // Lưu nháp nhận xét — gọi bất cứ lúc nào (autosave khi gõ), KHÔNG gate gì.
