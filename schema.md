@@ -9,7 +9,11 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
+<<<<<<< HEAD
 221 bảng · 18 view · 0 enum · 64 trigger · 367 function
+=======
+222 bảng · 18 view · 0 enum · 69 trigger · 369 function
+>>>>>>> origin/main
 
 ## _app_secrets
 
@@ -2041,6 +2045,24 @@
 | sau | jsonb | Y |  |  |  |
 | actor | uuid | Y |  |  |  |
 | ts | timestamp with time zone |  | now() |  |  |
+
+## kho_doi_dang_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| mon | text |  |  |  | `dai` · `hgt` · `khtn` |
+| loai | text |  |  |  | `cau` · `menh_de` |
+| ma_cau | text |  |  |  |  |
+| thu_tu | integer | Y |  |  |  |
+| dang_cu | text |  |  |  |  |
+| dang_moi | text |  |  |  |  |
+| dang_ai_de_xuat | text | Y |  |  |  |
+| loai_cau | text | Y |  |  |  |
+| noi_dung | text | Y |  |  |  |
+| nguoi | uuid | Y |  |  |  |
+| doi_at | timestamp with time zone |  | now() |  |  |
+| nguon | text |  | 'trigger'::text |  | `trigger` · `backfill` |
 
 ## kho_kiem_lo
 
@@ -4646,10 +4668,15 @@ SELECT bl.hoc_sinh_id,
 | dai_cau_hoi | dai_cau_hoi_thu_hoi_dien | AFTER | UPDATE | dai_cau_form_dien_thu_hoi |
 | dai_cau_hoi | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | dai_cau_hoi | trg_kho_cau_duyet_nguon | BEFORE | INSERT/UPDATE | _kho_cau_duyet_nguon |
+| dai_cau_hoi | trg_log_doi_dang | AFTER | UPDATE | _trg_log_doi_dang |
 | dai_cau_hoi | trg_log_kho_cau_dai | AFTER | DELETE/UPDATE | log_kho_cau |
 | dai_cau_hoi | trg_sync_menh_de | AFTER | INSERT/UPDATE | _trg_sync_dai_menh_de |
 | dai_cau_hoi_yeu_cau_giai | dai_cau_hoi_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
 | dai_cau_menh_de | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
+<<<<<<< HEAD
+=======
+| dai_cau_menh_de | trg_log_doi_dang | AFTER | UPDATE | _trg_log_doi_dang |
+>>>>>>> origin/main
 | diem_thi | tg_diem_thi_tinh | BEFORE | INSERT/UPDATE | fn_diem_thi_tinh |
 | gay_de_xuat | trg_log_gay_de_xuat | AFTER | INSERT/UPDATE | log_gay_de_xuat |
 | gay_ledger | trg_log_gay_ledger | AFTER | INSERT/UPDATE | log_gay_ledger |
@@ -4657,10 +4684,15 @@ SELECT bl.hoc_sinh_id,
 | han_nop_ngoai_le | tg_han_nop_ngoai_le_log | AFTER | INSERT/DELETE/UPDATE | trg_han_nop_ngoai_le_log |
 | hgt_cau_hoi | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | hgt_cau_hoi | trg_kho_cau_duyet_nguon | BEFORE | INSERT/UPDATE | _kho_cau_duyet_nguon |
+| hgt_cau_hoi | trg_log_doi_dang | AFTER | UPDATE | _trg_log_doi_dang |
 | hgt_cau_hoi | trg_log_kho_cau_hgt | AFTER | DELETE/UPDATE | log_kho_cau |
 | hgt_cau_hoi | trg_sync_menh_de | AFTER | INSERT/UPDATE | _trg_sync_hgt_menh_de |
 | hgt_cau_hoi_yeu_cau_giai | hgt_cau_hoi_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
 | hgt_cau_menh_de | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
+<<<<<<< HEAD
+=======
+| hgt_cau_menh_de | trg_log_doi_dang | AFTER | UPDATE | _trg_log_doi_dang |
+>>>>>>> origin/main
 | hinh_baitoan | hinh_baitoan_gen_ma_trg | BEFORE | INSERT | hinh_baitoan_gen_ma |
 | hinh_baitoan_bien_the | hinh_bien_the_thu_hoi_dien | AFTER | UPDATE | hinh_form_dien_thu_hoi |
 | hinh_baitoan_yeu_cau_giai | hinh_baitoan_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
@@ -4674,6 +4706,7 @@ SELECT bl.hoc_sinh_id,
 | hoc_sinh_lop | trg_log_hoc_sinh_lop | AFTER | INSERT/UPDATE | log_hoc_sinh_lop |
 | khtn_cau_hoi | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | khtn_cau_hoi | trg_kho_cau_duyet_nguon | BEFORE | INSERT/UPDATE | _kho_cau_duyet_nguon |
+| khtn_cau_hoi | trg_log_doi_dang | AFTER | UPDATE | _trg_log_doi_dang |
 | khtn_cau_hoi | trg_log_kho_cau_khtn | AFTER | DELETE/UPDATE | log_kho_cau |
 | khtn_cau_hoi_yeu_cau_giai | khtn_cau_hoi_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
 | qlht_doi_qua | trg_log_qlht_doi_qua | AFTER | INSERT/UPDATE | log_qlht |
@@ -4725,6 +4758,10 @@ SELECT bl.hoc_sinh_id,
 - `_trg_btyeu_retest_cau()` → trigger
 - `_trg_btyeu_retest_lam()` → trigger
 - `_trg_chan_duyet_dang_cho()` → trigger
+<<<<<<< HEAD
+=======
+- `_trg_log_doi_dang()` → trigger
+>>>>>>> origin/main
 - `_trg_pt_viec_cap_nhat_push()` → trigger
 - `_trg_pt_viec_push()` → trigger
 - `_trg_sync_dai_menh_de()` → trigger
@@ -4880,6 +4917,7 @@ SELECT bl.hoc_sinh_id,
 - `fn_kho_dat_giai(p_mon text, p_ma_cau text[], p_ghi_chu text, p_nguoi uuid)` → integer
 - `fn_kho_dem_cau_chua_giai(p_nhanh text[])` → TABLE(khoi text, so_cau bigint, so_cho_giai bigint)
 - `fn_kho_dem_hang_duyet(p_nhanh text[])` → TABLE(loc text, khoi text, so_cau bigint)
+- `fn_kho_doi_dang_tk(p_mon text, p_khoi text DEFAULT NULL::text, p_tu timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(dang_cu text, ten_cu text, dang_moi text, ten_moi text, so_lan bigint, lan_cuoi timestamp with time zone, vi_du jsonb)
 - `fn_kho_duyet_cau(p_mon text, p_ma_cau text, p_nguoi uuid, p_sua jsonb DEFAULT '{}'::jsonb)` → jsonb
 - `fn_kho_duyet_cau_ds(p_mon text, p_ma_cau text, p_nguoi uuid, p_sua jsonb DEFAULT '{}'::jsonb, p_duyet_het boolean DEFAULT false)` → jsonb
 - `fn_kho_duyet_menh_de(p_mon text, p_ma_cau text, p_thu_tu integer, p_nguoi uuid, p_sua jsonb DEFAULT '{}'::jsonb)` → jsonb

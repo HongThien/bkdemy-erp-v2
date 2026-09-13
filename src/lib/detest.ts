@@ -227,6 +227,7 @@ export type CaTestChoCham = {
   id: string; ungVienId: string; mon: string; ngay: string; baiUrl: string | null; taiLieuId: string | null
   hoTenHs: string; khoi: string | null; nguoiChamTen?: string | null
   nguoiChamId: string | null; nguoiTraBaiId: string | null
+  trangThai: 'dang_test' | 'hoan_thanh'  // "Việc của tôi" hiện cả ca ĐANG test (CEO 13/09: có ca mới là thấy)
   diemNhap: number | null // CEO ④ 09/09: điểm NHẬP TAY, độc lập Đ/C/S (ca_test.diem_nhap)
   thieuDe: boolean        // ca đã hoàn thành mà chưa có đề → hiện trong hàng đợi kèm nút "Gán đề đang dùng", KHÔNG lọc mất
 }
@@ -238,7 +239,7 @@ function mapChoCham(r: any): CaTestChoCham {
   return {
     id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, baiUrl: r.bai_url, taiLieuId: r.tai_lieu_id,
     hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null, nguoiChamTen: r.nguoi_cham?.ho_ten ?? null,
-    nguoiChamId: r.nguoi_cham_id ?? null, nguoiTraBaiId: r.nguoi_tra_bai_id ?? null,
+    nguoiChamId: r.nguoi_cham_id ?? null, nguoiTraBaiId: r.nguoi_tra_bai_id ?? null, trangThai: r.trang_thai,
     diemNhap: r.diem_nhap == null ? null : Number(r.diem_nhap), thieuDe: !r.tai_lieu_id,
   }
 }
@@ -251,16 +252,17 @@ export async function listCanCham(): Promise<CaTestChoCham[]> {
   return (data ?? []).map(mapChoCham)
 }
 // "Việc của tôi" (CEO ②⑤ 09/09): ca TÔI được gán chấm / trả bài, còn treo. Lọc ở query theo nhan_su.id.
+// ⭐ 13/09: gồm cả ca ĐANG test (CEO: "có ca test mới thì hiện ở việc của tôi") — card ghi rõ "đang test".
 export async function listCanChamCuaToi(nhanSuId: string): Promise<CaTestChoCham[]> {
   const { data, error } = await supabase.from('ca_test').select(CHO_CHAM_SELECT)
-    .eq('trang_thai', 'hoan_thanh').is('cham_xong_at', null).eq('nguoi_cham_id', nhanSuId)
+    .in('trang_thai', ['dang_test', 'hoan_thanh']).is('cham_xong_at', null).eq('nguoi_cham_id', nhanSuId)
     .order('ngay').limit(LIMIT)
   if (error) throw error
   return (data ?? []).map(mapChoCham)
 }
 export async function listCanTraBaiCuaToi(nhanSuId: string): Promise<CaTestChoCham[]> {
   const { data, error } = await supabase.from('ca_test').select(CHO_CHAM_SELECT)
-    .eq('trang_thai', 'hoan_thanh').is('tra_bai_xong_at', null).eq('nguoi_tra_bai_id', nhanSuId)
+    .in('trang_thai', ['dang_test', 'hoan_thanh']).is('tra_bai_xong_at', null).eq('nguoi_tra_bai_id', nhanSuId)
     .order('ngay').limit(LIMIT)
   if (error) throw error
   return (data ?? []).map(mapChoCham)
@@ -440,6 +442,7 @@ export async function dongTraBai(caTestId: string, ungVienId: string, lopDeXuatI
 export type NhomTiLe = { diem: number | null; toiDa: number | null; soCau: number; pct: number | null }
 export type PhieuKetQua = {
   hoTenHs: string; khoi: string | null; mon: string; ngay: string
+  gioiTinh?: 'nam' | 'nu' | null   // ung_vien.gioi_tinh — chọn avatar cartoon nam/nữ trên phiếu (mig 202609131618)
   diemNhap: number | null           // điểm NHẬP TAY (CEO ④) — độc lập với % Đ/C/S
   chamXong: boolean; traBaiXong: boolean
   tong: { soCau: number; daCham: number; diem: number; toiDa: number; pct: number }

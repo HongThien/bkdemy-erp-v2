@@ -5,6 +5,8 @@
 // mức 1-5 + nhãn muc_ma + verdict Đ/C/S per dạng + nhận xét + 🚨 CHUÔNG ĐỎ bổ trợ
 // (nguon='danhgia', ghi chú BẮT BUỘC — CEO 31/08; kênh "báo động vào thẳng" luật duyệt bổ trợ ≥2/4).
 // Tab thứ 3 "Trước buổi" (CEO 04/09) = TruocBuoiTab dùng chung với ERP (compact cho điện thoại).
+// Tab "Điểm ET" (13/09) = THAM KHẢO, READ-ONLY — GV không chấm ET (việc của TA, xem ta/ChamBuoi.tsx
+// EtPanel), chỉ xem điểm để có căn cứ điền "Đánh giá". Hiển thị THÔ từng câu (không tính % ở client — §2.0).
 import { useEffect, useState } from 'react'
 import TruocBuoiTab from '../gami/TruocBuoiTab'
 import {
@@ -38,9 +40,9 @@ const DG_SCORES: { v: DanhGiaDiem; lbl: string; sel: string }[] = [
 const MUC_REF = (muc?: number | null) => muc == null ? 'bg-slate-100 text-slate-300'
   : muc >= 4 ? 'bg-emerald-100 text-emerald-700' : muc === 3 ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-700'
 
-type TabKey = 'ingame' | 'danhgia' | 'truocbuoi'
+type TabKey = 'ingame' | 'et' | 'danhgia' | 'truocbuoi'
 const TABS: { key: TabKey; label: string }[] = [
-  { key: 'ingame', label: 'Bài trên lớp' }, { key: 'danhgia', label: 'Đánh giá' }, { key: 'truocbuoi', label: 'Trước buổi' },
+  { key: 'ingame', label: 'Bài trên lớp' }, { key: 'et', label: 'Điểm ET' }, { key: 'danhgia', label: 'Đánh giá' }, { key: 'truocbuoi', label: 'Trước buổi' },
 ]
 
 export type BuoiFull = BuoiHoc & { lop?: { ten_lop: string; mon: string; khoi: string | null }; gv_chinh_id: string | null }
@@ -94,6 +96,7 @@ export default function ChamBuoiGv({ view, onBack }: { view: BuoiViewGv; onBack:
           {!buoi ? <p className="text-[13px] text-slate-400">Đang tải buổi…</p> : (
             <>
               {tab === 'ingame' && <IngamePanel buoi={buoi} roster={roster} tenDang={tenDang} napTenDang={napTenDang} onChange={reload} />}
+              {tab === 'et' && <EtRefPanel buoi={buoi} roster={roster} tenDang={tenDang} napTenDang={napTenDang} />}
               {tab === 'danhgia' && <DanhGiaPanel buoi={buoi} roster={roster} tenDang={tenDang} napTenDang={napTenDang} onChange={reload} />}
               {tab === 'truocbuoi' && (buoi.lop_id
                 ? <TruocBuoiTab compact lopId={buoi.lop_id} ngayBuoi={buoi.ngay} mon={buoi.lop?.mon ?? ''} />
@@ -198,6 +201,86 @@ function IngamePanel({ buoi, roster, tenDang, napTenDang, onChange }: {
       </div>
       {dangPick && <DangPickerOne khoi={buoi.lop?.khoi ?? ''} mon={buoi.lop?.mon} onClose={() => setDangPick(null)}
         onPick={async (md) => { const pid = dangPick; setDangPick(null); await setProblemDang(pid, md); reloadP() }} />}
+    </div>
+  )
+}
+
+// ── ĐIỂM ET (tham khảo, READ-ONLY) — GV không chấm ET (việc của TA), chỉ xem để có căn cứ đánh giá.
+// Nguồn: CÙNG gami_session_problems/gami_grades mà TA chấm ở EtPanel (ta/ChamBuoi.tsx) — chỉ SELECT,
+// hiển thị THÔ từng câu, không tính lại % hay tổng điểm ở client (luật §2.0 cấm đếm/cộng trên điểm số).
+const ET_KQ_REF: { v: string; lbl: string; cls: string }[] = [
+  { v: 'correct', lbl: 'Đ', cls: 'bg-emerald-100 text-emerald-700' },
+  { v: 'partial', lbl: 'C', cls: 'bg-amber-100 text-amber-700' },
+  { v: 'wrong', lbl: 'S', cls: 'bg-rose-100 text-rose-700' },
+]
+const etCls = (result?: string | null) => ET_KQ_REF.find((k) => k.v === result)?.cls ?? 'bg-slate-100 text-slate-300'
+const etLbl = (result?: string | null) => ET_KQ_REF.find((k) => k.v === result)?.lbl ?? '·'
+
+function EtRefPanel({ buoi, roster, tenDang, napTenDang }: {
+  buoi: BuoiFull; roster: BuoiHocHS[]; tenDang: (md: string | null) => string
+  napTenDang: (mds: (string | null)[]) => Promise<void>
+}) {
+  const buoiId = buoi.id
+  const [probs, setProbs] = useState<Problem[]>([])
+  const [grades, setGrades] = useState<Grade[]>([])
+  const [loading, setLoading] = useState(true)
+  const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
+  const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten))
+  const dong = !!buoi.et_dong_at
+
+  useEffect(() => {
+    let alive = true
+    setLoading(true)
+    Promise.all([listProblems(buoiId, 'et'), listGrades(buoiId)])
+      .then(([p, g]) => { if (!alive) return; setProbs(p); setGrades(g); napTenDang(p.map((x) => x.ma_dang)) })
+      .catch((e) => { if (alive) alert(e.message ?? String(e)) })
+      .finally(() => { if (alive) setLoading(false) })
+    return () => { alive = false }
+  }, [buoiId]) // eslint-disable-line
+
+  const gradeOf = (pid: string, hsid: string) => grades.find((g) => g.problem_id === pid && g.hoc_sinh_id === hsid)
+
+  if (loading) return <p className="text-[13px] text-slate-400">Đang tải điểm ET…</p>
+  if (coMat.length === 0) return <p className="text-[13px] text-slate-400">Chưa có HS điểm danh "có mặt" — OPS điểm danh trước.</p>
+  if (probs.length === 0) return <p className="text-[13px] text-slate-400">Buổi này chưa có ET (TA soạn/chấm ở app TA) — chưa có điểm để tham khảo.</p>
+
+  return (
+    <div>
+      <div className="mb-2.5 flex flex-wrap items-center gap-2">
+        <span className="text-[12px] text-slate-400">{probs.length} câu · {coMat.length} HS · tham khảo — Đ đúng · C một phần · S sai</span>
+        <span className={`ml-auto rounded-lg px-2.5 py-1 text-[11.5px] font-semibold ${dong ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700'}`}>{dong ? '✓ ET đã xác nhận' : 'ET chưa xác nhận'}</span>
+      </div>
+      <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+        <table className="border-collapse text-sm">
+          <thead>
+            <tr className="bg-slate-50">
+              <th className="sticky left-0 z-20 border-b border-r border-slate-200 bg-slate-50 px-3 py-2 text-left text-[12px] font-semibold text-slate-600">Học sinh</th>
+              {probs.map((p) => (
+                <th key={p.id} className="min-w-[92px] border-b border-slate-200 px-2 py-1.5 text-center align-top">
+                  <div className="text-[12px] font-bold text-slate-700">{p.hinh_baitoan_id ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</div>
+                  <div className="mx-auto max-w-[88px] truncate text-[10.5px] font-medium text-violet-600">{p.hinh_baitoan_id ? 'Hình' : tenDang(p.ma_dang)}</div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {coMat.map((r, i) => (
+              <tr key={r.id}>
+                <td className="sticky left-0 z-10 whitespace-nowrap border-b border-r border-slate-200 bg-white px-3 py-1.5 text-[13px] font-semibold text-slate-800">{tenHT[i]}</td>
+                {probs.map((p) => {
+                  const g = gradeOf(p.id, r.hoc_sinh_id)
+                  return (
+                    <td key={p.id} className="border-b border-slate-200 px-1.5 py-1.5 text-center">
+                      <span className={`inline-flex h-8 w-8 items-center justify-center rounded-lg text-[13px] font-bold ${etCls(g?.result)}`}>{etLbl(g?.result)}</span>
+                      {!!g?.loi?.length && <div className="mt-0.5 text-[9.5px] text-rose-500">{g.loi.join(' ')}</div>}
+                    </td>
+                  )
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }

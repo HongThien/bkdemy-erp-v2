@@ -10,7 +10,7 @@ import { MathText } from '../kho/ui'
 import { LamDienO } from './DienOCau'
 import {
   listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, baoSai, nopBai, chuCaiChon, chiSoCuaChu,
-  getETDe, luuDapAnET, nopET, getETDapAnDaLuu, xemGoiY, daHetHan,
+  getETDe, luuDapAnET, nopET, getETDapAnDaLuu, xemGoiY, daHetHan, laNopMuon,
   type BaiTestCuaHS, type BaiTestFull, type BaiLamCau, type ETCauDe, type ETReveal,
 } from '../../lib/testonline'
 import { mucDeadline, nhanConLai } from '../../lib/tuan'
@@ -362,7 +362,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const rows: DsRow[] = shown.map((t) => {
     const daNop = xongCua(t)
     const hetHan = daHetHan(t)
-    const khoa = hetHan && !daNop // quá hạn mà CHƯA nộp → khoá; đã nộp vẫn xem lại được
+    // Thùy 13/09: BTVN KHÔNG giới hạn thời gian nộp — quá hạn vẫn mở được, chỉ đánh dấu "muộn".
+    // ET/đề thi/giáo trình vẫn khoá quá hạn như cũ (bài thi 1 lần / phát hành theo buổi).
+    const laBtvn = t.loai === 'btvn'
+    const khoa = hetHan && !daNop && !laBtvn
+    const sapNopMuon = laBtvn && hetHan && !daNop  // BTVN chưa nộp, quá hạn → hiện pill "muộn · vẫn nộp được"
+    const daNopMuon = daNop && laNopMuon(t.bai_lam, t.deadline)  // BTVN đã nộp SAU deadline → badge "⏰ Muộn"
     const dlMs = t.deadline ? new Date(t.deadline).getTime() : null
     const muc = mucDeadline(dlMs)
     return {
@@ -370,9 +375,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
       ten: `${LOAI_TEN[t.loai] ?? 'Bài'} ${t.mon} · ${t.lop_ten}`,
       sub: `Buổi ${fmtNgay(t.ngay)} · ${t.so_cau} câu${THI_LOAI.has(t.loai) ? ' · nộp 1 lần' : ''}`,
       laThi: THI_LOAI.has(t.loai),
-      trangThai: daNop ? 'xong' : khoa ? 'qua_han' : t.bai_lam ? 'dang_lam' : 'moi',
+      trangThai: daNop ? 'xong' : khoa ? 'qua_han' : sapNopMuon ? 'qua_han_mo' : t.bai_lam ? 'dang_lam' : 'moi',
       han: dlMs !== null && !daNop && muc ? { text: `Hạn ${fmtHan(t.deadline!)} · ${nhanConLai(dlMs)}`, muc } : null,
       khoa,
+      nopMuon: daNopMuon,
       onClick: () => setActive(t),
     }
   })
@@ -538,7 +544,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   const dsDung = laDS && daCham ? chonArr.filter((x, i) => x != null && String(x).toUpperCase() === String(keyDS[i]).toUpperCase()).length : 0
   const trongTam = (
     <>
-      <div className={desktop ? 'mb-5 flex items-center gap-4' : 'flex items-center gap-3 px-4 py-3'}>
+      <div className={desktop ? 'mb-4 flex shrink-0 items-center gap-4' : 'flex shrink-0 items-center gap-3 px-4 py-3'}>
         <button onClick={onXong} className={desktop ? 'flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]' : 'text-ph-label-2'}>✕</button>
         <div className={desktop ? 'h-2.5 flex-1 overflow-hidden rounded-full bg-black/[0.06]' : 'h-2 flex-1 overflow-hidden rounded-full bg-black/[0.08]'}>
           <div className="h-full bg-brand transition-all" style={{ width: `${((idx + 1) / total) * 100}%` }} />
@@ -546,7 +552,8 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
         <span className={desktop ? 'text-[13px] font-semibold text-[#7b8499]' : 'text-[12px] text-ph-label-2'}>{idx + 1}/{total}</span>
       </div>
 
-      <div className={desktop ? '' : 'flex-1 overflow-y-auto px-4 pb-4'}>
+      {/* Thùy 13/09: content SCROLL riêng, footer luôn nằm trong viewport (không phải kéo trang xuống mới bấm Xác nhận). */}
+      <div className={desktop ? 'flex-1 min-h-0 overflow-y-auto' : 'flex-1 overflow-y-auto px-4 pb-4'}>
         <div className={desktop ? 'rounded-[26px] bg-white p-8 shadow-[0_16px_40px_rgba(31,47,79,0.08)]' : 'rounded-2xl bg-white p-4 shadow-sm'}>
           <div className="mb-2 flex items-center justify-between">
             <p className="text-[13px] font-semibold text-ph-label-2">Câu {idx + 1}</p>
@@ -650,7 +657,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
         </div>
       </div>
 
-      <div className={desktop ? 'mt-5 flex items-center gap-3' : 'flex items-center gap-2 border-t border-black/[0.06] bg-white p-3'}>
+      <div className={desktop ? 'mt-4 flex shrink-0 items-center gap-3' : 'flex shrink-0 items-center gap-2 border-t border-black/[0.06] bg-white p-3'}>
         {idx > 0 && (
           <button onClick={() => setIdx((i) => i - 1)}
             className={desktop ? 'rounded-2xl bg-white px-6 py-3.5 text-[15px] font-medium text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]' : 'rounded-xl bg-black/[0.04] px-4 py-3 text-sm text-ph-label-2'}>
@@ -672,12 +679,14 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
     </>
   )
 
+  // Thùy 13/09: MÀN LÀM BÀI phải gọn 1 viewport (Xác nhận đáp án luôn thấy). h-[100dvh]+flex col
+  // → header/content/footer chia vùng; content overflow riêng, không phải cuộn cả trang.
   return desktop ? (
-    <div className="min-h-screen bg-[#f4f7fb] px-8 py-6">
-      <div className="mx-auto max-w-3xl">{trongTam}</div>
+    <div className="flex h-[100dvh] flex-col bg-[#f4f7fb] px-8 py-4">
+      <div className="mx-auto flex min-h-0 w-full max-w-3xl flex-1 flex-col">{trongTam}</div>
     </div>
   ) : (
-    <div className="mx-auto flex h-screen max-w-md flex-col bg-ios">{trongTam}</div>
+    <div className="mx-auto flex h-[100dvh] max-w-md flex-col bg-ios">{trongTam}</div>
   )
 }
 

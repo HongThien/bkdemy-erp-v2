@@ -202,6 +202,7 @@ export async function quetGayTuDong(): Promise<number> {
     .limit(LIMIT)
   if (error) throw error
   for (const v of (viecs ?? []) as any[]) {
+    if (!v.nguoi_lam_id) continue // chưa gán ai (hoặc đã chuyển) — không có chủ để đánh gậy
     if (mien.has(v.nguoi_lam_id)) continue
     // ngày nộp thật: ngay_nop (đã duyệt đạt) hoặc ngày VN của hoan_thanh_at (đang chờ nghiệm thu)
     const nop: string | null = v.ngay_nop ?? (v.hoan_thanh_at ? new Date(new Date(v.hoan_thanh_at).getTime() + 7 * 3600000).toISOString().slice(0, 10) : null)

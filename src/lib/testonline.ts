@@ -58,6 +58,12 @@ export function daHetHan(t: { deadline: string | null; trang_thai?: string }, no
   if (t.trang_thai === 'dong') return true
   return !!t.deadline && new Date(t.deadline).getTime() <= now
 }
+// Đã nộp MUỘN? (Thùy 13/09: HS BTVN vẫn nộp được sau deadline, chỉ đánh dấu muộn). deadline null =
+// không hạn → không có khái niệm muộn. Chưa nộp (nop_at null) → cũng chưa muộn.
+export function laNopMuon(baiLam: { nop_at: string | null } | null | undefined, deadline: string | null): boolean {
+  if (!baiLam?.nop_at || !deadline) return false
+  return new Date(baiLam.nop_at).getTime() > new Date(deadline).getTime()
+}
 
 // Doc loai → (câu resolver · loai bai_test · nhãn). ET/đề-thi=THI (giấu key); BTVN/giáo trình=tham khảo reveal-ngay.
 const DOC_MAP: Record<string, { getCaus: (id: string) => Promise<CauHoi[]>; testLoai: TestLoai; ten: string }> = {
@@ -244,7 +250,7 @@ export type BaiTestFull = { baiTest: BaiTest; caus: BaiTestCau[]; baiLam: BaiLam
 export async function getBaiTestFull(baiTestId: string): Promise<BaiTestFull> {
   const { data: bt, error } = await supabase.from('bai_test').select('*').eq('id', baiTestId).single()
   if (error) throw error
-  const { data: caus } = await supabase.from('bai_test_cau').select('*').eq('bai_test_id', baiTestId).order('thu_tu').limit(LIMIT)
+  const { data: causAll } = await supabase.from('bai_test_cau').select('*').eq('bai_test_id', baiTestId).order('thu_tu').limit(LIMIT)
   const { data: lams } = await supabase.from('bai_lam').select('*').eq('bai_test_id', baiTestId).order('bat_dau_at', { ascending: false }).limit(1)
   const baiLam = ((lams as BaiLam[])?.[0]) ?? null
   let daLam: Record<string, BaiLamCau> = {}
@@ -252,7 +258,35 @@ export async function getBaiTestFull(baiTestId: string): Promise<BaiTestFull> {
     const { data: blc } = await supabase.from('bai_lam_cau').select('*').eq('bai_lam_id', baiLam.id).limit(LIMIT)
     for (const r of (blc ?? []) as BaiLamCau[]) daLam[r.bai_test_cau_id] = r
   }
-  return { baiTest: bt as BaiTest, caus: (caus ?? []) as BaiTestCau[], baiLam, daLam }
+  // Giáo trình online phát hành theo TỪNG DẠNG (Thùy 13/09): HS chỉ thấy câu thuộc dạng đã phát hành
+  // (bảng bai_test_dang_phat_hanh). ET/BTVN/đề thi/tự luyện — giữ nguyên (không dính nhịp học của lớp).
+  const baiTest = bt as BaiTest
+  let caus = (causAll ?? []) as BaiTestCau[]
+  if (baiTest.loai === 'giao_trinh') {
+    const { data: ph } = await supabase.from('bai_test_dang_phat_hanh').select('ma_dang').eq('bai_test_id', baiTestId).limit(LIMIT)
+    const openDangs = new Set(((ph ?? []) as { ma_dang: string }[]).map((r) => r.ma_dang))
+    caus = caus.filter((c) => c.ma_dang != null && openDangs.has(c.ma_dang))
+  }
+  return { baiTest, caus, baiLam, daLam }
+}
+
+// ── PHÁT HÀNH TỪNG DẠNG (staff/GV, giáo trình online, Thùy 13/09) ─────────────────────────────
+// Publish giáo trình → trigger DB auto phát hành dạng câu 1. GV chủ động dạng 2+ trên màn LIVE.
+export type DangPhatHanh = { ma_dang: string; phat_hanh_at: string; phat_hanh_by: string | null }
+export async function listDangDaPhatHanh(baiTestId: string): Promise<DangPhatHanh[]> {
+  const { data, error } = await supabase.from('bai_test_dang_phat_hanh')
+    .select('ma_dang, phat_hanh_at, phat_hanh_by').eq('bai_test_id', baiTestId).limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as DangPhatHanh[]
+}
+export async function phatHanhDang(baiTestId: string, maDang: string): Promise<string> {
+  const { data, error } = await supabase.rpc('fn_bt_phat_hanh_dang', { p_bt: baiTestId, p_ma_dang: maDang })
+  if (error) throw error
+  return data as string
+}
+export async function thuHoiDang(baiTestId: string, maDang: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_bt_thu_hoi_dang', { p_bt: baiTestId, p_ma_dang: maDang })
+  if (error) throw error
 }
 
 export async function getBaiTestCaus(baiTestId: string): Promise<BaiTestCau[]> {
@@ -265,15 +299,21 @@ export async function getBaiTestCaus(baiTestId: string): Promise<BaiTestCau[]> {
 // lời, không cần chấm-ngầm như ET). Poll định kỳ 5-10s đủ dùng (Thùy 07-07: "dùng được ngay trên lớp
 // thôi", không cần realtime). ────────────────────────────────────────────────────────────────────
 export type LiveAnswer = { hocSinhId: string; baiTestCauId: string; verdict: string | null; xemGoiY: boolean }
-export type LiveSnapshot = { baiLam: Record<string, BaiLam>; answers: LiveAnswer[] } // baiLam keyed theo hoc_sinh_id
+// dangDaMo: map ma_dang → phat_hanh_at (giáo trình theo dạng, Thùy 13/09). Rỗng = chưa mở dạng nào.
+export type LiveSnapshot = { baiLam: Record<string, BaiLam>; answers: LiveAnswer[]; dangDaMo: Record<string, string> }
 
 export async function getLiveSnapshot(baiTestId: string): Promise<LiveSnapshot> {
-  const { data: lams, error } = await supabase.from('bai_lam').select('*').eq('bai_test_id', baiTestId).limit(LIMIT)
+  const [{ data: lams, error }, { data: ph }] = await Promise.all([
+    supabase.from('bai_lam').select('*').eq('bai_test_id', baiTestId).limit(LIMIT),
+    supabase.from('bai_test_dang_phat_hanh').select('ma_dang, phat_hanh_at').eq('bai_test_id', baiTestId).limit(LIMIT),
+  ])
   if (error) throw error
   const baiLam: Record<string, BaiLam> = {}
   for (const l of (lams ?? []) as BaiLam[]) baiLam[l.hoc_sinh_id] = l
+  const dangDaMo: Record<string, string> = {}
+  for (const r of ((ph ?? []) as { ma_dang: string; phat_hanh_at: string }[])) dangDaMo[r.ma_dang] = r.phat_hanh_at
   const lamIds = (lams ?? []).map((l: any) => l.id)
-  if (!lamIds.length) return { baiLam, answers: [] }
+  if (!lamIds.length) return { baiLam, answers: [], dangDaMo }
   const lamToHs = new Map((lams ?? []).map((l: any) => [l.id, l.hoc_sinh_id as string]))
   const [{ data: caus, error: e2 }, { data: goiY, error: e3 }] = await Promise.all([
     supabase.from('bai_lam_cau').select('bai_lam_id, bai_test_cau_id, verdict').in('bai_lam_id', lamIds).limit(LIMIT),
@@ -286,7 +326,7 @@ export async function getLiveSnapshot(baiTestId: string): Promise<LiveSnapshot> 
     hocSinhId: lamToHs.get(c.bai_lam_id)!, baiTestCauId: c.bai_test_cau_id, verdict: c.verdict,
     xemGoiY: goiYSet.has(`${c.bai_lam_id}:${c.bai_test_cau_id}`),
   }))
-  return { baiLam, answers }
+  return { baiLam, answers, dangDaMo }
 }
 
 // HS mở bài → tạo SLOT bai_lam (idempotent — StrictMode/đua). Cần hoc_sinh_id (RLS chặn HS khác).

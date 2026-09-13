@@ -12,7 +12,7 @@
 // nghi/không kiểm/câu mới bắt đi từng thẻ (spec §3 cũ) — quá chậm, đảo lại: "loại xấu + duyệt phần còn lại" là hành vi tự
 // nhiên khi TA nhìn 20 câu cùng lúc. "Duyệt tất cả" gọi fn_kho_duyet_cau KHÔNG kèm sửa (bỏ qua state sửa cục bộ của thẻ).
 import { useEffect, useRef, useState } from 'react'
-import { nhanhCuaMon, NHANH_LABEL, LOAI_CAU, listHangDuyet, duyetCauHangDuyet, tuChoiCauHangDuyet, listCumBai, tenCum, khoTbls, HANG_DUYET_LABEL,
+import { nhanhCuaMon, NHANH_LABEL, LOAI_CAU, listHangDuyet, duyetCauHangDuyet, tuChoiCauHangDuyet, listCumBai, tenCum, khoTbls, HANG_DUYET_LABEL, laDangCho,
   type CauHangDuyet, type KhoMon, type HangDuyetLoc, type CumBai, type SuaCauDuyet } from '../../lib/kho/api'
 import { MathText, inp } from '../kho/ui'
 import { SolutionField } from '../kho/DangHub'
@@ -57,14 +57,20 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
   const rowsShown = nhanh === 'all' ? rows : rows.filter((r) => r.mon === nhanh)
   const batch = rowsShown.slice(0, BATCH_SIZE)
   const demNhanh = (m: KhoMon) => rows.filter((r) => r.mon === m).length
+  // ⭐ 13/09 (Thùy: "t phân vào toạ độ hoá nhiều nhưng kho chỉ có 1 câu"): batch cũ gọi duyệt với sua={} ⇒ dạng/đề/đáp số
+  // người vừa sửa trên từng thẻ bị BỎ, câu duyệt với dạng cũ (mất 140 lượt chọn dạng tối 13/09). Thẻ báo sửa đang chờ lên
+  // đây (suaRef), batch áp ĐÚNG sửa của từng thẻ. Không lift state lên cha (thẻ vẫn tự quản form), chỉ gương lại kết quả.
+  const suaRef = useRef(new Map<string, SuaCauDuyet>())
+  const keyOf = (r: Row) => `${r.mon}:${r.ma_cau}`
   async function onDuyetTatCa() {
-    if (!batch.length || !confirm(`Duyệt cả ${batch.length} câu trong batch này (không sửa gì)? Câu không đạt hãy Từ chối trước.`)) return
+    const soSua = batch.filter((r) => suaRef.current.has(keyOf(r))).length
+    if (!batch.length || !confirm(`Duyệt cả ${batch.length} câu trong batch này${soSua ? ` — áp dụng sửa đang chờ trên ${soSua} thẻ (dạng/đề/đáp số/lời giải)` : ' (không thẻ nào có sửa)'}? Câu không đạt hãy Từ chối trước.`)) return
     setBusyAll(true)
     try {
       const nguoi = await myNhanSuId()
       const idsOk = new Set<string>()
       for (const r of batch) {
-        try { await duyetCauHangDuyet(r.mon, r.ma_cau, nguoi); idsOk.add(`${r.mon}:${r.ma_cau}`) }
+        try { await duyetCauHangDuyet(r.mon, r.ma_cau, nguoi, suaRef.current.get(keyOf(r)) ?? {}); idsOk.add(keyOf(r)); suaRef.current.delete(keyOf(r)) }
         catch { /* bỏ qua câu lỗi, tiếp tục */ }
       }
       setRows((a) => a.filter((x) => !idsOk.has(`${x.mon}:${x.ma_cau}`)))
@@ -95,11 +101,15 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
         )}
         {loc === 'nghi' && <span className="text-[12px] text-amber-700">Máy/AI tính ra khác đáp số kho. Xem đề, tự tính; kho sai thì sửa đáp số rồi Duyệt — form trắc nghiệm của câu sẽ tự thu hồi để sinh lại.</span>}
         {loc === 'cau_moi' && <span className="text-[12px] text-slate-500">Câu vào kho sau 08/09 — HS chưa thấy tới khi duyệt.</span>}
+        {loc === 'chua_dang' && <span className="text-[12px] text-amber-700">Câu nhập kho mà Claude không chắc dạng (§1.5 thà bỏ trống). Bấm 📁 chọn dạng thật cho từng câu rồi Duyệt — không có duyệt hàng loạt ở tab này.</span>}
         {thongBao && <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700">{thongBao}</span>}
-        <button onClick={onDuyetTatCa} disabled={!batch.length || busyAll}
-          className="ml-auto rounded-md bg-emerald-600 px-3.5 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
-          {busyAll ? '⏳ Đang duyệt…' : `✓ Duyệt tất cả batch (${batch.length})`}
-        </button>
+        {/* Tab Chưa phân dạng: không có batch — mọi câu đều còn dạng chờ, DB (trg_chan_duyet_dang_cho) sẽ chặn từng câu. */}
+        {loc !== 'chua_dang' && (
+          <button onClick={onDuyetTatCa} disabled={!batch.length || busyAll}
+            className="ml-auto rounded-md bg-emerald-600 px-3.5 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
+            {busyAll ? '⏳ Đang duyệt…' : `✓ Duyệt tất cả batch (${batch.length})`}
+          </button>
+        )}
       </div>
       <div className="flex-1 overflow-auto px-6 py-4">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
@@ -107,7 +117,8 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
           : rowsShown.length === 0 ? <p className="text-sm text-slate-400">Không có câu nào ở {mon}{nhanh !== 'all' ? ` · ${NHANH_LABEL[nhanh]}` : ''} · khối {khoi} · {HANG_DUYET_LABEL[loc]}. 🎉</p>
           : (
             <>
-              <ul className="space-y-4">{batch.map((r) => <The key={`${r.mon}:${r.ma_cau}`} r={r} mon={mon} busyAll={busyAll} onXong={(msg) => xong(r, msg)} />)}</ul>
+              <ul className="space-y-4">{batch.map((r) => <The key={`${r.mon}:${r.ma_cau}`} r={r} mon={mon} busyAll={busyAll} onXong={(msg) => xong(r, msg)}
+                onSua={(s) => { if (s) suaRef.current.set(keyOf(r), s); else suaRef.current.delete(keyOf(r)) }} />)}</ul>
               {rowsShown.length > batch.length && (
                 <p className="mt-4 text-center text-[12px] text-slate-400">Còn <b>{rowsShown.length - batch.length}</b> câu — sẽ hiện sau khi duyệt/từ chối xong batch này.</p>
               )}
@@ -119,7 +130,7 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
 }
 
 // 1 thẻ duyệt: state sửa cục bộ, so với bản gốc để chỉ gửi key ĐÃ ĐỔI (DB: key vắng = giữ nguyên).
-function The({ r, mon, busyAll, onXong }: { r: Row; mon: string; busyAll: boolean; onXong: (msg: string) => void }) {
+function The({ r, mon, busyAll, onXong, onSua }: { r: Row; mon: string; busyAll: boolean; onXong: (msg: string) => void; onSua: (s: SuaCauDuyet | null) => void }) {
   const [de, setDe] = useState(r.noi_dung)
   const [dapAn, setDapAn] = useState(r.dap_an ?? '')
   const [loiGiai, setLoiGiai] = useState(r.loi_giai ?? '')
@@ -149,15 +160,22 @@ function The({ r, mon, busyAll, onXong }: { r: Row; mon: string; busyAll: boolea
     setDang({ ma: maDang, ten: maDang === r.dang_chinh ? r.ten_dang : maDang, cd: maDang === r.dang_chinh ? r.ten_chuyen_de : '' })
     setCum(maDang === r.dang_chinh ? r.ma_cum : null); setPickDang(false)
   }
+  // Gói sửa gửi DB (key vắng = giữ nguyên) — dùng cho nút Duyệt lẻ VÀ gương lên cha để "Duyệt tất cả batch" áp đúng.
+  function tinhSua(): SuaCauDuyet {
+    const sua: SuaCauDuyet = {}
+    if (doiDe) sua.noi_dung = de.trim()
+    if (doiDap) sua.dap_an = dapAn.trim()
+    if (doiLg) sua.loi_giai = loiGiai.trim()
+    if (doiDang) sua.dang_chinh = dang.ma
+    if (doiCum || doiDang) sua.ma_cum = cum
+    return sua
+  }
+  useEffect(() => { onSua(coSua ? tinhSua() : null) }, [de, dapAn, loiGiai, dang.ma, cum, coSua]) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => () => onSua(null), []) // eslint-disable-line react-hooks/exhaustive-deps
   async function onDuyet() {
     setBusy(true); setErr(null)
     try {
-      const sua: SuaCauDuyet = {}
-      if (doiDe) sua.noi_dung = de.trim()
-      if (doiDap) sua.dap_an = dapAn.trim()
-      if (doiLg) sua.loi_giai = loiGiai.trim()
-      if (doiDang) sua.dang_chinh = dang.ma
-      if (doiCum || doiDang) sua.ma_cum = cum
+      const sua = tinhSua()
       const kq = await duyetCauHangDuyet(r.mon, r.ma_cau, await myNhanSuId(), sua)
       onXong(`✓ Đã duyệt ${r.ma_cau}${coSua ? ' (có sửa)' : ''}${kq.thu_hoi_form ? ` · thu hồi ${kq.thu_hoi_form} form trắc nghiệm để sinh lại` : ''}`)
     } catch (e: any) { setErr(e.message ?? String(e)); setBusy(false) }
@@ -191,9 +209,11 @@ function The({ r, mon, busyAll, onXong }: { r: Row; mon: string; busyAll: boolea
         <div className="ml-auto flex items-center gap-1.5">
           <button onClick={() => setTuChoi(tuChoi === null ? '' : null)} disabled={busy || busyAll}
             className="rounded-md px-2.5 py-1 text-[12px] font-medium text-rose-600 hover:bg-rose-50 disabled:opacity-40">✕ Từ chối</button>
-          <button onClick={onDuyet} disabled={busy || busyAll || !de.trim()}
+          {/* Dạng chờ "Chưa phân dạng": thiếu data (dạng thật) ⇒ disable là đúng luật §6; DB cũng chặn (trg_chan_duyet_dang_cho). */}
+          <button onClick={onDuyet} disabled={busy || busyAll || !de.trim() || laDangCho(dang.ma)}
+            title={laDangCho(dang.ma) ? 'Câu chưa phân dạng — bấm 📁 chọn dạng thật rồi mới duyệt được' : undefined}
             className="rounded-md bg-emerald-600 px-3 py-1 text-[12px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
-            {busy ? '⏳…' : coSua ? '✓ Lưu sửa + Duyệt' : '✓ Duyệt'}
+            {busy ? '⏳…' : laDangCho(dang.ma) ? '⚠ Chọn dạng trước' : coSua ? '✓ Lưu sửa + Duyệt' : '✓ Duyệt'}
           </button>
         </div>
       </div>
@@ -201,7 +221,7 @@ function The({ r, mon, busyAll, onXong }: { r: Row; mon: string; busyAll: boolea
       {/* Dạng + cụm — sửa tại chỗ: dạng qua popup tìm kiếm, cụm là pill theo dạng đang chọn */}
       <div className="mb-3 flex flex-wrap items-center gap-2 text-[12px]">
         <button onClick={() => setPickDang(true)} disabled={busy || busyAll} title="Đổi dạng (mở bảng tìm dạng)"
-          className={`rounded-md border px-2.5 py-1 text-left font-medium hover:border-indigo-400 hover:bg-indigo-50 ${doiDang ? 'border-indigo-400 bg-indigo-50 text-indigo-800' : 'border-slate-200 text-slate-700'}`}>
+          className={`rounded-md border px-2.5 py-1 text-left font-medium hover:border-indigo-400 hover:bg-indigo-50 ${laDangCho(dang.ma) ? 'border-amber-400 bg-amber-50 text-amber-800' : doiDang ? 'border-indigo-400 bg-indigo-50 text-indigo-800' : 'border-slate-200 text-slate-700'}`}>
           📁 {dang.cd ? <span className="text-slate-400">{dang.cd} › </span> : null}{dang.ten} <code className="ml-1 text-[11px] text-slate-400">{dang.ma}</code>
         </button>
         {r.dang_ai_de_xuat && r.dang_ai_de_xuat !== r.dang_chinh && <span className="text-slate-400" title="Dạng AI gán lúc vào kho">AI đề xuất: <code>{r.dang_ai_de_xuat}</code></span>}

@@ -126,7 +126,18 @@ function balanceDollars(s: string): string {
 }
 // `editable`: bọc mỗi công thức $…$ trong <span class="mt-f" data-fi="i"> (i = thứ tự trong raw) để preview
 // click-để-sửa (MathTextarea). Mặc định TẮT → trang in / test online / mọi chỗ khác HTML y như cũ.
-function buildLines(rawIn: string, editable = false): string[] {
+// ⭐ 13/09 (Thùy: tab Câu chờ duyệt K12 Toán trắng màn) — 1 câu HGT có lua_chon lưu [{key,text}] thay vì
+// mảng chuỗi ⇒ MathText nhận OBJECT, `.replace` nổ, React unmount CẢ màn. MathText là lá hiển thị dùng
+// khắp app: dữ liệu bẩn 1 ô không được kéo sập cả trang ⇒ ép về chuỗi (object có `text` thì lấy text,
+// còn lại JSON) rồi render như thường. Nguồn dữ liệu vẫn phải sửa (đã sửa câu đó + insertCauBatch chặn).
+function epChuoi(v: unknown): string {
+  if (typeof v === 'string') return v
+  if (v == null) return ''
+  if (typeof v === 'object') { const t = (v as { text?: unknown }).text; return typeof t === 'string' ? t : JSON.stringify(v) }
+  return String(v)
+}
+function buildLines(rawIn0: unknown, editable = false): string[] {
+  const rawIn = epChuoi(rawIn0)
   // ⭐ 11/09 (Thùy: "sao a) cứ xuống dòng, cách 1 dòng với b" — BT.08.257 phat_bieu="...cân.\n" ở DB dơ)
   // — TRIM outer whitespace TRƯỚC khi split: trailing \n biến "cân." thành 2 lines (["cân.", ""]) →
   // MathText đổi từ <span> inline sang <div> block + mline &nbsp; đẻ thêm dòng trống. Trim → 1 line, span

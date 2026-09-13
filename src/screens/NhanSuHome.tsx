@@ -442,7 +442,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
                       <span className="shrink-0 text-[15px]">✍️</span>
                       <span className="min-w-0 flex-1 text-[13px] font-medium text-slate-800">{c.hoTenHs} · {c.mon}{c.khoi ? ` · K${c.khoi}` : ''}</span>
                     </div>
-                    <div className="pl-[21px] text-[11px] text-slate-400">test {ddmmVN(c.ngay)}{c.thieuDe ? ' · ⚠ chưa có đề' : ''}</div>
+                    <div className="pl-[21px] text-[11px] text-slate-400">test {ddmmVN(c.ngay)}{c.trangThai === 'dang_test' ? ' · đang test, chờ bài' : c.thieuDe ? ' · ⚠ chưa có đề' : ' · đã có bài'}</div>
                   </button>
                 ))}
               </div>
@@ -458,7 +458,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
                       <span className="shrink-0 text-[15px]">📨</span>
                       <span className="min-w-0 flex-1 text-[13px] font-medium text-slate-800">{c.hoTenHs} · {c.mon}{c.khoi ? ` · K${c.khoi}` : ''}</span>
                     </div>
-                    <div className="pl-[21px] text-[11px] text-slate-400">test {ddmmVN(c.ngay)}{c.diemNhap != null ? ` · ${c.diemNhap}đ` : ' · chờ chấm'}</div>
+                    <div className="pl-[21px] text-[11px] text-slate-400">test {ddmmVN(c.ngay)}{c.trangThai === 'dang_test' ? ' · đang test' : c.diemNhap != null ? ` · ${c.diemNhap}đ` : ' · chờ chấm'}</div>
                   </button>
                 ))}
               </div>

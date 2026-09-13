@@ -14,7 +14,8 @@ argument-hint: <co_giai|khong_giai>
 3. **`ma_cau` do script cấp tự động** theo convention `<dang_chinh> + lpad(STT, 3, '0')`. **KHÔNG truyền trong JSON**.
 4. **`dang_ai_de_xuat = dang_chinh`** (script tự set). Người duyệt đổi `dang_chinh` sau nếu Claude gán sai; `dang_ai_de_xuat` giữ vết bản gốc → đo được precision AI.
 5. **`da_duyet = false`.** Duyệt do người ở màn "Duyệt câu" (`DuyetCauTab`).
-6. **Thà bỏ trống còn hơn đánh sai** (§1.5 CLAUDE.md). Không chắc 100% `dang_chinh` → **`fail`** file với ghi chú, để CEO xem tay. Không đoán bừa.
+6. **Thà bỏ trống còn hơn đánh sai** (§1.5 CLAUDE.md). Không chắc 100% `dang_chinh` → **KHÔNG đoán bừa**, đưa câu vào **DẠNG CHỜ "Chưa phân dạng"** (CEO 13/09): để `"dang_chinh": null` (hoặc bỏ field) và ghi `"khoi": "12"` → script tự gán `dang_chinh = <prefix><khoi>000000` (`T312000000`). Mệnh đề ĐS không chắc dạng: bỏ `ma_dang`, câu cha phải có `khoi`. Câu vào kho `da_duyet=false`, hiện ở màn Duyệt › tab **"Chưa phân dạng"**; DB chặn duyệt tới khi người chọn dạng thật. **Chỉ `fail` file** khi cả file không đọc được / không có lời giải.
+6b. **Lọc trùng tự động**: script so khoá `noi_dung + lua_chon + menh_de` (lower + bỏ khoảng trắng; chỉ so đề thì TN cùng đề khác phương án bị bắt nhầm) với kho và trong cùng lô → câu trùng **KHÔNG insert**, output `trung: [{idx, ma_cau_cu}]`, `ma_cau_list[idx]` = mã câu cũ. Báo CEO số câu trùng. CEO cố ý nhập bản thứ 2 ⇒ `--cho-trung`.
 7. **Batch nhỏ 5–10 câu/insert.** ROLLBACK cả lô nếu 1 câu lỗi — batch nhỏ đau ít.
 8. **1 file = 1 lượt done.** Log ma_cau_list đủ, move đúng ngày. Fail giữa chừng ⇒ `fail` để log; file ở nguyên chỗ, chạy lại.
 
@@ -43,6 +44,23 @@ Subject dispatch theo tên file + nội dung câu:
 **Không rõ ⇒ fail file với `error="chua_ro_subject"`, hỏi CEO.**
 
 Read PDF: `Read` tool với `pages="1-20"` (nếu PDF > 20 trang thì đọc theo range). Vision đọc math trực tiếp, không OCR.
+
+### Bước 2b: HÌNH VẼ — cắt từ PDF, upload, gắn `anh_de` (CEO 13/09: "không thấy câu nào có hình")
+
+Câu mà đề **cần hình mới giải được** (hình chóp/lăng trụ có ký hiệu trên hình, "gắn hệ trục như hình vẽ", đồ thị, bảng biến thiên) **KHÔNG bỏ nữa** — cắt hình và gắn vào câu:
+1. Nhìn trang PDF (ảnh ~827×1169), ước lượng khung hình theo **tỷ lệ trang** `x0,y0,x1,y1` (0..1, gốc trên-trái), chừa mép ~2%.
+2. `node scripts/kho_anh.mjs cat --pdf "<file>" --page <N> --bbox 0.33,0.55,0.72,0.82 --out <scratchpad>/h_<tên>.png` → **Read PNG kiểm tra** (thiếu nhãn/đứt cạnh ⇒ nới bbox, chạy lại).
+3. `node scripts/kho_anh.mjs up --png <png> --ten <tên>` → `{url}` (bucket `kho-anh/nhap_kho/<YYYY-MM>/…`, dùng `SUPABASE_SERVICE_ROLE` trong `.env.local`; anon key bị RLS chặn). Hoặc `anh` = cat + up một lệnh.
+4. Đưa URL vào JSON câu: `"anh_de": "<url>"` (hình trong LỜI GIẢI ⇒ `"anh_dap_an"`). Câu hình chỉ minh hoạ (chữ đủ giải) ⇒ không bắt buộc, nhưng có thì tốt.
+
+### Bước 3.0: đọc BÀI HỌC ĐỔI DẠNG trước khi gán (CEO 13/09)
+
+**Query bản đồ NGAY TRƯỚC lúc gán dạng của MỖI lô, không dùng danh sách lấy đầu phiên.** 13/09: bản đồ K12 thêm 702–706/901–902/109 lúc 12:00–12:26, tôi nhập 4 file lúc 12:31–12:56 bằng danh sách cũ ⇒ ~60 câu + 36 mệnh đề lệch dạng, CEO duyệt kế thừa luôn, phải chuyển lại tay.
+
+```bash
+node scripts/kho_doi_dang.mjs --subject hgt --khoi 12
+```
+In các cặp `dạng cũ → dạng mới` người duyệt đã sửa (bảng `kho_doi_dang_log`, trigger tự ghi khi `dang_chinh` đổi) kèm 3 ví dụ đề. Đề lô mới **giống ví dụ đã bị sửa ⇒ gán thẳng dạng MỚI**, không lặp lỗi cũ. Cặp có `(dạng không còn)` = renumber bản đồ, không phải lỗi gán.
 
 ### Bước 3: gán `dang_chinh` — quy trình chống đoán bừa
 
@@ -171,7 +189,9 @@ Set:
 
 | Lỗi | Nguyên nhân | Xử |
 |---|---|---|
-| `dang_chinh không có trong <mon>_ban_do` | Gán sai code dạng | Query lại bản đồ, sửa JSON, chạy lại |
+| `dang_chinh không có trong <mon>_ban_do` | Gán sai code dạng | Query lại bản đồ, sửa JSON, chạy lại. Không chắc dạng ⇒ `dang_chinh: null` + `khoi` (dạng chờ), KHÔNG đoán |
+| `thiếu dang_chinh — muốn đưa vào "Chưa phân dạng" thì phải ghi "khoi"` | Câu không dạng nhưng thiếu `khoi` | Thêm `"khoi": "<khối>"` vào câu đó |
+| Output `trung` không rỗng | Câu đã có trong kho / lặp trong lô | Bình thường — câu đó KHÔNG insert, `ma_cau_list[idx]` = mã cũ. Báo CEO; cố ý nhập bản 2 ⇒ `--cho-trung` |
 | `duplicate key value violates unique constraint "*_pkey"` | STT collision (race) | Chạy lại — advisory lock trong script sẽ chờ |
 | `sha256 file hiện tại (...) khác sha truyền vào` | Ai đó sửa file giữa `list` và `done` | Chạy lại từ `list` để lấy sha mới |
 | Read PDF trả về "cannot read encrypted" | PDF khoá | `fail` với `error="pdf_encrypted"` |

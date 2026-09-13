@@ -36,7 +36,8 @@ type Row = { key: string; nhanh: string; khoi: string; deBai: string; loiGiai: s
 // 'dung_sai' (CEO 12/09): câu Đúng/Sai là LOẠI RIÊNG — bộ lọc riêng trên thanh tab, UI duyệt theo từng mệnh đề (DuyetDungSaiTab).
 // Đếm vẫn qua fn_kho_dem_hang_duyet như các bộ lọc khác (DB chỉ đếm nhánh có bảng con mệnh đề: Đại/HGT; KHTN hold).
 type Tab = 'chua' | HangDuyetLoc | 'tn' | 'dien'
-const TAB_LOC: HangDuyetLoc[] = ['cau_moi', 'moi', 'nghi', 'khong_kiem', 'ton_dong', 'dung_sai']
+// 'chua_dang' (CEO 13/09): câu nhập kho không xác định được dạng — nằm ở dạng chờ, DB chặn duyệt tới khi chọn dạng thật.
+const TAB_LOC: HangDuyetLoc[] = ['cau_moi', 'moi', 'nghi', 'khong_kiem', 'ton_dong', 'chua_dang', 'dung_sai']
 const TAB_CO_HINH = new Set<Tab>(['moi', 'ton_dong']) // 2 tab lời giải có thêm phần Hình (biến thể / cách giải)
 const readMon = () => localStorage.getItem('duyetlg.mon') ?? ''
 
