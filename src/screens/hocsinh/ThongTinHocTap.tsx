@@ -27,6 +27,7 @@ const THEME = {
     quote: 'Học mà hiểu\nlà học giỏi ♡', quoteColor: '#E84A8F', plane: false, underline: true, iconTint: '#F3E4F6' },
 }
 type Theme = typeof THEME.nam
+export { THEME as _THEME_TTHT }  // export chỉ để demo trong AppHS?demo=podium
 
 // ── Shell chung — backdrop + decor + quote + header squircle. children là phần thân màn. ────
 function Kung({ t, title, sub, onBack, children }: { t: Theme; title: string; sub?: string; onBack: () => void; children: ReactNode }) {
@@ -239,11 +240,11 @@ function XepHangScreen({ t, hocSinhId, onBack }: { t: Theme; hocSinhId: string; 
       </div>
       {dangTai && <p className="mt-6 text-center text-[13px]" style={{ color: t.sec }}>Đang tải…</p>}
       {!dangTai && (
-        <div className="mt-3 rounded-[20px] p-2" style={{ background: t.cardTint, boxShadow: t.shadow }}>
+        <div className="mt-3">
           {kind === 'ti_le' && <BXHList t={t} rows={tiLe!.map((r) => ({
             ma_hs: r.ma_hs, ho_ten: r.ho_ten, la_toi: r.la_toi,
             nhan: r.ti_le == null ? '—' : `${r.ti_le}%`,
-            phu: `${r.so_dat}/${r.so_dang} dạng đạt`,
+            phu: `${r.so_dat}/${r.so_dang} dạng`,
           }))} emptyText="Chưa có bạn nào đo dạng." />}
           {kind === 'mt' && <BXHList t={t} rows={mt!.map((r) => ({
             ma_hs: r.ma_hs ?? '', ho_ten: r.ho_ten,
@@ -287,53 +288,87 @@ function LanDo({ e, t }: { e: RecentEval; t: Theme }) {
   )
 }
 
-// BXHList — TOP 10 (Thùy 12/09: "hiện top 10, top 3 đẹp giống xếp hạng ở app trợ giảng"). Style
-// mượn XepHangBlock ở src/components/CuaToiWidgets.tsx (widget dùng chung TA/GV/OPS): 3 đầu emoji
-// medal to 🥇🥈🥉, hạng 4-10 số nhỏ; dòng "Bạn" highlight nền brand + border.
-const MEDAL = ['🥇', '🥈', '🥉'] as const
-function BXHList({ t, rows, emptyText }: { t: Theme; rows: { ma_hs: string; ho_ten: string; la_toi: boolean; nhan: string; phu: string }[]; emptyText: string }) {
+// BXHList — TOP 10 với BỤC TRAO GIẢI 3 đầu (Thùy 13/09: "top 3 dùng bảng xếp hạng giống module xếp
+// hạng của TA"). Mượn ĐÚNG pattern Podium ở src/components/bk/XepHangScreen.tsx (dùng cho DashTa/OpsDash):
+// ảnh bục /bk-ui/buc_trao_giai.png (aspect 1448/770) — 3 lỗ tròn avatar + 3 thẻ tên đặt theo % đo trên
+// ảnh (VI_TRI copy y hệt). Hạng 4-10 dùng Dong (card ngang: hạng · avatar · tên+phụ · pill nhan). Nếu
+// "Bạn" không lọt top 10 → dòng riêng ở đáy.
+const AV = ['🧑‍🏫', '👩‍🏫', '🧑‍🎓', '👩‍🎓', '🧑', '👩']
+const av = (s: string) => AV[(s.charCodeAt(0) + s.length) % AV.length]
+const BUC = { url: '/bk-ui/buc_trao_giai.png', aspect: '1448 / 770' }
+// Vị trí đo trên ảnh — copy CHÍNH XÁC từ XepHangScreen (CEO đã đo trên ảnh gốc)
+const VI_TRI = [
+  { cx: 49.9, cy: 29.2, d: 17.0, the: { l: 39.6, t: 49.5, w: 21.4, h: 12.6 }, mau: '#FCF5E7' },   // #1
+  { cx: 25.0, cy: 44.2, d: 14.6, the: { l: 14.8, t: 62.6, w: 19.6, h: 12.6 }, mau: '#F1F3FF' },   // #2
+  { cx: 74.9, cy: 44.2, d: 14.6, the: { l: 65.9, t: 61.9, w: 19.8, h: 12.6 }, mau: '#FFF1F4' },   // #3
+]
+type BXHRow = { ma_hs: string; ho_ten: string; la_toi: boolean; nhan: string; phu: string }
+
+function BXHPodium({ top }: { top: BXHRow[] }) {
+  return (
+    <div className="relative w-full" style={{ aspectRatio: BUC.aspect, containerType: 'inline-size' }}>
+      <img src={BUC.url} alt="" className="absolute inset-0 h-full w-full select-none" draggable={false} />
+      {VI_TRI.map((v, i) => {
+        const p = top[i]
+        if (!p) return null
+        return (
+          <div key={i}>
+            <span className="absolute flex items-center justify-center overflow-hidden rounded-full bg-white"
+              style={{ left: `${v.cx}%`, top: `${v.cy}%`, width: `${v.d}%`, aspectRatio: '1', transform: 'translate(-50%,-50%)', fontSize: `${v.d * 0.55}cqw` }}>
+              {av(p.ho_ten)}
+            </span>
+            <div className="absolute flex flex-col justify-center overflow-hidden rounded-md text-center"
+              style={{ left: `${v.the.l}%`, top: `${v.the.t}%`, width: `${v.the.w}%`, height: `${v.the.h}%`, background: v.mau }}>
+              <p className="truncate font-extrabold leading-tight text-[#16224D]" style={{ fontSize: '2.9cqw' }}>
+                {p.ho_ten.split(' ').slice(-2).join(' ')}{p.la_toi && <span className="ml-1" style={{ fontSize: '2.4cqw' }}>· Bạn</span>}
+              </p>
+              <p className="truncate font-semibold leading-tight text-[#63709A]" style={{ fontSize: '2.5cqw' }}>👑 {p.nhan}</p>
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+const DONG_VIEN = ['Đang tiến bộ rất nhanh! ✨', 'Cố gắng thêm một chút nhé! 💗', 'Kiên trì là chiến thắng! ⭐', 'Sắp lọt top 3 rồi! 💪', 'Chăm luyện là giỏi! ♡', 'Không bỏ cuộc nhé! 🌟', 'Còn tuyệt vời hơn nữa! ✨']
+
+// Dòng hạng 4-10 — copy phong cách Dong ở XepHangScreen (viền brand khi là "Bạn", avatar tròn, pill động viên).
+function DongHS({ t, hang, row, dongVien, ban }: { t: Theme; hang: number | string; row: BXHRow; dongVien: string; ban?: boolean }) {
+  return (
+    <div className="flex items-center gap-2 rounded-2xl bg-white px-2.5 py-1.5" style={{ boxShadow: ban ? `inset 0 0 0 2px ${t.primary}66` : 'none' }}>
+      <span className="w-6 text-center text-[14px] font-extrabold" style={{ color: ban ? t.primary : '#63709A' }}>{hang}</span>
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#DDF4FF] text-[16px] ring-2 ring-[#DCE6FF]">
+        {av(row.ho_ten)}
+      </span>
+      <div className="min-w-0 flex-1 leading-tight">
+        <p className="truncate text-[12px] font-extrabold" style={{ color: NAVY }}>
+          {row.ho_ten}{ban && <span className="ml-1 rounded-full px-1.5 py-px text-[8.5px] text-white" style={{ background: t.primary }}>Bạn</span>}
+        </p>
+        <p className="truncate text-[10px]" style={{ color: t.sec }}>{row.nhan}{row.phu ? ` · ${row.phu}` : ''}</p>
+      </div>
+      <span className="font-hand shrink-0 rounded-xl bg-[#EEF3FF] px-2 py-1 text-right text-[10px] italic leading-tight text-[#2F73F6]">{dongVien}</span>
+    </div>
+  )
+}
+
+export function BXHList({ t, rows, emptyText }: { t: Theme; rows: BXHRow[]; emptyText: string }) {
   if (rows.length === 0) return <p className="py-4 text-center text-[12.5px]" style={{ color: t.sec }}>{emptyText}</p>
   const top10 = rows.slice(0, 10)
-  const banRank = rows.findIndex((r) => r.la_toi)   // hạng của HS đang xem (0-based)
+  const top3 = top10.slice(0, 3)
+  const rest = top10.slice(3, 10)
+  const banRank = rows.findIndex((r) => r.la_toi)   // 0-based
   const banInTop = banRank >= 0 && banRank < 10
   return (
-    <>
-      <div className="flex flex-col divide-y divide-black/[0.05]">
-        {top10.map((r, i) => (
-          <div key={r.ma_hs || `${i}-${r.ho_ten}`}
-            className="grid grid-cols-[36px_1fr_auto] items-center gap-2.5 px-2 py-2 text-[13px]"
-            style={{
-              background: r.la_toi ? `${t.primary}14` : 'transparent',
-              borderRadius: r.la_toi ? 12 : 0,
-            }}>
-            {i < 3
-              ? <span className="text-center text-[22px] leading-none">{MEDAL[i]}</span>
-              : <span className="text-center text-[13px] font-black" style={{ color: t.sec }}>#{i + 1}</span>}
-            <div className="min-w-0">
-              <p className="truncate font-bold" style={{ color: r.la_toi ? t.primary : NAVY }}>
-                {r.ho_ten}{r.la_toi ? ' (Bạn)' : ''}
-              </p>
-              {r.phu && <p className="truncate text-[10.5px]" style={{ color: t.sec }}>{r.phu}</p>}
-            </div>
-            <span className="shrink-0 rounded-full px-2.5 py-1 text-[12px] font-black text-white"
-              style={{ background: r.la_toi ? t.primary : i < 3 ? '#E08A1E' : '#20A886' }}>{r.nhan}</span>
-          </div>
-        ))}
-      </div>
-      {/* Nếu "Bạn" không nằm trong top 10 → hiện dòng riêng ở đáy (để em vẫn biết hạng) */}
+    <div className="flex flex-col gap-1.5">
+      <BXHPodium top={top3} />
+      {rest.map((r, i) => (
+        <DongHS key={r.ma_hs || `${i}-${r.ho_ten}`} t={t} hang={i + 4} row={r} dongVien={DONG_VIEN[i] ?? DONG_VIEN[DONG_VIEN.length - 1]} ban={r.la_toi} />
+      ))}
       {banRank >= 0 && !banInTop && (
-        <div className="mt-2 grid grid-cols-[36px_1fr_auto] items-center gap-2.5 rounded-[12px] px-2 py-2 text-[13px]"
-          style={{ background: `${t.primary}14` }}>
-          <span className="text-center text-[13px] font-black" style={{ color: t.primary }}>#{banRank + 1}</span>
-          <div className="min-w-0">
-            <p className="truncate font-bold" style={{ color: t.primary }}>{rows[banRank].ho_ten} (Bạn)</p>
-            {rows[banRank].phu && <p className="truncate text-[10.5px]" style={{ color: t.sec }}>{rows[banRank].phu}</p>}
-          </div>
-          <span className="shrink-0 rounded-full px-2.5 py-1 text-[12px] font-black text-white"
-            style={{ background: t.primary }}>{rows[banRank].nhan}</span>
-        </div>
+        <DongHS t={t} hang={`#${banRank + 1}`} row={rows[banRank]} dongVien={`Bạn đang #${banRank + 1}/${rows.length} ✨`} ban />
       )}
-    </>
+    </div>
   )
 }
 
