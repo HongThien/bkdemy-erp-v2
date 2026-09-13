@@ -13,7 +13,7 @@ import type { ReactNode } from 'react'
 const A = '/bk-ui/hs'
 const NAVY = '#0F1745'
 
-export type DsTrangThai = 'moi' | 'dang_lam' | 'qua_han' | 'xong'
+export type DsTrangThai = 'moi' | 'dang_lam' | 'qua_han' | 'qua_han_mo' | 'xong'
 export type DsRow = {
   id: string
   ten: string           // "Bài tập Toán · 11A1"
@@ -21,7 +21,8 @@ export type DsRow = {
   laThi?: boolean       // badge THI (ET / đề thi / retest — nộp 1 lần)
   trangThai: DsTrangThai
   han?: { text: string; muc: 'qua_han' | 'sat' | 'gan' | 'con_nhieu' } | null // dòng "⏳ Hạn … · còn 2 ngày"
-  khoa: boolean         // quá hạn chưa nộp → không mở được
+  khoa: boolean         // quá hạn chưa nộp → không mở được (BTVN Thùy 13/09: không khoá, chỉ đánh dấu muộn)
+  nopMuon?: boolean     // đã nộp SAU deadline → badge phụ "⏰ Muộn"
   onClick: () => void
 }
 
@@ -41,10 +42,11 @@ const THEME = {
 
 // Màu pill trạng thái — suy từ palette kit (mới = primary nhạt như mockup; còn lại theo ngữ nghĩa app cũ)
 const PILL: Record<DsTrangThai, { bg: string; c: string; nhan: string }> = {
-  moi:      { bg: '#E3EEFF', c: '#1673D8', nhan: 'mới' },
-  dang_lam: { bg: '#FFF0D6', c: '#E08A1E', nhan: 'đang làm' },
-  qua_han:  { bg: '#FFE3E6', c: '#E0405A', nhan: 'quá hạn' },
-  xong:     { bg: '#DDF7EA', c: '#1E9E6A', nhan: '✓ hoàn thành' },
+  moi:        { bg: '#E3EEFF', c: '#1673D8', nhan: 'mới' },
+  dang_lam:   { bg: '#FFF0D6', c: '#E08A1E', nhan: 'đang làm' },
+  qua_han:    { bg: '#FFE3E6', c: '#E0405A', nhan: 'quá hạn' },
+  qua_han_mo: { bg: '#FFF0D6', c: '#B4691A', nhan: 'muộn · vẫn nộp được' },  // Thùy 13/09: BTVN không khoá, đánh dấu muộn khi nộp
+  xong:       { bg: '#DDF7EA', c: '#1E9E6A', nhan: '✓ hoàn thành' },
 }
 const HAN_MAU = { qua_han: '#E0405A', sat: '#E08A1E', gan: '#E08A1E', con_nhieu: '#6E7EAA' }
 
@@ -123,6 +125,7 @@ export default function DanhSachHS({ tieuDe, ill, gioiTinh, tab, nChua, nXong, r
                   <span className="min-w-0 flex-1 pr-12 pt-1">
                     <span className="block truncate text-[17px] font-extrabold leading-tight" style={{ color: NAVY }}>
                       {r.laThi && <span className="mr-1.5 rounded-md px-1.5 py-0.5 align-middle text-[10.5px] font-bold" style={{ background: '#EEE6FF', color: '#7B61E8' }}>THI</span>}
+                      {r.nopMuon && <span className="mr-1.5 rounded-md px-1.5 py-0.5 align-middle text-[10.5px] font-bold" style={{ background: '#FFE9B3', color: '#B4691A' }}>⏰ Muộn</span>}
                       {r.ten}
                     </span>
                     <span className="mt-1 block text-[13px]" style={{ color: t.sec }}>{r.sub}</span>

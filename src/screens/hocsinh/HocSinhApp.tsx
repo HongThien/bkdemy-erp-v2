@@ -10,7 +10,7 @@ import { MathText } from '../kho/ui'
 import { LamDienO } from './DienOCau'
 import {
   listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, baoSai, nopBai, chuCaiChon, chiSoCuaChu,
-  getETDe, luuDapAnET, nopET, getETDapAnDaLuu, xemGoiY, daHetHan,
+  getETDe, luuDapAnET, nopET, getETDapAnDaLuu, xemGoiY, daHetHan, laNopMuon,
   type BaiTestCuaHS, type BaiTestFull, type BaiLamCau, type ETCauDe, type ETReveal,
 } from '../../lib/testonline'
 import { mucDeadline, nhanConLai } from '../../lib/tuan'
@@ -362,7 +362,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const rows: DsRow[] = shown.map((t) => {
     const daNop = xongCua(t)
     const hetHan = daHetHan(t)
-    const khoa = hetHan && !daNop // quá hạn mà CHƯA nộp → khoá; đã nộp vẫn xem lại được
+    // Thùy 13/09: BTVN KHÔNG giới hạn thời gian nộp — quá hạn vẫn mở được, chỉ đánh dấu "muộn".
+    // ET/đề thi/giáo trình vẫn khoá quá hạn như cũ (bài thi 1 lần / phát hành theo buổi).
+    const laBtvn = t.loai === 'btvn'
+    const khoa = hetHan && !daNop && !laBtvn
+    const sapNopMuon = laBtvn && hetHan && !daNop  // BTVN chưa nộp, quá hạn → hiện pill "muộn · vẫn nộp được"
+    const daNopMuon = daNop && laNopMuon(t.bai_lam, t.deadline)  // BTVN đã nộp SAU deadline → badge "⏰ Muộn"
     const dlMs = t.deadline ? new Date(t.deadline).getTime() : null
     const muc = mucDeadline(dlMs)
     return {
@@ -370,9 +375,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
       ten: `${LOAI_TEN[t.loai] ?? 'Bài'} ${t.mon} · ${t.lop_ten}`,
       sub: `Buổi ${fmtNgay(t.ngay)} · ${t.so_cau} câu${THI_LOAI.has(t.loai) ? ' · nộp 1 lần' : ''}`,
       laThi: THI_LOAI.has(t.loai),
-      trangThai: daNop ? 'xong' : khoa ? 'qua_han' : t.bai_lam ? 'dang_lam' : 'moi',
+      trangThai: daNop ? 'xong' : khoa ? 'qua_han' : sapNopMuon ? 'qua_han_mo' : t.bai_lam ? 'dang_lam' : 'moi',
       han: dlMs !== null && !daNop && muc ? { text: `Hạn ${fmtHan(t.deadline!)} · ${nhanConLai(dlMs)}`, muc } : null,
       khoa,
+      nopMuon: daNopMuon,
       onClick: () => setActive(t),
     }
   })
