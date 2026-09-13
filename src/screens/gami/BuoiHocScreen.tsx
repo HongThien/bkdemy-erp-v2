@@ -416,7 +416,7 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
               : tab === 'mt'
               ? <MTTab buoiId={id} roster={roster} buoi={buoi} onChange={reload} />
               : tab === 'live'
-              ? <LiveTab buoiId={id} roster={roster} />
+              ? <LiveTab buoiId={id} roster={roster} mon={(buoi as any).lop?.mon ?? ''} />
               : tab === 'daubuoi'
               ? <EloExpTab roster={roster} mon={(buoi as any).lop?.mon ?? ''} tenLop={(buoi as any).lop?.ten_lop ?? ''} />
               : tab === 'truocbuoi'
@@ -1449,12 +1449,13 @@ async function copyImg(){
 // án (reveal-ngay) — KHÔNG cần chấm-ngầm như ET. Poll 7s (Thùy 07-07: 5-10s đủ dùng, không cần realtime).
 const LIVE_TONE: Record<string, string> = { correct: 'bg-emerald-500 text-white', partial: 'bg-amber-400 text-white', wrong: 'bg-rose-500 text-white' }
 const LIVE_LETTER: Record<string, string> = { correct: 'Đ', partial: 'C', wrong: 'S' }
-function LiveTab({ buoiId, roster }: { buoiId: string; roster: BuoiHocHS[] }) {
+function LiveTab({ buoiId, roster, mon }: { buoiId: string; roster: BuoiHocHS[]; mon: string }) {
   const [loading, setLoading] = useState(true)
   const [baiTest, setBaiTest] = useState<BaiTest | null>(null)
   const [caus, setCaus] = useState<BaiTestCau[]>([])
   const [baiLam, setBaiLam] = useState<Record<string, BaiLam>>({})
   const [answers, setAnswers] = useState<LiveAnswer[]>([])
+  const [tenDangs, setTenDangs] = useState<Record<string, string>>({})   // Thùy 13/09: header hiện tên dạng, khớp bản in
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
 
@@ -1475,23 +1476,54 @@ function LiveTab({ buoiId, roster }: { buoiId: string; roster: BuoiHocHS[] }) {
     return () => { stop = true; clearInterval(t) }
   }, [buoiId])
 
+  // Fetch tên dạng cho header (giống builder/bản in — trước hiện `Câu N` cộng dồn nên khó khớp giấy)
+  useEffect(() => {
+    const uniq = [...new Set(caus.map((c) => c.ma_dang).filter(Boolean))] as string[]
+    if (!uniq.length) return
+    getDangTen(uniq, mon).then(setTenDangs).catch(() => {})
+  }, [caus, mon])
+
   if (loading) return <p className="text-[12px] text-slate-400">Đang tải…</p>
   if (!baiTest) return <p className="text-[13px] text-slate-400">Chưa phát hành online cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b>). Vào <b className="text-slate-600">Kho tài liệu</b> → 📱 Phát hành online giáo trình buổi này rồi quay lại.</p>
   if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh "có mặt".</p>
 
   const cellOf = (hsId: string, cauId: string) => answers.find((a) => a.hocSinhId === hsId && a.baiTestCauId === cauId)
 
+  // Group câu theo ma_dang GIỮ THỨ TỰ xuất hiện (Thùy 13/09: khớp builder/bản in — RESET số câu qua mỗi
+  // dạng thay vì đếm cộng dồn 1..N). Câu KHÔNG có ma_dang xếp vào nhóm '__none__' cuối.
+  const groups: { ma_dang: string; caus: BaiTestCau[] }[] = []
+  let cur: { ma_dang: string; caus: BaiTestCau[] } | null = null
+  for (const c of caus) {
+    const key = c.ma_dang ?? '__none__'
+    if (!cur || cur.ma_dang !== key) { cur = { ma_dang: key, caus: [] }; groups.push(cur) }
+    cur.caus.push(c)
+  }
+  const tenCua = (ma_dang: string, i: number) => ma_dang === '__none__' ? `Nhóm ${i + 1}` : (tenDangs[ma_dang] ?? ma_dang)
+
   return (
     <div className="flex h-full flex-col">
-      <div className="mb-3 text-[12px] text-slate-400">{caus.length} câu (giáo trình online) · {coMat.length} HS · tự làm mới ~7s.</div>
+      <div className="mb-3 text-[12px] text-slate-400">{caus.length} câu · {groups.length} dạng · {coMat.length} HS · tự làm mới ~7s. Số câu reset theo từng dạng (khớp bản in).</div>
       <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
         <table className="w-auto border-collapse text-sm">
           <thead>
-            <tr className="bg-slate-100">
-              <th className="sticky left-0 top-0 z-30 whitespace-nowrap border border-slate-200 bg-slate-100 px-4 py-1.5 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
-              {caus.map((c) => (
-                <th key={c.id} className="sticky top-0 z-10 w-[64px] border border-slate-200 bg-slate-100 px-2 py-1.5 text-center text-[12px] font-bold text-slate-700">Câu {c.thu_tu}</th>
+            {/* Hàng 1: tên dạng (colspan = số câu trong dạng) — khớp builder/PrintView giáo trình */}
+            <tr className="bg-slate-50">
+              <th rowSpan={2} className="sticky left-0 top-0 z-30 whitespace-nowrap border border-slate-200 bg-slate-50 px-4 py-1.5 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
+              {groups.map((g, i) => (
+                <th key={g.ma_dang} colSpan={g.caus.length} className="sticky top-0 z-10 border border-slate-200 bg-indigo-50 px-2 py-1.5 text-center text-[11.5px] font-bold text-indigo-700"
+                  title={g.ma_dang === '__none__' ? '' : g.ma_dang}>
+                  <span className="mr-1 rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-black text-indigo-600">D{i + 1}</span>
+                  <span className="truncate">{tenCua(g.ma_dang, i)}</span>
+                </th>
               ))}
+            </tr>
+            {/* Hàng 2: "Câu N" với N reset trong mỗi dạng — như builder/giấy in */}
+            <tr className="bg-slate-100">
+              {groups.map((g) => g.caus.map((c, j) => (
+                <th key={c.id} className="sticky z-10 w-[52px] border border-slate-200 bg-slate-100 px-1.5 py-1 text-center text-[11.5px] font-bold text-slate-700" style={{ top: 30 }}>
+                  Câu {j + 1}
+                </th>
+              )))}
             </tr>
           </thead>
           <tbody>
@@ -1502,10 +1534,12 @@ function LiveTab({ buoiId, roster }: { buoiId: string; roster: BuoiHocHS[] }) {
                   <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-1 text-left align-middle font-medium text-slate-800">
                     {tenHT[i]}{!lam && <span className="ml-1.5 text-[11px] font-normal text-slate-300">(chưa mở bài)</span>}
                   </td>
-                  {caus.map((c) => {
+                  {groups.flatMap((g, gi) => g.caus.map((c, ci) => {
                     const cell = cellOf(r.hoc_sinh_id, c.id)
+                    // Vạch ngăn dạng: cell ĐẦU của dạng thứ 2 trở đi có border trái dày để GV nhận nhóm
+                    const isDangStart = ci === 0 && gi > 0
                     return (
-                      <td key={c.id} className="border border-slate-200 px-2 py-1.5 text-center align-middle">
+                      <td key={c.id} className="border border-slate-200 px-2 py-1.5 text-center align-middle" style={isDangStart ? { borderLeft: '2px solid #a5b4fc' } : undefined}>
                         {lam && (
                           <span className={`relative inline-flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-bold ${cell?.verdict ? LIVE_TONE[cell.verdict] : 'bg-slate-100 text-slate-300'}`}>
                             {cell?.verdict ? LIVE_LETTER[cell.verdict] : '·'}
@@ -1514,7 +1548,7 @@ function LiveTab({ buoiId, roster }: { buoiId: string; roster: BuoiHocHS[] }) {
                         )}
                       </td>
                     )
-                  })}
+                  }))}
                 </tr>
               )
             })}
