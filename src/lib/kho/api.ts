@@ -123,6 +123,7 @@ type CauInput = {
   anh_de?: string | null; anh_dap_an?: string | null
   nguon?: string; nguon_giai?: string; parent_ma_cau?: string | null; clone_method?: string | null
   ma_cum?: string | null
+  da_duyet?: boolean; duyet_boi?: string | null; duyet_at?: string | null
 }
 export async function createCau(input: CauInput, tbl = 'dai_cau_hoi'): Promise<CauHoi> {
   const { data, error } = await supabase.from(tbl).insert(input).select().single()
@@ -154,6 +155,11 @@ async function nhanSuIdCuaToi(): Promise<string> {
   const id = (tk as { nhan_su_id?: string | null } | null)?.nhan_su_id
   if (!id) throw new Error('Tài khoản chưa link nhân sự — không ghi được ai duyệt.')
   return id
+}
+// Duyệt luôn lúc clone (thay vì để chờ hậu kiểm sau) — dùng chung khuôn actor+ts với duyetCau ở trên.
+async function duyetLuonFields(): Promise<{ da_duyet: true; duyet_boi: string; duyet_at: string }> {
+  const nguoiDuyet = await nhanSuIdCuaToi()
+  return { da_duyet: true, duyet_boi: nguoiDuyet, duyet_at: new Date().toISOString() }
 }
 export async function duyetCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<void> {
   const nguoiDuyet = await nhanSuIdCuaToi()
@@ -642,7 +648,9 @@ export function parseVariantsJson(text: string): CauNoiDung[] {
 // clone luôn tương đương với gốc của nó nên không có lý do để nằm cụm khác.
 export async function saveCloneBatch(a: {
   dangChinh: string; loaiCau: string; goc: CauNoiDung; variants: CauNoiDung[]; maCum?: string | null
+  daDuyet?: boolean // Duyệt luôn lúc clone (Thùy 12/09) — nhân sự tự tin đúng thì tích, khỏi chờ hậu kiểm sau.
 }, tbl = 'dai_cau_hoi'): Promise<{ goc: string; soClone: number }> {
+  const duyetFields = a.daDuyet ? await duyetLuonFields() : {}
   const start = await nextCauSeq(a.dangChinh, tbl)
   const g = await createCau({
     ma_cau: maCau(a.dangChinh, start),
@@ -651,6 +659,7 @@ export async function saveCloneBatch(a: {
     anh_de: a.goc.anh_de ?? null, anh_dap_an: a.goc.anh_dap_an ?? null, nguon: 'le',
     nguon_giai: a.goc.nguon_giai ?? 'nguoi', // gốc = người ra đề (tin)
     ...(coCumBai(tbl) ? { ma_cum: a.maCum ?? null } : {}),
+    ...duyetFields,
   }, tbl)
   if (a.variants.length) {
     const rows = a.variants.map((v, i) => ({
@@ -660,6 +669,7 @@ export async function saveCloneBatch(a: {
       anh_de: v.anh_de ?? null, anh_dap_an: v.anh_dap_an ?? null,
       nguon: 'clone', nguon_giai: 'ai', parent_ma_cau: g.ma_cau, clone_method: 'manual_gemini', // biến thể = AI giải
       ...(coCumBai(tbl) ? { ma_cum: a.maCum ?? null } : {}),
+      ...duyetFields,
     }))
     const { error } = await supabase.from(tbl).insert(rows)
     if (error) throw error
@@ -672,8 +682,10 @@ export async function saveCloneBatch(a: {
 // không phải gom tay lại. Đây là điểm khác duy nhất so với `saveCloneBatch` (vốn đẻ gốc + biến thể).
 export async function saveCloneVariants(a: {
   goc: Pick<CauHoi, 'ma_cau' | 'dang_chinh' | 'loai_cau' | 'ma_cum'>; variants: CauNoiDung[]
+  daDuyet?: boolean // Duyệt luôn lúc clone (Thùy 12/09) — nhân sự tự tin đúng thì tích, khỏi chờ hậu kiểm sau.
 }, tbl = 'dai_cau_hoi'): Promise<number> {
   if (!a.variants.length) return 0
+  const duyetFields = a.daDuyet ? await duyetLuonFields() : {}
   const start = await nextCauSeq(a.goc.dang_chinh, tbl)
   const rows = a.variants.map((v, i) => ({
     ma_cau: maCau(a.goc.dang_chinh, start + i),
@@ -682,6 +694,7 @@ export async function saveCloneVariants(a: {
     anh_de: v.anh_de ?? null, anh_dap_an: v.anh_dap_an ?? null,
     nguon: 'clone', nguon_giai: 'ai', parent_ma_cau: a.goc.ma_cau, clone_method: 'manual_gemini',
     ...(coCumBai(tbl) ? { ma_cum: a.goc.ma_cum ?? null } : {}),
+    ...duyetFields,
   }))
   const { error } = await supabase.from(tbl).insert(rows)
   if (error) throw error
