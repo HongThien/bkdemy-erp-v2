@@ -58,6 +58,12 @@ export function daHetHan(t: { deadline: string | null; trang_thai?: string }, no
   if (t.trang_thai === 'dong') return true
   return !!t.deadline && new Date(t.deadline).getTime() <= now
 }
+// Đã nộp MUỘN? (Thùy 13/09: HS BTVN vẫn nộp được sau deadline, chỉ đánh dấu muộn). deadline null =
+// không hạn → không có khái niệm muộn. Chưa nộp (nop_at null) → cũng chưa muộn.
+export function laNopMuon(baiLam: { nop_at: string | null } | null | undefined, deadline: string | null): boolean {
+  if (!baiLam?.nop_at || !deadline) return false
+  return new Date(baiLam.nop_at).getTime() > new Date(deadline).getTime()
+}
 
 // Doc loai → (câu resolver · loai bai_test · nhãn). ET/đề-thi=THI (giấu key); BTVN/giáo trình=tham khảo reveal-ngay.
 const DOC_MAP: Record<string, { getCaus: (id: string) => Promise<CauHoi[]>; testLoai: TestLoai; ten: string }> = {
