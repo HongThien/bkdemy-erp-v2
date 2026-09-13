@@ -11545,3 +11545,4 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
 - **RLS `bai_test_con_han` là 1 chỗ chặn deadline chuẩn** — muốn nới cho 1 loại nào đó, sửa function này thay vì viết policy riêng.
 - **DATA BUG "câu có 4 phương án nhưng loai_cau='tra_loi_ngan'"** — dạng bug im lặng (builder render đúng, app render sai) — kiểm tra `lua_chon` + `dap_an` là cách phát hiện + fix hàng loạt bằng migration.
 - **Không tự quyết SECURITY DEFINER**: đọc migration mẫu 0026 (jwt_uid, la_thanh_vien, my_hoc_sinh_id) — chuẩn phải là SD; nếu tạo hàm mới mà quên → phát sinh lỗi runtime `permission denied for schema auth`.
+
