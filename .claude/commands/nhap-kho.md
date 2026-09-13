@@ -175,7 +175,8 @@ Set:
 | `duplicate key value violates unique constraint "*_pkey"` | STT collision (race) | Chạy lại — advisory lock trong script sẽ chờ |
 | `sha256 file hiện tại (...) khác sha truyền vào` | Ai đó sửa file giữa `list` và `done` | Chạy lại từ `list` để lấy sha mới |
 | Read PDF trả về "cannot read encrypted" | PDF khoá | `fail` với `error="pdf_encrypted"` |
-| Insert OK nhưng `done` fail | Log ghi rồi mà chưa move? | Script làm log + move trong 1 tx; nếu fail thì file còn ở chỗ cũ, chỉ log rơi. Chạy `done` lại. |
+| `done` trả `moved:false` + `canh_bao` EBUSY | File bị khoá (Google Drive đang sync `E:\BK ACADEMY`, hoặc PDF đang mở) | Script đã retry 3× rồi **vẫn ghi log** (kèm `CHUA_MOVE`) — dedup theo sha nên lần sau `list` không bóc lại. Báo CEO kéo tay file sang `DaXuLy/<ngày>/`. KHÔNG chạy `done` lại (sẽ thêm 1 dòng log trùng). |
+| Insert OK nhưng `done` lỗi DB (không phải EBUSY) | Log chưa ghi | File có thể đã move (move trước log). Kiểm `moved_to` trong output; chạy `done` lại với `--file` là đường dẫn MỚI nếu đã move. |
 
 ## Chạy thử tay 1 file trước khi bulk
 

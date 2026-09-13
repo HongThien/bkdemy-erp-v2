@@ -256,23 +256,32 @@ async function cmdDone(args) {
     if (n > 50) { console.error('❌ Quá nhiều bản trùng tên'); process.exit(3) }
   }
 
+  // Move TRƯỚC, log SAU — nhưng move có thể fail vì file bị khoá (EBUSY: Google Drive đang sync
+  // E:\BK ACADEMY, hoặc PDF đang mở). Khi đó KHÔNG được bỏ log: 67 câu đã vào kho mà không có vết
+  // "từ file nào" là mất traceability. Retry 3 lần; vẫn khoá ⇒ ghi log kèm ghi_chu CHUA_MOVE, file
+  // để nguyên (list lần sau thấy seen_before=true theo sha nên không bóc lại), người kéo tay.
+  let moved = false, moveErr = null
+  for (let lan = 1; lan <= 3 && !moved; lan++) {
+    try { renameSync(file, dest); moved = true }
+    catch (e) { moveErr = e; if (lan < 3) await new Promise(r => setTimeout(r, 2000)) }
+  }
   const url = chuoiKetNoi(true)
   const c = new pg.Client({ connectionString: url })
   await c.connect()
   try {
-    await c.query('BEGIN')
     await c.query(
       `insert into nhap_kho_log (file_name, folder, sha256, so_cau_moi, ma_cau_list, ghi_chu)
        values ($1, $2, $3, $4, $5::jsonb, $6)`,
-      [basename(file), mode, sha, maCauList.length, JSON.stringify(maCauList), `subject=${subject}`]
+      [basename(file), mode, sha, maCauList.length, JSON.stringify(maCauList),
+       `subject=${subject}` + (moved ? '' : ` | CHUA_MOVE: ${moveErr?.code ?? moveErr?.message}`)]
     )
-    // move sau khi log OK — nếu log fail thì file còn nguyên chỗ, chạy lại được
-    renameSync(file, dest)
-    await c.query('COMMIT')
-    process.stdout.write(JSON.stringify({ ok: true, moved_to: dest.split(sep).join('/'), log_rows: 1 }, null, 2) + '\n')
+    process.stdout.write(JSON.stringify({
+      ok: true, log_rows: 1, moved,
+      moved_to: moved ? dest.split(sep).join('/') : null,
+      canh_bao: moved ? null : `File KHÔNG move được (${moveErr?.code}): đang bị khoá (Drive sync / PDF đang mở). Log đã ghi — kéo tay file sang ${dest.split(sep).join('/')}`,
+    }, null, 2) + '\n')
   } catch (e) {
-    await c.query('ROLLBACK').catch(() => {})
-    process.stdout.write(JSON.stringify({ ok: false, error: e.message }, null, 2) + '\n')
+    process.stdout.write(JSON.stringify({ ok: false, error: e.message, moved, moved_to: moved ? dest.split(sep).join('/') : null }, null, 2) + '\n')
     process.exit(4)
   } finally { await c.end() }
 }

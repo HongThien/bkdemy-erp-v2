@@ -311,19 +311,23 @@ async function cmdDone(args) {
          from toan_de_thi_cau where de_id = $1 order by thu_tu`, [deId])
     const maCauList = rows.map(r => r.ma_cau)
 
-    await c.query('BEGIN')
+    // Move trước (retry 3 lần — file hay bị khoá bởi Drive sync/PDF đang mở), log SAU và ghi kể cả
+    // khi move fail (kèm CHUA_MOVE) — không để mất vết đề ↔ file. Cùng lý do với nhap_kho.mjs done.
+    let moved = false, moveErr = null
+    for (let lan = 1; lan <= 3 && !moved; lan++) {
+      try { renameSync(file, dest); moved = true }
+      catch (e) { moveErr = e; if (lan < 3) await new Promise(r => setTimeout(r, 2000)) }
+    }
     await c.query(
       `insert into nhap_kho_log (file_name, folder, sha256, so_cau_moi, ma_cau_list, ghi_chu)
        values ($1, 'co_giai', $2, $3, $4::jsonb, $5)`,
-      [basename(file), sha, soCau, JSON.stringify(maCauList), `de_thi:${deId}`]
+      [basename(file), sha, soCau, JSON.stringify(maCauList), `de_thi:${deId}` + (moved ? '' : ` | CHUA_MOVE: ${moveErr?.code ?? moveErr?.message}`)]
     )
-    renameSync(file, dest)
-    await c.query('COMMIT')
     process.stdout.write(JSON.stringify({
-      ok: true, moved_to: dest.split(sep).join('/'), de_id: deId, so_cau: soCau,
+      ok: true, moved, moved_to: moved ? dest.split(sep).join('/') : null, de_id: deId, so_cau: soCau,
+      canh_bao: moved ? null : `File KHÔNG move được (${moveErr?.code}) — log đã ghi, kéo tay sang ${dest.split(sep).join('/')}`,
     }, null, 2) + '\n')
   } catch (e) {
-    await c.query('ROLLBACK').catch(() => {})
     process.stdout.write(JSON.stringify({ ok: false, error: e.message }, null, 2) + '\n')
     process.exit(4)
   } finally { await c.end() }
