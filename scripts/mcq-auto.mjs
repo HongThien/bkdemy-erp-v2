@@ -12,7 +12,7 @@
 // Hình thức: đáp án đúng phải có ≥1 distractor CÙNG kiểu (nguyên/phân số/tập); kiểu khác được phép (xem verify).
 import { readFileSync, writeFileSync } from 'node:fs'
 import { parseHuuTi } from './lib/huuti.mjs'
-import { tinhTuanHoan, layTron, soSanhTimXY, phanTichNguyenTo, chuanHoaFactorText, evalFactorText, nhanBietNguyenToHopSo, chuanHoaTapText, evalTapText, uclnBcnnDinhNghia, tapUcBc, uocBoiCoBan, ucBcCoBan, tongTapHopNhoHon, sapXepSoHuuTi, chuanHoaThuTu, evalThuTu, bacDonThuc, heSoDonThuc, demDonThucTrongDanhSach, demDongDang, phanBienDonThuc, chuanHoaPhanBien, evalPhanBien, congTruDonThucDongDang, chuanHoaDonThucKetQua, evalDonThucKetQua, congTruDaThuc, chuanHoaDaThuc, evalDaThucKetQua, nhanDonThuc, nhanDonDaThuc, nhanDaThuc, chiaDonThuc, chiaDaChoDon, chiaDaThucMotBien, chuanHoaChiaDaThuc, evalChiaDaThucKetQua } from './lib/mini-dang.mjs'
+import { tinhTuanHoan, layTron, soSanhTimXY, phanTichNguyenTo, chuanHoaFactorText, evalFactorText, nhanBietNguyenToHopSo, chuanHoaTapText, evalTapText, uclnBcnnDinhNghia, tapUcBc, uocBoiCoBan, ucBcCoBan, tongTapHopNhoHon, sapXepSoHuuTi, chuanHoaThuTu, evalThuTu, bacDonThuc, heSoDonThuc, demDonThucTrongDanhSach, demDongDang, phanBienDonThuc, chuanHoaPhanBien, evalPhanBien, congTruDonThucDongDang, chuanHoaDonThucKetQua, evalDonThucKetQua, congTruDaThuc, chuanHoaDaThuc, evalDaThucKetQua, nhanDonThuc, nhanDonDaThuc, nhanDaThuc, chiaDonThuc, chiaDaChoDon, chiaDaThucMotBien, chuanHoaChiaDaThuc, evalChiaDaThucKetQua, dieuKienChiaHetDonThuc, chuanHoaDkChiaHet, evalDkChiaHetKetQua, rutGonBieuThuc, timXQuaRutGon, tinhGiaTriRutGon, khaiTrienBinhPhuong, vietThanhBinhPhuong, hoanThienBinhPhuong, chuanHoaHoanThienBP, evalHoanThienBPKetQua, tachBinhPhuong, chuanHoaTachBinhPhuong, evalTachBinhPhuongKetQua, gtlnGtnnBacHai, gtlnGtnnHaiBien, khaiTrienLapPhuong, tinhGiaTriLapPhuong, vietThanhTichHieuBinhPhuong, tinhGiaTriHieuBinhPhuong, tongHieuLapPhuong, chuanHoaTongHieuLapPhuong, evalTongHieuLapPhuongKetQua, tinhGiaTriApDungLapPhuong, tongBinhLapPhuongHaiBien, tongLapPhuongCongThemHangSo, rutNhanTuChung, chuanHoaRutNhanTuChung, evalRutNhanTuChungKetQua, nhomHangTu, phanTichTamThucBac2, tachHangTuKetHop, phanTichNhamNghiem, timXPhuongTrinhTich2Hang, chuanHoaDanhSachNghiem, evalDanhSachNghiemKetQua, giaiPtBacBaQuaNhom } from './lib/mini-dang.mjs'
 
 // ── Rat (BigInt) ──────────────────────────────────────────────────────────────────────────────────────────────
 const gcd = (a, b) => { a = a < 0n ? -a : a; b = b < 0n ? -b : b; while (b) { [a, b] = [b, a % b] } return a }
@@ -552,6 +552,10 @@ const sorted = (v) => [...v].sort(cmp)
 const canonOf = (v) => Array.isArray(v) ? (v.length === 1 ? str(v[0]) : `{${sorted(v).map(str).join(',')}}`) : str(v)
 const texR = (r) => r.q === 1n ? `${r.p}` : `${r.p < 0n ? '-' : ''}\\dfrac{${r.p < 0n ? -r.p : r.p}}{${r.q}}`
 const texOf = (v) => `$${Array.isArray(v) ? sorted(v).map(texR).join('; ') : texR(v)}$`
+// Mọi hàm dạng TEXT_DANG/SPECIAL_DANG-tự-trả-text (hienThiDaThuc, ghepText, …) trả text TRẦN không có "$" —
+// khác texOf() (luôn tự bọc). UI (MathText, xem src/screens/kho/ui.tsx) CHỈ nhận diện "$...$"/"$$...$$"
+// làm vùng KaTeX; text trần có "^"/"_" hiện ra caret/underscore thô ngoài đời — PHẢI bọc trước khi ghi DB.
+const wrapMath = (t) => (t == null ? t : /^\$.*\$$/s.test(t) ? t : `$${t}$`)
 const kindOf = (v) => Array.isArray(v) && v.length > 1 ? 'tap' : isInt(Array.isArray(v) ? v[0] : v) ? 'nguyen' : 'phan_so'
 
 // ── Rule → đường sai mặc định + thứ tự ưu tiên theo dạng ──────────────────────────────────────────────────────
@@ -634,6 +638,82 @@ const DS = {
   R153: 'Chia đa-đơn thức: quên chia hệ số từng hạng tử', R154: 'Chia đa-đơn thức: lệch 1 đơn vị ở hệ số bậc cao nhất (dự phòng)',
   R155: 'Chia đa thức dài: dừng sau 1 bước', R156: 'Chia đa thức dài: nhầm dấu khi trừ mỗi bước',
   R157: 'Chia đa thức dài: quên ghi phần dư', R158: 'Chia đa thức dài: lệch 1 đơn vị ở hệ số đầu của thương (dự phòng)',
+  R159: 'Điều kiện chia hết: quên xét hạng tử còn lại', R160: 'Điều kiện chia hết: tưởng 1 giá trị, lấy cận dưới',
+  R161: 'Điều kiện chia hết: tưởng 1 giá trị, lấy cận trên', R162: 'Điều kiện chia hết: lệch cận dưới 1 đơn vị (dự phòng)',
+  R163: 'Điều kiện chia hết: lệch cả khoảng lên 1 đơn vị',
+  R164: 'Rút gọn biểu thức: quên đổi dấu khi trừ cụm đã nhân', R165: 'Rút gọn biểu thức: chỉ nhân hạng tử đầu, quên phân phối hết',
+  R166: 'Rút gọn biểu thức: nhân số mũ biến chung thay vì cộng', R167: 'Rút gọn biểu thức: lệch 1 đơn vị ở hệ số bậc cao nhất (dự phòng)',
+  R168: 'Tìm x: quên đổi dấu khi chuyển vế hằng số', R169: 'Tìm x: chỉ nhân hạng tử đầu, quên phân phối hết',
+  R170: 'Tìm x: quên chia hệ số của x', R171: 'Tìm x: lệch nghiệm 1 đơn vị (dự phòng)',
+  R172: 'Tính giá trị: chỉ nhân hạng tử đầu, quên phân phối hết', R173: 'Tính giá trị: quên đổi dấu khi trừ cụm đã nhân',
+  R174: 'Tính giá trị: hoán đổi nhầm giá trị thế 2 biến', R175: 'Tính giá trị: lệch kết quả 1 đơn vị (dự phòng)',
+  R176: 'Tính giá trị: lệch kết quả 1 đơn vị chiều ngược lại (dự phòng)', R177: 'Tính giá trị: sai dấu kết quả cuối cùng',
+  R178: 'Bình phương tổng/hiệu: quên hạng tử giữa', R179: 'Bình phương tổng/hiệu: nhầm dấu hạng tử giữa',
+  R180: 'Bình phương tổng/hiệu: nhân đôi thay vì bình phương', R181: 'Bình phương tổng/hiệu: lệch 1 đơn vị ở hệ số bậc cao nhất (dự phòng)',
+  R182: 'Viết thành bình phương: quên căn hệ số bậc 2', R183: 'Viết thành bình phương: nhầm dấu hạng tự do',
+  R184: 'Viết thành bình phương: quên căn hạng tự do', R185: 'Viết thành bình phương: lệch 1 đơn vị hạng tự do (dự phòng)',
+  R186: 'Viết thành bình phương: lệch 1 đơn vị hệ số biến',
+  R187: 'Hoàn thiện bình phương: quên bình phương B', R188: 'Hoàn thiện bình phương: nhầm dấu hạng tự do',
+  R189: 'Hoàn thiện bình phương: quên nhân đôi căn A', R190: 'Hoàn thiện bình phương: lệch 1 đơn vị hạng tự do (dự phòng)',
+  R191: 'Hoàn thiện bình phương: lệch 1 đơn vị hệ số biến',
+  R192: 'Hoàn thiện bình phương (giữa): quên nhân 2', R193: 'Hoàn thiện bình phương (giữa): nhầm dấu hạng tự do',
+  R194: 'Hoàn thiện bình phương (giữa): quên căn A', R195: 'Hoàn thiện bình phương (giữa): lệch 1 đơn vị (dự phòng)',
+  R196: 'Hoàn thiện bình phương (đầu): quên bình phương √A', R197: 'Hoàn thiện bình phương (đầu): nhầm dấu hạng tự do',
+  R198: 'Hoàn thiện bình phương (đầu): quên nhân đôi căn C', R199: 'Hoàn thiện bình phương (đầu): lệch 1 đơn vị (dự phòng)',
+  R200: 'Tách bình phương: quên trừ lại phần thừa', R201: 'Tách bình phương: nhầm dấu p',
+  R202: 'Tách bình phương: quên chia 2 khi tìm p', R203: 'Tách bình phương: lệch 1 đơn vị hằng số (dự phòng)',
+  R204: 'GTLN-GTNN bậc 2: quên trừ lại phần thừa', R205: 'GTLN-GTNN bậc 2: nhầm dấu phần bù',
+  R206: 'GTLN-GTNN bậc 2: quên chia 2 khi tìm p', R207: 'GTLN-GTNN bậc 2: lệch 1 đơn vị (dự phòng)',
+  R208: 'GTLN-GTNN 2 biến: quên hạng chéo khi tìm cực trị', R209: 'GTLN-GTNN 2 biến: nhầm dấu điểm cực trị',
+  R210: 'GTLN-GTNN 2 biến: quên hệ số 2 trong định thức', R211: 'GTLN-GTNN 2 biến: lệch 1 đơn vị (dự phòng)',
+  R212: 'Lập phương: quên 2 hạng tử giữa', R213: 'Lập phương: nhầm dấu 1 hạng tử giữa',
+  R214: 'Lập phương: nhân 3 thay vì lập phương', R215: 'Lập phương: lệch 1 đơn vị hệ số bậc cao nhất (dự phòng)',
+  R216: 'Hoàn thiện lập phương: quên khai căn', R217: 'Hoàn thiện lập phương: nhầm dấu b',
+  R218: 'Hoàn thiện lập phương: quên căn bậc ba A', R219: 'Hoàn thiện lập phương: lệch 1 đơn vị b (dự phòng)',
+  R220: 'Hoàn thiện lập phương: lệch 1 đơn vị b chiều ngược lại',
+  R221: 'Tính giá trị lập phương: sai dấu kết quả', R222: 'Tính giá trị lập phương: lệch 1 đơn vị (dự phòng)',
+  R223: 'Tính giá trị lập phương: lệch 1 đơn vị chiều ngược lại', R224: 'Tính giá trị lập phương: quên hạng tử hằng số',
+  R225: 'Hiệu 2 bình phương: hiểu nhầm thành bình phương', R226: 'Hiệu 2 bình phương: quên căn hệ số A',
+  R227: 'Hiệu 2 bình phương: quên căn hằng số C', R228: 'Hiệu 2 bình phương: lệch 1 đơn vị hạng tự do (dự phòng)',
+  R229: 'Khai triển hiệu 2 bình phương: chỉ nhân hạng đầu', R230: 'Khai triển hiệu 2 bình phương: nhân số mũ thay vì cộng',
+  R231: 'Khai triển hiệu 2 bình phương: nhầm dấu trừ thành cộng', R232: 'Khai triển hiệu 2 bình phương: lệch 1 đơn vị (dự phòng)',
+  R233: 'Hiệu 2 bình phương: lệch 1 đơn vị hệ số biến',
+  R234: 'Nhân nhanh hiệu 2 bình phương: quên trừ bình phương khoảng cách', R235: 'Nhân nhanh hiệu 2 bình phương: nhầm dấu cộng thay vì trừ',
+  R236: 'Nhân nhanh hiệu 2 bình phương: lệch 1 đơn vị (dự phòng)', R237: 'Nhân nhanh hiệu 2 bình phương: lệch 1 đơn vị chiều ngược lại',
+  R238: 'Tính giá trị hiệu 2 bình phương: sai dấu kết quả', R239: 'Tính giá trị hiệu 2 bình phương: lệch 1 đơn vị (dự phòng)',
+  R240: 'Tính giá trị hiệu 2 bình phương: lệch 1 đơn vị chiều ngược lại', R241: 'Tính giá trị hiệu 2 bình phương: quên trừ hạng tử hằng số',
+  R242: 'Tổng/hiệu 2 lập phương: nhầm dấu hằng đẳng thức (đổi cả 2 nhân tử)', R243: 'Tổng/hiệu 2 lập phương: quên căn bậc ba hệ số A',
+  R244: 'Tổng/hiệu 2 lập phương: nhầm dấu hạng giữa nhân tử 2', R245: 'Tổng/hiệu 2 lập phương: lệch 1 đơn vị hằng số cuối (dự phòng)',
+  R246: 'Hoàn thiện tổng lập phương: quên lập phương B (LHS)', R247: 'Hoàn thiện tổng lập phương: nhầm bình phương thay vì lập phương (LHS)',
+  R248: 'Hoàn thiện tổng lập phương: nhầm dấu hạng giữa nhân tử 2 (RHS)', R249: 'Hoàn thiện tổng lập phương: lệch 1 đơn vị hằng số cuối RHS (dự phòng)',
+  R250: 'Nhân tử 2 (tổng/hiệu lập phương): nhầm dấu hạng giữa', R251: 'Nhân tử 2 (tổng/hiệu lập phương): quên bình phương B',
+  R252: 'Nhân tử 2 (tổng/hiệu lập phương): lệch 1 đơn vị hằng số cuối (dự phòng)', R253: 'Nhân tử 2 (tổng/hiệu lập phương): lệch 1 đơn vị hệ số hạng giữa',
+  R254: 'Hoàn thiện tổng/hiệu lập phương: nhầm dấu nhân tử đầu', R255: 'Hoàn thiện tổng/hiệu lập phương: quên bình phương B (nhân tử 2)',
+  R256: 'Hoàn thiện tổng/hiệu lập phương: lệch 1 đơn vị hằng số cuối (dự phòng)', R257: 'Hoàn thiện tổng/hiệu lập phương: lệch 1 đơn vị hằng số nhân tử đầu',
+  R258: 'Hoàn thiện tổng lập phương: lệch 1 đơn vị hệ số hạng giữa RHS',
+  R259: 'Tính giá trị ứng dụng lập phương: chỉ nhân hạng đầu, quên phân phối hết', R260: 'Tính giá trị ứng dụng lập phương: hoán đổi nhầm giá trị thế 2 biến',
+  R261: 'Tính giá trị ứng dụng lập phương: lệch 1 đơn vị (dự phòng)', R262: 'Tính giá trị ứng dụng lập phương: sai dấu kết quả',
+  R263: 'Tìm x ứng dụng hằng đẳng thức: lệch nghiệm x trừ 1 đơn vị (rescue)',
+  R264: 'Tổng bình/lập phương 2 biến: quên trừ hạng chéo, chỉ tính $(a+b)^n$', R265: 'Tổng bình/lập phương 2 biến: nhầm dấu, cộng thay vì trừ',
+  R266: 'Tổng bình/lập phương 2 biến: quên hệ số nhân của hạng chéo', R267: 'Tổng bình/lập phương 2 biến: lệch 1 đơn vị (dự phòng)',
+  R268: 'Tổng bình/lập phương 2 biến: lệch 1 đơn vị chiều ngược lại (rescue)', R269: 'Tổng bình/lập phương 2 biến: nhầm sang công thức bậc kia (rescue)',
+  R270: 'a³+b³+K³=3Kab: quên đổi dấu a+b=K', R271: 'a³+b³+K³=3Kab: nhầm dấu hằng số cộng thêm',
+  R272: 'a³+b³+K³=3Kab: quên cộng hằng số, chỉ lấy a+b', R273: 'a³+b³+K³=3Kab: lệch 1 đơn vị (dự phòng)',
+  R274: 'Rút nhân tử chung: quên rút hệ số chung', R275: 'Rút nhân tử chung: rút chưa lớn nhất (1 ước của GCD)',
+  R276: 'Rút nhân tử chung: quên rút 1 biến chung', R277: 'Rút nhân tử chung: nhầm dấu 1 hạng tử trong ngoặc',
+  R278: 'Rút nhân tử chung: lệch 1 đơn vị hệ số bậc cao nhất trong ngoặc (dự phòng)', R280: 'Rút nhân tử chung: lệch 1 đơn vị hệ số bậc cao nhất trong ngoặc, chiều ngược lại (rescue)',
+  R281: 'Nhóm hạng tử: nhầm dấu khi ghép 2 nhóm', R282: 'Nhóm hạng tử: quên phân tích/rút thêm ở phần còn lại',
+  R283: 'Nhóm hạng tử: lệch 1 đơn vị / hiểu nhầm hiệu 2 bình phương thành bình phương (dự phòng)', R284: 'Nhóm hạng tử: lệch 1 đơn vị / hiểu nhầm hiệu 2 bình phương thành bình phương, chiều ngược lại',
+  R285: 'Tam thức bậc hai: nhầm dấu 1 nghiệm', R286: 'Tam thức bậc hai: nhầm dấu cả 2 nghiệm',
+  R287: 'Tam thức bậc hai: lệch 1 đơn vị ở 1 nghiệm (dự phòng)', R288: 'Tam thức bậc hai: lệch 1 đơn vị ở 1 nghiệm, chiều ngược lại',
+  R289: 'Tách hạng tử tổng quát: nhầm dấu khi ghép 2 nhóm', R290: 'Tách hạng tử tổng quát: quên rút thêm ở phần còn lại',
+  R291: 'Tách hạng tử tổng quát: lệch 1 đơn vị trong ngoặc còn lại (dự phòng)', R292: 'Tách hạng tử tổng quát: lệch 1 đơn vị trong ngoặc còn lại, chiều ngược lại',
+  R293: 'Nhẩm nghiệm: nhầm dấu nghiệm nhẩm được', R294: 'Nhẩm nghiệm: nhầm dấu khi ghép nhóm ở bước phân tích tam thức bậc 2',
+  R295: 'Nhẩm nghiệm: lệch 1 đơn vị hệ số ở nhân tử bậc 2 (dự phòng)', R296: 'Nhẩm nghiệm: lệch 1 đơn vị hệ số ở nhân tử bậc 2, chiều ngược lại',
+  R297: 'Tìm x pt tích: quên đổi dấu nghiệm thứ nhất', R298: 'Tìm x pt tích: quên đổi dấu nghiệm thứ hai',
+  R299: 'Tìm x pt tích: lệch 1 đơn vị nghiệm thứ hai (dự phòng)', R300: 'Tìm x pt tích: lệch 1 đơn vị nghiệm thứ hai, chiều ngược lại',
+  R301: 'Giải pt bậc 3 qua nhóm: nhầm dấu 1 nghiệm', R302: 'Giải pt bậc 3 qua nhóm: quên xét 1 trường hợp (chỉ 2/3 nghiệm)',
+  R303: 'Giải pt bậc 3 qua nhóm: lệch 1 đơn vị 1 nghiệm (dự phòng)', R304: 'Giải pt bậc 3 qua nhóm: lệch 1 đơn vị 1 nghiệm, chiều ngược lại',
 }
 const UU_TIEN = {
   T107010201: ['R06', 'R26', 'R07', 'R04', 'R10'], T107010202: ['R10', 'R08', 'R27', 'R11', 'R26', 'R09', 'R06'], T107010203: ['R19', 'R20', 'R06', 'R26', 'R08', 'R10', 'R04'],
@@ -682,18 +762,47 @@ const UU_TIEN = {
   T108010401: ['R147', 'R148', 'R149', 'R150'], // Chia đơn thức cho đơn thức (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
   T108010402: ['R151', 'R152', 'R153', 'R154'], // Chia đa thức cho đơn thức (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
   T108010403: ['R155', 'R156', 'R157', 'R158'], // Chia đa thức cho đa thức một biến (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
+  T108010404: ['R159', 'R160', 'R161', 'R162', 'R163'], // Điều kiện chia hết đơn thức (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
+  T108010501: ['R164', 'R165', 'R166', 'R167'], // Rút gọn biểu thức 1 biến (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
+  T108010503: ['R168', 'R169', 'R170', 'R171'], // Tìm x ứng dụng rút gọn biểu thức (khối 8) — ĐẶC BIỆT, xem SPECIAL_DANG
+  T108010504: ['R172', 'R173', 'R174', 'R175', 'R176', 'R177'], // Tính giá trị biểu thức áp dụng rút gọn (khối 8) — ĐẶC BIỆT, xem SPECIAL_DANG
+  T108020101: ['R178', 'R179', 'R180', 'R181'], // Khai triển hằng đẳng thức bình phương tổng/hiệu (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
+  T108020102: ['R182', 'R183', 'R184', 'R185', 'R186'], // Viết biểu thức thành bình phương (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
+  T108020103: ['R187', 'R188', 'R189', 'R190', 'R191', 'R192', 'R193', 'R194', 'R195', 'R196', 'R197', 'R198', 'R199'], // Hoàn thiện biểu thức bình phương (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
+  T108020104: ['R200', 'R201', 'R202', 'R203'], // Tách biểu thức thành bình phương (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
+  T108020105: ['R204', 'R205', 'R206', 'R207'], // GTLN-GTNN của biểu thức bậc hai (khối 8) — ĐẶC BIỆT, xem SPECIAL_DANG
+  T108020201: ['R208', 'R209', 'R210', 'R211'], // GTLN-GTNN 2 biến độc lập (khối 8) — ĐẶC BIỆT, xem SPECIAL_DANG
+  T108020202: ['R208', 'R209', 'R210', 'R211'], // GTLN-GTNN 2 biến có hạng chéo (khối 8) — ĐẶC BIỆT, xem SPECIAL_DANG
+  T108020203: ['R208', 'R209', 'R210', 'R211'], // GTLN-GTNN 2 biến, sub-shape đơn giản (khối 8) — ĐẶC BIỆT, xem SPECIAL_DANG
+  T108020301: ['R212', 'R213', 'R214', 'R215', 'R216', 'R217', 'R218', 'R219', 'R220'], // Lập phương tổng/hiệu (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
+  T108020302: ['R221', 'R222', 'R223', 'R224'], // Tính giá trị biểu thức ứng dụng lập phương (khối 8) — ĐẶC BIỆT, xem SPECIAL_DANG
+  T108020401: ['R225', 'R226', 'R227', 'R228', 'R233', 'R229', 'R230', 'R231', 'R232'], // Viết đa thức thành tích / hiệu hai bình phương (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
+  T108020402: ['R234', 'R235', 'R236', 'R237', 'R238', 'R239', 'R240', 'R241'], // Tính giá trị biểu thức ứng dụng hiệu hai bình phương (khối 8) — ĐẶC BIỆT, xem SPECIAL_DANG
+  T108020501: ['R242', 'R243', 'R244', 'R245', 'R246', 'R247', 'R248', 'R249', 'R258', 'R250', 'R251', 'R252', 'R253', 'R254', 'R255', 'R256', 'R257'], // Biến đổi tổng/hiệu thành tích ứng dụng tổng-hiệu 2 lập phương (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
+  T108020502: ['R259', 'R260', 'R261', 'R262'], // Tính giá trị biểu thức áp dụng tổng-hiệu 2 lập phương (khối 8) — ĐẶC BIỆT, xem SPECIAL_DANG
+  T108020601: ['R164', 'R165', 'R166', 'R167'], // Rút gọn biểu thức ứng dụng hằng đẳng thức (khối 8) — TÁI DÙNG NGUYÊN rutGonBieuThuc/R164-167 của T108010501 (test 59/59 khớp), xem TEXT_DANG
+  T108020602: ['R168', 'R169', 'R170', 'R171', 'R263'], // Tìm x ứng dụng hằng đẳng thức (khối 8) — TÁI DÙNG timXQuaRutGon/R168-171 của T108010503 + rescue R263, xem SPECIAL_DANG
+  T108020701: ['R264', 'R265', 'R266', 'R267', 'R268', 'R269'], // Tổng bình/lập phương 2 biến qua tổng-tích (khối 8, CHỈ sub-shape 2 biến — CEO chốt 13/09 để lại sub-shape 3 biến) — ĐẶC BIỆT, xem SPECIAL_DANG
+  T108020702: ['R270', 'R271', 'R272', 'R273'], // a³+b³+K³=3Kab, a≠b ⇒ a+b=-K (khối 8, CHỈ sub-shape này — 9/15 câu còn lại là Chứng minh hoặc đáp số hằng số 3 không tham số, bỏ tự nhiên) — ĐẶC BIỆT, xem SPECIAL_DANG
+  T108030101: ['R274', 'R275', 'R276', 'R277', 'R278', 'R280'], // Phân tích ĐTTNT — rút nhân tử chung (khối 8, 116/147 câu — phần còn lại là kho chưa rút hết GCD hoặc cấu trúc nhóm hạng tử phức tạp hơn, bỏ tự nhiên) — ĐẶC BIỆT, xem TEXT_DANG
+  T108030102: ['R281', 'R282', 'R283', 'R284'], // Phân tích ĐTTNT — nhóm hạng tử (khối 8, CHỈ sub-shape "4 hạng, nhóm 2 đầu+2 cuối", 87/110 câu — phần còn lại kho chưa rút hết hoặc cần hằng đẳng thức lập phương, để sau) — ĐẶC BIỆT, xem TEXT_DANG
+  T108030103: ['R285', 'R286', 'R287', 'R288'], // Phân tích ĐTTNT — tam thức bậc hai x²+Bx+C (khối 8, CHỈ sub-shape hệ số bậc 2=1, 32/166 câu — phần lớn còn lại cần nhóm hạng tử 2 biến hoặc đặt ẩn phụ, để sau) — ĐẶC BIỆT, xem TEXT_DANG
+  T108030104: ['R285', 'R286', 'R287', 'R288', 'R289', 'R290', 'R291', 'R292'], // Phân tích ĐTTNT — tách hạng tử (khối 8, trộn A=1 1 biến + A≠1/2 biến qua tachHangTuKetHop, 93/111 câu — phần còn lại là bậc 4 đặt ẩn phụ hoặc kho lỗi đáp số, để sau) — ĐẶC BIỆT, xem TEXT_DANG
+  T108030105: ['R293', 'R294', 'R295', 'R296'], // Phân tích ĐTTNT — nhẩm nghiệm bậc 3 (khối 8, 43/62 câu — phần còn lại là kho sai đáp số hoặc cấu trúc khác 4 hạng, để sau) — ĐẶC BIỆT, xem TEXT_DANG
+  T108030602: ['R297', 'R298', 'R299', 'R300'], // Tìm x — phương trình tích qua rút nhân tử chung (khối 8, 42/42 câu) — ĐẶC BIỆT, xem TEXT_DANG
+  T108030603: ['R301', 'R302', 'R303', 'R304'], // Giải phương trình bậc ba qua nhóm hạng tử (khối 8, 6/6 câu) — ĐẶC BIỆT, xem TEXT_DANG
   '07702220320302': ['R30', 'R29', 'R28', 'R16', 'R03', 'R18', 'R08', 'R10', 'R04'], // Thực hiện phép tính GTTĐ
   '07702220320320303': ['R21', 'R31', 'R19', 'R20', 'R11', 'R06', 'R10', 'R04'], // Tìm x liên quan GTTĐ
 }
-const ALL = ['R01', 'R02', 'R03', 'R06', 'R07', 'R08', 'R09', 'R10', 'R11', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18', 'R19', 'R20', 'R21', 'R22', 'R23', 'R26', 'R27', 'R28', 'R29', 'R30', 'R31', 'R32', 'R33', 'R34', 'R35', 'R36', 'R37', 'R38', 'R39', 'R40', 'R42', 'R43', 'R44', 'R45', 'R46', 'R47', 'R48', 'R49', 'R50', 'R51', 'R52', 'R53', 'R54', 'R55', 'R56', 'R57', 'R58', 'R59', 'R60', 'R61', 'R62', 'R63', 'R64', 'R65', 'R66', 'R67', 'R68', 'R69', 'R70', 'R71', 'R72', 'R73', 'R74', 'R75', 'R76', 'R77', 'R78', 'R79', 'R80', 'R81', 'R82', 'R83', 'R84', 'R85', 'R86', 'R87', 'R88', 'R89', 'R90', 'R91', 'R92', 'R93', 'R94', 'R95', 'R96', 'R97', 'R98', 'R99', 'R105', 'R106', 'R107', 'R108', 'R109', 'R110', 'R111', 'R112', 'R113', 'R114', 'R115', 'R116', 'R118', 'R119', 'R120', 'R121', 'R122', 'R123', 'R124', 'R125', 'R126', 'R127', 'R128', 'R129', 'R130', 'R131', 'R132', 'R133', 'R134', 'R135', 'R136', 'R137', 'R138', 'R139', 'R140', 'R141', 'R142', 'R143', 'R144', 'R145', 'R146', 'R147', 'R148', 'R149', 'R150', 'R151', 'R152', 'R153', 'R154', 'R155', 'R156', 'R157', 'R158', 'R04', 'R24', 'R05']
+const ALL = ['R01', 'R02', 'R03', 'R06', 'R07', 'R08', 'R09', 'R10', 'R11', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18', 'R19', 'R20', 'R21', 'R22', 'R23', 'R26', 'R27', 'R28', 'R29', 'R30', 'R31', 'R32', 'R33', 'R34', 'R35', 'R36', 'R37', 'R38', 'R39', 'R40', 'R42', 'R43', 'R44', 'R45', 'R46', 'R47', 'R48', 'R49', 'R50', 'R51', 'R52', 'R53', 'R54', 'R55', 'R56', 'R57', 'R58', 'R59', 'R60', 'R61', 'R62', 'R63', 'R64', 'R65', 'R66', 'R67', 'R68', 'R69', 'R70', 'R71', 'R72', 'R73', 'R74', 'R75', 'R76', 'R77', 'R78', 'R79', 'R80', 'R81', 'R82', 'R83', 'R84', 'R85', 'R86', 'R87', 'R88', 'R89', 'R90', 'R91', 'R92', 'R93', 'R94', 'R95', 'R96', 'R97', 'R98', 'R99', 'R105', 'R106', 'R107', 'R108', 'R109', 'R110', 'R111', 'R112', 'R113', 'R114', 'R115', 'R116', 'R118', 'R119', 'R120', 'R121', 'R122', 'R123', 'R124', 'R125', 'R126', 'R127', 'R128', 'R129', 'R130', 'R131', 'R132', 'R133', 'R134', 'R135', 'R136', 'R137', 'R138', 'R139', 'R140', 'R141', 'R142', 'R143', 'R144', 'R145', 'R146', 'R147', 'R148', 'R149', 'R150', 'R151', 'R152', 'R153', 'R154', 'R155', 'R156', 'R157', 'R158', 'R159', 'R160', 'R161', 'R162', 'R163', 'R164', 'R165', 'R166', 'R167', 'R168', 'R169', 'R170', 'R171', 'R172', 'R173', 'R174', 'R175', 'R176', 'R177', 'R178', 'R179', 'R180', 'R181', 'R182', 'R183', 'R184', 'R185', 'R186', 'R187', 'R188', 'R189', 'R190', 'R191', 'R192', 'R193', 'R194', 'R195', 'R196', 'R197', 'R198', 'R199', 'R200', 'R201', 'R202', 'R203', 'R204', 'R205', 'R206', 'R207', 'R208', 'R209', 'R210', 'R211', 'R212', 'R213', 'R214', 'R215', 'R216', 'R217', 'R218', 'R219', 'R220', 'R221', 'R222', 'R223', 'R224', 'R225', 'R226', 'R227', 'R228', 'R229', 'R230', 'R231', 'R232', 'R233', 'R234', 'R235', 'R236', 'R237', 'R238', 'R239', 'R240', 'R241', 'R242', 'R243', 'R244', 'R245', 'R246', 'R247', 'R248', 'R249', 'R250', 'R251', 'R252', 'R253', 'R254', 'R255', 'R256', 'R257', 'R258', 'R259', 'R260', 'R261', 'R262', 'R263', 'R264', 'R265', 'R266', 'R267', 'R268', 'R269', 'R270', 'R271', 'R272', 'R273', 'R274', 'R275', 'R276', 'R277', 'R278', 'R280', 'R281', 'R282', 'R283', 'R284', 'R285', 'R286', 'R287', 'R288', 'R289', 'R290', 'R291', 'R292', 'R293', 'R294', 'R295', 'R296', 'R297', 'R298', 'R299', 'R300', 'R301', 'R302', 'R303', 'R304', 'R04', 'R24', 'R05']
 // Dạng có KHUÔN VĂN BẢN riêng, không phải biểu thức LaTeX chung — mini-solver ở lib/mini-dang.mjs, KHÔNG qua
 // mathOf/parse/AST. Mỗi hàm nhận (noiDung, rule) → {value, text?, ds?} | null (rule=null ⇒ đáp số đúng).
-const SPECIAL_DANG = { '07702011103': tinhTuanHoan, '0770201102': layTron, T107010103: soSanhTimXY, T106040102: uclnBcnnDinhNghia, T106040202: uclnBcnnDinhNghia, T106010103: tongTapHopNhoHon, T108010102: bacDonThuc, T108010103: heSoDonThuc, T108010101: demDonThucTrongDanhSach, T108010104: demDongDang }
+const SPECIAL_DANG = { '07702011103': tinhTuanHoan, '0770201102': layTron, T107010103: soSanhTimXY, T106040102: uclnBcnnDinhNghia, T106040202: uclnBcnnDinhNghia, T106010103: tongTapHopNhoHon, T108010102: bacDonThuc, T108010103: heSoDonThuc, T108010101: demDonThucTrongDanhSach, T108010104: demDongDang, T108010503: timXQuaRutGon, T108010504: tinhGiaTriRutGon, T108020105: gtlnGtnnBacHai, T108020201: gtlnGtnnHaiBien, T108020202: gtlnGtnnHaiBien, T108020203: gtlnGtnnHaiBien, T108020302: tinhGiaTriLapPhuong, T108020402: tinhGiaTriHieuBinhPhuong, T108020502: tinhGiaTriApDungLapPhuong, T108020602: timXQuaRutGon, T108020701: tongBinhLapPhuongHaiBien, T108020702: tongLapPhuongCongThemHangSo }
 // Dạng ĐÁP SỐ LÀ BIỂU THỨC/TẬP HỢP (không phải 1 giá trị hữu tỉ) — so khớp bằng TEXT chuẩn hoá, KHÔNG qua
 // Rat/canonOf (xem mini-dang.mjs: R54 của DẠNG 4 cố ý giữ nguyên giá trị số nhưng sai hình thức, so giá trị sẽ
 // coi là trùng đáp án đúng). Mỗi dạng có 1 cặp {canon, val} hàm chuẩn hoá/kiểm riêng — KHÔNG dùng chung 1 cặp
 // cho mọi dạng vì cú pháp đáp số khác hẳn nhau (biểu thức \cdot vs danh sách "; ").
-const TEXT_DANG = { T106030302: phanTichNguyenTo, T106030301: nhanBietNguyenToHopSo, T106040104: tapUcBc, T106040204: tapUcBc, T106030101: uocBoiCoBan, T106040101: ucBcCoBan, T106040201: ucBcCoBan, T107010103: sapXepSoHuuTi, T108010103: phanBienDonThuc, T108010201: congTruDonThucDongDang, T108010202: congTruDaThuc, T108010301: nhanDonThuc, T108010302: nhanDonDaThuc, T108010303: nhanDaThuc, T108010401: chiaDonThuc, T108010402: chiaDaChoDon, T108010403: chiaDaThucMotBien }
+const TEXT_DANG = { T106030302: phanTichNguyenTo, T106030301: nhanBietNguyenToHopSo, T106040104: tapUcBc, T106040204: tapUcBc, T106030101: uocBoiCoBan, T106040101: ucBcCoBan, T106040201: ucBcCoBan, T107010103: sapXepSoHuuTi, T108010103: phanBienDonThuc, T108010201: congTruDonThucDongDang, T108010202: congTruDaThuc, T108010301: nhanDonThuc, T108010302: nhanDonDaThuc, T108010303: nhanDaThuc, T108010401: chiaDonThuc, T108010402: chiaDaChoDon, T108010403: chiaDaThucMotBien, T108010404: dieuKienChiaHetDonThuc, T108010501: rutGonBieuThuc, T108020101: khaiTrienBinhPhuong, T108020102: vietThanhBinhPhuong, T108020103: hoanThienBinhPhuong, T108020104: tachBinhPhuong, T108020301: khaiTrienLapPhuong, T108020401: vietThanhTichHieuBinhPhuong, T108020501: tongHieuLapPhuong, T108020601: rutGonBieuThuc, T108030101: rutNhanTuChung, T108030102: nhomHangTu, T108030103: phanTichTamThucBac2, T108030104: tachHangTuKetHop, T108030105: phanTichNhamNghiem, T108030602: timXPhuongTrinhTich2Hang, T108030603: giaiPtBacBaQuaNhom }
 const TEXT_FN = {
   T106030302: { canon: chuanHoaFactorText, val: evalFactorText },
   T106030301: { canon: chuanHoaTapText, val: evalTapText },
@@ -712,6 +821,23 @@ const TEXT_FN = {
   T108010401: { canon: chuanHoaDonThucKetQua, val: evalDonThucKetQua },
   T108010402: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
   T108010403: { canon: chuanHoaChiaDaThuc, val: evalChiaDaThucKetQua },
+  T108010404: { canon: chuanHoaDkChiaHet, val: evalDkChiaHetKetQua },
+  T108010501: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
+  T108020101: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
+  T108020102: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
+  T108020103: { canon: chuanHoaHoanThienBP, val: evalHoanThienBPKetQua },
+  T108020104: { canon: chuanHoaTachBinhPhuong, val: evalTachBinhPhuongKetQua },
+  T108020301: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
+  T108020401: { canon: chuanHoaTachBinhPhuong, val: evalTachBinhPhuongKetQua },
+  T108020501: { canon: chuanHoaTongHieuLapPhuong, val: evalTongHieuLapPhuongKetQua },
+  T108020601: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
+  T108030101: { canon: chuanHoaRutNhanTuChung, val: evalRutNhanTuChungKetQua },
+  T108030102: { canon: chuanHoaRutNhanTuChung, val: evalRutNhanTuChungKetQua },
+  T108030103: { canon: chuanHoaRutNhanTuChung, val: evalRutNhanTuChungKetQua },
+  T108030104: { canon: chuanHoaRutNhanTuChung, val: evalRutNhanTuChungKetQua },
+  T108030105: { canon: chuanHoaRutNhanTuChung, val: evalRutNhanTuChungKetQua },
+  T108030602: { canon: chuanHoaDanhSachNghiem, val: evalDanhSachNghiemKetQua },
+  T108030603: { canon: chuanHoaDanhSachNghiem, val: evalDanhSachNghiemKetQua },
 }
 // Dạng khối 6 số tự nhiên: dấu CHẤM giữa 2 số là phép NHÂN (không phải thập phân) — khớp whitelist kho-quet-dapso.mjs.
 const CHAM_LA_NHAN = new Set(['T106020201', 'T106020202', 'T106020203', 'T106020301', 'T106020302', 'T106020303', 'T106020401', 'T106020402', 'T106020403', 'T106020501', 'T106020503'])
@@ -812,8 +938,8 @@ for (const q of pool.cau) {
       const pi = L.indexOf(pos)
       const lua_chon = []; let di = 0
       for (let i = 0; i < 4; i++) {
-        if (i === pi) lua_chon.push({ text: res.text, dung: true })
-        else { const d = pick[di++]; lua_chon.push({ text: d.text, dung: false, rule: d.r, duong_sai: d.ds }) }
+        if (i === pi) lua_chon.push({ text: wrapMath(res.text), dung: true })
+        else { const d = pick[di++]; lua_chon.push({ text: wrapMath(d.text), dung: false, rule: d.r, duong_sai: d.ds }) }
       }
       out.push({ ma_cau: q.ma_cau, dap_an: pos, lua_chon })
       continue
@@ -879,8 +1005,8 @@ for (const q of pool.cau) {
   const pi = L.indexOf(pos)
   const lua_chon = []; let di = 0
   for (let i = 0; i < 4; i++) {
-    if (i === pi) lua_chon.push({ text: correctText ?? texOf(correct), dung: true })
-    else { const d = pick[di++]; lua_chon.push({ text: d.text ?? texOf(d.v), dung: false, rule: d.r, duong_sai: d.ds }) }
+    if (i === pi) lua_chon.push({ text: correctText != null ? wrapMath(correctText) : texOf(correct), dung: true })
+    else { const d = pick[di++]; lua_chon.push({ text: d.text != null ? wrapMath(d.text) : texOf(d.v), dung: false, rule: d.r, duong_sai: d.ds }) }
   }
   out.push({ ma_cau: q.ma_cau, dap_an: pos, lua_chon })
 }

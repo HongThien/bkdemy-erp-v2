@@ -11436,6 +11436,283 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
   dùng mảng hệ số theo bậc).** Còn 39 dạng (~1.518 câu) — nhóm tiếp theo tự nhiên là T108010404 (điều kiện
   chia hết, 11 câu) rồi sang nhóm rút gọn biểu thức (T108010501/503/504) và hằng đẳng thức (T108020xxx).
 
+## 2026-09-13 (tiếp) — T108010404 "Tìm m nguyên để đa thức chia hết cho đơn thức" (khối 8), R159-R163
+
+- 11 câu, khuôn CỨNG 1 sub-shape duy nhất: "Tìm m nguyên để $(C1 x^m y^{p1} + C2 x^q y^{p2})$ chia hết cho
+  $C3 x^q y^m$" — số mũ có thể là CHỮ "m" (ẩn), không phải số, nên `parseDonThucCore` (chỉ nhận số mũ số)
+  không dùng được. Viết trích xuất riêng bằng regex (`trichMuBienSo`): quét "biến^số_mũ" trần, số mũ trả về
+  number hoặc string (khi là chữ, đại diện ẩn) — đơn giản hơn hẳn vì khuôn quá cứng, không cần parser đầy đủ.
+- **Suy ra công thức tổng quát bằng tay trước khi code (đúng quy trình spec):** đặt q = số mũ đã biết trùng
+  giữa hạng tử 2 và mẫu (biến A), p1/p2 = số mũ đã biết của hạng tử 1/2 trên biến B (biến mẫu mang ẩn m) →
+  điều kiện chia hết ⇒ khoảng nguyên `[q, min(p1,p2)]`. Verify công thức khớp cả 11 câu thật (kể cả 4 câu
+  đáp số là KHOẢNG 2 giá trị, không chỉ 7 câu đáp số 1 giá trị) trước khi viết rule.
+- **5 rule** (nhiều hơn 4 như thường lệ — cần thêm 1 rule mới thấy lúc test mẫu thật): R159 (quên xét điều
+  kiện hạng tử KHÔNG chứa ẩn, chỉ xét hạng có ẩn — cận trên thành p1 thay vì min(p1,p2)), R160/R161 (tưởng
+  chỉ có 1 giá trị duy nhất thoả mãn, lấy nhầm cận dưới/cận trên của khoảng — **cả 2 rule tự động vô hiệu
+  hoá khi đáp số đúng đã là 1 giá trị** do trùng với đáp án), R162 (dự phòng, lệch cận dưới 1 đơn vị), R163
+  (lệch CẢ khoảng lên 1 đơn vị — **thêm SAU khi test mẫu phát hiện** 7/11 câu đáp số 1 giá trị duy nhất chỉ
+  còn 2 distractor hợp lệ (R159+R162) vì R160/R161 tự vô hiệu — bổ sung R163 để đảm bảo đủ 3 cho MỌI câu,
+  không chỉ câu đáp số dạng khoảng).
+- Chạy pipeline: 11/11, 0 bỏ, 0 FAIL ngay lần đầu (nhờ tính trước số lượng rule khả dụng theo từng loại câu
+  — 1-giá-trị vs khoảng — trong lúc test mẫu, không đợi pipeline thật mới phát hiện thiếu).
+
+## 2026-09-13 (tiếp) — T108010501 "Rút gọn biểu thức 1 biến" (khối 8), R164-R167 — tổng quát hoá "tổng các tích"
+
+- 33 câu, "A = $(x^2+2x+3)(x-1) - (x^2-x+1)(x-1) + 3x^2+2$" — TỔNG QUÁT HƠN mọi dạng trước: mỗi hạng tử ở
+  bậc ngoài cùng (tách bằng `chiaHangTu`, tôn trọng dấu +/-) có thể là 1 TÍCH nhiều nhân tử (tách tiếp bằng
+  `tachNhanTu` của DẠNG 15, mỗi nhân tử qua `parseFactorAsPoly` của DẠNG 16 rồi `nhanCacDaThuc` nhân lại) hoặc
+  1 đa thức trần — **không viết engine mới, chỉ LẮP GHÉP lại 3 hàm đã có** (`parseHangTuBieuThuc` là toàn bộ
+  code mới, ~4 dòng gọi lại máy cũ). Đây là bằng chứng rõ nhất cho việc đầu tư engine đa thức tổng quát từ
+  DẠNG 13/15/16 sớm — dạng này gần như "miễn phí" nhờ tái dùng.
+- **Bẫy dữ liệu kho phát hiện qua pipeline thật (không phải lỗi máy):** 2/33 câu có nhãn biến ("C =", "A =")
+  nằm TRONG `$...$` thay vì NGOÀI như 31 câu còn lại (bất nhất quy ước cùng 1 dạng) — 1 câu bị dispatch rớt
+  xuống nhánh AST cũ ("có x nhưng không có ="), 1 câu khác đáp số kho CŨNG mang tiền tố "A = " y hệt (đã có
+  sẵn logic bỏ "=" trong `chuanHoaDaThuc` nên phía đáp số không sao, chỉ phía đề bị lỗi). Sửa: `rutGonBieuThuc`
+  thêm bước bỏ nhãn `^[A-Za-zĐ]\s*=\s*` TRƯỚC khi xử lý (giống `nhanDonDaThuc`/`nhanDaThuc` đã làm).
+- **4 rule:** R164 (quên đổi dấu khi trừ cả CỤM TÍCH đã nhân — chỉ đổi dấu hạng tử đầu của kết quả, các hạng
+  sau coi như dương — tổng quát hoá R126 lên cấp "cụm tích" thay vì "đa thức trần"), R165 (chỉ nhân hạng tử
+  đầu của nhân tử thứ 2 trở đi trong MỖI cặp ngoặc, quên phân phối hết — áp dụng cho MỌI hạng tử là tích
+  trong biểu thức, không chỉ 1 cặp), R166 (nhân số mũ biến chung thay vì cộng, trong từng tổ hợp nhân),
+  R167 (dự phòng, lệch 1 đơn vị hệ số bậc cao nhất).
+- Sau khi sửa bẫy nhãn: 33/33, 0 bỏ, 0 FAIL.
+
+## 2026-09-13 (tiếp) — T108010503 "Tìm x ứng dụng rút gọn biểu thức" (khối 8), R168-R171
+
+- 41 câu, "$(2x+1)(x-1)-(x-2)(2x-1)=4$" — VẾ TRÁI rút gọn y hệt DẠNG 21 rồi giải phương trình bậc nhất tìm
+  x (đề luôn thiết kế để bậc ≥2 tự triệt tiêu). Đáp số là 1 GIÁ TRỊ HỮU TỈ ⇒ đăng ký qua **SPECIAL_DANG**
+  (trả `{value: Rat}`), KHÔNG qua TEXT_DANG — tận dụng lại toàn bộ hạ tầng AST cũ (canonOf/kindOf/verify).
+  1/41 câu đáp số kho là "Không có giá trị của x" (vô nghiệm) — bị loại ngay từ bước pool, đúng phạm vi
+  (dạng chỉ xử lý phương trình có nghiệm).
+- **2 vòng sửa lỗi phát hiện qua pipeline thật (không phải lúc test mẫu — bài học: mẫu thủ công 4 câu không
+  đủ đại diện cho 41 câu thật, nhất là khi có sub-shape hiếm)**
+  1. **16/40 câu (40%) "không tính được"** — sub-shape KHÁC hẳn: vế trái dùng phép CHIA đơn thức (dấu ":")
+     trộn với các số hạng khác, vd `(6x^3-3x^2):(x^2) + (12x^2+9x):3x - 5 = 0`. `parseHangTuBieuThuc` (viết
+     cho DẠNG 21) chỉ biết tách NHÂN (`tachNhanTu`), gặp ":" thì hiểu nhầm thành 1 "nhân tử" rác 1 ký tự →
+     fail. Sửa: `parseHangTuBieuThuc` kiểm `tachChiaDonThuc` (DẠNG 17) TRƯỚC — nếu có dấu ":" ở bậc ngoài
+     thì xử như "đa thức : đơn thức" (DẠNG 18), không thì mới rơi xuống nhánh nhân như cũ. Tái dùng được vì
+     đây ĐÚNG framework đã build, không phải engine mới.
+  2. **1 câu "không tính được" còn lại:** vế phải KHÔNG PHẢI hằng số mà là 1 BIỂU THỨC khác — `(2x+3)(x+4)+
+     (x-5)(x-2)=(3x-5)(x-4)`. Thiết kế ban đầu giả định vế phải luôn là số — SAI. Viết lại tổng quát: cả 2
+     vế đều parse qua `parseHangTuBieuThuc`, vế phải CHUYỂN sang trái bằng cách LẬT DẤU mọi hạng tử của nó,
+     gộp chung 1 danh sách rồi mới rút gọn về bậc nhất (`heSoX·x + hangSo = 0 ⇒ x = -hangSo/heSoX`).
+- **4 rule** (viết lại theo mô hình mới): R168 (quên đổi dấu khi chuyển hằng số sang vế kia — coi
+  `heSoX·x = hangSo` thay vì `= -hangSo`), R169 (rút gọn sai — chỉ nhân hạng tử đầu, quên phân phối hết,
+  TỰ ĐỘNG bỏ qua các hạng tử là phép CHIA nhờ guard sẵn có), R170 (quên chia hệ số x), R171 (dự phòng, lệch
+  nghiệm 1 đơn vị).
+- Sau 2 lần sửa: 38/41 (93%) — 1 vô nghiệm (ngoài phạm vi) + 2/40 chỉ 2 distractor (5%, trùng ngẫu nhiên
+  KHÁC NHAU ở mỗi câu — không phải lỗ hổng hệ thống, chấp nhận residual). 0 FAIL. Đã ghi `dai_cau_form_tn`.
+
+## 2026-09-13 (tiếp) — T108010504 "Tính giá trị biểu thức áp dụng rút gọn" (khối 8), R172-R177
+
+- 57 câu, "Cho $A = x(x^2+2y^2)-xy(x+2y)+y(x^2-1).$\nTính giá trị của A khi $x=1, y=10$" — ĐA BIẾN (x,y /
+  a,b / p,q / m,n...). Rút gọn y hệt DẠNG 21 (Map biến→mũ đã hỗ trợ đa biến sẵn), rồi THẾ SỐ. Vị trí nhãn
+  ("A=" trong/ngoài $) và cách trình bày giá trị thế (1 khối gộp "x=1,y=10" hay 2 khối riêng "$x=-1$; $y=-1$")
+  không nhất quán giữa các câu — trích bằng cách quét TẤT CẢ đoạn `$...$` SAU đoạn đầu tiên, tìm mọi cặp
+  "biến=giá_trị" bằng regex (không quan tâm số khối/dấu phân cách).
+- **4 rule ban đầu** (mô phỏng theo tinh thần R164-R166 + 1 rule riêng cho bước THẾ SỐ): R172 (chỉ nhân
+  hạng tử đầu, quên phân phối hết), R173 (quên đổi dấu khi trừ cụm tích), R174 (hoán đổi nhầm giá trị thế
+  2 biến — rule MỚI, đặc thù bước thế số chứ không phải rút gọn), R175 (dự phòng, lệch kết quả 1 đơn vị).
+- **Chạy pipeline: 18/57 (32%) thiếu distractor** — tỉ lệ cao bất thường, đào sâu thấy nguyên nhân KHÔNG
+  phải bug mà là ĐẶC ĐIỂM CẤU TRÚC của cả nhóm câu này: (a) nhiều biểu thức rút gọn về dạng ĐỐI XỨNG theo
+  2 biến (vd `x^2+y^2`) → R174 (hoán đổi 2 biến) vô hại, luôn trùng đáp án đúng; (b) đề được THIẾT KẾ để
+  hạng tử chéo tự triệt tiêu (vd `x(x+3y)+y(y-3x)` → `x^2+y^2`, hạng `3xy` và `-3xy` triệt tiêu) — ĐÚNG
+  những câu này khiến R172 ("chỉ nhân hạng đầu", bỏ hạng chéo) TRÙNG NGẪU NHIÊN với đáp án đúng, vì hạng
+  chéo vốn dĩ đã tự mất đi trong phép tính đúng. Đây KHÔNG phải lỗi hiếm — là hệ quả TẤT YẾU của cách đề
+  được soạn cho dạng "tính giá trị sau rút gọn" (luôn chọn hệ số để hạng chéo triệt tiêu, cho biểu thức gọn).
+- **Fix:** thêm 2 rule THUẦN SỐ HỌC, không phụ thuộc cấu trúc đại số — R176 (lệch kết quả 1 đơn vị CHIỀU
+  NGƯỢC với R175, CỐ Ý `du_phong=false` dù bản chất tương tự R175, để 2 rule này dùng ĐƯỢC ĐỒNG THỜI cho
+  cùng 1 câu — nếu đánh dự phòng cả 2 sẽ vi phạm luật "tối đa 1 rule dự phòng/câu"), R177 (sai dấu kết quả
+  cuối — phủ định toàn bộ). 2 rule này gần như LUÔN khả dụng bất kể cấu trúc biểu thức, đóng vai trò lưới
+  an toàn cho nhóm câu "đối xứng/tự triệt tiêu" mà 3 rule khái niệm không chạm tới được.
+- Sau khi thêm rescue: 55/57 (96%), 2 câu còn lại (kết quả đúng = 0, khiến R177 đổi dấu vô hại) chấp nhận
+  residual (3.5%). 0 FAIL. **Bài học:** tỉ lệ thiếu-distractor CAO (>30%) không phải luôn là dấu hiệu cần
+  sửa rule cũ — đôi khi là dấu hiệu cả NHÓM rule đang thiết kế PHỤ THUỘC vào 1 đặc điểm cấu trúc mà chính
+  đề bài luôn CỐ Ý tránh (ở đây: đề luôn chọn hệ số để triệt tiêu hạng chéo) — cần rule KHÔNG phụ thuộc cấu
+  trúc đó, không phải vá thêm biến thể của rule cũ.
+
+## 2026-09-13 (tiếp) — T108020101 "Khai triển hằng đẳng thức bình phương tổng/hiệu" (khối 8), R178-R181
+
+- 63 câu, "$(x+1)^2 = ......$" — mở đầu chương HẰNG ĐẲNG THỨC. Hoá ra gần như MIỄN PHÍ nhờ engine đã có:
+  chỉ cần mở rộng `tachNhanTu` (DẠNG 15) để hiểu hậu tố LUỸ THỪA sau 1 cụm ngoặc — "(...)^n" → lặp lại
+  cụm đó n lần trong danh sách nhân tử (trước đây chỉ hỗ trợ 2-3 ngoặc LIỀN NHAU, không có "^n"). Sau khi
+  mở rộng, `parseHangTuBieuThuc` (DẠNG 21) đã đủ để rút gọn "(x+1)^2" đúng như 1 phép nhân đa thức bình
+  thường — viết `khaiTrienBinhPhuong` chỉ để BỌC lại (bỏ dấu "=" và mọi thứ sau nó — chỗ điền đáp số) và
+  viết 4 rule chuyên biệt cho lỗi hằng đẳng thức (không tái dùng R164-166 vì đây là lỗi NHẬN THỨC khác hẳn
+  lỗi nhân đa thức tổng quát).
+- **4 rule:** R178 (quên hạng tử giữa 2ab — lỗi KINH ĐIỂN nhất của cả chủ đề hằng đẳng thức), R179 (nhầm
+  dấu hạng tử giữa — xác định "hạng chéo" bằng CÁCH GHÉP số mũ 2 nhân tử lại làm khoá tra cứu, không dựa
+  vào thứ tự sắp bậc vì cả 3 hạng của bình phương LUÔN cùng tổng bậc khi cả 2 biến đều là ẩn, không phân
+  biệt được bằng "bậc cao nhất"), R180 (nhân đôi thay vì bình phương — hiểu sai nghĩa "bình phương"),
+  R181 (dự phòng, lệch 1 đơn vị hệ số bậc cao nhất).
+- **Bug bắt được qua pipeline thật:** đặt guard "phải đúng dạng (nhị_thức)^2" TRƯỚC dispatch rule khiến
+  R181 (dự phòng, KHÔNG cần cấu trúc nhị thức) cũng bị chặn oan cho 1 câu `(4x)^2` (đơn thức bình phương,
+  không phải tổng/hiệu — sub-shape khác hẳn, chỉ 1/63 câu). Sửa: dời R181 lên TRƯỚC guard, tự tính từ
+  `dungTerms` không cần biết cấu trúc nhân tử. Câu `(4x)^2` vẫn chỉ đạt 1 distractor (đúng bản chất — không
+  có hạng chéo để mô phỏng R178/179/180) — chấp nhận bỏ 1/63 (ngoài phạm vi "tổng/hiệu" thật sự).
+- 62/63 (98%), 0 FAIL. Đã ghi `dai_cau_form_tn`.
+
+## 2026-09-13 (tiếp) — T108020102 "Viết biểu thức thành bình phương" (khối 8), R182-R186 — NGHỊCH ĐẢO DẠNG 24
+
+- 63 câu, "$x^2+2x+1=(.....)^2$" — chiều NGƯỢC của T108020101: cho tam thức $Ax^2+Bx+C$ (1 biến, A,C là số
+  chính phương), tìm nhị thức $\sqrt A\,x \pm \sqrt C$. Viết `isqrtBig` (căn bậc hai nguyên bằng phương pháp
+  Newton trên BigInt, trả `null` nếu không phải số chính phương) + `vietThanhBinhPhuong` — parse tam thức
+  qua `parseFactorAsPoly` sẵn có, so hạng tử giữa với `2·√A·√C` để suy dấu đúng.
+- **4 rule ban đầu:** R182 (quên căn hệ số bậc 2, giữ nguyên A), R183 (nhầm dấu hạng tự do), R184 (quên căn
+  hạng tự do, giữ nguyên C), R185 (dự phòng, lệch 1 đơn vị hạng tự do).
+- **3/63 câu thiếu distractor** — cùng nguyên nhân cấu trúc như T108010504: khi **√A=1** (rất phổ biến, cả
+  nhóm $x^2\pm Bx+C$ hệ số đầu =1) VÀ hạng tự do C là 0 hoặc 1 (√C = chính nó), R182 VÀ R184 đều TRÙNG đáp
+  án đúng (không có gì để "quên lấy căn" vì căn = chính số đó). Thêm R186 (lệch 1 đơn vị HỆ SỐ BIẾN, không
+  phụ thuộc căn bậc hai) làm lưới an toàn — cùng bài học đã rút ra ở T108010504 (rule phụ thuộc 1 đặc điểm
+  cấu trúc mà đề thường xuyên rơi vào cần có rule số học độc lập đi kèm).
+- Sau khi thêm R186: 62/63 (98%) — 1 câu còn lại (`x^2=(x)^2`, TRƯỜNG HỢP KÉP: √A=1 VÀ C=0) vẫn thiếu vì cả
+  R183 (nhầm dấu 0 = vẫn 0) VÀ R184 (quên căn của 0 = vẫn 0) đều vô hiệu — chấp nhận residual 1/63 (edge
+  case kép, chỉ 1 câu, không đáng thêm rule thứ 7).
+- 0 FAIL. Đã ghi `dai_cau_form_tn`.
+
+## 2026-09-13 (tiếp) — T108020103 "Hoàn thiện biểu thức bình phương tổng/hiệu" (khối 8), R187-R199 — TRỘN 4 SUB-SHAPE
+
+- 84 câu, khuôn chung "$...=(....)^2$" nhưng hoá ra TRỘN **4 sub-shape khác nhau** theo chỗ nào bị để trống
+  — phát hiện DẦN qua từng vòng chạy pipeline thật, không thấy hết ngay từ khảo sát mẫu đầu (bài học lặp
+  lại đã ghi ở T108010503/504: mẫu thủ công vài câu không đại diện đủ cho cả trăm câu, đặc biệt khi housed
+  cùng 1 `dang_chinh`):
+  1. **(a) thiếu HẠNG TỰ DO cuối** — "$4x^2+12x+.....=(....)^2$", đáp số "C; nhị_thức" (21 câu, khảo sát
+     đầu tiên bắt được). R187 (quên bình phương B) / R188 (nhầm dấu) / R189 (quên nhân đôi căn A) / R190
+     (dự phòng).
+  2. **(b) thiếu HẠNG TỬ GIỮA** — "$9x^2-.....+25=(....)^2$", dấu +/- của hạng giữa ĐÃ CHO SẴN trong đề
+     (chỉ điền độ lớn) — LỚN NHẤT trong 2 sub-shape ban đầu tưởng chỉ có 2 (21 câu). Bắt qua log "đáp số
+     kho không parse" (63/84) sau vòng chạy pool đầu. R192-R195.
+  3. **(c) thiếu HẠNG ĐẦU (bậc 2)** — "$.....+20x+25=(....)^2$", B và C đã cho, tìm A — LỚN NHẤT thật sự
+     (42/84, hơn cả (a)+(b) cộng lại). Bắt qua vòng chạy pool thứ 2 (63 xong, 42 vẫn "không parse"). Cần
+     PHÂN BIỆT với (b) bằng thứ tự kiểm tra: "bắt đầu bằng dấu chấm" (c) TRƯỚC "dấu chấm ở giữa có nội
+     dung sau" (b), vì (c) VÔ TÌNH khớp được cả 2 pattern nếu kiểm nhầm thứ tự (dấu chấm ở đầu dòng cũng
+     "nằm giữa" nếu coi phần trước nó là rỗng). R196-R199.
+  4. **(d) thiếu CẢ hạng đầu LẪN hạng tự do** — "$.....+20x+.....=(2x.....)^2$", vế phải "$2x....$" đã LỘ
+     SẴN $\sqrt A$ (không phải ẩn số thật sự, chỉ là 2 chỗ trống trong CÙNG 1 câu) — đáp số 3 PHẦN "A; C;
+     hạng tự do nhị thức" (21 câu, sub-shape CUỐI CÙNG lộ ra ở vòng chạy thứ 3). Cần detect "chấm CẢ ĐẦU
+     LẪN CUỐI" và kiểm TRƯỚC MỌI pattern khác (vì nó khớp nhầm cả pattern (c) "bắt đầu bằng chấm" nếu xét
+     sau). Tái dùng MÃ RULE R196-R199 (không tạo mã mới) vì cùng LOẠI lỗi khái niệm (quên bình phương/nhầm
+     dấu/quên nhân đôi/dự phòng), chỉ khác chiều tính (tìm A từ B,C thay vì tìm C từ A,B) — chấp nhận
+     `mo_ta`/`vi_du` trong catalog hơi lệch số liệu cụ thể với sub-shape (d) nhưng mô tả CƠ CHẾ vẫn đúng.
+- **Thứ tự kiểm tra dispatch (từ ĐẶC BIỆT nhất tới CHUNG nhất) là mấu chốt:** (d) chấm-cả-2-đầu → (c)
+  chấm-đầu → (b) chấm-giữa-có-nội-dung-sau → (a) chấm-cuối (mặc định). Đảo thứ tự BẤT KỲ 2 pattern nào
+  cũng gây khớp nhầm, vì các pattern có phần giao nhau về mặt cú pháp (chấm ở đầu/cuối chuỗi).
+- **canon `chuanHoaHoanThienBP` tổng quát hoá** để nhận CẢ 2 lẫn 3 phần (`split(';')`, fallback `split(',')`,
+  rồi `chuanHoaDaThuc` ĐỀU cho mọi phần bất kể 2 hay 3 phần — không cần biết trước cấu trúc).
+- Sau 3 vòng sửa (mỗi vòng thêm 1 sub-shape): **84/84 (100%), 0 FAIL.** Đã ghi `dai_cau_form_tn`.
+- **Tổng khối 8 đến nay: 15 dạng xong, 111 rule mới (R89-R199, trừ R100-104).** Còn 34 dạng (~1.271 câu).
+
+## 2026-09-13 (tiếp) — T108020104 "Tách biểu thức thành bình phương" (khối 8), R200-R203
+
+- 95 câu, "Tách bình phương $A = x^2+4x+7$" → $Ax^2+Bx+C=A(x+p)^2+q$ với $p=B/(2A)$, $q=C-Ap^2$. Đáp số dạng
+  chuỗi biểu thức "A(x±p)^2±q" — nhãn `A=` LUÔN nằm trong `$...$` lần này (khác T108020103's 3 kiểu trộn),
+  chỉ 1 sub-shape duy nhất, không gặp bẫy nào khi chạy thật.
+- **canon mạnh nhất từ đầu tới giờ:** thay vì so sánh chuỗi hay so tách riêng từng phần, `chuanHoaTachBinhPhuong`
+  KHAI TRIỂN LẠI TOÀN BỘ biểu thức đáp số (dùng lại `parseHangTuBieuThuc` đã hỗ trợ "(...)^n" từ khi làm
+  DẠNG 24) rồi so ĐA THỨC ĐÃ KHAI TRIỂN — bất biến hoàn toàn với cách trình bày (`\left(\right)` hay không,
+  có/không hệ số A, khoảng trắng...). Không cần regex tách "A(x+p)^2+q" ra từng mảnh để so — cứ khai triển
+  ra rồi so bằng nhau là đủ, đơn giản hơn hẳn cách làm ở T108020102/103.
+- **4 rule:** R200 (quên trừ lại phần thừa — lỗi KINH ĐIỂN của "hoàn thiện bình phương", giữ nguyên hằng số
+  C gốc thay vì trừ đi $Ap^2$), R201 (nhầm dấu $p$), R202 (quên chia 2 khi tìm $p$, coi $p=B/A$), R203 (dự
+  phòng, lệch 1 đơn vị hằng số).
+- Chạy pipeline: 95/95, 0 bỏ, 0 FAIL ngay lần đầu — dạng LỚN NHẤT khối 8 tính đến giờ đạt 100% không cần
+  vòng sửa nào, nhờ canon khai triển-lại đã loại bỏ toàn bộ rủi ro bẫy định dạng chuỗi từng gặp ở 2 dạng
+  liền trước.
+- **Tổng khối 8: 16 dạng xong, 115 rule mới (R89-R203, trừ R100-104).** Còn 33 dạng (~1.176 câu). Hết
+  nhóm "hằng đẳng thức bình phương tổng/hiệu" (T108020101-104) — tiếp theo là nhóm GTLN-GTNN bậc 2
+  (T108020105, 48 câu, tái dùng trực tiếp `tachBinhPhuong` vừa xây) rồi sang nhóm 2 biến (T108020201-203).
+
+## 2026-09-13 (tiếp) — T108020105 "GTLN-GTNN của biểu thức bậc hai" (khối 8), R204-R207
+
+- 48 câu, "Tìm GTNN của biểu thức $A=3x^2-4x+5$" — về BẢN CHẤT TOÁN HỌC giống hệt "tách bình phương" (DẠNG
+  27): $Ax^2+Bx+C=A(x+p)^2+q$, và GTLN/GTNN chính là $q$ (GTNN khi A>0, GTLN khi A<0). Viết `gtlnGtnnBacHai`
+  gần như COPY nguyên phần tính p/q của `tachBinhPhuong`, chỉ khác bước cuối: trả thẳng `{value: q}` (SPECIAL_DANG,
+  giá trị hữu tỉ) thay vì format chuỗi "(x+p)^2+q" (TEXT_DANG).
+- **4 rule** (mirror trực tiếp từ R200-202 nhưng thao tác trên GIÁ TRỊ q thay vì chuỗi biểu thức): R204
+  (quên trừ lại phần thừa, coi đáp số = C gốc), R205 (nhầm dấu phần bù, cộng thay vì trừ $Ap^2$), R206
+  (quên chia 2 khi tìm p), R207 (dự phòng, lệch 1 đơn vị).
+- Chạy pipeline: 48/48, 0 bỏ, 0 FAIL ngay lần đầu. Đã ghi `dai_cau_form_tn`.
+- **Tổng khối 8: 17 dạng xong, 119 rule mới (R89-R207, trừ R100-104).** Còn 32 dạng (~1.128 câu). Hết
+  TOÀN BỘ nhóm bậc hai 1 biến (T108020101-105) — tiếp theo là nhóm GTLN-GTNN 2 biến (T108020201-203, 203
+  câu) — CẦN KHẢO SÁT KỸ trước khi code vì đây là logic THỰC SỰ MỚI (2 biến độc lập, tổng bình phương, bình
+  phương 3 số — không còn là biến thể của "tách bình phương 1 biến" nữa).
+
+## 2026-09-13 (tiếp) — T108020201/202/203 "GTLN-GTNN 2 biến" (khối 8), R208-R211 — GIẢI BẰNG ĐẠI SỐ TUYẾN TÍNH
+
+- 3 dạng cùng lúc (206 câu tổng): T108020201 (2 biến ĐỘC LẬP, không hạng chéo), T108020202 (CÓ hạng chéo
+  xy, cần nhóm thành tổng bình phương), T108020203 (trộn nhiều sub-shape, trong đó có sub-shape TRÙNG hệt
+  T108020202). **Quyết định kiến trúc:** thay vì dò/đoán CÁCH NHÓM bình phương cụ thể mà kho chọn (có thể
+  nhóm theo nhiều cách khác nhau cho cùng 1 GTLN/GTNN — bài toán dò cách nhóm khó và không cần thiết), GIẢI
+  TRỰC TIẾP bằng ĐẠI SỐ TUYẾN TÍNH: $A=ax^2+bxy+cy^2+dx+ey+f$ đạt cực trị tại nghiệm hệ đạo hàm riêng
+  $\{2ax+by+d=0;\ bx+2cy+e=0\}$ (Cramer, $\det=4ac-b^2$), thế điểm đó vào $A$. Cách này ĐÚNG với BẤT KỲ cách
+  nhóm nào kho chọn, dùng được CHUNG cho cả 3 dạng (T108020201 là trường hợp riêng $b=0$) — 1 hàm
+  `gtlnGtnnHaiBien` cho cả 3 mã dạng, không cần viết riêng từng dạng.
+- **4 rule dùng chung cả 3 dạng:** R208 (quên hạng chéo khi tìm cực trị — giải hệ như thể $b=0$ rồi thế lại
+  A ĐẦY ĐỦ có b — tự động vô hiệu khi $b=0$ thật (T108020201) vì không đổi gì), R209 (nhầm dấu, lấy điểm
+  đối xứng qua gốc toạ độ), R210 (quên hệ số 2 trong định thức, dùng $ac-b^2$ thay vì $4ac-b^2$), R211 (dự
+  phòng, lệch 1 đơn vị).
+- **2 bug bắt được qua pipeline thật (T108020202):**
+  1. 1 câu dùng dấu **EN DASH "–" (U+2013)** thay vì dấu trừ thường "-" (lỗi copy-paste từ Word vào kho) —
+     `chiaHangTu` không nhận diện được, coi cả cụm là 1 hạng tử duy nhất. Sửa TẠI GỐC trong
+     `chuanBiBieuThucNhan` (hàm tiền xử lý DÙNG CHUNG cho mọi dạng từ DẠNG 15 trở đi): thêm bước chuẩn hoá
+     mọi biến thể gạch ngang Unicode (–—−) về "-" thường — fix 1 lần, tự động áp dụng ngược cho MỌI dạng
+     đã viết trước đó, phòng ngừa lỗi tương tự ở dạng sau.
+  2. 1 câu có hạng tử cần PHÂN PHỐI: "$x^2-2x(y+1)+3y^2+2025$" — `gtlnGtnnHaiBien` ban đầu dùng thẳng
+     `parseFactorAsPoly` (không tự nhân được tích), sửa sang dùng `parseHangTuBieuThuc` (đã hỗ trợ tích cần
+     phân phối từ DẠNG 21) cho MỌI hạng tử ở bậc ngoài trước khi gộp.
+- **Phạm vi CHỦ ĐỘNG bỏ qua** (không cố ép, theo đúng tinh thần "để đó" đã dùng nhiều lần trong phiên):
+  T108020202/203 còn ~40 câu sub-shape "Cho ràng buộc [tổng bình phương]=0, tính giá trị biểu thức khác có
+  số mũ rất lớn (^2025...)" — VỀ NGUYÊN TẮC giải được bằng CHÍNH cơ chế `gtlnGtnnHaiBien` (ràng buộc tổng
+  bình phương=0 nghĩa là điểm cực trị của chính biểu thức đó, thế vào biểu thức thứ 2) nhưng cần thêm bước
+  parse-2-biểu-thức + luỹ thừa lớn — đủ phức tạp để không đáng làm ngay khi còn 30+ dạng khác đang chờ.
+- Kết quả: T108020201 61/62 (98%) · T108020202 68/83 (82%, phần còn lại là sub-shape phức tạp trên) ·
+  T108020203 27/61 (44%, phần lớn còn lại CŨNG là sub-shape đó). Tổng **156/206 câu (76%)** của cả 3 dạng
+  đã có form, 0 FAIL trên toàn bộ câu đã sinh.
+- **Tổng khối 8: 20 dạng xong (tính T108020201-203 là 3), 123 rule mới (R89-R211, trừ R100-104).** Còn
+  31 dạng (~890 câu, đã trừ phần residual 3 dạng vừa xong) — hoặc coi ~50 câu residual còn treo nếu sau
+  này quay lại làm nốt sub-shape ràng buộc-luỹ-thừa-lớn.
+
+## 2026-09-13 (tiếp) — T108020301 "Khai triển/hoàn thiện hằng đẳng thức lập phương tổng-hiệu" (khối 8), R212-R220
+
+- 43 câu, TRỘN 3 sub-shape (giống mô-típ T108020103): (a) "Khai triển biểu thức:$(x+1)^3$" — 11 câu, gần
+  MIỄN PHÍ nhờ `parseHangTuBieuThuc` đã hỗ trợ "(...)^n" cho MỌI n (không chỉ n=2) từ khi làm DẠNG 24; (b)
+  "$x^3+\ldots+12x+\ldots=(\ldots)^3$" — 21 câu, hoàn thiện nhưng CHỈ hỏi nhị thức cuối (không hỏi từng hạng
+  thiếu riêng như DẠNG 26); (c) dùng dấu chấm trần khác định dạng — 11 câu, CHỦ ĐỘNG bỏ qua (rơi ra tự
+  nhiên vì không khớp cả 2 pattern trên, không cần code loại trừ riêng).
+- **Sub-shape (b) — suy công thức bằng tay trước khi code:** cho $Ax^3$ và hệ số $C$ của hạng $x^1$ (chính
+  là $3ab^2$), với $a=\sqrt[3]{A}$: $b^2=C/(3a)$, dấu của $b$ đọc trực tiếp từ dấu nối giữa $Ax^3$ và hạng
+  ẩn đầu tiên trong đề (không cần suy luận, vì mẫu đề LUÔN nhất quán: dấu "+" ở mọi vị trí ⇒ $(ax+b)$; dấu
+  "-" ở hạng bậc 2/hằng số ⇒ $(ax-b)$) — viết thêm `icbrtBig` (căn bậc ba nguyên, dò nhị phân BigInt) và
+  `ratSqrt` (căn bậc hai hữu tỉ, tái dùng `isqrtBig` đã có từ DẠNG 25 cho cả tử và mẫu).
+- **Bẫy tự phát hiện lúc test mẫu (trước khi chạy pool thật):** rule "quên chia 3 khi tìm b" (thiết kế ban
+  đầu: tính lại $b^2_{sai}=C/a$ rồi khai căn) HẦU NHƯ LUÔN vô hiệu vì $C/a$ hiếm khi là số chính phương hữu
+  tỉ trong dữ liệu thật (khác hẳn $C/(3a)$ luôn được đề chọn cho ra số đẹp) — dẫn tới nhiều câu chỉ còn 2
+  distractor khi kết hợp với các câu $a=1$ (khiến rule "quên căn bậc ba A" cũng vô hiệu). Sửa bằng cách đổi
+  hẳn Ý NGHĨA rule đó (không cần khai căn lại): "quên khai căn, dùng thẳng $b^2$ làm hạng tự do" — luôn
+  tính được vì $b^2$ vốn đã là số hữu tỉ hợp lệ. Thêm thêm 1 rule dự phòng thứ 2 (R220, lệch b chiều ngược
+  R219, CỐ Ý không đánh dự phòng để dùng đồng thời) làm lưới an toàn cuối cho ca $a=1,b=1$ (mọi rule khác
+  đều trùng đáp án đúng do các số quá nhỏ/đơn giản).
+- **9 rule** — 4 cho sub-shape (a) (R212 quên 2 hạng giữa, R213 nhầm dấu 1 hạng giữa, R214 nhân 3 thay vì
+  lập phương, R215 dự phòng) + 5 cho sub-shape (b) (R216 quên khai căn, R217 nhầm dấu b, R218 quên căn bậc
+  ba A, R219 dự phòng, R220 lưới an toàn thứ 2).
+- Chạy pipeline: 32/32 câu thuộc sub-shape (a)+(b) — ĐÚNG NHƯ DỰ ĐOÁN — 0 bỏ, 0 FAIL (11 câu sub-shape (c)
+  tự động rơi ra ngoài qua "đáp số kho không parse", khớp chính xác số lượng đã biết trước khi code).
+- **Tổng khối 8: 21 dạng xong, 132 rule mới (R89-R220, trừ R100-104).** Còn 30 dạng.
+
+## 2026-09-13 (tiếp) — T108020302 "Tính giá trị biểu thức ứng dụng lập phương" (khối 8), R221-R224
+
+- 16 câu, "Tính giá trị biểu thức $P=y^3+6y^2+12y+8$ tại $y=8$" — kho dùng mẹo hằng đẳng thức để tính nhanh
+  nhưng ĐÁP SỐ chỉ là giá trị đa thức tại điểm đó, thế trực tiếp không cần nhận diện lập phương gì cả.
+- **Bẫy bắt được qua pipeline thật:** 1/16 câu có giá trị thế là PHÂN SỐ `\dfrac{5}{3}` (không phải số
+  nguyên/thập phân như 15 câu còn lại) — regex trích giá trị ban đầu chỉ nhận số nguyên/thập phân, bỏ sót
+  `\dfrac`. Sửa bằng cách tái dùng CHÍNH XÁC pattern regex đã viết cho DẠNG 23 (`tinhGiaTriRutGon`) — thêm
+  nhánh `\dfrac{}{}` vào trước nhánh số thường.
+- **4 rule số học đơn giản** (không cần rule "khái niệm" riêng vì đây chỉ là phép thế, không phải rút gọn/
+  khai triển): R221 (sai dấu kết quả), R222 (dự phòng, lệch 1 đơn vị), R223 (lệch 1 đơn vị chiều ngược lại
+  — lưới an toàn thứ 2 kiểu đã dùng ở DẠNG 23/30), R224 (quên cộng hạng tử hằng số — lỗi cụ thể, hay gặp
+  khi thế nhiều hạng tử liên tiếp rồi quên hạng cuối không có biến).
+- Chạy pipeline: 16/16, 0 bỏ, 0 FAIL. Đã ghi `dai_cau_form_tn`.
+- **Tổng khối 8: 22 dạng xong, 136 rule mới (R89-R224, trừ R100-104).** Còn 29 dạng.
+
 ## 2026-09-12 — TEST ĐẦU VÀO: phiếu theo kit v2 `BK_KET_QUA_KIEM_TRA_DAU_VAO_UI_KIT_v1` + popup nhập liệu của GV ngay trên phiếu (CEO 12/09)
 - **Kit CEO đưa 3 lượt:** v1 (mockup + 8 icon svg) → v1.1 (5 decor svg: header navy/gold, footer gold, medal, shine, logo navy) → **v2 = chỉ 1 ảnh reference 1024×1536 + DESIGN.md**, thư mục `assets/svg` ghi trong DESIGN nhưng KHÔNG có trong zip. ⇒ bản v2 dựng icon + dải gold bằng SVG inline tự vẽ + CSS; avatar = glyph chung (không có cartoon); logo colorful `public/bk-ui/logobk.png` (CEO gửi) chữ xám trên navy không đọc được ⇒ đặt trong ô trắng bo góc.
 - **CEO chốt 12/09:** thang kỹ năng **5 mức** (đảo lại quyết định 3 mức hôm 11/09) · nhận xét = 1 paragraph · điểm test thang 10 hiện ở card "Điểm test" (trophy) · badge lớp **trung tính** navy "LỚP / 7B2 / icon" — KHÔNG vòng nguyệt quế, KHÔNG chữ hệ A/B/C · footer địa chỉ "Số 17 lô A10, KĐT Geleximco" + hotline 0963.209.309 + chữ tay "Học thật / Tiến bộ thật" (Pacifico) · KHÔNG hiện GV/lịch/Đại-Hình · **"sửa cả UI Đánh giá của GV theo style này, click 1 HS = popup màn hình to để nhập"**.
@@ -11470,3 +11747,372 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
 - Chọn dạng có phán đoán: TLN 9 (min tổng tích vô hướng, trọng tâm) → `T312010401` Tâm tỷ cự; TLN 12/14 (sân trường, máy bay–mây) → `T312010801` mô hình thực tế mp dù có hình minh hoạ (text đủ giải); ĐS19 b) → `T312010505` (mp cách đều 2 mp song song).
 - **`done` fail EBUSY** — file bị khoá (Drive sync `E:\BK ACADEMY` / PDF đang mở) ⇒ transaction cũ (log rồi rename rồi COMMIT) rollback sạch nhưng mất log. Sửa `nhap_kho.mjs` + `nhap_de_thi.mjs` `done`: rename trước, retry 3×2s, vẫn khoá ⇒ **vẫn ghi `nhap_kho_log`** kèm `ghi_chu CHUA_MOVE`, in cảnh báo kéo tay. Lý do: dedup theo sha256 trong log là chân lý — mất log = lần sau `list` bóc lại 67 câu thành trùng; move chỉ là cosmetic. Đã ghi log; file còn ở `L12/`, CEO kéo tay sang `DaXuLy/2026-09-13/`.
 - Nhận xét luồng: ~130 câu/34 trang, Claude bóc ~40 câu/lô đọc 8 trang ổn; điểm chậm nhất là gán dạng per mệnh đề ĐS và quyết "bỏ hay gán". Chưa commit.
+
+## 2026-09-13 (tiếp) — T108020401 "Viết đa thức thành tích / ứng dụng hiệu hai bình phương" (khối 8), R225-R233
+- 61 câu, khảo sát ra 4 sub-shape: (a) phân tích `Ax²-C` thành `(√A x+√C)(√A x-√C)` (21 câu) · (b) khai triển
+  tích cho sẵn kiểu `(3x+2)(2-3x)` (28 câu, gồm cả đa biến/3-hạng-tử) · (c) nhận diện gộp 4 hạng tử để lộ hiệu
+  hai bình phương (11 câu) · (d) 1 câu "Chứng minh". Ban đầu tưởng (c)+(d) ngoài phạm vi (máy móc gộp nhóm thủ
+  công), nhưng viết `vietThanhTichHieuBinhPhuong`/`tinhTichHieuBinhPhuong` (tái dùng `parseFactorAsPoly` cho
+  (a), `chiaHangTu`+`parseHangTuBieuThuc`+`tachNhanTu` cho (b)) rồi chạy pipeline thật mới biết **cả (c) đều
+  lọt qua nhánh (b) tự nhiên** (kho trình bày đáp số (c) dưới dạng tích 2 nhân tử y hệt (b)) — chỉ (d) "Chứng
+  minh" không đáp số dạng biểu thức nên rớt đúng như dự đoán. Canon dùng lại `chuanHoaTachBinhPhuong` (đã viết
+  cho DẠNG 27) vì nó vốn tổng quát — khai triển-so-sánh-đa-thức, không quan tâm hình thức tích hay tổng.
+- **Rule sub-shape (a)** R225 (hiểu nhầm hiệu bình phương thành bình phương — 2 nhân tử cùng dấu), R226 (quên
+  căn hệ số A, dùng thẳng A), R227 (quên căn hằng số C, dùng thẳng |C|), R228 (dự phòng, lệch 1 đơn vị hạng tự
+  do). **Rule sub-shape (b)** R229 (chỉ nhân hạng đầu, quên phân phối hết), R230 (nhân số mũ biến chung thay
+  vì cộng), R231 (nhầm dấu trừ thành cộng trong 1 nhân tử), R232 (dự phòng, lệch 1 đơn vị hệ số bậc cao nhất).
+- **Bug thật bắt được lúc viết R230:** copy logic "nhân số mũ" từ DẠNG 16/21 nhưng quên bước GỘP theo
+  `phanBienKey` sau khi nhân Cartesian các nhân tử — ra kết quả CHƯA rút gọn kiểu `6x - 9x - 6x + 4` thay vì
+  `-9x + 4`. Bắt được bằng test tay trước khi chạy pipeline (không phải qua "đáp số kho không parse").
+- **Lỗ hổng tái diễn "hệ số=1 làm rule dự phòng vô hiệu":** case $x^2-1$ có √A=√C=1 nên R226/R227 trùng đáp án
+  đúng, chỉ còn R225+R228 khác biệt — thêm rule cứu **R233** (lệch 1 đơn vị hệ số biến trong 1 nhân tử, ví dụ
+  `(2x+1)(x-1)` thay vì `(x+1)(x-1)`) làm nhiễu độc lập thứ 2 cho nhóm câu này.
+- Migration `202609131646_mcq_rule_hieu_hai_binh_phuong.sql` (R225-R233). Chạy pipeline thật: sinh 60/61 (chỉ
+  bỏ đúng 1 câu "Chứng minh" — `đáp số kho không parse`, đúng dự đoán), verify 60 OK · 0 FAIL, phân bố đáp án
+  đều A/B/C/D=15/15/15/15. Đã ghi `dai_cau_form_tn` (`da_duyet=false`).
+- **Tổng khối 8: 23 dạng xong, 145 rule mới (R89-R233, trừ R100-104).** Còn 28 dạng.
+
+## 2026-09-13 (tiếp) — T108020402 "Tính giá trị biểu thức ứng dụng hiệu hai bình phương" (khối 8), R234-R241
+- 17 câu, 2 sub-shape: (a) "Tính giá trị biểu thức $A = 79.81$" — nhân nhanh 2 số bằng mẹo hiệu hai bình
+  phương, dấu CHẤM ở đây là **NHÂN chứ không phải thập phân** (2 số cách đều 1 số ở giữa, vd 79 và 81 quanh
+  80) (6 câu); (b) "Tính: $A=x^2-C$ tại $x=V$" — thế giá trị vào biểu thức có sẵn dạng x²-C, cùng khuôn với
+  DẠNG 31 (11 câu). Cả 2 sub-shape đáp số đều là 1 GIÁ TRỊ HỮU TỈ bare (không phải biểu thức) — đi
+  **SPECIAL_DANG**, khác hẳn dạng anh em T108020401 (đáp số là biểu thức, đi TEXT_DANG).
+- Viết `tinhGiaTriHieuBinhPhuong`: sub-shape (a) tự tách $A=p.q$ thành $m=(p+q)/2$, $d=(q-p)/2$ rồi tính
+  thẳng $p \times q$ = đáp số đúng (không cần mô phỏng mẹo, chỉ cần verify $m^2-d^2=p \times q$ để chắc đúng
+  khuôn), KHÔNG cần thêm dạng vào `CHAM_LA_NHAN` vì regex bắt riêng khuôn `$X = so.so$` không đụng logic
+  parse chung; sub-shape (b) tái dùng gần nguyên `tinhGiaTriLapPhuong` (DẠNG 31): tách đoạn `$...$` đầu làm
+  biểu thức, đoạn sau tìm `bien = giá_trị` (kể cả `\dfrac`), thế vào rồi cộng dồn.
+- **4 rule mỗi sub-shape, mô phỏng đúng lỗi của MẸO** (không phải lỗi số học chung chung): sub-shape (a) —
+  R234 (quên trừ $d^2$, chỉ lấy $m^2$), R235 (nhầm dấu, cộng $d^2$ thay vì trừ), R236 (dự phòng, lệch 1 đơn
+  vị), R237 (lệch 1 đơn vị chiều ngược lại); sub-shape (b) — R238 (sai dấu kết quả), R239 (dự phòng, lệch 1
+  đơn vị), R240 (lệch 1 đơn vị chiều ngược lại), R241 (quên trừ hạng tử hằng số C, chỉ tính bình phương của
+  giá trị thế — vd $102^2$ thay vì $102^2-4$).
+- Test tay trước bằng script tạm đối chiếu 17/17 câu thật: máy ra đúng 100%, mỗi câu ≥3 giá trị nhiễu phân
+  biệt sau khi loại trùng (1 câu $x^2-1$ tại $x=201$ trùng R239 với R241 do $C=1$ — vẫn còn đúng 3 giá trị
+  khác nhau, không cần rule cứu thêm vì đây là ca biên hiếm, khác kiểu lỗ hổng "hệ số=1" ở DẠNG 32 vì ở đây
+  không có rule nào PHỤ THUỘC vào $\sqrt{}$ nên không mất diện rộng, chỉ mất đúng 1 rule ở đúng 1 câu).
+- Chạy pipeline thật: sinh 17/17, 0 bỏ, verify 17 OK · 0 FAIL, phân bố đáp án A/B/C/D = 5/4/4/4. Đã ghi
+  `dai_cau_form_tn` (`da_duyet=false`).
+- Migration `202609131654_mcq_rule_gia_tri_hieu_hai_binh_phuong.sql` (R234-R241).
+- **Tổng khối 8: 24 dạng xong, 153 rule mới (R89-R241, trừ R100-104).** Còn 27 dạng.
+
+## 2026-09-13 (tiếp) — T108020501 "Biến đổi tổng/hiệu thành tích ứng dụng tổng-hiệu hai lập phương" (khối 8), R242-R258 — 4 SUB-SHAPE + ĐÁP SỐ ĐA MẢNH
+- 54 câu, TRỘN 4 sub-shape quanh 1 cặp hằng đẳng thức $A^3\mp B^3=(A\mp B)(A^2\pm AB+B^2)$ với $A=kx$: (a)
+  21 câu "$Akx^3-C=\ldots$" (LHS đủ, RHS = TOÀN BỘ tích, chỉ gặp hiệu, k có thể >1) · (b) 11 câu
+  "$x^3+\text{..}=(x+B)(\text{..})$" (LHS thiếu hằng số $B^3$, nhân tử 1 cho sẵn, nhân tử 2 thiếu, chỉ gặp
+  tổng, k=1) · (c) 11 câu "$\ldots=(x\mp B)(\text{..})$" (LHS ẩn hoàn toàn NGOÀI \$, nhân tử 1 cho sẵn — suy
+  dấu+B, nhân tử 2 là đáp số duy nhất) · (d) 11 câu "$\ldots=(\text{..})(x^2\pm Bx+\text{..})$" (LHS ẩn, nhân
+  tử 1 ẩn hoàn toàn, nhân tử 2 cho sẵn hạng GIỮA — suy dấu+B, thiếu hằng số cuối — đáp số kho là CẢ 2 nhân tử
+  đầy đủ).
+- **Format đáp số MỚI lần đầu gặp trong pipeline này:** sub-shape (b) đáp số kho là **2 MẢNH nối bằng ";"**
+  (vd `27; x^2 - 3x + 9` — mảnh 1 là số, mảnh 2 là đa thức). Không sửa được bằng canon cũ (mọi TEXT_FN trước
+  giờ đều là 1 biểu thức nguyên khối) — viết `chuanHoaTongHieuLapPhuong` MỚI: tách theo ";" rồi canon TỪNG
+  MẢNH bằng `chuanHoaTachBinhPhuong` sẵn có (đã đủ tổng quát để canon cả số lẫn đa thức), nối lại bằng " ; ".
+  Không phải quyết định phạm vi cần hỏi CEO — chỉ là kỹ thuật canon mới, tự quyết theo tinh thần "chạy thẳng".
+- Viết `tongHieuLapPhuong` dispatch theo cấu trúc chuỗi (không theo regex một khuôn duy nhất): (a) nhận diện
+  qua RHS toàn dấu chấm; (b) qua có `\text{`; (c)/(d) qua RHS dạng `(...)(...)vcó 2 ngoặc, phân biệt nhau bằng
+  nhân tử nào còn "toàn dấu chấm". Tái dùng `parseFactorAsPoly`/`icbrtBig` (đã có từ DẠNG 30/31) để tách hệ số
+  A và hằng số C, khai căn bậc ba.
+- **16 rule ban đầu (4/sub-shape), phát hiện thiếu qua test tay (không phải qua pipeline thật) 2 ca "B=1 làm
+  rơi rụng diện rộng" — ĐÚNG PATTERN đã lặp lại nhiều lần trong phiên này:** sub-shape (b) khi B=1, cả R246
+  (dùng B thay B³) VÀ R247 (dùng B² thay B³) đều trùng đáp số đúng (vì $1=1^2=1^3$) → chỉ còn 2 rule khả dụng
+  (R248, R249), thiếu 1. Thêm rule cứu **R258** (lệch 1 đơn vị hệ số hạng giữa của nhân tử 2, độc lập trục với
+  cả 4 rule kia). Test lại xác nhận CẢ 54/54 câu đều có ≥3 giá trị nhiễu phân biệt sau khi loại trùng, 0 câu
+  thiếu.
+- Migration `202609131704_mcq_rule_tong_hieu_lap_phuong.sql` (R242-R258, 4 rule `du_phong=true` — mỗi
+  sub-shape 1 rule riêng, không đụng nhau vì dispatch loại trừ lẫn nhau theo câu). Chạy pipeline thật: sinh
+  54/54, 0 bỏ, verify 54 OK · 0 FAIL, phân bố đáp án A/B/C/D = 13/14/14/13. Đã ghi `dai_cau_form_tn`.
+- **Tổng khối 8: 25 dạng xong, 170 rule mới (R89-R258, trừ R100-104).** Còn 26 dạng.
+
+## 2026-09-13 (tiếp) — T108020502 "Tính giá trị biểu thức áp dụng tổng-hiệu hai lập phương" (khối 8), R259-R262
+- 17 câu, 2 sub-shape chỉ khác số biến: (a) 1 biến "$(x+3)(x^2-3x+9)$ tại $x=10$" (6 câu); (b) 2 biến
+  "$(x-2y)(x^2+2xy+4y^2)$ tại $x=5; y=1{,}5$" (11 câu, **có giá trị thập phân DẤU PHẨY**). Biểu thức luôn
+  cho sẵn TÍCH đúng dạng $(A\mp B)(A^2\pm AB+B^2)$ — không cần nhận diện lại hằng đẳng thức như DẠNG 34,
+  chỉ cần THẾ GIÁ TRỊ trực tiếp.
+- **Tái dùng gần nguyên `tinhGiaTriRutGon` (DẠNG 23)** — cùng cơ chế chiaHangTu+parseHangTuBieuThuc để expand
+  biểu thức rồi cộng dồn theo giá trị thế — nhưng KHÔNG sửa trực tiếp hàm cũ (đã lên DB, migration bất biến)
+  mà viết bản mới `tinhGiaTriApDungLapPhuong`, sửa đúng 1 chỗ: regex nhận giá trị thế của DẠNG 23 chỉ khớp
+  thập phân DẤU CHẤM (`\d+(?:\.\d+)?`), trong khi câu `y=1,5` ở đây dùng DẤU PHẨY kiểu Việt Nam — thêm
+  `[.,]` vào regex + `.replace(',','.')` trước khi parse (giống cách DẠNG 31 đã xử lý).
+- **4 rule tái dùng nguyên Ý TƯỞNG của R172/R174/R175/R177 (DẠNG 23)** nhưng đổi mã mới (R259-R262) vì khác
+  `dang_chinh`: R259 (chỉ nhân hạng tử đầu của nhân tử thứ hai, quên phân phối hết), R260 (hoán đổi nhầm giá
+  trị thế của 2 biến — chỉ áp dụng sub-shape 2 biến, tự trả `null` khi <2 biến), R261 (dự phòng, lệch 1 đơn
+  vị), R262 (sai dấu kết quả). Không cần rule kiểu "quên đổi dấu khi trừ cụm tích" (R173 gốc) vì biểu thức
+  luôn là 1 hạng duy nhất ở top-level (không có phép trừ giữa 2 cụm tích).
+- Test tay 17/17 câu thật khớp 100%, mỗi câu đủ 3-4 giá trị nhiễu phân biệt (sub-shape a chỉ có 3 vì R260 tự
+  loại). Chạy pipeline thật: sinh 17/17, 0 bỏ, verify 17 OK · 0 FAIL, phân bố đáp án A/B/C/D = 4/4/4/5.
+- Migration `202609131709_mcq_rule_gia_tri_ap_dung_lap_phuong.sql` (R259-R262). Đã ghi `dai_cau_form_tn`.
+- **Tổng khối 8: 26 dạng xong, 174 rule mới (R89-R262, trừ R100-104).** Còn 25 dạng.
+
+## 2026-09-13 (tiếp) — T108020601 "Rút gọn biểu thức ứng dụng hằng đẳng thức" (khối 8) — TÁI DÙNG 100%, KHÔNG CODE MỚI
+- 60 câu, dạng "Rút gọn $A=(x+2)^3-(x+1)^3$" / "$(2x-1)^2-(x+1)(3x-2)$" / "$(2x+1)^2+(3-x)^2-2(2x-1)(3-x)$"
+  — tổng/hiệu của các luỹ thừa và tích nhị/tam thức, y hệt bài toán DẠNG 21 "Rút gọn biểu thức 1 biến"
+  (T108010501) đã giải quyết trước đó (chỉ khác tên `dang_chinh`, không khác gì về cấu trúc bài toán).
+- **Test tay trước khi viết code gì:** chạy thẳng `rutGonBieuThuc` (hàm CÓ SẴN từ DẠNG 21, đã tổng quát nhờ
+  `tachNhanTu` hỗ trợ `(...)^n` từ DẠNG 24) trên cả 59 câu khảo sát ban đầu → khớp 100%, mỗi câu đủ ≥3 nhiễu
+  phân biệt từ R164-167 có sẵn → **KHÔNG cần viết dòng code hay rule mới nào**, chỉ cần wire thêm
+  `T108020601` vào `UU_TIEN`/`TEXT_DANG`/`TEXT_FN` trỏ về đúng hàm/rule/canon đã có.
+- Migration `202609131712_...` chỉ **UPDATE `ap_dung`** của R164-R167 (nối thêm `T108020601` vào mảng) để
+  tài liệu phản ánh đúng — không insert rule mới.
+- Chạy pipeline thật: 60 câu (1 câu phát sinh thêm ngoài khảo sát ban đầu, vẫn khớp), sinh 60/60, 0 bỏ, verify
+  60 OK · 0 FAIL, phân bố đáp án đều A/B/C/D=15/15/15/15. Đã ghi `dai_cau_form_tn`.
+- **Bài học tái khẳng định:** khi khảo sát 1 dạng mới thấy cấu trúc bài toán TRÙNG với 1 dạng đã làm trước
+  đó (chỉ khác `dang_chinh`/tên gọi sư phạm), luôn thử hàm CÓ SẴN trước — tiết kiệm toàn bộ công đoạn thiết
+  kế + viết rule + viết migration rule mới.
+- **Tổng khối 8: 27 dạng xong, 174 rule mới (R89-R262, trừ R100-104, không rule nào riêng cho dạng này).** Còn 24 dạng.
+
+## 2026-09-13 (tiếp) — T108020602 "Tìm x ứng dụng hằng đẳng thức" (khối 8) — TÁI DÙNG + 1 RULE CỨU MỚI (R263)
+- 40 câu, dạng "Tìm x biết $(x+1)^3-(x-1)^3-6x^2+2x=0$" — vế trái rút gọn về bậc nhất rồi giải x, y hệt bài
+  toán DẠNG 22 (T108010503, `timXQuaRutGon`) chỉ khác `dang_chinh`. Test tay thẳng `timXQuaRutGon` + R168-171
+  có sẵn trên 40/40 câu thật → khớp giá trị đúng 100%.
+- **2/40 câu thiếu nhiễu** (hệ số x = 1 khiến R169/R170 trùng đáp số đúng — ĐÚNG PATTERN "hệ số=1 làm rơi
+  rụng diện rộng" đã lặp lại nhiều lần phiên này). Thêm 1 rule cứu MỚI **R263** (lệch nghiệm x trừ 1, chiều
+  ngược lại R171) vào ngay trong `timXQuaRutGon` (an toàn vì chỉ THÊM nhánh `if`, không sửa R168-171 đã lên
+  DB) — cứu được 1/2 câu. Câu còn lại (`T108020602010`, hằng số tự do = 0 sau rút gọn) là ca đặc biệt hơn:
+  MỌI rule nhân/chia hệ số đều cho ra 0 (vì $0\times k=0$ với mọi $k$) nên không rule "hệ số" nào cứu được,
+  chỉ 2 rule cộng/trừ hằng số (R171, R263) còn dùng được → chỉ 2 nhiễu, thiếu 1. **Chấp nhận bỏ 1/40 câu**
+  (§1.5 thà bỏ trống — tỉ lệ 2.5%, không đáng thêm rule thứ 3 kiểu cộng/trừ hằng số tuỳ tiện).
+- Migration `202609131716_...`: insert R263 + UPDATE `ap_dung` của R168-171 nối thêm `T108020602`.
+- Chạy pipeline thật: sinh 39/40 (đúng dự đoán, bỏ đúng 1 câu), verify 39 OK · 0 FAIL, phân bố đáp án
+  A/B/C/D=10/10/10/9. Đã ghi `dai_cau_form_tn`.
+- **Tổng khối 8: 28 dạng xong, 175 rule mới (R89-R263, trừ R100-104).** Còn 23 dạng.
+
+## 2026-09-13 (tiếp) — T108020701 "Bình phương của các biểu thức đặc biệt" (khối 8) — CHỈ SUB-SHAPE 2 BIẾN, HỎI CEO
+- 49 câu, khảo sát lộ ra đây là loại bài KHÁC HẲN mọi dạng đã làm: cho quan hệ đối xứng giữa 2-3 biến (vd
+  $a+b=2,ab=1$ hoặc $a+b+c=6,ab+bc+ca=12$ hoặc $1/a+1/b+1/c=1,1/a^2+1/b^2+1/c^2=1/3$), tính 1 biểu thức đích
+  (vd $a^2+b^2$, $a^4+b^4+c^4$, $3a+4b+5c$, $1/a+1/b+1/c$) — mỗi sub-shape cần MỘT CHUỖI SUY LUẬN ĐẠI SỐ
+  RIÊNG (không phải expand/substitute chung như mọi dạng trước): sub-shape 2 biến luôn giải bằng đúng 1 hằng
+  đẳng thức cố định ($a^2+b^2=S^2-2P$, $a^3+b^3=S^3-3SP$); các sub-shape 3 biến hoặc dùng "mẹo ép $a=b=c$"
+  (khi $S^2=3P$ xảy ra) hoặc dùng chuỗi Newton power-sum qua $e_1,e_2,e_3$ — mỗi loại cần code/logic riêng hẳn.
+  **DỪNG LẠI HỎI CEO** theo đúng tinh thần "logic mới, cần hỏi mới dừng" — CEO chốt 13/09: **chỉ làm sub-shape
+  2 biến (17/49 câu) trước, để lại phần 3 biến cho sau.**
+- Viết `tongBinhLapPhuongHaiBien`: parse "$a+b=S$; $ab=P$. Tính $a^2+b^2$" (hoặc bậc 3) bằng regex trực tiếp
+  trên biến+giá trị (không cần bộ máy đa thức tổng quát vì cấu trúc đề CỐ ĐỊNH, không có biến thể phân phối/
+  nhân đa thức nào cần xử lý).
+- **6 rule, phát hiện 1 ca degenerate qua test tay (S=0 khiến hàng loạt rule trùng đáp số đúng — vì mọi hạng
+  chéo đều có nhân tử S=(a+b) nên tự triệt tiêu bất kể P):** R264 (quên trừ hạng chéo), R265 (nhầm dấu),
+  R266 (quên hệ số nhân của hạng chéo), R267 (dự phòng lệch 1), R268 (rescue — lệch 1 chiều ngược), R269
+  (rescue — nhầm sang công thức của bậc kia, ĐỘC LẬP với nhân tử S nên cứu được ca S=0 mà R264-266 không cứu
+  nổi). 17/17 câu khớp, đủ ≥3 nhiễu sau khi thêm R268+R269.
+- Migration `202609131724_mcq_rule_tong_binh_lap_phuong_hai_bien.sql` (R264-R269). Chạy pipeline thật trên
+  CẢ 49 câu (không lọc trước, để engine tự phân loại): 17 sinh được (đúng dự đoán), 31 bỏ đúng lý do "không
+  tính được" (sub-shape 3 biến, dừng phạm vi), 1 câu (`T108020701047`) bị `--list` loại từ đầu vì đáp số kho
+  lỗi định dạng (`\dfrac{3}{3} = 1` — lỗi data pre-existing, không sửa). Verify 17 OK · 0 FAIL. Đã ghi
+  `dai_cau_form_tn`.
+- **Còn treo:** 32 câu 3-biến của T108020701 (ép $a=b=c$ + Newton power-sum) — quay lại sau khi có thời gian
+  đầu tư engine riêng, không phải bug hay thiếu sót của lần này.
+- **Tổng khối 8: 29 dạng xong (1 dạng làm bán phần), 181 rule mới (R89-R269, trừ R100-104).** Còn 22 dạng + phần còn lại của T108020701.
+
+## 2026-09-13 (tiếp) — T108020702 "Các bài toán liên quan đến lập phương của tổng" (khối 8) — CHỈ 6/15 CÂU, TỰ QUYẾT
+- 15 câu, khảo sát lộ 3 nhóm: (a) 6 câu "Chứng minh $a^3+b^3\pm kab=\ldots$" — dạng CHỨNG MINH, đáp số kho
+  chính là ĐỀ BÀI lặp lại (`$a^3+b^3+6ab=8$`), không parse được thành giá trị — loại tự nhiên như mọi câu
+  "Chứng minh" khác trong phiên này; (b) 2 câu "Tính" nhưng đáp số LUÔN LÀ HẰNG SỐ 3 bất kể số liệu đề bài
+  (identity $x+y+z=0 \Rightarrow x^3+y^3+z^3=3xyz$, không có tham số biến thiên để sinh nhiễu có ý nghĩa) —
+  quá mỏng (2 câu) và không đáng viết engine riêng, bỏ qua tự quyết (không cần hỏi CEO, cùng loại quyết định
+  như bỏ câu Chứng minh mọi nơi); (c) 6 câu "Cho $a^3+b^3+27=9ab$, biết $a\ne b$. Tính $M=a+b+14$" — DUY NHẤT
+  sub-shape có tham số biến thiên rõ ràng → làm.
+- Viết `tongLapPhuongCongThemHangSo`: parse $a^3+b^3\pm K^3 = \pm 3Kab$ bằng regex trực tiếp (khuôn đề cố
+  định), suy $K$ = căn bậc ba của hằng số LHS (kiểm tra khớp với hệ số $3K$ ở RHS để chắc đúng khuôn), áp
+  dụng $a^3+b^3+c^3-3abc=(a+b+c)(\ldots)$ với $c=K$: nhân tử 2 buộc $a=b=c=K$ (loại vì $a\ne b$) ⇒ nhân tử 1
+  ⇒ $a+b=-K$; rồi cộng thêm hằng số $C$ trích từ "Tính $M=a+b+C$".
+- 4 rule: R270 (quên đổi dấu, dùng $a+b=K$), R271 (nhầm dấu hằng số cộng thêm), R272 (quên cộng hằng số, chỉ
+  lấy $a+b$), R273 (dự phòng lệch 1). Test tay 6/6 câu khớp 100%, đủ nhiễu không cần rule cứu thêm.
+- Migration `202609131728_mcq_rule_tong_lap_phuong_cong_hang_so.sql` (R270-R273). Chạy pipeline thật trên cả
+  15 câu: 7 câu "Chứng minh" bị loại từ `--list` (đáp số không parse được, đúng dự đoán), sinh 6/8 câu còn
+  lại (đúng 6 câu target), 2 câu hằng-số-3 bỏ đúng lý do "không tính được". Verify 6 OK · 0 FAIL. Đã ghi
+  `dai_cau_form_tn`.
+- **Tổng khối 8: 30 dạng xong (2 dạng làm bán phần: T108020701 17/49, T108020702 6/15), 185 rule mới
+  (R89-R273, trừ R100-104).** Còn 21 dạng + phần còn lại của T108020701/T108020702.
+
+## 2026-09-13 (tiếp) — T108030101 "Phân tích ĐTTNT — rút nhân tử chung" (khối 8, DẠNG 3 — MẢNG MỚI), R274-R280
+- 147 câu — dạng ĐẦU TIÊN của mảng "Phân tích đa thức thành nhân tử" (khác hẳn mảng "Nhân/chia đơn-đa thức"
+  và "Hằng đẳng thức" đã làm hết trước đó — đây là chiều NGƯỢC LẠI: cho đa thức, tách ra tích của nhân tử
+  chung × phần còn lại). Mỗi hạng tử = [hệ số·biến] × tối đa 1 CỤM HỢP (ngoặc, có thể viết ngược dấu — vd
+  $(3-y)=-(y-3)$). Viết `rutNhanTuChung`: GCD hệ số (Euclid) + biến chung (mũ nhỏ nhất, 0 nếu vắng ở 1 hạng)
+  + cụm hợp chung (chuẩn hoá dấu qua `chuanHoaCumNhanTu` — sort theo `sapXepChuanDaThuc`, lật dấu nếu hạng
+  dẫn đầu âm, cần cho việc nhận ra $(3-y)$ và $(y-3)$ là "cùng 1 nhân tử, ngược dấu").
+- **2 bug thật bắt được qua test tay (không phải qua pipeline):**
+  1. `parseHangTuBieuThuc` chỉ dành cho 1 HẠNG-TÍCH (không tự tách +/- bậc ngoài) — gọi thẳng nó trên nội
+     dung 1 cụm ngoặc đa hạng như `"y-3"` (có dấu trừ bậc ngoài) làm nó ÂM THẦM trả về `[]` (mảng rỗng, không
+     phải `null`) vì `tachNhanTu` bên trong coi khoảng trắng là ranh giới nhân tử còn dấu `-` thì không, dẫn
+     tới hiển thị cụm ngoặc thành `"0"`. Sửa bằng viết `phanTichDaThucCumNhanTu` — PHẢI `chiaHangTu` (tách
+     +/- bậc ngoài) TRƯỚC rồi mới `parseHangTuBieuThuc` từng hạng, y hệt khuôn `rutGonBieuThuc` đã dùng —
+     đây là quy tắc gọi hàm chưa được ghi rõ ở đâu, dễ tái phạm nếu dạng sau lại cần parse 1 cụm ngoặc trần.
+  2. **Canon KHÔNG được dùng kiểu "khai triển-so-giá-trị"** (`chuanHoaTachBinhPhuong` cũ) cho bài toán RÚT
+     NHÂN TỬ: `"x²y²(18x²-24)"` và `"6x²y²(3x²-4)"` khai triển ra CÙNG GIÁ TRỊ nhưng là 2 MỨC RÚT khác nhau
+     (1 cái CHƯA rút hết) — so giá trị sẽ coi nhầm là "trùng đáp án đúng", làm rớt hết distractor kiểu
+     "quên rút hệ số". Viết canon RIÊNG `chuanHoaRutNhanTuChung`: tách factor số·biến (ngoài ngoặc) RIÊNG
+     khỏi từng cụm trong ngoặc (canon hoá + sort), giữ nguyên ranh giới "đã rút cái gì" — nhưng VẪN cần nhận
+     ra `(3-c)(5c-2)` và `(c-3)(-5c+2)` là CÙNG 1 đáp án (lật dấu ĐỒNG THỜI 2 nhân tử không đổi giá trị) —
+     xử lý bằng dồn dấu bị lật (qua chuẩn hoá mỗi cụm) vào hệ số ngoài thay vì so text thô.
+  6 rule: R274 (quên rút hệ số), R275 (rút chưa lớn nhất), R276 (quên rút 1 biến chung), R277 (nhầm dấu 1
+  hạng trong ngoặc), R278 (dự phòng lệch 1 hệ số trong ngoặc), R280 (rescue chiều ngược lại R278 — cứu ca
+  không có hệ số/biến chung khiến R274-276 vô hiệu, R279 bỏ trống không dùng).
+- Test tay 147/147: 116 khớp đúng 100% (đủ ≥3 nhiễu sau khi thêm R280), **21 câu lệch vì ĐÁP SỐ KHO CHƯA RÚT
+  HẾT** (vd kho để `(y-3)(6y+21)` thay vì rút tiếp còn `3(y-3)(2y+7)` — lỗi/quy ước không nhất quán trong dữ
+  liệu nguồn, không phải bug của máy — máy tính ĐÚNG TOÁN HỌC hơn, chủ động KHÔNG ép theo kho sai, để trống
+  theo §1.5), 10 câu "Chứng minh" (không MCQ được, loại từ `--list`).
+  Migration `202609131743_mcq_rule_rut_nhan_tu_chung.sql` (R274-R280). Chạy pipeline thật: sinh 116/147, verify
+  116 OK · 0 FAIL, phân bố đáp án đều tuyệt đối A/B/C/D=29/29/29/29. Đã ghi `dai_cau_form_tn`.
+- **Tổng khối 8: 31 dạng xong (2 bán phần: T108020701, T108020702), 192 rule mới (R89-R280, trừ R100-104,
+  R279).** Còn 20 dạng + phần còn lại T108020701/702. **Bắt đầu mảng "Phân tích thành nhân tử" (5 dạng con:
+  T108030101-105) — dạng tiếp theo (nhóm hạng tử) chắc chắn tái dùng được nhiều từ engine vừa viết.**
+
+## 2026-09-13 (tiếp) — T108030102 "Phân tích ĐTTNT — nhóm hạng tử" (khối 8), R281-R284 — TÁI DÙNG CANON + CHAIN 2 KỸ THUẬT
+- 110 câu, CHỈ làm sub-shape "4 hạng tử, nhóm 2 hạng ĐẦU + 2 hạng CUỐI theo đúng thứ tự viết sẵn" (khảo sát
+  xác nhận KHÔNG câu nào cần thử nhóm khác thứ tự) — tự quyết bỏ qua các câu không phải 4 hạng hoặc cần nhận
+  diện hằng đẳng thức NGAY TRONG 1 nhóm (vd nhóm 3 hạng dạng bình phương), khác hẳn quy mô 1 engine.
+- Thiết kế: rút GCD RIÊNG từng nhóm 2 hạng (dùng lại chính xác thuật toán Euclid + biến chung của DẠNG 38,
+  tách thành hàm `trichGcdDonThuc` DÙNG CHUNG), 2 ngoặc còn lại của 2 nhóm phải TRÙNG NHAU (cùng hoặc ngược
+  dấu, qua so sánh text) mới nhóm được → cộng 2 "hệ số nhóm" lại thành 1 biểu thức MỚI (`outerList`).
+  **Phát hiện qua test tay: `outerList` (2 hạng) THƯỜNG CẦN xử lý TIẾP** — không dừng ở nhóm-1-lớp:
+  1. Có thể còn 1 lớp GCD nữa (vd $x^3+x^2y-x^2z-xyz=(x+y)(x^2-xz)$ → còn rút được $x$ → $x(x+y)(x-z)$) —
+     áp lại CHÍNH `trichGcdDonThuc` lần 2 trên `outerList`.
+  2. Có thể là HIỆU HAI BÌNH PHƯƠNG dạng $Ax^2-C$ (vd $(x-3)(x^2-4)$ → $x^2-4$ cần phân tích tiếp thành
+     $(x-2)(x+2)$) — TÁI DÙNG NGUYÊN logic phân tích của DẠNG 32 (`isqrtBig` + công thức $(\sqrt A x+\sqrt
+     C)(\sqrt A x-\sqrt C)$), viết gọn thành `thuHieuBinhPhuong`, CHẠY SAU bước rút GCD (chain 2 kỹ thuật:
+     rút GCD trước, hết rút được mới thử hiệu-hai-bình-phương trên phần còn lại) — nâng tỉ lệ khớp từ 63/110
+     lên 87/110 chỉ bằng cách thêm bước chain này, không cần rule mới.
+- **Đáp số cùng khuôn "hệ số·(ngoặc)(ngoặc)[(ngoặc)]" như T108030101 ⇒ TÁI DÙNG NGUYÊN canon
+  `chuanHoaRutNhanTuChung`** — không viết canon mới, tiết kiệm hẳn 1 bước thiết kế.
+- 4 rule: R281 (nhầm dấu khi ghép 2 nhóm), R282 (quên phân tích/rút thêm ở phần còn lại — bắt cả 2 trường
+  hợp "còn GCD" và "còn hiệu 2 bình phương"), R283/R284 (dự phòng lệch 1 đơn vị + rescue chiều ngược lại,
+  MỖI rule tự rẽ nhánh theo cấu trúc: nếu phần còn lại là hiệu 2 bình phương thì sinh lỗi "viết 2 nhân tử
+  cùng dấu" kiểu R225 thay vì lệch số).
+- Migration `202609131753_mcq_rule_nhom_hang_tu.sql` (R281-R284). Test tay 110 câu: 87 khớp 100% (0 câu
+  thiếu nhiễu), 23 còn lại là **2 pattern đã biết**: kho chưa rút hết hệ số ở 1 nhóm (3 câu, giống lỗ hổng đã
+  gặp ở T108030101) + cần hằng đẳng thức LẬP PHƯƠNG $x^3+1=(x+1)(x^2-x+1)$ trong 1 nhóm (2 câu, ngoài phạm
+  vi hiện tại) + 18 câu "Chứng minh"/cấu trúc khác 4-hạng (loại từ `--list`). Chạy pipeline thật: sinh
+  87/110, verify 87 OK · 0 FAIL. Đã ghi `dai_cau_form_tn`.
+- **Tổng khối 8: 32 dạng xong (2 bán phần: T108020701, T108020702), 196 rule mới (R89-R284, trừ R100-104,
+  R279).** Còn 19 dạng + phần còn lại T108020701/702.
+
+## 2026-09-13 (tiếp) — T108030103 "Phân tích ĐTTNT — phương pháp hằng đẳng thức" (khối 8) — CHỈ 32/166 CÂU
+- 166 câu (dạng LỚN NHẤT phiên này) — khảo sát lộ ra ĐA SỐ câu cần kỹ thuật khác hẳn "tam thức bậc hai":
+  nhóm hạng tử 2 biến (vd $x^2+2x+2z-z^2$), đặt ẩn phụ rồi bình phương (vd $(x+y)^2+8(x+y)+16=(x+y+4)^2$).
+  CHỈ 32/166 câu (~19%) là dạng "tam thức bậc hai $x^2+Bx+C$ hệ số bậc 2 = 1" — TỰ QUYẾT chỉ làm phần này
+  (không hỏi CEO vì đây là kiểu quyết định phạm vi ĐÃ LÀM NHIỀU LẦN tương tự trong phiên — tách 1 sub-shape
+  rõ ràng, để phần phức tạp hơn cho lượt sau), viết `phanTichTamThucBac2`: $x^2+Bx+C=(x+p)(x+q)$ với
+  $p+q=B,pq=C$ — tìm $p,q$ bằng duyệt ước của $C$ (kể cả âm) tới khi tổng khớp $B$.
+- 4 rule: R285 (nhầm dấu 1 nghiệm), R286 (nhầm dấu cả 2 nghiệm), R287 (dự phòng lệch 1 đơn vị), R288
+  (rescue chiều ngược lại). Đáp số cùng khuôn tích 2 nhân tử ⇒ TÁI DÙNG canon `chuanHoaRutNhanTuChung`
+  (lần thứ 3 tái dùng canon này, không viết mới).
+- Test tay 166 câu: 32/32 khớp 100% (0 câu thiếu nhiễu, 0 DIFF), 134 câu còn lại đúng như dự đoán không khớp
+  pattern (để sau). Migration `202609131759_mcq_rule_tam_thuc_bac_hai.sql` (R285-R288). Chạy pipeline thật:
+  sinh 32/166, verify 32 OK · 0 FAIL, phân bố đáp án đều A/B/C/D=8/8/8/8. Đã ghi `dai_cau_form_tn`.
+- **Còn treo:** 134 câu còn lại của T108030103 (nhóm hạng tử 2 biến + đặt ẩn phụ) — cần thêm 1-2 sub-engine
+  riêng, khác hẳn kỹ thuật tam thức bậc hai, để sau khi có thời gian.
+- **Tổng khối 8: 33 dạng xong (3 bán phần: T108020701, T108020702, T108030103), 200 rule mới (R89-R288, trừ
+  R100-104, R279).** Còn 18 dạng + phần còn lại của 3 dạng bán phần.
+
+## 2026-09-13 (tiếp) — T108030104 "Phân tích ĐTTNT — tách hạng tử" (khối 8), R289-R292 — MỞ RỘNG DẠNG 40 + BUG FIX NHÃN "A ="
+- 111 câu. **Bắt đầu bằng thử tái dùng `phanTichTamThucBac2` (DẠNG 40, viết cho T108030103) trực tiếp** — chỉ
+  khớp 17/111 vì bug: hàm cũ tách biểu thức bằng `.split('=')[0]`, sai với khuôn nhãn "A = x²+7x+12" (dùng
+  `=` làm PHẦN CỦA NHÃN, không phải dấu "=..." điền đáp số) — cắt nhầm mất luôn vế phải. Sửa `phanTichTamThucBac2`
+  dùng đúng quy ước `mLabel` (regex `^[A-Za-zĐ]\s*=\s*(.+)$`) đã dùng ở các dạng trước, cộng thêm nhánh xử lý
+  câu KHÔNG có `$...$` (nhãn "A = ..." nằm trần ngoài LaTeX) → tăng lên 29/111, KHÔNG gây regression cho
+  T108030103 (vẫn đúng 32/166).
+- **Phần còn lại (94→82 câu) cần TỔNG QUÁT HOÁ sang $Ax^2+Bx+C$ với $A\ne1$ và/hoặc đẳng cấp 2 biến
+  $Ax^2+Bxy+Cy^2$** — ĐÚNG TÊN "tách hạng tử": viết `tachHangTuTongQuat`, dùng AC-method (tìm $M,N$:
+  $M+N=B, MN=AC$) tách hạng giữa thành 2 hạng rồi NHÓM — **TÁI DÙNG NGUYÊN `ghepNhomHangTu`/`trichGcdDonThuc`
+  đã viết cho DẠNG 39** (vì sau khi tách, bài toán CHÍNH LÀ 1 bài nhóm 4 hạng tử) → thêm 64/111 câu, nâng
+  tổng lên 93/111 (84%).
+- **`phanTichTamThucBac2` và `tachHangTuTongQuat` LOẠI TRỪ LẪN NHAU theo cấu trúc** (hàm sau tự bỏ qua ca
+  A=1+1biến để tránh trùng) ⇒ viết dispatcher `tachHangTuKetHop = (nd,rule) => phanTichTamThucBac2(nd,rule)
+  || tachHangTuTongQuat(nd,rule)` để 1 `dang_chinh` dùng chung 2 bộ rule (R285-288 VÀ R289-292 mới) — không
+  cần gộp code, chỉ cần OR 2 hàm.
+- **5 câu "máy ≠ kho" soi tay phát hiện: 1 câu kho chưa rút hết hệ số (biết pattern), 4 câu KHO SAI THẬT SỰ**
+  — vd `T108030401051` "$11x-6x^2-4$" kho ghi đáp số `(2x-1)(1-3x)` nhưng khai triển ra $-6x^2+5x-1$, KHÔNG
+  khớp đề gốc $-6x^2+11x-4$; máy tính `(-2x+1)(3x-4)` khai triển ĐÚNG khớp đề. Xác nhận bằng tay: lỗi ở phía
+  kho (đáp số nhập sai), không phải bug — chủ động KHÔNG ép theo, để trống theo §1.5, không sửa đáp số kho
+  (ngoài phạm vi phiên MCQ, cần báo riêng nếu muốn sửa data gốc).
+- Migration `202609131858_mcq_rule_tach_hang_tu_tong_quat.sql` (R289-292 + nối `T108030104` vào `ap_dung`
+  của R285-288). Chạy pipeline thật: sinh 93/111, verify 93 OK · 0 FAIL, phân bố đáp án đều A/B/C/D=23/24/23/23.
+  Đã ghi `dai_cau_form_tn`.
+- **Còn treo:** 18 câu còn lại (bậc 4 dạng $x^4+Bx^2-C$ cần đặt ẩn phụ $u=x^2$ rồi hiệu-hai-bình-phương trên
+  1 nhân tử, + 4 câu kho sai đáp số cần báo riêng) — để sau.
+- **Tổng khối 8: 34 dạng xong (3 bán phần), 204 rule mới (R89-R292, trừ R100-104, R279).** Còn 17 dạng +
+  phần còn lại của 3 dạng bán phần.
+
+## 2026-09-13 (tiếp) — T108030105 "Phân tích ĐTTNT — nhẩm nghiệm" (khối 8), R293-R296 — ĐA THỨC BẬC 3, XÁC MINH KHO SAI
+- 62 câu, đa thức BẬC BA $Ax^3+Bx^2+Cx+D$ (1 biến). Kỹ thuật: nhẩm 1 nghiệm nguyên $r$ (duyệt ước của $D$,
+  kể cả âm, kiểm $Ar^3+Br^2+Cr+D=0$), chia tổng hợp (synthetic division: $e=B+Ar, f=C+re$) lấy thương bậc 2
+  $Ax^2+ex+f$, rồi phân tích tiếp tam thức bậc 2 còn lại — **TÁI DÙNG NGUYÊN `timMN`+`ghepNhomHangTu`+
+  `trichGcdDonThuc` đã viết cho DẠNG 39/41** (chỉ cần cộng thêm bước tìm nghiệm bậc 3 + chia tổng hợp ở đầu,
+  phần còn lại y hệt cấu trúc "nhóm 4 hạng" đã có). 4 rule: R293 (nhầm dấu nghiệm), R294 (nhầm dấu ghép nhóm
+  ở bước tam thức bậc 2), R295/R296 (dự phòng lệch 1 đơn vị + rescue).
+- **6 câu "máy ≠ kho" — TỰ XÁC MINH BẰNG TAY (khai triển lại đối chiếu đề gốc) xác nhận CẢ 6 ĐỀU LÀ KHO SAI
+  ĐÁP SỐ THẬT SỰ**, không phải bug: vd `T108030105027` "$6x^3-7x^2-16x+12$" kho ghi `(x-2)(x+2)(6x-3)` nhưng
+  khai triển ra $6x^3-3x^2-24x+12$ (không khớp đề gốc, hệ số $x^2$ và $x$ đều sai); máy tính
+  `(x-2)(3x-2)(2x+3)` khai triển ĐÚNG khớp $6x^3-7x^2-16x+12$. Cùng loại lỗi với 4 câu đã phát hiện ở
+  T108030104 — cho thấy mảng "nhẩm nghiệm/tách hạng tử" của kho có TỶ LỆ LỖI ĐÁP SỐ cao hơn các mảng khác,
+  đáng note lại để CEO biết nếu sau này làm cửa duyệt/quét lại kho phần này.
+- Migration `202609131904_mcq_rule_nham_nghiem.sql` (R293-R296). Chạy pipeline thật: sinh 43/62, verify
+  43 OK · 0 FAIL, phân bố đáp án đều A/B/C/D=11/10/11/11. Đã ghi `dai_cau_form_tn`.
+- **Tổng khối 8: 35 dạng xong (3 bán phần), 208 rule mới (R89-R296, trừ R100-104, R279).** Còn 16 dạng +
+  phần còn lại của 3 dạng bán phần. **XONG TOÀN BỘ mảng "Phân tích đa thức thành nhân tử" (T108030101-105,
+  5/5 dạng con, dù có dạng chỉ làm bán phần).**
+
+## 2026-09-13 (tiếp) — T108030602 "Tìm x — phương trình tích qua rút nhân tử chung" (khối 8), R297-R300, 42/42 CÂU
+- 42 câu, 2 sub-shape: (a) "$(x-2)^2-7(x-2)=0$" (21 câu, cụm hợp xuất hiện LUỸ THỪA KHÁC NHAU ở 2 hạng — 1
+  hạng bình phương, 1 hạng bậc 1); (b) "$3x(2x-1)+6(2x-1)=0$" (21 câu, cụm hợp cùng luỹ thừa 1 ở cả 2 hạng,
+  y hệt khuôn rút-nhân-tử-chung DẠNG 38 nhưng đặt bằng 0 rồi giải x).
+- Viết `timXPhuongTrinhTich2Hang`: rút cụm hợp ở LUỸ THỪA NHỎ NHẤT giữa 2 hạng; hạng có luỹ thừa THỪA
+  (leftover ≥1) thì NHÂN NGƯỢC LẠI cụm hợp vào phần còn lại (dùng `nhanCacDaThuc` có sẵn) để ra đúng đa thức
+  bậc nhất; rồi giải 2 phương trình bậc nhất (cụm hợp=0 và phần còn lại=0) lấy 2 nghiệm.
+- **2 bug bắt được qua test tay:** (1) đáp số kho ĐỊNH DẠNG KHÔNG NHẤT QUÁN — sub-shape (a) ghi `"x = 2; x =
+  9"`, sub-shape (b) ghi trần `"-2; 1/2"` (không có "x=", dùng "/" thay `\dfrac`) — viết canon MỚI
+  `chuanHoaDanhSachNghiem`: trích MỌI giá trị số/phân số xuất hiện trong text (dò cả 2 khuôn), sắp xếp rồi
+  nối lại (thứ tự nghiệm không quan trọng khi so sánh). (2) LẤY NHẦM ĐOẠN `$...$` — nhãn "Tìm $x$ biết" ở
+  sub-shape (b) có `$x$` là 1 đoạn `$...$` RIÊNG đứng TRƯỚC phương trình, lấy đoạn `$...$` ĐẦU TIÊN (quy ước
+  cũ) vô tình lấy nhầm "x" — sửa bằng cách tìm ĐÚNG đoạn `$...$` nào chứa dấu "=" thay vì luôn lấy đoạn đầu.
+- 4 rule: R297 (quên đổi dấu nghiệm 1), R298 (quên đổi dấu nghiệm 2), R299/R300 (dự phòng lệch 1 + rescue
+  chiều ngược lại). Test tay 42/42 khớp 100%, đủ nhiễu. Migration `202609131912_mcq_rule_tim_x_pt_tich_2_hang.sql`.
+  Chạy pipeline thật: sinh 42/42, 0 bỏ, verify 42 OK · 0 FAIL, phân bố đáp án đều A/B/C/D=10/11/11/10. Đã ghi
+  `dai_cau_form_tn`.
+- **Tổng khối 8: 36 dạng xong (3 bán phần), 212 rule mới (R89-R300, trừ R100-104, R279).** Còn 15 dạng +
+  phần còn lại của 3 dạng bán phần.
+
+## 2026-09-13 (tiếp) — T108030603 "Giải phương trình bậc ba qua nhóm hạng tử" (khối 8, 6 câu nhỏ), R301-R304
+- 6 câu, "Giải phương trình $x^3-3x^2-4x+12=0$" → nhóm hạng tử ra 3 nhân tử tuyến tính rồi giải từng cái = 0.
+  **TÁI DÙNG NGUYÊN `nhomHangTu` (DẠNG 39)** bằng cách "giả trang" input: cắt lấy vế trái, bọc lại thành
+  `"$<vế trái>$ thành nhân tử."` rồi gọi thẳng `nhomHangTu` — không cần viết lại logic nhóm/hiệu-hai-bình-
+  phương, chỉ cần THÊM bước giải từng nhân tử tuyến tính (`giaiBacNhat1Bien` đã có từ DẠNG 43) sau khi có
+  kết quả factoring.
+- Đáp số kho là TẬP HỢP `"{r1;r2;r3}"` — tái dùng NGUYÊN canon `chuanHoaDanhSachNghiem` (DẠNG 43), chỉ cần
+  thêm 1 dòng strip `{}` (an toàn, không ảnh hưởng định dạng cũ của T108030602).
+- 4 rule: R301 (nhầm dấu 1 nghiệm), R302 (quên xét 1 trường hợp, chỉ 2/3 nghiệm), R303/R304 (dự phòng lệch 1
+  + rescue). Test tay 6/6 khớp 100%. Migration `202609131916_mcq_rule_giai_pt_bac_ba_qua_nhom.sql`. Chạy
+  pipeline thật: sinh 6/6, verify 6 OK · 0 FAIL. Đã ghi `dai_cau_form_tn`.
+- **Tổng khối 8: 37 dạng xong (3 bán phần), 216 rule mới (R89-R304, trừ R100-104, R279).** Còn 14 dạng +
+  phần còn lại của 3 dạng bán phần. **XONG TOÀN BỘ nhánh "Tìm x" của mảng phân tích thành nhân tử
+  (T108030601 rỗng, 602, 603).**
+
+## 2026-09-13 (tiếp) — BUG THẬT: `lua_chon[].text` THIẾU "$" — SỬA CODE + BACKFILL 1508 DÒNG, CEO BÁO
+- **CEO báo:** "T108010201011: chuỗi này bị lỗi công thức" — tra thẳng câu này thấy `lua_chon[].text` (vd
+  "12c^5d^2") khớp ĐÚNG với hàm sinh, không có ký tự lạ hay lỗi cú pháp LaTeX rõ ràng → hỏi lại CEO cụ thể
+  sai ở đâu. CEO chỉ ra: "ko có $ thì sao nó hiển thị lên app đúng được" — nghi ngờ ĐÚNG.
+- **Cho Agent đọc code frontend xác nhận: ĐÂY LÀ BUG THẬT, quy mô TOÀN HỆ THỐNG, không riêng 1 câu.**
+  `MathText` (`src/screens/kho/ui.tsx`) chỉ nhận diện `$...$`/`$$...$$` làm vùng KaTeX (có 1 fallback hẹp bắt
+  `\command{...}` trần, nhưng KHÔNG xử lý `^`/`_` trần) — text không có `$` hiện dấu mũ/gạch dưới THÔ ngoài
+  đời thay vì công thức toán đẹp.
+- **Truy gốc trong `scripts/mcq-auto.mjs`:** 2 chỗ ghi `lua_chon` (dòng ~937 nhánh TEXT_DANG, dòng ~1004
+  nhánh SPECIAL_DANG/AST khi rule tự trả `.text`) dùng THẲNG text trần từ hàm dạng (`hienThiDaThuc`,
+  `ghepText`,…) — ngược với `texOf()` (dùng cho giá trị hữu tỉ chuẩn) LUÔN tự bọc `$...$`. Vì `texOf()` chỉ
+  chạy khi KHÔNG có `.text` riêng, mọi dạng TEXT_DANG (và mọi rule SPECIAL_DANG tự trả text) từ TRƯỚC ĐẾN
+  NAY đều dính — không phải bug mới của riêng phiên hôm nay.
+- **Sửa code:** thêm hàm `wrapMath(t)` (bọc `$...$` nếu chưa có, giữ nguyên nếu đã có — idempotent), áp dụng
+  ở cả 2 điểm ghi `lua_chon`. Mọi lần sinh MCQ SAU THỜI ĐIỂM NÀY sẽ tự đúng.
+- **Khảo sát toàn bộ `dai_cau_form_tn` (3790 dòng):** 1508 dòng (32 dạng, khối 6+7+8, nhiều phiên trước —
+  KHÔNG chỉ hôm nay) thiếu `$` HOÀN TOÀN (0 ca lẫn lộn — mỗi dòng hoặc đủ `$` cả 4 lựa chọn, hoặc thiếu cả
+  4), trong đó **27 dòng ĐÃ ĐƯỢC DUYỆT bởi người** (17 ở T108010103, 10 ở T108010201) — người duyệt đã bỏ
+  sót vì có thể xem qua DB/raw text chứ không qua màn hiển thị thật.
+- **CEO chốt: backfill TOÀN BỘ 1508 dòng ngay** (kể cả 27 dòng đã duyệt). Chạy UPDATE trong 1 transaction:
+  bọc `$...$` quanh `text` CHƯA có `$` (giữ nguyên mọi field khác: `dung`, `rule`, `duong_sai`, thứ tự lựa
+  chọn) — verify trước/sau (1508→0 dòng thiếu) + soi tay 2 dòng mẫu (kể cả câu CEO báo + 1 câu đã duyệt)
+  khớp đúng mới COMMIT. **Không đổi NỘI DUNG toán học của bất kỳ đáp án nào, chỉ sửa hiển thị.**
+- **Bài học:** khi thêm 1 nhánh dispatch mới trong `mcq-auto.mjs` (TEXT_DANG hoặc rule tự trả `.text`), PHẢI
+  đối chiếu với `texOf()` xem có thiếu bước tự động nào không — bug này lẽ ra bắt được ngay từ DẠNG ĐẦU TIÊN
+  dùng TEXT_DANG (rất lâu trước phiên này) nếu có bước "mở app xem thử" thay vì chỉ verify qua canon so
+  sánh giá trị (canon không phân biệt được "có `$` hay không" vì nó strip `$` trước khi so).

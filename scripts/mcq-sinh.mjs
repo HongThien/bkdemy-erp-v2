@@ -16,7 +16,8 @@ import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { parseHuuTi, hinhThuc, ratEq } from './lib/huuti.mjs'
-import { chuanHoaFactorText, evalFactorText, chuanHoaTapText, evalTapText, chuanHoaThuTu, evalThuTu, chuanHoaPhanBien, evalPhanBien, chuanHoaDonThucKetQua, evalDonThucKetQua, chuanHoaDaThuc, evalDaThucKetQua, chuanHoaChiaDaThuc, evalChiaDaThucKetQua } from './lib/mini-dang.mjs'
+import { chuanHoaFactorText, evalFactorText, chuanHoaTapText, evalTapText, chuanHoaThuTu, evalThuTu, chuanHoaPhanBien, evalPhanBien, chuanHoaDonThucKetQua, evalDonThucKetQua, chuanHoaDaThuc, evalDaThucKetQua, chuanHoaChiaDaThuc, evalChiaDaThucKetQua, chuanHoaDkChiaHet, evalDkChiaHetKetQua, chuanHoaHoanThienBP, evalHoanThienBPKetQua, chuanHoaTachBinhPhuong, evalTachBinhPhuongKetQua, chuanHoaTongHieuLapPhuong, evalTongHieuLapPhuongKetQua, chuanHoaRutNhanTuChung, evalRutNhanTuChungKetQua, chuanHoaDanhSachNghiem, evalDanhSachNghiemKetQua } from './lib/mini-dang.mjs'
+// (T108010501/T108020101 dùng lại chuanHoaDaThuc/evalDaThucKetQua — đáp số là 1 đa thức, giống T108010202/302/303)
 // (T108010301 dùng lại chuanHoaDonThucKetQua/evalDonThucKetQua — đáp số vẫn là 1 đơn thức)
 // (T108010302 dùng lại chuanHoaDaThuc/evalDaThucKetQua — đáp số là 1 đa thức, giống T108010202)
 
@@ -36,7 +37,7 @@ const POOL3 = ['T106020202', 'T106020203', 'T106020301', 'T106020302', 'T1060203
 // Dạng ĐÁP SỐ LÀ BIỂU THỨC/TẬP HỢP (không phải 1 giá trị hữu tỉ) — parseHuuTi luôn fail, phải so bằng TEXT chuẩn
 // hoá (xem mini-dang.mjs `phanTichNguyenTo`/`nhanBietNguyenToHopSo`). Mỗi dạng 1 cặp {canon, val} riêng vì cú
 // pháp đáp số khác nhau (biểu thức \cdot vs danh sách "; ").
-const TEXT_DANG = new Set(['T106030302', 'T106030301', 'T106040104', 'T106040204', 'T106030101', 'T106040101', 'T106040201', 'T107010103', 'T108010103', 'T108010201', 'T108010202', 'T108010301', 'T108010302', 'T108010303', 'T108010401', 'T108010402', 'T108010403'])
+const TEXT_DANG = new Set(['T106030302', 'T106030301', 'T106040104', 'T106040204', 'T106030101', 'T106040101', 'T106040201', 'T107010103', 'T108010103', 'T108010201', 'T108010202', 'T108010301', 'T108010302', 'T108010303', 'T108010401', 'T108010402', 'T108010403', 'T108010404', 'T108010501', 'T108020101', 'T108020102', 'T108020103', 'T108020104', 'T108020301', 'T108020401', 'T108020501', 'T108020601', 'T108030101', 'T108030102', 'T108030103', 'T108030104', 'T108030105', 'T108030602', 'T108030603'])
 const TEXT_FN = {
   T106030302: { canon: chuanHoaFactorText, val: evalFactorText },
   T106030301: { canon: chuanHoaTapText, val: evalTapText },
@@ -55,6 +56,23 @@ const TEXT_FN = {
   T108010401: { canon: chuanHoaDonThucKetQua, val: evalDonThucKetQua },
   T108010402: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
   T108010403: { canon: chuanHoaChiaDaThuc, val: evalChiaDaThucKetQua },
+  T108010404: { canon: chuanHoaDkChiaHet, val: evalDkChiaHetKetQua },
+  T108010501: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
+  T108020101: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
+  T108020102: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
+  T108020103: { canon: chuanHoaHoanThienBP, val: evalHoanThienBPKetQua },
+  T108020104: { canon: chuanHoaTachBinhPhuong, val: evalTachBinhPhuongKetQua },
+  T108020301: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
+  T108020401: { canon: chuanHoaTachBinhPhuong, val: evalTachBinhPhuongKetQua },
+  T108020501: { canon: chuanHoaTongHieuLapPhuong, val: evalTongHieuLapPhuongKetQua },
+  T108030101: { canon: chuanHoaRutNhanTuChung, val: evalRutNhanTuChungKetQua },
+  T108030102: { canon: chuanHoaRutNhanTuChung, val: evalRutNhanTuChungKetQua },
+  T108030103: { canon: chuanHoaRutNhanTuChung, val: evalRutNhanTuChungKetQua },
+  T108030104: { canon: chuanHoaRutNhanTuChung, val: evalRutNhanTuChungKetQua },
+  T108030105: { canon: chuanHoaRutNhanTuChung, val: evalRutNhanTuChungKetQua },
+  T108030602: { canon: chuanHoaDanhSachNghiem, val: evalDanhSachNghiemKetQua },
+  T108030603: { canon: chuanHoaDanhSachNghiem, val: evalDanhSachNghiemKetQua },
+  T108020601: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
 }
 // T107010103 TRỘN 2 sub-shape: "sắp xếp tăng dần" (đáp số kho là chuỗi "A < B < …", đi TEXT_DANG) và "tìm x,y
 // nguyên" (đáp số kho "x=..; y=..", đi parseHuuTi/SPECIAL_DANG như cũ, ĐÃ có 6 form từ trước) — nhận diện bằng
