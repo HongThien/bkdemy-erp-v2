@@ -5,7 +5,7 @@
 // Mệnh đề `con === null` = chưa có dòng bảng con (ma_dang jsonb rớt sau renumber 12/09) ⇒ tô vàng, bắt chọn dạng trước.
 // Sau mỗi mutation VÁ TẠI CHỖ (CLAUDE.md §2 — không reload list): duyệt mệnh đề ⇒ thay đúng phần tử; duyệt/từ chối câu ⇒ rút thẻ.
 import { useEffect, useRef, useState } from 'react'
-import { nhanhCuaMon, NHANH_LABEL, listHangDuyetDs, duyetMenhDe, duyetCauDs, tuChoiCauHangDuyet,
+import { nhanhCuaMon, NHANH_LABEL, listHangDuyetDs, duyetMenhDe, duyetCauDs, tuChoiCauHangDuyet, laDangCho,
   type CauDungSaiDuyet, type MenhDeHop, type MenhDeCon, type KhoMon, type SuaMenhDe, type SuaCauDuyet } from '../../lib/kho/api'
 import { MathText, inp } from '../kho/ui'
 import { SolutionField } from '../kho/DangHub'
@@ -57,7 +57,7 @@ export default function DuyetDungSaiTab({ mon, khoi, onChanged }: { mon: string;
       const hop = x.menh_de_hop.map((h) => h.thu_tu === md.thu_tu
         ? { ...h, noi_dung: md.noi_dung, dap_an: (md.dung ? 'D' : 'S') as 'D' | 'S', ma_dang: md.dang_chinh, loi_giai: md.loi_giai, con: md }
         : h)
-      return { ...x, menh_de_hop: hop, so_da_duyet: hop.filter((h) => h.con?.da_duyet).length, so_thieu_dang: hop.filter((h) => !h.con).length }
+      return { ...x, menh_de_hop: hop, so_da_duyet: hop.filter((h) => h.con?.da_duyet).length, so_thieu_dang: hop.filter((h) => !h.con || laDangCho(h.con.dang_chinh)).length }
     }))
   }
 
@@ -257,7 +257,8 @@ function MenhDeRow({ r, h, mon, busyAll, onVa }: { r: Row; h: MenhDeHop; mon: st
   const doiLg = lg.trim() !== goc.lg.trim()
   const doiDang = (dang?.ma ?? null) !== goc.dang
   const coSua = doiNd || doiDung || doiLg || doiDang
-  const thieuDang = !dang
+  // Thiếu dạng = chưa có dòng con HOẶC đang ở dạng chờ "Chưa phân dạng" (CEO 13/09) — DB chặn duyệt tới khi chọn dạng thật.
+  const thieuDang = !dang || laDangCho(dang.ma)
   const daDuyet = !!con?.da_duyet && !coSua
 
   async function onDuyet() {

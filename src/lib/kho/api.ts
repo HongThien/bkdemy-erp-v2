@@ -39,7 +39,7 @@ export async function listLopBac(): Promise<LopBac[]> {
 export async function listDaiDang(khoi: string): Promise<DaiDang[]> {
   const { data, error } = await supabase
     .from('dai_ban_do').select('*')
-    .eq('khoi', khoi)
+    .eq('khoi', khoi).not('ma_dang', 'like', '%000000') // ẩn dạng chờ "Chưa phân dạng"
     .order('ma_chu_de').order('ma_chuyen_de').order('ma_dang')
     .limit(LIMIT)
   if (error) throw error
@@ -1243,7 +1243,7 @@ export function khoTbls(mon: KhoMon): { cauTbl: string; banDoTbl: string; lyThuy
 export type ChuDeOption = { ma_chu_de: string; ten_chu_de: string; soDang: number }
 export async function listChuDeOptions(mon: KhoMon, khoi: string): Promise<ChuDeOption[]> {
   const { banDoTbl } = khoTbls(mon)
-  const { data, error } = await supabase.from(banDoTbl).select('ma_chu_de, ten_chu_de').eq('khoi', khoi).limit(LIMIT)
+  const { data, error } = await supabase.from(banDoTbl).select('ma_chu_de, ten_chu_de').eq('khoi', khoi).not('ma_dang', 'like', '%000000').limit(LIMIT)
   if (error) throw error
   const m = new Map<string, ChuDeOption>()
   for (const r of (data ?? []) as any[]) {
@@ -1259,7 +1259,7 @@ export async function listDangByChuDe(mon: KhoMon, khoi: string, maChuDe: string
   const { banDoTbl } = khoTbls(mon)
   const { data, error } = await supabase.from(banDoTbl)
     .select('ma_dang, ten_dang, ma_chuyen_de, ten_chuyen_de, mo_ta_ngan')
-    .eq('khoi', khoi).eq('ma_chu_de', maChuDe).order('ma_dang').limit(LIMIT)
+    .eq('khoi', khoi).eq('ma_chu_de', maChuDe).not('ma_dang', 'like', '%000000').order('ma_dang').limit(LIMIT)
   if (error) throw error
   return (data ?? []).map((r: any) => ({ ma_dang: r.ma_dang, ten_dang: r.ten_dang, ma_chuyen_de: r.ma_chuyen_de, ten_chuyen_de: r.ten_chuyen_de, mo_ta_ngan: r.mo_ta_ngan ?? null }))
 }
@@ -2108,7 +2108,7 @@ export async function countYByDangHinh(): Promise<Record<string, number>> {
 // ── KHTN: bản đồ (clone shape Đại, bảng khtn_*) — 1 cây Chủ-đề→Chuyên-đề→Dạng, KHÔNG nhánh ──
 export async function listKhtnMap(khoi: string): Promise<MapRow[]> {
   const { data, error } = await supabase.from('khtn_ban_do').select('*')
-    .eq('khoi', khoi).order('ma_chu_de').order('ma_chuyen_de').order('ma_dang').limit(LIMIT)
+    .eq('khoi', khoi).not('ma_dang', 'like', '%000000').order('ma_chu_de').order('ma_chuyen_de').order('ma_dang').limit(LIMIT)
   if (error) throw error
   return (data ?? []).map((r: any) => ({
     leafMa: r.ma_dang, khoi: r.khoi, t1Ma: r.ma_chu_de, t1Ten: r.ten_chu_de,
@@ -2173,7 +2173,7 @@ export async function deleteKhtnChuyenDeLyThuyet(ma_chuyen_de: string): Promise<
 // `tai_lieu.mon` của tài liệu Hình giải tích vẫn 'Toán' (RBAC/billing sạch) — phân biệt qua `tai_lieu.nhanh`.
 export async function listHgtMap(khoi: string): Promise<MapRow[]> {
   const { data, error } = await supabase.from('hgt_ban_do').select('*')
-    .eq('khoi', khoi).order('ma_chu_de').order('ma_chuyen_de').order('ma_dang').limit(LIMIT)
+    .eq('khoi', khoi).not('ma_dang', 'like', '%000000').order('ma_chu_de').order('ma_chuyen_de').order('ma_dang').limit(LIMIT)
   if (error) throw error
   return (data ?? []).map((r: any) => ({
     leafMa: r.ma_dang, khoi: r.khoi, t1Ma: r.ma_chu_de, t1Ten: r.ten_chu_de,
@@ -2279,11 +2279,16 @@ export async function duyetFormTnBatch(mon: KhoMon, ids: string[], nguoiDuyet: s
 // đều là function Postgres; ở đây chỉ gọi rpc + render. `cau_moi` = câu sau NGÀY BẬT chưa duyệt — cửa 1 đang chặn khỏi HS.
 // 'dung_sai' (CEO 12/09, mig 202609122218): câu Đúng/Sai là LOẠI RIÊNG — 5 bộ lọc cũ loại nó ra; duyệt theo TỪNG MỆNH ĐỀ
 // (bảng con <mon>_cau_menh_de, mỗi mệnh đề 1 dạng) ở DuyetDungSaiTab, không đi qua thẻ DuyetCauTab.
-export type HangDuyetLoc = 'cau_moi' | 'moi' | 'nghi' | 'khong_kiem' | 'ton_dong' | 'dung_sai'
+// 'chua_dang' (CEO 13/09): câu nhập kho không xác định được dạng nằm ở DẠNG CHỜ (ma_dang kết thúc '000000', mig 202609131706).
+// DB chặn duyệt khi còn dạng chờ (trigger trg_chan_duyet_dang_cho) — người phải chọn dạng thật rồi mới Duyệt.
+export type HangDuyetLoc = 'cau_moi' | 'moi' | 'nghi' | 'khong_kiem' | 'ton_dong' | 'chua_dang' | 'dung_sai'
 export const HANG_DUYET_LABEL: Record<HangDuyetLoc, string> = {
   cau_moi: 'Câu mới chờ duyệt', moi: 'Lời giải mới từ Claude', nghi: 'Máy nghi đáp số', khong_kiem: 'Không kiểm được', ton_dong: 'Tồn đọng (AI cũ)',
-  dung_sai: 'Đúng/Sai',
+  chua_dang: 'Chưa phân dạng', dung_sai: 'Đúng/Sai',
 }
+/** Dạng chờ "Chưa phân dạng" — khớp public._kho_la_dang_cho(). Ẩn khỏi cây bản đồ/picker; câu ở dạng này không duyệt được. */
+export const laDangCho = (ma: string | null | undefined): boolean => !!ma && ma.endsWith('000000')
+// Các hàm đọc bản đồ (listDaiDang/listHgtMap/listKhtnMap/listChuDeOptions/listDangByChuDe) lọc `.not('ma_dang','like','%000000')`.
 export type CauHangDuyet = {
   ma_cau: string; dang_chinh: string; ten_dang: string; ten_chuyen_de: string; khoi: string; loai_cau: string
   noi_dung: string; lua_chon: string[] | null; menh_de: MenhDe[] | null; dap_an: string | null; loi_giai: string | null

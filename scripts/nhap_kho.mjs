@@ -206,9 +206,15 @@ async function cmdInsert(args) {
   await c.connect()
   try {
     await c.query('BEGIN')
-    const { maCauList } = await insertCauBatch({ client: c, subject, cauList })
+    const { maCauList, trung, chua_dang } = await insertCauBatch({ client: c, subject, cauList, choTrung: !!args['cho-trung'] })
     await c.query('COMMIT')
-    process.stdout.write(JSON.stringify({ ok: true, ma_cau_list: maCauList, inserted: maCauList.length }, null, 2) + '\n')
+    // ma_cau_list: vị trí trùng = ma_cau CŨ (không insert) — log `done` vẫn liệt kê để truy được câu nào đã có sẵn.
+    const trungIdx = new Set(trung.map(t => t.idx))
+    process.stdout.write(JSON.stringify({
+      ok: true, ma_cau_list: maCauList,
+      inserted: maCauList.filter((_, i) => !trungIdx.has(i)).length,
+      trung, chua_dang,
+    }, null, 2) + '\n')
   } catch (e) {
     await c.query('ROLLBACK').catch(() => {})
     process.stdout.write(JSON.stringify({ ok: false, error: e.message, inserted: 0, ma_cau_list: [] }, null, 2) + '\n')

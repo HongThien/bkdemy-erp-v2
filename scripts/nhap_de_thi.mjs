@@ -243,10 +243,14 @@ async function cmdInsert(args) {
       groups.get(mc).push({ itemIdx: i, cau: items[i].cau })
     }
     const maCauByItemIdx = new Array(items.length)
+    const trungAll = [], chuaDangAll = []
     for (const [monCon, entries] of groups) {
       const cauList = entries.map(e => e.cau)
-      const { maCauList } = await insertCauBatch({ client: c, subject: monCon, cauList })
+      // Câu trùng kho ⇒ maCauList[j] = ma_cau CŨ ⇒ đề vẫn nối được câu đã có (không nhân bản).
+      const { maCauList, trung, chua_dang } = await insertCauBatch({ client: c, subject: monCon, cauList })
       entries.forEach((e, j) => { maCauByItemIdx[e.itemIdx] = maCauList[j] })
+      trung.forEach(t => trungAll.push({ item_idx: entries[t.idx].itemIdx, mon_con: monCon, ma_cau_cu: t.ma_cau_cu }))
+      chua_dang.forEach(i => chuaDangAll.push(entries[i].itemIdx))
     }
 
     // (3) INSERT toan_de_thi_cau
@@ -268,6 +272,7 @@ async function cmdInsert(args) {
     process.stdout.write(JSON.stringify({
       ok: true, de_id: deId, so_cau: items.length,
       ma_cau_list: maCauByItemIdx,
+      trung: trungAll, chua_dang: chuaDangAll,
     }, null, 2) + '\n')
   } catch (e) {
     await c.query('ROLLBACK').catch(() => {})
