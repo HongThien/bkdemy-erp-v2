@@ -16,7 +16,9 @@ import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { parseHuuTi, hinhThuc, ratEq } from './lib/huuti.mjs'
-import { chuanHoaFactorText, evalFactorText, chuanHoaTapText, evalTapText, chuanHoaThuTu, evalThuTu } from './lib/mini-dang.mjs'
+import { chuanHoaFactorText, evalFactorText, chuanHoaTapText, evalTapText, chuanHoaThuTu, evalThuTu, chuanHoaPhanBien, evalPhanBien, chuanHoaDonThucKetQua, evalDonThucKetQua, chuanHoaDaThuc, evalDaThucKetQua, chuanHoaChiaDaThuc, evalChiaDaThucKetQua } from './lib/mini-dang.mjs'
+// (T108010301 dùng lại chuanHoaDonThucKetQua/evalDonThucKetQua — đáp số vẫn là 1 đơn thức)
+// (T108010302 dùng lại chuanHoaDaThuc/evalDaThucKetQua — đáp số là 1 đa thức, giống T108010202)
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const envf = (f) => Object.fromEntries(readFileSync(f, 'utf8').split('\n').map((l) => l.match(/^\s*([A-Z_]+)\s*=\s*(.+?)\s*$/)).filter(Boolean).map((m) => [m[1], m[2].replace(/^["']|["']$/g, '')]))
@@ -34,7 +36,7 @@ const POOL3 = ['T106020202', 'T106020203', 'T106020301', 'T106020302', 'T1060203
 // Dạng ĐÁP SỐ LÀ BIỂU THỨC/TẬP HỢP (không phải 1 giá trị hữu tỉ) — parseHuuTi luôn fail, phải so bằng TEXT chuẩn
 // hoá (xem mini-dang.mjs `phanTichNguyenTo`/`nhanBietNguyenToHopSo`). Mỗi dạng 1 cặp {canon, val} riêng vì cú
 // pháp đáp số khác nhau (biểu thức \cdot vs danh sách "; ").
-const TEXT_DANG = new Set(['T106030302', 'T106030301', 'T106040104', 'T106040204', 'T106030101', 'T106040101', 'T106040201', 'T107010103'])
+const TEXT_DANG = new Set(['T106030302', 'T106030301', 'T106040104', 'T106040204', 'T106030101', 'T106040101', 'T106040201', 'T107010103', 'T108010103', 'T108010201', 'T108010202', 'T108010301', 'T108010302', 'T108010303', 'T108010401', 'T108010402', 'T108010403'])
 const TEXT_FN = {
   T106030302: { canon: chuanHoaFactorText, val: evalFactorText },
   T106030301: { canon: chuanHoaTapText, val: evalTapText },
@@ -44,12 +46,24 @@ const TEXT_FN = {
   T106040101: { canon: chuanHoaTapText, val: evalTapText },
   T106040201: { canon: chuanHoaTapText, val: evalTapText },
   T107010103: { canon: chuanHoaThuTu, val: evalThuTu },
+  T108010103: { canon: chuanHoaPhanBien, val: evalPhanBien },
+  T108010201: { canon: chuanHoaDonThucKetQua, val: evalDonThucKetQua },
+  T108010202: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
+  T108010301: { canon: chuanHoaDonThucKetQua, val: evalDonThucKetQua },
+  T108010302: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
+  T108010303: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
+  T108010401: { canon: chuanHoaDonThucKetQua, val: evalDonThucKetQua },
+  T108010402: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
+  T108010403: { canon: chuanHoaChiaDaThuc, val: evalChiaDaThucKetQua },
 }
 // T107010103 TRỘN 2 sub-shape: "sắp xếp tăng dần" (đáp số kho là chuỗi "A < B < …", đi TEXT_DANG) và "tìm x,y
 // nguyên" (đáp số kho "x=..; y=..", đi parseHuuTi/SPECIAL_DANG như cũ, ĐÃ có 6 form từ trước) — nhận diện bằng
-// việc đáp số kho có ký tự "<" hay không, KHÔNG dùng blanket TEXT_DANG.has() cho riêng dạng này.
+// việc đáp số kho có ký tự "<" hay không. T108010103 (khối 8) TRỘN "hệ số" (đáp số số/phân số) và "phần biến"
+// (đáp số có chữ cái, vd "x^3y^2z^6") — nhận diện bằng đáp số kho CÓ CHỨA chữ cái hay không. KHÔNG dùng blanket
+// TEXT_DANG.has() cho các dạng này.
 function laHinhThucText(dang, dapAn) {
   if (dang === 'T107010103') return /</.test(String(dapAn ?? ''))
+  if (dang === 'T108010103') return /[a-zA-Z]/.test(String(dapAn ?? ''))
   return TEXT_DANG.has(dang)
 }
 const TBL = 'dai_cau_form_tn'

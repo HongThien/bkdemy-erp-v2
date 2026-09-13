@@ -11186,3 +11186,252 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
   context không đụng độ (chung bảng `dai_mcq_rule`, `select max(ma)` trước khi đặt rule mới, không sửa
   `mcq-auto.mjs`/`mcq-sinh.mjs` nếu không bắt buộc).
   Thêm 2 dòng tham chiếu vào `CLAUDE.md` §7.
+
+## 2026-09-12 (tiếp) — Khởi động khối 8: 4 dạng "Đơn thức cơ bản" (T108010101-104), R89-R120
+- Khảo sát toàn khối 8: 49 dạng có câu tự luận, 1.999 câu — đại số đa thức/phân thức, khác hẳn số học khối 6-7
+  mà engine hiện có (`mcq-auto.mjs` AST Rat/BigInt) được xây cho. Chọn 4 dạng ĐẦU (nhóm "Đơn thức cơ bản")
+  làm trước vì đáp số vẫn là 1 GIÁ TRỊ/TEXT đơn giản (số lượng/bậc/hệ số/phần biến) — KHÔNG cần dựng engine đa
+  thức tổng quát (cộng trừ nhân chia đa thức, hằng đẳng thức, phân tích nhân tử — phần lớn khối 8 — vẫn phải
+  đợi thiết kế engine riêng, để sau).
+- **Viết parser đơn thức chung `parseDonThucCore`** (DẠNG 11, mini-dang.mjs) — nhận diện 1 chuỗi có phải ĐÚNG
+  1 đơn thức hay không (gặp `+`/`-` giữa chừng ngoài ngoặc/phân số ⇒ không phải, trả `null`), hỗ trợ: số
+  nguyên/thập phân/phân số (`\dfrac{}{}` VÀ `a/b` thường VÀ `\dfrac{đơn thức}{số}`), biến có số mũ, ngoặc
+  luỹ thừa `(...)^n` (đệ quy), căn bậc hai làm hệ số vô tỉ (`7\sqrt{5}b^3` — đánh dấu `hasIrrational`, vẫn hợp
+  lệ là đơn thức nhưng các hàm cần GIÁ TRỊ CHÍNH XÁC phải tự chặn bằng guard riêng). Dùng chung cho cả 4 dạng.
+- **T108010102 "Tìm bậc"** — TRỘN 2 sub-shape phát hiện khi chạy thật: "bậc đơn thức A(x)=..." (R89-91) và
+  "Bậc của đa thức $...$" (đa thức nhiều hạng tử, MỘT SỐ CÂU có hạng tử TRIỆT TIÊU cần gộp trước khi lấy bậc
+  lớn nhất — thêm R105-108). 47/54 (87%).
+- **T108010103 "Tìm hệ số"** — hoá ra TRỘN 3 sub-shape (không phải 1): "hệ số đơn thức" (R92-94,102,116) +
+  "phần biến của đơn thức" (3 cách viết câu khác nhau: "Phần biến...", "Tìm phần biến...", "Xác định phần
+  biến..." — gộp regex; R109-111,118, đáp số TEXT nên đi TEXT_DANG, dùng lại pattern "textFn null thì rơi
+  xuống SPECIAL_DANG" đã có) + "hệ số cao nhất của đa thức" (đa thức CHƯA khai triển dạng hệ_số·(nhị thức)+...,
+  cần phân phối trước — viết `khaiTrienHangTu`/`khaiTrienDaThuc` tái dùng cho cả bậc đa thức; R112-115,119).
+  53/66 (80%).
+- **T108010101 "Nhận biết đơn thức"** — cũng TRỘN 2 sub-shape: "đếm đơn thức" (R95-97,103,120) và "đếm đa
+  thức" (R95-97,103 dùng lại với nghĩa khác + kiểm bằng `khaiTrienDaThuc` ≥2 hạng tử). Vá thêm parser: hệ số
+  vô tỉ (`7√5b³`), phân số tử-là-đơn-thức (`\dfrac{-6x^4y^2}{11}`), phân số viết `/` thường (`-1/3`) — 3 lỗ
+  hổng lộ ra khi chạy thật, ban đầu 24 câu "máy≠kho" chỉ còn 0. 2/50 câu cần nhân 2-3 nhân tử ngoặc liên tiếp
+  (vd `(x-y)(x+y)`, `k(k+2)(k-1)`) — NGOÀI phạm vi `khaiTrienHangTu` hiện tại (chỉ phân phối 1 tầng ngoặc),
+  chấp nhận bỏ. 48/50 (96%).
+- **T108010104 "Đơn thức đồng dạng"** — TRỘN 2 sub-shape: "đếm đồng dạng với 1 đơn thức cho trước" (R98-100,104,
+  làm được) và "chỉ ra CÁC NHÓM đồng dạng trong 1 danh sách" (10 câu, đáp số là ĐOẠN VĂN mô tả nhiều nhóm —
+  **KHÔNG làm**, bản chất là bài toán PHÂN HOẠCH/gom nhóm, không quy về "4 đáp án ngắn" tự nhiên được, giống
+  tinh thần ca "so sánh A/B chỉ ≤3 kết luận" đã gặp — để đó, không cố ép). Vá thêm: số thập phân "0.5" làm hệ
+  số (thiếu hỗ trợ decimal, gây 1 câu máy≠kho — đã thêm regex decimal, PHẢI kiểm TRƯỚC dấu "." nhân ngầm kẻo
+  "0.5" bị đọc thành "0 nhân 5"). 22/22 câu vào được pool (100%).
+- **Lỗi thiết kế bắt được lúc verify:** R120 (T108010101) đánh nhầm `du_phong=true` trong lúc R103 (cùng dạng)
+  ĐÃ là `du_phong=true` — 2 rule dự phòng cùng dạng khi cùng được chọn cho 1 câu gây FAIL "quá 1 rule dự
+  phòng" (17/50 câu). Sửa lại `du_phong=false` cho R120 (là cơ chế rõ ràng, không phải "cứu vãn"), migration
+  riêng đè lên upsert, không sửa migration cũ đã áp.
+- **Tổng khối 8 hôm nay: 145 form/210 câu khả dụng qua 4 dạng, 32 rule mới (R89-R120).**
+- Hồi quy 13 file diag liên quan sau mọi thay đổi engine dùng chung — tất cả pass.
+- **Còn lại khối 8:** 45 dạng khác (~1.789 câu) — phần lớn cần đại số đa thức thật (cộng trừ/nhân chia đa
+  thức, hằng đẳng thức, phân tích nhân tử, GTLN-GTNN) — CHƯA khảo sát chi tiết, nhiều khả năng cần kiến trúc
+  engine mới (biểu diễn đa thức tổng quát, không chỉ đơn thức đơn lẻ như `parseDonThucCore`).
+
+## 2026-09-12 (tiếp) — T108010201 "Cộng trừ đơn thức đồng dạng" (khối 8), R121-R125
+
+- 34 câu, 3 sub-shape: "Tính tổng của hai đơn thức" / "Tính hiệu của hai đơn thức" / "Thu gọn đa thức"
+  (2-3 hạng tử cùng phần biến). Đáp số là 1 ĐƠN THỨC (TEXT_DANG, canon = re-parse qua `parseDonThucCore`
+  rồi format lại bằng `hienThiDonThuc` — `chuanHoaDonThucKetQua`). Không cần dispatch trộn sub-shape kiểu
+  T108010103 vì cả 3 sub-shape ra cùng 1 loại đáp số (đơn thức), không mơ hồ.
+- R121 (cộng luôn số mũ biến — sai khái niệm), R122 (đảo ngược tổng/hiệu, chỉ áp dụng đúng 2 hạng tử),
+  R123 (bỏ dấu âm kết quả, chỉ áp dụng khi đáp số ÂM), R124 (dự phòng, lệch 1 đơn vị).
+- **Bug 1 (máy≠kho):** `hienThiDonThuc(coef=0, vars)` in ra `"0c^5d^2"` thay vì `"0"` khi tổng/hiệu ra
+  đúng 0 (kho luôn ghi bare "0"). Sửa: thêm `if (coef.p===0n) return '0'` làm dòng đầu tiên của hàm.
+- **Bug 2 (coverage sập xuống "chỉ tìm được 2" cho TOÀN BỘ 17/34 câu còn lại, ngay sau khi sửa bug 1):**
+  soi từng câu cụ thể (`_kq_ct.json` in kèm rule+giá-trị mỗi câu bị bỏ) lộ 2 nguyên nhân riêng:
+  (a) câu "Thu gọn đa thức" có 3 hạng tử → R122 tự loại (guard `terms.length!==2`) → mất 1 ứng viên;
+  (b) câu có đáp số DƯƠNG → R123 tự loại (guard `dungCoef.p>=0n`) → mất ứng viên còn lại. Hai guard này
+  RIÊNG LẺ đều đúng-theo-thiết-kế, nhưng CỘNG LẠI khiến nhóm "3 hạng tử + đáp số dương" (phổ biến ở
+  "Thu gọn đa thức") chỉ còn R121+R124 = 2, không đủ 3. Ngoài ra 1 ca trùng giá trị ngẫu nhiên: khi
+  dungCoef=0, R121 (giữ nguyên coef, đổi vars) cũng ra "0" — TRÙNG với đáp án đúng, bị loại vì trùng
+  chứ không phải vì lỗi logic.
+- **Fix:** thêm rule R125 "chỉ lấy hạng tử đầu tiên, quên cộng/trừ các hạng tử còn lại" — cơ chế THẬT
+  (không phải dự phòng), áp dụng được mọi số hạng ≥2 và không phụ thuộc dấu đáp số, nên lấp đúng khoảng
+  trống mà R122/R123 để lại ở nhóm (3 hạng tử, đáp số dương). Sau khi thêm: 34/34 câu sinh được, verify
+  0 FAIL, đã ghi `dai_cau_form_tn`.
+- **Bài học lặp lại (đã thấy ở R95≈R103 khối 8 trước đó):** 2 guard "riêng lẻ hợp lý" có thể cộng dồn
+  thành lỗ hổng coverage cho 1 NHÓM CÂU CỤ THỂ (không phải rải rác ngẫu nhiên) — luôn in kèm rule+giá-trị
+  của các ứng viên ĐÃ tìm được khi debug "chỉ tìm được N<3", đừng đoán nguyên nhân, đọc thẳng ra.
+
+## 2026-09-12 (tiếp) — T108010202 "Cộng trừ đa thức nhiều biến" (khối 8), R126-R129 — kiến trúc engine MỚI
+
+- 51 câu. Khác hẳn DẠNG 11/12 (T108010201 và trước): đáp số là 1 ĐA THỨC NHIỀU HẠNG TỬ (không phải 1 đơn
+  thức), đề định nghĩa 2-3 đa thức có tên ($A(x)=...$, $B=...$...), phép tính yêu cầu (`A+B`, `A-B`,
+  `A-B+C`, `C-A-B`...) đôi khi nằm NGOÀI mọi `$...$` (viết trần "A + B - C" giữa văn bản). Định nghĩa đa
+  thức có thể cần PHÂN PHỐI (vd `A = xy(x^2+y)-y(x^2+1)+5`) — tái dùng `khaiTrienDaThuc`/`khaiTrienHangTu`
+  đã viết cho T108010103 (hệ số cao nhất), không viết lại.
+- **Kiến trúc mới (DẠNG 13, mini-dang.mjs):**
+  - `parseNamedPolysVaPhepTinh(noiDung)`: quét mọi `$...$`, đoạn nào khớp `TÊN (= biểu thức)` thì là định
+    nghĩa; đoạn còn lại (hoặc văn bản NGOÀI `$...$` nếu không đoạn nào khớp) đem tìm cụm phép tính
+    `TÊN(±TÊN)+` bằng `parseOpFromText`/`timPhepTinhTrongVanBanTran`.
+  - **Bẫy đã tránh:** lúc đầu tìm phép tính trần ngoài `$...$` bằng cách `replace(/\s+/g,'')` CẢ ĐOẠN VĂN
+    rồi test cả cụm — sai vì chữ Việt xung quanh ("Cho ba đa thức sau: ... và ...") dính liền vào chuỗi,
+    lệch offset ngay từ đầu. Sửa: dùng `\b` tìm ĐÚNG cụm liên tục `TÊN(\s*[+-]\s*TÊN)+` trong nguyên văn
+    (không strip khoảng trắng của cả đoạn), rồi mới rút gọn RIÊNG cụm đó.
+  - `khaiTrienDaThuc` từng đa thức → cộng/trừ theo đúng dấu trong phép tính → `hienThiDaThuc` format theo
+    thứ tự CỐ ĐỊNH (bậc giảm dần, đồng bậc thì theo khoá phần biến) — **không cần khớp thứ tự kho ghi**
+    (kho tự mâu thuẫn thứ tự giữa các bước lời giải và đáp số cuối, vd T108010202012 đổi chỗ 2 hạng tử
+    giữa bước áp chót và dòng cuối — canon tự re-parse CẢ 2 phía về cùng 1 thứ tự nên vô hại).
+- **4 rule:** R126 (quên đổi dấu khi phá ngoặc trừ — chỉ đổi dấu hạng tử ĐẦU của đa thức bị trừ, các hạng
+  tử sau giữ nguyên — lỗi bỏ ngoặc kinh điển), R127 (đảo ngược toàn bộ phép tính = phủ định cả kết quả,
+  luôn tính được bằng 1 phép nhân -1, không cần tính lại), R128 (chỉ lấy đa thức ĐẦU TIÊN đã rút gọn, quên
+  cộng/trừ phần còn lại), R129 (dự phòng, lệch 1 đơn vị ở hệ số hạng tử bậc cao nhất).
+- **Chạy pipeline lần đầu ĐÃ ĐẠT 51/51, 0 bỏ, 0 FAIL ngay** — không cần vòng rescue-rule nào (khác hẳn 4
+  dạng trước đều cần 1-2 vòng sửa). Lý do: test bằng 7 mẫu thật (đủ 6/7 sub-shape câu chữ) qua diag script
+  TRƯỚC khi chạy pool thật, bắt được bug offset ở trên ngay tại bước test — không phải chờ pipeline lộ ra.
+- **Tổng khối 8 đến nay: 6 dạng xong, 41 rule mới (R89-R129), engine đa thức tổng quát (đa biến, phân phối,
+  cộng/trừ nhiều đa thức có tên) đã có — nền cho các dạng còn lại (nhân đa thức, hằng đẳng thức, phân tích
+  nhân tử đều cần tái dùng `khaiTrienDaThuc`/`hienThiDaThuc`/`sapXepChuanDaThuc`).
+
+## 2026-09-12 (tiếp) — ⚠️ SỰ CỐ: luồng "trắc nghiệm 1 phần" (worktree mcq-tung-phan) đè mất R100-R104
+
+- Phát hiện qua memory tự động (mục mới "Worktree trắc nghiệm từng phần... rule R100–R104, max(ma) so
+  chuỗi") lúc quay lại làm việc — kiểm DB thấy `dai_mcq_rule.R100..R104` HIỆN mang nội dung "phần trăm"
+  (`ap_dung`={T107010205,T106020304}, thuộc dạng của luồng "1 phần"), trong khi CODE của luồng này
+  (`mini-dang.mjs`) vẫn gọi `'R100'..'R104'` cho 4 dạng khối 8 (T108010101-104) đã sinh & ghi form TỪ
+  SÁNG (migration `202609121415_mcq_rule_don_thuc_khoi8.sql`, áp lúc 07:16).
+- **Truy nguồn:** migration của luồng này VẪN insert đúng nội dung gốc lúc 07:16 (đọc lại file `.sql` thấy
+  đúng). Nhưng KHÔNG có migration file nào (của bất kỳ bên nào) trong sổ `_migrations` insert nội dung
+  "phần trăm" cho R100-104 — tức luồng kia đã **ghi thẳng vào DB, không qua `npm run migrate`**, nên
+  không để lại dấu vết migration để đối chiếu. Rất có thể do so `max(ma)` bằng **CHUỖI** (`'R100' < 'R99'`
+  theo ký tự) nên tưởng R100 còn trống dù luồng này đã dùng từ trước 1 giờ trước đó.
+- **Thiệt hại:** catalog 5 dòng R100-104 sai với 99 câu đã sinh (`dai_cau_form_tn`, dạng T108010101-104,
+  `da_duyet=false`) đang trỏ `rule='R100'..'R104'` → tra `ten`/`mo_ta` catalog ra nội dung "phần trăm" SAI
+  HOÀN TOÀN so với dạng thật. **May mắn:** `duong_sai` (text hiển thị lý do sai cho học sinh) được lưu
+  TRỰC TIẾP trong `lua_chon` lúc sinh (không join lại catalog), nên phần học sinh nhìn thấy KHÔNG sai —
+  chỉ sai nếu có báo cáo/audit sau này JOIN theo mã rule.
+- **Fix (KHÔNG đụng 5 dòng R100-104 hiện có — đã là sự thật sống của luồng kia, sửa lại sẽ đè ngược):**
+  1. Đổi mã trong code (`mini-dang.mjs`, `mcq-auto.mjs`): R100→R130, R101→R131, R102→R132, R103→R133 (2 chỗ
+     dùng, cả 2 sub-shape của `demDonThucTrongDanhSach`), R104→R134.
+  2. Migration MỚI `202609121531_mcq_rule_renumber_r100_104_collision.sql` — insert R130-134 với ĐÚNG nội
+     dung gốc (không xoá/sửa R100-104 cũ).
+  3. Script data-fix RIÊNG (không phải migration — sửa DỮ LIỆU, không phải DDL/catalog) vá 99/170 dòng
+     `dai_cau_form_tn` của 4 dạng, đổi `lua_chon[].rule` từ mã cũ sang mã mới. Verify lại: 510 lượt tham
+     chiếu rule của 4 dạng này, 0 mã không tồn tại trong catalog.
+- **Bài học (đã ghi vào `spec-mcq-quy-trinh-sinh.md` §0):** (1) `max(ma)` PHẢI ép kiểu số, không so chuỗi
+  — `'R100' < 'R99'` là bẫy kinh điển khi số có độ dài chữ số khác nhau. (2) MỌI insert/update vào bảng
+  rule DÙNG CHUNG phải qua migration có sổ — ghi thẳng tay thì bên kia không cách nào phát hiện đụng độ
+  cho tới khi tự soi DB. (3) Đây là ĐÚNG kịch bản đã lường trước ở `spec-mcq-quy-trinh-sinh.md` §0 lúc viết
+  spec — lường trước không tự động ngăn được sự cố, vẫn cần kỷ luật thật ở cả 2 bên.
+
+## 2026-09-12 (tiếp) — T108010301 "Nhân đơn thức với đơn thức" (khối 8), R135-R138
+
+- 54 câu, 2-3 nhân tử mỗi câu, nối bằng `\cdot` hoặc dấu "." nhân ngầm hoặc `\left(...\right)`. Đáp số vẫn
+  là 1 ĐƠN THỨC — tái dùng nguyên `chuanHoaDonThucKetQua`/`hienThiDonThuc` của DẠNG 11, chỉ cần bộ tách
+  nhân tử mới (`chuanBiBieuThucNhan` bỏ `\left`/`\right`/`\cdot`, đổi "." nhân ngầm → khoảng trắng bằng
+  lookaround `(?<!\d)\.(?!\d)` để KHÔNG đụng số thập phân; `tachNhanTu` tách theo cụm ngoặc hoặc cụm ký tự
+  trần liền nhau) — cần tách RIÊNG từng nhân tử (không gộp 1 lần bằng `parseDonThucCore` cho cả chuỗi) vì
+  rule "nhân số mũ thay vì cộng" (R135) phải biết CHÍNH XÁC biến nào xuất hiện ở mấy nhân tử.
+- **Bug bắt được TRƯỚC khi chạy pool thật (qua test mẫu thủ công):** `parseDonThucCore` không hiểu HỖN SỐ
+  kiểu `1\dfrac{1}{2}` (viết liền, không dấu gì ở giữa) — hiểu nhầm thành PHÉP NHÂN `1 × 1/2 = 1/2` thay vì
+  phải CỘNG `1 + 1/2 = 3/2`. Câu mẫu thật `T108010301039` dùng đúng cú pháp này
+  (`-1\dfrac{1}{2}m^2`). Sửa: thêm nhánh `^(\d+)\\dfrac\{(\d+)\}\{(\d+)\}` (số nguyên NGAY TRƯỚC `\dfrac`,
+  không cách) → tính `nguyên×mẫu+tử` trên MẪU, kiểm TRƯỚC nhánh `\dfrac` thuần số hiện có. Bug này ảnh
+  hưởng MỌI dạng dùng `parseDonThucCore` từ trước tới giờ (không riêng dạng này) — may mắn chưa dạng nào
+  khác gặp hỗn số trong dữ liệu thật nên chưa lộ.
+- **4 rule:** R135 (nhân số mũ thay vì cộng — chỉ tính cho biến xuất hiện ≥2 nhân tử, biến chỉ ở 1 nhân tử
+  giữ nguyên số mũ), R136 (cộng hệ số thay vì nhân), R137 (chỉ lấy nhân tử đầu, quên nhân tử còn lại),
+  R138 (dự phòng, lệch 1 đơn vị ở hệ số).
+- **Chạy pipeline lần đầu ĐÃ ĐẠT 54/54, 0 bỏ, 0 FAIL ngay** — tương tự T108010202, nhờ test bằng mẫu thật
+  (bắt bug hỗn số) TRƯỚC khi chạy pool. Đã ghi `dai_cau_form_tn`.
+
+## 2026-09-12 (tiếp) — T108010302 "Nhân đơn thức với đa thức" (khối 8), R139-R142
+
+- 50 câu, "Tính $2x^2y.(4x^2+6xy)$" / bare "$(-5x)(3x^3+7x^2-x)$" — 1 đơn thức phân phối vào đa thức trong
+  ngoặc. Đáp số là 1 ĐA THỨC — tái dùng `hienThiDaThuc`/`sapXepChuanDaThuc`/`chuanHoaDaThuc` của DẠNG 13,
+  nhưng viết `nhanDonDaThuc` RIÊNG (không gọi thẳng `khaiTrienDaThuc`) vì rule cần biết TÁCH RIÊNG prefix
+  (đơn thức) và từng hạng tử trong ngoặc để mô phỏng "quên phân phối hết"/"quên đổi dấu".
+- **4 rule:** R139 (chỉ nhân hạng tử đầu trong ngoặc, quên phân phối hết — lỗi phân phối kinh điển), R140
+  (đơn thức âm — chỉ hạng tử đầu nhân đúng dấu, các hạng tử sau coi như đơn thức luôn dương; guard: chỉ áp
+  dụng khi hệ số đơn thức âm VÀ ≥2 hạng tử trong ngoặc), R141 (nhân số mũ biến CHUNG giữa đơn thức và hạng
+  tử trong ngoặc thay vì cộng — biến chỉ có ở 1 bên thì giữ nguyên, không đổi), R142 (dự phòng, lệch 1 đơn
+  vị ở hệ số hạng tử bậc cao nhất theo thứ tự sắp xếp chuẩn).
+- Chạy pipeline: 49/50, 1 câu (`T108010302018`, `xy^3.(4x^2-y^2)` = `4x^3y^3-xy^5`) chỉ còn 2 distractor vì
+  R142 TRÙNG NGẪU NHIÊN với R139 — hạng tử "bậc cao nhất" theo sắp xếp chuẩn (`-xy^5`, thua `4x^3y^3` ở
+  bậc bằng nhau nhưng thắng thứ tự alphabet phần biến) có hệ số đúng bằng -1, +1 vào thành 0 → hạng tử biến
+  mất, kết quả trùng hệt R139 ("chỉ lấy hạng tử đầu"). Chấp nhận residual 1/50 (2%) — cùng loại "trùng công
+  thức ngẫu nhiên hiếm gặp" đã chấp nhận ở các dạng trước (vd T108010101/104), không đáng thêm rule thứ 5
+  chỉ để vá 1 câu.
+
+## 2026-09-12 (tiếp) — T108010303 "Nhân đa thức với đa thức" (khối 8), R143-R146
+
+- 43 câu, "Tính $(x^2+2y)(xy-y^2)$" (2 nhân tử) và 1 câu 3 nhân tử `$(2x-1)(3x+2)(3-x)$`. Khác DẠNG 15 ở
+  chỗ MỌI nhân tử đều là đa thức (≥2 hạng tử), không có nhân tử nào là đơn thức trần. Viết `nhanDaThuc` +
+  `parseFactorAsPoly`/`nhanCacDaThuc` (tích Cartesian tất cả tổ hợp hạng tử giữa các nhân tử, gộp đồng dạng
+  cuối cùng) — tái dùng `hienThiDaThuc`/`chuanHoaDaThuc` của DẠNG 13.
+- **4 rule:** R143 (chỉ nhân hạng tử đầu của các đa thức SAU đa thức thứ nhất — lỗi phân phối không hết,
+  kiểu FOIL thiếu), R144 (quên đổi dấu — coi mọi hạng tử của các đa thức sau đều dương), R145 (nhân số mũ
+  biến CHUNG giữa các hạng tử được nhân trong 1 tổ hợp, thay vì cộng — cài đặt qua `varLists` theo dõi TỪNG
+  số mũ góp vào 1 tổ hợp trước khi gộp, vì 1 biến có thể xuất hiện ở ≥2 trong số 2-3 nhân tử), R146 (dự
+  phòng, lệch 1 đơn vị hệ số bậc cao nhất).
+- **1/43 câu bị "máy≠kho" — soi tay xác nhận đây là LỖI DỮ LIỆU KHO, không phải bug máy:** `T108010303026`,
+  $(3x^2+x-1)(x^2+2x+1)$, kho ghi đáp số có hạng `+x` nhưng tính tay ra `-x` (hệ số x: cộng `x·1` và
+  `(-1)·2x` = `x - 2x = -x`, không phải `+x`). Máy tính ĐÚNG, kho SAI. Theo §1.5 "thà bỏ trống còn hơn
+  đánh sai" — KHÔNG tự sửa `dap_an` gốc (không thuộc phạm vi sinh form MCQ), chỉ loại câu này khỏi lô
+  (đúng hành vi an toàn của pipeline). Cần báo riêng để sửa qua luồng duyệt kho (`spec-kho-chuan.md`).
+- 42/43 (98%) đã ghi `dai_cau_form_tn`, 0 FAIL.
+
+## 2026-09-12 (tiếp) — T108010401 "Chia đơn thức cho đơn thức" (khối 8), R147-R150
+
+- 49 câu, "Tính $12x^2yz^2 : 4xyz$" / bare "$(24x^7y^5) : (-6x^3y^2)$" — dùng dấu ":" (không phải "/" hay
+  `\dfrac`). Viết `chiaDonThuc` + `tachChiaDonThuc` (tách "TỬ : MẪU" tại dấu ":" ở bậc ngoài cùng, ngoài mọi
+  ngoặc — giống cơ chế `chiaHangTu` nhưng tách theo ":" thay vì +/-). Chia hệ số, TRỪ số mũ từng biến; guard
+  số mũ âm (biến chỉ có ở mẫu, hoặc mẫu có số mũ lớn hơn tử) → trả `null` (ngoài phạm vi đơn thức thuần,
+  chưa gặp trong 49 câu thật). Đáp số vẫn 1 ĐƠN THỨC — tái dùng nguyên `hienThiDonThuc`/`chuanHoaDonThucKetQua`.
+- **4 rule:** R147 (cộng số mũ thay vì trừ — nhầm phép chia thành phép nhân, chỉ áp dụng cho biến chung giữa
+  tử và mẫu), R148 (quên đổi dấu hệ số khi mẫu âm, coi mẫu luôn dương), R149 (quên chia hệ số, chỉ trừ số
+  mũ, giữ nguyên hệ số của tử), R150 (dự phòng, lệch 1 đơn vị hệ số).
+- Chạy pipeline: 49/49, 0 bỏ, 0 FAIL ngay lần đầu.
+
+## 2026-09-12 (tiếp) — T108010402 "Chia đa thức cho đơn thức" (khối 8), R151-R154
+
+- 33 câu, "Tính: $(10x^5y^3-15x^3y^2+5x^4y^4):x^3y$" — từng hạng tử của đa thức tử chia RIÊNG cho đơn thức
+  mẫu. Viết `chiaDaChoDon` + `boNgoacNgoai` (bỏ 1 lớp ngoặc bọc NGOÀI CÙNG cả biểu thức trước khi `chiaHangTu`
+  — cần thiết vì tử luôn viết trong ngoặc "(...)" và `chiaHangTu` không tự bỏ ngoặc bọc ngoài, nếu để nguyên
+  sẽ đọc nhầm cả cụm là 1 "hạng tử" duy nhất). Đáp số vẫn là 1 ĐA THỨC — tái dùng `hienThiDaThuc`/`chuanHoaDaThuc`.
+- **4 rule:** R151 (chỉ chia hạng tử đầu, các hạng tử sau giữ nguyên — quên chia hết đa thức), R152 (cộng
+  số mũ thay vì trừ, áp dụng từng hạng tử có biến chung với mẫu), R153 (quên chia hệ số từng hạng tử, chỉ
+  trừ số mũ), R154 (dự phòng, lệch 1 đơn vị hệ số bậc cao nhất).
+- **1/33 câu "máy≠kho" — soi tay xác nhận LẠI là lỗi dữ liệu kho:** `T108010402042`,
+  $(12x^2y^3z+18x^3yz^2-24xy^2z^3):6xyz$, kho ghi hạng đầu là `2y^2` (THIẾU biến x) trong khi đúng phải là
+  `2xy^2` ($12x^2y^3z:6xyz = 2\cdot x^{2-1}y^{3-1}z^{1-1}=2xy^2$). Máy đúng, kho thiếu 1 biến — lỗi gõ/OCR
+  nhiều khả năng. Loại khỏi lô theo đúng quy trình an toàn (không tự sửa `dap_an` gốc).
+- 32/33 (97%) đã ghi `dai_cau_form_tn`, 0 FAIL. **Lưu ý:** đây là lỗi kho THỨ HAI phát hiện liên tiếp trong
+  2 dạng gần nhau (T108010303, T108010402) — cả 2 đều thuộc nhóm "nhân/chia đa thức nhiều biến", có thể kho
+  gốc cho nhóm dạng này có tỉ lệ lỗi cao hơn các dạng đơn giản hơn đã làm trước đó; đáng để quét lại kỹ hơn
+  khi có đợt duyệt kho tiếp theo cho nhóm T1080103xx-T1080104xx.
+
+## 2026-09-13 — T108010403 "Chia đa thức cho đa thức một biến" (khối 8), R155-R158 — thuật toán CHIA DÀI
+
+- 42 câu, "Tính : $x^3-6x^2+11x-3:(x-1)$", đáp số dạng "THƯƠNG dư DƯ". Khác HẲN kiến trúc DẠNG 15-18
+  (không phải "phân phối rồi gộp") — cần thuật toán chia đa thức DÀI thật sự (lặp "chia hạng tử dẫn đầu →
+  trừ tích ngược lại → hạ bậc" tới khi bậc dư < bậc mẫu). Biểu diễn đa thức 1 biến bằng MẢNG hệ số theo bậc
+  (`daThucSangMangHeSo`/`mangHeSoSangDaThuc`, index=bậc) thay vì Map biến→mũ như các dạng đa biến trước —
+  đơn giản hơn hẳn cho 1 biến, tái dùng `hienThiDaThuc` để format (chỉ cần bọc vào `{coef,vars:Map([[bien,d]])}`).
+- **Bẫy dữ liệu kho:** 2/42 câu (chia hết) kho BỎ HẲN "dư $0$" thay vì ghi tường minh, trong khi 40 câu còn
+  lại đều ghi rõ "dư $0$" — cùng 1 dạng, 2 quy ước khác nhau. `chuanHoaChiaDaThuc` xử bằng cách LUÔN coi
+  "không thấy chữ dư" = "dư 0" khi chuẩn hoá, để 2 cách viết ra CÙNG 1 canon.
+- **Bug bắt được khi viết `chuanHoaChiaDaThuc` (ảnh hưởng rộng hơn dạng này):** dùng `\bdư\b` để tách phần
+  "dư" trong text — KHÔNG BAO GIỜ khớp, vì `\b` của JavaScript coi ký tự có dấu ("ư") KHÔNG phải `\w`, nên
+  biên từ ngay sau "ư" đòi hỏi 1 bên là `\w` mà "ư" tự nó không phải — không có ký tự nào thoả. Sửa: bỏ hẳn
+  `\b`, tách bằng `split(/dư/)` (không cần biên từ vì "dư" không lẫn với ký hiệu khác trong ngữ cảnh này).
+  Đi kiểm tra thấy **CÙNG LỖI đã tồn tại từ trước** ở `scripts/lib/huuti.mjs` (`splitSet`, dùng chung TOÀN
+  BỘ hệ MCQ 2 luồng): `\bvà\b` không bao giờ khớp (đã verify `node -e` test), chỉ `\bhoặc\b` tình cờ vẫn
+  khớp vì kết thúc bằng "c" ASCII thuần. Sửa bằng `(?<![\p{L}\p{N}_])(?:hoặc|hoac|và|va|or)(?![\p{L}\p{N}_])`
+  (Unicode-aware, cờ `u`) — `node --test scripts/lib/huuti.test.mjs` vẫn pass 6/6 sau sửa. **Đã tạo task
+  riêng rà lại kho** xem có câu "tập nghiệm" nào dùng đúng từ "và" (không kèm ";") từng bị bỏ sót âm thầm
+  vì bug này trong các đợt sinh trước — CHƯA XÁC NHẬN có ảnh hưởng thật hay không, cần soát riêng.
+- **4 rule:** R155 (dừng sau 1 bước — chỉ chia hạng tử dẫn đầu 1 lần, không lặp lại phần dư còn bậc cao),
+  R156 (nhầm dấu khi trừ MỌI bước — cộng thay vì trừ tích ngược lại), R157 (quên ghi phần dư dù dư≠0, trình
+  bày như chia hết), R158 (dự phòng, lệch 1 đơn vị hệ số hạng tử đầu của thương).
+- **1/42 câu chỉ 2 distractor** (`T108010403020`, $x^3+x^2:(x+1)$, chia hết ĐÚNG 1 bước): R155 trùng NGẪU
+  NHIÊN với đáp án đúng (vì phép chia này chỉ cần đúng 1 bước thật, "lỗi dừng sớm" không tạo ra sai khác),
+  R157 vô hiệu vì dư đã = 0 sẵn. Chấp nhận residual 1/42 (2%), cùng loại "trùng ngẫu nhiên hiếm gặp" đã
+  chấp nhận nhiều lần trước đó.
+- 41/42 (98%) đã ghi `dai_cau_form_tn`, 0 FAIL.
+- **Tổng khối 8 đến nay: 11 dạng xong, 70 rule mới (R89-R158, trừ R100-104 nhường luồng "trắc nghiệm 1
+  phần"), 2 engine tổng quát đã có (đa biến — DẠNG 13/15/16 dùng Map biến→mũ; 1 biến chia dài — DẠNG 19
+  dùng mảng hệ số theo bậc).** Còn 39 dạng (~1.518 câu) — nhóm tiếp theo tự nhiên là T108010404 (điều kiện
+  chia hết, 11 câu) rồi sang nhóm rút gọn biểu thức (T108010501/503/504) và hằng đẳng thức (T108020xxx).

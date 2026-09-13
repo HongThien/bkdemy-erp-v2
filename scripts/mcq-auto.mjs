@@ -12,7 +12,7 @@
 // Hình thức: đáp án đúng phải có ≥1 distractor CÙNG kiểu (nguyên/phân số/tập); kiểu khác được phép (xem verify).
 import { readFileSync, writeFileSync } from 'node:fs'
 import { parseHuuTi } from './lib/huuti.mjs'
-import { tinhTuanHoan, layTron, soSanhTimXY, phanTichNguyenTo, chuanHoaFactorText, evalFactorText, nhanBietNguyenToHopSo, chuanHoaTapText, evalTapText, uclnBcnnDinhNghia, tapUcBc, uocBoiCoBan, ucBcCoBan, tongTapHopNhoHon, sapXepSoHuuTi, chuanHoaThuTu, evalThuTu } from './lib/mini-dang.mjs'
+import { tinhTuanHoan, layTron, soSanhTimXY, phanTichNguyenTo, chuanHoaFactorText, evalFactorText, nhanBietNguyenToHopSo, chuanHoaTapText, evalTapText, uclnBcnnDinhNghia, tapUcBc, uocBoiCoBan, ucBcCoBan, tongTapHopNhoHon, sapXepSoHuuTi, chuanHoaThuTu, evalThuTu, bacDonThuc, heSoDonThuc, demDonThucTrongDanhSach, demDongDang, phanBienDonThuc, chuanHoaPhanBien, evalPhanBien, congTruDonThucDongDang, chuanHoaDonThucKetQua, evalDonThucKetQua, congTruDaThuc, chuanHoaDaThuc, evalDaThucKetQua, nhanDonThuc, nhanDonDaThuc, nhanDaThuc, chiaDonThuc, chiaDaChoDon, chiaDaThucMotBien, chuanHoaChiaDaThuc, evalChiaDaThucKetQua } from './lib/mini-dang.mjs'
 
 // ── Rat (BigInt) ──────────────────────────────────────────────────────────────────────────────────────────────
 const gcd = (a, b) => { a = a < 0n ? -a : a; b = b < 0n ? -b : b; while (b) { [a, b] = [b, a % b] } return a }
@@ -600,6 +600,40 @@ const DS = {
   R83: 'Tổng tập {x<K}: cộng thiếu phần tử lớn nhất', R84: 'Tổng tập {x<K}: nhầm đếm số phần tử với tính tổng',
   R85: 'Sắp xếp: so sánh nhầm 2 số âm (quên đổi dấu)', R86: 'Sắp xếp: so sánh nhầm 2 số dương (quy đồng sai)',
   R87: 'Sắp xếp: giảm dần thay vì tăng dần', R88: 'Sắp xếp: đặt 0 sai vị trí',
+  R89: 'Bậc đơn thức: bỏ sót 1 biến khi cộng số mũ', R90: 'Bậc đơn thức: quên nhân số mũ ngoài luỹ thừa (…)^n',
+  R91: 'Bậc đơn thức: lấy tích số mũ thay vì tổng', R92: 'Hệ số đơn thức: bỏ dấu âm',
+  R93: 'Hệ số đơn thức: quên luỹ thừa hệ số trong ngoặc', R94: 'Hệ số đơn thức: quên nhân hệ số ngoài',
+  R95: 'Đếm đơn thức: đếm nhầm gồm cả đa thức', R96: 'Đếm đơn thức: đếm thiếu 1 đơn thức thật',
+  R97: 'Đếm đơn thức: không tính hằng số đơn thuần là đơn thức', R98: 'Đồng dạng: đếm nhầm thêm 1',
+  R99: 'Đồng dạng: đếm thiếu 1', R130: 'Đồng dạng: nhầm phải cùng hệ số mới đồng dạng',
+  R131: 'Bậc đơn thức: cộng thừa 1 (dự phòng)', R132: 'Hệ số đơn thức: lệch 1 đơn vị (dự phòng)',
+  R133: 'Đếm đơn thức: đếm thừa 2 (dự phòng)', R134: 'Đồng dạng: đếm mọi đơn thức hợp lệ, không so phần biến (dự phòng)',
+  R105: 'Bậc đa thức: quên gộp hạng tử đồng dạng triệt tiêu trước khi tìm bậc', R106: 'Bậc đa thức: cộng bậc các hạng tử thay vì lấy lớn nhất',
+  R107: 'Bậc đa thức: đếm số hạng tử thay vì lấy bậc', R108: 'Bậc đa thức: lệch 1 đơn vị (dự phòng)',
+  R109: 'Phần biến: quên nhân số mũ trong ngoặc với luỹ thừa ngoài', R110: 'Phần biến: bỏ sót 1 biến',
+  R111: 'Phần biến: sai lệch số mũ của 1 biến',
+  R112: 'Hệ số cao nhất: quên khai triển (phân phối) trước khi tìm', R113: 'Hệ số cao nhất: nhầm lấy hạng tử bậc thấp nhất',
+  R114: 'Hệ số cao nhất: nhầm dấu khi phân phối', R115: 'Hệ số cao nhất: lệch 1 đơn vị (dự phòng)',
+  R116: 'Hệ số đơn thức: nhầm số mũ biến đầu tiên là hệ số', R118: 'Phần biến: hoán đổi nhầm số mũ giữa 2 biến',
+  R119: 'Hệ số cao nhất: lấy hệ số hạng tử đầu tiên viết trong đề',
+  R120: 'Đếm đơn thức: chỉ tính đơn thức viết đơn giản',
+  R121: 'Cộng trừ đơn thức đồng dạng: cộng luôn cả số mũ của biến', R122: 'Cộng trừ đơn thức đồng dạng: đảo ngược phép tính',
+  R123: 'Cộng trừ đơn thức đồng dạng: bỏ dấu âm của kết quả', R124: 'Cộng trừ đơn thức đồng dạng: lệch 1 đơn vị (dự phòng)',
+  R125: 'Cộng trừ đơn thức đồng dạng: chỉ lấy hạng tử đầu, quên cộng/trừ hạng tử còn lại',
+  R126: 'Cộng trừ đa thức: quên đổi dấu khi phá ngoặc trừ (chỉ đổi hạng tử đầu)', R127: 'Cộng trừ đa thức: đảo ngược toàn bộ phép tính',
+  R128: 'Cộng trừ đa thức: chỉ lấy đa thức đầu, quên các đa thức còn lại', R129: 'Cộng trừ đa thức: lệch 1 đơn vị ở hệ số bậc cao nhất (dự phòng)',
+  R135: 'Nhân đơn thức: nhân số mũ thay vì cộng', R136: 'Nhân đơn thức: cộng hệ số thay vì nhân',
+  R137: 'Nhân đơn thức: chỉ lấy nhân tử đầu, quên nhân các nhân tử còn lại', R138: 'Nhân đơn thức: lệch 1 đơn vị ở hệ số (dự phòng)',
+  R139: 'Nhân đơn-đa thức: chỉ nhân hạng tử đầu, quên phân phối hết', R140: 'Nhân đơn-đa thức: quên đổi dấu ở các hạng tử sau',
+  R141: 'Nhân đơn-đa thức: nhân số mũ biến chung thay vì cộng', R142: 'Nhân đơn-đa thức: lệch 1 đơn vị ở hệ số bậc cao nhất (dự phòng)',
+  R143: 'Nhân đa-đa thức: chỉ nhân hạng tử đầu các đa thức sau', R144: 'Nhân đa-đa thức: quên đổi dấu các đa thức sau',
+  R145: 'Nhân đa-đa thức: nhân số mũ biến chung thay vì cộng', R146: 'Nhân đa-đa thức: lệch 1 đơn vị ở hệ số bậc cao nhất (dự phòng)',
+  R147: 'Chia đơn thức: cộng số mũ thay vì trừ', R148: 'Chia đơn thức: quên đổi dấu hệ số khi mẫu âm',
+  R149: 'Chia đơn thức: quên chia hệ số, chỉ trừ số mũ', R150: 'Chia đơn thức: lệch 1 đơn vị ở hệ số (dự phòng)',
+  R151: 'Chia đa-đơn thức: chỉ chia hạng tử đầu, quên chia hết', R152: 'Chia đa-đơn thức: cộng số mũ thay vì trừ',
+  R153: 'Chia đa-đơn thức: quên chia hệ số từng hạng tử', R154: 'Chia đa-đơn thức: lệch 1 đơn vị ở hệ số bậc cao nhất (dự phòng)',
+  R155: 'Chia đa thức dài: dừng sau 1 bước', R156: 'Chia đa thức dài: nhầm dấu khi trừ mỗi bước',
+  R157: 'Chia đa thức dài: quên ghi phần dư', R158: 'Chia đa thức dài: lệch 1 đơn vị ở hệ số đầu của thương (dự phòng)',
 }
 const UU_TIEN = {
   T107010201: ['R06', 'R26', 'R07', 'R04', 'R10'], T107010202: ['R10', 'R08', 'R27', 'R11', 'R26', 'R09', 'R06'], T107010203: ['R19', 'R20', 'R06', 'R26', 'R08', 'R10', 'R04'],
@@ -636,18 +670,30 @@ const UU_TIEN = {
   '07702011103': ['R38', 'R39', 'R40', 'R50', 'R04'], // Viết STP tuần hoàn thành phân số (dạng ĐẶC BIỆT, không qua AST — xem SPECIAL_DANG)
   '0770201102': ['R38', 'R39', 'R40', 'R50', 'R42', 'R49', 'R43', 'R48', 'R44'], // Làm tròn STP (ĐẶC BIỆT — nguồn tuần hoàn dùng chung rule với 07702011103)
   'T107010103': ['R51', 'R45', 'R46', 'R47', 'R85', 'R86', 'R87', 'R88'], // So sánh số hữu tỉ — trộn: tìm x,y nguyên (SPECIAL_DANG) + sắp xếp tăng dần (TEXT_DANG)
+  T108010102: ['R89', 'R90', 'R91', 'R105', 'R106', 'R107', 'R131', 'R108'], // Bậc đơn thức/đa thức (khối 8) — ĐẶC BIỆT, xem SPECIAL_DANG
+  T108010103: ['R92', 'R93', 'R94', 'R109', 'R110', 'R111', 'R112', 'R113', 'R114', 'R116', 'R118', 'R119', 'R132', 'R115'], // Hệ số/phần biến/hệ số cao nhất đơn-đa thức (khối 8) — ĐẶC BIỆT, xem SPECIAL_DANG+TEXT_DANG
+  T108010101: ['R95', 'R96', 'R97', 'R120', 'R133'], // Đếm đơn thức trong danh sách (khối 8) — ĐẶC BIỆT, xem SPECIAL_DANG
+  T108010104: ['R98', 'R99', 'R130', 'R134'], // Đếm đơn thức đồng dạng (khối 8) — ĐẶC BIỆT, xem SPECIAL_DANG
+  T108010201: ['R121', 'R122', 'R123', 'R125', 'R124'], // Cộng trừ đơn thức đồng dạng (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
+  T108010202: ['R126', 'R127', 'R128', 'R129'], // Cộng trừ đa thức (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
+  T108010301: ['R135', 'R136', 'R137', 'R138'], // Nhân đơn thức với đơn thức (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
+  T108010302: ['R139', 'R140', 'R141', 'R142'], // Nhân đơn thức với đa thức (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
+  T108010303: ['R143', 'R144', 'R145', 'R146'], // Nhân đa thức với đa thức (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
+  T108010401: ['R147', 'R148', 'R149', 'R150'], // Chia đơn thức cho đơn thức (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
+  T108010402: ['R151', 'R152', 'R153', 'R154'], // Chia đa thức cho đơn thức (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
+  T108010403: ['R155', 'R156', 'R157', 'R158'], // Chia đa thức cho đa thức một biến (khối 8) — ĐẶC BIỆT, xem TEXT_DANG
   '07702220320302': ['R30', 'R29', 'R28', 'R16', 'R03', 'R18', 'R08', 'R10', 'R04'], // Thực hiện phép tính GTTĐ
   '07702220320320303': ['R21', 'R31', 'R19', 'R20', 'R11', 'R06', 'R10', 'R04'], // Tìm x liên quan GTTĐ
 }
-const ALL = ['R01', 'R02', 'R03', 'R06', 'R07', 'R08', 'R09', 'R10', 'R11', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18', 'R19', 'R20', 'R21', 'R22', 'R23', 'R26', 'R27', 'R28', 'R29', 'R30', 'R31', 'R32', 'R33', 'R34', 'R35', 'R36', 'R37', 'R38', 'R39', 'R40', 'R42', 'R43', 'R44', 'R45', 'R46', 'R47', 'R48', 'R49', 'R50', 'R51', 'R52', 'R53', 'R54', 'R55', 'R56', 'R57', 'R58', 'R59', 'R60', 'R61', 'R62', 'R63', 'R64', 'R65', 'R66', 'R67', 'R68', 'R69', 'R70', 'R71', 'R72', 'R73', 'R74', 'R75', 'R76', 'R77', 'R78', 'R79', 'R80', 'R81', 'R82', 'R83', 'R84', 'R85', 'R86', 'R87', 'R88', 'R04', 'R24', 'R05']
+const ALL = ['R01', 'R02', 'R03', 'R06', 'R07', 'R08', 'R09', 'R10', 'R11', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18', 'R19', 'R20', 'R21', 'R22', 'R23', 'R26', 'R27', 'R28', 'R29', 'R30', 'R31', 'R32', 'R33', 'R34', 'R35', 'R36', 'R37', 'R38', 'R39', 'R40', 'R42', 'R43', 'R44', 'R45', 'R46', 'R47', 'R48', 'R49', 'R50', 'R51', 'R52', 'R53', 'R54', 'R55', 'R56', 'R57', 'R58', 'R59', 'R60', 'R61', 'R62', 'R63', 'R64', 'R65', 'R66', 'R67', 'R68', 'R69', 'R70', 'R71', 'R72', 'R73', 'R74', 'R75', 'R76', 'R77', 'R78', 'R79', 'R80', 'R81', 'R82', 'R83', 'R84', 'R85', 'R86', 'R87', 'R88', 'R89', 'R90', 'R91', 'R92', 'R93', 'R94', 'R95', 'R96', 'R97', 'R98', 'R99', 'R105', 'R106', 'R107', 'R108', 'R109', 'R110', 'R111', 'R112', 'R113', 'R114', 'R115', 'R116', 'R118', 'R119', 'R120', 'R121', 'R122', 'R123', 'R124', 'R125', 'R126', 'R127', 'R128', 'R129', 'R130', 'R131', 'R132', 'R133', 'R134', 'R135', 'R136', 'R137', 'R138', 'R139', 'R140', 'R141', 'R142', 'R143', 'R144', 'R145', 'R146', 'R147', 'R148', 'R149', 'R150', 'R151', 'R152', 'R153', 'R154', 'R155', 'R156', 'R157', 'R158', 'R04', 'R24', 'R05']
 // Dạng có KHUÔN VĂN BẢN riêng, không phải biểu thức LaTeX chung — mini-solver ở lib/mini-dang.mjs, KHÔNG qua
 // mathOf/parse/AST. Mỗi hàm nhận (noiDung, rule) → {value, text?, ds?} | null (rule=null ⇒ đáp số đúng).
-const SPECIAL_DANG = { '07702011103': tinhTuanHoan, '0770201102': layTron, T107010103: soSanhTimXY, T106040102: uclnBcnnDinhNghia, T106040202: uclnBcnnDinhNghia, T106010103: tongTapHopNhoHon }
+const SPECIAL_DANG = { '07702011103': tinhTuanHoan, '0770201102': layTron, T107010103: soSanhTimXY, T106040102: uclnBcnnDinhNghia, T106040202: uclnBcnnDinhNghia, T106010103: tongTapHopNhoHon, T108010102: bacDonThuc, T108010103: heSoDonThuc, T108010101: demDonThucTrongDanhSach, T108010104: demDongDang }
 // Dạng ĐÁP SỐ LÀ BIỂU THỨC/TẬP HỢP (không phải 1 giá trị hữu tỉ) — so khớp bằng TEXT chuẩn hoá, KHÔNG qua
 // Rat/canonOf (xem mini-dang.mjs: R54 của DẠNG 4 cố ý giữ nguyên giá trị số nhưng sai hình thức, so giá trị sẽ
 // coi là trùng đáp án đúng). Mỗi dạng có 1 cặp {canon, val} hàm chuẩn hoá/kiểm riêng — KHÔNG dùng chung 1 cặp
 // cho mọi dạng vì cú pháp đáp số khác hẳn nhau (biểu thức \cdot vs danh sách "; ").
-const TEXT_DANG = { T106030302: phanTichNguyenTo, T106030301: nhanBietNguyenToHopSo, T106040104: tapUcBc, T106040204: tapUcBc, T106030101: uocBoiCoBan, T106040101: ucBcCoBan, T106040201: ucBcCoBan, T107010103: sapXepSoHuuTi }
+const TEXT_DANG = { T106030302: phanTichNguyenTo, T106030301: nhanBietNguyenToHopSo, T106040104: tapUcBc, T106040204: tapUcBc, T106030101: uocBoiCoBan, T106040101: ucBcCoBan, T106040201: ucBcCoBan, T107010103: sapXepSoHuuTi, T108010103: phanBienDonThuc, T108010201: congTruDonThucDongDang, T108010202: congTruDaThuc, T108010301: nhanDonThuc, T108010302: nhanDonDaThuc, T108010303: nhanDaThuc, T108010401: chiaDonThuc, T108010402: chiaDaChoDon, T108010403: chiaDaThucMotBien }
 const TEXT_FN = {
   T106030302: { canon: chuanHoaFactorText, val: evalFactorText },
   T106030301: { canon: chuanHoaTapText, val: evalTapText },
@@ -657,6 +703,15 @@ const TEXT_FN = {
   T106040101: { canon: chuanHoaTapText, val: evalTapText },
   T106040201: { canon: chuanHoaTapText, val: evalTapText },
   T107010103: { canon: chuanHoaThuTu, val: evalThuTu },
+  T108010103: { canon: chuanHoaPhanBien, val: evalPhanBien },
+  T108010201: { canon: chuanHoaDonThucKetQua, val: evalDonThucKetQua },
+  T108010202: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
+  T108010301: { canon: chuanHoaDonThucKetQua, val: evalDonThucKetQua },
+  T108010302: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
+  T108010303: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
+  T108010401: { canon: chuanHoaDonThucKetQua, val: evalDonThucKetQua },
+  T108010402: { canon: chuanHoaDaThuc, val: evalDaThucKetQua },
+  T108010403: { canon: chuanHoaChiaDaThuc, val: evalChiaDaThucKetQua },
 }
 // Dạng khối 6 số tự nhiên: dấu CHẤM giữa 2 số là phép NHÂN (không phải thập phân) — khớp whitelist kho-quet-dapso.mjs.
 const CHAM_LA_NHAN = new Set(['T106020201', 'T106020202', 'T106020203', 'T106020301', 'T106020302', 'T106020303', 'T106020401', 'T106020402', 'T106020403', 'T106020501', 'T106020503'])

@@ -620,3 +620,918 @@ export function sapXepSoHuuTi(noiDung, rule) {
   }
   return null
 }
+
+// ── DẠNG 11: Đơn thức cơ bản (khối 8 — T108010101/102/103/104) — parser đơn thức chung dùng cho cả 4 dạng.
+// Đơn thức = tích các nhân tử (số · biến^mũ · (đơn thức con)^mũ), KHÔNG có +/- giữa các hạng tử (trừ dấu đầu).
+// Gặp +/- ở giữa (kể cả trong ngoặc con) ⇒ trả null — đúng nghĩa "không phải 1 đơn thức" (đa thức nhiều hạng tử).
+function parseDonThucCore(s) {
+  s = String(s ?? '').trim()
+  let i = 0, sign = 1n
+  if (s[i] === '-') { sign = -1n; i++ } else if (s[i] === '+') { i++ }
+  let coefAcc = R(1n); const vars = new Map(); let any = false, hasIrrational = false
+  while (i < s.length) {
+    const rest = s.slice(i)
+    if (rest[0] === ' ') { i++; continue }
+    let mDec = rest.match(/^(\d+)\.(\d+)/) // số thập phân (vd 0.5) — PHẢI kiểm TRƯỚC dấu "." nhân ngầm, kẻo "0" rồi "." bị hiểu nhầm thành nhân
+    if (mDec) { coefAcc = mul(coefAcc, R(BigInt(mDec[1] + mDec[2]), 10n ** BigInt(mDec[2].length))); i += mDec[0].length; any = true; continue }
+    let mHon = rest.match(/^(\d+)\\dfrac\{(\d+)\}\{(\d+)\}/) // HỖN SỐ (vd 1\dfrac{1}{2} = 1+1/2 = 3/2) — số nguyên ĐỨNG NGAY TRƯỚC \dfrac không có dấu gì ở giữa
+    if (mHon) { // PHẢI kiểm TRƯỚC nhánh \dfrac thuần số bên dưới, kẻo hiểu nhầm thành "nhân" (1 × 1/2 = 1/2, sai — đúng phải cộng)
+      const nguyen = BigInt(mHon[1]), tu = BigInt(mHon[2]), mau = BigInt(mHon[3])
+      coefAcc = mul(coefAcc, R(nguyen * mau + tu, mau)); i += mHon[0].length; any = true; continue
+    }
+    if (rest[0] === '.') { i++; continue }
+    if (rest[0] === '(') {
+      let depth = 1, j = i + 1
+      while (j < s.length && depth > 0) { if (s[j] === '(') depth++; else if (s[j] === ')') depth--; j++ }
+      const inner = s.slice(i + 1, j - 1); i = j
+      const m = s.slice(i).match(/^\^\{?(\d+)\}?/); const power = m ? Number(m[1]) : 1; if (m) i += m[0].length
+      const sub = parseDonThucCore(inner); if (!sub) return null
+      let pw = R(1n); for (let k = 0; k < power; k++) pw = mul(pw, sub.coef)
+      coefAcc = mul(coefAcc, pw)
+      for (const [v, e] of sub.vars) vars.set(v, (vars.get(v) ?? 0) + e * power)
+      if (sub.hasIrrational) hasIrrational = true
+      any = true; continue
+    }
+    let m = rest.match(/^\\sqrt\{(\d+)\}/) // căn của 1 số làm hệ số (vd 7√5·b³) — hợp lệ là đơn thức nhưng KHÔNG có giá trị hữu tỉ chính xác
+    if (m) { hasIrrational = true; i += m[0].length; any = true; continue }
+    m = rest.match(/^\\dfrac\{(-?\d+)\}\{(-?\d+)\}/) // ca thường gặp: phân số thuần số/số
+    if (m) { coefAcc = mul(coefAcc, R(BigInt(m[1]), BigInt(m[2]))); i += m[0].length; any = true; continue }
+    m = rest.match(/^\\dfrac\{([^{}]+)\}\{(-?\d+)\}/) // tổng quát: tử là 1 đơn thức, mẫu là 1 số (vd \dfrac{-6x^4y^2}{11})
+    if (m) {
+      const tu = parseDonThucCore(m[1]); if (!tu) return null
+      const chia = div(tu.coef, R(BigInt(m[2]))); if (!chia) return null
+      coefAcc = mul(coefAcc, chia)
+      for (const [v, e] of tu.vars) vars.set(v, (vars.get(v) ?? 0) + e)
+      if (tu.hasIrrational) hasIrrational = true
+      i += m[0].length; any = true; continue
+    }
+    m = rest.match(/^(\d+)\s*\/\s*(\d+)/) // phân số viết bằng "/" thường (không phải \dfrac)
+    if (m) { coefAcc = mul(coefAcc, R(BigInt(m[1]), BigInt(m[2]))); i += m[0].length; any = true; continue }
+    m = rest.match(/^(\d+)/)
+    if (m) { coefAcc = mul(coefAcc, R(BigInt(m[1]))); i += m[0].length; any = true; continue }
+    m = rest.match(/^([a-zA-Z])\^\{?(\d+)\}?/)
+    if (m) { vars.set(m[1], (vars.get(m[1]) ?? 0) + Number(m[2])); i += m[0].length; any = true; continue }
+    m = rest.match(/^([a-zA-Z])/)
+    if (m) { vars.set(m[1], (vars.get(m[1]) ?? 0) + 1); i += m[0].length; any = true; continue }
+    return null // gặp +, -, hoặc ký tự lạ giữa chừng ⇒ không phải 1 đơn thức
+  }
+  if (!any) return null
+  return { coef: sign < 0n ? mul(R(-1n), coefAcc) : coefAcc, vars, hasIrrational }
+}
+function bacCua(vars) { let d = 0; for (const e of vars.values()) d += e; return d }
+function hienThiPhanBien(vars) { return [...vars.entries()].filter(([, e]) => e > 0).sort((a, b) => a[0].localeCompare(b[0])).map(([v, e]) => (e === 1 ? v : `${v}^${e}`)).join('') }
+function hienThiDonThuc(coef, vars) {
+  if (coef.p === 0n) return '0' // 0 nhân bất kỳ phần biến nào cũng chỉ là 0, không viết "0x^2y"
+  const varParts = hienThiPhanBien(vars)
+  if (!varParts) return texR(coef)
+  if (coef.p === 1n && coef.q === 1n) return varParts
+  if (coef.p === -1n && coef.q === 1n) return `-${varParts}`
+  return `${texR(coef)}${varParts}`
+}
+function phanBienKey(vars) { return [...vars.entries()].filter(([, e]) => e !== 0).sort((a, b) => a[0].localeCompare(b[0])).map(([v, e]) => `${v}${e}`).join(',') }
+function timBieuThuc1(noiDung) { // "$X(...) = <expr>$ là bao nhiêu" → <expr>
+  const m = String(noiDung).match(/\$[A-Za-zĐ]\([a-zA-Z,]*\)\s*=\s*(.+?)\$\s*là bao nhiêu/)
+  return m ? m[1].trim() : null
+}
+function timBieuThucList(noiDung) { return [...String(noiDung).matchAll(/\$([^$]+)\$/g)].map((m) => m[1].trim()) }
+
+function chiaHangTu(s) { // tách đa thức thành hạng tử theo +/- Ở BẬC NGOÀI CÙNG (không tính +/- trong {..} hay (..))
+  const out = []; let depth = 0, cur = '', sign = '+'
+  for (let i = 0; i < s.length; i++) {
+    const ch = s[i]
+    if (ch === '{' || ch === '(') depth++
+    if (ch === '}' || ch === ')') depth--
+    if (depth === 0 && (ch === '+' || ch === '-')) {
+      if (cur.trim() !== '') { out.push({ sign, text: cur.trim() }); cur = '' }
+      sign = ch; continue
+    }
+    cur += ch
+  }
+  if (cur.trim() !== '') out.push({ sign, text: cur.trim() })
+  return out
+}
+function gopHangTuDongDang(terms) { // terms: [{sign,text}] đã parse được từng hạng tử là đơn thức → gộp theo phần biến, bỏ hạng tử triệt tiêu (=0)
+  const parsed = terms.map((t) => { const core = parseDonThucCore(t.text); if (!core) return null; return { coef: t.sign === '-' ? mul(R(-1n), core.coef) : core.coef, vars: core.vars } })
+  if (parsed.some((t) => !t)) return null
+  const gop = new Map()
+  for (const t of parsed) { const key = phanBienKey(t.vars); const old = gop.get(key); gop.set(key, old ? { coef: add(old.coef, t.coef), vars: t.vars } : { coef: t.coef, vars: t.vars }) }
+  return [...gop.values()].filter((t) => t.coef.p !== 0n)
+}
+export function bacDonThuc(noiDung, rule) { // T108010102 — trộn 2 sub-shape: "bậc đơn thức" và "bậc đa thức"
+  const expr1 = timBieuThuc1(noiDung)
+  if (expr1) {
+    const p = parseDonThucCore(expr1); if (!p || p.hasIrrational) return null
+    const dung = bacCua(p.vars)
+    if (!rule) return { value: R(BigInt(dung)) }
+    const entries = [...p.vars.entries()].filter(([, e]) => e > 0)
+    if (rule === 'R89') { // bỏ sót 1 biến khi cộng số mũ (bỏ biến có số mũ nhỏ nhất)
+      if (entries.length < 2) return null
+      const bo = entries.reduce((a, b) => (a[1] <= b[1] ? a : b))
+      const v = dung - bo[1]; if (v === dung || v < 0) return null
+      return { value: R(BigInt(v)), ds: `bỏ sót biến ${bo[0]} khi cộng số mũ` }
+    }
+    if (rule === 'R90') { // quên nhân số mũ NGOÀI luỹ thừa (…)^n — chỉ áp dụng khi biểu thức có ngoặc mũ
+      if (!/\)\^/.test(expr1)) return null
+      const m = expr1.match(/\(([^()]+)\)\^\{?(\d+)\}?/); if (!m) return null
+      const inner = parseDonThucCore(m[1]); if (!inner) return null
+      const n = Number(m[2]); const bacTrong = bacCua(inner.vars)
+      const v = dung - bacTrong * n + bacTrong; if (v === dung || v < 0) return null
+      return { value: R(BigInt(v)), ds: 'quên nhân số mũ trong ngoặc với luỹ thừa ngoài, chỉ cộng thẳng' }
+    }
+    if (rule === 'R91') { // lấy TÍCH các số mũ thay vì TỔNG
+      if (entries.length < 2) return null
+      let v = 1; for (const [, e] of entries) v *= e
+      if (v === dung || v < 0) return null
+      return { value: R(BigInt(v)), ds: 'lấy tích các số mũ thay vì tổng' }
+    }
+    if (rule === 'R131') { const v = dung + 1; return { value: R(BigInt(v)), ds: 'cộng thừa 1 vào bậc (đếm lố 1 đơn vị)' } }
+    return null
+  }
+  // sub-shape "Bậc của đa thức $...$" — có thể cần gộp hạng tử đồng dạng (triệt tiêu) trước khi lấy bậc lớn nhất
+  const m2 = String(noiDung).match(/Bậc của đa thức\s*\$(.+?)\$/); if (!m2) return null
+  const termsRaw = chiaHangTu(m2[1]); if (termsRaw.length < 2) return null
+  const gopLai = gopHangTuDongDang(termsRaw); if (!gopLai || !gopLai.length) return null
+  const dung = Math.max(...gopLai.map((t) => bacCua(t.vars)))
+  if (!rule) return { value: R(BigInt(dung)) }
+  if (rule === 'R105') { // quên gộp hạng tử đồng dạng (triệt tiêu) trước khi lấy bậc — lấy bậc lớn nhất trên hạng tử GỐC
+    const parsedGoc = termsRaw.map((t) => parseDonThucCore(t.text)); if (parsedGoc.some((p) => !p)) return null
+    const v = Math.max(...parsedGoc.map((p) => bacCua(p.vars))); if (v === dung) return null
+    return { value: R(BigInt(v)), ds: 'quên thu gọn (gộp hạng tử đồng dạng triệt tiêu) trước khi tìm bậc' }
+  }
+  if (rule === 'R106') { // cộng bậc các hạng tử thay vì lấy lớn nhất
+    const v = gopLai.reduce((a, t) => a + bacCua(t.vars), 0); if (v === dung) return null
+    return { value: R(BigInt(v)), ds: 'cộng bậc các hạng tử lại thay vì lấy bậc lớn nhất' }
+  }
+  if (rule === 'R107') { const v = gopLai.length; if (v === dung) return null; return { value: R(BigInt(v)), ds: 'đếm nhầm số hạng tử (sau khi thu gọn) thay vì lấy bậc' } }
+  if (rule === 'R108') { const v = dung - 1; if (v < 0 || v === dung) return null; return { value: R(BigInt(v)), ds: 'tính bậc lệch 1 đơn vị (dự phòng)' } }
+  return null
+}
+export function heSoDonThuc(noiDung, rule) { // T108010103 — trộn "hệ số đơn thức A(x)=.." và "hệ số cao nhất của đa thức Q(x)=.." (cần khai triển)
+  const expr = timBieuThuc1(noiDung)
+  if (!expr) return heSoCaoNhatDaThuc(noiDung, rule)
+  const p = parseDonThucCore(expr); if (!p || p.hasIrrational) return null
+  if (!rule) return { value: p.coef }
+  if (rule === 'R92') { // bỏ dấu âm của hệ số
+    if (p.coef.p >= 0n) return null
+    return { value: R(-p.coef.p, p.coef.q), ds: 'bỏ dấu âm của hệ số' }
+  }
+  const mParen = expr.match(/\(([^()]+)\)\^\{?(\d+)\}?/)
+  if (rule === 'R93') { // quên luỹ thừa hệ số trong ngoặc (chỉ nhân 1 lần thay vì mũ n)
+    if (!mParen) return null
+    const inner = parseDonThucCore(mParen[1]); if (!inner || inner.coef.p === 0n) return null
+    const n = Number(mParen[2]); if (n < 2) return null
+    let heSoNgoai = p.coef; for (let k = 0; k < n; k++) { heSoNgoai = div(heSoNgoai, inner.coef); if (!heSoNgoai) return null }
+    const v = mul(heSoNgoai, inner.coef); if (!v || cmp(v, p.coef) === 0) return null
+    return { value: v, ds: `quên luỹ thừa hệ số trong ngoặc lên bậc ${n}, chỉ nhân 1 lần` }
+  }
+  if (rule === 'R94') { // quên nhân hệ số trong ngoặc (đã mũ) với hệ số ngoài — chỉ lấy hệ số trong ngoặc đã mũ
+    if (!mParen) return null
+    const inner = parseDonThucCore(mParen[1]); if (!inner) return null
+    const n = Number(mParen[2]); let heSoTrongMu = R(1n); for (let k = 0; k < n; k++) heSoTrongMu = mul(heSoTrongMu, inner.coef)
+    if (cmp(heSoTrongMu, p.coef) === 0) return null
+    return { value: heSoTrongMu, ds: 'quên nhân hệ số ngoài, chỉ lấy hệ số trong ngoặc đã luỹ thừa' }
+  }
+  if (rule === 'R132') { const v = add(p.coef, R(1n)); if (cmp(v, p.coef) === 0) return null; return { value: v, ds: 'tính lệch 1 đơn vị ở hệ số' } }
+  if (rule === 'R116') { // nhầm khái niệm — lấy số mũ của biến ĐẦU TIÊN làm hệ số
+    const entries0 = [...p.vars.entries()].filter(([, e]) => e > 0); if (!entries0.length) return null
+    const v = R(BigInt(entries0[0][1])); if (cmp(v, p.coef) === 0) return null
+    return { value: v, ds: `nhầm số mũ của biến ${entries0[0][0]} là hệ số` }
+  }
+  return null
+}
+// Sub-shape KHÁC cùng dang_chinh T108010103: "Phần biến của đơn thức ... là bao nhiêu" / "Tìm phần biến của
+// đơn thức M = ...:" — đáp số là TEXT (phần biến, vd "x^3y^2z^6"), không phải giá trị hữu tỉ ⇒ đi TEXT_DANG
+// (dùng chung cơ chế "textFn null thì rơi xuống SPECIAL_DANG" đã có ở mcq-auto.mjs cho ca T107010103).
+export function chuanHoaPhanBien(s) {
+  const vars = new Map(); const re = /([a-zA-Z])\^\{?(\d+)\}?|([a-zA-Z])/g; let m
+  while ((m = re.exec(String(s ?? '')))) { if (m[1]) vars.set(m[1], (vars.get(m[1]) ?? 0) + Number(m[2])); else vars.set(m[3], (vars.get(m[3]) ?? 0) + 1) }
+  return hienThiPhanBien(vars)
+}
+export function evalPhanBien(s) { const t = chuanHoaPhanBien(s); return t || null }
+export function phanBienDonThuc(noiDung, rule) {
+  const nd = String(noiDung)
+  const m = nd.match(/phần biến của đơn thức\s*\$[^=$]*=\s*(.+?)\$/i) // gộp mọi cách hỏi: "Phần biến…", "Tìm phần biến…", "Xác định phần biến…"
+  if (!m) return null
+  const p = parseDonThucCore(m[1]); if (!p || p.hasIrrational) return null
+  const dungText = hienThiPhanBien(p.vars); if (!dungText) return null
+  if (!rule) return { text: dungText }
+  const entries = [...p.vars.entries()].filter(([, e]) => e > 0)
+  if (rule === 'R109') { // quên nhân số mũ trong ngoặc với luỹ thừa ngoài — chỉ áp dụng khi có (…)^n
+    const mp = m[1].match(/\(([^()]+)\)\^\{?(\d+)\}?/); if (!mp) return null
+    const inner = parseDonThucCore(mp[1]); if (!inner) return null
+    const n = Number(mp[2])
+    const varsSai = new Map(p.vars)
+    for (const [v, e] of inner.vars) { const dungE = e * n, saiE = e; varsSai.set(v, (varsSai.get(v) ?? 0) - dungE + saiE) }
+    const t = hienThiPhanBien(varsSai); if (!t || t === dungText) return null
+    return { text: t, ds: 'quên nhân số mũ trong ngoặc với luỹ thừa ngoài, giữ nguyên số mũ như chưa khai triển' }
+  }
+  if (rule === 'R110') { // bỏ sót 1 biến trong phần biến
+    if (entries.length < 2) return null
+    const bo = entries.reduce((a, b) => (a[1] <= b[1] ? a : b))
+    const varsSai = new Map(p.vars); varsSai.delete(bo[0])
+    const t = hienThiPhanBien(varsSai); if (!t || t === dungText) return null
+    return { text: t, ds: `bỏ sót biến ${bo[0]} trong phần biến` }
+  }
+  if (rule === 'R111') { // sai lệch số mũ của 1 biến (+1)
+    if (!entries.length) return null
+    const [v, e] = entries[0]
+    const varsSai = new Map(p.vars); varsSai.set(v, e + 1)
+    const t = hienThiPhanBien(varsSai); if (!t || t === dungText) return null
+    return { text: t, ds: `tính lệch số mũ của biến ${v} (thừa 1)` }
+  }
+  if (rule === 'R118') { // hoán đổi nhầm số mũ giữa 2 biến
+    if (entries.length < 2) return null
+    const [v1, e1] = entries[0], [v2, e2] = entries[1]; if (e1 === e2) return null
+    const varsSai = new Map(p.vars); varsSai.set(v1, e2); varsSai.set(v2, e1)
+    const t = hienThiPhanBien(varsSai); if (!t || t === dungText) return null
+    return { text: t, ds: `hoán đổi nhầm số mũ giữa 2 biến ${v1} và ${v2}` }
+  }
+  return null
+}
+// Sub-shape thứ 3 cùng dang_chinh T108010103: "Xác định hệ số cao nhất của đa thức Q(x) = ..." — đa thức có
+// thể CHƯA khai triển (dạng "hệ_số.(nhị thức)+..."), phải phân phối rồi gộp hạng tử đồng dạng trước khi tìm
+// hạng tử bậc cao nhất. Tái dùng chiaHangTu/parseDonThucCore/phanBienKey đã có ở sub-shape "bậc đa thức".
+function khaiTrienHangTu(sign, text) { // 1 hạng tử top-level (có thể là "hệ_số.(nhị thức)" cần phân phối) → mảng {coef,vars} đã nhân dấu sign
+  const m = text.match(/^(.*)\(([^()]+)\)\s*$/) // kết thúc bằng đúng 1 cụm ngoặc không lồng
+  if (m) {
+    const prefix = parseDonThucCore(m[1] || '1')
+    const innerTerms = chiaHangTu(m[2])
+    if (prefix && innerTerms.length >= 2) {
+      const out = []
+      for (const it of innerTerms) {
+        const core = parseDonThucCore(it.text); if (!core) return null
+        let coef = mul(mul(prefix.coef, core.coef), R(it.sign === '-' ? -1n : 1n))
+        if (sign === '-') coef = mul(R(-1n), coef)
+        const vars = new Map(prefix.vars); for (const [v, e] of core.vars) vars.set(v, (vars.get(v) ?? 0) + e)
+        out.push({ coef, vars })
+      }
+      return out
+    }
+  }
+  const core = parseDonThucCore(text); if (!core) return null
+  return [{ coef: sign === '-' ? mul(R(-1n), core.coef) : core.coef, vars: core.vars }]
+}
+function khaiTrienDaThuc(exprStr) { // chuỗi đa thức (có thể có hạng tử cần phân phối) → mảng {coef,vars} đã gộp đồng dạng, bỏ hạng tử triệt tiêu
+  const terms = chiaHangTu(exprStr); const allOut = []
+  for (const t of terms) { const ex = khaiTrienHangTu(t.sign, t.text); if (!ex) return null; allOut.push(...ex) }
+  const gop = new Map()
+  for (const t of allOut) { const key = phanBienKey(t.vars); const old = gop.get(key); gop.set(key, old ? { coef: add(old.coef, t.coef), vars: t.vars } : t) }
+  return [...gop.values()].filter((t) => t.coef.p !== 0n)
+}
+export function heSoCaoNhatDaThuc(noiDung, rule) {
+  const m = String(noiDung).match(/hệ số cao nhất của đa thức\s*\$[^=$]*=\s*(.+?)\.?\$/i); if (!m) return null
+  const terms = khaiTrienDaThuc(m[1]); if (!terms || !terms.length) return null
+  const withDeg = terms.map((t) => ({ ...t, deg: bacCua(t.vars) }))
+  const dungTerm = withDeg.reduce((a, b) => (b.deg > a.deg ? b : a))
+  if (!rule) return { value: dungTerm.coef }
+  if (rule === 'R112') { // quên khai triển (phân phối) — coi bậc ngoài ngoặc (bỏ hẳn phần trong ngoặc), mô phỏng "quên nhân phân phối"
+    const rawWithDeg = chiaHangTu(m[1]).map((t) => {
+      const mp = t.text.match(/^(.*?)\(([^()]+)\)\s*$/)
+      const outerText = mp ? mp[1] : t.text
+      const core = parseDonThucCore(outerText || '0'); if (!core) return null
+      return { coef: t.sign === '-' ? mul(R(-1n), core.coef) : core.coef, deg: bacCua(core.vars) }
+    })
+    if (rawWithDeg.some((t) => !t)) return null
+    const top = rawWithDeg.reduce((a, b) => (b.deg > a.deg ? b : a))
+    if (cmp(top.coef, dungTerm.coef) === 0) return null
+    return { value: top.coef, ds: 'quên khai triển (phân phối), lấy hệ số hạng tử bậc cao nhất khi CHƯA nhân vào trong ngoặc' }
+  }
+  if (rule === 'R113') { // nhầm lấy hệ số của hạng tử bậc THẤP NHẤT
+    const thap = withDeg.reduce((a, b) => (b.deg < a.deg ? b : a))
+    if (cmp(thap.coef, dungTerm.coef) === 0) return null
+    return { value: thap.coef, ds: 'nhầm lấy hệ số của hạng tử bậc thấp nhất thay vì cao nhất' }
+  }
+  if (rule === 'R114') { // nhầm dấu khi phân phối (không đổi dấu khi nhân với hạng tử âm trong ngoặc)
+    const mp = m[1].match(/\(([^()]+)\)/); if (!mp) return null
+    const flippedInner = mp[1].replace(/-/g, '').replace(/\+/g, '-').replace(//g, '+')
+    const exprSai = m[1].replace(mp[1], flippedInner)
+    const termsSai = khaiTrienDaThuc(exprSai); if (!termsSai || !termsSai.length) return null
+    const topSai = termsSai.reduce((a, b) => (bacCua(b.vars) > bacCua(a.vars) ? b : a))
+    if (cmp(topSai.coef, dungTerm.coef) === 0) return null
+    return { value: topSai.coef, ds: 'nhầm dấu khi phân phối vào trong ngoặc (không đổi dấu đúng)' }
+  }
+  if (rule === 'R115') { const v = add(dungTerm.coef, R(1n)); if (cmp(v, dungTerm.coef) === 0) return null; return { value: v, ds: 'tính lệch 1 đơn vị ở hệ số cao nhất (dự phòng)' } }
+  if (rule === 'R119') { // lấy hệ số hạng tử ĐẦU TIÊN viết trong đề, không xét bậc
+    const rawTerms = chiaHangTu(m[1]); if (!rawTerms.length) return null
+    const firstCore = parseDonThucCore(rawTerms[0].text); if (!firstCore) return null
+    const v = rawTerms[0].sign === '-' ? mul(R(-1n), firstCore.coef) : firstCore.coef
+    if (cmp(v, dungTerm.coef) === 0) return null
+    return { value: v, ds: 'lấy hệ số hạng tử ĐẦU TIÊN viết trong đề, không xét bậc cao nhất' }
+  }
+  return null
+}
+export function demDonThucTrongDanhSach(noiDung, rule) { // T108010101 — trộn "đếm đơn thức" và "đếm đa thức"
+  const list = timBieuThucList(noiDung); if (list.length < 2) return null
+  const laDaThuc = /bao nhiêu đa thức/i.test(noiDung) && !/bao nhiêu đơn thức/i.test(noiDung)
+  if (laDaThuc) {
+    const hopLe = list.map((e) => { const t = khaiTrienDaThuc(e); return t && t.length >= 2 })
+    const dung = hopLe.filter(Boolean).length
+    if (!rule) return { value: R(BigInt(dung)) }
+    if (rule === 'R95') { // đếm nhầm gồm cả đơn thức/hằng số (không phải đa thức đa hạng tử)
+      const parsedMono = list.map((e) => parseDonThucCore(e))
+      const soDon = parsedMono.filter((p) => p).length; if (!soDon) return null
+      const v = dung + soDon; if (v === dung) return null
+      return { value: R(BigInt(v)), ds: 'đếm nhầm gồm cả đơn thức/hằng số (không phải đa thức đa hạng tử) vào đa thức' }
+    }
+    if (rule === 'R96') { if (dung < 1) return null; return { value: R(BigInt(dung - 1)), ds: 'đếm thiếu 1 đa thức (dạng cần khai triển mới nhận ra, vd tích 1 đơn thức với 1 nhị thức)' } }
+    if (rule === 'R97') { // không nhận ra biểu thức CẦN KHAI TRIỂN (dạng a(b+c)) cũng là đa thức — bỏ qua không đếm
+      const chuaKhaiTrien = list.filter((e, idx) => hopLe[idx] && /\)/.test(e) && !parseDonThucCore(e)).length; if (!chuaKhaiTrien) return null
+      const v = dung - chuaKhaiTrien; if (v === dung) return null
+      return { value: R(BigInt(v)), ds: 'không nhận ra biểu thức dạng tích cần khai triển cũng là đa thức, bỏ qua không đếm' }
+    }
+    if (rule === 'R133') { const v = dung + 2; return { value: R(BigInt(v)), ds: 'đếm thừa 2 đơn vị' } }
+    return null
+  }
+  const parsed = list.map((e) => parseDonThucCore(e))
+  const dung = parsed.filter((p) => p).length
+  if (!rule) return { value: R(BigInt(dung)) }
+  if (rule === 'R95') { // đếm nhầm gồm cả đa thức (biểu thức có +/- nhiều hạng tử)
+    const soDaThuc = parsed.filter((p) => !p).length; if (!soDaThuc) return null
+    const v = dung + soDaThuc; if (v === dung) return null
+    return { value: R(BigInt(v)), ds: 'đếm nhầm gồm cả đa thức (biểu thức nhiều hạng tử) vào đơn thức' }
+  }
+  if (rule === 'R96') { if (dung < 1) return null; return { value: R(BigInt(dung - 1)), ds: 'đếm thiếu 1 đơn thức (dạng viết phức tạp, tưởng không phải đơn thức)' } }
+  if (rule === 'R97') { // không tính hằng số đơn thuần (không có biến) là đơn thức — sai khái niệm
+    const soHangSo = parsed.filter((p) => p && p.vars.size === 0).length; if (!soHangSo) return null
+    const v = dung - soHangSo; if (v === dung) return null
+    return { value: R(BigInt(v)), ds: 'không tính hằng số đơn thuần (không có biến) là đơn thức' }
+  }
+  if (rule === 'R133') { const v = dung + 2; return { value: R(BigInt(v)), ds: 'đếm thừa 2 đơn vị' } }
+  if (rule === 'R120') { // chỉ tính đơn thức viết ĐƠN GIẢN (không dấu chấm nhân/phân số/căn) — sai khái niệm, tưởng đơn thức viết phức tạp thì không phải đơn thức
+    const simple = list.filter((e, idx) => parsed[idx] && !/\.|\\dfrac|\\sqrt|\//.test(e)).length
+    if (simple === dung) return null
+    return { value: R(BigInt(simple)), ds: 'chỉ tính đơn thức viết đơn giản, không tính đơn thức viết bằng dấu chấm nhân/phân số/căn' }
+  }
+  return null
+}
+export function demDongDang(noiDung, rule) { // T108010104
+  const chunks = timBieuThucList(noiDung); if (chunks.length < 3) return null
+  const refM = chunks[0].match(/=\s*(.+)$/); if (!refM) return null
+  const ref = parseDonThucCore(refM[1]); if (!ref) return null
+  const refKey = phanBienKey(ref.vars)
+  const cands = chunks.slice(1, -1).map((c) => parseDonThucCore(c))
+  const dung = cands.filter((p) => p && phanBienKey(p.vars) === refKey && p.coef.p !== 0n).length
+  if (!rule) return { value: R(BigInt(dung)) }
+  if (rule === 'R98') { const v = dung + 1; if (v > cands.length) return null; return { value: R(BigInt(v)), ds: 'đếm nhầm thêm 1 đơn thức khác phần biến nhưng nhìn thoáng qua giống' } }
+  if (rule === 'R99') { if (dung < 1) return null; return { value: R(BigInt(dung - 1)), ds: 'đếm thiếu 1 đơn thức đồng dạng thật' } }
+  if (rule === 'R130') { // coi phải cùng HỆ SỐ mới là đồng dạng (sai khái niệm)
+    const v = cands.filter((p) => p && phanBienKey(p.vars) === refKey && cmp(p.coef, ref.coef) === 0).length
+    if (v === dung) return null
+    return { value: R(BigInt(v)), ds: 'nhầm khái niệm — coi phải cùng cả hệ số mới là đồng dạng, không chỉ cùng phần biến' }
+  }
+  if (rule === 'R134') { const v = cands.filter((p) => p).length; if (v === dung) return null; return { value: R(BigInt(v)), ds: 'đếm nhầm mọi đơn thức hợp lệ trong danh sách, không so phần biến' } }
+  return null
+}
+
+// ── DẠNG 12: Cộng trừ đơn thức đồng dạng (T108010201, khối 8) — 3 sub-shape: "tính tổng/hiệu 2 đơn thức" và
+// "thu gọn đa thức" (≥2 hạng tử đồng dạng viết sẵn trong 1 biểu thức). Đáp số luôn là 1 ĐƠN THỨC (đồng dạng
+// với các hạng tử đưa vào) ⇒ TEXT_DANG, canon bằng cách RE-PARSE rồi format lại (tránh brittleness do kho
+// khi có "$…$" khi không).
+export function chuanHoaDonThucKetQua(s) {
+  const clean = String(s ?? '').replace(/\$/g, '').trim()
+  const p = parseDonThucCore(clean)
+  return p ? hienThiDonThuc(p.coef, p.vars) : clean
+}
+export function evalDonThucKetQua(s) { const t = chuanHoaDonThucKetQua(s); return t || null }
+export function congTruDonThucDongDang(noiDung, rule) {
+  const nd = String(noiDung)
+  let terms = null
+  let m = nd.match(/Tính tổng của hai đơn thức sau:\s*\$(.+?)\$\s*và\s*\$(.+?)\$/)
+  if (m) terms = [{ sign: '+', text: m[1] }, { sign: '+', text: m[2] }]
+  else {
+    m = nd.match(/Tính hiệu của hai đơn thức sau:\s*\$(.+?)\$\s*và\s*\$(.+?)\$/)
+    if (m) terms = [{ sign: '+', text: m[1] }, { sign: '-', text: m[2] }]
+    else {
+      m = nd.match(/Thu gọn đa thức:\s*\$[A-Za-zĐ]\s*=\s*(.+?)\$/)
+      if (m) terms = chiaHangTu(m[1])
+    }
+  }
+  if (!terms || terms.length < 2) return null
+  const parsed = terms.map((t) => { const p = parseDonThucCore(t.text); if (!p || p.hasIrrational) return null; return { coef: t.sign === '-' ? mul(R(-1n), p.coef) : p.coef, vars: p.vars } })
+  if (parsed.some((p) => !p)) return null
+  const key0 = phanBienKey(parsed[0].vars); if (!parsed.every((p) => phanBienKey(p.vars) === key0)) return null
+  let dungCoef = R(0n); for (const p of parsed) dungCoef = add(dungCoef, p.coef)
+  const dungText = hienThiDonThuc(dungCoef, parsed[0].vars)
+  if (!rule) return { text: dungText }
+  if (rule === 'R121') { // cộng luôn cả số mũ của biến (nhầm cách cộng đơn thức đồng dạng)
+    const varsSai = new Map(); for (const p of parsed) for (const [v, e] of p.vars) varsSai.set(v, (varsSai.get(v) ?? 0) + e)
+    const t = hienThiDonThuc(dungCoef, varsSai); if (t === dungText) return null
+    return { text: t, ds: 'cộng luôn cả số mũ của biến, không chỉ cộng hệ số' }
+  }
+  if (rule === 'R122') { // đảo ngược phép tính — đề bảo tính tổng thì tính thành hiệu (hoặc ngược lại); chỉ áp dụng câu 2 hạng tử
+    if (terms.length !== 2) return null
+    const v = sub(parsed[0].coef, parsed[1].coef) // dungCoef = parsed[0]+parsed[1] (đã áp dấu đề); đảo ngược = trừ thay vì cộng
+    const t = hienThiDonThuc(v, parsed[0].vars); if (t === dungText) return null
+    return { text: t, ds: 'đảo ngược phép tính — đề yêu cầu tổng/hiệu nhưng tính ngược lại' }
+  }
+  if (rule === 'R123') { // tính sai dấu khi có hệ số âm — lấy trị tuyệt đối kết quả
+    if (dungCoef.p >= 0n) return null
+    const t = hienThiDonThuc(R(-dungCoef.p, dungCoef.q), parsed[0].vars); if (t === dungText) return null
+    return { text: t, ds: 'bỏ dấu âm của kết quả' }
+  }
+  if (rule === 'R124') { const v = add(dungCoef, R(1n)); const t = hienThiDonThuc(v, parsed[0].vars); if (t === dungText) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở hệ số (dự phòng)' } }
+  if (rule === 'R125') { // chỉ chép lại hạng tử đầu tiên, quên cộng/trừ các hạng tử còn lại (từ 3 hạng tử trở lên hay gặp)
+    const t = hienThiDonThuc(parsed[0].coef, parsed[0].vars); if (t === dungText) return null
+    return { text: t, ds: 'chỉ lấy hạng tử đầu tiên, quên cộng/trừ các hạng tử còn lại' }
+  }
+  return null
+}
+
+// ── DẠNG 13: Cộng trừ ĐA THỨC nhiều biến, có phân phối (T108010202, khối 8) ─────────────────────────────────
+// Đề dạng "Cho đa thức $A(x)=...$ và $B(x)=...$. Tính $A(x)+B(x)$" / "Cho các đa thức A,B,C. Tính A-B+C" /
+// phép tính đôi khi nằm NGOÀI $...$ (viết trần "A + B - C"). Đáp số là 1 ĐA THỨC nhiều hạng tử — khác hẳn
+// DẠNG 11/12 (chỉ 1 đơn thức) nên cần bộ máy riêng: mỗi đa thức định nghĩa được khai triển (phân phối, tái
+// dùng `khaiTrienDaThuc` đã có cho DẠNG 11) rồi CỘNG/TRỪ theo đúng thứ tự dấu trong phép tính yêu cầu.
+function sapXepChuanDaThuc(terms) { // thứ tự hiển thị CỐ ĐỊNH — không cần khớp thứ tự kho ghi (canon tự re-parse cả 2 phía)
+  return [...terms].filter((t) => t.coef.p !== 0n).sort((a, b) => {
+    const da = bacCua(a.vars), db = bacCua(b.vars)
+    return da !== db ? db - da : phanBienKey(a.vars).localeCompare(phanBienKey(b.vars))
+  })
+}
+function hienThiDaThuc(terms) {
+  const sorted = sapXepChuanDaThuc(terms)
+  if (!sorted.length) return '0'
+  let out = ''
+  sorted.forEach((t, i) => {
+    const isNeg = t.coef.p < 0n
+    const abs = isNeg ? R(-t.coef.p, t.coef.q) : t.coef
+    const piece = hienThiDonThuc(abs, t.vars)
+    out += i === 0 ? (isNeg ? `-${piece}` : piece) : (isNeg ? ` - ${piece}` : ` + ${piece}`)
+  })
+  return out
+}
+function parseOpFromText(text, validNames) { // "A(x)+B(x)" / "A-B+C" (đã bỏ hết khoảng trắng) → [{name,sign}] hoặc null
+  const compact = String(text).replace(/\s+/g, '')
+  if (!compact) return null
+  const re = /([+-]?)([A-Za-zĐ])(?:\([a-zA-Z,]*\))?/g
+  let m, idx = 0; const out = []
+  while ((m = re.exec(compact))) {
+    if (m.index !== idx) return null // có ký tự lạ xen giữa ⇒ không phải chuỗi phép tính thuần A±B±C
+    if (!validNames.has(m[2])) return null
+    out.push({ name: m[2], sign: m[1] === '-' ? '-' : '+' }); idx = re.lastIndex
+  }
+  if (idx !== compact.length || out.length < 2) return null // cần ≥2 đa thức mới coi là "phép tính" (tránh khớp nhầm 1 chữ đứng lẻ)
+  return out
+}
+function timPhepTinhTrongVanBanTran(text, validNames) { // phép tính đôi khi viết TRẦN ngoài $...$, lẫn giữa chữ thường
+  // ("Cho ba đa thức sau: ... .\nA + B - C") — KHÔNG được strip hết whitespace của CẢ đoạn văn (sẽ dính chữ
+  // xung quanh vào), phải tìm đúng CỤM liên tiếp "NAME (+/- NAME)+" bằng \b rồi mới rút gọn cụm đó.
+  const names = [...validNames].map((n) => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')
+  const re = new RegExp(`\\b(?:${names})(?:\\([a-zA-Z,]*\\))?(?:\\s*[+-]\\s*(?:${names})(?:\\([a-zA-Z,]*\\))?)+`)
+  const m = re.exec(text)
+  return m ? parseOpFromText(m[0], validNames) : null
+}
+function parseNamedPolysVaPhepTinh(noiDung) { // "Cho đa thức A(x)=... và B(x)=... . Tính A(x)+B(x)" → {defs:Map(tên→biểu thức), op:[{name,sign}]}
+  const nd = String(noiDung)
+  const segs = [...nd.matchAll(/\$([^$]+)\$/g)].map((m) => m[1])
+  const defs = new Map(); const nonDefSegs = []
+  for (const seg of segs) {
+    const m = seg.match(/^\s*([A-Za-zĐ])(?:\([a-zA-Z,]*\))?\s*=\s*(.+)$/)
+    if (m && !defs.has(m[1])) defs.set(m[1], m[2].trim()); else nonDefSegs.push(seg)
+  }
+  if (defs.size < 2) return null
+  const validNames = new Set(defs.keys())
+  let op = null
+  for (const seg of nonDefSegs) { op = parseOpFromText(seg, validNames); if (op) break }
+  if (!op) op = timPhepTinhTrongVanBanTran(nd.replace(/\$[^$]+\$/g, ' '), validNames) // phép tính đôi khi viết TRẦN ngoài $...$
+  if (!op) return null
+  return { defs, op }
+}
+export function congTruDaThuc(noiDung, rule) {
+  const parsed = parseNamedPolysVaPhepTinh(noiDung); if (!parsed) return null
+  const { defs, op } = parsed
+  const expanded = new Map()
+  for (const [name, expr] of defs) { const t = khaiTrienDaThuc(expr); if (!t) return null; expanded.set(name, t) }
+  const combine = (opSeq) => {
+    const gop = new Map()
+    for (const { name, sign } of opSeq) for (const t of expanded.get(name)) {
+      const key = phanBienKey(t.vars), c = sign === '-' ? mul(R(-1n), t.coef) : t.coef
+      const old = gop.get(key); gop.set(key, old ? { coef: add(old.coef, c), vars: t.vars } : { coef: c, vars: t.vars })
+    }
+    return [...gop.values()]
+  }
+  const dungTerms = sapXepChuanDaThuc(combine(op))
+  const dungText = hienThiDaThuc(dungTerms)
+  if (!rule) return { text: dungText }
+  if (rule === 'R126') { // quên đổi dấu khi phá ngoặc trừ — chỉ đổi dấu HẠNG TỬ ĐẦU của đa thức bị trừ, các hạng tử sau giữ nguyên dấu
+    if (!op.some((o) => o.sign === '-' && expanded.get(o.name).length >= 2)) return null
+    const gop = new Map()
+    for (const { name, sign } of op) {
+      const terms = expanded.get(name)
+      terms.forEach((t, i) => {
+        const flip = sign === '-' && i === 0
+        const c = flip ? mul(R(-1n), t.coef) : t.coef
+        const key = phanBienKey(t.vars); const old = gop.get(key)
+        gop.set(key, old ? { coef: add(old.coef, c), vars: t.vars } : { coef: c, vars: t.vars })
+      })
+    }
+    const t = hienThiDaThuc(sapXepChuanDaThuc([...gop.values()])); if (t === dungText) return null
+    return { text: t, ds: 'quên đổi dấu khi phá ngoặc trừ — chỉ đổi dấu hạng tử đầu của đa thức bị trừ, các hạng tử sau giữ nguyên' }
+  }
+  if (rule === 'R127') { // đảo ngược toàn bộ phép tính (đổi hết dấu cộng thành trừ và ngược lại) = phủ định cả kết quả
+    const t = hienThiDaThuc(sapXepChuanDaThuc(dungTerms.map((x) => ({ coef: mul(R(-1n), x.coef), vars: x.vars }))))
+    if (t === dungText) return null
+    return { text: t, ds: 'đảo ngược toàn bộ phép tính (đổi hết dấu cộng thành trừ và ngược lại)' }
+  }
+  if (rule === 'R128') { // chỉ lấy đa thức đầu tiên đã rút gọn, quên thực hiện phép tính với các đa thức còn lại
+    const first = op[0]
+    const terms = expanded.get(first.name).map((t) => ({ coef: first.sign === '-' ? mul(R(-1n), t.coef) : t.coef, vars: t.vars }))
+    const t = hienThiDaThuc(sapXepChuanDaThuc(terms)); if (t === dungText) return null
+    return { text: t, ds: `chỉ lấy đa thức ${first.name} (đã rút gọn), quên thực hiện phép tính với ${op.slice(1).map((o) => o.name).join(', ')}` }
+  }
+  if (rule === 'R129') { // dự phòng — tính lệch 1 đơn vị ở hệ số hạng tử bậc cao nhất
+    if (!dungTerms.length) return null
+    const top = dungTerms[0] // đã sắp bậc giảm dần, phần tử đầu là bậc cao nhất
+    const v = add(top.coef, R(1n))
+    const terms = dungTerms.map((t) => t === top ? { coef: v, vars: t.vars } : t)
+    const t = hienThiDaThuc(sapXepChuanDaThuc(terms)); if (t === dungText) return null
+    return { text: t, ds: 'tính lệch 1 đơn vị ở hệ số hạng tử bậc cao nhất (dự phòng)' }
+  }
+  return null
+}
+export function chuanHoaDaThuc(s) {
+  let clean = String(s ?? '').replace(/\$/g, '').trim()
+  if (clean.includes('=')) clean = clean.slice(clean.lastIndexOf('=') + 1).trim() // kho đôi khi ghi "A - B = ..." hoặc "= ..." thay vì bare
+  const terms = chiaHangTu(clean)
+  const parsed = terms.map((t) => { const p = parseDonThucCore(t.text); if (!p) return null; return { coef: t.sign === '-' ? mul(R(-1n), p.coef) : p.coef, vars: p.vars } })
+  if (parsed.some((p) => !p)) return clean // không parse được thì trả nguyên văn — canon sẽ lệch, lộ ra ở bước máy≠kho thay vì âm thầm sai
+  const gop = new Map()
+  for (const t of parsed) { const key = phanBienKey(t.vars); const old = gop.get(key); gop.set(key, old ? { coef: add(old.coef, t.coef), vars: t.vars } : t) }
+  return hienThiDaThuc(sapXepChuanDaThuc([...gop.values()]))
+}
+export function evalDaThucKetQua(s) { const t = chuanHoaDaThuc(s); return t || null }
+
+// ── DẠNG 14: Nhân ĐƠN THỨC với ĐƠN THỨC (T108010301, khối 8) ────────────────────────────────────────────────
+// Đề "Tính $4x^2yz \cdot (-3xyz^2)$" / bare "$(3a^2b^5c).(6a^3bc^2)$" / "Rút gọn biểu thức sau:\n$D=...$" —
+// 2-3 nhân tử, mỗi nhân tử là 1 đơn thức (đôi khi hỗn số/phân số hệ số), nối bằng \cdot hoặc dấu "." nhân
+// ngầm hoặc \left(...\right). Đáp số vẫn là 1 ĐƠN THỨC (dùng lại `chuanHoaDonThucKetQua`/`hienThiDonThuc`
+// của DẠNG 11) — khác DẠNG 11/12 ở chỗ cần TÁCH RIÊNG từng nhân tử (không gộp 1 lần) để mô phỏng lỗi
+// "nhân số mũ thay vì cộng" — `parseDonThucCore` một mình không phân biệt được các nhân tử.
+function chuanBiBieuThucNhan(s) { // bỏ \left(/\right)/\cdot, đổi dấu "." nhân ngầm (KHÔNG phải thập phân) thành khoảng trắng để dễ tách nhân tử
+  return String(s).replace(/\\left\(/g, '(').replace(/\\right\)/g, ')').replace(/\\cdot/g, ' ').replace(/(?<!\d)\.(?!\d)/g, ' ').trim()
+}
+function tachNhanTu(s) { // tách chuỗi đã chuẩn bị thành từng nhân tử: 1 cụm ngoặc () hoặc 1 cụm ký tự trần liền nhau
+  const out = []; let i = 0
+  while (i < s.length) {
+    if (s[i] === ' ') { i++; continue }
+    if (s[i] === '(') {
+      let depth = 1, j = i + 1
+      while (j < s.length && depth > 0) { if (s[j] === '(') depth++; else if (s[j] === ')') depth--; j++ }
+      out.push(s.slice(i + 1, j - 1)); i = j; continue
+    }
+    let j = i; while (j < s.length && s[j] !== '(' && s[j] !== ' ') j++
+    if (j === i) { i++; continue }
+    out.push(s.slice(i, j)); i = j
+  }
+  return out
+}
+export function nhanDonThuc(noiDung, rule) {
+  const m = String(noiDung).match(/\$([^$]+)\$/); if (!m) return null
+  let expr = m[1].trim()
+  const mLabel = expr.match(/^[A-Za-zĐ]\s*=\s*(.+)$/); if (mLabel) expr = mLabel[1].trim() // bỏ nhãn "D=" nếu có
+  const factors = tachNhanTu(chuanBiBieuThucNhan(expr)); if (factors.length < 2) return null
+  const parsed = factors.map((f) => parseDonThucCore(f)); if (parsed.some((p) => !p || p.hasIrrational)) return null
+  let dungCoef = R(1n); const dungVars = new Map()
+  for (const p of parsed) { dungCoef = mul(dungCoef, p.coef); for (const [v, e] of p.vars) dungVars.set(v, (dungVars.get(v) ?? 0) + e) }
+  const dungText = hienThiDonThuc(dungCoef, dungVars)
+  if (!rule) return { text: dungText }
+  if (rule === 'R135') { // nhân số mũ của biến thay vì cộng (chỉ ảnh hưởng biến xuất hiện ở ≥2 nhân tử)
+    const theoBien = new Map() // v -> [số mũ ở từng nhân tử có chứa v]
+    for (const p of parsed) for (const [v, e] of p.vars) { if (!theoBien.has(v)) theoBien.set(v, []); theoBien.get(v).push(e) }
+    if (![...theoBien.values()].some((l) => l.length >= 2)) return null
+    const varsSai = new Map()
+    for (const [v, list] of theoBien) varsSai.set(v, list.length >= 2 ? list.reduce((a, b) => a * b, 1) : list[0])
+    const t = hienThiDonThuc(dungCoef, varsSai); if (t === dungText) return null
+    return { text: t, ds: 'nhân số mũ của biến thay vì cộng số mũ khi nhân các đơn thức đồng biến' }
+  }
+  if (rule === 'R136') { // cộng hệ số thay vì nhân hệ số
+    let coefSai = R(0n); for (const p of parsed) coefSai = add(coefSai, p.coef)
+    const t = hienThiDonThuc(coefSai, dungVars); if (t === dungText) return null
+    return { text: t, ds: 'cộng các hệ số lại thay vì nhân, khi nhân đơn thức với đơn thức' }
+  }
+  if (rule === 'R137') { // chỉ lấy nhân tử đầu tiên (đã rút gọn), quên nhân các nhân tử còn lại
+    const t = hienThiDonThuc(parsed[0].coef, parsed[0].vars); if (t === dungText) return null
+    return { text: t, ds: 'chỉ lấy nhân tử đầu tiên, quên nhân với các nhân tử còn lại' }
+  }
+  if (rule === 'R138') { const v = add(dungCoef, R(1n)); const t = hienThiDonThuc(v, dungVars); if (t === dungText) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở hệ số (dự phòng)' } }
+  return null
+}
+
+// ── DẠNG 15: Nhân ĐƠN THỨC với ĐA THỨC (T108010302, khối 8) ─────────────────────────────────────────────────
+// Đề "Tính $2x^2y.(4x^2+6xy)$" / bare "$(-5x)(3x^3+7x^2-x)$" — 1 đơn thức PHÂN PHỐI vào từng hạng tử của 1 đa
+// thức trong ngoặc. Đáp số là 1 ĐA THỨC — tái dùng `hienThiDaThuc`/`sapXepChuanDaThuc`/`chuanHoaDaThuc` của
+// DẠNG 13, nhưng cần tự tách prefix/inner (không gọi thẳng `khaiTrienDaThuc`) vì rule cần biết RIÊNG prefix
+// và từng hạng tử trong ngoặc để mô phỏng "quên phân phối hết"/"quên đổi dấu".
+export function nhanDonDaThuc(noiDung, rule) {
+  const m = String(noiDung).match(/\$([^$]+)\$/); if (!m) return null
+  let expr = chuanBiBieuThucNhan(m[1].trim())
+  const mLabel = expr.match(/^([A-Za-zĐ])\s*=\s*(.+)$/); if (mLabel) expr = mLabel[2].trim()
+  const mm = expr.match(/^(.*)\(([^()]+)\)\s*$/); if (!mm) return null
+  const prefix = parseDonThucCore(mm[1] || '1'); if (!prefix || prefix.hasIrrational) return null
+  const innerTerms = chiaHangTu(mm[2]); if (innerTerms.length < 2) return null
+  const parsedInner = innerTerms.map((t) => { const p = parseDonThucCore(t.text); if (!p || p.hasIrrational) return null; return { sign: t.sign, p } })
+  if (parsedInner.some((x) => !x)) return null
+  const distribute = (prefixCoefFn) => parsedInner.map(({ sign, p }, idx) => {
+    const innerCoef = sign === '-' ? mul(R(-1n), p.coef) : p.coef
+    const coef = mul(prefixCoefFn(idx), innerCoef)
+    const vars = new Map(prefix.vars); for (const [v, e] of p.vars) vars.set(v, (vars.get(v) ?? 0) + e)
+    return { coef, vars }
+  })
+  const dungTerms = sapXepChuanDaThuc(distribute(() => prefix.coef).filter((t) => t.coef.p !== 0n))
+  const dungText = hienThiDaThuc(dungTerms)
+  if (!rule) return { text: dungText }
+  if (rule === 'R139') { // chỉ nhân đơn thức với hạng tử ĐẦU TIÊN trong ngoặc, quên phân phối hết
+    const only = distribute((idx) => (idx === 0 ? prefix.coef : R(0n))).filter((t) => t.coef.p !== 0n)
+    const t = hienThiDaThuc(sapXepChuanDaThuc(only)); if (t === dungText) return null
+    return { text: t, ds: 'chỉ nhân đơn thức với hạng tử đầu tiên trong ngoặc, quên phân phối với các hạng tử còn lại' }
+  }
+  if (rule === 'R140') { // quên đổi dấu khi nhân với các hạng tử SAU — chỉ hạng tử đầu nhân đúng dấu của đơn thức, coi như đơn thức luôn dương ở các hạng tử sau
+    if (prefix.coef.p >= 0n || parsedInner.length < 2) return null
+    const absPrefix = R(-prefix.coef.p, prefix.coef.q)
+    const terms = distribute((idx) => (idx === 0 ? prefix.coef : absPrefix)).filter((t) => t.coef.p !== 0n)
+    const t = hienThiDaThuc(sapXepChuanDaThuc(terms)); if (t === dungText) return null
+    return { text: t, ds: 'quên đổi dấu khi nhân đơn thức âm với các hạng tử sau (chỉ hạng tử đầu nhân đúng dấu)' }
+  }
+  if (rule === 'R141') { // nhân số mũ của biến chung (giữa đơn thức và hạng tử trong ngoặc) thay vì cộng
+    const terms = parsedInner.map(({ sign, p }) => {
+      const innerCoef = sign === '-' ? mul(R(-1n), p.coef) : p.coef
+      const coef = mul(prefix.coef, innerCoef)
+      const vars = new Map(); const allV = new Set([...prefix.vars.keys(), ...p.vars.keys()])
+      for (const v of allV) { const e1 = prefix.vars.get(v) ?? 0, e2 = p.vars.get(v) ?? 0; vars.set(v, e1 && e2 ? e1 * e2 : e1 + e2) }
+      return { coef, vars }
+    }).filter((t) => t.coef.p !== 0n)
+    const t = hienThiDaThuc(sapXepChuanDaThuc(terms)); if (t === dungText) return null
+    return { text: t, ds: 'nhân số mũ của biến chung giữa đơn thức và hạng tử trong ngoặc, thay vì cộng' }
+  }
+  if (rule === 'R142') { // dự phòng — lệch 1 đơn vị ở hệ số hạng tử bậc cao nhất
+    if (!dungTerms.length) return null
+    const top = dungTerms[0]; const v = add(top.coef, R(1n))
+    const terms = dungTerms.map((t) => t === top ? { coef: v, vars: t.vars } : t)
+    const t = hienThiDaThuc(sapXepChuanDaThuc(terms)); if (t === dungText) return null
+    return { text: t, ds: 'tính lệch 1 đơn vị ở hệ số hạng tử bậc cao nhất (dự phòng)' }
+  }
+  return null
+}
+
+// ── DẠNG 16: Nhân ĐA THỨC với ĐA THỨC (T108010303, khối 8) ──────────────────────────────────────────────────
+// Đề "Tính $(x^2+2y)(xy-y^2)$" — 2-3 nhân tử, MỖI nhân tử là 1 đa thức (≥2 hạng tử), khác DẠNG 15 (1 nhân tử
+// luôn là đơn thức). Đáp số vẫn là 1 ĐA THỨC — tái dùng `hienThiDaThuc`/`sapXepChuanDaThuc`/`chuanHoaDaThuc`.
+function parseFactorAsPoly(text) { // 1 nhân tử (nội dung TRONG ngoặc) → mảng {coef,vars} từng hạng tử
+  const terms = chiaHangTu(text)
+  const parsed = terms.map((t) => { const p = parseDonThucCore(t.text); if (!p || p.hasIrrational) return null; return { coef: t.sign === '-' ? mul(R(-1n), p.coef) : p.coef, vars: p.vars } })
+  return parsed.some((p) => !p) ? null : parsed
+}
+function nhanCacDaThuc(factorsPolys) { // tích Cartesian tất cả nhân tử, gộp đồng dạng ở cuối
+  let acc = [{ coef: R(1n), vars: new Map() }]
+  for (const poly of factorsPolys) {
+    const next = []
+    for (const a of acc) for (const b of poly) {
+      const vars = new Map(a.vars); for (const [v, e] of b.vars) vars.set(v, (vars.get(v) ?? 0) + e)
+      next.push({ coef: mul(a.coef, b.coef), vars })
+    }
+    acc = next
+  }
+  const gop = new Map()
+  for (const t of acc) { const key = phanBienKey(t.vars); const old = gop.get(key); gop.set(key, old ? { coef: add(old.coef, t.coef), vars: t.vars } : t) }
+  return [...gop.values()].filter((t) => t.coef.p !== 0n)
+}
+export function nhanDaThuc(noiDung, rule) {
+  const m = String(noiDung).match(/\$([^$]+)\$/); if (!m) return null
+  let expr = chuanBiBieuThucNhan(m[1].trim())
+  const mLabel = expr.match(/^([A-Za-zĐ])\s*=\s*(.+)$/); if (mLabel) expr = mLabel[2].trim()
+  const factorTexts = tachNhanTu(expr); if (factorTexts.length < 2) return null
+  const factorsPolys = factorTexts.map(parseFactorAsPoly); if (factorsPolys.some((p) => !p)) return null
+  if (!factorsPolys.some((p) => p.length >= 2)) return null // không nhân tử nào ≥2 hạng tử ⇒ thực chất là DẠNG 14/15, không phải dạng này
+  const dungTerms = sapXepChuanDaThuc(nhanCacDaThuc(factorsPolys))
+  const dungText = hienThiDaThuc(dungTerms)
+  if (!rule) return { text: dungText }
+  if (rule === 'R143') { // chỉ nhân với hạng tử ĐẦU của các nhân tử SAU nhân tử thứ nhất — quên phân phối hết
+    if (!factorsPolys.slice(1).some((p) => p.length >= 2)) return null
+    const saiFactors = [factorsPolys[0], ...factorsPolys.slice(1).map((p) => [p[0]])]
+    const t = hienThiDaThuc(sapXepChuanDaThuc(nhanCacDaThuc(saiFactors))); if (t === dungText) return null
+    return { text: t, ds: 'chỉ nhân với hạng tử đầu tiên của các đa thức sau, quên phân phối hết các hạng tử còn lại' }
+  }
+  if (rule === 'R144') { // quên đổi dấu — coi mọi hạng tử của các nhân tử SAU nhân tử thứ nhất đều dương
+    const coDauAm = factorsPolys.slice(1).some((p) => p.some((t) => t.coef.p < 0n)); if (!coDauAm) return null
+    const saiFactors = [factorsPolys[0], ...factorsPolys.slice(1).map((p) => p.map((t) => ({ coef: t.coef.p < 0n ? R(-t.coef.p, t.coef.q) : t.coef, vars: t.vars })))]
+    const t = hienThiDaThuc(sapXepChuanDaThuc(nhanCacDaThuc(saiFactors))); if (t === dungText) return null
+    return { text: t, ds: 'quên đổi dấu, coi mọi hạng tử của các đa thức sau đa thức thứ nhất đều dương' }
+  }
+  if (rule === 'R145') { // nhân số mũ biến CHUNG giữa các hạng tử được nhân với nhau (trong 1 tổ hợp), thay vì cộng
+    let combos = [{ coef: R(1n), varLists: new Map() }]
+    for (const poly of factorsPolys) {
+      const next = []
+      for (const a of combos) for (const b of poly) {
+        const varLists = new Map(a.varLists)
+        for (const [v, e] of b.vars) { const list = varLists.has(v) ? [...varLists.get(v)] : []; list.push(e); varLists.set(v, list) }
+        next.push({ coef: mul(a.coef, b.coef), varLists })
+      }
+      combos = next
+    }
+    const terms = combos.map(({ coef, varLists }) => {
+      const vars = new Map(); for (const [v, list] of varLists) vars.set(v, list.length >= 2 ? list.reduce((x, y) => x * y, 1) : list[0])
+      return { coef, vars }
+    })
+    const gop = new Map()
+    for (const t of terms) { const key = phanBienKey(t.vars); const old = gop.get(key); gop.set(key, old ? { coef: add(old.coef, t.coef), vars: t.vars } : t) }
+    const t = hienThiDaThuc(sapXepChuanDaThuc([...gop.values()].filter((x) => x.coef.p !== 0n))); if (t === dungText) return null
+    return { text: t, ds: 'nhân số mũ của biến chung giữa các hạng tử được nhân, thay vì cộng số mũ' }
+  }
+  if (rule === 'R146') { // dự phòng — lệch 1 đơn vị ở hệ số hạng tử bậc cao nhất
+    if (!dungTerms.length) return null
+    const top = dungTerms[0]; const v = add(top.coef, R(1n))
+    const terms = dungTerms.map((t) => t === top ? { coef: v, vars: t.vars } : t)
+    const t = hienThiDaThuc(sapXepChuanDaThuc(terms)); if (t === dungText) return null
+    return { text: t, ds: 'tính lệch 1 đơn vị ở hệ số hạng tử bậc cao nhất (dự phòng)' }
+  }
+  return null
+}
+
+// ── DẠNG 17: Chia ĐƠN THỨC cho ĐƠN THỨC (T108010401, khối 8) ────────────────────────────────────────────────
+// Đề "Tính $12x^2yz^2 : 4xyz$" / bare "$(24x^7y^5) : (-6x^3y^2)$" — dùng dấu ":" (không phải "/"), chia hệ
+// số + TRỪ số mũ từng biến. Đáp số vẫn là 1 ĐƠN THỨC — tái dùng `hienThiDonThuc`/`chuanHoaDonThucKetQua`.
+function tachChiaDonThuc(s) { // tách "TỬ : MẪU" tại dấu ":" Ở BẬC NGOÀI CÙNG (ngoài mọi ngoặc)
+  let depth = 0
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i]
+    if (c === '(') depth++; else if (c === ')') depth--
+    else if (c === ':' && depth === 0) return [s.slice(0, i), s.slice(i + 1)]
+  }
+  return null
+}
+export function chiaDonThuc(noiDung, rule) {
+  const m = String(noiDung).match(/\$([^$]+)\$/); if (!m) return null
+  const expr = chuanBiBieuThucNhan(m[1].trim())
+  const split = tachChiaDonThuc(expr); if (!split) return null
+  const tu = parseDonThucCore(split[0]), mau = parseDonThucCore(split[1])
+  if (!tu || !mau || tu.hasIrrational || mau.hasIrrational || mau.coef.p === 0n) return null
+  const dungVars = new Map(); const allV = new Set([...tu.vars.keys(), ...mau.vars.keys()])
+  for (const v of allV) { const e = (tu.vars.get(v) ?? 0) - (mau.vars.get(v) ?? 0); if (e < 0) return null; if (e > 0) dungVars.set(v, e) }
+  const dungCoef = div(tu.coef, mau.coef); if (!dungCoef) return null
+  const dungText = hienThiDonThuc(dungCoef, dungVars)
+  if (!rule) return { text: dungText }
+  if (rule === 'R147') { // cộng số mũ thay vì trừ (nhầm như đang NHÂN)
+    if (![...allV].some((v) => tu.vars.has(v) && mau.vars.has(v))) return null
+    const varsSai = new Map()
+    for (const v of allV) { const e1 = tu.vars.get(v) ?? 0, e2 = mau.vars.get(v) ?? 0; const e = e1 && e2 ? e1 + e2 : e1; if (e > 0) varsSai.set(v, e) }
+    const t = hienThiDonThuc(dungCoef, varsSai); if (t === dungText) return null
+    return { text: t, ds: 'cộng số mũ của biến thay vì trừ (nhầm phép chia thành phép nhân)' }
+  }
+  if (rule === 'R148') { // quên đổi dấu hệ số khi mẫu âm — coi mẫu luôn dương
+    if (mau.coef.p >= 0n) return null
+    const v = div(tu.coef, R(-mau.coef.p, mau.coef.q)); if (!v) return null
+    const t = hienThiDonThuc(v, dungVars); if (t === dungText) return null
+    return { text: t, ds: 'quên đổi dấu hệ số khi chia cho số âm, coi mẫu luôn dương' }
+  }
+  if (rule === 'R149') { // quên chia hệ số, chỉ trừ số mũ — giữ nguyên hệ số của tử
+    const t = hienThiDonThuc(tu.coef, dungVars); if (t === dungText) return null
+    return { text: t, ds: 'quên chia hệ số, chỉ trừ số mũ và giữ nguyên hệ số của tử' }
+  }
+  if (rule === 'R150') { const v = add(dungCoef, R(1n)); const t = hienThiDonThuc(v, dungVars); if (t === dungText) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở hệ số (dự phòng)' } }
+  return null
+}
+
+// ── DẠNG 18: Chia ĐA THỨC cho ĐƠN THỨC (T108010402, khối 8) ─────────────────────────────────────────────────
+// Đề "Tính: $(10x^5y^3 - 15x^3y^2 + 5x^4y^4) : x^3y$" — từng hạng tử của đa thức tử chia RIÊNG cho đơn thức
+// mẫu. Đáp số là 1 ĐA THỨC — tái dùng `hienThiDaThuc`/`sapXepChuanDaThuc`/`chuanHoaDaThuc` của DẠNG 13.
+function boNgoacNgoai(s) { // bỏ 1 lớp ngoặc bọc NGOÀI CÙNG cả chuỗi (không bỏ nếu ngoặc đóng sớm giữa chừng, vd "(a)+(b)")
+  s = s.trim(); if (s[0] !== '(' || s[s.length - 1] !== ')') return s
+  let depth = 0
+  for (let i = 0; i < s.length; i++) { if (s[i] === '(') depth++; else if (s[i] === ')') { depth--; if (depth === 0 && i !== s.length - 1) return s } }
+  return s.slice(1, -1)
+}
+export function chiaDaChoDon(noiDung, rule) {
+  const m = String(noiDung).match(/\$([^$]+)\$/); if (!m) return null
+  const expr = chuanBiBieuThucNhan(m[1].trim())
+  const split = tachChiaDonThuc(expr); if (!split) return null
+  const tuTerms = chiaHangTu(boNgoacNgoai(split[0])); if (tuTerms.length < 2) return null
+  const mau = parseDonThucCore(split[1]); if (!mau || mau.hasIrrational || mau.coef.p === 0n) return null
+  const parsedTu = tuTerms.map((t) => { const p = parseDonThucCore(t.text); if (!p || p.hasIrrational) return null; return { sign: t.sign, p } })
+  if (parsedTu.some((x) => !x)) return null
+  const varsChiaDung = (tuVars) => {
+    const vars = new Map(); const allV = new Set([...tuVars.keys(), ...mau.vars.keys()])
+    for (const v of allV) { const e = (tuVars.get(v) ?? 0) - (mau.vars.get(v) ?? 0); if (e < 0) return null; if (e > 0) vars.set(v, e) }
+    return vars
+  }
+  const dungTerms = []
+  for (const x of parsedTu) {
+    const tuCoef = x.sign === '-' ? mul(R(-1n), x.p.coef) : x.p.coef
+    const coef = div(tuCoef, mau.coef); const vars = varsChiaDung(x.p.vars)
+    if (!coef || !vars) return null
+    dungTerms.push({ coef, vars })
+  }
+  const dungSorted = sapXepChuanDaThuc(dungTerms)
+  const dungText = hienThiDaThuc(dungSorted)
+  if (!rule) return { text: dungText }
+  if (rule === 'R151') { // chỉ chia hạng tử đầu tiên cho đơn thức, các hạng tử sau giữ nguyên (quên chia hết)
+    const terms = parsedTu.map((x, idx) => {
+      if (idx === 0) return dungTerms[0]
+      const tuCoef = x.sign === '-' ? mul(R(-1n), x.p.coef) : x.p.coef
+      return { coef: tuCoef, vars: x.p.vars }
+    })
+    const t = hienThiDaThuc(sapXepChuanDaThuc(terms)); if (t === dungText) return null
+    return { text: t, ds: 'chỉ chia hạng tử đầu tiên cho đơn thức, các hạng tử sau giữ nguyên (quên chia hết đa thức)' }
+  }
+  if (rule === 'R152') { // cộng số mũ thay vì trừ, cho từng hạng tử có biến chung với mẫu
+    if (!parsedTu.some((x) => [...x.p.vars.keys()].some((v) => mau.vars.has(v)))) return null
+    const terms = parsedTu.map((x) => {
+      const tuCoef = x.sign === '-' ? mul(R(-1n), x.p.coef) : x.p.coef
+      const coef = div(tuCoef, mau.coef); if (!coef) return null
+      const vars = new Map(); const allV = new Set([...x.p.vars.keys(), ...mau.vars.keys()])
+      for (const v of allV) { const e1 = x.p.vars.get(v) ?? 0, e2 = mau.vars.get(v) ?? 0; const e = e1 && e2 ? e1 + e2 : e1; if (e > 0) vars.set(v, e) }
+      return { coef, vars }
+    })
+    if (terms.some((t) => !t)) return null
+    const t = hienThiDaThuc(sapXepChuanDaThuc(terms)); if (t === dungText) return null
+    return { text: t, ds: 'cộng số mũ của biến thay vì trừ, khi chia từng hạng tử của đa thức cho đơn thức' }
+  }
+  if (rule === 'R153') { // quên chia hệ số từng hạng tử, chỉ trừ số mũ — giữ nguyên hệ số của đa thức
+    const terms = parsedTu.map((x, idx) => { const tuCoef = x.sign === '-' ? mul(R(-1n), x.p.coef) : x.p.coef; return { coef: tuCoef, vars: dungTerms[idx].vars } })
+    const t = hienThiDaThuc(sapXepChuanDaThuc(terms)); if (t === dungText) return null
+    return { text: t, ds: 'quên chia hệ số từng hạng tử, chỉ trừ số mũ và giữ nguyên hệ số của đa thức' }
+  }
+  if (rule === 'R154') { // dự phòng — lệch 1 đơn vị ở hệ số hạng tử bậc cao nhất
+    if (!dungSorted.length) return null
+    const top = dungSorted[0]; const v = add(top.coef, R(1n))
+    const terms = dungSorted.map((t) => t === top ? { coef: v, vars: t.vars } : t)
+    const t = hienThiDaThuc(sapXepChuanDaThuc(terms)); if (t === dungText) return null
+    return { text: t, ds: 'tính lệch 1 đơn vị ở hệ số hạng tử bậc cao nhất (dự phòng)' }
+  }
+  return null
+}
+
+// ── DẠNG 19: Chia ĐA THỨC cho ĐA THỨC MỘT BIẾN (T108010403, khối 8) — phép chia đa thức DÀI ─────────────────
+// Đề "Tính : $x^3-6x^2+11x-3 : (x-1)$" — khác hẳn DẠNG 15-18 (không phải phân phối rồi gộp), cần thuật toán
+// CHIA DÀI thật sự: lặp "chia hạng tử dẫn đầu → trừ tích ngược lại" tới khi bậc dư < bậc mẫu. Đáp số dạng
+// "THƯƠNG dư DƯ" — kho đôi khi bỏ hẳn "dư $0$" khi chia hết (2/42 câu), nên canon PHẢI coi 2 cách viết này
+// tương đương (mặc định dư=0 khi không thấy chữ "dư").
+function daThucSangMangHeSo(terms, bien) { // {coef,vars}[] (đúng 1 biến) → mảng hệ số theo bậc, index=bậc, coefs[0]=hằng số
+  const maxDeg = Math.max(0, ...terms.map((t) => t.vars.get(bien) ?? 0))
+  const coefs = new Array(maxDeg + 1).fill(null).map(() => R(0n))
+  for (const t of terms) { const d = t.vars.get(bien) ?? 0; coefs[d] = add(coefs[d], t.coef) }
+  return coefs
+}
+function mangHeSoSangDaThuc(coefs, bien) { return coefs.map((c, d) => ({ coef: c, vars: d > 0 ? new Map([[bien, d]]) : new Map() })) } // hienThiDaThuc tự lọc hệ số 0 + sắp bậc giảm dần
+function chiaDaThucChuan(tuCoefs, mauCoefs, saiDauTru) { // thuật toán chia dài chuẩn; saiDauTru=true ⇒ mô phỏng lỗi cộng thay vì trừ ở MỌI bước
+  const rem = [...tuCoefs]; const mauDeg = mauCoefs.length - 1
+  const thuongDeg = rem.length - 1 - mauDeg
+  if (thuongDeg < 0 || mauCoefs[mauDeg].p === 0n) return null
+  const thuong = new Array(thuongDeg + 1).fill(R(0n))
+  for (let d = rem.length - 1; d >= mauDeg; d--) {
+    const q = div(rem[d], mauCoefs[mauDeg]); if (!q) return null
+    thuong[d - mauDeg] = q
+    for (let k = 0; k <= mauDeg; k++) { const delta = mul(q, mauCoefs[k]); rem[d - mauDeg + k] = saiDauTru ? add(rem[d - mauDeg + k], delta) : sub(rem[d - mauDeg + k], delta) }
+  }
+  return { thuong, du: rem.slice(0, mauDeg) }
+}
+function chiaMotBuoc(tuCoefs, mauCoefs) { // CHỈ 1 vòng lặp đầu tiên rồi dừng (mô phỏng "chia hạng tử dẫn đầu 1 lần, quên lặp lại")
+  const rem = [...tuCoefs]; const mauDeg = mauCoefs.length - 1; const d = rem.length - 1
+  if (d < mauDeg || mauCoefs[mauDeg].p === 0n) return null
+  const q = div(rem[d], mauCoefs[mauDeg]); if (!q) return null
+  const thuong = new Array(d - mauDeg + 1).fill(R(0n)); thuong[d - mauDeg] = q
+  for (let k = 0; k <= mauDeg; k++) rem[d - mauDeg + k] = sub(rem[d - mauDeg + k], mul(q, mauCoefs[k]))
+  return { thuong, du: rem.slice(0, d) } // "dư" ở đây vẫn còn bậc ≥ bậc mẫu (CHƯA chuẩn) — đúng ý đồ mô phỏng lỗi dừng sớm
+}
+export function chiaDaThucMotBien(noiDung, rule) {
+  const m = String(noiDung).match(/\$([^$]+)\$/); if (!m) return null
+  const expr = chuanBiBieuThucNhan(m[1].trim())
+  const split = tachChiaDonThuc(expr); if (!split) return null
+  const tuTerms = parseFactorAsPoly(boNgoacNgoai(split[0])), mauTerms = parseFactorAsPoly(boNgoacNgoai(split[1]))
+  if (!tuTerms || !mauTerms) return null
+  const bienSet = new Set(); for (const t of [...tuTerms, ...mauTerms]) for (const v of t.vars.keys()) bienSet.add(v)
+  if (bienSet.size > 1) return null // hơn 1 biến — ngoài phạm vi dạng này (đã có dạng riêng cho đa biến)
+  const bien = [...bienSet][0] || 'x'
+  const tuCoefs = daThucSangMangHeSo(tuTerms, bien), mauCoefs = daThucSangMangHeSo(mauTerms, bien)
+  const dung = chiaDaThucChuan(tuCoefs, mauCoefs); if (!dung) return null
+  const ghepText = (thuong, du) => `${hienThiDaThuc(mangHeSoSangDaThuc(thuong, bien))} dư ${hienThiDaThuc(mangHeSoSangDaThuc(du, bien))}`
+  const dungText = ghepText(dung.thuong, dung.du)
+  if (!rule) return { text: dungText }
+  if (rule === 'R155') { // dừng sau 1 bước — chỉ chia đúng hạng tử dẫn đầu, không lặp lại cho các hạng tử còn thiếu
+    const b1 = chiaMotBuoc(tuCoefs, mauCoefs); if (!b1) return null
+    const t = ghepText(b1.thuong, b1.du); if (t === dungText) return null
+    return { text: t, ds: 'chỉ chia hạng tử dẫn đầu 1 lần rồi dừng, không lặp lại phép chia cho các hạng tử còn thiếu' }
+  }
+  if (rule === 'R156') { // nhầm dấu khi trừ ở mỗi bước (cộng thay vì trừ tích ngược lại)
+    const sai = chiaDaThucChuan(tuCoefs, mauCoefs, true); if (!sai) return null
+    const t = ghepText(sai.thuong, sai.du); if (t === dungText) return null
+    return { text: t, ds: 'nhầm dấu khi trừ ở mỗi bước của phép chia dài (cộng thay vì trừ tích ngược lại)' }
+  }
+  if (rule === 'R157') { // quên ghi phần dư dù dư khác 0 — trình bày như thể chia hết
+    const duZero = hienThiDaThuc([]); if (hienThiDaThuc(mangHeSoSangDaThuc(dung.du, bien)) === duZero) return null
+    const t = `${hienThiDaThuc(mangHeSoSangDaThuc(dung.thuong, bien))} dư ${duZero}`; if (t === dungText) return null
+    return { text: t, ds: 'quên ghi phần dư, trình bày như thể chia hết' }
+  }
+  if (rule === 'R158') { // dự phòng — lệch 1 đơn vị ở hệ số hạng tử đầu của thương
+    if (!dung.thuong.length) return null
+    const topIdx = dung.thuong.length - 1; const thuongSai = [...dung.thuong]; thuongSai[topIdx] = add(thuongSai[topIdx], R(1n))
+    const t = ghepText(thuongSai, dung.du); if (t === dungText) return null
+    return { text: t, ds: 'tính lệch 1 đơn vị ở hệ số hạng tử đầu của thương (dự phòng)' }
+  }
+  return null
+}
+export function chuanHoaChiaDaThuc(s) {
+  const clean = String(s ?? '').replace(/\$/g, '').trim()
+  const parts = clean.split(/dư/) // KHÔNG dùng \b quanh "dư" — \b của JS coi "ư" không phải \w nên biên từ sai, tách hụt
+  return `${chuanHoaDaThuc(parts[0])} dư ${parts.length > 1 ? chuanHoaDaThuc(parts[1]) : '0'}`
+}
+export function evalChiaDaThucKetQua(s) { const t = chuanHoaChiaDaThuc(s); return t || null }
