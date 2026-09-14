@@ -12212,3 +12212,16 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
   phải (1050,445) khung 1200×900 (kỳ vọng 1054,450 — lệch do font scale theo W) → xoay tiếp (450,1046) → phím `[` về (1050,445);
   đổi trang rồi quay lại giữ góc + nét; Ctrl+Z còn đúng. tsc 0, console sạch. **Chưa thử ảnh thật/ảnh có EXIF** (PH-app nén qua
   canvas nên EXIF đã được áp lúc nén — ảnh vào ERP không còn EXIF). **Prod TA cần Create Deployment tay** như 09/09.
+
+## 2026-09-14 — Lịch trực bổ trợ theo khối/lớp + form xếp tự đề xuất ca trực (Thùy: "8B trực T6 15–16h thì xếp HS 8B tự rơi vào ca này")
+
+- Migration `202609141708_lich_truc_bo_tro.sql` (ĐÃ ÁP): bảng `lich_truc_bo_tro` (mon × khoi|lop_id × thu × giờ × phòng × người
+  trực × hiệu lực; CHECK khoi/lop_id ≥1, giờ kt > bđ; RLS member) + RPC `fn_lich_truc_cua_hs(hs, mon, ngay)` — slot áp dụng cho
+  HS: theo LỚP em đang học (ưu tiên) → theo KHỐI; chỉ slot còn hiệu lực. schema.md refresh.
+- `botro_yeu.ts`: listLichTruc/themLichTruc/suaLichTruc/ketThucLichTruc (kết thúc = hieu_luc_den, không xoá cứng) · lichTrucCuaHS ·
+  `goiYTheoLichTruc(slots, ganNhat)` → ca cụ thể 28 ngày tới, ưu tiên (1) khớp ca bổ trợ lần trước (cùng thứ + giờ bđ) → (2) gần nhất.
+- `XepLichBoTroYeuScreen.tsx`: tab "Xếp lịch | Lịch trực". Tab Lịch trực = form thêm (môn, phạm vi khối/lớp, thứ, khung giờ 30', phòng,
+  người trực, ghi chú) + bảng đang hiệu lực (Kết thúc từng dòng, checkbox hiện đã kết thúc); vá list tại chỗ. Form xếp: có ca trực ⇒
+  select "Ca trực bổ trợ" mặc định ▶ ca ưu tiên nhất (★ khớp ca trước), điền ngày/giờ/phòng/người (người = người trực; chưa phân ⇒
+  TA lớp (mức 1) / người ca cũ (mức 2) / trống (mức 3)); chọn "Không theo lịch trực" ⇒ về mặc định cũ (TKB / ca cũ). Không có lịch
+  trực ⇒ y như trước. tsc sạch. Smoke RPC read-only (`scripts/_diag_lich_truc.ts`): 0 dòng lịch ⇒ [] — Thùy nhập lịch thật rồi test.
