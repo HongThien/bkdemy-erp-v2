@@ -1850,16 +1850,20 @@ function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: Buo
   }
 
   const diemOf = (hsId: string) => diems.find((d) => d.hoc_sinh_id === hsId) ?? null
-  async function save(hsId: string, p: { coBan: number | null; nangCao: number | null; full: boolean }) {
+  async function save(hsId: string, p: { coBan: number | null; nangCao: number | null; full: boolean; coBanTL: number | null; nangCaoTL: number | null; fullTL: boolean }) {
     if (!ky) return
-    // §2.0 (30/08): diem + verdict do TRIGGER tg_diem_thi_tinh ở DB tính khi ghi — client
-    // chỉ gửi dữ kiện thô (cơ bản/nâng cao/full) và hiển thị đúng dòng DB trả về.
+    // §2.0 (30/08): diem + verdict + diem_thi_lai do TRIGGER tg_diem_thi_tinh ở DB tính khi ghi —
+    // client chỉ gửi dữ kiện thô (cơ bản/nâng cao/full + cùng 3 cột "thi lại") và hiển thị đúng dòng DB trả về.
     // ⚠ 08-07: trước đây gọi từ onBlur KHÔNG await/try-catch → upsert lỗi là unhandled rejection, NUỐT lặng
     // (user thấy điểm hiện trên màn = state cục bộ nhưng KHÔNG vào DB, tưởng đã lưu). Giờ báo lỗi rõ + chỉ
     // cập nhật state khi lưu THẬT thành công (anti-NULL: state phản ánh đúng DB).
     let saved: DiemThi
     try {
-      saved = await upsertDiemThi({ kyThiId: ky.id, hocSinhId: hsId, diem: null, bandLucThi: null, verdict: 'khong_dat', vuotBand: false, coBan: p.coBan, nangCao: p.nangCao, full: p.full })
+      saved = await upsertDiemThi({
+        kyThiId: ky.id, hocSinhId: hsId, diem: null, bandLucThi: null, verdict: 'khong_dat', vuotBand: false,
+        coBan: p.coBan, nangCao: p.nangCao, full: p.full,
+        coBanThiLai: p.coBanTL, nangCaoThiLai: p.nangCaoTL, fullThiLai: p.fullTL,
+      })
     } catch (e: any) { alert('Lưu điểm MT lỗi: ' + (e?.message ?? String(e))); return }
     setDiems((prev) => [...prev.filter((d) => d.hoc_sinh_id !== hsId), saved])
   }
@@ -1868,16 +1872,24 @@ function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: Buo
     <div className="mb-3 rounded-xl border border-violet-200 bg-violet-50/40 p-3">
       <div className="mb-2 flex flex-wrap items-center gap-2">
         <span className="text-[13px] font-semibold text-violet-800">Điểm MT</span>
-        <span className="text-[11px] text-slate-500">Cơ bản + Nâng cao → tự tính, <b>tự lưu ngay</b> (≥10 ⇒ 9.75 · tick <b>Full</b> ⇒ 10). Đếm câu thuộc mastery, không nhập ở đây.</span>
+        <span className="text-[11px] text-slate-500">Cơ bản + Nâng cao → tự tính, <b>tự lưu ngay</b> (≥10 ⇒ 9.75 · tick <b>Full</b> ⇒ 10). Cột <b>Thi lại</b> chỉ nhập khi HS thi lại (không tính xếp hạng, chỉ hiện cho PH).</span>
       </div>
       {loading || !ky ? <p className="text-[12px] text-slate-400">Đang tải…</p> : (
         <>
           {/* Khung điểm của ĐỀ (1 lần cho cả buổi) — để trống nếu chưa cần "1.5/2". */}
           <KhungMTInput ky={ky} onSave={saveKhung} />
-          <table className="w-full max-w-lg text-[13px]">
-            <thead><tr className="text-left text-[11px] uppercase tracking-wide text-slate-400">
-              <th className="py-1">Học sinh</th><th className="w-24">Cơ bản</th><th className="w-24">Nâng cao</th><th className="w-14">Full</th><th className="w-16">Điểm</th>
-            </tr></thead>
+          <table className="w-full text-[13px]">
+            <thead>
+              <tr className="text-left text-[10px] uppercase tracking-wide text-slate-400">
+                <th className="py-1" rowSpan={2}>Học sinh</th>
+                <th colSpan={4} className="border-l border-violet-200 bg-violet-100/50 px-1 py-1 text-center font-semibold text-violet-700">Chính</th>
+                <th colSpan={4} className="border-l border-amber-200 bg-amber-50 px-1 py-1 text-center font-semibold text-amber-700">Thi lại (không tính xếp hạng)</th>
+              </tr>
+              <tr className="text-left text-[10px] uppercase tracking-wide text-slate-400">
+                <th className="w-20 border-l border-violet-200">Cơ bản</th><th className="w-20">Nâng cao</th><th className="w-12">Full</th><th className="w-14">Điểm</th>
+                <th className="w-20 border-l border-amber-200">Cơ bản</th><th className="w-20">Nâng cao</th><th className="w-12">Full</th><th className="w-14">Điểm</th>
+              </tr>
+            </thead>
             <tbody>
               {coMat.map((r, i) => <DiemMTRow key={r.hoc_sinh_id} ten={tenHT[i]} init={diemOf(r.hoc_sinh_id)} khungCoBan={ky.khung_co_ban ?? null} khungNangCao={ky.khung_nang_cao ?? null} onSave={(p) => save(r.hoc_sinh_id, p)} />)}
             </tbody>
@@ -1907,23 +1919,37 @@ function KhungMTInput({ ky, onSave }: { ky: KyThi; onSave: (p: { coBan?: number 
   )
 }
 
-function DiemMTRow({ ten, init, khungCoBan, khungNangCao, onSave }: { ten: string; init: DiemThi | null; khungCoBan: number | null; khungNangCao: number | null; onSave: (p: { coBan: number | null; nangCao: number | null; full: boolean }) => void }) {
+function DiemMTRow({ ten, init, khungCoBan, khungNangCao, onSave }: { ten: string; init: DiemThi | null; khungCoBan: number | null; khungNangCao: number | null; onSave: (p: { coBan: number | null; nangCao: number | null; full: boolean; coBanTL: number | null; nangCaoTL: number | null; fullTL: boolean }) => void }) {
   const [coBan, setCoBan] = useState(init?.diem_co_ban != null ? String(init.diem_co_ban) : '')
   const [nangCao, setNangCao] = useState(init?.diem_nang_cao != null ? String(init.diem_nang_cao) : '')
   const [full, setFull] = useState(!!init?.full_diem)
+  // Thi lại (14/09) — 3 cột song song điểm chính; đa số HS = trống (không thi lại).
+  const [coBanTL, setCoBanTL] = useState(init?.diem_thi_lai_co_ban != null ? String(init.diem_thi_lai_co_ban) : '')
+  const [nangCaoTL, setNangCaoTL] = useState(init?.diem_thi_lai_nang_cao != null ? String(init.diem_thi_lai_nang_cao) : '')
+  const [fullTL, setFullTL] = useState(!!init?.full_thi_lai)
   const num = (s: string) => (s.trim() === '' ? null : Number(s))
   const trong = (f = full) => coBan.trim() === '' && nangCao.trim() === '' && !f
-  // Tự LƯU NGAY khi rời ô / tick Full (không cần verdict — verdict tự suy ở tầng service). Bỏ qua khi trống.
-  const commit = (f = full) => { if (!trong(f)) onSave({ coBan: num(coBan), nangCao: num(nangCao), full: f }) }
+  const trongTL = (f = fullTL) => coBanTL.trim() === '' && nangCaoTL.trim() === '' && !f
+  // Tự LƯU NGAY khi rời ô / tick Full (không cần verdict — verdict tự suy ở tầng service). Bỏ qua khi cả 2 khối trống.
+  const commit = (f = full, fTL = fullTL) => {
+    if (trong(f) && trongTL(fTL)) return
+    onSave({ coBan: num(coBan), nangCao: num(nangCao), full: f, coBanTL: num(coBanTL), nangCaoTL: num(nangCaoTL), fullTL: fTL })
+  }
   const diem = tinhDiemMT(num(coBan), num(nangCao), full)
+  const diemTL = tinhDiemMT(num(coBanTL), num(nangCaoTL), fullTL)
   const inp = 'h-7 w-16 rounded border border-slate-300 px-2 text-[13px]'
+  const inpTL = 'h-7 w-16 rounded border border-amber-300 bg-amber-50/40 px-2 text-[13px]'
   return (
     <tr className="border-t border-violet-100">
       <td className="py-1 font-medium text-slate-700">{ten}</td>
-      <td><div className="flex items-center gap-1"><input value={coBan} onChange={(e) => setCoBan(e.target.value)} onBlur={() => commit()} inputMode="decimal" className={inp} />{khungCoBan != null && <span className="text-[11px] text-slate-400">/{khungCoBan}</span>}</div></td>
+      <td className="border-l border-violet-100"><div className="flex items-center gap-1 pl-1"><input value={coBan} onChange={(e) => setCoBan(e.target.value)} onBlur={() => commit()} inputMode="decimal" className={inp} />{khungCoBan != null && <span className="text-[11px] text-slate-400">/{khungCoBan}</span>}</div></td>
       <td><div className="flex items-center gap-1"><input value={nangCao} onChange={(e) => setNangCao(e.target.value)} onBlur={() => commit()} inputMode="decimal" className={inp} />{khungNangCao != null && <span className="text-[11px] text-slate-400">/{khungNangCao}</span>}</div></td>
-      <td><input type="checkbox" checked={full} onChange={(e) => { setFull(e.target.checked); commit(e.target.checked) }} className="h-4 w-4 accent-violet-600" title="Làm trọn vẹn không sai gì = 10đ" /></td>
+      <td><input type="checkbox" checked={full} onChange={(e) => { setFull(e.target.checked); commit(e.target.checked, fullTL) }} className="h-4 w-4 accent-violet-600" title="Làm trọn vẹn không sai gì = 10đ" /></td>
       <td className={`font-semibold tabular-nums ${trong() ? 'text-slate-300' : diem >= 9.75 ? 'text-emerald-700' : 'text-violet-800'}`}>{trong() ? '—' : diem}</td>
+      <td className="border-l border-amber-200"><div className="flex items-center gap-1 pl-1"><input value={coBanTL} onChange={(e) => setCoBanTL(e.target.value)} onBlur={() => commit()} inputMode="decimal" placeholder="—" className={inpTL} />{khungCoBan != null && <span className="text-[11px] text-slate-400">/{khungCoBan}</span>}</div></td>
+      <td><div className="flex items-center gap-1"><input value={nangCaoTL} onChange={(e) => setNangCaoTL(e.target.value)} onBlur={() => commit()} inputMode="decimal" placeholder="—" className={inpTL} />{khungNangCao != null && <span className="text-[11px] text-slate-400">/{khungNangCao}</span>}</div></td>
+      <td><input type="checkbox" checked={fullTL} onChange={(e) => { setFullTL(e.target.checked); commit(full, e.target.checked) }} className="h-4 w-4 accent-amber-600" title="Thi lại trọn vẹn = 10đ" /></td>
+      <td className={`font-semibold tabular-nums ${trongTL() ? 'text-slate-300' : diemTL >= 9.75 ? 'text-emerald-700' : 'text-amber-700'}`}>{trongTL() ? '—' : diemTL}</td>
     </tr>
   )
 }

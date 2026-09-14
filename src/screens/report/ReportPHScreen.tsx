@@ -264,26 +264,47 @@ function NumCol({ label, pct, big }: { label: string; pct: number | null; big?: 
 }
 // Điểm THẬT nhập tay (thang 10, qua ky_thi/diem_thi) — KHÁC %hoạt động ở NumCol (đúng câu/tổng câu).
 // Cố ý không dùng pctCls (màu theo ngưỡng %0-100) cho số 0-10 — dễ đọc sai (vd điểm 8 mà tô đỏ như %8).
-function DiemRow({ tong, cb, nc, truong }: { tong: number | null; cb: number | null; nc: number | null; truong?: number | null }) {
-  const col = (label: string, v: number | null, big?: boolean) => (
+// (Thùy 14/09): PH view hiển thị Tổng (thang 10) + %CB + %NC — KHÔNG điểm CB/NC tuyệt đối. Có thi lại
+// (không tính xếp hạng) → thêm dòng "Thi lại" cùng bố cục; HS không thi lại thì ẩn hẳn.
+type MTDiem = { tong: number | null; pctCB: number | null; pctNC: number | null }
+function DiemRow({ chinh, thiLai, truong }: { chinh: MTDiem; thiLai?: MTDiem | null; truong?: number | null }) {
+  const colD = (label: string, v: number | null, big?: boolean) => (
     <div className="flex-1 px-3 text-center first:pl-0">
       <div className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">{label}</div>
       <div className={`font-extrabold tabular-nums text-slate-700 ${big ? 'text-[20px]' : 'text-[15px]'}`}>{v == null ? '—' : v}</div>
     </div>
   )
+  const colP = (label: string, v: number | null) => (
+    <div className="flex-1 px-3 text-center first:pl-0">
+      <div className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">{label}</div>
+      <div className={`font-extrabold tabular-nums ${pctCls(v)} text-[15px]`}>{v == null ? '—' : v + '%'}</div>
+    </div>
+  )
+  const hasTL = thiLai && (thiLai.tong != null || thiLai.pctCB != null || thiLai.pctNC != null)
   return (
     <div className="mt-2.5 rounded-lg bg-slate-50 px-1 py-2">
       <div className="mb-1 px-3 text-[10px] font-semibold uppercase tracking-wide text-slate-400">Điểm MT (thang 10, nhập tay)</div>
       <div className="flex divide-x divide-slate-200">
-        {col('Tổng', tong, true)}
-        {col('Cơ bản', cb)}
-        {col('Nâng cao', nc)}
+        {colD('Tổng', chinh.tong, true)}
+        {colP('Cơ bản', chinh.pctCB)}
+        {colP('Nâng cao', chinh.pctNC)}
       </div>
+      {hasTL && (
+        <>
+          <div className="mx-3 mt-2 border-t border-dashed border-amber-300/70" />
+          <div className="mb-1 mt-1 px-3 text-[10px] font-semibold uppercase tracking-wide text-amber-700">Thi lại (không tính xếp hạng)</div>
+          <div className="flex divide-x divide-amber-100">
+            {colD('Tổng', thiLai!.tong, true)}
+            {colP('Cơ bản', thiLai!.pctCB)}
+            {colP('Nâng cao', thiLai!.pctNC)}
+          </div>
+        </>
+      )}
       {truong != null && <div className="mt-1.5 px-3 text-[11px] text-slate-500">Điểm thi trường: <b className="text-slate-700">{truong}</b></div>}
     </div>
   )
 }
-function ActCard({ icon, ten, cb, nc, warn, diem }: { icon: string; ten: string; cb: Bucket; nc: Bucket; warn?: string; diem?: { tong: number | null; cb: number | null; nc: number | null; truong?: number | null } }) {
+function ActCard({ icon, ten, cb, nc, warn, diem }: { icon: string; ten: string; cb: Bucket; nc: Bucket; warn?: string; diem?: { chinh: MTDiem; thiLai?: MTDiem | null; truong?: number | null } }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
       <div className="mb-3 text-[14px] font-bold text-slate-700">{icon} {ten}</div>
@@ -292,13 +313,14 @@ function ActCard({ icon, ten, cb, nc, warn, diem }: { icon: string; ten: string;
         <NumCol label="Cơ bản" pct={cb.pct} />
         <NumCol label="Nâng cao" pct={nc.pct} />
       </div>
-      {diem && <DiemRow tong={diem.tong} cb={diem.cb} nc={diem.nc} truong={diem.truong} />}
+      {diem && <DiemRow chinh={diem.chinh} thiLai={diem.thiLai} truong={diem.truong} />}
       {warn && <div className="mt-2.5 rounded-lg bg-amber-50 px-2.5 py-1.5 text-[11px] font-medium text-amber-700">⚠ {warn}</div>}
     </div>
   )
 }
 function TongQuanCards({ tq, missCount }: { tq: TongQuanHS; missCount: number }) {
   const h = tq.hoanThanh.toanBo.etMt, a = tq.hoatDong
+  const tl = tq.diem.mt.thiLai
   return (
     <div className="space-y-3">
       <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
@@ -313,7 +335,11 @@ function TongQuanCards({ tq, missCount }: { tq: TongQuanHS; missCount: number })
       <ActCard icon="📝" ten="Test cuối giờ (ET)" cb={a.etCoBan} nc={a.etNangCao} />
       <ActCard icon="🏠" ten="Bài tập về nhà" cb={a.btvnCoBan} nc={a.btvnNangCao} warn={missCount > 0 ? `Chưa hoàn thành BTVN ${missCount} lần trong tháng này` : undefined} />
       <ActCard icon="📅" ten="Test tháng (MT)" cb={a.mtCoBan} nc={a.mtNangCao}
-        diem={{ tong: tq.diem.mt.tb, cb: tq.diem.mt.coBan, nc: tq.diem.mt.nangCao, truong: tq.diem.truong.tb }} />
+        diem={{
+          chinh: { tong: tq.diem.mt.tb, pctCB: tq.diem.mt.pctCoBan, pctNC: tq.diem.mt.pctNangCao },
+          thiLai: tl.n || tl.nCoBan || tl.nNangCao ? { tong: tl.tb, pctCB: tl.pctCoBan, pctNC: tl.pctNangCao } : null,
+          truong: tq.diem.truong.tb,
+        }} />
     </div>
   )
 }

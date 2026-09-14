@@ -1335,22 +1335,34 @@ export async function listCaHoc(): Promise<CaHoc[]> {
   return rows.map((b) => ({ id: b.id, ma_buoi: b.ma_buoi, ten_lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, mon: b.lop?.mon ?? null, ingame_dong: !!b.ingame_dong_at, et_dong: !!b.et_dong_at, hasMT: mtBuoiIds.has(b.id), mt_dong: !!b.mt_dong_at, trang_thai: b.trang_thai }))
 }
 export type ExpRow = { source: string; amount: number; mon: string | null; created_at: string; ngay?: string | null; lop?: string | null }
-export type DiemHS = { elo: { mon: string; elo: number; sessions: number; exp: number }[]; hist: EloHist[]; exp: ExpRow[] }
-// Hồ sơ điểm 1 HS: Elo per môn (+EXP môn) · lịch sử Elo (timeline) · dòng EXP.
+export type DiemHS = { elo: { mon: string; elo: number; sessions: number }[]; hist: EloHist[] }
+// Hồ sơ điểm 1 HS: Elo per môn · lịch sử Elo (timeline). EXP xem RIÊNG qua getExpThang (theo
+// tháng — EXP là lương THÁNG, không gộp dồn nhiều tháng như Elo, xem [[gami_exp_chi_tiet_thang]]).
 export async function getDiemHS(hocSinhId: string): Promise<DiemHS> {
-  // exp: 1 HS ledger chi tiết cả mùa ~vài trăm dòng, cuối mùa CÓ THỂ >1000 (cap PostgREST) → pagedLedger.
-  const [eloR, histR, expRows] = await Promise.all([
+  const [eloR, histR] = await Promise.all([
     supabase.from('gami_elo').select('mon, elo, sessions_played').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     supabase.from('gami_elo_history').select('buoi_hoc_id, phase, mon, elo_before, delta, elo_after, created_at, buoi:buoi_hoc_id(ngay, lop:lop_id(ten_lop))').eq('hoc_sinh_id', hocSinhId).order('created_at', { ascending: false }).limit(LIMIT),
-    pagedLedger((q) => q.select('source, amount, mon, created_at, buoi:ref_buoi_hoc_id(ngay, lop:lop_id(ten_lop))').eq('hoc_sinh_id', hocSinhId)),
   ])
-  const expR = { data: [...expRows].sort((a: any, b: any) => (a.created_at < b.created_at ? 1 : -1)) }
-  const expByMon = new Map<string, number>()
-  for (const r of (expR.data ?? []) as any[]) expByMon.set(r.mon ?? '', (expByMon.get(r.mon ?? '') ?? 0) + Number(r.amount))
   return {
-    elo: ((eloR.data ?? []) as any[]).map((e) => ({ mon: e.mon, elo: e.elo, sessions: e.sessions_played, exp: expByMon.get(e.mon) ?? 0 })),
+    elo: ((eloR.data ?? []) as any[]).map((e) => ({ mon: e.mon, elo: e.elo, sessions: e.sessions_played })),
     hist: ((histR.data ?? []) as any[]).map((h) => ({ buoi_hoc_id: h.buoi_hoc_id, phase: h.phase, mon: h.mon, elo_before: h.elo_before, delta: h.delta, elo_after: h.elo_after, created_at: h.created_at, ngay: h.buoi?.ngay, lop: h.buoi?.lop?.ten_lop })),
-    exp: ((expR.data ?? []) as any[]).map((x) => ({ source: x.source, amount: x.amount, mon: x.mon, created_at: x.created_at, ngay: x.buoi?.ngay, lop: x.buoi?.lop?.ten_lop })),
+  }
+}
+// EXP + xu của 1 HS trong 1 THÁNG (p_ym 'YYYY-MM') — dòng chi tiết per hoạt động + tổng per môn.
+// §2.0: tổng per môn lấy từ fn_gami_exp_xu_thang (RPC có sẵn của ChotXuScreen), KHÔNG cộng tay
+// từ dòng chi tiết ở client. Cùng luật "thuộc tháng nào" với hàm đó nên số luôn khớp Chốt xu.
+export async function getExpThang(hocSinhId: string, ym: string): Promise<{ rows: ExpRow[]; tongMon: Map<string, number> }> {
+  const [detR, tongR] = await Promise.all([
+    supabase.rpc('fn_gami_exp_chi_tiet_thang', { p_hoc_sinh_id: hocSinhId, p_ym: ym }),
+    supabase.rpc('fn_gami_exp_xu_thang', { p_ym: ym, p_hoc_sinh_id: hocSinhId }),
+  ])
+  if (detR.error) throw detR.error
+  if (tongR.error) throw tongR.error
+  const tongMon = new Map<string, number>()
+  for (const r of (tongR.data ?? []) as any[]) tongMon.set(r.mon ?? '', Number(r.exp))
+  return {
+    rows: ((detR.data ?? []) as any[]).map((x) => ({ source: x.source, amount: Number(x.amount), mon: x.mon, created_at: x.created_at, ngay: x.ngay, lop: x.lop })),
+    tongMon,
   }
 }
 

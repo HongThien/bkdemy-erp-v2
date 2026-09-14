@@ -12635,3 +12635,30 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
   (câu kho sai đáp số, câu ngoài phạm vi sub-shape đã chọn — mỗi chỗ đều đã ghi lý do cụ thể trong log) và
   vài chương "ôn tập tổng hợp" nhỏ (T109110xxx) chưa khảo sát riêng. 50 rule mới (R305-362), 18 hàm mới
   trong `mini-dang.mjs` viết trong phiên hôm nay. Chưa commit (chờ yêu cầu).
+
+## 2026-09-14 — Chấm BTVN: nút XOAY ẢNH ⟲/⟳ (CEO: PH hay nộp ảnh ngang/ngược)
+- `VeAnh`: tách "nền" khỏi `<img>` — `gocRef` (ảnh gốc) + `xoayRef[trang]` (0/90/180/270, CHƯA LƯU, giữ theo trang như nháp nét)
+  → `dungNen()` vẽ xoay vào canvas offscreen → hiển thị bằng **canvas nền thứ 2** (`bgRef`), canvas nét đè lên. Xoay = nét chưa lưu
+  đổi toạ độ theo (CW: (x,y)→(H−y,x); CCW: (x,y)→(y,W−x)), khung/khoanh đổi 2 góc, chữ/dấu đổi vị trí (chữ vẫn nằm ngang — đúng
+  ý vì TA xoay cho ảnh đứng rồi mới ghi). **Lưu** ghép nền ĐÃ XOAY + nét → PNG `path_cham` đứng đúng chiều ⇒ PH thấy bản đứng;
+  sau lưu/Làm lại trang reset xoay=0. Nút Lưu bật khi có xoay dù chưa vẽ. Phím `[` `]`. Chấm vàng thumbnail cả khi chỉ xoay.
+- **Sai 1 lần, sửa ngay:** bản đầu nền qua `canvas.toBlob` → blob URL → `<img>`: tab bị che thì callback hoãn vô hạn (đo bằng
+  harness: dims không đổi sau 1.5s), tab thật cũng tốn 1 nhịp encode JPEG vô ích + rủi ro revoke URL đang hiển thị. Đổi sang
+  canvas nền vẽ đồng bộ; effect `[nen]` gọi `paint()` thẳng, bỏ `requestAnimationFrame` (rAF cũng không chạy khi tab che).
+- Verify bằng harness (đã xoá) đo pixel trên canvas nét (screenshot pane liên tục timeout): S đặt (450,146) khung 900×1200 → xoay
+  phải (1050,445) khung 1200×900 (kỳ vọng 1054,450 — lệch do font scale theo W) → xoay tiếp (450,1046) → phím `[` về (1050,445);
+  đổi trang rồi quay lại giữ góc + nét; Ctrl+Z còn đúng. tsc 0, console sạch. **Chưa thử ảnh thật/ảnh có EXIF** (PH-app nén qua
+  canvas nên EXIF đã được áp lúc nén — ảnh vào ERP không còn EXIF). **Prod TA cần Create Deployment tay** như 09/09.
+
+## 2026-09-14 — Lịch trực bổ trợ theo khối/lớp + form xếp tự đề xuất ca trực (Thùy: "8B trực T6 15–16h thì xếp HS 8B tự rơi vào ca này")
+
+- Migration `202609141708_lich_truc_bo_tro.sql` (ĐÃ ÁP): bảng `lich_truc_bo_tro` (mon × khoi|lop_id × thu × giờ × phòng × người
+  trực × hiệu lực; CHECK khoi/lop_id ≥1, giờ kt > bđ; RLS member) + RPC `fn_lich_truc_cua_hs(hs, mon, ngay)` — slot áp dụng cho
+  HS: theo LỚP em đang học (ưu tiên) → theo KHỐI; chỉ slot còn hiệu lực. schema.md refresh.
+- `botro_yeu.ts`: listLichTruc/themLichTruc/suaLichTruc/ketThucLichTruc (kết thúc = hieu_luc_den, không xoá cứng) · lichTrucCuaHS ·
+  `goiYTheoLichTruc(slots, ganNhat)` → ca cụ thể 28 ngày tới, ưu tiên (1) khớp ca bổ trợ lần trước (cùng thứ + giờ bđ) → (2) gần nhất.
+- `XepLichBoTroYeuScreen.tsx`: tab "Xếp lịch | Lịch trực". Tab Lịch trực = form thêm (môn, phạm vi khối/lớp, thứ, khung giờ 30', phòng,
+  người trực, ghi chú) + bảng đang hiệu lực (Kết thúc từng dòng, checkbox hiện đã kết thúc); vá list tại chỗ. Form xếp: có ca trực ⇒
+  select "Ca trực bổ trợ" mặc định ▶ ca ưu tiên nhất (★ khớp ca trước), điền ngày/giờ/phòng/người (người = người trực; chưa phân ⇒
+  TA lớp (mức 1) / người ca cũ (mức 2) / trống (mức 3)); chọn "Không theo lịch trực" ⇒ về mặc định cũ (TKB / ca cũ). Không có lịch
+  trực ⇒ y như trước. tsc sạch. Smoke RPC read-only (`scripts/_diag_lich_truc.ts`): 0 dòng lịch ⇒ [] — Thùy nhập lịch thật rồi test.

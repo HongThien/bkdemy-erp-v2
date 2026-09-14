@@ -92,11 +92,24 @@ export const ReportCardView = forwardRef<HTMLDivElement, ReportCardProps>(functi
   )
   const hexDiem = (v: number | null) => v == null ? '#cbd5e1' : v >= 8 ? '#059669' : v >= 5 ? '#d97706' : '#e11d48'
   const cellDiem = (lb: string, v: number | null, sz: number, colored?: boolean) => <div><span style={{ fontSize: 7.5, color: '#94a3b8', display: 'block' }}>{lb}</span><span style={{ fontSize: sz, fontWeight: 900, color: colored ? hexDiem(v) : v == null ? '#cbd5e1' : '#15233b' }}>{v == null ? '—' : v}</span></div>
-  const assessRowDiem = (ten: string, hx: string, tong: number | null, cb: number | null, nc: number | null) => (
-    <div style={{ display: 'grid', gridTemplateColumns: '1.25fr .6fr .6fr .6fr', gap: 6, alignItems: 'center', minHeight: 46, borderTop: '1px dashed #e9edf4' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 10.5, fontWeight: 800, color: '#15233b' }}><span style={{ width: 9, height: 9, borderRadius: 5, background: hx, boxShadow: `0 0 0 4px ${hx}22` }} />{ten}</div>
-      {cellDiem('Tổng', tong, 16, true)}{cellDiem('Cơ bản', cb, 15)}{cellDiem('Nâng cao', nc, 15)}
-    </div>
+  // (Thùy 14/09): Test tháng ở Report PH hiển thị Tổng (điểm) + %CB + %NC — không phải điểm CB/NC tuyệt đối.
+  // %CB/%NC = ΣdiemCoBan / ΣkhungCoBan × 100 (đã tính ở mastery.ts, null nếu không có khung).
+  const cellPct = (lb: string, v: number | null, sz: number) => <div><span style={{ fontSize: 7.5, color: '#94a3b8', display: 'block' }}>{lb}</span><span style={{ fontSize: sz, fontWeight: 900, color: hexPct(v) }}>{v == null ? '—' : v + '%'}</span></div>
+  const assessRowDiem = (ten: string, hx: string, tong: number | null, pctCB: number | null, pctNC: number | null, thiLai?: { tong: number | null; pctCB: number | null; pctNC: number | null } | null) => (
+    <>
+      <div style={{ display: 'grid', gridTemplateColumns: '1.25fr .6fr .6fr .6fr', gap: 6, alignItems: 'center', minHeight: 46, borderTop: '1px dashed #e9edf4' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 10.5, fontWeight: 800, color: '#15233b' }}><span style={{ width: 9, height: 9, borderRadius: 5, background: hx, boxShadow: `0 0 0 4px ${hx}22` }} />{ten}</div>
+        {cellDiem('Tổng', tong, 16, true)}{cellPct('Cơ bản', pctCB, 15)}{cellPct('Nâng cao', pctNC, 15)}
+      </div>
+      {thiLai && (thiLai.tong != null || thiLai.pctCB != null || thiLai.pctNC != null) && (
+        <div style={{ display: 'grid', gridTemplateColumns: '1.25fr .6fr .6fr .6fr', gap: 6, alignItems: 'center', minHeight: 40, background: '#fffaf0', borderTop: '1px dashed #f3d9a8', padding: '2px 0' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 10, fontWeight: 700, color: '#b45309', paddingLeft: 17 }}>
+            <span style={{ fontSize: 9, fontWeight: 800, background: '#fef3c7', color: '#b45309', padding: '2px 6px', borderRadius: 6 }}>THI LẠI</span>
+          </div>
+          {cellDiem('Tổng', thiLai.tong, 15, true)}{cellPct('Cơ bản', thiLai.pctCB, 14)}{cellPct('Nâng cao', thiLai.pctNC, 14)}
+        </div>
+      )}
+    </>
   )
   return (
     <div ref={ref} style={{ width: 390, margin: '0 auto', background: '#f8fbff', borderRadius: 28, overflow: 'hidden', fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif", boxShadow: '0 20px 55px rgba(26,52,95,.16)', border: '1px solid rgba(255,255,255,.8)' }}>
@@ -165,7 +178,10 @@ export const ReportCardView = forwardRef<HTMLDivElement, ReportCardProps>(functi
           </div>
           {assessRow('Test cuối giờ', '#315fdd', a.etCoBan, a.etNangCao, true)}
           {assessRow('Bài tập về nhà', '#12a875', a.btvnCoBan, a.btvnNangCao)}
-          {assessRowDiem('Test tháng', '#e29a23', tq.diem.mt.tb, tq.diem.mt.coBan, tq.diem.mt.nangCao)}
+          {assessRowDiem('Test tháng', '#e29a23', tq.diem.mt.tb, tq.diem.mt.pctCoBan, tq.diem.mt.pctNangCao,
+            (tq.diem.mt.thiLai.n || tq.diem.mt.thiLai.nCoBan || tq.diem.mt.thiLai.nNangCao)
+              ? { tong: tq.diem.mt.thiLai.tb, pctCB: tq.diem.mt.thiLai.pctCoBan, pctNC: tq.diem.mt.thiLai.pctNangCao }
+              : null)}
           {missCount > 0 ? <div style={{ fontSize: 9.5, color: '#da7d00', marginTop: 6 }}>⚠ Chưa hoàn thành BTVN {missCount} lần trong tháng</div> : null}
         </div>
         {bc.muc_tieu ? <div style={{ display: 'grid', gridTemplateColumns: '36px 1fr', gap: 10, alignItems: 'center', background: 'linear-gradient(135deg,#fff9e9,#fff)', border: '1px solid #f3e7bf', borderRadius: 20, padding: '12px 13px', marginBottom: 10 }}>
