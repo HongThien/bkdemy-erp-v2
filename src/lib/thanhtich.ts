@@ -160,6 +160,25 @@ export async function getOrCreateKyThiMTChoBuoi(buoiId: string, ten: string, mon
   }
 }
 
+// ── NHẬP ĐIỂM MT THEO LỚP (Thùy 14/09): tab "Nhập điểm MT" trong Kết quả học tập, thay vì phải mở buổi.
+// Trả về TỪNG buổi MT của lớp (đã có ky_thi mt_sat_hach) trong mùa; kèm `buoi_ngay` để hiển thị cột theo
+// ngày. Buổi CHƯA mở tab MT ⇒ chưa có ky_thi ⇒ không hiện ở đây (GV vào buổi mở tab MT lần đầu để tạo).
+// 2 query (không dùng nested filter — PostgREST không sort được theo cột nested): buổi_học của lớp trước,
+// rồi ky_thi trong tập buổi đó.
+export type KyThiMTLop = KyThi & { buoi_ngay: string | null }
+export async function listKyThiMTCuaLop(lopId: string, mua: string): Promise<KyThiMTLop[]> {
+  const { data: buois, error: e1 } = await supabase.from('buoi_hoc').select('id, ngay').eq('lop_id', lopId).order('ngay', { ascending: true }).limit(LIMIT)
+  if (e1) throw e1
+  const buoiIds = ((buois ?? []) as { id: string; ngay: string }[]).map((b) => b.id)
+  if (!buoiIds.length) return []
+  const ngayCua = new Map(((buois ?? []) as { id: string; ngay: string }[]).map((b) => [b.id, b.ngay]))
+  const { data: kts, error: e2 } = await supabase.from('ky_thi').select('*').eq('loai', 'mt_sat_hach').eq('mua', mua).in('buoi_hoc_id', buoiIds).limit(LIMIT)
+  if (e2) throw e2
+  return ((kts ?? []) as KyThi[])
+    .map((k) => ({ ...k, buoi_ngay: k.buoi_hoc_id ? ngayCua.get(k.buoi_hoc_id) ?? null : null }))
+    .sort((a, b) => (a.buoi_ngay ?? '').localeCompare(b.buoi_ngay ?? ''))
+}
+
 // ── BXH ĐIỂM MT TẠI TRUNG TÂM (Thùy 09-11): 1 BXH per (mon × khoi × ym) — mọi HS đang học các lớp
 // cùng (mon, khoi) đứng chung 1 bảng, sort theo điểm MT tb giảm dần. Điểm + rank do fn_bxh_diem_mt_khoi
 // tính ở DB (§2.0). Luật giữ nguyên văn của MT (Thùy 08-19 + 08-21): điểm CỦA EM ĐI THEO EM (avg mọi
