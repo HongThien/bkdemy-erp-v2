@@ -46,6 +46,10 @@ export default function CumBaiTab({ maDang, caus, cauTbl, view, onEditCau, onClo
   const [tao, setTao] = useState<null | { ten: string; kemChon: boolean }>(null)
   const [suaTen, setSuaTen] = useState<null | { ma: string; ten: string }>(null)
   const [busy, setBusy] = useState(false)
+  // ⭐ 14/09 (Thùy): thu/mở từng cụm — nhiều cụm cùng dạng thì scroll rất dài, cần thu chỉ hiện header
+  // để lướt nhanh, mở khi cần vào chi tiết. Default MỞ (giữ hành vi cũ), lưu tập cụm ĐANG THU.
+  const [dongCums, setDongCums] = useState<Set<string>>(new Set())
+  const toggleDong = (ma: string) => setDongCums((s) => { const n = new Set(s); n.has(ma) ? n.delete(ma) : n.add(ma); return n })
 
   async function reloadCums() {
     setLoading(true); setErr(null)
@@ -181,6 +185,12 @@ export default function CumBaiTab({ maDang, caus, cauTbl, view, onEditCau, onClo
         </div>
         <div className="flex items-center gap-3">
           {thanhCloneToggle}
+          {cums.length > 1 && (
+            <button onClick={() => setDongCums(dongCums.size === cums.length ? new Set() : new Set(cums.map((c) => c.ma_cum)))}
+              className={btn} title="Thu/mở tất cả cụm">
+              {dongCums.size === cums.length ? '▾ Mở hết' : '▸ Thu hết'}
+            </button>
+          )}
           <button onClick={() => setTao({ ten: '', kemChon: false })} disabled={busy}
             className="rounded-md bg-indigo-600 px-3 py-1.5 text-[12px] font-semibold text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">
             ＋ Cụm mới
@@ -198,9 +208,12 @@ export default function CumBaiTab({ maDang, caus, cauTbl, view, onEditCau, onClo
       ) : cums.map((c) => {
         const pool = theoCum.get(c.ma_cum) ?? []
         const gocs = pool.filter(laGoc)
+        const dong = dongCums.has(c.ma_cum)
         return (
           <div key={c.ma_cum} className="rounded-xl border border-slate-200 bg-white p-4">
-            <div className="mb-2.5 flex flex-wrap items-center gap-2">
+            <div className={`flex flex-wrap items-center gap-2 ${dong ? '' : 'mb-2.5'}`}>
+              <button onClick={() => toggleDong(c.ma_cum)} className="shrink-0 text-slate-400 hover:text-indigo-600"
+                title={dong ? 'Mở cụm' : 'Thu cụm'}>{dong ? '▸' : '▾'}</button>
               {suaTen?.ma === c.ma_cum ? (
                 <input autoFocus value={suaTen.ten} onChange={(e) => setSuaTen({ ...suaTen, ten: e.target.value })}
                   onKeyDown={async (e) => {
@@ -237,13 +250,13 @@ export default function CumBaiTab({ maDang, caus, cauTbl, view, onEditCau, onClo
               </div>
             </div>
 
-            {tienDeCum === c.ma_cum && (
+            {!dong && tienDeCum === c.ma_cum && (
               <div className="mb-2.5">
                 <TienDeBox nut={c.ma_cum} tang="cum" cauTbl={cauTbl} ungVien={ungVienCum} nhan="cụm" />
               </div>
             )}
 
-            {gocs.length === 0 ? (
+            {!dong && (gocs.length === 0 ? (
               <p className="py-3 text-center text-[13px] text-slate-400">Cụm rỗng — bấm <b>＋ Thêm bài</b> để đưa bài vào.</p>
             ) : (
               <ul className="space-y-1.5">
@@ -253,7 +266,7 @@ export default function CumBaiTab({ maDang, caus, cauTbl, view, onEditCau, onClo
                     onGo={() => chay(() => ganCumBai([g.ma_cau], null, cauTbl))} />
                 ))}
               </ul>
-            )}
+            ))}
           </div>
         )
       })}
