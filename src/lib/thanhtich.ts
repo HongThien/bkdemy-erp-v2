@@ -10,7 +10,12 @@ const vnTodayStr = () => { const v = vnNow(); return `${v.getUTCFullYear()}-${St
 
 export type Verdict = 'dat' | 'gan_dat' | 'khong_dat'
 export type KyThi = { id: string; ten: string; loai: string; he_so: number; dot: string | null; ngay: string | null; mon: string | null; khoi: string | null; mua: string | null; buoi_hoc_id: string | null; khung_co_ban?: number | null; khung_nang_cao?: number | null }
-export type DiemThi = { ky_thi_id: string; hoc_sinh_id: string; diem: number | null; band_luc_thi: string | null; verdict: Verdict; vuot_band: boolean; diem_co_ban?: number | null; diem_nang_cao?: number | null; full_diem?: boolean }
+export type DiemThi = {
+  ky_thi_id: string; hoc_sinh_id: string; diem: number | null; band_luc_thi: string | null; verdict: Verdict; vuot_band: boolean
+  diem_co_ban?: number | null; diem_nang_cao?: number | null; full_diem?: boolean
+  // Điểm THI LẠI (Thùy 14/09) — chỉ hiện cho PH, KHÔNG tính xếp hạng/Level/XU. Đa số HS = NULL (không thi lại).
+  diem_thi_lai?: number | null; diem_thi_lai_co_ban?: number | null; diem_thi_lai_nang_cao?: number | null; full_thi_lai?: boolean
+}
 
 // ⚠ §2.0 (30/08): NGUỒN CHÂN LÝ của điểm + verdict MT = trigger `tg_diem_thi_tinh` ở DB
 // (mig 202608300221) — dòng có cơ bản/nâng cao/full là DB TỰ tính khi ghi, client gửi gì
@@ -93,13 +98,25 @@ export async function listDiemThiByKyThi(kyThiIds: string[]): Promise<DiemThi[]>
 // với đường MT (có coBan/nangCao/full) thì diem+verdict do trigger tính, client phải dùng
 // giá trị trả về này chứ không tự suy (§2.0). Đường thi trường/khảo sát: diem nhập thẳng,
 // verdict staff duyệt — trigger không đụng.
-export async function upsertDiemThi(d: { kyThiId: string; hocSinhId: string; diem: number | null; bandLucThi: string | null; verdict: Verdict; vuotBand: boolean; coBan?: number | null; nangCao?: number | null; full?: boolean }): Promise<DiemThi> {
+export async function upsertDiemThi(d: {
+  kyThiId: string; hocSinhId: string; diem: number | null; bandLucThi: string | null; verdict: Verdict; vuotBand: boolean
+  coBan?: number | null; nangCao?: number | null; full?: boolean
+  // Thi lại (14/09) — optional; nếu tất cả undefined thì upsert KHÔNG ghi các cột này (giữ nguyên giá trị cũ nếu có).
+  coBanThiLai?: number | null; nangCaoThiLai?: number | null; fullThiLai?: boolean
+}): Promise<DiemThi> {
   const { data: { user } } = await supabase.auth.getUser()
-  const { data, error } = await supabase.from('diem_thi').upsert(
-    { ky_thi_id: d.kyThiId, hoc_sinh_id: d.hocSinhId, diem: d.diem, band_luc_thi: d.bandLucThi, verdict: d.verdict, vuot_band: d.vuotBand,
-      diem_co_ban: d.coBan ?? null, diem_nang_cao: d.nangCao ?? null, full_diem: d.full ?? false,
-      graded_by: user?.id ?? null, updated_at: new Date().toISOString() },
-    { onConflict: 'ky_thi_id,hoc_sinh_id' }).select().single()
+  const row: Record<string, any> = {
+    ky_thi_id: d.kyThiId, hoc_sinh_id: d.hocSinhId, diem: d.diem, band_luc_thi: d.bandLucThi, verdict: d.verdict, vuot_band: d.vuotBand,
+    diem_co_ban: d.coBan ?? null, diem_nang_cao: d.nangCao ?? null, full_diem: d.full ?? false,
+    graded_by: user?.id ?? null, updated_at: new Date().toISOString(),
+  }
+  // Chỉ ghi cột thi lại khi caller có ý định — DiemMTPanel gửi kèm; các đường khác (thi trường/khảo sát) bỏ qua ⇒ NULL cũ giữ nguyên.
+  if (d.coBanThiLai !== undefined || d.nangCaoThiLai !== undefined || d.fullThiLai !== undefined) {
+    row.diem_thi_lai_co_ban = d.coBanThiLai ?? null
+    row.diem_thi_lai_nang_cao = d.nangCaoThiLai ?? null
+    row.full_thi_lai = d.fullThiLai ?? false
+  }
+  const { data, error } = await supabase.from('diem_thi').upsert(row, { onConflict: 'ky_thi_id,hoc_sinh_id' }).select().single()
   if (error) throw error
   return data as DiemThi
 }

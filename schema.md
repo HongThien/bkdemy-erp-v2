@@ -948,6 +948,10 @@
 | diem_co_ban | numeric | Y |  |  |  |
 | diem_nang_cao | numeric | Y |  |  |  |
 | full_diem | boolean |  | false |  |  |
+| diem_thi_lai | numeric | Y |  |  |  |
+| diem_thi_lai_co_ban | numeric | Y |  |  |  |
+| diem_thi_lai_nang_cao | numeric | Y |  |  |  |
+| full_thi_lai | boolean |  | false |  |  |
 
 ## gami_elo
 
