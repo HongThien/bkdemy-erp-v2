@@ -1868,6 +1868,7 @@ function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: Buo
     setDiems((prev) => [...prev.filter((d) => d.hoc_sinh_id !== hsId), saved])
   }
 
+  const khungThieu = !!ky && (ky.khung_co_ban == null || ky.khung_nang_cao == null)
   return (
     <div className="mb-3 rounded-xl border border-violet-200 bg-violet-50/40 p-3">
       <div className="mb-2 flex flex-wrap items-center gap-2">
@@ -1876,8 +1877,14 @@ function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: Buo
       </div>
       {loading || !ky ? <p className="text-[12px] text-slate-400">Đang tải…</p> : (
         <>
-          {/* Khung điểm của ĐỀ (1 lần cho cả buổi) — để trống nếu chưa cần "1.5/2". */}
-          <KhungMTInput ky={ky} onSave={saveKhung} />
+          {khungThieu && (
+            <div className="mb-2 flex items-center gap-2 rounded-lg border border-rose-300 bg-rose-50 px-3 py-1.5 text-[12px] text-rose-800">
+              <span className="font-bold">⚠</span>
+              <span>Chưa nhập <b>mức điểm tối đa</b> của phần <b>Cơ bản{ky.khung_co_ban != null ? '' : ' ✗'}</b> · <b>Nâng cao{ky.khung_nang_cao != null ? '' : ' ✗'}</b> → Report PH <b>sẽ không tính được %</b> cơ bản / nâng cao.</span>
+            </div>
+          )}
+          {/* Khung điểm của ĐỀ (1 lần cho cả buổi) — BẮT BUỘC nhập để Report PH tính được %CB/%NC (Thùy 15/09). */}
+          <KhungMTInput ky={ky} onSave={saveKhung} khungThieu={khungThieu} />
           <table className="w-full text-[13px]">
             <thead>
               <tr className="text-left text-[10px] uppercase tracking-wide text-slate-400">
@@ -1901,19 +1908,19 @@ function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: Buo
 }
 
 // Khung điểm (tối đa) của cả đề — 1 khung/buổi, nhập 1 lần, KHÔNG lặp lại theo từng HS.
-function KhungMTInput({ ky, onSave }: { ky: KyThi; onSave: (p: { coBan?: number | null; nangCao?: number | null }) => void }) {
+function KhungMTInput({ ky, onSave, khungThieu }: { ky: KyThi; onSave: (p: { coBan?: number | null; nangCao?: number | null }) => void; khungThieu?: boolean }) {
   const [coBan, setCoBan] = useState(ky.khung_co_ban != null ? String(ky.khung_co_ban) : '')
   const [nangCao, setNangCao] = useState(ky.khung_nang_cao != null ? String(ky.khung_nang_cao) : '')
   const num = (s: string) => (s.trim() === '' ? null : Number(s))
-  const inp = 'h-7 w-16 rounded border border-slate-300 px-2 text-[13px]'
+  const inp = (thieu: boolean) => `h-7 w-16 rounded border px-2 text-[13px] ${thieu ? 'border-rose-400 bg-rose-50' : 'border-slate-300'}`
   return (
-    <div className="mb-2 flex items-center gap-3 rounded-lg border border-violet-100 bg-white px-3 py-1.5">
-      <span className="text-[11px] font-medium text-slate-500">Khung điểm đề (tối đa mỗi phần — để hiện dạng "1.5/2"):</span>
+    <div className={`mb-2 flex items-center gap-3 rounded-lg border px-3 py-1.5 ${khungThieu ? 'border-rose-200 bg-rose-50/30' : 'border-violet-100 bg-white'}`}>
+      <span className="text-[11px] font-medium text-slate-500">Mức điểm tối đa của đề {khungThieu ? <b className="text-rose-700">(bắt buộc)</b> : '(để hiện dạng "1.5/2")'}:</span>
       <label className="flex items-center gap-1.5 text-[12px] text-slate-600">Cơ bản
-        <input value={coBan} onChange={(e) => setCoBan(e.target.value)} onBlur={() => onSave({ coBan: num(coBan) })} inputMode="decimal" placeholder="—" className={inp} />
+        <input value={coBan} onChange={(e) => setCoBan(e.target.value)} onBlur={() => onSave({ coBan: num(coBan) })} inputMode="decimal" placeholder="—" className={inp(!!khungThieu && ky.khung_co_ban == null)} />
       </label>
       <label className="flex items-center gap-1.5 text-[12px] text-slate-600">Nâng cao
-        <input value={nangCao} onChange={(e) => setNangCao(e.target.value)} onBlur={() => onSave({ nangCao: num(nangCao) })} inputMode="decimal" placeholder="—" className={inp} />
+        <input value={nangCao} onChange={(e) => setNangCao(e.target.value)} onBlur={() => onSave({ nangCao: num(nangCao) })} inputMode="decimal" placeholder="—" className={inp(!!khungThieu && ky.khung_nang_cao == null)} />
       </label>
     </div>
   )
