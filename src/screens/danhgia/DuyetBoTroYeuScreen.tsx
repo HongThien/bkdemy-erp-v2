@@ -1,0 +1,132 @@
+// Tab "Duyệt bổ trợ" (PLAN-botro-yeu.md giai đoạn 2) — Thùy 08-18: tách khỏi Dashboard học tập,
+// quét CROSS-LỚP theo môn (không bắt chọn 1 lớp trước — duyệt là hàng đợi xuyên lớp). Chỉ hiện
+// candidate có TÍN HIỆU KIẾN THỨC (dạng/so-lớp/chuông đỏ/lỗ nền) — thái độ KHÔNG mở case bổ trợ
+// (PLAN §0 mục 10) nên không thuộc hàng đợi này (vẫn duyệt được ở Dashboard học tập như cũ).
+// Tái dùng NGUYÊN `DuyetKhoi` (DashboardHocTapScreen.tsx) — cùng 1 đường ghi log + mở case, tránh
+// lệch hành vi giữa 2 nơi gọi duyệt.
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { supabase } from '../../lib/supabase'
+import { listCandidatesLop, type Candidate } from '../../lib/danhgia'
+import { DuyetKhoi, CandidateDetailBody, CandidateHeader } from './DashboardHocTapScreen'
+
+type CandLop = Candidate & { ten_lop: string }
+
+// Thùy 09-09: sang màn khác rồi quay lại PHẢI ở đúng chỗ cũ (filter, danh sách đã vá, vị trí cuộn) —
+// màn bị unmount khi đổi tab (NhanSuHome render có điều kiện) nên nhớ ở module-level, sống tới khi F5.
+// `cands = null` = chưa quét / đang quét dở ⇒ mount lại thì quét. Nút ↻ để ép quét lại khi cần.
+const NHO: { mon: string; khoi: string; cands: CandLop[] | null; scrollTop: number } = { mon: '', khoi: '', cands: null, scrollTop: 0 }
+
+export default function DuyetBoTroYeuScreen() {
+  const [mons, setMons] = useState<string[]>([])
+  const [khois, setKhois] = useState<string[]>([])
+  const [mon, setMon] = useState<string>(NHO.mon)
+  const [khoi, setKhoi] = useState<string>(NHO.khoi)
+  const [cands, setCands] = useState<CandLop[]>(NHO.cands ?? [])
+  const [loading, setLoading] = useState(false)
+  const secRef = useRef<HTMLElement>(null)
+  const coCache = useRef(NHO.cands != null)
+
+  useEffect(() => {
+    supabase.from('lop').select('mon, khoi').eq('trang_thai', 'dang_hoc').limit(2000).then(({ data }) => {
+      const rows = (data ?? []) as any[]
+      const ms = [...new Set(rows.map((r) => r.mon).filter(Boolean))].sort()
+      const ks = [...new Set(rows.map((r) => r.khoi).filter(Boolean))].sort()
+      setMons(ms)
+      setKhois(ks)
+      if (!mon) setMon(ms.includes('Toán') ? 'Toán' : (ms[0] ?? ''))
+    })
+  }, []) // eslint-disable-line
+
+  const reload = async () => {
+    if (!mon) return
+    NHO.cands = null; NHO.scrollTop = 0
+    setLoading(true); setCands([])
+    try {
+      let q = supabase.from('lop').select('id, ten_lop').eq('trang_thai', 'dang_hoc').eq('mon', mon).limit(500)
+      if (khoi) q = q.eq('khoi', khoi)
+      const { data: lops } = await q
+      const ls = (lops ?? []) as any[]
+      const per = await Promise.all(ls.map(async (l) => {
+        const cs = await listCandidatesLop(l.id).catch(() => [])
+        return cs.map((c): CandLop => ({ ...c, ten_lop: l.ten_lop }))
+      }))
+      // Chỉ giữ candidate có TÍN HIỆU KIẾN THỨC đủ mạnh (Thùy 08-23: ≥2/4 kênh dữ liệu HOẶC báo
+      // động HOẶC case đang mở cần xử — xem `duTinHieuKienThuc` ở listCandidatesLop). KHÔNG suy
+      // luận lại từ `kenh` (bug đã bắt: 1 kênh riêng lẻ vẫn push vào `kenh` để hiện lý do dù chưa
+      // đủ ≥2/4, nên `kenh.some(k => k !== 'thai_do')` từng lọt sai candidate chỉ có 1 kênh yếu).
+      // Thùy 09-09: "HS nào đã có cờ bổ trợ thì KHÔNG xuất hiện trong danh sách này nữa" — hàng đợi này
+      // chỉ để MỞ cờ (levelKienThuc = 0). HS đã có cờ (L1-L3, case đang mở) xử ở Nội dung/Trạng thái/Đánh
+      // giá ca bổ trợ, không quay lại đây. Cũng loại HS đã chốt (kể cả giữ L0) trong cửa sổ hiện tại
+      // (`daDuyetKienThucAt`) — F5/quét lại không hiện lại ca vừa quyết.
+      const flat = per.flat().filter((c) => c.duTinHieuKienThuc && c.sheet.levelKienThuc === 0 && !c.daDuyetKienThucAt)
+      flat.sort((a, b) => b.uuTien - a.uuTien)
+      setCands(flat)
+    } finally { setLoading(false) }
+  }
+  // Mount lại với cache đúng filter ⇒ bỏ qua lần quét đầu; đổi môn/khối mới quét.
+  useEffect(() => {
+    if (coCache.current) { coCache.current = false; return }
+    reload()
+  }, [mon, khoi]) // eslint-disable-line
+  useEffect(() => { NHO.mon = mon; NHO.khoi = khoi; if (!loading) NHO.cands = cands }, [mon, khoi, cands, loading])
+  useLayoutEffect(() => { if (!loading && secRef.current) secRef.current.scrollTop = NHO.scrollTop }, [loading])
+
+  const monOpts = useMemo(() => mons, [mons])
+  const khoiOpts = useMemo(() => khois, [khois])
+
+  return (
+    <section ref={secRef} onScroll={(e) => { NHO.scrollTop = e.currentTarget.scrollTop }} className="min-h-0 overflow-auto bg-[#f5f5f7] p-6">
+      <div className="mx-auto max-w-[1500px]">
+        <header className="mb-4 flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div className="flex items-center gap-2">
+              <h1 className="text-[20px] font-bold text-slate-800">Duyệt bổ trợ</h1>
+              {!loading && (
+                <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[11px] font-bold text-indigo-700">
+                  {cands.length} ca
+                </span>
+              )}
+              <button onClick={reload} disabled={loading} title="Quét lại từ dữ liệu mới nhất"
+                className="rounded-lg border border-slate-200 bg-white px-2 py-0.5 text-[12px] text-slate-500 hover:bg-slate-100 disabled:opacity-50">↻</button>
+            </div>
+            <p className="mt-0.5 text-[12px] text-slate-500">Hàng đợi xuyên lớp — chỉ candidate có tín hiệu kiến thức (dạng/so-lớp/báo động).</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <select value={khoi} onChange={(e) => setKhoi(e.target.value)}
+              className="rounded-lg border border-slate-300 px-3 py-2 text-[14px] outline-none focus:border-indigo-400">
+              <option value="">Tất cả khối</option>
+              {khoiOpts.map((k) => <option key={k} value={k}>Khối {k}</option>)}
+            </select>
+            <select value={mon} onChange={(e) => setMon(e.target.value)}
+              className="rounded-lg border border-slate-300 px-3 py-2 text-[14px] outline-none focus:border-indigo-400">
+              {monOpts.map((m) => <option key={m} value={m}>{m}</option>)}
+            </select>
+          </div>
+        </header>
+
+        {loading ? (
+          <div className="rounded-2xl bg-white p-8 text-center text-[13px] text-slate-400 ring-1 ring-slate-200">Đang quét toàn bộ lớp {mon}…</div>
+        ) : cands.length === 0 ? (
+          <div className="rounded-2xl bg-white p-8 text-center text-[13px] text-slate-400 ring-1 ring-slate-200">
+            Môn {mon}{khoi ? ` · Khối ${khoi}` : ''} chưa có candidate nào cần duyệt bổ trợ.
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {cands.map((c) => (
+              <div key={c.hoc_sinh_id} className="rounded-2xl border border-slate-200 bg-white p-3.5 shadow-sm">
+                <CandidateHeader c={c} phu={c.ten_lop} uuTien={c.uuTien} />
+                <CandidateDetailBody c={c}>
+                  {/* Thùy 09-09: duyệt xong = ca đó rời hàng đợi TẠI CHỖ (không reload: 3s trắng màn + cuộn
+                      về đầu + HS vừa duyệt lại hiện vì tín hiệu chưa đổi). Card kế tiếp trượt lên đúng vị trí
+                      đang đứng → duyệt tiếp luôn. Đổi môn/khối mới quét lại. (CLAUDE.md §2 React) */}
+                  <DuyetKhoi c={c} loai="kien_thuc" ten="Level kiến thức" hienTai={c.sheet.levelKienThuc} deXuat={c.deXuatKienThuc}
+                    onXong={(kq) => setCands((prev) => prev.filter((x) => x.hoc_sinh_id !== kq.hocSinhId))} />
+                </CandidateDetailBody>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  )
+}

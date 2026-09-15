@@ -39,7 +39,7 @@ export async function listLopBac(): Promise<LopBac[]> {
 export async function listDaiDang(khoi: string): Promise<DaiDang[]> {
   const { data, error } = await supabase
     .from('dai_ban_do').select('*')
-    .eq('khoi', khoi)
+    .eq('khoi', khoi).not('ma_dang', 'like', '%000000') // ẩn dạng chờ "Chưa phân dạng"
     .order('ma_chu_de').order('ma_chuyen_de').order('ma_dang')
     .limit(LIMIT)
   if (error) throw error
@@ -72,6 +72,18 @@ export type CauHoi = {
   parent_ma_cau: string | null
   clone_method: string | null
   ma_cum: string | null         // CỤM BÀI = lớp tương đương (thay được cho nhau ở mã đề). null = CHƯA phân cụm.
+  xoa_at?: string | null        // kho rác — NULL = còn sống
+  // ⭐ 20/08 (Thùy: "kho có rất nhiều câu, câu xịn câu không, cần nhãn chất lượng — đã/chưa kiểm duyệt.
+  // Clone xong phải có người check"). Mặc định false — câu MỚI (clone/nhập) luôn vào hàng chờ duyệt.
+  da_duyet: boolean
+  duyet_boi: string | null      // nhan_su.id — ai duyệt (ghi vết, không chỉ 1 cờ boolean trơ)
+  duyet_at: string | null
+  // ⭐ KHO CHUẨN (spec-kho-chuan.md §1, mig 202609080912): `kho_chuan` = cột generated từ hàm `_kho_cau_chuan` — câu mới
+  // (sau NGÀY BẬT 08/09/2026 09:12) cần da_duyet; câu cũ tạm dùng trừ khi máy/AI NGHI đáp số. Chỗ CHỌN câu chỉ lấy kho_chuan.
+  kho_chuan?: boolean
+  kiem_may?: 'khop' | 'nghi' | 'khong_kiem_duoc' | null   // kết quả máy/AI kiểm đáp số; null = chưa kiểm
+  kiem_may_at?: string | null; kiem_may_boi?: 'mcq-auto' | 'claude_code' | 'nguoi' | null; kiem_may_ghi?: string | null
+  duyet_nguon?: 'nguoi' | 'may' | 'ai' | null              // ai ký da_duyet — trigger DB tự điền 'nguoi' khi client duyệt
   created_at?: string
 }
 
@@ -92,11 +104,15 @@ export const cumKey = (c: Pick<CauHoi, 'ma_cum' | 'parent_ma_cau' | 'ma_cau'>): 
 // LUẬT: chỗ CHỌN câu lọc `xoa_at is null` · chỗ RESOLVE câu (getTaiLieuFull/bản in/chấm) KHÔNG lọc.
 const CHUA_XOA = 'xoa_at' // tên cột, gom 1 chỗ cho dễ grep
 
-// CHỌN câu → chỉ câu đang dùng.
+// CHỌN câu → chỉ câu đang dùng VÀ thuộc KHO CHUẨN (`kho_chuan`, spec-kho-chuan.md §1 — cửa 1). Mặc định lọc vì mọi
+// caller ngoài màn Kho đều là chỗ CHỌN (soạn ET/BTVN/giáo trình/mã đề/KhoPicker). Màn quản kho (DangHub) và chỗ RESOLVE
+// câu đã nằm trong tài liệu (ET mở lại để sửa) truyền `{ tatCa: true }` — câu bị rút khỏi kho chuẩn vẫn phải hiện ra,
+// không được lặng lẽ rụng khỏi đề đã soạn (cùng luật với kho rác ở trên).
 // tbl = bảng câu theo MÔN (default Toán 'dai_cau_hoi'; KHTN 'khtn_cau_hoi'). Giữ default → Toán không đổi hành vi.
-export async function listCauByDang(maDang: string, tbl = 'dai_cau_hoi'): Promise<CauHoi[]> {
-  const { data, error } = await supabase.from(tbl).select('*')
-    .eq('dang_chinh', maDang).is(CHUA_XOA, null).order('created_at').limit(LIMIT)
+export async function listCauByDang(maDang: string, tbl = 'dai_cau_hoi', opts: { tatCa?: boolean } = {}): Promise<CauHoi[]> {
+  let q = supabase.from(tbl).select('*').eq('dang_chinh', maDang).is(CHUA_XOA, null)
+  if (!opts.tatCa) q = q.eq('kho_chuan', true)
+  const { data, error } = await q.order('created_at').limit(LIMIT)
   if (error) throw error
   return (data ?? []) as CauHoi[]
 }
@@ -107,6 +123,7 @@ type CauInput = {
   anh_de?: string | null; anh_dap_an?: string | null
   nguon?: string; nguon_giai?: string; parent_ma_cau?: string | null; clone_method?: string | null
   ma_cum?: string | null
+  da_duyet?: boolean; duyet_boi?: string | null; duyet_at?: string | null
 }
 export async function createCau(input: CauInput, tbl = 'dai_cau_hoi'): Promise<CauHoi> {
   const { data, error } = await supabase.from(tbl).insert(input).select().single()
@@ -125,6 +142,52 @@ export async function deleteCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<vo
     .update({ xoa_at: new Date().toISOString() })
     .eq('ma_cau', ma_cau).is(CHUA_XOA, null)
   if (error) throw error
+}
+// ⭐ Kiểm duyệt nội dung (Thùy 20/08) — GHI VẾT ai + lúc nào (khuôn duyet_boi/duyet_at đã dùng ở
+// bai_test_report/hoc_phi_xet_duyet…), không chỉ 1 cờ boolean trơ. Bỏ duyệt = về lại "chưa duyệt", KHÔNG
+// giữ lịch sử ai đã từng duyệt (đơn giản hoá — cần audit sâu hơn thì có kho_cau_log/trigger sau).
+// ⚠ Fix 02/09 (Thùy báo "violates foreign key constraint dai_cau_hoi_duyet_boi_fkey"): `duyet_boi` FK →
+// nhan_su.id, nhưng code cũ ghi auth user id (auth.users) → FK chặn mọi lượt duyệt ở DangHub/DungSaiBank.
+// Các đường duyệt khác (DuyetLoiGiaiScreen/ChoDuyetPanel) vốn đã map qua tai_khoan.nhan_su_id — làm y hệt.
+async function nhanSuIdCuaToi(): Promise<string> {
+  const { data: au } = await supabase.auth.getUser()
+  const { data: tk } = await supabase.from('tai_khoan').select('nhan_su_id').eq('id', au.user?.id ?? '').maybeSingle()
+  const id = (tk as { nhan_su_id?: string | null } | null)?.nhan_su_id
+  if (!id) throw new Error('Tài khoản chưa link nhân sự — không ghi được ai duyệt.')
+  return id
+}
+// Duyệt luôn lúc clone (thay vì để chờ hậu kiểm sau) — dùng chung khuôn actor+ts với duyetCau ở trên.
+async function duyetLuonFields(): Promise<{ da_duyet: true; duyet_boi: string; duyet_at: string }> {
+  const nguoiDuyet = await nhanSuIdCuaToi()
+  return { da_duyet: true, duyet_boi: nguoiDuyet, duyet_at: new Date().toISOString() }
+}
+export async function duyetCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<void> {
+  const nguoiDuyet = await nhanSuIdCuaToi()
+  const { error } = await supabase.from(tbl)
+    .update({ da_duyet: true, duyet_boi: nguoiDuyet, duyet_at: new Date().toISOString() })
+    .eq('ma_cau', ma_cau)
+  if (error) throw error
+}
+export async function boDuyetCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<void> {
+  const { error } = await supabase.from(tbl)
+    .update({ da_duyet: false, duyet_boi: null, duyet_at: null })
+    .eq('ma_cau', ma_cau)
+  if (error) throw error
+}
+
+// Tìm 1 câu THEO ma_cau xuyên suốt CẢ 3 bảng kho — dùng cho Duyệt chấm "Sửa trong Kho": chỗ gọi chỉ
+// có `ma_cau` (text, KHÔNG FK — CLAUDE.md §2 "tham chiếu bằng TEXT"), không biết trước câu thuộc
+// nhánh nào. Đã kiểm DB thật: `dai_cau_hoi` không có chữ cái đầu, `khtn_cau_hoi` bắt đầu 'K',
+// `hgt_cau_hoi` bắt đầu 'T' — nhưng đó KHÔNG phải quy ước chính thức (không có ràng buộc nào ép),
+// nên dò TỪNG bảng thay vì đoán theo tiền tố. Trả `null` nếu không thấy ở bảng nào (câu đã bị xoá
+// cứng ngoài luồng kho rác, hoặc `ma_cau` không còn đúng — báo rõ ở nơi gọi, không giả định).
+export async function findCauInKho(ma_cau: string): Promise<{ cau: CauHoi; cauTbl: string } | null> {
+  for (const cauTbl of Object.keys(CUM_TBL)) {
+    const { data, error } = await supabase.from(cauTbl).select('*').eq('ma_cau', ma_cau).maybeSingle()
+    if (error) throw error
+    if (data) return { cau: data as CauHoi, cauTbl }
+  }
+  return null
 }
 
 // ══ CỤM BÀI + TIỀN ĐỀ (spec-cum-bai.md) ═══════════════════════════════════════
@@ -425,6 +488,7 @@ const FMT_RULES = [
   '- ⚠ XUỐNG DÒNG: GIỮ ĐÚNG bố cục NHIỀU DÒNG của đề & lời giải gốc — mỗi ý, mỗi câu hỏi, mỗi bước giải đặt trên MỘT DÒNG riêng (ngăn bằng ký tự xuống dòng thật trong chuỗi). Gốc bao nhiêu dòng thì giữ bấy nhiêu. TUYỆT ĐỐI KHÔNG gộp tất cả thành một đoạn liền, KHÔNG dùng thẻ "<br>".',
   '- Phân số DÙNG \\\\dfrac{a}{b} (KHÔNG dùng \\\\frac vì hiển thị bé). KHÔNG viết dạng a/b.',
   '- ⚠ KÝ HIỆU CHIA HẾT (Gemini RẤT HAY ĐỌC SAI — đọc kỹ ngữ cảnh): "a chia hết cho b" = ba dấu chấm DỌC ⋮ → viết "$a \\\\vdots b$". "a KHÔNG chia hết cho b" = ⋮ có GẠCH CHÉO → viết "$a \\\\not\\\\vdots b$". TUYỆT ĐỐI KHÔNG nhầm ⋮ thành dấu hai chấm ":", ba chấm ngang "...", \\\\div, hay "%". Gặp chữ "chia hết / không chia hết" trong đề/lời giải PHẢI dùng \\\\vdots / \\\\not\\\\vdots.',
+  '- ⚠ CÔNG THỨC HOÁ HỌC (KHTN) — kí hiệu nguyên tố/hợp chất PHẢI ĐỨNG THẲNG (KHÔNG nghiêng như biến số toán $x$, $y$) — bọc trong $\\\\mathrm{...}$, KỂ CẢ khi KHÔNG có chỉ số: "Fe" → "$\\\\mathrm{Fe}$", "NaCl" → "$\\\\mathrm{NaCl}$", "khí argon (Ar)" → "khí argon ($\\\\mathrm{Ar}$)" — không được để trần ngoài $...$ (nghiêng/thẳng lẫn lộn giữa các công thức trong CÙNG một đề là lỗi thường gặp, phải nhất quán \\\\mathrm cho MỌI công thức). Chỉ số dưới dùng "_" NGAY TRONG \\\\mathrm: "$\\\\mathrm{H_2O}$", "$\\\\mathrm{CO_2}$", "$\\\\mathrm{H_2SO_4}$", "$\\\\mathrm{Fe_2O_3}$", "$\\\\mathrm{Al_2(SO_4)_3}$". Chỉ số dưới NHIỀU KÝ TỰ bọc ngoặc nhọn: "$\\\\mathrm{C_{12}H_{22}O_{11}}$" (KHÔNG viết "C_12" — chỉ "1" bị hạ xuống, "2" vẫn cỡ thường). Ion/điện tích dùng "^" cũng trong \\\\mathrm: "$\\\\mathrm{Fe^{2+}}$", "$\\\\mathrm{SO_4^{2-}}$".',
   '- Số đơn lẻ KHÔNG cần $: viết "30 quả" không phải "$30$ quả". KHÔNG để tiếng Việt có dấu bên trong $...$.',
   '- Số thập phân dùng dấu chấm: "0.6" (không "0,6").',
   '- Nếu đề có BẢNG BIẾN THIÊN / ĐỒ THỊ / HÌNH VẼ: ghi "[hình]" đúng vị trí trong de_bai + mô tả 1 câu ngắn; KHÔNG cố vẽ lại bằng LaTeX (nhân sự sẽ cắt ảnh đính sau).',
@@ -584,7 +648,9 @@ export function parseVariantsJson(text: string): CauNoiDung[] {
 // clone luôn tương đương với gốc của nó nên không có lý do để nằm cụm khác.
 export async function saveCloneBatch(a: {
   dangChinh: string; loaiCau: string; goc: CauNoiDung; variants: CauNoiDung[]; maCum?: string | null
+  daDuyet?: boolean // Duyệt luôn lúc clone (Thùy 12/09) — nhân sự tự tin đúng thì tích, khỏi chờ hậu kiểm sau.
 }, tbl = 'dai_cau_hoi'): Promise<{ goc: string; soClone: number }> {
+  const duyetFields = a.daDuyet ? await duyetLuonFields() : {}
   const start = await nextCauSeq(a.dangChinh, tbl)
   const g = await createCau({
     ma_cau: maCau(a.dangChinh, start),
@@ -593,6 +659,7 @@ export async function saveCloneBatch(a: {
     anh_de: a.goc.anh_de ?? null, anh_dap_an: a.goc.anh_dap_an ?? null, nguon: 'le',
     nguon_giai: a.goc.nguon_giai ?? 'nguoi', // gốc = người ra đề (tin)
     ...(coCumBai(tbl) ? { ma_cum: a.maCum ?? null } : {}),
+    ...duyetFields,
   }, tbl)
   if (a.variants.length) {
     const rows = a.variants.map((v, i) => ({
@@ -602,6 +669,7 @@ export async function saveCloneBatch(a: {
       anh_de: v.anh_de ?? null, anh_dap_an: v.anh_dap_an ?? null,
       nguon: 'clone', nguon_giai: 'ai', parent_ma_cau: g.ma_cau, clone_method: 'manual_gemini', // biến thể = AI giải
       ...(coCumBai(tbl) ? { ma_cum: a.maCum ?? null } : {}),
+      ...duyetFields,
     }))
     const { error } = await supabase.from(tbl).insert(rows)
     if (error) throw error
@@ -614,8 +682,10 @@ export async function saveCloneBatch(a: {
 // không phải gom tay lại. Đây là điểm khác duy nhất so với `saveCloneBatch` (vốn đẻ gốc + biến thể).
 export async function saveCloneVariants(a: {
   goc: Pick<CauHoi, 'ma_cau' | 'dang_chinh' | 'loai_cau' | 'ma_cum'>; variants: CauNoiDung[]
+  daDuyet?: boolean // Duyệt luôn lúc clone (Thùy 12/09) — nhân sự tự tin đúng thì tích, khỏi chờ hậu kiểm sau.
 }, tbl = 'dai_cau_hoi'): Promise<number> {
   if (!a.variants.length) return 0
+  const duyetFields = a.daDuyet ? await duyetLuonFields() : {}
   const start = await nextCauSeq(a.goc.dang_chinh, tbl)
   const rows = a.variants.map((v, i) => ({
     ma_cau: maCau(a.goc.dang_chinh, start + i),
@@ -624,10 +694,199 @@ export async function saveCloneVariants(a: {
     anh_de: v.anh_de ?? null, anh_dap_an: v.anh_dap_an ?? null,
     nguon: 'clone', nguon_giai: 'ai', parent_ma_cau: a.goc.ma_cau, clone_method: 'manual_gemini',
     ...(coCumBai(tbl) ? { ma_cum: a.goc.ma_cum ?? null } : {}),
+    ...duyetFields,
   }))
   const { error } = await supabase.from(tbl).insert(rows)
   if (error) throw error
   return rows.length
+}
+
+// ── HÀNG ĐỢI CLONE (26/08) — nút "✨ Clone" thêm lựa chọn "đưa vào hàng đợi" thay vì gọi API
+// ngay: nhân sự đặt yêu cầu (không cần credential gì), Claude Code quét định kỳ/theo lệnh xử lý
+// cả lô, ghi kết quả vào bảng NHÁP riêng — KHÔNG chọc thẳng vào dai_cau_hoi thật. Lý do tách:
+// `da_duyet` trên dai_cau_hoi chỉ là nhãn HẬU KIỂM (không chặn dùng, câu cũ vẫn sống bình thường
+// dù chưa duyệt) — còn câu CLONE MỚI phải bị chặn HẲN tới khi có người duyệt, 2 khái niệm khác
+// nhau dù cùng tên cột (thảo luận 26/08, đừng gộp lại tưởng trùng).
+export type YeuCauClone = {
+  id: string; ma_cau_goc: string; so_bien_the: number; ghi_chu: string | null
+  nguoi_yeu_cau: string | null; created_at: string; xu_ly_at: string | null
+}
+export async function createYeuCauClone(a: { maCauGoc: string; soBienThe: number; ghiChu: string; nguoiYeuCau?: string | null }): Promise<void> {
+  const { error } = await supabase.from('dai_cau_hoi_yeu_cau_clone').insert({
+    ma_cau_goc: a.maCauGoc, so_bien_the: a.soBienThe, ghi_chu: a.ghiChu || null, nguoi_yeu_cau: a.nguoiYeuCau ?? null,
+  })
+  if (error) throw error
+}
+// xu_ly_at NULL = chưa xử lý — hàng đợi thật (không suy ra được, khác Story 2 bên dưới).
+export async function listYeuCauCloneCho(): Promise<YeuCauClone[]> {
+  const { data, error } = await supabase.from('dai_cau_hoi_yeu_cau_clone').select('*')
+    .is('xu_ly_at', null).order('created_at').limit(LIMIT)
+  if (error) throw error
+  return data ?? []
+}
+export async function danhDauYeuCauXuLy(id: string): Promise<void> {
+  const { error } = await supabase.from('dai_cau_hoi_yeu_cau_clone').update({ xu_ly_at: new Date().toISOString() }).eq('id', id)
+  if (error) throw error
+}
+
+export type CloneChoDuyet = {
+  id: string; yeu_cau_id: string | null; dang_chinh: string; loai_cau: string
+  noi_dung: string; lua_chon: string[] | null; dap_an: string | null; loi_giai: string | null
+  parent_ma_cau: string | null; clone_method: string; created_at: string
+  duyet_boi: string | null; duyet_at: string | null
+  tu_choi_boi: string | null; tu_choi_at: string | null; tu_choi_ly_do: string | null
+}
+export async function saveCloneChoDuyet(a: {
+  yeuCauId?: string | null; dangChinh: string; loaiCau: string; variants: CauNoiDung[]
+  parentMaCau?: string | null; cloneMethod?: string
+}): Promise<number> {
+  if (!a.variants.length) return 0
+  const rows = a.variants.map((v) => ({
+    yeu_cau_id: a.yeuCauId ?? null, dang_chinh: a.dangChinh, loai_cau: a.loaiCau,
+    noi_dung: v.noi_dung, dap_an: v.dap_an, loi_giai: v.loi_giai, lua_chon: v.lua_chon ?? null,
+    parent_ma_cau: a.parentMaCau ?? null, clone_method: a.cloneMethod ?? 'claude_code_batch',
+  }))
+  const { error } = await supabase.from('dai_cau_hoi_clone_cho_duyet').insert(rows)
+  if (error) throw error
+  return rows.length
+}
+export async function listCloneChoDuyet(): Promise<CloneChoDuyet[]> {
+  const { data, error } = await supabase.from('dai_cau_hoi_clone_cho_duyet').select('*')
+    .is('tu_choi_at', null).order('created_at').limit(LIMIT)
+  if (error) throw error
+  return data ?? []
+}
+// Duyệt = promote sang dai_cau_hoi thật (da_duyet=true LUÔN — vừa được người kiểm xong, không
+// cần qua vòng hậu kiểm chung nữa), dùng ĐÚNG nextCauSeq/maCau như saveCloneVariants — rồi xoá khỏi nháp.
+export async function duyetCloneChoDuyet(row: CloneChoDuyet, nguoiDuyet: string): Promise<string> {
+  const start = await nextCauSeq(row.dang_chinh, 'dai_cau_hoi')
+  const ma_cau_moi = maCau(row.dang_chinh, start)
+  const { error: e1 } = await supabase.from('dai_cau_hoi').insert({
+    ma_cau: ma_cau_moi, dang_chinh: row.dang_chinh, loai_cau: row.loai_cau,
+    noi_dung: row.noi_dung, dap_an: row.dap_an, loi_giai: row.loi_giai, lua_chon: row.lua_chon,
+    nguon: 'clone', nguon_giai: 'ai', parent_ma_cau: row.parent_ma_cau, clone_method: row.clone_method,
+    da_duyet: true, duyet_boi: nguoiDuyet, duyet_at: new Date().toISOString(),
+  })
+  if (e1) throw e1
+  const { error: e2 } = await supabase.from('dai_cau_hoi_clone_cho_duyet').delete().eq('id', row.id)
+  if (e2) throw e2
+  return ma_cau_moi
+}
+// Từ chối: CHỈ đánh dấu trong bảng nháp (giữ lại để soát/audit), không đụng dai_cau_hoi.
+export async function tuChoiCloneChoDuyet(id: string, nguoiTuChoi: string, lyDo: string): Promise<void> {
+  const { error } = await supabase.from('dai_cau_hoi_clone_cho_duyet')
+    .update({ tu_choi_at: new Date().toISOString(), tu_choi_boi: nguoiTuChoi, tu_choi_ly_do: lyDo || null })
+    .eq('id', id)
+  if (error) throw error
+}
+
+// ── STORY 2 (26/08): GIẢI CÂU CHƯA CÓ ĐÁP ÁN — hàng đợi = `loi_giai IS NULL` trực tiếp, KHÔNG
+// thêm cột trạng thái — đúng nguyên tắc invariant CLAUDE.md §1 ("việc của tôi" = query, không
+// phải bảng tasks). Khác Story 1 ở trên (đó là YÊU CẦU thật, không suy ra được nên phải lưu). ──
+export async function listCauChuaGiai(tbl = 'dai_cau_hoi'): Promise<CauHoi[]> {
+  const { data, error } = await supabase.from(tbl).select('*')
+    .is('loi_giai', null).is('xoa_at', null).limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as CauHoi[]
+}
+// Mẫu tham khảo cách trình bày: ưu tiên CÙNG CỤM (ma_cum, đơn vị tương đương đã có sẵn) đã duyệt;
+// rơi về CÙNG DẠNG nếu câu chưa thuộc cụm nào. Chỉ lấy vài câu — không đọc cả dạng (tốn token vô ích).
+export async function layMauThamKhao(cau: Pick<CauHoi, 'ma_cau' | 'dang_chinh' | 'ma_cum'>, tbl = 'dai_cau_hoi', soLuong = 2): Promise<CauHoi[]> {
+  let q = supabase.from(tbl).select('*').eq('da_duyet', true).not('loi_giai', 'is', null).neq('ma_cau', cau.ma_cau)
+  q = cau.ma_cum ? q.eq('ma_cum', cau.ma_cum) : q.eq('dang_chinh', cau.dang_chinh)
+  const { data, error } = await q.limit(soLuong)
+  if (error) throw error
+  return (data ?? []) as CauHoi[]
+}
+// giai_method: NULL = câu cũ (tồn đọng, không rõ nguồn — vd từ tính năng Clone lâu rồi) ·
+// 'claude_code' = MỚI, do đúng luồng "giải bài chưa có đáp án" ghi (28/08 — tách khỏi backlog cũ).
+export async function giaiCauAI(maCauGiai: string, a: { loiGiai: string; dapAn: string | null }, tbl = 'dai_cau_hoi'): Promise<void> {
+  const { error } = await supabase.from(tbl)
+    .update({ loi_giai: a.loiGiai, dap_an: a.dapAn, nguon_giai: 'ai', giai_method: 'claude_code' })
+    .eq('ma_cau', maCauGiai)
+  if (error) throw error
+}
+
+// ── DUYỆT LỜI GIẢI AI (27/08) — màn gộp theo khối, dùng chung cho Đại/KHTN/HGT (xem hinh.ts
+// cho nhánh Hình — bảng khác hẳn nên hàm riêng, không ép vào registry này). ──
+export type CauChoDuyetLoiGiai = {
+  nhanh: KhoMon; maCau: string; khoi: string; noiDung: string; dapAn: string | null; loiGiai: string
+}
+// chiMoi: true = chỉ lời giải MỚI (giai_method='claude_code', luồng hôm nay) ·
+//         false/undefined = "câu trong kho" — backlog cũ (giai_method IS NULL, chủ yếu từ Clone).
+export async function listCauChoDuyetLoiGiai(mon: KhoMon, khoi?: string, chiMoi?: boolean): Promise<CauChoDuyetLoiGiai[]> {
+  const { cauTbl, banDoTbl } = khoTbls(mon)
+  let q = supabase.from(cauTbl).select(`ma_cau, noi_dung, dap_an, loi_giai, ${banDoTbl}!inner(khoi)`)
+    .eq('nguon_giai', 'ai').eq('da_duyet', false).limit(LIMIT)
+  q = chiMoi ? q.eq('giai_method', 'claude_code') : q.is('giai_method', null)
+  if (khoi) q = q.eq(`${banDoTbl}.khoi`, khoi)
+  const { data, error } = await q
+  if (error) throw error
+  return (data ?? []).map((r: any) => ({
+    nhanh: mon, maCau: r.ma_cau, khoi: r[banDoTbl]?.khoi ?? '', noiDung: r.noi_dung, dapAn: r.dap_an, loiGiai: r.loi_giai ?? '',
+  }))
+}
+export async function duyetLoiGiaiCau(mon: KhoMon, maCau: string, nguoiDuyet: string): Promise<void> {
+  const { cauTbl } = khoTbls(mon)
+  const { error } = await supabase.from(cauTbl).update({ da_duyet: true, duyet_boi: nguoiDuyet, duyet_at: new Date().toISOString() }).eq('ma_cau', maCau)
+  if (error) throw error
+}
+
+// ── TAB "CHƯA CÓ LỜI GIẢI" + HÀNG ĐỢI GIẢI (04/09, mig 202609041808) — Thùy: thay vì nhờ Claude giải
+// trong chat, ERP liệt kê câu CHƯA CÓ LỜI GIẢI (loi_giai IS NULL và anh_dap_an IS NULL) để người biết mà
+// làm; mỗi câu 2 lựa chọn: (1) tự giải/up ảnh tại chỗ · (2) đặt Claude giải = đưa vào hàng đợi
+// `{dai,khtn,hgt}_cau_hoi_yeu_cau_giai` (như hàng đợi clone 26/08), worker = scripts/hangdoi-giai.mjs.
+// List/đếm/đặt/đóng đều là function Postgres (§2.0) — client chỉ gọi rpc, không join/đếm ở JS. ──
+export type CauChuaGiai = {
+  ma_cau: string; dang_chinh: string; ten_dang: string; ten_chuyen_de: string; khoi: string; loai_cau: string
+  noi_dung: string; lua_chon: string[] | null; menh_de: MenhDe[] | null; dap_an: string | null; anh_de: string | null; nguon: string; created_at: string
+  yeu_cau_id: string | null; yeu_cau_at: string | null; yeu_cau_ghi_chu: string | null
+  // 06/09 (mig 202609060122): dòng yêu cầu giờ có thể là NGƯỜI đang giữ trên tool giaibai (nguoi_giai ≠ null) chứ không chỉ Claude.
+  yeu_cau_nguoi_giai: string | null; yeu_cau_nguoi_giai_ten: string | null; yeu_cau_trang_thai: string | null
+}
+export async function listCauChuaGiaiTab(mon: KhoMon, khoi: string): Promise<CauChuaGiai[]> {
+  const { data, error } = await supabase.rpc('fn_kho_cau_chua_giai', { p_mon: mon, p_khoi: khoi, p_limit: LIMIT })
+  if (error) throw error
+  return (data ?? []) as CauChuaGiai[]
+}
+export type DemChuaGiai = { khoi: string; so_cau: number; so_cho_giai: number }
+// ⭐ MÔN ≠ NHÁNH (Thùy 04/09: "KHTN là MÔN. Ai phụ trách môn nào mới thấy môn đó"): màn duyệt/giải scope theo
+// MÔN (nhãn nhan_su_mon, khớp MON_LIST) → mỗi môn gồm các NHÁNH kho của nó. Toán = Đại + Hình giải tích + Hình;
+// KHTN = 1 cây. Registry 1 chỗ, mọi màn gộp-nhánh dùng cái này, KHÔNG tự liệt kê ['toan','khtn','hgt'] rồi trộn môn.
+export type KhoNhanh = KhoMon | 'hinh'
+export const NHANH_LABEL: Record<KhoNhanh, string> = { toan: 'Đại', khtn: 'KHTN', hgt: 'Hình giải tích', hinh: 'Hình' }
+export const KHO_MON: { mon: string; nhanh: KhoNhanh[] }[] = [
+  { mon: 'Toán', nhanh: ['toan', 'hgt', 'hinh'] },
+  { mon: 'KHTN', nhanh: ['khtn'] },
+]
+export const nhanhCuaMon = (mon: string): KhoNhanh[] => KHO_MON.find((m) => m.mon === mon)?.nhanh ?? []
+// Đếm câu chưa có lời giải theo khối cho đúng TẬP NHÁNH của môn đang chọn (không cộng chéo môn).
+export async function demCauChuaGiai(nhanh: KhoNhanh[]): Promise<DemChuaGiai[]> {
+  const { data, error } = await supabase.rpc('fn_kho_dem_cau_chua_giai', { p_nhanh: nhanh })
+  if (error) throw error
+  return (data ?? []) as DemChuaGiai[]
+}
+// Trả SỐ câu thật sự được đặt (bỏ câu đã có lời giải / đã có yêu cầu treo — DB tự lọc).
+export async function datClaudeGiai(mon: KhoMon, maCaus: string[], ghiChu: string, nguoiYeuCau: string): Promise<number> {
+  const { data, error } = await supabase.rpc('fn_kho_dat_giai', { p_mon: mon, p_ma_cau: maCaus, p_ghi_chu: ghiChu, p_nguoi: nguoiYeuCau })
+  if (error) throw error
+  return Number(data ?? 0)
+}
+// Huỷ yêu cầu còn treo (chưa xử lý) — xoá dòng: yêu cầu chưa ai làm thì không có gì để giữ vết.
+export async function huyYeuCauGiai(mon: KhoMon, id: string): Promise<void> {
+  const { yeuCauGiaiTbl } = khoTbls(mon)
+  const { error } = await supabase.from(yeuCauGiaiTbl).delete().eq('id', id).is('xu_ly_at', null)
+  if (error) throw error
+}
+// Người tự giải: ghi loi_giai/anh_dap_an (PostgREST) rồi gọi fn đóng dấu nguon_giai='nguoi' + gỡ yêu cầu treo.
+export async function luuLoiGiaiNguoi(mon: KhoMon, maCau: string, a: { loiGiai: string | null; anhDapAn: string | null; dapAn?: string | null }): Promise<void> {
+  const { cauTbl } = khoTbls(mon)
+  const patch: Record<string, unknown> = { loi_giai: a.loiGiai || null, anh_dap_an: a.anhDapAn || null }
+  if (a.dapAn !== undefined) patch.dap_an = a.dapAn || null
+  const { error } = await supabase.from(cauTbl).update(patch).eq('ma_cau', maCau)
+  if (error) throw error
+  const { error: e2 } = await supabase.rpc('fn_kho_giai_nguoi_xong', { p_mon: mon, p_ma_cau: maCau })
+  if (e2) throw e2
 }
 
 // ── NHẬP CHUỖI CÂU CÓ SẴN (batch): prompt tách + parse + lưu (tất cả 'le') ──
@@ -906,7 +1165,15 @@ export async function callGeminiRich(prompt: string, opts?: { model?: string; fi
 }
 
 // Câu suy ra từ ingest 1 trang: text fields + cờ có hình + bbox hình (Gemini format [ymin,xmin,ymax,xmax] 0–1000).
-export type IngestCau = { noi_dung: string; dap_an: string | null; loi_giai: string | null; lua_chon: string[] | null; coHinh: boolean; box: [number, number, number, number] | null }
+// ⭐ HAI bbox riêng — ĐỀ và ĐÁP ÁN (Thùy 17/08: "đang không phân biệt được hình ở đề hay đáp án. Giữa đề
+// và đáp án sẽ có 1 ranh giới là từ Giải/Lời giải/Bài giải — sau đó là đáp án, trước đó là đề"). TRƯỚC đây
+// chỉ có 1 cặp co_hinh/box_hinh ⇒ hình đáp án (nếu có) bị gộp lẫn vào box đề hoặc mất, và ingest luôn đổ
+// thẳng vào anh_de — anh_dap_an luôn null bất kể trang có hình ở phần lời giải hay không.
+export type IngestCau = {
+  noi_dung: string; dap_an: string | null; loi_giai: string | null; lua_chon: string[] | null
+  coHinhDe: boolean; boxDe: [number, number, number, number] | null
+  coHinhDapAn: boolean; boxDapAn: [number, number, number, number] | null
+}
 // Schema ép Gemini xuất JSON đúng cấu trúc (Type enum UPPERCASE theo proto). required tối thiểu = de_bai.
 export const INGEST_SCHEMA = {
   type: 'OBJECT',
@@ -918,7 +1185,8 @@ export const INGEST_SCHEMA = {
         properties: {
           de_bai: { type: 'STRING' }, dap_an: { type: 'STRING' }, loi_giai: { type: 'STRING' },
           lua_chon: { type: 'ARRAY', items: { type: 'STRING' } },
-          co_hinh: { type: 'BOOLEAN' }, box_hinh: { type: 'ARRAY', items: { type: 'NUMBER' } },
+          co_hinh_de: { type: 'BOOLEAN' }, box_hinh_de: { type: 'ARRAY', items: { type: 'NUMBER' } },
+          co_hinh_dap_an: { type: 'BOOLEAN' }, box_hinh_dap_an: { type: 'ARRAY', items: { type: 'NUMBER' } },
         },
         required: ['de_bai'],
       },
@@ -932,12 +1200,13 @@ export function buildIngestPrompt(a: { tenDang?: string; loaiCau?: string; giaiA
     'Đây là ẢNH 1 TRANG tài liệu toán. TÁCH thành từng CÂU HỎI theo thứ tự xuất hiện (mỗi bài = 1 câu, KHÔNG tách ý a/b/c).',
     a.tenDang ? `Gợi ý: các câu thường cùng dạng "${a.tenDang}".` : '',
     `Mỗi câu gồm: ${f.spec}.`,
-    '⚠ MỖI câu thêm 2 trường HÌNH: "co_hinh" (true nếu câu có HÌNH VẼ/SƠ ĐỒ/ĐỒ THỊ cần giữ làm ảnh — KHÔNG tính bảng số) và "box_hinh" = [ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0–1000 của vùng hình (ôm TRỌN hình, chừa lề nhỏ) — CHỈ trả khi co_hinh=true, nếu không thì box_hinh=null.',
-    'BẢNG số liệu → viết bằng LaTeX $\\begin{array}{…}…\\end{array}$ trong de_bai (KHÔNG coi là hình).',
+    '⚠ RANH GIỚI ĐỀ / ĐÁP ÁN của một câu = dòng chữ "Giải:" / "Lời giải:" / "Bài giải:" (hoặc tương đương). Hình xuất hiện TRƯỚC dòng đó (kể cả không có dòng đó — cả câu chỉ có đề) = HÌNH ĐỀ. Hình xuất hiện SAU dòng đó = HÌNH ĐÁP ÁN. Một câu có thể có CẢ HAI, chỉ một, hoặc không hình nào — đừng gộp 2 hình khác vị trí vào chung 1 box.',
+    '⚠ MỖI câu thêm 4 trường HÌNH: "co_hinh_de"/"box_hinh_de" cho hình Ở ĐỀ (trước ranh giới), "co_hinh_dap_an"/"box_hinh_dap_an" cho hình Ở ĐÁP ÁN (sau ranh giới). box = [ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0–1000 của vùng hình (ôm TRỌN hình đó, chừa lề nhỏ) — chỉ HÌNH VẼ/SƠ ĐỒ/ĐỒ THỊ (KHÔNG tính bảng số). Không có hình phía đó → co_hinh_* = false, box_hinh_* = null.',
+    'BẢNG số liệu → viết bằng LaTeX $\\begin{array}{…}…\\end{array}$ trong de_bai/loi_giai (KHÔNG coi là hình).',
     giaiRule(a.giaiAI),
     f.ruleDapAn,
     FMT_RULES,
-    'Trả JSON: { "cau": [ { "de_bai":"…", "dap_an":"…", "loi_giai":"…", "lua_chon":["…"], "co_hinh": false, "box_hinh": null } ] }',
+    'Trả JSON: { "cau": [ { "de_bai":"…", "dap_an":"…", "loi_giai":"…", "lua_chon":["…"], "co_hinh_de": false, "box_hinh_de": null, "co_hinh_dap_an": false, "box_hinh_dap_an": null } ] }',
   ].filter(Boolean).join('\n')
 }
 export function parseIngestJson(text: string): IngestCau[] {
@@ -945,13 +1214,15 @@ export function parseIngestJson(text: string): IngestCau[] {
   let obj: any; try { obj = lenientJsonParse(t) } catch (e: any) { throw new Error('JSON không hợp lệ: ' + e.message) }
   const arr = Array.isArray(obj) ? obj : (obj.cau ?? obj.cau_hoi ?? [])
   if (!Array.isArray(arr)) throw new Error('Cần JSON dạng { "cau": [ … ] }.')
+  const box4 = (v: any): [number, number, number, number] | null =>
+    Array.isArray(v) && v.length === 4 ? (v.map(Number) as [number, number, number, number]) : null
   return arr.filter((x: any) => x?.de_bai || x?.noi_dung).map((x: any) => ({
     noi_dung: String(x.de_bai ?? x.noi_dung ?? '').trim(),
     dap_an: x.dap_an != null && String(x.dap_an).trim() ? String(x.dap_an).trim() : null,
     loi_giai: x.loi_giai != null && String(x.loi_giai).trim() ? String(x.loi_giai).trim() : null,
     lua_chon: Array.isArray(x.lua_chon) && x.lua_chon.length ? x.lua_chon.map(String) : null,
-    coHinh: !!x.co_hinh,
-    box: Array.isArray(x.box_hinh) && x.box_hinh.length === 4 ? (x.box_hinh.map(Number) as [number, number, number, number]) : null,
+    coHinhDe: !!x.co_hinh_de, boxDe: box4(x.box_hinh_de),
+    coHinhDapAn: !!x.co_hinh_dap_an, boxDapAn: box4(x.box_hinh_dap_an),
   }))
 }
 
@@ -960,19 +1231,19 @@ export function parseIngestJson(text: string): IngestCau[] {
 // Bóc/crop hình chạy ở SCREEN (DOM); ở đây = prompt + parse + phân loại grounded + verify + AI-giải + save + log.
 // ════════════════════════════════════════════════════════════════
 export type KhoMon = 'toan' | 'khtn' | 'hgt'
-export function khoTbls(mon: KhoMon): { cauTbl: string; banDoTbl: string; lyThuyetTbl: string } {
+export function khoTbls(mon: KhoMon): { cauTbl: string; banDoTbl: string; lyThuyetTbl: string; yeuCauGiaiTbl: string } {
   return mon === 'khtn'
-    ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', lyThuyetTbl: 'khtn_dang_ly_thuyet' }
+    ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', lyThuyetTbl: 'khtn_dang_ly_thuyet', yeuCauGiaiTbl: 'khtn_cau_hoi_yeu_cau_giai' }
     : mon === 'hgt'
-    ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', lyThuyetTbl: 'hgt_dang_ly_thuyet' }
-    : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', lyThuyetTbl: 'dai_dang_ly_thuyet' }
+    ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', lyThuyetTbl: 'hgt_dang_ly_thuyet', yeuCauGiaiTbl: 'hgt_cau_hoi_yeu_cau_giai' }
+    : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', lyThuyetTbl: 'dai_dang_ly_thuyet', yeuCauGiaiTbl: 'dai_cau_hoi_yeu_cau_giai' }
 }
 
 // Chủ đề trong 1 khối — chọn ở ĐẦU luồng (tài liệu chung 1 chủ đề, người biết sẵn).
 export type ChuDeOption = { ma_chu_de: string; ten_chu_de: string; soDang: number }
 export async function listChuDeOptions(mon: KhoMon, khoi: string): Promise<ChuDeOption[]> {
   const { banDoTbl } = khoTbls(mon)
-  const { data, error } = await supabase.from(banDoTbl).select('ma_chu_de, ten_chu_de').eq('khoi', khoi).limit(LIMIT)
+  const { data, error } = await supabase.from(banDoTbl).select('ma_chu_de, ten_chu_de').eq('khoi', khoi).not('ma_dang', 'like', '%000000').limit(LIMIT)
   if (error) throw error
   const m = new Map<string, ChuDeOption>()
   for (const r of (data ?? []) as any[]) {
@@ -988,7 +1259,7 @@ export async function listDangByChuDe(mon: KhoMon, khoi: string, maChuDe: string
   const { banDoTbl } = khoTbls(mon)
   const { data, error } = await supabase.from(banDoTbl)
     .select('ma_dang, ten_dang, ma_chuyen_de, ten_chuyen_de, mo_ta_ngan')
-    .eq('khoi', khoi).eq('ma_chu_de', maChuDe).order('ma_dang').limit(LIMIT)
+    .eq('khoi', khoi).eq('ma_chu_de', maChuDe).not('ma_dang', 'like', '%000000').order('ma_dang').limit(LIMIT)
   if (error) throw error
   return (data ?? []).map((r: any) => ({ ma_dang: r.ma_dang, ten_dang: r.ten_dang, ma_chuyen_de: r.ma_chuyen_de, ten_chuyen_de: r.ten_chuyen_de, mo_ta_ngan: r.mo_ta_ngan ?? null }))
 }
@@ -1522,29 +1793,43 @@ export async function ocrDeTuAnh(file: { mimeType: string; dataBase64: string })
   return parseLyThuyetJson(raw)
 }
 
-// ── Ingest CẢ BÀI Hình (ảnh/PDF) → tách ĐỀ + LỜI GIẢI ────────────
-// Up nguyên 1 bài rồi AI tách 2 phần, thay vì điền tay từng ô. CHỈ lấy CHỮ; HÌNH bỏ qua (người tự vẽ).
-export const HINH_BAI_SCHEMA = { type: 'OBJECT', properties: { de_bai: { type: 'STRING' }, loi_giai: { type: 'STRING' } }, required: ['de_bai'] }
+// ── Ingest CẢ BÀI Hình (ảnh/PDF) → tách ĐỀ + LỜI GIẢI + HÌNH VẼ ────────────
+// Up nguyên 1 bài rồi AI tách, thay vì điền tay từng ô. CHỮ (đề/lời giải) do Gemini đọc; HÌNH VẼ hình học
+// AI KHÔNG vẽ lại được nhưng NHẬN DIỆN + KHOANH VÙNG được (box_hinh) — khuôn NGUYÊN pattern
+// co_hinh/box_hinh đã chạy ổn ở kho Đại (buildKhoIngestPrompt/INGEST_KHO_SCHEMA) — caller (hinhUi.tsx
+// IngestBaiButton) tự CẮT ảnh từ canvas DPI cao bằng bbox này (cropCanvasBox, không qua AI vẽ).
+// ⭐ 08-20 (Thùy: "hệ thống tự nhận diện được Hình vẽ luôn — module này bên Đại có rồi"): thêm co_hinh/
+// box_hinh/trang_hinh — trang_hinh vì 1 bài Hình có thể up NHIỀU trang/ảnh (khác Đại ingest-per-trang).
+export const HINH_BAI_SCHEMA = { type: 'OBJECT', properties: {
+  de_bai: { type: 'STRING' }, loi_giai: { type: 'STRING' },
+  co_hinh: { type: 'BOOLEAN' },
+  box_hinh: { type: 'ARRAY', items: { type: 'NUMBER' }, description: '[ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0-1000 ôm trọn HÌNH VẼ HÌNH HỌC trên ảnh/trang chứa nó — chỉ điền khi co_hinh=true.' },
+  trang_hinh: { type: 'NUMBER', description: 'Số thứ tự ảnh/trang (đếm từ 0, theo đúng thứ tự file được đưa vào) chứa hình vẽ đó — chỉ điền khi co_hinh=true.' },
+}, required: ['de_bai'] }
 export function buildIngestBaiHinhPrompt(): string {
   return [
-    'Ảnh/PDF dưới là MỘT BÀI TOÁN HÌNH HỌC hoàn chỉnh (gồm ĐỀ, có thể kèm LỜI GIẢI).',
-    'TÁCH thành 2 phần, chép NGUYÊN VĂN phần CHỮ — GIỮ đúng câu chữ, KHÔNG tóm tắt, KHÔNG thêm bớt:',
+    'Ảnh/PDF dưới là MỘT BÀI TOÁN HÌNH HỌC hoàn chỉnh (gồm ĐỀ, có thể kèm LỜI GIẢI, có thể nhiều trang/ảnh).',
+    'TÁCH thành các phần, chép NGUYÊN VĂN phần CHỮ — GIỮ đúng câu chữ, KHÔNG tóm tắt, KHÔNG thêm bớt:',
     '- "de_bai": toàn bộ ĐỀ (giả thiết + câu hỏi/yêu cầu). Đề nhiều ý (a, b, c) giữ đủ.',
     '- "loi_giai": toàn bộ LỜI GIẢI / chứng minh nếu có; KHÔNG có thì để "".',
     'QUY TẮC:',
     '- Ký hiệu/công thức DÙNG LaTeX trong $...$ — vd $\\triangle ABC$, $\\angle BAC=90^\\circ$, $AB^2=BH\\cdot BC$, $\\perp$, $\\parallel$. Phân số \\\\dfrac.',
     '- Giữ xuống dòng bằng xuống dòng thật; mỗi ý/bước một dòng.',
-    '- Có HÌNH VẼ thì BỎ QUA (đừng mô tả, đừng vẽ lại) — chỉ lấy CHỮ.',
-    '- Nhiều trang/ảnh: gộp theo đúng thứ tự.',
+    '- Có HÌNH VẼ HÌNH HỌC (tam giác/tứ giác/đường tròn/hình không gian…) thì ĐỪNG chép chữ mô tả hình, ĐỪNG vẽ lại — chỉ đánh dấu vị trí: "co_hinh"=true + "box_hinh"=[ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0-1000 ôm SÁT hình vẽ đó (không ôm chữ đề xung quanh) + "trang_hinh" = ảnh/trang thứ mấy (đếm từ 0) chứa nó. Nhiều hình trong 1 bài (đề + lời giải đều có hình) thì chỉ lấy hình CỦA ĐỀ BÀI (hình đầu tiên, dùng để hiểu giả thiết). Không có hình nào → "co_hinh"=false, bỏ qua "box_hinh"/"trang_hinh".',
+    '- Nhiều trang/ảnh: gộp CHỮ theo đúng thứ tự.',
     '- Trong JSON: lệnh LaTeX PHẢI double backslash ("\\\\triangle", "\\\\perp", "\\\\cdot", "\\\\dfrac"); CHỈ trả JSON.',
-    'Trả về JSON: { "de_bai": "...", "loi_giai": "..." }',
+    'Trả về JSON: { "de_bai": "...", "loi_giai": "...", "co_hinh": false, "box_hinh": null, "trang_hinh": null }',
   ].join('\n')
 }
-export async function ingestBaiHinh(files: GeminiFile[]): Promise<{ de_bai: string; loi_giai: string }> {
+export async function ingestBaiHinh(files: GeminiFile[]): Promise<{ de_bai: string; loi_giai: string; co_hinh: boolean; box_hinh: [number, number, number, number] | null; trang_hinh: number }> {
   const raw = await callGeminiJson(buildIngestBaiHinhPrompt(), { schema: HINH_BAI_SCHEMA, files })
   let t = raw.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
   const obj = lenientJsonParse(t)
-  return { de_bai: String(obj.de_bai ?? obj.deBai ?? '').trim(), loi_giai: String(obj.loi_giai ?? obj.loiGiai ?? '').trim() }
+  const box = Array.isArray(obj.box_hinh) && obj.box_hinh.length === 4 ? (obj.box_hinh.map(Number) as [number, number, number, number]) : null
+  return {
+    de_bai: String(obj.de_bai ?? obj.deBai ?? '').trim(), loi_giai: String(obj.loi_giai ?? obj.loiGiai ?? '').trim(),
+    co_hinh: !!obj.co_hinh && !!box, box_hinh: box, trang_hinh: Number(obj.trang_hinh ?? 0) || 0,
+  }
 }
 
 // ── SINH BIẾN THỂ HÌNH (đổi số) — clone TỪ TEXT bài gốc, giống engine clone bên Đại (buildCloneFromGocPrompt) ──
@@ -1627,16 +1912,27 @@ export async function doiDinhHinh(goc: { de: string; loiGiai: string | null }, g
 // ── ĐỔI ĐỈNH CẢ CHUỖI (một LỨA) — N bài nối tiền đề, đổi đỉnh bằng ĐÚNG MỘT map điểm cho cả chuỗi ──
 // Vì cả chuỗi CHUNG một hình: điểm A ở câu 1 và câu 3 phải đổi thành CÙNG một tên. Đổi từng câu riêng =
 // mỗi câu một bộ điểm → ghép a,b,c vô nghĩa. Gộp 1 call để AI chốt 1 map dùng chung.
-export const HINH_CHUOI_SCHEMA = { type: 'OBJECT', properties: { cau: { type: 'ARRAY', items: HINH_BAI_SCHEMA } }, required: ['cau'] }
-export function buildDoiDinhChuoiPrompt(cau: { ma: string; de: string; loiGiai: string }[], ghiChu?: string): string {
-  const list = cau.map((c, i) => [`--- Câu ${i + 1} (${c.ma}) ---`, `de_bai: ${c.de}`, `loi_giai: ${c.loiGiai || '(tự giải theo phương pháp chuẩn)'}`].join('\n')).join('\n\n')
+// ⭐ 08-20 (Thùy: "sao hệ thống tự đẻ ra chữ Chứng minh vậy, t nhập/AI trả gì thì hiện đúng thế, không
+// được tự sinh"): TRƯỚC gộp giả thiết+câu hỏi vào 1 field "de_bai" rồi lúc hiển thị lứa lại DÒ chữ
+// "Chứng minh" để cắt ngược ra 2 phần (`tachDe`) — hỏng ngay khi câu hỏi gốc không có chữ đó (vd "Tính
+// …") hoặc AI không tự thêm lại. Đổi hẳn: AI trả "giai_thiet"/"cau_hoi" TÁCH RIÊNG — không phải NỐI rồi
+// CẮT NGƯỢC, khỏi cần đoán mốc chữ nào cả. Client tự ghép lại bằng `ghepDeBai` (SoanTaiLieu.tsx, mốc kỹ
+// thuật do CLIENT chèn — không nhờ AI "nhớ giữ").
+export const HINH_CHUOI_ITEM_SCHEMA = { type: 'OBJECT', properties: {
+  giai_thiet: { type: 'STRING', description: 'CHỈ phần giả thiết (không kèm câu hỏi) sau khi đổi đỉnh — để trống nếu câu này không có giả thiết riêng.' },
+  cau_hoi: { type: 'STRING', description: 'CHỈ phần câu hỏi/yêu cầu sau khi đổi đỉnh — GIỮ NGUYÊN VĂN cách hỏi gốc (không tự thêm chữ "Chứng minh" hay bất kỳ chữ nào khác nếu gốc không có), không kèm giả thiết.' },
+  loi_giai: { type: 'STRING' },
+}, required: ['cau_hoi'] }
+export const HINH_CHUOI_SCHEMA = { type: 'OBJECT', properties: { cau: { type: 'ARRAY', items: HINH_CHUOI_ITEM_SCHEMA } }, required: ['cau'] }
+export function buildDoiDinhChuoiPrompt(cau: { ma: string; giaThiet: string; cauHoi: string; loiGiai: string }[], ghiChu?: string): string {
+  const list = cau.map((c, i) => [`--- Câu ${i + 1} (${c.ma}) ---`, `giai_thiet: ${c.giaThiet || '(không có riêng)'}`, `cau_hoi: ${c.cauHoi}`, `loi_giai: ${c.loiGiai || '(tự giải theo phương pháp chuẩn)'}`].join('\n')).join('\n\n')
   return [
     'Bạn là chuyên gia ra đề toán HÌNH HỌC THCS.',
-    `Dưới đây là ${cau.length} bài toán NỐI TIẾP trong MỘT chuỗi — CÙNG một hình, ý sau dùng kết quả ý trước:`,
+    `Dưới đây là ${cau.length} bài toán NỐI TIẾP trong MỘT chuỗi — CÙNG một hình, ý sau dùng kết quả ý trước. Mỗi câu đã tách sẵn "giai_thiet" (giả thiết riêng, có thể trống) và "cau_hoi" (yêu cầu):`,
     '',
     list,
     '',
-    `NHIỆM VỤ: Sinh biến thể "ĐỔI ĐỈNH" cho CẢ ${cau.length} câu — GIỮ NGUYÊN số liệu, cấu hình hình, logic; CHỈ đổi TÊN các điểm.`,
+    `NHIỆM VỤ: Sinh biến thể "ĐỔI ĐỈNH" cho CẢ ${cau.length} câu — GIỮ NGUYÊN số liệu, cấu hình hình, logic; CHỈ đổi TÊN các điểm. Trả riêng "giai_thiet"/"cau_hoi" đã đổi tên — ĐỪNG gộp chung, ĐỪNG tự thêm/bớt chữ nào ngoài việc đổi tên điểm (câu hỏi gốc viết sao thì giữ nguyên cách viết đó, kể cả không có chữ "Chứng minh").`,
     '',
     `⚠ RÀNG BUỘC QUAN TRỌNG NHẤT — MỘT BỘ ĐIỂM DUY NHẤT cho cả ${cau.length} câu:`,
     '- Chọn MỘT map đổi tên điểm (vd $A,B,C,H \\to M,N,P,K$) rồi áp Y HỆT cho MỌI câu. Điểm $A$ ở câu 1 và câu 3 PHẢI đổi thành CÙNG một tên. TUYỆT ĐỐI KHÔNG mỗi câu một bộ điểm khác nhau.',
@@ -1647,15 +1943,81 @@ export function buildDoiDinhChuoiPrompt(cau: { ma: string; de: string; loiGiai: 
     '',
     FMT_RULES,
     '',
-    `Trả về JSON: { "cau": [ ĐÚNG ${cau.length} phần tử dạng { "de_bai": "...", "loi_giai": "..." } ] }`,
+    `Trả về JSON: { "cau": [ ĐÚNG ${cau.length} phần tử dạng { "giai_thiet": "...", "cau_hoi": "...", "loi_giai": "..." } ] }`,
   ].filter(Boolean).join('\n')
 }
-export async function doiDinhChuoiHinh(cau: { ma: string; de: string; loiGiai: string }[], ghiChu?: string): Promise<{ de_bai: string; loi_giai: string }[]> {
+export async function doiDinhChuoiHinh(cau: { ma: string; giaThiet: string; cauHoi: string; loiGiai: string }[], ghiChu?: string): Promise<{ giai_thiet: string; cau_hoi: string; loi_giai: string }[]> {
   const raw = await callGeminiJson(buildDoiDinhChuoiPrompt(cau, ghiChu?.trim() || undefined), { model: 'gemini-2.5-flash', think: 8192, schema: HINH_CHUOI_SCHEMA })
   let t = raw.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
   const obj = lenientJsonParse(t)
   const arr = Array.isArray(obj.cau) ? obj.cau : []
-  return arr.map((x: any) => ({ de_bai: String(x.de_bai ?? x.deBai ?? '').trim(), loi_giai: String(x.loi_giai ?? x.loiGiai ?? '').trim() }))
+  return arr.map((x: any) => ({
+    giai_thiet: String(x.giai_thiet ?? x.giaThiet ?? '').trim(),
+    cau_hoi: String(x.cau_hoi ?? x.cauHoi ?? '').trim(),
+    loi_giai: String(x.loi_giai ?? x.loiGiai ?? '').trim(),
+  }))
+}
+
+// ── NHẬP LỨA ĐÃ CLONE SẴN (ảnh/PDF) — Thùy 08-20: "hệ thống chưa clone được 1 chuỗi hoàn chỉnh, t tự
+// clone bên ngoài, muốn NHẬP lại + tự khớp vào chuỗi gốc". Khác doiDinhChuoiHinh (AI TỰ SINH text, chỉ đổi
+// tên điểm) — đây là NGƯỜI đã tự làm ra bản clone thật (đổi số/đổi hình/đổi gì cũng được), AI CHỈ ĐỌC +
+// KHỚP từng ý vào ĐÚNG bài gốc trong chuỗi (không tự bịa nội dung) — khuôn ingest, không phải sinh.
+// Khớp theo "ma" (khoá tự nhiên) — không theo VỊ TRÍ/thứ tự in (CLAUDE.md §2 "danh tính bám khoá tự
+// nhiên"): bản clone có thể thiếu/thừa/đảo thứ tự so với chuỗi gốc, AI phải tự đối chiếu NỘI DUNG.
+// ⭐ 08-20 (Thùy: "không được tự sinh ra cái gì hết"): "giai_thiet"/"cau_hoi" TÁCH RIÊNG, KHÔNG gộp vào
+// 1 "de_bai" rồi cắt ngược bằng mốc chữ (xem lý do y hệt ở doiDinhChuoiHinh phía trên).
+export const INGEST_LUA_CHUOI_ITEM_SCHEMA = { type: 'OBJECT', properties: {
+  khop_voi_ma: { type: 'STRING', description: 'Mã bài GỐC (lấy NGUYÊN trong ngoặc [ ] ở danh sách đối chiếu) mà Ý NÀY khớp nội dung/logic/vị trí trong chuỗi nhất.' },
+  giai_thiet: { type: 'STRING', description: 'CHỈ phần giả thiết dùng chung (đã đổi số/đổi tên theo bản clone) — không kèm câu hỏi.' },
+  cau_hoi: { type: 'STRING', description: 'CHỈ phần câu hỏi/yêu cầu riêng của ý này — CHÉP NGUYÊN VĂN cách hỏi trong ảnh (không tự thêm chữ "Chứng minh" hay chữ nào khác nếu ảnh không viết vậy), không kèm giả thiết.' },
+  loi_giai: { type: 'STRING' },
+}, required: ['khop_voi_ma', 'cau_hoi'] }
+export const INGEST_LUA_CHUOI_SCHEMA = { type: 'OBJECT', properties: {
+  y: { type: 'ARRAY', items: INGEST_LUA_CHUOI_ITEM_SCHEMA },
+  co_hinh: { type: 'BOOLEAN' },
+  box_hinh: { type: 'ARRAY', items: { type: 'NUMBER' }, description: '[ymin,xmin,ymax,xmax] toạ độ CHUẨN HOÁ 0-1000 ôm trọn HÌNH VẼ dùng chung cho cả chuỗi (thường chỉ 1 hình ở đầu) — chỉ điền khi co_hinh=true.' },
+  trang_hinh: { type: 'NUMBER', description: 'Số thứ tự ảnh/trang (đếm từ 0) chứa hình đó — chỉ điền khi co_hinh=true.' },
+}, required: ['y'] }
+export function buildIngestLuaChuoiPrompt(chuoiGoc: { ma: string; phat_bieu: string }[]): string {
+  const list = chuoiGoc.map((c) => `[${c.ma}] ${c.phat_bieu}`).join('\n')
+  return [
+    'Ảnh/PDF dưới là MỘT CHUỖI bài toán hình học đã được CLONE (đổi số/đổi tên điểm/vẽ lại…) từ một chuỗi',
+    'GỐC cho bên dưới — thường trình bày dạng: 1 hình vẽ + 1 giả thiết CHUNG, rồi các ý a), b), c)… nối',
+    'tiếp nhau (ý sau dùng kết quả ý trước), có thể kèm lời giải từng ý.',
+    '',
+    `CHUỖI GỐC (${chuoiGoc.length} bài — CHỈ dùng để KHỚP nội dung/logic, đây KHÔNG phải đề trong ảnh):`,
+    list,
+    '',
+    'NHIỆM VỤ: tách ảnh/PDF thành từng Ý, mỗi ý khớp với ĐÚNG 1 bài gốc ở trên qua "khop_voi_ma":',
+    '- Khớp theo LOGIC/NỘI DUNG/VỊ TRÍ trong chuỗi (ý đầu thường ≈ bài đầu chuỗi, ý dùng kết quả ý trước ≈',
+    '  bài có tiền đề là bài trước nó…) — KHÔNG máy móc theo đúng thứ tự in nếu nội dung cho thấy khác.',
+    '- Ảnh/PDF có thể clone THIẾU vài bài gốc hoặc THỪA ý ngoài chuỗi — cứ trả đúng những gì đọc được,',
+    '  ĐỪNG bịa ý cho đủ số, ĐỪNG gán ép một ý vào bài không khớp.',
+    'QUY TẮC chép chữ (mỗi "giai_thiet"/"cau_hoi"/"loi_giai"):',
+    '- Chép NGUYÊN VĂN — GIỮ đúng câu chữ ảnh viết, KHÔNG thêm/bớt/diễn giải lại (kể cả không thêm chữ',
+    '  "Chứng minh"/"Tính"… nếu ảnh không có sẵn chữ đó ở đầu câu hỏi).',
+    '- Ký hiệu/công thức DÙNG LaTeX trong $...$; phân số \\\\dfrac. Giữ xuống dòng thật; mỗi bước 1 dòng.',
+    '- Có HÌNH VẼ HÌNH HỌC dùng chung cho cả chuỗi (thường vẽ 1 lần ở đầu): "co_hinh"=true + "box_hinh"',
+    '  ôm sát hình + "trang_hinh" = ảnh/trang thứ mấy (đếm từ 0) chứa nó. Không có → "co_hinh"=false.',
+    '- Trong JSON: lệnh LaTeX PHẢI double backslash; CHỈ trả JSON.',
+    'Trả về JSON: { "y": [ { "khop_voi_ma":"...", "giai_thiet":"...", "cau_hoi":"...", "loi_giai":"..." } ], "co_hinh":false, "box_hinh":null, "trang_hinh":null }',
+  ].join('\n')
+}
+export async function ingestLuaChuoiHinh(files: GeminiFile[], chuoiGoc: { ma: string; phat_bieu: string }[]): Promise<{
+  y: { khop_voi_ma: string; giai_thiet: string; cau_hoi: string; loi_giai: string }[]
+  co_hinh: boolean; box_hinh: [number, number, number, number] | null; trang_hinh: number
+}> {
+  const raw = await callGeminiJson(buildIngestLuaChuoiPrompt(chuoiGoc), { schema: INGEST_LUA_CHUOI_SCHEMA, files })
+  let t = raw.trim(); const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i); if (fence) t = fence[1].trim()
+  const obj = lenientJsonParse(t)
+  const box = Array.isArray(obj.box_hinh) && obj.box_hinh.length === 4 ? (obj.box_hinh.map(Number) as [number, number, number, number]) : null
+  const y = (Array.isArray(obj.y) ? obj.y : []).map((x: any) => ({
+    khop_voi_ma: String(x.khop_voi_ma ?? x.khopVoiMa ?? '').trim(),
+    giai_thiet: String(x.giai_thiet ?? x.giaThiet ?? '').trim(),
+    cau_hoi: String(x.cau_hoi ?? x.cauHoi ?? '').trim(),
+    loi_giai: String(x.loi_giai ?? x.loiGiai ?? '').trim(),
+  })).filter((x: any) => x.khop_voi_ma && x.cau_hoi)
+  return { y, co_hinh: !!obj.co_hinh && !!box, box_hinh: box, trang_hinh: Number(obj.trang_hinh ?? 0) || 0 }
 }
 
 // ── Lý thuyết đi kèm dạng Đại (1-1) + chuẩn completeness ──────────
@@ -1746,7 +2108,7 @@ export async function countYByDangHinh(): Promise<Record<string, number>> {
 // ── KHTN: bản đồ (clone shape Đại, bảng khtn_*) — 1 cây Chủ-đề→Chuyên-đề→Dạng, KHÔNG nhánh ──
 export async function listKhtnMap(khoi: string): Promise<MapRow[]> {
   const { data, error } = await supabase.from('khtn_ban_do').select('*')
-    .eq('khoi', khoi).order('ma_chu_de').order('ma_chuyen_de').order('ma_dang').limit(LIMIT)
+    .eq('khoi', khoi).not('ma_dang', 'like', '%000000').order('ma_chu_de').order('ma_chuyen_de').order('ma_dang').limit(LIMIT)
   if (error) throw error
   return (data ?? []).map((r: any) => ({
     leafMa: r.ma_dang, khoi: r.khoi, t1Ma: r.ma_chu_de, t1Ten: r.ten_chu_de,
@@ -1811,7 +2173,7 @@ export async function deleteKhtnChuyenDeLyThuyet(ma_chuyen_de: string): Promise<
 // `tai_lieu.mon` của tài liệu Hình giải tích vẫn 'Toán' (RBAC/billing sạch) — phân biệt qua `tai_lieu.nhanh`.
 export async function listHgtMap(khoi: string): Promise<MapRow[]> {
   const { data, error } = await supabase.from('hgt_ban_do').select('*')
-    .eq('khoi', khoi).order('ma_chu_de').order('ma_chuyen_de').order('ma_dang').limit(LIMIT)
+    .eq('khoi', khoi).not('ma_dang', 'like', '%000000').order('ma_chu_de').order('ma_chuyen_de').order('ma_dang').limit(LIMIT)
   if (error) throw error
   return (data ?? []).map((r: any) => ({
     leafMa: r.ma_dang, khoi: r.khoi, t1Ma: r.ma_chu_de, t1Ten: r.ten_chu_de,
@@ -1875,3 +2237,161 @@ export async function deleteHgtChuyenDeLyThuyet(ma_chuyen_de: string): Promise<v
 // Ở FILE RIÊNG `hinh.ts` cho dễ đọc; re-export tại đây để UI chỉ cần 1 cửa `kho/api`.
 export * from './hinh'
 export * from './hinhConfig'
+
+// ── MCQ FORM — phiên bản TRẮC NGHIỆM (distractor theo lỗi) của câu, spec-mcq-form.md (CEO chốt 08/09) ──
+// Mọi đọc/ghi qua RPC fn_mcq_* (dispatch theo tiền tố kho ở DB; kho chưa có bảng → list rỗng, không nổ).
+export type LuaChonTn = { text: string; dung: boolean; rule?: string; duong_sai?: string }
+export type FormTnChoDuyet = {
+  id: string; ma_cau: string; dang_chinh: string; ten_dang: string; khoi: string; noi_dung: string; anh_de: string | null
+  loi_giai: string | null; dap_an_kho: string | null; lua_chon: LuaChonTn[]; dap_an: string; key_gia_tri: string
+  ai_model: string | null; sinh_at: string; da_duyet: boolean; sua_truoc_duyet: boolean
+}
+export type McqRule = { ma: string; ten: string; nhom: 'khai_niem' | 'tinh'; du_phong: boolean }
+export type McqMetric = {
+  tong: number; cho_duyet: number; duyet: number; duyet_khong_sua: number; sua: number; tu_choi: number
+  precision: number | null; ti_le_sua: number | null; ly_do_tu_choi: { ly_do: string; n: number }[]
+  phan_bo: Record<string, number>; do_lua: { ma_cau: string; luot: number; chon: number[] }[]
+}
+export const khoPrefix = (mon: KhoMon): 'dai' | 'khtn' | 'hgt' => (mon === 'khtn' ? 'khtn' : mon === 'hgt' ? 'hgt' : 'dai')
+export async function listFormTnChoDuyet(mon: KhoMon, khoi?: string, daDuyet = false): Promise<FormTnChoDuyet[]> {
+  const { data, error } = await supabase.rpc('fn_mcq_form_cho_duyet', { p_kho: khoPrefix(mon), p_khoi: khoi || null, p_da_duyet: daDuyet })
+  if (error) throw error
+  return (data ?? []) as FormTnChoDuyet[]
+}
+// luaChon truyền khi người SỬA trước khi duyệt — DB tự so với bản cũ để ghi sua_truoc_duyet (metric).
+export async function duyetFormTn(mon: KhoMon, id: string, nguoiDuyet: string, luaChon?: LuaChonTn[]): Promise<void> {
+  const { error } = await supabase.rpc('fn_mcq_form_duyet', { p_kho: khoPrefix(mon), p_id: id, p_nguoi: nguoiDuyet, p_lua_chon: luaChon ?? null })
+  if (error) throw error
+}
+export async function tuChoiFormTn(mon: KhoMon, id: string, nguoi: string, lyDo: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_mcq_form_tu_choi', { p_kho: khoPrefix(mon), p_id: id, p_nguoi: nguoi, p_ly_do: lyDo })
+  if (error) throw error
+}
+// Duyệt HÀNG LOẠT — mig 202609091411 (Thùy: loại câu sai trên màn rồi duyệt hết phần còn lại 1 lượt, không sửa).
+// Trả số thật đã duyệt (form bị người khác duyệt/từ chối giữa chừng thì bị BỎ QUA, không nổ giữa batch).
+export async function duyetFormTnBatch(mon: KhoMon, ids: string[], nguoiDuyet: string): Promise<{ duyet: number; yeu_cau: number; bo_qua: number }> {
+  const { data, error } = await supabase.rpc('fn_mcq_form_duyet_batch', { p_kho: khoPrefix(mon), p_ids: ids, p_nguoi: nguoiDuyet })
+  if (error) throw error
+  return data as { duyet: number; yeu_cau: number; bo_qua: number }
+}
+// ══ HÀNG DUYỆT HỢP NHẤT (spec-kho-chuan.md §3, mig 202609080938) — màn "Duyệt lời giải AI" thành 1 hàng đợi nhiều bộ lọc ══
+// Bộ lọc = trạng thái thật trong bảng câu (da_duyet=false / kiem_may), KHÔNG có bảng hàng đợi riêng. List/đếm/duyệt/từ chối
+// đều là function Postgres; ở đây chỉ gọi rpc + render. `cau_moi` = câu sau NGÀY BẬT chưa duyệt — cửa 1 đang chặn khỏi HS.
+// 'dung_sai' (CEO 12/09, mig 202609122218): câu Đúng/Sai là LOẠI RIÊNG — 5 bộ lọc cũ loại nó ra; duyệt theo TỪNG MỆNH ĐỀ
+// (bảng con <mon>_cau_menh_de, mỗi mệnh đề 1 dạng) ở DuyetDungSaiTab, không đi qua thẻ DuyetCauTab.
+// 'chua_dang' (CEO 13/09): câu nhập kho không xác định được dạng nằm ở DẠNG CHỜ (ma_dang kết thúc '000000', mig 202609131706).
+// DB chặn duyệt khi còn dạng chờ (trigger trg_chan_duyet_dang_cho) — người phải chọn dạng thật rồi mới Duyệt.
+export type HangDuyetLoc = 'cau_moi' | 'moi' | 'nghi' | 'khong_kiem' | 'ton_dong' | 'chua_dang' | 'dung_sai'
+export const HANG_DUYET_LABEL: Record<HangDuyetLoc, string> = {
+  cau_moi: 'Câu mới chờ duyệt', moi: 'Lời giải mới từ Claude', nghi: 'Máy nghi đáp số', khong_kiem: 'Không kiểm được', ton_dong: 'Tồn đọng (AI cũ)',
+  chua_dang: 'Chưa phân dạng', dung_sai: 'Đúng/Sai',
+}
+/** Dạng chờ "Chưa phân dạng" — khớp public._kho_la_dang_cho(). Ẩn khỏi cây bản đồ/picker; câu ở dạng này không duyệt được. */
+export const laDangCho = (ma: string | null | undefined): boolean => !!ma && ma.endsWith('000000')
+// Các hàm đọc bản đồ (listDaiDang/listHgtMap/listKhtnMap/listChuDeOptions/listDangByChuDe) lọc `.not('ma_dang','like','%000000')`.
+export type CauHangDuyet = {
+  ma_cau: string; dang_chinh: string; ten_dang: string; ten_chuyen_de: string; khoi: string; loai_cau: string
+  noi_dung: string; lua_chon: string[] | null; menh_de: MenhDe[] | null; dap_an: string | null; loi_giai: string | null
+  anh_de: string | null; anh_dap_an: string | null; nguon: string; nguon_giai: string; giai_method: string | null; created_at: string
+  ma_cum: string | null; ten_cum: string | null; da_duyet: boolean; kho_chuan: boolean
+  kiem_may: 'khop' | 'nghi' | 'khong_kiem_duoc' | null; kiem_may_boi: string | null; kiem_may_ghi: string | null; kiem_may_at: string | null
+  dang_ai_de_xuat: string | null
+}
+export async function listHangDuyet(mon: KhoMon, loc: HangDuyetLoc, khoi?: string | null): Promise<CauHangDuyet[]> {
+  const { data, error } = await supabase.rpc('fn_kho_hang_duyet', { p_mon: mon, p_loc: loc, p_khoi: khoi || null, p_limit: LIMIT })
+  if (error) throw error
+  return (data ?? []) as CauHangDuyet[]
+}
+// khoi = null ⇒ tổng của bộ lọc (grouping sets ở DB)
+export type DemHangDuyet = { loc: HangDuyetLoc; khoi: string | null; so_cau: number }
+export async function demHangDuyet(nhanh: KhoNhanh[]): Promise<DemHangDuyet[]> {
+  const { data, error } = await supabase.rpc('fn_kho_dem_hang_duyet', { p_nhanh: nhanh })
+  if (error) throw error
+  return ((data ?? []) as any[]).map((r) => ({ loc: r.loc, khoi: r.khoi, so_cau: Number(r.so_cau) }))
+}
+// Duyệt = áp sửa (key vắng = giữ nguyên; '' = xoá) + da_duyet + duyet_nguon='nguoi' trong 1 transaction.
+// Sửa đáp số ⇒ DB thu hồi mọi form TN của câu (trả thu_hoi_form để báo người).
+export type SuaCauDuyet = { noi_dung?: string; dap_an?: string | null; loi_giai?: string | null; dang_chinh?: string; ma_cum?: string | null }
+export async function duyetCauHangDuyet(mon: KhoMon, maCau: string, nguoi: string, sua: SuaCauDuyet = {}): Promise<{ thu_hoi_form: number; doi_dap_an: boolean; doi_dang: boolean }> {
+  const { data, error } = await supabase.rpc('fn_kho_duyet_cau', { p_mon: mon, p_ma_cau: maCau, p_nguoi: nguoi, p_sua: sua })
+  if (error) throw error
+  return data as { thu_hoi_form: number; doi_dap_an: boolean; doi_dang: boolean }
+}
+// Từ chối = kho rác (xoa_at) + lý do bắt buộc — không xoá cứng (CLAUDE.md §2 kho rác).
+export async function tuChoiCauHangDuyet(mon: KhoMon, maCau: string, nguoi: string, lyDo: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_kho_tu_choi_cau', { p_mon: mon, p_ma_cau: maCau, p_nguoi: nguoi, p_ly_do: lyDo })
+  if (error) throw error
+}
+
+// ══ DUYỆT ĐÚNG/SAI THEO MỆNH ĐỀ (CEO 12/09, mig 202609121432 + 202609122218) ══
+// Mỗi mệnh đề là 1 dạng riêng ⇒ 1 câu ĐS ~ N KP đo cùng lúc. Dòng bảng con <mon>_cau_menh_de = chân lý về dạng/duyệt của
+// mệnh đề; jsonb menh_de trên câu cha là đường ghi cũ (createCauDungSai), trigger sync xuống. `con === null` = mệnh đề chưa có
+// dòng con (ma_dang jsonb rớt sau renumber) ⇒ người phải chọn dạng rồi duyệt. Câu cha chỉ duyệt được khi MỌI mệnh đề đã duyệt.
+export type MenhDeCon = {
+  id: string; dang_chinh: string; ten_dang: string; ten_chuyen_de: string; noi_dung: string; dung: boolean; loi_giai: string | null
+  da_duyet: boolean; duyet_at: string | null; dang_ai_de_xuat: string | null
+}
+export type MenhDeHop = { thu_tu: number; noi_dung: string | null; dap_an: 'D' | 'S' | null; ma_dang: string | null; loi_giai: string | null; con: MenhDeCon | null }
+export type CauDungSaiDuyet = {
+  ma_cau: string; dang_chinh: string; ten_dang: string; ten_chuyen_de: string; khoi: string
+  noi_dung: string; loi_giai: string | null; anh_de: string | null; anh_dap_an: string | null; nguon: string; nguon_giai: string; created_at: string
+  ma_cum: string | null; ten_cum: string | null; da_duyet: boolean; kho_chuan: boolean; dang_ai_de_xuat: string | null; ten_de_goc: string | null
+  so_menh_de: number; so_da_duyet: number; so_thieu_dang: number; menh_de_hop: MenhDeHop[]
+}
+export async function listHangDuyetDs(mon: KhoMon, khoi?: string | null): Promise<CauDungSaiDuyet[]> {
+  const { data, error } = await supabase.rpc('fn_kho_hang_duyet_ds', { p_mon: mon, p_khoi: khoi || null, p_limit: LIMIT })
+  if (error) throw error
+  return (data ?? []) as CauDungSaiDuyet[]
+}
+// Duyệt 1 mệnh đề = áp sửa (key vắng = giữ) + ký; DB ghi cả bảng con và jsonb cha trong 1 tx. Trả mệnh đề sau ghi để cha vá tại chỗ.
+export type SuaMenhDe = { dang_chinh?: string; noi_dung?: string; dung?: boolean; loi_giai?: string | null }
+export async function duyetMenhDe(mon: KhoMon, maCau: string, thuTu: number, nguoi: string, sua: SuaMenhDe = {}): Promise<MenhDeCon & { thu_tu: number }> {
+  const { data, error } = await supabase.rpc('fn_kho_duyet_menh_de', { p_mon: mon, p_ma_cau: maCau, p_thu_tu: thuTu, p_nguoi: nguoi, p_sua: sua })
+  if (error) throw error
+  return data as MenhDeCon & { thu_tu: number }
+}
+// Duyệt câu cha ĐS — DB từ chối nếu còn mệnh đề chưa duyệt/chưa gán dạng. duyetHet=true: ký hết mệnh đề theo hiện trạng trước
+// (nút "Duyệt tất cả batch"); câu có mệnh đề thiếu dạng sẽ RAISE ⇒ batch bỏ qua câu đó.
+export async function duyetCauDs(mon: KhoMon, maCau: string, nguoi: string, sua: SuaCauDuyet = {}, duyetHet = false): Promise<{ so_menh_de: number; doi_dang: boolean }> {
+  const { data, error } = await supabase.rpc('fn_kho_duyet_cau_ds', { p_mon: mon, p_ma_cau: maCau, p_nguoi: nguoi, p_sua: sua, p_duyet_het: duyetHet })
+  if (error) throw error
+  return data as { so_menh_de: number; doi_dang: boolean }
+}
+
+export async function listMcqRule(mon: KhoMon): Promise<McqRule[]> {
+  const { data, error } = await supabase.rpc('fn_mcq_rule', { p_kho: khoPrefix(mon) })
+  if (error) throw error
+  return (data ?? []) as McqRule[]
+}
+export async function mcqMetric(mon: KhoMon): Promise<McqMetric | null> {
+  const { data, error } = await supabase.rpc('fn_mcq_metric', { p_kho: khoPrefix(mon) })
+  if (error) throw error
+  return data && Object.keys(data).length ? (data as McqMetric) : null
+}
+
+// ── ĐIỀN Ô chứng minh hình (spec-dien-o.md §0b) — form thứ 3 của bài, kho hình (không có ma_cau). RPC fn_dien_form_* ──
+export type DienPhuongAn = { text?: string; ma?: string; dung: boolean; loi?: string; vi_sao_sai?: string | null }
+export type DienO = { id: string; kieu: 'ket_luan' | 'ly_do'; buoc: number; key: string; dap_an: string; phuong_an: DienPhuongAn[] }
+export type FormDienChoDuyet = {
+  id: string; loai: 'cach' | 'bien_the'; ref_id: string; ma: string; khoi: string; de: string; gia_thiet: string | null; anh: string | null
+  buoc: { k: number; text: string }[]; o: DienO[]; sinh_at: string; da_duyet: boolean; sua_truoc_duyet: boolean; ai_model: string | null
+}
+export type HinhLyDo = { ma: string; nhom: string; ten: string; phat_bieu: string | null; duc: boolean }
+export async function listFormDienChoDuyet(khoi?: string, daDuyet = false): Promise<FormDienChoDuyet[]> {
+  const { data, error } = await supabase.rpc('fn_dien_form_cho_duyet', { p_khoi: khoi || null, p_da_duyet: daDuyet })
+  if (error) throw error
+  return (data ?? []) as FormDienChoDuyet[]
+}
+export async function duyetFormDien(id: string, nguoiDuyet: string, o?: DienO[]): Promise<void> {
+  const { error } = await supabase.rpc('fn_dien_form_duyet', { p_id: id, p_nguoi: nguoiDuyet, p_o: o ?? null })
+  if (error) throw error
+}
+export async function tuChoiFormDien(id: string, nguoi: string, lyDo: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_dien_form_tu_choi', { p_id: id, p_nguoi: nguoi, p_ly_do: lyDo })
+  if (error) throw error
+}
+export async function listHinhLyDo(): Promise<HinhLyDo[]> {
+  const { data, error } = await supabase.from('hinh_ly_do').select('ma, nhom, ten, phat_bieu, duc').eq('active', true).order('ma').limit(500)
+  if (error) throw error
+  return (data ?? []) as HinhLyDo[]
+}

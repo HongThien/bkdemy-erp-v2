@@ -14,6 +14,10 @@
 // Chạy:  node worker/index.mjs        (cần `npm run build` trước — serve dist/)
 // Env:   đọc .env.local — VITE_SUPABASE_URL, VITE_SUPABASE_KEY, SUPABASE_SERVICE_ROLE,
 //        VITE_DEV_ACCOUNTS (tài khoản đăng nhập cho phiên trong Chrome).
+// ⭐ 22/08 — Hình (mô hình): job RIÊNG (`hinh_linkgen_jobs`, khoá (buoi_id,phan) — không PK đơn như
+// linkgen_jobs vì 1 hinh_gt_buoi chiếu ra tới 2 "tài liệu" phan='lop'/'nha') → ghi vào
+// hinh_gt_buoi.file_urls (jsonb khoá theo phan) thay vì tai_lieu.file_url. Xem processHinhJob() dưới —
+// cùng khuôn processJob(), quét sau khi linkgen_jobs (Đại) rỗng.
 // ============================================================================
 import { readFileSync, existsSync } from 'node:fs'
 import { createServer } from 'node:http'
@@ -109,6 +113,47 @@ async function processJob(browser, job, session) {
   } finally { await page.close().catch(() => {}) }
 }
 
+// ⭐ 22/08 — job Hình: khuôn processJob() Đại y hệt, khác 2 chỗ: (1) đích ghi = hinh_gt_buoi.file_urls
+// (jsonb, khoá theo phan — 1 buổi tối đa 2 link) thay vì tai_lieu.file_url (1 doc = 1 link); (2) khoá job
+// = (buoi_id, phan) thay vì tai_lieu_id đơn — không có PK đơn để .eq() nên mọi update job đều .eq hai cột.
+async function processHinhJob(browser, job, session) {
+  const t0 = Date.now()
+  const page = await browser.newPage()
+  try {
+    const hash = `#pvjob=${job.buoi_id}&loai=hinh_gt_buoi&phan=${job.phan}&at=${encodeURIComponent(session.access_token)}&rt=${encodeURIComponent(session.refresh_token)}`
+    await page.goto(`http://localhost:${PORT}/${hash}`, { waitUntil: 'domcontentloaded', timeout: 30_000 })
+    await page.waitForFunction(() => window.__pvState !== undefined, { timeout: RENDER_TIMEOUT_MS })
+    const state = await page.evaluate(() => window.__pvState)
+    if (state !== 'ready') throw new Error(state?.replace(/^error:/, '') || 'render lỗi không rõ')
+    await new Promise((r) => setTimeout(r, 500))
+
+    const pdf = await page.pdf({ printBackground: true, preferCSSPageSize: true, format: 'a4', margin: { top: 0, right: 0, bottom: 0, left: 0 } })
+
+    const { data: buoi, error: eBuoi } = await svc.from('hinh_gt_buoi').select('file_urls').eq('id', job.buoi_id).single()
+    if (eBuoi) throw new Error('đọc hinh_gt_buoi: ' + eBuoi.message)
+    const urls = { ...(buoi?.file_urls ?? {}) }
+    const oldUrl = urls[job.phan] ?? null
+    const newPath = `${randomUUID()}.pdf`
+    const { error: eUp } = await svc.storage.from(BUCKET).upload(newPath, pdf, { contentType: 'application/pdf', upsert: false })
+    if (eUp) throw new Error('upload: ' + eUp.message)
+    const url = svc.storage.from(BUCKET).getPublicUrl(newPath).data.publicUrl
+    urls[job.phan] = url
+    const { error: eSet } = await svc.from('hinh_gt_buoi').update({ file_urls: urls }).eq('id', job.buoi_id)
+    if (eSet) throw new Error('ghi file_urls: ' + eSet.message)
+    const oldPath = filePathOfUrl(oldUrl)
+    if (oldPath && oldPath !== newPath) await svc.storage.from(BUCKET).remove([oldPath])
+
+    await svc.from('hinh_linkgen_jobs').update({ status: 'done', error: null, updated_at: new Date().toISOString() }).eq('buoi_id', job.buoi_id).eq('phan', job.phan)
+    console.log(`[worker] ✅ hinh_gt_buoi/${job.phan} ${job.buoi_id} — ${(pdf.length / 1024).toFixed(0)}KB, ${((Date.now() - t0) / 1000).toFixed(1)}s`)
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e)
+    const attempt = job.attempt + 1
+    const failed = attempt >= MAX_ATTEMPTS
+    await svc.from('hinh_linkgen_jobs').update({ status: failed ? 'failed' : 'pending', attempt, error: msg, updated_at: new Date().toISOString() }).eq('buoi_id', job.buoi_id).eq('phan', job.phan)
+    console.log(`[worker] ${failed ? '❌ failed' : '↻ retry'} (${attempt}/${MAX_ATTEMPTS}) hinh_gt_buoi/${job.phan} ${job.buoi_id}: ${msg}`)
+  } finally { await page.close().catch(() => {}) }
+}
+
 // ── vòng chính ───────────────────────────────────────────────────────────────
 // Fail-fast: xác nhận đăng nhập được ngay lúc khởi động (sai mật khẩu thì biết liền, không đợi job).
 {
@@ -124,17 +169,31 @@ setInterval(async () => {
   if (busy) return
   busy = true
   try {
+    // Đăng nhập MỚI TINH cho TỪNG job (~200ms) — refresh token Supabase là loại DÙNG-1-LẦN: trang in
+    // trong Chrome nhận token qua setSession là nó "tiêu" luôn token đó (rotation), phiên Node dùng
+    // chung sẽ chết theo → job sau dính "Auth session missing" (bug thật 07-12, ET đầu chạy được rồi
+    // các job sau chết cả loạt). Mỗi job 1 phiên riêng thì trang in muốn xoay token gì cũng kệ.
+    const dangNhap = async () => {
+      const { data: si, error: eSi } = await auth.auth.signInWithPassword({ email: WK_EMAIL, password: WK_PASS })
+      if (eSi || !si.session) throw new Error('đăng nhập cho job lỗi: ' + (eSi?.message ?? 'không có session'))
+      return si.session
+    }
     const { data: jobs } = await svc.from('linkgen_jobs').select('*').eq('status', 'pending').order('updated_at').limit(1)
     const job = jobs?.[0]
     if (job) {
-      // Đăng nhập MỚI TINH cho TỪNG job (~200ms) — refresh token Supabase là loại DÙNG-1-LẦN: trang in
-      // trong Chrome nhận token qua setSession là nó "tiêu" luôn token đó (rotation), phiên Node dùng
-      // chung sẽ chết theo → job sau dính "Auth session missing" (bug thật 07-12, ET đầu chạy được rồi
-      // các job sau chết cả loạt). Mỗi job 1 phiên riêng thì trang in muốn xoay token gì cũng kệ.
-      const { data: si, error: eSi } = await auth.auth.signInWithPassword({ email: WK_EMAIL, password: WK_PASS })
-      if (eSi || !si.session) throw new Error('đăng nhập cho job lỗi: ' + (eSi?.message ?? 'không có session'))
+      const session = await dangNhap()
       await svc.from('linkgen_jobs').update({ status: 'processing', updated_at: new Date().toISOString() }).eq('tai_lieu_id', job.tai_lieu_id)
-      await processJob(browser, job, si.session)
+      await processJob(browser, job, session)
+      return
+    }
+    // ⭐ 22/08 — Hình: chỉ quét khi Đại KHÔNG có job chờ (worker đơn luồng, 1 job/lượt là đủ — traffic
+    // gen-link không cần song song, đơn giản hơn đáng kể so với round-robin 2 bảng).
+    const { data: hinhJobs } = await svc.from('hinh_linkgen_jobs').select('*').eq('status', 'pending').order('updated_at').limit(1)
+    const hinhJob = hinhJobs?.[0]
+    if (hinhJob) {
+      const session = await dangNhap()
+      await svc.from('hinh_linkgen_jobs').update({ status: 'processing', updated_at: new Date().toISOString() }).eq('buoi_id', hinhJob.buoi_id).eq('phan', hinhJob.phan)
+      await processHinhJob(browser, hinhJob, session)
     }
   } catch (e) { console.error('[worker] vòng quét lỗi:', e instanceof Error ? e.message : e) }
   finally { busy = false }

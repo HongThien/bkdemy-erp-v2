@@ -7,12 +7,55 @@ const LIMIT = 10000
 // ── DISPATCH KHO theo (MÔN, NHÁNH) của tài liệu (Toán→dai_, KHTN→khtn_, Toán+nhanh='hinh_gt'→hgt_).
 // `nhanh` chỉ có ý nghĩa TRONG mon='Toán' (Đại/Hình giải tích cùng mon để RBAC/billing/lop.mon sạch —
 // xem §1.6; phân biệt nhánh KHÔNG qua mon). Mặc định (mon≠KHTN, nhanh trống) → mã cũ KHÔNG đổi (Đại). ──
-export function khoCuaMon(mon?: string | null, nhanh?: string | null): { cauTbl: string; banDoTbl: string; ltDangTbl: string; ltCdTbl: string; listMap: (khoi: string) => Promise<MapRow[]> } {
+// formTnTbl = phiên bản TRẮC NGHIỆM (distractor theo lỗi) của câu — spec-mcq-form.md. Mới có bảng dai_ (pool 1 lớp 7);
+// khtn_/hgt_ là TÊN theo quy ước, bảng tạo cùng DDL khi môn đó cần — gọi sớm thì PostgREST báo lỗi to, không im lặng.
+export function khoCuaMon(mon?: string | null, nhanh?: string | null): { cauTbl: string; banDoTbl: string; ltDangTbl: string; ltCdTbl: string; formTnTbl: string; listMap: (khoi: string) => Promise<MapRow[]> } {
   return mon === 'KHTN'
-    ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', ltDangTbl: 'khtn_dang_ly_thuyet', ltCdTbl: 'khtn_chuyen_de_ly_thuyet', listMap: listKhtnMap }
+    ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', ltDangTbl: 'khtn_dang_ly_thuyet', ltCdTbl: 'khtn_chuyen_de_ly_thuyet', formTnTbl: 'khtn_cau_form_tn', listMap: listKhtnMap }
     : nhanh === 'hinh_gt'
-    ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', ltDangTbl: 'hgt_dang_ly_thuyet', ltCdTbl: 'hgt_chuyen_de_ly_thuyet', listMap: listHgtMap }
-    : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', ltDangTbl: 'dai_dang_ly_thuyet', ltCdTbl: 'dai_chuyen_de_ly_thuyet', listMap: listDaiMap }
+    ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', ltDangTbl: 'hgt_dang_ly_thuyet', ltCdTbl: 'hgt_chuyen_de_ly_thuyet', formTnTbl: 'hgt_cau_form_tn', listMap: listHgtMap }
+    : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', ltDangTbl: 'dai_dang_ly_thuyet', ltCdTbl: 'dai_chuyen_de_ly_thuyet', formTnTbl: 'dai_cau_form_tn', listMap: listDaiMap }
+}
+// REGISTRY nhánh dạng-based TRONG 1 môn (UI toggle "chọn bản đồ"). Môn không có trong registry = 1 nhánh
+// duy nhất (nhanh=null), không hiện toggle. Thêm nhánh mới = thêm dòng ở đây + nhánh trong khoCuaMon —
+// KHÔNG `if (mon === 'Toán')` rải rác ở component (symmetry test §1.6).
+const NHANH_CUA_MON: Record<string, { ma: string | null; ten: string }[]> = {
+  'Toán': [{ ma: null, ten: 'Đại số' }, { ma: 'hinh_gt', ten: 'Hình giải tích' }],
+}
+export function nhanhCuaMon(mon?: string | null): { ma: string | null; ten: string }[] { return NHANH_CUA_MON[mon ?? ''] ?? [] }
+export function tenNhanh(mon: string | null | undefined, nhanh: string | null | undefined): string | null {
+  return nhanhCuaMon(mon).find((n) => n.ma === (nhanh ?? null))?.ten ?? null
+}
+// Môn có KHO HÌNH (mô hình/lưới `hinh_*` — đơn vị là BÀI/node, KHÔNG phải dạng) để ET/MT nhặt bài. Registry
+// thay cho `if (mon === 'Toán')` rải ở màn hình (§1.6 symmetry test).
+const KHO_HINH_MO_HINH = new Set(['Toán'])
+export const coKhoHinh = (mon?: string | null): boolean => KHO_HINH_MO_HINH.has(mon ?? '')
+
+// ⭐ NHÁNH THEO TỪNG CÂU — tài liệu TRỘN nhánh (MT: Thùy 21/08 chốt "toggle chọn bản đồ lúc chọn câu",
+// KHÔNG cứng "2 phần = Đại/Hình"). Lưu ở `cau_hinh.nhanhByCau[ma_cau]` — CHỈ ghi khi câu KHÁC nhánh mặc
+// định của tài liệu (`tai_lieu.nhanh`); thiếu key = theo nhánh tài liệu (0 regression cho ET/giáo trình
+// cũ). Câu mã đề 2/3 (etMaDe) luôn cùng dạng câu gốc → KẾ THỪA nhánh câu gốc, không lưu lặp.
+// KHÔNG suy nhánh từ TIỀN TỐ mã câu — đã kiểm DB thật: dai_cau_hoi có mã 'T14T…', hgt_ban_do có 'T312…'
+// (tiền tố không đáng tin, xem DEVLOG 08-21 findCauInKho).
+export type TaiLieuNhanhCtx = { mon?: string | null; nhanh?: string | null; cau_hinh?: CauHinh | null }
+export function nhanhCuaCau(tl: TaiLieuNhanhCtx, maCau: string): string | null {
+  const byCau = tl.cau_hinh?.nhanhByCau ?? {}
+  if (maCau in byCau) return byCau[maCau] ?? null
+  for (const [goc, arr] of Object.entries(tl.cau_hinh?.etMaDe ?? {})) if (goc in byCau && arr.includes(maCau)) return byCau[goc] ?? null
+  return tl.nhanh ?? null
+}
+export const cauTblCuaCau = (tl: TaiLieuNhanhCtx, maCau: string): string => khoCuaMon(tl.mon, nhanhCuaCau(tl, maCau)).cauTbl
+// Nạp nội dung câu của 1 tài liệu theo đúng kho từng câu — gom theo BẢNG, 1 query/bảng (không N+1).
+export async function fetchCausCuaTaiLieu(tl: TaiLieuNhanhCtx, maCaus: string[]): Promise<CauHoi[]> {
+  const byTbl = new Map<string, string[]>()
+  for (const ma of new Set(maCaus)) { if (laMaHinh(ma)) continue; const t = cauTblCuaCau(tl, ma); byTbl.set(t, [...(byTbl.get(t) ?? []), ma]) } // hàng Hình không ở kho câu
+  const out: CauHoi[] = []
+  for (const [tbl, mas] of byTbl) {
+    const { data, error } = await supabase.from(tbl).select('*').in('ma_cau', mas).limit(LIMIT)
+    if (error) throw error
+    out.push(...((data ?? []) as CauHoi[]))
+  }
+  return out
 }
 
 // buoi = mốc tầng-1 (Buổi 1, 2…). Trong 1 buổi: dang (trên lớp) + btvn (per-dạng) của các dạng đã chọn.
@@ -38,7 +81,14 @@ export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'ontap' | 'cu
 // colByCau = SỐ CỘT khi in RIÊNG TỪNG CÂU (key = ma_cau → 2/3/4; thiếu/1 = full width). Câu tag cột LIỀN
 // NHAU tự xếp cạnh nhau (mỗi câu 1 cột); câu tag cột cách xa nhau KHÔNG ghép; câu lẻ = nửa trang. Thay cho
 // kiểu cột theo-phần (tai_lieu_phan.kieu) / theo-nhóm-form (etColByGroup) cũ.
-export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number>; etColByGroup?: Record<number, string>; colByCau?: Record<string, number> }
+// nhanhByCau = NHÁNH KHO của TỪNG CÂU khi tài liệu trộn nhánh (MT: câu Đại + câu Hình giải tích trong cùng
+// đề). Chỉ có key cho câu KHÁC `tai_lieu.nhanh`; resolve qua `nhanhCuaCau` (kế thừa cho câu mã đề 2/3).
+export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number>; etColByGroup?: Record<number, string>; colByCau?: Record<string, number>; nhanhByCau?: Record<string, string>; hinhBuoiId?: string; hinhByMa?: Record<string, HinhRowInfo>; hinhMaDe?: Record<string, [HinhBanRefLite | null, HinhBanRefLite | null]>; mtMeta?: { loaiDe?: string | null; thang?: string | null } }
+// hinhByMa (MT) = nội dung bài HÌNH của hàng `HINH:<uuid>` (xem laMaHinh). hinhMaDe = mã đề 2/3 của bài Hình, khoá =
+// chuoiSig(nodeIds) (khuôn ET Hình). hinhBuoiId = DI SẢN (buổi Hình mẫu, bản 02/09 sáng) — chỉ còn để deleteMT dọn.
+// mtMeta (MT) = phân loại đề (loaiDe: xem MTLoaiDe/mt.ts) + tháng dự kiến dùng ('YYYY-MM', gắn tay, KHÔNG
+// suy từ ngày gán buổi) — kiểu lỏng ở đây để tránh vòng import với mt.ts, validate chặt ở mtMeta()/mt.ts.
+export type HinhBanRefLite = { kind: 'ghep'; luaId: string | null } | { kind: 'bienthe'; bienTheId: string } | { kind: 'y'; yId: string }
 export const DEFAULT_BTVN_LINES = 5
 // Form hiển thị trong ET (độc lập loai_cau kho).
 export type ETForm = 'trac_nghiem' | 'tra_loi_ngan' | 'tu_luan'
@@ -52,12 +102,18 @@ export function etFormOf(c: { ma_cau: string; loai_cau: string; lua_chon?: strin
 // Câu ứng viên có IN ĐƯỢC ở `form` không (cho sinh mã đề 2/3 — "phải cùng form"). Chỉ trắc nghiệm cần
 // phương án; trả-lời-ngắn/tự-luận thì câu nào cũng ép được (set etFormByCau khi sinh). Câu Đúng/Sai
 // (có menh_de) chỉ khớp trắc nghiệm — bảng TLN/TL không hiển thị nổi 4 mệnh đề.
-export function canBeETForm(c: { lua_chon?: string[] | null; menh_de?: unknown[] | null }, form: ETForm): boolean {
+export function canBeETForm(c: { lua_chon?: string[] | null; menh_de?: unknown[] | null; form_tn?: unknown }, form: ETForm): boolean {
   const coMenhDe = !!(c.menh_de && c.menh_de.length)
   if (coMenhDe) return form === 'trac_nghiem'
-  if (form === 'trac_nghiem') return !!(c.lua_chon && c.lua_chon.length)
+  // form_tn = phiên bản trắc nghiệm AI đã duyệt (spec-mcq-form.md §8.2) gắn lên câu bởi người gọi (khi có tải) — câu
+  // không có phương án sẵn vẫn in/phát hành được ở form trắc nghiệm nhờ form này.
+  if (form === 'trac_nghiem') return !!(c.lua_chon && c.lua_chon.length) || !!c.form_tn
   return true
 }
+// Kho nào ĐÃ CÓ bảng form trắc nghiệm AI (<kho>_cau_form_tn). khoCuaMon().formTnTbl là TÊN theo quy ước cho mọi kho;
+// bảng chưa tạo thì PostgREST 404 → chỗ gọi kiểm qua đây trước. Tạo bảng cho kho mới = thêm tên vào đây (registry, §1.6).
+const KHO_CO_FORM_TN = new Set(['dai_cau_form_tn'])
+export const coFormTn = (formTnTbl: string): boolean => KHO_CO_FORM_TN.has(formTnTbl)
 // ⭐ THỨ TỰ CHUẨN CỦA ET (Thùy chốt 07-20) — gom theo NHÓM IN: trắc nghiệm → trả lời ngắn → tự luận,
 // GIỮ NGUYÊN thứ tự chọn bên trong mỗi nhóm. Gom TẠI LÚC LƯU (ETScreen.luu) → ghi thẳng vào `thu_tu`.
 // VÌ SAO: trước đây CHỈ ETPrintView gom lúc render, còn bảng phiếu chấm / màn Chấm ET / ET online đọc
@@ -99,31 +155,63 @@ export type PhanResolved = TaiLieuPhan & {
   dang?: DangRow | null       // dang | btvn (đều ref_ma = ma_dang)
   lyThuyetDang?: LtRow | null // dang (lý thuyết · ví dụ của dạng)
   caus: CauHoi[]              // câu luyện (dang) / câu BTVN (btvn)
+  // maCaus = DANH SÁCH THÔ theo thứ tự tai_lieu_cau (kể cả mục KHÔNG phải câu kho, vd bài HÌNH `HINH:<id>` của
+  // MT — xem `laMaHinh`). `caus` chỉ có câu kho resolve được; ai cần đúng THỨ TỰ IN trộn Hình thì đọc maCaus.
+  maCaus: string[]
 }
+// MT trộn bài HÌNH (mô hình) NGAY TRONG PHẦN như 1 hàng câu (Thùy 02/09: "pick câu hình phải như ET, có dòng,
+// là câu đấy, in cùng") — tai_lieu_cau.ma_cau là TEXT không FK nên hàng Hình lưu mã tổng hợp `HINH:<uuid>`
+// giữ đúng VỊ TRÍ trong phần; nội dung bài (kind/nodeIds/cheDo/soDong) ở `cau_hinh.hinhByMa[ma]`.
+export const HINH_PREFIX = 'HINH:'
+export const laMaHinh = (ma: string): boolean => ma.startsWith(HINH_PREFIX)
+export type HinhRowInfo = { kind: 'ghep' | 'bienthe' | 'y'; luaId?: string | null; bienTheId?: string; yId?: string; nodeIds: string[]; cheDo?: 'hien' | 'o_trong' | 'khong'; soDong?: number | null }
 // ltChuyenDe / tenChuyenDe: map theo ma_chuyen_de — lý thuyết chuyên đề derive từ chuyên đề của các dạng.
 export type TaiLieuFull = { taiLieu: TaiLieu; phans: PhanResolved[]; ltChuyenDe: Record<string, LtRow | null>; tenChuyenDe: Record<string, string> }
 
 // ── Thư viện (CRUD tài liệu) ──────────────────────────────────────
+// ⭐ 09-10 (Thùy: "Kho tài liệu cũng ko tải hết nữa, rất nhiều builder dùng trang trực tiếp") — thư viện
+// càng lớn (ET/BTVN/giáo trình buổi tích luỹ theo lớp×ngày) thì list KHÔNG limit/offset càng chậm. Mặc
+// định chỉ tải `PAGE_MOI_NHAT` dòng mới nhất; `opts.search` = người dùng CHỦ ĐỘNG tìm — quét rộng hơn
+// (PAGE_SEARCH) vì tài liệu khớp tên có thể cũ hơn trang mặc định; `opts.before` = cursor (created_at
+// của dòng cuối trang trước) cho "Tải thêm". Xem hook dùng chung `usePagedList` (src/hooks).
+export const PAGE_MOI_NHAT = 20
+const PAGE_SEARCH = 200
+export type ListPageOpts = { before?: string; search?: string; limit?: number }
 // nhanh: undefined = không lọc (mọi nhánh) · null = CHỈ Đại (nhanh is null) · string = CHỈ nhánh đó.
-export async function listTaiLieu(khoi?: string, loai = 'giao_trinh', mon?: string, nhanh?: string | null): Promise<TaiLieu[]> {
+export async function listTaiLieu(khoi?: string, loai = 'giao_trinh', mon?: string, nhanh?: string | null, opts?: ListPageOpts): Promise<TaiLieu[]> {
   // khoi = undefined → tất cả khối. mon = undefined → mọi môn.
-  let q = supabase.from('tai_lieu').select('*').eq('loai', loai).order('created_at', { ascending: false }).limit(LIMIT)
+  let q = supabase.from('tai_lieu').select('*').eq('loai', loai).order('created_at', { ascending: false })
   if (khoi) q = q.eq('khoi', khoi)
   if (mon) q = q.eq('mon', mon)
   if (nhanh === null) q = q.is('nhanh', null)
   else if (nhanh) q = q.eq('nhanh', nhanh)
+  if (opts?.before) q = q.lt('created_at', opts.before)
+  if (opts?.search?.trim()) q = q.ilike('ten', `%${opts.search.trim()}%`)
+  q = q.limit(opts?.limit ?? (opts?.search?.trim() ? PAGE_SEARCH : PAGE_MOI_NHAT))
   const { data, error } = await q
   if (error) throw error
   return (data ?? []) as TaiLieu[]
 }
 // Kho tài liệu = MỌI loại (giáo trình/ET/…). lop_id/ngay cho ET. mon = undefined → mọi môn (admin); set → lọc môn.
-export async function listAllTaiLieu(mon?: string | string[]): Promise<TaiLieu[]> {
-  let q = supabase.from('tai_lieu').select('*').order('created_at', { ascending: false }).limit(LIMIT)
+export async function listAllTaiLieu(mon?: string | string[], opts?: ListPageOpts & { loai?: string }): Promise<TaiLieu[]> {
+  let q = supabase.from('tai_lieu').select('*').order('created_at', { ascending: false })
   if (Array.isArray(mon)) { if (mon.length) q = q.in('mon', mon) }
   else if (mon) q = q.eq('mon', mon)
+  if (opts?.loai) q = q.eq('loai', opts.loai)
+  if (opts?.before) q = q.lt('created_at', opts.before)
+  if (opts?.search?.trim()) q = q.ilike('ten', `%${opts.search.trim()}%`)
+  q = q.limit(opts?.limit ?? (opts?.search?.trim() ? PAGE_SEARCH : PAGE_MOI_NHAT))
   const { data, error } = await q
   if (error) throw error
   return (data ?? []) as TaiLieu[]
+}
+// Facet cho tab lọc Loại/Môn ở Kho tài liệu — cần THẤY HẾT giá trị phân biệt kể cả ở tài liệu cũ (ngoài
+// trang "20 mới nhất"). DISTINCT = phép tổng hợp (§2.0 CLAUDE.md) → chạy Ở POSTGRES (fn_tai_lieu_facets,
+// mig 202609101159), không fetch cột về rồi new Set() ở client (vẫn phải quét hết dù chỉ 2 cột).
+export async function listTaiLieuFacets(): Promise<{ loai: string; mon: string }[]> {
+  const { data, error } = await supabase.rpc('fn_tai_lieu_facets')
+  if (error) throw error
+  return (data ?? []) as { loai: string; mon: string }[]
 }
 export async function createTaiLieu(input: { loai?: string; ten: string; khoi: string; mon?: string; nhanh?: string | null; ma_chuyen_de?: string | null; theme?: string }): Promise<TaiLieu> {
   const { data: { user } } = await supabase.auth.getUser() // người tạo = session hiện tại
@@ -246,6 +334,15 @@ export async function suggestCauForDang(maDang: string, exclude: Set<string>, ca
   const u = await cauUsage(caus.map((c) => c.ma_cau))
   return [...caus].sort(cmpUsageLe(u))[0].ma_cau
 }
+// N câu gợi ý cho 1 dạng trong 1 lượt (ET cấp 3 — trắc nghiệm nhiều câu, thêm nhanh theo dạng+số lượng
+// thay vì gọi suggestCauForDang từng câu một). Cùng luật ít-dùng-nhất + loại trừ `exclude`, chỉ khác là
+// trả về tối đa n mã câu thay vì 1. Thiếu câu trong kho → trả về ít hơn n (caller tự cảnh báo).
+export async function suggestNForDang(maDang: string, n: number, exclude: Set<string>, cauTbl = 'dai_cau_hoi'): Promise<string[]> {
+  const caus = (await listCauByDang(maDang, cauTbl)).filter((c) => !exclude.has(c.ma_cau))
+  if (!caus.length) return []
+  const u = await cauUsage(caus.map((c) => c.ma_cau))
+  return [...caus].sort(cmpUsageLe(u)).slice(0, n).map((c) => c.ma_cau)
+}
 // Số câu luyện mặc định mỗi dạng (theo loại) — dùng khi thêm chuyên đề + làm default cho ô nhập.
 export const DEFAULT_LUYEN_COUNTS: Record<string, number> = { trac_nghiem: 3, tra_loi_ngan: 2, tu_luan: 1 }
 // Gợi ý câu theo SỐ LƯỢNG mỗi loại: { trac_nghiem: 3, tra_loi_ngan: 2, tu_luan: 1 } → ưu tiên gốc.
@@ -291,6 +388,23 @@ export async function usedCausOfBuoi(taiLieuId: string, buoiId: string, exceptPh
 }
 
 // ── BUỔI = tầng 1 ─────────────────────────────────────────────────
+// Danh sách RỖNG (chỉ mốc 'buoi': id/tieu_de/thu_tu, KHÔNG câu/dạng) — cho dropdown lọc buổi ở Builder.
+// Nhẹ hơn getTaiLieuFull hẳn 1 bậc: 1 query trên tai_lieu_phan, không đụng câu/kho/lý thuyết.
+export async function listBuoiTaiLieu(taiLieuId: string): Promise<{ id: string; tieu_de: string | null; thu_tu: number }[]> {
+  const { data, error } = await supabase.from('tai_lieu_phan').select('id, tieu_de, thu_tu')
+    .eq('tai_lieu_id', taiLieuId).eq('loai_phan', 'buoi').order('thu_tu').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as { id: string; tieu_de: string | null; thu_tu: number }[]
+}
+// Cắt phans về ĐÚNG 1 buổi (mốc + các phan đến mốc kế/hết) — dùng để scope getTaiLieuFull khi builder
+// chỉ cần load 1 buổi (giáo trình càng nhiều buổi, load cả doc càng nặng — §"onlyBuoiId" bên dưới).
+function sliceBuoi(phans: TaiLieuPhan[], buoiId: string): TaiLieuPhan[] {
+  const i = phans.findIndex((p) => p.id === buoiId)
+  if (i < 0) return []
+  const out = [phans[i]]
+  for (let j = i + 1; j < phans.length && phans[j].loai_phan !== 'buoi'; j++) out.push(phans[j])
+  return out
+}
 // Gom 1 buổi (mốc 'buoi' + các phan đến mốc kế / hết): trả thứ tự dạng + map dang/btvn theo ma_dang.
 type BuoiGroup = { order: string[]; dangs: Record<string, string>; btvns: Record<string, string> }
 function groupBuoi(phans: TaiLieuPhan[], buoiId: string): BuoiGroup {
@@ -383,17 +497,22 @@ export async function reorderDangInBuoi(taiLieuId: string, buoiId: string, order
 }
 
 // ── Resolver: gom phần + nội dung SỐNG từ kho (cho print-view) ──
-export async function getTaiLieuFull(id: string): Promise<TaiLieuFull> {
+// onlyBuoiId (Thùy 07/09 — giáo trình dài ra thì load CẢ DOC mỗi lần builder mở/tự-lưu ngày càng nặng):
+// CẮT về đúng 1 buổi TRƯỚC khi chạy các query nặng (câu/dạng/lý thuyết) → chỉ trả nội dung buổi đó.
+// Không truyền = load full như cũ (Xem/Xuất PDF cả giáo trình, ET/BT/Đề thi… vẫn 1-doc-1-buổi vốn nhẹ sẵn).
+export async function getTaiLieuFull(id: string, opts?: { onlyBuoiId?: string }): Promise<TaiLieuFull> {
   const { data: tl, error } = await supabase.from('tai_lieu').select('*').eq('id', id).single()
   if (error) throw error
-  const phans = await listPhan(id)
+  const phansAll = await listPhan(id)
+  const phans = opts?.onlyBuoiId ? sliceBuoi(phansAll, opts.onlyBuoiId) : phansAll
   const phanIds = phans.map((p) => p.id)
   const cauRows = phanIds.length
     ? (((await supabase.from('tai_lieu_cau').select('*').in('phan_id', phanIds).order('thu_tu').limit(LIMIT)).data ?? []) as { phan_id: string; ma_cau: string; thu_tu: number }[])
     : []
   const K = khoCuaMon((tl as any).mon, (tl as any).nhanh) // dispatch kho theo (MÔN, NHÁNH) của tài liệu
   const maCaus = [...new Set(cauRows.map((r) => r.ma_cau))]
-  const caus = maCaus.length ? (((await supabase.from(K.cauTbl).select('*').in('ma_cau', maCaus).limit(LIMIT)).data ?? []) as CauHoi[]) : []
+  // Câu nạp theo NHÁNH TỪNG CÂU (cau_hinh.nhanhByCau — MT trộn Đại/Hình giải tích); câu không có key → K.cauTbl như cũ.
+  const caus = await fetchCausCuaTaiLieu(tl as TaiLieuNhanhCtx, maCaus)
   const cauMap = new Map(caus.map((c) => [c.ma_cau, c]))
   // Dạng dùng cho CẢ 'dang' (trên lớp) lẫn 'btvn' (về nhà) — đều ref_ma = ma_dang.
   const dangMas = [...new Set(phans.filter((p) => (p.loai_phan === 'dang' || p.loai_phan === 'btvn' || p.loai_phan === 'ontap') && p.ref_ma).map((p) => p.ref_ma as string))]
@@ -418,6 +537,7 @@ export async function getTaiLieuFull(id: string): Promise<TaiLieuFull> {
       dang: dangLike && p.ref_ma ? dangMap.get(p.ref_ma) ?? null : undefined,
       lyThuyetDang: p.loai_phan === 'dang' && p.ref_ma ? ltDangMap.get(p.ref_ma) ?? null : undefined,
       caus: maList.map((ma) => cauMap.get(ma)).filter(Boolean) as CauHoi[],
+      maCaus: maList,
     }
   })
   return { taiLieu: tl as TaiLieu, phans: phansResolved, ltChuyenDe, tenChuyenDe }

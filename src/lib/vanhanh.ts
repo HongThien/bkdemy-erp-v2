@@ -76,6 +76,8 @@ export const TASK_TAB_LABEL: Record<TabKey, string> = { diemdanh: 'Điểm danh'
 // Hiệu suất KHÔNG PHẢI trung bình cộng — Tiến độ là LÕI PHẠT: Đúng hạn=0 phạt, Chậm 1/2/3 = trừ
 // 10/20/30% (đúng khớp 100−tienDo vì TIEN_DO_TIERS đã là 100/90/80/70). Hiệu suất = Chất lượng −
 // phạt tiến độ (Thùy chốt): vd Chậm 3 (tienDo=70, phạt 30) + Chất lượng 90 → 90−30 = 60%.
+// ⚠ §2.0 (30/08): NGUỒN CHÂN LÝ = fn_vh_hieu_suat + trigger tg_vvhd_tinh ở DB (mig
+// 202608300228) — bản JS này CHỈ để hiển thị "dự kiến" chưa duyệt. Sửa công thức → sửa fn SQL trước.
 export function tinhHieuSuat(tienDoPct: number, chatLuongPct: number): number {
   const phat = 100 - tienDoPct
   return Math.max(0, Math.round(chatLuongPct - phat))
@@ -162,12 +164,12 @@ export async function duyetMot(r: StaffTaskRow, p: { tienDo: number; chatLuong: 
   if (!prof) throw new Error('Không xác định được người duyệt')
   const deXuat = deXuatTienDo(r).diem
   if (p.tienDo !== deXuat && !p.tienDoLyDo?.trim()) throw new Error('Đổi tiến độ khác đề xuất của hệ thống — cần ghi lý do.')
-  const hieuSuat = tinhHieuSuat(p.tienDo, p.chatLuong)
+  // §2.0: hieu_suat do trigger tg_vvhd_tinh (fn_vh_hieu_suat) tự tính — không gửi từ client.
   const { error } = await supabase.from('viec_van_hanh_duyet').upsert(
     {
       buoi_hoc_id: r.buoiId, tab: r.tab, nhan_su_id: r.nhan_su_id,
       tien_do: p.tienDo, tien_do_de_xuat: deXuat, tien_do_ly_do: p.tienDo !== deXuat ? p.tienDoLyDo!.trim() : null,
-      chat_luong: p.chatLuong, hieu_suat: hieuSuat,
+      chat_luong: p.chatLuong,
       nguoi_duyet: prof.nhanSu.id, ghi_chu: p.ghiChu ?? null, duyet_at: new Date().toISOString(),
     },
     { onConflict: 'buoi_hoc_id,tab,nhan_su_id' })
@@ -183,7 +185,7 @@ export async function duyetHangLoat(rows: StaffTaskRow[], chatLuong = 100): Prom
     const diem = deXuatTienDo(r).diem
     return {
       buoi_hoc_id: r.buoiId, tab: r.tab, nhan_su_id: r.nhan_su_id,
-      tien_do: diem, tien_do_de_xuat: diem, chat_luong: chatLuong, hieu_suat: tinhHieuSuat(diem, chatLuong),
+      tien_do: diem, tien_do_de_xuat: diem, chat_luong: chatLuong, // hieu_suat: trigger tg_vvhd_tinh tự tính (§2.0)
       nguoi_duyet: prof.nhanSu.id, duyet_at: new Date().toISOString(),
     }
   })

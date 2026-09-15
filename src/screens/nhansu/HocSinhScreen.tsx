@@ -190,6 +190,16 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
   const [nghiPopup, setNghiPopup] = useState(false)
   const [truong_hoc, setTruong] = useState(hocSinh?.truong_hoc ?? '')
   const [dia_chi, setDiaChi] = useState(hocSinh?.dia_chi ?? '')
+  // Thông tin cá nhân từ khảo sát "Bạn của con ở BK" (CEO 08/09: "cập nhật hết thành thông tin cá nhân của HS") — sửa tay được ở đây.
+  const [lop_truong, setLopTruong] = useState(hocSinh?.lop_truong ?? '')
+  const [noi_o_loai, setNoiO] = useState<NonNullable<HocSinh['noi_o_loai']> | ''>(hocSinh?.noi_o_loai ?? '')
+  const [toa, setToa] = useState(hocSinh?.toa ?? '')
+  const [tang, setTang] = useState(hocSinh?.tang != null ? String(hocSinh.tang) : '')
+  const [khu, setKhu] = useState(hocSinh?.khu ?? '')
+  const [nghe_bo_me, setNghe] = useState(hocSinh?.nghe_bo_me ?? '')
+  const [ly_do_vao, setLyDo] = useState<NonNullable<HocSinh['ly_do_vao']> | ''>(hocSinh?.ly_do_vao ?? '')
+  const [bo_me_ban_ph_lop, setBanPh] = useState<NonNullable<HocSinh['bo_me_ban_ph_lop']> | ''>(hocSinh?.bo_me_ban_ph_lop ?? '')
+  const [bo_me_chuc_vu_toa, setChucVu] = useState<NonNullable<HocSinh['bo_me_chuc_vu_toa']> | ''>(hocSinh?.bo_me_chuc_vu_toa ?? '')
   const [ngay_nhap_hoc, setNgayNhap] = useState(hocSinh?.ngay_nhap_hoc ?? '')
   const [phId, setPhId] = useState<string | null>(hocSinh?.phu_huynh_id ?? null)
   const [anh_url, setAnhUrl] = useState(hocSinh?.anh_url ?? '')
@@ -210,6 +220,10 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
         ngay_sinh: ngay_sinh || null, gioi_tinh, trang_thai, truong_hoc: truong_hoc.trim() || null,
         dia_chi: dia_chi.trim() || null, ngay_nhap_hoc: ngay_nhap_hoc || null,
         phu_huynh_id: phId, anh_url: anh_url || null,
+        lop_truong: lop_truong.trim() || null, noi_o_loai: noi_o_loai || null,
+        toa: noi_o_loai === 'chung_cu' ? (toa.trim() || null) : null, tang: noi_o_loai === 'chung_cu' && /^\d{1,3}$/.test(tang.trim()) ? Number(tang.trim()) : null,
+        khu: noi_o_loai === 'nha_dat' ? (khu.trim() || null) : null,
+        nghe_bo_me: nghe_bo_me.trim() || null, ly_do_vao: ly_do_vao || null, bo_me_ban_ph_lop: bo_me_ban_ph_lop || null, bo_me_chuc_vu_toa: bo_me_chuc_vu_toa || null,
         // Ngày nghỉ + lý do chỉ có nghĩa khi trạng thái = Nghỉ; đổi sang trạng thái khác → xoá (null = N/A).
         ngay_nghi:  trang_thai === 'nghi' ? (ngay_nghi || null) : null,
         ly_do_nghi: trang_thai === 'nghi' ? (ly_do_nghi.trim() || null) : null,
@@ -279,8 +293,30 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
                 }}
                 render={(o) => TT_LABEL[o]} /></Field>
             </div>
-            <Field label="Trường học"><input value={truong_hoc} onChange={(e) => setTruong(e.target.value)} className={inp} placeholder="vd: THCS Cầu Giấy" /></Field>
+            <div className="grid grid-cols-[1fr_120px] gap-x-4">
+              <Field label="Trường học"><input value={truong_hoc} onChange={(e) => setTruong(e.target.value)} className={inp} placeholder="vd: THCS Cầu Giấy" /></Field>
+              <Field label="Lớp ở trường"><input value={lop_truong} onChange={(e) => setLopTruong(e.target.value)} className={inp} placeholder="7A3" /></Field>
+            </div>
+            <Field label="Nơi ở"><Seg options={['', 'chung_cu', 'nha_dat'] as const} value={noi_o_loai} onChange={setNoiO} render={(o) => o === 'chung_cu' ? 'Chung cư' : o === 'nha_dat' ? 'Nhà đất' : 'Chưa rõ'} /></Field>
+            {noi_o_loai === 'chung_cu' && (
+              <div className="grid grid-cols-[1fr_100px] gap-x-4">
+                <Field label="Toà"><input value={toa} onChange={(e) => setToa(e.target.value)} className={inp} placeholder="vd: Gemek 1" /></Field>
+                <Field label="Tầng"><input value={tang} onChange={(e) => setTang(e.target.value.replace(/\D/g, '').slice(0, 3))} className={inp} inputMode="numeric" /></Field>
+              </div>
+            )}
+            {noi_o_loai === 'nha_dat' && <Field label="Khu"><input value={khu} onChange={(e) => setKhu(e.target.value)} className={inp} placeholder="vd: An Thọ, Lại Yên" /></Field>}
             <Field label="Địa chỉ nhà"><input value={dia_chi} onChange={(e) => setDiaChi(e.target.value)} className={inp} /></Field>
+            <div className="mb-2 mt-1 text-[12px] font-semibold uppercase tracking-wider text-slate-500">Gia đình <span className="font-normal normal-case tracking-normal text-slate-400">(từ khảo sát "Bạn của con")</span></div>
+            <Field label="Nghề bố mẹ"><input value={nghe_bo_me} onChange={(e) => setNghe(e.target.value)} className={inp} placeholder="vd: bác sĩ, kỹ sư…" /></Field>
+            <div className="grid grid-cols-2 gap-x-4">
+              <Field label="Ban PH lớp ở trường"><Seg options={['', 'co', 'khong', 'khong_biet'] as const} value={bo_me_ban_ph_lop} onChange={setBanPh} render={(o) => o === 'co' ? 'Có' : o === 'khong' ? 'Không' : o === 'khong_biet' ? 'Không biết' : '—'} /></Field>
+              <Field label="Chức vụ trong toà nhà"><Seg options={['', 'co', 'khong', 'khong_biet'] as const} value={bo_me_chuc_vu_toa} onChange={setChucVu} render={(o) => o === 'co' ? 'Có' : o === 'khong' ? 'Không' : o === 'khong_biet' ? 'Không biết' : '—'} /></Field>
+            </div>
+            <Field label="Vì sao vào BK">
+              <select value={ly_do_vao} onChange={(e) => setLyDo(e.target.value as typeof ly_do_vao)} className={inp}>
+                <option value="">— chưa rõ —</option><option value="ban_ru">Bạn rủ</option><option value="bo_me_quyet">Bố mẹ quyết</option><option value="bo_me_hoi_con_chon">Bố mẹ hỏi rồi con chọn</option><option value="khac">Khác</option>
+              </select>
+            </Field>
             <PhuHuynhPicker value={phId} onChange={setPhId} />
           </div>
 

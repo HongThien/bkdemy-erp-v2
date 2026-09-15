@@ -6,10 +6,11 @@ import { createPortal } from 'react-dom'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listHSDangHoc } from '../../lib/tuyensinh'
 import { listLop, listHSCuaLop, listLopCuaHS, type Lop, type HSTrongLop } from '../../lib/nhansu'
-import { getMasteryHS, listBuoiHoatDong, getMasteryRollup, getMasteryByDang, getMasteryByChuyenDe, getTongQuanHS, getClassMatrix, getAllClassesCompletion, bucketMucDo, SRC_LABEL, type DangMastery, type DangEval, type BuoiActivity, type HSRollup, type TongQuanHS, type ClassMatrix, type MatrixPhase, type MatrixCell, type ClassCompletion, type ActPct, type BucketPct, type HoanThanhCard as HoanThanhCardT, type MucDoFilter } from '../../lib/mastery'
+import { getMasteryHS, getHinhMasteryHS, listBuoiHoatDong, getMasteryRollup, getMasteryByDang, getMasteryByChuyenDe, getTongQuanHS, getClassMatrix, getAllClassesCompletion, bucketMucDo, SRC_LABEL, type DangMastery, type HinhMastery, type DangEval, type BuoiActivity, type HSRollup, type TongQuanHS, type ClassMatrix, type MatrixPhase, type MatrixCell, type ClassCompletion, type ActPct, type BucketPct, type HoanThanhCard as HoanThanhCardT, type MucDoFilter } from '../../lib/mastery'
 import {
-  listKyThi, createKyThi, listDiemThiByKyThi, upsertDiemThi, currentMua, getDiemThiTruong,
-  LOAI_KY_THI, HE_SO_KY_THI, DOT_LABEL, DOT_ORDER, type KyThi, type DiemThi, type Verdict, type TruongDiemRow,
+  listKyThi, createKyThi, listDiemThiByKyThi, upsertDiemThi, currentMua, getDiemThiTruong, getBXHDiemMTKhoi,
+  listKyThiMTCuaLop, setKhungMT, tinhDiemMT,
+  LOAI_KY_THI, HE_SO_KY_THI, DOT_LABEL, DOT_ORDER, type KyThi, type KyThiMTLop, type DiemThi, type Verdict, type TruongDiemRow, type BXHDiemMTRow,
 } from '../../lib/thanhtich'
 import { BuoiDetail } from '../gami/BuoiHocScreen'
 import type { TabKey } from '../../lib/gami'
@@ -171,10 +172,9 @@ function TongQuanTab({ hsId, mon }: { hsId: string; mon: string }) {
   if (loading) return <p className="text-sm text-slate-500">Đang tính…</p>
   if (!d) return <p className="text-sm text-slate-500">Không tải được.</p>
   const laToan = mon === 'Toán'
-  const hinhPlaceholder = 'Hình học chưa có dữ liệu đo — nhánh này chưa được xây kho câu hỏi/gắn ET-MT-BTVN.'
   return (
     <div className="space-y-6">
-      {/* ① HOÀN THÀNH BẢN ĐỒ KIẾN THỨC — toàn bộ + Đại/Hình × cơ bản/nâng cao (Hình placeholder). */}
+      {/* ① HOÀN THÀNH BẢN ĐỒ KIẾN THỨC — toàn bộ + Đại/Hình × cơ bản/nâng cao. */}
       <div>
         <h3 className="mb-2 text-[12px] font-semibold uppercase tracking-wider text-slate-500">① Hoàn thành bản đồ kiến thức</h3>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-5">
@@ -183,8 +183,8 @@ function TongQuanTab({ hsId, mon }: { hsId: string; mon: string }) {
             <>
               <HoanThanhCard label="Đại số — Cơ bản (1-3)" card={d.hoanThanh.daiCoBan} />
               <HoanThanhCard label="Đại số — Nâng cao (4-5)" card={d.hoanThanh.daiNangCao} />
-              <HoanThanhPlaceholder label="Hình học — Cơ bản (1-3)" msg={hinhPlaceholder} />
-              <HoanThanhPlaceholder label="Hình học — Nâng cao (4-5)" msg={hinhPlaceholder} />
+              <HoanThanhCard label="Hình học — Cơ bản" card={d.hoanThanh.hinhCoBan} />
+              <HoanThanhCard label="Hình học — Nâng cao" card={d.hoanThanh.hinhNangCao} />
             </>
           )}
         </div>
@@ -263,14 +263,6 @@ function HoanThanhHalf({ b, sizeCls, trend, suffix, emptyMsg }: { b: BucketPct; 
     </div>
   )
 }
-function HoanThanhPlaceholder({ label, msg }: { label: string; msg: string }) {
-  return (
-    <StatCard label={label} muted>
-      <div className="text-2xl font-bold text-slate-300">—</div>
-      <div className="mt-0.5 text-[11px] text-slate-500">{msg}</div>
-    </StatCard>
-  )
-}
 // Card GỌN cho vùng ② (Thùy 07-15: "nhỏ card lại, 1 dòng ngang hiện đủ 6 card") — w cố định, padding hẹp.
 function ActCard({ label, cls, a, trend, sub }: { label: string; cls: string; a: ActPct; trend: number | null; sub?: string }) {
   return (
@@ -282,26 +274,40 @@ function ActCard({ label, cls, a, trend, sub }: { label: string; cls: string; a:
   )
 }
 
+// Hình (mô hình) → hình chiếu DangMastery-shape để TÁI DÙNG NGUYÊN DangSection/DangRow (KHÔNG bịa UI
+// riêng). `ma_dang`=hinh_baitoan_id (khoá key) · `ten_dang`=mã node (vd "BT.08.047") · `ten_chuyen_de`=
+// tên mô hình chứa node. `muc_do` = `cap` node CLIP về 1-5 — XẤP XỈ `mucDoTuCap` (bucket cơ bản/nâng cao
+// thật cần biết cách giải có bổ đề, chưa join ở đây; đủ dùng cho việc TÁCH 2 bảng, sai số nhỏ ở biên).
+function hinhToDangShape(rows: HinhMastery[]): DangMastery[] {
+  return rows.map((r) => ({ ma_dang: r.hinh_baitoan_id, ten_dang: r.ma, ten_chuyen_de: r.ten_mo_hinh, muc_do: Math.min(5, Math.max(1, r.cap)), mastery: r.mastery, evals: r.evals }))
+}
+
 // SUB-TAB DẠNG BÀI: bảng mastery per-dạng (cửa sổ ngày + toggle BTVN). Mặc định "Tất cả" để khớp % ở Tổng quan.
 // 1 khu riêng (Thùy 07-14): bảng chính (mọi dạng, như cũ) + 4 bảng phụ Đại/Hình × cơ bản/nâng cao (cùng
 // scope filter Cửa sổ/Gộp BTVN, tính 1 lần rồi bucket theo muc_do client-side — không thêm query).
-// Hình học: khoCuaMon('Toán') chỉ đọc dai_ban_do (chưa có hinh_cau_hoi/muc_do/gắn ET-MT-BTVN, xem ADR-mon.md
-// §5) → 2 bảng Hình LUÔN rỗng hiện tại, hiện placeholder rõ ràng thay vì trông như bug. Chỉ tách nhánh cho
-// môn Toán (KHTN không có khái niệm Đại/Hình).
+// Hình (mô hình, Thùy 21/08): KP = hinh_baitoan_id, đo qua `getHinhMasteryHS` (nguồn CHỈ et/mt/btvn TRONG
+// buổi — Hình mô hình chưa có kênh test-online). Chỉ tách nhánh Đại/Hình cho môn Toán.
 function DangBaiTab({ hsId, mon }: { hsId: string; mon: string }) {
   const [days, setDays] = useState<number | null>(null) // null = tất cả (khớp Tổng quan all-time)
   const [btvn, setBtvn] = useState(false)
   const [rows, setRows] = useState<DangMastery[] | null>(null)
+  const [hinhRows, setHinhRows] = useState<HinhMastery[] | null>(null)
   const [loading, setLoading] = useState(false)
+  const laToan = mon === 'Toán'
   useEffect(() => {
     setLoading(true)
-    getMasteryHS(hsId, mon, { includeBTVN: btvn, days: days ?? undefined }).then(setRows).catch(() => setRows([])).finally(() => setLoading(false))
-  }, [hsId, mon, days, btvn])
+    Promise.all([
+      getMasteryHS(hsId, mon, { includeBTVN: btvn, days: days ?? undefined }),
+      laToan ? getHinhMasteryHS(hsId, { includeBTVN: btvn, days: days ?? undefined }) : Promise.resolve([]),
+    ]).then(([r, h]) => { setRows(r); setHinhRows(h) }).catch(() => { setRows([]); setHinhRows([]) }).finally(() => setLoading(false))
+  }, [hsId, mon, days, btvn, laToan])
   const coBan = useMemo(() => (rows ?? []).filter((r) => bucketMucDo(r.muc_do) === 'co_ban'), [rows])
   const nangCao = useMemo(() => (rows ?? []).filter((r) => bucketMucDo(r.muc_do) === 'nang_cao'), [rows])
+  const hinhShaped = useMemo(() => hinhToDangShape(hinhRows ?? []), [hinhRows])
+  const hinhCoBan = useMemo(() => hinhShaped.filter((r) => bucketMucDo(r.muc_do) === 'co_ban'), [hinhShaped])
+  const hinhNangCao = useMemo(() => hinhShaped.filter((r) => bucketMucDo(r.muc_do) === 'nang_cao'), [hinhShaped])
   const dayBtn = (on: boolean) => `h-7 rounded-md px-2.5 text-[12px] font-semibold transition ${on ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`
-  const laToan = mon === 'Toán'
-  const hinhPlaceholder = 'Hình học chưa có dữ liệu đo — nhánh này chưa được xây kho câu hỏi/gắn ET-MT-BTVN.'
+  const hinhEmptyMsg = 'Chưa có lần đánh giá Hình (mô hình) nào — chấm ET/BTVN có gán giáo trình Hình cho buổi này.'
   return (
     <>
       <div className="mb-3 flex flex-wrap items-center gap-2">
@@ -325,8 +331,8 @@ function DangBaiTab({ hsId, mon }: { hsId: string; mon: string }) {
               <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
                 <DangSection title="Đại số — Cơ bản (độ khó 1-3)" rows={coBan} compact />
                 <DangSection title="Đại số — Nâng cao (độ khó 4-5)" rows={nangCao} compact />
-                <DangSection title="Hình học — Cơ bản (độ khó 1-3)" rows={[]} compact placeholder={hinhPlaceholder} />
-                <DangSection title="Hình học — Nâng cao (độ khó 4-5)" rows={[]} compact placeholder={hinhPlaceholder} />
+                <DangSection title="Hình học — Cơ bản" rows={hinhCoBan} compact emptyMsg={hinhEmptyMsg} />
+                <DangSection title="Hình học — Nâng cao" rows={hinhNangCao} compact emptyMsg={hinhEmptyMsg} />
               </div>
             </div>
           )}
@@ -987,16 +993,157 @@ function PivotRow({ it }: { it: PivotItem }) {
 // 2 sub-tab: Điểm thi trên trường (view+filter+sort, đúng cột Thùy yêu cầu) · Nhập điểm (port nguyên khối
 // UI cũ của Quản lý Level: chọn lớp → kì thi → nhập Điểm/Verdict/Vượt-band từng HS).
 function DiemThiTab() {
-  const [sub, setSub] = useState<'truong' | 'nhap'>('truong')
+  const [sub, setSub] = useState<'truong' | 'bxh_mt' | 'nhap' | 'nhap_mt'>('truong')
   const subBtn = (on: boolean) => `-mb-px border-b-2 px-3 py-2 text-[13px] font-medium transition ${on ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`
   return (
     <>
       <div className="mb-4 flex items-center gap-1 border-b border-slate-200">
         <button onClick={() => setSub('truong')} className={subBtn(sub === 'truong')}>Điểm thi trên trường</button>
-        <button onClick={() => setSub('nhap')} className={subBtn(sub === 'nhap')}>Nhập điểm</button>
+        <button onClick={() => setSub('bxh_mt')} className={subBtn(sub === 'bxh_mt')}>Xếp hạng MT trung tâm</button>
+        <button onClick={() => setSub('nhap')} className={subBtn(sub === 'nhap')}>Nhập điểm (Thi trường)</button>
+        <button onClick={() => setSub('nhap_mt')} className={subBtn(sub === 'nhap_mt')}>Nhập điểm MT</button>
       </div>
-      {sub === 'truong' ? <DiemThiTruongView /> : <NhapDiemView />}
+      {sub === 'truong' ? <DiemThiTruongView /> : sub === 'bxh_mt' ? <BXHDiemMTView /> : sub === 'nhap' ? <NhapDiemView /> : <NhapDiemMTView />}
     </>
+  )
+}
+
+// BXH ĐIỂM MT TẠI TRUNG TÂM — mỗi khối 1 BXH riêng (kh 6..12 không so ngang, CEO chốt); tháng chọn qua
+// navigator ‹ tháng M/YYYY ›; lớp = filter tuỳ chọn "chỉ hiện HS lớp đó" (không đổi thứ hạng — vẫn rank
+// trong CẢ khối). Nguồn: getBXHDiemMTKhoi → fn_bxh_diem_mt_khoi (avg cửa sổ 25→10, chưa thi = 0đ trong
+// rank, `tb` null hiển thị "—" — luật MT giữ nguyên văn, xem thanhtich.ts §BXH).
+function BXHDiemMTView() {
+  const [mon, setMon] = useState('Toán')
+  const [ym, setYm] = useState(curYM())
+  const [khoi, setKhoi] = useState<string | null>(null)
+  const [khoiOpts, setKhoiOpts] = useState<string[]>([])
+  const [lopOpts, setLopOpts] = useState<Opt[]>([])
+  const [lopId, setLopId] = useState<string | null>(null)
+  const [rows, setRows] = useState<BXHDiemMTRow[] | null>(null)
+  const [loading, setLoading] = useState(false)
+
+  // Nạp lớp theo môn → suy khối có sẵn (chỉ hiện tab khối mà môn này thực có lớp).
+  useEffect(() => {
+    setLopId(null); setRows(null)
+    listLop().then((ls) => {
+      const mine = (ls as any[]).filter((l) => l.mon === mon)
+      const ks = [...new Set(mine.map((l) => l.khoi).filter(Boolean))].sort((a: any, b: any) => String(a).localeCompare(String(b), 'vi', { numeric: true }))
+      setKhoiOpts(ks as string[])
+      if (!khoi || !ks.includes(khoi)) setKhoi(ks[0] ? String(ks[0]) : null)
+      setLopOpts(mine.map((l: any) => ({ id: l.id, label: l.ten_lop, sub: l.khoi ? `K${l.khoi}` : undefined })))
+    }).catch(() => { setKhoiOpts([]); setLopOpts([]); setKhoi(null) })
+  }, [mon]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Đổi khối → reset filter lớp (lớp thuộc khối khác thì không có nghĩa).
+  useEffect(() => { setLopId(null) }, [khoi])
+
+  useEffect(() => {
+    if (!khoi) { setRows(null); return }
+    setLoading(true)
+    getBXHDiemMTKhoi(mon, khoi, ym).then(setRows).catch(() => setRows([])).finally(() => setLoading(false))
+  }, [mon, khoi, ym])
+
+  const shown = useMemo(() => {
+    if (!rows) return []
+    if (!lopId) return rows
+    return rows.filter((r) => r.lop_id === lopId)
+  }, [rows, lopId])
+
+  const monBtn = (on: boolean) => `h-7 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
+  const khBtn = (on: boolean) => `h-7 rounded-md px-3 text-[12px] font-semibold transition ${on ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`
+  const lpBtn = (on: boolean) => `h-7 rounded-md px-3 text-[12px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`
+  const lopOptsInKhoi = useMemo(
+    () => (khoi ? lopOpts.filter((o) => o.sub === `K${khoi}`).sort((a, b) => a.label.localeCompare(b.label, 'vi', { numeric: true })) : []),
+    [lopOpts, khoi],
+  )
+  const [yy, mm] = ym.split('-')
+
+  return (
+    <>
+      <div className="mb-2 flex flex-wrap items-center gap-2">
+        <span className="text-[12px] font-semibold uppercase tracking-wider text-slate-500">Môn</span>
+        {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
+        <div className="ml-2 flex items-center gap-0.5 rounded-md ring-1 ring-slate-200">
+          <button onClick={() => setYm(shiftYM(ym, -1))} className="h-7 rounded-l-md px-2 text-slate-500 hover:bg-slate-100" title="Tháng trước">‹</button>
+          <span className="min-w-[92px] text-center text-[13px] font-semibold tabular-nums text-slate-700">Tháng {Number(mm)}/{yy}</span>
+          <button onClick={() => setYm(shiftYM(ym, +1))} className="h-7 rounded-r-md px-2 text-slate-500 hover:bg-slate-100" title="Tháng sau">›</button>
+        </div>
+        {khoiOpts.length > 0 && (
+          <div className="ml-2 flex items-center gap-1">
+            <span className="text-[12px] font-semibold uppercase tracking-wider text-slate-500">Khối</span>
+            {khoiOpts.map((k) => <button key={k} onClick={() => setKhoi(k)} className={khBtn(khoi === k)}>K{k}</button>)}
+          </div>
+        )}
+      </div>
+      {/* Thanh LỚP: chip song song thanh khối cho mượt (thay dropdown cũ). Mặc định "Cả khối". */}
+      {khoi && lopOptsInKhoi.length > 0 && (
+        <div className="mb-3 flex flex-wrap items-center gap-1">
+          <span className="mr-1 text-[12px] font-semibold uppercase tracking-wider text-slate-500">Lớp</span>
+          <button onClick={() => setLopId(null)} className={lpBtn(lopId === null)}>Cả khối {khoi}</button>
+          {lopOptsInKhoi.map((o) => (
+            <button key={o.id} onClick={() => setLopId(o.id)} className={lpBtn(lopId === o.id)}>{o.label}</button>
+          ))}
+        </div>
+      )}
+
+      {!khoi ? (
+        <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chưa có khối nào có lớp môn {mon}.</div>
+      ) : loading ? (
+        <p className="text-sm text-slate-500">Đang tải…</p>
+      ) : !rows || rows.length === 0 ? (
+        <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Khối {khoi} chưa có HS đang học môn {mon}.</div>
+      ) : (
+        <>
+          <div className="mb-2 flex flex-wrap items-center gap-2 text-[12px] text-slate-500">
+            <span className="rounded bg-indigo-50 px-2 py-0.5 font-medium text-indigo-600">
+              {shown.length}{lopId ? ` / ${rows.length}` : ''} học sinh
+            </span>
+            <span>· Rank trong khối {khoi} (tháng {Number(mm)}/{yy})</span>
+            <span className="ml-auto text-[11px] text-slate-400">Cửa sổ tính điểm: 25/{Number(mm)} → 10/{Number(mm) === 12 ? 1 : Number(mm) + 1}</span>
+          </div>
+          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+            <table className="w-full min-w-[640px] text-[13px]">
+              <thead>
+                <tr className="border-b border-slate-200 bg-slate-50 text-left text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                  <th className="w-16 px-3 py-2 text-center">Hạng</th>
+                  <th className="px-3 py-2">Tên HS</th>
+                  <th className="px-3 py-2">Mã HS</th>
+                  <th className="px-3 py-2">Lớp</th>
+                  <th className="w-24 px-3 py-2 text-center">Điểm MT TB</th>
+                </tr>
+              </thead>
+              <tbody>
+                {shown.map((r) => <BXHRow key={r.hoc_sinh_id} r={r} />)}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-2 text-[11px] text-slate-400">
+            Rank tính trong TOÀN BỘ khối {khoi} môn {mon} (kể cả HS lớp khác); filter lớp chỉ giới hạn HS hiển thị, không đổi thứ hạng.
+            HS chưa thi trong cửa sổ tháng → tính 0đ trong xếp hạng (điểm hiển thị "—").
+          </p>
+        </>
+      )}
+    </>
+  )
+}
+
+function BXHRow({ r }: { r: BXHDiemMTRow }) {
+  const medal = r.rank_now === 1 ? 'bg-amber-100 text-amber-700 ring-amber-200'
+    : r.rank_now === 2 ? 'bg-slate-200 text-slate-700 ring-slate-300'
+    : r.rank_now === 3 ? 'bg-orange-100 text-orange-700 ring-orange-200'
+    : 'bg-slate-50 text-slate-600 ring-slate-200'
+  return (
+    <tr className="border-b border-slate-100 last:border-0 hover:bg-indigo-50/30">
+      <td className="px-3 py-1.5 text-center">
+        <span className={`inline-flex h-7 min-w-[36px] items-center justify-center rounded-full px-2 text-[12px] font-bold tabular-nums ring-1 ${medal}`}>#{r.rank_now}</span>
+      </td>
+      <td className="px-3 py-1.5 font-medium text-slate-800">{r.ho_ten}</td>
+      <td className="px-3 py-1.5 font-mono text-[12px] text-slate-500">{r.ma_hs ?? '—'}</td>
+      <td className="px-3 py-1.5 text-slate-600">{r.ten_lop ?? '—'}</td>
+      <td className="px-3 py-1.5 text-center font-mono font-semibold text-slate-700">
+        {r.tb == null ? <span className="text-slate-300">—</span> : r.tb.toFixed(2)}
+      </td>
+    </tr>
   )
 }
 
@@ -1252,6 +1399,249 @@ function TaoKyThiModal({ lop, mua, onClose, onCreated }: { lop: Lop; mua: string
         <div className="flex justify-end gap-2">
           <button onClick={onClose} className="rounded-lg px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
           <button onClick={tao} disabled={busy} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang tạo…' : 'Tạo kì thi'}</button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ── NHẬP ĐIỂM MT theo LỚP (Thùy 14/09) — tab thứ 4 của Điểm thi. Bên trái: list lớp; bên phải: LƯỚI
+// HS × các buổi MT của lớp (chỉ hiện buổi ĐÃ có ky_thi mt_sat_hach — GV mở tab MT trong buổi lần đầu để
+// tạo). Click ô mở modal nhập chi tiết CB/NC/Full + Thi lại (giống DiemMTPanel bên buổi học, reuse công
+// thức và upsertDiemThi — trigger DB tự tính điểm+verdict).
+function NhapDiemMTView() {
+  const [mon, setMon] = useState('Toán')
+  const mua = currentMua()
+  const [lops, setLops] = useState<Lop[]>([])
+  const [lopId, setLopId] = useState<string | null>(null)
+  const [roster, setRoster] = useState<HSTrongLop[]>([])
+  const [kts, setKts] = useState<KyThiMTLop[]>([])
+  const [diems, setDiems] = useState<DiemThi[]>([])
+  const [loading, setLoading] = useState(false)
+  const [edit, setEdit] = useState<{ ky: KyThiMTLop; hsId: string; hoTen: string } | null>(null)
+
+  useEffect(() => {
+    listLop().then((l) => setLops(l.filter((x) => x.trang_thai === 'dang_hoc' && x.mon === mon))).catch(() => setLops([]))
+    setLopId(null); setRoster([]); setKts([]); setDiems([])
+  }, [mon])
+
+  async function reload(l: Lop) {
+    setLoading(true)
+    try {
+      const [r, k] = await Promise.all([listHSCuaLop(l.id), listKyThiMTCuaLop(l.id, mua)])
+      setRoster(r); setKts(k)
+      setDiems(k.length ? await listDiemThiByKyThi(k.map((x) => x.id)) : [])
+    } finally { setLoading(false) }
+  }
+  useEffect(() => {
+    const l = lops.find((x) => x.id === lopId)
+    if (l) reload(l)
+    else { setRoster([]); setKts([]); setDiems([]) }
+  }, [lopId]) // eslint-disable-line
+
+  const lop = lops.find((l) => l.id === lopId) ?? null
+  const diemOf = (kyId: string, hsId: string) => diems.find((d) => d.ky_thi_id === kyId && d.hoc_sinh_id === hsId) ?? null
+  const tenHT = tenHienThiDs(roster.map((hs) => hs.hoc_sinh?.ho_ten))
+  const monBtn = (on: boolean) => `h-7 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
+  const fmtNg = (iso: string | null) => iso ? new Date(iso + 'T00:00:00').toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' }) : '—'
+  const onSaved = (saved: DiemThi) => setDiems((prev) => [...prev.filter((d) => !(d.ky_thi_id === saved.ky_thi_id && d.hoc_sinh_id === saved.hoc_sinh_id)), saved])
+  const onKhungSaved = (kyId: string, p: { khung_co_ban?: number | null; khung_nang_cao?: number | null }) => setKts((prev) => prev.map((k) => (k.id === kyId ? { ...k, ...p } : k)))
+  const sortedLops = [...lops].sort((a, b) => (a.khoi ?? '').localeCompare(b.khoi ?? '', 'vi', { numeric: true }) || a.ten_lop.localeCompare(b.ten_lop, 'vi', { numeric: true }))
+
+  return (
+    <div className="flex gap-3">
+      {/* CỘT TRÁI: chọn Môn + list lớp */}
+      <div className="w-60 shrink-0 space-y-2">
+        <div className="flex items-center gap-1">
+          {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
+        </div>
+        <div className="text-[11px] text-slate-500">Mùa <b className="text-slate-700">{mua}</b> · chọn 1 lớp:</div>
+        <div className="max-h-[calc(100vh-260px)] space-y-0.5 overflow-y-auto rounded-lg border border-slate-200 bg-white p-1">
+          {sortedLops.length === 0 ? <p className="p-3 text-[12px] text-slate-400">Không có lớp {mon} đang học.</p>
+            : sortedLops.map((l) => (
+              <button key={l.id} onClick={() => setLopId(l.id)}
+                className={`flex w-full items-center justify-between rounded px-2.5 py-1.5 text-left text-[13px] transition ${lopId === l.id ? 'bg-indigo-600 font-semibold text-white' : 'text-slate-700 hover:bg-slate-100'}`}>
+                <span>{l.ten_lop}</span>
+                <span className={`text-[11px] ${lopId === l.id ? 'text-indigo-100' : 'text-slate-400'}`}>{l.khoi ? `K${l.khoi}` : ''}</span>
+              </button>
+            ))}
+        </div>
+      </div>
+
+      {/* PANEL PHẢI: lưới HS × buổi MT */}
+      <div className="min-w-0 flex-1">
+        {!lop ? (
+          <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn 1 lớp bên trái để nhập điểm MT.</div>
+        ) : loading ? (
+          <p className="text-sm text-slate-500">Đang tải…</p>
+        ) : kts.length === 0 ? (
+          <div className="rounded-xl border border-dashed border-slate-200 py-10 text-center text-sm text-slate-500">
+            <div className="mb-1"><b>{lop.ten_lop}</b> chưa có buổi MT nào trong mùa {mua}.</div>
+            <div className="text-[12px] text-slate-400">GV mở tab MT trong 1 buổi cụ thể để tạo kỳ MT lần đầu — sau đó buổi đó sẽ hiện ở đây để nhập theo lớp.</div>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            <div className="flex flex-wrap items-baseline gap-3">
+              <h3 className="text-[15px] font-semibold text-slate-800">{lop.ten_lop} <span className="text-slate-400">· K{lop.khoi} · {mon}</span></h3>
+              <span className="text-[12px] text-slate-500">{roster.length} HS · {kts.length} buổi MT · Mùa {mua}</span>
+              <span className="text-[11px] text-slate-400">Click vào ô để nhập / sửa</span>
+            </div>
+            <div className="overflow-auto rounded-xl border border-slate-200 bg-white">
+              <table className="min-w-full text-[13px]">
+                <thead>
+                  <tr className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-500">
+                    <th className="sticky left-0 z-10 bg-slate-50 px-3 py-2">Học sinh</th>
+                    {kts.map((k) => (
+                      <th key={k.id} className="min-w-[110px] px-2 py-2 text-center">
+                        <div className="font-semibold text-slate-700">{fmtNg(k.buoi_ngay)}</div>
+                        <div className="text-[10px] font-normal text-slate-400">
+                          {k.khung_co_ban != null || k.khung_nang_cao != null
+                            ? `CB /${k.khung_co_ban ?? '?'} · NC /${k.khung_nang_cao ?? '?'}`
+                            : 'chưa có khung'}
+                        </div>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {roster.map((hs, i) => (
+                    <tr key={hs.hoc_sinh_id} className="border-t border-slate-100">
+                      <td className="sticky left-0 z-10 bg-white px-3 py-1.5 font-medium text-slate-700">{tenHT[i]}</td>
+                      {kts.map((k) => {
+                        const d = diemOf(k.id, hs.hoc_sinh_id)
+                        return <DiemMTCell key={k.id} d={d} onClick={() => setEdit({ ky: k, hsId: hs.hoc_sinh_id, hoTen: tenHT[i] })} />
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {edit && <DiemMTEditModal ky={edit.ky} hsId={edit.hsId} hoTen={edit.hoTen} init={diemOf(edit.ky.id, edit.hsId)}
+        onClose={() => setEdit(null)} onSaved={onSaved} onKhungSaved={onKhungSaved} />}
+    </div>
+  )
+}
+
+function DiemMTCell({ d, onClick }: { d: DiemThi | null; onClick: () => void }) {
+  const chinh = d?.diem
+  const tl = d?.diem_thi_lai
+  return (
+    <td className="border-l border-slate-100 px-2 py-1 text-center">
+      <button onClick={onClick} className="mx-auto flex min-w-[80px] flex-col items-center rounded-md px-2 py-1 transition hover:bg-indigo-50">
+        <span className={`font-bold tabular-nums ${chinh == null ? 'text-slate-300' : chinh >= 8 ? 'text-emerald-700' : chinh >= 5 ? 'text-slate-800' : 'text-rose-700'}`}>
+          {chinh == null ? '—' : chinh}
+        </span>
+        {tl != null && <span className="mt-0.5 rounded bg-amber-100 px-1.5 text-[10px] font-semibold text-amber-800">TL {tl}</span>}
+      </button>
+    </td>
+  )
+}
+
+// Modal nhập chi tiết 1 ô (HS × buổi MT) — reuse công thức tinhDiemMT + upsertDiemThi (trigger DB tự tính
+// `diem`/`verdict`/`diem_thi_lai`). Nhập kèm khung điểm đề (chung cả buổi — cột `ky_thi.khung_*`) để mọi
+// GV nhập đúng "/khung" thấy trong lưới ngay.
+function DiemMTEditModal({ ky, hsId, hoTen, init, onClose, onSaved, onKhungSaved }: {
+  ky: KyThiMTLop; hsId: string; hoTen: string; init: DiemThi | null
+  onClose: () => void; onSaved: (d: DiemThi) => void
+  onKhungSaved: (kyId: string, patch: { khung_co_ban?: number | null; khung_nang_cao?: number | null }) => void
+}) {
+  const [khungCB, setKhungCB] = useState(ky.khung_co_ban != null ? String(ky.khung_co_ban) : '')
+  const [khungNC, setKhungNC] = useState(ky.khung_nang_cao != null ? String(ky.khung_nang_cao) : '')
+  const [coBan, setCoBan] = useState(init?.diem_co_ban != null ? String(init.diem_co_ban) : '')
+  const [nangCao, setNangCao] = useState(init?.diem_nang_cao != null ? String(init.diem_nang_cao) : '')
+  const [full, setFull] = useState(!!init?.full_diem)
+  const [coBanTL, setCoBanTL] = useState(init?.diem_thi_lai_co_ban != null ? String(init.diem_thi_lai_co_ban) : '')
+  const [nangCaoTL, setNangCaoTL] = useState(init?.diem_thi_lai_nang_cao != null ? String(init.diem_thi_lai_nang_cao) : '')
+  const [fullTL, setFullTL] = useState(!!init?.full_thi_lai)
+  const [busy, setBusy] = useState(false)
+  const num = (s: string) => (s.trim() === '' ? null : Number(s))
+
+  const diem = tinhDiemMT(num(coBan), num(nangCao), full)
+  const diemTL = tinhDiemMT(num(coBanTL), num(nangCaoTL), fullTL)
+  const trong = coBan.trim() === '' && nangCao.trim() === '' && !full
+  const trongTL = coBanTL.trim() === '' && nangCaoTL.trim() === '' && !fullTL
+
+  async function saveAndClose() {
+    setBusy(true)
+    try {
+      // Khung điểm đề: chỉ ghi nếu khác giá trị cũ, tránh gọi update thừa (ky.khung_* dùng chung mọi HS trong buổi).
+      const cbK = num(khungCB), ncK = num(khungNC)
+      if (cbK !== (ky.khung_co_ban ?? null) || ncK !== (ky.khung_nang_cao ?? null)) {
+        await setKhungMT(ky.id, cbK, ncK)
+        onKhungSaved(ky.id, { khung_co_ban: cbK, khung_nang_cao: ncK })
+      }
+      const saved = await upsertDiemThi({
+        kyThiId: ky.id, hocSinhId: hsId, diem: null, bandLucThi: null, verdict: 'khong_dat', vuotBand: false,
+        coBan: num(coBan), nangCao: num(nangCao), full,
+        coBanThiLai: num(coBanTL), nangCaoThiLai: num(nangCaoTL), fullThiLai: fullTL,
+      })
+      onSaved(saved)
+      onClose()
+    } catch (e: any) { alert('Lưu điểm MT lỗi: ' + (e?.message ?? String(e))) }
+    finally { setBusy(false) }
+  }
+
+  const inp = 'h-8 w-20 rounded border border-slate-300 px-2 text-[13px]'
+  const inpTL = 'h-8 w-20 rounded border border-amber-300 bg-amber-50/40 px-2 text-[13px]'
+  const fmtNgay = ky.buoi_ngay ? new Date(ky.buoi_ngay + 'T00:00:00').toLocaleDateString('vi-VN') : '—'
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/30 p-4 backdrop-blur-sm" onClick={onClose}>
+      <div className="w-[560px] max-w-[95vw] rounded-2xl bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="mb-1 text-[15px] font-semibold text-slate-900">{hoTen}</div>
+        <div className="mb-3 text-[12px] text-slate-500">Buổi MT ngày <b className="text-slate-700">{fmtNgay}</b></div>
+
+        <fieldset className="mb-3 rounded-lg border border-slate-200 p-3">
+          <legend className="px-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Khung điểm đề (chung cả buổi)</legend>
+          <div className="flex flex-wrap items-center gap-3">
+            <label className="flex items-center gap-1.5 text-[12px] text-slate-600">Cơ bản
+              <input value={khungCB} onChange={(e) => setKhungCB(e.target.value)} inputMode="decimal" placeholder="—" className={inp} />
+            </label>
+            <label className="flex items-center gap-1.5 text-[12px] text-slate-600">Nâng cao
+              <input value={khungNC} onChange={(e) => setKhungNC(e.target.value)} inputMode="decimal" placeholder="—" className={inp} />
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset className="mb-3 rounded-lg border border-violet-200 bg-violet-50/30 p-3">
+          <legend className="px-1 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Điểm chính</legend>
+          <div className="flex flex-wrap items-center gap-3">
+            <label className="flex items-center gap-1.5 text-[12px] text-slate-600">Cơ bản
+              <input value={coBan} onChange={(e) => setCoBan(e.target.value)} inputMode="decimal" className={inp} />
+              {ky.khung_co_ban != null && <span className="text-[11px] text-slate-400">/{ky.khung_co_ban}</span>}
+            </label>
+            <label className="flex items-center gap-1.5 text-[12px] text-slate-600">Nâng cao
+              <input value={nangCao} onChange={(e) => setNangCao(e.target.value)} inputMode="decimal" className={inp} />
+              {ky.khung_nang_cao != null && <span className="text-[11px] text-slate-400">/{ky.khung_nang_cao}</span>}
+            </label>
+            <label className="flex items-center gap-1.5 text-[12px] text-slate-600"><input type="checkbox" checked={full} onChange={(e) => setFull(e.target.checked)} className="h-4 w-4 accent-violet-600" />Full (10đ)</label>
+            <span className={`ml-auto text-[15px] font-bold tabular-nums ${trong ? 'text-slate-300' : diem >= 9.75 ? 'text-emerald-700' : 'text-violet-800'}`}>{trong ? '—' : diem}</span>
+          </div>
+        </fieldset>
+
+        <fieldset className="mb-4 rounded-lg border border-amber-200 bg-amber-50/40 p-3">
+          <legend className="px-1 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Thi lại (không tính xếp hạng)</legend>
+          <div className="flex flex-wrap items-center gap-3">
+            <label className="flex items-center gap-1.5 text-[12px] text-slate-600">Cơ bản
+              <input value={coBanTL} onChange={(e) => setCoBanTL(e.target.value)} inputMode="decimal" placeholder="—" className={inpTL} />
+              {ky.khung_co_ban != null && <span className="text-[11px] text-slate-400">/{ky.khung_co_ban}</span>}
+            </label>
+            <label className="flex items-center gap-1.5 text-[12px] text-slate-600">Nâng cao
+              <input value={nangCaoTL} onChange={(e) => setNangCaoTL(e.target.value)} inputMode="decimal" placeholder="—" className={inpTL} />
+              {ky.khung_nang_cao != null && <span className="text-[11px] text-slate-400">/{ky.khung_nang_cao}</span>}
+            </label>
+            <label className="flex items-center gap-1.5 text-[12px] text-slate-600"><input type="checkbox" checked={fullTL} onChange={(e) => setFullTL(e.target.checked)} className="h-4 w-4 accent-amber-600" />Full (10đ)</label>
+            <span className={`ml-auto text-[15px] font-bold tabular-nums ${trongTL ? 'text-slate-300' : diemTL >= 9.75 ? 'text-emerald-700' : 'text-amber-700'}`}>{trongTL ? '—' : diemTL}</span>
+          </div>
+        </fieldset>
+
+        <div className="flex justify-end gap-2">
+          <button onClick={onClose} className="rounded-lg px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Đóng</button>
+          <button onClick={saveAndClose} disabled={busy} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang lưu…' : 'Lưu'}</button>
         </div>
       </div>
     </div>

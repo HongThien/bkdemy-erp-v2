@@ -2,7 +2,7 @@
 // Tiến độ = MÁY tính (không nhập tay). §4.2/§4.4/§4.5/§4.8.
 import { useEffect, useState } from 'react'
 import {
-  nghiemThu, huyViec, chuyenNguoi, listNguoiDuocGiao, type ViecFull, type NguoiDuocGiao,
+  nghiemThu, huyViec, chuyenNguoi, dongTaskMe, listNguoiDuocGiao, type ViecFull, type NguoiDuocGiao,
 } from '../../lib/giaoviec'
 import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Modal, Field, NguoiPicker, fmtNgay } from './ui'
 
@@ -70,6 +70,37 @@ export function HuyModal({ v, onClose, onDone }: { v: ViecFull; onClose: () => v
         <Field label="Lý do huỷ (bắt buộc)"><textarea value={lyDo} onChange={(e) => setLyDo(e.target.value)} className={CX_INPUT} rows={2} /></Field>
         {err && <div className="rounded-lg bg-rose-50 px-3 py-2 text-[12px] text-rose-600">{err}</div>}
         <div className="flex justify-end gap-2"><button onClick={onClose} className={CX_BTN_GHOST}>Thôi</button><button disabled={saving} onClick={submit} className="rounded-lg bg-rose-600 px-4 py-2 text-[13px] font-semibold text-white disabled:opacity-40">Huỷ task</button></div>
+      </div>
+    </Modal>
+  )
+}
+
+// ĐÓNG CỤM (task mẹ) — CHỦ ĐỘNG (Thùy 10/09: bỏ tự đóng khi 100% con hiện có
+// đạt, vì việc có thể còn cần tách thêm con mà chưa nghĩ kịp). Vẫn chặn nếu
+// còn con chưa đạt — RPC fn_giaoviec_dong_task_me tự raise exception, hiện err.
+export function DongCumModal({ v, soCon, soConDat, onClose, onDone }: {
+  v: ViecFull; soCon: number; soConDat: number; onClose: () => void; onDone: () => void
+}) {
+  const [ghiChu, setGhiChu] = useState('')
+  const [saving, setSaving] = useState(false); const [err, setErr] = useState<string | null>(null)
+  const sanSang = soCon > 0 && soConDat === soCon
+  async function submit() {
+    setSaving(true); setErr(null)
+    try { await dongTaskMe(v.id, ghiChu.trim() || undefined); onDone() }
+    catch (e: any) { setErr(e?.message ?? String(e)) } finally { setSaving(false) }
+  }
+  return (
+    <Modal title={`Đóng cụm — ${v.tieu_de}`} onClose={onClose}>
+      <div className="space-y-3">
+        {sanSang
+          ? <p className="text-[12px] text-slate-500">Cả {soCon} task con đã đạt. Chốt đóng cụm — tiến độ/chất lượng của cụm sẽ tính bình quân gia quyền theo khối lượng từng con. Chỉ đóng khi CHẮC CHẮN không còn task con nào cần tách thêm.</p>
+          : <div className="rounded-lg bg-amber-50 px-3 py-2 text-[12px] text-amber-700">Còn {soCon - soConDat}/{soCon} task con chưa đạt — đóng hết con trước đã.</div>}
+        {sanSang && <Field label="Ghi chú (tuỳ chọn)"><textarea value={ghiChu} onChange={(e) => setGhiChu(e.target.value)} className={CX_INPUT} rows={2} /></Field>}
+        {err && <div className="rounded-lg bg-rose-50 px-3 py-2 text-[12px] text-rose-600">{err}</div>}
+        <div className="flex justify-end gap-2">
+          <button onClick={onClose} className={CX_BTN_GHOST}>Thôi</button>
+          <button disabled={!sanSang || saving} onClick={submit} className={`${CX_BTN} disabled:opacity-40`}>{saving ? '…' : '✓ Đóng cụm'}</button>
+        </div>
       </div>
     </Modal>
   )

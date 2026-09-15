@@ -13,7 +13,7 @@ export type CanBuItem = { id: string; hoc_sinh_id: string; ho_ten: string; ma_hs
 export type CaBoTroHS = { hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; diem_danh: string | null; lop_bu: string; mon: string; khoi: string | null; bu_cho: string }
 // hs = HS CÒN nằm ở buổi bù này. hsVang = em đã tích vắng ⇒ lần nghỉ gốc đã quay về "Cần bù",
 // em KHÔNG còn là việc của buổi này nữa (giữ lại để hiển thị vết, không tính vào sĩ số).
-export type CaBoTro = { id: string; ngay: string; gio_bat_dau: string | null; phong: string | null; trang_thai: string; et_dong_at: string | null; danh_gia_xong_at: string | null; nguoi_day: string | null; nguoi_day_tg: string | null; gv_ten: string | null; ta_ten: string | null; hs: CaBoTroHS[]; hsVang: CaBoTroHS[] }
+export type CaBoTro = { id: string; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; trang_thai: string; et_dong_at: string | null; danh_gia_xong_at: string | null; nguoi_day: string | null; nguoi_day_tg: string | null; gv_ten: string | null; ta_ten: string | null; hs: CaBoTroHS[]; hsVang: CaBoTroHS[] }
 
 // ⭐ MỘT LẦN XẾP BÙ CHỈ "GIẢI QUYẾT" LẦN NGHỈ KHI NÓ THẬT SỰ DIỄN RA (sửa 12/08).
 //
@@ -127,7 +127,7 @@ async function taiCaBoTro(): Promise<CaBoTroFull[]> {
   // Tên GV/TA embed thẳng — buoi_hoc có HAI FK về nhan_su nên PHẢI đặt tên cột (`gv:nguoi_day`),
   // để PostgREST tự đoán là nhập nhằng rồi rỗng âm thầm (HANDOFF §"nhiều FK cùng đích").
   const { data: buois } = await supabase.from('buoi_hoc')
-    .select('id, ngay, gio_bat_dau, phong, trang_thai, et_dong_at, danh_gia_xong_at, nguoi_day, nguoi_day_tg, gv:nguoi_day(ho_ten), ta:nguoi_day_tg(ho_ten)')
+    .select('id, ngay, gio_bat_dau, gio_ket_thuc, phong, trang_thai, et_dong_at, danh_gia_xong_at, nguoi_day, nguoi_day_tg, gv:nguoi_day(ho_ten), ta:nguoi_day_tg(ho_ten)')
     .eq('loai', 'bu').neq('trang_thai', 'huy').order('ngay', { ascending: false }).limit(LIMIT)
   if (!(buois ?? []).length) return []
   const ids = (buois ?? []).map((b: any) => b.id)
@@ -325,7 +325,12 @@ export type AnhChupBu = {
   canXep: { tong: number; trongHan: number; quaHan: number; tonDongCu: number; cuNhat: string | null }
   khongXepDuoc: number
   buoiRong: number
-  dongKhong: number
+  // ⭐ "Đóng khống" KHÔNG phải một loại. Đo 14/08 tách ra hai thứ NGƯỢC nhau:
+  //   khongDe = buổi mẹ chưa soạn ET ⇒ không có gì để chấm ⇒ BÌNH THƯỜNG, không phải việc.
+  //   coDe    = có đề hẳn hoi mà 0 dòng chấm ⇒ đóng cho xong ⇒ dữ liệu đo mất vĩnh viễn.
+  // Và quan trọng nhất: `ganDay` — chuyện này đã TỰ DỪNG. Gộp một số rồi nhắc mỗi ngày là
+  // nhắc một việc không còn xảy ra, đúng thứ làm người ta học cách phớt lờ trợ lý.
+  dongKhong: { coDe: number; khongDe: number; ganDay: number; moiNhat: string | null }
   phamVi: string
   khongBiet: string[]
 }
@@ -365,7 +370,15 @@ export async function anhChupBoTroBu(): Promise<AnhChupBu> {
   const chuaFillDu: BuoiThieuFill[] = []
   const sapToi: BuoiSapToi[] = []
   let buoiRong = 0
-  let dongKhong = 0   // buổi đã chốt đủ 2 mốc mà không có lấy một dòng chấm/đánh giá nào
+  // Cửa sổ "CÒN đang xảy ra" = 14 ngày.
+  // ⚠ Đặt 21 ngày trước, và nó nói dối ngay lần chạy đầu: ca cuối cùng là 26/07, cách hôm nay
+  //   19 ngày ⇒ vẫn lọt cửa sổ ⇒ màn hình báo "7 buổi trong 21 ngày qua" như thể chuyện đang
+  //   diễn ra, trong khi dữ liệu theo tuần nói ngược lại: tuần 20/07 hở 20/34 buổi, tuần 27/07
+  //   còn 1/23, rồi hai tuần gần nhất 24/24 buổi ĐỀU có chấm. Tức nó đã dứt.
+  //   14 ngày = đúng khoảng đã có bằng chứng sạch, không phải con số vặn cho vừa ý.
+  const mocGanDay = new Date(Date.parse(homNay + 'T00:00:00Z') - 14 * 86400000).toISOString().slice(0, 10)
+  let dkCoDe = 0, dkKhongDe = 0, dkGanDay = 0
+  let dkMoiNhat: string | null = null
 
   for (const b of ds) {
     const hs = theoBuoi.get(b.id) ?? []
@@ -396,7 +409,15 @@ export async function anhChupBoTroBu(): Promise<AnhChupBu> {
     if (b.et_dong_at && b.danh_gia_xong_at) {
       // Vẫn đếm riêng ca "chốt mà không có lấy một dòng chấm nào" — tín hiệu chất lượng
       // khác hẳn, chỉ nên là MỘT CON SỐ, không phải danh sách 98 dòng.
-      if (!coMat.some((r: any) => coChamET.has(key(b.id, r.hoc_sinh_id)) || coDangDG.has(key(b.id, r.hoc_sinh_id)))) dongKhong++
+      const coCham = coMat.some((r: any) => coChamET.has(key(b.id, r.hoc_sinh_id)) || coDangDG.has(key(b.id, r.hoc_sinh_id)))
+      if (!coCham) {
+        // Có đề ET seed cho ít nhất 1 em có mặt ⇒ đã có thứ để chấm mà không ai chấm.
+        if (coMat.some((r: any) => coDeET.has(key(b.id, r.hoc_sinh_id)))) {
+          dkCoDe++
+          if (b.ngay > (dkMoiNhat ?? '')) dkMoiNhat = b.ngay
+          if (b.ngay >= mocGanDay) dkGanDay++
+        } else dkKhongDe++
+      }
       continue
     }
 
@@ -439,7 +460,8 @@ export async function anhChupBoTroBu(): Promise<AnhChupBu> {
       cuNhat: conLai.length ? conLai[0].ngay : null,   // đã sort tuổi GIẢM dần ⇒ [0] = cũ nhất
     },
     khongXepDuoc: koXep ?? 0,
-    buoiRong, dongKhong,
+    buoiRong,
+    dongKhong: { coDe: dkCoDe, khongDe: dkKhongDe, ganDay: dkGanDay, moiNhat: dkMoiNhat },
     phamVi: `Toàn bộ buổi bù chưa huỷ + mọi lần nghỉ chưa xử lý, tính đến ${homNay}. `
       + `Hạn xếp bù ${HAN_XEP_BU_NGAY * 24}h chỉ áp cho lần nghỉ TỪ ${NGAY_AP_HAN_48H} trở đi; `
       + `trước đó gom vào "tồn đọng cũ" (có luật muộn, không phải người dùng trễ).`,

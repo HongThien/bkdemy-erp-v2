@@ -131,7 +131,8 @@ export default function BangThanhTich({ hocSinhId, hoTen, maHs, khoi, fit }: { h
                 <Gem grad="gy" label="LV" labCol="#7a4d04" numCol="#3a2400" value={lv} />
                 <Gem grad="gm" label="HẠNG" labCol="#fff" numCol="#5a0a48" value={`#${cur.rankNow}`} />
                 <div className="bp-xpwrap">
-                  <div className="bp-xphex"><Hex /><b>{lx?.xu ?? 0}</b></div>
+                  {/* Hex = VÍ XU thật (đã chốt tháng, sau này tiêu để đổi quà) — khác xu ước tính trong bar */}
+                  <div className="bp-xphex" title="Ví xu (đã chốt)"><Hex /><b>{lx?.viXu ?? 0}</b></div>
                   <div className="bp-xpbar"><i style={{ width: `${xpPct}%` }} /><span>💰 {lx?.expThang?.toLocaleString('vi-VN') ?? 0} EXP{lx?.expKeMoc != null ? ` → ${lx.xuKe} xu` : ''}</span></div>
                 </div>
                 <div className="bp-trophy"><span className="bp-ic">🏆</span><span>{cur.elo}</span></div>

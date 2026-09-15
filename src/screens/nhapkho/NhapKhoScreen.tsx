@@ -2,9 +2,10 @@
 // 1 người làm full luồng 1 phiên → giữ ở client-state (KHÔNG draft table). Duyệt TỪNG câu chiếm màn.
 // Hiển thị PREVIEW-FIRST (render công thức); bấm ✎ Sửa mới ra code LaTeX.
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useMonScope } from '../../lib/mon'
+import { useMonScope } from '../../hooks/useMonScope'
 import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdfRender'
 import { MathText, inp, readClipboardImageFile } from '../kho/ui'
+import { MathTextarea } from '../../components/math/MathTextarea'
 import { CauEditor, type ReviewItem } from '../kho/DangHub'
 import {
   KHOI_OPTIONS, DEFAULT_KHOI,
@@ -34,7 +35,17 @@ export default function NhapKhoScreen() {
   )
 }
 
-const MONS: { key: KhoMon; label: string }[] = [{ key: 'toan', label: 'Toán' }, { key: 'khtn', label: 'KHTN' }]
+// ⭐ 17/08 (Thùy: "chưa có gán dạng từ Hình giải tích") — `key` (KhoMon, quyết định bảng dai_*/khtn_*/
+// hgt_* qua khoTbls) và `gate` (nhãn MÔN để so quyền `allowedMons`, khớp MON_LIST trong lib/mon.ts) PHẢI
+// TÁCH RIÊNG: Hình giải tích là 1 NHÁNH của môn "Toán" (không phải môn riêng trong nhan_su_mon — khuôn
+// KhoScreen.tsx: tab Đại số/Hình học/Hình giải tích đều gate quyền bằng "Toán"), gộp làm 1 như trước
+// (dùng thẳng label để so quyền) sẽ khiến nút Hình giải tích không bao giờ hiện được (không nhãn "Hình
+// giải tích" nào trong MON_LIST để khớp).
+const MONS: { key: KhoMon; label: string; gate: string }[] = [
+  { key: 'toan', label: 'Đại số', gate: 'Toán' },
+  { key: 'hgt', label: 'Hình giải tích', gate: 'Toán' },
+  { key: 'khtn', label: 'KHTN', gate: 'KHTN' },
+]
 const CONF_NGUONG = 0.7
 const LOAI_LABEL: Record<string, string> = { trac_nghiem: 'Trắc nghiệm', dung_sai: 'Đúng / sai', tra_loi_ngan: 'Tự luận / trả lời ngắn', tu_luan: 'Tự luận / trả lời ngắn' }
 const readB64 = (f: File) => new Promise<string>((res, rej) => { const r = new FileReader(); r.onload = () => res(String(r.result).split(',')[1]); r.onerror = rej; r.readAsDataURL(f) })
@@ -56,7 +67,7 @@ type RItem = {
 
 function NhapChuyenDe() {
   const { allowedMons, isAll } = useMonScope()  // scope④ (admin/Ops/Media/Marketing = tất cả)
-  const allowed = MONS.filter((m) => isAll || allowedMons.includes(m.label)).map((m) => m.key)
+  const allowed = MONS.filter((m) => isAll || allowedMons.includes(m.gate)).map((m) => m.key)
   const [mon, setMon] = useState<KhoMon>('toan')
   useEffect(() => { if (allowed.length && !allowed.includes(mon)) setMon(allowed[0]) }, [allowed.join(',')]) // eslint-disable-line
 
@@ -400,7 +411,7 @@ function DungSaiEditor({ r, cands, candMap, recent, edit, onPatch, onPick }: { r
       {chuyenDe && <div className="mb-2 inline-flex rounded-full bg-indigo-50 px-2.5 py-1 text-[11px] text-indigo-700">📁 Cả câu neo chuyên đề: {chuyenDe}</div>}
       <div className="mb-1 text-[12px] text-slate-400">Đề chung</div>
       {edit
-        ? <textarea value={r.noi_dung} onChange={(e) => onPatch({ noi_dung: e.target.value })} className={`${code} min-h-[64px]`} />
+        ? <MathTextarea value={r.noi_dung} onChange={(v) => onPatch({ noi_dung: v })} className={`${code} min-h-[64px]`} />
         : <div className={preBox}><MathText>{r.noi_dung}</MathText></div>}
       {r.anhDe && <img src={r.anhDe} alt="hình đề" className="mt-2 max-h-56 rounded-lg border border-slate-200" />}
       <div className="mt-3 text-[12px] text-slate-400">4 mệnh đề — mỗi mệnh đề 1 dạng riêng</div>

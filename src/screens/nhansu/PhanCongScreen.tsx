@@ -1,6 +1,10 @@
 import { Fragment, useEffect, useMemo, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
-import { listLop, listNhanSu, listPhanCongAll, setPhanCongSlot, type Lop, type NhanSu, type PhanCongLop } from '../../lib/nhansu'
+import {
+  listLop, listNhanSu, listPhanCongAll, setPhanCongSlot,
+  listPhanCongKhoi, addTruongKhoi, removeTruongKhoi,
+  type Lop, type NhanSu, type PhanCongLop, type PhanCongKhoi,
+} from '../../lib/nhansu'
 import SearchSelect from '../../components/SearchSelect'
 
 // Ma trận PHÂN CÔNG: hàng = lớp, cột = SLOT việc. Gán theo vai (TG ôm toàn bộ chấm; GV chính/phụ làm đánh giá+nội dung).
@@ -14,17 +18,28 @@ export default function PhanCongScreen() {
   const [lops, setLops] = useState<Lop[]>([])
   const [pc, setPc] = useState<PhanCongLop[]>([])
   const [ds, setDs] = useState<NhanSu[]>([])
+  const [tk, setTk] = useState<PhanCongKhoi[]>([])
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
 
   async function reload() {
     setLoading(true); setErr(null)
     try {
-      const [l, p, n] = await Promise.all([listLop(khoi), listPhanCongAll(), listNhanSu()])
-      setLops(l); setPc(p); setDs(n.filter((x) => x.trang_thai === 'dang_lam'))
+      const [l, p, n, t] = await Promise.all([listLop(khoi), listPhanCongAll(), listNhanSu(), listPhanCongKhoi()])
+      setLops(l); setPc(p); setDs(n.filter((x) => x.trang_thai === 'dang_lam')); setTk(t)
     } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [khoi]) // eslint-disable-line
+
+  // Trưởng khối theo (khối × MÔN) — rà soát dữ liệu + nhận Chấm MT của mọi lớp cùng khối+môn (CEO 06/09:
+  // "theo môn nhé, KHTN sẽ có trưởng khối riêng"). Không phải phân công theo lớp.
+  const tkOfMon = (mon: string) => tk.filter((r) => r.khoi === khoi && r.mon === mon)
+  async function themTruongKhoi(nhanSuId: string, mon: string) {
+    try { await addTruongKhoi(nhanSuId, khoi, mon); reload() } catch (e: any) { alert(e.message ?? String(e)) }
+  }
+  async function boTruongKhoi(id: string) {
+    try { await removeTruongKhoi(id); reload() } catch (e: any) { alert(e.message ?? String(e)) }
+  }
 
   // tải mỗi người = số lớp đang gánh (mọi vai) — hiện trong dropdown để soát quá tải
   const tai = useMemo(() => {
@@ -75,6 +90,7 @@ export default function PhanCongScreen() {
         </div>
       </div>
 
+
       <div className="min-h-0 flex-1 overflow-auto p-4">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
@@ -93,7 +109,28 @@ export default function PhanCongScreen() {
               <tbody>
                 {lopGroups.map((g) => (
                   <Fragment key={g.mon}>
-                    <tr><td colSpan={5} className="px-2 pb-0.5 pt-2 text-[12px] font-semibold text-slate-600">{g.mon} <span className="font-normal text-slate-400">· {g.lops.length} lớp</span></td></tr>
+                    <tr><td colSpan={5} className="px-2 pb-0.5 pt-2">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-[12px] font-semibold text-slate-600">{g.mon} <span className="font-normal text-slate-400">· {g.lops.length} lớp</span></span>
+                        <span className="ml-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500" title="Rà soát dữ liệu + sửa ET/MT/BTVN mọi lớp cùng khối+môn · nhận việc Chấm MT (không có thì MT về GV lớp)">Trưởng khối {khoi} · {g.mon}</span>
+                        <div className="flex flex-wrap items-center gap-1">
+                          {tkOfMon(g.mon).map((r) => {
+                            const ns = ds.find((n) => n.id === r.nhan_su_id)
+                            return (
+                              <span key={r.id} className="flex items-center gap-1 rounded-full bg-indigo-50 py-0.5 pl-2.5 pr-1 text-[12px] font-medium text-indigo-700">
+                                {ns?.ho_ten ?? '?'}
+                                <button onClick={() => boTruongKhoi(r.id)} className="rounded-full px-1 text-indigo-400 hover:bg-indigo-100 hover:text-rose-600" title="Gỡ">×</button>
+                              </span>
+                            )
+                          })}
+                          {tkOfMon(g.mon).length === 0 && <span className="text-[12px] text-amber-600">chưa gán — MT về GV lớp</span>}
+                        </div>
+                        <div className="w-56">
+                          <SearchSelect value={null} onChange={(id) => id && themTruongKhoi(id, g.mon)} placeholder="+ thêm trưởng khối…"
+                            options={ds.filter((n) => !tkOfMon(g.mon).some((r) => r.nhan_su_id === n.id)).map((n) => ({ id: n.id, label: n.ho_ten }))} />
+                        </div>
+                      </div>
+                    </td></tr>
                     {g.lops.map((l) => {
                       const gvChinh = slotOf(l.id, 'gv_chinh'), gvPhu = slotOf(l.id, 'gv_phu')
                       return (

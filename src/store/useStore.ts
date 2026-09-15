@@ -24,7 +24,7 @@ export type EtDraft = {
 // PICK: chọn 1 BẢN (đề chuẩn / lứa / biến thể riêng / ý thật) + 1 tập TICK (ý), thêm vào phiếu. Bấm lặp lại
 // để có N bài từ CÙNG 1 chuỗi (khác bản mỗi lần) — KHÔNG còn khái niệm "node lẻ multipick" tách riêng.
 export type PickItem = {
-  key: string; phan: 'lop' | 'nha'
+  key: string; phan: 'lop' | 'nha' | 'et' | 'mt'   // 'et'/'mt' = pick cho builder ET/MT Hình (Thùy 21/08) — không phải giáo trình
   nodeIds: string[]   // tập TICK (ý). kind bienthe/y luôn đúng 1 phần tử (không tiền đề để nở).
 } & (
   | { kind: 'ghep'; luaId: string | null }   // đề chuẩn (luaId=null) hoặc lứa — mọi cỡ chuỗi kể cả 1 node
@@ -62,6 +62,8 @@ interface UiState {
   loadQuyen: () => Promise<void>
   loadMe: () => Promise<void>
   clearQuyen: () => void
+  // Phím tắt công thức CÁ NHÂN (nhan_su.phim_tat_cong_thuc) — cập nhật store ngay sau khi lưu DB để mọi ô soạn dùng
+  setPhimTatCongThuc: (m: Record<string, string>) => void
   // ── Bộ lọc màn Học phí — giữ NGUYÊN khi rời/quay lại màn (component unmount không mất chọn) ──
   hocPhiTab: string
   hocPhiKy: string
@@ -75,6 +77,13 @@ interface UiState {
   // ── Nháp soạn tài liệu Hình theo khối — giữ khi rời/quay lại màn (như etDraft) ──
   soanHinh: Record<string, SoanHinhDraft>
   setSoanHinh: (khoi: string, updater: (cur: SoanHinhDraft) => SoanHinhDraft) => void
+  // ⭐ 08-21 (Thùy: "mở lại buổi 2 thì phải lưu lại những gì đã setup, sao lại bắt chọn lại từ đầu") —
+  // bộ lọc "mô hình chính/vệ tinh" của `BuoiPickEditor` (chỉ để TÌM node dễ hơn, KHÔNG phải nội dung
+  // buổi — nội dung thật `picks`/`cheDo`/`soDong` đã lưu DB từ trước) trước là state cục bộ trong
+  // component, rời màn Giáo trình là mất, phải tick lại từ đầu. Giữ khi rời/quay lại màn (như soanHinh
+  // ở trên) — theo KHOÁ do màn gọi tự đặt (vd buổi.id). Không persist qua F5 (đúng tinh thần đã có).
+  buoiMoHinhLoc: Record<string, { mainIds: string[]; satIds: string[] }>
+  setBuoiMoHinhLoc: (key: string, updater: (cur: { mainIds: string[]; satIds: string[] }) => { mainIds: string[]; satIds: string[] }) => void
   // ── Bộ lọc màn Chất lượng vận hành — giữ NGUYÊN khi rời/quay lại màn ──────
   dbVanHanhKy: string          // 'YYYY-MM', rỗng = tháng hiện tại
   dbVanHanhView: 'theonguoi' | 'theomuc' | 'chitiet' | 'duyet'   // 4 TẦNG TRÊN (Thùy chốt 07-05 lần 4: +Duyệt chất lượng)
@@ -116,6 +125,7 @@ export const useStore = create<UiState>()(persist((set, get) => ({
   loadQuyen: async () => { try { set({ quyen: await myQuyen() }) } catch { set({ quyen: { laAdmin: false, chucNang: [], chiXem: [] } }) } },
   loadMe: async () => { try { set({ me: await getMyProfile() }) } catch { set({ me: null }) } },
   clearQuyen: () => set({ quyen: null, me: null }),
+  setPhimTatCongThuc: (m) => set((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, phim_tat_cong_thuc: m } } } : {})),
   hocPhiTab: 'theomon',
   hocPhiKy: '',
   hocPhiPhId: null,
@@ -126,6 +136,8 @@ export const useStore = create<UiState>()(persist((set, get) => ({
   setEtDraft: (d) => set({ etDraft: d }),
   soanHinh: {},
   setSoanHinh: (khoi, updater) => set((s) => ({ soanHinh: { ...s.soanHinh, [khoi]: updater(s.soanHinh[khoi] ?? SOAN_HINH_DEFAULT) } })),
+  buoiMoHinhLoc: {},
+  setBuoiMoHinhLoc: (key, updater) => set((s) => ({ buoiMoHinhLoc: { ...s.buoiMoHinhLoc, [key]: updater(s.buoiMoHinhLoc[key] ?? { mainIds: [], satIds: [] }) } })),
   dbVanHanhKy: '',
   dbVanHanhView: 'theonguoi',
   dbVanHanhMuc: 'tatca',
@@ -208,6 +220,14 @@ export const LAMTAILIEU_CHILDREN: NavLeaf[] = [
   { id: 'lamtailieu:mt', ten: 'MT' },
   { id: 'lamtailieu:bo_tro', ten: 'Tài liệu bổ trợ' },
 ]
+// Bổ trợ yếu (Thùy 08-18: "1 lá riêng, tách khỏi Dashboard học tập, 4 tab con") — PLAN-botro-yeu.md.
+// Xếp lịch (bước 6) KHÔNG ở đây — đó là việc OPS, sống ở nhóm Vận hành cạnh Bù/Đuổi (leaf `xep_by`).
+export const BOTROYEU_CHILDREN: NavLeaf[] = [
+  { id: 'botroyeu:duyet', ten: 'Duyệt bổ trợ' },
+  { id: 'botroyeu:noidung', ten: 'Nội dung bổ trợ yếu' },
+  { id: 'botroyeu:trangthai', ten: 'Trạng thái ca bổ trợ' },
+  { id: 'botroyeu:danhgia', ten: 'Đánh giá ca bổ trợ' },
+]
 // Gộp NHIỀU leaf con thành 1 leaf CHA (folder tầng 2, ẨN mặc định — bấm mới xoè tầng 3, giống
 // "Làm tài liệu"). Cha chỉ xuất hiện khi CÒN ≥1 con sau lọc quyền (mỗi con vẫn 1 permission-id
 // RIÊNG ở Phân quyền — khác `lamtailieu` dùng chung 1 quyền cho cả cha lẫn con); vị trí cha = vị
@@ -225,7 +245,9 @@ export const adminNavFromQuyen = (q: MyQuyen | null): NavGroup[] => {
   const nhoms = [...new Set(leaves.map((l) => l.nhom))]
   return nhoms.map((n) => {
     let navLeaves: NavLeaf[] = leaves.filter((l) => l.nhom === n).map((l): NavLeaf =>
-      l.id === 'lamtailieu' ? { id: l.id, ten: l.ten, children: LAMTAILIEU_CHILDREN } : { id: l.id, ten: l.ten })
+      l.id === 'lamtailieu' ? { id: l.id, ten: l.ten, children: LAMTAILIEU_CHILDREN }
+      : l.id === 'botroyeu' ? { id: l.id, ten: l.ten, children: BOTROYEU_CHILDREN }
+      : { id: l.id, ten: l.ten })
     if (n === 'Vận hành') {
       // Việc "làm-xong-là-mất" trong ngày (điểm danh/report/tan/prep) → gọn vào 1 folder, đỡ rối cây.
       navLeaves = collapseGroup(navLeaves, 'vanhanh_lophoc', 'Vận hành lớp học', ['buoihoc', 'ops_report', 'prep', 'phancong_ops'])
@@ -299,3 +321,8 @@ export const staffNavForUser = (u: User): NavGroup[] => {
   if (nodes.length) groups.push({ nhom: 'Tra cứu & sửa', leaves: nodes })
   return groups
 }
+
+// Phím tắt công thức của NGƯỜI ĐANG ĐĂNG NHẬP (từ nhan_su.phim_tat_cong_thuc, load cùng `me`). Không persist
+// localStorage → 2 người dùng chung máy mỗi người thấy đúng bộ phím của mình. EMPTY cố định để selector ổn định.
+const PHIM_TAT_EMPTY: Record<string, string> = {}
+export const usePhimTat = () => useStore((s) => s.me?.nhanSu.phim_tat_cong_thuc ?? PHIM_TAT_EMPTY)

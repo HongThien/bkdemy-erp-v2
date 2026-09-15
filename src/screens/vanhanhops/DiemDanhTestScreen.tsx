@@ -10,10 +10,9 @@ import { useEffect, useState } from 'react'
 import {
   listCaTestDangChay, listCaTestHoanThanh, taoCaTest, uploadCaTestBai, ganBaiCaTest, hoanThanhCaTest,
   listUngVienL5, getUngVien, gioKetThucCaTest, THOI_LUONG_OPTIONS, MON_OPTIONS,
-  listNguoiChoCham, listNguoiChoTraBai, ganNguoiChamCaTest, ganNguoiTraBaiCaTest,
-  type CaTest, type TaoCaTestInput, type MonTS, type NguoiChoAssign,
+  type CaTest, type TaoCaTestInput, type MonTS,
 } from '../../lib/tuyensinh'
-import { ganDeCaTest, listDeTestDauVao, type DeTestRow } from '../../lib/detest'
+import { ganDeCaTest, ganDeDangDung, listDeTestDauVao, type DeTestRow } from '../../lib/detest'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import { homNayVN, mucDeadline, nhanConLai, type DeadlineMuc } from '../../lib/tuan'
 import SearchSelect from '../../components/SearchSelect'
@@ -50,7 +49,7 @@ export default function DiemDanhTestScreen() {
           <h2 className="text-[20px] font-semibold text-slate-800">Điểm danh test</h2>
           <p className="text-[12px] text-slate-400">HS tới test đầu vào (đặt lịch trước hoặc walk-in) — đếm ngược tới giờ kết thúc dự kiến.</p>
         </div>
-        <button onClick={() => setForm(true)} className="ml-auto rounded-xl bg-indigo-600 px-4 py-2 text-[14px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Tạo test đầu vào</button>
+        <button onClick={() => setForm(true)} className="ml-auto min-h-[44px] rounded-xl bg-indigo-600 px-4 py-2 text-[14px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Tạo test đầu vào</button>
       </div>
 
       {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : dangChay.length === 0 ? (
@@ -84,24 +83,10 @@ export default function DiemDanhTestScreen() {
 function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deList: DeTestRow[]; onChanged: () => void }) {
   const [baiUrl, setBaiUrl] = useState<string | null>(c.baiUrl)
   const [taiLieuId, setTaiLieuId] = useState(c.taiLieuId)
-  const [chonMT, setChonMT] = useState('')
-  const [nguoiCham, setNguoiCham] = useState(c.nguoiChamId ?? '')
-  const [nguoiTraBai, setNguoiTraBai] = useState(c.nguoiTraBaiId ?? '')
-  const [choCham, setChoCham] = useState<NguoiChoAssign[]>([])
-  const [choTraBai, setChoTraBai] = useState<NguoiChoAssign[]>([])
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
   const deadline = gioKetThucCaTest(c)
   const muc = mucDeadline(deadline, now) ?? 'con_nhieu'
-  useEffect(() => { listNguoiChoCham(c.mon).then(setChoCham).catch(() => {}); listNguoiChoTraBai(c.mon).then(setChoTraBai).catch(() => {}) }, [c.mon])
-  async function doiNguoiCham(id: string) {
-    setNguoiCham(id); setBusy(true); setErr(null)
-    try { await ganNguoiChamCaTest(c.id, id || null) } catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
-  }
-  async function doiNguoiTraBai(id: string) {
-    setNguoiTraBai(id); setBusy(true); setErr(null)
-    try { await ganNguoiTraBaiCaTest(c.id, id || null) } catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
-  }
   // Đề = đề test đầu vào ĐÃ SINH (tab "Đề test") khớp môn + khối ứng viên. listDeTestDauVao() sort desc →
   // đề ĐANG DÙNG (laHienTai) đứng đầu; lịch sử phía sau (Ops vẫn chọn được bản cũ nếu cần). Chưa có đề
   // nào cho khối×môn → báo nhờ học thuật tạo (không fallback MT thô — đề đầu vào phải do học thuật curate).
@@ -115,13 +100,25 @@ function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deL
     try { const url = await uploadCaTestBai(f); await ganBaiCaTest(c.id, url); setBaiUrl(url) }
     catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
   }
-  // Đổi đề bất kỳ lúc nào tại phòng (HS kêu khó quá) — dropdown luôn mở, KHÔNG khoá sau khi đã gán 1 lần.
-  async function ganDe() {
-    if (!chonMT) return
+  // ⭐ CEO ① 09/09: chọn đề trong dropdown = LƯU NGAY (bỏ nút "Gán đề" — UI 2 bước làm ca của Tùng
+  // 07/09 hoàn tất mà đề chưa từng tới DB). Đổi đề bất kỳ lúc nào tại phòng (HS kêu khó) — dropdown luôn mở.
+  async function ganDe(id: string) {
+    if (!id || id === taiLieuId) return
     setBusy(true); setErr(null)
-    try { await ganDeCaTest(c.id, chonMT); setTaiLieuId(chonMT); setChonMT('') }
+    try { await ganDeCaTest(c.id, id); setTaiLieuId(id) }
     catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
   }
+  // Ca chưa có đề mà (khối × môn) đã có đề ĐANG DÙNG → tự gán lúc card hiện (mặc định, không bắt Ops bấm).
+  useEffect(() => {
+    if (taiLieuId || chuaCoDe) return
+    let alive = true
+    setBusy(true)
+    ganDeDangDung(c.id, c.ungVien.khoi, c.mon)
+      .then((de) => { if (alive && de) setTaiLieuId(de.id) })
+      .catch((ex) => { if (alive) setErr(ex.message ?? String(ex)) })
+      .finally(() => { if (alive) setBusy(false) })
+    return () => { alive = false }
+  }, [c.id]) // eslint-disable-line
   async function hoanTat() {
     setBusy(true); setErr(null)
     try { await hoanThanhCaTest(c.id, baiUrl); onChanged() }
@@ -146,33 +143,28 @@ function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deL
           <span className="text-[11px] text-amber-600" title='Học thuật chưa tạo đề test đầu vào cho khối×môn này ở tab "Đề test".'>⚠ Chưa có đề test đầu vào cho khối này</span>
         ) : (
           <>
-            <select className="rounded-md border border-slate-200 px-2 py-1 text-[12px]" value={chonMT} onChange={(e) => setChonMT(e.target.value)}>
-              <option value="">{deDaGan ? 'Đổi đề khác…' : 'Chọn đề…'}</option>
+            <select className="min-h-[36px] rounded-md border border-slate-200 px-2 py-1.5 text-[12px]" value={taiLieuId ?? ''} onChange={(e) => ganDe(e.target.value)} disabled={busy} title="Chọn là lưu ngay">
+              <option value="" disabled>{busy ? 'Đang gán đề…' : 'Chọn đề…'}</option>
               {cands.map((d) => <option key={d.id} value={d.id}>{d.ten}{d.laHienTai ? ' · đang dùng' : ' · lịch sử'}</option>)}
             </select>
-            {chonMT && <button onClick={ganDe} disabled={busy} className="rounded-md bg-slate-700 px-2 py-1 text-[11px] font-medium text-white hover:bg-slate-600 disabled:opacity-40">{deDaGan ? 'Đổi đề' : 'Gán đề'}</button>}
           </>
         )}
       </div>
 
-      <div className="mb-2 grid grid-cols-2 gap-1.5">
-        <select className="rounded-md border border-slate-200 px-2 py-1 text-[12px]" value={nguoiCham} onChange={(e) => doiNguoiCham(e.target.value)} disabled={busy} title="Người dự kiến chấm — hàng đợi Chấm vẫn chung, ai mở cũng làm được">
-          <option value="">👤 Người chấm…</option>
-          <AssignOptions list={choCham} />
-        </select>
-        <select className="rounded-md border border-slate-200 px-2 py-1 text-[12px]" value={nguoiTraBai} onChange={(e) => doiNguoiTraBai(e.target.value)} disabled={busy} title="Người dự kiến trả bài — hàng đợi Trả bài vẫn chung, ai mở cũng làm được">
-          <option value="">👤 Người trả bài…</option>
-          <AssignOptions list={choTraBai} />
-        </select>
+      {/* ⭐ 13/09 (CEO): Ops KHÔNG chọn người nữa — trigger DB gán từ tab "Phân công" (khối × môn) lúc tạo ca. Chỉ hiện để biết. */}
+      <div className="mb-2 flex flex-wrap gap-x-3 gap-y-0.5 text-[12px] text-slate-500" title='Gán tự động theo tab "Phân công" (khối × môn) lúc tạo ca'>
+        <span>✍️ Chấm: <b className={c.nguoiChamTen ? 'text-slate-700' : 'text-amber-600'}>{c.nguoiChamTen ?? 'chưa phân công khối này'}</b></span>
+        <span>📨 Trả bài: <b className={c.nguoiTraBaiTen ? 'text-slate-700' : 'text-amber-600'}>{c.nguoiTraBaiTen ?? 'chưa phân công khối này'}</b></span>
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
-        <label className="cursor-pointer rounded-md border border-slate-200 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-300">
+        <label className="flex min-h-[36px] cursor-pointer items-center rounded-md border border-slate-200 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-300">
           {baiUrl ? '📄 Đổi bài' : '📎 Upload bài'}
           <input type="file" accept="application/pdf,image/*" className="hidden" onChange={chonFile} disabled={busy} />
         </label>
         {baiUrl && <a href={baiUrl} target="_blank" rel="noreferrer" className="text-[12px] text-indigo-500 hover:underline">Xem bài</a>}
-        <button onClick={hoanTat} disabled={busy || !baiUrl} title={!baiUrl ? 'Cần upload bài mới hoàn tất được' : ''} className="ml-auto rounded-md bg-emerald-600 px-3 py-1.5 text-[12px] font-semibold text-white hover:bg-emerald-500 disabled:opacity-40">✓ Hoàn tất</button>
+        {/* ⭐ 09/09: gate Hoàn tất đòi ĐỦ bằng chứng khâu Chấm cần — có bài + có đề (thiếu đề = ca rơi khỏi hàng đợi chấm im lặng). */}
+        <button onClick={hoanTat} disabled={busy || !baiUrl || !taiLieuId} title={!baiUrl ? 'Cần upload bài mới hoàn tất được' : !taiLieuId ? 'Cần gán đề trước (khâu chấm cần câu của đề)' : ''} className="ml-auto min-h-[36px] rounded-md bg-emerald-600 px-3 py-1.5 text-[12px] font-semibold text-white hover:bg-emerald-500 disabled:opacity-40">✓ Hoàn tất</button>
       </div>
       {err && <p className="mt-1.5 text-[12px] text-rose-600">{err}</p>}
     </div>
@@ -184,20 +176,13 @@ function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: () =
   const [ungVienId, setUngVienId] = useState<string | null>(null)
   const [f, setF] = useState({
     hoTenHs: '', mon: MON_OPTIONS[0] as MonTS, khoi: DEFAULT_KHOI, ngaySinh: '', hoTenPh: '', sdtPh: '', truongHoc: '',
-    ngay: homNayVN(), gioBatDau: '', thoiLuongPhut: 60 as number, nguoiChamId: '', nguoiTraBaiId: '',
+    ngay: homNayVN(), gioBatDau: '', thoiLuongPhut: 60 as number,
   })
   const set = (k: keyof typeof f, v: any) => setF((s) => ({ ...s, [k]: v }))
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
-  const [choCham, setChoCham] = useState<NguoiChoAssign[]>([])
-  const [choTraBai, setChoTraBai] = useState<NguoiChoAssign[]>([])
 
   useEffect(() => { listUngVienL5().then(setUvL5).catch(() => {}) }, [])
-  // Danh sách đổi theo môn — reset lựa chọn nếu người đã chọn không còn thuộc môn mới.
-  useEffect(() => {
-    listNguoiChoCham(f.mon).then((r) => { setChoCham(r); if (f.nguoiChamId && !r.some((n) => n.nhanSuId === f.nguoiChamId)) set('nguoiChamId', '') }).catch(() => {})
-    listNguoiChoTraBai(f.mon).then((r) => { setChoTraBai(r); if (f.nguoiTraBaiId && !r.some((n) => n.nhanSuId === f.nguoiTraBaiId)) set('nguoiTraBaiId', '') }).catch(() => {})
-  }, [f.mon]) // eslint-disable-line
   const uvOpts = uvL5.map((u) => ({ id: u.id, label: u.ho_ten_hs, sub: `${u.ma_uv ?? ''} ${u.mon}${u.khoi ? ' · Lớp ' + u.khoi : ''}`.trim() }))
 
   async function pick(id: string | null) {
@@ -214,11 +199,14 @@ function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: () =
     if (!ungVienId && !f.hoTenHs.trim()) { setErr('Chọn ứng viên L5 hoặc nhập tên học sinh mới'); return }
     setBusy(true); setErr(null)
     try {
-      const chung = { ngay: f.ngay, gioBatDau: f.gioBatDau, thoiLuongPhut: f.thoiLuongPhut, nguoiChamId: f.nguoiChamId || null, nguoiTraBaiId: f.nguoiTraBaiId || null }
+      const chung = { ngay: f.ngay, gioBatDau: f.gioBatDau, thoiLuongPhut: f.thoiLuongPhut }
       const input: TaoCaTestInput = ungVienId
         ? { ungVienId, ...chung }
         : { ungVienMoi: { hoTenHs: f.hoTenHs, mon: f.mon, khoi: f.khoi, ngaySinh: f.ngaySinh || null, hoTenPh: f.hoTenPh, sdtPh: f.sdtPh, truongHoc: f.truongHoc }, ...chung }
-      await taoCaTest(input)
+      const ca = await taoCaTest(input)
+      // CEO ① 09/09: đề mặc định = đề đang dùng của (khối × môn), gán NGAY lúc tạo ca. Chưa có đề thì
+      // card sẽ báo ⚠ (không chặn tạo ca — HS đang đứng ở quầy).
+      try { await ganDeDangDung(ca.id, ca.ungVien.khoi, ca.mon) } catch { /* card báo sau */ }
       onDone()
     } catch (e: any) { setErr(e.message ?? String(e)); setBusy(false) }
   }
@@ -234,8 +222,8 @@ function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: () =
           </div>
 
           {!ungVienId ? (
-            <div className="grid grid-cols-2 gap-3 rounded-xl bg-slate-50 p-3">
-              <div className="col-span-2"><Lbl>Tên học sinh *</Lbl><input className={inputCls} value={f.hoTenHs} onChange={(e) => set('hoTenHs', e.target.value)} autoFocus /></div>
+            <div className="grid grid-cols-1 gap-3 rounded-xl bg-slate-50 p-3 sm:grid-cols-2">
+              <div className="sm:col-span-2"><Lbl>Tên học sinh *</Lbl><input className={inputCls} value={f.hoTenHs} onChange={(e) => set('hoTenHs', e.target.value)} autoFocus /></div>
               <div><Lbl>Môn</Lbl><select className={inputCls} value={f.mon} onChange={(e) => set('mon', e.target.value)}>{MON_OPTIONS.map((m) => <option key={m} value={m}>{m}</option>)}</select></div>
               <div><Lbl>Lớp</Lbl><select className={inputCls} value={f.khoi} onChange={(e) => set('khoi', e.target.value)}>{KHOI_OPTIONS.map((k) => <option key={k} value={k}>{k}</option>)}</select></div>
               <div><Lbl>Ngày sinh</Lbl><input type="date" max={homNayVN()} className={inputCls} value={f.ngaySinh} onChange={(e) => set('ngaySinh', e.target.value)} /></div>
@@ -268,28 +256,12 @@ function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: () =
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <Lbl>Người chấm (dự kiến)</Lbl>
-              <select className={inputCls} value={f.nguoiChamId} onChange={(e) => set('nguoiChamId', e.target.value)}>
-                <option value="">{choCham.length ? '— Chưa chọn —' : `— Chưa có ai thuộc môn ${f.mon} —`}</option>
-                <AssignOptions list={choCham} />
-              </select>
-            </div>
-            <div>
-              <Lbl>Người trả bài (dự kiến)</Lbl>
-              <select className={inputCls} value={f.nguoiTraBaiId} onChange={(e) => set('nguoiTraBaiId', e.target.value)}>
-                <option value="">{choTraBai.length ? '— Chưa chọn —' : `— Chưa có ai thuộc môn ${f.mon} —`}</option>
-                <AssignOptions list={choTraBai} />
-              </select>
-            </div>
-          </div>
-          <p className="text-[11px] text-slate-400">Chỉ để biết trước ai dự kiến làm — hàng đợi Chấm/Trả bài vẫn chung, sửa được sau lúc nào cũng được.</p>
+          <p className="text-[11px] text-slate-400">Người chấm / trả bài gán tự động theo tab "Phân công" (khối × môn) khi tạo ca.</p>
 
           {err && <p className="text-[12px] text-rose-600">{err}</p>}
           <div className="flex justify-end gap-2 pt-1">
-            <button onClick={onClose} className="rounded-lg border border-slate-200 px-4 py-2 text-[14px] text-slate-600 hover:bg-slate-50">Huỷ</button>
-            <button onClick={save} disabled={busy} className="rounded-lg bg-indigo-600 px-4 py-2 text-[14px] font-medium text-white hover:bg-indigo-500 disabled:opacity-50">{busy ? 'Đang tạo…' : 'Hoàn thành'}</button>
+            <button onClick={onClose} className="min-h-[44px] rounded-lg border border-slate-200 px-4 py-2 text-[14px] text-slate-600 hover:bg-slate-50">Huỷ</button>
+            <button onClick={save} disabled={busy} className="min-h-[44px] rounded-lg bg-indigo-600 px-4 py-2 text-[14px] font-medium text-white hover:bg-indigo-500 disabled:opacity-50">{busy ? 'Đang tạo…' : 'Hoàn thành'}</button>
           </div>
         </div>
       </div>
@@ -297,15 +269,3 @@ function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: () =
   )
 }
 
-// Nhóm "Gần đây" (từng gán gần nhất cho môn này) lên đầu, còn lại xếp dưới — không khoá ai.
-function AssignOptions({ list }: { list: NguoiChoAssign[] }) {
-  const ganDay = list.filter((n) => n.ganDay)
-  const khac = list.filter((n) => !n.ganDay)
-  if (!ganDay.length) return <>{khac.map((n) => <option key={n.nhanSuId} value={n.nhanSuId}>{n.hoTen}</option>)}</>
-  return (
-    <>
-      <optgroup label="Gần đây">{ganDay.map((n) => <option key={n.nhanSuId} value={n.nhanSuId}>{n.hoTen}</option>)}</optgroup>
-      {khac.length > 0 && <optgroup label="Khác">{khac.map((n) => <option key={n.nhanSuId} value={n.nhanSuId}>{n.hoTen}</option>)}</optgroup>}
-    </>
-  )
-}

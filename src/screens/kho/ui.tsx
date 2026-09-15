@@ -1,6 +1,8 @@
 // Primitives UI gu SaaS — dùng chung cho mọi nhánh bản đồ (Đại / Hình).
 import type { ReactNode } from 'react'
 import katex from 'katex'
+import { katexMacros } from '../../lib/math/macros'
+import { fixAccentScript, widenSingleHat } from '../../lib/math/latex-fix'
 
 // Render text có LaTeX ($…$ inline, $$…$$ block) thành công thức đẹp.
 const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -17,13 +19,68 @@ const UNI: [RegExp, string][] = [
 ]
 // Đổi ký hiệu toán TRẦN (ngoài $…$) → Unicode. Chạy TRƯỚC bước cắt dòng để "\neq" trần không bị nuốt "\n".
 const uni = (t: string) => { let s = t; for (const [re, u] of UNI) s = s.replace(re, u); return s }
-const tex = (s: string, display: boolean) => {
+// export: tool soạn thảo (src/soan/doc.ts) render từng công thức nguyên khối bằng ĐÚNG hàm này → soạn thấy sao, in ra vậy.
+export const tex = (s: string, display: boolean) => {
   // \frac hiển thị bé (scriptstyle khi inline) → đổi sang \dfrac cho phân số to, đẹp.
-  const fixed = s.replace(/\\frac(?![a-zA-Z])/g, '\\dfrac')
-  try { return katex.renderToString(fixed, { displayMode: display, throwOnError: false, output: 'html' }) }
+  // \vec{AB} (vector 2 điểm) → mũi tên KHÔNG giãn hết bề rộng, chỉ phủ đúng 1 ký hiệu (đúng chuẩn LaTeX
+  // của \vec) → nhìn như chỉ phủ mỗi chữ cuối. Vector 2 điểm (AB, PN, PM…) phải dùng \overrightarrow mới
+  // giãn đúng; \vec{u}/\vec{n} (1 ký hiệu) vẫn đúng, GIỮ NGUYÊN. Tự sửa theo độ dài nội dung trong ngoặc.
+  // fixAccentScript: \widehat{A_2} → \widehat{A}_2 (mũ trên chữ, chỉ số ngoài — cùng luật với lúc lưu, xem latex-fix.ts).
+  // widenSingleHat: \widehat{A} → \widehat{{}A{}} chỉ lúc render — mũ cỡ 2 phủ đúng chữ thay vì mũ tí hon lệch phải.
+  const fixed = widenSingleHat(fixAccentScript(s))
+    .replace(/\\frac(?![a-zA-Z])/g, '\\dfrac')
+    .replace(/\\vec\s*\{([A-Za-z][A-Za-z0-9']*)\}/g, (m, arg: string) => (arg.length >= 2 ? `\\overrightarrow{${arg}}` : m))
+  // macros: CÙNG 1 file với ô nhập MathLive (lib/math/macros) → soạn thấy sao, in / test online ra vậy.
+  // Bọc thêm span mang data-latex = nguồn LaTeX: để COPY từ vùng đã render trả về `$…$` (xem installTexCopy) —
+  // output:'html' không có MathML annotation nên copy-tex của KaTeX không dùng được, tự gắn nguồn vào DOM.
+  try { return `<span class="tex-src" data-latex="${attr(s)}"${display ? ' data-display="1"' : ''}>${katex.renderToString(fixed, { displayMode: display, throwOnError: false, output: 'html', macros: katexMacros() })}</span>` }
   catch { return esc(s) }
 }
+const attr = (t: string) => t.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
+
+// COPY từ vùng đã render KaTeX → clipboard nhận CHUỖI KHO (`$…$` / `$$…$$`) thay vì chữ vụn. KaTeX dựng công thức
+// bằng bảng (vlist-t = inline-table, vlist-r = table-row) nên Chrome copy text/plain sẽ chèn xuống dòng/tab giữa các
+// mảnh (mũ, mũ số, phân số…) → dán vào tool soạn thành "mỗi ký hiệu 1 dòng riêng" (Thùy 07/09 tối — fix chiều chỉ trim
+// \n đầu/cuối nên vẫn lỗi vì \n nằm GIỮA). Cách làm = copy-tex của KaTeX nhưng đọc data-latex do tex() gắn.
+// Chỉ can thiệp khi vùng bôi đen có công thức; bôi đen 1 PHẦN công thức vẫn ra cả công thức (clone giữ attribute).
+// Cài 1 lần toàn tài liệu; vùng nào tự lo copy (RichMath) thì preventDefault trước → đây bỏ qua.
+let texCopyOn = false
+export function installTexCopy() {
+  if (texCopyOn || typeof document === 'undefined') return
+  texCopyOn = true
+  document.addEventListener('copy', (e) => {
+    if (e.defaultPrevented || !e.clipboardData) return
+    const sel = window.getSelection(); if (!sel || sel.rangeCount === 0 || sel.isCollapsed) return
+    const rg = sel.getRangeAt(0)
+    const anc = rg.commonAncestorContainer
+    const ancEl = anc instanceof Element ? anc : anc.parentElement
+    if (!ancEl || (!ancEl.closest('[data-latex]') && !ancEl.querySelector('[data-latex]'))) return
+    const host = document.createElement('div')
+    host.style.cssText = 'position:fixed;left:-9999px;top:0;white-space:pre-wrap'
+    host.appendChild(rg.cloneContents())
+    const fs = host.querySelectorAll<HTMLElement>('[data-latex]')
+    if (!fs.length) return
+    fs.forEach((el) => { const l = el.dataset.latex ?? ''; el.replaceWith(document.createTextNode(el.dataset.display === '1' ? `$$${l}$$` : `$${l}$`)) })
+    document.body.appendChild(host)                  // innerText cần phần tử ĐANG render (br / div → xuống dòng)
+    const text = host.innerText.replace(/​/g, '')   // ZW đệm sau công thức của tool soạn (doc.ts) — không đem theo
+    host.remove()
+    e.clipboardData.setData('text/plain', text)
+    e.preventDefault()
+  })
+}
+installTexCopy()
 const MATH_RE = /\$\$([\s\S]+?)\$\$|\$([^$]+?)\$/g
+// Liệt kê các công thức $…$ / $$…$$ trong raw (đúng regex + cân $ như lúc render) — MathTextarea dùng để
+// map "click vào công thức thứ i trong preview" → đoạn [start,end) trong text gốc rồi mở lại để sửa.
+export type MathSpan = { start: number; end: number; latex: string; display: boolean }
+export function listMath(rawIn: string): MathSpan[] {
+  const raw = balanceDollars(rawIn)
+  const out: MathSpan[] = []
+  let m: RegExpExecArray | null
+  MATH_RE.lastIndex = 0
+  while ((m = MATH_RE.exec(raw))) out.push({ start: m.index, end: Math.min(MATH_RE.lastIndex, rawIn.length), latex: (m[1] ?? m[2]) as string, display: m[1] != null })
+  return out
+}
 // Tách raw thành các DÒNG html. Xuống dòng (\n thật, "\\n" literal, CRLF) CHỈ tính ở phần TEXT ngoài $…$.
 // → KHÔNG bao giờ đụng lệnh LaTeX ("\neq", "\nabla"…) vì chúng nằm TRONG $…$. Hết mơ hồ "\neq" vs "\nVì".
 // Render 1 phần TEXT (ngoài $…$): lệnh CÓ NGOẶC "\dfrac{6}{5}" (AI quên bọc $) → katex; phần còn lại esc.
@@ -67,9 +124,27 @@ function balanceDollars(s: string): string {
   for (let i = 0; i < s.length; i++) if (s[i] === '$' && s[i - 1] !== '\\') n++
   return n % 2 ? s + '$' : s
 }
-function buildLines(rawIn: string): string[] {
-  const raw = balanceDollars(rawIn)
+// `editable`: bọc mỗi công thức $…$ trong <span class="mt-f" data-fi="i"> (i = thứ tự trong raw) để preview
+// click-để-sửa (MathTextarea). Mặc định TẮT → trang in / test online / mọi chỗ khác HTML y như cũ.
+// ⭐ 13/09 (Thùy: tab Câu chờ duyệt K12 Toán trắng màn) — 1 câu HGT có lua_chon lưu [{key,text}] thay vì
+// mảng chuỗi ⇒ MathText nhận OBJECT, `.replace` nổ, React unmount CẢ màn. MathText là lá hiển thị dùng
+// khắp app: dữ liệu bẩn 1 ô không được kéo sập cả trang ⇒ ép về chuỗi (object có `text` thì lấy text,
+// còn lại JSON) rồi render như thường. Nguồn dữ liệu vẫn phải sửa (đã sửa câu đó + insertCauBatch chặn).
+function epChuoi(v: unknown): string {
+  if (typeof v === 'string') return v
+  if (v == null) return ''
+  if (typeof v === 'object') { const t = (v as { text?: unknown }).text; return typeof t === 'string' ? t : JSON.stringify(v) }
+  return String(v)
+}
+function buildLines(rawIn0: unknown, editable = false): string[] {
+  const rawIn = epChuoi(rawIn0)
+  // ⭐ 11/09 (Thùy: "sao a) cứ xuống dòng, cách 1 dòng với b" — BT.08.257 phat_bieu="...cân.\n" ở DB dơ)
+  // — TRIM outer whitespace TRƯỚC khi split: trailing \n biến "cân." thành 2 lines (["cân.", ""]) →
+  // MathText đổi từ <span> inline sang <div> block + mline &nbsp; đẻ thêm dòng trống. Trim → 1 line, span
+  // inline, nhãn "a) " ở TRƯỚC nằm cùng dòng. Áp cho MỌI MathText (universal fix, không phải per-caller).
+  const raw = balanceDollars((rawIn ?? '').replace(/^[\s﻿\xA0]+|[\s﻿\xA0]+$/g, ''))
   const lines: string[] = ['']
+  let fi = 0
   const pushText = (txt: string) => {
     const t = uni(txt.replace(/<br\s*\/?>/gi, '\n'))        // <br> → xuống dòng; ký hiệu trần → Unicode
     const parts = t.replace(/\\n|\r\n?|\n/g, '\n').split('\n') // rồi cắt mọi kiểu xuống dòng
@@ -81,15 +156,16 @@ function buildLines(rawIn: string): string[] {
   MATH_RE.lastIndex = 0
   while ((m = MATH_RE.exec(raw))) {
     if (m.index > last) pushText(raw.slice(last, m.index))
-    lines[lines.length - 1] += m[1] != null ? tex(m[1], true) : tex(m[2]!, false) // math luôn nằm TRONG dòng hiện tại
+    const html = m[1] != null ? tex(m[1], true) : tex(m[2]!, false)
+    lines[lines.length - 1] += editable ? `<span class="mt-f" data-fi="${fi++}">${html}</span>` : html // math luôn nằm TRONG dòng hiện tại
     last = MATH_RE.lastIndex
   }
   if (last < raw.length) pushText(raw.slice(last))
   return lines
 }
 // `prefix` = HTML nhét vào ĐẦU dòng 1 (vd nhãn "Câu N.") → luôn cùng dòng với đề, kể cả đề nhiều dòng.
-export function MathText({ children, className, prefix }: { children: string | null | undefined; className?: string; prefix?: string }) {
-  const lines = buildLines(children ?? '')
+export function MathText({ children, className, prefix, editable }: { children: string | null | undefined; className?: string; prefix?: string; editable?: boolean }) {
+  const lines = buildLines(children ?? '', editable)
   const head = prefix ?? ''
   // 1 dòng → inline (căn baseline đẹp); nhiều dòng → block từng dòng (phân số không đè), nhãn ghép vào dòng đầu.
   if (lines.length <= 1) return <span className={`katex-text ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: head + (lines[0] || '') }} />
@@ -98,16 +174,9 @@ export function MathText({ children, className, prefix }: { children: string | n
 
 export const inp = 'w-full rounded-md border border-slate-300 px-2.5 py-1.5 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20'
 
-// Đọc ẢNH từ clipboard (nút "📋 Dán") — dùng Async Clipboard API (cần https/localhost). Không có ảnh → null.
-export async function readClipboardImageFile(): Promise<File | null> {
-  if (!navigator.clipboard?.read) throw new Error('Trình duyệt không hỗ trợ đọc clipboard')
-  const items = await navigator.clipboard.read()
-  for (const it of items) {
-    const type = it.types.find((t) => t.startsWith('image/'))
-    if (type) { const blob = await it.getType(type); return new File([blob], `clipboard.${type.split('/')[1] || 'png'}`, { type }) }
-  }
-  return null
-}
+// readClipboardImageFile ĐÃ DỜI sang src/lib/clipboard.ts (app OPS cần nó mà không cần katex của file
+// này) — re-export giữ nguyên mọi chỗ import cũ.
+export { readClipboardImageFile } from '../../lib/clipboard'
 
 // Bậc lớp = ô vuông 1 chữ, MÀU ĐẶC riêng từng bậc (S/A/B/C đều có màu, không xám).
 export function BacChip({ bac, size = 'md' }: { bac: string; size?: 'sm' | 'md' }) {
@@ -138,11 +207,20 @@ export const Code = ({ children }: { children: ReactNode }) => (
   <span className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[12px] text-slate-600">{children}</span>
 )
 
+// ⭐ 17/08 (Thùy): form nhập liệu KHÔNG được đóng khi lỡ tay click ra ngoài (mất data đang gõ) — chỉ đóng
+// qua nút ✕ tường minh. Popup XEM/CHỌN (không có ô nhập) thì giữ click-ra-ngoài như cũ, không đụng ở đây.
+// ⚠ stopPropagation ở CHÍNH backdrop này, không chỉ hộp trắng bên trong — Shell hay được mở LỒNG bên
+// trong 1 popup xem khác (vd DetailBaiToan) mà KHÔNG qua createPortal riêng; React bubble sự kiện theo
+// CÂY REACT chứ không theo cây DOM (kể cả khi có portal), nên thiếu dòng này thì click ra ngoài Shell vẫn
+// nổi bong bóng lên tới onClick={onClose} của popup cha, đóng nhầm luôn cả 2 lớp.
 export function Shell({ title, onClose, children }: { title: string; onClose: () => void; children: ReactNode }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/30 p-4 backdrop-blur-sm" onClick={onClose}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/30 p-4 backdrop-blur-sm" onClick={(e) => e.stopPropagation()}>
       <div className="max-h-[88vh] w-[680px] max-w-[94vw] overflow-y-auto rounded-2xl border border-slate-200 bg-white p-7 shadow-2xl" onClick={(e) => e.stopPropagation()}>
-        <h3 className="mb-5 text-base font-semibold text-slate-900">{title}</h3>
+        <div className="mb-5 flex items-center gap-3">
+          <h3 className="text-base font-semibold text-slate-900">{title}</h3>
+          <button onClick={onClose} className="ml-auto flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
+        </div>
         {children}
       </div>
     </div>

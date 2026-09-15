@@ -1,0 +1,144 @@
+// AppHS — shell RIÊNG cho bundle hs.bkacademy.edu.vn (Thùy 21/08: "tách thành 1 subpage của BK
+// như PH, làm nó thành webapp như phapp"). Y HỆT nhánh HS của App.tsx (session/hsId/must_change_
+// password) nhưng KHÔNG import bất cứ gì thuộc màn staff (NhanSuHome/TopBar/useStore/phanquyen…)
+// — mục tiêu: bundle build riêng (vite.config.hs.ts) không kéo theo code nội bộ, khỏi lộ ra domain
+// công khai + nhẹ hơn nhiều so với app đầy đủ. KHÔNG có nhánh `hsId === null` (staff) — build này
+// chỉ phục vụ HS, nhân sự vẫn dùng domain ERP nội bộ như cũ.
+import { useEffect, useState } from 'react'
+import type { Session } from '@supabase/supabase-js'
+import { supabase } from './lib/supabase'
+import Login from './auth/Login'
+import HocSinhApp, { HomeCap1 } from './screens/hocsinh/HocSinhApp'
+import DoiMatKhau from './screens/hocsinh/DoiMatKhau'
+import HomeHS, { type HomeCard } from './screens/hocsinh/HomeHS'
+import DanhSachHS, { type DsRow } from './screens/hocsinh/DanhSachHS'
+import MayManHS from './screens/hocsinh/MayManHS'
+import ThanhTuuHS from './screens/hocsinh/ThanhTuuHS'
+import BaiTapGiaoHS from './screens/hocsinh/BaiTapGiaoHS'
+import ThongTinHocTap, { _THEME_TTHT, BXHList } from './screens/hocsinh/ThongTinHocTap'
+import { getMyHocSinhId } from './lib/testonline'
+
+// DEMO màn chính (CHỈ bản dev, không vào build): `hs.html?demo` · `?demo=nu` (nữ) · thêm `&ca` (banner bổ trợ)
+// · `&khong` (không có bài). Để kiểm UI theo kit hs-home-v4 mà không cần mã+PIN của HS thật (Claude không
+// được nhập mật khẩu) và để CEO so cạnh reference. Dữ liệu giả, không đụng Supabase.
+function DemoHome() {
+  const q = new URLSearchParams(location.search)
+  const nu = q.get('demo') === 'nu' || q.get('nu') !== null
+  const khong = q.has('khong')
+  const noopBack = () => history.back()
+  // ?demo=thanhtuu / ?demo=baitapgiao — verify UI static (Thùy 11/09).
+  // ?demo=maymai KHÔNG hoạt động vì screen thật gọi supabase.rpc — cần HS thật, không hack ở đây.
+  if (q.get('demo') === 'thanhtuu') return <ThanhTuuHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
+  if (q.get('demo') === 'baitapgiao') return <BaiTapGiaoHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
+  if (q.get('demo') === 'maymai') return <MayManHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
+  if (q.get('demo') === 'cap1') return <HomeCap1 hoTen="Nguyễn Minh Quân" maHS="hs0012" chuaDoc={2} onHopThu={noopBack} onOpen={noopBack} />
+  if (q.get('demo') === 'thongtin') return <ThongTinHocTap hocSinhId="00000000-0000-0000-0000-000000000000" gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
+  if (q.get('demo') === 'podium') {
+    // Mock 15 HS để test bục top 3 + Dong 4-10 + dòng "Bạn" ngoài top 10.
+    const mock = [
+      { ma_hs: 'hs001', ho_ten: 'Nguyễn Văn Đức Huy', la_toi: false, nhan: '92%', phu: '12/13 dạng' },
+      { ma_hs: 'hs002', ho_ten: 'Trần Mai Anh', la_toi: false, nhan: '85%', phu: '11/13 dạng' },
+      { ma_hs: 'hs003', ho_ten: 'Lê Bảo Ngọc', la_toi: false, nhan: '77%', phu: '10/13 dạng' },
+      { ma_hs: 'hs004', ho_ten: 'Phạm Minh Quân', la_toi: false, nhan: '69%', phu: '9/13 dạng' },
+      { ma_hs: 'hs005', ho_ten: 'Hoàng Thu Hà', la_toi: false, nhan: '62%', phu: '8/13 dạng' },
+      { ma_hs: 'hs006', ho_ten: 'Đỗ Nam Khánh', la_toi: false, nhan: '54%', phu: '7/13 dạng' },
+      { ma_hs: 'hs007', ho_ten: 'Vũ Linh Chi', la_toi: false, nhan: '46%', phu: '6/13 dạng' },
+      { ma_hs: 'hs008', ho_ten: 'Bùi Duy Khoa', la_toi: false, nhan: '38%', phu: '5/13 dạng' },
+      { ma_hs: 'hs009', ho_ten: 'Ngô Bảo Châu', la_toi: false, nhan: '31%', phu: '4/13 dạng' },
+      { ma_hs: 'hs010', ho_ten: 'Dương Thanh Trúc', la_toi: false, nhan: '23%', phu: '3/13 dạng' },
+      { ma_hs: 'hs011', ho_ten: 'Trịnh Gia Bảo', la_toi: false, nhan: '15%', phu: '2/13 dạng' },
+      { ma_hs: 'hs012', ho_ten: 'Đinh Minh Tú (Bạn)', la_toi: true, nhan: '8%', phu: '1/13 dạng' },
+    ]
+    const t = _THEME_TTHT[nu ? 'nu' : 'nam']
+    return (
+      <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] overflow-hidden" style={{ background: '#eef4ff', ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
+        <img src={t.bg} alt="" className="pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover" />
+        <div className="relative px-4 pb-10 pt-[calc(10px+env(safe-area-inset-top))]">
+          <div className="mb-3 flex items-center gap-3">
+            <button onClick={noopBack} className="flex h-10 w-10 items-center justify-center rounded-[14px] bg-white text-[20px] shadow" >‹</button>
+            <h1 className="text-[22px] font-extrabold" style={{ color: '#0F1745' }}>BXH — Demo bục trao giải</h1>
+          </div>
+          <BXHList t={t} rows={mock} emptyText="rỗng" />
+        </div>
+      </div>
+    )
+  }
+  void MayManHS  // giữ import cho các bản build sau, hiện tại demo maymai vẫn cần lib DB
+  // `?demo=list` (+`&nu`, +`&rong`) — màn danh sách bài (kit hs-bai-tap-tren-lop-v1) với 4 trạng thái suy sẵn
+  if (q.get('demo') === 'list') {
+    const noop = () => {}
+    const rows: DsRow[] = q.has('rong') ? [] : [
+      { id: '1', ten: 'Bài tập Toán · 11A1', sub: 'Buổi 19/08/2026 · 87 câu', trangThai: 'moi', han: { text: 'Hạn 21/08 23:59 · còn 2 ngày 3h', muc: 'con_nhieu' }, khoa: false, onClick: noop },
+      { id: '2', ten: 'Bài tập Toán · 11A1', sub: 'Buổi 12/08/2026 · 60 câu', trangThai: 'dang_lam', han: { text: 'Hạn 13/08 23:59 · còn 5h 12p', muc: 'sat' }, khoa: false, onClick: noop },
+      { id: '3', ten: 'Bài tập Toán · 11A1', sub: 'Buổi 05/08/2026 · 42 câu', trangThai: 'qua_han', han: { text: 'Hạn 06/08 23:59 · quá hạn 3 ngày', muc: 'qua_han' }, khoa: true, onClick: noop },
+    ]
+    return <DanhSachHS tieuDe="Bài tập trên lớp" ill="purple_bookmark_book" gioiTinh={nu ? 'nu' : 'nam'} tab="chua" nChua={rows.length} nXong={2}
+      rows={rows} dangTai={false} onBack={noop} onTab={noop} empty={<div className="rounded-[26px] bg-white/90 p-8 text-center">🎉 Không có bài nào cần làm</div>} />
+  }
+  const noop = () => {}
+  // ?demo=cap2 · ?demo=cap2&luot (có 1 lượt May Mắn để quay) — kit HS cấp 2 (Thùy 11/09):
+  // ẩn Bài tập trên lớp/ET/BTVN, thêm Bài tập được giao/Thành tựu/May mắn. Dùng emoji trong khung
+  // (chưa có PNG cutout — mở rộng HomeCard `emoji?` optional).
+  const cap2 = q.get('demo') === 'cap2'
+  const coLuot = q.has('luot')
+  // Trong DemoHome cap2, click từng box sẽ navigate sang màn demo tương ứng (giữ `?nu` để theme khớp).
+  const goDemo = (name: string) => { location.href = `/hs.html?demo=${name}${nu ? '&nu' : ''}` }
+  const cards: HomeCard[] = cap2 ? [
+    { id: 'tu_luyen',      ten: 'Tự luyện',           sub: 'Luyện theo dạng yếu',                     subMau: 'xam', doodle: 'Small Steps Big Progress', ill: 'self_practice_target', tone: 'green', onClick: noop },
+    { id: 'thong_tin',     ten: 'Thông tin học tập',  sub: 'Dạng đang yếu',                           subMau: 'xam', doodle: 'Hiểu mình để tiến bộ hơn!', ill: 'study_progress_chart', tone: 'blue', onClick: noop },
+    { id: 'de_thi_thu',    ten: 'Làm đề thi thử',     sub: 'Sắp có',                                  subMau: 'xam', doodle: 'Sắp ra mắt! Hãy chờ nhé!', ill: 'mock_exam_locked', tone: 'gray', disabled: true },
+    { id: 'bai_tap_giao',  ten: 'Bài tập được giao',  sub: 'Đang phát triển',                         subMau: 'xam', doodle: 'Sắp có nè!', ill: 'mock_exam_locked', emoji: '📚', tone: 'blue', onClick: () => goDemo('baitapgiao') },
+    { id: 'thanh_tuu',     ten: 'Thành tựu',          sub: 'Xem giải thưởng của em',                  subMau: 'xam', doodle: 'Đầy tự hào ♡', ill: 'self_practice_target', emoji: '🏆', tone: 'orange', onClick: () => goDemo('thanhtuu') },
+    { id: 'may_man',       ten: 'May mắn',            sub: coLuot ? 'Có 1 lượt quay!' : 'Luyện 10 câu đúng ≥70%', subMau: coLuot ? 'ton' : 'xam', badge: coLuot ? 1 : 0, doodle: 'Luyện chăm là quay!', ill: 'self_practice_target', emoji: '🎰', tone: 'pink', onClick: () => goDemo('maymai') },
+  ] : [
+    { id: 'giao_trinh', ten: 'Bài tập trên lớp', sub: khong ? 'Chưa có bài' : '1 bài chưa làm', subMau: khong ? 'xam' : 'ton', badge: khong ? 0 : 1, doodle: 'Cố lên!', ill: 'purple_bookmark_book', tone: 'pink', onClick: noop },
+    { id: 'et', ten: 'ET', sub: 'Chưa có bài', subMau: 'xam', doodle: 'Kiến thức là sức mạnh', ill: 'orange_documents', tone: 'purple', onClick: noop },
+    { id: 'btvn', ten: 'BTVN', sub: khong ? 'Chưa có bài' : '2 bài quá hạn', subMau: khong ? 'xam' : 'do', doodle: 'Ôn tập mỗi ngày nhé!', ill: 'homework_house', tone: 'orange', onClick: noop },
+    { id: 'tu_luyen', ten: 'Tự luyện', sub: 'Luyện theo dạng yếu', subMau: 'xam', doodle: 'Small Steps Big Progress', ill: 'self_practice_target', tone: 'green', onClick: noop },
+    { id: 'thong_tin', ten: 'Thông tin học tập', sub: 'Dạng đang yếu', subMau: 'xam', doodle: 'Hiểu mình để tiến bộ hơn!', ill: 'study_progress_chart', tone: 'blue', onClick: noop },
+    { id: 'de_thi_thu', ten: 'Làm đề thi thử', sub: 'Sắp có', subMau: 'xam', doodle: 'Sắp ra mắt! Hãy chờ nhé!', ill: 'mock_exam_locked', tone: 'gray', disabled: true },
+  ]
+  return <HomeHS hoTen={nu ? 'Trần Mai Anh' : 'Nguyễn Văn Đức Huy'} maHS={nu ? 'hs0088' : 'hs0059'} lopMon={nu ? '11A2 - Toán' : '11A1 - Toán'} gioiTinh={nu ? 'nu' : 'nam'}
+    anhUrl={null} onAnhChanged={noop} chuaDoc={3} lich={q.has('ca') ? [{ buoi_id: 'x', loai: 'bo_tro_yeu', ngay: '2026-09-10', gio_bat_dau: '16:00:00', gio_ket_thuc: '17:00:00', phong: 'P102', mon: 'Toán', nguoi: 'Cô Thùy', diem_danh: null, hom_nay: true, vao_ca: false }] : []} soRetest={q.has('ca') ? 1 : 0} cards={cards}
+    onHopThu={noop} onDoiMK={noop} onThoat={noop} onLich={noop} onRetest={noop} />
+}
+
+export default function AppHS() {
+  const [session, setSession] = useState<Session | null | undefined>(undefined)
+  const [hsId, setHsId] = useState<string | null | undefined>(undefined)
+  if (import.meta.env.DEV && new URLSearchParams(location.search).has('demo')) return <DemoHome />
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => setSession(data.session))
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => setSession(s))
+    return () => sub.subscription.unsubscribe()
+  }, [])
+
+  useEffect(() => {
+    if (!session) { setHsId(undefined); return }
+    setHsId(undefined)
+    getMyHocSinhId().then((id) => setHsId(id)).catch(() => setHsId(null))
+  }, [session?.user?.id]) // eslint-disable-line
+
+  if (session === undefined) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải…</div>
+  if (!session) return <Login hsOnly />
+  if (hsId === undefined) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải…</div>
+  if (!hsId) {
+    // Đăng nhập bằng tài khoản KHÔNG phải HS (vd staff gõ nhầm domain này) — không có màn nào cho
+    // họ ở đây, chỉ có thể đăng xuất. Domain hs.* CHỈ dành cho HS.
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-slate-50 px-6 text-center">
+        <p className="text-sm text-slate-500">Tài khoản này không phải học sinh — trang này chỉ dành cho học sinh.</p>
+        <button onClick={() => supabase.auth.signOut()} className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600">Đăng xuất</button>
+      </div>
+    )
+  }
+
+  // Cổng đổi mật khẩu: PIN provision = chính mã HS ⇒ đoán được ⇒ bài làm không quy được về đúng
+  // 1 người. Chặn TRƯỚC khi vào app khi mật khẩu còn mặc định (cờ do script hs_buoc_doi_mk.mjs gắn).
+  const phaiDoiMK = session.user.user_metadata?.must_change_password === true
+  const maHS = (session.user.email ?? '').split('@')[0]
+  return phaiDoiMK
+    ? <DoiMatKhau maHS={maHS} batBuoc onXong={() => supabase.auth.getSession().then(({ data }) => setSession(data.session))} />
+    : <HocSinhApp hocSinhId={hsId} hoTen={(session.user.user_metadata?.ho_ten as string) || 'bạn'} maHS={maHS} />
+}

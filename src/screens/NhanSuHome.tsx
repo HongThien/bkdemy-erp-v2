@@ -3,9 +3,9 @@ import type { User, NavGroup } from '../types'
 import { useStore, staffNavFromScope, adminNavFromQuyen } from '../store/useStore'
 import { getMyScope, type MyScope } from '../lib/nhansu'
 import { useIsMobile } from '../hooks/useIsMobile'
-import { getMyTasks, moBuoi, diemDanhTienDo, danhGiaTienDo, type MyTask, type BuoiAo, type TabKey } from '../lib/gami'
+import { getMyTasks, moBuoi, diemDanhTienDo, danhGiaTienDo, type MyTask, type BuoiAo, type TabKey, type VaiViec } from '../lib/gami'
 import { getMyOpsTasks, getMyPrepTasks, myBuoiAoCuaKhoang, OPS_TASK_LABEL, type OpsTask, type MyPrepTask } from '../lib/opsvanhanh'
-import { listCanScanDaCham, type CaTestChoScanDaCham } from '../lib/detest'
+import { listCanScanDaCham, listCanChamCuaToi, listCanTraBaiCuaToi, type CaTestChoScanDaCham, type CaTestChoCham } from '../lib/detest'
 import { homNayVN, tuanCuaNgay, khoangTuan, nhanTuan, mucDeadline, nhanConLai, thuCuaNgay, ddmmVN, ngayCuaTs, type DeadlineMuc } from '../lib/tuan'
 import { BuoiDetail } from './gami/BuoiHocScreen'
 import { BuoiBuDetail } from './botro/BoTroScreen'
@@ -31,14 +31,19 @@ import GamiDiemScreen from './gami/GamiDiemScreen'
 import ThanhTichScreen from './gami/ThanhTichScreen'
 import KetQuaScreen from './ketqua/KetQuaScreen'
 import ReportPHScreen from './report/ReportPHScreen'
+import TraoGiaiScreen from './traogiai/TraoGiaiScreen'
 import DuyetChamScreen from './duyetcham/DuyetChamScreen'
+import DuyetLoiGiaiScreen from './duyetloigiai/DuyetLoiGiaiScreen'
 import HocPhiScreen from './hocphi/HocPhiScreen'
 import GiaoViecScreen from './giaoviec/GiaoViecScreen'
 import VietCuaToiTab from './giaoviec/VietCuaToiTab'
 import CongKhaiTab from './giaoviec/CongKhaiTab'
 import TroLyTab from './troly/TroLyTab'
+import HoiDapTab from './hoidap/HoiDapTab'
+import { hoiDapDuocDung } from '../lib/hoidap'
 import { listDotChoDuyetDuoi } from '../lib/botro_duoi'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
+import ChotXuScreen from './gami/ChotXuScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 import BaoLoiScreen from './baoloi/BaoLoiScreen'
 import OpsReportScreen from './vanhanhops/OpsReportScreen'
@@ -47,16 +52,25 @@ import PhongHocScreen from './phonghoc/PhongHocScreen'
 import PhanCongOpsScreen from './vanhanhops/PhanCongOpsScreen'
 import ScanDaChamScreen from './vanhanhops/ScanDaChamScreen'
 import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
-import TestDauVaoScreen from './tuyensinh/TestDauVaoScreen'
+import TestDauVaoScreen, { moTabTestDauVao } from './tuyensinh/TestDauVaoScreen'
+import KhaoSatScreen from './khaosat/KhaoSatScreen'
 import BoTroScreen from './botro/BoTroScreen'
 import BoTroDuoiScreen from './botro/BoTroDuoiScreen'
 import ChatLuongVanHanhScreen from './dashboard/ChatLuongVanHanhScreen'
 import PhDangNhapScreen from './dashboard/PhDangNhapScreen'
+import XemAppScreen from './dashboard/XemAppScreen'
 import DashboardHocTapScreen from './danhgia/DashboardHocTapScreen'
+import DuyetBoTroYeuScreen from './danhgia/DuyetBoTroYeuScreen'
+import NoiDungBoTroYeuScreen from './danhgia/NoiDungBoTroYeuScreen'
+import TrangThaiCaBoTroScreen from './danhgia/TrangThaiCaBoTroScreen'
+import DanhGiaCaBoTroScreen from './danhgia/DanhGiaCaBoTroScreen'
+import XepLichBoTroYeuScreen from './danhgia/XepLichBoTroYeuScreen'
+import GayScreen from './gay/GayScreen'
+import ThuChiScreen from './thuchi/ThuChiScreen'
 
-// tg thấy thêm tab 'mt' (chấm MT nếu buổi có gán — tự ẩn/hiện rỗng như ET nếu chưa có).
-const tabsCuaVai = (vai: 'gv' | 'tg'): TabKey[] => (vai === 'gv' ? ['danhgia', 'ingame'] : ['ingame', 'et', 'mt'])
-type OpenBuoi = { id: string; tabs: TabKey[]; initialTab: TabKey; canManage: boolean; loai?: 'bu' | 'bo_tro_duoi' }
+// tk (trưởng khối) chỉ có Chấm MT · gv thêm 'mt' khi là fallback không có trưởng khối (tab tự ẩn nếu buổi không gán MT).
+const tabsCuaVai = (vai: VaiViec): TabKey[] => (vai === 'tk' ? ['mt'] : vai === 'gv' ? ['danhgia', 'ingame', 'mt'] : ['ingame', 'et', 'mt'])
+type OpenBuoi = { id: string; tabs: TabKey[]; initialTab: TabKey; canManage: boolean; loai?: 'bu' | 'bo_tro_duoi' | 'bo_tro_yeu' }
 type TienDo = { tong: number; daDanh: number }
 
 // Badge deadline — dải NÓNG→NGUỘI dạng pill MỀM (hợp tông Apple, không khối đỏ đặc): đỏ→cam→hổ phách→xanh.
@@ -215,7 +229,13 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   // 'rasoat' = tab TRỢ LÝ (nhắc việc hàng ngày + nhận định cấp hệ) — screens/troly/TroLyTab.tsx.
   // CỐ Ý không đẻ leaf mới: leaf kéo theo quyền per-leaf ở Phân quyền + hiện trong nav của
   // MỌI role, trong khi lượt này chỉ 1 người dùng. Tab thì bỏ đi cũng sạch.
-  const [view, setView] = useState<'vanhanh' | 'phattrien' | 'rasoat'>('vanhanh')
+  // 'hoidap' = tab HỎI HỆ THỐNG (bot Claude Code đọc repo trả lời "vì sao/quy trình") —
+  // screens/hoidap/HoiDapTab.tsx. Cùng lý do KHÔNG đẻ leaf như 'rasoat' ngay trên.
+  // Pilot TẠM THỜI 3 người (CEO 29/08): tab chỉ hiện khi DB gật (hoi_dap_duoc_dung) —
+  // ẩn UI là lịch sự, rào thật nằm ở RLS (migration 202608291205).
+  const [view, setView] = useState<'vanhanh' | 'phattrien' | 'rasoat' | 'hoidap'>('vanhanh')
+  const [duocHoiDap, setDuocHoiDap] = useState(false)
+  useEffect(() => { hoiDapDuocDung().then(setDuocHoiDap).catch(() => setDuocHoiDap(false)) }, [])
   // Phát triển: mặc định CẢ TEAM (kế hoạch tuần công khai — Thùy chốt 08-13: team bé, làm
   // gương, không có rủi ro tâm lý) — option bên cạnh để thu hẹp về chỉ việc của mình.
   const [phatTrienXem, setPhatTrienXem] = useState<'team' | 'toi'>('team')
@@ -231,7 +251,17 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   // Test đầu vào — Scan bài đã chấm (Ops) — Thùy 07-19 lần 2: "không cần tab riêng, chỉ cần derive task
   // cho Ops". Pool chung (như Chấm test), KHÔNG lọc theo người — ai mở thì làm.
   const [scanTest, setScanTest] = useState<CaTestChoScanDaCham[]>([])
+  // ⭐ CEO ②⑤ 09/09: chấm test (TA được gán `nguoi_cham_id`) + trả bài (GV được gán `nguoi_tra_bai_id`) PHẢI
+  // nằm trong "Việc của tôi" — trước đó 2 cột assign chỉ là nhãn, không màn nào lọc theo nó.
+  const [chamTestToi, setChamTestToi] = useState<CaTestChoCham[]>([])
+  const [traBaiTestToi, setTraBaiTestToi] = useState<CaTestChoCham[]>([])
   const me = useStore((s) => s.me)
+  useEffect(() => {
+    const id = me?.nhanSu.id
+    if (!id) { setChamTestToi([]); setTraBaiTestToi([]); return }
+    listCanChamCuaToi(id).then(setChamTestToi).catch(() => setChamTestToi([]))
+    listCanTraBaiCuaToi(id).then(setTraBaiTestToi).catch(() => setTraBaiTestToi([]))
+  }, [me?.nhanSu.id])
   const setStaffLeaf = useStore((s) => s.setStaffLeaf)
   const isMobile = useIsMobile()
   // Ngày TƯƠNG LAI chủ động bấm mở xem trước — hôm nay + ngày ĐÃ QUA (còn nợ) LUÔN mở sẵn (Thùy 07-06:
@@ -302,8 +332,9 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const prepFiltered = prepTasks
   const prepActive = prepFiltered.filter((t) => !t.done)
   const prepDone = prepFiltered.filter((t) => t.done)
-  const hasActive = opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length + scanTest.length > 0
-  const canLam = opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length + scanTest.length
+  const testToi = scanTest.length + chamTestToi.length + traBaiTestToi.length
+  const hasActive = opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length + testToi > 0
+  const canLam = opsActive.length + taskActive.length + opsExtraActive.length + prepActive.length + testToi
   const quaHan = taskActive.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
     + opsExtraActive.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
     + prepActive.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
@@ -341,7 +372,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
         {/* TOGGLE Vận hành / Phát triển — thay cho filter loại việc (CEO chốt 07-31). Số task trực quan,
             không cần lọc; Phát triển tách hẳn sang view riêng cho rộng rãi. */}
         <div className="inline-flex rounded-full bg-slate-100 p-0.5">
-          {([['vanhanh', '🛠 Vận hành'], ['phattrien', '🚀 Phát triển'], ['rasoat', '🤖 Trợ lý']] as const).map(([k, ten]) => (
+          {([['vanhanh', '🛠 Vận hành'], ['phattrien', '🚀 Phát triển'], ['rasoat', '🤖 Trợ lý'], ...(duocHoiDap ? [['hoidap', '💬 Hỏi hệ thống']] : [])] as ['vanhanh' | 'phattrien' | 'rasoat' | 'hoidap', string][]).map(([k, ten]) => (
             <button key={k} onClick={() => setView(k)}
               className={`rounded-full px-4 py-1.5 text-[13px] font-semibold transition ${view === k ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{ten}</button>
           ))}
@@ -400,6 +431,39 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
             </div>
           )}
 
+          {/* Test đầu vào — CHẤM (TA được gán) / TRẢ BÀI (GV được gán) — CEO ②⑤ 09/09. Khối flat như scan. */}
+          {chamTestToi.length > 0 && (
+            <div className="mt-3">
+              <div className="mb-1.5 text-[12px] font-semibold text-slate-500">✍️ Test đầu vào — cần chấm ({chamTestToi.length})</div>
+              <div className="grid gap-1.5 [grid-template-columns:repeat(auto-fill,minmax(220px,1fr))]">
+                {chamTestToi.map((c) => (
+                  <button key={c.id} onClick={() => { moTabTestDauVao('cham'); setStaffLeaf('test_dau_vao') }} className="flex flex-col gap-0.5 rounded-lg border-l-4 border-l-violet-400 bg-white px-2.5 py-2 text-left shadow-sm hover:shadow-md">
+                    <div className="flex items-center gap-1.5">
+                      <span className="shrink-0 text-[15px]">✍️</span>
+                      <span className="min-w-0 flex-1 text-[13px] font-medium text-slate-800">{c.hoTenHs} · {c.mon}{c.khoi ? ` · K${c.khoi}` : ''}</span>
+                    </div>
+                    <div className="pl-[21px] text-[11px] text-slate-400">test {ddmmVN(c.ngay)}{c.trangThai === 'dang_test' ? ' · đang test, chờ bài' : c.thieuDe ? ' · ⚠ chưa có đề' : ' · đã có bài'}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          {traBaiTestToi.length > 0 && (
+            <div className="mt-3">
+              <div className="mb-1.5 text-[12px] font-semibold text-slate-500">📨 Test đầu vào — cần trả bài ({traBaiTestToi.length})</div>
+              <div className="grid gap-1.5 [grid-template-columns:repeat(auto-fill,minmax(220px,1fr))]">
+                {traBaiTestToi.map((c) => (
+                  <button key={c.id} onClick={() => { moTabTestDauVao('tra_bai'); setStaffLeaf('test_dau_vao') }} className="flex flex-col gap-0.5 rounded-lg border-l-4 border-l-sky-400 bg-white px-2.5 py-2 text-left shadow-sm hover:shadow-md">
+                    <div className="flex items-center gap-1.5">
+                      <span className="shrink-0 text-[15px]">📨</span>
+                      <span className="min-w-0 flex-1 text-[13px] font-medium text-slate-800">{c.hoTenHs} · {c.mon}{c.khoi ? ` · K${c.khoi}` : ''}</span>
+                    </div>
+                    <div className="pl-[21px] text-[11px] text-slate-400">test {ddmmVN(c.ngay)}{c.trangThai === 'dang_test' ? ' · đang test' : c.diemNhap != null ? ` · ${c.diemNhap}đ` : ' · chờ chấm'}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
           {/* Test đầu vào — Scan bài đã chấm (Ops, pool chung — không lọc theo người, cùng cơ chế Chấm
               test). Không có deadline/ngày riêng để gom theo NgàyRow nên để RIÊNG 1 khối flat. */}
           {scanTest.length > 0 && (
@@ -457,6 +521,9 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
       ) : view === 'rasoat' ? (
         /* TRỢ LÝ — nhắc việc hàng ngày, 3 nút Làm/Huỷ/Gác. KHÔNG gọi model (xem đầu TroLyTab.tsx). */
         <TroLyTab />
+      ) : view === 'hoidap' ? (
+        /* HỎI HỆ THỐNG — bot Claude Code (máy local) trả lời "vì sao/quy trình" (xem đầu HoiDapTab.tsx). */
+        <HoiDapTab />
       ) : (
         /* PHÁT TRIỂN — view riêng, full width (task THẬT viec/task mẹ-con, không reset theo tuần) */
         <div>
@@ -504,6 +571,10 @@ export default function NhanSuHome({ user }: { user: User }) {
 
   useEffect(() => { getMyScope().then(setScope).finally(() => setLoading(false)) }, [])
 
+  // ⚠ bo_tro_yeu CHƯA có detail riêng (khác bù/đuổi) — rơi vào nhánh BuoiDetail chung tạm thời.
+  // BuoiDetail vốn cho buổi lớp thường (lop_id có giá trị); bo_tro_yeu giống bù ở chỗ lop_id=null
+  // (1 buổi = 1 HS, không gắn lớp) nên CHƯA CHẮC render đúng — cần 1 BuoiBoTroYeuDetail riêng
+  // (hiện tiến độ dạng + tick day_at, giống BuoiDuoiDetail) trước khi đưa vào vận hành thật.
   if (openBuoi) return openBuoi.loai === 'bu'
     ? <BuoiBuDetail buoiId={openBuoi.id} onClose={() => setOpenBuoi(null)} />
     : openBuoi.loai === 'bo_tro_duoi'
@@ -579,9 +650,17 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'lamtailieu:bo_tro' ? <BTScreen />
       : staffLeaf === 'hocphi' ? <HocPhiScreen />
       : staffLeaf === 'giaoviec' ? <GiaoViecScreen />
+      : staffLeaf === 'gay' ? <GayScreen />
+      : staffLeaf === 'thuchi' ? <ThuChiScreen />
       : staffLeaf === 'db_chatluong' ? <ChatLuongVanHanhScreen />
       : staffLeaf === 'db_phdangnhap' ? <PhDangNhapScreen />
+      : staffLeaf === 'db_xemapp' ? <XemAppScreen />
       : staffLeaf === 'db_hoctap' ? <DashboardHocTapScreen />
+      : (staffLeaf === 'botroyeu' || staffLeaf === 'botroyeu:duyet') ? <DuyetBoTroYeuScreen />
+      : staffLeaf === 'botroyeu:noidung' ? <NoiDungBoTroYeuScreen />
+      : staffLeaf === 'botroyeu:trangthai' ? <TrangThaiCaBoTroScreen />
+      : staffLeaf === 'botroyeu:danhgia' ? <DanhGiaCaBoTroScreen />
+      : staffLeaf === 'xep_by' ? <XepLichBoTroYeuScreen />
       : staffLeaf === 'ns' ? <NhanSuScreen />
       : staffLeaf === 'phancong' ? <PhanCongScreen />
       : staffLeaf === 'tkb' ? <TKBScreen />
@@ -590,6 +669,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'hs' ? <HocSinhScreen />
       : staffLeaf === 'tuyensinh' ? <TuyenSinhScreen />
       : staffLeaf === 'test_dau_vao' ? <TestDauVaoScreen />
+      : staffLeaf === 'khaosat' ? <KhaoSatScreen />
       : staffLeaf === 'botro' ? <BoTroScreen />
       : staffLeaf === 'botro_duoi' ? <BoTroDuoiScreen />
       : staffLeaf === 'buoihoc' ? <BuoiHocScreen />
@@ -597,8 +677,11 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'thanhtich' ? <ThanhTichScreen />
       : staffLeaf === 'ketqua' ? <KetQuaScreen />
       : staffLeaf === 'report_ph' ? <ReportPHScreen />
+      : staffLeaf === 'traogiai' ? <TraoGiaiScreen />
       : staffLeaf === 'duyetcham' ? <DuyetChamScreen />
+      : staffLeaf === 'duyetloigiai' ? <DuyetLoiGiaiScreen />
       : staffLeaf === 'quanlylevel' ? <QuanLyLevelScreen />
+      : staffLeaf === 'chotxu' ? <ChotXuScreen />
       : staffLeaf === 'phanquyen' ? <PhanQuyenScreen />
       : staffLeaf === 'baoloi' ? <BaoLoiScreen />
       : staffLeaf === 'ops_report' ? <OpsReportScreen />

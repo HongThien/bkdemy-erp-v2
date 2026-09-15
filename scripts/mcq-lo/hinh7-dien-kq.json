@@ -1,0 +1,1966 @@
+[
+ {
+  "id": "40263588-eebc-49c1-838d-5751d7489ebc",
+  "ma": "BT.07.037",
+  "khuon": "BT.07.037",
+  "ap_khuon": false,
+  "o": [
+   {
+    "kieu": "ly_do",
+    "buoc": 1,
+    "key": "hai góc kề bù",
+    "dap_an": "B",
+    "phuong_an": [
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "đối đỉnh là hai góc có cạnh là tia đối của nhau từng đôi, ở đây chỉ có Ox, Oy đối nhau"
+     },
+     {
+      "ma": "LD01",
+      "dung": true
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "đồng vị cần hai đường thẳng và một cát tuyến"
+     },
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "so le trong cần hai đường thẳng và một cát tuyến"
+     }
+    ]
+   },
+   {
+    "kieu": "ket_luan",
+    "buoc": 3,
+    "key": "\\widehat{xOz} + \\widehat{zOy} = 180^\\circ",
+    "dap_an": "A",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{xOz} + \\widehat{zOy} = 180^\\circ$",
+      "dung": true
+     },
+     {
+      "text": "$\\widehat{xOz} + \\widehat{zOy} = 90^\\circ$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "nhầm kề bù với phụ nhau"
+     },
+     {
+      "text": "$\\widehat{xOz} = \\widehat{zOy}$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "nhầm kề bù với đối đỉnh"
+     },
+     {
+      "text": "$\\widehat{xOz} - \\widehat{zOy} = 180^\\circ$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "hiệu hai góc không liên quan tính chất kề bù"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "a606a893-5338-41c2-845d-f89d5f523c51",
+  "ma": "BT.07.037",
+  "khuon": "BT.07.037",
+  "ap_khuon": true,
+  "o": [
+   {
+    "kieu": "ly_do",
+    "buoc": 1,
+    "key": "hai góc kề bù",
+    "dap_an": "A",
+    "phuong_an": [
+     {
+      "ma": "LD01",
+      "dung": true
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "đồng vị cần hai đường thẳng và một cát tuyến"
+     },
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "so le trong cần hai đường thẳng và một cát tuyến"
+     },
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "đối đỉnh là hai góc có cạnh là tia đối của nhau từng đôi, ở đây chỉ có Ox, Oy đối nhau"
+     }
+    ]
+   },
+   {
+    "kieu": "ket_luan",
+    "buoc": 3,
+    "key": "\\widehat{xOz} + \\widehat{zOy} = 180^\\circ",
+    "dap_an": "D",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{xOz} + \\widehat{zOy} = 90^\\circ$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "nhầm kề bù với phụ nhau"
+     },
+     {
+      "text": "$\\widehat{xOz} = \\widehat{zOy}$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "nhầm kề bù với đối đỉnh"
+     },
+     {
+      "text": "$\\widehat{xOz} - \\widehat{zOy} = 180^\\circ$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "hiệu hai góc không liên quan tính chất kề bù"
+     },
+     {
+      "text": "$\\widehat{xOz} + \\widehat{zOy} = 180^\\circ$",
+      "dung": true
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "6d80157d-c492-4ef5-b9c7-ca0041515fa2",
+  "ma": "BT.07.037",
+  "khuon": "BT.07.037",
+  "ap_khuon": true,
+  "o": [
+   {
+    "kieu": "ly_do",
+    "buoc": 1,
+    "key": "hai góc kề bù",
+    "dap_an": "D",
+    "phuong_an": [
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "đồng vị cần hai đường thẳng và một cát tuyến"
+     },
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "so le trong cần hai đường thẳng và một cát tuyến"
+     },
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "đối đỉnh là hai góc có cạnh là tia đối của nhau từng đôi, ở đây chỉ có Ox, Oy đối nhau"
+     },
+     {
+      "ma": "LD01",
+      "dung": true
+     }
+    ]
+   },
+   {
+    "kieu": "ket_luan",
+    "buoc": 3,
+    "key": "\\widehat{xOz} + \\widehat{zOy} = 180^\\circ",
+    "dap_an": "C",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{xOz} = \\widehat{zOy}$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "nhầm kề bù với đối đỉnh"
+     },
+     {
+      "text": "$\\widehat{xOz} - \\widehat{zOy} = 180^\\circ$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "hiệu hai góc không liên quan tính chất kề bù"
+     },
+     {
+      "text": "$\\widehat{xOz} + \\widehat{zOy} = 180^\\circ$",
+      "dung": true
+     },
+     {
+      "text": "$\\widehat{xOz} + \\widehat{zOy} = 90^\\circ$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "nhầm kề bù với phụ nhau"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "519ec85c-2e9f-44b8-8614-43e8f045a7e6",
+  "ma": "BT.07.040",
+  "khuon": "BT.07.040",
+  "ap_khuon": false,
+  "o": [
+   {
+    "kieu": "ket_luan",
+    "buoc": 2,
+    "key": "\\widehat{xOz} + \\widehat{zOt} + \\widehat{tOy} = 180^\\circ",
+    "dap_an": "C",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{xOz} + \\widehat{zOt} + \\widehat{tOy} = 360^\\circ$",
+      "dung": false,
+      "loi": "E03",
+      "vi_sao_sai": "360° là góc quanh một điểm, ba góc này chỉ phủ nửa mặt phẳng"
+     },
+     {
+      "text": "$\\widehat{xOz} + \\widehat{tOy} = 180^\\circ$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "sót góc zOt ở giữa"
+     },
+     {
+      "text": "$\\widehat{xOz} + \\widehat{zOt} + \\widehat{tOy} = 180^\\circ$",
+      "dung": true
+     },
+     {
+      "text": "$\\widehat{xOz} + \\widehat{zOt} + \\widehat{tOy} = 90^\\circ$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "nhầm góc bẹt với góc vuông"
+     }
+    ]
+   },
+   {
+    "kieu": "ly_do",
+    "buoc": 4,
+    "key": "hai góc kề bù",
+    "dap_an": "D",
+    "phuong_an": [
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "xOt và tOy chung cạnh Ot, không phải đối đỉnh"
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "không có hai đường thẳng song song"
+     },
+     {
+      "ma": "LD03",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "Ot không phải phân giác"
+     },
+     {
+      "ma": "LD01",
+      "dung": true
+     }
+    ]
+   },
+   {
+    "kieu": "ket_luan",
+    "buoc": 7,
+    "key": "\\widehat{yOz} = 180^\\circ - \\widehat{xOz}",
+    "dap_an": "B",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{yOz} = 180^\\circ - \\widehat{tOy}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "yOz kề bù với xOz, không phải với tOy"
+     },
+     {
+      "text": "$\\widehat{yOz} = 180^\\circ - \\widehat{xOz}$",
+      "dung": true
+     },
+     {
+      "text": "$\\widehat{yOz} = \\widehat{xOz}$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "kề bù thì bù nhau, không bằng nhau"
+     },
+     {
+      "text": "$\\widehat{yOz} = 90^\\circ - \\widehat{xOz}$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "nhầm kề bù với phụ nhau"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "a595cbd9-bbea-47cb-95a7-09a0f5996b71",
+  "ma": "BT.07.044",
+  "khuon": "BT.07.044",
+  "ap_khuon": false,
+  "o": [
+   {
+    "kieu": "ly_do",
+    "buoc": 1,
+    "key": "hai góc đối đỉnh",
+    "dap_an": "A",
+    "phuong_an": [
+     {
+      "ma": "LD02",
+      "dung": true
+     },
+     {
+      "ma": "LD01",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "x'Oy' và xOy không chung cạnh"
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "không có hai đường thẳng song song"
+     },
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "không có cát tuyến"
+     }
+    ]
+   },
+   {
+    "kieu": "ket_luan",
+    "buoc": 3,
+    "key": "\\widehat{x'Oy} + \\widehat{xOy} = 180^\\circ",
+    "dap_an": "C",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{x'Oy} = \\widehat{xOy}$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "kề bù thì bù nhau"
+     },
+     {
+      "text": "$\\widehat{x'Oy} + \\widehat{xOy} = 90^\\circ$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "nhầm kề bù với phụ nhau"
+     },
+     {
+      "text": "$\\widehat{x'Oy} + \\widehat{xOy} = 180^\\circ$",
+      "dung": true
+     },
+     {
+      "text": "$\\widehat{x'Oy} + \\widehat{xOy'} = 180^\\circ$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "x'Oy và xOy' là đối đỉnh, bằng nhau chứ không bù nhau"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "9303342a-9515-4fb2-9f0c-29b4948e8d5c",
+  "ma": "BT.07.046",
+  "khuon": "BT.07.046",
+  "ap_khuon": false,
+  "o": [
+   {
+    "kieu": "ly_do",
+    "buoc": 1,
+    "key": "tia phân giác",
+    "dap_an": "D",
+    "phuong_an": [
+     {
+      "ma": "LD01",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "kề bù không cho hai góc bằng nhau"
+     },
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "xOz và zOy chung cạnh Oz, không đối đỉnh"
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "không có đường thẳng song song"
+     },
+     {
+      "ma": "LD03",
+      "dung": true
+     }
+    ]
+   },
+   {
+    "kieu": "ket_luan",
+    "buoc": 2,
+    "key": "\\widehat{xOz} = \\widehat{zOy} = \\frac{1}{2}\\widehat{xOy}",
+    "dap_an": "A",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{xOz} = \\widehat{zOy} = \\frac{1}{2}\\widehat{xOy}$",
+      "dung": true
+     },
+     {
+      "text": "$\\widehat{xOz} = \\widehat{zOy} = 2\\widehat{xOy}$",
+      "dung": false,
+      "loi": "E03",
+      "vi_sao_sai": "phân giác chia đôi, mỗi góc bằng nửa chứ không gấp đôi"
+     },
+     {
+      "text": "$\\widehat{xOz} + \\widehat{zOy} = 180^\\circ$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai góc này hợp thành xOy, không phải góc bẹt"
+     },
+     {
+      "text": "$\\widehat{xOz} = \\widehat{xOy}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "xOz chỉ là nửa của xOy"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "275d3fae-86fa-4a0e-b796-d70fbfeaaa75",
+  "ma": "BT.07.072",
+  "khuon": "BT.07.072",
+  "ap_khuon": false,
+  "o": [
+   {
+    "kieu": "ly_do",
+    "buoc": 2,
+    "key": "hai góc so le trong",
+    "dap_an": "B",
+    "phuong_an": [
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "xAB và ABy' nằm hai phía cát tuyến AB, là so le trong"
+     },
+     {
+      "ma": "LD04",
+      "dung": true
+     },
+     {
+      "ma": "LD06",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "trong cùng phía thì bù nhau, không bằng nhau"
+     },
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai góc ở hai đỉnh khác nhau A, B"
+     }
+    ]
+   },
+   {
+    "kieu": "ket_luan",
+    "buoc": 5,
+    "key": "\\widehat{ABy} = 180^\\circ - \\widehat{ABy'}",
+    "dap_an": "D",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{ABy} = \\widehat{ABy'}$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "kề bù thì bù nhau"
+     },
+     {
+      "text": "$\\widehat{ABy} = 90^\\circ - \\widehat{ABy'}$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "nhầm kề bù với phụ nhau"
+     },
+     {
+      "text": "$\\widehat{ABy} = \\widehat{xAB}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "ABy và xAB không phải cặp so le trong hay đồng vị"
+     },
+     {
+      "text": "$\\widehat{ABy} = 180^\\circ - \\widehat{ABy'}$",
+      "dung": true
+     }
+    ]
+   },
+   {
+    "kieu": "ly_do",
+    "buoc": 6,
+    "key": "hai góc đối đỉnh",
+    "dap_an": "C",
+    "phuong_an": [
+     {
+      "ma": "LD01",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "ABy' và yBz' không chung cạnh"
+     },
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh B, không phải cặp góc với hai đường thẳng"
+     },
+     {
+      "ma": "LD02",
+      "dung": true
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh B"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "a18e0f2c-eb8c-4c2e-96c6-f11a26edc220",
+  "ma": "BT.07.072/0",
+  "khuon": "BT.07.072",
+  "ap_khuon": true,
+  "o": [
+   {
+    "kieu": "ly_do",
+    "buoc": 3,
+    "key": "hai góc so le trong",
+    "dap_an": "A",
+    "phuong_an": [
+     {
+      "ma": "LD04",
+      "dung": true
+     },
+     {
+      "ma": "LD06",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "trong cùng phía thì bù nhau, không bằng nhau"
+     },
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai góc ở hai đỉnh khác nhau A, B"
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "xAB và ABy' nằm hai phía cát tuyến AB, là so le trong"
+     }
+    ]
+   },
+   {
+    "kieu": "ket_luan",
+    "buoc": 6,
+    "key": "\\widehat{CDn} = 180^\\circ - \\widehat{CDn'}",
+    "dap_an": "C",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{CDn} = 90^\\circ - \\widehat{CDn'}$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "nhầm kề bù với phụ nhau"
+     },
+     {
+      "text": "$\\widehat{CDn} = \\widehat{mCD}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "ABy và xAB không phải cặp so le trong hay đồng vị"
+     },
+     {
+      "text": "$\\widehat{CDn} = 180^\\circ - \\widehat{CDn'}$",
+      "dung": true
+     },
+     {
+      "text": "$\\widehat{CDn} = \\widehat{CDn'}$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "kề bù thì bù nhau"
+     }
+    ]
+   },
+   {
+    "kieu": "ly_do",
+    "buoc": 7,
+    "key": "hai góc đối đỉnh",
+    "dap_an": "B",
+    "phuong_an": [
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh B, không phải cặp góc với hai đường thẳng"
+     },
+     {
+      "ma": "LD02",
+      "dung": true
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh B"
+     },
+     {
+      "ma": "LD01",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "ABy' và yBz' không chung cạnh"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "8d7376cd-fd87-4532-a082-a0f9e4076d82",
+  "ma": "BT.07.072/0",
+  "khuon": "BT.07.072",
+  "ap_khuon": true,
+  "o": [
+   {
+    "kieu": "ly_do",
+    "buoc": 3,
+    "key": "hai góc so le trong",
+    "dap_an": "D",
+    "phuong_an": [
+     {
+      "ma": "LD06",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "trong cùng phía thì bù nhau, không bằng nhau"
+     },
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai góc ở hai đỉnh khác nhau A, B"
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "xAB và ABy' nằm hai phía cát tuyến AB, là so le trong"
+     },
+     {
+      "ma": "LD04",
+      "dung": true
+     }
+    ]
+   },
+   {
+    "kieu": "ket_luan",
+    "buoc": 6,
+    "key": "\\widehat{EFb} = 180^\\circ - \\widehat{EFb'}",
+    "dap_an": "B",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{EFb} = \\widehat{aEF}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "ABy và xAB không phải cặp so le trong hay đồng vị"
+     },
+     {
+      "text": "$\\widehat{EFb} = 180^\\circ - \\widehat{EFb'}$",
+      "dung": true
+     },
+     {
+      "text": "$\\widehat{EFb} = \\widehat{EFb'}$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "kề bù thì bù nhau"
+     },
+     {
+      "text": "$\\widehat{EFb} = 90^\\circ - \\widehat{EFb'}$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "nhầm kề bù với phụ nhau"
+     }
+    ]
+   },
+   {
+    "kieu": "ly_do",
+    "buoc": 7,
+    "key": "hai góc đối đỉnh",
+    "dap_an": "A",
+    "phuong_an": [
+     {
+      "ma": "LD02",
+      "dung": true
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh B"
+     },
+     {
+      "ma": "LD01",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "ABy' và yBz' không chung cạnh"
+     },
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh B, không phải cặp góc với hai đường thẳng"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "0a91adb8-abac-4331-99e1-5b446dc7769b",
+  "ma": "BT.07.072/0",
+  "khuon": "BT.07.072",
+  "ap_khuon": true,
+  "o": [
+   {
+    "kieu": "ly_do",
+    "buoc": 3,
+    "key": "hai góc so le trong",
+    "dap_an": "C",
+    "phuong_an": [
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai góc ở hai đỉnh khác nhau A, B"
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "xAB và ABy' nằm hai phía cát tuyến AB, là so le trong"
+     },
+     {
+      "ma": "LD04",
+      "dung": true
+     },
+     {
+      "ma": "LD06",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "trong cùng phía thì bù nhau, không bằng nhau"
+     }
+    ]
+   },
+   {
+    "kieu": "ket_luan",
+    "buoc": 6,
+    "key": "\\widehat{PQn} = 180^\\circ - \\widehat{PQn'}",
+    "dap_an": "A",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{PQn} = 180^\\circ - \\widehat{PQn'}$",
+      "dung": true
+     },
+     {
+      "text": "$\\widehat{PQn} = \\widehat{PQn'}$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "kề bù thì bù nhau"
+     },
+     {
+      "text": "$\\widehat{PQn} = 90^\\circ - \\widehat{PQn'}$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "nhầm kề bù với phụ nhau"
+     },
+     {
+      "text": "$\\widehat{PQn} = \\widehat{mPQ}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "ABy và xAB không phải cặp so le trong hay đồng vị"
+     }
+    ]
+   },
+   {
+    "kieu": "ly_do",
+    "buoc": 7,
+    "key": "hai góc đối đỉnh",
+    "dap_an": "D",
+    "phuong_an": [
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh B"
+     },
+     {
+      "ma": "LD01",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "ABy' và yBz' không chung cạnh"
+     },
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh B, không phải cặp góc với hai đường thẳng"
+     },
+     {
+      "ma": "LD02",
+      "dung": true
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "7b12152f-e767-4ae7-be40-9ec8e0559310",
+  "ma": "BT.07.072/0",
+  "khuon": "BT.07.072",
+  "ap_khuon": true,
+  "o": [
+   {
+    "kieu": "ly_do",
+    "buoc": 3,
+    "key": "hai góc so le trong",
+    "dap_an": "B",
+    "phuong_an": [
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "xAB và ABy' nằm hai phía cát tuyến AB, là so le trong"
+     },
+     {
+      "ma": "LD04",
+      "dung": true
+     },
+     {
+      "ma": "LD06",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "trong cùng phía thì bù nhau, không bằng nhau"
+     },
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai góc ở hai đỉnh khác nhau A, B"
+     }
+    ]
+   },
+   {
+    "kieu": "ket_luan",
+    "buoc": 6,
+    "key": "\\widehat{RSv} = 180^\\circ - \\widehat{RSv'}",
+    "dap_an": "D",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{RSv} = \\widehat{RSv'}$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "kề bù thì bù nhau"
+     },
+     {
+      "text": "$\\widehat{RSv} = 90^\\circ - \\widehat{RSv'}$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "nhầm kề bù với phụ nhau"
+     },
+     {
+      "text": "$\\widehat{RSv} = \\widehat{uRS}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "ABy và xAB không phải cặp so le trong hay đồng vị"
+     },
+     {
+      "text": "$\\widehat{RSv} = 180^\\circ - \\widehat{RSv'}$",
+      "dung": true
+     }
+    ]
+   },
+   {
+    "kieu": "ly_do",
+    "buoc": 7,
+    "key": "hai góc đối đỉnh",
+    "dap_an": "C",
+    "phuong_an": [
+     {
+      "ma": "LD01",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "ABy' và yBz' không chung cạnh"
+     },
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh B, không phải cặp góc với hai đường thẳng"
+     },
+     {
+      "ma": "LD02",
+      "dung": true
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh B"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "bfc7c276-3438-4e90-9159-31e54bf9b73e",
+  "ma": "BT.07.073",
+  "khuon": "BT.07.073",
+  "ap_khuon": false,
+  "o": [
+   {
+    "kieu": "ket_luan",
+    "buoc": 3,
+    "key": "\\widehat{x'MN} = \\widehat{MNy}",
+    "dap_an": "A",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{x'MN} = \\widehat{MNy}$",
+      "dung": true
+     },
+     {
+      "text": "$\\widehat{x'MN} + \\widehat{MNy} = 180^\\circ$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai góc cùng 125°, bằng nhau chứ không bù nhau"
+     },
+     {
+      "text": "$\\widehat{xMN} = \\widehat{MNy}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "xMN = 55° ≠ 125°"
+     },
+     {
+      "text": "$\\widehat{x'MN} = \\widehat{MNy'}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "MNy' = 55°, không bằng 125°"
+     }
+    ]
+   },
+   {
+    "kieu": "ly_do",
+    "buoc": 4,
+    "key": "so le trong",
+    "dap_an": "B",
+    "phuong_an": [
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "x'MN và MNy nằm hai phía cát tuyến MN"
+     },
+     {
+      "ma": "LD04",
+      "dung": true
+     },
+     {
+      "ma": "LD06",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "trong cùng phía thì cùng một phía cát tuyến"
+     },
+     {
+      "ma": "LD01",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai góc ở hai đỉnh M, N khác nhau"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "02d03b8e-9e96-49fe-83e0-e53b1d1814ff",
+  "ma": "BT.07.074",
+  "khuon": "BT.07.074",
+  "ap_khuon": false,
+  "o": [
+   {
+    "kieu": "ly_do",
+    "buoc": 2,
+    "key": "so le trong",
+    "dap_an": "C",
+    "phuong_an": [
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "xAB và ABD nằm hai phía cát tuyến AB"
+     },
+     {
+      "ma": "LD06",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "trong cùng phía thì bù nhau"
+     },
+     {
+      "ma": "LD04",
+      "dung": true
+     },
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai đỉnh A, B khác nhau"
+     }
+    ]
+   },
+   {
+    "kieu": "ket_luan",
+    "buoc": 5,
+    "key": "\\widehat{tCx'} = \\widehat{CDy'}",
+    "dap_an": "B",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{tCx'} = \\widehat{CDy}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "CDy là góc kề bù với CDy', bằng 65°"
+     },
+     {
+      "text": "$\\widehat{tCx'} = \\widehat{CDy'}$",
+      "dung": true
+     },
+     {
+      "text": "$\\widehat{tCx'} + \\widehat{CDy'} = 180^\\circ$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "đồng vị thì bằng nhau"
+     },
+     {
+      "text": "$\\widehat{tCx'} = \\widehat{xAB}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "115° ≠ 80°"
+     }
+    ]
+   },
+   {
+    "kieu": "ly_do",
+    "buoc": 7,
+    "key": "hai góc kề bù",
+    "dap_an": "A",
+    "phuong_an": [
+     {
+      "ma": "LD01",
+      "dung": true
+     },
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "CDy' và CDy chung cạnh DC"
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh D"
+     },
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh D"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "10c4c19d-5f6a-40f4-ae6e-6242183e0487",
+  "ma": "BT.07.076",
+  "khuon": "BT.07.076",
+  "ap_khuon": false,
+  "o": [
+   {
+    "kieu": "ly_do",
+    "buoc": 2,
+    "key": "so le trong",
+    "dap_an": "D",
+    "phuong_an": [
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "zMx và zNy nằm hai phía cát tuyến MN"
+     },
+     {
+      "ma": "LD06",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "trong cùng phía thì bù nhau"
+     },
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai đỉnh M, N khác nhau"
+     },
+     {
+      "ma": "LD04",
+      "dung": true
+     }
+    ]
+   },
+   {
+    "kieu": "ket_luan",
+    "buoc": 5,
+    "key": "\\widehat{xPQ} = \\widehat{PQN}",
+    "dap_an": "A",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{xPQ} = \\widehat{PQN}$",
+      "dung": true
+     },
+     {
+      "text": "$\\widehat{xPQ} = \\widehat{PQy}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "PQy kề bù với PQN, bằng 115°"
+     },
+     {
+      "text": "$\\widehat{xPQ} + \\widehat{PQN} = 180^\\circ$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "so le trong thì bằng nhau"
+     },
+     {
+      "text": "$\\widehat{xPQ} = \\widehat{zMx}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "65° ≠ 70°"
+     }
+    ]
+   },
+   {
+    "kieu": "ly_do",
+    "buoc": 7,
+    "key": "hai góc kề bù",
+    "dap_an": "C",
+    "phuong_an": [
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "PQN và PQy chung cạnh QP"
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh Q"
+     },
+     {
+      "ma": "LD01",
+      "dung": true
+     },
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh Q"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "fa22a40c-faf7-4c71-8360-3e376fbad1e8",
+  "ma": "BT.07.077",
+  "khuon": "BT.07.077",
+  "ap_khuon": false,
+  "o": [
+   {
+    "kieu": "ket_luan",
+    "buoc": 3,
+    "key": "\\widehat{tAx} = \\widehat{ABy}",
+    "dap_an": "B",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{xAB} = \\widehat{ABy}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "130° ≠ 50°"
+     },
+     {
+      "text": "$\\widehat{tAx} = \\widehat{ABy}$",
+      "dung": true
+     },
+     {
+      "text": "$\\widehat{tAx} + \\widehat{ABy} = 180^\\circ$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai góc cùng 50°"
+     },
+     {
+      "text": "$\\widehat{tAx} = \\widehat{xAB}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "tAx và xAB kề bù, 50° ≠ 130°"
+     }
+    ]
+   },
+   {
+    "kieu": "ly_do",
+    "buoc": 6,
+    "key": "hai góc đối đỉnh",
+    "dap_an": "D",
+    "phuong_an": [
+     {
+      "ma": "LD01",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "BCz và z'Ct' không chung cạnh"
+     },
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh C"
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh C"
+     },
+     {
+      "ma": "LD02",
+      "dung": true
+     }
+    ]
+   },
+   {
+    "kieu": "ly_do",
+    "buoc": 9,
+    "key": "đồng vị",
+    "dap_an": "A",
+    "phuong_an": [
+     {
+      "ma": "LD05",
+      "dung": true
+     },
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "BCz và tAx cùng phía cát tuyến AC"
+     },
+     {
+      "ma": "LD06",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "trong cùng phía thì bù nhau, hai góc này bằng nhau"
+     },
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai đỉnh A, C khác nhau"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "4c99f122-475b-4946-a134-536da42b94ff",
+  "ma": "BT.07.090",
+  "khuon": "BT.07.090",
+  "ap_khuon": false,
+  "o": [
+   {
+    "kieu": "ket_luan",
+    "buoc": 2,
+    "key": "\\widehat{B_3} = \\widehat{BAb}",
+    "dap_an": "C",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{B_1} = \\widehat{BAb}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "B1 kề bù với B3, bằng 130°"
+     },
+     {
+      "text": "$\\widehat{B_3} + \\widehat{BAb} = 180^\\circ$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "đồng vị thì bằng nhau"
+     },
+     {
+      "text": "$\\widehat{B_3} = \\widehat{BAb}$",
+      "dung": true
+     },
+     {
+      "text": "$\\widehat{B_2} = \\widehat{BAb}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "B2 = 130°"
+     }
+    ]
+   },
+   {
+    "kieu": "ly_do",
+    "buoc": 3,
+    "key": "kề bù",
+    "dap_an": "B",
+    "phuong_an": [
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "B1 và B3 chung một cạnh"
+     },
+     {
+      "ma": "LD01",
+      "dung": true
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh B"
+     },
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh B"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "538254b2-43a9-4a38-a2e1-44158f785346",
+  "ma": "BT.07.091",
+  "khuon": "BT.07.091",
+  "ap_khuon": false,
+  "o": [
+   {
+    "kieu": "ly_do",
+    "buoc": 2,
+    "key": "hai góc so le trong",
+    "dap_an": "A",
+    "phuong_an": [
+     {
+      "ma": "LD04",
+      "dung": true
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "MNB và aMN nằm hai phía cát tuyến MN"
+     },
+     {
+      "ma": "LD06",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "trong cùng phía thì bù nhau"
+     },
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai đỉnh M, N khác nhau"
+     }
+    ]
+   },
+   {
+    "kieu": "ket_luan",
+    "buoc": 4,
+    "key": "\\widehat{MNP} = \\widehat{PNB} = 60^\\circ",
+    "dap_an": "D",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{MNP} = \\widehat{PNB} = 120^\\circ$",
+      "dung": false,
+      "loi": "E03",
+      "vi_sao_sai": "phân giác chia đôi 120°"
+     },
+     {
+      "text": "$\\widehat{MNP} = \\widehat{PNB} = 30^\\circ$",
+      "dung": false,
+      "loi": "E03",
+      "vi_sao_sai": "chia đôi 120° là 60°, không phải 30°"
+     },
+     {
+      "text": "$\\widehat{MNP} + \\widehat{PNB} = 180^\\circ$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai góc này hợp thành MNB = 120°"
+     },
+     {
+      "text": "$\\widehat{MNP} = \\widehat{PNB} = 60^\\circ$",
+      "dung": true
+     }
+    ]
+   },
+   {
+    "kieu": "ly_do",
+    "buoc": 6,
+    "key": "hai góc đồng vị",
+    "dap_an": "C",
+    "phuong_an": [
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "aPt và aMN cùng phía đường thẳng a"
+     },
+     {
+      "ma": "LD06",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "trong cùng phía thì bù nhau"
+     },
+     {
+      "ma": "LD05",
+      "dung": true
+     },
+     {
+      "ma": "LD01",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai đỉnh P, M khác nhau"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "2bae4804-bfc7-4b08-9b94-9b6d2a185314",
+  "ma": "BT.07.092",
+  "khuon": "BT.07.092",
+  "ap_khuon": false,
+  "o": [
+   {
+    "kieu": "ly_do",
+    "buoc": 7,
+    "key": "hai góc đối đỉnh",
+    "dap_an": "B",
+    "phuong_an": [
+     {
+      "ma": "LD01",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "ECx và DCy không chung cạnh"
+     },
+     {
+      "ma": "LD02",
+      "dung": true
+     },
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh C"
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh C"
+     }
+    ]
+   },
+   {
+    "kieu": "ly_do",
+    "buoc": 9,
+    "key": "hai góc trong cùng phía",
+    "dap_an": "D",
+    "phuong_an": [
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "DCy và CDB cùng một phía cát tuyến CD"
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "đồng vị thì bằng nhau, hai góc này bù nhau"
+     },
+     {
+      "ma": "LD01",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai đỉnh C, D khác nhau"
+     },
+     {
+      "ma": "LD06",
+      "dung": true
+     }
+    ]
+   },
+   {
+    "kieu": "ket_luan",
+    "buoc": 10,
+    "key": "\\widehat{DCy} + \\widehat{CDB} = 180^\\circ",
+    "dap_an": "A",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{DCy} + \\widehat{CDB} = 180^\\circ$",
+      "dung": true
+     },
+     {
+      "text": "$\\widehat{DCy} = \\widehat{CDB}$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "trong cùng phía thì bù nhau"
+     },
+     {
+      "text": "$\\widehat{DCy} + \\widehat{CDB} = 90^\\circ$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "bù nhau là 180°"
+     },
+     {
+      "text": "$\\widehat{ECx} + \\widehat{CDB} = 90^\\circ$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "80° + 100° = 180°"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "9bcf1f3c-6030-4f9d-b26c-e6dddfacc435",
+  "ma": "BT.07.095",
+  "khuon": "BT.07.095",
+  "ap_khuon": false,
+  "o": [
+   {
+    "kieu": "ket_luan",
+    "buoc": 1,
+    "key": "a \\parallel b",
+    "dap_an": "C",
+    "phuong_an": [
+     {
+      "text": "$a \\perp b$",
+      "dung": false,
+      "loi": "E03",
+      "vi_sao_sai": "cùng vuông góc với d thì song song, không vuông góc nhau"
+     },
+     {
+      "text": "$a \\parallel d$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "a vuông góc với d"
+     },
+     {
+      "text": "$a \\parallel b$",
+      "dung": true
+     },
+     {
+      "text": "$d \\parallel b$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "d vuông góc với b"
+     }
+    ]
+   },
+   {
+    "kieu": "ly_do",
+    "buoc": 2,
+    "key": "hai góc đồng vị",
+    "dap_an": "A",
+    "phuong_an": [
+     {
+      "ma": "LD05",
+      "dung": true
+     },
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "D2 và C cùng phía cát tuyến"
+     },
+     {
+      "ma": "LD06",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "trong cùng phía thì bù nhau, hai góc này bằng nhau"
+     },
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai đỉnh D, C khác nhau"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "457995b6-c66b-4e06-bc37-dfd50276c857",
+  "ma": "BT.07.096",
+  "khuon": "BT.07.096",
+  "ap_khuon": false,
+  "o": [
+   {
+    "kieu": "ket_luan",
+    "buoc": 2,
+    "key": "\\widehat{D_2} = \\widehat{C}",
+    "dap_an": "D",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{D_1} = \\widehat{C}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "góc D1 kề bù với góc D2, bằng 110°"
+     },
+     {
+      "text": "$\\widehat{D_2} + \\widehat{C} = 180^\\circ$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "đồng vị thì bằng nhau"
+     },
+     {
+      "text": "$\\widehat{D_2} = \\widehat{D_1}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "70° ≠ 110°"
+     },
+     {
+      "text": "$\\widehat{D_2} = \\widehat{C}$",
+      "dung": true
+     }
+    ]
+   },
+   {
+    "kieu": "ly_do",
+    "buoc": 3,
+    "key": "hai góc đồng vị",
+    "dap_an": "B",
+    "phuong_an": [
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "góc 1 và góc 110° tại E cùng phía cát tuyến"
+     },
+     {
+      "ma": "LD05",
+      "dung": true
+     },
+     {
+      "ma": "LD06",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "trong cùng phía thì bù nhau"
+     },
+     {
+      "ma": "LD01",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai đỉnh khác nhau"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "15fc9f47-f9c2-4f45-a56c-bb2d6e27a013",
+  "ma": "BT.07.100",
+  "khuon": "BT.07.100",
+  "ap_khuon": false,
+  "o": [
+   {
+    "kieu": "ly_do",
+    "buoc": 1,
+    "key": "hai góc trong cùng phía",
+    "dap_an": "C",
+    "phuong_an": [
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "DAC và BCA cùng một phía đường AC"
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "đồng vị thì bằng nhau, hai góc này bù nhau"
+     },
+     {
+      "ma": "LD06",
+      "dung": true
+     },
+     {
+      "ma": "LD01",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai đỉnh A, C khác nhau"
+     }
+    ]
+   },
+   {
+    "kieu": "ket_luan",
+    "buoc": 3,
+    "key": "\\widehat{BAC} = \\widehat{DAC} - \\widehat{DAB}",
+    "dap_an": "B",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{BAC} = \\widehat{DAC} + \\widehat{DAB}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "AB nằm trong góc DAC nên phải trừ"
+     },
+     {
+      "text": "$\\widehat{BAC} = \\widehat{DAC} - \\widehat{DAB}$",
+      "dung": true
+     },
+     {
+      "text": "$\\widehat{BAC} = 180^\\circ - \\widehat{DAC}$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "BAC và DAC không kề bù"
+     },
+     {
+      "text": "$\\widehat{BAC} = \\widehat{DAB}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "90° ≠ 30°"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "c8075412-64ad-4e96-a238-7cfc81fa9595",
+  "ma": "BT.07.145",
+  "khuon": "BT.07.145",
+  "ap_khuon": false,
+  "o": [
+   {
+    "kieu": "ly_do",
+    "buoc": 1,
+    "key": "kề bù",
+    "dap_an": "A",
+    "phuong_an": [
+     {
+      "ma": "LD01",
+      "dung": true
+     },
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "xAa và aAB chung cạnh Aa"
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh A"
+     },
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "cùng đỉnh A"
+     }
+    ]
+   },
+   {
+    "kieu": "ket_luan",
+    "buoc": 5,
+    "key": "\\widehat{xAa} = \\widehat{ABC}",
+    "dap_an": "D",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{aAB} = \\widehat{ABC}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "135° ≠ 45°"
+     },
+     {
+      "text": "$\\widehat{xAa} + \\widehat{ABC} = 180^\\circ$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai góc cùng 45°"
+     },
+     {
+      "text": "$\\widehat{xAa} = \\widehat{aAB}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "45° ≠ 135°"
+     },
+     {
+      "text": "$\\widehat{xAa} = \\widehat{ABC}$",
+      "dung": true
+     }
+    ]
+   },
+   {
+    "kieu": "ly_do",
+    "buoc": 6,
+    "key": "đồng vị",
+    "dap_an": "C",
+    "phuong_an": [
+     {
+      "ma": "LD04",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "xAa và ABC cùng phía cát tuyến AB"
+     },
+     {
+      "ma": "LD06",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "trong cùng phía thì bù nhau"
+     },
+     {
+      "ma": "LD05",
+      "dung": true
+     },
+     {
+      "ma": "LD02",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai đỉnh A, B khác nhau"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "256225e8-6152-427d-a237-4ffc6322392a",
+  "ma": "BT.07.146",
+  "khuon": "BT.07.146",
+  "ap_khuon": false,
+  "o": [
+   {
+    "kieu": "ket_luan",
+    "buoc": 4,
+    "key": "\\widehat{BCz} = \\widehat{nCz} = \\frac{\\widehat{nCd}}{2}",
+    "dap_an": "B",
+    "phuong_an": [
+     {
+      "text": "$\\widehat{BCz} = \\widehat{nCz} = 2\\widehat{nCd}$",
+      "dung": false,
+      "loi": "E03",
+      "vi_sao_sai": "phân giác chia đôi"
+     },
+     {
+      "text": "$\\widehat{BCz} = \\widehat{nCz} = \\frac{\\widehat{nCd}}{2}$",
+      "dung": true
+     },
+     {
+      "text": "$\\widehat{BCz} + \\widehat{nCz} = 180^\\circ$",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai góc hợp thành nCd = 90°"
+     },
+     {
+      "text": "$\\widehat{BCz} = \\widehat{nCd}$",
+      "dung": false,
+      "loi": "E05",
+      "vi_sao_sai": "BCz chỉ bằng nửa nCd"
+     }
+    ]
+   },
+   {
+    "kieu": "ly_do",
+    "buoc": 6,
+    "key": "so le trong",
+    "dap_an": "A",
+    "phuong_an": [
+     {
+      "ma": "LD04",
+      "dung": true
+     },
+     {
+      "ma": "LD05",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "BCz và Cbx nằm hai phía cát tuyến BC"
+     },
+     {
+      "ma": "LD06",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "trong cùng phía thì bù nhau, hai góc này bằng nhau"
+     },
+     {
+      "ma": "LD01",
+      "dung": false,
+      "loi": "E01",
+      "vi_sao_sai": "hai đỉnh C, B khác nhau"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "b9b534f2-dd27-430d-bf4e-30c72d9c5daa",
+  "ma": "BT.07.036",
+  "bo": "1 bước, kể tên góc kề bù — không có suy luận để đục"
+ },
+ {
+  "id": "cdffc914-1490-4a40-87d4-4cc1153c682c",
+  "ma": "BT.07.036",
+  "bo": "1 bước, kể tên góc kề bù — không có suy luận để đục"
+ },
+ {
+  "id": "042c946e-9039-429f-9cfb-30b8645ea701",
+  "ma": "BT.07.036/0",
+  "bo": "1 bước, kể tên góc kề bù — không có suy luận để đục"
+ },
+ {
+  "id": "aac46145-605c-4ccf-8b3c-2386cc384cd1",
+  "ma": "BT.07.036/0",
+  "bo": "1 bước, kể tên góc kề bù — không có suy luận để đục"
+ },
+ {
+  "id": "ce778ccf-898f-4a0b-b0b5-8e7e43349438",
+  "ma": "BT.07.094",
+  "bo": "2 bước, bước 2 là đích"
+ },
+ {
+  "id": "839961e9-459c-4bfb-a4e2-f04d90c56a8e",
+  "ma": "BT.07.101",
+  "bo": "2 bước"
+ },
+ {
+  "id": "c78d4fff-bd9e-4af3-a038-f5921203a57a",
+  "ma": "BT.07.104",
+  "bo": "3 bước nhưng chỉ 1 bước suy luận"
+ },
+ {
+  "id": "540b5b41-60db-4e9e-bb3d-9e3894d96f40",
+  "ma": "BT.07.144",
+  "bo": "1 bước, gọi tên góc"
+ }
+]

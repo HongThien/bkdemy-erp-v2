@@ -82,6 +82,17 @@
 - **Migration:** verify schema TRƯỚC. Sau migrate: grep toàn repo + `pg_trigger` + `pg_proc.prosrc` tìm cột/đường cũ.
   Trigger là "hidden code" — nghi ngờ đầu tiên khi INSERT/UPDATE 400 dù code/RLS/constraint đúng.
 - **React:** reset state ngay trước async query; `useState` cho data hiển thị, `useRef` cho data chỉ trigger logic.
+- **⭐ React — SAU MUTATION KHÔNG RELOAD CẢ DANH SÁCH (Thùy 09-09, dính ≥3 màn).** Phân biệt 2 ca:
+  *đổi ngữ cảnh* (đổi lớp/môn/ngày) ⇒ reset + fetch lại là đúng; *mutation trong cùng ngữ cảnh* (duyệt
+  1 ca, đóng 1 case, sửa 1 dòng) ⇒ **vá đúng phần tử đó tại chỗ** (`setRows(prev => prev.map/filter)`),
+  callback `onXong` **trả về kết quả vừa ghi** để cha vá — KHÔNG `setRows([]); setLoading(true)` rồi quét
+  lại (trắng màn 3s, cuộn về đầu, `key` unmount, ca vừa duyệt lại hiện vì tín hiệu chưa đổi). Người dùng
+  đứng nguyên vị trí, làm ca kế tiếp. Nếu server có thể đổi thêm dòng khác ⇒ refetch NỀN không xoá
+  list (giữ `rows` cũ tới khi có `rows` mới), không bao giờ blank.
+  **Rời màn rồi quay lại = đúng chỗ cũ.** Màn unmount khi đổi tab (`NhanSuHome` render có điều kiện)
+  ⇒ màn "làm việc theo hàng đợi" nhớ **filter + list đã vá + scrollTop + khối đang mở** ở module-level
+  (`const NHO = {...}` sống tới F5), mount lại thì dùng cache, bỏ qua fetch đầu; có nút ↻ ép quét lại.
+  Mẫu: `DuyetBoTroYeuScreen.tsx` / `DashboardHocTapScreen.tsx`.
 - **⭐ DANH TÍNH bám KHOÁ TỰ NHIÊN, KHÔNG bám VỊ TRÍ.** Nối 2 tập bằng "phần tử thứ i ↔ phần tử thứ i"
   là **sai ngay khi một bên thêm/bớt ở giữa** — và hỏng ÂM THẦM (không lỗi, chỉ gắn nhầm). Lưu thẳng
   khoá của bên kia (`ma_cau`, `ma_dang`…), vị trí chỉ để HIỂN THỊ. *(Đã dính: ô chấm ET ↔ câu trong đề
@@ -96,6 +107,31 @@
   gốc — tách bảng thì mọi chỗ resolve phải join 2 nơi, và mã đã xoá bị cấp lại cho bản ghi mới).
 - **Đổi NỘI DUNG con phải bump `updated_at` của cha.** Sửa `tai_lieu_cau` mà không đụng `tai_lieu`
   ⇒ không còn dấu vết thời gian ⇒ chẩn đoán về sau đọc nhầm "chưa ai sửa".
+
+---
+
+## 2.0 ⭐ LUẬT QUERY & TÍNH TOÁN (CEO chốt 30/08/2026 — sau audit 177 chỗ vi phạm)
+
+- **MỌI query tổng hợp và MỌI phép tính nghiệp vụ PHẢI nằm ở Postgres** (function/view/
+  trigger/generated column). **Người gọi hay AI gọi thì CHỈ GỌI HÀM SẴN** — client qua
+  `supabase.rpc(...)`, bot hỏi–đáp qua catalog `scripts/hoidap/tools.mjs`.
+- Cụ thể hoá — trong TS/TSX **CẤM**:
+  - `reduce`/`filter().length`/đếm/cộng/trung bình/tỉ lệ/xếp hạng trên dữ liệu NGHIỆP VỤ
+    fetch về (tiền, điểm, mastery, hiệu suất, SLA, sĩ số…).
+  - fetch ≥2 bảng rồi join bằng JS để ra con số/trạng thái nghiệp vụ.
+  - **tính ở client rồi ghi kết quả vào DB** (nặng nhất — hư dữ liệu vĩnh viễn, đã có
+    tiền lệ: bug tiền thật do limit cắt cụt, xem `AUDIT-client-tinh-toan.md`).
+  - công thức nghiệp vụ tồn tại 2 nơi (JS + SQL, hoặc 2 bản JS) — nguồn công thức DUY
+    NHẤT là function Postgres, tên `fn_*`.
+- Client CÒN ĐƯỢC làm gì: CRUD dòng đơn qua PostgREST · list thô để render · format hiển
+  thị (ngày, tiền tệ, nhãn) · sort/filter thuần túy theo lựa chọn UI đang mở · đếm items
+  đang render (badge). Nghi ngờ ranh giới → mặc định đẩy xuống DB.
+- Quy ước: hàm đọc `fn_<domain>_<viec>` trả bảng/jsonb; hàm ghi có tính toán = RPC
+  transactional (tính + ghi trong CÙNG transaction); cột suy được từ cột khác cùng dòng =
+  generated column; trạng thái suy từ bảng khác = trigger. `security definer` chỉ khi thật
+  cần, mặc định invoker + RLS.
+- Mẫu tham chiếu đúng: `xep_hang_tu_luyen` (rank ở RPC) · `count_cau_by_dang`.
+  Chiến dịch trả nợ 177 chỗ cũ: `AUDIT-client-tinh-toan.md` (lộ trình 4 phase).
 
 ---
 
@@ -116,6 +152,9 @@
     file là có — vẫn là lời hứa. Truyền lúc gọi thì Claude không thể lấy thứ không tồn tại trong file nào.
     Cú pháp + 2 bẫy đã cắn thật (nối `&&` cùng dòng `set` ⇒ dấu cách lọt vào biến; biến ĐÈ `.env` và
     sống hết phiên terminal): xem `.env.example`. `migrate.mjs` tự bắt cả hai và in nguồn chuỗi kết nối.
+  - **✅ 09/09: `claude_ro` ĐÃ TỒN TẠI THẬT** (trước đó chỉ là ý định) — `pg_read_all_data` + policy `claude_ro_select`
+    trên từng bảng RLS (bypassrls KHÔNG gán được từ SQL Editor vì `postgres` Supabase không phải superuser).
+    `migrate.mjs` tự thêm policy cho bảng RLS mới do role ghi sở hữu; bảng tạo tay bởi `postgres` phải chạy DO block tay.
   - **⚠️ TẠO `claude_ro` PHẢI KÈM `bypassrls`** (hoặc policy `for select to claude_ro using (true)` trên
     từng bảng). 116/124 bảng bật RLS với policy `to authenticated`; role thường khớp **0 policy** ⇒
     **mọi SELECT trả 0 dòng, im lặng, không lỗi** — mà `npm run schema` VẪN đúng (nó đọc `pg_catalog`,
@@ -217,6 +256,25 @@
 
 ### Spec build (trong repo — nguồn cho đợt code hiện tại)
 - `spec-kho-v2.md` — Kho Canonical Knowledge (Đại + Hình). Schema đã build vào DB v2.
+- **`spec-giai-bai-ai.md` — ĐỌC BẮT BUỘC trước khi chạy "quét/giải câu chưa có đáp án" bằng AI**
+  (Đại/KHTN/HGT/Hình). Rule quan trọng nhất: bài nhiều ý phải dùng lại kết quả ý trước, không chứng
+  minh lại từ đầu; cách xử lý khi `gia_thiet_rieng` mâu thuẫn hình vẽ; verify trước khi ghi DB.
+- `spec-kho-chuan.md` — KHO CHUẨN (CEO chốt 09/09): 1 cửa duyệt câu hợp nhất, "vào kho" định nghĩa bằng hàm `_kho_cau_chuan`
+  (câu mới phải `da_duyet`; câu cũ tạm dùng tới khi quét), quét lại toàn kho 3 mức (máy → Claude → người). Cửa 2 = form trắc nghiệm.
+- `spec-dien-o.md` — Form ĐIỀN Ô (CEO chốt 09/09): lời giải chi tiết có 2–3 ô trống, mỗi ô 4 phương án (faded worked examples);
+  ô = "vừa thực hiện một phép tính con" tìm bằng máy, tách bước theo dấu `=`; đo theo CÂU (Đ/C/S, S khi sai >60% ô); hiện
+  đúng/sai từng ô; logic chọn form cho HS (yếu → ĐIỀN, ổn → TN; TLN/tự luận để sau).
+- `spec-mcq-form.md` — Phiên bản TRẮC NGHIỆM (distractor theo lỗi) của câu tính toán, pool 1 lớp 7 "Số hữu tỉ".
+  CEO chốt 08/09: MCQ ưu tiên, là form THÊM (bảng `dai_cau_form_tn`), **không đổ `lua_chon` vào câu gốc**.
+- **`spec-mcq-quy-trinh-sinh.md` — ĐỌC BẮT BUỘC trước khi thêm 1 dạng mới vào pipeline MCQ** (mọi khối,
+  không riêng Pool 1). QUY TRÌNH kỹ thuật (khác `spec-mcq-form.md` là quyết định phạm vi): tiêu chí dạng
+  RÕ RÀNG (tự quyết) vs MƠ HỒ (phải hỏi CEO) · kiến trúc `SPECIAL_DANG`/`TEXT_DANG` · cách xử lý 1 `dang_chinh`
+  trộn nhiều sub-shape · quy ước đặt mã rule khi 2 luồng (khối 8-9 / khối 6-7) chạy song song · bẫy kỹ thuật
+  hay gặp. Viết 12/09 theo yêu cầu Thùy tách 2 luồng riêng.
+- **`spec-mcq-tung-phan.md` — ĐỌC trước khi mở context mới làm "trắc nghiệm 1 phần"/từng bước.** Cầu nối
+  cụ thể: "trắc nghiệm 1 phần" = triển khai **Phase 2 (Đại) của `spec-dien-o.md`** đã CEO chốt 09/09 nhưng
+  CHƯA XÂY (`scripts/mcq-dien.mjs` + bảng `dai_cau_form_dien` chưa tồn tại) — không phải spec mới. Kèm hàng
+  đợi cụ thể các dạng đã xác nhận không hợp khuôn "4 đáp án nguyên câu" (12/09).
 - `erp-v2-ui-spec.md` — Shell UI/UX **view-first**: React + Vite + Zustand + Tailwind, **mock data, CHƯA đụng Supabase**. Đơn vị = ROLE; derive nav/queue theo role; 2 loại việc (vận hành derive / phát triển giao tay) tách hẳn. Kho = 1 lá "Bản đồ kiến thức" trong cây Admin.
 ## Luật xoá (bắt buộc)
 Trước khi XOÁ bất cứ gì — xoá file, drop/alter/delete bảng/cột/dòng DB,

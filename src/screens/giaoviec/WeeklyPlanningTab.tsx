@@ -6,12 +6,12 @@
 // (mục tiêu/output/người giao + các nút hold/chuyển/huỷ/nghiệm thu) — card mặt ngoài gọn.
 import { useEffect, useState } from 'react'
 import {
-  chayHousekeeping, listWeeklyPlanning, suaViec, duyetGiaHan, holdViec, boHold,
-  holdQuaHan, type ViecFull,
+  chayHousekeeping, listWeeklyPlanning, suaViec, ganNguoiLam, duyetGiaHan, holdViec, boHold,
+  holdQuaHan, listCapNhat, listNguoiDuocGiao, type ViecFull, type CapNhatViec, type NguoiDuocGiao,
 } from '../../lib/giaoviec'
 import { kyTuanHienTai, kyTuanCuaNgay, nhanKyTuan } from '../../lib/giaoviec-config'
-import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Badge, VIEC_TT, Empty, ErrBar, Modal, Field, NguoiChip, DeadlineChip, fmtNgay } from './ui'
-import { NghiemThuModal, HuyModal, ChuyenModal } from './TaskActions'
+import { CX_INPUT, CX_BTN, CX_BTN_GHOST, Badge, VIEC_TT, Empty, ErrBar, Modal, Field, NguoiChip, NguoiPicker, DeadlineChip, fmtNgay } from './ui'
+import { NghiemThuModal, HuyModal, ChuyenModal, DongCumModal } from './TaskActions'
 import GiaoViecModal, { type GiaoPrefill } from './GiaoViecModal'
 
 export default function WeeklyPlanningTab() {
@@ -26,6 +26,7 @@ export default function WeeklyPlanningTab() {
   const [nghiemModal, setNghiemModal] = useState<ViecFull | null>(null)
   const [huyModal, setHuyModal] = useState<ViecFull | null>(null)
   const [chuyenModal, setChuyenModal] = useState<ViecFull | null>(null)
+  const [dongCumModal, setDongCumModal] = useState<ViecFull | null>(null)
 
   async function reload() {
     setLoading(true); setErr(null)
@@ -44,11 +45,13 @@ export default function WeeklyPlanningTab() {
 
   const conByMe = new Map<string, ViecFull[]>()
   for (const v of rows) if (v.task_me_id) { const a = conByMe.get(v.task_me_id) ?? []; a.push(v); conByMe.set(v.task_me_id, a) }
-  // Task mẹ = mọi root CHƯA gán trực tiếp (nguoi_lam_id null) — dù đã có con hay chưa, LUÔN
-  // hiện dưới dạng cụm (kể cả 0 con) để "+ Tách task con" luôn có mặt, lặp lại được vô hạn.
-  const parents = rows.filter((v) => !v.task_me_id && v.nguoi_lam_id === null)
-  // Root ĐÃ gán trực tiếp (từ "+ Việc phát sinh") = task lẻ đơn giản, không cần cụm mẹ/con.
-  const standalone = rows.filter((v) => !v.task_me_id && v.nguoi_lam_id !== null)
+  // Task mẹ = root CHƯA gán trực tiếp (nguoi_lam_id null, nhánh Backlog→Weekly cũ — LUÔN hiện
+  // cụm kể cả 0 con để "+ Tách task con" luôn có mặt) HOẶC root ĐÃ CÓ CON (story 08-18: task
+  // to giao thẳng 1 người + deadline như task thường — CHÍNH người đó tự tách con từ "Việc của
+  // tôi"; ngay khi có con đầu tiên nó tự thành cụm ở đây, kể cả vẫn còn nguoi_lam_id riêng).
+  const parents = rows.filter((v) => !v.task_me_id && (v.nguoi_lam_id === null || !!v.so_con))
+  // Root có người làm mà CHƯA tách con nào = task lẻ đơn giản, không cần cụm mẹ/con.
+  const standalone = rows.filter((v) => !v.task_me_id && v.nguoi_lam_id !== null && !v.so_con)
 
   function tachConPrefill(me: ViecFull): GiaoPrefill {
     return {
@@ -78,12 +81,22 @@ export default function WeeklyPlanningTab() {
             const dat = cons.filter((c) => c.trang_thai === 'dat').length
             return (
               <div key={me.id} className="rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
-                <button onClick={() => setMeDetail(me)} className="flex w-full flex-wrap items-center gap-x-3 gap-y-1 rounded-xl px-2 py-1.5 text-left hover:bg-slate-50">
-                  <span className="rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold text-white shrink-0">MẸ</span>
-                  <span className="min-w-0 flex-1 truncate font-semibold text-slate-800">{me.tieu_de}</span>
-                  {me.y_tuong_tieu_de && <span className="rounded bg-indigo-50 px-1.5 py-0.5 text-[10px] text-indigo-700 shrink-0">từ backlog</span>}
-                  <DeadlineChip deadline={me.deadline} />
-                  <span className="w-20 shrink-0 text-right text-[12px] font-semibold text-slate-600">{cons.length ? `${dat}/${cons.length} đạt` : 'chưa có con'}</span>
+                {/* 2 DÒNG (CEO 05/09, nhìn trên điện thoại): dòng 1 = tên ĐẦY ĐỦ (không truncate) + tỉ lệ đạt;
+                    dòng 2 = chip nhỏ (người/deadline/trạng thái). Trước đây 1 hàng flex-wrap, tên bị cắt "Tài li…"
+                    còn chip đè nhau trên màn hẹp. */}
+                <button onClick={() => setMeDetail(me)} className="block w-full rounded-xl px-2 py-1.5 text-left hover:bg-slate-50">
+                  <div className="flex items-start gap-2">
+                    <span className="mt-0.5 shrink-0 rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold text-white">MẸ</span>
+                    <span className="min-w-0 flex-1 text-[14px] font-semibold leading-snug text-slate-800">{me.tieu_de}</span>
+                    <span className="shrink-0 text-[12px] font-semibold text-slate-600">{cons.length ? `${dat}/${cons.length} đạt` : 'chưa có con'}</span>
+                  </div>
+                  <div className="mt-1.5 flex flex-wrap items-center gap-1.5 pl-8">
+                    {me.y_tuong_tieu_de && <span className="rounded bg-indigo-50 px-1.5 py-0.5 text-[10px] text-indigo-700">từ backlog</span>}
+                    {/* Mẹ CÓ người làm riêng (story 08-18: giao thẳng 1 người trước khi tách con) — mẹ ownerless cũ (Backlog→Weekly) không hiện chip này. */}
+                    {me.nguoi_lam_id && <NguoiChip ten={me.nguoi_lam_ten} />}
+                    <DeadlineChip deadline={me.deadline} />
+                    {me.trang_thai === 'dat' && <Badge map={VIEC_TT} k="dat" />}
+                  </div>
                 </button>
                 <div className="mt-2 space-y-1.5 border-l-2 border-slate-100 pl-3">
                   {!cons.length ? <div className="py-1.5 text-[12px] italic text-slate-400">Chưa tách con nào.</div>
@@ -104,8 +117,10 @@ export default function WeeklyPlanningTab() {
         <MeDetailModal
           v={rows.find((r) => r.id === meDetail.id) ?? meDetail}
           soCon={(conByMe.get(meDetail.id) ?? []).length}
+          soConDat={(conByMe.get(meDetail.id) ?? []).filter((c) => c.trang_thai === 'dat').length}
           onClose={() => setMeDetail(null)}
           onTachCon={() => { setGiaoPrefill(tachConPrefill(meDetail)); setMeDetail(null) }}
+          onDongCum={() => { setDongCumModal(meDetail); setMeDetail(null) }}
           onSaved={reload}
         />
       )}
@@ -120,11 +135,22 @@ export default function WeeklyPlanningTab() {
           onHuy={() => { setHuyModal(detail); setDetail(null) }}
           onChuyen={() => { setChuyenModal(detail); setDetail(null) }}
           onDuyetGH={(dongY) => act(() => duyetGiaHan(detail.id, dongY), detail.id).then(() => setDetail(null))}
+          onTachCon={!detail.task_me_id ? () => { setGiaoPrefill(tachConPrefill(detail)); setDetail(null) } : undefined}
+          onSaved={reload}
         />
       )}
       {nghiemModal && <NghiemThuModal v={nghiemModal} onClose={() => setNghiemModal(null)} onDone={() => { setNghiemModal(null); reload() }} />}
       {huyModal && <HuyModal v={huyModal} onClose={() => setHuyModal(null)} onDone={() => { setHuyModal(null); reload() }} />}
       {chuyenModal && <ChuyenModal v={chuyenModal} onClose={() => setChuyenModal(null)} onDone={() => { setChuyenModal(null); reload() }} />}
+      {dongCumModal && (
+        <DongCumModal
+          v={dongCumModal}
+          soCon={(conByMe.get(dongCumModal.id) ?? []).length}
+          soConDat={(conByMe.get(dongCumModal.id) ?? []).filter((c) => c.trang_thai === 'dat').length}
+          onClose={() => setDongCumModal(null)}
+          onDone={() => { setDongCumModal(null); reload() }}
+        />
+      )}
     </div>
   )
 }
@@ -134,41 +160,75 @@ function TaskCard({ v, onClick }: { v: ViecFull; onClick: () => void }) {
   const active = !['dat', 'huy', 'chuyen'].includes(v.trang_thai)
   const canhBao = (v.trang_thai === 'hold' && holdQuaHan(v.ngay_hold)) || !!v.gia_han_xin_deadline
   return (
-    <button onClick={onClick} className="flex w-full flex-wrap items-center gap-x-3 gap-y-1.5 rounded-2xl bg-white p-3.5 text-left shadow-sm transition hover:shadow-md">
-      <span className="min-w-0 flex-1 truncate text-[13px] font-medium text-slate-800">{v.tieu_de}</span>
-      <span className="w-36 shrink-0"><NguoiChip ten={v.nguoi_lam_ten} /></span>
-      <span className="w-32 shrink-0"><DeadlineChip deadline={v.deadline} active={active} /></span>
-      <span className="w-28 shrink-0 flex items-center gap-1">
+    // 2 DÒNG (CEO 05/09): dòng 1 = tên đầy đủ + %; dòng 2 = chip nhỏ người · deadline · trạng thái.
+    // Bỏ cột cố định w-36/w-32 — trên màn hẹp chúng đẩy nhau xuống hàng lộn xộn.
+    <button onClick={onClick} className="block w-full rounded-2xl border border-slate-200/70 bg-white p-3 text-left shadow-sm transition hover:shadow-md">
+      <div className="flex items-start gap-2">
+        <span className="min-w-0 flex-1 text-[13.5px] font-medium leading-snug text-slate-800">{v.tieu_de}</span>
+        <span className="shrink-0 text-[12px] font-semibold text-slate-600">{v.phan_tram !== null ? `${v.phan_tram}%` : '—'}</span>
+      </div>
+      <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
+        <NguoiChip ten={v.nguoi_lam_ten} />
+        <DeadlineChip deadline={v.deadline} active={active} />
         <Badge map={VIEC_TT} k={v.trang_thai} />
         {canhBao && <span className="h-1.5 w-1.5 rounded-full bg-rose-500" title="Có việc cần xử lý (gia hạn chờ duyệt / hold quá hạn)" />}
-      </span>
-      <span className="w-14 shrink-0 text-right text-[12px] font-semibold text-slate-600">{v.phan_tram !== null ? `${v.phan_tram}%` : '—'}</span>
+      </div>
     </button>
   )
 }
 
-function TaskDetailModal({ v, busy, onClose, onNghiemThu, onHold, onBoHold, onHuy, onChuyen, onDuyetGH }: {
+export function TaskDetailModal({ v, busy, onClose, onNghiemThu, onHold, onBoHold, onHuy, onChuyen, onDuyetGH, onTachCon, onSaved }: {
   v: ViecFull; busy: boolean; onClose: () => void
   onNghiemThu: () => void; onHold: () => void; onBoHold: () => void; onHuy: () => void; onChuyen: () => void
-  onDuyetGH: (dongY: boolean) => void
+  onDuyetGH: (dongY: boolean) => void; onTachCon?: () => void; onSaved: () => void
 }) {
+  const [sua, setSua] = useState(false)
+  const [tieuDe, setTieuDe] = useState(v.tieu_de)
+  const [mt, setMt] = useState(v.muc_tieu ?? ''); const [out, setOut] = useState(v.output ?? ''); const [dl, setDl] = useState(v.deadline ?? '')
+  const [saving, setSaving] = useState(false); const [errSua, setErrSua] = useState<string | null>(null)
+  async function luu() {
+    setSaving(true); setErrSua(null)
+    try {
+      await suaViec(v.id, { tieu_de: tieuDe.trim() || undefined, muc_tieu: mt.trim() || undefined, output: out.trim() || undefined, deadline: dl || null })
+      setSua(false); onSaved()
+    } catch (e: any) { setErrSua(e?.message ?? String(e)) } finally { setSaving(false) }
+  }
   const Row = ({ k, val }: { k: string; val: React.ReactNode }) => (
     <div className="flex gap-2 text-[13px]"><span className="w-28 shrink-0 text-slate-400">{k}</span><span className="text-slate-700">{val || '—'}</span></div>
   )
   return (
     <Modal title={v.tieu_de} onClose={onClose}>
       <div className="space-y-1.5">
-        <Row k="Trạng thái" val={<Badge map={VIEC_TT} k={v.trang_thai} />} />
-        <Row k="Người làm" val={v.nguoi_lam_ten} />
-        <Row k="Người giao" val={v.nguoi_giao_ten} />
-        <Row k="Khối lượng" val={v.khoi_luong} />
-        <Row k="Mục tiêu" val={v.muc_tieu} />
-        <Row k="Output" val={v.output} />
-        <Row k="Deadline" val={<>{fmtNgay(v.deadline)}{v.deadline_goc && v.deadline !== v.deadline_goc && <span className="ml-1 text-[11px] text-slate-400">(gốc {fmtNgay(v.deadline_goc)})</span>}</>} />
-        <Row k="Gia hạn / Trả lại" val={`${v.so_lan_gia_han}× / ${v.so_lan_tra_lai}×`} />
-        <Row k="Bằng chứng" val={v.evidence ? <a href={v.evidence} target="_blank" rel="noreferrer" className="text-indigo-600 underline break-all">{v.evidence}</a> : '—'} />
-        {v.phan_tram !== null && <Row k="Kết quả" val={`${v.phan_tram}% (tiến độ ${v.tien_do} · chất lượng ${v.chat_luong})`} />}
-        {v.ghi_chu_nghiem_thu && <Row k="Ghi chú" val={v.ghi_chu_nghiem_thu} />}
+        {!sua ? (
+          <>
+            <Row k="Trạng thái" val={<Badge map={VIEC_TT} k={v.trang_thai} />} />
+            <Row k="Người làm" val={v.nguoi_lam_ten} />
+            <Row k="Người giao" val={v.nguoi_giao_ten} />
+            <Row k="Khối lượng" val={v.khoi_luong} />
+            <Row k="Mục tiêu" val={v.muc_tieu} />
+            <Row k="Output" val={v.output} />
+            <Row k="Deadline" val={<>{fmtNgay(v.deadline)}{v.deadline_goc && v.deadline !== v.deadline_goc && <span className="ml-1 text-[11px] text-slate-400">(gốc {fmtNgay(v.deadline_goc)})</span>}</>} />
+            <Row k="Gia hạn / Trả lại" val={`${v.so_lan_gia_han}× / ${v.so_lan_tra_lai}×`} />
+            <Row k="Bằng chứng" val={v.evidence ? <a href={v.evidence} target="_blank" rel="noreferrer" className="text-indigo-600 underline break-all">{v.evidence}</a> : '—'} />
+            {v.phan_tram !== null && <Row k="Kết quả" val={`${v.phan_tram}% (tiến độ ${v.tien_do} · chất lượng ${v.chat_luong})`} />}
+            {v.ghi_chu_nghiem_thu && <Row k="Ghi chú" val={v.ghi_chu_nghiem_thu} />}
+            {!['dat', 'huy', 'chuyen'].includes(v.trang_thai) && (
+              <div className="flex justify-end"><button onClick={() => setSua(true)} className={CX_BTN_GHOST}>Sửa tiêu đề/mục tiêu/output/deadline</button></div>
+            )}
+          </>
+        ) : (
+          <div className="space-y-2">
+            <Field label="Tiêu đề"><input value={tieuDe} onChange={(e) => setTieuDe(e.target.value)} className={CX_INPUT} /></Field>
+            <div className="grid grid-cols-2 gap-2">
+              <Field label="Mục tiêu"><input value={mt} onChange={(e) => setMt(e.target.value)} className={CX_INPUT} /></Field>
+              <Field label="Output"><input value={out} onChange={(e) => setOut(e.target.value)} className={CX_INPUT} /></Field>
+            </div>
+            <Field label="Deadline"><input type="date" value={dl} onChange={(e) => setDl(e.target.value)} className={CX_INPUT} /></Field>
+            {errSua && <div className="rounded-lg bg-rose-50 px-3 py-2 text-[12px] text-rose-600">{errSua}</div>}
+            <div className="flex justify-end gap-2"><button onClick={() => setSua(false)} className={CX_BTN_GHOST}>Thôi</button><button disabled={saving} onClick={luu} className={CX_BTN}>{saving ? '…' : 'Lưu'}</button></div>
+          </div>
+        )}
+        {!['dat', 'huy', 'chuyen'].includes(v.trang_thai) && <CapNhatXem viecId={v.id} />}
 
         <div className="mt-3 flex flex-wrap items-center gap-1.5 border-t border-slate-100 pt-3">
           {v.gia_han_xin_deadline && <>
@@ -189,25 +249,60 @@ function TaskDetailModal({ v, busy, onClose, onNghiemThu, onHold, onBoHold, onHu
             </>
           )}
         </div>
-        <div className="flex justify-end pt-1"><button onClick={onClose} className={CX_BTN_GHOST}>Đóng</button></div>
+        <div className="flex justify-between pt-1">
+          {onTachCon
+            ? <button onClick={onTachCon} className="rounded-md border border-indigo-300 px-2.5 py-1.5 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">+ Tách task con</button>
+            : <span />}
+          <button onClick={onClose} className={CX_BTN_GHOST}>Đóng</button>
+        </div>
       </div>
     </Modal>
   )
 }
 
+// XEM cập nhật tiến độ (story 08-18) — READ-ONLY cho leader, tường thuật do người làm tự ghi
+// trong lúc làm (khác v.tien_do — điểm máy chấm lúc nghiệm thu). Nạp lười khi mở Detail.
+function CapNhatXem({ viecId }: { viecId: string }) {
+  const [ds, setDs] = useState<CapNhatViec[] | null>(null)
+  useEffect(() => { listCapNhat(viecId).then(setDs).catch(() => setDs([])) }, [viecId])
+  if (ds === null) return <div className="text-[12px] text-slate-400">Đang tải cập nhật…</div>
+  if (!ds.length) return null
+  return (
+    <div className="mt-1 space-y-1 rounded-lg bg-slate-50 p-2.5">
+      <div className="text-[11px] font-semibold text-slate-500">📝 Cập nhật từ người làm</div>
+      {ds.map((c) => (
+        <div key={c.id} className="text-[12px]">
+          <span className="text-slate-400">{fmtNgay(c.created_at)}{c.tien_do_bao_cao != null && <> · {c.tien_do_bao_cao}%</>}</span>
+          <span className="ml-1.5 text-slate-700">{c.noi_dung}</span>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 // DETAIL + SỬA task mẹ (container) — mục tiêu/output/deadline ở đây sẽ được các con
 // "theo scope" kế thừa. Mẹ KHÔNG có PIC/khối lượng/trạng thái riêng (con mới là đơn vị làm).
-function MeDetailModal({ v, soCon, onClose, onTachCon, onSaved }: {
-  v: ViecFull; soCon: number; onClose: () => void; onTachCon: () => void; onSaved: () => void
+function MeDetailModal({ v, soCon, soConDat, onClose, onTachCon, onDongCum, onSaved }: {
+  v: ViecFull; soCon: number; soConDat: number; onClose: () => void; onTachCon: () => void; onDongCum: () => void; onSaved: () => void
 }) {
   const [sua, setSua] = useState(false)
   const [mt, setMt] = useState(v.muc_tieu ?? ''); const [out, setOut] = useState(v.output ?? ''); const [dl, setDl] = useState(v.deadline ?? '')
   const [saving, setSaving] = useState(false); const [err, setErr] = useState<string | null>(null)
+  const [nguoi, setNguoi] = useState<NguoiDuocGiao[]>([])
+  const [nguoiLamId, setNguoiLamId] = useState('')
+  const [ganBusy, setGanBusy] = useState(false)
+  useEffect(() => { if (!v.nguoi_lam_id) listNguoiDuocGiao().then(setNguoi).catch(() => {}) }, [v.id, v.nguoi_lam_id])
 
   async function luu() {
     setSaving(true); setErr(null)
     try { await suaViec(v.id, { muc_tieu: mt.trim() || undefined, output: out.trim() || undefined, deadline: dl || null }); setSua(false); onSaved() }
     catch (e: any) { setErr(e?.message ?? String(e)) } finally { setSaving(false) }
+  }
+  async function ganNguoi() {
+    if (!nguoiLamId) return
+    setGanBusy(true); setErr(null)
+    try { await ganNguoiLam(v.id, nguoiLamId); onSaved() }
+    catch (e: any) { setErr(e?.message ?? String(e)) } finally { setGanBusy(false) }
   }
   const Row = ({ k, val }: { k: string; val: React.ReactNode }) => (
     <div className="flex gap-2 text-[13px]"><span className="w-24 shrink-0 text-slate-400">{k}</span><span className="text-slate-700">{val || '—'}</span></div>
@@ -216,13 +311,35 @@ function MeDetailModal({ v, soCon, onClose, onTachCon, onSaved }: {
   return (
     <Modal title={`Task mẹ — ${v.tieu_de}`} onClose={onClose} wide>
       <div className="space-y-2">
-        <p className="text-[12px] text-slate-500">Container — không tự làm, gồm {soCon} task con. Mục tiêu/output ở đây là CHUẨN CHUNG mà con "theo scope" sẽ kế thừa.</p>
+        <p className="text-[12px] text-slate-500">
+          {v.nguoi_lam_id
+            ? (soCon > 0
+              ? 'Giao cho 1 người + đã tách con — bạn CHỦ ĐỘNG đóng cụm khi chắc chắn không còn con nào cần tách thêm (không tự đóng nữa).'
+              : 'Đã giao cho 1 người, chưa tách con nào — vẫn là task bình thường (xem ở "Việc của tôi").')
+            : 'Container — không tự làm, gồm ' + soCon + ' task con.'} Mục tiêu/output ở đây là CHUẨN CHUNG mà con "theo scope" sẽ kế thừa.
+        </p>
         {v.y_tuong_tieu_de && <p className="text-[11px] text-indigo-600">Từ backlog: {v.y_tuong_tieu_de}</p>}
+        {err && !sua && <div className="rounded-lg bg-rose-50 px-3 py-2 text-[12px] text-rose-600">{err}</div>}
+        {!v.nguoi_lam_id && (
+          <div className="rounded-xl border border-indigo-200 bg-indigo-50/50 p-2.5">
+            <div className="mb-1.5 text-[12px] font-medium text-indigo-700">Giao thẳng task này cho 1 người (rồi người đó tự tách con)</div>
+            {!nguoi.length ? <span className="text-[12px] text-slate-400">Bạn chưa quản lý ai trong cây tổ chức (chỉ tự giao cho mình).</span> : (
+              <>
+                <NguoiPicker nguoi={nguoi} value={nguoiLamId} onChange={setNguoiLamId} />
+                <div className="mt-1.5 flex justify-end"><button disabled={!nguoiLamId || ganBusy} onClick={ganNguoi} className={CX_BTN}>{ganBusy ? 'Đang gán…' : 'Gán người làm'}</button></div>
+              </>
+            )}
+          </div>
+        )}
         {!sua ? (
           <>
+            {v.nguoi_lam_id && <Row k="Người làm" val={<NguoiChip ten={v.nguoi_lam_ten} />} />}
+            {v.nguoi_lam_id && <Row k="Trạng thái" val={<Badge map={VIEC_TT} k={v.trang_thai} />} />}
+            {v.trang_thai === 'dat' && <Row k="Kết quả" val={`${v.phan_tram}% (tiến độ ${v.tien_do} · chất lượng ${v.chat_luong})`} />}
             <Row k="Mục tiêu" val={v.muc_tieu} />
             <Row k="Output" val={v.output} />
             <Row k="Deadline" val={fmtNgay(v.deadline)} />
+            {v.nguoi_lam_id && !['dat', 'huy', 'chuyen'].includes(v.trang_thai) && <CapNhatXem viecId={v.id} />}
             <div className="flex justify-end gap-2 pt-1">
               <button onClick={() => setSua(true)} className={CX_BTN_GHOST}>Sửa mục tiêu/output/deadline</button>
             </div>
@@ -239,7 +356,14 @@ function MeDetailModal({ v, soCon, onClose, onTachCon, onSaved }: {
           </div>
         )}
         <div className="flex justify-between border-t border-slate-100 pt-3">
-          <button onClick={onTachCon} className="rounded-md border border-indigo-300 px-2.5 py-1.5 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">+ Tách task con</button>
+          <div className="flex gap-2">
+            <button onClick={onTachCon} className="rounded-md border border-indigo-300 px-2.5 py-1.5 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">+ Tách task con</button>
+            {soCon > 0 && v.trang_thai !== 'dat' && (
+              <button onClick={onDongCum} className="rounded-md border border-emerald-300 px-2.5 py-1.5 text-[12px] font-medium text-emerald-700 hover:bg-emerald-50">
+                {soConDat === soCon ? '✓ Đóng cụm' : `Đóng cụm (${soConDat}/${soCon} con đạt)`}
+              </button>
+            )}
+          </div>
           <button onClick={onClose} className={CX_BTN_GHOST}>Đóng</button>
         </div>
       </div>

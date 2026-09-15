@@ -335,10 +335,19 @@ function KhongBuModal({ item, onClose, onDone }: { item: CanBuItem; onClose: () 
   )
 }
 
+// +60 phút cho giờ dạng "HH:MM" — gợi ý mặc định giờ kết thúc (bổ trợ thường ~1 tiếng), người dùng vẫn
+// sửa được trước khi lưu.
+function cong60(hhmm: string): string {
+  const [h, m] = hhmm.split(':').map(Number)
+  const t = (h * 60 + m + 60) % 1440
+  return `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`
+}
+
 function XepModal({ item, onClose, onDone }: { item: CanBuItem; onClose: () => void; onDone: () => void }) {
   const [mode, setMode] = useState<'moi' | 'cosan'>('moi')
   const [ngay, setNgay] = useState(homNayVN())
   const [gio, setGio] = useState('')
+  const [gioKetThuc, setGioKetThuc] = useState('')
   const [phong, setPhong] = useState('')
   const [gv, setGv] = useState<string | null>(null)
   const [ta, setTa] = useState<string | null>(null)
@@ -351,7 +360,7 @@ function XepModal({ item, onClose, onDone }: { item: CanBuItem; onClose: () => v
     listNhanSu().then(setNss).catch(() => {}); buoiBuSapToi().then(setSapToi).catch(() => {})
     listPhong(true).then(setPhongs).catch(() => {})
     // Mặc định lấy từ LỚP của buổi nghỉ: TA (người bổ trợ mặc định) + GV + giờ + phòng.
-    goiYBuoiBu(item.buoi_me_id).then((g) => { setTa(g.ta_id); setGv(g.gv_id); if (g.gio) setGio(String(g.gio).slice(0, 5)); if (g.phong) setPhong(g.phong) }).catch(() => {})
+    goiYBuoiBu(item.buoi_me_id).then((g) => { setTa(g.ta_id); setGv(g.gv_id); if (g.gio) { const gg = String(g.gio).slice(0, 5); setGio(gg); setGioKetThuc(cong60(gg)) } if (g.phong) setPhong(g.phong) }).catch(() => {})
   }, [item.buoi_me_id]) // eslint-disable-line
   const nsOpts = useMemo(() => nss.map((n) => ({ id: n.id, label: n.ho_ten, sub: n.ma_ns })), [nss])
   const phongOpts = useMemo(() => phongs.map((p) => ({ id: p.ma_phong, label: p.ten_phong })), [phongs])
@@ -361,7 +370,7 @@ function XepModal({ item, onClose, onDone }: { item: CanBuItem; onClose: () => v
       let makeupId = pickId
       if (mode === 'moi') {
         if (!ngay) { alert('Chọn ngày'); setBusy(false); return }
-        makeupId = await taoBuoiBu({ ngay, gio_bat_dau: gio || null, phong: phong || null, nguoi_day: gv, nguoi_day_tg: ta })
+        makeupId = await taoBuoiBu({ ngay, gio_bat_dau: gio || null, gio_ket_thuc: gioKetThuc || null, phong: phong || null, nguoi_day: gv, nguoi_day_tg: ta })
       } else if (!makeupId) { alert('Chọn buổi bù có sẵn'); setBusy(false); return }
       await themHSVaoBuoiBu(makeupId!, [{ hoc_sinh_id: item.hoc_sinh_id, buoi_me_id: item.buoi_me_id }])
       onDone()
@@ -376,9 +385,10 @@ function XepModal({ item, onClose, onDone }: { item: CanBuItem; onClose: () => v
       </div>
       {mode === 'moi' ? (
         <div className="space-y-3">
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-4 gap-3">
             <div><label className="mb-1 block text-[13px] font-medium text-slate-600">Ngày *</label><input type="date" className={inputCls} value={ngay} onChange={(e) => setNgay(e.target.value)} /></div>
-            <div><label className="mb-1 block text-[13px] font-medium text-slate-600">Giờ</label><input type="time" className={inputCls} value={gio} onChange={(e) => setGio(e.target.value)} /></div>
+            <div><label className="mb-1 block text-[13px] font-medium text-slate-600">Giờ bắt đầu</label><input type="time" className={inputCls} value={gio} onChange={(e) => setGio(e.target.value)} /></div>
+            <div><label className="mb-1 block text-[13px] font-medium text-slate-600">Giờ kết thúc</label><input type="time" className={inputCls} value={gioKetThuc} onChange={(e) => setGioKetThuc(e.target.value)} /></div>
             <div><label className="mb-1 block text-[13px] font-medium text-slate-600">Phòng</label><SearchSelect value={phong || null} onChange={(v) => setPhong(v ?? '')} options={phongOpts} placeholder="Chọn phòng…" /></div>
           </div>
           {/* Nhãn theo ĐÚNG người nhận việc — xem ghi chú đầu SuaBuoiModal.tsx. */}

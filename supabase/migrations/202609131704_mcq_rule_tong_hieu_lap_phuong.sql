@@ -1,0 +1,23 @@
+-- MCQ FORM — 17 rule cho "Biến đổi tổng/hiệu thành tích ứng dụng tổng-hiệu hai lập phương" (T108020501,
+-- khối 8, 54 câu, trộn 4 sub-shape quanh 1 cặp hằng đẳng thức A³∓B³=(A∓B)(A²±AB+B²)). Đáp số là 1 BIỂU
+-- THỨC (có thể là 2 mảnh nối bằng ";") — TEXT_DANG, canon riêng `chuanHoaTongHieuLapPhuong`.
+insert into dai_mcq_rule (ma, ten, mo_ta, vi_du, nhom, ap_dung, du_phong) values
+('R242','Tổng/hiệu 2 lập phương: nhầm dấu hằng đẳng thức','Dùng nhầm công thức tổng thay vì hiệu (hoặc ngược lại) — đổi cả dấu nhân tử đầu và dấu hạng giữa của nhân tử bậc hai','$8x^3-27$ đúng=$(2x-3)(4x^2+6x+9)$ → nhầm ra $(2x+3)(4x^2-6x+9)$','khai_niem','{T108020501}',false),
+('R243','Tổng/hiệu 2 lập phương: quên căn bậc ba hệ số A','Không lấy căn bậc ba của hệ số bậc 3, dùng thẳng hệ số A làm hệ số biến trong cả 2 nhân tử','$8x^3-27$ đúng=$(2x-3)(4x^2+6x+9)$ → nhầm ra $(8x-3)(64x^2+24x+9)$ (dùng thẳng A=8 thay vì căn bậc ba=2)','khai_niem','{T108020501}',false),
+('R244','Tổng/hiệu 2 lập phương: nhầm dấu hạng giữa nhân tử 2','Nhân tử đầu đúng nhưng nhầm dấu của hạng tử giữa (AB) trong nhân tử bậc hai','$8x^3-27$ đúng=$(2x-3)(4x^2+6x+9)$ → nhầm ra $(2x-3)(4x^2-6x+9)$','khai_niem','{T108020501}',false),
+('R245','Tổng/hiệu 2 lập phương: lệch 1 đơn vị hằng số cuối','Rule dự phòng — đúng cấu trúc nhưng hằng số cuối (B²) của nhân tử bậc hai lệch 1 đơn vị','Đúng=$(2x-3)(4x^2+6x+9)$ → nhầm ra $(2x-3)(4x^2+6x+10)$','tinh','{T108020501}',true),
+('R246','Hoàn thiện tổng lập phương: quên lập phương B','Hằng số cần điền vào LHS là B³ nhưng chỉ dùng thẳng B (quên lập phương)','$x^3+\ldots=(x+3)(\ldots)$ đúng LHS=$27$ → nhầm ra $3$','khai_niem','{T108020501}',false),
+('R247','Hoàn thiện tổng lập phương: nhầm bình phương thay vì lập phương','Hằng số cần điền vào LHS là B³ nhưng nhầm tính B² (bình phương thay vì lập phương)','$x^3+\ldots=(x+3)(\ldots)$ đúng LHS=$27$ → nhầm ra $9$','khai_niem','{T108020501}',false),
+('R248','Hoàn thiện tổng lập phương: nhầm dấu hạng giữa nhân tử 2','Nhân tử 2 cần điền đúng ra $x^2-Bx+B^2$ nhưng nhầm dấu hạng giữa thành $+Bx$','$(x+3)(\ldots)$ đúng nhân tử 2=$x^2-3x+9$ → nhầm ra $x^2+3x+9$','khai_niem','{T108020501}',false),
+('R249','Hoàn thiện tổng lập phương: lệch 1 đơn vị hằng số cuối','Rule dự phòng — nhân tử 2 đúng cấu trúc nhưng hằng số cuối lệch 1 đơn vị','Đúng=$x^2-3x+9$ → nhầm ra $x^2-3x+10$','tinh','{T108020501}',true),
+('R250','Nhân tử 2 (tổng/hiệu lập phương): nhầm dấu hạng giữa','Cho sẵn nhân tử 1 (vd $x-2$), nhân tử 2 cần điền nhầm dấu hạng giữa','$(x-2)(\ldots)$ đúng=$x^2+2x+4$ → nhầm ra $x^2-2x+4$','khai_niem','{T108020501}',false),
+('R251','Nhân tử 2 (tổng/hiệu lập phương): quên bình phương B','Nhân tử 2 cần điền dùng thẳng B thay vì B² ở hằng số cuối','$(x-2)(\ldots)$ đúng=$x^2+2x+4$ → nhầm ra $x^2+2x+2$','khai_niem','{T108020501}',false),
+('R252','Nhân tử 2 (tổng/hiệu lập phương): lệch 1 đơn vị hằng số cuối','Rule dự phòng — đúng cấu trúc nhưng hằng số cuối lệch 1 đơn vị','Đúng=$x^2+2x+4$ → nhầm ra $x^2+2x+5$','tinh','{T108020501}',true),
+('R253','Nhân tử 2 (tổng/hiệu lập phương): lệch 1 đơn vị hệ số hạng giữa','Đúng cấu trúc nhưng hệ số của hạng tử giữa lệch 1 đơn vị (khác trục với R252, cứu ca B=1 khiến R251 vô hiệu)','Đúng=$x^2+2x+4$ → nhầm ra $x^2+3x+4$','tinh','{T108020501}',false),
+('R254','Hoàn thiện tổng/hiệu lập phương: nhầm dấu nhân tử đầu','Nhân tử 2 đã cho sẵn (kể cả hạng giữa), nhưng nhân tử 1 cần điền nhầm dấu','$(\ldots)(x^2+4x+16)$ đúng nhân tử 1=$x-4$ → nhầm ra $x+4$ (không khớp dấu hạng giữa đã cho)','khai_niem','{T108020501}',false),
+('R255','Hoàn thiện tổng/hiệu lập phương: quên bình phương B','Nhân tử 1 đúng, nhưng hằng số cuối của nhân tử 2 dùng thẳng B thay vì B²','$(x-4)(x^2+4x+\ldots)$ đúng=$16$ → nhầm ra $4$','khai_niem','{T108020501}',false),
+('R256','Hoàn thiện tổng/hiệu lập phương: lệch 1 đơn vị hằng số cuối','Rule dự phòng — đúng cấu trúc nhưng hằng số cuối của nhân tử 2 lệch 1 đơn vị','Đúng=$(x-4)(x^2+4x+16)$ → nhầm ra $(x-4)(x^2+4x+17)$','tinh','{T108020501}',true),
+('R257','Hoàn thiện tổng/hiệu lập phương: lệch 1 đơn vị hằng số nhân tử đầu','Đúng cấu trúc nhưng hằng số B trong nhân tử đầu lệch 1 đơn vị','Đúng=$(x-4)(x^2+4x+16)$ → nhầm ra $(x-5)(x^2+4x+16)$','tinh','{T108020501}',false),
+('R258','Hoàn thiện tổng lập phương: lệch 1 đơn vị hệ số hạng giữa','Nhân tử 2 đúng cấu trúc nhưng hệ số của hạng tử giữa lệch 1 đơn vị (rescue, cứu ca B=1 khiến R246/R247 vô hiệu)','Đúng=$x^2-3x+9$ → nhầm ra $x^2-4x+9$','tinh','{T108020501}',false)
+on conflict (ma) do update set ten = excluded.ten, mo_ta = excluded.mo_ta, vi_du = excluded.vi_du,
+  nhom = excluded.nhom, ap_dung = excluded.ap_dung, du_phong = excluded.du_phong;

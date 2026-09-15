@@ -34,6 +34,7 @@ export type BienThe = {
   id: string; baitoan_id: string; mon: string; kieu: 'doi_so' | 'doi_dinh'
   de_bai: string; anh: string | null; loi_giai: string | null; anh_loi_giai: string | null
   ghi_chu: string | null; thu_tu: number
+  nguon_giai?: string | null; da_duyet?: boolean | null; giai_method?: string | null // xem loiGiaiDungDuoc
   lua_id: string | null       // cùng lua_id = cùng một LỨA clone chuỗi (1 map điểm); null = biến thể lẻ
   tien_de_ids: string[]        // id các biến thể tiền đề TRỰC TIẾP (trong lứa) — ĐÓNG BĂNG lúc clone, không derive
 }
@@ -42,6 +43,8 @@ export type CachGiai = {
   // tiền đề/bổ đề là CẤU TRÚC, phải lưu được dù chưa phân loại Dạng. Đừng gate lưu-cách-giải theo dang_id.
   id: string; baitoan_id: string; ten: string | null; dang_id: string | null
   loi_giai: string | null; anh_loi_giai: string | null; la_mac_dinh: boolean; thu_tu: number
+  // Nhãn nguồn/duyệt (mig 0044/202609041826): dùng cho luật "lời giải Claude phải duyệt" — xem loiGiaiDungDuoc.
+  nguon_giai?: string | null; da_duyet?: boolean | null; giai_method?: string | null
 }
 export type DangHinh = { id: string; mon: string; ma: string; ten: string; cap: 'loai_ch' | 'dang'; cha_id: string | null; thu_tu: number; khoi: string | null }
 export type BoDe = { id: string; mon: string; ma: string; ten: string; phat_bieu: string | null; thu_tu: number; khoi: string | null }
@@ -290,6 +293,12 @@ export function cachMacDinh(L: Luoi, baiToanId: string): CachGiai | null {
   if (!ds.length) return null
   return ds.find((c) => c.la_mac_dinh) ?? ds.slice().sort((a, b) => a.thu_tu - b.thu_tu)[0]
 }
+/** LỜI GIẢI DÙNG ĐƯỢC (CEO chốt 09/09/2026: "Gemini giải tạm đạt · Claude giải KHÔNG đạt, phải duyệt · sau này tất cả
+ *  phải duyệt"). Lời giải do luồng Claude Code ghi (`giai_method='claude_code'`) mà chưa `da_duyet` = CHƯA ĐẠT: kho vẫn
+ *  hiện để người duyệt nhưng kèm nhãn đỏ, KHÔNG in, KHÔNG làm đáp án tham chiếu, KHÔNG làm mẫu cho Claude giải bài khác.
+ *  CẤU TRÚC (tiền đề/dạng/cấp/bổ đề) vẫn đi theo cách mặc định như cũ — luật này chỉ gate NỘI DUNG lời giải. */
+export const loiGiaiDungDuoc = (c: { giai_method?: string | null; da_duyet?: boolean | null } | null | undefined): boolean =>
+  !!c && !(c.giai_method === 'claude_code' && !c.da_duyet)
 export const cachCua = (L: Luoi, baiToanId: string) => L.cach.filter((c) => c.baitoan_id === baiToanId)
 export const tienDeCuaCach = (L: Luoi, cachId: string) => L.tienDe.filter((t) => t.cach_id === cachId).map((t) => t.tien_de_id)
 export const boDeCuaCach = (L: Luoi, cachId: string) => L.cachBoDe.filter((t) => t.cach_id === cachId).map((t) => t.bo_de_id)
@@ -822,7 +831,8 @@ export function dapAnHaiBac(L: Luoi, y: Y): { bac: 'chuan_xac' | 'tham_chieu' | 
   if (y.loi_giai || y.anh_loi_giai) return { bac: 'chuan_xac', loiGiai: y.loi_giai, anh: y.anh_loi_giai }
   const bt = y.baitoan_id ? L.baiToan.find((b) => b.id === y.baitoan_id) : null
   if (!bt) return { bac: 'chua_co', loiGiai: null, anh: null }
-  const c = cachMacDinh(L, bt.id)
+  const c0 = cachMacDinh(L, bt.id)
+  const c = loiGiaiDungDuoc(c0) ? c0 : null // lời giải Claude chưa duyệt ⇒ coi như chưa có (không in, không tham chiếu)
   // Hình tham chiếu: ảnh lời giải của cách → thiếu thì hình cấu hình của MÔ HÌNH (node không có hình riêng).
   // Đề chuẩn = giả thiết đầy đủ của mô hình + câu hỏi (derive), không đọc cột de_bai_chuan cũ nữa.
   return { bac: 'tham_chieu', loiGiai: c?.loi_giai ?? null, anh: c?.anh_loi_giai ?? anhCuaBaiToan(L, bt.id), deBaiChuan: bt.phat_bieu }
@@ -1065,4 +1075,96 @@ export const hinhMoHinhLyThuyet = {
     const { error } = await supabase.from('hinh_mo_hinh_ly_thuyet').delete().eq('mo_hinh_id', moHinhId)
     if (error) throw error
   },
+}
+
+// ══════════════════ GIẢI BIẾN THỂ BẰNG AI (27/08 — Story 2, song song với Đại) ══════════════════
+// Biến thể (đổi số/đổi đỉnh) thiếu loi_giai — mẫu tham khảo = cách giải MẶC ĐỊNH của đúng bài toán
+// gốc sinh ra biến thể đó (sát hơn cả "cùng dạng" bên Đại, vì đây chính là bài toán nó bắt nguồn).
+// KHÔNG xử lý bài toán chưa có cách giải nào (không có mẫu để bám — bài toán khác, khó hơn, để riêng).
+export type BienTheChuaGiai = { id: string; baitoan_id: string; de_bai: string; kieu: string }
+export async function listBienTheChuaGiai(khoi?: string): Promise<BienTheChuaGiai[]> {
+  let q = supabase.from('hinh_baitoan_bien_the').select('id, baitoan_id, de_bai, kieu, hinh_baitoan!inner(mo_hinh_id, hinh_mo_hinh!inner(khoi))').is('loi_giai', null).limit(LIMIT)
+  if (khoi) q = q.eq('hinh_baitoan.hinh_mo_hinh.khoi', khoi)
+  const { data, error } = await q
+  if (error) throw error
+  return (data ?? []).map((r: any) => ({ id: r.id, baitoan_id: r.baitoan_id, de_bai: r.de_bai, kieu: r.kieu }))
+}
+// Mẫu tham khảo: cách giải mặc định của bài toán gốc. null = chưa có cách giải nào — bỏ qua, không giải.
+export async function layCachMacDinhBaiToan(baitoanId: string): Promise<CachGiai | null> {
+  const { data, error } = await supabase.from('hinh_cach_giai').select('*').eq('baitoan_id', baitoanId).limit(LIMIT)
+  if (error) throw error
+  const ds = ((data ?? []) as CachGiai[]).filter(loiGiaiDungDuoc) // mẫu tham khảo phải là lời giải ĐÃ đạt
+  if (!ds.length) return null
+  return ds.find((c) => c.la_mac_dinh) ?? ds.slice().sort((a, b) => a.thu_tu - b.thu_tu)[0]
+}
+export async function giaiBienTheAI(id: string, loiGiai: string): Promise<void> {
+  const { error } = await supabase.from('hinh_baitoan_bien_the').update({ loi_giai: loiGiai, nguon_giai: 'ai', giai_method: 'claude_code' }).eq('id', id)
+  if (error) throw error
+}
+
+// ══ TAB "CHƯA CÓ LỜI GIẢI" — nhánh HÌNH (Thùy 04/09: "cuối cùng vẫn là từng bài một"; mig 202609041826/1835) ══
+// 1 "bài" = bài toán gốc (node — chưa có cách giải nào có nội dung) HOẶC biến thể (chưa có loi_giai/anh_loi_giai).
+// List/đặt/ghi đều là function Postgres; đề = giả thiết mô hình + phát biểu, khối = mô hình.
+export type HinhLoaiBai = 'baitoan' | 'bien_the'
+export type HinhChuaGiai = {
+  loai: HinhLoaiBai; id: string; ma: string; khoi: string; mo_hinh_ma: string; mo_hinh_ten: string
+  gia_thiet: string; de_bai: string; anh: string | null; kieu: string | null; created_at: string
+  yeu_cau_id: string | null; yeu_cau_at: string | null; yeu_cau_ghi_chu: string | null
+  yeu_cau_nguoi_giai: string | null; yeu_cau_nguoi_giai_ten: string | null; yeu_cau_trang_thai: string | null
+}
+export async function listHinhChuaGiai(khoi: string): Promise<HinhChuaGiai[]> {
+  const { data, error } = await supabase.rpc('fn_hinh_cau_chua_giai', { p_khoi: khoi, p_limit: LIMIT })
+  if (error) throw error
+  return (data ?? []) as HinhChuaGiai[]
+}
+export async function datClaudeGiaiHinh(loai: HinhLoaiBai, ids: string[], ghiChu: string, nguoiYeuCau: string): Promise<number> {
+  const { data, error } = await supabase.rpc('fn_hinh_dat_giai', { p_loai: loai, p_ids: ids, p_ghi_chu: ghiChu, p_nguoi: nguoiYeuCau })
+  if (error) throw error
+  return Number(data ?? 0)
+}
+export async function huyYeuCauGiaiHinh(loai: HinhLoaiBai, yeuCauId: string): Promise<void> {
+  const tbl = loai === 'baitoan' ? 'hinh_baitoan_yeu_cau_giai' : 'hinh_bien_the_yeu_cau_giai'
+  const { error } = await supabase.from(tbl).delete().eq('id', yeuCauId).is('xu_ly_at', null)
+  if (error) throw error
+}
+// Người tự giải: 1 RPC transactional — node: điền vào cách giải rỗng sẵn có / tạo cách mặc định; biến thể: update.
+export async function luuLoiGiaiNguoiHinh(loai: HinhLoaiBai, id: string, a: { loiGiai: string | null; anh: string | null }): Promise<void> {
+  const { error } = await supabase.rpc('fn_hinh_luu_loi_giai_nguoi', { p_loai: loai, p_id: id, p_loi_giai: a.loiGiai, p_anh: a.anh })
+  if (error) throw error
+}
+
+// Cho màn "Duyệt lời giải AI" gộp (xem api.ts listCauChoDuyetLoiGiai cho Đại/KHTN/HGT) — Hình
+// bảng khác hẳn (bien_the, không phải cau_hoi) nên hàm riêng, KHÔNG ép vào registry chung.
+// chiMoi: true = chỉ lời giải MỚI (giai_method='claude_code') · false/undefined = backlog cũ.
+export type BienTheChoDuyetLoiGiai = { id: string; khoi: string; deBai: string; loiGiai: string }
+export async function listBienTheChoDuyetLoiGiai(khoi?: string, chiMoi?: boolean): Promise<BienTheChoDuyetLoiGiai[]> {
+  let q = supabase.from('hinh_baitoan_bien_the')
+    .select('id, de_bai, loi_giai, hinh_baitoan!inner(hinh_mo_hinh!inner(khoi))')
+    .eq('nguon_giai', 'ai').eq('da_duyet', false).limit(LIMIT)
+  q = chiMoi ? q.eq('giai_method', 'claude_code') : q.is('giai_method', null)
+  if (khoi) q = q.eq('hinh_baitoan.hinh_mo_hinh.khoi', khoi)
+  const { data, error } = await q
+  if (error) throw error
+  return (data ?? []).map((r: any) => ({ id: r.id, khoi: r.hinh_baitoan?.hinh_mo_hinh?.khoi ?? '', deBai: r.de_bai, loiGiai: r.loi_giai ?? '' }))
+}
+export async function duyetLoiGiaiBienThe(id: string, nguoiDuyet: string): Promise<void> {
+  const { error } = await supabase.from('hinh_baitoan_bien_the').update({ da_duyet: true, duyet_boi: nguoiDuyet, duyet_at: new Date().toISOString() }).eq('id', id)
+  if (error) throw error
+}
+
+// Cách giải của BÀI TOÁN GỐC (khác biến thể — tầng trên, xem migration 202608271400).
+export type CachGiaiChoDuyetLoiGiai = { id: string; khoi: string; deBai: string; loiGiai: string }
+export async function listCachGiaiChoDuyetLoiGiai(khoi?: string, chiMoi?: boolean): Promise<CachGiaiChoDuyetLoiGiai[]> {
+  let q = supabase.from('hinh_cach_giai')
+    .select('id, loi_giai, hinh_baitoan!baitoan_id!inner(phat_bieu, hinh_mo_hinh!inner(khoi))')
+    .eq('nguon_giai', 'ai').eq('da_duyet', false).limit(LIMIT)
+  q = chiMoi ? q.eq('giai_method', 'claude_code') : q.is('giai_method', null)
+  if (khoi) q = q.eq('hinh_baitoan.hinh_mo_hinh.khoi', khoi)
+  const { data, error } = await q
+  if (error) throw error
+  return (data ?? []).map((r: any) => ({ id: r.id, khoi: r.hinh_baitoan?.hinh_mo_hinh?.khoi ?? '', deBai: r.hinh_baitoan?.phat_bieu ?? '', loiGiai: r.loi_giai ?? '' }))
+}
+export async function duyetLoiGiaiCachGiai(id: string, nguoiDuyet: string): Promise<void> {
+  const { error } = await supabase.from('hinh_cach_giai').update({ da_duyet: true, duyet_boi: nguoiDuyet, duyet_at: new Date().toISOString() }).eq('id', id)
+  if (error) throw error
 }

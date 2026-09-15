@@ -162,11 +162,23 @@ ok(deXuatLevelKienThuc({ levelHienTai: 3, dangs: [D({ daMo: true, retests: [{ va
 const dong = deXuatLevelKienThuc({ levelHienTai: 1, dangs: [D({ score: 0.6, daMo: true })], bayGio: NOW })
 ok(dong.deXuat === 0 && eq(dong.bangChung.dien, []), 'retest lên 0.6 (>0.5) → dạng rút khỏi diện, không đòi Đạt 0.8')
 
-// Xuống level: L1 = 1 nhịp đủ · L2/L3 = phải 2 nhịp (kiểm độ BỀN, chống hiểu-giả).
+// Xuống level: L1 = 1 nhịp đủ · L2/L3 = phải 2 nhịp (kiểm độ BỀN, chống hiểu-giả) — nhưng khi đủ
+// 2 nhịp thì về THẲNG L0, không dừng ở L1 nữa (Thùy 08-17: case đóng dứt điểm, không lửng lơ thêm 1 vòng).
 ok(deXuatLevelKienThuc({ levelHienTai: 1, dangs: [], nhipOnLienTiep: 1, bayGio: NOW }).deXuat === 0, 'L1 + diện rỗng 1 nhịp → về L0 (lỗ nông)')
 ok(deXuatLevelKienThuc({ levelHienTai: 2, dangs: [], nhipOnLienTiep: 1, bayGio: NOW }).deXuat === 2, 'L2 + rỗng MỚI 1 nhịp → GIỮ L2, chờ buổi sau retest lại')
-ok(deXuatLevelKienThuc({ levelHienTai: 2, dangs: [], nhipOnLienTiep: 2, bayGio: NOW }).deXuat === 1, 'L2 + rỗng 2 nhịp → hạ 1 nấc về L1 (không nhảy thẳng L0)')
-ok(deXuatLevelKienThuc({ levelHienTai: 3, dangs: [], nhipOnLienTiep: 2, bayGio: NOW }).deXuat === 1, 'L3 + rỗng 2 nhịp → về L1')
+ok(deXuatLevelKienThuc({ levelHienTai: 2, dangs: [], nhipOnLienTiep: 2, bayGio: NOW }).deXuat === 0, 'L2 + rỗng 2 nhịp → về THẲNG L0 (08-17: bỏ điểm dừng L1)')
+ok(deXuatLevelKienThuc({ levelHienTai: 3, dangs: [], nhipOnLienTiep: 2, bayGio: NOW }).deXuat === 0, 'L3 + rỗng 2 nhịp → về THẲNG L0')
+
+// ── KÊNH ⑤ — SO TB LỚP (điểm ET/BTVN tổng, Thùy 08-17) ────────────────────────────
+// Tín hiệu ĐỘC LẬP với diện dạng cụ thể: 1 trong 2 (diện HOẶC so-lớp) chạm là đủ.
+ok(deXuatLevelKienThuc({ levelHienTai: 0, dangs: [], coSoLopKem: true, bayGio: NOW }).deXuat === 1, '⑤ so-lớp kém dù diện dạng rỗng → vẫn đề xuất L1')
+const soLop = deXuatLevelKienThuc({ levelHienTai: 0, dangs: [], coSoLopKem: true, bayGio: NOW })
+ok(soLop.lyDo.some((l) => l.includes('⑤')), '⑤ đề xuất kèm lý do nêu rõ nguồn so-lớp')
+ok(deXuatLevelKienThuc({ levelHienTai: 0, dangs: [], coSoLopKem: false, bayGio: NOW }).deXuat === 0, 'không dạng yếu, không so-lớp kém → không đề xuất (kiểm chứng ⑤ không tự bật sai)')
+// diện rỗng nhưng ⑤ vẫn kém → KHÔNG được coi là "diện rỗng" để hạ level.
+ok(deXuatLevelKienThuc({ levelHienTai: 1, dangs: [], coSoLopKem: true, nhipOnLienTiep: 1, bayGio: NOW }).deXuat === 1, '⑤ vẫn kém → dù diện dạng rỗng, KHÔNG hạ level (chưa hết vấn đề)')
+// dạng vẫn yếu nhưng ⑤ đã hết kém → vẫn đề xuất theo diện dạng bình thường (không đổi hành vi cũ).
+ok(deXuatLevelKienThuc({ levelHienTai: 0, dangs: [D({})], coSoLopKem: false, bayGio: NOW }).deXuat === 1, '⑤ tắt, diện dạng vẫn có → hành vi cũ không đổi')
 
 // Máy chỉ ĐỀ XUẤT: luôn kèm lý do + bằng chứng để NGƯỜI duyệt (PLAN §1.F).
 const kq = deXuatLevelKienThuc({ levelHienTai: 0, dangs: [D({ scoreEtMt: 0.4, score: 0.6 })], bayGio: NOW })

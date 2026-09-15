@@ -12,6 +12,10 @@ import PrintView from './PrintView'
 import MTPrintView from './MTPrintView'
 import DeThiPrintView from './DeThiPrintView'
 import BTPrintView from './BTPrintView'
+import HinhPrintView, { type BanIn as HinhBanIn, type HinhPerHS } from '../kho/hinh/HinhPrintView'
+import { resolveBanIn as resolveBanInHinh, resolveEtBansHinh } from '../kho/hinh/GiaoTrinhScreen'
+import { getHinhBuoiMeta, listGtBai as listGtBaiHinh } from '../../lib/kho/hinhGiaoTrinh'
+import { loadLuoi } from '../../lib/kho/hinh'
 
 declare global { interface Window { __pvState?: string } }
 
@@ -62,5 +66,41 @@ export default function PrintJobPage({ params }: { params: Record<string, string
   if (loai === 'de_thi') return <DeThiPrintView id={id} {...sig} />
   if (loai === 'mt' || loai === 'mt_buoi') return <MTPrintView id={id} {...sig} />
   if (loai === 'bo_tro') return <BTPrintView id={id} {...sig} />
+  // ⭐ 22/08 — Hình: id = buoiId (KHÔNG phải tai_lieu.id), cần thêm `phan` (worker truyền qua hash —
+  // xem processHinhJob() trong worker/index.mjs). HinhPrintView nhận `ban: BanIn` dựng sẵn (khác Đại
+  // id-based) nên phải resolve TRƯỚC ở đây, không dispatch thẳng như các nhánh trên.
+  if (loai === 'hinh_gt_buoi') return <HinhPrintJobBridge buoiId={id} phan={(params.phan as 'lop' | 'nha' | 'et') ?? 'lop'} {...sig} />
   return <PrintView id={id} {...sig} />
+}
+
+function HinhPrintJobBridge({ buoiId, phan, onClose, onReady, onRenderErr }: {
+  buoiId: string; phan: 'lop' | 'nha' | 'et'; onClose: () => void; onReady: () => void; onRenderErr: (msg: string) => void
+}) {
+  const [ban, setBan] = useState<HinhBanIn | null>(null)
+  const [perHS, setPerHS] = useState<HinhPerHS[] | undefined>(undefined)
+  const [err, setErr] = useState<string | null>(null)
+  useEffect(() => {
+    let alive = true
+    ;(async () => {
+      const meta = await getHinhBuoiMeta(buoiId)
+      if (!meta) throw new Error('Không tìm thấy buổi Hình ' + buoiId)
+      const L = await loadLuoi(meta.khoi)
+      // ⭐ 23/08 — ET: 3 "mã đề" bản trống (resolveEtBansHinh), KHÔNG phải 1 phiếu đơn như lop/nha.
+      if (phan === 'et') {
+        const ngayFmt = meta.ngay ? meta.ngay.split('-').reverse().join('/') : ''
+        const r = await resolveEtBansHinh(L, buoiId, meta.tenLop ?? '', ngayFmt)
+        if (alive) { setBan(r.ban); setPerHS(r.perHS) }
+        return
+      }
+      const bais = await listGtBaiHinh(buoiId)
+      const ten = meta.tenLop && meta.ngay ? `${meta.tenLop} ${meta.ngay.split('-').reverse().join('/')} · ${meta.tieuDe || 'Buổi'}` : `${meta.tenGiaoTrinh} — ${meta.tieuDe || 'Buổi'}`
+      const b = await resolveBanInHinh(L, ten, bais, phan)
+      if (alive) setBan(b)
+    })().catch((e) => { if (alive) { const msg = e instanceof Error ? e.message : String(e); setErr(msg); onRenderErr(msg) } })
+    return () => { alive = false }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [buoiId, phan])
+  if (err) return <p style={{ padding: 20 }}>Lỗi: {err}</p>
+  if (!ban) return <p style={{ padding: 20 }}>⏳ đang dựng dữ liệu Hình…</p>
+  return <HinhPrintView ban={ban} perHS={perHS} onClose={onClose} onReady={onReady} onRenderErr={onRenderErr} />
 }

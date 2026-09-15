@@ -3,11 +3,11 @@ import {
   luotPrepCuaKhoang, getPrepRow, tickPrepChecklist, dongPrep, chamPrepGV, chotPrepLeader, uploadOpsAnh,
   type PrepLuot, type PrepRow, type PrepLuotKey,
 } from '../../lib/opsvanhanh'
-import { readClipboardImageFile } from '../kho/ui'
+import { readClipboardImageFile } from '../../lib/clipboard'
 import { tuanCuaNgay, khoangTuan, homNayVN, nhanTuan, thuCuaNgay, ddmmVN } from '../../lib/tuan'
 import { useIsMobile } from '../../hooks/useIsMobile'
 import { getMyScope } from '../../lib/nhansu'
-import { useStore } from '../../store/useStore'
+import { myQuyen } from '../../lib/quyen'
 import ImgZoom from '../../components/ImgZoom'
 
 const hhmm = (t: string) => t.slice(0, 5)
@@ -25,14 +25,16 @@ export default function PrepScreen() {
   // màn này, kể cả OPS (người chỉ nên tick checklist + đóng) — OPS tự chấm/tự chốt được luôn, sai vai.
   // Gate lại: chỉ GV/TG (có lớp trực tiếp) hoặc quản lý (có cấp dưới)/admin mới thấy 2 cụm control đó;
   // OPS thuần chỉ thấy checklist + đóng (đúng việc của OPS).
-  const quyen = useStore((s) => s.quyen)
+  // Quyền đọc TRỰC TIẾP qua myQuyen() thay vì useStore (08-29, app OPS): useStore kéo mock/fixtures +
+  // state không liên quan vào bundle ops — màn này giờ sống ở CẢ 2 bundle (ERP + app OPS) nên tự lo quyền.
   const [canChamVaChot, setCanChamVaChot] = useState(false)
   const [myId, setMyId] = useState<string | null>(null)
   const [scopeLoaded, setScopeLoaded] = useState(false)
   useEffect(() => {
-    getMyScope().then((s) => { setCanChamVaChot(!!quyen?.laAdmin || !!s?.trucTiep.length || !!s?.laQuanLy); setMyId(s?.nhanSu.id ?? null) })
+    Promise.all([getMyScope(), myQuyen().catch(() => null)])
+      .then(([s, q]) => { setCanChamVaChot(!!q?.laAdmin || !!s?.trucTiep.length || !!s?.laQuanLy); setMyId(s?.nhanSu.id ?? null) })
       .catch(() => { setCanChamVaChot(false); setMyId(null) }).finally(() => setScopeLoaded(true))
-  }, [quyen])
+  }, [])
   // ⭐ Fix 07-19 (Thùy báo LẦN 2 "vẫn hiện task của nhân sự khác"): bản trước mặc định theo VAI (OPS →
   // của tôi, GV/leader → tất cả) — nhưng người bấm vào từ card "Việc của tôi" LUÔN đang muốn xem VIỆC
   // CỦA HỌ trước tiên, bất kể vai gì khác họ đang kiêm. Đổi mặc định thành LUÔN "của tôi", không suy theo

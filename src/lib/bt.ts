@@ -37,10 +37,29 @@ export async function getBT(id: string): Promise<BT> {
   if (error) throw error
   return mapBT(data)
 }
-// list(hocSinhId) → BT của riêng 1 HS. Không truyền → TOÀN BỘ Kho BT (màn danh sách chính).
-export async function listBT(hocSinhId?: string): Promise<BT[]> {
-  let q = supabase.from('tai_lieu').select('*, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs)').eq('loai', 'bo_tro').order('created_at', { ascending: false }).limit(LIMIT)
-  if (hocSinhId) q = q.eq('hoc_sinh_id', hocSinhId)
+// ⭐ 09-10 (Thùy: "Kho tài liệu/builder tải cực lâu khi số lượng lớn") — mặc định chỉ tải PAGE_MOI_NHAT
+// dòng mới nhất (BT cũng tích luỹ không giới hạn như ET/BTVN — mỗi lần giao bài 1 HS là 1 dòng). `search`
+// quét rộng hơn (PAGE_SEARCH) VÀ khớp theo tên/mã HS chứ không chỉ tên BT (search theo cột nhúng
+// `hoc_sinh.ho_ten`/`ma_hs` không gộp được vào 1 câu `.or()` PostgREST cùng cột gốc `ten`, nên tra HS
+// khớp trước rồi lọc `hoc_sinh_id in (...)` gộp OR với `ten ilike`).
+const PAGE_MOI_NHAT = 20
+const PAGE_SEARCH = 200
+// list(hocSinhId) → BT của riêng 1 HS (không cap — 1 HS chỉ có vài chục BT, không phải nguồn chậm).
+// Không truyền hocSinhId → TOÀN BỘ Kho BT (màn danh sách chính) — đây mới là danh sách cần trang hoá.
+export async function listBT(hocSinhId?: string, opts?: { before?: string; search?: string }): Promise<BT[]> {
+  let q = supabase.from('tai_lieu').select('*, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs)').eq('loai', 'bo_tro').order('created_at', { ascending: false })
+  if (hocSinhId) { q = q.eq('hoc_sinh_id', hocSinhId).limit(LIMIT); const { data, error } = await q; if (error) throw error; return (data ?? []).map(mapBT) }
+  const s = opts?.search?.trim()
+  if (s) {
+    const { data: hs } = await supabase.from('hoc_sinh').select('id').or(`ho_ten.ilike.%${s}%,ma_hs.ilike.%${s}%`).limit(500)
+    const hsIds = ((hs ?? []) as { id: string }[]).map((r) => r.id)
+    const orParts = [`ten.ilike.%${s}%`]
+    if (hsIds.length) orParts.push(`hoc_sinh_id.in.(${hsIds.join(',')})`)
+    q = q.or(orParts.join(',')).limit(PAGE_SEARCH)
+  } else {
+    if (opts?.before) q = q.lt('created_at', opts.before)
+    q = q.limit(PAGE_MOI_NHAT)
+  }
   const { data, error } = await q
   if (error) throw error
   return (data ?? []).map(mapBT)

@@ -16,13 +16,16 @@ import { createPortal } from 'react-dom'
 import * as api from '../../../lib/kho/api'
 import type { BaiToan, Luoi } from '../../../lib/kho/hinh'
 import { MathText, inp } from '../ui'
+import { MathTextarea } from '../../../components/math/MathTextarea'
 import { AnhInput, Btn, Cap, Fig, IngestBaiButton, Ma, OcrButton, tron } from './hinhUi'
 
-export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClose, onDone }: {
+export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDeMacDinh, onClose, onDone }: {
   L: Luoi
   moHinhMacDinh?: string | null
   sua?: BaiToan
   phatBieuGoi?: string          // mô tả từ hàng chờ điền sẵn (M5 → M2)
+  tienDeMacDinh?: string        // "+ Tạo bài kế tiếp" từ 1 node cụ thể — ghim ĐÚNG node đó làm tiền đề
+                                 // chính, thay vì để nodeTruoc() đoán theo cấp cao nhất trong mô hình.
   onClose: () => void
   onDone: () => Promise<void>
 }) {
@@ -53,6 +56,7 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
   // làm tiền đề CHÍNH. Người thêm/bớt tự do sau.
   const [tienDe, setTienDe] = useState<string[]>(() => {
     if (cachCu) return api.tienDeCuaCach(L, cachCu.id)
+    if (tienDeMacDinh) return [tienDeMacDinh]
     const truoc = api.nodeTruoc(L, sua?.mo_hinh_id ?? moHinhMacDinh ?? '')
     return truoc ? [truoc.id] : []
   })
@@ -72,10 +76,25 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
   const dangLa = L.dang.filter((d) => d.cap === 'dang' || (d.cap === 'loai_ch' && !L.dang.some((x) => x.cha_id === d.id)))
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
   const giaThietMoHinh = api.giaThietDayDu(L, moHinhId)
-  const giaThietFull = gtThayThe ? (gtRieng.trim() || giaThietMoHinh) : [giaThietMoHinh, gtRieng.trim()].filter(Boolean).join('; ')
-  const anhMoHinh = api.anhCauHinhCua(L, moHinhId)
-  // Hình ĐỀ BÀI đang hiệu lực (node có hình riêng thì lấy nó, không thì mượn mô hình) — làm mặc định cho bước giải.
-  const anhDeHienTai = dungHinhRieng && anhRieng ? anhRieng : anhMoHinh
+  // ⭐ Nền kế thừa THẬT (Thùy 17/08): bài có tiền đề thì kế thừa giả thiết của tiền đề CHÍNH (cấp cao nhất
+  // trong `tienDe` đang chọn — CÙNG quy tắc `chaKeThua()` mà SoanTaiLieu/HinhPrintView dùng lúc IN), không
+  // phải mô hình. Trước đây ô xem trước này LUÔN gọi `giaThietDayDu(mô hình)` — sai với cái đã in ra thật,
+  // khiến người sửa bài KHÔNG THẤY tiền đề tác động, tưởng vẫn kế thừa mô hình dù đã gắn tiền đề.
+  // Không có tiền đề nào (mảng `tienDe` rỗng) → nền vẫn là mô hình (đúng hành vi khi không có "bài trước").
+  const chaKeThuaChinh = useMemo(() => {
+    const bts = tienDe.map((id) => L.baiToan.find((b) => b.id === id)).filter(Boolean) as BaiToan[]
+    return bts.sort((a, b) => b.cap - a.cap || b.ma.localeCompare(a.ma))[0] ?? null
+  }, [tienDe, L])
+  const giaThietNen = chaKeThuaChinh ? api.giaThietBaiToan(L, chaKeThuaChinh.id) : giaThietMoHinh
+  const giaThietFull = gtThayThe ? (gtRieng.trim() || giaThietNen) : [giaThietNen, gtRieng.trim()].filter(Boolean).join('; ')
+  // ⭐ FIX (Thùy 28/08: "Hình của bài node sau phải được kế thừa mặc định từ node trước") — CÙNG LUẬT với
+  // giả thiết ngay trên (chaKeThuaChinh): TRƯỚC đây nhảy thẳng lên hình MÔ HÌNH (anhCauHinhCua), bỏ qua
+  // hình RIÊNG của chính node tiền đề (anh_chuan) — node cha có vẽ hình riêng khác hình mô hình thì node
+  // con vẫn xem preview ra hình mô hình, sai với cái sẽ in ra thật (mọi nơi hiển thị khác đều dùng
+  // anhCuaBaiToan() chạy qua chaKeThua trước, xem hinh.ts:198). Không có tiền đề nào ⇒ vẫn về hình mô hình.
+  const anhNen = chaKeThuaChinh ? api.anhCuaBaiToan(L, chaKeThuaChinh.id) : api.anhCauHinhCua(L, moHinhId)
+  // Hình ĐỀ BÀI đang hiệu lực (node có hình riêng thì lấy nó, không thì kế thừa) — làm mặc định cho bước giải.
+  const anhDeHienTai = dungHinhRieng && anhRieng ? anhRieng : anhNen
 
   // Cấp gợi ý = 1 + max(cap tiền đề); không tiền đề ⇒ 1.
   const capGoi = useMemo(() => (tienDe.length ? 1 + Math.max(...tienDe.map((id) => L.baiToan.find((b) => b.id === id)?.cap ?? 0)) : 1), [tienDe, L])
@@ -123,12 +142,17 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
     } catch (e: any) { setLoi(e.message ?? String(e)); setSaving(false) }
   }
 
-  const themTienDe = (id: string) => setTienDe((a) => (a.includes(id) ? a : [...a, id]))
-  const boTienDe = (id: string) => { setTienDe((a) => a.filter((x) => x !== id)); setVanIds((s) => { const n = new Set(s); n.delete(id); return n }) }
+  // ⭐ 07/09 (Thùy: "sửa gì thì sơ đồ chả update theo gì cả"): node ĐANG SỬA khoá cấp = "đã chốt" (dòng
+  // 43-45) — đúng cho lúc chỉ sửa câu hỏi/lời giải, nhưng nếu NGAY TRONG PHIÊN SỬA NÀY người chủ động
+  // đổi tiền đề, cấp cũ hết còn ý nghĩa "đã chốt theo cấu trúc hiện tại" nữa. Không mở khoá thì node
+  // đứng NGUYÊN cột cũ, mất hết dây nối — nhìn như bồ côi giữa sơ đồ dù DB đã lưu đúng tiền đề mới.
+  // Mở khoá lại (như node MỚI) mỗi lần đổi tiền đề; gõ tay cấp sau đó vẫn khoá lại bình thường.
+  const themTienDe = (id: string) => { setTienDe((a) => (a.includes(id) ? a : [...a, id])); setCapTuNhap(false) }
+  const boTienDe = (id: string) => { setTienDe((a) => a.filter((x) => x !== id)); setVanIds((s) => { const n = new Set(s); n.delete(id); return n }); setCapTuNhap(false) }
   const toggleVan = (id: string) => setVanIds((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
 
   return createPortal(
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-3 sm:p-6" onClick={onClose}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-3 sm:p-6" onClick={(e) => e.stopPropagation()}>
       <div className="flex h-[92vh] w-[95vw] max-w-6xl flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         {/* Header */}
         <div className="flex items-center gap-3 border-b border-slate-200 px-5 py-3">
@@ -141,13 +165,15 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
         <div className="border-b border-slate-200 bg-indigo-50/40 px-5 py-2.5">
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">✨ Up cả bài (ảnh/PDF) → AI tách đề + lời giải</span>
-            <div className="ml-auto"><IngestBaiButton onResult={({ de_bai, loi_giai }) => {
-              if ((phatBieu.trim() || loiGiai.trim()) && !confirm('Ghi đè câu hỏi + lời giải hiện tại bằng bản AI tách?')) return
+            <div className="ml-auto"><IngestBaiButton onResult={({ de_bai, loi_giai, anh: anhMoi }) => {
+              const doiHinh = anhMoi && anhMoi !== anhRieng
+              if ((phatBieu.trim() || loiGiai.trim() || doiHinh) && !confirm(`Ghi đè câu hỏi + lời giải${doiHinh ? ' + hình vẽ' : ''} hiện tại bằng bản AI tách?`)) return
               if (de_bai) setPhatBieu(de_bai)
               if (loi_giai) setLoiGiai(loi_giai)
+              if (anhMoi) { setDungHinhRieng(true); setAnhRieng(anhMoi) }
             }} /></div>
           </div>
-          <p className="mt-1 text-[11px] leading-snug text-slate-500">AI đọc ảnh/PDF (nhiều trang được) → đổ <b>đề</b> vào ô Câu hỏi + <b>lời giải</b> vào ô Lời giải. <b>Hình vẽ vẫn dán tay</b> như cũ. Giả thiết đã mượn của mô hình — nếu bản tách lặp lại giả thiết ở đầu câu hỏi, xoá bớt phần đó rồi soát lại.</p>
+          <p className="mt-1 text-[11px] leading-snug text-slate-500">AI đọc ảnh/PDF (nhiều trang được) → đổ <b>đề</b> vào ô Câu hỏi + <b>lời giải</b> vào ô Lời giải, tự nhận diện + cắt <b>hình vẽ</b> (nếu có, bật "hình riêng" luôn — bỏ tick nếu muốn mượn hình mô hình). Giả thiết đã mượn của mô hình — nếu bản tách lặp lại giả thiết ở đầu câu hỏi, xoá bớt phần đó rồi soát lại.</p>
         </div>
 
         {/* Thân — 2 cột */}
@@ -161,10 +187,12 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
 
             <div className={`rounded-lg border px-3 py-2.5 ${gtThayThe ? 'border-slate-200 bg-slate-50/60' : 'border-teal-200 bg-teal-50/60'}`}>
               <div className={`mb-1 text-[10.5px] font-semibold uppercase tracking-wide ${gtThayThe ? 'text-slate-400' : 'text-teal-700'}`}>
-                {gtThayThe ? 'Giả thiết của mô hình (tham chiếu — bài này sẽ THAY bằng câu riêng)' : 'Giả thiết đầy đủ của mô hình (kế thừa)'}
+                {gtThayThe
+                  ? `Giả thiết ${chaKeThuaChinh ? `của tiền đề ${chaKeThuaChinh.ma}` : 'của mô hình'} (tham chiếu — bài này sẽ THAY bằng câu riêng)`
+                  : `Giả thiết đầy đủ ${chaKeThuaChinh ? `kế thừa từ tiền đề ${chaKeThuaChinh.ma}` : 'của mô hình'} (kế thừa)`}
               </div>
               <div className="text-[13px] leading-relaxed text-slate-700">
-                {giaThietMoHinh ? <MathText>{giaThietMoHinh}</MathText> : <span className="text-slate-400">mô hình chưa có giả thiết</span>}
+                {giaThietNen ? <MathText>{giaThietNen}</MathText> : <span className="text-slate-400">{chaKeThuaChinh ? 'tiền đề chưa có giả thiết' : 'mô hình chưa có giả thiết'}</span>}
               </div>
             </div>
 
@@ -182,7 +210,7 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
                   </button>
                 ))}
               </div>
-              <textarea className={`${inp} mt-2 h-16`} value={gtRieng} onChange={(e) => setGtRieng(e.target.value)}
+              <MathTextarea className={`${inp} h-16`} wrapClassName="mt-2" value={gtRieng} onChange={setGtRieng}
                 placeholder={gtThayThe ? 'Giả thiết ĐẦY ĐỦ tự viết riêng cho bài này…' : 'Phần giả thiết THÊM riêng cho bài này (không bắt buộc)…'} />
               <div className="mt-1.5"><OcrButton onText={setGtRieng} /></div>
               {(gtThayThe || gtRieng.trim()) && (
@@ -217,15 +245,15 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
                 </>
               ) : (
                 <>
-                  <Fig src={anhMoHinh} cap={anhMoHinh ? 'Hình cấu hình — mượn của mô hình' : undefined} h="h-52" />
-                  <p className="mt-1 text-[11px] text-slate-400">Mặc định dùng chung hình mô hình (sửa ở form <b>mô hình</b>). Tích ô trên để vẽ hình riêng cho bài toán này.</p>
+                  <Fig src={anhNen} cap={anhNen ? `Hình ${chaKeThuaChinh ? `kế thừa từ tiền đề ${chaKeThuaChinh.ma}` : 'cấu hình — mượn của mô hình'}` : undefined} h="h-52" />
+                  <p className="mt-1 text-[11px] text-slate-400">Mặc định {chaKeThuaChinh ? <>kế thừa hình của tiền đề <b>{chaKeThuaChinh.ma}</b> (nó không có hình riêng thì leo tiếp lên mô hình)</> : <>dùng chung hình mô hình (sửa ở form <b>mô hình</b>)</>}. Tích ô trên để vẽ hình riêng cho bài toán này.</p>
                 </>
               )}
             </div>
 
             <div>
               <Lbl>Câu hỏi / yêu cầu <span className="font-normal normal-case text-slate-400">— bộ chữ chuẩn của họ (△ABC, trực tâm H, chân đường cao D·E·F)</span></Lbl>
-              <textarea className={`${inp} h-20`} value={phatBieu} onChange={(e) => setPhatBieu(e.target.value)}
+              <MathTextarea className={`${inp} h-20`} value={phatBieu} onChange={setPhatBieu}
                 placeholder="Chứng minh tứ giác $BFEC$ nội tiếp đường tròn đường kính $BC$" />
               <div className="mt-1.5"><OcrButton onText={setPhatBieu} /></div>
               {gan.length > 0 && (
@@ -242,7 +270,7 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
 
             <div>
               <Lbl>Giả thiết phụ <span className="font-normal normal-case text-slate-400">— dữ kiện lẻ / vẽ thêm cho riêng bài này (không bắt buộc)</span></Lbl>
-              <textarea className={`${inp} h-16`} value={giaThietPhu} onChange={(e) => setGiaThietPhu(e.target.value)}
+              <MathTextarea className={`${inp} h-16`} value={giaThietPhu} onChange={setGiaThietPhu}
                 placeholder="gọi $I$ là giao điểm của $AC$ và $BD$" />
               <p className="mt-1 text-[11px] leading-snug text-slate-400">Đa số là <b>vẽ thêm</b> — hiện ở ĐỀ khi bài hỏi node này, ở BƯỚC giải khi node ẩn. Nhiều dữ kiện phụ ⇒ nên tách thành mô hình riêng.</p>
             </div>
@@ -260,7 +288,7 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, onClos
 
             <div>
               <Lbl>Lời giải</Lbl>
-              <textarea className={`${inp} h-28`} value={loiGiai} onChange={(e) => setLoiGiai(e.target.value)} />
+              <MathTextarea className={`${inp} h-28`} value={loiGiai} onChange={setLoiGiai} />
               <div className="mt-1.5"><OcrButton onText={setLoiGiai} /></div>
             </div>
             <div>

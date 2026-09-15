@@ -3,6 +3,7 @@
 // Bố cục: DỮ LIỆU bên TRÁI (bảng theo buổi + tổng quan mastery) · NHẬN XÉT bên PHẢI (3 ô + thanh mức kết luận).
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { ReportCardView, renderCardToUrl } from './ReportCard'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listLop, listHSCuaLop } from '../../lib/nhansu'
 import { getTongQuanHS, type TongQuanHS } from '../../lib/mastery'
@@ -10,8 +11,6 @@ import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, getKhoiRan
 import { tenHienThiDs } from '../../lib/hoten'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
-// Thang 5 cho skill bar (GV tự chọn). index 0..4 ↔ mức 1..5.
-const SKILL_MUC = ['Cần cố gắng', 'Trung bình', 'Khá', 'Tốt', 'Xuất sắc'] as const
 const curYM = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` }
 const shiftYM = (ym: string, delta: number) => { const [y, m] = ym.split('-').map(Number); const i = y * 12 + (m - 1) + delta; return `${Math.floor(i / 12)}-${String(i % 12 + 1).padStart(2, '0')}` }
 const NOP_LABEL: Record<string, string> = { nop_dung_han: 'Đúng hạn', nop_muon: 'Nộp muộn', xin_phep: 'Xin phép', khong_lam: 'Không làm' }
@@ -71,6 +70,39 @@ export default function ReportPHScreen() {
       .map((h: any) => ({ id: h.id, ho_ten: h.ho_ten, ma_hs: h.ma_hs ?? null, anh_url: h.anh_url ?? null })))).catch(() => setRoster([]))
   }, [lopId])
 
+  // Chốt CẢ LỚP: chụp ảnh + công bố từng HS (HS chưa nhập nội dung tự bỏ qua). Chạy trong trình duyệt.
+  const [bulk, setBulk] = useState<{ done: number; total: number; cur: string; published: number; skipped: number; failed: number; running: boolean } | null>(null)
+  async function bulkCongBoLop() {
+    if (!lopId || !roster.length) return
+    const lopTen = lopOpts.find((o) => o.id === lopId)?.label ?? ''
+    if (!confirm(`Chốt & công bố báo cáo tháng ${Number(ym.split('-')[1])}/${ym.split('-')[0]} cho CẢ LỚP ${lopTen} (${roster.length} HS)?\nHS chưa nhập nội dung sẽ tự bỏ qua. Việc này chụp ảnh từng em nên mất vài phút — đừng đóng tab.`)) return
+    const gvName = await getGVChinhLop(lopId).catch(() => null)
+    let published = 0, skipped = 0, failed = 0
+    setBulk({ done: 0, total: roster.length, cur: '', published, skipped, failed, running: true })
+    for (let i = 0; i < roster.length; i++) {
+      const h = roster[i]
+      setBulk({ done: i, total: roster.length, cur: h.ho_ten, published, skipped, failed, running: true })
+      try {
+        const bc = await getBaoCaoPH(h.id, mon, ym)
+        const hasContent = !!(bc.nl_band || bc.ket_luan || bc.ket_luan_muc || bc.muc_tieu || bc.thai_do || bc.kien_thuc_ky_nang || bc.muc_kien_thuc || bc.muc_thai_do
+          || [bc.cs_thai_do, bc.cs_tap_trung, bc.cs_tiep_thu, bc.cs_tu_duy, bc.cs_ky_nang, bc.cs_van_dung, bc.cs_vuot_kho].some((x) => x != null))
+        if (!hasContent) { skipped++; continue }
+        const [rows, tq, khoiRank, lopRank, heRank] = await Promise.all([
+          getReportBuoiHS(h.id, mon, ym),
+          getTongQuanHS(h.id, mon, { ym }),
+          getKhoiRankDiemMT(h.id, mon, ym),
+          getLopRankDiemMT(h.id, lopId, mon, ym),
+          getHeRankDiemMT(h.id, mon, ym),
+        ])
+        const missCount = rows.filter((r) => r.btvnTrangThai === 'khong_lam' || r.btvnTrangThai === 'xin_phep').length
+        const url = await renderCardToUrl({ hsName: h.ho_ten, hsImg: h.anh_url, lopTen, mon, ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank }, `${h.id}_${ym}`)
+        await upsertBaoCaoPH(h.id, mon, ym, { cong_bo_at: new Date().toISOString(), anh_bao_cao_url: url })
+        published++
+      } catch { failed++ }
+    }
+    setBulk({ done: roster.length, total: roster.length, cur: '', published, skipped, failed, running: false })
+  }
+
   const monBtn = (on: boolean) => `h-7 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
   const [yy, mm] = ym.split('-')
   const hs = roster.find((r) => r.id === hsId) ?? null
@@ -85,6 +117,7 @@ export default function ReportPHScreen() {
           <span className="min-w-[92px] text-center text-[13px] font-semibold tabular-nums text-slate-700">Tháng {Number(mm)}/{yy}</span>
           <button onClick={() => setYm(shiftYM(ym, +1))} className="h-7 rounded-r-md px-2 text-slate-500 hover:bg-slate-100" title="Tháng sau">›</button>
         </div>
+        {roster.length > 0 && <button disabled={!!bulk?.running} onClick={() => void bulkCongBoLop()} title="Chụp ảnh + công bố báo cáo cho cả lớp" className="ml-auto rounded-md bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-50">✓ Chốt cả lớp ({roster.length})</button>}
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {!lopId ? (
@@ -118,6 +151,19 @@ export default function ReportPHScreen() {
           </div>
         )}
       </div>
+      {bulk && (
+        <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/50 p-4">
+          <div className="w-[380px] max-w-[95vw] rounded-2xl bg-white p-5 shadow-2xl">
+            <div className="mb-2 text-[15px] font-bold text-slate-800">{bulk.running ? 'Đang chốt cả lớp…' : '✓ Đã xong'}</div>
+            <div className="mb-2 h-2 w-full overflow-hidden rounded-full bg-slate-100"><div className="h-full bg-emerald-500 transition-all" style={{ width: `${Math.round((bulk.done / Math.max(1, bulk.total)) * 100)}%` }} /></div>
+            <div className="text-[13px] text-slate-600">{bulk.done}/{bulk.total} học sinh{bulk.running && bulk.cur ? ` · đang xử lý: ${bulk.cur}` : ''}</div>
+            <div className="mt-1 text-[12px] text-slate-500">✓ Công bố {bulk.published} · ⏭ bỏ qua {bulk.skipped} (chưa nhập){bulk.failed ? ` · ⚠ lỗi ${bulk.failed}` : ''}</div>
+            {bulk.running
+              ? <p className="mt-3 text-[11px] text-amber-600">Đang chụp ảnh từng em — vui lòng đừng đóng/chuyển tab.</p>
+              : <button onClick={() => setBulk(null)} className="mt-4 w-full rounded-lg bg-slate-800 py-2 text-sm font-semibold text-white hover:bg-slate-700">Đóng</button>}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
@@ -136,6 +182,17 @@ function ReportBody({ hsId, mon, ym, lopId, hsName, hsImg, lopTen }: { hsId: str
   useEffect(() => { setGvName(null); if (lopId) getGVChinhLop(lopId).then(setGvName).catch(() => {}) }, [lopId])
   if (loading) return <p className="text-sm text-slate-500">Đang tải…</p>
   const missCount = (rows ?? []).filter((r) => r.btvnTrangThai === 'khong_lam' || r.btvnTrangThai === 'xin_phep').length
+  // Chụp ảnh báo cáo (snapshot) lúc GV chốt → lưu storage → trả URL để gắn vào bao_cao_ph.
+  async function captureReport(): Promise<string | null> {
+    if (!tq) return null
+    const [bc, khoiRank, lopRank, heRank] = await Promise.all([
+      getBaoCaoPH(hsId, mon, ym),
+      getKhoiRankDiemMT(hsId, mon, ym),
+      lopId ? getLopRankDiemMT(hsId, lopId, mon, ym) : Promise.resolve(null),
+      getHeRankDiemMT(hsId, mon, ym),
+    ])
+    return renderCardToUrl({ hsName, hsImg, lopTen, mon, ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank }, `${hsId}_${ym}`)
+  }
   return (
     <>
     <div className="mb-3 flex justify-end">
@@ -166,7 +223,7 @@ function ReportBody({ hsId, mon, ym, lopId, hsName, hsImg, lopTen }: { hsId: str
         </div>
       </div>
       {/* ── PHẢI: NHẬN XÉT ── */}
-      <div className="xl:sticky xl:top-0 xl:self-start"><NhanXet hsId={hsId} mon={mon} ym={ym} /></div>
+      <div className="xl:sticky xl:top-0 xl:self-start"><NhanXet hsId={hsId} mon={mon} ym={ym} onCapture={captureReport} /></div>
     </div>
     </>
   )
@@ -205,26 +262,47 @@ function NumCol({ label, pct, big }: { label: string; pct: number | null; big?: 
 }
 // Điểm THẬT nhập tay (thang 10, qua ky_thi/diem_thi) — KHÁC %hoạt động ở NumCol (đúng câu/tổng câu).
 // Cố ý không dùng pctCls (màu theo ngưỡng %0-100) cho số 0-10 — dễ đọc sai (vd điểm 8 mà tô đỏ như %8).
-function DiemRow({ tong, cb, nc, truong }: { tong: number | null; cb: number | null; nc: number | null; truong?: number | null }) {
-  const col = (label: string, v: number | null, big?: boolean) => (
+// (Thùy 14/09): PH view hiển thị Tổng (thang 10) + %CB + %NC — KHÔNG điểm CB/NC tuyệt đối. Có thi lại
+// (không tính xếp hạng) → thêm dòng "Thi lại" cùng bố cục; HS không thi lại thì ẩn hẳn.
+type MTDiem = { tong: number | null; pctCB: number | null; pctNC: number | null }
+function DiemRow({ chinh, thiLai, truong }: { chinh: MTDiem; thiLai?: MTDiem | null; truong?: number | null }) {
+  const colD = (label: string, v: number | null, big?: boolean) => (
     <div className="flex-1 px-3 text-center first:pl-0">
       <div className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">{label}</div>
       <div className={`font-extrabold tabular-nums text-slate-700 ${big ? 'text-[20px]' : 'text-[15px]'}`}>{v == null ? '—' : v}</div>
     </div>
   )
+  const colP = (label: string, v: number | null) => (
+    <div className="flex-1 px-3 text-center first:pl-0">
+      <div className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">{label}</div>
+      <div className={`font-extrabold tabular-nums ${pctCls(v)} text-[15px]`}>{v == null ? '—' : v + '%'}</div>
+    </div>
+  )
+  const hasTL = thiLai && (thiLai.tong != null || thiLai.pctCB != null || thiLai.pctNC != null)
   return (
     <div className="mt-2.5 rounded-lg bg-slate-50 px-1 py-2">
       <div className="mb-1 px-3 text-[10px] font-semibold uppercase tracking-wide text-slate-400">Điểm MT (thang 10, nhập tay)</div>
       <div className="flex divide-x divide-slate-200">
-        {col('Tổng', tong, true)}
-        {col('Cơ bản', cb)}
-        {col('Nâng cao', nc)}
+        {colD('Tổng', chinh.tong, true)}
+        {colP('Cơ bản', chinh.pctCB)}
+        {colP('Nâng cao', chinh.pctNC)}
       </div>
+      {hasTL && (
+        <>
+          <div className="mx-3 mt-2 border-t border-dashed border-amber-300/70" />
+          <div className="mb-1 mt-1 px-3 text-[10px] font-semibold uppercase tracking-wide text-amber-700">Thi lại (không tính xếp hạng)</div>
+          <div className="flex divide-x divide-amber-100">
+            {colD('Tổng', thiLai!.tong, true)}
+            {colP('Cơ bản', thiLai!.pctCB)}
+            {colP('Nâng cao', thiLai!.pctNC)}
+          </div>
+        </>
+      )}
       {truong != null && <div className="mt-1.5 px-3 text-[11px] text-slate-500">Điểm thi trường: <b className="text-slate-700">{truong}</b></div>}
     </div>
   )
 }
-function ActCard({ icon, ten, cb, nc, warn, diem }: { icon: string; ten: string; cb: Bucket; nc: Bucket; warn?: string; diem?: { tong: number | null; cb: number | null; nc: number | null; truong?: number | null } }) {
+function ActCard({ icon, ten, cb, nc, warn, diem }: { icon: string; ten: string; cb: Bucket; nc: Bucket; warn?: string; diem?: { chinh: MTDiem; thiLai?: MTDiem | null; truong?: number | null } }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
       <div className="mb-3 text-[14px] font-bold text-slate-700">{icon} {ten}</div>
@@ -233,13 +311,14 @@ function ActCard({ icon, ten, cb, nc, warn, diem }: { icon: string; ten: string;
         <NumCol label="Cơ bản" pct={cb.pct} />
         <NumCol label="Nâng cao" pct={nc.pct} />
       </div>
-      {diem && <DiemRow tong={diem.tong} cb={diem.cb} nc={diem.nc} truong={diem.truong} />}
+      {diem && <DiemRow chinh={diem.chinh} thiLai={diem.thiLai} truong={diem.truong} />}
       {warn && <div className="mt-2.5 rounded-lg bg-amber-50 px-2.5 py-1.5 text-[11px] font-medium text-amber-700">⚠ {warn}</div>}
     </div>
   )
 }
 function TongQuanCards({ tq, missCount }: { tq: TongQuanHS; missCount: number }) {
   const h = tq.hoanThanh.toanBo.etMt, a = tq.hoatDong
+  const tl = tq.diem.mt.thiLai
   return (
     <div className="space-y-3">
       <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
@@ -254,7 +333,11 @@ function TongQuanCards({ tq, missCount }: { tq: TongQuanHS; missCount: number })
       <ActCard icon="📝" ten="Test cuối giờ (ET)" cb={a.etCoBan} nc={a.etNangCao} />
       <ActCard icon="🏠" ten="Bài tập về nhà" cb={a.btvnCoBan} nc={a.btvnNangCao} warn={missCount > 0 ? `Chưa hoàn thành BTVN ${missCount} lần trong tháng này` : undefined} />
       <ActCard icon="📅" ten="Test tháng (MT)" cb={a.mtCoBan} nc={a.mtNangCao}
-        diem={{ tong: tq.diem.mt.tb, cb: tq.diem.mt.coBan, nc: tq.diem.mt.nangCao, truong: tq.diem.truong.tb }} />
+        diem={{
+          chinh: { tong: tq.diem.mt.tb, pctCB: tq.diem.mt.pctCoBan, pctNC: tq.diem.mt.pctNangCao },
+          thiLai: tl.n || tl.nCoBan || tl.nNangCao ? { tong: tl.tb, pctCB: tl.pctCoBan, pctNC: tl.pctNangCao } : null,
+          truong: tq.diem.truong.tb,
+        }} />
     </div>
   )
 }
@@ -293,7 +376,7 @@ function PresetDropdown({ presets, curText, curMuc, onPick, ringOn }:
   return (
     <div ref={wrapRef} className="relative">
       <button type="button" onClick={() => setOpen((s) => !s)}
-        className={`flex w-full items-start gap-2 rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-left text-[12px] leading-relaxed hover:bg-slate-50 ${open ? `${ringOn} ring-2` : ''}`}>
+        className={`flex w-full items-start gap-2 rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-left text-[12px] leading-relaxed hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-white ${open ? `${ringOn} ring-2` : ''}`}>
         {matched ? (
           <span className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded text-[11px] font-bold text-white ${MUC_HX[matched.muc] ?? 'bg-slate-400'}`}>{matched.muc}</span>
         ) : <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded bg-slate-200 text-[11px] font-bold text-slate-500">—</span>}
@@ -327,7 +410,7 @@ function PresetDropdown({ presets, curText, curMuc, onPick, ringOn }:
     </div>
   )
 }
-function NhanXet({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }) {
+function NhanXet({ hsId, mon, ym, onCapture }: { hsId: string; mon: string; ym: string; onCapture: () => Promise<string | null> }) {
   const [val, setVal] = useState<BaoCaoPH>({ ...BC_EMPTY })
   const [prev, setPrev] = useState<BaoCaoPH>({ ...BC_EMPTY })
   const [saved, setSaved] = useState<string | null>(null)
@@ -341,9 +424,30 @@ function NhanXet({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }) {
     try { await upsertBaoCaoPH(hsId, mon, ym, patch); setSaved(tag); setTimeout(() => setSaved((s) => (s === tag ? null : s)), 1500) } catch { /* ignore */ }
   }
   const box = 'w-full resize-y rounded-lg border border-slate-200 bg-slate-50/50 px-2.5 py-2 text-[13px] leading-relaxed focus:border-indigo-300 focus:bg-white focus:outline-none'
+  const locked = val.cong_bo_at != null // đã công bố → khoá sửa (bấm "Mở lại để sửa" mới chỉnh được)
+  const congBoLabel = val.cong_bo_at ? new Date(val.cong_bo_at).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : ''
+  const [capturing, setCapturing] = useState(false)
+  // Chốt = chụp ảnh báo cáo (snapshot) + công bố (cong_bo_at + URL ảnh) trong 1 nhịp.
+  async function doCongBo() {
+    if (!confirm('Chốt & công bố báo cáo tháng này? Phụ huynh sẽ thấy ảnh báo cáo ngay trên app.')) return
+    setCapturing(true)
+    let anhUrl: string | null = null
+    try { anhUrl = await onCapture() } catch { anhUrl = null }
+    await save({ cong_bo_at: new Date().toISOString(), anh_bao_cao_url: anhUrl }, 'congbo')
+    setCapturing(false)
+    if (!anhUrl) alert('Đã công bố, nhưng CHƯA tạo được ảnh báo cáo. Bấm "Mở lại để sửa" rồi Chốt lại để thử tạo ảnh.')
+  }
   return (
     <div>
       <h3 className="mb-2 text-[13px] font-semibold uppercase tracking-wider text-slate-500">Nhận xét của giáo viên</h3>
+      {/* CỔNG CÔNG BỐ: nháp → PH không thấy; chốt → lên app. Khoá sửa khi đã công bố. */}
+      <div className={`mb-2 flex items-center justify-between gap-2 rounded-xl px-3 py-2 text-[12px] ring-1 ${locked ? 'bg-emerald-50 text-emerald-800 ring-emerald-200' : 'bg-amber-50 text-amber-800 ring-amber-200'}`}>
+        <span className="font-semibold">{locked ? `✓ Đã công bố${congBoLabel ? ' · ' + congBoLabel : ''} — phụ huynh đang xem` : '● Nháp — phụ huynh CHƯA thấy báo cáo này'}</span>
+        {locked
+          ? <button onClick={() => save({ cong_bo_at: null }, 'congbo')} className="shrink-0 rounded-lg border border-emerald-300 bg-white px-2.5 py-1 font-semibold text-emerald-700 hover:bg-emerald-100">Mở lại để sửa</button>
+          : <button disabled={capturing} onClick={() => void doCongBo()} className="shrink-0 rounded-lg bg-emerald-600 px-3 py-1 font-bold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-60">{capturing ? 'Đang tạo ảnh…' : 'Chốt & công bố'}</button>}
+      </div>
+      <fieldset disabled={locked} className={locked ? 'opacity-60' : ''} style={{ border: 'none', margin: 0, padding: 0, minInlineSize: 'auto' }}>
       <div className="space-y-3">
         {/* NĂNG LỰC: band (GV chọn) + điểm + sai số */}
         <div className="rounded-xl border border-indigo-200 bg-indigo-50/40 p-3 shadow-sm">
@@ -460,23 +564,14 @@ function NhanXet({ hsId, mon, ym }: { hsId: string; mon: string; ym: string }) {
           <textarea defaultValue={val.muc_tieu ?? ''} onBlur={(e) => save({ muc_tieu: e.target.value.trim() || null }, 'muc_tieu')} placeholder="Định hướng / mục tiêu cụ thể tháng tới…" rows={2} className={box} />
         </div>
       </div>
-      <p className="mt-2 text-[11px] text-slate-400">Tự lưu khi rời ô / chọn mức. {mon} · tháng {Number(ym.split('-')[1])}/{ym.split('-')[0]}.</p>
+      </fieldset>
+      <p className="mt-2 text-[11px] text-slate-400">{locked ? 'Đã công bố — bấm “Mở lại để sửa” nếu cần chỉnh.' : 'Tự lưu khi rời ô / chọn mức. Bấm “Chốt & công bố” để phụ huynh thấy.'} {mon} · tháng {Number(ym.split('-')[1])}/{ym.split('-')[0]}.</p>
     </div>
   )
 }
 
-// ── ẢNH GỬI PHỤ HUYNH — thẻ inline-hex (né oklch Tailwind v4), layout kiểu tab Kết quả app PH ──
-const MUC_HEX: Record<string, { bg: string; fg: string; emoji: string; label: string }> = {
-  rat_tot: { bg: '#ecfdf5', fg: '#047857', emoji: '🌟', label: 'Con học rất tốt' },
-  dat_yeu_cau: { bg: '#f0fdf4', fg: '#15803d', emoji: '✅', label: 'Con đạt yêu cầu' },
-  tien_bo: { bg: '#f0f9ff', fg: '#0369a1', emoji: '📈', label: 'Con đang tiến bộ' },
-  cai_thien_thai_do: { bg: '#fffbeb', fg: '#b45309', emoji: '⚠️', label: 'Con cần cải thiện thái độ học tập' },
-  cai_thien_kien_thuc: { bg: '#fffbeb', fg: '#b45309', emoji: '⚠️', label: 'Con cần cải thiện kiến thức và kĩ năng' },
-  van_de_thai_do: { bg: '#fff1f2', fg: '#be123c', emoji: '🆘', label: 'Con gặp vấn đề về thái độ học tập' },
-  van_de_kien_thuc: { bg: '#fff1f2', fg: '#be123c', emoji: '🆘', label: 'Con gặp vấn đề về kiến thức và kĩ năng' },
-}
-const s10 = (pct: number | null) => pct == null ? '—' : (pct / 10).toFixed(1)
-const hexPct = (pct: number | null) => pct == null ? '#cbd5e1' : pct >= 80 ? '#059669' : pct >= 50 ? '#d97706' : '#e11d48'
+// ── CARD BÁO CÁO — chuyển sang ReportCard.tsx (dùng chung với TraoGiaiScreen tab "Đã chốt giải" — CEO 11/09)
+// import { MUC_HEX, ReportCardView, ReportCardProps, renderCardToUrl } bên dưới; giữ import cũ ở đầu file.
 
 function PhAnhModal({ hsId, mon, ym, lopId, hsName, hsImg, lopTen, gvName, tq, missCount, onClose }: { hsId: string; mon: string; ym: string; lopId: string | null; hsName: string; hsImg: string | null; lopTen: string; gvName: string | null; tq: TongQuanHS; missCount: number; onClose: () => void }) {
   const [bc, setBc] = useState<BaoCaoPH>({ ...BC_EMPTY })
@@ -505,69 +600,6 @@ function PhAnhModal({ hsId, mon, ym, lopId, hsName, hsImg, lopTen, gvName, tq, m
     p.document.write(html); p.document.close()
   }
 
-  const muc = bc.ket_luan_muc ? MUC_HEX[bc.ket_luan_muc] : null
-  const a = tq.hoatDong, hh = tq.hoanThanh.toanBo.etMt
-  const trendV = tq.trend.hoanThanhToanBo
-  // 3 HẠNG (Thùy 08-19, thay cho %hoàn thành gây confuse PH) — LỚP ⊂ HỆ ⊂ KHỐI (phạm vi lồng nhau tăng
-  // dần), NGANG NHAU về hiển thị, tách RIÊNG khỏi khối "xu hướng" (chữ + trend %). Thùy 08-21: đổi lại
-  // dạng VÒNG TRÒN (không phải ô chữ nhật) — 3 vòng nhỏ cạnh nhau, mỗi vòng ghi rõ giá trị cụ thể (vd
-  // "Lớp 9A1" thay vì chỉ "Lớp") vì PH không tự suy ra lớp/hệ/khối của con từ nhãn chung chung.
-  const RC2 = 2 * Math.PI * 25
-  const rankRing = (top: string, sub: string, r: { rankNow: number; rankTotal: number } | null) => {
-    const pct = r ? Math.round(((r.rankTotal - r.rankNow) / Math.max(1, r.rankTotal - 1)) * 100) : null
-    const hx = pct == null ? '#94a3b8' : pct >= 80 ? '#12a875' : pct >= 50 ? '#e29a23' : '#e45858'
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-        <svg width={74} height={74} viewBox="0 0 74 74" style={{ display: 'block' }}>
-          <circle cx={37} cy={37} r={25} fill="none" stroke="#e9f3ef" strokeWidth={8} />
-          <circle cx={37} cy={37} r={25} fill="none" stroke={hx} strokeWidth={8} strokeDasharray={RC2} strokeDashoffset={RC2 * (1 - (pct ?? 0) / 100)} strokeLinecap="round" transform="rotate(-90 37 37)" />
-          <text x={37} y={34} textAnchor="middle" fontSize={14} fontWeight={800} fill={hx}>{r ? `#${r.rankNow}` : '—'}</text>
-          <text x={37} y={46} textAnchor="middle" fontSize={7} fontWeight={700} fill="#94a3b8">{r ? `/${r.rankTotal}` : ''}</text>
-        </svg>
-        <div style={{ fontSize: 9.5, fontWeight: 800, color: '#5a6a83', marginTop: 3 }}>{top}</div>
-        <div style={{ fontSize: 8, fontWeight: 700, color: '#94a3b8' }}>{sub}</div>
-      </div>
-    )
-  }
-  // Skill bar THANG 5 (GV chọn) + text nhận xét kèm tag.
-  const bar5 = (label: string, lvl: number | null, hx: string, text: string | null) => (
-    <div style={{ background: '#f7f9fd', border: '1px solid #edf1f7', borderRadius: 13, padding: '10px 11px', marginTop: 8 }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 7 }}>
-        <span style={{ display: 'inline-flex', gap: 6, alignItems: 'center', fontSize: 10.5, fontWeight: 800, color: '#15233b' }}><span style={{ width: 7, height: 7, borderRadius: 4, background: hx }} />{label}</span>
-        <span style={{ fontSize: 9.5, fontWeight: 800, color: lvl ? hx : '#94a3b8' }}>{lvl ? SKILL_MUC[lvl - 1] : '—'}</span>
-      </div>
-      <div style={{ display: 'flex', gap: 4 }}>{[1, 2, 3, 4, 5].map((i) => <div key={i} style={{ flex: 1, height: 7, borderRadius: 4, background: lvl && i <= lvl ? hx : '#e9eef6' }} />)}</div>
-      {text ? <p style={{ fontSize: 10, lineHeight: 1.45, color: '#42516a', margin: '8px 0 0', whiteSpace: 'pre-wrap' }}>{text}</p> : null}
-    </div>
-  )
-  const statusC = (n: number, label: string, hx: string) => (
-    <div style={{ padding: '10px 6px 9px', textAlign: 'center', background: '#fff', border: '1px solid #e8edf5', borderRadius: 15 }}>
-      <b style={{ display: 'block', fontSize: 19, color: hx, lineHeight: 1 }}>{n}</b>
-      <small style={{ display: 'block', fontSize: 7.5, color: '#a0aabd', fontWeight: 800, letterSpacing: .3, marginTop: 3 }}>DẠNG BÀI</small>
-      <small style={{ display: 'block', fontSize: 9, color: '#5a6a83', fontWeight: 800, lineHeight: 1.15, marginTop: 1 }}>{label}</small>
-    </div>
-  )
-  const cell = (lb: string, pct: number | null, sz: number) => <div><span style={{ fontSize: 7.5, color: '#94a3b8', display: 'block' }}>{lb}</span><span style={{ fontSize: sz, fontWeight: 900, color: hexPct(pct) }}>{s10(pct)}</span></div>
-  const assessRow = (ten: string, hx: string, cb: Bucket, nc: Bucket, first?: boolean) => (
-    <div style={{ display: 'grid', gridTemplateColumns: '1.25fr .6fr .6fr .6fr', gap: 6, alignItems: 'center', minHeight: 46, borderTop: first ? 'none' : '1px dashed #e9edf4' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 10.5, fontWeight: 800, color: '#15233b' }}><span style={{ width: 9, height: 9, borderRadius: 5, background: hx, boxShadow: `0 0 0 4px ${hx}22` }} />{ten}</div>
-      {cell('Tổng', tongPct(cb, nc), 16)}{cell('Cơ bản', cb.pct, 15)}{cell('Nâng cao', nc.pct, 15)}
-    </div>
-  )
-  // MT: dùng ĐIỂM THẬT (thang 10, nhập tay) — KHÁC assessRow ở trên (%đúng câu). MT nhập riêng qua
-  // ky_thi/diem_thi, không suy từ Đ/C/S như ET/BTVN nên KHÔNG quy đổi s10(%) nữa.
-  // Chỉ TỔNG mới đủ điều kiện tô màu ngưỡng (đúng thang 10 thật). Cơ bản/Nâng cao là 2 CỘT ĐIỂM RIÊNG,
-  // thang điểm KHÁC NHAU (vd cơ bản max 9đ, nâng cao max 1đ — nâng cao không bắt buộc) → số THẤP tuyệt
-  // đối ở nâng cao là BÌNH THƯỜNG, không phải yếu kém. Tô đỏ/xanh theo ngưỡng 0-10 ở đây là SAI, gây hiểu
-  // lầm cho phụ huynh (Thùy 08-19). Để màu trung tính, không so ngưỡng.
-  const hexDiem = (v: number | null) => v == null ? '#cbd5e1' : v >= 8 ? '#059669' : v >= 5 ? '#d97706' : '#e11d48'
-  const cellDiem = (lb: string, v: number | null, sz: number, colored?: boolean) => <div><span style={{ fontSize: 7.5, color: '#94a3b8', display: 'block' }}>{lb}</span><span style={{ fontSize: sz, fontWeight: 900, color: colored ? hexDiem(v) : v == null ? '#cbd5e1' : '#15233b' }}>{v == null ? '—' : v}</span></div>
-  const assessRowDiem = (ten: string, hx: string, tong: number | null, cb: number | null, nc: number | null) => (
-    <div style={{ display: 'grid', gridTemplateColumns: '1.25fr .6fr .6fr .6fr', gap: 6, alignItems: 'center', minHeight: 46, borderTop: '1px dashed #e9edf4' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 10.5, fontWeight: 800, color: '#15233b' }}><span style={{ width: 9, height: 9, borderRadius: 5, background: hx, boxShadow: `0 0 0 4px ${hx}22` }} />{ten}</div>
-      {cellDiem('Tổng', tong, 16, true)}{cellDiem('Cơ bản', cb, 15)}{cellDiem('Nâng cao', nc, 15)}
-    </div>
-  )
   return createPortal(
     <div className="fixed inset-0 z-[90] flex flex-col bg-slate-900/70" onClick={onClose}>
       <div className="flex items-center gap-3 border-b border-slate-700 bg-slate-800 px-4 py-2.5 text-white" onClick={(e) => e.stopPropagation()}>
@@ -576,91 +608,7 @@ function PhAnhModal({ hsId, mon, ym, lopId, hsName, hsImg, lopTen, gvName, tq, m
         <button onClick={onClose} className="rounded-md border border-slate-500 px-3 py-1 text-sm hover:bg-slate-700">Đóng</button>
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-4" onClick={(e) => e.stopPropagation()}>
-        <div ref={cardRef} style={{ width: 390, margin: '0 auto', background: '#f8fbff', borderRadius: 28, overflow: 'hidden', fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif", boxShadow: '0 20px 55px rgba(26,52,95,.16)', border: '1px solid rgba(255,255,255,.8)' }}>
-          {/* HERO */}
-          <div style={{ position: 'relative', minHeight: 172, padding: '21px 21px 24px', color: '#fff', background: 'radial-gradient(circle at 92% 18%, rgba(78,215,219,.5), transparent 27%), radial-gradient(circle at 18% -10%, rgba(132,151,255,.7), transparent 34%), linear-gradient(135deg,#12315f 0%,#2451b9 60%,#2c77d8 100%)', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', width: 185, height: 185, right: -88, bottom: -125, border: '28px solid rgba(255,255,255,.08)', borderRadius: '50%' }} />
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative', zIndex: 1, marginBottom: 18 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 9, fontWeight: 900, letterSpacing: .5, fontSize: 13 }}>
-                {/* Logo BK: B hồng · K cam · tam giác + xanh · tròn − lục */}
-                <svg width={32} height={32} viewBox="0 0 36 36" style={{ display: 'block' }}>
-                  <rect x="1" y="1" width="15" height="15" rx="4.5" fill="#e5389a" />
-                  <text x="8.5" y="13" textAnchor="middle" fontSize="12" fontWeight="900" fill="#fff" fontFamily="Arial,Helvetica,sans-serif">B</text>
-                  <rect x="20" y="1" width="15" height="15" rx="6" fill="#f7941e" />
-                  <text x="27.5" y="13" textAnchor="middle" fontSize="12" fontWeight="900" fill="#fff" fontFamily="Arial,Helvetica,sans-serif">K</text>
-                  <path d="M8.5 19.5 L16.2 34 L0.8 34 Z" fill="#2bb6d6" />
-                  <text x="8.5" y="33" textAnchor="middle" fontSize="9" fontWeight="900" fill="#fff" fontFamily="Arial,Helvetica,sans-serif">+</text>
-                  <circle cx="27.5" cy="27.5" r="7.6" fill="#7ac143" />
-                  <text x="27.5" y="31.4" textAnchor="middle" fontSize="12" fontWeight="900" fill="#fff" fontFamily="Arial,Helvetica,sans-serif">−</text>
-                </svg>
-                <span>BK ACADEMY</span>
-              </div>
-              <span style={{ fontSize: 11, fontWeight: 800, padding: '7px 10px', borderRadius: 999, background: 'rgba(255,255,255,.14)', border: '1px solid rgba(255,255,255,.22)' }}>THÁNG {ym.split('-')[1]}/{ym.split('-')[0]}</span>
-            </div>
-            <div style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '54px 1fr', gap: 13, alignItems: 'center' }}>
-              <div style={{ width: 54, height: 54, borderRadius: 18, overflow: 'hidden', display: 'grid', placeItems: 'center', background: 'linear-gradient(145deg,#fff,#dce9ff)', border: '3px solid rgba(255,255,255,.28)' }}>
-                {hsImg
-                  ? <img src={hsImg} alt="" crossOrigin="anonymous" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  : <svg width={26} height={26} viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4.2" fill="#315fdd" fillOpacity=".55" /><path d="M4 20.5c0-4.4 3.6-7.2 8-7.2s8 2.8 8 7.2" stroke="#315fdd" strokeOpacity=".55" strokeWidth="2.2" strokeLinecap="round" /></svg>}
-              </div>
-              <div><div style={{ fontSize: 20, fontWeight: 900, lineHeight: 1.12, letterSpacing: -.25 }}>{hsName}</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, fontSize: 11, color: '#e9f2ff', marginTop: 6 }}><span>Lớp {lopTen}</span><span>· Môn {mon}</span>{gvName ? <span>· GV {gvName}</span> : null}</div>
-              </div>
-            </div>
-          </div>
-          {/* BODY */}
-          <div style={{ padding: '0 13px 14px', marginTop: -13, position: 'relative', zIndex: 2 }}>
-            {/* XU HƯỚNG (kết luận GV + trend %) — chữ thuần, KHÔNG còn ring % ở đây (đổi sang 3 hạng riêng bên dưới) */}
-            <div style={{ background: '#fff', border: '1px solid #e8edf5', borderRadius: 20, boxShadow: '0 7px 18px rgba(35,63,104,.055)', padding: 14, marginBottom: 10 }}>
-              <div style={{ fontSize: 10, color: '#315fdd', fontWeight: 900, textTransform: 'uppercase', letterSpacing: .7 }}>Xu hướng tháng này</div>
-              <div style={{ fontSize: 16, fontWeight: 800, margin: '4px 0', color: '#15233b', letterSpacing: -.15 }}>{muc ? `${muc.emoji} ${muc.label}` : 'Kết quả học tập tháng'}</div>
-              {trendV != null && trendV !== 0 ? <span style={{ display: 'inline-flex', gap: 5, alignItems: 'center', fontSize: 10, fontWeight: 900, color: trendV > 0 ? '#12a875' : '#e45858', background: trendV > 0 ? '#ecfbf5' : '#fdecec', padding: '6px 8px', borderRadius: 999 }}>{trendV > 0 ? '↗' : '↘'} {trendV > 0 ? 'Tăng' : 'Giảm'} {Math.abs(trendV)}% so với kỳ trước</span> : null}
-            </div>
-            {/* XẾP HẠNG TEST THÁNG — 3 phạm vi ngang nhau: Lớp · Hệ · Khối (Thùy 08-19/21). "MT" → "Test
-                tháng" (PH không hiểu viết tắt MT). Mỗi vòng ghi giá trị CỤ THỂ (vd "Lớp 9A1") thay vì chỉ
-                nhãn chung "Lớp" — PH không tự suy ra lớp/hệ/khối của con. */}
-            <div style={{ background: '#fff', border: '1px solid #e8edf5', borderRadius: 20, padding: '13px 14px 10px', marginBottom: 10, boxShadow: '0 7px 18px rgba(35,63,104,.055)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 10 }}>
-                <span style={{ width: 31, height: 31, borderRadius: 11, display: 'grid', placeItems: 'center', background: '#eef0ff', fontSize: 14 }}>🏆</span>
-                <div><div style={{ fontSize: 13, fontWeight: 800, color: '#15233b' }}>Xếp hạng Test tháng này</div><div style={{ fontSize: 9, color: '#70809b' }}>Theo điểm Test tháng</div></div>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 4, justifyItems: 'center' }}>
-                {rankRing('Lớp', lopTen, lopRank)}
-                {rankRing('Hệ', heRank ? `${heRank.khoi}${heRank.he}` : '—', heRank)}
-                {rankRing('Khối', khoiRank ? khoiRank.khoi : '—', khoiRank)}
-              </div>
-            </div>
-            {/* NHẬN XÉT GV + skill bars (thang 5) + text kèm tag */}
-            {(bc.ket_luan || bc.thai_do || bc.kien_thuc_ky_nang || bc.muc_kien_thuc || bc.muc_thai_do) ? <div style={{ background: '#fff', border: '1px solid #e8edf5', borderRadius: 20, padding: 14, marginBottom: 10, boxShadow: '0 7px 18px rgba(35,63,104,.055)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 10 }}>
-                <span style={{ width: 31, height: 31, borderRadius: 11, display: 'grid', placeItems: 'center', background: '#eef0ff', fontSize: 15 }}>✦</span>
-                <div><div style={{ fontSize: 13, fontWeight: 800, color: '#15233b' }}>Nhận xét của giáo viên</div><div style={{ fontSize: 9, color: '#70809b' }}>{gvName ? `GV ${gvName}` : 'Đánh giá cá nhân theo quá trình học'}</div></div>
-              </div>
-              {bc.ket_luan ? <p style={{ fontSize: 11, lineHeight: 1.48, color: '#42516a', margin: '0 0 4px', whiteSpace: 'pre-wrap' }}>{bc.ket_luan}</p> : null}
-              {bar5('Kiến thức & kỹ năng', bc.muc_kien_thuc, '#315fdd', bc.kien_thuc_ky_nang)}
-              {bar5('Thái độ học tập', bc.muc_thai_do, '#12a875', bc.thai_do)}
-            </div> : null}
-            {/* STATUS */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 7, marginBottom: 10 }}>{statusC(hh.dat, 'Đạt yêu cầu', '#12a875')}{statusC(hh.can_luyen, 'Cần luyện tập', '#e29a23')}{statusC(hh.yeu, 'Còn yếu', '#e45858')}</div>
-            {/* ĐÁNH GIÁ */}
-            <div style={{ background: '#fff', border: '1px solid #e8edf5', borderRadius: 20, padding: '13px 14px 10px', marginBottom: 10, boxShadow: '0 7px 18px rgba(35,63,104,.055)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 8 }}>
-                <span style={{ width: 31, height: 31, borderRadius: 11, display: 'grid', placeItems: 'center', background: '#eef0ff', fontSize: 14 }}>📊</span>
-                <div><div style={{ fontSize: 13, fontWeight: 800, color: '#15233b' }}>Kết quả đánh giá trong tháng</div><div style={{ fontSize: 9, color: '#70809b' }}>Thang điểm 10</div></div>
-              </div>
-              {assessRow('Test cuối giờ', '#315fdd', a.etCoBan, a.etNangCao, true)}
-              {assessRow('Bài tập về nhà', '#12a875', a.btvnCoBan, a.btvnNangCao)}
-              {assessRowDiem('Test tháng', '#e29a23', tq.diem.mt.tb, tq.diem.mt.coBan, tq.diem.mt.nangCao)}
-              {missCount > 0 ? <div style={{ fontSize: 9.5, color: '#da7d00', marginTop: 6 }}>⚠ Chưa hoàn thành BTVN {missCount} lần trong tháng</div> : null}
-            </div>
-            {/* MỤC TIÊU */}
-            {bc.muc_tieu ? <div style={{ display: 'grid', gridTemplateColumns: '36px 1fr', gap: 10, alignItems: 'center', background: 'linear-gradient(135deg,#fff9e9,#fff)', border: '1px solid #f3e7bf', borderRadius: 20, padding: '12px 13px', marginBottom: 10 }}>
-              <div style={{ width: 36, height: 36, borderRadius: 13, display: 'grid', placeItems: 'center', background: '#fff0bd', fontSize: 17 }}>🎯</div>
-              <div><b style={{ fontSize: 11, display: 'block', marginBottom: 3 }}>Mục tiêu tháng tới</b><p style={{ fontSize: 9.5, lineHeight: 1.4, color: '#776844', margin: 0, whiteSpace: 'pre-wrap' }}>{bc.muc_tieu}</p></div>
-            </div> : null}
-            <p style={{ textAlign: 'center', color: '#8c99ad', fontSize: 8.5, margin: '10px 0 1px' }}>BK Academy · Đồng hành cùng tiến bộ của con mỗi ngày</p>
-          </div>
-        </div>
+        <ReportCardView ref={cardRef} hsName={hsName} hsImg={hsImg} lopTen={lopTen} mon={mon} ym={ym} gvName={gvName} tq={tq} missCount={missCount} bc={bc} khoiRank={khoiRank} lopRank={lopRank} heRank={heRank} />
       </div>
     </div>,
     document.body,

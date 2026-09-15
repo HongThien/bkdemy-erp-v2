@@ -35,7 +35,8 @@ const hhmm = (t: string) => t.slice(0, 5)
 const toMin = (t: string) => Number(t.slice(0, 2)) * 60 + Number(t.slice(3, 5))
 const today = () => new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' })
 
-// Khung lớn cố định của 1 ngày (lo/hi = phút; ca thuộc khung nếu giờ BẮT ĐẦU ∈ [lo, hi)).
+// Khung lớn cố định của 1 ngày (lo/hi = phút; ca thuộc khung nếu [gio_bat_dau, gio_ket_thuc) CHỒNG LẤN [lo, hi) —
+// ca dài vắt qua nhiều khung thì hiện lại ở MỌI khung nó chiếm, để phòng luôn rõ ở từng khung).
 // macDinh = giờ gợi ý khi xếp ca mới từ khung này. an = ẩn khi rỗng (giờ trưa).
 type Band = { ten: string; lo: number; hi: number; macDinh: [string, string]; an?: boolean }
 const BANDS: Band[] = [
@@ -69,14 +70,14 @@ export default function TKBScreen() {
   }
   useEffect(() => { reload() }, [])
 
-  // KHUNG LỚN CANONICAL (Thùy chốt): ngày chia ~7 khung cố định; ca xếp vào khung theo GIỜ BẮT ĐẦU
-  // (bỏ qua giờ kết thúc — biên khung trùng giờ vào ca nên không có ca vắt khung).
+  // KHUNG LỚN CANONICAL (Thùy chốt): ngày chia ~7 khung cố định; ca xếp vào MỌI khung nó CHỒNG LẤN
+  // theo [gio_bat_dau, gio_ket_thuc) (ca dài vắt 2+ khung → lặp lại ở từng khung, phòng luôn rõ).
   // Khung 12–14 gần như không dùng → tự ẩn khi rỗng (có ca thì tự hiện lại).
   // Lọc theo môn (toggle). monsCo = các môn có ca thật → dựng toggle bar.
   const monsCo = [...new Set(slots.map((s) => s.lop?.mon).filter(Boolean) as string[])].sort()
   const view = mon === 'all' ? slots : slots.filter((s) => s.lop?.mon === mon)
   const slotsInBand = (band: Band, thu: number) =>
-    view.filter((s) => s.thu === thu && toMin(s.gio_bat_dau) >= band.lo && toMin(s.gio_bat_dau) < band.hi)
+    view.filter((s) => s.thu === thu && toMin(s.gio_bat_dau) < band.hi && toMin(s.gio_ket_thuc) > band.lo)
       .sort((a, b) => toMin(a.gio_bat_dau) - toMin(b.gio_bat_dau))
   const bands = BANDS.filter((b) => !b.an || THU_COLS.some((t) => slotsInBand(b, t).length > 0))
 
@@ -164,7 +165,7 @@ export default function TKBScreen() {
           )}
       </div>
 
-      {sel && <SlotModal s={sel} onClose={() => setSel(null)} onChanged={() => { setSel(null); reload() }} />}
+      {sel && <SlotModal s={sel} rooms={rooms} slots={slots} onClose={() => setSel(null)} onChanged={() => { setSel(null); reload() }} />}
       {adding && <AddModal thu={adding.thu} tu={adding.tu} den={adding.den} dsLop={dsLop} rooms={rooms} onClose={() => setAdding(null)} onAdded={() => { setAdding(null); reload() }} />}
       {anh && <TkbAnh view={view} mon={mon} onClose={() => setAnh(false)} />}
     </div>
@@ -190,7 +191,7 @@ const monHex = (m?: string) => (m && MON_HEX[m]) || { bd: '#cbd5e1', bg: '#f8faf
 // Chụp ảnh TKB = bảng INLINE-HEX trong popup sạch → html2canvas (CDN) → clipboard (paste Zalo). Đúng pattern V1.
 function TkbAnh({ view, mon, onClose }: { view: TKBSlot[]; mon: string; onClose: () => void }) {
   const cardRef = useRef<HTMLDivElement>(null)
-  const inBand = (b: Band, thu: number) => view.filter((s) => s.thu === thu && toMin(s.gio_bat_dau) >= b.lo && toMin(s.gio_bat_dau) < b.hi).sort((a, b2) => toMin(a.gio_bat_dau) - toMin(b2.gio_bat_dau))
+  const inBand = (b: Band, thu: number) => view.filter((s) => s.thu === thu && toMin(s.gio_bat_dau) < b.hi && toMin(s.gio_ket_thuc) > b.lo).sort((a, b2) => toMin(a.gio_bat_dau) - toMin(b2.gio_bat_dau))
   const bands = BANDS.filter((b) => !b.an || THU_COLS.some((t) => inBand(b, t).length > 0))
   const tieu_de = `Thời khóa biểu${mon !== 'all' ? ` · ${mon}` : ''}`
 
@@ -262,24 +263,44 @@ function TkbAnh({ view, mon, onClose }: { view: TKBSlot[]; mon: string; onClose:
   )
 }
 
-function SlotModal({ s, onClose, onChanged }: { s: TKBSlot; onClose: () => void; onChanged: () => void }) {
+function SlotModal({ s, rooms, slots, onClose, onChanged }: { s: TKBSlot; rooms: string[]; slots: TKBSlot[]; onClose: () => void; onChanged: () => void }) {
   const [busy, setBusy] = useState(false)
   const [hieuLucTu, setHieuLucTu] = useState(s.hieu_luc_tu)
+  const [phong, setPhong] = useState(s.phong ?? '')
   const [error, setError] = useState<string | null>(null)
+
+  // Trùng phòng = ca khác (còn hiệu lực) cùng thứ, phòng vừa chọn, khung giờ chồng lấn — giữ đúng bản chất
+  // "categorical" của lưới TKB (§ xepCa), chỉ so trong phạm vi TKB mẫu (không đụng buổi thực tế đã mở).
+  const trung = phong
+    ? slots.find((o) => o.id !== s.id && o.thu === s.thu && (o.phong ?? '') === phong
+        && toMin(o.gio_bat_dau) < toMin(s.gio_ket_thuc) && toMin(s.gio_bat_dau) < toMin(o.gio_ket_thuc))
+    : undefined
+
+  const changed = hieuLucTu !== s.hieu_luc_tu || phong !== (s.phong ?? '')
+
   return (
     <Shell title={`${s.lop?.ten_lop ?? '?'} · ${THU_LABEL[s.thu]} ${hhmm(s.gio_bat_dau)}–${hhmm(s.gio_ket_thuc)}`} onClose={onClose}>
-      <p className="mb-3 text-sm text-slate-600">Môn {s.lop?.mon ?? '—'} · phòng <b>{s.phong ?? '—'}</b></p>
+      <p className="mb-3 text-sm text-slate-600">Môn {s.lop?.mon ?? '—'}</p>
+      <Field label="Phòng">
+        <div className="flex flex-wrap gap-1.5">
+          {rooms.map((p) => (
+            <button key={p} type="button" onClick={() => setPhong(p)}
+              className={`h-9 flex-1 rounded-lg border text-[13px] font-semibold transition ${phong === p ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-slate-200 text-slate-600 hover:border-indigo-300'}`}>{p}</button>
+          ))}
+        </div>
+      </Field>
+      {trung && <p className="mb-3 text-[12px] text-rose-600">Trùng phòng: {trung.lop?.ten_lop ?? '?'} · {hhmm(trung.gio_bat_dau)}–{hhmm(trung.gio_ket_thuc)} cùng {THU_LABEL[s.thu]}.</p>}
       <Field label="Hiệu lực từ (ngày khai giảng / bắt đầu áp khung này)">
         <input type="date" value={hieuLucTu} onChange={(e) => setHieuLucTu(e.target.value)} className={inp} />
       </Field>
-      <p className="mb-3 text-[12px] text-slate-400">Trước ngày này hệ thống KHÔNG sinh buổi học cho ca — đây là "công tắc khai giảng". Đổi giờ/phòng = ngừng ca này rồi xếp ca mới (giữ vết).</p>
+      <p className="mb-3 text-[12px] text-slate-400">Trước ngày này hệ thống KHÔNG sinh buổi học cho ca — đây là "công tắc khai giảng". Đổi giờ = ngừng ca này rồi xếp ca mới (giữ vết); đổi phòng sửa được trực tiếp ở đây.</p>
       {error && <p className="mb-2 text-xs text-rose-600">{error}</p>}
       <div className="flex items-center justify-between">
         <button disabled={busy} onClick={async () => { if (!confirm('Ngừng ca này từ hôm nay?')) return; setBusy(true); try { await dongTKB(s.id, today()); onChanged() } catch (e: any) { setError(e.message); setBusy(false) } }}
           className="rounded-md border border-rose-200 px-3 py-1.5 text-sm font-medium text-rose-600 hover:bg-rose-50 disabled:opacity-40">Ngừng ca này</button>
         <div className="flex gap-2">
           <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
-          <button disabled={busy || hieuLucTu === s.hieu_luc_tu} onClick={async () => { setBusy(true); try { await suaHieuLucTKB(s.id, { hieu_luc_tu: hieuLucTu }); onChanged() } catch (e: any) { setError(e.message); setBusy(false) } }}
+          <button disabled={busy || !changed || !!trung} onClick={async () => { setBusy(true); try { await suaHieuLucTKB(s.id, { hieu_luc_tu: hieuLucTu, phong: phong || null }); onChanged() } catch (e: any) { setError(e.message); setBusy(false) } }}
             className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang lưu…' : 'Lưu'}</button>
         </div>
       </div>

@@ -1,7 +1,7 @@
 // QUẢN LÝ ĐIỂM Elo/EXP. 2 view: BẢNG XẾP HẠNG (leaderboard per môn) · THEO CA HỌC (mỗi ca 1 mã, 2 bảng Elo lớp/ET).
 // Hồ sơ 1 HS: Elo per môn · lịch sử Elo (bấm 1 dòng → mở bảng Elo của ca đó) · dòng EXP.
-import { useEffect, useRef, useState } from 'react'
-import { listGamiBangTong, listGamiMons, getDiemHS, listCaHoc, getEloBreakdown, type DiemRow, type DiemHS, type CaHoc, type EloBreakdown } from '../../lib/gami'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { listGamiBangTong, listGamiMons, getDiemHS, getExpThang, listCaHoc, getEloBreakdown, type DiemRow, type DiemHS, type ExpRow, type CaHoc, type EloBreakdown } from '../../lib/gami'
 import { tenHienThiDs } from '../../lib/hoten'
 import { KHOI_OPTIONS } from '../../lib/kho/api'
 
@@ -10,8 +10,26 @@ type Phase = 'ingame' | 'et' | 'mt'
 // định, và bảng này chỉ cần SẮP XẾP; nếu sau có bậc mới thì nó vẫn hiện, chỉ rơi xuống cuối.
 const HE_THU_TU: Record<string, number> = { S: 4, A: 3, B: 2, C: 1 }
 const HE_TONE: Record<string, string> = { S: 'bg-amber-100 text-amber-800', A: 'bg-indigo-100 text-indigo-800', B: 'bg-sky-100 text-sky-800', C: 'bg-slate-100 text-slate-600' }
-const EXP_SRC: Record<string, string> = { rank_ingame: 'Hạng chấm bài', rank_et: 'Hạng ET', rank_mt: 'Hạng MT', attend_floor: 'Đi học (sàn)' }
+const EXP_SRC: Record<string, string> = {
+  exp_et: 'ET (hạng buổi)', exp_btvn: 'BTVN', exp_btvn_thang: 'BTVN tháng (thưởng/phạt)', exp_thang: 'EXP tháng (gộp cũ)',
+  rank_ingame: 'Hạng chấm bài', rank_et: 'Hạng ET', rank_mt: 'Hạng MT', attend_floor: 'Đi học (sàn)',
+}
 const srcLbl = (s: string) => EXP_SRC[s] ?? s
+// EXP là LƯƠNG THÁNG (Thùy 11/09: "reset theo tháng, ko như elo thời gian dài") — danh sách tháng
+// từ tháng ĐẦU CHỐT (khớp THANG_DAU ở xu.ts) tới tháng VN hiện tại, mới nhất trước.
+const THANG_DAU_EXP = '2026-08'
+function listThangExp(): string[] {
+  const v = new Date(Date.now() + 7 * 3600 * 1000)
+  const now = `${v.getUTCFullYear()}-${String(v.getUTCMonth() + 1).padStart(2, '0')}`
+  const out: string[] = []
+  let [y, m] = THANG_DAU_EXP.split('-').map(Number)
+  while (true) {
+    const ym = `${y}-${String(m).padStart(2, '0')}`
+    if (ym > now) break
+    out.push(ym); m++; if (m > 12) { m = 1; y++ }
+  }
+  return out.reverse()
+}
 const fmtNgay = (iso?: string | null) => (iso ? new Date(iso + 'T00:00:00').toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '—')
 const phaseLbl = (p: Phase) => (p === 'et' ? 'Elo ET' : p === 'mt' ? 'Elo MT' : 'Elo lớp')
 const phaseOf = (p: string): Phase => (p === 'et' ? 'et' : p === 'mt' ? 'mt' : 'ingame')
@@ -236,7 +254,15 @@ function EloBangModal({ bang, onClose }: { bang: BangRef; onClose: () => void })
 
 function HoSoDiem({ row, onClose, onOpenBang }: { row: DiemRow; onClose: () => void; onOpenBang: (b: BangRef) => void }) {
   const [d, setD] = useState<DiemHS | null>(null)
-  useEffect(() => { getDiemHS(row.hoc_sinh_id).then(setD).catch(() => setD({ elo: [], hist: [], exp: [] })) }, [row.hoc_sinh_id])
+  useEffect(() => { getDiemHS(row.hoc_sinh_id).then(setD).catch(() => setD({ elo: [], hist: [] })) }, [row.hoc_sinh_id])
+  // EXP là lương THÁNG (khác Elo — xem lâu dài) → tách riêng, có chọn tháng, mặc định tháng hiện tại.
+  const thangsExp = useMemo(listThangExp, [])
+  const [ymExp, setYmExp] = useState(thangsExp[0])
+  const [exp, setExp] = useState<{ rows: ExpRow[]; tongMon: Map<string, number> } | null>(null)
+  useEffect(() => {
+    setExp(null)
+    getExpThang(row.hoc_sinh_id, ymExp).then(setExp).catch(() => setExp({ rows: [], tongMon: new Map() }))
+  }, [row.hoc_sinh_id, ymExp])
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/30 p-4 backdrop-blur-sm" onClick={onClose}>
       <div className="flex max-h-[90vh] w-[760px] max-w-[96vw] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -253,7 +279,7 @@ function HoSoDiem({ row, onClose, onOpenBang }: { row: DiemRow; onClose: () => v
                   <div className="text-[12px] font-semibold uppercase tracking-wide text-slate-500">{e.mon}</div>
                   <div className="mt-1 flex items-end gap-3">
                     <span><span className="text-2xl font-bold text-indigo-700">{e.elo}</span> <span className="text-[11px] text-slate-400">Elo</span></span>
-                    <span><span className="text-lg font-semibold text-violet-600">{e.exp.toLocaleString('vi-VN')}</span> <span className="text-[11px] text-slate-400">EXP</span></span>
+                    <span><span className="text-lg font-semibold text-violet-600">{(exp?.tongMon.get(e.mon) ?? 0).toLocaleString('vi-VN')}</span> <span className="text-[11px] text-slate-400">EXP tháng {Number(ymExp.slice(5))}</span></span>
                     <span className="text-[12px] text-slate-400">{e.sessions} buổi</span>
                   </div>
                 </div>
@@ -277,14 +303,20 @@ function HoSoDiem({ row, onClose, onOpenBang }: { row: DiemRow; onClose: () => v
               )}
             </div>
             <div className="min-h-0">
-              <div className="mb-2 text-[12px] font-semibold uppercase tracking-wide text-slate-600">Dòng EXP</div>
-              {d.exp.length === 0 ? <p className="text-[12px] text-slate-400">—</p> : (
+              <div className="mb-2 flex items-center gap-2">
+                <span className="text-[12px] font-semibold uppercase tracking-wide text-slate-600">Dòng EXP</span>
+                <span className="text-[11px] font-normal normal-case text-slate-400">(theo tháng — EXP là lương tháng, không gộp dồn như Elo)</span>
+                <select value={ymExp} onChange={(e) => setYmExp(e.target.value)} className="ml-auto h-6 rounded border border-slate-200 px-1.5 text-[11px]">
+                  {thangsExp.map((t) => <option key={t} value={t}>Tháng {Number(t.slice(5))}/{t.slice(0, 4)}</option>)}
+                </select>
+              </div>
+              {!exp ? <p className="text-[12px] text-slate-400">Đang tải…</p> : exp.rows.length === 0 ? <p className="text-[12px] text-slate-400">Không có EXP tháng này.</p> : (
                 <div className="space-y-1">
-                  {d.exp.map((x, i) => (
+                  {exp.rows.map((x, i) => (
                     <div key={i} className="flex items-center gap-2 rounded-md border border-slate-100 px-2.5 py-1.5 text-[12px]">
                       <span className="text-slate-400">{fmtNgay(x.ngay)}</span><span className="text-slate-600">{srcLbl(x.source)}</span>
                       {x.mon && <span className="rounded bg-slate-100 px-1 text-[10px] text-slate-500">{x.mon}</span>}
-                      <span className="ml-auto font-semibold text-violet-600">+{x.amount}</span>
+                      <span className={`ml-auto font-semibold ${x.amount >= 0 ? 'text-violet-600' : 'text-rose-600'}`}>{x.amount >= 0 ? '+' : ''}{x.amount}</span>
                     </div>
                   ))}
                 </div>
