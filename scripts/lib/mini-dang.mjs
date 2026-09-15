@@ -1604,7 +1604,18 @@ export function evalDkChiaHetKetQua(s) { const t = chuanHoaDkChiaHet(s); return 
 // Đề "A = $(x^2+2x+3)(x-1) - (x^2-x+1)(x-1) + 3x^2 + 2$" — tổng quát hơn DẠNG 13/16: mỗi hạng tử ở bậc
 // NGOÀI CÙNG (tách bằng `chiaHangTu`) có thể là 1 TÍCH nhiều nhân tử (tách tiếp bằng `tachNhanTu`) hoặc 1
 // đa thức trần. Tái dùng TOÀN BỘ máy DẠNG 13/16 (`parseFactorAsPoly`, `nhanCacDaThuc`, `hienThiDaThuc`).
-function parseHangTuBieuThuc(text) { // 1 hạng tử bậc ngoài — có thể là TÍCH nhiều nhân tử, HOẶC 1 phép CHIA đa thức:đơn thức (vd "(6x^3-3x^2):(x^2)")
+function extractDfracArgsPlain(text) { // "\dfrac{A}{B}" (PHỦ HẾT text, không có gì thừa) → [A, B] theo ĐỘ SÂU ngoặc nhọn, hoặc null
+  if (!text.startsWith('\\dfrac{')) return null
+  let i = 7, depth = 1; const start1 = i
+  while (i < text.length && depth > 0) { if (text[i] === '{') depth++; else if (text[i] === '}') depth--; i++ }
+  const a = text.slice(start1, i - 1)
+  if (text[i] !== '{') return null
+  i++; depth = 1; const start2 = i
+  while (i < text.length && depth > 0) { if (text[i] === '{') depth++; else if (text[i] === '}') depth--; i++ }
+  const b = text.slice(start2, i - 1)
+  return i === text.length ? [a, b] : null
+}
+function parseHangTuBieuThuc(text) { // 1 hạng tử bậc ngoài — có thể là TÍCH nhiều nhân tử, 1 phép CHIA đa thức:đơn thức (vd "(6x^3-3x^2):(x^2)"), hoặc "\dfrac{tử NHIỀU HẠNG}{mẫu SỐ}" (vd "\dfrac{x-1}{-3}" — khác nhánh \dfrac 1-hạng đã có sẵn trong parseDonThucCore, dùng cho hệ số phân số của PT/BPT, KHÔNG phải phân thức mẫu chứa biến)
   const divSplit = tachChiaDonThuc(text)
   if (divSplit) {
     const tuTerms = parseFactorAsPoly(boNgoacNgoai(divSplit[0])); if (!tuTerms) return null
@@ -1617,6 +1628,10 @@ function parseHangTuBieuThuc(text) { // 1 hạng tử bậc ngoài — có thể
       out.push({ coef, vars })
     }
     return out
+  }
+  const dfArgs = extractDfracArgsPlain(text)
+  if (dfArgs && /^-?\d+$/.test(dfArgs[1].trim())) {
+    const tuPoly = phanTichDaThucCumNhanTu(dfArgs[0]); if (tuPoly) { const mauVal = R(BigInt(dfArgs[1].trim())); if (mauVal.p !== 0n) return tuPoly.map((t) => ({ coef: div(t.coef, mauVal), vars: t.vars })) }
   }
   const factorTexts = tachNhanTu(text); if (!factorTexts.length) return null
   const factorsPolys = factorTexts.map(parseFactorAsPoly); if (factorsPolys.some((p) => !p)) return null
@@ -2196,7 +2211,9 @@ export function gtlnGtnnBacHai(noiDung, rule) {
   const m = String(noiDung).match(/\$([^$]+)\$/); if (!m) return null
   let raw = m[1].trim()
   const mLabel = raw.match(/^([A-Za-zĐ])\s*=\s*(.+)$/); if (mLabel) raw = mLabel[2].trim()
-  const terms = parseFactorAsPoly(chuanBiBieuThucNhan(raw)); if (!terms) return null
+  // phanTichDaThucCumNhanTu (không phải parseFactorAsPoly) — tự khai triển tích nếu đề cho dạng CHƯA nhân
+  // ra, vd "$A=(4-x)(x+2)$" (T109080101), chứ không chỉ tổng đơn thức trần như "$A=2x^2+4x+5$".
+  const terms = phanTichDaThucCumNhanTu(chuanBiBieuThucNhan(raw)); if (!terms) return null
   const bienSet = new Set(); for (const t of terms) for (const v of t.vars.keys()) bienSet.add(v)
   if (bienSet.size > 1) return null
   const bien = [...bienSet][0] || 'x'
@@ -3300,7 +3317,11 @@ export function phanTichNhamNghiem(noiDung, rule) {
 // KHÔNG NHẤT QUÁN ("x = 2; x = 9" hoặc "-2; 1/2") — canon riêng `chuanHoaDanhSachNghiem` trích mọi giá trị
 // số/phân số trong text, sắp xếp rồi nối lại (thứ tự nghiệm không quan trọng).
 export function chuanHoaDanhSachNghiem(s) {
-  const clean = String(s ?? '').replace(/\$/g, '').replace(/[{}]/g, '').trim() // khuôn "{-2;2;3}" (tập nghiệm) cũng cần strip ngoặc nhọn
+  let clean = String(s ?? '').replace(/\$/g, '').trim()
+  // khuôn "{-2;2;3}" (tập nghiệm) cũng cần strip ngoặc nhọn NGOÀI CÙNG — CHỈ cặp bọc cả chuỗi, KHÔNG strip
+  // mọi "{"/"}" trong chuỗi (bug thật: từng strip TOÀN BỘ, phá luôn \dfrac{p}{q} thành "\dfracpq" vô nghĩa
+  // khi đáp số không có dấu "=" để đi nhánh eqMatches — vd "\dfrac{3}{2} ; -\dfrac{5}{2}").
+  if (clean.startsWith('{') && clean.endsWith('}')) clean = clean.slice(1, -1).trim()
   const numRe = /-?\\dfrac\{-?\d+\}\{-?\d+\}|-?\d+\/\d+|-?\d+(?:[.,]\d+)?/g
   const eqMatches = [...clean.matchAll(new RegExp(`=\\s*(${numRe.source})`, 'g'))]
   const pieces = eqMatches.length ? eqMatches.map((m) => m[1]) : clean.split(/[;,]/).map((x) => x.trim()).filter(Boolean)
@@ -3408,5 +3429,1250 @@ export function giaiPtBacBaQuaNhom(noiDung, rule) {
     const t = `{${wrong.map(texR).join(';')}}`; if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null
     return { text: t, ds: 'tính lệch 1 đơn vị ở 1 nghiệm, chiều ngược lại' }
   }
+  return null
+}
+
+// ── DẠNG 45: Giải bất phương trình bậc nhất một ẩn (T109020201, khối 9) ─────────────────────────────────────
+// "$2x+4\ge 10$" → quy về $heSoX\cdot x + hangSo \;op\; 0$ — NẾU heSoX ÂM thì PHẢI ĐỔI CHIỀU bất đẳng thức khi
+// chia. Đáp số kho là "x [op] value" với KÝ HIỆU op không nhất quán (`\ge`/`\geq`, `\le`/`\leq`, `<`,`>`) —
+// canon riêng `chuanHoaBatDangThuc` chuẩn hoá cả toán tử lẫn giá trị.
+const OP_MAP = { '\\geqslant': '≥', '\\geq': '≥', '\\ge': '≥', '\\leqslant': '≤', '\\leq': '≤', '\\le': '≤', '≥': '≥', '≤': '≤', '>': '>', '<': '<' }
+const OP_FLIP = { '≥': '≤', '≤': '≥', '>': '<', '<': '>' }
+export function chuanHoaBatDangThuc(s) {
+  const clean = String(s ?? '').replace(/\$/g, '').trim()
+  const m = clean.match(/(\\geqslant|\\geq|\\ge|\\leqslant|\\leq|\\le|≥|≤|>|<)\s*(-?\s*\\dfrac\{-?\d+\}\{-?\d+\}|-?\s*\d+\/\d+|-?\s*\d+(?:[.,]\d+)?)/)
+  if (!m) return clean
+  const op = OP_MAP[m[1]]; if (!op) return clean
+  const c = parseDonThucCore(m[2].replace(',', '.').replace(/^(\d+)\/(\d+)$/, '\\dfrac{$1}{$2}')); if (!c || c.vars.size > 0) return clean
+  return `x${op}${texR(c.coef)}`
+}
+export function evalBatDangThucKetQua(s) { const t = chuanHoaBatDangThuc(s); return t || null }
+export function giaiBptBacNhat(noiDung, rule) {
+  const s = String(noiDung)
+  const m = s.match(/\$([^$]+)\$/); if (!m) return null
+  const expr = m[1].trim()
+  const opM = expr.match(/(\\geqslant|\\geq|\\ge|\\leqslant|\\leq|\\le|>|<)/); if (!opM) return null
+  const op = OP_MAP[opM[1]]; if (!op) return null
+  const idx = expr.indexOf(opM[1])
+  const lhsRaw = expr.slice(0, idx), rhsRaw = expr.slice(idx + opM[1].length)
+  const parseVe = (raw, giuDau) => {
+    const topTerms = chiaHangTu(chuanBiBieuThucNhan(raw.trim())); if (!topTerms.length) return null
+    const out = topTerms.map((t) => ({ sign: giuDau ? t.sign : (t.sign === '-' ? '+' : '-'), terms: parseHangTuBieuThuc(t.text) }))
+    return out.some((h) => !h.terms) ? null : out
+  }
+  const veTrai = parseVe(lhsRaw, true), vePhai = parseVe(rhsRaw, false); if (!veTrai || !vePhai) return null
+  const hangList = [...veTrai, ...vePhai]
+  const bienSet = new Set(); for (const h of hangList) for (const t of h.terms) for (const v of t.vars.keys()) bienSet.add(v)
+  if (bienSet.size !== 1) return null
+  const bien = [...bienSet][0]
+  const gopTheoBac = new Map() // bậc → hệ số gộp — PHẢI gộp trước khi kiểm bậc (x² có thể triệt tiêu giữa 2 vế)
+  for (const h of hangList) for (const t of h.terms) {
+    const d = t.vars.get(bien) ?? 0
+    const c = h.sign === '-' ? mul(R(-1n), t.coef) : t.coef
+    gopTheoBac.set(d, add(gopTheoBac.get(d) ?? R(0n), c))
+  }
+  for (const [d, c] of gopTheoBac) if (d > 1 && c.p !== 0n) return null // bậc >1 còn sót sau khi gộp — vượt phạm vi bậc nhất
+  const heSoX = gopTheoBac.get(1) ?? R(0n), hangSo = gopTheoBac.get(0) ?? R(0n)
+  if (heSoX.p === 0n) return null
+  const boundary = div(mul(R(-1n), hangSo), heSoX); if (!boundary) return null
+  const opCuoi = heSoX.p < 0n ? OP_FLIP[op] : op
+  const dungText = `x${opCuoi}${texR(boundary)}`
+  if (!rule) return { text: dungText }
+  if (rule === 'R305') { // quên đổi chiều khi hệ số x âm — chỉ áp dụng khi THẬT SỰ có đổi chiều
+    if (heSoX.p >= 0n) return null
+    const t = `x${op}${texR(boundary)}`; if (t === dungText) return null
+    return { text: t, ds: 'quên đổi chiều bất đẳng thức khi chia/nhân cho số âm' }
+  }
+  if (rule === 'R306') { const v = add(boundary, R(1n)); const t = `x${opCuoi}${texR(v)}`; if (t === dungText) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở giá trị biên (dự phòng)' } }
+  if (rule === 'R307') { const v = sub(boundary, R(1n)); const t = `x${opCuoi}${texR(v)}`; if (t === dungText) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở giá trị biên, chiều ngược lại' } }
+  if (rule === 'R308') { const v = mul(R(-1n), boundary); const t = `x${opCuoi}${texR(v)}`; if (t === dungText || cmp(v, boundary) === 0) return null; return { text: t, ds: 'tính sai dấu giá trị biên' } }
+  if (rule === 'R309') { // rescue — quên chia hệ số x, coi hệ số luôn là 1 (cứu ca R307/R308 trùng nhau khi biên = 0.5)
+    const v = mul(R(-1n), hangSo); const t = `x${opCuoi}${texR(v)}`; if (t === dungText || cmp(v, boundary) === 0) return null
+    return { text: t, ds: 'quên chia hệ số của x, coi hệ số x luôn bằng 1' }
+  }
+  return null
+}
+
+// ── DẠNG 46: Giải phương trình tích của 2 nhị thức bậc nhất (T109020401, khối 9) ────────────────────────────
+// "$(2x-4)\cdot(3x+9)=0$" — 2 NHÂN TỬ ĐỘC LẬP (khác DẠNG 43: không chung 1 cụm hợp), mỗi nhân tử là 1 nhị thức
+// bậc nhất riêng → GIẢI TỪNG nhân tử=0. Đáp số kho là 2 NGHIỆM, đôi khi câu kết "= 0." có dấu CHẤM trong $...$
+// (phần cuối câu, không phải thập phân) — phải bỏ trước khi so với "0".
+export function timXTichHaiNhiThuc(noiDung, rule) {
+  const s = String(noiDung)
+  const m = s.match(/\$([^$]+)\$/); if (!m) return null
+  const eqParts = m[1].split('='); if (eqParts.length !== 2) return null
+  const rhs = eqParts[1].trim().replace(/\.$/, '').trim(); if (rhs !== '0') return null
+  const factors = tachNhanTu(chuanBiBieuThucNhan(eqParts[0].trim())); if (factors.length !== 2) return null
+  const roots = []
+  for (const f of factors) {
+    const terms = phanTichDaThucCumNhanTu(f); if (!terms) return null
+    const r = giaiBacNhat1Bien(terms); if (!r) return null
+    roots.push(r)
+  }
+  const dungText = `${texR(roots[0])} ; ${texR(roots[1])}`
+  if (!rule) return { text: dungText }
+  if (rule === 'R310') {
+    const t = `${texR(mul(R(-1n), roots[0]))} ; ${texR(roots[1])}`
+    if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null
+    return { text: t, ds: 'quên đổi dấu khi giải nghiệm thứ nhất' }
+  }
+  if (rule === 'R311') {
+    const t = `${texR(roots[0])} ; ${texR(mul(R(-1n), roots[1]))}`
+    if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null
+    return { text: t, ds: 'quên đổi dấu khi giải nghiệm thứ hai' }
+  }
+  if (rule === 'R312') {
+    const t = `${texR(roots[0])} ; ${texR(add(roots[1], R(1n)))}`
+    if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null
+    return { text: t, ds: 'tính lệch 1 đơn vị ở nghiệm thứ hai (dự phòng)' }
+  }
+  if (rule === 'R313') {
+    const t = `${texR(roots[0])} ; ${texR(sub(roots[1], R(1n)))}`
+    if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null
+    return { text: t, ds: 'tính lệch 1 đơn vị ở nghiệm thứ hai, chiều ngược lại' }
+  }
+  return null
+}
+
+// ── DẠNG 47: Giải phương trình quy về phương trình bậc hai dạng tích (T109020402, khối 9) ────────────────────
+// "$(x-3)(x+2)-x^2+9=0$", "$(x+2)(x-10)=-36$"… — KHÔNG có khuôn "tích 2 nhân tử = 0" sẵn (vế trái có thể là
+// tổng/hiệu NHIỀU cụm, hoặc RHS ≠ 0) → chuyển vế + khai triển ĐẦY ĐỦ bằng `phanTichDaThucCumNhanTu` (đã hỗ
+// trợ chiaHangTu + nhân đa thức lồng nhau qua tachNhanTu/nhanCacDaThuc, TÁI DÙNG NGUYÊN) → gộp về $Ax^2+Bx+
+// C=0$ rồi tìm 1 nghiệm hữu tỉ bằng ĐỊNH LÝ NGHIỆM HỮU TỈ (nghiệm $p/q$ tối giản có $p\mid C$, $q\mid A$),
+// suy nghiệm còn lại qua Viète ($x_1+x_2=-B/A$) — không cần tách/nhóm hạng tử tường minh. Cho phép nghiệm KÉP.
+function uocSoNguyen(n) {
+  if (n === 0n) return [0n]
+  const a = n < 0n ? -n : n; const out = []
+  for (let d = 1n; d * d <= a; d++) if (a % d === 0n) { out.push(d); out.push(a / d) }
+  return [...new Set(out)]
+}
+function timNghiemHuuTiBacHai(A, B, C) { // Ax²+Bx+C=0 (A≠0 nguyên) — tìm 1 nghiệm hữu tỉ theo định lý nghiệm hữu tỉ
+  const qs = uocSoNguyen(A).filter((q) => q !== 0n)
+  const psAbs = uocSoNguyen(C)
+  for (const q of qs) for (const pAbs of psAbs) for (const p of pAbs === 0n ? [0n] : [pAbs, -pAbs]) {
+    if (A * p * p + B * p * q + C * q * q === 0n) return R(p, q)
+  }
+  return null
+}
+export function giaiPtQuyVeTich(noiDung, rule) {
+  const s = String(noiDung)
+  const m = s.match(/\$([^$]+)\$/); if (!m) return null
+  const eqParts = m[1].split('='); if (eqParts.length !== 2) return null
+  const lhs = phanTichDaThucCumNhanTu(chuanBiBieuThucNhan(eqParts[0].trim())); if (!lhs) return null
+  const rhsRaw = eqParts[1].trim().replace(/\.$/, '').trim()
+  const rhs = phanTichDaThucCumNhanTu(chuanBiBieuThucNhan(rhsRaw)); if (!rhs) return null
+  const allTerms = [...lhs, ...rhs.map((t) => ({ coef: mul(R(-1n), t.coef), vars: t.vars }))]
+  const bienSet = new Set(); for (const t of allTerms) for (const v of t.vars.keys()) bienSet.add(v)
+  if (bienSet.size !== 1) return null
+  const bien = [...bienSet][0]
+  const gopTheoBac = new Map()
+  for (const t of allTerms) {
+    const d = t.vars.get(bien) ?? 0
+    if ([...t.vars.keys()].some((v) => v !== bien)) return null
+    gopTheoBac.set(d, add(gopTheoBac.get(d) ?? R(0n), t.coef))
+  }
+  for (const [d, c] of gopTheoBac) if (d > 2 && c.p !== 0n) return null // bậc >2 còn sót sau khi gộp — vượt phạm vi dạng này
+  const coefA = gopTheoBac.get(2) ?? R(0n), coefB = gopTheoBac.get(1) ?? R(0n), coefC = gopTheoBac.get(0) ?? R(0n)
+  if (coefA.q !== 1n || coefB.q !== 1n || coefC.q !== 1n) return null // hệ số không nguyên sau gộp — ngoài phạm vi
+  const A = coefA.p, B = coefB.p, C = coefC.p
+  let roots
+  if (A === 0n) { // sau khi khai triển thực chất chỉ còn bậc nhất (vd $(x-3)(x+2)-x^2+9=0$ ⇒ $-x+3=0$)
+    if (B === 0n) return null // hằng đẳng thức/vô nghiệm sau khi gộp — ngoài phạm vi dạng này
+    roots = [R(-C, B)]
+  } else {
+    const r1 = timNghiemHuuTiBacHai(A, B, C); if (!r1) return null
+    const r2 = div(sub(R(-B), mul(R(A), r1)), R(A)); if (!r2) return null
+    roots = cmp(r1, r2) === 0 ? [r1] : [r1, r2].sort(cmp) // nghiệm KÉP → kho ghi 1 giá trị duy nhất, không lặp lại
+  }
+  const dungText = roots.map(texR).join(' ; ')
+  if (!rule) return { text: dungText }
+  const flipAt = (i) => { const cp = [...roots]; cp[i] = mul(R(-1n), cp[i]); return cp.map(texR).join(' ; ') }
+  const shiftAt = (i, d) => { const cp = [...roots]; cp[i] = add(cp[i], R(d)); return cp.map(texR).join(' ; ') }
+  if (rule === 'R314') {
+    const t = flipAt(0)
+    if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null
+    return { text: t, ds: 'nhầm dấu nghiệm thứ nhất' }
+  }
+  if (rule === 'R315') {
+    if (roots.length < 2) return null
+    const t = flipAt(1)
+    if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null
+    return { text: t, ds: 'nhầm dấu nghiệm thứ hai' }
+  }
+  if (rule === 'R316') {
+    const t = shiftAt(roots.length - 1, 1n)
+    if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null
+    return { text: t, ds: 'tính lệch 1 đơn vị ở nghiệm cuối (dự phòng)' }
+  }
+  if (rule === 'R317') {
+    const t = shiftAt(roots.length - 1, -1n)
+    if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null
+    return { text: t, ds: 'tính lệch 1 đơn vị ở nghiệm cuối, chiều ngược lại' }
+  }
+  return null
+}
+
+// ── DẠNG 48: GTLN-GTNN của biểu thức bậc hai một biến TRÊN 1 ĐOẠN (T109080102, khối 9) ───────────────────────
+// "$A=x^2-4x+2$ với $0\le x\le 4$" — khác DẠNG 28 (không điều kiện): cực trị có thể rơi ở ĐỈNH PARABOL (nếu
+// đỉnh nằm TRONG đoạn) HOẶC ở 1 trong 2 ĐẦU MÚT — so sánh f(a), f(b), f(đỉnh nếu áp dụng) rồi lấy max/min
+// trên tập ứng viên đó (KHÔNG giả định trước đỉnh là max hay min — đúng cho cả A>0 và A<0). Đáp số kho "GTLN;
+// GTNN" — thứ tự không quan trọng vì canon `chuanHoaDanhSachNghiem` tự sắp lại khi so sánh.
+function parseSoBienDoan(s) { const c = parseDonThucCore(String(s).replace(',', '.').trim()); return (!c || c.vars.size > 0 || c.hasIrrational) ? null : c.coef }
+export function gtlnGtnnBacHaiCoDieuKien(noiDung, rule) {
+  const s = String(noiDung)
+  const segs = [...s.matchAll(/\$([^$]+)\$/g)].map((mm) => mm[1]); if (segs.length < 2) return null
+  const boundSeg = segs.find((seg) => /\\le|\\leq|\\leqslant|≤/.test(seg) && /x/.test(seg)); if (!boundSeg) return null
+  const exprSeg = segs.find((seg) => seg !== boundSeg); if (!exprSeg) return null
+  const bm = boundSeg.match(/(-?[\d.,]+)\s*(?:\\le|\\leq|\\leqslant|≤)\s*x\s*(?:\\le|\\leq|\\leqslant|≤)\s*(-?[\d.,]+)/); if (!bm) return null
+  const lo = parseSoBienDoan(bm[1]), hi = parseSoBienDoan(bm[2]); if (!lo || !hi) return null
+  let raw = exprSeg.trim()
+  const mLabel = raw.match(/^([A-Za-zĐ])\s*=\s*(.+)$/); if (mLabel) raw = mLabel[2].trim()
+  const terms = phanTichDaThucCumNhanTu(chuanBiBieuThucNhan(raw)); if (!terms) return null
+  const bienSet = new Set(); for (const t of terms) for (const v of t.vars.keys()) bienSet.add(v)
+  if (bienSet.size !== 1) return null
+  const bien = [...bienSet][0]
+  let A = R(0n), B = R(0n), C = R(0n)
+  for (const t of terms) { const d = t.vars.get(bien) ?? 0; if (d === 2) A = add(A, t.coef); else if (d === 1) B = add(B, t.coef); else if (d === 0) C = add(C, t.coef); else return null }
+  if (A.p === 0n) return null
+  const evalAt = (x) => add(add(mul(A, mul(x, x)), mul(B, x)), C)
+  const x0 = div(mul(R(-1n), B), mul(R(2n), A)); if (!x0) return null
+  const trongDoan = cmp(lo, x0) <= 0 && cmp(x0, hi) <= 0
+  const fA = evalAt(lo), fB = evalAt(hi), fV = trongDoan ? evalAt(x0) : null
+  const layMax = (arr) => arr.reduce((m, v) => cmp(v, m) > 0 ? v : m)
+  const layMin = (arr) => arr.reduce((m, v) => cmp(v, m) < 0 ? v : m)
+  const candidates = fV ? [fA, fB, fV] : [fA, fB]
+  const maxV = layMax(candidates), minV = layMin(candidates)
+  const dungText = `${texR(maxV)} ; ${texR(minV)}`
+  if (!rule) return { text: dungText }
+  if (rule === 'R318') { // quên xét đỉnh rơi trong đoạn, chỉ so 2 đầu mút
+    const t = `${texR(layMax([fA, fB]))} ; ${texR(layMin([fA, fB]))}`
+    if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null
+    return { text: t, ds: 'quên xét điểm rơi vào đoạn (đỉnh parabol), chỉ so sánh 2 đầu mút' }
+  }
+  if (rule === 'R319') { // nhầm dấu phần bù khi tính giá trị tại đỉnh
+    if (!trongDoan) return null
+    const fVsai = add(C, mul(A, mul(x0, x0)))
+    const t = `${texR(layMax([fA, fB, fVsai]))} ; ${texR(layMin([fA, fB, fVsai]))}`
+    if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null
+    return { text: t, ds: 'nhầm dấu phần bù khi tính giá trị tại đỉnh parabol' }
+  }
+  if (rule === 'R320') { // quên xét đầu mút phải của đoạn
+    const cands2 = fV ? [fA, fV] : [fA]
+    const t = `${texR(layMax(cands2))} ; ${texR(layMin(cands2))}`
+    if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null
+    return { text: t, ds: 'quên xét đầu mút phải của đoạn' }
+  }
+  if (rule === 'R321') { // dự phòng — lệch 1 đơn vị ở GTNN
+    const t = `${texR(maxV)} ; ${texR(add(minV, R(1n)))}`
+    if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null
+    return { text: t, ds: 'tính lệch 1 đơn vị ở GTNN (dự phòng)' }
+  }
+  if (rule === 'R322') { // rescue — lệch 1 đơn vị ở GTLN (cứu ca đoạn đối xứng khiến R320/R321 trùng nhau/trùng đúng)
+    const t = `${texR(sub(maxV, R(1n)))} ; ${texR(minV)}`
+    if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null
+    return { text: t, ds: 'tính lệch 1 đơn vị ở GTLN' }
+  }
+  return null
+}
+
+// ── DẠNG 49: Giải hệ phương trình bậc nhất hai ẩn cơ bản (T109010201, khối 9) ─────────────────────────────────
+// "$\begin{cases} x+2y=4 \\ 2x+9y=18 \end{cases}$" — 2 phương trình $Ax+By=C$/$Dx+Ey=F$ — giải bằng ĐỊNH THỨC
+// (Cramer): $x=(CE-BF)/\Delta$, $y=(AF-CD)/\Delta$, $\Delta=AE-BD$. Đáp số kho "(x;y)" — GIỮ THỨ TỰ (không
+// sort như DẠNG khác), canon riêng `chuanHoaCapNghiem`.
+export function chuanHoaCapNghiem(s) {
+  let clean = String(s ?? '').replace(/\$/g, '').replace(/\.$/, '').trim()
+  if (clean.startsWith('(') && clean.endsWith(')')) clean = clean.slice(1, -1).trim()
+  const parts = clean.split(';').map((x) => x.trim()); if (parts.length !== 2) return clean
+  const vals = parts.map((p) => { const c = parseDonThucCore(p.replace(',', '.').replace(/^(-?\d+)\/(-?\d+)$/, '\\dfrac{$1}{$2}')); return (c && c.vars.size === 0 && !c.hasIrrational) ? c.coef : null })
+  if (vals.some((v) => !v)) return clean
+  return `(${vals.map(texR).join(';')})`
+}
+export function evalCapNghiemKetQua(s) { const t = chuanHoaCapNghiem(s); return t || null }
+export function giaiHePtBacNhatHaiAn(noiDung, rule) {
+  const s = String(noiDung)
+  const m = s.match(/\\begin\{cases\}([\s\S]*?)\\end\{cases\}/); if (!m) return null
+  const eqTexts = m[1].split('\\\\').map((t) => t.trim()).filter(Boolean); if (eqTexts.length !== 2) return null
+  const parseEq = (eq) => {
+    const parts = eq.split('='); if (parts.length !== 2) return null
+    const lhs = phanTichDaThucCumNhanTu(chuanBiBieuThucNhan(parts[0].trim())); if (!lhs) return null
+    const rhsRaw = parts[1].replace(/[\\.\s]+$/, '').trim()
+    const rhs = phanTichDaThucCumNhanTu(chuanBiBieuThucNhan(rhsRaw)); if (!rhs) return null
+    const allTerms = [...lhs, ...rhs.map((t) => ({ coef: mul(R(-1n), t.coef), vars: t.vars }))]
+    // GỘP theo key biến TRƯỚC khi kiểm bậc — vế trái có thể là tích 2 nhị thức (vd "(x+1)(y-1)=xy-1", T109010202)
+    // sinh hạng chéo "xy", hạng này PHẢI triệt tiêu với "xy" bên vế phải sau khi gộp mới còn tuyến tính.
+    const gop = new Map()
+    for (const t of allTerms) { const key = phanBienKey(t.vars); const old = gop.get(key); gop.set(key, old ? { coef: add(old.coef, t.coef), vars: t.vars } : t) }
+    const merged = [...gop.values()].filter((t) => t.coef.p !== 0n)
+    let A = R(0n), B = R(0n), C0 = R(0n)
+    for (const t of merged) {
+      const vs = [...t.vars.keys()]
+      if (vs.length === 0) { C0 = add(C0, t.coef); continue }
+      if (vs.length !== 1) return null
+      const v = vs[0], d = t.vars.get(v); if (d !== 1) return null
+      if (v === 'x') A = add(A, t.coef); else if (v === 'y') B = add(B, t.coef); else return null
+    }
+    return { A, B, C: mul(R(-1n), C0) }
+  }
+  const eq1 = parseEq(eqTexts[0]), eq2 = parseEq(eqTexts[1]); if (!eq1 || !eq2) return null
+  const { A, B, C } = eq1, { A: D, B: E, C: F } = eq2
+  const det = sub(mul(A, E), mul(B, D)); if (!det || det.p === 0n) return null
+  const x = div(sub(mul(C, E), mul(B, F)), det), y = div(sub(mul(A, F), mul(C, D)), det); if (!x || !y) return null
+  const dungText = `(${texR(x)};${texR(y)})`
+  if (!rule) return { text: dungText }
+  if (rule === 'R323') { // hoán đổi nhầm giá trị x và y
+    const t = `(${texR(y)};${texR(x)})`; if (chuanHoaCapNghiem(t) === chuanHoaCapNghiem(dungText)) return null
+    return { text: t, ds: 'hoán đổi nhầm giá trị x và y' }
+  }
+  if (rule === 'R324') { // nhầm dấu định thức, dẫn tới nhầm dấu cả 2 nghiệm
+    const t = `(${texR(mul(R(-1n), x))};${texR(mul(R(-1n), y))})`; if (chuanHoaCapNghiem(t) === chuanHoaCapNghiem(dungText)) return null
+    return { text: t, ds: 'nhầm dấu định thức, dẫn tới nhầm dấu cả 2 nghiệm' }
+  }
+  if (rule === 'R325') { // dự phòng — lệch 1 đơn vị ở x
+    const t = `(${texR(add(x, R(1n)))};${texR(y)})`; if (chuanHoaCapNghiem(t) === chuanHoaCapNghiem(dungText)) return null
+    return { text: t, ds: 'tính lệch 1 đơn vị ở nghiệm x (dự phòng)' }
+  }
+  if (rule === 'R326') { // rescue — lệch 1 đơn vị ở y
+    const t = `(${texR(x)};${texR(sub(y, R(1n)))})`; if (chuanHoaCapNghiem(t) === chuanHoaCapNghiem(dungText)) return null
+    return { text: t, ds: 'tính lệch 1 đơn vị ở nghiệm y' }
+  }
+  return null
+}
+
+// ── DẠNG 50: Số học SỐ VÔ TỈ (căn bậc hai) — biểu diễn $c_1\sqrt{k_1}+c_2\sqrt{k_2}+\dots$ (T109030101, khối 9)
+// SurdVal = mảng {coef: Rat, k: BigInt} — k=1n là phần HỮU TỈ, k>1 (square-free) là hệ số của √k. KHÔNG dùng
+// chung engine đa thức (biến x,y…) vì đây là số học SỐ, không phải biểu thức có biến — luật nhân/chia/rút gọn
+// hoàn toàn khác (√a·√b=√(ab) rồi rút căn lại, không phải cộng số mũ).
+function tachCanBac2(n) { // n≥0 (BigInt) → {out, inRad}: √n = out·√inRad, inRad square-free
+  if (n === 0n) return { out: 0n, inRad: 1n }
+  let inRad = n, out = 1n, d = 2n
+  while (d * d <= inRad) { while (inRad % (d * d) === 0n) { inRad /= d * d; out *= d }; d += 1n }
+  return { out, inRad }
+}
+function surdMergeAdd(list, coef, k) {
+  if (coef.p === 0n) return list
+  const idx = list.findIndex((t) => t.k === k)
+  if (idx < 0) return [...list, { coef, k }]
+  const nc = add(list[idx].coef, coef); const out = list.slice()
+  if (nc.p === 0n) out.splice(idx, 1); else out[idx] = { coef: nc, k }
+  return out
+}
+function surdAdd(a, b) { let r = a; for (const t of b) r = surdMergeAdd(r, t.coef, t.k); return r }
+function surdNeg(a) { return a.map((t) => ({ coef: mul(R(-1n), t.coef), k: t.k })) }
+function surdSub(a, b) { return surdAdd(a, surdNeg(b)) }
+function surdFromInt(n) { if (n < 0n) return null; const { out, inRad } = tachCanBac2(n); return inRad === 1n ? (out === 0n ? [] : [{ coef: R(out), k: 1n }]) : [{ coef: R(out), k: inRad }] }
+function surdMul(a, b) {
+  let result = []
+  for (const ta of a) for (const tb of b) {
+    const { out, inRad } = tachCanBac2(ta.k * tb.k)
+    result = surdMergeAdd(result, mul(mul(ta.coef, tb.coef), R(out)), inRad)
+  }
+  return result
+}
+function surdDivRat(a, r) { if (!r || r.p === 0n) return null; return a.map((t) => ({ coef: div(t.coef, r), k: t.k })) }
+function surdSqrtOfRat(r) { // √r cho r=Rat không âm → SurdVal, vd √(1/2) = √2/2
+  if (r.p < 0n) return null
+  if (r.p === 0n) return []
+  return surdDivRat(surdFromInt(r.p * r.q), R(r.q))
+}
+function isqrtRatPart(n) { return n < 0n ? null : isqrtBig(n) } // giữ tên riêng cho ngữ cảnh "phần tử của Rat", tránh nhầm với isqrtBig dùng cho DẠNG 25
+function denestSqrt(a, b, c) { // "CĂN LỒNG": √(a+b√c) (a,b: Rat; c: BigInt square-free >1) → SurdVal nếu a²-b²c là bình phương hữu tỉ
+  if (c === 1n) return null
+  const absB = b.p < 0n ? mul(R(-1n), b) : b
+  const D = sub(mul(a, a), mul(mul(absB, absB), R(c))); if (D.p < 0n) return null
+  const sp = isqrtRatPart(D.p), sq_ = isqrtRatPart(D.q); if (sp === null || sq_ === null) return null
+  const sqrtD = R(sp, sq_)
+  const p = div(add(a, sqrtD), R(2n)), q = div(sub(a, sqrtD), R(2n)); if (!p || !q || p.p < 0n || q.p < 0n) return null
+  const rp = surdSqrtOfRat(p), rq = surdSqrtOfRat(q); if (!rp || !rq) return null
+  return b.p < 0n ? surdSub(rp, rq) : surdAdd(rp, rq)
+}
+function surdDiv(numer, denom) { // hữu tỉ hoá mẫu bằng LIÊN HỢP — TỔNG QUÁT cho mẫu 1 hoặc 2 hạng (kể cả 2 căn khác nhau, vd "√11-√2")
+  if (!denom.length) return null
+  if (denom.length === 1) {
+    const { coef, k } = denom[0]
+    if (k === 1n) return surdDivRat(numer, coef)
+    return surdDivRat(surdMul(numer, [{ coef: R(1n), k }]), mul(coef, R(k)))
+  }
+  if (denom.length === 2) {
+    const conj = [denom[0], { coef: mul(R(-1n), denom[1].coef), k: denom[1].k }] // (A+B)(A-B)=A²-B² luôn hữu tỉ
+    const prod = surdMul(denom, conj); if (prod.length !== 1 || prod[0].k !== 1n) return null
+    return surdDivRat(surdMul(numer, conj), prod[0].coef)
+  }
+  return null
+}
+function surdSignTerm(t) { return t.coef.p > 0n ? 1 : t.coef.p < 0n ? -1 : 0 }
+function surdAbs(a) { // |c₁√k₁+c₂√k₂| — so² từng hạng để xác định dấu khi trái dấu, KHÔNG cần tính số thực
+  if (a.length === 0) return a
+  if (a.length === 1) return surdSignTerm(a[0]) < 0 ? surdNeg(a) : a
+  if (a.length === 2) {
+    const [t0, t1] = a, s0 = surdSignTerm(t0), s1 = surdSignTerm(t1)
+    if (s0 === 0) return s1 < 0 ? surdNeg(a) : a
+    if (s1 === 0) return s0 < 0 ? surdNeg(a) : a
+    if (s0 === s1) return s0 < 0 ? surdNeg(a) : a
+    const mag0 = mul(mul(t0.coef, t0.coef), R(t0.k)), mag1 = mul(mul(t1.coef, t1.coef), R(t1.k))
+    const cmpv = cmp(mag0, mag1), dauTong = cmpv > 0 ? s0 : cmpv < 0 ? s1 : 0
+    return dauTong < 0 ? surdNeg(a) : a
+  }
+  return null
+}
+function surdParseFull(text) { // đệ quy: nội dung lồng (trong ngoặc/{}) luôn gọi lại surdParseFull trên CHUỖI CON riêng, không dùng chung con trỏ vị trí
+  const s = String(text)
+  const skipWs = (i) => { while (i < s.length && /\s/.test(s[i])) i++; return i }
+  const parseNumber = (i) => {
+    i = skipWs(i)
+    const m = s.slice(i).match(/^\d+(?:\{,\}\d+|[.,]\d+)?/); if (!m) return null
+    const raw = m[0].replace('{,}', '.').replace(',', '.')
+    const [ip, fp] = raw.split('.')
+    const val = fp ? R(BigInt(ip + fp), 10n ** BigInt(fp.length)) : R(BigInt(ip))
+    return [[{ coef: val, k: 1n }], i + m[0].length]
+  }
+  const parseBraceArg = (i) => { i = skipWs(i); if (s[i] !== '{') return null; let depth = 1, j = i + 1; while (j < s.length && depth > 0) { if (s[j] === '{') depth++; else if (s[j] === '}') depth--; j++ }; return [s.slice(i + 1, j - 1), j] }
+  const parseMacroArg = (i) => { i = skipWs(i); if (s[i] === '{') return parseBraceArg(i); return i < s.length ? [s[i], i + 1] : null } // \dfrac13 = \dfrac{1}{3} (không ngoặc, 1 ký tự)
+  const parseAtom = (i) => {
+    i = skipWs(i)
+    if (s.slice(i, i + 5) === '\\sqrt') {
+      const b = parseMacroArg(i + 5); if (!b) return null // \sqrt4 = \sqrt{4} (không ngoặc, 1 ký tự) cũng như \sqrt{...}
+      const [inner, j] = b, trimmed = inner.trim()
+      if (/^\d+$/.test(trimmed)) { const v = surdFromInt(BigInt(trimmed)); return v ? [v, j] : null }
+      const mSq = trimmed.match(/^\(([\s\S]+)\)\^2$/)
+      if (mSq) { const innerVal = surdParseFull(mSq[1]); if (!innerVal) return null; const ab = surdAbs(innerVal); return ab ? [ab, j] : null }
+      // nội dung không phải số nguyên trần/bình phương — thử rút gọn về 1 SỐ HỮU TỈ không âm (vd "\dfrac1{2}")
+      const innerVal = surdParseFull(trimmed)
+      if (innerVal && innerVal.length <= 1 && (innerVal.length === 0 || innerVal[0].k === 1n)) {
+        const rr = innerVal.length === 0 ? R(0n) : innerVal[0].coef
+        const sq = surdSqrtOfRat(rr); if (sq) return [sq, j]
+      }
+      // CĂN LỒNG "√(a+b√c)" — nội dung rút gọn về ĐÚNG 2 hạng, 1 hạng hữu tỉ (k=1) + 1 hạng căn (k=c)
+      if (innerVal && innerVal.length === 2) {
+        const rat = innerVal.find((t) => t.k === 1n), surdT = innerVal.find((t) => t.k !== 1n)
+        if (rat && surdT) { const dn = denestSqrt(rat.coef, surdT.coef, surdT.k); if (dn) return [dn, j] }
+      }
+      return null
+    }
+    if (s.slice(i, i + 6) === '\\dfrac') {
+      const a1 = parseMacroArg(i + 6); if (!a1) return null
+      const a2 = parseMacroArg(a1[1]); if (!a2) return null
+      const numV = surdParseFull(a1[0]), denV = surdParseFull(a2[0]); if (!numV || !denV) return null
+      const r = surdDiv(numV, denV); return r ? [r, a2[1]] : null
+    }
+    if (s[i] === '(') {
+      let depth = 1, j = i + 1; while (j < s.length && depth > 0) { if (s[j] === '(') depth++; else if (s[j] === ')') depth--; j++ }
+      const v = surdParseFull(s.slice(i + 1, j - 1)); return v ? [v, j] : null
+    }
+    return parseNumber(i)
+  }
+  const parseUnary = (i) => {
+    i = skipWs(i)
+    if (s[i] === '-') { const r = parseUnary(i + 1); return r ? [surdNeg(r[0]), r[1]] : null }
+    if (s[i] === '+') return parseUnary(i + 1)
+    return parseAtom(i)
+  }
+  const looksLikeAtomStart = (i) => { i = skipWs(i); return /[0-9(]/.test(s[i] ?? '') || s.slice(i, i + 5) === '\\sqrt' || s.slice(i, i + 6) === '\\dfrac' }
+  const parseMultiplicative = (i) => {
+    const r0 = parseUnary(i); if (!r0) return null
+    let [val, j] = r0
+    while (true) {
+      let k = skipWs(j)
+      if (s.slice(k, k + 5) === '\\cdot') { k = skipWs(k + 5); const r2 = parseUnary(k); if (!r2) return null; val = surdMul(val, r2[0]); j = r2[1]; continue }
+      if (s[k] === ':') { k = skipWs(k + 1); const r2 = parseUnary(k); if (!r2) return null; val = surdDiv(val, r2[0]); if (!val) return null; j = r2[1]; continue }
+      if (looksLikeAtomStart(k)) { const r2 = parseUnary(k); if (!r2) return null; val = surdMul(val, r2[0]); j = r2[1]; continue }
+      break
+    }
+    return [val, j]
+  }
+  const parseAdditive = (i) => {
+    i = skipWs(i); let sign = 1n
+    if (s[i] === '-') { sign = -1n; i++ } else if (s[i] === '+') { i++ }
+    const r0 = parseMultiplicative(skipWs(i)); if (!r0) return null
+    let [val, j] = r0; val = sign === -1n ? surdNeg(val) : val
+    while (true) {
+      const k = skipWs(j)
+      if (s[k] === '+' || s[k] === '-') {
+        const op = s[k]; const r2 = parseMultiplicative(skipWs(k + 1)); if (!r2) return null
+        val = op === '+' ? surdAdd(val, r2[0]) : surdSub(val, r2[0]); j = r2[1]
+      } else break
+    }
+    return [val, j]
+  }
+  const r = parseAdditive(0); if (!r) return null
+  const [val, j] = r
+  return skipWs(j) === s.length ? val : null // còn dư ký tự chưa parse hết → ngoài phạm vi, an toàn trả null
+}
+function surdToText(val) {
+  if (val.length === 0) return '0'
+  // sắp xếp CHUẨN: phần hữu tỉ (k=1) sau cùng, các hạng căn theo k tăng dần — để canon so sánh ổn định
+  const sorted = [...val].sort((a, b) => (a.k === 1n ? 1 : b.k === 1n ? -1 : (a.k < b.k ? -1 : a.k > b.k ? 1 : 0)))
+  const termText = ({ coef, k }, isFirst) => {
+    if (k === 1n) return isFirst ? texR(coef) : (coef.p < 0n ? `-${texR(mul(R(-1n), coef))}` : `+${texR(coef)}`)
+    const abs = coef.p < 0n ? mul(R(-1n), coef) : coef
+    const coefPart = (abs.p === 1n && abs.q === 1n) ? '' : texR(abs)
+    const body = `${coefPart}\\sqrt{${k}}`
+    if (isFirst) return coef.p < 0n ? `-${body}` : body
+    return coef.p < 0n ? `-${body}` : `+${body}`
+  }
+  return sorted.map((t, i) => termText(t, i === 0)).join('')
+}
+export function chuanHoaCanThucKetQua(s) {
+  const clean = String(s ?? '').replace(/\$/g, '').replace(/\.$/, '').trim()
+  const val = surdParseFull(clean); if (!val) return clean
+  const t = surdToText(val); return t ?? clean
+}
+export function evalCanThucKetQuaVal(s) { return chuanHoaCanThucKetQua(s) || null }
+// Rule CHUNG cho MỌI kết quả là SurdVal ≤2 hạng (dùng chung tinhGiaTriCanThuc + tinhGiaTriCanThucTheoX) — vì
+// cách sai có thể xảy ra ở BẤT KỲ bước trung gian nào tuỳ sub-shape (rút gọn căn đồng dạng, hữu tỉ hoá mẫu,
+// căn lồng…), không tách được 1 công thức sai DUY NHẤT áp cho mọi câu — dùng 4 phép nhiễu TỔNG QUÁT trên kết
+// quả CUỐI (nhầm dấu toàn bộ/từng phần, lệch 1 đơn vị) thay vì mô phỏng lại từng bước sai cụ thể.
+function surdNegTermAt(val, idx) { if (idx < 0 || idx >= val.length) return null; const cp = val.map((t) => ({ ...t })); cp[idx] = { coef: mul(R(-1n), cp[idx].coef), k: cp[idx].k }; return cp }
+function surdBumpTermAt(val, idx, delta) { if (idx < 0 || idx >= val.length) return null; const cp = val.map((t) => ({ ...t })); const nc = add(cp[idx].coef, delta); if (nc.p === 0n) return null; cp[idx] = { coef: nc, k: cp[idx].k }; return cp }
+function canThucRuleKetQua(val, dungText, rule) {
+  if (!val.length) { // "0" — không có hạng nào để nhiễu, tổng hợp trực tiếp vài giá trị lân cận khác 0
+    if (rule === 'R336') return { text: '1', ds: 'tính lệch 1 đơn vị ở hạng thứ nhất' }
+    if (rule === 'R337') return { text: '-1', ds: 'tính lệch 1 đơn vị ở hạng thứ nhất, chiều ngược lại (dự phòng)' }
+    if (rule === 'R338') return { text: '2', ds: 'tính lệch 2 đơn vị (cứu ca trùng công thức)' }
+    return null
+  }
+  if (rule === 'R335') { const v = surdNeg(val); const t = surdToText(v); if (t === dungText) return null; return { text: t, ds: 'nhầm dấu toàn bộ kết quả' } }
+  if (rule === 'R336') { const v = surdBumpTermAt(val, 0, R(1n)); if (!v) return null; const t = surdToText(v); if (t === dungText) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở hạng thứ nhất' } }
+  if (rule === 'R337') { const v = surdBumpTermAt(val, 0, R(-1n)); if (!v) return null; const t = surdToText(v); if (t === dungText) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở hạng thứ nhất, chiều ngược lại (dự phòng)' } }
+  if (rule === 'R338') {
+    // hạng ≥2 → nhiễu hạng THỨ HAI (độc lập với R336/R337); chỉ 1 hạng → dùng delta=3 (tránh trùng R335 khi
+    // hệ số duy nhất là ±1 — delta 1/2 lúc đó khiến R338 trùng hệt R335 hoặc bị guard-null như R336/R337)
+    const idx = val.length >= 2 ? 1 : 0, delta = val.length >= 2 ? R(1n) : R(3n)
+    const v = surdBumpTermAt(val, idx, delta); if (!v) return null
+    const t = surdToText(v); if (t === dungText) return null
+    return { text: t, ds: val.length >= 2 ? 'tính lệch 1 đơn vị ở hạng thứ hai' : 'tính lệch 3 đơn vị (cứu ca trùng công thức)' }
+  }
+  return null
+}
+// "$A=\dfrac{\sqrt{x}-1}{\sqrt{x}-2}$ tại $x=9$" (T109030202) — x LUÔN là số chính phương (đề chọn sẵn) nên
+// thay literal "x" bằng giá trị rồi cho qua CÙNG engine surd ở trên — không cần biến riêng.
+export function tinhGiaTriCanThucTheoX(noiDung, rule) {
+  const s = String(noiDung)
+  const segs = [...s.matchAll(/\$([^$]+)\$/g)].map((mm) => mm[1]); if (segs.length < 2) return null
+  const xSeg = segs.find((seg) => /x\s*=|\|\s*x/.test(seg)); if (!xSeg) return null
+  const exprSeg = segs.find((seg) => seg !== xSeg); if (!exprSeg) return null
+  let xVal = null
+  const mDirect = xSeg.match(/x\s*=\s*(-?\d+)(?!.*\|)/) // "x=9" (KHÔNG phải nằm trong |x-K|=M)
+  const mAbs = xSeg.match(/\|\s*x\s*-\s*(-?\d+)\s*\|\s*=\s*(-?\d+)/) // "|x-1|=8" → x=K+M hoặc x=K-M, chọn nghiệm ≥0 và CHÍNH PHƯƠNG
+  if (mAbs) {
+    const K = BigInt(mAbs[1]), M = BigInt(mAbs[2])
+    const cands = [K + M, K - M].filter((v) => v >= 0n && isqrtBig(v) !== null)
+    if (cands.length !== 1) return null
+    xVal = String(cands[0])
+  } else if (mDirect) xVal = mDirect[1]
+  if (xVal === null) return null
+  let raw = exprSeg.trim()
+  const mLabel = raw.match(/^([A-Za-zĐ])\s*=\s*(.+)$/); if (mLabel) raw = mLabel[2].trim()
+  const substituted = raw.replace(/\bx\b/g, xVal)
+  const val = surdParseFull(substituted); if (!val) return null
+  const dungText = surdToText(val)
+  if (!rule) return { text: dungText }
+  return canThucRuleKetQua(val, dungText, rule)
+}
+// "Tìm ĐKXĐ của $\sqrt{x-1}$" / "$\dfrac{2}{\sqrt{x-1}}$" / "$\dfrac{1}{\sqrt{x-1}-1}$" / "$\dfrac{\sqrt{x}}
+// {\sqrt{x-1}}$" (T109030201) — 4 khuôn CỐ ĐỊNH (khảo sát xác nhận), so khớp trực tiếp bằng regex trên biểu
+// thức đã trim — không cần parser tổng quát.
+function parseIntSigned(s) { return BigInt(String(s).replace(/\s+/g, '')) }
+function renderDkxd(cs) { return cs.map((c) => c.op === 'ge' ? `x\\ge${c.val}` : c.op === 'gt' ? `x>${c.val}` : `x\\ne${c.val}`).join(' và ') }
+export function chuanHoaDkxdCanThuc(s) {
+  const clean = String(s ?? '').replace(/\$/g, '').replace(/\.$/, '').trim()
+  const parts = clean.split(/và/).map((p) => p.trim()).filter(Boolean)
+  const cs = []
+  for (const p of parts) {
+    let mm
+    if ((mm = p.match(/^x\s*(?:\\ge|\\geq|≥)\s*(-?\d+)$/))) cs.push({ op: 'ge', val: mm[1] })
+    else if ((mm = p.match(/^x\s*(?:>|\\gt)\s*(-?\d+)$/))) cs.push({ op: 'gt', val: mm[1] })
+    else if ((mm = p.match(/^x\s*(?:\\ne|\\neq|≠)\s*(-?\d+)$/))) cs.push({ op: 'ne', val: mm[1] })
+    else return clean
+  }
+  cs.sort((a, b) => (a.op === b.op ? Number(a.val) - Number(b.val) : (a.op === 'ge' || a.op === 'gt' ? -1 : 1)))
+  return renderDkxd(cs)
+}
+export function evalDkxdCanThucKetQua(s) { const t = chuanHoaDkxdCanThuc(s); return t || null }
+export function timDkxdCanThuc(noiDung, rule) {
+  const s = String(noiDung)
+  const m = s.match(/\$([^$]+)\$/); if (!m) return null
+  const expr = m[1].trim()
+  let mm = expr.match(/^\\sqrt\{x\s*([+-]\s*\d+)\s*\}$/)
+  if (mm) return dkxdKetQua([{ op: 'ge', val: (-parseIntSigned(mm[1])).toString() }], rule)
+  mm = expr.match(/^\\dfrac\{[^{}]+\}\{\\sqrt\{x\s*([+-]\s*\d+)\s*\}\}$/)
+  if (mm) return dkxdKetQua([{ op: 'gt', val: (-parseIntSigned(mm[1])).toString() }], rule)
+  mm = expr.match(/^\\dfrac\{[^{}]+\}\{\\sqrt\{x\s*([+-]\s*\d+)\s*\}\s*-\s*(\d+)\}$/)
+  if (mm) { const K = -parseIntSigned(mm[1]), M = BigInt(mm[2]); return dkxdKetQua([{ op: 'ge', val: K.toString() }, { op: 'ne', val: (K + M * M).toString() }], rule) }
+  mm = expr.match(/^\\dfrac\{\\sqrt\{x\}\}\{\\sqrt\{x\s*([+-]\s*\d+)\s*\}\}$/)
+  if (mm) { const K = -parseIntSigned(mm[1]); if (K < 0n) return null; return dkxdKetQua([{ op: 'gt', val: K.toString() }], rule) }
+  return null
+}
+function dkxdKetQua(cs, rule) {
+  const dungText = renderDkxd(cs)
+  if (!rule) return { text: dungText }
+  if (rule === 'R327') { // đổi dấu ≥/> ngược lại ở điều kiện đầu (nhầm biên chặt/lỏng)
+    const cs2 = cs.map((c, i) => i === 0 ? { ...c, op: c.op === 'ge' ? 'gt' : c.op === 'gt' ? 'ge' : c.op } : c)
+    const t = renderDkxd(cs2); if (t === dungText) return null
+    return { text: t, ds: 'nhầm biên chặt/lỏng (≥ với >) ở điều kiện đầu' }
+  }
+  if (rule === 'R328') { // quên điều kiện thứ 2 (x≠...) nếu có
+    if (cs.length < 2) return null
+    const t = renderDkxd([cs[0]]); if (t === dungText) return null
+    return { text: t, ds: 'quên điều kiện thứ hai (mẫu số khác 0)' }
+  }
+  if (rule === 'R329') { // dự phòng — lệch 1 đơn vị ở điều kiện đầu
+    const cs2 = cs.map((c, i) => i === 0 ? { ...c, val: (BigInt(c.val) + 1n).toString() } : c)
+    const t = renderDkxd(cs2); if (t === dungText) return null
+    return { text: t, ds: 'tính lệch 1 đơn vị ở điều kiện đầu (dự phòng)' }
+  }
+  if (rule === 'R330') { // rescue — lệch 1 đơn vị ở điều kiện thứ 2 (nếu có), hoặc chiều ngược lại ở điều kiện đầu
+    if (cs.length >= 2) {
+      const cs2 = cs.map((c, i) => i === 1 ? { ...c, val: (BigInt(c.val) + 1n).toString() } : c)
+      const t = renderDkxd(cs2); if (t === dungText) return null
+      return { text: t, ds: 'tính lệch 1 đơn vị ở điều kiện thứ hai' }
+    }
+    const cs2 = cs.map((c, i) => i === 0 ? { ...c, val: (BigInt(c.val) - 1n).toString() } : c)
+    const t = renderDkxd(cs2); if (t === dungText) return null
+    return { text: t, ds: 'tính lệch 1 đơn vị ở điều kiện đầu, chiều ngược lại' }
+  }
+  return null
+}
+// "$\sqrt{x-5}+\dfrac{1}{3}\sqrt{9x-45} = \dfrac{1}{5}\sqrt{25x-125}+6$" (T109030204) — mọi hạng căn đều
+// CHUNG 1 nhân tử $(x-A)$ dưới dạng $c\cdot(x-A)$ với $c$ CHÍNH PHƯƠNG (nên $\sqrt{c(x-A)}=\sqrt c\cdot
+// \sqrt{x-A}$ rút gọn về SỐ HỮU TỈ·$\sqrt{x-A}$) — đặt $t=\sqrt{x-A}$, phương trình trở thành BẬC NHẤT
+// theo $t$, giải $t$ rồi suy $x=A+t^2$ (yêu cầu $t\ge0$).
+function parsePrefixCoefCan(pre) {
+  const t = pre.trim()
+  if (t === '') return R(1n)
+  if (/^-?\d+$/.test(t)) return R(BigInt(t))
+  const m1 = t.match(/^\\dfrac\{(-?\d+)\}\{(-?\d+)\}$/); if (m1) return R(BigInt(m1[1]), BigInt(m1[2]))
+  const m2 = t.match(/^\\dfrac(-?\d)(-?\d)$/); if (m2) return R(BigInt(m2[1]), BigInt(m2[2])) // \dfrac13 = \dfrac{1}{3}
+  return null
+}
+function parseVeCanTuyenTinh(sideText) {
+  const topTerms = chiaHangTu(chuanBiBieuThucNhan(sideText.trim())); if (!topTerms.length) return null
+  let coefT = R(0n), constPart = R(0n), A = null
+  for (const t of topTerms) {
+    const mm = t.text.match(/^(.*?)\\sqrt\{([^{}]+)\}$/)
+    if (mm) {
+      const coefOut = parsePrefixCoefCan(mm[1]); if (!coefOut) return null
+      const linTerms = phanTichDaThucCumNhanTu(mm[2]); if (!linTerms) return null
+      let cx = R(0n), d = R(0n)
+      for (const lt of linTerms) {
+        const vs = [...lt.vars.keys()]
+        if (vs.length === 0) d = add(d, lt.coef)
+        else if (vs.length === 1 && vs[0] === 'x' && lt.vars.get('x') === 1) cx = add(cx, lt.coef)
+        else return null
+      }
+      if (cx.q !== 1n || cx.p <= 0n) return null // hệ số x dưới căn phải NGUYÊN DƯƠNG (thực tế mẫu luôn vậy)
+      const { inRad, out } = tachCanBac2(cx.p); if (inRad !== 1n) return null // c phải là SỐ CHÍNH PHƯƠNG — nếu không, ngoài phạm vi
+      const thisA = div(mul(R(-1n), d), cx); if (!thisA) return null
+      if (A === null) A = thisA; else if (cmp(A, thisA) !== 0) return null
+      const signedCoef = t.sign === '-' ? mul(R(-1n), coefOut) : coefOut
+      coefT = add(coefT, mul(signedCoef, R(out)))
+    } else {
+      const c = parseDonThucCore(t.text); if (!c || c.vars.size > 0 || c.hasIrrational) return null
+      constPart = add(constPart, t.sign === '-' ? mul(R(-1n), c.coef) : c.coef)
+    }
+  }
+  return { coefT, constPart, A }
+}
+export function timXPtCanThucTuyenTinh(noiDung, rule) {
+  const s = String(noiDung)
+  const segs = [...s.matchAll(/\$([^$]+)\$/g)].map((mm) => mm[1]); if (!segs.length) return null
+  const eqSeg = segs.find((seg) => seg.includes('=')) ?? segs[0] // nhãn "x" riêng có $ RIÊNG trước phương trình
+  const eqParts = eqSeg.split('='); if (eqParts.length !== 2) return null
+  const veTrai = parseVeCanTuyenTinh(eqParts[0]); if (!veTrai) return null
+  const vePhai = parseVeCanTuyenTinh(eqParts[1].replace(/\.$/, '')); if (!vePhai) return null
+  if (veTrai.A === null && vePhai.A === null) return null
+  if (veTrai.A !== null && vePhai.A !== null && cmp(veTrai.A, vePhai.A) !== 0) return null
+  const A = veTrai.A ?? vePhai.A
+  const coefDiff = sub(veTrai.coefT, vePhai.coefT); if (coefDiff.p === 0n) return null
+  const t = div(sub(vePhai.constPart, veTrai.constPart), coefDiff); if (!t || t.p < 0n) return null
+  const x = add(A, mul(t, t))
+  const dungText = texR(x)
+  if (!rule) return { value: x }
+  if (rule === 'R331') { // quên bình phương — coi đáp số x = t (giá trị của căn), không phải x
+    if (cmp(t, x) === 0) return null
+    return { value: t, ds: 'quên bình phương t để ra x, lấy nhầm giá trị của căn làm đáp số' }
+  }
+  if (rule === 'R332') { // nhầm dấu hằng số A khi cộng lại — coi x = t² - A thay vì t² + A
+    const v = sub(mul(t, t), A); if (cmp(v, x) === 0) return null
+    return { value: v, ds: 'nhầm dấu A khi cộng lại, tính x = t²-A thay vì t²+A' }
+  }
+  if (rule === 'R333') { // dự phòng — lệch 1 đơn vị
+    const v = add(x, R(1n)); if (cmp(v, x) === 0) return null
+    return { value: v, ds: 'tính lệch 1 đơn vị (dự phòng)' }
+  }
+  if (rule === 'R334') { // rescue — lệch 1 đơn vị chiều ngược lại (cứu ca R331/R332 trùng nhau)
+    const v = sub(x, R(1n)); if (cmp(v, x) === 0 || cmp(v, sub(mul(t, t), A)) === 0) return null
+    return { value: v, ds: 'tính lệch 1 đơn vị, chiều ngược lại' }
+  }
+  return null
+}
+export function tinhGiaTriCanThuc(noiDung, rule) {
+  const s = String(noiDung)
+  const m = s.match(/\$([^$]+)\$/); if (!m) return null
+  let raw = m[1].trim()
+  const mLabel = raw.match(/^([A-Za-zĐ])\s*=\s*(.+)$/); if (mLabel) raw = mLabel[2].trim()
+  raw = raw.replace(/\\left\(/g, '(').replace(/\\right\)/g, ')').replace(/\.$/, '').trim()
+  const val = surdParseFull(raw); if (!val) return null
+  const dungText = surdToText(val); if (dungText == null) return null
+  if (!rule) return { text: dungText }
+  return canThucRuleKetQua(val, dungText, rule)
+}
+
+// ── DẠNG 51: Tìm x để $P$ (phân thức 1 tầng theo $\sqrt x$) thoả mãn đẳng thức (T109030301, khối 9) ───────────
+// "$P=\dfrac{2x}{\sqrt x-3}$, tìm $x$ để $P=32$" — CHỈ 1 phân thức (khác cụm "phân thức nhiều mẫu" đã hoãn —
+// không cần quy đồng nhiều mẫu, chỉ cần khử MỘT mẫu). Đặt $t=\sqrt x$ ($x=t^2$) — thay literal rồi TÁI DÙNG
+// `phanTichDaThucCumNhanTu` (đã hỗ trợ khai triển tích) để đưa Tử/Mẫu về đa thức 1 biến $t$. Điều kiện có 4
+// khuôn: "$P=k$"/"$P=$ biểu thức theo $\sqrt x$" (1 nhánh) · "$|P|=k$"/"$P^2=k$" (2 nhánh, $\pm k$) ·
+// "$P^3-K=0$" (1 nhánh, quy về $P=\sqrt[3]K$) — mỗi nhánh quy về $\text{Num}(t)=\text{VP}(t)\cdot\text{Mẫu}(t)$,
+// GIẢI bậc ≤2 theo $t$ bằng ĐỊNH LÝ NGHIỆM HỮU TỈ (tái dùng `timNghiemHuuTiBacHai`), lọc $t\ge0$ và mẫu≠0
+// (tự loại nghiệm ngoại lai do khử mẫu sinh ra), rồi $x=t^2$.
+function substXChoT(text) { return String(text).replace(/\\sqrt\{x\}/g, 't').replace(/(?<![a-zA-Z])x(?![a-zA-Z])/g, 't^2') }
+function parseDaThucTheoT(text) {
+  const terms = phanTichDaThucCumNhanTu(chuanBiBieuThucNhan(substXChoT(text))); if (!terms) return null
+  for (const tm of terms) { const vs = [...tm.vars.keys()]; if (vs.length > 1 || (vs.length === 1 && vs[0] !== 't')) return null }
+  return terms
+}
+function evalDaThucTheoTTai(poly, tVal) {
+  let acc = R(0n)
+  for (const tm of poly) { const d = tm.vars.get('t') ?? 0; let p = R(1n); for (let i = 0; i < d; i++) p = mul(p, tVal); acc = add(acc, mul(tm.coef, p)) }
+  return acc
+}
+function giaiPhuongTrinhTheoT(eqTerms) { // đa thức bậc ≤2 theo t = 0 → mảng nghiệm hữu tỉ (0, 1 hoặc 2 phần tử), hoặc null nếu ngoài phạm vi
+  const gop = new Map()
+  for (const tm of eqTerms) { const d = tm.vars.get('t') ?? 0; gop.set(d, add(gop.get(d) ?? R(0n), tm.coef)) }
+  for (const [d, c] of gop) if (d > 2 && c.p !== 0n) return null
+  let A = gop.get(2) ?? R(0n), B = gop.get(1) ?? R(0n), C = gop.get(0) ?? R(0n)
+  if (A.q !== 1n || B.q !== 1n || C.q !== 1n) { // hệ số PHÂN SỐ (vd vế phải là 5/2) — quy đồng khử mẫu trước, nghiệm không đổi
+    const lcm = (a, b) => a * b / gcdBigDon(a, b)
+    const L = lcm(lcm(A.q, B.q), C.q)
+    A = R(A.p * (L / A.q)); B = R(B.p * (L / B.q)); C = R(C.p * (L / C.q))
+  }
+  if (A.p === 0n) { if (B.p === 0n) return []; return [R(-C.p, B.p)] }
+  const r1 = timNghiemHuuTiBacHai(A.p, B.p, C.p); if (!r1) return [] // KHÔNG có nghiệm hữu tỉ — nhánh này hợp lệ nhưng KHÔNG đóng góp nghiệm (khác lỗi cấu trúc), KHÔNG bỏ cả câu
+  const r2 = div(sub(R(-B.p), mul(R(A.p), r1)), R(A.p)); if (!r2) return []
+  return cmp(r1, r2) === 0 ? [r1] : [r1, r2]
+}
+function parseDieuKienP(condText) {
+  const t = condText.trim().replace(/^,\s*/, '')
+  let m = t.match(/^\|P\|\s*=\s*(-?\d+(?:\/\d+)?)$/)
+  if (m) return { kind: 'abs', val: parseFraction(m[1]) }
+  m = t.match(/^P\^2\s*=\s*(-?\d+(?:\/\d+)?)$/) || t.match(/^P\^2\s*-\s*(-?\d+(?:\/\d+)?)\s*=\s*0$/)
+  if (m) return { kind: 'sq', val: parseFraction(m[1]) }
+  m = t.match(/^P\^3\s*-\s*(\d+)\s*=\s*0$/)
+  if (m) { const K = BigInt(m[1]); const r = icbrtBig(K); return r !== null ? { kind: 'cube', target: R(r) } : null }
+  m = t.match(/^(\d*)P\s*=\s*(.+)$/)
+  if (m) return { kind: 'lin', coefP: m[1] ? BigInt(m[1]) : 1n, rhsRaw: m[2] }
+  return null
+}
+function parseFraction(s) { const m = String(s).match(/^(-?\d+)\/(-?\d+)$/); return m ? R(BigInt(m[1]), BigInt(m[2])) : R(BigInt(s)) }
+function extractDfracArgs(text) { // "P=\dfrac{NUM}{DEN}" — bóc NUM/DEN theo ĐỘ SÂU ngoặc nhọn (nội dung có thể chứa "{}" lồng, vd "\sqrt{x}")
+  const m = text.match(/^P\s*=\s*\\dfrac\{/); if (!m) return null
+  let i = m[0].length, depth = 1
+  const start1 = i
+  while (i < text.length && depth > 0) { if (text[i] === '{') depth++; else if (text[i] === '}') depth--; i++ }
+  const numText = text.slice(start1, i - 1)
+  if (text[i] !== '{') return null
+  i++; depth = 1; const start2 = i
+  while (i < text.length && depth > 0) { if (text[i] === '{') depth++; else if (text[i] === '}') depth--; i++ }
+  const denText = text.slice(start2, i - 1)
+  return i === text.length ? [numText, denText] : null
+}
+export function timXPhanThucCanBac2(noiDung, rule) {
+  const s = String(noiDung)
+  const segs = [...s.matchAll(/\$([^$]+)\$/g)].map((mm) => mm[1]); if (!segs.length) return null
+  const defSeg = segs.find((seg) => /^P\s*=\s*\\dfrac/.test(seg.trim())); if (!defSeg) return null
+  const dm = extractDfracArgs(defSeg.trim()); if (!dm) return null
+  const numPoly = parseDaThucTheoT(dm[0]), denPoly = parseDaThucTheoT(dm[1]); if (!numPoly || !denPoly) return null
+  const condSeg = segs.find((seg) => seg !== defSeg && seg.includes('P')); if (!condSeg) return null
+  const dk = parseDieuKienP(condSeg); if (!dk) return null
+  let rhsBranches = [], coefP = 1n
+  if (dk.kind === 'abs' || dk.kind === 'sq') {
+    let valRat = dk.val
+    if (dk.kind === 'sq') { if (valRat.q !== 1n || valRat.p < 0n) return null; const sq = isqrtBig(valRat.p); if (sq === null) return null; valRat = R(sq) }
+    rhsBranches = [[{ coef: valRat, vars: new Map() }], [{ coef: mul(R(-1n), valRat), vars: new Map() }]]
+  } else if (dk.kind === 'cube') {
+    rhsBranches = [[{ coef: dk.target, vars: new Map() }]]
+  } else if (dk.kind === 'lin') {
+    coefP = dk.coefP
+    const rhsPoly = parseDaThucTheoT(dk.rhsRaw); if (!rhsPoly) return null
+    rhsBranches = [rhsPoly]
+  } else return null
+  const allRoots = []
+  for (const rhsPoly of rhsBranches) {
+    const rhsTimesDen = nhanCacDaThuc([rhsPoly, denPoly])
+    const scaledNum = numPoly.map((tm) => ({ coef: mul(tm.coef, R(coefP)), vars: tm.vars }))
+    const eqTerms = [...scaledNum, ...rhsTimesDen.map((tm) => ({ coef: mul(R(-1n), tm.coef), vars: tm.vars }))]
+    const roots = giaiPhuongTrinhTheoT(eqTerms); if (roots === null) return null
+    for (const tRoot of roots) {
+      if (tRoot.p < 0n) continue
+      const denVal = evalDaThucTheoTTai(denPoly, tRoot); if (denVal.p === 0n) continue
+      allRoots.push(mul(tRoot, tRoot))
+    }
+  }
+  const uniq = []; for (const x of allRoots) if (!uniq.some((u) => cmp(u, x) === 0)) uniq.push(x)
+  if (!uniq.length) return null
+  uniq.sort(cmp)
+  const dungText = uniq.map(texR).join(';')
+  if (!rule) return { text: dungText }
+  const flipAt = (i) => { if (i >= uniq.length) return null; const cp = [...uniq]; cp[i] = mul(R(-1n), cp[i]); return cp.map(texR).join(';') }
+  const shiftAt = (i, d) => { if (i >= uniq.length) return null; const cp = [...uniq]; cp[i] = add(cp[i], R(d)); return cp.map(texR).join(';') }
+  if (rule === 'R339') { const t = flipAt(0); if (!t) return null; if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null; return { text: t, ds: 'nhầm dấu nghiệm thứ nhất' } }
+  if (rule === 'R340') { const t = uniq.length >= 2 ? flipAt(1) : shiftAt(0, 1n); if (!t) return null; if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null; return { text: t, ds: uniq.length >= 2 ? 'nhầm dấu nghiệm thứ hai' : 'tính lệch 1 đơn vị' } }
+  if (rule === 'R341') { const t = shiftAt(uniq.length - 1, 1n); if (!t) return null; if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở nghiệm cuối (dự phòng)' } }
+  if (rule === 'R342') { const t = shiftAt(uniq.length - 1, -1n); if (!t) return null; if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở nghiệm cuối, chiều ngược lại' } }
+  return null
+}
+
+// ── DẠNG 52: "Bài toán thực tế" — SINH NHIỄU TỪ ĐÁP SỐ, KHÔNG đọc-hiểu đề (T1090103xx/T1090203xx/T10909xxx…) ──
+// Ý CEO (14/09): kho đã có đáp số ĐÚNG (đã duyệt) cho mỗi câu — máy KHÔNG cần hiểu đề bài (đọc-hiểu tình
+// huống là việc KHÔNG đâu Rat/đa thức nào làm được), chỉ cần lấy đáp số ĐÃ CÓ rồi áp lỗi tính toán PHỔ BIẾN
+// (hoán đổi 2 giá trị, lệch 1 đơn vị…) để sinh 3 phương án nhiễu — giống hệt cách R335-338 xử lý cụm căn thức
+// khi không tách được 1 công thức sai riêng. Khảo sát xác nhận đáp số toàn cụm ~98% (459/469) là "1 số",
+// "2 số cách nhau ; hoặc ,", hoặc "N hoặc M" — KHÁC MỌI dạng khác trong file này: hàm nhận ĐÁP SỐ (không phải
+// noi_dung) làm đầu vào — mcq-auto.mjs phải gọi khác đi (dispatch riêng, xem ANSWER_DANG).
+function parseSoThucTe(s) { const c = parseDonThucCore(String(s).trim().replace(',', '.')); return (c && c.vars.size === 0 && !c.hasIrrational) ? c.coef : null }
+export function chuanHoaDapSoThucTe(s) {
+  const clean = String(s ?? '').replace(/\$/g, '').trim()
+  const hoacM = clean.match(/^(.+?)\s*hoặc\s*(.+)$/)
+  if (hoacM) {
+    const a = parseSoThucTe(hoacM[1]), b = parseSoThucTe(hoacM[2]); if (!a || !b) return clean
+    const arr = [a, b].sort(cmp)
+    return `${texR(arr[0])} hoặc ${texR(arr[1])}`
+  }
+  const parts = clean.split(/[;,]/).map((p) => p.trim()).filter(Boolean); if (parts.length < 1 || parts.length > 2) return clean
+  const nums = parts.map(parseSoThucTe); if (nums.some((n) => !n)) return clean
+  return nums.map(texR).join(';')
+}
+export function evalDapSoThucTeKetQua(s) { const t = chuanHoaDapSoThucTe(s); return t || null }
+export function sinhNhieuDapSoThucTe(dapAn, rule) {
+  const clean = String(dapAn ?? '').replace(/\$/g, '').trim()
+  let vals, sep
+  const hoacM = clean.match(/^(.+?)\s*hoặc\s*(.+)$/)
+  if (hoacM) {
+    const a = parseSoThucTe(hoacM[1]), b = parseSoThucTe(hoacM[2]); if (!a || !b) return null
+    vals = [a, b]; sep = ' hoặc '
+  } else {
+    const parts = clean.split(/[;,]/).map((p) => p.trim()).filter(Boolean); if (parts.length < 1 || parts.length > 2) return null
+    vals = parts.map(parseSoThucTe); if (vals.some((v) => !v)) return null
+    sep = ';'
+  }
+  const render = (arr) => arr.map(texR).join(sep)
+  const dungText = render(vals)
+  if (!rule) return { text: dungText }
+  if (rule === 'R343') {
+    if (vals.length === 2) { const t = render([vals[1], vals[0]]); if (t === dungText) return null; return { text: t, ds: 'hoán đổi nhầm 2 giá trị' } }
+    const t = render([mul(vals[0], R(2n))]); if (t === dungText) return null
+    return { text: t, ds: 'tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)' }
+  }
+  if (rule === 'R344') { const cp = [...vals]; cp[0] = add(cp[0], R(1n)); const t = render(cp); if (t === dungText) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở giá trị thứ nhất' } }
+  if (rule === 'R345') { const cp = [...vals]; cp[0] = sub(cp[0], R(1n)); const t = render(cp); if (t === dungText) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)' } }
+  if (rule === 'R346') {
+    const idx = vals.length >= 2 ? 1 : 0, delta = vals.length >= 2 ? R(1n) : R(-2n)
+    const cp = [...vals]; cp[idx] = add(cp[idx], delta); const t = render(cp); if (t === dungText) return null
+    return { text: t, ds: vals.length >= 2 ? 'tính lệch 1 đơn vị ở giá trị thứ hai' : 'tính lệch giá trị (cứu ca trùng công thức)' }
+  }
+  return null
+}
+
+// ── DẠNG 53: Phương trình QUY VỀ BẬC NHẤT/TÍCH — MẪU SỐ CHỨA BIẾN (T109020103/T109020403, khối 9) ─────────────
+// "$\dfrac{4}{x+3}+\dfrac{x-1}{x-3}=\dfrac{x^2+x}{x^2-9}$" — engine LCD TỔNG QUÁT: mỗi mẫu số phân tích thành
+// tích các NHỊ THỨC TUYẾN TÍNH monic (bậc 2 dùng `timNghiemHuuTiBacHai` có sẵn để tìm 2 nghiệm hữu tỉ, coi
+// như 2 nhân tử — KHÔNG cần hiệu-hai-bình-phương chuyên biệt vì tổng quát hơn); LCD = tích các nhân tử PHÂN
+// BIỆT xuất hiện trong TOÀN PHƯƠNG TRÌNH; mỗi hạng nhân với "phần THIẾU" của LCD so với mẫu riêng nó rồi cộng
+// dồn — khử hết mẫu, giải phương trình bậc ≤2 còn lại, LỌC nghiệm trùng bất kỳ nhân tử nào (ĐKXĐ) — nếu MỌI
+// nghiệm đều bị loại (ngoại lai) → "Vô nghiệm" (đáp số kho ĐÚNG format này, không phải bỏ qua/lỗi).
+function parseXPolyTuVanBan(text) {
+  const terms = phanTichDaThucCumNhanTu(chuanBiBieuThucNhan(text)); if (!terms) return null
+  for (const t of terms) { const vs = [...t.vars.keys()]; if (vs.length > 1 || (vs.length === 1 && vs[0] !== 'x')) return null }
+  return terms
+}
+function phanTichNhanTuTuyenTinh(polyTerms, bien = 'x') { // → {factors:[{root}], leadCoef} (factors=[] nếu bậc 0) hoặc null nếu KHÔNG phân tích được (bậc>2, hệ số không quy đồng được, hoặc bậc 2 vô nghiệm hữu tỉ)
+  const gop = new Map()
+  for (const t of polyTerms) { const d = t.vars.get(bien) ?? 0; gop.set(d, add(gop.get(d) ?? R(0n), t.coef)) }
+  for (const [d] of gop) if (d > 2) return null
+  const A = gop.get(2) ?? R(0n), B = gop.get(1) ?? R(0n), C = gop.get(0) ?? R(0n)
+  if (A.p !== 0n) {
+    if (A.q !== 1n || B.q !== 1n || C.q !== 1n) return null
+    const r1 = timNghiemHuuTiBacHai(A.p, B.p, C.p); if (!r1) return null
+    const r2 = div(sub(R(-B.p), mul(R(A.p), r1)), R(A.p)); if (!r2) return null
+    return { factors: [{ root: r1 }, { root: r2 }], leadCoef: A }
+  }
+  if (B.p !== 0n) return { factors: [{ root: div(mul(R(-1n), C), B) }], leadCoef: B }
+  if (C.p === 0n) return null
+  return { factors: [], leadCoef: C }
+}
+function nhiThucTuNghiem(root, bien = 'x') { return [{ coef: R(1n), vars: new Map([[bien, 1]]) }, { coef: mul(R(-1n), root), vars: new Map() }] } // (bien - root)
+function tichNhiThuc(roots, bien = 'x') { return roots.reduce((acc, r) => nhanCacDaThuc([acc, nhiThucTuNghiem(r, bien)]), [{ coef: R(1n), vars: new Map() }]) }
+function parseVePhanThuc(sideText) {
+  const topTerms = chiaHangTu(chuanBiBieuThucNhan(sideText.trim())); if (!topTerms.length) return null
+  const out = []
+  for (const t of topTerms) {
+    const df = extractDfracArgsPlain(t.text)
+    const numText = df ? df[0] : t.text, denText = df ? df[1] : '1'
+    const numPoly = parseXPolyTuVanBan(numText), denPoly = parseXPolyTuVanBan(denText); if (!numPoly || !denPoly) return null
+    const denFac = phanTichNhanTuTuyenTinh(denPoly); if (!denFac) return null
+    out.push({ sign: t.sign, numPoly, denFac })
+  }
+  return out
+}
+export function giaiPtPhanThucBacNhat(noiDung, rule) {
+  const s = String(noiDung)
+  const m = s.match(/\$([^$]+)\$/); if (!m) return null
+  const eqParts = m[1].split('='); if (eqParts.length !== 2) return null
+  const veTrai = parseVePhanThuc(eqParts[0]); if (!veTrai) return null
+  const vePhai = parseVePhanThuc(eqParts[1].replace(/[\\.\s]+$/, '')); if (!vePhai) return null
+  const allTerms = [...veTrai, ...vePhai.map((t) => ({ ...t, sign: t.sign === '-' ? '+' : '-' }))]
+  const excludedRoots = []
+  for (const t of allTerms) for (const f of t.denFac.factors) if (!excludedRoots.some((e) => cmp(e, f.root) === 0)) excludedRoots.push(f.root)
+  let combined = []
+  for (const t of allTerms) {
+    const ownRoots = t.denFac.factors.map((f) => f.root)
+    const missing = excludedRoots.filter((r) => !ownRoots.some((o) => cmp(o, r) === 0))
+    let contrib = nhanCacDaThuc([t.numPoly, tichNhiThuc(missing)])
+    contrib = contrib.map((x) => ({ coef: div(x.coef, t.denFac.leadCoef), vars: x.vars }))
+    if (t.sign === '-') contrib = contrib.map((x) => ({ coef: mul(R(-1n), x.coef), vars: x.vars }))
+    combined = [...combined, ...contrib]
+  }
+  const gopTheoBac = new Map()
+  for (const t of combined) { const d = t.vars.get('x') ?? 0; gopTheoBac.set(d, add(gopTheoBac.get(d) ?? R(0n), t.coef)) }
+  for (const [d, c] of gopTheoBac) if (d > 2 && c.p !== 0n) return null
+  let A = gopTheoBac.get(2) ?? R(0n), B = gopTheoBac.get(1) ?? R(0n), C = gopTheoBac.get(0) ?? R(0n)
+  if (A.q !== 1n || B.q !== 1n || C.q !== 1n) {
+    const lcm = (a, b) => a * b / gcdBigDon(a, b); const L = lcm(lcm(A.q, B.q), C.q)
+    A = R(A.p * (L / A.q)); B = R(B.p * (L / B.q)); C = R(C.p * (L / C.q))
+  }
+  let candidateRoots = null
+  if (A.p === 0n) { if (B.p !== 0n) candidateRoots = [R(-C.p, B.p)]; else if (C.p !== 0n) candidateRoots = [] }
+  else { const r1 = timNghiemHuuTiBacHai(A.p, B.p, C.p); if (r1) { const r2 = div(sub(R(-B.p), mul(R(A.p), r1)), R(A.p)); if (r2) candidateRoots = cmp(r1, r2) === 0 ? [r1] : [r1, r2] } }
+  if (candidateRoots === null) return null
+  const excludedHit = []
+  const validRoots0 = candidateRoots.filter((r) => { const bad = excludedRoots.some((e) => cmp(e, r) === 0); if (bad) excludedHit.push(r); return !bad })
+  if (validRoots0.length > 2) return null // ngoài phạm vi khảo sát (tối đa 2 nghiệm hợp lệ)
+  if (validRoots0.length >= 1) {
+    const validRoots = [...validRoots0].sort(cmp)
+    const dungText = validRoots.map(texR).join(';')
+    if (!rule) return { text: dungText }
+    const flipAt = (i) => { if (i >= validRoots.length) return null; const cp = [...validRoots]; cp[i] = mul(R(-1n), cp[i]); return cp.map(texR).join(';') }
+    const shiftAt = (i, d) => { if (i >= validRoots.length) return null; const cp = [...validRoots]; cp[i] = add(cp[i], R(d)); return cp.map(texR).join(';') }
+    if (rule === 'R347') { const t = flipAt(0); if (!t) return null; if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null; return { text: t, ds: 'nhầm dấu nghiệm thứ nhất' } }
+    if (rule === 'R348') {
+      const t = validRoots.length >= 2 ? flipAt(1) : shiftAt(0, 1n); if (!t) return null
+      if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null
+      return { text: t, ds: validRoots.length >= 2 ? 'nhầm dấu nghiệm thứ hai' : 'tính lệch 1 đơn vị' }
+    }
+    if (rule === 'R349') {
+      // ≥2 nghiệm: lệch nghiệm CUỐI +1 (dự phòng). CHỈ 1 nghiệm: PHẢI đổi delta (không lặp lại +1 của R348 ở
+      // cùng vị trí index 0, kẻo trùng hệt R348 khi validRoots.length===1) — dùng -1 thay vì +1.
+      const t = validRoots.length >= 2 ? shiftAt(validRoots.length - 1, 1n) : shiftAt(0, -1n); if (!t) return null
+      if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null
+      return { text: t, ds: 'tính lệch 1 đơn vị ở nghiệm cuối (dự phòng)' }
+    }
+    if (rule === 'R350') {
+      if (excludedHit.length) { const t = texR(excludedHit[0]); if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null; return { text: t, ds: 'quên kiểm tra điều kiện xác định, báo nhầm nghiệm ngoại lai làm đáp số' } }
+      const t = validRoots.length >= 2 ? shiftAt(validRoots.length - 1, -1n) : shiftAt(0, 2n); if (!t) return null
+      if (chuanHoaDanhSachNghiem(t) === chuanHoaDanhSachNghiem(dungText)) return null
+      return { text: t, ds: 'tính lệch giá trị ở nghiệm cuối, chiều ngược lại' }
+    }
+    return null
+  }
+  // validRoots.length === 0 → Vô nghiệm
+  if (!rule) return { text: 'Vô nghiệm' }
+  // ca "0 = hằng số ≠ 0" (mâu thuẫn thật, KHÔNG phải do loại nghiệm ngoại lai) → excludedHit RỖNG (candidateRoots
+  // vốn đã rỗng, filter không chạy) — dùng thẳng excludedRoots (giá trị x bị cấm bởi ĐKXĐ) làm nguồn nhiễu tự nhiên
+  const fallbackRoots = excludedHit.length ? excludedHit : excludedRoots
+  if (rule === 'R347') { if (!fallbackRoots.length) return null; return { text: texR(fallbackRoots[0]), ds: 'quên kiểm tra điều kiện xác định, báo nhầm 1 giá trị bị cấm làm đáp số' } }
+  if (rule === 'R348') { if (fallbackRoots.length < 2) return null; return { text: texR(fallbackRoots[1]), ds: 'quên kiểm tra điều kiện xác định, báo nhầm giá trị bị cấm còn lại' } }
+  if (rule === 'R349') { if (!fallbackRoots.length) return null; return { text: texR(add(fallbackRoots[0], R(1n))), ds: 'quên kiểm tra ĐKXĐ và tính lệch 1 đơn vị (dự phòng)' } }
+  if (rule === 'R350') { if (!fallbackRoots.length) return null; return { text: texR(sub(fallbackRoots[0], R(1n))), ds: 'quên kiểm tra ĐKXĐ và tính lệch 1 đơn vị, chiều ngược lại' } }
+  return null
+}
+export function chuanHoaPtPhanThucKetQua(s) {
+  const clean = String(s ?? '').replace(/\$/g, '').trim()
+  if (/^vô\s*nghiệm$/i.test(clean)) return 'Vô nghiệm'
+  return chuanHoaDanhSachNghiem(clean)
+}
+export function evalPtPhanThucKetQua(s) { const t = chuanHoaPtPhanThucKetQua(s); return t || null }
+
+// ── DẠNG 54: Rút gọn phân thức chứa CĂN (T109030203, khối 9) ────────────────────────────────────────────────
+// "$B=\dfrac{\sqrt{x}}{\sqrt{x}-1}+\dfrac{2}{\sqrt{x}+1}-\dfrac{5\sqrt{x}-3}{x-1}$" — đặt $t=\sqrt x$, TÁI
+// DÙNG NGUYÊN engine LCD của DẠNG 53 (`phanTichNhanTuTuyenTinh`/`tichNhiThuc`, giờ tổng quát hoá theo biến)
+// để cộng dồn về 1 PHÂN THỨC DUY NHẤT Tử(t)/Mẫu(t), rồi PHÂN TÍCH LẠI Tử thành nhân tử tuyến tính để RÚT GỌN
+// (huỷ nhân tử chung với Mẫu) — khác DẠNG 53 ở chỗ KHÔNG giải phương trình, chỉ rút gọn rồi hiển thị lại.
+function renderTuMau(tuTerms, mauTerms) {
+  const tuText = hienThiDaThuc(sapXepChuanDaThuc(tuTerms)).replace(/t/g, '\\sqrt{x}')
+  if (!mauTerms || (mauTerms.length === 1 && mauTerms[0].vars.size === 0 && mauTerms[0].coef.p === 1n && mauTerms[0].coef.q === 1n)) return tuText
+  const mauText = hienThiDaThuc(sapXepChuanDaThuc(mauTerms)).replace(/t/g, '\\sqrt{x}')
+  return `\\dfrac{${tuText}}{${mauText}}`
+}
+function rutGonToBieuThucCan(exprText) {
+  if (/\\left\(/.test(exprText)) return null // câu có thêm 1 tầng chia ngoài (hiếm, 1 câu) — ngoài phạm vi
+  const topTerms = chiaHangTu(chuanBiBieuThucNhan(substXChoT(exprText))); if (!topTerms.length) return null
+  const parsed = []
+  for (const t of topTerms) {
+    const df = extractDfracArgsPlain(t.text)
+    const numText = df ? df[0] : t.text, denText = df ? df[1] : '1'
+    const numPoly = parseDaThucTheoT(numText), denPoly = parseDaThucTheoT(denText); if (!numPoly || !denPoly) return null
+    const denFac = phanTichNhanTuTuyenTinh(denPoly, 't'); if (!denFac) return null
+    parsed.push({ sign: t.sign, numPoly, denFac })
+  }
+  const allRoots = []
+  for (const t of parsed) for (const f of t.denFac.factors) if (!allRoots.some((e) => cmp(e, f.root) === 0)) allRoots.push(f.root)
+  let numTotal = []
+  for (const t of parsed) {
+    const own = t.denFac.factors.map((f) => f.root)
+    const missing = allRoots.filter((r) => !own.some((o) => cmp(o, r) === 0))
+    let contrib = nhanCacDaThuc([t.numPoly, tichNhiThuc(missing, 't')])
+    contrib = contrib.map((x) => ({ coef: div(x.coef, t.denFac.leadCoef), vars: x.vars }))
+    if (t.sign === '-') contrib = contrib.map((x) => ({ coef: mul(R(-1n), x.coef), vars: x.vars }))
+    numTotal = [...numTotal, ...contrib]
+  }
+  const gop = new Map()
+  for (const term of numTotal) { const key = phanBienKey(term.vars); const old = gop.get(key); gop.set(key, old ? { coef: add(old.coef, term.coef), vars: term.vars } : term) }
+  const numTotalGop = [...gop.values()].filter((x) => x.coef.p !== 0n)
+  const mauGoc = allRoots.length ? tichNhiThuc(allRoots, 't') : [{ coef: R(1n), vars: new Map() }]
+  if (!numTotalGop.length) return { tuTerms: [{ coef: R(0n), vars: new Map() }], mauTerms: [{ coef: R(1n), vars: new Map() }], tuTermsGoc: numTotalGop, mauTermsGoc: mauGoc }
+  const numFac = phanTichNhanTuTuyenTinh(numTotalGop, 't')
+  if (!numFac) { if (allRoots.length) return null; return { tuTerms: numTotalGop, mauTerms: [{ coef: R(1n), vars: new Map() }], tuTermsGoc: numTotalGop, mauTermsGoc: mauGoc } }
+  const numRootsLeft = [...numFac.factors.map((f) => f.root)], denRootsLeft = [...allRoots]
+  for (let i = numRootsLeft.length - 1; i >= 0; i--) {
+    const j = denRootsLeft.findIndex((r) => cmp(r, numRootsLeft[i]) === 0)
+    if (j >= 0) { numRootsLeft.splice(i, 1); denRootsLeft.splice(j, 1) }
+  }
+  const tuTerms = tichNhiThuc(numRootsLeft, 't').map((x) => ({ coef: mul(x.coef, numFac.leadCoef), vars: x.vars }))
+  const mauTerms = denRootsLeft.length ? tichNhiThuc(denRootsLeft, 't') : [{ coef: R(1n), vars: new Map() }]
+  return { tuTerms, mauTerms, tuTermsGoc: numTotalGop, mauTermsGoc: mauGoc }
+}
+function bumpHangTuDoc(terms, delta) { // cộng delta vào hạng BẬC 0 (hằng số), thêm mới nếu chưa có hạng hằng
+  const idx = terms.findIndex((t) => t.vars.size === 0)
+  if (idx < 0) return [...terms, { coef: delta, vars: new Map() }]
+  const nc = add(terms[idx].coef, delta); const out = terms.slice()
+  if (nc.p === 0n) out.splice(idx, 1); else out[idx] = { coef: nc, vars: new Map() }
+  return out
+}
+export function rutGonPhanThucCan(noiDung, rule) {
+  const s = String(noiDung)
+  const segs = [...s.matchAll(/\$([^$]+)\$/g)].map((mm) => mm[1])
+  const exprSeg = segs.find((seg) => /^[A-Za-zĐ]\s*=/.test(seg.trim()) && /\\dfrac/.test(seg)); if (!exprSeg) return null
+  const mLabel = exprSeg.trim().match(/^([A-Za-zĐ])\s*=\s*(.+)$/); if (!mLabel) return null
+  const info = rutGonToBieuThucCan(mLabel[2].trim()); if (!info) return null
+  const dungText = renderTuMau(info.tuTerms, info.mauTerms)
+  if (!rule) return { text: dungText }
+  if (rule === 'R351') {
+    const t = renderTuMau(info.tuTerms.map((x) => ({ coef: mul(R(-1n), x.coef), vars: x.vars })), info.mauTerms)
+    if (t === dungText) return null; return { text: t, ds: 'nhầm dấu ở tử số' }
+  }
+  if (rule === 'R352') { const t = renderTuMau(bumpHangTuDoc(info.tuTerms, R(1n)), info.mauTerms); if (t === dungText) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở hằng số trong tử' } }
+  if (rule === 'R353') { const t = renderTuMau(bumpHangTuDoc(info.tuTerms, R(-1n)), info.mauTerms); if (t === dungText) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở hằng số trong tử, chiều ngược lại (dự phòng)' } }
+  if (rule === 'R354') {
+    const goc = renderTuMau(info.tuTermsGoc, info.mauTermsGoc)
+    if (goc !== dungText) return { text: goc, ds: 'quên rút gọn hết, để nguyên tử/mẫu trước khi khử nhân tử chung' }
+    const t = renderTuMau(info.tuTerms, bumpHangTuDoc(info.mauTerms, R(1n))); if (t === dungText) return null
+    return { text: t, ds: 'tính lệch 1 đơn vị ở hằng số trong mẫu' }
+  }
+  return null
+}
+export function chuanHoaRutGonCanKetQua(s) {
+  const clean = String(s ?? '').replace(/\$/g, '').trim()
+  const info = rutGonToBieuThucCan(clean)
+  return info ? renderTuMau(info.tuTerms, info.mauTerms) : clean
+}
+export function evalRutGonCanKetQuaVal(s) { const t = chuanHoaRutGonCanKetQua(s); return t || null }
+
+// ── DẠNG 55: Hệ phương trình đối xứng dạng TỔNG-TÍCH (T109010401, khối 9) ──────────────────────────────────
+// "$\begin{cases}(x+1)(y+1)=12\\x^2+y^2=13\end{cases}$" — đặt $S=x+y,P=xy$: $(x+A)(y+A)=P+AS+A^2=C$ và
+// $x^2+y^2=S^2-2P=D$ → khử P: $S^2+2AS-(2(C-A^2)+D)=0$ (bậc 2 theo S, giải bằng `timNghiemHuuTiBacHai` có
+// sẵn) → mỗi nghiệm S hợp lệ suy $P$ rồi giải TIẾP $t^2-St+P=0$ (Viète) ra x,y — hệ ĐỐI XỨNG nên (x,y) và
+// (y,x) đều là nghiệm, đáp số kho liệt kê CẢ HAI hoán vị.
+function parseFractionOrInt(s) { const m = String(s).trim().match(/^(-?\d+)\/(-?\d+)$/); return m ? R(BigInt(m[1]), BigInt(m[2])) : R(BigInt(s.trim())) }
+export function chuanHoaHePtTongTich(s) {
+  const clean = String(s ?? '').replace(/\$/g, '').trim()
+  const matches = [...clean.matchAll(/\(\s*(-?\d+(?:\/\d+)?)\s*,\s*(-?\d+(?:\/\d+)?)\s*\)/g)]; if (!matches.length) return clean
+  const pairs = matches.map((m) => [parseFractionOrInt(m[1]), parseFractionOrInt(m[2])])
+  pairs.sort((a, b) => cmp(a[0], b[0]) || cmp(a[1], b[1]))
+  return pairs.map(([a, b]) => `(${texR(a)},${texR(b)})`).join(',')
+}
+export function evalHePtTongTichKetQua(s) { const t = chuanHoaHePtTongTich(s); return t || null }
+export function giaiHePtTongTich(noiDung, rule) {
+  const s = String(noiDung)
+  const m = s.match(/\\begin\{cases\}([\s\S]*?)\\end\{cases\}/); if (!m) return null
+  const eqTexts = m[1].split('\\\\').map((t) => t.trim()).filter(Boolean); if (eqTexts.length !== 2) return null
+  const m1 = eqTexts[0].match(/^\(x\s*([+-]\s*\d+)\s*\)\s*\(y\s*([+-]\s*\d+)\s*\)\s*=\s*(-?\d+)$/)
+  const m2 = eqTexts[1].match(/^x\^2\s*\+\s*y\^2\s*=\s*(-?\d+)$/)
+  if (!m1 || !m2) return null
+  const A1 = parseIntSigned(m1[1]), A2 = parseIntSigned(m1[2]); if (A1 !== A2) return null
+  const A = A1, C = BigInt(m1[3]), D = BigInt(m2[1])
+  const Bcoef = 2n * A, Ccoef = -(2n * (C - A * A) + D)
+  const s1 = timNghiemHuuTiBacHai(1n, Bcoef, Ccoef); if (!s1) return null
+  const s2 = sub(R(-Bcoef), s1); if (!s2) return null
+  const svals = cmp(s1, s2) === 0 ? [s1] : [s1, s2]
+  const pairs = []
+  for (const Sv of svals) {
+    if (Sv.q !== 1n) continue
+    const Pv = sub(R(C - A * A), mul(R(A), Sv)); if (Pv.q !== 1n) continue
+    const x1 = timNghiemHuuTiBacHai(1n, -Sv.p, Pv.p); if (!x1) continue
+    const y1 = sub(Sv, x1); if (!y1) continue
+    pairs.push([x1, y1]); if (cmp(x1, y1) !== 0) pairs.push([y1, x1])
+  }
+  if (!pairs.length) return null
+  pairs.sort((a, b) => cmp(a[0], b[0]) || cmp(a[1], b[1]))
+  const dungText = pairs.map(([a, b]) => `(${texR(a)},${texR(b)})`).join(',')
+  if (!rule) return { text: dungText }
+  if (rule === 'R355') { // chỉ báo 1 hoán vị, quên nghiệm hoán vị còn lại
+    if (pairs.length < 2) return null
+    const t = pairs.slice(0, pairs.length - 1).map(([a, b]) => `(${texR(a)},${texR(b)})`).join(',')
+    if (chuanHoaHePtTongTich(t) === chuanHoaHePtTongTich(dungText)) return null
+    return { text: t, ds: 'quên 1 hoán vị nghiệm (hệ đối xứng luôn có cặp (x;y) và (y;x))' }
+  }
+  if (rule === 'R356') { const cp = pairs.map(([a, b]) => [add(a, R(1n)), b]); const t = cp.map(([a, b]) => `(${texR(a)},${texR(b)})`).join(','); if (chuanHoaHePtTongTich(t) === chuanHoaHePtTongTich(dungText)) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở giá trị x mọi cặp (dự phòng)' } }
+  if (rule === 'R357') { const cp = pairs.map(([a, b]) => [a, add(b, R(1n))]); const t = cp.map(([a, b]) => `(${texR(a)},${texR(b)})`).join(','); if (chuanHoaHePtTongTich(t) === chuanHoaHePtTongTich(dungText)) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở giá trị y mọi cặp' } }
+  if (rule === 'R358') { const cp = pairs.map(([a, b]) => [sub(a, R(1n)), b]); const t = cp.map(([a, b]) => `(${texR(a)},${texR(b)})`).join(','); if (chuanHoaHePtTongTich(t) === chuanHoaHePtTongTich(dungText)) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở giá trị x mọi cặp, chiều ngược lại' } }
+  return null
+}
+
+// ── DẠNG 56: GTLN-GTNN ứng dụng Cauchy/AM-GM (T109080103-105/107, khối 9) ──────────────────────────────────
+// Khảo sát xác nhận đề CHỈ dùng 4 KHUÔN CỐ ĐỊNH (không phải thuật toán "tách hạng tử tìm tỉ lệ" tổng quát):
+//  · $Ax+\dfrac{B}{x}$ ($x>0$) → AM-GM 2 số: GTNN$=2\sqrt{AB}$ (T109080105, cả A=1)
+//  · $x+\dfrac{k}{x}$ ($x\in\mathbb N^*$) → x NGUYÊN nên cực trị KHÔNG nhất thiết tại $\sqrt k$ — so f(⌊√k⌋)
+//    và f(⌈√k⌉), lấy nhỏ hơn (T109080107)
+//  · $x^2+\dfrac{C}{x}$ HOẶC $Ax+\dfrac{B}{x^2}$ ($x>0$) → AM-GM 3 số (tách đôi hạng còn lại để tích hằng số):
+//    GTNN$=3\sqrt[3]{C^2/4}$ hoặc $3\sqrt[3]{(A/2)^2B}$ (T109080103)
+//  · $x^2(A-x)$ HOẶC $x(A-x)^2$ ($0\le x\le A$) → AM-GM 3 số (tách đôi hạng LỚN): GTLN$=4A^3/27$ luôn, bất
+//    kể tách theo chiều nào vì $\frac{x}{2}+\frac{x}{2}+(A-x)=A$ và $(A-x)/2+(A-x)/2+x=A$ đều hằng số A
+//    (T109080104)
+function isqrtFloorBig(n) { // n≥0 → ⌊√n⌋ (Newton, KHÔNG cần n là số chính phương, khác isqrtBig)
+  if (n < 0n) return null
+  if (n < 2n) return n
+  let x = n, y = (x + 1n) / 2n
+  while (y < x) { x = y; y = (x + n / x) / 2n }
+  return x
+}
+function cubeRootOfRat(r) { // ∛r nếu r là LẬP PHƯƠNG HỮU TỈ đúng (giả định r≥0 trong ngữ cảnh Cauchy)
+  if (r.p < 0n) return null
+  const cp = icbrtBig(r.p), cq = icbrtBig(r.q); if (cp === null || cq === null) return null
+  return R(cp, cq)
+}
+function sqrtOfRat(r) { // √r nếu r là BÌNH PHƯƠNG HỮU TỈ đúng, r≥0
+  if (r.p < 0n) return null
+  const sp = isqrtBig(r.p), sq = isqrtBig(r.q); if (sp === null || sq === null) return null
+  return R(sp, sq)
+}
+function parseCauchyTerm(text) { // → {kind:'x2'|'x1'|'fracX'|'fracX2', coef} hoặc null
+  const df = extractDfracArgsPlain(text.trim())
+  if (df) {
+    const numPoly = parseXPolyTuVanBan(df[0]); if (!numPoly || numPoly.length !== 1 || numPoly[0].vars.size !== 0) return null
+    const denPoly = parseXPolyTuVanBan(df[1]); if (!denPoly || denPoly.length !== 1) return null
+    const dterm = denPoly[0], deg = dterm.vars.get('x') ?? 0
+    if (dterm.vars.size !== (deg ? 1 : 0)) return null
+    if (deg === 1) return { kind: 'fracX', coef: div(numPoly[0].coef, dterm.coef) }
+    if (deg === 2) return { kind: 'fracX2', coef: div(numPoly[0].coef, dterm.coef) }
+    return null
+  }
+  const poly = parseXPolyTuVanBan(text.trim()); if (!poly || poly.length !== 1) return null
+  const tm = poly[0], deg = tm.vars.get('x') ?? 0
+  if (tm.vars.size !== (deg ? 1 : 0)) return null
+  if (deg === 2) return { kind: 'x2', coef: tm.coef }
+  if (deg === 1) return { kind: 'x1', coef: tm.coef }
+  return null
+}
+function layBieuThucNhan(noiDung) {
+  const m = String(noiDung).match(/\$([^$]+)\$/); if (!m) return null
+  let raw = m[1].trim()
+  const mLabel = raw.match(/^([A-Za-zĐ])\s*=\s*(.+)$/); if (mLabel) raw = mLabel[2].trim()
+  return raw
+}
+// "$A=Ax+\dfrac{B}{x}$ ($x>0$)" — GTNN=2√(AB) (T109080105)
+export function gtnnAmGm2So(noiDung, rule) {
+  const raw = layBieuThucNhan(noiDung); if (!raw) return null
+  const topTerms = chiaHangTu(chuanBiBieuThucNhan(raw)); if (topTerms.length !== 2 || topTerms.some((t) => t.sign !== '+')) return null
+  const parts = topTerms.map((t) => parseCauchyTerm(t.text)); if (parts.some((p) => !p)) return null
+  const [t1, t2] = parts
+  const x1 = t1.kind === 'x1' ? t1 : t2.kind === 'x1' ? t2 : null
+  const fr = t1.kind === 'fracX' ? t1 : t2.kind === 'fracX' ? t2 : null
+  if (!x1 || !fr) return null
+  const A = x1.coef, B = fr.coef
+  const sq = sqrtOfRat(mul(A, B)); if (!sq) return null
+  const gtnn = mul(R(2n), sq)
+  if (!rule) return { value: gtnn }
+  if (rule === 'R359') { const v = sq; if (cmp(v, gtnn) === 0) return null; return { value: v, ds: 'quên nhân 2, lấy nhầm √(AB) làm GTNN' } }
+  if (rule === 'R360') { const v = add(gtnn, R(1n)); return { value: v, ds: 'tính lệch 1 đơn vị (dự phòng)' } }
+  if (rule === 'R361') { const v = sub(gtnn, R(1n)); if (v.p < 0n || cmp(v, sq) === 0) return null; return { value: v, ds: 'tính lệch 1 đơn vị, chiều ngược lại' } }
+  if (rule === 'R362') { const v = add(gtnn, R(2n)); if (cmp(v, sq) === 0) return null; return { value: v, ds: 'tính lệch 2 đơn vị (cứu ca trùng công thức khi AB=1)' } }
+  return null
+}
+// "$A=x+\dfrac{k}{x}$ với $x\in\mathbb N^*$" — x NGUYÊN, so f(⌊√k⌋) và f(⌈√k⌉) (T109080107)
+export function gtnnAmGm2SoNguyen(noiDung, rule) {
+  const raw = layBieuThucNhan(noiDung); if (!raw) return null
+  const topTerms = chiaHangTu(chuanBiBieuThucNhan(raw)); if (topTerms.length !== 2 || topTerms.some((t) => t.sign !== '+')) return null
+  const parts = topTerms.map((t) => parseCauchyTerm(t.text)); if (parts.some((p) => !p)) return null
+  const [t1, t2] = parts
+  const x1 = t1.kind === 'x1' ? t1 : t2.kind === 'x1' ? t2 : null
+  const fr = t1.kind === 'fracX' ? t1 : t2.kind === 'fracX' ? t2 : null
+  if (!x1 || !fr) return null
+  if (x1.coef.p !== 1n || x1.coef.q !== 1n) return null // chỉ gặp "x" trần trong mẫu, hệ số ≠1 ngoài phạm vi khảo sát
+  const k = fr.coef; if (k.q !== 1n || k.p <= 0n) return null
+  const f = (xv) => add(R(xv), div(k, R(xv)))
+  const x0 = isqrtFloorBig(k.p); if (x0 === null || x0 < 1n) return null
+  const cands = [x0, x0 + 1n].filter((v) => v >= 1n).map(f)
+  const gtnn = cands.reduce((mn, v) => cmp(v, mn) < 0 ? v : mn)
+  if (!rule) return { value: gtnn }
+  if (rule === 'R359') { const v = add(gtnn, R(1n)); return { value: v, ds: 'tính lệch 1 đơn vị (dự phòng)' } }
+  if (rule === 'R360') { const v = sub(gtnn, R(1n)); if (v.p < 0n) return null; return { value: v, ds: 'tính lệch 1 đơn vị, chiều ngược lại' } }
+  if (rule === 'R361') {
+    const v = f(x0 + 2n); if (cmp(v, gtnn) === 0) return null
+    return { value: v, ds: 'thử nhầm giá trị x nguyên khác (lệch xa hơn ⌊√k⌋)' }
+  }
+  return null
+}
+// "$A=x^2+\dfrac{C}{x}$" HOẶC "$A=Ax+\dfrac{B}{x^2}$" ($x>0$) — AM-GM 3 số (T109080103)
+export function gtnnAmGm3So(noiDung, rule) {
+  const raw = layBieuThucNhan(noiDung); if (!raw) return null
+  const topTerms = chiaHangTu(chuanBiBieuThucNhan(raw)); if (topTerms.length !== 2 || topTerms.some((t) => t.sign !== '+')) return null
+  const parts = topTerms.map((t) => parseCauchyTerm(t.text)); if (parts.some((p) => !p)) return null
+  const [t1, t2] = parts
+  let inner, quenChiaDoi
+  const x2 = t1.kind === 'x2' ? t1 : t2.kind === 'x2' ? t2 : null
+  const frX = t1.kind === 'fracX' ? t1 : t2.kind === 'fracX' ? t2 : null
+  if (x2 && frX) {
+    if (x2.coef.p !== 1n || x2.coef.q !== 1n) return null
+    const C = frX.coef
+    inner = div(mul(C, C), R(4n)); quenChiaDoi = mul(C, C)
+  } else {
+    const x1 = t1.kind === 'x1' ? t1 : t2.kind === 'x1' ? t2 : null
+    const frX2 = t1.kind === 'fracX2' ? t1 : t2.kind === 'fracX2' ? t2 : null
+    if (!x1 || !frX2) return null
+    const A = x1.coef, B = frX2.coef
+    const half = div(A, R(2n))
+    inner = mul(mul(half, half), B); quenChiaDoi = mul(mul(A, A), B)
+  }
+  const cb = cubeRootOfRat(inner); if (!cb) return null
+  const gtnn = mul(R(3n), cb)
+  if (!rule) return { value: gtnn }
+  if (rule === 'R359') { const v = cb; if (cmp(v, gtnn) === 0) return null; return { value: v, ds: 'quên nhân 3, lấy nhầm căn bậc ba làm GTNN' } }
+  if (rule === 'R360') {
+    const cb2 = cubeRootOfRat(quenChiaDoi)
+    const v = cb2 ? mul(R(3n), cb2) : mul(gtnn, R(2n)) // "quên chia đôi" đôi khi không ra lập phương đúng (GTNN nhỏ) — cứu bằng gấp đôi GTNN
+    if (cmp(v, gtnn) === 0) return null
+    return { value: v, ds: cb2 ? 'quên chia đôi hệ số khi tách hạng tử làm 2 phần bằng nhau' : 'tính gấp đôi GTNN đúng' }
+  }
+  if (rule === 'R361') { const v = add(gtnn, R(1n)); return { value: v, ds: 'tính lệch 1 đơn vị (dự phòng)' } }
+  if (rule === 'R362') {
+    const v = gtnn.p >= gtnn.q ? sub(gtnn, R(1n)) : add(gtnn, R(2n)) // GTNN<1 thì lệch -1 sẽ âm (vô lý) — cứu bằng +2
+    if (cmp(v, gtnn) === 0) return null
+    return { value: v, ds: 'tính lệch giá trị, chiều ngược lại với R361' }
+  }
+  return null
+}
+// "$A=x^2(K-x)$" HOẶC "$A=x(K-x)^2$" ($0\le x\le K$) — AM-GM 3 số, GTLN=4K³/27 (T109080104)
+export function gtlnAmGm3SoTich(noiDung, rule) {
+  const raw = layBieuThucNhan(noiDung); if (!raw) return null
+  let mm = raw.match(/^x\^2\s*\(\s*(-?\d+)\s*-\s*x\s*\)$/)
+  let K = mm ? BigInt(mm[1]) : null
+  if (K === null) { mm = raw.match(/^x\s*\(\s*(-?\d+)\s*-\s*x\s*\)\^2$/); K = mm ? BigInt(mm[1]) : null }
+  if (K === null || K <= 0n) return null
+  const gtln = div(mul(R(4n), R(K * K * K)), R(27n))
+  if (!rule) return { value: gtln }
+  if (rule === 'R359') { const v = div(R(K * K * K), R(27n)); if (cmp(v, gtln) === 0) return null; return { value: v, ds: 'quên nhân 4' } }
+  if (rule === 'R360') { const v = mul(R(4n), R(K * K * K)); if (cmp(v, gtln) === 0) return null; return { value: v, ds: 'quên chia 27' } }
+  if (rule === 'R361') { const v = add(gtln, R(1n)); return { value: v, ds: 'tính lệch 1 đơn vị (dự phòng)' } }
+  if (rule === 'R362') { const v = sub(gtln, R(1n)); if (v.p < 0n) return null; return { value: v, ds: 'tính lệch 1 đơn vị, chiều ngược lại' } }
   return null
 }

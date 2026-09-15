@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-222 bảng · 18 view · 0 enum · 69 trigger · 369 function
+223 bảng · 18 view · 0 enum · 69 trigger · 370 function
 
 ## _app_secrets
 
@@ -2243,6 +2243,25 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | khung_co_ban | numeric | Y |  |  |  |
 | khung_nang_cao | numeric | Y |  |  |  |
+
+## lich_truc_bo_tro
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| mon | text |  |  |  |  |
+| khoi | text | Y |  |  |  |
+| lop_id | uuid | Y |  | FK→lop.id |  |
+| thu | smallint |  |  |  |  |
+| gio_bat_dau | time without time zone |  |  |  |  |
+| gio_ket_thuc | time without time zone |  |  |  |  |
+| phong | text | Y |  |  |  |
+| nhan_su_id | uuid | Y |  | FK→nhan_su.id |  |
+| hieu_luc_tu | date |  | ((now() AT TIME ZONE 'Asia/Ho_Chi_Minh'::text))::date |  |  |
+| hieu_luc_den | date | Y |  |  |  |
+| ghi_chu | text | Y |  |  |  |
+| created_by | uuid | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## linkgen_jobs
 
@@ -4919,6 +4938,7 @@ SELECT bl.hoc_sinh_id,
 - `fn_kho_tbl(p_mon text)` → text
 - `fn_kho_tu_choi_cau(p_mon text, p_ma_cau text, p_nguoi uuid, p_ly_do text)` → void
 - `fn_kho_yeu_cau_giai_cho(p_mon text)` → TABLE(yeu_cau_id uuid, yeu_cau_at timestamp with time zone, ghi_chu text, ma_cau text, dang_chinh text, ten_dang text, khoi text, loai_cau text, noi_dung text, lua_chon jsonb, menh_de jsonb, dap_an text, anh_de text, ma_cum text, da_co_loi_giai boolean)
+- `fn_lich_truc_cua_hs(p_hoc_sinh uuid, p_mon text, p_ngay date DEFAULT NULL::date)` → jsonb
 - `fn_mastery_cells(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone, p_window integer DEFAULT 5, p_tin_cao integer DEFAULT 5, p_tin_tb integer DEFAULT 3)` → TABLE(hoc_sinh_id uuid, ma_dang text, score numeric, n bigint, muc text, tin text)
 - `fn_mastery_cells_hinh(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, hinh_baitoan_id uuid, score numeric, n bigint, muc text, tin text)
 - `fn_mastery_rollup(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, dat bigint, can_luyen bigint, yeu bigint, tin_thap bigint)
@@ -5150,6 +5170,9 @@ SELECT bl.hoc_sinh_id,
 | khtn_cum_tien_de | khtn_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | khtn_dang_tien_de | khtn_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
 | ky_thi | ky_thi_he_so_check | `CHECK ((he_so = ANY (ARRAY[1, 2])))` |
+| lich_truc_bo_tro | lich_truc_bo_tro_gio | `CHECK ((gio_ket_thuc > gio_bat_dau))` |
+| lich_truc_bo_tro | lich_truc_bo_tro_pham_vi | `CHECK (((khoi IS NOT NULL) OR (lop_id IS NOT NULL)))` |
+| lich_truc_bo_tro | lich_truc_bo_tro_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | may_man_hs_luot | may_man_hs_luot_exp_check | `CHECK ((exp >= 0))` |
 | may_man_luot | may_man_luot_tien_check | `CHECK ((tien >= 0))` |
 | muc_nang_luc | muc_nang_luc_muc_check | `CHECK (((muc >= 1) AND (muc <= 3)))` |

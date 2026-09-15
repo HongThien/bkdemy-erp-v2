@@ -11,8 +11,6 @@ import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, getKhoiRan
 import { tenHienThiDs } from '../../lib/hoten'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
-// Thang 5 cho skill bar (GV tự chọn). index 0..4 ↔ mức 1..5.
-const SKILL_MUC = ['Cần cố gắng', 'Trung bình', 'Khá', 'Tốt', 'Xuất sắc'] as const
 const curYM = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` }
 const shiftYM = (ym: string, delta: number) => { const [y, m] = ym.split('-').map(Number); const i = y * 12 + (m - 1) + delta; return `${Math.floor(i / 12)}-${String(i % 12 + 1).padStart(2, '0')}` }
 const NOP_LABEL: Record<string, string> = { nop_dung_han: 'Đúng hạn', nop_muon: 'Nộp muộn', xin_phep: 'Xin phép', khong_lam: 'Không làm' }
@@ -344,10 +342,74 @@ function TongQuanCards({ tq, missCount }: { tq: TongQuanHS; missCount: number })
   )
 }
 
-const NX_FIELDS: { key: 'thai_do' | 'kien_thuc_ky_nang'; mucKey: 'muc_thai_do' | 'muc_kien_thuc'; label: string; ph: string; hx: string }[] = [
-  { key: 'kien_thuc_ky_nang', mucKey: 'muc_kien_thuc', label: 'Kiến thức & Kĩ năng', ph: 'Mức nắm kiến thức, kĩ năng làm bài, mạnh/yếu…', hx: 'bg-indigo-500' },
-  { key: 'thai_do', mucKey: 'muc_thai_do', label: 'Thái độ học tập', ph: 'Thái độ, chuyên cần, tinh thần học tập trong tháng…', hx: 'bg-emerald-500' },
+// Kiến thức & Kĩ năng + Thái độ học tập: chuyển từ nhận xét tự do → chọn preset (Thùy 14-09).
+// Mỗi preset gắn sẵn mức 2..5 → chọn 1 lần lưu cả text + mức. UI là dropdown (đỡ tốn diện tích).
+const KT_PRESETS: { muc: number; text: string }[] = [
+  { muc: 5, text: 'Với những dạng bài đã được học, con làm lại chính xác gần như tuyệt đối, bài của con trình bày đủ ý, đúng thứ tự.' },
+  { muc: 4, text: 'Các bài con đã nắm được phương pháp làm rồi thì gần như có thể trình bày lại được chuẩn, đôi lúc còn tính sai.' },
+  { muc: 4, text: 'Các bài con hiểu rồi thì gần như có thể trình bày lại được chuẩn, thi thoảng con còn quên câu kết luận hoặc đơn vị.' },
+  { muc: 3, text: 'Bài làm của con thường xuyên gặp các lỗi sai về tính toán; nên dù có nắm được cách làm bài nhưng vẫn mất nhiều điểm.' },
+  { muc: 3, text: 'Bài làm của con thường xuyên gặp các lỗi sai về trình bày thiếu ý/tắt, chưa khoa học, nên dù có nắm được cách làm bài nhưng vẫn mất nhiều điểm.' },
+  { muc: 2, text: 'Bài làm của con thường xuyên gặp tình trạng tính sai và trình bày tắt. Nên ngay cả khi biết cách làm thì vẫn mất rất nhiều điểm.' },
 ]
+const TD_PRESETS: { muc: number; text: string }[] = [
+  { muc: 5, text: 'Con hoàn thành tốt các yêu cầu: Nộp bài tập về nhà đúng hạn, Đi học đúng giờ, Tập trung làm bài luyện trên lớp. Ngoài ra con rất chủ động hỏi bài khi chưa hiểu, chưa biết.' },
+  { muc: 4, text: 'Con hoàn thành tốt các yêu cầu: Nộp bài tập về nhà đúng hạn, Đi học đúng giờ, Tập trung làm bài luyện trên lớp.' },
+  { muc: 3, text: 'Con nộp BTVN muộn một số buổi.' },
+  { muc: 3, text: 'Chưa tập trung làm Bài luyện trên lớp, còn nói chuyện, đùa nghịch với các bạn.' },
+  { muc: 3, text: 'Con thường xuyên đi học muộn vì lí do chủ quan.' },
+  { muc: 2, text: 'Con thường xuyên nộp muộn BTVN hoặc thiếu BTVN một số buổi.' },
+]
+const MUC_HX: Record<number, string> = { 2: 'bg-rose-500', 3: 'bg-amber-500', 4: 'bg-sky-500', 5: 'bg-emerald-500' }
+function PresetDropdown({ presets, curText, curMuc, onPick, ringOn }:
+  { presets: { muc: number; text: string }[]; curText: string | null; curMuc: number | null; onPick: (p: { muc: number; text: string } | null) => void; ringOn: string }) {
+  const [open, setOpen] = useState(false)
+  const wrapRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (!open) return
+    const h = (e: MouseEvent) => { if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) setOpen(false) }
+    document.addEventListener('mousedown', h)
+    return () => document.removeEventListener('mousedown', h)
+  }, [open])
+  const matched = presets.find((p) => p.text === curText && p.muc === curMuc)
+  const orphan = curText != null && !matched
+  return (
+    <div ref={wrapRef} className="relative">
+      <button type="button" onClick={() => setOpen((s) => !s)}
+        className={`flex w-full items-start gap-2 rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-left text-[12px] leading-relaxed hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-white ${open ? `${ringOn} ring-2` : ''}`}>
+        {matched ? (
+          <span className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded text-[11px] font-bold text-white ${MUC_HX[matched.muc] ?? 'bg-slate-400'}`}>{matched.muc}</span>
+        ) : <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded bg-slate-200 text-[11px] font-bold text-slate-500">—</span>}
+        <span className={`flex-1 ${matched ? 'text-slate-800' : 'text-slate-400'}`}>
+          {matched ? matched.text : (orphan ? curText : 'Chọn nhận xét…')}
+        </span>
+        <span className="mt-1 shrink-0 text-slate-400">▾</span>
+      </button>
+      {open && (
+        <div className="absolute left-0 right-0 top-full z-20 mt-1 max-h-72 overflow-y-auto rounded-lg border border-slate-200 bg-white shadow-lg">
+          {presets.map((p, i) => {
+            const isSel = matched === p
+            return (
+              <button key={i} type="button"
+                onClick={() => { onPick(isSel ? null : p); setOpen(false) }}
+                className={`flex w-full items-start gap-2 border-b border-slate-100 px-2.5 py-2 text-left text-[12px] leading-relaxed last:border-b-0 ${isSel ? 'bg-indigo-50' : 'hover:bg-slate-50'}`}>
+                <span className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded text-[11px] font-bold text-white ${MUC_HX[p.muc] ?? 'bg-slate-400'}`}>{p.muc}</span>
+                <span className="flex-1 text-slate-700">{p.text}</span>
+              </button>
+            )
+          })}
+          {matched && (
+            <button type="button" onClick={() => { onPick(null); setOpen(false) }}
+              className="w-full border-t border-slate-100 px-2.5 py-1.5 text-left text-[11px] text-slate-500 hover:bg-slate-50">✕ Bỏ chọn</button>
+          )}
+        </div>
+      )}
+      {orphan && (
+        <p className="mt-1 rounded bg-amber-50 px-2 py-1 text-[11px] text-amber-700">Nhận xét cũ (nhập tay) chưa khớp preset — mở dropdown chọn 1 mức để thay.</p>
+      )}
+    </div>
+  )
+}
 function NhanXet({ hsId, mon, ym, onCapture }: { hsId: string; mon: string; ym: string; onCapture: () => Promise<string | null> }) {
   const [val, setVal] = useState<BaoCaoPH>({ ...BC_EMPTY })
   const [prev, setPrev] = useState<BaoCaoPH>({ ...BC_EMPTY })
@@ -420,13 +482,16 @@ function NhanXet({ hsId, mon, ym, onCapture }: { hsId: string; mon: string; ym: 
           {val.nl_diem != null && <p className="mt-1.5 text-[11px] text-slate-500">Dự kiến điểm thi: <b>{(val.nl_diem - (val.nl_sai_so ?? 0)).toFixed(1)} – {(val.nl_diem + (val.nl_sai_so ?? 0)).toFixed(1)}</b></p>}
         </div>
 
-        {/* 7 CHỈ SỐ PHÁT TRIỂN (mức 1..5) + xu hướng so tháng trước */}
-        <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
-          <div className="mb-2 flex items-center justify-between">
-            <span className="text-[12px] font-semibold text-slate-700">7 chỉ số phát triển</span>
+        {/* 7 CHỈ SỐ PHÁT TRIỂN — ẨN mặc định, bấm header để mở (Thùy 14-09: đỡ tốn diện tích) */}
+        <details className="group rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
+          <summary className="flex cursor-pointer list-none items-center justify-between">
+            <span className="flex items-center gap-1.5 text-[12px] font-semibold text-slate-700">
+              <span className="text-slate-400 transition group-open:rotate-90 inline-block">▶</span>
+              7 chỉ số phát triển
+            </span>
             <span className="text-[10px] text-slate-400">so với tháng {Number(shiftYM(ym, -1).split('-')[1])}</span>
-          </div>
-          <div className="space-y-2">
+          </summary>
+          <div className="mt-2 space-y-2">
             {CHI_SO.map((c) => {
               const lvl = val[c.key] as number | null
               const pv = prev[c.key] as number | null
@@ -453,28 +518,27 @@ function NhanXet({ hsId, mon, ym, onCapture }: { hsId: string; mon: string; ym: 
               )
             })}
           </div>
+        </details>
+
+        {/* KIẾN THỨC & KĨ NĂNG — dropdown preset (mức + text đi kèm) */}
+        <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
+          <div className="mb-1.5 flex items-center justify-between">
+            <span className="text-[12px] font-semibold text-slate-700">Kiến thức & Kĩ năng</span>
+            {(saved === 'kien_thuc_ky_nang' || saved === 'muc_kien_thuc') && <span className="text-[11px] text-emerald-600">✓ đã lưu</span>}
+          </div>
+          <PresetDropdown presets={KT_PRESETS} curText={val.kien_thuc_ky_nang} curMuc={val.muc_kien_thuc} ringOn="ring-indigo-300"
+            onPick={(p) => save(p ? { kien_thuc_ky_nang: p.text, muc_kien_thuc: p.muc } : { kien_thuc_ky_nang: null, muc_kien_thuc: null }, 'kien_thuc_ky_nang')} />
         </div>
 
-        {NX_FIELDS.map((f) => {
-          const lvl = val[f.mucKey] as number | null
-          return (
-          <div key={f.key} className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
-            <div className="mb-1.5 flex items-center justify-between">
-              <span className="text-[12px] font-semibold text-slate-700">{f.label}</span>
-              {(saved === f.key || saved === f.mucKey) && <span className="text-[11px] text-emerald-600">✓ đã lưu</span>}
-            </div>
-            {/* Chọn mức thang 5 */}
-            <div className="mb-2 flex items-center gap-1.5">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <button key={i} onClick={() => save({ [f.mucKey]: lvl === i ? null : i }, f.mucKey)} title={SKILL_MUC[i - 1]}
-                  className={`h-7 flex-1 rounded-md text-[11px] font-bold ring-1 transition ${lvl != null && i <= lvl ? `${f.hx} text-white ring-transparent` : 'bg-slate-50 text-slate-400 ring-slate-200 hover:bg-slate-100'}`}>{i}</button>
-              ))}
-              <span className="ml-1 w-[68px] shrink-0 text-right text-[11px] font-semibold text-slate-500">{lvl ? SKILL_MUC[lvl - 1] : '—'}</span>
-            </div>
-            <textarea defaultValue={val[f.key] as string ?? ''} onBlur={(e) => save({ [f.key]: e.target.value.trim() || null }, f.key)} placeholder={f.ph} rows={4} className={box} />
+        {/* THÁI ĐỘ HỌC TẬP — dropdown preset (mức + text đi kèm) */}
+        <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
+          <div className="mb-1.5 flex items-center justify-between">
+            <span className="text-[12px] font-semibold text-slate-700">Thái độ học tập</span>
+            {(saved === 'thai_do' || saved === 'muc_thai_do') && <span className="text-[11px] text-emerald-600">✓ đã lưu</span>}
           </div>
-          )
-        })}
+          <PresetDropdown presets={TD_PRESETS} curText={val.thai_do} curMuc={val.muc_thai_do} ringOn="ring-emerald-300"
+            onPick={(p) => save(p ? { thai_do: p.text, muc_thai_do: p.muc } : { thai_do: null, muc_thai_do: null }, 'thai_do')} />
+        </div>
         {/* KẾT LUẬN: thanh mức + chữ */}
         <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
           <div className="mb-1.5 flex items-center justify-between">

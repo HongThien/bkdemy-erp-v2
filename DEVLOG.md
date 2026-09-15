@@ -12199,6 +12199,443 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
 - **13/09 (tiếp) — BUG "Duyệt tất cả batch" NUỐT sửa của thẻ (CEO: "t phân vào toạ độ hoá nhiều nhưng kho chỉ có 1 câu").** `DuyetCauTab.onDuyetTatCa` gọi `duyetCauHangDuyet(mon, ma_cau, nguoi)` KHÔNG truyền `sua` ⇒ dạng/đề/đáp số người vừa chọn trên từng thẻ bị bỏ, câu duyệt với dạng cũ. Bằng chứng: lô 21:49 (120 câu) và 22:29 (20 câu, có TĐH) đều 0 câu đổi dạng dù CEO nói đã chọn nhiều; lô 22:06 (duyệt lẻ) 12/22 câu đổi dạng. Sửa: thẻ `The` gương gói `sua` đang chờ lên cha qua `onSua` → `suaRef` (Map theo `mon:ma_cau`); batch áp `sua` từng thẻ, confirm ghi rõ "áp dụng sửa đang chờ trên N thẻ". tsc sạch. **Khôi phục ý CEO cho TĐH** (chọn dạng bị mất): 27 câu file "Phương pháp tọa độ hóa" → `901` (18: hộp/lập phương/tứ diện vuông/chóp cạnh bên ⊥ đáy vuông) · `902` (9: lăng trụ tam giác đều, chóp đều, đáy thoi, hình chiếu đỉnh lệch) + 13 mệnh đề ĐS dạng chờ → cùng dạng; trigger log ghi 40 dòng. Giữ nguyên: 205008, 505007, TN16/TN20 (toạ độ cho sẵn). Còn treo chờ CEO gật: 201→703/702 (VTTĐ, ~4 TN + ~10 mệnh đề), 107→109 (4 câu PTMP). **Dev server đang 500** do `src/index.css` (phiên khác) trỏ ảnh vào `.claude/worktrees/agent-…/public/ops-ui/…` không tồn tại — không phải code tôi; chưa verify UI batch mới bằng browser.
 
 - **13/09 (tiếp) — CEO "Chuyển đi" nhóm còn lại lệch dạng do bản đồ K12 thêm dạng sau lúc nhập.** Rà TAY từng mục (không regex): 23 mệnh đề 201 → `703` (14: song song/chéo/cắt/trùng giữa 2 đt, "không cắt trục Oz") · `702` (9: đt cắt/song song/nằm trong mp, giao điểm, "không có điểm chung"); 3 TN (056/057/058) → 703; TLN 064 → 702; PTMP 107073/074/075 ("cách M một khoảng", "cách đều A,B") → `109`; 107078 (tượng đài – trụ đèn) → `801`. Giữ 201: VTCP, điểm thuộc, PTTS (26 mệnh đề + 044/065/066). Đồng bộ lại `ma_dang` trong jsonb `menh_de` của 18 câu cha cho khớp bảng con (trigger sync chỉ chạy chiều jsonb→con; UPSERT giữ chữ ký vì nội dung không đổi). Trigger log ghi 8 câu + 23 mệnh đề. **Bài học ghi vào /nhap-kho:** query bản đồ NGAY TRƯỚC lúc gán dạng mỗi lô, không dùng danh sách lấy đầu phiên — bản đồ đổi trong ngày.
+
+## 2026-09-14 — T108040301 "Hằng đẳng thức" (ôn tập tổng hợp khối 8, 3 câu) — TÁI DÙNG 100%, KHÔNG CODE MỚI
+- 3 câu trộn 2 sub-shape đã có sẵn engine: "Khai triển $(x+9)^2=...$" / "$(2x-1)^2=...$" (2 câu, y hệt DẠNG 24
+  `khaiTrienBinhPhuong`) và "Hoàn thành biểu thức $x^2-25=...$" (1 câu, y hệt DẠNG 32 sub-shape a). Test tay
+  phát hiện **`vietThanhTichHieuBinhPhuong` (DẠNG 32) MỘT MÌNH đã phủ cả 3 câu** — nhánh sub-shape (b) của nó
+  (khai triển tích, dùng `tachNhanTu`'s hỗ trợ `(...)^n`) tự nhiên khớp luôn kiểu "khai triển bình phương"
+  vì `(x+9)^2` được hiểu như tích `(x+9)(x+9)`, không cần gọi riêng `khaiTrienBinhPhuong`.
+- Wire thẳng `T108040301` vào `vietThanhTichHieuBinhPhuong`/R225-233/`chuanHoaTachBinhPhuong` có sẵn — không
+  thêm dòng code hay rule nào. Migration chỉ UPDATE `ap_dung` nối thêm `T108040301`. Chạy pipeline thật: sinh
+  3/3, verify 3 OK · 0 FAIL. Đã ghi `dai_cau_form_tn`.
+- **Khảo sát toàn bộ chương "Nâng cao" (T108050101-501, 12 dạng con):** mỗi dạng chỉ 1-5 câu, và MỖI CÂU là 1
+  bài toán olympiad ĐỘC LẬP, KHÁC HẲN NHAU về kỹ thuật (số chính phương, số nguyên tố, hệ phương trình đối
+  xứng, chia đa thức tìm hệ số ẩn, phương trình bậc cao đặc biệt…) — phần lớn dạng "Chứng minh" (không có
+  đáp số MCQ được). **Tự quyết KHÔNG làm** (không cần hỏi CEO — không có 1 engine chung nào đáng viết cho
+  1-5 câu/dạng, mỗi câu lại đòi hỏi lời giải tay riêng, khác hẳn mọi dạng đã làm trong phiên vì KHÔNG có cấu
+  trúc lặp lại giữa các câu cùng dạng). T108040101/201/401/501 vẫn 0 câu trong kho (rỗng, không có gì để làm).
+- **KẾT LUẬN: mảng đại số cốt lõi khối 8 (dạng có ≥1 sub-shape sinh được hàng loạt) coi như XONG.** Còn lại
+  chỉ là phần bán phần của 3 dạng đã ghi nhận (T108020701 32/49, T108020702 9/15, T108030103 134/166 câu —
+  đều cần kỹ thuật khác biệt hẳn, để dành riêng) + chương Nâng cao (loại hẳn khỏi phạm vi MCQ tự động).
+- **Tổng khối 8: 38 dạng xong (3 bán phần), 216 rule (không rule mới cho dạng này).** Hết việc "chạy thẳng"
+  khối 8 — cần hỏi CEO hướng tiếp theo (khối khác, hay quay lại làm phần bán phần/nâng cao bằng tay).
+- Hỏi CEO hướng tiếp: **"Sang khối khác" (Recommended)** — bắt đầu khối 9.
+
+## 2026-09-14 (tiếp) — Bắt đầu khối 9: T109020101, T109020102 (PT bậc nhất), T109020201, T109020202 (BPT bậc nhất)
+- **T109020101 "Phương trình bậc nhất một ẩn cơ bản" + T109020102 "Phương trình quy về bậc nhất — dạng đa
+  thức" — TÁI DÙNG NGUYÊN `timXQuaRutGon`/R168-171/R263 của T108010503/T108020602, KHÔNG code mới.** Test tay:
+  T109020101 51/51 khớp; T109020102 17/18 khớp (1 câu residual `hangSo=0` khiến đáp số x=0, mọi rule nhân/chia
+  hệ số cũng ra 0 → chỉ còn 2 distractor phân biệt, bỏ theo §1.5). Migration chỉ UPDATE `ap_dung` nối
+  `{T109020101}`/`{T109020102}` vào R168-171/R263 có sẵn (2 file). Wire vào `UU_TIEN`+`SPECIAL_DANG` của
+  `mcq-auto.mjs`.
+- **T109020201 "Giải bất phương trình bậc nhất một ẩn" + T109020202 "...quy về từ biểu thức phức tạp hơn" —
+  hàm MỚI `giaiBptBacNhat`/canon `chuanHoaBatDangThuc` (mini-dang.mjs, DẠNG 45).** Quy về `heSoX·x + hangSo op
+  0`; nếu `heSoX` ÂM thì PHẢI đổi chiều bất đẳng thức khi chia — bug hay gặp nhất ở HS thật, thành R305. Đáp
+  số kho ký hiệu toán tử không nhất quán (`\ge`/`\geq`/`\geqslant`, `\le`/`\leq`/`\leqslant`, `<`,`>`) → canon
+  riêng chuẩn hoá cả toán tử lẫn giá trị biên (không tái dùng `chuanHoaDanhSachNghiem`/parseHuuTi được, đáp số
+  không phải 1 giá trị mà là "x [op] value").
+  - **2 bug thật phát hiện lúc test tay (không phải noise của test script):**
+    1. Regex đáp số kho đôi lúc viết `"- \dfrac{7}{2}"` (CÓ khoảng trắng sau dấu trừ) — regex ban đầu đòi sát
+       liền, sửa thêm `\s*` sau mỗi `-?` tuỳ chọn.
+    2. Check bậc >1 ban đầu chặn TỪNG hạng tử lúc gộp — sai với câu như `(x+1)(2x-1) < 2x^2-4x+1` khi hạng x²
+       nở ra từ tích TRIỆT TIÊU với x² bên vế kia SAU KHI gộp cả 2 vế. Sửa: gộp hệ số theo bậc vào 1 Map
+       TRƯỚC, chỉ chặn nếu hệ số bậc >1 CÒN LẠI khác 0 sau gộp. (T109020202 từ 16/28 → 28/28 sau fix.)
+  - **Rule R305-309:** R305 quên đổi chiều khi hệ số x âm (chỉ áp dụng khi THẬT có đổi chiều) · R306/R307 lệch
+    1 đơn vị ở biên (2 chiều, R306 đánh `du_phong`) · R308 sai dấu giá trị biên · **R309 (rescue mới) — quên
+    chia hệ số x, coi hệ số luôn bằng 1** — thêm vì R307/R308 trùng giá trị hệt nhau khi biên = 1/2 (numeric
+    coincidence: `-boundary == boundary-1` tại 0.5), chỉ 2/28 câu T109020202 bị, sau khi thêm R309 → 0 câu
+    thiếu distractor. Test tay: T109020201 34/34, T109020202 28/28, 0 THIẾU.
+  - Wire: TEXT_DANG/TEXT_FN (KHÔNG phải SPECIAL_DANG — hàm trả `{text: "x op value"}` chứ không phải
+    `{value: Rat}`) trong CẢ `mcq-auto.mjs` LẪN `mcq-sinh.mjs` (khác T109020101/102 SPECIAL_DANG chỉ cần
+    `mcq-auto.mjs`, không cần `mcq-sinh.mjs`). Migration `202609141515` INSERT R305-309, `ap_dung =
+    {T109020201,T109020202}` cho cả 2.
+- **Chạy pipeline thật cả 4 dạng cùng lô** (`mcq-sinh.mjs --list --dang T109020201,T109020202` → 62 câu →
+  `mcq-auto.mjs` → sinh 62/62, bỏ 0 → `--verify` 62 OK, 0 FAIL → `--ghi` → 62 dòng `dai_cau_form_tn`
+  (`da_duyet=false`)). T109020101/102 đã ghi trước đó cùng đợt (không lặp lại số liệu ở đây).
+- **T109020204 "Giải toán bằng cách lập bất phương trình" (40 câu) — khảo sát, MỌI câu đều 1 tín hiệu (unique
+  100%), là bài toán thực tế cần đọc-hiểu riêng từng câu, KHÔNG có khuôn chung để sinh hàng loạt** — giống lý
+  do bỏ chương "Nâng cao" khối 8. Chưa quyết định chính thức (bỏ tự nhiên theo §quy trình, không cần hỏi CEO —
+  đúng tiêu chí "MƠ HỒ do KHÔNG có cấu trúc lặp lại" tự quyết được theo spec-mcq-quy-trinh-sinh.md).
+- Dọn `scripts/_diag_khaosat.mjs`, `scripts/_diag_bpt_test.mjs`. `npm run schema` refresh (222 bảng không đổi
+  số bảng, chỉ đổi nội dung `dai_mcq_rule`/`dai_cau_form_tn`).
+
+## 2026-09-14 (tiếp) — T109020401 "Phương trình tích của 2 nhị thức bậc nhất" (khối 9, 32/32 câu) + BUG THẬT trong canon dùng chung
+- Khảo sát: 32/32 câu cùng 1 khuôn "$(Ax+B)\cdot(Cx+D)=0.$" — 2 nhân tử ĐỘC LẬP (không chung 1 cụm hợp như
+  T108030602/`timXPhuongTrinhTich2Hang`, nên KHÔNG tái dùng được hàm đó — `chiaHangTu` thấy đây là 1 hạng tử
+  DUY NHẤT ở top-level, không phải 2 hạng cộng/trừ). Hàm MỚI `timXTichHaiNhiThuc` (DẠNG 46, mini-dang.mjs):
+  tách 2 nhân tử bằng `tachNhanTu`, mỗi nhân tử parse qua `phanTichDaThucCumNhanTu` rồi giải bậc nhất bằng
+  `giaiBacNhat1Bien` có sẵn (module-scope, dùng chung DẠNG 43/44). Đáp số kho có dấu "." cuối câu NẰM TRONG
+  `$...$` (vd "= 0.$") — phải strip trước khi so với "0".
+- **BUG THẬT phát hiện lúc test tay, trong hàm CHUNG `chuanHoaDanhSachNghiem`** (dùng bởi T108030602/603 từ
+  trước + giờ thêm T109020401): dòng `.replace(/[{}]/g, '')` strip **MỌI** dấu ngoặc nhọn trong chuỗi (ý định
+  ban đầu: chỉ bóc khuôn tập hợp "{-2;2;3}"), nên phá luôn `\dfrac{3}{2}` thành `\dfracsss32` vô nghĩa MỖI KHI
+  đáp số không có dấu "=" để đi nhánh `eqMatches` (case của DẠNG 46: "value ; value", không có "x="). Kết quả
+  `parseDonThucCore` fail trên mảnh vỡ, `vals` rỗng, hàm fallback trả THẲNG chuỗi đã bị phá — 2/32 câu
+  (T109020401031/034) bị lệch DIFF giả (giá trị THỰC ra đúng, chỉ khác ở khoảng trắng quanh ";" sống sót tình
+  cờ từ input thô). **Sửa:** chỉ strip cặp ngoặc nhọn NGOÀI CÙNG (bọc trọn chuỗi), không đụng ngoặc nhọn nằm
+  giữa (`\dfrac{p}{q}`). Re-test T109020401 → 32/32 khớp. **Regression-check T108030602 (42/42) và T108030603
+  (6/6) — không đổi kết quả**, vì đáp số 2 dạng đó chưa từng chứa `\dfrac{}{}` viết rời (chỉ số nguyên hoặc
+  phân số dạng "p/q" trần).
+- Rule R310-313 (mirror mẫu R297-300 của T108030602): R310/R311 quên đổi dấu nghiệm 1/2 (`khai_niem`) ·
+  R312 lệch 1 đơn vị nghiệm 2 (`du_phong=true`) · R313 chiều ngược lại (`du_phong=false`). Migration
+  `202609141521` INSERT, `ap_dung={T109020401}`. Wire TEXT_DANG/TEXT_FN cả `mcq-auto.mjs` lẫn `mcq-sinh.mjs`.
+- Chạy pipeline thật: `--list` 32 câu → `mcq-auto.mjs` sinh 32/32, bỏ 0 → `--verify` 32 OK, 0 FAIL → `--ghi`
+  → 32 dòng `dai_cau_form_tn` (`da_duyet=false`). Dọn `scripts/_diag_pttich2nt_test.mjs`. `npm run schema`
+  refresh.
+
+## 2026-09-14 (tiếp) — T109020402 "Phương trình quy về phương trình bậc hai dạng tích" (khối 9, 48/48 câu) — hàm MỚI, LOGIC MỚI
+- Khảo sát: 48 câu, 17 nhóm tín hiệu — KHÔNG có khuôn "tích = 0" cho sẵn như T109020401 (vế trái là tổng/hiệu
+  NHIỀU cụm lồng tích, hoặc vế phải ≠ 0, vd `$(x-3)(x+2)-x^2+9=0$`, `$(x+2)(x-10)=-36$`, `$9x^2+12x+4=4x^2$`).
+  `timXPhuongTrinhTich2Hang`/`timXTichHaiNhiThuc` đều không khớp khuôn.
+- **Hàm MỚI `giaiPtQuyVeTich` (DẠNG 47, mini-dang.mjs) — LOGIC MỚI thật sự (không phải chỉ tái dùng/wire),
+  nhưng lắp hoàn toàn từ khối xây sẵn, không viết parser mới:** chuyển vế + khai triển ĐẦY ĐỦ 2 vế bằng
+  `phanTichDaThucCumNhanTu` (hàm chung đã có sẵn từ trước, tự động xử lý chiaHangTu + nhân đa thức lồng nhau
+  qua tachNhanTu/nhanCacDaThuc) → gộp hệ số theo bậc (`gopTheoBac`, pattern giống `giaiBptBacNhat`) → còn lại
+  $Ax^2+Bx+C=0$ → **thay vì group/tách hạng tử tường minh (cách DẠNG 40/41 làm cho "phân tích thành nhân
+  tử"), dùng trực tiếp ĐỊNH LÝ NGHIỆM HỮU TỈ** (nghiệm $p/q$ tối giản có $p\mid C$, $q\mid A$, duyệt hữu hạn
+  ước) để tìm 1 nghiệm, suy nghiệm còn lại qua Viète ($x_1+x_2=-B/A$) — đơn giản và chắc chắn hơn nhiều so
+  với thử group 4 hạng tử theo AC-method cho trường hợp tổng quát.
+- **2 lớp trường hợp biên phát hiện lúc test tay (không phải rule tùy chỉnh — là hình dạng thật của đáp số
+  kho):**
+  1. **6/48 câu sau khi khai triển ĐẦY ĐỦ thực chất chỉ còn bậc NHẤT** (hạng $x^2$ triệt tiêu giữa 2 vế, vd
+     `(x-3)(x+2)-x^2+9=0` ⇒ `-x+3=0`) — ban đầu hàm chặn cứng "phải có A≠0" nên NULL cả 6 câu; sửa: khi
+     `A=0` rơi về giải bậc nhất trực tiếp (`x=-C/B`), 1 nghiệm.
+  2. **6/48 câu là NGHIỆM KÉP** (vd `(x+2)(x-10)=-36` ⇒ `x^2-8x+16=0` ⇒ $(x-4)^2=0$ ⇒ $x=4$ duy nhất) — đáp
+     số kho ghi **1 giá trị**, không phải "4;4"; ban đầu hàm luôn trả 2 nghiệm (kể cả trùng) → DIFF giả. Sửa:
+     `cmp(r1,r2)===0` thì chỉ giữ 1 giá trị trong mảng `roots`. Re-test → 48/48 khớp, 0 THIẾU.
+- Rule R314-317 mirror mẫu R310-313 (R314/R315 nhầm dấu nghiệm 1/2 — R315 tự bỏ qua khi chỉ có 1 nghiệm,
+  `roots.length<2 → return null` · R316 lệch 1 đơn vị nghiệm CUỐI `du_phong=true` · R317 chiều ngược lại).
+  Migration `202609141528` INSERT, `ap_dung={T109020402}`. Wire TEXT_DANG/TEXT_FN cả `mcq-auto.mjs` lẫn
+  `mcq-sinh.mjs` (canon dùng lại `chuanHoaDanhSachNghiem` — không cần canon riêng, tự xử lý cả 1 và 2 giá trị).
+- Chạy pipeline thật: `--list` 48 câu → `mcq-auto.mjs` sinh 48/48, bỏ 0 → `--verify` 48 OK, 0 FAIL → `--ghi`
+  → 48 dòng `dai_cau_form_tn` (`da_duyet=false`). Dọn `scripts/_diag_ptquyvetich_test.mjs`. `npm run schema`
+  refresh.
+- **T109020403 "Phương trình quy về phương trình tích — dạng phân thức" (21 câu) — khảo sát, TỰ QUYẾT HOÃN**:
+  mẫu số CÓ CHỨA biến (`$\dfrac{1}{x}-\dfrac{1}{x+5}=\dfrac{1}{30}$`, `$\dfrac{x}{x-3}-\dfrac{2}{x+1}=
+  \dfrac{15-x}{x^2-2x-3}$`) — cần engine KHÁC hẳn (quy đồng mẫu chứa biến, khử mẫu, LOẠI nghiệm ngoại lai theo
+  ĐKXĐ) — CÙNG NHÓM với T109020103 (đã hoãn trước đó) + T109020203 (chưa khảo sát, cùng khuôn phân thức, dự
+  đoán cùng lý do). Không phải quyết định phạm vi (CEO) — quyết định kỹ thuật thuần (chưa có hạ tầng khử mẫu
+  chứa biến) — để dành làm CHUNG 1 đợt riêng khi quay lại 3 dạng phân thức này.
+- **T109080101 "GTLN-GTNN của biểu thức một biến bậc hai" (khối 9, 33/33 câu) — mở rộng `gtlnGtnnBacHai`
+  (T108020105, khối 8) thêm 1 dòng: đổi `parseFactorAsPoly` (chỉ nhận tổng đơn thức trần) → `phanTichDaThuc
+  CumNhanTu` (tự khai triển tích CHƯA nhân ra, vd `$A=(4-x)(x+2)$`) — hàm CHUNG này vốn ổn định (dùng ở nhiều
+  dạng khác từ trước), không rủi ro regression đã kiểm chứng.** Không rule mới, migration chỉ UPDATE `ap_dung`
+  nối `{T109080101}` vào R204-207. Test tay 33/33 khớp (11/33 câu dùng khuôn tích mới hỗ trợ). Pipeline thật:
+  sinh 33/33, bỏ 0 → verify 33 OK, 0 FAIL → ghi 33 dòng `dai_cau_form_tn`. Dọn `scripts/_diag_gtlnbac2_test.mjs`.
+  `npm run schema` refresh.
+- **T109080102 "GTLN-GTNN của biểu thức bậc hai một biến trên 1 ĐOẠN" (khối 9, 27/28 câu) — hàm MỚI
+  `gtlnGtnnBacHaiCoDieuKien` (DẠNG 48), LOGIC MỚI: khác DẠNG 28 (không điều kiện, chỉ hoàn thiện bình
+  phương), cực trị trên đoạn $[a;b]$ có thể rơi ở ĐỈNH parabol (nếu đỉnh nằm trong đoạn) HOẶC ở 1 trong 2 ĐẦU
+  MÚT — tính $f(a)$, $f(b)$, $f(\text{đỉnh})$ (nếu áp dụng) rồi lấy max/min trên tập đó (không giả định trước
+  đỉnh là max hay min — đúng cho cả $A>0$ và $A<0$). Parse 2 đoạn `$...$` riêng (biểu thức + điều kiện
+  "$0\le x\le 4$"). Đáp số kho "GTLN; GTNN" (thứ tự không quan trọng, canon `chuanHoaDanhSachNghiem` tự sắp).
+  - **1/28 câu (T109080102032) kho SAI đáp số thật** (không phải bug máy) — hand-verify: $S=x^2-2x+8$ tại
+    $x=5\Rightarrow S=23$, nhưng `dap_an` kho ghi "18". Bằng chứng THÊM: chính `loi_giai` của câu này lộ vết
+    tích AI-sinh bị lỗi giữa chừng ("Lỗi, không ra nghiệm đẹp... Điều chỉnh biến thể này...") rồi tự SỬA ĐÚNG
+    thành 23 ở đoạn sau — nhưng cột `dap_an` không được cập nhật theo bản sửa cuối, vẫn giữ giá trị NHÁP cũ
+    18. Bỏ câu theo §1.5, không force-match.
+  - Rule R318-322 (5 rule, không phải 4 — cần 1 rescue): R318 quên xét đỉnh (chỉ so 2 đầu mút) · R319 nhầm
+    dấu phần bù tại đỉnh · R320 quên xét đầu mút phải · R321 lệch 1 đơn vị GTNN (`du_phong=true`) · **R322
+    (rescue) lệch 1 đơn vị GTLN** — thêm vì đoạn ĐỐI XỨNG quanh đỉnh (fA=fB) khiến R320 trùng đúng và R321
+    trùng R318 cùng lúc (7/28 câu bị, "5;4" đúng nhưng R320→null, R321="5;5"=R318), sau R322 → 0 THIẾU.
+  - Migration `202609141536` INSERT R318-322, `ap_dung={T109080102}`. Wire TEXT_DANG/TEXT_FN cả
+    `mcq-auto.mjs` lẫn `mcq-sinh.mjs`.
+  - Pipeline thật: `--list` 28 câu → `mcq-auto.mjs` sinh 27, bỏ 1 (đúng câu kho sai đáp số, máy tự phát hiện
+    "MÁY ≠ KHO") → `--verify` 27 OK, 0 FAIL, 1 bỏ → `--ghi` → 27 dòng `dai_cau_form_tn`. Dọn
+    `scripts/_diag_gtlndoan_test.mjs`. `npm run schema` refresh.
+- **Tổng đợt khối 9 hôm nay: 8 dạng xong (T109020101/102/201/202/401/402, T109080101/102), 306 câu, 18 rule
+  mới (R305-322) + 4 hàm mới (`giaiBptBacNhat`, `timXTichHaiNhiThuc`, `giaiPtQuyVeTich`,
+  `gtlnGtnnBacHaiCoDieuKien`) + 1 bug sửa trong hàm chung (`chuanHoaDanhSachNghiem` strip nhầm ngoặc nhọn
+  `\dfrac{}{}`) + 1 hàm cũ mở rộng (`gtlnGtnnBacHai`) + 1 câu kho sai đáp số phát hiện qua đối chiếu máy.**
+  Chưa commit (chờ yêu cầu). Tiếp tục "chạy thẳng" khối 9 — còn hoãn: T109020103/203/403 (phân thức, cần
+  engine khử mẫu chứa biến), T109020204 (word problem, loại hẳn). Chưa khảo sát: nhóm bài toán thực tế
+  T10902030x, phần còn lại T1090801xx (103-107)-T1090905xx.
+- **Khảo sát T109080103 "GTLN-GTNN bậc 3 ứng dụng Cauchy chiều xuôi" (17 câu, dừng lại — LOGIC MỚI cần đầu tư
+  riêng, không phải quyết định phạm vi).** Khuôn "$A=x^2+\dfrac{16}{x}$; $x>0$" — kỹ thuật Cauchy/AM-GM: TÁCH
+  hạng $x^2$ hoặc hằng số thành TỔNG NHIỀU phần bằng nhau (vd $x^2+\dfrac{16}{x}=x^2+\dfrac{8}{x}+\dfrac{8}{x}
+  \ge 3\sqrt[3]{x^2\cdot\dfrac{8}{x}\cdot\dfrac{8}{x}}=12$) — đòi hỏi TÌM cách tách (bao nhiêu phần, tỉ lệ bao
+  nhiêu) sao cho dấu "=" xảy ra tại 1 điểm x "đẹp" (thường nguyên hoặc căn nguyên) — thuật toán khác hẳn mọi
+  dạng đã làm (không phải chuyển vế/khai triển/nghiệm hữu tỉ). Cùng họ với T109080104 (chiều ngược), T109080105
+  (phân thức) — để dành làm CHUNG khi quay lại, cần thiết kế cẩn thận (không phải việc "chạy thẳng" 5 phút).
+
+## 2026-09-14 (tiếp) — CEO: "Các dạng cần bàn thì để lại. Làm hết các dạng làm được trước đi" — quét toàn bộ khối 9
+- **T109010201 "Giải hệ phương trình bậc nhất hai ẩn cơ bản" (33/33 câu) + T109010202 "...đưa về hệ bậc nhất"
+  (14/14 câu) — hàm MỚI `giaiHePtBacNhatHaiAn` (DẠNG 49, mini-dang.mjs), giải bằng ĐỊNH THỨC (Cramer):
+  $\Delta=AE-BD$, $x=(CE-BF)/\Delta$, $y=(AF-CD)/\Delta$.** Parse khối `\begin{cases}...\end{cases}` (tách 2
+  phương trình bằng "\\\\" LaTeX xuống dòng), mỗi pt qua `phanTichDaThucCumNhanTu` (đã TÁI DÙNG y hệt DẠNG
+  47) để lấy hệ số A,B,C. **T109010202 tái dùng 100% cùng hàm** — chỉ cần sửa 1 chỗ: GỘP các hạng theo key
+  biến (`phanBienKey`) TRƯỚC khi kiểm bậc, để hạng chéo "xy" sinh ra từ khai triển tích (vd
+  "$(x+1)(y-1)=xy-1$") TRIỆT TIÊU đúng cách giữa 2 vế trước khi coi là "còn bậc >1, ngoài phạm vi" — cùng
+  pattern "gộp trước, kiểm bậc sau" đã dùng ở `giaiBptBacNhat`/`giaiPtQuyVeTich`. Đáp số kho "(x;y)" GIỮ THỨ
+  TỰ (không sort như các dạng nghiệm khác) — canon riêng `chuanHoaCapNghiem`. Rule R323-326 (hoán đổi x↔y ·
+  nhầm dấu định thức (cả 2 nghiệm đổi dấu) · lệch 1 đơn vị x (`du_phong`) · lệch 1 đơn vị y). Migration
+  `202609141635` INSERT, `ap_dung={T109010201,T109010202}`. Test tay 33/33 và 14/14, 0 THIẾU cả hai. Pipeline
+  thật: `--list` 47 câu → sinh 47/47, bỏ 0 → verify 47 OK, 0 FAIL → ghi 47 dòng `dai_cau_form_tn`.
+- **Quét toàn bộ khối 9 còn lại (khảo sát tín hiệu từng dạng, KHÔNG code) — kết luận: hết dạng "làm được
+  ngay" bằng hạ tầng Rat hiện có, phần còn lại chia 5 CỤM đều CẦN THIẾT KẾ RIÊNG (không phải chạy thẳng vài
+  phút):**
+  1. **Bài toán thực tế** (T109010301-309, T109020204, T109020301-307, T109090101-401, + phần lớn nội dung
+     T1091101xx-401 "ôn tập") — khảo sát tín hiệu xác nhận MỌI câu là 1 tình huống ĐỘC LẬP (đếm nhóm luôn =
+     1), cần đọc-hiểu riêng từng câu, không có khuôn tính toán chung — giống hệt lý do bỏ T109020204/chương
+     Nâng cao khối 8 trước đó.
+  2. **Phương trình/rút gọn phân thức mẫu chứa biến** (T109020103/203/403 đã hoãn, thêm T109030301
+     "Tìm x để P thoả mãn đẳng thức" 36 câu) — cần engine quy đồng mẫu + khử mẫu + LOẠI nghiệm ngoại lai theo
+     ĐKXĐ, hoàn toàn khác cách "chuyển vế + khai triển" đang dùng.
+  3. **Cauchy/AM-GM** (T109080103-105, T109080107) — đã ghi ở trên, cần thuật toán tách hạng tử tìm tỉ lệ.
+  4. **Biểu thức chứa căn thức** (T109030101-307, ~500+ câu — CỤM LỚN NHẤT chưa động tới) — cần hệ thống số
+     học SỐ VÔ TỈ hoàn toàn mới (cộng/trừ căn đồng dạng, hữu tỉ hoá mẫu bằng liên hợp, rút gọn căn lồng
+     $\sqrt{(a-b\sqrt c)^2}=|a-b\sqrt c|$) — khác hẳn engine Rat (số hữu tỉ) đang dùng cho mọi dạng đã làm.
+  5. **Hệ phương trình phi tuyến (tổng-tích)** (T109010401/402, chỉ 4 câu có sẵn) — cần kỹ thuật đặt ẩn phụ
+     $S=x+y,P=xy$, giá trị thấp (4 câu) nên độ ưu tiên thấp dù kỹ thuật không quá khó.
+  - Dạng "Chứng minh" (T109080501-504 trừ 502 chưa kiểm) không có đáp số MCQ rời rạc — loại hẳn khỏi phạm vi
+    tự động, không cần bàn thêm.
+- **Tổng khối 9 tới thời điểm này: 10 dạng xong, 353 câu, 22 rule mới (R305-326), 5 hàm mới
+  (`giaiBptBacNhat`, `timXTichHaiNhiThuc`, `giaiPtQuyVeTich`, `gtlnGtnnBacHaiCoDieuKien`,
+  `giaiHePtBacNhatHaiAn`).** Chưa commit (chờ yêu cầu). Đã dừng "chạy thẳng" tự động — 5 cụm còn lại đều cần
+  CEO/thiết kế trước khi làm tiếp, không tự quyết được bằng kỹ thuật đơn thuần nữa.
+- **CEO chọn cụm "Biểu thức chứa căn thức" trước (hỏi qua AskUserQuestion, chọn "Recommended" — cụm lớn nhất,
+  đầu tư 1 lần dùng lại được nhiều dạng con).**
+
+## 2026-09-14 (tiếp) — Cụm "Biểu thức chứa căn thức": XÂY ENGINE SỐ VÔ TỈ MỚI (DẠNG 50, mini-dang.mjs) — 5 dạng, 392 câu
+- **Kiến trúc mới hoàn toàn — SurdVal = mảng `{coef: Rat, k: BigInt}` biểu diễn $\sum c_i\sqrt{k_i}$** ($k=1$ =
+  phần hữu tỉ). KHÔNG dùng chung engine đa thức (biến x,y) vì luật nhân/chia SỐ VÔ TỈ khác hẳn luật cộng số mũ
+  của đa thức (√a·√b=√(ab) rồi phải RÚT GỌN lại — trích nhân tử chính phương). Các khối xây:
+  - `tachCanBac2(n)` — trích nhân tử chính phương lớn nhất (chia thử tăng dần).
+  - `surdAdd/Sub/Neg/Mul` — cộng gộp theo key $k$ giống polynomial, nhân là TÍCH CARTESIAN rồi rút gọn lại
+    từng tích con qua `tachCanBac2`.
+  - `surdDiv` — HỮU TỈ HOÁ MẪU bằng liên hợp, TỔNG QUÁT cho mẫu 1 HOẶC 2 hạng (kể cả mẫu là hiệu 2 căn khác
+    nhau hoàn toàn như "$\sqrt{11}-\sqrt{2}$", không chỉ "hữu tỉ ± căn") — nhận ra $(A+B)(A-B)=A^2-B^2$ luôn
+    hữu tỉ áp dụng ĐƯỢC cho cả 2 trường hợp cùng 1 công thức.
+  - `surdAbs` — tính $|c_1\sqrt{k_1}+c_2\sqrt{k_2}|$ bằng cách SO SÁNH BÌNH PHƯƠNG từng hạng (không cần tính
+    số thực) để xác định dấu khi 2 hạng trái dấu — dùng cho $\sqrt{(\dots)^2}$.
+  - `denestSqrt(a,b,c)` — CĂN LỒNG $\sqrt{a+b\sqrt c}$: tìm $p,q$ với $p+q=a$, $4pq=b^2c$ (giải bằng so sánh
+    $D=a^2-b^2c$ có phải bình phương hữu tỉ), trả $\sqrt p\pm\sqrt q$.
+  - `surdParseFull(text)` — PARSER ĐỆ QUY tự viết (không tái dùng `chiaHangTu`/`parseHangTuBieuThuc` — những
+    hàm đó cho biến đa thức, không hiểu `\sqrt{}`/`\dfrac{}{}` lồng nhau): mỗi cấp lồng (ngoặc, `{}` của
+    `\sqrt`/`\dfrac`) gọi lại `surdParseFull` trên CHUỖI CON riêng — không có con trỏ vị trí dùng chung xuyên
+    cấp, tránh bug điển hình của parser đệ quy viết tay.
+  - **3 bug thật phát hiện lúc test tay đợt đầu (T109030101, 100/120 → 120/120 sau fix):**
+    1. `\cdot` chỉ có **5** ký tự (`\`,c,d,o,t) — code ban đầu check `+6` (nhầm với `\dfrac` 6 ký tự) nên MỌI
+       phép nhân tường minh `\cdot` không nhận ra, rơi hết vào NULL.
+    2. `\sqrt4` (không ngoặc, quy ước LaTeX 1 ký tự) chưa hỗ trợ — chỉ handle `\sqrt{...}` có ngoặc; sửa dùng
+       chung `parseMacroArg` (đã viết cho `\dfrac13`) cho cả `\sqrt`.
+    3. `\sqrt{\dfrac1{2}}` — căn của 1 PHÂN SỐ chứ không chỉ số nguyên trần; thêm `surdSqrtOfRat` + nhánh thử
+       rút gọn nội dung về 1 số hữu tỉ trước khi bỏ cuộc.
+    4. (Bug thứ 4, phát hiện lúc `surdToText` ban đầu CHỈ nhận kết quả ≤1 hạng) — đáp số kho có thể là dạng
+       **2 hạng** ("$1-2\sqrt2$"), không phải luôn rút gọn về 1 số/1 căn — sửa `surdToText` tổng quát cho MỌI
+       số hạng.
+- **T109030101 "...dạng cơ bản" (120/120) + T109030102 "...ứng dụng hằng đẳng thức, gồm căn lồng" (130/130,
+  TÁI DÙNG NGUYÊN cùng hàm `tinhGiaTriCanThuc` — `denestSqrt` đã có sẵn từ thiết kế ban đầu, không cần sửa gì)
+  — test tay 250/250 khớp 0 DIFF.**
+- **T109030202 "Tính giá trị Căn thức khi biết giá trị biến" (65/65) — hàm `tinhGiaTriCanThucTheoX`: thay
+  literal "x" bằng giá trị số rồi cho qua NGUYÊN `tinhGiaTriCanThuc`** — không cần biến riêng vì đề luôn chọn
+  x là số chính phương. Hỗ trợ cả khuôn "$x=9$" trực tiếp lẫn "$|x-1|=8$" (giải 2 nghiệm $K\pm M$, chọn nghiệm
+  ≥0 và CHÍNH PHƯƠNG — chỉ đúng 1 trong 2 thoả).
+- **T109030201 "Tìm ĐKXĐ của Căn thức" (60/60) — hàm `timDkxdCanThuc`: 4 khuôn CỐ ĐỊNH khớp regex trực tiếp**
+  (không cần parser tổng quát vì khảo sát xác nhận chỉ 4 dạng biểu thức: `\sqrt{x-K}` → $x\ge K$ ·
+  `\dfrac{N}{\sqrt{x-K}}$` → $x>K$ · `\dfrac{N}{\sqrt{x-K}-M}$` → $x\ge K$ và $x\ne K+M^2$ ·
+  `\dfrac{\sqrt x}{\sqrt{x-K}}$` → $x>K$, bỏ điều kiện $x\ge0$ dư thừa).
+- **T109030204 "Tìm x ứng dụng Rút gọn Căn thức" (17/17) — hàm `timXPtCanThucTuyenTinh`: mọi hạng căn trong
+  phương trình đều là $c\cdot(x-A)$ với $c$ CHÍNH PHƯƠNG và CÙNG 1 $A$** (đề cố ý thiết kế vậy) → đặt
+  $t=\sqrt{x-A}$, phương trình trở thành BẬC NHẤT theo $t$ → giải $t$, suy $x=A+t^2$. **Bug thật phát hiện lúc
+  test: đề có nhãn "Tìm $x$ biết ..." — biến "$x$" nằm trong CẶP `$...$` RIÊNG đứng TRƯỚC phương trình chính,
+  code lấy nhầm ĐOẠN ĐẦU TIÊN (`match` không global) làm phương trình → luôn NULL cả 17 câu; sửa dùng
+  `matchAll` + tìm đúng đoạn CHỨA dấu "=" (bug/fix giống hệt pattern đã gặp ở DẠNG 43/47 trước đó, một lần
+  nữa xác nhận đây là bẫy hay tái phát khi đề có nhãn biến tách riêng).**
+- **Rule 12 cái, chia đúng theo hàm:** R327-330 (ĐKXĐ: nhầm biên chặt/lỏng · quên đk 2 · lệch 1 đv 2 phiên
+  bản) · R331-334 (tìm x qua PT căn: quên bình phương · nhầm dấu A · lệch 1 đv 2 phiên bản, thêm R334 rescue
+  vì R331/R332 trùng giá trị ở 1 câu do trùng hợp số học $t^2-A=t$) · **R335-338 DÙNG CHUNG cho CẢ 3 dạng
+  giá-trị-biểu-thức** (nhầm dấu toàn bộ · lệch 1 đơn vị hạng 1 (2 chiều) · lệch giá trị hạng còn lại) — vì
+  cách sai thật có thể ở BẤT KỲ bước nào tuỳ sub-shape (rút gọn đồng dạng/hữu tỉ hoá mẫu/căn lồng), không tách
+  được 1 công thức sai chung — dùng nhiễu TỔNG QUÁT trên kết quả CUỐI thay vì mô phỏng lại bước sai cụ thể.
+  **2 vòng sửa collision:** delta ban đầu (+1 mọi rule khi 1 hạng) khiến hệ số $-1$/$1$ trùng lẫn nhau (R336
+  bump+1 tại hệ số $-1$ → về 0, tự guard-null; R338 bump+2 trùng R335 negate) — đổi delta R338 (trường hợp 1
+  hạng) từ $+2$ → $+3$, thêm nhánh riêng cho kết quả bằng 0 (không có hạng nào để nhiễu). Test tay lại cả 3
+  dạng: 315/315 khớp, **0 THIẾU** (trước đó ~30 câu thiếu distractor do collision).
+- Migration `202609141741` INSERT R327-338, `ap_dung` chia đúng dạng. Wire TEXT_DANG/TEXT_FN (101,102,201,202)
+  + SPECIAL_DANG (204, trả `{value}` không phải `{text}`) cả `mcq-auto.mjs` lẫn `mcq-sinh.mjs`.
+- **Chạy pipeline thật CẢ 5 DẠNG CÙNG LÔ:** `--list` 392 câu (khớp đúng 120+130+60+65+17) → `mcq-auto.mjs`
+  sinh 392/392, bỏ 0 → `--verify` 392 OK, 0 FAIL → `--ghi` → 392 dòng `dai_cau_form_tn` (`da_duyet=false`).
+  Dọn 3 script tạm. `npm run schema` refresh.
+- **Tổng khối 9 sau đợt căn thức: 15 dạng xong, 745 câu, 34 rule mới (R305-338), 9 hàm mới** (thêm engine số
+  vô tỉ hoàn chỉnh: `tinhGiaTriCanThuc`, `tinhGiaTriCanThucTheoX`, `timDkxdCanThuc`, `timXPtCanThucTuyenTinh`
+  + các hàm nội bộ `surd*`/`denestSqrt`/`tachCanBac2`). Cụm căn thức còn lại chưa động tới: T109030203 "Rút
+  gọn Căn thức" (40 câu, biến x giữ NGUYÊN dạng symbolic — thuộc cụm "phân thức mẫu chứa biến" đã hoãn, không
+  phải cụm số vô tỉ này) và T109030301+ (Tìm x/GTLN-GTNN của P — có thể tái dùng 1 phần engine căn vừa xây,
+  chưa khảo sát). Chưa commit (chờ yêu cầu).
+
+## 2026-09-14 (tiếp) — T109030301 "Tìm x để P thoả mãn Đẳng thức" (khối 9, 36/36 câu) — hàm MỚI, tái dùng máy giải bậc-hai-hữu-tỉ
+- Khảo sát: 36 câu, 10 nhóm tín hiệu, NHƯNG tất cả đều là **1 PHÂN THỨC DUY NHẤT** $P=\dfrac{\text{Num}(\sqrt
+  x)}{\text{Den}(\sqrt x)}$ đặt bằng 1 điều kiện — KHÁC cụm "phân thức nhiều mẫu" đã hoãn (T109020103/203/403,
+  cần quy đồng NHIỀU mẫu khác nhau); ở đây chỉ cần khử ĐÚNG 1 mẫu (cross-multiply 1 lần) nên coi là "làm được"
+  ngay bằng hạ tầng đã có, không phải cụm phân thức cần bàn.
+- **Hàm mới `timXPhanThucCanBac2` (DẠNG 51) — đặt $t=\sqrt x$ ($x=t^2$), thay thế literal trong Tử/Mẫu rồi
+  TÁI DÙNG NGUYÊN `phanTichDaThucCumNhanTu`** (parser đa thức đã có, giờ áp cho biến "t" thay vì "x") để đưa
+  về đa thức bậc ≤2 theo t. 4 khuôn điều kiện được nhận diện qua regex trên đoạn "$...$" chứa "P": "$P=k$"/
+  "$NP=$ biểu thức" (1 nhánh) · "$|P|=k$"/"$P^2=k$" (2 nhánh $\pm k$, $P^2=k$ cần $k$ chính phương) ·
+  "$P^3-K=0$" (1 nhánh, quy về $P=\sqrt[3]K$ bằng `icbrtBig` có sẵn) — mỗi nhánh quy về
+  $\text{Num}(t)=\text{VP}(t)\cdot\text{Den}(t)$, GIẢI bậc ≤2 theo t bằng ĐỊNH LÝ NGHIỆM HỮU TỈ **TÁI DÙNG
+  NGUYÊN `timNghiemHuuTiBacHai`** (hàm nội bộ đã viết cho DẠNG 47 T109020402) — lọc $t\ge0$ và Mẫu$(t)\ne0$
+  (tự loại nghiệm ngoại lai sinh ra do khử mẫu), suy $x=t^2$. Đáp số kho "16;144" hoặc "9" hoặc "{1;9}" —
+  TÁI DÙNG NGUYÊN canon `chuanHoaDanhSachNghiem`, không cần viết canon riêng.
+- **3 bug thật phát hiện lúc test tay (0/36 → 36/36):**
+  1. Tách Tử/Mẫu của `\dfrac{NUM}{DEN}` ban đầu dùng regex `\{([^{}]+)\}` (không cho ngoặc nhọn lồng bên
+     trong) — THẤT BẠI ngay vì Mẫu luôn có `\sqrt{x}` (ngoặc nhọn lồng). Sửa bằng hàm bóc ngoặc THEO ĐỘ SÂU
+     (`extractDfracArgs`, giống `parseBraceArg` đã dùng ở chỗ khác) thay vì regex phẳng.
+  2. **`substXChoT` dùng `\bx\b` để thay "x"→"t²" — THẤT BẠI khi x có HỆ SỐ ĐỨNG NGAY TRƯỚC** (vd "2x": giữa
+     ký tự "2" và "x" đều là word-char nên `\b` KHÔNG có biên ở đó, "2x" không bị thay) — chỉ những câu "x"
+     đứng trần (có dấu +/- ngay trước) mới thay đúng, còn "2x" (numerator của 4/36 câu) bị bỏ sót. Sửa dùng
+     `(?<![a-zA-Z])x(?![a-zA-Z])` (chỉ chặn CHỮ CÁI liền kề, KHÔNG chặn chữ số — "2x" vẫn khớp).
+  3. **`giaiPhuongTrinhTheoT` (mượn từ DẠNG 47) vốn coi "không tìm được nghiệm hữu tỉ" là LỖI CẤU TRÚC** (trả
+     `null` → hàm gọi bỏ CẢ CÂU) — nhưng với điều kiện "$|P|=k$"/"$P^2=k$" có **2 nhánh $\pm k$ độc lập**, RẤT
+     BÌNH THƯỜNG khi 1 trong 2 nhánh vô nghiệm thực (discriminant âm) trong khi nhánh kia có nghiệm hợp lệ —
+     coi "vô nghiệm hữu tỉ" (`A≠0` mà tìm không ra) là KẾT QUẢ HỢP LỆ của riêng nhánh đó (trả mảng RỖNG, không
+     phải lỗi) mới đúng — sửa `return null`→`return []` ở 2 chỗ, giữ `return null` CHỈ cho lỗi cấu trúc thật
+     (bậc >2 còn sót, hệ số không quy đồng được). Thêm luôn bước QUY ĐỒNG hệ số A,B,C khi chúng ra PHÂN SỐ
+     (vế phải "$P=\dfrac52$" khiến B,C sau khi trừ ra phân số) trước khi gọi `timNghiemHuuTiBacHai` (hàm đó
+     đòi hệ số NGUYÊN) — nghiệm không đổi khi nhân cả 3 hệ số với cùng 1 mẫu số chung.
+- Rule R339-342 (mirror mẫu R310-313/R314-317: nhầm dấu nghiệm 1/2 · lệch 1 đơn vị nghiệm cuối 2 phiên bản).
+  Migration `202609141755` INSERT, `ap_dung={T109030301}`. Wire TEXT_DANG/TEXT_FN cả `mcq-auto.mjs` lẫn
+  `mcq-sinh.mjs`.
+- Pipeline thật: `--list` 36 câu → sinh 36/36, bỏ 0 → verify 36 OK, 0 FAIL → ghi 36 dòng `dai_cau_form_tn`.
+  Dọn `scripts/_diag_phanthucsqrt_test.mjs`. `npm run schema` refresh.
+- **Tổng khối 9: 16 dạng xong, 781 câu, 38 rule mới (R305-342), 10 hàm mới.** Còn trong cụm căn thức:
+  T109030203 (rút gọn, thuộc cụm phân thức đã hoãn) và T109030302-307 (Tìm x/GTLN-GTNN của P dạng BĐT/nguyên/
+  GTLN-GTNN, phần lớn 0 câu trong kho hiện tại — xem lại khảo sát trước: T109030302-306 đều 0 câu,
+  T109030307 0 câu). **Cụm căn thức COI NHƯ XONG** — phần còn lại thực chất thuộc cụm phân thức đã hoãn hoặc
+  kho chưa có câu. Chưa commit (chờ yêu cầu).
+- Báo cáo 4 cụm còn "cần bàn" (bài toán thực tế ~469 câu, phân thức mẫu chứa biến 95 câu, Cauchy/AM-GM 104
+  câu, hệ PT tổng-tích 4 câu) kèm đề xuất thứ tự ưu tiên.
+
+## 2026-09-14 (tiếp) — CEO: "sinh nhiễu từ đáp số đúng qua quy luật tính toán, KHÔNG cần đọc-hiểu đề" — MỞ KHOÁ cụm "Bài toán thực tế" (~469 câu)
+- **Ý CEO — đột phá kiến trúc:** máy không cần HIỂU tình huống đề bài (việc engine Rat/đa thức không làm
+  được) — kho ĐÃ CÓ đáp số ĐÚNG (đã duyệt) cho mọi câu, máy chỉ cần LẤY đáp số đó rồi áp CÁC LỖI TÍNH TOÁN
+  PHỔ BIẾN (hoán đổi giá trị, lệch đơn vị…) để sinh 3 phương án nhiễu — CHÍNH XÁC pattern R335-338 đã dùng
+  cho cụm căn thức khi không tách được công thức sai riêng, giờ áp dụng cho TOÀN BỘ bài toán thực tế.
+- **Khảo sát định dạng đáp số toàn cụm (469 câu, 25 dạng còn có câu): 98% (459/469, tính theo dạng thì tới
+  460/465 sau khi loại T109010401 100% lệch) là "1 số", "2 số cách nhau `;`/`,`", hoặc "N hoặc M"** — không
+  cần hiểu ngữ cảnh, chỉ cần parse SỐ THUẦN. 6/31 dạng có VÀI câu lệch (đơn vị gắn trong text, phân số, căn
+  thức, tuple toạ độ) — các câu đó tự nhiên bị BỎ qua nhánh nhận-dạng-thất-bại, không ảnh hưởng phần còn lại.
+- **Hàm mới `sinhNhieuDapSoThucTe` (DẠNG 52, mini-dang.mjs) — CHỮ KÝ KHÁC MỌI hàm khác trong file: nhận
+  `(dapAn, rule)` chứ KHÔNG PHẢI `(noiDung, rule)`** — vì hoàn toàn không đọc `noi_dung`. Parse đáp số thành
+  1 hoặc 2 giá trị hữu tỉ (`parseSoThucTe`, tái dùng `parseDonThucCore` có sẵn) hoặc cặp "N hoặc M", rồi 4
+  rule TỔNG QUÁT: R343 hoán đổi 2 giá trị (hoặc gấp đôi nếu chỉ 1 giá trị) · R344/R345 lệch 1 đơn vị giá trị
+  đầu (2 chiều) · R346 lệch giá trị còn lại. Test tay trên TOÀN BỘ 465 câu (loại T109010401): 460 OK, 0
+  THIẾU, 5 null (đúng những câu định dạng lạ đã khảo sát).
+- **Thay đổi KIẾN TRÚC `mcq-auto.mjs` — thêm nhánh dispatch MỚI `ANSWER_DANG`** (trước nhánh `TEXT_DANG`):
+  khi `dang_chinh` nằm trong `ANSWER_DANG`, gọi `answerFn(q.dap_an, rule)` thay vì `answerFn(q.noi_dung,
+  rule)` — mọi nhánh khác trong file (TEXT_DANG, SPECIAL_DANG, AST) đều lấy đầu vào từ `noi_dung`, đây là
+  nhánh DUY NHẤT lấy từ `dap_an`. Vẫn giữ bước đối chiếu lại `chuanHoaDapSoThucTe` làm lưới an toàn (bắt lỗi
+  định dạng dù về lý thuyết luôn khớp vì `res.text` bắt nguồn từ chính `dap_an`). Đăng ký 25 dạng vào
+  `ANSWER_DANG_LIST` (loại T109010401 — đáp số dạng tuple toạ độ "(2,3),(3,2)" không khớp khuôn).
+- Migration `202609141833` INSERT R343-346, `ap_dung` = cả 25 dạng cùng lúc (rule dùng chung, không tách
+  riêng theo dạng vì bản chất nhiễu độc lập với đề bài). Wire TEXT_DANG/TEXT_FN của **`mcq-sinh.mjs`** cho 25
+  dạng này (cần vì `--list`/`--verify` mặc định dùng `parseHuuTi`, chỉ nhận 1 giá trị hữu tỉ — đáp số 2 giá
+  trị "90;60" sẽ bị loại nếu không đăng ký `chuanHoaDapSoThucTe` làm nhánh "hình thức text" riêng).
+- **Chạy pipeline thật CẢ 25 DẠNG CÙNG LÔ:** `--list` 464 câu → `mcq-auto.mjs` sinh 460, bỏ 4 (đúng 4 câu
+  định dạng lạ) → `--verify` 460 OK, 0 FAIL, 4 bỏ → `--ghi` → **460 dòng `dai_cau_form_tn`** (`da_duyet=
+  false`) — LÔ LỚN NHẤT từ trước tới giờ trong 1 lần ghi. Dọn `scripts/_diag_dapsott_test.mjs`. `npm run
+  schema` refresh.
+- **Tổng khối 9 sau đợt này: 16 dạng "kỹ thuật" xong (781 câu) + 25 dạng "bài toán thực tế" xong (460 câu)
+  = 41 dạng, 1241 câu, 42 rule mới (R305-346), 11 hàm mới.** Còn 3 cụm cần bàn: phân thức mẫu chứa biến (95
+  câu, kỹ thuật rõ ràng — quy đồng nhiều mẫu), Cauchy/AM-GM (104 câu, thuật toán mới), hệ PT tổng-tích (4
+  câu, giá trị thấp). Chưa commit (chờ yêu cầu).
+- CEO: "xử lý 3 cụm kia đi. dùng logic mới thì sao" — bật đèn xanh làm cả 3 cụm còn lại, chấp nhận logic mới.
+
+## 2026-09-14 (tiếp) — Cụm "Phân thức mẫu số chứa biến" (94/95 câu, 4 dạng) — engine LCD tổng quát mới
+- **T109020203 "...dạng phân thức" HOÁ RA KHÔNG PHẢI mẫu chứa biến** — khảo sát thực tế lộ ra mẫu số LUÔN là
+  HẰNG SỐ (vd "$\dfrac{x-1}{-3}$" — hệ số phân số, không phải phân thức thật). Thử `giaiBptBacNhat` có sẵn:
+  0/18 NULL — lộ **bug thật trong hàm CHUNG `parseHangTuBieuThuc`**: `\dfrac{TỬ NHIỀU HẠNG}{HẰNG SỐ}` (vd
+  "x-1" trên "-3") chỉ được `parseDonThucCore` hỗ trợ khi TỬ là 1 ĐƠN THỨC — tử đa hạng "x-1" rơi vào NULL vì
+  `parseDonThucCore` không tách được phép trừ giữa hạng. **Sửa `parseHangTuBieuThuc` thêm nhánh mới**: nếu
+  toàn bộ hạng khớp `\dfrac{...}{HẰNG SỐ}` (đọc theo độ sâu ngoặc nhọn, hàm mới `extractDfracArgsPlain`), parse
+  tử qua `phanTichDaThucCumNhanTu` (đa hạng) rồi chia đều hệ số cho mẫu — TÁI DÙNG NGUYÊN `giaiBptBacNhat`,
+  18/18 khớp ngay, **KHÔNG rule mới, chỉ migration `ap_dung`**. Regression-check rộng (T109020201/202,
+  T108010501, T109020402, T109010201/202 — mọi consumer lớn của `parseHangTuBieuThuc`) — không đổi kết quả.
+- **T109020103 "...dạng phân thức" (16/16) + T109020403 "...dạng tích, phân thức" (21/21) — GENUINE mẫu số
+  chứa biến, hàm MỚI `giaiPtPhanThucBacNhat` (DẠNG 53) — engine LCD TỔNG QUÁT:**
+  - `phanTichNhanTuTuyenTinh(polyTerms, bien)` — phân tích 1 mẫu số (bậc ≤2) thành tích nhị thức tuyến tính
+    MONIC bằng ĐỊNH LÝ NGHIỆM HỮU TỈ (tái dùng `timNghiemHuuTiBacHai` viết cho DẠNG 47) — TỔNG QUÁT hơn hẳn
+    "hiệu hai bình phương" chuyên biệt, xử lý được MỌI mẫu bậc 2 có nghiệm hữu tỉ, không chỉ dạng $x^2-k^2$.
+  - LCD = tích các nhân tử tuyến tính PHÂN BIỆT xuất hiện trong TOÀN PHƯƠNG TRÌNH (cả 2 vế); mỗi hạng nhân
+    với phần "THIẾU" của LCD so với mẫu riêng rồi cộng dồn — khử hết mẫu, còn lại đa thức bậc ≤2 → giải bằng
+    `timNghiemHuuTiBacHai` (TÁI DÙNG NGUYÊN). **LỌC nghiệm trùng bất kỳ nhân tử ĐKXĐ nào (nghiệm ngoại lai)**
+    — nếu MỌI nghiệm hữu tỉ tìm được đều bị loại → đáp số **"Vô nghiệm"** (khuôn ĐÚNG kho dùng thật, không
+    phải lỗi/bỏ qua). Hỗ trợ CẢ ca "0 = hằng số ≠ 0" (mâu thuẫn PT thật, không qua loại ĐKXĐ) bằng nhánh
+    riêng, dùng `excludedRoots` (giá trị x bị cấm) làm nguồn nhiễu khi không có nghiệm ngoại lai nào để dùng.
+  - Đáp số kho có thể 0, 1, hoặc 2 nghiệm hợp lệ (canon TÁI DÙNG `chuanHoaDanhSachNghiem`, cộng thêm nhánh
+    "Vô nghiệm" riêng). Rule R347-350 mirror mẫu R310-313 (nhầm dấu nghiệm 1/2 hoặc báo nhầm giá trị bị cấm
+    nếu Vô nghiệm · lệch 1 đơn vị nghiệm cuối 2 chiều) — sửa 1 lần vì delta trùng khi chỉ có 1 nghiệm (R349
+    ban đầu trùng R348, đổi delta riêng cho ca 1-nghiệm). Test tay: 16/16 và 21/21, 0 THIẾU.
+- **T109030203 "Rút gọn Căn thức" (39/40 câu) — hàm MỚI `rutGonPhanThucCan` (DẠNG 54), TÁI DÙNG NGUYÊN engine
+  LCD của DẠNG 53** (tổng quát hoá `phanTichNhanTuTuyenTinh`/`tichNhiThuc` nhận THAM SỐ tên biến thay vì hard-
+  code "x", giờ dùng biến "t"=√x): cộng dồn nhiều phân thức về 1 phân thức DUY NHẤT, rồi PHÂN TÍCH LẠI TỬ
+  thành nhân tử tuyến tính để KHỬ nhân tử chung với mẫu (rút gọn thật) — khác DẠNG 53 ở chỗ dừng lại sau khi
+  rút gọn, không giải phương trình. Test tay bắt trúng NGAY công thức mẫu (vd Tử=$(√x-1)^2$, Mẫu=$(√x-1)(√x
+  +1)$ → khử 1 nhân tử chung → $(√x-1)/(√x+1)$, khớp đúng đáp số kho). 1/40 câu có thêm 1 tầng chia ngoài
+  ("$(\dots):\dfrac{\dots}{\dots}$") — ngoài phạm vi, tự nhiên bỏ qua nhánh `\left(` chặn sớm. Rule R351-354
+  (nhầm dấu tử · lệch 1 đơn vị hằng số tử 2 chiều · **quên rút gọn hết** — dùng thẳng dạng CHƯA khử làm nhiễu,
+  một lỗi HS thật rất hay gặp). Test tay: 39/40 khớp, 0 THIẾU.
+- Migration `202609141850` INSERT R347-350 (`ap_dung={T109020103,T109020403}`), `202609141856` INSERT R351-
+  354 (`ap_dung={T109030203}`), `202609141843` UPDATE `ap_dung` nối `T109020203` vào R305-309 có sẵn. Wire
+  TEXT_DANG/TEXT_FN cả `mcq-auto.mjs` lẫn `mcq-sinh.mjs` cho cả 4 dạng.
+- **Chạy pipeline thật riêng từng cặp:** T109020203 (18 câu, 18 OK 0 FAIL) · T109020103+T109020403 (37 câu,
+  37 OK 0 FAIL) · T109030203 (40 câu, 39 sinh + 1 bỏ đúng câu ngoài phạm vi, 39 OK 0 FAIL) → tổng **94 dòng
+  `dai_cau_form_tn`** ghi thêm. Dọn 4 script tạm. `npm run schema` refresh.
+- **Tổng cụm phân thức: 94/95 câu xong (99%), 8 rule mới (R347-354), 2 hàm mới** (`giaiPtPhanThucBacNhat`,
+  `rutGonPhanThucCan`) + 1 bug thật sửa trong hàm CHUNG (`parseHangTuBieuThuc`, ảnh hưởng tích cực mọi dạng
+  dùng `\dfrac{đa thức}{hằng số}` sau này). Còn 2 cụm: Cauchy/AM-GM (104 câu), hệ PT tổng-tích (4 câu). Chưa
+  commit (chờ yêu cầu).
+
+## 2026-09-14 (tiếp) — Cụm "Hệ phương trình Tổng-Tích" (4/4 câu) — XONG, hàm mới nhỏ gọn
+- T109010401 "$\begin{cases}(x+1)(y+1)=12\\x^2+y^2=13\end{cases}$" — hàm mới `giaiHePtTongTich` (DẠNG 55):
+  đặt $S=x+y,P=xy$, khai triển $(x+A)(y+A)=P+AS+A^2$ và $x^2+y^2=S^2-2P$, khử $P$ → phương trình bậc 2 theo
+  $S$ (TÁI DÙNG `timNghiemHuuTiBacHai`) → mỗi nghiệm $S$ hợp lệ suy $P$ rồi giải TIẾP Viète $t^2-St+P=0$ ra
+  x,y — hệ đối xứng nên đáp số luôn liệt kê CẢ 2 hoán vị $(x;y)$/$(y;x)$ (code tự thêm hoán vị khi $x\ne y$).
+  Rule R355-358 (quên 1 hoán vị · lệch 1 đơn vị x/y 2 chiều). Test tay 4/4, 0 THIẾU — khớp ngay lần đầu.
+  Migration `202609141900` INSERT, pipeline thật: sinh 4/4, verify 4 OK 0 FAIL, ghi 4 dòng `dai_cau_form_tn`.
+- **Tổng khối 9: 42 dạng "kỹ thuật+thực tế+phân thức+tổng-tích" xong (1279 câu), 46 rule mới (R305-358), 14
+  hàm mới.** Còn ĐÚNG 1 cụm cần bàn: Cauchy/AM-GM (104 câu, T109080103-105/107) — thuật toán mới, cần thiết
+  kế riêng. Chưa commit (chờ yêu cầu).
+
+## 2026-09-14 (tiếp) — Cụm "Cauchy/AM-GM" (104/104 câu, 4 dạng) — HOÁ RA có CÔNG THỨC ĐÓNG, không cần thuật toán tìm tỉ lệ
+- **Khảo sát lật ngược giả định ban đầu:** dự đoán trước đó cần "thuật toán tách hạng tử tìm tỉ lệ tổng
+  quát" — thực tế đề CHỈ dùng ĐÚNG 4 khuôn cố định, mỗi khuôn có CÔNG THỨC ĐÓNG suy ra bằng tay (kiểm tra
+  khớp 100% với vài chục mẫu trước khi viết code, theo đúng quy trình luôn làm):
+  - $Ax+\dfrac{B}{x}$ ($x>0$) — AM-GM 2 số: GTNN$=2\sqrt{AB}$ (T109080105).
+  - $x+\dfrac{k}{x}$ ($x\in\mathbb N^*$) — x NGUYÊN nên cực trị KHÔNG nhất thiết tại $\sqrt k$: so
+    $f(\lfloor\sqrt k\rfloor)$ và $f(\lceil\sqrt k\rceil)$, lấy nhỏ hơn (T109080107, mọi $k=n(n+1)$ nên 2
+    giá trị này LUÔN bằng nhau theo thiết kế đề — nhưng code không giả định điều đó, tính đúng tổng quát).
+  - $x^2+\dfrac{C}{x}$ HOẶC $Ax+\dfrac{B}{x^2}$ ($x>0$) — AM-GM 3 số (tách đôi hạng phân thức):
+    GTNN$=3\sqrt[3]{C^2/4}$ hoặc $3\sqrt[3]{(A/2)^2B}$ (T109080103, 2 sub-shape DÙNG CHUNG 1 hàm).
+  - $x^2(K-x)$ HOẶC $x(K-x)^2$ ($0\le x\le K$) — AM-GM 3 số (tách đôi hạng LỚN): GTLN$=4K^3/27$ **LUÔN**
+    bất kể tách theo chiều nào, vì cả 2 cách tách đều cho tổng 3 hạng $=K$ (hằng số) — 2 sub-shape của
+    T109080104 dùng chung ĐÚNG 1 công thức, không cần phân biệt.
+- **4 hàm mới (DẠNG 56, mini-dang.mjs):** `gtnnAmGm2So`, `gtnnAmGm2SoNguyen` (thêm `isqrtFloorBig` — biến
+  thể ⌊√⌋ không cần số chính phương, khác `isqrtBig` sẵn có), `gtnnAmGm3So` (thêm `cubeRootOfRat`/`sqrtOfRat`
+  — kiểm số hữu tỉ có phải luỹ thừa đúng bằng `icbrtBig`/`isqrtBig` sẵn có), `gtlnAmGm3SoTich`. Dùng chung
+  `parseCauchyTerm` phân loại 1 hạng thành `x2`/`x1`/`fracX`/`fracX2` để tự nhận diện khuôn nào áp dụng.
+- **Vài vòng sửa collision rule** (giống mọi lần trước — delta cố định va nhau ở giá trị nhỏ/biên):
+  - T109080105: 1 câu $AB=1$ khiến "quên nhân 2" ($\sqrt{AB}=1$) trùng "lệch 1 đơn vị chiều ngược"
+    ($GTNN-1=1$) — thêm rescue R362 (lệch 2 đơn vị).
+  - T109080107: "thử nghiệm x khác" ban đầu dùng $f(x_0-1)$ — vừa bị guard-null khi $x_0<2$ vừa trùng
+    "lệch 1 đơn vị" ở 1 câu khác — đổi sang $f(x_0+2)$, hết cả 2 vấn đề.
+  - T109080103: 2 câu GTNN$<1$ khiến "lệch 1 đơn vị chiều ngược" ra ÂM (vô lý, tự guard-null) VÀ "quên chia
+    đôi" đôi khi không ra lập phương đúng (cũng null) — thêm fallback: chia đôi thất bại → gấp đôi GTNN;
+    lệch âm → đổi hướng +2.
+  - Test tay CUỐI CÙNG: 105(28/28) + 107(32/32) + 103(17/17) + 104(27/27) = **104/104, 0 DIFF, 0 THIẾU**.
+- Cả 4 hàm trả `{value: Rat}` → SPECIAL_DANG (không cần wiring `mcq-sinh.mjs`, đúng quy ước đã lặp lại nhiều
+  lần trong phiên). Migration `202609141907` INSERT R359-362, `ap_dung` chia theo dạng thực sự dùng rule đó.
+- **Chạy pipeline thật CẢ 4 DẠNG CÙNG LÔ:** `--list` 104 câu (khớp đúng 17+27+28+32) → `mcq-auto.mjs` sinh
+  104/104, bỏ 0 → `--verify` 104 OK, 0 FAIL → `--ghi` → **104 dòng `dai_cau_form_tn`**. Dọn
+  `scripts/_diag_cauchy_test.mjs`. `npm run schema` refresh.
+- **CỤM CUỐI CÙNG TRONG DANH SÁCH "CẦN BÀN" ĐÃ XONG.** Query DB xác nhận: **khối 9 hiện có 1407/1540 câu
+  đã ra MCQ (91%), còn thiếu 133 câu** — phần còn lại là phần "bỏ" tự nhiên rải rác trong các dạng đã xử lý
+  (câu kho sai đáp số, câu ngoài phạm vi sub-shape đã chọn — mỗi chỗ đều đã ghi lý do cụ thể trong log) và
+  vài chương "ôn tập tổng hợp" nhỏ (T109110xxx) chưa khảo sát riêng. 50 rule mới (R305-362), 18 hàm mới
+  trong `mini-dang.mjs` viết trong phiên hôm nay. Chưa commit (chờ yêu cầu).
+
 ## 2026-09-14 — Chấm BTVN: nút XOAY ẢNH ⟲/⟳ (CEO: PH hay nộp ảnh ngang/ngược)
 - `VeAnh`: tách "nền" khỏi `<img>` — `gocRef` (ảnh gốc) + `xoayRef[trang]` (0/90/180/270, CHƯA LƯU, giữ theo trang như nháp nét)
   → `dungNen()` vẽ xoay vào canvas offscreen → hiển thị bằng **canvas nền thứ 2** (`bgRef`), canvas nét đè lên. Xoay = nét chưa lưu
@@ -12212,3 +12649,16 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
   phải (1050,445) khung 1200×900 (kỳ vọng 1054,450 — lệch do font scale theo W) → xoay tiếp (450,1046) → phím `[` về (1050,445);
   đổi trang rồi quay lại giữ góc + nét; Ctrl+Z còn đúng. tsc 0, console sạch. **Chưa thử ảnh thật/ảnh có EXIF** (PH-app nén qua
   canvas nên EXIF đã được áp lúc nén — ảnh vào ERP không còn EXIF). **Prod TA cần Create Deployment tay** như 09/09.
+
+## 2026-09-14 — Lịch trực bổ trợ theo khối/lớp + form xếp tự đề xuất ca trực (Thùy: "8B trực T6 15–16h thì xếp HS 8B tự rơi vào ca này")
+
+- Migration `202609141708_lich_truc_bo_tro.sql` (ĐÃ ÁP): bảng `lich_truc_bo_tro` (mon × khoi|lop_id × thu × giờ × phòng × người
+  trực × hiệu lực; CHECK khoi/lop_id ≥1, giờ kt > bđ; RLS member) + RPC `fn_lich_truc_cua_hs(hs, mon, ngay)` — slot áp dụng cho
+  HS: theo LỚP em đang học (ưu tiên) → theo KHỐI; chỉ slot còn hiệu lực. schema.md refresh.
+- `botro_yeu.ts`: listLichTruc/themLichTruc/suaLichTruc/ketThucLichTruc (kết thúc = hieu_luc_den, không xoá cứng) · lichTrucCuaHS ·
+  `goiYTheoLichTruc(slots, ganNhat)` → ca cụ thể 28 ngày tới, ưu tiên (1) khớp ca bổ trợ lần trước (cùng thứ + giờ bđ) → (2) gần nhất.
+- `XepLichBoTroYeuScreen.tsx`: tab "Xếp lịch | Lịch trực". Tab Lịch trực = form thêm (môn, phạm vi khối/lớp, thứ, khung giờ 30', phòng,
+  người trực, ghi chú) + bảng đang hiệu lực (Kết thúc từng dòng, checkbox hiện đã kết thúc); vá list tại chỗ. Form xếp: có ca trực ⇒
+  select "Ca trực bổ trợ" mặc định ▶ ca ưu tiên nhất (★ khớp ca trước), điền ngày/giờ/phòng/người (người = người trực; chưa phân ⇒
+  TA lớp (mức 1) / người ca cũ (mức 2) / trống (mức 3)); chọn "Không theo lịch trực" ⇒ về mặc định cũ (TKB / ca cũ). Không có lịch
+  trực ⇒ y như trước. tsc sạch. Smoke RPC read-only (`scripts/_diag_lich_truc.ts`): 0 dòng lịch ⇒ [] — Thùy nhập lịch thật rồi test.
