@@ -8913,3 +8913,24 @@ không đổi bảng/view).
   Phát triển › Tạo & giao việc phát triển › Weekly Planning → mở "Task mẹ — Tài liệu Hình 9 - Lượng
   giác" (3 con, 0 đạt) → nút "Đóng cụm (0/3 con đạt)" hiện đúng, bấm ra modal cảnh báo "Còn 3/3 task con
   chưa đạt — đóng hết con trước đã", nút Đóng cụm disable đúng.
+
+## 2026-09-15 — Weekly Planning: filter theo người làm
+- **Yêu cầu Thùy 15/09:** trong màn Weekly Planning cần 1 filter theo tên người — nhìn ai đang có việc gì.
+- **UI:** dropdown `<select>` "Người: [Tất cả (N) ▼]" cạnh navigator tuần (trước nút "+ Việc phát sinh").
+  Nguồn dropdown = **DERIVE từ `rows` tuần đang xem** (không gọi `listNguoiDuocGiao`) — chỉ xổ ai CÓ VIỆC,
+  tránh mục "chọn ra 0 việc" và tránh cuộn dài. Kèm nút "xoá lọc" khi filter đang bật.
+- **Logic filter:**
+  - Task LẺ: chỉ giữ dòng có `nguoi_lam_id === filter`.
+  - Task MẸ (cụm): giữ nếu chính mẹ khớp HOẶC có ≥1 con khớp — để leader thấy CẢ ngữ cảnh cụm khi filter theo
+    1 người có con trong cụm đó, không chỉ thấy 1 task con lơ thơ.
+  - Con hiển thị trong mẹ: khi filter bật, CHỈ hiển thị con khớp; badge "X/Y đạt" của mẹ **luôn phản ánh
+    TỔNG cụm** (không thu hẹp theo filter) — filter chỉ ẩn con của người khác, không đánh tráo thông tin
+    sức khỏe cụm. Empty state: "Không có task con nào của người này trong cụm."
+  - Empty state cấp trang: "Người này không có việc nào trong tuần …"
+- **Verify:** tsc sạch. Browser dev tay ở worktree (port 5271 — memory `worktree-preview-setup.md` — vì
+  preview_start `dev-pt` từ mặc định của phiên khác đang chạy Vite từ REPO GỐC, serve file gốc chưa có
+  thay đổi; Vite tay trong worktree serve đúng file mới, verify bằng
+  `curl :5271/src/screens/giaoviec/WeeklyPlanningTab.tsx | grep filterNguoiId` = 7 hit). Weekly Planning
+  hiện toolbar mới "Người: Tất cả (9) ▼", chọn "Đào Xuân Thùy" → cụm "Tài liệu Hình 9 - Lượng giác" giữ
+  lại (có con của Thùy), badge vẫn "0/3 đạt" (cả cụm), con "Bài: Giải tam giác có đường cao" của Thùy
+  hiện; các task lẻ hiển thị đều mang chip "Đào Xuân Thùy". Nút "xoá lọc" hiển thị đúng.
