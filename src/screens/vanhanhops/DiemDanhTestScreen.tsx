@@ -18,6 +18,9 @@ import { homNayVN, mucDeadline, nhanConLai, type DeadlineMuc } from '../../lib/t
 import SearchSelect from '../../components/SearchSelect'
 import { useIsMobile } from '../../hooks/useIsMobile'
 
+// Ca đang được tự-gán đề (promise đang chạy) — module-level để sống qua StrictMode remount; xem effect trong CaCard.
+const DANG_GAN = new Map<string, Promise<DeTestRow | null>>()
+
 const DEADLINE_TONE: Record<DeadlineMuc, string> = { qua_han: 'text-rose-600', sat: 'text-orange-600', gan: 'text-amber-600', con_nhieu: 'text-slate-400' }
 const inputCls = 'w-full rounded-lg border border-slate-300 px-3 py-2 text-[14px] outline-none focus:border-indigo-400'
 const Lbl = ({ children }: { children: React.ReactNode }) => <label className="mb-1 block text-[13px] font-medium text-slate-600">{children}</label>
@@ -109,12 +112,16 @@ function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deL
     catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
   }
   // Ca chưa có đề mà (khối × môn) đã có đề ĐANG DÙNG → tự gán lúc card hiện (mặc định, không bắt Ops bấm).
+  // ⭐ 14/09: React StrictMode (dev) mount→unmount→mount ⇒ effect chạy 2 lần cách ~60ms, bản cũ gán 2 lần song song
+  // ⇒ 68 câu thay vì 34. Giờ: (1) RPC có khoá theo ca ở DB, (2) client chặn gọi trùng bằng `DANG_GAN` module-level
+  // (sống qua remount) — lần 2 chờ đúng promise của lần 1 thay vì gọi mới.
   useEffect(() => {
     if (taiLieuId || chuaCoDe) return
     let alive = true
     setBusy(true)
-    ganDeDangDung(c.id, c.ungVien.khoi, c.mon)
-      .then((de) => { if (alive && de) setTaiLieuId(de.id) })
+    const p = DANG_GAN.get(c.id) ?? ganDeDangDung(c.id, c.ungVien.khoi, c.mon).finally(() => DANG_GAN.delete(c.id))
+    DANG_GAN.set(c.id, p)
+    p.then((de) => { if (alive && de) setTaiLieuId(de.id) })
       .catch((ex) => { if (alive) setErr(ex.message ?? String(ex)) })
       .finally(() => { if (alive) setBusy(false) })
     return () => { alive = false }

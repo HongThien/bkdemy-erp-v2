@@ -218,13 +218,13 @@ function ChamCard({ item, daChamXong, onClose, onPatch, onDone, onReopen }: {
           <div className="mx-auto max-w-[820px]">
             <p className="mb-2 text-[12px] text-slate-400">Tích Đ/C/S theo bài đã chấm trên giấy. Bấm số câu để xem đề khi cần đối chiếu.</p>
             <div className="grid gap-x-6 gap-y-1 sm:grid-cols-2">
-              {cau.map((c, i) => {
+              {cau.map((c) => {
                 const mo = moDe.has(c.id)
                 return (
                   <div key={c.id} className={`rounded-lg border ${c.ketQua ? 'border-slate-100' : 'border-dashed border-slate-200'} bg-white ${mo ? 'sm:col-span-2' : ''}`}>
                     <div className="flex items-center gap-2 px-2 py-1">
                       <button onClick={() => toggleDe(c.id)} title="Xem đề" className="flex w-20 shrink-0 items-center gap-1 text-left text-[13px] font-semibold text-slate-700 hover:text-indigo-600">
-                        <span className="text-[10px] text-slate-400">{mo ? '▾' : '▸'}</span>Câu {i + 1}
+                        <span className="text-[10px] text-slate-400">{mo ? '▾' : '▸'}</span>Câu {c.thuTu}
                       </button>
                       <div className="ml-auto flex gap-1">
                         {KQ_OPTS.map((o) => (
