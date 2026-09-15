@@ -24,6 +24,10 @@ const LIMIT = 5000
 export const GAY_DON_GIA = 20000
 // Lỗi hệ thống gắn cho gậy tự động (seed trong migration, tìm bằng khoá tự nhiên `ma`).
 export const MA_LOI_CHAM_DEADLINE = 'cham_deadline'
+// Mốc lịch sử CỐ ĐỊNH (CEO 07/09 → nhắc lại 15/09: bỏ hẳn dữ liệu trước mốc này khỏi
+// hàng đợi, không phải "tháng hiện tại" — không tự trôi). Cùng mốc với ân xá dashboard
+// TA/GV/OPS (mig 202609070015_gay_amnesty_truoc_thang9.sql).
+export const GAY_MOC_LICH_SU = '2026-09-01T00:00:00+07:00'
 
 // ── Kỳ tháng (gậy reset theo tháng, giờ VN) ─────────────────────────────────
 export const kyHienTai = (): string => `${homNayVN().slice(0, 7)}-01`
@@ -228,6 +232,9 @@ export async function quetGayTuDong(): Promise<number> {
 
 export async function listDeXuat(trangThai: GayDeXuat['trang_thai'] = 'cho'): Promise<GayDeXuatFull[]> {
   const { data, error } = await supabase.from('gay_de_xuat').select('*').eq('trang_thai', trangThai)
+    // ân xá lịch sử (CLAUDE §GAY_MOC_LICH_SU): việc trước 01/09 không còn xét gậy — đề xuất
+    // cũ tồn đọng từ trước mốc này KHÔNG hiện trong hàng đợi nữa (vẫn giữ nguyên trong DB).
+    .gte('deadline_at', GAY_MOC_LICH_SU)
     .order('created_at', { ascending: false }).limit(LIMIT)
   if (error) throw error
   const rows = (data ?? []) as GayDeXuat[]
