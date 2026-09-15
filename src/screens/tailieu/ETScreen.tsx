@@ -701,10 +701,11 @@ export function ETEditor({ et, onClose, presetHinh }: { et?: ETView; onClose?: (
       {hinhClassPrint && <HinhPrintView ban={hinhClassPrint.ban} perHS={hinhClassPrint.mucs} onClose={() => setHinhClassPrint(null)} />}
       {dangModal !== null && <DangPickerOne khoi={khoi} mon={mon} nhanh={nhanh} onClose={() => setDangModal(null)}
         onPick={(ma) => { const i = dangModal; setDangModal(null); pickDang(i, ma) }} />}
-      {picker && <KhoPicker maDangs={[picker.maDang]} cauTbl={cauTbl} selected={rows[picker.idx].maCau ? [rows[picker.idx].maCau!] : []} onClose={() => setPicker(null)}
+      {picker && <KhoPicker maDangs={[picker.maDang]} cauTbl={cauTbl} selected={rows[picker.idx].maCau ? [rows[picker.idx].maCau!] : []}
+        disabled={[...usedExcept(picker.idx)]} onClose={() => setPicker(null)}
         onConfirm={async (m) => {
           const used = usedExcept(picker.idx)
-          const pick = m.find((x) => !used.has(x)) ?? m[0] ?? null
+          const pick = m.find((x) => !used.has(x)) ?? null
           if (pick) await ensureCache(picker.maDang)
           setRows((rs) => rs.map((x, i) => (i === picker.idx ? { ...x, maCau: pick } : x)))
           setPicker(null)

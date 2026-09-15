@@ -190,18 +190,13 @@ export async function ganDeCaTest(caTestId: string, taiLieuId: string): Promise<
       nhanh: b.nhanh, muc_do: info?.muc_do ?? null, ten_chuyen_de: info?.ten_chuyen_de ?? null,
     }
   })
-  // 4) Ghi: xoá kết quả + câu của đề CŨ (FK con trước) rồi snapshot đề mới — HS lỡ được chấm 1 phần trước khi
-  // đổi đề thì kết quả đó không còn ý nghĩa (câu đã đổi hẳn sang đề khác).
-  const { data: cauCu } = await supabase.from('ca_test_cau').select('id').eq('ca_test_id', caTestId).limit(LIMIT)
-  const idCu = ((cauCu ?? []) as any[]).map((c) => c.id)
-  if (idCu.length) {
-    await supabase.from('ca_test_cau_kq').delete().in('ca_test_cau_id', idCu)
-    await supabase.from('ca_test_cau').delete().in('id', idCu)
-  }
-  const { error: e1 } = await supabase.from('ca_test').update({ tai_lieu_id: taiLieuId }).eq('id', caTestId)
-  if (e1) throw e1
-  const { error: e2 } = await supabase.from('ca_test_cau').insert(rows)
-  if (e2) throw e2
+  // 4) Ghi NGUYÊN TỬ qua RPC `fn_ca_test_gan_de` (mig 202609150910): xoá kết quả + câu của đề CŨ, ghi tai_lieu_id,
+  // chèn câu mới trong CÙNG transaction + advisory lock theo ca. ⭐ 14/09: bản cũ làm 3 bước rời không khoá —
+  // StrictMode chạy effect tự-gán 2 lần cách 60ms ⇒ 2 ca bị GẤP ĐÔI câu (34→68), Bảo Châu chấm trên list 68 dòng
+  // ⇒ kết quả lệch ghép. HS lỡ được chấm 1 phần trước khi đổi đề thì kết quả đó không còn ý nghĩa (câu đã đổi hẳn).
+  const { data: n, error } = await supabase.rpc('fn_ca_test_gan_de', { p_ca_test_id: caTestId, p_tai_lieu_id: taiLieuId, p_rows: rows })
+  if (error) throw error
+  if (Number(n) !== rows.length) throw new Error(`Gán đề ghi ${n}/${rows.length} câu — dữ liệu lệch, báo kỹ thuật.`)
 }
 // ⭐ CEO ① 09/09: gán đề = MẶC ĐỊNH đề ĐANG DÙNG của (khối × môn) — Ops không phải chọn/bấm; chỉ đổi khi cần.
 // Trả về đề đã gán, hoặc null nếu (khối × môn) chưa có đề nào (học thuật phải sinh ở tab "Đề test").
