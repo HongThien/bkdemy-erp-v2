@@ -225,17 +225,23 @@ export type CaTestChoCham = {
   trangThai: 'dang_test' | 'hoan_thanh'  // "Việc của tôi" hiện cả ca ĐANG test (CEO 13/09: có ca mới là thấy)
   diemNhap: number | null // CEO ④ 09/09: điểm NHẬP TAY, độc lập Đ/C/S (ca_test.diem_nhap)
   thieuDe: boolean        // ca đã hoàn thành mà chưa có đề → hiện trong hàng đợi kèm nút "Gán đề đang dùng", KHÔNG lọc mất
+  // ⭐ 15/09 (Tuệ Nhi): Ops tạo ứng viên khối 8 → tự gán đề K8 (39 câu) → sửa khối thành 7 → ca vẫn giữ đề K8, TA chấm
+  // bài giấy 34 câu vào 39 dòng của đề sai. Đổi khối KHÔNG tự đổi đề ⇒ màn chấm/điểm danh phải nêu cờ lệch + nút gán lại.
+  deKhoi: string | null; deTen: string | null
+  lechKhoi: boolean       // khối ứng viên ≠ khối đề đã gán (cả hai đều có)
 }
 // Hàng đợi CHUNG (team học thuật) — đã điểm danh xong + chưa chấm xong. ⭐ 09/09: KHÔNG còn lọc
 // `tai_lieu_id not null` — 5 ca thiếu đề từng biến mất im lặng khỏi mọi màn (HANDOFF bài học 09/09).
 // `nguoi_cham` = người được gán (CEO ② 09/09: vào "Việc của tôi"); pool chung vẫn mở cho người khác.
-const CHO_CHAM_SELECT = 'id, ung_vien_id, mon, ngay, bai_url, tai_lieu_id, cham_xong_at, trang_thai, diem_nhap, nguoi_cham_id, nguoi_tra_bai_id, ung_vien:ung_vien_id(ho_ten_hs, khoi, lop_du_kien_id), nguoi_cham:nguoi_cham_id(ho_ten)'
+const CHO_CHAM_SELECT = 'id, ung_vien_id, mon, ngay, bai_url, tai_lieu_id, cham_xong_at, trang_thai, diem_nhap, nguoi_cham_id, nguoi_tra_bai_id, ung_vien:ung_vien_id(ho_ten_hs, khoi, lop_du_kien_id), nguoi_cham:nguoi_cham_id(ho_ten), tai_lieu:tai_lieu_id(khoi, ten)'
 function mapChoCham(r: any): CaTestChoCham {
+  const khoi = r.ung_vien?.khoi ?? null, deKhoi = r.tai_lieu?.khoi ?? null
   return {
     id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, baiUrl: r.bai_url, taiLieuId: r.tai_lieu_id,
-    hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null, nguoiChamTen: r.nguoi_cham?.ho_ten ?? null,
+    hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi, nguoiChamTen: r.nguoi_cham?.ho_ten ?? null,
     nguoiChamId: r.nguoi_cham_id ?? null, nguoiTraBaiId: r.nguoi_tra_bai_id ?? null, trangThai: r.trang_thai,
     diemNhap: r.diem_nhap == null ? null : Number(r.diem_nhap), thieuDe: !r.tai_lieu_id,
+    deKhoi, deTen: r.tai_lieu?.ten ?? null, lechKhoi: !!khoi && !!deKhoi && khoi !== deKhoi,
   }
 }
 export async function listCanCham(): Promise<CaTestChoCham[]> {
@@ -424,7 +430,8 @@ export async function dongTraBai(caTestId: string, ungVienId: string, lopDeXuatI
   if (e0) throw e0
   const r: any = ct
   if (!r.cham_xong_at) throw new Error('Chưa chấm xong.')
-  if (!r.bai_da_cham_url) throw new Error('Chưa có bài scan đã chấm.')
+  // ⭐ 15/09 (CEO "nút đã trả bài không sáng"): BỎ điều kiện scan bài đã chấm — luồng 10/09 chấm trên giấy rồi nhập
+  // Đ/C/S, không màn nào upload scan (dongScanDaCham không còn ai gọi) ⇒ gate này khoá nút vĩnh viễn.
   if (!lopDeXuatId) throw new Error('Chưa chọn lớp đề xuất.')
   await updateUngVien(ungVienId, { lop_du_kien_id: lopDeXuatId })
   const { error } = await supabase.from('ca_test').update({ danh_gia_xong_at: new Date().toISOString(), tra_bai_xong_at: new Date().toISOString() }).eq('id', caTestId).is('tra_bai_xong_at', null)

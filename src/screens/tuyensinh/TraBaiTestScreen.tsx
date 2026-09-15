@@ -1,5 +1,6 @@
 // Trả bài test đầu vào (Story 4) — tab RIÊNG, tương đương Chấm test (Thùy chốt 07-19). Sinh sớm ngay khi
-// điểm danh đóng; CHẶN đóng tới khi đủ 3 nguồn: chấm xong + scan-đã-chấm + đã chọn lớp đề xuất.
+// điểm danh đóng; CHẶN đóng tới khi đủ 2 nguồn: chấm xong + đã chọn lớp đề xuất (15/09 bỏ "scan-đã-chấm" —
+// khâu scan không còn trong luồng, gate đó khoá nút "Đã gửi" vĩnh viễn).
 // ⭐ 12/09 (CEO, kit v2) — 2 thứ TÁCH BẠCH: (1) PHIẾU gửi PH = bản in đẹp (PhieuTestDauVao.tsx, read-only);
 // (2) màn ĐÁNH GIÁ của GV = form riêng "gần giống" phong cách đó — click 1 HS ⇒ popup màn hình to:
 // TRÁI = form nhập (kỹ năng 5 mức · nhận xét · lớp đề xuất) style navy/gold, PHẢI = phiếu thật xem trước,
@@ -78,7 +79,7 @@ export default function TraBaiTestScreen() {
       ) : (
         <div className="grid gap-2.5 sm:grid-cols-2">
           {shown.map((c) => {
-            const thieu = [c.choChamXong && 'chờ chấm', c.choScanDaCham && 'chờ scan bài đã chấm', c.choLopDeXuat && 'chờ chọn lớp'].filter(Boolean) as string[]
+            const thieu = [c.choChamXong && 'chờ chấm', c.choLopDeXuat && 'chờ chọn lớp'].filter(Boolean) as string[]
             return (
               <button key={c.id} onClick={() => setOpenId(c.id)} className="rounded-2xl border border-slate-100 bg-white p-3.5 text-left shadow-sm hover:shadow-md">
                 <div className="flex items-start gap-2">
@@ -225,7 +226,8 @@ function DanhGiaGvModal({ c, onClose, onPatch, onDone }: { c: CaTestChoTraBai; o
     catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
   }
 
-  const conThieu = [c.choChamXong && 'chờ chấm xong', c.choScanDaCham && 'chờ scan bài đã chấm', !lopId && 'chưa chọn lớp đề xuất'].filter(Boolean) as string[]
+  // 15/09: bỏ "chờ scan bài đã chấm" (khâu scan không còn trong luồng) — chỉ cần chấm xong + lớp đề xuất.
+  const conThieu = [c.choChamXong && 'chờ chấm xong', !lopId && 'chưa chọn lớp đề xuất'].filter(Boolean) as string[]
   const tenLop = lopOpts.find((o) => o.id === lopId)?.label ?? phieu?.lopDeXuat?.tenLop ?? null
   // Phiếu xem trước = số liệu DB + nhận xét/lớp ĐANG nhập (không chờ DB) — GV thấy đúng cái PH sẽ nhận.
   // GV/TG chính của lớp lấy từ phiếu DB (setLopId đã refetch sau khi lưu); lớp vừa đổi mà chưa refetch xong ⇒ tạm null.

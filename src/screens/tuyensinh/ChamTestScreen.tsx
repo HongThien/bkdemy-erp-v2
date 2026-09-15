@@ -98,6 +98,7 @@ export default function ChamTestScreen() {
               <div className="mt-1 flex flex-wrap gap-1">
                 {c.nguoiChamTen && <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-600">👤 {c.nguoiChamTen}</span>}
                 {c.thieuDe && <span className="rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-medium text-amber-700">⚠ Chưa có đề</span>}
+                {c.lechKhoi && <span className="rounded-full bg-rose-50 px-2 py-0.5 text-[11px] font-semibold text-rose-700">⚠ Đề khối {c.deKhoi} ≠ HS khối {c.khoi}</span>}
                 {c.diemNhap != null && <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600">Điểm {c.diemNhap}</span>}
               </div>
             </button>
@@ -173,9 +174,17 @@ function ChamCard({ item, daChamXong, onClose, onPatch, onDone, onReopen }: {
     try {
       const de = await ganDeDangDung(item.id, item.khoi, item.mon)
       if (!de) { setErr(`Chưa có đề test đầu vào đang dùng cho ${item.mon}${item.khoi ? ` · Khối ${item.khoi}` : ''} — học thuật sinh đề ở tab "Đề test" trước.`); return }
-      onPatch({ taiLieuId: de.id, thieuDe: false })
+      onPatch({ taiLieuId: de.id, thieuDe: false, deKhoi: de.khoi, deTen: de.ten, lechKhoi: false })
+      setMoDe(new Set())
       await reload()
     } catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
+  }
+  // Lệch khối (đổi khối ứng viên sau khi đã gán đề): gán lại = XOÁ kết quả đã tích trên đề sai ⇒ hỏi rõ trước.
+  async function ganLaiDe() {
+    const n = tong?.daCham ?? 0
+    const ok = window.confirm(`Gán lại đề đang dùng của khối ${item.khoi} cho ${item.hoTenHs}?\n\nĐề hiện tại là khối ${item.deKhoi} (${item.deTen ?? ''}). ${n > 0 ? `${n} câu đã tích trên đề này sẽ bị XOÁ, phải chấm lại từ đầu.` : 'Chưa có câu nào được tích.'}`)
+    if (!ok) return
+    await ganDe()
   }
   async function dong() {
     setBusy(true); setErr(null)
@@ -212,6 +221,12 @@ function ChamCard({ item, daChamXong, onClose, onPatch, onDone, onReopen }: {
           {tong ? <>Đã tích <b className="text-indigo-600">{tong.daCham}/{tong.soCau}</b> câu · đúng <b className="text-indigo-600">{tong.pct}%</b></> : '…'}
         </span>
       </div>
+      {item.lechKhoi && (
+        <div className="flex shrink-0 flex-wrap items-center gap-2 border-b border-rose-200 bg-rose-50 px-4 py-2 text-[13px] text-rose-800">
+          <span>⚠ <b>Đề đang gán là khối {item.deKhoi}</b> ({item.deTen}) nhưng học sinh là <b>khối {item.khoi}</b> — khối ứng viên đã đổi sau khi gán đề. Số câu/chuyên đề không khớp bài giấy.</span>
+          <button onClick={ganLaiDe} disabled={busy} className="ml-auto rounded-lg bg-rose-600 px-3 py-1.5 text-[12px] font-semibold text-white hover:bg-rose-500 disabled:opacity-40">{busy ? 'Đang gán…' : `📘 Gán lại đề đang dùng (khối ${item.khoi})`}</button>
+        </div>
+      )}
 
       {loading ? <p className="p-6 text-sm text-slate-400">Đang tải…</p> : (
         <div className="min-h-0 flex-1 overflow-auto p-4">

@@ -96,6 +96,13 @@ function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deL
   const cands = deList.filter((d) => d.mon === c.mon && (!c.ungVien.khoi || d.khoi === c.ungVien.khoi))
   const chuaCoDe = cands.length === 0
   const deDaGan = deList.find((d) => d.id === taiLieuId)
+  const lechKhoi = !!deDaGan && !!c.ungVien.khoi && deDaGan.khoi !== c.ungVien.khoi
+  async function ganLaiDeDangDung() {
+    if (!window.confirm(`Gán lại đề đang dùng của khối ${c.ungVien.khoi} cho ${c.ungVien.hoTenHs}? Kết quả đã chấm trên đề cũ (nếu có) sẽ bị xoá.`)) return
+    setBusy(true); setErr(null)
+    try { const de = await ganDeDangDung(c.id, c.ungVien.khoi, c.mon); if (de) setTaiLieuId(de.id); else setErr('Chưa có đề đang dùng cho khối này.') }
+    catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
+  }
 
   async function chonFile(e: React.ChangeEvent<HTMLInputElement>) {
     const f = e.target.files?.[0]; if (!f) return
@@ -144,6 +151,13 @@ function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deL
         <span className={`ml-auto font-semibold ${DEADLINE_TONE[muc]}`}>{muc === 'qua_han' ? '⚠ ' : ''}{nhanConLai(deadline, now)}</span>
       </div>
 
+      {/* ⭐ 15/09: khối ứng viên đổi SAU khi gán đề (Tuệ Nhi: tạo khối 8 → sửa 7, đề K8 39 câu vẫn dính) ⇒ nêu cờ + gán lại. */}
+      {lechKhoi && (
+        <div className="mb-2 flex flex-wrap items-center gap-2 rounded-md border border-rose-200 bg-rose-50 px-2.5 py-1.5 text-[12px] text-rose-800">
+          <span>⚠ Đề đang gán là <b>khối {deDaGan!.khoi}</b>, học sinh <b>khối {c.ungVien.khoi}</b></span>
+          <button onClick={ganLaiDeDangDung} disabled={busy} className="ml-auto rounded-md bg-rose-600 px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-rose-500 disabled:opacity-40">📘 Gán lại đề đang dùng</button>
+        </div>
+      )}
       <div className="mb-2 flex flex-wrap items-center gap-1.5">
         {deDaGan && <span className="text-[12px] text-slate-500">📘 {deDaGan.ten}</span>}
         {chuaCoDe ? (
