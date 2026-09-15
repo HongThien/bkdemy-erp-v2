@@ -435,6 +435,7 @@ export async function dongTraBai(caTestId: string, ungVienId: string, lopDeXuatI
 // Client chỉ gọi + hiển thị. Tỉ lệ = Σdiem/Σdiem_toi_da trên câu ĐÃ CHẤM (chưa chấm không vào mẫu số — §5 chưa-đo ≠ sai).
 // Nhóm (cơ bản/nâng cao · Đại/Hình) không có câu nào → `soCau === 0` ⇒ màn ẨN khối đó (CEO ⑦: "không có thì bỏ qua"). ──
 export type NhomTiLe = { diem: number | null; toiDa: number | null; soCau: number; pct: number | null }
+export type NguoiPhieu = { hoTen: string; anhUrl: string | null }   // nhân sự in trên phiếu (avatar tài khoản BK)
 export type PhieuKetQua = {
   hoTenHs: string; khoi: string | null; mon: string; ngay: string
   gioiTinh?: 'nam' | 'nu' | null   // ung_vien.gioi_tinh — chọn avatar cartoon nam/nữ trên phiếu (mig 202609131618)
@@ -446,7 +447,12 @@ export type PhieuKetQua = {
   theoNhanh: { dai: NhomTiLe | null; hinh: NhomTiLe | null }        // pick từ bản đồ nào → tính từ đấy (CEO ⑦)
   nhanXet: NhanXet | null; baiDaChamUrl: string | null
   // GV + lịch CHỈ in trên ẢNH gửi PH (CEO ⑧), UI trả bài không hiện.
-  lopDeXuat: { id: string; tenLop: string; gv: string[]; lich: { thu: number; gioBatDau: string; gioKetThuc: string; phong: string | null }[] } | null
+  // gvChinh/tgChinh (mig 202609151030): người `la_chinh` của lớp + avatar tài khoản nhân sự — phiếu in "Giáo viên" / "Giáo viên bổ trợ".
+  lopDeXuat: {
+    id: string; tenLop: string; gv: string[]
+    gvChinh: NguoiPhieu | null; tgChinh: NguoiPhieu | null
+    lich: { thu: number; gioBatDau: string; gioKetThuc: string; phong: string | null }[]
+  } | null
 }
 export const coNhom = (n: NhomTiLe | null | undefined): n is NhomTiLe => !!n && n.soCau > 0 && n.pct != null
 export async function getPhieuKetQua(caTestId: string): Promise<PhieuKetQua> {
