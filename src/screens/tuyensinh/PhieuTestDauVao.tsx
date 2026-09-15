@@ -13,7 +13,7 @@
 // Xuất ảnh: outerHTML → popup html2canvas (pattern V1 EtAnhGuiPH), logo fetch → data URL.
 import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
-import { coNhom, mucKyNang, paragraphNhanXet, type PhieuKetQua } from '../../lib/detest'
+import { coNhom, mucKyNang, paragraphNhanXet, type PhieuKetQua, type NguoiPhieu } from '../../lib/detest'
 
 // ═══ TOKENS (kit v2 §2) ═══════════════════════════════════════════════════════════════════════════
 export const NAVY = '#102B55'
@@ -222,23 +222,55 @@ function KhoiNhanXet({ para }: { para: string }) {
 }
 
 // ═══ KHỐI 5 — ĐỀ XUẤT LỚP (badge navy trung tính + watermark sách) ════════════════════════════════
-function KhoiLopDeXuat({ tenLop }: { tenLop: string | null }) {
+// ⭐ CEO 15/09: kèm 2 ảnh GV chính + TG chính của lớp (avatar tài khoản nhân sự), nhãn "Giáo viên" / "Giáo viên
+// bổ trợ". Không có ảnh ⇒ vòng tròn chữ cái đầu; lớp chưa phân công người đó ⇒ bỏ ô (không đẻ ô rỗng).
+function chuCaiDau(hoTen: string): string {
+  const w = hoTen.trim().split(/\s+/)
+  return ((w[0]?.[0] ?? '') + (w.length > 1 ? w[w.length - 1][0] : '')).toUpperCase()
+}
+// CEO 15/09 lần 2: "ảnh to lên, chia 2 phần: trái badge + chữ, phải 2 ảnh + tên" ⇒ grid 2 cột bằng nhau, ảnh 86px.
+function AvatarNhanSu({ nguoi, nhan }: { nguoi: NguoiPhieu; nhan: string }) {
+  const D = 86
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 132, flexShrink: 0 }}>
+      <div style={{ width: D, height: D, borderRadius: '50%', border: `3px solid ${GOLD}`, boxShadow: '0 4px 12px rgba(16,43,85,0.2)', overflow: 'hidden', background: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        {nguoi.anhUrl
+          ? <img src={nguoi.anhUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          : <span style={{ color: '#fff', fontSize: 30, fontWeight: 800, lineHeight: 1 }}>{chuCaiDau(nguoi.hoTen) || '?'}</span>}
+      </div>
+      <div style={{ marginTop: 7, fontSize: 12.5, fontWeight: 700, color: NAVY, lineHeight: 1.2, textAlign: 'center', maxWidth: 132, minHeight: 30, display: 'flex', alignItems: 'center' }}>{nguoi.hoTen}</div>
+      <div style={{ marginTop: 2, fontSize: 10.5, fontWeight: 600, color: CHU_PHU, lineHeight: 1.2, textAlign: 'center', whiteSpace: 'nowrap' }}>{nhan}</div>
+    </div>
+  )
+}
+function KhoiLopDeXuat({ tenLop, gvChinh = null, tgChinh = null }: { tenLop: string | null; gvChinh?: NguoiPhieu | null; tgChinh?: NguoiPhieu | null }) {
+  const coNguoi = !!(gvChinh || tgChinh)
   return (
     <div style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(135deg, #FFF8EA 0%, #FDF1D6 100%)', borderRadius: 16, padding: '14px 18px', boxShadow: BONG, border: '1px solid #F1DFB5' }}>
       <div style={{ position: 'absolute', right: 18, bottom: -6, opacity: 0.16, lineHeight: 0, pointerEvents: 'none' }} dangerouslySetInnerHTML={{ __html: I.book(GOLD, 96) }} />
       <TieuDe icon={I.cap()} text="5. Đề xuất lớp phù hợp" />
-      <div style={{ display: 'flex', alignItems: 'center', gap: 20, position: 'relative' }}>
-        {/* Badge = ảnh (nguyệt quế + vương miện + ruy băng, kit 13/09); khung xanh chiếm ~y 17%→68% của ảnh ⇒ chữ đè vào đó. */}
-        <div style={{ position: 'relative', width: 134, height: 128, flexShrink: 0 }}>
-          <img src={IMG_BADGE} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
-          <div style={{ position: 'absolute', left: 0, right: 0, top: '20%', height: '46%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 2, pointerEvents: 'none' }}>
-            <div style={{ fontSize: 10, fontWeight: 700, color: GOLD_SANG, letterSpacing: '2px' }}>LỚP</div>
-            <div style={{ fontSize: tenLop && tenLop.length > 4 ? 22 : 30, fontWeight: 800, color: '#fff', lineHeight: 1, textShadow: '0 2px 4px rgba(0,0,0,0.35)' }}>{tenLop ?? '—'}</div>
+      <div style={{ display: 'grid', gridTemplateColumns: coNguoi ? '1fr 1fr' : '1fr', alignItems: 'center', position: 'relative' }}>
+        {/* NỬA TRÁI: badge + câu dẫn */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0, paddingRight: coNguoi ? 12 : 0 }}>
+          {/* Badge = ảnh (nguyệt quế + vương miện + ruy băng, kit 13/09); khung xanh chiếm ~y 17%→68% của ảnh ⇒ chữ đè vào đó. */}
+          <div style={{ position: 'relative', width: 134, height: 128, flexShrink: 0 }}>
+            <img src={IMG_BADGE} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
+            <div style={{ position: 'absolute', left: 0, right: 0, top: '20%', height: '46%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 2, pointerEvents: 'none' }}>
+              <div style={{ fontSize: 10, fontWeight: 700, color: GOLD_SANG, letterSpacing: '2px' }}>LỚP</div>
+              <div style={{ fontSize: tenLop && tenLop.length > 4 ? 22 : 30, fontWeight: 800, color: '#fff', lineHeight: 1, textShadow: '0 2px 4px rgba(0,0,0,0.35)' }}>{tenLop ?? '—'}</div>
+            </div>
           </div>
+          {tenLop
+            ? <div style={{ fontSize: 12.5, color: CHU, lineHeight: 1.55, flex: 1, minWidth: 0 }}>Phù hợp với năng lực hiện tại của con, giúp con phát huy điểm mạnh và tiếp tục tiến bộ.</div>
+            : <div style={{ fontSize: 12.5, color: CHU_PHU, fontStyle: 'italic', flex: 1 }}>Đang được trung tâm rà soát.</div>}
         </div>
-        {tenLop
-          ? <div style={{ fontSize: 13.5, color: CHU, lineHeight: 1.6 }}>Phù hợp với năng lực hiện tại của con,<br />giúp con phát huy điểm mạnh và tiếp tục tiến bộ.</div>
-          : <div style={{ fontSize: 13, color: CHU_PHU, fontStyle: 'italic' }}>Đang được trung tâm rà soát.</div>}
+        {/* NỬA PHẢI: 2 ảnh GV chính + TG chính (avatar tài khoản nhân sự) */}
+        {coNguoi && (
+          <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'flex-start', paddingLeft: 12, borderLeft: '1px solid #F1DFB5', minWidth: 0 }}>
+            {gvChinh && <AvatarNhanSu nguoi={gvChinh} nhan="Giáo viên" />}
+            {tgChinh && <AvatarNhanSu nguoi={tgChinh} nhan="Giáo viên bổ trợ" />}
+          </div>
+        )}
       </div>
     </div>
   )
@@ -306,7 +338,7 @@ export function PhieuCard({ p, logoSrc = LOGO_URL }: { p: PhieuKetQua; logoSrc?:
         </div>
         <KhoiKyNang tb={mucKyNang(p.nhanXet?.trinhBay)} tt={mucKyNang(p.nhanXet?.tinhToan)} />
         <KhoiNhanXet para={para} />
-        <KhoiLopDeXuat tenLop={p.lopDeXuat?.tenLop ?? null} />
+        <KhoiLopDeXuat tenLop={p.lopDeXuat?.tenLop ?? null} gvChinh={p.lopDeXuat?.gvChinh ?? null} tgChinh={p.lopDeXuat?.tgChinh ?? null} />
       </div>
 
       {/* ─── FOOTER navy + dải gold ─── */}
@@ -332,7 +364,9 @@ export async function moPopupXuatAnh(el: HTMLElement, p: PhieuKetQua): Promise<v
   let cardHTML = el.outerHTML
   // Mọi asset → data URL (popup about:blank không resolve URL tương đối). Thiếu file (404) ⇒ bỏ url đó
   // (nền ảnh về trong suốt, ruy băng vector bên dưới lộ ra); riêng logo thiếu thì báo.
-  for (const u of ASSETS) {
+  // + avatar nhân sự (Supabase Storage public, khác origin — html2canvas không vẽ được nếu để URL) ⇒ cũng đổi sang data URL.
+  const anhNhanSu = [p.lopDeXuat?.gvChinh?.anhUrl, p.lopDeXuat?.tgChinh?.anhUrl].filter((u): u is string => !!u)
+  for (const u of [...ASSETS, ...anhNhanSu]) {
     try {
       const r = await fetch(u); if (!r.ok) throw new Error(String(r.status))
       cardHTML = cardHTML.split(u).join(await blobToDataUrl(await r.blob()))

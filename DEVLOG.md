@@ -12718,3 +12718,8 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
   hiện toolbar mới "Người: Tất cả (9) ▼", chọn "Đào Xuân Thùy" → cụm "Tài liệu Hình 9 - Lượng giác" giữ
   lại (có con của Thùy), badge vẫn "0/3 đạt" (cả cụm), con "Bài: Giải tam giác có đường cao" của Thùy
   hiện; các task lẻ hiển thị đều mang chip "Đào Xuân Thùy". Nút "xoá lọc" hiển thị đúng.
+
+**(CEO 15/09 "chỗ xếp lớp của ảnh gửi PH hiện 2 ảnh GV và TG chính, ghi Giáo viên – Giáo viên bổ trợ, ảnh lấy từ tài khoản nhân sự")**
+- Nguồn: `phan_cong_lop` (vai_tro gv|tg, la_chinh) + `nhan_su.anh_url` (avatar Supabase Storage public `avatars/`, 21/40 nhân sự có ảnh). Mig `202609151030_test_dau_vao_phieu_gv_tg_chinh.sql`: `fn_test_dau_vao_phieu.lopDeXuat` thêm `gvChinh`/`tgChinh` `{hoTen, anhUrl}|null` (ưu tiên la_chinh, không có thì người đầu theo tên; lớp không có ai ⇒ null ⇒ phiếu bỏ ô). Áp `--only`, schema.md refresh.
+- `PhieuTestDauVao.tsx` khối 5 = grid 2 nửa: trái badge + câu dẫn, phải 2 avatar 86px viền gold + tên (2 dòng) + nhãn; không có ảnh ⇒ vòng navy chữ cái đầu. `moPopupXuatAnh` fetch thêm 2 URL avatar → data URL (đã kiểm CORS Storage OK, 500KB jpg). `detest.ts` type `NguoiPhieu`. `TraBaiTestScreen` phiếu xem trước lấy gvChinh/tgChinh từ phiếu DB khi cùng lớp (setLopId đã refetch sau lưu). Verify app local: ca Trịnh Bảo Lan 4A1 (2 ảnh thật) và Lê Hải Đăng 7B2 (TG chưa ảnh ⇒ "NG"). CEO sửa 1 vòng: ảnh to hơn, chia 2 nửa đều. Chưa commit (chưa được bảo).
+- Lưu ý dữ liệu: lớp 12B1 có cùng 1 người (Trần Hoàng Đạt) vừa gv chính vừa tg chính ⇒ phiếu in 2 ảnh giống nhau — Ops rà `phan_cong_lop`.

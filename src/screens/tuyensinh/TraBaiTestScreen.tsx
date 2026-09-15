@@ -228,7 +228,9 @@ function DanhGiaGvModal({ c, onClose, onPatch, onDone }: { c: CaTestChoTraBai; o
   const conThieu = [c.choChamXong && 'chờ chấm xong', c.choScanDaCham && 'chờ scan bài đã chấm', !lopId && 'chưa chọn lớp đề xuất'].filter(Boolean) as string[]
   const tenLop = lopOpts.find((o) => o.id === lopId)?.label ?? phieu?.lopDeXuat?.tenLop ?? null
   // Phiếu xem trước = số liệu DB + nhận xét/lớp ĐANG nhập (không chờ DB) — GV thấy đúng cái PH sẽ nhận.
-  const phieuXem: PhieuKetQua | null = phieu ? { ...phieu, nhanXet: nx, lopDeXuat: lopId ? { id: lopId, tenLop: tenLop ?? '', gv: [], lich: [] } : null } : null
+  // GV/TG chính của lớp lấy từ phiếu DB (setLopId đã refetch sau khi lưu); lớp vừa đổi mà chưa refetch xong ⇒ tạm null.
+  const cungLop = !!lopId && phieu?.lopDeXuat?.id === lopId
+  const phieuXem: PhieuKetQua | null = phieu ? { ...phieu, nhanXet: nx, lopDeXuat: lopId ? { id: lopId, tenLop: tenLop ?? '', gv: [], lich: [], gvChinh: cungLop ? phieu.lopDeXuat!.gvChinh : null, tgChinh: cungLop ? phieu.lopDeXuat!.tgChinh : null } : null } : null
   const tb = mucKyNang(nx.trinhBay), tt = mucKyNang(nx.tinhToan)
 
   return createPortal(
