@@ -101,6 +101,34 @@ export async function upsertBaoCaoPH(hocSinhId: string, mon: string, thang: stri
   if (error) throw error
 }
 
+// Preset nhận xét (2 trục: 'kien_thuc' | 'thai_do') — dùng chung, ai đăng nhập cũng CRUD được.
+// Text lưu ở bao_cao_ph là snapshot, sửa/xoá preset về sau KHÔNG đổi báo cáo cũ.
+export type NxTruc = 'kien_thuc' | 'thai_do'
+export type NxPreset = { id: string; truc: NxTruc; muc: number; noi_dung: string; thu_tu: number }
+export async function listNxPreset(truc: NxTruc): Promise<NxPreset[]> {
+  const { data, error } = await supabase.from('bao_cao_ph_preset')
+    .select('id, truc, muc, noi_dung, thu_tu')
+    .eq('truc', truc)
+    .order('muc', { ascending: false }).order('thu_tu', { ascending: true }).order('created_at', { ascending: true })
+    .limit(200)
+  if (error) throw error
+  return (data ?? []) as NxPreset[]
+}
+export async function addNxPreset(truc: NxTruc, muc: number, noi_dung: string): Promise<NxPreset> {
+  const { data, error } = await supabase.from('bao_cao_ph_preset')
+    .insert({ truc, muc, noi_dung }).select('id, truc, muc, noi_dung, thu_tu').single()
+  if (error) throw error
+  return data as NxPreset
+}
+export async function updateNxPreset(id: string, patch: Partial<Pick<NxPreset, 'muc' | 'noi_dung' | 'thu_tu'>>): Promise<void> {
+  const { error } = await supabase.from('bao_cao_ph_preset').update(patch).eq('id', id)
+  if (error) throw error
+}
+export async function deleteNxPreset(id: string): Promise<void> {
+  const { error } = await supabase.from('bao_cao_ph_preset').delete().eq('id', id)
+  if (error) throw error
+}
+
 // Hạng theo ĐIỂM MT TỔNG của đúng tháng report (Thùy 08-19, thay bản Elo trước đó — Elo là thi đấu tích
 // luỹ cả mùa, không phải "của tháng này"). Dùng chung cho cả 2 phạm vi KHỐI và LỚP (Thùy 08-19: thêm
 // hạng-trong-lớp bên cạnh hạng-trong-khối) — logic tính hạng giống hệt, chỉ khác ROSTER (ai là peer).

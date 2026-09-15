@@ -7,7 +7,7 @@ import { ReportCardView, renderCardToUrl } from './ReportCard'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listLop, listHSCuaLop } from '../../lib/nhansu'
 import { getTongQuanHS, type TongQuanHS } from '../../lib/mastery'
-import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, getKhoiRankDiemMT, getLopRankDiemMT, getHeRankDiemMT, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH, type KhoiRankMT, type LopRankMT, type HeRankMT } from '../../lib/report'
+import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, getKhoiRankDiemMT, getLopRankDiemMT, getHeRankDiemMT, listNxPreset, addNxPreset, updateNxPreset, deleteNxPreset, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH, type KhoiRankMT, type LopRankMT, type HeRankMT, type NxTruc, type NxPreset } from '../../lib/report'
 import { tenHienThiDs } from '../../lib/hoten'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
@@ -343,36 +343,57 @@ function TongQuanCards({ tq, missCount }: { tq: TongQuanHS; missCount: number })
 }
 
 // Kiến thức & Kĩ năng + Thái độ học tập: chuyển từ nhận xét tự do → chọn preset (Thùy 14-09).
-// Mỗi preset gắn sẵn mức 2..5 → chọn 1 lần lưu cả text + mức. UI là dropdown (đỡ tốn diện tích).
-const KT_PRESETS: { muc: number; text: string }[] = [
-  { muc: 5, text: 'Với những dạng bài đã được học, con làm lại chính xác gần như tuyệt đối, bài của con trình bày đủ ý, đúng thứ tự.' },
-  { muc: 4, text: 'Các bài con đã nắm được phương pháp làm rồi thì gần như có thể trình bày lại được chuẩn, đôi lúc còn tính sai.' },
-  { muc: 4, text: 'Các bài con hiểu rồi thì gần như có thể trình bày lại được chuẩn, thi thoảng con còn quên câu kết luận hoặc đơn vị.' },
-  { muc: 3, text: 'Bài làm của con thường xuyên gặp các lỗi sai về tính toán; nên dù có nắm được cách làm bài nhưng vẫn mất nhiều điểm.' },
-  { muc: 3, text: 'Bài làm của con thường xuyên gặp các lỗi sai về trình bày thiếu ý/tắt, chưa khoa học, nên dù có nắm được cách làm bài nhưng vẫn mất nhiều điểm.' },
-  { muc: 2, text: 'Bài làm của con thường xuyên gặp tình trạng tính sai và trình bày tắt. Nên ngay cả khi biết cách làm thì vẫn mất rất nhiều điểm.' },
-]
-const TD_PRESETS: { muc: number; text: string }[] = [
-  { muc: 5, text: 'Con hoàn thành tốt các yêu cầu: Nộp bài tập về nhà đúng hạn, Đi học đúng giờ, Tập trung làm bài luyện trên lớp. Ngoài ra con rất chủ động hỏi bài khi chưa hiểu, chưa biết.' },
-  { muc: 4, text: 'Con hoàn thành tốt các yêu cầu: Nộp bài tập về nhà đúng hạn, Đi học đúng giờ, Tập trung làm bài luyện trên lớp.' },
-  { muc: 3, text: 'Con nộp BTVN muộn một số buổi.' },
-  { muc: 3, text: 'Chưa tập trung làm Bài luyện trên lớp, còn nói chuyện, đùa nghịch với các bạn.' },
-  { muc: 3, text: 'Con thường xuyên đi học muộn vì lí do chủ quan.' },
-  { muc: 2, text: 'Con thường xuyên nộp muộn BTVN hoặc thiếu BTVN một số buổi.' },
-]
-const MUC_HX: Record<number, string> = { 2: 'bg-rose-500', 3: 'bg-amber-500', 4: 'bg-sky-500', 5: 'bg-emerald-500' }
-function PresetDropdown({ presets, curText, curMuc, onPick, ringOn }:
-  { presets: { muc: number; text: string }[]; curText: string | null; curMuc: number | null; onPick: (p: { muc: number; text: string } | null) => void; ringOn: string }) {
+// Preset lưu ở bảng bao_cao_ph_preset (chia sẻ chung, ai đăng nhập cũng CRUD được — Thùy 15-09).
+// Text sau khi chọn được COPY vào bao_cao_ph (snapshot). Sửa/xoá preset sau này KHÔNG đổi báo cáo cũ.
+const MUC_HX: Record<number, string> = { 1: 'bg-rose-600', 2: 'bg-rose-500', 3: 'bg-amber-500', 4: 'bg-sky-500', 5: 'bg-emerald-500' }
+function PresetDropdown({ truc, curText, curMuc, onPick, ringOn }:
+  { truc: NxTruc; curText: string | null; curMuc: number | null; onPick: (p: { muc: number; noi_dung: string } | null) => void; ringOn: string }) {
+  const [presets, setPresets] = useState<NxPreset[]>([])
   const [open, setOpen] = useState(false)
+  const [editing, setEditing] = useState<string | 'new' | null>(null)
+  const [editMuc, setEditMuc] = useState(4)
+  const [editText, setEditText] = useState('')
+  const [saving, setSaving] = useState(false)
   const wrapRef = useRef<HTMLDivElement>(null)
+  useEffect(() => { listNxPreset(truc).then(setPresets).catch(() => setPresets([])) }, [truc])
   useEffect(() => {
     if (!open) return
-    const h = (e: MouseEvent) => { if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) setOpen(false) }
+    const h = (e: MouseEvent) => {
+      if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) { setOpen(false); setEditing(null) }
+    }
     document.addEventListener('mousedown', h)
     return () => document.removeEventListener('mousedown', h)
   }, [open])
-  const matched = presets.find((p) => p.text === curText && p.muc === curMuc)
+  const matched = presets.find((p) => p.noi_dung === curText && p.muc === curMuc)
   const orphan = curText != null && !matched
+  const startEdit = (p: NxPreset) => { setEditing(p.id); setEditMuc(p.muc); setEditText(p.noi_dung) }
+  const startNew = () => { setEditing('new'); setEditMuc(4); setEditText('') }
+  const cancelEdit = () => { setEditing(null); setEditText('') }
+  const saveEdit = async () => {
+    const t = editText.trim()
+    if (!t) return
+    setSaving(true)
+    try {
+      if (editing === 'new') {
+        const created = await addNxPreset(truc, editMuc, t)
+        setPresets((prev) => [...prev, created].sort((a, b) => b.muc - a.muc || a.thu_tu - b.thu_tu))
+      } else if (editing) {
+        await updateNxPreset(editing, { muc: editMuc, noi_dung: t })
+        setPresets((prev) => prev.map((p) => p.id === editing ? { ...p, muc: editMuc, noi_dung: t } : p).sort((a, b) => b.muc - a.muc || a.thu_tu - b.thu_tu))
+        // Nếu đang chọn preset vừa sửa → cập nhật lại vào báo cáo để đồng bộ.
+        if (matched?.id === editing) onPick({ muc: editMuc, noi_dung: t })
+      }
+      setEditing(null); setEditText('')
+    } catch (e: any) { alert('Lỗi lưu: ' + (e?.message ?? e)) }
+    finally { setSaving(false) }
+  }
+  const doDelete = async (p: NxPreset) => {
+    if (!confirm(`Xoá nhận xét này khỏi danh sách?\n\n"${p.noi_dung.slice(0, 80)}${p.noi_dung.length > 80 ? '…' : ''}"\n\n(Báo cáo cũ đã dùng câu này vẫn giữ nguyên nội dung.)`)) return
+    try {
+      await deleteNxPreset(p.id)
+      setPresets((prev) => prev.filter((x) => x.id !== p.id))
+    } catch (e: any) { alert('Lỗi xoá: ' + (e?.message ?? e)) }
+  }
   return (
     <div ref={wrapRef} className="relative">
       <button type="button" onClick={() => setOpen((s) => !s)}
@@ -381,24 +402,44 @@ function PresetDropdown({ presets, curText, curMuc, onPick, ringOn }:
           <span className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded text-[11px] font-bold text-white ${MUC_HX[matched.muc] ?? 'bg-slate-400'}`}>{matched.muc}</span>
         ) : <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded bg-slate-200 text-[11px] font-bold text-slate-500">—</span>}
         <span className={`flex-1 ${matched ? 'text-slate-800' : 'text-slate-400'}`}>
-          {matched ? matched.text : (orphan ? curText : 'Chọn nhận xét…')}
+          {matched ? matched.noi_dung : (orphan ? curText : 'Chọn nhận xét…')}
         </span>
         <span className="mt-1 shrink-0 text-slate-400">▾</span>
       </button>
       {open && (
-        <div className="absolute left-0 right-0 top-full z-20 mt-1 max-h-72 overflow-y-auto rounded-lg border border-slate-200 bg-white shadow-lg">
-          {presets.map((p, i) => {
-            const isSel = matched === p
+        <div className="absolute left-0 right-0 top-full z-20 mt-1 max-h-[26rem] overflow-y-auto rounded-lg border border-slate-200 bg-white shadow-lg">
+          {presets.map((p) => {
+            const isSel = matched?.id === p.id
+            if (editing === p.id) return (
+              <PresetEditor key={p.id} muc={editMuc} text={editText} onMuc={setEditMuc} onText={setEditText}
+                onCancel={cancelEdit} onSave={saveEdit} saving={saving} />
+            )
             return (
-              <button key={i} type="button"
-                onClick={() => { onPick(isSel ? null : p); setOpen(false) }}
-                className={`flex w-full items-start gap-2 border-b border-slate-100 px-2.5 py-2 text-left text-[12px] leading-relaxed last:border-b-0 ${isSel ? 'bg-indigo-50' : 'hover:bg-slate-50'}`}>
-                <span className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded text-[11px] font-bold text-white ${MUC_HX[p.muc] ?? 'bg-slate-400'}`}>{p.muc}</span>
-                <span className="flex-1 text-slate-700">{p.text}</span>
-              </button>
+              <div key={p.id} className={`group flex items-start gap-2 border-b border-slate-100 px-2.5 py-2 last:border-b-0 ${isSel ? 'bg-indigo-50' : 'hover:bg-slate-50'}`}>
+                <button type="button" onClick={() => { onPick(isSel ? null : { muc: p.muc, noi_dung: p.noi_dung }); setOpen(false) }}
+                  className="flex flex-1 items-start gap-2 text-left text-[12px] leading-relaxed">
+                  <span className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded text-[11px] font-bold text-white ${MUC_HX[p.muc] ?? 'bg-slate-400'}`}>{p.muc}</span>
+                  <span className="flex-1 text-slate-700">{p.noi_dung}</span>
+                </button>
+                <div className="flex shrink-0 gap-0.5 opacity-0 group-hover:opacity-100 focus-within:opacity-100">
+                  <button type="button" title="Sửa" onClick={() => startEdit(p)}
+                    className="rounded p-1 text-slate-400 hover:bg-slate-200 hover:text-slate-700">✏️</button>
+                  <button type="button" title="Xoá" onClick={() => doDelete(p)}
+                    className="rounded p-1 text-slate-400 hover:bg-rose-100 hover:text-rose-700">🗑</button>
+                </div>
+              </div>
             )
           })}
-          {matched && (
+          {editing === 'new' ? (
+            <PresetEditor muc={editMuc} text={editText} onMuc={setEditMuc} onText={setEditText}
+              onCancel={cancelEdit} onSave={saveEdit} saving={saving} />
+          ) : (
+            <button type="button" onClick={startNew}
+              className="flex w-full items-center gap-1.5 border-t border-slate-100 px-2.5 py-2 text-left text-[11px] font-semibold text-indigo-600 hover:bg-indigo-50">
+              <span>➕</span> Thêm nhận xét mới
+            </button>
+          )}
+          {matched && editing == null && (
             <button type="button" onClick={() => { onPick(null); setOpen(false) }}
               className="w-full border-t border-slate-100 px-2.5 py-1.5 text-left text-[11px] text-slate-500 hover:bg-slate-50">✕ Bỏ chọn</button>
           )}
@@ -407,6 +448,29 @@ function PresetDropdown({ presets, curText, curMuc, onPick, ringOn }:
       {orphan && (
         <p className="mt-1 rounded bg-amber-50 px-2 py-1 text-[11px] text-amber-700">Nhận xét cũ (nhập tay) chưa khớp preset — mở dropdown chọn 1 mức để thay.</p>
       )}
+    </div>
+  )
+}
+function PresetEditor({ muc, text, onMuc, onText, onCancel, onSave, saving }:
+  { muc: number; text: string; onMuc: (n: number) => void; onText: (s: string) => void; onCancel: () => void; onSave: () => void; saving: boolean }) {
+  return (
+    <div className="border-b border-slate-100 bg-indigo-50/30 px-2.5 py-2">
+      <div className="mb-1.5 flex items-center gap-1">
+        <span className="mr-1 text-[10px] font-medium text-slate-500">Mức:</span>
+        {[1, 2, 3, 4, 5].map((i) => (
+          <button key={i} type="button" onClick={() => onMuc(i)}
+            className={`h-6 w-7 rounded text-[11px] font-bold ring-1 transition ${muc === i ? `${MUC_HX[i]} text-white ring-transparent` : 'bg-white text-slate-500 ring-slate-200 hover:bg-slate-100'}`}>{i}</button>
+        ))}
+      </div>
+      <textarea autoFocus value={text} onChange={(e) => onText(e.target.value)} rows={3}
+        placeholder="Nhập nhận xét…"
+        className="w-full resize-y rounded border border-slate-200 bg-white px-2 py-1.5 text-[12px] leading-relaxed focus:border-indigo-300 focus:outline-none" />
+      <div className="mt-1.5 flex justify-end gap-1.5">
+        <button type="button" onClick={onCancel} disabled={saving}
+          className="rounded border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-slate-600 hover:bg-slate-100 disabled:opacity-60">Huỷ</button>
+        <button type="button" onClick={onSave} disabled={saving || !text.trim()}
+          className="rounded bg-indigo-600 px-2.5 py-1 text-[11px] font-bold text-white hover:bg-indigo-700 disabled:opacity-50">{saving ? 'Đang lưu…' : 'Lưu'}</button>
+      </div>
     </div>
   )
 }
@@ -526,8 +590,8 @@ function NhanXet({ hsId, mon, ym, onCapture }: { hsId: string; mon: string; ym: 
             <span className="text-[12px] font-semibold text-slate-700">Kiến thức & Kĩ năng</span>
             {(saved === 'kien_thuc_ky_nang' || saved === 'muc_kien_thuc') && <span className="text-[11px] text-emerald-600">✓ đã lưu</span>}
           </div>
-          <PresetDropdown presets={KT_PRESETS} curText={val.kien_thuc_ky_nang} curMuc={val.muc_kien_thuc} ringOn="ring-indigo-300"
-            onPick={(p) => save(p ? { kien_thuc_ky_nang: p.text, muc_kien_thuc: p.muc } : { kien_thuc_ky_nang: null, muc_kien_thuc: null }, 'kien_thuc_ky_nang')} />
+          <PresetDropdown truc="kien_thuc" curText={val.kien_thuc_ky_nang} curMuc={val.muc_kien_thuc} ringOn="ring-indigo-300"
+            onPick={(p) => save(p ? { kien_thuc_ky_nang: p.noi_dung, muc_kien_thuc: p.muc } : { kien_thuc_ky_nang: null, muc_kien_thuc: null }, 'kien_thuc_ky_nang')} />
         </div>
 
         {/* THÁI ĐỘ HỌC TẬP — dropdown preset (mức + text đi kèm) */}
@@ -536,8 +600,8 @@ function NhanXet({ hsId, mon, ym, onCapture }: { hsId: string; mon: string; ym: 
             <span className="text-[12px] font-semibold text-slate-700">Thái độ học tập</span>
             {(saved === 'thai_do' || saved === 'muc_thai_do') && <span className="text-[11px] text-emerald-600">✓ đã lưu</span>}
           </div>
-          <PresetDropdown presets={TD_PRESETS} curText={val.thai_do} curMuc={val.muc_thai_do} ringOn="ring-emerald-300"
-            onPick={(p) => save(p ? { thai_do: p.text, muc_thai_do: p.muc } : { thai_do: null, muc_thai_do: null }, 'thai_do')} />
+          <PresetDropdown truc="thai_do" curText={val.thai_do} curMuc={val.muc_thai_do} ringOn="ring-emerald-300"
+            onPick={(p) => save(p ? { thai_do: p.noi_dung, muc_thai_do: p.muc } : { thai_do: null, muc_thai_do: null }, 'thai_do')} />
         </div>
         {/* KẾT LUẬN: thanh mức + chữ */}
         <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
