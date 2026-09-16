@@ -92,7 +92,7 @@ export default function XepLichBoTroYeuScreen() {
         <header className="mb-6 flex flex-wrap items-end justify-between gap-3">
           <div>
             <h1 className="text-[22px] font-bold text-slate-800">Xếp bổ trợ yếu</h1>
-            <p className="mt-1 text-[13px] text-slate-500">{tab === 'xep' ? 'Case đã chọn dạng — bấm vào ca để chốt ngày, giờ, phòng, người bổ trợ với phụ huynh.' : tab === 'ca' ? 'Ca bổ trợ sắp tới — ca nào đã có bao nhiêu em / sức chứa; tự ghép các em chờ xếp vào ca trực còn chỗ.' : 'Lịch trực bổ trợ theo khối/lớp — form xếp tự đề xuất ca trực phù hợp cho từng em.'}</p>
+            <p className="mt-1 text-[13px] text-slate-500">{tab === 'xep' ? 'Case đã chọn dạng — bấm vào ca để chốt ngày, giờ, phòng, người bổ trợ với phụ huynh.' : tab === 'ca' ? 'Ca bổ trợ sắp tới — ca nào đã có bao nhiêu em / sức chứa; tự ghép các em chờ xếp vào ca trực còn chỗ.' : 'Lịch trực bổ trợ theo khối + bậc (ca bậc cao nhận HS bậc thấp hơn) — mỗi ca tối đa 3 em, đầy là ẩn khỏi chỗ chọn.'}</p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
             {tab !== 'truc' && (
