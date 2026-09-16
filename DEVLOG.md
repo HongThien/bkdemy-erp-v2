@@ -12780,3 +12780,18 @@ người mà dừng.
 - Verify local (worktree, port 5192, Thùy đã nhập lịch trực thật lớp 8): filter Khối 8 → 5 em chờ; Đề xuất → 4 ghép được (2 ca T5 17/09
   17:00 Quang Khánh, 2 ca T6 18/09 18:30 Thảo Nguyên), 1 em 8? chưa có lịch trực; tab Ca hiện 6 ca (2–5 em). Chưa bấm Xác nhận
   (dữ liệu thật — Thùy tự bấm). tsc sạch.
+
+## 2026-09-16 (chiều) — Lịch trực theo KHỐI + BẬC, 1 ca tối đa 3 em, đầy là biến mất (Thùy chốt)
+
+Thùy: (1) 1 ca bổ trợ tối đa 3 HS, đầy là biến mất không cho assign, mọi chỗ hiện ca phải có n/3; (2) BK bổ trợ theo KHỐI không theo
+lớp, mỗi ca có người trực, luật bậc: ca 7S nhận HS 7A nhưng không ngược lại; (3) KHÔNG ưu tiên "cùng bậc trước" — ai chốt trước
+chiếm chỗ trước (bổ trợ phải báo PH).
+- Migration `202609161651_lich_truc_theo_khoi_bac.sql` (ĐÃ ÁP): cột `bac` (FK lop_bac), `suc_chua` not null default 3; 75 dòng
+  lịch trực cũ nhập theo lớp → chuyển sang (khoi, bac) CỦA LỚP đó (lop.khoi, lop.bac — vd 8B1 → khối 8 bậc B), lop_id = null
+  (cột giữ, không drop); 1 dòng "cả khối 6" không bậc → S (nhận mọi bậc). CHECK: khoi + bac not null.
+  RPC `fn_lich_truc_cua_hs`: slot cùng môn + cùng khối + `lop_bac.thu_tu(slot) ≥ thu_tu(lớp em)` (S4>A3>B2>C1).
+  RPC `fn_btyeu_ca_sap_toi`: khoá ca = (môn, ngày, giờ bđ, NGƯỜI) — bỏ phòng; sức chứa = lịch trực khớp, ca ngoài lịch trực = 3.
+- Client: `caTrucConCho()` lọc ca đầy (đếm từ caSapToi, trừ buổi của chính em khi sửa); form xếp + tự ghép chỉ thấy ca còn chỗ,
+  option ghi "n/3 em"; tab Lịch trực: bỏ "1 lớp", thêm Bậc ca (nhận HS bậc ≤), người trực BẮT BUỘC, sức chứa mặc định 3.
+- Kiểm RPC (Tùng, Toán, lớp 8B?): 11 slot khối 8 bậc ≥ B; đề xuất T4 17/09 17:00 trước. tsc sạch.
+- Lưu ý dữ liệu: `lop.bac` lệch tên lớp ở vài lớp (6S1/6S2/7S3 bac=A, 3A1 bac=S) — engine theo `lop.bac`, Thùy soát ở màn Lớp.

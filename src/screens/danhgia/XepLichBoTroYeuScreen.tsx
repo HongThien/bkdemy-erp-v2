@@ -12,7 +12,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
   listCaseChoXepLich, taoBuoiBoTroYeu, listBuoiCuaCase, goiYXepLichBoTroYeu,
-  listLichTruc, themLichTruc, ketThucLichTruc, lichTrucCuaHS, goiYTheoLichTruc, caSapToi, khoaCa,
+  listLichTruc, themLichTruc, ketThucLichTruc, lichTrucCuaHS, goiYTheoLichTruc, caSapToi, khoaCa, caTrucConCho,
   type CaseChoXep, type BuoiBoTroYeuDaXep, type GoiYXepLich, type LichTruc, type CaTrucDeXuat, type CaSapToi,
 } from '../../lib/botro_yeu'
 import { supabase } from '../../lib/supabase'
@@ -177,7 +177,7 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
   const muc1 = mucLv <= 1 // L0 không có case; phòng thủ coi như mức 1
   const [buois, setBuois] = useState<BuoiBoTroYeuDaXep[]>([])
   const [goiY, setGoiY] = useState<GoiYXepLich | null>(null)
-  const [caTruc, setCaTruc] = useState<CaTrucDeXuat[]>([]) // ca trực cụ thể (ngày thật) đã xếp ưu tiên — Thùy 09-14
+  const [caTruc, setCaTruc] = useState<(CaTrucDeXuat & { soHs: number })[]>([]) // ca trực cụ thể còn chỗ, đã xếp ưu tiên — Thùy 09-14/16
   const [trucKey, setTrucKey] = useState<string>(NGAY_KHAC) // `${slotId}|${ngay}` hoặc NGAY_KHAC
   const [loading, setLoading] = useState(true)
   const [nss, setNss] = useState<NhanSu[]>([])
@@ -211,7 +211,7 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
     setNgay(s.ngay); setGio(hhmm(s.gio_bat_dau)); setGioKt(hhmm(s.gio_ket_thuc)); setPhong(s.phong ?? null)
     setNguoiDay(s.nhan_su_id ?? (mucLv >= 3 ? null : muc1 ? g?.ta_id ?? null : g?.ganNhat?.nguoi_day_tg ?? null))
   }
-  function apDungMacDinh(g: GoiYXepLich, ct: CaTrucDeXuat[] = caTruc) {
+  function apDungMacDinh(g: GoiYXepLich, ct: (CaTrucDeXuat & { soHs: number })[] = caTruc) {
     if (ct.length) { apDungCaTruc(ct[0], g); return }
     setTrucKey(NGAY_KHAC)
     if (muc1) {
@@ -233,9 +233,12 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
 
   useEffect(() => {
     setLoading(true); setLoi(null)
-    Promise.all([listBuoiCuaCase(c.id), goiYXepLichBoTroYeu(c.hoc_sinh_id, c.mon), lichTrucCuaHS(c.hoc_sinh_id, c.mon).catch(() => [])])
-      .then(([b, g, slots]) => {
-        const ct = goiYTheoLichTruc(slots, g.ganNhat)
+    Promise.all([listBuoiCuaCase(c.id), goiYXepLichBoTroYeu(c.hoc_sinh_id, c.mon), lichTrucCuaHS(c.hoc_sinh_id, c.mon).catch(() => []), caSapToi().catch(() => [] as CaSapToi[])])
+      .then(([b, g, slots, cas]) => {
+        // Đầy (n ≥ sức chứa) thì ca biến mất khỏi danh sách chọn — Thùy 09-16. Trừ buổi của CHÍNH em (đang sửa) khỏi đếm.
+        const dem = new Map<string, number>()
+        for (const x of cas) dem.set(khoaCa(x), x.so_hs - x.hs.filter((h) => h.hoc_sinh_id === c.hoc_sinh_id).length)
+        const ct = caTrucConCho(goiYTheoLichTruc(slots, g.ganNhat), c.mon, dem)
         setBuois(b); setGoiY(g); setCaTruc(ct)
         const dangMo = b.find((x) => x.trang_thai === 'mo') // b đã sort ngày giảm dần ⇒ buổi mở gần nhất
         if (dangMo) moSua(dangMo); else apDungMacDinh(g, ct)
@@ -336,7 +339,7 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
   }
 
   const nhanMacDinh = caTruc.length
-    ? `Mặc định theo LỊCH TRỰC bổ trợ${caTruc[0].khopCaTruoc ? ' — ca khớp giờ em đã học lần trước' : ' — ca trực gần nhất'}. Đổi ca ở ô bên dưới nếu cần.`
+    ? `Mặc định theo LỊCH TRỰC khối ${caTruc[0].khoi}${caTruc[0].bac} còn chỗ${caTruc[0].khopCaTruoc ? ' — ca khớp giờ em đã học lần trước' : ' — ca gần nhất'}. Ca đầy (3 em) không hiện.`
     : muc1
     ? (goiY?.buoiSapToi.length ? `Mặc định theo buổi học tiếp theo của lớp ${goiY.lops[0]?.ten_lop ?? ''} — sửa nếu không đúng.` : 'Không tìm thấy buổi học sắp tới của lớp em (chưa có TKB?) — nhập tay.')
     : (goiY?.ganNhat ? `Mặc định theo ca bổ trợ gần nhất (${ddmmVN(goiY.ganNhat.ngay)})${mucLv >= 3 ? ' — mức 3 đổi người dạy, chọn GV cao cấp.' : '.'}` : 'Em chưa có ca bổ trợ nào trước đây — nhập tay.')
@@ -400,7 +403,7 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
                   className="w-full rounded-lg border border-indigo-300 bg-indigo-50/40 px-2 py-1.5 text-[13px] outline-none focus:border-indigo-400">
                   {caTruc.map((s, i) => (
                     <option key={`${s.id}|${s.ngay}`} value={`${s.id}|${s.ngay}`}>
-                      {i === 0 ? '▶ ' : ''}{thuCuaNgay(s.ngay)} {ddmmVN(s.ngay)} · {hhmm(s.gio_bat_dau)}–{hhmm(s.gio_ket_thuc)}{s.phong ? ` · ${s.phong}` : ''}{s.nhan_su_ten ? ` · ${s.nhan_su_ten}` : ''}{s.khopCaTruoc ? ' ★ khớp ca trước' : ''}
+                      {i === 0 ? '▶ ' : ''}{thuCuaNgay(s.ngay)} {ddmmVN(s.ngay)} · {hhmm(s.gio_bat_dau)}–{hhmm(s.gio_ket_thuc)}{s.phong ? ` · ${s.phong}` : ''}{s.nhan_su_ten ? ` · ${s.nhan_su_ten}` : ''} · {s.soHs}/{s.suc_chua} em{s.khopCaTruoc ? ' ★ khớp ca trước' : ''}
                     </option>
                   ))}
                   <option value={NGAY_KHAC}>Không theo lịch trực (TKB lớp / nhập tay)…</option>
@@ -501,7 +504,7 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
 // Slot lặp theo tuần: môn × (khối | lớp) × thứ × giờ [× phòng × người trực]. Kết thúc = đặt `hieu_luc_den` (không xoá cứng —
 // buổi đã xếp theo slot cũ vẫn giải thích được). Thêm/kết thúc vá list tại chỗ (CLAUDE.md §2 React).
 const THU_TEN: Record<number, string> = { 2: 'Thứ 2', 3: 'Thứ 3', 4: 'Thứ 4', 5: 'Thứ 5', 6: 'Thứ 6', 7: 'Thứ 7', 8: 'Chủ nhật' }
-type LopNho = { id: string; ten_lop: string; mon: string; khoi: string | null }
+type LopNho = { id: string; ten_lop: string; mon: string; khoi: string | null; bac: string | null }
 function LichTrucTab() {
   const [rows, setRows] = useState<LichTruc[]>([])
   const [lops, setLops] = useState<LopNho[]>([])
@@ -513,21 +516,20 @@ function LichTrucTab() {
   const [busy, setBusy] = useState(false)
   // form
   const [mon, setMon] = useState('Toán')
-  const [phamVi, setPhamVi] = useState<'khoi' | 'lop'>('khoi')
   const [khoi, setKhoi] = useState('')
-  const [lopId, setLopId] = useState<string | null>(null)
+  const [bac, setBac] = useState('A') // S > A > B > C — ca bậc cao nhận HS bậc thấp hơn, không ngược lại
   const [thu, setThu] = useState(6)
   const [gio, setGio] = useState('15:00')
   const [gioKt, setGioKt] = useState('16:00')
   const [phong, setPhong] = useState<string | null>(null)
   const [nhanSu, setNhanSu] = useState<string | null>(null)
   const [ghiChu, setGhiChu] = useState('')
-  const [sucChua, setSucChua] = useState('') // '' = không giới hạn
+  const [sucChua, setSucChua] = useState('3') // Thùy 09-16: 1 ca tối đa 3 em
 
   useEffect(() => {
     Promise.all([
       listLichTruc(),
-      supabase.from('lop').select('id, ten_lop, mon, khoi').eq('trang_thai', 'dang_hoc').order('ten_lop').limit(500).then(({ data }) => (data ?? []) as LopNho[]),
+      supabase.from('lop').select('id, ten_lop, mon, khoi, bac').eq('trang_thai', 'dang_hoc').order('ten_lop').limit(500).then(({ data }) => (data ?? []) as LopNho[]),
     ]).then(([r, l]) => { setRows(r); setLops(l) }).catch((e: any) => setLoi(e?.message ?? String(e))).finally(() => setLoading(false))
     listNhanSu().then((l) => setNss(l.filter((n) => n.trang_thai === 'dang_lam'))).catch(() => {})
     listPhong(true).then(setPhongs).catch(() => {})
@@ -535,7 +537,8 @@ function LichTrucTab() {
 
   const mons = useMemo(() => [...new Set(lops.map((l) => l.mon))].sort(), [lops])
   const khois = useMemo(() => [...new Set(lops.filter((l) => l.mon === mon).map((l) => l.khoi).filter(Boolean) as string[])].sort((a, b) => a.localeCompare(b, 'vi', { numeric: true })), [lops, mon])
-  const lopOpts = useMemo(() => lops.filter((l) => l.mon === mon).map((l) => ({ id: l.id, label: l.ten_lop, sub: l.khoi ? `Khối ${l.khoi}` : undefined })), [lops, mon])
+  const bacs = useMemo(() => [...new Set(lops.filter((l) => l.mon === mon && (!khoi || l.khoi === khoi)).map((l) => l.bac).filter(Boolean) as string[])], [lops, mon, khoi])
+  const BAC_TT: Record<string, number> = { S: 4, A: 3, B: 2, C: 1 }
   const nsOpts = useMemo(() => nss.map((n) => ({ id: n.id, label: n.ho_ten, sub: n.ma_ns })), [nss])
   const phongOpts = useMemo(() => phongs.map((p) => ({ id: p.ma_phong, label: p.ten_phong })), [phongs])
   const homNay = homNayVN()
@@ -543,19 +546,20 @@ function LichTrucTab() {
   const hien = rows.filter((r) => hienHetHieuLuc || conHieuLuc(r))
 
   async function them() {
-    if (phamVi === 'khoi' ? !khoi : !lopId) { setLoi(phamVi === 'khoi' ? 'Chọn khối' : 'Chọn lớp'); return }
+    if (!khoi) { setLoi('Chọn khối'); return }
+    if (!nhanSu) { setLoi('Mỗi ca phải có người trực'); return }
+    if (!(Number(sucChua) >= 1)) { setLoi('Sức chứa ≥ 1'); return }
     if (gioKt <= gio) { setLoi('Giờ kết thúc phải sau giờ bắt đầu'); return }
     setLoi(null); setBusy(true)
     try {
-      const input = { mon, khoi: phamVi === 'khoi' ? khoi : null, lop_id: phamVi === 'lop' ? lopId : null, thu, gio_bat_dau: gio, gio_ket_thuc: gioKt, phong: phong || null, nhan_su_id: nhanSu, hieu_luc_den: null, ghi_chu: ghiChu.trim() || null, suc_chua: sucChua ? Number(sucChua) : null }
+      const input = { mon, khoi, bac, lop_id: null, thu, gio_bat_dau: gio, gio_ket_thuc: gioKt, phong: phong || null, nhan_su_id: nhanSu, hieu_luc_den: null, ghi_chu: ghiChu.trim() || null, suc_chua: Number(sucChua) }
       const id = await themLichTruc(input)
-      const lop = lops.find((l) => l.id === lopId)
-      setRows((prev) => [...prev, { ...input, id, hieu_luc_tu: homNay, lop_ten: phamVi === 'lop' ? lop?.ten_lop ?? null : null, nhan_su_ten: nss.find((n) => n.id === nhanSu)?.ho_ten ?? null }])
+      setRows((prev) => [...prev, { ...input, id, hieu_luc_tu: homNay, lop_ten: null, nhan_su_ten: nss.find((n) => n.id === nhanSu)?.ho_ten ?? null }])
       setGhiChu('')
     } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(false) }
   }
   async function ketThuc(r: LichTruc) {
-    if (!confirm(`Kết thúc lịch trực ${THU_TEN[r.thu]} ${hhmm(r.gio_bat_dau)}–${hhmm(r.gio_ket_thuc)} (${r.lop_ten ?? `Khối ${r.khoi}`} · ${r.mon}) từ hôm nay? Buổi đã xếp không ảnh hưởng.`)) return
+    if (!confirm(`Kết thúc lịch trực ${THU_TEN[r.thu]} ${hhmm(r.gio_bat_dau)}–${hhmm(r.gio_ket_thuc)} (khối ${r.khoi}${r.bac} · ${r.mon}) từ hôm nay? Buổi đã xếp không ảnh hưởng.`)) return
     try { await ketThucLichTruc(r.id, homNay); setRows((prev) => prev.map((x) => x.id === r.id ? { ...x, hieu_luc_den: homNay } : x)) }
     catch (e: any) { setLoi(e?.message ?? String(e)) }
   }
@@ -567,15 +571,11 @@ function LichTrucTab() {
         <h2 className="mb-3 text-[13px] font-bold uppercase tracking-wide text-slate-500">Thêm lịch trực</h2>
         <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
           <div><label className="mb-1 block text-[11px] font-medium text-slate-500">Môn</label>
-            <select value={mon} onChange={(e) => { setMon(e.target.value); setKhoi(''); setLopId(null) }} className={sel}>{mons.map((m) => <option key={m} value={m}>{m}</option>)}</select></div>
-          <div><label className="mb-1 block text-[11px] font-medium text-slate-500">Phạm vi</label>
-            <select value={phamVi} onChange={(e) => setPhamVi(e.target.value as 'khoi' | 'lop')} className={sel}><option value="khoi">Cả khối</option><option value="lop">1 lớp (thắng khối)</option></select></div>
-          {phamVi === 'khoi' ? (
-            <div><label className="mb-1 block text-[11px] font-medium text-slate-500">Khối *</label>
-              <select value={khoi} onChange={(e) => setKhoi(e.target.value)} className={sel}><option value="">— chọn —</option>{khois.map((k) => <option key={k} value={k}>Khối {k}</option>)}</select></div>
-          ) : (
-            <div><label className="mb-1 block text-[11px] font-medium text-slate-500">Lớp *</label><SearchSelect value={lopId} onChange={setLopId} options={lopOpts} placeholder="Chọn lớp…" /></div>
-          )}
+            <select value={mon} onChange={(e) => { setMon(e.target.value); setKhoi('') }} className={sel}>{mons.map((m) => <option key={m} value={m}>{m}</option>)}</select></div>
+          <div><label className="mb-1 block text-[11px] font-medium text-slate-500">Khối *</label>
+            <select value={khoi} onChange={(e) => setKhoi(e.target.value)} className={sel}><option value="">— chọn —</option>{khois.map((k) => <option key={k} value={k}>Khối {k}</option>)}</select></div>
+          <div><label className="mb-1 block text-[11px] font-medium text-slate-500">Bậc ca * <span className="font-normal text-slate-400">(nhận HS bậc ≤)</span></label>
+            <select value={bac} onChange={(e) => setBac(e.target.value)} className={sel}>{['S', 'A', 'B', 'C'].map((b) => <option key={b} value={b}>{b}{bacs.includes(b) ? '' : ' (khối chưa có lớp bậc này)'}</option>)}</select></div>
           <div><label className="mb-1 block text-[11px] font-medium text-slate-500">Thứ</label>
             <select value={thu} onChange={(e) => setThu(Number(e.target.value))} className={sel}>{[2, 3, 4, 5, 6, 7, 8].map((t) => <option key={t} value={t}>{THU_TEN[t]}</option>)}</select></div>
           <div><label className="mb-1 block text-[11px] font-medium text-slate-500">Bắt đầu</label>
@@ -585,8 +585,8 @@ function LichTrucTab() {
           <div><label className="mb-1 block text-[11px] font-medium text-slate-500">Phòng</label><SearchSelect value={phong} onChange={setPhong} options={phongOpts} placeholder="Chọn phòng…" /></div>
           <div><label className="mb-1 block text-[11px] font-medium text-slate-500">Người trực</label><SearchSelect value={nhanSu} onChange={setNhanSu} options={nsOpts} placeholder="Chọn người…" /></div>
           <div><label className="mb-1 block text-[11px] font-medium text-slate-500">Sức chứa (em/ca)</label>
-            <input type="number" min={1} value={sucChua} onChange={(e) => setSucChua(e.target.value)} placeholder="không giới hạn" className={sel} /></div>
-          <div className="col-span-2"><label className="mb-1 block text-[11px] font-medium text-slate-500">Ghi chú</label>
+            <input type="number" min={1} value={sucChua} onChange={(e) => setSucChua(e.target.value)} className={sel} /></div>
+          <div className="col-span-1"><label className="mb-1 block text-[11px] font-medium text-slate-500">Ghi chú</label>
             <input value={ghiChu} onChange={(e) => setGhiChu(e.target.value)} placeholder="vd: trực chung với lớp 8B2…" className={sel} /></div>
           <div className="flex items-end"><button onClick={them} disabled={busy} className="h-[34px] w-full rounded-lg bg-indigo-600 text-[13px] font-semibold text-white hover:bg-indigo-700 disabled:opacity-60">{busy ? 'Đang lưu…' : '+ Thêm lịch trực'}</button></div>
         </div>
@@ -602,16 +602,16 @@ function LichTrucTab() {
           <p className="text-[13px] text-slate-400">Chưa có lịch trực nào — thêm ở trên. Khi có, form xếp bổ trợ sẽ tự đề xuất ca trực cho HS đúng khối/lớp.</p>
         ) : (
           <table className="w-full text-[13px]">
-            <thead><tr className="text-left text-[11px] uppercase tracking-wide text-slate-400"><th className="py-1.5">Môn</th><th>Phạm vi</th><th>Thứ · giờ</th><th>Phòng</th><th>Người trực</th><th>Sức chứa</th><th>Hiệu lực</th><th></th></tr></thead>
+            <thead><tr className="text-left text-[11px] uppercase tracking-wide text-slate-400"><th className="py-1.5">Môn</th><th>Khối · bậc</th><th>Thứ · giờ</th><th>Phòng</th><th>Người trực</th><th>Sức chứa</th><th>Hiệu lực</th><th></th></tr></thead>
             <tbody>
               {hien.map((r) => (
                 <tr key={r.id} className={`border-t border-slate-100 ${conHieuLuc(r) ? '' : 'text-slate-400 line-through'}`}>
                   <td className="py-2 font-medium text-slate-700">{r.mon}</td>
-                  <td>{r.lop_ten ? <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-semibold text-indigo-700">Lớp {r.lop_ten}</span> : <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-600">Khối {r.khoi}</span>}</td>
+                  <td><span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-600">Khối {r.khoi}</span> <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${r.bac === 'S' ? 'bg-rose-50 text-rose-700' : r.bac === 'A' ? 'bg-amber-50 text-amber-700' : 'bg-sky-50 text-sky-700'}`} title={`Nhận HS bậc ≤ ${r.bac} (thứ tự ${BAC_TT[r.bac] ?? '?'})`}>{r.bac}</span></td>
                   <td className="font-semibold text-slate-800">{THU_TEN[r.thu]} · {hhmm(r.gio_bat_dau)}–{hhmm(r.gio_ket_thuc)}</td>
                   <td>{r.phong ?? '—'}</td>
                   <td>{r.nhan_su_ten ?? <span className="text-slate-400">chưa phân</span>}</td>
-                  <td>{r.suc_chua ?? <span className="text-slate-400">∞</span>}</td>
+                  <td>{r.suc_chua}</td>
                   <td className="text-[12px] text-slate-500">{ddmmVN(r.hieu_luc_tu)}{r.hieu_luc_den ? ` → ${ddmmVN(r.hieu_luc_den)}` : ' →'}</td>
                   <td className="text-right">{conHieuLuc(r) && <button onClick={() => ketThuc(r)} className="text-[12px] text-slate-400 hover:text-rose-600">Kết thúc</button>}</td>
                 </tr>
@@ -663,9 +663,9 @@ function CaBoTroTab({ choXep, muc, monF, khoiF, onDaXep }: { choXep: CaseChoXep[
           let chon: CaTrucDeXuat | null = null, nguoi: string | null = null
           for (const s of ct) {
             const ng = s.nhan_su_id ?? (lv >= 3 ? null : lv <= 1 ? g.ta_id : g.ganNhat?.nguoi_day_tg ?? null)
-            const key = khoaCa({ mon: c.mon, ngay: s.ngay, gio_bat_dau: s.gio_bat_dau, phong: s.phong, nguoi_day_tg: ng })
+            const key = khoaCa({ mon: c.mon, ngay: s.ngay, gio_bat_dau: s.gio_bat_dau, nguoi_day_tg: ng })
             const n = dem.get(key) ?? soHs(key)
-            if (s.suc_chua != null && n >= s.suc_chua) continue
+            if (n >= s.suc_chua) continue
             chon = s; nguoi = ng; dem.set(key, n + 1); break
           }
           out.push(chon ? { c, ca: chon, nguoi } : { c, ca: null, nguoi: null, lyDo: 'mọi ca trực trong 28 ngày đã đầy' })
@@ -698,7 +698,7 @@ function CaBoTroTab({ choXep, muc, monF, khoiF, onDaXep }: { choXep: CaseChoXep[
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div>
             <h2 className="text-[13px] font-bold uppercase tracking-wide text-slate-500">Tự ghép vào ca trực</h2>
-            <p className="mt-0.5 text-[12px] text-slate-500">{choXep.length} em đang chờ xếp{monF || khoiF ? ' (theo filter)' : ''} — máy đề xuất ca trực còn chỗ (ưu tiên ca em đã học lần trước), m xem rồi mới xác nhận.</p>
+            <p className="mt-0.5 text-[12px] text-slate-500">{choXep.length} em đang chờ xếp{monF || khoiF ? ' (theo filter)' : ''} — máy đề xuất ca trực đúng khối + bậc còn chỗ (tối đa 3 em/ca; ưu tiên ca em đã học lần trước), m xem rồi mới xác nhận.</p>
           </div>
           {!deXuat && <button onClick={tinhDeXuat} disabled={dangTinh || !choXep.length} className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[13px] font-semibold text-white hover:bg-indigo-700 disabled:opacity-60">{dangTinh ? 'Đang tính…' : `Đề xuất ghép ${choXep.length} em`}</button>}
         </div>
@@ -713,7 +713,7 @@ function CaBoTroTab({ choXep, muc, monF, khoiF, onDaXep }: { choXep: CaseChoXep[
                   <tr key={d.c.id} className={`border-t border-slate-100 ${d.ca ? '' : 'text-slate-400'}`}>
                     <td className="py-1.5 font-medium text-slate-700">{d.c.ho_ten}</td>
                     <td>{d.c.mon}{d.c.khoi ? ` · K${d.c.khoi}` : ''}</td>
-                    <td>{d.ca ? <span className="font-semibold text-slate-800">{thuCuaNgay(d.ca.ngay)} {ddmmVN(d.ca.ngay)} · {hhmm(d.ca.gio_bat_dau)}–{hhmm(d.ca.gio_ket_thuc)}{d.ca.phong ? ` · ${d.ca.phong}` : ''}{d.ca.khopCaTruoc ? ' ★' : ''}</span> : <span className="italic">— {d.lyDo}</span>}</td>
+                    <td>{d.ca ? <span className="font-semibold text-slate-800">{thuCuaNgay(d.ca.ngay)} {ddmmVN(d.ca.ngay)} · {hhmm(d.ca.gio_bat_dau)}–{hhmm(d.ca.gio_ket_thuc)}{d.ca.phong ? ` · ${d.ca.phong}` : ''} · khối {d.ca.khoi}{d.ca.bac}{d.ca.khopCaTruoc ? ' ★' : ''}</span> : <span className="italic">— {d.lyDo}</span>}</td>
                     <td>{d.ca ? (tenNs(d.nguoi) || <span className="text-amber-600">chưa có người</span>) : ''}</td>
                   </tr>
                 ))}
@@ -736,7 +736,7 @@ function CaBoTroTab({ choXep, muc, monF, khoiF, onDaXep }: { choXep: CaseChoXep[
           <div className="space-y-2">
             {hien.map((c) => {
               const key = khoaCa(c)
-              const day = c.suc_chua != null && c.so_hs >= c.suc_chua
+              const day = c.so_hs >= c.suc_chua
               const mo = moKey === key
               return (
                 <div key={key} className={`rounded-xl border p-3 ${day ? 'border-rose-200 bg-rose-50/40' : 'border-slate-200'}`}>
@@ -745,7 +745,7 @@ function CaBoTroTab({ choXep, muc, monF, khoiF, onDaXep }: { choXep: CaseChoXep[
                       <div className="text-[14px] font-semibold text-slate-800">{thuCuaNgay(c.ngay)} {ddmmVN(c.ngay)} · {hhmm(c.gio_bat_dau)}{c.gio_ket_thuc ? `–${hhmm(c.gio_ket_thuc)}` : ''}{c.phong ? ` · ${c.phong}` : ''} <span className="font-normal text-slate-400">· {c.mon}</span></div>
                       <div className="mt-0.5 text-[12px] text-slate-500">{c.nguoi_ten ?? 'chưa có người dạy'}{c.lich_truc_pham_vi ? ` · lịch trực ${c.lich_truc_pham_vi}` : ' · ngoài lịch trực'}</div>
                     </div>
-                    <span className={`shrink-0 rounded-full px-2.5 py-1 text-[12px] font-bold ${day ? 'bg-rose-600 text-white' : 'bg-indigo-50 text-indigo-700'}`}>{c.so_hs}{c.suc_chua != null ? `/${c.suc_chua}` : ''} em{day ? ' · ĐẦY' : ''}</span>
+                    <span className={`shrink-0 rounded-full px-2.5 py-1 text-[12px] font-bold ${day ? 'bg-rose-600 text-white' : 'bg-indigo-50 text-indigo-700'}`}>{c.so_hs}/{c.suc_chua} em{day ? ' · ĐẦY' : ''}</span>
                     <span className="text-slate-300">{mo ? '▾' : '▸'}</span>
                   </button>
                   {mo && (

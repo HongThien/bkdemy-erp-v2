@@ -1696,7 +1696,7 @@
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma_cau | text |  | ('HHC'::text \|\| lpad((nextval('hinh_hoc_cau_seq'::regclass))::text, 6, '0'::text)) | PK |  |
-| ma_bai | text |  |  | FK→hinh_hoc_bai.ma_bai |  |
+| dang_chinh | text |  |  | FK→hinh_hoc_bai.ma_bai |  |
 | ma_cum | text | Y |  | FK→hinh_hoc_cum_bai.ma_cum |  |
 | mo_hinh_id | uuid | Y |  | FK→hinh_mo_hinh.id |  |
 | khoi | text |  |  |  |  |
@@ -1711,13 +1711,20 @@
 | duyet_at | timestamp with time zone | Y |  |  |  |
 | xoa_at | timestamp with time zone | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| loai_cau | text |  | 'tu_luan'::text |  |  |
+| lua_chon | jsonb | Y |  |  |  |
+| menh_de | jsonb | Y |  |  |  |
+| nguon | text |  | 'le'::text |  |  |
+| nguon_giai | text |  | 'nguoi'::text |  |  |
+| parent_ma_cau | text | Y |  | FK→hinh_hoc_cau_hoi.ma_cau |  |
+| clone_method | text | Y |  |  |  |
 
 ## hinh_hoc_cum_bai
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma_cum | text |  | ('HHCUM'::text \|\| lpad((nextval('hinh_hoc_cum_seq'::regclass))::text, 5, '0'::text)) | PK |  |
-| ma_bai | text |  |  | FK→hinh_hoc_bai.ma_bai |  |
+| ma_dang | text |  |  | FK→hinh_hoc_bai.ma_bai |  |
 | ten | text | Y |  |  |  |
 | thu_tu | smallint |  | 1 |  |  |
 | ghi_chu | text | Y |  |  |  |
@@ -2334,7 +2341,8 @@
 | ghi_chu | text | Y |  |  |  |
 | created_by | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
-| suc_chua | smallint | Y |  |  |  |
+| suc_chua | smallint |  | 3 |  |  |
+| bac | text | Y |  | FK→lop_bac.ma |  |
 
 ## linkgen_jobs
 
@@ -5252,7 +5260,7 @@ SELECT bl.hoc_sinh_id,
 | khtn_dang_tien_de | khtn_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
 | ky_thi | ky_thi_he_so_check | `CHECK ((he_so = ANY (ARRAY[1, 2])))` |
 | lich_truc_bo_tro | lich_truc_bo_tro_gio | `CHECK ((gio_ket_thuc > gio_bat_dau))` |
-| lich_truc_bo_tro | lich_truc_bo_tro_pham_vi | `CHECK (((khoi IS NOT NULL) OR (lop_id IS NOT NULL)))` |
+| lich_truc_bo_tro | lich_truc_bo_tro_pham_vi | `CHECK (((khoi IS NOT NULL) AND (bac IS NOT NULL)))` |
 | lich_truc_bo_tro | lich_truc_bo_tro_suc_chua_check | `CHECK (((suc_chua IS NULL) OR (suc_chua > 0)))` |
 | lich_truc_bo_tro | lich_truc_bo_tro_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | may_man_hs_luot | may_man_hs_luot_exp_check | `CHECK ((exp >= 0))` |
