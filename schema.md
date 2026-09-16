@@ -1699,7 +1699,6 @@
 | dang_chinh | text |  |  | FK→hinh_hoc_bai.ma_bai |  |
 | ma_cum | text | Y |  | FK→hinh_hoc_cum_bai.ma_cum |  |
 | mo_hinh_id | uuid | Y |  | FK→hinh_mo_hinh.id |  |
-| khoi | text |  |  |  |  |
 | noi_dung | text |  |  |  |  |
 | dap_an | text | Y |  |  |  |
 | loi_giai | text | Y |  |  |  |

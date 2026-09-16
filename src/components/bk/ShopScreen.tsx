@@ -17,13 +17,14 @@ const CARD = [
   { bg: '#DAFAE7', btn: '#3ECF82' }, { bg: '#FEECF7', btn: '#FF6B95' }, { bg: '#D7EFFD', btn: '#3B8BF6' },
 ]
 const TT: Record<ShopDon['trang_thai'], { ten: string; st: 'cho' | 'dat' | 'nguy' }> = { cho_giao: { ten: 'Chờ giao', st: 'cho' }, da_giao: { ten: 'Đã giao', st: 'dat' }, huy: { ten: 'Đã huỷ', st: 'nguy' } }
-type Tab = 'tatca' | 'do_an' | 'do_uong' | 'hot'
-const TABS: { key: Tab; ten: string }[] = [{ key: 'tatca', ten: 'Tất cả' }, { key: 'do_an', ten: 'Đồ ăn' }, { key: 'do_uong', ten: 'Đồ uống' }, { key: 'hot', ten: 'Hot' }]
+type Tab = 'tatca' | 'do_an' | 'do_uong' | 'hot' | 'lich_su'
+const TABS: { key: Tab; ten: string }[] = [{ key: 'tatca', ten: 'Tất cả' }, { key: 'do_an', ten: 'Đồ ăn' }, { key: 'do_uong', ten: 'Đồ uống' }, { key: 'hot', ten: 'Hot' }, { key: 'lich_su', ten: 'Lịch sử' }]
 
 export function ShopScreen({ xaiDuoc, diemThang, chuoi, diemMoiNgay, onChanged, hoTro = 'TA' }: { xaiDuoc: number; diemThang: number; chuoi: number; diemMoiNgay: number; onChanged: () => void; hoTro?: string }) {
   const [items, setItems] = useState<ShopVatPham[] | null>(null)
   const [don, setDon] = useState<ShopDon[]>([])
   const [tab, setTab] = useState<Tab>('tatca')
+  const [q, setQ] = useState('')
   const [busy, setBusy] = useState(false)
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null)
   const [xacNhan, setXacNhan] = useState<ShopVatPham | null>(null)
@@ -35,8 +36,11 @@ export function ShopScreen({ xaiDuoc, diemThang, chuoi, diemMoiNgay, onChanged, 
     try { await doiVatPham(v.id); setMsg({ ok: true, text: `Đã đổi ${v.ten} — chờ giao 🎉` }); setXacNhan(null); await load(); onChanged() }
     catch (e: any) { setMsg({ ok: false, text: e?.message ?? String(e) }) } finally { setBusy(false) }
   }
-  // lọc theo tab đang mở — filter UI thuần trên list đã fetch
-  const hien = (items ?? []).filter((v) => tab === 'tatca' || (tab === 'hot' ? v.nhan === 'hot' : v.loai === tab))
+  // lọc theo tab (kệ) + ô tìm theo tên — filter UI thuần trên list đã fetch (§2.0: chỉ sort/filter theo lựa chọn UI đang mở)
+  const kw = q.trim().toLowerCase()
+  const hien = (items ?? [])
+    .filter((v) => tab === 'lich_su' ? false : tab === 'tatca' || (tab === 'hot' ? v.nhan === 'hot' : v.loai === tab))
+    .filter((v) => !kw || v.ten.toLowerCase().includes(kw) || (v.mo_ta ?? '').toLowerCase().includes(kw))
 
   return (
     <div className="flex min-h-0 flex-1 flex-col gap-1">
@@ -73,20 +77,50 @@ export function ShopScreen({ xaiDuoc, diemThang, chuoi, diemMoiNgay, onChanged, 
         <span className="font-hand shrink-0 -rotate-6 pr-1 text-right text-[10.5px] italic leading-tight text-[#2F73F6]">Làm task<br />Tích điểm<br />Đổi quà xịn! ♡</span>
       </div>
 
-      {/* tab kệ */}
-      <div className="flex gap-1">
+      {/* tab kệ (kèm tab Lịch sử giao dịch) — cuộn ngang khi không đủ chỗ (5 tab hơi dài ở màn hẹp) */}
+      <div className="flex gap-1 overflow-x-auto">
         {TABS.map((t) => (
           <button key={t.key} onClick={() => setTab(t.key)}
-            className={`flex-1 rounded-full py-1.5 text-[11.5px] font-bold transition ${tab === t.key ? 'bg-[#2F73F6] text-white shadow' : 'bg-white/90 text-[#2F73F6]'}`}>{t.ten}</button>
+            className={`shrink-0 flex-1 whitespace-nowrap rounded-full px-2.5 py-1.5 text-[11.5px] font-bold transition ${tab === t.key ? 'bg-[#2F73F6] text-white shadow' : 'bg-white/90 text-[#2F73F6]'}`}>{t.ten}</button>
         ))}
       </div>
 
+      {/* Ô tìm quà — chỉ hiện ở tab kệ, không hiện ở Lịch sử */}
+      {tab !== 'lich_su' && (
+        <div className="relative">
+          <input value={q} onChange={(e) => setQ(e.target.value)}
+            placeholder="🔎 Tìm quà theo tên…"
+            className="w-full rounded-full bg-white/90 px-3 py-1.5 text-[12px] outline-none placeholder:text-[#9AA5C4] focus:ring-2 focus:ring-[#2F73F6]/40" />
+          {q && (
+            <button onClick={() => setQ('')} aria-label="Xoá tìm"
+              className="absolute right-1 top-1/2 -translate-y-1/2 rounded-full px-2 py-0.5 text-[12px] text-[#9AA5C4] active:bg-slate-100">✕</button>
+          )}
+        </div>
+      )}
+
       {msg && <p className={`rounded-2xl px-3 py-1.5 text-[12px] ${msg.ok ? 'bg-[#E8F9EF] text-[#1E8A52]' : 'bg-[#FFE3EA] text-[#C0355A]'}`}>{msg.text}</p>}
 
-      {/* kệ hàng — cuộn nội bộ */}
+      {/* nội dung: tab kệ → lưới quà; tab Lịch sử → danh sách đơn đã đổi */}
       <div className="min-h-0 flex-1 overflow-y-auto">
-        {items === null ? <p className="py-4 text-center text-[13px] text-[#63709A]">Đang tải…</p>
-          : !hien.length ? <p className="rounded-2xl bg-white/80 py-4 text-center text-[12.5px] text-[#63709A]">Kệ này chưa có món nào.</p>
+        {tab === 'lich_su' ? (
+          items === null ? <p className="py-4 text-center text-[13px] text-[#63709A]">Đang tải…</p>
+          : don.length === 0 ? <p className="rounded-2xl bg-white/80 py-4 text-center text-[12.5px] text-[#63709A]">Chưa có giao dịch nào.</p>
+          : (
+            <div className="rounded-[18px] bg-white/90 px-2.5 py-2">
+              <p className="font-bubble text-[12.5px] font-extrabold text-[#16224D]">🧾 Lịch sử giao dịch ({don.length})</p>
+              <div className="flex flex-col divide-y divide-[#EEF3FF]">
+                {don.map((d) => (
+                  <div key={d.id} className="flex items-center gap-2 py-1.5">
+                    <span className="min-w-0 flex-1 truncate text-[12px] font-bold text-[#16224D]">{d.ten_vat_pham}</span>
+                    <span className="text-[10.5px] text-[#63709A]">🪙{d.gia_diem} · {ddmmVN(d.created_at.slice(0, 10))}</span>
+                    <BKStatusPill status={TT[d.trang_thai].st}>{TT[d.trang_thai].ten}</BKStatusPill>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
+        ) : items === null ? <p className="py-4 text-center text-[13px] text-[#63709A]">Đang tải…</p>
+          : !hien.length ? <p className="rounded-2xl bg-white/80 py-4 text-center text-[12.5px] text-[#63709A]">{kw ? `Không thấy quà khớp "${q}".` : 'Kệ này chưa có món nào.'}</p>
           : (
             <div className="grid grid-cols-3 gap-1">
               {hien.map((v) => {
@@ -114,20 +148,6 @@ export function ShopScreen({ xaiDuoc, diemThang, chuoi, diemMoiNgay, onChanged, 
               })}
             </div>
           )}
-        {don.length > 0 && (
-          <div className="mt-1 rounded-[18px] bg-white/90 px-2.5 py-2">
-            <p className="font-bubble text-[12.5px] font-extrabold text-[#16224D]">🧾 Đơn của tôi</p>
-            <div className="flex flex-col divide-y divide-[#EEF3FF]">
-              {don.map((d) => (
-                <div key={d.id} className="flex items-center gap-2 py-1.5">
-                  <span className="min-w-0 flex-1 truncate text-[12px] font-bold text-[#16224D]">{d.ten_vat_pham}</span>
-                  <span className="text-[10.5px] text-[#63709A]">🪙{d.gia_diem} · {ddmmVN(d.created_at.slice(0, 10))}</span>
-                  <BKStatusPill status={TT[d.trang_thai].st}>{TT[d.trang_thai].ten}</BKStatusPill>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
 
       <BKBottomSheet open={!!xacNhan} onClose={() => setXacNhan(null)}>
