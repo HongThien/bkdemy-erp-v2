@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-224 bảng · 18 view · 0 enum · 70 trigger · 372 function
+224 bảng · 18 view · 0 enum · 70 trigger · 373 function
 
 ## _app_secrets
 
@@ -1376,13 +1376,17 @@
 | mon | text |  | 'Toán'::text |  |  |
 | ma_bai | text |  | ('HH.'::text \|\| lpad((nextval('hinh_bai_v3_seq'::regclass))::text, 4, '0'::text)) |  |  |
 | de_bai | text |  |  |  |  |
-| anh_de | text |  |  |  |  |
+| anh_de | text | Y |  |  |  |
 | nguon | text | Y |  |  |  |
 | khoi | text | Y |  |  |  |
 | trang_thai | text |  | 'tam'::text |  | `tam` · `chinh` |
 | created_by | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| mo_hinh_id | uuid | Y |  | FK→hinh_mo_hinh.id |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
 
 ## hinh_baitoan
 
@@ -4719,7 +4723,7 @@ SELECT bl.hoc_sinh_id,
 | hgt_cau_hoi_yeu_cau_giai | hgt_cau_hoi_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
 | hgt_cau_menh_de | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | hgt_cau_menh_de | trg_log_doi_dang | AFTER | UPDATE | _trg_log_doi_dang |
-| hinh_baitoan | hinh_baitoan_gen_ma_trg | BEFORE | INSERT | hinh_baitoan_gen_ma |
+| hinh_baitoan | hinh_baitoan_gen_ma_trg | BEFORE | INSERT/UPDATE | hinh_baitoan_gen_ma |
 | hinh_baitoan_bien_the | hinh_bien_the_thu_hoi_dien | AFTER | UPDATE | hinh_form_dien_thu_hoi |
 | hinh_baitoan_yeu_cau_giai | hinh_baitoan_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
 | hinh_bien_the_yeu_cau_giai | hinh_bien_the_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
@@ -4999,6 +5003,7 @@ SELECT bl.hoc_sinh_id,
 - `fn_ta_viec_thang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ho_ten text, an_xep_hang boolean, ten_lop text, ngay date, tab text, kq text, ly_do text)
 - `fn_tai_lieu_facets()` → TABLE(loai text, mon text)
 - `fn_test_dau_vao_phieu(p_ca_test_id uuid)` → jsonb
+- `fn_test_dau_vao_thong_ke(p_mon text, p_thang text DEFAULT NULL::text, p_khoi text DEFAULT NULL::text)` → TABLE(nhom text, tong integer, dang_test integer, hoan_thanh integer, cho_cham integer, da_cham integer, cho_tra integer, da_tra integer, da_vao_lop integer)
 - `fn_thu_cua_ngay(p_ngay date)` → smallint
 - `fn_tich_luy(p_ym text)` → jsonb
 - `fn_tich_luy_chot_thang(p_ky date)` → integer

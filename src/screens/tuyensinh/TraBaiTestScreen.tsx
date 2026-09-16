@@ -1,5 +1,6 @@
 // Trả bài test đầu vào (Story 4) — tab RIÊNG, tương đương Chấm test (Thùy chốt 07-19). Sinh sớm ngay khi
-// điểm danh đóng; CHẶN đóng tới khi đủ 3 nguồn: chấm xong + scan-đã-chấm + đã chọn lớp đề xuất.
+// điểm danh đóng; CHẶN đóng tới khi đủ 2 nguồn: chấm xong + đã chọn lớp đề xuất (15/09 bỏ "scan-đã-chấm" —
+// khâu scan không còn trong luồng, gate đó khoá nút "Đã gửi" vĩnh viễn).
 // ⭐ 12/09 (CEO, kit v2) — 2 thứ TÁCH BẠCH: (1) PHIẾU gửi PH = bản in đẹp (PhieuTestDauVao.tsx, read-only);
 // (2) màn ĐÁNH GIÁ của GV = form riêng "gần giống" phong cách đó — click 1 HS ⇒ popup màn hình to:
 // TRÁI = form nhập (kỹ năng 5 mức · nhận xét · lớp đề xuất) style navy/gold, PHẢI = phiếu thật xem trước,
@@ -9,17 +10,21 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import {
-  listCanTraBai, listDaTraBai, dongTraBai, getPhieuKetQua, setNhanXet, paragraphNhanXet, mucKyNang,
-  timNhanXetMau, luuNhanXetMau,
+  listCanTraBai, listDaTraBaiTheoThang, dongTraBai, moLaiTraBai, getPhieuKetQua, setNhanXet, paragraphNhanXet, mucKyNang,
+  timNhanXetMau, luuNhanXetMau, dsThangGanDay, nhanThang,
   type CaTestChoTraBai, type PhieuKetQua, type NhanXet,
 } from '../../lib/detest'
 import { listLop } from '../../lib/nhansu'
 import { updateUngVien } from '../../lib/tuyensinh'
 import { useStore } from '../../store/useStore'
 import SearchSelect from '../../components/SearchSelect'
-import { PhieuCard, PhieuTestModal, moPopupXuatAnh, ensureFonts, Icon, I, PHIEU_W, NAVY, NAVY_DAM, GOLD, GOLD_SANG, NEN, CHU, CHU_PHU, FONT } from './PhieuTestDauVao'
+import { PhieuCard, moPopupXuatAnh, ensureFonts, Icon, I, PHIEU_W, NAVY, NAVY_DAM, GOLD, GOLD_SANG, NEN, CHU, CHU_PHU, FONT } from './PhieuTestDauVao'
 
-const NHO: { loc: 'toi' | 'tatca' | null } = { loc: null }
+// ⭐ CEO 15/09: subtab "Đã trả" theo THÁNG (trước chỉ 1 mục gập "xem lại", không sửa được) — bấm ca đã trả mở
+// ĐÚNG form GV (sửa kỹ năng / nhận xét / lớp, copy lại ảnh); cần đưa về hàng đợi thì "↩ Mở lại trả bài".
+type Sub = 'can' | 'da'
+const NHO: { loc: 'toi' | 'tatca' | null; sub: Sub; thang: string | null } = { loc: null, sub: 'can', thang: null }
+const THANGS = dsThangGanDay(12)
 
 export default function TraBaiTestScreen() {
   const me = useStore((s) => s.me)
@@ -28,32 +33,47 @@ export default function TraBaiTestScreen() {
   const [daTraBai, setDaTraBai] = useState<CaTestChoTraBai[]>([])
   const [loading, setLoading] = useState(true)
   const [loc, setLoc] = useState<'toi' | 'tatca'>(NHO.loc ?? (myId ? 'toi' : 'tatca'))
-  const [openId, setOpenId] = useState<string | null>(null)   // ca đang đánh giá (popup form)
-  const [xemId, setXemId] = useState<string | null>(null)     // ca đã trả — chỉ xem lại/copy
-  const [xemPhieu, setXemPhieu] = useState<PhieuKetQua | null>(null)
-  useEffect(() => { NHO.loc = loc }, [loc])
+  const [sub, setSub] = useState<Sub>(NHO.sub)
+  const [thang, setThang] = useState<string | null>(NHO.thang ?? THANGS[0])
+  const [tim, setTim] = useState('')
+  const [openId, setOpenId] = useState<string | null>(null)   // ca đang mở form GV (cần trả HOẶC đã trả)
+  useEffect(() => { NHO.loc = loc; NHO.sub = sub; NHO.thang = thang }, [loc, sub, thang])
 
   async function reload() {
     setLoading(true)
-    try { const [c, t] = await Promise.all([listCanTraBai(), listDaTraBai()]); setCanTraBai(c); setDaTraBai(t) }
+    try { const [c, t] = await Promise.all([listCanTraBai(), listDaTraBaiTheoThang(thang)]); setCanTraBai(c); setDaTraBai(t) }
     finally { setLoading(false) }
   }
-  useEffect(() => { reload() }, [])
+  useEffect(() => { reload() }, []) // eslint-disable-line
+  const lanDau = useRef(true)
   useEffect(() => {
-    if (!xemId) { setXemPhieu(null); return }
-    getPhieuKetQua(xemId).then(setXemPhieu).catch(() => setXemPhieu(null))
-  }, [xemId])
+    if (lanDau.current) { lanDau.current = false; return }
+    let alive = true
+    listDaTraBaiTheoThang(thang).then((t) => alive && setDaTraBai(t)).catch(() => {})
+    return () => { alive = false }
+  }, [thang])
 
   const cuaToi = useMemo(() => canTraBai.filter((c) => c.nguoiTraBaiId === myId), [canTraBai, myId])
   const shown = loc === 'toi' ? cuaToi : canTraBai
-  const patch = (id: string, p: Partial<CaTestChoTraBai>) => setCanTraBai((s) => s.map((x) => (x.id === id ? { ...x, ...p } : x)))
+  const q = tim.trim().toLowerCase()
+  const daShown = q ? daTraBai.filter((c) => c.hoTenHs.toLowerCase().includes(q)) : daTraBai
+  const patch = (id: string, p: Partial<CaTestChoTraBai>) => {
+    setCanTraBai((s) => s.map((x) => (x.id === id ? { ...x, ...p } : x)))
+    setDaTraBai((s) => s.map((x) => (x.id === id ? { ...x, ...p } : x)))
+  }
   const daDong = (id: string) => {
     const it = canTraBai.find((x) => x.id === id)
     setCanTraBai((s) => s.filter((x) => x.id !== id))
-    if (it) setDaTraBai((s) => [{ ...it, choLopDeXuat: false }, ...s])
+    if (it) setDaTraBai((s) => [{ ...it, choLopDeXuat: false, traBaiXongAt: new Date().toISOString() }, ...s])
     setOpenId(null)
   }
-  const openItem = openId ? canTraBai.find((c) => c.id === openId) ?? null : null
+  const moLai = (id: string) => {
+    const it = daTraBai.find((x) => x.id === id)
+    setDaTraBai((s) => s.filter((x) => x.id !== id))
+    if (it) setCanTraBai((s) => [...s, { ...it, traBaiXongAt: null }].sort((a, b) => a.ngay.localeCompare(b.ngay)))
+    setOpenId(null)
+  }
+  const openItem = openId ? [...canTraBai, ...daTraBai].find((c) => c.id === openId) ?? null : null
 
   return (
     <div className="h-full overflow-auto">
@@ -61,24 +81,62 @@ export default function TraBaiTestScreen() {
       <div className="mb-3 flex flex-wrap items-center gap-2">
         <div>
           <h2 className="text-[20px] font-semibold text-slate-800">Trả bài test đầu vào</h2>
-          <p className="text-[12px] text-slate-400">Bấm vào học sinh → đánh giá (kỹ năng · nhận xét · lớp) có phiếu xem trước → Copy ảnh gửi Zalo cho PH → Đã gửi, đóng.</p>
+          <p className="text-[12px] text-slate-400">{sub === 'can' ? 'Bấm vào học sinh → đánh giá (kỹ năng · nhận xét · lớp) có phiếu xem trước → Copy ảnh gửi Zalo cho PH → Đã gửi, đóng.' : 'Ca đã trả bài. Bấm vào để sửa nhận xét / lớp, copy lại ảnh; cần gửi lại thì "Mở lại trả bài".'}</p>
         </div>
-        <div className="ml-auto inline-flex rounded-full bg-slate-100 p-0.5">
-          {([['toi', `Của tôi (${cuaToi.length})`], ['tatca', `Tất cả (${canTraBai.length})`]] as const).map(([k, lbl]) => (
-            <button key={k} onClick={() => setLoc(k)} className={`rounded-full px-3.5 py-1.5 text-[13px] font-semibold transition ${loc === k ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{lbl}</button>
-          ))}
+        <div className="ml-auto flex flex-wrap items-center gap-2">
+          <div className="inline-flex rounded-full bg-slate-100 p-0.5">
+            {([['can', `Cần trả (${canTraBai.length})`], ['da', `Đã trả (${daTraBai.length})`]] as const).map(([k, lbl]) => (
+              <button key={k} onClick={() => setSub(k)} className={`rounded-full px-3.5 py-1.5 text-[13px] font-semibold transition ${sub === k ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{lbl}</button>
+            ))}
+          </div>
+          {sub === 'can' ? (
+            <div className="inline-flex rounded-full bg-slate-100 p-0.5">
+              {([['toi', `Của tôi (${cuaToi.length})`], ['tatca', `Tất cả (${canTraBai.length})`]] as const).map(([k, lbl]) => (
+                <button key={k} onClick={() => setLoc(k)} className={`rounded-full px-3.5 py-1.5 text-[13px] font-semibold transition ${loc === k ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{lbl}</button>
+              ))}
+            </div>
+          ) : (
+            <>
+              <select value={thang ?? ''} onChange={(e) => setThang(e.target.value || null)} className="min-h-[34px] rounded-full border border-slate-200 bg-white px-2.5 text-[13px]">
+                <option value="">Mọi tháng</option>
+                {THANGS.map((t) => <option key={t} value={t}>Tháng {nhanThang(t)}</option>)}
+              </select>
+              <input value={tim} onChange={(e) => setTim(e.target.value)} placeholder="🔎 Tên học sinh" className="min-h-[34px] w-40 rounded-full border border-slate-200 bg-white px-3 text-[13px] outline-none focus:border-indigo-300" />
+            </>
+          )}
           <button onClick={reload} title="Quét lại" className="rounded-full px-2 text-[14px] text-slate-400 hover:text-indigo-600">↻</button>
         </div>
       </div>
 
-      {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : shown.length === 0 ? (
+      {sub === 'da' ? (
+        loading ? <p className="text-sm text-slate-400">Đang tải…</p> : daShown.length === 0 ? (
+          <div className="rounded-lg border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">{q ? 'Không có ca nào khớp tên.' : 'Chưa có ca nào trả bài trong khoảng này.'}</div>
+        ) : (
+          <div className="grid gap-2.5 sm:grid-cols-2">
+            {daShown.map((c) => (
+              <button key={c.id} onClick={() => setOpenId(c.id)} className="rounded-2xl border border-slate-100 bg-white p-3.5 text-left shadow-sm hover:shadow-md">
+                <div className="flex items-start gap-2">
+                  <div className="min-w-0 flex-1">
+                    <div className="text-[14px] font-semibold text-slate-800">{c.hoTenHs}</div>
+                    <div className="mt-0.5 text-[12px] text-slate-400">{c.mon}{c.khoi ? ` · Khối ${c.khoi}` : ''} · {new Date(c.ngay + 'T00:00:00').toLocaleDateString('vi-VN')}{c.diemNhap != null ? ` · ${c.diemNhap}đ` : ''}</div>
+                  </div>
+                  {c.nguoiTraBaiTen && <span className="shrink-0 rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-600">👤 {c.nguoiTraBaiTen}</span>}
+                </div>
+                <div className="mt-1.5 flex flex-wrap gap-1">
+                  <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-700">✓ Đã trả {c.traBaiXongAt ? new Date(c.traBaiXongAt).toLocaleDateString('vi-VN') : ''}</span>
+                </div>
+              </button>
+            ))}
+          </div>
+        )
+      ) : loading ? <p className="text-sm text-slate-400">Đang tải…</p> : shown.length === 0 ? (
         <div className="rounded-lg border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">
           {loc === 'toi' && canTraBai.length > 0 ? `Không có ca nào gán cho bạn — hàng đợi chung còn ${canTraBai.length} ca.` : 'Không có bài nào cần trả.'}
         </div>
       ) : (
         <div className="grid gap-2.5 sm:grid-cols-2">
           {shown.map((c) => {
-            const thieu = [c.choChamXong && 'chờ chấm', c.choScanDaCham && 'chờ scan bài đã chấm', c.choLopDeXuat && 'chờ chọn lớp'].filter(Boolean) as string[]
+            const thieu = [c.choChamXong && 'chờ chấm', c.choLopDeXuat && 'chờ chọn lớp'].filter(Boolean) as string[]
             return (
               <button key={c.id} onClick={() => setOpenId(c.id)} className="rounded-2xl border border-slate-100 bg-white p-3.5 text-left shadow-sm hover:shadow-md">
                 <div className="flex items-start gap-2">
@@ -99,21 +157,8 @@ export default function TraBaiTestScreen() {
         </div>
       )}
 
-      {daTraBai.length > 0 && (
-        <details className="mt-5">
-          <summary className="cursor-pointer text-[12px] font-medium text-emerald-700">✓ Đã trả bài ({daTraBai.length})</summary>
-          <div className="mt-2 grid gap-2 sm:grid-cols-2">
-            {daTraBai.map((c) => (
-              <button key={c.id} onClick={() => setXemId(c.id)} className="rounded-xl border border-slate-100 bg-white px-3 py-2 text-left text-[12px] text-slate-500 shadow-sm hover:shadow-md">
-                <span className="font-semibold text-slate-700">{c.hoTenHs}</span> · {c.mon}{c.diemNhap != null ? ` · ${c.diemNhap}đ` : ''} <span className="text-slate-300">· xem lại</span>
-              </button>
-            ))}
-          </div>
-        </details>
-      )}
     </div>
-    {openItem && <DanhGiaGvModal c={openItem} onClose={() => setOpenId(null)} onPatch={(p) => patch(openItem.id, p)} onDone={() => daDong(openItem.id)} />}
-    {xemPhieu && <PhieuTestModal p={xemPhieu} onClose={() => setXemId(null)} />}
+    {openItem && <DanhGiaGvModal c={openItem} onClose={() => setOpenId(null)} onPatch={(p) => patch(openItem.id, p)} onDone={() => daDong(openItem.id)} onReopen={() => moLai(openItem.id)} />}
     </div>
   )
 }
@@ -166,7 +211,8 @@ function ChonMuc({ icon, ten, muc, onPick }: { icon: string; ten: string; muc: n
   )
 }
 
-function DanhGiaGvModal({ c, onClose, onPatch, onDone }: { c: CaTestChoTraBai; onClose: () => void; onPatch: (p: Partial<CaTestChoTraBai>) => void; onDone: () => void }) {
+function DanhGiaGvModal({ c, onClose, onPatch, onDone, onReopen }: { c: CaTestChoTraBai; onClose: () => void; onPatch: (p: Partial<CaTestChoTraBai>) => void; onDone: () => void; onReopen: () => void }) {
+  const daTra = !!c.traBaiXongAt   // ca đã trả: form vẫn sửa được (autosave), nút đóng → "Mở lại trả bài"
   const [phieu, setPhieu] = useState<PhieuKetQua | null>(null)
   const [nx, setNxRaw] = useState<NhanXet>(() => chuanHoaNx(c.nhanXet))
   const [lopId, setLopIdRaw] = useState<string | null>(c.lopDeXuatId)
@@ -224,8 +270,15 @@ function DanhGiaGvModal({ c, onClose, onPatch, onDone }: { c: CaTestChoTraBai; o
     try { await flush(); await dongTraBai(c.id, c.ungVienId, lopId); onDone() }
     catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
   }
+  async function moLai() {
+    if (!window.confirm(`Mở lại trả bài cho ${c.hoTenHs}? Ca sẽ quay về hàng đợi "Cần trả" (nhận xét, lớp vẫn giữ).`)) return
+    setBusy(true); setErr(null)
+    try { await flush(); await moLaiTraBai(c.id); onReopen() }
+    catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
+  }
 
-  const conThieu = [c.choChamXong && 'chờ chấm xong', c.choScanDaCham && 'chờ scan bài đã chấm', !lopId && 'chưa chọn lớp đề xuất'].filter(Boolean) as string[]
+  // 15/09: bỏ "chờ scan bài đã chấm" (khâu scan không còn trong luồng) — chỉ cần chấm xong + lớp đề xuất.
+  const conThieu = [c.choChamXong && 'chờ chấm xong', !lopId && 'chưa chọn lớp đề xuất'].filter(Boolean) as string[]
   const tenLop = lopOpts.find((o) => o.id === lopId)?.label ?? phieu?.lopDeXuat?.tenLop ?? null
   // Phiếu xem trước = số liệu DB + nhận xét/lớp ĐANG nhập (không chờ DB) — GV thấy đúng cái PH sẽ nhận.
   // GV/TG chính của lớp lấy từ phiếu DB (setLopId đã refetch sau khi lưu); lớp vừa đổi mà chưa refetch xong ⇒ tạm null.
@@ -240,14 +293,17 @@ function DanhGiaGvModal({ c, onClose, onPatch, onDone }: { c: CaTestChoTraBai; o
         <div className="min-w-0">
           <div className="text-[14px] font-semibold">{c.hoTenHs} <span className="font-normal text-slate-400">· {c.mon}{c.khoi ? ` · Khối ${c.khoi}` : ''}{c.diemNhap != null ? ` · ${c.diemNhap}/10` : ''}</span></div>
           <div className="text-[11px] text-slate-400">
-            {luu === 'dang' ? 'Đang lưu nháp…' : luu === 'xong' ? '✓ Đã lưu nháp' : 'Nháp tự lưu khi nhập'}
-            {conThieu.length > 0 && <span className="ml-2 text-amber-300">· còn thiếu: {conThieu.join(', ')}</span>}
+            {daTra && <span className="mr-2 rounded-full bg-emerald-500/20 px-2 py-0.5 font-semibold text-emerald-300">✓ Đã trả bài {new Date(c.traBaiXongAt!).toLocaleString('vi-VN')}</span>}
+            {luu === 'dang' ? 'Đang lưu…' : luu === 'xong' ? '✓ Đã lưu' : daTra ? 'Sửa gì lưu ngay' : 'Nháp tự lưu khi nhập'}
+            {!daTra && conThieu.length > 0 && <span className="ml-2 text-amber-300">· còn thiếu: {conThieu.join(', ')}</span>}
           </div>
         </div>
         <div className="ml-auto flex flex-wrap items-center gap-2">
           {c.baiDaChamUrl && <a href={c.baiDaChamUrl} target="_blank" rel="noreferrer" className="rounded-md border border-slate-500 px-3 py-1.5 text-[13px] hover:bg-slate-700">📄 Bài đã chấm</a>}
           <button onClick={xuatAnh} disabled={!phieu} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium hover:bg-indigo-500 disabled:opacity-40">📋 Copy ảnh gửi PH</button>
-          <button onClick={daGui} disabled={busy || conThieu.length > 0} title={conThieu.join(', ')} className="rounded-md bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold hover:bg-emerald-500 disabled:opacity-40">{busy ? 'Đang xử lý…' : '✓ Đã gửi, đóng'}</button>
+          {daTra
+            ? <button onClick={moLai} disabled={busy} className="rounded-md border border-amber-400/60 px-3 py-1.5 text-[13px] font-medium text-amber-200 hover:bg-amber-500/10 disabled:opacity-40">↩ Mở lại trả bài</button>
+            : <button onClick={daGui} disabled={busy || conThieu.length > 0} title={conThieu.join(', ')} className="rounded-md bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold hover:bg-emerald-500 disabled:opacity-40">{busy ? 'Đang xử lý…' : '✓ Đã gửi, đóng'}</button>}
           <button onClick={dongModal} className="rounded-md border border-slate-500 px-3 py-1.5 text-[13px] hover:bg-slate-700">Đóng</button>
         </div>
         {err && <div className="w-full text-[12px] text-rose-300">{err}</div>}

@@ -12723,3 +12723,44 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
 - Nguồn: `phan_cong_lop` (vai_tro gv|tg, la_chinh) + `nhan_su.anh_url` (avatar Supabase Storage public `avatars/`, 21/40 nhân sự có ảnh). Mig `202609151030_test_dau_vao_phieu_gv_tg_chinh.sql`: `fn_test_dau_vao_phieu.lopDeXuat` thêm `gvChinh`/`tgChinh` `{hoTen, anhUrl}|null` (ưu tiên la_chinh, không có thì người đầu theo tên; lớp không có ai ⇒ null ⇒ phiếu bỏ ô). Áp `--only`, schema.md refresh.
 - `PhieuTestDauVao.tsx` khối 5 = grid 2 nửa: trái badge + câu dẫn, phải 2 avatar 86px viền gold + tên (2 dòng) + nhãn; không có ảnh ⇒ vòng navy chữ cái đầu. `moPopupXuatAnh` fetch thêm 2 URL avatar → data URL (đã kiểm CORS Storage OK, 500KB jpg). `detest.ts` type `NguoiPhieu`. `TraBaiTestScreen` phiếu xem trước lấy gvChinh/tgChinh từ phiếu DB khi cùng lớp (setLopId đã refetch sau lưu). Verify app local: ca Trịnh Bảo Lan 4A1 (2 ảnh thật) và Lê Hải Đăng 7B2 (TG chưa ảnh ⇒ "NG"). CEO sửa 1 vòng: ảnh to hơn, chia 2 nửa đều. Chưa commit (chưa được bảo).
 - Lưu ý dữ liệu: lớp 12B1 có cùng 1 người (Trần Hoàng Đạt) vừa gv chính vừa tg chính ⇒ phiếu in 2 ảnh giống nhau — Ops rà `phan_cong_lop`.
+
+**(CEO 15/09 "Tuệ Nhi lúc nhập liệu sao lại có 39 câu, đề lớp 7 có 34" → "Gán lại nhé. Và làm như m nói")**
+- Truy log: Ops tạo ứng viên Lê Nguyễn Tuệ Nhi **khối 8** (12/09 18:01:45) → 2s sau auto-gán đề K8 "Khối 7 lên 8" 39 câu (đúng theo dữ liệu lúc đó) → 18:11 sửa khối → 6 → 14/09 sửa → 7. Ca KHÔNG được gán lại đề khi khối đổi; TA tích 34/39 dòng của đề K8 theo bài giấy K7 ⇒ kết quả gắn sai câu. Lê Hải Đăng từng dính y hệt (tạo khối 8 → 7), Ops đã "loại" ứng viên cũ và tạo lại ứng viên mới khối 7 nên phiếu hiện tại đúng; hồ sơ cũ (ca ecb13698, 39 câu/30 kq) vẫn nằm DB.
+- Fix chống tái diễn: `CHO_CHAM_SELECT` join `tai_lieu:tai_lieu_id(khoi, ten)` → `CaTestChoCham.deKhoi/deTen/lechKhoi`; `ChamTestScreen` badge đỏ "⚠ Đề khối 8 ≠ HS khối 7" ở card + banner trong màn chấm kèm nút "Gán lại đề đang dùng (khối X)" (confirm nêu số câu đã tích sẽ mất); `DiemDanhTestScreen` card cũng nêu cờ + nút gán lại. tsc sạch.
+- Gán lại Tuệ Nhi (CEO gật): bấm nút mới trong app (server 5173, dev quick-login admin) → đề K7 "đang dùng" hoá ra là bản học thuật SINH LẠI 14/09 11:41 chỉ **32 câu** (bản 07/09 mới 34 câu — bản Tuệ Nhi làm trên giấy 12/09). Gán tiếp bản 07/09 (`8fc6f108`) qua `import("/src/lib/detest.ts").ganDeCaTest` trong tab app (cùng code path, cùng phiên đăng nhập). Kết quả: 34 dòng, 0 kq — TA chấm lại.
+- Phát hiện thêm (chưa đụng): (1) Bảo Châu có 2 ứng viên + 2 ca cùng ngày 10/09 — ca gốc `93757137` đã được chấm lại xong 15/09 09:50 (34/34, điểm 2.5); ca `45b680fa` tạo 15/09 07:59 với ứng viên mới, đề 32 câu, 0 kq — có vẻ tạo trùng lúc dữ liệu hỏng. (2) Bản đề K7 32 câu 14/09 giờ là "đang dùng": ca mới sẽ 32 câu, ca cũ (Tùng, Hải Đăng, Bảo Châu, Tuấn Kiệt) 34 câu — học thuật xác nhận bản nào đúng. Chưa commit.
+
+**(CEO 15/09 "cần trạng thái đánh dấu đã trả bài chứ, nút đã trả bài không sáng" + "có thấy chỗ nhét file scan đâu")**
+- Nút "✓ Đã gửi, đóng" bị khoá bởi gate `bai_da_cham_url` (scan bài đã chấm). Khâu scan không còn trong luồng từ 10/09 (chấm giấy → nhập Đ/C/S); `dongScanDaCham`/`listCanScanDaCham` không màn nào gọi ⇒ mọi ca kẹt "chờ scan bài đã chấm" vĩnh viễn. Bỏ điều kiện ở `dongTraBai` + 2 chỗ `thieu/conThieu` trong `TraBaiTestScreen`; còn 2 điều kiện thật: chấm xong + lớp đề xuất. Verify app: 6/20 ca "Đủ, sẵn sàng trả", nút enabled ở Trịnh Bảo Lan. Trạng thái "đã trả bài" = `tra_bai_xong_at` (mục "✓ Đã trả bài" dưới danh sách) vốn có sẵn, chỉ là chưa ca nào tới được. Chưa commit.
+
+**(CEO 15/09 "Bỏ qua Nguyễn Test QA và Lã Gia Huy. Lê Hải Đăng trùng 1 cái, cái chuẩn đã trả rồi, xoá đi")**
+- Bản trùng = ứng viên `7b517daf` (tạo 10/09 khối 8 → sửa 7 → "loại") + ca `ecb13698` (đề K8 39 câu, 30 kq, 11 log, chưa chấm xong). Bản chuẩn giữ = ứng viên `263ed28a` (da_convert) + ca `d15b94ac` (đề K7 34/34, chấm xong 11/09; `tra_bai_xong_at` vẫn null — GV chưa bấm "Đã gửi, đóng" trong hệ thống). Classifier chặn DELETE ⇒ script `scripts/_xoa_trung_le_hai_dang_1509.mjs` (transaction, khoá đúng đối tượng, đếm từng bảng, rollback nếu lệch; GIỮ 5 dòng `ung_vien_log` làm vết) — CEO tự chạy.
+
+## 2026-09-16 — 🚨 Chuông báo động: báo được cả 3 bản đồ Toán (Đại số · Hình giải tích · Hình học)
+
+CEO: "hiện tại báo động mới báo động được dạng đại, cần cả hình giải tích và hình học nữa."
+**Nguyên nhân:** popup chuông mở `DangPickerOne` KHÔNG truyền `chonNhanh` ⇒ picker khoá ở nhánh mặc định (Đại). Hình
+giải tích (dạng-based, `hgt_ban_do`) chỉ cần bật toggle nhánh theo registry `nhanhCuaMon`. Hình học (kho mô hình v3,
+`hinh_*`) KHÔNG phải nhánh dạng-based — đơn vị là bài/ý; "dạng" của nó = cây `hinh_dang` (loại câu hỏi › dạng), gắn vào
+bài qua `hinh_cach_giai.dang_id`. Soi DB 16/09: `hinh_dang` mới có tầng `loai_ch` (15 dòng khối 7/8/9, vd "Chứng minh
+hai tam giác bằng nhau"), 15 cách giải đã gắn thẳng vào tầng này.
+**Làm (không migration — `canh_bao_yeu.ma_dang` là text, ghi `hinh_dang.ma` 'DH.0xx'):**
+- `ChuongBaoDong`: `DangPickerOne chonNhanh` + `pillsThem` "Hình học" (chỉ khi `coKhoHinh(mon)` — registry, không if môn)
+  → `HinhDangPicker` mới (cùng khuôn DangPickerOne: search, nhóm theo cha, theo khối).
+- `lib/gami`: `getDangTen` tra thêm `hinh_dang` (ma→ten) · `loadDangTaiLieuBuoi` cộng dạng Hình học của các bài Hình trong
+  tài liệu phase (`loadHinhForBuoi(lop)` / `loadHinhForBuoiPhase` → `dangHinhCuaBaiToan` qua cách giải) ·
+  `listDangHinhChoChuong` = NÚT LÁ cây `hinh_dang` (tầng sâu nhất đang có; sau này có tầng dạng thì lá tự đổi, không sửa code).
+**Verify (dev 5173, admin dev, 9S1 buổi đang mở → Đánh giá → 🚨 → "Chọn dạng khác trong kho"):** 3 pill Đại số / Hình
+giải tích / Hình học; HGT hiện đúng cây "Tỉ số lượng giác…"; Hình học hiện 7 loại câu hỏi khối 9 (DH.018–024), khối 8
+không lẫn vào. Chọn 1 dạng Hình học → chip "(kho)" trong popup có tên → Huỷ, không gửi. tsc: chỉ còn lỗi có sẵn ở
+`pdfRender.ts` (phiên khác nâng package.json), không thuộc thay đổi này. CHƯA commit.
+⚠ Hạ nguồn (Dashboard học tập / duyệt bổ trợ yếu) đọc `canh_bao_yeu.ma_dang` 'DH.…' sẽ thấy mã nếu chỗ đó tự tra
+`dai_ban_do`; chỗ dùng `getDangTen` thì ra tên. Chưa rà hết — ghi để kiểm sau.
+
+## 2026-09-16
+
+**(CEO 15/09 tối: "luồng không có chỗ sửa dữ liệu; cần subtab đã trả; thêm tab Thống kê cạnh Phân công, filter tháng/khối")**
+- Sửa dữ liệu: gốc rễ là "Đã chấm"/"Đã trả" chỉ hiện HÔM NAY hoặc gập "xem lại" ⇒ qua ngày mất đường vào, không bấm được "Mở lại chấm". Giờ: `ChamTestScreen` subtab **Cần chấm | Đã chấm** (select tháng 12 tháng gần + tìm tên, `listDaChamTheoThang`), bấm ca đã đóng → "↩ Mở lại chấm" (có sẵn) → sửa Đ/C/S, điểm → đóng lại. `TraBaiTestScreen` subtab **Cần trả | Đã trả** (`listDaTraBaiTheoThang`), bấm ca đã trả mở ĐÚNG form GV (sửa kỹ năng/nhận xét/lớp lưu ngay, copy lại ảnh), nút "Đã gửi, đóng" đổi thành "↩ Mở lại trả bài" (`moLaiTraBai`: tra_bai_xong_at + danh_gia_xong_at = null, confirm). Bỏ `PhieuTestModal` xem-lại ở màn này. Type `CaTestChoTraBai.traBaiXongAt`.
+- Tab **Thống kê** (`ThongKeTestScreen.tsx`, tab `thong_ke` sau Phân công): mig `202609160930_test_dau_vao_thong_ke.sql` = `fn_test_dau_vao_thong_ke(p_mon, p_thang YYYY-MM|null, p_khoi|null)` → dòng theo khối (hoặc theo tháng khi đã chọn khối) + dòng Tổng; cột tổng · đang test · đã điểm danh · chờ chấm · đã chấm · chờ trả · đã trả · đã vào lớp (ung_vien da_convert). Đếm ở Postgres (§2.0). Toggle môn (MON_OPTIONS), select tháng, select khối. Helper `dsThangGanDay`, `nhanThang`, `khoangThang` trong detest.ts.
+- Verify app 5173 (viewport 1400): Thống kê Toán 09/2026 ra bảng 8 khối; Chấm test "Đã chấm (10)" list tháng 9; Trả bài "Đã trả (3)" → mở Tuấn Kiệt: badge "Đã trả bài 22:11 15/9", nút "Mở lại trả bài", không còn "Đã gửi, đóng". tsc sạch. Chưa commit.
+- Diễn giải: "subtab đã trả trong tab hoàn thành" hiểu là subtab Đã trả trong tab Trả bài (tab Hoàn thành không tồn tại) — CEO xác nhận.
