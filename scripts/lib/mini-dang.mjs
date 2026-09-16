@@ -4230,43 +4230,39 @@ export function timXPhanThucCanBac2(noiDung, rule) {
 // "2 số cách nhau ; hoặc ,", hoặc "N hoặc M" — KHÁC MỌI dạng khác trong file này: hàm nhận ĐÁP SỐ (không phải
 // noi_dung) làm đầu vào — mcq-auto.mjs phải gọi khác đi (dispatch riêng, xem ANSWER_DANG).
 function parseSoThucTe(s) { const c = parseDonThucCore(String(s).trim().replace(',', '.')); return (c && c.vars.size === 0 && !c.hasIrrational) ? c.coef : null }
+function tachDapSoThucTe(clean) { // → {vals: Rat[], sep} hoặc null — dùng chung cho canon lẫn sinh nhiễu
+  const hoacM = clean.match(/^(.+?)\s*hoặc\s*(.+)$/)
+  if (hoacM) { const a = parseSoThucTe(hoacM[1]), b = parseSoThucTe(hoacM[2]); return (a && b) ? { vals: [a, b], sep: ' hoặc ' } : null }
+  const duM = clean.match(/^(.+?)\s*dư\s*(.+)$/) // phép chia có dư, vd "27 dư 14" — thứ tự CÓ Ý NGHĨA (thương rồi số dư)
+  if (duM) { const a = parseSoThucTe(duM[1]), b = parseSoThucTe(duM[2]); return (a && b) ? { vals: [a, b], sep: ' dư ' } : null }
+  const parts = clean.split(/[;,]/).map((p) => p.trim()).filter(Boolean); if (parts.length < 1 || parts.length > 4) return null
+  const vals = parts.map(parseSoThucTe); if (vals.some((v) => !v)) return null
+  return { vals, sep: ';' }
+}
 export function chuanHoaDapSoThucTe(s) {
   const clean = String(s ?? '').replace(/\$/g, '').trim()
-  const hoacM = clean.match(/^(.+?)\s*hoặc\s*(.+)$/)
-  if (hoacM) {
-    const a = parseSoThucTe(hoacM[1]), b = parseSoThucTe(hoacM[2]); if (!a || !b) return clean
-    const arr = [a, b].sort(cmp)
-    return `${texR(arr[0])} hoặc ${texR(arr[1])}`
-  }
-  const parts = clean.split(/[;,]/).map((p) => p.trim()).filter(Boolean); if (parts.length < 1 || parts.length > 2) return clean
-  const nums = parts.map(parseSoThucTe); if (nums.some((n) => !n)) return clean
-  return nums.map(texR).join(';')
+  const t = tachDapSoThucTe(clean); if (!t) return clean
+  if (t.sep === ' hoặc ') { const arr = [...t.vals].sort(cmp); return `${texR(arr[0])} hoặc ${texR(arr[1])}` }
+  if (t.sep === ' dư ') return `${texR(t.vals[0])} dư ${texR(t.vals[1])}` // KHÔNG sort — thương/dư có thứ tự cố định
+  return t.vals.map(texR).join(';')
 }
 export function evalDapSoThucTeKetQua(s) { const t = chuanHoaDapSoThucTe(s); return t || null }
 export function sinhNhieuDapSoThucTe(dapAn, rule) {
   const clean = String(dapAn ?? '').replace(/\$/g, '').trim()
-  let vals, sep
-  const hoacM = clean.match(/^(.+?)\s*hoặc\s*(.+)$/)
-  if (hoacM) {
-    const a = parseSoThucTe(hoacM[1]), b = parseSoThucTe(hoacM[2]); if (!a || !b) return null
-    vals = [a, b]; sep = ' hoặc '
-  } else {
-    const parts = clean.split(/[;,]/).map((p) => p.trim()).filter(Boolean); if (parts.length < 1 || parts.length > 2) return null
-    vals = parts.map(parseSoThucTe); if (vals.some((v) => !v)) return null
-    sep = ';'
-  }
+  const parsed = tachDapSoThucTe(clean); if (!parsed) return null
+  const { vals, sep } = parsed
   const render = (arr) => arr.map(texR).join(sep)
   const dungText = render(vals)
   if (!rule) return { text: dungText }
   if (rule === 'R343') {
-    if (vals.length === 2) { const t = render([vals[1], vals[0]]); if (t === dungText) return null; return { text: t, ds: 'hoán đổi nhầm 2 giá trị' } }
+    if (vals.length >= 2) { const cp = [vals[1], vals[0], ...vals.slice(2)]; const t = render(cp); if (t === dungText) return null; return { text: t, ds: sep === ' dư ' ? 'hoán đổi nhầm thương và số dư' : 'hoán đổi nhầm 2 giá trị' } }
     const t = render([mul(vals[0], R(2n))]); if (t === dungText) return null
     return { text: t, ds: 'tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)' }
   }
   if (rule === 'R344') { const cp = [...vals]; cp[0] = add(cp[0], R(1n)); const t = render(cp); if (t === dungText) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở giá trị thứ nhất' } }
   if (rule === 'R345') { const cp = [...vals]; cp[0] = sub(cp[0], R(1n)); const t = render(cp); if (t === dungText) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)' } }
   if (rule === 'R346') {
-    const idx = vals.length >= 2 ? 1 : 0, delta = vals.length >= 2 ? R(1n) : R(-2n)
+    const idx = vals.length >= 2 ? vals.length - 1 : 0, delta = vals.length >= 2 ? R(1n) : R(-2n)
     const cp = [...vals]; cp[idx] = add(cp[idx], delta); const t = render(cp); if (t === dungText) return null
     return { text: t, ds: vals.length >= 2 ? 'tính lệch 1 đơn vị ở giá trị thứ hai' : 'tính lệch giá trị (cứu ca trùng công thức)' }
   }

@@ -1,0 +1,5 @@
+-- MCQ FORM — mở rộng "sinh nhiễu từ đáp số kho" (R343-346, đã dùng cho 25 dạng "bài toán thực tế" khối 9)
+-- sang khối 4T/5T (Toán Tư Duy lớp 4-5, 35 dạng) — TÁI DÙNG NGUYÊN `sinhNhieuDapSoThucTe`, chỉ mở rộng hàm hỗ
+-- thêm danh sách tới 4 giá trị (trước chỉ 1-2) và khuôn "A dư B" (phép chia có dư) — không rule mới.
+update dai_mcq_rule set ap_dung = ap_dung || '{T14T040101,T14T060103,T14T070101,T14T010101,T14T220101,T14T040102,T14T040103,T14T040201,T14T060102,T14T060101,T14T060104,T14T010106,T14T020101,T14T010103,T14T010102,T14T010104,T14T010105,T14T020103,T14T070102,T14T020102,T15T010101,T15T010403,T15T010103,T15T010402,T15T010102,T15T010301,T15T010201,T15T010302,T15T010404,T15T010203,T15T010303,T15T010401,T15T020101,T15T010202,T15T020102}'::text[]
+where ma in ('R343', 'R344', 'R345', 'R346') and not ('T14T040101' = any(ap_dung));

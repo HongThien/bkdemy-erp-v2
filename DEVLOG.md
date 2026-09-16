@@ -12662,3 +12662,34 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
   select "Ca trực bổ trợ" mặc định ▶ ca ưu tiên nhất (★ khớp ca trước), điền ngày/giờ/phòng/người (người = người trực; chưa phân ⇒
   TA lớp (mức 1) / người ca cũ (mức 2) / trống (mức 3)); chọn "Không theo lịch trực" ⇒ về mặc định cũ (TKB / ca cũ). Không có lịch
   trực ⇒ y như trước. tsc sạch. Smoke RPC read-only (`scripts/_diag_lich_truc.ts`): 0 dòng lịch ⇒ [] — Thùy nhập lịch thật rồi test.
+
+## 2026-09-16 — MỞ KHỐI MỚI: 4T/5T "Toán Tư Duy" lớp 4-5 (1156/1178 câu, 35 dạng) — TÁI DÙNG 100% engine ANSWER_DANG của khối 9
+- **CEO: "cần tạo bài trắc nghiệm 4 đáp án cho 4T 5T".** Khảo sát: khối 4T/5T (khoi='4T'/'5T' trong
+  `dai_ban_do`, SỐNG CHUNG bảng `dai_cau_hoi` với khối 6-12, không phải nhánh riêng — phù hợp §1.6, đây là
+  track chương trình khác của cùng môn Đại chứ không phải môn khác) HOÀN TOÀN CHƯA có MCQ (0/1178 câu, 35 dạng
+  có câu đã duyệt). Nội dung: 100% bài toán đố tiểu học kiểu "toán tư duy"/olympiad (trồng cây, dãy số cách
+  đều, tổng-tỉ/hiệu-tỉ, số tuổi, tính tách số...) — CÙNG BẢN CHẤT với cụm "bài toán thực tế" khối 9 đã làm
+  hôm 14/09 (kho đã có đáp số ĐÚNG, không cần đọc-hiểu đề).
+  - Test THẲNG hàm `sinhNhieuDapSoThucTe`/`chuanHoaDapSoThucTe` có sẵn (không sửa gì) lên toàn bộ 1178 câu:
+    **93.5% khớp ngay (1101/1178)**, không cần code mới.
+  - Khảo sát 77 câu lệch: lộ ra 2 khuôn CHƯA hỗ trợ — **"27 dư 14"** (phép chia có dư, thương+dư — 21 câu,
+    T14T040201) và **danh sách 3-4 giá trị** (vd "24, 72, 144" hoặc "8, 12, 16, 4" — 34 câu, T15T010201/202/
+    203, hàm cũ chỉ nhận tối đa 2 giá trị). **Mở rộng hàm** (không đổi chữ ký, không rule mới): thêm nhánh
+    "dư" (như nhánh "hoặc" đã có, giữ THỨ TỰ thương-trước-dư-sau vì có ý nghĩa, không sort như cặp đối xứng);
+    nới giới hạn số giá trị từ "1-2" lên "1-4"; sửa `R343` (hoán đổi) áp dụng cho MỌI trường hợp ≥2 giá trị
+    (trước chỉ đúng khi =2); `R346` (lệch giá trị cuối) đổi từ "luôn nhắm index 1" sang "nhắm giá trị CUỐI
+    CÙNG" — đúng hơn khi có 3-4 giá trị. Test lại: **98.1% (1156/1178), 0 THIẾU distractor.**
+  - Residual 22 câu (chấp nhận theo §1.5, không cố gắn công thức): **21 câu đáp số "Không"** (T14T060104 —
+    dạng "số X có thuộc dãy không?", câu trả lời phủ định không có giá trị số để sinh nhiễu ý nghĩa) + **1
+    câu có đơn vị đếm gắn liền** ("6 con", T15T010302012).
+  - **Regression-check cụm khối 9 (465 câu, hàm y hệt vừa sửa): không đổi kết quả, không mất câu nào.**
+- Migration `202609161251` — CHỈ UPDATE `ap_dung` nối 35 dạng 4T/5T vào R343-346 có sẵn (không INSERT rule
+  mới, đúng bản chất "cùng 1 cơ chế nhiễu, áp cho dạng mới"). Wire `ANSWER_DANG_LIST`/`UU_TIEN` (`mcq-auto.mjs`)
+  + TEXT_DANG/TEXT_FN (`mcq-sinh.mjs`) cho cả 35 mã dạng.
+- **Chạy pipeline thật CẢ 35 DẠNG CÙNG LÔ (lô LỚN NHẤT từ trước tới giờ):** `--list` 1178 câu → `mcq-auto.mjs`
+  sinh 1156, bỏ 22 (đúng 21 "Không" + 1 "6 con") → `--verify` 1156 OK, 0 FAIL → `--ghi` (chạy nền do >120s,
+  ghi từng dòng 1 transaction) → **1156 dòng `dai_cau_form_tn`** (`da_duyet=false`). `npm run schema` refresh.
+- **Tổng khối 4T/5T: 35 dạng, 1156/1178 câu có MCQ (98%) — HOÀN THÀNH TRỌN VẸN trong 1 lượt, không cần thiết
+  kế thuật toán mới, chỉ mở rộng nhẹ hàm sẵn có.** Đây là minh chứng rõ nhất cho giá trị của kiến trúc
+  ANSWER_DANG (CEO đề xuất 14/09) — một hàm DÙNG CHUNG cho MỌI khối/nhánh có đáp số dạng số thuần, không
+  ràng buộc theo khối lớp hay nội dung đề bài. Chưa commit (chờ yêu cầu).
