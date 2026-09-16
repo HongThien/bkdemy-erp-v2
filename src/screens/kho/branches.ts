@@ -3,7 +3,7 @@ import * as api from '../../lib/kho/api'
 import type { MapRow, LyThuyet } from '../../lib/kho/api'
 
 export type BranchConfig = {
-  key: 'dai' | 'hinh' | 'khtn' | 'hinhgt'
+  key: 'dai' | 'hinh' | 'khtn' | 'hinhgt' | 'hinhhoc'
   cauTbl?: string                                    // bảng câu theo môn (dai_cau_hoi/khtn_cau_hoi). undefined = nhánh chưa có câu (Hình)
   labels: { t1: string; t2: string; leaf: string }  // tầng1 / tầng2 / lá
   hasMucDo: boolean

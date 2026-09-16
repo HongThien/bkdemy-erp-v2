@@ -201,7 +201,7 @@ export const tenCum = (c: CumBai) => c.ten?.trim() || `Cụm ${c.thu_tu}`   // c
 export const coCumBai = (cauTbl: string) => !!CUM_TBL[cauTbl]
 
 // Bảng cụm theo bảng câu. undefined = nhánh CHƯA có cụm (hgt/hình) → UI ẩn tab Cụm.
-export const CUM_TBL: Record<string, string> = { dai_cau_hoi: 'dai_cum_bai', khtn_cau_hoi: 'khtn_cum_bai', hgt_cau_hoi: 'hgt_cum_bai' }
+export const CUM_TBL: Record<string, string> = { dai_cau_hoi: 'dai_cum_bai', khtn_cau_hoi: 'khtn_cum_bai', hgt_cau_hoi: 'hgt_cum_bai', hinh_hoc_cau_hoi: 'hinh_hoc_cum_bai' }
 // Bảng cạnh tiền đề theo bảng câu: [dạng↔dạng, cụm↔cụm]
 export const TIEN_DE_TBL: Record<string, { dang: string; cum: string }> = {
   dai_cau_hoi: { dang: 'dai_dang_tien_de', cum: 'dai_cum_tien_de' },
@@ -1625,8 +1625,8 @@ export function groupDai(rows: DaiDang[]): ChuDeNode[] {
 //
 // ⚠ Tiền tố DÀI KHÁC NHAU (K = 1 ký tự, T1/T2/T3 = 2) ⇒ CẤM cắt mã bằng chỉ số tuyệt
 // đối (`ma.slice(0,6)`). Mọi phép cắt theo vị trí phải đi qua `tachTienTo` bên dưới.
-export type KhoKey = 'dai' | 'hinh' | 'hinhgt' | 'khtn'
-export const KHO_TIEN_TO: Record<KhoKey, string> = { dai: 'T1', hinh: 'T2', hinhgt: 'T3', khtn: 'K' }
+export type KhoKey = 'dai' | 'hinh' | 'hinhgt' | 'khtn' | 'hinhhoc'
+export const KHO_TIEN_TO: Record<KhoKey, string> = { dai: 'T1', hinh: 'T2', hinhgt: 'T3', khtn: 'K', hinhhoc: 'HH' }
 // V = Văn, A = Anh — để dành, chưa có kho.
 const RE_TIEN_TO = /^(T[123]|K|V|A)(?=[0-9])/
 /** Tách mã thành (tiền tố kho, phần vị trí). Mã cũ chưa có tiền tố → tienTo = ''. */
@@ -2311,7 +2311,7 @@ export async function demHangDuyet(nhanh: KhoNhanh[]): Promise<DemHangDuyet[]> {
 }
 // Duyệt = áp sửa (key vắng = giữ nguyên; '' = xoá) + da_duyet + duyet_nguon='nguoi' trong 1 transaction.
 // Sửa đáp số ⇒ DB thu hồi mọi form TN của câu (trả thu_hoi_form để báo người).
-export type SuaCauDuyet = { noi_dung?: string; dap_an?: string | null; loi_giai?: string | null; dang_chinh?: string; ma_cum?: string | null }
+export type SuaCauDuyet = { noi_dung?: string; dap_an?: string | null; loi_giai?: string | null; dang_chinh?: string; ma_cum?: string | null; lua_chon?: string[] }
 export async function duyetCauHangDuyet(mon: KhoMon, maCau: string, nguoi: string, sua: SuaCauDuyet = {}): Promise<{ thu_hoi_form: number; doi_dap_an: boolean; doi_dang: boolean }> {
   const { data, error } = await supabase.rpc('fn_kho_duyet_cau', { p_mon: mon, p_ma_cau: maCau, p_nguoi: nguoi, p_sua: sua })
   if (error) throw error

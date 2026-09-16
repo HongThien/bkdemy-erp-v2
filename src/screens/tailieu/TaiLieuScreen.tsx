@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
-import { listTaiLieu, createTaiLieu, deleteTaiLieu, type TaiLieu } from '../../lib/tailieu'
+import { listTaiLieu, createTaiLieu, deleteTaiLieu, nhanhCuaMon, type TaiLieu } from '../../lib/tailieu'
 import { useStore } from '../../store/useStore'
 import { useMonScope } from '../../hooks/useMonScope'
 import { usePagedList } from '../../hooks/usePagedList'
@@ -62,11 +62,15 @@ export default function TaiLieuScreen() {
             ))}
           </div>
         )}
-        {/* Nhánh (chỉ Toán) — segmented, giống KhoScreen */}
+        {/* Nhánh (chỉ Toán) — segmented, generic theo NHANH_CUA_MON (thêm nhánh mới = 1 dòng ở tailieu.ts). */}
         {mon === 'Toán' && (
           <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
-            <button onClick={() => setNhanh(null)} className={`rounded-md px-3 py-1 text-[13px] font-medium transition ${nhanh === null ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Đại số</button>
-            <button onClick={() => setNhanh('hinh_gt')} className={`rounded-md px-3 py-1 text-[13px] font-medium transition ${nhanh === 'hinh_gt' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Hình giải tích</button>
+            {nhanhCuaMon('Toán').map((n) => (
+              <button key={n.ma ?? '__null__'} onClick={() => setNhanh(n.ma)}
+                className={`rounded-md px-3 py-1 text-[13px] font-medium transition ${nhanh === n.ma ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
+                {n.ten}
+              </button>
+            ))}
           </div>
         )}
         <div className="ml-auto flex items-center gap-1">
