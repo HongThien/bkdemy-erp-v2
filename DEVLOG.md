@@ -12693,3 +12693,30 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
   kế thuật toán mới, chỉ mở rộng nhẹ hàm sẵn có.** Đây là minh chứng rõ nhất cho giá trị của kiến trúc
   ANSWER_DANG (CEO đề xuất 14/09) — một hàm DÙNG CHUNG cho MỌI khối/nhánh có đáp số dạng số thuần, không
   ràng buộc theo khối lớp hay nội dung đề bài. Chưa commit (chờ yêu cầu).
+
+## 2026-09-16 (tiếp) — CEO: "Check nhanh câu hỏi lớp 12, chuyển nốt các câu trả lời ngắn thành 4 đáp án"
+- Khảo sát khối 12 (T112): 14 dạng có câu, 103 câu — nội dung ĐẠI SỐ/GIẢI TÍCH THPT (khảo sát hàm số, tích
+  phân, toạ độ Oxyz, bài toán tối ưu kinh tế) — KHÁC HẲN các khối đã làm (đạo hàm/tích phân/vecto không gian,
+  không phải đại số cơ bản), nhưng đáp số vẫn chủ yếu là SỐ THUẦN nên thử NGAY `sinhNhieuDapSoThucTe` có sẵn
+  trước khi tính chuyện xây gì mới.
+  - Test thẳng: **87.4% khớp ngay (90/103)**, kể cả số thập phân (vd "253.1") vì `parseDonThucCore` đã hỗ trợ
+    sẵn — không phải phát hiện mới, tái khẳng định engine đủ tổng quát.
+  - 13 câu lệch, khảo sát ra 2 khuôn CÒN THIẾU đáng sửa (2 câu) + 1 khuôn rẻ tiện lợi ăn theo (dùng lại được
+    ở nhiều nơi khác, không chỉ khối 12): **nhãn biến đứng trước giá trị** (vd "x=1", "a=25; b=1/4" — trước
+    đó hàm coi cả cụm là 1 token, không tách được nhãn khỏi số) và **bộ số bọc trong ngoặc** (vd "(3;
+    8/3; -8/3)", tương tự cặp toạ độ). Sửa `parseSoThucTe` bóc nhãn `^[A-Za-zĐđ]\w*\s*=\s*` trước khi parse
+    số; `tachDapSoThucTe` bóc `(...)` bọc ngoài trước khi tách theo `;`/`,`. Không đổi chữ ký hàm.
+  - **9 câu residual CHỦ ĐỘNG bỏ qua (không cố gắn công thức, đúng §1.5):** căn thức vô tỉ (5 câu, vd
+    "9√13/65" — không biểu diễn được bằng Rat, cần tích hợp engine surd riêng, không đáng cho 5 câu) · biểu
+    thức HÀM SỐ làm đáp số (2 câu, "2x+5cosx+5" — bản chất khác hẳn, không phải 1 giá trị) · dãy Đúng/Sai
+    "ĐÚNG; SAI; SAI; ĐÚNG" (1 câu, T112020305 — khuôn "4 mệnh đề đúng/sai" của đề thi 2025, KHÁC hẳn MCQ 4
+    đáp án, ngoài phạm vi việc này) · giá trị gần đúng "ln 3 ≈ 1.1" (1 câu, ký hiệu "≈" không phải "=").
+    Test lại sau khi sửa: **90.3% (93/103).** Loại hẳn 2 dạng ra khỏi danh sách đăng ký (T112040102 0/2 —
+    toàn biểu thức hàm số; T112020305 0/1 — đúng/sai) vì KHÔNG câu nào trong đó khớp được.
+  - **Regression-check 2 cụm đã ghi trước (khối 9 465 câu + 4T/5T 1178 câu, cùng hàm vừa sửa): 0 mismatch.**
+- Migration `202609161752` — CHỈ UPDATE `ap_dung` nối 12 dạng khối 12 vào R343-346 có sẵn (không rule mới).
+  Wire `ANSWER_DANG_LIST`/`UU_TIEN` (`mcq-auto.mjs`) + TEXT_DANG/TEXT_FN (`mcq-sinh.mjs`) cho 12 dạng.
+- Pipeline thật: `--list` 95 câu → `mcq-auto.mjs` sinh 84, bỏ 11 (đúng các câu căn thức/hàm số/≈ đã khảo sát)
+  → `--verify` 84 OK, 0 FAIL → `--ghi` → **84 dòng `dai_cau_form_tn`**. `npm run schema` refresh.
+- **Tổng khối 12: 12/14 dạng, 84/95 câu đủ điều kiện có MCQ (2 dạng loại hẳn vì đáp số không phải số).** Chưa
+  commit (chờ yêu cầu).

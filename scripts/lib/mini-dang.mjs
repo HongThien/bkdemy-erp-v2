@@ -4229,8 +4229,14 @@ export function timXPhanThucCanBac2(noiDung, rule) {
 // khi không tách được 1 công thức sai riêng. Khảo sát xác nhận đáp số toàn cụm ~98% (459/469) là "1 số",
 // "2 số cách nhau ; hoặc ,", hoặc "N hoặc M" — KHÁC MỌI dạng khác trong file này: hàm nhận ĐÁP SỐ (không phải
 // noi_dung) làm đầu vào — mcq-auto.mjs phải gọi khác đi (dispatch riêng, xem ANSWER_DANG).
-function parseSoThucTe(s) { const c = parseDonThucCore(String(s).trim().replace(',', '.')); return (c && c.vars.size === 0 && !c.hasIrrational) ? c.coef : null }
-function tachDapSoThucTe(clean) { // → {vals: Rat[], sep} hoặc null — dùng chung cho canon lẫn sinh nhiễu
+function parseSoThucTe(s) {
+  let t = String(s).trim()
+  const labelM = t.match(/^[A-Za-zĐđ]\w*\s*=\s*(.+)$/) // nhãn biến đứng trước 1 giá trị, vd "x=1", "a=25"
+  if (labelM) t = labelM[1].trim()
+  const c = parseDonThucCore(t.replace(',', '.')); return (c && c.vars.size === 0 && !c.hasIrrational) ? c.coef : null
+}
+function tachDapSoThucTe(rawClean) { // → {vals: Rat[], sep} hoặc null — dùng chung cho canon lẫn sinh nhiễu
+  const clean = rawClean.startsWith('(') && rawClean.endsWith(')') ? rawClean.slice(1, -1).trim() : rawClean // "(3; 8/3; -8/3)" — bóc ngoặc bọc ngoài cả bộ
   const hoacM = clean.match(/^(.+?)\s*hoặc\s*(.+)$/)
   if (hoacM) { const a = parseSoThucTe(hoacM[1]), b = parseSoThucTe(hoacM[2]); return (a && b) ? { vals: [a, b], sep: ' hoặc ' } : null }
   const duM = clean.match(/^(.+?)\s*dư\s*(.+)$/) // phép chia có dư, vd "27 dư 14" — thứ tự CÓ Ý NGHĨA (thương rồi số dư)
