@@ -12732,3 +12732,27 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
 
 **(CEO 15/09 "cần trạng thái đánh dấu đã trả bài chứ, nút đã trả bài không sáng" + "có thấy chỗ nhét file scan đâu")**
 - Nút "✓ Đã gửi, đóng" bị khoá bởi gate `bai_da_cham_url` (scan bài đã chấm). Khâu scan không còn trong luồng từ 10/09 (chấm giấy → nhập Đ/C/S); `dongScanDaCham`/`listCanScanDaCham` không màn nào gọi ⇒ mọi ca kẹt "chờ scan bài đã chấm" vĩnh viễn. Bỏ điều kiện ở `dongTraBai` + 2 chỗ `thieu/conThieu` trong `TraBaiTestScreen`; còn 2 điều kiện thật: chấm xong + lớp đề xuất. Verify app: 6/20 ca "Đủ, sẵn sàng trả", nút enabled ở Trịnh Bảo Lan. Trạng thái "đã trả bài" = `tra_bai_xong_at` (mục "✓ Đã trả bài" dưới danh sách) vốn có sẵn, chỉ là chưa ca nào tới được. Chưa commit.
+
+**(CEO 15/09 "Bỏ qua Nguyễn Test QA và Lã Gia Huy. Lê Hải Đăng trùng 1 cái, cái chuẩn đã trả rồi, xoá đi")**
+- Bản trùng = ứng viên `7b517daf` (tạo 10/09 khối 8 → sửa 7 → "loại") + ca `ecb13698` (đề K8 39 câu, 30 kq, 11 log, chưa chấm xong). Bản chuẩn giữ = ứng viên `263ed28a` (da_convert) + ca `d15b94ac` (đề K7 34/34, chấm xong 11/09; `tra_bai_xong_at` vẫn null — GV chưa bấm "Đã gửi, đóng" trong hệ thống). Classifier chặn DELETE ⇒ script `scripts/_xoa_trung_le_hai_dang_1509.mjs` (transaction, khoá đúng đối tượng, đếm từng bảng, rollback nếu lệch; GIỮ 5 dòng `ung_vien_log` làm vết) — CEO tự chạy.
+
+## 2026-09-16 — 🚨 Chuông báo động: báo được cả 3 bản đồ Toán (Đại số · Hình giải tích · Hình học)
+
+CEO: "hiện tại báo động mới báo động được dạng đại, cần cả hình giải tích và hình học nữa."
+**Nguyên nhân:** popup chuông mở `DangPickerOne` KHÔNG truyền `chonNhanh` ⇒ picker khoá ở nhánh mặc định (Đại). Hình
+giải tích (dạng-based, `hgt_ban_do`) chỉ cần bật toggle nhánh theo registry `nhanhCuaMon`. Hình học (kho mô hình v3,
+`hinh_*`) KHÔNG phải nhánh dạng-based — đơn vị là bài/ý; "dạng" của nó = cây `hinh_dang` (loại câu hỏi › dạng), gắn vào
+bài qua `hinh_cach_giai.dang_id`. Soi DB 16/09: `hinh_dang` mới có tầng `loai_ch` (15 dòng khối 7/8/9, vd "Chứng minh
+hai tam giác bằng nhau"), 15 cách giải đã gắn thẳng vào tầng này.
+**Làm (không migration — `canh_bao_yeu.ma_dang` là text, ghi `hinh_dang.ma` 'DH.0xx'):**
+- `ChuongBaoDong`: `DangPickerOne chonNhanh` + `pillsThem` "Hình học" (chỉ khi `coKhoHinh(mon)` — registry, không if môn)
+  → `HinhDangPicker` mới (cùng khuôn DangPickerOne: search, nhóm theo cha, theo khối).
+- `lib/gami`: `getDangTen` tra thêm `hinh_dang` (ma→ten) · `loadDangTaiLieuBuoi` cộng dạng Hình học của các bài Hình trong
+  tài liệu phase (`loadHinhForBuoi(lop)` / `loadHinhForBuoiPhase` → `dangHinhCuaBaiToan` qua cách giải) ·
+  `listDangHinhChoChuong` = NÚT LÁ cây `hinh_dang` (tầng sâu nhất đang có; sau này có tầng dạng thì lá tự đổi, không sửa code).
+**Verify (dev 5173, admin dev, 9S1 buổi đang mở → Đánh giá → 🚨 → "Chọn dạng khác trong kho"):** 3 pill Đại số / Hình
+giải tích / Hình học; HGT hiện đúng cây "Tỉ số lượng giác…"; Hình học hiện 7 loại câu hỏi khối 9 (DH.018–024), khối 8
+không lẫn vào. Chọn 1 dạng Hình học → chip "(kho)" trong popup có tên → Huỷ, không gửi. tsc: chỉ còn lỗi có sẵn ở
+`pdfRender.ts` (phiên khác nâng package.json), không thuộc thay đổi này. CHƯA commit.
+⚠ Hạ nguồn (Dashboard học tập / duyệt bổ trợ yếu) đọc `canh_bao_yeu.ma_dang` 'DH.…' sẽ thấy mã nếu chỗ đó tự tra
+`dai_ban_do`; chỗ dùng `getDangTen` thì ra tên. Chưa rà hết — ghi để kiểm sau.
