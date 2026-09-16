@@ -12756,3 +12756,11 @@ không lẫn vào. Chọn 1 dạng Hình học → chip "(kho)" trong popup có 
 `pdfRender.ts` (phiên khác nâng package.json), không thuộc thay đổi này. CHƯA commit.
 ⚠ Hạ nguồn (Dashboard học tập / duyệt bổ trợ yếu) đọc `canh_bao_yeu.ma_dang` 'DH.…' sẽ thấy mã nếu chỗ đó tự tra
 `dai_ban_do`; chỗ dùng `getDangTen` thì ra tên. Chưa rà hết — ghi để kiểm sau.
+
+## 2026-09-16
+
+**(CEO 15/09 tối: "luồng không có chỗ sửa dữ liệu; cần subtab đã trả; thêm tab Thống kê cạnh Phân công, filter tháng/khối")**
+- Sửa dữ liệu: gốc rễ là "Đã chấm"/"Đã trả" chỉ hiện HÔM NAY hoặc gập "xem lại" ⇒ qua ngày mất đường vào, không bấm được "Mở lại chấm". Giờ: `ChamTestScreen` subtab **Cần chấm | Đã chấm** (select tháng 12 tháng gần + tìm tên, `listDaChamTheoThang`), bấm ca đã đóng → "↩ Mở lại chấm" (có sẵn) → sửa Đ/C/S, điểm → đóng lại. `TraBaiTestScreen` subtab **Cần trả | Đã trả** (`listDaTraBaiTheoThang`), bấm ca đã trả mở ĐÚNG form GV (sửa kỹ năng/nhận xét/lớp lưu ngay, copy lại ảnh), nút "Đã gửi, đóng" đổi thành "↩ Mở lại trả bài" (`moLaiTraBai`: tra_bai_xong_at + danh_gia_xong_at = null, confirm). Bỏ `PhieuTestModal` xem-lại ở màn này. Type `CaTestChoTraBai.traBaiXongAt`.
+- Tab **Thống kê** (`ThongKeTestScreen.tsx`, tab `thong_ke` sau Phân công): mig `202609160930_test_dau_vao_thong_ke.sql` = `fn_test_dau_vao_thong_ke(p_mon, p_thang YYYY-MM|null, p_khoi|null)` → dòng theo khối (hoặc theo tháng khi đã chọn khối) + dòng Tổng; cột tổng · đang test · đã điểm danh · chờ chấm · đã chấm · chờ trả · đã trả · đã vào lớp (ung_vien da_convert). Đếm ở Postgres (§2.0). Toggle môn (MON_OPTIONS), select tháng, select khối. Helper `dsThangGanDay`, `nhanThang`, `khoangThang` trong detest.ts.
+- Verify app 5173 (viewport 1400): Thống kê Toán 09/2026 ra bảng 8 khối; Chấm test "Đã chấm (10)" list tháng 9; Trả bài "Đã trả (3)" → mở Tuấn Kiệt: badge "Đã trả bài 22:11 15/9", nút "Mở lại trả bài", không còn "Đã gửi, đóng". tsc sạch. Chưa commit.
+- Diễn giải: "subtab đã trả trong tab hoàn thành" hiểu là subtab Đã trả trong tab Trả bài (tab Hoàn thành không tồn tại) — CEO xác nhận.
