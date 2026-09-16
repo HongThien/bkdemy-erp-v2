@@ -12764,3 +12764,19 @@ không lẫn vào. Chọn 1 dạng Hình học → chip "(kho)" trong popup có 
 - Tab **Thống kê** (`ThongKeTestScreen.tsx`, tab `thong_ke` sau Phân công): mig `202609160930_test_dau_vao_thong_ke.sql` = `fn_test_dau_vao_thong_ke(p_mon, p_thang YYYY-MM|null, p_khoi|null)` → dòng theo khối (hoặc theo tháng khi đã chọn khối) + dòng Tổng; cột tổng · đang test · đã điểm danh · chờ chấm · đã chấm · chờ trả · đã trả · đã vào lớp (ung_vien da_convert). Đếm ở Postgres (§2.0). Toggle môn (MON_OPTIONS), select tháng, select khối. Helper `dsThangGanDay`, `nhanThang`, `khoangThang` trong detest.ts.
 - Verify app 5173 (viewport 1400): Thống kê Toán 09/2026 ra bảng 8 khối; Chấm test "Đã chấm (10)" list tháng 9; Trả bài "Đã trả (3)" → mở Tuấn Kiệt: badge "Đã trả bài 22:11 15/9", nút "Mở lại trả bài", không còn "Đã gửi, đóng". tsc sạch. Chưa commit.
 - Diễn giải: "subtab đã trả trong tab hoàn thành" hiểu là subtab Đã trả trong tab Trả bài (tab Hoàn thành không tồn tại) — CEO xác nhận.
+
+## 2026-09-16 — Xếp bổ trợ yếu: filter khối + tab "Ca bổ trợ" (ca nào bao nhiêu em / sức chứa) + tự ghép có xem trước
+
+Thùy: (1) cần filter theo khối ở chỗ xếp lịch; (2) hệ thống tự ghép HS vào ca; cần tab hiện ca đã có HS assign để biết ca nào bao nhiêu
+người mà dừng.
+- Filter môn + khối ở header (dùng chung tab Xếp lịch + Ca bổ trợ).
+- Migration `202609161637_ca_bo_tro_sap_toi.sql` (ĐÃ ÁP): `lich_truc_bo_tro.suc_chua` (null = ∞) + RPC `fn_btyeu_ca_sap_toi(tu, den)` — buổi
+  bổ trợ yếu `mo` gộp theo (môn, ngày, giờ bđ, phòng, người) → so_hs, danh sách HS (khối, điểm danh), lịch trực khớp (sức chứa, phạm vi).
+  `202609161638_lich_truc_suc_chua_rpc.sql`: fn_lich_truc_cua_hs trả thêm suc_chua. Tab Lịch trực có ô Sức chứa (em/ca).
+- Tab "Ca bổ trợ": list ca 28 ngày tới, badge "n/sức chứa em", ĐẦY đỏ khi n ≥ sức chứa, bấm mở danh sách em. Khối "Tự ghép": bấm
+  "Đề xuất ghép N em" → máy chạy cùng logic form xếp cho từng case chờ (lịch trực của em → ưu tiên khớp ca trước → gần nhất), bỏ ca
+  đầy (đếm cả em vừa ghép trong lượt) → BẢNG XEM TRƯỚC (HS · ca · người / lý do không ghép) → "Xác nhận ghép" mới tạo buổi
+  (`taoBuoiBoTroYeu` tuần tự), vá `daXep` tại chỗ. Không ghép âm thầm.
+- Verify local (worktree, port 5192, Thùy đã nhập lịch trực thật lớp 8): filter Khối 8 → 5 em chờ; Đề xuất → 4 ghép được (2 ca T5 17/09
+  17:00 Quang Khánh, 2 ca T6 18/09 18:30 Thảo Nguyên), 1 em 8? chưa có lịch trực; tab Ca hiện 6 ca (2–5 em). Chưa bấm Xác nhận
+  (dữ liệu thật — Thùy tự bấm). tsc sạch.

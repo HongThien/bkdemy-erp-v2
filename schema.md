@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-224 bảng · 18 view · 0 enum · 70 trigger · 373 function
+228 bảng · 18 view · 0 enum · 70 trigger · 375 function
 
 ## _app_secrets
 
@@ -1667,6 +1667,62 @@
 | cau_hinh | jsonb |  | '{}'::jsonb |  |  |
 | file_urls | jsonb |  | '{}'::jsonb |  |  |
 
+## hinh_hoc_bai
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_bai | text |  | ('HH'::text \|\| lpad((nextval('hinh_hoc_bai_seq'::regclass))::text, 5, '0'::text)) | PK |  |
+| khoi | text |  |  |  |  |
+| ten_bai | text |  |  |  |  |
+| thu_tu | smallint |  | 1 |  |  |
+| bac_toi_thieu | text | Y |  | FK→lop_bac.ma |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## hinh_hoc_bai_ly_thuyet
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_bai | text |  |  | PK FK→hinh_hoc_bai.ma_bai |  |
+| noi_dung | text |  | ''::text |  |  |
+| file_url | text | Y |  |  |  |
+| ten_file | text | Y |  |  |  |
+| cap_nhat_at | timestamp with time zone |  | now() |  |  |
+
+## hinh_hoc_cau_hoi
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cau | text |  | ('HHC'::text \|\| lpad((nextval('hinh_hoc_cau_seq'::regclass))::text, 6, '0'::text)) | PK |  |
+| ma_bai | text |  |  | FK→hinh_hoc_bai.ma_bai |  |
+| ma_cum | text | Y |  | FK→hinh_hoc_cum_bai.ma_cum |  |
+| mo_hinh_id | uuid | Y |  | FK→hinh_mo_hinh.id |  |
+| khoi | text |  |  |  |  |
+| noi_dung | text |  |  |  |  |
+| dap_an | text | Y |  |  |  |
+| loi_giai | text | Y |  |  |  |
+| anh_de | text | Y |  |  |  |
+| anh_dap_an | text | Y |  |  |  |
+| thu_tu | smallint |  | 1 |  |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## hinh_hoc_cum_bai
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cum | text |  | ('HHCUM'::text \|\| lpad((nextval('hinh_hoc_cum_seq'::regclass))::text, 5, '0'::text)) | PK |  |
+| ma_bai | text |  |  | FK→hinh_hoc_bai.ma_bai |  |
+| ten | text | Y |  |  |  |
+| thu_tu | smallint |  | 1 |  |  |
+| ghi_chu | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
 ## hinh_linkgen_jobs
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -2278,6 +2334,7 @@
 | ghi_chu | text | Y |  |  |  |
 | created_by | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| suc_chua | smallint | Y |  |  |  |
 
 ## linkgen_jobs
 
@@ -4801,6 +4858,7 @@ SELECT bl.hoc_sinh_id,
 - `chi_me_id()` → uuid
 - `co_chuc_nang(p_chuc_nang text)` → boolean
 - `co_quyen_ghi(p_chuc_nang text)` → boolean
+- `count_cau_by_bai_hh(p_khoi text)` → jsonb
 - `count_cau_by_dang(p_tbl text)` → jsonb
 - `current_nhan_su_id()` → uuid
 - `dai_cau_form_dien_kiem()` → trigger
@@ -4827,6 +4885,7 @@ SELECT bl.hoc_sinh_id,
 - `fn_btvn_tra_bai_buoi(p_buoi_hoc_id uuid)` → integer
 - `fn_btvn_xac_nhan_buoi(p_hoc_sinh_id uuid, p_buoi_hoc_id uuid)` → void
 - `fn_btyeu_ca_cua_toi()` → jsonb
+- `fn_btyeu_ca_sap_toi(p_tu date DEFAULT NULL::date, p_den date DEFAULT NULL::date)` → jsonb
 - `fn_btyeu_ca_ta(p_buoi uuid)` → jsonb
 - `fn_btyeu_dem(p_ns uuid)` → integer
 - `fn_btyeu_dong_ca(p_buoi uuid)` → jsonb
@@ -5194,6 +5253,7 @@ SELECT bl.hoc_sinh_id,
 | ky_thi | ky_thi_he_so_check | `CHECK ((he_so = ANY (ARRAY[1, 2])))` |
 | lich_truc_bo_tro | lich_truc_bo_tro_gio | `CHECK ((gio_ket_thuc > gio_bat_dau))` |
 | lich_truc_bo_tro | lich_truc_bo_tro_pham_vi | `CHECK (((khoi IS NOT NULL) OR (lop_id IS NOT NULL)))` |
+| lich_truc_bo_tro | lich_truc_bo_tro_suc_chua_check | `CHECK (((suc_chua IS NULL) OR (suc_chua > 0)))` |
 | lich_truc_bo_tro | lich_truc_bo_tro_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | may_man_hs_luot | may_man_hs_luot_exp_check | `CHECK ((exp >= 0))` |
 | may_man_luot | may_man_luot_tien_check | `CHECK ((tien >= 0))` |

@@ -439,6 +439,7 @@ export type LichTruc = {
   id: string; mon: string; khoi: string | null; lop_id: string | null; thu: number
   gio_bat_dau: string; gio_ket_thuc: string; phong: string | null; nhan_su_id: string | null
   hieu_luc_tu: string; hieu_luc_den: string | null; ghi_chu: string | null
+  suc_chua: number | null // null = không giới hạn (Thùy 09-16: tự ghép bỏ qua ca đầy)
   lop_ten?: string | null; nhan_su_ten?: string | null
 }
 export async function listLichTruc(mon?: string): Promise<LichTruc[]> {
@@ -463,7 +464,7 @@ export async function suaLichTruc(id: string, patch: Partial<Omit<LichTruc, 'id'
 // Kết thúc hiệu lực (không xoá cứng — giữ dấu để buổi đã xếp theo slot cũ vẫn giải thích được).
 export async function ketThucLichTruc(id: string, den: string): Promise<void> { await suaLichTruc(id, { hieu_luc_den: den }) }
 
-export type SlotTruc = { id: string; thu: number; gio_bat_dau: string; gio_ket_thuc: string; phong: string | null; nhan_su_id: string | null; nhan_su_ten: string | null; khoi: string | null; lop_id: string | null; ghi_chu: string | null }
+export type SlotTruc = { id: string; thu: number; gio_bat_dau: string; gio_ket_thuc: string; phong: string | null; nhan_su_id: string | null; nhan_su_ten: string | null; khoi: string | null; lop_id: string | null; ghi_chu: string | null; suc_chua: number | null }
 export async function lichTrucCuaHS(hocSinhId: string, mon: string): Promise<SlotTruc[]> {
   const { data, error } = await supabase.rpc('fn_lich_truc_cua_hs', { p_hoc_sinh: hocSinhId, p_mon: mon })
   if (error) throw error
@@ -485,3 +486,19 @@ export function goiYTheoLichTruc(slots: SlotTruc[], ganNhat: GoiYXepLich['ganNha
   }
   return out.sort((a, b) => Number(b.khopCaTruoc) - Number(a.khopCaTruoc) || a.ngay.localeCompare(b.ngay) || String(a.gio_bat_dau).localeCompare(String(b.gio_bat_dau)))
 }
+
+// ── CA BỔ TRỢ SẮP TỚI (Thùy 09-16): buổi bổ trợ yếu `mo` gộp theo (môn, ngày, giờ, phòng, người) + số HS + sức chứa (từ lịch trực
+// khớp). RPC `fn_btyeu_ca_sap_toi` (migration 202609161637) — tổng hợp ở DB.
+export type CaSapToi = {
+  mon: string; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null
+  nguoi_day_tg: string | null; nguoi_ten: string | null; so_hs: number
+  hs: { buoi_id: string; hoc_sinh_id: string; ho_ten: string; khoi: string | null; diem_danh: string | null; case_id: string }[]
+  lich_truc_id: string | null; suc_chua: number | null; lich_truc_pham_vi: string | null
+}
+export async function caSapToi(tu?: string, den?: string): Promise<CaSapToi[]> {
+  const { data, error } = await supabase.rpc('fn_btyeu_ca_sap_toi', { p_tu: tu ?? null, p_den: den ?? null })
+  if (error) throw error
+  return (data as CaSapToi[]) ?? []
+}
+export const khoaCa = (c: { mon: string; ngay: string; gio_bat_dau: string | null; phong: string | null; nguoi_day_tg: string | null }) =>
+  `${c.mon}|${c.ngay}|${String(c.gio_bat_dau ?? '').slice(0, 5)}|${c.phong ?? ''}|${c.nguoi_day_tg ?? ''}`
