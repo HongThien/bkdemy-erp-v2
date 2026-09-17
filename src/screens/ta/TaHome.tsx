@@ -22,6 +22,8 @@ import DashTa from './DashTa'
 import GopY from './GopY'
 import CaBoTroTA, { demNoBoTro } from './CaBoTroTA'
 import { viecBoTroCuaToi, type ViecCaBoTro, type ViecRetest } from '../../lib/botro_yeu_ca'
+import { BuoiBuDetail } from '../botro/BoTroScreen'
+import { BuoiDuoiDetail } from '../botro/BoTroDuoiScreen'
 import TripCountdownBanner, { type CountdownRect } from '../../components/TripCountdownBanner'
 
 // Banner đếm ngược đi chơi Ba Vì (CEO 07/09, đã lắp cho OPS — "làm cái này cho ta app luôn") — ảnh + rect
@@ -46,7 +48,15 @@ export const NGHIEP_VU: { key: NvKey; icon: string; label: string; bg: string; a
 ]
 const nvOf = (k: NvKey) => NGHIEP_VU.find((n) => n.key === k)!
 
-export type BuoiView = { buoiId: string; tab: NvKey; lop: string; ngay: string }
+// Buổi bù + buổi đuổi CÙNG owner là TA (nguoi_day_tg) và nghiệp vụ đo lường đều xoay quanh ET/dạng — nên
+// gom chung vào BOX "Chấm ET" của TA (buổi bù có cả 'et' + 'danhgia'; buổi đuổi chỉ 'danhgia' — không có
+// ET theo design). Cùng 1 buổi bù có 2 task ('et' + 'danhgia') → xuất hiện 2 dòng cùng box này, phân biệt
+// bằng NHÃN (t.label). Bấm task → mở BuoiBuDetail/BuoiDuoiDetail (không dùng ChamBuoi vốn chỉ hiểu buổi
+// thường: lop_id null, ET seed từ buổi mẹ, panel đánh giá theo dạng — hết trong 2 detail này).
+export const belongsToBoTro = (t: MyTask): boolean => (t.loai === 'bu' || t.loai === 'bo_tro_duoi')
+export const belongsToNv = (t: MyTask, k: NvKey): boolean => t.tab === k || (k === 'et' && t.tab === 'danhgia' && belongsToBoTro(t))
+
+export type BuoiView = { buoiId: string; tab: NvKey; lop: string; ngay: string; loai?: 'bu' | 'bo_tro_duoi' }
 
 // Bubble đỏ số việc nợ (kiểu noti) — dùng ở góc icon box + góc icon bottom-tab.
 function NoBadge({ n, small }: { n: number; small?: boolean }) {
@@ -74,7 +84,11 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
     if (!silent) setLoading(true)
     try {
       const all = await getMyTasks().catch(() => [] as MyTask[])
-      const t = all.filter((x) => x.tab === 'ingame' || x.tab === 'et' || x.tab === 'btvn')
+      // Giữ 3 nghiệp vụ chấm chính + task ĐÁNH GIÁ của buổi bù/đuổi (gom vào "Chấm ET" — xem
+      // belongsToNv). Trước đây filter cứng tab ∈ {ingame,et,btvn} khiến task 'danhgia' buổi
+      // bù/đuổi mất tiêu → buổi đuổi vô hình hoàn toàn trên app TA (không có 'et'), buổi bù thì
+      // ET còn hiện nhưng đánh giá không có đường vào (bug Tạ Tùng báo 17-09).
+      const t = all.filter((x) => x.tab === 'ingame' || x.tab === 'et' || x.tab === 'btvn' || (x.tab === 'danhgia' && belongsToBoTro(x)))
       setTasks(t)
       const btvnBuois = [...new Set(t.filter((x) => x.tab === 'btvn').map((x) => x.buoiId))]
       setNopCount(btvnBuois.length ? await demNopTheoBuois(btvnBuois).catch(() => ({})) : {})
@@ -91,7 +105,7 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
   }, [view]) // eslint-disable-line
 
   const canLam = tasks.filter((t) => !t.done)
-  const noCua = (k: NvKey) => canLam.filter((t) => t.tab === k).length
+  const noCua = (k: NvKey) => canLam.filter((t) => belongsToNv(t, k)).length
   // Icon MH chính — số = 3 nghiệp vụ (bubble nav dưới) + bổ trợ (cùng số hiện ở tab Bổ trợ).
   // ⚠ PHẢI gọi TRƯỚC `if (view) return` ngay dưới — hook đứng sau 1 early-return bị bỏ qua đúng
   // lúc chuyển view (bấm vào 1 buổi), lệch số hook giữa 2 lần render ⇒ React crash trắng màn hình
@@ -100,7 +114,17 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
   // hook-order trước, không nghi cache trước.
   useEffect(() => { setAppBadgeCount(canLam.length + demNoBoTro(boTro)) }, [canLam.length, boTro])
 
-  if (view) return <ChamBuoi view={view} onBack={() => { setView(null); reload(true) }} />
+  // Buổi bù/đuổi mở màn detail RIÊNG (điểm danh + ET seed từ buổi mẹ + đánh giá per-HS + 2 nút đóng
+  // — cả bộ nằm trong BuoiBuDetail/BuoiDuoiDetail). ChamBuoi (EtPanel) chỉ hiểu buổi thường (bám đề
+  // theo lop×ngày), sẽ trắng dữ liệu với buổi bù (lop_id null, ET không có ở lop×ngày). BuoiBuDetail
+  // /BuoiDuoiDetail dùng `h-full` → phải BỌC trong 100dvh, không thì #root không cấp chiều cao và
+  // detail collapse xuống 0px (đường lỗi câm — không lỗi, chỉ trắng).
+  if (view) {
+    const onBack = () => { setView(null); reload(true) }
+    if (view.loai === 'bu') return <div className="h-[100dvh]"><BuoiBuDetail buoiId={view.buoiId} onClose={onBack} /></div>
+    if (view.loai === 'bo_tro_duoi') return <div className="h-[100dvh]"><BuoiDuoiDetail buoiId={view.buoiId} onClose={onBack} /></div>
+    return <ChamBuoi view={view} onBack={onBack} />
+  }
 
   return (
     <div className="flex h-[100dvh] flex-col" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif", background: BK_TROI }}>
@@ -108,7 +132,7 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
         {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} dashTom={dashTom} boTro={boTro} onAvatarChanged={onAvatarChanged} />}
         {tab === 'dash' && <DashTa profile={profile} />}
         {tab === 'botro' && <CaBoTroTA viec={boTro} onDoi={taiBoTro} />}
-        {tab !== 'home' && tab !== 'dash' && tab !== 'botro' && <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => t.tab === tab)} nopCount={nopCount} now={now} homNay={homNay} onOpen={setView} />}
+        {tab !== 'home' && tab !== 'dash' && tab !== 'botro' && <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => belongsToNv(t, tab))} nopCount={nopCount} now={now} homNay={homNay} onOpen={setView} />}
       </div>
 
       {/* bottom tab — icon PNG bộ BK, active = pill xanh; mỗi nghiệp vụ có bubble nợ, chừa safe-area */}
@@ -225,8 +249,8 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
         {!loading && coQuyen && <BoxBoTro v={boTro} homNay={homNay} onGo={() => onGo('botro')} />}
 
         {!loading && coQuyen && NGHIEP_VU.map((n) => {
-          const cua = canLam.filter((t) => t.tab === n.key)
-          const xong = tasks.filter((t) => t.tab === n.key && t.done).length
+          const cua = canLam.filter((t) => belongsToNv(t, n.key))
+          const xong = tasks.filter((t) => belongsToNv(t, n.key) && t.done).length
           const preview = cua.slice(0, 3)
           return (
             <button key={n.key} onClick={() => onGo(n.key)} className="rounded-[22px] p-3 text-left active:scale-[.99]" style={{ background: n.bg }}>
@@ -323,12 +347,18 @@ function BoxDashThang({ d, onGo }: { d: TaDash | null; onGo: () => void }) {
   )
 }
 
+// Nhãn loại buổi ngoài giờ chính (buổi thường không dán chip vì đã hiểu ngầm là buổi thường).
+const NHAN_LOAI: Record<NonNullable<MyTask['loai']>, string> = { bu: 'buổi bù', bo_tro_duoi: 'buổi đuổi', bo_tro_yeu: 'buổi bổ trợ yếu' }
+
 function RowMini({ t, now, homNay }: { t: MyTask; now: number; homNay: string }) {
   const muc = mucDeadline(t.deadline, now)
+  // Buổi bù/đuổi: t.lop là hằng "Buổi bù"/"Buổi đuổi" (không gắn lớp); dùng label để phân biệt 2 task cùng
+  // buổi bù (ET vs Đánh giá). Buổi thường: title = tên lớp như cũ.
+  const tieu = t.loai ? t.label : t.lop
   return (
     <div className="flex items-center gap-2 rounded-xl bg-white/80 px-2.5 py-1.5">
-      <span className="text-[12.5px] font-bold text-[#16224D]">{t.lop}</span>
-      <span className="min-w-0 truncate text-[10.5px] text-[#63709A]">{t.ngay === homNay ? 'hôm nay' : `${thuCuaNgay(t.ngay)} ${ddmmVN(t.ngay)}`}{t.loai ? ` · ${t.loai === 'bu' ? 'buổi bù' : t.loai}` : ''}</span>
+      <span className="text-[12.5px] font-bold text-[#16224D]">{tieu}</span>
+      <span className="min-w-0 truncate text-[10.5px] text-[#63709A]">{t.ngay === homNay ? 'hôm nay' : `${thuCuaNgay(t.ngay)} ${ddmmVN(t.ngay)}`}{t.loai ? ` · ${NHAN_LOAI[t.loai]}` : ''}</span>
       {t.deadline != null && (
         <span className={`ml-auto shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold ${muc === 'qua_han' ? 'bg-[#FFE3EA] text-[#C0355A]' : muc === 'sat' ? 'bg-[#FFF1D6] text-[#C27A00]' : 'bg-[#F1F3F9] text-[#63709A]'}`}>
           {muc === 'qua_han' ? '⚠ quá hạn' : nhanConLai(t.deadline, now)}
@@ -366,11 +396,16 @@ function ViecTab({ nv, tasks, nopCount, now, homNay, onOpen }: {
             {canLam.filter((t) => t.ngay === ngay).map((t) => {
               const muc = mucDeadline(t.deadline, now)
               const nop = t.tab === 'btvn' ? nopCount[t.buoiId] ?? 0 : 0
+              // Buổi bù có 2 task cùng buoiId ('et' + 'danhgia') → key phải kèm tab, nếu không React
+              // cảnh báo duplicate key và dòng sau đè dòng trước. Buổi thường 1 vai 1 tab (đủ với vai).
+              const key = t.buoiId + t.vai + t.tab
+              // title đổi sang label khi buổi bù/đuổi (t.lop = hằng "Buổi bù"/"Buổi đuổi" — không phân biệt được ET vs Đánh giá).
+              const title = t.loai ? t.label : t.lop
               return (
-                <BKRowCard key={t.buoiId + t.vai} icon={nv.icon} bg={nv.bg} accent={nv.accent} title={t.lop}
-                  onClick={() => onOpen({ buoiId: t.buoiId, tab: nv.key, lop: t.lop, ngay: t.ngay })}
+                <BKRowCard key={key} icon={nv.icon} bg={nv.bg} accent={nv.accent} title={title}
+                  onClick={() => onOpen({ buoiId: t.buoiId, tab: nv.key, lop: t.lop, ngay: t.ngay, loai: t.loai === 'bu' || t.loai === 'bo_tro_duoi' ? t.loai : undefined })}
                   sub={<>
-                    {t.loai && <span className="rounded-full bg-white/80 px-1.5 py-px font-semibold">{t.loai === 'bu' ? 'buổi bù' : t.loai}</span>}
+                    {t.loai && <span className="rounded-full bg-white/80 px-1.5 py-px font-semibold">{NHAN_LOAI[t.loai]}</span>}
                     {nop > 0 && <span className="rounded-full bg-white/80 px-1.5 py-px font-bold text-[#1E8A52]">📱 {nop} nộp app</span>}
                     {t.deadline != null && (
                       <span className={muc === 'qua_han' ? 'font-bold text-[#C0355A]' : muc === 'sat' ? 'font-bold text-[#C27A00]' : ''}>
@@ -391,10 +426,10 @@ function ViecTab({ nv, tasks, nopCount, now, homNay, onOpen }: {
             {xemXong && (
               <div className="mt-1 flex flex-col gap-1">
                 {daXong.map((t) => (
-                  <button key={t.buoiId + 'd'} onClick={() => onOpen({ buoiId: t.buoiId, tab: nv.key, lop: t.lop, ngay: t.ngay })}
+                  <button key={t.buoiId + t.tab + 'd'} onClick={() => onOpen({ buoiId: t.buoiId, tab: nv.key, lop: t.lop, ngay: t.ngay, loai: t.loai === 'bu' || t.loai === 'bo_tro_duoi' ? t.loai : undefined })}
                     className="flex items-center gap-2 rounded-2xl bg-white/70 px-3 py-1.5 text-left">
                     <img src={A('pr_star')} alt="" className="h-4 w-4 object-contain" draggable={false} />
-                    <span className="text-[12.5px] font-semibold text-[#63709A]">{t.lop}</span>
+                    <span className="text-[12.5px] font-semibold text-[#63709A]">{t.loai ? t.label : t.lop}</span>
                     <span className="ml-auto text-[10.5px] text-[#9AA5C4]">{ddmmVN(t.ngay)}</span>
                   </button>
                 ))}
