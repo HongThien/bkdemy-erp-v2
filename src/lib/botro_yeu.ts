@@ -401,8 +401,11 @@ export async function getDanhGiaCase(boTroYeuId: string, hocSinhId: string, mon:
   // Per-HS, phân trang THẬT (PostgREST cap 1000/query, xem pgrest.ts) — hàm này chấm trước/sau của
   // case nên mất dòng MỚI NHẤT là kết luận sai "bổ trợ có work không". Chưa HS nào vượt 1000 (max 770
   // ngày 09-09) nhưng sẽ vượt ~giữa tháng 10, sửa sẵn cùng đợt với napLanDo.
+  // Embed buoi:buoi_hoc_id(ngay) để cutoff so theo NGÀY BUỔI, không graded_at. Bài buổi 10/08 chấm
+  // 23/08 phải xếp "TRƯỚC" case bổ trợ ngày 15/08 (vì buổi 10/08 xảy ra trước ngày case), không phải
+  // "SAU" do graded_at=23/08 > 15/08. Sai chỗ này = kết luận "bổ trợ có work không" ngược 180°.
   const grades = await fetchAllRows<any>((from, to) => supabase.from('gami_grades')
-    .select('result, graded_at, prob:problem_id(ma_dang)').eq('hoc_sinh_id', hocSinhId)
+    .select('result, graded_at, prob:problem_id(ma_dang, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId)
     .order('graded_at', { ascending: true }).order('id', { ascending: true }).range(from, to))
   const K = khoCuaMon(mon)
   const { data: banDo } = await supabase.from(K.banDoTbl).select('ma_dang, ten_dang').in('ma_dang', maDangs).limit(LIMIT)
@@ -412,7 +415,7 @@ export async function getDanhGiaCase(boTroYeuId: string, hocSinhId: string, mon:
   return rows.map((r) => {
     const vals = ((grades ?? []) as any[])
       .filter((g) => g.prob?.ma_dang === r.ma_dang)
-      .map((g) => ({ value: (RESULT_VALUE as Record<string, number>)[g.result], t: g.graded_at }))
+      .map((g) => ({ value: (RESULT_VALUE as Record<string, number>)[g.result], t: g.prob?.buoi?.ngay ?? g.graded_at }))
       .filter((e) => e.value !== undefined)
     const cutoff = r.day_at ? Date.parse(r.day_at) : null
     const truoc = cutoff ? vals.filter((e) => Date.parse(e.t) < cutoff) : vals

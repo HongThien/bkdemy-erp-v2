@@ -113,15 +113,20 @@ async function napLanDo(hsIds: string[], mon: string): Promise<DoRow[]> {
     .order('id', { ascending: true })
     .range(from, to))
 
-  // Môn của buổi: 1 query cho mọi buổi liên quan.
+  // Môn + NGÀY của buổi: 1 query cho mọi buổi liên quan.
+  // `ngay` để neo `t` timeline theo NGÀY BUỔI (không ngày chấm) — chấm trễ 2 tuần (buổi 10/08 chấm 23/08)
+  // KHÔNG được đẩy phép đo sang cửa sổ 23/08. Dùng ma_dang × HS × timestamp lần đo → sort/window/mastery
+  // đều đúng khi t = ngày buổi.
   const buoiIds = [...new Set(rows.map((r) => r.buoi_hoc_id).filter(Boolean))]
   const monCuaBuoi = new Map<string, string | null>()
+  const ngayCuaBuoi = new Map<string, string | null>()
   const buoiThieuMon: string[] = []
   if (buoiIds.length) {
-    const { data: buois } = await supabase.from('buoi_hoc').select('id, lop:lop_id(mon)').in('id', buoiIds).limit(LIMIT)
+    const { data: buois } = await supabase.from('buoi_hoc').select('id, ngay, lop:lop_id(mon)').in('id', buoiIds).limit(LIMIT)
     for (const b of (buois ?? []) as any[]) {
       const m = b.lop?.mon ?? null
       monCuaBuoi.set(b.id, m)
+      ngayCuaBuoi.set(b.id, b.ngay ?? null)
       if (!m) buoiThieuMon.push(b.id) // buổi bù — xử ở dưới
     }
   }
@@ -148,7 +153,10 @@ async function napLanDo(hsIds: string[], mon: string): Promise<DoRow[]> {
     if (value === undefined) continue
     const m = monCuaBuoi.get(r.buoi_hoc_id) ?? monBuTheoHs.get(`${r.buoi_hoc_id}|${r.hoc_sinh_id}`) ?? null
     if (m !== mon) continue // scope MÔN (§1.6) — buổi bù đã lùi về lớp gốc ở trên
-    out.push({ hoc_sinh_id: r.hoc_sinh_id, ma_dang: p.ma_dang, value, t: r.graded_at, src: p.phase, buoi_hoc_id: r.buoi_hoc_id ?? null })
+    // Timeline neo NGÀY BUỔI (ngayCuaBuoi), fallback graded_at chỉ khi buoi_hoc_id null (không xảy ra
+     // theo schema; phòng thủ) hoặc buổi lookup không có ngày (không xảy ra — buoi_hoc.ngay NOT NULL).
+    const tBuoi = r.buoi_hoc_id ? ngayCuaBuoi.get(r.buoi_hoc_id) ?? null : null
+    out.push({ hoc_sinh_id: r.hoc_sinh_id, ma_dang: p.ma_dang, value, t: tBuoi ?? r.graded_at, src: p.phase, buoi_hoc_id: r.buoi_hoc_id ?? null })
   }
   return out
 }
@@ -906,12 +914,14 @@ export async function getLichSuChuyenDe(hocSinhId: string, maChuyenDe: string, m
 
   // Per-HS: chưa HS nào vượt 1000 dòng (max 770 ngày 09-09) nhưng đang tiến sát (~giữa tháng 10 sẽ
   // vượt) — phân trang sẵn cùng bẫy cap-1000 với `napLanDo`, kẻo "lịch sử gần nhất" mất đúng dòng mới.
+  // Embed buoi:buoi_hoc_id(ngay) để "ngày" trong lịch sử = NGÀY BUỔI (không graded_at) — chấm trễ 2
+  // tuần không được đẩy dòng "lần làm gần nhất" sang sau, xáo trộn thứ tự với các bài buổi kế tiếp.
   const grades = await fetchAllRows<any>((from, to) => supabase.from('gami_grades')
-    .select('result, graded_at, prob:problem_id(ma_dang, phase)').eq('hoc_sinh_id', hocSinhId)
+    .select('result, graded_at, prob:problem_id(ma_dang, phase, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId)
     .order('graded_at', { ascending: true }).order('id', { ascending: true }).range(from, to))
   return (grades as any[])
     .filter((g) => g.prob?.ma_dang && maDangSet.has(g.prob.ma_dang))
-    .map((g) => ({ ma_dang: g.prob.ma_dang, ten_dang: tenMap.get(g.prob.ma_dang) ?? g.prob.ma_dang, nguon: g.prob.phase, ngay: g.graded_at, result: g.result }))
+    .map((g) => ({ ma_dang: g.prob.ma_dang, ten_dang: tenMap.get(g.prob.ma_dang) ?? g.prob.ma_dang, nguon: g.prob.phase, ngay: g.prob?.buoi?.ngay ?? g.graded_at, result: g.result }))
     .sort((a, b) => Date.parse(b.ngay) - Date.parse(a.ngay))
     .slice(0, 10)
 }
