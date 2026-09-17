@@ -1,5 +1,25 @@
 ﻿# DEVLOG — Kho (BKdemy ERP v2) · nhật ký THÔ
 
+## 2026-09-17 — Theo dõi bài tập trên app HS (worktree `theodoi-baitap-hs`)
+
+**Y/c CEO:** "Ngày nào mỗi HS làm bao nhiêu bài, tỉ lệ đúng sai." Thùy view toàn bộ · GV view lớp mình · PH view con.
+
+**CEO chốt phạm vi (AskUserQuestion):**
+- Loại tính: `tu_luyen` + `bo_tro` + `bo_tro_test` + `retest` (HS làm NGOÀI lớp). Loại trừ ET/BTVN/giáo trình/đề thi (làm trên lớp có giám sát).
+- Đơn vị: **Bảng ngày × HS** (ma trận, mỗi ô: số câu + %đúng).
+- PH app: "view giống HS là được, HS đã có bảng sơ sơ" → **KHÔNG build gì trong worktree này**; TODO bên `bkdemy-ph`: thêm màn Lịch-sử-làm-bài tương tự HS (`fn_hs_lich_su_lam_bai` overload nhận `p_hoc_sinh_id`).
+
+**Build:**
+- Mig `202609181000_theodoi_bang_lam_bai_app.sql` → `fn_theodoi_bang_lam_bai(p_tu, p_den, p_lop_ids, p_hoc_sinh_ids)`: security definer, la_admin_he_thong xem all, người khác lọc theo `phan_cong_lop` vai gv/tg. Trả 1 dòng/(HS, ngày) + dòng ngay=null cho HS lười (đủ hiện trong bảng). Data probe: 14 ngày qua có 31 HS làm 2234 câu (~66% đúng).
+- `src/lib/theodoiapp.ts` — RPC wrapper + `groupByHS` + helpers ngày.
+- `src/screens/theodoi/BangLamBaiScreen.tsx` — bảng ngày×HS, sticky header/col, chọn 7/14/30 ngày, filter lớp (chỉ Thùy), tone màu theo %đúng.
+- Gắn: NhanSuHome leaf `db_theodoi_app` (nhóm Quản lý chất lượng) · GvHome tab Lớp thêm sub `app` (pass `lopIds=[lop.id]`).
+
+**Chưa làm / TODO:**
+- App PH bên `bkdemy-ph`: thêm màn Lịch-sử-làm-bài dùng chung RPC `fn_hs_lich_su_lam_bai` (overload cho PH truyền hs_id).
+- Chưa e2e trên UI thật (tsc pass, RPC probe pass). Cần Thùy login rồi bấm vào leaf để duyệt màu/UX.
+
+
 > Log thô, **append-only**, theo ngày: *làm gì / sai gì / sửa sao / quyết định gì*.
 > **KHÔNG load file này khi làm việc** — chỉ `HANDOFF.md` được đọc đầu phiên.
 > File này = **NGUỒN bất biến** để sau truy lại, hoặc tổng hợp lại HANDOFF nếu thấy bản cũ sai logic.

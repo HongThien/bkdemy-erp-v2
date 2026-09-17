@@ -60,6 +60,7 @@ import ChatLuongVanHanhScreen from './dashboard/ChatLuongVanHanhScreen'
 import PhDangNhapScreen from './dashboard/PhDangNhapScreen'
 import XemAppScreen from './dashboard/XemAppScreen'
 import DashboardHocTapScreen from './danhgia/DashboardHocTapScreen'
+import BangLamBaiScreen from './theodoi/BangLamBaiScreen'
 import DuyetBoTroYeuScreen from './danhgia/DuyetBoTroYeuScreen'
 import NoiDungBoTroYeuScreen from './danhgia/NoiDungBoTroYeuScreen'
 import TrangThaiCaBoTroScreen from './danhgia/TrangThaiCaBoTroScreen'
@@ -656,6 +657,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'db_phdangnhap' ? <PhDangNhapScreen />
       : staffLeaf === 'db_xemapp' ? <XemAppScreen />
       : staffLeaf === 'db_hoctap' ? <DashboardHocTapScreen />
+      : staffLeaf === 'db_theodoi_app' ? <BangLamBaiScreen />
       : (staffLeaf === 'botroyeu' || staffLeaf === 'botroyeu:duyet') ? <DuyetBoTroYeuScreen />
       : staffLeaf === 'botroyeu:noidung' ? <NoiDungBoTroYeuScreen />
       : staffLeaf === 'botroyeu:trangthai' ? <TrangThaiCaBoTroScreen />

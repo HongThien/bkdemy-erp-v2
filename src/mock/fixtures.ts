@@ -118,6 +118,7 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'duyetcham',   nhom: 'Quản lý chất lượng', ten: 'Duyệt chấm online',  founderOnly: false }, // review trả-lời-ngắn: chấp nhận đáp án + backfill
   { id: 'duyetloigiai', nhom: 'Quản lý chất lượng', ten: 'Duyệt lời giải AI', founderOnly: false }, // 27/08: gộp theo khối — Đại/KHTN/HGT/Hình có loi_giai do AI viết, chưa duyệt
   { id: 'db_hoctap',   nhom: 'Quản lý chất lượng', ten: 'Dashboard học tập',  founderOnly: false }, // phát hiện → đề xuất → NGƯỜI duyệt (spec-danhgia-hoctap)
+  { id: 'db_theodoi_app', nhom: 'Quản lý chất lượng', ten: 'Theo dõi bài tập app', founderOnly: false }, // ma trận ngày×HS: tự luyện+bổ trợ+retest (CEO 17/09)
   { id: 'botroyeu',    nhom: 'Quản lý chất lượng', ten: 'Bổ trợ yếu',        founderOnly: false }, // Thùy 08-18: lá riêng, 4 tab con (duyệt/nội dung/trạng thái/đánh giá) — xem BOTROYEU_CHILDREN
   { id: 'report_ph',   nhom: 'Quản lý chất lượng', ten: 'Report phụ huynh',   founderOnly: false }, // report tháng gửi PH: số liệu HS + nhận xét GV
 

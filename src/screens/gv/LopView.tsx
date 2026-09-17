@@ -12,11 +12,12 @@ import { rankDiemMTLop, type RankMTRow } from '../../lib/report'
 import { ngayBuoiHopLeCuaLop } from '../../lib/gami'
 import { homNayVN, ddmmVN, congNgay, thuCuaNgay } from '../../lib/tuan'
 import TruocBuoiTab from '../gami/TruocBuoiTab'
+import BangLamBaiScreen from '../theodoi/BangLamBaiScreen'
 
-export type LopSubKey = 'truocbuoi' | 'et' | 'btvn' | 'mt' | 'bando'
+export type LopSubKey = 'truocbuoi' | 'et' | 'btvn' | 'mt' | 'bando' | 'app'
 type SubKey = LopSubKey
 const SUBS: { key: SubKey; label: string }[] = [
-  { key: 'truocbuoi', label: 'Trước buổi' }, { key: 'et', label: 'ET' }, { key: 'btvn', label: 'BTVN' }, { key: 'mt', label: 'MT' }, { key: 'bando', label: 'Bản đồ' },
+  { key: 'truocbuoi', label: 'Trước buổi' }, { key: 'et', label: 'ET' }, { key: 'btvn', label: 'BTVN' }, { key: 'mt', label: 'MT' }, { key: 'bando', label: 'Bản đồ' }, { key: 'app', label: 'App HS' },
 ]
 const pctCls = (p: number) => (p >= 80 ? 'text-emerald-600' : p >= 50 ? 'text-amber-600' : 'text-rose-600')
 
@@ -52,6 +53,7 @@ export default function LopView({ lops, init }: { lops: Lop[]; init?: { lopId: s
       {lop && (sub === 'et' || sub === 'btvn') && <LuoiPhase key={lop.id + sub} lop={lop} phase={sub} />}
       {lop && sub === 'mt' && <MTThangLop key={lop.id} lop={lop} />}
       {lop && sub === 'bando' && <RollupLop key={lop.id} lop={lop} />}
+      {lop && sub === 'app' && <BangLamBaiScreen key={lop.id} lopIds={[lop.id]} />}
     </div>
   )
 }
