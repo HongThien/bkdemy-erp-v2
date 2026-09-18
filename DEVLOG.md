@@ -12815,3 +12815,124 @@ chiếm chỗ trước (bổ trợ phải báo PH).
   option ghi "n/3 em"; tab Lịch trực: bỏ "1 lớp", thêm Bậc ca (nhận HS bậc ≤), người trực BẮT BUỘC, sức chứa mặc định 3.
 - Kiểm RPC (Tùng, Toán, lớp 8B?): 11 slot khối 8 bậc ≥ B; đề xuất T4 17/09 17:00 trước. tsc sạch.
 - Lưu ý dữ liệu: `lop.bac` lệch tên lớp ở vài lớp (6S1/6S2/7S3 bac=A, 3A1 bac=S) — engine theo `lop.bac`, Thùy soát ở màn Lớp.
+
+## 2026-09-17 — Chuyển kho HÌNH khối 7 từ mô hình LUYỆN sang mô hình HỌC (CEO 17/09)
+
+**Yêu cầu Thùy:** "Các mô hình khối 7 (hinh_mo_hinh v3) không phải mô hình luyện mà là mô hình học.
+Chuyển hết về phase Học. Bài lẻ chuyển bình thường. Câu chuỗi ghép nội dung thành 1 câu. Đổi tên tương ứng."
+
+- **Nguồn:** 9 mô hình khối 7 (`hinh_mo_hinh` khoi='7') · 76 bài toán (`hinh_baitoan`) · 46 biến thể có lời giải
+  (`hinh_baitoan_bien_the`) · tiền đề qua `hinh_cach_giai` + `hinh_cach_tien_de`. `hinh_bai`/`hinh_y` v3 khối 7 rỗng.
+- **Đích:** `hinh_hoc_bai` / `hinh_hoc_cau_hoi` / `hinh_hoc_bai_ly_thuyet` (phase HỌC KIẾN THỨC, xây 16/09).
+  Trước migration đã có 1 Bài "Tổng ba góc của một tam giác" (thu_tu=1) do Thùy nhập tay — GIỮ NGUYÊN, APPEND cạnh.
+
+- **QUY TẮC PHÂN LOẠI (bao đóng tiền đề trên graph `hinh_cach_tien_de`):**
+  - Bài toán **LẺ** (`co_td=0 AND lam_td=0`, 54/76): → 1 câu độc lập.
+  - Bài toán **ĐÍCH** (`co_td=1 AND lam_td=0`, 8/76): → 1 câu GHÉP. Bao đóng tiền đề + đích, sort theo `cap`,
+    ghép "a) [pb1]\n\nb) [pb2]…". Cross-model → đặt vào Bài của mô hình chứa đích.
+    Ví dụ chuỗi cross-model 4 mảnh trong Bài "Mô hình 3 góc bù": bao đóng của BT.07.032.02 = {BT.07.031.01,
+    BT.07.032.01, BT.07.031.02, BT.07.032.02} → "a) Kể tên cặp góc kề bù / b) Tìm cặp kề bù / c) Cho ∠xOz=60°,
+    tính ∠yOz / d) Tính ∠tOz, ∠xOt, ∠yOz".
+  - Bài toán **GIỮA CHUỖI** (`co_td=1 AND lam_td=1`, 7/76) và **TIỀN ĐỀ THUẦN** (`co_td=0 AND lam_td=1`, 7/76):
+    KHÔNG câu độc lập, chỉ embed vào câu ghép của các đích dẫn tới → tránh trùng phát biểu.
+  - **Biến thể:** câu CLONE (`parent_ma_cau` = câu gốc, `nguon='clone'`, `clone_method='v3_bien_the'`) khi bài toán
+    của biến thể là LẺ / ĐÍCH (37 cái). Biến thể của bài toán TIỀN ĐỀ THUẦN (9 cái) → câu độc lập không parent
+    (nguồn 'le') vì không có câu gốc để clone vào — vẫn giữ được lời giải + ảnh.
+
+- **KẾT QUẢ (dry-run + apply):**
+  - +9 Bài (`Hai góc Kề bù` · `Đối đỉnh` · `Phân giác` · `Hai đường thẳng song song` · `Ba đường thẳng song song`
+    · `Hình học` · `Phân giác trong Tam giác vuông.` · `Mô hình 3 góc bù` · `Đối đỉnh thêm tia`) — cạnh Bài
+    "Tổng ba góc" đã có sẵn. Tổng 10 Bài khối 7.
+  - +108 câu (54 lẻ + 8 ghép + 46 biến thể = 37 clone + 9 độc lập). Tổng 117 câu khối 7.
+  - +9 lý thuyết Bài (`gia_thiet` + link ảnh cấu hình dưới dạng markdown `![Cấu hình](url)`).
+  - `mo_hinh_id` giữ = `hinh_baitoan.mo_hinh_id` (nhãn mastery signal, hook đã có sẵn).
+  - `da_duyet=false` toàn bộ 108 câu mới — GV duyệt lại.
+
+- **Migration `supabase/migrations/202609171743_chuyen_hinh_k7_ve_hoc.sql`** (1950 dòng, sinh bằng
+  `scripts/_gen_migration_hinh_k7_hoc.mjs`, transaction wrap + PRE-CHECK 9 tên Bài chưa tồn tại + POST-CHECK
+  đủ 9 Bài mới với đúng tên). Áp qua `--only`, POST-CHECK NOTICE: "Chuyển xong khối 7: 10 Bài học tổng, 117 câu
+  tổng, 10 lý thuyết Bài tổng." `npm run schema` OK.
+
+- **KHÔNG XÓA gì** bên `hinh_mo_hinh`/`hinh_baitoan`/`hinh_cach_giai`/`hinh_baitoan_bien_the` — phase Luyện
+  (KhoHinhScreen) vẫn đọc data cũ như cũ. CEO chọn "giữ nguyên, không đánh dấu chéo".
+
+- **Còn (khối khác chưa làm):** Khảo sát nhanh cho biết tổng `hinh_mo_hinh` = 37 (khối 7 = 9, các khối còn lại
+  = 28). Generator `_gen_migration_hinh_k7_hoc.mjs` parametrize được khoi (đổi 1 dòng WHERE) — chạy lại cho
+  khối 8/9/12 khi CEO chốt.
+
+- **Chưa commit.** File tạo/sửa: `supabase/migrations/202609171743_chuyen_hinh_k7_ve_hoc.sql` (mới),
+  `scripts/_gen_migration_hinh_k7_hoc.mjs` (utility tái dùng), `scripts/_dryrun_hinh_k7.mjs` (dry-run helper),
+  `scripts/_khaosat_hinh_k7.mjs` + `scripts/_khaosat_hinh_k7_bt.mjs` + `scripts/_soi_hh_k7.mjs` (diag tạm),
+  `schema.md` (regen sau migration).
+
+## 2026-09-17 (tiếp) — Chuyển kho HÌNH khối 8 + khối 9 sang mô hình HỌC (CEO 17/09 "làm với khối 8 9 luôn")
+
+- **Generator đã parametrize** (`scripts/_gen_migration_hinh_k7_hoc.mjs <khoi>`) — chạy chung cho 7/8/9,
+  cần khối khác chỉ đổi arg. Rule/PRE-CHECK/POST-CHECK/quy tắc phân loại (lẻ/đích/tiền đề/giữa/biến thể)
+  không đổi.
+
+- **KHỐI 8** (`202609172220_chuyen_hinh_k8_ve_hoc.sql`): 26 mô hình → 26 Bài · 106 bài toán (46 lẻ · 27 đích ·
+  20 tiền đề thuần · 13 giữa) · 39 biến thể (34 clone `v3_bien_the` + 5 độc lập của tiền đề thuần) = **112 câu**.
+  Có 5 Bài "gốc họ" 0 câu (Hình thang · Hình chữ nhật · Hình thoi · Hình vuông · Tam giác vuông–trung điểm) —
+  mô hình chỉ có KHUNG (không `hinh_baitoan` con), lý thuyết vẫn tạo. Bài "Hình học Test" (MH.060) 29 câu là
+  placeholder chứa bài lẻ chưa phân mô hình.
+
+- **KHỐI 9** (`202609172221_chuyen_hinh_k9_ve_hoc.sql`): 3 mô hình → 3 Bài · 101 bài toán (55 lẻ · 16 đích ·
+  15 tiền đề thuần · 15 giữa) · 0 biến thể = **71 câu** (không có clone). Bài "Hình học Test" (MH.055) 54 câu
+  là bulk chưa phân mô hình. Bài "Mô hình tam giác vuông" (MH.010) 6 câu, "Tam giác vuông có Đường cao AH"
+  (MH.011) 11 câu.
+
+- **Áp bằng `--only`** cho từng file, POST-CHECK NOTICE khớp kỳ vọng cả 2. Dry-run PASS trước khi áp thật.
+
+- **TỔNG SAU 3 MIGRATION (K7+K8+K9):** 39 Bài học · 300 câu (`hinh_hoc_bai` khoi ∈ {7,8,9}). Bảng bên phase
+  Luyện (`hinh_mo_hinh`/`hinh_baitoan`/…) KHÔNG bị đụng — Luyện vẫn chạy nguyên vẹn.
+
+- **Còn lại** (chưa chuyển): khối 4/5/6/10/11/12 hoặc 4T/5T — kiểm `hinh_mo_hinh` theo khoi thấy có mô hình
+  không. Từ HANDOFF cũ: mô hình v3 tập trung 7-8-9. Nhưng chưa quét toàn bộ, chỉ khối 8/9 vừa chạy.
+
+- **Chưa commit.** File mới: 2 migration `202609172220_chuyen_hinh_k8_ve_hoc.sql` + `202609172221_chuyen_hinh_k9_ve_hoc.sql`.
+  Diag script `_khaosat_hinh_all.mjs` + `_verify_hinh_hoc.mjs` (tạm).
+
+## 2026-09-17 (tiếp 2) — Gộp Bài học HÌNH khối 8 về MÔ HÌNH GỐC HỌ (CEO 17/09)
+
+**CEO:** "khối 8: bỏ hết mô hình tầng dưới, mỗi bài là một mô hình gốc (Hình thang, Hình bình hành, Hình chữ nhật). Tất cả mô hình con của nó bỏ đi, chỉ đơn giản là các bài thuộc Hình chữ nhật thôi."
+
+- Migration `202609172227_gop_hinh_k8_ve_goc_ho.sql`:
+  - Tra hierarchy qua `hinh_mo_hinh_cha`: 17 mô hình con của K8 → 9 mô hình gốc họ.
+  - UPDATE `hinh_hoc_cau_hoi.dang_chinh` (43 câu) từ Bài con sang Bài gốc, cộng offset `thu_tu` để không trùng.
+  - `mo_hinh_id` GIỮ NGUYÊN (mô hình con vẫn có trong `hinh_mo_hinh`, mastery signal không mất).
+  - DELETE lý thuyết + Bài con (17 dòng).
+- **K8 sau gộp: 9 Bài · 112 câu** (Tứ giác 35 · Hình thang 3 · Hình thang cân 16 · Hình bình hành 24 · Hình
+  chữ nhật 5 · Hình thoi 0 · Hình vuông 0 · Tam giác vuông–trung điểm 0 · Hình học Test 29).
+- Ánh xạ hierarchy (từ `hinh_mo_hinh_cha`):
+  - MH.027-030 → MH.020 Tứ giác
+  - MH.041 → MH.021 Hình thang
+  - MH.042-044 → MH.022 Hình thang cân
+  - MH.047-051, MH.053 → MH.023 Hình bình hành
+  - MH.057-059 → MH.024 Hình chữ nhật (**⚠ theo cha trong DB — bên "Tam giác vuông" gộp về Hình chữ nhật; nếu CEO muốn về "Tam giác vuông - trung điểm" thì cần sửa `hinh_mo_hinh_cha` trước rồi chạy lại**).
+- Dry-run PASS trước khi áp, transaction wrap, PRE-CHECK + POST-CHECK. Phía `hinh_mo_hinh`/`hinh_baitoan`/…
+  không đụng.
+- Chưa commit. K7 và K9 không đụng — 39 Bài tổng giảm còn **22 Bài · 300 câu** (K7=10 · K8=9 · K9=3).
+
+## 2026-09-18 — Vòng quay may mắn: 14 HS đủ ĐK mà 0 quay được (bug badge cấp 1)
+
+**CEO báo:** "HS Gia Bảo 5T1 làm xong tự luyện nhưng không quay được. Design đúng là làm ngày nào quay ngày đấy, qua ngày không tính."
+
+**Điều tra (5 script diag_maymay_* — đã xoá sau khi xong):**
+- Vũ Phan Gia Bảo HS0655 (khối 5T) đêm 17/09 làm 3 lượt tự luyện: 10/10 · 10/10 · 9/10 (đều `da_nop`, đủ ≥70%).
+- `may_man_hs_luot` cho HS này: **trống**. Toàn hệ thống ngày 17/09: **14 HS đủ ĐK / 0 quay**. Kể từ khi tính năng ra chưa có 1 lượt quay nào ghi vào bảng.
+- Phân bố theo khối: **toàn cấp 1** — K4T=4, K5=2, K5T=8 (0 HS cấp 2 nào đủ vì chưa tự luyện đủ).
+
+**Nguyên nhân — `src/screens/hocsinh/HocSinhApp.tsx:259`:**
+```
+useEffect(() => {
+  if (!cap2 || direct || khu) return   // ← cắt cấp 1
+  mayManHSCuaToi().then((d) => setMaymanCoLuot(...))
+}, [cap2, direct, khu])
+```
+Guard `!cap2` chặn cấp 1 refetch `maymanCoLuot`. Nhưng HomeCap1 có ô May mắn (`BOX_CAP1`, line 129) và có vẽ badge số 1 khi `maymanCoLuot=true` (line 203). Hệ quả: HS cấp 1 làm xuất sắc → RPC `fn_may_man_hs_cua_toi` nói `du:true`, `hom_nay:null`, đủ điều kiện — **nhưng badge trên ô luôn tắt câm** → HS không có tín hiệu để bấm vào quay → qua nửa đêm `bt.ngay < v_today` → mất lượt.
+
+**Fix:** đổi guard thành `if (cap1===null || cap2===null || direct || khu) return; if (!cap1 && !cap2) return;` — cả cấp 1 lẫn cấp 2 refetch; cấp 3 (10-12) không có ô May mắn nên bỏ qua. RPC `fn_may_man_hs_quay` không check cấp 2 (đã kiểm), nên nút "Quay ngay" trong màn MayManHS đã sẵn sàng — chỉ thiếu **tín hiệu badge**.
+
+**KHÔNG đụng:** RPC/migration — logic điều kiện `bt.ngay = v_today` đúng intent CEO. Chỉ 1 dòng FE.
+
