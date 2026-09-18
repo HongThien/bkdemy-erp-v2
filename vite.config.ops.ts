@@ -47,6 +47,9 @@ export default defineConfig({
         // (đủ điều kiện cài PWA + load nhanh lần sau). ERP và app là 2 đầu nhập cùng 1 DB (Thùy 29/08).
         globPatterns: ['**/*.{js,css,html,png,svg,woff2}'],
         navigateFallbackDenylist: [/^\/rest\//, /^\/auth\//],
+        // Chunk SoanTaiLieu (đường in MT của Test đầu vào) ~2.5 MB do lib/detest.ts dynamic-import — chỉ tải
+        // khi bấm in đề, không cần precache offline. Nới trần lên 5 MiB để build không chết vì nó.
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
       },
     }),
     renameToIndex(),

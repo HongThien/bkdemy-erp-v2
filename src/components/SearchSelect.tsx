@@ -7,7 +7,7 @@ export type Opt = { id: string; label: string; sub?: string; img?: string | null
 // Avatar tròn nhỏ: ảnh nếu có, không thì chữ cái đầu.
 function Ava({ img, label }: { img?: string | null; label: string }) {
   return img
-    ? <img src={img} alt="" className="h-5 w-5 shrink-0 rounded-full object-cover" />
+    ? <img src={img} alt="" loading="lazy" decoding="async" width={20} height={20} className="h-5 w-5 shrink-0 rounded-full object-cover" />
     : <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-[10px] font-semibold text-indigo-600">{label.trim().charAt(0).toUpperCase()}</span>
 }
 
