@@ -1648,20 +1648,28 @@ export const soThuTuCua = (ma: string, from: number) => tachTienTo(ma).vt.slice(
 // Append-only: thứ tự mới = max anh em + 1 (xoá để lại lỗ, không đánh lại số).
 const pad2 = (n: number) => String(n).padStart(2, '0')
 export const khoiCode = (khoi: string) => khoi.padStart(2, '0')
-const maxOrd = (codes: string[], from: number): number => {
-  // cắt trên PHẦN VỊ TRÍ, không phải mã thô — nếu không thì mã có tiền tố lệch 1-2 ký tự
-  // và số thứ tự đọc ra sai ⇒ mã mới đè lên mã đang có.
-  const ords = codes.map((c) => parseInt(soThuTuCua(c, from), 10)).filter((n) => Number.isFinite(n))
+// ⚠ 18/09/2026 — sửa bug sinh mã (5 dòng K7 nối chuỗi + 11 dòng K7 chưa T1 sinh SAU
+// migration 202608141259). Bản CŨ: `parseInt(soThuTuCua(c, from))` nuốt CẢ phần vị trí
+// còn lại → nếu mã anh em đang lệch chuẩn (len>10) thì trả số cực lớn (vd 11103),
+// pad2 giữ nguyên không cắt → mã mới ghép ra len 12-15. Bản MỚI: lọc anh em phải là
+// PARENT + đúng 2 digit, đọc đúng 2 ký tự cuối. Mã rác không match ⇒ bị bỏ khi tính
+// max, không bị "nhiễm". Cross-check bằng `fn_dai_kiem_ma()` sau khi build.
+const maxOrdCon = (codes: string[], parent: string): number => {
+  const need = parent.length + 2
+  const ords = codes
+    .filter((c) => c.length === need && c.startsWith(parent) && /^\d{2}$/.test(c.slice(-2)))
+    .map((c) => parseInt(c.slice(-2), 10))
   return ords.length ? Math.max(...ords) : 0
 }
 export function suggestChuDeMa(khoi: string, tree: ChuDeNode[], tienTo = KHO_TIEN_TO.dai): string {
-  return tienTo + khoiCode(khoi) + pad2(maxOrd(tree.map((c) => c.ma_chu_de), 2) + 1)
+  const parent = tienTo + khoiCode(khoi)
+  return parent + pad2(maxOrdCon(tree.map((c) => c.ma_chu_de), parent) + 1)
 }
 export function suggestChuyenDeMa(cdCode: string, chude: ChuDeNode | null): string {
-  return cdCode + pad2(maxOrd((chude?.chuyenDes ?? []).map((x) => x.ma_chuyen_de), 4) + 1)
+  return cdCode + pad2(maxOrdCon((chude?.chuyenDes ?? []).map((x) => x.ma_chuyen_de), cdCode) + 1)
 }
 export function suggestDangMa(cdeCode: string, chuyende: ChuyenDeNode | null): string {
-  return cdeCode + pad2(maxOrd((chuyende?.dangs ?? []).map((d) => d.ma_dang), 6) + 1)
+  return cdeCode + pad2(maxOrdCon((chuyende?.dangs ?? []).map((d) => d.ma_dang), cdeCode) + 1)
 }
 
 // ════════════════════════════════════════════════════════════════
@@ -1692,13 +1700,14 @@ export function groupMap(rows: MapRow[]): Tier1Node[] {
   return [...m.values()]
 }
 export function suggestT1Ma(khoi: string, tree: Tier1Node[], tienTo = KHO_TIEN_TO.dai): string {
-  return tienTo + khoiCode(khoi) + pad2(maxOrd(tree.map((t) => t.t1Ma), 2) + 1)
+  const parent = tienTo + khoiCode(khoi)
+  return parent + pad2(maxOrdCon(tree.map((t) => t.t1Ma), parent) + 1)
 }
 export function suggestT2Ma(t1Code: string, t1: Tier1Node | null): string {
-  return t1Code + pad2(maxOrd((t1?.tier2s ?? []).map((x) => x.t2Ma), 4) + 1)
+  return t1Code + pad2(maxOrdCon((t1?.tier2s ?? []).map((x) => x.t2Ma), t1Code) + 1)
 }
 export function suggestLeafMa(t2Code: string, t2: Tier2Node | null): string {
-  return t2Code + pad2(maxOrd((t2?.leaves ?? []).map((d) => d.leafMa), 6) + 1)
+  return t2Code + pad2(maxOrdCon((t2?.leaves ?? []).map((d) => d.leafMa), t2Code) + 1)
 }
 
 // ── ĐẠI: map qua MapRow ──────────────────────────────────────────

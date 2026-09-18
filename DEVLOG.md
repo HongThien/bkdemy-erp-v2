@@ -1,5 +1,53 @@
 ﻿# DEVLOG — Kho (BKdemy ERP v2) · nhật ký THÔ
 
+## 2026-09-18 — Chuẩn hoá mã bản đồ Đại (function + fix bug sinh mã + dọn 16 dạng rác K7)
+
+**Y/c CEO:** Chức năng chuyển/gộp/xoá chuyên đề trong bản đồ kiến thức. Đầu vào: "mã sinh có vấn đề đấy, chắc code sai đâu rồi, fix luôn đi" + rule mã bản đồ Toán "T1 + Lớp + STT chủ đề + STT chuyên đề + STT dạng + STT câu".
+
+**CEO clarify trong lúc phân tích:**
+- Prefix hiện tại đúng, KHÔNG cần swap T2↔T3 hay K→K1 (CEO nhớ nhầm lượt đầu). Giữ mapping cũ: T1=Đại · T2=Hình học · T3=HGT · K=KHTN.
+- Khối `4T` và `5T` là KHỐI RIÊNG (không phải lớp 4/5 tiểu học) — regex chuẩn phải chấp nhận cả `\d{2}` và `\dT` cho khối.
+- Xử lý Đại trước, 3 kho khác để bước 1b sau.
+
+**Đo trạng thái (18/09):**
+- fn_dai_kiem_ma() BAN ĐẦU: 104 dòng lệch/tầng ⇒ nới regex chấp nhận `4T/5T` → **16 dòng rác thật** (đều K7).
+- Chia 2 nhóm:
+  - **11 dòng chưa T1 prefix** (chủ đề `07702` — Số thực, sinh SAU migration 202608141259).
+  - **5 dòng nối chuỗi** (chủ đề `T107703` — Đề thi đầu vào M9, mã dài 11-15 ký tự do bug `maxOrd`).
+- Nguồn bug: `src/lib/kho/api.ts:1651` — `maxOrd` dùng `parseInt(soThuTuCua(c, from))` nuốt CẢ phần vị trí còn lại → mã anh em lệch chuẩn khiến max trả số cực lớn (vd 11103) → `pad2` không cắt → mã mới ghép ra len 12-15.
+
+**Build (3 migration + 1 fix code):**
+- **Mig `202609180046_dai_ma_chuan_fn.sql`** — 6 function nguồn công thức duy nhất §2.0:
+  - `fn_dai_ma_hop_le(ma, tang)` · `fn_dai_ma_kho_cha(ma, tang)`
+  - `fn_dai_sinh_ma_chuyen_de(chu_de, stt?)` · `fn_dai_sinh_ma_dang(chuyen_de, stt?)` — cấp STT max+1 trong parent, chỉ đếm mã ĐÚNG CHUẨN (bỏ qua rác)
+  - `fn_dai_chuyen_dang_ma_moi(dang, cd_moi)` — thuần tính, LUÔN cấp max+1 trong đích (Q2: không cố giữ STT cũ, đơn giản)
+  - `fn_dai_kiem_ma()` — trả bảng vi phạm bất biến, dùng CI/verify
+- **Mig `202609180055_dai_ma_khoi_dac_biet_4t_5t.sql`** — nới regex `(\d{2}|\dT)` cho khối, chấp nhận 88 dòng K4+K5 legacy active nặng (1215 câu K4, 3170 rows tự luyện, 2 lớp đang dạy — không thể xoá).
+- **Fix `src/lib/kho/api.ts`** — thay `maxOrd(codes, from)` bằng `maxOrdCon(codes, parent)`: filter codes phải `startsWith(parent) && length === parent.length+2 && /^\d{2}$/.test(slice(-2))`. Chặn cả 2 bug (nối chuỗi + parse quá số) cho **4 kho + legacy 4T/5T**. Không đổi API — 3 caller `BanDo.tsx:703/706/708` giữ nguyên. Test unit 6 case pass. (Band-aid §2.0 — bước 2b sau bước 1b sẽ chuyển hoàn toàn sang RPC.)
+- **Mig `202609181048_dai_ma_don_rac_k7_16_dang.sql`** — dọn 27 mã (2 chủ đề + 9 chuyên đề + 16 dạng):
+  - `07702 → T10702` (Số thực) · `T107703 → T10703` (Đề thi đầu vào M9)
+  - Cascade tự chạy nhờ 7 FK on update cascade (dai_cau_hoi.dang_chinh, dai_cau_menh_de, dai_cum_bai, dai_dang_ly_thuyet, dai_dang_thuoc_tinh, dai_dang_tien_de×2 cột).
+  - Text-ref không FK update thủ công: `dai_chuyen_de_ly_thuyet` (4), `gami_session_problems` (290), `ca_test_cau` (196), `bai_test_cau` (13), `tu_luyen_dang_lan` (13), `buoi_danh_gia_dang` (5), `bo_tro_duoi_dang` (3), `canh_bao_yeu` (1). Tổng cascade ~1170 rows.
+  - Disable trigger `trg_log_doi_dang` trong scope migration để tránh ~600 dòng log "backfill" giả (đây là RENAME mã, không phải chuyển câu sang dạng khác).
+  - Self-verify: `fn_dai_kiem_ma()` phải = 0 cuối migration, else raise + rollback.
+
+**Sai đã đau (bookkeeping):**
+- Lượt 1 viết migration function với regex strict `\d{2}` cho khối → 104 dòng lệch (thay vì 16). Chưa hỏi CEO đã áp. May migration function-only, replace-able.
+- Lượt viết migration dọn 16 dòng: UPDATE FROM có JOIN dùng target alias `b` → Postgres báo "invalid reference to FROM-clause entry" → rollback nguyên vẹn. Fix: bỏ alias, dùng target-name trong where + Cartesian join trong from.
+
+**Kết quả:**
+- `fn_dai_kiem_ma()` trả 0 dòng lệch. 689 dạng Đại đều ĐÚNG CHUẨN theo rule mới.
+- Nguồn bug sinh mã (client `maxOrd`) bị chặn cho 4 kho + legacy 4T/5T.
+- CEO đã áp cả 3 migration.
+
+**Chưa làm / TODO:**
+- **Bước 4**: build chức năng UI + RPC chuyển/gộp/xoá chuyên đề/dạng (dùng `fn_dai_chuyen_dang_ma_moi`, `fn_dai_sinh_ma_*`). Log vào `kho_doi_dang_log` (đã có bảng).
+- **Bước 1b**: đối xứng function chuẩn hoá cho HGT (T3) / KHTN (K) / Hình (T2). Hình học phức tạp (Học vs Luyện + mô hình + bài) — cần CEO chốt format mã `hinh_baitoan` (mã mô hình + STT bài) cụ thể trước khi viết.
+- **Bước 2b**: chuyển `suggest*` client sang RPC gọi `fn_*_sinh_ma_*` (tuân §2.0 đầy đủ) sau khi bước 1b có function 4 kho.
+- Chưa thêm CHECK constraint trên `dai_ban_do.ma_dang` — chờ 3 kho khác cũng sạch để áp đồng thời.
+
+---
+
 ## 2026-09-17 — Theo dõi bài tập trên app HS (worktree `theodoi-baitap-hs`)
 
 **Y/c CEO:** "Ngày nào mỗi HS làm bao nhiêu bài, tỉ lệ đúng sai." Thùy view toàn bộ · GV view lớp mình · PH view con.

@@ -2,14 +2,14 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `6` BẢNG
-> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `thong_bao_hs`
+> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `7` BẢNG
+> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `thong_bao_hs` · `thong_bao_ph`
 > Các bảng này bật RLS với policy `to authenticated`, nên `SELECT` từ script/CLI trả **0 dòng,
 > im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-228 bảng · 18 view · 0 enum · 70 trigger · 376 function
+229 bảng · 18 view · 0 enum · 71 trigger · 383 function
 
 ## _app_secrets
 
@@ -3027,6 +3027,24 @@
 | doc_at | timestamp with time zone | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## thong_bao_ph
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| tieu_de | text |  |  |  |  |
+| noi_dung | text |  |  |  |  |
+| loai | text |  | 'chung'::text |  | `chung` · `lich` · `thi` · `nhac` |
+| scope | text |  |  |  | `toan_bo` · `khoi` · `lop` · `ca_nhan` |
+| khoi | text | Y |  |  |  |
+| lop_id | uuid | Y |  | FK→lop.id |  |
+| hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |  |
+| hieu_luc_tu | date | Y |  |  |  |
+| hieu_luc_den | date | Y |  |  |  |
+| created_by | uuid | Y |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
 ## tich_luy_chot_thang
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -4812,6 +4830,7 @@ SELECT bl.hoc_sinh_id,
 | soan_thu_muc | trg_soan_thu_muc_touch | BEFORE | UPDATE | fn_soan_touch |
 | test_dau_vao_phan_cong | trg_log_test_dau_vao_phan_cong | BEFORE | INSERT/UPDATE | log_test_dau_vao_phan_cong |
 | thanh_toan | tg_thanh_toan_trang_thai | AFTER | INSERT/DELETE/UPDATE | fn_hoa_don_cap_nhat_trang_thai |
+| thong_bao_ph | trg_tbph_updated_at | BEFORE | UPDATE | tbph_updated_at |
 | ung_vien | trg_log_ung_vien | AFTER | INSERT/UPDATE | log_ung_vien |
 | viec | tg_viec_nghiem_thu_tinh | BEFORE | INSERT/UPDATE | fn_viec_nghiem_thu_tinh |
 | viec | trg_log_viec | AFTER | INSERT/UPDATE | log_viec |
@@ -4927,6 +4946,12 @@ SELECT bl.hoc_sinh_id,
 - `fn_chi_tong_quan()` → jsonb
 - `fn_chi_tu_choi(p_id uuid, p_ly_do text)` → void
 - `fn_completion_theo_lop(p_mon text, p_phase text, p_ym text)` → TABLE(lop_id uuid, buoi_count bigint, expected bigint, done bigint)
+- `fn_dai_chuyen_dang_ma_moi(p_ma_dang text, p_ma_chuyen_de_moi text)` → text
+- `fn_dai_kiem_ma()` → TABLE(loai text, ma_dang text, ma_chuyen_de text, ma_chu_de text, khoi text, ly_do text)
+- `fn_dai_ma_hop_le(p_ma text, p_tang text)` → boolean
+- `fn_dai_ma_kho_cha(p_ma text, p_tang text)` → text
+- `fn_dai_sinh_ma_chuyen_de(p_ma_chu_de text, p_stt smallint DEFAULT NULL::smallint)` → text
+- `fn_dai_sinh_ma_dang(p_ma_chuyen_de text, p_stt smallint DEFAULT NULL::smallint)` → text
 - `fn_diem_thi_tinh()` → trigger
 - `fn_dien_cau_hinh()` → jsonb
 - `fn_dien_cham(p_key jsonb, p_hs jsonb)` → TABLE(verdict text, ti_le numeric)
@@ -5188,6 +5213,7 @@ SELECT bl.hoc_sinh_id,
 - `qlht_qua_them(p_ten text, p_gia_xu integer, p_anh_url text DEFAULT NULL::text, p_mo_ta text DEFAULT NULL::text)` → uuid
 - `resolve_bien_the(p_bai_test uuid)` → smallint
 - `self_link_account()` → uuid
+- `tbph_updated_at()` → trigger
 - `tln_cache_check(p_ma_cau text, p_norm text)` → boolean
 - `tln_norm(t text)` → text
 - `trg_chi_khoan_bf()` → trigger
@@ -5273,6 +5299,9 @@ SELECT bl.hoc_sinh_id,
 | qlht_xu_ledger | qlht_xu_ledger_amount_check | `CHECK ((amount <> 0))` |
 | shop_vat_pham | shop_vat_pham_gia_diem_check | `CHECK ((gia_diem > 0))` |
 | thoi_khoa_bieu | thoi_khoa_bieu_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
+| thong_bao_ph | chk_scope_ca_nhan | `CHECK (((scope <> 'ca_nhan'::text) OR (hoc_sinh_id IS NOT NULL)))` |
+| thong_bao_ph | chk_scope_khoi | `CHECK (((scope <> 'khoi'::text) OR (khoi IS NOT NULL)))` |
+| thong_bao_ph | chk_scope_lop | `CHECK (((scope <> 'lop'::text) OR (lop_id IS NOT NULL)))` |
 | toan_de_thi_cau | toan_de_thi_cau_1_of_2_check | `CHECK ((num_nonnulls(ma_cau_dai, ma_cau_hgt) = 1))` |
 | troly_nhan_dinh | troly_nhan_dinh_gac_ck | `CHECK (((quyet_dinh = 'gac'::text) = (gac_den IS NOT NULL)))` |
 | troly_ra_soat | troly_ra_soat_gac_ck | `CHECK (((ket_luan = 'gac'::text) = (gac_den IS NOT NULL)))` |
