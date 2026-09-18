@@ -254,12 +254,16 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   useEffect(() => { laCap2HS().then(setCap2).catch(() => setCap2(false)) }, [])
   useEffect(() => { hoSoCuaToi().then((h) => { setGioiTinh(h?.gioi_tinh ?? null); setAnhUrl(h?.anh_url ?? null) }).catch(() => setGioiTinh(null)) }, [])
   useEffect(() => { taiChuaDoc() }, [])
-  // Badge ô "May mắn" — có 1 lượt để quay khi (đủ điều kiện + chưa quay hôm nay + active). Chỉ tải cho cấp 2.
+  // Badge ô "May mắn" — có 1 lượt để quay khi (đủ điều kiện + chưa quay hôm nay + active).
+  // Cả cấp 1 (HomeCap1 → BOX_CAP1 có ô 'may_man') LẪN cấp 2 (KHU_CAP2) đều có ô này → cả 2 phải
+  // refetch badge (bug 17/09: guard `!cap2` cắt cấp 1, 14 HS cấp 1 đủ ĐK nhưng badge tắt câm, không
+  // ai vào bấm quay → qua đêm mất lượt vì `bt.ngay=v_today` intent CEO). Cấp 3 (10-12) không có ô.
   // Refetch khi rời màn quay (direct đổi) để badge cập nhật ngay sau khi HS quay xong.
   useEffect(() => {
-    if (!cap2 || direct || khu) return
+    if (cap1 === null || cap2 === null || direct || khu) return
+    if (!cap1 && !cap2) return
     mayManHSCuaToi().then((d) => setMaymanCoLuot(!!d.active && !d.hom_nay && !!d.du_dieu_kien.du)).catch(() => setMaymanCoLuot(false))
-  }, [cap2, direct, khu])
+  }, [cap1, cap2, direct, khu])
   useEffect(() => {
     const tai = () => Promise.all([caCuaToi().catch(() => null), retestCuaToi().catch(() => []), lichBoTroCuaToi().catch(() => [] as LichBoTro[])])
       .then(([ca, rt, lich]) => setBoTro({ coCa: !!ca, soRetest: rt.filter((r) => !r.da_nop).length, lich }))

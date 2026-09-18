@@ -1438,6 +1438,12 @@ chưa commit — dọn cần CEO gật.
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
+- **⭐ UI chia cấp 1/2/3 mà cùng feature — refetch state phải mở cho MỌI cấp có feature đó (bug 18/09 vòng quay may mắn).**
+  `HocSinhApp.tsx` fetch `maymanCoLuot` với guard `if (!cap2) return` — nhưng ô "May mắn" hiện trong CẢ `HomeCap1`
+  (BOX_CAP1) LẪN `KHU_CAP2`. Kết quả: 14 HS cấp 1 đủ điều kiện quay ngày 17/09 nhưng badge tắt câm → không ai vào
+  bấm quay → qua đêm `bt.ngay < v_today` (đúng intent CEO "làm ngày nào quay ngày đấy") → mất lượt. RPC không cấm
+  cấp 1 — chỉ FE thiếu tín hiệu. **Áp dụng:** khi feature hiện ở nhiều cấp, list các cấp CÓ UI của nó rồi mở guard
+  cho tất cả (ở đây: `if (!cap1 && !cap2) return`), không dựa vào cấp mặc định.
 - **⭐⭐ QUY TRÌNH thiết kế RULE LỖI cho form trắc nghiệm (Thùy chốt 09/09, sau khi CTO code trước-hỏi-sau 1 lần) —
   áp cho MỌI dạng mới đưa vào MCQ (`scripts/mcq-auto.mjs`/`mcq-sinh.mjs`, spec-mcq-form.md), không riêng "tích bằng 0":**
   **(1) Đọc `loi_giai` (lời giải chi tiết) THẬT trong kho của vài câu mẫu dạng đó trước** — không suy luận rule lỗi từ
