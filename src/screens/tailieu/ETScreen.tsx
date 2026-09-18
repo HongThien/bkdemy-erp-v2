@@ -455,7 +455,11 @@ export function ETEditor({ et, onClose, presetHinh }: { et?: ETView; onClose?: (
           <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5" title={editing ? 'Nhánh cố định khi sửa ET đã lưu' : 'Chọn nhánh trước khi soạn câu'}>
             <button onClick={() => chonNhanh(null)} disabled={editing} className={`rounded-md px-3 py-1 text-[13px] font-medium transition disabled:cursor-not-allowed disabled:opacity-60 ${nhanh === null ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Đại số</button>
             <button onClick={() => chonNhanh('hinh_gt')} disabled={editing} className={`rounded-md px-3 py-1 text-[13px] font-medium transition disabled:cursor-not-allowed disabled:opacity-60 ${nhanh === 'hinh_gt' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Hình giải tích</button>
-            <button onClick={() => chonNhanh('hinh')} disabled={editing} className={`rounded-md px-3 py-1 text-[13px] font-medium transition disabled:cursor-not-allowed disabled:opacity-60 ${laHinh ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Hình</button>
+            {/* ⭐ 16/09 (CEO): "ET chưa pick theo kho mới" — thêm nhánh Hình học (phase HỌC). Đi CHUNG logic
+                Đại (khoCuaMon dispatch cauTbl='hinh_hoc_cau_hoi'), KHÔNG dùng panel Hình-Luyện bên dưới.
+                Đặt trước 'hinh' (Luyện) để 2 nhánh Hình xếp cạnh nhau; guard `nhanh === 'hinh'` chỉ áp Luyện. */}
+            <button onClick={() => chonNhanh('hinh_hoc')} disabled={editing} className={`rounded-md px-3 py-1 text-[13px] font-medium transition disabled:cursor-not-allowed disabled:opacity-60 ${nhanh === 'hinh_hoc' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Hình học</button>
+            <button onClick={() => chonNhanh('hinh')} disabled={editing} className={`rounded-md px-3 py-1 text-[13px] font-medium transition disabled:cursor-not-allowed disabled:opacity-60 ${laHinh ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Hình (Luyện)</button>
           </div>
         )}
         <div className="flex items-center gap-1.5 text-[12px] text-slate-500">Ngày
