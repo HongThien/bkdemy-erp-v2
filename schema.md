@@ -1722,6 +1722,7 @@
 | nguon_giai | text |  | 'nguoi'::text |  |  |
 | parent_ma_cau | text | Y |  | FK→hinh_hoc_cau_hoi.ma_cau |  |
 | clone_method | text | Y |  |  |  |
+| kho_chuan | boolean |  | true |  |  |
 
 ## hinh_hoc_cum_bai
 
