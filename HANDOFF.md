@@ -1436,7 +1436,43 @@ chưa commit — dọn cần CEO gật.
 
 **Scope lô đầu = chỉ Phần A trắc nghiệm.** Phần B (Đúng-sai — có `menh_de` jsonb, `loai_cau='dung_sai'`), C (TLN, `loai_cau='tra_loi_ngan'`), D (Tự luận, `loai_cau='tu_luan'`) chưa xử — làm sau khi CEO thấy chất lượng lô đầu OK.
 
+### Đã build (18/09 — Chuẩn hoá mã bản đồ Đại + UI chuyển/gộp/xoá)
+
+**Rule mã Đại (đã đúng chuẩn 100% sau bước 3):** `T1 + KK + CD + CE + DD` — chủ đề len 6, chuyên đề len 8, dạng len 10. Khối `KK` chấp nhận `\d{2}` (03-12) HOẶC `\dT` (4T/5T — khối riêng, KHÔNG phải lớp 4/5 tiểu học). 3 kho khác giữ mapping cũ: T2=Hình học · T3=HGT · K=KHTN (KHÔNG swap).
+
+**Function DB (§2.0 nguồn duy nhất) — mig `202609180046` + `202609180055`:**
+- `fn_dai_ma_hop_le(ma, tang)` · `fn_dai_ma_kho_cha(ma, tang)` · `fn_dai_kiem_ma()` (verify bất biến).
+- `fn_dai_sinh_ma_chuyen_de(chu_de, stt?)` · `fn_dai_sinh_ma_dang(chuyen_de, stt?)` — LUÔN max STT+1 trong parent, CHỈ đếm mã đúng chuẩn (bỏ qua rác).
+- `fn_dai_chuyen_dang_ma_moi(dang, cd_moi)` — thuần tính, LUÔN cấp STT mới.
+
+**RPC transactional (mig `202609181123` + `202609181233` + `202609181310` + `202609181342`):**
+- `fn_dai_chuyen_dang(ma_dang, ma_chuyen_de_moi) → new_ma_dang` — chuyển 1 dạng qua chuyên đề đích. FK cascade lo dai_cau_hoi/menh_de/cum_bai/ly_thuyet/thuoc_tinh/tien_de. Text-ref update tay: ca_test_cau (**+ sync `ten_chuyen_de` + `muc_do`** — snapshot phiếu test), gami_session_problems, bai_test_cau, tu_luyen_dang_lan, buoi_danh_gia_dang, bo_tro_duoi_dang, bo_tro_yeu_dang, canh_bao_yeu. Đích PHẢI có ≥1 dạng khác.
+- `fn_dai_chuyen_chuyen_de(ma_chuyen_de, ma_chu_de_moi) → new_ma_chuyen_de` — chuyển CẢ chuyên đề (kèm mọi dạng con). Cấp mã chuyên đề mới max+1 trong chủ đề đích, mọi dạng con bảo tồn 2 số STT cuối. Batch qua temp table `_cd_map`.
+- `fn_dai_gop_cau_dang(nguon, dich) → {so_cau, so_menh_de}` — CEO chốt scope hẹp: **chỉ chuyển `dai_cau_hoi.dang_chinh` + `dai_cau_menh_de.dang_chinh`**. KHÔNG đụng cụm/lý thuyết/thuộc tính/tiền đề/text-ref lịch sử. KHÔNG xoá dạng nguồn (CEO tự gộp lý thuyết + xoá tay sau).
+- Trigger `trg_log_doi_dang` GIỮ nguyên cho chuyển/gộp (log CHÍNH XÁC câu đổi dạng, feed `fn_kho_doi_dang_tk`). Chỉ disable trong migration RENAME MASS (bước 3).
+
+**Client + UI (`src/lib/kho/api.ts` + `src/screens/kho/BanDo.tsx` — chỉ Đại `config.key === 'dai'`):**
+- 3 wrapper: `chuyenDaiDang` · `chuyenDaiChuyenDe` · `gopDaiCauDang`.
+- Nút `→` (chuyển dạng qua chuyên đề khác) · `⇓` (gộp câu vào dạng khác) · `✕` (xoá) trong `LeafCard`, hover mới hiện.
+- Nút `→` (chuyển chuyên đề qua chủ đề khác) giữa `✎` và `✕` trong card chuyên đề (sidebar).
+- 3 modal SearchSelect cross-chủ đề/chuyên đề trong khối hiện tại.
+- **maxOrd → maxOrdCon** (line 1651) — chặn bug sinh mã lệch (parseInt nuốt phần vị trí dài). Filter codes = `startsWith(parent) && length === parent.length+2 && /^\d{2}$/.test(slice(-2))`. Áp cho **4 kho + legacy 4T/5T**.
+
+**Đề thi cũ (`toan_de_thi_cau.ma_cau_dai`) VẪN dùng được** — FK cứng tới `dai_cau_hoi.ma_cau`, mà `ma_cau` KHÔNG đổi khi chuyển dạng/gộp (chỉ `dang_chinh` đổi).
+
+**Chưa làm:**
+- Bước 1b: function chuẩn hoá cho HGT (T3) / KHTN (K) / Hình (T2). Hình học phức tạp (Học vs Luyện + mô hình + bài) — cần CEO chốt format mã `hinh_baitoan` (mã mô hình + STT bài) trước.
+- Bước 2b: chuyển `suggest*` client sang RPC sau khi bước 1b có function 4 kho.
+- CHECK constraint `dai_ban_do.ma_dang ~ '^T1(\d{2}|\dT)\d{6}$'` — chờ 3 kho khác cũng sạch để áp đồng thời.
+- Gộp CHUYÊN ĐỀ (khác chuyển 1-1) — hiện chưa cần, sẽ build khi CEO có ca thật.
+
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
+
+- **⭐⭐ Snapshot text-ref phải sync khi RPC đổi mã cha (bug 18/09 Test đầu vào không load chuyên đề mới).** `ca_test_cau` lưu SNAPSHOT `ten_chuyen_de` + `muc_do` tại thời điểm tạo ca test (phiếu `fn_test_dau_vao_phieu` đọc thẳng, KHÔNG JOIN dai_ban_do runtime — có ý đồ giữ lịch sử "HS làm câu này khi câu thuộc chuyên đề X"). RPC `fn_dai_chuyen_dang` lượt đầu chỉ update `ma_dang`, quên sync 2 cột snapshot → sau khi CEO chuyển 1 đống dạng, phiếu hiện chuyên đề CŨ. Fix mig `202609181342`: sync retroactive + tách `ca_test_cau` ra update riêng trong RPC (không lẫn với 7 bảng text-ref khác chỉ có `ma_dang`). **Áp dụng:** viết RPC đổi mã nào (`fn_*_chuyen_*`, `fn_*_gop_*`) → grep `schema.md` cột `ten_chuyen_de|ten_chu_de|muc_do|ten_dang` để tìm mọi snapshot cần sync, KHÔNG chỉ update PK/FK. Snapshot là "ý đồ giữ lịch sử" ở CHỖ ĐÚNG (đo lường) nhưng "ý đồ giữ lịch sử" ở CHỖ SAI (đổi tên/rename) là bug.
+
+- **⭐⭐ Bug sinh mã "nối chuỗi" — `parseInt(soThuTuCua(c, from))` nuốt CẢ phần còn lại (18/09 fix `maxOrd → maxOrdCon`).** Bản cũ `parseInt(c.slice(from))` với `c = 'T10701012203'` (rác) và `from=6` → `parseInt('01012203') = 1012203`, `pad2` giữ nguyên (không cắt về 2 digit) → mã mới = `parent + 1012204` = len 15 vô nghĩa. Bug ÂM THẦM khi tồn tại mã anh em lệch chuẩn — mã hợp lệ khác vẫn có nhưng bị max che khuất. **Áp dụng:** khi tính max STT anh em, filter STRICT trước (cùng parent + đúng length + đúng 2 digit cuối), KHÔNG parseInt phần dài không cắt được. Cách chống bug tổng quát: "1 lần sinh mã sai → mọi lần sinh sau đều lây" — luôn có bước validate format anh em trước khi cấp mã mới.
+
+- **⭐ Rule mã bản đồ có ngoại lệ historic (K4T/K5T tồn tại thật trong `lop.khoi`, KHÔNG phải typo).** Regex khối phải là `(\d{2}|\dT)` chứ không phải `\d{2}` — nếu strict `\d{2}` sẽ báo 88 dòng K4+K5 legacy (1215 câu, 3170 rows tự luyện, 2 lớp đang dạy) là RÁC → không thể xoá. **Áp dụng:** luôn đo shape data thật trước khi viết CHECK constraint (`scripts/_check_shape_4kho.mjs`, `_check_khoi_dac_biet.mjs`); rule "đúng" trong tài liệu chưa chắc đúng với data lịch sử.
 
 - **⭐ UI chia cấp 1/2/3 mà cùng feature — refetch state phải mở cho MỌI cấp có feature đó (bug 18/09 vòng quay may mắn).**
   `HocSinhApp.tsx` fetch `maymanCoLuot` với guard `if (!cap2) return` — nhưng ô "May mắn" hiện trong CẢ `HomeCap1`

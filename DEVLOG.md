@@ -51,6 +51,12 @@
   - Modal `ChuyenDangModal` / `ChuyenChuyenDeModal` / `GopCauDangModal` — SearchSelect cross-chủ đề trong khối.
 - **Chưa build**: xoá chuyên đề (đã có `✕ deleteT2` sẵn) · gộp chuyên đề (tương lai, hiện chuyển 1-1 là đủ).
 
+**Fix bug mid-session — mig `202609181342_dai_chuyen_sync_ca_test_cau_ten_cd.sql`:**
+CEO chuyển 1 đống dạng qua UI → "Test đầu vào chưa load được chuyên đề mới". Root cause: `ca_test_cau.ten_chuyen_de` + `muc_do` là SNAPSHOT text (phiếu `fn_test_dau_vao_phieu` đọc thẳng, không JOIN dai_ban_do runtime). RPC `fn_dai_chuyen_dang` lượt đầu chỉ update `ma_dang`, quên sync 2 cột snapshot.
+Fix 2 phần: (a) sync retroactive `ca_test_cau.ten_chuyen_de + muc_do` cho mọi dòng đang lệch với `dai_ban_do`; (b) replace `fn_dai_chuyen_dang` — tách `ca_test_cau` ra 1 update riêng (set cả `ma_dang + ten_chuyen_de + muc_do`), 7 bảng text-ref còn lại loop chỉ update `ma_dang`.
+KHÔNG đụng `fn_dai_chuyen_chuyen_de` (chuyên đề chỉ đổi mã, tên không đổi) và `fn_dai_gop_cau_dang` (snapshot lịch sử là ĐÚNG).
+Trả lời CEO câu #2: **đề thi cũ vẫn dùng được** — `toan_de_thi_cau.ma_cau_dai` FK cứng tới `dai_cau_hoi.ma_cau`, `ma_cau` KHÔNG đổi khi chuyển dạng/gộp (chỉ `dang_chinh` đổi).
+
 **Chưa làm / TODO:**
 - **Bước 1b**: đối xứng function chuẩn hoá cho HGT (T3) / KHTN (K) / Hình (T2). Hình học phức tạp (Học vs Luyện + mô hình + bài) — cần CEO chốt format mã `hinh_baitoan` (mã mô hình + STT bài) cụ thể trước khi viết.
 - **Bước 2b**: chuyển `suggest*` client sang RPC gọi `fn_*_sinh_ma_*` (tuân §2.0 đầy đủ) sau khi bước 1b có function 4 kho.
