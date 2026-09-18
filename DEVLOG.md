@@ -13046,3 +13046,11 @@ Guard `!cap2` chặn cấp 1 refetch `maymanCoLuot`. Nhưng HomeCap1 có ô May 
 
 **Cấp 2/3 và TA:** logic tổng giữ nguyên, chưa viết bản chi tiết. Cấp 2/3 khác ở cửa thi (vào 10, ĐH) + số band. TA khác toàn bộ vì scope rộng hơn GV (T1 vận hành + chăm PH câu dễ).
 
+
+## 2026-09-18 — Test đầu vào: snapshot chuyên đề theo bản đồ mới (K7, K11)
+
+**(CEO "mới cập nhật chuyên đề lớp 7–11 trong bản đồ, cập nhật bài test lớp 7 và 11 theo chuyên đề mới" + "không chỉ đổi tên, t gộp dạng bài và chuyên đề; đọc handoff, pull code")**
+- Pull main: phiên Kho Đại đã có `fn_dai_chuyen_dang`/`fn_dai_chuyen_chuyen_de`/`fn_dai_gop_cau_dang` + mig `202609181342` sync snapshot `ca_test_cau.ten_chuyen_de/muc_do` cho đường CHUYỂN DẠNG + 1 lần retro.
+- Đo bằng khoá tự nhiên (`ca_test_cau.ma_cau` → `dang_chinh` HIỆN TẠI của câu → bản đồ; script `scripts/_q_test_chuyende_1809.mjs`): K7 (đề 07/09: 170 dòng/5 ca; đề 14/09: 27 dòng/1 ca) khớp 100%, 0 câu mất, 0 dạng mất, 0 lệch dạng. K11 (60 dòng/2 ca) còn **6 dòng lệch tên chuyên đề**: "Côn thức lượng giác" (4) + "Công thức cộng" (2) → "Công thức lượng giác" — CEO đổi tên/gộp chuyên đề SAU lần retro 13:42, mà ĐỔI TÊN chuyên đề không có đường nào lan sang ca test.
+- Fix gốc: mig `202609181530_ban_do_sync_ca_test_cau_khi_doi_ten.sql` = trigger `tg_ban_do_sync_ca_test_cau` AFTER UPDATE OF ten_chuyen_de, muc_do trên `dai_ban_do`/`hgt_ban_do`/`khtn_ban_do` → update snapshot `ca_test_cau` cùng `ma_dang`; kèm sync retro cả 3 kho + assert 0 lệch. Không xung đột `fn_dai_chuyen_dang` (lúc đổi mã, ca_test_cau còn mã cũ ⇒ trigger khớp 0 dòng, RPC tự update sau). Áp `--only`, schema.md refresh (74 trigger). Verify: đo lại lệch = 0; transaction ROLLBACK đổi thử tên chuyên đề của `T108040201` ⇒ 64/64 dòng ca_test_cau đổi theo.
+- Lưu ý cho CEO: đề K7 bản 14/09 còn chuyên đề lẻ "Luỹ thừa với số mũ tự nhiên của một số hữu tỉ" (1 câu) đứng cạnh "Luỹ thừa của Số hữu tỉ" (4 câu) — là trạng thái bản đồ hiện tại, nếu định gộp thì gộp ở bản đồ, phiếu tự theo. Hàng `HINH:` giữ nhãn "Hình học". Chưa commit.
