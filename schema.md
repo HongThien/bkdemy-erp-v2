@@ -1680,6 +1680,11 @@
 | duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
 | duyet_at | timestamp with time zone | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| ma_dang | text | Y | ma_bai |  |  |
+| ten_dang | text | Y | ten_bai |  |  |
+| muc_do | smallint | Y |  |  |  |
+| ma_chuyen_de | text | Y |  |  |  |
+| ten_chuyen_de | text | Y |  |  |  |
 
 ## hinh_hoc_bai_ly_thuyet
 
