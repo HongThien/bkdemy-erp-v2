@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import {
   listLopBac, groupMap, suggestT1Ma, suggestT2Ma, suggestLeafMa, uploadKhoFile, uploadKhoImage,
-  KHO_TIEN_TO, soThuTuCua,
+  KHO_TIEN_TO, soThuTuCua, chuyenDaiDang, chuyenDaiChuyenDe, gopDaiCauDang,
   callGeminiJson, buildLyThuyetPrompt, parseLyThuyetJson, LYTHUYET_SCHEMA,
   callGeminiRich, buildTheoryIngestPrompt, parseTheoryIngest, THEORY_SCHEMA,
   type MapRow, type Tier1Node, type Tier2Node, type LopBac, type LyThuyet,
 } from '../../lib/kho/api'
+import SearchSelect from '../../components/SearchSelect'
 import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdfRender'
 import type { BranchConfig, LyThuyetApi } from './branches'
 import { BacChip, Code, inp, Shell, Field, Row, Seg, Ghost, Actions, mucDoTone, MathText, readClipboardImageFile } from './ui'
@@ -35,6 +36,9 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
   const [ltT2Modal, setLtT2Modal] = useState<null | { ma: string; ten: string }>(null)
   const [hub, setHub] = useState<MapRow | null>(null)
   const [dungSaiT2, setDungSaiT2] = useState<null | { t2Ma: string; t2Ten: string }>(null)
+  const [chuyenModal, setChuyenModal] = useState<null | { d: MapRow }>(null)
+  const [chuyenCdModal, setChuyenCdModal] = useState<null | { cd: { ma: string; ten: string; chuMa: string; chuTen: string } }>(null)
+  const [gopModal, setGopModal] = useState<null | { d: MapRow }>(null)
   const [fMuc, setFMuc] = useState<Set<number>>(new Set())
   const [fBac, setFBac] = useState<Set<string>>(new Set())
   const [choDuyet, setChoDuyet] = useState(false) // Câu chờ duyệt (26/08) — chỉ Đại, xem ChoDuyetPanel
@@ -211,7 +215,9 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
                     <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 transition group-hover:opacity-100" />
                     {config.chuan && <PctRing pct={pctChuyenDe(node)} className="absolute right-3 top-3" />}
                     {config.renameT2 && <button onClick={(e) => { e.stopPropagation(); onRenameT2(node) }} title={`Sửa tên ${t2Low}`}
-                      className="absolute right-[100px] top-[14px] z-10 flex h-7 w-7 items-center justify-center rounded-md text-slate-300 opacity-0 transition hover:bg-indigo-50 hover:text-indigo-600 group-hover:opacity-100">✎</button>}
+                      className="absolute right-[132px] top-[14px] z-10 flex h-7 w-7 items-center justify-center rounded-md text-slate-300 opacity-0 transition hover:bg-indigo-50 hover:text-indigo-600 group-hover:opacity-100">✎</button>}
+                    {config.key === 'dai' && <button onClick={(e) => { e.stopPropagation(); setChuyenCdModal({ cd: { ma: node.t2Ma, ten: node.t2Ten, chuMa: t1.t1Ma, chuTen: t1.t1Ten } }) }} title={`Chuyển ${t2Low} sang chủ đề khác`}
+                      className="absolute right-[100px] top-[14px] z-10 flex h-7 w-7 items-center justify-center rounded-md text-slate-300 opacity-0 transition hover:bg-indigo-50 hover:text-indigo-600 group-hover:opacity-100">→</button>}
                     <button onClick={(e) => { e.stopPropagation(); onDeleteT2(node) }} title={`Xoá ${t2Low}`}
                       className="absolute right-[68px] top-[14px] z-10 flex h-7 w-7 items-center justify-center rounded-md text-slate-300 opacity-0 transition hover:bg-rose-50 hover:text-rose-600 group-hover:opacity-100">✕</button>
                     <div className="flex items-start gap-4">
@@ -317,6 +323,8 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
                 {filtered.map((d) => (
                   <LeafCard key={d.leafMa} d={d} config={config} cau={cauOf(d.leafMa)} lt={lyThuyet[d.leafMa]}
                     onOpen={() => setHub(d)} onDelete={() => onDelete(d)}
+                    onChuyen={config.key === 'dai' ? () => setChuyenModal({ d }) : undefined}
+                    onGop={config.key === 'dai' ? () => setGopModal({ d }) : undefined}
                     onLyThuyet={() => setLtModal({ d })} />
                 ))}
               </div>
@@ -355,6 +363,21 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
           onClose={() => setDungSaiT2(null)} />
       )}
       {choDuyet && <ChoDuyetPanel onClose={() => setChoDuyet(false)} />}
+      {chuyenModal && (
+        <ChuyenDangModal d={chuyenModal.d} tree={tree}
+          onClose={() => setChuyenModal(null)}
+          onSaved={async () => { setChuyenModal(null); await reload() }} />
+      )}
+      {chuyenCdModal && (
+        <ChuyenChuyenDeModal cd={chuyenCdModal.cd} tree={tree}
+          onClose={() => setChuyenCdModal(null)}
+          onSaved={async () => { setChuyenCdModal(null); await reload() }} />
+      )}
+      {gopModal && (
+        <GopCauDangModal d={gopModal.d} tree={tree}
+          onClose={() => setGopModal(null)}
+          onSaved={async () => { setGopModal(null); await reload() }} />
+      )}
     </div>
   )
 }
@@ -423,9 +446,9 @@ function ToggleGroup<T extends string | number>({ label, options, sel, onToggle,
 }
 
 // ── Card 1 lá (dạng) ───────────────────────────────────────────────
-function LeafCard({ d, config, cau, lt, onOpen, onDelete, onLyThuyet }: {
+function LeafCard({ d, config, cau, lt, onOpen, onDelete, onChuyen, onGop, onLyThuyet }: {
   d: MapRow; config: BranchConfig; cau: number; lt?: LyThuyet
-  onOpen: () => void; onDelete: () => void; onLyThuyet: () => void
+  onOpen: () => void; onDelete: () => void; onChuyen?: () => void; onGop?: () => void; onLyThuyet: () => void
 }) {
   const chuan = config.chuan
   const pct = chuan ? Math.min(100, Math.round((cau / chuan) * 100)) : 0
@@ -436,6 +459,14 @@ function LeafCard({ d, config, cau, lt, onOpen, onDelete, onLyThuyet }: {
       className={`group relative flex cursor-pointer flex-col rounded-xl border-2 bg-white p-5 transition hover:-translate-y-0.5 hover:shadow-md ${config.hasMucDo ? tone.border : 'border-slate-200'}`}>
       <button onClick={(e) => { e.stopPropagation(); onDelete() }} title="Xoá"
         className="absolute right-2.5 top-2.5 flex h-6 w-6 items-center justify-center rounded-md text-[13px] text-slate-300 opacity-0 transition hover:bg-rose-50 hover:text-rose-600 group-hover:opacity-100">✕</button>
+      {onChuyen && (
+        <button onClick={(e) => { e.stopPropagation(); onChuyen() }} title="Chuyển dạng sang chuyên đề khác"
+          className="absolute right-9 top-2.5 flex h-6 w-6 items-center justify-center rounded-md text-[13px] text-slate-300 opacity-0 transition hover:bg-indigo-50 hover:text-indigo-600 group-hover:opacity-100">→</button>
+      )}
+      {onGop && (
+        <button onClick={(e) => { e.stopPropagation(); onGop() }} title="Gộp câu của dạng này vào dạng khác"
+          className="absolute right-[60px] top-2.5 flex h-6 w-6 items-center justify-center rounded-md text-[13px] text-slate-300 opacity-0 transition hover:bg-amber-50 hover:text-amber-600 group-hover:opacity-100">⇓</button>
+      )}
 
       <div className="pr-7 text-[17px] font-semibold leading-snug text-slate-900">{d.leafTen}</div>
       <div className="mt-2.5 flex flex-wrap items-center gap-2">
@@ -828,6 +859,135 @@ function SuaNode({ config, editing, lopBac, onClose, onSaved }: {
       )}
       {error && <p className="mt-3 text-xs text-rose-600">{error}</p>}
       <Actions onClose={onClose} onSave={save} disabled={!leafTen.trim() || saving} saving={saving} label="Lưu" />
+    </Shell>
+  )
+}
+
+// ── Modal gộp CÂU của dạng A → dạng B (chỉ Đại — RPC fn_dai_gop_cau_dang) ──
+function GopCauDangModal({ d, tree, onClose, onSaved }: {
+  d: MapRow; tree: Tier1Node[]; onClose: () => void; onSaved: () => Promise<void>
+}) {
+  const [dichMa, setDichMa] = useState<string | null>(null)
+  const [saving, setSaving] = useState(false)
+  const [err, setErr] = useState<string | null>(null)
+
+  // Mọi dạng KHÁC dạng nguồn trong khối hiện tại — cross-chủ đề/chuyên đề.
+  const options = useMemo(
+    () => tree.flatMap((t1) => t1.tier2s.flatMap((t2) => t2.leaves))
+      .filter((l) => l.leafMa !== d.leafMa)
+      .map((l) => ({ id: l.leafMa, label: l.leafTen, sub: `${l.t1Ten} › ${l.t2Ten} · ${l.leafMa}` })),
+    [tree, d.leafMa],
+  )
+
+  async function gop() {
+    if (!dichMa) return
+    setSaving(true); setErr(null)
+    try {
+      const r = await gopDaiCauDang(d.leafMa, dichMa)
+      alert(`Đã chuyển ${r.so_cau} câu + ${r.so_menh_de} mệnh đề từ "${d.leafTen}" sang dạng đích.\n\nDạng nguồn (${d.leafMa}) vẫn còn — bạn tự gộp lý thuyết + xoá sau.`)
+      await onSaved()
+    } catch (e: any) { setErr(e?.message ?? String(e)); setSaving(false) }
+  }
+
+  return (
+    <Shell title={`Gộp CÂU dạng vào dạng khác`} onClose={onClose}>
+      <div className="mb-3 rounded-md bg-amber-50 px-3 py-2 text-[12px] text-amber-800">
+        <div className="font-semibold">Nguồn: {d.leafTen}</div>
+        <div className="mt-0.5 text-amber-600/80">{d.leafMa} · {d.t1Ten} › {d.t2Ten}</div>
+      </div>
+      <Field label="Dạng đích (gộp câu vào)">
+        <SearchSelect value={dichMa} onChange={setDichMa} options={options} placeholder="Tìm dạng…" autoFocus />
+      </Field>
+      <p className="mt-2 text-[11px] leading-relaxed text-slate-500">
+        Chỉ chuyển <b>câu hỏi + mệnh đề</b> (đổi <code>dang_chinh</code>). KHÔNG đụng cụm bài / lý thuyết / thuộc tính / tiền đề / đo lường lịch sử. Dạng nguồn KHÔNG bị xoá — bạn tự gộp lý thuyết rồi xoá sau.
+      </p>
+      {err && <p className="mt-3 text-xs text-rose-600">{err}</p>}
+      <Actions onClose={onClose} onSave={gop} disabled={!dichMa || saving} saving={saving} label="Gộp câu" />
+    </Shell>
+  )
+}
+
+// ── Modal chuyển CẢ chuyên đề qua chủ đề khác (chỉ Đại — RPC fn_dai_chuyen_chuyen_de) ──
+function ChuyenChuyenDeModal({ cd, tree, onClose, onSaved }: {
+  cd: { ma: string; ten: string; chuMa: string; chuTen: string }
+  tree: Tier1Node[]; onClose: () => void; onSaved: () => Promise<void>
+}) {
+  const [t1Ma, setT1Ma] = useState<string | null>(null)
+  const [saving, setSaving] = useState(false)
+  const [err, setErr] = useState<string | null>(null)
+
+  const options = useMemo(
+    () => tree.filter((t1) => t1.t1Ma !== cd.chuMa)
+      .map((t1) => ({ id: t1.t1Ma, label: t1.t1Ten, sub: `${t1.t1Ma} · ${t1.tier2s.length} chuyên đề` })),
+    [tree, cd.chuMa],
+  )
+
+  async function chuyen() {
+    if (!t1Ma) return
+    setSaving(true); setErr(null)
+    try {
+      await chuyenDaiChuyenDe(cd.ma, t1Ma)
+      await onSaved()
+    } catch (e: any) { setErr(e?.message ?? String(e)); setSaving(false) }
+  }
+
+  return (
+    <Shell title={`Chuyển chuyên đề sang chủ đề khác`} onClose={onClose}>
+      <div className="mb-3 rounded-md bg-slate-50 px-3 py-2 text-[12px] text-slate-600">
+        <div className="font-semibold text-slate-800">{cd.ten}</div>
+        <div className="mt-0.5 text-slate-400">{cd.ma} · hiện thuộc: {cd.chuTen}</div>
+      </div>
+      <Field label="Chủ đề đích">
+        <SearchSelect value={t1Ma} onChange={setT1Ma} options={options} placeholder="Tìm chủ đề…" autoFocus />
+      </Field>
+      <p className="mt-2 text-[11px] leading-relaxed text-slate-400">
+        Sau khi chuyển: chuyên đề được cấp <b>mã mới</b> trong chủ đề đích (STT max+1), <b>tất cả dạng con</b> giữ 2 số STT cuối, mọi câu hỏi/cụm/lý thuyết/đo lường tự cập nhật. Không thể undo.
+      </p>
+      {err && <p className="mt-3 text-xs text-rose-600">{err}</p>}
+      <Actions onClose={onClose} onSave={chuyen} disabled={!t1Ma || saving} saving={saving} label="Chuyển" />
+    </Shell>
+  )
+}
+
+// ── Modal chuyển 1 dạng qua chuyên đề khác (chỉ Đại — RPC fn_dai_chuyen_dang) ──
+function ChuyenDangModal({ d, tree, onClose, onSaved }: {
+  d: MapRow; tree: Tier1Node[]; onClose: () => void; onSaved: () => Promise<void>
+}) {
+  const [t2Ma, setT2Ma] = useState<string | null>(null)
+  const [saving, setSaving] = useState(false)
+  const [err, setErr] = useState<string | null>(null)
+
+  // Mọi chuyên đề trong khối hiện tại (cross-chủ đề), TRỪ chuyên đề hiện tại của d.
+  const options = useMemo(
+    () => tree.flatMap((t1) => t1.tier2s
+      .filter((t2) => t2.t2Ma !== d.t2Ma)
+      .map((t2) => ({ id: t2.t2Ma, label: t2.t2Ten, sub: `${t1.t1Ten} · ${t2.t2Ma}` }))),
+    [tree, d.t2Ma],
+  )
+
+  async function chuyen() {
+    if (!t2Ma) return
+    setSaving(true); setErr(null)
+    try {
+      await chuyenDaiDang(d.leafMa, t2Ma)
+      await onSaved()
+    } catch (e: any) { setErr(e?.message ?? String(e)); setSaving(false) }
+  }
+
+  return (
+    <Shell title={`Chuyển dạng sang chuyên đề khác`} onClose={onClose}>
+      <div className="mb-3 rounded-md bg-slate-50 px-3 py-2 text-[12px] text-slate-600">
+        <div className="font-semibold text-slate-800">{d.leafTen}</div>
+        <div className="mt-0.5 text-slate-400">{d.leafMa} · hiện ở: {d.t1Ten} › {d.t2Ten}</div>
+      </div>
+      <Field label="Chuyên đề đích">
+        <SearchSelect value={t2Ma} onChange={setT2Ma} options={options} placeholder="Tìm chuyên đề…" autoFocus />
+      </Field>
+      <p className="mt-2 text-[11px] leading-relaxed text-slate-400">
+        Sau khi chuyển: mã dạng sẽ đổi (STT mới trong chuyên đề đích), <b>toàn bộ câu hỏi/cụm/lý thuyết/đo lường</b> bám dạng này tự cập nhật. Không thể undo.
+      </p>
+      {err && <p className="mt-3 text-xs text-rose-600">{err}</p>}
+      <Actions onClose={onClose} onSave={chuyen} disabled={!t2Ma || saving} saving={saving} label="Chuyển" />
     </Shell>
   )
 }

@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-229 bảng · 18 view · 0 enum · 71 trigger · 383 function
+229 bảng · 18 view · 0 enum · 71 trigger · 386 function
 
 ## _app_secrets
 
@@ -4946,7 +4946,10 @@ SELECT bl.hoc_sinh_id,
 - `fn_chi_tong_quan()` → jsonb
 - `fn_chi_tu_choi(p_id uuid, p_ly_do text)` → void
 - `fn_completion_theo_lop(p_mon text, p_phase text, p_ym text)` → TABLE(lop_id uuid, buoi_count bigint, expected bigint, done bigint)
+- `fn_dai_chuyen_chuyen_de(p_ma_chuyen_de text, p_ma_chu_de_moi text)` → text
+- `fn_dai_chuyen_dang(p_ma_dang text, p_ma_chuyen_de_moi text)` → text
 - `fn_dai_chuyen_dang_ma_moi(p_ma_dang text, p_ma_chuyen_de_moi text)` → text
+- `fn_dai_gop_cau_dang(p_ma_dang_nguon text, p_ma_dang_dich text)` → jsonb
 - `fn_dai_kiem_ma()` → TABLE(loai text, ma_dang text, ma_chuyen_de text, ma_chu_de text, khoi text, ly_do text)
 - `fn_dai_ma_hop_le(p_ma text, p_tang text)` → boolean
 - `fn_dai_ma_kho_cha(p_ma text, p_tang text)` → text

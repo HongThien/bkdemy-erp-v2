@@ -40,11 +40,22 @@
 - Nguồn bug sinh mã (client `maxOrd`) bị chặn cho 4 kho + legacy 4T/5T.
 - CEO đã áp cả 3 migration.
 
+**Bước 4 (cùng chiều 18/09) — Chuyển & Gộp trong bản đồ Đại (3 RPC + UI trong `BanDo.tsx`):**
+- **Mig `202609181123_dai_rpc_chuyen_dang.sql`** — `fn_dai_chuyen_dang(p_ma_dang, p_ma_chuyen_de_moi) → new_ma_dang`. Chuyển 1 dạng qua chuyên đề đích: dùng `fn_dai_chuyen_dang_ma_moi` cấp mã mới (max+1 trong đích), update `dai_ban_do` (FK on update cascade tự lo dai_cau_hoi/menh_de/cum_bai/ly_thuyet/thuoc_tinh/tien_de), update 8 bảng text-ref (gami_session_problems, ca_test_cau, bai_test_cau, tu_luyen_dang_lan, buoi_danh_gia_dang, bo_tro_duoi_dang, bo_tro_yeu_dang, canh_bao_yeu). Trigger `trg_log_doi_dang` GIỮ (chuyển thật, log đúng nghĩa). Chuyên đề đích PHẢI có ≥1 dạng khác (tạo chuyên đề mới qua luồng riêng).
+- **Mig `202609181233_dai_rpc_chuyen_chuyen_de.sql`** — `fn_dai_chuyen_chuyen_de(p_ma_chuyen_de, p_ma_chu_de_moi) → new_ma_chuyen_de`. Chuyển CẢ chuyên đề (kèm mọi dạng con) sang chủ đề đích. Sinh mã chuyên đề mới (max+1 trong đích), MỌI dạng bảo tồn 2 số STT cuối (`new_ma_chuyen_de || substring(old_ma_dang, len-1)`), batch update qua temp table `_cd_map`.
+- **Mig `202609181310_dai_rpc_gop_dang.sql`** — `fn_dai_gop_cau_dang(nguon, dich) → {so_cau, so_menh_de}`. CEO chốt scope hẹp mid-turn: **chỉ chuyển câu**, lý thuyết CEO tự gộp tay. Chỉ update `dai_cau_hoi.dang_chinh` + `dai_cau_menh_de.dang_chinh`. KHÔNG đụng cụm/lý thuyết/thuộc tính/tiền đề/text-ref lịch sử (đo lường là snapshot). KHÔNG xoá dạng nguồn.
+- **Client** (`src/lib/kho/api.ts`): 3 wrapper `chuyenDaiDang`, `chuyenDaiChuyenDe`, `gopDaiCauDang`.
+- **UI** (`src/screens/kho/BanDo.tsx`): thêm 3 nút chỉ cho Đại (config.key === 'dai') +3 modal:
+  - `LeafCard`: nút `→` (chuyển dạng qua chuyên đề khác) + `⇓` (gộp câu vào dạng khác) cạnh `✕` (xoá).
+  - Card chuyên đề (sidebar): nút `→` giữa `✎` và `✕` (chuyển chuyên đề qua chủ đề khác).
+  - Modal `ChuyenDangModal` / `ChuyenChuyenDeModal` / `GopCauDangModal` — SearchSelect cross-chủ đề trong khối.
+- **Chưa build**: xoá chuyên đề (đã có `✕ deleteT2` sẵn) · gộp chuyên đề (tương lai, hiện chuyển 1-1 là đủ).
+
 **Chưa làm / TODO:**
-- **Bước 4**: build chức năng UI + RPC chuyển/gộp/xoá chuyên đề/dạng (dùng `fn_dai_chuyen_dang_ma_moi`, `fn_dai_sinh_ma_*`). Log vào `kho_doi_dang_log` (đã có bảng).
 - **Bước 1b**: đối xứng function chuẩn hoá cho HGT (T3) / KHTN (K) / Hình (T2). Hình học phức tạp (Học vs Luyện + mô hình + bài) — cần CEO chốt format mã `hinh_baitoan` (mã mô hình + STT bài) cụ thể trước khi viết.
 - **Bước 2b**: chuyển `suggest*` client sang RPC gọi `fn_*_sinh_ma_*` (tuân §2.0 đầy đủ) sau khi bước 1b có function 4 kho.
 - Chưa thêm CHECK constraint trên `dai_ban_do.ma_dang` — chờ 3 kho khác cũng sạch để áp đồng thời.
+- Xoá dạng nguồn sau gộp — hiện CEO tự làm tay (đã có nút `✕`). Có thể tự động khi lý thuyết đã gộp.
 
 ---
 
@@ -12983,4 +12994,49 @@ Guard `!cap2` chặn cấp 1 refetch `maymanCoLuot`. Nhưng HomeCap1 có ô May 
 **Fix:** đổi guard thành `if (cap1===null || cap2===null || direct || khu) return; if (!cap1 && !cap2) return;` — cả cấp 1 lẫn cấp 2 refetch; cấp 3 (10-12) không có ô May mắn nên bỏ qua. RPC `fn_may_man_hs_quay` không check cấp 2 (đã kiểm), nên nút "Quay ngay" trong màn MayManHS đã sẵn sàng — chỉ thiếu **tín hiệu badge**.
 
 **KHÔNG đụng:** RPC/migration — logic điều kiện `bt.ngay = v_today` đúng intent CEO. Chỉ 1 dòng FE.
+
+## 2026-09-18 — Chốt SPEC lương GV cấp 1 (§3B vào `SPEC-tai-chinh-luong-gv-ta.md`)
+
+**Bối cảnh:** CEO tiếp bàn từ bản `SPEC-tai-chinh-luong-gv-ta.md` (tạm chốt 02-03/09) → đi sâu **cơ chế thưởng phạt** cho GV cấp 1 để có động lực + áp lực khi scale (không phải "nhìn nhau" mỗi tháng).
+
+**Chuỗi refinement quan trọng (mỗi bước sửa 1 sai của Claude):**
+1. Claude đề "GV chọn lớp giỏi né lớp yếu" → CEO đính: **GV không chọn lớp**, chỉ đăng ký band SABC, phân công là trung tâm.
+2. Claude đề B3 "giữ HS" → CEO đính: HS tăng/giảm không phải GV → **bỏ B3 giữ HS**.
+3. Claude nghĩ TA gánh trao đổi PH → CEO đính: **TA non trình độ**, khó nói chuyện PH.
+4. CEO chốt scheme 3-tier: TA → **Học thuật (đã có team)** → GV. GV chỉ trả câu **đặc trưng ngoài 70% data**.
+5. Claude hype "30% qualitative = value độc quyền GV" → CEO đính: **10-20% thôi**, và **theo tháng chứ không theo buổi** (buổi lẻ noise to). Không "GV là ánh sáng" — chỉ "touch point con người còn cần trong giai đoạn PH chưa quen bỏ hẳn GV".
+6. Claude tính "9.6tr + 1tr thưởng = 10.6tr" → CEO đính: **9.6tr là khung TOTAL max, không phải base**. Muốn có thưởng → phải carve-out từ base, không cộng thêm.
+7. Claude gọi KPI-đạt-là-thưởng → CEO đính: **hoàn thành KPI là 1 phần LƯƠNG (phụ cấp chất lượng)**, không phải thưởng. **Thưởng chỉ khi VƯỢT kỳ vọng**.
+8. Claude đề "T1 đóng góp học liệu" → CEO đính: **GV BK KHÔNG tham gia scope này** (học thuật soạn).
+9. Claude đề "T2 HS đậu trường điểm" → CEO đính: **HS cấp 1 BK đa số bình thường**, vào trường công — không đủ case đặc biệt.
+10. CEO chốt scheme thưởng: **theo kỳ (2 lần/năm aligned KTHK)**, đo qua **kỳ thi BK tháng** (BK ra đề chung, TA chấm), ngưỡng **cứng** SA ≥ 9.5 / BC ≥ 9, HS không đạt 9 không thuộc case → **view case by case do CEO quyết** (không hạ ngưỡng).
+11. CEO thêm: **thưởng bù đắp GV nỗ lực dù kết quả không như ý** (Loại 3, discretionary).
+
+**Cấu trúc CHỐT §3B (paste vào SPEC-tai-chinh-luong-gv-ta.md, giữa §3.4 và §4):**
+
+- **§3B.1 Contract ngầm** — GV làm 7 việc, không thêm không bớt; "hệ thống không phải sân khấu" — filter đúng loại GV BK cần
+- **§3B.2 Cấu trúc lương 90/10** — 90% "lương buổi" (có mặt là trả) + 10% "phụ cấp chất lượng" (đạt tiêu chí tháng). Đây là **phụ cấp lương** (BLLĐ Điều 90), KHÔNG phải thưởng (Điều 104). Legal ok.
+- **§3B.3 Điều kiện đạt phụ cấp** — 4 nhóm (chuyên cần / chất lượng buổi / nhận xét & report / escalation). All-or-nothing. Block-off trường công báo ≥ 1 tuần không tính đổi lịch.
+- **§3B.4 KHÔNG trừ lương buổi** — mọi tác động là TƯƠNG LAI (mất phụ cấp, hạ level, cắt lớp, chấm dứt). Không hồi tố.
+- **§3B.5 Thưởng 3 loại**:
+  - L1: thành tích kỳ thi BK, mechanical, ngưỡng cứng theo band
+  - L2: HS đặc biệt có mục tiêu riêng (CEO set), GV đề xuất, trần 2-3 HS/GV/kỳ
+  - L3: bù đắp nỗ lực, discretionary, tiêu chí ngầm, ngân sách 5-10% tổng thưởng
+  - Chia GV/TA/HT, **không công bố tỷ lệ chia**
+- **§3B.6 Đòn bẩy phi tiền = mạnh nhất** — ranking QC quý → phân lớp + **lịch cụm 2 buổi/tối** (500k-1tr equivalent với GV cấp 1 second-job)
+- **§3B.7 Level L1/L2/L3** — không L4; ai muốn cao hơn → chuyển vai (Học thuật/quản lý)
+- **§3B.8 Retention Tết** — 1 tháng lương thứ 13 khi ≥ 8/12 tháng đạt phụ cấp
+- **§3B.9 Ngân sách** — tổng ~10-10.1tr/tháng khi đạt full + thưởng avg, ~23% DT lớp. Khớp guardrail §3 (22-24%).
+- **§3B.10 Bảng đòn bẩy** — 5 nấc phạt / 8 nấc thưởng, GV cảm nhận dải 6-14tr theo hiệu suất
+- **§3B.11 Việc còn treo 13 câu** — SLA, tiêu chí case, weight ranking, kỳ thưởng, tỷ lệ chia, cadence phân lớp, AI cross-check, block-off, bài test tuyển, đối chiếu số lương thực tế
+
+**Insight lớn nhất từ phiên:**
+1. **BK bán cho GV "thời gian được respect", không phải "đơn giá cao"** — 1.5h/buổi + có app + tổng kết + template = mental load thấp. Cấp 1 second-job đặc biệt cảm ơn vì day-job trường công đã mệt.
+2. **Moat = package service**, không phải GV. PH trả 150k/1.5h vì thấy con được cả team chăm, không phải vì "GV giỏi". GV lỏng → moat sập → cả chuỗi lương GV rớt → **KPI GV không phải "ép", mà là bảo vệ moat chung**.
+3. **Phân biệt nỗ lực vs kết quả** ở Loại 3 — nhân văn nhất, và cũng khó đo nhất. Cần rào bằng tiêu chí ngầm.
+4. **GV = "người qua đường"** — design triệt để "System over Stars". Trade-off phải chấp nhận: GV BK không có career path dài. Đây là **feature, không phải bug**.
+
+**Tiếp theo (chưa làm):** viết slide launch cho GV — giải thích vì sao lương như thế, BK khác gì trung tâm khác, lợi/hại khi làm BK. Đợi CEO chốt 13 câu treo trước, rồi mới viết slide sát số thật.
+
+**Cấp 2/3 và TA:** logic tổng giữ nguyên, chưa viết bản chi tiết. Cấp 2/3 khác ở cửa thi (vào 10, ĐH) + số band. TA khác toàn bộ vì scope rộng hơn GV (T1 vận hành + chăm PH câu dễ).
 

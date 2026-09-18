@@ -1583,6 +1583,34 @@ export async function deleteDaiDang(ma_dang: string): Promise<void> {
   const { error } = await supabase.from('dai_ban_do').delete().eq('ma_dang', ma_dang)
   if (error) throw error
 }
+// Chuyển 1 dạng qua chuyên đề đích — RPC transactional (mig 202609181123). Trả mã dạng MỚI.
+// Đích phải có ≥1 dạng khác đang tồn tại (chuyên đề mới không có ⇒ tạo bằng luồng riêng).
+export async function chuyenDaiDang(ma_dang: string, ma_chuyen_de_moi: string): Promise<string> {
+  const { data, error } = await supabase.rpc('fn_dai_chuyen_dang', {
+    p_ma_dang: ma_dang, p_ma_chuyen_de_moi: ma_chuyen_de_moi,
+  })
+  if (error) throw error
+  return String(data)
+}
+// Chuyển CẢ chuyên đề (kèm mọi dạng con) sang chủ đề đích — RPC (mig 202609181233).
+// Trả mã chuyên đề MỚI (max STT+1 trong chủ đề đích, mọi dạng bảo tồn 2 số STT cuối).
+export async function chuyenDaiChuyenDe(ma_chuyen_de: string, ma_chu_de_moi: string): Promise<string> {
+  const { data, error } = await supabase.rpc('fn_dai_chuyen_chuyen_de', {
+    p_ma_chuyen_de: ma_chuyen_de, p_ma_chu_de_moi: ma_chu_de_moi,
+  })
+  if (error) throw error
+  return String(data)
+}
+// Gộp CÂU của dạng A → dạng B (chỉ đổi dang_chinh) — mig 202609181310.
+// KHÔNG đụng cụm/lý thuyết/thuộc tính/tiền đề/text-ref. CEO tự gộp lý thuyết + xoá A sau.
+// Trả {so_cau, so_menh_de}.
+export async function gopDaiCauDang(ma_dang_nguon: string, ma_dang_dich: string): Promise<{ so_cau: number; so_menh_de: number }> {
+  const { data, error } = await supabase.rpc('fn_dai_gop_cau_dang', {
+    p_ma_dang_nguon: ma_dang_nguon, p_ma_dang_dich: ma_dang_dich,
+  })
+  if (error) throw error
+  return data as { so_cau: number; so_menh_de: number }
+}
 
 // ── Group phẳng → cây Chủ đề → Chuyên đề → Dạng ──────────────────
 export type ChuyenDeNode = {
