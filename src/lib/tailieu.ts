@@ -233,7 +233,7 @@ export async function createTaiLieu(input: { loai?: string; ten: string; khoi: s
   if (error) throw error
   return data as TaiLieu
 }
-export async function updateTaiLieu(id: string, patch: Partial<Pick<TaiLieu, 'ten' | 'theme' | 'ma_chuyen_de' | 'cau_hinh'>>): Promise<void> {
+export async function updateTaiLieu(id: string, patch: Partial<Pick<TaiLieu, 'ten' | 'theme' | 'ma_chuyen_de' | 'cau_hinh' | 'nhanh'>>): Promise<void> {
   const { error } = await supabase.from('tai_lieu').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id)
   if (error) throw error
 }
