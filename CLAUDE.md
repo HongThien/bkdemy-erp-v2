@@ -266,6 +266,10 @@
   đúng/sai từng ô; logic chọn form cho HS (yếu → ĐIỀN, ổn → TN; TLN/tự luận để sau).
 - `spec-mcq-form.md` — Phiên bản TRẮC NGHIỆM (distractor theo lỗi) của câu tính toán, pool 1 lớp 7 "Số hữu tỉ".
   CEO chốt 08/09: MCQ ưu tiên, là form THÊM (bảng `dai_cau_form_tn`), **không đổ `lua_chon` vào câu gốc**.
+  **CEO chốt 19/09: MỌI luồng bài làm trên app của BỔ TRỢ (yếu · bù · đuổi) chỉ dùng MCQ** — điều kiện chọn câu DUY NHẤT =
+  `_kho_dk_mcq_sql(cautbl)` (kho_chuan + trắc nghiệm gốc | form_tn đã duyệt; `_kho_snapshot_cau` tự hiện form thành 4 đáp án).
+  Bổ trợ yếu đã áp (`_btyeu_chon_cau`; tạm lùi TLN CHỈ khi dạng/cụm 0 câu MCQ — tự hết khi form được duyệt). Bù/đuổi chưa có
+  bài trên app — khi build PHẢI dùng hàm này, không viết điều kiện riêng.
 - **`spec-mcq-quy-trinh-sinh.md` — ĐỌC BẮT BUỘC trước khi thêm 1 dạng mới vào pipeline MCQ** (mọi khối,
   không riêng Pool 1). QUY TRÌNH kỹ thuật (khác `spec-mcq-form.md` là quyết định phạm vi): tiêu chí dạng
   RÕ RÀNG (tự quyết) vs MƠ HỒ (phải hỏi CEO) · kiến trúc `SPECIAL_DANG`/`TEXT_DANG` · cách xử lý 1 `dang_chinh`
