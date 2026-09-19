@@ -13851,3 +13851,23 @@ T109010203, T107010507 → [] · T107010103 → 3 câu MCQ. CLAUDE.md cập nh�
 **Hệ quả đang sống (đo 20/09):** 25/122 dạng đang mở = 0 MCQ, dính 63 lượt case; **12 case mà MỌI dạng đều 0 MCQ** ⇒ ca của các em
 này app không có gì để luyện cho tới khi có MCQ. Top: T109010203 (10 case) · T106020601 (6) · T107010506 (6) · T111030204 (5) ·
 T107010507 (4). Việc cần: chạy pipeline sinh MCQ cho 25 dạng này (ưu tiên theo số case).
+
+### 19/09 — Nút "🔑 Tạo tài khoản HS mới" ngay trên màn Học sinh (CEO: "t cần chủ động")
+
+- **Vì sao:** trước đây tạo tài khoản HS mới phải nhờ chạy tay `scripts/provision_hs_auth.mjs`
+  (cần Node + `.env.local` có `SUPABASE_SERVICE_ROLE`) — CEO không tự làm được, phải nhờ.
+- **KHÔNG dùng lại cơ chế `api/provision-hs-auth.mjs`** (serverless cần service_role + CRON_SECRET,
+  phải thêm tầng xác thực "người bấm có phải admin" mới an toàn cho nút). Thay vào đó **tái dùng
+  NGUYÊN XI pattern `capTaiKhoan`** đã có sẵn cho NHÂN SỰ (`src/lib/nhansu.ts`): client phụ
+  (`persistSession:false`, không đá session admin đang đăng nhập) gọi thẳng `auth.signUp()` bằng
+  ANON key — hoàn toàn không cần service_role/serverless, vì Dashboard đã tắt sẵn "Confirm email"
+  (dùng chung 1 cấu hình Auth với luồng nhân sự, đã verify hoạt động thật hôm nay).
+- **`provisionTaiKhoanHS()`** (`src/lib/nhansu.ts`): quét `hoc_sinh` đang học, đối chiếu `tai_khoan`
+  đã có, loop `signUp` cho HS còn thiếu (email `<ma_hs>@hs.bkdemy.local`, PIN=mã HS, giữ nguyên quy
+  ước cũ), upsert `tai_khoan` link ngay sau mỗi lần tạo. Idempotent — bấm lại an toàn.
+- **UI:** nút xám cạnh "+ Thêm học sinh" (`HocSinhScreen.tsx`), bấm xong hiện modal kết quả
+  (Tạo mới / Đã có sẵn / Lỗi nếu có) — KHÔNG `alert()` (CLAUDE.md §6).
+- **Verify qua app thật** (tài khoản CEO, la_admin): bấm nút → "Tạo mới 0 · Đã có sẵn 336" — đúng
+  khớp trạng thái DB (336/336 HS đã có tài khoản từ đợt provision tay lúc trước trong ngày), không
+  lỗi console. Chưa có case HS THẬT đang thiếu để test nhánh "tạo mới >0" qua UI — đã tin ở chỗ dùng
+  đúng cùng 1 hàm/pattern đã chạy được cho nhân sự (`capTaiKhoan`) và đã test qua script CLI lúc sáng.
