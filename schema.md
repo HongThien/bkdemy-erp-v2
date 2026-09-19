@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-230 bảng · 19 view · 0 enum · 74 trigger · 395 function
+231 bảng · 19 view · 0 enum · 75 trigger · 400 function
 
 ## _app_secrets
 
@@ -78,7 +78,7 @@
 | nguon_tai_lieu_id | uuid | Y |  | FK→tai_lieu.id |  |
 | lop_id | uuid |  |  | FK→lop.id |  |
 | ngay | date |  |  |  |  |
-| loai | text |  |  |  | `et` · `btvn` · `giao_trinh` · `de_thi` · `tu_luyen` · `bo_tro` · `bo_tro_test` · `retest` |
+| loai | text |  |  |  | `et` · `btvn` · `giao_trinh` · `de_thi` · `tu_luyen` · `bo_tro` · `bo_tro_test` · `retest` · `htd_luyen` · `htd_test` |
 | mon | text |  | 'Toán'::text |  |  |
 | trang_thai | text |  | 'mo'::text |  | `mo` · `dong` |
 | mo_at | timestamp with time zone |  | now() |  |  |
@@ -2073,6 +2073,19 @@
 | mon | text |  |  | PK |  |
 | loai_key | text |  |  | PK FK→thanh_tich_loai.key |  |
 | thu_tu | integer |  | 0 |  |  |
+
+## hoc_tu_dau_dang
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| mon | text |  |  |  |  |
+| ma_dang | text |  |  |  |  |
+| doc_ly_thuyet_at | timestamp with time zone | Y |  |  |  |
+| test_bai_test_id | uuid | Y |  |  |  |
+| test_nop_at | timestamp with time zone | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## hoi_dap_bot
 
@@ -4831,6 +4844,7 @@ SELECT bl.hoc_sinh_id,
 | bảng | trigger | timing | event | function |
 |---|---|---|---|---|
 | bai_lam | trg_btyeu_retest_lam | AFTER | UPDATE | _trg_btyeu_retest_lam |
+| bai_lam | trg_htd_test_nop | AFTER | UPDATE | trg_htd_test_nop |
 | bai_lam_cau | trg_btyeu_retest_cau | AFTER | INSERT/UPDATE | _trg_btyeu_retest_cau |
 | bai_test | trg_ta_retest_push_badge | AFTER | INSERT | _trg_ta_retest_push |
 | bai_test_cau | tg_bt_dang_ph_auto_dang1 | AFTER | INSERT | fn_bt_tu_phat_hanh_dang1 |
@@ -5246,6 +5260,9 @@ SELECT bl.hoc_sinh_id,
 - `hs_sotay_dang(p_ma_dang text, p_mon text DEFAULT 'Toán'::text, p_nhanh text DEFAULT NULL::text)` → jsonb
 - `hs_sotay_tim(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_nhanh text DEFAULT NULL::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
+- `htd_co_mo(p_mon text)` → boolean
+- `htd_lo_trinh(p_mon text)` → jsonb
+- `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
 - `increment_qaa_hit(p_id uuid)` → void
 - `jwt_email()` → text
 - `jwt_uid()` → uuid
@@ -5298,8 +5315,10 @@ SELECT bl.hoc_sinh_id,
 - `trg_chi_nhan_tien_log()` → trigger
 - `trg_chi_so_bf()` → trigger
 - `trg_han_nop_ngoai_le_log()` → trigger
+- `trg_htd_test_nop()` → trigger
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
