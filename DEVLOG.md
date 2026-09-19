@@ -12720,3 +12720,38 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
   → `--verify` 84 OK, 0 FAIL → `--ghi` → **84 dòng `dai_cau_form_tn`**. `npm run schema` refresh.
 - **Tổng khối 12: 12/14 dạng, 84/95 câu đủ điều kiện có MCQ (2 dạng loại hẳn vì đáp số không phải số).** Chưa
   commit (chờ yêu cầu).
+
+## 2026-09-19 — CEO: "Các dạng nâng cao khối 7 chuyển nốt sang form trắc nghiệm nào"
+- Khảo sát 10 dạng "Nâng cao" còn lại của khối 7 (T107010501/502/504/505/506/507/508/509/511, T107030501)
+  bằng `sinhNhieuDapSoThucTe` có sẵn TRƯỚC khi tính xây gì mới (đúng quy trình đã lặp lại 3 lần: 4T/5T →
+  khối 12 → khối 7 nâng cao).
+  - Khớp ngay 100%: T107010501 (50/50), T107010502 (10/10), T107010508 (6/6), T107010511 (1/1).
+  - T107010509 ban đầu chỉ 6/11 — 4 câu dùng khuôn "n ∈ {-4;-2;0;2}" (ký hiệu tập hợp, LaTeX thật trong kho
+    là `\in \{...\}` chứ không phải Unicode `∈`) mà `tachDapSoThucTe` CHƯA hỗ trợ.
+  - **Bug tìm được khi thêm khuôn set-notation:** regex đầu tiên `[^{}]+` (greedy) NUỐT LUÔN dấu `\` đứng
+    ngay trước `\}` đóng vào trong group capture (vì `\` không nằm trong `{}` nên không bị chặn bởi character
+    class) — `\?\}$` phía sau chỉ cần khớp 0 backslash nên không ép group nhả lại. Kết quả: giá trị cuối
+    cùng trong set luôn dính thêm 1 ký tự `\` rác, `parseSoThucTe` fail âm thầm → hàm trả `null` dù regex
+    "trông đúng" và qua `node --check`. Sửa bằng cách loại `\` khỏi character class: `[^{}\\]+`. Debug bằng
+    script tay qua Write tool (không phải `node -e` inline) vì backslash LaTeX bị bash/PowerShell escaping
+    ăn mất trong test trước đó — bài học lặp lại từ các lần trước, xem `crlf-patch-va-heredoc-dai.md`.
+    Sau fix: **T107010509 lên 10/11** (1 câu còn lại "$a=3k+2$" — đáp số tham số hoá, không có giá trị rời
+    rạc, bỏ đúng §1.5).
+  - T107030501: 4/10 — 6 câu bỏ vì `dap_an` NULL (3 câu) hoặc dạng so sánh "A>B" không có giá trị số (1 câu,
+    2 câu khác đã tính trong 4/10). Không cố gắn.
+  - **4 dạng loại HẲN khỏi danh sách đăng ký — 0% khớp, đúng bản chất KHÔNG PHẢI đáp số 1 giá trị:**
+    T107010504 (0/19), T107010506 (0/12), T107010507 (0/7) — cả 3 là chứng minh bất đẳng thức dạng
+    "$3 < A < 6$" hoặc "Chứng minh $A < 5/49$", không có đáp số rời rạc để MCQ hoá. T107010505 (0/24) — phần
+    lớn cũng so sánh/chứng minh, riêng ~13-14 câu "Tính A" có đáp số ĐÃ RÚT GỌN nhưng còn dạng luỹ thừa cơ số
+    số (vd `(4·2^20-1)/(3·2^20)`) mà `parseDonThucCore` hiện chỉ hỗ trợ `^` với cơ số BIẾN (chữ), không hỗ
+    trợ cơ số SỐ — **xác định là điểm mở rộng khả thi (BigInt luỹ thừa rẻ/an toàn) nhưng CHƯA làm**, giá trị
+    ~13 câu không đủ để đổi rủi ro sửa core parser ngay lúc này, để dành cho đợt sau nếu cần.
+  - **Regression-check TOÀN BỘ 3 cụm đã ghi trước (khối 9 465 câu + 4T/5T 1178 câu + khối 12 95 câu, cùng
+    hàm `tachDapSoThucTe`/`sinhNhieuDapSoThucTe` vừa sửa): 0 mismatch.**
+- Migration `202609191724` — CHỈ UPDATE `ap_dung` nối 6 dạng khối 7 nâng cao vào R343-346 có sẵn (không rule
+  mới). Wire `ANSWER_DANG_LIST`/`UU_TIEN` (`mcq-auto.mjs`) + TEXT_DANG/TEXT_FN (`mcq-sinh.mjs`) cho 6 dạng.
+- Pipeline thật: `--list` 84 câu → `mcq-auto.mjs` sinh 81, bỏ 3 (2 "N hoặc M"/set không nhận dạng được thêm
+  + 1 nội dung khác) → `--verify` 81 OK, 0 FAIL → `--ghi` → **81 dòng `dai_cau_form_tn`** (`da_duyet=false`).
+  `npm run schema` refresh (236 bảng, 19 view, 77 trigger, 416 function, 231 check).
+- **Tổng khối 7 Nâng cao: 6/10 dạng, 81/84 câu đủ điều kiện có MCQ (4 dạng loại hẳn vì bản chất chứng
+  minh/so sánh, không phải đáp số 1 giá trị).** Chưa commit (chờ yêu cầu).

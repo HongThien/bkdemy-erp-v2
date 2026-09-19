@@ -4235,7 +4235,14 @@ function parseSoThucTe(s) {
   if (labelM) t = labelM[1].trim()
   const c = parseDonThucCore(t.replace(',', '.')); return (c && c.vars.size === 0 && !c.hasIrrational) ? c.coef : null
 }
-function tachDapSoThucTe(rawClean) { // → {vals: Rat[], sep} hoặc null — dùng chung cho canon lẫn sinh nhiễu
+function tachDapSoThucTe(rawClean0) { // → {vals: Rat[], sep} hoặc null — dùng chung cho canon lẫn sinh nhiễu
+  const rawClean = rawClean0.replace(/\s*\([^()]*\)\s*$/, '').trim() || rawClean0 // bỏ ghi chú trong ngoặc Ở CUỐI, vd "x=-3 (khi đó B=1)" — chỉ khi bỏ xong vẫn còn nội dung
+  const setM = rawClean.match(/^.*?(?:∈|\\in)\s*\\?\{([^{}\\]+)\\?\}$/) // ký hiệu tập hợp "n ∈ {-4;-2;0;2}" hoặc LaTeX "n \in \{-4,-6\}" — SET nên khi so sánh phải SẮP XẾP (khác cặp có thứ tự). [^{}\\] loại luôn dấu \ để nó KHÔNG bị nuốt vào group (greedy [^{}]+ trước đây ăn cả \ đứng trước \} đóng)
+  if (setM) {
+    const parts = setM[1].split(/[;,]/).map((p) => p.trim()).filter(Boolean); if (parts.length < 1 || parts.length > 4) return null
+    const vals = parts.map(parseSoThucTe); if (vals.some((v) => !v)) return null
+    return { vals, sep: ' ∈ {} ' }
+  }
   const clean = rawClean.startsWith('(') && rawClean.endsWith(')') ? rawClean.slice(1, -1).trim() : rawClean // "(3; 8/3; -8/3)" — bóc ngoặc bọc ngoài cả bộ
   const hoacM = clean.match(/^(.+?)\s*hoặc\s*(.+)$/)
   if (hoacM) { const a = parseSoThucTe(hoacM[1]), b = parseSoThucTe(hoacM[2]); return (a && b) ? { vals: [a, b], sep: ' hoặc ' } : null }
@@ -4245,19 +4252,23 @@ function tachDapSoThucTe(rawClean) { // → {vals: Rat[], sep} hoặc null — d
   const vals = parts.map(parseSoThucTe); if (vals.some((v) => !v)) return null
   return { vals, sep: ';' }
 }
+function renderDapSoThucTe(vals, sep) {
+  if (sep === ' hoặc ') { const arr = [...vals].sort(cmp); return `${texR(arr[0])} hoặc ${texR(arr[1])}` }
+  if (sep === ' dư ') return `${texR(vals[0])} dư ${texR(vals[1])}` // KHÔNG sort — thương/dư có thứ tự cố định
+  if (sep === ' ∈ {} ') { const arr = [...vals].sort(cmp); return `∈ {${arr.map(texR).join(';')}}` } // SET — sắp xếp để so sánh ổn định
+  return vals.map(texR).join(';')
+}
 export function chuanHoaDapSoThucTe(s) {
   const clean = String(s ?? '').replace(/\$/g, '').trim()
   const t = tachDapSoThucTe(clean); if (!t) return clean
-  if (t.sep === ' hoặc ') { const arr = [...t.vals].sort(cmp); return `${texR(arr[0])} hoặc ${texR(arr[1])}` }
-  if (t.sep === ' dư ') return `${texR(t.vals[0])} dư ${texR(t.vals[1])}` // KHÔNG sort — thương/dư có thứ tự cố định
-  return t.vals.map(texR).join(';')
+  return renderDapSoThucTe(t.vals, t.sep)
 }
 export function evalDapSoThucTeKetQua(s) { const t = chuanHoaDapSoThucTe(s); return t || null }
 export function sinhNhieuDapSoThucTe(dapAn, rule) {
   const clean = String(dapAn ?? '').replace(/\$/g, '').trim()
   const parsed = tachDapSoThucTe(clean); if (!parsed) return null
   const { vals, sep } = parsed
-  const render = (arr) => arr.map(texR).join(sep)
+  const render = (arr) => renderDapSoThucTe(arr, sep)
   const dungText = render(vals)
   if (!rule) return { text: dungText }
   if (rule === 'R343') {
