@@ -48,19 +48,23 @@ function CardMau({ tone, icon, ten, children, onClick, disabled }: {
     </button>
   )
 }
-// Card dạng BOX (gần vuông, màu kín cả khối) — dùng cho lưới lựa chọn 1 hàng (3 chức năng của dạng).
-// KHÁC CardMau (dải màu chỉ ở header, thân trắng) — box này tránh kiểu "thanh dài" bị chê xấu.
+// Card dạng BOX (gần vuông) — dùng cho lưới lựa chọn 1 hàng (3 chức năng của dạng).
+// Vẫn giữ NGUYÊN TẮC header-màu/thân-trắng của CardMau (không tô kín 1 màu cả khối) — chỉ đổi
+// tỉ lệ khung từ "thanh ngang dài" sang "gần vuông": phần màu trên chứa icon, thân trắng chứa chữ.
 function CardBox({ tone, icon, ten, sub, onClick, disabled }: {
   tone: HomeTone; icon: string; ten: string; sub?: string; onClick?: () => void; disabled?: boolean
 }) {
   const t = TONE[tone]
   return (
     <button onClick={onClick} disabled={disabled}
-      className={`flex aspect-[0.92] flex-col items-center justify-center gap-1.5 rounded-[20px] px-2 py-3 text-center shadow-sm transition ${disabled ? 'opacity-50' : 'active:scale-[0.96]'}`}
-      style={{ background: `linear-gradient(150deg, ${t.c}, ${t.c}cc)` }}>
-      <span className="text-[26px] leading-none">{icon}</span>
-      <span className="text-[13px] font-bold leading-tight text-white">{ten}</span>
-      {sub && <span className="text-[10.5px] leading-tight text-white/85">{sub}</span>}
+      className={`flex aspect-[0.9] flex-col overflow-hidden rounded-[20px] shadow-sm transition ${disabled ? 'opacity-50' : 'active:scale-[0.96]'}`}>
+      <div className="flex flex-1 items-center justify-center" style={{ background: `linear-gradient(150deg, ${t.c}, ${t.c}cc)` }}>
+        <span className="text-[30px] leading-none">{icon}</span>
+      </div>
+      <div className="bg-white px-2 py-2.5 text-center">
+        <span className="block text-[13px] font-bold leading-tight text-ph-label">{ten}</span>
+        {sub && <span className="mt-0.5 block text-[10.5px] leading-tight text-ph-label-2">{sub}</span>}
+      </div>
     </button>
   )
 }

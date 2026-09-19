@@ -13347,3 +13347,7 @@ sửa code). Migration `202609191317_botro_chi_mcq.sql` (ĐÃ ÁP): `_kho_dk_mcq
   cho câu dài — không mất thông tin cốt lõi, chi tiết đầy đủ HS vẫn thấy khi vào từng màn con.
   Giữ nguyên `CardMau` (dải màu header) cho lưới chủ đề/chuyên đề — 2 cột đã đủ gọn, không bị chê.
 - **Verify:** browser pane cả desktop và mobile (375×812) — 3 box vuông đều, vừa 1 hàng, không tràn.
+- **CEO phản hồi thêm ngay sau đó:** box đợt 1 tô kín 1 màu cả khối — vẫn chưa đúng ý, muốn GIỮ NGUYÊN
+  nguyên tắc "đầu có màu, thân trắng" của `CardMau`, chỉ đổi tỉ lệ khung sang gần vuông. Sửa `CardBox`:
+  chia 2 vùng trong cùng 1 khối bo góc — vùng trên (flex-1, nền gradient tone) chứa icon to, vùng dưới
+  (nền trắng) chứa tên + caption ngắn. Verify lại desktop + mobile, đúng yêu cầu.
