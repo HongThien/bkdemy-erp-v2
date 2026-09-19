@@ -504,10 +504,12 @@ function LeafCard({ d, config, cau, lt, onOpen, onDelete, onChuyen, onGop, onLyT
 }
 
 // ── Modal lý thuyết — popup TO: trái code LaTeX (sửa), phải preview; upload ảnh/PDF → AI bóc LaTeX ──
+// CHỈ FLASH — CEO chốt 19/09/2026 bỏ hẳn Pro. Google gỡ `gemini-2.5-pro` (404), bản thay
+// `gemini-3.1-pro-preview` đắt ~7× Flash VÀ không tắt nghĩ được ⇒ không đáng. Muốn thêm lại
+// thì đọc `thinkingCfgOf` trong lib/kho/api.ts trước (Gemini 3 từ chối thinkingBudget: 0).
 const LT_MODELS = [
   { value: 'gemini-2.5-flash-lite', label: 'Flash-Lite' },
   { value: 'gemini-2.5-flash', label: 'Flash' },
-  { value: 'gemini-2.5-pro', label: 'Pro ⚠ đắt 4×' },
 ]
 type LtFile = { name: string; mimeType: string; dataBase64: string; isImage: boolean }
 function ltToBase64(f: File): Promise<string> {

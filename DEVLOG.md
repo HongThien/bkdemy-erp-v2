@@ -13054,3 +13054,142 @@ Guard `!cap2` chặn cấp 1 refetch `maymanCoLuot`. Nhưng HomeCap1 có ô May 
 - Đo bằng khoá tự nhiên (`ca_test_cau.ma_cau` → `dang_chinh` HIỆN TẠI của câu → bản đồ; script `scripts/_q_test_chuyende_1809.mjs`): K7 (đề 07/09: 170 dòng/5 ca; đề 14/09: 27 dòng/1 ca) khớp 100%, 0 câu mất, 0 dạng mất, 0 lệch dạng. K11 (60 dòng/2 ca) còn **6 dòng lệch tên chuyên đề**: "Côn thức lượng giác" (4) + "Công thức cộng" (2) → "Công thức lượng giác" — CEO đổi tên/gộp chuyên đề SAU lần retro 13:42, mà ĐỔI TÊN chuyên đề không có đường nào lan sang ca test.
 - Fix gốc: mig `202609181530_ban_do_sync_ca_test_cau_khi_doi_ten.sql` = trigger `tg_ban_do_sync_ca_test_cau` AFTER UPDATE OF ten_chuyen_de, muc_do trên `dai_ban_do`/`hgt_ban_do`/`khtn_ban_do` → update snapshot `ca_test_cau` cùng `ma_dang`; kèm sync retro cả 3 kho + assert 0 lệch. Không xung đột `fn_dai_chuyen_dang` (lúc đổi mã, ca_test_cau còn mã cũ ⇒ trigger khớp 0 dòng, RPC tự update sau). Áp `--only`, schema.md refresh (74 trigger). Verify: đo lại lệch = 0; transaction ROLLBACK đổi thử tên chuyên đề của `T108040201` ⇒ 64/64 dòng ca_test_cau đổi theo.
 - Lưu ý cho CEO: đề K7 bản 14/09 còn chuyên đề lẻ "Luỹ thừa với số mũ tự nhiên của một số hữu tỉ" (1 câu) đứng cạnh "Luỹ thừa của Số hữu tỉ" (4 câu) — là trạng thái bản đồ hiện tại, nếu định gộp thì gộp ở bản đồ, phiếu tự theo. Hàng `HINH:` giữ nhãn "Hình học". Chưa commit.
+
+### 18/09 — Clone 30 bài "Tìm 2 số biết ƯCLN-BCNN" (K6) + xác nhận cách hiển thị bảng trong lời giải
+
+- CEO đưa PDF mẫu (1 bài, có bảng m/n/a/b liệt kê nghiệm). Hỏi trước: MathText có hiển thị được bảng không?
+  Xác nhận: MathText CHỈ hiểu `$...$`/`$$...$$` (KaTeX) + `**đậm**` + `![ảnh](url)` — KHÔNG hiểu bảng
+  markdown/HTML. Cách đúng: dùng `\begin{array}{|c|c|...|}\hline...\end{array}` bên trong `$...$`.
+  Verify bằng KaTeX 0.17.0 thật của repo (không đoán): render ra đúng số đường kẻ ngang (hline) + dọc
+  (vertical-separator) khớp số hàng/cột nguồn — cả 2 chế độ inline `$` và display `$$` đều render đúng.
+- Phát hiện: đúng lúc đang làm, dạng `T106040301` (bản đồ K6, sẵn có nhưng 0 câu) đã có 5 câu mới
+  (`nguon='le'`, chưa duyệt) dùng ĐÚNG kỹ thuật `\begin{array}` này rồi — không rõ nguồn (không phải tôi
+  chèn). Để nhất quán trong 1 dạng, đã CHỈNH 30 câu mới của mình khớp văn phong 5 câu đó (đơn `$...$` quanh
+  bảng thay vì `$$...$$`, "biết rằng:" có hai chấm, "a, b" không bọc $, đáp án dạng text thường
+  "(a;b), (c;d)" không bọc $) thay vì để 2 kiểu cạnh nhau trong cùng dạng.
+- Sinh 30 bài bằng code (không đoán tay): chọn 30 cặp (ƯCLN d, BCNN/d = k) trải đều 3 mức khó theo số ước
+  nguyên tố phân biệt của k → bảng 2 cột (8 bài) / 4 cột như bài mẫu (16 bài) / 8 cột "nâng cao" (6 bài).
+  Mỗi bài verify chéo 2 thuật toán liệt kê cặp (m,n) nguyên tố cùng nhau + verify lại gcd(a,b)=d và
+  lcm(a,b)=BCNN cho từng cặp bằng code — 0 sai số học. Verify toàn bộ LaTeX qua KaTeX thật trước khi ghi
+  DB — 0 lỗi parse.
+- Insert vào `dai_cau_hoi`, dang_chinh=T106040301, loai_cau='tra_loi_ngan', nguon='clone',
+  nguon_giai='ai', giai_method='clone_doi_so', da_duyet=false (chờ duyệt bình thường) — `ma_cau`
+  T106040301006–035. 0 trùng với 5 câu tiền lệ (số khác nhau).
+- Verify UI thật (browser dev-ops): mở Duyệt câu › Toán › Câu mới chờ duyệt › khối 6, thấy bảng render
+  đúng khung kẻ cho cả câu tiền lệ và câu mới chèn (badge "clone" + "lời giải AI · clone_doi_so" hiện đúng).
+  Chưa xem trực tiếp câu 8 cột trong batch (nằm ngoài batch 20 hiển thị đầu) — tự tin qua verify KaTeX vì
+  cùng cơ chế render, không phải trường hợp riêng.
+
+### 19/09 — Nhập kho Chuyên đề 10 "Dấu hiệu chia hết" (K4T, luồng B)
+
+- CEO đưa PDF chuyên đề (lý thuyết + ví dụ có lời giải + 15 bài luyện tập KHÔNG có lời giải). Vì luyện tập
+  không có lời giải sẵn ⇒ luồng B (Claude tự giải), theo đúng văn phong ví dụ 10.3 có sẵn trong tài liệu
+  (giải thích ngắn gọn, cụ thể, không dùng ngôn ngữ tổ hợp/tập hợp hình thức — đúng "kiểu lớp 4").
+- Giải mẫu 1 bài (10.8d) trước, CEO duyệt văn phong rồi mới giải hết 15 bài.
+- Verify toàn bộ 15 bài bằng code (không tin tay): liệt kê/lọc số, sinh hoán vị chữ số, dò từng chữ số ẩn
+  0-9 — bắt được 1 lỗi diễn đạt tự viết sai ở câu 10.5b trước khi chèn (liệt kê nhầm số tận cùng 0), sửa
+  lại rồi verify KaTeX toàn bộ — 0 lỗi.
+- Bản đồ K4T sẵn có đúng 2 dạng cho chuyên đề này (0 câu trước đó):
+  T14T100101 "Nhận biết số có tính chất chia hết" (bài 10.1–10.5, liệt kê/lọc số)
+  T14T100102 "Tìm chữ số để số đó chia hết cho 2,3,5,9" (bài 10.6–10.15, tìm chữ số ẩn, kể cả 2 bài (*)
+  dùng tích 5 số liên tiếp — vẫn quy về đúng kỹ thuật lõi: tổng chữ số chia hết cho 9).
+- Insert 15 câu vào dai_cau_hoi, loai_cau='tra_loi_ngan', nguon='de_thi', nguon_giai='ai',
+  giai_method='ai_extract_solve', da_duyet=false. Mã T14T100101001-005, T14T100102001-010. 0 trùng.
+- CHƯA làm bước "clone gấp 5 lần" CEO nêu ban đầu — mới dừng ở nhập + giải 15 bài gốc, chờ CEO duyệt
+  trước khi nhân bản (bài 10.4/10.5/10.9/10.14/10.15 cần thiết kế biến thể cẩn thận, không đổi số vô tội vạ).
+
+### 19/09 — Sửa cấu trúc: tách mỗi ý (a,b,c...) thành 1 câu riêng (Dấu hiệu chia hết K4T)
+
+- CEO chỉ ra lỗi cấu trúc: 15 câu vừa nhập gộp nhiều ý a,b,c... vào 1 câu/1 đáp án chung — về sau KHÔNG
+  tách được thành trắc nghiệm 1-đáp-án. Luật mới: **mỗi ý là 1 bài/1 câu riêng**, và mỗi câu vẫn phải có
+  **đề bài riêng đầy đủ** (nhắc lại nguyên đề gốc + điều kiện của riêng ý đó), không viết tắt kiểu "câu a)".
+- Đã xoá 15 câu cũ (T14T100101001-005, T14T100102001-010 — đều là nháp da_duyet=false, chưa ai duyệt),
+  soạn lại 43 câu tách ý (đúng số ý thật của từng bài: 10.1-10.9 có 3-7 ý/bài → tách tương ứng; 10.10-10.15
+  chỉ 1 ý/bài → giữ 1 câu). Đồng thời viết lại các đoạn lời giải từng tham chiếu "câu trên" (10.3f/g,
+  10.4c, 10.5b/c, 10.7b) thành tự suy luận lại từ đầu, để mỗi câu đứng độc lập hoàn toàn.
+- Verify KaTeX + đủ field cho toàn bộ 43 câu trước khi ghi — 0 lỗi. Insert vào dai_cau_hoi:
+  T14T100101001-020 (20 câu, dạng "Nhận biết số có tính chất chia hết"),
+  T14T100102001-023 (23 câu, dạng "Tìm chữ số để số đó chia hết cho 2,3,5,9"). 0 trùng.
+- Vẫn CHƯA làm bước "clone gấp 5 lần" — chờ CEO duyệt 43 câu này trước.
+
+### 19/09 — Google GỠ `gemini-2.5-pro` (404) → chuyển Pro sang `gemini-3.1-pro-preview`
+
+- Triệu chứng: bấm Pro để đọc file thì lỗi `Gemini API lỗi 404: models/gemini-2.5-pro is no longer
+  available to new users. Please update your code to use models/gemini-3.1-pro-preview`.
+- ĐO THẬT bằng key ở `.env.local` (không đoán): `models?key=` vẫn LIỆT KÊ `gemini-2.5-pro`, nhưng
+  `:generateContent` trả **404**. ⇒ **ListModels KHÔNG phải bằng chứng model dùng được** — phải gọi thử.
+  Trạng thái từng model: 2.5-pro **404**; 2.5-flash / 2.5-flash-lite / 3.1-pro-preview / 3.5-flash /
+  3.5-flash-lite / pro-latest đều **200**. Vậy CHỈ Pro chết, Flash (mặc định `VITE_GEMINI_MODEL`) vẫn sống
+  — nên chỉ luồng người dùng tự chọn Pro mới gãy, không phải cả hệ.
+- Bẫy ẩn thứ 2, không thấy từ thông báo lỗi: Gemini 3.x **từ chối `thinkingBudget: 0`**
+  (400 "Budget 0 is invalid. This model only works in thinking mode."), chỉ nhận `thinkingLevel: low|high`;
+  ngược lại 2.5 KHÔNG hiểu `thinkingLevel` (400 "Thinking level is not supported"). Mà đúng luồng "đọc file"
+  (`DangHub.tsx` OCR bóc gốc, `api.ts` classify) lại truyền `think: 0` ⇒ nếu chỉ đổi tên model là **đổi 404
+  thành 400**, vẫn không đọc được file. Thêm `thinkingCfgOf(model, think)` rẽ theo đời model trong
+  `callGeminiJson` + `callGeminiRich`, thay vì sửa từng caller.
+- Hệ quả TIỀN, CEO cần biết: Pro không còn tắt nghĩ được (luôn ~130–250 token nghĩ/call), và giá
+  3.1-pro = **2.00 / 12.00** USD/1M (2.5-pro cũ 1.25/10.00) ⇒ so Flash (0.30/2.50) là **~7×** chứ không
+  còn "4×" như nhãn cũ. Đã sửa bảng `GEMINI_GIA` + fallback `giaOf` + nhãn 2 dropdown.
+- KHÔNG đụng Flash/Flash-Lite: 3.5-flash giá 1.50/9.00 = **5× đắt hơn** 2.5-flash (0.30/2.50) mà 2.5-flash
+  vẫn chạy tốt ⇒ "lên đời cho đồng bộ" ở đây là tự đốt tiền. Chốt: chỉ thay đúng model đã chết.
+- Verify: gọi thật 3.1-pro với 1 file ảnh + `responseSchema` + `thinkingLevel:'low'` → 200, đọc đúng ảnh.
+  `tsc --noEmit` sạch ở các file đụng (còn 1 lỗi cũ không liên quan ở `src/lib/pdfRender.ts`).
+- CÒN TREO: `HANDOFF.md` §Gemini chống cháy vẫn ghi "model chỉ `gemini-2.5-*`" — sai kể từ hôm nay,
+  sửa khi distill cuối ngày. Và deploy: auto-deploy Vercel đang tắt ⇒ phải tự bấm Create Deployment,
+  nếu không app trên Vercel vẫn gọi model đã chết.
+
+### 19/09 — Chuyển dạng 6 câu "lập số từ chữ số" (Dấu hiệu chia hết K4T)
+
+- CEO chỉ định: 6 câu 10.4abc + 10.5abc (viết số 3 chữ số từ 1 bộ chữ số cho trước, thoả chia hết) đang
+  gán nhầm vào T14T100101 "Nhận biết số có tính chất chia hết" — bản chất khác: đây là kỹ năng "lập số",
+  không phải "nhận biết số có sẵn". Đúng lúc kiểm bản đồ thì thấy đã có sẵn dạng T14T100103 "Lập số từ
+  các chữ số để chia hết cho 2,3,5,9" (dạng này KHÔNG có trong bản đồ lúc tôi tra ban đầu sáng nay — ai đó
+  vừa thêm, giống lần đụng "5 câu lạ" ở bài ƯCLN-BCNN hôm 18/09 — bài học Bước 3.0 lại đúng: PHẢI tra lại
+  bản đồ trước khi làm, không dùng danh sách cũ).
+- Chuyển 6 câu T14T100101015-020 sang T14T100103, đổi ma_cau tương ứng T14T100103001-006 (giữ nguyên
+  dang_ai_de_xuat=T14T100101 để lưu vết AI từng gán chưa chuẩn). Verify FK trước khi đổi (dai_cau_form_tn/
+  _dien/_menh_de/_bo_de — 0 dòng tham chiếu, an toàn đổi khoá). Trigger trg_log_doi_dang tự ghi lại đổi
+  dạng này vào kho_doi_dang_log — lần import "lập số từ chữ số" sau sẽ tự thấy bài học.
+- Phân bố cuối: T14T100101 (14 câu, nhận biết) + T14T100102 (23 câu, tìm chữ số) + T14T100103 (6 câu, lập
+  số) = 43 câu, khớp tổng đã nhập.
+
+### 19/09 — Clone x3 chuyên đề "Dấu hiệu chia hết" K4T (43 → 129 câu)
+
+- CEO yêu cầu nhân số lượng câu lên gấp 3. Với mỗi câu gốc trong 43 câu, sinh 2 biến thể mới (đổi số/chữ
+  số/digit pool, GIỮ NGUYÊN khuôn đề + kỹ năng + độ khó), tổng 86 câu clone mới, cộng 43 gốc = 129 câu
+  (đúng 3×43).
+- Làm hoàn toàn bằng code (không suy luận tay ở quy mô này): viết 1 script sinh theo "họ" (family) —
+  mỗi họ ứng với 1 khuôn đề gốc (liệt kê số, tìm 1 chữ số ẩn, tìm 2 chữ số ẩn, thay nhiều dấu *, tích 5 số
+  liên tiếp, lập số từ digit pool...), tự dò toàn bộ chữ số 0-9 (hoặc liệt kê hoán vị) để tính đáp án CHẮC
+  CHẮN đúng, đồng thời tự sinh luôn văn lời giải chi tiết từng bước (không phải câu mẫu chung chung) bằng
+  cách chèn số liệu đã tính vào template — same chất lượng giải thích như 43 câu gốc (có tổng chữ số cụ
+  thể, có từng trường hợp b=0/b=5, v.v.), sau khi phát hiện lần đầu vài họ (10.7/10.8/10.9/10.11-13 clone)
+  viết lời giải quá sơ sài kiểu "phân tích thành thừa số rồi xét dấu hiệu" — đã viết lại đủ chi tiết trước
+  khi chèn.
+- Riêng 2 câu "tích 5 số liên tiếp" (10.14/10.15 gốc): chọn dãy 5 số mới sao cho tích vẫn chia hết cho 9
+  theo đúng 2 kiểu gốc (10.14: có 1 thừa số chia hết 9 trực tiếp — dùng 27 và 36; 10.15: 2 thừa số cùng
+  chia hết 3 cộng lại — dùng cặp 39&42 và 57&60), rồi chọn đúng vị trí che chữ số sao cho phép thử
+  "tổng+*  chia hết 9" ra NGHIỆM DUY NHẤT (đã loại 1 lựa chọn ban đầu vì ra 2 nghiệm — sai đề).
+- Verify trước khi ghi: (1) mỗi câu gốc có ĐÚNG 2 biến thể (43 parent × 2 = 86, đối chiếu đủ), (2) toàn bộ
+  KaTeX render sạch, (3) không có cặp nào trùng nội dung nhau. Insert vào dai_cau_hoi với nguon='clone',
+  nguon_giai='ai', giai_method='clone_doi_so', và GÁN parent_ma_cau trỏ đúng về câu gốc (cột có sẵn trong
+  schema, dùng đúng lần này vì câu gốc CÓ THẬT trong kho — khác lần clone ƯCLN-BCNN trước không có gốc để trỏ).
+- Kết quả: T14T100101 (14 gốc + 28 clone = 42), T14T100102 (23 gốc + 46 clone = 69), T14T100103 (6 gốc +
+  12 clone = 18). Tổng 129 câu, da_duyet=false, chờ duyệt.
+
+### 19/09 — CEO chốt: BỎ HẲN Pro khỏi UI, chỉ còn Flash / Flash-Lite
+
+- Nối tiếp mục trên (2.5-pro bị Google gỡ). CEO: "t ko dùng pro, bỏ pro đi dùng flash thôi" ⇒ không
+  thay `gemini-3.1-pro-preview` vào dropdown nữa mà **xoá luôn lựa chọn Pro** ở cả 2 chỗ:
+  `BanDo.tsx` (modal lý thuyết) và `DangHub.tsx`. Lý do đứng vững độc lập với ý thích: bản thay đắt
+  ~7× Flash VÀ không tắt nghĩ được (luôn ~130–250 token nghĩ/call) ⇒ giá trị/đồng không còn.
+- GIỮ LẠI có chủ đích, đừng dọn nhầm:
+  - `thinkingCfgOf` trong `api.ts` — hiện không nhánh nào chạm tới, nhưng `VITE_GEMINI_MODEL` là env,
+    ai set thành model 3.x là dính ngay `400 Budget 0 is invalid`. Giữ = hàng rào, không phải rác.
+  - 2 dòng giá Pro trong `GEMINI_GIA` + fallback `giaOf` — để nếu env trỏ Pro thì đồng hồ tiền tính
+    ĐÚNG, thay vì âm thầm báo giá Flash (sai 7 lần) rồi mới biết khi hết tiền.
+  - Cap cứng `isClone && model.includes('pro') → flash` (`DangHub.tsx`) — giờ là no-op vì UI hết Pro,
+    nhưng nó vốn được viết đúng tinh thần "ĐỪNG TIN UI" sau vụ cháy 920k. Bỏ = tháo lưới an toàn.
+- `tsc --noEmit` sạch ở file đụng (vẫn còn lỗi cũ không liên quan `src/lib/pdfRender.ts`).
+- Hệ quả vận hành: khi Flash đọc trượt file khó thì KHÔNG còn đường leo thang trong app — phải chẻ
+  nhỏ file / chụp rõ hơn / nhập tay. Nếu ca này lặp lại nhiều, mở lại bàn Pro theo từng lần dùng.

@@ -974,9 +974,13 @@ export const USD_VND = 25400
 export const GEMINI_GIA: Record<string, { in: number; out: number }> = {
   'gemini-2.5-flash-lite': { in: 0.10, out: 0.40 },
   'gemini-2.5-flash': { in: 0.30, out: 2.50 },
-  'gemini-2.5-pro': { in: 1.25, out: 10.0 },
+  // ── Pro: KHÔNG còn chọn được từ UI (CEO bỏ 19/09/2026). Giữ giá ở đây để (a) đọc log cũ,
+  // (b) nếu ai set VITE_GEMINI_MODEL=...pro thì đồng hồ tiền vẫn tính ĐÚNG chứ không âm thầm
+  // báo giá Flash. Đừng xoá 2 dòng này khi dọn code.
+  'gemini-2.5-pro': { in: 1.25, out: 10.0 }, // ⛔ Google đã GỠ (404 "no longer available to new users")
+  'gemini-3.1-pro-preview': { in: 2.00, out: 12.0 }, // tier ≤200k token/prompt; >200k là 4.00/18.00
 }
-const giaOf = (m: string) => GEMINI_GIA[m] ?? (m.includes('pro') ? GEMINI_GIA['gemini-2.5-pro'] : m.includes('lite') ? GEMINI_GIA['gemini-2.5-flash-lite'] : GEMINI_GIA['gemini-2.5-flash'])
+const giaOf = (m: string) => GEMINI_GIA[m] ?? (m.includes('pro') ? GEMINI_GIA['gemini-3.1-pro-preview'] : m.includes('lite') ? GEMINI_GIA['gemini-2.5-flash-lite'] : GEMINI_GIA['gemini-2.5-flash'])
 export type GeminiUsage = { in: number; out: number; think: number }
 export function geminiCostVND(u: GeminiUsage, model: string): number {
   const g = giaOf(model)
@@ -1105,19 +1109,29 @@ export const GOC_SCHEMA = { type: 'OBJECT', properties: { bai_goc: CAU_ITEM_SCHE
 export const VARIANTS_SCHEMA = { type: 'OBJECT', properties: { variants: { type: 'ARRAY', items: CAU_ITEM_SCHEMA } }, required: ['variants'] }
 export const BATCH_SCHEMA = { type: 'OBJECT', properties: { cau_hoi: { type: 'ARRAY', items: CAU_ITEM_SCHEMA } }, required: ['cau_hoi'] }
 export const LYTHUYET_SCHEMA = { type: 'OBJECT', properties: { noi_dung: { type: 'STRING' } }, required: ['noi_dung'] }
+// ── thinkingConfig KHÁC NHAU GIỮA 2 ĐỜI MODEL — đừng gộp làm một ─────────────
+// ⚠ TIỀN: Gemini 2.5 mặc định BẬT thinking — token suy nghĩ TÍNH NHƯ OUTPUT (vụ cháy 1tr3 06-10).
+// OCR/bóc đề/nhập-chuỗi = extraction → KHÔNG cần nghĩ (budget 0). CLONE = GENERATION (dựng+giải+số đẹp)
+// → CẦN suy luận, caller truyền opts.think (vd 8192) nếu không clone toán sẽ sai.
+// Gemini 3.x (19/09/2026): `thinkingBudget: 0` bị TỪ CHỐI 400 "Budget 0 is invalid. This model only
+// works in thinking mode." — nó chỉ nhận `thinkingLevel: low|high`. Ngược lại 2.5 KHÔNG hiểu
+// `thinkingLevel` (400 "Thinking level is not supported"). Nên phải rẽ theo đời, không ép chung.
+// Hệ quả tiền: mọi call Pro giờ luôn tốn ~130–250 token nghĩ, không còn tắt hẳn được.
+const isGemini3 = (m: string) => /^gemini-([3-9]|\d{2})/.test(m)
+function thinkingCfgOf(model: string, think?: number): any {
+  const budget = think ?? (model.includes('pro') ? 128 : 0)
+  if (!isGemini3(model)) return { thinkingBudget: budget }
+  return { thinkingLevel: budget >= 4096 ? 'high' : 'low' }
+}
 export async function callGeminiJson(prompt: string, opts?: { model?: string; files?: GeminiFile[]; think?: number; schema?: any }): Promise<string> {
   const key = import.meta.env.VITE_GEMINI_KEY as string | undefined
   if (!key) throw new Error('Chưa có VITE_GEMINI_KEY trong .env.local → luồng AUTO chưa bật. Dùng MANUAL hoặc thêm key.')
   const model = opts?.model || (import.meta.env.VITE_GEMINI_MODEL as string | undefined) || 'gemini-2.5-flash'
   const parts: any[] = [{ text: prompt }]
   for (const f of opts?.files ?? []) parts.push({ inline_data: { mime_type: f.mimeType, data: f.dataBase64 } })
-  // ⚠ TIỀN: Gemini 2.5 mặc định BẬT thinking — token suy nghĩ TÍNH NHƯ OUTPUT (vụ cháy 1tr3 06-10).
-  // OCR/bóc đề/nhập-chuỗi = extraction → KHÔNG cần nghĩ (budget 0). CLONE = GENERATION (dựng+giải+số đẹp)
-  // → CẦN suy luận, caller truyền opts.think (vd 8192) nếu không clone toán sẽ sai. Pro ép min 128.
-  const thinkingBudget = opts?.think ?? (model.includes('pro') ? 128 : 0)
   // responseSchema (constrained decoding) = ép JSON hợp lệ + tự escape → hết lỗi "Bad escaped"/"Expected , or }"
   // do LaTeX 1-backslash hay " chưa escape (clone/batch/lý-thuyết hay dính). Caller truyền schema theo shape.
-  const genCfg: any = { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: { thinkingBudget } }
+  const genCfg: any = { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: thinkingCfgOf(model, opts?.think) }
   if (opts?.schema) genCfg.responseSchema = opts.schema
   const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -1145,8 +1159,7 @@ export async function callGeminiRich(prompt: string, opts?: { model?: string; fi
   const model = opts?.model || 'gemini-2.5-flash'
   const parts: any[] = [{ text: prompt }]
   for (const f of opts?.files ?? []) parts.push({ inline_data: { mime_type: f.mimeType, data: f.dataBase64 } })
-  const thinkingBudget = opts?.think ?? (model.includes('pro') ? 128 : 0)
-  const genCfg: any = { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: { thinkingBudget } }
+  const genCfg: any = { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: thinkingCfgOf(model, opts?.think) }
   if (opts?.schema) genCfg.responseSchema = opts.schema
   const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },

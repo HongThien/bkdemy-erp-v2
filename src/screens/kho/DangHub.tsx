@@ -292,10 +292,12 @@ type UpFile = { name: string; mimeType: string; dataBase64: string; isImage: boo
 const toCND = (r: ReviewItem) => ({ noi_dung: r.noi_dung.trim(), dap_an: r.dap_an.trim() || null, loi_giai: r.loi_giai.trim() || null, lua_chon: r.luaChon && r.luaChon.length ? r.luaChon : null, anh_de: r.anhDe, anh_dap_an: r.anhDapAn, nguon_giai: r.nguonGiai })
 const toRI = (c: { noi_dung: string; dap_an: string | null; loi_giai: string | null; lua_chon?: string[] | null; anh_de?: string | null; anh_dap_an?: string | null }, isGoc = false): ReviewItem =>
   ({ noi_dung: c.noi_dung, dap_an: c.dap_an ?? '', loi_giai: c.loi_giai ?? '', luaChon: c.lua_chon ?? null, anhDe: c.anh_de ?? null, anhDapAn: c.anh_dap_an ?? null, nguonGiai: 'nguoi', approved: true, isGoc })
+// CHỈ FLASH — CEO chốt 19/09/2026 bỏ hẳn Pro. Google gỡ `gemini-2.5-pro` (404), bản thay
+// `gemini-3.1-pro-preview` đắt ~7× Flash VÀ không tắt nghĩ được ⇒ không đáng. Muốn thêm lại
+// thì đọc `thinkingCfgOf` trong lib/kho/api.ts trước (Gemini 3 từ chối thinkingBudget: 0).
 const MODELS = [
   { value: 'gemini-2.5-flash-lite', label: 'Flash-Lite', sub: 'nhanh nhất' },
   { value: 'gemini-2.5-flash', label: 'Flash', sub: 'cân bằng (đề xuất)' },
-  { value: 'gemini-2.5-pro', label: 'Pro', sub: '⚠ đắt ~4× Flash — chỉ khi Flash đọc trượt' },
 ]
 function fileToBase64(f: File): Promise<string> {
   return new Promise((res, rej) => {
