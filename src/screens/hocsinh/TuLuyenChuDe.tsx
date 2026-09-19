@@ -11,7 +11,7 @@ import { layDangChuDe, monCuaHS, type DangChuDe } from '../../lib/tuluyen'
 
 function Khung({ desktop, children }: { desktop?: boolean; children: React.ReactNode }) {
   return (
-    <div className={desktop ? 'mx-auto min-h-screen max-w-2xl bg-[#f4f7fb] px-8 py-6' : 'mx-auto flex min-h-screen max-w-md flex-col bg-ios px-4 pb-8 pt-[calc(14px+env(safe-area-inset-top))]'}>
+    <div className={desktop ? 'mx-auto min-h-screen max-w-2xl bg-[#f4f7fb] px-8 py-6' : 'mx-auto flex min-h-screen max-w-md flex-col bg-ios px-4 pb-8 pt-[calc(14px+env(safe-area-inset-top))] md:max-w-2xl'}>
       {children}
     </div>
   )

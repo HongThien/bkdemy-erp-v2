@@ -42,7 +42,7 @@ export type HomeCard = {
 }
 
 // Bảng màu 6 ô — lấy từ DESIGN.md kit (mũi tên) + nền pastel đo từ reference.
-const TONE: Record<HomeTone, { bg: string; c: string; ill: string }> = {
+export const TONE: Record<HomeTone, { bg: string; c: string; ill: string }> = {
   pink:   { bg: 'linear-gradient(135deg,#ffffff 0%,#fff0f4 100%)', c: '#FF6B8E', ill: '#ffe4ec' },
   purple: { bg: 'linear-gradient(135deg,#ffffff 0%,#f5f1ff 100%)', c: '#7B61E8', ill: '#ece6ff' },
   orange: { bg: 'linear-gradient(135deg,#ffffff 0%,#fff8e9 100%)', c: '#F3A43B', ill: '#fff0d2' },

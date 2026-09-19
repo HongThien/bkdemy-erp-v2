@@ -9,6 +9,7 @@ import { supabase } from './supabase'
 import type { SinhTuLuyenKetQua } from './tuluyen'
 
 export type DangHTD = {
+  ma_chu_de: string; ten_chu_de: string
   ma_chuyen_de: string; ten_chuyen_de: string
   ma_dang: string; ten_dang: string
   tong_cau: number; doc_ly_thuyet: boolean; xong: boolean; mo: boolean

@@ -1,19 +1,26 @@
 // ============================================================================
-// HocTuDau — màn PICKER cho "Học từ đầu" (Thùy 19/09, gắn bổ trợ đuổi):
-// (1) LoTrinhHTD — lộ trình chuyên đề→dạng TUẦN TỰ (khoá/mở/xong tính sẵn ở RPC
-//     htd_lo_trinh, xem migration 202609191521+...1524 — component chỉ vẽ).
-// (2) ChiTietDangHTD — 3 chức năng của 1 dạng: Đọc lý thuyết · Luyện tập · Test.
-// (3) LyThuyetHTD — đọc lý thuyết (ghi nhận đã đọc ngay khi mở, xem htd_ly_thuyet).
-// Phần LÀM BÀI (luyện tập/test) nằm trong HocSinhApp.tsx (component LamHTD) vì cần
-// dùng chung LamBai local ở đó — file này KHÔNG đụng bài làm, chỉ điều hướng.
+// HocTuDau — "Học từ đầu" (Thùy 19/09, sửa lại 19/09 sau khi xem bản đầu):
+// Điều hướng ĐÚNG 3 bước — HS KHÔNG được chọn thẳng dạng:
+//   (1) ChonChuDeHTD    — danh sách CHỦ ĐỀ (tầng trên cùng).
+//   (2) ChonChuyenDeHTD — danh sách CHUYÊN ĐỀ trong chủ đề đã chọn. Bấm 1 chuyên đề
+//       là vào THẲNG dạng đang học của chuyên đề đó (dạng mở đầu tiên chưa xong,
+//       hết thì vào dạng cuối) — KHÔNG hiện danh sách dạng để tự chọn.
+//   (3) ChiTietDangHTD  — 3 chức năng (lý thuyết/luyện/test) của dạng đang học. Có
+//       nút "ⓘ" ẩn — bấm mới hiện toàn bộ dạng trong chuyên đề + khoá/mở (tò mò thì
+//       xem, KHÔNG mặc định hiện — CEO 19/09).
+// Card đổi sang "header có màu" (dải màu đặc trên đầu card + icon) thay vì nền trắng
+// phẳng — tái dùng ĐÚNG bảng TONE của HomeHS.tsx (không bịa palette riêng).
 // ============================================================================
 import { useEffect, useState } from 'react'
 import { htdLoTrinh, htdLyThuyet, type DangHTD } from '../../lib/hoctudau'
 import { MathText } from '../kho/ui'
+import { TONE, type HomeTone } from './HomeHS'
+
+const TONE_CYCLE: HomeTone[] = ['purple', 'blue', 'pink', 'green', 'orange', 'gray']
 
 function Khung({ desktop, children }: { desktop?: boolean; children: React.ReactNode }) {
   return (
-    <div className={desktop ? 'mx-auto min-h-screen max-w-2xl bg-[#f4f7fb] px-8 py-6' : 'mx-auto flex min-h-screen max-w-md flex-col bg-ios px-4 pb-8 pt-[calc(14px+env(safe-area-inset-top))]'}>
+    <div className={desktop ? 'mx-auto min-h-screen max-w-2xl bg-[#f4f7fb] px-8 py-6 md:max-w-3xl' : 'mx-auto flex min-h-screen max-w-md flex-col bg-ios px-4 pb-8 pt-[calc(14px+env(safe-area-inset-top))] md:max-w-3xl'}>
       {children}
     </div>
   )
@@ -25,53 +32,72 @@ function NutBack({ onBack, desktop }: { onBack: () => void; desktop?: boolean })
     </button>
   )
 }
+// Card header-màu dùng chung 3 màn — icon/emoji trên dải màu đặc (tone.c), thân trắng bên dưới.
+function CardMau({ tone, icon, ten, children, onClick, disabled }: {
+  tone: HomeTone; icon: string; ten: string; children?: React.ReactNode; onClick?: () => void; disabled?: boolean
+}) {
+  const t = TONE[tone]
+  return (
+    <button onClick={onClick} disabled={disabled}
+      className={`overflow-hidden rounded-[22px] text-left shadow-sm transition ${disabled ? 'opacity-50' : 'active:scale-[0.98]'}`}>
+      <div className="flex items-center gap-2.5 px-4 py-3" style={{ background: `linear-gradient(120deg, ${t.c}, ${t.c}cc)` }}>
+        <span className="text-[20px]">{icon}</span>
+        <span className="min-w-0 flex-1 truncate text-[14.5px] font-bold text-white">{ten}</span>
+      </div>
+      {children && <div className="bg-white px-4 py-3">{children}</div>}
+    </button>
+  )
+}
 
-export function LoTrinhHTD({ mon, onPick, onBack, desktop }: { mon: string; onPick: (d: { ma_dang: string; ten_dang: string; xong: boolean }) => void; onBack: () => void; desktop?: boolean }) {
+// ── Gom phẳng → cây chủ đề → chuyên đề (thuần trình bày, không tính nghiệp vụ) ──
+type ChuyenDeNhom = { ma_chuyen_de: string; ten_chuyen_de: string; dangs: DangHTD[] }
+type ChuDeNhom = { ma_chu_de: string; ten_chu_de: string; chuyenDes: ChuyenDeNhom[] }
+function gomCay(dangs: DangHTD[]): ChuDeNhom[] {
+  const mapChuDe = new Map<string, ChuDeNhom>()
+  for (const d of dangs) {
+    let cd = mapChuDe.get(d.ma_chu_de)
+    if (!cd) { cd = { ma_chu_de: d.ma_chu_de, ten_chu_de: d.ten_chu_de, chuyenDes: [] }; mapChuDe.set(d.ma_chu_de, cd) }
+    let cde = cd.chuyenDes.find((x) => x.ma_chuyen_de === d.ma_chuyen_de)
+    if (!cde) { cde = { ma_chuyen_de: d.ma_chuyen_de, ten_chuyen_de: d.ten_chuyen_de, dangs: [] }; cd.chuyenDes.push(cde) }
+    cde.dangs.push(d)
+  }
+  return [...mapChuDe.values()]
+}
+// Dạng ĐANG học của 1 chuyên đề: dạng mở đầu tiên chưa xong; hết rồi thì về dạng cuối (ôn thêm).
+function dangDangHoc(cde: ChuyenDeNhom): DangHTD {
+  return cde.dangs.find((d) => d.mo && !d.xong) ?? cde.dangs[cde.dangs.length - 1]
+}
+
+export function ChonChuDeHTD({ mon, onPick, onBack, desktop }: { mon: string; onPick: (chuDe: ChuDeNhom) => void; onBack: () => void; desktop?: boolean }) {
   const [state, setState] = useState<'dang_tai' | 'san_sang' | 'loi'>('dang_tai')
-  const [dangs, setDangs] = useState<DangHTD[]>([])
+  const [cay, setCay] = useState<ChuDeNhom[]>([])
   const [err, setErr] = useState<string | null>(null)
 
   useEffect(() => {
-    htdLoTrinh(mon).then((ds) => { setDangs(ds); setState('san_sang') })
+    htdLoTrinh(mon).then((ds) => { setCay(gomCay(ds)); setState('san_sang') })
       .catch((e) => { setErr(e?.message ?? String(e)); setState('loi') })
   }, [mon])
 
-  let lastChuyenDe = ''
   return (
     <Khung desktop={desktop}>
       <NutBack onBack={onBack} desktop={desktop} />
       <h1 className={`font-extrabold text-ph-label ${desktop ? 'text-[22px]' : 'text-[19px]'}`}>Học từ đầu</h1>
-      <p className={`mt-1 text-ph-label-2 ${desktop ? 'text-[14px]' : 'text-[13px]'}`}>Học tuần tự từng dạng trong 1 chuyên đề — xong dạng này mới mở dạng sau. Có thể bỏ qua chuyên đề này, sang chuyên đề khác.</p>
+      <p className={`mt-1 text-ph-label-2 ${desktop ? 'text-[14px]' : 'text-[13px]'}`}>Chọn 1 chủ đề để bắt đầu. Được phép bỏ qua, làm chủ đề khác trước.</p>
 
       {state === 'dang_tai' && <p className="mt-8 text-center text-[13px] text-ph-label-2">Đang tải…</p>}
       {state === 'loi' && <p className="mt-8 text-center text-[13px] text-ph-red">{err}</p>}
-      {state === 'san_sang' && dangs.length === 0 && (
+      {state === 'san_sang' && cay.length === 0 && (
         <p className="mt-8 text-center text-[13px] text-ph-label-2">Em chưa có lộ trình bổ trợ đuổi nào cần học.</p>
       )}
-
-      {state === 'san_sang' && dangs.length > 0 && (
-        <div className="mt-4 flex flex-col gap-2.5">
-          {dangs.map((d) => {
-            const moiChuyenDe = d.ten_chuyen_de !== lastChuyenDe
-            lastChuyenDe = d.ten_chuyen_de
+      {state === 'san_sang' && cay.length > 0 && (
+        <div className={`mt-4 grid gap-3 ${desktop ? 'md:grid-cols-2' : 'md:grid-cols-2'}`}>
+          {cay.map((cd, i) => {
+            const tongDang = cd.chuyenDes.reduce((s, c) => s + c.dangs.length, 0)
+            const xongDang = cd.chuyenDes.reduce((s, c) => s + c.dangs.filter((d) => d.xong).length, 0)
             return (
-              <div key={d.ma_dang} className="contents">
-                {moiChuyenDe && <div className="mt-2 text-[11px] font-bold uppercase tracking-wide text-ph-label-2 first:mt-0">{d.ten_chuyen_de}</div>}
-                <button onClick={() => d.mo && onPick({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, xong: d.xong })}
-                  disabled={!d.mo}
-                  className={`flex items-center gap-3 rounded-2xl p-3.5 text-left shadow-sm ${d.mo ? 'bg-white active:scale-[0.98]' : 'bg-white/50 opacity-60'}`}>
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[16px]"
-                    style={{ background: d.xong ? '#DFF6EA' : d.mo ? '#E3EEFF' : '#F1F3F8' }}>
-                    {d.xong ? '✅' : d.mo ? '📖' : '🔒'}
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-[14px] font-semibold text-ph-label">{d.ten_dang}</span>
-                    <span className="mt-0.5 block text-[11.5px] text-ph-label-2">
-                      {d.xong ? 'Đã xong — có thể luyện thêm' : d.mo ? (d.doc_ly_thuyet ? 'Đã đọc lý thuyết — chưa test' : 'Chưa học') : 'Khoá — hoàn thành dạng trước đã'}
-                    </span>
-                  </span>
-                </button>
-              </div>
+              <CardMau key={cd.ma_chu_de} tone={TONE_CYCLE[i % TONE_CYCLE.length]} icon="📘" ten={cd.ten_chu_de} onClick={() => onPick(cd)}>
+                <span className="block text-[12.5px] text-ph-label-2">{cd.chuyenDes.length} chuyên đề · đã xong {xongDang}/{tongDang} dạng</span>
+              </CardMau>
             )
           })}
         </div>
@@ -80,28 +106,71 @@ export function LoTrinhHTD({ mon, onPick, onBack, desktop }: { mon: string; onPi
   )
 }
 
-export function ChiTietDangHTD({ dang, onLyThuyet, onLuyenTap, onTest, onBack, desktop }: {
-  dang: { ma_dang: string; ten_dang: string; xong: boolean }
-  onLyThuyet: () => void; onLuyenTap: () => void; onTest: () => void; onBack: () => void; desktop?: boolean
-}) {
+export function ChonChuyenDeHTD({ chuDe, onPick, onBack, desktop }: { chuDe: ChuDeNhom; onPick: (cde: ChuyenDeNhom) => void; onBack: () => void; desktop?: boolean }) {
   return (
     <Khung desktop={desktop}>
       <NutBack onBack={onBack} desktop={desktop} />
-      <h1 className={`font-extrabold text-ph-label ${desktop ? 'text-[20px]' : 'text-[17px]'}`}>{dang.ten_dang}</h1>
+      <h1 className={`font-extrabold text-ph-label ${desktop ? 'text-[22px]' : 'text-[19px]'}`}>{chuDe.ten_chu_de}</h1>
+      <p className={`mt-1 text-ph-label-2 ${desktop ? 'text-[14px]' : 'text-[13px]'}`}>Chọn chuyên đề — vào là học tiếp đúng chỗ em đang dừng.</p>
+      <div className="mt-4 grid gap-3 md:grid-cols-2">
+        {chuDe.chuyenDes.map((cde, i) => {
+          const xong = cde.dangs.filter((d) => d.xong).length
+          const daXongHet = xong === cde.dangs.length
+          const hienTai = dangDangHoc(cde)
+          return (
+            <CardMau key={cde.ma_chuyen_de} tone={TONE_CYCLE[i % TONE_CYCLE.length]} icon={daXongHet ? '✅' : '📖'} ten={cde.ten_chuyen_de} onClick={() => onPick(cde)}>
+              <span className="block text-[12.5px] text-ph-label-2">
+                {daXongHet ? `Đã xong cả ${cde.dangs.length} dạng — luyện thêm được` : `Đã xong ${xong}/${cde.dangs.length} dạng · đang học "${hienTai.ten_dang}"`}
+              </span>
+            </CardMau>
+          )
+        })}
+      </div>
+    </Khung>
+  )
+}
+
+export function ChiTietDangHTD({ dang, dangCungChuyenDe, onLyThuyet, onLuyenTap, onTest, onBack, desktop }: {
+  dang: { ma_dang: string; ten_dang: string; xong: boolean }
+  dangCungChuyenDe: DangHTD[] // toàn bộ dạng của chuyên đề — chỉ để hiện khi bấm "ⓘ", KHÔNG mặc định hiện
+  onLyThuyet: () => void; onLuyenTap: () => void; onTest: () => void; onBack: () => void; desktop?: boolean
+}) {
+  const [xemLoTrinh, setXemLoTrinh] = useState(false)
+  const thuTu = dangCungChuyenDe.findIndex((d) => d.ma_dang === dang.ma_dang) + 1
+  return (
+    <Khung desktop={desktop}>
+      <NutBack onBack={onBack} desktop={desktop} />
+      <div className="flex items-start justify-between gap-2">
+        <h1 className={`font-extrabold text-ph-label ${desktop ? 'text-[20px]' : 'text-[17px]'}`}>{dang.ten_dang}</h1>
+        {dangCungChuyenDe.length > 0 && (
+          <button onClick={() => setXemLoTrinh((v) => !v)} title="Xem lộ trình chuyên đề"
+            className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-ph-label-2/10 text-[13px] font-bold text-ph-label-2">ⓘ</button>
+        )}
+      </div>
+      {thuTu > 0 && <p className="mt-0.5 text-[12px] text-ph-label-2">Dạng {thuTu}/{dangCungChuyenDe.length} trong chuyên đề</p>}
       {dang.xong && <p className="mt-1 text-[12.5px] font-semibold text-emerald-600">✅ Đã có bài test cho dạng này</p>}
+
+      {xemLoTrinh && (
+        <div className="mt-3 flex flex-col gap-1.5 rounded-2xl bg-white p-3 shadow-sm">
+          {dangCungChuyenDe.map((d) => (
+            <div key={d.ma_dang} className={`flex items-center gap-2 rounded-lg px-2 py-1.5 text-[12.5px] ${d.ma_dang === dang.ma_dang ? 'bg-brand/10 font-semibold text-brand' : 'text-ph-label-2'}`}>
+              <span>{d.xong ? '✅' : d.mo ? '📖' : '🔒'}</span>
+              <span className="min-w-0 flex-1 truncate">{d.ten_dang}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
       <div className="mt-5 flex flex-col gap-3">
-        <button onClick={onLyThuyet} className="rounded-2xl bg-white p-4 text-left shadow-sm active:scale-[0.98]">
-          <span className="block text-[15px] font-bold text-ph-label">📖 Đọc lý thuyết</span>
-          <span className="mt-1 block text-[12.5px] text-ph-label-2">Đọc trước khi luyện cho chắc.</span>
-        </button>
-        <button onClick={onLuyenTap} className="rounded-2xl bg-white p-4 text-left shadow-sm active:scale-[0.98]">
-          <span className="block text-[15px] font-bold text-ph-label">🎯 Luyện tập</span>
-          <span className="mt-1 block text-[12.5px] text-ph-label-2">Luyện thoải mái, không giới hạn — không tính vào kết quả học tập.</span>
-        </button>
-        <button onClick={onTest} className="rounded-2xl bg-white p-4 text-left shadow-sm active:scale-[0.98]">
-          <span className="block text-[15px] font-bold text-ph-label">📝 Làm bài Test</span>
-          <span className="mt-1 block text-[12.5px] text-ph-label-2">10 câu — nộp là xong dạng, tính vào kết quả học tập, mở dạng tiếp theo.</span>
-        </button>
+        <CardMau tone="green" icon="📖" ten="Đọc lý thuyết" onClick={onLyThuyet}>
+          <span className="block text-[12.5px] text-ph-label-2">Đọc trước khi luyện cho chắc.</span>
+        </CardMau>
+        <CardMau tone="orange" icon="🎯" ten="Luyện tập" onClick={onLuyenTap}>
+          <span className="block text-[12.5px] text-ph-label-2">Luyện thoải mái, không giới hạn — không tính vào kết quả học tập.</span>
+        </CardMau>
+        <CardMau tone="purple" icon="📝" ten="Làm bài Test" onClick={onTest}>
+          <span className="block text-[12.5px] text-ph-label-2">10 câu — nộp là xong dạng, tính vào kết quả học tập, mở dạng tiếp theo.</span>
+        </CardMau>
       </div>
     </Khung>
   )
@@ -125,13 +194,21 @@ export function LyThuyetHTD({ mon, dang, onBack, desktop }: { mon: string; dang:
       {state === 'dang_tai' && <p className="mt-8 text-center text-[13px] text-ph-label-2">Đang tải…</p>}
       {state === 'loi' && <p className="mt-8 text-center text-[13px] text-ph-red">{err}</p>}
       {state === 'san_sang' && (
-        <div className="mt-4 rounded-2xl bg-white p-4 shadow-sm">
-          {noiDung
-            ? <div className="whitespace-pre-line text-[14px] leading-relaxed text-ph-label"><MathText>{noiDung}</MathText></div>
-            : <p className="text-[13px] text-ph-label-2">Dạng này chưa có lý thuyết soạn sẵn — em xem qua bài test hoặc hỏi thầy cô nhé.</p>}
-          {fileUrl && <a href={fileUrl} target="_blank" rel="noreferrer" className="mt-3 block text-[13px] font-semibold text-brand underline">📎 Xem file đính kèm</a>}
+        <div className="mt-4 overflow-hidden rounded-2xl shadow-sm">
+          <div className="px-4 py-2.5" style={{ background: `linear-gradient(120deg, ${TONE.green.c}, ${TONE.green.c}cc)` }}>
+            <span className="text-[13px] font-bold text-white">📖 Lý thuyết</span>
+          </div>
+          <div className="bg-white p-4">
+            {noiDung
+              ? <div className="whitespace-pre-line text-[14px] leading-relaxed text-ph-label"><MathText>{noiDung}</MathText></div>
+              : <p className="text-[13px] text-ph-label-2">Dạng này chưa có lý thuyết soạn sẵn — em xem qua bài test hoặc hỏi thầy cô nhé.</p>}
+            {fileUrl && <a href={fileUrl} target="_blank" rel="noreferrer" className="mt-3 block text-[13px] font-semibold text-brand underline">📎 Xem file đính kèm</a>}
+          </div>
         </div>
       )}
     </Khung>
   )
 }
+
+export type { ChuDeNhom, ChuyenDeNhom }
+export { dangDangHoc }

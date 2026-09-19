@@ -13238,3 +13238,99 @@ sửa code). Migration `202609191317_botro_chi_mcq.sql` (ĐÃ ÁP): `_kho_dk_mcq
 **Test DB thật:** T107010103 (có form duyệt) → 6/6 câu có form (snapshot ra 4 đáp án) · T109080101, T108020301 (0 MCQ) → lùi TLN 6/6.
 **Việc để đạt 100% MCQ:** duyệt 1786 form chờ (phủ 53 dạng) + sinh form cho 28 dạng còn lại; khi 0-MCQ = 0 thì bỏ nhánh lùi.
 (Sự cố nhỏ: commit a4640a2 lên trước khi DEVLOG/CLAUDE.md được ghi — lệnh chèn CLAUDE.md trượt vì CRLF; bổ sung ở commit này.)
+
+### 19/09 — Nhập kho Hình học (phase Học) K11: "Đường thẳng và mặt phẳng trong không gian" (HH00087)
+
+- Lần đầu nhập cho nhánh "hinh_hoc" (bảng hinh_hoc_bai/hinh_hoc_cum_bai/hinh_hoc_cau_hoi, phase HỌC KIẾN
+  THỨC mới — CEO 16-18/09). Khác Đại: 1 "Bài" = 1 "dạng" (hinh_hoc_bai vừa là Bài vừa đóng vai bản đồ),
+  cụm (hinh_hoc_cum_bai) là tầng phân loại phụ trong Bài. Bảng câu KHÔNG có ten_de_goc/dang_ai_de_xuat/
+  giai_method đầy đủ như dai_cau_hoi (thu gọn hơn) — không dùng lại insertCauBatch được, viết insert
+  riêng (_insert_hinhhoc.mjs) mô phỏng đúng dedup + cấp STT của bản Đại.
+- 6 file PDF thả vào L11/Hình/ (không kèm lệnh rõ ràng lúc đầu — hỏi lại link tài liệu vì tin nhắn đầu
+  không đính kèm gì, cũng không thấy trong Drive-sync). Khi CEO xác nhận đã thả file, tra thấy Bài
+  HH00087 đã có sẵn, và 8 cụm ĐÃ ĐƯỢC TẠO SẴN khớp gần khít 1-1 với tên 6 file — dùng thẳng.
+- Chỉ 5/41 câu THỰC SỰ cần ảnh (đáp án là hình vẽ, hoặc đề chỉ nói "cho hình bên dưới" không tả bằng
+  chữ) — còn lại đủ chữ để giải, theo đúng luật "chữ đủ giải ⇒ ảnh không bắt buộc". Cắt+upload 5 câu đó
+  qua kho_anh.mjs (1 câu 4 hình vẽ tay là đáp án, 1 câu ảnh A/B trong-ngoài mặt phẳng, 1 câu "cho hình
+  bên dưới" không tả bằng lời, 1 câu 4 hình chọn tứ diện, 1 câu 4 hình đếm hình chóp).
+- Bỏ qua 1 câu ("đoạn thẳng nào vẽ sai" theo quy tắc biểu diễn) — nguồn không có đáp án, cần tự suy luận
+  quy ước nét liền/nét đứt từ ảnh mà độ tin cậy không tuyệt đối ⇒ theo §1.5 "thà bỏ trống", không đoán.
+- Lặp lại ĐÚNG lỗi hôm 18/09: bọc cả câu chữ Việt vào 1 cặp \$ ở nhiều lựa chọn (do soạn theo phản xạ cũ).
+  Viết script tự động gỡ bọc (87 lựa chọn) — script tự động lại có bug riêng (coi cả chuỗi nhiều đoạn \$
+  xen kẽ là 1 khối, cắt sai 7 câu) — phát hiện qua bước verify KaTeX lần 2, sửa tay 7 câu đó, verify lại
+  sạch hoàn toàn trước khi ghi DB. Bài học: verify KaTeX phải chạy LẶP LẠI sau mỗi lần sửa tự động, không
+  tin kết quả lần đầu.
+- Dedup: nghi ngờ 2-3 câu lý thuyết cơ bản (mặt phẳng qua 3 điểm, 5 điểm không đồng phẳng...) trùng với
+  17 câu đã có sẵn trong Bài — viết dedup so khoá chuẩn hoá (noi_dung+lua_chon) trước khi insert, kết quả
+  0 trùng thật (khác câu dù cùng chủ đề).
+- Kết quả: 41 câu mới (36 nguon_giai='nguoi' trích nguyên văn lời giải có sẵn, 5 'ai' — các câu đếm
+  mặt/cạnh hình chóp không có lời giải nguồn, tự giải bằng công thức đơn giản, verify chắc chắn). Tổng
+  Bài HH00087: 58 câu / 8 cụm / 0 câu chưa phân cụm. Verify qua browser thật: ảnh phương án A/B hiện đúng
+  trong modal Clone.
+
+## 19/09 — Fix: câu hinh_hoc không hiện ở màn Duyệt
+
+- **Triệu chứng (CEO):** "t chưa thấy hiện lên ở bảng duyệt mà chỉ thấy trong kho" — 41 câu Hình 11
+  (HH00087, phase Học) vừa nhập chỉ thấy ở "Bản đồ kiến thức (Kho)", không thấy ở "Duyệt lời giải AI".
+- **Nguyên nhân:** 2 registry dispatch môn→bảng SỐNG SONG SONG, không đồng bộ:
+  1. `NHANH_CUA_MON`/`khoCuaMon` (src/lib/tailieu.ts) — dùng cho Giáo trình/Kho, đã biết 'hinh_hoc' từ 16/09.
+  2. `KhoMon`/`KHO_MON`/`fn_kho_tbl()` — dùng cho Duyệt/Giải, CHƯA biết 'hinh_hoc' (chỉ toan/khtn/hgt).
+  Chỉ registry (1) được cập nhật khi xây phase Học Hình học — registry (2) bị bỏ sót.
+- **Hỏi CEO** cách xử lý (fix đủ vs vá tạm), CEO chọn "Làm đầy đủ ngay (khó hơn, an toàn hơn)".
+- **Fix (migration 202609191359):**
+  - View `hinh_hoc_ban_do` trỏ vào `hinh_hoc_bai` (bảng này đã kiêm vai trò bản đồ, mỗi Bài = 1 dạng).
+  - Thêm cột `hinh_hoc_cau_hoi`: dang_ai_de_xuat, giai_method, kiem_may, kiem_may_boi, kiem_may_ghi,
+    kiem_may_at, duyet_nguon (+ CHECK duyet_nguon) — khớp shape mà fn_kho_hang_duyet/fn_kho_duyet_cau
+    dùng chung cho mọi nhánh.
+  - `fn_kho_tbl()` thêm case 'hinh_hoc' → 'hinh_hoc'.
+  - src/lib/kho/api.ts: KhoMon/KHO_MON/khoTbls() thêm 'hinh_hoc'.
+- **Side-effect tự gây ra:** thêm 'hinh_hoc' vào KHO_MON làm tab "Chưa có lời giải" (ChuaGiaiTab) cũng
+  lặp qua nhánh này → fn_kho_cau_chua_giai/fn_kho_dem_cau_chua_giai LEFT JOIN cứng bảng
+  `hinh_hoc_cau_hoi_yeu_cau_giai` — bảng này chưa từng tồn tại → lỗi "relation does not exist".
+  **Tự phát hiện lúc verify** (không phải CEO báo), tự xử lý luôn vì mình gây ra.
+- **Fix side-effect (migration 202609191408):** tạo bảng `hinh_hoc_cau_hoi_yeu_cau_giai` mirror y hệt
+  shape LIVE của `dai_cau_hoi_yeu_cau_giai` (đọc từ DB, không chép migration gốc vì đã bị ALTER nhiều
+  lần sau — 24 cột, 2 CHECK, 2 index, RLS + policy la_thanh_vien()). FK trỏ hinh_hoc_cau_hoi(ma_cau).
+  Sửa nốt khoTbls() case 'hinh_hoc': yeuCauGiaiTbl trỏ đúng bảng mới (trước đó tạm trỏ dai, đã sửa).
+- **Verify qua app thật (không chỉ tsc):** Duyệt → "Câu mới chờ duyệt" → chip "Hình học 61" (K11) xuất
+  hiện, mở 1 câu (HH00087001) đề/phương án/lời giải render đúng. Tab "Chưa có lời giải" → chip
+  "Hình học 0", không còn lỗi relation.
+- **Bài học:** thêm 1 nhánh mới (môn/nhánh) vào registry dùng chung phải rà HẾT nơi generic code
+  dispatch qua nó (fn_kho_tbl không chỉ dùng ở Duyệt mà còn ở "chưa có lời giải") — không dừng lại khi
+  case đầu tiên đã chạy được, phải xem hàm sinh SQL còn giả định bảng/cột gì khác chưa tồn tại.
+
+### 19/09 — App HS "Học từ đầu": sửa 4 điểm UX sau khi CEO test bản Phase 1
+
+- **Phản hồi CEO sau khi dùng thử link local (bản Phase 1 vừa build):**
+  1. Sai logic điều hướng — HS chỉ được CHỌN đến tầng chuyên đề, không được thấy/chọn thẳng dạng.
+  2. Bấm "Học từ đầu" phải hiện DANH SÁCH CHỦ ĐỀ trước (tầng trên chuyên đề) → chọn chủ đề → chọn
+     chuyên đề → tự động vào ĐÚNG dạng đang học trong chuyên đề đó (không hiện danh sách dạng). Dạng
+     khoá phải ẨN mặc định; có 1 nút "ⓘ" không nổi bật để ai tò mò bấm mới thấy lộ trình đủ (✅/📖/🔒).
+  3. Card trắng bệch — mọi card phải có header MÀU, tham khảo cách các màn khác trong app đang làm.
+  4. Màn ngoài (HomeHS) đã responsive iPad/laptop nhưng màn TRONG (mọi screen con) thì chưa — sửa hết.
+- **Fix #1+#2 (điều hướng 3 tầng):** mở rộng `htd_lo_trinh(p_mon)` trả thêm `ma_chu_de`/`ten_chu_de`
+  (migration `202609191551`, giữ nguyên chữ ký 1 tham số — không lặp lỗi đổi chữ ký từng dính với
+  `hs_dang_evals`). Client group phẳng→cây bằng `gomCay()` (thuần trình bày, không tính nghiệp vụ —
+  đúng §2.0). Viết lại `HocTuDau.tsx`: `ChonChuDeHTD` (chỉ liệt kê chủ đề) → `ChonChuyenDeHTD` (chỉ
+  liệt kê chuyên đề trong chủ đề đã chọn, kèm "đang học ...") → bấm chuyên đề gọi `dangDangHoc()`
+  (dạng đầu tiên `mo && !xong`, fallback dạng cuối nếu đã xong hết) để nhảy THẲNG vào
+  `ChiTietDangHTD`, không có màn chọn dạng. Nút "ⓘ" (ẩn mặc định, chỉ hiện khi chuyên đề có data) mở
+  panel nhỏ liệt kê toàn bộ dạng trong chuyên đề kèm icon trạng thái, dạng hiện tại tô đậm.
+- **Fix #3 (header màu):** export `TONE`/`HomeTone` từ `HomeHS.tsx` (palette đã có sẵn, dùng lại thay
+  vì bịa theme mới) → viết `CardMau` (header gradient theo tone + icon + tên, thân trắng bên dưới) dùng
+  cho mọi card trong `HocTuDau.tsx` (chủ đề, chuyên đề, 3 nút chức năng Đọc lý thuyết/Luyện tập/Test).
+- **Fix #4 (responsive màn trong):** rà toàn bộ `src/screens/hocsinh/` tìm container cứng
+  `max-w-[430px]`/`max-w-md` chưa có breakpoint `md:`, sửa 11 file (`ThongTinHocTap`, `ThanhTuuHS`,
+  `BaiTapGiaoHS`, `DanhSachHS`, `MayManHS`, `TuLuyenChuDe`, `CaBoTroHS`, `DienOCau`, `DoiMatKhau`,
+  `HocSinhApp` 7 chỗ, `HocTuDau`) theo đúng pattern đã dùng cho `HomeHS.tsx` trước đó (thêm `md:max-w-*`
+  cạnh class cũ, KHÔNG đụng biến `desktop` vì nó phản ánh cấp/khối chứ không phải viewport thật).
+  Loại trừ có chủ đích các modal/bottom-sheet (dialog "Nộp bài" trong `HocSinhApp.tsx`, "kết quả quay"
+  trong `MayManHS.tsx`) — modal nên giữ hẹp dù màn ngoài rộng.
+- **Verify:** browser pane ép viewport 768×1024 (tablet), đi lại đúng luồng chủ đề→chuyên đề→dạng bằng
+  ca HS0716 thật (bổ trợ đuổi đang mở) — xác nhận: chỉ 2 card chủ đề, vào chuyên đề nhảy thẳng đúng
+  dạng đang dở ("Dạng 2/3 trong chuyên đề"), bấm ⓘ hiện đúng 3 dòng ✅/📖(tô đậm)/🔒, `ThongTinHocTap`
+  và các card khác giãn đúng theo `md:max-w-[820px]` không còn kẹt 430px. Console có lỗi `[vite]` cũ
+  (mất export `TONE`/`LoTrinhHTD`) — đối chiếu thứ tự log xác nhận đều là lỗi HMR nhất thời từ lúc đang
+  sửa dở, không phải lỗi ở state hiện tại (đã có screenshot đúng sau đó).
+- **Chưa làm (Phase 2, CEO chưa trả lời có làm tiếp không):** `BoTroDuoiScreen.tsx` (màn TA) vẫn đọc
+  tick tay `day_at` cũ, chưa đọc từ `hoc_tu_dau_dang` để tự đóng case bổ trợ đuổi khi đủ dạng.
