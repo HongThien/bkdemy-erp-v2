@@ -22,7 +22,7 @@ const SCOPE_OPTS: { key: TbScope; ten: string; sub: string }[] = [
   { key: 'ca_nhan', ten: 'Cá nhân',    sub: 'Chỉ PH của 1 HS' },
 ]
 
-const KHOI_OPTS = ['6', '7', '8', '9', '10', '11', '12', '4T', '5T'].map((k) => ({ id: k, label: `Khối ${k}` }))
+const KHOI_OPTS = ['6', '7', '8', '8T', '9', '10', '11', '12', '4T', '5T'].map((k) => ({ id: k, label: `Khối ${k}` }))
 
 const fmtNgay = (iso: string | null) => {
   if (!iso) return '—'
