@@ -705,7 +705,7 @@ export function tinh(noiDung, opts = {}) {
   } catch (e) { return { ok: false, ly_do: e.message } }
 }
 export const texOfValue = texOf
-export { parse, mathOf, ev, solve, canonOf }
+export { parse, mathOf, ev, solve, canonOf, evalRule, DS } // evalRule/DS: mcq-dien.mjs (Điền Ô) áp rule lên BIỂU THỨC CON — thêm 12/09, không đổi hành vi
 
 // ── Main ──────────────────────────────────────────────────────────────────────────────────────────────────────
 import { fileURLToPath } from 'node:url'

@@ -1316,12 +1316,13 @@ khối 6 đã xong, đang chờ duyệt. ĐÃ MERGE + PUSH `main` (96861b7, 11/0
   Tổng tập {x<K} T106010103 (R81-84). Dạng đáp số 1 giá trị đơn (Tìm ƯCLN/BCNN T106040102/202) vẫn đi
   `SPECIAL_DANG`/`parseHuuTi` như cũ.
 - **Tổng khối 6 đã ghi form: ~700 câu qua 12 dạng** (chi tiết từng dạng: DEVLOG 11-12/09). **Đã khảo sát HẾT
-  khối 6 — không còn dạng nào "dễ".** Phần còn lại (T106030401 139 câu "an+b⋮cn+d" · T106020601 44 câu dãy luỹ
-  thừa · T106030102+T106030403 93 câu đáp số "Có/Không" kiểu chứng minh · T106020304 Toán thực tế 39 câu) +
-  GTLN-GTNN/nâng cao khối 7 (deferred từ đầu) **Thùy chốt 12/09: TẤT CẢ thuộc nhóm "TRẮC NGHIỆM TỪNG PHẦN"** —
-  kiến trúc CHƯA THIẾT KẾ (không phải khuôn "1 câu → 4 đáp án nguyên câu" hiện tại), việc lớn cần bàn kỹ trước
-  khi code, KHÔNG tự quyết được. T106010102/T106020101/phần lớn T106010103 hoá ra **ĐÃ LÀ trắc nghiệm gốc**
-  trong kho (`lua_chon` có sẵn) — ngoài phạm vi pipeline này, không phải việc cần làm.
+  khối 6 — không còn dạng nào "dễ" theo khuôn "1 câu → 4 đáp án nguyên câu".** Phần còn lại (T106030401 "an+b⋮cn+d"
+  · T106020601 dãy luỹ thừa · T106030102+T106030403 đáp số "Có/Không" · T106020304 Toán thực tế) + GTLN-GTNN/nâng
+  cao khối 7 **Thùy chốt 12/09: thuộc nhóm "TRẮC NGHIỆM TỪNG PHẦN"** (= Phase 2 Đại của `spec-dien-o.md`, không
+  phải khuôn 4-đáp-án cũ). **⚠ Đính chính: kiến trúc ĐÃ XÂY 12-13/09** ở worktree riêng `mcq-tung-phan` (KHÔNG
+  còn "chưa thiết kế" như ghi lúc 12/09 sáng) — xem mục **"⭐ 12-13/09 — TRẮC NGHIỆM TỪNG PHẦN"** cuối phần ①.
+  T106010102/T106020101/phần lớn T106010103 hoá ra **ĐÃ LÀ trắc nghiệm gốc** trong kho (`lua_chon` có sẵn) —
+  ngoài phạm vi pipeline này, không phải việc cần làm.
 - **UI duyệt** (`TracNghiemAiTab.tsx`): duyệt theo lô 20 câu + nút "Duyệt tất cả trang này" (loại câu sai trước
   bằng checkbox, KHÔNG phải duyệt-từng-câu — CEO 09/09, RPC `fn_mcq_form_duyet_batch`); lời giải kho hiện SẴN
   dưới đề (11/09 tối, trước đó ẩn sau `<details>` phải click). ⚠ Lúc merge lên main gặp 1 bản "duyệt hàng loạt"
@@ -1430,6 +1431,94 @@ worktree chưa merge: 202608151600 · 202609041045 · 202609051251 · 2026090818
 
 **Scope lô đầu = chỉ Phần A trắc nghiệm.** Phần B (Đúng-sai — có `menh_de` jsonb, `loai_cau='dung_sai'`), C (TLN, `loai_cau='tra_loi_ngan'`), D (Tự luận, `loai_cau='tu_luan'`) chưa xử — làm sau khi CEO thấy chất lượng lô đầu OK.
 
+
+### ⭐ 12-13/09 — TRẮC NGHIỆM TỪNG PHẦN (Điền Ô Phase 2 Đại) — kiến trúc ĐÃ XÂY, worktree `mcq-tung-phan`, 4/9 dạng ĐÃ GHI DB
+
+**Đây CHÍNH LÀ Phase 2 (Đại tính toán) của `spec-dien-o.md`** (CEO chốt 09/09, chưa xây lúc đó) — không phải khái
+niệm mới, xem cầu nối `spec-mcq-tung-phan.md`. Đính chính dòng cũ ở mục "08–09/09 (A)" phía trên: kiến trúc **KHÔNG
+còn** "chưa thiết kế" — đã build xong ở worktree riêng `.claude/worktrees/mcq-tung-phan` (nhánh `worktree-mcq-tung-phan`).
+
+**Quy trình CEO chốt 12/09 (khác quy trình pool TN mục A)**: với MỖI dạng tự luận, CTO đề xuất CHỖ CHIA (ô nào đục,
+phương án sai gì) → CEO duyệt mẫu 10 câu → mới chạy cả dạng → verify → ghi (`da_duyet=false`). KHÔNG sinh+ghi cả
+dạng rồi mới hỏi (nhóm Toán thực tế dưới đây lỡ làm ngược thứ tự — chấp nhận vì spec đã ghi "100% máy" từ trước;
+từ dạng GTLN/GTNN trở đi tuân đúng quy trình).
+
+**⭐ CEO chốt kiến trúc lưu ô (12/09 tối): LƯU HẾT mọi chỗ có thể điền, KHÔNG cố định 3-4 ô/câu.** Lý do Thùy nêu:
+"giết nhầm còn hơn bỏ sót... sau này còn biết học sinh hay sai ở đâu". Mỗi ô gắn nhãn `vi_tri` (tên vị trí trong
+khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 ô/câu (`202609122158_dien_o_luu_het_o_vi_tri.sql`).
+**Lúc GIAO BÀI mới chọn tổ hợp 3 ô/câu (mặc định), tối đa 4** — xoay vòng theo HS/lần làm để mọi vị trí đều được đo
+(việc chọn-lúc-giao CHƯA LÀM, xem "Còn treo" cuối mục).
+
+**Hạ tầng dùng chung 3 dạng dưới đây:**
+- Bảng `dai_cau_form_dien` (mig `202609121423`) — `buoc`/`o` giống `hinh_form_dien` nhưng khoá `ma_cau` (không phải
+  `cach_giai_id`), registry `_kho_form_dien_tbl`. Trigger kiểm cấu trúc + trigger thu hồi khi `dai_cau_hoi.loi_giai`/`dap_an` đổi.
+- `scripts/lib/dien-buoc.mjs` — bộ đọc CHUNG tách lời giải theo dấu `=` trong từng đoạn `$…$` (giữ offset tuyệt đối
+  để đục lỗ đúng chỗ), dùng khi dạng KHÔNG có khuôn riêng.
+- `scripts/mcq-dien.mjs` — CLI `--sinh/--verify/--xem/--ghi` (khuôn theo `scripts/mcq-auto.mjs` cũ). Dạng có khuôn
+  riêng (map `KHUON` trong file) override bộ đọc chung bằng hàm ở `scripts/lib/dien-khuon-<ten-dang>.mjs`.
+- **⭐ Mã rule Điền Ô dùng TIỀN TỐ RIÊNG `D01`, `D02`... — KHÔNG nối tiếp dãy `R` của form TN.** Lý do: 12/09 đụng
+  mã rule THẬT với luồng `form-tn` (khối 8-9) **2 lần trong 1 ngày** (đặt `R89-R99` rồi lại `R125-R129`) vì cả 2
+  luồng cùng `select max(ma)+1` song song. Tách hẳn không gian mã (`D%` cho `mcq-dien`, `R%` cho `mcq-auto`) là
+  cách duy nhất chắc chắn không đụng độ khi 2+ luồng chạy song song — xem bài học ②.
+
+**A. Toán thực tế (T106020304 39 câu + T107010205 66 câu) — ĐÃ GHI DB, `da_duyet=false`**
+- Ô = kết quả 1 phép tính con trong lời giải (theo `dien-buoc.mjs` chung). 5 rule mới `R100-R104` (quên chia %,
+  lấy nhầm % bù, nhầm cộng/trừ, lệch 1 số 0, quên nhân số lượng — seed TRƯỚC KHI chốt đổi sang tiền tố `D` nên vẫn
+  mang mã `R`, không đổi lại vì đã ghi DB dùng rồi).
+- Kết quả: 91/105 câu, 252 ô, verify 0 FAIL. 14 câu bỏ (lời giải kho viết toán ngoài `$…$`, hoặc giá trị ô trùng
+  số có sẵn trong đề).
+
+**B. GTLN/GTNN có căn/|…|/(…)² (`077022220401`, 87 câu) — 3 vòng duyệt mẫu, DB ĐANG GIỮ VÒNG 1 (83 câu, CŨ)**
+- Khuôn riêng `scripts/lib/dien-khuon-gtln.mjs`. Ô kiểu MỚI `quan_he` (HS chọn CHIỀU bất đẳng thức + vế phải,
+  không phải một số).
+- **Vòng 1** (CEO duyệt): ô ở dòng đảo chiều + dòng kết luận + x/y ở dấu bằng. 83 câu, 200 ô, **ĐÃ GHI DB**
+  (rule `D01-D06`).
+- **Vòng 2** (CEO góp ý thêm 2 lần: "dòng đầu tiên |2x-3|≥0 cần 1 câu chỗ này" + "cả mấy dòng biến đổi nữa … còn
+  A≥17 thì bỏ đi vì nó tư duy gì đâu"): thêm ô ở dòng đầu (tính chất không âm, rule `D07/D08`) + MỌI dòng biến đổi
+  ở giữa (rule `D09-D11`, tái dùng `D01/D03/D06`), **bỏ hẳn ô kết luận**. Kết quả 86/87 câu, 325 ô, verify 0 FAIL
+  nhưng **CHƯA GHI** — muốn thay 83 câu vòng 1 bằng 86 câu vòng 2 phải `xoa_at` (kho rác) 83 bản cũ rồi ghi lại,
+  **đang chờ CEO gật xoá** (Luật xoá CLAUDE.md).
+
+**C. "an+b ⋮ cn+d" (`T106030401`, 139 câu) — ĐÃ GHI DB (`da_duyet=false`)**
+- Khuôn riêng `scripts/lib/dien-khuon-ancnd.mjs` — **KHÔNG dùng AST của `mcq-auto.mjs`** (không biểu diễn đa
+  thức/biến), viết bộ giải SỐ HỌC riêng bằng BigInt. Đáp số mọi ô = MÁY TỰ TÍNH từ (a,b,c,d) đọc từ đề; lời giải
+  kho chỉ dùng để XÁC NHẬN vị trí đục đúng chỗ (nhân chứng thứ hai).
+- 4 vị trí/câu: `so_ben_ngoai` (hằng số dư sau tách — CEO chỉ đích danh "hay sai đặc biệt ở chỗ này") · `tap_uoc`
+  (Ư(r), tập SỐ `{...}`) · `menh_de_uoc` (mệnh đề "denomExpr ∈ U(r)" — biểu thức MẪU, tách riêng khỏi `tap_uoc`;
+  CEO chỉ thêm 13/09: "x-1 thuộc ước của 4") · `tap_n` (tập nghiệm cuối, sau "thử lại"). Rule `D12-D25` + `D38-D40`.
+- **Phát hiện toán học**: hệ số tử `a` CHIA HẾT hệ số mẫu `c` ⇒ tách chính xác (k=a/c), không nghiệm ngoại lai,
+  không cần thử lại; không chia hết ⇒ phải nhân 2 vế với `c`, có thể sinh nghiệm ngoại lai, kho làm "thử lại".
+  Máy tính CẢ HAI công thức rồi so với số thật trong lời giải để chọn đúng cách — không suy diễn theo cách kho làm.
+- Kết quả: **139/139 câu (100%)**, 512 ô, verify 0 FAIL, vị trí đúng đều 128. Câu biên r=1 (Ư(1)={1}, ban đầu bỏ
+  vì không đủ distractor cho `tap_uoc`) được VỚT LẠI nhờ thêm vị trí `menh_de_uoc` độc lập.
+
+**D. Dãy hiệu tích `T107010501` (50 câu) — ĐÃ GHI DB (`da_duyet=false`), 5 khuôn con A/B/C/D/E**
+- Khuôn riêng `scripts/lib/dien-khuon-hieutich.mjs`, kỹ thuật `1/(k(k+S)) = (1/S)(1/k − 1/(k+S))`. Dispatcher 1
+  hàm `timUngVienHieuTich` phân biệt theo cấu trúc đề (có ẩn x trong mẫu? có "..."? x là hệ số ngoài?):
+  **A** tính tổng mẫu cách đều S≥1 (2 ô `tach_day`/`rut_gon`, đại diện 1 dòng cho cả chuỗi dài) · **B** tìm x ở
+  mẫu hạng cuối "x(x+S)", chuỗi VÔ HẠN có "..." · **C** như A nhưng x là HỆ SỐ NHÂN NGOÀI cả tổng · **D** "liệt kê
+  từng cặp" nối bằng ";" (kho viết từng đẳng thức 3 vế RIÊNG cho mỗi cặp, đục 1 dòng đại diện) · **E** như D nhưng
+  ẩn x, chuỗi liệt kê HỮU HẠN không "..." — mỗi dòng liệt kê là 1 Ô RIÊNG (không đục đại diện), vì Thùy chỉ trực
+  tiếp trên ảnh chụp lời giải 049: "để 3 ô trống ở 3 biểu thức biến đổi đấy là được mà, đoạn tách ra thành 2 phân
+  số trừ đi nhau ấy". Rule `D41-D48` (khuôn E dùng lại nguyên D41/D46/D48, không cần rule mới).
+- Kết quả: **50/50 câu (100%)**, 101 ô, verify 0 FAIL, phân bố đúng đều {A:25,B:25,C:25,D:26}.
+- T107010502 (10 câu, mẫu KHÔNG cách đều đơn giản — cấu trúc khác hẳn) chưa đụng, ngoài phạm vi dạng này.
+
+**Còn treo / việc kế tiếp:**
+- CEO gật ghi: vòng 2 GTLN/GTNN (thay 83→86 câu, đang chờ gật XOÁ 83 câu vòng 1 theo Luật xoá).
+- D3 (chưa làm, cả 3 dạng): tab "Điền ô AI" cho Đại (RPC `fn_dien_form_cho_duyet` hiện chỉ đọc `hinh_form_dien`,
+  chưa nối `dai_cau_form_dien`) · component HS hiện bước LẦN LƯỢT (hiện cả bài thì dòng "Vậy... khi x=..." cuối
+  câu lộ đáp án các ô trước) · logic CHỌN TỔ HỢP ô lúc giao bài (3/tối đa 4, xoay vòng theo `vi_tri`) · snapshot
+  `bai_test_cau.form_dien_id` đang FK sang `hinh_form_dien`, cần cột riêng hoặc bỏ FK cho Đại.
+- 4 dạng còn lại trong hàng đợi `spec-mcq-tung-phan.md` chưa đụng: dãy luỹ thừa `T106020601` (44 câu, CEO chỉ
+  "sai dấu khi trừ 2 dãy cho nhau" — 33/44 câu đã làm ở lần trước "đục cả cụm", 11 câu "đan dấu + bước nhảy ≥2"
+  còn để dành, mẫu 33 câu đã gửi CEO nhưng CHƯA có "ghi đi") · dãy tích `T107010508` (6 câu, CEO chỉ "khó nhất ở
+  đoạn tách thành tích 2 số rồi tách 2 dãy" — ít câu, định viết tay như pilot Hình chứ không đáng viết máy) ·
+  T107010502 (10 câu, xem mục D trên) · "Có/Không" `T106030102+T106030403` (93 câu, CTO CHƯA BIẾT CHIA — đã báo
+  CEO, chờ CEO làm mẫu hoặc bỏ) · bất đẳng thức dãy `T107010504/505/506/507` (67 câu, lớp 7, CEO chưa chỉ chỗ sai
+  cụ thể).
+
+
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
 - **⭐⭐ QUY TRÌNH thiết kế RULE LỖI cho form trắc nghiệm (Thùy chốt 09/09, sau khi CTO code trước-hỏi-sau 1 lần) —
@@ -1457,6 +1546,27 @@ worktree chưa merge: 202608151600 · 202609041045 · 202609051251 · 2026090818
   kiểu chọn-tất-cả-trong-danh-sách — những ca này CẦN bàn TRƯỚC vì bản chất "câu hỏi trắc nghiệm 4 đáp án cho nó"
   còn chưa rõ, không phải vì thiếu rule lỗi). Không đổi (1)(2)(4) — vẫn đọc lời giải trước, vẫn liệt kê điểm rẽ,
   vẫn chỉ ghi sau khi tính đúng+verify sạch — chỉ đổi AI QUYẾT rule cho dạng RÕ RÀNG.
+- **⭐⭐ Quy trình cho ĐIỀN Ô/"trắc nghiệm từng phần" (Thùy chốt 12/09, khác quy trình rule-form-TN ở trên):** với
+  MỖI dạng tự luận mới, CTO đề xuất CHỖ CHIA (ô nào đục, đục theo cách nào) TRƯỚC → làm mẫu 10 câu → CEO duyệt →
+  MỚI chạy cả dạng → verify → ghi. Đã có 1 lần làm ngược (nhóm Toán thực tế, sinh+ghi 91 câu trước rồi mới hỏi) —
+  không sai kỹ thuật (spec đã ghi rõ "100% máy" nên không cần hỏi cách làm) nhưng đi trước quy trình; từ dạng sau
+  (GTLN/GTNN) làm đúng thứ tự thì CEO góp ý 2-3 vòng NHỎ trên MẪU (rẻ, sửa code rồi làm mẫu lại) thay vì phải xoá-ghi-
+  lại cả trăm câu đã vào DB (đắt, dính Luật xoá). **Mẫu 10 câu phải TRẢI ĐỦ các khuôn con** (khảo sát trước để biết
+  có mấy khuôn) — mẫu ngẫu nhiên 10 câu cùng 1 khuôn thì CEO không thấy được ca khó.
+- **⭐ Mã rule PHẢI TÁCH KHÔNG GIAN theo pipeline khi 2+ luồng chạy song song — đừng đua `select max(ma)+1`.**
+  12/09: luồng Điền Ô (`mcq-dien.mjs`) và luồng form-TN (`mcq-auto.mjs`, khối 8-9) CÙNG ghi vào 1 bảng
+  `dai_mcq_rule`, cùng ngày, đụng mã rule THẬT **2 LẦN TRONG 1 GIỜ** (đặt `R89-R93` lúc max là `R88` thì 25 phút
+  sau luồng kia đã chiếm tới `R99`; đặt tiếp `R125-R130` thì cũng bị chiếm gần hết trong giờ tiếp theo) — vì cả 2
+  luồng đều query `max(ma)` NGAY LÚC ĐỊNH ĐẶT, không có khoá/đồng bộ giữa 2 phiên. **Chỉ 1 cách chắc chắn: mỗi
+  pipeline độc lập dùng 1 TIỀN TỐ CHỮ CÁI riêng** (đã đổi Điền Ô sang `D%`, form-TN giữ `R%`) — không phải khoảng
+  số riêng (khoảng số vẫn đụng nếu 2 luồng cùng nhảy tới đó), không phải "hỏi nhau trước khi đặt" (chậm, dễ quên).
+  Tác dụng phụ: mã 3 chữ số (`R100+`) làm `select max(ma)` (so CHUỖI) trả sai — `order by length(ma) desc, ma desc`.
+- **⭐ Khoanh VỊ TRÍ đục ô trong lời giải phải lấy ĐÚNG TOKEN, không phải cả câu chứa token đó.** Bug thật (khuôn
+  `an+b⋮cn+d`, 12/09): quy tắc "tìm dòng chứa số r rồi đục" match theo REGEX TRÊN CẢ ĐOẠN (`"3 \vdots (x-1)"`) rồi
+  gán biến `seg` = TOÀN BỘ đoạn khớp thay vì tách riêng con số bên trong — HS sẽ thấy cả câu bị đục thay vì đúng 1
+  chữ số. Verify KHÔNG bắt được lỗi này (vì "ghép lại ra đúng nguyên văn" vẫn đúng — ghép cả câu vào chỗ trống thì
+  vẫn ra đúng câu gốc!) — chỉ lộ ra khi ĐỌC BẢN IN. Bài học: verify kiểm được "khớp lại đúng nguyên văn" nhưng
+  KHÔNG kiểm được "đục đúng CHỖ nên đục" — việc đó phải tự đọc lại bản `--xem` trước khi tin.
 - **⭐ Quy trình chạy pool MCQ mới (đúc kết 11-12/09, lặp lại ~10 lần): list → auto (debug 1 câu mẫu) → nếu tỉ lệ
   "chỉ tìm được N<3 distractor" cao (>20-30%) → debug câu bỏ cụ thể xem THIẾU RULE GÌ (không phải bug) → thêm 1-2
   rule "dự phòng" (luôn tính được, không phụ thuộc đặc điểm số cụ thể — vd R61/R71/R72/R84) qua MIGRATION MỚI
