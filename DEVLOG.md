@@ -13224,3 +13224,17 @@ Guard `!cap2` chặn cấp 1 refetch `maymanCoLuot`. Nhưng HomeCap1 có ô May 
 - CÒN TREO (chưa làm, cần CEO quyết): 4 màn ingest đang `for` qua từng trang rồi `catch` NGOÀI vòng
   lặp ⇒ trang thứ 13 hỏng là **mất trắng cả 12 trang đã bóc xong** + tiền đã tiêu. Đây mới là thiệt
   hại thật của RECITATION. Sửa = giữ trang thành công, báo danh sách trang hỏng để nhập lại riêng.
+
+## 2026-09-19 — Bổ trợ (yếu/bù/đuổi) trên app chỉ dùng MCQ (Thùy chốt) — áp MCQ-first cho bổ trợ yếu + đo nguồn câu
+
+**Hiện trạng luồng:** chỉ BỔ TRỢ YẾU có bài làm trên app HS (luyện lô 3 câu · test cuối ca · retest) — cả 3 qua `_btyeu_chon_cau`.
+Bù = ET giấy TA chấm (BoTroScreen); Đuổi = tài liệu giấy (`bt_grades`) ⇒ chưa có gì để đổi; luật ghi vào CLAUDE.md §7 (cạnh spec-mcq).
+**Đo trước khi siết (`scripts/_diag_mcq_nguon_botro.mjs`):** 101 case Toán đang mở · 122 dạng: câu online cũ 4011 → MCQ 1282; **chỉ 41
+dạng có MCQ, 81 dạng = 0 MCQ** (K6:5 · K7:15 · K8:16 · K9:36 · K10:1 · K11:8). Trong 81: 53 dạng có ≥3 form_tn CHỜ DUYỆT (tổng 1786
+form), 28 dạng chưa sinh form. Bài bổ trợ đã phát thực tế: 72/88 câu là trả lời ngắn.
+**Quyết định kỹ thuật:** siết cứng MCQ-only = 2/3 dạng đang bổ trợ hết câu, ca đang chạy gãy ⇒ làm MCQ-FIRST: phạm vi (dạng[+cụm]) có
+≥1 câu MCQ ⇒ CHỈ MCQ (kể cả lượt lặp khi làm hết); 0 MCQ ⇒ tạm lùi điều kiện online cũ, tự chuyển MCQ khi form được duyệt (không cần
+sửa code). Migration `202609191317_botro_chi_mcq.sql` (ĐÃ ÁP): `_kho_dk_mcq_sql` (nguồn điều kiện MCQ duy nhất) + `_btyeu_chon_cau` mới.
+**Test DB thật:** T107010103 (có form duyệt) → 6/6 câu có form (snapshot ra 4 đáp án) · T109080101, T108020301 (0 MCQ) → lùi TLN 6/6.
+**Việc để đạt 100% MCQ:** duyệt 1786 form chờ (phủ 53 dạng) + sinh form cho 28 dạng còn lại; khi 0-MCQ = 0 thì bỏ nhánh lùi.
+(Sự cố nhỏ: commit a4640a2 lên trước khi DEVLOG/CLAUDE.md được ghi — lệnh chèn CLAUDE.md trượt vì CRLF; bổ sung ở commit này.)
