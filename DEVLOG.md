@@ -13411,3 +13411,17 @@ sửa code). Migration `202609191317_botro_chi_mcq.sql` (ĐÃ ÁP): `_kho_dk_mcq
   `pdfRender.ts`). **CHƯA click-through được màn TA thật** — phiên trình duyệt hiện đăng nhập tài khoản
   HS0716 (dùng để test app HS), `ops.html` chặn "Tài khoản này là học sinh — app chỉ dành cho nhân sự
   vận hành", không có sẵn tài khoản nhân sự để tự đăng nhập kiểm tra UI trực tiếp.
+
+## 2026-09-19 — App TA: chỉnh kết quả câu TRẢ LỜI NGẮN trong ca bổ trợ yếu (Thùy: "em làm đúng mà hệ thống vẫn tính sai")
+
+Bối cảnh: câu tự luận/chứng minh bị biến thành trả lời ngắn → em gõ không khớp đáp án dù làm đúng (HS0520 Lê Hà Khoa, dạng T107010507
+0 MCQ → ra TLN; key "$5 < A < 10$"). TA ngồi cạnh em nên được tích lại.
+- Migration `..._btyeu_ta_sua_ket_qua_tln.sql` (ĐÃ ÁP): bảng `bai_lam_cau_sua_log` (cũ→mới, nhân sự, lúc nào; RLS member read) ·
+  `fn_btyeu_ta_cau_tln(buoi)` = câu TLN em ĐÃ trả lời trong ca (luyện + test cuối ca + retest, qua bai_test.buoi_hoc_id) ·
+  `fn_btyeu_ta_sua_ket_qua(bai_lam_cau, dung, ly_do)` — chỉ nhân sự · chỉ `tra_loi_ngan` · chỉ bài bo_tro/bo_tro_test/retest · ghi
+  log rồi update verdict/diem, `cham_boi='manual'`, **giữ `cham_at`** (mastery theo lúc LÀM, không theo lúc sửa). Trigger retest sẵn
+  có tự tính lại điểm retest. MCQ KHÔNG cho chỉnh (máy chấm chắc chắn).
+- `CaBoTroTA.tsx`: khối "✍ Câu trả lời ngắn — chỉnh kết quả" giữa Luyện và Đóng ca (chỉ hiện khi có câu TLN đã trả lời): đề (MathText) ·
+  em trả lời · đáp án · 2 nút Tích ĐÚNG / Tích SAI · nhãn "đã chỉnh tay"; poll 10s cùng nhịp ca; chỉnh xong vá tại chỗ + nạp lại
+  tỉ lệ đúng theo dạng/cụm. tsc sạch. Kiểm dữ liệu thật (read-only): ca tối nay của HS0520 có 1 câu TLN `wrong` sẽ hiện ở khối này.
+- Chưa làm (cân nhắc sau): đưa đáp án em gõ vào `tln_cache` khi TA tích đúng — với bài chứng minh chữ gõ mỗi em mỗi khác, ít lợi.

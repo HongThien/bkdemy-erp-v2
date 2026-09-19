@@ -114,3 +114,21 @@ export async function lichBoTroCuaToi(): Promise<LichBoTro[]> {
   if (error) throw error
   return (data as LichBoTro[]) ?? []
 }
+
+// ── TA CHỈNH KẾT QUẢ CÂU TRẢ LỜI NGẮN (Thùy 19/09) — tự luận biến thành trả lời ngắn khó gõ khớp đáp án ⇒ em đúng mà máy chấm sai.
+// Chỉ câu tra_loi_ngan của bài thuộc ca bổ trợ yếu; mọi lần chỉnh có log (bai_lam_cau_sua_log). Migration btyeu_ta_sua_ket_qua_tln.
+export type CauTlnTA = {
+  bai_lam_cau_id: string; loai_bai: 'bo_tro' | 'bo_tro_test' | 'retest'; ma_dang: string | null; ma_cau: string | null; thu_tu: number
+  noi_dung: string | null; anh_de: string | null; dap_an_key: unknown; loi_giai: string | null
+  dap_an_hs: unknown; verdict: 'correct' | 'partial' | 'wrong'; cham_boi: string | null; cham_at: string | null; da_sua: boolean
+}
+export async function cauTlnCuaCa(buoiId: string): Promise<CauTlnTA[]> {
+  const { data, error } = await supabase.rpc('fn_btyeu_ta_cau_tln', { p_buoi: buoiId })
+  if (error) throw error
+  return (data as CauTlnTA[]) ?? []
+}
+export async function suaKetQuaTln(baiLamCauId: string, dung: boolean, lyDo?: string | null): Promise<{ verdict: 'correct' | 'wrong'; doi: boolean }> {
+  const { data, error } = await supabase.rpc('fn_btyeu_ta_sua_ket_qua', { p_bai_lam_cau: baiLamCauId, p_dung: dung, p_ly_do: lyDo ?? null })
+  if (error) throw error
+  return data as { verdict: 'correct' | 'wrong'; doi: boolean }
+}
