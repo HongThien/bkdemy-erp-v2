@@ -13351,3 +13351,10 @@ sửa code). Migration `202609191317_botro_chi_mcq.sql` (ĐÃ ÁP): `_kho_dk_mcq
   nguyên tắc "đầu có màu, thân trắng" của `CardMau`, chỉ đổi tỉ lệ khung sang gần vuông. Sửa `CardBox`:
   chia 2 vùng trong cùng 1 khối bo góc — vùng trên (flex-1, nền gradient tone) chứa icon to, vùng dưới
   (nền trắng) chứa tên + caption ngắn. Verify lại desktop + mobile, đúng yêu cầu.
+- **CEO chốt luôn thành QUY ƯỚC chung (kèm 2 ảnh minh hoạ), yêu cầu ghi vào CLAUDE.md:** đúng 2 kiểu
+  card — (1) header màu + nội dung trắng, khung PHẢI gần vuông (cấm dẹt); (2) chỉ header không nội dung
+  riêng thì làm như lưới 6 ô ngoài Home (nền pastel, không tách khối trắng). Đã thêm bullet vào CLAUDE.md
+  §6 (RBAC/UX), trỏ thẳng `CardMau`/`CardBox` (kiểu 1) và lưới `cards` trong `HomeHS.tsx` (kiểu 2) làm mẫu.
+  Nhân tiện sửa luôn 2 card CÒN DẸT bị lấy làm ảnh minh hoạ (chủ đề `ChonChuDeHTD`, chuyên đề
+  `ChonChuyenDeHTD`) — thêm prop `square` cho `CardMau` (ép `aspect-[0.95]`, nội dung `line-clamp-4`),
+  đổi lưới từ 1(mobile)/2(md) sang 2(mobile)/3(md) cho vừa cỡ box nhỏ gọn.

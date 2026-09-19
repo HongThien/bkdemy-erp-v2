@@ -33,18 +33,19 @@ function NutBack({ onBack, desktop }: { onBack: () => void; desktop?: boolean })
   )
 }
 // Card header-màu dùng chung 3 màn — icon/emoji trên dải màu đặc (tone.c), thân trắng bên dưới.
-function CardMau({ tone, icon, ten, children, onClick, disabled }: {
-  tone: HomeTone; icon: string; ten: string; children?: React.ReactNode; onClick?: () => void; disabled?: boolean
+// `square`: ép khung gần vuông (CEO 19/09 — cấm kiểu "dẹt" khi có nội dung, xem CLAUDE.md §6).
+function CardMau({ tone, icon, ten, children, onClick, disabled, square }: {
+  tone: HomeTone; icon: string; ten: string; children?: React.ReactNode; onClick?: () => void; disabled?: boolean; square?: boolean
 }) {
   const t = TONE[tone]
   return (
     <button onClick={onClick} disabled={disabled}
-      className={`overflow-hidden rounded-[22px] text-left shadow-sm transition ${disabled ? 'opacity-50' : 'active:scale-[0.98]'}`}>
-      <div className="flex items-center gap-2.5 px-4 py-3" style={{ background: `linear-gradient(120deg, ${t.c}, ${t.c}cc)` }}>
+      className={`overflow-hidden rounded-[22px] text-left shadow-sm transition ${square ? 'flex aspect-[0.95] flex-col' : ''} ${disabled ? 'opacity-50' : 'active:scale-[0.98]'}`}>
+      <div className={`flex items-center gap-2.5 px-4 py-3 ${square ? 'shrink-0' : ''}`} style={{ background: `linear-gradient(120deg, ${t.c}, ${t.c}cc)` }}>
         <span className="text-[20px]">{icon}</span>
         <span className="min-w-0 flex-1 truncate text-[14.5px] font-bold text-white">{ten}</span>
       </div>
-      {children && <div className="bg-white px-4 py-3">{children}</div>}
+      {children && <div className={`bg-white px-4 py-3 ${square ? 'flex-1 overflow-hidden' : ''}`}>{children}</div>}
     </button>
   )
 }
@@ -110,13 +111,13 @@ export function ChonChuDeHTD({ mon, onPick, onBack, desktop }: { mon: string; on
         <p className="mt-8 text-center text-[13px] text-ph-label-2">Em chưa có lộ trình bổ trợ đuổi nào cần học.</p>
       )}
       {state === 'san_sang' && cay.length > 0 && (
-        <div className={`mt-4 grid gap-3 ${desktop ? 'md:grid-cols-2' : 'md:grid-cols-2'}`}>
+        <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3">
           {cay.map((cd, i) => {
             const tongDang = cd.chuyenDes.reduce((s, c) => s + c.dangs.length, 0)
             const xongDang = cd.chuyenDes.reduce((s, c) => s + c.dangs.filter((d) => d.xong).length, 0)
             return (
-              <CardMau key={cd.ma_chu_de} tone={TONE_CYCLE[i % TONE_CYCLE.length]} icon="📘" ten={cd.ten_chu_de} onClick={() => onPick(cd)}>
-                <span className="block text-[12.5px] text-ph-label-2">{cd.chuyenDes.length} chuyên đề · đã xong {xongDang}/{tongDang} dạng</span>
+              <CardMau key={cd.ma_chu_de} square tone={TONE_CYCLE[i % TONE_CYCLE.length]} icon="📘" ten={cd.ten_chu_de} onClick={() => onPick(cd)}>
+                <span className="line-clamp-4 block text-[12.5px] text-ph-label-2">{cd.chuyenDes.length} chuyên đề · đã xong {xongDang}/{tongDang} dạng</span>
               </CardMau>
             )
           })}
@@ -132,14 +133,14 @@ export function ChonChuyenDeHTD({ chuDe, onPick, onBack, desktop }: { chuDe: Chu
       <NutBack onBack={onBack} desktop={desktop} />
       <h1 className={`font-extrabold text-ph-label ${desktop ? 'text-[22px]' : 'text-[19px]'}`}>{chuDe.ten_chu_de}</h1>
       <p className={`mt-1 text-ph-label-2 ${desktop ? 'text-[14px]' : 'text-[13px]'}`}>Chọn chuyên đề — vào là học tiếp đúng chỗ em đang dừng.</p>
-      <div className="mt-4 grid gap-3 md:grid-cols-2">
+      <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3">
         {chuDe.chuyenDes.map((cde, i) => {
           const xong = cde.dangs.filter((d) => d.xong).length
           const daXongHet = xong === cde.dangs.length
           const hienTai = dangDangHoc(cde)
           return (
-            <CardMau key={cde.ma_chuyen_de} tone={TONE_CYCLE[i % TONE_CYCLE.length]} icon={daXongHet ? '✅' : '📖'} ten={cde.ten_chuyen_de} onClick={() => onPick(cde)}>
-              <span className="block text-[12.5px] text-ph-label-2">
+            <CardMau key={cde.ma_chuyen_de} square tone={TONE_CYCLE[i % TONE_CYCLE.length]} icon={daXongHet ? '✅' : '📖'} ten={cde.ten_chuyen_de} onClick={() => onPick(cde)}>
+              <span className="line-clamp-4 block text-[12.5px] text-ph-label-2">
                 {daXongHet ? `Đã xong cả ${cde.dangs.length} dạng — luyện thêm được` : `Đã xong ${xong}/${cde.dangs.length} dạng · đang học "${hienTai.ten_dang}"`}
               </span>
             </CardMau>

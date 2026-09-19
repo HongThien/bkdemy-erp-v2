@@ -240,6 +240,18 @@
 - **Delegation (Principle 3):** AI → TA → GV → manager → CEO — giao việc cho **cấp thấp nhất làm được tốt**.
 - UX: full CRUD; feedback ~2s sau lưu; không `alert()` cho success.
   Nút hành động chính chỉ disable khi **thiếu data**, không disable vì state UI (`!saved`).
+- **⭐ Quy ước card/box (CEO chốt 19/09, sau đợt sửa app HS "Học từ đầu"):** đúng 2 kiểu, không bịa kiểu
+  thứ 3, không trộn tuỳ hứng trong cùng 1 màn:
+  - **Kiểu 1 — HEADER màu + NỘI DUNG trắng:** dùng khi card có thêm dòng mô tả/trạng thái bên dưới
+    tiêu đề. Dải màu đặc nằm TRÊN (chữ trắng, thường kèm icon), thân TRẮNG bên dưới chứa nội dung.
+    **Khung phải GẦN VUÔNG — cấm làm "dẹt"** (thanh ngang thấp trải hết chiều rộng, đã bị chê xấu 1 lần).
+    Mẫu: `CardMau`/`CardBox` trong `src/screens/hocsinh/HocTuDau.tsx`.
+  - **Kiểu 2 — CHỈ HEADER, không có khối nội dung riêng:** dùng khi card chỉ cần icon + tiêu đề + tối đa
+    1 dòng phụ ngắn (không đủ nội dung để tách khối trắng riêng) — làm giống lưới 6 ô ngoài Home:
+    nền pastel nhạt (`tone.bg`), icon trong khối bo tròn riêng (`tone.ill`), chevron góc dưới phải,
+    badge số ở góc trên phải nếu có. Mẫu: lưới `cards` trong `src/screens/hocsinh/HomeHS.tsx`.
+  - Chọn kiểu theo **nội dung thật sự có bao nhiêu** (có dòng mô tả/trạng thái → kiểu 1; chỉ điều
+    hướng đơn giản → kiểu 2), không phải theo sở thích lúc code.
 
 ---
 
