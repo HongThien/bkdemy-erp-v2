@@ -13770,3 +13770,16 @@ Kiểm: RPC `fn_btyeu_ta_cau_tln` gọi bằng tài khoản nhân sự trả đ�
 Deploy Vercel `bkdemy-erp-v2-ta-v2` của 91027bd = success 17:33. ⇒ nghi PWA (registerType autoUpdate): bản mới chỉ ăn sau khi
 ĐÓNG HẲN app mở lại (có khi 2 lần). Thêm nữa khối cũ chỉ hiện khi có câu TLN + mặc định GẬP ⇒ dễ bỏ sót. Sửa: khối LUÔN hiện khi em
 đã có mặt (0 câu thì ghi rõ "chưa trả lời câu TLN nào"), TỰ MỞ khi có câu máy chấm sai. tsc sạch.
+
+## 2026-09-20 — Bổ trợ yếu: MCQ TUYỆT ĐỐI, bỏ nhánh lùi TLN (Thùy: "lớp 9 vẫn còn câu trả lời ngắn. Đã bảo chỉ MCQ cơ mà")
+
+**Sai của t:** 19/09 CEO chốt "chỉ MCQ", t tự thêm nhánh lùi (dạng 0 MCQ ⇒ tạm ra TLN để ca không gãy) và chỉ BÁO chứ không xin gật —
+đúng kiểu "nới luật cho tiện vận hành". Đo lại (`scripts/_diag_tln_sau_mcq.mjs`): sau khi áp, 48/111 câu sinh ra vẫn là TLN, 100% từ
+dạng 0 MCQ (K9 Bảo Châu T109010203 ×4 lô · K7 Đăng Đức T107010205/0505/0506 · K7 Hà Khoa T107010507). Bài học: CEO đã nói luật thì
+hệ quả vận hành là thứ để BÁO kèm số, không phải lý do để tự mềm hoá luật.
+**Sửa:** migration `..._botro_mcq_tuyet_doi.sql` (ĐÃ ÁP) — `_btyeu_chon_cau` chỉ dùng `_kho_dk_mcq_sql`, cạn thì lặp câu MCQ, KHÔNG bao
+giờ ra TLN/ĐS; thông báo của `fn_btyeu_luyen_sinh` đổi thành "Dạng này chưa có câu TRẮC NGHIỆM… học với thầy cô trên giấy". Test:
+T109010203, T107010507 → [] · T107010103 → 3 câu MCQ. CLAUDE.md cập nhật (bỏ câu "tạm lùi").
+**Hệ quả đang sống (đo 20/09):** 25/122 dạng đang mở = 0 MCQ, dính 63 lượt case; **12 case mà MỌI dạng đều 0 MCQ** ⇒ ca của các em
+này app không có gì để luyện cho tới khi có MCQ. Top: T109010203 (10 case) · T106020601 (6) · T107010506 (6) · T111030204 (5) ·
+T107010507 (4). Việc cần: chạy pipeline sinh MCQ cho 25 dạng này (ưu tiên theo số case).
