@@ -41,34 +41,16 @@ function CardMau({ tone, icon, ten, children, onClick, disabled, square }: {
   return (
     <button onClick={onClick} disabled={disabled}
       className={`overflow-hidden rounded-[22px] text-left shadow-sm transition ${square ? 'flex aspect-[0.95] flex-col' : ''} ${disabled ? 'opacity-50' : 'active:scale-[0.98]'}`}>
-      <div className={`flex items-center gap-2.5 px-4 py-3 ${square ? 'shrink-0' : ''}`} style={{ background: `linear-gradient(120deg, ${t.c}, ${t.c}cc)` }}>
-        <span className="text-[20px]">{icon}</span>
-        <span className="min-w-0 flex-1 truncate text-[14.5px] font-bold text-white">{ten}</span>
+      <div className={`flex items-center ${square ? 'gap-1.5 px-2.5 py-2 shrink-0' : 'gap-2.5 px-4 py-3'}`} style={{ background: `linear-gradient(120deg, ${t.c}, ${t.c}cc)` }}>
+        <span className={square ? 'shrink-0 text-[15px]' : 'text-[20px]'}>{icon}</span>
+        <span className={`min-w-0 flex-1 font-bold text-white ${square ? 'line-clamp-2 text-[11.5px] leading-tight' : 'truncate text-[14.5px]'}`}>{ten}</span>
       </div>
       {children && <div className={`bg-white px-4 py-3 ${square ? 'flex-1 overflow-hidden' : ''}`}>{children}</div>}
     </button>
   )
 }
-// Card dạng BOX (gần vuông) — dùng cho lưới lựa chọn 1 hàng (3 chức năng của dạng).
-// Vẫn giữ NGUYÊN TẮC header-màu/thân-trắng của CardMau (không tô kín 1 màu cả khối) — chỉ đổi
-// tỉ lệ khung từ "thanh ngang dài" sang "gần vuông": phần màu trên chứa icon, thân trắng chứa chữ.
-function CardBox({ tone, icon, ten, sub, onClick, disabled }: {
-  tone: HomeTone; icon: string; ten: string; sub?: string; onClick?: () => void; disabled?: boolean
-}) {
-  const t = TONE[tone]
-  return (
-    <button onClick={onClick} disabled={disabled}
-      className={`flex aspect-[0.9] flex-col overflow-hidden rounded-[20px] shadow-sm transition ${disabled ? 'opacity-50' : 'active:scale-[0.96]'}`}>
-      <div className="flex flex-1 items-center justify-center" style={{ background: `linear-gradient(150deg, ${t.c}, ${t.c}cc)` }}>
-        <span className="text-[30px] leading-none">{icon}</span>
-      </div>
-      <div className="bg-white px-2 py-2.5 text-center">
-        <span className="block text-[13px] font-bold leading-tight text-ph-label">{ten}</span>
-        {sub && <span className="mt-0.5 block text-[10.5px] leading-tight text-ph-label-2">{sub}</span>}
-      </div>
-    </button>
-  )
-}
+// (CardBox riêng cho lưới 3 chức năng đã BỎ — 19/09 CEO chê header quá to so với card khác.
+//  Giờ dùng CHUNG CardMau(square) như card chủ đề/chuyên đề — header nhỏ gọn nhất quán toàn màn.)
 
 // ── Gom phẳng → cây chủ đề → chuyên đề (thuần trình bày, không tính nghiệp vụ) ──
 type ChuyenDeNhom = { ma_chuyen_de: string; ten_chuyen_de: string; dangs: DangHTD[] }
@@ -183,9 +165,15 @@ export function ChiTietDangHTD({ dang, dangCungChuyenDe, onLyThuyet, onLuyenTap,
       )}
 
       <div className="mt-5 grid grid-cols-3 gap-3">
-        <CardBox tone="green" icon="📖" ten="Đọc lý thuyết" sub="Đọc trước cho chắc" onClick={onLyThuyet} />
-        <CardBox tone="orange" icon="🎯" ten="Luyện tập" sub="Không giới hạn" onClick={onLuyenTap} />
-        <CardBox tone="purple" icon="📝" ten="Làm bài Test" sub="10 câu · tính KQ" onClick={onTest} />
+        <CardMau square tone="green" icon="📖" ten="Đọc lý thuyết" onClick={onLyThuyet}>
+          <span className="block text-[11px] leading-tight text-ph-label-2">Đọc trước cho chắc</span>
+        </CardMau>
+        <CardMau square tone="orange" icon="🎯" ten="Luyện tập" onClick={onLuyenTap}>
+          <span className="block text-[11px] leading-tight text-ph-label-2">Không giới hạn</span>
+        </CardMau>
+        <CardMau square tone="purple" icon="📝" ten="Làm bài Test" onClick={onTest}>
+          <span className="block text-[11px] leading-tight text-ph-label-2">10 câu · tính KQ</span>
+        </CardMau>
       </div>
     </Khung>
   )

@@ -13871,3 +13871,24 @@ T107010507 (4). Việc cần: chạy pipeline sinh MCQ cho 25 dạng này (ưu t
   khớp trạng thái DB (336/336 HS đã có tài khoản từ đợt provision tay lúc trước trong ngày), không
   lỗi console. Chưa có case HS THẬT đang thiếu để test nhánh "tạo mới >0" qua UI — đã tin ở chỗ dùng
   đúng cùng 1 hàm/pattern đã chạy được cho nhân sự (`capTaiKhoan`) và đã test qua script CLI lúc sáng.
+
+### 19/09 — HocTuDau: sửa lại 3 card chức năng — header quá to so với card khác (CEO, kèm ảnh)
+
+- **Phản hồi:** `CardBox` riêng (đợt trước, dựng cho lưới 3 chức năng) có phần màu chiếm ~70% chiều
+  cao card (icon to giữa khối màu) — lệch hẳn với card chủ đề/chuyên đề bên ngoài (header chỉ là dải
+  mỏng icon+chữ, thân trắng chiếm phần lớn). CEO: "giống với mấy cái card bên ngoài đi... header có
+  màu, bé chứ sao lại to thế này".
+- **Fix — bỏ hẳn `CardBox`, dùng lại `CardMau square`** (đúng cấu trúc card chủ đề/chuyên đề) cho cả
+  3 nút Đọc lý thuyết/Luyện tập/Làm bài Test — 1 component DUY NHẤT cho "Kiểu 1" trong toàn màn thay
+  vì 2 biến thể lệch nhau.
+- **Bẫy phát sinh:** header gốc (`text-[14.5px] truncate`) thiết kế cho card RỘNG (2 cột, ~350px) —
+  đặt vào lưới 3 CỘT hẹp (mobile ~110px/card) thì "Đọc lý thuyết"/"Làm bài Test" bị cắt cụt còn
+  "Đọc…"/"Là…". Sửa: `square` giảm cỡ chữ header (11.5px), icon nhỏ hơn (15px), bỏ `truncate` đổi
+  sang `line-clamp-2` — chữ dài thì XUỐNG DÒNG thay vì cắt.
+- **Verify:** desktop (header nhỏ gọn khớp card ngoài) + mobile 375px (chữ xuống dòng "Đọc lý/thuyết",
+  "Làm bài/Test" sạch, không cắt cụt). tsc sạch (trừ lỗi sẵn có `pdfRender.ts`).
+- **Sự cố nhỏ lúc verify (không phải do code):** bẫy trình duyệt tự động ở màn HS dài (nhiều card cuộn)
+  — toạ độ click bị lệch hàng sau khi trang dài hơn viewport khai báo, click 2 lần liên tiếp vô tình
+  mở 1 bài BTVN đã có sẵn kết quả cũ (12/17 đúng) của chính HS0716 — CHỈ XEM, không bấm nộp/chọn đáp án
+  nào nên không tạo bản ghi mới. Bài học thao tác: màn dài cuộn được thì ép chiều cao viewport = chiều
+  cao trang (vd 375×1500) rồi mới click theo toạ độ, tránh suy đoán vị trí trên ảnh chụp dài hơn khai báo.
