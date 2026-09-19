@@ -48,6 +48,22 @@ function CardMau({ tone, icon, ten, children, onClick, disabled }: {
     </button>
   )
 }
+// Card dạng BOX (gần vuông, màu kín cả khối) — dùng cho lưới lựa chọn 1 hàng (3 chức năng của dạng).
+// KHÁC CardMau (dải màu chỉ ở header, thân trắng) — box này tránh kiểu "thanh dài" bị chê xấu.
+function CardBox({ tone, icon, ten, sub, onClick, disabled }: {
+  tone: HomeTone; icon: string; ten: string; sub?: string; onClick?: () => void; disabled?: boolean
+}) {
+  const t = TONE[tone]
+  return (
+    <button onClick={onClick} disabled={disabled}
+      className={`flex aspect-[0.92] flex-col items-center justify-center gap-1.5 rounded-[20px] px-2 py-3 text-center shadow-sm transition ${disabled ? 'opacity-50' : 'active:scale-[0.96]'}`}
+      style={{ background: `linear-gradient(150deg, ${t.c}, ${t.c}cc)` }}>
+      <span className="text-[26px] leading-none">{icon}</span>
+      <span className="text-[13px] font-bold leading-tight text-white">{ten}</span>
+      {sub && <span className="text-[10.5px] leading-tight text-white/85">{sub}</span>}
+    </button>
+  )
+}
 
 // ── Gom phẳng → cây chủ đề → chuyên đề (thuần trình bày, không tính nghiệp vụ) ──
 type ChuyenDeNhom = { ma_chuyen_de: string; ten_chuyen_de: string; dangs: DangHTD[] }
@@ -161,16 +177,10 @@ export function ChiTietDangHTD({ dang, dangCungChuyenDe, onLyThuyet, onLuyenTap,
         </div>
       )}
 
-      <div className="mt-5 flex flex-col gap-3">
-        <CardMau tone="green" icon="📖" ten="Đọc lý thuyết" onClick={onLyThuyet}>
-          <span className="block text-[12.5px] text-ph-label-2">Đọc trước khi luyện cho chắc.</span>
-        </CardMau>
-        <CardMau tone="orange" icon="🎯" ten="Luyện tập" onClick={onLuyenTap}>
-          <span className="block text-[12.5px] text-ph-label-2">Luyện thoải mái, không giới hạn — không tính vào kết quả học tập.</span>
-        </CardMau>
-        <CardMau tone="purple" icon="📝" ten="Làm bài Test" onClick={onTest}>
-          <span className="block text-[12.5px] text-ph-label-2">10 câu — nộp là xong dạng, tính vào kết quả học tập, mở dạng tiếp theo.</span>
-        </CardMau>
+      <div className="mt-5 grid grid-cols-3 gap-3">
+        <CardBox tone="green" icon="📖" ten="Đọc lý thuyết" sub="Đọc trước cho chắc" onClick={onLyThuyet} />
+        <CardBox tone="orange" icon="🎯" ten="Luyện tập" sub="Không giới hạn" onClick={onLuyenTap} />
+        <CardBox tone="purple" icon="📝" ten="Làm bài Test" sub="10 câu · tính KQ" onClick={onTest} />
       </div>
     </Khung>
   )

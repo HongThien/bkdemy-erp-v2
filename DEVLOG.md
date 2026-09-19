@@ -13334,3 +13334,16 @@ sửa code). Migration `202609191317_botro_chi_mcq.sql` (ĐÃ ÁP): `_kho_dk_mcq
   sửa dở, không phải lỗi ở state hiện tại (đã có screenshot đúng sau đó).
 - **Chưa làm (Phase 2, CEO chưa trả lời có làm tiếp không):** `BoTroDuoiScreen.tsx` (màn TA) vẫn đọc
   tick tay `day_at` cũ, chưa đọc từ `hoc_tu_dau_dang` để tự đóng case bổ trợ đuổi khi đủ dạng.
+
+### 19/09 — App HS "Học từ đầu": sửa tiếp — 3 nút chức năng thành BOX vuông thay vì thanh dài
+
+- **Phản hồi CEO (kèm ảnh):** 3 `CardMau` xếp dọc (Đọc lý thuyết/Luyện tập/Làm bài Test) là thanh
+  ngang trải hết chiều rộng — "làm dài như thế này rất xấu"; "card tích chọn luôn ưu tiên dạng Box —
+  hình chữ nhật gần vuông".
+- **Fix:** thêm `CardBox` (khác `CardMau` — màu kín cả khối thay vì chỉ dải màu ở header, `aspect-[0.92]`
+  gần vuông, icon to + tên + 1 dòng phụ ngắn căn giữa) dùng riêng cho 3 nút chức năng, xếp
+  `grid grid-cols-3 gap-3` thay vì `flex flex-col`. Rút gọn caption dài (vd "Luyện thoải mái, không giới
+  hạn — không tính vào kết quả học tập.") thành cụm ngắn dưới tên ("Không giới hạn") vì box không đủ chỗ
+  cho câu dài — không mất thông tin cốt lõi, chi tiết đầy đủ HS vẫn thấy khi vào từng màn con.
+  Giữ nguyên `CardMau` (dải màu header) cho lưới chủ đề/chuyên đề — 2 cột đã đủ gọn, không bị chê.
+- **Verify:** browser pane cả desktop và mobile (375×812) — 3 box vuông đều, vừa 1 hàng, không tràn.
