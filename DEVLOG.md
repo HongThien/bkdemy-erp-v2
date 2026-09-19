@@ -13425,3 +13425,71 @@ Bối cảnh: câu tự luận/chứng minh bị biến thành trả lời ngắ
   em trả lời · đáp án · 2 nút Tích ĐÚNG / Tích SAI · nhãn "đã chỉnh tay"; poll 10s cùng nhịp ca; chỉnh xong vá tại chỗ + nạp lại
   tỉ lệ đúng theo dạng/cụm. tsc sạch. Kiểm dữ liệu thật (read-only): ca tối nay của HS0520 có 1 câu TLN `wrong` sẽ hiện ở khối này.
 - Chưa làm (cân nhắc sau): đưa đáp án em gõ vào `tln_cache` khi TA tích đúng — với bài chứng minh chữ gõ mỗi em mỗi khác, ít lợi.
+
+## 19/09 — Nhập kho: Hình bình hành khối 8T (HH00090)
+
+- **Nguồn:** `L8T/Hình/Hình bình hành_Đề.pdf` (Vũ Hữu Bình, Nâng cao & Phát triển Toán 8,
+  §5 Hình bình hành, câu 47–57). File có ĐỀ và LỜI GIẢI nằm ở 2 vị trí khác nhau trong cùng
+  1 PDF (đề ở trang "Bài tập" §5, lời giải ở trang "Hướng dẫn giải" §5 xuất hiện lại sau đó,
+  xen giữa là lý thuyết + bài tập §6 Đối xứng tâm không liên quan) — nối theo SỐ THỨ TỰ câu
+  (47↔47, 48↔48, ...), không theo vị trí trang. Đã đọc kỹ 2 vị trí, đối chiếu đúng số câu 47-57
+  trước khi build JSON (không đoán theo thứ tự xuất hiện).
+- **Bảng đích:** `hinh_hoc_bai` đã có sẵn `HH00090 = Hình bình hành, khối 8T` (dạng = bài,
+  giống cấu trúc L11 tuần trước) — không cần tạo dạng mới.
+- **Luồng A (co_giai) — trích nguyên văn**, không tự giải: 11 câu chứng minh hình học thuần
+  tự luận (loai_cau='tu_luan', dap_an=null, lời giải đầy đủ trong loi_giai). `hinh_hoc` KHÔNG
+  có trong SUBJECTS của `_kho_insert.mjs` (shape khác dai/hgt/khtn — không có cột ten_de_goc/
+  ai_de_xuat_at/dap_an_ai) nên viết insert riêng (`_insert_hbh8t.mjs`, đã xoá sau khi chạy),
+  mimic đúng logic dedup (so noi_dung chuẩn hoá) + cấp STT tuần tự (advisory lock) của
+  `_kho_insert.mjs`. Tương tự phải tự log `nhap_kho_log` + move file thủ công (script tạm)
+  vì `nhap_kho.mjs done` cũng chặn subject lạ.
+- **Kết quả:** 11 câu mới HH00090001–011, không câu nào trùng kho. Không gán cụm (nguồn không
+  có phân nhóm rõ theo kỹ thuật chứng minh, tránh bịa cụm — §1.5 "thà bỏ trống còn hơn đánh sai").
+- **Verify:** query `$` cân bằng + không có tiếng Việt lọt trong `$...$` (script tạm) → sạch.
+  Verify qua app thật: Duyệt → "Câu mới chờ duyệt" → khối 8T tăng 0→11, mở batch thấy cả 11 câu
+  render đúng (KaTeX ra "△", "\widehat", subscript, độ, phân số — không rớt raw LaTeX).
+- **Bài học:** khi nguồn có "đề riêng, đáp án riêng" trong CÙNG 1 file, đừng giả định đề và lời
+  giải liền kề nhau theo thứ tự đọc trang — phải xác nhận khớp theo số thứ tự bài, đặc biệt khi
+  giữa 2 khối đề/giải có xen 1 chủ đề khác (ở đây là §6 Đối xứng tâm chen giữa §5's đề và §5's
+  giải trong cùng file).
+
+## 19/09 — Nhập kho: tiếp Chương I Tứ giác khối 8T (Đối xứng tâm/HCN/Hình thoi/Hình vuông) + gắn ảnh
+
+- **CEO nhắc "m ko cắt hình hử"** sau lượt nhập Hình bình hành (11 câu) — đúng, lượt đó bỏ qua ảnh vì
+  đánh giá "chữ đủ giải". CEO muốn có ảnh cho câu hình học kèm hình vẽ tên điểm cụ thể (khác quy ước
+  "chữ đủ ⇒ ảnh không bắt buộc" áp cho câu MINH HOẠ thuần).
+- **File mới `L8T/Hình/Đề.pdf`** (3.2MB, 22 trang) — tiếp nối `Hình bình hành_Đề.pdf`: đề (Bài tập,
+  trang 1-9) rồi lời giải (trang 10-22, lặp lại đúng cấu trúc "đề riêng đáp án riêng" đã cảnh báo — nối
+  theo SỐ THỨ TỰ câu 58→94, không theo vị trí trang). Bao trùm 4 dạng đã có sẵn trong `hinh_hoc_bai`
+  cho khối 8T: Đối xứng tâm (HH00094), Hình chữ nhật (HH00091), Hình thoi (HH00092), Hình vuông (HH00093).
+  **Chương II (Đa giác, câu 95+) KHÔNG nhập** — chưa có dạng/bài tương ứng trong kho, tạo mới là quyết
+  định khác (thêm canonical knowledge), không tự quyết.
+- **37 câu mới** (58-94, trừ câu 73 không có hình vì là câu trả lời thuần chữ "Xác định dạng tứ giác").
+  Do `hinh_hoc` không có trong SUBJECTS của `_kho_insert.mjs`, viết script riêng
+  `_insert_hcn_thoi_vuong_dxt.mjs` (đã xoá) mimic dedup + cấp STT theo TỪNG dạng riêng trong 1 transaction.
+- **Cắt ảnh 38 hình (Hình 102-139)** bằng `kho_anh.mjs` (cat verify bằng Read trước khi up — vài hình
+  bị cắt cụt lúc đầu (thiếu điểm D/B ở mép), phải nới bbox và crop lại — không upload khi chưa xác nhận
+  đủ điểm). Gắn vào `anh_dap_an` (hình nằm trong LỜI GIẢI, không phải đề) bằng cách parse "(h.NNN"
+  ở đầu `loi_giai` → khớp URL. Gắn nốt Hình 102 (câu 57, HH00090011) còn thiếu từ lượt trước.
+- **CEO tự cắt ảnh song song** cho 8/11 câu Hình bình hành (47-56) qua màn Sửa trong lúc tôi làm —
+  phát hiện qua counter "chờ duyệt" tụt dần theo thời gian thực, không phải lỗi dữ liệu.
+- **Verify:** DB — 48 câu tổng khối 8T (11+11+7+15+4), 47/48 có `anh_dap_an` (câu 73 đúng là ngoại lệ).
+  `$` cân bằng, không tiếng Việt lọt trong `$...$`. Verify qua app: chip "Khối 8T · 40 câu chờ duyệt"
+  khớp đúng 48 - 8 (CEO đã duyệt) = 40.
+- **Bài học:** khi CEO nói "tự cắt" giữa lúc đang làm — dừng NGAY, không cố hoàn thành lô đang cắt rồi
+  mới dừng (đã dừng đúng lúc, nhưng suýt tiếp tục "cho xong việc"). Ảnh đã cắt+upload trước đó (102-139)
+  không bỏ đi — verify lại rồi tận dụng khi CEO xác nhận "up lên đi", tránh làm hai lần.
+
+### 19/09 — Provision tài khoản Auth cho 9 HS mới (CEO: "lập tài khoản cho tất cả học sinh mới")
+
+- Dry-check trước (chỉ đọc `hoc_sinh`/`tai_khoan` qua service role, không ghi) — 336 HS `dang_hoc`,
+  327 đã có tài khoản, **9 chưa có**: HS0718 (K9), HS0719 (K5), HS0720 (K4), HS0721 (K4), HS0722 (K7),
+  HS0723 (K7), HS0724 (K6), HS0725 (K8), HS0726 (K11).
+- Chạy `node scripts/provision_hs_auth.mjs` (script sẵn có, idempotent — tự bỏ qua HS đã có TK, không
+  cần cờ `--write` gì thêm vì bản thân nó không có dry-run mode, chỉ SKIP theo đối chiếu `tai_khoan`).
+  Kết quả: **9 tạo · 327 bỏ qua · 0 lỗi**. Email `<ma_hs>@hs.bkdemy.local`, PIN = mã HS (mặc định).
+  Re-check lại: 336/336 HS đã có tài khoản.
+- **Chưa làm (cờ riêng, không nằm trong yêu cầu "lập tài khoản"):** `hs_buoc_doi_mk.mjs` gắn
+  `must_change_password` — CHỈ áp cấp 3 (K10-12) theo thiết kế sẵn có. HS0726 (K11) vừa tạo thuộc diện
+  này, cần chạy `node scripts/hs_buoc_doi_mk.mjs --write` (hoặc dry-run trước) nếu muốn bắt buộc đổi PIN
+  đoán-được trước khi làm bài — CHƯA chạy, để CEO quyết có cần ngay không.
