@@ -1123,31 +1123,73 @@ function thinkingCfgOf(model: string, think?: number): any {
   if (!isGemini3(model)) return { thinkingBudget: budget }
   return { thinkingLevel: budget >= 4096 ? 'high' : 'low' }
 }
-export async function callGeminiJson(prompt: string, opts?: { model?: string; files?: GeminiFile[]; think?: number; schema?: any }): Promise<string> {
-  const key = import.meta.env.VITE_GEMINI_KEY as string | undefined
-  if (!key) throw new Error('Chưa có VITE_GEMINI_KEY trong .env.local → luồng AUTO chưa bật. Dùng MANUAL hoặc thêm key.')
-  const model = opts?.model || (import.meta.env.VITE_GEMINI_MODEL as string | undefined) || 'gemini-2.5-flash'
-  const parts: any[] = [{ text: prompt }]
-  for (const f of opts?.files ?? []) parts.push({ inline_data: { mime_type: f.mimeType, data: f.dataBase64 } })
-  // responseSchema (constrained decoding) = ép JSON hợp lệ + tự escape → hết lỗi "Bad escaped"/"Expected , or }"
-  // do LaTeX 1-backslash hay " chưa escape (clone/batch/lý-thuyết hay dính). Caller truyền schema theo shape.
-  const genCfg: any = { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: thinkingCfgOf(model, opts?.think) }
-  if (opts?.schema) genCfg.responseSchema = opts.schema
+// ── RECITATION — lỗi Gemini CHẶN OUTPUT vì nó khớp nguyên văn dữ liệu huấn luyện ────────────
+// Ta bóc NGUYÊN VĂN trang sách/đề thi ⇒ đúng thứ bộ lọc này sinh ra để chặn. `finishReason:'RECITATION'`,
+// `content` RỖNG, HTTP vẫn 200 — nên nó KHÔNG phải lỗi mạng, retry y hệt thường cũng ra y hệt.
+// Cách Google khuyến nghị (ai.google.dev/gemini-api/docs/troubleshooting): "make prompt / context as
+// unique as possible and use a higher temperature". Nên retry phải ĐỔI ĐIỀU KIỆN: nâng temperature dần
+// + thêm 1 câu salt làm ngữ cảnh khác đi. Hết lượt thì báo rõ cách người dùng tự gỡ, đừng để
+// "Gemini trả rỗng (RECITATION)" — người đọc không biết phải làm gì.
+// ⚠ CHƯA verify được với chính file gây lỗi của CEO (không repro được bằng input tự nghĩ) — đây là
+// áp đúng hướng dẫn hãng, không phải đã đo thắng. Lần sau dính, xem `citationMetadata` log ở console.
+const RECITATION_TEMPS = [undefined, 1.4, 1.9] // lần 1 để mặc định, sau đó nâng dần
+const RECITATION_SALT = '\n\nGhi chú xử lý (không in ra kết quả): chỉ trích xuất đúng nội dung trong ảnh đính kèm, không lấy từ trí nhớ.'
+function loiRecitation(model: string): Error {
+  return new Error(
+    `Gemini CHẶN kết quả (RECITATION) — nó nhận ra nội dung trùng nguyên văn tài liệu đã học nên không xuất. ` +
+    `Đã thử lại ${RECITATION_TEMPS.length} lần với temperature cao dần, vẫn bị chặn. Cách gỡ: ` +
+    `(1) cắt nhỏ — mỗi lần 1 trang / nửa trang thay vì cả file; ` +
+    `(2) đổi model sang ${model.includes('lite') ? 'Flash' : 'Flash-Lite'}; ` +
+    `(3) nếu vẫn chặn thì nhập tay trang đó. Đây là bộ lọc bản quyền của Google, không phải lỗi kho.`,
+  )
+}
+// Gọi 1 lần + ĐẾM TIỀN. Tách riêng vì retry RECITATION phải tính tiền TỪNG LẦN: lần bị chặn vẫn bị
+// tính input token (ảnh là phần đắt nhất), không ghi nhận = đồng hồ báo thiếu tiền thật đã tiêu.
+async function geminiOnce(model: string, key: string, parts: any[], genCfg: any) {
   const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ contents: [{ parts }], generationConfig: genCfg }),
   })
   if (!res.ok) throw new Error(`Gemini API lỗi ${res.status}: ${(await res.text()).slice(0, 300)}`)
   const data = await res.json()
-  // Soi chi phí từng call ngay tại console: prompt/output/THINKING token.
-  const u = data?.usageMetadata
-  if (u) console.info(`[gemini ${model}] tokens — in:${u.promptTokenCount ?? 0} out:${u.candidatesTokenCount ?? 0} think:${u.thoughtsTokenCount ?? 0}`)
-  recordUsage({ in: u?.promptTokenCount ?? 0, out: u?.candidatesTokenCount ?? 0, think: u?.thoughtsTokenCount ?? 0 }, model)
+  const u = data?.usageMetadata ?? {}
+  const usage: GeminiUsage = { in: u.promptTokenCount ?? 0, out: u.candidatesTokenCount ?? 0, think: u.thoughtsTokenCount ?? 0 }
+  console.info(`[gemini ${model}] tokens — in:${usage.in} out:${usage.out} think:${usage.think}`)
+  recordUsage(usage, model)
   const cand = data?.candidates?.[0]
-  const txt: string = (cand?.content?.parts ?? []).map((p: any) => p.text ?? '').join('')
-  if (cand?.finishReason === 'MAX_TOKENS') throw new Error('AI bị CẮT do output quá dài (JSON dở) → giảm "Số biến thể" hoặc cho input ngắn hơn rồi thử lại.')
-  if (!txt.trim()) throw new Error(`Gemini trả rỗng${cand?.finishReason ? ` (lý do: ${cand.finishReason})` : ''}.`)
-  return txt
+  const text: string = (cand?.content?.parts ?? []).map((p: any) => p.text ?? '').join('')
+  // citationMetadata = Google chỉ đích danh nguồn nó cho là bị chép — manh mối DUY NHẤT để chẩn đoán.
+  if (cand?.citationMetadata) console.warn('[gemini citationMetadata]', JSON.stringify(cand.citationMetadata).slice(0, 600))
+  return { text, finish: cand?.finishReason as string | undefined, usage }
+}
+// Chạy có retry khi bị RECITATION. MAX_TOKENS / rỗng vì lý do khác thì KHÔNG retry (retry vô ích, chỉ tốn tiền).
+async function geminiVoiRetry(model: string, key: string, basePrompt: string, files: GeminiFile[], genCfg: any, loiMaxTokens: string) {
+  let last: { text: string; finish?: string; usage: GeminiUsage } | null = null
+  for (let i = 0; i < RECITATION_TEMPS.length; i++) {
+    const prompt = i === 0 ? basePrompt : basePrompt + RECITATION_SALT
+    const parts: any[] = [{ text: prompt }]
+    for (const f of files) parts.push({ inline_data: { mime_type: f.mimeType, data: f.dataBase64 } })
+    const cfg = RECITATION_TEMPS[i] === undefined ? genCfg : { ...genCfg, temperature: RECITATION_TEMPS[i] }
+    last = await geminiOnce(model, key, parts, cfg)
+    if (last.finish === 'MAX_TOKENS') throw new Error(loiMaxTokens)
+    if (last.text.trim()) return last
+    if (last.finish !== 'RECITATION') break // rỗng vì lý do khác (SAFETY, OTHER…) → retry không cứu được
+    console.warn(`[gemini] RECITATION lần ${i + 1}/${RECITATION_TEMPS.length} — thử lại với temperature cao hơn`)
+  }
+  if (last?.finish === 'RECITATION') throw loiRecitation(model)
+  throw new Error(`Gemini trả rỗng${last?.finish ? ` (lý do: ${last.finish})` : ''}.`)
+}
+export async function callGeminiJson(prompt: string, opts?: { model?: string; files?: GeminiFile[]; think?: number; schema?: any }): Promise<string> {
+  const key = import.meta.env.VITE_GEMINI_KEY as string | undefined
+  if (!key) throw new Error('Chưa có VITE_GEMINI_KEY trong .env.local → luồng AUTO chưa bật. Dùng MANUAL hoặc thêm key.')
+  const model = opts?.model || (import.meta.env.VITE_GEMINI_MODEL as string | undefined) || 'gemini-2.5-flash'
+  // responseSchema (constrained decoding) = ép JSON hợp lệ + tự escape → hết lỗi "Bad escaped"/"Expected , or }"
+  // do LaTeX 1-backslash hay " chưa escape (clone/batch/lý-thuyết hay dính). Caller truyền schema theo shape.
+  const genCfg: any = { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: thinkingCfgOf(model, opts?.think) }
+  if (opts?.schema) genCfg.responseSchema = opts.schema
+  const r = await geminiVoiRetry(model, key, prompt, opts?.files ?? [], genCfg,
+    'AI bị CẮT do output quá dài (JSON dở) → giảm "Số biến thể" hoặc cho input ngắn hơn rồi thử lại.')
+  return r.text
 }
 
 // ── SPIKE Phase 2 (ingest): gọi Gemini trả KÈM token usage (đo chi phí) + prompt dò câu+bbox hình ──
@@ -1157,24 +1199,11 @@ export async function callGeminiRich(prompt: string, opts?: { model?: string; fi
   const key = import.meta.env.VITE_GEMINI_KEY as string | undefined
   if (!key) throw new Error('Chưa có VITE_GEMINI_KEY trong .env.local.')
   const model = opts?.model || 'gemini-2.5-flash'
-  const parts: any[] = [{ text: prompt }]
-  for (const f of opts?.files ?? []) parts.push({ inline_data: { mime_type: f.mimeType, data: f.dataBase64 } })
   const genCfg: any = { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: thinkingCfgOf(model, opts?.think) }
   if (opts?.schema) genCfg.responseSchema = opts.schema
-  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ contents: [{ parts }], generationConfig: genCfg }),
-  })
-  if (!res.ok) throw new Error(`Gemini API lỗi ${res.status}: ${(await res.text()).slice(0, 300)}`)
-  const data = await res.json()
-  const u = data?.usageMetadata ?? {}
-  const cand = data?.candidates?.[0]
-  const text: string = (cand?.content?.parts ?? []).map((p: any) => p.text ?? '').join('')
-  if (cand?.finishReason === 'MAX_TOKENS') throw new Error('AI bị CẮT (JSON dở) — trang quá dày, thử trang ngắn hơn / ít câu hơn.')
-  if (!text.trim()) throw new Error(`Gemini trả rỗng${cand?.finishReason ? ` (${cand.finishReason})` : ''}.`)
-  const usage: GeminiUsage = { in: u.promptTokenCount ?? 0, out: u.candidatesTokenCount ?? 0, think: u.thoughtsTokenCount ?? 0 }
-  recordUsage(usage, model)
-  return { text, usage }
+  const r = await geminiVoiRetry(model, key, prompt, opts?.files ?? [], genCfg,
+    'AI bị CẮT (JSON dở) — trang quá dày, thử trang ngắn hơn / ít câu hơn.')
+  return { text: r.text, usage: r.usage }
 }
 
 // Câu suy ra từ ingest 1 trang: text fields + cờ có hình + bbox hình (Gemini format [ymin,xmin,ymax,xmax] 0–1000).

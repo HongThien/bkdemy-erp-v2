@@ -456,7 +456,7 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, presetGoc, onClose, o
         }
       }
       setGoc(null); setItems(acc); setVi(0)
-      if (!acc.length) setParseErr('AI không tách được câu nào — thử ảnh nét hơn / model Pro.')
+      if (!acc.length) setParseErr('AI không tách được câu nào — thử ảnh nét hơn / cắt nhỏ từng trang / đổi model.')
     } catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
   }
   function parseText() {

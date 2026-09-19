@@ -13193,3 +13193,34 @@ Guard `!cap2` chặn cấp 1 refetch `maymanCoLuot`. Nhưng HomeCap1 có ô May 
 - `tsc --noEmit` sạch ở file đụng (vẫn còn lỗi cũ không liên quan `src/lib/pdfRender.ts`).
 - Hệ quả vận hành: khi Flash đọc trượt file khó thì KHÔNG còn đường leo thang trong app — phải chẻ
   nhỏ file / chụp rõ hơn / nhập tay. Nếu ca này lặp lại nhiều, mở lại bàn Pro theo từng lần dùng.
+
+### 19/09 — Lỗi MỚI, KHÁC hẳn vụ Pro: `Gemini trả rỗng (RECITATION)`
+
+- ⚠ ĐỪNG lẫn với mục 2.5-pro ở trên. Đó là 404 (model chết). Cái này **HTTP 200**, `finishReason:
+  'RECITATION'`, `content` RỖNG — Google CHẶN output vì nó khớp nguyên văn dữ liệu đã học. Ta bóc
+  nguyên văn trang sách/đề thi ⇒ đúng thứ bộ lọc này sinh ra để chặn. Không liên quan đổi model.
+- Định vị được chỗ phát sinh chỉ từ CHUỖI LỖI: bản `(RECITATION).` là của `callGeminiRich`, bản
+  `(lý do: ...)` mới là `callGeminiJson` — 2 hàm format khác nhau 1 chữ. ⇒ 4 màn ingest ảnh
+  (`DangHub` · `BanDo` lý thuyết · `NhapKhoScreen` · `DeThiScreen`).
+- Hướng dẫn hãng (ai.google.dev/gemini-api/docs/troubleshooting): *"make prompt / context as unique
+  as possible and use a higher temperature"*. Nên **retry y hệt là vô nghĩa** — phải ĐỔI ĐIỀU KIỆN.
+  Đã thêm `geminiVoiRetry`: 3 lượt, temp `mặc định → 1.4 → 1.9`, từ lượt 2 thêm 1 câu salt vào prompt.
+  Chỉ retry khi đúng `RECITATION`; `MAX_TOKENS` hay rỗng-vì-lý-do-khác thì ném ngay (retry chỉ tốn tiền).
+- Lỗi cuối cùng giờ NÓI CÁCH GỠ (cắt nhỏ từng trang · đổi Flash↔Flash-Lite · nhập tay) thay vì
+  "Gemini trả rỗng (RECITATION)" — người đọc không biết phải làm gì.
+- Log `citationMetadata` ra console: Google chỉ đích danh nguồn nó cho là bị chép. Lần sau dính thì
+  đó là manh mối DUY NHẤT để biết trang nào/vì sao.
+- TIỆN THỂ SỬA 1 LỖI ĐẾM TIỀN: `callGeminiRich` trước đây chỉ `recordUsage` SAU khi qua hết các
+  check ⇒ mọi call thất bại (MAX_TOKENS, rỗng, RECITATION) **không được tính tiền** dù input token
+  ĐÃ BỊ TÍNH THẬT (ảnh là phần đắt nhất). Giờ đếm từng lượt, kể cả lượt hỏng.
+- ĐO ĐƯỢC (thật, không đoán): temp 1.2/1.4/1.6/1.9 × {flash, flash-lite} × 4 lượt = 32/32 ra JSON
+  hợp lệ; thêm salt 18/18 hợp lệ. ⇒ nâng temp + salt KHÔNG phá `responseSchema`. Có **1 lần duy nhất**
+  trong ~50 lượt flash-lite@1.9 trả JSON hỏng — tần suất ~2%, chấp nhận vì lượt 3 chỉ chạy khi đằng
+  nào cũng đang hỏng.
+- ❌ CHƯA VERIFY ĐƯỢC ĐIỀU QUAN TRỌNG NHẤT: **không repro được RECITATION** bằng input tự nghĩ
+  (thử ép chép 40 câu Truyện Kiều, cả flash lẫn flash-lite đều `STOP` bình thường). Nên "retry temp
+  cao có gỡ được không" mới là **áp đúng hướng dẫn hãng, CHƯA phải đã đo thắng**. Muốn chắc thì
+  phải có đúng file CEO đang nhập. Đã ghi cảnh báo này ngay trong comment ở `api.ts`.
+- CÒN TREO (chưa làm, cần CEO quyết): 4 màn ingest đang `for` qua từng trang rồi `catch` NGOÀI vòng
+  lặp ⇒ trang thứ 13 hỏng là **mất trắng cả 12 trang đã bóc xong** + tiền đã tiêu. Đây mới là thiệt
+  hại thật của RECITATION. Sửa = giữ trang thành công, báo danh sách trang hỏng để nhập lại riêng.
