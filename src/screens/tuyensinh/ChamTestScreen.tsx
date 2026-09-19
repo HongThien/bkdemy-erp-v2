@@ -7,13 +7,12 @@
 // ⭐ 09/09: ca đã hoàn thành mà CHƯA CÓ ĐỀ vẫn hiện ở đây (badge ⚠) kèm nút "Gán đề đang dùng" — trước đó
 // bị lọc mất im lặng (5 ca treo từ tháng 7, xem HANDOFF bài học 09/09).
 // Sau mutation KHÔNG reload cả danh sách (CLAUDE.md §2): vá đúng phần tử tại chỗ, người chấm đứng nguyên.
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
-  listCanCham, listDaCham, getCaTestCauKq, chamCauTest, dongChamTest, moLaiChamTest, getPhieuKetQua,
-  setDiemNhap, ganDeDangDung,
+  listCanCham, listDaChamTheoThang, getCaTestCauKq, chamCauTest, dongChamTest, moLaiChamTest, getPhieuKetQua,
+  setDiemNhap, ganDeDangDung, dsThangGanDay, nhanThang,
   type CaTestChoCham, type CaTestCau, type PhieuKetQua,
 } from '../../lib/detest'
-import { homNayVN } from '../../lib/tuan'
 import { useStore } from '../../store/useStore'
 import { MathText } from '../kho/ui'
 
@@ -26,7 +25,11 @@ const KQ_OPTS: { v: KQ; lbl: string; idle: string; sel: string }[] = [
 ]
 
 // Nhớ filter khi rời màn rồi quay lại (màn unmount khi đổi tab).
-const NHO: { loc: 'toi' | 'tatca' | null } = { loc: null }
+// ⭐ CEO 15/09 "nhập sai không sửa lại được": subtab "Đã chấm" theo THÁNG (trước chỉ hôm nay ⇒ qua ngày là mất
+// đường vào) — mở ca đã đóng → "Mở lại chấm" → sửa Đ/C/S / điểm → đóng lại.
+type Sub = 'can' | 'da'
+const NHO: { loc: 'toi' | 'tatca' | null; sub: Sub; thang: string | null } = { loc: null, sub: 'can', thang: null }
+const THANGS = dsThangGanDay(12)
 
 export default function ChamTestScreen() {
   const me = useStore((s) => s.me)
@@ -36,14 +39,27 @@ export default function ChamTestScreen() {
   const [loading, setLoading] = useState(true)
   const [openId, setOpenId] = useState<string | null>(null)
   const [loc, setLoc] = useState<'toi' | 'tatca'>(NHO.loc ?? (myId ? 'toi' : 'tatca'))
-  useEffect(() => { NHO.loc = loc }, [loc])
+  const [sub, setSub] = useState<Sub>(NHO.sub)
+  const [thang, setThang] = useState<string | null>(NHO.thang ?? THANGS[0])
+  const [tim, setTim] = useState('')
+  useEffect(() => { NHO.loc = loc; NHO.sub = sub; NHO.thang = thang }, [loc, sub, thang])
 
   async function reload() {
     setLoading(true)
-    try { const [a, b] = await Promise.all([listCanCham(), listDaCham(homNayVN())]); setQueue(a); setDone(b) }
+    try { const [a, b] = await Promise.all([listCanCham(), listDaChamTheoThang(thang)]); setQueue(a); setDone(b) }
     finally { setLoading(false) }
   }
-  useEffect(() => { reload() }, [])
+  useEffect(() => { reload() }, []) // eslint-disable-line
+  // Đổi tháng = đổi ngữ cảnh ⇒ fetch lại riêng danh sách đã chấm (giữ hàng đợi).
+  const lanDau = useRef(true)
+  useEffect(() => {
+    if (lanDau.current) { lanDau.current = false; return }
+    let alive = true
+    listDaChamTheoThang(thang).then((b) => alive && setDone(b)).catch(() => {})
+    return () => { alive = false }
+  }, [thang])
+  const q = tim.trim().toLowerCase()
+  const doneShown = q ? done.filter((c) => c.hoTenHs.toLowerCase().includes(q)) : done
 
   const cuaToi = useMemo(() => queue.filter((c) => c.nguoiChamId === myId), [queue, myId])
   const shown = loc === 'toi' ? cuaToi : queue
@@ -75,17 +91,53 @@ export default function ChamTestScreen() {
       <div className="mb-3 flex flex-wrap items-center gap-2">
         <div>
           <h2 className="text-[20px] font-semibold text-slate-800">Chấm test đầu vào</h2>
-          <p className="text-[12px] text-slate-400">Ca được gán cho bạn hiện ở "Của tôi"; hàng đợi chung vẫn mở — ai cũng chấm hộ được.</p>
+          <p className="text-[12px] text-slate-400">{sub === 'can' ? 'Ca được gán cho bạn hiện ở "Của tôi"; hàng đợi chung vẫn mở — ai cũng chấm hộ được.' : 'Ca đã đóng chấm. Bấm vào ca → "Mở lại chấm" để sửa Đ/C/S hoặc điểm, rồi đóng lại.'}</p>
         </div>
-        <div className="ml-auto inline-flex rounded-full bg-slate-100 p-0.5">
-          {([['toi', `Của tôi (${cuaToi.length})`], ['tatca', `Tất cả (${queue.length})`]] as const).map(([k, lbl]) => (
-            <button key={k} onClick={() => setLoc(k)} className={`rounded-full px-3.5 py-1.5 text-[13px] font-semibold transition ${loc === k ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{lbl}</button>
-          ))}
+        <div className="ml-auto flex flex-wrap items-center gap-2">
+          <div className="inline-flex rounded-full bg-slate-100 p-0.5">
+            {([['can', `Cần chấm (${queue.length})`], ['da', `Đã chấm (${done.length})`]] as const).map(([k, lbl]) => (
+              <button key={k} onClick={() => setSub(k)} className={`rounded-full px-3.5 py-1.5 text-[13px] font-semibold transition ${sub === k ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{lbl}</button>
+            ))}
+          </div>
+          {sub === 'can' ? (
+            <div className="inline-flex rounded-full bg-slate-100 p-0.5">
+              {([['toi', `Của tôi (${cuaToi.length})`], ['tatca', `Tất cả (${queue.length})`]] as const).map(([k, lbl]) => (
+                <button key={k} onClick={() => setLoc(k)} className={`rounded-full px-3.5 py-1.5 text-[13px] font-semibold transition ${loc === k ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{lbl}</button>
+              ))}
+            </div>
+          ) : (
+            <>
+              <select value={thang ?? ''} onChange={(e) => setThang(e.target.value || null)} className="min-h-[34px] rounded-full border border-slate-200 bg-white px-2.5 text-[13px]">
+                <option value="">Mọi tháng</option>
+                {THANGS.map((t) => <option key={t} value={t}>Tháng {nhanThang(t)}</option>)}
+              </select>
+              <input value={tim} onChange={(e) => setTim(e.target.value)} placeholder="🔎 Tên học sinh" className="min-h-[34px] w-40 rounded-full border border-slate-200 bg-white px-3 text-[13px] outline-none focus:border-indigo-300" />
+            </>
+          )}
           <button onClick={reload} title="Quét lại" className="rounded-full px-2 text-[14px] text-slate-400 hover:text-indigo-600">↻</button>
         </div>
       </div>
 
-      {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : shown.length === 0 ? (
+      {sub === 'da' ? (
+        loading ? <p className="text-sm text-slate-400">Đang tải…</p> : doneShown.length === 0 ? (
+          <div className="rounded-lg border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">{q ? 'Không có ca nào khớp tên.' : 'Chưa có ca nào đóng chấm trong khoảng này.'}</div>
+        ) : (
+          <div className="grid gap-2.5 sm:grid-cols-2">
+            {doneShown.map((c) => (
+              <button key={c.id} onClick={() => setOpenId(c.id)} className="rounded-2xl border border-slate-100 bg-white p-3.5 text-left shadow-sm hover:shadow-md">
+                <div className="text-[14px] font-semibold text-slate-800">{c.hoTenHs}</div>
+                <div className="mt-0.5 text-[12px] text-slate-400">{c.mon}{c.khoi ? ` · Lớp ${c.khoi}` : ''} · {new Date(c.ngay + 'T00:00:00').toLocaleDateString('vi-VN')}</div>
+                <div className="mt-1 flex flex-wrap gap-1">
+                  <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-700">✓ Đã đóng chấm</span>
+                  {c.nguoiChamTen && <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-600">👤 {c.nguoiChamTen}</span>}
+                  {c.lechKhoi && <span className="rounded-full bg-rose-50 px-2 py-0.5 text-[11px] font-semibold text-rose-700">⚠ Đề khối {c.deKhoi} ≠ HS khối {c.khoi}</span>}
+                  {c.diemNhap != null && <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600">Điểm {c.diemNhap}</span>}
+                </div>
+              </button>
+            ))}
+          </div>
+        )
+      ) : loading ? <p className="text-sm text-slate-400">Đang tải…</p> : shown.length === 0 ? (
         <div className="rounded-lg border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">
           {loc === 'toi' && queue.length > 0 ? `Không có ca nào gán cho bạn — hàng đợi chung còn ${queue.length} ca.` : 'Không còn bài nào cần chấm.'}
         </div>
@@ -98,6 +150,7 @@ export default function ChamTestScreen() {
               <div className="mt-1 flex flex-wrap gap-1">
                 {c.nguoiChamTen && <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-600">👤 {c.nguoiChamTen}</span>}
                 {c.thieuDe && <span className="rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-medium text-amber-700">⚠ Chưa có đề</span>}
+                {c.lechKhoi && <span className="rounded-full bg-rose-50 px-2 py-0.5 text-[11px] font-semibold text-rose-700">⚠ Đề khối {c.deKhoi} ≠ HS khối {c.khoi}</span>}
                 {c.diemNhap != null && <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600">Điểm {c.diemNhap}</span>}
               </div>
             </button>
@@ -105,18 +158,6 @@ export default function ChamTestScreen() {
         </div>
       )}
 
-      {done.length > 0 && (
-        <details className="mt-5">
-          <summary className="cursor-pointer text-[12px] font-medium text-emerald-700">✓ Đã chấm hôm nay ({done.length})</summary>
-          <div className="mt-2 grid gap-2 sm:grid-cols-2">
-            {done.map((c) => (
-              <button key={c.id} onClick={() => setOpenId(c.id)} className="rounded-xl border border-slate-100 bg-white px-3 py-2 text-left text-[12px] text-slate-500 shadow-sm hover:shadow-md">
-                <span className="font-semibold text-slate-700">{c.hoTenHs}</span> · {c.mon}{c.diemNhap != null ? ` · ${c.diemNhap}đ` : ''}
-              </button>
-            ))}
-          </div>
-        </details>
-      )}
     </div>
     </div>
   )
@@ -173,9 +214,17 @@ function ChamCard({ item, daChamXong, onClose, onPatch, onDone, onReopen }: {
     try {
       const de = await ganDeDangDung(item.id, item.khoi, item.mon)
       if (!de) { setErr(`Chưa có đề test đầu vào đang dùng cho ${item.mon}${item.khoi ? ` · Khối ${item.khoi}` : ''} — học thuật sinh đề ở tab "Đề test" trước.`); return }
-      onPatch({ taiLieuId: de.id, thieuDe: false })
+      onPatch({ taiLieuId: de.id, thieuDe: false, deKhoi: de.khoi, deTen: de.ten, lechKhoi: false })
+      setMoDe(new Set())
       await reload()
     } catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
+  }
+  // Lệch khối (đổi khối ứng viên sau khi đã gán đề): gán lại = XOÁ kết quả đã tích trên đề sai ⇒ hỏi rõ trước.
+  async function ganLaiDe() {
+    const n = tong?.daCham ?? 0
+    const ok = window.confirm(`Gán lại đề đang dùng của khối ${item.khoi} cho ${item.hoTenHs}?\n\nĐề hiện tại là khối ${item.deKhoi} (${item.deTen ?? ''}). ${n > 0 ? `${n} câu đã tích trên đề này sẽ bị XOÁ, phải chấm lại từ đầu.` : 'Chưa có câu nào được tích.'}`)
+    if (!ok) return
+    await ganDe()
   }
   async function dong() {
     setBusy(true); setErr(null)
@@ -212,19 +261,25 @@ function ChamCard({ item, daChamXong, onClose, onPatch, onDone, onReopen }: {
           {tong ? <>Đã tích <b className="text-indigo-600">{tong.daCham}/{tong.soCau}</b> câu · đúng <b className="text-indigo-600">{tong.pct}%</b></> : '…'}
         </span>
       </div>
+      {item.lechKhoi && (
+        <div className="flex shrink-0 flex-wrap items-center gap-2 border-b border-rose-200 bg-rose-50 px-4 py-2 text-[13px] text-rose-800">
+          <span>⚠ <b>Đề đang gán là khối {item.deKhoi}</b> ({item.deTen}) nhưng học sinh là <b>khối {item.khoi}</b> — khối ứng viên đã đổi sau khi gán đề. Số câu/chuyên đề không khớp bài giấy.</span>
+          <button onClick={ganLaiDe} disabled={busy} className="ml-auto rounded-lg bg-rose-600 px-3 py-1.5 text-[12px] font-semibold text-white hover:bg-rose-500 disabled:opacity-40">{busy ? 'Đang gán…' : `📘 Gán lại đề đang dùng (khối ${item.khoi})`}</button>
+        </div>
+      )}
 
       {loading ? <p className="p-6 text-sm text-slate-400">Đang tải…</p> : (
         <div className="min-h-0 flex-1 overflow-auto p-4">
           <div className="mx-auto max-w-[820px]">
             <p className="mb-2 text-[12px] text-slate-400">Tích Đ/C/S theo bài đã chấm trên giấy. Bấm số câu để xem đề khi cần đối chiếu.</p>
             <div className="grid gap-x-6 gap-y-1 sm:grid-cols-2">
-              {cau.map((c, i) => {
+              {cau.map((c) => {
                 const mo = moDe.has(c.id)
                 return (
                   <div key={c.id} className={`rounded-lg border ${c.ketQua ? 'border-slate-100' : 'border-dashed border-slate-200'} bg-white ${mo ? 'sm:col-span-2' : ''}`}>
                     <div className="flex items-center gap-2 px-2 py-1">
                       <button onClick={() => toggleDe(c.id)} title="Xem đề" className="flex w-20 shrink-0 items-center gap-1 text-left text-[13px] font-semibold text-slate-700 hover:text-indigo-600">
-                        <span className="text-[10px] text-slate-400">{mo ? '▾' : '▸'}</span>Câu {i + 1}
+                        <span className="text-[10px] text-slate-400">{mo ? '▾' : '▸'}</span>Câu {c.thuTu}
                       </button>
                       <div className="ml-auto flex gap-1">
                         {KQ_OPTS.map((o) => (

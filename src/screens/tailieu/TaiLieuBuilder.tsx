@@ -307,16 +307,20 @@ function DangCard({ dang, btvn, linesByCau, colByCau, onCol, onLine, onLineAll, 
         </div>
         {btvn && (btvn.caus.length > 0
           ? <ol className="mt-2 space-y-1">{btvn.caus.map((c, i) => (
-            <li key={c.ma_cau} className="flex items-center gap-2 rounded-md border border-slate-100 bg-white/70 px-2.5 py-1.5">
-              <span className="text-[12px] font-bold text-slate-400">{i + 1}.</span>
-              <MaCau ma={c.ma_cau} />
-              <span className="min-w-0 flex-1 truncate text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
-              <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
-              <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết bài này">dòng
-                <input type="number" min={0} max={30} value={linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES} onChange={(e) => onLine(c.ma_cau, Math.max(0, Math.min(30, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
-              </label>
-              <ColSel value={colByCau[c.ma_cau] ?? 1} onChange={(n) => onCol(c.ma_cau, n)} />
-              <button onClick={() => onApply(btvn.id, btvn.caus.filter((x) => x.ma_cau !== c.ma_cau).map((x) => x.ma_cau))} className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
+            <li key={c.ma_cau} className="rounded-md border border-slate-100 bg-white/70 px-2.5 py-1.5">
+              <div className="flex items-center gap-2">
+                <span className="text-[12px] font-bold text-slate-400">{i + 1}.</span>
+                <MaCau ma={c.ma_cau} />
+                <span className="min-w-0 flex-1 truncate text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
+                <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
+                <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết bài này">dòng
+                  <input type="number" min={0} max={30} value={linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES} onChange={(e) => onLine(c.ma_cau, Math.max(0, Math.min(30, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
+                </label>
+                <ColSel value={colByCau[c.ma_cau] ?? 1} onChange={(n) => onCol(c.ma_cau, n)} />
+                <button onClick={() => onApply(btvn.id, btvn.caus.filter((x) => x.ma_cau !== c.ma_cau).map((x) => x.ma_cau))} className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
+              </div>
+              {/* ⭐ 16/09 (CEO): preview HÌNH đầy đủ ở builder (không chỉ ở KhoPicker) — câu có hình phải nhìn thấy hình khi soạn giáo trình, tránh chọn nhầm. */}
+              {c.anh_de && <img src={c.anh_de} alt="" className="mx-auto mt-1.5 block max-h-40 w-auto max-w-full rounded border border-slate-200" />}
             </li>
           ))}</ol>
           : <div className="mt-2 text-[12px] italic text-slate-400">Chưa có câu BTVN — bấm “Gợi ý” hoặc “Chọn câu”.</div>)}
@@ -358,13 +362,17 @@ function MaCau({ ma }: { ma: string }) {
 
 function CauRow({ no, c, col, onCol, onRemove }: { no: number; c: CauHoi; col: number; onCol: (n: number) => void; onRemove: () => void }) {
   return (
-    <li className="flex items-start gap-2 rounded-md border border-slate-100 bg-slate-50/50 px-2.5 py-1.5">
-      <span className="text-[12px] font-bold text-slate-400">{no}.</span>
-      <MaCau ma={c.ma_cau} />
-      <span className="min-w-0 flex-1 truncate text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
-      <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
-      <ColSel value={col} onChange={onCol} />
-      <button onClick={onRemove} className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
+    <li className="rounded-md border border-slate-100 bg-slate-50/50 px-2.5 py-1.5">
+      <div className="flex items-start gap-2">
+        <span className="text-[12px] font-bold text-slate-400">{no}.</span>
+        <MaCau ma={c.ma_cau} />
+        <span className="min-w-0 flex-1 truncate text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
+        <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
+        <ColSel value={col} onChange={onCol} />
+        <button onClick={onRemove} className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
+      </div>
+      {/* ⭐ 16/09 (CEO): preview hình đầy đủ khi câu có ảnh đề — không chỉ text truncate. */}
+      {c.anh_de && <img src={c.anh_de} alt="" className="mx-auto mt-1.5 block max-h-40 w-auto max-w-full rounded border border-slate-200" />}
     </li>
   )
 }

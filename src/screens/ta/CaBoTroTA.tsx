@@ -4,7 +4,8 @@
 // → điểm test theo dạng → nhận xét (mẫu + gõ) + mức → "Hoàn tất ca" (khoá sau khi xong). Mọi số từ fn_btyeu_*.
 // KHÔNG import màn ERP desktop (luật app TA). Class màu literal (Tailwind JIT).
 import { useEffect, useState, type ReactNode } from 'react'
-import { caTA, dongCa, hoanTatCa, type CaTA, type ViecCaBoTro, type ViecRetest } from '../../lib/botro_yeu_ca'
+import { caTA, dongCa, hoanTatCa, cauTlnCuaCa, suaKetQuaTln, type CaTA, type ViecCaBoTro, type ViecRetest, type CauTlnTA } from '../../lib/botro_yeu_ca'
+import { MathText } from '../kho/ui'
 import { diemDanh, huyBuoi, MUC_CATALOG } from '../../lib/gami'
 import { timNhanXetMau, type NhanXetMau } from '../../lib/detest'
 import { homNayVN, ddmmVN, thuCuaNgay } from '../../lib/tuan'
@@ -112,9 +113,22 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
   const [mau, setMau] = useState<NhanXetMau[]>([])
   const [now, setNow] = useState(Date.now())
 
+  // Câu TRẢ LỜI NGẮN em đã trả lời trong ca — TA chỉnh Đúng/Sai (Thùy 19/09). Poll cùng nhịp; chỉnh xong vá tại chỗ.
+  const [tln, setTln] = useState<CauTlnTA[]>([])
+  const [tlnBusy, setTlnBusy] = useState<string | null>(null)
+  const [tlnMo, setTlnMo] = useState<boolean | null>(null) // null = theo mặc định: TỰ MỞ khi có câu máy chấm sai (Thùy 19/09: "ko thấy hiện chỗ nào")
+  const taiTln = () => cauTlnCuaCa(buoiId).then(setTln).catch(() => {})
+  async function chinhTln(x: CauTlnTA, dung: boolean) {
+    setTlnBusy(x.bai_lam_cau_id); setLoi(null)
+    try {
+      const r = await suaKetQuaTln(x.bai_lam_cau_id, dung)
+      setTln((prev) => prev.map((y) => y.bai_lam_cau_id === x.bai_lam_cau_id ? { ...y, verdict: r.verdict, cham_boi: r.doi ? 'manual' : y.cham_boi, da_sua: y.da_sua || r.doi } : y))
+      if (r.doi) tai() // tỉ lệ đúng theo dạng/cụm ở khối Luyện đổi theo
+    } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setTlnBusy(null) }
+  }
   const tai = async () => { try { const c = await caTA(buoiId); setCa(c); if (c?.danh_gia) { setNx(c.danh_gia.nhan_xet ?? ''); setMucMa(c.danh_gia.muc_ma) } } catch (e: any) { setLoi(e?.message ?? String(e)); setCa(null) } }
-  useEffect(() => { tai() }, [buoiId]) // eslint-disable-line
-  useEffect(() => { const id = setInterval(() => { tai(); setNow(Date.now()) }, POLL_MS); return () => clearInterval(id) }, [buoiId]) // eslint-disable-line
+  useEffect(() => { tai(); taiTln() }, [buoiId]) // eslint-disable-line
+  useEffect(() => { const id = setInterval(() => { tai(); taiTln(); setNow(Date.now()) }, POLL_MS); return () => clearInterval(id) }, [buoiId]) // eslint-disable-line
   useEffect(() => { if (ca?.mon) timNhanXetMau(ca.mon, 'kien_thuc', '').then(setMau).catch(() => {}) }, [ca?.mon])
 
   async function chay(k: string, f: () => Promise<void>, xong?: string) {
@@ -132,6 +146,7 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
   const hoanTat = !!ca.danh_gia_xong_at
   const tongCau = ca.dangs.reduce((s, d) => s + d.so_cau, 0)
   const cauCuoi = ca.dangs.map((d) => d.cau_cuoi_at).filter(Boolean).sort().pop()
+  const tlnDangMo = tlnMo ?? tln.some((x) => x.verdict !== 'correct')
   const imPhut = cauCuoi ? Math.floor((now - Date.parse(cauCuoi)) / 60000) : null
 
   return (
@@ -191,6 +206,49 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
             </div>
           )}
         </Khoi>
+
+        {/* 2b. Câu trả lời ngắn — TA chỉnh kết quả (chỉ hiện khi em đã trả lời ≥1 câu TLN) */}
+        {coMat && (
+          <div className="mb-3 rounded-2xl bg-white p-3 ring-1 ring-amber-200">
+            <button onClick={() => setTlnMo(!tlnDangMo)} className="flex w-full items-center justify-between gap-2 text-left">
+              <div className="min-w-0">
+                <p className="text-[13.5px] font-bold text-slate-800">✍ Câu trả lời ngắn — chỉnh kết quả</p>
+                <p className="text-[11.5px] text-slate-500">{tln.length} câu · máy chấm sai {tln.filter((x) => x.verdict !== 'correct').length}{tln.some((x) => x.da_sua) ? ` · đã chỉnh tay ${tln.filter((x) => x.da_sua).length}` : ''} — em làm đúng (nháp/nói miệng) mà máy chấm sai thì tích lại ở đây.</p>
+              </div>
+              <span className="shrink-0 text-slate-400">{tlnDangMo ? '▾' : '▸'}</span>
+            </button>
+            {tlnDangMo && tln.length === 0 && <p className="mt-2 text-[12.5px] text-slate-400">Em chưa trả lời câu trả lời ngắn nào trong ca này (câu trắc nghiệm máy chấm chắc chắn nên không cần chỉnh).</p>}
+            {tlnDangMo && tln.length > 0 && (
+              <div className="mt-2 flex flex-col gap-2">
+                {tln.map((x) => {
+                  const dung = x.verdict === 'correct'
+                  const hsTxt = x.dap_an_hs == null ? '—' : typeof x.dap_an_hs === 'string' ? x.dap_an_hs : JSON.stringify(x.dap_an_hs)
+                  const keyTxt = x.dap_an_key == null ? '—' : typeof x.dap_an_key === 'string' ? x.dap_an_key : JSON.stringify(x.dap_an_key)
+                  return (
+                    <div key={x.bai_lam_cau_id} className={`rounded-xl px-3 py-2 ring-1 ${dung ? 'bg-emerald-50/50 ring-emerald-200' : 'bg-rose-50/50 ring-rose-200'}`}>
+                      <div className="flex items-center gap-1.5 text-[10.5px] font-semibold text-slate-500">
+                        <span className="rounded bg-white px-1.5 py-px ring-1 ring-slate-200">{x.loai_bai === 'bo_tro' ? 'Luyện' : x.loai_bai === 'bo_tro_test' ? 'Test cuối ca' : 'Retest'}</span>
+                        {x.ma_cau && <span className="text-slate-400">{x.ma_cau}</span>}
+                        {x.da_sua && <span className="rounded bg-amber-100 px-1.5 py-px text-amber-800">đã chỉnh tay</span>}
+                      </div>
+                      {x.noi_dung && <div className="mt-1 text-[13px] leading-snug text-slate-800"><MathText>{x.noi_dung}</MathText></div>}
+                      <div className="mt-1 grid grid-cols-2 gap-2 text-[12.5px]">
+                        <div><span className="text-slate-400">Em trả lời: </span><b className={dung ? 'text-emerald-700' : 'text-rose-700'}><MathText>{hsTxt}</MathText></b></div>
+                        <div><span className="text-slate-400">Đáp án: </span><b className="text-slate-700"><MathText>{keyTxt}</MathText></b></div>
+                      </div>
+                      <div className="mt-2 flex items-center gap-2">
+                        <button disabled={tlnBusy === x.bai_lam_cau_id || dung} onClick={() => chinhTln(x, true)}
+                          className={`flex-1 rounded-lg py-1.5 text-[13px] font-bold ${dung ? 'bg-emerald-600 text-white' : 'border border-emerald-300 bg-white text-emerald-700'} disabled:opacity-100`}>{dung ? '✓ Đúng' : 'Tích ĐÚNG'}</button>
+                        <button disabled={tlnBusy === x.bai_lam_cau_id || !dung} onClick={() => chinhTln(x, false)}
+                          className={`flex-1 rounded-lg py-1.5 text-[13px] font-bold ${!dung ? 'bg-rose-600 text-white' : 'border border-rose-300 bg-white text-rose-700'} disabled:opacity-100`}>{!dung ? '✗ Sai' : 'Tích SAI'}</button>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+        )}
 
         {/* 3. Đóng ca & test */}
         <Khoi so={3} ten="Đóng ca · test cuối buổi" trang={!coMat ? 'cho' : !daDong ? 'dang' : testDaNop ? 'xong' : 'dang'}>

@@ -7,9 +7,13 @@ import SearchCau from './SearchCau'
 import KhoRac from './KhoRac'
 import { daiBranch, hinhBranch, hinhGiaiTichBranch, khtnBranch } from './branches'
 import KhoHinhScreen from './hinh/KhoHinhScreen'
+import KhoHinhHocScreen from './hinh/KhoHinhHocScreen'
 
 type Tab = 'dai' | 'hinh' | 'hinhgt'
 type Mon = 'toan' | 'khtn'
+// ⭐ 16/09 (CEO): tab Hình học tách 2 phase — Học kiến thức (Bài) vs Luyện tập (Mô hình/Dạng/Bổ đề cũ).
+// Toggle chỉ hiện khi tab='hinh'. Nhớ preference/localStorage riêng.
+type HinhPhase = 'hoc' | 'luyen'
 // Map môn-kho ↔ nhãn MON_LIST (nhan_su_mon lưu nhãn 'Toán'/'KHTN'). Kho mới hỗ trợ 2 môn này.
 const MON_TABS: { key: Mon; label: string }[] = [{ key: 'toan', label: 'Toán' }, { key: 'khtn', label: 'KHTN' }]
 
@@ -23,14 +27,17 @@ const readTab = () => {
   return (v === 'hinh' || v === 'hinhgt' ? v : 'dai') as Tab
 }
 const readMon = () => (localStorage.getItem('kho.mon') === 'khtn' ? 'khtn' : 'toan') as Mon
+const readHinhPhase = () => (localStorage.getItem('kho.hinh.phase') === 'luyen' ? 'luyen' : 'hoc') as HinhPhase
 
 export default function KhoScreen() {
   const [mon, setMon] = useState<Mon>(readMon)
   const [tab, setTab] = useState<Tab>(readTab)
   const [khoi, setKhoi] = useState<string>(readKhoi)
+  const [hinhPhase, setHinhPhase] = useState<HinhPhase>(readHinhPhase)
   useEffect(() => { localStorage.setItem('kho.khoi', khoi) }, [khoi])
   useEffect(() => { localStorage.setItem('kho.tab', tab) }, [tab])
   useEffect(() => { localStorage.setItem('kho.mon', mon) }, [mon])
+  useEffect(() => { localStorage.setItem('kho.hinh.phase', hinhPhase) }, [hinhPhase])
   // môn KHTN = 1 cây (không nhánh Đại/Hình); Toán = nhánh tab → branch.
   const config = mon === 'khtn' ? khtnBranch : tab === 'dai' ? daiBranch : tab === 'hinhgt' ? hinhGiaiTichBranch : hinhBranch
   const [timCau, setTimCau] = useState(false)
@@ -66,6 +73,13 @@ export default function KhoScreen() {
             <TabBtn active={tab === 'dai'} onClick={() => setTab('dai')}>Đại số</TabBtn>
             <TabBtn active={tab === 'hinh'} onClick={() => setTab('hinh')}>Hình học</TabBtn>
             <TabBtn active={tab === 'hinhgt'} onClick={() => setTab('hinhgt')}>Hình giải tích</TabBtn>
+          </div>
+        )}
+        {/* ⭐ Phase Hình học (CEO 16/09): chỉ hiện khi tab='hinh'. Học = Bài (mới); Luyện = Mô hình/Dạng cũ. */}
+        {mon === 'toan' && tab === 'hinh' && (
+          <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+            <TabBtn active={hinhPhase === 'hoc'} onClick={() => setHinhPhase('hoc')}>📖 Học</TabBtn>
+            <TabBtn active={hinhPhase === 'luyen'} onClick={() => setHinhPhase('luyen')}>🏋️ Luyện</TabBtn>
           </div>
         )}
         {allowed.length > 0 && !profileLoading && <>
@@ -116,10 +130,13 @@ export default function KhoScreen() {
               </div>
             </div>
           ) : mon === 'toan' && tab === 'hinh'
-            // Nhánh HÌNH = model RIÊNG (spec-kho-hinh-v3): 4 tầng họ mô hình → lưới mô hình →
-            // lưới bài toán nhỏ → kho bài. KHÔNG dùng chung component bản đồ 3-tầng của Đại/KHTN.
-            // Đi THEO KHỐI như Đại — `key={khoi}` để remount, reset state sạch khi đổi khối.
-            ? <KhoHinhScreen key={`hinh-${khoi}`} khoi={khoi} />
+            // Nhánh HÌNH — 2 phase (CEO 16/09):
+            //   · HỌC  → KhoHinhHocScreen (mới): Bài phẳng theo khối, có Lý thuyết + Cụm + Câu (clone Đại).
+            //   · LUYỆN → KhoHinhScreen  (cũ): 4 tầng họ mô hình → lưới mô hình → lưới bài toán → kho bài.
+            // `key={hinhPhase}-${khoi}` remount khi đổi phase/khối → reset state sạch.
+            ? (hinhPhase === 'hoc'
+                ? <KhoHinhHocScreen key={`hh-${khoi}`} khoi={khoi} />
+                : <KhoHinhScreen key={`hinh-${khoi}`} khoi={khoi} />)
             : <BanDo key={`${config.key}-${khoi}`} config={config} khoi={khoi} />}
       </div>
 

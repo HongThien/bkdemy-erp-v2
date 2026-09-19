@@ -4,10 +4,10 @@ import { supabase } from '../supabase'
 
 const LIMIT = 10000 // spec-kho-v2 §1.3 — mọi list .limit(10000)
 
-// Khối = KEY text. '4'/'5' = hệ thường; '4T'/'5T' = Tăng cường (CLC, chỉ tiểu học 4-5 —
-// bản đồ khác cấu trúc nên là cây riêng). Thứ tự hiển thị theo ĐÚNG mảng này (KHÔNG lexsort).
+// Khối = KEY text. '4'/'5'/'8' = hệ thường; '4T'/'5T'/'8T' = Tăng cường (CLC —
+// bản đồ khác cấu trúc nên là cây riêng; '8T' thêm 19/09). Thứ tự hiển thị theo ĐÚNG mảng này (KHÔNG lexsort).
 // Mã prefix 2 ký tự: thường '4'→'04…', CLC '4T…' — phân biệt, không đụng.
-export const KHOI_OPTIONS = ['3', '4', '4T', '5', '5T', '6', '7', '8', '9', '10', '11', '12'] as const
+export const KHOI_OPTIONS = ['3', '4', '4T', '5', '5T', '6', '7', '8', '8T', '9', '10', '11', '12'] as const
 export const DEFAULT_KHOI = '8'
 
 export type LopBac = { ma: string; ten: string; thu_tu: number }
@@ -39,7 +39,7 @@ export async function listLopBac(): Promise<LopBac[]> {
 export async function listDaiDang(khoi: string): Promise<DaiDang[]> {
   const { data, error } = await supabase
     .from('dai_ban_do').select('*')
-    .eq('khoi', khoi)
+    .eq('khoi', khoi).not('ma_dang', 'like', '%000000') // ẩn dạng chờ "Chưa phân dạng"
     .order('ma_chu_de').order('ma_chuyen_de').order('ma_dang')
     .limit(LIMIT)
   if (error) throw error
@@ -123,6 +123,7 @@ type CauInput = {
   anh_de?: string | null; anh_dap_an?: string | null
   nguon?: string; nguon_giai?: string; parent_ma_cau?: string | null; clone_method?: string | null
   ma_cum?: string | null
+  da_duyet?: boolean; duyet_boi?: string | null; duyet_at?: string | null
 }
 export async function createCau(input: CauInput, tbl = 'dai_cau_hoi'): Promise<CauHoi> {
   const { data, error } = await supabase.from(tbl).insert(input).select().single()
@@ -154,6 +155,11 @@ async function nhanSuIdCuaToi(): Promise<string> {
   const id = (tk as { nhan_su_id?: string | null } | null)?.nhan_su_id
   if (!id) throw new Error('Tài khoản chưa link nhân sự — không ghi được ai duyệt.')
   return id
+}
+// Duyệt luôn lúc clone (thay vì để chờ hậu kiểm sau) — dùng chung khuôn actor+ts với duyetCau ở trên.
+async function duyetLuonFields(): Promise<{ da_duyet: true; duyet_boi: string; duyet_at: string }> {
+  const nguoiDuyet = await nhanSuIdCuaToi()
+  return { da_duyet: true, duyet_boi: nguoiDuyet, duyet_at: new Date().toISOString() }
 }
 export async function duyetCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<void> {
   const nguoiDuyet = await nhanSuIdCuaToi()
@@ -195,7 +201,7 @@ export const tenCum = (c: CumBai) => c.ten?.trim() || `Cụm ${c.thu_tu}`   // c
 export const coCumBai = (cauTbl: string) => !!CUM_TBL[cauTbl]
 
 // Bảng cụm theo bảng câu. undefined = nhánh CHƯA có cụm (hgt/hình) → UI ẩn tab Cụm.
-export const CUM_TBL: Record<string, string> = { dai_cau_hoi: 'dai_cum_bai', khtn_cau_hoi: 'khtn_cum_bai', hgt_cau_hoi: 'hgt_cum_bai' }
+export const CUM_TBL: Record<string, string> = { dai_cau_hoi: 'dai_cum_bai', khtn_cau_hoi: 'khtn_cum_bai', hgt_cau_hoi: 'hgt_cum_bai', hinh_hoc_cau_hoi: 'hinh_hoc_cum_bai' }
 // Bảng cạnh tiền đề theo bảng câu: [dạng↔dạng, cụm↔cụm]
 export const TIEN_DE_TBL: Record<string, { dang: string; cum: string }> = {
   dai_cau_hoi: { dang: 'dai_dang_tien_de', cum: 'dai_cum_tien_de' },
@@ -642,7 +648,9 @@ export function parseVariantsJson(text: string): CauNoiDung[] {
 // clone luôn tương đương với gốc của nó nên không có lý do để nằm cụm khác.
 export async function saveCloneBatch(a: {
   dangChinh: string; loaiCau: string; goc: CauNoiDung; variants: CauNoiDung[]; maCum?: string | null
+  daDuyet?: boolean // Duyệt luôn lúc clone (Thùy 12/09) — nhân sự tự tin đúng thì tích, khỏi chờ hậu kiểm sau.
 }, tbl = 'dai_cau_hoi'): Promise<{ goc: string; soClone: number }> {
+  const duyetFields = a.daDuyet ? await duyetLuonFields() : {}
   const start = await nextCauSeq(a.dangChinh, tbl)
   const g = await createCau({
     ma_cau: maCau(a.dangChinh, start),
@@ -651,6 +659,7 @@ export async function saveCloneBatch(a: {
     anh_de: a.goc.anh_de ?? null, anh_dap_an: a.goc.anh_dap_an ?? null, nguon: 'le',
     nguon_giai: a.goc.nguon_giai ?? 'nguoi', // gốc = người ra đề (tin)
     ...(coCumBai(tbl) ? { ma_cum: a.maCum ?? null } : {}),
+    ...duyetFields,
   }, tbl)
   if (a.variants.length) {
     const rows = a.variants.map((v, i) => ({
@@ -660,6 +669,7 @@ export async function saveCloneBatch(a: {
       anh_de: v.anh_de ?? null, anh_dap_an: v.anh_dap_an ?? null,
       nguon: 'clone', nguon_giai: 'ai', parent_ma_cau: g.ma_cau, clone_method: 'manual_gemini', // biến thể = AI giải
       ...(coCumBai(tbl) ? { ma_cum: a.maCum ?? null } : {}),
+      ...duyetFields,
     }))
     const { error } = await supabase.from(tbl).insert(rows)
     if (error) throw error
@@ -672,8 +682,10 @@ export async function saveCloneBatch(a: {
 // không phải gom tay lại. Đây là điểm khác duy nhất so với `saveCloneBatch` (vốn đẻ gốc + biến thể).
 export async function saveCloneVariants(a: {
   goc: Pick<CauHoi, 'ma_cau' | 'dang_chinh' | 'loai_cau' | 'ma_cum'>; variants: CauNoiDung[]
+  daDuyet?: boolean // Duyệt luôn lúc clone (Thùy 12/09) — nhân sự tự tin đúng thì tích, khỏi chờ hậu kiểm sau.
 }, tbl = 'dai_cau_hoi'): Promise<number> {
   if (!a.variants.length) return 0
+  const duyetFields = a.daDuyet ? await duyetLuonFields() : {}
   const start = await nextCauSeq(a.goc.dang_chinh, tbl)
   const rows = a.variants.map((v, i) => ({
     ma_cau: maCau(a.goc.dang_chinh, start + i),
@@ -682,6 +694,7 @@ export async function saveCloneVariants(a: {
     anh_de: v.anh_de ?? null, anh_dap_an: v.anh_dap_an ?? null,
     nguon: 'clone', nguon_giai: 'ai', parent_ma_cau: a.goc.ma_cau, clone_method: 'manual_gemini',
     ...(coCumBai(tbl) ? { ma_cum: a.goc.ma_cum ?? null } : {}),
+    ...duyetFields,
   }))
   const { error } = await supabase.from(tbl).insert(rows)
   if (error) throw error
@@ -961,9 +974,13 @@ export const USD_VND = 25400
 export const GEMINI_GIA: Record<string, { in: number; out: number }> = {
   'gemini-2.5-flash-lite': { in: 0.10, out: 0.40 },
   'gemini-2.5-flash': { in: 0.30, out: 2.50 },
-  'gemini-2.5-pro': { in: 1.25, out: 10.0 },
+  // ── Pro: KHÔNG còn chọn được từ UI (CEO bỏ 19/09/2026). Giữ giá ở đây để (a) đọc log cũ,
+  // (b) nếu ai set VITE_GEMINI_MODEL=...pro thì đồng hồ tiền vẫn tính ĐÚNG chứ không âm thầm
+  // báo giá Flash. Đừng xoá 2 dòng này khi dọn code.
+  'gemini-2.5-pro': { in: 1.25, out: 10.0 }, // ⛔ Google đã GỠ (404 "no longer available to new users")
+  'gemini-3.1-pro-preview': { in: 2.00, out: 12.0 }, // tier ≤200k token/prompt; >200k là 4.00/18.00
 }
-const giaOf = (m: string) => GEMINI_GIA[m] ?? (m.includes('pro') ? GEMINI_GIA['gemini-2.5-pro'] : m.includes('lite') ? GEMINI_GIA['gemini-2.5-flash-lite'] : GEMINI_GIA['gemini-2.5-flash'])
+const giaOf = (m: string) => GEMINI_GIA[m] ?? (m.includes('pro') ? GEMINI_GIA['gemini-3.1-pro-preview'] : m.includes('lite') ? GEMINI_GIA['gemini-2.5-flash-lite'] : GEMINI_GIA['gemini-2.5-flash'])
 export type GeminiUsage = { in: number; out: number; think: number }
 export function geminiCostVND(u: GeminiUsage, model: string): number {
   const g = giaOf(model)
@@ -1092,35 +1109,87 @@ export const GOC_SCHEMA = { type: 'OBJECT', properties: { bai_goc: CAU_ITEM_SCHE
 export const VARIANTS_SCHEMA = { type: 'OBJECT', properties: { variants: { type: 'ARRAY', items: CAU_ITEM_SCHEMA } }, required: ['variants'] }
 export const BATCH_SCHEMA = { type: 'OBJECT', properties: { cau_hoi: { type: 'ARRAY', items: CAU_ITEM_SCHEMA } }, required: ['cau_hoi'] }
 export const LYTHUYET_SCHEMA = { type: 'OBJECT', properties: { noi_dung: { type: 'STRING' } }, required: ['noi_dung'] }
-export async function callGeminiJson(prompt: string, opts?: { model?: string; files?: GeminiFile[]; think?: number; schema?: any }): Promise<string> {
-  const key = import.meta.env.VITE_GEMINI_KEY as string | undefined
-  if (!key) throw new Error('Chưa có VITE_GEMINI_KEY trong .env.local → luồng AUTO chưa bật. Dùng MANUAL hoặc thêm key.')
-  const model = opts?.model || (import.meta.env.VITE_GEMINI_MODEL as string | undefined) || 'gemini-2.5-flash'
-  const parts: any[] = [{ text: prompt }]
-  for (const f of opts?.files ?? []) parts.push({ inline_data: { mime_type: f.mimeType, data: f.dataBase64 } })
-  // ⚠ TIỀN: Gemini 2.5 mặc định BẬT thinking — token suy nghĩ TÍNH NHƯ OUTPUT (vụ cháy 1tr3 06-10).
-  // OCR/bóc đề/nhập-chuỗi = extraction → KHÔNG cần nghĩ (budget 0). CLONE = GENERATION (dựng+giải+số đẹp)
-  // → CẦN suy luận, caller truyền opts.think (vd 8192) nếu không clone toán sẽ sai. Pro ép min 128.
-  const thinkingBudget = opts?.think ?? (model.includes('pro') ? 128 : 0)
-  // responseSchema (constrained decoding) = ép JSON hợp lệ + tự escape → hết lỗi "Bad escaped"/"Expected , or }"
-  // do LaTeX 1-backslash hay " chưa escape (clone/batch/lý-thuyết hay dính). Caller truyền schema theo shape.
-  const genCfg: any = { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: { thinkingBudget } }
-  if (opts?.schema) genCfg.responseSchema = opts.schema
+// ── thinkingConfig KHÁC NHAU GIỮA 2 ĐỜI MODEL — đừng gộp làm một ─────────────
+// ⚠ TIỀN: Gemini 2.5 mặc định BẬT thinking — token suy nghĩ TÍNH NHƯ OUTPUT (vụ cháy 1tr3 06-10).
+// OCR/bóc đề/nhập-chuỗi = extraction → KHÔNG cần nghĩ (budget 0). CLONE = GENERATION (dựng+giải+số đẹp)
+// → CẦN suy luận, caller truyền opts.think (vd 8192) nếu không clone toán sẽ sai.
+// Gemini 3.x (19/09/2026): `thinkingBudget: 0` bị TỪ CHỐI 400 "Budget 0 is invalid. This model only
+// works in thinking mode." — nó chỉ nhận `thinkingLevel: low|high`. Ngược lại 2.5 KHÔNG hiểu
+// `thinkingLevel` (400 "Thinking level is not supported"). Nên phải rẽ theo đời, không ép chung.
+// Hệ quả tiền: mọi call Pro giờ luôn tốn ~130–250 token nghĩ, không còn tắt hẳn được.
+const isGemini3 = (m: string) => /^gemini-([3-9]|\d{2})/.test(m)
+function thinkingCfgOf(model: string, think?: number): any {
+  const budget = think ?? (model.includes('pro') ? 128 : 0)
+  if (!isGemini3(model)) return { thinkingBudget: budget }
+  return { thinkingLevel: budget >= 4096 ? 'high' : 'low' }
+}
+// ── RECITATION — lỗi Gemini CHẶN OUTPUT vì nó khớp nguyên văn dữ liệu huấn luyện ────────────
+// Ta bóc NGUYÊN VĂN trang sách/đề thi ⇒ đúng thứ bộ lọc này sinh ra để chặn. `finishReason:'RECITATION'`,
+// `content` RỖNG, HTTP vẫn 200 — nên nó KHÔNG phải lỗi mạng, retry y hệt thường cũng ra y hệt.
+// Cách Google khuyến nghị (ai.google.dev/gemini-api/docs/troubleshooting): "make prompt / context as
+// unique as possible and use a higher temperature". Nên retry phải ĐỔI ĐIỀU KIỆN: nâng temperature dần
+// + thêm 1 câu salt làm ngữ cảnh khác đi. Hết lượt thì báo rõ cách người dùng tự gỡ, đừng để
+// "Gemini trả rỗng (RECITATION)" — người đọc không biết phải làm gì.
+// ⚠ CHƯA verify được với chính file gây lỗi của CEO (không repro được bằng input tự nghĩ) — đây là
+// áp đúng hướng dẫn hãng, không phải đã đo thắng. Lần sau dính, xem `citationMetadata` log ở console.
+const RECITATION_TEMPS = [undefined, 1.4, 1.9] // lần 1 để mặc định, sau đó nâng dần
+const RECITATION_SALT = '\n\nGhi chú xử lý (không in ra kết quả): chỉ trích xuất đúng nội dung trong ảnh đính kèm, không lấy từ trí nhớ.'
+function loiRecitation(model: string): Error {
+  return new Error(
+    `Gemini CHẶN kết quả (RECITATION) — nó nhận ra nội dung trùng nguyên văn tài liệu đã học nên không xuất. ` +
+    `Đã thử lại ${RECITATION_TEMPS.length} lần với temperature cao dần, vẫn bị chặn. Cách gỡ: ` +
+    `(1) cắt nhỏ — mỗi lần 1 trang / nửa trang thay vì cả file; ` +
+    `(2) đổi model sang ${model.includes('lite') ? 'Flash' : 'Flash-Lite'}; ` +
+    `(3) nếu vẫn chặn thì nhập tay trang đó. Đây là bộ lọc bản quyền của Google, không phải lỗi kho.`,
+  )
+}
+// Gọi 1 lần + ĐẾM TIỀN. Tách riêng vì retry RECITATION phải tính tiền TỪNG LẦN: lần bị chặn vẫn bị
+// tính input token (ảnh là phần đắt nhất), không ghi nhận = đồng hồ báo thiếu tiền thật đã tiêu.
+async function geminiOnce(model: string, key: string, parts: any[], genCfg: any) {
   const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ contents: [{ parts }], generationConfig: genCfg }),
   })
   if (!res.ok) throw new Error(`Gemini API lỗi ${res.status}: ${(await res.text()).slice(0, 300)}`)
   const data = await res.json()
-  // Soi chi phí từng call ngay tại console: prompt/output/THINKING token.
-  const u = data?.usageMetadata
-  if (u) console.info(`[gemini ${model}] tokens — in:${u.promptTokenCount ?? 0} out:${u.candidatesTokenCount ?? 0} think:${u.thoughtsTokenCount ?? 0}`)
-  recordUsage({ in: u?.promptTokenCount ?? 0, out: u?.candidatesTokenCount ?? 0, think: u?.thoughtsTokenCount ?? 0 }, model)
+  const u = data?.usageMetadata ?? {}
+  const usage: GeminiUsage = { in: u.promptTokenCount ?? 0, out: u.candidatesTokenCount ?? 0, think: u.thoughtsTokenCount ?? 0 }
+  console.info(`[gemini ${model}] tokens — in:${usage.in} out:${usage.out} think:${usage.think}`)
+  recordUsage(usage, model)
   const cand = data?.candidates?.[0]
-  const txt: string = (cand?.content?.parts ?? []).map((p: any) => p.text ?? '').join('')
-  if (cand?.finishReason === 'MAX_TOKENS') throw new Error('AI bị CẮT do output quá dài (JSON dở) → giảm "Số biến thể" hoặc cho input ngắn hơn rồi thử lại.')
-  if (!txt.trim()) throw new Error(`Gemini trả rỗng${cand?.finishReason ? ` (lý do: ${cand.finishReason})` : ''}.`)
-  return txt
+  const text: string = (cand?.content?.parts ?? []).map((p: any) => p.text ?? '').join('')
+  // citationMetadata = Google chỉ đích danh nguồn nó cho là bị chép — manh mối DUY NHẤT để chẩn đoán.
+  if (cand?.citationMetadata) console.warn('[gemini citationMetadata]', JSON.stringify(cand.citationMetadata).slice(0, 600))
+  return { text, finish: cand?.finishReason as string | undefined, usage }
+}
+// Chạy có retry khi bị RECITATION. MAX_TOKENS / rỗng vì lý do khác thì KHÔNG retry (retry vô ích, chỉ tốn tiền).
+async function geminiVoiRetry(model: string, key: string, basePrompt: string, files: GeminiFile[], genCfg: any, loiMaxTokens: string) {
+  let last: { text: string; finish?: string; usage: GeminiUsage } | null = null
+  for (let i = 0; i < RECITATION_TEMPS.length; i++) {
+    const prompt = i === 0 ? basePrompt : basePrompt + RECITATION_SALT
+    const parts: any[] = [{ text: prompt }]
+    for (const f of files) parts.push({ inline_data: { mime_type: f.mimeType, data: f.dataBase64 } })
+    const cfg = RECITATION_TEMPS[i] === undefined ? genCfg : { ...genCfg, temperature: RECITATION_TEMPS[i] }
+    last = await geminiOnce(model, key, parts, cfg)
+    if (last.finish === 'MAX_TOKENS') throw new Error(loiMaxTokens)
+    if (last.text.trim()) return last
+    if (last.finish !== 'RECITATION') break // rỗng vì lý do khác (SAFETY, OTHER…) → retry không cứu được
+    console.warn(`[gemini] RECITATION lần ${i + 1}/${RECITATION_TEMPS.length} — thử lại với temperature cao hơn`)
+  }
+  if (last?.finish === 'RECITATION') throw loiRecitation(model)
+  throw new Error(`Gemini trả rỗng${last?.finish ? ` (lý do: ${last.finish})` : ''}.`)
+}
+export async function callGeminiJson(prompt: string, opts?: { model?: string; files?: GeminiFile[]; think?: number; schema?: any }): Promise<string> {
+  const key = import.meta.env.VITE_GEMINI_KEY as string | undefined
+  if (!key) throw new Error('Chưa có VITE_GEMINI_KEY trong .env.local → luồng AUTO chưa bật. Dùng MANUAL hoặc thêm key.')
+  const model = opts?.model || (import.meta.env.VITE_GEMINI_MODEL as string | undefined) || 'gemini-2.5-flash'
+  // responseSchema (constrained decoding) = ép JSON hợp lệ + tự escape → hết lỗi "Bad escaped"/"Expected , or }"
+  // do LaTeX 1-backslash hay " chưa escape (clone/batch/lý-thuyết hay dính). Caller truyền schema theo shape.
+  const genCfg: any = { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: thinkingCfgOf(model, opts?.think) }
+  if (opts?.schema) genCfg.responseSchema = opts.schema
+  const r = await geminiVoiRetry(model, key, prompt, opts?.files ?? [], genCfg,
+    'AI bị CẮT do output quá dài (JSON dở) → giảm "Số biến thể" hoặc cho input ngắn hơn rồi thử lại.')
+  return r.text
 }
 
 // ── SPIKE Phase 2 (ingest): gọi Gemini trả KÈM token usage (đo chi phí) + prompt dò câu+bbox hình ──
@@ -1130,25 +1199,11 @@ export async function callGeminiRich(prompt: string, opts?: { model?: string; fi
   const key = import.meta.env.VITE_GEMINI_KEY as string | undefined
   if (!key) throw new Error('Chưa có VITE_GEMINI_KEY trong .env.local.')
   const model = opts?.model || 'gemini-2.5-flash'
-  const parts: any[] = [{ text: prompt }]
-  for (const f of opts?.files ?? []) parts.push({ inline_data: { mime_type: f.mimeType, data: f.dataBase64 } })
-  const thinkingBudget = opts?.think ?? (model.includes('pro') ? 128 : 0)
-  const genCfg: any = { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: { thinkingBudget } }
+  const genCfg: any = { responseMimeType: 'application/json', maxOutputTokens: 65536, thinkingConfig: thinkingCfgOf(model, opts?.think) }
   if (opts?.schema) genCfg.responseSchema = opts.schema
-  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ contents: [{ parts }], generationConfig: genCfg }),
-  })
-  if (!res.ok) throw new Error(`Gemini API lỗi ${res.status}: ${(await res.text()).slice(0, 300)}`)
-  const data = await res.json()
-  const u = data?.usageMetadata ?? {}
-  const cand = data?.candidates?.[0]
-  const text: string = (cand?.content?.parts ?? []).map((p: any) => p.text ?? '').join('')
-  if (cand?.finishReason === 'MAX_TOKENS') throw new Error('AI bị CẮT (JSON dở) — trang quá dày, thử trang ngắn hơn / ít câu hơn.')
-  if (!text.trim()) throw new Error(`Gemini trả rỗng${cand?.finishReason ? ` (${cand.finishReason})` : ''}.`)
-  const usage: GeminiUsage = { in: u.promptTokenCount ?? 0, out: u.candidatesTokenCount ?? 0, think: u.thoughtsTokenCount ?? 0 }
-  recordUsage(usage, model)
-  return { text, usage }
+  const r = await geminiVoiRetry(model, key, prompt, opts?.files ?? [], genCfg,
+    'AI bị CẮT (JSON dở) — trang quá dày, thử trang ngắn hơn / ít câu hơn.')
+  return { text: r.text, usage: r.usage }
 }
 
 // Câu suy ra từ ingest 1 trang: text fields + cờ có hình + bbox hình (Gemini format [ymin,xmin,ymax,xmax] 0–1000).
@@ -1230,7 +1285,7 @@ export function khoTbls(mon: KhoMon): { cauTbl: string; banDoTbl: string; lyThuy
 export type ChuDeOption = { ma_chu_de: string; ten_chu_de: string; soDang: number }
 export async function listChuDeOptions(mon: KhoMon, khoi: string): Promise<ChuDeOption[]> {
   const { banDoTbl } = khoTbls(mon)
-  const { data, error } = await supabase.from(banDoTbl).select('ma_chu_de, ten_chu_de').eq('khoi', khoi).limit(LIMIT)
+  const { data, error } = await supabase.from(banDoTbl).select('ma_chu_de, ten_chu_de').eq('khoi', khoi).not('ma_dang', 'like', '%000000').limit(LIMIT)
   if (error) throw error
   const m = new Map<string, ChuDeOption>()
   for (const r of (data ?? []) as any[]) {
@@ -1246,7 +1301,7 @@ export async function listDangByChuDe(mon: KhoMon, khoi: string, maChuDe: string
   const { banDoTbl } = khoTbls(mon)
   const { data, error } = await supabase.from(banDoTbl)
     .select('ma_dang, ten_dang, ma_chuyen_de, ten_chuyen_de, mo_ta_ngan')
-    .eq('khoi', khoi).eq('ma_chu_de', maChuDe).order('ma_dang').limit(LIMIT)
+    .eq('khoi', khoi).eq('ma_chu_de', maChuDe).not('ma_dang', 'like', '%000000').order('ma_dang').limit(LIMIT)
   if (error) throw error
   return (data ?? []).map((r: any) => ({ ma_dang: r.ma_dang, ten_dang: r.ten_dang, ma_chuyen_de: r.ma_chuyen_de, ten_chuyen_de: r.ten_chuyen_de, mo_ta_ngan: r.mo_ta_ngan ?? null }))
 }
@@ -1570,6 +1625,34 @@ export async function deleteDaiDang(ma_dang: string): Promise<void> {
   const { error } = await supabase.from('dai_ban_do').delete().eq('ma_dang', ma_dang)
   if (error) throw error
 }
+// Chuyển 1 dạng qua chuyên đề đích — RPC transactional (mig 202609181123). Trả mã dạng MỚI.
+// Đích phải có ≥1 dạng khác đang tồn tại (chuyên đề mới không có ⇒ tạo bằng luồng riêng).
+export async function chuyenDaiDang(ma_dang: string, ma_chuyen_de_moi: string): Promise<string> {
+  const { data, error } = await supabase.rpc('fn_dai_chuyen_dang', {
+    p_ma_dang: ma_dang, p_ma_chuyen_de_moi: ma_chuyen_de_moi,
+  })
+  if (error) throw error
+  return String(data)
+}
+// Chuyển CẢ chuyên đề (kèm mọi dạng con) sang chủ đề đích — RPC (mig 202609181233).
+// Trả mã chuyên đề MỚI (max STT+1 trong chủ đề đích, mọi dạng bảo tồn 2 số STT cuối).
+export async function chuyenDaiChuyenDe(ma_chuyen_de: string, ma_chu_de_moi: string): Promise<string> {
+  const { data, error } = await supabase.rpc('fn_dai_chuyen_chuyen_de', {
+    p_ma_chuyen_de: ma_chuyen_de, p_ma_chu_de_moi: ma_chu_de_moi,
+  })
+  if (error) throw error
+  return String(data)
+}
+// Gộp CÂU của dạng A → dạng B (chỉ đổi dang_chinh) — mig 202609181310.
+// KHÔNG đụng cụm/lý thuyết/thuộc tính/tiền đề/text-ref. CEO tự gộp lý thuyết + xoá A sau.
+// Trả {so_cau, so_menh_de}.
+export async function gopDaiCauDang(ma_dang_nguon: string, ma_dang_dich: string): Promise<{ so_cau: number; so_menh_de: number }> {
+  const { data, error } = await supabase.rpc('fn_dai_gop_cau_dang', {
+    p_ma_dang_nguon: ma_dang_nguon, p_ma_dang_dich: ma_dang_dich,
+  })
+  if (error) throw error
+  return data as { so_cau: number; so_menh_de: number }
+}
 
 // ── Group phẳng → cây Chủ đề → Chuyên đề → Dạng ──────────────────
 export type ChuyenDeNode = {
@@ -1612,8 +1695,8 @@ export function groupDai(rows: DaiDang[]): ChuDeNode[] {
 //
 // ⚠ Tiền tố DÀI KHÁC NHAU (K = 1 ký tự, T1/T2/T3 = 2) ⇒ CẤM cắt mã bằng chỉ số tuyệt
 // đối (`ma.slice(0,6)`). Mọi phép cắt theo vị trí phải đi qua `tachTienTo` bên dưới.
-export type KhoKey = 'dai' | 'hinh' | 'hinhgt' | 'khtn'
-export const KHO_TIEN_TO: Record<KhoKey, string> = { dai: 'T1', hinh: 'T2', hinhgt: 'T3', khtn: 'K' }
+export type KhoKey = 'dai' | 'hinh' | 'hinhgt' | 'khtn' | 'hinhhoc'
+export const KHO_TIEN_TO: Record<KhoKey, string> = { dai: 'T1', hinh: 'T2', hinhgt: 'T3', khtn: 'K', hinhhoc: 'HH' }
 // V = Văn, A = Anh — để dành, chưa có kho.
 const RE_TIEN_TO = /^(T[123]|K|V|A)(?=[0-9])/
 /** Tách mã thành (tiền tố kho, phần vị trí). Mã cũ chưa có tiền tố → tienTo = ''. */
@@ -1635,20 +1718,28 @@ export const soThuTuCua = (ma: string, from: number) => tachTienTo(ma).vt.slice(
 // Append-only: thứ tự mới = max anh em + 1 (xoá để lại lỗ, không đánh lại số).
 const pad2 = (n: number) => String(n).padStart(2, '0')
 export const khoiCode = (khoi: string) => khoi.padStart(2, '0')
-const maxOrd = (codes: string[], from: number): number => {
-  // cắt trên PHẦN VỊ TRÍ, không phải mã thô — nếu không thì mã có tiền tố lệch 1-2 ký tự
-  // và số thứ tự đọc ra sai ⇒ mã mới đè lên mã đang có.
-  const ords = codes.map((c) => parseInt(soThuTuCua(c, from), 10)).filter((n) => Number.isFinite(n))
+// ⚠ 18/09/2026 — sửa bug sinh mã (5 dòng K7 nối chuỗi + 11 dòng K7 chưa T1 sinh SAU
+// migration 202608141259). Bản CŨ: `parseInt(soThuTuCua(c, from))` nuốt CẢ phần vị trí
+// còn lại → nếu mã anh em đang lệch chuẩn (len>10) thì trả số cực lớn (vd 11103),
+// pad2 giữ nguyên không cắt → mã mới ghép ra len 12-15. Bản MỚI: lọc anh em phải là
+// PARENT + đúng 2 digit, đọc đúng 2 ký tự cuối. Mã rác không match ⇒ bị bỏ khi tính
+// max, không bị "nhiễm". Cross-check bằng `fn_dai_kiem_ma()` sau khi build.
+const maxOrdCon = (codes: string[], parent: string): number => {
+  const need = parent.length + 2
+  const ords = codes
+    .filter((c) => c.length === need && c.startsWith(parent) && /^\d{2}$/.test(c.slice(-2)))
+    .map((c) => parseInt(c.slice(-2), 10))
   return ords.length ? Math.max(...ords) : 0
 }
 export function suggestChuDeMa(khoi: string, tree: ChuDeNode[], tienTo = KHO_TIEN_TO.dai): string {
-  return tienTo + khoiCode(khoi) + pad2(maxOrd(tree.map((c) => c.ma_chu_de), 2) + 1)
+  const parent = tienTo + khoiCode(khoi)
+  return parent + pad2(maxOrdCon(tree.map((c) => c.ma_chu_de), parent) + 1)
 }
 export function suggestChuyenDeMa(cdCode: string, chude: ChuDeNode | null): string {
-  return cdCode + pad2(maxOrd((chude?.chuyenDes ?? []).map((x) => x.ma_chuyen_de), 4) + 1)
+  return cdCode + pad2(maxOrdCon((chude?.chuyenDes ?? []).map((x) => x.ma_chuyen_de), cdCode) + 1)
 }
 export function suggestDangMa(cdeCode: string, chuyende: ChuyenDeNode | null): string {
-  return cdeCode + pad2(maxOrd((chuyende?.dangs ?? []).map((d) => d.ma_dang), 6) + 1)
+  return cdeCode + pad2(maxOrdCon((chuyende?.dangs ?? []).map((d) => d.ma_dang), cdeCode) + 1)
 }
 
 // ════════════════════════════════════════════════════════════════
@@ -1679,13 +1770,14 @@ export function groupMap(rows: MapRow[]): Tier1Node[] {
   return [...m.values()]
 }
 export function suggestT1Ma(khoi: string, tree: Tier1Node[], tienTo = KHO_TIEN_TO.dai): string {
-  return tienTo + khoiCode(khoi) + pad2(maxOrd(tree.map((t) => t.t1Ma), 2) + 1)
+  const parent = tienTo + khoiCode(khoi)
+  return parent + pad2(maxOrdCon(tree.map((t) => t.t1Ma), parent) + 1)
 }
 export function suggestT2Ma(t1Code: string, t1: Tier1Node | null): string {
-  return t1Code + pad2(maxOrd((t1?.tier2s ?? []).map((x) => x.t2Ma), 4) + 1)
+  return t1Code + pad2(maxOrdCon((t1?.tier2s ?? []).map((x) => x.t2Ma), t1Code) + 1)
 }
 export function suggestLeafMa(t2Code: string, t2: Tier2Node | null): string {
-  return t2Code + pad2(maxOrd((t2?.leaves ?? []).map((d) => d.leafMa), 6) + 1)
+  return t2Code + pad2(maxOrdCon((t2?.leaves ?? []).map((d) => d.leafMa), t2Code) + 1)
 }
 
 // ── ĐẠI: map qua MapRow ──────────────────────────────────────────
@@ -2095,7 +2187,7 @@ export async function countYByDangHinh(): Promise<Record<string, number>> {
 // ── KHTN: bản đồ (clone shape Đại, bảng khtn_*) — 1 cây Chủ-đề→Chuyên-đề→Dạng, KHÔNG nhánh ──
 export async function listKhtnMap(khoi: string): Promise<MapRow[]> {
   const { data, error } = await supabase.from('khtn_ban_do').select('*')
-    .eq('khoi', khoi).order('ma_chu_de').order('ma_chuyen_de').order('ma_dang').limit(LIMIT)
+    .eq('khoi', khoi).not('ma_dang', 'like', '%000000').order('ma_chu_de').order('ma_chuyen_de').order('ma_dang').limit(LIMIT)
   if (error) throw error
   return (data ?? []).map((r: any) => ({
     leafMa: r.ma_dang, khoi: r.khoi, t1Ma: r.ma_chu_de, t1Ten: r.ten_chu_de,
@@ -2160,7 +2252,7 @@ export async function deleteKhtnChuyenDeLyThuyet(ma_chuyen_de: string): Promise<
 // `tai_lieu.mon` của tài liệu Hình giải tích vẫn 'Toán' (RBAC/billing sạch) — phân biệt qua `tai_lieu.nhanh`.
 export async function listHgtMap(khoi: string): Promise<MapRow[]> {
   const { data, error } = await supabase.from('hgt_ban_do').select('*')
-    .eq('khoi', khoi).order('ma_chu_de').order('ma_chuyen_de').order('ma_dang').limit(LIMIT)
+    .eq('khoi', khoi).not('ma_dang', 'like', '%000000').order('ma_chu_de').order('ma_chuyen_de').order('ma_dang').limit(LIMIT)
   if (error) throw error
   return (data ?? []).map((r: any) => ({
     leafMa: r.ma_dang, khoi: r.khoi, t1Ma: r.ma_chu_de, t1Ten: r.ten_chu_de,
@@ -2264,10 +2356,18 @@ export async function duyetFormTnBatch(mon: KhoMon, ids: string[], nguoiDuyet: s
 // ══ HÀNG DUYỆT HỢP NHẤT (spec-kho-chuan.md §3, mig 202609080938) — màn "Duyệt lời giải AI" thành 1 hàng đợi nhiều bộ lọc ══
 // Bộ lọc = trạng thái thật trong bảng câu (da_duyet=false / kiem_may), KHÔNG có bảng hàng đợi riêng. List/đếm/duyệt/từ chối
 // đều là function Postgres; ở đây chỉ gọi rpc + render. `cau_moi` = câu sau NGÀY BẬT chưa duyệt — cửa 1 đang chặn khỏi HS.
-export type HangDuyetLoc = 'cau_moi' | 'moi' | 'nghi' | 'khong_kiem' | 'ton_dong'
+// 'dung_sai' (CEO 12/09, mig 202609122218): câu Đúng/Sai là LOẠI RIÊNG — 5 bộ lọc cũ loại nó ra; duyệt theo TỪNG MỆNH ĐỀ
+// (bảng con <mon>_cau_menh_de, mỗi mệnh đề 1 dạng) ở DuyetDungSaiTab, không đi qua thẻ DuyetCauTab.
+// 'chua_dang' (CEO 13/09): câu nhập kho không xác định được dạng nằm ở DẠNG CHỜ (ma_dang kết thúc '000000', mig 202609131706).
+// DB chặn duyệt khi còn dạng chờ (trigger trg_chan_duyet_dang_cho) — người phải chọn dạng thật rồi mới Duyệt.
+export type HangDuyetLoc = 'cau_moi' | 'moi' | 'nghi' | 'khong_kiem' | 'ton_dong' | 'chua_dang' | 'dung_sai'
 export const HANG_DUYET_LABEL: Record<HangDuyetLoc, string> = {
   cau_moi: 'Câu mới chờ duyệt', moi: 'Lời giải mới từ Claude', nghi: 'Máy nghi đáp số', khong_kiem: 'Không kiểm được', ton_dong: 'Tồn đọng (AI cũ)',
+  chua_dang: 'Chưa phân dạng', dung_sai: 'Đúng/Sai',
 }
+/** Dạng chờ "Chưa phân dạng" — khớp public._kho_la_dang_cho(). Ẩn khỏi cây bản đồ/picker; câu ở dạng này không duyệt được. */
+export const laDangCho = (ma: string | null | undefined): boolean => !!ma && ma.endsWith('000000')
+// Các hàm đọc bản đồ (listDaiDang/listHgtMap/listKhtnMap/listChuDeOptions/listDangByChuDe) lọc `.not('ma_dang','like','%000000')`.
 export type CauHangDuyet = {
   ma_cau: string; dang_chinh: string; ten_dang: string; ten_chuyen_de: string; khoi: string; loai_cau: string
   noi_dung: string; lua_chon: string[] | null; menh_de: MenhDe[] | null; dap_an: string | null; loi_giai: string | null
@@ -2290,7 +2390,7 @@ export async function demHangDuyet(nhanh: KhoNhanh[]): Promise<DemHangDuyet[]> {
 }
 // Duyệt = áp sửa (key vắng = giữ nguyên; '' = xoá) + da_duyet + duyet_nguon='nguoi' trong 1 transaction.
 // Sửa đáp số ⇒ DB thu hồi mọi form TN của câu (trả thu_hoi_form để báo người).
-export type SuaCauDuyet = { noi_dung?: string; dap_an?: string | null; loi_giai?: string | null; dang_chinh?: string; ma_cum?: string | null }
+export type SuaCauDuyet = { noi_dung?: string; dap_an?: string | null; loi_giai?: string | null; dang_chinh?: string; ma_cum?: string | null; lua_chon?: string[] }
 export async function duyetCauHangDuyet(mon: KhoMon, maCau: string, nguoi: string, sua: SuaCauDuyet = {}): Promise<{ thu_hoi_form: number; doi_dap_an: boolean; doi_dang: boolean }> {
   const { data, error } = await supabase.rpc('fn_kho_duyet_cau', { p_mon: mon, p_ma_cau: maCau, p_nguoi: nguoi, p_sua: sua })
   if (error) throw error
@@ -2300,6 +2400,41 @@ export async function duyetCauHangDuyet(mon: KhoMon, maCau: string, nguoi: strin
 export async function tuChoiCauHangDuyet(mon: KhoMon, maCau: string, nguoi: string, lyDo: string): Promise<void> {
   const { error } = await supabase.rpc('fn_kho_tu_choi_cau', { p_mon: mon, p_ma_cau: maCau, p_nguoi: nguoi, p_ly_do: lyDo })
   if (error) throw error
+}
+
+// ══ DUYỆT ĐÚNG/SAI THEO MỆNH ĐỀ (CEO 12/09, mig 202609121432 + 202609122218) ══
+// Mỗi mệnh đề là 1 dạng riêng ⇒ 1 câu ĐS ~ N KP đo cùng lúc. Dòng bảng con <mon>_cau_menh_de = chân lý về dạng/duyệt của
+// mệnh đề; jsonb menh_de trên câu cha là đường ghi cũ (createCauDungSai), trigger sync xuống. `con === null` = mệnh đề chưa có
+// dòng con (ma_dang jsonb rớt sau renumber) ⇒ người phải chọn dạng rồi duyệt. Câu cha chỉ duyệt được khi MỌI mệnh đề đã duyệt.
+export type MenhDeCon = {
+  id: string; dang_chinh: string; ten_dang: string; ten_chuyen_de: string; noi_dung: string; dung: boolean; loi_giai: string | null
+  da_duyet: boolean; duyet_at: string | null; dang_ai_de_xuat: string | null
+}
+export type MenhDeHop = { thu_tu: number; noi_dung: string | null; dap_an: 'D' | 'S' | null; ma_dang: string | null; loi_giai: string | null; con: MenhDeCon | null }
+export type CauDungSaiDuyet = {
+  ma_cau: string; dang_chinh: string; ten_dang: string; ten_chuyen_de: string; khoi: string
+  noi_dung: string; loi_giai: string | null; anh_de: string | null; anh_dap_an: string | null; nguon: string; nguon_giai: string; created_at: string
+  ma_cum: string | null; ten_cum: string | null; da_duyet: boolean; kho_chuan: boolean; dang_ai_de_xuat: string | null; ten_de_goc: string | null
+  so_menh_de: number; so_da_duyet: number; so_thieu_dang: number; menh_de_hop: MenhDeHop[]
+}
+export async function listHangDuyetDs(mon: KhoMon, khoi?: string | null): Promise<CauDungSaiDuyet[]> {
+  const { data, error } = await supabase.rpc('fn_kho_hang_duyet_ds', { p_mon: mon, p_khoi: khoi || null, p_limit: LIMIT })
+  if (error) throw error
+  return (data ?? []) as CauDungSaiDuyet[]
+}
+// Duyệt 1 mệnh đề = áp sửa (key vắng = giữ) + ký; DB ghi cả bảng con và jsonb cha trong 1 tx. Trả mệnh đề sau ghi để cha vá tại chỗ.
+export type SuaMenhDe = { dang_chinh?: string; noi_dung?: string; dung?: boolean; loi_giai?: string | null }
+export async function duyetMenhDe(mon: KhoMon, maCau: string, thuTu: number, nguoi: string, sua: SuaMenhDe = {}): Promise<MenhDeCon & { thu_tu: number }> {
+  const { data, error } = await supabase.rpc('fn_kho_duyet_menh_de', { p_mon: mon, p_ma_cau: maCau, p_thu_tu: thuTu, p_nguoi: nguoi, p_sua: sua })
+  if (error) throw error
+  return data as MenhDeCon & { thu_tu: number }
+}
+// Duyệt câu cha ĐS — DB từ chối nếu còn mệnh đề chưa duyệt/chưa gán dạng. duyetHet=true: ký hết mệnh đề theo hiện trạng trước
+// (nút "Duyệt tất cả batch"); câu có mệnh đề thiếu dạng sẽ RAISE ⇒ batch bỏ qua câu đó.
+export async function duyetCauDs(mon: KhoMon, maCau: string, nguoi: string, sua: SuaCauDuyet = {}, duyetHet = false): Promise<{ so_menh_de: number; doi_dang: boolean }> {
+  const { data, error } = await supabase.rpc('fn_kho_duyet_cau_ds', { p_mon: mon, p_ma_cau: maCau, p_nguoi: nguoi, p_sua: sua, p_duyet_het: duyetHet })
+  if (error) throw error
+  return data as { so_menh_de: number; doi_dang: boolean }
 }
 
 export async function listMcqRule(mon: KhoMon): Promise<McqRule[]> {

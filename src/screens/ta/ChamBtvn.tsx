@@ -353,6 +353,8 @@ function ChotBuoiBanner({ lopId, buoiNgay, onDungBuoi, onChuyen }: {
 // ô nhập tại chỗ) · cỡ Nhỏ/Vừa/Lớn áp cho chữ + dấu + nét · phím tắt 1 2 3 D S T O R, Ctrl+Z.
 type Tool = 'but' | 'tay' | 'D' | 'S' | 'text' | 'tron' | 'cn'
 type Co = number // cỡ chữ kiểu Paint (14…72) — px trên ảnh rộng 800, ảnh khác tự tỉ lệ
+type Xoay = 0 | 90 | 180 | 270
+type Nen = { w: number; h: number; el: CanvasImageSource } // ảnh nền (đã xoay) — vẽ lên canvas nền + ghép khi lưu
 type Mark =
   | { k: 'net'; mau: string; tay: boolean; pts: { x: number; y: number }[] }
   | { k: 'dau'; loai: 'D' | 'S'; x: number; y: number; co: Co }
@@ -395,7 +397,14 @@ function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: R
   const [nhapText, setNhapText] = useState('')
   const nhapMoAt = useRef(0)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const imgRef = useRef<HTMLImageElement | null>(null)
+  // NỀN = ảnh gốc đã xoay theo góc của trang (PH hay nộp ảnh ngang/ngược — CEO 14/09). Xoay ≠ 0 ⇒ nền là canvas
+  // offscreen; Lưu ghép nền đã xoay + nét ⇒ PNG path_cham đứng đúng chiều, PH cũng thấy bản đứng.
+  const gocRef = useRef<HTMLImageElement | null>(null)
+  const [nen, setNen] = useState<Nen | null>(null)
+  const nenRef = useRef<Nen | null>(null)
+  nenRef.current = nen
+  const bgRef = useRef<HTMLCanvasElement>(null) // canvas NỀN (đồng bộ, không qua toBlob/blob URL — tab bị che vẫn đúng)
+  const xoayRef = useRef<Record<string, Xoay>>({}) // góc xoay CHƯA LƯU theo trang (như nháp nét)
   const marksRef = useRef<Record<string, Mark[]>>({}) // nháp theo TRANG (key = anh.id)
   const drawing = useRef(false)
   const toolRef = useRef<Tool>('but')
@@ -413,16 +422,55 @@ function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: R
   anhIdRef.current = anh?.id ?? ''
   const marks = () => (marksRef.current[anhIdRef.current] ??= [])
 
+  // Dựng nền từ ảnh gốc + góc xoay (đồng bộ). 0° dùng thẳng ảnh; khác 0 vẽ xoay vào canvas offscreen.
+  function dungNen(goc: HTMLImageElement, xoay: Xoay) {
+    if (xoay === 0) { setNen({ w: goc.naturalWidth, h: goc.naturalHeight, el: goc }); return }
+    const doc = xoay === 90 || xoay === 270
+    const cv = document.createElement('canvas')
+    cv.width = doc ? goc.naturalHeight : goc.naturalWidth
+    cv.height = doc ? goc.naturalWidth : goc.naturalHeight
+    const ctx = cv.getContext('2d')!
+    ctx.translate(cv.width / 2, cv.height / 2)
+    ctx.rotate((xoay * Math.PI) / 180)
+    ctx.drawImage(goc, -goc.naturalWidth / 2, -goc.naturalHeight / 2)
+    setNen({ w: cv.width, h: cv.height, el: cv })
+  }
   useEffect(() => {
-    setReady(false); imgRef.current = null; setNhap(null)
+    setReady(false); gocRef.current = null; setNen(null); setNhap(null)
     if (!src) return
     const img = new Image()
     img.crossOrigin = 'anonymous' // signed URL Supabase có CORS * — cần để canvas export không taint
-    img.onload = () => { imgRef.current = img; setReady(true); requestAnimationFrame(paint) }
+    img.onload = () => { gocRef.current = img; dungNen(img, xoayRef.current[anhIdRef.current] ?? 0) }
     img.onerror = () => alert('Không tải được ảnh — thử đóng mở lại.')
     img.src = src
     // eslint-disable-next-line
   }, [src])
+  // Vẽ nền + nét THẲNG (không rAF): tab bị che thì rAF không chạy → canvas giữ trang/góc cũ tới khi có sự kiện.
+  useEffect(() => {
+    const bg = bgRef.current
+    if (!nen || !bg) return
+    bg.width = nen.w; bg.height = nen.h
+    bg.getContext('2d')!.drawImage(nen.el, 0, 0)
+    setReady(true); paint()
+  }, [nen]) // eslint-disable-line
+
+  // Xoay 90° trang hiện tại: nền dựng lại + nét CHƯA LƯU xoay theo (toạ độ khung cũ W×H → khung mới H×W).
+  function xoay90(chieu: 1 | -1) {
+    const goc = gocRef.current, n = nenRef.current
+    if (!goc || !n || busy) return
+    const cu = xoayRef.current[anhIdRef.current] ?? 0
+    const moi = ((((cu + chieu * 90) % 360) + 360) % 360) as Xoay
+    xoayRef.current[anhIdRef.current] = moi
+    const W = n.w, H = n.h
+    const f = chieu === 1 ? (p: { x: number; y: number }) => ({ x: H - p.y, y: p.x }) : (p: { x: number; y: number }) => ({ x: p.y, y: W - p.x })
+    for (const m of marks()) {
+      if (m.k === 'net') m.pts = m.pts.map(f)
+      else if (m.k === 'hinh') { const a = f({ x: m.x1, y: m.y1 }), b = f({ x: m.x2, y: m.y2 }); m.x1 = a.x; m.y1 = a.y; m.x2 = b.x; m.y2 = b.y }
+      else { const q = f({ x: m.x, y: m.y }); m.x = q.x; m.y = q.y }
+    }
+    setNhap(null); setReady(false)
+    dungNen(goc, moi)
+  }
 
   // Phím tắt laptop (bỏ qua khi đang gõ trong ô nhập).
   useEffect(() => {
@@ -430,6 +478,8 @@ function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: R
       if ((e.target as HTMLElement)?.tagName === 'INPUT' || (e.target as HTMLElement)?.tagName === 'TEXTAREA') return
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undo(); return }
       if (e.ctrlKey || e.metaKey || e.altKey) return
+      if (e.key === '[') { xoay90(-1); return }
+      if (e.key === ']') { xoay90(1); return }
       const m = MAUS.find((x) => x.phim === e.key)
       if (m) { setMau(m.v); if (toolRef.current !== 'text') setTool('but'); return }
       const t = PHIM_TOOL[e.key.toLowerCase()]
@@ -441,9 +491,9 @@ function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: R
   }, [])
 
   function paint() {
-    const cv = canvasRef.current, img = imgRef.current
-    if (!cv || !img) return
-    if (cv.width !== img.naturalWidth || cv.height !== img.naturalHeight) { cv.width = img.naturalWidth; cv.height = img.naturalHeight }
+    const cv = canvasRef.current, n = nenRef.current
+    if (!cv || !n) return
+    if (cv.width !== n.w || cv.height !== n.h) { cv.width = n.w; cv.height = n.h }
     const ctx = cv.getContext('2d')!
     ctx.clearRect(0, 0, cv.width, cv.height)
     const W = cv.width
@@ -522,18 +572,19 @@ function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: R
   }
 
   async function luu() {
-    const cv = canvasRef.current, img = imgRef.current
-    if (!cv || !img || busy) return
+    const cv = canvasRef.current, n = nenRef.current
+    if (!cv || !n || busy) return
     setBusy(true)
     try {
       const out = document.createElement('canvas')
-      out.width = img.naturalWidth; out.height = img.naturalHeight
+      out.width = n.w; out.height = n.h
       const ctx = out.getContext('2d')!
-      ctx.drawImage(img, 0, 0); ctx.drawImage(cv, 0, 0)
+      ctx.drawImage(n.el, 0, 0); ctx.drawImage(cv, 0, 0) // nền ĐÃ XOAY + nét ⇒ bản chấm đứng đúng chiều
       const blob = await new Promise<Blob>((res, rej) => out.toBlob((b) => (b ? res(b) : rej(new Error('Không xuất được ảnh'))), 'image/png'))
       const path = await uploadAnhCham(anh.id, blob)
       const u = await signUrls([path])
       marksRef.current[anh.id] = []
+      xoayRef.current[anh.id] = 0 // ảnh path_cham đã đứng, mở lại không xoay thêm
       setLocalUrls((cur) => ({ ...cur, ...u }))
       setAnhs((cur) => cur.map((a) => (a.id === anh.id ? { ...a, path_cham: path } : a)))
       reloadNop().catch(() => {})
@@ -551,6 +602,7 @@ function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: R
     try {
       await boAnhCham(anh.id)
       marksRef.current[anh.id] = []
+      xoayRef.current[anh.id] = 0
       setAnhs((cur) => cur.map((a) => (a.id === anh.id ? { ...a, path_cham: null } : a)))
       setNhap(null); setTick((n) => n + 1)
       reloadNop().catch(() => {})
@@ -576,12 +628,14 @@ function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: R
             {CO_LIST.map((c) => <option key={c} value={c}>{c}</option>)}
           </select>
         </label>
+        <button onClick={() => xoay90(-1)} disabled={!ready || busy} title="Xoay trái 90° (phím [)" aria-label="Xoay trái" className="min-h-[36px] min-w-[40px] rounded-lg border border-slate-200 px-2 text-[15px] font-bold text-slate-600 disabled:opacity-30">⟲</button>
+        <button onClick={() => xoay90(1)} disabled={!ready || busy} title="Xoay phải 90° (phím ])" aria-label="Xoay phải" className="min-h-[36px] min-w-[40px] rounded-lg border border-slate-200 px-2 text-[15px] font-bold text-slate-600 disabled:opacity-30">⟳</button>
         <button onClick={undo} disabled={!soNet} title="Ctrl+Z" className="min-h-[36px] rounded-lg border border-slate-200 px-2.5 text-[12.5px] font-semibold text-slate-600 disabled:opacity-30">↩ Hoàn tác</button>
         {anh?.path_cham && !daTra && (
           <button onClick={lamLai} disabled={busy} title="Bỏ bản chấm đã lưu của trang này, quay về ảnh gốc"
             className="min-h-[36px] rounded-lg border border-rose-200 px-2.5 text-[12.5px] font-semibold text-rose-600 active:bg-rose-50 disabled:opacity-40">↺ Làm lại trang</button>
         )}
-        <button onClick={luu} disabled={busy || !soNet || !ready}
+        <button onClick={luu} disabled={busy || !ready || (!soNet && !(xoayRef.current[anh?.id ?? ''] ?? 0))}
           className={`ml-auto min-h-[36px] rounded-lg px-3.5 text-[12.5px] font-bold text-white active:bg-teal-500 ${daLuu ? 'bg-emerald-600 disabled:opacity-100' : 'bg-teal-600 disabled:opacity-40'}`}>
           {busy ? 'Đang lưu…' : daLuu ? '✓ Đã lưu trang' : '💾 Lưu trang này'}</button>
       </div>
@@ -590,7 +644,8 @@ function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: R
         {!src && <p className="p-6 text-center text-[13px] text-white/60">Không có URL ảnh (thử mở lại tab BTVN).</p>}
         {src && (
           <div className="relative mx-auto w-full max-w-[1100px]">
-            <img src={src} alt="" className="block h-auto w-full select-none rounded-lg" draggable={false} />
+            {!nen && <p className="p-6 text-center text-[13px] text-white/60">Đang tải ảnh…</p>}
+            <canvas ref={bgRef} className={`block h-auto w-full select-none rounded-lg ${nen ? '' : 'hidden'}`} />
             <canvas ref={canvasRef} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up}
               className={`absolute inset-0 h-full w-full touch-none select-none rounded-lg ${conTro}`} data-tick={tick} />
             {nhap && (
@@ -614,7 +669,7 @@ function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: R
               <button key={a.id} onClick={() => { setIdx(i); setNhap(null) }} className={`relative shrink-0 overflow-hidden rounded-md border-2 ${i === idx ? 'border-teal-500' : 'border-transparent'}`}>
                 {s ? <img src={s} alt="" className="h-14 w-10 object-cover" draggable={false} /> : <span className="flex h-14 w-10 items-center justify-center bg-slate-100 text-[9px] text-slate-400">…</span>}
                 {a.path_cham && <span className="absolute right-0.5 top-0.5 rounded bg-rose-600 px-0.5 text-[8px] font-bold text-white">✎</span>}
-                {chuaLuu(a.id) && <span className="absolute bottom-0.5 left-0.5 h-2 w-2 rounded-full bg-amber-400" title="chưa lưu" />}
+                {(chuaLuu(a.id) || (xoayRef.current[a.id] ?? 0) !== 0) && <span className="absolute bottom-0.5 left-0.5 h-2 w-2 rounded-full bg-amber-400" title="chưa lưu" />}
               </button>
             )
           })}

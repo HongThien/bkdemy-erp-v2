@@ -56,7 +56,7 @@ export default function CaBoTroHS({ hocSinhId, desktop, onXong, LamBai, LamET }:
   }
 
   const wrap = (children: ReactNode) => (
-    <div className={desktop ? 'min-h-screen bg-[#f4f7fb] px-8 py-6' : 'mx-auto min-h-screen max-w-md bg-ios px-4 pb-10 pt-[calc(14px+env(safe-area-inset-top))]'}>
+    <div className={desktop ? 'min-h-screen bg-[#f4f7fb] px-8 py-6' : 'mx-auto min-h-screen max-w-md bg-ios px-4 pb-10 pt-[calc(14px+env(safe-area-inset-top))] md:max-w-3xl'}>
       <div className={desktop ? 'mx-auto max-w-3xl' : ''}>{children}</div>
     </div>
   )
@@ -247,7 +247,7 @@ export function RetestHS({ hocSinhId, onXong, LamET }: { hocSinhId: string; onXo
   useEffect(() => { tai() }, [])
   if (test) return <LamET test={test} hocSinhId={hocSinhId} onXong={() => { setTest(null); tai() }} />
   return (
-    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10 pt-[calc(14px+env(safe-area-inset-top))]">
+    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10 pt-[calc(14px+env(safe-area-inset-top))] md:max-w-3xl">
       <div className="mb-4 flex items-center gap-3">
         <button onClick={onXong} className={`flex h-[42px] w-[42px] items-center justify-center rounded-[14px] bg-white text-[18px] ${SHADOW}`}>‹</button>
         <p className="text-[19px] font-bold tracking-tight text-ph-label">Bài kiểm tra lại</p>

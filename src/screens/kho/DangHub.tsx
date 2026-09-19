@@ -292,10 +292,12 @@ type UpFile = { name: string; mimeType: string; dataBase64: string; isImage: boo
 const toCND = (r: ReviewItem) => ({ noi_dung: r.noi_dung.trim(), dap_an: r.dap_an.trim() || null, loi_giai: r.loi_giai.trim() || null, lua_chon: r.luaChon && r.luaChon.length ? r.luaChon : null, anh_de: r.anhDe, anh_dap_an: r.anhDapAn, nguon_giai: r.nguonGiai })
 const toRI = (c: { noi_dung: string; dap_an: string | null; loi_giai: string | null; lua_chon?: string[] | null; anh_de?: string | null; anh_dap_an?: string | null }, isGoc = false): ReviewItem =>
   ({ noi_dung: c.noi_dung, dap_an: c.dap_an ?? '', loi_giai: c.loi_giai ?? '', luaChon: c.lua_chon ?? null, anhDe: c.anh_de ?? null, anhDapAn: c.anh_dap_an ?? null, nguonGiai: 'nguoi', approved: true, isGoc })
+// CHỈ FLASH — CEO chốt 19/09/2026 bỏ hẳn Pro. Google gỡ `gemini-2.5-pro` (404), bản thay
+// `gemini-3.1-pro-preview` đắt ~7× Flash VÀ không tắt nghĩ được ⇒ không đáng. Muốn thêm lại
+// thì đọc `thinkingCfgOf` trong lib/kho/api.ts trước (Gemini 3 từ chối thinkingBudget: 0).
 const MODELS = [
   { value: 'gemini-2.5-flash-lite', label: 'Flash-Lite', sub: 'nhanh nhất' },
   { value: 'gemini-2.5-flash', label: 'Flash', sub: 'cân bằng (đề xuất)' },
-  { value: 'gemini-2.5-pro', label: 'Pro', sub: '⚠ đắt ~4× Flash — chỉ khi Flash đọc trượt' },
 ]
 function fileToBase64(f: File): Promise<string> {
   return new Promise((res, rej) => {
@@ -329,6 +331,8 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, presetGoc, onClose, o
   const [items, setItems] = useState<ReviewItem[]>([])
   const [showVariants, setShowVariants] = useState(false)
   const [vi, setVi] = useState(0)  // biến thể đang xem
+  // Duyệt luôn lúc clone (Thùy 12/09) — nhân sự tự tin đúng thì tích, khỏi để hậu kiểm sau.
+  const [duyetLuon, setDuyetLuon] = useState(false)
   const [parseErr, setParseErr] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
   const [showPrompt, setShowPrompt] = useState(false)
@@ -452,7 +456,7 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, presetGoc, onClose, o
         }
       }
       setGoc(null); setItems(acc); setVi(0)
-      if (!acc.length) setParseErr('AI không tách được câu nào — thử ảnh nét hơn / model Pro.')
+      if (!acc.length) setParseErr('AI không tách được câu nào — thử ảnh nét hơn / cắt nhỏ từng trang / đổi model.')
     } catch (e: any) { setError(e.message ?? String(e)) } finally { setBusy(false) }
   }
   function parseText() {
@@ -471,11 +475,11 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, presetGoc, onClose, o
         const variants = items.filter((v) => v.approved && v.noi_dung.trim())
         if (presetGoc) {
           // Clone từ bài CÓ SẴN: không đẻ gốc mới, biến thể bám vào câu đó + thừa kế cụm của nó.
-          const n = await saveCloneVariants({ goc: presetGoc, variants: variants.map(toCND) }, cauTbl)
-          alert(`Đã lưu ${n} biến thể cho ${presetGoc.ma_cau}${presetGoc.ma_cum ? ' (cùng cụm bài)' : ''}.`)
+          const n = await saveCloneVariants({ goc: presetGoc, variants: variants.map(toCND), daDuyet: duyetLuon }, cauTbl)
+          alert(`Đã lưu ${n} biến thể cho ${presetGoc.ma_cau}${presetGoc.ma_cum ? ' (cùng cụm bài)' : ''}${duyetLuon ? ' — đã duyệt.' : ' — chờ hậu kiểm.'}`)
         } else {
-          const res = await saveCloneBatch({ dangChinh, loaiCau: loai, goc: toCND(goc), variants: variants.map(toCND) }, cauTbl)
-          alert(`Đã lưu: 1 gốc + ${res.soClone} biến thể.`)
+          const res = await saveCloneBatch({ dangChinh, loaiCau: loai, goc: toCND(goc), variants: variants.map(toCND), daDuyet: duyetLuon }, cauTbl)
+          alert(`Đã lưu: 1 gốc + ${res.soClone} biến thể${duyetLuon ? ' — đã duyệt.' : ' — chờ hậu kiểm.'}`)
         }
       } else {
         const n = await saveCauBatch({ dangChinh, loaiCau: loai, items: items.filter((v) => v.approved && v.noi_dung.trim()).map(toCND) }, cauTbl)
@@ -731,8 +735,13 @@ function AiImportModal({ mode, dangChinh, tenDang, cauTbl, presetGoc, onClose, o
 
         <div className="flex items-center justify-end gap-2 border-t border-slate-200 px-6 py-4">
           {parsed && <span className="mr-auto text-[13px] text-slate-500"><b>{nApproved}</b> câu sẽ lưu</span>}
+          {isClone && (
+            <label className="flex cursor-pointer items-center gap-1.5 text-[13px] font-medium text-slate-600" title="Tích = lưu xong đánh dấu Đã duyệt ngay (ghi tôi + giờ duyệt), khỏi chờ hậu kiểm sau. Để trống = lưu xong vẫn Chưa duyệt như cũ.">
+              <input type="checkbox" checked={duyetLuon} onChange={(e) => setDuyetLuon(e.target.checked)} />✓ Duyệt luôn
+            </label>
+          )}
           <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
-          <button onClick={save} disabled={!canSave || saving} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{saving ? 'Đang lưu…' : `Lưu ${nApproved} câu`}</button>
+          <button onClick={save} disabled={!canSave || saving} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{saving ? 'Đang lưu…' : duyetLuon ? `Lưu & duyệt ${nApproved} câu` : `Lưu ${nApproved} câu`}</button>
         </div>
       </div>
     </div>

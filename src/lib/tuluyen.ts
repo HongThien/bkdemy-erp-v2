@@ -89,6 +89,22 @@ export async function sinhTuLuyen(mon: string, soCau = SO_CAU_MOI_LUOT): Promise
 
 export const TU_LUYEN_SO_CAU_MOI_LUOT = SO_CAU_MOI_LUOT
 
+// ── TỰ LUYỆN THEO CHỦ ĐỀ (Thùy 19/09) — HS chọn 1 dạng, luyện CHỈ dạng đó. Khác "tổng hợp":
+// không tự rải dạng, có % coverage (đã luyện qua bao nhiêu câu trong kho của dạng — KHÔNG phải
+// điểm đúng/sai, mastery vẫn tính riêng như cũ). RPC lo hết chọn câu + rải đều cụm (`ma_cum`) —
+// xem migration 202609191417_tu_luyen_theo_chu_de.sql.
+export type DangChuDe = { ma_dang: string; ten_dang: string; ten_chuyen_de: string; tong_cau: number; da_luyen: number; pct: number }
+export async function layDangChuDe(mon: string): Promise<DangChuDe[]> {
+  const { data, error } = await supabase.rpc('tu_luyen_chu_de_ds_dang', { p_mon: mon })
+  if (error) throw error
+  return (data ?? []) as DangChuDe[]
+}
+export async function sinhTuLuyenChuDe(mon: string, maDang: string): Promise<SinhTuLuyenKetQua> {
+  const { data, error } = await supabase.rpc('tu_luyen_chu_de_sinh', { p_mon: mon, p_ma_dang: maDang })
+  if (error) throw error
+  return { baiTestId: data.bai_test_id, them: data.them, tong: data.tong }
+}
+
 // Môn HS đang học — cần đọc THẲNG qua RPC vì `lop`/`hoc_sinh_lop` staff-only (verify: HS SELECT
 // hoc_sinh_lop → 0 dòng, không lỗi). Trước giờ app chỉ suy mon GIÁN TIẾP từ bai_test HS đang có
 // (tests[0]?.mon) — HS cấp 1 (chỉ tự luyện, không ET/BTVN online) sẽ ra rỗng theo đường đó.
@@ -183,6 +199,24 @@ export async function xepHangTuLuyen(khoi: string): Promise<XepHangRow[]> {
   const { data, error } = await supabase.rpc('hs_xep_hang_tu_luyen', { p_khoi: khoi })
   if (error) throw error
   return (data ?? []) as XepHangRow[]
+}
+
+// ── LỊCH SỬ LÀM BÀI TRÊN APP (Thùy 12/09) — group theo ngày VN, mỗi ngày trả số câu/đúng/sai +
+// thời gian in-app đo bằng MAX-MIN cham_at trong bai_lam_cau. 30 ngày gần nhất. ──
+export type LichSuLamBaiRow = { ngay: string; so_cau: number; so_dung: number; so_sai: number; thoi_gian_giay: number }
+export async function layLichSuLamBai(soNgay = 30): Promise<LichSuLamBaiRow[]> {
+  const { data, error } = await supabase.rpc('fn_hs_lich_su_lam_bai', { p_so_ngay: soNgay })
+  if (error) throw error
+  return (data ?? []) as LichSuLamBaiRow[]
+}
+
+// ── BXH tỉ lệ đạt DẠNG BÀI theo khối (Thùy 12/09). Định nghĩa "đạt" ở DB: tổng câu >=3 và
+// tỉ lệ đúng >=75%. Trả list rank giảm dần; HS chưa đo dạng nào → ti_le = null (rank cuối). ──
+export type XepHangTiLeRow = { ma_hs: string; ho_ten: string; ti_le: number | null; so_dat: number; so_dang: number; la_toi: boolean }
+export async function xepHangTiLeDat(mon: string, khoi: string): Promise<XepHangTiLeRow[]> {
+  const { data, error } = await supabase.rpc('fn_hs_xep_hang_ti_le_dat', { p_mon: mon, p_khoi: khoi })
+  if (error) throw error
+  return (data ?? []) as XepHangTiLeRow[]
 }
 
 // ── LUYỆN CHỨNG MINH (điền ô) — spec-dien-o.md §0b, D2. Mỗi lượt = 1 bai_test loai 'tu_luyen' gồm N bài hình có form điền ô

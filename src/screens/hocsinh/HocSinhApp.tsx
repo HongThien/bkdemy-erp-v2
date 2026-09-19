@@ -10,16 +10,19 @@ import { MathText } from '../kho/ui'
 import { LamDienO } from './DienOCau'
 import {
   listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, baoSai, nopBai, chuCaiChon, chiSoCuaChu,
-  getETDe, luuDapAnET, nopET, getETDapAnDaLuu, xemGoiY, daHetHan,
+  getETDe, luuDapAnET, nopET, getETDapAnDaLuu, xemGoiY, daHetHan, laNopMuon,
   type BaiTestCuaHS, type BaiTestFull, type BaiLamCau, type ETCauDe, type ETReveal,
 } from '../../lib/testonline'
 import { mucDeadline, nhanConLai } from '../../lib/tuan'
 import { seededShuffleWithOrig, seededPermByDang } from '../../lib/shuffle'
 import {
-  luotTuLuyenHomNay, sinhTuLuyen, monCuaHS, laCap1HS, khoiCuaHS, hoSoCuaToi, layDangHocTap, xepHangTuLuyen,
-  TU_LUYEN_SO_CAU_MOI_LUOT, SRC_LABEL, type DangHocTap, type RecentEval, type XepHangRow,
+  luotTuLuyenHomNay, sinhTuLuyen, sinhTuLuyenChuDe, monCuaHS, laCap1HS, khoiCuaHS, hoSoCuaToi, xepHangTuLuyen,
+  TU_LUYEN_SO_CAU_MOI_LUOT, type XepHangRow,
 } from '../../lib/tuluyen'
+import { ChonLoaiTuLuyen, ChonDangChuDe } from './TuLuyenChuDe'
 import { laCap2HS, mayManHSCuaToi } from '../../lib/maymai_hs'
+import { htdCoMo, htdSinh } from '../../lib/hoctudau'
+import { ChonChuDeHTD, ChonChuyenDeHTD, ChiTietDangHTD, LyThuyetHTD, dangDangHoc, type ChuDeNhom, type ChuyenDeNhom } from './HocTuDau'
 import DoiMatKhau from './DoiMatKhau'
 import CaBoTroHS, { RetestHS, BoTroBanner, LichBoTroHS } from './CaBoTroHS'
 import { caCuaToi, retestCuaToi, lichBoTroCuaToi, type LichBoTro } from '../../lib/botro_yeu_ca'
@@ -29,6 +32,7 @@ import DanhSachHS, { type DsRow } from './DanhSachHS'
 import MayManHS from './MayManHS'
 import ThanhTuuHS from './ThanhTuuHS'
 import BaiTapGiaoHS from './BaiTapGiaoHS'
+import ThongTinHocTap from './ThongTinHocTap'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
 type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
@@ -113,14 +117,19 @@ function Head({ title, sub, onBack }: { title: string; sub?: string; onBack: () 
 // có backend (Bài tập được giao/Sự kiện học tập/Huy hiệu) hiện "Sắp có", KHÔNG bấm được — tránh
 // hứa tính năng chưa tồn tại. Bảng màu RIÊNG (không phải bảng ph-* dùng cho cấp 3 — mockup này là
 // hướng thiết kế khác hẳn, tươi/nhiều màu hơn, không cố match app PH nữa).
-type BoxCap1 = { id: 'tu_luyen' | 'thong_tin' | 'xep_hang'; ten: string; mo_ta: string; icon: string; grad: string } | { id: string; ten: string; mo_ta: string; icon: string; grad: string; sapCo: true }
+// Thùy 12/09: HS cấp 1 KHÔNG dùng điện thoại — chỉ iPad/laptop → HomeCap1 desktop/iPad-first (grid
+// 3 cột full màn, không max-w 430 centered như HomeHS). Nội dung đồng bộ KHU_CAP2 (đã build cho cấp
+// 2): 6 ô Tự luyện · Thông tin học tập · Đề thi thử (sắp có) · Bài tập được giao · Thành tựu · May
+// mắn. Bảng xếp hạng cũ chuyển vào Thành tựu tương lai (huy hiệu/mốc — placeholder trong ThanhTuuHS).
+type BoxCap1DirectId = 'tu_luyen' | 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao'
+type BoxCap1 = { id: BoxCap1DirectId; ten: string; mo_ta: string; icon: string; grad: string } | { id: string; ten: string; mo_ta: string; icon: string; grad: string; sapCo: true }
 const BOX_CAP1: BoxCap1[] = [
-  { id: 'tu_luyen', ten: 'Tự luyện', mo_ta: 'Luyện theo dạng bài còn yếu hoặc chủ động chọn nội dung muốn ôn tập.', icon: '🎯', grad: 'from-[#f0e9ff] to-[#faf8ff]' },
-  { id: 'bai_tap_giao', ten: 'Bài tập được giao', mo_ta: 'Làm các bài tập giáo viên giao thêm cho cá nhân hoặc cả lớp.', icon: '📋', grad: 'from-[#e8f4ff] to-[#f7fbff]', sapCo: true },
-  { id: 'thong_tin', ten: 'Thông tin học tập', mo_ta: 'Xem kết quả gần nhất, dạng đang yếu, nhận xét và gợi ý ôn tập.', icon: '📘', grad: 'from-[#e9f9ff] to-[#f6fdff]' },
-  { id: 'xep_hang', ten: 'Bảng xếp hạng', mo_ta: 'Theo dõi thứ hạng và tạo động lực thi đua cùng các bạn.', icon: '🏅', grad: 'from-[#e7f9f1] to-[#f5fffb]' },
-  { id: 'su_kien', ten: 'Sự kiện học tập', mo_ta: 'Các cuộc thi, thử thách và hoạt động học tập theo từng thời điểm.', icon: '🎉', grad: 'from-[#fff1de] to-[#fffaf1]', sapCo: true },
-  { id: 'huy_hieu', ten: 'Huy hiệu', mo_ta: 'Xem các huy hiệu, thành tích và mốc học tập đã đạt được.', icon: '🏆', grad: 'from-[#ffedf5] to-[#fff8fb]', sapCo: true },
+  { id: 'tu_luyen',     ten: 'Tự luyện',           mo_ta: 'Luyện theo dạng bài còn yếu hoặc chủ động chọn nội dung muốn ôn tập.', icon: '🎯', grad: 'from-[#f0e9ff] to-[#faf8ff]' },
+  { id: 'thong_tin',    ten: 'Thông tin học tập',  mo_ta: 'Xem kết quả gần nhất, dạng đang yếu, nhận xét và gợi ý ôn tập.',      icon: '📘', grad: 'from-[#e9f9ff] to-[#f6fdff]' },
+  { id: 'de_thi_thu',   ten: 'Làm đề thi thử',     mo_ta: 'Đề trường/sở để em luyện làm bài thi thật — sắp mở.',                 icon: '📄', grad: 'from-[#eef2ff] to-[#f7f9ff]', sapCo: true },
+  { id: 'bai_tap_giao', ten: 'Bài tập được giao',  mo_ta: 'Làm các bài tập giáo viên giao thêm cho cá nhân hoặc cả lớp.',        icon: '📚', grad: 'from-[#e8f4ff] to-[#f7fbff]' },
+  { id: 'thanh_tuu',    ten: 'Thành tựu',          mo_ta: 'Xem giải thưởng cuối tháng, huy hiệu và mốc học tập đã đạt được.',    icon: '🏆', grad: 'from-[#fff8de] to-[#fffbef]' },
+  { id: 'may_man',      ten: 'May mắn',            mo_ta: 'Luyện đủ 10 câu đúng ≥70% mỗi ngày → mở 1 lượt quay may mắn nhận EXP.', icon: '🎰', grad: 'from-[#ffedf5] to-[#fff8fb]' },
 ]
 // Thùy 22/08 gửi thẳng file mockup tỉ lệ đúng ý (`BK_Academy_Student_Desktop.html`) sau khi bản
 // trước "hộp quá to chữ quá nhỏ". Port lại ĐÚNG số đo từ file đó (hero 2 cột kèm art bên phải, hộp
@@ -128,7 +137,7 @@ const BOX_CAP1: BoxCap1[] = [
 // Bỏ khoá `h-screen overflow-hidden` — mockup gốc của Thùy vốn là trang cuộn tự nhiên theo nội dung
 // (không ép vừa 1 màn hình), thân trang cao hơn viewport 13-14" thì cuộn nhẹ là đúng theo THIẾT KẾ
 // gốc, không phải bug — khác hẳn bug 21/08 (cuộn do zoom 1.15 lỗi, xem main-hs.tsx).
-export function HomeCap1({ hoTen, maHS, onOpen, extra, chuaDoc, onHopThu }: { hoTen: string; maHS: string; onOpen: (d: 'tu_luyen' | 'thong_tin' | 'xep_hang') => void; extra?: React.ReactNode; chuaDoc: number; onHopThu: () => void }) {
+export function HomeCap1({ hoTen, maHS, onOpen, extra, chuaDoc, onHopThu, maymanCoLuot }: { hoTen: string; maHS: string; onOpen: (d: BoxCap1DirectId) => void; extra?: React.ReactNode; chuaDoc: number; onHopThu: () => void; maymanCoLuot?: boolean }) {
   const initials = hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()
   return (
     <div className="min-h-screen" style={{ background: 'radial-gradient(circle at 85% 5%, rgba(115,87,245,.10), transparent 24rem), radial-gradient(circle at 8% 25%, rgba(47,128,237,.08), transparent 22rem), #f4f7fb' }}>
@@ -193,12 +202,17 @@ export function HomeCap1({ hoTen, maHS, onOpen, extra, chuaDoc, onHopThu }: { ho
           <div className="grid grid-cols-3 gap-[18px]">
             {BOX_CAP1.map((b) => {
               const sapCo = 'sapCo' in b && b.sapCo
+              // Badge May mắn: có 1 lượt quay khi đủ điều kiện + chưa quay hôm nay (giống HomeHS cấp 2).
+              const badgeSo = !sapCo && b.id === 'may_man' && maymanCoLuot ? 1 : 0
               return (
-                <button key={b.id} disabled={sapCo} onClick={() => !sapCo && onOpen(b.id as 'tu_luyen' | 'thong_tin' | 'xep_hang')}
+                <button key={b.id} disabled={sapCo} onClick={() => !sapCo && onOpen(b.id as BoxCap1DirectId)}
                   className={`group relative flex min-h-[208px] flex-col items-start rounded-[26px] border border-white/76 bg-gradient-to-br p-6 text-left shadow-[0_16px_40px_rgba(31,47,79,0.08)] transition ${b.grad} ${sapCo ? 'opacity-60' : 'hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(31,47,79,0.12)]'}`}>
                   <div className="mb-[18px] flex h-[58px] w-[58px] items-center justify-center rounded-[18px] bg-white/72 text-[30px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.5)]">{b.icon}</div>
                   <h3 className="m-0 mb-2 text-[21px] font-extrabold text-[#171a2b]">{b.ten}</h3>
                   <p className="m-0 max-w-[88%] text-[13px] leading-[1.55] text-[#626c80]">{b.mo_ta}</p>
+                  {badgeSo > 0 && (
+                    <span className="absolute right-[17px] top-[17px] flex h-7 min-w-7 items-center justify-center rounded-full bg-[#FF315E] px-2 text-[13px] font-extrabold text-white shadow-[0_6px_14px_rgba(255,49,94,.35)]">{badgeSo}</span>
+                  )}
                   {sapCo ? (
                     <span className="absolute bottom-[17px] right-[17px] rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-bold text-[#7b8499]">Sắp có</span>
                   ) : (
@@ -226,7 +240,16 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
-  const [direct, setDirect] = useState<'tu_luyen' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | null>(null)
+  const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
+  const [chuDeDang, setChuDeDang] = useState<{ ma_dang: string; ten_dang: string } | null>(null) // dạng đã chọn cho "Tự luyện theo chủ đề" (null = luồng tổng hợp)
+  // "Học từ đầu" (Thùy 19/09) — ô CHỈ hiện khi HS có case bổ trợ đuổi ĐANG MỞ (tự suy
+  // bo_tro_duoi.trang_thai='can_duoi', KHÔNG lưu cờ riêng — xem htd_co_mo). htdMon lưu
+  // lại môn đã dùng để check, để gọi RPC htd_* sau này khỏi phải monCuaHS() lại.
+  const [htdMo, setHtdMo] = useState(false)
+  const [htdMon, setHtdMon] = useState<string | null>(null)
+  const [htdChuDe, setHtdChuDe] = useState<ChuDeNhom | null>(null)
+  const [htdChuyenDe, setHtdChuyenDe] = useState<ChuyenDeNhom | null>(null)
+  const [htdDang, setHtdDang] = useState<{ ma_dang: string; ten_dang: string; xong: boolean } | null>(null)
   const [cap1, setCap1] = useState<boolean | null>(null) // null = chưa biết — chờ trước khi vẽ lưới ô
   const [cap2, setCap2] = useState<boolean | null>(null) // Thùy 11/09: cấp 2 (lớp 6-9) có layout KHU riêng
   const [maymanCoLuot, setMaymanCoLuot] = useState<boolean>(false) // badge ô "May mắn" (đủ điều kiện + chưa quay hôm nay)
@@ -243,12 +266,19 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   useEffect(() => { laCap2HS().then(setCap2).catch(() => setCap2(false)) }, [])
   useEffect(() => { hoSoCuaToi().then((h) => { setGioiTinh(h?.gioi_tinh ?? null); setAnhUrl(h?.anh_url ?? null) }).catch(() => setGioiTinh(null)) }, [])
   useEffect(() => { taiChuaDoc() }, [])
-  // Badge ô "May mắn" — có 1 lượt để quay khi (đủ điều kiện + chưa quay hôm nay + active). Chỉ tải cho cấp 2.
+  useEffect(() => {
+    monCuaHS().then((m) => { if (!m) return; setHtdMon(m); return htdCoMo(m) }).then((mo) => { if (mo !== undefined) setHtdMo(!!mo) }).catch(() => setHtdMo(false))
+  }, [])
+  // Badge ô "May mắn" — có 1 lượt để quay khi (đủ điều kiện + chưa quay hôm nay + active).
+  // Cả cấp 1 (HomeCap1 → BOX_CAP1 có ô 'may_man') LẪN cấp 2 (KHU_CAP2) đều có ô này → cả 2 phải
+  // refetch badge (bug 17/09: guard `!cap2` cắt cấp 1, 14 HS cấp 1 đủ ĐK nhưng badge tắt câm, không
+  // ai vào bấm quay → qua đêm mất lượt vì `bt.ngay=v_today` intent CEO). Cấp 3 (10-12) không có ô.
   // Refetch khi rời màn quay (direct đổi) để badge cập nhật ngay sau khi HS quay xong.
   useEffect(() => {
-    if (!cap2 || direct || khu) return
+    if (cap1 === null || cap2 === null || direct || khu) return
+    if (!cap1 && !cap2) return
     mayManHSCuaToi().then((d) => setMaymanCoLuot(!!d.active && !d.hom_nay && !!d.du_dieu_kien.du)).catch(() => setMaymanCoLuot(false))
-  }, [cap2, direct, khu])
+  }, [cap1, cap2, direct, khu])
   useEffect(() => {
     const tai = () => Promise.all([caCuaToi().catch(() => null), retestCuaToi().catch(() => []), lichBoTroCuaToi().catch(() => [] as LichBoTro[])])
       .then(([ca, rt, lich]) => setBoTro({ coCa: !!ca, soRetest: rt.filter((r) => !r.da_nop).length, lich }))
@@ -259,8 +289,42 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 
   if (doiMK) return <DoiMatKhau maHS={maHS} batBuoc={false} onXong={() => setDoiMK(false)} />
 
-  if (direct === 'tu_luyen') return <LamTuLuyen hocSinhId={hocSinhId} onXong={() => setDirect(null)} desktop={!!cap1} />
-  if (direct === 'thong_tin') return <ThongTinHocTap onXong={() => setDirect(null)} desktop={!!cap1} />
+  if (direct === 'tu_luyen_chon') return <ChonLoaiTuLuyen desktop={!!cap1}
+    onTongHop={() => { setChuDeDang(null); setDirect('tu_luyen') }}
+    onChuDe={() => setDirect('tu_luyen_chu_de_ds')}
+    onBack={() => setDirect(null)} />
+  if (direct === 'tu_luyen_chu_de_ds') return <ChonDangChuDe desktop={!!cap1}
+    onPick={(d) => { setChuDeDang(d); setDirect('tu_luyen') }}
+    onBack={() => setDirect('tu_luyen_chon')} />
+  if (direct === 'tu_luyen') return <LamTuLuyen hocSinhId={hocSinhId} chuDe={chuDeDang}
+    onXong={() => { setDirect(null); setChuDeDang(null) }}
+    onDoiDang={() => setDirect('tu_luyen_chu_de_ds')}
+    desktop={!!cap1} />
+  if (direct === 'htd_chu_de' && htdMon) return <ChonChuDeHTD mon={htdMon} desktop={!!cap1}
+    onPick={(cd) => { setHtdChuDe(cd); setDirect('htd_chuyen_de') }}
+    onBack={() => setDirect(null)} />
+  if (direct === 'htd_chuyen_de' && htdChuDe) return <ChonChuyenDeHTD chuDe={htdChuDe} desktop={!!cap1}
+    onPick={(cde) => {
+      setHtdChuyenDe(cde)
+      const d = dangDangHoc(cde)
+      setHtdDang({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, xong: d.xong })
+      setDirect('htd_dang')
+    }}
+    onBack={() => setDirect('htd_chu_de')} />
+  if (direct === 'htd_dang' && htdDang) return <ChiTietDangHTD dang={htdDang} dangCungChuyenDe={htdChuyenDe?.dangs ?? []} desktop={!!cap1}
+    onLyThuyet={() => setDirect('htd_ly_thuyet')}
+    onLuyenTap={() => setDirect('htd_luyen')}
+    onTest={() => setDirect('htd_test')}
+    onBack={() => setDirect('htd_chuyen_de')} />
+  if (direct === 'htd_ly_thuyet' && htdMon && htdDang) return <LyThuyetHTD mon={htdMon} dang={htdDang} desktop={!!cap1}
+    onBack={() => setDirect('htd_dang')} />
+  if ((direct === 'htd_luyen' || direct === 'htd_test') && htdMon && htdDang) return <LamHTD
+    key={direct} hocSinhId={hocSinhId} mon={htdMon} dang={htdDang} loai={direct === 'htd_luyen' ? 'htd_luyen' : 'htd_test'}
+    desktop={!!cap1}
+    onVeChiTiet={() => setDirect('htd_dang')}
+    onSangTest={() => setDirect('htd_test')}
+    onXongDang={() => { setDirect('htd_chu_de') }} />
+  if (direct === 'thong_tin') return <ThongTinHocTap hocSinhId={hocSinhId} gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
   if (direct === 'xep_hang') return <BangXepHang onXong={() => setDirect(null)} />
   if (direct === 'bo_tro') return <CaBoTroHS hocSinhId={hocSinhId} desktop={!!cap1} onXong={() => setDirect(null)} LamBai={LamBai} LamET={LamET} />
   if (direct === 'retest') return <RetestHS hocSinhId={hocSinhId} onXong={() => setDirect(null)} LamET={LamET} />
@@ -289,17 +353,27 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 
   // ── MÀN CHÍNH: ô vuông (theo cấp/khối), 2 cột ─────────────────────────────
   if (!khu && (cap1 === null || cap2 === null)) return <div className="flex min-h-screen items-center justify-center bg-ios text-sm text-ph-label-2">Đang tải…</div>
-  // Cấp 1 + Cấp 2 (Thùy 12/09: "đưa về giao diện như cấp 2 luôn") — DÙNG CHUNG kit HomeHS mobile-first
-  // + KHU_CAP2 (Tự luyện · Thông tin học tập · Đề thi thử sắp có · Bài tập được giao · Thành tựu ·
-  // May mắn). Trước đây cấp 1 có riêng HomeCap1 desktop/iPad-first — HomeCap1 giữ trong code để
-  // rollback nhanh + demo=cap1 đối chiếu, không route qua nó nữa.
-  // Cấp 3 (khối 10-12): giữ KHU cũ (BTL/ET/BTVN) để không đụng flow đang chạy — CEO chưa đổi cấp 3.
-  // HomeHS thuần vẽ. Badge = việc CÒN LÀM ĐƯỢC (bài quá hạn vẫn hiện trong danh sách nhưng không
-  // đếm vào badge — Thùy: đếm cả thứ không bấm được thì thành nhiễu).
+  // CẤP 1 (Thùy 12/09: "cấp 1 học sinh không dùng điện thoại — chỉ iPad hoặc laptop") — HomeCap1
+  // desktop/iPad-first (grid 3 cột full màn theo mockup CEO), KHÔNG dùng HomeHS mobile centered
+  // (max-w 430 hoang phí 2 bên trên iPad/laptop). BOX_CAP1 đã đồng bộ nội dung KHU_CAP2: Tự luyện ·
+  // Thông tin học tập · Đề thi thử (sắp có) · Bài tập được giao · Thành tựu · May mắn.
+  if (!khu && cap1) return <HomeCap1 hoTen={hoTen} maHS={maHS} maymanCoLuot={maymanCoLuot}
+    onOpen={(d) => setDirect(d === 'tu_luyen' ? 'tu_luyen_chon' : d)} chuaDoc={chuaDoc} onHopThu={() => setDirect('hop_thu')}
+    extra={<BoTroBanner lich={boTro.lich} coCa={boTro.coCa} soRetest={boTro.soRetest} desktop onLich={() => setDirect('lich_bo_tro')} onCa={() => setDirect('bo_tro')} onRetest={() => setDirect('retest')} />} />
+  // CẤP 2 (khối 6-9) — HomeHS mobile-first + KHU_CAP2 (đã build cho phone: em cấp 2 có thể dùng
+  // điện thoại). CẤP 3 (khối 10-12): giữ KHU cũ (BTL/ET/BTVN), không đụng flow đang chạy.
+  // HomeHS thuần vẽ. Badge = việc CÒN LÀM ĐƯỢC (bài quá hạn không đếm vào badge — nhiễu).
+  // "Học từ đầu" (Thùy 19/09) — card RỜI, không qua KHU/KHU_CAP2/KIT_O (id không nằm trong
+  // KhuId — chỉ hiện khi có case bổ trợ đuổi đang mở, không đáng thêm hẳn vào 2 danh mục
+  // tĩnh kia). Cùng style HomeCard/BoxCap1 nhưng build tay 1 chỗ, dùng chung cho cả cấp 2/3.
+  const theCardHTD: HomeCard[] = htdMo
+    ? [{ id: 'hoc_tu_dau', ten: 'Học từ đầu', sub: 'Bổ trợ đuổi — học tuần tự từng dạng', subMau: 'ton',
+        ill: 'self_practice_target', emoji: '🚀', doodle: 'Từng bước một!', tone: 'purple',
+        onClick: () => setDirect('htd_chu_de') }]
+    : []
   if (!khu) {
-    const capMoi = cap1 || cap2
-    const cards: HomeCard[] = capMoi
-      ? KHU_CAP2.map((k) => {
+    const cards: HomeCard[] = cap2
+      ? [...KHU_CAP2.map((k) => {
           const [sub, subMau]: [string, HomeCard['subMau']] =
             k.sapCo ? ['Sắp có', 'xam']
             : k.id === 'thanh_tuu' ? ['Xem giải thưởng của em', 'xam']
@@ -312,11 +386,11 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
           return {
             id: k.id, ten: k.ten, sub, subMau, badge, disabled: !!k.sapCo, ...KIT_O[k.id],
             onClick: k.sapCo ? undefined : k.direct
-              ? () => setDirect(k.id as 'tu_luyen' | 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao')
+              ? () => setDirect(k.id === 'tu_luyen' ? 'tu_luyen_chon' : (k.id as 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao'))
               : () => { setKhu(k.id); setTab('chua') },
           }
-        })
-      : KHU.filter((k) => !KHU_CHI_CAP1.has(k.id)).map((k) => {
+        }), ...theCardHTD]
+      : [...KHU.filter((k) => !KHU_CHI_CAP1.has(k.id)).map((k) => {
           const sapCo = !k.loai && !k.direct
           const ds = k.loai ? cuaKhu(k.id) : []
           const nChuaLam = ds.filter((t) => !xongCua(t) && !daHetHan(t)).length
@@ -330,9 +404,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
             : ds.length ? ['Xong hết rồi', 'xanh'] : ['Chưa có bài', 'xam']
           return {
             id: k.id, ten: k.ten, sub, subMau, badge: nChuaLam, disabled: sapCo, ...KIT_O[k.id],
-            onClick: sapCo ? undefined : k.direct ? () => setDirect(k.id as 'tu_luyen' | 'thong_tin' | 'xep_hang') : () => { setKhu(k.id); setTab('chua') },
+            onClick: sapCo ? undefined : k.direct ? () => setDirect(k.id === 'tu_luyen' ? 'tu_luyen_chon' : (k.id as 'thong_tin' | 'xep_hang')) : () => { setKhu(k.id); setTab('chua') },
           }
-        })
+        }), ...theCardHTD]
     return <HomeHS hoTen={hoTen} maHS={maHS} lopMon={lopMon} gioiTinh={gioiTinh} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
       lich={boTro.lich} soRetest={boTro.soRetest} cards={cards}
       onHopThu={() => setDirect('hop_thu')} onDoiMK={() => setDoiMK(true)} onThoat={() => supabase.auth.signOut()}
@@ -349,7 +423,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const rows: DsRow[] = shown.map((t) => {
     const daNop = xongCua(t)
     const hetHan = daHetHan(t)
-    const khoa = hetHan && !daNop // quá hạn mà CHƯA nộp → khoá; đã nộp vẫn xem lại được
+    // Thùy 13/09: BTVN KHÔNG giới hạn thời gian nộp — quá hạn vẫn mở được, chỉ đánh dấu "muộn".
+    // ET/đề thi/giáo trình vẫn khoá quá hạn như cũ (bài thi 1 lần / phát hành theo buổi).
+    const laBtvn = t.loai === 'btvn'
+    const khoa = hetHan && !daNop && !laBtvn
+    const sapNopMuon = laBtvn && hetHan && !daNop  // BTVN chưa nộp, quá hạn → hiện pill "muộn · vẫn nộp được"
+    const daNopMuon = daNop && laNopMuon(t.bai_lam, t.deadline)  // BTVN đã nộp SAU deadline → badge "⏰ Muộn"
     const dlMs = t.deadline ? new Date(t.deadline).getTime() : null
     const muc = mucDeadline(dlMs)
     return {
@@ -357,9 +436,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
       ten: `${LOAI_TEN[t.loai] ?? 'Bài'} ${t.mon} · ${t.lop_ten}`,
       sub: `Buổi ${fmtNgay(t.ngay)} · ${t.so_cau} câu${THI_LOAI.has(t.loai) ? ' · nộp 1 lần' : ''}`,
       laThi: THI_LOAI.has(t.loai),
-      trangThai: daNop ? 'xong' : khoa ? 'qua_han' : t.bai_lam ? 'dang_lam' : 'moi',
+      trangThai: daNop ? 'xong' : khoa ? 'qua_han' : sapNopMuon ? 'qua_han_mo' : t.bai_lam ? 'dang_lam' : 'moi',
       han: dlMs !== null && !daNop && muc ? { text: `Hạn ${fmtHan(t.deadline!)} · ${nhanConLai(dlMs)}`, muc } : null,
       khoa,
+      nopMuon: daNopMuon,
       onClick: () => setActive(t),
     }
   })
@@ -509,7 +589,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
     return (
       <div className={desktop
         ? 'flex min-h-screen flex-col items-center justify-center bg-[#f4f7fb] px-6 text-center'
-        : 'mx-auto flex min-h-screen max-w-md flex-col items-center justify-center bg-ios px-6 text-center'}>
+        : 'mx-auto flex min-h-screen max-w-md flex-col items-center justify-center bg-ios px-6 text-center md:max-w-3xl'}>
         <div className={`flex items-center justify-center rounded-full bg-ph-green/10 ${desktop ? 'h-24 w-24 text-5xl' : 'h-20 w-20 text-4xl'}`}>🏆</div>
         <p className={`mt-4 font-bold tracking-tight text-ph-label ${desktop ? 'text-3xl' : 'text-2xl'}`}>{dung} / {total} đúng</p>
         <p className="mt-1 text-[13px] text-ph-label-2">{doneCaption ?? 'Làm lại được tới hạn nộp. Kết quả gửi thầy cô tham khảo.'}</p>
@@ -525,7 +605,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   const dsDung = laDS && daCham ? chonArr.filter((x, i) => x != null && String(x).toUpperCase() === String(keyDS[i]).toUpperCase()).length : 0
   const trongTam = (
     <>
-      <div className={desktop ? 'mb-5 flex items-center gap-4' : 'flex items-center gap-3 px-4 py-3'}>
+      <div className={desktop ? 'mb-4 flex shrink-0 items-center gap-4' : 'flex shrink-0 items-center gap-3 px-4 py-3'}>
         <button onClick={onXong} className={desktop ? 'flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]' : 'text-ph-label-2'}>✕</button>
         <div className={desktop ? 'h-2.5 flex-1 overflow-hidden rounded-full bg-black/[0.06]' : 'h-2 flex-1 overflow-hidden rounded-full bg-black/[0.08]'}>
           <div className="h-full bg-brand transition-all" style={{ width: `${((idx + 1) / total) * 100}%` }} />
@@ -533,7 +613,8 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
         <span className={desktop ? 'text-[13px] font-semibold text-[#7b8499]' : 'text-[12px] text-ph-label-2'}>{idx + 1}/{total}</span>
       </div>
 
-      <div className={desktop ? '' : 'flex-1 overflow-y-auto px-4 pb-4'}>
+      {/* Thùy 13/09: content SCROLL riêng, footer luôn nằm trong viewport (không phải kéo trang xuống mới bấm Xác nhận). */}
+      <div className={desktop ? 'flex-1 min-h-0 overflow-y-auto' : 'flex-1 overflow-y-auto px-4 pb-4'}>
         <div className={desktop ? 'rounded-[26px] bg-white p-8 shadow-[0_16px_40px_rgba(31,47,79,0.08)]' : 'rounded-2xl bg-white p-4 shadow-sm'}>
           <div className="mb-2 flex items-center justify-between">
             <p className="text-[13px] font-semibold text-ph-label-2">Câu {idx + 1}</p>
@@ -637,7 +718,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
         </div>
       </div>
 
-      <div className={desktop ? 'mt-5 flex items-center gap-3' : 'flex items-center gap-2 border-t border-black/[0.06] bg-white p-3'}>
+      <div className={desktop ? 'mt-4 flex shrink-0 items-center gap-3' : 'flex shrink-0 items-center gap-2 border-t border-black/[0.06] bg-white p-3'}>
         {idx > 0 && (
           <button onClick={() => setIdx((i) => i - 1)}
             className={desktop ? 'rounded-2xl bg-white px-6 py-3.5 text-[15px] font-medium text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]' : 'rounded-xl bg-black/[0.04] px-4 py-3 text-sm text-ph-label-2'}>
@@ -659,12 +740,14 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
     </>
   )
 
+  // Thùy 13/09: MÀN LÀM BÀI phải gọn 1 viewport (Xác nhận đáp án luôn thấy). h-[100dvh]+flex col
+  // → header/content/footer chia vùng; content overflow riêng, không phải cuộn cả trang.
   return desktop ? (
-    <div className="min-h-screen bg-[#f4f7fb] px-8 py-6">
-      <div className="mx-auto max-w-3xl">{trongTam}</div>
+    <div className="flex h-[100dvh] flex-col bg-[#f4f7fb] px-8 py-4">
+      <div className="mx-auto flex min-h-0 w-full max-w-3xl flex-1 flex-col">{trongTam}</div>
     </div>
   ) : (
-    <div className="mx-auto flex h-screen max-w-md flex-col bg-ios">{trongTam}</div>
+    <div className="mx-auto flex h-[100dvh] max-w-md flex-col bg-ios md:max-w-3xl">{trongTam}</div>
   )
 }
 
@@ -672,7 +755,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
 // phải độc lập", KHÔNG cộng dồn 1 bài/ngày). Mở màn: lượt hôm nay đang DỞ → làm tiếp; hết dở →
 // sinh lượt mới. "Làm thêm" = sinh lượt mới tinh. Phần LÀM BÀI dùng nguyên LamBai — key={baiTestId}
 // đổi theo từng lượt ⇒ REMOUNT, mỗi lượt chấm điểm/kết quả độc lập 10 câu của chính nó.
-function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong: () => void; desktop?: boolean }) {
+function LamTuLuyen({ hocSinhId, onXong, desktop, chuDe, onDoiDang }: { hocSinhId: string; onXong: () => void; desktop?: boolean; chuDe?: { ma_dang: string; ten_dang: string } | null; onDoiDang?: () => void }) {
   // "Luyện chứng minh" (điền ô, spec-dien-o.md D2/D3): luồng riêng vì câu điền ô có tương tác từng ô, không đi qua LamBai.
   const [dienO, setDienO] = useState(false)
   const [state, setState] = useState<'dang_tai' | 'san_sang' | 'trong' | 'loi'>('dang_tai')
@@ -686,12 +769,19 @@ function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong:
   // Không còn unique index 1 bài/ngày (model lượt-độc-lập) nên guard client là hàng rào duy nhất.
   const daGoi = useRef(false)
 
+  // Theo chủ đề (chuDe có giá trị): LUÔN sinh lượt MỚI đúng dạng đã chọn — không check "lượt hôm nay
+  // đang dở" (đó là của tổng hợp, không phân biệt dạng, không hợp ngữ cảnh "đang luyện dạng X").
   async function taiHomNay() {
     setState('dang_tai'); setErr(null)
     try {
       const m = await monCuaHS()
       if (!m) { setState('trong'); setErr('Chưa xác định được môn học của em — báo thầy cô nhé.'); return }
       setMon(m)
+      if (chuDe) {
+        const kq = await sinhTuLuyenChuDe(m, chuDe.ma_dang)
+        setBaiTestId(kq.baiTestId); setTongNgay(kq.them); setState('san_sang')
+        return
+      }
       const { dangDo, tongCau } = await luotTuLuyenHomNay(m)
       if (dangDo) { setBaiTestId(dangDo.baiTestId); setTongNgay(tongCau); setState('san_sang'); return }
       const kq = await sinhTuLuyen(m)
@@ -704,7 +794,7 @@ function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong:
     if (!mon) return
     setBusy(true); setErr(null)
     try {
-      const kq = await sinhTuLuyen(mon)
+      const kq = chuDe ? await sinhTuLuyenChuDe(mon, chuDe.ma_dang) : await sinhTuLuyen(mon)
       setBaiTestId(kq.baiTestId); setTongNgay((t) => t + kq.them)
     } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
   }
@@ -714,10 +804,10 @@ function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong:
   if (state === 'trong' || !baiTestId || !mon) return (
     <div className={desktop
       ? 'flex min-h-screen flex-col items-center justify-center bg-[#f4f7fb] px-6 text-center'
-      : 'mx-auto flex min-h-screen max-w-md flex-col items-center justify-center bg-ios px-6 text-center'}>
+      : 'mx-auto flex min-h-screen max-w-md flex-col items-center justify-center bg-ios px-6 text-center md:max-w-3xl'}>
       <p className="text-3xl">🌱</p>
       <p className="mt-3 text-[15px] font-medium text-ph-label">{err ?? 'Chưa có dữ liệu học tập để tự luyện.'}</p>
-      <p className="mt-1 text-[13px] text-ph-label-2">Học vài buổi trên lớp rồi quay lại nhé.</p>
+      {!chuDe && <p className="mt-1 text-[13px] text-ph-label-2">Học vài buổi trên lớp rồi quay lại nhé.</p>}
       <button onClick={onXong} className={`mt-6 rounded-xl bg-white font-medium text-ph-label-2 shadow-sm ${desktop ? 'px-8 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>Về trang chính</button>
     </div>
   )
@@ -729,7 +819,7 @@ function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong:
       hocSinhId={hocSinhId}
       onXong={onXong}
       desktop={desktop}
-      doneCaption={`Hôm nay em đã luyện ${tongNgay} câu.`}
+      doneCaption={chuDe ? `Em vừa luyện ${tongNgay} câu dạng "${chuDe.ten_dang}".` : `Hôm nay em đã luyện ${tongNgay} câu.`}
       doneExtra={
         <div className={`mt-3 w-full ${desktop ? 'max-w-sm' : ''}`}>
           {err && <p className="mb-2 text-[12.5px] text-ph-red">{err}</p>}
@@ -737,133 +827,95 @@ function LamTuLuyen({ hocSinhId, onXong, desktop }: { hocSinhId: string; onXong:
             className={`w-full rounded-xl bg-brand/10 font-medium text-brand disabled:opacity-40 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
             {busy ? 'Đang tạo lượt mới…' : `Luyện lượt mới ${TU_LUYEN_SO_CAU_MOI_LUOT} câu`}
           </button>
-          <button onClick={() => setDienO(true)}
+          {chuDe && onDoiDang && (
+            <button onClick={onDoiDang} disabled={busy}
+              className={`mt-2 w-full rounded-xl bg-ph-label-2/10 font-medium text-ph-label-2 disabled:opacity-40 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
+              🔄 Đổi dạng khác
+            </button>
+          )}
+          {!chuDe && <button onClick={() => setDienO(true)}
             className={`mt-2 w-full rounded-xl bg-ph-orange/10 font-medium text-ph-orange ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
             📐 Luyện chứng minh (điền vào lời giải)
-          </button>
+          </button>}
         </div>
       }
     />
   )
 }
 
-// ── THÔNG TIN HỌC TẬP (Thùy 21/08: "giống app phụ huynh") — mirror card "Tỉ lệ thành thạo kiến
-// thức" + list dạng yếu/cần luyện của app PH (Kết quả tab), dựng từ ĐÚNG masteryOfDang qua
-// layDangHocTap() — không có công thức thứ hai nào.
-// desktop: TUỲ CHỌN (Thùy 22/08) — chỉ đổi khung ngoài (header/bề rộng/lưới 2 cột), số liệu/logic
-// vẫn NGUYÊN layDangHocTap() — cấp 3 (mobile, từ ô "Thông tin học tập" cũ) không truyền → giữ y hệt.
-function ThongTinHocTap({ onXong, desktop }: { onXong: () => void; desktop?: boolean }) {
-  const [state, setState] = useState<'dang_tai' | 'san_sang' | 'trong'>('dang_tai')
-  const [data, setData] = useState<{ dangs: DangHocTap[]; dat: number; canLuyen: number; yeu: number } | null>(null)
+// ── HỌC TỪ ĐẦU: luyện tập (vô hạn)/test (1 lượt) cho 1 DẠNG đã chọn sẵn — bọc NGOÀI
+// LamBai giống LamTuLuyen, khác: không check "dở hôm nay" (mỗi lần vào bấm 1 lượt mới),
+// test xong hiện 3 lựa chọn (CEO 19/09): qua dạng mới · luyện thêm dạng này · test lại.
+// "Xong dạng" tự ghi ở DB (trigger trg_htd_test_nop) khi nộp — ở đây chỉ điều hướng.
+function LamHTD({ hocSinhId, mon, dang, loai, desktop, onVeChiTiet, onSangTest, onXongDang }: {
+  hocSinhId: string; mon: string; dang: { ma_dang: string; ten_dang: string; xong: boolean }
+  loai: 'htd_luyen' | 'htd_test'; desktop?: boolean
+  onVeChiTiet: () => void; onSangTest: () => void; onXongDang: () => void
+}) {
+  const [state, setState] = useState<'dang_tai' | 'san_sang' | 'loi'>('dang_tai')
+  const [baiTestId, setBaiTestId] = useState<string | null>(null)
+  const [tongLuot, setTongLuot] = useState(0)
+  const [busy, setBusy] = useState(false)
+  const [err, setErr] = useState<string | null>(null)
   const daGoi = useRef(false)
 
-  useEffect(() => {
-    if (daGoi.current) return
-    daGoi.current = true
-    ;(async () => {
-      const mon = await monCuaHS()
-      if (!mon) { setState('trong'); return }
-      const d = await layDangHocTap(mon)
-      setData(d)
-      setState(d.dat + d.canLuyen + d.yeu === 0 ? 'trong' : 'san_sang')
-    })().catch(() => setState('trong'))
-  }, [])
+  async function sinh() {
+    setBusy(true); setErr(null)
+    try {
+      const kq = await htdSinh(mon, dang.ma_dang, loai)
+      setBaiTestId(kq.baiTestId); setTongLuot((t) => t + kq.them); setState('san_sang')
+    } catch (e: any) { setErr(e?.message ?? String(e)); setState('loi') } finally { setBusy(false) }
+  }
+  useEffect(() => { if (daGoi.current) return; daGoi.current = true; sinh() }, []) // eslint-disable-line
 
-  if (state === 'dang_tai') return <div className={`flex min-h-screen items-center justify-center text-sm text-ph-label-2 ${desktop ? 'bg-[#f4f7fb]' : 'bg-ios'}`}>Đang tải…</div>
-
-  const tong = data ? data.dat + data.canLuyen + data.yeu : 0
-  const tiLe = data && tong > 0 ? Math.round(((data.dat + data.canLuyen * 0.5) / tong) * 100) : 0
-  const canChuY = data ? data.dangs.filter((d) => d.muc !== 'dat').slice(0, 10) : []
-
-  return (
-    <div className={desktop ? 'mx-auto min-h-screen max-w-3xl bg-[#f4f7fb] px-8 py-6' : 'mx-auto min-h-screen max-w-md bg-ios px-4 pb-10'}>
-      {desktop ? (
-        <div className="mb-5 flex items-center gap-4">
-          <button onClick={onXong} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[18px] text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]">‹</button>
-          <h1 className="text-[26px] font-black tracking-tight text-[#171a2b]">Thông tin học tập</h1>
-        </div>
-      ) : <Head title="Thông tin học tập" onBack={onXong} />}
-
-      {state === 'trong' ? (
-        <div className={`mt-3 rounded-[21px] bg-white p-8 text-center ${SHADOW}`}>
-          <p className="text-3xl">🌱</p>
-          <p className="mt-2 text-[15px] font-medium text-ph-label">Chưa có dữ liệu học tập</p>
-          <p className="mt-1 text-[13px] text-ph-label-2">Học vài buổi trên lớp hoặc làm Tự luyện rồi quay lại nhé.</p>
-        </div>
-      ) : (
-        <>
-          {/* ĐÚNG ".card"+".summary"+".sum" (ph-v3.css) — hero % + 3 ô đạt/cần luyện/yếu */}
-          <div className={`mt-3 rounded-[22px] bg-white ${SHADOW} ${desktop ? 'p-7' : 'p-4'}`}>
-            <h3 className={`font-bold text-ph-label ${desktop ? 'text-[18px]' : 'text-[15px]'}`}>Tỉ lệ thành thạo kiến thức</h3>
-            <div className="mt-1.5 flex items-baseline gap-1">
-              <span className={`font-extrabold leading-none tracking-tight text-ph-label ${desktop ? 'text-[52px]' : 'text-[38px]'}`}>{tiLe}</span>
-              <span className={`font-bold text-ph-label-2 ${desktop ? 'text-[20px]' : 'text-[17px]'}`}>%</span>
-            </div>
-            <div className={`mt-3.5 grid grid-cols-3 ${desktop ? 'gap-4' : 'gap-2.5'}`}>
-              <div className={`rounded-[14px] bg-[#f7f8fb] text-center ${desktop ? 'p-4' : 'p-2.5'}`}>
-                <b className={`block font-extrabold text-ph-green ${desktop ? 'text-[22px]' : 'text-[17px]'}`}>{data!.dat}</b>
-                <span className="text-[9px] font-bold uppercase tracking-wide text-ph-label-2">Đạt</span>
-              </div>
-              <div className={`rounded-[14px] bg-[#f7f8fb] text-center ${desktop ? 'p-4' : 'p-2.5'}`}>
-                <b className={`block font-extrabold text-ph-orange ${desktop ? 'text-[22px]' : 'text-[17px]'}`}>{data!.canLuyen}</b>
-                <span className="text-[9px] font-bold uppercase tracking-wide text-ph-label-2">Cần luyện</span>
-              </div>
-              <div className={`rounded-[14px] bg-[#f7f8fb] text-center ${desktop ? 'p-4' : 'p-2.5'}`}>
-                <b className={`block font-extrabold text-ph-red ${desktop ? 'text-[22px]' : 'text-[17px]'}`}>{data!.yeu}</b>
-                <span className="text-[9px] font-bold uppercase tracking-wide text-ph-label-2">Yếu</span>
-              </div>
-            </div>
-          </div>
-
-          <p className="ml-0.5 mb-2 mt-5 text-[12px] font-black uppercase tracking-wide text-[#596376]">Dạng cần chú ý</p>
-          {canChuY.length === 0 ? (
-            <div className={`rounded-[21px] bg-white p-6 text-center ${SHADOW}`}>
-              <p className="text-[15px] font-medium text-ph-label">🎉 Không có dạng nào yếu</p>
-              <p className="mt-1 text-[13px] text-ph-label-2">Tất cả dạng đã học đều đạt.</p>
-            </div>
-          ) : (
-            // ĐÚNG ".dangList"+".dangRow" (ph-v3.css) — nền xám phẳng #F7F8FB, KHÔNG card viền.
-            // Desktop: 2 cột (bề rộng thừa, 1 cột dài lê thê nhìn rất mobile).
-            <div className={desktop ? 'grid grid-cols-2 gap-3' : 'grid gap-2.5'}>
-              {canChuY.map((d) => (
-                <div key={d.ma_dang} className="rounded-[13px] bg-[#f7f8fb] p-3">
-                  <div className="flex items-center gap-2.5">
-                    <span className={`h-[9px] w-[9px] shrink-0 rounded-full ${d.muc === 'yeu' ? 'bg-ph-red' : 'bg-ph-orange'}`} />
-                    <div className="min-w-0 flex-1">
-                      <p className="truncate text-[12.5px] font-bold text-[#3b4250]">{d.ten_dang}</p>
-                      {d.ten_chuyen_de && <p className="truncate text-[10.5px] text-ph-label-2">{d.ten_chuyen_de}</p>}
-                    </div>
-                    <span className={`shrink-0 rounded-full px-2 py-1 text-[10px] font-black ${
-                      d.muc === 'yeu' ? 'bg-ph-red/10 text-ph-red' : 'bg-ph-orange/10 text-ph-orange'}`}>
-                      {d.muc === 'yeu' ? 'Yếu' : 'Cần luyện'}
-                    </span>
-                  </div>
-                  {/* Thùy 21/08: "đánh giá từng câu giống Kết quả học tập ERP — 5 lần gần nhất" */}
-                  <div className="mt-2.5 flex gap-1 border-t border-black/[0.06] pt-2.5">
-                    {d.recent.length === 0 && <span className="text-[10.5px] text-ph-label-2">Chưa có lần đo nào</span>}
-                    {d.recent.map((e, i) => <LanDo key={i} e={e} />)}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </>
-      )}
+  if (state === 'dang_tai') return <div className={`flex min-h-screen items-center justify-center text-sm text-ph-label-2 ${desktop ? 'bg-[#f4f7fb]' : 'bg-ios'}`}>Đang chuẩn bị bài…</div>
+  if (state === 'loi' || !baiTestId) return (
+    <div className={desktop
+      ? 'flex min-h-screen flex-col items-center justify-center bg-[#f4f7fb] px-6 text-center'
+      : 'mx-auto flex min-h-screen max-w-md flex-col items-center justify-center bg-ios px-6 text-center md:max-w-3xl'}>
+      <p className="text-3xl">🌱</p>
+      <p className="mt-3 text-[15px] font-medium text-ph-label">{err ?? 'Không sinh được bài.'}</p>
+      <button onClick={onVeChiTiet} className={`mt-6 rounded-xl bg-white font-medium text-ph-label-2 shadow-sm ${desktop ? 'px-8 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>Quay lại</button>
     </div>
   )
-}
 
-// 1 lần đo trong "5 lần gần nhất" — ĐÚNG pattern Slot của KetQuaScreen.tsx (staff, mastery.ts):
-// ✓ đạt (value≥1) · ◐ nửa (value>0) · ✗ sai (value=0). Màu theo GIÁ TRỊ lần đó, không phải mức dạng.
-function LanDo({ e }: { e: RecentEval }) {
-  const icon = e.value >= 1 ? '✓' : e.value > 0 ? '◐' : '✗'
-  const cls = e.value >= 1 ? 'bg-ph-green/15 text-ph-green' : e.value > 0 ? 'bg-ph-orange/15 text-ph-orange' : 'bg-ph-red/15 text-ph-red'
+  const laTest = loai === 'htd_test'
   return (
-    <div className="flex flex-1 flex-col items-center gap-0.5" title={`${SRC_LABEL[e.src]} · ${fmtShort(e.t)}`}>
-      <span className={`flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-bold ${cls}`}>{icon}</span>
-      <span className="text-[8px] font-bold leading-none text-ph-label-2">{SRC_LABEL[e.src]}</span>
-      <span className="text-[7.5px] font-medium leading-none text-ph-label-2/70">{fmtShort(e.t)}</span>
-    </div>
+    <LamBai
+      key={baiTestId}
+      baiTestId={baiTestId}
+      hocSinhId={hocSinhId}
+      onXong={laTest ? onXongDang : onVeChiTiet}
+      desktop={desktop}
+      doneCaption={laTest ? `Đã nộp bài test dạng "${dang.ten_dang}" — dạng này đã xong!` : `Em vừa luyện ${tongLuot} câu dạng "${dang.ten_dang}".`}
+      doneExtra={
+        <div className={`mt-3 w-full ${desktop ? 'max-w-sm' : ''}`}>
+          {err && <p className="mb-2 text-[12.5px] text-ph-red">{err}</p>}
+          {laTest ? (
+            <>
+              <button onClick={onXongDang} className={`w-full rounded-xl bg-brand font-medium text-white ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
+                Qua dạng mới →
+              </button>
+              <button onClick={onVeChiTiet} className={`mt-2 w-full rounded-xl bg-ph-label-2/10 font-medium text-ph-label-2 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
+                Luyện tập thêm dạng này
+              </button>
+              <button onClick={sinh} disabled={busy} className={`mt-2 w-full rounded-xl bg-ph-orange/10 font-medium text-ph-orange disabled:opacity-40 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
+                {busy ? 'Đang tạo…' : '🔁 Test lại'}
+              </button>
+            </>
+          ) : (
+            <>
+              <button onClick={sinh} disabled={busy} className={`w-full rounded-xl bg-brand/10 font-medium text-brand disabled:opacity-40 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
+                {busy ? 'Đang tạo lượt mới…' : 'Luyện tiếp 10 câu'}
+              </button>
+              <button onClick={onSangTest} className={`mt-2 w-full rounded-xl bg-brand font-medium text-white ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
+                📝 Chuyển sang làm bài Test
+              </button>
+            </>
+          )}
+        </div>
+      }
+    />
   )
 }
 
@@ -933,7 +985,7 @@ function HopThuHS({ onXong }: { onXong: () => void }) {
     }).catch(() => setItems([]))
   }, [])
   return (
-    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10">
+    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10 md:max-w-3xl">
       <Head title="Hòm thư" onBack={onXong} />
       {items === null && <p className="py-10 text-center text-sm text-ph-label-2">Đang tải…</p>}
       {items && items.length === 0 && (
@@ -1017,7 +1069,7 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
   const menhOrder = laDS && cau ? seededShuffleWithOrig(cau.menh_de ?? [], `${hocSinhId}:${test.id}:${cau.id}:ds`) : []
 
   return (
-    <div className="mx-auto flex h-screen max-w-md flex-col bg-ios">
+    <div className="mx-auto flex h-screen max-w-md flex-col bg-ios md:max-w-3xl">
       <div className="flex items-center gap-3 px-4 py-3">
         <button onClick={onXong} className="text-ph-label-2">✕</button>
         <div className="h-2 flex-1 overflow-hidden rounded-full bg-ph-purple/15">

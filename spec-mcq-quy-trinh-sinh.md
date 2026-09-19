@@ -18,6 +18,16 @@
   `scripts/lib/mini-dang.mjs`. **Trước khi thêm rule mới, chạy `select max(ma) from dai_mcq_rule`** để biết mã
   kế tiếp — 2 luồng cùng lúc chọn trùng mã (vd cả 2 cùng đặt `R89`) sẽ đụng độ khi merge nhánh. Cùng lý do,
   đọc kỹ diff trước khi merge 3 file dùng chung này, đừng để 2 luồng ghi đè nhau.
+  - **⚠️ SỰ CỐ THẬT đã xảy ra (12/09, xem `202609121531_mcq_rule_renumber_r100_104_collision.sql` +
+    DEVLOG cùng ngày):** `max(ma)` mà so bằng **CHUỖI** (`order by ma desc limit 1`) SAI — `'R100' < 'R99'`
+    theo thứ tự chữ (ký tự `'1'` < `'9'`), nên 1 luồng tưởng R100 còn trống trong khi luồng kia ĐÃ dùng
+    R100-R104 từ trước, đè mất 5 rule + làm sai catalog cho 99 câu đã sinh. **Luôn ép kiểu số:**
+    `select max((regexp_replace(ma,'[^0-9]','','g'))::int) from dai_mcq_rule` (hoặc mở `schema.md`/query
+    trực tiếp rồi tự sort bằng mắt theo SỐ, không theo chữ).
+  - **⚠️ Mọi INSERT/UPDATE vào `dai_mcq_rule` PHẢI qua migration file có sổ (`npm run migrate`)** — sự cố
+    trên xảy ra vì 1 bên ghi thẳng (không thấy trong `_migrations`), nên bên kia không có cách nào biết mã
+    đã bị chiếm ngoài việc tự query lại đúng lúc. Không bao giờ chạy UPDATE/INSERT tay vào bảng rule dùng
+    chung — kể cả để "vá nhanh" — luôn tạo migration mới, dù chỉ 1 dòng.
 - Trạng thái CHI TIẾT "dạng nào đã làm, dạng nào còn" luôn nằm ở `DEVLOG.md`/`HANDOFF.md` (không lặp lại ở
   đây — tài liệu này là QUY TRÌNH, không phải TRẠNG THÁI, để khỏi lệch nhau khi 2 bên cùng cập nhật).
 

@@ -440,10 +440,23 @@ export async function listAllBuoiHinh(opts?: { before?: string; unbounded?: bool
   if (e1) throw e1; if (e2) throw e2
   const gtMap = new Map(((gts ?? []) as { id: string; ten: string; khoi: string; mon: string }[]).map((g) => [g.id, g]))
   const rows = (buois ?? []) as { id: string; tieu_de: string | null; giao_trinh_id: string | null; lop_id: string | null; ngay: string | null; nguon_buoi_id: string | null; created_at: string; file_urls: Record<string, string> | null }[]
-  const byId = new Map(rows.map((r) => [r.id, r]))
+  // ⭐ 13/09 (Thùy: "sao giáo trình hình ko gán được" — thực chất buổi ĐÃ gán ở DB nhưng KHÔNG hiện trong
+  // Kho tài liệu). Buổi master (giao_trinh_id) và buổi lớp (lop_id + nguon_buoi_id) đều là hàng
+  // `hinh_gt_buoi`; page 20-mới-nhất sort theo created_at desc. Nếu master tạo LÂU RỒI mà lớp mới gán →
+  // top-20 chỉ có lớp buổi, master bị đẩy ra. `gtOfMasterBuoi` cũ tra `byId` (chỉ chứa page hiện tại)
+  // ⇒ trả null ⇒ dòng lớp bị bỏ (`if (g)` false). Fix: nạp bổ sung TẤT CẢ master theo id
+  // (`nguon_buoi_id` unique tập nhỏ) — lookup ra giáo trình mọi trường hợp.
+  const nguonIds = [...new Set(rows.map((r) => r.nguon_buoi_id).filter((x): x is string => !!x && !rows.some((rr) => rr.id === x)))]
+  const { data: masters, error: eM } = nguonIds.length
+    ? await supabase.from('hinh_gt_buoi').select('id, giao_trinh_id').in('id', nguonIds).limit(LIMIT)
+    : { data: [] as { id: string; giao_trinh_id: string | null }[], error: null }
+  if (eM) throw eM
+  const gtOfNguon = new Map<string, string | null>()
+  for (const r of rows) gtOfNguon.set(r.id, r.giao_trinh_id) // master trong page
+  for (const m of (masters ?? []) as { id: string; giao_trinh_id: string | null }[]) gtOfNguon.set(m.id, m.giao_trinh_id)
   const gtOfMasterBuoi = (masterBuoiId: string | null) => {
-    const m = masterBuoiId ? byId.get(masterBuoiId) : null
-    return m?.giao_trinh_id ? (gtMap.get(m.giao_trinh_id) ?? null) : null
+    const gtId = masterBuoiId ? gtOfNguon.get(masterBuoiId) : null
+    return gtId ? (gtMap.get(gtId) ?? null) : null
   }
   const buoiIds = rows.map((r) => r.id)
   const { data: bais, error: e3 } = buoiIds.length
@@ -466,6 +479,8 @@ export async function listAllBuoiHinh(opts?: { before?: string; unbounded?: bool
     : { data: [] as { id: string; ten_lop: string; khoi: string | null; mon: string }[], error: null }
   if (e4) throw e4
   const lopMap = new Map(((lops ?? []) as { id: string; ten_lop: string; khoi: string | null; mon: string }[]).map((l) => [l.id, l]))
+  // 🔧 DEBUG TẠM 15/09 (Thùy: search 7B1 không ra BTVN/GT, chỉ ra ET) — sẽ gỡ sau khi xác định
+  console.log('[DEBUG listAllBuoiHinh] rows=', rows.length, 'gts=', (gts??[]).length, 'bais=', (bais??[]).length, 'masters bổ sung=', (masters??[]).length, 'unbounded=', !!opts?.unbounded)
   const out: HinhKhoRow[] = []
   for (const r of rows) {
     if (!r.lop_id) continue   // chỉ buổi ĐÃ GÁN LỚP mới lên Kho — master (chưa gán) xem/in tại màn Giáo trình
@@ -477,6 +492,18 @@ export async function listAllBuoiHinh(opts?: { before?: string; unbounded?: bool
     const tenLop = li?.ten_lop ?? '?'
     const ngayFmt = r.ngay ? r.ngay.split('-').reverse().join('/') : '?'
     const g = gtOfMasterBuoi(r.nguon_buoi_id)
+    // 🔧 DEBUG TẠM — chỉ log dòng 7B1
+    if (tenLop === '7B1') {
+      const masterGtId = r.nguon_buoi_id ? gtOfNguon.get(r.nguon_buoi_id) : null
+      console.log('[DEBUG 7B1]', {
+        buoiId: r.id, ngay: r.ngay, tenLop,
+        nguon_buoi_id: r.nguon_buoi_id,
+        giao_trinh_id_cua_master: masterGtId,
+        gtMap_co_gtId: masterGtId ? gtMap.has(masterGtId) : false,
+        g_null: !g,
+        phans: [...phans],
+      })
+    }
     if (g) {
       for (const phan of ['lop', 'nha'] as const) {
         if (!phans.has(phan)) continue

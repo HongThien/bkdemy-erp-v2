@@ -2,9 +2,10 @@
 // UI chỉ gọi qua đây. Engine thuần ở src/gami/*.js (đã test). Buổi pure-derive: đẻ dòng khi MỞ.
 import { supabase } from './supabase'
 import { getMyProfile } from './nhansu'
-import { getETByBuoi, getETCaus, getBTVNByBuoi, getBTVNCaus, getGiaoTrinhBuoiDoc, getTaiLieuFull, khoCuaMon, nhanhCuaMon, laMaHinh } from './tailieu'
+import { getETByBuoi, getETCaus, getBTVNByBuoi, getBTVNCaus, getGiaoTrinhBuoiDoc, getTaiLieuFull, khoCuaMon, nhanhCuaMon, coKhoHinh, laMaHinh } from './tailieu'
 import { getMTInstanceByBuoi, getMTPhanCaus, type MTPhanCaus } from './mt'
 import { loadHinhForBuoi, type HinhDapAn } from './kho/hinhGiaoTrinh'
+import { listDang as listDangHinh } from './kho/hinh'
 import { getBaiTestByDoc, getBaiTestCaus, type BaiTest, type BaiTestCau } from './testonline'
 import type { CauHoi } from './kho/api'
 // Engine Elo/EXP đã XUỐNG DB (fn_dong_phase/fn_recompute_exp_thang — mig 202608300240, §2.0).
@@ -140,6 +141,12 @@ export async function getDangTen(maDangs: string[], mon?: string): Promise<Recor
   for (const tbl of tbls) {
     const { data } = await supabase.from(tbl).select('ma_dang, ten_dang').in('ma_dang', uniq).limit(LIMIT)
     for (const r of (data ?? []) as any[]) out[r.ma_dang] = r.ten_dang
+  }
+  // Kho HÌNH HỌC (mô hình, v3): dạng = `hinh_dang.ma` ('DH.001') — chuông báo động ghi mã này vào canh_bao_yeu.ma_dang
+  // (CEO 16/09: báo động phải được cả Đại · Hình GT · Hình học). Registry coKhoHinh, không if mon==='Toán'.
+  if (!mon || coKhoHinh(mon)) {
+    const { data } = await supabase.from('hinh_dang').select('ma, ten').in('ma', uniq).limit(LIMIT)
+    for (const r of (data ?? []) as any[]) out[r.ma] = r.ten
   }
   return out
 }
@@ -766,10 +773,40 @@ export async function loadDangTaiLieuBuoi(buoiId: string, nguon: NguonCanhBao, m
   } else if (nguon === 'et') mds = (await loadETForBuoi(buoiId)).caus.map((c) => c.dang_chinh)
   else if (nguon === 'mt') mds = (await loadMTForBuoi(buoiId)).caus.map((c) => c.dang_chinh)
   else mds = (await loadBTVNForBuoi(buoiId)).caus.map((c) => c.dang_chinh)
+  // + dạng HÌNH HỌC (mô hình) của các bài Hình trong tài liệu: bài → hinh_cach_giai.dang_id → hinh_dang (cap='dang').
+  if (coKhoHinh(mon)) {
+    try {
+      const { dapAn } = nguon === 'danhgia' ? await loadHinhForBuoi(buoiId, 'lop') : await loadHinhForBuoiPhase(buoiId, nguon)
+      mds.push(...(await dangHinhCuaBaiToan([...new Set(dapAn.map((d) => d.hinhBaitoanId))])).map((d) => d.ma_dang))
+    } catch { /* buổi không có giáo trình Hình ⇒ bỏ qua, không làm hỏng list Đại */ }
+  }
   const uniq = [...new Set(mds.filter(Boolean))] as string[]
   if (!uniq.length) return []
   const ten = await getDangTen(uniq, mon ?? undefined)
   return uniq.map((ma_dang) => ({ ma_dang, ten: ten[ma_dang] ?? ma_dang }))
+}
+/** Dạng Hình học của một tập bài Hình — qua cách giải đã gắn `hinh_dang` (cây loại-câu-hỏi › dạng; DB 16/09 mới có tầng
+ *  loai_ch và cách giải gắn thẳng vào đó ⇒ nhận MỌI cap, không lọc cap='dang'). Thứ tự = thứ tự bài. */
+export async function dangHinhCuaBaiToan(baitoanIds: string[]): Promise<DangTaiLieu[]> {
+  if (!baitoanIds.length) return []
+  const { data, error } = await supabase.from('hinh_cach_giai').select('baitoan_id, dang:hinh_dang(ma, ten, cap)').in('baitoan_id', baitoanIds).limit(LIMIT)
+  if (error) throw error
+  const out: DangTaiLieu[] = []
+  for (const id of baitoanIds) for (const r of (data ?? []) as any[]) {
+    const d = r.dang
+    if (r.baitoan_id === id && d && !out.some((x) => x.ma_dang === d.ma)) out.push({ ma_dang: d.ma, ten: d.ten })
+  }
+  return out
+}
+/** Danh sách dạng Hình học cho picker chuông = NÚT LÁ của cây hinh_dang (tầng sâu nhất đang có — 16/09 cây mới có
+ *  tầng loại-câu-hỏi nên lá = loại câu hỏi; khi có tầng dạng thì lá tự thành dạng, không sửa code). Theo khối; dạng
+ *  không gắn khối vẫn hiện. Nhóm = tên cha (hoặc "Loại câu hỏi" khi là gốc). */
+export async function listDangHinhChoChuong(khoi?: string | null): Promise<{ ma_dang: string; ten: string; nhom: string }[]> {
+  const all = await listDangHinh()
+  const coCon = new Set(all.map((d) => d.cha_id).filter(Boolean))
+  const tenCua = new Map(all.map((d) => [d.id, d.ten]))
+  return all.filter((d) => !coCon.has(d.id) && (!khoi || !d.khoi || d.khoi === khoi))
+    .map((d) => ({ ma_dang: d.ma, ten: d.ten, nhom: (d.cha_id && tenCua.get(d.cha_id)) || 'Loại câu hỏi' }))
 }
 
 // ════ EXP THÁNG (redesign 07-28, Thùy chốt) — EXP = CHĂM CHỈ, TÍNH LẠI theo (lớp × tháng) ════
@@ -1335,22 +1372,34 @@ export async function listCaHoc(): Promise<CaHoc[]> {
   return rows.map((b) => ({ id: b.id, ma_buoi: b.ma_buoi, ten_lop: b.lop?.ten_lop ?? '?', ngay: b.ngay, mon: b.lop?.mon ?? null, ingame_dong: !!b.ingame_dong_at, et_dong: !!b.et_dong_at, hasMT: mtBuoiIds.has(b.id), mt_dong: !!b.mt_dong_at, trang_thai: b.trang_thai }))
 }
 export type ExpRow = { source: string; amount: number; mon: string | null; created_at: string; ngay?: string | null; lop?: string | null }
-export type DiemHS = { elo: { mon: string; elo: number; sessions: number; exp: number }[]; hist: EloHist[]; exp: ExpRow[] }
-// Hồ sơ điểm 1 HS: Elo per môn (+EXP môn) · lịch sử Elo (timeline) · dòng EXP.
+export type DiemHS = { elo: { mon: string; elo: number; sessions: number }[]; hist: EloHist[] }
+// Hồ sơ điểm 1 HS: Elo per môn · lịch sử Elo (timeline). EXP xem RIÊNG qua getExpThang (theo
+// tháng — EXP là lương THÁNG, không gộp dồn nhiều tháng như Elo, xem [[gami_exp_chi_tiet_thang]]).
 export async function getDiemHS(hocSinhId: string): Promise<DiemHS> {
-  // exp: 1 HS ledger chi tiết cả mùa ~vài trăm dòng, cuối mùa CÓ THỂ >1000 (cap PostgREST) → pagedLedger.
-  const [eloR, histR, expRows] = await Promise.all([
+  const [eloR, histR] = await Promise.all([
     supabase.from('gami_elo').select('mon, elo, sessions_played').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     supabase.from('gami_elo_history').select('buoi_hoc_id, phase, mon, elo_before, delta, elo_after, created_at, buoi:buoi_hoc_id(ngay, lop:lop_id(ten_lop))').eq('hoc_sinh_id', hocSinhId).order('created_at', { ascending: false }).limit(LIMIT),
-    pagedLedger((q) => q.select('source, amount, mon, created_at, buoi:ref_buoi_hoc_id(ngay, lop:lop_id(ten_lop))').eq('hoc_sinh_id', hocSinhId)),
   ])
-  const expR = { data: [...expRows].sort((a: any, b: any) => (a.created_at < b.created_at ? 1 : -1)) }
-  const expByMon = new Map<string, number>()
-  for (const r of (expR.data ?? []) as any[]) expByMon.set(r.mon ?? '', (expByMon.get(r.mon ?? '') ?? 0) + Number(r.amount))
   return {
-    elo: ((eloR.data ?? []) as any[]).map((e) => ({ mon: e.mon, elo: e.elo, sessions: e.sessions_played, exp: expByMon.get(e.mon) ?? 0 })),
+    elo: ((eloR.data ?? []) as any[]).map((e) => ({ mon: e.mon, elo: e.elo, sessions: e.sessions_played })),
     hist: ((histR.data ?? []) as any[]).map((h) => ({ buoi_hoc_id: h.buoi_hoc_id, phase: h.phase, mon: h.mon, elo_before: h.elo_before, delta: h.delta, elo_after: h.elo_after, created_at: h.created_at, ngay: h.buoi?.ngay, lop: h.buoi?.lop?.ten_lop })),
-    exp: ((expR.data ?? []) as any[]).map((x) => ({ source: x.source, amount: x.amount, mon: x.mon, created_at: x.created_at, ngay: x.buoi?.ngay, lop: x.buoi?.lop?.ten_lop })),
+  }
+}
+// EXP + xu của 1 HS trong 1 THÁNG (p_ym 'YYYY-MM') — dòng chi tiết per hoạt động + tổng per môn.
+// §2.0: tổng per môn lấy từ fn_gami_exp_xu_thang (RPC có sẵn của ChotXuScreen), KHÔNG cộng tay
+// từ dòng chi tiết ở client. Cùng luật "thuộc tháng nào" với hàm đó nên số luôn khớp Chốt xu.
+export async function getExpThang(hocSinhId: string, ym: string): Promise<{ rows: ExpRow[]; tongMon: Map<string, number> }> {
+  const [detR, tongR] = await Promise.all([
+    supabase.rpc('fn_gami_exp_chi_tiet_thang', { p_hoc_sinh_id: hocSinhId, p_ym: ym }),
+    supabase.rpc('fn_gami_exp_xu_thang', { p_ym: ym, p_hoc_sinh_id: hocSinhId }),
+  ])
+  if (detR.error) throw detR.error
+  if (tongR.error) throw tongR.error
+  const tongMon = new Map<string, number>()
+  for (const r of (tongR.data ?? []) as any[]) tongMon.set(r.mon ?? '', Number(r.exp))
+  return {
+    rows: ((detR.data ?? []) as any[]).map((x) => ({ source: x.source, amount: Number(x.amount), mon: x.mon, created_at: x.created_at, ngay: x.ngay, lop: x.lop })),
+    tongMon,
   }
 }
 

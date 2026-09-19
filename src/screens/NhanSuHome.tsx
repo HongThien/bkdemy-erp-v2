@@ -59,7 +59,9 @@ import BoTroDuoiScreen from './botro/BoTroDuoiScreen'
 import ChatLuongVanHanhScreen from './dashboard/ChatLuongVanHanhScreen'
 import PhDangNhapScreen from './dashboard/PhDangNhapScreen'
 import XemAppScreen from './dashboard/XemAppScreen'
+import ThongBaoPhScreen from './dashboard/ThongBaoPhScreen'
 import DashboardHocTapScreen from './danhgia/DashboardHocTapScreen'
+import BangLamBaiScreen from './theodoi/BangLamBaiScreen'
 import DuyetBoTroYeuScreen from './danhgia/DuyetBoTroYeuScreen'
 import NoiDungBoTroYeuScreen from './danhgia/NoiDungBoTroYeuScreen'
 import TrangThaiCaBoTroScreen from './danhgia/TrangThaiCaBoTroScreen'
@@ -442,7 +444,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
                       <span className="shrink-0 text-[15px]">✍️</span>
                       <span className="min-w-0 flex-1 text-[13px] font-medium text-slate-800">{c.hoTenHs} · {c.mon}{c.khoi ? ` · K${c.khoi}` : ''}</span>
                     </div>
-                    <div className="pl-[21px] text-[11px] text-slate-400">test {ddmmVN(c.ngay)}{c.thieuDe ? ' · ⚠ chưa có đề' : ''}</div>
+                    <div className="pl-[21px] text-[11px] text-slate-400">test {ddmmVN(c.ngay)}{c.trangThai === 'dang_test' ? ' · đang test, chờ bài' : c.thieuDe ? ' · ⚠ chưa có đề' : ' · đã có bài'}</div>
                   </button>
                 ))}
               </div>
@@ -458,7 +460,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
                       <span className="shrink-0 text-[15px]">📨</span>
                       <span className="min-w-0 flex-1 text-[13px] font-medium text-slate-800">{c.hoTenHs} · {c.mon}{c.khoi ? ` · K${c.khoi}` : ''}</span>
                     </div>
-                    <div className="pl-[21px] text-[11px] text-slate-400">test {ddmmVN(c.ngay)}{c.diemNhap != null ? ` · ${c.diemNhap}đ` : ' · chờ chấm'}</div>
+                    <div className="pl-[21px] text-[11px] text-slate-400">test {ddmmVN(c.ngay)}{c.trangThai === 'dang_test' ? ' · đang test' : c.diemNhap != null ? ` · ${c.diemNhap}đ` : ' · chờ chấm'}</div>
                   </button>
                 ))}
               </div>
@@ -574,7 +576,8 @@ export default function NhanSuHome({ user }: { user: User }) {
   // ⚠ bo_tro_yeu CHƯA có detail riêng (khác bù/đuổi) — rơi vào nhánh BuoiDetail chung tạm thời.
   // BuoiDetail vốn cho buổi lớp thường (lop_id có giá trị); bo_tro_yeu giống bù ở chỗ lop_id=null
   // (1 buổi = 1 HS, không gắn lớp) nên CHƯA CHẮC render đúng — cần 1 BuoiBoTroYeuDetail riêng
-  // (hiện tiến độ dạng + tick day_at, giống BuoiDuoiDetail) trước khi đưa vào vận hành thật.
+  // (hiện tiến độ dạng chỉ-xem, giống BuoiDuoiDetail sau Phase 2 19/09 — không tick tay nữa) trước khi
+  // đưa vào vận hành thật.
   if (openBuoi) return openBuoi.loai === 'bu'
     ? <BuoiBuDetail buoiId={openBuoi.id} onClose={() => setOpenBuoi(null)} />
     : openBuoi.loai === 'bo_tro_duoi'
@@ -655,7 +658,9 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'db_chatluong' ? <ChatLuongVanHanhScreen />
       : staffLeaf === 'db_phdangnhap' ? <PhDangNhapScreen />
       : staffLeaf === 'db_xemapp' ? <XemAppScreen />
+      : staffLeaf === 'db_thongbao' ? <ThongBaoPhScreen />
       : staffLeaf === 'db_hoctap' ? <DashboardHocTapScreen />
+      : staffLeaf === 'db_theodoi_app' ? <BangLamBaiScreen />
       : (staffLeaf === 'botroyeu' || staffLeaf === 'botroyeu:duyet') ? <DuyetBoTroYeuScreen />
       : staffLeaf === 'botroyeu:noidung' ? <NoiDungBoTroYeuScreen />
       : staffLeaf === 'botroyeu:trangthai' ? <TrangThaiCaBoTroScreen />

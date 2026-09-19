@@ -196,7 +196,10 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   const [printing, setPrinting] = useState(false)
   const [dangModal, setDangModal] = useState(false)
   const [picker, setPicker] = useState<{ phanId: string; maDang: string } | null>(null)
-  const cauTbl = bt ? khoCuaMon(bt.mon).cauTbl : 'dai_cau_hoi'
+  // ⭐ 18/09 (CEO: "chọn dạng Tổng 3 góc của 1 tam giác nhưng builder ko load được") — cauTbl PHẢI theo
+  // NHÁNH tài liệu (Đại/HGT/Hình học Học), không mặc định Đại. Nếu chỉ truyền mon → dạng Hình bên nhánh
+  // 'hinh_gt'/'hinh_hoc' rơi vào query dai_cau_hoi ⇒ tree rỗng, không load được. Fix: dispatch qua bt.nhanh.
+  const cauTbl = bt ? khoCuaMon(bt.mon, bt.nhanh).cauTbl : 'dai_cau_hoi'
   const markSaved = () => { setSaved(true); setTimeout(() => setSaved(false), 2000) }
 
   // Load ĐẦU (toggle loading, cho phép hiện "Đang tải…"). Refresh SAU mỗi thao tác dùng refreshPhans
@@ -235,7 +238,15 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
     const next: CauHinh = { ...ch, etFormByCau: { ...(ch.etFormByCau ?? {}), [maCau]: f } }
     setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved()
   }
-  async function themDang(maDang: string) { await addDangBT(id, maDang); await refreshPhans(); markSaved() }
+  // ⭐ 18/09 — thêm dạng KÈM NHÁNH (nếu user chọn nhánh khác Đại trong DangPickerOne). Nhánh cố định
+  // theo lần đầu (dạng đầu tiên set bt.nhanh — mọi dạng sau phải cùng nhánh vì cauTbl dispatch chung).
+  async function themDang(maDang: string, nhanh?: string | null) {
+    if (nhanh !== undefined && nhanh !== bt?.nhanh && phans.length === 0) {
+      await updateTaiLieu(id, { nhanh })
+      setBt((prev) => prev ? { ...prev, nhanh } : prev)
+    }
+    await addDangBT(id, maDang); await refreshPhans(); markSaved()
+  }
   async function xoaDang(phanId: string) {
     if (!confirm('Xoá cả dạng này khỏi BT (câu vẫn còn trong kho)?')) return
     await deletePhan(phanId); await refreshPhans(); markSaved()
@@ -300,8 +311,9 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
         </div>
       </div>
 
-      {dangModal && <DangPickerOne khoi={bt.khoi} mon={bt.mon} onClose={() => setDangModal(false)}
-        onPick={(ma) => { setDangModal(false); themDang(ma) }} />}
+      {/* chonNhanh CHỈ khi CHƯA có dạng nào — sau đó nhánh cố định theo bt.nhanh (mọi dạng cùng cauTbl). */}
+      {dangModal && <DangPickerOne khoi={bt.khoi} mon={bt.mon} nhanh={bt.nhanh ?? null} chonNhanh={phans.length === 0} onClose={() => setDangModal(false)}
+        onPick={(ma, nh) => { setDangModal(false); themDang(ma, nh) }} />}
       {picker && <KhoPicker maDangs={[picker.maDang]} cauTbl={cauTbl} selected={phans.find((p) => p.id === picker.phanId)?.caus.map((c) => c.ma_cau) ?? []} onClose={() => setPicker(null)}
         onConfirm={async (m) => { await applyCaus(picker.phanId, m); setPicker(null) }} />}
       {printing && <BTPrintView id={id} onClose={() => setPrinting(false)} />}

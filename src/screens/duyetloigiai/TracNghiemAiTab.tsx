@@ -4,8 +4,9 @@
 // SAI — DB tự so bản cũ để ghi sua_truoc_duyet cho metric precision) · Từ chối (lý do bắt buộc → kho rác, câu quay lại
 // pool sinh lại).
 // ⭐ DUYỆT HÀNG LOẠT (Thùy 09/09, đảo quyết định 08/09 "không có duyệt tất cả"): hành vi thật là LOẠI (bỏ chọn) câu
-// sai trên màn rồi bấm 1 nút duyệt hết phần còn lại — không bấm từng câu. Chia trang 20 câu/lô (PAGE_SIZE) để mỗi
-// lượt "Duyệt tất cả" vừa tay, không nuốt nguyên 500 câu 1 lượt. Ô chọn mặc định BẬT (sẽ duyệt); bỏ chọn = loại
+// sai trên màn rồi bấm 1 nút duyệt hết phần còn lại — không bấm từng câu. Chia trang 20/50 câu/lô (chọn được,
+// PAGE_SIZE_OPTIONS) để mỗi lượt "Duyệt tất cả" vừa tay, không nuốt nguyên 500 câu 1 lượt. Toolbar sticky để
+// kéo xuống câu 20+ vẫn bấm "Duyệt tất cả" được ngay, không phải cuộn lại đầu trang. Ô chọn mặc định BẬT (sẽ duyệt); bỏ chọn = loại
 // khỏi lượt duyệt này (KHÔNG phải Từ chối — vẫn nằm trong pool, xét lại sau, không cần lý do). "Sửa rồi duyệt" vẫn
 // là luồng 1-câu riêng (fn_mcq_form_duyet), hàng loạt chỉ duyệt NGUYÊN VẸN qua fn_mcq_form_duyet_batch (mig 09/09).
 // Metric strip đọc fn_mcq_metric (tính ở DB §2.0) — client chỉ hiển thị.
@@ -15,7 +16,7 @@ import { MathText, inp } from '../kho/ui'
 import { myNhanSuId } from '../../lib/giaoviec'
 
 const CHU = ['A', 'B', 'C', 'D']
-const PAGE_SIZE = 20
+const PAGE_SIZE_OPTIONS = [20, 50]
 type Row = FormTnChoDuyet & { mon: KhoMon }
 
 export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: string }) {
@@ -30,6 +31,7 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
   const [tuChoi, setTuChoi] = useState<Record<string, string>>({})      // id → lý do đang gõ (mở ô từ chối)
   const [thongBao, setThongBao] = useState<string | null>(null)
   const [page, setPage] = useState(0)
+  const [pageSize, setPageSize] = useState(PAGE_SIZE_OPTIONS[0])
   const [loai, setLoai] = useState<Set<string>>(new Set())              // id bị BỎ CHỌN khỏi lượt "Duyệt tất cả" (không phải Từ chối)
   const [batchBusy, setBatchBusy] = useState(false)
   const reqId = useRef(0)
@@ -82,9 +84,9 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
     setLoai((s) => { const next = new Set(s); if (next.has(id)) next.delete(id); else next.add(id); return next })
   }
 
-  const totalPages = Math.max(1, Math.ceil(rows.length / PAGE_SIZE))
+  const totalPages = Math.max(1, Math.ceil(rows.length / pageSize))
   const pageC = Math.min(page, totalPages - 1)
-  const pageRows = rows.slice(pageC * PAGE_SIZE, pageC * PAGE_SIZE + PAGE_SIZE)
+  const pageRows = rows.slice(pageC * pageSize, pageC * pageSize + pageSize)
   const seDuyet = pageRows.filter((r) => !loai.has(r.id))
 
   async function onDuyetTatCa() {
@@ -121,15 +123,24 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
       {thongBao && <div className="mb-3 rounded-lg bg-emerald-50 px-3 py-2 text-[13px] text-emerald-800">{thongBao}</div>}
       {err && <p className="mb-3 text-sm text-rose-600">Lỗi: {err}</p>}
       {!loading && rows.length > 0 && (
-        <div className="mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white px-3 py-2">
+        <div className="sticky top-0 z-10 mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white px-3 py-2 shadow-sm">
           <span className="text-[13px] text-slate-500">
-            Trang <b className="text-slate-800">{pageC + 1}</b>/{totalPages} — câu {pageC * PAGE_SIZE + 1}–{Math.min((pageC + 1) * PAGE_SIZE, rows.length)} / {rows.length}
+            Trang <b className="text-slate-800">{pageC + 1}</b>/{totalPages} — câu {pageC * pageSize + 1}–{Math.min((pageC + 1) * pageSize, rows.length)} / {rows.length}
           </span>
           <div className="flex items-center gap-1">
             <button onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={pageC === 0}
               className="rounded-md bg-white px-2 py-1 text-[12px] font-medium text-slate-600 ring-1 ring-slate-200 disabled:opacity-30">‹ Trước</button>
             <button onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))} disabled={pageC >= totalPages - 1}
               className="rounded-md bg-white px-2 py-1 text-[12px] font-medium text-slate-600 ring-1 ring-slate-200 disabled:opacity-30">Sau ›</button>
+          </div>
+          <div className="flex items-center gap-1 text-[12px] text-slate-500">
+            <span>Cỡ trang</span>
+            {PAGE_SIZE_OPTIONS.map((sz) => (
+              <button key={sz} onClick={() => { setPageSize(sz); setPage(0) }}
+                className={`rounded-md px-2 py-1 font-medium ring-1 ${sz === pageSize ? 'bg-slate-800 text-white ring-slate-800' : 'bg-white text-slate-600 ring-slate-200'}`}>
+                {sz}
+              </button>
+            ))}
           </div>
           <button onClick={onDuyetTatCa} disabled={batchBusy || !seDuyet.length}
             className="ml-auto rounded-md bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">

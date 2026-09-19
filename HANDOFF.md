@@ -1367,45 +1367,51 @@ khối 6 đã xong, đang chờ duyệt. ĐÃ MERGE + PUSH `main` (96861b7, 11/0
 và `--baseline` đều đụng file người khác, đã dính 2 lần 08/09).
 
 
-### ⭐ 09/09 tối — TEST ĐẦU VÀO: audit đủ luồng + 8 quyết định CEO + DB ĐÃ SẴN, CODE MÀN CHƯA SỬA (làm tiếp ở nhà)
-**Sự thật hiện tại (đo DB 09/09):** 6/6 `ca_test` đều `tai_lieu_id` NULL ⇒ hàng đợi Chấm rỗng, không ai thấy ô Đ/C/S
-(ô này CÓ trong `ChamTestScreen`, chỉ hiện khi ca có đề). Ca Nguyễn Thắng Tùng (K7, 07/09): `ca_test_log` chứng
-minh đề chưa từng được lưu (UI 2 bước chọn→bấm "Gán đề", Hoàn tất không đòi đề). Ca hoàn thành thiếu đề **biến
-mất im lặng** khỏi mọi hàng đợi (Chấm lọc `tai_lieu_id not null`, Điểm danh chỉ liệt kê hôm nay). 1 dòng `ca_test_cau`
-mồ côi (ca Test QA 07/07). Chi tiết: DEVLOG 09/09 tối.
-
-**8 quyết định CEO (chốt, đừng hỏi lại):** ① gán đề = **mặc định đề đang dùng** của (khối×môn), Ops chỉ đổi khi
-cần · ② + ⑤ chấm test (TA được gán) và trả bài (GV được gán) **phải nằm trong "Việc của tôi"** · ③ màn chấm hiện
-tại (1 HS, Đ/C/S từng câu) là đủ, **không cần mã lỗi** · ④ **điểm test NHẬP RIÊNG**, độc lập Đ/C/S (`ca_test.diem_nhap`)
-· ⑥ ứng viên chưa là HS vẫn tính ở Postgres (khoá = `ca_test_id`) · ⑦ **Đại/Hình = pick từ bản đồ nào thì tính từ
-đấy** (Đại→'dai'; Hình + Hình giải tích→'hinh'); đề không có câu hình thì **bỏ qua khối đó**, không hiện 0% · ⑧ tên
-GV + lịch lớp đề xuất **chỉ trên ẢNH gửi PH**, không trên UI trả bài. Trả bài phải hiện: % theo CHUYÊN ĐỀ · % cơ
-bản (`muc_do` ≤3) / nâng cao (≥4) · % Đại/Hình · thang Trình bày–Tính toán · nhận xét thêm · lớp đề xuất (+GV+lịch
-trên ảnh) · **xuất ảnh** (đã có html2canvas popup, chỉ cần thêm khối).
-
-**ĐÃ ÁP DB (mig `202609092245_test_dau_vao_phieu_rpc.sql`, schema.md đã refresh):** `ca_test.diem_nhap` ·
-`ca_test_cau.nhanh/muc_do/ten_chuyen_de` = **SNAPSHOT lúc gán đề** (không join lại kho; NULL = không áp dụng) ·
-**`fn_test_dau_vao_phieu(uuid) → jsonb`** trả TOÀN BỘ số liệu phiếu (tong · theoChuyenDe · theoMucDo{coBan,nangCao}
-· theoNhanh{dai,hinh} · nhanXet · lopDeXuat{tenLop,gv[],lich[]}). % = Σdiem/Σtoi_da trên câu ĐÃ CHẤM. ⚠ Nhóm rỗng
-trả `{soCau:0,pct:null}` — client ẩn khi `soCau===0` (hoặc mig nhỏ `create or replace`, KHÔNG sửa file đã áp).
-
-**VIỆC TIẾP (thứ tự A→G, chi tiết từng hàm ở DEVLOG 09/09 tối):** (A) `detest.ts` — snapshot 3 cột khi gán
-(`getTaiLieuFull` + `nhanhCuaCau` + `khoCuaMon(..).banDoTbl`; **hàng HÌNH `HINH:<uuid>` đang bị bỏ rơi im lặng**,
-phải snapshot nhanh='hinh' qua `loadLuoi`+`pickCuaHinhRow`+`banInTheoMoHinh`) · `ganDeDangDung` · `listCanCham`
-gộp cả ca thiếu đề + nút "Gán đề đang dùng" (đường cứu Tùng + 4 ca cũ, KHÔNG sửa DB tay) · list "của tôi" theo
-`nguoi_cham_id`/`nguoi_tra_bai_id` · `setDiemNhap` · đóng chấm đòi `diem_nhap` · `getPhieuKetQua` → rpc, XOÁ
-`tongDiem`/`getBieuDoChuyenDe` (JS cộng điểm, vi phạm §2.0). (B) `DiemDanhTestScreen`: chọn = lưu ngay, tự gán
-đề đang dùng lúc tạo ca/mount card, Hoàn tất chặn khi chưa có đề. (C) `ChamTestScreen`: Đ/C/S inline trên hàng
-câu (khuôn `ET_KQ` ChamBuoi.tsx), ô Điểm, tổng/% từ rpc, toggle Của tôi/Tất cả. (D) `TraBaiTestScreen`: 3 khối %
-từ rpc, không GV. (E) `PhieuTestDauVao`: điểm nhập + 3 khối % + GV + lịch (`THU_LABEL` 2..8, 8=CN). (F) `NhanSuHome`:
-2 khối flat "cần chấm / cần trả bài (của tôi)" theo `me.nhanSu.id` → `setStaffLeaf('test_dau_vao')` + (G) setter
-tab module-level ở `TestDauVaoScreen`. Dữ liệu thô cần học thuật rà: đề K7 34/34 câu `muc_do`=3 (kể cả chuyên đề
-"Nâng cao") ⇒ phiếu sẽ ra 100% cơ bản; 8 câu "Hình học" đề K7 pick từ kho Đại ⇒ đếm là Đại theo ⑦.
-
-**Cảnh báo hạ tầng:** `migrate --status` thấy **11 migration có trong sổ DB nhưng không có file ở main** (nhánh/
-worktree chưa merge: 202608151600 · 202609041045 · 202609051251 · 202609081858 · 202609091354/1411/1416/1428/1750/
-1810/1959). Dựng lại DB từ repo sẽ thiếu — gom file về main trước khi tin `npm run migrate` trên máy mới.
-
+### ⭐ TEST ĐẦU VÀO — trạng thái 13/09 (đã push main `8e4aa83`; supersede mục 09/09)
+**Luồng đang chạy (ERP máy tính, `Vận hành › Tuyển sinh › Test đầu vào`, 5 tab):**
+1. **Phân công** (`PhanCongTestScreen.tsx`, bảng `test_dau_vao_phan_cong` PK (khối, môn) + log): toggle môn, hàng =
+   khối, 2 ô SearchSelect người chấm / người trả bài, chọn = upsert ngay. **Trigger DB `tg_ca_test_phan_cong`
+   (BEFORE INSERT ca_test)** điền `nguoi_cham_id`/`nguoi_tra_bai_id` còn NULL từ bảng này theo (ung_vien.khoi, ca.mon)
+   ⇒ mọi đường tạo ca đều được gán; đổi phân công chỉ áp ca tạo SAU. **Bảng hiện RỖNG** (chỉ 1 dòng K7 Toán 2 cột null
+   do tôi test) — CEO cần điền. Ops KHÔNG chọn người ở Điểm danh nữa (card chỉ hiện tên, thiếu ⇒ cam).
+2. **Điểm danh test** (`DiemDanhTestScreen`): tạo ca ⇒ `ganDeDangDung` tự gán **đề đang dùng** của (khối × môn)
+   (`tai_lieu.loai='de_test_dau_vao'`, bản mới nhất); dropdown chọn đề = lưu ngay; **Hoàn tất chặn khi thiếu bài
+   HOẶC thiếu đề**. Gán đề = `ganDeCaTest` snapshot câu vào `ca_test_cau` kèm `nhanh` ('dai'|'hinh') · `muc_do` ·
+   `ten_chuyen_de` (duyệt `maCaus` theo thứ tự đề; hàng HÌNH `HINH:<uuid>` snapshot 1 dòng/bài qua `banInTheoMoHinh`;
+   câu không còn trong kho ⇒ CHẶN gán + nêu mã). Chưa có đề cho khối × môn ⇒ card báo ⚠ (K6 Toán đang thế).
+3. **Chấm test** (`ChamTestScreen`): toggle Của tôi/Tất cả (`nguoi_cham_id`); ca hoàn thành mà thiếu đề VẪN hiện
+   (badge ⚠ + nút "Gán đề đang dùng" — đường cứu 5 ca cũ, Tùng K7 07/09 vẫn chưa ai bấm); bảng nhập liệu thuần
+   "▸ Câu N | Đ C S" (đề ẩn, bấm số câu mới xổ), ô **Điểm bài nhập tay** (`ca_test.diem_nhap`, thang 10), tổng/% từ
+   rpc; đóng chấm cần đủ câu + điểm. Điểm câu do trigger `tg_ca_test_kq_diem`.
+4. **Trả bài** (`TraBaiTestScreen`): danh sách card → bấm HS = **`DanhGiaGvModal` toàn màn hình**: TRÁI form
+   navy/gold (kỹ năng Trình bày/Tính toán **thang 5** = 5 nút, nhận xét 1 textarea + gợi ý `nhan_xet_mau` nhom
+   'khac', lớp đề xuất SearchSelect lưu ngay vào `ung_vien.lop_du_kien_id`), PHẢI = phiếu thật xem trước co theo
+   màn (`transform: scale`), autosave nháp 700ms (`ca_test.nhan_xet` jsonb `{trinhBay:1..5, tinhToan:1..5, khac}`;
+   dữ liệu cũ tot/on/kem → 5/3/1 qua `mucKyNang`), **📋 Copy ảnh gửi PH**, ✓ Đã gửi đóng (cần chấm xong + scan
+   bài đã chấm + lớp). "Đã trả bài" bấm = xem lại phiếu. **Đại/Hình vẫn tính ở DB, KHÔNG lên phiếu/form.**
+5. **Đề test**: sinh đề từ MT/Đề thi (giữ nguyên).
+**Phiếu gửi PH** (`PhieuTestDauVao.tsx`, read-only, 720px, kit `BK_KET_QUA_KIEM_TRA_DAU_VAO_UI_KIT_v1` 12/09):
+header/footer navy + **ảnh ruy băng gold thật** (`public/bk-ui/td_header.png`/`td_footer.png`, `background-size:
+cover`), logo colorful `logobk.png` trong ô trắng, profile (avatar cartoon `td_boy/td_girl` theo
+`ung_vien.gioi_tinh`, null ⇒ glyph) + card Điểm test `td_cup` "x/10", khối 1 % chuyên đề (thanh navy→gold), khối 2
+donut **tô đúng % đúng tổng** (navy = điểm cơ bản, gold = nâng cao, còn lại xám), khối 3 kỹ năng x/5, khối 4 nhận
+xét (hộp xanh + `td_quote`, minHeight 3 dòng), khối 5 "LỚP / tên" đè lên `td_badge` (nguyệt quế + vương miện), footer
+địa chỉ Geleximco + hotline 0963.209.309 + Pacifico "Học thật / Tiến bộ thật". Mọi số liệu từ
+**`fn_test_dau_vao_phieu(uuid) → jsonb`** (có `gioiTinh`, mig 202609131618). Xuất ảnh = outerHTML → popup
+html2canvas; 8 asset fetch → data URL, thiếu ⇒ pixel trong suốt (`ASSETS`, `PX_TRONG`). Ruy băng/icon SVG inline
+vẫn còn làm fallback. Icon nhỏ = SVG tự vẽ (sheet icon ChatGPT không cắt sạch).
+**Việc của tôi (ERP):** 2 khối flat "✍️ cần chấm" / "📨 cần trả bài" theo `nguoi_cham_id`/`nguoi_tra_bai_id`, gồm cả
+ca **đang test** (nhãn "đang test, chờ bài"), click ⇒ `moTabTestDauVao('cham'|'tra_bai')` + leaf `test_dau_vao`.
+App TA/GV điện thoại **KHÔNG** có test đầu vào (CEO 10/09: "làm trên máy tính thôi"; nhắc việc = context khác).
+**Còn treo / cần người:** CEO điền tab Phân công · học thuật sinh đề K6 Toán (và các khối × môn khác) · rà
+`muc_do` dạng (đề K7 34/34 câu mức 3 ⇒ phiếu luôn 100% cơ bản) · Ops điền `gioi_tinh` (95/192 ứng viên null) ·
+5 ca cũ thiếu đề (Tùng, Phúc, Thiện Minh, Gia Huy, Test QA) chờ bấm "Gán đề đang dùng" · chưa ai verify **ảnh
+Copy cuối** bằng tay sau lần lắp asset (Browser pane không mở popup thứ 2). File nguồn `*_testdauvao.png`,
+`asset_dauvao.png`, `header_bg/footer_bg.png`, 4 svg kit v1.1, `td_icon_*.png` còn trong `public/bk-ui/`
+chưa commit — dọn cần CEO gật.
+**Cảnh báo hạ tầng còn nguyên:** `migrate --status` thấy migration có trong sổ DB nhưng không có file ở main
+(nhánh/worktree chưa merge) — gom file về main trước khi tin `npm run migrate` ở máy mới. Repo chính từng
+**mất `.env.local`** (10/09) — chép lại từ worktree; port 5173 có thể do vite của worktree khác giữ.
 
 ### ⭐ 10/09 (tối) — NHẬP CÂU HGT QUA CLAUDE: 25 câu Phần A Toán Tứ Tâm PT mặt phẳng vào chờ-duyệt (worktree `nhap-bando`)
 **CEO chốt luồng nhập kho:** đưa file docx/pdf → Claude tách đề+giải+phương án + gán `dang_chinh` → INSERT `hgt_cau_hoi` với `da_duyet=false` + `dang_ai_de_xuat=dang_chinh` → CEO duyệt ở màn duyệt hợp nhất (`DuyetCauTab`). Precision AI đo được sau (count(dang_ai_de_xuat=dang_chinh)/count(dang_ai_de_xuat not null)).
@@ -1519,8 +1525,50 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
   cụ thể).
 
 
+### Đã build (18/09 — Chuẩn hoá mã bản đồ Đại + UI chuyển/gộp/xoá)
+
+**Rule mã Đại (đã đúng chuẩn 100% sau bước 3):** `T1 + KK + CD + CE + DD` — chủ đề len 6, chuyên đề len 8, dạng len 10. Khối `KK` chấp nhận `\d{2}` (03-12) HOẶC `\dT` (4T/5T — khối riêng, KHÔNG phải lớp 4/5 tiểu học). 3 kho khác giữ mapping cũ: T2=Hình học · T3=HGT · K=KHTN (KHÔNG swap).
+
+**Function DB (§2.0 nguồn duy nhất) — mig `202609180046` + `202609180055`:**
+- `fn_dai_ma_hop_le(ma, tang)` · `fn_dai_ma_kho_cha(ma, tang)` · `fn_dai_kiem_ma()` (verify bất biến).
+- `fn_dai_sinh_ma_chuyen_de(chu_de, stt?)` · `fn_dai_sinh_ma_dang(chuyen_de, stt?)` — LUÔN max STT+1 trong parent, CHỈ đếm mã đúng chuẩn (bỏ qua rác).
+- `fn_dai_chuyen_dang_ma_moi(dang, cd_moi)` — thuần tính, LUÔN cấp STT mới.
+
+**RPC transactional (mig `202609181123` + `202609181233` + `202609181310` + `202609181342`):**
+- `fn_dai_chuyen_dang(ma_dang, ma_chuyen_de_moi) → new_ma_dang` — chuyển 1 dạng qua chuyên đề đích. FK cascade lo dai_cau_hoi/menh_de/cum_bai/ly_thuyet/thuoc_tinh/tien_de. Text-ref update tay: ca_test_cau (**+ sync `ten_chuyen_de` + `muc_do`** — snapshot phiếu test), gami_session_problems, bai_test_cau, tu_luyen_dang_lan, buoi_danh_gia_dang, bo_tro_duoi_dang, bo_tro_yeu_dang, canh_bao_yeu. Đích PHẢI có ≥1 dạng khác.
+- `fn_dai_chuyen_chuyen_de(ma_chuyen_de, ma_chu_de_moi) → new_ma_chuyen_de` — chuyển CẢ chuyên đề (kèm mọi dạng con). Cấp mã chuyên đề mới max+1 trong chủ đề đích, mọi dạng con bảo tồn 2 số STT cuối. Batch qua temp table `_cd_map`.
+- `fn_dai_gop_cau_dang(nguon, dich) → {so_cau, so_menh_de}` — CEO chốt scope hẹp: **chỉ chuyển `dai_cau_hoi.dang_chinh` + `dai_cau_menh_de.dang_chinh`**. KHÔNG đụng cụm/lý thuyết/thuộc tính/tiền đề/text-ref lịch sử. KHÔNG xoá dạng nguồn (CEO tự gộp lý thuyết + xoá tay sau).
+- Trigger `trg_log_doi_dang` GIỮ nguyên cho chuyển/gộp (log CHÍNH XÁC câu đổi dạng, feed `fn_kho_doi_dang_tk`). Chỉ disable trong migration RENAME MASS (bước 3).
+
+**Client + UI (`src/lib/kho/api.ts` + `src/screens/kho/BanDo.tsx` — chỉ Đại `config.key === 'dai'`):**
+- 3 wrapper: `chuyenDaiDang` · `chuyenDaiChuyenDe` · `gopDaiCauDang`.
+- Nút `→` (chuyển dạng qua chuyên đề khác) · `⇓` (gộp câu vào dạng khác) · `✕` (xoá) trong `LeafCard`, hover mới hiện.
+- Nút `→` (chuyển chuyên đề qua chủ đề khác) giữa `✎` và `✕` trong card chuyên đề (sidebar).
+- 3 modal SearchSelect cross-chủ đề/chuyên đề trong khối hiện tại.
+- **maxOrd → maxOrdCon** (line 1651) — chặn bug sinh mã lệch (parseInt nuốt phần vị trí dài). Filter codes = `startsWith(parent) && length === parent.length+2 && /^\d{2}$/.test(slice(-2))`. Áp cho **4 kho + legacy 4T/5T**.
+
+**Đề thi cũ (`toan_de_thi_cau.ma_cau_dai`) VẪN dùng được** — FK cứng tới `dai_cau_hoi.ma_cau`, mà `ma_cau` KHÔNG đổi khi chuyển dạng/gộp (chỉ `dang_chinh` đổi).
+
+**Chưa làm:**
+- Bước 1b: function chuẩn hoá cho HGT (T3) / KHTN (K) / Hình (T2). Hình học phức tạp (Học vs Luyện + mô hình + bài) — cần CEO chốt format mã `hinh_baitoan` (mã mô hình + STT bài) trước.
+- Bước 2b: chuyển `suggest*` client sang RPC sau khi bước 1b có function 4 kho.
+- CHECK constraint `dai_ban_do.ma_dang ~ '^T1(\d{2}|\dT)\d{6}$'` — chờ 3 kho khác cũng sạch để áp đồng thời.
+- Gộp CHUYÊN ĐỀ (khác chuyển 1-1) — hiện chưa cần, sẽ build khi CEO có ca thật.
+
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
+- **⭐⭐ Snapshot text-ref phải sync khi RPC đổi mã cha (bug 18/09 Test đầu vào không load chuyên đề mới).** `ca_test_cau` lưu SNAPSHOT `ten_chuyen_de` + `muc_do` tại thời điểm tạo ca test (phiếu `fn_test_dau_vao_phieu` đọc thẳng, KHÔNG JOIN dai_ban_do runtime — có ý đồ giữ lịch sử "HS làm câu này khi câu thuộc chuyên đề X"). RPC `fn_dai_chuyen_dang` lượt đầu chỉ update `ma_dang`, quên sync 2 cột snapshot → sau khi CEO chuyển 1 đống dạng, phiếu hiện chuyên đề CŨ. Fix mig `202609181342`: sync retroactive + tách `ca_test_cau` ra update riêng trong RPC (không lẫn với 7 bảng text-ref khác chỉ có `ma_dang`). **Áp dụng:** viết RPC đổi mã nào (`fn_*_chuyen_*`, `fn_*_gop_*`) → grep `schema.md` cột `ten_chuyen_de|ten_chu_de|muc_do|ten_dang` để tìm mọi snapshot cần sync, KHÔNG chỉ update PK/FK. Snapshot là "ý đồ giữ lịch sử" ở CHỖ ĐÚNG (đo lường) nhưng "ý đồ giữ lịch sử" ở CHỖ SAI (đổi tên/rename) là bug.
+
+- **⭐⭐ Bug sinh mã "nối chuỗi" — `parseInt(soThuTuCua(c, from))` nuốt CẢ phần còn lại (18/09 fix `maxOrd → maxOrdCon`).** Bản cũ `parseInt(c.slice(from))` với `c = 'T10701012203'` (rác) và `from=6` → `parseInt('01012203') = 1012203`, `pad2` giữ nguyên (không cắt về 2 digit) → mã mới = `parent + 1012204` = len 15 vô nghĩa. Bug ÂM THẦM khi tồn tại mã anh em lệch chuẩn — mã hợp lệ khác vẫn có nhưng bị max che khuất. **Áp dụng:** khi tính max STT anh em, filter STRICT trước (cùng parent + đúng length + đúng 2 digit cuối), KHÔNG parseInt phần dài không cắt được. Cách chống bug tổng quát: "1 lần sinh mã sai → mọi lần sinh sau đều lây" — luôn có bước validate format anh em trước khi cấp mã mới.
+
+- **⭐ Rule mã bản đồ có ngoại lệ historic (K4T/K5T tồn tại thật trong `lop.khoi`, KHÔNG phải typo).** Regex khối phải là `(\d{2}|\dT)` chứ không phải `\d{2}` — nếu strict `\d{2}` sẽ báo 88 dòng K4+K5 legacy (1215 câu, 3170 rows tự luyện, 2 lớp đang dạy) là RÁC → không thể xoá. **Áp dụng:** luôn đo shape data thật trước khi viết CHECK constraint (`scripts/_check_shape_4kho.mjs`, `_check_khoi_dac_biet.mjs`); rule "đúng" trong tài liệu chưa chắc đúng với data lịch sử.
+
+- **⭐ UI chia cấp 1/2/3 mà cùng feature — refetch state phải mở cho MỌI cấp có feature đó (bug 18/09 vòng quay may mắn).**
+  `HocSinhApp.tsx` fetch `maymanCoLuot` với guard `if (!cap2) return` — nhưng ô "May mắn" hiện trong CẢ `HomeCap1`
+  (BOX_CAP1) LẪN `KHU_CAP2`. Kết quả: 14 HS cấp 1 đủ điều kiện quay ngày 17/09 nhưng badge tắt câm → không ai vào
+  bấm quay → qua đêm `bt.ngay < v_today` (đúng intent CEO "làm ngày nào quay ngày đấy") → mất lượt. RPC không cấm
+  cấp 1 — chỉ FE thiếu tín hiệu. **Áp dụng:** khi feature hiện ở nhiều cấp, list các cấp CÓ UI của nó rồi mở guard
+  cho tất cả (ở đây: `if (!cap1 && !cap2) return`), không dựa vào cấp mặc định.
 - **⭐⭐ QUY TRÌNH thiết kế RULE LỖI cho form trắc nghiệm (Thùy chốt 09/09, sau khi CTO code trước-hỏi-sau 1 lần) —
   áp cho MỌI dạng mới đưa vào MCQ (`scripts/mcq-auto.mjs`/`mcq-sinh.mjs`, spec-mcq-form.md), không riêng "tích bằng 0":**
   **(1) Đọc `loi_giai` (lời giải chi tiết) THẬT trong kho của vài câu mẫu dạng đó trước** — không suy luận rule lỗi từ
@@ -2031,6 +2079,39 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
 - **"Nhãn" (`nguoi_cham_id`) không phải "việc".** Cột gán người tồn tại từ 14/08 nhưng không màn nào lọc theo nó và Việc của tôi không có card ⇒ với người dùng bằng không có. Thêm cột assign thì phải thêm luôn đường "việc của tôi" trong cùng lượt.
 - **Snapshot thuộc tính phân loại lúc neo, đừng join live để tính báo cáo.** `nhanh`/`muc_do`/`ten_chuyen_de` ghi vào `ca_test_cau` lúc gán đề ⇒ hàm phiếu chỉ gom 2 bảng, không nhân đôi registry môn→bảng trong SQL, đề/dạng sửa sau không làm lệch phiếu cũ.
 - **Hàng "không ở kho câu" (`HINH:<uuid>`) bị `layCauTheoThuTu` bỏ rơi không báo** — cùng họ với `.filter(Boolean)` nuốt tham chiếu chết. Mọi chỗ "resolve mã → nội dung" phải nói ra số hàng KHÔNG resolve được.
+
+### Bài học 10–13/09 — test đầu vào: phiếu từ kit ChatGPT, form GV, phân công, asset
+- **"Kit UI" của ChatGPT thường CHỈ là ảnh reference + DESIGN.md;** mục `assets/svg` ghi trong DESIGN có thể không
+  tồn tại trong zip, và bản "gửi bù" có thể là 3 glyph 150 byte hoặc 1 **contact sheet** gộp mọi thứ trên nền tối
+  có nhãn tên file. Kiểm zip TRƯỚC khi hứa "làm giống"; nói thẳng thiếu gì (liệt kê từng file, kích thước, trong
+  suốt hay không) để CEO đòi tiếp — vector tự vẽ chỉ được "giống cấu trúc/màu", không giống raster.
+- **PNG "trong suốt" của ChatGPT hay là ô caro NƯỚNG vào ảnh** (alpha 100%). Đo bằng pngjs (alpha<250 %, màu 4
+  góc) trước khi dùng. Khử được nếu chủ thể có màu bão hoà (gold/xanh): gắn nhãn thành phần liên thông của pixel
+  trung tính sáng, xoá thành phần chạm mép HOẶC lớn (lỗ tay cầm) — flood-fill từ mép thôi thì sót lỗ kín. Chủ thể
+  có phần trắng (giấy, highlight) thì cắt hỏng ⇒ bỏ. PIL trên máy này hỏng ("unknown slot ID 85") — dùng `pngjs`.
+- **html2canvas 1.4.1:** `<img>` SVG với width % ⇒ bỏ qua; SVG inline thì browser rasterize nguyên khối (filter/
+  gradient OK) nhưng phải có `width/height` PX trên thẻ svg và **id gradient/filter RIÊNG** (2 svg cùng `id="navy"`
+  ⇒ svg sau lấy nhầm def svg trước); SVG `<text>` + `dominantBaseline` lệch ⇒ đè chữ bằng div. Popup `about:blank`
+  không resolve URL tương đối ⇒ fetch asset → data URL rồi split/join vào outerHTML; thiếu file ⇒ thay bằng pixel
+  trong suốt. Vite dev không set CORS nên `useCORS` không cứu được.
+- **Bash heredoc + python/regex có backslash = mất backslash 2 tầng.** Patch dài/ký tự đặc biệt: Write script ra
+  file rồi chạy, hoặc dùng Edit; kiểm `grep` dòng kết quả trước khi tin.
+- **Trước "làm giống y ảnh" phải chốt cái gì là DATA vs ĐỒ HOẠ.** Kit v2 hiện "4/5" nhưng CEO đã chốt 3 mức hôm
+  trước rồi lại chốt 5 mức — hỏi lại đúng 3 câu (thang, paragraph, điểm) trước khi code, đừng đoán từ ảnh.
+- **Donut/biểu đồ phải tô theo con số ở giữa.** Vẽ theo tỉ lệ số câu (như mockup) ⇒ ca toàn cơ bản ra vòng đầy
+  100% dù giữa ghi 48% — CEO bắt ngay. Trực quan phải khớp số đọc được.
+- **`new-migration` tạo file rỗng trước = mồi cho phiên khác áp nhầm** (đã ghi HANDOFF 08/09, vẫn cắn 13/09 sau
+  đúng 60 giây). Cách sống chung: viết SQL xong mới tạo file, áp NGAY bằng `node scripts/migrate.mjs --only <file>`
+  (đã có, tôi từng không biết); nếu bị áp rỗng ⇒ đổi tên timestamp mới + `--only`, dòng sổ mồ côi xoá khi CEO gật.
+  `npm run migrate` trần còn kẹt ở file lỗi của người khác (`must be owner of function`) — không phải việc mình.
+- **Gán mặc định = trigger BEFORE INSERT ở DB**, không phải client tra bảng rồi truyền — mọi đường tạo (ERP, app
+  Ops, script) đều đúng, đường truyền tay vẫn thắng vì chỉ điền cột NULL. Verify bằng transaction ROLLBACK (insert
+  giả → đọc → rollback), không cần tạo dữ liệu thật.
+- **Form nhập của GV ≠ phiếu có ô nhập.** CEO: "Trả bài LÀ cái phiếu; màn đánh giá chỉ GẦN GIỐNG" — gộp 2 thứ làm
+  phiếu xấu đi và form khó dùng. Tách: form riêng cùng phong cách + phiếu thật xem trước bên cạnh (scale theo màn).
+- **Browser pane:** app full-reload mỗi khi phiên khác sửa file ⇒ modal đang mở bay mất giữa chuỗi thao tác; luôn
+  guard `if(!document.querySelector('.z-\\[90\\]'))` rồi mở lại; click theo text dễ dính sidebar trùng tên ("Phân
+  công" CORE TEAM) — lọc thêm class của tab. Screenshot hay timeout khi cửa sổ bị che, text check thay thế được.
 
 ### Bài học 10/09 tối — Claude nhập câu vào kho (HGT PT mặt phẳng)
 - **⭐ Nguồn công thức MathType cũ = docx MÙ, phải dùng PDF vision.** DOCX Toán Tứ Tâm 2 MB có 758 `.wmf` (ảnh vector rời từ MathType 6/7 khi paste) + 0 OMML — pandoc chỉ trả text + `![](imageXX.wmf)`; Claude không đọc được nội dung công thức. Cùng file export PDF: Claude `Read pages=1-N` render vision đọc math sharp, extract LaTeX ổn định. Áp dụng cho MỌI tài liệu Toán VN trước ~2020 (thời MathType thống trị) — hỏi có PDF không, có thì dùng PDF; không thì export tay trước.

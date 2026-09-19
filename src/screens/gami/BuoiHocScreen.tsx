@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 // (Ảnh gửi PH dùng html2canvas tải từ CDN TRONG popup — đúng pattern V1, không import vào bundle.)
 import {
@@ -12,7 +12,7 @@ import {
   loadHinhForBuoiPhase, syncHinhProblems, danhSoLaiTheoDe, thuTuMTTheoDe, dongBoETOnline, type ETOnlineDongBo, dongBoBTVNOnline, type BTVNOnlineDongBo,
   type BuoiAo, type BuoiTim, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync, type EloExpRow,
 } from '../../lib/gami'
-import { getLiveSnapshot, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
+import { getLiveSnapshot, phatHanhDang, thuHoiDang, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
 import type { MTPhanCaus } from '../../lib/mt'
 import { getOrCreateKyThiMTChoBuoi, listDiemThiByKyThi, upsertDiemThi, setKhungMT, tinhDiemMT, currentMua, type KyThi, type DiemThi } from '../../lib/thanhtich'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
@@ -416,7 +416,7 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
               : tab === 'mt'
               ? <MTTab buoiId={id} roster={roster} buoi={buoi} onChange={reload} />
               : tab === 'live'
-              ? <LiveTab buoiId={id} roster={roster} />
+              ? <LiveTab buoiId={id} roster={roster} mon={(buoi as any).lop?.mon ?? ''} />
               : tab === 'daubuoi'
               ? <EloExpTab roster={roster} mon={(buoi as any).lop?.mon ?? ''} tenLop={(buoi as any).lop?.ten_lop ?? ''} />
               : tab === 'truocbuoi'
@@ -1449,31 +1449,58 @@ async function copyImg(){
 // án (reveal-ngay) — KHÔNG cần chấm-ngầm như ET. Poll 7s (Thùy 07-07: 5-10s đủ dùng, không cần realtime).
 const LIVE_TONE: Record<string, string> = { correct: 'bg-emerald-500 text-white', partial: 'bg-amber-400 text-white', wrong: 'bg-rose-500 text-white' }
 const LIVE_LETTER: Record<string, string> = { correct: 'Đ', partial: 'C', wrong: 'S' }
-function LiveTab({ buoiId, roster }: { buoiId: string; roster: BuoiHocHS[] }) {
+// Giờ:phút VN — cho nhãn "✓ HH:MM" ở nút phát hành. Không toISOString cho ngày local (CLAUDE.md §2),
+// nhưng đây là timestamptz nên +7h rồi lấy UTC parts an toàn.
+function fmtGioVN(iso: string): string {
+  const vn = new Date(new Date(iso).getTime() + 7 * 3600 * 1000)
+  return `${String(vn.getUTCHours()).padStart(2, '0')}:${String(vn.getUTCMinutes()).padStart(2, '0')}`
+}
+function LiveTab({ buoiId, roster, mon }: { buoiId: string; roster: BuoiHocHS[]; mon: string }) {
   const [loading, setLoading] = useState(true)
   const [baiTest, setBaiTest] = useState<BaiTest | null>(null)
   const [caus, setCaus] = useState<BaiTestCau[]>([])
   const [baiLam, setBaiLam] = useState<Record<string, BaiLam>>({})
   const [answers, setAnswers] = useState<LiveAnswer[]>([])
+  const [dangDaMo, setDangDaMo] = useState<Record<string, string>>({})   // ma_dang → phat_hanh_at (Thùy 13/09)
+  const [tenDangs, setTenDangs] = useState<Record<string, string>>({})   // header hiện tên dạng, khớp bản in
+  const [busyDang, setBusyDang] = useState<string | null>(null)
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
 
+  const refresh = useCallback(async () => {
+    const found = await loadLiveTestForBuoi(buoiId)
+    if (!found) { setLoading(false); return null }
+    const snap = await getLiveSnapshot(found.baiTest.id)
+    setBaiTest(found.baiTest); setCaus(found.caus)
+    setBaiLam(snap.baiLam); setAnswers(snap.answers); setDangDaMo(snap.dangDaMo); setLoading(false)
+    return found.baiTest.id
+  }, [buoiId])
+
   useEffect(() => {
     let stop = false
-    let found: { baiTest: BaiTest; caus: BaiTestCau[] } | null = null
-    async function tick() {
-      try {
-        if (!found) found = await loadLiveTestForBuoi(buoiId)
-        if (!found) { if (!stop) setLoading(false); return }
-        const snap = await getLiveSnapshot(found.baiTest.id)
-        if (stop) return
-        setBaiTest(found.baiTest); setCaus(found.caus); setBaiLam(snap.baiLam); setAnswers(snap.answers); setLoading(false)
-      } catch { if (!stop) setLoading(false) }
-    }
+    async function tick() { try { if (!stop) await refresh() } catch { if (!stop) setLoading(false) } }
     tick()
     const t = setInterval(tick, 7000)
     return () => { stop = true; clearInterval(t) }
-  }, [buoiId])
+  }, [refresh])
+
+  async function togglePhatHanh(maDang: string) {
+    if (!baiTest || busyDang) return
+    setBusyDang(maDang)
+    try {
+      if (dangDaMo[maDang]) await thuHoiDang(baiTest.id, maDang)
+      else await phatHanhDang(baiTest.id, maDang)
+      await refresh()
+    } catch (e: any) { alert(e.message ?? String(e)) }
+    finally { setBusyDang(null) }
+  }
+
+  // Fetch tên dạng cho header (giống builder/bản in — trước hiện `Câu N` cộng dồn nên khó khớp giấy)
+  useEffect(() => {
+    const uniq = [...new Set(caus.map((c) => c.ma_dang).filter(Boolean))] as string[]
+    if (!uniq.length) return
+    getDangTen(uniq, mon).then(setTenDangs).catch(() => {})
+  }, [caus, mon])
 
   if (loading) return <p className="text-[12px] text-slate-400">Đang tải…</p>
   if (!baiTest) return <p className="text-[13px] text-slate-400">Chưa phát hành online cho buổi này (khớp <b className="text-slate-600">lớp + ngày</b>). Vào <b className="text-slate-600">Kho tài liệu</b> → 📱 Phát hành online giáo trình buổi này rồi quay lại.</p>
@@ -1481,17 +1508,59 @@ function LiveTab({ buoiId, roster }: { buoiId: string; roster: BuoiHocHS[] }) {
 
   const cellOf = (hsId: string, cauId: string) => answers.find((a) => a.hocSinhId === hsId && a.baiTestCauId === cauId)
 
+  // Group câu theo ma_dang GIỮ THỨ TỰ xuất hiện (Thùy 13/09: khớp builder/bản in — RESET số câu qua mỗi
+  // dạng thay vì đếm cộng dồn 1..N). Câu KHÔNG có ma_dang xếp vào nhóm '__none__' cuối.
+  const groups: { ma_dang: string; caus: BaiTestCau[] }[] = []
+  let cur: { ma_dang: string; caus: BaiTestCau[] } | null = null
+  for (const c of caus) {
+    const key = c.ma_dang ?? '__none__'
+    if (!cur || cur.ma_dang !== key) { cur = { ma_dang: key, caus: [] }; groups.push(cur) }
+    cur.caus.push(c)
+  }
+  const tenCua = (ma_dang: string, i: number) => ma_dang === '__none__' ? `Nhóm ${i + 1}` : (tenDangs[ma_dang] ?? ma_dang)
+
   return (
     <div className="flex h-full flex-col">
-      <div className="mb-3 text-[12px] text-slate-400">{caus.length} câu (giáo trình online) · {coMat.length} HS · tự làm mới ~7s.</div>
+      <div className="mb-3 text-[12px] text-slate-400">
+        {caus.length} câu · {groups.length} dạng · {coMat.length} HS · tự làm mới ~7s. Số câu reset theo dạng (khớp bản in).
+        <span className="ml-2 text-slate-500">📣 Bấm nút <b className="text-emerald-600">Phát hành</b> ở header dạng để lớp bắt đầu dạng đó. HS chỉ thấy câu của dạng đã phát hành.</span>
+      </div>
       <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
         <table className="w-auto border-collapse text-sm">
           <thead>
+            {/* Hàng 1: tên dạng + NÚT phát hành/thu hồi (Thùy 13/09: GV chủ động nhịp học) */}
+            <tr className="bg-slate-50">
+              <th rowSpan={2} className="sticky left-0 top-0 z-30 whitespace-nowrap border border-slate-200 bg-slate-50 px-4 py-1.5 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
+              {groups.map((g, i) => {
+                const daMo = g.ma_dang !== '__none__' && !!dangDaMo[g.ma_dang]
+                const canBtn = g.ma_dang !== '__none__'
+                const busy = busyDang === g.ma_dang
+                return (
+                  <th key={g.ma_dang} colSpan={g.caus.length}
+                    className={`sticky top-0 z-10 border border-slate-200 px-2 py-1.5 text-center text-[11.5px] font-bold ${daMo ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700'}`}
+                    title={g.ma_dang === '__none__' ? '' : g.ma_dang}>
+                    <div className="flex items-center justify-center gap-1.5">
+                      <span className={`rounded px-1.5 py-0.5 text-[10px] font-black ${daMo ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}`}>D{i + 1}</span>
+                      <span className="truncate">{tenCua(g.ma_dang, i)}</span>
+                      {canBtn && (
+                        <button onClick={() => togglePhatHanh(g.ma_dang)} disabled={busy}
+                          title={daMo ? `Đã phát hành ${fmtGioVN(dangDaMo[g.ma_dang])} — bấm để thu hồi` : 'Bấm để phát hành dạng này cho HS'}
+                          className={`shrink-0 rounded-md px-2 py-0.5 text-[10.5px] font-bold shadow-sm transition ${daMo ? 'bg-emerald-600 text-white hover:bg-emerald-500' : 'bg-white text-emerald-700 ring-1 ring-emerald-300 hover:bg-emerald-100'} disabled:opacity-50`}>
+                          {busy ? '…' : daMo ? `✓ ${fmtGioVN(dangDaMo[g.ma_dang])}` : '▶ Phát hành'}
+                        </button>
+                      )}
+                    </div>
+                  </th>
+                )
+              })}
+            </tr>
+            {/* Hàng 2: "Câu N" với N reset trong mỗi dạng — như builder/giấy in */}
             <tr className="bg-slate-100">
-              <th className="sticky left-0 top-0 z-30 whitespace-nowrap border border-slate-200 bg-slate-100 px-4 py-1.5 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
-              {caus.map((c) => (
-                <th key={c.id} className="sticky top-0 z-10 w-[64px] border border-slate-200 bg-slate-100 px-2 py-1.5 text-center text-[12px] font-bold text-slate-700">Câu {c.thu_tu}</th>
-              ))}
+              {groups.map((g) => g.caus.map((c, j) => (
+                <th key={c.id} className="sticky z-10 w-[52px] border border-slate-200 bg-slate-100 px-1.5 py-1 text-center text-[11.5px] font-bold text-slate-700" style={{ top: 30 }}>
+                  Câu {j + 1}
+                </th>
+              )))}
             </tr>
           </thead>
           <tbody>
@@ -1502,10 +1571,12 @@ function LiveTab({ buoiId, roster }: { buoiId: string; roster: BuoiHocHS[] }) {
                   <td className="sticky left-0 z-10 whitespace-nowrap border border-slate-200 bg-white px-3 py-1 text-left align-middle font-medium text-slate-800">
                     {tenHT[i]}{!lam && <span className="ml-1.5 text-[11px] font-normal text-slate-300">(chưa mở bài)</span>}
                   </td>
-                  {caus.map((c) => {
+                  {groups.flatMap((g, gi) => g.caus.map((c, ci) => {
                     const cell = cellOf(r.hoc_sinh_id, c.id)
+                    // Vạch ngăn dạng: cell ĐẦU của dạng thứ 2 trở đi có border trái dày để GV nhận nhóm
+                    const isDangStart = ci === 0 && gi > 0
                     return (
-                      <td key={c.id} className="border border-slate-200 px-2 py-1.5 text-center align-middle">
+                      <td key={c.id} className="border border-slate-200 px-2 py-1.5 text-center align-middle" style={isDangStart ? { borderLeft: '2px solid #a5b4fc' } : undefined}>
                         {lam && (
                           <span className={`relative inline-flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-bold ${cell?.verdict ? LIVE_TONE[cell.verdict] : 'bg-slate-100 text-slate-300'}`}>
                             {cell?.verdict ? LIVE_LETTER[cell.verdict] : '·'}
@@ -1514,7 +1585,7 @@ function LiveTab({ buoiId, roster }: { buoiId: string; roster: BuoiHocHS[] }) {
                         )}
                       </td>
                     )
-                  })}
+                  }))}
                 </tr>
               )
             })}
@@ -1779,34 +1850,53 @@ function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: Buo
   }
 
   const diemOf = (hsId: string) => diems.find((d) => d.hoc_sinh_id === hsId) ?? null
-  async function save(hsId: string, p: { coBan: number | null; nangCao: number | null; full: boolean }) {
+  async function save(hsId: string, p: { coBan: number | null; nangCao: number | null; full: boolean; coBanTL: number | null; nangCaoTL: number | null; fullTL: boolean }) {
     if (!ky) return
-    // §2.0 (30/08): diem + verdict do TRIGGER tg_diem_thi_tinh ở DB tính khi ghi — client
-    // chỉ gửi dữ kiện thô (cơ bản/nâng cao/full) và hiển thị đúng dòng DB trả về.
+    // §2.0 (30/08): diem + verdict + diem_thi_lai do TRIGGER tg_diem_thi_tinh ở DB tính khi ghi —
+    // client chỉ gửi dữ kiện thô (cơ bản/nâng cao/full + cùng 3 cột "thi lại") và hiển thị đúng dòng DB trả về.
     // ⚠ 08-07: trước đây gọi từ onBlur KHÔNG await/try-catch → upsert lỗi là unhandled rejection, NUỐT lặng
     // (user thấy điểm hiện trên màn = state cục bộ nhưng KHÔNG vào DB, tưởng đã lưu). Giờ báo lỗi rõ + chỉ
     // cập nhật state khi lưu THẬT thành công (anti-NULL: state phản ánh đúng DB).
     let saved: DiemThi
     try {
-      saved = await upsertDiemThi({ kyThiId: ky.id, hocSinhId: hsId, diem: null, bandLucThi: null, verdict: 'khong_dat', vuotBand: false, coBan: p.coBan, nangCao: p.nangCao, full: p.full })
+      saved = await upsertDiemThi({
+        kyThiId: ky.id, hocSinhId: hsId, diem: null, bandLucThi: null, verdict: 'khong_dat', vuotBand: false,
+        coBan: p.coBan, nangCao: p.nangCao, full: p.full,
+        coBanThiLai: p.coBanTL, nangCaoThiLai: p.nangCaoTL, fullThiLai: p.fullTL,
+      })
     } catch (e: any) { alert('Lưu điểm MT lỗi: ' + (e?.message ?? String(e))); return }
     setDiems((prev) => [...prev.filter((d) => d.hoc_sinh_id !== hsId), saved])
   }
 
+  const khungThieu = !!ky && (ky.khung_co_ban == null || ky.khung_nang_cao == null)
   return (
     <div className="mb-3 rounded-xl border border-violet-200 bg-violet-50/40 p-3">
       <div className="mb-2 flex flex-wrap items-center gap-2">
         <span className="text-[13px] font-semibold text-violet-800">Điểm MT</span>
-        <span className="text-[11px] text-slate-500">Cơ bản + Nâng cao → tự tính, <b>tự lưu ngay</b> (≥10 ⇒ 9.75 · tick <b>Full</b> ⇒ 10). Đếm câu thuộc mastery, không nhập ở đây.</span>
+        <span className="text-[11px] text-slate-500">Cơ bản + Nâng cao → tự tính, <b>tự lưu ngay</b> (≥10 ⇒ 9.75 · tick <b>Full</b> ⇒ 10). Cột <b>Thi lại</b> chỉ nhập khi HS thi lại (không tính xếp hạng, chỉ hiện cho PH).</span>
       </div>
       {loading || !ky ? <p className="text-[12px] text-slate-400">Đang tải…</p> : (
         <>
-          {/* Khung điểm của ĐỀ (1 lần cho cả buổi) — để trống nếu chưa cần "1.5/2". */}
-          <KhungMTInput ky={ky} onSave={saveKhung} />
-          <table className="w-full max-w-lg text-[13px]">
-            <thead><tr className="text-left text-[11px] uppercase tracking-wide text-slate-400">
-              <th className="py-1">Học sinh</th><th className="w-24">Cơ bản</th><th className="w-24">Nâng cao</th><th className="w-14">Full</th><th className="w-16">Điểm</th>
-            </tr></thead>
+          {khungThieu && (
+            <div className="mb-2 flex items-center gap-2 rounded-lg border border-rose-300 bg-rose-50 px-3 py-1.5 text-[12px] text-rose-800">
+              <span className="font-bold">⚠</span>
+              <span>Chưa nhập <b>mức điểm tối đa</b> của phần <b>Cơ bản{ky.khung_co_ban != null ? '' : ' ✗'}</b> · <b>Nâng cao{ky.khung_nang_cao != null ? '' : ' ✗'}</b> → Report PH <b>sẽ không tính được %</b> cơ bản / nâng cao.</span>
+            </div>
+          )}
+          {/* Khung điểm của ĐỀ (1 lần cho cả buổi) — BẮT BUỘC nhập để Report PH tính được %CB/%NC (Thùy 15/09). */}
+          <KhungMTInput ky={ky} onSave={saveKhung} khungThieu={khungThieu} />
+          <table className="w-full text-[13px]">
+            <thead>
+              <tr className="text-left text-[10px] uppercase tracking-wide text-slate-400">
+                <th className="py-1" rowSpan={2}>Học sinh</th>
+                <th colSpan={4} className="border-l border-violet-200 bg-violet-100/50 px-1 py-1 text-center font-semibold text-violet-700">Chính</th>
+                <th colSpan={4} className="border-l border-amber-200 bg-amber-50 px-1 py-1 text-center font-semibold text-amber-700">Thi lại (không tính xếp hạng)</th>
+              </tr>
+              <tr className="text-left text-[10px] uppercase tracking-wide text-slate-400">
+                <th className="w-20 border-l border-violet-200">Cơ bản</th><th className="w-20">Nâng cao</th><th className="w-12">Full</th><th className="w-14">Điểm</th>
+                <th className="w-20 border-l border-amber-200">Cơ bản</th><th className="w-20">Nâng cao</th><th className="w-12">Full</th><th className="w-14">Điểm</th>
+              </tr>
+            </thead>
             <tbody>
               {coMat.map((r, i) => <DiemMTRow key={r.hoc_sinh_id} ten={tenHT[i]} init={diemOf(r.hoc_sinh_id)} khungCoBan={ky.khung_co_ban ?? null} khungNangCao={ky.khung_nang_cao ?? null} onSave={(p) => save(r.hoc_sinh_id, p)} />)}
             </tbody>
@@ -1818,41 +1908,55 @@ function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: Buo
 }
 
 // Khung điểm (tối đa) của cả đề — 1 khung/buổi, nhập 1 lần, KHÔNG lặp lại theo từng HS.
-function KhungMTInput({ ky, onSave }: { ky: KyThi; onSave: (p: { coBan?: number | null; nangCao?: number | null }) => void }) {
+function KhungMTInput({ ky, onSave, khungThieu }: { ky: KyThi; onSave: (p: { coBan?: number | null; nangCao?: number | null }) => void; khungThieu?: boolean }) {
   const [coBan, setCoBan] = useState(ky.khung_co_ban != null ? String(ky.khung_co_ban) : '')
   const [nangCao, setNangCao] = useState(ky.khung_nang_cao != null ? String(ky.khung_nang_cao) : '')
   const num = (s: string) => (s.trim() === '' ? null : Number(s))
-  const inp = 'h-7 w-16 rounded border border-slate-300 px-2 text-[13px]'
+  const inp = (thieu: boolean) => `h-7 w-16 rounded border px-2 text-[13px] ${thieu ? 'border-rose-400 bg-rose-50' : 'border-slate-300'}`
   return (
-    <div className="mb-2 flex items-center gap-3 rounded-lg border border-violet-100 bg-white px-3 py-1.5">
-      <span className="text-[11px] font-medium text-slate-500">Khung điểm đề (tối đa mỗi phần — để hiện dạng "1.5/2"):</span>
+    <div className={`mb-2 flex items-center gap-3 rounded-lg border px-3 py-1.5 ${khungThieu ? 'border-rose-200 bg-rose-50/30' : 'border-violet-100 bg-white'}`}>
+      <span className="text-[11px] font-medium text-slate-500">Mức điểm tối đa của đề {khungThieu ? <b className="text-rose-700">(bắt buộc)</b> : '(để hiện dạng "1.5/2")'}:</span>
       <label className="flex items-center gap-1.5 text-[12px] text-slate-600">Cơ bản
-        <input value={coBan} onChange={(e) => setCoBan(e.target.value)} onBlur={() => onSave({ coBan: num(coBan) })} inputMode="decimal" placeholder="—" className={inp} />
+        <input value={coBan} onChange={(e) => setCoBan(e.target.value)} onBlur={() => onSave({ coBan: num(coBan) })} inputMode="decimal" placeholder="—" className={inp(!!khungThieu && ky.khung_co_ban == null)} />
       </label>
       <label className="flex items-center gap-1.5 text-[12px] text-slate-600">Nâng cao
-        <input value={nangCao} onChange={(e) => setNangCao(e.target.value)} onBlur={() => onSave({ nangCao: num(nangCao) })} inputMode="decimal" placeholder="—" className={inp} />
+        <input value={nangCao} onChange={(e) => setNangCao(e.target.value)} onBlur={() => onSave({ nangCao: num(nangCao) })} inputMode="decimal" placeholder="—" className={inp(!!khungThieu && ky.khung_nang_cao == null)} />
       </label>
     </div>
   )
 }
 
-function DiemMTRow({ ten, init, khungCoBan, khungNangCao, onSave }: { ten: string; init: DiemThi | null; khungCoBan: number | null; khungNangCao: number | null; onSave: (p: { coBan: number | null; nangCao: number | null; full: boolean }) => void }) {
+function DiemMTRow({ ten, init, khungCoBan, khungNangCao, onSave }: { ten: string; init: DiemThi | null; khungCoBan: number | null; khungNangCao: number | null; onSave: (p: { coBan: number | null; nangCao: number | null; full: boolean; coBanTL: number | null; nangCaoTL: number | null; fullTL: boolean }) => void }) {
   const [coBan, setCoBan] = useState(init?.diem_co_ban != null ? String(init.diem_co_ban) : '')
   const [nangCao, setNangCao] = useState(init?.diem_nang_cao != null ? String(init.diem_nang_cao) : '')
   const [full, setFull] = useState(!!init?.full_diem)
+  // Thi lại (14/09) — 3 cột song song điểm chính; đa số HS = trống (không thi lại).
+  const [coBanTL, setCoBanTL] = useState(init?.diem_thi_lai_co_ban != null ? String(init.diem_thi_lai_co_ban) : '')
+  const [nangCaoTL, setNangCaoTL] = useState(init?.diem_thi_lai_nang_cao != null ? String(init.diem_thi_lai_nang_cao) : '')
+  const [fullTL, setFullTL] = useState(!!init?.full_thi_lai)
   const num = (s: string) => (s.trim() === '' ? null : Number(s))
   const trong = (f = full) => coBan.trim() === '' && nangCao.trim() === '' && !f
-  // Tự LƯU NGAY khi rời ô / tick Full (không cần verdict — verdict tự suy ở tầng service). Bỏ qua khi trống.
-  const commit = (f = full) => { if (!trong(f)) onSave({ coBan: num(coBan), nangCao: num(nangCao), full: f }) }
+  const trongTL = (f = fullTL) => coBanTL.trim() === '' && nangCaoTL.trim() === '' && !f
+  // Tự LƯU NGAY khi rời ô / tick Full (không cần verdict — verdict tự suy ở tầng service). Bỏ qua khi cả 2 khối trống.
+  const commit = (f = full, fTL = fullTL) => {
+    if (trong(f) && trongTL(fTL)) return
+    onSave({ coBan: num(coBan), nangCao: num(nangCao), full: f, coBanTL: num(coBanTL), nangCaoTL: num(nangCaoTL), fullTL: fTL })
+  }
   const diem = tinhDiemMT(num(coBan), num(nangCao), full)
+  const diemTL = tinhDiemMT(num(coBanTL), num(nangCaoTL), fullTL)
   const inp = 'h-7 w-16 rounded border border-slate-300 px-2 text-[13px]'
+  const inpTL = 'h-7 w-16 rounded border border-amber-300 bg-amber-50/40 px-2 text-[13px]'
   return (
     <tr className="border-t border-violet-100">
       <td className="py-1 font-medium text-slate-700">{ten}</td>
-      <td><div className="flex items-center gap-1"><input value={coBan} onChange={(e) => setCoBan(e.target.value)} onBlur={() => commit()} inputMode="decimal" className={inp} />{khungCoBan != null && <span className="text-[11px] text-slate-400">/{khungCoBan}</span>}</div></td>
+      <td className="border-l border-violet-100"><div className="flex items-center gap-1 pl-1"><input value={coBan} onChange={(e) => setCoBan(e.target.value)} onBlur={() => commit()} inputMode="decimal" className={inp} />{khungCoBan != null && <span className="text-[11px] text-slate-400">/{khungCoBan}</span>}</div></td>
       <td><div className="flex items-center gap-1"><input value={nangCao} onChange={(e) => setNangCao(e.target.value)} onBlur={() => commit()} inputMode="decimal" className={inp} />{khungNangCao != null && <span className="text-[11px] text-slate-400">/{khungNangCao}</span>}</div></td>
-      <td><input type="checkbox" checked={full} onChange={(e) => { setFull(e.target.checked); commit(e.target.checked) }} className="h-4 w-4 accent-violet-600" title="Làm trọn vẹn không sai gì = 10đ" /></td>
+      <td><input type="checkbox" checked={full} onChange={(e) => { setFull(e.target.checked); commit(e.target.checked, fullTL) }} className="h-4 w-4 accent-violet-600" title="Làm trọn vẹn không sai gì = 10đ" /></td>
       <td className={`font-semibold tabular-nums ${trong() ? 'text-slate-300' : diem >= 9.75 ? 'text-emerald-700' : 'text-violet-800'}`}>{trong() ? '—' : diem}</td>
+      <td className="border-l border-amber-200"><div className="flex items-center gap-1 pl-1"><input value={coBanTL} onChange={(e) => setCoBanTL(e.target.value)} onBlur={() => commit()} inputMode="decimal" placeholder="—" className={inpTL} />{khungCoBan != null && <span className="text-[11px] text-slate-400">/{khungCoBan}</span>}</div></td>
+      <td><div className="flex items-center gap-1"><input value={nangCaoTL} onChange={(e) => setNangCaoTL(e.target.value)} onBlur={() => commit()} inputMode="decimal" placeholder="—" className={inpTL} />{khungNangCao != null && <span className="text-[11px] text-slate-400">/{khungNangCao}</span>}</div></td>
+      <td><input type="checkbox" checked={fullTL} onChange={(e) => { setFullTL(e.target.checked); commit(full, e.target.checked) }} className="h-4 w-4 accent-amber-600" title="Thi lại trọn vẹn = 10đ" /></td>
+      <td className={`font-semibold tabular-nums ${trongTL() ? 'text-slate-300' : diemTL >= 9.75 ? 'text-emerald-700' : 'text-amber-700'}`}>{trongTL() ? '—' : diemTL}</td>
     </tr>
   )
 }

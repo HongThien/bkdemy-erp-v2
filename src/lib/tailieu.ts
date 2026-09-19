@@ -1,6 +1,7 @@
 // Data-layer "Làm tài liệu" (giáo trình…). Tài liệu = THAM CHIẾU vào kho; resolver kéo nội dung sống khi render.
 import { supabase } from './supabase'
 import { cumKey, listCauByDang, listDaiMap, listKhtnMap, listHgtMap, type CauHoi, type MapRow } from './kho/api'
+import { listHinhHocMap } from './kho/hinhhoc'
 
 const LIMIT = 10000
 
@@ -14,13 +15,24 @@ export function khoCuaMon(mon?: string | null, nhanh?: string | null): { cauTbl:
     ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', ltDangTbl: 'khtn_dang_ly_thuyet', ltCdTbl: 'khtn_chuyen_de_ly_thuyet', formTnTbl: 'khtn_cau_form_tn', listMap: listKhtnMap }
     : nhanh === 'hinh_gt'
     ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', ltDangTbl: 'hgt_dang_ly_thuyet', ltCdTbl: 'hgt_chuyen_de_ly_thuyet', formTnTbl: 'hgt_cau_form_tn', listMap: listHgtMap }
+    : nhanh === 'hinh_hoc'
+    // Hình học · phase HỌC (CEO 16/09): Bài phẳng, KHÔNG có cây chuyên đề/chuyên đề-lý-thuyết/formTN.
+    // ltCdTbl/formTnTbl dùng lại tên bảng của Bài — botro_yeu/danhgia/detest chỉ được gọi khi tài liệu
+    // Đại/KHTN/HGT (spec-mcq-form.md), chưa dùng cho phase Học ⇒ chưa cần bảng thật, tránh nợ schema.
+    ? { cauTbl: 'hinh_hoc_cau_hoi', banDoTbl: 'hinh_hoc_bai', ltDangTbl: 'hinh_hoc_bai_ly_thuyet', ltCdTbl: 'hinh_hoc_bai_ly_thuyet', formTnTbl: 'hinh_hoc_bai_ly_thuyet', listMap: listHinhHocMap }
     : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', ltDangTbl: 'dai_dang_ly_thuyet', ltCdTbl: 'dai_chuyen_de_ly_thuyet', formTnTbl: 'dai_cau_form_tn', listMap: listDaiMap }
 }
 // REGISTRY nhánh dạng-based TRONG 1 môn (UI toggle "chọn bản đồ"). Môn không có trong registry = 1 nhánh
 // duy nhất (nhanh=null), không hiện toggle. Thêm nhánh mới = thêm dòng ở đây + nhánh trong khoCuaMon —
 // KHÔNG `if (mon === 'Toán')` rải rác ở component (symmetry test §1.6).
 const NHANH_CUA_MON: Record<string, { ma: string | null; ten: string }[]> = {
-  'Toán': [{ ma: null, ten: 'Đại số' }, { ma: 'hinh_gt', ten: 'Hình giải tích' }],
+  'Toán': [
+    { ma: null, ten: 'Đại số' },
+    { ma: 'hinh_gt', ten: 'Hình giải tích' },
+    // Phase HỌC — Bài phẳng. Phase Luyện (Mô hình/Bổ đề cũ) đi luồng RIÊNG qua GiaoTrinhHinhEntry,
+    // KHÔNG chung tab nhánh với Đại (CEO 16/09: "giáo trình chỉ học - giáo trình chỉ luyện độc lập").
+    { ma: 'hinh_hoc', ten: 'Hình học' },
+  ],
 }
 export function nhanhCuaMon(mon?: string | null): { ma: string | null; ten: string }[] { return NHANH_CUA_MON[mon ?? ''] ?? [] }
 export function tenNhanh(mon: string | null | undefined, nhanh: string | null | undefined): string | null {
@@ -221,7 +233,7 @@ export async function createTaiLieu(input: { loai?: string; ten: string; khoi: s
   if (error) throw error
   return data as TaiLieu
 }
-export async function updateTaiLieu(id: string, patch: Partial<Pick<TaiLieu, 'ten' | 'theme' | 'ma_chuyen_de' | 'cau_hinh'>>): Promise<void> {
+export async function updateTaiLieu(id: string, patch: Partial<Pick<TaiLieu, 'ten' | 'theme' | 'ma_chuyen_de' | 'cau_hinh' | 'nhanh'>>): Promise<void> {
   const { error } = await supabase.from('tai_lieu').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id)
   if (error) throw error
 }

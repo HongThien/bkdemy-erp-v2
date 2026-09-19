@@ -11,10 +11,14 @@ import DiemDanhTestScreen from '../vanhanhops/DiemDanhTestScreen'
 import ChamTestScreen from './ChamTestScreen'
 import TraBaiTestScreen from './TraBaiTestScreen'
 import QuanLyDeTestScreen from './QuanLyDeTestScreen'
+import PhanCongTestScreen from './PhanCongTestScreen'
+import ThongKeTestScreen from './ThongKeTestScreen'
 
-type Tab = 'diem_danh' | 'cham' | 'tra_bai' | 'de'
+type Tab = 'diem_danh' | 'cham' | 'tra_bai' | 'de' | 'phan_cong' | 'thong_ke'
+// ⭐ 13/09 (CEO): tab "Phân công" — bảng khối → người chấm → người trả bài; ca mới tự lấy từ đây (trigger DB).
+// ⭐ 15/09 (CEO): tab "Thống kê" — số ca theo khối/tháng (fn_test_dau_vao_thong_ke).
 const TABS: { v: Tab; lbl: string }[] = [
-  { v: 'diem_danh', lbl: 'Điểm danh test' }, { v: 'cham', lbl: 'Chấm test' }, { v: 'tra_bai', lbl: 'Trả bài' }, { v: 'de', lbl: 'Đề test' },
+  { v: 'diem_danh', lbl: 'Điểm danh test' }, { v: 'cham', lbl: 'Chấm test' }, { v: 'tra_bai', lbl: 'Trả bài' }, { v: 'de', lbl: 'Đề test' }, { v: 'phan_cong', lbl: 'Phân công' }, { v: 'thong_ke', lbl: 'Thống kê' },
 ]
 
 // Card "Việc của tôi" (chấm test / trả bài — CEO ②⑤ 09/09) nhảy thẳng vào đúng tab: đặt tab yêu cầu ở
@@ -48,6 +52,8 @@ export default function TestDauVaoScreen() {
         {tab === 'diem_danh' ? <DiemDanhTestScreen />
           : tab === 'cham' ? <ChamTestScreen />
           : tab === 'tra_bai' ? <TraBaiTestScreen />
+          : tab === 'phan_cong' ? <PhanCongTestScreen />
+          : tab === 'thong_ke' ? <ThongKeTestScreen />
           : <QuanLyDeTestScreen />}
       </div>
     </div>

@@ -10,14 +10,16 @@ import { useEffect, useState } from 'react'
 import {
   listCaTestDangChay, listCaTestHoanThanh, taoCaTest, uploadCaTestBai, ganBaiCaTest, hoanThanhCaTest,
   listUngVienL5, getUngVien, gioKetThucCaTest, THOI_LUONG_OPTIONS, MON_OPTIONS,
-  listNguoiChoCham, listNguoiChoTraBai, ganNguoiChamCaTest, ganNguoiTraBaiCaTest,
-  type CaTest, type TaoCaTestInput, type MonTS, type NguoiChoAssign,
+  type CaTest, type TaoCaTestInput, type MonTS,
 } from '../../lib/tuyensinh'
 import { ganDeCaTest, ganDeDangDung, listDeTestDauVao, type DeTestRow } from '../../lib/detest'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import { homNayVN, mucDeadline, nhanConLai, type DeadlineMuc } from '../../lib/tuan'
 import SearchSelect from '../../components/SearchSelect'
 import { useIsMobile } from '../../hooks/useIsMobile'
+
+// Ca đang được tự-gán đề (promise đang chạy) — module-level để sống qua StrictMode remount; xem effect trong CaCard.
+const DANG_GAN = new Map<string, Promise<DeTestRow | null>>()
 
 const DEADLINE_TONE: Record<DeadlineMuc, string> = { qua_han: 'text-rose-600', sat: 'text-orange-600', gan: 'text-amber-600', con_nhieu: 'text-slate-400' }
 const inputCls = 'w-full rounded-lg border border-slate-300 px-3 py-2 text-[14px] outline-none focus:border-indigo-400'
@@ -84,29 +86,23 @@ export default function DiemDanhTestScreen() {
 function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deList: DeTestRow[]; onChanged: () => void }) {
   const [baiUrl, setBaiUrl] = useState<string | null>(c.baiUrl)
   const [taiLieuId, setTaiLieuId] = useState(c.taiLieuId)
-  const [nguoiCham, setNguoiCham] = useState(c.nguoiChamId ?? '')
-  const [nguoiTraBai, setNguoiTraBai] = useState(c.nguoiTraBaiId ?? '')
-  const [choCham, setChoCham] = useState<NguoiChoAssign[]>([])
-  const [choTraBai, setChoTraBai] = useState<NguoiChoAssign[]>([])
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
   const deadline = gioKetThucCaTest(c)
   const muc = mucDeadline(deadline, now) ?? 'con_nhieu'
-  useEffect(() => { listNguoiChoCham(c.mon).then(setChoCham).catch(() => {}); listNguoiChoTraBai(c.mon).then(setChoTraBai).catch(() => {}) }, [c.mon])
-  async function doiNguoiCham(id: string) {
-    setNguoiCham(id); setBusy(true); setErr(null)
-    try { await ganNguoiChamCaTest(c.id, id || null) } catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
-  }
-  async function doiNguoiTraBai(id: string) {
-    setNguoiTraBai(id); setBusy(true); setErr(null)
-    try { await ganNguoiTraBaiCaTest(c.id, id || null) } catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
-  }
   // Đề = đề test đầu vào ĐÃ SINH (tab "Đề test") khớp môn + khối ứng viên. listDeTestDauVao() sort desc →
   // đề ĐANG DÙNG (laHienTai) đứng đầu; lịch sử phía sau (Ops vẫn chọn được bản cũ nếu cần). Chưa có đề
   // nào cho khối×môn → báo nhờ học thuật tạo (không fallback MT thô — đề đầu vào phải do học thuật curate).
   const cands = deList.filter((d) => d.mon === c.mon && (!c.ungVien.khoi || d.khoi === c.ungVien.khoi))
   const chuaCoDe = cands.length === 0
   const deDaGan = deList.find((d) => d.id === taiLieuId)
+  const lechKhoi = !!deDaGan && !!c.ungVien.khoi && deDaGan.khoi !== c.ungVien.khoi
+  async function ganLaiDeDangDung() {
+    if (!window.confirm(`Gán lại đề đang dùng của khối ${c.ungVien.khoi} cho ${c.ungVien.hoTenHs}? Kết quả đã chấm trên đề cũ (nếu có) sẽ bị xoá.`)) return
+    setBusy(true); setErr(null)
+    try { const de = await ganDeDangDung(c.id, c.ungVien.khoi, c.mon); if (de) setTaiLieuId(de.id); else setErr('Chưa có đề đang dùng cho khối này.') }
+    catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
+  }
 
   async function chonFile(e: React.ChangeEvent<HTMLInputElement>) {
     const f = e.target.files?.[0]; if (!f) return
@@ -123,12 +119,16 @@ function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deL
     catch (ex: any) { setErr(ex.message ?? String(ex)) } finally { setBusy(false) }
   }
   // Ca chưa có đề mà (khối × môn) đã có đề ĐANG DÙNG → tự gán lúc card hiện (mặc định, không bắt Ops bấm).
+  // ⭐ 14/09: React StrictMode (dev) mount→unmount→mount ⇒ effect chạy 2 lần cách ~60ms, bản cũ gán 2 lần song song
+  // ⇒ 68 câu thay vì 34. Giờ: (1) RPC có khoá theo ca ở DB, (2) client chặn gọi trùng bằng `DANG_GAN` module-level
+  // (sống qua remount) — lần 2 chờ đúng promise của lần 1 thay vì gọi mới.
   useEffect(() => {
     if (taiLieuId || chuaCoDe) return
     let alive = true
     setBusy(true)
-    ganDeDangDung(c.id, c.ungVien.khoi, c.mon)
-      .then((de) => { if (alive && de) setTaiLieuId(de.id) })
+    const p = DANG_GAN.get(c.id) ?? ganDeDangDung(c.id, c.ungVien.khoi, c.mon).finally(() => DANG_GAN.delete(c.id))
+    DANG_GAN.set(c.id, p)
+    p.then((de) => { if (alive && de) setTaiLieuId(de.id) })
       .catch((ex) => { if (alive) setErr(ex.message ?? String(ex)) })
       .finally(() => { if (alive) setBusy(false) })
     return () => { alive = false }
@@ -151,6 +151,13 @@ function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deL
         <span className={`ml-auto font-semibold ${DEADLINE_TONE[muc]}`}>{muc === 'qua_han' ? '⚠ ' : ''}{nhanConLai(deadline, now)}</span>
       </div>
 
+      {/* ⭐ 15/09: khối ứng viên đổi SAU khi gán đề (Tuệ Nhi: tạo khối 8 → sửa 7, đề K8 39 câu vẫn dính) ⇒ nêu cờ + gán lại. */}
+      {lechKhoi && (
+        <div className="mb-2 flex flex-wrap items-center gap-2 rounded-md border border-rose-200 bg-rose-50 px-2.5 py-1.5 text-[12px] text-rose-800">
+          <span>⚠ Đề đang gán là <b>khối {deDaGan!.khoi}</b>, học sinh <b>khối {c.ungVien.khoi}</b></span>
+          <button onClick={ganLaiDeDangDung} disabled={busy} className="ml-auto rounded-md bg-rose-600 px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-rose-500 disabled:opacity-40">📘 Gán lại đề đang dùng</button>
+        </div>
+      )}
       <div className="mb-2 flex flex-wrap items-center gap-1.5">
         {deDaGan && <span className="text-[12px] text-slate-500">📘 {deDaGan.ten}</span>}
         {chuaCoDe ? (
@@ -165,15 +172,10 @@ function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deL
         )}
       </div>
 
-      <div className="mb-2 grid grid-cols-2 gap-1.5">
-        <select className="min-h-[36px] rounded-md border border-slate-200 px-2 py-1.5 text-[12px]" value={nguoiCham} onChange={(e) => doiNguoiCham(e.target.value)} disabled={busy} title="Người dự kiến chấm — hàng đợi Chấm vẫn chung, ai mở cũng làm được">
-          <option value="">👤 Người chấm…</option>
-          <AssignOptions list={choCham} />
-        </select>
-        <select className="min-h-[36px] rounded-md border border-slate-200 px-2 py-1.5 text-[12px]" value={nguoiTraBai} onChange={(e) => doiNguoiTraBai(e.target.value)} disabled={busy} title="Người dự kiến trả bài — hàng đợi Trả bài vẫn chung, ai mở cũng làm được">
-          <option value="">👤 Người trả bài…</option>
-          <AssignOptions list={choTraBai} />
-        </select>
+      {/* ⭐ 13/09 (CEO): Ops KHÔNG chọn người nữa — trigger DB gán từ tab "Phân công" (khối × môn) lúc tạo ca. Chỉ hiện để biết. */}
+      <div className="mb-2 flex flex-wrap gap-x-3 gap-y-0.5 text-[12px] text-slate-500" title='Gán tự động theo tab "Phân công" (khối × môn) lúc tạo ca'>
+        <span>✍️ Chấm: <b className={c.nguoiChamTen ? 'text-slate-700' : 'text-amber-600'}>{c.nguoiChamTen ?? 'chưa phân công khối này'}</b></span>
+        <span>📨 Trả bài: <b className={c.nguoiTraBaiTen ? 'text-slate-700' : 'text-amber-600'}>{c.nguoiTraBaiTen ?? 'chưa phân công khối này'}</b></span>
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
@@ -195,20 +197,13 @@ function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: () =
   const [ungVienId, setUngVienId] = useState<string | null>(null)
   const [f, setF] = useState({
     hoTenHs: '', mon: MON_OPTIONS[0] as MonTS, khoi: DEFAULT_KHOI, ngaySinh: '', hoTenPh: '', sdtPh: '', truongHoc: '',
-    ngay: homNayVN(), gioBatDau: '', thoiLuongPhut: 60 as number, nguoiChamId: '', nguoiTraBaiId: '',
+    ngay: homNayVN(), gioBatDau: '', thoiLuongPhut: 60 as number,
   })
   const set = (k: keyof typeof f, v: any) => setF((s) => ({ ...s, [k]: v }))
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
-  const [choCham, setChoCham] = useState<NguoiChoAssign[]>([])
-  const [choTraBai, setChoTraBai] = useState<NguoiChoAssign[]>([])
 
   useEffect(() => { listUngVienL5().then(setUvL5).catch(() => {}) }, [])
-  // Danh sách đổi theo môn — reset lựa chọn nếu người đã chọn không còn thuộc môn mới.
-  useEffect(() => {
-    listNguoiChoCham(f.mon).then((r) => { setChoCham(r); if (f.nguoiChamId && !r.some((n) => n.nhanSuId === f.nguoiChamId)) set('nguoiChamId', '') }).catch(() => {})
-    listNguoiChoTraBai(f.mon).then((r) => { setChoTraBai(r); if (f.nguoiTraBaiId && !r.some((n) => n.nhanSuId === f.nguoiTraBaiId)) set('nguoiTraBaiId', '') }).catch(() => {})
-  }, [f.mon]) // eslint-disable-line
   const uvOpts = uvL5.map((u) => ({ id: u.id, label: u.ho_ten_hs, sub: `${u.ma_uv ?? ''} ${u.mon}${u.khoi ? ' · Lớp ' + u.khoi : ''}`.trim() }))
 
   async function pick(id: string | null) {
@@ -225,7 +220,7 @@ function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: () =
     if (!ungVienId && !f.hoTenHs.trim()) { setErr('Chọn ứng viên L5 hoặc nhập tên học sinh mới'); return }
     setBusy(true); setErr(null)
     try {
-      const chung = { ngay: f.ngay, gioBatDau: f.gioBatDau, thoiLuongPhut: f.thoiLuongPhut, nguoiChamId: f.nguoiChamId || null, nguoiTraBaiId: f.nguoiTraBaiId || null }
+      const chung = { ngay: f.ngay, gioBatDau: f.gioBatDau, thoiLuongPhut: f.thoiLuongPhut }
       const input: TaoCaTestInput = ungVienId
         ? { ungVienId, ...chung }
         : { ungVienMoi: { hoTenHs: f.hoTenHs, mon: f.mon, khoi: f.khoi, ngaySinh: f.ngaySinh || null, hoTenPh: f.hoTenPh, sdtPh: f.sdtPh, truongHoc: f.truongHoc }, ...chung }
@@ -282,23 +277,7 @@ function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: () =
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <div>
-              <Lbl>Người chấm (dự kiến)</Lbl>
-              <select className={inputCls} value={f.nguoiChamId} onChange={(e) => set('nguoiChamId', e.target.value)}>
-                <option value="">{choCham.length ? '— Chưa chọn —' : `— Chưa có ai thuộc môn ${f.mon} —`}</option>
-                <AssignOptions list={choCham} />
-              </select>
-            </div>
-            <div>
-              <Lbl>Người trả bài (dự kiến)</Lbl>
-              <select className={inputCls} value={f.nguoiTraBaiId} onChange={(e) => set('nguoiTraBaiId', e.target.value)}>
-                <option value="">{choTraBai.length ? '— Chưa chọn —' : `— Chưa có ai thuộc môn ${f.mon} —`}</option>
-                <AssignOptions list={choTraBai} />
-              </select>
-            </div>
-          </div>
-          <p className="text-[11px] text-slate-400">Chỉ để biết trước ai dự kiến làm — hàng đợi Chấm/Trả bài vẫn chung, sửa được sau lúc nào cũng được.</p>
+          <p className="text-[11px] text-slate-400">Người chấm / trả bài gán tự động theo tab "Phân công" (khối × môn) khi tạo ca.</p>
 
           {err && <p className="text-[12px] text-rose-600">{err}</p>}
           <div className="flex justify-end gap-2 pt-1">
@@ -311,15 +290,3 @@ function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: () =
   )
 }
 
-// Nhóm "Gần đây" (từng gán gần nhất cho môn này) lên đầu, còn lại xếp dưới — không khoá ai.
-function AssignOptions({ list }: { list: NguoiChoAssign[] }) {
-  const ganDay = list.filter((n) => n.ganDay)
-  const khac = list.filter((n) => !n.ganDay)
-  if (!ganDay.length) return <>{khac.map((n) => <option key={n.nhanSuId} value={n.nhanSuId}>{n.hoTen}</option>)}</>
-  return (
-    <>
-      <optgroup label="Gần đây">{ganDay.map((n) => <option key={n.nhanSuId} value={n.nhanSuId}>{n.hoTen}</option>)}</optgroup>
-      {khac.length > 0 && <optgroup label="Khác">{khac.map((n) => <option key={n.nhanSuId} value={n.nhanSuId}>{n.hoTen}</option>)}</optgroup>}
-    </>
-  )
-}

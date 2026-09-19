@@ -10,7 +10,12 @@ const vnTodayStr = () => { const v = vnNow(); return `${v.getUTCFullYear()}-${St
 
 export type Verdict = 'dat' | 'gan_dat' | 'khong_dat'
 export type KyThi = { id: string; ten: string; loai: string; he_so: number; dot: string | null; ngay: string | null; mon: string | null; khoi: string | null; mua: string | null; buoi_hoc_id: string | null; khung_co_ban?: number | null; khung_nang_cao?: number | null }
-export type DiemThi = { ky_thi_id: string; hoc_sinh_id: string; diem: number | null; band_luc_thi: string | null; verdict: Verdict; vuot_band: boolean; diem_co_ban?: number | null; diem_nang_cao?: number | null; full_diem?: boolean }
+export type DiemThi = {
+  ky_thi_id: string; hoc_sinh_id: string; diem: number | null; band_luc_thi: string | null; verdict: Verdict; vuot_band: boolean
+  diem_co_ban?: number | null; diem_nang_cao?: number | null; full_diem?: boolean
+  // Điểm THI LẠI (Thùy 14/09) — chỉ hiện cho PH, KHÔNG tính xếp hạng/Level/XU. Đa số HS = NULL (không thi lại).
+  diem_thi_lai?: number | null; diem_thi_lai_co_ban?: number | null; diem_thi_lai_nang_cao?: number | null; full_thi_lai?: boolean
+}
 
 // ⚠ §2.0 (30/08): NGUỒN CHÂN LÝ của điểm + verdict MT = trigger `tg_diem_thi_tinh` ở DB
 // (mig 202608300221) — dòng có cơ bản/nâng cao/full là DB TỰ tính khi ghi, client gửi gì
@@ -93,13 +98,25 @@ export async function listDiemThiByKyThi(kyThiIds: string[]): Promise<DiemThi[]>
 // với đường MT (có coBan/nangCao/full) thì diem+verdict do trigger tính, client phải dùng
 // giá trị trả về này chứ không tự suy (§2.0). Đường thi trường/khảo sát: diem nhập thẳng,
 // verdict staff duyệt — trigger không đụng.
-export async function upsertDiemThi(d: { kyThiId: string; hocSinhId: string; diem: number | null; bandLucThi: string | null; verdict: Verdict; vuotBand: boolean; coBan?: number | null; nangCao?: number | null; full?: boolean }): Promise<DiemThi> {
+export async function upsertDiemThi(d: {
+  kyThiId: string; hocSinhId: string; diem: number | null; bandLucThi: string | null; verdict: Verdict; vuotBand: boolean
+  coBan?: number | null; nangCao?: number | null; full?: boolean
+  // Thi lại (14/09) — optional; nếu tất cả undefined thì upsert KHÔNG ghi các cột này (giữ nguyên giá trị cũ nếu có).
+  coBanThiLai?: number | null; nangCaoThiLai?: number | null; fullThiLai?: boolean
+}): Promise<DiemThi> {
   const { data: { user } } = await supabase.auth.getUser()
-  const { data, error } = await supabase.from('diem_thi').upsert(
-    { ky_thi_id: d.kyThiId, hoc_sinh_id: d.hocSinhId, diem: d.diem, band_luc_thi: d.bandLucThi, verdict: d.verdict, vuot_band: d.vuotBand,
-      diem_co_ban: d.coBan ?? null, diem_nang_cao: d.nangCao ?? null, full_diem: d.full ?? false,
-      graded_by: user?.id ?? null, updated_at: new Date().toISOString() },
-    { onConflict: 'ky_thi_id,hoc_sinh_id' }).select().single()
+  const row: Record<string, any> = {
+    ky_thi_id: d.kyThiId, hoc_sinh_id: d.hocSinhId, diem: d.diem, band_luc_thi: d.bandLucThi, verdict: d.verdict, vuot_band: d.vuotBand,
+    diem_co_ban: d.coBan ?? null, diem_nang_cao: d.nangCao ?? null, full_diem: d.full ?? false,
+    graded_by: user?.id ?? null, updated_at: new Date().toISOString(),
+  }
+  // Chỉ ghi cột thi lại khi caller có ý định — DiemMTPanel gửi kèm; các đường khác (thi trường/khảo sát) bỏ qua ⇒ NULL cũ giữ nguyên.
+  if (d.coBanThiLai !== undefined || d.nangCaoThiLai !== undefined || d.fullThiLai !== undefined) {
+    row.diem_thi_lai_co_ban = d.coBanThiLai ?? null
+    row.diem_thi_lai_nang_cao = d.nangCaoThiLai ?? null
+    row.full_thi_lai = d.fullThiLai ?? false
+  }
+  const { data, error } = await supabase.from('diem_thi').upsert(row, { onConflict: 'ky_thi_id,hoc_sinh_id' }).select().single()
   if (error) throw error
   return data as DiemThi
 }
@@ -108,6 +125,15 @@ export async function upsertDiemThi(d: { kyThiId: string; hocSinhId: string; die
 // diem_co_ban/diem_nang_cao ở diem_thi (điểm HS ĐẠT ĐƯỢC, riêng từng HS). null = chưa nhập khung.
 export async function setKhungMT(kyThiId: string, khungCoBan: number | null, khungNangCao: number | null): Promise<void> {
   const { error } = await supabase.from('ky_thi').update({ khung_co_ban: khungCoBan, khung_nang_cao: khungNangCao }).eq('id', kyThiId)
+  if (error) throw error
+}
+
+// Bulk update khung điểm cho TẤT CẢ buổi MT của lớp trong mùa (Thùy 15/09) — "khung có thể set cho cả
+// lớp luôn". Áp cho tập ky_thi_id đã fetch (list buổi MT của lớp) — không tự query lại để tránh race với
+// UI: cho phép caller chọn tập buổi muốn bulk (thông thường mọi buổi MT của lớp × mùa).
+export async function bulkSetKhungMT(kyThiIds: string[], khungCoBan: number | null, khungNangCao: number | null): Promise<void> {
+  if (!kyThiIds.length) return
+  const { error } = await supabase.from('ky_thi').update({ khung_co_ban: khungCoBan, khung_nang_cao: khungNangCao }).in('id', kyThiIds)
   if (error) throw error
 }
 
@@ -141,6 +167,65 @@ export async function getOrCreateKyThiMTChoBuoi(buoiId: string, ten: string, mon
     if (e?.code === '23505') { const again = await read(); if (again) return again }
     throw e
   }
+}
+
+// ── NHẬP ĐIỂM MT THEO LỚP (Thùy 14/09): tab "Nhập điểm MT" trong Kết quả học tập, thay vì phải mở buổi.
+// ⭐ Điểm MT ĐI THEO HS, KHÔNG đi theo lớp (Thùy 14/09 khi audit chuyển lớp: "Vân Khánh tháng 7 ở 8A1,
+// tháng 8 ở 8S1 — vào 8S1 phải hiện đủ MT 2 tháng"). Bảng `diem_thi(hoc_sinh_id, ky_thi_id)` không mang
+// lop_id, chuyển lớp không mất điểm — nhưng lưới nhập phải PHỦ đủ mọi buổi MT roster đã thi (kể cả buổi
+// thuộc lớp cũ) chứ không chỉ buổi thuộc lopId hiện tại.
+//
+// Union 2 tập ky_thi mt_sat_hach (đúng mùa):
+//   A. Buổi thuộc lopId hiện tại — kể cả HS chưa thi (để nhập điểm cho buổi vừa tổ chức).
+//   B. Ky_thi mà ÍT NHẤT 1 HS trong roster đã có điểm (kéo về buổi thuộc lớp cũ của HS chuyển).
+// HS khác không có điểm ở cột nhóm B ⇒ ô trống (đúng thực tế: các em không thi buổi đó).
+// Header cột: 'DD/MM · TênLớp' để phân biệt buổi ở lớp cũ vs lớp hiện tại.
+export type KyThiMTLop = KyThi & { buoi_ngay: string | null; buoi_lop_id: string | null; buoi_ten_lop: string | null }
+export async function listKyThiMTChoLop(lopId: string, mon: string, hsIds: string[], mua: string): Promise<KyThiMTLop[]> {
+  const NULL_ID = '00000000-0000-0000-0000-000000000000'
+  // A. Buổi thuộc lớp hiện tại → tập ky_thi_A (scope thêm mon để chắc — buổi của lớp Toán không lôi ky_thi KHTN)
+  const { data: buoisA, error: e1 } = await supabase.from('buoi_hoc').select('id').eq('lop_id', lopId).limit(LIMIT)
+  if (e1) throw e1
+  const buoiIdsA = ((buoisA ?? []) as { id: string }[]).map((b) => b.id)
+  const { data: ktsA, error: e2 } = await supabase.from('ky_thi').select('*')
+    .eq('loai', 'mt_sat_hach').eq('mon', mon).eq('mua', mua).in('buoi_hoc_id', buoiIdsA.length ? buoiIdsA : [NULL_ID]).limit(LIMIT)
+  if (e2) throw e2
+
+  // B. Ky_thi mt_sat_hach mà roster đã có điểm (dù buổi thuộc lớp khác) — SCOPE THEO MÔN của lớp hiện
+  // tại, tránh lôi điểm MT môn khác nếu HS học cả 2 môn (vd Toán + KHTN cùng roster HS chuyển).
+  let ktIdsB: string[] = []
+  if (hsIds.length) {
+    const { data: dts, error: e3 } = await supabase.from('diem_thi')
+      .select('ky_thi_id, ky_thi:ky_thi_id!inner(loai, mon, mua)')
+      .in('hoc_sinh_id', hsIds)
+      .eq('ky_thi.loai', 'mt_sat_hach').eq('ky_thi.mon', mon).eq('ky_thi.mua', mua)
+      .limit(LIMIT)
+    if (e3) throw e3
+    ktIdsB = [...new Set(((dts ?? []) as any[]).map((r) => r.ky_thi_id).filter(Boolean))]
+  }
+  const { data: ktsB, error: e4 } = await supabase.from('ky_thi').select('*').in('id', ktIdsB.length ? ktIdsB : [NULL_ID]).limit(LIMIT)
+  if (e4) throw e4
+
+  // Union + dedup theo ky_thi.id
+  const map = new Map<string, KyThi>()
+  for (const k of [...((ktsA ?? []) as KyThi[]), ...((ktsB ?? []) as KyThi[])]) map.set(k.id, k)
+  const ktsAll = [...map.values()]
+  if (!ktsAll.length) return []
+
+  // Fetch info buổi + lớp cho toàn bộ ky_thi trong lưới (để header cột hiển thị 'DD/MM · TênLớp').
+  const buoiIdsAll = [...new Set(ktsAll.map((k) => k.buoi_hoc_id).filter((x): x is string => !!x))]
+  const buoiInfo = new Map<string, { ngay: string | null; lop_id: string | null; ten_lop: string | null }>()
+  if (buoiIdsAll.length) {
+    const { data: bs, error: e5 } = await supabase.from('buoi_hoc').select('id, ngay, lop_id, lop:lop_id(ten_lop)').in('id', buoiIdsAll).limit(LIMIT)
+    if (e5) throw e5
+    for (const b of (bs ?? []) as any[]) buoiInfo.set(b.id, { ngay: b.ngay ?? null, lop_id: b.lop_id ?? null, ten_lop: b.lop?.ten_lop ?? null })
+  }
+  return ktsAll
+    .map((k) => {
+      const info = k.buoi_hoc_id ? buoiInfo.get(k.buoi_hoc_id) : null
+      return { ...k, buoi_ngay: info?.ngay ?? null, buoi_lop_id: info?.lop_id ?? null, buoi_ten_lop: info?.ten_lop ?? null }
+    })
+    .sort((a, b) => (a.buoi_ngay ?? '').localeCompare(b.buoi_ngay ?? ''))
 }
 
 // ── BXH ĐIỂM MT TẠI TRUNG TÂM (Thùy 09-11): 1 BXH per (mon × khoi × ym) — mọi HS đang học các lớp

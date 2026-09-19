@@ -7,12 +7,10 @@ import { ReportCardView, renderCardToUrl } from './ReportCard'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listLop, listHSCuaLop } from '../../lib/nhansu'
 import { getTongQuanHS, type TongQuanHS } from '../../lib/mastery'
-import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, getKhoiRankDiemMT, getLopRankDiemMT, getHeRankDiemMT, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH, type KhoiRankMT, type LopRankMT, type HeRankMT } from '../../lib/report'
+import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, getKhoiRankDiemMT, getLopRankDiemMT, getHeRankDiemMT, listNxPreset, addNxPreset, updateNxPreset, deleteNxPreset, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH, type KhoiRankMT, type LopRankMT, type HeRankMT, type NxTruc, type NxPreset } from '../../lib/report'
 import { tenHienThiDs } from '../../lib/hoten'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
-// Thang 5 cho skill bar (GV tự chọn). index 0..4 ↔ mức 1..5.
-const SKILL_MUC = ['Cần cố gắng', 'Trung bình', 'Khá', 'Tốt', 'Xuất sắc'] as const
 const curYM = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` }
 const shiftYM = (ym: string, delta: number) => { const [y, m] = ym.split('-').map(Number); const i = y * 12 + (m - 1) + delta; return `${Math.floor(i / 12)}-${String(i % 12 + 1).padStart(2, '0')}` }
 const NOP_LABEL: Record<string, string> = { nop_dung_han: 'Đúng hạn', nop_muon: 'Nộp muộn', xin_phep: 'Xin phép', khong_lam: 'Không làm' }
@@ -264,26 +262,47 @@ function NumCol({ label, pct, big }: { label: string; pct: number | null; big?: 
 }
 // Điểm THẬT nhập tay (thang 10, qua ky_thi/diem_thi) — KHÁC %hoạt động ở NumCol (đúng câu/tổng câu).
 // Cố ý không dùng pctCls (màu theo ngưỡng %0-100) cho số 0-10 — dễ đọc sai (vd điểm 8 mà tô đỏ như %8).
-function DiemRow({ tong, cb, nc, truong }: { tong: number | null; cb: number | null; nc: number | null; truong?: number | null }) {
-  const col = (label: string, v: number | null, big?: boolean) => (
+// (Thùy 14/09): PH view hiển thị Tổng (thang 10) + %CB + %NC — KHÔNG điểm CB/NC tuyệt đối. Có thi lại
+// (không tính xếp hạng) → thêm dòng "Thi lại" cùng bố cục; HS không thi lại thì ẩn hẳn.
+type MTDiem = { tong: number | null; pctCB: number | null; pctNC: number | null }
+function DiemRow({ chinh, thiLai, truong }: { chinh: MTDiem; thiLai?: MTDiem | null; truong?: number | null }) {
+  const colD = (label: string, v: number | null, big?: boolean) => (
     <div className="flex-1 px-3 text-center first:pl-0">
       <div className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">{label}</div>
       <div className={`font-extrabold tabular-nums text-slate-700 ${big ? 'text-[20px]' : 'text-[15px]'}`}>{v == null ? '—' : v}</div>
     </div>
   )
+  const colP = (label: string, v: number | null) => (
+    <div className="flex-1 px-3 text-center first:pl-0">
+      <div className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">{label}</div>
+      <div className={`font-extrabold tabular-nums ${pctCls(v)} text-[15px]`}>{v == null ? '—' : v + '%'}</div>
+    </div>
+  )
+  const hasTL = thiLai && (thiLai.tong != null || thiLai.pctCB != null || thiLai.pctNC != null)
   return (
     <div className="mt-2.5 rounded-lg bg-slate-50 px-1 py-2">
       <div className="mb-1 px-3 text-[10px] font-semibold uppercase tracking-wide text-slate-400">Điểm MT (thang 10, nhập tay)</div>
       <div className="flex divide-x divide-slate-200">
-        {col('Tổng', tong, true)}
-        {col('Cơ bản', cb)}
-        {col('Nâng cao', nc)}
+        {colD('Tổng', chinh.tong, true)}
+        {colP('Cơ bản', chinh.pctCB)}
+        {colP('Nâng cao', chinh.pctNC)}
       </div>
+      {hasTL && (
+        <>
+          <div className="mx-3 mt-2 border-t border-dashed border-amber-300/70" />
+          <div className="mb-1 mt-1 px-3 text-[10px] font-semibold uppercase tracking-wide text-amber-700">Thi lại (không tính xếp hạng)</div>
+          <div className="flex divide-x divide-amber-100">
+            {colD('Tổng', thiLai!.tong, true)}
+            {colP('Cơ bản', thiLai!.pctCB)}
+            {colP('Nâng cao', thiLai!.pctNC)}
+          </div>
+        </>
+      )}
       {truong != null && <div className="mt-1.5 px-3 text-[11px] text-slate-500">Điểm thi trường: <b className="text-slate-700">{truong}</b></div>}
     </div>
   )
 }
-function ActCard({ icon, ten, cb, nc, warn, diem }: { icon: string; ten: string; cb: Bucket; nc: Bucket; warn?: string; diem?: { tong: number | null; cb: number | null; nc: number | null; truong?: number | null } }) {
+function ActCard({ icon, ten, cb, nc, warn, diem }: { icon: string; ten: string; cb: Bucket; nc: Bucket; warn?: string; diem?: { chinh: MTDiem; thiLai?: MTDiem | null; truong?: number | null } }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
       <div className="mb-3 text-[14px] font-bold text-slate-700">{icon} {ten}</div>
@@ -292,13 +311,14 @@ function ActCard({ icon, ten, cb, nc, warn, diem }: { icon: string; ten: string;
         <NumCol label="Cơ bản" pct={cb.pct} />
         <NumCol label="Nâng cao" pct={nc.pct} />
       </div>
-      {diem && <DiemRow tong={diem.tong} cb={diem.cb} nc={diem.nc} truong={diem.truong} />}
+      {diem && <DiemRow chinh={diem.chinh} thiLai={diem.thiLai} truong={diem.truong} />}
       {warn && <div className="mt-2.5 rounded-lg bg-amber-50 px-2.5 py-1.5 text-[11px] font-medium text-amber-700">⚠ {warn}</div>}
     </div>
   )
 }
 function TongQuanCards({ tq, missCount }: { tq: TongQuanHS; missCount: number }) {
   const h = tq.hoanThanh.toanBo.etMt, a = tq.hoatDong
+  const tl = tq.diem.mt.thiLai
   return (
     <div className="space-y-3">
       <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
@@ -313,15 +333,147 @@ function TongQuanCards({ tq, missCount }: { tq: TongQuanHS; missCount: number })
       <ActCard icon="📝" ten="Test cuối giờ (ET)" cb={a.etCoBan} nc={a.etNangCao} />
       <ActCard icon="🏠" ten="Bài tập về nhà" cb={a.btvnCoBan} nc={a.btvnNangCao} warn={missCount > 0 ? `Chưa hoàn thành BTVN ${missCount} lần trong tháng này` : undefined} />
       <ActCard icon="📅" ten="Test tháng (MT)" cb={a.mtCoBan} nc={a.mtNangCao}
-        diem={{ tong: tq.diem.mt.tb, cb: tq.diem.mt.coBan, nc: tq.diem.mt.nangCao, truong: tq.diem.truong.tb }} />
+        diem={{
+          chinh: { tong: tq.diem.mt.tb, pctCB: tq.diem.mt.pctCoBan, pctNC: tq.diem.mt.pctNangCao },
+          thiLai: tl.n || tl.nCoBan || tl.nNangCao ? { tong: tl.tb, pctCB: tl.pctCoBan, pctNC: tl.pctNangCao } : null,
+          truong: tq.diem.truong.tb,
+        }} />
     </div>
   )
 }
 
-const NX_FIELDS: { key: 'thai_do' | 'kien_thuc_ky_nang'; mucKey: 'muc_thai_do' | 'muc_kien_thuc'; label: string; ph: string; hx: string }[] = [
-  { key: 'kien_thuc_ky_nang', mucKey: 'muc_kien_thuc', label: 'Kiến thức & Kĩ năng', ph: 'Mức nắm kiến thức, kĩ năng làm bài, mạnh/yếu…', hx: 'bg-indigo-500' },
-  { key: 'thai_do', mucKey: 'muc_thai_do', label: 'Thái độ học tập', ph: 'Thái độ, chuyên cần, tinh thần học tập trong tháng…', hx: 'bg-emerald-500' },
-]
+// Kiến thức & Kĩ năng + Thái độ học tập: chuyển từ nhận xét tự do → chọn preset (Thùy 14-09).
+// Preset lưu ở bảng bao_cao_ph_preset (chia sẻ chung, ai đăng nhập cũng CRUD được — Thùy 15-09).
+// Text sau khi chọn được COPY vào bao_cao_ph (snapshot). Sửa/xoá preset sau này KHÔNG đổi báo cáo cũ.
+const MUC_HX: Record<number, string> = { 1: 'bg-rose-600', 2: 'bg-rose-500', 3: 'bg-amber-500', 4: 'bg-sky-500', 5: 'bg-emerald-500' }
+function PresetDropdown({ truc, curText, curMuc, onPick, ringOn }:
+  { truc: NxTruc; curText: string | null; curMuc: number | null; onPick: (p: { muc: number; noi_dung: string } | null) => void; ringOn: string }) {
+  const [presets, setPresets] = useState<NxPreset[]>([])
+  const [open, setOpen] = useState(false)
+  const [editing, setEditing] = useState<string | 'new' | null>(null)
+  const [editMuc, setEditMuc] = useState(4)
+  const [editText, setEditText] = useState('')
+  const [saving, setSaving] = useState(false)
+  const wrapRef = useRef<HTMLDivElement>(null)
+  useEffect(() => { listNxPreset(truc).then(setPresets).catch(() => setPresets([])) }, [truc])
+  useEffect(() => {
+    if (!open) return
+    const h = (e: MouseEvent) => {
+      if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) { setOpen(false); setEditing(null) }
+    }
+    document.addEventListener('mousedown', h)
+    return () => document.removeEventListener('mousedown', h)
+  }, [open])
+  const matched = presets.find((p) => p.noi_dung === curText && p.muc === curMuc)
+  const orphan = curText != null && !matched
+  const startEdit = (p: NxPreset) => { setEditing(p.id); setEditMuc(p.muc); setEditText(p.noi_dung) }
+  const startNew = () => { setEditing('new'); setEditMuc(4); setEditText('') }
+  const cancelEdit = () => { setEditing(null); setEditText('') }
+  const saveEdit = async () => {
+    const t = editText.trim()
+    if (!t) return
+    setSaving(true)
+    try {
+      if (editing === 'new') {
+        const created = await addNxPreset(truc, editMuc, t)
+        setPresets((prev) => [...prev, created].sort((a, b) => b.muc - a.muc || a.thu_tu - b.thu_tu))
+      } else if (editing) {
+        await updateNxPreset(editing, { muc: editMuc, noi_dung: t })
+        setPresets((prev) => prev.map((p) => p.id === editing ? { ...p, muc: editMuc, noi_dung: t } : p).sort((a, b) => b.muc - a.muc || a.thu_tu - b.thu_tu))
+        // Nếu đang chọn preset vừa sửa → cập nhật lại vào báo cáo để đồng bộ.
+        if (matched?.id === editing) onPick({ muc: editMuc, noi_dung: t })
+      }
+      setEditing(null); setEditText('')
+    } catch (e: any) { alert('Lỗi lưu: ' + (e?.message ?? e)) }
+    finally { setSaving(false) }
+  }
+  const doDelete = async (p: NxPreset) => {
+    if (!confirm(`Xoá nhận xét này khỏi danh sách?\n\n"${p.noi_dung.slice(0, 80)}${p.noi_dung.length > 80 ? '…' : ''}"\n\n(Báo cáo cũ đã dùng câu này vẫn giữ nguyên nội dung.)`)) return
+    try {
+      await deleteNxPreset(p.id)
+      setPresets((prev) => prev.filter((x) => x.id !== p.id))
+    } catch (e: any) { alert('Lỗi xoá: ' + (e?.message ?? e)) }
+  }
+  return (
+    <div ref={wrapRef} className="relative">
+      <button type="button" onClick={() => setOpen((s) => !s)}
+        className={`flex w-full items-start gap-2 rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-left text-[12px] leading-relaxed hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-white ${open ? `${ringOn} ring-2` : ''}`}>
+        {matched ? (
+          <span className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded text-[11px] font-bold text-white ${MUC_HX[matched.muc] ?? 'bg-slate-400'}`}>{matched.muc}</span>
+        ) : <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded bg-slate-200 text-[11px] font-bold text-slate-500">—</span>}
+        <span className={`flex-1 ${matched ? 'text-slate-800' : 'text-slate-400'}`}>
+          {matched ? matched.noi_dung : (orphan ? curText : 'Chọn nhận xét…')}
+        </span>
+        <span className="mt-1 shrink-0 text-slate-400">▾</span>
+      </button>
+      {open && (
+        <div className="absolute left-0 right-0 top-full z-20 mt-1 max-h-[26rem] overflow-y-auto rounded-lg border border-slate-200 bg-white shadow-lg">
+          {presets.map((p) => {
+            const isSel = matched?.id === p.id
+            if (editing === p.id) return (
+              <PresetEditor key={p.id} muc={editMuc} text={editText} onMuc={setEditMuc} onText={setEditText}
+                onCancel={cancelEdit} onSave={saveEdit} saving={saving} />
+            )
+            return (
+              <div key={p.id} className={`group flex items-start gap-2 border-b border-slate-100 px-2.5 py-2 last:border-b-0 ${isSel ? 'bg-indigo-50' : 'hover:bg-slate-50'}`}>
+                <button type="button" onClick={() => { onPick(isSel ? null : { muc: p.muc, noi_dung: p.noi_dung }); setOpen(false) }}
+                  className="flex flex-1 items-start gap-2 text-left text-[12px] leading-relaxed">
+                  <span className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded text-[11px] font-bold text-white ${MUC_HX[p.muc] ?? 'bg-slate-400'}`}>{p.muc}</span>
+                  <span className="flex-1 text-slate-700">{p.noi_dung}</span>
+                </button>
+                <div className="flex shrink-0 gap-0.5 opacity-0 group-hover:opacity-100 focus-within:opacity-100">
+                  <button type="button" title="Sửa" onClick={() => startEdit(p)}
+                    className="rounded p-1 text-slate-400 hover:bg-slate-200 hover:text-slate-700">✏️</button>
+                  <button type="button" title="Xoá" onClick={() => doDelete(p)}
+                    className="rounded p-1 text-slate-400 hover:bg-rose-100 hover:text-rose-700">🗑</button>
+                </div>
+              </div>
+            )
+          })}
+          {editing === 'new' ? (
+            <PresetEditor muc={editMuc} text={editText} onMuc={setEditMuc} onText={setEditText}
+              onCancel={cancelEdit} onSave={saveEdit} saving={saving} />
+          ) : (
+            <button type="button" onClick={startNew}
+              className="flex w-full items-center gap-1.5 border-t border-slate-100 px-2.5 py-2 text-left text-[11px] font-semibold text-indigo-600 hover:bg-indigo-50">
+              <span>➕</span> Thêm nhận xét mới
+            </button>
+          )}
+          {matched && editing == null && (
+            <button type="button" onClick={() => { onPick(null); setOpen(false) }}
+              className="w-full border-t border-slate-100 px-2.5 py-1.5 text-left text-[11px] text-slate-500 hover:bg-slate-50">✕ Bỏ chọn</button>
+          )}
+        </div>
+      )}
+      {orphan && (
+        <p className="mt-1 rounded bg-amber-50 px-2 py-1 text-[11px] text-amber-700">Nhận xét cũ (nhập tay) chưa khớp preset — mở dropdown chọn 1 mức để thay.</p>
+      )}
+    </div>
+  )
+}
+function PresetEditor({ muc, text, onMuc, onText, onCancel, onSave, saving }:
+  { muc: number; text: string; onMuc: (n: number) => void; onText: (s: string) => void; onCancel: () => void; onSave: () => void; saving: boolean }) {
+  return (
+    <div className="border-b border-slate-100 bg-indigo-50/30 px-2.5 py-2">
+      <div className="mb-1.5 flex items-center gap-1">
+        <span className="mr-1 text-[10px] font-medium text-slate-500">Mức:</span>
+        {[1, 2, 3, 4, 5].map((i) => (
+          <button key={i} type="button" onClick={() => onMuc(i)}
+            className={`h-6 w-7 rounded text-[11px] font-bold ring-1 transition ${muc === i ? `${MUC_HX[i]} text-white ring-transparent` : 'bg-white text-slate-500 ring-slate-200 hover:bg-slate-100'}`}>{i}</button>
+        ))}
+      </div>
+      <textarea autoFocus value={text} onChange={(e) => onText(e.target.value)} rows={3}
+        placeholder="Nhập nhận xét…"
+        className="w-full resize-y rounded border border-slate-200 bg-white px-2 py-1.5 text-[12px] leading-relaxed focus:border-indigo-300 focus:outline-none" />
+      <div className="mt-1.5 flex justify-end gap-1.5">
+        <button type="button" onClick={onCancel} disabled={saving}
+          className="rounded border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-slate-600 hover:bg-slate-100 disabled:opacity-60">Huỷ</button>
+        <button type="button" onClick={onSave} disabled={saving || !text.trim()}
+          className="rounded bg-indigo-600 px-2.5 py-1 text-[11px] font-bold text-white hover:bg-indigo-700 disabled:opacity-50">{saving ? 'Đang lưu…' : 'Lưu'}</button>
+      </div>
+    </div>
+  )
+}
 function NhanXet({ hsId, mon, ym, onCapture }: { hsId: string; mon: string; ym: string; onCapture: () => Promise<string | null> }) {
   const [val, setVal] = useState<BaoCaoPH>({ ...BC_EMPTY })
   const [prev, setPrev] = useState<BaoCaoPH>({ ...BC_EMPTY })
@@ -394,13 +546,16 @@ function NhanXet({ hsId, mon, ym, onCapture }: { hsId: string; mon: string; ym: 
           {val.nl_diem != null && <p className="mt-1.5 text-[11px] text-slate-500">Dự kiến điểm thi: <b>{(val.nl_diem - (val.nl_sai_so ?? 0)).toFixed(1)} – {(val.nl_diem + (val.nl_sai_so ?? 0)).toFixed(1)}</b></p>}
         </div>
 
-        {/* 7 CHỈ SỐ PHÁT TRIỂN (mức 1..5) + xu hướng so tháng trước */}
-        <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
-          <div className="mb-2 flex items-center justify-between">
-            <span className="text-[12px] font-semibold text-slate-700">7 chỉ số phát triển</span>
+        {/* 7 CHỈ SỐ PHÁT TRIỂN — ẨN mặc định, bấm header để mở (Thùy 14-09: đỡ tốn diện tích) */}
+        <details className="group rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
+          <summary className="flex cursor-pointer list-none items-center justify-between">
+            <span className="flex items-center gap-1.5 text-[12px] font-semibold text-slate-700">
+              <span className="text-slate-400 transition group-open:rotate-90 inline-block">▶</span>
+              7 chỉ số phát triển
+            </span>
             <span className="text-[10px] text-slate-400">so với tháng {Number(shiftYM(ym, -1).split('-')[1])}</span>
-          </div>
-          <div className="space-y-2">
+          </summary>
+          <div className="mt-2 space-y-2">
             {CHI_SO.map((c) => {
               const lvl = val[c.key] as number | null
               const pv = prev[c.key] as number | null
@@ -427,28 +582,27 @@ function NhanXet({ hsId, mon, ym, onCapture }: { hsId: string; mon: string; ym: 
               )
             })}
           </div>
+        </details>
+
+        {/* KIẾN THỨC & KĨ NĂNG — dropdown preset (mức + text đi kèm) */}
+        <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
+          <div className="mb-1.5 flex items-center justify-between">
+            <span className="text-[12px] font-semibold text-slate-700">Kiến thức & Kĩ năng</span>
+            {(saved === 'kien_thuc_ky_nang' || saved === 'muc_kien_thuc') && <span className="text-[11px] text-emerald-600">✓ đã lưu</span>}
+          </div>
+          <PresetDropdown truc="kien_thuc" curText={val.kien_thuc_ky_nang} curMuc={val.muc_kien_thuc} ringOn="ring-indigo-300"
+            onPick={(p) => save(p ? { kien_thuc_ky_nang: p.noi_dung, muc_kien_thuc: p.muc } : { kien_thuc_ky_nang: null, muc_kien_thuc: null }, 'kien_thuc_ky_nang')} />
         </div>
 
-        {NX_FIELDS.map((f) => {
-          const lvl = val[f.mucKey] as number | null
-          return (
-          <div key={f.key} className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
-            <div className="mb-1.5 flex items-center justify-between">
-              <span className="text-[12px] font-semibold text-slate-700">{f.label}</span>
-              {(saved === f.key || saved === f.mucKey) && <span className="text-[11px] text-emerald-600">✓ đã lưu</span>}
-            </div>
-            {/* Chọn mức thang 5 */}
-            <div className="mb-2 flex items-center gap-1.5">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <button key={i} onClick={() => save({ [f.mucKey]: lvl === i ? null : i }, f.mucKey)} title={SKILL_MUC[i - 1]}
-                  className={`h-7 flex-1 rounded-md text-[11px] font-bold ring-1 transition ${lvl != null && i <= lvl ? `${f.hx} text-white ring-transparent` : 'bg-slate-50 text-slate-400 ring-slate-200 hover:bg-slate-100'}`}>{i}</button>
-              ))}
-              <span className="ml-1 w-[68px] shrink-0 text-right text-[11px] font-semibold text-slate-500">{lvl ? SKILL_MUC[lvl - 1] : '—'}</span>
-            </div>
-            <textarea defaultValue={val[f.key] as string ?? ''} onBlur={(e) => save({ [f.key]: e.target.value.trim() || null }, f.key)} placeholder={f.ph} rows={4} className={box} />
+        {/* THÁI ĐỘ HỌC TẬP — dropdown preset (mức + text đi kèm) */}
+        <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
+          <div className="mb-1.5 flex items-center justify-between">
+            <span className="text-[12px] font-semibold text-slate-700">Thái độ học tập</span>
+            {(saved === 'thai_do' || saved === 'muc_thai_do') && <span className="text-[11px] text-emerald-600">✓ đã lưu</span>}
           </div>
-          )
-        })}
+          <PresetDropdown truc="thai_do" curText={val.thai_do} curMuc={val.muc_thai_do} ringOn="ring-emerald-300"
+            onPick={(p) => save(p ? { thai_do: p.noi_dung, muc_thai_do: p.muc } : { thai_do: null, muc_thai_do: null }, 'thai_do')} />
+        </div>
         {/* KẾT LUẬN: thanh mức + chữ */}
         <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
           <div className="mb-1.5 flex items-center justify-between">

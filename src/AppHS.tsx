@@ -15,6 +15,7 @@ import DanhSachHS, { type DsRow } from './screens/hocsinh/DanhSachHS'
 import MayManHS from './screens/hocsinh/MayManHS'
 import ThanhTuuHS from './screens/hocsinh/ThanhTuuHS'
 import BaiTapGiaoHS from './screens/hocsinh/BaiTapGiaoHS'
+import ThongTinHocTap, { _THEME_TTHT, BXHList } from './screens/hocsinh/ThongTinHocTap'
 import { getMyHocSinhId } from './lib/testonline'
 
 // DEMO màn chính (CHỈ bản dev, không vào build): `hs.html?demo` · `?demo=nu` (nữ) · thêm `&ca` (banner bổ trợ)
@@ -31,6 +32,37 @@ function DemoHome() {
   if (q.get('demo') === 'baitapgiao') return <BaiTapGiaoHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
   if (q.get('demo') === 'maymai') return <MayManHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
   if (q.get('demo') === 'cap1') return <HomeCap1 hoTen="Nguyễn Minh Quân" maHS="hs0012" chuaDoc={2} onHopThu={noopBack} onOpen={noopBack} />
+  if (q.get('demo') === 'thongtin') return <ThongTinHocTap hocSinhId="00000000-0000-0000-0000-000000000000" gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
+  if (q.get('demo') === 'podium') {
+    // Mock 15 HS để test bục top 3 + Dong 4-10 + dòng "Bạn" ngoài top 10.
+    const mock = [
+      { ma_hs: 'hs001', ho_ten: 'Nguyễn Văn Đức Huy', la_toi: false, nhan: '92%', phu: '12/13 dạng' },
+      { ma_hs: 'hs002', ho_ten: 'Trần Mai Anh', la_toi: false, nhan: '85%', phu: '11/13 dạng' },
+      { ma_hs: 'hs003', ho_ten: 'Lê Bảo Ngọc', la_toi: false, nhan: '77%', phu: '10/13 dạng' },
+      { ma_hs: 'hs004', ho_ten: 'Phạm Minh Quân', la_toi: false, nhan: '69%', phu: '9/13 dạng' },
+      { ma_hs: 'hs005', ho_ten: 'Hoàng Thu Hà', la_toi: false, nhan: '62%', phu: '8/13 dạng' },
+      { ma_hs: 'hs006', ho_ten: 'Đỗ Nam Khánh', la_toi: false, nhan: '54%', phu: '7/13 dạng' },
+      { ma_hs: 'hs007', ho_ten: 'Vũ Linh Chi', la_toi: false, nhan: '46%', phu: '6/13 dạng' },
+      { ma_hs: 'hs008', ho_ten: 'Bùi Duy Khoa', la_toi: false, nhan: '38%', phu: '5/13 dạng' },
+      { ma_hs: 'hs009', ho_ten: 'Ngô Bảo Châu', la_toi: false, nhan: '31%', phu: '4/13 dạng' },
+      { ma_hs: 'hs010', ho_ten: 'Dương Thanh Trúc', la_toi: false, nhan: '23%', phu: '3/13 dạng' },
+      { ma_hs: 'hs011', ho_ten: 'Trịnh Gia Bảo', la_toi: false, nhan: '15%', phu: '2/13 dạng' },
+      { ma_hs: 'hs012', ho_ten: 'Đinh Minh Tú (Bạn)', la_toi: true, nhan: '8%', phu: '1/13 dạng' },
+    ]
+    const t = _THEME_TTHT[nu ? 'nu' : 'nam']
+    return (
+      <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] overflow-hidden" style={{ background: '#eef4ff', ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
+        <img src={t.bg} alt="" className="pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover" />
+        <div className="relative px-4 pb-10 pt-[calc(10px+env(safe-area-inset-top))]">
+          <div className="mb-3 flex items-center gap-3">
+            <button onClick={noopBack} className="flex h-10 w-10 items-center justify-center rounded-[14px] bg-white text-[20px] shadow" >‹</button>
+            <h1 className="text-[22px] font-extrabold" style={{ color: '#0F1745' }}>BXH — Demo bục trao giải</h1>
+          </div>
+          <BXHList t={t} rows={mock} emptyText="rỗng" />
+        </div>
+      </div>
+    )
+  }
   void MayManHS  // giữ import cho các bản build sau, hiện tại demo maymai vẫn cần lib DB
   // `?demo=list` (+`&nu`, +`&rong`) — màn danh sách bài (kit hs-bai-tap-tren-lop-v1) với 4 trạng thái suy sẵn
   if (q.get('demo') === 'list') {

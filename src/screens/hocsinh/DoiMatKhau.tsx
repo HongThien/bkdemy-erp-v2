@@ -40,7 +40,7 @@ export default function DoiMatKhau({ maHS, batBuoc, onXong }: { maHS: string; ba
 
   const inp = 'w-full rounded-xl border border-slate-300 px-3.5 py-3 text-[15px] outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20'
   return (
-    <div className="mx-auto min-h-screen max-w-md bg-slate-50 px-4 pb-10">
+    <div className="mx-auto min-h-screen max-w-md bg-slate-50 px-4 pb-10 md:max-w-xl">
       <div className="py-6">
         <p className="text-lg font-semibold text-slate-900">{batBuoc ? 'Đặt mật khẩu riêng' : 'Đổi mật khẩu'}</p>
         {batBuoc && (

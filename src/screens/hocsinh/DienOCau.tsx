@@ -117,7 +117,7 @@ export function LamDienO({ hocSinhId, onXong, desktop }: { hocSinhId: string; on
   const xongHet = caus.length > 0 && caus.every((c) => kqs[c.id] || daLam[c.id])
   useEffect(() => { if (xongHet && baiLamId) nopBai(baiLamId).catch(() => {}) }, [xongHet, baiLamId])
 
-  const khung = desktop ? 'mx-auto max-w-3xl px-6 py-6' : 'mx-auto max-w-md px-4 py-4'
+  const khung = desktop ? 'mx-auto max-w-3xl px-6 py-6' : 'mx-auto max-w-md px-4 py-4 md:max-w-3xl'
   if (state === 'tai') return <div className={`flex min-h-screen items-center justify-center text-sm text-ph-label-2 ${desktop ? 'bg-[#f4f7fb]' : 'bg-ios'}`}>Đang chọn bài chứng minh…</div>
   if (state === 'trong' || !baiTestId || !baiLamId) return (
     <div className={`flex min-h-screen flex-col items-center justify-center px-6 text-center ${desktop ? 'bg-[#f4f7fb]' : 'bg-ios'}`}>

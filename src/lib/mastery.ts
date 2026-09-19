@@ -50,8 +50,10 @@ const THI_LOAI = new Set(['et', 'de_thi'])
 type OnlineEvalRow = { hoc_sinh_id: string; ma_dang: string | null; value: number; t: string; src: EvalSrc; mon: string }
 async function fetchOnlineEvals(hs: string | string[], sinceIso?: string | null): Promise<OnlineEvalRow[]> {
   // Embed 2 tầng FK ĐƠN (bai_lam_id → bai_test_id) + filter trên bảng nhúng qua !inner (pattern loadMasteryCells).
+  // Embed thêm buoi_hoc.ngay để neo timeline theo NGÀY BUỔI (bai_test gắn buổi) — GV/TA chấm trễ (buổi 10/08 chấm
+  // ngày 23/08) không được kéo phép đo về ngày chấm. Fallback cham_at cho test online không gắn buổi (tự luyện).
   let q = supabase.from('bai_lam_cau')
-    .select('verdict, cham_at, lam:bai_lam_id!inner(hoc_sinh_id, trang_thai, test:bai_test_id(loai, mon)), cau:bai_test_cau_id(ma_dang)')
+    .select('verdict, cham_at, lam:bai_lam_id!inner(hoc_sinh_id, trang_thai, test:bai_test_id(loai, mon, buoi:buoi_hoc_id(ngay))), cau:bai_test_cau_id(ma_dang)')
     .not('verdict', 'is', null).limit(LIMIT)
   q = Array.isArray(hs) ? q.in('lam.hoc_sinh_id', hs) : q.eq('lam.hoc_sinh_id', hs)
   if (sinceIso) q = q.gte('cham_at', sinceIso)
@@ -66,9 +68,10 @@ async function fetchOnlineEvals(hs: string | string[], sinceIso?: string | null)
     // Chế độ THI chỉ tính khi ĐÃ NỘP (verdict chỉ sinh lúc et_nop, nhưng belt-and-suspenders với backfill duyệt).
     if (laThi && r.lam.trang_thai !== 'da_nop') continue
     const src: EvalSrc = laThi ? 'et' : loai === 'tu_luyen' ? 'tu_luyen' : 'btvn'
+    const ngayBuoi = r.lam.test?.buoi?.ngay ?? null
     out.push({
       hoc_sinh_id: r.lam.hoc_sinh_id, ma_dang: r.cau?.ma_dang ?? null,
-      value: val, t: r.cham_at, src, mon: r.lam.test?.mon ?? '',
+      value: val, t: ngayBuoi ?? r.cham_at, src, mon: r.lam.test?.mon ?? '',
     })
   }
   return out
@@ -110,9 +113,10 @@ export async function getMasteryHS(
     : laCap1(hsRow?.khoi) ? ['et', 'mt', 'tu_luyen'] : ['et', 'mt']
   const sinceIso = opts?.days ? new Date(Date.now() - opts.days * 86400_000).toISOString() : null // boundary INSTANT (được phép, §windowing)
 
-  // grades của HS, EMBED thẳng problem (phase, ma_dang) — FK problem_id→gami_session_problems ĐƠN, sạch
+  // grades của HS, EMBED thẳng problem (phase, ma_dang, ngày buổi) — FK problem_id→gami_session_problems ĐƠN, sạch
   // (khác buoi_hoc_hs 2-FK). 1 query thay 2 + bỏ IN(probIds) tránh URL dài.
-  let gq = supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
+  // Embed thêm buoi:buoi_hoc_id(ngay) để timeline neo NGÀY BUỔI, không ngày chấm (GV/TA chấm trễ 1-2 tuần).
+  let gq = supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
   if (sinceIso) gq = gq.gte('graded_at', sinceIso)
   const [{ data: grades }, online, bt] = await Promise.all([
     gq,
@@ -129,7 +133,9 @@ export async function getMasteryHS(
     if (!phases.includes(p.phase as EvalSrc)) continue // lọc phase (chỉ et/mt mặc định, +btvn/bt nếu bật toggle)
     const val = RESULT_VALUE[g.result as keyof typeof RESULT_VALUE]
     if (val === undefined) continue
-    push(p.ma_dang, { value: val, t: g.graded_at, src: p.phase as EvalSrc })
+    // Timeline neo NGÀY BUỔI (p.buoi.ngay), fallback graded_at nếu problem chưa gắn buổi (defensive — mọi
+    // gami_session_problems đều có buoi_hoc_id theo schema, chỉ dự phòng embed null).
+    push(p.ma_dang, { value: val, t: p.buoi?.ngay ?? g.graded_at, src: p.phase as EvalSrc })
   }
   for (const o of online) if (phases.includes(o.src)) push(o.ma_dang, { value: o.value, t: o.t, src: o.src })
   if (phases.includes('bt')) for (const b of bt) push(b.ma_dang, { value: b.value, t: b.t, src: 'bt' })
@@ -192,7 +198,8 @@ export type HinhMastery = {
 export async function getHinhMasteryHS(hocSinhId: string, opts?: { includeBTVN?: boolean; days?: number }): Promise<HinhMastery[]> {
   const phases: EvalSrc[] = opts?.includeBTVN ? ['et', 'mt', 'btvn'] : ['et', 'mt']
   const sinceIso = opts?.days ? new Date(Date.now() - opts.days * 86400_000).toISOString() : null
-  let gq = supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, hinh_baitoan_id)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
+  // Embed thêm buoi:buoi_hoc_id(ngay) để timeline neo NGÀY BUỔI, không ngày chấm (cùng lý do getMasteryHS).
+  let gq = supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, hinh_baitoan_id, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
   if (sinceIso) gq = gq.gte('graded_at', sinceIso)
   const { data: grades, error } = await gq
   if (error) throw error
@@ -205,7 +212,7 @@ export async function getHinhMasteryHS(hocSinhId: string, opts?: { includeBTVN?:
     if (!phases.includes(p.phase as EvalSrc)) continue
     const val = RESULT_VALUE[g.result as keyof typeof RESULT_VALUE]
     if (val === undefined) continue
-    push(p.hinh_baitoan_id, { value: val, t: g.graded_at, src: p.phase as EvalSrc })
+    push(p.hinh_baitoan_id, { value: val, t: p.buoi?.ngay ?? g.graded_at, src: p.phase as EvalSrc })
   }
   const nodeIds = Object.keys(byNode)
   if (!nodeIds.length) return []
@@ -270,7 +277,15 @@ export type TongQuanHS = {
     mtCoBan: ActPct; mtNangCao: ActPct
   }
   diem: {
-    mt: { tb: number | null; n: number; coBan: number | null; nCoBan: number; nangCao: number | null; nNangCao: number }
+    // MT: điểm CHÍNH (đi vào rank/Level qua ky_thi/diem_thi.diem) + THI LẠI (chỉ hiện PH — Thùy 14/09).
+    // Ngoài điểm tuyệt đối coBan/nangCao (staff view KetQuaScreen), thêm %CB/%NC dùng cho Report PH:
+    // %CB = ΣdiemCoBan / ΣkhungCoBan × 100 (chỉ cộng dòng có khung; không có khung nào → null).
+    mt: {
+      tb: number | null; n: number
+      coBan: number | null; nCoBan: number; nangCao: number | null; nNangCao: number
+      pctCoBan: number | null; pctNangCao: number | null
+      thiLai: { tb: number | null; n: number; coBan: number | null; nCoBan: number; nangCao: number | null; nNangCao: number; pctCoBan: number | null; pctNangCao: number | null }
+    }
     truong: { tb: number | null; n: number }
   }
   // TREND = chênh (điểm %) 30 ngày GẦN so với 30 ngày TRƯỚC đó; null = chưa đủ data 1 trong 2 kỳ.
@@ -286,7 +301,7 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
   const K = khoCuaMon(mon)
   const [{ data: grades }, { data: dt }, online, btGradeEvals, { data: hsRow }] = await Promise.all([
     supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang, hinh_baitoan_id, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
-    supabase.from('diem_thi').select('diem, diem_co_ban, diem_nang_cao, ky_thi:ky_thi_id(loai, mon, ngay, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
+    supabase.from('diem_thi').select('diem, diem_co_ban, diem_nang_cao, diem_thi_lai, diem_thi_lai_co_ban, diem_thi_lai_nang_cao, ky_thi:ky_thi_id(loai, mon, ngay, khung_co_ban, khung_nang_cao, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     fetchOnlineEvals(hocSinhId),
     fetchBTEvals(hocSinhId),
     supabase.from('hoc_sinh').select('khoi').eq('id', hocSinhId).single(),
@@ -332,9 +347,13 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
     const p = g.prob; if (!p) continue
     const v = RESULT_VALUE[g.result as keyof typeof RESULT_VALUE]; if (v === undefined) continue
     const bd = p.buoi?.ngay ?? null
-    if (p.phase === 'et') etRows.push({ ma: p.ma_dang ?? null, value: v, t: g.graded_at, bd })
-    else if (p.phase === 'mt') mtRows.push({ ma: p.ma_dang ?? null, value: v, t: g.graded_at, bd })
-    else if (p.phase === 'btvn') btvnRows.push({ ma: p.ma_dang ?? null, value: v, t: g.graded_at, bd })
+    // t = NGÀY BUỔI khi có (mọi gami_session_problems đều gắn buổi theo schema) — không phải graded_at.
+    // Comment ở filter tháng bên dưới đã nói rõ: chấm trễ không được biến hoạt động khỏi report tháng
+    // buổi diễn ra. Áp cùng nguyên tắc cho timeline `t` (sort/hiển thị "lần đo gần nhất").
+    const t = bd ?? g.graded_at
+    if (p.phase === 'et') etRows.push({ ma: p.ma_dang ?? null, value: v, t, bd })
+    else if (p.phase === 'mt') mtRows.push({ ma: p.ma_dang ?? null, value: v, t, bd })
+    else if (p.phase === 'btvn') btvnRows.push({ ma: p.ma_dang ?? null, value: v, t, bd })
   }
   // Online: scope theo môn của TEST (có sẵn nhãn mon — §1.6).
   for (const o of online) {
@@ -422,9 +441,10 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
     const p = g.prob; if (!p || !p.hinh_baitoan_id) continue
     const v = RESULT_VALUE[g.result as keyof typeof RESULT_VALUE]; if (v === undefined) continue
     const bd = p.buoi?.ngay ?? null
-    if (p.phase === 'et') hEtRows.push({ id: p.hinh_baitoan_id, value: v, t: g.graded_at, bd })
-    else if (p.phase === 'mt') hMtRows.push({ id: p.hinh_baitoan_id, value: v, t: g.graded_at, bd })
-    else if (p.phase === 'btvn') hBtvnRows.push({ id: p.hinh_baitoan_id, value: v, t: g.graded_at, bd })
+    const t = bd ?? g.graded_at // NGÀY BUỔI cho timeline, không graded_at — xem comment nhánh Đại phía trên
+    if (p.phase === 'et') hEtRows.push({ id: p.hinh_baitoan_id, value: v, t, bd })
+    else if (p.phase === 'mt') hMtRows.push({ id: p.hinh_baitoan_id, value: v, t, bd })
+    else if (p.phase === 'btvn') hBtvnRows.push({ id: p.hinh_baitoan_id, value: v, t, bd })
   }
   const hinhTop: Record<string, DangEval[]> = {}, hinhBottom: Record<string, DangEval[]> = {}
   const pushHinh = (map: Record<string, DangEval[]>, id: string | null, ev: DangEval) => { if (id) (map[id] ??= []).push(ev) }
@@ -499,8 +519,17 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
   // ③ Điểm (nhập tay qua ky_thi/diem_thi) theo loại, scope môn — khao_sat_thang không hiện ở đây.
   // MT: cơ bản/nâng cao TÁCH RIÊNG (Thùy 08-10: "ngoài % hiện thêm điểm cơ bản-nâng cao-tổng") — mỗi cột
   // đếm/cộng ĐỘC LẬP, bỏ NULL riêng (không giả định 1 lượt luôn có đủ cả 2 — vd tick "Full" thì cả 2 null).
+  // Thi lại (Thùy 14/09): cột song song — tính THEO CÁCH RIÊNG, KHÔNG cộng vào Σ điểm chính (⇒ rank + Level
+  // không đổi). Ngoài số tuyệt đối, còn tính %CB/%NC = ΣdiemCoBan / ΣkhungCoBan × 100 (chỉ cộng dòng CÓ
+  // khung — §1.5 "thà bỏ trống còn hơn đánh sai": khung NULL ⇒ dòng đó không tham gia % — pct=null nếu
+  // KHÔNG có dòng nào có khung).
   let mtDiemSum = 0, mtDiemN = 0, trSum = 0, trN = 0
   let mtCoBanSum = 0, mtCoBanN = 0, mtNangCaoSum = 0, mtNangCaoN = 0
+  let mtCoBanKhungSum = 0, mtCoBanKhungN = 0, mtCoBanPointsForPct = 0
+  let mtNangCaoKhungSum = 0, mtNangCaoKhungN = 0, mtNangCaoPointsForPct = 0
+  let mtTLDiemSum = 0, mtTLDiemN = 0, mtTLCoBanSum = 0, mtTLCoBanN = 0, mtTLNangCaoSum = 0, mtTLNangCaoN = 0
+  let mtTLCoBanKhungSum = 0, mtTLCoBanKhungN = 0, mtTLCoBanPointsForPct = 0
+  let mtTLNangCaoKhungSum = 0, mtTLNangCaoKhungN = 0, mtTLNangCaoPointsForPct = 0
   for (const r of (dt ?? []) as any[]) {
     const k = r.ky_thi; if (!k || (k.mon && k.mon !== mon)) continue
     // opts.ym: lọc theo NGÀY THI (ky_thi.ngay) — kỳ thi thiếu ngay (nullable) thì BỎ khi đang xem theo
@@ -515,11 +544,31 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
       // CỦA BUỔI qua buoi_hoc_id khi ngay trống.
       const ngayMT = k.ngay ?? k.buoi?.ngay ?? null
       if (mtFromMs != null && (!ngayMT || ngayMT < mtFromDate || ngayMT >= mtToDate)) continue
+      const khungCB = k.khung_co_ban != null ? Number(k.khung_co_ban) : null
+      const khungNC = k.khung_nang_cao != null ? Number(k.khung_nang_cao) : null
+      // Điểm chính
       if (r.diem != null) { mtDiemSum += Number(r.diem); mtDiemN++ }
-      if (r.diem_co_ban != null) { mtCoBanSum += Number(r.diem_co_ban); mtCoBanN++ }
-      if (r.diem_nang_cao != null) { mtNangCaoSum += Number(r.diem_nang_cao); mtNangCaoN++ }
+      if (r.diem_co_ban != null) {
+        mtCoBanSum += Number(r.diem_co_ban); mtCoBanN++
+        if (khungCB != null && khungCB > 0) { mtCoBanPointsForPct += Number(r.diem_co_ban); mtCoBanKhungSum += khungCB; mtCoBanKhungN++ }
+      }
+      if (r.diem_nang_cao != null) {
+        mtNangCaoSum += Number(r.diem_nang_cao); mtNangCaoN++
+        if (khungNC != null && khungNC > 0) { mtNangCaoPointsForPct += Number(r.diem_nang_cao); mtNangCaoKhungSum += khungNC; mtNangCaoKhungN++ }
+      }
+      // Thi lại — dùng CHUNG khung của kỳ thi (đề thi lại thường cùng cấu trúc điểm với đề gốc).
+      if (r.diem_thi_lai != null) { mtTLDiemSum += Number(r.diem_thi_lai); mtTLDiemN++ }
+      if (r.diem_thi_lai_co_ban != null) {
+        mtTLCoBanSum += Number(r.diem_thi_lai_co_ban); mtTLCoBanN++
+        if (khungCB != null && khungCB > 0) { mtTLCoBanPointsForPct += Number(r.diem_thi_lai_co_ban); mtTLCoBanKhungSum += khungCB; mtTLCoBanKhungN++ }
+      }
+      if (r.diem_thi_lai_nang_cao != null) {
+        mtTLNangCaoSum += Number(r.diem_thi_lai_nang_cao); mtTLNangCaoN++
+        if (khungNC != null && khungNC > 0) { mtTLNangCaoPointsForPct += Number(r.diem_thi_lai_nang_cao); mtTLNangCaoKhungSum += khungNC; mtTLNangCaoKhungN++ }
+      }
     }
   }
+  const pctOfKhung = (points: number, khung: number, khungN: number): number | null => (khungN > 0 && khung > 0 ? Math.round((points / khung) * 100) : null)
 
   const delta = (r: number | null, p: number | null) => (r != null && p != null ? r - p : null)
   return {
@@ -540,6 +589,15 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
         tb: mtDiemN ? +(mtDiemSum / mtDiemN).toFixed(1) : null, n: mtDiemN,
         coBan: mtCoBanN ? +(mtCoBanSum / mtCoBanN).toFixed(1) : null, nCoBan: mtCoBanN,
         nangCao: mtNangCaoN ? +(mtNangCaoSum / mtNangCaoN).toFixed(1) : null, nNangCao: mtNangCaoN,
+        pctCoBan: pctOfKhung(mtCoBanPointsForPct, mtCoBanKhungSum, mtCoBanKhungN),
+        pctNangCao: pctOfKhung(mtNangCaoPointsForPct, mtNangCaoKhungSum, mtNangCaoKhungN),
+        thiLai: {
+          tb: mtTLDiemN ? +(mtTLDiemSum / mtTLDiemN).toFixed(1) : null, n: mtTLDiemN,
+          coBan: mtTLCoBanN ? +(mtTLCoBanSum / mtTLCoBanN).toFixed(1) : null, nCoBan: mtTLCoBanN,
+          nangCao: mtTLNangCaoN ? +(mtTLNangCaoSum / mtTLNangCaoN).toFixed(1) : null, nNangCao: mtTLNangCaoN,
+          pctCoBan: pctOfKhung(mtTLCoBanPointsForPct, mtTLCoBanKhungSum, mtTLCoBanKhungN),
+          pctNangCao: pctOfKhung(mtTLNangCaoPointsForPct, mtTLNangCaoKhungSum, mtTLNangCaoKhungN),
+        },
       },
       truong: { tb: trN ? +(trSum / trN).toFixed(1) : null, n: trN },
     },

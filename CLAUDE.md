@@ -240,6 +240,18 @@
 - **Delegation (Principle 3):** AI → TA → GV → manager → CEO — giao việc cho **cấp thấp nhất làm được tốt**.
 - UX: full CRUD; feedback ~2s sau lưu; không `alert()` cho success.
   Nút hành động chính chỉ disable khi **thiếu data**, không disable vì state UI (`!saved`).
+- **⭐ Quy ước card/box (CEO chốt 19/09, sau đợt sửa app HS "Học từ đầu"):** đúng 2 kiểu, không bịa kiểu
+  thứ 3, không trộn tuỳ hứng trong cùng 1 màn:
+  - **Kiểu 1 — HEADER màu + NỘI DUNG trắng:** dùng khi card có thêm dòng mô tả/trạng thái bên dưới
+    tiêu đề. Dải màu đặc nằm TRÊN (chữ trắng, thường kèm icon), thân TRẮNG bên dưới chứa nội dung.
+    **Khung phải GẦN VUÔNG — cấm làm "dẹt"** (thanh ngang thấp trải hết chiều rộng, đã bị chê xấu 1 lần).
+    Mẫu: `CardMau`/`CardBox` trong `src/screens/hocsinh/HocTuDau.tsx`.
+  - **Kiểu 2 — CHỈ HEADER, không có khối nội dung riêng:** dùng khi card chỉ cần icon + tiêu đề + tối đa
+    1 dòng phụ ngắn (không đủ nội dung để tách khối trắng riêng) — làm giống lưới 6 ô ngoài Home:
+    nền pastel nhạt (`tone.bg`), icon trong khối bo tròn riêng (`tone.ill`), chevron góc dưới phải,
+    badge số ở góc trên phải nếu có. Mẫu: lưới `cards` trong `src/screens/hocsinh/HomeHS.tsx`.
+  - Chọn kiểu theo **nội dung thật sự có bao nhiêu** (có dòng mô tả/trạng thái → kiểu 1; chỉ điều
+    hướng đơn giản → kiểu 2), không phải theo sở thích lúc code.
 
 ---
 
@@ -266,6 +278,10 @@
   đúng/sai từng ô; logic chọn form cho HS (yếu → ĐIỀN, ổn → TN; TLN/tự luận để sau).
 - `spec-mcq-form.md` — Phiên bản TRẮC NGHIỆM (distractor theo lỗi) của câu tính toán, pool 1 lớp 7 "Số hữu tỉ".
   CEO chốt 08/09: MCQ ưu tiên, là form THÊM (bảng `dai_cau_form_tn`), **không đổ `lua_chon` vào câu gốc**.
+  **CEO chốt 19/09: MỌI luồng bài làm trên app của BỔ TRỢ (yếu · bù · đuổi) chỉ dùng MCQ** — điều kiện chọn câu DUY NHẤT =
+  `_kho_dk_mcq_sql(cautbl)` (kho_chuan + trắc nghiệm gốc | form_tn đã duyệt; `_kho_snapshot_cau` tự hiện form thành 4 đáp án).
+  Bổ trợ yếu đã áp (`_btyeu_chon_cau`; tạm lùi TLN CHỈ khi dạng/cụm 0 câu MCQ — tự hết khi form được duyệt). Bù/đuổi chưa có
+  bài trên app — khi build PHẢI dùng hàm này, không viết điều kiện riêng.
 - **`spec-mcq-quy-trinh-sinh.md` — ĐỌC BẮT BUỘC trước khi thêm 1 dạng mới vào pipeline MCQ** (mọi khối,
   không riêng Pool 1). QUY TRÌNH kỹ thuật (khác `spec-mcq-form.md` là quyết định phạm vi): tiêu chí dạng
   RÕ RÀNG (tự quyết) vs MƠ HỒ (phải hỏi CEO) · kiến trúc `SPECIAL_DANG`/`TEXT_DANG` · cách xử lý 1 `dang_chinh`

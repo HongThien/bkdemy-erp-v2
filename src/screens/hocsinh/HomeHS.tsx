@@ -42,7 +42,7 @@ export type HomeCard = {
 }
 
 // Bảng màu 6 ô — lấy từ DESIGN.md kit (mũi tên) + nền pastel đo từ reference.
-const TONE: Record<HomeTone, { bg: string; c: string; ill: string }> = {
+export const TONE: Record<HomeTone, { bg: string; c: string; ill: string }> = {
   pink:   { bg: 'linear-gradient(135deg,#ffffff 0%,#fff0f4 100%)', c: '#FF6B8E', ill: '#ffe4ec' },
   purple: { bg: 'linear-gradient(135deg,#ffffff 0%,#f5f1ff 100%)', c: '#7B61E8', ill: '#ece6ff' },
   orange: { bg: 'linear-gradient(135deg,#ffffff 0%,#fff8e9 100%)', c: '#F3A43B', ill: '#fff0d2' },
@@ -105,7 +105,10 @@ export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, anhUrl, onAnhCha
     // LUẬT (Thùy 08/09): màn Home KHÔNG cuộn (h-100dvh + overflow-hidden), NHƯNG KHÔNG kéo giãn phần tử cho đầy
     // màn — "tỉ lệ phải như gốc mới đẹp, scale sai tỉ lệ xấu". Mọi khối lấy TỈ LỆ KHUNG từ reference (hero 870:280,
     // ô 417:280) nên cao theo BỀ NGANG như mockup; màn cao thì để trống dưới cùng, chấp nhận.
-    <div className="font-bubble relative mx-auto h-[100dvh] max-w-[430px] overflow-hidden" style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
+    // md: (768px+, đúng khổ iPad portrait) — rộng ra, dùng chung cho iPad LẪN máy tính (Thùy 18/09:
+    // "ipad máy tính chung đi, máy tính thừa không sao"). KHÔNG làm riêng bản desktop pixel-perfect —
+    // chấp nhận viền trống 2 bên trên màn hình to, giống cách HomeCap1 đã làm.
+    <div className="font-bubble relative mx-auto h-[100dvh] max-w-[430px] overflow-hidden md:max-w-[820px]" style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
       {/* BACKDROP — trời mây thuần (kit), mọi thứ khác đè lên bằng code */}
       <img src={t.bg} alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover" />
 
@@ -167,8 +170,8 @@ export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, anhUrl, onAnhCha
           </div>
         )}
 
-        {/* LƯỚI 6 Ô */}
-        <div className="mt-2.5 grid shrink-0 grid-cols-2 gap-2.5">
+        {/* LƯỚI 6 Ô — 3 cột trên iPad/máy tính (md:) để đỡ dồn dọc như điện thoại */}
+        <div className="mt-2.5 grid shrink-0 grid-cols-2 gap-2.5 md:grid-cols-3">
           {cards.map((c) => {
             const tone = TONE[c.tone]
             const subColor = c.subMau === 'ton' ? tone.c : c.subMau === 'do' ? '#e64040' : c.subMau === 'xanh' ? '#20A886' : SEC

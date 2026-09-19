@@ -1452,187 +1452,244 @@ function KhuPickList({ L, phan, picks, components, cheDo, soDong, lyThuyetMap, d
 }
 
 // ══════════════ ⭐ 11/09 — POPUP CHỌN BÀI (grid card full-screen, multi-select) ══════════════
-// Từ nút "＋ Chọn bài" của 1 khu (Lớp/Nhà). Grid card full chiều ngang, nhóm theo chuỗi (bài cùng
-// chuỗi ở gần nhau, header "🌿 Chuỗi N câu"). Card = 1 bài toán (mã + đề + hình + phần đầu lời
-// giải, scroll trong card nếu vượt). Nút "Mở full" trên card → BaiFullPopup (mọi ý + lời giải đầy
-// đủ). Multi-select bằng checkbox / click card, Xong = add từng bài đã tick vào phần đã bấm
-// (mỗi bài 1 pick 'chuan' với nodeIds=[bai.id]). Bài đã có trong daChonList (cùng phần) → disabled.
+// Từ nút "＋ Chọn bài" của 1 khu (Lớp/Nhà). Grid card full chiều ngang.
+// ⭐ 16/09 (Thùy: "hiện bài đã ghép sẵn ý a,b,c rồi để dễ tưởng tượng cả bài toán") — Mỗi CHUỖI = 1
+// card (chuỗi 1 câu vẫn 1 card như cũ, chuỗi ≥2 câu KHÔNG còn tách N sub-card). Card hiện đề chuẩn
+// GHÉP: giả thiết chung + hình chung + list ý a,b,c... (mã + phát biểu + đầu lời giải). Tick card =
+// pick 'ghep' luaId=null nodeIds = TẤT CẢ nodes chuỗi (đề chuẩn đầy đủ). Nút "🔧 Ý riêng" (chỉ hiện
+// ở card chuỗi ≥2 câu) → CayTickPopup tick subset ý → pick nodeIds = subset. Nút "⛶ Mở full" mở
+// popup xem toàn bộ ghép (đề + hình lớn + mọi ý + lời giải đầy đủ). Chuỗi đã có pick 'ghep' luaId
+// =null với BẤT KỲ node nào trong daChonList → card "✓ đã có", tick disabled (chỉnh qua ✎ ở builder).
+const compKey = (comp: BaiToan[]) => comp.map((b) => b.id).sort().join(',')
+
 function ChonBaiPopup({ L, phan, components, daChonList, onClose, onConfirm }: {
   L: Luoi; phan: 'lop' | 'nha' | 'et' | 'mt'
   components: BaiToan[][]; daChonList: PickItem[]
   onClose: () => void; onConfirm: (adds: PickItem[]) => void
 }) {
   const nhan = PHAN_META[phan].nhan
-  // Bài (id) ĐÃ có trong phần này qua bất kỳ pick nào (chuan/bienthe/y/lứa đều đánh dấu node đó là "đã dùng")
-  const daCoIds = useMemo(() => { const s = new Set<string>(); daChonList.forEach((p) => p.nodeIds.forEach((id) => s.add(id))); return s }, [daChonList])
-  const [tick, setTick] = useState<Set<string>>(new Set())
-  const [full, setFull] = useState<BaiToan | null>(null)
-  const toggle = (id: string) => setTick((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
-  // ⭐ 11/09 (Thùy: "Chuỗi ko tự ghép các câu với nhau rồi") — TRƯỚC tick N câu là ra N pick lẻ, khi in
-  // ra là N bài rời chứ không phải 1 bài a,b,c như "Đề chuẩn (gốc)" cũ (ChonChuoiPopup + CayTickPopup gộp
-  // node cùng chuỗi thành 1 pick). Giờ: gom tick THEO CHUỖI — mỗi chuỗi có câu tick thành 1 pick 'ghep'
-  // với nodeIds = list câu đã tick của chuỗi đó (xếp theo cấp, đúng thứ tự component); banInTheoMoHinh
-  // gặp pick nhiều node là tự nở a,b,c qua mucGhep/noDapAn. Câu ngoài components (do bộ lọc mô hình khác
-  // — hiếm) rơi vào chuỗi thật của node đó qua chuoiKetNoi để không mất.
+  // 1 chuỗi coi là "đã có" nếu daChonList có pick 'ghep' luaId=null với BẤT KỲ node của chuỗi đó
+  // (auto-merge effect đảm bảo max 1 pick 'ghep' luaId=null / chuỗi / phần — xem BuoiPickEditor).
+  const daCoCompKeys = useMemo(() => {
+    const s = new Set<string>()
+    for (const comp of components) {
+      const ids = new Set(comp.map((b) => b.id))
+      for (const p of daChonList) {
+        if (p.kind !== 'ghep' || p.luaId !== null) continue
+        if (p.nodeIds.some((id) => ids.has(id))) { s.add(compKey(comp)); break }
+      }
+    }
+    return s
+  }, [components, daChonList])
+  // chosen: Map<compKey, string[]> — chuỗi tick + nodeIds đã chọn (mặc định = all nodes, sau khi 🔧
+  // Ý riêng thì = subset). Bỏ tick = delete entry khỏi map.
+  const [chosen, setChosen] = useState<Map<string, string[]>>(new Map())
+  const [tickY, setTickY] = useState<{ comp: BaiToan[] } | null>(null)
+  const [full, setFull] = useState<BaiToan[] | null>(null)
+
+  const toggle = (comp: BaiToan[]) => setChosen((m) => {
+    const k = compKey(comp); const n = new Map(m)
+    if (n.has(k)) n.delete(k); else n.set(k, comp.map((b) => b.id))
+    return n
+  })
+  const setYRieng = (comp: BaiToan[], nodeIds: string[]) => setChosen((m) => {
+    const k = compKey(comp); const n = new Map(m)
+    // Sắp lại theo thứ tự cấp của comp để in a,b,c... đúng dữ kiện→đích.
+    const sorted = comp.filter((b) => nodeIds.includes(b.id)).map((b) => b.id)
+    if (!sorted.length) n.delete(k); else n.set(k, sorted)
+    return n
+  })
+
   const confirm = () => {
     const adds: PickItem[] = []
-    const assigned = new Set<string>()
-    for (const comp of components) {
-      const nodeIds = comp.filter((bt) => tick.has(bt.id)).map((bt) => bt.id)
-      if (!nodeIds.length) continue
-      nodeIds.forEach((id) => assigned.add(id))
-      adds.push({ key: crypto.randomUUID(), phan, kind: 'ghep', luaId: null, nodeIds })
+    for (const [k, nodeIds] of chosen) {
+      const comp = components.find((c) => compKey(c) === k)
+      if (!comp || !nodeIds.length) continue
+      const sorted = comp.filter((b) => nodeIds.includes(b.id)).map((b) => b.id)
+      adds.push({ key: crypto.randomUUID(), phan, kind: 'ghep', luaId: null, nodeIds: sorted })
     }
-    // Câu tick không thuộc component nào đang thấy (bộ lọc mô hình mới đổi giữa 2 lần mở popup) — mỗi câu 1 pick lẻ.
-    for (const id of tick) if (!assigned.has(id)) adds.push({ key: crypto.randomUUID(), phan, kind: 'ghep', luaId: null, nodeIds: [id] })
     onConfirm(adds)
   }
+
   return createPortal(
     <div className="fixed inset-0 z-[65] flex items-stretch justify-center bg-slate-900/60 p-0" onClick={onClose}>
       <div className="flex h-full w-full flex-col overflow-hidden bg-slate-50" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-6 py-3 shadow-sm">
           <h3 className="text-[16px] font-semibold text-slate-900">📄 Chọn bài — {nhan}</h3>
-          <span className="text-[12px] text-slate-400">Tick nhiều bài · bấm <b>Mở full</b> để xem lời giải đầy đủ · bài xám = đã có trong phần này</span>
-          <span className="ml-auto text-[13px] font-medium text-indigo-700">Đã tick: {tick.size}</span>
+          <span className="text-[12px] text-slate-400">1 chuỗi = 1 bài ghép a,b,c · <b>🔧 Ý riêng</b> để tick ý con · <b>⛶ Mở full</b> để xem đầy đủ · card xám = đã có</span>
+          <span className="ml-auto text-[13px] font-medium text-indigo-700">Đã chọn: {chosen.size} chuỗi</span>
           <button onClick={onClose} className="rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50">Huỷ</button>
-          <button onClick={confirm} disabled={tick.size === 0} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">Xong ({tick.size})</button>
+          <button onClick={confirm} disabled={chosen.size === 0} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">Xong ({chosen.size})</button>
         </div>
         <div className="min-h-0 flex-1 overflow-y-auto p-4">
           {components.length === 0
             ? <div className="py-12 text-center text-[13px] text-slate-400">Bộ lọc mô hình hiện tại không có bài nào. Đóng popup rồi bấm <b>✎ Đổi mô hình</b>.</div>
             : (
               <div className="mx-auto max-w-[1400px] space-y-4">
-                {components.map((comp) => (
-                  <div key={comp.map((b) => b.id).join(',')} className={`rounded-2xl border ${comp.length > 1 ? 'border-violet-200 bg-violet-50/40' : 'border-slate-200 bg-white'} p-3`}>
-                    <div className={`mb-2 flex flex-wrap items-center gap-2 text-[12px] font-semibold uppercase tracking-wide ${comp.length > 1 ? 'text-violet-700' : 'text-slate-500'}`}>
-                      {comp.length > 1 ? `🌿 Chuỗi ${comp.length} câu` : 'Câu lẻ'}
-                      <span className="text-[11px] font-normal normal-case text-slate-400">{comp.map((b) => b.ma).join(' → ')}</span>
-                    </div>
-                    <div className="space-y-2.5">
-                      {comp.map((bt) => (
-                        <BaiCard key={bt.id} L={L} bt={bt} ticked={tick.has(bt.id)} daCo={daCoIds.has(bt.id)}
-                          onToggle={() => toggle(bt.id)} onFull={() => setFull(bt)} />
-                      ))}
-                    </div>
-                  </div>
-                ))}
+                {components.map((comp) => {
+                  const k = compKey(comp)
+                  const nodeIds = chosen.get(k)
+                  return (
+                    <ChuoiCard key={k} L={L} comp={comp}
+                      chosenNodeIds={nodeIds ?? null}
+                      daCo={daCoCompKeys.has(k)}
+                      onToggle={() => toggle(comp)}
+                      onOpenY={() => setTickY({ comp })}
+                      onOpenFull={() => setFull(comp)} />
+                  )
+                })}
               </div>
             )}
         </div>
       </div>
-      {full && <BaiFullPopup L={L} bt={full} onClose={() => setFull(null)} />}
+      {full && <ChuoiFullPopup L={L} comp={full} onClose={() => setFull(null)} />}
+      {tickY && (
+        <CayTickPopup L={L} phan={phan} chuoi={tickY.comp}
+          initChon={chosen.get(compKey(tickY.comp))}
+          onClose={() => setTickY(null)}
+          onConfirm={(_lua, ids) => { setYRieng(tickY.comp, ids); setTickY(null) }} />
+      )}
     </div>,
     document.body,
   )
 }
 
-// 1 card của ChonBaiPopup: full chiều ngang khu (max-w container 1400), cao cố định ~360px với
-// scroll bên trong. Header trái: checkbox to + mã + cấp; header phải: nút "Mở full". Nội dung:
-// hình (h-40) · đề (phát biểu + giả thiết chung) · lời giải mặc định (cachMacDinh) — cắt vừa
-// khung, ai cần xem hết thì bấm Mở full.
-function BaiCard({ L, bt, ticked, daCo, onToggle, onFull }: {
-  L: Luoi; bt: BaiToan; ticked: boolean; daCo: boolean
-  onToggle: () => void; onFull: () => void
+// ⭐ 16/09 — 1 CARD = 1 CHUỖI ghép a,b,c (thay BaiCard cũ = 1 câu). Layout: header (checkbox +
+// nhãn chuỗi + mã + nút 🔧 Ý riêng + nút ⛶ Mở full); body 2 cột — trái: hình node xa nhất, phải:
+// giả thiết chung + list ý a,b,c với đề + đầu lời giải mỗi ý. Chuỗi 1 câu = 1 card không có 🔧
+// (không có nhiều ý để tách). daCo = card xám, checkbox disabled — user muốn chỉnh vào builder ✎.
+function ChuoiCard({ L, comp, chosenNodeIds, daCo, onToggle, onOpenY, onOpenFull }: {
+  L: Luoi; comp: BaiToan[]; chosenNodeIds: string[] | null; daCo: boolean
+  onToggle: () => void; onOpenY: () => void; onOpenFull: () => void
 }) {
-  const anh = useMemo(() => api.anhCuaBaiToan(L, bt.id), [L, bt.id])
-  const giaThiet = useMemo(() => api.giaThietBaiToan(L, bt.id), [L, bt.id])
-  const cach = useMemo(() => api.cachMacDinh(L, bt.id), [L, bt.id])
-  const disabled = daCo
+  const ticked = chosenNodeIds !== null
+  const laChuoi = comp.length >= 2
+  const deep = useMemo(() => xaNhatTrongChuoi(comp) ?? comp[0], [comp])
+  const anh = useMemo(() => api.anhCuaBaiToan(L, deep.id), [L, deep.id])
+  const giaThietChung = useMemo(() => api.giaThietBaiToan(L, deep.id), [L, deep.id])
+  // Ý theo tick — mặc định TẤT CẢ nodes. Có "🔧 Ý riêng" đặt subset thì `chosenNodeIds` giữ.
+  const ykhung = useMemo(() => api.noDapAn(L, chosenNodeIds ?? comp.map((b) => b.id)), [L, comp, chosenNodeIds])
+  const chuoiLabel = laChuoi ? `🌿 Chuỗi ${comp.length} câu` : 'Câu lẻ'
+  const maRange = comp.map((b) => b.ma).join(' → ')
+  const yRiengBadge = ticked && chosenNodeIds && chosenNodeIds.length !== comp.length
+    ? `Ý riêng: ${chosenNodeIds.length}/${comp.length}`
+    : null
   return (
-    <div className={`flex h-[360px] w-full overflow-hidden rounded-xl border-2 transition ${disabled ? 'border-slate-200 bg-slate-50 opacity-70' : ticked ? 'border-emerald-400 bg-emerald-50/40 shadow-sm' : 'border-slate-200 bg-white hover:border-indigo-300'}`}>
-      {/* Cột trái: hình + toggle + info */}
-      <div className="flex w-[38%] shrink-0 flex-col border-r border-slate-100 bg-slate-50/70">
-        <div className="flex items-center gap-2 border-b border-slate-100 px-3 py-2">
-          <label className="flex cursor-pointer items-center gap-2">
-            <input type="checkbox" checked={ticked} disabled={disabled} onChange={onToggle}
-              className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" />
-            <span className="font-mono text-[12px] text-slate-600">{bt.ma}</span>
-          </label>
-          <span className="text-[10.5px] text-slate-400">cấp {bt.cap}</span>
-          {disabled && <span className="ml-auto rounded bg-slate-200 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">✓ đã có</span>}
-          {!disabled && ticked && <span className="ml-auto rounded bg-emerald-100 px-1.5 py-0.5 text-[10px] font-medium text-emerald-700">✓ tick</span>}
+    <div className={`w-full overflow-hidden rounded-2xl border-2 transition ${daCo ? 'border-slate-200 bg-slate-50 opacity-70' : ticked ? 'border-emerald-400 bg-emerald-50/30 shadow-sm' : laChuoi ? 'border-violet-200 bg-violet-50/30 hover:border-violet-400' : 'border-slate-200 bg-white hover:border-indigo-300'}`}>
+      {/* Header */}
+      <div className="flex flex-wrap items-center gap-2 border-b border-slate-100 bg-white/70 px-3 py-2">
+        <label className="flex cursor-pointer items-center gap-2">
+          <input type="checkbox" checked={ticked} disabled={daCo} onChange={onToggle}
+            className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" />
+          <span className={`text-[12px] font-semibold uppercase tracking-wide ${laChuoi ? 'text-violet-700' : 'text-slate-500'}`}>{chuoiLabel}</span>
+        </label>
+        <span className="font-mono text-[11.5px] text-slate-500">{maRange}</span>
+        {daCo && <span className="rounded bg-slate-200 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">✓ đã có (chỉnh ở builder qua ✎)</span>}
+        {!daCo && ticked && !yRiengBadge && <span className="rounded bg-emerald-100 px-1.5 py-0.5 text-[10px] font-medium text-emerald-700">✓ tick (đề chuẩn đầy đủ)</span>}
+        {!daCo && yRiengBadge && <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-medium text-amber-700">✓ {yRiengBadge}</span>}
+        <div className="ml-auto flex gap-1.5">
+          {laChuoi && <button onClick={onOpenY} disabled={daCo} className="rounded-md border border-slate-300 bg-white px-2 py-1 text-[11.5px] font-medium text-slate-600 hover:border-amber-400 hover:text-amber-700 disabled:opacity-40">🔧 Ý riêng</button>}
+          <button onClick={onOpenFull} className="rounded-md border border-slate-300 bg-white px-2 py-1 text-[11.5px] font-medium text-indigo-600 hover:bg-indigo-50">⛶ Mở full</button>
         </div>
-        <div className="flex min-h-0 flex-1 items-center justify-center overflow-hidden bg-white p-2">
-          {anh ? <img src={anh} alt="" className="max-h-full max-w-full object-contain" />
+      </div>
+      {/* Body */}
+      <div className="grid gap-3 p-3 lg:grid-cols-[38%_1fr]">
+        {/* Cột trái: hình */}
+        <div className="flex min-h-[220px] items-center justify-center rounded-lg border border-slate-100 bg-white p-2">
+          {anh ? <img src={anh} alt="" className="max-h-[280px] w-full object-contain" />
             : <div className="flex h-full w-full items-center justify-center rounded border border-dashed border-slate-200 text-[11px] text-slate-300">chưa có hình</div>}
         </div>
-        <button onClick={onFull} className="border-t border-slate-100 bg-white py-1.5 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">⛶ Mở full</button>
-      </div>
-      {/* Cột phải: đề + phần đầu lời giải */}
-      <div className="min-w-0 flex-1 overflow-y-auto p-3">
-        {giaThiet && <div className="mb-1.5 rounded bg-slate-50 px-2 py-1.5 text-[13px] text-slate-600"><MathText>{giaThiet}</MathText></div>}
-        <div className="mb-2 text-[14px] leading-relaxed text-slate-800"><MathText>{bt.phat_bieu}</MathText></div>
-        {cach?.loi_giai && (
-          <div className="rounded border border-slate-100 bg-slate-50/70 px-2.5 py-2">
-            <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Lời giải mặc định</div>
-            <div className="text-[12.5px] leading-relaxed text-slate-700"><MathText>{cach.loi_giai}</MathText></div>
-          </div>
-        )}
+        {/* Cột phải: giả thiết + list ý ghép a,b,c */}
+        <div className="min-w-0">
+          {giaThietChung && <div className="mb-2 rounded bg-slate-50 px-2 py-1.5 text-[13px] text-slate-600"><MathText>{giaThietChung}</MathText></div>}
+          <ol className="max-h-[280px] space-y-2 overflow-y-auto pr-1">
+            {ykhung.map((k, i) => {
+              const nhan = ykhung.length > 1 ? String.fromCharCode(97 + i) : ''
+              const cach = api.cachMacDinh(L, k.node.id)
+              const gtPhu = [k.node.gia_thiet_phu?.trim(), ...k.gtPhuKeo].filter(Boolean).join('; ')
+              return (
+                <li key={k.node.id} className={`rounded border ${nhan ? 'border-l-2 border-l-indigo-300 border-slate-100' : 'border-slate-100'} bg-white px-2.5 py-1.5`}>
+                  <div className="text-[13.5px] leading-snug text-slate-800">
+                    {nhan && <b>{nhan}) </b>}<span className="font-mono text-[10.5px] text-slate-400">{k.node.ma}</span>{' '}
+                    {gtPhu && <span className="text-slate-500"><MathText>{`${gtPhu}. `}</MathText></span>}
+                    <MathText>{k.node.phat_bieu}</MathText>
+                  </div>
+                  {cach?.loi_giai && <div className="mt-1 line-clamp-2 text-[12px] leading-relaxed text-slate-500"><MathText>{cach.loi_giai}</MathText></div>}
+                </li>
+              )
+            })}
+          </ol>
+        </div>
       </div>
     </div>
   )
 }
 
-// Popup LỒNG: bấm "Mở full" ở 1 card → mở modal chi tiết bài toán. Hiện: hình LỚN + đề (giả
-// thiết chung + phát biểu) + list mọi Ý (từ api.yTheoNode) — mỗi ý có phát biểu + lời giải. Đóng
-// = quay về grid, mọi lựa chọn tick giữ nguyên.
-function BaiFullPopup({ L, bt, onClose }: { L: Luoi; bt: BaiToan; onClose: () => void }) {
-  const [yList, setYList] = useState<{ y: Y; bai: Bai }[] | null>(null)
-  const anh = useMemo(() => api.anhCuaBaiToan(L, bt.id), [L, bt.id])
-  const giaThiet = useMemo(() => api.giaThietBaiToan(L, bt.id), [L, bt.id])
-  const cach = useMemo(() => api.cachMacDinh(L, bt.id), [L, bt.id])
-  useEffect(() => {
-    let alive = true
-    api.yTheoNode(bt.id).then((r) => { if (alive) setYList(r) }).catch(() => { if (alive) setYList([]) })
-    return () => { alive = false }
-  }, [bt.id])
+// ⭐ 16/09 — Popup LỒNG hiện cả CHUỖI ghép đầy đủ (giả thiết chung + hình lớn + mọi ý a,b,c + lời
+// giải đầy đủ mỗi ý + các bước nở của node ẩn). Thay BaiFullPopup cũ (chỉ 1 BaiToan). Dùng cùng
+// engine noDapAn/cachMacDinh với card + với print (mucGhep) — WYSIWYG với bản in.
+function ChuoiFullPopup({ L, comp, onClose }: { L: Luoi; comp: BaiToan[]; onClose: () => void }) {
+  const deep = useMemo(() => xaNhatTrongChuoi(comp) ?? comp[0], [comp])
+  const anh = useMemo(() => api.anhCuaBaiToan(L, deep.id), [L, deep.id])
+  const giaThietChung = useMemo(() => api.giaThietBaiToan(L, deep.id), [L, deep.id])
+  const ykhung = useMemo(() => api.noDapAn(L, comp.map((b) => b.id)), [L, comp])
+  const tieuDe = comp.length >= 2 ? `Chuỗi ${comp.length} câu` : `Bài ${deep.ma}`
   return createPortal(
     <div className="fixed inset-0 z-[75] flex items-center justify-center bg-slate-900/70 p-4" onClick={onClose}>
       <div className="flex h-[92vh] w-[92vw] max-w-[1200px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-slate-200 px-5 py-3">
-          <h3 className="text-[16px] font-semibold text-slate-900">⛶ Bài {bt.ma}</h3>
-          <span className="text-[12px] text-slate-400">cấp {bt.cap}</span>
+          <h3 className="text-[16px] font-semibold text-slate-900">⛶ {tieuDe}</h3>
+          <span className="font-mono text-[12px] text-slate-400">{comp.map((b) => b.ma).join(' → ')}</span>
           <button onClick={onClose} className="ml-auto rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50">✕ Đóng</button>
         </div>
         <div className="min-h-0 flex-1 overflow-y-auto p-5">
           <div className="grid gap-4 lg:grid-cols-[minmax(0,42%)_minmax(0,1fr)]">
             <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-2">
-              {anh
-                ? <img src={anh} alt="" className="mx-auto max-h-[60vh] w-full object-contain" />
+              {anh ? <img src={anh} alt="" className="mx-auto max-h-[60vh] w-full object-contain" />
                 : <div className="flex h-64 items-center justify-center rounded border border-dashed border-slate-200 text-[13px] text-slate-400">chưa có hình</div>}
             </div>
             <div className="min-w-0">
-              {giaThiet && (
-                <div className="mb-2 rounded-lg bg-slate-50 px-3 py-2 text-[14px] text-slate-700">
+              {giaThietChung && (
+                <div className="mb-3 rounded-lg bg-slate-50 px-3 py-2 text-[14px] text-slate-700">
                   <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Giả thiết chung</div>
-                  <MathText>{giaThiet}</MathText>
+                  <MathText>{giaThietChung}</MathText>
                 </div>
               )}
-              <div className="mb-3 text-[15.5px] leading-relaxed text-slate-800">
-                <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Đề bài</div>
-                <MathText>{bt.phat_bieu}</MathText>
-              </div>
-              {cach?.loi_giai && (
-                <div className="mb-3 rounded-lg border border-slate-200 bg-white p-3">
-                  <div className="mb-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Lời giải mặc định</div>
-                  <div className="text-[13.5px] leading-relaxed text-slate-700"><MathText>{cach.loi_giai}</MathText></div>
-                </div>
-              )}
-              {yList === null ? <div className="text-[12.5px] text-slate-400">Đang tải các ý…</div>
-                : yList.length === 0 ? <div className="rounded border border-dashed border-slate-200 px-3 py-2 text-[12px] italic text-slate-400">Bài này chưa có ý riêng.</div>
-                : (
-                  <div className="rounded-lg border border-slate-200 bg-white p-3">
-                    <div className="mb-1.5 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Các ý ({yList.length})</div>
-                    <ol className="space-y-2">
-                      {yList.map(({ y, bai }, i) => (
-                        <li key={y.id} className="border-l-2 border-indigo-200 pl-3">
-                          <div className="text-[13px] font-semibold text-slate-800">{String.fromCharCode(97 + i)}) <span className="font-mono text-[11.5px] text-slate-400">{bai.ma_bai}</span></div>
-                          <div className="mt-0.5 text-[13.5px] leading-relaxed text-slate-700"><MathText>{y.noi_dung || bai.de_bai}</MathText></div>
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
-                )}
+              <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Các ý ({ykhung.length})</div>
+              <ol className="space-y-3">
+                {ykhung.map((k, i) => {
+                  const nhan = ykhung.length > 1 ? String.fromCharCode(97 + i) : ''
+                  const cach = api.cachMacDinh(L, k.node.id)
+                  const gtPhu = [k.node.gia_thiet_phu?.trim(), ...k.gtPhuKeo].filter(Boolean).join('; ')
+                  return (
+                    <li key={k.node.id} className="rounded-lg border border-slate-200 bg-white p-3">
+                      <div className="text-[14px] leading-relaxed text-slate-800">
+                        {nhan && <b className="text-indigo-700">{nhan}) </b>}<span className="font-mono text-[11px] text-slate-400">{k.node.ma}</span>{' '}
+                        {gtPhu && <span className="text-slate-500"><MathText>{`${gtPhu}. `}</MathText></span>}
+                        <MathText>{k.node.phat_bieu}</MathText>
+                      </div>
+                      {/* Node ẨN nở thành BƯỚC (đề không hỏi nhưng phải giải) — hiện trước lời giải chính. */}
+                      {k.buocNodes.length > 0 && (
+                        <div className="mt-2 space-y-1">
+                          {k.buocNodes.map((n) => {
+                            const cc = api.cachMacDinh(L, n.id)
+                            return (
+                              <div key={n.id} className="border-l-2 border-slate-200 pl-2 text-[12.5px] text-slate-600">
+                                <b className="text-blue-600">Bước — <MathText>{n.phat_bieu}</MathText>:</b> {n.gia_thiet_phu && <i><MathText>{`${n.gia_thiet_phu}. `}</MathText></i>}<MathText>{cc?.loi_giai ?? '—'}</MathText>
+                              </div>
+                            )
+                          })}
+                        </div>
+                      )}
+                      {cach?.loi_giai && (
+                        <div className="mt-2 rounded bg-slate-50 px-2 py-1.5 text-[13px] leading-relaxed text-slate-700">
+                          <MathText>{cach.loi_giai}</MathText>
+                        </div>
+                      )}
+                    </li>
+                  )
+                })}
+              </ol>
             </div>
           </div>
         </div>

@@ -81,10 +81,14 @@ function parseDec(s) {
 }
 
 // Tách tập nghiệm. "0,25" là thập phân, "1, 2" là tập → chỉ tách theo "," khi có khoảng trắng sau hoặc 2 vế đều parse.
+// ⚠️ \b của JS coi ký tự có dấu (à, ặ…) KHÔNG phải \w — "\bvà\b" không bao giờ khớp vì biên từ ngay sau "à"
+// đòi hỏi 1 bên là \w, mà "à" tự nó không phải \w (chỉ "hoặc" khớp được vì KẾT THÚC bằng "c" thuần ASCII).
+// Dùng \p{L}/\p{N} (Unicode-aware, cờ u) thay \b để biên từ đúng cho MỌI từ có dấu.
+const TAP_SEP = /(?<![\p{L}\p{N}_])(?:hoặc|hoac|và|va|or)(?![\p{L}\p{N}_])/iu
 function splitSet(s) {
   s = clean(s)
   if (/;/.test(s)) return s.split(/;/)
-  if (/\bhoặc\b|\bhoac\b|\bvà\b|\bva\b|\bor\b/i.test(s)) return s.split(/\bhoặc\b|\bhoac\b|\bvà\b|\bva\b|\bor\b/i)
+  if (TAP_SEP.test(s)) return s.split(TAP_SEP)
   if (/,\s/.test(s)) {
     const parts = s.split(/,\s+/)
     if (parts.every((p) => parseOne(p))) return parts
