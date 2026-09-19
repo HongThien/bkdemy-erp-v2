@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-229 bảng · 18 view · 0 enum · 74 trigger · 387 function
+229 bảng · 18 view · 0 enum · 74 trigger · 393 function
 
 ## _app_secrets
 
@@ -4863,6 +4863,7 @@ SELECT bl.hoc_sinh_id,
 - `_kho_cau_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `_kho_cum_tbl(p_cautbl text)` → text
 - `_kho_dang_cho(p_tbl text, p_khoi text)` → text
+- `_kho_dk_mcq_sql(p_cautbl text)` → text
 - `_kho_dk_online_hs_sql(p_cautbl text)` → text
 - `_kho_dk_online_sql(p_cautbl text)` → text
 - `_kho_form_dien_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
@@ -4875,6 +4876,8 @@ SELECT bl.hoc_sinh_id,
 - `_kho_snapshot_cau(p_bt_id uuid, p_cautbl text, p_lttbl text, p_ma_cau text, p_thu_tu integer, p_ma_cum text DEFAULT NULL::text)` → void
 - `_mcq_kiem_kho(p_kho text)` → void
 - `_push_bao_cap_nhat(p_ns uuid, p_app text)` → void
+- `_sotay_duoc_doc()` → boolean
+- `_sotay_nhom(p_muc_do smallint)` → text
 - `_sync_cau_menh_de(p_bang_con text, p_ban_do text, p_ma_cau text, p_menh_de jsonb)` → void
 - `_tich_luy_cua(p_ns uuid, p_ym text)` → TABLE(diem_thang integer, chuoi integer, ngay_cuoi date, ngay_trot date)
 - `_trg_btyeu_retest_cau()` → trigger
@@ -5181,6 +5184,9 @@ SELECT bl.hoc_sinh_id,
 - `hs_mon_cua_toi()` → text[]
 - `hs_nghi_tu_roi_lop()` → trigger
 - `hs_o_lop(p_lop uuid)` → boolean
+- `hs_sotay_cay(p_mon text DEFAULT 'Toán'::text, p_nhanh text DEFAULT NULL::text, p_khoi text DEFAULT NULL::text)` → jsonb
+- `hs_sotay_dang(p_ma_dang text, p_mon text DEFAULT 'Toán'::text, p_nhanh text DEFAULT NULL::text)` → jsonb
+- `hs_sotay_tim(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_nhanh text DEFAULT NULL::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `increment_qaa_hit(p_id uuid)` → void
 - `jwt_email()` → text
