@@ -13425,3 +13425,10 @@ Bối cảnh: câu tự luận/chứng minh bị biến thành trả lời ngắ
   em trả lời · đáp án · 2 nút Tích ĐÚNG / Tích SAI · nhãn "đã chỉnh tay"; poll 10s cùng nhịp ca; chỉnh xong vá tại chỗ + nạp lại
   tỉ lệ đúng theo dạng/cụm. tsc sạch. Kiểm dữ liệu thật (read-only): ca tối nay của HS0520 có 1 câu TLN `wrong` sẽ hiện ở khối này.
 - Chưa làm (cân nhắc sau): đưa đáp án em gõ vào `tln_cache` khi TA tích đúng — với bài chứng minh chữ gõ mỗi em mỗi khác, ít lợi.
+
+## 2026-09-19 (tối) — "Không thấy khối chỉnh kết quả TLN ở app TA" — kiểm + làm dễ thấy hơn
+
+Kiểm: RPC `fn_btyeu_ta_cau_tln` gọi bằng tài khoản nhân sự trả đúng (ca HS0520 = 7 câu TLN, HS0303 = 2, …) — `scripts/_diag_ta_tln.ts`.
+Deploy Vercel `bkdemy-erp-v2-ta-v2` của 91027bd = success 17:33. ⇒ nghi PWA (registerType autoUpdate): bản mới chỉ ăn sau khi
+ĐÓNG HẲN app mở lại (có khi 2 lần). Thêm nữa khối cũ chỉ hiện khi có câu TLN + mặc định GẬP ⇒ dễ bỏ sót. Sửa: khối LUÔN hiện khi em
+đã có mặt (0 câu thì ghi rõ "chưa trả lời câu TLN nào"), TỰ MỞ khi có câu máy chấm sai. tsc sạch.
