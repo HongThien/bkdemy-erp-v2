@@ -116,7 +116,7 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
   // Câu TRẢ LỜI NGẮN em đã trả lời trong ca — TA chỉnh Đúng/Sai (Thùy 19/09). Poll cùng nhịp; chỉnh xong vá tại chỗ.
   const [tln, setTln] = useState<CauTlnTA[]>([])
   const [tlnBusy, setTlnBusy] = useState<string | null>(null)
-  const [tlnMo, setTlnMo] = useState(false)
+  const [tlnMo, setTlnMo] = useState<boolean | null>(null) // null = theo mặc định: TỰ MỞ khi có câu máy chấm sai (Thùy 19/09: "ko thấy hiện chỗ nào")
   const taiTln = () => cauTlnCuaCa(buoiId).then(setTln).catch(() => {})
   async function chinhTln(x: CauTlnTA, dung: boolean) {
     setTlnBusy(x.bai_lam_cau_id); setLoi(null)
@@ -146,6 +146,7 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
   const hoanTat = !!ca.danh_gia_xong_at
   const tongCau = ca.dangs.reduce((s, d) => s + d.so_cau, 0)
   const cauCuoi = ca.dangs.map((d) => d.cau_cuoi_at).filter(Boolean).sort().pop()
+  const tlnDangMo = tlnMo ?? tln.some((x) => x.verdict !== 'correct')
   const imPhut = cauCuoi ? Math.floor((now - Date.parse(cauCuoi)) / 60000) : null
 
   return (
@@ -207,16 +208,17 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
         </Khoi>
 
         {/* 2b. Câu trả lời ngắn — TA chỉnh kết quả (chỉ hiện khi em đã trả lời ≥1 câu TLN) */}
-        {tln.length > 0 && (
+        {coMat && (
           <div className="mb-3 rounded-2xl bg-white p-3 ring-1 ring-amber-200">
-            <button onClick={() => setTlnMo((v) => !v)} className="flex w-full items-center justify-between gap-2 text-left">
+            <button onClick={() => setTlnMo(!tlnDangMo)} className="flex w-full items-center justify-between gap-2 text-left">
               <div className="min-w-0">
                 <p className="text-[13.5px] font-bold text-slate-800">✍ Câu trả lời ngắn — chỉnh kết quả</p>
                 <p className="text-[11.5px] text-slate-500">{tln.length} câu · máy chấm sai {tln.filter((x) => x.verdict !== 'correct').length}{tln.some((x) => x.da_sua) ? ` · đã chỉnh tay ${tln.filter((x) => x.da_sua).length}` : ''} — em làm đúng (nháp/nói miệng) mà máy chấm sai thì tích lại ở đây.</p>
               </div>
-              <span className="shrink-0 text-slate-400">{tlnMo ? '▾' : '▸'}</span>
+              <span className="shrink-0 text-slate-400">{tlnDangMo ? '▾' : '▸'}</span>
             </button>
-            {tlnMo && (
+            {tlnDangMo && tln.length === 0 && <p className="mt-2 text-[12.5px] text-slate-400">Em chưa trả lời câu trả lời ngắn nào trong ca này (câu trắc nghiệm máy chấm chắc chắn nên không cần chỉnh).</p>}
+            {tlnDangMo && tln.length > 0 && (
               <div className="mt-2 flex flex-col gap-2">
                 {tln.map((x) => {
                   const dung = x.verdict === 'correct'
