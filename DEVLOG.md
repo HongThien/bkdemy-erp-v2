@@ -13358,3 +13358,56 @@ sửa code). Migration `202609191317_botro_chi_mcq.sql` (ĐÃ ÁP): `_kho_dk_mcq
   Nhân tiện sửa luôn 2 card CÒN DẸT bị lấy làm ảnh minh hoạ (chủ đề `ChonChuDeHTD`, chuyên đề
   `ChonChuyenDeHTD`) — thêm prop `square` cho `CardMau` (ép `aspect-[0.95]`, nội dung `line-clamp-4`),
   đổi lưới từ 1(mobile)/2(md) sang 2(mobile)/3(md) cho vừa cỡ box nhỏ gọn.
+
+## 19/09 — Thêm khối `8T` (CEO: "vai trò như 4T 5T ở mọi nơi", "8T là khối THCS")
+
+- **Làm (client):** `KHOI_OPTIONS` (`src/lib/kho/api.ts`) thêm `'8T'` ngay sau `'8'` — mảng dùng chung
+  ~20 màn nên 8T hiện ở mọi bộ chọn khối (đúng ý CEO, giống 4T/5T). `KhoScreen` tô tím mọi khối
+  `endsWith('T')` ⇒ không sửa thêm. 2 chỗ có danh sách khối RIÊNG chứa 4T/5T cũng thêm 8T:
+  `ThongBaoPhScreen.KHOI_OPTS`, mặc định `--khoi` của `scripts/kho-kiem-ai.mjs`. KHÔNG đụng
+  `src/soan/cum.ts` `KHOI` (số 6..12, vốn không có 4T/5T — model thư mục soạn riêng).
+- **Kiểm (DB live, chỉ đọc — `scripts/_q_khoi_thcs_scan.mjs`):** quét `pg_proc`/view/CHECK tìm danh
+  sách khối ghi cứng ⇒ đúng 2 hàm ghi cứng THCS `('6','7','8','9')`: `hs_cap2_cua_toi()` (app HS:
+  layout cấp 2 + May mắn) và `fn_giaibai_pool()` (ưu tiên THCS khi xếp hàng giải). Danh sách cấp 1
+  (`hs_cap1_cua_toi`, `fn_mastery_cells`) đúng là không chứa 8T. Không CHECK nào chặn `khoi='8T'`.
+  Mã bản đồ sinh ra `T18T…` (`khoiCode('8T')='8T'`) đã hợp lệ sẵn với regex `(digit{2}|digitT)` của
+  `fn_dai_ma_hop_le` (mig 202609180055) ⇒ không cần nới.
+- **Migration `202609191631_them_khoi_8t_vao_thcs.sql` — ĐÃ VIẾT, CHƯA ÁP:** create or replace 2 hàm
+  trên, thân lấy nguyên văn `pg_get_functiondef` DB live 19/09, chỉ thêm `'8T'` vào danh sách. Không xoá gì.
+  Chưa áp ⇒ HS khối 8T (nếu có) vẫn chưa được coi là cấp 2 trên app HS. Sau khi áp: `npm run schema`.
+- **Sai/bẫy:** script dò DB tạo bằng heredoc Bash bị nén `\\s` → `\s` ⇒ trong template string JS thành
+  chữ `s` ⇒ regex `envKey` nuốt mất chữ `s` cuối chuỗi kết nối ⇒ lỗi `database "postgre" does not exist`.
+  Cùng nội dung ghi bằng Write tool thì chạy đúng. ⇒ Script có `\\` KHÔNG tạo qua heredoc.
+- **Chưa verify trên màn:** dev server dừng ở màn đăng nhập; không tự bấm "DEV đăng nhập nhanh Admin"
+  (vào quyền Admin trên DB thật, chưa được giao). Typecheck: chỉ còn lỗi sẵn có ở `src/lib/pdfRender.ts`.
+
+### 19/09 — Bổ trợ đuổi PHASE 2: màn TA đọc tiến độ dạng từ "Học từ đầu" online (không tick tay nữa)
+
+- **Việc còn nợ từ mig `202609191521`** (xem entry "Học từ đầu" cùng ngày ở trên): engine online đã
+  chạy, nhưng `BoTroDuoiScreen.tsx` (màn TA quản lý đợt đuổi) vẫn đọc `bo_tro_duoi_dang.day_at` — cờ
+  GV tick tay theo cơ chế CŨ (0099), không còn ai ghi vào đó từ khi HS chuyển qua tự học online.
+- **Fix — CHỈ đổi NGUỒN đọc, không xây flow mới** (banner "đề xuất đóng đợt khi đủ dạng" ĐÃ CÓ SẴN từ
+  07-13, trước đọc `day_at`, giờ đọc `xong`):
+  - `DangDuoi` (`src/lib/botro_duoi.ts`) thêm `xong`/`xong_at` — derive từ `hoc_tu_dau_dang.test_nop_at`
+    khớp (hoc_sinh_id, mon, ma_dang) của case. `day_at`/`day_buoi_id` GIỮ NGUYÊN cột (vết lịch sử cơ chế
+    cũ, chưa hỏi CEO để xoá) nhưng KHÔNG dùng tính tiến độ hiển thị nữa.
+  - Join làm ở CLIENT (fetch `hoc_tu_dau_dang` theo `hoc_sinh_id in (...)`, build map tra `${hs}|${mon}|
+    ${ma_dang}` → `test_nop_at`) — theo ĐÚNG phong cách sẵn có của file này (đã tự nhận vi phạm §2.0,
+    nằm trong `AUDIT-client-tinh-toan.md`); không mở rộng thêm nợ mới ngoài pattern đã có, không đủ thời
+    gian viết lại toàn bộ `listDotDuoi` thành RPC trong phạm vi Phase 2 này.
+  - `BoTroDuoiScreen.tsx`: mọi chỗ đếm/hiện "Dạng X/Y" (card đợt, banner đề xuất đóng, `DotDetailModal`,
+    card tab Hoàn thành) đổi từ `x.day_at` → `x.xong`. Banner "đủ dạng dù chưa đủ buổi → cân nhắc kết
+    thúc sớm" (banner đã có sẵn, không phải logic mới) giờ tự đúng vì đọc tiến độ THẬT.
+  - `BuoiDuoiDetail`: bỏ hẳn nút tick tay `toggleDangDay`/`setDangDay` — đổi thành chip CHỈ XEM (không
+    onClick), đúng yêu cầu CEO "GV không tích gì hết". Hàm `setDangDay` trong lib GIỮ LẠI (không xoá,
+    không ai gọi nữa) — theo luật xoá CLAUDE.md, chưa hỏi thì chưa xoá.
+- **Quyết định KHÔNG tự đóng câm case khi đủ dạng:** giữ nguyên pattern đã có (Thùy 07-13 "không đóng
+  câm") — hệ chỉ ĐỀ XUẤT (banner + nút "✓ Hoàn thành"/"+1 buổi"), GV/TA vẫn phải bấm xác nhận. Đủ dạng
+  chỉ đổi NGUỒN tín hiệu (online thay vì tick tay), không đổi cơ chế quyết định đóng đợt.
+- **Verify:** viết script `scripts/_check_phase2_htd.mjs` chạy thẳng SQL đối chiếu 1 case thật (HS0716,
+  Nguyễn Gia Huy) — xác nhận join (hoc_sinh_id, mon, ma_dang) khớp đúng: dạng `T110010101` đã có
+  `test_nop_at` (xong=true), `T110010102` mới chỉ có `doc_ly_thuyet_at` (xong=false) — khớp đúng với
+  phiên test "Học từ đầu" trên app HS ngay trước đó trong ngày. Typecheck sạch (trừ lỗi sẵn có
+  `pdfRender.ts`). **CHƯA click-through được màn TA thật** — phiên trình duyệt hiện đăng nhập tài khoản
+  HS0716 (dùng để test app HS), `ops.html` chặn "Tài khoản này là học sinh — app chỉ dành cho nhân sự
+  vận hành", không có sẵn tài khoản nhân sự để tự đăng nhập kiểm tra UI trực tiếp.

@@ -576,7 +576,8 @@ export default function NhanSuHome({ user }: { user: User }) {
   // ⚠ bo_tro_yeu CHƯA có detail riêng (khác bù/đuổi) — rơi vào nhánh BuoiDetail chung tạm thời.
   // BuoiDetail vốn cho buổi lớp thường (lop_id có giá trị); bo_tro_yeu giống bù ở chỗ lop_id=null
   // (1 buổi = 1 HS, không gắn lớp) nên CHƯA CHẮC render đúng — cần 1 BuoiBoTroYeuDetail riêng
-  // (hiện tiến độ dạng + tick day_at, giống BuoiDuoiDetail) trước khi đưa vào vận hành thật.
+  // (hiện tiến độ dạng chỉ-xem, giống BuoiDuoiDetail sau Phase 2 19/09 — không tick tay nữa) trước khi
+  // đưa vào vận hành thật.
   if (openBuoi) return openBuoi.loai === 'bu'
     ? <BuoiBuDetail buoiId={openBuoi.id} onClose={() => setOpenBuoi(null)} />
     : openBuoi.loai === 'bo_tro_duoi'
