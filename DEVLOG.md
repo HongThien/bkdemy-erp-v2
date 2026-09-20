@@ -13955,3 +13955,21 @@ T107010507 (4). Việc cần: chạy pipeline sinh MCQ cho 25 dạng này (ưu t
   hàm đó THỰC SỰ ghi dữ liệu và RLS chặn. Nên rà toàn bộ hàm ghi mới bằng cách so sánh CHÙM hàm cùng
   migration khi nghi ngờ 1 hàm bị lỗi lạ — hàm SELECT-only vẫn "chạy được" (trả rỗng do RLS) nên dễ
   che giấu vấn đề tới khi có hàm INSERT/UPDATE trong cùng nhóm mới lộ lỗi cứng.
+
+## 2026-09-20 — Xếp bổ trợ yếu: "đã xếp chưa bổ trợ" là trạng thái cứng (không xếp lại) + MỨC ƯU TIÊN của case (Thùy)
+
+**Story 1:** HS đã được xếp bổ trợ, CHƯA học, mà có đợt bổ trợ mới ⇒ phải hiện rõ và KHÔNG được xếp lại.
+- Bất biến DB: 1 case tối đa 1 buổi "đã xếp chưa học" (buoi_hoc mo + chưa danh_gia_xong) — trigger `trg_btyeu_mot_buoi_cho_hoc` trên
+  `buoi_hoc_hs` (before insert) ⇒ form xếp · tự ghép · mọi đường sau này đều bị chặn, báo rõ ngày giờ buổi đang chờ. Test trong
+  transaction rollback: case đang có buổi chờ → CHẶN đúng câu; case chưa có → cho phép; không sót dòng test.
+- `daXep` đổi nghĩa: từ "đã từng có buổi (kể cả huỷ/xong)" → "ĐANG có buổi chờ học". Case học xong 1 buổi còn dạng chưa dạy quay về cột
+  Chờ xếp (ghi "đã học N buổi, còn M dạng"); case dạy hết dạng rời màn này (sang Trạng thái/Đánh giá ca).
+- "Đợt mới" = dạng GỘP vào case SAU khi buổi đã xếp (duyệt lại → moHoacGopCase): card hiện "＋N dạng mới (đợt duyệt mới) — học chung
+  trong buổi đã xếp, KHÔNG xếp lại". Card đã xếp hiện thứ/ngày/giờ/phòng/người; quá ngày chưa học → viền vàng + ⚠.
+- Modal: bỏ "+ Xếp thêm buổi khác" khi đang có buổi chờ (chỉ sửa/huỷ). Xếp xong nạp lại list NỀN (không blank).
+**Story 2:** `bo_tro_yeu.uu_tien` (3 Cao · 2 Thường mặc định · 1 Thấp) — khác level. Đặt khi DUYỆT (DuyetKhoi, chỉ khi mở case mới;
+gợi ý máy: báo động hoặc ≥2 kênh kiến thức ⇒ Cao); đổi nhanh bằng chip trên card ở Xếp lịch (Thường→Cao→Thấp, vá + sắp lại tại chỗ).
+Thứ tự list & TỰ GHÉP: ưu tiên cao trước, cùng ưu tiên thì case mở lâu hơn trước ⇒ khi ca trực khan chỗ (3 em/ca) em ưu tiên cao có chỗ trước.
+- RPC `fn_btyeu_case_xep_lich(mon)` (migration 202609201300, ĐÃ ÁP) thay 3 query client + getLevels (tổng hợp ở DB, §2.0).
+**Đo thật 20/09:** 99 case · 72 chờ xếp (5 em đã học ≥1 buổi còn dạng) · 27 đã xếp chưa bổ trợ, trong đó **8 QUÁ NGÀY chưa học** (TA chưa
+điểm danh/hoàn tất hoặc em vắng chưa huỷ — cần OPS soát) · 0 case có dạng mới sau xếp · ưu tiên: 99 Thường (chưa ai đặt). tsc sạch.

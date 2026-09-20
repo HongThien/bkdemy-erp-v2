@@ -43,6 +43,7 @@ export async function moHoacGopCaseBoTroYeu(input: {
   maDangs: string[]           // dạng cần bổ trợ — chọn ở bước "duyệt nội dung" (bước riêng, SAU bước này)
   nguon: NguonBoTroYeu
   lyDo?: string | null
+  uuTien?: UuTienCase // Thùy 20/09: mức ưu tiên của CASE (khác level) — chỉ ghi khi MỞ MỚI; case đang mở giữ ưu tiên cũ (sửa ở Xếp lịch)
 }): Promise<{ boTroYeuId: string; moMoi: boolean; caseTruocId: string | null }> {
   const { data: { user } } = await supabase.auth.getUser()
   const actor = user?.id ?? null
@@ -70,7 +71,7 @@ export async function moHoacGopCaseBoTroYeu(input: {
 
     const { data: created, error: eIns } = await supabase.from('bo_tro_yeu').insert({
       hoc_sinh_id: input.hocSinhId, mon: input.mon, nguon: input.nguon,
-      ly_do: input.lyDo ?? null, actor, case_truoc_id: caseTruocId,
+      ly_do: input.lyDo ?? null, actor, case_truoc_id: caseTruocId, uu_tien: input.uuTien ?? 2,
     }).select('id').single()
     if (eIns) throw eIns
     boTroYeuId = (created as any).id
@@ -180,18 +181,35 @@ export async function boDangKhoiCase(dangId: string): Promise<void> {
 // Phòng: mảng `ROOMS` cứng tạm (TKBScreen.tsx) — KHÔNG check trùng lịch (PLAN mục 9, chờ dự án
 // Quản lý phòng học riêng). `case_truoc_id`/mức đọc qua `hs_level`, KHÔNG lưu ở đây.
 
-export type CaseChoXep = CaseBoTroYeuItem & { daXep: boolean }
+// Thùy 20/09: `daXep` = ĐANG CÓ buổi đã xếp CHƯA HỌC (không còn là "đã từng có buổi") — case học xong 1 buổi mà còn dạng chưa dạy
+// quay lại cột "Chờ xếp". 1 case tối đa 1 buổi chờ học (trigger DB `trg_btyeu_mot_buoi_cho_hoc`).
+export type UuTienCase = 1 | 2 | 3
+export const UU_TIEN_TEN: Record<UuTienCase, string> = { 3: 'Ưu tiên cao', 2: 'Thường', 1: 'Thấp' }
+export type BuoiChoHoc = { buoi_id: string; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; nguoi_day_tg: string | null; nguoi_ten: string | null; diem_danh: string | null; qua_ngay: boolean }
+export type CaseChoXep = CaseBoTroYeuItem & {
+  daXep: boolean; uuTien: UuTienCase; level: number; soDangChuaDay: number; soBuoiDaHoc: number
+  buoiChoHoc: BuoiChoHoc | null; soDangMoiSauXep: number // >0 = "đợt mới" gộp vào SAU khi buổi đã xếp
+}
+export async function datUuTienCase(boTroYeuId: string, uuTien: UuTienCase): Promise<void> {
+  const { error } = await supabase.from('bo_tro_yeu').update({ uu_tien: uuTien }).eq('id', boTroYeuId)
+  if (error) throw error
+}
 
 // Case đã có ≥1 dạng (đã qua bước 4) — CẦN xếp lịch. `daXep` = đã có buổi nào gắn case này chưa
 // (kể cả buổi đã huỷ vẫn tính đã-từng-xếp, hiển thị để OPS xếp buổi MỚI, không lặp tay tìm lại).
 export async function listCaseChoXepLich(mon?: string): Promise<CaseChoXep[]> {
-  const items = (await listCaseDangMo(mon)).filter((c) => c.soDang > 0)
-  if (!items.length) return []
-  const { data: buoiHs, error } = await supabase.from('buoi_hoc_hs')
-    .select('bo_tro_yeu_id').in('bo_tro_yeu_id', items.map((c) => c.id)).limit(LIMIT)
+  // RPC `fn_btyeu_case_xep_lich` (migration 202609201300) — đã sắp: ưu tiên cao trước, cùng ưu tiên thì case mở lâu hơn trước.
+  const { data, error } = await supabase.rpc('fn_btyeu_case_xep_lich', { p_mon: mon ?? null })
   if (error) throw error
-  const daXepSet = new Set((buoiHs ?? []).map((r: any) => r.bo_tro_yeu_id))
-  return items.map((c) => ({ ...c, daXep: daXepSet.has(c.id) }))
+  return ((data ?? []) as any[])
+    .map((r) => ({
+      id: r.id, hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.ho_ten ?? '?', ma_hs: r.ma_hs ?? null, khoi: r.khoi ?? null, mon: r.mon,
+      nguon: r.nguon, ly_do: r.ly_do, created_at: r.created_at, soDang: r.so_dang,
+      daXep: !!r.buoi_cho_hoc, uuTien: r.uu_tien as UuTienCase, level: r.level ?? 0, soDangChuaDay: r.so_dang_chua_day, soBuoiDaHoc: r.so_buoi_da_hoc,
+      buoiChoHoc: r.buoi_cho_hoc ?? null, soDangMoiSauXep: r.so_dang_moi_sau_xep ?? 0,
+    }))
+    // Cần xếp = đang có buổi chờ học (hiện trạng thái) HOẶC còn dạng chưa dạy. Dạy hết rồi ⇒ sang Trạng thái/Đánh giá ca.
+    .filter((c) => c.daXep || c.soDangChuaDay > 0)
 }
 
 // ── GỢI Ý MẶC ĐỊNH KHI XẾP LỊCH (Thùy 09-02) ─────────────────────────────────────────

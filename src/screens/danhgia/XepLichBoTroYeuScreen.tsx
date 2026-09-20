@@ -12,12 +12,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
   listCaseChoXepLich, taoBuoiBoTroYeu, listBuoiCuaCase, goiYXepLichBoTroYeu,
-  listLichTruc, themLichTruc, ketThucLichTruc, lichTrucCuaHS, goiYTheoLichTruc, caSapToi, khoaCa, caTrucConCho,
+  listLichTruc, themLichTruc, ketThucLichTruc, lichTrucCuaHS, goiYTheoLichTruc, caSapToi, khoaCa, caTrucConCho, datUuTienCase, UU_TIEN_TEN, type UuTienCase,
   type CaseChoXep, type BuoiBoTroYeuDaXep, type GoiYXepLich, type LichTruc, type CaTrucDeXuat, type CaSapToi,
 } from '../../lib/botro_yeu'
 import { supabase } from '../../lib/supabase'
 import { homNayVN } from '../../lib/tuan'
-import { getLevels } from '../../lib/danhgia'
 import { huyBuoi, updateBuoiMeta } from '../../lib/gami'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listPhong, kiemTraTrungPhong, type Phong, type KhoiBanPhong } from '../../lib/phong'
@@ -64,16 +63,9 @@ export default function XepLichBoTroYeuScreen() {
 
   const reload = () => {
     setLoading(true)
-    listCaseChoXepLich().then(async (r) => {
+    listCaseChoXepLich().then((r) => {
       setItems(r)
-      const byMon = new Map<string, string[]>()
-      for (const c of r) byMon.set(c.mon, [...(byMon.get(c.mon) ?? []), c.hoc_sinh_id])
-      const m = new Map<string, number>()
-      for (const [mon, ids] of byMon) {
-        const lv = await getLevels(ids, mon)
-        for (const id of ids) m.set(id, lv.get(id)?.kien_thuc ?? 0)
-      }
-      setMuc(m)
+      setMuc(new Map(r.map((c) => [c.hoc_sinh_id, c.level]))) // level đi kèm RPC — không gọi getLevels riêng nữa
     }).finally(() => setLoading(false))
   }
   useEffect(() => { reload() }, [])
@@ -83,6 +75,13 @@ export default function XepLichBoTroYeuScreen() {
   const loc = useMemo(() => items.filter((c) => (!monF || c.mon === monF) && (!khoiF || c.khoi === khoiF)), [items, monF, khoiF])
   const choXep = useMemo(() => loc.filter((c) => !c.daXep), [loc])
   const daXep = useMemo(() => loc.filter((c) => c.daXep), [loc])
+  // Đổi ưu tiên = vá tại chỗ + sắp lại (ưu tiên cao trước, cùng ưu tiên thì case mở lâu hơn trước) — Thùy 20/09.
+  const sapXep = (ds: CaseChoXep[]) => [...ds].sort((a, b) => b.uuTien - a.uuTien || a.created_at.localeCompare(b.created_at))
+  async function doiUuTien(c: CaseChoXep) {
+    const moi = (c.uuTien === 3 ? 1 : c.uuTien + 1) as UuTienCase // Thường → Cao → Thấp → Thường
+    setItems((prev) => sapXep(prev.map((x) => x.id === c.id ? { ...x, uuTien: moi } : x)))
+    try { await datUuTienCase(c.id, moi) } catch { setItems((prev) => sapXep(prev.map((x) => x.id === c.id ? { ...x, uuTien: c.uuTien } : x))) }
+  }
   const danhDauDaXep = (ids: string[]) => { const s = new Set(ids); setItems((prev) => prev.map((x) => s.has(x.id) ? { ...x, daXep: true } : x)) }
   const moCase = items.find((c) => c.id === moId) ?? null
 
@@ -127,16 +126,16 @@ export default function XepLichBoTroYeuScreen() {
               <h2 className="mb-3 text-[13px] font-bold uppercase tracking-wide text-slate-500">Chờ xếp lịch ({choXep.length})</h2>
               <div className="space-y-3">
                 {choXep.map((c) => (
-                  <CaseCard key={c.id} c={c} mucLv={muc.get(c.hoc_sinh_id) ?? 0} onMo={() => setMoId(c.id)} />
+                  <CaseCard key={c.id} c={c} mucLv={muc.get(c.hoc_sinh_id) ?? 0} onMo={() => setMoId(c.id)} onUuTien={() => doiUuTien(c)} />
                 ))}
                 {choXep.length === 0 && <p className="text-[12px] text-slate-400">Không còn case nào.</p>}
               </div>
             </div>
             <div>
-              <h2 className="mb-3 text-[13px] font-bold uppercase tracking-wide text-slate-500">Đã xếp ({daXep.length})</h2>
+              <h2 className="mb-3 text-[13px] font-bold uppercase tracking-wide text-slate-500">Đã xếp · chưa bổ trợ ({daXep.length})</h2>
               <div className="space-y-3">
                 {daXep.map((c) => (
-                  <CaseCard key={c.id} c={c} mucLv={muc.get(c.hoc_sinh_id) ?? 0} onMo={() => setMoId(c.id)} daXep />
+                  <CaseCard key={c.id} c={c} mucLv={muc.get(c.hoc_sinh_id) ?? 0} onMo={() => setMoId(c.id)} onUuTien={() => doiUuTien(c)} daXep />
                 ))}
                 {daXep.length === 0 && <p className="text-[12px] text-slate-400">Chưa có case nào.</p>}
               </div>
@@ -146,15 +145,17 @@ export default function XepLichBoTroYeuScreen() {
       </div>
       {/* Xếp/sửa xong = vá `daXep` của đúng case tại chỗ, KHÔNG reload (blank list + mất chỗ) — CLAUDE.md §2 React. */}
       {moCase && <XepModal c={moCase} mucLv={muc.get(moCase.hoc_sinh_id) ?? 0} onDong={() => setMoId(null)}
-        onDoi={() => setItems((prev) => prev.map((x) => x.id === moCase.id ? { ...x, daXep: true } : x))} />}
+        onDoi={() => { listCaseChoXepLich().then((r) => { setItems(r); setMuc(new Map(r.map((c) => [c.hoc_sinh_id, c.level]))) }).catch(() => {}) }} />}
     </section>
   )
 }
 
-function CaseCard({ c, mucLv, onMo, daXep }: { c: CaseChoXep; mucLv: number; onMo: () => void; daXep?: boolean }) {
+const UU_CLS: Record<UuTienCase, string> = { 3: 'bg-rose-600 text-white', 2: 'bg-slate-100 text-slate-600', 1: 'bg-slate-50 text-slate-400' }
+function CaseCard({ c, mucLv, onMo, onUuTien, daXep }: { c: CaseChoXep; mucLv: number; onMo: () => void; onUuTien: () => void; daXep?: boolean }) {
+  const b = c.buoiChoHoc
   return (
-    <button onClick={onMo}
-      className={`w-full rounded-2xl bg-white p-4 text-left ring-1 transition hover:ring-indigo-300 ${daXep ? 'ring-emerald-200' : 'ring-slate-200'}`}>
+    <div role="button" tabIndex={0} onClick={onMo} onKeyDown={(e) => { if (e.key === 'Enter') onMo() }}
+      className={`w-full cursor-pointer rounded-2xl bg-white p-4 text-left ring-1 transition hover:ring-indigo-300 ${daXep ? (b?.qua_ngay ? 'ring-amber-300' : 'ring-emerald-200') : 'ring-slate-200'}`}>
       <div className="flex items-center justify-between gap-3">
         <div>
           <div className="text-[14px] font-semibold text-slate-800">
@@ -162,12 +163,25 @@ function CaseCard({ c, mucLv, onMo, daXep }: { c: CaseChoXep; mucLv: number; onM
           </div>
           <div className="mt-1 flex items-center gap-1.5">
             <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${MUC_CLS[mucLv] ?? MUC_CLS[1]}`}>{MUC_TEN[mucLv] ?? `L${mucLv}`}</span>
-            <span className="text-[11px] text-slate-400">{c.soDang} dạng</span>
+            <span className="text-[11px] text-slate-400">{c.soDang} dạng{c.soBuoiDaHoc > 0 ? ` · đã học ${c.soBuoiDaHoc} buổi, còn ${c.soDangChuaDay} dạng chưa dạy` : ''}</span>
+            <button onClick={(e) => { e.stopPropagation(); onUuTien() }} title="Bấm để đổi mức ưu tiên (Thường → Cao → Thấp)"
+              className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${UU_CLS[c.uuTien]}`}>{c.uuTien === 3 ? '▲ ' : c.uuTien === 1 ? '▼ ' : ''}{UU_TIEN_TEN[c.uuTien]}</button>
           </div>
+          {b && (
+            <div className="mt-1.5 text-[12px] font-medium text-emerald-700">
+              {b.qua_ngay ? <span className="text-amber-700">⚠ Quá ngày chưa học: </span> : 'Đã xếp · chưa bổ trợ: '}
+              {thuCuaNgay(b.ngay)} {ddmmVN(b.ngay)}{b.gio_bat_dau ? ` · ${hhmm(b.gio_bat_dau)}` : ''}{b.phong ? ` · ${b.phong}` : ''}{b.nguoi_ten ? ` · ${b.nguoi_ten}` : ''}
+            </div>
+          )}
+          {c.soDangMoiSauXep > 0 && (
+            <div className="mt-1 inline-block rounded-md bg-violet-50 px-2 py-0.5 text-[11.5px] font-semibold text-violet-700 ring-1 ring-violet-200">
+              ＋{c.soDangMoiSauXep} dạng mới (đợt duyệt mới) — học chung trong buổi đã xếp, KHÔNG xếp lại
+            </div>
+          )}
         </div>
         {daXep && <span className="shrink-0 rounded-full bg-emerald-50 px-2.5 py-1 text-[12px] font-semibold text-emerald-700">Đã xếp</span>}
       </div>
-    </button>
+    </div>
   )
 }
 
@@ -388,7 +402,7 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
                 </li>
               ))}
             </ul>
-            <p className="mt-1.5 text-[11px] text-slate-400">{suaId ? 'Form dưới đang SỬA buổi đã xếp (đổi giờ/phòng/người rồi "Lưu thay đổi"). Muốn thêm buổi nữa: bấm "+ Xếp thêm buổi khác".' : 'Form dưới = xếp THÊM 1 buổi nữa cho ca này (ca cần nhiều buổi, hoặc buổi cũ đã huỷ).'}</p>
+            <p className="mt-1.5 text-[11px] text-slate-400">{suaId ? 'Form dưới đang SỬA buổi đã xếp (đổi giờ/phòng/người rồi "Lưu thay đổi"). Học xong buổi này mới xếp được buổi kế.' : 'Form dưới = xếp buổi KẾ TIẾP cho ca này (buổi trước đã học xong hoặc đã huỷ).'}</p>
           </div>
         )}
 
@@ -482,11 +496,7 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
             {loi && <p className="text-[12px] text-rose-600">{loi}</p>}
             {xong && <p className="rounded-lg bg-emerald-50 px-3 py-2 text-[12px] font-medium text-emerald-700">✓ {xong}</p>}
             <div className="flex items-center justify-end gap-2 pt-1">
-              {(daXep || suaId) && (
-                <button onClick={() => { setSuaId(null); setDaXep(false); setXong(null); if (goiY) apDungMacDinh(goiY) }} className="mr-auto text-[12px] font-medium text-indigo-600 hover:underline">
-                  + Xếp thêm buổi khác cho ca này
-                </button>
-              )}
+              {suaId && <span className="mr-auto text-[11.5px] text-slate-500">Em đang có buổi đã xếp chưa học — chỉ sửa/huỷ buổi này, không xếp thêm (1 ca tối đa 1 buổi chờ học).</span>}
               <button onClick={onDong} className="rounded-lg border border-slate-200 px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50">Đóng</button>
               <button onClick={xacNhan} disabled={busy || !ngay || daXep}
                 className={`rounded-lg px-3 py-1.5 text-[13px] font-semibold text-white disabled:opacity-60 ${daXep ? 'bg-emerald-600' : 'bg-indigo-600 hover:bg-indigo-700'}`}>
