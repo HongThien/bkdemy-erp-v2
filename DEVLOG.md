@@ -13924,3 +13924,34 @@ T107010507 (4). Việc cần: chạy pipeline sinh MCQ cho 25 dạng này (ưu t
 - **Verify qua app thật (HS0716):** danh sách ra đúng 17%(đỏ)→60%(vàng)→80%/100%(xanh)→"Chưa đánh
   giá"(xám, cuối). Bật toggle "Chỉ câu mới" → bấm dạng 17% → sinh đúng 10 câu, không lỗi console.
   Test SQL trực tiếp (`fn_mastery_cells` 2 lần với/không `p_since`) khớp kỳ vọng trước khi build UI.
+
+### 20/09 — FIX BUG THẬT: vòng quay may mắn HS báo lỗi RLS khi bấm "Quay ngay"
+
+- **CEO:** "test với hs0440 pass hs0440 đi. vòng quay học sinh cứ báo lỗi mãi." — nối tiếp báo cáo
+  "Đăng Lâm vẫn báo lỗi vòng quay" hôm trước (lúc đó DB cho thấy Đăng Lâm ĐANG đủ điều kiện, nghi có
+  thể do thời điểm bấm trước khi đủ ĐK — không đào sâu thêm vì không log lại được tài khoản của em).
+- **Login thật HS0440 (Đào Minh Quân, khối 4T — CẤP 1, không phải cấp 2)** — lúc đầu "Chưa đủ điều
+  kiện" là ĐÚNG (lượt tự luyện gần nhất của em là hôm qua, không phải hôm nay — luật "làm ngày nào
+  quay ngày đấy" hoạt động đúng). Tự làm 1 lượt tự luyện 10/10 đúng NGAY TRONG PHIÊN để đủ điều kiện,
+  rồi bấm "Quay ngay" thật — **user gửi kèm lỗi thật ngay khi tôi đang thao tác**:
+  `⚠ new row violates row-level security policy for table "may_man_hs_luot"`.
+- **Nguyên nhân (verify DB live — pg_proc, không đoán):** `fn_may_man_hs_quay` (mig 202609112330)
+  **THIẾU `security definer`** — trong khi 2 hàm anh em CÙNG migration
+  (`fn_may_man_hs_du_dieu_kien`, `fn_may_man_hs_cua_toi`) ĐỀU CÓ. Sai sót lúc viết migration ban đầu
+  (bỏ sót đúng 1 hàm), tồn tại từ 11/09 tới giờ — nghĩa là **CHƯA HỌC SINH CẤP 2 NÀO TỪNG QUAY ĐƯỢC
+  THẬT** (khớp `may_man_hs_luot` trống hoàn toàn ở mọi HS đã tra trong 2 lượt điều tra: Đăng Lâm,
+  HS0440 trước khi tôi tự quay). Hệ quả kỹ thuật: hàm chạy quyền NGƯỜI GỌI (`authenticated` qua
+  PostgREST) thay vì bypass RLS; bảng `may_man_hs_luot` chỉ có 2 policy SELECT
+  (`_self`, `_staff_read`), KHÔNG có policy INSERT cho `authenticated` — comment cũ trong mig gốc
+  giả định "ghi qua fn_may_man_hs_quay (security definer...)" nhưng hàm lại thiếu đúng từ khoá đó.
+- **Fix (mig `202609200947_may_man_hs_quay_thieu_security_definer.sql`):** thêm
+  `security definer set search_path = public`, thân hàm lấy NGUYÊN VĂN từ `pg_get_functiondef` DB
+  live (xác nhận khớp 100% file migration gốc, không có drift) — không đổi 1 dòng logic nào khác.
+- **Verify qua app thật (HS0440, NGAY SAU KHI ÁP mig):** bấm "Quay ngay" → quay thành công, "+50 EXP
+  May Mắn", lịch sử ghi `2026-09-20 · +50 EXP`, không lỗi console. **Bug đã chốt sửa xong, không còn
+  nghi ngờ** (khác lần Đăng Lâm trước — lần đó chỉ suy luận từ DB, không tái hiện được lỗi thật).
+- **Bài học:** khi 1 nhóm hàm SECURITY DEFINER được viết cùng lúc, hàm THIẾU từ khoá không lỗi ngay
+  lúc migrate (CREATE OR REPLACE không kiểm tra "có nhất quán với hàm anh em không") — chỉ lộ ra khi
+  hàm đó THỰC SỰ ghi dữ liệu và RLS chặn. Nên rà toàn bộ hàm ghi mới bằng cách so sánh CHÙM hàm cùng
+  migration khi nghi ngờ 1 hàm bị lỗi lạ — hàm SELECT-only vẫn "chạy được" (trả rỗng do RLS) nên dễ
+  che giấu vấn đề tới khi có hàm INSERT/UPDATE trong cùng nhóm mới lộ lỗi cứng.
