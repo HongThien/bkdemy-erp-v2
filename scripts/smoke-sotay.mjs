@@ -117,6 +117,80 @@ try {
   })
   ok('từ khoá vô nghĩa → 0 kết quả', (rong ?? []).length === 0, `${(rong ?? []).length}`)
 
+  // ── ②b p_khoi phải LỌC CỨNG, không phải chỉ cộng điểm ─────────────────────
+  // Bug 20/09: đứng khối 9 gõ "chu vi" vẫn ra dạng khối 4/4T/5 — `p_khoi` chỉ +50 điểm,
+  // WHERE không hề có khối ⇒ tập kết quả y hệt lúc p_khoi=null, chỉ khác thứ tự.
+  // Test: tìm từ khoá TRẢI ≥2 KHỐI (dò từ dữ liệu sống, không hardcode), rồi lọc 1 khối
+  // và soi khối của TỪNG dòng trả về. So số lượng là chưa đủ — phải so NỘI DUNG.
+  console.log('\n▶ ②b hs_sotay_tim — p_khoi lọc cứng')
+  const UNG_VIEN = ['chu vi', 'bai toan', 'tinh gia tri', 'phuong trinh', 'so nguyen']
+  let rong2 = null, tuRong = null
+  for (const ung of UNG_VIEN) {
+    const r = await rpc('hs_sotay_tim', {
+      p_tu_khoa: ung, p_mon: MON, p_nhanh: NHANH, p_khoi: null, p_limit: 50,
+    })
+    if (new Set((r ?? []).map((x) => x.khoi)).size >= 2) { rong2 = r; tuRong = ung; break }
+  }
+  if (!rong2) {
+    console.log('  ⚠ bỏ qua — không tìm được từ khoá nào trải ≥2 khối trong kho hiện tại')
+  } else {
+    const khoiCo = [...new Set(rong2.map((x) => x.khoi))]
+    ok(`"${tuRong}" không lọc → trải nhiều khối`, khoiCo.length >= 2, `${rong2.length} dòng, khối [${khoiCo.join(', ')}]`)
+    const K = khoiCo[0]
+    const loc = await rpc('hs_sotay_tim', {
+      p_tu_khoa: tuRong, p_mon: MON, p_nhanh: NHANH, p_khoi: K, p_limit: 50,
+    })
+    const khoiLoc = [...new Set((loc ?? []).map((x) => x.khoi))]
+    ok(`lọc p_khoi="${K}" → MỌI dòng cùng khối ${K}`,
+      (loc ?? []).length > 0 && khoiLoc.length === 1 && khoiLoc[0] === K,
+      `${(loc ?? []).length} dòng, khối [${khoiLoc.join(', ')}]`)
+    ok('lọc phải HẸP hơn không lọc', (loc ?? []).length < rong2.length,
+      `${(loc ?? []).length} < ${rong2.length}`)
+    // khối không tồn tại ⇒ 0 dòng. Nếu ra >0 nghĩa là điều kiện khối lại bị bỏ qua.
+    const khongCo = await rpc('hs_sotay_tim', {
+      p_tu_khoa: tuRong, p_mon: MON, p_nhanh: NHANH, p_khoi: '__khongcokhoinay__', p_limit: 50,
+    })
+    ok('khối không tồn tại → 0 kết quả', (khongCo ?? []).length === 0, `${(khongCo ?? []).length}`)
+  }
+
+  // ── ②c khớp theo RANH GIỚI TỪ, không lọt giữa từ ──────────────────────────
+  // Bug 20/09: "chu vi" ra "Bài toán Công việc chung - riêng" vì khớp CHUỖI CON
+  // (`%chu%` trúng "chung", `%vi%` trúng "việc"). Luật mới: tiếng cuối là tiền tố,
+  // các tiếng trước phải TRỌN TỪ. Lưu ý "khớp đầu từ" KHÔNG đủ — "chung" cũng bắt
+  // đầu bằng "chu"; đã đo và loại phương án đó (xem mig 202609201203).
+  console.log('\n▶ ②c hs_sotay_tim — khớp ranh giới từ')
+  const boDau = (s) => (s ?? '').toLowerCase().normalize('NFD')
+    .replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd')
+  const chuVi = await rpc('hs_sotay_tim', {
+    p_tu_khoa: 'chu vi', p_mon: MON, p_nhanh: NHANH, p_khoi: null, p_limit: 50,
+  })
+  const dinh = (chuVi ?? []).filter((r) => boDau(r.ten_dang).includes('cong viec chung'))
+  // ÂM: dạng khớp-giữa-từ phải biến mất
+  ok('"chu vi" KHÔNG trả dạng "công việc chung"', dinh.length === 0,
+    dinh.length ? dinh.map((r) => `${r.ma_dang} "${r.ten_dang}"`).join(' | ') : '0 dòng dính')
+  // DƯƠNG: và không được siết tới mức chẳng còn gì — phải còn đúng dạng chu vi thật
+  const that = (chuVi ?? []).filter((r) => boDau(r.ten_dang).includes('chu vi'))
+  ok('"chu vi" VẪN trả dạng chu vi thật', that.length >= 1,
+    `${that.length}/${(chuVi ?? []).length} dòng có "chu vi" trong tên`)
+
+  // DƯƠNG 2: gõ mỗi "chu" (tiếng cuối = tiền tố) phải RỘNG hơn hoặc bằng "chu vi",
+  // và vẫn với tới được dạng chu vi — chứng minh không bị siết thành khớp nguyên từ.
+  const chu = await rpc('hs_sotay_tim', {
+    p_tu_khoa: 'chu', p_mon: MON, p_nhanh: NHANH, p_khoi: null, p_limit: 50,
+  })
+  ok('"chu" (1 tiếng, tiền tố) rộng hơn/bằng "chu vi"', (chu ?? []).length >= (chuVi ?? []).length,
+    `${(chu ?? []).length} ≥ ${(chuVi ?? []).length}`)
+  ok('"chu" vẫn với tới dạng chu vi',
+    (chu ?? []).some((r) => boDau(r.ten_dang).includes('chu vi')))
+
+  // Ký tự đặc biệt không được làm nổ hàm (regex-injection) — mọi tiếng bị lọc còn [a-z0-9].
+  for (const rac of ['chu (vi', 'chu*vi', '((((']) {
+    const r = await rpc('hs_sotay_tim', {
+      p_tu_khoa: rac, p_mon: MON, p_nhanh: NHANH, p_khoi: null, p_limit: 10,
+    })
+    ok(`ký tự đặc biệt "${rac}" không làm nổ hàm`, Array.isArray(r), `${r.length} dòng`)
+  }
+
   // ── ③ hs_sotay_dang ───────────────────────────────────────────────────────
   console.log('\n▶ ③ hs_sotay_dang')
   const chiTiet = await rpc('hs_sotay_dang', { p_ma_dang: la.ma_dang, p_mon: MON, p_nhanh: NHANH })

@@ -1,5 +1,39 @@
 ﻿# DEVLOG — Kho (BKdemy ERP v2) · nhật ký THÔ
 
+## 2026-09-20 (phiên 3) — Tìm kiếm sổ tay: `p_khoi` lọc cứng + khớp theo ranh giới từ
+
+**CEO báo 2 lỗi nối tiếp nhau, cả 2 đều CEO tự phát hiện trên app, không phải test bắt được.**
+
+### Lỗi 1 — chip khối không lọc kết quả tìm (mig `202609201150`)
+- CEO: đứng khối 9, gõ "chu vi" → ra dạng của mọi khối. Và chỉ ra rất đúng bằng chính số tôi đo hôm trước: *"doanh thu" khối 9 → 3 kết quả (điểm 90); khối null → 3 kết quả (điểm 40) — cùng tập, chỉ khác điểm boost.*
+- Xác nhận từ `prosrc`: WHERE chỉ có `noi_dung <> ''` + `not _kho_la_dang_cho`; khối xuất hiện **đúng một chỗ** và nằm trong biểu thức tính điểm: `+ case when $3 is not null and d.khoi = $3 then 50 else 0 end`. Đo: "chu vi" khối 9 → 13 dòng khối [4,4T,5,9]; khối null → 13 dòng y hệt.
+- Sửa: `and ($3::text is null or bd.khoi = $3::text)` trong CTE `d` (mẫu optional-filter, một nhánh SQL cho cả 2 ca). **Bỏ luôn +50 boost** — sau khi lọc cứng nó chết ở cả hai nhánh (null → +0 cho mọi dòng; có khối → mọi dòng còn lại cùng khối nên +50 đều nhau, thứ tự không đổi). Giữ lại chỉ làm người đọc sau tưởng nó còn tác dụng.
+- **Kiểm luôn 2 chip còn lại theo yêu cầu CEO:** MÔN/NHÁNH = **lọc cứng thật** (chọn hẳn bảng khác qua `_kho_ban_do_tbl`: Đại→`dai_ban_do` 13 kết quả mã `T1…`, HGT→`hgt_ban_do` 1 kết quả mã `T3…`, hai tập rời nhau) ⇒ không phải sửa. ĐỘ KHÓ = **không lọc, không boost, KHÔNG TỒN TẠI** trong hàm (không có tham số, không trong WHERE, không trong điểm; client cũng không truyền và còn ẩn chip khi đang tìm) ⇒ không thêm vì CEO chưa yêu cầu và thêm là đổi chữ ký.
+
+### Lỗi 2 — tìm khớp GIỮA TỪ (mig `202609201203`)
+- CEO: "chu vi" ra "Bài toán Công việc chung - riêng" — vì AND các chuỗi con, `%chu%` trúng "**chu**ng", `%vi%` trúng "**vi**ec".
+- **⭐ CEO đề xuất "đổi sang khớp ĐẦU TỪ". Tôi đo trước khi làm — luật đó KHÔNG chữa được ca này:** `\mchu` vẫn khớp "chung" (chung *bắt đầu bằng* chu), `\mvi` vẫn khớp "viec". Đo trên 2 dạng đối lập (T109090301 "chu vi - diện tích" vs T109010302 "Công việc chung - riêng"): chuỗi con → cả 2 khớp; khớp đầu từ → **cả 2 vẫn khớp**; luật đã chọn → chỉ T109090301 khớp.
+- Luật đã dùng: **tiếng cuối = tiền tố (`\m<t>`), các tiếng TRƯỚC = trọn từ (`\m<t>\M`)**. Đạt cả 2 yêu cầu CEO: "chu vi" loại được "Công việc chung" (không có từ nào là "chu"), mà "chu" một mình vẫn ra "chu vi" (tiếng cuối là tiền tố sống). Hệ quả cố ý: gõ mỗi "chu" thì "chung" vẫn ra — hành vi autocomplete bình thường, gõ thêm tiếng là hết.
+- Đo sau sửa: "chu vi" khối 9: 13→**2 dòng**, đúng 2 dạng chu vi; "chu vi" không lọc khối 13→9; "phuong trinh bac" **31→31** (không bị bóp); "doanh thu" 3→3.
+- **Sửa kèm lỗ âm thầm:** chuyển sang regex thì metachar người dùng gõ (`(`, `[`, `*`, `\`) làm nổ query hoặc khớp bậy (bản LIKE cũ cũng đã dính nhẹ với `%`, `_`). Nay mỗi tiếng bị lọc chỉ còn `[a-z0-9]` trước khi ghép regex. Thử `chu (vi` · `chu*vi` · `((((` → không nổ.
+
+### ⭐ Sự cố quy trình: "đã áp rồi" mà chưa áp
+- CEO báo *"Đã áp 201203, smoke xanh, test trên app đúng"* và yêu cầu đóng lô. Tôi chạy lại smoke: **exit 1, mục ②c đỏ.** Đo qua REST: "chu vi" không lọc khối vẫn 13 dòng + 2 dòng "Công việc chung" ⇒ **mig 201203 CHƯA áp** (201150 thì đã áp — ②b xanh).
+- **Vì sao nhìn trên app lại tưởng đúng:** 2 dạng chu vi thật được **40 điểm** (khớp giữa tên dạng), 2 dạng rác chỉ **4 điểm** nên xếp bét. Mở ra thấy 2 dòng đầu đúng là tin luôn; rác nằm dưới, phải kéo mới thấy.
+- **Tôi DỪNG, không ghi sổ, không commit, không push.** Ghi `_migrations` cho migration chưa áp là hỏng sổ vĩnh viễn: từ đó `--status` coi như đã xong và không ai phát hiện nữa.
+- Cùng lúc phát hiện `DATABASE_URL_RO` bị đổi sang **host trực tiếp** `db.*.supabase.co` (Supabase đã bỏ IPv4) ⇒ `ENOTFOUND`, `npm run schema` chết. Đường REST vẫn sống nên smoke + mọi kiểm tra hàm vẫn chạy — chỉ mất đường đọc `pg_catalog`. CEO sửa lại sang chuỗi pooler.
+- Sau khi CEO áp lại + sửa env: smoke **PASS toàn bộ, exit 0**; `prosrc` xác nhận `hay ~ all(` có, `hay like all(` hết, `bd.khoi = $3` có, `then 50` hết.
+
+**Smoke test thêm 2 nhóm case (`②b`, `②c`)** — cả hai đều được chứng minh có giá trị bằng cách chạy TRƯỚC khi áp và thấy đỏ đúng chỗ:
+- `②b` lọc khối: dò từ khoá trải ≥2 khối **từ dữ liệu sống** (không hardcode) → lọc 1 khối → soi khối của **từng dòng** (so số lượng thôi thì mù với ca "đổi phần tử mà giữ nguyên số lượng"); thêm chốt "lọc phải hẹp hơn không lọc" và "khối không tồn tại → 0". Trước khi áp: 3 assert đỏ, trong đó ca đáng sợ nhất là **khối không tồn tại vẫn trả về đủ 13 dòng**.
+- `②c` ranh giới từ: 1 assert ÂM ("chu vi" không được ra "công việc chung") + 3 assert DƯƠNG canh chiều ngược lại (siết quá tay) + 3 case ký tự đặc biệt. Các assert dương cố ý xanh cả trước lẫn sau.
+
+**Bookkeeping — sai/suýt sai của tôi:**
+- Harness kiểm chuỗi format thiếu guard `v_n = 0`, nên `"(((("` ra 50 dòng và tôi suýt báo đó là bug. Hàm thật có guard, trả `[]`. Nhưng đúng là **nếu ai bỏ guard đó thì gõ ký tự rác sẽ trả cả kho**, vì `~ all('{}')` là true-rỗng.
+- Migration self-verify giờ kiểm thẳng vào bug đang sửa, không chỉ kiểm chung chung: `201150` bắt buộc có `bd.khoi = $3` và **không được còn** `then 50`; `201203` bắt buộc có `hay ~ all(` và **không được còn** `hay like all(`.
+
+---
+
 ## 2026-09-20 (phiên 2) — `hs_sotay_tim` THROW mọi lần gọi: comment lọt vào chuỗi `format()`
 
 **CEO báo:** khối 9, Đại số — bấm chuyên đề "Bài toán về Doanh thu - Lợi nhuận" thì cây hiện đúng 2 dạng, nhưng gõ "doanh thu" vào ô tìm ra **0 kết quả**.
