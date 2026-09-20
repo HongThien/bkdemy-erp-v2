@@ -14291,3 +14291,31 @@ Thứ tự list & TỰ GHÉP: ưu tiên cao trước, cùng ưu tiên thì case 
   trong tooltip. Không đổi field/RPC nào (dữ liệu vốn đã đủ, chỉ là UI giấu đi).
 - **Verify qua app thật (HS0440):** tab "Cần luyện" hiện đúng "17/09", "16/09", "Hôm qua", "18/09" dưới
   từng chấm — đọc được ngay không cần hover. tsc sạch.
+
+### 20/09 — FIX BUG THẬT: ET 3 mã đề online, mọi HS đều rơi về mã 1
+
+- **CEO:** "ET có 3 mã đề. Phát hành online cho học sinh làm nhưng hệ thống chỉ nhận mã 1 ko nhận mã
+  còn lại." Cho Agent điều tra kỹ trước khi sửa (không đoán).
+- **Nguyên nhân (verify DB live, không suy đoán):** `resolve_bien_the` (mig 202608181719) đọc mã đề
+  của HS từ `tai_lieu.cau_hinh.hsMaDe[hoc_sinh_id]` — map này **KHÔNG tự sinh**, chỉ được điền khi GV
+  chủ động vào panel "👥 Gán mã đề theo HS" (ETScreen) bấm "🎲 Rải tự động" **rồi bấm lại "💾 Lưu ET"
+  lần 2** — 2 bước tách rời, dễ quên. Panel đó CHỈ hiện khi roster đã điểm danh "có mặt"; GV soạn/lưu
+  ET **trước** giờ học (rất phổ biến) thì panel rỗng, không gán được lúc đó.
+  Kiểm 10 ET gần nhất có `co_nhieu_ma_de=true`: **ET 11A1 · 12/09 có `hsMaDe = null` hoàn toàn** — và
+  cả **9/9 học sinh đã mở bài đều bị chốt `bien_the=1`** dù `bai_test_cau` đã snapshot đủ 3 mã đề —
+  xác nhận ĐÚNG bug, không phải nghi vấn suông. (Các ET khác trong 10 ET gần nhất thì GV có gán tay
+  đầy đủ nên hoạt động đúng — bug KHÔNG phải luôn xảy ra, chỉ khi bước gán tay bị bỏ sót.)
+- **Fix (mig `202609202123_et_resolve_bien_the_tu_rai.sql`, pure-derive — đúng tinh thần CLAUDE.md §4
+  "GV không tích/làm gì thêm"):** `resolve_bien_the` vẫn ưu tiên TUYỆT ĐỐI `hsMaDe` nếu GV đã gán tay
+  (giữ quyền chủ động xếp HS cạnh nhau khác mã đề) — CHỈ khi KHÔNG có gán tay mới rơi vào nhánh mới:
+  rải theo hash ổn định của `hoc_sinh_id`, modulo ĐÚNG số mã đề THẬT đã snapshot cho bai_test đó (đếm
+  `distinct bien_the` trong `bai_test_cau` — không hardcode 3; ET chỉ 1 mã đề vẫn luôn ra 1 như cũ).
+- **⚠️ Giới hạn đã biết, báo CEO:** fix chỉ áp cho HS **CHƯA mở bài** (mở lần đầu tiên tới từ giờ trở
+  đi). `bai_lam.bien_the` là snapshot 1 CHIỀU (chốt lúc mở, không đổi lại — đúng thiết kế gốc mig
+  202608181719 "sửa hsMaDe sau đó không đổi bài đang làm/đã nộp"), nên 9 HS đã lỡ mở ET 11A1 12/09 VẪN
+  giữ nguyên mã 1 (không retroactive) — hợp lý vì ET đó đã qua ~1 tuần, có thể đã chấm xong, đổi ngược
+  sẽ làm lệch câu đã làm. Nếu CEO cần sửa NGAY 1 ca đang diễn ra mà HS đã trót mở nhầm mã, phải xử tay
+  từng case (không có RPC dọn hàng loạt).
+- **Verify (SQL trực tiếp, không qua UI vì cần nhiều tài khoản HS khác nhau cùng lúc):** mô phỏng công
+  thức mới cho 10 HS lớp 11A1 (đúng lớp của ET lỗi) → phân bố `{1:5, 2:3, 3:2}` — rải đều thay vì dồn
+  hết vào 1. Không đổi client code (RPC signature/cách gọi giữ nguyên).

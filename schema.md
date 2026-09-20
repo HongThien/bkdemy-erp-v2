@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-236 bảng · 19 view · 0 enum · 78 trigger · 424 function
+238 bảng · 19 view · 0 enum · 79 trigger · 425 function
 
 ## _app_secrets
 
@@ -1298,6 +1298,27 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | mo_ta_ngan | text | Y |  |  |  |
 
+## hgt_cau_form_tn
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ma_cau | text |  |  | FK→hgt_cau_hoi.ma_cau |  |
+| lua_chon | jsonb |  |  |  |  |
+| dap_an | text |  |  |  | `A` · `B` · `C` · `D` |
+| key_gia_tri | text |  |  |  |  |
+| nguon | text |  | 'ai'::text |  | `ai` · `nguoi` |
+| ai_model | text | Y |  |  |  |
+| sinh_at | timestamp with time zone |  | now() |  |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| sua_truoc_duyet | boolean |  | false |  |  |
+| tu_choi_ly_do | text | Y |  |  |  |
+| tu_choi_boi | uuid | Y |  | FK→nhan_su.id |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
 ## hgt_cau_hoi
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -1433,6 +1454,20 @@
 |---|---|---|---|---|---|
 | ma_dang | text |  |  | PK FK→hgt_ban_do.ma_dang |  |
 | tien_de_ma_dang | text |  |  | PK FK→hgt_ban_do.ma_dang |  |
+
+## hgt_mcq_rule
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  |  | PK |  |
+| ten | text |  |  |  |  |
+| mo_ta | text |  |  |  |  |
+| vi_du | text | Y |  |  |  |
+| nhom | text |  |  |  | `khai_niem` · `tinh` |
+| ap_dung | text[] |  | '{}'::text[] |  |  |
+| du_phong | boolean |  | false |  |  |
+| active | boolean |  | true |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## hinh_bai
 
@@ -4947,6 +4982,7 @@ SELECT bl.hoc_sinh_id,
 | giai_thuong | trg_giai_thuong_check_slot | BEFORE | INSERT | giai_thuong_check_slot |
 | han_nop_ngoai_le | tg_han_nop_ngoai_le_log | AFTER | INSERT/DELETE/UPDATE | trg_han_nop_ngoai_le_log |
 | hgt_ban_do | trg_hgt_ban_do_sync_ca_test_cau | AFTER | UPDATE | tg_ban_do_sync_ca_test_cau |
+| hgt_cau_form_tn | hgt_cau_form_tn_kiem | BEFORE | INSERT/UPDATE | hgt_cau_form_tn_kiem |
 | hgt_cau_hoi | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | hgt_cau_hoi | trg_kho_cau_duyet_nguon | BEFORE | INSERT/UPDATE | _kho_cau_duyet_nguon |
 | hgt_cau_hoi | trg_log_doi_dang | AFTER | UPDATE | _trg_log_doi_dang |
@@ -5321,6 +5357,7 @@ SELECT bl.hoc_sinh_id,
 - `giai_thuong_check_slot()` → trigger
 - `giaoviec_housekeeping()` → void
 - `han_nop_bai_test(p_lop uuid, p_ngay date, p_loai text)` → timestamp with time zone
+- `hgt_cau_form_tn_kiem()` → trigger
 - `hgt_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `hgt_cum_tien_de_bao_dong(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `hgt_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
@@ -5410,9 +5447,9 @@ SELECT bl.hoc_sinh_id,
 - `trg_han_nop_ngoai_le_log()` → trigger
 - `trg_htd_test_nop()` → trigger
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
