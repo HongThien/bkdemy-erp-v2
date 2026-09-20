@@ -125,6 +125,20 @@ function Trong({ t, icon, title, mo_ta }: { t: Theme; icon: string; title: strin
 export type SoTayApi = { cay: typeof soTayCay; tim: typeof soTayTim; dang: typeof soTayDang }
 const API_THAT: SoTayApi = { cay: soTayCay, tim: soTayTim, dang: soTayDang }
 
+// ⚠ `e instanceof Error` KHÔNG bắt được lỗi Supabase: `supabase.rpc` trả `{ error }` là
+// PostgrestError — OBJECT THƯỜNG `{message, details, hint, code}`, không phải subclass của Error.
+// Dùng instanceof ⇒ luôn rơi vào nhánh fallback ⇒ nuốt mất message thật của DB (đúng thứ cần đọc
+// nhất khi RPC hỏng). Đọc `.message` của mọi object thay vì hỏi nó là "Error" hay không.
+function moTaLoi(e: unknown, mac_dinh: string): string {
+  if (e && typeof e === 'object' && 'message' in e) {
+    const m = (e as { message?: unknown }).message
+    if (typeof m === 'string' && m.trim()) return m
+  }
+  return mac_dinh
+}
+// Log NGUYÊN error (không phải chuỗi đã rút gọn) — mất stack/`code`/`hint` là mất đường chẩn đoán.
+const ghiLoi = (cho: string, e: unknown) => console.error(`[SoTay] ${cho} lỗi:`, e)
+
 export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
   gioiTinh: 'nam' | 'nu' | null; onXong: () => void; api?: SoTayApi
 }) {
@@ -139,6 +153,7 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
   const [maDangMo, setMaDangMo] = useState<string | null>(null)
   const [q, setQ] = useState('')
   const [ketQua, setKetQua] = useState<SoTayTimRow[] | null>(null)
+  const [loiTim, setLoiTim] = useState<string | null>(null) // tách khỏi `ketQua` — xem effect tìm
 
   useEffect(() => { monCuaHS().then((m) => setMon(m ?? 'Toán')).catch(() => setMon('Toán')) }, [])
 
@@ -150,21 +165,30 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
     setLoi(null)
     api.cay(mon, nhanh, khoi)
       .then((c) => { if (huy) return; setCay(c); setDuong({ chuDe: null, chuyenDe: null }) })
-      .catch((e) => { if (!huy) setLoi(e instanceof Error ? e.message : 'Không tải được sổ tay.') })
+      .catch((e) => { ghiLoi('tải cây', e); if (!huy) setLoi(moTaLoi(e, 'Không tải được sổ tay.')) })
     return () => { huy = true }
   }, [mon, nhanh, khoi])
 
   // Tìm kiếm: gõ <2 ký tự thì tắt hẳn kết quả (trả về cây). Debounce 250ms để mỗi phím không
   // bắn 1 RPC. `lanTim` chặn kết quả của lượt gõ CŨ về sau đè lên lượt mới (race khi mạng lag).
+  // ⭐ RPC LỖI ≠ KHÔNG CÓ KẾT QUẢ — hai trạng thái TÁCH HẲN (bản trước gộp làm một:
+  // `.catch(() => setKetQua([]))` biến MỌI lỗi thành "Không tìm thấy dạng nào", nên khi
+  // `hs_sotay_tim` nổ ở `format()` thì màn vẫn nói tỉnh bơ "0 kết quả" — bug sống 2 ngày,
+  // không ai nhìn màn hình mà đoán ra được. `loiTim != null` ⇒ vẽ hộp lỗi, KHÔNG vẽ hộp rỗng.
   const lanTim = useRef(0)
   useEffect(() => {
     const tu = q.trim()
-    if (!mon || tu.length < 2) { setKetQua(null); return }
+    if (!mon || tu.length < 2) { setKetQua(null); setLoiTim(null); return }
     const lan = ++lanTim.current
     const id = setTimeout(() => {
       api.tim(tu, mon, nhanh, khoi ?? cay?.khoi ?? null)
-        .then((rs) => { if (lan === lanTim.current) setKetQua(rs) })
-        .catch(() => { if (lan === lanTim.current) setKetQua([]) })
+        .then((rs) => { if (lan !== lanTim.current) return; setLoiTim(null); setKetQua(rs) })
+        .catch((e) => {
+          ghiLoi('tìm', e)
+          if (lan !== lanTim.current) return
+          setLoiTim(moTaLoi(e, 'Không tìm được, thử lại giúp em nhé.'))
+          setKetQua([])
+        })
     }, 250)
     return () => clearTimeout(id)
   }, [q, mon, nhanh, khoi, cay?.khoi])
@@ -195,12 +219,12 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
   const chuyenDeLoc = chuyenDe && chuDeLoc ? chuDeLoc.con.find((c) => c.ma === chuyenDe.ma) ?? null : null
 
   const title = dangSearch ? 'Tìm dạng bài' : chuyenDeLoc ? chuyenDeLoc.ten : chuDeLoc ? chuDeLoc.ten : 'Sổ tay kiến thức'
-  const sub = dangSearch ? `${ketQua.length} kết quả`
+  const sub = dangSearch ? (loiTim ? 'Lỗi — xem bên dưới' : `${ketQua.length} kết quả`)
     : chuyenDeLoc ? `${chuyenDeLoc.dangs.length} dạng bài`
     : chuDeLoc ? `${chuDeLoc.con.length} chuyên đề`
     : 'Tra lý thuyết và bài mẫu theo dạng'
   const back = () => {
-    if (dangSearch) { setQ(''); setKetQua(null); return }
+    if (dangSearch) { setQ(''); setKetQua(null); setLoiTim(null); return }
     if (chuyenDe) { setDuong({ chuDe, chuyenDe: null }); return }
     if (chuDe) { setDuong({ chuDe: null, chuyenDe: null }); return }
     onXong()
@@ -251,7 +275,11 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
 
       <div className="mt-4 flex flex-col gap-2.5">
         {/* ── Kết quả tìm ─────────────────────────────────────────────── */}
-        {dangSearch && ketQua.length === 0 && (
+        {/* Lỗi TRƯỚC, rỗng SAU — không bao giờ báo "không tìm thấy" cho một lượt gọi đã hỏng. */}
+        {dangSearch && loiTim && (
+          <Trong t={t} icon="⚠️" title="Tìm kiếm đang lỗi" mo_ta={loiTim} />
+        )}
+        {dangSearch && !loiTim && ketQua.length === 0 && (
           <Trong t={t} icon="🔎" title="Không tìm thấy dạng nào" mo_ta="Thử gõ ngắn hơn, hoặc bỏ tìm để lọc dần theo chủ đề nhé." />
         )}
         {dangSearch && ketQua.map((r) => (
@@ -296,8 +324,10 @@ function DocDang({ t, maDang, mon, nhanh, api, onBack }: { t: Theme; maDang: str
     let huy = false
     setD(undefined); setLoi(null)
     api.dang(maDang, mon, nhanh)
-      .then((r) => { if (!huy) setD(r) })
-      .catch((e) => { if (!huy) { setD(null); setLoi(e instanceof Error ? e.message : 'Không mở được dạng này.') } })
+      .then((r) => { if (!huy) { setLoi(null); setD(r) } })
+      // `d === null` dùng cho CẢ "chưa có lý thuyết" lẫn "gọi hỏng" ⇒ phải có `loi` mới phân biệt
+      // được; render đọc `loi` trước để không báo "chưa soạn" cho một lượt gọi đã lỗi.
+      .catch((e) => { ghiLoi('mở dạng ' + maDang, e); if (!huy) { setD(null); setLoi(moTaLoi(e, 'Không mở được dạng này.')) } })
     return () => { huy = true }
   }, [maDang, mon, nhanh])
 

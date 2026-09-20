@@ -1,5 +1,50 @@
 ﻿# DEVLOG — Kho (BKdemy ERP v2) · nhật ký THÔ
 
+## 2026-09-20 (phiên 2) — `hs_sotay_tim` THROW mọi lần gọi: comment lọt vào chuỗi `format()`
+
+**CEO báo:** khối 9, Đại số — bấm chuyên đề "Bài toán về Doanh thu - Lợi nhuận" thì cây hiện đúng 2 dạng, nhưng gõ "doanh thu" vào ô tìm ra **0 kết quả**.
+
+**Chẩn đoán (3 giả thuyết đầu đều SAI, ghi lại để khỏi đi lại đường cũ):**
+- ❌ *"Tìm chỉ khớp tên dạng, không khớp tên chuyên đề"* — sai, haystack gồm cả 4 cột `ten_dang + ten_chuyen_de + ten_chu_de + mo_ta_ngan`.
+- ❌ *"`p_khoi` / độ khó thu hẹp kết quả"* — sai, `p_khoi` chỉ **cộng 50 điểm**, không lọc; độ khó thì RPC **không có tham số nào**, client cũng không truyền.
+- ❌ *"`security definer` owner `postgres` thiếu EXECUTE trên `fn_bo_dau` (owner `claude_build`)"* — nghe rất hợp lý vì `tim` là hàm DUY NHẤT gọi `fn_bo_dau`, nhưng đo `has_function_privilege` thì `postgres` **có** EXECUTE trên cả 5 helper. Nhờ đo mới biết, không phải nhờ suy.
+
+**GỐC THẬT:** `hs_sotay_tim` nổ ngay ở `format()` — `ERROR 22023: unrecognized format() type specifier "``"`. Hai dòng **comment** nằm BÊN TRONG chuỗi `$q$…$q$` của mig 181946:
+```
+-- ⚠ `%%` KHÔNG phải lỗi gõ: … nên mọi `%` của LIKE phải nhân đôi,
+-- không thì format() gặp `%'` là ném "unrecognized format() type specifier" …
+```
+`format()` xử lý **chuỗi thô**, KHÔNG biết `--` là comment SQL ⇒ 2 dấu `%` trần trong `` `%` `` và `` `%'` `` bị nuốt làm specifier. **Cái comment dặn escape `%` lại chính là chỗ quên escape `%`.** Quét lại: `hs_sotay_cay` (3 khối format) và `hs_sotay_dang` (1 khối) đều sạch, chỉ `tim` dính.
+
+**VÌ SAO SỐNG 2 NGÀY — không đường kiểm nào GỌI HÀM:**
+- test anon → chạm guard `_sotay_duoc_doc()` TRƯỚC `format()` ⇒ ra 401/400, không tới chỗ nổ;
+- đo độ phủ B1/B2 → tôi **viết lại query bằng tay** với `%` thường, không qua `format()`;
+- demo `?demo=sotay` → dùng `MOCK_API`, không đụng RPC;
+- `tsc` + `vite build` → không chạm DB.
+Bài học *"Verify dữ liệu ≠ verify đường code"* đã nằm sẵn cuối HANDOFF từ trước. Vẫn đạp lại.
+
+**Client nuốt lỗi — đây mới là thứ làm bug ẩn được:** `SoTayHS.tsx:167` cũ là `.catch(() => setKetQua([]))` ⇒ **mọi** lỗi RPC hiện thành "Không tìm thấy dạng nào". Nhìn màn hình không thể phân biệt *kho không có* với *hàm nổ*. Vi phạm đúng bài học "Bỏ qua âm thầm = bug sống lâu" đã có trong HANDOFF.
+
+**Lỗi phụ phát hiện khi sửa:** cả 3 chỗ dùng `e instanceof Error ? e.message : '<mặc định>'` — nhưng lỗi Supabase là `PostgrestError`, **object thường, KHÔNG phải subclass của `Error`** ⇒ nhánh `instanceof` luôn sai ⇒ message thật của DB bị vứt ở cả 3 nơi. Thay bằng `moTaLoi()` đọc `.message` của mọi object.
+
+**Sửa:**
+- `SoTayHS.tsx` — tách `loiTim` khỏi `ketQua` (lỗi vẽ hộp "Tìm kiếm đang lỗi" + message DB, rỗng mới vẽ "Không tìm thấy"); áp cho **cả 3** chỗ gọi RPC; `console.error` log **nguyên error object** (giữ `code`/`hint`).
+- **Mig `202609201056`** — `create or replace hs_sotay_tim`. KHÔNG chọn cách escape `%%` trong comment: cách đó chỉ đúng lần này, người sau viết comment mới là đạp lại. Thay vào đó **bỏ sạch `%` khỏi chuỗi format**: mẫu LIKE dựng ở plpgsql rồi truyền qua `USING` (`$4` tiền tố, `$5` chứa-giữa), `p_limit` từ `%3$s` → `$6`. Chuỗi format còn đúng 2 specifier `%1$I` `%2$I`. Self-verify trong migration: tách `prosrc`, gỡ 2 specifier hợp lệ, còn `%` nào là raise + rollback; cộng kiểm quyền 2 chiều. Hành vi tìm kiếm + chữ ký KHÔNG đổi.
+- **`scripts/smoke-sotay.mjs` + `npm run smoke:sotay`** — GỌI THẬT cả 3 RPC bằng phiên `authenticated` (tự đọc `VITE_DEV_ACCOUNTS`, không in mật khẩu). Mã dạng lấy SỐNG từ cây, không hardcode. Có **đối chứng âm** (từ khoá vô nghĩa phải ra 0) để "có kết quả" không thể là do hàm trả bừa. Exit 1 khi fail.
+
+**Suýt xanh giả (bookkeeping):** lần đầu viết script kiểm chuỗi format mới, regex `\$q\$(.*?)\$q\$` vớ phải `$q$…$q$` nằm trong **comment header** của chính file migration ⇒ test chạy trên chuỗi `"…"` và báo "0 dấu %, format() OK". Đã sửa: lấy khối DÀI NHẤT + assert phải chứa `jsonb_agg`.
+
+**Verify:**
+- Trước khi áp: `npm run smoke:sotay` **FAIL đúng chỗ** — `② hs_sotay_tim → [22023]`, exit 1. Test có giá trị thật, không phải test cho có.
+- Sau khi CEO áp: smoke **PASS cả 3**, exit 0. Lần đầu `hs_sotay_cay` VÀ `hs_sotay_dang` được gọi thật.
+- Ca CEO báo, qua RPC thật: `"doanh thu"` khối 9 → **3 kết quả** (T109090101 · T109090102 · T109090401); `"DOANH THU"` → 3 (không phân biệt hoa/thường); `"loi nhuan"` → 2; `"zzzkhongcogidauma"` → 0.
+- Hàm trên DB: 0 dấu `%` sót trong chuỗi format.
+- `tsc` sạch (chỉ còn lỗi `pdfRender.ts` có sẵn) · build HS 784 kB.
+
+**Còn treo:** `khoi_list` sắp theo TEXT ⇒ `["10","11","12","3","4","4T",…]`. Tài khoản KHÔNG phải HS gọi `hs_sotay_cay(p_khoi=null)` rơi về `khoi_list[0]` = **khối 10**, không phải khối nhỏ nhất. HS thật không dính (có `khoi` riêng). CEO chưa yêu cầu sửa.
+
+---
+
 ## 2026-09-20 — Đóng lô Sổ tay: áp 2 migration · lỗ `anon` · đo độ phủ lý thuyết
 
 **Bối cảnh:** tiếp mục 18/09 bên dưới (lúc đó mới viết code, CHƯA áp được vì máy không có `.env`). Giữa hai mốc, CEO đã dán `.env` có `DATABASE_URL_RO` (role `claude_ro`) ⇒ từ đây mọi query dò dữ liệu chạy đúng luật §2.1.
