@@ -33,6 +33,7 @@ import MayManHS from './MayManHS'
 import ThanhTuuHS from './ThanhTuuHS'
 import BaiTapGiaoHS from './BaiTapGiaoHS'
 import ThongTinHocTap from './ThongTinHocTap'
+import SoTayHS from './SoTayHS'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
 type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
@@ -54,7 +55,7 @@ const THI_LOAI = new Set(['et', 'de_thi', 'bo_tro_test', 'retest'])
 // Bảng xếp hạng (Thùy 21/08: "ko phải chỉ 5T. Hiện cho các khối tiểu học") — mọi khối cấp 1, MỖI
 // EM xếp hạng với ĐÚNG khối của mình (BangXepHang tự đọc khoiCuaHS(), không hardcode '5T' nữa).
 const KHU_CHI_CAP1 = new Set<KhuId>(['xep_hang'])
-type KhuId = 'giao_trinh' | 'et' | 'btvn' | 'tu_luyen' | 'thong_tin' | 'de_thi_thu' | 'xep_hang' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao'
+type KhuId = 'giao_trinh' | 'et' | 'btvn' | 'tu_luyen' | 'thong_tin' | 'de_thi_thu' | 'xep_hang' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay'
 // direct = ô này KHÔNG đi qua màn "danh sách nhiều bài" (setKhu+tab) — bấm vào thẳng 1 màn riêng.
 // Tự luyện là 1 PHIÊN đang-tiếp-diễn trong ngày (không phải danh sách bài đã phát hành theo ngày
 // như ET/BTVN), nên không hợp mô hình list+tab dùng chung — mỗi màn direct tự lo dữ liệu riêng.
@@ -66,6 +67,7 @@ const KHU: { id: KhuId; ten: string; icon: string; loai?: string; direct?: boole
   { id: 'btvn', ten: 'BTVN', icon: '🏠', loai: 'btvn', mau: 'ph-orange' },
   { id: 'tu_luyen', ten: 'Tự luyện', icon: '🎯', direct: true, mau: 'ph-green' },
   { id: 'thong_tin', ten: 'Thông tin học tập', icon: '📈', direct: true, mau: 'brand' },
+  { id: 'so_tay', ten: 'Sổ tay kiến thức', icon: '📖', direct: true, mau: 'ph-purple' },
   { id: 'xep_hang', ten: 'Bảng xếp hạng', icon: '🏆', direct: true, mau: 'ph-orange' },
   { id: 'de_thi_thu', ten: 'Làm đề thi thử', icon: '📄', mau: 'ph-purple' },
 ]
@@ -76,6 +78,7 @@ const KHU: { id: KhuId; ten: string; icon: string; loai?: string; direct?: boole
 const KHU_CAP2: { id: KhuId; ten: string; icon: string; direct?: boolean; sapCo?: boolean }[] = [
   { id: 'tu_luyen',      ten: 'Tự luyện',           icon: '🎯', direct: true },
   { id: 'thong_tin',     ten: 'Thông tin học tập',  icon: '📈', direct: true },
+  { id: 'so_tay',        ten: 'Sổ tay kiến thức',   icon: '📖', direct: true },
   { id: 'de_thi_thu',    ten: 'Làm đề thi thử',     icon: '📄', sapCo: true },
   { id: 'bai_tap_giao',  ten: 'Bài tập được giao',  icon: '📚', direct: true },  // placeholder — vào màn "đang phát triển"
   { id: 'thanh_tuu',     ten: 'Thành tựu',          icon: '🏆', direct: true },
@@ -90,6 +93,7 @@ const KIT_O: Record<KhuId, Pick<HomeCard, 'ill' | 'emoji' | 'doodle' | 'tone'>> 
   btvn:         { ill: 'homework_house', doodle: 'Ôn tập mỗi ngày nhé!', tone: 'orange' },
   tu_luyen:     { ill: 'self_practice_target', doodle: 'Small Steps Big Progress', tone: 'green' },
   thong_tin:    { ill: 'study_progress_chart', doodle: 'Hiểu mình để tiến bộ hơn!', tone: 'blue' },
+  so_tay:       { ill: 'purple_bookmark_book', doodle: 'Quên đâu tra đó!', tone: 'purple' },
   xep_hang:     { ill: 'self_practice_target', doodle: 'Thi đua vui!', tone: 'green' },
   de_thi_thu:   { ill: 'mock_exam_locked', doodle: 'Sắp ra mắt! Hãy chờ nhé!', tone: 'gray' },
   bai_tap_giao: { ill: 'mock_exam_locked', emoji: '📚', doodle: 'Sắp có nè!', tone: 'blue' },
@@ -121,11 +125,12 @@ function Head({ title, sub, onBack }: { title: string; sub?: string; onBack: () 
 // 3 cột full màn, không max-w 430 centered như HomeHS). Nội dung đồng bộ KHU_CAP2 (đã build cho cấp
 // 2): 6 ô Tự luyện · Thông tin học tập · Đề thi thử (sắp có) · Bài tập được giao · Thành tựu · May
 // mắn. Bảng xếp hạng cũ chuyển vào Thành tựu tương lai (huy hiệu/mốc — placeholder trong ThanhTuuHS).
-type BoxCap1DirectId = 'tu_luyen' | 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao'
+type BoxCap1DirectId = 'tu_luyen' | 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay'
 type BoxCap1 = { id: BoxCap1DirectId; ten: string; mo_ta: string; icon: string; grad: string } | { id: string; ten: string; mo_ta: string; icon: string; grad: string; sapCo: true }
 const BOX_CAP1: BoxCap1[] = [
   { id: 'tu_luyen',     ten: 'Tự luyện',           mo_ta: 'Luyện theo dạng bài còn yếu hoặc chủ động chọn nội dung muốn ôn tập.', icon: '🎯', grad: 'from-[#f0e9ff] to-[#faf8ff]' },
   { id: 'thong_tin',    ten: 'Thông tin học tập',  mo_ta: 'Xem kết quả gần nhất, dạng đang yếu, nhận xét và gợi ý ôn tập.',      icon: '📘', grad: 'from-[#e9f9ff] to-[#f6fdff]' },
+  { id: 'so_tay',       ten: 'Sổ tay kiến thức',   mo_ta: 'Tra lý thuyết và bài mẫu của từng dạng bài — tìm theo tên hoặc lọc dần.', icon: '📖', grad: 'from-[#f3ecff] to-[#fbf8ff]' },
   { id: 'de_thi_thu',   ten: 'Làm đề thi thử',     mo_ta: 'Đề trường/sở để em luyện làm bài thi thật — sắp mở.',                 icon: '📄', grad: 'from-[#eef2ff] to-[#f7f9ff]', sapCo: true },
   { id: 'bai_tap_giao', ten: 'Bài tập được giao',  mo_ta: 'Làm các bài tập giáo viên giao thêm cho cá nhân hoặc cả lớp.',        icon: '📚', grad: 'from-[#e8f4ff] to-[#f7fbff]' },
   { id: 'thanh_tuu',    ten: 'Thành tựu',          mo_ta: 'Xem giải thưởng cuối tháng, huy hiệu và mốc học tập đã đạt được.',    icon: '🏆', grad: 'from-[#fff8de] to-[#fffbef]' },
@@ -240,7 +245,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
-  const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
+  const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
   const [chuDeDang, setChuDeDang] = useState<{ ma_dang: string; ten_dang: string; chiCauMoi?: boolean } | null>(null) // dạng đã chọn cho "Tự luyện theo chủ đề" (null = luồng tổng hợp)
   // "Học từ đầu" (Thùy 19/09) — ô CHỈ hiện khi HS có case bổ trợ đuổi ĐANG MỞ (tự suy
   // bo_tro_duoi.trang_thai='can_duoi', KHÔNG lưu cờ riêng — xem htd_co_mo). htdMon lưu
@@ -333,6 +338,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'may_man') return <MayManHS gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
   if (direct === 'thanh_tuu') return <ThanhTuuHS gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
   if (direct === 'bai_tap_giao') return <BaiTapGiaoHS gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
+  if (direct === 'so_tay') return <SoTayHS gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
 
   if (active) {
     const back = () => { setActive(null); listBaiTestCuaHS().then(setTests) }
@@ -349,7 +355,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Danh tính hiển thị: lấy từ chính test HS thấy (đã qua RLS) — không query thêm bảng nào.
   const lopMon = tests?.[0] ? `${tests[0].lop_ten} · ${tests[0].mon}` : null
 
-  const CHU_DUOI: Partial<Record<KhuId, string>> = { tu_luyen: 'Luyện theo dạng yếu', thong_tin: 'Dạng đang yếu', xep_hang: 'Thi đua tự luyện' }
+  const CHU_DUOI: Partial<Record<KhuId, string>> = { tu_luyen: 'Luyện theo dạng yếu', thong_tin: 'Dạng đang yếu', xep_hang: 'Thi đua tự luyện', so_tay: 'Tra lý thuyết & bài mẫu' }
 
   // ── MÀN CHÍNH: ô vuông (theo cấp/khối), 2 cột ─────────────────────────────
   if (!khu && (cap1 === null || cap2 === null)) return <div className="flex min-h-screen items-center justify-center bg-ios text-sm text-ph-label-2">Đang tải…</div>
@@ -381,12 +387,13 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
             : k.id === 'bai_tap_giao' ? ['Đang phát triển', 'xam']
             : k.id === 'tu_luyen' ? ['Luyện theo dạng yếu', 'xam']
             : k.id === 'thong_tin' ? ['Dạng đang yếu', 'xam']
+            : k.id === 'so_tay' ? ['Tra lý thuyết & bài mẫu', 'xam']
             : ['', 'xam']
           const badge = k.id === 'may_man' && maymanCoLuot ? 1 : 0
           return {
             id: k.id, ten: k.ten, sub, subMau, badge, disabled: !!k.sapCo, ...KIT_O[k.id],
             onClick: k.sapCo ? undefined : k.direct
-              ? () => setDirect(k.id === 'tu_luyen' ? 'tu_luyen_chon' : (k.id as 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao'))
+              ? () => setDirect(k.id === 'tu_luyen' ? 'tu_luyen_chon' : (k.id as 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay'))
               : () => { setKhu(k.id); setTab('chua') },
           }
         }), ...theCardHTD]
@@ -404,7 +411,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
             : ds.length ? ['Xong hết rồi', 'xanh'] : ['Chưa có bài', 'xam']
           return {
             id: k.id, ten: k.ten, sub, subMau, badge: nChuaLam, disabled: sapCo, ...KIT_O[k.id],
-            onClick: sapCo ? undefined : k.direct ? () => setDirect(k.id === 'tu_luyen' ? 'tu_luyen_chon' : (k.id as 'thong_tin' | 'xep_hang')) : () => { setKhu(k.id); setTab('chua') },
+            onClick: sapCo ? undefined : k.direct ? () => setDirect(k.id === 'tu_luyen' ? 'tu_luyen_chon' : (k.id as 'thong_tin' | 'xep_hang' | 'so_tay')) : () => { setKhu(k.id); setTab('chua') },
           }
         }), ...theCardHTD]
     return <HomeHS hoTen={hoTen} maHS={maHS} lopMon={lopMon} gioiTinh={gioiTinh} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}

@@ -185,6 +185,7 @@
   - DB đã có bảng mà chưa có sổ ⇒ script **từ chối chạy** và in đúng lệnh cần gõ, thay vì đâm vào `0001`.
   - **Lịch sử migration bất biến:** sửa file đã áp thì DB và repo nói hai chuyện khác nhau — `--status`
     sẽ nêu cờ, nhưng script KHÔNG áp lại. Muốn đổi thì viết migration **MỚI** đè lên.
+  - **⭐ AI ÁP đổi cả posture quyền (đo thật 18/09):** áp bằng **SQL Editor** ⇒ hàm thuộc owner `postgres` ⇒ dính `alter default privileges` của Supabase ⇒ `anon` được **grant TƯỜNG MINH**, nên `revoke … from public` **KHÔNG đủ**, phải `revoke execute … from anon`; áp bằng **`npm run migrate`** (owner `claude_build`) thì không dính, ACL không hề có `anon`. *(Cắn thật: mig 202609181946 tưởng đã kín, anon vẫn gọi được — vá ở mig 202609182334.)*
 - **Sau mỗi migration:** `npm run schema`, commit `schema.md` cùng migration (git diff thấy schema đổi gì).
 - **Đặt tên migration = TIMESTAMP, không phải số tăng dần:** `npm run new-migration ten_viec_snake_case`
   → `YYYYMMDDHHMM_ten_viec.sql` (giờ VN). Số tăng dần cấp bằng "nhìn file cuối +1" nên hai luồng làm

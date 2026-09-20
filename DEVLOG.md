@@ -1,5 +1,85 @@
 ﻿# DEVLOG — Kho (BKdemy ERP v2) · nhật ký THÔ
 
+## 2026-09-20 — Đóng lô Sổ tay: áp 2 migration · lỗ `anon` · đo độ phủ lý thuyết
+
+**Bối cảnh:** tiếp mục 18/09 bên dưới (lúc đó mới viết code, CHƯA áp được vì máy không có `.env`). Giữa hai mốc, CEO đã dán `.env` có `DATABASE_URL_RO` (role `claude_ro`) ⇒ từ đây mọi query dò dữ liệu chạy đúng luật §2.1.
+
+**Áp migration (CEO áp tay qua SQL Editor):**
+- `202609181946_so_tay_kien_thuc_hs.sql` — 5 function (2 helper + 3 RPC). Đã ghi sổ, `bam = ab4efcb2b5b78576`.
+- `202609182334_so_tay_revoke_anon.sql` — vá quyền. `bam = 42671aa48aa88a1f`.
+- Đối chiếu thuật toán `bam` (sha256 nội dung utf8 đã bỏ `\r`, cắt 16 hex — `migrate.mjs:105-107`) với toàn bộ sổ: **477 khớp / 0 lệch** ⇒ không phải đọc code rồi đoán.
+
+**⭐ LỖI ĐÁNG GIÁ NHẤT PHIÊN — `revoke … from public` KHÔNG chặn được `anon` trên Supabase:**
+- Mig 181946 viết `revoke all … from public` rồi `grant … to authenticated`, theo đúng tiền lệ mig 0062/0063. Comment trong file khẳng định *"không để cửa mở"*.
+- **Đo lại sau khi áp thì anon VẪN gọi được.** ACL thật: `{postgres=X/postgres, anon=X/postgres, authenticated=X/postgres, service_role=X/postgres}`.
+- Nguyên nhân: Supabase có `alter default privileges … grant execute on functions to anon, authenticated, service_role`, và **default privileges gắn theo ROLE TẠO HÀM**. CEO áp tay qua SQL Editor ⇒ owner = `postgres` ⇒ `anon` nhận grant RIÊNG, TƯỜNG MINH. `revoke from public` chỉ gỡ pseudo-role PUBLIC (gỡ được thật — 5 ACL không còn entry `=X/postgres`), không đụng `anon=X`.
+- Đối chiếu: hàm áp bằng `npm run migrate` (owner `claude_build`) KHÔNG dính — `count_cau_by_dang` ACL là `{claude_build=X, authenticated=X}`, không hề có `anon`. Đó là lý do tiền lệ 0062/0063 chạy đúng mà 181946 thì không.
+- **Triệu chứng phân biệt được bằng HTTP code:** anon gọi ra `400 / P0001 / "Không có quyền đọc sổ tay."` = hàm CHẠY rồi mới bị thân hàm chặn (chỉ còn 1 lớp phòng thủ). Sau khi vá ra `401 / 42501 / permission denied for function` = chặn ở tầng GRANT, hàm không chạy.
+- Fix: mig `202609182334` — `revoke execute … from anon` cho cả 5 hàm, kèm DO block self-verify 2 chiều (anon phải mất EXECUTE **và** `authenticated` phải còn, tránh siết lố làm chết app HS). Verify sau khi áp: cả 5 ra đúng 401/42501.
+- KHÔNG sửa comment sai ở 181946 (lịch sử bất biến) — ghi đính chính trong header 182334.
+- Đã thêm 1 dòng vào CLAUDE.md §2.1 (dưới bullet "Lịch sử migration bất biến").
+
+**Sai của tôi trong phiên (bookkeeping):**
+- Viết comment "không để cửa mở" ở mig 181946 khi CHƯA đo — suy từ tiền lệ mà bỏ qua biến số "ai áp". Đúng kiểu §2.1 cảnh báo: dòng tài liệu nói "đã an toàn" mà không ai verify.
+- Query B2 lượt đầu viết thành `not _kho_la_dang_cho(...) and _kho_la_dang_cho(...)` — **tautology**, chỉ có thể ra 0 bất kể dữ liệu. Suýt báo cáo số 0 đó như bằng chứng. Phải đo lại bằng cách dựng NGUYÊN cây của RPC rồi đếm lá.
+- Ghi file CSV lạc vào thư mục cha; đã chuyển sang scratchpad.
+
+**Đo độ phủ lý thuyết (`DATABASE_URL_RO`) — CEO nói "đã có đầy đủ", thực tế KHÔNG:**
+- **Đại: 356/678 dạng có `noi_dung` = 52.5%.** Hình GT: **14/45 = 31.1%**.
+- **Cột "chỉ có `file_url`" = 0 ở MỌI khối** ⇒ lo ngại "bộ lọc `noi_dung <> ''` giấu mất lý thuyết dạng file" là **không xảy ra**.
+- Theo khối (Đại, có/tổng): k3 16/21 · k4 26/79 · k5 32/81 · k6 33/46 · k7 35/46 · k8 32/59 · k9 41/85 · k10 15/23 · k11 40/73 · k12 50/79 · 4T 24/71 · 5T 12/15.
+- Khối 6-9 (đối tượng chính của sổ tay): **103 dạng thiếu lý thuyết**, trong đó 63 dạng CÓ câu trong kho, **1.589 câu** đang nằm ở dạng không có lý thuyết. Nặng nhất: `T108030104` "Phân tích đa thức thành nhân tử bằng phương pháp tách hạng tử" (k8, **111 câu**) — dạng nhiều câu nhất khối 8 mà HS mở sổ tay KHÔNG thấy. Danh sách đầy đủ đã xuất CSV gửi CEO (không commit vào repo).
+- "Chưa phân dạng" lọt vào `hs_sotay_cay`: **0** (Đại 12 dòng, HGT 3 dòng, không dòng nào có `noi_dung` ⇒ kể cả BỎ bộ lọc cũng không lọt — bộ lọc hiện là bảo hiểm, chưa chặn gì thật).
+- Kiểm cả 3 RPC lọc `noi_dung` rỗng đúng: `cay` (dòng 114-116) · `tim` (180-181) · `dang` (236-238) đều có `join` + `btrim(...) <> ''`. Query ĐẾM (102-105) cố tình dùng `left join` không lọc — dạng rỗng vào payload dưới dạng CON SỐ `thieu_ly_thuyet`, không phải mục trong danh sách. Test cặp cùng khối 8 có đối chứng: dạng rỗng bị loại ở cả 3, dạng có lý thuyết vẫn ra ở cả 3.
+
+**Còn treo:**
+- **Chưa gọi `hs_sotay_cay` THẬT end-to-end.** `claude_ro` không có EXECUTE (chỉ `authenticated`), và tôi không có tài khoản HS. Mọi kết luận về output RPC là do nhân bản query, không phải gọi hàm. Cần CEO mở app HS bằng 1 tài khoản khối 6-9.
+- Hình học thuần (`hinh_hoc_bai`) vẫn ngoài sổ tay — 3 cột compat `ma_chuyen_de/ten_chuyen_de/muc_do` còn RỖNG.
+- Repo CHA `C:\Users\Admin\Desktop\2\bkdemy-erp-v2` là một git repo riêng đang có **594 file báo `D`** + `?? bkdemy-erp-v2/` — nội dung từng ở gốc, sau bị dời vào thư mục con. Hai repo lồng nhau. KHÔNG đụng tới; nêu ra để đừng ai gõ lệnh git ở đó mà tưởng đang ở repo trong.
+
+---
+
+## 2026-09-18 — Sổ tay kiến thức cho app HS (3 RPC + màn tra cứu) — CHƯA ÁP MIGRATION
+
+**Y/c CEO:** "Sổ tay kiến thức" trên hs-app. Bản đồ đã chia chuyên đề/chủ đề/dạng, lý thuyết + bài mẫu đã có. HS vào tra theo 2 đường: (1) biết tên dạng → gõ, hệ gợi ý theo ký tự; (2) không biết tên → lọc nâng cao/cơ bản, lọc chuyên đề → chủ đề → dạng. Chọn xong hiện lý thuyết + bài mẫu.
+
+**CEO chốt (hỏi 3 câu trước khi build):**
+- Phạm vi v1 = **Toán, nhánh Đại + Hình GT**. (KHTN đối xứng sẵn nhưng chưa bật UI.)
+- "Cơ bản/nâng cao" = gộp `muc_do` 1–5 thành **3 nhóm** (1–2 cơ bản · 3 trung bình · 4–5 nâng cao).
+- **Lọc theo KHỐI, KHÔNG theo bậc** — "học sinh bậc nào cũng thấy được bài của tất cả dạng khó và dễ" ⇒ `bac_toi_thieu` KHÔNG được dùng để cắt.
+
+**Đính chính dữ liệu (CEO nói ngược, theo DB):** CEO mô tả "chuyên đề → chủ đề → dạng", nhưng DB là **Chủ đề (cha) → Chuyên đề (con) → Dạng**. Bằng chứng: `MapRow` map `t1Ma = ma_chu_de`, `t2Ma = ma_chuyen_de` (`src/lib/kho/api.ts:1746-1747`), và `fn_dai_sinh_ma_chuyen_de(p_ma_chu_de, …)` sinh mã chuyên đề TRONG chủ đề. Làm theo DB (§0: Postgres = chân lý runtime).
+
+**Chặn kiến trúc phát hiện lúc khảo sát:** `dai_dang_ly_thuyet`/`hgt_dang_ly_thuyet` bật RLS member-gate ⇒ tài khoản HS SELECT thẳng trả **0 dòng, KHÔNG báo lỗi** (đúng bẫy §2.1; cũng là lý do `bai_test_cau.ly_thuyet` phải snapshot từ mig 0067). Sổ tay tra cứu tự do nên KHÔNG snapshot được ⇒ bắt buộc RPC `security definer`.
+
+**Build:**
+- **Mig `202609181946_so_tay_kien_thuc_hs.sql`** — 2 helper + 3 RPC, không đụng bảng/cột/dòng nào:
+  - `_sotay_nhom(muc_do)` — gộp 3 nhóm, null-in-null-out (dạng chưa gán độ khó KHÔNG bịa "trung bình").
+  - `_sotay_duoc_doc()` — HS hoặc nhân sự.
+  - `hs_sotay_cay(mon, nhanh, khoi)` → cây Chủ đề→Chuyên đề→Dạng của 1 khối, 1 lượt; kèm `khoi_list` (dựng từ data) + `thieu_ly_thuyet` (đo độ phủ). `khoi` null ⇒ khối của HS; khối HS chưa có nội dung thì rơi về khối đầu tiên có (không để HS mở ra thấy trắng).
+  - `hs_sotay_tim(tu_khoa, …)` → gợi ý, bỏ dấu bằng `fn_bo_dau` (DB này KHÔNG có extension unaccent), mỗi tiếng 1 điều kiện AND, xếp hạng có điểm. **TÌM TOÀN KHO, chỉ CỘNG ĐIỂM cho khối của em** — cắt cứng theo khối thì gõ trúng tên dạng ở khối khác ra rỗng, không hiểu vì sao.
+  - `hs_sotay_dang(ma_dang, …)` → `noi_dung` (lý thuyết + phương pháp + bài mẫu gói chung 1 trường, chủ ý từ mig 0004). **Không trả `file_url`** — file kho ở bucket staff-only, HS bấm vào 403, hứa link hỏng còn tệ hơn không hứa.
+  - Tất cả dùng registry sẵn có `_kho_ban_do_tbl` / `_kho_lt_tbl` (§1.6), KHÔNG tự liệt kê bảng.
+- **`src/lib/sotay.ts`** (mới) + **`src/screens/hocsinh/SoTayHS.tsx`** (mới) — drill-down 3 tầng + ô tìm luôn hiện ở mọi tầng; MathText tái dùng (KaTeX đã có sẵn trong bundle HS).
+- **Nối ô "Sổ tay kiến thức"** vào cả 3 biến thể màn chính: `KHU` (cấp 3) · `KHU_CAP2` (cấp 2) · `BOX_CAP1` (cấp 1).
+
+**Hai lỗi tự bắt khi soát lại SQL trước khi chạy:**
+- `hs_sotay_tim` có mẫu LIKE `'%'` nằm TRONG chuỗi `format()` ⇒ format() gặp `%'` là ném "unrecognized format() type specifier" ngay lượt gõ đầu. Sửa thành `%%`. (Bẫy chung cho MỌI dynamic SQL có LIKE.)
+- Chưa loại **"dạng chờ"** — mỗi bản đồ có 1 dòng/khối tên "Chưa phân dạng" (mã tận cùng `000000`, mig 202609131706) làm chỗ đậu cho câu chưa gán dạng. Thêm `not _kho_la_dang_cho(ma_dang)` ở cả 3 RPC, KHÔNG dựa vào "chắc nó không có lý thuyết đâu".
+
+**Verify đã làm / CHƯA làm:**
+- ✅ `tsc --noEmit` sạch (chỉ còn lỗi có sẵn ở `src/lib/pdfRender.ts`, không liên quan).
+- ✅ Build `vite.config.hs.ts` OK — chunk 783.8 kB, xa trần 2 MiB của Workbox (KaTeX vốn đã trong bundle HS nên không kéo thêm thư viện nào).
+- ✅ UI chạy thật qua `hs.html?demo=sotay` (mock, DEV-only): drill-down 3 tầng, back giữ đúng vị trí, lọc độ khó đếm lại đúng (2 dạng → 1), tìm "bien luan" (không dấu) ra "Biện luận số nghiệm theo tham số m", màn đọc render KaTeX (phân số/căn/Δ/±) đúng. Màn đọc TẮT decor vì hình `fixed bottom-0` chiếm 46% cao sẽ đè chữ khi bài dài.
+- ❌ **CHƯA áp migration, CHƯA chạy với DB thật.** Máy này KHÔNG có `.env` (không `DATABASE_URL`, không `VITE_SUPABASE_*`) ⇒ không migrate, không query kiểm độ phủ lý thuyết, không chạy end-to-end. Dev server lúc verify chạy bằng env giả truyền inline (không ghi file nào).
+- ❓ **Chưa đo được độ phủ `dai_dang_ly_thuyet`/`hgt_dang_ly_thuyet`.** CEO nói "đã có đầy đủ lý thuyết và bài mẫu" nhưng chưa verify được bằng số. `hs_sotay_cay` trả sẵn `thieu_ly_thuyet` để đo ngay sau khi áp. Rủi ro: nếu nhiều dòng lý thuyết cũ chỉ có `file_url` mà `noi_dung` rỗng (mig 0004 ban đầu `file_url not null`, `noi_dung` thêm sau) thì sổ tay sẽ trống hơn nhiều so với CEO tưởng.
+
+**Còn treo:** Hình học thuần (`hinh_hoc_bai`) đứng ngoài sổ tay — 3 cột compat `ma_chuyen_de/ten_chuyen_de/muc_do` (mig 202609181735) còn RỖNG nên không dựng được cây lọc. Bật sau khi có người bơm cây chuyên đề cho nhánh đó.
+
+**Lưu ý dọn dẹp:** `npm install` (chạy để typecheck/build được) làm `package-lock.json` +512 dòng — chưa revert, CEO quyết giữ hay bỏ.
+
+---
+
 ## 2026-09-18 — Chuẩn hoá mã bản đồ Đại (function + fix bug sinh mã + dọn 16 dạng rác K7)
 
 **Y/c CEO:** Chức năng chuyển/gộp/xoá chuyên đề trong bản đồ kiến thức. Đầu vào: "mã sinh có vấn đề đấy, chắc code sai đâu rồi, fix luôn đi" + rule mã bản đồ Toán "T1 + Lớp + STT chủ đề + STT chuyên đề + STT dạng + STT câu".

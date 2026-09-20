@@ -16,7 +16,53 @@ import MayManHS from './screens/hocsinh/MayManHS'
 import ThanhTuuHS from './screens/hocsinh/ThanhTuuHS'
 import BaiTapGiaoHS from './screens/hocsinh/BaiTapGiaoHS'
 import ThongTinHocTap, { _THEME_TTHT, BXHList } from './screens/hocsinh/ThongTinHocTap'
+import SoTayHS, { type SoTayApi } from './screens/hocsinh/SoTayHS'
+import type { SoTayCay, SoTayNoiDung } from './lib/sotay'
 import { getMyHocSinhId } from './lib/testonline'
+
+// Mock SỔ TAY cho `?demo=sotay` — RPC thật cần HS đăng nhập (và migration đã áp), không xem được
+// layout lúc đang build. Data giả cố ý có: 2 chủ đề, dạng đủ 3 mức độ khó, và lời giải mẫu CÓ
+// LaTeX (kiểm MathText render $…$ đúng trong khung đọc).
+const MOCK_CAY: SoTayCay = {
+  mon: 'Toán', nhanh: null, khoi: '9', khoi_hs: '9', khoi_list: ['7', '8', '9'],
+  so_dang: 5, thieu_ly_thuyet: 12,
+  cay: [
+    { ma: 'T109', ten: 'Phương trình và hệ phương trình', so_dang: 3, con: [
+      { ma: 'T10901', ten: 'Phương trình bậc hai một ẩn', so_dang: 2, dangs: [
+        { ma_dang: 'T1090101', ten_dang: 'Giải phương trình bậc hai bằng công thức nghiệm', muc_do: 2, nhom: 'co_ban', mo_ta_ngan: 'Áp dụng thẳng công thức nghiệm và biệt thức delta.' },
+        { ma_dang: 'T1090102', ten_dang: 'Biện luận số nghiệm theo tham số m', muc_do: 4, nhom: 'nang_cao', mo_ta_ngan: 'Xét dấu biệt thức theo tham số.' },
+      ] },
+      { ma: 'T10902', ten: 'Hệ hai phương trình bậc nhất hai ẩn', so_dang: 1, dangs: [
+        { ma_dang: 'T1090201', ten_dang: 'Giải hệ bằng phương pháp thế', muc_do: 3, nhom: 'trung_binh', mo_ta_ngan: null },
+      ] },
+    ] },
+    { ma: 'T110', ten: 'Hàm số và đồ thị', so_dang: 2, con: [
+      { ma: 'T11001', ten: 'Hàm số bậc nhất', so_dang: 2, dangs: [
+        { ma_dang: 'T1100101', ten_dang: 'Vẽ đồ thị hàm số bậc nhất', muc_do: 1, nhom: 'co_ban', mo_ta_ngan: 'Xác định hai điểm rồi nối.' },
+        { ma_dang: 'T1100102', ten_dang: 'Tìm điều kiện để hai đường thẳng song song', muc_do: 3, nhom: 'trung_binh', mo_ta_ngan: null },
+      ] },
+    ] },
+  ],
+}
+const MOCK_API: SoTayApi = {
+  cay: async () => MOCK_CAY,
+  tim: async (q) => {
+    const bd = (s: string) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd')
+    const tu = bd(q)
+    return MOCK_CAY.cay.flatMap((cd) => cd.con.flatMap((cde) => cde.dangs
+      .filter((d) => bd(d.ten_dang).includes(tu) || bd(cde.ten).includes(tu))
+      .map((d) => ({ ...d, khoi: '9', ten_chu_de: cd.ten, ten_chuyen_de: cde.ten }))))
+  },
+  dang: async (ma): Promise<SoTayNoiDung | null> => {
+    const hit = MOCK_CAY.cay.flatMap((cd) => cd.con.flatMap((cde) => cde.dangs.map((d) => ({ d, cd, cde })))).find((x) => x.d.ma_dang === ma)
+    if (!hit) return null
+    return {
+      ...hit.d, khoi: '9', ma_chu_de: hit.cd.ma, ten_chu_de: hit.cd.ten,
+      ma_chuyen_de: hit.cde.ma, ten_chuyen_de: hit.cde.ten, cap_nhat_at: '2026-09-18T10:00:00Z',
+      noi_dung: 'Phương pháp\nPhương trình bậc hai một ẩn có dạng $ax^2+bx+c=0$ với $a\\neq 0$.\nTính biệt thức $\\Delta = b^2-4ac$ rồi kết luận:\nNếu $\\Delta > 0$ thì phương trình có hai nghiệm phân biệt $x_{1,2}=\\frac{-b\\pm\\sqrt{\\Delta}}{2a}$.\nNếu $\\Delta = 0$ thì phương trình có nghiệm kép $x=\\frac{-b}{2a}$.\nNếu $\\Delta < 0$ thì phương trình vô nghiệm.\n\nBài mẫu 1\nGiải phương trình $x^2-5x+6=0$.\nLời giải: Ta có $\\Delta = 25-24 = 1 > 0$ nên phương trình có hai nghiệm phân biệt $x_1 = 3$ và $x_2 = 2$.\n\nBài mẫu 2\nGiải phương trình $4x^2-4x+1=0$.\nLời giải: $\\Delta = 16-16 = 0$ nên phương trình có nghiệm kép $x=\\frac{1}{2}$.',
+    }
+  },
+}
 
 // DEMO màn chính (CHỈ bản dev, không vào build): `hs.html?demo` · `?demo=nu` (nữ) · thêm `&ca` (banner bổ trợ)
 // · `&khong` (không có bài). Để kiểm UI theo kit hs-home-v4 mà không cần mã+PIN của HS thật (Claude không
@@ -28,6 +74,7 @@ function DemoHome() {
   const noopBack = () => history.back()
   // ?demo=thanhtuu / ?demo=baitapgiao — verify UI static (Thùy 11/09).
   // ?demo=maymai KHÔNG hoạt động vì screen thật gọi supabase.rpc — cần HS thật, không hack ở đây.
+  if (q.get('demo') === 'sotay') return <SoTayHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} api={MOCK_API} />
   if (q.get('demo') === 'thanhtuu') return <ThanhTuuHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
   if (q.get('demo') === 'baitapgiao') return <BaiTapGiaoHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
   if (q.get('demo') === 'maymai') return <MayManHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
