@@ -10,7 +10,8 @@ import { useEffect, useState } from 'react'
 import {
   listCaTestDangChay, listCaTestHoanThanh, taoCaTest, uploadCaTestBai, ganBaiCaTest, hoanThanhCaTest,
   listUngVienL5, getUngVien, gioKetThucCaTest, THOI_LUONG_OPTIONS, MON_OPTIONS,
-  type CaTest, type TaoCaTestInput, type MonTS,
+  suaCaTest, huyCaTest, khoiPhucCaTest, listCaTestDaHuy,
+  type CaTest, type TaoCaTestInput, type MonTS, type SuaCaTestInput,
 } from '../../lib/tuyensinh'
 import { ganDeCaTest, ganDeDangDung, listDeTestDauVao, type DeTestRow } from '../../lib/detest'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
@@ -43,13 +44,34 @@ export default function DiemDanhTestScreen() {
   const [form, setForm] = useState(false)
   const [inDe, setInDe] = useState<InDe | null>(null)   // đang mở máy in đề cho 1 HS (mã 1)
   const [now, setNow] = useState(() => Date.now())
+  // ⭐ CEO 20/09 "sửa / xoá được ở điểm danh test": sửa = modal; xoá = HUỶ CA có lý do (không xoá cứng — §4), khôi phục được.
+  const [daHuy, setDaHuy] = useState<CaTest[]>([])
+  const [suaCa, setSuaCa] = useState<CaTest | null>(null)
+  const [huyCa, setHuyCa] = useState<CaTest | null>(null)
+  const [loiKp, setLoiKp] = useState<string | null>(null)
 
   async function reload() {
     setLoading(true)
     try {
-      const [a, b, m] = await Promise.all([listCaTestDangChay(), listCaTestHoanThanh(homNayVN()), listDeTestDauVao()])
-      setDangChay(a); setHoanThanhHomNay(b); setDeList(m)
+      const [a, b, m, h] = await Promise.all([listCaTestDangChay(), listCaTestHoanThanh(homNayVN()), listDeTestDauVao(), listCaTestDaHuy()])
+      setDangChay(a); setHoanThanhHomNay(b); setDeList(m); setDaHuy(h)
     } finally { setLoading(false) }
+  }
+  // Vá TẠI CHỖ sau mutation (CLAUDE.md §2) — không quét lại cả màn.
+  const vaCa = (ca: CaTest) => { setDangChay((s) => s.map((x) => (x.id === ca.id ? ca : x))); setHoanThanhHomNay((s) => s.map((x) => (x.id === ca.id ? ca : x))) }
+  const daHuyXong = (ca: CaTest, lyDo: string) => {
+    setDangChay((s) => s.filter((x) => x.id !== ca.id)); setHoanThanhHomNay((s) => s.filter((x) => x.id !== ca.id))
+    setDaHuy((s) => [{ ...ca, trangThai: 'huy', huyLyDo: lyDo }, ...s])
+  }
+  async function khoiPhuc(ca: CaTest) {
+    setLoiKp(null)
+    try {
+      const tt = await khoiPhucCaTest(ca.id)
+      setDaHuy((s) => s.filter((x) => x.id !== ca.id))
+      const moi: CaTest = { ...ca, trangThai: tt, huyLyDo: null }
+      if (tt === 'dang_test') setDangChay((s) => [...s, moi])
+      else if (ca.ngay === homNayVN()) setHoanThanhHomNay((s) => [moi, ...s])
+    } catch (e: any) { setLoiKp(e.message ?? String(e)) }
   }
   useEffect(() => { reload() }, [])
   useEffect(() => { const id = setInterval(() => setNow(Date.now()), 15000); return () => clearInterval(id) }, [])
@@ -70,7 +92,7 @@ export default function DiemDanhTestScreen() {
         <div className="rounded-lg border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Không có ca test nào đang chạy.</div>
       ) : (
         <div className="grid gap-3 sm:grid-cols-2">
-          {dangChay.map((c) => <CaTestCard key={c.id} c={c} now={now} deList={deList} onChanged={reload} onInDe={setInDe} />)}
+          {dangChay.map((c) => <CaTestCard key={c.id} c={c} now={now} deList={deList} onChanged={reload} onInDe={setInDe} onSua={() => setSuaCa(c)} onHuy={() => setHuyCa(c)} />)}
         </div>
       )}
 
@@ -82,11 +104,35 @@ export default function DiemDanhTestScreen() {
               <div key={c.id} className="rounded-xl border border-slate-100 bg-white px-3 py-2 text-[12px] text-slate-500 shadow-sm">
                 <span className="font-semibold text-slate-700">{c.ungVien.hoTenHs}</span> · {c.mon} · {c.gioBatDau.slice(0, 5)} ({c.thoiLuongPhut}')
                 {c.baiUrl && <a href={c.baiUrl} target="_blank" rel="noreferrer" className="ml-1.5 text-indigo-500 hover:underline">📄 bài</a>}
+                <span className="float-right flex gap-1">
+                  <button onClick={() => setSuaCa(c)} title="Sửa thông tin ca / học sinh" className="rounded px-1.5 text-slate-400 hover:bg-slate-100 hover:text-indigo-600">✎</button>
+                  <button onClick={() => setHuyCa(c)} title="Huỷ ca (tạo nhầm…)" className="rounded px-1.5 text-slate-400 hover:bg-rose-50 hover:text-rose-600">🗑</button>
+                </span>
               </div>
             ))}
           </div>
         </details>
       )}
+
+      {daHuy.length > 0 && (
+        <details className="mt-3">
+          <summary className="cursor-pointer text-[12px] font-medium text-slate-400">🗑 Đã huỷ ({daHuy.length})</summary>
+          {loiKp && <p className="mt-1 text-[12px] text-rose-600">{loiKp}</p>}
+          <div className="mt-2 grid gap-2 sm:grid-cols-2">
+            {daHuy.map((c) => (
+              <div key={c.id} className="rounded-xl border border-slate-100 bg-white px-3 py-2 text-[12px] text-slate-500 shadow-sm">
+                <div className="flex items-center gap-2">
+                  <span className="min-w-0 flex-1 truncate"><span className="font-semibold text-slate-600 line-through">{c.ungVien.hoTenHs}</span> · {c.mon}{c.ungVien.khoi ? ` · Lớp ${c.ungVien.khoi}` : ''} · {new Date(c.ngay + 'T00:00:00').toLocaleDateString('vi-VN')}</span>
+                  <button onClick={() => khoiPhuc(c)} className="shrink-0 rounded-md border border-slate-200 px-2 py-0.5 text-[11px] font-medium text-slate-600 hover:border-indigo-300 hover:text-indigo-600">↩ Khôi phục</button>
+                </div>
+                {c.huyLyDo && <div className="mt-0.5 text-[11px] text-slate-400">Lý do: {c.huyLyDo}</div>}
+              </div>
+            ))}
+          </div>
+        </details>
+      )}
+      {suaCa && <SuaCaTestModal c={suaCa} onClose={() => setSuaCa(null)} onDone={(ca) => { vaCa(ca); setSuaCa(null) }} />}
+      {huyCa && <HuyCaTestModal c={huyCa} onClose={() => setHuyCa(null)} onDone={(lyDo) => { daHuyXong(huyCa, lyDo); setHuyCa(null) }} />}
 
       {form && <TaoCaTestModal onClose={() => setForm(false)} onDone={async (inNgay) => { setForm(false); if (inNgay) setInDe(inNgay); await reload() }} />}
       {inDe && (
@@ -99,7 +145,7 @@ export default function DiemDanhTestScreen() {
   )
 }
 
-function CaTestCard({ c, now, deList, onChanged, onInDe }: { c: CaTest; now: number; deList: DeTestRow[]; onChanged: () => void; onInDe: (x: InDe) => void }) {
+function CaTestCard({ c, now, deList, onChanged, onInDe, onSua, onHuy }: { c: CaTest; now: number; deList: DeTestRow[]; onChanged: () => void; onInDe: (x: InDe) => void; onSua: () => void; onHuy: () => void }) {
   const [baiUrl, setBaiUrl] = useState<string | null>(c.baiUrl)
   const [taiLieuId, setTaiLieuId] = useState(c.taiLieuId)
   const [busy, setBusy] = useState(false)
@@ -148,7 +194,7 @@ function CaTestCard({ c, now, deList, onChanged, onInDe }: { c: CaTest; now: num
       .catch((ex) => { if (alive) setErr(ex.message ?? String(ex)) })
       .finally(() => { if (alive) setBusy(false) })
     return () => { alive = false }
-  }, [c.id]) // eslint-disable-line
+  }, [c.id, c.ungVien.khoi]) // eslint-disable-line — sửa KHỐI (20/09) từ khối chưa có đề sang khối có đề ⇒ tự gán lại
   async function hoanTat() {
     setBusy(true); setErr(null)
     try { await hoanThanhCaTest(c.id, baiUrl); onChanged() }
@@ -160,6 +206,10 @@ function CaTestCard({ c, now, deList, onChanged, onInDe }: { c: CaTest; now: num
       <div className="mb-1 flex flex-wrap items-center gap-2">
         <span className="text-[14px] font-semibold text-slate-800">{c.ungVien.hoTenHs}</span>
         <span className="text-[12px] text-slate-400">{c.ungVien.maUv ?? 'mới'} · {c.mon}{c.ungVien.khoi ? ` · Lớp ${c.ungVien.khoi}` : ''}</span>
+        <span className="ml-auto flex gap-1">
+          <button onClick={onSua} disabled={busy} title="Sửa thông tin ca / học sinh" className="rounded-md px-2 py-0.5 text-[13px] text-slate-400 hover:bg-slate-100 hover:text-indigo-600 disabled:opacity-40">✎ Sửa</button>
+          <button onClick={onHuy} disabled={busy} title="Huỷ ca (tạo nhầm, HS không đến…) — khôi phục được" className="rounded-md px-2 py-0.5 text-[13px] text-slate-400 hover:bg-rose-50 hover:text-rose-600 disabled:opacity-40">🗑 Huỷ</button>
+        </span>
       </div>
       <div className="mb-2 text-[12px] text-slate-500">{c.ungVien.hoTenPh || '—'} · {c.ungVien.sdtPh || '—'}</div>
       <div className="mb-2 flex items-center gap-2 text-[13px]">
@@ -208,6 +258,91 @@ function CaTestCard({ c, now, deList, onChanged, onInDe }: { c: CaTest; now: num
         <button onClick={hoanTat} disabled={busy || !baiUrl || !taiLieuId} title={!baiUrl ? 'Cần upload bài mới hoàn tất được' : !taiLieuId ? 'Cần gán đề trước (khâu chấm cần câu của đề)' : ''} className="ml-auto min-h-[36px] rounded-md bg-emerald-600 px-3 py-1.5 text-[12px] font-semibold text-white hover:bg-emerald-500 disabled:opacity-40">✓ Hoàn tất</button>
       </div>
       {err && <p className="mt-1.5 text-[12px] text-rose-600">{err}</p>}
+    </div>
+  )
+}
+
+// SỬA ca (CEO 20/09): ngày · giờ · thời lượng + tên HS · khối · PH · SĐT. Môn KHÔNG sửa ở đây (đổi môn = đổi đề, người
+// chấm, mọi thứ ⇒ huỷ ca rồi tạo lại). Lưu xong trả ca đã vá cho màn cha (không quét lại).
+function SuaCaTestModal({ c, onClose, onDone }: { c: CaTest; onClose: () => void; onDone: (ca: CaTest) => void }) {
+  const [f, setF] = useState<SuaCaTestInput>({
+    ngay: c.ngay, gioBatDau: c.gioBatDau.slice(0, 5), thoiLuongPhut: c.thoiLuongPhut,
+    hoTenHs: c.ungVien.hoTenHs, khoi: c.ungVien.khoi, hoTenPh: c.ungVien.hoTenPh, sdtPh: c.ungVien.sdtPh,
+  })
+  const set = <K extends keyof SuaCaTestInput>(k: K, v: SuaCaTestInput[K]) => setF((s) => ({ ...s, [k]: v }))
+  const [busy, setBusy] = useState(false)
+  const [err, setErr] = useState<string | null>(null)
+  const doiKhoi = (f.khoi ?? '') !== (c.ungVien.khoi ?? '')
+  async function save() {
+    setBusy(true); setErr(null)
+    try {
+      await suaCaTest(c, f)
+      onDone({ ...c, ngay: f.ngay, gioBatDau: f.gioBatDau, thoiLuongPhut: f.thoiLuongPhut,
+        ungVien: { ...c.ungVien, hoTenHs: f.hoTenHs.trim(), khoi: f.khoi, hoTenPh: f.hoTenPh?.trim() || null, sdtPh: f.sdtPh?.trim() || null } })
+    } catch (e: any) { setErr(e.message ?? String(e)); setBusy(false) }
+  }
+  return (
+    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/40 p-4" onClick={onClose}>
+      <div className="max-h-[90vh] w-full max-w-[560px] overflow-y-auto rounded-2xl bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="mb-4 text-[16px] font-semibold text-slate-800">Sửa ca test · {c.mon}</div>
+        <div className="space-y-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="sm:col-span-2"><Lbl>Tên học sinh *</Lbl><input className={inputCls} value={f.hoTenHs} onChange={(e) => set('hoTenHs', e.target.value)} /></div>
+            <div><Lbl>Lớp</Lbl><select className={inputCls} value={f.khoi ?? ''} onChange={(e) => set('khoi', e.target.value || null)}>{KHOI_OPTIONS.map((k) => <option key={k} value={k}>{k}</option>)}</select></div>
+            <div><Lbl>SĐT bố/mẹ</Lbl><input className={inputCls} value={f.sdtPh ?? ''} onChange={(e) => set('sdtPh', e.target.value)} /></div>
+            <div className="sm:col-span-2"><Lbl>Tên bố/mẹ</Lbl><input className={inputCls} value={f.hoTenPh ?? ''} onChange={(e) => set('hoTenPh', e.target.value)} /></div>
+            <div><Lbl>Ngày test</Lbl><input type="date" className={inputCls} value={f.ngay} onChange={(e) => set('ngay', e.target.value)} /></div>
+            <div><Lbl>Giờ test *</Lbl><input type="time" className={inputCls} value={f.gioBatDau} onChange={(e) => set('gioBatDau', e.target.value)} /></div>
+          </div>
+          <div>
+            <Lbl>Thời gian test</Lbl>
+            <div className="flex flex-wrap gap-1.5">
+              {THOI_LUONG_OPTIONS.map((p) => (
+                <button key={p} type="button" onClick={() => set('thoiLuongPhut', p)}
+                  className={`rounded-lg px-3 py-1.5 text-[13px] font-medium transition ${f.thoiLuongPhut === p ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>{p}'</button>
+              ))}
+            </div>
+          </div>
+          {doiKhoi && c.taiLieuId && <p className="rounded-md bg-amber-50 px-2.5 py-1.5 text-[12px] text-amber-800">⚠ Ca đã gán đề khối {c.ungVien.khoi}. Đổi sang khối {f.khoi} thì thẻ ca sẽ báo lệch khối — bấm "Gán lại đề đang dùng" ở đó (người chấm / trả bài vẫn theo phân công cũ).</p>}
+          {err && <p className="text-[12px] text-rose-600">{err}</p>}
+          <div className="flex justify-end gap-2 pt-1">
+            <button onClick={onClose} className="min-h-[44px] rounded-lg border border-slate-200 px-4 py-2 text-[14px] text-slate-600 hover:bg-slate-50">Đóng</button>
+            <button onClick={save} disabled={busy || !f.hoTenHs.trim() || !f.gioBatDau} className="min-h-[44px] rounded-lg bg-indigo-600 px-4 py-2 text-[14px] font-medium text-white hover:bg-indigo-500 disabled:opacity-50">{busy ? 'Đang lưu…' : 'Lưu'}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// "XOÁ" = HUỶ CA có lý do (không xoá cứng — CLAUDE.md §4). Ca rụng khỏi mọi hàng đợi + thống kê; khôi phục ở mục "Đã huỷ".
+const LY_DO_HUY = ['Tạo nhầm / tạo trùng', 'Học sinh không đến', 'Phụ huynh huỷ lịch', 'Nhập sai học sinh'] as const
+function HuyCaTestModal({ c, onClose, onDone }: { c: CaTest; onClose: () => void; onDone: (lyDo: string) => void }) {
+  const [lyDo, setLyDo] = useState('')
+  const [busy, setBusy] = useState(false)
+  const [err, setErr] = useState<string | null>(null)
+  async function huy() {
+    setBusy(true); setErr(null)
+    try { await huyCaTest(c.id, lyDo); onDone(lyDo.trim()) }
+    catch (e: any) { setErr(e.message ?? String(e)); setBusy(false) }
+  }
+  return (
+    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/40 p-4" onClick={onClose}>
+      <div className="w-full max-w-[460px] rounded-2xl bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="text-[16px] font-semibold text-slate-800">Huỷ ca test của {c.ungVien.hoTenHs}?</div>
+        <p className="mt-1 text-[12px] text-slate-500">Ca biến khỏi Điểm danh, Chấm, Trả bài, Việc của tôi và Thống kê. Dữ liệu vẫn giữ — khôi phục được ở mục "Đã huỷ".</p>
+        <div className="mt-3 flex flex-wrap gap-1.5">
+          {LY_DO_HUY.map((l) => (
+            <button key={l} type="button" onClick={() => setLyDo(l)} className={`rounded-full px-2.5 py-1 text-[12px] font-medium transition ${lyDo === l ? 'bg-rose-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>{l}</button>
+          ))}
+        </div>
+        <input className={`${inputCls} mt-2`} value={lyDo} onChange={(e) => setLyDo(e.target.value)} placeholder="Lý do huỷ (bắt buộc)" autoFocus />
+        {err && <p className="mt-2 text-[12px] text-rose-600">{err}</p>}
+        <div className="mt-4 flex justify-end gap-2">
+          <button onClick={onClose} className="min-h-[40px] rounded-lg border border-slate-200 px-4 py-2 text-[14px] text-slate-600 hover:bg-slate-50">Không huỷ</button>
+          <button onClick={huy} disabled={busy || !lyDo.trim()} className="min-h-[40px] rounded-lg bg-rose-600 px-4 py-2 text-[14px] font-medium text-white hover:bg-rose-500 disabled:opacity-40">{busy ? 'Đang huỷ…' : '🗑 Huỷ ca'}</button>
+        </div>
+      </div>
     </div>
   )
 }

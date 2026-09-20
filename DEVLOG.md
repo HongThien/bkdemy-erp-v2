@@ -14269,3 +14269,25 @@ Thứ tự list & TỰ GHÉP: ưu tiên cao trước, cùng ưu tiên thì case 
 - Đo DB (`scripts/_q_de_test_phan_2009.mjs`): 8/8 đề test đầu vào đều sinh từ MT, phần `custom`, `sinhDeTestDauVao` chép nguyên `cau_hinh` ⇒ đề K4 (28 câu), K5 (34), K7 bản 14/09 (34) mang đủ `etMaDe` = 3 mã; 5 đề còn lại 1 mã. `ganDeCaTest` snapshot câu của ĐỀ GỐC ⇒ giấy phát cho HS bắt buộc là mã 1 mới khớp bộ câu TA chấm.
 - Không viết máy in thứ hai: dùng lại `MTPrintView` chế độ `perHS` (1 phiếu = 1 mã, tên/lớp in sẵn) với `maDe: 1` cố định (`MA_DE_IN_TEST`). `DiemDanhTestScreen`: modal "Tạo test đầu vào" thêm checkbox "🖨 In đề cho học sinh ngay sau khi tạo" (mặc định BẬT, nhớ theo máy qua localStorage `tdv_in_de_khi_tao` — tiện ích, không phải dữ liệu); `onDone(inNgay)` trả `{taiLieuId, ungVienId, hoTen, khoi}` chỉ khi tích VÀ gán được đề ⇒ màn cha mở `MTPrintView`. Mỗi thẻ ca thêm nút "🖨 In đề" (in lại; khoá khi chưa có đề hoặc đề lệch khối). `MTPrintView.MTHeaderBK` thêm prop `nhan`: tài liệu `loai=de_test_dau_vao` in nhãn "Kiểm tra đầu vào" thay "Kỳ thi lớn (MT)".
 - Verify: tsc sạch. App server riêng (port 53120, dev quick-login admin; cổng 5173 đang là phiên HS của chat khác — không đụng): 2 ca đang chạy đều K6 chưa có đề ⇒ nút In đề khoá đúng, modal hiện checkbox (checked). Không tạo ứng viên giả vào DB thật ⇒ dựng thử `MTPrintView` trong trang (import động) với đề K5 đủ 3 mã + perHS mã 1: nguồn trước dàn trang = **1 phiếu, "Mã đề 1" ×1, mã 2/3 ×0, tên + lớp in sẵn, 34 câu**. Bước dàn trang paged.js timeout 30s vì Browser pane `document.hidden=true` (không vẽ) — giới hạn môi trường, CHƯA thấy bản in cuối bằng mắt; CEO/Ops thử tay 1 ca thật. Chưa commit.
+
+**(CEO 20/09 "Cần phải sửa / xoá được ở chỗ điểm danh test chứ nhỉ")**
+- Trước đó thẻ ca chỉ có upload bài · in đề · hoàn tất; 2 ca K6 tạo từ 06/09 treo "quá hạn 14 ngày" không gỡ được.
+- Quyết định kỹ thuật (R2, theo CLAUDE.md §4 "không xoá cứng, state-log bất biến"): **"xoá" = HUỶ CA có lý do, khôi phục được**. Mig `202609201730_ca_test_huy_khoi_phuc.sql`: `ca_test.trang_thai` nới CHECK thêm `huy`; cột `huy_ly_do` + `trang_thai_truoc_huy` (NULL = không áp dụng) + CHECK "ca huỷ phải đủ lý do & trạng thái trước, ca thường thì 2 cột trống"; `log_ca_test` nhận diện `huy` / `khoi_phuc`; RPC `fn_ca_test_huy(id, ly_do)` (chặn: thiếu lý do · đã huỷ · ĐÃ TRẢ BÀI ⇒ mở lại trả bài trước) + `fn_ca_test_khoi_phuc(id) → trạng thái cũ`; `fn_test_dau_vao_thong_ke` loại ca huỷ (giữ chữ ký). Mọi hàng đợi vốn lọc `dang_test|hoan_thanh` nên ca huỷ tự rụng; thêm `.neq(trang_thai, huy)` cho 2 list "Đã chấm". Câu + kết quả của ca huỷ GIỮ NGUYÊN. Áp `--only`, schema.md refresh.
+- SỬA: `suaCaTest` (tuyensinh.ts) = update dòng đơn `ca_test` (ngày · giờ · thời lượng) + `updateUngVien` (tên · khối · PH · SĐT); môn không sửa (đổi môn = huỷ rồi tạo lại). `DiemDanhTestScreen`: nút "✎ Sửa" / "🗑 Huỷ" trên thẻ ca + ✎/🗑 nhỏ ở "Đã xong hôm nay"; `SuaCaTestModal` (cảnh báo khi đổi khối mà ca đã gán đề ⇒ thẻ báo lệch khối, gán lại ở đó), `HuyCaTestModal` (4 lý do gợi ý + nhập tay, bắt buộc); mục gập "🗑 Đã huỷ (n)" kèm lý do + "↩ Khôi phục". Sau mutation vá tại chỗ (không reload). Effect tự-gán đề thêm dep `c.ungVien.khoi` (sửa từ khối chưa có đề sang khối có đề ⇒ tự gán).
+- Verify: transaction ROLLBACK (`scripts/_verify_ca_test_huy_2009.mjs`): 3 chốt chặn đúng thông báo; huỷ ⇒ `huy` + lý do + truoc_huy=dang_test, rụng khỏi hàng đợi, thống kê Toán 24 → 23; khôi phục về `dang_test`, 2 cột trống lại; log ghi `huy`, `khoi_phuc`. tsc sạch. App server riêng (admin quick-login): 2 thẻ ca đều có Sửa/Huỷ; modal Sửa điền sẵn đúng (Phạm Khánh Huy · 6 · SĐT · PH · 06/09 · 14:00); modal Huỷ khoá nút khi chưa có lý do, chọn gợi ý thì mở. KHÔNG bấm lưu/huỷ thật. Chưa commit.
+- Chưa làm (nêu cho CEO): huỷ ca KHÔNG lùi level ứng viên (L5→L6 lúc tạo ca vẫn giữ) — ứng viên tạo nhầm hẳn thì "loại" ở màn Tuyển sinh như cũ.
+
+### 20/09 — "Dạng yếu": ngày của lần đo bị GIẤU trong tooltip hover — phải hiện thẳng ra màn
+
+- **CEO:** "Cái chỗ hiện đánh giá ở đây sao m lại cắt mất cái ngày xảy ra rồi. Nó là cái quan trọng nhất
+  mà" — đúng: dữ liệu `t` (ngày đo) VẪN CÓ ĐỦ trong RPC `hs_dang_hoc_tap` (jsonb `recent` giữ nguyên
+  field `t`), chỉ có UI (`LanDo`, component chấm tròn Đ/C/S trong list dạng) đặt ngày vào `title`
+  (hover-only) — HS dùng điện thoại (chạm, không hover) thì KHÔNG BAO GIỜ thấy được ngày. Đúng lúc "cửa
+  sổ" (2 kỳ gần nhất) vừa trở thành khái niệm TRUNG TÂM của màn này (mig 202609201622 cùng ngày) thì
+  việc không thấy ngày mỗi lần đo càng vô lý — không tự đối chiếu được "lần đo này còn trong cửa sổ hay
+  đã cũ".
+- **Fix:** `LanDo` thêm 1 dòng text NGAY DƯỚI chấm tròn, dùng lại `fmtNgayVN` có sẵn (đã tự rút gọn
+  "Hôm nay"/"Hôm qua"/"dd/mm") — hiện SONG SONG với nhãn nguồn (TL/ET/MT/BTVN) bên dưới, không chỉ còn
+  trong tooltip. Không đổi field/RPC nào (dữ liệu vốn đã đủ, chỉ là UI giấu đi).
+- **Verify qua app thật (HS0440):** tab "Cần luyện" hiện đúng "17/09", "16/09", "Hôm qua", "18/09" dưới
+  từng chấm — đọc được ngay không cần hover. tsc sạch.

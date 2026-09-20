@@ -270,7 +270,7 @@ export async function listCanTraBaiCuaToi(nhanSuId: string): Promise<CaTestChoCh
   return (data ?? []).map(mapChoCham)
 }
 export async function listDaCham(ngay?: string): Promise<CaTestChoCham[]> {
-  let q = supabase.from('ca_test').select(CHO_CHAM_SELECT).not('cham_xong_at', 'is', null)
+  let q = supabase.from('ca_test').select(CHO_CHAM_SELECT).not('cham_xong_at', 'is', null).neq('trang_thai', 'huy') // ca huỷ (mig 202609201730) không hiện ở "Đã chấm"
   if (ngay) q = q.eq('ngay', ngay)
   const { data, error } = await q.order('cham_xong_at', { ascending: false }).limit(LIMIT)
   if (error) throw error
@@ -293,7 +293,7 @@ export function khoangThang(thang: string): { tu: string; den: string } {
   return { tu, den: `${y2}-${String(m2).padStart(2, '0')}-01` }
 }
 export async function listDaChamTheoThang(thang: string | null): Promise<CaTestChoCham[]> {
-  let q = supabase.from('ca_test').select(CHO_CHAM_SELECT).not('cham_xong_at', 'is', null)
+  let q = supabase.from('ca_test').select(CHO_CHAM_SELECT).not('cham_xong_at', 'is', null).neq('trang_thai', 'huy') // ca huỷ (mig 202609201730) không hiện ở "Đã chấm"
   if (thang) { const k = khoangThang(thang); q = q.gte('ngay', k.tu).lt('ngay', k.den) }
   const { data, error } = await q.order('cham_xong_at', { ascending: false }).limit(LIMIT)
   if (error) throw error

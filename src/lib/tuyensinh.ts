@@ -206,11 +206,12 @@ export async function listHSDangHoc(mon?: string, songay = 14): Promise<{ id: st
 // nhảy level='L6' (đã có mặt = bằng chứng đủ). Walk-in mới → tạo thẳng L6.
 // ============================================================================
 export const THOI_LUONG_OPTIONS = [45, 60, 75, 90, 120] as const
-export type CaTestTrangThai = 'dang_test' | 'hoan_thanh'
+export type CaTestTrangThai = 'dang_test' | 'hoan_thanh' | 'huy'   // 'huy' — mig 202609201730 (CEO 20/09: sửa/xoá ở Điểm danh)
 export type CaTest = {
   id: string; ungVienId: string; mon: string; ngay: string; gioBatDau: string
   thoiLuongPhut: number; trangThai: CaTestTrangThai; baiUrl: string | null; hoanThanhAt: string | null
   taiLieuId: string | null
+  huyLyDo: string | null   // chỉ có khi trangThai = 'huy'
   nguoiChamId: string | null; nguoiChamTen: string | null
   nguoiTraBaiId: string | null; nguoiTraBaiTen: string | null
   createdAt: string
@@ -221,7 +222,7 @@ function mapCaTest(r: any): CaTest {
   return {
     id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, gioBatDau: r.gio_bat_dau,
     thoiLuongPhut: r.thoi_luong_phut, trangThai: r.trang_thai, baiUrl: r.bai_url, hoanThanhAt: r.hoan_thanh_at,
-    taiLieuId: r.tai_lieu_id ?? null,
+    taiLieuId: r.tai_lieu_id ?? null, huyLyDo: r.huy_ly_do ?? null,
     nguoiChamId: r.nguoi_cham_id ?? null, nguoiChamTen: r.nguoi_cham?.ho_ten ?? null,
     nguoiTraBaiId: r.nguoi_tra_bai_id ?? null, nguoiTraBaiTen: r.nguoi_tra_bai?.ho_ten ?? null,
     createdAt: r.created_at,
@@ -296,6 +297,37 @@ export async function upsertPhanCongTest(khoi: string, mon: string, patch: { ngu
 // Deadline (epoch ms) hiển thị đếm ngược — tái dùng vnInstant/mucDeadline/nhanConLai (tuan.ts).
 export function gioKetThucCaTest(t: Pick<CaTest, 'ngay' | 'gioBatDau' | 'thoiLuongPhut'>): number {
   return vnInstant(t.ngay, t.gioBatDau.slice(0, 5)) + t.thoiLuongPhut * 60000
+}
+
+// ⭐ CEO 20/09 "sửa / xoá được ở chỗ điểm danh test".
+// SỬA = thông tin ca (ngày · giờ · thời lượng) + thông tin ứng viên (tên · khối · PH · SĐT · trường). Mỗi bảng 1 update
+// dòng đơn; log do trigger DB ghi (`trg_log_ca_test`, log ứng viên). Đổi KHỐI sau khi đã gán đề ⇒ thẻ ca tự nêu cờ lệch khối.
+export type SuaCaTestInput = {
+  ngay: string; gioBatDau: string; thoiLuongPhut: number
+  hoTenHs: string; khoi: string | null; hoTenPh: string | null; sdtPh: string | null
+}
+export async function suaCaTest(ca: Pick<CaTest, 'id' | 'ungVienId'>, v: SuaCaTestInput): Promise<void> {
+  if (!v.hoTenHs.trim()) throw new Error('Thiếu tên học sinh')
+  if (!v.gioBatDau) throw new Error('Thiếu giờ test')
+  const { error } = await supabase.from('ca_test').update({ ngay: v.ngay, gio_bat_dau: v.gioBatDau, thoi_luong_phut: v.thoiLuongPhut }).eq('id', ca.id)
+  if (error) throw error
+  await updateUngVien(ca.ungVienId, { ho_ten_hs: v.hoTenHs.trim(), khoi: v.khoi, ho_ten_ph: v.hoTenPh?.trim() || null, sdt_ph: v.sdtPh?.trim() || null } as Partial<UngVien>)
+}
+// "XOÁ" = HUỶ CA (CLAUDE.md §4: không xoá cứng, state-log bất biến) — ca rụng khỏi mọi hàng đợi + thống kê, câu/kết quả
+// giữ nguyên, khôi phục được. DB chặn huỷ ca đã trả bài.
+export async function huyCaTest(caTestId: string, lyDo: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_ca_test_huy', { p_ca_test_id: caTestId, p_ly_do: lyDo })
+  if (error) throw error
+}
+export async function khoiPhucCaTest(caTestId: string): Promise<CaTestTrangThai> {
+  const { data, error } = await supabase.rpc('fn_ca_test_khoi_phuc', { p_ca_test_id: caTestId })
+  if (error) throw error
+  return data as CaTestTrangThai
+}
+export async function listCaTestDaHuy(): Promise<CaTest[]> {
+  const { data, error } = await supabase.from('ca_test').select(CA_TEST_SELECT).eq('trang_thai', 'huy').order('ngay', { ascending: false }).limit(50)
+  if (error) throw error
+  return (data ?? []).map(mapCaTest)
 }
 
 // Ca đang chạy (mọi HS, mọi OPS — hàng đợi chung, không phải "của riêng tôi").

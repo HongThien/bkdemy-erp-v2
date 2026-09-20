@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-236 bảng · 19 view · 0 enum · 78 trigger · 422 function
+236 bảng · 19 view · 0 enum · 78 trigger · 424 function
 
 ## _app_secrets
 
@@ -523,7 +523,7 @@
 | ngay | date |  |  |  |  |
 | gio_bat_dau | time without time zone |  |  |  |  |
 | thoi_luong_phut | integer |  |  |  |  |
-| trang_thai | text |  | 'dang_test'::text |  | `dang_test` · `hoan_thanh` |
+| trang_thai | text |  | 'dang_test'::text |  | `dang_test` · `hoan_thanh` · `huy` |
 | bai_url | text | Y |  |  |  |
 | hoan_thanh_at | timestamp with time zone | Y |  |  |  |
 | created_by | uuid | Y |  |  |  |
@@ -537,6 +537,8 @@
 | nguoi_cham_id | uuid | Y |  | FK→nhan_su.id |  |
 | nguoi_tra_bai_id | uuid | Y |  | FK→nhan_su.id |  |
 | diem_nhap | numeric | Y |  |  |  |
+| huy_ly_do | text | Y |  |  |  |
+| trang_thai_truoc_huy | text | Y |  |  | `dang_test` · `hoan_thanh` |
 
 ## ca_test_cau
 
@@ -5089,6 +5091,8 @@ SELECT bl.hoc_sinh_id,
 - `fn_bxh_diem_mt_khoi(p_mon text, p_khoi text, p_ym text)` → TABLE(hoc_sinh_id uuid, ho_ten text, ma_hs text, lop_id uuid, ten_lop text, tb numeric, rank_now integer, rank_total integer)
 - `fn_ca_cua_gio(p_gio time without time zone)` → text
 - `fn_ca_test_gan_de(p_ca_test_id uuid, p_tai_lieu_id uuid, p_rows jsonb)` → integer
+- `fn_ca_test_huy(p_ca_test_id uuid, p_ly_do text)` → void
+- `fn_ca_test_khoi_phuc(p_ca_test_id uuid)` → text
 - `fn_ca_test_kq_diem()` → trigger
 - `fn_ca_test_phan_cong_mac_dinh()` → trigger
 - `fn_chap_nhan_dap_an(p_ma_cau text, p_dap_an_raw text)` → jsonb
@@ -5407,8 +5411,8 @@ SELECT bl.hoc_sinh_id,
 - `trg_htd_test_nop()` → trigger
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
@@ -5437,6 +5441,7 @@ SELECT bl.hoc_sinh_id,
 | buoi_danh_gia | buoi_danh_gia_muc_ma_khop_muc_chk | `CHECK (((muc_ma IS NULL) OR ((muc IS NOT NULL) AND (("left"(muc_ma, 1))::smallint = muc))))` |
 | buoi_danh_gia_dang | buoi_danh_gia_dang_diem_check | `CHECK ((diem = ANY (ARRAY[(0)::numeric, 0.5, (1)::numeric])))` |
 | buoi_hoc | buoi_hoc_online_ck | `CHECK (((online_dong_at IS NULL) OR (online_mo_at IS NOT NULL)))` |
+| ca_test | ca_test_huy_day_du_check | `CHECK ((((trang_thai = 'huy'::text) AND (huy_ly_do IS NOT NULL) AND (btrim(huy_ly_do) <> ''::text) AND (trang_thai_truoc_huy IS NOT NULL)) OR ((trang_thai <> 'huy'::text) AND (huy_ly_do IS NULL) AND (trang_thai_truoc_huy IS NULL))))` |
 | ca_test | ca_test_thoi_luong_phut_check | `CHECK ((thoi_luong_phut = ANY (ARRAY[45, 60, 75, 90, 120])))` |
 | chi_khoan | chi_khoan_muc_dich_check | `CHECK ((length(TRIM(BOTH FROM muc_dich)) > 0))` |
 | chi_khoan | chi_khoan_so_tien_bao_check | `CHECK ((so_tien_bao > (0)::numeric))` |
