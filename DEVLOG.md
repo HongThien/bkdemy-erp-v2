@@ -13892,3 +13892,35 @@ T107010507 (4). Việc cần: chạy pipeline sinh MCQ cho 25 dạng này (ưu t
   mở 1 bài BTVN đã có sẵn kết quả cũ (12/17 đúng) của chính HS0716 — CHỈ XEM, không bấm nộp/chọn đáp án
   nào nên không tạo bản ghi mới. Bài học thao tác: màn dài cuộn được thì ép chiều cao viewport = chiều
   cao trang (vd 375×1500) rồi mới click theo toạ độ, tránh suy đoán vị trí trên ảnh chụp dài hơn khai báo.
+
+### 20/09 — Tự luyện theo chủ đề: % đổi từ coverage sang MASTERY thật + toggle "Chỉ câu mới"
+
+- **CEO 20/09:** "% t bảo hiện là phần trăm đánh giá của học sinh dạng đấy chứ ko phải liên quan số
+  câu trong kho (5 lần gần nhất 3Đ 1C 1S = 70% ấy). Xếp từ thấp nhất đến cao nhất." + "1 toggle bar
+  luyện câu chưa luyện trong 2 cửa sổ gần nhất" + "cửa sổ hiện tại/trước không có bài → hiện chưa
+  đánh giá được, không hiện dữ liệu cũ".
+- **Hỏi lại "cửa sổ" là gì** (không đoán — nghi có 2 khả năng: WINDOW=5 của mastery hay 1 lượt tự
+  luyện) → CEO: "cửa sổ đo mastery là 15 ngày đo đấy đọc md đi. 1 tháng có 2 cửa sổ: 1-15, 16-cuối
+  tháng" — chỉ thẳng khái niệm ĐÃ CÓ SẴN trong `src/gami/danhgia.js` (`cuaSoCua`/`cuaSoTruoc`, spec
+  `PLAN-danhgia-hoctap.md`), KHÔNG phải khái niệm mới, KHÔNG phải WINDOW=5 của `masteryOfDang`.
+- **Fix (mig `202609200922_tu_luyen_chu_de_mastery_cua_so.sql`):**
+  - Hàm mới `_tu_luyen_dau_cua_so_truoc()` — port chính xác `cuaSoCua`/`cuaSoTruoc` (danhgia.js)
+    sang SQL, trả mốc UTC = đầu cửa sổ liền trước.
+  - `tu_luyen_chu_de_ds_dang`: pct/muc lấy từ `fn_mastery_cells` (KHÔNG bịa công thức riêng, §2.0) —
+    gọi 2 lần: 1 lần không giới hạn (score thật) + 1 lần `p_since` = đầu cửa sổ trước (chỉ để biết
+    dạng có hoạt động GẦN ĐÂY không). Dạng không xuất hiện ở lần gọi thứ 2 ⇒ pct=null ("chưa đánh giá
+    được") dù lần gọi 1 vẫn ra số từ dữ liệu cũ — KHÔNG hiện số đó. Sort: yếu→mạnh, null xuống cuối.
+  - `tu_luyen_chu_de_sinh` thêm `p_chi_cau_moi boolean default false` — bật thì Tier 1/2 đổi cửa sổ
+    loại trừ từ "9 lần/batch gần nhất" sang "câu chưa luyện từ đầu cửa sổ trước tới nay"; Tier 3
+    (chấp nhận lặp) bị TẮT khi bật toggle — hết câu mới thì raise exception rõ ràng thay vì âm thầm
+    lặp lại (phá nghĩa toggle), kèm dọn `bai_test` rỗng vừa tạo.
+  - ⚠ Gate hiển thị "chưa đánh giá" CHỈ áp cho màn này — KHÔNG đụng `fn_mastery_cells`/`danhgia.js`
+    dùng cho bổ trợ/level (nơi đó CỐ Ý giữ điểm cũ khi cửa sổ vắng bài, tránh "tụt hạng giả" — đã ghi
+    rõ trong comment `dangDoiBucketXau`, danhgia.js dòng 99-101).
+  - Client: `DangChuDe.pct` đổi `number`→`number|null`, thêm `muc`. `ChonDangChuDe` bỏ group theo
+    chuyên đề (list đã sort theo độ yếu, group theo chuyên đề không còn hợp lý) — tên chuyên đề vẫn
+    hiện làm caption nhỏ trên từng thẻ. Thêm toggle "Chỉ câu mới" (switch UI), pill % đổi màu theo
+    `muc` (dat=xanh/can_luyen=vàng/yeu=đỏ/null=xám "Chưa đánh giá").
+- **Verify qua app thật (HS0716):** danh sách ra đúng 17%(đỏ)→60%(vàng)→80%/100%(xanh)→"Chưa đánh
+  giá"(xám, cuối). Bật toggle "Chỉ câu mới" → bấm dạng 17% → sinh đúng 10 câu, không lỗi console.
+  Test SQL trực tiếp (`fn_mastery_cells` 2 lần với/không `p_since`) khớp kỳ vọng trước khi build UI.

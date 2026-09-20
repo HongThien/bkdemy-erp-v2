@@ -241,7 +241,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
   const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
-  const [chuDeDang, setChuDeDang] = useState<{ ma_dang: string; ten_dang: string } | null>(null) // dạng đã chọn cho "Tự luyện theo chủ đề" (null = luồng tổng hợp)
+  const [chuDeDang, setChuDeDang] = useState<{ ma_dang: string; ten_dang: string; chiCauMoi?: boolean } | null>(null) // dạng đã chọn cho "Tự luyện theo chủ đề" (null = luồng tổng hợp)
   // "Học từ đầu" (Thùy 19/09) — ô CHỈ hiện khi HS có case bổ trợ đuổi ĐANG MỞ (tự suy
   // bo_tro_duoi.trang_thai='can_duoi', KHÔNG lưu cờ riêng — xem htd_co_mo). htdMon lưu
   // lại môn đã dùng để check, để gọi RPC htd_* sau này khỏi phải monCuaHS() lại.
@@ -755,7 +755,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
 // phải độc lập", KHÔNG cộng dồn 1 bài/ngày). Mở màn: lượt hôm nay đang DỞ → làm tiếp; hết dở →
 // sinh lượt mới. "Làm thêm" = sinh lượt mới tinh. Phần LÀM BÀI dùng nguyên LamBai — key={baiTestId}
 // đổi theo từng lượt ⇒ REMOUNT, mỗi lượt chấm điểm/kết quả độc lập 10 câu của chính nó.
-function LamTuLuyen({ hocSinhId, onXong, desktop, chuDe, onDoiDang }: { hocSinhId: string; onXong: () => void; desktop?: boolean; chuDe?: { ma_dang: string; ten_dang: string } | null; onDoiDang?: () => void }) {
+function LamTuLuyen({ hocSinhId, onXong, desktop, chuDe, onDoiDang }: { hocSinhId: string; onXong: () => void; desktop?: boolean; chuDe?: { ma_dang: string; ten_dang: string; chiCauMoi?: boolean } | null; onDoiDang?: () => void }) {
   // "Luyện chứng minh" (điền ô, spec-dien-o.md D2/D3): luồng riêng vì câu điền ô có tương tác từng ô, không đi qua LamBai.
   const [dienO, setDienO] = useState(false)
   const [state, setState] = useState<'dang_tai' | 'san_sang' | 'trong' | 'loi'>('dang_tai')
@@ -778,7 +778,7 @@ function LamTuLuyen({ hocSinhId, onXong, desktop, chuDe, onDoiDang }: { hocSinhI
       if (!m) { setState('trong'); setErr('Chưa xác định được môn học của em — báo thầy cô nhé.'); return }
       setMon(m)
       if (chuDe) {
-        const kq = await sinhTuLuyenChuDe(m, chuDe.ma_dang)
+        const kq = await sinhTuLuyenChuDe(m, chuDe.ma_dang, !!chuDe.chiCauMoi)
         setBaiTestId(kq.baiTestId); setTongNgay(kq.them); setState('san_sang')
         return
       }
@@ -794,7 +794,7 @@ function LamTuLuyen({ hocSinhId, onXong, desktop, chuDe, onDoiDang }: { hocSinhI
     if (!mon) return
     setBusy(true); setErr(null)
     try {
-      const kq = chuDe ? await sinhTuLuyenChuDe(mon, chuDe.ma_dang) : await sinhTuLuyen(mon)
+      const kq = chuDe ? await sinhTuLuyenChuDe(mon, chuDe.ma_dang, !!chuDe.chiCauMoi) : await sinhTuLuyen(mon)
       setBaiTestId(kq.baiTestId); setTongNgay((t) => t + kq.them)
     } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
   }

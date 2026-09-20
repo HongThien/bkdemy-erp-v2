@@ -89,18 +89,25 @@ export async function sinhTuLuyen(mon: string, soCau = SO_CAU_MOI_LUOT): Promise
 
 export const TU_LUYEN_SO_CAU_MOI_LUOT = SO_CAU_MOI_LUOT
 
-// ── TỰ LUYỆN THEO CHỦ ĐỀ (Thùy 19/09) — HS chọn 1 dạng, luyện CHỈ dạng đó. Khác "tổng hợp":
-// không tự rải dạng, có % coverage (đã luyện qua bao nhiêu câu trong kho của dạng — KHÔNG phải
-// điểm đúng/sai, mastery vẫn tính riêng như cũ). RPC lo hết chọn câu + rải đều cụm (`ma_cum`) —
-// xem migration 202609191417_tu_luyen_theo_chu_de.sql.
-export type DangChuDe = { ma_dang: string; ten_dang: string; ten_chuyen_de: string; tong_cau: number; da_luyen: number; pct: number }
+// ── TỰ LUYỆN THEO CHỦ ĐỀ (Thùy 19/09, sửa % 20/09) — HS chọn 1 dạng, luyện CHỈ dạng đó.
+// "%" = MASTERY thật (fn_mastery_cells, WINDOW=5 Đ/C/S — KHÔNG phải coverage kho). pct=null
+// khi dạng KHÔNG có lần đo nào trong cửa sổ hiện tại + cửa sổ trước (~1 tháng, xem
+// gami/danhgia.js cuaSoCua) — "chưa đánh giá được", tránh hiện điểm CŨ không chính xác.
+// Danh sách đã SẮP XẾP sẵn từ RPC: yếu nhất → mạnh nhất, "chưa đánh giá" xuống cuối.
+// RPC lo hết chọn câu + rải đều cụm (`ma_cum`) — xem migration 202609191417 + 202609200922.
+export type DangChuDe = {
+  ma_dang: string; ten_dang: string; ten_chuyen_de: string; tong_cau: number; da_luyen: number
+  pct: number | null; muc: 'dat' | 'can_luyen' | 'yeu' | null
+}
 export async function layDangChuDe(mon: string): Promise<DangChuDe[]> {
   const { data, error } = await supabase.rpc('tu_luyen_chu_de_ds_dang', { p_mon: mon })
   if (error) throw error
   return (data ?? []) as DangChuDe[]
 }
-export async function sinhTuLuyenChuDe(mon: string, maDang: string): Promise<SinhTuLuyenKetQua> {
-  const { data, error } = await supabase.rpc('tu_luyen_chu_de_sinh', { p_mon: mon, p_ma_dang: maDang })
+// chiCauMoi=true: CHỈ chọn câu chưa luyện trong 2 cửa sổ gần nhất (không lặp câu cũ, dừng sớm
+// + báo lỗi rõ nếu dạng đã hết câu mới — KHÔNG âm thầm lùi về cho lặp lại, phá nghĩa toggle).
+export async function sinhTuLuyenChuDe(mon: string, maDang: string, chiCauMoi = false): Promise<SinhTuLuyenKetQua> {
+  const { data, error } = await supabase.rpc('tu_luyen_chu_de_sinh', { p_mon: mon, p_ma_dang: maDang, p_chi_cau_moi: chiCauMoi })
   if (error) throw error
   return { baiTestId: data.bai_test_id, them: data.them, tong: data.tong }
 }
