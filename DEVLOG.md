@@ -14148,3 +14148,117 @@ Thứ tự list & TỰ GHÉP: ưu tiên cao trước, cùng ưu tiên thì case 
   phiên MCQ; chưa ai sinh. T106030402 (20 câu) chưa qua CỬA 1 (da_duyet=0) ⇒ pipeline không nhận.
 - Lý do không tự chạy: spec §0 cảnh báo 2 luồng dùng chung `dai_mcq_rule`/`mcq-auto.mjs`/`mini-dang.mjs` đã đụng mã rule 1 lần (R100–104);
   thêm luồng thứ 3 từ worktree này = lặp đúng sự cố. Việc sinh thuộc phiên MCQ; phiên này lo phía TIÊU THỤ (bổ trợ yếu).
+
+## 20/09 — Nhập kho khối 5T: "Các phép tính với số thập phân" (luồng B, Claude tự giải)
+
+- **File:** `L5T/Dạng bài_Số thập phân.pdf` — sách nâng cao lớp 5, đánh số bài liên tục 10.x/12.x/13.x
+  (không phải lỗi — sách gộp nhiều "Dạng" bài, chỉ phần LUYỆN TẬP là chưa có lời giải; phần VÍ DỤ có sẵn
+  lời giải mẫu nhưng KHÔNG nhập, chỉ dùng để đối chiếu quy ước trình bày).
+- **Luồng B — Claude tự giải toàn bộ** 69 bài gốc (10.1–10.13, 12.1–12.13, 13.1–13.43), verify BẮT BUỘC
+  bằng script số học phân số chính xác (BigInt num/den, không dùng float) trước khi ghi DB — theo
+  `spec-giai-bai-ai.md` §3. Phát hiện 1 chỗ tự giải sai lúc đầu (4 câu "thay chữ cái bằng chữ số" 12.10–12.13:
+  lời giải nháp ban đầu đoán mò/không chặt, phải làm lại bằng quét cạn kiệt (brute-force) mọi chữ số
+  0–9 để tìm nghiệm DUY NHẤT, xác nhận lại bằng phép nhân/cộng ngược trước khi viết lời giải cuối.
+- **Tách mỗi ý thành 1 câu riêng** (áp lại quy tắc CEO chốt cho hình học 19/09, lần này cho toán tính
+  toán — quan sát dạng `T15T020101` có sẵn trong kho cũng theo granularity 1 phép tính = 1 câu, củng cố
+  quyết định tách). 69 bài gốc → **144 câu atomic**.
+- **Dạng ánh xạ** (đều đã có sẵn trong `dai_ban_do` cho 5T, không tạo dạng mới):
+  - Cấu tạo/so sánh/dịch dấu phẩy → `T15T020206` (68 câu: 10.1–10.13, 12.10–12.13, 13.24–13.43).
+  - Tính chất số TP (điền dấu, đẳng thức tổng quát) → `T15T020201` (3 câu: 12.1).
+  - Tính thuận tiện → `T15T020202` (14 câu: 12.2, 12.3, 12.5).
+  - Biểu thức hỗn hợp → `T15T020203` (12 câu: 12.4, 12.6).
+  - Tìm x/y → `T15T020204` (18 câu: 12.7–12.9, 13.6).
+  - Lời văn liên quan số TP → `T15T020205` (16 câu: 13.8–13.23).
+  - **Dãy số (13.1–13.5, 13.7) — KHÔNG có dạng nào khớp** trong 22 dạng hiện có của 5T → để
+    `dang_chinh=null`, `khoi='5T'` (dạng chờ `T15T000000`), hiện ở tab "Chưa phân dạng" (13 câu),
+    đúng §1.5 "thà bỏ trống còn hơn đánh sai" — KHÔNG ép vào `020202`/`020203` dù có thể miễn cưỡng khớp.
+- **Insert qua pipeline chuẩn** `nhap_kho.mjs insert --subject dai` (khác lượt `hinh_hoc` trước — "dai"
+  ĐÃ có trong SUBJECTS của `_kho_insert.mjs`, không cần viết script insert riêng).
+- **Verify:** 144/144 câu $ cân bằng, không tiếng Việt lọt $...$ (2 false-positive do `\text{}` hợp lệ).
+  Verify qua app: batch "Câu mới chờ duyệt" khối 5T +144 (rồi giảm dần vì Thùy duyệt song song real-time,
+  giống lượt 8T hôm qua); tab "Chưa phân dạng" đúng 13 câu dãy số, đúng hành vi chặn duyệt.
+- **File gốc KHÔNG move được** (EBUSY — đang bị khoá bởi Drive sync/đang mở) — log `nhap_kho_log` đã ghi
+  nên không bị quét lại ở lượt `list` sau, nhưng file vẫn nằm ở `L5T/`, cần Thùy tự kéo tay sang
+  `DaXuLy/2026-09-20/`.
+- **Bài học:** "1 phép tính = 1 câu" không chỉ áp cho hình học nhiều ý (chứng minh) mà áp CHUNG cho mọi
+  dạng bài có cấu trúc "a) b) c)..." — nhìn vào granularity của dạng SẴN CÓ trong kho (`T15T020101`) để
+  suy ra convention đúng, thay vì đoán theo cảm tính từng lượt nhập.
+
+## 20/09 — Fix phân dạng sai: "nâng cao cấu tạo" (T15T020206) vs "tính chất" (T15T020201)
+
+- **CEO chỉnh:** dạng "nâng cao" chỉ dành cho câu THẬT SỰ có chữ cái ẩn (thay chữ cái/tìm chữ số dạng
+  `\overline{a,bc}`...) — lúc nhập tôi gộp nhầm CẢ các câu viết/so sánh/dịch dấu phẩy (không chữ ẩn,
+  chỉ là bài tính chất cơ bản) vào chung `T15T020206`.
+- **Fix:** UPDATE `dang_chinh` 60/68 câu từ `T15T020206` → `T15T020201` (giữ lại đúng 8 câu có chữ
+  ẩn: 10.7 tìm chữ số y (2 câu) + 12.10–12.13 thay chữ cái (6 câu)). Áp dụng cho CẢ câu đã lỡ duyệt
+  (17/60 câu đã `da_duyet=true` trước khi sửa) — không né tránh chỉ vì đã duyệt.
+- **Không đổi `ma_cau`** (vẫn giữ tiền tố `T15T020206NNN` dù `dang_chinh` đã là `020201`) — khớp
+  hành vi hệ thống sẵn có (`fn_kho_duyet_cau` khi người duyệt đổi dạng cũng chỉ update `dang_chinh`,
+  không renumber `ma_cau`; `dang_ai_de_xuat` giữ nguyên giá trị gốc để đo precision AI).
+- **Bài học:** "nâng cao" trong tên dạng phải hiểu theo ĐÚNG tiêu chí đề bài phân loại (ở đây: có ẩn số
+  dạng chữ cái ghép chữ số), không phải theo cảm nhận chủ quan "khó/dễ" của người nhập.
+
+## 20/09 — Fix phân dạng lần 2: "dịch dấu phẩy" thuộc lời văn, không phải tính chất
+
+- **CEO chỉnh tiếp:** 20 câu "dịch dấu phẩy" (13.24–13.43, vừa chuyển sang `T15T020201` ở fix lần 1)
+  thực ra là **lời văn** (`T15T020205`) — đặc trưng bởi câu văn dài, có bối cảnh ("Tổng của hai số
+  thập phân là...", "Khi dịch dấu phẩy... thì số đó giảm đi... Tìm số..."), không phải "tính chất"
+  (vốn dành cho câu ngắn thuần viết/so sánh).
+- **Fix:** UPDATE `dang_chinh` 20 câu (`T15T020206049`–`068`) → `T15T020205`. Không câu nào trong
+  số này đã bị duyệt nhầm (kịp sửa trước khi CEO duyệt tới).
+- **Ghi thành quy tắc lâu dài:** tạo [spec-5t-phan-dang.md](spec-5t-phan-dang.md) — bảng tiêu chí nhận
+  diện 6 dạng con `T15T0202xx` (tính chất/thuận tiện/biểu thức hỗn hợp/tìm x/lời văn/nâng cao-có-chữ)
+  + quy trình gán theo thứ tự ưu tiên, để lượt nhập 5T sau không lặp lại 2 lượt sửa dạng này.
+- **Phân bố cuối cùng** (chủ đề Số thập phân, 5T): tính chất 43 · thuận tiện 14 · biểu thức hỗn hợp 12 ·
+  tìm x 18 · lời văn 36 (16 gốc 13.8–13.23 + 20 dịch dấu phẩy) · nâng cao-có-chữ 8. Cộng dãy số
+  "chưa phân dạng" 13 câu = đúng 144 câu đã nhập.
+
+## 20/09 — Clone thêm câu cho 6 dạng "Số thập phân" 5T, mỗi dạng ~40-50 câu
+
+- **Yêu cầu:** mỗi dạng con `T15T0202xx` đạt tầm 40-50 câu (trước đó lệch nhau nhiều: 8-43 câu/dạng
+  sau 2 lượt sửa phân dạng). Clone theo family của câu gốc, KHÔNG chỉ đổi số ngẫu nhiên — mỗi family
+  giữ đúng "hình dạng" bài (cấu trúc phép tính/thao tác) của câu mẫu, chỉ đổi tham số.
+- **Verify TRƯỚC khi ghi DB** bằng số học phân số chính xác (class `Q` BigInt num/den, tái dùng từ lượt
+  giải gốc) — **bắt buộc theo spec-giai-bai-ai.md §3**, không đoán số cho "đẹp". Thêm 1 guard mới:
+  `isTerminating(q)` kiểm mẫu số (dạng tối giản) chỉ có thừa số nguyên tố $2,5$ — bắt được **3 lỗi**
+  tự sinh ra số thập phân vô hạn tuần hoàn (vd $y=3,333\overline{3}$, $186,5\times4/7$) mà nếu không
+  có guard sẽ lọt qua vì code chạy "không lỗi cú pháp" nhưng SAI về mặt sư phạm (đáp số không "đẹp"
+  cho học sinh lớp 5). Sau khi thêm guard + sửa tham số, chạy lại sạch 100%.
+- **127 + 2 câu clone mới** (137 tổng cộng nếu tính cả câu gốc), nâng từng dạng lên:
+  `020201`=43 (giữ nguyên, đã đủ) · `020202`=41 · `020203`=44 · `020204`=44 · `020205`=44 ·
+  `020206`=44 (từ 8 câu "có chữ" gốc, gồm 2 family bất đẳng thức 1 chữ số ẩn + 1 family cộng 2 số
+  có chữ cái ẩn).
+- **`nguon='clone'`, `clone_method='claude_code_clone'`, `parent_ma_cau`** trỏ về câu gốc đại diện
+  của family — khớp convention sẵn có (`clone_doi_so`/`manual_gemini` đã dùng ở nhánh khác).
+- **Bài học:** khi sinh hàng loạt câu tính toán bằng code, PHẢI kiểm "đáp số có dừng không" (terminating
+  decimal) như một class lỗi RIÊNG — không đủ nếu chỉ verify "đẳng thức đúng" bằng phân số, vì $20/6$ và
+  $6/5$ đều "đúng" về toán nhưng chỉ cái sau phù hợp đề bài số thập phân lớp 5 (đáp số hữu hạn chữ số).
+
+### 20/09 — "Dạng yếu" (ThongTinHocTap): áp cùng rule "cửa sổ" + đổi thành 4 tab Đạt/Cần luyện/Yếu/Chưa đánh giá
+
+- **CEO nối tiếp fix Tự luyện theo chủ đề cùng ngày:** "chỉ nên hiện thông số những dạng trong 2 cửa sổ
+  đo gần đây. Dạng nào không có cửa sổ đo gần đây thì xếp qua phần chưa đánh giá. Phải có 4 toggle bar:
+  Đạt, Cần luyện, Yếu, Chưa đánh giá được."
+- **Nhân tiện dọn 1 vi phạm §2.0 đang có sẵn ở đúng chỗ đang sửa:** `layDangHocTap` (lib/tuluyen.ts)
+  trước giờ tính `masteryOfDang` Ở CLIENT từ raw `hs_dang_evals` — cùng công thức nhưng SAI TẦNG so với
+  `fn_mastery_cells` đã là chuẩn (đã dùng cho Tự luyện theo chủ đề). Không sửa riêng vụ này (ngoài yêu
+  cầu), NHƯNG vì phải thêm gate cửa sổ đúng chỗ này nên chuyển luôn sang `fn_mastery_cells` — không để
+  2 nơi tính cùng công thức (§2.0 "công thức nghiệp vụ tồn tại 2 nơi = CẤM").
+- **RPC mới `hs_dang_hoc_tap(p_mon)`** (mig `202609201622_hs_dang_hoc_tap_cua_so.sql`): gom nhóm dạng +
+  "5 lần đo gần nhất" (hiển thị dot) từ `hs_dang_evals` (list thô, SQL gom nhóm — không phải công thức),
+  mức Đạt/Cần luyện/Yếu = `fn_mastery_cells` gọi 2 lần (không giới hạn cho điểm thật + `p_since`=đầu
+  cửa sổ trước để biết có đo GẦN ĐÂY không) — ĐÚNG pattern đã dùng cho `tu_luyen_chu_de_ds_dang` hôm
+  nay, dùng lại `_tu_luyen_dau_cua_so_truoc()` có sẵn, không bịa mốc thời gian khác.
+  `p_include_btvn := true` — giữ NGUYÊN phạm vi nguồn đo cũ của `layDangHocTap` (client trước đây gộp
+  mọi nguồn không qua toggle nào), không âm thầm thắt/nới thêm.
+- **UI (`DangYeuScreen`, ThongTinHocTap.tsx):** 3 ô tĩnh → 4 nút TAB bấm được (Yếu/Cần luyện/Đạt/Chưa
+  đánh giá, viền màu khi active) lọc list bên dưới theo đúng nhóm; % thành thạo hero CHỈ tính trên dạng
+  đã đo gần đây (mẫu số = dat+canLuyen+yeu, KHÔNG gồm chưa đánh giá — "chưa biết" khác "biết là thấp").
+- **Verify qua app thật (HS0440, cùng phiên vừa tự luyện 10/10 nhiều lượt):** "19 dạng có đo trong 2 kỳ
+  gần nhất — chưa tính 0 dạng chưa đánh giá được", tab Yếu(0)/Cần luyện(2, đúng list+dot lịch sử)/
+  Đạt(17, đúng list)/Chưa đánh giá(0, đúng empty state "mọi dạng đều có đo gần đây"). tsc sạch (trừ lỗi
+  sẵn có `pdfRender.ts` + 1 lỗi KHÔNG LIÊN QUAN ở `DiemDanhTestScreen.tsx` do phiên khác đang sửa song song).
+- **Sự cố ngoài lề phát hiện lúc commit (không phải do tôi gây ra):** `DEVLOG.md` có conflict marker
+  `<<<<<<< Updated upstream / ======= / >>>>>>> Stashed changes` chưa giải quyết (phiên khác `git stash`
+  đụng độ) — đã dọn sạch theo đúng quy ước "nối cả 2 bên theo thứ tự", giữ nguyên toàn bộ nội dung cả
+  2 phía (không xoá dòng nào), chỉ bỏ 3 dòng marker.

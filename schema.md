@@ -2,14 +2,14 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `1` BẢNG
-> Role `claude_ro` **không sở hữu** và **không có `bypassrls`** với: `thong_bao_ph`
+> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `7` BẢNG
+> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `thong_bao_hs` · `thong_bao_ph`
 > Các bảng này bật RLS với policy `to authenticated`, nên `SELECT` từ script/CLI trả **0 dòng,
 > im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-236 bảng · 19 view · 0 enum · 78 trigger · 420 function
+236 bảng · 19 view · 0 enum · 78 trigger · 422 function
 
 ## _app_secrets
 
@@ -5220,6 +5220,7 @@ SELECT bl.hoc_sinh_id,
 - `fn_kho_tu_choi_cau(p_mon text, p_ma_cau text, p_nguoi uuid, p_ly_do text)` → void
 - `fn_kho_yeu_cau_giai_cho(p_mon text)` → TABLE(yeu_cau_id uuid, yeu_cau_at timestamp with time zone, ghi_chu text, ma_cau text, dang_chinh text, ten_dang text, khoi text, loai_cau text, noi_dung text, lua_chon jsonb, menh_de jsonb, dap_an text, anh_de text, ma_cum text, da_co_loi_giai boolean)
 - `fn_lich_truc_cua_hs(p_hoc_sinh uuid, p_mon text, p_ngay date DEFAULT NULL::date)` → jsonb
+- `fn_lop_hs_thang(p_ym text)` → TABLE(hoc_sinh_id uuid, mon text, khoi text, ten_lop text)
 - `fn_mastery_cells(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone, p_window integer DEFAULT 5, p_tin_cao integer DEFAULT 5, p_tin_tb integer DEFAULT 3)` → TABLE(hoc_sinh_id uuid, ma_dang text, score numeric, n bigint, muc text, tin text)
 - `fn_mastery_cells_hinh(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, hinh_baitoan_id uuid, score numeric, n bigint, muc text, tin text)
 - `fn_mastery_rollup(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, dat bigint, can_luyen bigint, yeu bigint, tin_thap bigint)
@@ -5334,6 +5335,7 @@ SELECT bl.hoc_sinh_id,
 - `hs_cap2_cua_toi()` → boolean
 - `hs_cham_tln_ai(p_bai_lam_cau_id uuid)` → jsonb
 - `hs_dang_evals(p_mon text, p_nhanh text DEFAULT NULL::text)` → jsonb
+- `hs_dang_hoc_tap(p_mon text)` → jsonb
 - `hs_dien_tra_loi(p_bai_lam_id uuid, p_bai_test_cau_id uuid, p_dap_an_hs jsonb)` → jsonb
 - `hs_doi_anh_dai_dien(p_url text)` → void
 - `hs_gioi_tinh_cua_toi()` → text
@@ -5404,9 +5406,9 @@ SELECT bl.hoc_sinh_id,
 - `trg_han_nop_ngoai_le_log()` → trigger
 - `trg_htd_test_nop()` → trigger
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 

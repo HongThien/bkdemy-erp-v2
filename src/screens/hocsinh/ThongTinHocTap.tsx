@@ -12,7 +12,7 @@ import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import { supabase } from '../../lib/supabase'
 import {
   monCuaHS, khoiCuaHS, layDangHocTap, layLichSuLamBai, xepHangTiLeDat, xepHangTuLuyen,
-  SRC_LABEL, type DangHocTap, type RecentEval, type LichSuLamBaiRow, type XepHangTiLeRow, type XepHangRow,
+  SRC_LABEL, type DangHocTap, type TongQuanHocTap, type RecentEval, type LichSuLamBaiRow, type XepHangTiLeRow, type XepHangRow,
 } from '../../lib/tuluyen'
 import { getBXHDiemMTKhoi, type BXHDiemMTRow } from '../../lib/thanhtich'
 
@@ -102,17 +102,31 @@ export default function ThongTinHocTap({ hocSinhId, gioiTinh, onXong }: { hocSin
 }
 
 // ── SUB 1 — DẠNG YẾU ──────────────────────────────────────────────────────────────
+// 4 nhóm (CEO 20/09): Đạt/Cần luyện/Yếu chỉ tính dạng có lần đo trong 2 cửa sổ gần nhất — dạng
+// KHÔNG có đo gần đây (dù từng đo lâu rồi) rơi vào "Chưa đánh giá được", KHÔNG hiện mức cũ.
+type Nhom = 'yeu' | 'can_luyen' | 'dat' | 'chua_danh_gia'
+const NHOM_DEF: { key: Nhom; ten: string; mau: string; nen: string }[] = [
+  { key: 'yeu', ten: 'Yếu', mau: '#E0405A', nen: '#ffe3e6' },
+  { key: 'can_luyen', ten: 'Cần luyện', mau: '#E08A1E', nen: '#fff3e0' },
+  { key: 'dat', ten: 'Đạt', mau: '#20A886', nen: '#e7f9ee' },
+  { key: 'chua_danh_gia', ten: 'Chưa đánh giá', mau: '#7A88B8', nen: '#eef1fa' },
+]
+const nhomCuaDang = (d: DangHocTap): Nhom => d.muc ?? 'chua_danh_gia'
+
 function DangYeuScreen({ t, onBack }: { t: Theme; onBack: () => void }) {
-  const [data, setData] = useState<{ dangs: DangHocTap[]; dat: number; canLuyen: number; yeu: number } | null>(null)
+  const [data, setData] = useState<TongQuanHocTap | null>(null)
+  const [tab, setTab] = useState<Nhom>('yeu')
   useEffect(() => {
     (async () => {
-      const mon = await monCuaHS(); if (!mon) { setData({ dangs: [], dat: 0, canLuyen: 0, yeu: 0 }); return }
+      const mon = await monCuaHS(); if (!mon) { setData({ dangs: [], dat: 0, canLuyen: 0, yeu: 0, chuaDanhGia: 0 }); return }
       setData(await layDangHocTap(mon))
-    })().catch(() => setData({ dangs: [], dat: 0, canLuyen: 0, yeu: 0 }))
+    })().catch(() => setData({ dangs: [], dat: 0, canLuyen: 0, yeu: 0, chuaDanhGia: 0 }))
   }, [])
-  const tong = data ? data.dat + data.canLuyen + data.yeu : 0
-  const tiLe = data && tong > 0 ? Math.round(((data.dat + data.canLuyen * 0.5) / tong) * 100) : 0
-  const canChuY = useMemo(() => (data ? data.dangs.filter((d) => d.muc !== 'dat').slice(0, 20) : []), [data])
+  const tongDaDo = data ? data.dat + data.canLuyen + data.yeu : 0 // "chưa đánh giá" KHÔNG vào mẫu số — đó là "chưa biết", không phải mức thấp
+  const tiLe = data && tongDaDo > 0 ? Math.round(((data.dat + data.canLuyen * 0.5) / tongDaDo) * 100) : 0
+  const soCua: Record<Nhom, number> = { yeu: data?.yeu ?? 0, can_luyen: data?.canLuyen ?? 0, dat: data?.dat ?? 0, chua_danh_gia: data?.chuaDanhGia ?? 0 }
+  const dsTab = useMemo(() => (data ? data.dangs.filter((d) => nhomCuaDang(d) === tab) : []), [data, tab])
+  const tong = tongDaDo + (data?.chuaDanhGia ?? 0)
   return (
     <Kung t={t} title="Dạng yếu" sub="Tập trung luyện các dạng này để tiến bộ nhanh" onBack={onBack}>
       {data === null && <p className="mt-8 text-center text-[13px]" style={{ color: t.sec }}>Đang tải…</p>}
@@ -121,49 +135,53 @@ function DangYeuScreen({ t, onBack }: { t: Theme; onBack: () => void }) {
       )}
       {data && tong > 0 && (
         <>
-          {/* Hero % thành thạo + 3 ô đạt/cần luyện/yếu */}
+          {/* Hero % thành thạo + 4 tab Đạt/Cần luyện/Yếu/Chưa đánh giá — bấm để lọc list bên dưới */}
           <div className="mt-4 rounded-[24px] p-4" style={{ background: t.cardTint, boxShadow: t.shadow }}>
             <p className="text-[13px] font-bold" style={{ color: NAVY }}>Tỉ lệ thành thạo kiến thức</p>
             <div className="mt-1 flex items-baseline gap-1">
               <span className="text-[42px] font-extrabold leading-none tracking-tight" style={{ color: NAVY }}>{tiLe}</span>
               <span className="text-[18px] font-bold" style={{ color: t.sec }}>%</span>
             </div>
-            <div className="mt-3 grid grid-cols-3 gap-2">
-              {[
-                { ten: 'Đạt', so: data.dat, mau: '#20A886', nen: '#e7f9ee' },
-                { ten: 'Cần luyện', so: data.canLuyen, mau: '#E08A1E', nen: '#fff3e0' },
-                { ten: 'Yếu', so: data.yeu, mau: '#E0405A', nen: '#ffe3e6' },
-              ].map((x) => (
-                <div key={x.ten} className="rounded-[14px] p-2.5 text-center" style={{ background: x.nen }}>
-                  <b className="block text-[19px] font-extrabold" style={{ color: x.mau }}>{x.so}</b>
-                  <span className="text-[9px] font-black uppercase tracking-wide" style={{ color: t.sec }}>{x.ten}</span>
-                </div>
+            <p className="mt-0.5 text-[10.5px]" style={{ color: t.sec }}>Tính trên {tongDaDo} dạng có đo trong 2 kỳ gần nhất — chưa tính {soCua.chua_danh_gia} dạng chưa đánh giá được</p>
+            <div className="mt-3 grid grid-cols-4 gap-1.5">
+              {NHOM_DEF.map((x) => (
+                <button key={x.key} onClick={() => setTab(x.key)}
+                  className="rounded-[14px] p-2 text-center transition"
+                  style={{ background: x.nen, boxShadow: tab === x.key ? `0 0 0 2px ${x.mau}` : 'none' }}>
+                  <b className="block text-[17px] font-extrabold" style={{ color: x.mau }}>{soCua[x.key]}</b>
+                  <span className="text-[8px] font-black uppercase tracking-wide" style={{ color: t.sec }}>{x.ten}</span>
+                </button>
               ))}
             </div>
           </div>
-          <p className="ml-1 mb-2 mt-5 text-[10.5px] font-extrabold uppercase tracking-[0.2em]" style={{ color: t.sec }}>Dạng cần chú ý</p>
-          {canChuY.length === 0
-            ? <EmptyBox t={t} icon="🎉" title="Không có dạng nào yếu" mo_ta="Tất cả dạng đã học đều đạt." />
+          <p className="ml-1 mb-2 mt-5 text-[10.5px] font-extrabold uppercase tracking-[0.2em]" style={{ color: t.sec }}>
+            Dạng {NHOM_DEF.find((x) => x.key === tab)?.ten.toLowerCase()}
+          </p>
+          {dsTab.length === 0
+            ? <EmptyBox t={t} icon={tab === 'dat' ? '🎉' : tab === 'chua_danh_gia' ? '🕓' : '✨'}
+                title="Không có dạng nào ở đây"
+                mo_ta={tab === 'chua_danh_gia' ? 'Mọi dạng đã học đều có đo trong 2 kỳ gần nhất.' : 'Chọn tab khác để xem nhóm dạng còn lại.'} />
             : (
               <div className="flex flex-col gap-2.5">
-                {canChuY.map((d) => (
+                {dsTab.map((d) => {
+                  const def = NHOM_DEF.find((x) => x.key === tab)!
+                  return (
                   <div key={d.ma_dang} className="rounded-[16px] p-3" style={{ background: t.cardTint, boxShadow: t.shadow }}>
                     <div className="flex items-center gap-2.5">
-                      <span className={`h-[10px] w-[10px] shrink-0 rounded-full`} style={{ background: d.muc === 'yeu' ? '#E0405A' : '#E08A1E' }} />
+                      <span className="h-[10px] w-[10px] shrink-0 rounded-full" style={{ background: def.mau }} />
                       <div className="min-w-0 flex-1">
                         <p className="truncate text-[13.5px] font-extrabold" style={{ color: NAVY }}>{d.ten_dang}</p>
                         {d.ten_chuyen_de && <p className="truncate text-[11px]" style={{ color: t.sec }}>{d.ten_chuyen_de}</p>}
                       </div>
-                      <span className="shrink-0 rounded-full px-2 py-1 text-[10px] font-black" style={{ background: d.muc === 'yeu' ? '#ffe3e6' : '#fff3e0', color: d.muc === 'yeu' ? '#E0405A' : '#E08A1E' }}>
-                        {d.muc === 'yeu' ? 'Yếu' : 'Cần luyện'}
-                      </span>
+                      <span className="shrink-0 rounded-full px-2 py-1 text-[10px] font-black" style={{ background: def.nen, color: def.mau }}>{def.ten}</span>
                     </div>
                     <div className="mt-2.5 flex gap-1 border-t border-black/[0.06] pt-2.5">
                       {d.recent.length === 0 && <span className="text-[10.5px]" style={{ color: t.sec }}>Chưa có lần đo nào</span>}
                       {d.recent.map((e, i) => <LanDo key={i} e={e} t={t} />)}
                     </div>
                   </div>
-                ))}
+                  )
+                })}
               </div>
             )}
         </>
