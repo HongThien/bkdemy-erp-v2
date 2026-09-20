@@ -13973,3 +13973,19 @@ Thứ tự list & TỰ GHÉP: ưu tiên cao trước, cùng ưu tiên thì case 
 - RPC `fn_btyeu_case_xep_lich(mon)` (migration 202609201300, ĐÃ ÁP) thay 3 query client + getLevels (tổng hợp ở DB, §2.0).
 **Đo thật 20/09:** 99 case · 72 chờ xếp (5 em đã học ≥1 buổi còn dạng) · 27 đã xếp chưa bổ trợ, trong đó **8 QUÁ NGÀY chưa học** (TA chưa
 điểm danh/hoàn tất hoặc em vắng chưa huỷ — cần OPS soát) · 0 case có dạng mới sau xếp · ưu tiên: 99 Thường (chưa ai đặt). tsc sạch.
+
+## 2026-09-20 — "Làm đi" (sinh MCQ cho 25 dạng bổ trợ 0 MCQ): KHÔNG chạy pipeline thứ ba — khảo sát cho thấy việc đã có chủ, nghẽn ở chỗ khác
+
+Đọc `spec-mcq-quy-trinh-sinh.md` + đo (`scripts/_diag_25dang_form.mjs`) trước khi chạy. Kết quả:
+- **4 dạng K9 ĐÃ có form TN sinh tối 19/09 19:40 (phiên MCQ khác, nguon=ai, rule R343–R346 "đáp số thực tế"), đang CHỜ DUYỆT:**
+  T109010203 ×13 (dạng dính 10 case — ưu tiên số 1) · T109020204 ×41 · T109080106 ×27 · T109080502 ×11 = 92 form (tổng K9 chờ: 133).
+  Số "0 form chờ duyệt" t báo 19/09 là đo lúc ~19:20, TRƯỚC khi lô này sinh.
+- **Khối 6–7 nâng cao thuộc nhóm "TRẮC NGHIỆM TỪNG PHẦN" = form ĐIỀN Ô** (CEO chốt 12/09, spec §8 — không nhét vào khuôn 4 đáp án):
+  phiên `worktree-mcq-tung-phan` đã build (commit 75d6874: GTLN/GTNN, an+b⋮cn+d, dãy luỹ thừa, dãy hiệu tích, BĐT dãy K7). Đang chờ
+  duyệt: T106030401 ×139 · T107010205 ×57. **NHƯNG luồng bổ trợ yếu CHƯA đọc form điền ô** (`_kho_dk_mcq_sql` chỉ nhận TN gốc | form_tn)
+  ⇒ duyệt xong các form này bổ trợ vẫn không dùng được — đây là việc của PHIÊN NÀY, cần CEO chốt "điền ô có tính là trắc nghiệm cho
+  bổ trợ không" (spec-dien-o: "yếu → ĐIỀN" — đúng đối tượng bổ trợ yếu).
+- Khối 10–11 (9 dạng lượng giác/tập hợp, 16 lượt case) + vài dạng lẻ: đáp số 1 giá trị số ⇒ hợp cơ chế ANSWER_DANG (R343–R346) của
+  phiên MCQ; chưa ai sinh. T106030402 (20 câu) chưa qua CỬA 1 (da_duyet=0) ⇒ pipeline không nhận.
+- Lý do không tự chạy: spec §0 cảnh báo 2 luồng dùng chung `dai_mcq_rule`/`mcq-auto.mjs`/`mini-dang.mjs` đã đụng mã rule 1 lần (R100–104);
+  thêm luồng thứ 3 từ worktree này = lặp đúng sự cố. Việc sinh thuộc phiên MCQ; phiên này lo phía TIÊU THỤ (bổ trợ yếu).
