@@ -295,13 +295,16 @@ function EmptyBox({ t, icon, title, mo_ta }: { t: Theme; icon: string; title: st
   )
 }
 
+// Ngày của lần đo PHẢI hiện được ra màn (không chỉ nằm trong title/hover) — đây là thứ quyết định
+// lần đo đó có còn "gần đây" (trong cửa sổ) hay đã cũ, quan trọng nhất khi đọc dãy 5 lần đo (Thùy 20/09).
 function LanDo({ e, t }: { e: RecentEval; t: Theme }) {
   const icon = e.value >= 1 ? '✓' : e.value > 0 ? '◐' : '✗'
   const mau = e.value >= 1 ? { bg: '#e7f9ee', fg: '#20A886' } : e.value > 0 ? { bg: '#fff3e0', fg: '#E08A1E' } : { bg: '#ffe3e6', fg: '#E0405A' }
   return (
     <div className="flex flex-1 flex-col items-center gap-0.5" title={`${SRC_LABEL[e.src]} · ${fmtNgayVN(e.t)}`}>
       <span className="flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-bold" style={{ background: mau.bg, color: mau.fg }}>{icon}</span>
-      <span className="text-[8px] font-bold leading-none" style={{ color: t.sec }}>{SRC_LABEL[e.src]}</span>
+      <span className="whitespace-nowrap text-[9px] font-extrabold leading-none" style={{ color: NAVY }}>{fmtNgayVN(e.t)}</span>
+      <span className="text-[7.5px] font-bold leading-none" style={{ color: t.sec }}>{SRC_LABEL[e.src]}</span>
     </div>
   )
 }
