@@ -17,6 +17,16 @@ import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import { homNayVN, mucDeadline, nhanConLai, type DeadlineMuc } from '../../lib/tuan'
 import SearchSelect from '../../components/SearchSelect'
 import { useIsMobile } from '../../hooks/useIsMobile'
+import MTPrintView from '../tailieu/MTPrintView'
+
+// ⭐ CEO 20/09: Ops in đề cho HS NGAY lúc tạo ca test (HS đang đứng ở quầy). Đề test sinh từ MT nên nhiều đề mang
+// đủ 3 MÃ ĐỀ trong cùng 1 file — in cho 1 học sinh thì CHỈ in MÃ 1 (đề gốc): ca test snapshot câu của đề gốc
+// (`ganDeCaTest` duyệt `maCaus` gốc) ⇒ giấy phát ra phải khớp đúng bộ câu TA sẽ chấm. Dùng lại chế độ "in theo học
+// sinh" của MTPrintView (`perHS`, 1 phiếu = 1 mã, tên in sẵn) — không viết máy in thứ hai.
+const MA_DE_IN_TEST = 1
+type InDe = { taiLieuId: string; ungVienId: string; hoTen: string; khoi: string | null }
+const LS_IN_DE = 'tdv_in_de_khi_tao'
+const docInDeMacDinh = (): boolean => { try { return localStorage.getItem(LS_IN_DE) !== '0' } catch { return true } }
 
 // Ca đang được tự-gán đề (promise đang chạy) — module-level để sống qua StrictMode remount; xem effect trong CaCard.
 const DANG_GAN = new Map<string, Promise<DeTestRow | null>>()
@@ -31,6 +41,7 @@ export default function DiemDanhTestScreen() {
   const [deList, setDeList] = useState<DeTestRow[]>([])
   const [loading, setLoading] = useState(true)
   const [form, setForm] = useState(false)
+  const [inDe, setInDe] = useState<InDe | null>(null)   // đang mở máy in đề cho 1 HS (mã 1)
   const [now, setNow] = useState(() => Date.now())
 
   async function reload() {
@@ -59,7 +70,7 @@ export default function DiemDanhTestScreen() {
         <div className="rounded-lg border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Không có ca test nào đang chạy.</div>
       ) : (
         <div className="grid gap-3 sm:grid-cols-2">
-          {dangChay.map((c) => <CaTestCard key={c.id} c={c} now={now} deList={deList} onChanged={reload} />)}
+          {dangChay.map((c) => <CaTestCard key={c.id} c={c} now={now} deList={deList} onChanged={reload} onInDe={setInDe} />)}
         </div>
       )}
 
@@ -77,13 +88,18 @@ export default function DiemDanhTestScreen() {
         </details>
       )}
 
-      {form && <TaoCaTestModal onClose={() => setForm(false)} onDone={async () => { setForm(false); await reload() }} />}
+      {form && <TaoCaTestModal onClose={() => setForm(false)} onDone={async (inNgay) => { setForm(false); if (inNgay) setInDe(inNgay); await reload() }} />}
+      {inDe && (
+        <MTPrintView id={inDe.taiLieuId} onClose={() => setInDe(null)}
+          perHS={[{ id: inDe.ungVienId, ho_ten: inDe.hoTen, maDe: MA_DE_IN_TEST }]}
+          lopTen={inDe.khoi ? `Test đầu vào · Khối ${inDe.khoi}` : 'Test đầu vào'} />
+      )}
     </div>
     </div>
   )
 }
 
-function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deList: DeTestRow[]; onChanged: () => void }) {
+function CaTestCard({ c, now, deList, onChanged, onInDe }: { c: CaTest; now: number; deList: DeTestRow[]; onChanged: () => void; onInDe: (x: InDe) => void }) {
   const [baiUrl, setBaiUrl] = useState<string | null>(c.baiUrl)
   const [taiLieuId, setTaiLieuId] = useState(c.taiLieuId)
   const [busy, setBusy] = useState(false)
@@ -184,6 +200,10 @@ function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deL
           <input type="file" accept="application/pdf,image/*" className="hidden" onChange={chonFile} disabled={busy} />
         </label>
         {baiUrl && <a href={baiUrl} target="_blank" rel="noreferrer" className="text-[12px] text-indigo-500 hover:underline">Xem bài</a>}
+        {/* In (lại) đề cho HS — luôn MÃ 1, khớp bộ câu ca test đã snapshot. Đề lệch khối thì không cho in (gán lại trước). */}
+        <button onClick={() => taiLieuId && onInDe({ taiLieuId, ungVienId: c.ungVienId, hoTen: c.ungVien.hoTenHs, khoi: c.ungVien.khoi })}
+          disabled={busy || !taiLieuId || lechKhoi} title={!taiLieuId ? 'Chưa có đề để in' : lechKhoi ? 'Đề đang lệch khối — gán lại đề trước khi in' : 'In đề cho học sinh (mã đề 1, tên in sẵn)'}
+          className="min-h-[36px] rounded-md border border-slate-200 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-300 disabled:opacity-40">🖨 In đề</button>
         {/* ⭐ 09/09: gate Hoàn tất đòi ĐỦ bằng chứng khâu Chấm cần — có bài + có đề (thiếu đề = ca rơi khỏi hàng đợi chấm im lặng). */}
         <button onClick={hoanTat} disabled={busy || !baiUrl || !taiLieuId} title={!baiUrl ? 'Cần upload bài mới hoàn tất được' : !taiLieuId ? 'Cần gán đề trước (khâu chấm cần câu của đề)' : ''} className="ml-auto min-h-[36px] rounded-md bg-emerald-600 px-3 py-1.5 text-[12px] font-semibold text-white hover:bg-emerald-500 disabled:opacity-40">✓ Hoàn tất</button>
       </div>
@@ -192,7 +212,9 @@ function CaTestCard({ c, now, deList, onChanged }: { c: CaTest; now: number; deL
   )
 }
 
-function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: () => void }) {
+function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: (inNgay: InDe | null) => void }) {
+  const [inDeNgay, setInDeNgay] = useState<boolean>(docInDeMacDinh)   // nhớ lựa chọn của Ops theo máy (tiện ích, không phải dữ liệu)
+  const doiInDe = (v: boolean) => { setInDeNgay(v); try { localStorage.setItem(LS_IN_DE, v ? '1' : '0') } catch { /* private mode */ } }
   const [uvL5, setUvL5] = useState<{ id: string; ho_ten_hs: string; ma_uv: string | null; khoi: string | null; mon: string }[]>([])
   const [ungVienId, setUngVienId] = useState<string | null>(null)
   const [f, setF] = useState({
@@ -227,8 +249,10 @@ function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: () =
       const ca = await taoCaTest(input)
       // CEO ① 09/09: đề mặc định = đề đang dùng của (khối × môn), gán NGAY lúc tạo ca. Chưa có đề thì
       // card sẽ báo ⚠ (không chặn tạo ca — HS đang đứng ở quầy).
-      try { await ganDeDangDung(ca.id, ca.ungVien.khoi, ca.mon) } catch { /* card báo sau */ }
-      onDone()
+      let de: DeTestRow | null = null
+      try { de = await ganDeDangDung(ca.id, ca.ungVien.khoi, ca.mon) } catch { /* card báo sau */ }
+      // In ngay (CEO 20/09): chỉ khi Ops tích VÀ đã gán được đề — chưa có đề thì card báo ⚠, không mở máy in rỗng.
+      onDone(inDeNgay && de ? { taiLieuId: de.id, ungVienId: ca.ungVienId, hoTen: ca.ungVien.hoTenHs, khoi: ca.ungVien.khoi } : null)
     } catch (e: any) { setErr(e.message ?? String(e)); setBusy(false) }
   }
 
@@ -276,6 +300,14 @@ function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: () =
               ))}
             </div>
           </div>
+
+          <label className="flex cursor-pointer items-start gap-2.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5">
+            <input type="checkbox" checked={inDeNgay} onChange={(e) => doiInDe(e.target.checked)} className="mt-0.5 h-4 w-4 accent-indigo-600" />
+            <span>
+              <span className="block text-[13px] font-medium text-slate-700">🖨 In đề cho học sinh ngay sau khi tạo</span>
+              <span className="block text-[11px] text-slate-400">In đề đang dùng của khối × môn, tên học sinh in sẵn. Đề có nhiều mã thì chỉ in <b>mã đề 1</b>. In lại lúc nào cũng được bằng nút "In đề" trên thẻ ca.</span>
+            </span>
+          </label>
 
           <p className="text-[11px] text-slate-400">Người chấm / trả bài gán tự động theo tab "Phân công" (khối × môn) khi tạo ca.</p>
 

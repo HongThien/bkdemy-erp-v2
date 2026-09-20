@@ -14262,3 +14262,10 @@ Thứ tự list & TỰ GHÉP: ưu tiên cao trước, cùng ưu tiên thì case 
   `<<<<<<< Updated upstream / ======= / >>>>>>> Stashed changes` chưa giải quyết (phiên khác `git stash`
   đụng độ) — đã dọn sạch theo đúng quy ước "nối cả 2 bên theo thứ tự", giữ nguyên toàn bộ nội dung cả
   2 phía (không xoá dòng nào), chỉ bỏ 3 dòng marker.
+
+## 2026-09-20 — Test đầu vào: in đề cho HS ngay lúc tạo ca (chỉ mã đề 1)
+
+**(CEO "lúc nhập ca test mới ops có thể chọn in bài test cho học sinh luôn; đề file chứa cả 3 mã thì hệ thống chỉ in mã 1 mặc định")**
+- Đo DB (`scripts/_q_de_test_phan_2009.mjs`): 8/8 đề test đầu vào đều sinh từ MT, phần `custom`, `sinhDeTestDauVao` chép nguyên `cau_hinh` ⇒ đề K4 (28 câu), K5 (34), K7 bản 14/09 (34) mang đủ `etMaDe` = 3 mã; 5 đề còn lại 1 mã. `ganDeCaTest` snapshot câu của ĐỀ GỐC ⇒ giấy phát cho HS bắt buộc là mã 1 mới khớp bộ câu TA chấm.
+- Không viết máy in thứ hai: dùng lại `MTPrintView` chế độ `perHS` (1 phiếu = 1 mã, tên/lớp in sẵn) với `maDe: 1` cố định (`MA_DE_IN_TEST`). `DiemDanhTestScreen`: modal "Tạo test đầu vào" thêm checkbox "🖨 In đề cho học sinh ngay sau khi tạo" (mặc định BẬT, nhớ theo máy qua localStorage `tdv_in_de_khi_tao` — tiện ích, không phải dữ liệu); `onDone(inNgay)` trả `{taiLieuId, ungVienId, hoTen, khoi}` chỉ khi tích VÀ gán được đề ⇒ màn cha mở `MTPrintView`. Mỗi thẻ ca thêm nút "🖨 In đề" (in lại; khoá khi chưa có đề hoặc đề lệch khối). `MTPrintView.MTHeaderBK` thêm prop `nhan`: tài liệu `loai=de_test_dau_vao` in nhãn "Kiểm tra đầu vào" thay "Kỳ thi lớn (MT)".
+- Verify: tsc sạch. App server riêng (port 53120, dev quick-login admin; cổng 5173 đang là phiên HS của chat khác — không đụng): 2 ca đang chạy đều K6 chưa có đề ⇒ nút In đề khoá đúng, modal hiện checkbox (checked). Không tạo ứng viên giả vào DB thật ⇒ dựng thử `MTPrintView` trong trang (import động) với đề K5 đủ 3 mã + perHS mã 1: nguồn trước dàn trang = **1 phiếu, "Mã đề 1" ×1, mã 2/3 ×0, tên + lớp in sẵn, 34 câu**. Bước dàn trang paged.js timeout 30s vì Browser pane `document.hidden=true` (không vẽ) — giới hạn môi trường, CHƯA thấy bản in cuối bằng mắt; CEO/Ops thử tay 1 ca thật. Chưa commit.

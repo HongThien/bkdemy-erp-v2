@@ -319,7 +319,8 @@ function MTPhieu({ full, phans, ver, gv, mapCau, hinhMucs, hoTen, lopTen }: {
   const mucHinh = (ma: string): MucIn | null => { const arr = hinhMucs[ma]; return (ver.v == null ? arr[0] : arr[ver.v + 1]) ?? arr[0] ?? null }
   return (
     <div className="pv-mt" style={{ '--pv-accent': ver.ch.mau || '#7c3aed' } as CSSProperties}>
-      <MTHeaderBK ten={full.taiLieu.ten} badge={ver.badge} gv={gv} hoTen={hoTen} lopTen={lopTen} />
+      {/* Đề test đầu vào (sinh từ MT, in qua đúng máy này — CEO 20/09) không phải "Kỳ thi lớn": nhãn theo LOẠI tài liệu. */}
+      <MTHeaderBK ten={full.taiLieu.ten} badge={ver.badge} gv={gv} hoTen={hoTen} lopTen={lopTen} nhan={full.taiLieu.loai === 'de_test_dau_vao' ? 'Kiểm tra đầu vào' : undefined} />
 
       {phans.map((p) => { const segs = doanCua(p); return (
         <section key={p.id} className="pv-sec">
@@ -346,12 +347,12 @@ function MTPhieu({ full, phans, ver, gv, mapCau, hinhMucs, hoTen, lopTen }: {
 // Đầu phiếu kiểu BK (đồng bộ ET/BTVN, xem ETHeaderBK/BtvnBkHead) — khung .pv-bkh (logo/nhãn/tiêu đề) từ
 // bkPrint.tsx, còn khối Họ tên/Lớp/Mã đề + ô ĐIỂM giữ NGUYÊN .pv-bt-row/.pv-bt-score cũ (MT cần cả Mã đề
 // LẪN Điểm cùng lúc — khác ET chỉ có Mã đề/BTVN chỉ có Điểm — nên không tái dùng thẳng .pv-bkh-student).
-function MTHeaderBK({ ten, badge, gv, hoTen, lopTen }: { ten: string; badge: string; gv: boolean; hoTen?: string; lopTen?: string }) {
+function MTHeaderBK({ ten, badge, gv, hoTen, lopTen, nhan = 'Kỳ thi lớn (MT)' }: { ten: string; badge: string; gv: boolean; hoTen?: string; lopTen?: string; nhan?: string }) {
   return (
     <div className="pv-bkh">
       <div className="pv-bkh-top">
         <div className="pv-bkh-brand"><img className="pv-bkh-logo" src={location.origin + '/Logo.png'} alt="BK ACADEMY" /></div>
-        <div className="pv-bkh-label">Kỳ thi lớn (MT){badge ? ` · ${badge}` : ''}{gv ? ' · Đáp án' : ''}</div>
+        <div className="pv-bkh-label">{nhan}{badge ? ` · ${badge}` : ''}{gv ? ' · Đáp án' : ''}</div>
         <div className="pv-bkh-meta" />
       </div>
       <div className="pv-bkh-hero">
