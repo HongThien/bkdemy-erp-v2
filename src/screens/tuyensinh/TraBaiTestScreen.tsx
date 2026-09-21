@@ -18,6 +18,7 @@ import { listLop } from '../../lib/nhansu'
 import { updateUngVien } from '../../lib/tuyensinh'
 import { useStore } from '../../store/useStore'
 import SearchSelect from '../../components/SearchSelect'
+import { SuaCaTheoIdModal, HuyCaTestModal, NutSuaHuy } from './CaTestSuaHuy'
 import { PhieuCard, moPopupXuatAnh, ensureFonts, Icon, I, PHIEU_W, NAVY, NAVY_DAM, GOLD, GOLD_SANG, NEN, CHU, CHU_PHU, FONT } from './PhieuTestDauVao'
 
 // ⭐ CEO 15/09: subtab "Đã trả" theo THÁNG (trước chỉ 1 mục gập "xem lại", không sửa được) — bấm ca đã trả mở
@@ -37,6 +38,9 @@ export default function TraBaiTestScreen() {
   const [thang, setThang] = useState<string | null>(NHO.thang ?? THANGS[0])
   const [tim, setTim] = useState('')
   const [openId, setOpenId] = useState<string | null>(null)   // ca đang mở form GV (cần trả HOẶC đã trả)
+  // ⭐ CEO 21/09 "mọi màn phải sửa/xoá được card": ✎ sửa thông tin ca + HS, 🗑 huỷ ca — modal dùng chung (CaTestSuaHuy.tsx).
+  const [suaId, setSuaId] = useState<string | null>(null)
+  const [huyItem, setHuyItem] = useState<CaTestChoTraBai | null>(null)
   useEffect(() => { NHO.loc = loc; NHO.sub = sub; NHO.thang = thang }, [loc, sub, thang])
 
   async function reload() {
@@ -114,7 +118,8 @@ export default function TraBaiTestScreen() {
         ) : (
           <div className="grid gap-2.5 sm:grid-cols-2">
             {daShown.map((c) => (
-              <button key={c.id} onClick={() => setOpenId(c.id)} className="rounded-2xl border border-slate-100 bg-white p-3.5 text-left shadow-sm hover:shadow-md">
+              <div key={c.id} className="relative">
+              <button onClick={() => setOpenId(c.id)} className="w-full rounded-2xl border border-slate-100 bg-white p-3.5 text-left shadow-sm hover:shadow-md">
                 <div className="flex items-start gap-2">
                   <div className="min-w-0 flex-1">
                     <div className="text-[14px] font-semibold text-slate-800">{c.hoTenHs}</div>
@@ -126,6 +131,9 @@ export default function TraBaiTestScreen() {
                   <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-700">✓ Đã trả {c.traBaiXongAt ? new Date(c.traBaiXongAt).toLocaleDateString('vi-VN') : ''}</span>
                 </div>
               </button>
+              {/* Ca ĐÃ TRẢ: chỉ sửa — DB chặn huỷ ca đã trả bài (muốn huỷ thì "Mở lại trả bài" trước). */}
+              <NutSuaHuy onSua={() => setSuaId(c.id)} onHuy={() => setHuyItem(c)} anHuy />
+              </div>
             ))}
           </div>
         )
@@ -138,7 +146,8 @@ export default function TraBaiTestScreen() {
           {shown.map((c) => {
             const thieu = [c.choChamXong && 'chờ chấm', c.choLopDeXuat && 'chờ chọn lớp'].filter(Boolean) as string[]
             return (
-              <button key={c.id} onClick={() => setOpenId(c.id)} className="rounded-2xl border border-slate-100 bg-white p-3.5 text-left shadow-sm hover:shadow-md">
+              <div key={c.id} className="relative">
+              <button onClick={() => setOpenId(c.id)} className="w-full rounded-2xl border border-slate-100 bg-white p-3.5 text-left shadow-sm hover:shadow-md">
                 <div className="flex items-start gap-2">
                   <div className="min-w-0 flex-1">
                     <div className="text-[14px] font-semibold text-slate-800">{c.hoTenHs}</div>
@@ -152,6 +161,8 @@ export default function TraBaiTestScreen() {
                     : thieu.map((t) => <span key={t} className="rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-medium text-amber-700">{t}</span>)}
                 </div>
               </button>
+              <NutSuaHuy onSua={() => setSuaId(c.id)} onHuy={() => setHuyItem(c)} />
+              </div>
             )
           })}
         </div>
@@ -159,6 +170,8 @@ export default function TraBaiTestScreen() {
 
     </div>
     {openItem && <DanhGiaGvModal c={openItem} onClose={() => setOpenId(null)} onPatch={(p) => patch(openItem.id, p)} onDone={() => daDong(openItem.id)} onReopen={() => moLai(openItem.id)} />}
+    {suaId && <SuaCaTheoIdModal caTestId={suaId} onClose={() => setSuaId(null)} onDone={(ca) => { patch(ca.id, { hoTenHs: ca.ungVien.hoTenHs, khoi: ca.ungVien.khoi, ngay: ca.ngay }); setSuaId(null) }} />}
+    {huyItem && <HuyCaTestModal caTestId={huyItem.id} hoTenHs={huyItem.hoTenHs} onClose={() => setHuyItem(null)} onDone={() => { setCanTraBai((s) => s.filter((x) => x.id !== huyItem.id)); setHuyItem(null) }} />}
     </div>
   )
 }

@@ -14,6 +14,7 @@ import {
   type CaTestChoCham, type CaTestCau, type PhieuKetQua,
 } from '../../lib/detest'
 import { useStore } from '../../store/useStore'
+import { SuaCaTheoIdModal, HuyCaTestModal, NutSuaHuy } from './CaTestSuaHuy'
 import { MathText } from '../kho/ui'
 
 type KQ = 'correct' | 'partial' | 'wrong'
@@ -60,6 +61,10 @@ export default function ChamTestScreen() {
   }, [thang])
   const q = tim.trim().toLowerCase()
   const doneShown = q ? done.filter((c) => c.hoTenHs.toLowerCase().includes(q)) : done
+  // ⭐ CEO 21/09 "mọi màn phải sửa/xoá được card": ✎ sửa thông tin ca + HS, 🗑 huỷ ca — modal DÙNG CHUNG (CaTestSuaHuy.tsx).
+  const [suaId, setSuaId] = useState<string | null>(null)
+  const [huyItem, setHuyItem] = useState<CaTestChoCham | null>(null)
+  const boKhoiList = (id: string) => { setQueue((s) => s.filter((x) => x.id !== id)); setDone((s) => s.filter((x) => x.id !== id)) }
 
   const cuaToi = useMemo(() => queue.filter((c) => c.nguoiChamId === myId), [queue, myId])
   const shown = loc === 'toi' ? cuaToi : queue
@@ -124,7 +129,8 @@ export default function ChamTestScreen() {
         ) : (
           <div className="grid gap-2.5 sm:grid-cols-2">
             {doneShown.map((c) => (
-              <button key={c.id} onClick={() => setOpenId(c.id)} className="rounded-2xl border border-slate-100 bg-white p-3.5 text-left shadow-sm hover:shadow-md">
+              <div key={c.id} className="relative">
+              <button onClick={() => setOpenId(c.id)} className="w-full rounded-2xl border border-slate-100 bg-white p-3.5 text-left shadow-sm hover:shadow-md">
                 <div className="text-[14px] font-semibold text-slate-800">{c.hoTenHs}</div>
                 <div className="mt-0.5 text-[12px] text-slate-400">{c.mon}{c.khoi ? ` · Lớp ${c.khoi}` : ''} · {new Date(c.ngay + 'T00:00:00').toLocaleDateString('vi-VN')}</div>
                 <div className="mt-1 flex flex-wrap gap-1">
@@ -134,6 +140,8 @@ export default function ChamTestScreen() {
                   {c.diemNhap != null && <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600">Điểm {c.diemNhap}</span>}
                 </div>
               </button>
+              <NutSuaHuy onSua={() => setSuaId(c.id)} onHuy={() => setHuyItem(c)} />
+              </div>
             ))}
           </div>
         )
@@ -144,7 +152,8 @@ export default function ChamTestScreen() {
       ) : (
         <div className="grid gap-2.5 sm:grid-cols-2">
           {shown.map((c) => (
-            <button key={c.id} onClick={() => setOpenId(c.id)} className="rounded-2xl border border-slate-100 bg-white p-3.5 text-left shadow-sm hover:shadow-md">
+            <div key={c.id} className="relative">
+            <button onClick={() => setOpenId(c.id)} className="w-full rounded-2xl border border-slate-100 bg-white p-3.5 text-left shadow-sm hover:shadow-md">
               <div className="text-[14px] font-semibold text-slate-800">{c.hoTenHs}</div>
               <div className="mt-0.5 text-[12px] text-slate-400">{c.mon}{c.khoi ? ` · Lớp ${c.khoi}` : ''} · {new Date(c.ngay + 'T00:00:00').toLocaleDateString('vi-VN')}</div>
               <div className="mt-1 flex flex-wrap gap-1">
@@ -154,11 +163,19 @@ export default function ChamTestScreen() {
                 {c.diemNhap != null && <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600">Điểm {c.diemNhap}</span>}
               </div>
             </button>
+            <NutSuaHuy onSua={() => setSuaId(c.id)} onHuy={() => setHuyItem(c)} />
+            </div>
           ))}
         </div>
       )}
 
     </div>
+    {suaId && <SuaCaTheoIdModal caTestId={suaId} onClose={() => setSuaId(null)} onDone={(ca) => {
+      const cu = [...queue, ...done].find((x) => x.id === ca.id)
+      patch(ca.id, { hoTenHs: ca.ungVien.hoTenHs, khoi: ca.ungVien.khoi, ngay: ca.ngay, lechKhoi: !!ca.ungVien.khoi && !!cu?.deKhoi && ca.ungVien.khoi !== cu.deKhoi })
+      setSuaId(null)
+    }} />}
+    {huyItem && <HuyCaTestModal caTestId={huyItem.id} hoTenHs={huyItem.hoTenHs} onClose={() => setHuyItem(null)} onDone={() => { boKhoiList(huyItem.id); setHuyItem(null) }} />}
     </div>
   )
 }

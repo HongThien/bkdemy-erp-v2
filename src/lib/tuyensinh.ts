@@ -324,6 +324,12 @@ export async function khoiPhucCaTest(caTestId: string): Promise<CaTestTrangThai>
   if (error) throw error
   return data as CaTestTrangThai
 }
+// 1 ca theo id — cho modal Sửa dùng chung ở Chấm test / Trả bài (2 màn đó chỉ giữ bản rút gọn của ca).
+export async function getCaTest(id: string): Promise<CaTest> {
+  const { data, error } = await supabase.from('ca_test').select(CA_TEST_SELECT).eq('id', id).single()
+  if (error) throw error
+  return mapCaTest(data)
+}
 export async function listCaTestDaHuy(): Promise<CaTest[]> {
   const { data, error } = await supabase.from('ca_test').select(CA_TEST_SELECT).eq('trang_thai', 'huy').order('ngay', { ascending: false }).limit(50)
   if (error) throw error

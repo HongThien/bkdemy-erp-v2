@@ -44,16 +44,21 @@ export type DeTestRow = {
   id: string; ten: string; khoi: string; mon: string
   nguonId: string | null; nguonTen: string | null; nguonLoai: string | null
   createdAt: string; laHienTai: boolean
+  soCa: number              // số ca test đã dùng đề (PostgREST đếm ở DB) — >0 thì DB chặn xoá
+  dangDungAt: string | null // mốc "đặt tay làm đang dùng" (mig 202609211000), null = theo ngày sinh
 }
-// Danh sách đề test đầu vào ĐÃ SINH (desc thời gian). laHienTai = bản mới nhất của mỗi (khoi,mon) = đang
-// dùng; các bản còn lại = lịch sử. Lọc mon nếu truyền.
+// Danh sách đề test đầu vào ĐÃ SINH. laHienTai = bản có mốc coalesce(test_dang_dung_at, created_at) MỚI NHẤT của mỗi
+// (khoi,mon) = đang dùng; còn lại = lịch sử. ⭐ 21/09: trước đây "đang dùng" = created_at mới nhất, không chọn lại được
+// (đề K7 32 câu 14/09 đè bản 34 câu đang phát cho HS). Lọc mon nếu truyền.
+const mocDeTest = (r: { test_dang_dung_at: string | null; created_at: string }) => new Date(r.test_dang_dung_at ?? r.created_at).getTime()
 export async function listDeTestDauVao(mon?: string): Promise<DeTestRow[]> {
-  let q = supabase.from('tai_lieu').select('id, ten, khoi, mon, nguon_id, created_at')
+  let q = supabase.from('tai_lieu').select('id, ten, khoi, mon, nguon_id, created_at, test_dang_dung_at, ca_test(count)')
     .eq('loai', 'de_test_dau_vao').order('created_at', { ascending: false }).limit(LIMIT)
   if (mon) q = q.eq('mon', mon)
   const { data, error } = await q
   if (error) throw error
-  const rows = (data ?? []) as { id: string; ten: string; khoi: string; mon: string; nguon_id: string | null; created_at: string }[]
+  const rows = ((data ?? []) as any[] as { id: string; ten: string; khoi: string; mon: string; nguon_id: string | null; created_at: string; test_dang_dung_at: string | null; ca_test: { count: number }[] }[])
+    .sort((a, b) => mocDeTest(b) - mocDeTest(a)) // thứ tự HIỂN THỊ + chọn bản đứng đầu mỗi (khối × môn)
   const nguonIds = [...new Set(rows.map((r) => r.nguon_id).filter(Boolean) as string[])]
   const nguonMap = new Map<string, { ten: string; loai: string }>()
   if (nguonIds.length) {
@@ -65,8 +70,23 @@ export async function listDeTestDauVao(mon?: string): Promise<DeTestRow[]> {
     const key = `${r.khoi}|${r.mon}`
     const laHienTai = !seen.has(key); if (laHienTai) seen.add(key)
     const n = r.nguon_id ? nguonMap.get(r.nguon_id) : null
-    return { id: r.id, ten: r.ten, khoi: r.khoi, mon: r.mon, nguonId: r.nguon_id, nguonTen: n?.ten ?? null, nguonLoai: n?.loai ?? null, createdAt: r.created_at, laHienTai }
+    return { id: r.id, ten: r.ten, khoi: r.khoi, mon: r.mon, nguonId: r.nguon_id, nguonTen: n?.ten ?? null, nguonLoai: n?.loai ?? null, createdAt: r.created_at, laHienTai,
+      soCa: r.ca_test?.[0]?.count ?? 0, dangDungAt: r.test_dang_dung_at ?? null }
   })
+}
+// SỬA / XOÁ / ĐẶT ĐANG DÙNG đề test (CEO 21/09 "mọi màn phải sửa xoá được card"). Xoá: DB chặn khi đề đã có ca dùng.
+export async function doiTenDeTest(id: string, ten: string): Promise<void> {
+  if (!ten.trim()) throw new Error('Tên đề không được trống')
+  const { error } = await supabase.from('tai_lieu').update({ ten: ten.trim(), updated_at: new Date().toISOString() }).eq('id', id).eq('loai', 'de_test_dau_vao')
+  if (error) throw error
+}
+export async function xoaDeTest(id: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_de_test_xoa', { p_tai_lieu_id: id })
+  if (error) throw error
+}
+export async function datDangDungDeTest(id: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_de_test_dat_dang_dung', { p_tai_lieu_id: id })
+  if (error) throw error
 }
 
 // SINH 1 đề test đầu vào cho khối×môn từ nguồn (MT/Đề thi): tạo tai_lieu loai='de_test_dau_vao' + copy
