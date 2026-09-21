@@ -186,11 +186,16 @@ export async function setBuoiCoThietBi(buoiId: string, coThietBi: boolean): Prom
   if (error) throw error
 }
 
-// Bài TEST giấy đang CHỜ nộp (nếu có) cho (em × dạng) — mở panel thì resume bài này thay vì sinh mới
+// Bài TEST GIẤY đang CHỜ nộp (nếu có) cho (em × dạng) — mở panel thì resume bài này thay vì sinh mới
 // (tránh bấm 2 lần đẻ 2 bài test khác câu, mất chấm dở của bài đầu). Chỉ áp cho 'htd_test' — 'htd_luyen'
 // không gate/không cần resume, mỗi lần "in phiếu" là 1 lượt luyện mới (đúng tinh thần Yếu "in nhiều phiếu được").
+// ⚠ BẮT BUỘC lọc `in_giay_at is not null` — nếu không sẽ resume NHẦM bài `htd_test` ONLINE THẬT của em
+// (em tự mở trên app, chưa nộp) và TA chấm ĐCS tay đè lên câu trả lời thật của em (bug thật, bắt được
+// lúc click-through verify 21/09: panel resume đúng 1 bài online đang dang dở, ghi đè 1 câu trước khi
+// phát hiện). Bài giấy do TA sinh (`fn_duoi_giay_sinh`) LUÔN có `in_giay_at`; bài online HS tự mở thì
+// KHÔNG — đây là ranh giới đáng tin duy nhất giữa 2 nguồn.
 export async function baiTestDangChoDuoi(hocSinhId: string, mon: string, maDang: string): Promise<{ bai_test_id: string } | null> {
-  const { data: bt } = await supabase.from('bai_test').select('id').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('loai', 'htd_test').limit(LIMIT)
+  const { data: bt } = await supabase.from('bai_test').select('id').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('loai', 'htd_test').not('in_giay_at', 'is', null).limit(LIMIT)
   const ids = ((bt ?? []) as any[]).map((r) => r.id)
   if (!ids.length) return null
   const { data: cau } = await supabase.from('bai_test_cau').select('bai_test_id').in('bai_test_id', ids).eq('ma_dang', maDang).limit(1)
