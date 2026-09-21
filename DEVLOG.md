@@ -14459,3 +14459,29 @@ mới, viết đúng pattern `CaBoTroTA.tsx` (full-screen, `BKTabHeader`, nút t
 `hover:`), đổi UI câu hỏi từ card rời sang **bảng — mỗi câu 1 dòng**. Verify qua browser: mở từ ERP →
 bấm badge → màn TA mới hiện đúng, bài 10 câu hiện đủ 10 dòng bảng. Tiền lệ in-tại-app-TA đã có sẵn bên
 Yếu (`fn_btyeu_in_sinh` gọi từ `CaBoTroTA.tsx`, không riêng ERP) — Đuổi giờ theo đúng tiền lệ đó.
+
+## 2026-09-20 → 21 — Thiết kế luồng ĐỀ THI "1 input → 2 output" (Planning, CHƯA code) — `spec-de-thi.md`
+
+**Yêu cầu Thùy:** nhập 1 đề thi → câu tách về kho theo dạng NHƯNG vẫn giữ cấu trúc đề, HS thi được trên app.
+
+**Rà hiện trạng (đo thật):** ý tưởng này đã có **2 bản song song, cả hai gần như rỗng** — (A) `tai_lieu(loai='de_thi')` +
+`tai_lieu_phan`/`tai_lieu_cau` (UI `DeThiScreen`, đã nối `phatHanhTest` → `bai_test.loai='de_thi'`, in, test đầu vào, mastery như ET;
+1 đề vỏ rỗng) và (B) `toan_de_thi`+`toan_de_thi_cau` (skill `/nhap-de-thi`, 0 dòng, chưa nối thi). Đề xuất gộp về A (đạt symmetry §1.6,
+trộn nhánh bằng `nhanhByCau`). Phát hiện phụ: `phatHanhTest` snapshot Ở CLIENT + ghi cứng `diem: 1`; HS app chưa có đồng hồ;
+`DUNGSAI_DIEM_4Y` nằm ở JS (phải về SQL); `fn_mastery_cells*` có nhánh `else 'btvn'` nuốt mọi loại bài lạ.
+
+**CEO chốt 9 điểm (20/09):** thi cả 2 kiểu (lớp + tự luyện) · app chỉ MCQ + Đ/S, TLN → MCQ giữ vị trí · lớp tính như ET, tự luyện
+tạm KHÔNG tính mastery · cửa "Duyệt đề" · trùng thì trỏ câu cũ · đề trỏ sống/lượt thi đóng băng · nhập qua Claude không qua ERP ·
+mọi khối, 12 trước. Chi tiết + lộ trình P1–P4 trong spec.
+
+**21/09 — bộ Noctorium Toán 10 (đề + bản phân dạng):** script so nội dung ⇒ 53 đề và 41 file dạng là **CÙNG 1182 câu, khớp 100%**.
+DOCX là Word Equation (OMML), bố cục máy sinh ⇒ **script bóc toàn bộ, AI không đọc file**; AI chỉ: gán dạng theo lô (nhãn của họ
+thu hẹp còn 3–7 ứng viên BK — dạng họ thô hơn BK), rút đáp án TN từ lời giải (file không đánh dấu), sinh MCQ cho TLN.
+Thùy: nhãn gốc của họ không lưu, chỉ là gợi ý lúc nhập. **Chặn:** bản đồ khối 10 thiếu Hệ thức lượng · Véc tơ · Hàm số (~339 câu, 29%).
+
+**Sai/sửa:** (1) t đề "lưu nhãn gốc + CEO duyệt bảng đối chiếu" — Thùy bác (thừa), bỏ. (2) t nói "AI đọc bản dạng" trước khi mở file —
+mở ra mới thấy script bóc được hết; **bài học: xem file thật trước khi bàn cách đọc**. (3) `spec-de-thi.md` viết 20/09 KHÔNG commit ⇒
+phiên khác `pull --rebase` auto-stash cuốn mất; lấy lại bằng `git show stash@{0}^3:spec-de-thi.md` (không pop), commit `d3a6c40`.
+`stash@{0}` còn 81 file untracked khác chưa đụng.
+
+**Còn chờ Thùy:** duyệt spec · bản đồ 3 chương trước hay nhập đề trống dạng · thời gian/điểm mặc định · xử Phần 4 tự luận trên app.
