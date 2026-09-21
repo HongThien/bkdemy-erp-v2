@@ -268,6 +268,9 @@
 - [Pilot Điểm-danh → ET — 7 User Story](https://app.notion.com/p/375d4530bcdb8084b38bead35fdf0be7)
 
 ### Spec build (trong repo — nguồn cho đợt code hiện tại)
+- **`spec-bo-tro.md` — ĐỌC BẮT BUỘC trước khi sửa luồng BỔ TRỢ (yếu · bù · đuổi).** Bản tổng hợp quyết định CEO + hiện trạng build (21/09):
+  4 kênh phát hiện & ngưỡng · mức ưu tiên case · lịch trực khối+bậc, ca ≤3 em, không xếp lại · MCQ tuyệt đối · 2 chế độ ca 📱 app / 📄 giấy
+  (in phiếu, nhập kết quả, nộp test) · màn theo dõi · bản đồ code/DB · việc còn treo. Thiết kế gốc: `PLAN-botro-yeu.md`, `PLAN-botro-yeu-ca.md`.
 - `spec-kho-v2.md` — Kho Canonical Knowledge (Đại + Hình). Schema đã build vào DB v2.
 - **`spec-giai-bai-ai.md` — ĐỌC BẮT BUỘC trước khi chạy "quét/giải câu chưa có đáp án" bằng AI**
   (Đại/KHTN/HGT/Hình). Rule quan trọng nhất: bài nhiều ý phải dùng lại kết quả ý trước, không chứng

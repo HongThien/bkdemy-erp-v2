@@ -14375,3 +14375,10 @@ Thùy: "Thực tế có 2 chế độ: 100% trên app · hoặc in giấy cho HS
 - `NhapKetQua` dùng chung: bài test có nút "✓ Nộp bài kiểm tra" (hỏi lại, báo số câu bỏ trống), đã nộp thì khoá nút A–D. `TrangIn` đổi tiêu
   đề "BÀI KIỂM TRA CUỐI BUỔI" + dòng "em tự làm". ERP tab Đang diễn ra: badge chế độ mỗi ca (📱 App / 📄 Giấy / chưa chọn), phiếu test ghi "TEST cuối ca".
 - tsc sạch. CHƯA nhìn được giao diện app TA bằng mắt (tài khoản dev admin không đứng ca nào ⇒ app TA không có ca để mở) — Thùy thử trên ca thật.
+
+## 2026-09-21 (đêm) — Ghi tài liệu: `spec-bo-tro.md` (Thùy: "ghi riêng vào 1 cái md Bổ trợ")
+
+File tổng MỚI `spec-bo-tro.md` — tự đứng được: 3 loại bổ trợ · luồng tổng · 4 kênh phát hiện + ngưỡng + ai bị loại · level + `uu_tien` · MCQ tuyệt đối ·
+xếp lịch (lịch trực khối+bậc, ca ≤3, 1 case ≤1 buổi chờ học, tự ghép) · 2 chế độ ca (bảng so sánh app/giấy) · tab Đang diễn ra · quy ước UI · bản
+đồ code/DB/migration/script · 7 việc còn treo. Trỏ tới từ CLAUDE.md §7 (đọc bắt buộc), cuối 2 file PLAN-botro-yeu*.md, và HANDOFF ① (1 mục tóm).
+Không sửa nội dung cũ của PLAN/HANDOFF (chỉ thêm).

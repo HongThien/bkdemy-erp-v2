@@ -9,6 +9,12 @@
 
 ## ① TRẠNG THÁI HIỆN TẠI
 
+- **⭐ BỔ TRỢ (yếu · bù · đuổi) — trạng thái + luật đã chốt tới 21/09: đọc `spec-bo-tro.md`** (file tổng riêng, Thùy yêu cầu 21/09). Tóm 1 dòng:
+  phát hiện 4 kênh/2 cửa sổ (②: >15% hoặc >10%&đạt<50%) → duyệt level + `uu_tien` → xếp theo lịch trực KHỐI+BẬC (S≥A≥B≥C, ca ≤3 em, 1 case ≤1 buổi chờ
+  học — trigger DB) → ca 2 chế độ 📱 app / 📄 giấy (in phiếu cùng bộ chọn câu, TA nhập đáp án em khoanh, máy chấm, test giấy có Nộp) · bài trên app
+  **MCQ tuyệt đối** (`_kho_dk_mcq_sql`, không nhánh lùi) · ERP tab "● Đang diễn ra". Treo: 25 dạng chưa có MCQ (phiên MCQ) · chưa in riêng 1 dạng ·
+  8 buổi quá ngày chưa học · `migrate` phải dùng `--only` (4 migration Sổ tay treo).
+
 ### Kiến trúc & file chính
 - Kho = lá `bdkt` trong cây Admin → `src/screens/kho/KhoScreen.tsx`. Build **THẬT, wire Supabase DB v2** (ngoại lệ so với mock-first của shell — vì schema Kho đã đông cứng).
 - **Seam:** UI KHÔNG gọi `supabase` trực tiếp, chỉ qua `src/lib/kho/api.ts`.

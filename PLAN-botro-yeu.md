@@ -125,3 +125,7 @@ chọn khối — sẽ verify khi vào code, không chặn viết plan.
 ## 7. Mockup
 
 Xem file mockup UI màn "Xếp bổ trợ yếu" (OPS) — gửi kèm để chị duyệt trước khi code thật.
+
+---
+
+> **⭐ Trạng thái mới nhất + các quyết định sau bản plan này** (ngưỡng 4 kênh, ưu tiên, lịch trực, MCQ, in giấy…): xem **`spec-bo-tro.md`**.
