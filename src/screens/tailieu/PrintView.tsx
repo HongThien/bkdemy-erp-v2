@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, setTaiLieuFileUrl, DEFAULT_BTVN_LINES, kieuCols, type TaiLieuFull, type PhanResolved } from '../../lib/tailieu'
 import type { CauHinh } from '../../lib/tailieu'
+import { type CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
 import { listLop } from '../../lib/nhansu'
 import { hsCoMatCuaBuoi, ngayBuoiHopLeCuaLop } from '../../lib/gami'
 import { congNgay } from '../../lib/tuan'
@@ -442,6 +443,9 @@ function Doc({ full, gv, scope, lt = true, onlyBuoiId, perHS = false, roster = [
   const accent = ch.mau || '#E91E8C'
   const linesByCau = ch.btvnLinesByCau ?? {}
   const colByCau = ch.colByCau ?? {}
+  // ⭐ 21/09 (CEO): 3 chế độ IN hình — chỉ áp cho nhánh 'hinh_hoc' (Hình học Bài). Nhánh khác → undefined
+  //   → cauItemParts dùng default 'hien' (in ảnh nếu có), y hành vi cũ.
+  const hinhCheDoByCau: Record<string, CheDoHinh> | undefined = taiLieu.nhanh === 'hinh_hoc' ? (ch.hinhCheDoByCau ?? {}) : undefined
   const ngayRaw = (taiLieu as { ngay?: string | null }).ngay ?? ''
   const ngayPhat = ngayRaw ? ngayRaw.split('-').reverse().join('/') : ''
   let buois = buildBuois(phans)
@@ -470,7 +474,7 @@ function Doc({ full, gv, scope, lt = true, onlyBuoiId, perHS = false, roster = [
           const btvnBuois = buois.filter((b) => b.btvns.some((x) => x.caus.length) || b.ontaps.some((x) => x.caus.length))
           const sheet = (b: Buoi, hoTen: string | undefined, key: string) => (
             <BtvnSheet key={key} btvns={b.btvns} ontaps={b.ontaps} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.title} linesByCau={linesByCau} colByCau={colByCau}
-              hoTen={hoTen} ngayPhat={ngayPhat} ngayNop={ngayNop} lopTen={lopTen} />
+              hinhCheDoByCau={hinhCheDoByCau} hoTen={hoTen} ngayPhat={ngayPhat} ngayNop={ngayNop} lopTen={lopTen} />
           )
           // In cả lớp: mỗi HS có mặt 1 phiếu (tên in sẵn). Bọc mỗi HS trong .pv-hs-recto → break-before:right
           // ép HS bắt đầu ở mặt TRƯỚC (trang lẻ) → in 2 mặt mỗi HS luôn CHẴN trang, thiếu thì paged.js tự
@@ -480,7 +484,7 @@ function Doc({ full, gv, scope, lt = true, onlyBuoiId, perHS = false, roster = [
             : btvnBuois.map((b) => sheet(b, undefined, b.id))
         })()
         : buois.map((b) => (
-          <BuoiBlock key={b.id} buoi={b} gv={gv} scope={scope} lt={lt} docTitle={taiLieu.ten} ltCd={ltChuyenDe} tenCd={tenChuyenDe} linesByCau={linesByCau} colByCau={colByCau} lopTen={lopTen} ngayPhat={ngayPhat} />
+          <BuoiBlock key={b.id} buoi={b} gv={gv} scope={scope} lt={lt} docTitle={taiLieu.ten} ltCd={ltChuyenDe} tenCd={tenChuyenDe} linesByCau={linesByCau} colByCau={colByCau} hinhCheDoByCau={hinhCheDoByCau} lopTen={lopTen} ngayPhat={ngayPhat} />
         ))}
     </div>
   )
@@ -498,8 +502,8 @@ function parseBuoiTitle(title: string): { eyebrow: string; num: string; heading:
 }
 
 // 1 BUỔI: hero BK (Buổi N · chủ đề · lớp/ngày · huy hiệu) → [LT chuyên đề + card từng dạng] → phiếu BTVN.
-function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByCau, colByCau, lopTen = '', ngayPhat = '' }: {
-  buoi: Buoi; gv: boolean; scope: 'all' | 'giaotrinh'; lt?: boolean; docTitle: string; ltCd: Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null } | null>; tenCd: Record<string, string>; linesByCau: Record<string, number>; colByCau: Record<string, number>; lopTen?: string; ngayPhat?: string
+function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByCau, colByCau, hinhCheDoByCau, lopTen = '', ngayPhat = '' }: {
+  buoi: Buoi; gv: boolean; scope: 'all' | 'giaotrinh'; lt?: boolean; docTitle: string; ltCd: Record<string, { noi_dung: string; file_url: string | null; ten_file: string | null } | null>; tenCd: Record<string, string>; linesByCau: Record<string, number>; colByCau: Record<string, number>; hinhCheDoByCau?: Record<string, CheDoHinh>; lopTen?: string; ngayPhat?: string
 }) {
   // Gom dạng liền nhau theo chuyên đề → mỗi nhóm hiện LT chuyên đề 1 lần (buổi tách chuyên đề vẫn có LT).
   const groups: { cd: string; dangs: PhanResolved[] }[] = []
@@ -518,7 +522,7 @@ function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByC
   // Y HỆT lớp bug "Fragment thay div/section thừa" đã dính ở groups.map dưới (xem comment): tầng lồng thừa
   // làm paged.js dựng dở — vẽ xong masthead của BtvnSheet rồi bỏ TRẮNG hết phần trang còn lại, card đầu
   // nhảy hẳn sang trang sau dù còn thừa chỗ. Bỏ `.pv-buoi` khi thuần BTVN → BtvnSheet tự lo phân trang, hết 1 tầng.
-  if (!buoi.title && groups.length === 0) return btvnHere ? <BtvnSheet btvns={buoi.btvns} ontaps={buoi.ontaps} gv={gv} docTitle={docTitle} buoiTitle={buoi.title} linesByCau={linesByCau} colByCau={colByCau} /> : null
+  if (!buoi.title && groups.length === 0) return btvnHere ? <BtvnSheet btvns={buoi.btvns} ontaps={buoi.ontaps} gv={gv} docTitle={docTitle} buoiTitle={buoi.title} linesByCau={linesByCau} colByCau={colByCau} hinhCheDoByCau={hinhCheDoByCau} /> : null
   return (
     <section className="pv-buoi gtbk">
       {buoi.title && (
@@ -552,11 +556,11 @@ function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByC
           {/* 1 chuyên đề: chỉ "Lý thuyết" (tên chuyên đề ĐÃ ở dải buổi → khỏi lặp). Nhiều chuyên đề: ghi tên để phân biệt.
               Ẩn cả khối chuyên đề nếu MỌI dạng trong nhóm đều tắt hien_lt (vd buổi chỉ ôn dạng cũ). */}
           {lt && g.dangs.some((d) => d.hien_lt !== false) && <LtBlock title={groups.length > 1 ? `Lý thuyết chuyên đề: ${tenCd[g.cd] ?? ''}` : 'Lý thuyết'} lt={ltCd[g.cd]} big />}
-          {g.dangs.map((d) => <DangBlock key={d.id} p={d} gv={gv} lt={lt} colByCau={colByCau} />)}
+          {g.dangs.map((d) => <DangBlock key={d.id} p={d} gv={gv} lt={lt} colByCau={colByCau} hinhCheDoByCau={hinhCheDoByCau} />)}
         </Fragment>
       ))}
       {btvnHere && (
-        <BtvnSheet btvns={buoi.btvns} ontaps={buoi.ontaps} gv={gv} docTitle={docTitle} buoiTitle={buoi.title} linesByCau={linesByCau} colByCau={colByCau} />
+        <BtvnSheet btvns={buoi.btvns} ontaps={buoi.ontaps} gv={gv} docTitle={docTitle} buoiTitle={buoi.title} linesByCau={linesByCau} colByCau={colByCau} hinhCheDoByCau={hinhCheDoByCau} />
       )}
     </section>
   )
@@ -615,7 +619,7 @@ export function CauList({ kieu, children }: { kieu?: string; children: React.Rea
 // 1 DẠNG = 1 card BK: đầu card (mã dạng · tên dạng · pill "Bài luyện") → thân (LT·ví dụ nếu có → câu).
 // Card KHÔNG break-inside:avoid (dạng dài hơn 1 trang vẫn phải chảy, không thì paged.js cắt mất nội dung);
 // chỉ giữ đầu card không mồ côi (break-after:avoid trong CSS).
-function DangBlock({ p, gv, lt = true, colByCau }: { p: PhanResolved; gv: boolean; lt?: boolean; colByCau: Record<string, number> }) {
+function DangBlock({ p, gv, lt = true, colByCau, hinhCheDoByCau }: { p: PhanResolved; gv: boolean; lt?: boolean; colByCau: Record<string, number>; hinhCheDoByCau?: Record<string, CheDoHinh> }) {
   return (
     <section className="pv-sec gtbk-card">
       <div className="gtbk-card-head">
@@ -628,7 +632,7 @@ function DangBlock({ p, gv, lt = true, colByCau }: { p: PhanResolved; gv: boolea
           <div className="pv-box-lt"><div className="pv-box-label">Lý thuyết · Ví dụ</div><LyThuyetBody text={p.lyThuyetDang.noi_dung} /></div>
         )}
         {p.caus.length > 0 && (
-          <CauFlow items={p.caus.map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv }) }))} />
+          <CauFlow items={p.caus.map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau?.[c.ma_cau] }) }))} />
         )}
       </div>
     </section>
@@ -637,8 +641,9 @@ function DangBlock({ p, gv, lt = true, colByCau }: { p: PhanResolved; gv: boolea
 
 // BTVN của 1 BUỔI = phiếu RIÊNG (sang trang mới), nhóm theo DẠNG (mirror trên lớp). HS viết thẳng vào dòng kẻ.
 // Đầu phiếu: tiêu đề = tên tài liệu · trái = Họ tên + Lớp · phải = ô Điểm. Bản GV = đáp án (bỏ ô điền, hiện lời giải).
-function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, linesByCau, colByCau, hoTen, ngayPhat = '', ngayNop = '', lopTen = '' }: {
+function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, linesByCau, colByCau, hinhCheDoByCau, hoTen, ngayPhat = '', ngayNop = '', lopTen = '' }: {
   btvns: PhanResolved[]; ontaps?: PhanResolved[]; gv: boolean; docTitle: string; buoiTitle: string; linesByCau: Record<string, number>; colByCau: Record<string, number>
+  hinhCheDoByCau?: Record<string, CheDoHinh>
   hoTen?: string; ngayPhat?: string; ngayNop?: string; lopTen?: string
 }) {
   // LUÔN đầu phiếu BK (Thùy: bỏ HẲN header/footer cũ, không tái dùng). Tiêu đề = tên buổi (hoặc tên doc).
@@ -658,7 +663,7 @@ function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, linesByCau, co
             {/* Số câu đếm LIÊN TỤC xuyên các dạng (dạng 1: 1,2 → dạng 2: 3,4,5…) — KHÔNG reset mỗi dạng,
                 kể cả sang khối Ôn tập bên dưới (đếm 1 mạch hết phiếu, đúng spec §7.1). */}
             <div className="gtbk-card-body">
-              <CauFlow items={b.caus.map((c) => { bno += 1; return { key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: bno, c, gv, lines: gv ? 0 : (linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES) }) } })} />
+              <CauFlow items={b.caus.map((c) => { bno += 1; return { key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: bno, c, gv, lines: gv ? 0 : (linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES), cheDoHinh: hinhCheDoByCau?.[c.ma_cau] }) } })} />
             </div>
           </div>
         )
@@ -777,17 +782,25 @@ export function WriteLines({ n }: { n: number }) {
 // `lines` (SỐ dòng kẻ viết tay, 0 nếu không có). Dòng kẻ tách riêng để CauColumns rải THÀNH TỪNG HÀNG lưới
 // (ngắt được giữa các dòng → lấp đáy trang), còn content thì giữ nguyên khối.
 export type CauPart = { key: string; content: React.ReactNode; lines: number; hasImg: boolean }
-export function cauItemParts({ no, c, gv, lines = 0 }: { no: number; c: CauHoi; gv: boolean; lines?: number }): { content: React.ReactNode; lines: number; hasImg: boolean } {
+export function cauItemParts({ no, c, gv, lines = 0, cheDoHinh }: { no: number; c: CauHoi; gv: boolean; lines?: number; cheDoHinh?: CheDoHinh }): { content: React.ReactNode; lines: number; hasImg: boolean } {
   const md = c.menh_de && c.menh_de.length ? c.menh_de : null // câu Đúng/Sai: 4 mệnh đề, mỗi cái Đ/S riêng
   const hasOpts = !!(c.lua_chon && c.lua_chon.length)
   const letter = (i: number) => String.fromCharCode(65 + i)
   const cols = hasOpts ? optCols(c.lua_chon!) : 0
   const { stem, grid, emb } = splitStem(c)
+  // ⭐ 21/09 (CEO): 3 chế độ IN hình cho câu (chỉ áp cho nhánh 'hinh_hoc' — caller quyết định truyền hay không).
+  //   'hien' (default) = in ảnh nếu kho có · 'o_trong' = chừa ô "Vẽ hình" cho HS, bản GV vẫn hiện ảnh
+  //   · 'khong' = không ảnh, không ô. Mirror HinhPrintView.tsx:365-373.
+  const cd = cheDoHinh ?? 'hien'
+  const anhBlock = cd === 'khong' ? null
+    : cd === 'o_trong'
+      ? (gv && c.anh_de ? <img src={c.anh_de} alt="" className="pv-img" /> : <div className="pv-vebox"><span>Vẽ hình</span></div>)
+      : (c.anh_de ? <img src={c.anh_de} alt="" className="pv-img" /> : null)
   return {
     content: (<>
       {/* THỨ TỰ: đề → HÌNH → ý con → phương án/Đ-S → lời giải GV (Thùy chốt) */}
       <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${no}.</span> `}>{md ? c.noi_dung : stem}</MathText></div>
-      {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
+      {anhBlock}
       {!md && grid && <OptGrid grid={grid} emb={emb} />}
       {md && (
         <ol className="pv-ds">
@@ -954,6 +967,9 @@ const CONTENT_CSS = `
 .pv-tlnt-q{flex:1;min-width:0;padding:7px 10px 7px 0;display:flex;flex-direction:column;justify-content:center}
 .pv-tlnt-a{width:42mm;flex-shrink:0;border-left:1px solid #e2e8f0}
 .pv-img{display:block;margin:7px auto;max-height:60mm;max-width:100%}
+/* ⭐ 21/09 (CEO): ô "Vẽ hình" — chế độ o_trong (bản HS) chừa khung cho HS tự vẽ; bản GV vẫn dùng .pv-img
+   để hiện ảnh đối chiếu. Soi khung tương đương .pv-img (max-height 60mm) để layout không nhảy. */
+.pv-vebox{display:flex;align-items:center;justify-content:center;margin:7px auto;height:60mm;max-width:100%;border:1.5px dashed #94a3b8;border-radius:6px;color:#94a3b8;font-style:italic;font-size:12px;break-inside:avoid}
 .mt-img{display:block;margin:6px auto;max-height:60mm;max-width:100%;break-inside:avoid}
 .pv-opts{display:grid;column-gap:22px;row-gap:11px;margin-top:7px;align-items:start}
 .pv-opt{display:flex;align-items:flex-start;gap:5px;line-height:2}

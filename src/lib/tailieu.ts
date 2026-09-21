@@ -95,7 +95,10 @@ export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'ontap' | 'cu
 // kiểu cột theo-phần (tai_lieu_phan.kieu) / theo-nhóm-form (etColByGroup) cũ.
 // nhanhByCau = NHÁNH KHO của TỪNG CÂU khi tài liệu trộn nhánh (MT: câu Đại + câu Hình giải tích trong cùng
 // đề). Chỉ có key cho câu KHÁC `tai_lieu.nhanh`; resolve qua `nhanhCuaCau` (kế thừa cho câu mã đề 2/3).
-export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number>; etColByGroup?: Record<number, string>; colByCau?: Record<string, number>; nhanhByCau?: Record<string, string>; hinhBuoiId?: string; hinhByMa?: Record<string, HinhRowInfo>; hinhMaDe?: Record<string, [HinhBanRefLite | null, HinhBanRefLite | null]>; mtMeta?: { loaiDe?: string | null; thang?: string | null } }
+// ⭐ 21/09 (CEO): áp cho GIÁO TRÌNH nhánh 'hinh_hoc' — mỗi câu có ảnh 3 chế độ in
+//   hien (in ảnh) · o_trong (chừa ô Vẽ hình, GV vẫn thấy ảnh đối chiếu) · khong (không ảnh, không ô).
+//   Kế thừa enum + xoay vòng từ builder Hình Luyện cũ (lib/kho/hinhGiaoTrinh.ts).
+export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number>; etColByGroup?: Record<number, string>; colByCau?: Record<string, number>; nhanhByCau?: Record<string, string>; hinhCheDoByCau?: Record<string, 'hien' | 'o_trong' | 'khong'>; hinhBuoiId?: string; hinhByMa?: Record<string, HinhRowInfo>; hinhMaDe?: Record<string, [HinhBanRefLite | null, HinhBanRefLite | null]>; mtMeta?: { loaiDe?: string | null; thang?: string | null } }
 // hinhByMa (MT) = nội dung bài HÌNH của hàng `HINH:<uuid>` (xem laMaHinh). hinhMaDe = mã đề 2/3 của bài Hình, khoá =
 // chuoiSig(nodeIds) (khuôn ET Hình). hinhBuoiId = DI SẢN (buổi Hình mẫu, bản 02/09 sáng) — chỉ còn để deleteMT dọn.
 // mtMeta (MT) = phân loại đề (loaiDe: xem MTLoaiDe/mt.ts) + tháng dự kiến dùng ('YYYY-MM', gắn tay, KHÔNG

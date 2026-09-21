@@ -6,6 +6,7 @@ import {
   type TaiLieuFull, type PhanResolved, type CauHinh, type TrichState, type BuoiLop,
 } from '../../lib/tailieu'
 import { groupMap, LOAI_CAU, type CauHoi, type Tier1Node } from '../../lib/kho/api'
+import { CHE_DO_HINH, cheDoKe, type CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { MathText, inp } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
@@ -115,6 +116,9 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   }
   const openPicker = (phanId: string, ma: string, selected: string[]) => setPicker({ phanId, maDangs: [ma], selected, disabled: [...usedExcept(phanId)] })
   const onLine = (maCau: string, n: number) => saveCh({ btvnLinesByCau: { ...(ch.btvnLinesByCau ?? {}), [maCau]: n } })
+  // ⭐ 21/09 (CEO): áp cho nhánh 'hinh_hoc' — mỗi câu có ảnh có nút xoay 3 chế độ in
+  // (hien / o_trong / khong). Chỉ đổi cấu hình IN — preview builder KHÔNG đổi (CEO chốt Q2: preview đủ).
+  const onHinhCheDo = (maCau: string, next: CheDoHinh) => saveCh({ hinhCheDoByCau: { ...(ch.hinhCheDoByCau ?? {}), [maCau]: next } })
   // Áp dụng 1 số dòng cho CẢ dạng (Thùy 07-16: khỏi click từng câu khi soạn số lượng lớn) — vẫn sửa
   // riêng từng câu được SAU KHI áp dụng (áp dụng cả dạng chỉ ghi đè 1 lần, không khoá per-câu).
   const onLineAll = (maCaus: string[], n: number) => {
@@ -132,8 +136,10 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   const linesByCau = ch.btvnLinesByCau ?? {}
   const colByCau = ch.colByCau ?? {}
   const mon = full.taiLieu.mon                    // môn của tài liệu → chọn kho (Toán dai_ / KHTN khtn_)
-  const nhanh = full.taiLieu.nhanh                 // nhánh TRONG Toán (null=Đại / 'hinh_gt'=Hình giải tích)
+  const nhanh = full.taiLieu.nhanh                 // nhánh TRONG Toán (null=Đại / 'hinh_gt'=Hình giải tích / 'hinh_hoc'=Hình học Bài)
   const cauTbl = khoCuaMon(mon, nhanh).cauTbl
+  const hinhCheDoByCau = ch.hinhCheDoByCau ?? {}
+  const coCheDoHinh = nhanh === 'hinh_hoc'          // CEO 21/09: nút 3 chế độ CHỈ áp cho nhánh Hình học Bài
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
@@ -180,6 +186,7 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
               return (
                 <BuoiCard
                   key={b.marker.id} buoi={b} linesByCau={linesByCau} colByCau={colByCau} onCol={onCol} onLine={onLine} onLineAll={onLineAll}
+                  hinhCheDoByCau={hinhCheDoByCau} onHinhCheDo={onHinhCheDo} coCheDoHinh={coCheDoHinh}
                   onRename={(t) => updatePhan(b.marker.id, { tieu_de: t }).then(() => reload()).then(markSaved)}
                   onDelete={async () => { if (confirm('Xoá cả buổi này (gồm dạng trên lớp + BTVN)?')) { await deleteBuoi(id, b.marker.id); await refreshBuoiListAndSettle(); markSaved() } }}
                   onChonDang={() => setDangPicker({ buoiId: b.marker.id, selected: b.dangs.map((d) => d.ref_ma!).filter(Boolean) })}
@@ -204,8 +211,9 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
 }
 
 // ── 1 BUỔI: tiêu đề (sửa được) + nút Chọn dạng + danh sách dạng (mỗi dạng có Bài luyện + BTVN) ──
-function BuoiCard({ buoi, linesByCau, colByCau, onCol, onLine, onLineAll, onRename, onDelete, onChonDang, onReorderDang, onApply, openPicker, cauTbl, onSetHienLt, usedExcept, onPreview }: {
+function BuoiCard({ buoi, linesByCau, colByCau, onCol, onLine, onLineAll, hinhCheDoByCau, onHinhCheDo, coCheDoHinh, onRename, onDelete, onChonDang, onReorderDang, onApply, openPicker, cauTbl, onSetHienLt, usedExcept, onPreview }: {
   buoi: BuoiUI; linesByCau: Record<string, number>; colByCau: Record<string, number>; onCol: (maCau: string, n: number) => void; onLine: (maCau: string, n: number) => void; onLineAll: (maCaus: string[], n: number) => void
+  hinhCheDoByCau: Record<string, CheDoHinh>; onHinhCheDo: (maCau: string, next: CheDoHinh) => void; coCheDoHinh: boolean
   onRename: (t: string) => void; onDelete: () => void; onChonDang: () => void; onReorderDang: (order: string[]) => void
   onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void; cauTbl: string; onSetHienLt: (phanId: string, v: boolean) => void
   usedExcept: (phanId: string) => Set<string>; onPreview: () => void
@@ -234,6 +242,7 @@ function BuoiCard({ buoi, linesByCau, colByCau, onCol, onLine, onLineAll, onRena
           : buoi.dangs.map((d, i) => (
             <DangCard key={d.id} dang={d} btvn={d.ref_ma ? buoi.btvnByMa[d.ref_ma] : undefined}
               linesByCau={linesByCau} colByCau={colByCau} onCol={onCol} onLine={onLine} onLineAll={onLineAll} onApply={onApply} openPicker={openPicker} cauTbl={cauTbl} onSetHienLt={onSetHienLt} usedExcept={usedExcept}
+              hinhCheDoByCau={hinhCheDoByCau} onHinhCheDo={onHinhCheDo} coCheDoHinh={coCheDoHinh}
               canUp={i > 0} canDown={i < buoi.dangs.length - 1} onUp={() => move(i, -1)} onDown={() => move(i, 1)} />
           ))}
       </div>
@@ -242,8 +251,9 @@ function BuoiCard({ buoi, linesByCau, colByCau, onCol, onLine, onLineAll, onRena
 }
 
 // ── 1 DẠNG trong buổi: 2 khối cấu hình — Bài luyện (trên lớp) + BTVN (về nhà), đều theo số câu mỗi loại ──
-function DangCard({ dang, btvn, linesByCau, colByCau, onCol, onLine, onLineAll, onApply, openPicker, cauTbl, onSetHienLt, usedExcept, canUp, canDown, onUp, onDown }: {
+function DangCard({ dang, btvn, linesByCau, colByCau, onCol, onLine, onLineAll, onApply, openPicker, cauTbl, onSetHienLt, usedExcept, hinhCheDoByCau, onHinhCheDo, coCheDoHinh, canUp, canDown, onUp, onDown }: {
   dang: PhanResolved; btvn?: PhanResolved; linesByCau: Record<string, number>; colByCau: Record<string, number>; onCol: (maCau: string, n: number) => void
+  hinhCheDoByCau: Record<string, CheDoHinh>; onHinhCheDo: (maCau: string, next: CheDoHinh) => void; coCheDoHinh: boolean
   onLine: (maCau: string, n: number) => void; onLineAll: (maCaus: string[], n: number) => void; onApply: (phanId: string, maCaus: string[]) => void; openPicker: (phanId: string, ma: string, selected: string[]) => void; cauTbl: string; onSetHienLt: (phanId: string, v: boolean) => void
   usedExcept: (phanId: string) => Set<string>
   canUp: boolean; canDown: boolean; onUp: () => void; onDown: () => void
@@ -292,7 +302,7 @@ function DangCard({ dang, btvn, linesByCau, colByCau, onCol, onLine, onLineAll, 
           <button onClick={() => openPicker(dang.id, ma, dang.caus.map((c) => c.ma_cau))} className="rounded-md border border-slate-300 px-2.5 py-1 font-medium text-slate-600 hover:border-indigo-400">✎ Chọn câu</button>
         </div>
         {dang.caus.length > 0
-          ? <ol className="mt-2 space-y-1">{dang.caus.map((c, i) => <CauRow key={c.ma_cau} no={i + 1} c={c} col={colByCau[c.ma_cau] ?? 1} onCol={(n) => onCol(c.ma_cau, n)} onRemove={() => onApply(dang.id, dang.caus.filter((x) => x.ma_cau !== c.ma_cau).map((x) => x.ma_cau))} />)}</ol>
+          ? <ol className="mt-2 space-y-1">{dang.caus.map((c, i) => <CauRow key={c.ma_cau} no={i + 1} c={c} col={colByCau[c.ma_cau] ?? 1} onCol={(n) => onCol(c.ma_cau, n)} onRemove={() => onApply(dang.id, dang.caus.filter((x) => x.ma_cau !== c.ma_cau).map((x) => x.ma_cau))} cheDo={hinhCheDoByCau[c.ma_cau] ?? 'hien'} onCheDo={coCheDoHinh ? (v) => onHinhCheDo(c.ma_cau, v) : undefined} />)}</ol>
           : <div className="mt-2 text-[12px] italic text-slate-400">Chưa có câu luyện — bấm “Gợi ý” hoặc “Chọn câu”.</div>}
       </div>
 
@@ -317,6 +327,7 @@ function DangCard({ dang, btvn, linesByCau, colByCau, onCol, onLine, onLineAll, 
                   <input type="number" min={0} max={30} value={linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES} onChange={(e) => onLine(c.ma_cau, Math.max(0, Math.min(30, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
                 </label>
                 <ColSel value={colByCau[c.ma_cau] ?? 1} onChange={(n) => onCol(c.ma_cau, n)} />
+                {coCheDoHinh && c.anh_de && <CheDoHinhBtn cur={hinhCheDoByCau[c.ma_cau] ?? 'hien'} onChange={(v) => onHinhCheDo(c.ma_cau, v)} />}
                 <button onClick={() => onApply(btvn.id, btvn.caus.filter((x) => x.ma_cau !== c.ma_cau).map((x) => x.ma_cau))} className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
               </div>
               {/* ⭐ 16/09 (CEO): preview HÌNH đầy đủ ở builder (không chỉ ở KhoPicker) — câu có hình phải nhìn thấy hình khi soạn giáo trình, tránh chọn nhầm. */}
@@ -360,7 +371,7 @@ function MaCau({ ma }: { ma: string }) {
   return <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500" title="Mã câu">{ma}</span>
 }
 
-function CauRow({ no, c, col, onCol, onRemove }: { no: number; c: CauHoi; col: number; onCol: (n: number) => void; onRemove: () => void }) {
+function CauRow({ no, c, col, onCol, onRemove, cheDo, onCheDo }: { no: number; c: CauHoi; col: number; onCol: (n: number) => void; onRemove: () => void; cheDo?: CheDoHinh; onCheDo?: (v: CheDoHinh) => void }) {
   return (
     <li className="rounded-md border border-slate-100 bg-slate-50/50 px-2.5 py-1.5">
       <div className="flex items-start gap-2">
@@ -369,11 +380,25 @@ function CauRow({ no, c, col, onCol, onRemove }: { no: number; c: CauHoi; col: n
         <span className="min-w-0 flex-1 truncate text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
         <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
         <ColSel value={col} onChange={onCol} />
+        {onCheDo && c.anh_de && <CheDoHinhBtn cur={cheDo ?? 'hien'} onChange={onCheDo} />}
         <button onClick={onRemove} className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
       </div>
-      {/* ⭐ 16/09 (CEO): preview hình đầy đủ khi câu có ảnh đề — không chỉ text truncate. */}
+      {/* ⭐ 16/09 (CEO): preview hình đầy đủ khi câu có ảnh đề — không chỉ text truncate.
+          ⭐ 21/09: preview KHÔNG bị `cheDo` ảnh hưởng (CEO chốt Q2: preview đủ, cheDo chỉ áp lúc IN). */}
       {c.anh_de && <img src={c.anh_de} alt="" className="mx-auto mt-1.5 block max-h-40 w-auto max-w-full rounded border border-slate-200" />}
     </li>
+  )
+}
+
+// ⭐ 21/09 (CEO): nút xoay 3 chế độ IN hình (chỉ nhánh 'hinh_hoc', chỉ câu có anh_de).
+//   Xoay vòng: hien → o_trong → khong → hien (cheDoKe từ lib/kho/hinhGiaoTrinh — dùng chung với builder Hình Luyện).
+function CheDoHinhBtn({ cur, onChange }: { cur: CheDoHinh; onChange: (v: CheDoHinh) => void }) {
+  const info = CHE_DO_HINH.find((x) => x.ma === cur) ?? CHE_DO_HINH[0]
+  return (
+    <button onClick={() => onChange(cheDoKe(cur))} title={`Chế độ IN hình: ${info.nhan}. ${info.goi}`}
+      className="shrink-0 rounded border border-slate-200 bg-white px-1.5 py-0.5 text-[11px] font-medium text-slate-600 hover:border-violet-300 hover:text-violet-700">
+      {info.icon} {info.nhan}
+    </button>
   )
 }
 
