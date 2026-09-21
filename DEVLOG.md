@@ -14437,3 +14437,25 @@ Không sửa nội dung cũ của PLAN/HANDOFF (chỉ thêm).
   retrofit Yếu sang `fn_botro_cham_tay` (Thùy: làm Đuổi trước, "cập nhật lại cái yếu luôn" sau). CHƯA
   click-through UI thật qua trình duyệt (đăng nhập admin sẵn trong dev browser nhưng đúng lúc soát UI
   thì phát hiện sự cố mất file ở trên, ưu tiên khôi phục + commit trước).
+
+**Verify qua browser thật (sau khi khôi phục xong)** — bắt được 1 bug thật lúc click-through: panel
+resume "bài đang chờ" không lọc `in_giay_at`, vô tình resume nhầm 1 bài `htd_test` ONLINE THẬT đang dở
+của em Nguyễn Gia Huy (real data, không phải test của tôi — phát hiện qua `buoi_hoc_id`/`in_giay_at`
+đều null trên 13 bài `htd_test`/`htd_luyen` được tạo trong ~1.5h cùng lúc tôi đang test, tức có người
+khác đang dùng thật tính năng "Học từ đầu" song song). Đã ghi 1 câu chấm tay đè lên — verify `dap_an_hs`
+vẫn null (chưa đè câu trả lời thật nào) rồi xoá đúng dòng vừa ghi nhầm, sửa `baiTestDangChoDuoi` lọc
+`in_giay_at is not null` (fix + commit riêng, `51fff20`). **Bài học: mọi thao tác "resume/tái dùng dữ
+liệu đã có" phải phân biệt rõ nguồn (tay TA tạo vs em tự tạo) bằng 1 cột chắc chắn, không suy đoán qua
+suy luận thời gian/ngữ cảnh.**
+
+**Sửa kiến trúc theo Thùy 21/09 (sau khi xem mockup):** 2 góp ý — "câu hỏi cho TA phải nằm ở app TA,
+TA không còn dùng ERP nữa" + "hiện bảng cả dạng, N câu thì N dòng". Phát hiện: `DuoiGiayPanel` (chấm
+ĐCS) từng nằm nguyên trong `BoTroDuoiScreen.tsx` (ERP desktop) — TA "nhìn thấy" được chỉ vì
+`TaHome.tsx:26` import thẳng `BuoiDuoiDetail` từ file ERP đó (cơ chế multi-entry Vite: mỗi app 1
+`main-*.tsx`/`vite.config.*.ts` riêng, "gắn vào app nào" = import trực tiếp/gián tiếp từ gốc cây app đó
+— `vite.config.ta.ts` tự ghi rõ ý định "KHÔNG kéo NhanSuHome/useStore/screens kho" nhưng
+`BoTroDuoiScreen.tsx` phá đúng ý định này). Tách hẳn `DuoiGiayPanel` → `src/screens/ta/DuoiGiayTA.tsx`
+mới, viết đúng pattern `CaBoTroTA.tsx` (full-screen, `BKTabHeader`, nút to `py-2.5 font-bold`, không
+`hover:`), đổi UI câu hỏi từ card rời sang **bảng — mỗi câu 1 dòng**. Verify qua browser: mở từ ERP →
+bấm badge → màn TA mới hiện đúng, bài 10 câu hiện đủ 10 dòng bảng. Tiền lệ in-tại-app-TA đã có sẵn bên
+Yếu (`fn_btyeu_in_sinh` gọi từ `CaBoTroTA.tsx`, không riêng ERP) — Đuổi giờ theo đúng tiền lệ đó.
