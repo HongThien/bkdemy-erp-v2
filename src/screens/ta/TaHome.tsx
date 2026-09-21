@@ -48,13 +48,15 @@ export const NGHIEP_VU: { key: NvKey; icon: string; label: string; bg: string; a
 ]
 const nvOf = (k: NvKey) => NGHIEP_VU.find((n) => n.key === k)!
 
-// Buổi bù + buổi đuổi CÙNG owner là TA (nguoi_day_tg) và nghiệp vụ đo lường đều xoay quanh ET/dạng — nên
-// gom chung vào BOX "Chấm ET" của TA (buổi bù có cả 'et' + 'danhgia'; buổi đuổi chỉ 'danhgia' — không có
-// ET theo design). Cùng 1 buổi bù có 2 task ('et' + 'danhgia') → xuất hiện 2 dòng cùng box này, phân biệt
-// bằng NHÃN (t.label). Bấm task → mở BuoiBuDetail/BuoiDuoiDetail (không dùng ChamBuoi vốn chỉ hiểu buổi
-// thường: lop_id null, ET seed từ buổi mẹ, panel đánh giá theo dạng — hết trong 2 detail này).
-export const belongsToBoTro = (t: MyTask): boolean => (t.loai === 'bu' || t.loai === 'bo_tro_duoi')
-export const belongsToNv = (t: MyTask, k: NvKey): boolean => t.tab === k || (k === 'et' && t.tab === 'danhgia' && belongsToBoTro(t))
+// Buổi bù CÙNG owner là TA (nguoi_day_tg) và nghiệp vụ đo lường xoay quanh ET/dạng — gom vào BOX "Chấm
+// ET" (buổi bù có cả 'et' + 'danhgia' → 2 dòng cùng box, phân biệt bằng NHÃN t.label). Bấm task → mở
+// BuoiBuDetail (không dùng ChamBuoi vốn chỉ hiểu buổi thường: lop_id null, ET seed từ buổi mẹ — hết
+// trong BuoiBuDetail). Buổi ĐUỔI (Thùy 21/09: "hiện giống Bổ trợ yếu, ở Home thôi") có BOX RIÊNG
+// (BoxDuoi) — không còn núp trong "Chấm ET" (tên đó gây hiểu nhầm vì đuổi không có ET nào cả).
+export const belongsToBu = (t: MyTask): boolean => t.loai === 'bu'
+export const belongsToDuoi = (t: MyTask): boolean => t.loai === 'bo_tro_duoi'
+export const belongsToBoTro = (t: MyTask): boolean => belongsToBu(t) || belongsToDuoi(t) // dùng để GIỮ task trong `tasks` state — xem reload()
+export const belongsToNv = (t: MyTask, k: NvKey): boolean => t.tab === k || (k === 'et' && t.tab === 'danhgia' && belongsToBu(t))
 
 export type BuoiView = { buoiId: string; tab: NvKey; lop: string; ngay: string; loai?: 'bu' | 'bo_tro_duoi' }
 
@@ -129,7 +131,7 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
   return (
     <div className="flex h-[100dvh] flex-col" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif", background: BK_TROI }}>
       <div className="min-h-0 flex-1 overflow-auto">
-        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} dashTom={dashTom} boTro={boTro} onAvatarChanged={onAvatarChanged} />}
+        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} onOpenBuoi={setView} dashTom={dashTom} boTro={boTro} onAvatarChanged={onAvatarChanged} />}
         {tab === 'dash' && <DashTa profile={profile} />}
         {tab === 'botro' && <CaBoTroTA viec={boTro} onDoi={taiBoTro} />}
         {tab !== 'home' && tab !== 'dash' && tab !== 'botro' && <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => belongsToNv(t, tab))} nopCount={nopCount} now={now} homNay={homNay} onOpen={setView} />}
@@ -163,9 +165,9 @@ function TabBtn({ active, icon, label, no, onClick }: { active: boolean; icon: s
 
 // ── TRANG CHỦ: 1 thẻ hồ sơ (avatar · Chào X · ngày · nợ · chuông/góp ý/thoát) + box tháng + box bổ trợ + 3 box
 //    nghiệp vụ (bubble nợ ở góc icon). CEO 07/09: gộp thanh trên + hero, bỏ dòng tên/"BK Trợ giảng" lặp. ──
-function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, dashTom, boTro, onAvatarChanged }: {
+function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, onOpenBuoi, dashTom, boTro, onAvatarChanged }: {
   profile: MyProfile; homNay: string; loading: boolean; coQuyen: boolean
-  tasks: MyTask[]; canLam: MyTask[]; noCua: (k: NvKey) => number; now: number; onGo: (t: TabKey) => void
+  tasks: MyTask[]; canLam: MyTask[]; noCua: (k: NvKey) => number; now: number; onGo: (t: TabKey) => void; onOpenBuoi: (v: BuoiView) => void
   dashTom: TaDash | null; boTro: ViecBoTro; onAvatarChanged?: (url: string) => void
 }) {
   const tenGoi = (profile.nhanSu.ho_ten ?? '').trim().split(/\s+/).pop() || 'bạn'
@@ -247,6 +249,7 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
         {/* BOX DASHBOARD THÁNG — 1 cái riêng đứng cùng các nghiệp vụ (CEO 31/08) */}
         {!loading && coQuyen && <BoxDashThang d={dashTom} onGo={() => onGo('dash')} />}
         {!loading && coQuyen && <BoxBoTro v={boTro} homNay={homNay} onGo={() => onGo('botro')} />}
+        {!loading && coQuyen && <BoxDuoi tasks={tasks.filter(belongsToDuoi)} onOpen={onOpenBuoi} />}
 
         {!loading && coQuyen && NGHIEP_VU.map((n) => {
           const cua = canLam.filter((t) => belongsToNv(t, n.key))
@@ -310,6 +313,39 @@ function BoxBoTro({ v, homNay, onGo }: { v: ViecBoTro; homNay: string; onGo: () 
         </div>
       )}
     </button>
+  )
+}
+
+// Box "Bổ trợ đuổi" (Thùy 21/09: "hiện giống Bổ trợ yếu, ở Home thôi") — không có tab/list riêng như
+// Bổ trợ yếu (không cần: số buổi đuổi/TA thường rất ít), nên MỖI DÒNG tự mở thẳng BuoiDuoiDetail —
+// khác BoxBoTro/box nghiệp vụ (cả box 1 nút, bấm ra tab list). Vì vậy đây là <div>, không phải
+// <button> bọc ngoài (tránh nested button — mỗi dòng mới là nút thật).
+function BoxDuoi({ tasks, onOpen }: { tasks: MyTask[]; onOpen: (v: BuoiView) => void }) {
+  const chuaXong = tasks.filter((t) => !t.done)
+  const xong = tasks.length - chuaXong.length
+  return (
+    <div className="rounded-[22px] p-3" style={{ background: '#FFE3D1' }}>
+      <div className="flex items-center gap-2.5">
+        <span className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/80"><img src={A('pr_tai_nghe')} alt="" className="h-10 w-10 object-contain" draggable={false} /><NoBadge n={chuaXong.length} /></span>
+        <div className="min-w-0 flex-1 leading-tight">
+          <p className="font-bubble text-[17px] font-extrabold text-[#16224D]">Bổ trợ đuổi</p>
+          <p className="text-[12.5px] text-[#63709A]">{tasks.length === 0 ? 'Không có buổi đuổi' : `${chuaXong.length} buổi chờ đánh giá${xong ? ` · ${xong} đã xong` : ''}`}</p>
+        </div>
+      </div>
+      {tasks.length > 0 && (
+        <div className="mt-2 flex flex-col gap-1">
+          {tasks.slice(0, 5).map((t) => (
+            <button key={t.buoiId} onClick={() => onOpen({ buoiId: t.buoiId, tab: 'et', lop: t.lop, ngay: t.ngay, loai: 'bo_tro_duoi' })}
+              className="flex w-full items-center gap-2 rounded-xl bg-white/80 px-3 py-2 text-left active:scale-[.99]">
+              <span className="text-[13.5px] font-bold text-[#16224D]">{ddmmVN(t.ngay)}</span>
+              <span className="min-w-0 flex-1 truncate text-[11.5px] text-[#63709A]">{t.label}</span>
+              <span className={`ml-auto shrink-0 rounded-full px-2 py-0.5 text-[11px] font-bold ${t.done ? 'bg-[#E4F8EC] text-[#1E8A52]' : 'bg-[#FFF1D6] text-[#C27A00]'}`}>{t.done ? 'xong' : 'chờ đánh giá'}</span>
+            </button>
+          ))}
+          {tasks.length > 5 && <p className="px-1 text-[10.5px] font-semibold text-[#63709A]">+ {tasks.length - 5} buổi nữa…</p>}
+        </div>
+      )}
+    </div>
   )
 }
 
