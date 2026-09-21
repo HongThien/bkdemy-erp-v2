@@ -141,7 +141,8 @@ export type CaTheoDoi = {
   nguoi_day_tg: string | null; nguoi_ten: string | null; mon: string; case_id: string; uu_tien: number
   hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; diem_danh: string | null; buoi_hoc_hs_id: string; level: number
   so_dang: number; so_cau: number; so_dung: number; cau_cuoi_at: string | null
-  bai_giay: { bai_test_id: string; so_cau: number; in_giay_at: string; da_nhap: number }[]
+  che_do: CheDoCa | null
+  bai_giay: { bai_test_id: string; loai: 'bo_tro' | 'bo_tro_test'; so_cau: number; in_giay_at: string; da_nhap: number }[]
   da_dong: boolean; test_da_nop: boolean; danh_gia_xong_at: string | null
 }
 export async function caTheoDoi(ngay?: string): Promise<CaTheoDoi[]> {
@@ -155,7 +156,7 @@ export type CauInGiay = {
   chon: number | null; verdict: 'correct' | 'wrong' | null
 }
 export type BaiInGiay = {
-  bai_test_id: string; mon: string; ngay: string; in_giay_at: string | null; buoi_id: string | null
+  bai_test_id: string; loai: 'bo_tro' | 'bo_tro_test'; da_nop: boolean; mon: string; ngay: string; in_giay_at: string | null; buoi_id: string | null
   hs: { id: string; ho_ten: string; ma_hs: string | null; khoi: string | null }
   gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; nguoi_ten: string | null; caus: CauInGiay[]
 }
@@ -167,9 +168,31 @@ export async function inSinhBaiGiay(buoiId: string, soCauMoiDang = 5): Promise<{
 // Phiếu giấy của 1 ca (cho app TA) — list thô; số câu đã nhập lấy từ fn_btyeu_in_lay khi mở phiếu.
 export async function listPhieuGiayCuaCa(buoiId: string): Promise<{ bai_test_id: string; so_cau: number; in_giay_at: string }[]> {
   const { data, error } = await supabase.from('bai_test').select('id, so_cau, in_giay_at')
-    .eq('buoi_hoc_id', buoiId).eq('loai', 'bo_tro').not('in_giay_at', 'is', null).order('in_giay_at').limit(50)
+    .eq('buoi_hoc_id', buoiId).eq('loai', 'bo_tro').not('in_giay_at', 'is', null) // chỉ phiếu LUYỆN; test giấy đi qua khối Đóng ca.order('in_giay_at').limit(50)
   if (error) throw error
   return ((data ?? []) as any[]).map((r) => ({ bai_test_id: r.id, so_cau: r.so_cau, in_giay_at: r.in_giay_at }))
+}
+// ── 2 CHẾ ĐỘ CA (Thùy 21/09): 'app' = em làm 100% trên iPad · 'giay' = in giấy, TA nhập đáp án em khoanh (cả test cuối ca). TA bấm chọn.
+export type CheDoCa = 'app' | 'giay'
+export async function layCheDoCa(buoiHocHsId: string): Promise<CheDoCa | null> {
+  const { data, error } = await supabase.from('buoi_hoc_hs').select('btyeu_che_do').eq('id', buoiHocHsId).single()
+  if (error) throw error
+  return ((data as any)?.btyeu_che_do ?? null) as CheDoCa | null
+}
+export async function datCheDoCa(buoiHocHsId: string, cheDo: CheDoCa): Promise<void> {
+  const { error } = await supabase.from('buoi_hoc_hs').update({ btyeu_che_do: cheDo }).eq('id', buoiHocHsId)
+  if (error) throw error
+}
+// Test cuối ca in giấy: đánh dấu in → trả id để lấy nội dung; nộp = câu chưa nhập tính bỏ trống (sai), chuyển da_nop.
+export async function inTestGiay(buoiId: string): Promise<string> {
+  const { data, error } = await supabase.rpc('fn_btyeu_in_test', { p_buoi: buoiId })
+  if (error) throw error
+  return (data as { bai_test_id: string }).bai_test_id
+}
+export async function nopTestGiay(baiTestId: string): Promise<{ bo_trong: number; so_dung: number; so_cau: number }> {
+  const { data, error } = await supabase.rpc('fn_btyeu_giay_nop', { p_bai_test: baiTestId })
+  if (error) throw error
+  return data as { bo_trong: number; so_dung: number; so_cau: number }
 }
 export async function inLayBaiGiay(baiTestId: string): Promise<BaiInGiay> {
   const { data, error } = await supabase.rpc('fn_btyeu_in_lay', { p_bai_test: baiTestId })

@@ -6,7 +6,7 @@
 // Số liệu tổng hợp ở DB (fn_btyeu_ca_theo_doi — §2.0); ở đây chỉ render + đếm item đang hiện cho chip tóm tắt.
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { MathText } from '../kho/ui'
-import { caTheoDoi, inSinhBaiGiay, inLayBaiGiay, giayNhapKetQua, type CaTheoDoi, type BaiInGiay } from '../../lib/botro_yeu_ca'
+import { caTheoDoi, inSinhBaiGiay, inLayBaiGiay, giayNhapKetQua, nopTestGiay, type CaTheoDoi, type BaiInGiay } from '../../lib/botro_yeu_ca'
 import { homNayVN, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 
 const POLL_MS = 15000
@@ -103,13 +103,14 @@ export default function TheoDoiCaBoTroTab({ monF, khoiF }: { monF: string; khoiF
                       <span className="text-[14px] font-semibold text-slate-800">{c.ho_ten}</span>
                       <span className="text-[11.5px] text-slate-400">{c.ma_hs} · K{c.khoi} · {c.mon} · L{c.level}{c.uu_tien === 3 ? ' · ▲ ưu tiên cao' : ''}</span>
                       <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${TT[tt].cls}`}>{TT[tt].ten}{tt === 'im' && im != null ? ` ${im}'` : ''}</span>
+                      <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${c.che_do === 'giay' ? 'bg-amber-100 text-amber-800' : c.che_do === 'app' ? 'bg-indigo-50 text-indigo-700' : 'bg-slate-50 text-slate-400'}`}>{c.che_do === 'giay' ? '📄 Giấy' : c.che_do === 'app' ? '📱 App' : 'chưa chọn chế độ'}</span>
                       <span className="ml-auto text-[12px] text-slate-500">{c.nguoi_ten ?? 'chưa có người dạy'}{c.phong ? ` · ${c.phong}` : ''}{c.gio_ket_thuc ? ` · tới ${hhmm(c.gio_ket_thuc)}` : ''}</span>
                     </div>
                     <div className="mt-1.5 flex flex-wrap items-center gap-2 text-[12px]">
                       <span className="text-slate-500">{c.so_dang} dạng · đã làm <b className={c.so_cau && c.so_dung / c.so_cau >= 0.7 ? 'text-emerald-700' : 'text-slate-700'}>{c.so_dung}/{c.so_cau}</b> câu đúng</span>
                       {c.bai_giay.map((g, i) => (
                         <span key={g.bai_test_id} className="flex items-center gap-1 rounded-lg bg-white px-2 py-0.5 ring-1 ring-slate-200">
-                          <span className="text-slate-600">📄 Giấy {i + 1} · {g.so_cau} câu · nhập <b className={g.da_nhap >= g.so_cau ? 'text-emerald-700' : 'text-amber-700'}>{g.da_nhap}/{g.so_cau}</b></span>
+                          <span className="text-slate-600">📄 {g.loai === 'bo_tro_test' ? 'TEST cuối ca' : `Phiếu ${i + 1}`} · {g.so_cau} câu · nhập <b className={g.da_nhap >= g.so_cau ? 'text-emerald-700' : 'text-amber-700'}>{g.da_nhap}/{g.so_cau}</b></span>
                           <button disabled={busy === g.bai_test_id} onClick={() => moBai(g.bai_test_id, 'nhap')}
                             className={`rounded-md px-2 py-0.5 text-[11.5px] font-bold ${g.da_nhap >= g.so_cau ? 'border border-slate-200 bg-white text-slate-600' : 'bg-amber-500 text-white hover:bg-amber-600'}`}>✎ {g.da_nhap >= g.so_cau ? 'Sửa kết quả' : 'Nhập kết quả'}</button>
                           <button disabled={busy === g.bai_test_id} onClick={() => moBai(g.bai_test_id, 'in')} className="rounded-md border border-slate-200 bg-white px-2 py-0.5 text-[11.5px] text-slate-600 hover:bg-slate-50">🖨 In lại</button>
@@ -152,14 +153,14 @@ export function TrangIn({ bai, onDong }: { bai: BaiInGiay; onDong: () => void })
       <div className="mx-auto max-w-[800px] px-8 py-6 text-[14px] leading-relaxed text-slate-900">
         <div className="mb-4 border-b-2 border-slate-800 pb-2">
           <div className="flex items-baseline justify-between">
-            <h1 className="text-[18px] font-bold">BK ACADEMY — PHIẾU LUYỆN BỔ TRỢ · {bai.mon}</h1>
+            <h1 className="text-[18px] font-bold">BK ACADEMY — {bai.loai === 'bo_tro_test' ? 'BÀI KIỂM TRA CUỐI BUỔI BỔ TRỢ' : 'PHIẾU LUYỆN BỔ TRỢ'} · {bai.mon}</h1>
             <span className="text-[12px]">{thuCuaNgay(bai.ngay)} {ddmmVN(bai.ngay)}{bai.gio_bat_dau ? ` · ${hhmm(bai.gio_bat_dau)}` : ''}{bai.phong ? ` · ${bai.phong}` : ''}</span>
           </div>
           <div className="mt-1 flex justify-between text-[13px]">
             <span>Họ tên: <b>{bai.hs.ho_ten}</b> ({bai.hs.ma_hs}) · Khối {bai.hs.khoi}</span>
             <span>Thầy/cô: {bai.nguoi_ten ?? '…………'}</span>
           </div>
-          <p className="mt-1 text-[12px] italic">Khoanh tròn 1 đáp án đúng cho mỗi câu. Làm nháp ra mặt sau.</p>
+          <p className="mt-1 text-[12px] italic">Khoanh tròn 1 đáp án đúng cho mỗi câu. Làm nháp ra mặt sau.{bai.loai === 'bo_tro_test' ? ' Bài kiểm tra — em tự làm, không hỏi thầy cô.' : ''}</p>
         </div>
         {theoDang.map(([ten, caus]) => (
           <div key={ten} className="mb-4">
@@ -190,6 +191,10 @@ export function TrangIn({ bai, onDong }: { bai: BaiInGiay; onDong: () => void })
 
 // ── NHẬP KẾT QUẢ BÀI GIẤY — bấm đáp án em KHOANH; máy chấm theo key; vá tại chỗ. Bấm lại đúng ô đang chọn = xoá (nhập nhầm). ──
 export function NhapKetQua({ bai, onDong }: { bai: BaiInGiay; onDong: () => void }) {
+  const laTest = bai.loai === 'bo_tro_test'
+  const [daNop, setDaNop] = useState(bai.da_nop)
+  const [hoiNop, setHoiNop] = useState(false)
+  const [kqNop, setKqNop] = useState<string | null>(null)
   const [caus, setCaus] = useState(bai.caus)
   const [busy, setBusy] = useState<string | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
@@ -199,12 +204,17 @@ export function NhapKetQua({ bai, onDong }: { bai: BaiInGiay; onDong: () => void
     catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(null) }
   }
   const daNhap = caus.filter((k) => k.verdict).length, dung = caus.filter((k) => k.verdict === 'correct').length
+  async function nop() {
+    setBusy('nop'); setLoi(null)
+    try { const r = await nopTestGiay(bai.bai_test_id); setDaNop(true); setHoiNop(false); setKqNop(`Đã nộp: đúng ${r.so_dung}/${r.so_cau}${r.bo_trong ? ` · ${r.bo_trong} câu bỏ trống tính sai` : ''}.`) }
+    catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(null) }
+  }
   return (
     <div className="fixed inset-0 z-[90] flex items-center justify-center bg-slate-900/40 p-4" onClick={onDong}>
       <div className="max-h-[88vh] w-[720px] max-w-full overflow-auto rounded-2xl bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="mb-3 flex items-start justify-between gap-2">
           <div>
-            <h3 className="text-[15px] font-bold text-slate-800">Nhập kết quả bài giấy — {bai.hs.ho_ten}</h3>
+            <h3 className="text-[15px] font-bold text-slate-800">{laTest ? 'Nhập kết quả BÀI KIỂM TRA giấy' : 'Nhập kết quả phiếu luyện'} — {bai.hs.ho_ten}{daNop ? ' · ĐÃ NỘP' : ''}</h3>
             <p className="text-[12px] text-slate-500">Bấm đúng đáp án EM ĐÃ KHOANH (không phải đáp án đúng) — máy tự chấm. Đã nhập {daNhap}/{caus.length} · đúng {dung}.</p>
           </div>
           <button onClick={onDong} className="text-slate-400 hover:text-slate-600">✕</button>
@@ -217,7 +227,7 @@ export function NhapKetQua({ bai, onDong }: { bai: BaiInGiay; onDong: () => void
               <div className="mt-1.5 flex items-center gap-1.5">
                 {(k.lua_chon ?? []).map((_, i) => {
                   const dangChon = k.chon === i
-                  return <button key={i} disabled={busy === k.id} onClick={() => chon(k.id, dangChon ? null : i)}
+                  return <button key={i} disabled={busy === k.id || daNop} onClick={() => chon(k.id, dangChon ? null : i)}
                     className={`h-8 w-11 rounded-lg text-[13px] font-bold ${dangChon ? (k.verdict === 'correct' ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white') : 'border border-slate-300 bg-white text-slate-600 hover:border-indigo-300'}`}>{CHU[i]}</button>
                 })}
                 <span className="ml-2 text-[12px] text-slate-400">{k.verdict ? (k.verdict === 'correct' ? '✓ đúng' : `✗ sai (đáp án ${String(k.dap_an_key)})`) : 'chưa nhập / em bỏ trống'}</span>
@@ -225,7 +235,17 @@ export function NhapKetQua({ bai, onDong }: { bai: BaiInGiay; onDong: () => void
             </div>
           ))}
         </div>
-        <div className="mt-3 flex justify-end"><button onClick={onDong} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white hover:bg-indigo-700">Xong</button></div>
+        {kqNop && <p className="mt-3 rounded-lg bg-emerald-50 px-3 py-2 text-[12.5px] font-medium text-emerald-700">✓ {kqNop}</p>}
+        <div className="mt-3 flex flex-wrap items-center justify-end gap-2">
+          {laTest && !daNop && (hoiNop ? (
+            <span className="mr-auto flex flex-wrap items-center gap-2 text-[12.5px]">
+              <span className="text-slate-600">Nộp bài kiểm tra?{daNhap < caus.length ? ` ${caus.length - daNhap} câu chưa nhập sẽ tính là em BỎ TRỐNG (sai).` : ''} Nộp rồi không sửa được.</span>
+              <button disabled={busy === 'nop'} onClick={nop} className="rounded-lg bg-emerald-600 px-3 py-1.5 font-semibold text-white disabled:opacity-50">{busy === 'nop' ? 'Đang nộp…' : 'Nộp'}</button>
+              <button onClick={() => setHoiNop(false)} className="rounded-lg px-2 py-1.5 text-slate-500">Thôi</button>
+            </span>
+          ) : <button onClick={() => setHoiNop(true)} className="mr-auto rounded-lg bg-emerald-600 px-4 py-1.5 text-[13px] font-bold text-white hover:bg-emerald-700">✓ Nộp bài kiểm tra</button>)}
+          <button onClick={onDong} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white hover:bg-indigo-700">{laTest && !daNop ? 'Để sau' : 'Xong'}</button>
+        </div>
       </div>
     </div>
   )

@@ -14358,3 +14358,20 @@ ca, và quan trọng hơn — người nhập là TA ĐỨNG CA, mà app TA chư
   `listPhieuGiayCuaCa` = list thô bai_test (in_giay_at not null). Nhập xong nạp lại tiến độ ca.
 - ERP tab Đang diễn ra: "Nhập kết quả" thành nút cam (xong hết thì thành "Sửa kết quả" xám), "In lại" thành nút.
 tsc sạch.
+
+## 2026-09-21 (tối) — Bổ trợ yếu: 2 CHẾ ĐỘ ca rõ ràng (📱 App · 📄 Giấy), TA bấm chọn; chế độ giấy đi TRỌN luồng (cả test cuối ca)
+
+Thùy: "Thực tế có 2 chế độ: 100% trên app · hoặc in giấy cho HS làm xong TA đánh giá trên app. Giao diện phải clear và có nút để TA bấm."
+- Chế độ = thuộc tính của ca do TA chọn, lưu `buoi_hoc_hs.btyeu_che_do` ('app'|'giay', NULL = chưa chọn/không áp dụng) — không suy ngầm.
+- Phát hiện khi thiết kế: chế độ giấy mà chỉ có phiếu luyện thì GÃY ở test cuối ca (đóng ca sinh `bo_tro_test`, em không có iPad để làm) ⇒
+  làm trọn: `fn_btyeu_in_test(buoi)` đánh dấu test là bài giấy → in; `fn_btyeu_giay_nhap` nhận cả `bo_tro_test`; `fn_btyeu_giay_nop(bai_test)`
+  = câu chưa nhập tính em BỎ TRỐNG (sai) + chuyển `da_nop` (test chỉ vào mastery khi đã nộp — luật sẵn có); nộp rồi KHOÁ sửa.
+  `fn_btyeu_in_lay` trả thêm loai/da_nop; `fn_btyeu_ca_theo_doi` trả `che_do` + test giấy. Migration `202609211801` ĐÃ ÁP (`--only`).
+  Test trong transaction ROLLBACK (JWT nhân sự giả lập) trên 1 test thật chưa nộp: in_test OK · in_lay loai=bo_tro_test, 4 câu TN · nhập câu 1 ·
+  nộp → {so_cau 4, so_dung 0, bo_trong 3} · nhập sau nộp → CHẶN đúng câu · CHECK che_do='xyz' chặn.
+- App TA `CaBoTroTA`: sau Điểm danh có khối **"Em làm bài bằng gì?"** 2 nút to (📱 Trên iPad / 📄 In giấy; chưa chọn → nền vàng nhắc chọn;
+  đã đóng ca thì khoá đổi). Chế độ GIẤY: khối 2 đổi tên "Luyện trên GIẤY", hiện khối Phiếu giấy (In phiếu mới · Nhập kết quả · In lại);
+  khối 3 sau khi đóng ca có 2 nút **🖨 In bài kiểm tra** / **✎ Nhập kết quả & nộp**. Chế độ APP: y như cũ, ẩn khối phiếu (trừ khi đã có phiếu).
+- `NhapKetQua` dùng chung: bài test có nút "✓ Nộp bài kiểm tra" (hỏi lại, báo số câu bỏ trống), đã nộp thì khoá nút A–D. `TrangIn` đổi tiêu
+  đề "BÀI KIỂM TRA CUỐI BUỔI" + dòng "em tự làm". ERP tab Đang diễn ra: badge chế độ mỗi ca (📱 App / 📄 Giấy / chưa chọn), phiếu test ghi "TEST cuối ca".
+- tsc sạch. CHƯA nhìn được giao diện app TA bằng mắt (tài khoản dev admin không đứng ca nào ⇒ app TA không có ca để mở) — Thùy thử trên ca thật.
