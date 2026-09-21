@@ -14382,3 +14382,58 @@ File tổng MỚI `spec-bo-tro.md` — tự đứng được: 3 loại bổ tr�
 xếp lịch (lịch trực khối+bậc, ca ≤3, 1 case ≤1 buổi chờ học, tự ghép) · 2 chế độ ca (bảng so sánh app/giấy) · tab Đang diễn ra · quy ước UI · bản
 đồ code/DB/migration/script · 7 việc còn treo. Trỏ tới từ CLAUDE.md §7 (đọc bắt buộc), cuối 2 file PLAN-botro-yeu*.md, và HANDOFF ① (1 mục tóm).
 Không sửa nội dung cũ của PLAN/HANDOFF (chỉ thêm).
+
+## 2026-09-21 (tối) — Bổ trợ đuổi: 3 kịch bản (auto/ĐCS-hiện/ĐCS-giấy) — Pha A (DB) xong, verify transaction
+
+- **Vì sao (Thùy 21/09):** "Học từ đầu" (Phase 2, 19/09) chỉ có 1 đường — HS tự làm MCQ trên app, máy tự
+  chấm. Với ~1/2 số dạng CHƯA có MCQ (`spec-bo-tro.md` §10), HS không có cách nào "xong dạng" — chặn
+  tiến độ thật. Ban đầu tôi (Claude) đề xuất mirror y hệt cơ chế giấy của Bổ trợ Yếu (`fn_btyeu_giay_nhap`
+  — TA transcribe đáp án A-D, máy chấm lại) nhưng **BỊ THÙY BÁC**: Đuổi có cả câu tự luận nên ABCD không
+  tổng quát được; đúng ra phải là **TA nhập ĐCS trực tiếp** (Đúng/Chưa đạt/Sai — đúng 3 nút `ET_KQ` đã có
+  ở chấm ET thường `BuoiHocScreen.tsx:858-861`), và **Thùy nói thẳng luôn: "Yếu cũng nên giống Đuổi chứ
+  nhỉ, bên kia là do t chưa làm xong thôi"** — tức ĐCS mới là hướng đúng chung cho cả 2, không phải Đuổi
+  đi theo Yếu.
+- **3 kịch bản, phụ thuộc DẠNG (không phải cả buổi — 1 buổi có dạng ready dạng không):**
+  1. Có iPad + dạng có MCQ → tự động hoàn toàn (đã có, không đụng).
+  2. Có iPad + dạng KHÔNG MCQ → HS đọc đề (iPad hoặc giấy đều được) → TA chấm ĐCS.
+  3. Không có iPad → bắt buộc IN giấy, in ĐÚNG form gốc câu (không tự sinh MCQ giả cho câu tự luận) →
+     TA chấm ĐCS.
+  Chỉ 1 biến TA tự khai/buổi: "buổi này có iPad không" (`buoi_hoc.duoi_co_thiet_bi`, mới). "Dạng có MCQ"
+  tự derive — không cần TA chọn theo từng dạng.
+- **Migration `202609212145_duoi_giay_va_cham_tay.sql` — Pha A (DB), đã áp `--only`, verify bằng
+  transaction thật (rollback, không đọng dữ liệu):**
+  - `fn_botro_cham_tay(bai_test_cau, verdict)` — TA nhập ĐCS trực tiếp, MỌI `loai_cau` (không giới hạn
+    trắc nghiệm như `fn_btyeu_giay_nhap`). Dùng chung `bt.loai in (bo_tro, bo_tro_test, retest,
+    htd_luyen, htd_test)` — **thiết kế để Yếu chuyển sang dùng SAU** (chưa đụng `fn_btyeu_giay_nhap`
+    trong migration này, tránh đổi 2 việc cùng lúc).
+  - `_htd_chon_cau_bat_ky` — sibling `_btyeu_chon_cau` bỏ điều kiện MCQ. Tận dụng `_kho_snapshot_cau`
+    (mig 202609030307) vốn ĐÃ tổng quát mọi `loai_cau` — không viết lại máy snapshot.
+  - `fn_duoi_giay_sinh` — sinh 1 bài (luyện/test) cho 1 em × 1 dạng, `in_giay_at` đánh dấu "không phải
+    đường app-tự-làm" (không có nghĩa đen "đã in" — case 2 chỉ hiện, case 3 mới thực in).
+  - `fn_botro_giay_nop` — nộp, câu TA chưa chấm = bỏ trống = sai (§1.5).
+  - **Ngưỡng pass ≥50% (đã chốt trước "bắt đầu đi"):** sửa `trg_htd_test_nop` — đếm `verdict='correct'`
+    trong `bai_lam_cau` trước khi ghi `test_nop_at`. Verify test thật: 4/10 đúng → KHÔNG ghi (dạng vẫn
+    khoá); 6/10 đúng → ghi đúng. Áp NHƯ NHAU dù verdict đến từ auto hay `fn_botro_cham_tay` (cùng 1
+    trigger, `bai_lam.trang_thai='da_nop'` là điểm chung). KHÔNG hồi tố dạng đã xong từ trước.
+  - `fn_duoi_dang_trang_thai(buoi)` — nhân tiện trả nợ §2.0: thay `xongMapCho()` đang join
+    `hoc_tu_dau_dang` Ở CLIENT (`botro_duoi.ts:47-54`, tác giả cũ tự ghi chú là nợ chưa kịp làm). Verify
+    thật trên 1 buổi đuổi sống: trả đúng 4 dòng dạng, 1 dạng `co_mcq:true` + 2 dạng `co_mcq:false` — đúng
+    tình huống "1 buổi có dạng ready dạng không" CEO mô tả.
+  - Nhân tiện áp luôn migration ET hôm trước còn treo (`202609202230_et_sync_gami_theo_ma_cau_goc.sql`).
+- **Pha B (UI) — code xong** trong `src/lib/botro_duoi.ts` (RPC wrappers + `kichBanDuoi()` derive kịch
+  bản 1/2/3 từ `co_mcq × coThietBi`) và `BoTroDuoiScreen.tsx` (`BuoiDuoiDetail`: toggle "có thiết bị" 1
+  lần/buổi, badge kịch bản từng dòng dạng, modal `DuoiGiayPanel` sinh bài + chấm ĐCS + nộp, resume bài
+  test đang chờ qua `baiTestDangChoDuoi` tránh đẻ bài thứ 2). Card "Đang đuổi" đổi từ liệt kê từng dạng
+  sang chỉ đếm X/Y (yêu cầu riêng của Thùy, cùng đợt).
+- **⚠ SỰ CỐ 21/09 tối — MẤT VIỆC CHƯA COMMIT do `git pull --rebase origin main` từ phiên khác:** toàn bộ
+  việc Pha A+B (2 file migration, DEVLOG, code UI) bị cuốn sạch khỏi working tree — repo `main` này dùng
+  chung nhiều phiên Claude Code đồng thời, `git status` sạch bong sau khi 1 phiên khác pull xong dù tôi
+  chưa hề gọi git. DB không mất gì (migration đã áp trước đó, sổ `_migrations` vẫn ghi nhận) — chỉ mất
+  file git + code chưa commit. Đã recreate nguyên văn từ nội dung đã viết (có trong context hội thoại).
+  **Bài học: ở repo dùng chung, đừng để cả buổi làm mới commit 1 lần — commit sớm hơn, theo pha, ngay
+  sau khi verify xong mỗi pha**, đúng tinh thần "mỗi pha 1 commit" đã ghi trong PLAN-botro-yeu-ca.md §9
+  nhưng lần này tôi trì hoãn quá lâu.
+- **CHƯA LÀM:** cập nhật `spec-bo-tro.md` (thêm Đuổi + sửa dòng §0 lỗi thời "Đuổi: Chưa có app"). CHƯA
+  retrofit Yếu sang `fn_botro_cham_tay` (Thùy: làm Đuổi trước, "cập nhật lại cái yếu luôn" sau). CHƯA
+  click-through UI thật qua trình duyệt (đăng nhập admin sẵn trong dev browser nhưng đúng lúc soát UI
+  thì phát hiện sự cố mất file ở trên, ưu tiên khôi phục + commit trước).
