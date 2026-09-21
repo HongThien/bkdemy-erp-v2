@@ -132,3 +132,46 @@ export async function suaKetQuaTln(baiLamCauId: string, dung: boolean, lyDo?: st
   if (error) throw error
   return data as { verdict: 'correct' | 'wrong'; doi: boolean }
 }
+
+// ── THEO DÕI CA TRONG NGÀY + IN TÀI LIỆU GIẤY (Thùy 21/09) — migration 202609211729. In = CÙNG logic đưa câu của app (MCQ tuyệt đối,
+// né câu đã gặp); bài in là bai_test loai 'bo_tro' có in_giay_at nên tiến độ/test cuối ca thấy như bài app. Kết quả giấy: nhân sự bấm đáp án
+// em khoanh, MÁY chấm theo key.
+export type CaTheoDoi = {
+  buoi_id: string; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; trang_thai: string
+  nguoi_day_tg: string | null; nguoi_ten: string | null; mon: string; case_id: string; uu_tien: number
+  hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; diem_danh: string | null; buoi_hoc_hs_id: string; level: number
+  so_dang: number; so_cau: number; so_dung: number; cau_cuoi_at: string | null
+  bai_giay: { bai_test_id: string; so_cau: number; in_giay_at: string; da_nhap: number }[]
+  da_dong: boolean; test_da_nop: boolean; danh_gia_xong_at: string | null
+}
+export async function caTheoDoi(ngay?: string): Promise<CaTheoDoi[]> {
+  const { data, error } = await supabase.rpc('fn_btyeu_ca_theo_doi', { p_ngay: ngay ?? null })
+  if (error) throw error
+  return (data as CaTheoDoi[]) ?? []
+}
+export type CauInGiay = {
+  id: string; thu_tu: number; ma_cau: string | null; ma_dang: string | null; ten_dang: string
+  noi_dung: string | null; lua_chon: string[] | null; anh_de: string | null; dap_an_key: unknown; loi_giai: string | null
+  chon: number | null; verdict: 'correct' | 'wrong' | null
+}
+export type BaiInGiay = {
+  bai_test_id: string; mon: string; ngay: string; in_giay_at: string | null; buoi_id: string | null
+  hs: { id: string; ho_ten: string; ma_hs: string | null; khoi: string | null }
+  gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; nguoi_ten: string | null; caus: CauInGiay[]
+}
+export async function inSinhBaiGiay(buoiId: string, soCauMoiDang = 5): Promise<{ bai_test_id: string; so_cau: number; dang_khong_co_cau: string[] }> {
+  const { data, error } = await supabase.rpc('fn_btyeu_in_sinh', { p_buoi: buoiId, p_so_cau: soCauMoiDang })
+  if (error) throw error
+  return data as { bai_test_id: string; so_cau: number; dang_khong_co_cau: string[] }
+}
+export async function inLayBaiGiay(baiTestId: string): Promise<BaiInGiay> {
+  const { data, error } = await supabase.rpc('fn_btyeu_in_lay', { p_bai_test: baiTestId })
+  if (error) throw error
+  if (!data) throw new Error('Không thấy bài in.')
+  return data as BaiInGiay
+}
+export async function giayNhapKetQua(baiTestCauId: string, chon: number | null): Promise<{ chon: number | null; verdict: 'correct' | 'wrong' | null }> {
+  const { data, error } = await supabase.rpc('fn_btyeu_giay_nhap', { p_bai_test_cau: baiTestCauId, p_chon: chon })
+  if (error) throw error
+  return data as { chon: number | null; verdict: 'correct' | 'wrong' | null }
+}

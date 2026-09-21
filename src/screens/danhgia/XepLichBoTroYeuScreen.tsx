@@ -22,6 +22,7 @@ import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listPhong, kiemTraTrungPhong, type Phong, type KhoiBanPhong } from '../../lib/phong'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import SearchSelect from '../../components/SearchSelect'
+import TheoDoiCaBoTroTab from './TheoDoiCaBoTroTab'
 
 const MUC_TEN: Record<number, string> = { 1: 'Mức 1 · trước/sau giờ', 2: 'Mức 2 · buổi riêng (TA)', 3: 'Mức 2 · buổi riêng (GV cao cấp)' }
 const MUC_CLS: Record<number, string> = { 1: 'bg-slate-100 text-slate-600', 2: 'bg-amber-50 text-amber-700', 3: 'bg-rose-50 text-rose-700' }
@@ -57,7 +58,7 @@ export default function XepLichBoTroYeuScreen() {
   const [moId, setMoId] = useState<string | null>(null)
   // Thùy 09-14: tab "Lịch trực" — OPS nhập lịch trực bổ trợ theo khối/lớp; form xếp đọc lịch này để tự đề xuất ca.
   // Thùy 09-16: tab "Ca bổ trợ" — ca sắp tới + số HS/sức chứa + nút tự ghép; filter môn/khối dùng chung 2 tab.
-  const [tab, setTab] = useState<'xep' | 'ca' | 'truc'>('xep')
+  const [tab, setTab] = useState<'xep' | 'ca' | 'live' | 'truc'>('xep') // 'live' = Đang diễn ra (theo dõi ca trong ngày + in tài liệu) — Thùy 21/09
   const [monF, setMonF] = useState('')
   const [khoiF, setKhoiF] = useState('')
 
@@ -91,7 +92,7 @@ export default function XepLichBoTroYeuScreen() {
         <header className="mb-6 flex flex-wrap items-end justify-between gap-3">
           <div>
             <h1 className="text-[22px] font-bold text-slate-800">Xếp bổ trợ yếu</h1>
-            <p className="mt-1 text-[13px] text-slate-500">{tab === 'xep' ? 'Case đã chọn dạng — bấm vào ca để chốt ngày, giờ, phòng, người bổ trợ với phụ huynh.' : tab === 'ca' ? 'Ca bổ trợ sắp tới — ca nào đã có bao nhiêu em / sức chứa; tự ghép các em chờ xếp vào ca trực còn chỗ.' : 'Lịch trực bổ trợ theo khối + bậc (ca bậc cao nhận HS bậc thấp hơn) — mỗi ca tối đa 3 em, đầy là ẩn khỏi chỗ chọn.'}</p>
+            <p className="mt-1 text-[13px] text-slate-500">{tab === 'xep' ? 'Case đã chọn dạng — bấm vào ca để chốt ngày, giờ, phòng, người bổ trợ với phụ huynh.' : tab === 'ca' ? 'Ca bổ trợ sắp tới — ca nào đã có bao nhiêu em / sức chứa; tự ghép các em chờ xếp vào ca trực còn chỗ.' : tab === 'live' ? 'Các ca trong ngày: ai chưa điểm danh · đang luyện · im lâu · chờ test · xong — và IN tài liệu khi thiếu iPad (đúng bài hệ thống sẽ đưa trên app).' : 'Lịch trực bổ trợ theo khối + bậc (ca bậc cao nhận HS bậc thấp hơn) — mỗi ca tối đa 3 em, đầy là ẩn khỏi chỗ chọn.'}</p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
             {tab !== 'truc' && (
@@ -105,16 +106,16 @@ export default function XepLichBoTroYeuScreen() {
               </>
             )}
             <div className="flex rounded-xl border border-slate-200 bg-white p-0.5 text-[13px] font-semibold">
-              {(['xep', 'ca', 'truc'] as const).map((t) => (
+              {(['xep', 'ca', 'live', 'truc'] as const).map((t) => (
                 <button key={t} onClick={() => setTab(t)} className={`rounded-lg px-3 py-1.5 ${tab === t ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-50'}`}>
-                  {t === 'xep' ? 'Xếp lịch' : t === 'ca' ? 'Ca bổ trợ' : 'Lịch trực'}
+                  {t === 'xep' ? 'Xếp lịch' : t === 'ca' ? 'Ca bổ trợ' : t === 'live' ? '● Đang diễn ra' : 'Lịch trực'}
                 </button>
               ))}
             </div>
           </div>
         </header>
 
-        {tab === 'truc' ? <LichTrucTab /> : tab === 'ca' ? <CaBoTroTab choXep={choXep} muc={muc} monF={monF} khoiF={khoiF} onDaXep={danhDauDaXep} /> : loading ? (
+        {tab === 'truc' ? <LichTrucTab /> : tab === 'live' ? <TheoDoiCaBoTroTab monF={monF} khoiF={khoiF} /> : tab === 'ca' ? <CaBoTroTab choXep={choXep} muc={muc} monF={monF} khoiF={khoiF} onDaXep={danhDauDaXep} /> : loading ? (
           <div className="rounded-2xl bg-white p-8 text-center text-[13px] text-slate-400 ring-1 ring-slate-200">Đang tải…</div>
         ) : items.length === 0 ? (
           <div className="rounded-2xl bg-white p-8 text-center text-[13px] text-slate-400 ring-1 ring-slate-200">

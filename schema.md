@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-238 bảng · 19 view · 0 enum · 79 trigger · 427 function
+238 bảng · 19 view · 0 enum · 79 trigger · 431 function
 
 ## _app_secrets
 
@@ -107,6 +107,7 @@
 | co_nhieu_ma_de | boolean |  | false |  |  |
 | hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |  |
 | buoi_hoc_id | uuid | Y |  | FK→buoi_hoc.id |  |
+| in_giay_at | timestamp with time zone | Y |  |  |  |
 
 ## bai_test_cau
 
@@ -5114,10 +5115,14 @@ SELECT bl.hoc_sinh_id,
 - `fn_btyeu_ca_cua_toi()` → jsonb
 - `fn_btyeu_ca_sap_toi(p_tu date DEFAULT NULL::date, p_den date DEFAULT NULL::date)` → jsonb
 - `fn_btyeu_ca_ta(p_buoi uuid)` → jsonb
+- `fn_btyeu_ca_theo_doi(p_ngay date DEFAULT NULL::date)` → jsonb
 - `fn_btyeu_case_xep_lich(p_mon text DEFAULT NULL::text)` → jsonb
 - `fn_btyeu_dem(p_ns uuid)` → integer
 - `fn_btyeu_dong_ca(p_buoi uuid)` → jsonb
+- `fn_btyeu_giay_nhap(p_bai_test_cau uuid, p_chon integer)` → jsonb
 - `fn_btyeu_hoan_tat(p_buoi uuid, p_nhan_xet text, p_muc_ma text DEFAULT NULL::text, p_khong_test_ly_do text DEFAULT NULL::text)` → void
+- `fn_btyeu_in_lay(p_bai_test uuid)` → jsonb
+- `fn_btyeu_in_sinh(p_buoi uuid, p_so_cau integer DEFAULT 5)` → jsonb
 - `fn_btyeu_luyen_sinh(p_buoi uuid, p_ma_dang text, p_ma_cum text DEFAULT NULL::text, p_so_cau integer DEFAULT 3)` → jsonb
 - `fn_btyeu_retest_cua_toi()` → jsonb
 - `fn_btyeu_retest_ghi(p_bai_lam uuid)` → void
@@ -5450,9 +5455,9 @@ SELECT bl.hoc_sinh_id,
 - `trg_han_nop_ngoai_le_log()` → trigger
 - `trg_htd_test_nop()` → trigger
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 

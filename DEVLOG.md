@@ -14326,3 +14326,25 @@ Thứ tự list & TỰ GHÉP: ưu tiên cao trước, cùng ưu tiên thì case 
 - **Chấm test + Trả bài:** mỗi thẻ (Cần chấm · Đã chấm · Cần trả · Đã trả) có ✎ sửa thông tin ca + HS và 🗑 huỷ ca. 2 modal tách ra `src/screens/tuyensinh/CaTestSuaHuy.tsx` DÙNG CHUNG với Điểm danh (1 bản luật) + `SuaCaTheoIdModal` (2 màn này chỉ giữ bản rút gọn của ca ⇒ `getCaTest(id)` nạp đủ rồi mở form) + `NutSuaHuy` (thẻ là <button> nên nút đặt đè góc dưới phải trong wrapper `relative`, `stopPropagation`). Sửa xong vá tên/khối/ngày + tính lại cờ lệch khối; huỷ xong rụng khỏi list. Thẻ "Đã trả" CHỈ có ✎ (DB chặn huỷ ca đã trả — mở lại trả bài trước).
 - **Đề test** (`QuanLyDeTestScreen`): 👁 xem & in (MTPrintView đủ mã) · ✎ đổi tên (`doiTenDeTest`) · 🗑 xoá (`fn_de_test_xoa`: chặn khi đề đã có ca dùng — FK `ca_test.tai_lieu_id` NO ACTION cũng chặn; đo 21/09: 7/8 đề đang có ca dùng ⇒ nút 🗑 mờ + tooltip số ca) · bản lịch sử có "↑ Đặt làm đang dùng" (`fn_de_test_dat_dang_dung`). Mig `202609211000`: cột `tai_lieu.test_dang_dung_at` (NULL = không áp dụng); đề đang dùng = coalesce(test_dang_dung_at, created_at) mới nhất ⇒ sinh đề mới vẫn tự thành đang dùng, đặt tay bản cũ thì bản đó thắng. Giải luôn nợ 15/09: đề K7 bản 32 câu (14/09) đè bản 34 câu đang phát cho HS mà không có nút chọn lại. `listDeTestDauVao` lấy `ca_test(count)` (PostgREST đếm ở DB) → hiện "n ca đã dùng".
 - Verify: transaction ROLLBACK (`scripts/_verify_de_test_2109.mjs`): xoá đề đã dùng ⇒ chặn đúng câu; xoá đề K9 chưa dùng ⇒ đề + 3 phần về 0; K7 đặt tay bản 07/09 ⇒ thành đang dùng. tsc sạch. App (5173, admin quick-login): Chấm test 10/10 thẻ có ✎🗑; Trả bài 15/15; Đã trả 10 thẻ có ✎, 0 🗑; bấm ✎ mở form Sửa điền sẵn (Lê Hải Đăng · 7 · SĐT · PH · 10/09 · 10:30), KHÔNG mở nhầm form GV; Đề test 7 thẻ: 7 👁, 7 ✎, 6 🗑 khoá + 1 mở (K9, 0 ca), lịch sử K7 có nút Đặt làm đang dùng, modal đổi tên khoá Lưu khi chưa đổi. Không bấm lưu/xoá/huỷ thật. Chưa commit.
+
+## 2026-09-21 — Bổ trợ yếu: IN tài liệu (thiếu iPad) + màn theo dõi ca "Đang diễn ra" (Thùy)
+
+**Yêu cầu:** (1) ca đang diễn ra mà thiếu iPad ⇒ in tài liệu; "logic tương đương logic đưa câu hỏi — hệ thống định đưa bài nào trên app
+thì in ra giấy"; (2) 1 màn theo dõi các ca đang diễn ra để xử lý cho dễ.
+**Thiết kế:** bài in KHÔNG phải đường riêng — là 1 `bai_test.loai='bo_tro'` gắn buổi, sinh bằng ĐÚNG `_btyeu_chon_cau` (MCQ tuyệt đối, né câu
+đã gặp trong ca) + `_kho_snapshot_cau`; khác duy nhất cột mới `bai_test.in_giay_at` (NULL = bài app, "không áp dụng" §1.5). Nhờ vậy
+`_btyeu_tien_do`/đóng ca/test cuối ca/retest thấy bài giấy y như bài app, và app HS sau đó cũng né các câu đã in. Kết quả bài giấy: nhân sự
+bấm đáp án EM KHOANH (A–D), MÁY chấm theo key (`cham_boi='manual'`) — không tự phán đúng/sai; bấm lại ô đang chọn = xoá (nhập nhầm).
+- Migration `202609211729_btyeu_in_giay_va_theo_doi.sql` (ĐÃ ÁP bằng `migrate --only` — `npm run migrate` thường vấp 4 migration TREO của
+  phiên Sổ tay: `202609182334_so_tay_revoke_anon` FAIL "permission denied for function hs_sotay_cay" + 3 file sau; KHÔNG đụng, báo Thùy):
+  `fn_btyeu_in_sinh(buoi, so_cau/dạng=5)` (mỗi dạng còn mở N câu; dạng 0 MCQ trả về `dang_khong_co_cau`; 0 câu ⇒ raise, rollback, không
+  để bài rỗng) · `fn_btyeu_in_lay(bai_test)` (đề + key + lời giải + kết quả đã nhập + tên dạng) · `fn_btyeu_giay_nhap(cau, chon)` ·
+  `fn_btyeu_ca_theo_doi(ngay)` (mọi ca trong ngày: điểm danh, tiến độ, câu cuối lúc nào, bài giấy + đã nhập mấy câu, đã đóng/test nộp/hoàn tất).
+  Test cả 4 RPC trong transaction ROLLBACK với JWT nhân sự giả lập: sinh 4 câu MCQ (HS Tuệ Lâm, dạng "hệ số đơn thức") · lấy bài ·
+  nhập đúng→correct / sai→wrong / null→xoá · theo dõi 6 ca; sau rollback 0 bài giấy sót.
+- Client: `TheoDoiCaBoTroTab.tsx` (mới) = tab "● Đang diễn ra" của màn Xếp bổ trợ yếu: chọn ngày, chip đếm theo trạng thái (Chưa điểm danh ·
+  Vắng · Đang luyện · Im lâu ≥5' · Đã đóng chờ test · Test xong chờ nhận xét · Hoàn tất), nhóm theo giờ, poll 15s KHÔNG blank; mỗi ca:
+  nút 🖨 In tài liệu (chọn 3/5/8/10 câu mỗi dạng) + từng phiếu giấy "Nhập KQ" / "In lại". `TrangIn`: overlay + @media print chỉ in
+  `.bk-print` — đề theo dạng (A–D 2 cột, ảnh đề, công thức KaTeX), NGẮT TRANG rồi tới trang ĐÁP ÁN + lời giải cho thầy cô.
+- Verify: tsc sạch; local (worktree :5192) tab hiện đúng dữ liệu thật 21/09: 7 ca (6 chưa điểm danh, 1 đang luyện). KHÔNG bấm "In" trên ca
+  thật (sẽ tạo bài thật cho HS) ⇒ trang in mới kiểm qua dữ liệu RPC, chưa nhìn bằng mắt bản giấy — Thùy in thử 1 ca rồi chỉnh trình bày.
