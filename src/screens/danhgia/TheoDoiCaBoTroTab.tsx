@@ -110,8 +110,9 @@ export default function TheoDoiCaBoTroTab({ monF, khoiF }: { monF: string; khoiF
                       {c.bai_giay.map((g, i) => (
                         <span key={g.bai_test_id} className="flex items-center gap-1 rounded-lg bg-white px-2 py-0.5 ring-1 ring-slate-200">
                           <span className="text-slate-600">📄 Giấy {i + 1} · {g.so_cau} câu · nhập <b className={g.da_nhap >= g.so_cau ? 'text-emerald-700' : 'text-amber-700'}>{g.da_nhap}/{g.so_cau}</b></span>
-                          <button disabled={busy === g.bai_test_id} onClick={() => moBai(g.bai_test_id, 'nhap')} className="font-semibold text-indigo-600 hover:underline">Nhập KQ</button>
-                          <button disabled={busy === g.bai_test_id} onClick={() => moBai(g.bai_test_id, 'in')} className="text-slate-500 hover:underline">In lại</button>
+                          <button disabled={busy === g.bai_test_id} onClick={() => moBai(g.bai_test_id, 'nhap')}
+                            className={`rounded-md px-2 py-0.5 text-[11.5px] font-bold ${g.da_nhap >= g.so_cau ? 'border border-slate-200 bg-white text-slate-600' : 'bg-amber-500 text-white hover:bg-amber-600'}`}>✎ {g.da_nhap >= g.so_cau ? 'Sửa kết quả' : 'Nhập kết quả'}</button>
+                          <button disabled={busy === g.bai_test_id} onClick={() => moBai(g.bai_test_id, 'in')} className="rounded-md border border-slate-200 bg-white px-2 py-0.5 text-[11.5px] text-slate-600 hover:bg-slate-50">🖨 In lại</button>
                         </span>
                       ))}
                       {dangMo && (
@@ -134,7 +135,7 @@ export default function TheoDoiCaBoTroTab({ monF, khoiF }: { monF: string; khoiF
 }
 
 // ── TRANG IN — overlay trắng + CSS @media print chỉ hiện .bk-print. Trang 1..n = đề cho em; trang cuối (ngắt trang) = đáp án cho TA. ──
-function TrangIn({ bai, onDong }: { bai: BaiInGiay; onDong: () => void }) {
+export function TrangIn({ bai, onDong }: { bai: BaiInGiay; onDong: () => void }) {
   const theoDang = useMemo(() => {
     const g = new Map<string, BaiInGiay['caus']>()
     for (const k of bai.caus) g.set(k.ten_dang, [...(g.get(k.ten_dang) ?? []), k])
@@ -188,7 +189,7 @@ function TrangIn({ bai, onDong }: { bai: BaiInGiay; onDong: () => void }) {
 }
 
 // ── NHẬP KẾT QUẢ BÀI GIẤY — bấm đáp án em KHOANH; máy chấm theo key; vá tại chỗ. Bấm lại đúng ô đang chọn = xoá (nhập nhầm). ──
-function NhapKetQua({ bai, onDong }: { bai: BaiInGiay; onDong: () => void }) {
+export function NhapKetQua({ bai, onDong }: { bai: BaiInGiay; onDong: () => void }) {
   const [caus, setCaus] = useState(bai.caus)
   const [busy, setBusy] = useState<string | null>(null)
   const [loi, setLoi] = useState<string | null>(null)

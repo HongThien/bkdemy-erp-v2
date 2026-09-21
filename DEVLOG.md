@@ -14348,3 +14348,13 @@ bấm đáp án EM KHOANH (A–D), MÁY chấm theo key (`cham_boi='manual'`) �
   `.bk-print` — đề theo dạng (A–D 2 cột, ảnh đề, công thức KaTeX), NGẮT TRANG rồi tới trang ĐÁP ÁN + lời giải cho thầy cô.
 - Verify: tsc sạch; local (worktree :5192) tab hiện đúng dữ liệu thật 21/09: 7 ca (6 chưa điểm danh, 1 đang luyện). KHÔNG bấm "In" trên ca
   thật (sẽ tạo bài thật cho HS) ⇒ trang in mới kiểm qua dữ liệu RPC, chưa nhìn bằng mắt bản giấy — Thùy in thử 1 ca rồi chỉnh trình bày.
+
+## 2026-09-21 (tối) — "Nhập kết quả chỗ nào?" — đưa Phiếu giấy vào app TA + nút rõ hơn ở ERP
+
+Thùy in thử 1 phiếu (Nguyễn Quang Minh, ca 17:00, 5 câu, 17:42) rồi không tìm ra chỗ nhập: ở ERP "Nhập KQ" chỉ là chữ link nhỏ trong dòng
+ca, và quan trọng hơn — người nhập là TA ĐỨNG CA, mà app TA chưa có gì. Sửa:
+- App TA `CaBoTroTA` chi tiết ca: khối "📄 Phiếu giấy" (giữa Luyện và chỉnh TLN) — In phiếu mới (3/5/8/10 câu/dạng, khi em có mặt + ca chưa
+  đóng) · từng phiếu: nút cam "✎ Nhập kết quả" + "🖨 In lại"; dùng lại `TrangIn`/`NhapKetQua` (export từ TheoDoiCaBoTroTab) ⇒ 1 bản UI.
+  `listPhieuGiayCuaCa` = list thô bai_test (in_giay_at not null). Nhập xong nạp lại tiến độ ca.
+- ERP tab Đang diễn ra: "Nhập kết quả" thành nút cam (xong hết thì thành "Sửa kết quả" xám), "In lại" thành nút.
+tsc sạch.

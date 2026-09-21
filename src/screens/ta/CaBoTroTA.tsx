@@ -4,7 +4,8 @@
 // → điểm test theo dạng → nhận xét (mẫu + gõ) + mức → "Hoàn tất ca" (khoá sau khi xong). Mọi số từ fn_btyeu_*.
 // KHÔNG import màn ERP desktop (luật app TA). Class màu literal (Tailwind JIT).
 import { useEffect, useState, type ReactNode } from 'react'
-import { caTA, dongCa, hoanTatCa, cauTlnCuaCa, suaKetQuaTln, type CaTA, type ViecCaBoTro, type ViecRetest, type CauTlnTA } from '../../lib/botro_yeu_ca'
+import { caTA, dongCa, hoanTatCa, cauTlnCuaCa, suaKetQuaTln, listPhieuGiayCuaCa, inSinhBaiGiay, inLayBaiGiay, type CaTA, type ViecCaBoTro, type ViecRetest, type CauTlnTA, type BaiInGiay } from '../../lib/botro_yeu_ca'
+import { TrangIn, NhapKetQua } from '../danhgia/TheoDoiCaBoTroTab'
 import { MathText } from '../kho/ui'
 import { diemDanh, huyBuoi, MUC_CATALOG } from '../../lib/gami'
 import { timNhanXetMau, type NhanXetMau } from '../../lib/detest'
@@ -118,6 +119,24 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
   const [tlnBusy, setTlnBusy] = useState<string | null>(null)
   const [tlnMo, setTlnMo] = useState<boolean | null>(null) // null = theo mặc định: TỰ MỞ khi có câu máy chấm sai (Thùy 19/09: "ko thấy hiện chỗ nào")
   const taiTln = () => cauTlnCuaCa(buoiId).then(setTln).catch(() => {})
+  // PHIẾU GIẤY (Thùy 21/09): thiếu iPad ⇒ in bài ra giấy; TA đứng ca là người NHẬP KẾT QUẢ (bấm đáp án em khoanh, máy chấm).
+  const [phieu, setPhieu] = useState<{ bai_test_id: string; so_cau: number; in_giay_at: string }[]>([])
+  const [phieuIn, setPhieuIn] = useState<BaiInGiay | null>(null)
+  const [phieuNhap, setPhieuNhap] = useState<BaiInGiay | null>(null)
+  const [soCauIn, setSoCauIn] = useState(5)
+  const taiPhieu = () => listPhieuGiayCuaCa(buoiId).then(setPhieu).catch(() => {})
+  async function inPhieuMoi() {
+    setBusy('in'); setLoi(null); setOk(null)
+    try {
+      const r = await inSinhBaiGiay(buoiId, soCauIn)
+      if (r.dang_khong_co_cau.length) setOk(`Đã tạo phiếu ${r.so_cau} câu. ${r.dang_khong_co_cau.length} dạng chưa có câu trắc nghiệm nên không in được.`)
+      setPhieuIn(await inLayBaiGiay(r.bai_test_id)); taiPhieu()
+    } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(null) }
+  }
+  async function moPhieu(id: string, che: 'in' | 'nhap') {
+    setBusy(id); setLoi(null)
+    try { const b = await inLayBaiGiay(id); if (che === 'in') setPhieuIn(b); else setPhieuNhap(b) } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(null) }
+  }
   async function chinhTln(x: CauTlnTA, dung: boolean) {
     setTlnBusy(x.bai_lam_cau_id); setLoi(null)
     try {
@@ -127,7 +146,7 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
     } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setTlnBusy(null) }
   }
   const tai = async () => { try { const c = await caTA(buoiId); setCa(c); if (c?.danh_gia) { setNx(c.danh_gia.nhan_xet ?? ''); setMucMa(c.danh_gia.muc_ma) } } catch (e: any) { setLoi(e?.message ?? String(e)); setCa(null) } }
-  useEffect(() => { tai(); taiTln() }, [buoiId]) // eslint-disable-line
+  useEffect(() => { tai(); taiTln(); taiPhieu() }, [buoiId]) // eslint-disable-line
   useEffect(() => { const id = setInterval(() => { tai(); taiTln(); setNow(Date.now()) }, POLL_MS); return () => clearInterval(id) }, [buoiId]) // eslint-disable-line
   useEffect(() => { if (ca?.mon) timNhanXetMau(ca.mon, 'kien_thuc', '').then(setMau).catch(() => {}) }, [ca?.mon])
 
@@ -206,6 +225,36 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
             </div>
           )}
         </Khoi>
+
+        {/* 2a. PHIẾU GIẤY — in khi thiếu iPad + nhập kết quả (hiện khi em có mặt và ca chưa đóng, hoặc đã có phiếu) */}
+        {(phieu.length > 0 || (coMat && !daDong)) && (
+          <div className="mb-3 rounded-2xl bg-white p-3 ring-1 ring-slate-200">
+            <div className="flex flex-wrap items-center gap-2">
+              <p className="text-[13.5px] font-bold text-slate-800">📄 Phiếu giấy</p>
+              <span className="text-[11.5px] text-slate-500">thiếu iPad thì in — cùng bộ câu app sẽ đưa, né câu em đã gặp</span>
+              {coMat && !daDong && (
+                <span className="ml-auto flex items-center gap-1.5">
+                  <select value={soCauIn} onChange={(e) => setSoCauIn(Number(e.target.value))} className="rounded-md border border-slate-300 px-1.5 py-1 text-[12px]">{[3, 5, 8, 10].map((n) => <option key={n} value={n}>{n} câu/dạng</option>)}</select>
+                  <button disabled={!!busy} onClick={inPhieuMoi} className="rounded-lg bg-slate-800 px-3 py-1.5 text-[12.5px] font-semibold text-white disabled:opacity-50">{busy === 'in' ? 'Đang chọn câu…' : '🖨 In phiếu mới'}</button>
+                </span>
+              )}
+            </div>
+            {phieu.length === 0 ? <p className="mt-1.5 text-[12.5px] text-slate-400">Chưa in phiếu nào cho ca này.</p> : (
+              <div className="mt-2 flex flex-col gap-1.5">
+                {phieu.map((g, i) => (
+                  <div key={g.bai_test_id} className="flex items-center gap-2 rounded-xl bg-slate-50 px-3 py-2 text-[13px]">
+                    <span className="font-semibold text-slate-700">Phiếu {i + 1}</span>
+                    <span className="text-slate-500">{g.so_cau} câu · in lúc {new Date(g.in_giay_at).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })}</span>
+                    <button disabled={busy === g.bai_test_id} onClick={() => moPhieu(g.bai_test_id, 'nhap')} className="ml-auto rounded-lg bg-amber-500 px-3 py-1.5 text-[12.5px] font-bold text-white disabled:opacity-50">✎ Nhập kết quả</button>
+                    <button disabled={busy === g.bai_test_id} onClick={() => moPhieu(g.bai_test_id, 'in')} className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[12.5px] text-slate-600">🖨 In lại</button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+        {phieuIn && <TrangIn bai={phieuIn} onDong={() => setPhieuIn(null)} />}
+        {phieuNhap && <NhapKetQua bai={phieuNhap} onDong={() => { setPhieuNhap(null); tai() }} />}
 
         {/* 2b. Câu trả lời ngắn — TA chỉnh kết quả (chỉ hiện khi em đã trả lời ≥1 câu TLN) */}
         {coMat && (

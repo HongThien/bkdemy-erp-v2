@@ -164,6 +164,13 @@ export async function inSinhBaiGiay(buoiId: string, soCauMoiDang = 5): Promise<{
   if (error) throw error
   return data as { bai_test_id: string; so_cau: number; dang_khong_co_cau: string[] }
 }
+// Phiếu giấy của 1 ca (cho app TA) — list thô; số câu đã nhập lấy từ fn_btyeu_in_lay khi mở phiếu.
+export async function listPhieuGiayCuaCa(buoiId: string): Promise<{ bai_test_id: string; so_cau: number; in_giay_at: string }[]> {
+  const { data, error } = await supabase.from('bai_test').select('id, so_cau, in_giay_at')
+    .eq('buoi_hoc_id', buoiId).eq('loai', 'bo_tro').not('in_giay_at', 'is', null).order('in_giay_at').limit(50)
+  if (error) throw error
+  return ((data ?? []) as any[]).map((r) => ({ bai_test_id: r.id, so_cau: r.so_cau, in_giay_at: r.in_giay_at }))
+}
 export async function inLayBaiGiay(baiTestId: string): Promise<BaiInGiay> {
   const { data, error } = await supabase.rpc('fn_btyeu_in_lay', { p_bai_test: baiTestId })
   if (error) throw error
