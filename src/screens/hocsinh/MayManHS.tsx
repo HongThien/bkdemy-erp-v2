@@ -73,7 +73,7 @@ const luc = (iso: string) => {
   return ph < 1 ? 'vừa xong' : ph < 60 ? `${ph} phút trước` : ph < 1440 ? `${Math.floor(ph / 60)} giờ trước` : `${Math.floor(ph / 1440)} ngày trước`
 }
 
-export default function MayManHS({ gioiTinh, onXong, desktop }: { gioiTinh: 'nam' | 'nu' | null; onXong: () => void; desktop?: boolean }) {
+export default function MayManHS({ gioiTinh, onXong }: { gioiTinh: 'nam' | 'nu' | null; onXong: () => void }) {
   const [d, setD] = useState<MayManHSCuaToi | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [goc, setGoc] = useState(0)
@@ -102,10 +102,10 @@ export default function MayManHS({ gioiTinh, onXong, desktop }: { gioiTinh: 'nam
   const conLuot = d ? !daQuay && du && d.active : false
 
   return (
-    <div className={`font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] md:max-w-[820px] ${desktop ? 'lg:max-w-[1180px]' : ''}`} style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
+    <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] md:max-w-[820px] lg:max-w-[1180px]" style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
       {/* BACKDROP + decor + quote — cùng pattern kit */}
-      <img src={t.bg} alt="" className={`pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover md:max-w-[820px] ${desktop ? 'lg:max-w-[1180px]' : ''}`} />
-      <div className={`pointer-events-none fixed inset-x-0 bottom-0 mx-auto flex w-full max-w-[430px] flex-col items-end md:max-w-[820px] ${desktop ? 'lg:max-w-[1180px]' : ''}`}>
+      <img src={t.bg} alt="" className="pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover md:max-w-[820px] lg:max-w-[1180px]" />
+      <div className="pointer-events-none fixed inset-x-0 bottom-0 mx-auto flex w-full max-w-[430px] flex-col items-end md:max-w-[820px] lg:max-w-[1180px]">
         <div className="font-hand mb-1 mr-[14%] -rotate-[6deg] whitespace-pre-line text-right text-[20px] leading-[1.15]" style={{ color: t.quoteColor }}>{t.quote}</div>
         <img src={t.decor} alt="" className="block w-[46%]" style={{ marginRight: '-2%', marginBottom: '-2%' }} />
       </div>

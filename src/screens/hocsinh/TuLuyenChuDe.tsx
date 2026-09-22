@@ -14,7 +14,7 @@ import { layDangChuDe, monCuaHS, type DangChuDe } from '../../lib/tuluyen'
 
 function Khung({ desktop, children }: { desktop?: boolean; children: React.ReactNode }) {
   return (
-    <div className={desktop ? 'mx-auto min-h-screen max-w-2xl bg-[#f4f7fb] px-8 py-6' : 'mx-auto flex min-h-screen max-w-md flex-col bg-ios px-4 pb-8 pt-[calc(14px+env(safe-area-inset-top))] md:max-w-2xl'}>
+    <div className={desktop ? 'mx-auto min-h-screen max-w-2xl bg-[#f4f7fb] px-8 py-6 lg:max-w-4xl' : 'mx-auto flex min-h-screen max-w-md flex-col bg-ios px-4 pb-8 pt-[calc(14px+env(safe-area-inset-top))] md:max-w-2xl lg:max-w-4xl'}>
       {children}
     </div>
   )
@@ -95,7 +95,7 @@ export function ChonDangChuDe({ onPick, onBack, desktop }: { onPick: (d: { ma_da
       )}
 
       {state === 'san_sang' && dangs.length > 0 && (
-        <div className={`mt-4 flex flex-col gap-2.5 ${desktop ? 'sm:grid sm:grid-cols-2 sm:gap-3' : ''}`}>
+        <div className="mt-4 flex flex-col gap-2.5 md:grid md:grid-cols-2 md:gap-3 lg:grid-cols-3">
           {dangs.map((d) => {
             const mau = d.muc ? MUC_MAU[d.muc] : { bg: '#F1F3F8', chu: '#8792B5' }
             return (

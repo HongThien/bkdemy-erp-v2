@@ -56,8 +56,8 @@ export default function CaBoTroHS({ hocSinhId, desktop, onXong, LamBai, LamET }:
   }
 
   const wrap = (children: ReactNode) => (
-    <div className={desktop ? 'min-h-screen bg-[#f4f7fb] px-8 py-6' : 'mx-auto min-h-screen max-w-md bg-ios px-4 pb-10 pt-[calc(14px+env(safe-area-inset-top))] md:max-w-3xl'}>
-      <div className={desktop ? 'mx-auto max-w-3xl' : ''}>{children}</div>
+    <div className={desktop ? 'min-h-screen bg-[#f4f7fb] px-8 py-6' : 'mx-auto min-h-screen max-w-md bg-ios px-4 pb-10 pt-[calc(14px+env(safe-area-inset-top))] md:max-w-3xl lg:max-w-4xl'}>
+      <div className={desktop ? 'mx-auto max-w-3xl lg:max-w-4xl' : ''}>{children}</div>
     </div>
   )
   const Head = ({ title, sub, onBack }: { title: string; sub?: string; onBack: () => void }) => (
@@ -247,7 +247,7 @@ export function RetestHS({ hocSinhId, onXong, LamET }: { hocSinhId: string; onXo
   useEffect(() => { tai() }, [])
   if (test) return <LamET test={test} hocSinhId={hocSinhId} onXong={() => { setTest(null); tai() }} />
   return (
-    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10 pt-[calc(14px+env(safe-area-inset-top))] md:max-w-3xl">
+    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10 pt-[calc(14px+env(safe-area-inset-top))] md:max-w-3xl lg:max-w-4xl">
       <div className="mb-4 flex items-center gap-3">
         <button onClick={onXong} className={`flex h-[42px] w-[42px] items-center justify-center rounded-[14px] bg-white text-[18px] ${SHADOW}`}>‹</button>
         <p className="text-[19px] font-bold tracking-tight text-ph-label">Bài kiểm tra lại</p>
@@ -275,7 +275,7 @@ export function RetestHS({ hocSinhId, onXong, LamET }: { hocSinhId: string; onXo
 const LOAI_MAU: Record<LichBoTro['loai'], string> = { bo_tro_yeu: 'bg-ph-orange/10 text-ph-orange', bu: 'bg-brand/10 text-brand', bo_tro_duoi: 'bg-ph-purple/10 text-ph-purple' }
 export function LichBoTroHS({ lich, coCa, onXong, onVaoCa }: { lich: LichBoTro[]; coCa: boolean; onXong: () => void; onVaoCa: (c: LichBoTro) => void }) {
   return (
-    <div className="mx-auto min-h-screen max-w-[640px] bg-ios px-4 pb-8">
+    <div className="mx-auto min-h-screen max-w-[640px] bg-ios px-4 pb-8 lg:max-w-[1000px]">
       <div className="sticky top-0 z-10 -mx-4 flex items-center gap-3 bg-ios px-4 pb-3 pt-[calc(12px+env(safe-area-inset-top))]">
         <button onClick={onXong} className={`flex h-10 w-10 items-center justify-center rounded-[13px] bg-white text-[18px] ${SHADOW}`}>‹</button>
         <div className="min-w-0">
@@ -288,7 +288,7 @@ export function LichBoTroHS({ lich, coCa, onXong, onVaoCa }: { lich: LichBoTro[]
           Em chưa có buổi bổ trợ nào được xếp. Khi thầy cô xếp lịch (bổ trợ yếu · học bù · học đuổi) sẽ hiện ở đây.
         </div>
       )}
-      <div className="space-y-3">
+      <div className="flex flex-col gap-3 lg:grid lg:grid-cols-2">
         {lich.map((c) => (
           <div key={c.buoi_id} className={`rounded-[22px] bg-white p-4 ${SHADOW} ${c.hom_nay ? 'ring-2 ring-ph-orange/40' : ''}`}>
             <div className="flex items-center gap-2">
