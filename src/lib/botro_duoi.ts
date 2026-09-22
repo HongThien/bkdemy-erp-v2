@@ -186,24 +186,30 @@ export async function setBuoiCoThietBi(buoiId: string, coThietBi: boolean): Prom
   if (error) throw error
 }
 
-// Bài TEST GIẤY đang CHỜ nộp (nếu có) cho (em × dạng) — mở panel thì resume bài này thay vì sinh mới
-// (tránh bấm 2 lần đẻ 2 bài test khác câu, mất chấm dở của bài đầu). Chỉ áp cho 'htd_test' — 'htd_luyen'
-// không gate/không cần resume, mỗi lần "in phiếu" là 1 lượt luyện mới (đúng tinh thần Yếu "in nhiều phiếu được").
-// ⚠ BẮT BUỘC lọc `in_giay_at is not null` — nếu không sẽ resume NHẦM bài `htd_test` ONLINE THẬT của em
-// (em tự mở trên app, chưa nộp) và TA chấm ĐCS tay đè lên câu trả lời thật của em (bug thật, bắt được
-// lúc click-through verify 21/09: panel resume đúng 1 bài online đang dang dở, ghi đè 1 câu trước khi
-// phát hiện). Bài giấy do TA sinh (`fn_duoi_giay_sinh`) LUÔN có `in_giay_at`; bài online HS tự mở thì
-// KHÔNG — đây là ranh giới đáng tin duy nhất giữa 2 nguồn.
-export async function baiTestDangChoDuoi(hocSinhId: string, mon: string, maDang: string): Promise<{ bai_test_id: string } | null> {
-  const { data: bt } = await supabase.from('bai_test').select('id').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('loai', 'htd_test').not('in_giay_at', 'is', null).limit(LIMIT)
+// Bài TEST đang CHỜ TA chấm ĐCS (nếu có) cho (em × dạng) — mở panel thì resume bài này thay vì sinh
+// mới (tránh bấm 2 lần đẻ 2 bài test khác câu, mất chấm dở của bài đầu). Chỉ áp cho 'htd_test' —
+// 'htd_luyen' không gate/không cần resume, mỗi lần "in phiếu"/luyện là 1 lượt mới (đúng tinh thần Yếu
+// "in nhiều phiếu được"; luyện cũng không tính mastery nên không cần TA nhập gì — Thùy 21-22/09).
+// ⚠ Lọc bằng `loai_cau <> 'trac_nghiem'` (KHÔNG phải `in_giay_at`, đã đổi 22/09) — đây mới là ranh giới
+// ĐÚNG: câu trắc nghiệm LUÔN là bài online HS tự làm, máy tự chấm (dù TA hay em bấm sinh) — KHÔNG BAO
+// GIỜ được TA đụng vào (bài học đau 21/09: lọc theo in_giay_at từng resume nhầm 1 bài online thật của
+// em, ghi đè 1 câu trước khi phát hiện). Câu KHÔNG phải trắc nghiệm thì luôn cần TA chấm tay, bất kể
+// TA tự sinh (kịch bản 3, in giấy, có in_giay_at) hay chính em tự sinh qua "Học từ đầu" khi dạng chưa
+// có MCQ (kịch bản 2, có iPad nhưng không MCQ, KHÔNG có in_giay_at) — 1 điều kiện phủ cả 2 nguồn.
+export async function baiTestChoChamDuoi(hocSinhId: string, mon: string, maDang: string): Promise<{ bai_test_id: string } | null> {
+  const { data: bt } = await supabase.from('bai_test').select('id').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('loai', 'htd_test').limit(LIMIT)
   const ids = ((bt ?? []) as any[]).map((r) => r.id)
   if (!ids.length) return null
-  const { data: cau } = await supabase.from('bai_test_cau').select('bai_test_id').in('bai_test_id', ids).eq('ma_dang', maDang).limit(1)
-  const btId = (cau as any[])?.[0]?.bai_test_id
-  if (!btId) return null
-  const { data: lam } = await supabase.from('bai_lam').select('trang_thai').eq('bai_test_id', btId).eq('hoc_sinh_id', hocSinhId).limit(1)
-  if ((lam as any[])?.[0]?.trang_thai === 'da_nop') return null // đã nộp — không phải "đang chờ"
-  return { bai_test_id: btId }
+  const { data: cau } = await supabase.from('bai_test_cau').select('bai_test_id, loai_cau').in('bai_test_id', ids).eq('ma_dang', maDang).limit(LIMIT)
+  const nonMcq = ((cau ?? []) as any[]).filter((c) => c.loai_cau !== 'trac_nghiem')
+  if (!nonMcq.length) return null
+  // Nhiều bài cùng dạng (em bấm "Đọc lại" nhiều lần) → lấy bài MỚI NHẤT chưa nộp.
+  const btIds = [...new Set(nonMcq.map((c) => c.bai_test_id))]
+  const { data: lam } = await supabase.from('bai_lam').select('bai_test_id, trang_thai').in('bai_test_id', btIds).eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
+  const daNopIds = new Set(((lam ?? []) as any[]).filter((l) => l.trang_thai === 'da_nop').map((l) => l.bai_test_id))
+  const choDuyet = btIds.filter((id) => !daNopIds.has(id))
+  if (!choDuyet.length) return null
+  return { bai_test_id: choDuyet[choDuyet.length - 1] }
 }
 
 // Sinh 1 bài (luyện/test) cho 1 em × 1 dạng, KHÔNG giới hạn MCQ — kịch bản 2/3.

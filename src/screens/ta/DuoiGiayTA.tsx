@@ -7,7 +7,7 @@
 // rời từng câu. KHÔNG import màn ERP desktop (luật app TA, xem CaBoTroTA.tsx:5).
 import { useEffect, useState } from 'react'
 import {
-  baiTestDangChoDuoi, sinhBaiGiayDuoi, layCauBaiTest, layVerdictDaCham, chamTayCauDuoi, nopBaiGiayDuoi,
+  baiTestChoChamDuoi, sinhBaiGiayDuoi, layCauBaiTest, layVerdictDaCham, chamTayCauDuoi, nopBaiGiayDuoi,
   type CauGiayDuoi,
 } from '../../lib/botro_duoi'
 import { MathText } from '../kho/ui'
@@ -29,13 +29,15 @@ export default function DuoiGiayTA({ buoiId, hocSinhId, mon, maDang, hoTen, onBa
   const [checked, setChecked] = useState(false) // xong lượt soát ban đầu — tránh loé nút "sinh bài" trước khi biết có bài chờ hay không
   const [daNop, setDaNop] = useState(false)
 
-  // Mở màn: nếu có bài TEST GIẤY (in_giay_at) đang chờ nộp cho đúng (em × dạng) thì resume — tránh bấm
-  // lại "Bài kiểm tra" đẻ bài thứ 2 (câu khác, mất chấm dở bài đầu). Luyện không resume (mỗi lần = 1 lượt
-  // mới, đúng tinh thần Yếu "in nhiều phiếu được"). baiTestDangChoDuoi tự lọc bài GIẤY — không đụng bài
-  // ONLINE thật của em (bài học đau 21/09: panel từng resume nhầm 1 bài online đang dở của HS).
+  // Mở màn: nếu có bài TEST đang chờ TA chấm ĐCS cho đúng (em × dạng) thì resume — tránh bấm lại "Bài
+  // kiểm tra" đẻ bài thứ 2 (câu khác, mất chấm dở bài đầu). Luyện không resume (mỗi lần = 1 lượt mới,
+  // đúng tinh thần Yếu "in nhiều phiếu được"; luyện không tính mastery nên không cần TA nhập gì).
+  // baiTestChoChamDuoi lọc theo LOẠI CÂU (không phải in_giay_at, đổi 22/09) — phủ cả bài TA tự in
+  // (kịch bản 3, không thiết bị) lẫn bài chính em tự sinh qua "Học từ đầu" khi dạng chưa có MCQ (kịch
+  // bản 2, có iPad) — không đụng bài online trắc nghiệm thật của em (bài học đau 21/09).
   useEffect(() => {
     let live = true
-    baiTestDangChoDuoi(hocSinhId, mon, maDang).then((r) => {
+    baiTestChoChamDuoi(hocSinhId, mon, maDang).then((r) => {
       if (!live) return
       if (r) moLai(r.bai_test_id, 'htd_test')
       else setBusy(false)
@@ -80,10 +82,10 @@ export default function DuoiGiayTA({ buoiId, hocSinhId, mon, maDang, hoTen, onBa
           <p className="px-1 text-[13px] text-slate-400">Đang kiểm tra bài đang chờ…</p>
         ) : !baiTestId ? (
           <div className="rounded-2xl bg-white p-3 ring-1 ring-slate-200">
-            <p className="mb-3 text-[13px] text-slate-600">Dạng này chưa có trắc nghiệm (hoặc không có thiết bị) — sinh bài để in/hiện cho em làm, sau đó chấm.</p>
+            <p className="mb-3 text-[13px] text-slate-600">Chưa có bài nào đang chờ chấm cho dạng này. Nếu KHÔNG có thiết bị cho em, bấm sinh bài để in ra giấy. Nếu em có iPad, em tự vào "Học từ đầu" làm — quay lại đây khi em xong để nhập kết quả.</p>
             <div className="flex gap-2">
-              <button onClick={() => sinh('htd_luyen')} disabled={busy} className="flex-1 rounded-xl border border-slate-200 py-2.5 text-[14px] font-bold text-slate-700 disabled:opacity-50">{busy ? '…' : 'Phiếu luyện · 5 câu'}</button>
-              <button onClick={() => sinh('htd_test')} disabled={busy} className="flex-1 rounded-xl bg-indigo-600 py-2.5 text-[14px] font-bold text-white disabled:opacity-50">{busy ? '…' : 'Bài kiểm tra · 10 câu'}</button>
+              <button onClick={() => sinh('htd_luyen')} disabled={busy} className="flex-1 rounded-xl border border-slate-200 py-2.5 text-[14px] font-bold text-slate-700 disabled:opacity-50">{busy ? '…' : 'In phiếu luyện'}</button>
+              <button onClick={() => sinh('htd_test')} disabled={busy} className="flex-1 rounded-xl bg-indigo-600 py-2.5 text-[14px] font-bold text-white disabled:opacity-50">{busy ? '…' : 'In bài kiểm tra'}</button>
             </div>
           </div>
         ) : (

@@ -21,7 +21,7 @@ import {
 } from '../../lib/tuluyen'
 import { ChonLoaiTuLuyen, ChonDangChuDe } from './TuLuyenChuDe'
 import { laCap2HS, mayManHSCuaToi } from '../../lib/maymai_hs'
-import { htdCoMo, htdSinh } from '../../lib/hoctudau'
+import { htdCoMo, htdSinh, htdCauBaiTest, type CauHTD } from '../../lib/hoctudau'
 import { ChonChuDeHTD, ChonChuyenDeHTD, ChiTietDangHTD, LyThuyetHTD, dangDangHoc, type ChuDeNhom, type ChuyenDeNhom } from './HocTuDau'
 import DoiMatKhau from './DoiMatKhau'
 import CaBoTroHS, { RetestHS, BoTroBanner, LichBoTroHS } from './CaBoTroHS'
@@ -864,18 +864,27 @@ function LamHTD({ hocSinhId, mon, dang, loai, desktop, onVeChiTiet, onSangTest, 
   const [tongLuot, setTongLuot] = useState(0)
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
+  // Dạng KHÔNG có MCQ (mig 202609220900): sinh() vẫn ra bài (câu bất kỳ loại) thay vì chặn cứng —
+  // nhưng KHÔNG được đưa cho LamBai (LamBai tự chấm tra_loi_ngan/dung_sai = đúng nhánh lùi CEO 20/09
+  // đã cấm). `caus` chỉ có giá trị khi bài KHÔNG phải trắc nghiệm → render đọc-chỉ-xem thay LamBai.
+  const [caus, setCaus] = useState<CauHTD[] | null>(null)
   const daGoi = useRef(false)
 
   async function sinh() {
-    setBusy(true); setErr(null)
+    setBusy(true); setErr(null); setCaus(null)
     try {
       const kq = await htdSinh(mon, dang.ma_dang, loai)
+      const ds = await htdCauBaiTest(kq.baiTestId)
+      if (ds.length > 0 && ds.every((c) => c.loai_cau !== 'trac_nghiem')) setCaus(ds)
       setBaiTestId(kq.baiTestId); setTongLuot((t) => t + kq.them); setState('san_sang')
     } catch (e: any) { setErr(e?.message ?? String(e)); setState('loi') } finally { setBusy(false) }
   }
   useEffect(() => { if (daGoi.current) return; daGoi.current = true; sinh() }, []) // eslint-disable-line
 
   if (state === 'dang_tai') return <div className={`flex min-h-screen items-center justify-center text-sm text-ph-label-2 ${desktop ? 'bg-[#f4f7fb]' : 'bg-ios'}`}>Đang chuẩn bị bài…</div>
+  if (state === 'san_sang' && baiTestId && caus) return (
+    <XemDeKhongMCQ dang={dang} loai={loai} caus={caus} desktop={desktop} onVeChiTiet={onVeChiTiet} onSangTest={onSangTest} />
+  )
   if (state === 'loi' || !baiTestId) return (
     <div className={desktop
       ? 'flex min-h-screen flex-col items-center justify-center bg-[#f4f7fb] px-6 text-center'
@@ -923,6 +932,47 @@ function LamHTD({ hocSinhId, mon, dang, loai, desktop, onVeChiTiet, onSangTest, 
         </div>
       }
     />
+  )
+}
+
+// Đọc-chỉ-xem khi dạng CHƯA có câu trắc nghiệm (mig 202609220900) — KHÔNG có ô trả lời, KHÔNG tự
+// chấm (đúng luật CEO 20/09 "không nhánh lùi tự động chấm TLN"). Luyện: đọc xong tự quay lại/chuyển
+// Test, không tính gì (luyện không tính mastery — dạng vẫn vậy dù không MCQ). Test: đọc xong làm ra
+// giấy/nói miệng, "xong dạng" chỉ tự ghi khi TRỢ GIẢNG chấm ĐCS + nộp bên app TA (fn_botro_giay_nop
+// → trg_htd_test_nop) — bên HS KHÔNG có nút nộp vì không có gì để nộp online.
+function XemDeKhongMCQ({ dang, loai, caus, desktop, onVeChiTiet, onSangTest }: {
+  dang: { ma_dang: string; ten_dang: string }; loai: 'htd_luyen' | 'htd_test'; caus: CauHTD[]; desktop?: boolean
+  onVeChiTiet: () => void; onSangTest: () => void
+}) {
+  const laTest = loai === 'htd_test'
+  return (
+    <div className={desktop ? 'mx-auto min-h-screen max-w-2xl bg-[#f4f7fb] px-8 py-6 md:max-w-3xl' : 'mx-auto flex min-h-screen max-w-md flex-col bg-ios px-4 pb-8 pt-[calc(14px+env(safe-area-inset-top))] md:max-w-3xl'}>
+      <button onClick={onVeChiTiet} className={`mb-3 flex items-center gap-1 text-ph-label-2 ${desktop ? 'text-[14px]' : 'text-[13px]'}`}><span aria-hidden>←</span> Quay lại</button>
+      <h1 className={`font-extrabold text-ph-label ${desktop ? 'text-[20px]' : 'text-[17px]'}`}>{dang.ten_dang}</h1>
+      <div className={`mt-2 rounded-2xl px-3.5 py-3 text-[13px] leading-relaxed ${laTest ? 'bg-amber-50 text-amber-800' : 'bg-brand/10 text-brand'}`}>
+        {laTest
+          ? 'Dạng này chưa có câu trắc nghiệm — em làm các câu dưới đây ra giấy hoặc nói với thầy cô, trợ giảng sẽ chấm giúp em.'
+          : 'Dạng này chưa có câu trắc nghiệm — em đọc và luyện các câu dưới đây, không cần nộp gì cả.'}
+      </div>
+      <div className="mt-3 flex flex-col gap-2.5">
+        {caus.map((c, i) => (
+          <div key={c.id} className="rounded-2xl bg-white p-3.5 shadow-sm">
+            <p className="text-[12px] font-bold text-ph-label-2">Câu {i + 1}</p>
+            <div className="mt-1 text-[14px] leading-relaxed text-ph-label"><MathText>{c.noi_dung ?? ''}</MathText></div>
+          </div>
+        ))}
+      </div>
+      <div className={`mt-4 ${desktop ? 'max-w-sm' : ''}`}>
+        {laTest ? (
+          <button onClick={onVeChiTiet} className={`w-full rounded-xl bg-brand font-medium text-white ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>Đã đọc xong — quay lại</button>
+        ) : (
+          <>
+            <button onClick={onSangTest} className={`w-full rounded-xl bg-brand font-medium text-white ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>📝 Chuyển sang làm bài Test</button>
+            <button onClick={onVeChiTiet} className={`mt-2 w-full rounded-xl bg-ph-label-2/10 font-medium text-ph-label-2 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>Quay lại</button>
+          </>
+        )}
+      </div>
+    </div>
   )
 }
 

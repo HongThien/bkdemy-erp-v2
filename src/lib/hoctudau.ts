@@ -40,3 +40,15 @@ export async function htdSinh(mon: string, maDang: string, loai: 'htd_luyen' | '
   if (error) throw error
   return { baiTestId: data.bai_test_id, them: data.them, tong: data.tong }
 }
+
+// Dạng KHÔNG có MCQ (mig 202609220900: htdSinh rơi sang câu BẤT KỲ LOẠI thay vì chặn cứng) — trả
+// đúng loai_cau từng câu để client biết render TƯƠNG TÁC (trắc nghiệm, máy tự chấm) hay CHỈ ĐỌC
+// (mọi loại khác — không auto-chấm, đúng luật CEO 20/09 "không nhánh lùi tự động chấm TLN"; TA chấm
+// tay qua fn_botro_cham_tay). 1 bài chỉ có 1 trong 2 loại (RPC sinh không trộn) — client chỉ cần
+// xét câu đầu tiên, nhưng trả cả mảng để hiển thị nội dung luôn (khỏi gọi thêm 1 lần).
+export type CauHTD = { id: string; thu_tu: number; noi_dung: string | null; lua_chon: string[] | null; loai_cau: string }
+export async function htdCauBaiTest(baiTestId: string): Promise<CauHTD[]> {
+  const { data, error } = await supabase.from('bai_test_cau').select('id, thu_tu, noi_dung, lua_chon, loai_cau').eq('bai_test_id', baiTestId).order('thu_tu').limit(200)
+  if (error) throw error
+  return (data ?? []) as CauHTD[]
+}

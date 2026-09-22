@@ -613,6 +613,7 @@ export function BuoiDuoiDetail({ buoiId, readOnly = false, onClose }: { buoiId: 
   // Kịch bản 1/2/3 (Thùy 21/09): "buổi có thiết bị" là biến DUY NHẤT TA tự khai/buổi (null = chưa chọn),
   // ghép với "dạng có MCQ" (derive, trong dangByCase) ra kịch bản cho từng dòng dạng — xem kichBanDuoi().
   const [coThietBi, setCoThietBiState] = useState<boolean | null>(null)
+  const [daTai, setDaTai] = useState(false) // chặn popup loé trước khi biết coThietBi=null là "chưa tải" hay "chưa chọn"
   const [giayPanel, setGiayPanel] = useState<{ hocSinhId: string; mon: string; maDang: string } | null>(null)
   const lopDuoiCua = (hsId: string) => hsInfo[hsId]?.lop ?? ''
   const monDuoiCua = (hsId: string) => hsInfo[hsId]?.mon ?? ''
@@ -629,6 +630,7 @@ export function BuoiDuoiDetail({ buoiId, readOnly = false, onClose }: { buoiId: 
     const m: Record<string, string> = {}
     for (const [hsId, v] of Object.entries(dg)) m[hsId] = (v as any).nhan_xet ?? ''
     setNx(m)
+    setDaTai(true)
   }
   useEffect(() => { reload(); listMucHocDuoi().then(setMucDuoi2).catch(() => {}) }, [buoiId]) // eslint-disable-line
 
@@ -755,6 +757,21 @@ export function BuoiDuoiDetail({ buoiId, readOnly = false, onClose }: { buoiId: 
         </div>
       </div>
       {sua && <SuaBuoiModal buoi={{ id: buoiId, ...meta }} onClose={() => setSua(false)} onSaved={() => { setSua(false); reload() }} />}
+      {/* Thùy 21-22/09 (sửa lại spec): popup BẮT BUỘC trả lời đúng 1 lần lúc mở buổi — không phải thanh
+          gạt nằm sẵn nữa (thanh trạng thái phía trên vẫn còn để XEM/ĐỔI lại sau, chỉ không phải nơi
+          hỏi lần đầu). Chỉ hiện khi ĐÃ TẢI xong (daTai) — null lúc chưa tải ≠ null lúc thật sự chưa chọn. */}
+      {daTai && !readOnly && coThietBi == null && (
+        <div className="fixed inset-0 z-[90] flex items-center justify-center bg-slate-900/50 p-4">
+          <div className="w-full max-w-[420px] rounded-2xl bg-white p-6 text-center shadow-2xl">
+            <div className="text-[17px] font-semibold text-slate-800">Buổi này có iPad cho em dùng không?</div>
+            <p className="mt-1.5 text-[13px] text-slate-500">Quyết định dạng nào tự động, dạng nào TA cần chấm tay — chọn 1 lần, đổi lại được sau ở thanh phía trên.</p>
+            <div className="mt-5 flex gap-3">
+              <button onClick={() => onDoiThietBi(true)} className="flex-1 rounded-xl bg-indigo-600 py-3 text-[14px] font-semibold text-white hover:bg-indigo-500">📱 Có iPad</button>
+              <button onClick={() => onDoiThietBi(false)} className="flex-1 rounded-xl border border-slate-200 py-3 text-[14px] font-semibold text-slate-700 hover:bg-slate-50">✏️ Không có</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
