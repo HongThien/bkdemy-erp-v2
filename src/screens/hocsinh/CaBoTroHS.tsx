@@ -10,11 +10,31 @@ import type { BaiTestCuaHS } from '../../lib/testonline'
 
 type LamBaiProps = { baiTestId: string; hocSinhId: string; onXong: () => void; doneCaption?: string; doneExtra?: ReactNode; desktop?: boolean }
 type LamETProps = { test: BaiTestCuaHS; hocSinhId: string; onXong: () => void }
-type Props = { hocSinhId: string; desktop?: boolean; onXong: () => void; LamBai: ComponentType<LamBaiProps>; LamET: ComponentType<LamETProps> }
+type Props = { hocSinhId: string; desktop?: boolean; gioiTinh: 'nam' | 'nu' | null; onXong: () => void; LamBai: ComponentType<LamBaiProps>; LamET: ComponentType<LamETProps> }
 
 const POLL_MS = 10000
 const SHADOW = 'shadow-[0_8px_24px_rgba(28,38,61,0.07)]'
 const pct = (d: number, n: number) => (n > 0 ? Math.round((d / n) * 100) : null)
+
+// BACKDROP (Thùy 22/09: "chỉ màn làm bài mới không cần, còn lại đều cần") — cùng kit Home/Bài tập
+// trên lớp. Màn "đang luyện"/"đang test" (LamBai/LamET) KHÔNG bọc — đó mới là "màn bài tập".
+const A = '/bk-ui/hs'
+const THEME_BOTRO = {
+  nam: { bg: `${A}/bg_home_male.jpg`, decor: `${A}/decor_books.png`, quote: 'Cố gắng hôm nay\nđể tốt hơn ngày mai!', quoteColor: '#4A5BC4' },
+  nu: { bg: `${A}/bg_home_female.jpg`, decor: `${A}/decor_books_female.png`, quote: 'Cố lên\nbạn nhé!', quoteColor: '#E84A8F' },
+}
+function Backdrop({ gioiTinh }: { gioiTinh: 'nam' | 'nu' | null }) {
+  const t = THEME_BOTRO[gioiTinh === 'nu' ? 'nu' : 'nam']
+  return (
+    <>
+      <img src={t.bg} alt="" className="pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover md:max-w-[820px] lg:max-w-[1180px]" />
+      <div className="pointer-events-none fixed inset-x-0 bottom-0 mx-auto flex w-full max-w-[430px] flex-col items-end md:max-w-[820px] lg:max-w-[1180px]">
+        <div className="font-hand mb-1 mr-[14%] -rotate-[6deg] whitespace-pre-line text-right text-[20px] leading-[1.15]" style={{ color: t.quoteColor }}>{t.quote}</div>
+        <img src={t.decor} alt="" className="block w-[46%]" style={{ marginRight: '-2%', marginBottom: '-2%' }} />
+      </div>
+    </>
+  )
+}
 
 type View =
   | { kind: 'dangs' }
@@ -22,7 +42,7 @@ type View =
   | { kind: 'luyen'; maDang: string; maCum: string | null; baiTestId: string }
   | { kind: 'test'; test: BaiTestCuaHS }
 
-export default function CaBoTroHS({ hocSinhId, desktop, onXong, LamBai, LamET }: Props) {
+export default function CaBoTroHS({ hocSinhId, desktop, gioiTinh, onXong, LamBai, LamET }: Props) {
   const [ca, setCa] = useState<CaCuaToi | null | undefined>(undefined) // undefined = đang tải
   const [view, setView] = useState<View>({ kind: 'dangs' })
   const [busy, setBusy] = useState(false)
@@ -56,8 +76,9 @@ export default function CaBoTroHS({ hocSinhId, desktop, onXong, LamBai, LamET }:
   }
 
   const wrap = (children: ReactNode) => (
-    <div className={desktop ? 'min-h-screen bg-[#f4f7fb] px-8 py-6' : 'mx-auto min-h-screen max-w-md bg-ios px-4 pb-10 pt-[calc(14px+env(safe-area-inset-top))] md:max-w-3xl lg:max-w-4xl'}>
-      <div className={desktop ? 'mx-auto max-w-3xl lg:max-w-4xl' : ''}>{children}</div>
+    <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] md:max-w-[820px] lg:max-w-[1180px]" style={{ background: '#eef4ff' }}>
+      <Backdrop gioiTinh={gioiTinh} />
+      <div className="relative px-4 pb-[46vh] pt-[calc(10px+env(safe-area-inset-top))]">{children}</div>
     </div>
   )
   const Head = ({ title, sub, onBack }: { title: string; sub?: string; onBack: () => void }) => (
@@ -239,7 +260,7 @@ export function BoTroBanner({ lich, coCa, soRetest, desktop, onLich, onCa, onRet
 }
 
 // ── BÀI KIỂM TRA LẠI (retest tầng 2) — làm ngay sau ET buổi thường, TA đưa iPad ──
-export function RetestHS({ hocSinhId, onXong, LamET }: { hocSinhId: string; onXong: () => void; LamET: ComponentType<LamETProps> }) {
+export function RetestHS({ hocSinhId, gioiTinh, onXong, LamET }: { hocSinhId: string; gioiTinh: 'nam' | 'nu' | null; onXong: () => void; LamET: ComponentType<LamETProps> }) {
   const [ds, setDs] = useState<RetestCuaToi[] | null>(null)
   const [test, setTest] = useState<BaiTestCuaHS | null>(null)
   const [err, setErr] = useState<string | null>(null)
@@ -247,7 +268,9 @@ export function RetestHS({ hocSinhId, onXong, LamET }: { hocSinhId: string; onXo
   useEffect(() => { tai() }, [])
   if (test) return <LamET test={test} hocSinhId={hocSinhId} onXong={() => { setTest(null); tai() }} />
   return (
-    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10 pt-[calc(14px+env(safe-area-inset-top))] md:max-w-3xl lg:max-w-4xl">
+    <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] md:max-w-[820px] lg:max-w-[1180px]" style={{ background: '#eef4ff' }}>
+      <Backdrop gioiTinh={gioiTinh} />
+      <div className="relative px-4 pb-[46vh] pt-[calc(10px+env(safe-area-inset-top))]">
       <div className="mb-4 flex items-center gap-3">
         <button onClick={onXong} className={`flex h-[42px] w-[42px] items-center justify-center rounded-[14px] bg-white text-[18px] ${SHADOW}`}>‹</button>
         <p className="text-[19px] font-bold tracking-tight text-ph-label">Bài kiểm tra lại</p>
@@ -266,6 +289,7 @@ export function RetestHS({ hocSinhId, onXong, LamET }: { hocSinhId: string; onXo
             <p className="mt-2 text-[13px] font-medium text-brand">{r.da_nop ? 'Xem lại' : 'Bắt đầu'} →</p>
           </button>
         ))}
+      </div>
     </div>
   )
 }
@@ -273,10 +297,12 @@ export function RetestHS({ hocSinhId, onXong, LamET }: { hocSinhId: string; onXo
 // ── LỊCH BỔ TRỢ (Thùy 09-09) — 3 loại yếu / bù / đuổi đã xếp cho em, sắp tới + hôm nay. Ca yếu hôm nay đã
 // điểm danh ⇒ nút "Vào ca" (CaBoTroHS). Bù/đuổi chỉ để em + PH biết lịch (làm bài trong ca là việc của TA/GV).
 const LOAI_MAU: Record<LichBoTro['loai'], string> = { bo_tro_yeu: 'bg-ph-orange/10 text-ph-orange', bu: 'bg-brand/10 text-brand', bo_tro_duoi: 'bg-ph-purple/10 text-ph-purple' }
-export function LichBoTroHS({ lich, coCa, onXong, onVaoCa }: { lich: LichBoTro[]; coCa: boolean; onXong: () => void; onVaoCa: (c: LichBoTro) => void }) {
+export function LichBoTroHS({ lich, coCa, gioiTinh, onXong, onVaoCa }: { lich: LichBoTro[]; coCa: boolean; gioiTinh: 'nam' | 'nu' | null; onXong: () => void; onVaoCa: (c: LichBoTro) => void }) {
   return (
-    <div className="mx-auto min-h-screen max-w-[640px] bg-ios px-4 pb-8 lg:max-w-[1000px]">
-      <div className="sticky top-0 z-10 -mx-4 flex items-center gap-3 bg-ios px-4 pb-3 pt-[calc(12px+env(safe-area-inset-top))]">
+    <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] md:max-w-[820px] lg:max-w-[1000px]" style={{ background: '#eef4ff' }}>
+      <Backdrop gioiTinh={gioiTinh} />
+      <div className="relative px-4 pb-[46vh]">
+      <div className="sticky top-0 z-10 -mx-4 flex items-center gap-3 bg-[#eef4ff]/90 px-4 pb-3 pt-[calc(12px+env(safe-area-inset-top))] backdrop-blur-sm">
         <button onClick={onXong} className={`flex h-10 w-10 items-center justify-center rounded-[13px] bg-white text-[18px] ${SHADOW}`}>‹</button>
         <div className="min-w-0">
           <div className="text-[17px] font-bold text-ph-label">Bổ trợ</div>
@@ -312,6 +338,7 @@ export function LichBoTroHS({ lich, coCa, onXong, onVaoCa }: { lich: LichBoTro[]
             )}
           </div>
         ))}
+      </div>
       </div>
     </div>
   )

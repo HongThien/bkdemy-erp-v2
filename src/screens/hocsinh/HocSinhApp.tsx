@@ -305,21 +305,21 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 
   if (doiMK) return <DoiMatKhau maHS={maHS} batBuoc={false} onXong={() => setDoiMK(false)} />
 
-  if (direct === 'tu_luyen_chon') return <ChonLoaiTuLuyen desktop={!!cap1}
+  if (direct === 'tu_luyen_chon') return <ChonLoaiTuLuyen gioiTinh={gioiTinh}
     onTongHop={() => { setChuDeDang(null); setDirect('tu_luyen') }}
     onChuDe={() => setDirect('tu_luyen_chu_de_ds')}
     onBack={() => setDirect(null)} />
-  if (direct === 'tu_luyen_chu_de_ds') return <ChonDangChuDe desktop={!!cap1}
+  if (direct === 'tu_luyen_chu_de_ds') return <ChonDangChuDe gioiTinh={gioiTinh}
     onPick={(d) => { setChuDeDang(d); setDirect('tu_luyen') }}
     onBack={() => setDirect('tu_luyen_chon')} />
   if (direct === 'tu_luyen') return <LamTuLuyen hocSinhId={hocSinhId} chuDe={chuDeDang}
     onXong={() => { setDirect(null); setChuDeDang(null) }}
     onDoiDang={() => setDirect('tu_luyen_chu_de_ds')}
     desktop={!!cap1} />
-  if (direct === 'htd_chu_de' && htdMon) return <ChonChuDeHTD mon={htdMon} desktop={!!cap1}
+  if (direct === 'htd_chu_de' && htdMon) return <ChonChuDeHTD mon={htdMon} gioiTinh={gioiTinh}
     onPick={(cd) => { setDuoiLoTrinhMon(null); setHtdChuDe(cd); setDirect('htd_chuyen_de') }}
     onBack={() => setDirect(null)} />
-  if (direct === 'htd_chuyen_de' && htdChuDe) return <ChonChuyenDeHTD chuDe={htdChuDe} desktop={!!cap1}
+  if (direct === 'htd_chuyen_de' && htdChuDe) return <ChonChuyenDeHTD chuDe={htdChuDe} gioiTinh={gioiTinh}
     onPick={(cde) => {
       setHtdChuyenDe(cde)
       const d = dangDangHoc(cde)
@@ -327,12 +327,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
       setDirect('htd_dang')
     }}
     onBack={() => setDirect('htd_chu_de')} />
-  if (direct === 'htd_dang' && htdDang) return <ChiTietDangHTD dang={htdDang} dangCungChuyenDe={htdChuyenDe?.dangs ?? []} desktop={!!cap1}
+  if (direct === 'htd_dang' && htdDang) return <ChiTietDangHTD dang={htdDang} dangCungChuyenDe={htdChuyenDe?.dangs ?? []} gioiTinh={gioiTinh}
     onLyThuyet={() => setDirect('htd_ly_thuyet')}
     onLuyenTap={() => setDirect('htd_luyen')}
     onTest={() => setDirect('htd_test')}
     onBack={() => setDirect(duoiLoTrinhMon ? 'duoi_lo_trinh' : 'htd_chuyen_de')} />
-  if (direct === 'htd_ly_thuyet' && htdMon && htdDang) return <LyThuyetHTD mon={htdMon} dang={htdDang} desktop={!!cap1}
+  if (direct === 'htd_ly_thuyet' && htdMon && htdDang) return <LyThuyetHTD mon={htdMon} dang={htdDang} gioiTinh={gioiTinh}
     onBack={() => setDirect('htd_dang')} />
   if ((direct === 'htd_luyen' || direct === 'htd_test') && htdMon && htdDang) return <LamHTD
     key={direct} hocSinhId={hocSinhId} mon={htdMon} dang={htdDang} loai={direct === 'htd_luyen' ? 'htd_luyen' : 'htd_test'}
@@ -342,12 +342,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onXongDang={() => setDirect(duoiLoTrinhMon ? 'duoi_lo_trinh' : 'htd_chu_de')} />
   if (direct === 'thong_tin') return <ThongTinHocTap hocSinhId={hocSinhId} gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
   if (direct === 'xep_hang') return <BangXepHang onXong={() => setDirect(null)} />
-  if (direct === 'bo_tro') return <CaBoTroHS hocSinhId={hocSinhId} desktop={!!cap1} onXong={() => setDirect(null)} LamBai={LamBai} LamET={LamET} />
-  if (direct === 'duoi_lo_trinh' && duoiLoTrinhMon) return <LoTrinhDuoiHS mon={duoiLoTrinhMon} desktop={!!cap1}
+  if (direct === 'bo_tro') return <CaBoTroHS hocSinhId={hocSinhId} desktop={!!cap1} gioiTinh={gioiTinh} onXong={() => setDirect(null)} LamBai={LamBai} LamET={LamET} />
+  if (direct === 'duoi_lo_trinh' && duoiLoTrinhMon) return <LoTrinhDuoiHS mon={duoiLoTrinhMon} gioiTinh={gioiTinh}
     onPickDang={(d, cde) => { setHtdMon(duoiLoTrinhMon); setHtdChuyenDe(cde); setHtdDang({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, xong: d.xong }); setDirect('htd_dang') }}
     onBack={() => setDirect(null)} />
-  if (direct === 'retest') return <RetestHS hocSinhId={hocSinhId} onXong={() => setDirect(null)} LamET={LamET} />
-  if (direct === 'lich_bo_tro') return <LichBoTroHS lich={boTro.lich} coCa={boTro.coCa} onXong={() => setDirect(null)} onVaoCa={onVaoCaBoTro} />
+  if (direct === 'retest') return <RetestHS hocSinhId={hocSinhId} gioiTinh={gioiTinh} onXong={() => setDirect(null)} LamET={LamET} />
+  if (direct === 'lich_bo_tro') return <LichBoTroHS lich={boTro.lich} coCa={boTro.coCa} gioiTinh={gioiTinh} onXong={() => setDirect(null)} onVaoCa={onVaoCaBoTro} />
   if (direct === 'hop_thu') return <HopThuHS onXong={() => { setDirect(null); taiChuaDoc() }} />
   if (direct === 'may_man') return <MayManHS gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
   if (direct === 'thanh_tuu') return <ThanhTuuHS gioiTinh={gioiTinh} onXong={() => setDirect(null)} />

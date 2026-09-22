@@ -177,17 +177,17 @@ export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, anhUrl, onAnhCha
             const subColor = c.subMau === 'ton' ? tone.c : c.subMau === 'do' ? '#e64040' : c.subMau === 'xanh' ? '#20A886' : SEC
             return (
               <button key={c.id} disabled={c.disabled} onClick={c.onClick}
-                className={`relative flex flex-col justify-between overflow-hidden rounded-[22px] p-3 text-left transition ${c.disabled ? 'opacity-75 saturate-50' : 'active:scale-[0.98]'}`}
+                className={`relative flex flex-col overflow-hidden rounded-[22px] p-3 text-left transition lg:p-5 ${c.disabled ? 'opacity-75 saturate-50' : 'active:scale-[0.98]'}`}
                 style={{ background: tone.bg, boxShadow: c.disabled ? 'none' : SHADOW, aspectRatio: '417 / 280' }}>
-                <span className="flex w-[31%] shrink-0 items-center justify-center rounded-[15px]" style={{ background: tone.ill, aspectRatio: '1 / 1' }}>
+                <span className="flex w-[31%] shrink-0 items-center justify-center rounded-[15px] lg:w-[26%]" style={{ background: tone.ill, aspectRatio: '1 / 1' }}>
                   {c.emoji
-                    ? <span className="text-[34px] leading-none" aria-hidden>{c.emoji}</span>
+                    ? <span className="text-[34px] leading-none lg:text-[44px]" aria-hidden>{c.emoji}</span>
                     : <img src={`${A}/ill_${c.ill}.png`} alt="" className="h-[76%] w-[76%] object-contain" />}
                 </span>
-                <span className={`font-hand pointer-events-none absolute right-3.5 max-w-[84px] rotate-[-7deg] text-right text-[10.5px] leading-[1.1] ${c.badge ? 'top-9' : 'top-3.5'}`} style={{ color: tone.c, opacity: 0.9 }}>{c.doodle}</span>
-                <span className="pr-8">
-                  <span className="block font-extrabold leading-tight" style={{ color: c.disabled ? '#59698f' : NAVY, fontSize: 'clamp(13px, 3.5vw, 15px)' }}>{c.ten}</span>
-                  <span className="mt-0.5 block leading-snug" style={{ color: subColor, fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500, fontSize: 'clamp(10px, 2.7vw, 11.5px)' }}>{c.sub}</span>
+                <span className={`font-hand pointer-events-none absolute right-3.5 max-w-[84px] rotate-[-7deg] text-right text-[10.5px] leading-[1.1] lg:text-[13px] ${c.badge ? 'top-9' : 'top-3.5'}`} style={{ color: tone.c, opacity: 0.9 }}>{c.doodle}</span>
+                <span className="mt-3 pr-8 lg:mt-5">
+                  <span className="block text-[13px] font-extrabold leading-tight md:text-[15px] lg:text-[20px]" style={{ color: c.disabled ? '#59698f' : NAVY }}>{c.ten}</span>
+                  <span className="mt-0.5 block text-[10.5px] leading-snug md:text-[11.5px] lg:text-[14px]" style={{ color: subColor, fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500 }}>{c.sub}</span>
                 </span>
                 <span className="absolute bottom-3 right-3 flex h-7 w-7 items-center justify-center rounded-full" style={{ background: `${tone.c}29` }}><Chevron color={tone.c} /></span>
                 {!!c.badge && c.badge > 0 && (
