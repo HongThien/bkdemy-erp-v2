@@ -854,9 +854,9 @@ export type DemChuaGiai = { khoi: string; so_cau: number; so_cho_giai: number }
 // MÔN (nhãn nhan_su_mon, khớp MON_LIST) → mỗi môn gồm các NHÁNH kho của nó. Toán = Đại + Hình giải tích + Hình;
 // KHTN = 1 cây. Registry 1 chỗ, mọi màn gộp-nhánh dùng cái này, KHÔNG tự liệt kê ['toan','khtn','hgt'] rồi trộn môn.
 export type KhoNhanh = KhoMon | 'hinh'
-export const NHANH_LABEL: Record<KhoNhanh, string> = { toan: 'Đại', khtn: 'KHTN', hgt: 'Hình giải tích', hinh: 'Hình' }
+export const NHANH_LABEL: Record<KhoNhanh, string> = { toan: 'Đại', khtn: 'KHTN', hgt: 'Hình giải tích', hinh: 'Hình', hinh_hoc: 'Hình học' }
 export const KHO_MON: { mon: string; nhanh: KhoNhanh[] }[] = [
-  { mon: 'Toán', nhanh: ['toan', 'hgt', 'hinh'] },
+  { mon: 'Toán', nhanh: ['toan', 'hgt', 'hinh', 'hinh_hoc'] },
   { mon: 'KHTN', nhanh: ['khtn'] },
 ]
 export const nhanhCuaMon = (mon: string): KhoNhanh[] => KHO_MON.find((m) => m.mon === mon)?.nhanh ?? []
@@ -1272,12 +1272,16 @@ export function parseIngestJson(text: string): IngestCau[] {
 // LUỒNG NHẬP KHO (ingest-first, scope = CHỦ ĐỀ): 1 file → bóc MỌI loại → gán dạng → verify → đẩy kho.
 // Bóc/crop hình chạy ở SCREEN (DOM); ở đây = prompt + parse + phân loại grounded + verify + AI-giải + save + log.
 // ════════════════════════════════════════════════════════════════
-export type KhoMon = 'toan' | 'khtn' | 'hgt'
+export type KhoMon = 'toan' | 'khtn' | 'hgt' | 'hinh_hoc'
 export function khoTbls(mon: KhoMon): { cauTbl: string; banDoTbl: string; lyThuyetTbl: string; yeuCauGiaiTbl: string } {
   return mon === 'khtn'
     ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', lyThuyetTbl: 'khtn_dang_ly_thuyet', yeuCauGiaiTbl: 'khtn_cau_hoi_yeu_cau_giai' }
     : mon === 'hgt'
     ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', lyThuyetTbl: 'hgt_dang_ly_thuyet', yeuCauGiaiTbl: 'hgt_cau_hoi_yeu_cau_giai' }
+    // 'hinh_hoc' dùng bảng thật hinh_hoc_bai (không phải "_ban_do") — fn_kho_tbl() và các RPC hàng-duyệt
+    // build tên bảng theo mẫu "<t>_ban_do", nên có VIEW hinh_hoc_ban_do chiếu từ hinh_hoc_bai để khớp mẫu.
+    : mon === 'hinh_hoc'
+    ? { cauTbl: 'hinh_hoc_cau_hoi', banDoTbl: 'hinh_hoc_ban_do', lyThuyetTbl: 'hinh_hoc_bai_ly_thuyet', yeuCauGiaiTbl: 'hinh_hoc_cau_hoi_yeu_cau_giai' }
     : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', lyThuyetTbl: 'dai_dang_ly_thuyet', yeuCauGiaiTbl: 'dai_cau_hoi_yeu_cau_giai' }
 }
 

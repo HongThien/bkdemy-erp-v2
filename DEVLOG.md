@@ -14522,3 +14522,58 @@ Khác với "dạng yếu mới do máy đo" (chỉ đề xuất — 20260922134
   backfill báo động bấm SAU khi case mở: **15 dạng · 9 case** · `fn_btyeu_case_xep_lich` trả thêm `so_dang_bao_dong`.
 - Test trong transaction ROLLBACK: insert canh_bao_yeu giả cho HS đang có case ⇒ dạng vào case với nguon='bao_dong'; rollback sạch.
 - Card Xếp lịch: nhãn đỏ "🚨 N dạng báo động (GV/TA thêm)". `spec-bo-tro.md` §1.1 cập nhật. tsc sạch.
+
+## 22/09 — Nhập kho Hình 9: 'Các bài toán liên quan đến tỉ số lượng giác' (HH00095) từ file .docx
+
+- File nguồn: L9/Hình/Hình-9-GIUA-KI-I.docx (Thùy up thêm vào nhap-kho). Dùng Word Equation (OMML),
+  KHÔNG phải MathType/WMF — Thùy xác nhận trước khi đọc.
+- Môi trường KHÔNG có pandoc/soffice (cả Bash lẫn PowerShell) → skill docx đề xuất pandoc không dùng
+  được. Fallback: unzip .docx thủ công, tự viết converter OMML→LaTeX (dùng @xmldom/xmldom có sẵn
+  trong node_modules) — xử m:f (dfrac), m:sSup/sSub, m:rad (sqrt), m:d (delimiter), m:acc (widehat).
+  711 khối oMath trong file, convert sạch, verify $ cân bằng 0 lỗi.
+- BUG tự phát hiện khi rà lại: câu dẫn 'Cho tam giác ABC vuông tại A...' nằm CÙNG DÒNG với 'Câu N.'
+  (không xuống dòng) nên bị gom vào header_extra rồi RỚT MẤT khỏi noi_dung — gần như toàn bộ 32 câu
+  bị thiếu giả thiết nếu không bắt kịp. Fix: strip '(x điểm)' ở đầu header rồi prepend phần còn lại
+  vào nội dung câu trước khi group theo a)/b)/c). Cũng bắt thêm case đánh số '1. 2. 3.' (dấu chấm,
+  không phải ')') ở Câu 36 — ban đầu bị nuốt vào ý c) vì regex marker chỉ bắt 'x)' không bắt 'x.'.
+- Áp đúng luật '$1.6/Hình 100% không tách ý' (chốt 21/09): 32 'Câu N' (Câu 6→37, có N=1..37 skip
+  N=1-5 vì không có trong file) = 32 câu, mỗi câu giữ nguyên mọi ý a/b/c/d hoặc 1/2/3 làm MỘT
+  noi_dung. Không có lời giải trong file (đề thuần) → loi_giai/dap_an để NULL, chưa giải (Luồng B
+  nhưng KHÔNG tự giải ngay — việc giao là 'nhập kho', giải là việc khác, để dành hàng đợi/GV).
+- PHÁT HIỆN TRÙNG: 4/32 câu (Câu 6, 7, 11, 12 mới) trùng nội dung với 4 câu CŨ đã có sẵn trong kho
+  dưới dang_chinh=HH00084 'Mô hình tam giác vuông' (HHC000689, 685, 686, 687) — nhưng bản CŨ bị THIẾU
+  câu dẫn/giả thiết (cùng loại bug vừa fix ở trên, chứng tỏ lượt nhập trước cũng dính lỗi này). Quyết
+  định: KHÔNG tự xoá/sửa HH00084 (theo Luật xoá — chưa hỏi Thùy), chỉ insert đủ 32 câu vào HH00095
+  theo đúng yêu cầu, ghi chú trùng vào nhap_kho_log.ghi_chu, báo Thùy quyết định xử lý HH00084 sau
+  (xoá 4 câu cũ trùng+lỗi, hay sửa lại câu dẫn, hay giữ song song 2 dạng).
+- Kết quả: insert 32 câu HH00095001..032, $ cân bằng verify từ DB (không tin script), da_duyet=false,
+  loi_giai=NULL. nhap_kho_log ghi sha256, move file → DaXuLy/2026-09-22/.
+
+## 22/09 — Xoá 4 câu trùng HH00084 + nối `hinh_hoc` vào màn "Duyệt kho" (đổi tên từ "Duyệt lời giải AI")
+
+- Thùy xác nhận xoá 4 câu cũ trùng (HHC000685/686/687/689, dang HH00084) đã phát hiện lúc nãy — soft-delete
+  (xoa_at=now(), không hard-delete, theo Luật xoá + convention kho rác). Verify trước: 0 tham chiếu
+  (parent_ma_cau, hàng đợi yêu_cau_giai), cả 4 đều da_duyet=false — an toàn.
+- Thùy: "chưa có màn duyệt các câu hình ở Duyệt lời giải AI" + "đổi tên nó thành Duyệt kho". Research
+  (Explore agent) xác nhận: `hinh_hoc_cau_hoi` (kho câu hình học phẳng, dang_chinh→hinh_hoc_bai) hoàn
+  toàn vắng mặt khỏi registry KHO_MON/KhoMon/khoTbls (src/lib/kho/api.ts) — màn Duyệt lời giải AI
+  chỉ có toan/khtn/hgt + hệ Hình DAG riêng (hinh_mo_hinh, KHÔNG phải hinh_hoc_cau_hoi).
+- Tra kỹ trước khi sửa: fn_kho_tbl() (DB) ĐÃ CÓ case 'hinh_hoc'→'hinh_hoc' từ trước (ai đó chuẩn bị sẵn,
+  chưa nối client) — và view hinh_hoc_ban_do (chiếu từ hinh_hoc_bai) + hinh_hoc_cum_bai.ten +
+  hinh_hoc_cau_hoi_yeu_cau_giai đã tồn tại sẵn, khớp đúng mẫu `<t>_ban_do`/`<t>_cum_bai`/`<t>_cau_hoi_yeu_cau_giai`
+  mà các hàm hàng-duyệt hợp nhất cần. hinh_hoc_cau_hoi cũng đã có ĐỦ cột compat (kiem_may, giai_method,
+  duyet_nguon, kho_chuan...) khớp dai_cau_hoi. tailieu.ts's khoCuaMon/NHANH_CUA_MON (dùng cho
+  "Làm tài liệu") CŨNG đã có sẵn nhánh 'hinh_hoc' đầy đủ — chỉ riêng api.ts (dùng cho Duyệt kho) thiếu.
+  ⇒ Việc còn lại chỉ là NỐI registry, không cần migration DB mới.
+- Sửa: KhoMon type + khoTbls() thêm nhánh 'hinh_hoc' (api.ts) · KHO_MON/NHANH_LABEL thêm
+  'hinh_hoc'→'Hình học' vào nhánh Toán · DuyetCauTab.tsx sửa `nhanh` prop truyền cho DangPickerOne
+  (trước đó câu hinh_hoc mở picker đổi dạng sẽ lạc sang cây Đại — không ai gọi tới nên chưa lộ).
+  Rename fixtures.ts (nhãn sidebar) + tiêu đề màn DuyetLoiGiaiScreen.tsx: "Duyệt lời giải AI" →
+  "Duyệt kho".
+- Verify: `npx tsc --noEmit` sạch (chỉ còn 1 lỗi pre-existing không liên quan, pdfRender.ts). Test qua
+  Browser pane (đăng nhập Admin dev-login, npm run dev): chip "Hình học 32" hiện đúng ở cả 2 tab
+  ("Chưa có lời giải" khối 9 và "Câu mới chờ duyệt"), nhóm đúng theo dạng "HH00095 · 32 bài", LaTeX
+  render sạch. Test write-path (fn_kho_duyet_cau + fn_kho_tu_choi_cau cho 'hinh_hoc') qua BEGIN…ROLLBACK
+  trực tiếp DB (không qua UI vì phải chọc qua 56 câu hinh_hoc tồn đọng khác mới tới HH00095 trong batch
+  20 — không có quyền auto-duyệt/từ-chối hàng loạt data người khác chỉ để test) — cả 2 hàm chạy sạch,
+  rollback xác nhận không đụng dữ liệu thật.

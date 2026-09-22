@@ -133,7 +133,7 @@ export default function DuyetLoiGiaiScreen() {
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-6 py-3.5">
-        <span className="text-[15px] font-semibold text-slate-800">Duyệt câu &amp; lời giải</span>
+        <span className="text-[15px] font-semibold text-slate-800">Duyệt kho</span>
         {/* Bộ chọn MÔN — chỉ môn được phân (admin/ops thấy tất). 1 môn vẫn hiện để rõ ngữ cảnh. */}
         {allowed.length > 0 && (
           <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
