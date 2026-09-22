@@ -193,7 +193,8 @@ export type CaseChoXep = CaseBoTroYeuItem & {
   daXep: boolean; uuTien: UuTienCase; level: number; soDangChuaDay: number; soBuoiDaHoc: number
   buoiChoHoc: BuoiChoHoc | null; soDangMoiSauXep: number // >0 = "đợt mới" gộp vào SAU khi buổi đã xếp
   giaiDoan: GiaiDoanVong; vong: number
-  soDangCanDay: number; soDangChoRetest: number; soDangXong: number; soDangMay: number // dạng máy tự gộp, chưa dạy
+  soDangCanDay: number; soDangChoRetest: number; soDangXong: number; soDangMay: number // dạng máy đề xuất (người bấm thêm), chưa dạy
+  soDangBaoDong: number // dạng do GV/TA bấm chuông báo động KHI em đang có case ⇒ add thẳng (trigger DB), chưa dạy
   retestNgay: string | null
 }
 // Dạng yếu MỚI của em đang bổ trợ (yếu + ≥3 lần đo + có lần đo SAU khi mở case) — máy ĐỀ XUẤT, người bấm "Thêm" mới vào case
@@ -227,7 +228,7 @@ export async function listCaseChoXepLich(mon?: string): Promise<CaseChoXep[]> {
       daXep: !!r.buoi_cho_hoc, uuTien: r.uu_tien as UuTienCase, level: r.level ?? 0, soDangChuaDay: r.so_dang_chua_day, soBuoiDaHoc: r.so_buoi_da_hoc,
       buoiChoHoc: r.buoi_cho_hoc ?? null, soDangMoiSauXep: r.so_dang_moi_sau_xep ?? 0,
       giaiDoan: (r.giai_doan ?? 'dang_bo_tro') as GiaiDoanVong, vong: r.vong ?? 1,
-      soDangCanDay: r.so_dang_can_day ?? 0, soDangChoRetest: r.so_dang_cho_retest ?? 0, soDangXong: r.so_dang_xong ?? 0, soDangMay: r.so_dang_may ?? 0,
+      soDangCanDay: r.so_dang_can_day ?? 0, soDangChoRetest: r.so_dang_cho_retest ?? 0, soDangXong: r.so_dang_xong ?? 0, soDangMay: r.so_dang_may ?? 0, soDangBaoDong: r.so_dang_bao_dong ?? 0,
       retestNgay: r.retest_ngay ?? null,
     }))
     // Thùy 22/09: MỌI case đang mở hiện ở màn Xếp suốt vòng (kể cả chờ retest) — không lọc nữa; màn tự chia nhóm theo giaiDoan.

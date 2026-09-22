@@ -14512,3 +14512,13 @@ Thùy: 2 tình huống (bổ trợ xong 2/3 dạng · đang chờ 3 dạng thì 
   (confirm liệt kê tên/điểm/n; vá tại chỗ). Local thật 22/09: Chờ xếp 103 · Đã xếp 13 · Chờ retest 4 · 1 case có đề xuất dạng mới. tsc sạch.
 - Retest: app TA đã có "retest đến hạn" (TaHome box + tab Bổ trợ, TA lớp đưa iPad sau ET) — giữ nguyên, đúng ý "chỉ cần thông báo".
 - `spec-bo-tro.md` thêm §1.1 (bảng 4 trạng thái + luật) + cập nhật §5/§9.
+
+## 2026-09-22 (chiều) — Báo động: chưa có bổ trợ → hàng đợi Duyệt · đang có bổ trợ → ADD THẲNG dạng vào case (Thùy chốt)
+
+Khác với "dạng yếu mới do máy đo" (chỉ đề xuất — 202609221346), chuông báo động là cờ CỨNG của GV/TA ⇒ add thẳng, không hỏi.
+- Migration `202609221354` (ĐÃ ÁP `--only`): CHECK `nguon` thêm 'bao_dong' · `_btyeu_mon_cua_bao_dong(hs, buoi)` (môn = lớp của buổi; buổi bù →
+  lớp gốc của em; đo: 0 báo động không suy được môn) · trigger `trg_btyeu_bao_dong_vao_case` AFTER INSERT canh_bao_yeu: có case dang_xu cùng
+  môn ⇒ insert bo_tro_yeu_dang nguon='bao_dong' (idempotent); không có case ⇒ không làm gì (engine đưa em vào hàng đợi Duyệt như cũ) ·
+  backfill báo động bấm SAU khi case mở: **15 dạng · 9 case** · `fn_btyeu_case_xep_lich` trả thêm `so_dang_bao_dong`.
+- Test trong transaction ROLLBACK: insert canh_bao_yeu giả cho HS đang có case ⇒ dạng vào case với nguon='bao_dong'; rollback sạch.
+- Card Xếp lịch: nhãn đỏ "🚨 N dạng báo động (GV/TA thêm)". `spec-bo-tro.md` §1.1 cập nhật. tsc sạch.

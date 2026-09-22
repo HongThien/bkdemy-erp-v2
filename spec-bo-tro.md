@@ -51,7 +51,9 @@ Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt d
 - **Dạng yếu MỚI của em đang bổ trợ:** máy ĐỀ XUẤT (`fn_btyeu_de_xuat_dang_moi`: yếu + ≥3 lần đo + CÓ LẦN ĐO SAU KHI MỞ CASE), card hiện nút
   "🤖 +N dạng yếu mới — Thêm?" (xem tên/điểm, xác nhận) ⇒ vào case với `nguon='may'`. KHÔNG tự gộp — đo 22/09: tự gộp sẽ nhét 116 dạng yếu-cũ vào 63 case,
   đè quyết định của người duyệt ở bước Nội dung. Case đang Chờ retest mà thêm dạng ⇒ về Đang bổ trợ.
-- Nguồn dạng trong case: `bo_tro_yeu_dang.nguon` = duyet (bước Nội dung) · tay (+ Thêm dạng) · may (đề xuất máy, người bấm).
+- **Báo động (chuông GV/TA) khi em ĐANG có case cùng môn ⇒ ADD THẲNG dạng vào case** (trigger `trg_btyeu_bao_dong_vao_case`, `nguon='bao_dong'`,
+  nhãn 🚨 trên card) — cờ cứng của người, không cần đề xuất. Chưa có case ⇒ vào hàng đợi Duyệt như cũ (báo động tự đủ tín hiệu). (CEO 22/09.)
+- Nguồn dạng trong case: `bo_tro_yeu_dang.nguon` = duyet (bước Nội dung) · tay (+ Thêm dạng) · may (đề xuất máy, người bấm) · bao_dong (chuông, add thẳng).
 
 ---
 
