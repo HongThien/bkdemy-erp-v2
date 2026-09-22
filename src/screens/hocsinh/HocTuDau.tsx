@@ -65,9 +65,9 @@ function NutBack({ onBack }: { onBack: () => void }) {
 }
 // Card khuôn "Bài tập trên lớp" (DanhSachHS.tsx) — icon box tint + tên/mô tả + chevron (Thùy 22/09:
 // "card cũ xấu, làm giống card bài tập trên lớp"). `tag` = badge nhỏ góc trên phải (vd "✓ xong").
-function CardBai({ t, icon, ten, sub, tag, onClick }: { t: Theme; icon: string; ten: string; sub: string; tag?: string; onClick: () => void }) {
+function CardBai({ t, icon, ten, sub, tag, onClick, disabled }: { t: Theme; icon: string; ten: string; sub: string; tag?: string; onClick: () => void; disabled?: boolean }) {
   return (
-    <button onClick={onClick} className="relative rounded-[26px] p-4 text-left transition active:scale-[0.98]" style={{ background: t.cardTint, boxShadow: t.shadow }}>
+    <button onClick={onClick} disabled={disabled} className="relative rounded-[26px] p-4 text-left transition active:scale-[0.98] disabled:opacity-55" style={{ background: t.cardTint, boxShadow: t.shadow }}>
       <div className="flex items-start gap-3">
         <span className="flex h-[56px] w-[56px] shrink-0 items-center justify-center rounded-[18px] text-[26px]" style={{ background: t.iconTint }}>{icon}</span>
         <span className="min-w-0 flex-1 pt-1">
@@ -310,5 +310,5 @@ export function LoTrinhDuoiHS({ mon, gioiTinh, onPickDang, onBack }: {
   )
 }
 
-export type { ChuDeNhom, ChuyenDeNhom }
-export { dangDangHoc }
+export type { ChuDeNhom, ChuyenDeNhom, Theme }
+export { dangDangHoc, CardBai, Chevron }

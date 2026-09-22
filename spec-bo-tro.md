@@ -144,8 +144,9 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
 - **Lib:** `src/lib/danhgia.ts` (engine phát hiện, duyệt) · `src/lib/botro_yeu.ts` (case, dạng, xếp lịch, lịch trực, ca sắp tới, ưu tiên) ·
   `src/lib/botro_yeu_ca.ts` (ca: app HS/TA, in giấy, chế độ, theo dõi, lịch HS) · `src/lib/pgrest.ts` (`fetchAllRows`) · `src/gami/danhgia.js` (engine thuần).
 - **Màn ERP:** `src/screens/danhgia/` — `DuyetBoTroYeuScreen` · `DashboardHocTapScreen` (`DuyetKhoi`, `KenhChips`) · `NoiDungBoTroYeuScreen` ·
-  `XepLichBoTroYeuScreen` (+ `TheoDoiCaBoTroTab`: `TrangIn`, `NhapKetQua`) · `TrangThaiCaBoTroScreen` · `DanhGiaCaBoTroScreen`.
-- **App TA:** `src/screens/ta/CaBoTroTA.tsx`.  **App HS:** `src/screens/hocsinh/CaBoTroHS.tsx` (+ `LichBoTroHS`, `BoTroBanner`), `HomeHS.tsx`.
+  `XepLichBoTroYeuScreen` (+ `TheoDoiCaBoTroTab`, import `TrangIn`/`NhapKetQua` từ `ta/PhieuGiayYeuTA.tsx`) · `TrangThaiCaBoTroScreen` · `DanhGiaCaBoTroScreen`.
+- **App TA:** `src/screens/ta/CaBoTroTA.tsx` (+ `PhieuGiayYeuTA.tsx`: `TrangIn`, `NhapKetQua` — TA-native, ERP import ngược lại từ đây).
+  **App HS:** `src/screens/hocsinh/CaBoTroHS.tsx` (+ `LichBoTroHS`, `BoTroBanner`, dùng chung `CardBai`/`Chevron` từ `HocTuDau.tsx`), `HomeHS.tsx`.
 - **Bảng:** `bo_tro_yeu` (+`uu_tien`) · `bo_tro_yeu_dang` · `lich_truc_bo_tro` · `hs_level` / `hs_level_log` · `canh_bao_yeu` ·
   `buoi_hoc`/`buoi_hoc_hs` (+`btyeu_che_do`) · `bai_test` (+`in_giay_at`) / `bai_test_cau` / `bai_lam` / `bai_lam_cau` · `bai_lam_cau_sua_log`.
 - **Migration (09→21/09):** `202609091750` lịch HS · `202609141708` lịch trực · `202609161637/1639/1651` ca sắp tới, sức chứa, khối+bậc ·
@@ -164,3 +165,19 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
 5. Cuối 09: đo lại ngưỡng vào hàng đợi ≥1/4 kênh vs ≥2/4.
 6. `npm run migrate` đang vấp 4 migration treo của phiên Sổ tay (permission) ⇒ áp riêng bằng `node scripts/migrate.mjs --only <file>`.
 7. `lop.bac` lệch tên lớp ở vài lớp (6S1/6S2/7S3 ghi bậc A; 3A1 ghi S) — engine theo `lop.bac`; soát ở màn Lớp.
+
+## 11. Cập nhật 22/09 — đồng bộ giao diện với Bổ trợ Đuổi + mastery test/luyện
+
+- Card màn "ca diễn ra" (app HS: danh sách dạng/cụm) đổi sang khuôn CardBai (icon box +
+  tên/mô tả + chevron) — y hệt Bổ trợ Đuổi, dùng chung component từ HocTuDau.tsx.
+  Backdrop (trời/nhân vật/quote) đã bọc màn này từ trước — chỉ màn LamBai/LamET (đang
+  luyện/đang test) không bọc.
+- TrangIn/NhapKetQua (in phiếu giấy + nhập kết quả) chuyển từ màn ERP desktop
+  (TheoDoiCaBoTroTab.tsx) sang file TA-native (ta/PhieuGiayYeuTA.tsx) — ERP import
+  ngược lại từ đó. App TA không còn mượn component từ màn ERP desktop nữa (đúng luật
+  đã áp cho Đuổi).
+- fn_mastery_cells: test cuối ca (bai_test.loai='bo_tro_test') giờ tính vào mastery
+  chung của hệ thống (gán src='et', giống ET). Luyện (loai='bo_tro') VẪN không tính,
+  chỉ để em luyện. Retest tầng 2 / dat của case — KHÔNG đổi gì, vẫn chạy y hệt cũ.
+- KHÔNG đụng: 4 kênh phát hiện, duyệt+ưu tiên, lịch trực khối+bậc, cụm luyện+lô 3 câu,
+  4 trạng thái vòng, báo động chuông — giữ nguyên 100% như trước 22/09.
