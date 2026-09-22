@@ -613,8 +613,8 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
         : 'mx-auto flex min-h-screen max-w-md flex-col items-center justify-center bg-ios px-6 text-center md:max-w-3xl'}>
         <div className={`flex items-center justify-center rounded-full bg-ph-green/10 ${desktop ? 'h-24 w-24 text-5xl' : 'h-20 w-20 text-4xl'}`}>🏆</div>
         <p className={`mt-4 font-bold tracking-tight text-ph-label ${desktop ? 'text-3xl' : 'text-2xl'}`}>{dung} / {total} đúng</p>
-        <p className="mt-1 text-[13px] text-ph-label-2">{doneCaption ?? 'Làm lại được tới hạn nộp. Kết quả gửi thầy cô tham khảo.'}</p>
-        <button onClick={onXong} className={`mt-6 rounded-xl bg-brand font-medium text-white ${desktop ? 'px-8 py-3.5 text-[15px] shadow-[0_10px_24px_rgba(115,87,245,.22)]' : 'px-6 py-3 text-sm'}`}>Về danh sách</button>
+        <p className="mt-1 text-[16px] text-ph-label-2">{doneCaption ?? 'Làm lại được tới hạn nộp. Kết quả gửi thầy cô tham khảo.'}</p>
+        <button onClick={onXong} className={`mt-6 rounded-xl bg-brand font-medium text-white ${desktop ? 'px-8 py-3.5 text-[19px] shadow-[0_10px_24px_rgba(115,87,245,.22)]' : 'px-6 py-3 text-[18px]'}`}>Về danh sách</button>
         {doneExtra}
       </div>
     )
@@ -631,14 +631,14 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
         <div className={desktop ? 'h-2.5 flex-1 overflow-hidden rounded-full bg-black/[0.06]' : 'h-2 flex-1 overflow-hidden rounded-full bg-black/[0.08]'}>
           <div className="h-full bg-brand transition-all" style={{ width: `${((idx + 1) / total) * 100}%` }} />
         </div>
-        <span className={desktop ? 'text-[13px] font-semibold text-[#7b8499]' : 'text-[12px] text-ph-label-2'}>{idx + 1}/{total}</span>
+        <span className={desktop ? 'text-[16px] font-semibold text-[#7b8499]' : 'text-[15px] text-ph-label-2'}>{idx + 1}/{total}</span>
       </div>
 
       {/* Thùy 13/09: content SCROLL riêng, footer luôn nằm trong viewport (không phải kéo trang xuống mới bấm Xác nhận). */}
       <div className={desktop ? 'flex-1 min-h-0 overflow-y-auto' : 'flex-1 overflow-y-auto px-4 pb-4'}>
         <div className={desktop ? 'rounded-[26px] bg-white p-8 shadow-[0_16px_40px_rgba(31,47,79,0.08)]' : 'rounded-2xl bg-white p-4 shadow-sm'}>
           <div className="mb-2 flex items-center justify-between">
-            <p className="text-[13px] font-semibold text-ph-label-2">Câu {idx + 1}</p>
+            <p className="text-[16px] font-semibold text-ph-label-2">Câu {idx + 1}</p>
             {cau.ly_thuyet && (
               <button onClick={() => setGoiY((v) => {
                 const nv = !v
@@ -646,18 +646,18 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
                 if (nv && baiLamId) xemGoiY(baiLamId, cau.id).catch(() => {})
                 return nv
               })}
-                className={`rounded-full border px-3 py-1 text-[12px] font-medium transition ${goiY ? 'border-ph-orange/40 bg-ph-orange/15 text-ph-orange' : 'border-ph-orange/25 bg-ph-orange/10 text-ph-orange'}`}>
+                className={`rounded-full border px-3 py-1 text-[15px] font-medium transition ${goiY ? 'border-ph-orange/40 bg-ph-orange/15 text-ph-orange' : 'border-ph-orange/25 bg-ph-orange/10 text-ph-orange'}`}>
                 💡 Gợi ý
               </button>
             )}
           </div>
           {goiY && cau.ly_thuyet && (
             <div className="mb-3 rounded-xl border border-ph-orange/25 bg-ph-orange/[0.06] p-3">
-              <p className="mb-1 text-[12px] font-semibold uppercase tracking-wide text-ph-orange">Lý thuyết dạng bài</p>
-              <div className="text-[14px] leading-relaxed text-ph-label"><MathText>{cau.ly_thuyet}</MathText></div>
+              <p className="mb-1 text-[15px] font-semibold uppercase tracking-wide text-ph-orange">Lý thuyết dạng bài</p>
+              <div className="text-[18px] leading-relaxed text-ph-label"><MathText>{cau.ly_thuyet}</MathText></div>
             </div>
           )}
-          {cau.noi_dung && <div className="mb-3 text-[15px] leading-relaxed text-ph-label"><MathText>{cau.noi_dung}</MathText></div>}
+          {cau.noi_dung && <div className="mb-3 text-[19px] leading-relaxed text-ph-label"><MathText>{cau.noi_dung}</MathText></div>}
           {cau.anh_de && <img src={cau.anh_de} alt="đề" className="mb-3 max-h-80 rounded-lg border border-black/[0.08]" />}
 
           {laTN ? (
@@ -668,9 +668,9 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
                 const chonSai = daCham && chon && !laDapAn
                 return (
                   <button key={orig} onClick={() => setChon(orig)} disabled={daCham}
-                    className={`flex items-start gap-3 rounded-xl border p-3 text-left text-[15px] transition ${
+                    className={`flex items-start gap-3 rounded-xl border p-3 text-left text-[19px] transition ${
                       laDapAn ? 'border-ph-green/40 bg-ph-green/10' : chonSai ? 'border-ph-red/40 bg-ph-red/10' : chon ? 'border-brand bg-brand/10' : 'border-black/[0.08] bg-white'}`}>
-                    <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold ${
+                    <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[16px] font-semibold ${
                       laDapAn ? 'bg-ph-green text-white' : chonSai ? 'bg-ph-red text-white' : chon ? 'bg-brand text-white' : 'bg-black/[0.05] text-ph-label-2'}`}>{chuCaiChon(dispI)}</span>
                     <span className="flex-1 pt-0.5"><MathText>{stripLabel(opt)}</MathText></span>
                   </button>
@@ -684,7 +684,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
                 const pick = chonArr[orig] ? String(chonArr[orig]).toUpperCase() : null
                 return (
                   <div key={orig} className="rounded-xl border border-black/[0.08] p-3">
-                    <div className="mb-2 flex gap-2 text-[15px] text-ph-label">
+                    <div className="mb-2 flex gap-2 text-[19px] text-ph-label">
                       <span className="font-semibold text-ph-label-2">{'abcd'[dispI] ?? dispI + 1})</span>
                       <span className="flex-1"><MathText>{m.noi_dung}</MathText></span>
                     </div>
@@ -695,14 +695,14 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
                         const saiChoi = daCham && on && v !== key   // HS chọn sai
                         return (
                           <button key={v} onClick={() => setDS(orig, v)} disabled={daCham}
-                            className={`flex-1 rounded-lg border py-1.5 text-[13px] font-medium transition ${
+                            className={`flex-1 rounded-lg border py-1.5 text-[16px] font-medium transition ${
                               dungChoi ? 'border-ph-green/40 bg-ph-green/10 text-ph-green' : saiChoi ? 'border-ph-red/40 bg-ph-red/10 text-ph-red' : on ? 'border-brand bg-brand/10 text-brand' : 'border-black/[0.08] text-ph-label-2'}`}>
                             {v === 'D' ? 'Đúng' : 'Sai'}
                           </button>
                         )
                       })}
                     </div>
-                    {daCham && m.loi_giai && <div className="mt-2 border-t border-black/[0.06] pt-1.5 text-[13px] text-ph-label-2"><MathText>{m.loi_giai}</MathText></div>}
+                    {daCham && m.loi_giai && <div className="mt-2 border-t border-black/[0.06] pt-1.5 text-[16px] text-ph-label-2"><MathText>{m.loi_giai}</MathText></div>}
                   </div>
                 )
               })}
@@ -710,27 +710,27 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
           ) : (
             <input value={(cs?.chon as string) ?? ''} onChange={(e) => setChon(e.target.value)} disabled={daCham}
               placeholder="Nhập đáp án…" inputMode="text"
-              className="w-full rounded-xl border border-black/[0.1] px-4 py-3 text-[15px] outline-none focus:border-brand disabled:bg-black/[0.03]" />
+              className="w-full rounded-xl border border-black/[0.1] px-4 py-3 text-[19px] outline-none focus:border-brand disabled:bg-black/[0.03]" />
           )}
 
           {daCham && (
             <div className={`mt-4 rounded-xl p-3 ${boxCls}`}>
-              <p className={`text-[15px] font-semibold ${txtCls}`}>
+              <p className={`text-[19px] font-semibold ${txtCls}`}>
                 {vd === 'correct' ? '🎉 Đúng hết!' : vd === 'partial' ? '👍 Đúng một phần' : '😔 Chưa đúng'}
-                {laDS && <span className="ml-1 text-[13px] font-normal">· {dsDung}/{menhDe.length} ý đúng</span>}
+                {laDS && <span className="ml-1 text-[16px] font-normal">· {dsDung}/{menhDe.length} ý đúng</span>}
               </p>
-              {cau.loai_cau === 'tra_loi_ngan' && vd !== 'correct' && <p className="mt-1 text-[13px] text-ph-label-2">Đáp án đúng: <b className="text-ph-green">{String(cau.dap_an_key)}</b></p>}
+              {cau.loai_cau === 'tra_loi_ngan' && vd !== 'correct' && <p className="mt-1 text-[16px] text-ph-label-2">Đáp án đúng: <b className="text-ph-green">{String(cau.dap_an_key)}</b></p>}
               {cau.loi_giai && (
-                <div className="mt-2 border-t border-black/[0.06] pt-2 text-[14px] leading-relaxed text-ph-label">
-                  <p className="mb-1 text-[12px] font-semibold uppercase text-ph-label-2">Lời giải</p>
+                <div className="mt-2 border-t border-black/[0.06] pt-2 text-[18px] leading-relaxed text-ph-label">
+                  <p className="mb-1 text-[15px] font-semibold uppercase text-ph-label-2">Lời giải</p>
                   <MathText>{cau.loi_giai}</MathText>
                 </div>
               )}
               {cau.anh_dap_an && <img src={cau.anh_dap_an} alt="lời giải" className="mt-2 max-h-72 rounded-lg border border-black/[0.08]" />}
               {(cau.loai_cau === 'tra_loi_ngan' || baoSaiDe) && vd !== 'correct' && (
                 cs!.baoRoi
-                  ? <p className="mt-2 text-[12px] text-ph-label-2">✓ Đã gửi ý kiến cho thầy cô.</p>
-                  : <button onClick={guiBaoSai} className="mt-2 rounded-lg border border-black/[0.1] px-3 py-1.5 text-[12px] text-ph-label-2">
+                  ? <p className="mt-2 text-[15px] text-ph-label-2">✓ Đã gửi ý kiến cho thầy cô.</p>
+                  : <button onClick={guiBaoSai} className="mt-2 rounded-lg border border-black/[0.1] px-3 py-1.5 text-[15px] text-ph-label-2">
                       🚩 Em nghĩ mình đúng
                     </button>
               )}
@@ -742,18 +742,18 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
       <div className={desktop ? 'mt-4 flex shrink-0 items-center gap-3' : 'flex shrink-0 items-center gap-2 border-t border-black/[0.06] bg-white p-3'}>
         {idx > 0 && (
           <button onClick={() => setIdx((i) => i - 1)}
-            className={desktop ? 'rounded-2xl bg-white px-6 py-3.5 text-[15px] font-medium text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]' : 'rounded-xl bg-black/[0.04] px-4 py-3 text-sm text-ph-label-2'}>
+            className={desktop ? 'rounded-2xl bg-white px-6 py-3.5 text-[19px] font-medium text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]' : 'rounded-xl bg-black/[0.04] px-4 py-3 text-[18px] text-ph-label-2'}>
             {desktop ? '‹ Câu trước' : '‹'}
           </button>
         )}
         {!daCham ? (
           <button onClick={xacNhan} disabled={busy || !daDu}
-            className={desktop ? 'flex-1 rounded-2xl bg-brand py-3.5 text-[15px] font-semibold text-white shadow-[0_10px_24px_rgba(115,87,245,.22)] disabled:opacity-40' : 'flex-1 rounded-xl bg-brand py-3 text-sm font-medium text-white disabled:opacity-40'}>
+            className={desktop ? 'flex-1 rounded-2xl bg-brand py-3.5 text-[19px] font-semibold text-white shadow-[0_10px_24px_rgba(115,87,245,.22)] disabled:opacity-40' : 'flex-1 rounded-xl bg-brand py-3 text-[18px] font-medium text-white disabled:opacity-40'}>
             {busy ? 'Đang chấm…' : 'Xác nhận'}
           </button>
         ) : (
           <button onClick={() => setIdx((i) => i + 1)}
-            className={desktop ? 'flex-1 rounded-2xl bg-brand py-3.5 text-[15px] font-semibold text-white shadow-[0_10px_24px_rgba(115,87,245,.22)]' : 'flex-1 rounded-xl bg-brand py-3 text-sm font-medium text-white'}>
+            className={desktop ? 'flex-1 rounded-2xl bg-brand py-3.5 text-[19px] font-semibold text-white shadow-[0_10px_24px_rgba(115,87,245,.22)]' : 'flex-1 rounded-xl bg-brand py-3 text-[18px] font-medium text-white'}>
             {idx + 1 < total ? 'Câu tiếp →' : (daXongHet ? 'Xem kết quả →' : 'Câu tiếp →')}
           </button>
         )}
