@@ -19,7 +19,7 @@ import { updateUngVien } from '../../lib/tuyensinh'
 import { useStore } from '../../store/useStore'
 import SearchSelect from '../../components/SearchSelect'
 import { SuaCaTheoIdModal, HuyCaTestModal, NutSuaHuy } from './CaTestSuaHuy'
-import { PhieuCard, moPopupXuatAnh, ensureFonts, Icon, I, PHIEU_W, NAVY, NAVY_DAM, GOLD, GOLD_SANG, NEN, CHU, CHU_PHU, FONT } from './PhieuTestDauVao'
+import { PhieuCard, copyAnhPhieu, ensureFonts, Icon, I, PHIEU_W, NAVY, NAVY_DAM, GOLD, GOLD_SANG, NEN, CHU, CHU_PHU, FONT } from './PhieuTestDauVao'
 
 // ⭐ CEO 15/09: subtab "Đã trả" theo THÁNG (trước chỉ 1 mục gập "xem lại", không sửa được) — bấm ca đã trả mở
 // ĐÚNG form GV (sửa kỹ năng / nhận xét / lớp, copy lại ảnh); cần đưa về hàng đợi thì "↩ Mở lại trả bài".
@@ -277,7 +277,13 @@ function DanhGiaGvModal({ c, onClose, onPatch, onDone, onReopen }: { c: CaTestCh
   }
   async function flush() { if (timer.current) { window.clearTimeout(timer.current); timer.current = null; await luuNgay(nxRef.current) } }
   async function dongModal() { await flush(); onClose() }
-  async function xuatAnh() { await flush(); if (cardRef.current && phieuXem) await moPopupXuatAnh(cardRef.current, phieuXem) }
+  // ⭐ 22/09: copy thẳng vào clipboard, KHÔNG await gì trước khi gọi (giữ cử chỉ bấm) — flush nháp chạy bên trong.
+  const [copyTT, setCopyTT] = useState<string | null>(null)
+  function xuatAnh() {
+    if (!cardRef.current || !phieuXem) return
+    setCopyTT('⏳ Đang chụp…')
+    copyAnhPhieu(cardRef.current, flush).then(() => setCopyTT('✅ Đã copy — Ctrl+V vào Zalo')).catch((e) => setCopyTT('⚠ ' + (e.message ?? String(e))))
+  }
   async function daGui() {
     setBusy(true); setErr(null)
     try { await flush(); await dongTraBai(c.id, c.ungVienId, lopId); onDone() }
@@ -313,6 +319,7 @@ function DanhGiaGvModal({ c, onClose, onPatch, onDone, onReopen }: { c: CaTestCh
         </div>
         <div className="ml-auto flex flex-wrap items-center gap-2">
           {c.baiDaChamUrl && <a href={c.baiDaChamUrl} target="_blank" rel="noreferrer" className="rounded-md border border-slate-500 px-3 py-1.5 text-[13px] hover:bg-slate-700">📄 Bài đã chấm</a>}
+          {copyTT && <span className={`text-[12px] ${copyTT.startsWith('⚠') ? 'text-rose-300' : 'text-emerald-300'}`}>{copyTT}</span>}
           <button onClick={xuatAnh} disabled={!phieu} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium hover:bg-indigo-500 disabled:opacity-40">📋 Copy ảnh gửi PH</button>
           {daTra
             ? <button onClick={moLai} disabled={busy} className="rounded-md border border-amber-400/60 px-3 py-1.5 text-[13px] font-medium text-amber-200 hover:bg-amber-500/10 disabled:opacity-40">↩ Mở lại trả bài</button>
