@@ -273,7 +273,7 @@ export function RetestHS({ hocSinhId, onXong, LamET }: { hocSinhId: string; onXo
 // ── LỊCH BỔ TRỢ (Thùy 09-09) — 3 loại yếu / bù / đuổi đã xếp cho em, sắp tới + hôm nay. Ca yếu hôm nay đã
 // điểm danh ⇒ nút "Vào ca" (CaBoTroHS). Bù/đuổi chỉ để em + PH biết lịch (làm bài trong ca là việc của TA/GV).
 const LOAI_MAU: Record<LichBoTro['loai'], string> = { bo_tro_yeu: 'bg-ph-orange/10 text-ph-orange', bu: 'bg-brand/10 text-brand', bo_tro_duoi: 'bg-ph-purple/10 text-ph-purple' }
-export function LichBoTroHS({ lich, coCa, onXong, onVaoCa }: { lich: LichBoTro[]; coCa: boolean; onXong: () => void; onVaoCa: () => void }) {
+export function LichBoTroHS({ lich, coCa, onXong, onVaoCa }: { lich: LichBoTro[]; coCa: boolean; onXong: () => void; onVaoCa: (c: LichBoTro) => void }) {
   return (
     <div className="mx-auto min-h-screen max-w-[640px] bg-ios px-4 pb-8">
       <div className="sticky top-0 z-10 -mx-4 flex items-center gap-3 bg-ios px-4 pb-3 pt-[calc(12px+env(safe-area-inset-top))]">
@@ -303,11 +303,11 @@ export function LichBoTroHS({ lich, coCa, onXong, onVaoCa }: { lich: LichBoTro[]
               {c.phong ? `Phòng ${c.phong}` : 'Chưa có phòng'}{c.nguoi ? ` · ${c.nguoi}` : ''}
             </div>
             {c.vao_ca && coCa && (
-              <button onClick={onVaoCa} className={`mt-3 flex w-full items-center justify-center rounded-[16px] bg-gradient-to-br from-brand to-brand-2 py-3 text-[15px] font-bold text-white ${SHADOW}`}>
+              <button onClick={() => onVaoCa(c)} className={`mt-3 flex w-full items-center justify-center rounded-[16px] bg-gradient-to-br from-brand to-brand-2 py-3 text-[15px] font-bold text-white ${SHADOW}`}>
                 Vào ca luyện →
               </button>
             )}
-            {c.hom_nay && c.loai === 'bo_tro_yeu' && !c.vao_ca && (
+            {c.hom_nay && (c.loai === 'bo_tro_yeu' || c.loai === 'bo_tro_duoi') && !c.vao_ca && (
               <div className="mt-2 text-[12px] text-ph-label-2">Đến phòng, thầy cô điểm danh xong là vào luyện được.</div>
             )}
           </div>

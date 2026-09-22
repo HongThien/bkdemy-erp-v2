@@ -22,7 +22,7 @@ import {
 import { ChonLoaiTuLuyen, ChonDangChuDe } from './TuLuyenChuDe'
 import { laCap2HS, mayManHSCuaToi } from '../../lib/maymai_hs'
 import { htdCoMo, htdSinh, htdCauBaiTest, type CauHTD } from '../../lib/hoctudau'
-import { ChonChuDeHTD, ChonChuyenDeHTD, ChiTietDangHTD, LyThuyetHTD, dangDangHoc, type ChuDeNhom, type ChuyenDeNhom } from './HocTuDau'
+import { ChonChuDeHTD, ChonChuyenDeHTD, ChiTietDangHTD, LyThuyetHTD, LoTrinhDuoiHS, dangDangHoc, type ChuDeNhom, type ChuyenDeNhom } from './HocTuDau'
 import DoiMatKhau from './DoiMatKhau'
 import CaBoTroHS, { RetestHS, BoTroBanner, LichBoTroHS } from './CaBoTroHS'
 import { caCuaToi, retestCuaToi, lichBoTroCuaToi, type LichBoTro } from '../../lib/botro_yeu_ca'
@@ -245,7 +245,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
-  const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
+  const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
   const [chuDeDang, setChuDeDang] = useState<{ ma_dang: string; ten_dang: string; chiCauMoi?: boolean } | null>(null) // dạng đã chọn cho "Tự luyện theo chủ đề" (null = luồng tổng hợp)
   // "Học từ đầu" (Thùy 19/09) — ô CHỈ hiện khi HS có case bổ trợ đuổi ĐANG MỞ (tự suy
   // bo_tro_duoi.trang_thai='can_duoi', KHÔNG lưu cờ riêng — xem htd_co_mo). htdMon lưu
@@ -261,7 +261,18 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [gioiTinh, setGioiTinh] = useState<'nam' | 'nu' | null>(null) // theme nam/nữ màn chính cấp 2/3 (kit hs-home-v4)
   const [anhUrl, setAnhUrl] = useState<string | null>(null) // avatar HS (đổi ngay trong app — ốp từ TA, mig 202609080215)
   // Ca yếu hôm nay (đã điểm danh) + retest đến hạn + LỊCH bổ trợ 3 loại (Thùy 09-09: box "Bổ trợ" LUÔN hiện, có lịch thì liệt kê).
+  // coCa (Thùy 22/09, mig 202609221229): TRƯỚC chỉ tính ca YẾU (caCuaToi) — giờ OR thêm "có buổi ĐUỔI
+  // hôm nay TA đã điểm danh" (lich[].vao_ca giờ đúng cho cả 2 loại) để box "Bổ trợ" bật y hệt Yếu khi
+  // TA bấm Có mặt ở buổi đuổi. Route vào đâu (CaBoTroHS hay Lộ trình đuổi) xem onVaoCaBoTro().
   const [boTro, setBoTro] = useState<{ coCa: boolean; soRetest: number; lich: LichBoTro[] }>({ coCa: false, soRetest: 0, lich: [] })
+  const [duoiLoTrinhMon, setDuoiLoTrinhMon] = useState<string | null>(null)
+  // Bấm "Bổ trợ" (banner cấp 1) hoặc "Vào ca luyện" (LichBoTroHS cấp 2/3, đã biết entry cụ thể): ca YẾU
+  // luôn có sẵn đường CaBoTroHS riêng (tự fetch lại chi tiết) → ưu tiên đó nếu trùng cả 2 cùng lúc; ca
+  // ĐUỔI thì mở "Lộ trình bổ trợ đuổi" (LoTrinhDuoiHS, mon lấy từ lịch — không cần RPC riêng).
+  function onVaoCaBoTro(c?: LichBoTro) {
+    if (c && c.loai === 'bo_tro_duoi') { setDuoiLoTrinhMon(c.mon); setDirect('duoi_lo_trinh'); return }
+    setDirect('bo_tro')
+  }
   // Hòm thư — chỉ cần SỐ chưa đọc để hiện badge chuông (đếm items đang render, không phải tính nghiệp vụ).
   const [chuaDoc, setChuaDoc] = useState(0)
   const taiChuaDoc = () => listThongBaoHS().then((ds) => setChuaDoc(ds.filter((d) => !d.doc_at).length)).catch(() => {})
@@ -286,7 +297,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   }, [cap1, cap2, direct, khu])
   useEffect(() => {
     const tai = () => Promise.all([caCuaToi().catch(() => null), retestCuaToi().catch(() => []), lichBoTroCuaToi().catch(() => [] as LichBoTro[])])
-      .then(([ca, rt, lich]) => setBoTro({ coCa: !!ca, soRetest: rt.filter((r) => !r.da_nop).length, lich }))
+      .then(([ca, rt, lich]) => setBoTro({ coCa: !!ca || lich.some((l) => l.vao_ca && l.loai === 'bo_tro_duoi'), soRetest: rt.filter((r) => !r.da_nop).length, lich }))
     tai()
     const id = setInterval(() => { if (document.visibilityState === 'visible' && !direct && !khu) tai() }, 15000)
     return () => clearInterval(id)
@@ -306,7 +317,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onDoiDang={() => setDirect('tu_luyen_chu_de_ds')}
     desktop={!!cap1} />
   if (direct === 'htd_chu_de' && htdMon) return <ChonChuDeHTD mon={htdMon} desktop={!!cap1}
-    onPick={(cd) => { setHtdChuDe(cd); setDirect('htd_chuyen_de') }}
+    onPick={(cd) => { setDuoiLoTrinhMon(null); setHtdChuDe(cd); setDirect('htd_chuyen_de') }}
     onBack={() => setDirect(null)} />
   if (direct === 'htd_chuyen_de' && htdChuDe) return <ChonChuyenDeHTD chuDe={htdChuDe} desktop={!!cap1}
     onPick={(cde) => {
@@ -320,7 +331,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onLyThuyet={() => setDirect('htd_ly_thuyet')}
     onLuyenTap={() => setDirect('htd_luyen')}
     onTest={() => setDirect('htd_test')}
-    onBack={() => setDirect('htd_chuyen_de')} />
+    onBack={() => setDirect(duoiLoTrinhMon ? 'duoi_lo_trinh' : 'htd_chuyen_de')} />
   if (direct === 'htd_ly_thuyet' && htdMon && htdDang) return <LyThuyetHTD mon={htdMon} dang={htdDang} desktop={!!cap1}
     onBack={() => setDirect('htd_dang')} />
   if ((direct === 'htd_luyen' || direct === 'htd_test') && htdMon && htdDang) return <LamHTD
@@ -328,12 +339,15 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     desktop={!!cap1}
     onVeChiTiet={() => setDirect('htd_dang')}
     onSangTest={() => setDirect('htd_test')}
-    onXongDang={() => { setDirect('htd_chu_de') }} />
+    onXongDang={() => setDirect(duoiLoTrinhMon ? 'duoi_lo_trinh' : 'htd_chu_de')} />
   if (direct === 'thong_tin') return <ThongTinHocTap hocSinhId={hocSinhId} gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
   if (direct === 'xep_hang') return <BangXepHang onXong={() => setDirect(null)} />
   if (direct === 'bo_tro') return <CaBoTroHS hocSinhId={hocSinhId} desktop={!!cap1} onXong={() => setDirect(null)} LamBai={LamBai} LamET={LamET} />
+  if (direct === 'duoi_lo_trinh' && duoiLoTrinhMon) return <LoTrinhDuoiHS mon={duoiLoTrinhMon} desktop={!!cap1}
+    onPickDang={(d, cde) => { setHtdMon(duoiLoTrinhMon); setHtdChuyenDe(cde); setHtdDang({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, xong: d.xong }); setDirect('htd_dang') }}
+    onBack={() => setDirect(null)} />
   if (direct === 'retest') return <RetestHS hocSinhId={hocSinhId} onXong={() => setDirect(null)} LamET={LamET} />
-  if (direct === 'lich_bo_tro') return <LichBoTroHS lich={boTro.lich} coCa={boTro.coCa} onXong={() => setDirect(null)} onVaoCa={() => setDirect('bo_tro')} />
+  if (direct === 'lich_bo_tro') return <LichBoTroHS lich={boTro.lich} coCa={boTro.coCa} onXong={() => setDirect(null)} onVaoCa={onVaoCaBoTro} />
   if (direct === 'hop_thu') return <HopThuHS onXong={() => { setDirect(null); taiChuaDoc() }} />
   if (direct === 'may_man') return <MayManHS gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
   if (direct === 'thanh_tuu') return <ThanhTuuHS gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
@@ -365,7 +379,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Thông tin học tập · Đề thi thử (sắp có) · Bài tập được giao · Thành tựu · May mắn.
   if (!khu && cap1) return <HomeCap1 hoTen={hoTen} maHS={maHS} maymanCoLuot={maymanCoLuot}
     onOpen={(d) => setDirect(d === 'tu_luyen' ? 'tu_luyen_chon' : d)} chuaDoc={chuaDoc} onHopThu={() => setDirect('hop_thu')}
-    extra={<BoTroBanner lich={boTro.lich} coCa={boTro.coCa} soRetest={boTro.soRetest} desktop onLich={() => setDirect('lich_bo_tro')} onCa={() => setDirect('bo_tro')} onRetest={() => setDirect('retest')} />} />
+    extra={<BoTroBanner lich={boTro.lich} coCa={boTro.coCa} soRetest={boTro.soRetest} desktop onLich={() => setDirect('lich_bo_tro')} onCa={() => onVaoCaBoTro(boTro.lich.find((l) => l.vao_ca))} onRetest={() => setDirect('retest')} />} />
   // CẤP 2 (khối 6-9) — HomeHS mobile-first + KHU_CAP2 (đã build cho phone: em cấp 2 có thể dùng
   // điện thoại). CẤP 3 (khối 10-12): giữ KHU cũ (BTL/ET/BTVN), không đụng flow đang chạy.
   // HomeHS thuần vẽ. Badge = việc CÒN LÀM ĐƯỢC (bài quá hạn không đếm vào badge — nhiễu).

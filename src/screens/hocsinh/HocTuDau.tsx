@@ -213,5 +213,72 @@ export function LyThuyetHTD({ mon, dang, onBack, desktop }: { mon: string; dang:
   )
 }
 
+// LỘ TRÌNH BỔ TRỢ ĐUỔI (Thùy 22/09): TA điểm danh có_mặt ở ca đuổi → app HS mở thẳng màn này thay vì
+// đi qua 3 bước Chủ đề/Chuyên đề/Dạng của Học từ đầu (mon đã biết sẵn từ ca đang mở). Promote danh sách
+// dạng-trong-chuyên-đề — trước chỉ ẩn sau nút "ⓘ" ở ChiTietDangHTD — thành MÀN CHÍNH: ✅ xong (xanh) ·
+// 📖 đang học hôm nay (highlight) · 🔒 chưa học đến (khoá). CÙNG dữ liệu htd_lo_trinh với Học từ đầu —
+// em tự học thêm ở nhà thì tiến độ vẫn là 1 nguồn, không tách riêng cho "trong ca"/"ở nhà".
+// 1 case đuổi có thể có dạng thuộc >1 chuyên đề (vd Tập hợp + Bất phương trình cùng lúc) → nếu vậy hiện
+// PICKER chuyên đề trước (thẻ giống ChonChuyenDeHTD), 1 chuyên đề thì vào thẳng lộ trình luôn.
+export function LoTrinhDuoiHS({ mon, onPickDang, onBack, desktop }: {
+  mon: string; onPickDang: (d: DangHTD, cde: ChuyenDeNhom) => void; onBack: () => void; desktop?: boolean
+}) {
+  const [state, setState] = useState<'dang_tai' | 'san_sang' | 'loi'>('dang_tai')
+  const [cdes, setCdes] = useState<ChuyenDeNhom[]>([])
+  const [chon, setChon] = useState<ChuyenDeNhom | null>(null)
+  const [err, setErr] = useState<string | null>(null)
+
+  useEffect(() => {
+    htdLoTrinh(mon).then((ds) => {
+      const flat = gomCay(ds).flatMap((cd) => cd.chuyenDes)
+      setCdes(flat); setChon(flat.length === 1 ? flat[0] : null); setState('san_sang')
+    }).catch((e) => { setErr(e?.message ?? String(e)); setState('loi') })
+  }, [mon])
+
+  if (state === 'dang_tai') return <Khung desktop={desktop}><p className="mt-8 text-center text-[13px] text-ph-label-2">Đang tải…</p></Khung>
+  if (state === 'loi') return <Khung desktop={desktop}><p className="mt-8 text-center text-[13px] text-ph-red">{err}</p></Khung>
+
+  if (!chon) return (
+    <Khung desktop={desktop}>
+      <NutBack onBack={onBack} desktop={desktop} />
+      <h1 className={`font-extrabold text-ph-label ${desktop ? 'text-[22px]' : 'text-[19px]'}`}>Lộ trình bổ trợ đuổi</h1>
+      <p className={`mt-1 text-ph-label-2 ${desktop ? 'text-[14px]' : 'text-[13px]'}`}>Em đang đuổi {cdes.length} chuyên đề — chọn 1 để xem lộ trình.</p>
+      <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3">
+        {cdes.map((cde, i) => {
+          const xong = cde.dangs.filter((d) => d.xong).length
+          return (
+            <CardMau key={cde.ma_chuyen_de} square tone={TONE_CYCLE[i % TONE_CYCLE.length]} icon="📖" ten={cde.ten_chuyen_de} onClick={() => setChon(cde)}>
+              <span className="line-clamp-4 block text-[12.5px] text-ph-label-2">Đã xong {xong}/{cde.dangs.length} dạng</span>
+            </CardMau>
+          )
+        })}
+      </div>
+    </Khung>
+  )
+
+  return (
+    <Khung desktop={desktop}>
+      <NutBack onBack={() => (cdes.length > 1 ? setChon(null) : onBack())} desktop={desktop} />
+      <h1 className={`font-extrabold text-ph-label ${desktop ? 'text-[22px]' : 'text-[19px]'}`}>Lộ trình bổ trợ đuổi</h1>
+      <p className={`mt-1 text-ph-label-2 ${desktop ? 'text-[14px]' : 'text-[13px]'}`}>{chon.ten_chuyen_de} — học lần lượt từng dạng, dạng khoá tự mở khi dạng trước xong.</p>
+      <div className="mt-4 flex flex-col gap-1.5">
+        {chon.dangs.map((d) => {
+          const hienTai = !d.xong && d.mo
+          return (
+            <button key={d.ma_dang} disabled={!d.mo} onClick={() => onPickDang(d, chon)}
+              className={`flex items-center gap-3 rounded-2xl px-3.5 py-3 text-left transition ${d.xong ? 'bg-emerald-50' : hienTai ? 'bg-brand/10 ring-2 ring-brand' : 'bg-white opacity-50'}`}>
+              <span className="text-[20px]">{d.xong ? '✅' : hienTai ? '📖' : '🔒'}</span>
+              <span className="min-w-0 flex-1">
+                <span className={`block text-[14px] font-semibold ${d.xong ? 'text-emerald-700' : hienTai ? 'text-brand' : 'text-ph-label'}`}>{d.ten_dang}</span>
+                {hienTai && <span className="mt-0.5 block text-[11.5px] font-medium text-brand">Đang học hôm nay</span>}
+              </span>
+            </button>
+          )
+        })}
+      </div>
+    </Khung>
+  )
+}
+
 export type { ChuDeNhom, ChuyenDeNhom }
 export { dangDangHoc }
