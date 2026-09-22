@@ -15,12 +15,12 @@ const THEME = {
     quote: 'Đợi mình xíu\nnhé bạn ơi ♡', quoteColor: '#E84A8F', plane: false, underline: true, iconTint: '#F3E4F6' },
 }
 
-export default function BaiTapGiaoHS({ gioiTinh, onXong }: { gioiTinh: 'nam' | 'nu' | null; onXong: () => void }) {
+export default function BaiTapGiaoHS({ gioiTinh, onXong, desktop }: { gioiTinh: 'nam' | 'nu' | null; onXong: () => void; desktop?: boolean }) {
   const t = THEME[gioiTinh === 'nu' ? 'nu' : 'nam']
   return (
-    <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] overflow-hidden md:max-w-[820px]" style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
-      <img src={t.bg} alt="" className="pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover md:max-w-[820px]" />
-      <div className="pointer-events-none fixed inset-x-0 bottom-0 mx-auto flex w-full max-w-[430px] flex-col items-end md:max-w-[820px]">
+    <div className={`font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] md:max-w-[820px] ${desktop ? 'lg:max-w-[1180px]' : ''}`} style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
+      <img src={t.bg} alt="" className={`pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover md:max-w-[820px] ${desktop ? 'lg:max-w-[1180px]' : ''}`} />
+      <div className={`pointer-events-none fixed inset-x-0 bottom-0 mx-auto flex w-full max-w-[430px] flex-col items-end md:max-w-[820px] ${desktop ? 'lg:max-w-[1180px]' : ''}`}>
         <div className="font-hand mb-1 mr-[14%] -rotate-[6deg] whitespace-pre-line text-right text-[20px] leading-[1.15]" style={{ color: t.quoteColor }}>{t.quote}</div>
         <img src={t.decor} alt="" className="block w-[46%]" style={{ marginRight: '-2%', marginBottom: '-2%' }} />
       </div>

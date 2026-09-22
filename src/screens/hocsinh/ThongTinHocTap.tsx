@@ -30,11 +30,11 @@ type Theme = typeof THEME.nam
 export { THEME as _THEME_TTHT }  // export chỉ để demo trong AppHS?demo=podium
 
 // ── Shell chung — backdrop + decor + quote + header squircle. children là phần thân màn. ────
-function Kung({ t, title, sub, onBack, children }: { t: Theme; title: string; sub?: string; onBack: () => void; children: ReactNode }) {
+function Kung({ t, title, sub, onBack, desktop, children }: { t: Theme; title: string; sub?: string; onBack: () => void; desktop?: boolean; children: ReactNode }) {
   return (
-    <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] overflow-hidden md:max-w-[820px]" style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
-      <img src={t.bg} alt="" className="pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover md:max-w-[820px]" />
-      <div className="pointer-events-none fixed inset-x-0 bottom-0 mx-auto flex w-full max-w-[430px] flex-col items-end md:max-w-[820px]">
+    <div className={`font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] md:max-w-[820px] ${desktop ? 'lg:max-w-[1180px]' : ''}`} style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
+      <img src={t.bg} alt="" className={`pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover md:max-w-[820px] ${desktop ? 'lg:max-w-[1180px]' : ''}`} />
+      <div className={`pointer-events-none fixed inset-x-0 bottom-0 mx-auto flex w-full max-w-[430px] flex-col items-end md:max-w-[820px] ${desktop ? 'lg:max-w-[1180px]' : ''}`}>
         <div className="font-hand mb-1 mr-[14%] -rotate-[6deg] whitespace-pre-line text-right text-[20px] leading-[1.15]" style={{ color: t.quoteColor }}>{t.quote}</div>
         <img src={t.decor} alt="" className="block w-[46%]" style={{ marginRight: '-2%', marginBottom: '-2%' }} />
       </div>
@@ -71,14 +71,14 @@ const BOXES: BoxDef[] = [
   { key: 'xep_hang', ten: 'Bảng xếp hạng', mo_ta: 'So thứ hạng với bạn cùng khối: tỉ lệ đạt, điểm MT, số câu tự luyện.', icon: '🏅', iconBg: '#FFF6D6', iconChu: '#C08800' },
 ]
 
-export default function ThongTinHocTap({ hocSinhId, gioiTinh, onXong }: { hocSinhId: string; gioiTinh: 'nam' | 'nu' | null; onXong: () => void }) {
+export default function ThongTinHocTap({ hocSinhId, gioiTinh, onXong, desktop }: { hocSinhId: string; gioiTinh: 'nam' | 'nu' | null; onXong: () => void; desktop?: boolean }) {
   const [sub, setSub] = useState<SubKey | null>(null)
   const t = THEME[gioiTinh === 'nu' ? 'nu' : 'nam']
-  if (sub === 'dang_yeu') return <DangYeuScreen t={t} onBack={() => setSub(null)} />
-  if (sub === 'lich_su')  return <LichSuScreen t={t} onBack={() => setSub(null)} />
-  if (sub === 'xep_hang') return <XepHangScreen t={t} hocSinhId={hocSinhId} onBack={() => setSub(null)} />
+  if (sub === 'dang_yeu') return <DangYeuScreen t={t} desktop={desktop} onBack={() => setSub(null)} />
+  if (sub === 'lich_su')  return <LichSuScreen t={t} desktop={desktop} onBack={() => setSub(null)} />
+  if (sub === 'xep_hang') return <XepHangScreen t={t} hocSinhId={hocSinhId} desktop={desktop} onBack={() => setSub(null)} />
   return (
-    <Kung t={t} title="Thông tin học tập" sub="Chọn nội dung em muốn xem" onBack={onXong}>
+    <Kung t={t} title="Thông tin học tập" sub="Chọn nội dung em muốn xem" onBack={onXong} desktop={desktop}>
       <div className="mt-5 flex flex-col gap-3">
         {BOXES.map((b) => (
           <button key={b.key} onClick={() => setSub(b.key)}
@@ -113,7 +113,7 @@ const NHOM_DEF: { key: Nhom; ten: string; mau: string; nen: string }[] = [
 ]
 const nhomCuaDang = (d: DangHocTap): Nhom => d.muc ?? 'chua_danh_gia'
 
-function DangYeuScreen({ t, onBack }: { t: Theme; onBack: () => void }) {
+function DangYeuScreen({ t, onBack, desktop }: { t: Theme; onBack: () => void; desktop?: boolean }) {
   const [data, setData] = useState<TongQuanHocTap | null>(null)
   const [tab, setTab] = useState<Nhom>('yeu')
   useEffect(() => {
@@ -128,7 +128,7 @@ function DangYeuScreen({ t, onBack }: { t: Theme; onBack: () => void }) {
   const dsTab = useMemo(() => (data ? data.dangs.filter((d) => nhomCuaDang(d) === tab) : []), [data, tab])
   const tong = tongDaDo + (data?.chuaDanhGia ?? 0)
   return (
-    <Kung t={t} title="Dạng yếu" sub="Tập trung luyện các dạng này để tiến bộ nhanh" onBack={onBack}>
+    <Kung t={t} title="Dạng yếu" sub="Tập trung luyện các dạng này để tiến bộ nhanh" onBack={onBack} desktop={desktop}>
       {data === null && <p className="mt-8 text-center text-[13px]" style={{ color: t.sec }}>Đang tải…</p>}
       {data && tong === 0 && (
         <EmptyBox t={t} icon="🌱" title="Chưa có dữ liệu học tập" mo_ta="Học vài buổi trên lớp hoặc làm Tự luyện rồi quay lại nhé." />
@@ -191,13 +191,13 @@ function DangYeuScreen({ t, onBack }: { t: Theme; onBack: () => void }) {
 }
 
 // ── SUB 2 — LỊCH SỬ LÀM BÀI TRÊN APP ─────────────────────────────────────────────
-function LichSuScreen({ t, onBack }: { t: Theme; onBack: () => void }) {
+function LichSuScreen({ t, onBack, desktop }: { t: Theme; onBack: () => void; desktop?: boolean }) {
   const [rows, setRows] = useState<LichSuLamBaiRow[] | null>(null)
   useEffect(() => {
     layLichSuLamBai(30).then(setRows).catch(() => setRows([]))
   }, [])
   return (
-    <Kung t={t} title="Lịch sử làm bài" sub="30 ngày gần nhất — thời gian in-app đo từ câu đầu tiên đến câu cuối trong ngày" onBack={onBack}>
+    <Kung t={t} title="Lịch sử làm bài" sub="30 ngày gần nhất — thời gian in-app đo từ câu đầu tiên đến câu cuối trong ngày" onBack={onBack} desktop={desktop}>
       {rows === null && <p className="mt-8 text-center text-[13px]" style={{ color: t.sec }}>Đang tải…</p>}
       {rows && rows.length === 0 && (
         <EmptyBox t={t} icon="📓" title="Chưa có lịch sử làm bài" mo_ta="Vào Tự luyện làm 10 câu đầu tiên để thấy lịch sử ở đây." />
@@ -227,7 +227,7 @@ function LichSuScreen({ t, onBack }: { t: Theme; onBack: () => void }) {
 
 // ── SUB 3 — BẢNG XẾP HẠNG (3 tab) ─────────────────────────────────────────────────
 type BxhKind = 'ti_le' | 'mt' | 'tu_luyen'
-function XepHangScreen({ t, hocSinhId, onBack }: { t: Theme; hocSinhId: string; onBack: () => void }) {
+function XepHangScreen({ t, hocSinhId, onBack, desktop }: { t: Theme; hocSinhId: string; onBack: () => void; desktop?: boolean }) {
   const [kind, setKind] = useState<BxhKind>('ti_le')
   const [tiLe, setTiLe] = useState<XepHangTiLeRow[] | null>(null)
   const [mt, setMt] = useState<BXHDiemMTRow[] | null>(null)
@@ -246,7 +246,7 @@ function XepHangScreen({ t, hocSinhId, onBack }: { t: Theme; hocSinhId: string; 
   }, [])
   const dangTai = tiLe === null || mt === null || tuLuyen === null
   return (
-    <Kung t={t} title="Bảng xếp hạng" sub="So thứ hạng với các bạn cùng khối" onBack={onBack}>
+    <Kung t={t} title="Bảng xếp hạng" sub="So thứ hạng với các bạn cùng khối" onBack={onBack} desktop={desktop}>
       <div className="mt-4 grid grid-cols-3 gap-1 rounded-full p-1" style={{ background: t.cardTint, boxShadow: t.shadow }}>
         {(['ti_le', 'mt', 'tu_luyen'] as const).map((k) => (
           <button key={k} onClick={() => setKind(k)}

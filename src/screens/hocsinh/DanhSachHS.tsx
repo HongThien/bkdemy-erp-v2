@@ -61,7 +61,7 @@ export default function DanhSachHS({ tieuDe, ill, gioiTinh, tab, nChua, nXong, r
 }) {
   const t = THEME[gioiTinh === 'nu' ? 'nu' : 'nam']
   return (
-    <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] overflow-hidden md:max-w-[820px]" style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
+    <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] md:max-w-[820px]" style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
       {/* BACKDROP (chung kit Home) — cố định, không cuộn theo nội dung */}
       <img src={t.bg} alt="" className="pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover md:max-w-[820px]" />
       {/* DECOR + QUOTE cố định ở đáy làm nền — danh sách cuộn đè lên */}

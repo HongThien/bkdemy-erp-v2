@@ -42,15 +42,15 @@ type Theme = typeof THEME.nam
 // Shell RIÊNG (không tái dùng `Kung` của ThongTinHocTap) vì cần cờ `decor`: màn ĐỌC lý thuyết
 // phải TẮT hình trang trí — nó `fixed bottom-0` chiếm 46% chiều cao, bài dài cuộn qua là chữ
 // chui xuống dưới ảnh. Màn danh sách thì bật như các màn HS khác cho đồng bộ.
-function Kung({ t, title, sub, onBack, decor = true, children }: {
-  t: Theme; title: string; sub?: string; onBack: () => void; decor?: boolean; children: ReactNode
+function Kung({ t, title, sub, onBack, decor = true, desktop, children }: {
+  t: Theme; title: string; sub?: string; onBack: () => void; decor?: boolean; desktop?: boolean; children: ReactNode
 }) {
   return (
-    <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] overflow-hidden"
+    <div className={`font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] ${desktop ? 'md:max-w-[820px] lg:max-w-[1180px]' : ''}`}
       style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
-      <img src={t.bg} alt="" className="pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover" />
+      <img src={t.bg} alt="" className={`pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover ${desktop ? 'md:max-w-[820px] lg:max-w-[1180px]' : ''}`} />
       {decor && (
-        <div className="pointer-events-none fixed inset-x-0 bottom-0 mx-auto flex w-full max-w-[430px] flex-col items-end">
+        <div className={`pointer-events-none fixed inset-x-0 bottom-0 mx-auto flex w-full max-w-[430px] flex-col items-end ${desktop ? 'md:max-w-[820px] lg:max-w-[1180px]' : ''}`}>
           <div className="font-hand mb-1 mr-[14%] -rotate-[6deg] whitespace-pre-line text-right text-[20px] leading-[1.15]" style={{ color: t.quoteColor }}>{t.quote}</div>
           <img src={t.decor} alt="" className="block w-[46%]" style={{ marginRight: '-2%', marginBottom: '-2%' }} />
         </div>
@@ -139,8 +139,8 @@ function moTaLoi(e: unknown, mac_dinh: string): string {
 // Log NGUYÊN error (không phải chuỗi đã rút gọn) — mất stack/`code`/`hint` là mất đường chẩn đoán.
 const ghiLoi = (cho: string, e: unknown) => console.error(`[SoTay] ${cho} lỗi:`, e)
 
-export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
-  gioiTinh: 'nam' | 'nu' | null; onXong: () => void; api?: SoTayApi
+export default function SoTayHS({ gioiTinh, onXong, api = API_THAT, desktop }: {
+  gioiTinh: 'nam' | 'nu' | null; onXong: () => void; api?: SoTayApi; desktop?: boolean
 }) {
   const t = THEME[gioiTinh === 'nu' ? 'nu' : 'nam']
   const [mon, setMon] = useState<string | null>(null)
@@ -209,7 +209,7 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
 
   // Đang mở 1 dạng → màn đọc. Back về đúng chỗ cũ (duong/nhomLoc/q giữ nguyên trong state).
   if (maDangMo && mon) {
-    return <DocDang t={t} maDang={maDangMo} mon={mon} nhanh={nhanh} api={api} onBack={() => setMaDangMo(null)} />
+    return <DocDang t={t} maDang={maDangMo} mon={mon} nhanh={nhanh} api={api} desktop={desktop} onBack={() => setMaDangMo(null)} />
   }
 
   const dangSearch = ketQua !== null
@@ -231,7 +231,7 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
   }
 
   return (
-    <Kung t={t} title={title} sub={sub} onBack={back}>
+    <Kung t={t} title={title} sub={sub} onBack={back} desktop={desktop}>
       {/* Ô tìm — luôn hiện ở mọi tầng: em đang lần mò mà chợt nhớ ra tên thì gõ được ngay. */}
       <div className="relative mt-4">
         <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[15px]">🔍</span>
@@ -317,7 +317,7 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
 
 // ── MÀN ĐỌC 1 DẠNG — lý thuyết + phương pháp + bài mẫu (gói chung trong `noi_dung`) ─────────
 // Tắt decor: bài dài, hình trang trí fixed dưới đáy sẽ đè lên chữ khi cuộn.
-function DocDang({ t, maDang, mon, nhanh, api, onBack }: { t: Theme; maDang: string; mon: string; nhanh: SoTayNhanh; api: SoTayApi; onBack: () => void }) {
+function DocDang({ t, maDang, mon, nhanh, api, desktop, onBack }: { t: Theme; maDang: string; mon: string; nhanh: SoTayNhanh; api: SoTayApi; desktop?: boolean; onBack: () => void }) {
   const [d, setD] = useState<SoTayNoiDung | null | undefined>(undefined) // undefined = đang tải · null = không có
   const [loi, setLoi] = useState<string | null>(null)
   useEffect(() => {
@@ -332,7 +332,7 @@ function DocDang({ t, maDang, mon, nhanh, api, onBack }: { t: Theme; maDang: str
   }, [maDang, mon, nhanh])
 
   return (
-    <Kung t={t} decor={false} onBack={onBack}
+    <Kung t={t} decor={false} onBack={onBack} desktop={desktop}
       title={d ? d.ten_dang : d === undefined ? 'Đang mở…' : 'Chưa có nội dung'}
       sub={d ? `Khối ${d.khoi} · ${d.ten_chu_de} › ${d.ten_chuyen_de}` : undefined}>
       {d === undefined && <p className="mt-8 text-center text-[13px]" style={{ color: t.sec }}>Đang tải…</p>}

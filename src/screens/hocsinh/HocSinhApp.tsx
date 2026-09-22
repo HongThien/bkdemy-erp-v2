@@ -340,7 +340,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onVeChiTiet={() => setDirect('htd_dang')}
     onSangTest={() => setDirect('htd_test')}
     onXongDang={() => setDirect(duoiLoTrinhMon ? 'duoi_lo_trinh' : 'htd_chu_de')} />
-  if (direct === 'thong_tin') return <ThongTinHocTap hocSinhId={hocSinhId} gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
+  if (direct === 'thong_tin') return <ThongTinHocTap hocSinhId={hocSinhId} gioiTinh={gioiTinh} desktop={!!cap1} onXong={() => setDirect(null)} />
   if (direct === 'xep_hang') return <BangXepHang onXong={() => setDirect(null)} />
   if (direct === 'bo_tro') return <CaBoTroHS hocSinhId={hocSinhId} desktop={!!cap1} onXong={() => setDirect(null)} LamBai={LamBai} LamET={LamET} />
   if (direct === 'duoi_lo_trinh' && duoiLoTrinhMon) return <LoTrinhDuoiHS mon={duoiLoTrinhMon} desktop={!!cap1}
@@ -349,10 +349,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'retest') return <RetestHS hocSinhId={hocSinhId} onXong={() => setDirect(null)} LamET={LamET} />
   if (direct === 'lich_bo_tro') return <LichBoTroHS lich={boTro.lich} coCa={boTro.coCa} onXong={() => setDirect(null)} onVaoCa={onVaoCaBoTro} />
   if (direct === 'hop_thu') return <HopThuHS onXong={() => { setDirect(null); taiChuaDoc() }} />
-  if (direct === 'may_man') return <MayManHS gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
-  if (direct === 'thanh_tuu') return <ThanhTuuHS gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
-  if (direct === 'bai_tap_giao') return <BaiTapGiaoHS gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
-  if (direct === 'so_tay') return <SoTayHS gioiTinh={gioiTinh} onXong={() => setDirect(null)} />
+  if (direct === 'may_man') return <MayManHS gioiTinh={gioiTinh} desktop={!!cap1} onXong={() => setDirect(null)} />
+  if (direct === 'thanh_tuu') return <ThanhTuuHS gioiTinh={gioiTinh} desktop={!!cap1} onXong={() => setDirect(null)} />
+  if (direct === 'bai_tap_giao') return <BaiTapGiaoHS gioiTinh={gioiTinh} desktop={!!cap1} onXong={() => setDirect(null)} />
+  if (direct === 'so_tay') return <SoTayHS gioiTinh={gioiTinh} desktop={!!cap1} onXong={() => setDirect(null)} />
 
   if (active) {
     const back = () => { setActive(null); listBaiTestCuaHS().then(setTests) }
@@ -636,7 +636,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
 
       {/* Thùy 13/09: content SCROLL riêng, footer luôn nằm trong viewport (không phải kéo trang xuống mới bấm Xác nhận). */}
       <div className={desktop ? 'flex-1 min-h-0 overflow-y-auto' : 'flex-1 overflow-y-auto px-4 pb-4'}>
-        <div className={desktop ? 'rounded-[26px] bg-white p-8 shadow-[0_16px_40px_rgba(31,47,79,0.08)]' : 'rounded-2xl bg-white p-4 shadow-sm'}>
+        <div className={desktop ? 'rounded-[26px] bg-white p-8 shadow-[0_16px_40px_rgba(31,47,79,0.08)] lg:p-10' : 'rounded-2xl bg-white p-4 shadow-sm'}>
           <div className="mb-2 flex items-center justify-between">
             <p className="text-[16px] font-semibold text-ph-label-2">Câu {idx + 1}</p>
             {cau.ly_thuyet && (
@@ -765,10 +765,10 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   // → header/content/footer chia vùng; content overflow riêng, không phải cuộn cả trang.
   return desktop ? (
     <div className="flex h-[100dvh] flex-col bg-[#f4f7fb] px-8 py-4">
-      <div className="mx-auto flex min-h-0 w-full max-w-3xl flex-1 flex-col">{trongTam}</div>
+      <div className="mx-auto flex min-h-0 w-full max-w-3xl flex-1 flex-col lg:max-w-4xl">{trongTam}</div>
     </div>
   ) : (
-    <div className="mx-auto flex h-[100dvh] max-w-md flex-col bg-ios md:max-w-3xl">{trongTam}</div>
+    <div className="mx-auto flex h-[100dvh] max-w-md flex-col bg-ios md:max-w-3xl lg:max-w-4xl">{trongTam}</div>
   )
 }
 

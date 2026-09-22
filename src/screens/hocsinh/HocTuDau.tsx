@@ -20,7 +20,7 @@ const TONE_CYCLE: HomeTone[] = ['purple', 'blue', 'pink', 'green', 'orange', 'gr
 
 function Khung({ desktop, children }: { desktop?: boolean; children: React.ReactNode }) {
   return (
-    <div className={desktop ? 'mx-auto min-h-screen max-w-2xl bg-[#f4f7fb] px-8 py-6 md:max-w-3xl' : 'mx-auto flex min-h-screen max-w-md flex-col bg-ios px-4 pb-8 pt-[calc(14px+env(safe-area-inset-top))] md:max-w-3xl'}>
+    <div className={desktop ? 'mx-auto min-h-screen max-w-2xl bg-[#f4f7fb] px-8 py-6 md:max-w-3xl lg:max-w-4xl' : 'mx-auto flex min-h-screen max-w-md flex-col bg-ios px-4 pb-8 pt-[calc(14px+env(safe-area-inset-top))] md:max-w-3xl lg:max-w-4xl'}>
       {children}
     </div>
   )
@@ -93,7 +93,7 @@ export function ChonChuDeHTD({ mon, onPick, onBack, desktop }: { mon: string; on
         <p className="mt-8 text-center text-[13px] text-ph-label-2">Em chưa có lộ trình bổ trợ đuổi nào cần học.</p>
       )}
       {state === 'san_sang' && cay.length > 0 && (
-        <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3">
+        <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
           {cay.map((cd, i) => {
             const tongDang = cd.chuyenDes.reduce((s, c) => s + c.dangs.length, 0)
             const xongDang = cd.chuyenDes.reduce((s, c) => s + c.dangs.filter((d) => d.xong).length, 0)
@@ -115,7 +115,7 @@ export function ChonChuyenDeHTD({ chuDe, onPick, onBack, desktop }: { chuDe: Chu
       <NutBack onBack={onBack} desktop={desktop} />
       <h1 className={`font-extrabold text-ph-label ${desktop ? 'text-[22px]' : 'text-[19px]'}`}>{chuDe.ten_chu_de}</h1>
       <p className={`mt-1 text-ph-label-2 ${desktop ? 'text-[14px]' : 'text-[13px]'}`}>Chọn chuyên đề — vào là học tiếp đúng chỗ em đang dừng.</p>
-      <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3">
+      <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
         {chuDe.chuyenDes.map((cde, i) => {
           const xong = cde.dangs.filter((d) => d.xong).length
           const daXongHet = xong === cde.dangs.length
@@ -243,7 +243,7 @@ export function LoTrinhDuoiHS({ mon, onPickDang, onBack, desktop }: {
       <NutBack onBack={onBack} desktop={desktop} />
       <h1 className={`font-extrabold text-ph-label ${desktop ? 'text-[22px]' : 'text-[19px]'}`}>Lộ trình bổ trợ đuổi</h1>
       <p className={`mt-1 text-ph-label-2 ${desktop ? 'text-[14px]' : 'text-[13px]'}`}>Em đang đuổi {cdes.length} chuyên đề — chọn 1 để xem lộ trình.</p>
-      <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3">
+      <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
         {cdes.map((cde, i) => {
           const xong = cde.dangs.filter((d) => d.xong).length
           return (

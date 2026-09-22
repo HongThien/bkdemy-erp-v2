@@ -102,17 +102,17 @@ export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, anhUrl, onAnhCha
   return (
     // Chữ viết tay app HS = Pacifico (Thùy chốt 08/09 sau khi so Itim/Sriracha/Mali/Dancing Script/Pacifico trên màn
     // thật). Ghi đè biến @theme --font-hand CHỈ trong cây này — app TA vẫn Itim (index.css dùng chung, không đụng).
-    // LUẬT (Thùy 08/09): màn Home KHÔNG cuộn (h-100dvh + overflow-hidden), NHƯNG KHÔNG kéo giãn phần tử cho đầy
-    // màn — "tỉ lệ phải như gốc mới đẹp, scale sai tỉ lệ xấu". Mọi khối lấy TỈ LỆ KHUNG từ reference (hero 870:280,
-    // ô 417:280) nên cao theo BỀ NGANG như mockup; màn cao thì để trống dưới cùng, chấp nhận.
-    // md: (768px+, đúng khổ iPad portrait) — rộng ra, dùng chung cho iPad LẪN máy tính (Thùy 18/09:
-    // "ipad máy tính chung đi, máy tính thừa không sao"). KHÔNG làm riêng bản desktop pixel-perfect —
-    // chấp nhận viền trống 2 bên trên màn hình to, giống cách HomeCap1 đã làm.
-    <div className="font-bubble relative mx-auto h-[100dvh] max-w-[430px] overflow-hidden md:max-w-[820px]" style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
+    // 3 TẦNG THIẾT BỊ (Thùy 22/09, đảo lại luật 08/09 "Home không cuộn" + 18/09 "iPad/PC chung layout" —
+    // 2 luật đó gây đúng lỗi mất nội dung trên laptop, đã tái hiện thật): Home CUỘN tự nhiên (bỏ khoá
+    // h-100dvh/overflow-hidden + h-full) — màn nào cao hơn viewport (laptop ngang mà thấp) vẫn xem được
+    // hết, không cắt gì. Vẫn giữ TỈ LỆ KHUNG từ reference (hero 870:280, ô 417:280) ở mọi tầng — không
+    // scale méo. 3 tầng bề ngang: <768 điện thoại (mặc định) · 768-1023 iPad (md:) · ≥1024 PC (lg:, PC
+    // dùng thêm chỗ thật, không còn "thừa không sao" như luật cũ).
+    <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] md:max-w-[820px] lg:max-w-[1180px]" style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
       {/* BACKDROP — trời mây thuần (kit), mọi thứ khác đè lên bằng code */}
       <img src={t.bg} alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover" />
 
-      <div className="relative flex h-full flex-col px-4 pb-[calc(8px+env(safe-area-inset-bottom))] pt-[calc(10px+env(safe-area-inset-top))]">
+      <div className="relative flex flex-col px-4 pb-[calc(8px+env(safe-area-inset-bottom))] pt-[calc(10px+env(safe-area-inset-top))]">
         {/* TOP — chào (Itim) trái · chuông / khoá / Thoát phải */}
         <div className="flex items-start justify-between gap-2">
           <div className="font-hand min-w-0 pt-1 leading-[1.05]" style={{ color: t.greet }}>
@@ -171,7 +171,7 @@ export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, anhUrl, onAnhCha
         )}
 
         {/* LƯỚI 6 Ô — 3 cột trên iPad/máy tính (md:) để đỡ dồn dọc như điện thoại */}
-        <div className="mt-2.5 grid shrink-0 grid-cols-2 gap-2.5 md:grid-cols-3">
+        <div className="mt-2.5 grid shrink-0 grid-cols-2 gap-2.5 md:grid-cols-3 lg:gap-4">
           {cards.map((c) => {
             const tone = TONE[c.tone]
             const subColor = c.subMau === 'ton' ? tone.c : c.subMau === 'do' ? '#e64040' : c.subMau === 'xanh' ? '#20A886' : SEC
