@@ -30,6 +30,15 @@ Trong repo đã gọi tên là **dual-membership** (`dethi.ts`, spec kho §1).
 | 8 | Nhập **từng đề, bán tự động qua Claude** (`/nhap-de-thi`), **KHÔNG qua ERP**. |
 | 9 | Hạ tầng thư viện đề cho mọi khối, 12 trước. |
 
+### 1b. Chốt thêm 22/09 (trả lời 3 câu chặn)
+
+| # | Quyết định | Hệ quả kỹ thuật (CTO tự chốt, R2) |
+|---|---|---|
+| 10 | **Bản đồ kiến thức BK làm TRƯỚC** (khối 10 thiếu Hệ thức lượng · Véc tơ · Hàm số) rồi mới nhập đề. | Canonical đi trước measurement. Bước nhập đề chỉ chạy khi mọi chương của đề đã có dạng trong `dai_ban_do`/`hgt_ban_do`. |
+| 11 | **Câu tự luận chuyển về Trả lời ngắn.** | Chỉ ý có **đáp số** mới đổi được (tiền lệ sẵn: `phatHanhTest` đã coi `tu_luan` có `dap_an` là `tra_loi_ngan`). Ý **chứng minh/biểu diễn** không có đáp số ⇒ giữ `tu_luan`, chỉ in, không lên app — không bịa đáp số. Bài nhiều ý: mỗi ý có đáp số = 1 câu TLN riêng, cùng `ma_cum`; TLN sau đó → MCQ như Phần III. |
+| 12 | **Điểm mặc định theo khuôn Bộ.** | TN 0,25 · Đ/S 1,0 (bậc 0,1/0,25/0,5/1) · TLN 0,5 · tự luận-đã-đổi-TLN 0,5. Đề lệch khuôn (10 TN + 3 Đ/S + 3 TLN…) ⇒ tính theo đơn giá trên rồi **quy tổng về thang 10** ở `fn_de_thi_diem`. Thời gian mặc định 90 phút khi file không ghi. |
+
+
 ---
 
 ## 2. Hiện trạng đo thật (20/09) — vì sao phải chọn 1 đường
@@ -203,3 +212,4 @@ Khác `phatHanhTest` hiện tại: **`diem` lấy từ phần/câu**, không ghi
 3. **Dò trùng gần-giống** tốn công CEO ở bước 6 nếu kho có nhiều câu na ná. Đo sau 5 đề đầu rồi mới tinh chỉnh ngưỡng.
 4. `toan_de_thi` "0 dòng" là số đọc qua CLI — trước khi ngừng dùng, đối chiếu dashboard 1 lần (§2.1).
 5. **Còn mở (đích, chờ CEO):** thi trên lớp có cần **giám sát chống rời tab** không? · HS khối 11 có được thấy đề 12 trong thư viện không?
+6. **Đã đóng 22/09:** bản đồ trước · tự luận→TLN (chỉ ý có đáp số) · điểm theo khuôn Bộ quy về 10 · 90 phút mặc định (§1b).

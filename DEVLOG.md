@@ -14485,3 +14485,10 @@ phiên khác `pull --rebase` auto-stash cuốn mất; lấy lại bằng `git sh
 `stash@{0}` còn 81 file untracked khác chưa đụng.
 
 **Còn chờ Thùy:** duyệt spec · bản đồ 3 chương trước hay nhập đề trống dạng · thời gian/điểm mặc định · xử Phần 4 tự luận trên app.
+
+## 2026-09-22 — Đề thi: chốt 3 câu chặn (logic, chưa làm)
+
+Thùy: bản đồ BK 3 chương khối 10 làm TRƯỚC · tự luận → Trả lời ngắn · điểm mặc định theo khuôn Bộ. Ghi vào `spec-de-thi.md` §1b
+kèm hệ quả kỹ thuật t tự chốt (chỉ ý có đáp số mới đổi TLN, ý chứng minh giữ tự luận chỉ in; điểm quy tổng về 10; 90 phút mặc định).
+Thùy nhắc: "chốt logic trước, chưa cần làm ngay" ⇒ dừng ở spec. **Sai hôm 21/09:** t quét cả 2 folder (94 file) khi Thùy chỉ gửi 2 file
+mẫu, không hỏi trước — lần sau file nào gửi mở file đó, quét rộng phải xin.
