@@ -22,8 +22,9 @@ export function SuaCaTestModal({ c, onClose, onDone }: { c: CaTest; onClose: () 
     setBusy(true); setErr(null)
     try {
       await suaCaTest(c, f)
-      onDone({ ...c, ngay: f.ngay, gioBatDau: f.gioBatDau, thoiLuongPhut: f.thoiLuongPhut,
-        ungVien: { ...c.ungVien, hoTenHs: f.hoTenHs.trim(), khoi: f.khoi, hoTenPh: f.hoTenPh?.trim() || null, sdtPh: f.sdtPh?.trim() || null } })
+      // Đọc lại ca từ DB: đổi khối ⇒ trigger `trg_ung_vien_doi_khoi_phan_cong` (mig 202609220930) đã gán lại người
+      // chấm/trả theo phân công khối mới — vá tại chỗ bằng bản DB, không tự đoán ở client.
+      onDone(await getCaTest(c.id))
     } catch (e: any) { setErr(e.message ?? String(e)); setBusy(false) }
   }
   return (
@@ -48,7 +49,7 @@ export function SuaCaTestModal({ c, onClose, onDone }: { c: CaTest; onClose: () 
               ))}
             </div>
           </div>
-          {doiKhoi && c.taiLieuId && <p className="rounded-md bg-amber-50 px-2.5 py-1.5 text-[12px] text-amber-800">⚠ Ca đã gán đề khối {c.ungVien.khoi}. Đổi sang khối {f.khoi} thì ca sẽ báo lệch khối — bấm "Gán lại đề đang dùng" ở thẻ ca / màn chấm (người chấm · trả bài vẫn theo phân công cũ).</p>}
+          {doiKhoi && c.taiLieuId && <p className="rounded-md bg-amber-50 px-2.5 py-1.5 text-[12px] text-amber-800">⚠ Ca đã gán đề khối {c.ungVien.khoi}. Đổi sang khối {f.khoi} thì ca sẽ báo lệch khối — bấm "Gán lại đề đang dùng" ở thẻ ca / màn chấm. Người chấm · trả bài tự đổi theo phân công khối {f.khoi} (ca chưa chấm xong).</p>}
           {err && <p className="text-[12px] text-rose-600">{err}</p>}
           <div className="flex justify-end gap-2 pt-1">
             <button onClick={onClose} className="min-h-[44px] rounded-lg border border-slate-200 px-4 py-2 text-[14px] text-slate-600 hover:bg-slate-50">Đóng</button>

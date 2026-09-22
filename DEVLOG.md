@@ -14577,3 +14577,45 @@ Khác với "dạng yếu mới do máy đo" (chỉ đề xuất — 20260922134
   trực tiếp DB (không qua UI vì phải chọc qua 56 câu hinh_hoc tồn đọng khác mới tới HH00095 trong batch
   20 — không có quyền auto-duyệt/từ-chối hàng loạt data người khác chỉ để test) — cả 2 hàm chạy sạch,
   rollback xác nhận không đụng dữ liệu thật.
+
+## 22/09 — Xoá 198 câu hình học "chuyển từ Luyện sang Học" chưa duyệt (bug đề — thiếu giả thiết tiền đề/mô hình)
+
+- Sau khi mở màn Duyệt kho, Thùy tự duyệt/từ chối 32 câu `HH00062` (14 giữ, 18 xoá) rồi báo: "các câu
+  chuyển từ bên luyện sang toàn bị lỗi đề — bên đấy đề nó cộng thêm giả thiết bài tiền đề cộng mô hình
+  nên chuyển sang sai nhiều lắm". Chỉ đạo: xoá toàn bộ câu chuyển từ Luyện, chỉ giữ câu nhập từ file.
+- Trước khi xoá (Luật xoá): lọc theo `mo_hinh_id IS NOT NULL` (chỉ câu sinh từ hệ Luyện DAG mới có cột
+  này set — kho-nhập-file không bao giờ set) → 239 câu còn sống trên toàn kho hình học (không chỉ khối 7
+  từ mig `202609171743_chuyen_hinh_k7_ve_hoc.sql`, mà rải cả khối 7/8/9 — HH00020-028 (k7), HH00058/060/
+  061/062/066 (k8), HH00085 (k9)). Phát hiện mâu thuẫn: 41/239 câu đã `da_duyet=true` (người đã xác nhận
+  tốt), nội dung spot-check ĐẦY ĐỦ giả thiết, không giống mô tả lỗi. Hỏi lại Thùy — chốt: CHỈ xoá 198 câu
+  CHƯA duyệt, giữ nguyên 41 câu đã duyệt (an toàn hơn, không xoá nhầm nội dung đã người xác nhận tốt).
+- Xoá: soft-delete (`xoa_at=now()`, không hard-delete — kho rác convention). Kết quả 198 câu, phân bố:
+  HH00023=36 · HH00025=30 · HH00066=29 · HH00085=49 · HH00061=12 · HH00024=12 · HH00027=9 · HH00021=7 ·
+  HH00022=5 · HH00020=5 · HH00026=2 · HH00028=2.
+- Lưu ý: HH00062 (Hình chữ nhật k8, đang làm thêm câu mới từ file "C3. Bài 4. Hình chữ nhật.docx") ĐÃ hết
+  câu mo_hinh_id chưa-duyệt từ trước (0 sau lọc), 2 câu mo_hinh_id đã-duyệt của nó KHÔNG bị đụng.
+
+## 22/09 — Nhập thêm 7 câu HH00062 (Hình chữ nhật k8) từ SGK "C3. Bài 4. Hình chữ nhật.docx" (Luồng A)
+
+- File .docx dùng MathType (269 công thức OLE/WMF, không phải OMML) — môi trường không có pandoc/soffice.
+  Thử Word COM tự động export PDF: CHẬM BẤT THƯỜNG (269 công thức, >40 phút chưa xong, CPU vẫn tăng đều
+  không treo) — huỷ, để Thùy tự export bằng Word đang mở sẵn (nhanh hơn nhiều, xong trong vài phút).
+  Bài học: KHÔNG tự động hoá Word COM cho .docx nhiều OLE-equation — quá chậm so với người tự Save-As PDF.
+- File PDF (7 trang) đọc sạch qua pdftoppm + Read — lý thuyết (I) + 11 bài mẫu 1A-8* (II, chia 3 Dạng) +
+  lời giải đầy đủ (HƯỚNG DẪN GIẢI) cho từng bài. Đây là SGK "Bồi dưỡng HSG"-style, không phải đề thi rời.
+- Dedup thủ công trước khi insert (so với 14 câu HH00062 hiện có, không chỉ dựa vào so chuỗi máy vì các
+  câu na ná dùng cách đặt tên điểm/phát biểu khác nhau): phát hiện 4/11 câu TRÙNG nội dung với câu đã có
+  — 1B≈HH00062002, 3B≈HH00062007, 4(tự luyện)≈HH00062023, 6≈HH00062024 (cùng cấu hình + cùng câu hỏi,
+  chỉ khác cách chia ý a)/b)/c)). Bỏ qua 4 câu này, chỉ insert 7 câu thật sự mới: 1A, 2A, 2B, 3A, 5, 7, 8*.
+  Không lấy ảnh minh hoạ lời giải (giữ nguyên convention phiên này — chỉ lấy chữ).
+- Kết quả: HH00062028..034 (7 câu, loi_giai đầy đủ, nguon_giai='nguoi' vì có sẵn lời giải SGK không phải
+  AI giải), $ cân bằng verify từ DB. nhap_kho_log ghi sha256 — chưa move được file nguồn sang DaXuLy/
+  (file đang bị Word khoá vì Thùy còn mở để export PDF, move sau khi đóng).
+
+## 2026-09-22 — Test đầu vào: đổi khối ⇒ gán lại người chấm/trả theo phân công khối mới
+
+**(CEO "sao 4T lại sai phân công" — ảnh thẻ Nguyễn Đức Thành khối 4T mà chấm Nguyễn Hà Giang / trả Tạ Quốc Cường = phân công KHỐI 6)**
+- Truy log: ứng viên tạo 19/09 khối 6 → ca tạo cùng lúc, `tg_ca_test_phan_cong` (BEFORE INSERT) gán người khối 6 → 20/09 sửa khối → 4T (qua nút Sửa mới) nhưng trigger chỉ chạy lúc INSERT ⇒ người không đổi. Chính chỗ tôi ghi chú hôm 20/09 "người chấm · trả bài vẫn theo phân công cũ" — CEO bác: đổi khối thì phân công phải theo khối mới.
+- Fix: mig `202609220930_ca_test_phan_cong_theo_khoi_moi.sql` — `fn_ca_test_phan_cong_lai(ung_vien_id, khoi)` + trigger `trg_ung_vien_doi_khoi_phan_cong` AFTER UPDATE OF khoi trên `ung_vien`: ca chưa chấm xong ⇒ đổi cả chấm + trả; chấm xong chưa trả ⇒ chỉ đổi trả; đã trả / đã huỷ giữ nguyên; khối mới chưa có phân công ⇒ không đụng. Vá retro trong migration: 2 ca của Đức Thành về Phạm Bảo Ngân / Đào Xuân Thùy (đúng bảng 4T). `SuaCaTestModal` sau khi lưu đọc lại ca từ DB (`getCaTest`) để thẻ hiện đúng người mới; sửa câu cảnh báo.
+- Verify: transaction ROLLBACK đổi khối 4T→6→4T ⇒ người đổi theo từng bước; tsc sạch.
+- Phát hiện: Đức Thành có **2 ca test** (b1c6083a tạo 19/09, e1082ee4 tạo sau khi đổi khối) — có vẻ tạo trùng; CEO/Ops huỷ 1 ca bằng nút Huỷ (không xoá hộ).

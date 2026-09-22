@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-238 bảng · 19 view · 0 enum · 80 trigger · 443 function
+238 bảng · 19 view · 0 enum · 81 trigger · 445 function
 
 ## _app_secrets
 
@@ -5025,6 +5025,7 @@ SELECT bl.hoc_sinh_id,
 | thanh_toan | tg_thanh_toan_trang_thai | AFTER | INSERT/DELETE/UPDATE | fn_hoa_don_cap_nhat_trang_thai |
 | thong_bao_ph | trg_tbph_updated_at | BEFORE | UPDATE | tbph_updated_at |
 | ung_vien | trg_log_ung_vien | AFTER | INSERT/UPDATE | log_ung_vien |
+| ung_vien | trg_ung_vien_doi_khoi_phan_cong | AFTER | UPDATE | tg_ung_vien_doi_khoi_phan_cong |
 | viec | tg_viec_nghiem_thu_tinh | BEFORE | INSERT/UPDATE | fn_viec_nghiem_thu_tinh |
 | viec | trg_log_viec | AFTER | INSERT/UPDATE | log_viec |
 | viec | trg_pt_viec_push_badge | AFTER | INSERT/UPDATE | _trg_pt_viec_push |
@@ -5150,6 +5151,7 @@ SELECT bl.hoc_sinh_id,
 - `fn_ca_test_huy(p_ca_test_id uuid, p_ly_do text)` → void
 - `fn_ca_test_khoi_phuc(p_ca_test_id uuid)` → text
 - `fn_ca_test_kq_diem()` → trigger
+- `fn_ca_test_phan_cong_lai(p_ung_vien_id uuid, p_khoi text)` → integer
 - `fn_ca_test_phan_cong_mac_dinh()` → trigger
 - `fn_chap_nhan_dap_an(p_ma_cau text, p_dap_an_raw text)` → jsonb
 - `fn_chi_cong_no()` → jsonb
@@ -5462,6 +5464,7 @@ SELECT bl.hoc_sinh_id,
 - `self_link_account()` → uuid
 - `tbph_updated_at()` → trigger
 - `tg_ban_do_sync_ca_test_cau()` → trigger
+- `tg_ung_vien_doi_khoi_phan_cong()` → trigger
 - `tln_cache_check(p_ma_cau text, p_norm text)` → boolean
 - `tln_norm(t text)` → text
 - `trg_chi_khoan_bf()` → trigger
@@ -5471,8 +5474,8 @@ SELECT bl.hoc_sinh_id,
 - `trg_han_nop_ngoai_le_log()` → trigger
 - `trg_htd_test_nop()` → trigger
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
