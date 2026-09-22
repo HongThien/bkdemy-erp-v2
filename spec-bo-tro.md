@@ -1,7 +1,7 @@
 # BỔ TRỢ — tài liệu tổng (yếu · bù · đuổi)
 
 > **Đọc file này TRƯỚC khi sửa bất cứ gì thuộc luồng bổ trợ.** Đây là bản TỔNG HỢP các quyết định CEO (Thùy) đã chốt + những gì ĐÃ BUILT,
-> tính tới **21/09/2026**. Lịch sử/số đo từng quyết định: `DEVLOG.md` theo ngày. Thiết kế gốc: `PLAN-botro-yeu.md` (phát hiện → duyệt →
+> tính tới **22/09/2026**. Lịch sử/số đo từng quyết định: `DEVLOG.md` theo ngày. Thiết kế gốc: `PLAN-botro-yeu.md` (phát hiện → duyệt →
 > nội dung → xếp → đánh giá) và `PLAN-botro-yeu-ca.md` (1 ca diễn ra thế nào, 2 app). Code/DB là chân lý runtime; file này là bản đồ.
 
 ---
@@ -35,6 +35,23 @@ Dữ liệu đo (ET · MT · BTVN · báo động GV/TA)
    → ⑥ RETEST tầng 2 (sau ET buổi thường) → ⑦ ĐÁNH GIÁ CA (xong / theo dõi / bổ trợ tiếp / nâng mức)
 ```
 Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt duyệt ghi `hs_level_log` (cả đề xuất máy lẫn chốt người).
+
+### 1.1 VÒNG bổ trợ — 4 trạng thái (CEO chốt 22/09, "linh động")
+| Trạng thái | Nghĩa | Ở đâu |
+|---|---|---|
+| **Chờ duyệt** | máy phát hiện, chưa có case | hàng đợi Duyệt bổ trợ |
+| **Đang bổ trợ** | case `dang_xu` còn ≥1 dạng CẦN DẠY (chưa dạy, hoặc retest trượt ⇒ dạy lại) | Xếp lịch: cột Chờ xếp / Đã xếp · chưa bổ trợ |
+| **Chờ retest** | dạy hết dạng, còn dạng chưa retest đạt | Xếp lịch: cột Chờ retest (KHÔNG xếp lịch — retest làm sau ET buổi thường, app TA báo "retest đến hạn") |
+| **Hoàn thành** | mọi dạng retest đạt → người đánh giá ca chốt (`hoan_thanh`) | Đánh giá ca bổ trợ |
+
+- Vào **Đang bổ trợ** rồi thì ở đó tới khi XONG TOÀN BỘ dạng: đang bổ trợ mà thêm dạng mới ⇒ vẫn đang bổ trợ (dạng vào CÙNG case), vẫn hiện ở màn Xếp.
+- **Không định mức dạng/buổi**: đóng ca chỉ chốt dạng em có luyện, dạng chưa kịp trôi sang buổi sau; retest trượt ⇒ dạng cần dạy lại (`dat=false`), dạy
+  lại xong `dat` về NULL ⇒ chờ retest mới. Học xong 2/3 dạng thì dạng thứ 3 chờ buổi kế — case tự quay lại cột Chờ xếp.
+- **Đã hoàn thành** = hết 1 vòng. Yếu lại ⇒ case MỚI nối `case_truoc_id` = **vòng n+1** (chip "vòng n" trên card).
+- **Dạng yếu MỚI của em đang bổ trợ:** máy ĐỀ XUẤT (`fn_btyeu_de_xuat_dang_moi`: yếu + ≥3 lần đo + CÓ LẦN ĐO SAU KHI MỞ CASE), card hiện nút
+  "🤖 +N dạng yếu mới — Thêm?" (xem tên/điểm, xác nhận) ⇒ vào case với `nguon='may'`. KHÔNG tự gộp — đo 22/09: tự gộp sẽ nhét 116 dạng yếu-cũ vào 63 case,
+  đè quyết định của người duyệt ở bước Nội dung. Case đang Chờ retest mà thêm dạng ⇒ về Đang bổ trợ.
+- Nguồn dạng trong case: `bo_tro_yeu_dang.nguon` = duyet (bước Nội dung) · tay (+ Thêm dạng) · may (đề xuất máy, người bấm).
 
 ---
 
@@ -86,6 +103,7 @@ Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt d
   - Cột **"Đã xếp · chưa bổ trợ"** = hiện ngày/giờ/phòng/người; quá ngày chưa học ⇒ viền vàng ⚠ (OPS soát).
   - Dạng gộp thêm SAU khi đã xếp ("đợt duyệt mới") ⇒ nhãn "＋N dạng mới — học chung buổi đã xếp, KHÔNG xếp lại".
   - Mở lại case đã xếp = **SỬA buổi đó**, không đẻ buổi mới. Giờ chọn bằng khung sẵn bước 30'. Báo trùng phòng = cảnh báo, không chặn.
+- Cột thứ 3 **"Chờ retest"** (22/09): case dạy hết dạng — chỉ hiện ngày retest sắp tới, không xếp; nút thêm dạng yếu mới nếu máy đề xuất.
 - **Tab Ca bổ trợ:** ca 28 ngày tới + n/3 + **Tự ghép** các em chờ xếp vào ca trực còn chỗ (XEM TRƯỚC → xác nhận mới tạo buổi; theo thứ tự ưu tiên).
 - Filter môn + khối dùng chung các tab. RPC: `fn_btyeu_case_xep_lich` · `fn_lich_truc_cua_hs` · `fn_btyeu_ca_sap_toi`.
 
@@ -130,7 +148,7 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
   `buoi_hoc`/`buoi_hoc_hs` (+`btyeu_che_do`) · `bai_test` (+`in_giay_at`) / `bai_test_cau` / `bai_lam` / `bai_lam_cau` · `bai_lam_cau_sua_log`.
 - **Migration (09→21/09):** `202609091750` lịch HS · `202609141708` lịch trực · `202609161637/1639/1651` ca sắp tới, sức chứa, khối+bậc ·
   `202609191317` + `202609191922` MCQ · `202609191717` TA chỉnh TLN · `202609201300` ưu tiên + chặn xếp lại · `202609211729` in giấy + theo dõi ·
-  `202609211801` 2 chế độ + test giấy.
+  `202609211801` 2 chế độ + test giấy · `202609221344` 4 trạng thái vòng (giai_doan, nguon dạng, dạy lại reset dat) · `202609221346` đề xuất dạng mới (không tự gộp).
 - **Script chẩn đoán (read-only):** `scripts/_diag_*` — vd `_diag_lydo_hs.ts` (vì sao 1 HS vào hàng đợi), `_diag_kenh2_nguong.ts`,
   `_diag_mcq_nguon_botro.mjs`, `_diag_25dang_form.mjs`, `_diag_case_xep_lich.ts`, `_diag_ta_tln.ts`.
 

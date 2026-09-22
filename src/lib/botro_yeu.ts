@@ -186,9 +186,28 @@ export async function boDangKhoiCase(dangId: string): Promise<void> {
 export type UuTienCase = 1 | 2 | 3
 export const UU_TIEN_TEN: Record<UuTienCase, string> = { 3: 'Ưu tiên cao', 2: 'Thường', 1: 'Thấp' }
 export type BuoiChoHoc = { buoi_id: string; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; nguoi_day_tg: string | null; nguoi_ten: string | null; diem_danh: string | null; qua_ngay: boolean }
+// Thùy 22/09 — 4 trạng thái VÒNG: Chờ duyệt (hàng đợi, chưa có case) → Đang bổ trợ → Chờ retest → Hoàn thành. `giaiDoan` từ DB.
+export type GiaiDoanVong = 'dang_bo_tro' | 'cho_retest' | 'hoan_thanh'
+export const GIAI_DOAN_TEN: Record<GiaiDoanVong, string> = { dang_bo_tro: 'Đang bổ trợ', cho_retest: 'Chờ retest', hoan_thanh: 'Hoàn thành' }
 export type CaseChoXep = CaseBoTroYeuItem & {
   daXep: boolean; uuTien: UuTienCase; level: number; soDangChuaDay: number; soBuoiDaHoc: number
   buoiChoHoc: BuoiChoHoc | null; soDangMoiSauXep: number // >0 = "đợt mới" gộp vào SAU khi buổi đã xếp
+  giaiDoan: GiaiDoanVong; vong: number
+  soDangCanDay: number; soDangChoRetest: number; soDangXong: number; soDangMay: number // dạng máy tự gộp, chưa dạy
+  retestNgay: string | null
+}
+// Dạng yếu MỚI của em đang bổ trợ (yếu + ≥3 lần đo + có lần đo SAU khi mở case) — máy ĐỀ XUẤT, người bấm "Thêm" mới vào case
+// (nguon='may'). Không tự gộp: lần đo 22/09 tự gộp sẽ nhét 116 dạng yếu-cũ vào 63 case, đè quyết định của người duyệt ở bước Nội dung.
+export type DangMayDeXuat = { case_id: string; hoc_sinh_id: string; ma_dang: string; ten_dang: string; score: number; n: number }
+export async function deXuatDangMoi(mon?: string): Promise<DangMayDeXuat[]> {
+  const { data, error } = await supabase.rpc('fn_btyeu_de_xuat_dang_moi', { p_mon: mon ?? null, p_case: null, p_thuc_hien: false })
+  if (error) throw error
+  return ((data as any)?.chi_tiet ?? []) as DangMayDeXuat[]
+}
+export async function themDangMayVaoCase(caseId: string): Promise<number> {
+  const { data, error } = await supabase.rpc('fn_btyeu_de_xuat_dang_moi', { p_mon: null, p_case: caseId, p_thuc_hien: true })
+  if (error) throw error
+  return (data as any)?.them ?? 0
 }
 export async function datUuTienCase(boTroYeuId: string, uuTien: UuTienCase): Promise<void> {
   const { error } = await supabase.from('bo_tro_yeu').update({ uu_tien: uuTien }).eq('id', boTroYeuId)
@@ -207,9 +226,11 @@ export async function listCaseChoXepLich(mon?: string): Promise<CaseChoXep[]> {
       nguon: r.nguon, ly_do: r.ly_do, created_at: r.created_at, soDang: r.so_dang,
       daXep: !!r.buoi_cho_hoc, uuTien: r.uu_tien as UuTienCase, level: r.level ?? 0, soDangChuaDay: r.so_dang_chua_day, soBuoiDaHoc: r.so_buoi_da_hoc,
       buoiChoHoc: r.buoi_cho_hoc ?? null, soDangMoiSauXep: r.so_dang_moi_sau_xep ?? 0,
+      giaiDoan: (r.giai_doan ?? 'dang_bo_tro') as GiaiDoanVong, vong: r.vong ?? 1,
+      soDangCanDay: r.so_dang_can_day ?? 0, soDangChoRetest: r.so_dang_cho_retest ?? 0, soDangXong: r.so_dang_xong ?? 0, soDangMay: r.so_dang_may ?? 0,
+      retestNgay: r.retest_ngay ?? null,
     }))
-    // Cần xếp = đang có buổi chờ học (hiện trạng thái) HOẶC còn dạng chưa dạy. Dạy hết rồi ⇒ sang Trạng thái/Đánh giá ca.
-    .filter((c) => c.daXep || c.soDangChuaDay > 0)
+    // Thùy 22/09: MỌI case đang mở hiện ở màn Xếp suốt vòng (kể cả chờ retest) — không lọc nữa; màn tự chia nhóm theo giaiDoan.
 }
 
 // ── GỢI Ý MẶC ĐỊNH KHI XẾP LỊCH (Thùy 09-02) ─────────────────────────────────────────

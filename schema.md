@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-238 bảng · 19 view · 0 enum · 79 trigger · 440 function
+238 bảng · 19 view · 0 enum · 79 trigger · 441 function
 
 ## _app_secrets
 
@@ -347,6 +347,7 @@
 | retest_at | timestamp with time zone | Y |  |  |  |
 | retest_nguon | text | Y |  |  | `et` · `mt` · `rieng` |
 | dat | boolean | Y |  |  |  |
+| nguon | text |  | 'duyet'::text |  | `duyet` · `tay` · `may` |
 
 ## bt_grades
 
@@ -5124,6 +5125,7 @@ SELECT bl.hoc_sinh_id,
 - `fn_btyeu_ca_ta(p_buoi uuid)` → jsonb
 - `fn_btyeu_ca_theo_doi(p_ngay date DEFAULT NULL::date)` → jsonb
 - `fn_btyeu_case_xep_lich(p_mon text DEFAULT NULL::text)` → jsonb
+- `fn_btyeu_de_xuat_dang_moi(p_mon text DEFAULT NULL::text, p_case uuid DEFAULT NULL::uuid, p_thuc_hien boolean DEFAULT false)` → jsonb
 - `fn_btyeu_dem(p_ns uuid)` → integer
 - `fn_btyeu_dong_ca(p_buoi uuid)` → jsonb
 - `fn_btyeu_giay_nhap(p_bai_test_cau uuid, p_chon integer)` → jsonb

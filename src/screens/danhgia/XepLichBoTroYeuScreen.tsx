@@ -12,7 +12,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
   listCaseChoXepLich, taoBuoiBoTroYeu, listBuoiCuaCase, goiYXepLichBoTroYeu,
-  listLichTruc, themLichTruc, ketThucLichTruc, lichTrucCuaHS, goiYTheoLichTruc, caSapToi, khoaCa, caTrucConCho, datUuTienCase, UU_TIEN_TEN, type UuTienCase,
+  listLichTruc, themLichTruc, ketThucLichTruc, lichTrucCuaHS, goiYTheoLichTruc, caSapToi, khoaCa, caTrucConCho, datUuTienCase, UU_TIEN_TEN, deXuatDangMoi, themDangMayVaoCase, GIAI_DOAN_TEN, type UuTienCase, type DangMayDeXuat,
   type CaseChoXep, type BuoiBoTroYeuDaXep, type GoiYXepLich, type LichTruc, type CaTrucDeXuat, type CaSapToi,
 } from '../../lib/botro_yeu'
 import { supabase } from '../../lib/supabase'
@@ -62,8 +62,21 @@ export default function XepLichBoTroYeuScreen() {
   const [monF, setMonF] = useState('')
   const [khoiF, setKhoiF] = useState('')
 
+  // Thùy 22/09: máy quét dạng yếu MỚI (đo sau khi mở case) của các em đang bổ trợ → ĐỀ XUẤT trên card, người bấm "Thêm" mới vào case.
+  const [deXuat, setDeXuat] = useState<Map<string, DangMayDeXuat[]>>(new Map())
+  const taiDeXuat = () => deXuatDangMoi().then((ds) => { const m = new Map<string, DangMayDeXuat[]>(); for (const d of ds) m.set(d.case_id, [...(m.get(d.case_id) ?? []), d]); setDeXuat(m) }).catch(() => {})
+  async function themDangMay(c: CaseChoXep) {
+    const ds = deXuat.get(c.id) ?? []
+    if (!ds.length || !confirm(`Thêm ${ds.length} dạng yếu mới vào case của ${c.ho_ten}?\n${ds.map((d) => `• ${d.ten_dang} (${d.score.toFixed(2)}, ${d.n} lần đo)`).join('\n')}`)) return
+    try {
+      const n = await themDangMayVaoCase(c.id)
+      setDeXuat((prev) => { const m = new Map(prev); m.delete(c.id); return m })
+      setItems((prev) => prev.map((x) => x.id === c.id ? { ...x, soDang: x.soDang + n, soDangCanDay: x.soDangCanDay + n, soDangChuaDay: x.soDangChuaDay + n, soDangMay: x.soDangMay + n, giaiDoan: 'dang_bo_tro' } : x))
+    } catch (e: any) { alert(e?.message ?? String(e)) }
+  }
   const reload = () => {
     setLoading(true)
+    taiDeXuat()
     listCaseChoXepLich().then((r) => {
       setItems(r)
       setMuc(new Map(r.map((c) => [c.hoc_sinh_id, c.level]))) // level đi kèm RPC — không gọi getLevels riêng nữa
@@ -74,8 +87,10 @@ export default function XepLichBoTroYeuScreen() {
   const mons = useMemo(() => [...new Set(items.map((c) => c.mon))].sort(), [items])
   const khois = useMemo(() => [...new Set(items.filter((c) => !monF || c.mon === monF).map((c) => c.khoi).filter(Boolean) as string[])].sort((a, b) => a.localeCompare(b, 'vi', { numeric: true })), [items, monF])
   const loc = useMemo(() => items.filter((c) => (!monF || c.mon === monF) && (!khoiF || c.khoi === khoiF)), [items, monF, khoiF])
-  const choXep = useMemo(() => loc.filter((c) => !c.daXep), [loc])
-  const daXep = useMemo(() => loc.filter((c) => c.daXep), [loc])
+  const choXep = useMemo(() => loc.filter((c) => c.giaiDoan === 'dang_bo_tro' && !c.daXep), [loc])
+  const daXep = useMemo(() => loc.filter((c) => c.giaiDoan === 'dang_bo_tro' && c.daXep), [loc])
+  // Chờ retest / hoàn thành (chờ đánh giá ca): KHÔNG xếp lịch — retest làm vào buổi thường, TA lớp được báo trên app TA.
+  const choRetest = useMemo(() => loc.filter((c) => c.giaiDoan !== 'dang_bo_tro'), [loc])
   // Đổi ưu tiên = vá tại chỗ + sắp lại (ưu tiên cao trước, cùng ưu tiên thì case mở lâu hơn trước) — Thùy 20/09.
   const sapXep = (ds: CaseChoXep[]) => [...ds].sort((a, b) => b.uuTien - a.uuTien || a.created_at.localeCompare(b.created_at))
   async function doiUuTien(c: CaseChoXep) {
@@ -122,12 +137,12 @@ export default function XepLichBoTroYeuScreen() {
             Chưa có case nào sẵn sàng — cần chọn dạng ở "Nội dung bổ trợ yếu" trước.
           </div>
         ) : (
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-3">
             <div>
               <h2 className="mb-3 text-[13px] font-bold uppercase tracking-wide text-slate-500">Chờ xếp lịch ({choXep.length})</h2>
               <div className="space-y-3">
                 {choXep.map((c) => (
-                  <CaseCard key={c.id} c={c} mucLv={muc.get(c.hoc_sinh_id) ?? 0} onMo={() => setMoId(c.id)} onUuTien={() => doiUuTien(c)} />
+                  <CaseCard key={c.id} c={c} mucLv={muc.get(c.hoc_sinh_id) ?? 0} onMo={() => setMoId(c.id)} onUuTien={() => doiUuTien(c)} deXuat={deXuat.get(c.id) ?? []} onThemMay={() => themDangMay(c)} />
                 ))}
                 {choXep.length === 0 && <p className="text-[12px] text-slate-400">Không còn case nào.</p>}
               </div>
@@ -136,9 +151,29 @@ export default function XepLichBoTroYeuScreen() {
               <h2 className="mb-3 text-[13px] font-bold uppercase tracking-wide text-slate-500">Đã xếp · chưa bổ trợ ({daXep.length})</h2>
               <div className="space-y-3">
                 {daXep.map((c) => (
-                  <CaseCard key={c.id} c={c} mucLv={muc.get(c.hoc_sinh_id) ?? 0} onMo={() => setMoId(c.id)} onUuTien={() => doiUuTien(c)} daXep />
+                  <CaseCard key={c.id} c={c} mucLv={muc.get(c.hoc_sinh_id) ?? 0} onMo={() => setMoId(c.id)} onUuTien={() => doiUuTien(c)} deXuat={deXuat.get(c.id) ?? []} onThemMay={() => themDangMay(c)} daXep />
                 ))}
                 {daXep.length === 0 && <p className="text-[12px] text-slate-400">Chưa có case nào.</p>}
+              </div>
+            </div>
+            <div>
+              <h2 className="mb-3 text-[13px] font-bold uppercase tracking-wide text-slate-500">Chờ retest ({choRetest.length})</h2>
+              <p className="mb-2 text-[11.5px] text-slate-400">Đã dạy hết dạng — retest vào buổi thường kế tiếp, TA lớp được báo trên app TA. Không xếp lịch.</p>
+              <div className="space-y-3">
+                {choRetest.map((c) => (
+                  <div key={c.id} className="rounded-2xl bg-white p-4 ring-1 ring-violet-200">
+                    <div className="text-[14px] font-semibold text-slate-800">{c.ho_ten} <span className="font-normal text-slate-400">· {c.mon}{c.khoi ? ` · Khối ${c.khoi}` : ''}</span></div>
+                    <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px]">
+                      <span className={`rounded-full px-2 py-0.5 font-bold ${c.giaiDoan === 'hoan_thanh' ? 'bg-emerald-50 text-emerald-700' : 'bg-violet-50 text-violet-700'}`}>{GIAI_DOAN_TEN[c.giaiDoan]} · vòng {c.vong}</span>
+                      <span className="text-slate-500">{c.soDangXong}/{c.soDang} dạng đã đạt{c.soDangChoRetest ? ` · ${c.soDangChoRetest} chờ retest` : ''}</span>
+                    </div>
+                    {(deXuat.get(c.id) ?? []).length > 0 && (
+                      <button onClick={() => themDangMay(c)} className="mt-1.5 rounded-md bg-violet-600 px-2 py-0.5 text-[11.5px] font-bold text-white hover:bg-violet-700">🤖 +{(deXuat.get(c.id) ?? []).length} dạng yếu mới — Thêm (về Đang bổ trợ)</button>
+                    )}
+                    <div className="mt-1.5 text-[12px] text-slate-500">{c.giaiDoan === 'hoan_thanh' ? 'Retest xong hết — chờ đánh giá ca (màn Đánh giá ca bổ trợ).' : c.retestNgay ? `📝 Retest ${thuCuaNgay(c.retestNgay)} ${ddmmVN(c.retestNgay)} — sau ET buổi thường` : '📝 Retest sau ET buổi thường kế tiếp'}</div>
+                  </div>
+                ))}
+                {choRetest.length === 0 && <p className="text-[12px] text-slate-400">Không có case nào.</p>}
               </div>
             </div>
           </div>
@@ -152,7 +187,7 @@ export default function XepLichBoTroYeuScreen() {
 }
 
 const UU_CLS: Record<UuTienCase, string> = { 3: 'bg-rose-600 text-white', 2: 'bg-slate-100 text-slate-600', 1: 'bg-slate-50 text-slate-400' }
-function CaseCard({ c, mucLv, onMo, onUuTien, daXep }: { c: CaseChoXep; mucLv: number; onMo: () => void; onUuTien: () => void; daXep?: boolean }) {
+function CaseCard({ c, mucLv, onMo, onUuTien, daXep, deXuat, onThemMay }: { c: CaseChoXep; mucLv: number; onMo: () => void; onUuTien: () => void; daXep?: boolean; deXuat: DangMayDeXuat[]; onThemMay: () => void }) {
   const b = c.buoiChoHoc
   return (
     <div role="button" tabIndex={0} onClick={onMo} onKeyDown={(e) => { if (e.key === 'Enter') onMo() }}
@@ -163,8 +198,14 @@ function CaseCard({ c, mucLv, onMo, onUuTien, daXep }: { c: CaseChoXep; mucLv: n
             {c.ho_ten} <span className="font-normal text-slate-400">· {c.mon}{c.khoi ? ` · Khối ${c.khoi}` : ''}</span>
           </div>
           <div className="mt-1 flex items-center gap-1.5">
+            <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-bold text-indigo-700">{GIAI_DOAN_TEN[c.giaiDoan]}{c.vong > 1 ? ` · vòng ${c.vong}` : ''}</span>
             <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${MUC_CLS[mucLv] ?? MUC_CLS[1]}`}>{MUC_TEN[mucLv] ?? `L${mucLv}`}</span>
-            <span className="text-[11px] text-slate-400">{c.soDang} dạng{c.soBuoiDaHoc > 0 ? ` · đã học ${c.soBuoiDaHoc} buổi, còn ${c.soDangChuaDay} dạng chưa dạy` : ''}</span>
+            <span className="text-[11px] text-slate-400">{c.soDangCanDay}/{c.soDang} dạng cần dạy{c.soDangXong ? ` · ${c.soDangXong} đã đạt` : ''}{c.soDangChoRetest ? ` · ${c.soDangChoRetest} chờ retest` : ''}{c.soBuoiDaHoc > 0 ? ` · đã học ${c.soBuoiDaHoc} buổi` : ''}</span>
+            {c.soDangMay > 0 && <span className="rounded-full bg-violet-50 px-2 py-0.5 text-[11px] font-bold text-violet-700 ring-1 ring-violet-200">🤖 {c.soDangMay} dạng máy thêm</span>}
+            {deXuat.length > 0 && (
+              <button onClick={(e) => { e.stopPropagation(); onThemMay() }} title={deXuat.map((d) => `${d.ten_dang} (${d.score.toFixed(2)})`).join(' · ')}
+                className="rounded-full bg-violet-600 px-2 py-0.5 text-[11px] font-bold text-white hover:bg-violet-700">🤖 +{deXuat.length} dạng yếu mới — Thêm?</button>
+            )}
             <button onClick={(e) => { e.stopPropagation(); onUuTien() }} title="Bấm để đổi mức ưu tiên (Thường → Cao → Thấp)"
               className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${UU_CLS[c.uuTien]}`}>{c.uuTien === 3 ? '▲ ' : c.uuTien === 1 ? '▼ ' : ''}{UU_TIEN_TEN[c.uuTien]}</button>
           </div>

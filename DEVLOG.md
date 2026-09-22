@@ -14492,3 +14492,23 @@ Thùy: bản đồ BK 3 chương khối 10 làm TRƯỚC · tự luận → Tr�
 kèm hệ quả kỹ thuật t tự chốt (chỉ ý có đáp số mới đổi TLN, ý chứng minh giữ tự luận chỉ in; điểm quy tổng về 10; 90 phút mặc định).
 Thùy nhắc: "chốt logic trước, chưa cần làm ngay" ⇒ dừng ở spec. **Sai hôm 21/09:** t quét cả 2 folder (94 file) khi Thùy chỉ gửi 2 file
 mẫu, không hỏi trước — lần sau file nào gửi mở file đó, quét rộng phải xin.
+
+## 2026-09-22 — Vòng bổ trợ yếu: 4 trạng thái (Chờ duyệt → Đang bổ trợ → Chờ retest → Hoàn thành), linh động, không định mức (Thùy chốt)
+
+Thùy: 2 tình huống (bổ trợ xong 2/3 dạng · đang chờ 3 dạng thì yếu thêm 1) ⇒ chốt mô hình 3→4 trạng thái; retest KHÔNG xếp lịch, chỉ báo app TA.
+- Đối chiếu: DB đã gần đúng (case dang_xu/hoan_thanh + derive). Lệch: (1) case dạy hết dạng, chờ retest BIẾN khỏi màn Xếp; (2) retest TRƯỢT
+  (dat=false, day_at đã có) rơi vào khoảng trống — không ai thấy cần dạy lại; (3) dạng yếu mới của em đang bổ trợ không ai thấy (em bị loại
+  khỏi hàng đợi duyệt); (4) nhãn trạng thái mỗi màn 1 kiểu.
+- Migration `202609221344` (ĐÃ ÁP `--only`): `bo_tro_yeu_dang.nguon` (duyet|tay|may) · vá `fn_btyeu_dong_ca` (dạng dat=false được luyện lại ⇒ dat
+  NULL = chờ retest mới; vá bằng replace 1 dòng trong thân hàm sống) · `fn_btyeu_case_xep_lich` trả MỌI case đang mở có dạng + `giai_doan`
+  (can_day>0 ⇒ dang_bo_tro · còn dạng dong_at null ⇒ cho_retest · else hoan_thanh) + đếm dạng cần dạy/chờ retest/đã đạt/máy + `vong` (đệ quy
+  case_truoc_id) + `retest_ngay`.
+- **Suýt sai — tự gộp:** t định để máy TỰ GỘP dạng yếu mới (`fn_btyeu_gop_dang_may`). Đo trong transaction rollback: lần đầu chạy sẽ nhét **116
+  dạng vào 63 case** — toàn dạng yếu CÓ SẴN mà người duyệt đã cố ý không chọn ở bước Nội dung ⇒ đè quyết định người. Migration `202609221346`
+  (ĐÃ ÁP) DROP hàm gộp, thay bằng `fn_btyeu_de_xuat_dang_moi(mon, case, thuc_hien)`: "mới" = yếu + n≥3 + có lần đo `gami_grades` SAU
+  `case.created_at`; thuc_hien=false chỉ đề xuất (60 dạng / 40 case Toán, 2s), true + case ⇒ insert nguon='may'. Máy đề xuất, người chốt.
+- Màn Xếp: 3 cột Chờ xếp (dang_bo_tro, chưa có buổi chờ) · Đã xếp chưa bổ trợ · **Chờ retest** (không xếp, hiện ngày retest / "chờ đánh giá ca");
+  card chip "Đang bổ trợ · vòng n", "x/y dạng cần dạy · z đã đạt · w chờ retest", "🤖 N dạng máy thêm", nút "🤖 +N dạng yếu mới — Thêm?"
+  (confirm liệt kê tên/điểm/n; vá tại chỗ). Local thật 22/09: Chờ xếp 103 · Đã xếp 13 · Chờ retest 4 · 1 case có đề xuất dạng mới. tsc sạch.
+- Retest: app TA đã có "retest đến hạn" (TaHome box + tab Bổ trợ, TA lớp đưa iPad sau ET) — giữ nguyên, đúng ý "chỉ cần thông báo".
+- `spec-bo-tro.md` thêm §1.1 (bảng 4 trạng thái + luật) + cập nhật §5/§9.
