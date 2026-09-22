@@ -70,7 +70,7 @@ function CardBai({ t, icon, ten, sub, tag, onClick, disabled }: { t: Theme; icon
     <button onClick={onClick} disabled={disabled} className="relative rounded-[26px] p-4 text-left transition active:scale-[0.98] disabled:opacity-55" style={{ background: t.cardTint, boxShadow: t.shadow }}>
       <div className="flex items-start gap-3">
         <span className="flex h-[56px] w-[56px] shrink-0 items-center justify-center rounded-[18px] text-[26px]" style={{ background: t.iconTint }}>{icon}</span>
-        <span className="min-w-0 flex-1 pt-1">
+        <span className={`min-w-0 flex-1 pt-1 ${tag ? 'pr-14' : ''}`}>
           <span className="block truncate text-[15px] font-extrabold leading-tight" style={{ color: NAVY }}>{ten}</span>
           <span className="mt-1 block text-[12px] leading-snug" style={{ color: t.sec }}>{sub}</span>
         </span>
