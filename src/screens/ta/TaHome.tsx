@@ -23,7 +23,7 @@ import GopY from './GopY'
 import CaBoTroTA, { demNoBoTro } from './CaBoTroTA'
 import { viecBoTroCuaToi, type ViecCaBoTro, type ViecRetest } from '../../lib/botro_yeu_ca'
 import { BuoiBuDetail } from '../botro/BoTroScreen'
-import { BuoiDuoiDetail } from '../botro/BoTroDuoiScreen'
+import DuoiCaTA from './DuoiCaTA'
 import TripCountdownBanner, { type CountdownRect } from '../../components/TripCountdownBanner'
 
 // Banner đếm ngược đi chơi Ba Vì (CEO 07/09, đã lắp cho OPS — "làm cái này cho ta app luôn") — ảnh + rect
@@ -116,15 +116,16 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
   // hook-order trước, không nghi cache trước.
   useEffect(() => { setAppBadgeCount(canLam.length + demNoBoTro(boTro)) }, [canLam.length, boTro])
 
-  // Buổi bù/đuổi mở màn detail RIÊNG (điểm danh + ET seed từ buổi mẹ + đánh giá per-HS + 2 nút đóng
-  // — cả bộ nằm trong BuoiBuDetail/BuoiDuoiDetail). ChamBuoi (EtPanel) chỉ hiểu buổi thường (bám đề
-  // theo lop×ngày), sẽ trắng dữ liệu với buổi bù (lop_id null, ET không có ở lop×ngày). BuoiBuDetail
-  // /BuoiDuoiDetail dùng `h-full` → phải BỌC trong 100dvh, không thì #root không cấp chiều cao và
-  // detail collapse xuống 0px (đường lỗi câm — không lỗi, chỉ trắng).
+  // Buổi bù mở màn detail RIÊNG (điểm danh + ET seed từ buổi mẹ + đánh giá per-HS + 2 nút đóng — nằm
+  // trong BuoiBuDetail, dùng `h-full` → phải BỌC trong 100dvh, không thì #root không cấp chiều cao và
+  // detail collapse xuống 0px, đường lỗi câm — không lỗi, chỉ trắng). ChamBuoi (EtPanel) chỉ hiểu buổi
+  // thường (bám đề theo lop×ngày), sẽ trắng dữ liệu với buổi bù (lop_id null, ET không có ở lop×ngày).
+  // Buổi đuổi (Thùy 22/09: "UI m phải làm cho dt"): DuoiCaTA — trang cuộn bình thường như ChamBuoi/
+  // DuoiGiayTA, KHÔNG bọc 100dvh (khác buổi bù, không phải flex h-full).
   if (view) {
     const onBack = () => { setView(null); reload(true) }
     if (view.loai === 'bu') return <div className="h-[100dvh]"><BuoiBuDetail buoiId={view.buoiId} onClose={onBack} /></div>
-    if (view.loai === 'bo_tro_duoi') return <div className="h-[100dvh]"><BuoiDuoiDetail buoiId={view.buoiId} onClose={onBack} /></div>
+    if (view.loai === 'bo_tro_duoi') return <DuoiCaTA buoiId={view.buoiId} onClose={onBack} />
     return <ChamBuoi view={view} onBack={onBack} />
   }
 
