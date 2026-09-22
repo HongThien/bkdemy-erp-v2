@@ -172,7 +172,7 @@ export function ChiTietDangHTD({ dang, dangCungChuyenDe, onLyThuyet, onLuyenTap,
           <span className="block text-[11px] leading-tight text-ph-label-2">Không giới hạn</span>
         </CardMau>
         <CardMau square tone="purple" icon="📝" ten="Làm bài Test" onClick={onTest}>
-          <span className="block text-[11px] leading-tight text-ph-label-2">10 câu · tính KQ</span>
+          <span className="block text-[11px] leading-tight text-ph-label-2">3-5 câu · tính KQ</span>
         </CardMau>
       </div>
     </Khung>
