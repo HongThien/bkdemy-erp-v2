@@ -13,6 +13,7 @@ import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { supabase } from '../../lib/supabase'
 import { listCandidatesLop, duyetLevel, getLevelLog, cuaSoHienTai, taoAiJob, getAiJob, listAiJobs, tienCuaLuot, getLichSuChuyenDe, MODEL_CHON, MODEL_MAC_DINH, type Candidate, type LevelLogRow, type AiJob, type LanLamChuyenDe, type DangStat } from '../../lib/danhgia'
 import { moHoacGopCaseBoTroYeu, UU_TIEN_TEN, type NguonBoTroYeu, type UuTienCase } from '../../lib/botro_yeu'
+import { LichSuBoTroNut } from './LichSuBoTroModal'
 
 // ⚠ HAI THANG LEVEL KHÁC NGHĨA — KHÔNG dùng chung nhãn (spec §4.1 vs §4.2).
 // Kiến thức: L0 = bình thường HOẶC "cần theo dõi" (Thùy 08-18: "cần để ý" gộp về L0 — "theo dõi"
@@ -71,6 +72,7 @@ export function CandidateHeader({ c, phu, uuTien, onDong }: { c: Candidate; phu?
         <KenhChips c={c} />
       </div>
       <div className="flex flex-none items-center gap-2">
+        <LichSuBoTroNut hocSinhId={c.hoc_sinh_id} mon={c.mon} />
         {uuTien != null && <span className="whitespace-nowrap rounded-full border border-rose-200 bg-rose-50 px-2 py-1 text-[11px] font-extrabold text-rose-600">★ ưu tiên {uuTien}</span>}
         {onDong && <button onClick={onDong} className="rounded-lg border border-slate-200 px-2 py-1 text-slate-400 hover:bg-slate-100">✕</button>}
       </div>

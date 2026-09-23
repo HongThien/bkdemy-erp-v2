@@ -1,7 +1,7 @@
 # BỔ TRỢ — tài liệu tổng (yếu · bù · đuổi)
 
 > **Đọc file này TRƯỚC khi sửa bất cứ gì thuộc luồng bổ trợ.** Đây là bản TỔNG HỢP các quyết định CEO (Thùy) đã chốt + những gì ĐÃ BUILT,
-> tính tới **22/09/2026**. Lịch sử/số đo từng quyết định: `DEVLOG.md` theo ngày. Thiết kế gốc: `PLAN-botro-yeu.md` (phát hiện → duyệt →
+> tính tới **23/09/2026**. Lịch sử/số đo từng quyết định: `DEVLOG.md` theo ngày. Thiết kế gốc: `PLAN-botro-yeu.md` (phát hiện → duyệt →
 > nội dung → xếp → đánh giá) và `PLAN-botro-yeu-ca.md` (1 ca diễn ra thế nào, 2 app). Code/DB là chân lý runtime; file này là bản đồ.
 
 ---
@@ -40,9 +40,9 @@ Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt d
 | Trạng thái | Nghĩa | Ở đâu |
 |---|---|---|
 | **Chờ duyệt** | máy phát hiện, chưa có case | hàng đợi Duyệt bổ trợ |
-| **Đang bổ trợ** | case `dang_xu` còn ≥1 dạng CẦN DẠY (chưa dạy, hoặc retest trượt ⇒ dạy lại) | Xếp lịch: cột Chờ xếp / Đã xếp · chưa bổ trợ |
-| **Chờ retest** | dạy hết dạng, còn dạng chưa retest đạt | Xếp lịch: cột Chờ retest (KHÔNG xếp lịch — retest làm sau ET buổi thường, app TA báo "retest đến hạn") |
-| **Hoàn thành** | mọi dạng retest đạt → người đánh giá ca chốt (`hoan_thanh`) | Đánh giá ca bổ trợ |
+| **Đang bổ trợ** | case `dang_xu` còn ≥1 dạng CẦN DẠY (chưa dạy, hoặc retest trượt ⇒ dạy lại) | Xếp lịch: tab **Cần xếp** (chưa có buổi chờ) / **Đã xếp** (có buổi chờ học) |
+| **Chờ retest** | dạy hết dạng, còn dạng chưa retest đạt | Xếp lịch: tab **Chờ retest** (KHÔNG xếp lịch — retest sau ET buổi thường, app TA báo "retest đến hạn") |
+| **Hoàn thành** | mọi dạng retest đạt → người đánh giá ca chốt (`hoan_thanh`) | Đánh giá ca bổ trợ → tab **Hoàn thành** ở Xếp lịch (lưu HẾT, không cắt) |
 
 - Vào **Đang bổ trợ** rồi thì ở đó tới khi XONG TOÀN BỘ dạng: đang bổ trợ mà thêm dạng mới ⇒ vẫn đang bổ trợ (dạng vào CÙNG case), vẫn hiện ở màn Xếp.
 - **Không định mức dạng/buổi**: đóng ca chỉ chốt dạng em có luyện, dạng chưa kịp trôi sang buổi sau; retest trượt ⇒ dạng cần dạy lại (`dat=false`), dạy
@@ -53,6 +53,8 @@ Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt d
   đè quyết định của người duyệt ở bước Nội dung. Case đang Chờ retest mà thêm dạng ⇒ về Đang bổ trợ.
 - **Báo động (chuông GV/TA) khi em ĐANG có case cùng môn ⇒ ADD THẲNG dạng vào case** (trigger `trg_btyeu_bao_dong_vao_case`, `nguon='bao_dong'`,
   nhãn 🚨 trên card) — cờ cứng của người, không cần đề xuất. Chưa có case ⇒ vào hàng đợi Duyệt như cũ (báo động tự đủ tín hiệu). (CEO 22/09.)
+- **Ca đã xếp mà KHÔNG DIỄN RA** (qua ngày không điểm danh có mặt, hoặc TA huỷ) ⇒ tự huỷ buổi (giữ dấu, `ly_do_huy` ghi "tự động"), case về Cần xếp với tag
+  "⚠ Ca DD/MM không diễn ra · N lần" (`fn_btyeu_don_ca_khong_dien_ra`, chạy mỗi lần mở màn Xếp; lần đầu 23/09 huỷ 12 buổi treo). (CEO 23/09.)
 - Nguồn dạng trong case: `bo_tro_yeu_dang.nguon` = duyet (bước Nội dung) · tay (+ Thêm dạng) · may (đề xuất máy, người bấm) · bao_dong (chuông, add thẳng).
 
 ---
@@ -91,7 +93,7 @@ Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt d
   `cham_at`; MCQ không cho chỉnh).
 - ⚠ CHƯA nối form **Điền Ô** (`dai_cau_form_dien` — "trắc nghiệm từng phần" cho dạng nâng cao K6–7) vào bổ trợ — chờ CEO chốt có tính là MCQ không.
 
-## 5. ④ Xếp lịch — màn "Xếp bổ trợ yếu" (4 tab: Xếp lịch · Ca bổ trợ · ● Đang diễn ra · Lịch trực)
+## 5. ④ Xếp lịch — màn "Xếp bổ trợ yếu" (7 tab, CEO 23/09: **Cần xếp · Đã xếp · Chờ retest · Hoàn thành** theo CASE như màn Bù · ● Đang diễn ra · Ca bổ trợ · Lịch trực)
 
 - **Lịch trực** `lich_truc_bo_tro`: môn × **KHỐI × BẬC** × thứ × giờ × phòng × **người trực (bắt buộc)** × hiệu lực × `suc_chua` (mặc định **3**).
   BK bổ trợ theo khối, KHÔNG theo lớp. Bậc theo `lop_bac.thu_tu`: **S > A > B > C** — **ca bậc cao nhận HS bậc thấp hơn, không ngược lại** (ca 7S
@@ -105,7 +107,8 @@ Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt d
   - Cột **"Đã xếp · chưa bổ trợ"** = hiện ngày/giờ/phòng/người; quá ngày chưa học ⇒ viền vàng ⚠ (OPS soát).
   - Dạng gộp thêm SAU khi đã xếp ("đợt duyệt mới") ⇒ nhãn "＋N dạng mới — học chung buổi đã xếp, KHÔNG xếp lại".
   - Mở lại case đã xếp = **SỬA buổi đó**, không đẻ buổi mới. Giờ chọn bằng khung sẵn bước 30'. Báo trùng phòng = cảnh báo, không chặn.
-- Cột thứ 3 **"Chờ retest"** (22/09): case dạy hết dạng — chỉ hiện ngày retest sắp tới, không xếp; nút thêm dạng yếu mới nếu máy đề xuất.
+- Tab **Chờ retest**: case dạy hết dạng — chỉ hiện ngày retest sắp tới, không xếp; nút thêm dạng yếu mới nếu máy đề xuất. Tab **Hoàn thành**: mọi case đã đóng
+  vòng (kết quả đạt/một phần/chưa đạt/bỏ, ngày mở→đóng). Mọi card có nút **🕘 Lịch sử bổ trợ**.
 - **Tab Ca bổ trợ:** ca 28 ngày tới + n/3 + **Tự ghép** các em chờ xếp vào ca trực còn chỗ (XEM TRƯỚC → xác nhận mới tạo buổi; theo thứ tự ưu tiên).
 - Filter môn + khối dùng chung các tab. RPC: `fn_btyeu_case_xep_lich` · `fn_lich_truc_cua_hs` · `fn_btyeu_ca_sap_toi`.
 
@@ -128,11 +131,18 @@ tới khi đóng ca.
 - Retest tầng 2 (sau ET buổi thường, 3–7 ngày) vẫn làm trên app như `PLAN-botro-yeu-ca.md` §2.
 - App TA là PWA tự cập nhật ⇒ bản mới chỉ ăn sau khi ĐÓNG HẲN app mở lại.
 
+## 6b. Lịch sử bổ trợ (CEO 23/09) — nút 🕘 trên card Duyệt bổ trợ / Dashboard / Xếp lịch
+
+`fn_btyeu_lich_su_hs(hs, mon, 14)` → popup dòng thời gian TOÀN BỘ hoạt động 2 tuần (chọn 14/30/60 ngày): buổi yếu/bù/đuổi (điểm danh, dạng dạy, luyện,
+test cuối ca, nhận xét, 📱/📄, lý do huỷ) · retest (đạt/trượt từng dạng) · lượt duyệt level · báo động · case mở/đóng. `LichSuBoTroModal.tsx`.
+
 ## 7. Theo dõi — tab "● Đang diễn ra" (ERP → Xếp bổ trợ yếu)
 
 `fn_btyeu_ca_theo_doi(ngay)`: mọi ca trong ngày, nhóm theo giờ, tự cập nhật 15s (không blank). Trạng thái: **Chưa điểm danh · Vắng · Đang luyện ·
 Im lâu (≥5', viền vàng) · Đã đóng chờ em làm test · Test xong chờ nhận xét · Hoàn tất**; badge chế độ 📱/📄/chưa chọn; ngay tại dòng ca:
 🖨 In tài liệu · ✎ Nhập kết quả · 🖨 In lại (cả phiếu luyện lẫn TEST cuối ca).
+**23/09: tab này = MỌI bổ trợ liên quan ngày đó** — toggle bar Yếu · Bù · Đuổi · Retest (`fn_bo_tro_trong_ngay`): bù/đuổi hiện giờ·phòng·người·HS·điểm danh
+(xử lý ở màn Bù/Đuổi); retest đến hạn hiện HS·lớp·TA lớp·đã nộp/quá hạn.
 
 ## 8. Quy ước UI bắt buộc (đã ghi CLAUDE.md §2 React)
 
@@ -151,7 +161,7 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
   `buoi_hoc`/`buoi_hoc_hs` (+`btyeu_che_do`) · `bai_test` (+`in_giay_at`) / `bai_test_cau` / `bai_lam` / `bai_lam_cau` · `bai_lam_cau_sua_log`.
 - **Migration (09→21/09):** `202609091750` lịch HS · `202609141708` lịch trực · `202609161637/1639/1651` ca sắp tới, sức chứa, khối+bậc ·
   `202609191317` + `202609191922` MCQ · `202609191717` TA chỉnh TLN · `202609201300` ưu tiên + chặn xếp lại · `202609211729` in giấy + theo dõi ·
-  `202609211801` 2 chế độ + test giấy · `202609221344` 4 trạng thái vòng (giai_doan, nguon dạng, dạy lại reset dat) · `202609221346` đề xuất dạng mới (không tự gộp).
+  `202609211801` 2 chế độ + test giấy · `202609221344` 4 trạng thái vòng (giai_doan, nguon dạng, dạy lại reset dat) · `202609221346` đề xuất dạng mới (không tự gộp) · `202609221354` báo động add thẳng · `202609231621` tab case + dọn ca không diễn ra + lịch sử + bổ trợ trong ngày (không tự gộp).
 - **Script chẩn đoán (read-only):** `scripts/_diag_*` — vd `_diag_lydo_hs.ts` (vì sao 1 HS vào hàng đợi), `_diag_kenh2_nguong.ts`,
   `_diag_mcq_nguon_botro.mjs`, `_diag_25dang_form.mjs`, `_diag_case_xep_lich.ts`, `_diag_ta_tln.ts`.
 

@@ -14522,3 +14522,19 @@ Khác với "dạng yếu mới do máy đo" (chỉ đề xuất — 20260922134
   backfill báo động bấm SAU khi case mở: **15 dạng · 9 case** · `fn_btyeu_case_xep_lich` trả thêm `so_dang_bao_dong`.
 - Test trong transaction ROLLBACK: insert canh_bao_yeu giả cho HS đang có case ⇒ dạng vào case với nguon='bao_dong'; rollback sạch.
 - Card Xếp lịch: nhãn đỏ "🚨 N dạng báo động (GV/TA thêm)". `spec-bo-tro.md` §1.1 cập nhật. tsc sạch.
+
+## 2026-09-23 — Xếp bổ trợ yếu theo CASE như màn Bù: Cần xếp · Đã xếp · Chờ retest · Hoàn thành + ca không diễn ra tự huỷ + Lịch sử bổ trợ + Đang diễn ra toàn bộ (Thùy chốt 6 câu)
+
+Chốt: đơn vị = case, Hoàn thành lưu hết · Chờ retest là tab riêng (retest xong = Hoàn thành) · "không diễn ra" = qua ngày không điểm danh HOẶC bị
+huỷ ⇒ tự huỷ + tính không diễn ra · Lịch sử = toàn bộ hoạt động 2 tuần · Đang diễn ra = yếu + bù + đuổi + retest, toggle lọc · 7 tab OK.
+- Migration `202609231621` (ĐÃ ÁP `--only`): `fn_btyeu_don_ca_khong_dien_ra()` (buổi mo, ngày < hôm nay VN, diem_danh ≠ co_mat ⇒ trang_thai='huy',
+  ly_do_huy "Không diễn ra — qua ngày không điểm danh (tự động …)"; gọi mỗi lần mở màn Xếp; **lần đầu huỷ 12 buổi treo thật**) ·
+  `fn_btyeu_case_xep_lich` trả cả case hoan_thanh (+hoan_thanh_at, ket_qua) + `so_buoi_khong_dien_ra` (= buổi huỷ) + ngày gần nhất ·
+  `fn_btyeu_lich_su_hs(hs, mon, n)` = 1 mảng sự kiện (buổi yếu/bù/đuổi kèm điểm danh·dạng dạy·luyện·test·nhận xét·chế độ·lý do huỷ · retest kèm
+  đạt/trượt từng dạng · duyệt level · báo động · case mở/đóng) sắp giảm dần (Tùng 14 ngày: 4 sự kiện, 71ms) · `fn_bo_tro_trong_ngay(ngay)` = bù/đuổi
+  (giờ·phòng·người·HS·điểm danh) + retest đến hạn (HS·lớp·TA lớp·đã nộp·quá hạn).
+- Màn Xếp: 7 tab; Cần xếp/Đã xếp = case dang_bo_tro; Chờ retest; Hoàn thành (kết quả, ngày mở→đóng); banner "vừa tự huỷ N buổi"; card tag đỏ
+  "⚠ Ca DD/MM không diễn ra · N lần — xếp lại"; mọi card có nút 🕘 Lịch sử bổ trợ (`LichSuBoTroModal.tsx`, chọn 14/30/60 ngày). Nút Lịch sử
+  cũng ở `CandidateHeader` (Duyệt bổ trợ + Dashboard). Tab Đang diễn ra: toggle Yếu/Bù/Đuổi/Retest + 3 khối mới.
+- Verify local thật 23/09: Cần xếp 115 · Đã xếp 3 · Chờ retest 4 · Hoàn thành 0; 12 buổi tự huỷ; popup lịch sử mở đúng (hiện "Mở case · 4 dạng ·
+  ưu tiên cao"). Tab Đang diễn ra mới kiểm RPC (hôm nay: 0 bù · 1 đuổi · 0 retest), chưa nhìn bằng mắt. tsc sạch. spec-bo-tro §1.1/§5/§6b/§7/§9 cập nhật.

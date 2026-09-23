@@ -195,6 +195,8 @@ export type CaseChoXep = CaseBoTroYeuItem & {
   giaiDoan: GiaiDoanVong; vong: number
   soDangCanDay: number; soDangChoRetest: number; soDangXong: number; soDangMay: number // dạng máy đề xuất (người bấm thêm), chưa dạy
   soDangBaoDong: number // dạng do GV/TA bấm chuông báo động KHI em đang có case ⇒ add thẳng (trigger DB), chưa dạy
+  trangThai: 'dang_xu' | 'hoan_thanh'; hoanThanhAt: string | null; ketQua: string | null
+  soBuoiKhongDienRa: number; khongDienRaGanNhat: string | null // buổi huỷ (qua ngày không điểm danh / TA huỷ) — tag "không diễn ra"
   retestNgay: string | null
 }
 // Dạng yếu MỚI của em đang bổ trợ (yếu + ≥3 lần đo + có lần đo SAU khi mở case) — máy ĐỀ XUẤT, người bấm "Thêm" mới vào case
@@ -204,6 +206,19 @@ export async function deXuatDangMoi(mon?: string): Promise<DangMayDeXuat[]> {
   const { data, error } = await supabase.rpc('fn_btyeu_de_xuat_dang_moi', { p_mon: mon ?? null, p_case: null, p_thuc_hien: false })
   if (error) throw error
   return ((data as any)?.chi_tiet ?? []) as DangMayDeXuat[]
+}
+// Dọn ca ĐÃ XẾP mà KHÔNG DIỄN RA (qua ngày, không điểm danh có mặt) ⇒ tự huỷ (giữ dấu), case về Cần xếp. Gọi khi mở màn Xếp. Idempotent.
+export async function donCaKhongDienRa(): Promise<{ buoi_id: string; ngay: string }[]> {
+  const { data, error } = await supabase.rpc('fn_btyeu_don_ca_khong_dien_ra')
+  if (error) throw error
+  return (data as any[]) ?? []
+}
+// Lịch sử bổ trợ 1 em (1 môn) N ngày — mọi hoạt động (buổi yếu/bù/đuổi · retest · duyệt · báo động · case), sắp giảm dần theo thời gian.
+export type SuKienBoTro = { t: string; loai: 'buoi' | 'retest' | 'duyet' | 'bao_dong' | 'case_mo' | 'case_dong'; d: Record<string, unknown> }
+export async function lichSuBoTroHS(hocSinhId: string, mon: string, soNgay = 14): Promise<SuKienBoTro[]> {
+  const { data, error } = await supabase.rpc('fn_btyeu_lich_su_hs', { p_hoc_sinh: hocSinhId, p_mon: mon, p_so_ngay: soNgay })
+  if (error) throw error
+  return (data as SuKienBoTro[]) ?? []
 }
 export async function themDangMayVaoCase(caseId: string): Promise<number> {
   const { data, error } = await supabase.rpc('fn_btyeu_de_xuat_dang_moi', { p_mon: null, p_case: caseId, p_thuc_hien: true })
@@ -229,6 +244,8 @@ export async function listCaseChoXepLich(mon?: string): Promise<CaseChoXep[]> {
       buoiChoHoc: r.buoi_cho_hoc ?? null, soDangMoiSauXep: r.so_dang_moi_sau_xep ?? 0,
       giaiDoan: (r.giai_doan ?? 'dang_bo_tro') as GiaiDoanVong, vong: r.vong ?? 1,
       soDangCanDay: r.so_dang_can_day ?? 0, soDangChoRetest: r.so_dang_cho_retest ?? 0, soDangXong: r.so_dang_xong ?? 0, soDangMay: r.so_dang_may ?? 0, soDangBaoDong: r.so_dang_bao_dong ?? 0,
+      trangThai: r.trang_thai ?? 'dang_xu', hoanThanhAt: r.hoan_thanh_at ?? null, ketQua: r.ket_qua ?? null,
+      soBuoiKhongDienRa: r.so_buoi_khong_dien_ra ?? 0, khongDienRaGanNhat: r.khong_dien_ra_gan_nhat ?? null,
       retestNgay: r.retest_ngay ?? null,
     }))
     // Thùy 22/09: MỌI case đang mở hiện ở màn Xếp suốt vòng (kể cả chờ retest) — không lọc nữa; màn tự chia nhóm theo giaiDoan.
