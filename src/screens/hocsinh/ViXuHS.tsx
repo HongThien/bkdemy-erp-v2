@@ -46,9 +46,16 @@ const TRANG_THAI_MUA: Record<LichSuMua['trang_thai'], { ten: string; cls: string
   huy: { ten: 'Đã huỷ', cls: 'bg-slate-100 text-slate-500' },
 }
 
+// Quy đổi HIỂN THỊ để em hình dung — công thức: xu = exp / 100 (chỉ để tham khảo, số xu THẬT chốt
+// cuối tháng theo bảng khúc luỹ tiến luong_bac, không tuyến tính — xem so_du ở đầu màn mới là số thật).
+function fmtXuTuongDuong(exp: number): string {
+  return (Math.abs(exp) / 100).toLocaleString('vi-VN', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
+}
+
 function HoatDongRow({ h, t }: { h: HoatDongViXu; t: typeof THEME.nam }) {
   const nhan = NHAN_NGUON[h.nguon] ?? { icon: '✨', ten: h.nguon }
-  const donVi = h.loai === 'xu' ? 'xu' : 'EXP'
+  const laExp = h.loai !== 'xu'
+  const donVi = laExp ? 'EXP' : 'xu'
   const duong = h.so >= 0
   return (
     <div className="flex items-center gap-3 rounded-[20px] p-3" style={{ background: t.cardTint, boxShadow: t.shadow }}>
@@ -57,7 +64,10 @@ function HoatDongRow({ h, t }: { h: HoatDongViXu; t: typeof THEME.nam }) {
         <span className="block truncate text-[13.5px] font-bold" style={{ color: NAVY }}>{nhan.ten}</span>
         <span className="mt-0.5 block text-[11.5px]" style={{ color: t.sec }}>{h.ngay ? ddmm(h.ngay) : ddmm(h.created_at)}{h.mon ? ` · ${h.mon}` : ''}{h.lop ? ` · ${h.lop}` : ''}</span>
       </span>
-      <span className={`shrink-0 text-[15px] font-extrabold ${duong ? 'text-emerald-600' : 'text-rose-500'}`}>{duong ? '+' : ''}{h.so} {donVi}</span>
+      <span className="shrink-0 text-right">
+        <span className={`block text-[15px] font-extrabold ${duong ? 'text-emerald-600' : 'text-rose-500'}`}>{duong ? '+' : ''}{h.so} {donVi}</span>
+        {laExp && <span className="mt-0.5 block text-[10.5px]" style={{ color: t.sec }}>≈ {fmtXuTuongDuong(h.so)} xu</span>}
+      </span>
     </div>
   )
 }
