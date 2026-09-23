@@ -16,9 +16,9 @@ import {
   GAY_DON_GIA, MA_LOI_CHAM_DEADLINE, MA_LOI_KHONG_DAT_CHUAN, kyHienTai, nhanKy,
   listGayLoi, createGayLoi, updateGayLoi, listGayHoatDong, createGayHoatDong, updateGayHoatDong,
   quetGayTuDong, listDeXuat, chotDeXuat, boQuaDeXuat,
-  danhGayThuCong, goGay, thuHoiGay, bangGay, chotThang, listChotThang, listMienGay, setMienGay, listTaskCuaNhanSu,
+  danhGayThuCong, goGay, thuHoiGay, bangGay, chotThang, listChotThang, listMienGay, setMienGay, listTaskCuaNhanSu, lichSuGay,
   type GayLoi, type GayHoatDong, type GayDeXuatFull, type BangGayRow, type GayChotThangFull, type NsMienGay,
-  type KhoangNgay, type TaskCuaNhanSu,
+  type KhoangNgay, type TaskCuaNhanSu, type GayLichSuEvent, type GayLichSuLoai,
 } from '../../lib/gay'
 import { homNayVN, congNgay, tuanCuaNgay, khoangTuan, nhanTuan, ddmmVN } from '../../lib/tuan'
 
@@ -57,6 +57,44 @@ const pill = (tone: 'red' | 'emerald' | 'amber' | 'zero') => ({
   amber: 'inline-flex min-w-[30px] items-center justify-center rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-700',
   zero: 'inline-flex min-w-[30px] items-center justify-center rounded-full border border-slate-200 bg-white px-2 py-0.5 text-xs font-medium text-slate-400',
 }[tone])
+
+// ── LỊCH SỬ 1 TASK (CEO 23/09): timeline hạn · đóng/mở lại · dữ liệu HS nhập sau khi đóng ·
+// HS nộp muộn — để leader biết gậy là do nhân sự đóng muộn hay HS nộp muộn thật rồi nhân sự
+// mở lại điền. Toàn bộ do fn_gay_lich_su ghép ở DB; đây chỉ render. Dùng ở đề xuất (ref_key)
+// và ở dòng ledger gắn task (ref_id).
+const LS_DOT: Record<GayLichSuLoai, string> = {
+  han: 'bg-amber-400', dong: 'bg-emerald-500', mo_lai: 'bg-indigo-500', doi_moc: 'bg-slate-400',
+  nhap: 'bg-slate-300', hs_nop: 'bg-rose-400', viec: 'bg-slate-400',
+}
+const LS_TEXT: Record<GayLichSuLoai, string> = {
+  han: 'font-semibold text-amber-700', dong: 'font-medium text-emerald-700', mo_lai: 'font-medium text-indigo-700',
+  doi_moc: 'text-slate-600', nhap: 'text-slate-600', hs_nop: 'font-medium text-rose-700', viec: 'text-slate-600',
+}
+function LichSuTask({ refKey }: { refKey: string }) {
+  const [evs, setEvs] = useState<GayLichSuEvent[] | null>(null)
+  const [err, setErr] = useState('')
+  useEffect(() => {
+    let alive = true
+    setEvs(null); setErr('')
+    lichSuGay(refKey).then((r) => { if (alive) setEvs(r) }).catch((e: any) => { if (alive) setErr(String(e.message ?? e)) })
+    return () => { alive = false }
+  }, [refKey])
+  if (err) return <p className="text-xs text-red-600">{err}</p>
+  if (!evs) return <p className="text-xs text-slate-400">Đang tải lịch sử…</p>
+  if (!evs.length) return <p className="text-xs text-slate-400">Chưa có vết nào cho task này (log đóng/mở lại chỉ ghi từ 23/09/2026; việc OPS gộp theo ca chưa có timeline).</p>
+  return (
+    <ol className="ml-1.5 space-y-1 border-l-2 border-slate-200 pl-3" onClick={(ev) => ev.stopPropagation()}>
+      {evs.map((e, i) => (
+        <li key={i} className="relative text-xs leading-5">
+          <span className={`absolute -left-[17px] top-1.5 h-2.5 w-2.5 rounded-full ring-2 ring-white ${LS_DOT[e.loai] ?? 'bg-slate-300'}`} />
+          <span className="font-mono text-slate-500">{ddmmhh(e.at)}</span>{' '}
+          <span className={LS_TEXT[e.loai] ?? 'text-slate-600'}>{e.mo_ta}</span>
+          {e.actor && <span className="text-slate-400"> · {e.actor}</span>}
+        </li>
+      ))}
+    </ol>
+  )
+}
 
 export default function GayScreen() {
   const quyen = useStore((s) => s.quyen)
@@ -207,6 +245,7 @@ function FragmentRow({ r, i, mo, onMo, canAct, trongPhamVi, thuHoiId, setThuHoiI
   thuHoiId: string | null; setThuHoiId: (v: string | null) => void; thuHoiLyDo: string; setThuHoiLyDo: (v: string) => void
   lamThuHoi: (id: string) => void
 }) {
+  const [lsId, setLsId] = useState<string | null>(null) // dòng ledger đang xoè lịch sử task
   return (
     <>
       <tr className="cursor-pointer border-b border-slate-50 transition hover:bg-slate-50/60" onClick={onMo}>
@@ -227,6 +266,11 @@ function FragmentRow({ r, i, mo, onMo, canAct, trongPhamVi, thuHoiId, setThuHoiI
                 <span className={`min-w-[30px] font-bold ${e.so_gay < 0 ? 'text-emerald-600' : 'text-red-600'} ${e.thu_hoi_at ? 'line-through' : ''}`}>{e.so_gay > 0 ? `+${e.so_gay}` : e.so_gay}</span>
                 <span className="rounded-full bg-slate-100 px-1.5 py-0.5 text-[10px] font-semibold text-slate-500">{e.loai === 'tu_dong' ? 'Tự động' : e.loai === 'go' ? 'Gỡ' : e.ref_id ? 'Theo task' : 'Thủ công'}</span>
                 {e.ref_mo_ta && <span className="rounded-md border border-indigo-100 bg-indigo-50 px-1.5 py-0.5 text-[11px] font-medium text-indigo-700">{e.ref_mo_ta}</span>}
+                {e.ref_id && (
+                  <button type="button" className="text-[11px] font-medium text-indigo-500 hover:underline" onClick={(ev) => { ev.stopPropagation(); setLsId(lsId === e.id ? null : e.id) }}>
+                    {lsId === e.id ? 'Ẩn lịch sử ▲' : 'Lịch sử ▼'}
+                  </button>
+                )}
                 <span className={`text-slate-600 ${e.thu_hoi_at ? 'line-through' : ''}`}>{e.so_gay < 0 ? e.hoat_dong_ten : e.loi_ten}{e.ly_do ? ` — ${e.ly_do}` : ''}</span>
                 <span className="ml-auto text-[11px] text-slate-400">{ddmmhh(e.created_at)} · {e.nguoi_tao_ten}</span>
                 {e.thu_hoi_at ? <span className="text-[10px] font-medium text-amber-600">Đã thu hồi: {e.thu_hoi_ly_do}</span>
@@ -241,6 +285,7 @@ function FragmentRow({ r, i, mo, onMo, canAct, trongPhamVi, thuHoiId, setThuHoiI
                       <button className={btnGhost + ' !px-2 !py-1 !text-xs'} onClick={(ev) => { ev.stopPropagation(); setThuHoiId(e.id); setThuHoiLyDo('') }}>Thu hồi</button>
                     )
                   )}
+                {lsId === e.id && e.ref_id && <div className="mt-1.5 w-full pl-1" onClick={(ev) => ev.stopPropagation()}><LichSuTask refKey={e.ref_id} /></div>}
               </div>
             ))}
           </div>
@@ -266,6 +311,7 @@ function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
   const [loiById, setLoiById] = useState<Record<string, string>>({})
   const [boQuaId, setBoQuaId] = useState<string | null>(null)
   const [boQuaLyDo, setBoQuaLyDo] = useState('')
+  const [lichSuId, setLichSuId] = useState<string | null>(null) // đề xuất đang xoè timeline
   const loiChamDeadline = lois.find((l) => l.ma === MA_LOI_CHAM_DEADLINE)?.id ?? lois[0]?.id ?? ''
 
   const load = async () => {
@@ -345,7 +391,12 @@ function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
                       <p className="mt-0.5 text-xs text-slate-400">
                         {d.nguon === 'vanhanh' ? 'Vận hành' : 'Giao việc'} · hạn {ddmmhh(d.deadline_at)} · <span className="font-medium text-red-600">trễ {nhanTre(d.tre_phut)}</span>
                         {qua48h(d.created_at) && <span className="ml-1.5 font-semibold text-rose-600">· ⏰ quá 48h chưa duyệt (đang tính ĐẠT CHUẨN)</span>}
+                        {' · '}
+                        <button type="button" className="font-medium text-indigo-500 hover:underline" onClick={() => setLichSuId(lichSuId === d.id ? null : d.id)}>
+                          {lichSuId === d.id ? 'Ẩn lịch sử ▲' : 'Lịch sử ▼'}
+                        </button>
                       </p>
+                      {lichSuId === d.id && <div className="mt-2"><LichSuTask refKey={d.ref_key} /></div>}
                     </div>
                     {duocLam ? (
                       boQuaId === d.id ? (

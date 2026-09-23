@@ -14661,3 +14661,58 @@ Khác với "dạng yếu mới do máy đo" (chỉ đề xuất — 20260922134
   (620 đề xuất 'cho', 571 bỏ qua) — chưa đánh thật để khỏi bẩn data.
 - **Chưa làm (đích sau):** màn hiệu suất = task đạt chuẩn / tổng task — mẫu số (tổng task vận hành) vẫn derive ở JS (`listAllStaffTasks`),
   muốn đúng §2.0 phải đưa invariant task vận hành xuống SQL rồi mới có `fn_gay_hieu_suat`. Tử số đã sẵn ở DB (`fn_gay_theo_task`).
+
+## 23/09 — Nhập kho Hình 11 (HH00087 "Đường thẳng và mặt phẳng trong không gian"), 8 file cùng lúc
+
+- Thùy: "nhập kho hình của lớp 11 nhé. Kiểm tra đi". Quét `L11/Hình` ra 8 file PDF (co_giai), tổng 41
+  trang: Cách vẽ hình (1tr) · bài tập nhận dạng hình chóp (3tr) · Giao điểm đường-mặt cắt trực tiếp (3tr)
+  · xác định giao tuyến cơ bản (6tr) · Xác định giao tuyến tự luận (1)&(2) (6+12tr, BK ACADEMY) · Xét
+  điểm thuộc mặt phẳng (6tr) · điểm và mặt phẳng trong kg (4tr). Tất cả đổ vào dạng có sẵn duy nhất của
+  khối 11: `HH00087` (đã có 63 câu, 61 đã duyệt trước khi làm).
+- Đặc điểm nổi bật: hầu hết nội dung ĐÃ CÓ SẴN trong kho (dedup theo noi_dung chuẩn hoá chặn được rất
+  nhiều — có file "Xét điểm thuộc mặt phẳng.pdf" 6 trang / 5 câu mà KHÔNG câu nào mới, trùng 100%; nhiều
+  file khác cũng chỉ 1-2/5-9 câu là mới). Nhiều file còn tự lặp NỘI BỘ (cùng 1 file có 2-3 lượt "compilation"
+  nối nhau, các câu tái xuất hiện với thứ tự đáp án xáo lại — điển hình dạng "» Câu 1" restart sau dấu
+  ngăn) — phải đọc hết rồi mới build danh sách insert, không insert ngay khi gặp câu đầu tiên.
+  Bài học: **trước khi build câu để insert, đọc HẾT file rồi mới gom danh sách — không insert theo từng
+  trang, dễ trùng nội bộ**.
+  file "1/4 - Mã đề 011" — đề trắc nghiệm không đánh dấu đáp án đúng (không có "Chọn X") → bỏ qua toàn bộ
+  khối đó vì không tự suy đáp án đúng khi không chắc 100% (§1.5).
+- Vài câu trắc nghiệm CHỈ trả lời được bằng cách NHÌN ẢNH (chọn hình vẽ đúng quy tắc, chọn hình nào là
+  tứ diện trong 4 ảnh...) — 100% phụ thuộc ảnh, không đề bằng chữ nào tả được. Bỏ qua toàn bộ (đúng
+  convention "chỉ lấy chữ" đã chốt từ đầu phiên) — gồm cả file "Cách vẽ hình.pdf" (chỉ có đúng 1 câu, y
+  hệt dạng này) và vài câu lẻ trong các file khác (nhận dạng hình chóp Câu5/Câu7, xét điểm Câu3, điểm-mp
+  Câu11).
+- 2 lỗi đánh máy nguồn tự phát hiện và SỬA NGẦM (không hỏi, vì hiển nhiên và không đổi đáp số): (1) 1
+  chỗ nhãn sai mặt phẳng trong lời giải Ví dụ 6 (ghi "Trong mặt phẳng (ABCD)" nhưng SI và DM là 2 đường
+  3D, chỉ đồng phẳng trong (SBD) — sửa lại đúng (SBD)); (2) Ví dụ/Câu 8 phần c) ghi nhầm "(MNI) và (ABD)"
+  thay vì "(MNI) và (ACD)" — sửa theo đúng kết luận NJ=(MNI)∩(ACD) mà lời giải thực sự chứng minh.
+- Kết quả: 21 câu mới (HH00087064-084), $ cân bằng verify từ DB. nhap_kho_log ghi đủ 8 file (kể cả 2
+  file 0-câu-mới, để đánh dấu đã xử lý — tránh quét lại). Move cả 8 file → `DaXuLy/2026-09-23/`.
+
+## 2026-09-23 — Gậy: LỊCH SỬ ĐÓNG/MỞ LẠI task (mig 202609231619 + 202609231626) + merge worktree-gay
+- **Yêu cầu CEO:** mỗi gậy cần lịch sử chỉnh sửa (vd "18h 19/07 đóng · 15h30 22/07 mở lại điền dữ liệu HS A") để biết lỗi
+  do nhân sự đóng muộn hay HS nộp muộn thật. Soi code: mốc xong = 1 cột `*_dong_at` trên `buoi_hoc`; mở lại
+  (`moLaiDanhGia`/`reopenBTVN`/`fn_mo_lai_phase`) ghi NULL đè ⇒ mất mốc đóng lần 1; KHÔNG trigger nào log
+  (`trg_buoi_hoc_online_log` chỉ log link học online, 0 dòng). Dữ liệu cũ KHÔNG truy lại được.
+- **Làm:** (1) bảng `buoi_hoc_phase_log` + trigger `trg_buoi_hoc_phase_log` (after update of 5 cột mốc; helper
+  `_phase_log_ghi` security definer để log không bao giờ bị RLS chặn UPDATE nghiệp vụ; actor = current_nhan_su_id()).
+  (2) RPC `fn_gay_lich_su(ref_key)` → jsonb timeline: hạn (fn_han_viec, cùng nguồn dashboard) · đóng/mở lại · dữ liệu
+  HS nhập SAU lần đóng đầu (gami_grades.graded_at theo phase · btvn_ket_qua.updated_at · buoi_danh_gia.updated_at)
+  · HS nộp muộn (btvn_nop.nop_at · bai_lam.nop_at vs bai_test.deadline). Hỗ trợ `viec:<id>` (viec_log); key OPS
+  gộp ca → []. (3) UI: nút "Lịch sử ▼" trên từng đề xuất (DeXuatTab) và từng dòng ledger có ref_id (Bảng gậy),
+  component `LichSuTask` trong GayScreen. Luật gậy KHÔNG đổi — máy vẫn đề xuất theo mốc hiện tại, leader nhìn rồi quyết.
+- **Sai & sửa ngay:** trigger vừa áp thì bắt được ca thật (TA Lộ Thị Dương, BTVN, 16:22): log mở đầu bằng `mo_lai`
+  với `cu=13:15` — lần đóng đầu xảy ra TRƯỚC khi có log, bản RPC đầu bỏ sót ⇒ timeline đọc thành "đóng 16:22 trễ
+  22 phút" (sai bản chất: thật ra đóng 13:15 trước hạn 16:00). Mig 202609231626: suy lần đóng đầu từ `cu` của dòng
+  log sớm nhất khi nó là mo_lai/doi_moc. Bài học: **mở lại có `cu` = bằng chứng của lần đóng trước** — đừng chỉ đọc
+  dòng `dong`.
+- **Merge worktree-gay → main** (commit be3cb6b): 73976dd (05/09, lọc tháng/tuần + gậy theo task) treo 18 ngày, mig
+  202609051251 ĐÃ áp DB nhưng file thiếu trên main (`--status` báo mồ côi). Conflict gay.ts = giữ cả 2 (import +
+  hằng), DEVLOG giữ cả 2, schema.md regen. Từ giờ hệ Gậy làm THẲNG trên main (worktree gay hết vai trò).
+- **Ghi chú kỹ thuật:** áp migration bằng `--only` vì repo đang có 4 file so_tay_* treo + 1 file vixu chưa track của
+  phiên khác. Test RPC/trigger từ CLI = `set_config(request.jwt.claims)` trong transaction rồi ROLLBACK (đã verify
+  et_dong_at buổi test không đổi sau rollback). `gami_grades.graded_at` = lần chấm ĐẦU (upsert không đụng) — timeline
+  "nhập điểm HS" chỉ bắt câu chấm MỚI sau khi đóng, không bắt sửa điểm câu cũ.
+- Verify UI (dev-alt 5202, login dev Admin): Đề xuất → Lịch sử hiện "07/09 18:00 Hạn chót Chấm MT · 13/09 20:07 Đóng — trễ
+  6 ngày 2h (mốc hiện tại — trước khi có log)"; Bảng gậy → dòng ledger ref_id có nút Lịch sử. tsc sạch (trừ pdfRender có sẵn).

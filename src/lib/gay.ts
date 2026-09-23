@@ -443,6 +443,18 @@ export async function setMienGay(nhanSuId: string, mien: boolean): Promise<void>
   if (error) throw error
 }
 
+// ── LỊCH SỬ 1 TASK (CEO 23/09): hạn · đóng/mở lại (trigger buoi_hoc_phase_log) · dữ liệu HS
+// nhập SAU lần đóng đầu · bằng chứng HS nộp muộn — để leader phân biệt "nhân sự đóng muộn"
+// với "HS nộp muộn thật, nhân sự mở lại để điền". Toàn bộ ghép ở DB (fn_gay_lich_su,
+// mig 202609231619); client chỉ render. Khoá = ref_key của đề xuất / ref_id của ledger.
+export type GayLichSuLoai = 'han' | 'dong' | 'mo_lai' | 'doi_moc' | 'nhap' | 'hs_nop' | 'viec'
+export type GayLichSuEvent = { at: string; loai: GayLichSuLoai; mo_ta: string; actor: string | null }
+export async function lichSuGay(refKey: string): Promise<GayLichSuEvent[]> {
+  const { data, error } = await supabase.rpc('fn_gay_lich_su', { p_ref_key: refKey })
+  if (error) throw error
+  return (data ?? []) as GayLichSuEvent[]
+}
+
 // Đếm đề xuất đang chờ (badge tab). Không quét — chỉ đọc.
 export async function demDeXuatCho(): Promise<number> {
   const { count, error } = await supabase.from('gay_de_xuat').select('id', { count: 'exact', head: true }).eq('trang_thai', 'cho')
