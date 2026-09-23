@@ -29508,3 +29508,18 @@ huỷ ⇒ tự huỷ + tính không diễn ra · Lịch sử = toàn bộ hoạt
 
 Nút 🕘 vốn đã có ở Duyệt bổ trợ (CandidateHeader, cạnh chip ưu tiên) — t đặt THÊM ở mọi card màn Xếp + tab Retest, thừa. Gỡ khỏi Xếp/Retest;
 giữ Duyệt + modal Dashboard. tsc sạch.
+
+## 2026-09-23 (tối) — Dạng vào case lúc mở = TẤT CẢ dạng yếu trong 2 cửa sổ (Thùy: "cứ yếu là bổ trợ"; bỏ tin thấp; chỉ thêm; chỉ lúc đầu)
+
+Hỏi: "Nội dung bổ trợ chốt theo logic gì? Sao Hà Linh 11A chưa có dạng?" Tra: máy VỐN đã đổ `dien` vào case lúc duyệt (engine
+src/gami/danhgia.js: yếu <0.5 + ≥3 lần đo, KHÔNG giới hạn thời gian). Hà Linh rỗng vì 09/09 dạng yếu của em chưa đủ 3 lần đo (case mở bằng
+chuông đỏ). 10/132 case mở đang rỗng cùng kiểu. Thùy chốt rule: yếu · ≥3 lần đo · có lần đo trong 2 cửa sổ · chỉ THÊM · chỉ lúc mở case.
+- Engine: thêm `ganDay` vào DangStat (lần đo gần nhất rơi vào cửa sổ hiện tại/liền trước); `trongDien` + `dien` (dạng CHƯA mở) đòi `ganDay`.
+  Dạng ĐÃ mở giữ luật trễ cũ (ra khi >0.5). Không đổi picker Nội dung (vẫn liệt kê yếu + cần luyện để người chọn tay).
+- SQL cùng rule: `fn_btyeu_dang_yeu_2_cua_so(hs, mon)` + `fn_btyeu_fill_dang_yeu(case)` (nguon='may', on conflict nothing) — để đổ lại case rỗng.
+  Mốc 2 cửa sổ tính theo NGÀY BUỔI (coalesce(buoi_hoc.ngay, graded_at)) — khớp engine "chấm trễ không đẩy phép đo sang cửa sổ mới".
+- ĐO (rollback tx) đổ lại 10 case rỗng: chỉ +1 dạng (Phùng Thế Kiệt K8, T108020203 0.36/25). 9 case còn lại máy bó tay ⇒ card Nội dung
+  đỏ "Chưa có dạng — chọn tay". CHƯA chạy thật (auto-mode chặn ghi DB) — chờ Thùy.
+- ⚠ PHÁT HIỆN DỮ LIỆU: Hà Linh có T111010103 (0.33/7 đo, MT 05/09) nhưng mã này KHÔNG CÒN trong `dai_ban_do` (chương 1 K11 chỉ còn
+  …0101/0102/0106/0107/0108/0110). Điểm gắn dạng mồ côi từ 01/09: T309xxxx (68 HS, ~1.600 dòng), T312xxxx (8 HS), T111010103/…0109 (17/8 HS).
+  Engine + SQL đều bỏ dạng ngoài bản đồ ⇒ HS yếu đúng dạng đó thành "rỗng". Việc của phiên bản đồ/kho — báo Thùy.

@@ -250,7 +250,8 @@ export function deXuatLevelKienThuc(input) {
   //   · dạng ĐÃ mở đợt (`daMo` — có dòng `bo_tro_yeu_dang` chưa `dong_at`): RA khi score
   //     **> 0.5**; đúng 0.5 thì Ở LẠI (Thùy: "0.5 thì vẫn giữ level").
   // Không có `daMo` thì coi như chưa mở — an toàn: chỉ ảnh hưởng đúng ca score = 0.5.
-  const dien = dangs.filter((d) => (d.daMo ? d.score <= cfg.MOC : d.score < cfg.MOC && d.n >= cfg.GATE_N))
+  //   · Thùy 23/09: dạng CHƯA mở còn phải có lần đo trong 2 CỬA SỔ gần nhất (`ganDay`; thiếu field = coi là gần).
+  const dien = dangs.filter((d) => (d.daMo ? d.score <= cfg.MOC : d.score < cfg.MOC && d.n >= cfg.GATE_N && d.ganDay !== false))
   // Yếu thật (<0.5) nhưng chưa đủ lần đo → CHỈ cảnh báo, không gọi bổ trợ (Thùy 07-22).
   const yeuThieuDo = dangs.filter((d) => !d.daMo && d.score < cfg.MOC && d.n < cfg.GATE_N)
   // Cần luyện (0.5 ≤ score < 0.8) → luồng ôn tập/lặp, KHÔNG bổ trợ, KHÔNG lên level (spec §4.3).

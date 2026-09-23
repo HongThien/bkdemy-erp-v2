@@ -51,6 +51,7 @@ export type DangStat = {
   mucTruoc: 'dat' | 'can_luyen' | 'yeu' | null
   daMo: boolean          // đang có trong đợt bổ trợ yếu (bo_tro_yeu_dang chưa dong_at)
   trongDien: boolean     // sau khi áp 2 mốc trễ — nguồn sự thật cho HÀNH ĐỘNG
+  ganDay: boolean        // có lần đo trong 2 cửa sổ gần nhất (hiện tại + liền trước) — Thùy 23/09: dạng yếu chỉ vào diện khi ĐO GẦN ĐÂY
   cuoiCungAt: string     // lần đo gần nhất → cờ "cũ" nếu > 30 ngày (spec §1)
 }
 export type ChuyenDeStat = {
@@ -320,6 +321,10 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
         // mốc chưa có lần đo nào (dạng mới xuất hiện cửa sổ này) ⇒ UI hiện "mới", không so delta.
         const evTruoc = evs.filter((e) => Date.parse(e.t) <= cutTruoc)
         const mTruoc = evTruoc.length ? masteryOfDang(evTruoc, MASTERY_CONFIG) : null
+        // Thùy 23/09: "tất cả dạng bị Yếu trong 2 cửa sổ 15 ngày gần nhất" — cùng phạm vi recency với kênh ②. Dạng yếu
+        // từ lâu không đo lại KHÔNG tự vào diện/case (người vẫn thêm tay được ở Nội dung).
+        const wCuoi = cuaSoCua(moiNhat.t)
+        const ganDay = wCuoi === cuaSoHienTaiVal || wCuoi === cuaSoTruoc(cuaSoHienTaiVal)
         dangs.push({
           ma_dang: ma, ten_dang: info.ten_dang, ten_chuyen_de: info.ten_chuyen_de, muc_do: info.muc_do,
           score, scoreEtMt: (mEtMt as any)?.score ?? null, n,
@@ -327,7 +332,8 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
           scoreTruoc: (mTruoc as any)?.score ?? null, mucTruoc: (mTruoc as any)?.muc ?? null,
           daMo,
           // 2 mốc trễ: đã mở thì ở lại tới khi > 0.5 · chưa mở thì phải < 0.5 + đủ độ tin.
-          trongDien: daMo ? score <= DANHGIA_CONFIG.MOC : score < DANHGIA_CONFIG.MOC && n >= DANHGIA_CONFIG.GATE_N,
+          trongDien: daMo ? score <= DANHGIA_CONFIG.MOC : score < DANHGIA_CONFIG.MOC && n >= DANHGIA_CONFIG.GATE_N && ganDay,
+          ganDay,
           cuoiCungAt: moiNhat.t,
         })
       }

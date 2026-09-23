@@ -75,12 +75,17 @@ Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt d
 - ⚠ PostgREST cap cứng **1000 dòng/query** dù `.limit()` lớn hơn ⇒ đọc `gami_grades`/`btvn_ket_qua`… phải `fetchAllRows` (`src/lib/pgrest.ts`)
   có `.order()` tất định. (09/09: 33/46 lớp từng bị cắt cụt, engine mù dữ liệu mới.)
 
-## 3. ② Duyệt — level + MỨC ƯU TIÊN
+## 3. ② Duyệt — level + MỨC ƯU TIÊN + máy ĐỔ DẠNG lúc mở case
 
 - Level kiến thức: L1 = bổ trợ mức 1 (trước/sau giờ, TA) · L2 = buổi riêng (TA) · L3 = buổi riêng (GV cao cấp). L1–L3 mở case. Thái độ KHÔNG mở case.
 - **`bo_tro_yeu.uu_tien`** (khác level — cùng level vẫn cần trước/sau): **3 Cao · 2 Thường (mặc định) · 1 Thấp**. Đặt khi duyệt (gợi ý máy: báo
   động hoặc ≥2 kênh kiến thức ⇒ Cao; chỉ ghi khi MỞ case mới); đổi nhanh bằng chip trên card ở Xếp lịch.
   **Mọi danh sách chờ + tự ghép ca chạy theo: ưu tiên cao trước → case mở lâu hơn trước.**
+- **Dạng vào case LÚC MỞ (CEO 23/09 "cứ yếu là bổ trợ"): TẤT CẢ dạng mastery YẾU (<0,5) · ≥3 lần đo (bỏ tin thấp — "thấp = không
+  quan trọng") · có lần đo trong 2 CỬA SỔ gần nhất** (cùng phạm vi kênh ②). Engine `dien` (src/gami/danhgia.js) đổ khi bấm duyệt;
+  bản SQL cùng rule `fn_btyeu_dang_yeu_2_cua_so` / `fn_btyeu_fill_dang_yeu(case)` để đổ lại case rỗng. CHỈ THÊM, không xoá dạng
+  người chọn. Sau khi mở, máy KHÔNG tự đổ thêm — chỉ nút "🤖 +N dạng yếu mới" (§1.1) + người ở màn Nội dung. Case máy không tìm ra dạng
+  (chuông đỏ/thái độ, dạng yếu chưa đủ 3 lần đo — Hà Linh 11A1 09/09) ⇒ card Nội dung đỏ "Chưa có dạng — chọn tay".
 
 ## 4. Nội dung bài trên app — MCQ TUYỆT ĐỐI
 
