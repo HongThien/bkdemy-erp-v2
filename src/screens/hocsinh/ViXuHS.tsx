@@ -39,8 +39,6 @@ const NHAN_NGUON: Record<string, { icon: string; ten: string }> = {
   chot_lai: { icon: '🔄', ten: 'Điều chỉnh xu' },
   cong_tay: { icon: '➕', ten: 'Thầy cô cộng xu' },
   tru_tay: { icon: '➖', ten: 'Thầy cô trừ xu' },
-  doi_qua: { icon: '🎁', ten: 'Đổi quà' },
-  hoan: { icon: '↩️', ten: 'Hoàn xu' },
 }
 const TRANG_THAI_MUA: Record<LichSuMua['trang_thai'], { ten: string; cls: string }> = {
   cho_giao: { ten: 'Chờ giao', cls: 'bg-amber-50 text-amber-700' },
