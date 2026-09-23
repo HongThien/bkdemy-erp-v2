@@ -128,7 +128,7 @@
   <div class="card" id="pOffline" style="display:none;text-align:center">
     <div style="font-weight:800;margin-bottom:8px;font-size:20px">Chơi theo mã trận</div>
     <div class="row"><span class="muted">Mã trận</span><input id="pSeed" style="width:120px;text-align:center;font-size:22px" inputmode="numeric" placeholder="1234"><button class="primary" id="pStartOff" style="font-size:24px;padding:14px 34px">▶ BẮT ĐẦU</button></div>
-    <div class="tip">Để trống thì máy tự chọn mã. Cả 6 iPad cùng mã thì cùng tốc độ, nhân sự hô 3-2-1 rồi cùng bấm.</div>
+    <div class="tip">Để trống thì máy tự chọn mã. Cả các iPad cùng mã thì cùng tốc độ, nhân sự hô 3-2-1 rồi cùng bấm.</div>
   </div>
   <button id="pPractice" style="font-size:14px">🎯 Tập thử</button>
 </div>
@@ -173,14 +173,14 @@
   <div class="grid2">
     <label>Mã phòng <input id="cRoom"></label>
     <label>Vai trò máy này <select id="cRole" style="font:inherit;padding:8px;border-radius:10px;background:#0e1640;color:#fff;border:2px solid var(--line)"><option value="tv">TV</option><option value="player">iPad người chơi</option></select></label>
-    <label>Số iPad (1–6) <input id="cSlot" type="number" min="1" max="6"></label>
+    <label>Số iPad (1–8) <input id="cSlot" type="number" min="1" max="8"></label>
   </div>
   <div class="grid2" style="margin-top:10px;grid-template-columns:1fr 2fr"><label>Supabase URL <input id="cSbUrl"></label><label>Supabase anon key (để trống = không mạng) <input id="cSbKey"></label></div>
   <div id="tvOnly">
   <h4>Xu</h4>
   <div class="grid2">
     <label>Vé vào chơi (xu) <input id="cEntry" type="number" min="0"></label>
-    <label>Thưởng hạng 1 → 6 (phẩy) <input id="cPrizes"></label>
+    <label>Thưởng hạng 1 → 8 (phẩy) <input id="cPrizes"></label>
     <label>Thời gian trận (giây) <input id="cDur" type="number" min="10" max="180"></label>
   </div>
   <h4>Độ khó</h4>
@@ -225,7 +225,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 const $=id=>document.getElementById(id);
 const useTimer=/loop=timer/.test(location.search);const nextFrame=useTimer?(f=>setTimeout(()=>f(performance.now()),16)):(f=>requestAnimationFrame(f));
 const KEY='bk-xepthap-v1';
-const DEF={role:null,slot:1,room:'BK01',sbUrl:'https://osrvycilwshkzhljuxef.supabase.co',sbKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4',entry:0,prizes:[10,9,8,7,6,5],dur:30,speed:1,base:56,perf:6};
+const MAXP=8,SLOTS=Array.from({length:MAXP},(_,i)=>i+1);
+const DEF={role:null,slot:1,room:'BK01',sbUrl:'https://osrvycilwshkzhljuxef.supabase.co',sbKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4',entry:0,prizes:[10,9,8,7,6,5,4,3],dur:30,speed:1,base:56,perf:6};
 let C=Object.assign({},DEF);try{Object.assign(C,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
 const q=new URLSearchParams(location.search);if(q.get('role'))C.role=q.get('role');if(q.get('slot'))C.slot=+q.get('slot');if(q.get('room'))C.room=q.get('room');
 function saveC(){localStorage.setItem(KEY,JSON.stringify(C))}
@@ -258,7 +259,7 @@ async function connectNet(){
 
 // ---------- role ----------
 let pickSlot=C.slot||1;
-function showRole(){$('roleScr').classList.add('show');$('slots').innerHTML=[1,2,3,4,5,6].map(i=>`<button class="${i===pickSlot?'sel':''}" data-i="${i}">${i}</button>`).join('');$('slots').querySelectorAll('button').forEach(b=>b.onclick=()=>{pickSlot=+b.dataset.i;showRole();$('slotPick').style.display='flex'})}
+function showRole(){$('roleScr').classList.add('show');$('slots').innerHTML=SLOTS.map(i=>`<button class="${i===pickSlot?'sel':''}" data-i="${i}">${i}</button>`).join('');$('slots').querySelectorAll('button').forEach(b=>b.onclick=()=>{pickSlot=+b.dataset.i;showRole();$('slotPick').style.display='flex'})}
 $('roleTV').onclick=()=>{C.role='tv';saveC();boot()};$('rolePlayer').onclick=()=>{$('slotPick').style.display='flex'};$('slotOk').onclick=()=>{C.role='player';C.slot=pickSlot;saveC();boot()};
 
 // ================= GAMEPLAY (hàm thuần + render canvas) =================
@@ -375,9 +376,9 @@ const TV={players:{},state:{phase:'lobby'},names:{},hist:[],feedSeen:{},lastLead
 const tc=$('tc'),tg=tc.getContext('2d');
 function tvBoot(){
   $('tv').classList.add('show');$('tvRoom').textContent='Phòng '+C.room;
-  $('tvNames').innerHTML=[1,2,3,4,5,6].map(i=>`<div class="nameIn"><span class="muted">${i}</span><input data-i="${i}" placeholder="Tên đội ${i}"></div>`).join('');
+  $('tvNames').innerHTML=SLOTS.map(i=>`<div class="nameIn"><span class="muted">${i}</span><input data-i="${i}" placeholder="Tên đội ${i}"></div>`).join('');
   $('tvNames').querySelectorAll('input').forEach(el=>el.addEventListener('input',()=>{TV.names[+el.dataset.i]=el.value.trim();broadcastState()}));
-  $('manual').innerHTML=[1,2,3,4,5,6].map(i=>`<div class="nameIn" style="grid-template-columns:32px 1fr 80px"><span class="muted">${i}</span><input data-n="${i}" placeholder="Tên"><input data-s="${i}" type="number" placeholder="Tầng" inputmode="numeric"></div>`).join('');
+  $('manual').innerHTML=SLOTS.map(i=>`<div class="nameIn" style="grid-template-columns:32px 1fr 80px"><span class="muted">${i}</span><input data-n="${i}" placeholder="Tên"><input data-s="${i}" type="number" placeholder="Tầng" inputmode="numeric"></div>`).join('');
   try{TV.hist=JSON.parse(localStorage.getItem('bk-xepthap-tvhist')||'[]')}catch(e){}
   $('tvStart').onclick=tvStart;$('tvNew').onclick=tvNew;$('tvAbort').onclick=tvAbort;$('tvManual').onclick=tvManual;$('tvSettings').onclick=openSettings;
   connectNet().then(ok=>{if(ok)tvNet();else setNet(false,'không mạng · dùng nhập điểm tay')});
@@ -389,7 +390,7 @@ function tvNet(){TV.state={phase:'lobby',matchId:Date.now()};applyPhaseUI();
     TV.players[p.slot]=Object.assign({},p,{last:Date.now(),online:true});checkEvents()});
   onMsg('presence',ps=>{const on={};Object.values(ps).forEach(arr=>arr.forEach(x=>{if(x.role==='player')on[x.slot]=true}));TV.online=on});
   setInterval(()=>{broadcastState();const now=Date.now();for(const k in TV.players)if(now-TV.players[k].last>6000)TV.players[k].online=false},1000);broadcastState()}
-function plist(){return [1,2,3,4,5,6].map(i=>{const p=Object.assign({slot:i},TV.players[i]||{});if(!p.name)p.name=TV.names[i]||'';if(TV.online)p.online=!!TV.online[i]||p.online;return p})}
+function plist(){return SLOTS.map(i=>{const p=Object.assign({slot:i},TV.players[i]||{});if(!p.name)p.name=TV.names[i]||'';if(TV.online)p.online=!!TV.online[i]||p.online;return p})}
 function cmp(a,b){return (b.best||0)-(a.best||0)||(b.total||0)-(a.total||0)||(b.acc||0)-(a.acc||0)||(b.perfects||0)-(a.perfects||0)||a.slot-b.slot}
 function ranked(){const ph=TV.state.phase;let ps=plist();if(ph==='lobby')return ps;if(ph==='result'&&TV.state.results)ps=ps.filter(p=>TV.state.results[p.slot]);else if(TV.cur)ps=ps.filter(p=>TV.cur.players.includes(p.slot));else ps=ps.filter(p=>p.ready||p.best!=null);return ps.slice().sort(cmp)}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
@@ -433,7 +434,7 @@ function tvLoop(now){const st=TV.state,cur=TV.cur;
 function tvStart(){if(!room){alert('Chưa kết nối mạng. Dùng "Nhập điểm tay" hoặc kiểm tra Supabase trong Cài đặt.');return}
   const ready=plist().filter(p=>p.ready&&p.online!==false);if(!ready.length){alert('Chưa có iPad nào bấm SẴN SÀNG.');return}
   const seed=Math.floor(Math.random()*9000)+1000,startAt=serverNow()+4000,matchId=Date.now();TV.lastLead=null;TV.feedSeen={};$('feed').innerHTML='';
-  [1,2,3,4,5,6].forEach(i=>{if(TV.players[i])Object.assign(TV.players[i],{level:0,best:0,total:0,acc:0,perfects:0,maxStreak:0,collapses:0,tower:[],alive:true,fin:false})});
+  SLOTS.forEach(i=>{if(TV.players[i])Object.assign(TV.players[i],{level:0,best:0,total:0,acc:0,perfects:0,maxStreak:0,collapses:0,tower:[],alive:true,fin:false})});
   TV.cur={matchId,seed,startAt,dur:C.dur||30,endAt:startAt+(C.dur||30)*1000,players:ready.map(p=>p.slot)};
   setState({phase:'countdown',matchId,seed,startAt,dur:C.dur||30,cfg:{speed:C.speed,base:C.base,perf:C.perf},entry:C.entry,prizes:C.prizes})}
 function computeResults(list){const prizes=C.prizes||DEF.prizes;const sorted=list.slice().sort(cmp);const res={};sorted.forEach((p,i)=>{res[p.slot]={rank:i+1,xu:prizes[Math.min(i,prizes.length-1)]||0,score:p.best,name:p.name,total:p.total,perfects:p.perfects}});return res}
@@ -444,7 +445,7 @@ function recordMatch(results,n,seed){const entry=C.entry||0,chi=Object.values(re
   beep(523,.3,'triangle',.12);setTimeout(()=>beep(659,.3,'triangle',.12),150);setTimeout(()=>beep(784,.5,'triangle',.12),300);confetti(300)}
 function renderPodium(){const res=TV.state.results||{};const arr=Object.values(res).sort((a,b)=>a.rank-b.rank);const top=[arr[1],arr[0],arr[2]];
   $('podium').innerHTML=top.map(r=>r?`<div class="pd p${r.rank}"><div class="who">${esc(r.name)}</div><div class="pts">${r.score} tầng · +${r.xu} xu</div><div class="blk">${['🥇','🥈','🥉'][r.rank-1]}</div></div>`:'').join('');$('podium').classList.add('show')}
-function tvNew(){$('feed').innerHTML='';$('podium').classList.remove('show');TV.cur=null;[1,2,3,4,5,6].forEach(i=>{if(TV.players[i])Object.assign(TV.players[i],{ready:false,level:0,best:0,total:0,tower:[],alive:false,name:''})});TV.names={};$('tvNames').querySelectorAll('input').forEach(el=>el.value='');
+function tvNew(){$('feed').innerHTML='';$('podium').classList.remove('show');TV.cur=null;SLOTS.forEach(i=>{if(TV.players[i])Object.assign(TV.players[i],{ready:false,level:0,best:0,total:0,tower:[],alive:false,name:''})});TV.names={};$('tvNames').querySelectorAll('input').forEach(el=>el.value='');
   if(room)setState({phase:'lobby',matchId:Date.now()});else{TV.state={phase:'lobby'};TV.players={};applyPhaseUI()}}
 function tvAbort(){if(!room)return;if(!confirm('Hủy trận đang chơi?'))return;const id=TV.cur?TV.cur.matchId:Date.now();TV.cur=null;setState({phase:'abort',matchId:id});setTimeout(()=>setState({phase:'lobby',matchId:Date.now()}),600)}
 function tvManual(){const list=[];$('manual').querySelectorAll('input[data-s]').forEach(el=>{const s=el.value.trim();if(s==='')return;const i=+el.dataset.s;const n=$('manual').querySelector(`input[data-n="${i}"]`).value.trim();list.push({slot:i,name:n||'Máy '+i,best:+s,total:+s,acc:0,perfects:0})});
@@ -455,7 +456,7 @@ function tvManual(){const list=[];$('manual').querySelectorAll('input[data-s]').
 const dlg=$('dlg'),sum=$('sum');
 function openSettings(){$('cRoom').value=C.room;$('cRole').value=C.role||'tv';$('cSlot').value=C.slot;$('cSbUrl').value=C.sbUrl||'';$('cSbKey').value=C.sbKey||'';$('cEntry').value=C.entry;$('cPrizes').value=(C.prizes||[]).join(',');$('cDur').value=C.dur;$('cSpeed').value=C.speed;$('cBase').value=C.base;$('cPerf').value=C.perf;$('tvOnly').style.display=C.role==='tv'?'':'none';dlg.showModal()}
 $('dlgCancel').onclick=()=>dlg.close();
-$('dlgSave').onclick=()=>{C.room=$('cRoom').value.trim()||'BK01';C.role=$('cRole').value;C.slot=Math.min(6,Math.max(1,+$('cSlot').value||1));C.sbUrl=$('cSbUrl').value.trim();C.sbKey=$('cSbKey').value.trim();
+$('dlgSave').onclick=()=>{C.room=$('cRoom').value.trim()||'BK01';C.role=$('cRole').value;C.slot=Math.min(MAXP,Math.max(1,+$('cSlot').value||1));C.sbUrl=$('cSbUrl').value.trim();C.sbKey=$('cSbKey').value.trim();
   if(C.role==='tv'){C.entry=Math.max(0,+$('cEntry').value||0);C.prizes=$('cPrizes').value.split(',').map(x=>+x.trim()).filter(x=>!isNaN(x));if(!C.prizes.length)C.prizes=DEF.prizes;C.dur=Math.max(10,+$('cDur').value||30);C.speed=Math.max(.4,Math.min(2,+$('cSpeed').value||1));C.base=Math.max(30,Math.min(90,+$('cBase').value||56));C.perf=Math.max(1,Math.min(20,+$('cPerf').value||6))}
   saveC();location.reload()};
 $('btnSummary').onclick=openSummary;$('sumClose').onclick=()=>sum.close();

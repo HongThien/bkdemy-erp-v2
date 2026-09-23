@@ -82,7 +82,7 @@
   #tvHead .timer.last{color:var(--red);animation:pulse .4s infinite alternate}
   #tvBody{flex:1;position:relative;padding:20px 28px;display:flex;gap:20px;min-height:0}
   .lb{flex:1;display:flex;flex-direction:column;gap:10px;position:relative;min-height:0}
-  .lbRow{position:absolute;left:0;right:0;height:calc((100% - 50px)/6);display:flex;align-items:center;gap:18px;padding:0 22px;background:rgba(20,29,74,.85);border:1px solid var(--line);border-radius:18px;transition:top .35s cubic-bezier(.2,.9,.3,1.1);font-size:26px}
+  .lbRow{position:absolute;left:0;right:0;height:calc((100% - 50px)/8);display:flex;align-items:center;gap:18px;padding:0 22px;background:rgba(20,29,74,.85);border:1px solid var(--line);border-radius:18px;transition:top .35s cubic-bezier(.2,.9,.3,1.1);font-size:26px}
   .lbRow .rk{width:56px;font-size:34px;font-weight:900;text-align:center}
   .lbRow .nm{flex:0 0 280px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .lbRow .bar{flex:1;height:22px;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden;position:relative}
@@ -189,7 +189,7 @@
   <div class="card" id="pOffline" style="display:none;text-align:center">
     <div style="font-weight:800;margin-bottom:8px;font-size:20px">Chơi theo mã trận</div>
     <div class="row"><span class="muted">Mã trận</span><input id="pSeed" style="width:120px;text-align:center;font-size:22px" inputmode="numeric" placeholder="1234"><button class="primary" id="pStartOff" style="font-size:24px;padding:14px 34px">▶ BẮT ĐẦU</button></div>
-    <div class="tip">Để trống thì máy tự chọn mã. Cả 6 iPad nhập cùng mã thì gặp cùng cặp ảnh, nhân sự hô 3-2-1 rồi cùng bấm.</div>
+    <div class="tip">Để trống thì máy tự chọn mã. Cả các iPad nhập cùng mã thì gặp cùng cặp ảnh, nhân sự hô 3-2-1 rồi cùng bấm.</div>
   </div>
   <button id="pPractice" style="font-size:14px">🎯 Tập thử 20 giây</button>
 </div>
@@ -249,7 +249,7 @@
   <div class="grid2">
     <label>Mã phòng <input id="cRoom"></label>
     <label>Vai trò máy này <select id="cRole"><option value="tv">TV</option><option value="player">iPad người chơi</option></select></label>
-    <label>Số iPad (1–6) <input id="cSlot" type="number" min="1" max="6"></label>
+    <label>Số iPad (1–8) <input id="cSlot" type="number" min="1" max="8"></label>
   </div>
   <div class="grid2" style="margin-top:10px;grid-template-columns:1fr 2fr"><label>Supabase URL <input id="cSbUrl" placeholder="https://xxxx.supabase.co"></label><label>Supabase anon key (để trống = chế độ không mạng) <input id="cSbKey"></label></div>
   <div id="tvOnly">
@@ -262,7 +262,7 @@
   <h4>Xu</h4>
   <div class="grid2">
     <label>Vé vào chơi (xu) <input id="cEntry" type="number" min="0"></label>
-    <label>Thưởng hạng 1 → 6 (cách nhau dấu phẩy) <input id="cPrizes"></label>
+    <label>Thưởng hạng 1 → 8 (cách nhau dấu phẩy) <input id="cPrizes"></label>
     <label>Thưởng tìm đủ (Perfect) <input id="cPerfect" type="number" min="0"></label>
   </div>
   <div class="tip">Xếp hạng: số điểm tìm được → đội tìm đủ thì ai xong sớm hơn xếp trên → ít tap sai hơn → đạt mốc sớm hơn. Cài đặt được TV gửi xuống iPad mỗi trận.</div>
@@ -301,7 +301,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 const $=id=>document.getElementById(id);
 const useTimer=/loop=timer/.test(location.search);const nextFrame=useTimer?(f=>setTimeout(()=>f(performance.now()),16)):(f=>requestAnimationFrame(f));
 const KEY='bk-timdiem-v1';
-const DEF={role:null,slot:1,room:'BK01',sbUrl:'https://osrvycilwshkzhljuxef.supabase.co',sbKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4',entry:0,prizes:[30,25,20,15,12,10],perfect:5,dur:120,nDiff:10,pen:'cool',cool:500};
+const MAXP=8,SLOTS=Array.from({length:MAXP},(_,i)=>i+1);
+const DEF={role:null,slot:1,room:'BK01',sbUrl:'https://osrvycilwshkzhljuxef.supabase.co',sbKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4',entry:0,prizes:[30,25,20,15,12,10,8,6],perfect:5,dur:120,nDiff:10,pen:'cool',cool:500};
 let C=Object.assign({},DEF);try{Object.assign(C,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
 const q=new URLSearchParams(location.search);if(q.get('role'))C.role=q.get('role');if(q.get('slot'))C.slot=+q.get('slot');if(q.get('room'))C.room=q.get('room');
 function saveC(){localStorage.setItem(KEY,JSON.stringify(C))}
@@ -443,7 +444,7 @@ async function connectNet(){
 
 // ---------- role select ----------
 let pickSlot=C.slot||1;
-function showRole(){$('roleScr').classList.add('show');$('slots').innerHTML=[1,2,3,4,5,6].map(i=>`<button class="${i===pickSlot?'sel':''}" data-i="${i}">${i}</button>`).join('');$('slots').querySelectorAll('button').forEach(b=>b.onclick=()=>{pickSlot=+b.dataset.i;showRole();$('slotPick').style.display='flex'})}
+function showRole(){$('roleScr').classList.add('show');$('slots').innerHTML=SLOTS.map(i=>`<button class="${i===pickSlot?'sel':''}" data-i="${i}">${i}</button>`).join('');$('slots').querySelectorAll('button').forEach(b=>b.onclick=()=>{pickSlot=+b.dataset.i;showRole();$('slotPick').style.display='flex'})}
 $('roleTV').onclick=()=>{C.role='tv';saveC();boot()};
 $('rolePlayer').onclick=()=>{$('slotPick').style.display='flex'};
 $('slotOk').onclick=()=>{C.role='player';C.slot=pickSlot;saveC();boot()};
@@ -533,9 +534,9 @@ async function bootPlayer(){
 const TV={players:{},state:{phase:'lobby'},names:{},hist:[],feedSeen:{},lastLead:null,prevRank:{},preview:null};
 function tvBoot(){
   $('tv').classList.add('show');$('tvRoom').textContent='Phòng '+C.room;
-  $('tvNames').innerHTML=[1,2,3,4,5,6].map(i=>`<div class="nameIn"><span class="muted">${i}</span><input data-i="${i}" placeholder="Tên máy ${i}"></div>`).join('');
+  $('tvNames').innerHTML=SLOTS.map(i=>`<div class="nameIn"><span class="muted">${i}</span><input data-i="${i}" placeholder="Tên máy ${i}"></div>`).join('');
   $('tvNames').querySelectorAll('input').forEach(el=>el.addEventListener('input',()=>{TV.names[+el.dataset.i]=el.value.trim();broadcastState()}));
-  $('manual').innerHTML=[1,2,3,4,5,6].map(i=>`<div class="nameIn" style="grid-template-columns:32px 1fr 64px 64px"><span class="muted">${i}</span><input data-n="${i}" placeholder="Tên"><input data-s="${i}" type="number" placeholder="Điểm" inputmode="numeric"><input data-t="${i}" type="number" placeholder="giây" inputmode="numeric"></div>`).join('');
+  $('manual').innerHTML=SLOTS.map(i=>`<div class="nameIn" style="grid-template-columns:32px 1fr 64px 64px"><span class="muted">${i}</span><input data-n="${i}" placeholder="Tên"><input data-s="${i}" type="number" placeholder="Điểm" inputmode="numeric"><input data-t="${i}" type="number" placeholder="giây" inputmode="numeric"></div>`).join('');
   try{TV.hist=JSON.parse(localStorage.getItem('bk-timdiem-tvhist')||'[]')}catch(e){}
   $('tvStart').onclick=tvStart;$('tvNew').onclick=tvNew;$('tvAbort').onclick=tvAbort;$('tvManual').onclick=tvManual;$('tvSettings').onclick=openSettings;
   $('tvShuffle').onclick=()=>{$('tvSeed').value=Math.floor(Math.random()*9000)+1000;tvPreview()};$('tvSeed').addEventListener('input',tvPreview);
@@ -557,7 +558,7 @@ function tvNet(){
   setInterval(()=>{broadcastState();const now=Date.now();for(const k in TV.players){if(now-TV.players[k].last>6000)TV.players[k].online=false}},1000);
   broadcastState();
 }
-function plist(){return [1,2,3,4,5,6].map(i=>{const p=Object.assign({slot:i},TV.players[i]||{});if(!p.name)p.name=TV.names[i]||'';if(TV.online)p.online=!!TV.online[i]||p.online;return p})}
+function plist(){return SLOTS.map(i=>{const p=Object.assign({slot:i},TV.players[i]||{});if(!p.name)p.name=TV.names[i]||'';if(TV.online)p.online=!!TV.online[i]||p.online;return p})}
 function ranked(){const ph=TV.state.phase;let ps=plist();
   if(ph==='lobby')return ps;
   if(ph==='result'&&TV.state.results)ps=ps.filter(p=>TV.state.results[p.slot]);
@@ -565,7 +566,7 @@ function ranked(){const ph=TV.state.phase;let ps=plist();
   return ps.slice().sort(cmp)}
 function renderLB(){
   const ph=TV.state.phase,lb=$('lb'),rows=ranked(),res=TV.state.results||{};const total=TV.cur?TV.cur.cfg.nDiff:(TV.state.cfg?TV.state.cfg.nDiff:C.nDiff);
-  const H=lb.clientHeight||600,rh=(H-50)/6;
+  const H=lb.clientHeight||600,rh=(H-50)/MAXP;
   rows.forEach((p,i)=>{let el=$('lbr'+p.slot);if(!el){el=document.createElement('div');el.id='lbr'+p.slot;el.className='lbRow';lb.appendChild(el)}
     const r=res[p.slot];const rank=ph==='lobby'?p.slot:i+1;const done=p.doneMs!=null;
     el.className='lbRow'+(ph!=='lobby'&&i===0&&p.score>0?' r1':'')+(ph==='lobby'&&!p.ready?' wait':'')+(ph==='lobby'&&p.ready?' ready':'')+(r?' xu':'')+(done?' done':'');
@@ -573,7 +574,7 @@ function renderLB(){
     const medal=ph==='lobby'?p.slot:(rank===1?'🥇':rank===2?'🥈':rank===3?'🥉':rank);
     const pct=Math.min(100,(p.score||0)/Math.max(1,total)*100);
     el.innerHTML=`<div class="rk">${medal}</div><div class="nm">${esc(p.name||(ph==='lobby'?'Chờ người chơi…':'Máy '+p.slot))}</div>${ph==='lobby'?`<div class="st">Máy ${p.slot}${p.online?' · online':''}</div>`:`<div class="bar"><i style="width:${pct}%"></i></div><div class="sc">${p.score||0}<small>/${total}</small></div><div class="st">${done?'🏁 '+(p.doneMs/1000).toFixed(1)+'s':(p.mistakes?'sai '+p.mistakes:'')}</div>${r?`<div class="xuv">+${r.xu} xu</div>`:''}`}`});
-  [1,2,3,4,5,6].forEach(s=>{if(!rows.find(p=>p.slot===s)){const el=$('lbr'+s);if(el)el.style.display='none'}});
+  SLOTS.forEach(s=>{if(!rows.find(p=>p.slot===s)){const el=$('lbr'+s);if(el)el.style.display='none'}});
 }
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 function feed(t){const f=$('feed');const d=document.createElement('div');d.textContent=t;f.prepend(d);while(f.children.length>6)f.lastChild.remove();setTimeout(()=>d.remove(),8000)}
@@ -599,7 +600,7 @@ function tvStart(){
   const ready=plist().filter(p=>p.ready&&p.online!==false);if(!ready.length){alert('Chưa có iPad nào bấm SẴN SÀNG.');return}
   const seed=tvSeedVal(),startAt=serverNow()+4000;const matchId=Date.now();const cfg=curCfg();
   TV.lastLead=null;TV.feedSeen={};TV.prevRank={};$('feed').innerHTML='';tvPreview();
-  [1,2,3,4,5,6].forEach(i=>{if(TV.players[i])Object.assign(TV.players[i],{score:0,mistakes:0,doneMs:null,lastAt:null,streak:0,fin:false})});
+  SLOTS.forEach(i=>{if(TV.players[i])Object.assign(TV.players[i],{score:0,mistakes:0,doneMs:null,lastAt:null,streak:0,fin:false})});
   TV.cur={matchId,seed,startAt,cfg,endAt:startAt+cfg.dur*1000,players:ready.map(p=>p.slot)};
   setState({phase:'countdown',matchId,seed,startAt,dur:cfg.dur,cfg});
 }
@@ -623,7 +624,7 @@ function recordMatch(results,n,seed,cfg){const entry=cfg.entry||0;const chi=Obje
 function renderPodium(){const res=TV.state.results||{};const arr=Object.values(res).sort((a,b)=>a.rank-b.rank);const top=[arr[1],arr[0],arr[2]];const total=(TV.state.cfg||C).nDiff;
   $('podium').innerHTML=top.map((r,i)=>r?`<div class="pd p${r.rank}"><div class="who">${esc(r.name)}</div><div class="pts">${r.score}/${total}${r.doneMs?' · '+(r.doneMs/1000).toFixed(1)+'s':''}<br>+${r.xu} xu</div><div class="blk">${['🥇','🥈','🥉'][r.rank-1]}</div></div>`:'').join('');$('podium').classList.add('show')}
 function tvNew(){$('feed').innerHTML='';$('podium').classList.remove('show');TV.cur=null;
-  [1,2,3,4,5,6].forEach(i=>{if(TV.players[i])Object.assign(TV.players[i],{ready:false,score:null,mistakes:null,doneMs:null,lastAt:null,streak:0,fin:null,name:''})});
+  SLOTS.forEach(i=>{if(TV.players[i])Object.assign(TV.players[i],{ready:false,score:null,mistakes:null,doneMs:null,lastAt:null,streak:0,fin:null,name:''})});
   TV.names={};$('tvNames').querySelectorAll('input').forEach(el=>el.value='');$('tvSeed').value='';tvPreview();
   if(room)setState({phase:'lobby',matchId:Date.now()});else{TV.state={phase:'lobby'};TV.players={};applyPhaseUI()}}
 function tvAbort(){if(!room)return;if(!confirm('Hủy trận đang chơi?'))return;const id=TV.cur?TV.cur.matchId:Date.now();TV.cur=null;setState({phase:'abort',matchId:id});setTimeout(()=>setState({phase:'lobby',matchId:Date.now()}),600)}
@@ -636,7 +637,7 @@ function tvManual(){const list=[];$('manual').querySelectorAll('input[data-s]').
 const dlg=$('dlg'),sum=$('sum');
 function openSettings(){$('cRoom').value=C.room;$('cRole').value=C.role||'tv';$('cSlot').value=C.slot;$('cSbUrl').value=C.sbUrl||'';$('cSbKey').value=C.sbKey||'';$('cEntry').value=C.entry;$('cPrizes').value=(C.prizes||[]).join(',');$('cPerfect').value=C.perfect;$('cDur').value=C.dur;$('cN').value=C.nDiff;$('cPen').value=C.pen;$('tvOnly').style.display=C.role==='tv'?'':'none';dlg.showModal()}
 $('dlgCancel').onclick=()=>dlg.close();
-$('dlgSave').onclick=()=>{C.room=$('cRoom').value.trim()||'BK01';C.role=$('cRole').value;C.slot=Math.min(6,Math.max(1,+$('cSlot').value||1));C.sbUrl=$('cSbUrl').value.trim();C.sbKey=$('cSbKey').value.trim();
+$('dlgSave').onclick=()=>{C.room=$('cRoom').value.trim()||'BK01';C.role=$('cRole').value;C.slot=Math.min(MAXP,Math.max(1,+$('cSlot').value||1));C.sbUrl=$('cSbUrl').value.trim();C.sbKey=$('cSbKey').value.trim();
   if(C.role==='tv'){C.entry=Math.max(0,+$('cEntry').value||0);C.prizes=$('cPrizes').value.split(',').map(x=>+x.trim()).filter(x=>!isNaN(x));if(!C.prizes.length)C.prizes=DEF.prizes;C.perfect=Math.max(0,+$('cPerfect').value||0);C.dur=Math.max(30,+$('cDur').value||75);C.nDiff=Math.min(14,Math.max(5,+$('cN').value||10));C.pen=$('cPen').value}
   saveC();location.reload()};
 $('btnSummary').onclick=openSummary;$('sumClose').onclick=()=>sum.close();

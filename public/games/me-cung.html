@@ -169,14 +169,14 @@
   <div class="grid2">
     <label>Mã phòng <input id="cRoom"></label>
     <label>Vai trò máy này <select id="cRole" style="font:inherit;padding:8px;border-radius:10px;background:#0e1640;color:#fff;border:2px solid var(--line)"><option value="tv">TV</option><option value="player">iPad người chơi</option></select></label>
-    <label>Số iPad (1–6) <input id="cSlot" type="number" min="1" max="6"></label>
+    <label>Số iPad (1–8) <input id="cSlot" type="number" min="1" max="8"></label>
   </div>
   <div class="grid2" style="margin-top:10px;grid-template-columns:1fr 2fr"><label>Supabase URL <input id="cSbUrl"></label><label>Supabase anon key (để trống = không mạng) <input id="cSbKey"></label></div>
   <div id="tvOnly">
   <h4>Xu</h4>
   <div class="grid2">
     <label>Vé vào chơi (xu) <input id="cEntry" type="number" min="0"></label>
-    <label>Thưởng hạng 1 → 6 (phẩy) <input id="cPrizes"></label>
+    <label>Thưởng hạng 1 → 8 (phẩy) <input id="cPrizes"></label>
     <label>Thưởng Perfect (≥95% tối ưu) <input id="cPerfect" type="number" min="0"></label>
   </div>
   <h4>Mê cung</h4>
@@ -222,7 +222,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 const $=id=>document.getElementById(id);
 const useTimer=/loop=timer/.test(location.search);const nextFrame=useTimer?(f=>setTimeout(()=>f(performance.now()),16)):(f=>requestAnimationFrame(f));
 const KEY='bk-mecung-v1';
-const DEF={role:null,slot:1,room:'BK01',sbUrl:'https://osrvycilwshkzhljuxef.supabase.co',sbKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4',entry:0,prizes:[10,9,8,7,6,5],perfect:2,dur:75,cols:16,rows:10,loops:15};
+const MAXP=8,SLOTS=Array.from({length:MAXP},(_,i)=>i+1);
+const DEF={role:null,slot:1,room:'BK01',sbUrl:'https://osrvycilwshkzhljuxef.supabase.co',sbKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4',entry:0,prizes:[10,9,8,7,6,5,4,3],perfect:2,dur:75,cols:16,rows:10,loops:15};
 let C=Object.assign({},DEF);try{Object.assign(C,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
 const q=new URLSearchParams(location.search);if(q.get('role'))C.role=q.get('role');if(q.get('slot'))C.slot=+q.get('slot');if(q.get('room'))C.room=q.get('room');
 function saveC(){localStorage.setItem(KEY,JSON.stringify(C))}
@@ -268,7 +269,7 @@ async function connectNet(){
 
 // ---------- role ----------
 let pickSlot=C.slot||1;
-function showRole(){$('roleScr').classList.add('show');$('slots').innerHTML=[1,2,3,4,5,6].map(i=>`<button class="${i===pickSlot?'sel':''}" data-i="${i}">${i}</button>`).join('');$('slots').querySelectorAll('button').forEach(b=>b.onclick=()=>{pickSlot=+b.dataset.i;showRole();$('slotPick').style.display='flex'})}
+function showRole(){$('roleScr').classList.add('show');$('slots').innerHTML=SLOTS.map(i=>`<button class="${i===pickSlot?'sel':''}" data-i="${i}">${i}</button>`).join('');$('slots').querySelectorAll('button').forEach(b=>b.onclick=()=>{pickSlot=+b.dataset.i;showRole();$('slotPick').style.display='flex'})}
 $('roleTV').onclick=()=>{C.role='tv';saveC();boot()};$('rolePlayer').onclick=()=>{$('slotPick').style.display='flex'};$('slotOk').onclick=()=>{C.role='player';C.slot=pickSlot;saveC();boot()};
 
 // ================= PLAYER =================
@@ -370,9 +371,9 @@ const tc=$('tc'),tg=tc.getContext('2d');
 function tvSetSeed(s){TV.seed=s;$('tvSeed').value=s;TV.maze=genMaze(s,C.cols,C.rows,C.loops);TV.dist=bfs(TV.maze,TV.maze.exit);TV.opt=optimalPath(TV.maze);$('tvMazeInfo').textContent=`Mê cung ${C.cols}×${C.rows} · đường tối ưu ${TV.opt.length-1} ô · ${C.dur} giây`}
 function tvBoot(){
   $('tv').classList.add('show');$('tvRoom').textContent='Phòng '+C.room;
-  $('tvNames').innerHTML=[1,2,3,4,5,6].map(i=>`<div class="nameIn"><span class="muted">${i}</span><input data-i="${i}" placeholder="Tên đội ${i}"></div>`).join('');
+  $('tvNames').innerHTML=SLOTS.map(i=>`<div class="nameIn"><span class="muted">${i}</span><input data-i="${i}" placeholder="Tên đội ${i}"></div>`).join('');
   $('tvNames').querySelectorAll('input').forEach(el=>el.addEventListener('input',()=>{TV.names[+el.dataset.i]=el.value.trim();broadcastState()}));
-  $('manual').innerHTML=[1,2,3,4,5,6].map(i=>`<div class="nameIn" style="grid-template-columns:32px 1fr 80px"><span class="muted">${i}</span><input data-n="${i}" placeholder="Tên"><input data-s="${i}" type="number" placeholder="Ô" inputmode="numeric"></div>`).join('');
+  $('manual').innerHTML=SLOTS.map(i=>`<div class="nameIn" style="grid-template-columns:32px 1fr 80px"><span class="muted">${i}</span><input data-n="${i}" placeholder="Tên"><input data-s="${i}" type="number" placeholder="Ô" inputmode="numeric"></div>`).join('');
   try{TV.hist=JSON.parse(localStorage.getItem('bk-mecung-tvhist')||'[]')}catch(e){}
   tvSetSeed(Math.floor(Math.random()*9000)+1000);
   $('tvDice').onclick=()=>tvSetSeed(Math.floor(Math.random()*9000)+1000);$('tvSeed').addEventListener('change',()=>{const s=parseInt($('tvSeed').value,10);if(!isNaN(s))tvSetSeed(s)});
@@ -386,7 +387,7 @@ function tvNet(){TV.state={phase:'lobby',matchId:Date.now()};applyPhaseUI();
     TV.players[p.slot]=Object.assign({},p,{last:Date.now(),online:true});checkEvents()});
   onMsg('presence',ps=>{const on={};Object.values(ps).forEach(arr=>arr.forEach(x=>{if(x.role==='player')on[x.slot]=true}));TV.online=on});
   setInterval(()=>{broadcastState();const now=Date.now();for(const k in TV.players)if(now-TV.players[k].last>6000)TV.players[k].online=false},1000);broadcastState()}
-function plist(){return [1,2,3,4,5,6].map(i=>{const p=Object.assign({slot:i},TV.players[i]||{});if(!p.name)p.name=TV.names[i]||'';if(TV.online)p.online=!!TV.online[i]||p.online;return p})}
+function plist(){return SLOTS.map(i=>{const p=Object.assign({slot:i},TV.players[i]||{});if(!p.name)p.name=TV.names[i]||'';if(TV.online)p.online=!!TV.online[i]||p.online;return p})}
 function cmp(a,b){if(!!a.finished!==!!b.finished)return a.finished?-1:1;if(a.finished)return (a.steps-b.steps)||((a.mistakes||0)-(b.mistakes||0))||((a.finishMs||0)-(b.finishMs||0))||(a.slot-b.slot);
   return ((b.progress||0)-(a.progress||0))||((a.mistakes||0)-(b.mistakes||0))||((a.steps||0)-(b.steps||0))||(a.slot-b.slot)}
 function ranked(){const ph=TV.state.phase;let ps=plist();if(ph==='lobby')return ps;if(ph==='result'&&TV.state.results)ps=ps.filter(p=>TV.state.results[p.slot]);else if(TV.cur)ps=ps.filter(p=>TV.cur.players.includes(p.slot));else ps=ps.filter(p=>p.ready||p.steps!=null);return ps.slice().sort(cmp)}
@@ -410,7 +411,7 @@ function renderTV(now){const w=tc.clientWidth,h=tc.clientHeight;if(!w||!h||!TV.m
   const ph=TV.state.phase,m=TV.maze;
   if(ph==='lobby'){const lay=layout(m,w,h-40,20);drawMaze(tg,m,lay,{optPath:$('tvShowOpt').checked?TV.opt:null,wall:'#ffd166'});
     tg.fillStyle='#aab2e0';tg.font='16px Segoe UI, sans-serif';tg.textAlign='center';tg.fillText('Mã đề '+TV.seed+' · đường tối ưu '+(TV.opt.length-1)+' ô'+($('tvShowOpt').checked?' (đường xanh chỉ nhân sự thấy, tắt trước khi chiếu)':''),w/2,h-12);
-    const ps=plist();tg.font='bold 15px Segoe UI, sans-serif';ps.forEach((p,i)=>{tg.fillStyle=p.ready?'#5ee08a':'#6b74a8';tg.textAlign='left';tg.fillText((p.ready?'✅ ':'○ ')+(p.name||'Máy '+p.slot),16+i*(w/6),22)});return}
+    const ps=plist();tg.font='bold 15px Segoe UI, sans-serif';ps.forEach((p,i)=>{tg.fillStyle=p.ready?'#5ee08a':'#6b74a8';tg.textAlign='left';tg.fillText((p.ready?'✅ ':'○ ')+(p.name||'Máy '+p.slot),16+i*(w/MAXP),22)});return}
   // 6 mê cung mini
   const cols=3,rows=2,cellW=w/cols,cellH=(h-8)/rows;const res=TV.state.results||{};const order=plist().sort(cmp);const rankOf={};order.forEach((p,i)=>rankOf[p.slot]=i+1);
   plist().forEach((p,i)=>{const x0=(i%cols)*cellW,y0=Math.floor(i/cols)*cellH;const inMatch=!TV.cur||TV.cur.players.includes(p.slot)||res[p.slot];
@@ -429,7 +430,7 @@ function tvLoop(now){const st=TV.state,cur=TV.cur;
 function tvStart(){if(!room){alert('Chưa kết nối mạng. Dùng "Nhập điểm tay" hoặc kiểm tra Supabase trong Cài đặt.');return}
   const ready=plist().filter(p=>p.ready&&p.online!==false);if(!ready.length){alert('Chưa có iPad nào bấm SẴN SÀNG.');return}
   const seed=TV.seed,startAt=serverNow()+4000,matchId=Date.now();TV.lastLead=null;TV.feedSeen={};$('feed').innerHTML='';$('tvShowOpt').checked=false;
-  [1,2,3,4,5,6].forEach(i=>{if(TV.players[i])Object.assign(TV.players[i],{steps:0,mistakes:0,progress:0,finished:false,finishMs:0,path:[],fin:false})});
+  SLOTS.forEach(i=>{if(TV.players[i])Object.assign(TV.players[i],{steps:0,mistakes:0,progress:0,finished:false,finishMs:0,path:[],fin:false})});
   TV.cur={matchId,seed,startAt,dur:C.dur||75,endAt:startAt+(C.dur||75)*1000,players:ready.map(p=>p.slot),allDoneAt:0};
   setState({phase:'countdown',matchId,seed,startAt,dur:C.dur||75,cfg:{cols:C.cols,rows:C.rows,loops:C.loops},entry:C.entry,prizes:C.prizes})}
 function computeResults(list,opt){const prizes=C.prizes||DEF.prizes;const sorted=list.slice().sort(cmp);const res={};sorted.forEach((p,i)=>{const perfect=!!(p.finished&&opt&&opt/p.steps>=.95);res[p.slot]={rank:i+1,xu:(prizes[Math.min(i,prizes.length-1)]||0)+(perfect?(C.perfect||0):0),score:p.finished?p.steps:Math.round((p.progress||0)*100),finished:!!p.finished,name:p.name,mistakes:p.mistakes||0,perfect,eff:p.finished&&opt?+(opt/p.steps).toFixed(3):0}});return res}
@@ -440,7 +441,7 @@ function recordMatch(results,n,seed){const entry=C.entry||0,chi=Object.values(re
   beep(523,.3,'triangle',.12);setTimeout(()=>beep(659,.3,'triangle',.12),150);setTimeout(()=>beep(784,.5,'triangle',.12),300);confetti(300)}
 function renderPodium(){const res=TV.state.results||{};const arr=Object.values(res).sort((a,b)=>a.rank-b.rank);const top=[arr[1],arr[0],arr[2]];
   $('podium').innerHTML=top.map(r=>r?`<div class="pd p${r.rank}"><div class="who">${esc(r.name)}</div><div class="pts">${r.finished?r.score+' ô · '+Math.round(r.eff*100)+'%':r.score+'% đường'} · +${r.xu} xu${r.perfect?' ⭐':''}</div><div class="blk">${['🥇','🥈','🥉'][r.rank-1]}</div></div>`:'').join('');$('podium').classList.add('show')}
-function tvNew(){$('feed').innerHTML='';$('podium').classList.remove('show');TV.cur=null;[1,2,3,4,5,6].forEach(i=>{if(TV.players[i])Object.assign(TV.players[i],{ready:false,steps:0,progress:0,finished:false,path:[],name:''})});TV.names={};$('tvNames').querySelectorAll('input').forEach(el=>el.value='');tvSetSeed(Math.floor(Math.random()*9000)+1000);$('tvShowOpt').checked=true;
+function tvNew(){$('feed').innerHTML='';$('podium').classList.remove('show');TV.cur=null;SLOTS.forEach(i=>{if(TV.players[i])Object.assign(TV.players[i],{ready:false,steps:0,progress:0,finished:false,path:[],name:''})});TV.names={};$('tvNames').querySelectorAll('input').forEach(el=>el.value='');tvSetSeed(Math.floor(Math.random()*9000)+1000);$('tvShowOpt').checked=true;
   if(room)setState({phase:'lobby',matchId:Date.now()});else{TV.state={phase:'lobby'};TV.players={};applyPhaseUI()}}
 function tvAbort(){if(!room)return;if(!confirm('Hủy trận đang chơi?'))return;const id=TV.cur?TV.cur.matchId:Date.now();TV.cur=null;setState({phase:'abort',matchId:id});setTimeout(()=>setState({phase:'lobby',matchId:Date.now()}),600)}
 function tvManual(){const list=[];$('manual').querySelectorAll('input[data-s]').forEach(el=>{const i=+el.dataset.s;const n=$('manual').querySelector(`input[data-n="${i}"]`).value.trim();const s=el.value.trim();if(!n&&s==='')return;list.push({slot:i,name:n||'Máy '+i,steps:s===''?0:+s,mistakes:0,progress:s===''?0:1,finished:s!=='',finishMs:0})});
@@ -451,7 +452,7 @@ function tvManual(){const list=[];$('manual').querySelectorAll('input[data-s]').
 const dlg=$('dlg'),sum=$('sum');
 function openSettings(){$('cRoom').value=C.room;$('cRole').value=C.role||'tv';$('cSlot').value=C.slot;$('cSbUrl').value=C.sbUrl||'';$('cSbKey').value=C.sbKey||'';$('cEntry').value=C.entry;$('cPrizes').value=(C.prizes||[]).join(',');$('cPerfect').value=C.perfect;$('cDur').value=C.dur;$('cCols').value=C.cols;$('cRows').value=C.rows;$('cLoops').value=C.loops;$('tvOnly').style.display=C.role==='tv'?'':'none';dlg.showModal()}
 $('dlgCancel').onclick=()=>dlg.close();
-$('dlgSave').onclick=()=>{C.room=$('cRoom').value.trim()||'BK01';C.role=$('cRole').value;C.slot=Math.min(6,Math.max(1,+$('cSlot').value||1));C.sbUrl=$('cSbUrl').value.trim();C.sbKey=$('cSbKey').value.trim();
+$('dlgSave').onclick=()=>{C.room=$('cRoom').value.trim()||'BK01';C.role=$('cRole').value;C.slot=Math.min(MAXP,Math.max(1,+$('cSlot').value||1));C.sbUrl=$('cSbUrl').value.trim();C.sbKey=$('cSbKey').value.trim();
   if(C.role==='tv'){C.entry=Math.max(0,+$('cEntry').value||0);C.prizes=$('cPrizes').value.split(',').map(x=>+x.trim()).filter(x=>!isNaN(x));if(!C.prizes.length)C.prizes=DEF.prizes;C.perfect=Math.max(0,+$('cPerfect').value||0);C.dur=Math.max(20,+$('cDur').value||75);C.cols=Math.max(8,Math.min(24,+$('cCols').value||16));C.rows=Math.max(5,Math.min(16,+$('cRows').value||10));C.loops=Math.max(0,Math.min(40,+$('cLoops').value||0))}
   saveC();location.reload()};
 $('btnSummary').onclick=openSummary;$('sumClose').onclick=()=>sum.close();
