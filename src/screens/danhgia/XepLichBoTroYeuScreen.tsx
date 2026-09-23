@@ -13,7 +13,7 @@ import { useEffect, useMemo, useState } from 'react'
 import {
   listCaseChoXepLich, taoBuoiBoTroYeu, listBuoiCuaCase, goiYXepLichBoTroYeu,
   listLichTruc, themLichTruc, ketThucLichTruc, lichTrucCuaHS, goiYTheoLichTruc, caSapToi, khoaCa, caTrucConCho, datUuTienCase, UU_TIEN_TEN, deXuatDangMoi, themDangMayVaoCase, donCaKhongDienRa, GIAI_DOAN_TEN, type UuTienCase, type DangMayDeXuat,
-  type CaseChoXep, type BuoiBoTroYeuDaXep, type GoiYXepLich, type LichTruc, type CaTrucDeXuat, type CaSapToi,
+  type CaseChoXep, type BuoiBoTroYeuDaXep, type BuoiChoHoc, type GoiYXepLich, type LichTruc, type CaTrucDeXuat, type CaSapToi,
 } from '../../lib/botro_yeu'
 import { supabase } from '../../lib/supabase'
 import { homNayVN } from '../../lib/tuan'
@@ -62,6 +62,7 @@ export default function XepLichBoTroYeuScreen() {
   // Thùy 23/09: tab theo CASE như màn Bù — Cần xếp · Đã xếp · Chờ retest · Hoàn thành (+ Đang diễn ra · Ca bổ trợ · Lịch trực).
   const [tab, setTab] = useState<'can_xep' | 'da_xep' | 'cho_retest' | 'hoan_thanh' | 'retest' | 'live' | 'ca' | 'truc'>('can_xep')
   const [vuaDon, setVuaDon] = useState<number>(0)
+  const [loiNap, setLoiNap] = useState<string | null>(null) // Thùy 23/09 "xếp xong không chuyển tab": lỗi nạp lại phải HIỆN, không nuốt
   const [monF, setMonF] = useState('')
   const [khoiF, setKhoiF] = useState('')
 
@@ -105,6 +106,14 @@ export default function XepLichBoTroYeuScreen() {
     try { await datUuTienCase(c.id, moi) } catch { setItems((prev) => sapXep(prev.map((x) => x.id === c.id ? { ...x, uuTien: c.uuTien } : x))) }
   }
   const danhDauDaXep = (ids: string[]) => { const s = new Set(ids); setItems((prev) => prev.map((x) => s.has(x.id) ? { ...x, daXep: true } : x)) }
+  // Xếp/sửa/huỷ trong modal: VÁ case tại chỗ NGAY (daXep + buoiChoHoc từ giá trị vừa lưu) ⇒ card nhảy tab tức thì, không phụ thuộc
+  // lệnh nạp lại; rồi nạp lại để đồng bộ số liệu — lỗi nạp lại hiện banner đỏ (trước đây .catch(() => {}) nuốt im ⇒ "xếp xong vẫn ở Cần xếp").
+  const vaSauXep = (caseId: string, b: BuoiChoHoc | null) => {
+    setItems((prev) => prev.map((x) => x.id === caseId ? { ...x, daXep: !!b, buoiChoHoc: b } : x))
+    setLoiNap(null)
+    listCaseChoXepLich().then((r) => { setItems(r); setMuc(new Map(r.map((c) => [c.hoc_sinh_id, c.level]))) })
+      .catch((e: any) => setLoiNap(`Đã lưu buổi nhưng nạp lại danh sách lỗi: ${e?.message ?? String(e)} — bấm ↻`))
+  }
   const moCase = items.find((c) => c.id === moId) ?? null
 
   return (
@@ -134,6 +143,7 @@ export default function XepLichBoTroYeuScreen() {
           </div>
         </header>
 
+        {loiNap && <p className="mb-3 rounded-xl bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loiNap}</p>}
         {tab === 'truc' ? <LichTrucTab /> : tab === 'retest' ? <RetestTab monF={monF} khoiF={khoiF} /> : tab === 'live' ? <TheoDoiCaBoTroTab monF={monF} khoiF={khoiF} /> : tab === 'ca' ? <CaBoTroTab choXep={choXep} muc={muc} monF={monF} khoiF={khoiF} onDaXep={danhDauDaXep} /> : loading ? (
           <div className="rounded-2xl bg-white p-8 text-center text-[13px] text-slate-400 ring-1 ring-slate-200">Đang tải…</div>
         ) : items.length === 0 ? (
@@ -192,9 +202,9 @@ export default function XepLichBoTroYeuScreen() {
           </div>
         )}
       </div>
-      {/* Xếp/sửa xong = vá `daXep` của đúng case tại chỗ, KHÔNG reload (blank list + mất chỗ) — CLAUDE.md §2 React. */}
+      {/* Xếp/sửa/huỷ xong = vá case tại chỗ NGAY rồi mới nạp lại đồng bộ (không blank list, không mất chỗ) — CLAUDE.md §2 React. */}
       {moCase && <XepModal c={moCase} mucLv={muc.get(moCase.hoc_sinh_id) ?? 0} onDong={() => setMoId(null)}
-        onDoi={() => { listCaseChoXepLich().then((r) => { setItems(r); setMuc(new Map(r.map((c) => [c.hoc_sinh_id, c.level]))) }).catch(() => {}) }} />}
+        onDoi={(b) => vaSauXep(moCase.id, b)} />}
     </section>
   )
 }
@@ -230,7 +240,7 @@ function CaseCard({ c, mucLv, onMo, onUuTien, daXep, deXuat, onThemMay }: { c: C
           )}
           {b && (
             <div className="mt-1.5 text-[12px] font-medium text-emerald-700">
-              {b.qua_ngay ? <span className="text-amber-700">⚠ Quá ngày chưa học: </span> : 'Đã xếp · chưa bổ trợ: '}
+              {b.qua_ngay ? (b.diem_danh === 'co_mat' ? <span className="text-sky-700">Đã học · TA chưa đóng ca: </span> : <span className="text-amber-700">⚠ Quá ngày chưa học: </span>) : 'Đã xếp · chưa bổ trợ: '}
               {thuCuaNgay(b.ngay)} {ddmmVN(b.ngay)}{b.gio_bat_dau ? ` · ${hhmm(b.gio_bat_dau)}` : ''}{b.phong ? ` · ${b.phong}` : ''}{b.nguoi_ten ? ` · ${b.nguoi_ten}` : ''}
             </div>
           )}
@@ -248,7 +258,7 @@ function CaseCard({ c, mucLv, onMo, onUuTien, daXep, deXuat, onThemMay }: { c: C
 
 const NGAY_KHAC = '__khac__'
 
-function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; onDong: () => void; onDoi: () => void }) {
+function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; onDong: () => void; onDoi: (b: BuoiChoHoc | null) => void }) {
   const muc1 = mucLv <= 1 // L0 không có case; phòng thủ coi như mức 1
   const [buois, setBuois] = useState<BuoiBoTroYeuDaXep[]>([])
   const [goiY, setGoiY] = useState<GoiYXepLich | null>(null)
@@ -383,6 +393,7 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
     setLoi(null); setBusy(true)
     try {
       const tom = `${thuCuaNgay(ngay)} ${ddmmVN(ngay)}${gBd ? ` · ${gBd}${gKt ? `–${gKt}` : ''}` : ''}${phong ? ` · ${phong}` : ''}${nguoiDay ? ` · ${tenNs(nguoiDay)}` : ''}`
+      let buoiId = suaId
       if (suaId) {
         await updateBuoiMeta(suaId, { ngay, gio_bat_dau: gBd, gio_ket_thuc: gKt, phong: phong || null, nguoi_day_tg: nguoiDay })
         setXong(`Đã lưu thay đổi: ${tom}`)
@@ -391,12 +402,13 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
           boTroYeuId: c.id, hocSinhId: c.hoc_sinh_id, ngay,
           gio_bat_dau: gBd, gio_ket_thuc: gKt, phong: phong || null, nguoi_day_tg: nguoiDay,
         })
+        buoiId = id
         setSuaId(id) // từ giờ sửa tiếp = update buổi này, không đẻ buổi mới
         setXong(`Đã xếp ${tom}`)
       }
       setDaXep(true)
+      onDoi({ buoi_id: buoiId ?? '', ngay, gio_bat_dau: gBd, gio_ket_thuc: gKt, phong: phong || null, nguoi_day_tg: nguoiDay, nguoi_ten: tenNs(nguoiDay) || null, diem_danh: null, qua_ngay: ngay < homNayVN() })
       setBuois(await listBuoiCuaCase(c.id))
-      onDoi()
     } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(false) }
   }
 
@@ -409,7 +421,8 @@ function XepModal({ c, mucLv, onDong, onDoi }: { c: CaseChoXep; mucLv: number; o
       const bs = await listBuoiCuaCase(c.id)
       setBuois(bs)
       if (suaId === b.id) { setSuaId(null); if (goiY) apDungMacDinh(goiY) } // đang sửa đúng buổi vừa huỷ ⇒ về chế độ tạo
-      onDoi()
+      const conCho = bs.find((x) => x.trang_thai === 'mo')
+      onDoi(conCho ? { buoi_id: conCho.id, ngay: conCho.ngay, gio_bat_dau: conCho.gio_bat_dau, gio_ket_thuc: conCho.gio_ket_thuc, phong: conCho.phong, nguoi_day_tg: conCho.nguoi_day_tg, nguoi_ten: tenNs(conCho.nguoi_day_tg) || null, diem_danh: null, qua_ngay: conCho.ngay < homNayVN() } : null)
     } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setHuyBusy(false) }
   }
 

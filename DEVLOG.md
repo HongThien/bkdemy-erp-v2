@@ -29523,3 +29523,13 @@ chuông đỏ). 10/132 case mở đang rỗng cùng kiểu. Thùy chốt rule: y
 - ⚠ PHÁT HIỆN DỮ LIỆU: Hà Linh có T111010103 (0.33/7 đo, MT 05/09) nhưng mã này KHÔNG CÒN trong `dai_ban_do` (chương 1 K11 chỉ còn
   …0101/0102/0106/0107/0108/0110). Điểm gắn dạng mồ côi từ 01/09: T309xxxx (68 HS, ~1.600 dòng), T312xxxx (8 HS), T111010103/…0109 (17/8 HS).
   Engine + SQL đều bỏ dạng ngoài bản đồ ⇒ HS yếu đúng dạng đó thành "rỗng". Việc của phiên bản đồ/kho — báo Thùy.
+
+## 2026-09-23 (đêm) — "Ca bổ trợ yếu xếp lịch xong vẫn không chuyển qua Đã xếp" (Thùy)
+
+Tra: buổi Hồ Quang Lâm 24/09 17:00 (tạo 20:38) có đủ buoi_hoc 'mo' + buoi_hoc_hs.bo_tro_yeu_id; RPC `fn_btyeu_case_xep_lich` trả
+buoi_cho_hoc ⇒ daXep=true; local nạp mới em nằm đúng tab Đã xếp (4); bundle prod đã chứa code tab hôm nay. KHÔNG tái hiện được bằng đọc code —
+nhưng chuỗi sau khi lưu là `listBuoiCuaCase → onDoi → RPC nạp lại .catch(() => {})`: bất kỳ khâu nào lỗi/chậm là card đứng yên mà không báo gì.
+Sửa phòng thủ (§2 React): xếp/sửa/huỷ xong VÁ case tại chỗ NGAY (daXep + buoiChoHoc từ giá trị vừa lưu) ⇒ nhảy tab tức thì; rồi nạp lại để đồng
+bộ, lỗi nạp lại hiện banner đỏ "Đã lưu buổi nhưng nạp lại lỗi… bấm ↻" thay vì nuốt. Tiện thể sửa nhãn sai: ca qua ngày mà đã điểm danh có mặt
+nhưng TA chưa đóng ca hiện "Đã học · TA chưa đóng ca" (trước hiện "⚠ Quá ngày chưa học" — sai, 3/4 case Đã xếp hôm nay là kiểu này).
+Còn treo: chưa biết Thùy xếp qua modal "Xác nhận" hay tab Ca bổ trợ → tự ghép; không có case HS test để tái hiện luồng tạo buổi thật.
