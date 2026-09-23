@@ -14716,3 +14716,8 @@ Khác với "dạng yếu mới do máy đo" (chỉ đề xuất — 20260922134
   "nhập điểm HS" chỉ bắt câu chấm MỚI sau khi đóng, không bắt sửa điểm câu cũ.
 - Verify UI (dev-alt 5202, login dev Admin): Đề xuất → Lịch sử hiện "07/09 18:00 Hạn chót Chấm MT · 13/09 20:07 Đóng — trễ
   6 ngày 2h (mốc hiện tại — trước khi có log)"; Bảng gậy → dòng ledger ref_id có nút Lịch sử. tsc sạch (trừ pdfRender có sẵn).
+- **Vá tiếp (Thùy "sửa luôn"): tên người chấm trong timeline** — mig 202609231631. Đo thật: `gami_grades.graded_by` và
+  `buoi_danh_gia.graded_by` lưu id TÀI KHOẢN (111.484/111.484 và 4.186/4.186 khớp tai_khoan, 0 khớp nhan_su) nên tra
+  thẳng nhan_su luôn trống. Helper `_gay_ten_actor(uuid)`: tai_khoan→nhan_su, fallback nhan_su. Bài học: cột tên
+  `*_by` trong hệ này KHÔNG thống nhất — `actor` của trigger là nhan_su.id (current_nhan_su_id) còn `graded_by`
+  client ghi là auth uid; tra tên phải hỏi cột đó thuộc họ nào trước, đừng join nhan_su theo phản xạ.

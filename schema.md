@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-239 bảng · 19 view · 0 enum · 82 trigger · 453 function
+239 bảng · 19 view · 0 enum · 82 trigger · 454 function
 
 ## _app_secrets
 
@@ -5061,6 +5061,7 @@ SELECT bl.hoc_sinh_id,
 - `_dien_buoc_hs(p_buoc jsonb, p_o jsonb)` → jsonb
 - `_dien_hs_view(p_o jsonb)` → jsonb
 - `_gay_nhan_tre(p_tu timestamp with time zone, p_den timestamp with time zone)` → text
+- `_gay_ten_actor(p_id uuid)` → text
 - `_htd_chon_cau_bat_ky(p_cautbl text, p_ma_dang text, p_tru text[], p_n integer)` → text[]
 - `_kho_ban_do_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `_kho_cau_chuan(p_da_duyet boolean, p_kiem_may text, p_created_at timestamp with time zone, p_giai_method text)` → boolean
