@@ -14736,3 +14736,21 @@ huỷ ⇒ tự huỷ + tính không diễn ra · Lịch sử = toàn bộ hoạt
   thẳng nhan_su luôn trống. Helper `_gay_ten_actor(uuid)`: tai_khoan→nhan_su, fallback nhan_su. Bài học: cột tên
   `*_by` trong hệ này KHÔNG thống nhất — `actor` của trigger là nhan_su.id (current_nhan_su_id) còn `graded_by`
   client ghi là auth uid; tra tên phải hỏi cột đó thuộc họ nào trước, đừng join nhan_su theo phản xạ.
+
+## 2026-09-23 — BTVN 7S1 20/09: gán nhầm phiếu → gán lại, lưới chấm ĐCS đứng im (Thùy báo)
+- **Đo thật (DB, claude_ro):** buổi `7S1.CN.20092026` — lưới `gami_session_problems` phase btvn có 8 ô `HH00001003..009,001`
+  (dạng HH00001 "Tổng ba góc tam giác" — phiếu 16/09 gán nhầm sang 20/09), tạo 17:15 21/09; Hà Giang chấm 64 ô (8 HS × 8 câu,
+  62 Đ + 2 C, 17:20:02–17:20:33 = tích cả hàng) + tick nộp/thái độ 8 HS; **đóng BTVN 17:20:51**; phiếu BTVN ĐÚNG
+  (`d1debd53…`, 20 câu T107020303 + T107020401) mới tạo **18:13** — SAU khi đóng. Phiếu 16/09 giờ nằm đúng ngày 16/09.
+- **Nguyên nhân:** `syncDocProblems` gặp `daDong=true` + lệch cấu trúc ⇒ trả `doiCauTruc` (đúng luật, không sửa lén
+  lưới đã đóng) — NHƯNG `BtvnTab` (ERP) và `ChamBtvn` (app TA) **nuốt kết quả sync** (`await syncBTVNProblems(...)`
+  không gán), không có banner như tab ET ⇒ nhìn như "chỗ nhập ĐCS chưa cập nhật". Thêm: effect chỉ chạy theo
+  `buoiId`, bấm "Mở lại" xong lưới vẫn cũ tới khi rời tab.
+- **Sửa (code, 2 màn):** tách `napLuoi(dongHienTai)` — bắt `LuoiSync` Đại+Hình → `setSync`; 4 banner (đổi cấu trúc /
+  lệch số / lệch dạng / ô mồ côi) y ET, chữ theo ngữ cảnh "phiếu BTVN"; ô mồ côi đánh dấu **"Ngoài phiếu"** (nền hồng);
+  "Mở lại" gọi `napLuoi(false)` ngay ⇒ ô mới hiện luôn. tsc sạch. Verify dev-alt2 (5203, dev Admin): tab BTVN 7S1 20/09
+  hiện banner vàng đúng. **KHÔNG bấm Mở lại** (đổi state thật + EXP) — để Thùy quyết.
+- **Việc còn treo (chờ Thùy gật, Luật xoá):** 64 dòng `gami_grades` + 8 dòng `gami_session_problems` của phiếu nhầm là
+  rác (chấm trước khi phiếu đúng tồn tại). Bấm "Mở lại" thì hệ thêm 20 ô mới, 8 ô cũ còn điểm nên giữ lại "Ngoài phiếu"
+  (đúng luật thà giữ hơn mất); muốn sạch phải xoá 64 điểm (tay = 64 click, hoặc 1 DELETE có xác nhận). EXP BTVN
+  buổi này đã thưởng theo 8 ô nhầm — đóng lại sẽ tính lại. `.claude/launch.json` thêm `dev-alt2` (5203) vì 5202 bận.

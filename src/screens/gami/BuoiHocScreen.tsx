@@ -1982,6 +1982,7 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
   const mon = (buoi as any).lop?.mon as string | undefined
   const dangTL = useDangTaiLieu(buoiId, 'btvn', mon) // 🚨 dạng có trong PHIẾU BTVN (luật chung chuông, CEO 09/09)
   const [onl, setOnl] = useState<BTVNOnlineDongBo | null>(null) // kết quả đổ BTVN online vào lưới (xem dongBoBTVNOnline)
+  const [sync, setSync] = useState<LuoiSync | null>(null) // lưới ↔ phiếu BTVN có khớp không (banner như ET)
   const [onlBusy, setOnlBusy] = useState(false)
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
@@ -1991,21 +1992,30 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
 
   async function reloadP() { const [p, g] = await Promise.all([listProblems(buoiId, 'btvn'), listGrades(buoiId)]); setProbs(p); setGrades(g) }
   async function reloadKq() { setKq(await getBtvnKetQua(buoiId)); setCb(await listCanhBao(buoiId)); setNop(await listNopTheoBuoi(buoiId).catch(() => ({}))) }
-  useEffect(() => { (async () => {
+  // Nạp lưới = sync bám PHIẾU BTVN (lớp+ngày) rồi đọc ô/điểm. `dongHienTai` truyền tường minh vì được gọi
+  // lại NGAY sau "Mở lại" (effect chỉ chạy theo buoiId). Bài học 7S1 20/09 (23/09): gán nhầm phiếu → chấm →
+  // đóng BTVN → gán lại phiếu đúng ⇒ sync từ chối đổi cấu trúc (đúng luật, phase đã đóng) NHƯNG kết quả bị
+  // nuốt, không một dòng báo ⇒ nhìn như "chỗ nhập ĐCS chưa cập nhật". Im lặng là thứ duy nhất không được phép.
+  async function napLuoi(dongHienTai: boolean) {
     setLoading(true)
     try {
       const { btvnId, caus } = await loadBTVNForBuoi(buoiId)
       // TUẦN TỰ (không Promise.all) — Đại + Hình chia sẻ slot problem_no của cùng (buổi,'btvn').
-      if (btvnId) await syncBTVNProblems(buoiId, caus, !!buoi.btvn_dong_at)
+      const s = btvnId ? await syncBTVNProblems(buoiId, caus, dongHienTai) : null
       const { dapAn: hinhDapAn } = await loadHinhForBuoiPhase(buoiId, 'btvn')
-      if (hinhDapAn.length) await syncHinhProblems(buoiId, 'btvn', hinhDapAn, !!buoi.btvn_dong_at)
+      const sh = hinhDapAn.length ? await syncHinhProblems(buoiId, 'btvn', hinhDapAn, dongHienTai) : null
       setMissing(!btvnId && !hinhDapAn.length)
+      setSync(s || sh ? {
+        probs: [...(s?.probs ?? []), ...(sh?.probs ?? [])], moCoi: [...(s?.moCoi ?? []), ...(sh?.moCoi ?? [])],
+        khongRoRang: s?.khongRoRang ?? sh?.khongRoRang ?? null, doiCauTruc: !!(s?.doiCauTruc || sh?.doiCauTruc),
+      } : null)
       // BTVN ONLINE → lưới + trạng thái nộp (Thùy 07/09). Sau sync để ô đã có; BTVN đã đóng thì RPC tự bỏ qua.
       // Lỗi ở đây KHÔNG làm hỏng tab (lưới chấm tay vẫn dùng được) — chỉ ghi kết quả để hiện dòng báo.
       if (btvnId) { try { setOnl(await dongBoBTVNOnline(buoiId)) } catch (e: any) { setOnl({ khongCoTest: true }); console.error('dongBoBTVNOnline', e) } }
       await reloadP(); await reloadKq()
     } catch { setMissing(true) } finally { setLoading(false) }
-  })() }, [buoiId]) // eslint-disable-line
+  }
+  useEffect(() => { napLuoi(!!buoi.btvn_dong_at) }, [buoiId]) // eslint-disable-line
 
   const gradeOf = (pid: string, hsid: string) => grades.find((g) => g.problem_id === pid && g.hoc_sinh_id === hsid)
   async function pickKQ(pid: string, hsId: string, result: ETResult) {
@@ -2046,6 +2056,7 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
   if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh “có mặt”.</p>
 
   const cbOf = (hsId: string) => cb.filter((x) => x.hoc_sinh_id === hsId)
+  const moCoiIds = new Set((sync?.moCoi ?? []).map((m) => m.problem.id))
   return (
     <div className="flex h-full flex-col">
       <div className="mb-3 flex items-center gap-2">
@@ -2053,7 +2064,8 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
         {dong ? (
           <div className="ml-auto flex items-center gap-2">
             <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[13px] font-medium text-emerald-700">✓ BTVN đã đóng — đã thưởng EXP hoàn thành.</span>
-            <button onClick={async () => { if (!confirm('Mở lại BTVN để sửa? EXP đã thưởng sẽ hoàn lại.')) return; await reopenBTVN(buoiId); onChange() }} className="rounded-md border border-amber-300 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-50">↩ Mở lại để sửa</button>
+            {/* Mở lại xong nạp lại lưới NGAY (daDong=false) — phiếu đã đổi thì ô mới hiện luôn, không phải rời tab rồi quay lại. */}
+            <button onClick={async () => { if (!confirm('Mở lại BTVN để sửa? EXP đã thưởng sẽ hoàn lại.')) return; await reopenBTVN(buoiId); onChange(); await napLuoi(false) }} className="rounded-md border border-amber-300 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-50">↩ Mở lại để sửa</button>
           </div>
         ) : (
           <button onClick={dong_} disabled={closing} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{closing ? 'Đang đóng…' : 'Đóng BTVN'}</button>
@@ -2075,6 +2087,31 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
           </button>
         </div>
       )}
+      {/* Lưới KHÔNG khớp phiếu BTVN — nói rõ mất gì / phải làm gì, y như tab ET. Trước 23/09 tab này nuốt kết quả
+          sync ⇒ gán nhầm phiếu rồi gán lại sau khi đóng là lưới đứng im không lý do (7S1 20/09). */}
+      {sync?.doiCauTruc && (
+        <div className="mb-3 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-[12px] text-amber-800">
+          ⚠️ Phiếu BTVN của buổi (khớp lớp + ngày) <b>đã đổi sau khi BTVN được đóng</b> — lưới chấm giữ nguyên theo lúc chấm.
+          Muốn lưới bám phiếu mới thì bấm <b>↩ Mở lại để sửa</b>, hệ tự đồng bộ (ô cũ còn điểm được giữ lại, đánh dấu "Ngoài phiếu").
+        </div>
+      )}
+      {sync?.khongRoRang === 'lech_so' && (
+        <div className="mb-3 rounded-lg border border-rose-300 bg-rose-50 px-3 py-2 text-[12px] text-rose-800">
+          ⚠️ Lưới đời cũ: <b>số ô ({probs.length}) khác số câu trong phiếu</b> — hệ <b>không tự đoán</b> ô nào ứng câu nào. Cần người đối chiếu phiếu đã phát rồi quyết.
+        </div>
+      )}
+      {sync?.khongRoRang === 'lech_dang' && (
+        <div className="mb-3 rounded-lg border border-rose-300 bg-rose-50 px-3 py-2 text-[12px] text-rose-800">
+          ⚠️ Số ô bằng số câu nhưng <b>dạng của ô không khớp dạng của câu</b> (phiếu bị thay/bớt câu ở giữa sau khi chấm). Hệ không đoán, điểm giữ nguyên — cần người đối chiếu.
+        </div>
+      )}
+      {!!sync?.moCoi.length && (
+        <div className="mb-3 rounded-lg border border-rose-300 bg-rose-50 px-3 py-2 text-[12px] text-rose-800">
+          ⚠️ {sync.moCoi.length} ô có điểm nhưng câu tương ứng <b>không còn trong phiếu BTVN</b>
+          {' '}({sync.moCoi.map((m) => `câu ${m.problem.problem_no}: ${m.soDiem} điểm`).join(' · ')}).
+          {' '}Điểm được <b>giữ nguyên</b>, ô đánh dấu "Ngoài phiếu". Muốn bỏ hẳn: bấm lại mức đang chọn ở từng ô để xoá điểm; ô hết điểm tự biến mất lần mở sau.
+        </div>
+      )}
       <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
         <table className="border-collapse text-sm">
           <thead>
@@ -2083,8 +2120,8 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
               {probs.map((p) => {
                 const hinh = !!p.hinh_baitoan_id
                 return (
-                  <th key={p.id} className={`sticky top-0 z-10 min-w-[120px] border border-slate-200 px-2 py-1.5 text-center align-top ${hinh ? 'bg-violet-50' : 'bg-slate-100'}`}>
-                    <div className="text-[12px] font-bold text-slate-700">{hinh ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</div>
+                  <th key={p.id} className={`sticky top-0 z-10 min-w-[120px] border border-slate-200 px-2 py-1.5 text-center align-top ${moCoiIds.has(p.id) ? 'bg-rose-50' : hinh ? 'bg-violet-50' : 'bg-slate-100'}`}>
+                    <div className="text-[12px] font-bold text-slate-700">{moCoiIds.has(p.id) ? 'Ngoài phiếu' : hinh ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</div>
                     <div className="mx-auto max-w-[150px] truncate text-[11px] font-medium normal-case text-violet-600" title={hinh ? 'Hình (mô hình)' : tenDang(p.ma_dang)}>{hinh ? 'Hình (mô hình)' : tenDang(p.ma_dang)}</div>
                   </th>
                 )

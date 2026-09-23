@@ -12,12 +12,12 @@ import {
   listProblems, listGrades, gradeET, gradeETBulk, deleteGrade, loadBTVNForBuoi, syncBTVNProblems,
   loadHinhForBuoiPhase, syncHinhProblems, getBtvnKetQua, setBtvnKetQua, closeBTVN, reopenBTVN,
   listCanhBao,
-  type BuoiHocHS, type Problem, type Grade, type ETResult, type BtvnKQ, type BtvnTrangThai, type BtvnThaiDo, type CanhBao, type DangTaiLieu,
+  type BuoiHocHS, type Problem, type Grade, type ETResult, type BtvnKQ, type BtvnTrangThai, type BtvnThaiDo, type CanhBao, type DangTaiLieu, type LuoiSync,
 } from '../../lib/gami'
 import { listNopTheoBuoi, deXuatTrangThai, signUrls, uploadAnhCham, boAnhCham, listNhanXetMau, setNhanXet, traBai, xacNhanBuoi, chuyenBuoi, listBuoiBtvnCuaLop, type BtvnNop, type BtvnNopAnh, type NhanXetMau, type BuoiBtvn } from '../../lib/btvnnop'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { tenHienThiDs } from '../../lib/hoten'
-import { ET_KQ, DongBar, type BuoiFull } from './ChamBuoi'
+import { ET_KQ, DongBar, CanhBaoLuoi, type BuoiFull } from './ChamBuoi'
 import { ChuongBaoDong, ChipCanhBao, useDangTaiLieu, hopDang } from '../../components/ChuongBaoDong'
 
 const NOP_OPTS: { v: BtvnTrangThai; l: string }[] = [
@@ -37,6 +37,7 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
   const [probs, setProbs] = useState<Problem[]>([])
   const [grades, setGrades] = useState<Grade[]>([])
   const [missing, setMissing] = useState(false)
+  const [sync, setSync] = useState<LuoiSync | null>(null) // lưới ↔ phiếu BTVN có khớp không (banner như ET)
   const [kq, setKq] = useState<Record<string, BtvnKQ>>({})
   const [nop, setNop] = useState<Record<string, BtvnNop>>({})
   const [deXuat, setDeXuat] = useState<Record<string, DeXuat>>({})
@@ -65,17 +66,27 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
     const paths = Object.values(n).flatMap((x) => x.anh.flatMap((a) => [a.path, a.path_cham].filter(Boolean) as string[]))
     setUrls(await signUrls(paths).catch(() => ({})))
   }
-  useEffect(() => { (async () => {
-    setLoading(true)
+  // Nạp lưới = sync bám PHIẾU BTVN (lớp+ngày). `dongHienTai` truyền tường minh vì gọi lại NGAY sau "Mở lại"
+  // (effect chỉ chạy theo buoiId). Bài học 7S1 20/09 (23/09): gán nhầm phiếu → chấm → đóng → gán lại ⇒ sync
+  // từ chối đổi cấu trúc (đúng luật) nhưng kết quả bị nuốt ⇒ lưới đứng im không lý do. Xem BtvnTab ERP.
+  async function napLuoi(dongHienTai: boolean) {
     try {
       const { btvnId, caus } = await loadBTVNForBuoi(buoiId)
       // TUẦN TỰ — Đại + Hình chia sẻ slot problem_no (xem BtvnTab ERP).
-      if (btvnId) await syncBTVNProblems(buoiId, caus, dong)
+      const s = btvnId ? await syncBTVNProblems(buoiId, caus, dongHienTai) : null
       const { dapAn: hinhDapAn } = await loadHinhForBuoiPhase(buoiId, 'btvn')
-      if (hinhDapAn.length) await syncHinhProblems(buoiId, 'btvn', hinhDapAn, dong)
+      const sh = hinhDapAn.length ? await syncHinhProblems(buoiId, 'btvn', hinhDapAn, dongHienTai) : null
       setMissing(!btvnId && !hinhDapAn.length)
+      setSync(s || sh ? {
+        probs: [...(s?.probs ?? []), ...(sh?.probs ?? [])], moCoi: [...(s?.moCoi ?? []), ...(sh?.moCoi ?? [])],
+        khongRoRang: s?.khongRoRang ?? sh?.khongRoRang ?? null, doiCauTruc: !!(s?.doiCauTruc || sh?.doiCauTruc),
+      } : null)
       await reloadP()
     } catch { setMissing(true) }
+  }
+  useEffect(() => { (async () => {
+    setLoading(true)
+    await napLuoi(dong)
     try {
       const [k, dx, nx, c] = await Promise.all([
         getBtvnKetQua(buoiId), deXuatTrangThai(buoiId).catch(() => ({})), listNhanXetMau().catch(() => []), listCanhBao(buoiId).catch(() => []),
@@ -141,8 +152,13 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
     <div>
       <div className="mb-2.5 flex items-center gap-2">
         <span className="text-[12px] text-slate-400">{probs.length} câu · {dsHS.length} HS{soNop > 0 && <> · <b className="text-teal-700">📱 {soNop} nộp app</b></>}</span>
-        <div className="ml-auto"><DongBar dong={dong} dongLbl="Đóng BTVN" onDong={dong_} onMoLai={async () => { if (!confirm('Mở lại BTVN? EXP đã thưởng sẽ tính lại khi đóng.')) return; await reopenBTVN(buoiId); onChange() }} closing={closing} /></div>
+        <div className="ml-auto"><DongBar dong={dong} dongLbl="Đóng BTVN" onDong={dong_} onMoLai={async () => { if (!confirm('Mở lại BTVN? EXP đã thưởng sẽ tính lại khi đóng.')) return; await reopenBTVN(buoiId); onChange(); await napLuoi(false) }} closing={closing} /></div>
       </div>
+      {/* Lưới KHÔNG khớp phiếu BTVN — báo rõ như tab ET (trước 23/09 màn này nuốt kết quả sync, đứng im không lý do). */}
+      {sync?.doiCauTruc && <CanhBaoLuoi mau="amber" text="Phiếu BTVN của buổi đã đổi sau khi đóng — lưới giữ theo lúc chấm. Muốn bám phiếu mới: ↩ Mở lại, hệ tự đồng bộ (ô cũ còn điểm giữ lại, đánh dấu Ngoài phiếu)." />}
+      {sync?.khongRoRang === 'lech_so' && <CanhBaoLuoi mau="rose" text={`Số ô (${probs.length}) khác số câu trong phiếu — hệ KHÔNG tự đoán ô nào ứng câu nào. Đối chiếu trên ERP desktop.`} />}
+      {sync?.khongRoRang === 'lech_dang' && <CanhBaoLuoi mau="rose" text="Dạng của ô không khớp dạng của câu (phiếu bị thay/bớt câu ở giữa sau khi chấm) — hệ không đoán. Đối chiếu trên ERP desktop." />}
+      {!!sync?.moCoi.length && <CanhBaoLuoi mau="rose" text={`${sync.moCoi.length} ô có điểm nhưng câu không còn trong phiếu — điểm giữ nguyên, ô đánh dấu Ngoài phiếu.`} />}
 
       <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
         {dsHS.map((r, i) => {
@@ -178,7 +194,7 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
 
       {rMo && (
         <ChamMotHS key={rMo.hoc_sinh_id} r={rMo} ten={tenHT[iMo]} buoi={buoi} n={nop[rMo.hoc_sinh_id]} dx={deXuat[rMo.hoc_sinh_id]}
-          v={kq[rMo.hoc_sinh_id] ?? { trang_thai_nop: null, thai_do: null }} probs={probs} gradeOf={gradeOf} dong={dong}
+          v={kq[rMo.hoc_sinh_id] ?? { trang_thai_nop: null, thai_do: null }} probs={probs} gradeOf={gradeOf} dong={dong} moCoiIds={new Set((sync?.moCoi ?? []).map((m) => m.problem.id))}
           urls={urls} nxMau={nxMau} dangTaiLieu={hopDang(dangTL.dang, dangBuoi, tenDang)} dangLoading={dangTL.loading} tenDang={tenDang} cb={cb.filter((x) => x.hoc_sinh_id === rMo.hoc_sinh_id)}
           onClose={() => setHsMo(null)} pickKQ={pickKQ} bulkRow={bulkRow} setKQField={setKQField} traBai={traBai_}
           xacNhan={xacNhan_} chuyen={chuyen_} toggleNhanXet={toggleNhanXet} reloadNop={reloadNop}
@@ -190,10 +206,10 @@ export default function ChamBtvn({ buoi, roster, tenDang, napTenDang, onChange }
 
 // ── MÀN CHẤM 1 HS — full-screen. Landscape: ảnh+tool 70% trái · form 30% phải. Portrait: ảnh trên, form dưới.
 // HS không có ảnh (chấm giấy) → chỉ form.
-function ChamMotHS({ r, ten, buoi, n, dx, v, probs, gradeOf, dong, urls, nxMau, dangTaiLieu, dangLoading, tenDang, cb,
+function ChamMotHS({ r, ten, buoi, n, dx, v, probs, gradeOf, dong, moCoiIds, urls, nxMau, dangTaiLieu, dangLoading, tenDang, cb,
   onClose, pickKQ, bulkRow, setKQField, traBai, xacNhan, chuyen, toggleNhanXet, reloadNop, onCanhBaoChanged }: {
   r: BuoiHocHS; ten: string; buoi: BuoiFull; n?: BtvnNop; dx?: DeXuat; v: BtvnKQ; probs: Problem[]
-  gradeOf: (pid: string, hsId: string) => Grade | undefined; dong: boolean; urls: Record<string, string>
+  gradeOf: (pid: string, hsId: string) => Grade | undefined; dong: boolean; moCoiIds: Set<string>; urls: Record<string, string>
   nxMau: NhanXetMau[]; dangTaiLieu: DangTaiLieu[]; dangLoading: boolean; tenDang: (md: string | null) => string; cb: CanhBao[]
   onClose: () => void; pickKQ: (pid: string, hsId: string, result: ETResult) => void; bulkRow: (hsId: string, result: ETResult) => void
   setKQField: (hsId: string, patch: Partial<BtvnKQ>) => void; traBai: (hsId: string) => void; xacNhan: (hsId: string) => void
@@ -258,7 +274,7 @@ function ChamMotHS({ r, ten, buoi, n, dx, v, probs, gradeOf, dong, urls, nxMau, 
                   return (
                     <div key={p.id} className="flex items-center gap-2">
                       <span className="min-w-0 flex-1 truncate text-[12px] text-slate-600">
-                        <b>{p.hinh_baitoan_id ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</b>
+                        <b>{moCoiIds.has(p.id) ? 'Ngoài phiếu' : p.hinh_baitoan_id ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</b>
                         <span className="text-slate-400"> · {p.hinh_baitoan_id ? 'Hình' : tenDang(p.ma_dang)}</span>
                       </span>
                       <div className="flex gap-1">

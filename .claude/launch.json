@@ -160,6 +160,18 @@
         "5260"
       ],
       "port": 5260
+    },
+    {
+      "name": "dev-alt2",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "5203"
+      ],
+      "port": 5203
     }
   ]
 }
