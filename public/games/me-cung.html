@@ -42,12 +42,12 @@
   #pGame{padding:0}
   #hud{position:absolute;top:0;left:0;right:0;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:20px;font-weight:800;background:rgba(11,18,48,.75);z-index:2;pointer-events:none}
   #hud .st{font-size:30px;color:var(--gold)} #hud .st small{font-size:13px;color:var(--muted);font-weight:600}
-  #hud .mk{color:var(--red);font-size:18px}
+  #hud .mk{color:var(--muted);font-size:16px;font-weight:600}
   #hud .tm{font-variant-numeric:tabular-nums} #hud .tm.last{color:var(--red);animation:pulse .4s infinite alternate}
   @keyframes pulse{to{transform:scale(1.12)}}
   #gc{position:absolute;top:60px;left:0;width:100%;height:calc(100% - 60px);display:block;touch-action:none}
   #bigMsg{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);font-size:min(11vh,90px);font-weight:900;color:var(--gold);text-shadow:0 0 30px rgba(255,209,102,.8),0 4px 12px rgba(0,0,0,.6);pointer-events:none;z-index:5;opacity:0;transition:opacity .2s;white-space:nowrap;text-align:center}
-  #bigMsg.show{opacity:1} #bigMsg.bad{color:var(--red);text-shadow:0 0 30px rgba(255,92,92,.8)}
+  #bigMsg.show{opacity:1} #bigMsg.small{font-size:min(5vh,40px);top:62%;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.8)} #bigMsg.bad{color:var(--red);text-shadow:0 0 30px rgba(255,92,92,.8)}
   #flash{position:absolute;inset:0;pointer-events:none;background:rgba(255,60,60,.3);opacity:0;transition:opacity .2s;z-index:4}
   #cdOverlay{position:absolute;inset:0;background:rgba(8,13,36,.85);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:6}
   #cdOverlay.show{display:flex}
@@ -177,7 +177,7 @@
   <div class="grid2">
     <label>Vé vào chơi (xu) <input id="cEntry" type="number" min="0"></label>
     <label>Thưởng hạng 1 → 6 (phẩy) <input id="cPrizes"></label>
-    <label>Thưởng Perfect (0 lỗi, ≥95% tối ưu) <input id="cPerfect" type="number" min="0"></label>
+    <label>Thưởng Perfect (≥95% tối ưu) <input id="cPerfect" type="number" min="0"></label>
   </div>
   <h4>Mê cung</h4>
   <div class="grid2">
@@ -186,7 +186,7 @@
     <label>Số hàng (5–16) <input id="cRows" type="number" min="5" max="16"></label>
     <label>Vòng lặp (% tường bỏ, 0–40) <input id="cLoops" type="number" min="0" max="40"></label>
   </div>
-  <div class="tip">Mê cung sinh từ mã đề bằng thuật toán đào ngược, rồi bỏ thêm một tỉ lệ tường để có nhiều đường đi khác nhau. Độ dài tính bằng số ô đi qua (đi lùi cũng tính). Chạm tường: +1 lỗi, ngón tay phải quay về ô đang đứng để đi tiếp. Trận kết thúc sớm khi mọi đội tới đích.</div>
+  <div class="tip">Mê cung sinh từ mã đề bằng thuật toán đào ngược, rồi bỏ thêm một tỉ lệ tường để có nhiều đường đi khác nhau. Độ dài tính bằng số ô đi qua (đi lùi cũng tính). Nét vẽ không đi xuyên tường được, đẩy vào tường thì đứng lại, không tính lỗi. Trận kết thúc sớm khi mọi đội tới đích.</div>
   </div>
   <div class="dlgBtns"><button id="btnSummary" style="margin-right:auto">📊 Tổng kết</button><button id="dlgCancel">Đóng</button><button class="primary" id="dlgSave">Lưu</button></div>
   <div class="tip">Phím tắt tổng kết: Ctrl+Shift+T.</div>
@@ -276,10 +276,10 @@ const P={name:'',ready:false,playing:false,practice:false,matchId:null,lastPush:
 const gc=$('gc'),g=gc.getContext('2d');let cw=0,ch=0,dpr=1,geo=null;
 function resizeGC(){dpr=Math.min(devicePixelRatio||1,2);cw=gc.clientWidth;ch=gc.clientHeight;gc.width=cw*dpr;gc.height=ch*dpr;geo=null}
 addEventListener('resize',resizeGC);
-function layout(m,w,h,pad){const cs=Math.floor(Math.min((w-pad*2)/m.cols,(h-pad*2)/m.rows));return {cs,ox:Math.round((w-cs*m.cols)/2),oy:Math.round((h-cs*m.rows)/2)}}
+function layout(m,w,h,pad){const cs=Math.max(1,Math.floor(Math.min((w-pad*2)/m.cols,(h-pad*2)/m.rows)));return {cs,ox:Math.round((w-cs*m.cols)/2),oy:Math.round((h-cs*m.rows)/2)}}
 function pShow(id){['pLobby','pGame','pResult'].forEach(s=>$(s).classList.toggle('show',s===id));$('pTop').style.display=id==='pGame'?'none':'flex';if(id==='pGame')resizeGC()}
-function hud(){$('hSteps').textContent=P.steps;$('hMk').textContent=P.mistakes?'💥 '+P.mistakes+' lỗi':''}
-function bigMsg(t,ms,bad){const b=$('bigMsg');b.textContent=t;b.className='show'+(bad?' bad':'');clearTimeout(b._t);b._t=setTimeout(()=>b.classList.remove('show'),ms||900)}
+function hud(){$('hSteps').textContent=P.steps;$('hMk').textContent=P.opt?'tối ưu '+P.opt+' ô':''}
+function bigMsg(t,ms,bad,small){const b=$('bigMsg');b.textContent=t;b.className='show'+(bad?' bad':'')+(small?' small':'');clearTimeout(b._t);b._t=setTimeout(()=>b.classList.remove('show'),ms||900)}
 function progress(){if(!P.dist)return 0;const d=P.dist[P.path[P.path.length-1]];return P.opt?Math.max(0,Math.min(1,1-d/P.opt)):0}
 function head(){return P.path[P.path.length-1]}
 function cellAt(x,y){if(!geo)geo=layout(P.maze,cw,ch,14);const c=Math.floor((x-geo.ox)/geo.cs),r=Math.floor((y-geo.oy)/geo.cs);if(c<0||r<0||c>=P.maze.cols||r>=P.maze.rows)return -1;return r*P.maze.cols+c}
@@ -288,11 +288,10 @@ function moveTo(target){ // đi từng ô từ head tới target theo lưới; c
   while(cur!==target&&guard++<60){const c=cur%P.maze.cols,r=(cur/P.maze.cols)|0,tc=target%P.maze.cols,tr=(target/P.maze.cols)|0;const dc=tc-c,dr=tr-r;
     const tryOrder=Math.abs(dc)>=Math.abs(dr)?[[Math.sign(dc),0],[0,Math.sign(dr)]]:[[0,Math.sign(dr)],[Math.sign(dc),0]];
     let moved=false;for(const [sc,sr] of tryOrder){if(!sc&&!sr)continue;const ni=(r+sr)*P.maze.cols+c+sc;if(canMove(P.maze,cur,ni)){step(ni);cur=ni;moved=true;break}}
-    if(!moved){mistake();return false}}
+    if(!moved)return false}
   return true}
 function step(ni){const p=P.path;if(p.length>=2&&p[p.length-2]===ni)p.pop();else p.push(ni);P.steps++;
   if(ni===P.maze.exit)finish();else if(P.steps%1===0)pushScore()}
-function mistake(){P.mistakes++;P.dragging=false;$('flash').style.opacity=1;setTimeout(()=>$('flash').style.opacity=0,220);beep(110,.3,'sawtooth',.1);if(navigator.vibrate)navigator.vibrate(80);bigMsg('💥 CHẠM TƯỜNG!',700,true);hud();pushScore(true)}
 function finish(){P.finished=true;P.finishMs=Math.round(performance.now()-P.t0);P.dragging=false;P.playing=false;const eff=P.opt/P.steps;
   bigMsg('🏁 TỚI ĐÍCH!',1500);beep(784,.2,'triangle',.12);setTimeout(()=>beep(1046,.3,'triangle',.12),150);setTimeout(()=>beep(1318,.5,'triangle',.12),300);confetti(eff>=.95?250:120);hud();pushScore(true);
   setTimeout(()=>showResult(true),1600)}
@@ -309,12 +308,12 @@ function startGame(seed,dur,cfg,practice,startAtLocal){
   Object.assign(P,{playing:false,fin:false,practice,dur,maze:m,dist:d,opt:d[m.start],path:[m.start],steps:0,mistakes:0,finished:false,finishMs:0,dragging:false});
   pShow('pGame');geo=null;hud();$('hName').textContent=practice?'TẬP THỬ':(P.name||'Máy '+C.slot);$('hTime').textContent=dur;$('hTime').classList.remove('last');
   const cd=$('cdOverlay');cd.classList.add('show');$('cdSub').textContent=practice?'Tập thử':'Mã đề '+seed;
-  const go=()=>{cd.classList.remove('show');P.playing=true;P.t0=performance.now();bigMsg('ĐI!',500);beep(1046,.3,'triangle',.12);loopGame(performance.now())};
+  const go=()=>{cd.classList.remove('show');P.playing=true;P.t0=performance.now();bigMsg('ĐI!',500);setTimeout(()=>bigMsg('Đặt tay vào VÀO rồi kéo tới ĐÍCH',2200,false,true),600);beep(1046,.3,'triangle',.12);loopGame(performance.now())};
   const tickCd=()=>{const left=startAtLocal-performance.now();if(left<=0){go();return}const n=Math.ceil(left/1000);if($('cdNum').textContent!==String(n)){$('cdNum').textContent=n;beep(600,.12,'square',.06)}nextFrame(tickCd)};
-  render();tickCd()}
+  try{render()}catch(e){console.error(e)}tickCd()}
 function loopGame(now){if(!P.playing)return;const el=now-P.t0;
   const left=Math.max(0,Math.ceil((P.dur*1000-el)/1000));const ht=$('hTime');if(ht.textContent!==String(left)){ht.textContent=left;if(left===10){bigMsg('🔥 10 GIÂY CUỐI!',900);ht.classList.add('last')}if(left<=5&&left>0)beep(500,.08,'square',.05)}
-  render(now);if(el>=P.dur*1000){timeUp();return}nextFrame(loopGame)}
+  try{render(now)}catch(e){console.error(e)}if(el>=P.dur*1000){timeUp();return}nextFrame(loopGame)}
 // ---- vẽ ----
 function drawMaze(g,m,lay,opts){const {cs,ox,oy}=lay;const o=opts||{};
   g.fillStyle=o.bg||'rgba(255,255,255,.03)';g.fillRect(ox,oy,cs*m.cols,cs*m.rows);
@@ -326,17 +325,19 @@ function drawMaze(g,m,lay,opts){const {cs,ox,oy}=lay;const o=opts||{};
   const cx=i=>ox+(i%m.cols)*cs+cs/2,cy=i=>oy+((i/m.cols)|0)*cs+cs/2;
   if(o.optPath){g.strokeStyle='rgba(94,224,138,.55)';g.lineWidth=Math.max(2,cs*.14);g.setLineDash([cs*.3,cs*.25]);g.beginPath();o.optPath.forEach((i,k)=>k?g.lineTo(cx(i),cy(i)):g.moveTo(cx(i),cy(i)));g.stroke();g.setLineDash([])}
   if(o.path&&o.path.length>1){g.strokeStyle=o.pathColor||'#7cc4ff';g.lineWidth=Math.max(3,cs*.3);g.shadowColor=o.pathColor||'#7cc4ff';g.shadowBlur=cs*.3;g.beginPath();o.path.forEach((i,k)=>k?g.lineTo(cx(i),cy(i)):g.moveTo(cx(i),cy(i)));g.stroke();g.shadowBlur=0}
-  // start / exit
-  const fs=Math.max(10,cs*.7);g.font=fs+'px "Segoe UI Emoji","Apple Color Emoji",sans-serif';g.textAlign='center';g.textBaseline='middle';
-  g.fillText('🏮',cx(m.start),cy(m.start)+fs*.05);g.fillText('🌕',cx(m.exit),cy(m.exit)+fs*.05);
+  // start / exit: vẽ bằng hình khối (không dùng emoji vì canvas nhiều máy không có font)
+  const mk=(i,fill,ring,label)=>{const x=cx(i),y=cy(i),R=Math.max(2,cs*.36);g.save();g.shadowColor=fill;g.shadowBlur=cs*.4;g.fillStyle=fill;g.beginPath();g.arc(x,y,R,0,Math.PI*2);g.fill();g.shadowBlur=0;
+    g.strokeStyle=ring;g.lineWidth=Math.max(1.5,cs*.06);g.beginPath();g.arc(x,y,R,0,Math.PI*2);g.stroke();
+    if(cs>=26){g.fillStyle='#1a1200';g.font='bold '+Math.round(cs*.3)+'px Segoe UI, Arial, sans-serif';g.textAlign='center';g.textBaseline='middle';g.fillText(label,x,y+1)}g.restore()};
+  mk(m.start,'#5ee08a','#ffffff','VÀO');mk(m.exit,'#ffd166','#fff6d0','ĐÍCH');
   if(o.head!=null&&o.head!==m.start){const t=(o.now||0)/300;g.fillStyle=o.pathColor||'#7cc4ff';g.shadowColor=g.fillStyle;g.shadowBlur=cs*.5;g.beginPath();g.arc(cx(o.head),cy(o.head),cs*(.22+Math.sin(t)*.04),0,Math.PI*2);g.fill();g.shadowBlur=0}}
-function render(now){if(!cw)resizeGC();if(!P.maze)return;g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,cw,ch);if(!geo)geo=layout(P.maze,cw,ch,14);
+function render(now){if(cw<2||ch<2){resizeGC();geo=null}if(!P.maze||cw<2||ch<2)return;g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,cw,ch);if(!geo)geo=layout(P.maze,cw,ch,14);
   drawMaze(g,P.maze,geo,{path:P.path,head:head(),now:now||0,pathColor:P.finished?'#5ee08a':'#7cc4ff'});
   if(P.playing&&!P.dragging&&P.path.length>1){g.fillStyle='rgba(255,255,255,.7)';g.font='16px Segoe UI, sans-serif';g.textAlign='center';g.fillText('Chạm vào chấm sáng để đi tiếp',cw/2,ch-10)}}
 function timeUp(){P.playing=false;P.fin=true;P.dragging=false;bigMsg('HẾT GIỜ!',1200);beep(880,.5,'triangle',.12,220);render();pushScore(true);setTimeout(()=>showResult(false),1300)}
 function showResult(done){P.fin=true;pShow('pResult');const eff=P.finished?P.opt/P.steps:0;
   $('rTitle').textContent=done?'🏁 TỚI ĐÍCH':'HẾT GIỜ';$('rScore').textContent=P.finished?P.steps+' ô':Math.round(progress()*100)+'%';
-  $('rDetail').textContent=P.finished?`đường tối ưu ${P.opt} ô · hiệu suất ${Math.round(eff*100)}% · ${P.mistakes} lỗi · ${(P.finishMs/1000).toFixed(1)} s`:`đã đi ${P.steps} ô · ${P.mistakes} lỗi · chưa tới đích`;
+  $('rDetail').textContent=P.finished?`đường tối ưu ${P.opt} ô · hiệu suất ${Math.round(eff*100)}% · ${(P.finishMs/1000).toFixed(1)} s`:`đã đi ${P.steps} ô · chưa tới đích`;
   $('rRank').textContent='';$('rXu').textContent='';$('rWait').textContent=P.practice?'Tập thử xong, quay lại sảnh nhé':room?'Nhìn lên TV để xem xếp hạng':'Đọc kết quả này cho nhân sự';pushScore(true);
   if(!P.practice)addLocalHist({slot:C.slot,name:P.name,steps:P.steps,mistakes:P.mistakes,finished:P.finished,opt:P.opt,t:Date.now()})}
 function addLocalHist(h){try{const k='bk-mecung-hist';const a=JSON.parse(localStorage.getItem(k)||'[]');a.push(h);localStorage.setItem(k,JSON.stringify(a.slice(-300)))}catch(e){}}
@@ -394,7 +395,6 @@ function feed(t){const f=$('feed');const d=document.createElement('div');d.textC
 function checkEvents(){if(TV.state.phase!=='playing')return;const rows=ranked();const lead=rows[0];
   if(lead&&(lead.progress>0||lead.finished)&&lead.slot!==TV.lastLead){if(TV.lastLead!==null){feed('⚡ '+(lead.name||'Máy '+lead.slot)+' vươn lên dẫn đầu!')}TV.lastLead=lead.slot}
   rows.forEach(p=>{const k=p.slot,nm=p.name||'Máy '+k;const seen=TV.feedSeen[k]||{mk:0,half:false,fin:false};
-    if((p.mistakes||0)>seen.mk){if(p.mistakes===3)feed('💥 '+nm+' chạm tường lần 3!');seen.mk=p.mistakes}
     if(!seen.half&&(p.progress||0)>=.5&&!p.finished){feed('🌗 '+nm+' đã đi được nửa đường!');seen.half=true}
     if(!seen.fin&&p.finished){feed('🏁 '+nm+' tới đích: '+p.steps+' ô!');$('tvBigM').textContent='🏁 '+nm.toUpperCase()+' TỚI ĐÍCH!';$('tvBigN').textContent='';flashBig(1000);beep(784,.2,'triangle',.1);setTimeout(()=>beep(1046,.3,'triangle',.1),150);seen.fin=true}
     TV.feedSeen[k]=seen});
@@ -418,7 +418,7 @@ function renderTV(now){const w=tc.clientWidth,h=tc.clientHeight;if(!w||!h||!TV.m
     drawMaze(tg,m,lay,{wall:inMatch?'rgba(255,209,102,.8)':'rgba(255,209,102,.25)',lw:1.5,path:inMatch?(p.path||[]):null,head:inMatch&&p.path?p.path[p.path.length-1]:null,now,pathColor:p.finished?'#5ee08a':PCOL[i]});
     tg.textAlign='left';tg.fillStyle=inMatch?'#f3f4ff':'#6b74a8';tg.font='bold 20px Segoe UI, sans-serif';const rk=rankOf[p.slot];const medal=inMatch&&(ph==='playing'||ph==='result')&&(p.steps>0||p.finished)?(rk===1?'🥇 ':rk===2?'🥈 ':rk===3?'🥉 ':'#'+rk+' '):'';
     tg.fillText(medal+(p.name||'Máy '+p.slot),x0+14,y0+26,cellW*.55);
-    tg.textAlign='right';if(inMatch){if(p.finished){tg.fillStyle='#5ee08a';tg.fillText('🏁 '+p.steps+' ô',x0+cellW-14,y0+26)}else{tg.fillStyle='#ffd166';tg.fillText(Math.round((p.progress||0)*100)+'% · '+(p.steps||0)+' ô'+((p.mistakes||0)?' · 💥'+p.mistakes:''),x0+cellW-14,y0+26)}}
+    tg.textAlign='right';if(inMatch){if(p.finished){tg.fillStyle='#5ee08a';tg.fillText('🏁 '+p.steps+' ô',x0+cellW-14,y0+26)}else{tg.fillStyle='#ffd166';tg.fillText(Math.round((p.progress||0)*100)+'% · '+(p.steps||0)+' ô',x0+cellW-14,y0+26)}}
     if(res[p.slot]){tg.fillStyle='#5ee08a';tg.font='bold 16px Segoe UI, sans-serif';tg.fillText('+'+res[p.slot].xu+' xu'+(res[p.slot].perfect?' ⭐':''),x0+cellW-14,y0+cellH-8)}})}
 function tvLoop(now){const st=TV.state,cur=TV.cur;
   if(cur&&(st.phase==='countdown'||st.phase==='playing')){const sn=serverNow();
@@ -432,7 +432,7 @@ function tvStart(){if(!room){alert('Chưa kết nối mạng. Dùng "Nhập đi�
   [1,2,3,4,5,6].forEach(i=>{if(TV.players[i])Object.assign(TV.players[i],{steps:0,mistakes:0,progress:0,finished:false,finishMs:0,path:[],fin:false})});
   TV.cur={matchId,seed,startAt,dur:C.dur||75,endAt:startAt+(C.dur||75)*1000,players:ready.map(p=>p.slot),allDoneAt:0};
   setState({phase:'countdown',matchId,seed,startAt,dur:C.dur||75,cfg:{cols:C.cols,rows:C.rows,loops:C.loops},entry:C.entry,prizes:C.prizes})}
-function computeResults(list,opt){const prizes=C.prizes||DEF.prizes;const sorted=list.slice().sort(cmp);const res={};sorted.forEach((p,i)=>{const perfect=!!(p.finished&&(p.mistakes||0)===0&&opt&&opt/p.steps>=.95);res[p.slot]={rank:i+1,xu:(prizes[Math.min(i,prizes.length-1)]||0)+(perfect?(C.perfect||0):0),score:p.finished?p.steps:Math.round((p.progress||0)*100),finished:!!p.finished,name:p.name,mistakes:p.mistakes||0,perfect,eff:p.finished&&opt?+(opt/p.steps).toFixed(3):0}});return res}
+function computeResults(list,opt){const prizes=C.prizes||DEF.prizes;const sorted=list.slice().sort(cmp);const res={};sorted.forEach((p,i)=>{const perfect=!!(p.finished&&opt&&opt/p.steps>=.95);res[p.slot]={rank:i+1,xu:(prizes[Math.min(i,prizes.length-1)]||0)+(perfect?(C.perfect||0):0),score:p.finished?p.steps:Math.round((p.progress||0)*100),finished:!!p.finished,name:p.name,mistakes:p.mistakes||0,perfect,eff:p.finished&&opt?+(opt/p.steps).toFixed(3):0}});return res}
 function tvFinish(){const cur=TV.cur;if(!cur)return;TV.cur=null;
   const list=plist().filter(p=>cur.players.includes(p.slot)).map(p=>({slot:p.slot,name:p.name||'Máy '+p.slot,steps:p.steps||0,mistakes:p.mistakes||0,progress:p.progress||0,finished:!!p.finished,finishMs:p.finishMs||0}));
   const results=computeResults(list,TV.opt.length-1);setState({phase:'result',matchId:cur.matchId,results,n:list.length});recordMatch(results,list.length,cur.seed)}
@@ -463,7 +463,7 @@ function openSummary(){let h='';
     h+='<h4>Các trận</h4><table><thead><tr><th>#</th><th>Giờ</th><th>Mã đề</th><th>Kết quả</th></tr></thead><tbody>'+hs.slice().reverse().map((m,i)=>`<tr><td>${hs.length-i}</td><td>${new Date(m.t).toLocaleTimeString('vi-VN')}</td><td>${m.seed}</td><td>${Object.values(m.results).sort((a,b)=>a.rank-b.rank).map(r=>`${r.rank}. ${esc(r.name)} ${r.finished?r.score+' ô':r.score+'%'}`).join(' · ')}</td></tr>`).join('')+'</tbody></table>';
     h+='<div class="dlgBtns"><button id="sumClear">Xóa lịch sử</button></div>'}
   else{let a=[];try{a=JSON.parse(localStorage.getItem('bk-mecung-hist')||'[]')}catch(e){}
-    h+='<table><thead><tr><th>Giờ</th><th>Tên</th><th>Ô đã đi</th><th>Tối ưu</th><th>Lỗi</th><th>Tới đích</th></tr></thead><tbody>'+a.slice().reverse().map(x=>`<tr><td>${new Date(x.t).toLocaleTimeString('vi-VN')}</td><td>${esc(x.name||'')}</td><td>${x.steps}</td><td>${x.opt}</td><td>${x.mistakes}</td><td>${x.finished?'🏁':''}</td></tr>`).join('')+'</tbody></table>'}
+    h+='<table><thead><tr><th>Giờ</th><th>Tên</th><th>Ô đã đi</th><th>Tối ưu</th><th>Tới đích</th></tr></thead><tbody>'+a.slice().reverse().map(x=>`<tr><td>${new Date(x.t).toLocaleTimeString('vi-VN')}</td><td>${esc(x.name||'')}</td><td>${x.steps}</td><td>${x.opt}</td><td>${x.finished?'🏁':''}</td></tr>`).join('')+'</tbody></table>'}
   $('sumBody').innerHTML=h;if(dlg.open)dlg.close();sum.showModal();const cl=$('sumClear');if(cl)cl.onclick=()=>{if(confirm('Xóa toàn bộ lịch sử trận?')){TV.hist=[];localStorage.removeItem('bk-mecung-tvhist');sum.close()}}}
 addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==='t'){e.preventDefault();sum.open?sum.close():openSummary()}
   if(C.role==='tv'&&!dlg.open&&!sum.open&&e.target.tagName!=='INPUT'&&(e.key===' '||e.key==='Enter')){e.preventDefault();const ph=TV.state.phase;if(ph==='lobby')tvStart();else if(ph==='result')tvNew()}});
