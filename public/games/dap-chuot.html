@@ -169,7 +169,7 @@
     <div class="row"><span class="muted">Mã trận</span><input id="pSeed" style="width:120px;text-align:center;font-size:22px" inputmode="numeric" placeholder="1234"><button class="primary" id="pStartOff" style="font-size:24px;padding:14px 34px">▶ BẮT ĐẦU</button></div>
     <div class="tip">Để trống thì máy tự chọn mã. Cả 6 iPad nhập cùng mã thì gặp cùng chuột, nhân sự hô 3-2-1 rồi cùng bấm.</div>
   </div>
-  <button id="pPractice" style="font-size:14px">🎯 Tập thử 15 giây</button>
+  <button id="pPractice" style="font-size:14px">🎯 Tập thử</button>
 </div>
 <div class="screen" id="pGame" style="padding:0">
   <div id="hud"><div id="hName"></div><div class="sc" id="hScore">0</div><div class="cb" id="hCombo"></div><div class="tm" id="hTime">60</div></div>
@@ -232,7 +232,7 @@
   <div class="grid2">
     <label>Vé vào chơi (xu) <input id="cEntry" type="number" min="0"></label>
     <label>Thưởng hạng 1 → 6 (cách nhau dấu phẩy) <input id="cPrizes"></label>
-    <label>Thời gian trận (giây) <input id="cDur" type="number" min="20" max="180"></label>
+    <label>Thời gian trận (giây) <input id="cDur" type="number" min="10" max="180"></label>
   </div>
   <h4>Điểm chuột</h4>
   <div class="grid2">
@@ -275,10 +275,11 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 const $=id=>document.getElementById(id);
 const useTimer=/loop=timer/.test(location.search);const nextFrame=useTimer?(f=>setTimeout(()=>f(performance.now()),16)):(f=>requestAnimationFrame(f));
 const KEY='bk-dapchuot-v1';
-const DEF={role:null,slot:1,room:'BK01',sbUrl:'https://osrvycilwshkzhljuxef.supabase.co',sbKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4',entry:0,prizes:[10,9,8,7,6,5],dur:60,pts:{normal:1,fast:3,gold:5,bomb:-5,gift:10},den:1};
+const DEF={role:null,slot:1,room:'BK01',sbUrl:'https://osrvycilwshkzhljuxef.supabase.co',sbKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4',entry:0,prizes:[10,9,8,7,6,5],dur:25,pts:{normal:1,fast:3,gold:5,bomb:-5,gift:10},den:1};
 let C=Object.assign({},DEF);try{Object.assign(C,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
 const q=new URLSearchParams(location.search);if(q.get('role'))C.role=q.get('role');if(q.get('slot'))C.slot=+q.get('slot');if(q.get('room'))C.room=q.get('room');
 function saveC(){localStorage.setItem(KEY,JSON.stringify(C))}
+if(C.cfgv!==2){C.dur=25;C.cfgv=2;saveC()}
 const TYPES={normal:{ic:'🐹',dur:[900,1200]},fast:{ic:'⚡',dur:[450,620]},gold:{ic:'👑',dur:[650,800]},bomb:{ic:'💣',dur:[800,1000]},gift:{ic:'🎁',dur:[550,700]}};
 const COMBO_BONUS={10:3,20:5,30:10,40:15};
 
@@ -292,16 +293,21 @@ function tk(){ctx.clearRect(0,0,cv.width,cv.height);parts=parts.filter(p=>p.life
 function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 function pick(r,w){let s=0;for(const k in w)s+=w[k];let x=r()*s;for(const k in w){x-=w[k];if(x<0)return k}return Object.keys(w)[0]}
 function genSchedule(seed,dur,den){
-  const r=mulberry32(seed*9301+49297),list=[],busy=Array(9).fill(0);let t=800,id=0;const D=dur*1000;
-  const phase=t=>t<D*.25?0:t<D*.58?1:t<D*.83?2:3;
-  const GAP=[[1000,1400],[900,1200],[800,1100],[700,900]],CNT=[[1,1],[1,2],[1,2],[2,3]],CNTP=[0,.15,.4,.6];
-  const W=[{normal:.85,fast:.15},{normal:.6,fast:.25,bomb:.1,gold:.05},{normal:.5,fast:.25,bomb:.15,gold:.1},{normal:.45,fast:.3,bomb:.15,gold:.1}];
-  while(t<D-1500){const p=phase(t);let n=CNT[p][0];if(r()<CNTP[p])n=CNT[p][1];if(p===3&&r()<.3)n=3;
-    for(let k=0;k<n;k++){const ty=pick(r,W[p]);const d=TYPES[ty].dur;const du=Math.round(d[0]+r()*(d[1]-d[0]));const tt=t+Math.round(r()*120);
-      const free=[];for(let h=0;h<9;h++)if(busy[h]<tt)free.push(h);if(!free.length)continue;const h=free[Math.floor(r()*free.length)];busy[h]=tt+du+150;
+  // 3 pha theo tỉ lệ thời lượng: 0–20% 1 con/lần mỗi 1s · 20–60% 2 con/lần mỗi 0,8s · 60–100% 3 con/lần mỗi 0,5s, luôn có 1 bom.
+  // 50% trận có 1 chuột quà (ở nửa sau). Cùng seed → cùng lịch; den (mật độ) chia nhịp.
+  const r=mulberry32(seed*9301+49297),list=[],busy=Array(9).fill(0);let t=700,id=0;const D=dur*1000;
+  const phase=t=>t<D*.2?0:t<D*.6?1:2;
+  // đặt chỗ chuột quà trước (50% trận), chuột thường phải tránh hang đó trong khoảng nó xuất hiện
+  const gift=r()<.5?{t:Math.round(D*.4+r()*D*.45),hole:Math.floor(r()*9),dur:650}:null;
+  const okHole=(h,tt,du)=>busy[h]<tt&&!(gift&&h===gift.hole&&tt<gift.t+gift.dur+150&&tt+du+150>gift.t);
+  const GAP=[1000,800,500],CNT=[1,2,3];
+  const W=[{normal:.8,fast:.2},{normal:.55,fast:.3,gold:.1,bomb:.05},{normal:.5,fast:.35,gold:.15}];
+  while(t<D-600){const p=phase(t);const n=CNT[p];
+    for(let k=0;k<n;k++){const ty=(p===2&&k===0)?'bomb':pick(r,W[p]);const d=TYPES[ty].dur;const du=Math.min(Math.round(d[0]+r()*(d[1]-d[0])),D-t-100);const tt=t+Math.round(r()*100);
+      const free=[];for(let h=0;h<9;h++)if(okHole(h,tt,du))free.push(h);if(!free.length)continue;const h=free[Math.floor(r()*free.length)];busy[h]=tt+du+120;
       list.push({id:id++,t:tt,type:ty,dur:du,hole:h})}
-    const g=GAP[p];t+=Math.round((g[0]+r()*(g[1]-g[0]))/den)}
-  if(r()<.55){const tt=Math.round(D*.65+r()*D*.25);const free=[];for(let h=0;h<9;h++)if(busy[h]<tt)free.push(h);if(free.length)list.push({id:id++,t:tt,type:'gift',dur:650,hole:free[Math.floor(r()*free.length)]})}
+    t+=Math.round(GAP[p]/den)}
+  if(gift)list.push({id:id++,t:gift.t,type:'gift',dur:gift.dur,hole:gift.hole});
   list.sort((a,b)=>a.t-b.t);return list}
 function holePerm(seed,slot){const r=mulberry32(seed*31+slot*7919+13);const a=[0,1,2,3,4,5,6,7,8];for(let i=8;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 
@@ -366,7 +372,7 @@ function startGame(seed,dur,pts,practice,startAtLocal){
   tickCd()}
 function loopGame(){if(!P.playing)return;const el=(performance.now()-P.t0);
   while(P.idx<P.sched.length&&P.sched[P.idx].t<=el){showMole(P.sched[P.idx]);P.idx++}
-  const left=Math.max(0,Math.ceil((P.dur*1000-el)/1000));const ht=$('hTime');if(ht.textContent!==String(left)){ht.textContent=left;if(left===10){bigMsg('🔥 10 GIÂY CUỐI!',1000);ht.classList.add('last')}if(left<=5&&left>0)beep(500,.08,'square',.05)}
+  const left=Math.max(0,Math.ceil((P.dur*1000-el)/1000));const ht=$('hTime');if(ht.textContent!==String(left)){ht.textContent=left;if(left===Math.round(P.dur*.4)){bigMsg('🔥 '+left+' GIÂY CUỐI!',1000);ht.classList.add('last')}if(left<=5&&left>0)beep(500,.08,'square',.05)}
   if(el>=P.dur*1000){endGame();return}nextFrame(loopGame)}
 function endGame(){P.playing=false;P.fin=true;P.timers.forEach(clearTimeout);document.querySelectorAll('.mole').forEach(m=>m.classList.remove('up'));bigMsg('HẾT GIỜ!',1200);beep(880,.5,'triangle',.12,220);
   setTimeout(()=>{pShow('pResult');$('rScore').textContent=P.score;$('rCombo').textContent=P.maxCombo;$('rToken').innerHTML=P.token?' · 🎁 <b>+1 vé quà đặc biệt</b>':'';$('rRank').textContent='';$('rXu').textContent='';$('rWait').textContent=P.practice?'Tập thử xong, quay lại sảnh nhé':room?'Nhìn lên TV để xem xếp hạng':'Đọc điểm này cho nhân sự';pushScore(true);
@@ -392,7 +398,7 @@ async function bootPlayer(){
   $('pReady').onclick=()=>{if(!room){return}P.name=$('pName').value.trim();if(!P.name){$('pName').focus();return}P.ready=!P.ready;$('pReady').classList.toggle('on',P.ready);$('pReady').textContent=P.ready?'✅ ĐÃ SẴN SÀNG':'SẴN SÀNG';$('pWait').textContent=P.ready?'Chờ nhân sự bắt đầu trận…':'';sendPlayer();beep(P.ready?880:440,.12,'triangle',.08);$('pName').blur()};
   $('pName').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(room)$('pReady').click();else $('pStartOff').click()}});
   $('pStartOff').onclick=()=>{let seed=parseInt($('pSeed').value,10);if(isNaN(seed)){seed=Math.floor(Math.random()*9000)+1000;$('pSeed').value=seed}P.name=$('pName').value.trim();P.matchId=seed;startGame(seed,C.dur||60,C.pts,false,performance.now()+3200)};
-  $('pPractice').onclick=()=>{startGame(Math.floor(Math.random()*9999),15,C.pts,true,performance.now()+2200)};
+  $('pPractice').onclick=()=>{startGame(Math.floor(Math.random()*9999),C.dur||25,C.pts,true,performance.now()+2200)};
   $('pAgain').onclick=()=>{pShow('pLobby');if(room){P.ready=false;$('pReady').classList.remove('on');$('pReady').textContent='SẴN SÀNG';$('pWait').textContent=''}};
   $('pSettings').onclick=openSettings;
   document.addEventListener('gesturestart',e=>e.preventDefault());
@@ -461,7 +467,7 @@ function tvStart(){
 function tvLoop(){const st=TV.state,cur=TV.cur;
   if(cur&&(st.phase==='countdown'||st.phase==='playing')){const now=serverNow();
     if(st.phase==='countdown'){const left=cur.startAt-now;const n=Math.ceil(left/1000);$('tvBigM').textContent='';if(left>0){$('tvBigN').textContent=n;$('tvBig').classList.add('show');if($('tvBig')._n!==n){$('tvBig')._n=n;beep(600,.12,'square',.08)}}else{$('tvBigN').textContent='ĐẬP!';beep(1046,.3,'triangle',.12);setTimeout(()=>$('tvBig').classList.remove('show'),700);setState(Object.assign({},TV.state,{phase:'playing'}))}}
-    if(st.phase==='playing'){const left=Math.max(0,Math.ceil((cur.endAt-now)/1000));const t=$('tvTimer');if(t.textContent!==String(left)){t.textContent=left;if(left===10){t.classList.add('last');$('tvBigM').textContent='🔥 10 GIÂY CUỐI!';$('tvBigN').textContent='';flashBig(1200);beep(700,.2,'square',.08)}}
+    if(st.phase==='playing'){const left=Math.max(0,Math.ceil((cur.endAt-now)/1000));const t=$('tvTimer');if(t.textContent!==String(left)){t.textContent=left;if(left===Math.round(cur.dur*.4)){t.classList.add('last');$('tvBigM').textContent='🔥 '+left+' GIÂY CUỐI!';$('tvBigN').textContent='';flashBig(1200);beep(700,.2,'square',.08)}}
       if(now>=cur.endAt+1500)tvFinish()}}
   nextFrame(tvLoop)}
 function computeResults(list){const prizes=C.prizes||DEF.prizes;const sorted=list.slice().sort((a,b)=>b.score-a.score||(b.maxCombo||0)-(a.maxCombo||0)||a.slot-b.slot);const res={};sorted.forEach((p,i)=>{res[p.slot]={rank:i+1,xu:prizes[Math.min(i,prizes.length-1)]||0,score:p.score,name:p.name,token:!!p.token}});return res}
@@ -488,7 +494,7 @@ const dlg=$('dlg'),sum=$('sum');
 function openSettings(){$('cRoom').value=C.room;$('cRole').value=C.role||'tv';$('cSlot').value=C.slot;$('cSbUrl').value=C.sbUrl||'';$('cSbKey').value=C.sbKey||'';$('cEntry').value=C.entry;$('cPrizes').value=(C.prizes||[]).join(',');$('cDur').value=C.dur;$('cPn').value=C.pts.normal;$('cPf').value=C.pts.fast;$('cPg').value=C.pts.gold;$('cPb').value=C.pts.bomb;$('cPq').value=C.pts.gift;$('cDen').value=C.den;$('tvOnly').style.display=C.role==='tv'?'':'none';dlg.showModal()}
 $('dlgCancel').onclick=()=>dlg.close();
 $('dlgSave').onclick=()=>{C.room=$('cRoom').value.trim()||'BK01';C.role=$('cRole').value;C.slot=Math.min(6,Math.max(1,+$('cSlot').value||1));C.sbUrl=$('cSbUrl').value.trim();C.sbKey=$('cSbKey').value.trim();
-  if(C.role==='tv'){C.entry=Math.max(0,+$('cEntry').value||0);C.prizes=$('cPrizes').value.split(',').map(x=>+x.trim()).filter(x=>!isNaN(x));if(!C.prizes.length)C.prizes=DEF.prizes;C.dur=Math.max(20,+$('cDur').value||60);C.pts={normal:+$('cPn').value||1,fast:+$('cPf').value||3,gold:+$('cPg').value||5,bomb:+$('cPb').value||-5,gift:+$('cPq').value||10};C.den=Math.max(.5,Math.min(2,+$('cDen').value||1))}
+  if(C.role==='tv'){C.entry=Math.max(0,+$('cEntry').value||0);C.prizes=$('cPrizes').value.split(',').map(x=>+x.trim()).filter(x=>!isNaN(x));if(!C.prizes.length)C.prizes=DEF.prizes;C.dur=Math.max(10,+$('cDur').value||25);C.pts={normal:+$('cPn').value||1,fast:+$('cPf').value||3,gold:+$('cPg').value||5,bomb:+$('cPb').value||-5,gift:+$('cPq').value||10};C.den=Math.max(.5,Math.min(2,+$('cDen').value||1))}
   saveC();location.reload()};
 $('btnSummary').onclick=openSummary;$('sumClose').onclick=()=>sum.close();
 function openSummary(){let h='';
@@ -504,6 +510,7 @@ function openSummary(){let h='';
 addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==='t'){e.preventDefault();sum.open?sum.close():openSummary()}
   if(C.role==='tv'&&!dlg.open&&!sum.open&&e.target.tagName!=='INPUT'&&(e.key===' '||e.key==='Enter')){e.preventDefault();const ph=TV.state.phase;if(ph==='lobby')tvStart();else if(ph==='result')tvNew()}});
 
+window.__dbg={genSchedule,C};
 // ================= BOOT =================
 function boot(){$('roleScr').classList.remove('show');if(C.role==='tv')tvBoot();else if(C.role==='player')bootPlayer();else showRole()}
 boot();
