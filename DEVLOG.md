@@ -14634,3 +14634,30 @@ Khác với "dạng yếu mới do máy đo" (chỉ đề xuất — 20260922134
 - Tách thư viện Supabase nhúng (giống hệt ở 5 file, md5 trùng) ra `lib/supabase.js` cho hub dùng; 5 game vẫn tự chứa, không sửa thêm.
 - Sai & sửa: `showReg()` gán lại `pickRole=D.role` mỗi lần render ⇒ bấm "TV" xong bị reset, Xong không lưu — tách `showReg(init)`. `.screen` flex `justify-content:center` cắt mất phần trên khi nội dung cao hơn màn (450px) — đổi sang `::before/::after{margin:auto}`.
 - Verify (server tĩnh mới `scripts/serve-games.mjs`, launch.json entry `games`, port 5260; Supabase thật): TV đăng ký phòng TEST9 → menu 8 card + 8 chip; tab 2 `?role=player&slot=3` → chip "iPad 3 ✓"; TV bấm Đập Chuột ⇒ iPad tự vào `dap-chuot.html?role=player&slot=3`, sảnh "Máy 3", đã kết nối; TV trong game: 8 hàng bảng điểm, 8 ô tên, "Máy 3 · online"; TV Menu ⇒ iPad về chờ, frame about:blank; TV mở Đua Trung Thu ⇒ iPad hiện "chỉ TV". Chưa chơi hết 1 trận với slot 7–8 (chỉ kiểm cấu trúc).
+## 2026-09-05 — Gậy: lọc THÁNG/TUẦN + đánh gậy THEO TASK (worktree `gay`, mig 202609051251)
+**Thùy:** "Cần filter gậy theo tháng/tuần. Đánh gậy thủ công: chọn nhân sự → bấm chọn task (hệ đưa ra mọi task đã giao)
+→ bấm task → nhập số gậy + lý do. Gậy đi theo task; task nào có gậy = không đạt chuẩn. Sau này hiệu suất = task đạt chuẩn / tổng task."
+- Nhánh `feat/gay-bk` đã merge main từ trước, chưa có worktree → tạo `.claude/worktrees/gay` (nhánh `worktree-gay`), junction
+  node_modules + copy .env; vite tay port 5243 (Browser pane không đọc launch.json worktree — memory 04/09).
+- **DB (mig 202609051251):** `gay_ledger.ref_mo_ta` (nhãn task lúc đánh, hiển thị không parse ref_id) + index partial
+  `(nhan_su_id, ref_id)` · seed `gay_loi ma='khong_dat_chuan'` "Task không đạt chuẩn" (mặc định khi đánh theo task) ·
+  `fn_gay_bang_khoang(p_tu, p_den)` = fn_gay_bang nhưng scope NGÀY VN của created_at (tháng hoặc tuần), thêm
+  `so_task_khong_dat` = count distinct ref_id có gậy dương hiệu lực · `fn_gay_theo_task(p_nhan_su_id|null)` Σ gậy theo ref_id.
+  fn_gay_bang/fn_gay_chot_thang theo `ky` GIỮ NGUYÊN (chốt tháng vẫn dùng). Không mất gì.
+- **Khoá task = ref_id sẵn có của gậy tự động** (`vh:<buoiId>|<tab>|<nsId>` · `viec:<id>`) → gậy tay + gậy máy cùng khoá,
+  đếm hiệu suất về sau chỉ cần 1 chỗ. Đánh tay vào task đang có đề xuất 'cho' cùng ref_key → tự đóng đề xuất (da_danh, ledger_id)
+  để leader không đánh đúp.
+- **gay.ts:** `bangGay(k: KhoangNgay)` (rpc khoang + ledger lọc created_at) · `danhGayThuCong({..., ref?})` · `listTaskCuaNhanSu(ns, k)`:
+  vận hành = `listAllStaffTasks` lọc theo người (MỌI task được phân, KHÔNG lọc "phụ trách chính" như quét máy — đánh tay là
+  leader đã nhìn) + giao tay = `viec` bỏ huy/chuyen, thuộc kỳ khi deadline HOẶC ky_tuan rơi vào (không có cả hai → ngày giao);
+  số gậy/task lấy từ DB. Lọc kỳ = lựa chọn UI đang mở (§2.0 cho phép).
+- **UI GayScreen:** header thêm toggle Tháng/Tuần + ‹ › (tuần BK từ tuan.ts; đổi chế độ giữ vị trí thời gian). Bảng gậy thêm cột
+  "Task không đạt", entry có chip nhãn task + loai hiển thị "Theo task". Tab Đánh/Gỡ: panel "Đánh gậy vào task" (chọn NS → list task
+  kỳ đang lọc, ô tìm, badge "N gậy" task đã có gậy, trạng thái Xong/Chưa xong/Đạt…, bấm task → form inline lỗi/số/lý do) + hàng
+  "Lỗi ngoài ERP — không gắn task" giữ đường cũ; panel Gỡ giữ nguyên. Chốt tháng luôn theo tháng (ở chế độ tuần lấy tháng chứa T2, có ghi chú).
+- **Verify:** tsc sạch · SQL test trong transaction ROLLBACK: 2 dòng cùng ref → fn_gay_theo_task=3, bang_khoang so_task_khong_dat=1,
+  tiền 60k, ngoài khoảng = [] · trình duyệt: Tuần 9/10 ↔ Tháng 8/9 đổi đúng, picker Trần Bảo Lộc 7 task giao việc (tuần 9),
+  Lộ Thị Dương 14 task vận hành tháng 9 (Chấm bài/BTVN/ET theo buổi 4A1/5A1/5A2), form inline hiện đúng lỗi mặc định. Ledger thật đang 0 dòng
+  (620 đề xuất 'cho', 571 bỏ qua) — chưa đánh thật để khỏi bẩn data.
+- **Chưa làm (đích sau):** màn hiệu suất = task đạt chuẩn / tổng task — mẫu số (tổng task vận hành) vẫn derive ở JS (`listAllStaffTasks`),
+  muốn đúng §2.0 phải đưa invariant task vận hành xuống SQL rồi mới có `fn_gay_hieu_suat`. Tử số đã sẵn ở DB (`fn_gay_theo_task`).
