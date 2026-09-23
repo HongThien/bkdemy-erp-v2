@@ -12,7 +12,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
   listCaseChoXepLich, taoBuoiBoTroYeu, listBuoiCuaCase, goiYXepLichBoTroYeu,
-  listLichTruc, themLichTruc, ketThucLichTruc, lichTrucCuaHS, goiYTheoLichTruc, caSapToi, khoaCa, caTrucConCho, datUuTienCase, UU_TIEN_TEN, deXuatDangMoi, themDangMayVaoCase, GIAI_DOAN_TEN, type UuTienCase, type DangMayDeXuat,
+  listLichTruc, themLichTruc, ketThucLichTruc, lichTrucCuaHS, goiYTheoLichTruc, caSapToi, khoaCa, caTrucConCho, datUuTienCase, UU_TIEN_TEN, deXuatDangMoi, themDangMayVaoCase, donCaKhongDienRa, GIAI_DOAN_TEN, type UuTienCase, type DangMayDeXuat,
   type CaseChoXep, type BuoiBoTroYeuDaXep, type GoiYXepLich, type LichTruc, type CaTrucDeXuat, type CaSapToi,
 } from '../../lib/botro_yeu'
 import { supabase } from '../../lib/supabase'
@@ -23,6 +23,7 @@ import { listPhong, kiemTraTrungPhong, type Phong, type KhoiBanPhong } from '../
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import SearchSelect from '../../components/SearchSelect'
 import TheoDoiCaBoTroTab from './TheoDoiCaBoTroTab'
+import { LichSuBoTroNut } from './LichSuBoTroModal'
 
 const MUC_TEN: Record<number, string> = { 1: 'Mức 1 · trước/sau giờ', 2: 'Mức 2 · buổi riêng (TA)', 3: 'Mức 2 · buổi riêng (GV cao cấp)' }
 const MUC_CLS: Record<number, string> = { 1: 'bg-slate-100 text-slate-600', 2: 'bg-amber-50 text-amber-700', 3: 'bg-rose-50 text-rose-700' }
@@ -58,7 +59,9 @@ export default function XepLichBoTroYeuScreen() {
   const [moId, setMoId] = useState<string | null>(null)
   // Thùy 09-14: tab "Lịch trực" — OPS nhập lịch trực bổ trợ theo khối/lớp; form xếp đọc lịch này để tự đề xuất ca.
   // Thùy 09-16: tab "Ca bổ trợ" — ca sắp tới + số HS/sức chứa + nút tự ghép; filter môn/khối dùng chung 2 tab.
-  const [tab, setTab] = useState<'xep' | 'ca' | 'live' | 'truc'>('xep') // 'live' = Đang diễn ra (theo dõi ca trong ngày + in tài liệu) — Thùy 21/09
+  // Thùy 23/09: tab theo CASE như màn Bù — Cần xếp · Đã xếp · Chờ retest · Hoàn thành (+ Đang diễn ra · Ca bổ trợ · Lịch trực).
+  const [tab, setTab] = useState<'can_xep' | 'da_xep' | 'cho_retest' | 'hoan_thanh' | 'live' | 'ca' | 'truc'>('can_xep')
+  const [vuaDon, setVuaDon] = useState<number>(0)
   const [monF, setMonF] = useState('')
   const [khoiF, setKhoiF] = useState('')
 
@@ -77,7 +80,8 @@ export default function XepLichBoTroYeuScreen() {
   const reload = () => {
     setLoading(true)
     taiDeXuat()
-    listCaseChoXepLich().then((r) => {
+    // Mở màn = dọn ca đã xếp mà không diễn ra (qua ngày không điểm danh) ⇒ tự huỷ, case về Cần xếp — Thùy 23/09.
+    donCaKhongDienRa().then((d) => setVuaDon(d.length)).catch(() => {}).then(() => listCaseChoXepLich()).then((r) => {
       setItems(r)
       setMuc(new Map(r.map((c) => [c.hoc_sinh_id, c.level]))) // level đi kèm RPC — không gọi getLevels riêng nữa
     }).finally(() => setLoading(false))
@@ -87,10 +91,12 @@ export default function XepLichBoTroYeuScreen() {
   const mons = useMemo(() => [...new Set(items.map((c) => c.mon))].sort(), [items])
   const khois = useMemo(() => [...new Set(items.filter((c) => !monF || c.mon === monF).map((c) => c.khoi).filter(Boolean) as string[])].sort((a, b) => a.localeCompare(b, 'vi', { numeric: true })), [items, monF])
   const loc = useMemo(() => items.filter((c) => (!monF || c.mon === monF) && (!khoiF || c.khoi === khoiF)), [items, monF, khoiF])
-  const choXep = useMemo(() => loc.filter((c) => c.giaiDoan === 'dang_bo_tro' && !c.daXep), [loc])
-  const daXep = useMemo(() => loc.filter((c) => c.giaiDoan === 'dang_bo_tro' && c.daXep), [loc])
-  // Chờ retest / hoàn thành (chờ đánh giá ca): KHÔNG xếp lịch — retest làm vào buổi thường, TA lớp được báo trên app TA.
-  const choRetest = useMemo(() => loc.filter((c) => c.giaiDoan !== 'dang_bo_tro'), [loc])
+  const choXep = useMemo(() => loc.filter((c) => c.trangThai === 'dang_xu' && c.giaiDoan === 'dang_bo_tro' && !c.daXep), [loc])
+  const daXep = useMemo(() => loc.filter((c) => c.trangThai === 'dang_xu' && c.giaiDoan === 'dang_bo_tro' && c.daXep), [loc])
+  // Chờ retest: dạy hết dạng, chờ retest đạt — KHÔNG xếp lịch (retest sau ET buổi thường, TA lớp được báo). Retest xong hết ⇒ chờ đánh giá ca.
+  const choRetest = useMemo(() => loc.filter((c) => c.trangThai === 'dang_xu' && c.giaiDoan !== 'dang_bo_tro'), [loc])
+  const hoanThanh = useMemo(() => loc.filter((c) => c.trangThai === 'hoan_thanh'), [loc])
+  const TAB_TEN: Record<typeof tab, string> = { can_xep: `Cần xếp (${choXep.length})`, da_xep: `Đã xếp (${daXep.length})`, cho_retest: `Chờ retest (${choRetest.length})`, hoan_thanh: `Hoàn thành (${hoanThanh.length})`, live: '● Đang diễn ra', ca: 'Ca bổ trợ', truc: 'Lịch trực' }
   // Đổi ưu tiên = vá tại chỗ + sắp lại (ưu tiên cao trước, cùng ưu tiên thì case mở lâu hơn trước) — Thùy 20/09.
   const sapXep = (ds: CaseChoXep[]) => [...ds].sort((a, b) => b.uuTien - a.uuTien || a.created_at.localeCompare(b.created_at))
   async function doiUuTien(c: CaseChoXep) {
@@ -107,7 +113,7 @@ export default function XepLichBoTroYeuScreen() {
         <header className="mb-6 flex flex-wrap items-end justify-between gap-3">
           <div>
             <h1 className="text-[22px] font-bold text-slate-800">Xếp bổ trợ yếu</h1>
-            <p className="mt-1 text-[13px] text-slate-500">{tab === 'xep' ? 'Case đã chọn dạng — bấm vào ca để chốt ngày, giờ, phòng, người bổ trợ với phụ huynh.' : tab === 'ca' ? 'Ca bổ trợ sắp tới — ca nào đã có bao nhiêu em / sức chứa; tự ghép các em chờ xếp vào ca trực còn chỗ.' : tab === 'live' ? 'Các ca trong ngày: ai chưa điểm danh · đang luyện · im lâu · chờ test · xong — và IN tài liệu khi thiếu iPad (đúng bài hệ thống sẽ đưa trên app).' : 'Lịch trực bổ trợ theo khối + bậc (ca bậc cao nhận HS bậc thấp hơn) — mỗi ca tối đa 3 em, đầy là ẩn khỏi chỗ chọn.'}</p>
+            <p className="mt-1 text-[13px] text-slate-500">{tab === 'can_xep' ? 'Case đang bổ trợ chưa có buổi chờ học — bấm vào để xếp ngày, giờ, phòng, người với phụ huynh.' : tab === 'da_xep' ? 'Đã có buổi chờ học — qua ngày mà không điểm danh sẽ tự huỷ và quay về Cần xếp.' : tab === 'cho_retest' ? 'Dạy hết dạng, chờ retest sau ET buổi thường (TA lớp được báo trên app TA). Retest đạt hết ⇒ Đánh giá ca ⇒ Hoàn thành.' : tab === 'hoan_thanh' ? 'Case đã đóng vòng (lưu toàn bộ). Yếu lại ⇒ vòng mới.' : tab === 'ca' ? 'Ca bổ trợ sắp tới — ca nào đã có bao nhiêu em / sức chứa; tự ghép các em chờ xếp vào ca trực còn chỗ.' : tab === 'live' ? 'Các ca trong ngày: ai chưa điểm danh · đang luyện · im lâu · chờ test · xong — và IN tài liệu khi thiếu iPad (đúng bài hệ thống sẽ đưa trên app).' : 'Lịch trực bổ trợ theo khối + bậc (ca bậc cao nhận HS bậc thấp hơn) — mỗi ca tối đa 3 em, đầy là ẩn khỏi chỗ chọn.'}</p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
             {tab !== 'truc' && (
@@ -121,10 +127,8 @@ export default function XepLichBoTroYeuScreen() {
               </>
             )}
             <div className="flex rounded-xl border border-slate-200 bg-white p-0.5 text-[13px] font-semibold">
-              {(['xep', 'ca', 'live', 'truc'] as const).map((t) => (
-                <button key={t} onClick={() => setTab(t)} className={`rounded-lg px-3 py-1.5 ${tab === t ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-50'}`}>
-                  {t === 'xep' ? 'Xếp lịch' : t === 'ca' ? 'Ca bổ trợ' : t === 'live' ? '● Đang diễn ra' : 'Lịch trực'}
-                </button>
+              {(['can_xep', 'da_xep', 'cho_retest', 'hoan_thanh', 'live', 'ca', 'truc'] as const).map((t) => (
+                <button key={t} onClick={() => setTab(t)} className={`rounded-lg px-3 py-1.5 ${tab === t ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-50'}`}>{TAB_TEN[t]}</button>
               ))}
             </div>
           </div>
@@ -137,45 +141,56 @@ export default function XepLichBoTroYeuScreen() {
             Chưa có case nào sẵn sàng — cần chọn dạng ở "Nội dung bổ trợ yếu" trước.
           </div>
         ) : (
-          <div className="grid gap-6 md:grid-cols-3">
-            <div>
-              <h2 className="mb-3 text-[13px] font-bold uppercase tracking-wide text-slate-500">Chờ xếp lịch ({choXep.length})</h2>
+          <div>
+            {vuaDon > 0 && <p className="mb-3 rounded-xl bg-amber-50 px-3 py-2 text-[12px] text-amber-800 ring-1 ring-amber-200">⚠ Vừa tự huỷ {vuaDon} buổi đã xếp mà không diễn ra (qua ngày, không điểm danh) — các case đó quay về Cần xếp với tag "không diễn ra".</p>}
+            {tab === 'can_xep' && (
               <div className="space-y-3">
-                {choXep.map((c) => (
-                  <CaseCard key={c.id} c={c} mucLv={muc.get(c.hoc_sinh_id) ?? 0} onMo={() => setMoId(c.id)} onUuTien={() => doiUuTien(c)} deXuat={deXuat.get(c.id) ?? []} onThemMay={() => themDangMay(c)} />
-                ))}
-                {choXep.length === 0 && <p className="text-[12px] text-slate-400">Không còn case nào.</p>}
+                {choXep.map((c) => <CaseCard key={c.id} c={c} mucLv={muc.get(c.hoc_sinh_id) ?? 0} onMo={() => setMoId(c.id)} onUuTien={() => doiUuTien(c)} deXuat={deXuat.get(c.id) ?? []} onThemMay={() => themDangMay(c)} />)}
+                {choXep.length === 0 && <p className="text-[12px] text-slate-400">Không còn case nào cần xếp.</p>}
               </div>
-            </div>
-            <div>
-              <h2 className="mb-3 text-[13px] font-bold uppercase tracking-wide text-slate-500">Đã xếp · chưa bổ trợ ({daXep.length})</h2>
+            )}
+            {tab === 'da_xep' && (
               <div className="space-y-3">
-                {daXep.map((c) => (
-                  <CaseCard key={c.id} c={c} mucLv={muc.get(c.hoc_sinh_id) ?? 0} onMo={() => setMoId(c.id)} onUuTien={() => doiUuTien(c)} deXuat={deXuat.get(c.id) ?? []} onThemMay={() => themDangMay(c)} daXep />
-                ))}
-                {daXep.length === 0 && <p className="text-[12px] text-slate-400">Chưa có case nào.</p>}
+                {daXep.map((c) => <CaseCard key={c.id} c={c} mucLv={muc.get(c.hoc_sinh_id) ?? 0} onMo={() => setMoId(c.id)} onUuTien={() => doiUuTien(c)} deXuat={deXuat.get(c.id) ?? []} onThemMay={() => themDangMay(c)} daXep />)}
+                {daXep.length === 0 && <p className="text-[12px] text-slate-400">Chưa có case nào đã xếp.</p>}
               </div>
-            </div>
-            <div>
-              <h2 className="mb-3 text-[13px] font-bold uppercase tracking-wide text-slate-500">Chờ retest ({choRetest.length})</h2>
-              <p className="mb-2 text-[11.5px] text-slate-400">Đã dạy hết dạng — retest vào buổi thường kế tiếp, TA lớp được báo trên app TA. Không xếp lịch.</p>
+            )}
+            {tab === 'cho_retest' && (
               <div className="space-y-3">
                 {choRetest.map((c) => (
                   <div key={c.id} className="rounded-2xl bg-white p-4 ring-1 ring-violet-200">
-                    <div className="text-[14px] font-semibold text-slate-800">{c.ho_ten} <span className="font-normal text-slate-400">· {c.mon}{c.khoi ? ` · Khối ${c.khoi}` : ''}</span></div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-[14px] font-semibold text-slate-800">{c.ho_ten} <span className="font-normal text-slate-400">· {c.mon}{c.khoi ? ` · Khối ${c.khoi}` : ''}</span></span>
+                      <span className="ml-auto"><LichSuBoTroNut hocSinhId={c.hoc_sinh_id} mon={c.mon} /></span>
+                    </div>
                     <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px]">
                       <span className={`rounded-full px-2 py-0.5 font-bold ${c.giaiDoan === 'hoan_thanh' ? 'bg-emerald-50 text-emerald-700' : 'bg-violet-50 text-violet-700'}`}>{GIAI_DOAN_TEN[c.giaiDoan]} · vòng {c.vong}</span>
-                      <span className="text-slate-500">{c.soDangXong}/{c.soDang} dạng đã đạt{c.soDangChoRetest ? ` · ${c.soDangChoRetest} chờ retest` : ''}</span>
+                      <span className="text-slate-500">{c.soDangXong}/{c.soDang} dạng đã đạt{c.soDangChoRetest ? ` · ${c.soDangChoRetest} chờ retest` : ''} · đã học {c.soBuoiDaHoc} buổi</span>
                     </div>
                     {(deXuat.get(c.id) ?? []).length > 0 && (
-                      <button onClick={() => themDangMay(c)} className="mt-1.5 rounded-md bg-violet-600 px-2 py-0.5 text-[11.5px] font-bold text-white hover:bg-violet-700">🤖 +{(deXuat.get(c.id) ?? []).length} dạng yếu mới — Thêm (về Đang bổ trợ)</button>
+                      <button onClick={() => themDangMay(c)} className="mt-1.5 rounded-md bg-violet-600 px-2 py-0.5 text-[11.5px] font-bold text-white hover:bg-violet-700">🤖 +{(deXuat.get(c.id) ?? []).length} dạng yếu mới — Thêm (về Cần xếp)</button>
                     )}
                     <div className="mt-1.5 text-[12px] text-slate-500">{c.giaiDoan === 'hoan_thanh' ? 'Retest xong hết — chờ đánh giá ca (màn Đánh giá ca bổ trợ).' : c.retestNgay ? `📝 Retest ${thuCuaNgay(c.retestNgay)} ${ddmmVN(c.retestNgay)} — sau ET buổi thường` : '📝 Retest sau ET buổi thường kế tiếp'}</div>
                   </div>
                 ))}
-                {choRetest.length === 0 && <p className="text-[12px] text-slate-400">Không có case nào.</p>}
+                {choRetest.length === 0 && <p className="text-[12px] text-slate-400">Không có case nào chờ retest.</p>}
               </div>
-            </div>
+            )}
+            {tab === 'hoan_thanh' && (
+              <div className="space-y-3">
+                {hoanThanh.map((c) => (
+                  <div key={c.id} className="rounded-2xl bg-white p-4 ring-1 ring-emerald-200">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-[14px] font-semibold text-slate-800">{c.ho_ten} <span className="font-normal text-slate-400">· {c.mon}{c.khoi ? ` · Khối ${c.khoi}` : ''}</span></span>
+                      <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-700">Hoàn thành · vòng {c.vong}{c.ketQua ? ` · ${({ dat: 'đạt', mot_phan: 'một phần', chua_dat: 'chưa đạt', bo: 'bỏ' } as Record<string, string>)[c.ketQua] ?? c.ketQua}` : ''}</span>
+                      <span className="ml-auto"><LichSuBoTroNut hocSinhId={c.hoc_sinh_id} mon={c.mon} /></span>
+                    </div>
+                    <div className="mt-1 text-[12px] text-slate-500">{c.soDangXong}/{c.soDang} dạng đạt · {c.soBuoiDaHoc} buổi · mở {ddmmVN(c.created_at.slice(0, 10))}{c.hoanThanhAt ? ` → đóng ${ddmmVN(c.hoanThanhAt.slice(0, 10))}` : ''}</div>
+                  </div>
+                ))}
+                {hoanThanh.length === 0 && <p className="text-[12px] text-slate-400">Chưa có case nào hoàn thành.</p>}
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -210,6 +225,11 @@ function CaseCard({ c, mucLv, onMo, onUuTien, daXep, deXuat, onThemMay }: { c: C
             <button onClick={(e) => { e.stopPropagation(); onUuTien() }} title="Bấm để đổi mức ưu tiên (Thường → Cao → Thấp)"
               className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${UU_CLS[c.uuTien]}`}>{c.uuTien === 3 ? '▲ ' : c.uuTien === 1 ? '▼ ' : ''}{UU_TIEN_TEN[c.uuTien]}</button>
           </div>
+          {c.soBuoiKhongDienRa > 0 && !b && (
+            <div className="mt-1.5 inline-block rounded-md bg-rose-50 px-2 py-0.5 text-[11.5px] font-semibold text-rose-700 ring-1 ring-rose-200">
+              ⚠ Ca {c.khongDienRaGanNhat ? ddmmVN(c.khongDienRaGanNhat) : ''} không diễn ra{c.soBuoiKhongDienRa > 1 ? ` · ${c.soBuoiKhongDienRa} lần` : ''} — xếp lại
+            </div>
+          )}
           {b && (
             <div className="mt-1.5 text-[12px] font-medium text-emerald-700">
               {b.qua_ngay ? <span className="text-amber-700">⚠ Quá ngày chưa học: </span> : 'Đã xếp · chưa bổ trợ: '}
@@ -222,7 +242,10 @@ function CaseCard({ c, mucLv, onMo, onUuTien, daXep, deXuat, onThemMay }: { c: C
             </div>
           )}
         </div>
-        {daXep && <span className="shrink-0 rounded-full bg-emerald-50 px-2.5 py-1 text-[12px] font-semibold text-emerald-700">Đã xếp</span>}
+        <span className="flex shrink-0 flex-col items-end gap-1">
+          {daXep && <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[12px] font-semibold text-emerald-700">Đã xếp</span>}
+          <LichSuBoTroNut hocSinhId={c.hoc_sinh_id} mon={c.mon} />
+        </span>
       </div>
     </div>
   )

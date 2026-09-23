@@ -5,7 +5,7 @@
 // ⭐ Kết quả bài giấy: nhân sự bấm lại đáp án EM KHOANH (A–D), MÁY chấm theo key (fn_btyeu_giay_nhap) — không tự phán đúng/sai.
 // Số liệu tổng hợp ở DB (fn_btyeu_ca_theo_doi — §2.0); ở đây chỉ render + đếm item đang hiện cho chip tóm tắt.
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { caTheoDoi, inSinhBaiGiay, inLayBaiGiay, type CaTheoDoi, type BaiInGiay } from '../../lib/botro_yeu_ca'
+import { caTheoDoi, inSinhBaiGiay, inLayBaiGiay, boTroTrongNgay, type CaTheoDoi, type BaiInGiay, type BuoiNgay, type RetestNgay } from '../../lib/botro_yeu_ca'
 import { homNayVN, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { TrangIn, NhapKetQua } from '../ta/PhieuGiayYeuTA'
 
@@ -42,11 +42,15 @@ export default function TheoDoiCaBoTroTab({ monF, khoiF }: { monF: string; khoiF
   const [nhapBai, setNhapBai] = useState<BaiInGiay | null>(null) // đang nhập kết quả giấy
   const [thongBao, setThongBao] = useState<string | null>(null)
   const ngayRef = useRef(ngay); ngayRef.current = ngay
+  // Thùy 23/09: "tất cả bổ trợ liên quan ngày đó, kể cả retest" — yếu (rows) + bù + đuổi + retest; toggle bar lọc 4 loại.
+  const [khac, setKhac] = useState<{ bu: BuoiNgay[]; duoi: BuoiNgay[]; retest: RetestNgay[] }>({ bu: [], duoi: [], retest: [] })
+  const [loc, setLoc] = useState<Record<'yeu' | 'bu' | 'duoi' | 'retest', boolean>>({ yeu: true, bu: true, duoi: true, retest: true })
+  const taiKhac = () => boTroTrongNgay(ngayRef.current).then(setKhac).catch(() => {})
 
   // Nạp NỀN: giữ rows cũ tới khi có rows mới (không blank khi poll) — CLAUDE.md §2 React.
   const tai = () => caTheoDoi(ngayRef.current).then((r) => { setRows(r); setLoi(null) }).catch((e: any) => setLoi(e?.message ?? String(e))).finally(() => setLoading(false))
-  useEffect(() => { setLoading(true); setRows([]); tai() }, [ngay]) // đổi ngày = đổi ngữ cảnh ⇒ reset là đúng
-  useEffect(() => { const id = setInterval(() => { if (document.visibilityState === 'visible') { tai(); setNow(Date.now()) } }, POLL_MS); return () => clearInterval(id) }, [])
+  useEffect(() => { setLoading(true); setRows([]); tai(); taiKhac() }, [ngay]) // đổi ngày = đổi ngữ cảnh ⇒ reset là đúng
+  useEffect(() => { const id = setInterval(() => { if (document.visibilityState === 'visible') { tai(); taiKhac(); setNow(Date.now()) } }, POLL_MS); return () => clearInterval(id) }, [])
 
   const hien = useMemo(() => rows.filter((c) => (!monF || c.mon === monF) && (!khoiF || c.khoi === khoiF)), [rows, monF, khoiF])
   const dem = useMemo(() => { const m: Record<string, number> = {}; for (const c of hien) { const t = trangThai(c, now); m[t] = (m[t] ?? 0) + 1 } return m }, [hien, now])
@@ -74,7 +78,12 @@ export default function TheoDoiCaBoTroTab({ monF, khoiF }: { monF: string; khoiF
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-2 rounded-2xl bg-white p-3 ring-1 ring-slate-200">
         <input type="date" value={ngay} onChange={(e) => e.target.value && setNgay(e.target.value)} className="rounded-lg border border-slate-300 px-2 py-1.5 text-[13px] outline-none focus:border-indigo-400" />
-        <span className="text-[13px] font-semibold text-slate-700">{thuCuaNgay(ngay)} {ddmmVN(ngay)}{ngay === homNayVN() ? ' · hôm nay' : ''} — {hien.length} ca</span>
+        <span className="text-[13px] font-semibold text-slate-700">{thuCuaNgay(ngay)} {ddmmVN(ngay)}{ngay === homNayVN() ? ' · hôm nay' : ''}</span>
+        <div className="flex rounded-lg border border-slate-200 bg-white p-0.5 text-[11.5px] font-bold">
+          {([['yeu', `Yếu ${hien.length}`], ['bu', `Bù ${khac.bu.length}`], ['duoi', `Đuổi ${khac.duoi.length}`], ['retest', `Retest ${khac.retest.length}`]] as const).map(([k, ten]) => (
+            <button key={k} onClick={() => setLoc((p) => ({ ...p, [k]: !p[k] }))} className={`rounded-md px-2 py-0.5 ${loc[k] ? 'bg-slate-800 text-white' : 'text-slate-400'}`}>{ten}</button>
+          ))}
+        </div>
         <div className="flex flex-wrap gap-1.5">
           {(Object.keys(TT) as TrangThai[]).filter((k) => dem[k]).map((k) => <span key={k} className={`rounded-full px-2 py-0.5 text-[11.5px] font-bold ${TT[k].cls}`}>{TT[k].ten}: {dem[k]}</span>)}
         </div>
@@ -86,7 +95,34 @@ export default function TheoDoiCaBoTroTab({ monF, khoiF }: { monF: string; khoiF
       {loi && <p className="rounded-xl bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</p>}
       {thongBao && <p className="rounded-xl bg-amber-50 px-3 py-2 text-[12.5px] text-amber-800">⚠ {thongBao}</p>}
 
-      {loading ? <div className="rounded-2xl bg-white p-8 text-center text-[13px] text-slate-400 ring-1 ring-slate-200">Đang tải…</div>
+      {loc.retest && khac.retest.length > 0 && (
+        <div className="rounded-2xl bg-white p-3 ring-1 ring-violet-200">
+          <h3 className="mb-2 text-[13px] font-bold text-violet-800">📝 Retest đến hạn · {khac.retest.length} <span className="font-normal text-slate-400">— làm sau ET buổi thường, TA lớp đưa iPad</span></h3>
+          <div className="grid gap-1.5 md:grid-cols-2">
+            {khac.retest.map((r) => (
+              <div key={r.bai_test_id} className={`flex items-center gap-2 rounded-xl px-3 py-1.5 text-[12.5px] ring-1 ${r.da_nop ? 'bg-emerald-50/50 ring-emerald-200' : r.qua_han ? 'bg-rose-50/50 ring-rose-200' : 'bg-slate-50 ring-slate-200'}`}>
+                <span className="font-semibold text-slate-800">{r.ho_ten}</span><span className="text-slate-400">{r.lop ?? ''} · {r.mon}</span>
+                <span className="ml-auto text-slate-500">{r.so_cau} câu · TA {r.ta_lop ?? '?'}</span>
+                <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${r.da_nop ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>{r.da_nop ? `✓ nộp · đúng ${r.so_dung}/${r.so_cau}` : r.qua_han ? 'quá hạn' : 'chờ làm'}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      {(['bu', 'duoi'] as const).map((k) => loc[k] && khac[k].length > 0 && (
+        <div key={k} className="rounded-2xl bg-white p-3 ring-1 ring-slate-200">
+          <h3 className="mb-2 text-[13px] font-bold text-slate-700">{k === 'bu' ? '🔁 Học bù' : '🏃 Học đuổi'} · {khac[k].length} buổi <span className="font-normal text-slate-400">— xử lý ở màn {k === 'bu' ? 'Bù' : 'Đuổi'}</span></h3>
+          <div className="space-y-1.5">
+            {khac[k].map((b) => (
+              <div key={b.buoi_id} className="rounded-xl bg-slate-50 px-3 py-2 text-[12.5px] ring-1 ring-slate-200">
+                <div className="flex flex-wrap items-center gap-2"><span className="font-semibold text-slate-800">{hhmm(b.gio_bat_dau) || '—'}{b.gio_ket_thuc ? `–${hhmm(b.gio_ket_thuc)}` : ''}</span>{b.phong && <span className="text-slate-500">{b.phong}</span>}<span className="text-slate-500">{b.nguoi ?? 'chưa có người dạy'}</span><span className="ml-auto rounded-full bg-white px-2 py-0.5 text-[11px] font-semibold text-slate-600 ring-1 ring-slate-200">{b.so_hs} em · {b.trang_thai}</span></div>
+                <div className="mt-1 flex flex-wrap gap-x-3 gap-y-0.5 text-slate-600">{b.hs.map((h, i) => <span key={i}>{h.ho_ten}{h.khoi ? ` K${h.khoi}` : ''}{(h.lop_goc ?? h.lop) ? ` (${h.lop_goc ?? h.lop})` : ''}{h.diem_danh === 'co_mat' ? ' ✓' : h.diem_danh ? ' ✗' : ''}</span>)}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+      {!loc.yeu ? null : loading ? <div className="rounded-2xl bg-white p-8 text-center text-[13px] text-slate-400 ring-1 ring-slate-200">Đang tải…</div>
         : hien.length === 0 ? <div className="rounded-2xl bg-white p-8 text-center text-[13px] text-slate-400 ring-1 ring-slate-200">Không có ca bổ trợ yếu nào ngày này{monF || khoiF ? ' (theo filter)' : ''}.</div>
         : nhom.map(([gio, ds]) => (
           <div key={gio} className="rounded-2xl bg-white p-3 ring-1 ring-slate-200">

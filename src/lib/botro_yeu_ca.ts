@@ -205,3 +205,14 @@ export async function giayNhapKetQua(baiTestCauId: string, chon: number | null):
   if (error) throw error
   return data as { chon: number | null; verdict: 'correct' | 'wrong' | null }
 }
+
+// ── BỔ TRỢ TRONG NGÀY ngoài yếu (Thùy 23/09: tab Đang diễn ra = mọi bổ trợ liên quan ngày đó, kể cả retest). Yếu vẫn qua caTheoDoi.
+export type BuoiNgay = { buoi_id: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; trang_thai: string; nguoi: string | null; so_hs: number
+  hs: { ho_ten: string; khoi: string | null; diem_danh: string | null; lop_goc?: string | null; lop?: string | null }[] }
+export type RetestNgay = { bai_test_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; mon: string; lop: string | null; so_cau: number; ta_lop: string | null; da_nop: boolean; so_dung: number; qua_han: boolean }
+export async function boTroTrongNgay(ngay?: string): Promise<{ bu: BuoiNgay[]; duoi: BuoiNgay[]; retest: RetestNgay[] }> {
+  const { data, error } = await supabase.rpc('fn_bo_tro_trong_ngay', { p_ngay: ngay ?? null })
+  if (error) throw error
+  const d = (data ?? {}) as any
+  return { bu: d.bu ?? [], duoi: d.duoi ?? [], retest: d.retest ?? [] }
+}
