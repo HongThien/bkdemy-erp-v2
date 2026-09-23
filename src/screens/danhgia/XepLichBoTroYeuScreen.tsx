@@ -23,7 +23,6 @@ import { listPhong, kiemTraTrungPhong, type Phong, type KhoiBanPhong } from '../
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import SearchSelect from '../../components/SearchSelect'
 import TheoDoiCaBoTroTab from './TheoDoiCaBoTroTab'
-import { LichSuBoTroNut } from './LichSuBoTroModal'
 import RetestTab from './RetestTab'
 
 const MUC_TEN: Record<number, string> = { 1: 'Mức 1 · trước/sau giờ', 2: 'Mức 2 · buổi riêng (TA)', 3: 'Mức 2 · buổi riêng (GV cao cấp)' }
@@ -162,7 +161,6 @@ export default function XepLichBoTroYeuScreen() {
                   <div key={c.id} className="rounded-2xl bg-white p-4 ring-1 ring-violet-200">
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="text-[14px] font-semibold text-slate-800">{c.ho_ten} <span className="font-normal text-slate-400">· {c.mon}{c.khoi ? ` · Khối ${c.khoi}` : ''}</span></span>
-                      <span className="ml-auto"><LichSuBoTroNut hocSinhId={c.hoc_sinh_id} mon={c.mon} /></span>
                     </div>
                     <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px]">
                       <span className={`rounded-full px-2 py-0.5 font-bold ${c.giaiDoan === 'hoan_thanh' ? 'bg-emerald-50 text-emerald-700' : 'bg-violet-50 text-violet-700'}`}>{GIAI_DOAN_TEN[c.giaiDoan]} · vòng {c.vong}</span>
@@ -184,7 +182,6 @@ export default function XepLichBoTroYeuScreen() {
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="text-[14px] font-semibold text-slate-800">{c.ho_ten} <span className="font-normal text-slate-400">· {c.mon}{c.khoi ? ` · Khối ${c.khoi}` : ''}</span></span>
                       <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-700">Hoàn thành · vòng {c.vong}{c.ketQua ? ` · ${({ dat: 'đạt', mot_phan: 'một phần', chua_dat: 'chưa đạt', bo: 'bỏ' } as Record<string, string>)[c.ketQua] ?? c.ketQua}` : ''}</span>
-                      <span className="ml-auto"><LichSuBoTroNut hocSinhId={c.hoc_sinh_id} mon={c.mon} /></span>
                     </div>
                     <div className="mt-1 text-[12px] text-slate-500">{c.soDangXong}/{c.soDang} dạng đạt · {c.soBuoiDaHoc} buổi · mở {ddmmVN(c.created_at.slice(0, 10))}{c.hoanThanhAt ? ` → đóng ${ddmmVN(c.hoanThanhAt.slice(0, 10))}` : ''}</div>
                   </div>
@@ -243,10 +240,7 @@ function CaseCard({ c, mucLv, onMo, onUuTien, daXep, deXuat, onThemMay }: { c: C
             </div>
           )}
         </div>
-        <span className="flex shrink-0 flex-col items-end gap-1">
-          {daXep && <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[12px] font-semibold text-emerald-700">Đã xếp</span>}
-          <LichSuBoTroNut hocSinhId={c.hoc_sinh_id} mon={c.mon} />
-        </span>
+        {daXep && <span className="shrink-0 rounded-full bg-emerald-50 px-2.5 py-1 text-[12px] font-semibold text-emerald-700">Đã xếp</span>}
       </div>
     </div>
   )

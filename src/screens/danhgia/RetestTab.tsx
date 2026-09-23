@@ -4,7 +4,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { retestTheoDoi, retestDoiNgay, type RetestTheoDoi } from '../../lib/botro_yeu'
 import { homNayVN, ddmmVN, thuCuaNgay } from '../../lib/tuan'
-import { LichSuBoTroNut } from './LichSuBoTroModal'
 
 type Loc = 'cho' | 'qua_han' | 'da_nop' | 'tat_ca'
 export default function RetestTab({ monF, khoiF }: { monF: string; khoiF: string }) {
@@ -64,7 +63,6 @@ export default function RetestTab({ monF, khoiF }: { monF: string; khoiF: string
                       {r.da_nop ? `✓ Đã nộp · đúng ${r.so_dung}/${r.so_cau}` : r.qua_han ? `Quá hạn ${r.tre_ngay} ngày` : `Chờ làm · ${r.so_cau} câu`}
                     </span>
                     <span className="ml-auto text-[12px] text-slate-500">TA lớp: <b className="text-slate-700">{r.ta_lop ?? '?'}</b>{r.ca_ngay ? ` · ca bổ trợ ${ddmmVN(r.ca_ngay)}${r.ca_nguoi ? ` (${r.ca_nguoi})` : ''}` : ''}</span>
-                    <LichSuBoTroNut hocSinhId={r.hoc_sinh_id} mon={r.mon} />
                   </div>
                   <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
                     {r.dang.map((d) => (

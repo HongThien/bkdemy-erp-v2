@@ -108,7 +108,7 @@ Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt d
   - Dạng gộp thêm SAU khi đã xếp ("đợt duyệt mới") ⇒ nhãn "＋N dạng mới — học chung buổi đã xếp, KHÔNG xếp lại".
   - Mở lại case đã xếp = **SỬA buổi đó**, không đẻ buổi mới. Giờ chọn bằng khung sẵn bước 30'. Báo trùng phòng = cảnh báo, không chặn.
 - Tab **Chờ retest**: case dạy hết dạng — chỉ hiện ngày retest sắp tới, không xếp; nút thêm dạng yếu mới nếu máy đề xuất. Tab **Hoàn thành**: mọi case đã đóng
-  vòng (kết quả đạt/một phần/chưa đạt/bỏ, ngày mở→đóng). Mọi card có nút **🕘 Lịch sử bổ trợ**.
+  vòng (kết quả đạt/một phần/chưa đạt/bỏ, ngày mở→đóng).
 - Tab **📝 Retest** (CEO 23/09 "xứng đáng 1 tab riêng"): mọi bài retest tầng 2 theo BÀI — chip Chờ làm · Quá hạn (đỏ, số ngày trễ) · Đã nộp 14 ngày;
   mỗi bài: HS·lớp·TA lớp·ca bổ trợ gốc·từng dạng (số câu / đúng / ✓ đạt / ✗ trượt → dạy lại) · nút **📅 Dời ngày** (chỉ bài chưa nộp, ngày ≥ hôm nay —
   `fn_btyeu_retest_doi_ngay`) · Lịch sử. Nguồn `fn_btyeu_retest_theo_doi`. Vẫn KHÔNG xếp lịch: retest làm sau ET buổi thường, TA lớp đưa iPad.
@@ -134,7 +134,7 @@ tới khi đóng ca.
 - Retest tầng 2 (sau ET buổi thường, 3–7 ngày) vẫn làm trên app như `PLAN-botro-yeu-ca.md` §2.
 - App TA là PWA tự cập nhật ⇒ bản mới chỉ ăn sau khi ĐÓNG HẲN app mở lại.
 
-## 6b. Lịch sử bổ trợ (CEO 23/09) — nút 🕘 trên card Duyệt bổ trợ / Dashboard / Xếp lịch
+## 6b. Lịch sử bổ trợ (CEO 23/09) — nút 🕘 CHỈ ở card màn Duyệt bổ trợ (+ modal Dashboard), KHÔNG ở màn Xếp
 
 `fn_btyeu_lich_su_hs(hs, mon, 14)` → popup dòng thời gian TOÀN BỘ hoạt động 2 tuần (chọn 14/30/60 ngày): buổi yếu/bù/đuổi (điểm danh, dạng dạy, luyện,
 test cuối ca, nhận xét, 📱/📄, lý do huỷ) · retest (đạt/trượt từng dạng) · lượt duyệt level · báo động · case mở/đóng. `LichSuBoTroModal.tsx`.

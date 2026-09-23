@@ -29503,3 +29503,8 @@ huỷ ⇒ tự huỷ + tính không diễn ra · Lịch sử = toàn bộ hoạt
   rác (chấm trước khi phiếu đúng tồn tại). Bấm "Mở lại" thì hệ thêm 20 ô mới, 8 ô cũ còn điểm nên giữ lại "Ngoài phiếu"
   (đúng luật thà giữ hơn mất); muốn sạch phải xoá 64 điểm (tay = 64 click, hoặc 1 DELETE có xác nhận). EXP BTVN
   buổi này đã thưởng theo 8 ô nhầm — đóng lại sẽ tính lại. `.claude/launch.json` thêm `dev-alt2` (5203) vì 5202 bận.
+
+## 2026-09-23 (tối) — Lịch sử bổ trợ: chỉ ở màn Duyệt (Thùy: "nên xuất hiện ở màn Duyệt chứ không phải ở chỗ xếp")
+
+Nút 🕘 vốn đã có ở Duyệt bổ trợ (CandidateHeader, cạnh chip ưu tiên) — t đặt THÊM ở mọi card màn Xếp + tab Retest, thừa. Gỡ khỏi Xếp/Retest;
+giữ Duyệt + modal Dashboard. tsc sạch.
