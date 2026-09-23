@@ -1,4 +1,4 @@
-﻿# DEVLOG — Kho (BKdemy ERP v2) · nhật ký THÔ
+# DEVLOG — Kho (BKdemy ERP v2) · nhật ký THÔ
 
 ## 2026-09-20 (phiên 3) — Tìm kiếm sổ tay: `p_khoi` lọc cứng + khớp theo ranh giới từ
 
@@ -29533,3 +29533,32 @@ Sửa phòng thủ (§2 React): xếp/sửa/huỷ xong VÁ case tại chỗ NGAY
 bộ, lỗi nạp lại hiện banner đỏ "Đã lưu buổi nhưng nạp lại lỗi… bấm ↻" thay vì nuốt. Tiện thể sửa nhãn sai: ca qua ngày mà đã điểm danh có mặt
 nhưng TA chưa đóng ca hiện "Đã học · TA chưa đóng ca" (trước hiện "⚠ Quá ngày chưa học" — sai, 3/4 case Đã xếp hôm nay là kiểu này).
 Còn treo: chưa biết Thùy xếp qua modal "Xác nhận" hay tab Ca bổ trợ → tự ghép; không có case HS test để tái hiện luồng tạo buổi thật.
+## 23/09 — Nhập thêm 2 file Phan Nhật Linh (L11 Hình) + BẮT ĐẦU gắn ảnh hình vẽ cho kho câu
+
+- Sau đợt 8 file L11 sáng nay, Thùy báo "có thêm 3 file mới" — quét lại chỉ thấy 2 file thật sự mới:
+  "Tìm giao tuyến _ Phan Nhật Linh _ Tự luận.pdf" (7tr, 6 câu mới — 3 câu trùng Bài tập 2/4/5 với nội
+  dung đã có) và "Tìm giao điểm của đường và mặt _ Phan Nhật Linh _ Tự luận.pdf" (9tr, 11 câu mới — Bài
+  tập 1-6 tự luận + Câu 1-5 trắc nghiệm trả lời ngắn, dùng `loai_cau='tra_loi_ngan'` cho câu hỏi tỉ số
+  dạng FA/FD, SQ/SD...). Cả 2 file đều KHÔNG có câu nào bị bỏ vì thiếu ảnh — mọi câu ĐỀU giải được thuần
+  bằng chữ (không như batch sáng nay có vài câu phải bỏ vì trắc nghiệm chọn ảnh).
+- **Thay đổi convention quan trọng (Thùy chốt giữa chừng):** "Cắt cả hình đi kèm nhé. Cả các file trước
+  nữa" — sau khi hỏi lại phạm vi, chốt: từ giờ trở đi + 21 câu đã insert sáng nay (8 file L11, HH00087064-
+  084) đều phải gắn `anh_de`. Không lùi xa hơn (không đụng lại 2 đợt Hình chữ nhật K8 trước đó).
+  **Đây là ĐẢO NGƯỢC convention "chỉ lấy chữ" đã dùng suốt từ đầu phiên (Hình chữ nhật K8, HH00095...)**
+  — ghi nhớ: convention đó chỉ áp dụng cho các đợt TRƯỚC mốc này, không phải luật cố định.
+- Quy trình cắt ảnh: `kho_anh.mjs cat --pdf <file> --page N --bbox x0,y0,x1,y1 --out <png>` (ước lượng
+  bbox từ ảnh trang đã xem, chừa mép, thường phải chỉnh 1-2 lần vì cắt hụt nhãn đỉnh/điểm) → Read xem lại
+  → `kho_anh.mjs up --png <png> --ten <nhãn>` → script `_upd_anh.mjs <ma_cau> <url>` (viết riêng, tái
+  dùng nhiều lần) update cột `anh_de`. Nguồn PDF cho batch sáng nay phải trỏ vào `DaXuLy/2026-09-23/`
+  (đã move từ trước) chứ không phải đường dẫn `nhap-kho` gốc (đã không còn ở đó).
+- Kết quả: 17 câu mới (HH00087085-101) gắn ảnh ngay lúc insert + 18 câu cũ sáng nay (064-066, 068-081)
+  backfill ảnh ngược — tổng 38 câu kiểm lại, 34/38 có ảnh, 4/38 (067, 082-084) đúng là loại thuần lý
+  thuyết/tổ hợp không có hình trong nguồn nên hợp lệ không cần ảnh.
+- nhap_kho_log ghi cả 2 file, move vào `DaXuLy/2026-09-23/`.
+
+## 2026-09-23 — Phiếu test đầu vào: chụp ảnh bằng foreignObject (trình duyệt tự vẽ) thay html2canvas
+
+**(CEO "chụp bằng canvas bị lệch nhiều lần rồi — icon tiêu đề khối lệch chữ; check, không được thì render HTML")**
+- Nguyên nhân lệch: html2canvas KHÔNG dùng trình duyệt vẽ mà tự dựng lại layout bằng engine riêng — text baseline với font Baloo 2 (ascent cao) + inline SVG trong flex `align-items:center` bị đặt khác trình duyệt ⇒ icon lệch lên so với chữ. Sửa vặt từng chỗ (line-height, height cứng) chỉ vá được cái đang thấy, lần sau lại lệch chỗ khác — đúng lịch sử "nhiều lần bị lệch".
+- Fix gốc = "render HTML": dùng `html-to-image` (đã có trong deps 1.11.13) — nhúng DOM vào SVG `<foreignObject>` rồi để TRÌNH DUYỆT vẽ ⇒ ảnh = đúng cái đang thấy trên màn. 2 bẫy phải xử: (1) thư viện không đọc được cssRules của stylesheet Google Fonts (khác origin ⇒ SecurityError, log đỏ, font rơi về fallback) ⇒ tự fetch CSS Google (CORS *) + tải woff2 → data URL, đưa vào `fontEmbedCSS` (cache 1 lần/phiên, `fontCssNhung`); (2) `toBlob/toPng` của thư viện gọi `img.decode()` — decode() KHÔNG resolve khi tab ẩn (Browser pane luôn ẩn; người dùng bấm Copy rồi chuyển sang Zalo cũng dính) ⇒ treo "Đang chụp…" mãi (đo: >30s). Chỉ lấy `toSvg` rồi tự rasterize bằng `Image.onload` + canvas 2× → blob. html2canvas giữ làm dự phòng khi foreignObject lỗi (console.warn).
+- Verify (server riêng, admin, form GV Nguyễn Đức Thành, tab ẩn): PNG 1440×2500, 2.1MB, 3.4s, không rơi dự phòng, không log lỗi font. Đặt ảnh 1:1 lên màn chụp lại: icon 5 tiêu đề khối thẳng hàng với chữ, donut/thanh/avatar/footer đúng như phiếu. Chưa đo bước dán (clipboard bị chặn ở khung nhúng — như 22/09).

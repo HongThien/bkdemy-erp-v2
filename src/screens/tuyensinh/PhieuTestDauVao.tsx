@@ -14,6 +14,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import html2canvas from 'html2canvas'
+import { toSvg as htmlToSvg } from 'html-to-image'
 import { coNhom, mucKyNang, paragraphNhanXet, type PhieuKetQua, type NguoiPhieu } from '../../lib/detest'
 
 // ═══ TOKENS (kit v2 §2) ═══════════════════════════════════════════════════════════════════════════
@@ -423,6 +424,23 @@ async function copyImg(){
 // Cách đúng: gọi navigator.clipboard.write NGAY trong handler click với ClipboardItem nhận PROMISE<Blob> — trình duyệt
 // giữ quyền ghi clipboard trong lúc mình dựng ảnh (Chrome/Edge/Safari đều hỗ trợ promise trong ClipboardItem).
 // Dựng ảnh từ CLONE phiếu đang hiện (scale 1, đặt ngoài màn) — asset cùng origin, avatar Storage qua useCORS.
+// Font Google cho foreignObject: html-to-image KHÔNG đọc được cssRules của stylesheet khác origin (SecurityError) ⇒ tự
+// fetch CSS Google Fonts (CORS *), tải từng file woff2 → data URL, đưa vào `fontEmbedCSS`. Làm 1 lần/phiên (cache).
+let FONT_CSS_NHUNG: Promise<string> | null = null
+async function fontCssNhung(): Promise<string> {
+  if (FONT_CSS_NHUNG) return FONT_CSS_NHUNG
+  FONT_CSS_NHUNG = (async () => {
+    const css = await (await fetch(FONTS_HREF)).text()
+    const urls = [...new Set([...css.matchAll(/url\((https:\/\/fonts\.gstatic\.com[^)]+)\)/g)].map((m) => m[1]))]
+    const map = new Map<string, string>()
+    await Promise.all(urls.map(async (u) => {
+      try { const b = await (await fetch(u)).blob(); map.set(u, await blobToDataUrl(b)) } catch { /* thiếu 1 file ⇒ giữ url gốc */ }
+    }))
+    return css.replace(/url\((https:\/\/fonts\.gstatic\.com[^)]+)\)/g, (_m, u: string) => `url(${map.get(u) ?? u})`)
+  })()
+  FONT_CSS_NHUNG.catch(() => { FONT_CSS_NHUNG = null })
+  return FONT_CSS_NHUNG
+}
 export async function dungAnhPhieu(el: HTMLElement): Promise<Blob> {
   ensureFonts()
   try { await (document as Document & { fonts?: { ready?: Promise<unknown> } }).fonts?.ready } catch { /* */ }
@@ -433,8 +451,30 @@ export async function dungAnhPhieu(el: HTMLElement): Promise<Blob> {
   host.appendChild(clone); document.body.appendChild(host)
   try {
     await Promise.all([...host.querySelectorAll('img')].map((img) => img.complete ? Promise.resolve() : new Promise<void>((r) => { img.onload = () => r(); img.onerror = () => r() })))
-    const canvas = await html2canvas(clone, { scale: 2, backgroundColor: null, useCORS: true, logging: false, scrollX: 0, scrollY: 0, width: clone.scrollWidth, height: clone.scrollHeight, windowWidth: clone.scrollWidth, windowHeight: clone.scrollHeight })
-    return await new Promise<Blob>((res, rej) => canvas.toBlob((b) => (b ? res(b) : rej(new Error('Không tạo được ảnh'))), 'image/png'))
+    // ⭐ CEO 23/09 "chụp bằng canvas bị lệch nhiều lần rồi (icon tiêu đề khối lệch chữ), không được thì render HTML":
+    // html2canvas TỰ VẼ LẠI layout bằng engine riêng (text baseline / inline SVG khác trình duyệt ⇒ lệch). html-to-image
+    // nhúng DOM vào SVG <foreignObject> rồi để TRÌNH DUYỆT vẽ ⇒ ảnh = đúng cái đang thấy trên màn (font Google nhúng
+    // data URL, ảnh nền/avatar nhúng data URL). html2canvas chỉ còn là DỰ PHÒNG khi foreignObject lỗi.
+    try {
+      const fontEmbedCSS = await fontCssNhung().catch(() => '')
+      // Chỉ lấy SVG từ thư viện rồi TỰ rasterize bằng Image.onload + canvas: `toBlob/toPng` của html-to-image gọi
+      // `img.decode()`, mà decode() KHÔNG bao giờ resolve khi tab đang ẩn (người dùng bấm Copy rồi chuyển ngay sang
+      // Zalo ⇒ treo "Đang chụp…" mãi). Image.onload thì vẫn chạy khi tab ẩn.
+      const h = clone.scrollHeight
+      const svg = await htmlToSvg(clone, { width: PHIEU_W, height: h, cacheBust: false, fontEmbedCSS })
+      const im = new Image()
+      await new Promise<void>((res, rej) => { im.onload = () => res(); im.onerror = () => rej(new Error('SVG không nạp được')); im.src = svg })
+      const cv = document.createElement('canvas'); cv.width = PHIEU_W * 2; cv.height = h * 2
+      const ctx = cv.getContext('2d'); if (!ctx) throw new Error('Không có canvas 2d')
+      ctx.drawImage(im, 0, 0, cv.width, cv.height)
+      const b = await new Promise<Blob | null>((r) => cv.toBlob(r, 'image/png'))
+      if (b && b.size > 0) return b
+      throw new Error('html-to-image trả blob rỗng')
+    } catch (e) {
+      console.warn('[phieu] html-to-image lỗi, dùng html2canvas:', e)
+      const canvas = await html2canvas(clone, { scale: 2, backgroundColor: null, useCORS: true, logging: false, scrollX: 0, scrollY: 0, width: clone.scrollWidth, height: clone.scrollHeight, windowWidth: clone.scrollWidth, windowHeight: clone.scrollHeight })
+      return await new Promise<Blob>((res, rej) => canvas.toBlob((bb) => (bb ? res(bb) : rej(new Error('Không tạo được ảnh'))), 'image/png'))
+    }
   } finally { host.remove() }
 }
 // GỌI ĐỒNG BỘ trong onClick (không await gì trước). `truoc` = việc cần xong trước khi chụp (vd flush nháp) — chạy BÊN
