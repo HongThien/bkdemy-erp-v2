@@ -16,7 +16,7 @@ import { supabase } from './supabase'
 import { myNhanSuId } from './giaoviec'
 import { listAllStaffTasks } from './gami'
 import { listAllOpsTaskNhom } from './opsvanhanh'
-import { homNayVN, congNgay, vnInstant, ddmmVN } from './tuan'
+import { homNayVN, congNgay, vnInstant, ddmmVN, ngayCuaTs } from './tuan'
 
 const LIMIT = 5000
 
@@ -28,6 +28,8 @@ export const MA_LOI_CHAM_DEADLINE = 'cham_deadline'
 // hàng đợi, không phải "tháng hiện tại" — không tự trôi). Cùng mốc với ân xá dashboard
 // TA/GV/OPS (mig 202609070015_gay_amnesty_truoc_thang9.sql).
 export const GAY_MOC_LICH_SU = '2026-09-01T00:00:00+07:00'
+// Lỗi mặc định khi đánh gậy THEO TASK (Thùy 05/09: "task nào có gậy = không đạt chuẩn").
+export const MA_LOI_KHONG_DAT_CHUAN = 'khong_dat_chuan'
 
 // ── Kỳ tháng (gậy reset theo tháng, giờ VN) ─────────────────────────────────
 export const kyHienTai = (): string => `${homNayVN().slice(0, 7)}-01`
@@ -44,7 +46,7 @@ export type GayLedger = {
   id: string; nhan_su_id: string; ky: string; so_gay: number
   loai: 'tu_dong' | 'thu_cong' | 'go'
   loi_id: string | null; hoat_dong_id: string | null; ly_do: string | null
-  ref_loai: string | null; ref_id: string | null
+  ref_loai: string | null; ref_id: string | null; ref_mo_ta: string | null   // gậy gắn task (tự động HOẶC thủ công theo task)
   nguoi_tao: string; created_at: string
   thu_hoi_at: string | null; nguoi_thu_hoi: string | null; thu_hoi_ly_do: string | null
 }
@@ -62,8 +64,18 @@ export type GayChotThang = {
   don_gia: number; tien_phat: number; snapshot: unknown; nguoi_chot: string; chot_at: string
 }
 export type GayChotThangFull = GayChotThang & { ns_ten?: string; nguoi_chot_ten?: string }
-// Tổng theo người trong 1 kỳ (derive từ ledger, bỏ dòng đã thu hồi).
-export type BangGayRow = { nhan_su_id: string; ns_ten: string; soGayDanh: number; soGayGo: number; conLai: number; tienPhat: number; entries: GayLedgerFull[] }
+// Tổng theo người trong 1 khoảng (derive từ ledger, bỏ dòng đã thu hồi). soTaskKhongDat = số task riêng biệt bị gậy.
+export type BangGayRow = { nhan_su_id: string; ns_ten: string; soGayDanh: number; soGayGo: number; conLai: number; soTaskKhongDat: number; tienPhat: number; entries: GayLedgerFull[] }
+// Khoảng ngày VN 'YYYY-MM-DD' (tháng hoặc tuần) — mọi tổng ở bảng gậy scope theo khoảng này.
+export type KhoangNgay = { tu: string; den: string }
+// 1 task của nhân sự để đánh gậy: khoá = ref_id (vh:<buoi>|<tab>|<ns> hoặc viec:<id>) — cùng khoá gậy tự động.
+export type TaskCuaNhanSu = {
+  key: string; nguon: 'vanhanh' | 'giaoviec'; ten: string; phu: string
+  ngay: string                   // ngày dùng để sắp xếp/lọc (buổi học · deadline/tuần plan của việc)
+  deadline_at: string | null     // ISO instant
+  xong: boolean; trangThai: string
+  soGay: number                  // gậy hiệu lực đã đánh vào task này (fn_gay_theo_task)
+}
 
 // Batch tên nhân sự (cùng pattern giaoviec.ts).
 async function nhanSuTenMap(ids: (string | null | undefined)[]): Promise<Map<string, string>> {
@@ -276,13 +288,70 @@ export async function boQuaDeXuat(id: string, lyDo: string): Promise<void> {
 // ════════════════════════════════════════════════════════════════════════════
 // 3) ĐÁNH / GỠ THỦ CÔNG + THU HỒI
 // ════════════════════════════════════════════════════════════════════════════
-export async function danhGayThuCong(p: { nhanSuId: string; loiId: string; soGay: number; lyDo?: string }): Promise<void> {
+// ref = task cụ thể bị đánh (Thùy 05/09: gậy đi theo task). Không ref = lỗi ngoài ERP như cũ.
+export async function danhGayThuCong(p: {
+  nhanSuId: string; loiId: string; soGay: number; lyDo?: string
+  ref?: { nguon: 'vanhanh' | 'giaoviec'; key: string; moTa: string }
+}): Promise<void> {
   if (p.soGay < 1) throw new Error('Số gậy phải ≥ 1.')
   const me = await myNhanSuId()
-  const { error } = await supabase.from('gay_ledger').insert({
+  const { data: led, error } = await supabase.from('gay_ledger').insert({
     nhan_su_id: p.nhanSuId, so_gay: p.soGay, loai: 'thu_cong', loi_id: p.loiId, ly_do: p.lyDo?.trim() || null, nguoi_tao: me,
-  })
+    ref_loai: p.ref?.nguon ?? null, ref_id: p.ref?.key ?? null, ref_mo_ta: p.ref?.moTa ?? null,
+  }).select('id').single()
   if (error) throw error
+  // Task này đang có đề xuất tự động 'cho' → đóng luôn (đã đánh tay rồi, không để leader đánh đúp).
+  if (p.ref) {
+    await supabase.from('gay_de_xuat')
+      .update({ trang_thai: 'da_danh', so_gay: p.soGay, nguoi_quyet: me, quyet_at: new Date().toISOString(), ledger_id: (led as any).id })
+      .eq('ref_key', p.ref.key).eq('trang_thai', 'cho')
+  }
+}
+
+// ── TASK CỦA 1 NHÂN SỰ trong khoảng ngày (picker "đánh gậy vào task") ────────
+// Hai nguồn, cùng shape: (a) việc VẬN HÀNH derive từ listAllStaffTasks (đúng invariant,
+// không tính lại) — MỌI task người đó được phân, không lọc "người phụ trách chính" như
+// quét tự động (đánh tay = leader đã nhìn và quyết); (b) việc GIAO TAY (bảng viec, bỏ
+// huy/chuyen). Lọc khoảng = lựa chọn UI đang mở (§2.0 cho phép); số gậy/task từ DB.
+export async function listTaskCuaNhanSu(nhanSuId: string, k: KhoangNgay): Promise<TaskCuaNhanSu[]> {
+  const [vh, { data: viecs, error }, { data: gayRows, error: eG }] = await Promise.all([
+    listAllStaffTasks(k.tu, k.den),
+    supabase.from('viec').select('id, tieu_de, trang_thai, deadline, ky_tuan, created_at, ngay_nop, task_me_id')
+      .eq('nguoi_lam_id', nhanSuId).not('trang_thai', 'in', '("huy","chuyen")')
+      .order('created_at', { ascending: false }).limit(LIMIT),
+    supabase.rpc('fn_gay_theo_task', { p_nhan_su_id: nhanSuId }),
+  ])
+  if (error) throw error
+  if (eG) throw eG
+  const gayMap = new Map(((gayRows ?? []) as any[]).map((g) => [g.ref_id as string, Number(g.so_gay)]))
+  const out: TaskCuaNhanSu[] = []
+  for (const r of vh) {
+    if (r.nhan_su_id !== nhanSuId) continue
+    const key = `vh:${r.buoiId}|${r.tab}|${r.nhan_su_id}`
+    out.push({
+      key, nguon: 'vanhanh', ten: r.label, phu: `${r.lop} · ${ddmmVN(r.ngay)}`, ngay: r.ngay,
+      deadline_at: r.deadline == null ? null : new Date(r.deadline).toISOString(),
+      xong: r.done, trangThai: r.done ? 'Xong' : 'Chưa xong', soGay: gayMap.get(key) ?? 0,
+    })
+  }
+  const trong = (d: string | null | undefined) => !!d && d >= k.tu && d <= k.den
+  for (const v of (viecs ?? []) as any[]) {
+    const ngayTao = ngayCuaTs(new Date(v.created_at).getTime())
+    // thuộc khoảng khi deadline HOẶC tuần plan rơi vào; việc không có cả hai thì theo ngày giao
+    if (!(trong(v.deadline) || trong(v.ky_tuan) || (!v.deadline && !v.ky_tuan && trong(ngayTao)))) continue
+    const key = `viec:${v.id}`
+    out.push({
+      key, nguon: 'giaoviec', ten: v.tieu_de,
+      phu: `Giao việc${v.deadline ? ` · hạn ${ddmmVN(v.deadline)}` : ''}${v.ngay_nop ? ` · nộp ${ddmmVN(v.ngay_nop)}` : ''}`,
+      ngay: v.deadline ?? v.ky_tuan ?? ngayTao,
+      deadline_at: v.deadline ? new Date(vnInstant(v.deadline, '23:59')).toISOString() : null,
+      xong: v.trang_thai === 'dat', trangThai: NHAN_TRANG_THAI_VIEC[v.trang_thai] ?? v.trang_thai, soGay: gayMap.get(key) ?? 0,
+    })
+  }
+  return out.sort((a, b) => (b.ngay < a.ngay ? -1 : b.ngay > a.ngay ? 1 : a.ten.localeCompare(b.ten)))
+}
+const NHAN_TRANG_THAI_VIEC: Record<string, string> = {
+  moi_giao: 'Mới giao', dang_lam: 'Đang làm', cho_nghiem_thu: 'Chờ nghiệm thu', dat: 'Đạt', tra_lai: 'Trả lại', hold: 'Hold',
 }
 export async function goGay(p: { nhanSuId: string; hoatDongId: string; soGay: number; lyDo?: string }): Promise<void> {
   if (p.soGay < 1) throw new Error('Số gậy gỡ phải ≥ 1.')
@@ -303,14 +372,17 @@ export async function thuHoiGay(id: string, lyDo: string): Promise<void> {
 }
 
 // ════════════════════════════════════════════════════════════════════════════
-// 4) BẢNG GẬY THÁNG (công khai toàn công ty) — derive từ ledger, KHÔNG cache
+// 4) BẢNG GẬY theo KHOẢNG (tháng / tuần — công khai toàn công ty) — derive từ ledger, KHÔNG cache
 // ════════════════════════════════════════════════════════════════════════════
-export async function bangGay(ky: string): Promise<BangGayRow[]> {
-  // §2.0 (30/08): SỐ (đánh/gỡ/còn lại/tiền phạt) từ fn_gay_bang ở DB (mig 202608300232) —
-  // client chỉ còn GHÉP entries thô + tên để drill-down hiển thị, không cộng gậy/tiền nữa.
+export async function bangGay(k: KhoangNgay): Promise<BangGayRow[]> {
+  // §2.0 (30/08): SỐ (đánh/gỡ/còn lại/tiền phạt/task không đạt) từ fn_gay_bang_khoang ở DB
+  // (mig 202609051251, scope ngày VN của created_at) — client chỉ GHÉP entries thô + tên để
+  // drill-down hiển thị, không cộng gậy/tiền nữa.
+  const tuIso = new Date(vnInstant(k.tu, '00:00')).toISOString()
+  const denIso = new Date(vnInstant(congNgay(k.den, 1), '00:00')).toISOString()
   const [{ data: bang, error: eB }, { data, error }] = await Promise.all([
-    supabase.rpc('fn_gay_bang', { p_ky: ky }),
-    supabase.from('gay_ledger').select('*').eq('ky', ky).order('created_at', { ascending: false }).limit(LIMIT),
+    supabase.rpc('fn_gay_bang_khoang', { p_tu: k.tu, p_den: k.den }),
+    supabase.from('gay_ledger').select('*').gte('created_at', tuIso).lt('created_at', denIso).order('created_at', { ascending: false }).limit(LIMIT),
   ])
   if (eB) throw eB
   if (error) throw error
@@ -333,7 +405,7 @@ export async function bangGay(ky: string): Promise<BangGayRow[]> {
   return ((bang ?? []) as any[]).map((b) => ({
     nhan_su_id: b.nhan_su_id, ns_ten: b.ns_ten,
     soGayDanh: Number(b.so_gay_danh), soGayGo: Number(b.so_gay_go), conLai: Number(b.con_lai),
-    tienPhat: Number(b.tien_phat), entries: byNs.get(b.nhan_su_id) ?? [],
+    soTaskKhongDat: Number(b.so_task_khong_dat), tienPhat: Number(b.tien_phat), entries: byNs.get(b.nhan_su_id) ?? [],
   }))
 }
 
@@ -369,6 +441,18 @@ export async function listMienGay(): Promise<NsMienGay[]> {
 export async function setMienGay(nhanSuId: string, mien: boolean): Promise<void> {
   const { error } = await supabase.from('nhan_su').update({ mien_gay: mien }).eq('id', nhanSuId)
   if (error) throw error
+}
+
+// ── LỊCH SỬ 1 TASK (CEO 23/09): hạn · đóng/mở lại (trigger buoi_hoc_phase_log) · dữ liệu HS
+// nhập SAU lần đóng đầu · bằng chứng HS nộp muộn — để leader phân biệt "nhân sự đóng muộn"
+// với "HS nộp muộn thật, nhân sự mở lại để điền". Toàn bộ ghép ở DB (fn_gay_lich_su,
+// mig 202609231619); client chỉ render. Khoá = ref_key của đề xuất / ref_id của ledger.
+export type GayLichSuLoai = 'han' | 'dong' | 'mo_lai' | 'doi_moc' | 'nhap' | 'hs_nop' | 'viec'
+export type GayLichSuEvent = { at: string; loai: GayLichSuLoai; mo_ta: string; actor: string | null }
+export async function lichSuGay(refKey: string): Promise<GayLichSuEvent[]> {
+  const { data, error } = await supabase.rpc('fn_gay_lich_su', { p_ref_key: refKey })
+  if (error) throw error
+  return (data ?? []) as GayLichSuEvent[]
 }
 
 // Đếm đề xuất đang chờ (badge tab). Không quét — chỉ đọc.

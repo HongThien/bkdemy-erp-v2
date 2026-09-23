@@ -119,20 +119,47 @@
     {
       "name": "dev-ph",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["--prefix", "C:/Users/Admin/Desktop/2/PH-App/bkdemy-ph-app", "run", "dev", "--", "--port", "3010"],
+      "runtimeArgs": [
+        "--prefix",
+        "C:/Users/Admin/Desktop/2/PH-App/bkdemy-ph-app",
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "3010"
+      ],
       "port": 3010
     },
     {
       "name": "dev-khaosat",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev:khaosat"],
+      "runtimeArgs": [
+        "run",
+        "dev:khaosat"
+      ],
       "port": 5184
     },
     {
       "name": "preview-khaosat",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "preview:khaosat", "--", "--port", "5185", "--strictPort"],
+      "runtimeArgs": [
+        "run",
+        "preview:khaosat",
+        "--",
+        "--port",
+        "5185",
+        "--strictPort"
+      ],
       "port": 5185
+    },
+    {
+      "name": "games",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "scripts/serve-games.mjs",
+        "5260"
+      ],
+      "port": 5260
     }
   ]
 }

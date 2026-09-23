@@ -13,14 +13,19 @@ import { useStore } from '../../store/useStore'
 import { getMyScope, listNhanSu, type MyScope, type NhanSu } from '../../lib/nhansu'
 import { myNhanSuId } from '../../lib/giaoviec'
 import {
-  GAY_DON_GIA, MA_LOI_CHAM_DEADLINE, kyHienTai, nhanKy,
+  GAY_DON_GIA, MA_LOI_CHAM_DEADLINE, MA_LOI_KHONG_DAT_CHUAN, kyHienTai, nhanKy,
   listGayLoi, createGayLoi, updateGayLoi, listGayHoatDong, createGayHoatDong, updateGayHoatDong,
   quetGayTuDong, listDeXuat, chotDeXuat, boQuaDeXuat,
-  danhGayThuCong, goGay, thuHoiGay, bangGay, chotThang, listChotThang, listMienGay, setMienGay,
+  danhGayThuCong, goGay, thuHoiGay, bangGay, chotThang, listChotThang, listMienGay, setMienGay, listTaskCuaNhanSu, lichSuGay,
   type GayLoi, type GayHoatDong, type GayDeXuatFull, type BangGayRow, type GayChotThangFull, type NsMienGay,
+  type KhoangNgay, type TaskCuaNhanSu, type GayLichSuEvent, type GayLichSuLoai,
 } from '../../lib/gay'
+import { homNayVN, congNgay, tuanCuaNgay, khoangTuan, nhanTuan, ddmmVN } from '../../lib/tuan'
 
 type Tab = 'bang' | 'dexuat' | 'danhgo' | 'danhmuc' | 'chot'
+type CheKy = 'thang' | 'tuan'
+// Khoảng ngày của kỳ tháng 'YYYY-MM-01' = [ngày 1, ngày cuối tháng]
+const khoangThang = (ky: string): KhoangNgay => ({ tu: ky, den: congNgay(kyCong(ky, 1), -1) })
 const vnd = (n: number) => `${n.toLocaleString('vi-VN')}đ`
 const nhanTre = (phut: number | null) => {
   if (phut == null) return ''
@@ -53,10 +58,67 @@ const pill = (tone: 'red' | 'emerald' | 'amber' | 'zero') => ({
   zero: 'inline-flex min-w-[30px] items-center justify-center rounded-full border border-slate-200 bg-white px-2 py-0.5 text-xs font-medium text-slate-400',
 }[tone])
 
+// ── LỊCH SỬ 1 TASK (CEO 23/09): timeline hạn · đóng/mở lại · dữ liệu HS nhập sau khi đóng ·
+// HS nộp muộn — để leader biết gậy là do nhân sự đóng muộn hay HS nộp muộn thật rồi nhân sự
+// mở lại điền. Toàn bộ do fn_gay_lich_su ghép ở DB; đây chỉ render. Dùng ở đề xuất (ref_key)
+// và ở dòng ledger gắn task (ref_id).
+const LS_DOT: Record<GayLichSuLoai, string> = {
+  han: 'bg-amber-400', dong: 'bg-emerald-500', mo_lai: 'bg-indigo-500', doi_moc: 'bg-slate-400',
+  nhap: 'bg-slate-300', hs_nop: 'bg-rose-400', viec: 'bg-slate-400',
+}
+const LS_TEXT: Record<GayLichSuLoai, string> = {
+  han: 'font-semibold text-amber-700', dong: 'font-medium text-emerald-700', mo_lai: 'font-medium text-indigo-700',
+  doi_moc: 'text-slate-600', nhap: 'text-slate-600', hs_nop: 'font-medium text-rose-700', viec: 'text-slate-600',
+}
+function LichSuTask({ refKey }: { refKey: string }) {
+  const [evs, setEvs] = useState<GayLichSuEvent[] | null>(null)
+  const [err, setErr] = useState('')
+  useEffect(() => {
+    let alive = true
+    setEvs(null); setErr('')
+    lichSuGay(refKey).then((r) => { if (alive) setEvs(r) }).catch((e: any) => { if (alive) setErr(String(e.message ?? e)) })
+    return () => { alive = false }
+  }, [refKey])
+  if (err) return <p className="text-xs text-red-600">{err}</p>
+  if (!evs) return <p className="text-xs text-slate-400">Đang tải lịch sử…</p>
+  if (!evs.length) return <p className="text-xs text-slate-400">Chưa có vết nào cho task này (log đóng/mở lại chỉ ghi từ 23/09/2026; việc OPS gộp theo ca chưa có timeline).</p>
+  return (
+    <ol className="ml-1.5 space-y-1 border-l-2 border-slate-200 pl-3" onClick={(ev) => ev.stopPropagation()}>
+      {evs.map((e, i) => (
+        <li key={i} className="relative text-xs leading-5">
+          <span className={`absolute -left-[17px] top-1.5 h-2.5 w-2.5 rounded-full ring-2 ring-white ${LS_DOT[e.loai] ?? 'bg-slate-300'}`} />
+          <span className="font-mono text-slate-500">{ddmmhh(e.at)}</span>{' '}
+          <span className={LS_TEXT[e.loai] ?? 'text-slate-600'}>{e.mo_ta}</span>
+          {e.actor && <span className="text-slate-400"> · {e.actor}</span>}
+        </li>
+      ))}
+    </ol>
+  )
+}
+
 export default function GayScreen() {
   const quyen = useStore((s) => s.quyen)
   const [tab, setTab] = useState<Tab>('bang')
+  // Lọc theo THÁNG hoặc TUẦN (Thùy 05/09). Tháng = kỳ 'YYYY-MM-01'; tuần = số tuần BK (tuan.ts).
+  const [che, setChe] = useState<CheKy>('thang')
   const [ky, setKy] = useState(kyHienTai())
+  const [tuan, setTuan] = useState(tuanCuaNgay(homNayVN()))
+  const tuanNay = tuanCuaNgay(homNayVN())
+  const khoang: KhoangNgay = useMemo(() => (che === 'thang' ? khoangThang(ky) : khoangTuan(tuan)), [che, ky, tuan])
+  const nhanKhoang = che === 'thang' ? nhanKy(ky) : nhanTuan(tuan)
+  // Chốt tháng luôn theo THÁNG — ở chế độ tuần lấy tháng chứa thứ Hai của tuần đó.
+  const kyChot = che === 'thang' ? ky : `${khoang.tu.slice(0, 7)}-01`
+  // Đổi chế độ thì giữ nguyên "vị trí thời gian": tuần hiện tại ↔ tháng hiện tại; tuần cũ → tháng chứa thứ Hai
+  // tuần đó; tháng cũ → tuần chứa ngày 1 tháng đó.
+  const doiChe = (c: CheKy) => {
+    if (c === che) return
+    if (c === 'thang') setKy(tuan === tuanNay ? kyHienTai() : `${khoangTuan(tuan).tu.slice(0, 7)}-01`)
+    else setTuan(ky === kyHienTai() ? tuanNay : tuanCuaNgay(ky))
+    setChe(c)
+  }
+  const lui = () => (che === 'thang' ? setKy(kyCong(ky, -1)) : setTuan(tuan - 1))
+  const toi = () => (che === 'thang' ? setKy(kyCong(ky, 1)) : setTuan(tuan + 1))
+  const hetToi = che === 'thang' ? ky >= kyHienTai() : tuan >= tuanNay
   const [scope, setScope] = useState<MyScope | null>(null)
   const [meId, setMeId] = useState<string>('')
   const [lois, setLois] = useState<GayLoi[]>([])
@@ -99,9 +161,17 @@ export default function GayScreen() {
           <button key={t.key} onClick={() => setTab(t.key)} className={tabBtn(tab === t.key)}>{t.ten}</button>
         ))}
         <div className="ml-auto flex items-center gap-1.5">
-          <button className={btnGhost + ' !px-2 !py-1'} onClick={() => setKy(kyCong(ky, -1))}>‹</button>
-          <span className="text-sm font-semibold text-slate-700">{nhanKy(ky)}</span>
-          <button className={btnGhost + ' !px-2 !py-1'} disabled={ky >= kyHienTai()} onClick={() => setKy(kyCong(ky, 1))}>›</button>
+          <div className="mr-1 inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5">
+            {(['thang', 'tuan'] as CheKy[]).map((c) => (
+              <button key={c} onClick={() => doiChe(c)}
+                className={`h-6 rounded-md px-2 text-xs font-semibold transition ${che === c ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
+                {c === 'thang' ? 'Tháng' : 'Tuần'}
+              </button>
+            ))}
+          </div>
+          <button className={btnGhost + ' !px-2 !py-1'} onClick={lui}>‹</button>
+          <span className="min-w-[150px] text-center text-sm font-semibold text-slate-700">{nhanKhoang}</span>
+          <button className={btnGhost + ' !px-2 !py-1'} disabled={hetToi} onClick={toi}>›</button>
         </div>
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-6">
@@ -113,11 +183,11 @@ export default function GayScreen() {
           </div>
         )}
 
-        {tab === 'bang' && <BangGayTab ky={ky} canAct={canAct} trongPhamVi={trongPhamVi} onBao={bao} />}
+        {tab === 'bang' && <BangGayTab k={khoang} canAct={canAct} trongPhamVi={trongPhamVi} onBao={bao} />}
         {tab === 'dexuat' && <DeXuatTab lois={lois} canAct={canAct} laAdmin={laAdmin} scopeIds={scopeIds} meId={meId} onBao={bao} />}
-        {tab === 'danhgo' && canAct && <DanhGoTab lois={lois} hds={hds} laAdmin={laAdmin} scopeIds={scopeIds} onBao={bao} />}
+        {tab === 'danhgo' && canAct && <DanhGoTab k={khoang} nhanKhoang={nhanKhoang} lois={lois} hds={hds} laAdmin={laAdmin} scopeIds={scopeIds} onBao={bao} />}
         {tab === 'danhmuc' && canAct && <DanhMucTab lois={lois} hds={hds} reload={async () => { setLois(await listGayLoi()); setHds(await listGayHoatDong()) }} onBao={bao} />}
-        {tab === 'chot' && canAct && <ChotThangTab ky={ky} onBao={bao} />}
+        {tab === 'chot' && canAct && <ChotThangTab ky={kyChot} theoTuan={che === 'tuan'} onBao={bao} />}
       </div>
     </div>
   )
@@ -126,8 +196,8 @@ export default function GayScreen() {
 // ════════════════════════════════════════════════════════════════════════════
 // TAB 1 — BẢNG GẬY (công khai): tổng theo người + drill chi tiết ledger
 // ════════════════════════════════════════════════════════════════════════════
-function BangGayTab({ ky, canAct, trongPhamVi, onBao }: {
-  ky: string; canAct: boolean; trongPhamVi: (id: string) => boolean; onBao: (ok: boolean, msg: string) => void
+function BangGayTab({ k, canAct, trongPhamVi, onBao }: {
+  k: KhoangNgay; canAct: boolean; trongPhamVi: (id: string) => boolean; onBao: (ok: boolean, msg: string) => void
 }) {
   const [rows, setRows] = useState<BangGayRow[]>([])
   const [loading, setLoading] = useState(true)
@@ -135,8 +205,8 @@ function BangGayTab({ ky, canAct, trongPhamVi, onBao }: {
   const [thuHoiId, setThuHoiId] = useState<string | null>(null)
   const [thuHoiLyDo, setThuHoiLyDo] = useState('')
 
-  const load = () => { setLoading(true); bangGay(ky).then(setRows).catch((e) => onBao(false, String(e.message ?? e))).finally(() => setLoading(false)) }
-  useEffect(load, [ky])
+  const load = () => { setLoading(true); setRows([]); bangGay(k).then(setRows).catch((e) => onBao(false, String(e.message ?? e))).finally(() => setLoading(false)) }
+  useEffect(load, [k.tu, k.den])
 
   const lamThuHoi = async (id: string) => {
     try { await thuHoiGay(id, thuHoiLyDo); setThuHoiId(null); setThuHoiLyDo(''); onBao(true, 'Đã thu hồi.'); load() }
@@ -146,14 +216,15 @@ function BangGayTab({ ky, canAct, trongPhamVi, onBao }: {
   return (
     <div className="rounded-2xl bg-white p-5 shadow-sm">
       {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : !rows.length ? (
-        <p className="text-sm text-slate-400">Tháng này chưa ai bị gậy — sạch bóng. 🎉</p>
+        <p className="text-sm text-slate-400">Kỳ này chưa ai bị gậy — sạch bóng. 🎉</p>
       ) : (
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-slate-100 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
               <th className="w-9 pb-2.5">#</th><th className="pb-2.5">Nhân sự</th>
               <th className="pb-2.5 text-center">Bị đánh</th><th className="pb-2.5 text-center">Đã gỡ</th>
-              <th className="pb-2.5 text-center">Còn lại</th><th className="pb-2.5 text-right">Tiền phạt</th><th className="w-24 pb-2.5" />
+              <th className="pb-2.5 text-center">Còn lại</th><th className="pb-2.5 text-center" title="Số task riêng biệt bị đánh gậy = không đạt chuẩn">Task không đạt</th>
+              <th className="pb-2.5 text-right">Tiền phạt</th><th className="w-24 pb-2.5" />
             </tr>
           </thead>
           <tbody>
@@ -174,6 +245,7 @@ function FragmentRow({ r, i, mo, onMo, canAct, trongPhamVi, thuHoiId, setThuHoiI
   thuHoiId: string | null; setThuHoiId: (v: string | null) => void; thuHoiLyDo: string; setThuHoiLyDo: (v: string) => void
   lamThuHoi: (id: string) => void
 }) {
+  const [lsId, setLsId] = useState<string | null>(null) // dòng ledger đang xoè lịch sử task
   return (
     <>
       <tr className="cursor-pointer border-b border-slate-50 transition hover:bg-slate-50/60" onClick={onMo}>
@@ -182,16 +254,23 @@ function FragmentRow({ r, i, mo, onMo, canAct, trongPhamVi, thuHoiId, setThuHoiI
         <td className="py-2.5 text-center"><span className={pill(r.soGayDanh ? 'red' : 'zero')}>{r.soGayDanh}</span></td>
         <td className="py-2.5 text-center"><span className={pill(r.soGayGo ? 'emerald' : 'zero')}>{r.soGayGo}</span></td>
         <td className="py-2.5 text-center"><span className={pill(r.conLai ? 'red' : 'emerald')}>{r.conLai}</span></td>
+        <td className="py-2.5 text-center"><span className={pill(r.soTaskKhongDat ? 'amber' : 'zero')}>{r.soTaskKhongDat}</span></td>
         <td className="py-2.5 text-right"><span className={pill(r.tienPhat ? 'amber' : 'zero')}>{vnd(r.tienPhat)}</span></td>
         <td className="py-2.5 text-right text-xs font-medium text-indigo-500">{mo ? 'Đóng ▲' : 'Chi tiết ▼'}</td>
       </tr>
       {mo && (
-        <tr><td colSpan={7} className="bg-slate-50/70 p-0">
+        <tr><td colSpan={8} className="bg-slate-50/70 p-0">
           <div className="px-3 py-2.5">
             {r.entries.map((e) => (
               <div key={e.id} className={`mt-1.5 flex flex-wrap items-center gap-2.5 rounded-lg border-l-2 bg-white px-3 py-2 text-xs shadow-sm ${e.thu_hoi_at ? 'border-l-slate-300 opacity-50' : e.so_gay < 0 ? 'border-l-emerald-400' : e.loai === 'tu_dong' ? 'border-l-amber-400' : 'border-l-red-400'}`}>
                 <span className={`min-w-[30px] font-bold ${e.so_gay < 0 ? 'text-emerald-600' : 'text-red-600'} ${e.thu_hoi_at ? 'line-through' : ''}`}>{e.so_gay > 0 ? `+${e.so_gay}` : e.so_gay}</span>
-                <span className="rounded-full bg-slate-100 px-1.5 py-0.5 text-[10px] font-semibold text-slate-500">{e.loai === 'tu_dong' ? 'Tự động' : e.loai === 'go' ? 'Gỡ' : 'Thủ công'}</span>
+                <span className="rounded-full bg-slate-100 px-1.5 py-0.5 text-[10px] font-semibold text-slate-500">{e.loai === 'tu_dong' ? 'Tự động' : e.loai === 'go' ? 'Gỡ' : e.ref_id ? 'Theo task' : 'Thủ công'}</span>
+                {e.ref_mo_ta && <span className="rounded-md border border-indigo-100 bg-indigo-50 px-1.5 py-0.5 text-[11px] font-medium text-indigo-700">{e.ref_mo_ta}</span>}
+                {e.ref_id && (
+                  <button type="button" className="text-[11px] font-medium text-indigo-500 hover:underline" onClick={(ev) => { ev.stopPropagation(); setLsId(lsId === e.id ? null : e.id) }}>
+                    {lsId === e.id ? 'Ẩn lịch sử ▲' : 'Lịch sử ▼'}
+                  </button>
+                )}
                 <span className={`text-slate-600 ${e.thu_hoi_at ? 'line-through' : ''}`}>{e.so_gay < 0 ? e.hoat_dong_ten : e.loi_ten}{e.ly_do ? ` — ${e.ly_do}` : ''}</span>
                 <span className="ml-auto text-[11px] text-slate-400">{ddmmhh(e.created_at)} · {e.nguoi_tao_ten}</span>
                 {e.thu_hoi_at ? <span className="text-[10px] font-medium text-amber-600">Đã thu hồi: {e.thu_hoi_ly_do}</span>
@@ -206,6 +285,7 @@ function FragmentRow({ r, i, mo, onMo, canAct, trongPhamVi, thuHoiId, setThuHoiI
                       <button className={btnGhost + ' !px-2 !py-1 !text-xs'} onClick={(ev) => { ev.stopPropagation(); setThuHoiId(e.id); setThuHoiLyDo('') }}>Thu hồi</button>
                     )
                   )}
+                {lsId === e.id && e.ref_id && <div className="mt-1.5 w-full pl-1" onClick={(ev) => ev.stopPropagation()}><LichSuTask refKey={e.ref_id} /></div>}
               </div>
             ))}
           </div>
@@ -231,6 +311,7 @@ function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
   const [loiById, setLoiById] = useState<Record<string, string>>({})
   const [boQuaId, setBoQuaId] = useState<string | null>(null)
   const [boQuaLyDo, setBoQuaLyDo] = useState('')
+  const [lichSuId, setLichSuId] = useState<string | null>(null) // đề xuất đang xoè timeline
   const loiChamDeadline = lois.find((l) => l.ma === MA_LOI_CHAM_DEADLINE)?.id ?? lois[0]?.id ?? ''
 
   const load = async () => {
@@ -310,7 +391,12 @@ function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
                       <p className="mt-0.5 text-xs text-slate-400">
                         {d.nguon === 'vanhanh' ? 'Vận hành' : 'Giao việc'} · hạn {ddmmhh(d.deadline_at)} · <span className="font-medium text-red-600">trễ {nhanTre(d.tre_phut)}</span>
                         {qua48h(d.created_at) && <span className="ml-1.5 font-semibold text-rose-600">· ⏰ quá 48h chưa duyệt (đang tính ĐẠT CHUẨN)</span>}
+                        {' · '}
+                        <button type="button" className="font-medium text-indigo-500 hover:underline" onClick={() => setLichSuId(lichSuId === d.id ? null : d.id)}>
+                          {lichSuId === d.id ? 'Ẩn lịch sử ▲' : 'Lịch sử ▼'}
+                        </button>
                       </p>
+                      {lichSuId === d.id && <div className="mt-2"><LichSuTask refKey={d.ref_key} /></div>}
                     </div>
                     {duocLam ? (
                       boQuaId === d.id ? (
@@ -343,19 +429,129 @@ function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
 }
 
 // ════════════════════════════════════════════════════════════════════════════
-// TAB 3 — ĐÁNH / GỠ thủ công (leader): 2 panel song song
+// TAB 3 — ĐÁNH (theo task) / GỠ thủ công (leader)
+// Thùy 05/09: "gậy đi theo task" — chọn nhân sự → hệ liệt kê MỌI task đã giao trong
+// kỳ đang lọc (vận hành derive + giao tay) → bấm task → nhập số gậy + lý do.
+// Task có gậy = không đạt chuẩn (mầm cho hiệu suất = task đạt chuẩn / tổng task).
 // ════════════════════════════════════════════════════════════════════════════
-function DanhGoTab({ lois, hds, laAdmin, scopeIds, onBao }: {
-  lois: GayLoi[]; hds: GayHoatDong[]; laAdmin: boolean; scopeIds: Set<string>; onBao: (ok: boolean, msg: string) => void
+function DanhGoTab({ k, nhanKhoang, lois, hds, laAdmin, scopeIds, onBao }: {
+  k: KhoangNgay; nhanKhoang: string; lois: GayLoi[]; hds: GayHoatDong[]; laAdmin: boolean; scopeIds: Set<string>
+  onBao: (ok: boolean, msg: string) => void
 }) {
   const [nsAll, setNsAll] = useState<NhanSu[]>([])
   useEffect(() => { listNhanSu().then((l) => setNsAll(l.filter((n) => n.trang_thai === 'dang_lam'))).catch(() => setNsAll([])) }, [])
   const chonDuoc = nsAll.filter((n) => laAdmin || scopeIds.has(n.id))
 
   return (
-    <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))' }}>
-      <FormDanhGo mode="danh" ds={chonDuoc} muc={lois.map((l) => ({ id: l.id, ten: l.ten, macDinh: l.so_gay_mac_dinh }))} onBao={onBao} />
+    <div className="grid gap-4 xl:grid-cols-[minmax(0,2fr)_minmax(340px,1fr)]">
+      <FormDanhTheoTask k={k} nhanKhoang={nhanKhoang} ds={chonDuoc} lois={lois} onBao={onBao} />
       <FormDanhGo mode="go" ds={chonDuoc} muc={hds.map((h) => ({ id: h.id, ten: h.ten, macDinh: h.so_gay_mac_dinh }))} onBao={onBao} />
+    </div>
+  )
+}
+
+const KHONG_GAN_TASK = '__khong_gan_task__'
+function FormDanhTheoTask({ k, nhanKhoang, ds, lois, onBao }: {
+  k: KhoangNgay; nhanKhoang: string; ds: NhanSu[]; lois: GayLoi[]; onBao: (ok: boolean, msg: string) => void
+}) {
+  const [nsId, setNsId] = useState('')
+  const [tasks, setTasks] = useState<TaskCuaNhanSu[]>([])
+  const [loading, setLoading] = useState(false)
+  const [tim, setTim] = useState('')
+  const [chonKey, setChonKey] = useState<string | null>(null)   // task đang mở form (hoặc KHONG_GAN_TASK)
+  const [loiId, setLoiId] = useState('')
+  const [soGay, setSoGay] = useState(1)
+  const [lyDo, setLyDo] = useState('')
+  const [dangLuu, setDangLuu] = useState(false)
+  const loiMacDinh = lois.find((l) => l.ma === MA_LOI_KHONG_DAT_CHUAN)?.id ?? lois[0]?.id ?? ''
+
+  const load = async () => {
+    if (!nsId) { setTasks([]); return }
+    setLoading(true); setTasks([]); setChonKey(null)
+    try { setTasks(await listTaskCuaNhanSu(nsId, k)) } catch (e: any) { onBao(false, String(e.message ?? e)) }
+    setLoading(false)
+  }
+  useEffect(() => { load() }, [nsId, k.tu, k.den])
+  // Mở form cho 1 task: reset về mặc định (lỗi "không đạt chuẩn", số theo danh mục)
+  const mo = (key: string | null) => {
+    setChonKey(key); setLyDo('')
+    const l = lois.find((x) => x.id === loiMacDinh); setLoiId(loiMacDinh); setSoGay(l?.so_gay_mac_dinh ?? 1)
+  }
+  const doiLoi = (id: string) => { setLoiId(id); const l = lois.find((x) => x.id === id); if (l) setSoGay(l.so_gay_mac_dinh) }
+
+  const luu = async (t: TaskCuaNhanSu | null) => {
+    setDangLuu(true)
+    try {
+      await danhGayThuCong({ nhanSuId: nsId, loiId, soGay, lyDo, ref: t ? { nguon: t.nguon, key: t.key, moTa: `${t.ten} — ${t.phu}` } : undefined })
+      onBao(true, t ? `Đã đánh ${soGay} gậy vào "${t.ten} — ${t.phu}".` : `Đã đánh ${soGay} gậy (không gắn task).`)
+      setChonKey(null); setLyDo('')
+      if (t) setTasks((p) => p.map((x) => (x.key === t.key ? { ...x, soGay: x.soGay + soGay } : x)))
+    } catch (e: any) { onBao(false, String(e.message ?? e)) }
+    setDangLuu(false)
+  }
+
+  const q = tim.trim().toLowerCase()
+  const hien = q ? tasks.filter((t) => `${t.ten} ${t.phu}`.toLowerCase().includes(q)) : tasks
+  const soCoGay = tasks.filter((t) => t.soGay > 0).length
+
+  const formInline = (t: TaskCuaNhanSu | null) => (
+    <div className="mt-2 flex flex-wrap items-center gap-2 rounded-lg border border-red-100 bg-red-50/60 px-3 py-2" onClick={(ev) => ev.stopPropagation()}>
+      <select className={inputCls + ' !py-1 !text-xs'} value={loiId} onChange={(e) => doiLoi(e.target.value)}>
+        {lois.map((l) => <option key={l.id} value={l.id}>{l.ten}</option>)}
+      </select>
+      <input className={inputCls + ' !py-1 !text-xs text-center'} type="number" min={1} style={{ width: 56 }} value={soGay}
+        onChange={(e) => setSoGay(Math.max(1, Number(e.target.value) || 1))} />
+      <input className={inputCls + ' !py-1 !text-xs min-w-[200px] flex-1'} placeholder="lý do…" value={lyDo} onChange={(e) => setLyDo(e.target.value)} autoFocus />
+      <button className={btnDanger + ' !px-2.5 !py-1 !text-xs'} disabled={!loiId || dangLuu} onClick={() => luu(t)}>{dangLuu ? 'Đang ghi…' : `Đánh ${soGay} gậy`}</button>
+      <button className={btnGhost + ' !px-2 !py-1 !text-xs'} onClick={() => setChonKey(null)}>Huỷ</button>
+    </div>
+  )
+
+  return (
+    <div className="rounded-2xl bg-white p-5 shadow-sm">
+      <p className="mb-1 text-sm font-semibold text-red-600">Đánh gậy vào task</p>
+      <p className="mb-3 text-xs text-slate-400">Chọn nhân sự → bấm task → nhập số gậy + lý do. Task có gậy = không đạt chuẩn. Danh sách theo kỳ đang lọc: <b className="text-slate-600">{nhanKhoang}</b>.</p>
+      <div className="mb-3 flex flex-wrap gap-2">
+        <select className={inputCls + ' min-w-[220px]'} value={nsId} onChange={(e) => setNsId(e.target.value)}>
+          <option value="">— chọn nhân sự —</option>
+          {ds.map((n) => <option key={n.id} value={n.id}>{n.ho_ten}{n.ma_ns ? ` (${n.ma_ns})` : ''}</option>)}
+        </select>
+        <input className={inputCls + ' flex-1'} placeholder="tìm task (tên, lớp)…" value={tim} onChange={(e) => setTim(e.target.value)} disabled={!nsId} />
+      </div>
+      {!nsId ? <p className="text-sm text-slate-400">Chưa chọn nhân sự.</p> : loading ? <p className="text-sm text-slate-400">Đang lấy task…</p> : (
+        <>
+          <div className="mb-2 flex items-center gap-2 text-xs text-slate-400">
+            <span>{tasks.length} task trong kỳ</span>
+            {soCoGay > 0 && <span className={pill('red')}>{soCoGay} task có gậy</span>}
+          </div>
+          <div className="max-h-[520px] overflow-auto rounded-xl border border-slate-100">
+            {/* Hàng đặc biệt: lỗi ngoài ERP không gắn task nào — giữ đường cũ */}
+            <div className={`cursor-pointer border-b border-slate-100 px-3 py-2 transition hover:bg-slate-50 ${chonKey === KHONG_GAN_TASK ? 'bg-red-50/40' : ''}`}
+              onClick={() => mo(chonKey === KHONG_GAN_TASK ? null : KHONG_GAN_TASK)}>
+              <span className="text-xs font-medium text-slate-500">Lỗi ngoài ERP — không gắn task</span>
+              {chonKey === KHONG_GAN_TASK && formInline(null)}
+            </div>
+            {!hien.length ? <p className="px-3 py-3 text-sm text-slate-400">{tasks.length ? 'Không task nào khớp.' : 'Người này không có task nào trong kỳ.'}</p> : hien.map((t) => {
+              const dangMo = chonKey === t.key
+              return (
+                <div key={t.key} className={`cursor-pointer border-b border-slate-50 px-3 py-2 transition hover:bg-slate-50 ${dangMo ? 'bg-red-50/40' : ''}`} onClick={() => mo(dangMo ? null : t.key)}>
+                  <div className="flex flex-wrap items-center gap-2 text-sm">
+                    <span className="w-11 text-xs text-slate-400">{ddmmVN(t.ngay)}</span>
+                    <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-semibold ${t.nguon === 'vanhanh' ? 'bg-sky-50 text-sky-700' : 'bg-violet-50 text-violet-700'}`}>{t.nguon === 'vanhanh' ? 'Vận hành' : 'Giao việc'}</span>
+                    <span className="font-medium text-slate-800">{t.ten}</span>
+                    <span className="text-xs text-slate-400">{t.phu}</span>
+                    <span className="ml-auto flex items-center gap-1.5">
+                      {t.soGay > 0 && <span className={pill('red')}>{t.soGay} gậy</span>}
+                      <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-semibold ${t.xong ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700'}`}>{t.trangThai}</span>
+                    </span>
+                  </div>
+                  {dangMo && formInline(t)}
+                </div>
+              )
+            })}
+          </div>
+        </>
+      )}
     </div>
   )
 }
@@ -497,7 +693,7 @@ function PanelDanhMuc({ tieuDe, tone, items, onAdd, onUpdate, onBao }: {
 // ════════════════════════════════════════════════════════════════════════════
 // TAB 5 — CHỐT THÁNG: preview từ ledger → snapshot vào gay_chot_thang
 // ════════════════════════════════════════════════════════════════════════════
-function ChotThangTab({ ky, onBao }: { ky: string; onBao: (ok: boolean, msg: string) => void }) {
+function ChotThangTab({ ky, theoTuan, onBao }: { ky: string; theoTuan: boolean; onBao: (ok: boolean, msg: string) => void }) {
   const [preview, setPreview] = useState<BangGayRow[]>([])
   const [daChot, setDaChot] = useState<GayChotThangFull[]>([])
   const [loading, setLoading] = useState(true)
@@ -505,7 +701,7 @@ function ChotThangTab({ ky, onBao }: { ky: string; onBao: (ok: boolean, msg: str
 
   const load = () => {
     setLoading(true)
-    Promise.all([bangGay(ky), listChotThang(ky)])
+    Promise.all([bangGay(khoangThang(ky)), listChotThang(ky)])
       .then(([b, c]) => { setPreview(b); setDaChot(c) })
       .catch((e) => onBao(false, String(e.message ?? e)))
       .finally(() => setLoading(false))
@@ -522,6 +718,7 @@ function ChotThangTab({ ky, onBao }: { ky: string; onBao: (ok: boolean, msg: str
 
   return (
     <div className="rounded-2xl bg-white p-5 shadow-sm">
+      {theoTuan && <p className="mb-3 text-xs text-amber-600">Chốt luôn theo THÁNG — đang xem {nhanKy(ky)} (tháng chứa tuần đã chọn).</p>}
       {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : (
         <>
           {daChot.length > 0 && (

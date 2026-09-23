@@ -14538,3 +14538,196 @@ huỷ ⇒ tự huỷ + tính không diễn ra · Lịch sử = toàn bộ hoạt
   cũng ở `CandidateHeader` (Duyệt bổ trợ + Dashboard). Tab Đang diễn ra: toggle Yếu/Bù/Đuổi/Retest + 3 khối mới.
 - Verify local thật 23/09: Cần xếp 115 · Đã xếp 3 · Chờ retest 4 · Hoàn thành 0; 12 buổi tự huỷ; popup lịch sử mở đúng (hiện "Mở case · 4 dạng ·
   ưu tiên cao"). Tab Đang diễn ra mới kiểm RPC (hôm nay: 0 bù · 1 đuổi · 0 retest), chưa nhìn bằng mắt. tsc sạch. spec-bo-tro §1.1/§5/§6b/§7/§9 cập nhật.
+## 22/09 — Nhập kho Hình 9: 'Các bài toán liên quan đến tỉ số lượng giác' (HH00095) từ file .docx
+
+- File nguồn: L9/Hình/Hình-9-GIUA-KI-I.docx (Thùy up thêm vào nhap-kho). Dùng Word Equation (OMML),
+  KHÔNG phải MathType/WMF — Thùy xác nhận trước khi đọc.
+- Môi trường KHÔNG có pandoc/soffice (cả Bash lẫn PowerShell) → skill docx đề xuất pandoc không dùng
+  được. Fallback: unzip .docx thủ công, tự viết converter OMML→LaTeX (dùng @xmldom/xmldom có sẵn
+  trong node_modules) — xử m:f (dfrac), m:sSup/sSub, m:rad (sqrt), m:d (delimiter), m:acc (widehat).
+  711 khối oMath trong file, convert sạch, verify $ cân bằng 0 lỗi.
+- BUG tự phát hiện khi rà lại: câu dẫn 'Cho tam giác ABC vuông tại A...' nằm CÙNG DÒNG với 'Câu N.'
+  (không xuống dòng) nên bị gom vào header_extra rồi RỚT MẤT khỏi noi_dung — gần như toàn bộ 32 câu
+  bị thiếu giả thiết nếu không bắt kịp. Fix: strip '(x điểm)' ở đầu header rồi prepend phần còn lại
+  vào nội dung câu trước khi group theo a)/b)/c). Cũng bắt thêm case đánh số '1. 2. 3.' (dấu chấm,
+  không phải ')') ở Câu 36 — ban đầu bị nuốt vào ý c) vì regex marker chỉ bắt 'x)' không bắt 'x.'.
+- Áp đúng luật '$1.6/Hình 100% không tách ý' (chốt 21/09): 32 'Câu N' (Câu 6→37, có N=1..37 skip
+  N=1-5 vì không có trong file) = 32 câu, mỗi câu giữ nguyên mọi ý a/b/c/d hoặc 1/2/3 làm MỘT
+  noi_dung. Không có lời giải trong file (đề thuần) → loi_giai/dap_an để NULL, chưa giải (Luồng B
+  nhưng KHÔNG tự giải ngay — việc giao là 'nhập kho', giải là việc khác, để dành hàng đợi/GV).
+- PHÁT HIỆN TRÙNG: 4/32 câu (Câu 6, 7, 11, 12 mới) trùng nội dung với 4 câu CŨ đã có sẵn trong kho
+  dưới dang_chinh=HH00084 'Mô hình tam giác vuông' (HHC000689, 685, 686, 687) — nhưng bản CŨ bị THIẾU
+  câu dẫn/giả thiết (cùng loại bug vừa fix ở trên, chứng tỏ lượt nhập trước cũng dính lỗi này). Quyết
+  định: KHÔNG tự xoá/sửa HH00084 (theo Luật xoá — chưa hỏi Thùy), chỉ insert đủ 32 câu vào HH00095
+  theo đúng yêu cầu, ghi chú trùng vào nhap_kho_log.ghi_chu, báo Thùy quyết định xử lý HH00084 sau
+  (xoá 4 câu cũ trùng+lỗi, hay sửa lại câu dẫn, hay giữ song song 2 dạng).
+- Kết quả: insert 32 câu HH00095001..032, $ cân bằng verify từ DB (không tin script), da_duyet=false,
+  loi_giai=NULL. nhap_kho_log ghi sha256, move file → DaXuLy/2026-09-22/.
+
+## 22/09 — Xoá 4 câu trùng HH00084 + nối `hinh_hoc` vào màn "Duyệt kho" (đổi tên từ "Duyệt lời giải AI")
+
+- Thùy xác nhận xoá 4 câu cũ trùng (HHC000685/686/687/689, dang HH00084) đã phát hiện lúc nãy — soft-delete
+  (xoa_at=now(), không hard-delete, theo Luật xoá + convention kho rác). Verify trước: 0 tham chiếu
+  (parent_ma_cau, hàng đợi yêu_cau_giai), cả 4 đều da_duyet=false — an toàn.
+- Thùy: "chưa có màn duyệt các câu hình ở Duyệt lời giải AI" + "đổi tên nó thành Duyệt kho". Research
+  (Explore agent) xác nhận: `hinh_hoc_cau_hoi` (kho câu hình học phẳng, dang_chinh→hinh_hoc_bai) hoàn
+  toàn vắng mặt khỏi registry KHO_MON/KhoMon/khoTbls (src/lib/kho/api.ts) — màn Duyệt lời giải AI
+  chỉ có toan/khtn/hgt + hệ Hình DAG riêng (hinh_mo_hinh, KHÔNG phải hinh_hoc_cau_hoi).
+- Tra kỹ trước khi sửa: fn_kho_tbl() (DB) ĐÃ CÓ case 'hinh_hoc'→'hinh_hoc' từ trước (ai đó chuẩn bị sẵn,
+  chưa nối client) — và view hinh_hoc_ban_do (chiếu từ hinh_hoc_bai) + hinh_hoc_cum_bai.ten +
+  hinh_hoc_cau_hoi_yeu_cau_giai đã tồn tại sẵn, khớp đúng mẫu `<t>_ban_do`/`<t>_cum_bai`/`<t>_cau_hoi_yeu_cau_giai`
+  mà các hàm hàng-duyệt hợp nhất cần. hinh_hoc_cau_hoi cũng đã có ĐỦ cột compat (kiem_may, giai_method,
+  duyet_nguon, kho_chuan...) khớp dai_cau_hoi. tailieu.ts's khoCuaMon/NHANH_CUA_MON (dùng cho
+  "Làm tài liệu") CŨNG đã có sẵn nhánh 'hinh_hoc' đầy đủ — chỉ riêng api.ts (dùng cho Duyệt kho) thiếu.
+  ⇒ Việc còn lại chỉ là NỐI registry, không cần migration DB mới.
+- Sửa: KhoMon type + khoTbls() thêm nhánh 'hinh_hoc' (api.ts) · KHO_MON/NHANH_LABEL thêm
+  'hinh_hoc'→'Hình học' vào nhánh Toán · DuyetCauTab.tsx sửa `nhanh` prop truyền cho DangPickerOne
+  (trước đó câu hinh_hoc mở picker đổi dạng sẽ lạc sang cây Đại — không ai gọi tới nên chưa lộ).
+  Rename fixtures.ts (nhãn sidebar) + tiêu đề màn DuyetLoiGiaiScreen.tsx: "Duyệt lời giải AI" →
+  "Duyệt kho".
+- Verify: `npx tsc --noEmit` sạch (chỉ còn 1 lỗi pre-existing không liên quan, pdfRender.ts). Test qua
+  Browser pane (đăng nhập Admin dev-login, npm run dev): chip "Hình học 32" hiện đúng ở cả 2 tab
+  ("Chưa có lời giải" khối 9 và "Câu mới chờ duyệt"), nhóm đúng theo dạng "HH00095 · 32 bài", LaTeX
+  render sạch. Test write-path (fn_kho_duyet_cau + fn_kho_tu_choi_cau cho 'hinh_hoc') qua BEGIN…ROLLBACK
+  trực tiếp DB (không qua UI vì phải chọc qua 56 câu hinh_hoc tồn đọng khác mới tới HH00095 trong batch
+  20 — không có quyền auto-duyệt/từ-chối hàng loạt data người khác chỉ để test) — cả 2 hàm chạy sạch,
+  rollback xác nhận không đụng dữ liệu thật.
+
+## 22/09 — Xoá 198 câu hình học "chuyển từ Luyện sang Học" chưa duyệt (bug đề — thiếu giả thiết tiền đề/mô hình)
+
+- Sau khi mở màn Duyệt kho, Thùy tự duyệt/từ chối 32 câu `HH00062` (14 giữ, 18 xoá) rồi báo: "các câu
+  chuyển từ bên luyện sang toàn bị lỗi đề — bên đấy đề nó cộng thêm giả thiết bài tiền đề cộng mô hình
+  nên chuyển sang sai nhiều lắm". Chỉ đạo: xoá toàn bộ câu chuyển từ Luyện, chỉ giữ câu nhập từ file.
+- Trước khi xoá (Luật xoá): lọc theo `mo_hinh_id IS NOT NULL` (chỉ câu sinh từ hệ Luyện DAG mới có cột
+  này set — kho-nhập-file không bao giờ set) → 239 câu còn sống trên toàn kho hình học (không chỉ khối 7
+  từ mig `202609171743_chuyen_hinh_k7_ve_hoc.sql`, mà rải cả khối 7/8/9 — HH00020-028 (k7), HH00058/060/
+  061/062/066 (k8), HH00085 (k9)). Phát hiện mâu thuẫn: 41/239 câu đã `da_duyet=true` (người đã xác nhận
+  tốt), nội dung spot-check ĐẦY ĐỦ giả thiết, không giống mô tả lỗi. Hỏi lại Thùy — chốt: CHỈ xoá 198 câu
+  CHƯA duyệt, giữ nguyên 41 câu đã duyệt (an toàn hơn, không xoá nhầm nội dung đã người xác nhận tốt).
+- Xoá: soft-delete (`xoa_at=now()`, không hard-delete — kho rác convention). Kết quả 198 câu, phân bố:
+  HH00023=36 · HH00025=30 · HH00066=29 · HH00085=49 · HH00061=12 · HH00024=12 · HH00027=9 · HH00021=7 ·
+  HH00022=5 · HH00020=5 · HH00026=2 · HH00028=2.
+- Lưu ý: HH00062 (Hình chữ nhật k8, đang làm thêm câu mới từ file "C3. Bài 4. Hình chữ nhật.docx") ĐÃ hết
+  câu mo_hinh_id chưa-duyệt từ trước (0 sau lọc), 2 câu mo_hinh_id đã-duyệt của nó KHÔNG bị đụng.
+
+## 22/09 — Nhập thêm 7 câu HH00062 (Hình chữ nhật k8) từ SGK "C3. Bài 4. Hình chữ nhật.docx" (Luồng A)
+
+- File .docx dùng MathType (269 công thức OLE/WMF, không phải OMML) — môi trường không có pandoc/soffice.
+  Thử Word COM tự động export PDF: CHẬM BẤT THƯỜNG (269 công thức, >40 phút chưa xong, CPU vẫn tăng đều
+  không treo) — huỷ, để Thùy tự export bằng Word đang mở sẵn (nhanh hơn nhiều, xong trong vài phút).
+  Bài học: KHÔNG tự động hoá Word COM cho .docx nhiều OLE-equation — quá chậm so với người tự Save-As PDF.
+- File PDF (7 trang) đọc sạch qua pdftoppm + Read — lý thuyết (I) + 11 bài mẫu 1A-8* (II, chia 3 Dạng) +
+  lời giải đầy đủ (HƯỚNG DẪN GIẢI) cho từng bài. Đây là SGK "Bồi dưỡng HSG"-style, không phải đề thi rời.
+- Dedup thủ công trước khi insert (so với 14 câu HH00062 hiện có, không chỉ dựa vào so chuỗi máy vì các
+  câu na ná dùng cách đặt tên điểm/phát biểu khác nhau): phát hiện 4/11 câu TRÙNG nội dung với câu đã có
+  — 1B≈HH00062002, 3B≈HH00062007, 4(tự luyện)≈HH00062023, 6≈HH00062024 (cùng cấu hình + cùng câu hỏi,
+  chỉ khác cách chia ý a)/b)/c)). Bỏ qua 4 câu này, chỉ insert 7 câu thật sự mới: 1A, 2A, 2B, 3A, 5, 7, 8*.
+  Không lấy ảnh minh hoạ lời giải (giữ nguyên convention phiên này — chỉ lấy chữ).
+- Kết quả: HH00062028..034 (7 câu, loi_giai đầy đủ, nguon_giai='nguoi' vì có sẵn lời giải SGK không phải
+  AI giải), $ cân bằng verify từ DB. nhap_kho_log ghi sha256 — chưa move được file nguồn sang DaXuLy/
+  (file đang bị Word khoá vì Thùy còn mở để export PDF, move sau khi đóng).
+
+## 2026-09-22 — Test đầu vào: đổi khối ⇒ gán lại người chấm/trả theo phân công khối mới
+
+**(CEO "sao 4T lại sai phân công" — ảnh thẻ Nguyễn Đức Thành khối 4T mà chấm Nguyễn Hà Giang / trả Tạ Quốc Cường = phân công KHỐI 6)**
+- Truy log: ứng viên tạo 19/09 khối 6 → ca tạo cùng lúc, `tg_ca_test_phan_cong` (BEFORE INSERT) gán người khối 6 → 20/09 sửa khối → 4T (qua nút Sửa mới) nhưng trigger chỉ chạy lúc INSERT ⇒ người không đổi. Chính chỗ tôi ghi chú hôm 20/09 "người chấm · trả bài vẫn theo phân công cũ" — CEO bác: đổi khối thì phân công phải theo khối mới.
+- Fix: mig `202609220930_ca_test_phan_cong_theo_khoi_moi.sql` — `fn_ca_test_phan_cong_lai(ung_vien_id, khoi)` + trigger `trg_ung_vien_doi_khoi_phan_cong` AFTER UPDATE OF khoi trên `ung_vien`: ca chưa chấm xong ⇒ đổi cả chấm + trả; chấm xong chưa trả ⇒ chỉ đổi trả; đã trả / đã huỷ giữ nguyên; khối mới chưa có phân công ⇒ không đụng. Vá retro trong migration: 2 ca của Đức Thành về Phạm Bảo Ngân / Đào Xuân Thùy (đúng bảng 4T). `SuaCaTestModal` sau khi lưu đọc lại ca từ DB (`getCaTest`) để thẻ hiện đúng người mới; sửa câu cảnh báo.
+- Verify: transaction ROLLBACK đổi khối 4T→6→4T ⇒ người đổi theo từng bước; tsc sạch.
+- Phát hiện: Đức Thành có **2 ca test** (b1c6083a tạo 19/09, e1082ee4 tạo sau khi đổi khối) — có vẻ tạo trùng; CEO/Ops huỷ 1 ca bằng nút Huỷ (không xoá hộ).
+
+**(CEO 22/09 "nút copy ảnh gửi PH không nhạy, không cần tải về, chỉ cần copy — check vì sao")**
+- Đọc lại `moPopupXuatAnh` (popup about:blank + html2canvas CDN, pattern V1): 2 chỗ trượt. (1) `xuatAnh` = `await flush()` rồi hàm fetch 8 asset → data URL RỒI MỚI `window.open` ⇒ popup mở NGOÀI cử chỉ bấm chuột ⇒ bị chặn / mở ra sau / chậm vài giây ("không nhạy"). (2) Trong popup, `clipboard.write` nằm trong callback `toBlob` SAU html2canvas (~2s) ⇒ hết transient activation ⇒ NotAllowedError ⇒ code rơi xuống nhánh TẢI FILE (đúng cái CEO không cần).
+- Fix: bỏ popup. `copyAnhPhieu(el, truoc?)` gọi `navigator.clipboard.write([new ClipboardItem({"image/png": PROMISE<Blob>})])` NGAY trong onClick (không await gì trước; flush nháp chạy bên trong promise) — trình duyệt giữ quyền ghi trong lúc dựng ảnh. `dungAnhPhieu(el)`: clone phiếu đang hiện ra host ngoài màn (scale 1, 720px), chờ fonts + img, html2canvas (npm 1.4.1 đã có trong deps) scale 2, useCORS cho avatar Storage. Fallback trình duyệt cũ: chờ blob rồi write; lỗi NotAllowedError ⇒ chữ đỏ cạnh nút "bấm lại", không alert, không tải file. Trạng thái ⏳/✅/⚠ hiện cạnh nút ở cả DanhGiaGvModal và PhieuTestModal.
+- Verify: tsc sạch. App (server riêng 55718): dựng ảnh từ phiếu Nguyễn Đức Thành = PNG 1440×2500, 1.5MB, 2.1s, host dọn sạch. KHÔNG đo được bước dán vì Browser pane nhúng chặn clipboard hẳn (`permissions.query clipboard-write = denied`, writeText cũng NotAllowedError) — CEO thử tay trên Chrome/Edge thật. Vẫn còn `moPopupXuatAnh` trong file (không ai gọi) — để đó, không xoá.
+
+## 23/09 — Game Trung Thu: bỏ luật 6 iPad (tối đa 8) + hub 1 bảng game, máy đăng ký 1 lần, iPad tự mở theo TV
+
+**(CEO 23/09: "bỏ luật 6 người, tối đa 8 · mỗi iPad 1 tài khoản log cố định slot · ghép thành 1 bảng game có menu, chứ mỗi game chọn 1 file lằng nhằng")**
+- Pull 12 commit game từ origin/main (Thùy làm ở nhà, `public/games/`, project Vercel riêng `bkdemy-games` Root Directory=public/games). 5 game iPad (dap-chuot · tim-nhan-vat-an · tim-diem-khac-nhau · xep-thap · me-cung) cùng 1 khung: `C` trong localStorage, Supabase Realtime broadcast kênh `bk-<game>:<room>`, đã nhận `?role&slot&room` từ URL; 3 game laptop (dua-vit · mo-ruong · doan-so) 10 người, không đụng.
+- **8 người:** vá 5 file bằng script regex 1 lượt (đếm số khớp, fail nếu thiếu): thêm `const MAXP=8,SLOTS=[1..8]` ngay sau `KEY`; mọi `[1,2,3,4,5,6]` → `SLOTS` (7/7/7/6/6 chỗ); `cSlot max` + nhãn "(1–8)"; clamp `Math.min(MAXP,…)`; hàng bảng điểm TV `/6` → `/8` (CSS + JS); me-cung canvas `w/6` → `w/MAXP`; thưởng mặc định nối thêm hạng 7–8. `cGold max=6` ở tim-nhan-vat-an là số nhân vật vàng, không phải slot — giữ. Máy đã có `C.prizes` 6 phần tử cũ: `computeResults` lấy `prizes[min(i,len-1)]` nên hạng 7–8 ăn mức cuối, TV chỉnh trong Cài đặt.
+- **Hub `index.html` viết lại:** đăng ký máy 1 lần (📺 TV / 📱 iPad số N + mã phòng) → `localStorage['bk-games-device']`; hoặc cấp nhanh bằng URL `index.html?role=player&slot=3&room=BK01` (tự lưu, reload sạch query). Kênh riêng `bk-hub:<room>`: TV bấm card ⇒ broadcast `open{game}` + heartbeat 2s (iPad vào muộn vẫn bắt được; iPad gửi `hello` khi kết nối để TV đẩy ngay); iPad nhận ⇒ nạp `<iframe>` `game.html?role=player&slot=N&room=R` (game boot thẳng vào sảnh, không hỏi máy số mấy); game `tv:true` ⇒ iPad hiện "nhìn lên TV". TV có nút ☰ Menu (+ phím Esc) ⇒ `open{null}` ⇒ mọi iPad về màn chờ. Không mạng: iPad có mục xếp "hoặc tự chọn game". Presence ⇒ TV thấy chip iPad nào online. Đây là mẫu "device provisioning / kiosk profile" — không cần tài khoản/đăng nhập server cho mục tiêu "đỡ chọn rối".
+- Tách thư viện Supabase nhúng (giống hệt ở 5 file, md5 trùng) ra `lib/supabase.js` cho hub dùng; 5 game vẫn tự chứa, không sửa thêm.
+- Sai & sửa: `showReg()` gán lại `pickRole=D.role` mỗi lần render ⇒ bấm "TV" xong bị reset, Xong không lưu — tách `showReg(init)`. `.screen` flex `justify-content:center` cắt mất phần trên khi nội dung cao hơn màn (450px) — đổi sang `::before/::after{margin:auto}`.
+- Verify (server tĩnh mới `scripts/serve-games.mjs`, launch.json entry `games`, port 5260; Supabase thật): TV đăng ký phòng TEST9 → menu 8 card + 8 chip; tab 2 `?role=player&slot=3` → chip "iPad 3 ✓"; TV bấm Đập Chuột ⇒ iPad tự vào `dap-chuot.html?role=player&slot=3`, sảnh "Máy 3", đã kết nối; TV trong game: 8 hàng bảng điểm, 8 ô tên, "Máy 3 · online"; TV Menu ⇒ iPad về chờ, frame about:blank; TV mở Đua Trung Thu ⇒ iPad hiện "chỉ TV". Chưa chơi hết 1 trận với slot 7–8 (chỉ kiểm cấu trúc).
+## 2026-09-05 — Gậy: lọc THÁNG/TUẦN + đánh gậy THEO TASK (worktree `gay`, mig 202609051251)
+**Thùy:** "Cần filter gậy theo tháng/tuần. Đánh gậy thủ công: chọn nhân sự → bấm chọn task (hệ đưa ra mọi task đã giao)
+→ bấm task → nhập số gậy + lý do. Gậy đi theo task; task nào có gậy = không đạt chuẩn. Sau này hiệu suất = task đạt chuẩn / tổng task."
+- Nhánh `feat/gay-bk` đã merge main từ trước, chưa có worktree → tạo `.claude/worktrees/gay` (nhánh `worktree-gay`), junction
+  node_modules + copy .env; vite tay port 5243 (Browser pane không đọc launch.json worktree — memory 04/09).
+- **DB (mig 202609051251):** `gay_ledger.ref_mo_ta` (nhãn task lúc đánh, hiển thị không parse ref_id) + index partial
+  `(nhan_su_id, ref_id)` · seed `gay_loi ma='khong_dat_chuan'` "Task không đạt chuẩn" (mặc định khi đánh theo task) ·
+  `fn_gay_bang_khoang(p_tu, p_den)` = fn_gay_bang nhưng scope NGÀY VN của created_at (tháng hoặc tuần), thêm
+  `so_task_khong_dat` = count distinct ref_id có gậy dương hiệu lực · `fn_gay_theo_task(p_nhan_su_id|null)` Σ gậy theo ref_id.
+  fn_gay_bang/fn_gay_chot_thang theo `ky` GIỮ NGUYÊN (chốt tháng vẫn dùng). Không mất gì.
+- **Khoá task = ref_id sẵn có của gậy tự động** (`vh:<buoiId>|<tab>|<nsId>` · `viec:<id>`) → gậy tay + gậy máy cùng khoá,
+  đếm hiệu suất về sau chỉ cần 1 chỗ. Đánh tay vào task đang có đề xuất 'cho' cùng ref_key → tự đóng đề xuất (da_danh, ledger_id)
+  để leader không đánh đúp.
+- **gay.ts:** `bangGay(k: KhoangNgay)` (rpc khoang + ledger lọc created_at) · `danhGayThuCong({..., ref?})` · `listTaskCuaNhanSu(ns, k)`:
+  vận hành = `listAllStaffTasks` lọc theo người (MỌI task được phân, KHÔNG lọc "phụ trách chính" như quét máy — đánh tay là
+  leader đã nhìn) + giao tay = `viec` bỏ huy/chuyen, thuộc kỳ khi deadline HOẶC ky_tuan rơi vào (không có cả hai → ngày giao);
+  số gậy/task lấy từ DB. Lọc kỳ = lựa chọn UI đang mở (§2.0 cho phép).
+- **UI GayScreen:** header thêm toggle Tháng/Tuần + ‹ › (tuần BK từ tuan.ts; đổi chế độ giữ vị trí thời gian). Bảng gậy thêm cột
+  "Task không đạt", entry có chip nhãn task + loai hiển thị "Theo task". Tab Đánh/Gỡ: panel "Đánh gậy vào task" (chọn NS → list task
+  kỳ đang lọc, ô tìm, badge "N gậy" task đã có gậy, trạng thái Xong/Chưa xong/Đạt…, bấm task → form inline lỗi/số/lý do) + hàng
+  "Lỗi ngoài ERP — không gắn task" giữ đường cũ; panel Gỡ giữ nguyên. Chốt tháng luôn theo tháng (ở chế độ tuần lấy tháng chứa T2, có ghi chú).
+- **Verify:** tsc sạch · SQL test trong transaction ROLLBACK: 2 dòng cùng ref → fn_gay_theo_task=3, bang_khoang so_task_khong_dat=1,
+  tiền 60k, ngoài khoảng = [] · trình duyệt: Tuần 9/10 ↔ Tháng 8/9 đổi đúng, picker Trần Bảo Lộc 7 task giao việc (tuần 9),
+  Lộ Thị Dương 14 task vận hành tháng 9 (Chấm bài/BTVN/ET theo buổi 4A1/5A1/5A2), form inline hiện đúng lỗi mặc định. Ledger thật đang 0 dòng
+  (620 đề xuất 'cho', 571 bỏ qua) — chưa đánh thật để khỏi bẩn data.
+- **Chưa làm (đích sau):** màn hiệu suất = task đạt chuẩn / tổng task — mẫu số (tổng task vận hành) vẫn derive ở JS (`listAllStaffTasks`),
+  muốn đúng §2.0 phải đưa invariant task vận hành xuống SQL rồi mới có `fn_gay_hieu_suat`. Tử số đã sẵn ở DB (`fn_gay_theo_task`).
+
+## 23/09 — Nhập kho Hình 11 (HH00087 "Đường thẳng và mặt phẳng trong không gian"), 8 file cùng lúc
+
+- Thùy: "nhập kho hình của lớp 11 nhé. Kiểm tra đi". Quét `L11/Hình` ra 8 file PDF (co_giai), tổng 41
+  trang: Cách vẽ hình (1tr) · bài tập nhận dạng hình chóp (3tr) · Giao điểm đường-mặt cắt trực tiếp (3tr)
+  · xác định giao tuyến cơ bản (6tr) · Xác định giao tuyến tự luận (1)&(2) (6+12tr, BK ACADEMY) · Xét
+  điểm thuộc mặt phẳng (6tr) · điểm và mặt phẳng trong kg (4tr). Tất cả đổ vào dạng có sẵn duy nhất của
+  khối 11: `HH00087` (đã có 63 câu, 61 đã duyệt trước khi làm).
+- Đặc điểm nổi bật: hầu hết nội dung ĐÃ CÓ SẴN trong kho (dedup theo noi_dung chuẩn hoá chặn được rất
+  nhiều — có file "Xét điểm thuộc mặt phẳng.pdf" 6 trang / 5 câu mà KHÔNG câu nào mới, trùng 100%; nhiều
+  file khác cũng chỉ 1-2/5-9 câu là mới). Nhiều file còn tự lặp NỘI BỘ (cùng 1 file có 2-3 lượt "compilation"
+  nối nhau, các câu tái xuất hiện với thứ tự đáp án xáo lại — điển hình dạng "» Câu 1" restart sau dấu
+  ngăn) — phải đọc hết rồi mới build danh sách insert, không insert ngay khi gặp câu đầu tiên.
+  Bài học: **trước khi build câu để insert, đọc HẾT file rồi mới gom danh sách — không insert theo từng
+  trang, dễ trùng nội bộ**.
+  file "1/4 - Mã đề 011" — đề trắc nghiệm không đánh dấu đáp án đúng (không có "Chọn X") → bỏ qua toàn bộ
+  khối đó vì không tự suy đáp án đúng khi không chắc 100% (§1.5).
+- Vài câu trắc nghiệm CHỈ trả lời được bằng cách NHÌN ẢNH (chọn hình vẽ đúng quy tắc, chọn hình nào là
+  tứ diện trong 4 ảnh...) — 100% phụ thuộc ảnh, không đề bằng chữ nào tả được. Bỏ qua toàn bộ (đúng
+  convention "chỉ lấy chữ" đã chốt từ đầu phiên) — gồm cả file "Cách vẽ hình.pdf" (chỉ có đúng 1 câu, y
+  hệt dạng này) và vài câu lẻ trong các file khác (nhận dạng hình chóp Câu5/Câu7, xét điểm Câu3, điểm-mp
+  Câu11).
+- 2 lỗi đánh máy nguồn tự phát hiện và SỬA NGẦM (không hỏi, vì hiển nhiên và không đổi đáp số): (1) 1
+  chỗ nhãn sai mặt phẳng trong lời giải Ví dụ 6 (ghi "Trong mặt phẳng (ABCD)" nhưng SI và DM là 2 đường
+  3D, chỉ đồng phẳng trong (SBD) — sửa lại đúng (SBD)); (2) Ví dụ/Câu 8 phần c) ghi nhầm "(MNI) và (ABD)"
+  thay vì "(MNI) và (ACD)" — sửa theo đúng kết luận NJ=(MNI)∩(ACD) mà lời giải thực sự chứng minh.
+- Kết quả: 21 câu mới (HH00087064-084), $ cân bằng verify từ DB. nhap_kho_log ghi đủ 8 file (kể cả 2
+  file 0-câu-mới, để đánh dấu đã xử lý — tránh quét lại). Move cả 8 file → `DaXuLy/2026-09-23/`.
+
+## 2026-09-23 — Gậy: LỊCH SỬ ĐÓNG/MỞ LẠI task (mig 202609231619 + 202609231626) + merge worktree-gay
+- **Yêu cầu CEO:** mỗi gậy cần lịch sử chỉnh sửa (vd "18h 19/07 đóng · 15h30 22/07 mở lại điền dữ liệu HS A") để biết lỗi
+  do nhân sự đóng muộn hay HS nộp muộn thật. Soi code: mốc xong = 1 cột `*_dong_at` trên `buoi_hoc`; mở lại
+  (`moLaiDanhGia`/`reopenBTVN`/`fn_mo_lai_phase`) ghi NULL đè ⇒ mất mốc đóng lần 1; KHÔNG trigger nào log
+  (`trg_buoi_hoc_online_log` chỉ log link học online, 0 dòng). Dữ liệu cũ KHÔNG truy lại được.
+- **Làm:** (1) bảng `buoi_hoc_phase_log` + trigger `trg_buoi_hoc_phase_log` (after update of 5 cột mốc; helper
+  `_phase_log_ghi` security definer để log không bao giờ bị RLS chặn UPDATE nghiệp vụ; actor = current_nhan_su_id()).
+  (2) RPC `fn_gay_lich_su(ref_key)` → jsonb timeline: hạn (fn_han_viec, cùng nguồn dashboard) · đóng/mở lại · dữ liệu
+  HS nhập SAU lần đóng đầu (gami_grades.graded_at theo phase · btvn_ket_qua.updated_at · buoi_danh_gia.updated_at)
+  · HS nộp muộn (btvn_nop.nop_at · bai_lam.nop_at vs bai_test.deadline). Hỗ trợ `viec:<id>` (viec_log); key OPS
+  gộp ca → []. (3) UI: nút "Lịch sử ▼" trên từng đề xuất (DeXuatTab) và từng dòng ledger có ref_id (Bảng gậy),
+  component `LichSuTask` trong GayScreen. Luật gậy KHÔNG đổi — máy vẫn đề xuất theo mốc hiện tại, leader nhìn rồi quyết.
+- **Sai & sửa ngay:** trigger vừa áp thì bắt được ca thật (TA Lộ Thị Dương, BTVN, 16:22): log mở đầu bằng `mo_lai`
+  với `cu=13:15` — lần đóng đầu xảy ra TRƯỚC khi có log, bản RPC đầu bỏ sót ⇒ timeline đọc thành "đóng 16:22 trễ
+  22 phút" (sai bản chất: thật ra đóng 13:15 trước hạn 16:00). Mig 202609231626: suy lần đóng đầu từ `cu` của dòng
+  log sớm nhất khi nó là mo_lai/doi_moc. Bài học: **mở lại có `cu` = bằng chứng của lần đóng trước** — đừng chỉ đọc
+  dòng `dong`.
+- **Merge worktree-gay → main** (commit be3cb6b): 73976dd (05/09, lọc tháng/tuần + gậy theo task) treo 18 ngày, mig
+  202609051251 ĐÃ áp DB nhưng file thiếu trên main (`--status` báo mồ côi). Conflict gay.ts = giữ cả 2 (import +
+  hằng), DEVLOG giữ cả 2, schema.md regen. Từ giờ hệ Gậy làm THẲNG trên main (worktree gay hết vai trò).
+- **Ghi chú kỹ thuật:** áp migration bằng `--only` vì repo đang có 4 file so_tay_* treo + 1 file vixu chưa track của
+  phiên khác. Test RPC/trigger từ CLI = `set_config(request.jwt.claims)` trong transaction rồi ROLLBACK (đã verify
+  et_dong_at buổi test không đổi sau rollback). `gami_grades.graded_at` = lần chấm ĐẦU (upsert không đụng) — timeline
+  "nhập điểm HS" chỉ bắt câu chấm MỚI sau khi đóng, không bắt sửa điểm câu cũ.
+- Verify UI (dev-alt 5202, login dev Admin): Đề xuất → Lịch sử hiện "07/09 18:00 Hạn chót Chấm MT · 13/09 20:07 Đóng — trễ
+  6 ngày 2h (mốc hiện tại — trước khi có log)"; Bảng gậy → dòng ledger ref_id có nút Lịch sử. tsc sạch (trừ pdfRender có sẵn).

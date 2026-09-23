@@ -22,6 +22,7 @@ import { myNhanSuId } from '../../lib/giaoviec'
 type Row = CauHangDuyet & { mon: KhoMon }
 const LOAI_LABEL = Object.fromEntries(LOAI_CAU.map((x) => [x.value, x.label])) as Record<string, string>
 const NHANH_HGT = 'hinh_gt' // nhánh của DangPickerOne/khoCuaMon cho kho hgt (registry tailieu.ts NHANH_CUA_MON)
+const NHANH_HINH_HOC = 'hinh_hoc' // nhánh của DangPickerOne/khoCuaMon cho kho hinh_hoc_cau_hoi (registry tailieu.ts NHANH_CUA_MON)
 const fmtTs = (s: string) => new Date(s).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' })
 const BATCH_SIZE = 20
 
@@ -309,7 +310,7 @@ function The({ r, mon, busyAll, onXong, onSua }: { r: Row; mon: string; busyAll:
       )}
       {err && <p className="mt-2 text-xs text-rose-600">{err}</p>}
       {pickDang && (
-        <DangPickerOne khoi={r.khoi} mon={mon} nhanh={r.mon === 'hgt' ? NHANH_HGT : null}
+        <DangPickerOne khoi={r.khoi} mon={mon} nhanh={r.mon === 'hgt' ? NHANH_HGT : r.mon === 'hinh_hoc' ? NHANH_HINH_HOC : null}
           onClose={() => setPickDang(false)} onPick={(maDang) => chonDang(maDang)} />
       )}
     </li>

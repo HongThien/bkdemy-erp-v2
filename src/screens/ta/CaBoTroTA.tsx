@@ -5,7 +5,7 @@
 // KHÔNG import màn ERP desktop (luật app TA). Class màu literal (Tailwind JIT).
 import { useEffect, useState, type ReactNode } from 'react'
 import { caTA, dongCa, hoanTatCa, cauTlnCuaCa, suaKetQuaTln, listPhieuGiayCuaCa, inSinhBaiGiay, inLayBaiGiay, layCheDoCa, datCheDoCa, inTestGiay, type CaTA, type ViecCaBoTro, type ViecRetest, type CauTlnTA, type BaiInGiay, type CheDoCa } from '../../lib/botro_yeu_ca'
-import { TrangIn, NhapKetQua } from '../danhgia/TheoDoiCaBoTroTab'
+import { TrangIn, NhapKetQua } from './PhieuGiayYeuTA'
 import { MathText } from '../kho/ui'
 import { diemDanh, huyBuoi, MUC_CATALOG } from '../../lib/gami'
 import { timNhanXetMau, type NhanXetMau } from '../../lib/detest'

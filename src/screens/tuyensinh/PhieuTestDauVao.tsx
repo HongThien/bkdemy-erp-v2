@@ -11,8 +11,9 @@
 // colorful `logobk.png` (CEO gửi) chữ xám — trên navy không đọc được ⇒ đặt trong ô trắng bo góc.
 // Toàn bộ style INLINE hex (Tailwind v4 oklch bể ở html2canvas). SVG inline id RIÊNG (trùng id = sai màu).
 // Xuất ảnh: outerHTML → popup html2canvas (pattern V1 EtAnhGuiPH), logo fetch → data URL.
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
+import html2canvas from 'html2canvas'
 import { coNhom, mucKyNang, paragraphNhanXet, type PhieuKetQua, type NguoiPhieu } from '../../lib/detest'
 
 // ═══ TOKENS (kit v2 §2) ═══════════════════════════════════════════════════════════════════════════
@@ -415,15 +416,62 @@ async function copyImg(){
   popup.document.write(html); popup.document.close()
 }
 
+// ═══ COPY ẢNH THẲNG TRONG APP (CEO 22/09 "nút copy không nhạy, không cần tải về, chỉ cần copy") ══════════
+// Bản popup cũ (moPopupXuatAnh) trượt ở 2 chỗ: (1) `await flush()` + fetch 8 asset → data URL RỒI MỚI window.open ⇒
+// popup mở ngoài cử chỉ bấm chuột, trình duyệt chặn/đẩy ra sau; (2) trong popup, clipboard.write chạy trong callback
+// toBlob SAU html2canvas vài giây ⇒ hết "transient activation" ⇒ NotAllowedError ⇒ rơi xuống nhánh tải file.
+// Cách đúng: gọi navigator.clipboard.write NGAY trong handler click với ClipboardItem nhận PROMISE<Blob> — trình duyệt
+// giữ quyền ghi clipboard trong lúc mình dựng ảnh (Chrome/Edge/Safari đều hỗ trợ promise trong ClipboardItem).
+// Dựng ảnh từ CLONE phiếu đang hiện (scale 1, đặt ngoài màn) — asset cùng origin, avatar Storage qua useCORS.
+export async function dungAnhPhieu(el: HTMLElement): Promise<Blob> {
+  ensureFonts()
+  try { await (document as Document & { fonts?: { ready?: Promise<unknown> } }).fonts?.ready } catch { /* */ }
+  const host = document.createElement('div')
+  host.style.cssText = `position:fixed;left:-20000px;top:0;width:${PHIEU_W}px;pointer-events:none;`
+  const clone = el.cloneNode(true) as HTMLElement
+  clone.style.transform = 'none'; clone.style.width = `${PHIEU_W}px`
+  host.appendChild(clone); document.body.appendChild(host)
+  try {
+    await Promise.all([...host.querySelectorAll('img')].map((img) => img.complete ? Promise.resolve() : new Promise<void>((r) => { img.onload = () => r(); img.onerror = () => r() })))
+    const canvas = await html2canvas(clone, { scale: 2, backgroundColor: null, useCORS: true, logging: false, scrollX: 0, scrollY: 0, width: clone.scrollWidth, height: clone.scrollHeight, windowWidth: clone.scrollWidth, windowHeight: clone.scrollHeight })
+    return await new Promise<Blob>((res, rej) => canvas.toBlob((b) => (b ? res(b) : rej(new Error('Không tạo được ảnh'))), 'image/png'))
+  } finally { host.remove() }
+}
+// GỌI ĐỒNG BỘ trong onClick (không await gì trước). `truoc` = việc cần xong trước khi chụp (vd flush nháp) — chạy BÊN
+// TRONG promise của blob nên vẫn nằm trong cử chỉ. Ném lỗi có câu tiếng Việt để UI hiện cạnh nút (không alert).
+export async function copyAnhPhieu(el: HTMLElement, truoc?: () => Promise<void>): Promise<void> {
+  if (!navigator.clipboard?.write || typeof ClipboardItem === 'undefined') throw new Error('Trình duyệt không hỗ trợ copy ảnh — dùng Chrome / Edge.')
+  const blobP = (async () => { await truoc?.(); return dungAnhPhieu(el) })()
+  try {
+    await navigator.clipboard.write([new ClipboardItem({ 'image/png': blobP })])
+  } catch (e: any) {
+    // Trình duyệt cũ không nhận Promise trong ClipboardItem ⇒ chờ blob rồi ghi (có thể đã hết cử chỉ ⇒ báo bấm lại).
+    const blob = await blobP
+    try { await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]) }
+    catch (e2: any) {
+      const ten = e2?.name ?? e?.name
+      if (ten === 'NotAllowedError') throw new Error('Trình duyệt chưa cho ghi clipboard — bấm lại nút Copy (giữ tab này đang mở).')
+      throw new Error(e2?.message ?? e?.message ?? 'Không copy được ảnh')
+    }
+  }
+}
+
 // Modal xem/copy bản in — dùng khi xem lại phiếu của ca đã trả.
 export function PhieuTestModal({ p, onClose }: { p: PhieuKetQua; onClose: () => void }) {
   const cardRef = useRef<HTMLDivElement>(null)
+  const [tt, setTt] = useState<string | null>(null)
+  const copy = () => {
+    if (!cardRef.current) return
+    setTt('⏳ Đang chụp…')
+    copyAnhPhieu(cardRef.current).then(() => setTt('✅ Đã copy — Ctrl+V vào Zalo')).catch((e) => setTt('⚠ ' + (e.message ?? String(e))))
+  }
   return createPortal(
     <div className="fixed inset-0 z-[90] flex flex-col bg-slate-900/70" onClick={onClose}>
       <div className="flex items-center gap-3 border-b border-slate-700 bg-slate-800 px-4 py-2.5 text-white" onClick={(e) => e.stopPropagation()}>
         <span className="text-sm font-semibold">Phiếu kết quả — {p.hoTenHs}</span>
         {p.baiDaChamUrl && <a href={p.baiDaChamUrl} target="_blank" rel="noreferrer" className="ml-auto rounded-md border border-slate-500 px-3 py-1 text-sm hover:bg-slate-700">📄 Bài đã chấm</a>}
-        <button onClick={() => cardRef.current && moPopupXuatAnh(cardRef.current, p)} className={p.baiDaChamUrl ? 'rounded-md bg-indigo-600 px-3 py-1 text-sm font-medium hover:bg-indigo-500' : 'ml-auto rounded-md bg-indigo-600 px-3 py-1 text-sm font-medium hover:bg-indigo-500'}>📋 Copy ảnh</button>
+        {tt && <span className={`text-[12px] ${tt.startsWith('⚠') ? 'text-rose-300' : 'text-emerald-300'}`}>{tt}</span>}
+        <button onClick={copy} className={p.baiDaChamUrl ? 'rounded-md bg-indigo-600 px-3 py-1 text-sm font-medium hover:bg-indigo-500' : 'ml-auto rounded-md bg-indigo-600 px-3 py-1 text-sm font-medium hover:bg-indigo-500'}>📋 Copy ảnh</button>
         <button onClick={onClose} className="rounded-md border border-slate-500 px-3 py-1 text-sm hover:bg-slate-700">Đóng</button>
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-4" onClick={(e) => e.stopPropagation()}>

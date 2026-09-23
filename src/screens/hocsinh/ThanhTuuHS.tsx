@@ -21,7 +21,7 @@ const THEME = {
 
 function labelThang(ym: string): string { const [y, m] = ym.split('-'); return `Tháng ${parseInt(m, 10)}/${y}` }
 
-export default function ThanhTuuHS({ gioiTinh, onXong, desktop }: { gioiTinh: 'nam' | 'nu' | null; onXong: () => void; desktop?: boolean }) {
+export default function ThanhTuuHS({ gioiTinh, onXong }: { gioiTinh: 'nam' | 'nu' | null; onXong: () => void }) {
   const [items, setItems] = useState<TT[] | null>(null)
   const [err, setErr] = useState<string | null>(null)
   useEffect(() => {
@@ -35,11 +35,11 @@ export default function ThanhTuuHS({ gioiTinh, onXong, desktop }: { gioiTinh: 'n
   const coData = items && items.length > 0
 
   return (
-    <div className={`font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] md:max-w-[820px] ${desktop ? 'lg:max-w-[1180px]' : ''}`} style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
+    <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] md:max-w-[820px] lg:max-w-[1180px]" style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
       {/* BACKDROP — cố định, không cuộn */}
-      <img src={t.bg} alt="" className={`pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover md:max-w-[820px] ${desktop ? 'lg:max-w-[1180px]' : ''}`} />
+      <img src={t.bg} alt="" className="pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover md:max-w-[820px] lg:max-w-[1180px]" />
       {/* DECOR + QUOTE cố định đáy */}
-      <div className={`pointer-events-none fixed inset-x-0 bottom-0 mx-auto flex w-full max-w-[430px] flex-col items-end md:max-w-[820px] ${desktop ? 'lg:max-w-[1180px]' : ''}`}>
+      <div className="pointer-events-none fixed inset-x-0 bottom-0 mx-auto flex w-full max-w-[430px] flex-col items-end md:max-w-[820px] lg:max-w-[1180px]">
         <div className="font-hand mb-1 mr-[14%] -rotate-[6deg] whitespace-pre-line text-right text-[20px] leading-[1.15]" style={{ color: t.quoteColor }}>{t.quote}</div>
         <img src={t.decor} alt="" className="block w-[46%]" style={{ marginRight: '-2%', marginBottom: '-2%' }} />
       </div>

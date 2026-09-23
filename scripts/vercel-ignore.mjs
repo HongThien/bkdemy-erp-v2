@@ -47,6 +47,7 @@ const RIENG = [
 ]
 // Đường dẫn KHÔNG ảnh hưởng bundle nào
 const BO_QUA = [
+  'public/games/', // game Trung Thu — project Vercel riêng (Root Directory=public/games), không app nào build
   'design/', 'docs/', 'supabase/', 'scripts/', 'worker/', '.claude/', '.github/', 'dist', 'schema.md', 'DEVLOG.md', 'HANDOFF.md',
   'CLAUDE.md', 'README', '_v1_ref/', '.gitignore', '.env.example',
 ]

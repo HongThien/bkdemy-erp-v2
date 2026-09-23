@@ -61,11 +61,11 @@ export default function DanhSachHS({ tieuDe, ill, gioiTinh, tab, nChua, nXong, r
 }) {
   const t = THEME[gioiTinh === 'nu' ? 'nu' : 'nam']
   return (
-    <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] md:max-w-[820px]" style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
+    <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] md:max-w-[820px] lg:max-w-[1000px]" style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
       {/* BACKDROP (chung kit Home) — cố định, không cuộn theo nội dung */}
-      <img src={t.bg} alt="" className="pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover md:max-w-[820px]" />
+      <img src={t.bg} alt="" className="pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover md:max-w-[820px] lg:max-w-[1000px]" />
       {/* DECOR + QUOTE cố định ở đáy làm nền — danh sách cuộn đè lên */}
-      <div className="pointer-events-none fixed inset-x-0 bottom-0 mx-auto flex w-full max-w-[430px] flex-col items-end md:max-w-[820px]">
+      <div className="pointer-events-none fixed inset-x-0 bottom-0 mx-auto flex w-full max-w-[430px] flex-col items-end md:max-w-[820px] lg:max-w-[1000px]">
         {/* quote nằm TRÊN decor, lệch trái một chút như reference (không đè lên sách) */}
         <div className="font-hand mb-1 mr-[14%] -rotate-[6deg] whitespace-pre-line text-right text-[20px] leading-[1.15]" style={{ color: t.quoteColor }}>{t.quote}</div>
         <img src={t.decor} alt="" className="block w-[46%]" style={{ marginRight: '-2%', marginBottom: '-2%' }} />
@@ -106,7 +106,7 @@ export default function DanhSachHS({ tieuDe, ill, gioiTinh, tab, nChua, nXong, r
         {!dangTai && rows.length === 0 && <div className="mt-4">{empty}</div>}
 
         {/* CARD bài — icon box tint + tên/buổi + pill trạng thái + chevron + CTA */}
-        <div className="mt-4 flex flex-col gap-3">
+        <div className="mt-4 flex flex-col gap-3 lg:grid lg:grid-cols-2">
           {rows.map((r) => {
             const pill = PILL[r.trangThai]
             const cta = r.khoa ? 'Đã đóng — không nộp được nữa' : r.trangThai === 'xong' ? 'Xem lại' : r.trangThai === 'dang_lam' ? 'Tiếp tục' : 'Bắt đầu'
