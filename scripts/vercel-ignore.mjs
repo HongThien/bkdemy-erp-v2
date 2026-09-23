@@ -44,6 +44,8 @@ const RIENG = [
   // Chốt xu tháng (07/09) — ChotXuScreen/xu.ts/thanhtich.ts chỉ vào được qua NhanSuHome.tsx, mà NhanSuHome
   // CHỈ App.tsx (erp) import (đã grep xác nhận: AppTa/AppGv/AppOps/AppChi không import trực tiếp).
   { p: ['src/lib/xu.ts', 'src/lib/thanhtich.ts', 'src/screens/gami/ChotXuScreen.tsx'], chu: ['erp'] },
+  // Game Trung Thu (23/09) — file HTML tĩnh tự chứa trong public/games/, phục vụ qua app HS. Chỉ hs build khi đổi.
+  { p: ['public/games/'], chu: ['hs'] },
 ]
 // Đường dẫn KHÔNG ảnh hưởng bundle nào
 const BO_QUA = [
