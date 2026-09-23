@@ -220,6 +220,23 @@ export async function lichSuBoTroHS(hocSinhId: string, mon: string, soNgay = 14)
   if (error) throw error
   return (data as SuKienBoTro[]) ?? []
 }
+// Tab Retest (Thùy 23/09): mọi bài retest tầng 2 — chờ làm · quá hạn · đã nộp (kết quả từng dạng). Dời ngày khi quá hạn/em nghỉ.
+export type RetestTheoDoi = {
+  bai_test_id: string; ngay: string; mon: string; so_cau: number; trang_thai_bai: string
+  hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; lop: string | null; lop_id: string | null; ta_lop: string | null
+  case_id: string | null; ca_ngay: string | null; ca_nguoi: string | null
+  da_nop: boolean; nop_at: string | null; so_dung: number; qua_han: boolean; tre_ngay: number
+  dang: { ma_dang: string; ten_dang: string; so_cau: number; so_dung: number; dat: boolean | null; diem: number | null }[]
+}
+export async function retestTheoDoi(mon?: string): Promise<RetestTheoDoi[]> {
+  const { data, error } = await supabase.rpc('fn_btyeu_retest_theo_doi', { p_mon: mon ?? null, p_so_ngay_nop: 14 })
+  if (error) throw error
+  return (data as RetestTheoDoi[]) ?? []
+}
+export async function retestDoiNgay(baiTestId: string, ngay: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_btyeu_retest_doi_ngay', { p_bai_test: baiTestId, p_ngay: ngay })
+  if (error) throw error
+}
 export async function themDangMayVaoCase(caseId: string): Promise<number> {
   const { data, error } = await supabase.rpc('fn_btyeu_de_xuat_dang_moi', { p_mon: null, p_case: caseId, p_thuc_hien: true })
   if (error) throw error

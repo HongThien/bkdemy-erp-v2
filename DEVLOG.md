@@ -14736,3 +14736,13 @@ huỷ ⇒ tự huỷ + tính không diễn ra · Lịch sử = toàn bộ hoạt
   thẳng nhan_su luôn trống. Helper `_gay_ten_actor(uuid)`: tai_khoan→nhan_su, fallback nhan_su. Bài học: cột tên
   `*_by` trong hệ này KHÔNG thống nhất — `actor` của trigger là nhan_su.id (current_nhan_su_id) còn `graded_by`
   client ghi là auth uid; tra tên phải hỏi cột đó thuộc họ nào trước, đừng join nhan_su theo phản xạ.
+
+## 2026-09-23 (chiều) — Tab 📝 Retest riêng trong Xếp bổ trợ yếu (Thùy: "xứng đáng làm 1 tab riêng theo dõi các ca retest")
+
+- Migration `202609231649` (ĐÃ ÁP `--only`): `fn_btyeu_retest_theo_doi(mon, so_ngay_nop)` — mọi bài retest chưa nộp + đã nộp trong N ngày: HS·lớp·TA lớp
+  (phan_cong_lop tg, la_chinh trước)·ca gốc (ngày, người dạy)·đã nộp/đúng·quá hạn+số ngày trễ·từng dạng (tên qua `_kho_ten_dang(mon, ma)` — helper
+  mới tra ĐÚNG bản đồ theo môn, không hardcode Toán; số câu/đúng/dat/điểm từ bo_tro_yeu_dang) · `fn_btyeu_retest_doi_ngay(bai, ngay)` (chỉ chưa
+  nộp, ngày ≥ hôm nay). Test rollback: 6 bài, 4 quá hạn (Tùng 8B1 trễ 6 ngày, TA Quang Khánh); dời ngày OK; ngày quá khứ chặn.
+  (Sự cố nhỏ: node -e qua bash nuốt `$$` thành `$` ⇒ syntax error lần áp đầu; sửa sed 2 dòng rồi áp lại.)
+- `RetestTab.tsx`: chip Chờ làm/Quá hạn/Đã nộp/Tất cả (đếm), nhóm theo ngày, card màu theo trạng thái, dạng ✓ đạt / ✗ trượt → dạy lại, nút 📅 Dời ngày
+  inline (vá tại chỗ), nút Lịch sử. Tab thứ 5 trong Xếp bổ trợ yếu (8 tab). tsc sạch. spec-bo-tro §5/§9 cập nhật.

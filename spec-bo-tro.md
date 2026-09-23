@@ -93,7 +93,7 @@ Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt d
   `cham_at`; MCQ không cho chỉnh).
 - ⚠ CHƯA nối form **Điền Ô** (`dai_cau_form_dien` — "trắc nghiệm từng phần" cho dạng nâng cao K6–7) vào bổ trợ — chờ CEO chốt có tính là MCQ không.
 
-## 5. ④ Xếp lịch — màn "Xếp bổ trợ yếu" (7 tab, CEO 23/09: **Cần xếp · Đã xếp · Chờ retest · Hoàn thành** theo CASE như màn Bù · ● Đang diễn ra · Ca bổ trợ · Lịch trực)
+## 5. ④ Xếp lịch — màn "Xếp bổ trợ yếu" (8 tab, CEO 23/09: **Cần xếp · Đã xếp · Chờ retest · Hoàn thành** theo CASE như màn Bù · **📝 Retest** · ● Đang diễn ra · Ca bổ trợ · Lịch trực)
 
 - **Lịch trực** `lich_truc_bo_tro`: môn × **KHỐI × BẬC** × thứ × giờ × phòng × **người trực (bắt buộc)** × hiệu lực × `suc_chua` (mặc định **3**).
   BK bổ trợ theo khối, KHÔNG theo lớp. Bậc theo `lop_bac.thu_tu`: **S > A > B > C** — **ca bậc cao nhận HS bậc thấp hơn, không ngược lại** (ca 7S
@@ -109,6 +109,9 @@ Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt d
   - Mở lại case đã xếp = **SỬA buổi đó**, không đẻ buổi mới. Giờ chọn bằng khung sẵn bước 30'. Báo trùng phòng = cảnh báo, không chặn.
 - Tab **Chờ retest**: case dạy hết dạng — chỉ hiện ngày retest sắp tới, không xếp; nút thêm dạng yếu mới nếu máy đề xuất. Tab **Hoàn thành**: mọi case đã đóng
   vòng (kết quả đạt/một phần/chưa đạt/bỏ, ngày mở→đóng). Mọi card có nút **🕘 Lịch sử bổ trợ**.
+- Tab **📝 Retest** (CEO 23/09 "xứng đáng 1 tab riêng"): mọi bài retest tầng 2 theo BÀI — chip Chờ làm · Quá hạn (đỏ, số ngày trễ) · Đã nộp 14 ngày;
+  mỗi bài: HS·lớp·TA lớp·ca bổ trợ gốc·từng dạng (số câu / đúng / ✓ đạt / ✗ trượt → dạy lại) · nút **📅 Dời ngày** (chỉ bài chưa nộp, ngày ≥ hôm nay —
+  `fn_btyeu_retest_doi_ngay`) · Lịch sử. Nguồn `fn_btyeu_retest_theo_doi`. Vẫn KHÔNG xếp lịch: retest làm sau ET buổi thường, TA lớp đưa iPad.
 - **Tab Ca bổ trợ:** ca 28 ngày tới + n/3 + **Tự ghép** các em chờ xếp vào ca trực còn chỗ (XEM TRƯỚC → xác nhận mới tạo buổi; theo thứ tự ưu tiên).
 - Filter môn + khối dùng chung các tab. RPC: `fn_btyeu_case_xep_lich` · `fn_lich_truc_cua_hs` · `fn_btyeu_ca_sap_toi`.
 
@@ -161,7 +164,7 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
   `buoi_hoc`/`buoi_hoc_hs` (+`btyeu_che_do`) · `bai_test` (+`in_giay_at`) / `bai_test_cau` / `bai_lam` / `bai_lam_cau` · `bai_lam_cau_sua_log`.
 - **Migration (09→21/09):** `202609091750` lịch HS · `202609141708` lịch trực · `202609161637/1639/1651` ca sắp tới, sức chứa, khối+bậc ·
   `202609191317` + `202609191922` MCQ · `202609191717` TA chỉnh TLN · `202609201300` ưu tiên + chặn xếp lại · `202609211729` in giấy + theo dõi ·
-  `202609211801` 2 chế độ + test giấy · `202609221344` 4 trạng thái vòng (giai_doan, nguon dạng, dạy lại reset dat) · `202609221346` đề xuất dạng mới (không tự gộp) · `202609221354` báo động add thẳng · `202609231621` tab case + dọn ca không diễn ra + lịch sử + bổ trợ trong ngày (không tự gộp).
+  `202609211801` 2 chế độ + test giấy · `202609221344` 4 trạng thái vòng (giai_doan, nguon dạng, dạy lại reset dat) · `202609221346` đề xuất dạng mới (không tự gộp) · `202609221354` báo động add thẳng · `202609231621` tab case + dọn ca không diễn ra + lịch sử + bổ trợ trong ngày · `202609231649` tab Retest (theo dõi + dời ngày, `_kho_ten_dang`) (không tự gộp).
 - **Script chẩn đoán (read-only):** `scripts/_diag_*` — vd `_diag_lydo_hs.ts` (vì sao 1 HS vào hàng đợi), `_diag_kenh2_nguong.ts`,
   `_diag_mcq_nguon_botro.mjs`, `_diag_25dang_form.mjs`, `_diag_case_xep_lich.ts`, `_diag_ta_tln.ts`.
 
