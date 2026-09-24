@@ -57,7 +57,7 @@ const SYM = {
   '→': '\\to ', '⇒': '\\Rightarrow ', '⇔': '\\Leftrightarrow ', '⇐': '\\Leftarrow ', '∀': '\\forall ', '∃': '\\exists ', '∣': '|', '∥': '\\parallel ', '⊥': '\\perp ',
   '∘': '^\\circ ', '°': '^\\circ ', '′': "'", '″': "''", 'π': '\\pi ', 'α': '\\alpha ', 'β': '\\beta ', 'γ': '\\gamma ', 'δ': '\\delta ', 'Δ': '\\Delta ', 'φ': '\\varphi ', 'ω': '\\omega ', 'θ': '\\theta ', 'λ': '\\lambda ', 'μ': '\\mu ', 'σ': '\\sigma ', 'ε': '\\varepsilon ',
   '∠': '\\angle ', '△': '\\triangle ', '∑': '\\sum ', '∫': '\\int ', '∏': '\\prod ', '√': '\\sqrt', '≡': '\\equiv ', '∼': '\\sim ', '{': '\\{', '}': '\\}', '%': '\\%',
-  '⁡': '', ' ': ' ', '​': '',
+  '⁡': '', '⁢': '', '⁣': '', '⁤': '', ' ': ' ', '​': '',
 }
 const SYM_RE = new RegExp(`[${Object.keys(SYM).map((c) => c.length === 1 ? c : '').join('').replace(/[\]\\^-]/g, '\\$&')}]`, 'g')
 const FUNCS = ['sin', 'cos', 'tan', 'cot', 'ln', 'log', 'lim', 'min', 'max', 'exp', 'arcsin', 'arccos', 'arctan']
@@ -154,7 +154,20 @@ async function docParas(file) {
   const doc = parseXml(xml)
   const body = kid(kid(doc, 'w:document') ?? doc, 'w:body')
   const out = []
-  const walkBody = (el) => { for (const c of el.children) { if (c.name === 'w:p') { const r = para(c, rels); if (r.text || r.imgs.length) out.push(r) } else if (c.children) walkBody(c) } }
+  // Bảng Word (bảng tần số thống kê, bảng giá trị…) ⇒ 1 "đoạn" LaTeX array có kẻ ô: $\begin{array}{|c|c|}\hline a & b \\ \hline … \end{array}$
+  // Ô chữ thường ⇒ \text{}, ô công thức giữ nguyên (bỏ $), ô trộn ⇒ ghép. Hình trong ô: bỏ (hiếm).
+  const cell = (tc) => {
+    const ps = kids(tc, 'w:p').map((p) => para(p, rels).text).filter(Boolean)
+    const t = ps.join(' ').replace(/\[\[IMG\]\]/g, '').replace(/\\cline\s*[\d-]+/g, '').trim() // ô gộp dọc: generator ghi chữ "\cline2-7"
+    if (!t) return ''
+    return t.split(/(\$[^$]*\$)/).filter(Boolean).map((seg) => seg.startsWith('$') ? seg.slice(1, -1) : `\\text{${seg.replace(/[{}]/g, '').trim()}}`).join(' ')
+  }
+  const tbl = (el) => {
+    const rows = kids(el, 'w:tr').map((tr) => kids(tr, 'w:tc').map(cell))
+    const nCol = Math.max(0, ...rows.map((r) => r.length)); if (!nCol) return null
+    return { text: `$\\begin{array}{|${'c|'.repeat(nCol)}} \\hline ${rows.map((r) => r.join(' & ')).join(' \\\\ \\hline ')} \\\\ \\hline \\end{array}$`, imgs: [] }
+  }
+  const walkBody = (el) => { for (const c of el.children) { if (c.name === 'w:p') { const r = para(c, rels); if (r.text || r.imgs.length) out.push(r) } else if (c.name === 'w:tbl') { const r = tbl(c); if (r) out.push(r) } else if (c.children) walkBody(c) } }
   walkBody(body)
   const media = async (name) => zip.file(`word/media/${name}`) ? await zip.file(`word/media/${name}`).async('nodebuffer') : null
   return { paras: out, media, sha256: createHash('sha256').update(buf).digest('hex') }
@@ -173,8 +186,10 @@ async function bocFile(file) {
   const phan = []; const cau = []
   let curPhan = null, cur = null, mode = null // mode: 'de' | 'giai'
   const flush = () => { if (cur) { cau.push(cur); cur = null } }
-  for (const p of paras.slice(1)) {
-    const t = nfc(p.text)
+  // Tách đoạn theo xuống dòng mềm (w:br): có đề gõ "Câu 1. …⏎a)Cho góc…⏎b)…" trong CÙNG 1 đoạn ⇒ mệnh đề bị nuốt vào đề bài
+  const lines = paras.slice(1).flatMap((p) => nfc(p.text).split('\n').map((text, i) => ({ text: text.trim(), imgs: i === 0 ? p.imgs : [] })))
+  for (const p of lines) {
+    const t = p.text
     const mp = t.match(/^Phần\s+(\d+)\s*:\s*(.+?)\s*$/i)
     if (mp) { flush(); const tenPhan = mp[2].trim(); const [dt, diem] = PHAN_MAP[tenPhan.toLowerCase()] ?? ['tu_luan', 0.5]; curPhan = { thu_tu: +mp[1], ten: tenPhan, dang_thuc: dt, diem_moi_cau: diem }; phan.push(curPhan); continue }
     const mc = t.match(/^Câu\s+(\d+)\s*\.\s*(.*)$/s)
@@ -183,8 +198,8 @@ async function bocFile(file) {
     if (/^Lời giải\s*[:.]?\s*$/i.test(t)) { mode = 'giai'; continue }
     if (mode === 'de') {
       cur.imgs.push(...p.imgs)
-      if (/^[A-D]\.\s/.test(t)) { cur.luaChon.push(t); continue }
-      if (/^[a-d]\)\s/.test(t)) { cur.menhDe.push(t); continue }
+      if (/^[A-D]\.(\s|\$)/.test(t)) { cur.luaChon.push(t); continue }
+      if (/^[a-d]\)/.test(t)) { cur.menhDe.push(t); continue } // có đề viết dính "a)Cho góc…" không khoảng trắng
       if (t && t !== '[[IMG]]') { if (cur.luaChon.length) cur.luaChon[cur.luaChon.length - 1] += '\n' + t; else if (cur.menhDe.length) cur.menhDe[cur.menhDe.length - 1] += '\n' + t; else cur.stem.push(t) }
     } else { cur.imgsGiai.push(...p.imgs); if (t && t !== '[[IMG]]') cur.giai.push(t) }
   }
