@@ -1,3 +1,6 @@
+// ⚠ 24/09: KHÔNG còn được gọi — đã gỡ `ignoreCommand` khỏi vercel.json. Lý do: auto-deploy tắt từ 07/09 ⇒ mọi deployment là Thùy bấm tay cho ĐÚNG 1 project,
+// bước lọc không còn tiết kiệm gì; ngược lại Vercel lấy PREVIOUS_SHA = deployment vừa bị cancel ⇒ diff chỉ còn scripts/DEVLOG ⇒ cancel tiếp, vòng lặp
+// "đang build thì biến mất" (Thùy 24/09). Giữ file để bật lại khi nào mở lại auto-deploy (thêm lại "ignoreCommand": "node scripts/vercel-ignore.mjs").
 // Vercel "Ignored Build Step" cho repo 8 project (ERP · ta · gv · ops · hs · pt · chi · giaibai) — CEO 07/09:
 // "hôm trước đã nói tách ra, không build cả 8 cái". Mỗi push chỉ project nào có file LIÊN QUAN thay đổi mới build.
 // Cách Vercel gọi: `ignoreCommand` trong vercel.json → exit 0 = BỎ QUA build (không tốn quota), exit 1 = BUILD.
