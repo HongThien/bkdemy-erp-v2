@@ -13,8 +13,8 @@ export type BoTroTab = 'duoi' | 'bu' | 'yeu' | 'lichphong' | 'lichtruc'
 const TABS: { k: BoTroTab; ten: string; mo_ta: string }[] = [
   { k: 'duoi', ten: 'Đuổi', mo_ta: 'HS vào lớp giữa chừng — đợt đuổi, kế hoạch dạng' },
   { k: 'bu', ten: 'Bù', mo_ta: 'HS nghỉ buổi thường — lần nghỉ cần bù' },
-  { k: 'yeu', ten: 'Yếu', mo_ta: 'Case bổ trợ yếu: cần xếp · đã xếp · retest · đang diễn ra' },
-  { k: 'lichphong', ten: 'Lịch phòng', mo_ta: 'Xếp chung 3 loại vào ca trực theo đơn vị' },
+  { k: 'yeu', ten: 'Yếu', mo_ta: 'Case bổ trợ yếu: cần xếp · đã xếp · chờ retest · hoàn thành · retest' },
+  { k: 'lichphong', ten: 'Lịch phòng', mo_ta: 'Đang diễn ra của cả 3 loại + xếp chung theo đơn vị ca trực' },
   { k: 'lichtruc', ten: 'Lịch trực', mo_ta: 'Ca trực cố định hằng tuần của trợ giảng' },
 ]
 const NHO: { tab: BoTroTab } = { tab: 'lichphong' }

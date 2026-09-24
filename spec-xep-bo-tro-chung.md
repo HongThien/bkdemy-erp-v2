@@ -85,6 +85,16 @@ Mở sub-tab LỊCH PHÒNG → chọn NGÀY (mặc định hôm nay; đi từng 
 Hub: `src/screens/botro/BoTroHubScreen.tsx` (thanh toggle, nhớ tab đang mở; nơi khác nhảy tới bằng `moBoTroTab('duoi'|'bu'|'yeu'|'lichphong'|'lichtruc')`). 1 quyền `botro` cho cả màn.
 Giao diện: Apple-clean (nền xám, card trắng, pill mềm) như mọi màn staff — không sci-fi.
 
+## 6b. Cập nhật 24/09 chiều (sau khi CEO dùng thử)
+
+- **Yếu không còn logic xếp riêng** — tab "Ca bổ trợ" (tự ghép khối+bậc) và "Đang diễn ra" bỏ khỏi màn Yếu; đơn vị tính chung 3 loại.
+- **Lịch phòng = "Đang diễn ra" của cả 3 loại**, 2 khu: 📅 **Lịch trực bổ trợ khối** (ca trực cố định trước/sau giờ học) · 🗂 **Lịch riêng** (ca tạo tay + buổi xếp riêng
+  không khớp ca trực nào — nhúng TheoDoiCaBoTroTab). Mở ngày ⇒ DB gắn buổi đã xếp bằng form Bù/Đuổi/Yếu vào ca trực khớp NGƯỜI + GIỜ, tính đơn vị,
+  coi như PH đã chốt (mig 202609241600). Ca lố đơn vị (xếp đường cũ) hiện đỏ "LỐ".
+- Màu thẻ theo loại (nền nhạt): **Yếu đỏ · Đuổi xanh da trời · Bù cam**. Em yếu trong ca trực hiện luôn trạng thái sống (đang luyện / im lâu / chờ test · x/y câu).
+- Chọn ngày: 3 ô (hôm qua · hôm nay · ngày mai quanh ngày chọn) + mũi tên + chọn thẳng.
+- Bù · Đuổi · Yếu: chip khối + ô tìm tên/mã **góc trên bên phải**, cùng hàng tab.
+
 ## 7. QUYỀN
 
 Core team xếp / xác nhận / huỷ ca. Học thuật + TA xem. (Đuổi: GV chọn nội dung như cũ.)

@@ -101,7 +101,8 @@ export default function BoTroDuoiScreen() {
           <button onClick={() => setThem(true)} className="ml-auto rounded-xl bg-indigo-600 px-4 py-2 text-[14px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Thêm HS cần đuổi</button>
         </div>
 
-        <div className="mb-4 inline-flex flex-wrap gap-1.5 rounded-2xl border border-slate-200 bg-white p-1.5 shadow-sm">
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <div className="inline-flex flex-wrap gap-1.5 rounded-2xl border border-slate-200 bg-white p-1.5 shadow-sm">
           {TABS.map((t) => {
             const on = tab === t.k
             return (
@@ -112,8 +113,8 @@ export default function BoTroDuoiScreen() {
           })}
         </div>
 
-        {/* Filter khối + tìm tên (Thùy 07-16) — áp dụng chung cả 3 tab */}
-        <div className="mb-4 flex flex-wrap items-center gap-2">
+        {/* Filter khối + tìm tên (Thùy 07-16) — áp dụng chung cả 3 tab; 24/09: góc trên bên phải */}
+        <div className="ml-auto flex flex-wrap items-center gap-2">
           <span className="text-[12px] font-semibold uppercase tracking-wide text-slate-500">Khối</span>
           <span className="inline-flex flex-wrap gap-1 rounded-xl border border-slate-200 bg-white p-1 shadow-sm">
             <button onClick={() => setKhoiFilter(null)} className={`rounded-lg px-2.5 py-1 text-[13px] font-medium transition ${khoiFilter === null ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-100'}`}>Tất cả</button>
@@ -125,6 +126,7 @@ export default function BoTroDuoiScreen() {
             <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="🔎 Tìm tên / mã HS…" className="h-9 w-full rounded-xl border border-slate-300 px-3 text-[13px] outline-none focus:border-indigo-400" />
             {q && <button onClick={() => setQ('')} className="absolute right-2 top-1/2 -translate-y-1/2 text-[13px] text-slate-400 hover:text-slate-600">✕</button>}
           </div>
+        </div>
         </div>
 
         {loading ? <div className="p-8 text-[14px] text-slate-400">Đang tải…</div>

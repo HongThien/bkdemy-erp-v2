@@ -29710,3 +29710,17 @@ ignoreCommand không tiết kiệm build nào nữa. Gỡ khỏi vercel.json (gi
 Bỏ folder 5 lá (collapseGroup botro_hub) → 1 lá `botro` "Bổ trợ" → `BoTroHubScreen` (thanh toggle Đuổi · Bù · Yếu · Lịch phòng · Lịch trực, nhớ tab
 đang mở; `moBoTroTab()` để Việc của tôi / Trợ lý nhảy thẳng tab). Lá `botro_duoi`/`xep_by`/`botro_lichphong`/`botro_lichtruc` gỡ khỏi menu — quyền cũ
 cho 4 id đó hết tác dụng, ai cần thì cấp quyền "Bổ trợ" (`botro`). Local kiểm: 1 lá, toggle Đuổi/Yếu/Lịch phòng đổi màn ngay, không lỗi console.
+
+## 2026-09-24 (chiều) — Bổ trợ: 4 sửa sau khi Thùy dùng thử + "Yếu không còn logic riêng"
+
+1. **Sửa ca đã xếp rồi lưu không chuyển Đã xếp**: modal Yếu mở chế độ SỬA trên buổi `mo` đầu tiên — kể cả buổi ĐÃ HỌC (danh_gia_xong_at) ⇒ sửa buổi cũ, không đẻ
+   buổi chờ ⇒ case đứng yên. Giờ chỉ sửa đúng buổi RPC coi là "chờ học" (`c.buoiChoHoc`), không có thì chế độ TẠO; buổi đã học hiện nhãn "đã học".
+2. **Yếu có chip khối + ô tìm** như Bù/Đuổi; cả 3 màn đưa filter lên góc trên phải cùng hàng tab. Bỏ tab "Ca bổ trợ" + "Đang diễn ra" khỏi Yếu (Thùy).
+3. **Lịch phòng khớp ca đã xếp** (mig 202609241600): `fn_ca_bo_tro_sinh_ngay` gắn buổi Bù/Đuổi/Yếu chưa gắn ca vào ca trực trùng người + giao giờ, ghi `don_vi`
+   + `xac_nhan_ph_at = lúc tạo buổi`; buổi hoan_tat vẫn chiếm đơn vị (chỉ huỷ mới trả). Đo rollback: 24/09 cả 7 em yếu vào đúng ca (Hồ Quang Lâm → 17:00 Tạ Quang Tùng);
+   ca 21:00–21:30 Trần Thị Thảo Nguyên = 3 L1 = 6/3 đv ⇒ hiện "LỐ". 25/09: 5 buổi bù/đuổi không khớp ca trực nào ⇒ khu Lịch riêng.
+   2 khu Lịch trực khối / Lịch riêng; ngày = 3 ô + mũi tên + chọn thẳng.
+4. **Lịch phòng = Đang diễn ra 3 loại**, màu nền: Yếu đỏ · Đuổi xanh da trời · Bù cam (cả thẻ trong ca lẫn TheoDoiCaBoTroTab). Em yếu trong ca trực hiện trạng thái sống
+   (TT/trangThai export từ TheoDoiCaBoTroTab, poll 15s).
+Chưa làm: form xếp riêng của Yếu vẫn gợi ý ca trực theo khối+bậc/sức chứa 3 em (logic cũ) — đơn vị đã tính chung nhờ gắn ca, nhưng muốn bỏ hẳn thì nút "Xếp" của Yếu
+nên mở Lịch phòng (spec §6) — chờ Thùy.
