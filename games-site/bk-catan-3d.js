@@ -5,7 +5,7 @@
 const T = window.THREE, E = window.BKCATAN, A = window.BKC_ASSETS;
 const COLN = ['red', 'blue', 'green', 'yellow'];
 // màu mặt ô: lớp phủ gốc của hex_grass là vàng-xanh nên nhuộm nhân không ra tím/xám → bỏ map, tô màu phẳng
-const RES_TINT = { go: 0x3f8f45, gach: 0xb3452a, lua: 0xe9c94c, cuu: 0xb9e69c, quang: 0x9ea3ae };
+const RES_TINT = { go: 0x3f8f45, gach: 0xc9694a, lua: 0xe9c94c, cuu: 0xb9e69c, quang: 0x7b8090 };
 const TIER_TINT = { 1: 0xf1f1f4, 2: 0xd2d5dc, 3: 0xaeb3bf }; // ô khám phá: trắng → xám theo cấp (Thùy 24/09)
 const COOL_TINT = 0x80859a;
 const CHAR = ['Barbarian', 'Rogue', 'Druid']; // quái 0/1/2
@@ -154,10 +154,10 @@ function buildStatic(st) {
       for (let k = 0; k < 9; k++) { const a = k / 9 * 6.283 + rnd() * .5, r = .22 + rnd() * .36; deco(k % 3 ? 'tree_single_A' : 'tree_single_B', .2 + rnd() * .08, .32 + rnd() * .1, Math.cos(a) * r, Math.sin(a) * r); }
       deco('trees_B_small', .38, .34, 0, 0);
     }
-    if (h.res === 'gach') { decoT('building_dirt', 1.4, .1, 0, 0, 0xa03d24); decoT('resource_stone', .26, .16, .3, .2, 0xc2573a); decoT('resource_stone', .2, .13, -.32, -.18, 0xb44d33); }
+    if (h.res === 'gach') { decoT('building_dirt', 1.4, .1, 0, 0, 0xb5563a); decoT('resource_stone', .26, .16, .3, .2, 0xc2573a); decoT('resource_stone', .2, .13, -.32, -.18, 0xb44d33); }
     if (h.res === 'lua') { deco('building_grain', 1.65, .12, 0, 0, tileRot); deco('sack', .16, .18, .5, .38); }
     if (h.res === 'cuu') { sheep(x - .18, z + .1, rnd() * 6.28); sheep(x + .3, z - .22, rnd() * 6.28); deco('trees_B_small', .3, .3, -.4, -.35); deco('tree_single_B', .18, .28, .42, .3); }
-    if (h.res === 'quang') { decoT('mountain_C', .9, .5, 0, -.05, 0xa2a6b0); deco('rock_single_B', .22, .18, .5, .32); deco('rock_single_D', .18, .15, -.5, .3); }
+    if (h.res === 'quang') { decoT('mountain_C', .9, .5, 0, -.05, 0x8a8f9c); deco('rock_single_B', .22, .18, .5, .32); deco('rock_single_D', .18, .15, -.5, .3); }
     // thẻ số + bị động
     const tok = label([String(h.num), '•'.repeat(h.pips), `+${E.CFG.bidong[h.pips]}/lượt`], { token: true, hot: h.pips === 5, size: .72 });
     tok.position.set(x, topY + 1.35, z + .1); root.add(tok);
