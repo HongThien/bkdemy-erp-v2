@@ -125,6 +125,11 @@
   #pick .opt{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.06);margin-bottom:8px;font-size:17px;font-weight:700}
   #pick .opt button{padding:8px 14px}
   #padEnd .score{font-size:70px;font-weight:900;color:var(--gold)}
+  #tileInfo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(92vw,460px);background:var(--panel);border:2px solid var(--line);border-radius:20px;padding:18px;z-index:9;display:none;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+  #tileInfo.show{display:block}
+  #tileInfo table{width:100%;border-collapse:collapse;margin-top:8px} #tileInfo td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.08);font-size:15px} #tileInfo td:last-child{text-align:right;font-weight:800;color:var(--gold)}
+  #tileInfo tr.cur td{background:rgba(255,209,102,.15)}
+  .pr{cursor:pointer} .pr:active{filter:brightness(1.2)}
   dialog{border:1px solid var(--line);border-radius:20px;background:var(--panel);color:var(--text);padding:0;max-width:760px;width:94vw}
   dialog::backdrop{background:rgba(0,0,0,.6)}
   dialog .inner{padding:20px;max-height:88vh;overflow:auto;-webkit-user-select:text;user-select:text}
@@ -220,6 +225,7 @@
   <div id="pick"><div class="row" style="justify-content:space-between"><b id="pickTitle"></b><button id="pickClose">Đóng</button></div><div id="pickList" style="margin-top:10px"></div></div>
   <div id="tradeDlg"></div>
   <div id="tradeIn"></div>
+  <div id="tileInfo"></div>
 </div>
 
 <dialog id="dlg"><div class="inner">
@@ -243,6 +249,7 @@
     <label class="chk"><input type="checkbox" id="cAuction"> Đấu giá khi bỏ qua</label>
     <label class="chk"><input type="checkbox" id="cMortgage"> Thế chấp</label>
     <label class="chk"><input type="checkbox" id="cLimit"> Giới hạn nhà ngân hàng</label>
+    <label>Điều kiện xây nhà <select id="cBuildMin"><option value="1">Mua đất là xây được ngay</option><option value="2">Có 2 ô cùng nhóm</option><option value="0">Đủ cả nhóm màu (luật gốc)</option></select></label>
   </div>
   <div class="tip">Chọn chế độ ở sảnh sẽ nạp lại bộ mặc định. Trao đổi đất (Hard) làm ở V2.</div>
   </div>
@@ -3934,9 +3941,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   'use strict';
   const ENG = {};
   const MODES = {
-    easy:     { auction: false, mortgage: false, trade: false, houseLimit: false, freeParkingPot: true,  partialBuild: true,  startCash: 2000, salary: 200, clockMin: 50, maxRounds: 25 },
-    standard: { auction: true,  mortgage: true,  trade: false, houseLimit: false, freeParkingPot: true,  partialBuild: false, startCash: 1500, salary: 200, clockMin: 50, maxRounds: 30 },
-    hard:     { auction: true,  mortgage: true,  trade: true,  houseLimit: true,  freeParkingPot: false, partialBuild: false, startCash: 1500, salary: 200, clockMin: 60, maxRounds: 40 },
+    easy:     { auction: false, mortgage: false, trade: false, houseLimit: false, freeParkingPot: true,  buildMin: 1, startCash: 2000, salary: 200, clockMin: 50, maxRounds: 25 },
+    standard: { auction: true,  mortgage: true,  trade: false, houseLimit: false, freeParkingPot: true,  buildMin: 0, startCash: 1500, salary: 200, clockMin: 50, maxRounds: 30 },
+    hard:     { auction: true,  mortgage: true,  trade: true,  houseLimit: true,  freeParkingPot: false, buildMin: 0, startCash: 1500, salary: 200, clockMin: 60, maxRounds: 40 },
   };
   ENG.MODES = MODES;
   const clone = (o) => JSON.parse(JSON.stringify(o));
@@ -3995,8 +4002,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   function canBuild(st, pi, tileId) {
     const t = T(st, tileId), o = st.own[tileId]; if (t.type !== 'prop' || o.owner !== pi || o.houses >= 5 || o.mortgaged) return false;
     const all = groupTiles(st, t.group); const mine = all.filter(i => st.own[i].owner === pi);
-    // Easy (partialBuild): có ≥2 ô cùng nhóm là được xây; luật thường: phải đủ cả nhóm
-    if (!(ownsGroup(st, pi, t.group) || (st.cfg.partialBuild && mine.length >= 2))) return false; const gt = mine;
+    // buildMin: Easy = 1 (mua là xây được ngay), 2 = có 2 ô cùng nhóm, 0 = phải đủ cả nhóm (luật gốc)
+    const bm = st.cfg.buildMin != null ? st.cfg.buildMin : (st.cfg.partialBuild ? 2 : 0);
+    if (!(ownsGroup(st, pi, t.group) || (bm > 0 && mine.length >= bm))) return false; const gt = mine;
     if (gt.some(i => st.own[i].mortgaged)) return false;
     const min = Math.min(...gt.map(i => st.own[i].houses)); if (o.houses > min) return false; // xây đều trên các ô mình có
     if (st.players[pi].cash < t.houseCost) return false;
@@ -4405,7 +4413,7 @@ function renderPad(st,prev){
   else if(tr.phase==='auction'){const au=tr.pending;status.textContent=`Đấu giá ${BOARD.tiles[au.tile].name}: ${fmt(au.price)} Xu${au.bidder!=null?' ('+st.players[au.bidder].name+')':''}`;status.className='turn'}
   else if(!A.myTurn){status.textContent='Lượt của '+curP.name+(curP.inJail?' (đang ở tù)':'')}
   else if(tr.phase==='roll'){status.textContent=p.inJail?'Bạn đang ở tù. Gieo đôi để ra, hoặc nộp phạt.':'Tới lượt bạn! Gieo xúc xắc';status.className='turn'}
-  else if(tr.phase==='buy'){const t=BOARD.tiles[tr.pending.tile];status.innerHTML=`Bạn đang ở <b>${t.name}</b> · giá ${fmt(t.price)} Xu`;status.className='turn'}
+  else if(tr.phase==='buy'){const t=BOARD.tiles[tr.pending.tile];status.innerHTML=`Bạn đang ở <b>${t.name}</b> · giá ${fmt(t.price)} Xu <button id="stInfo" style="padding:4px 10px;font-size:13px;margin-left:8px">ℹ Bảng giá</button>`;status.className='turn';status.querySelector('#stInfo').onclick=()=>showTileInfo(tr.pending.tile,st)}
   else if(tr.phase==='debt'){status.innerHTML=`Bạn nợ <b>${fmt(tr.debt.amount)} Xu</b>${tr.debt.to!=null?' cho '+st.players[tr.debt.to].name:''}. Bán nhà${st.cfg.mortgage?'/thế chấp':''} để trả, hoặc tuyên bố phá sản.`;status.className='debt'}
   else if(tr.phase==='manage'){status.textContent='Lượt bạn: xây nhà hoặc kết thúc lượt';status.className='turn'}
   const acts=[];
@@ -4416,7 +4424,7 @@ function renderPad(st,prev){
   if(A.skip)acts.push([st.cfg.auction?'Bỏ qua (đấu giá)':'Bỏ qua','',()=>intent({type:'SKIP'})]);
   if(A.bid)acts.push(['+10','ok',()=>intent({type:'BID',inc:10})],['+50','ok',()=>intent({type:'BID',inc:50})],['+100','ok',()=>intent({type:'BID',inc:100})]);
   if(A.auctionPass)acts.push(['Bỏ đấu giá','',()=>intent({type:'AUCTION_PASS'})]);
-  if(A.build&&A.build.length)acts.push(['🏠 Xây nhà','',()=>pickTile('Xây ở đâu?',A.build,i=>`+ ${fmt(BOARD.tiles[i].houseCost)} Xu`,i=>intent({type:'BUILD',tile:i}))]);
+  if(A.build&&A.build.length)acts.push(['🏠 Xây nhà','',()=>pickTile('Xây ở đâu?',A.build,i=>`${fmt(BOARD.tiles[i].houseCost)} Xu → thuê ${fmt(BOARD.tiles[i].rent[st.own[i].houses+1])}`,i=>intent({type:'BUILD',tile:i}))]);
   if(A.sell&&A.sell.length)acts.push(['Bán nhà','',()=>pickTile('Bán nhà ở đâu?',A.sell,i=>`+ ${fmt(Math.floor(BOARD.tiles[i].houseCost/2))} Xu`,i=>intent({type:'SELL',tile:i}))]);
   if(A.mortgage&&A.mortgage.length)acts.push(['Thế chấp','',()=>pickTile('Thế chấp ô nào?',A.mortgage,i=>`+ ${fmt(Math.floor(BOARD.tiles[i].price/2))} Xu`,i=>intent({type:'MORTGAGE',tile:i}))]);
   if(A.unmortgage&&A.unmortgage.length)acts.push(['Chuộc đất','',()=>pickTile('Chuộc ô nào?',A.unmortgage,i=>`- ${fmt(Math.ceil(BOARD.tiles[i].price/2*1.1))} Xu`,i=>intent({type:'UNMORTGAGE',tile:i}))]);
@@ -4427,8 +4435,20 @@ function renderPad(st,prev){
   if(prev&&prev.seq!==st.seq)$('padMsg').textContent='';
   // đất
   const mine=st.own.map((o,i)=>o.owner===pi?i:-1).filter(i=>i>=0);
-  $('props').innerHTML=mine.length?mine.map(i=>{const t=BOARD.tiles[i],o=st.own[i];const col=t.type==='prop'?GCOL[t.group]:t.type==='station'?'#ddd':'#9cf';const rent=ENG.rentOf(st,i,7);return `<div class="pr ${o.mortgaged?'mg':''}"><div class="sw" style="background:${col}"></div><div class="nm">${t.name}<small>${o.mortgaged?'đã thế chấp':'thuê hiện tại '+fmt(rent)+' Xu'}${t.type==='prop'?' · nhà '+fmt(t.houseCost):''}</small></div><div class="hs">${o.houses===5?'🏨':'🏠'.repeat(o.houses)}</div></div>`}).join(''):'<div class="muted" style="padding:10px">Chưa có đất. Đi tới ô chưa ai mua rồi bấm MUA.</div>';
+  $('props').innerHTML=mine.length?mine.map(i=>{const t=BOARD.tiles[i],o=st.own[i];const col=t.type==='prop'?GCOL[t.group]:t.type==='station'?'#ddd':'#9cf';const rent=ENG.rentOf(st,i,7);const nxt=t.type==='prop'&&o.houses<5?' · tầng tiếp '+fmt(t.houseCost)+' → thuê '+fmt(t.rent[o.houses+1]):'';return `<div class="pr ${o.mortgaged?'mg':''}" data-i="${i}"><div class="sw" style="background:${col}"></div><div class="nm">${t.name}<small>${o.mortgaged?'đã thế chấp':'thuê '+fmt(rent)+' Xu'+nxt}</small></div><div class="hs">${o.houses===5?'🏨':'🏠'.repeat(o.houses)}</div></div>`}).join(''):'<div class="muted" style="padding:10px">Chưa có đất. Đi tới ô chưa ai mua rồi bấm MUA. Bấm vào ô để xem bảng giá.</div>';
+  $('props').querySelectorAll('.pr').forEach(el=>el.onclick=()=>showTileInfo(+el.dataset.i,st));
 }
+// Giấy phép xây dựng: thông tin đầy đủ một ô
+function showTileInfo(i,st){const t=BOARD.tiles[i],o=st.own[i];const box=$('tileInfo');const col=t.type==='prop'?GCOL[t.group]:t.type==='station'?'#ddd':'#9cf';const owner=o.owner!=null?st.players[o.owner]:null;
+  let rows='';if(t.type==='prop'){const full=owner&&ENG.isFullGroup(st,o.owner,t.group);rows=[['Đất trống'+(full?' (đủ nhóm ×2)':''),full?t.rent[0]*2:t.rent[0],0],['🏠 1 nhà',t.rent[1],1],['🏠🏠 2 nhà',t.rent[2],2],['🏠🏠🏠 3 nhà',t.rent[3],3],['🏠🏠🏠🏠 4 nhà',t.rent[4],4],['🏨 Khách sạn',t.rent[5],5]].map(([k,v,h])=>`<tr class="${o.houses===h&&owner?'cur':''}"><td>${k}</td><td>${fmt(v)} Xu</td></tr>`).join('')}
+  else if(t.type==='station')rows=[1,2,3,4].map(k=>`<tr><td>Có ${k} cơ sở</td><td>${fmt(25*Math.pow(2,k-1))} Xu</td></tr>`).join('');
+  else rows=`<tr><td>Có 1 dịch vụ</td><td>4 × xúc xắc</td></tr><tr><td>Có 2 dịch vụ</td><td>10 × xúc xắc</td></tr>`;
+  box.innerHTML=`<div class="row" style="justify-content:space-between"><div><span style="display:inline-block;width:14px;height:28px;border-radius:5px;background:${col};vertical-align:middle;margin-right:8px"></span><b style="font-size:20px">${esc(t.name)}</b></div><button id="tiClose">Đóng</button></div>
+    <div class="muted" style="margin-top:6px">${t.type==='prop'?'Nhóm '+esc(BOARD.groups[t.group].name)+' · ':''}Giá ${fmt(t.price)} Xu${t.type==='prop'?' · mỗi nhà '+fmt(t.houseCost)+' Xu · thế chấp '+fmt(Math.floor(t.price/2))+' Xu':''}${owner?' · chủ: '+esc(owner.name):' · chưa có chủ'}${o.mortgaged?' · ĐANG THẾ CHẤP':''}</div>
+    ${t.desc?'<div style="margin-top:6px">'+esc(t.desc)+'</div>':''}
+    <div class="muted" style="margin-top:10px;font-size:12px;letter-spacing:2px">TIỀN THUÊ NGƯỜI KHÁC PHẢI TRẢ</div><table>${rows}</table>
+    ${t.type==='prop'?'<div class="muted" style="margin-top:8px;font-size:13px">Xây đủ 4 nhà rồi mới lên khách sạn. Bán nhà nhận lại nửa giá. '+(st.cfg.buildMin===1?'Chế độ này: mua đất là xây được ngay.':st.cfg.buildMin===2?'Chế độ này: có 2 ô cùng nhóm là xây được.':'Phải đủ cả nhóm màu mới xây.')+'</div>':''}`;
+  box.querySelector('#tiClose').onclick=()=>box.classList.remove('show');box.classList.add('show')}
 function pickTile(title,ids,sub,cb){$('pickTitle').textContent=title;$('pickList').innerHTML=ids.map(i=>`<div class="opt"><span><span style="display:inline-block;width:10px;height:22px;border-radius:4px;background:${GCOL[BOARD.tiles[i].group]};vertical-align:middle;margin-right:8px"></span>${BOARD.tiles[i].name} <small class="muted">${'🏠'.repeat(P.st.own[i].houses)}</small></span><button data-i="${i}">${sub(i)}</button></div>`).join('');$('pickList').querySelectorAll('button').forEach(b=>b.onclick=()=>{$('pick').classList.remove('show');cb(+b.dataset.i)});$('pick').classList.add('show')}
 
 // ================= THREE (TV) =================
@@ -4457,14 +4477,14 @@ async function makeChar(id){const g=await parseGlb(charBufs[id].slice(0));const 
 function playAct(ch,name,once){if(!ch.acts[name]||ch.cur===name)return;const a=ch.acts[name],prev=ch.acts[ch.cur];a.reset();a.setLoop(once?T.LoopOnce:T.LoopRepeat);a.clampWhenFinished=!!once;a.fadeIn(.15).play();if(prev)prev.fadeOut(.15);ch.cur=name;if(once){ch.mixer.addEventListener('finished',function h(e){if(e.action===a){ch.mixer.removeEventListener('finished',h);ch.cur='';playAct(ch,'Idle_A')}})}}
 
 // ---- bàn cờ hình học ----
-const S=2,CN=3,L=9*S+2*CN,H=L/2;
+const S=2,CN=3,L=9*S+2*CN,H=L/2,RD=1.7,LD=2.3; // RD: bề rộng mặt đường, LD: chiều sâu khu đất ngoài đường
 function tilePos(i){ // tâm ô, hướng "trong" (về tâm bàn) và góc xoay để chữ đọc từ ngoài
   if(i===0)return{x:H-CN/2,z:H-CN/2,rot:0,corner:true};if(i===10)return{x:-H+CN/2,z:H-CN/2,rot:0,corner:true};if(i===20)return{x:-H+CN/2,z:-H+CN/2,rot:0,corner:true};if(i===30)return{x:H-CN/2,z:-H+CN/2,rot:0,corner:true};
   if(i<10)return{x:H-CN-(i-.5)*S,z:H-CN/2,rot:0,side:0};if(i<20)return{x:-H+CN/2,z:H-CN-(i-10-.5)*S,rot:Math.PI/2,side:1};if(i<30)return{x:-H+CN+(i-20-.5)*S,z:-H+CN/2,rot:Math.PI,side:2};return{x:H-CN/2,z:-H+CN+(i-30-.5)*S,rot:-Math.PI/2,side:3}}
 function tokenOffset(pi,n){const a=(pi/Math.max(1,n))*Math.PI*2;const r=n>1?.55:0;return[Math.cos(a)*r,Math.sin(a)*r]}
 function labelTex(text,sub,color){const c=document.createElement('canvas');c.width=256;c.height=384;const g=c.getContext('2d');g.fillStyle='#f4ead2';g.fillRect(0,0,256,384);if(color){g.fillStyle=color;g.fillRect(0,0,256,80)}g.fillStyle='#2a1f10';g.textAlign='center';g.font='bold 30px Segoe UI, Arial';const words=text.split(' ');let lines=[],cur='';for(const w of words){if((cur+' '+w).trim().length>11){lines.push(cur.trim());cur=w}else cur+=' '+w}lines.push(cur.trim());lines.forEach((l,k)=>g.fillText(l,128,150+k*36));if(sub){g.font='26px Segoe UI, Arial';g.fillStyle='#6b4f2a';g.fillText(sub,128,330)}const t=new T.CanvasTexture(c);t.encoding=T.sRGBEncoding;t.anisotropy=4;return t}
 
-const TV={players:{},st:null,shown:null,queue:[],busy:false,names:{},online:null,tokens:{},houses:{},flags:{},cages:{},tweens:[],camMode:'overview',camT:{pos:new T.Vector3(0,36,34),look:new T.Vector3(0,0,3)},hot:C.role==='hot',lastTick:0,dice:[],tiles:[]};
+const TV={players:{},st:null,shown:null,queue:[],busy:false,names:{},online:null,tokens:{},houses:{},flags:{},cages:{},tweens:[],camMode:'overview',camT:{pos:new T.Vector3(0,40,38),look:new T.Vector3(0,0,3)},hot:C.role==='hot',lastTick:0,dice:[],tiles:[]};
 async function buildScene(){
   renderer=new T.WebGLRenderer({canvas:$('gl'),antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.outputEncoding=T.sRGBEncoding;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;
   scene=new T.Scene();scene.fog=new T.Fog(0xcfe9ff,70,140);camera=new T.PerspectiveCamera(40,1,.5,300);camera.position.copy(TV.camT.pos);clock=new T.Clock();
@@ -4478,7 +4498,7 @@ async function buildScene(){
   // cỏ: nhân màu xanh cho đỡ vàng
   hex.traverse(m=>{if(m.isMesh){m.material=m.material.clone();m.material.color.setHex(0x8fd46a)}});
   const deco=[];const rng=(()=>{let a=7;return()=>{a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}})();
-  const ringMin=H-CN-1.2,ringMax=H+1.2;
+  const ringMin=H-CN-1.2,ringMax=H+LD+1.4;
   for(let r=-16;r<=16;r++)for(let c=-16;c<=16;c++){const x=(c+(r&1?.5:0))*2*R*1.0,z=r*rowH;const d=Math.max(Math.abs(x)/1.0,Math.abs(z)/1.0);const rad=Math.sqrt(x*x+z*z);if(rad>H*1.62)continue;
     const inside=Math.max(Math.abs(x),Math.abs(z))<ringMin-.3;const onRing=Math.max(Math.abs(x),Math.abs(z))>=ringMin-.3&&Math.max(Math.abs(x),Math.abs(z))<=ringMax;
     const lake=inside&&rad<5.2;const t=lake?lib.hex_water:lib.hex_grass;const m=t.clone(true);m.scale.setScalar(HS);m.position.set(x,lake?-.15:0,z);island.add(m);
@@ -4491,17 +4511,27 @@ async function buildScene(){
   // mây
   for(let i=0;i<7;i++){const nm=i%2?'cloud_big':'cloud_small';if(!lib[nm])continue;const o=normalize(lib[nm].clone(true),6+rng()*4);o.position.set((rng()-.5)*90,16+rng()*8,(rng()-.5)*90);o.userData.v=.3+rng()*.4;scene.add(o);TV.clouds=(TV.clouds||[]).concat(o)}
   // 40 ô
-  const slabMat=new T.MeshStandardMaterial({color:0xf2e6c8,roughness:.85});const edgeMat=new T.MeshStandardMaterial({color:0x8a6a3a,roughness:.9});
-  for(let i=0;i<40;i++){const t=BOARD.tiles[i],p=tilePos(i);const w=p.corner?CN:S,d=p.corner?CN:CN;const g=new T.Group();g.position.set(p.x,0,p.z);g.rotation.y=p.rot;
-    const slab=new T.Mesh(new T.BoxGeometry(w-.08,.32,d-.08),slabMat);slab.position.y=.16;slab.castShadow=true;slab.receiveShadow=true;g.add(slab);
-    const base=new T.Mesh(new T.BoxGeometry(w,.12,d),edgeMat);base.position.y=.06;g.add(base);
+  // Mặt đường: texture nhựa xám có vạch đứt (vạch chạy theo trục x của ô cạnh)
+  const roadTex=(()=>{const c=document.createElement('canvas');c.width=256;c.height=256;const gg=c.getContext('2d');gg.fillStyle='#6d6f78';gg.fillRect(0,0,256,256);for(let i=0;i<900;i++){gg.fillStyle=Math.random()<.5?'rgba(255,255,255,.05)':'rgba(0,0,0,.08)';gg.fillRect(Math.random()*256,Math.random()*256,2,2)}gg.fillStyle='#f3e7b8';for(let x=8;x<256;x+=64)gg.fillRect(x,122,36,12);gg.fillStyle='#d9d3c4';gg.fillRect(0,0,256,10);gg.fillRect(0,246,256,10);const t=new T.CanvasTexture(c);t.encoding=T.sRGBEncoding;t.anisotropy=4;return t})();
+  const roadMat=new T.MeshStandardMaterial({map:roadTex,roughness:.95});const cornerMat=new T.MeshStandardMaterial({color:0xb9b3a4,roughness:.9});const curbMat=new T.MeshStandardMaterial({color:0xd9d3c4,roughness:.9});
+  const lotMat=new T.MeshStandardMaterial({color:0x8cc46a,roughness:.95});const lotEdge=new T.MeshStandardMaterial({color:0x5f8f45,roughness:.9});
+  for(let i=0;i<40;i++){const t=BOARD.tiles[i],p=tilePos(i);const w=p.corner?CN:S,d=p.corner?CN:RD;const g=new T.Group();g.position.set(p.x,0,p.z);g.rotation.y=p.rot;
+    // mặt đường (ô cạnh) hoặc quảng trường (ô góc)
+    const slab=new T.Mesh(new T.BoxGeometry(w,.3,d),p.corner?cornerMat:roadMat);slab.position.y=.15;slab.receiveShadow=true;g.add(slab);
+    if(!p.corner){const curb=new T.Mesh(new T.BoxGeometry(w,.36,.14),curbMat);curb.position.set(0,.18,-d/2+.07);g.add(curb)}
     const col=t.type==='prop'?GCOL[t.group]:t.type==='station'?'#666':t.type==='util'?'#5aa':t.type==='chance'?'#ff9a3c':t.type==='community'?'#7cc4ff':t.type==='tax'?'#888':null;
-    const lbl=new T.Mesh(new T.PlaneGeometry(w-.3,d-.3),new T.MeshBasicMaterial({map:labelTex(t.name,t.price?t.price+' Xu':(t.amount?t.amount+' Xu':''),col),transparent:true}));lbl.rotation.x=-Math.PI/2;lbl.position.y=.33;g.add(lbl);
-    if(col&&t.type==='prop'){const band=new T.Mesh(new T.BoxGeometry(w-.08,.1,.5),new T.MeshStandardMaterial({color:col,roughness:.6,emissive:new T.Color(col),emissiveIntensity:.15}));band.position.set(0,.36,-d/2+.3);g.add(band)}
-    // mô hình đặc trưng
+    const hasLot=t.type==='prop'||t.type==='station'||t.type==='util';
+    // khu đất phía ngoài đường (local +z = hướng ra ngoài)
+    let lotD=0;if(!p.corner){lotD=LD;const lot=new T.Mesh(new T.BoxGeometry(w-.06,.34,LD-.06),hasLot?lotMat:new T.MeshStandardMaterial({color:0xf2e6c8,roughness:.85}));lot.position.set(0,.17,d/2+LD/2);lot.castShadow=true;lot.receiveShadow=true;g.add(lot);
+      const rim=new T.Mesh(new T.BoxGeometry(w,.1,LD),lotEdge);rim.position.set(0,.05,d/2+LD/2);g.add(rim);
+      // biển tên đặt trên khu đất, dải màu nhóm sát mép đường
+      const lbl=new T.Mesh(new T.PlaneGeometry(w-.25,LD-.3),new T.MeshBasicMaterial({map:labelTex(t.name,t.price?t.price+' Xu':(t.amount?t.amount+' Xu':''),col),transparent:true}));lbl.rotation.x=-Math.PI/2;lbl.position.set(0,.35,d/2+LD/2);g.add(lbl);
+      if(col){const band=new T.Mesh(new T.BoxGeometry(w-.06,.12,.42),new T.MeshStandardMaterial({color:col,roughness:.6,emissive:new T.Color(col),emissiveIntensity:.18}));band.position.set(0,.4,d/2+.24);g.add(band)}}
+    else{const lbl=new T.Mesh(new T.PlaneGeometry(w-.3,d-.3),new T.MeshBasicMaterial({map:labelTex(t.name,'',null),transparent:true}));lbl.rotation.x=-Math.PI/2;lbl.position.y=.31;g.add(lbl)}
+    // mô hình đặc trưng: ô góc đặt trên quảng trường, ô cạnh đặt trên khu đất
     const deco2=t.type==='station'?'building_windmill_blue':t.type==='util'?'building_watermill_blue':t.type==='go'?'flag_yellow':t.type==='jail'?'building_tower_A_red':t.type==='gotojail'?'building_tower_A_blue':t.type==='parking'?'tent':t.type==='chance'?'crate_A_big':t.type==='community'?'barrel':t.type==='tax'?'coin_gold':null;
-    if(deco2&&lib[deco2]){const o=normalize(lib[deco2].clone(true),t.type==='go'||t.type==='chance'||t.type==='community'?.8:t.type==='tax'?.6:1.5);o.position.set(p.corner?.6:0,.32,p.corner?-.6:-d/2+.75);if(t.type==='tax')o.rotation.x=0;shadows(o);g.add(o)}
-    scene.add(g);TV.tiles[i]={g,w,d}}
+    if(deco2&&lib[deco2]){const o=normalize(lib[deco2].clone(true),t.type==='go'||t.type==='chance'||t.type==='community'?.7:t.type==='tax'?.55:1.4);o.position.set(p.corner?.6:0,p.corner?.3:.34,p.corner?-.6:d/2+LD-.8);shadows(o);g.add(o)}
+    scene.add(g);TV.tiles[i]={g,w,d,lotD}}
   // xúc xắc
   for(let k=0;k<2;k++){const die=makeDie();die.position.set(k?1.6:-1.6,-5,H*.35);die.visible=false;scene.add(die);TV.dice.push(die)}
   // mũi tên chỉ người tới lượt + vòng sáng ô đang đứng
@@ -4520,6 +4550,7 @@ const PIPS={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]};
 function setPips(el,v){if(el.children.length!==9)el.innerHTML='<i></i>'.repeat(9);[...el.children].forEach((c,i)=>c.classList.toggle('on',PIPS[v].includes(i)))}
 const DIE_ROT={1:[0,0,0],6:[Math.PI,0,0],2:[-Math.PI/2,0,0],5:[Math.PI/2,0,0],3:[0,0,-Math.PI/2],4:[0,0,Math.PI/2]}; // xoay để mặt v hướng lên (+y)
 function resize(){const w=innerWidth,h=innerHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}
+function lotWorld(i){const p=tilePos(i);const ti=TV.tiles[i];const dz=ti.d/2+(ti.lotD||LD)/2;const v=new T.Vector3(0,0,dz).applyAxisAngle(new T.Vector3(0,1,0),p.rot);return new T.Vector3(p.x+v.x,0,p.z+v.z)}
 function tileWorld(i,pi,n){const p=tilePos(i);const [ox,oz]=tokenOffset(pi,n);return new T.Vector3(p.x+ox,.34,p.z+oz)}
 async function ensureToken(pi){const st=TV.st;const p=st.players[pi];if(TV.tokens[pi])return TV.tokens[pi];const ch=await makeChar(p.char);const n=st.players.length;ch.root.position.copy(tileWorld(p.pos,pi,n));ch.root.rotation.y=Math.PI;scene.add(ch.root);
   // vòng màu dưới chân
@@ -4528,10 +4559,11 @@ function syncStatic(st){ // nhà, cờ theo state
   st.own.forEach((o,i)=>{const t=BOARD.tiles[i];const key=i;const want=o.owner==null?'':o.owner+':'+o.houses+':'+(o.mortgaged?1:0);if(TV.houses[key]&&TV.houses[key].want===want)return;
     const wasNew=!TV.houses[key]||TV.houses[key].want.split(':')[0]!==String(o.owner);const grew=TV.houses[key]&&+TV.houses[key].want.split(':')[1]<o.houses;
     if(TV.houses[key]){scene.remove(TV.houses[key].g)}if(o.owner==null){delete TV.houses[key];return}
-    const g=new T.Group();const p=tilePos(i);g.position.set(p.x,.32,p.z);g.rotation.y=p.rot;const cn=PCOLN[o.owner%6];
-    const flag=colored('flag',cn);if(flag){const f=normalize(flag,1.1);f.position.set(-(TV.tiles[i].w/2)+.25,0,TV.tiles[i].d/2-.3);g.add(f)}
-    if(t.type==='prop'){if(o.houses===5){const h=colored('castle',cn);if(h){const c=normalize(h,1.7);c.position.set(0,0,-TV.tiles[i].d/2+1.0);g.add(c)}}else for(let k=0;k<o.houses;k++){const h=colored(k%2?'home_B':'home_A',cn);if(h){const c=normalize(h,.62);c.position.set(-.75+k*.5,0,-TV.tiles[i].d/2+.85);g.add(c)}}}
-    if(o.mortgaged){const m=new T.Mesh(new T.PlaneGeometry(TV.tiles[i].w-.4,TV.tiles[i].d-.4),new T.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.45}));m.rotation.x=-Math.PI/2;m.position.y=.03;g.add(m)}
+    const g=new T.Group();const p=tilePos(i);g.position.set(p.x,.34,p.z);g.rotation.y=p.rot;const cn=PCOLN[o.owner%6];const ti=TV.tiles[i];const lz=ti.d/2+(ti.lotD||LD)/2; // tâm khu đất
+    const flag=colored('flag',cn);if(flag){const f=normalize(flag,1.0);f.position.set(-(ti.w/2)+.28,0,lz+(ti.lotD||LD)/2-.35);g.add(f)}
+    if(t.type==='prop'){if(o.houses===5){const h=colored('castle',cn);if(h){const c=normalize(h,1.75);c.position.set(0,0,lz+.15);g.add(c)}}else for(let k=0;k<o.houses;k++){const h=colored(k%2?'home_B':'home_A',cn);if(h){const c=normalize(h,.66);c.position.set(-.72+k*.48,0,lz+.35);g.add(c)}}}
+    else if(t.type==='station'||t.type==='util'){const tag=new T.Mesh(new T.RingGeometry(.5,.62,24),new T.MeshBasicMaterial({color:PCOL[o.owner%6],side:T.DoubleSide}));tag.rotation.x=-Math.PI/2;tag.position.set(0,.02,lz-.3);g.add(tag)}
+    if(o.mortgaged){const mm=new T.Mesh(new T.PlaneGeometry(ti.w-.3,(ti.lotD||LD)-.3),new T.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.45}));mm.rotation.x=-Math.PI/2;mm.position.set(0,.03,lz);g.add(mm)}
     shadows(g);scene.add(g);TV.houses[key]={g,want};
     if(!TV.fast&&(wasNew||grew)){const kids=g.children.slice();if(grew){const last=kids[kids.length-1];if(last)popIn(last)}else kids.forEach((k,ki)=>{k.scale.set(.01,.01,.01);setTimeout(()=>popIn(k),ki*90)})}})}
 const colCache={};
@@ -4545,7 +4577,7 @@ async function runQueue(){TV.busy=true;while(TV.queue.length){const b=TV.queue.s
 function banner(h,s,ms){$('bH').textContent=h;$('bS').textContent=s||'';$('banner').classList.add('show');clearTimeout($('banner')._t);$('banner')._t=setTimeout(()=>$('banner').classList.remove('show'),ms||1800)}
 function ticker(t){const d=document.createElement('div');d.textContent=t;$('ticker').prepend(d);while($('ticker').children.length>7)$('ticker').lastChild.remove()}
 function floatAt(v3,text,neg){const p=v3.clone().project(camera);const el=document.createElement('div');el.className='fl '+(neg?'neg':'pos');el.textContent=text;el.style.left=((p.x*.5+.5)*innerWidth)+'px';el.style.top=((-p.y*.5+.5)*innerHeight)+'px';document.body.appendChild(el);setTimeout(()=>el.remove(),1400)}
-function camTo(mode,target){TV.camMode=mode;if(mode==='overview'){TV.camT.pos.set(0,36,34);TV.camT.look.set(0,0,3)}else if(mode==='follow'&&target){TV.camT.pos.copy(target).add(new T.Vector3(0,7.5,8.5));TV.camT.look.copy(target).add(new T.Vector3(0,.8,0))}else if(mode==='tile'&&target){TV.camT.pos.copy(target).add(new T.Vector3(0,6.5,6.5));TV.camT.look.copy(target).add(new T.Vector3(0,.5,0))}else if(mode==='turn'&&target){TV.camT.pos.copy(target).add(new T.Vector3(2.2,4.2,5.2));TV.camT.look.copy(target).add(new T.Vector3(0,1.1,0))}}
+function camTo(mode,target){TV.camMode=mode;if(mode==='overview'){TV.camT.pos.set(0,40,38);TV.camT.look.set(0,0,3)}else if(mode==='follow'&&target){TV.camT.pos.copy(target).add(new T.Vector3(0,7.5,8.5));TV.camT.look.copy(target).add(new T.Vector3(0,.8,0))}else if(mode==='tile'&&target){TV.camT.pos.copy(target).add(new T.Vector3(0,6.5,6.5));TV.camT.look.copy(target).add(new T.Vector3(0,.5,0))}else if(mode==='turn'&&target){TV.camT.pos.copy(target).add(new T.Vector3(2.2,4.2,5.2));TV.camT.look.copy(target).add(new T.Vector3(0,1.1,0))}}
 async function animEvent(e,st){const name=pi=>st.players[pi].name;if(TV.fast){if(e.type==='end')showEnd(st);if(e.type==='move'){const tk=await ensureToken(e.pi);tk.root.position.copy(tileWorld(e.to,e.pi,st.players.length))}if(e.type==='bankrupt'&&TV.tokens[e.pi]){scene.remove(TV.tokens[e.pi].root);delete TV.tokens[e.pi]}return}
   switch(e.type){
     case 'start':banner('BẮT ĐẦU!','Chúc mọi người phát tài 💰',1500);SFX.fanfare();camTo('overview');await wait(600);break;
@@ -4563,7 +4595,7 @@ async function animEvent(e,st){const name=pi=>st.players[pi].name;if(TV.fast){if
       for(const ti of path){const dst=tileWorld(ti,e.pi,n);const src=tk.root.position.clone();tk.root.lookAt(dst.x,src.y,dst.z);if(stepN++%2===0)SFX.tick();const t0=performance.now();await new Promise(r=>{const step=()=>{const t=Math.min(1,(performance.now()-t0)/per);tk.root.position.lerpVectors(src,dst,t);tk.root.position.y=.34+Math.sin(t*Math.PI)*.25;camTo('follow',tk.root.position);if(t>=1)r();else nextFrame(step)};step()});if(ti===0&&e.passGo){floatAt(tk.root.position,'+'+st.cfg.salary+' Xu');SFX.coins(4);ticker('💰 '+name(e.pi)+' qua XUẤT PHÁT +'+st.cfg.salary)}}
       playAct(tk,'Idle_A');tk.root.rotation.y=Math.PI;for(const d of TV.dice)d.visible=false;$('diceLbl').classList.remove('show');const tp=tilePos(to);camTo('tile',new T.Vector3(tp.x,0,tp.z));await wait(250);break}
     case 'offer':{const t=BOARD.tiles[e.tile];banner(t.name,`Chưa có chủ · ${fmt(t.price)} Xu — ${name(e.pi)} mua không?`,2500);break}
-    case 'buy':{const t=BOARD.tiles[e.tile];const tk=TV.tokens[e.pi];if(tk){playAct(tk,'Cheering',true);floatAt(tk.root.position,'-'+fmt(e.price)+' Xu',true)}banner('🏷 '+name(e.pi)+' mua '+t.name,e.auction?'Thắng đấu giá '+fmt(e.price)+' Xu':fmt(e.price)+' Xu',1800);SFX.buy();const tp=tilePos(e.tile);puff(new T.Vector3(tp.x,.5,tp.z));confetti(70);syncStatic(st);ticker('🏷 '+name(e.pi)+' mua '+t.name+' · '+fmt(e.price));await wait(1100);break}
+    case 'buy':{const t=BOARD.tiles[e.tile];const tk=TV.tokens[e.pi];if(tk){playAct(tk,'Cheering',true);floatAt(tk.root.position,'-'+fmt(e.price)+' Xu',true)}banner('🏷 '+name(e.pi)+' mua '+t.name,e.auction?'Thắng đấu giá '+fmt(e.price)+' Xu':fmt(e.price)+' Xu',1800);SFX.buy();const tp=tilePos(e.tile);const lp=lotWorld(e.tile);puff(new T.Vector3(lp.x,.5,lp.z));camTo('tile',lp);confetti(70);syncStatic(st);ticker('🏷 '+name(e.pi)+' mua '+t.name+' · '+fmt(e.price));await wait(1100);break}
     case 'rent':{const t=BOARD.tiles[e.tile];banner('🏠 Tiền thuê '+t.name,`${name(e.pi)} → ${name(e.to)} · ${fmt(e.amount)} Xu`,2000);ticker('🏠 '+name(e.pi)+' trả '+name(e.to)+' '+fmt(e.amount));break}
     case 'pay':{const tk=TV.tokens[e.from];if(tk){floatAt(tk.root.position,'-'+fmt(e.amount)+' Xu',true);if(e.why==='rent'||e.why==='tax')playAct(tk,'Hit_A',true)}SFX.pay();if(e.to!=null&&TV.tokens[e.to]){await coinsFly(e.from,e.to);floatAt(TV.tokens[e.to].root.position,'+'+fmt(e.amount)+' Xu');if(e.amount>=100){playAct(TV.tokens[e.to],'Cheering',true);await coinRain(TV.tokens[e.to].root.position.clone(),Math.min(24,6+Math.floor(e.amount/50)))}}else{await wait(400)}break}
     case 'money':{const tk=TV.tokens[e.pi];if(tk&&e.why!=='go')floatAt(tk.root.position,(e.amount>=0?'+':'')+fmt(e.amount)+' Xu',e.amount<0);if(e.amount>0&&e.why!=='go')SFX.coins(3);if(e.why==='pot'){banner('🅿 Bãi đỗ tự do!',name(e.pi)+' nhận '+fmt(e.amount)+' Xu',1800);confetti(80);if(tk)await coinRain(tk.root.position.clone(),16)}await wait(300);break}
@@ -4571,7 +4603,7 @@ async function animEvent(e,st){const name=pi=>st.players[pi].name;if(TV.fast){if
     case 'card':{const box=$('cardBox');box.className=e.deck==='community'?'kv show':'show';$('cbK').textContent=e.deck==='chance'?'CƠ HỘI':'KHÍ VẬN';$('cbT').textContent=e.card.text;SFX.card();send('card',{slot:st.players[e.pi].slot,deck:e.deck,text:e.card.text});ticker('🃏 '+name(e.pi)+': '+e.card.text);await wait(2800);box.classList.remove('show');await wait(300);break}
     case 'jail':{const tk=await ensureToken(e.pi);banner('🔒 VÀO TÙ',name(e.pi),1800);SFX.jail();playAct(tk,'Hit_A',true);await wait(500);const dst=tileWorld(10,e.pi,st.players.length);const src=tk.root.position.clone();const t0=performance.now();await new Promise(r=>{const step=()=>{const t=Math.min(1,(performance.now()-t0)/700);tk.root.position.lerpVectors(src,dst,t);tk.root.position.y=.34+Math.sin(t*Math.PI)*4;if(t>=1)r();else nextFrame(step)};step()});camTo('tile',dst);await wait(400);break}
     case 'usecard':banner('🎟 Dùng thẻ ra tù',name(e.pi),1200);break;
-    case 'build':{const t=BOARD.tiles[e.tile];syncStatic(st);const p=tilePos(e.tile);puff(new T.Vector3(p.x,.5,p.z));SFX.build();ticker('🏗 '+name(e.pi)+' xây '+(e.houses===5?'khách sạn':'nhà thứ '+e.houses)+' ở '+t.name);camTo('tile',new T.Vector3(p.x,0,p.z));await wait(700);break}
+    case 'build':{const t=BOARD.tiles[e.tile];syncStatic(st);const p=tilePos(e.tile);const lp=lotWorld(e.tile);puff(new T.Vector3(lp.x,.5,lp.z));SFX.build();ticker('🏗 '+name(e.pi)+' xây '+(e.houses===5?'khách sạn':'nhà thứ '+e.houses)+' ở '+t.name);camTo('tile',lp);await wait(700);break}
     case 'sell':{const t=BOARD.tiles[e.tile];syncStatic(st);ticker('🏚 '+name(e.pi)+' bán nhà ở '+t.name);await wait(300);break}
     case 'mortgage':ticker('📉 '+name(e.pi)+' thế chấp '+BOARD.tiles[e.tile].name);syncStatic(st);break;
     case 'unmortgage':ticker('📈 '+name(e.pi)+' chuộc '+BOARD.tiles[e.tile].name);syncStatic(st);break;
@@ -4609,7 +4641,7 @@ function loop(){const dt=clock?clock.getDelta():0;const t=performance.now()/1000
   for(const k in TV.tokens){const tk=TV.tokens[k];tk.mixer.update(dt)}
   if(TV.dice.some(d=>d.visible&&d.userData.spin)){}
   camera.position.lerp(TV.camT.pos,Math.min(1,dt*2.2));if(!TV._look)TV._look=new T.Vector3().copy(TV.camT.look);TV._look.lerp(TV.camT.look,Math.min(1,dt*2.5));camera.lookAt(TV._look);
-  const st=TV.shown;if(st&&!st.ended&&st.turn.phase!=='lobby'&&TV.tokens[st.turn.p]){const tk=TV.tokens[st.turn.p];TV.arrow.visible=true;TV.arrow.position.copy(tk.root.position);TV.arrow.position.y=3.15+Math.sin(t*4)*.18;TV.arrow.rotation.y+=dt*2.2;const p=tilePos(st.players[st.turn.p].pos);const ti=TV.tiles[st.players[st.turn.p].pos];TV.hl.visible=true;TV.hl.position.set(p.x,.36,p.z);TV.hl.rotation.z=p.rot;TV.hl.scale.set(ti.w-.1,ti.d-.1,1);TV.hl.material.opacity=.25+Math.sin(t*3)*.15}else if(TV.arrow){TV.arrow.visible=false;TV.hl.visible=false}
+  const st=TV.shown;if(st&&!st.ended&&st.turn.phase!=='lobby'&&TV.tokens[st.turn.p]){const tk=TV.tokens[st.turn.p];TV.arrow.visible=true;TV.arrow.position.copy(tk.root.position);TV.arrow.position.y=3.15+Math.sin(t*4)*.18;TV.arrow.rotation.y+=dt*2.2;const p=tilePos(st.players[st.turn.p].pos);const ti=TV.tiles[st.players[st.turn.p].pos];TV.hl.visible=true;TV.hl.position.set(p.x,.36,p.z);TV.hl.rotation.z=p.rot;TV.hl.scale.set(ti.w-.05,ti.d-.05,1);TV.hl.material.opacity=.25+Math.sin(t*3)*.15}else if(TV.arrow){TV.arrow.visible=false;TV.hl.visible=false}
   (TV.clouds||[]).forEach(c=>{c.position.x+=c.userData.v*dt;if(c.position.x>60)c.position.x=-60});
   for(let i=TV.tweens.length-1;i>=0;i--){const w=TV.tweens[i];const p=Math.min(1,(performance.now()-w.t0)/w.dur);w.fn(w.ease(p),p);if(p>=1){TV.tweens.splice(i,1);w.res()}}
   if(st){st.players.forEach((p,pi)=>{const tk=TV.tokens[pi];if(p.inJail&&tk&&!p.bankrupt){if(!TV.cages[pi]){TV.cages[pi]=makeCage();scene.add(TV.cages[pi]);popIn(TV.cages[pi])}TV.cages[pi].position.copy(tk.root.position);TV.cages[pi].position.y=.34}else if(TV.cages[pi]){scene.remove(TV.cages[pi]);delete TV.cages[pi]}})}
@@ -4646,7 +4678,7 @@ function tvNet(){
 function cfgFor(){const base=Object.assign({},ENG.MODES[C.mode||'easy']);return Object.assign(base,C.cfg||{})}
 function renderLobby(){if(TV.st&&TV.st.turn.phase!=='lobby')return;const ps=Object.values(TV.players).filter(p=>p.name).sort((a,b)=>a.slot-b.slot);
   $('lbGrid').innerHTML=(ps.length?ps:[]).map(p=>`<div class="lp"><img src="${thumbs[p.char]||''}"><div><div class="nm">${esc(p.name)}</div><div class="sub">Máy ${p.slot} · ${(CHARS.find(c=>c.id===p.char)||{}).n||''} · ${p.ready?'✅ sẵn sàng':'chưa sẵn sàng'}${p.online===false?' · offline':''}</div></div></div>`).join('')+(ps.length?'':'<div class="muted">Chưa có ai vào. iPad mở game này, chọn nhân vật và bấm SẴN SÀNG.</div>');
-  const c=cfgFor();$('lbCfg').textContent=`${c.startCash} Xu · ${c.clockMin?c.clockMin+' phút':'không giới hạn giờ'} · ${c.maxRounds?c.maxRounds+' vòng':'không giới hạn vòng'}${c.auction?' · đấu giá':''}${c.mortgage?' · thế chấp':''}`;
+  const c=cfgFor();$('lbCfg').textContent=`${c.startCash} Xu · ${c.clockMin?c.clockMin+' phút':'không giới hạn giờ'} · ${c.maxRounds?c.maxRounds+' vòng':'không giới hạn vòng'}${c.auction?' · đấu giá':''}${c.mortgage?' · thế chấp':''}${c.buildMin===1?' · mua là xây':c.buildMin===2?' · 2 ô là xây':' · đủ nhóm mới xây'}`;
   $('lbStart').disabled=ps.filter(p=>p.ready).length<2}
 function tvStart(){const ps=Object.values(TV.players).filter(p=>p.name&&p.ready).sort((a,b)=>a.slot-b.slot).slice(0,6);if(ps.length<2){alert('Cần ít nhất 2 người sẵn sàng');return}
   TV.st=ENG.newGame({seed:Math.floor(Math.random()*1e9),mode:C.mode||'easy',cfg:C.cfg||{},board:BOARD,cards:CARDS,players:ps.map(p=>({slot:p.slot,name:p.name,char:p.char}))});TV.names={};ps.forEach(p=>TV.names[p.slot]=p.name);
@@ -4668,10 +4700,10 @@ function renderHot(st){const box=$('hotseat');if(st.ended||st.turn.phase==='lobb
 // ================= SETTINGS =================
 const dlg=$('dlg');
 function openSettings(){const c=cfgFor();$('cRoom').value=C.room;$('cRole').value=C.role||'tv';$('cSlot').value=C.slot;$('cSbUrl').value=C.sbUrl||'';$('cSbKey').value=C.sbKey||'';
-  $('cStart').value=c.startCash;$('cSalary').value=c.salary;$('cClock').value=c.clockMin;$('cRounds').value=c.maxRounds;$('cJail').value=c.jailFine||50;$('cPot').checked=!!c.freeParkingPot;$('cAuction').checked=!!c.auction;$('cMortgage').checked=!!c.mortgage;$('cLimit').checked=!!c.houseLimit;$('tvOnly').style.display=C.role==='player'?'none':'';dlg.showModal()}
+  $('cStart').value=c.startCash;$('cSalary').value=c.salary;$('cClock').value=c.clockMin;$('cRounds').value=c.maxRounds;$('cJail').value=c.jailFine||50;$('cPot').checked=!!c.freeParkingPot;$('cBuildMin').value=String(c.buildMin!=null?c.buildMin:(c.partialBuild?2:0));$('cAuction').checked=!!c.auction;$('cMortgage').checked=!!c.mortgage;$('cLimit').checked=!!c.houseLimit;$('tvOnly').style.display=C.role==='player'?'none':'';dlg.showModal()}
 $('dlgCancel').onclick=()=>dlg.close();
 $('dlgSave').onclick=()=>{C.room=$('cRoom').value.trim()||'BK01';C.role=$('cRole').value;C.slot=Math.min(MAXP,Math.max(1,+$('cSlot').value||1));C.sbUrl=$('cSbUrl').value.trim();C.sbKey=$('cSbKey').value.trim();
-  if(C.role!=='player'){C.cfg={startCash:+$('cStart').value||1500,salary:+$('cSalary').value||200,clockMin:Math.max(0,+$('cClock').value||0),maxRounds:Math.max(0,+$('cRounds').value||0),jailFine:+$('cJail').value||50,freeParkingPot:$('cPot').checked,auction:$('cAuction').checked,mortgage:$('cMortgage').checked,houseLimit:$('cLimit').checked}}
+  if(C.role!=='player'){C.cfg={startCash:+$('cStart').value||1500,salary:+$('cSalary').value||200,clockMin:Math.max(0,+$('cClock').value||0),maxRounds:Math.max(0,+$('cRounds').value||0),jailFine:+$('cJail').value||50,freeParkingPot:$('cPot').checked,buildMin:+$('cBuildMin').value,auction:$('cAuction').checked,mortgage:$('cMortgage').checked,houseLimit:$('cLimit').checked}}
   saveC();location.reload()};
 
 // ---- Soạn nội dung ----
