@@ -29621,3 +29621,12 @@ chứa mấy L1, ưu tiên trong Bù, 2 TA = 1 dòng, bù/đuổi theo khối) +
   "Chọn chỗ"/đặt nhà ban đầu tự nhảy sang Bản đồ. iPad có 3D (CEO: "TV có 3D, iPad chưa"): nút 3D nạp mô hình lần đầu (7MB), chạm chọn bằng dò điểm trên mặt bàn
   (`BKC3D.pick` → toạ độ bản đồ → dùng chung logic chọn đỉnh/cạnh/ô với 2D), zoom/kéo/chụm 2 ngón, mục tiêu sáng + đăng ký của mình hiện bóng mờ trong 3D.
   TV: nút 3D luôn hiện, nạp lỗi thì ghi "⚠ 3D lỗi" + lý do. Test: chạm ô tâm trong 3D mở đúng bảng; tab Xây → Chọn chỗ đường → tự về Bản đồ 3D, 7 khe sáng, chạm → Đăng ký (1).
+
+## 2026-09-24 — Xếp bổ trợ chung — BƯỚC 1: gom lá + lịch trực số TA (Thùy "OK bắt đầu đi")
+
+- Nav: folder "Bổ trợ" (collapseGroup `botro_hub`) 5 lá: Đuổi · Bù · Yếu (`xep_by`, đổi tên từ "Xếp bổ trợ yếu") · Lịch phòng (`botro_lichphong`,
+  placeholder "đang xây") · Lịch trực (`botro_lichtruc`). 2 lá mới = 2 quyền mới ở Phân quyền (founder thấy sẵn; core team cần bật).
+- Lịch trực: tab rời màn Yếu → `screens/botro/LichTrucScreen.tsx` (bọc `LichTrucTab` export từ XepLichBoTroYeuScreen — nội dung giữ nguyên).
+  Mig 202609240930: `lich_truc_bo_tro.so_ta` (1|2) + `nhan_su_2_id` + cột generated `don_vi` = 3 × (phút/30) × số TA. Form: chọn Số TA
+  (2 TA ⇒ chọn người 2, sức chứa tự 3×n); bảng thêm cột Đơn vị (68 ca hiện có = 6 đv, 1 ca 90' = 9 đv).
+- Không đổi logic xếp nào. Tab "Ca bổ trợ" của Yếu giữ tới khi Lịch phòng chạy (bước 4 mới gỡ).

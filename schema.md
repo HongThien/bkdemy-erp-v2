@@ -2516,6 +2516,9 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | suc_chua | smallint |  | 3 |  |  |
 | bac | text | Y |  | FK→lop_bac.ma |  |
+| so_ta | smallint |  | 1 |  |  |
+| nhan_su_2_id | uuid | Y |  | FK→nhan_su.id |  |
+| don_vi | smallint | Y | (((3 * ((EXTRACT(epoch FROM (gio_ket_thuc - gio_bat_dau)) / (1800)::numeric))::integer) * so_ta))::smallint |  |  |
 
 ## linkgen_jobs
 
@@ -5575,6 +5578,7 @@ SELECT bl.hoc_sinh_id,
 | ky_thi | ky_thi_he_so_check | `CHECK ((he_so = ANY (ARRAY[1, 2])))` |
 | lich_truc_bo_tro | lich_truc_bo_tro_gio | `CHECK ((gio_ket_thuc > gio_bat_dau))` |
 | lich_truc_bo_tro | lich_truc_bo_tro_pham_vi | `CHECK (((khoi IS NOT NULL) AND (bac IS NOT NULL)))` |
+| lich_truc_bo_tro | lich_truc_bo_tro_so_ta_check | `CHECK (((so_ta >= 1) AND (so_ta <= 2)))` |
 | lich_truc_bo_tro | lich_truc_bo_tro_suc_chua_check | `CHECK (((suc_chua IS NULL) OR (suc_chua > 0)))` |
 | lich_truc_bo_tro | lich_truc_bo_tro_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | may_man_hs_luot | may_man_hs_luot_exp_check | `CHECK ((exp >= 0))` |
