@@ -29533,3 +29533,11 @@ Sửa phòng thủ (§2 React): xếp/sửa/huỷ xong VÁ case tại chỗ NGAY
 bộ, lỗi nạp lại hiện banner đỏ "Đã lưu buổi nhưng nạp lại lỗi… bấm ↻" thay vì nuốt. Tiện thể sửa nhãn sai: ca qua ngày mà đã điểm danh có mặt
 nhưng TA chưa đóng ca hiện "Đã học · TA chưa đóng ca" (trước hiện "⚠ Quá ngày chưa học" — sai, 3/4 case Đã xếp hôm nay là kiểu này).
 Còn treo: chưa biết Thùy xếp qua modal "Xác nhận" hay tab Ca bổ trợ → tự ghép; không có case HS test để tái hiện luồng tạo buổi thật.
+
+## 2026-09-24 — Kiến trúc: XẾP BỔ TRỢ CHUNG theo ĐƠN VỊ (Thùy 23–24/09) — SPEC + MOCKUP, chưa code
+
+Thùy: 3 loại (Đuổi · Bù · Yếu) xếp riêng bị confuse vì cùng dùng phòng + TA. Chốt: 1 lá "Bổ trợ" 5 sub-tab; đơn vị = 30'×1 TA; ca 60' = 6 đv
+(30' = 3, 2 TA = 12); Đuổi 4 · Bù 4 · Yếu L2 4 · Yếu L1 2 (tạm ≤3 L1/ca); ≤3 em/TA; phòng ≤2 ca cùng giờ; ưu tiên ngày → loại (Đuổi→Bù→Yếu)
+→ trong loại; Đuổi không giảm cho vừa; PH xác nhận rồi Lộc bấm xác nhận mới trừ đv; nghỉ/huỷ trả đv; bù riêng yếu riêng; bậc S/A/B/C bỏ khỏi
+xếp; lịch trực là nguồn (không lấy Phân công); core team xếp; đv làm KPI TA. → `spec-xep-bo-tro-chung.md` (§9 4 giả định chờ chốt: ca 30'
+chứa mấy L1, ưu tiên trong Bù, 2 TA = 1 dòng, bù/đuổi theo khối) + `mockups/xep-bo-tro-chung.html`. Thứ tự làm đề xuất ở §10.
