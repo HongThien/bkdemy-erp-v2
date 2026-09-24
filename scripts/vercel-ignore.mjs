@@ -75,7 +75,11 @@ function daDoi() {
     if (r) return { files: r, duong: `so với PREVIOUS_SHA thật (${truoc.slice(0, 8)} → ${sau.slice(0, 8)})` }
     console.log(`[vercel-ignore] có PREVIOUS_SHA=${truoc} nhưng git diff LỖI (SHA không có trong lịch sử clone?) → rơi về so HEAD^`)
   } else {
-    console.log('[vercel-ignore] VERCEL_GIT_PREVIOUS_SHA RỖNG (Vercel không cấp — có thể lần đầu deploy dự án này với ignoreCommand, hoặc không phải push GitHub thường) → rơi về so HEAD^')
+    // ⭐ 24/09 — Thùy deploy TAY (auto-deploy tắt từ 07/09) thì Vercel KHÔNG cấp PREVIOUS_SHA; so HEAD^ chỉ nhìn 1 commit cuối ⇒ commit cuối là
+    // games-site/BK Catan thì ERP bị BỎ QUA build dù 3 commit trước đó đổi src/ (đã dính: gom lá Bổ trợ ac3c808 không lên prod). Không biết
+    // lần build trước ở đâu = KHÔNG CHẮC ⇒ BUILD (đúng luật ghi ở đầu file). Deploy tay = người chủ động bấm, build là đúng ý.
+    console.log('[vercel-ignore] VERCEL_GIT_PREVIOUS_SHA RỖNG (deploy tay / không phải push GitHub) → KHÔNG so HEAD^ (chỉ 1 commit, dễ bỏ sót) → BUILD (an toàn)')
+    process.exit(1)
   }
   const r = thu(`git diff --name-only HEAD^ HEAD`)   // clone nông / thiếu previous SHA: ít nhất so với commit liền trước
   return r ? { files: r, duong: 'so với HEAD^ (KHÔNG phải lần build gần nhất thật của project — chỉ 1 commit gần nhất)' } : { files: null, duong: null }

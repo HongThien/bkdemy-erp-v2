@@ -29659,3 +29659,10 @@ chứa mấy L1, ưu tiên trong Bù, 2 TA = 1 dòng, bù/đuổi theo khối) +
 - Local kiểm: 24/09 sinh 5 ca (tóm tắt từng ghi 6 vì đếm cả dòng lịch trực trùng bậc → mig 202609241230 áp cùng luật dedupe); popup ca K6 Tạ Quang Tùng:
   Đuổi 1 (Ding Phạm Hoàng Nhi, đã đuổi 1/3, TA lớp Nguyễn Hà Giang) · Bù 0 (DB: bù chờ K6 = 0, K7/9/11 = 5) · Yếu 9. KHÔNG bấm xếp thật (HS thật).
 - Chưa làm (chờ CEO dùng thử): bước 4 gỡ đường xếp tay ở Đuổi/Bù/Yếu + tab "Ca bổ trợ" của Yếu; bước 5 KPI tải TA (Σ đv em có mặt).
+
+## 2026-09-24 — Prod không lên dù đã push: vercel-ignore bỏ qua build khi deploy TAY (Thùy: "deploy main mới nhất nhưng không thấy gom 5 lá")
+
+Kiểm: ac3c808 đã trong origin/main; `npm run build` local OK và bundle có `botro_hub`; prod vẫn bundle cũ (edge cache 16,9h, không có deployment production mới).
+Mô phỏng `scripts/vercel-ignore.mjs` như Vercel gọi khi deploy tay (auto-deploy tắt từ 07/09 ⇒ KHÔNG có VERCEL_GIT_PREVIOUS_SHA): script rơi về so HEAD^,
+tức chỉ nhìn commit cuối f196dac (BK Catan, toàn games-site) ⇒ "0 liên quan ERP" ⇒ exit 0 = BỎ QUA build. Mọi deploy tay từ 07/09 đều dính khi commit
+cuối không đụng ERP. Sửa: thiếu PREVIOUS_SHA ⇒ BUILD ngay (đúng luật "không chắc → BUILD" ghi ở đầu file); push GitHub thường (có PREVIOUS_SHA) vẫn lọc như cũ.
