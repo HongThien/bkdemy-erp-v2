@@ -3,7 +3,7 @@
 (function () {
 'use strict';
 const T = window.THREE, E = window.BKCATAN, A = window.BKC_ASSETS;
-const COLN = ['red', 'blue', 'green', 'yellow'];
+// màu đội: KHÔNG dùng biến thể red/blue/green/yellow của KayKit nữa — chỉ model *_red + đổi ô atlas (teamTex), màu lấy từ st.players[i].color
 // màu mặt ô: lớp phủ gốc của hex_grass là vàng-xanh nên nhuộm nhân không ra tím/xám → bỏ map, tô màu phẳng
 const RES_TINT = { go: 0x3f8f45, gach: 0xc9694a, lua: 0xe9c94c, cuu: 0xb9e69c, quang: 0x7b8090 };
 const TIER_TINT = { 1: 0xf1f1f4, 2: 0xd2d5dc, 3: 0xaeb3bf }; // ô khám phá: trắng → xám theo cấp (Thùy 24/09)
@@ -211,10 +211,25 @@ function renderZones(st) {
 
 // ---------- nhà, đường ----------
 const HOUSE = ['', 'building_home_A_', 'building_home_B_', 'building_tavern_', 'building_church_', 'building_castle_'];
+const teamTexCache = {};
+function teamTex(color) {
+  if (teamTexCache[color]) return teamTexCache[color];
+  let base = null; lib.building_home_A_red.traverse(m => { if (m.isMesh && m.material.map && !base) base = m.material.map; });
+  const img = base.image, W = img.width || 1024, H = img.height || 1024;
+  const c = document.createElement('canvas'); c.width = W; c.height = H; const g = c.getContext('2d');
+  g.drawImage(img, 0, 0, W, H);
+  const col = new T.Color(color), hsl = {}; col.getHSL(hsl);
+  const top = new T.Color().setHSL(hsl.h, hsl.s, Math.min(1, hsl.l + .16)), bot = new T.Color().setHSL(hsl.h, Math.min(1, hsl.s * 1.05), Math.max(0, hsl.l - .2));
+  const gr = g.createLinearGradient(0, H * .75, 0, H); gr.addColorStop(0, '#' + top.getHexString()); gr.addColorStop(1, '#' + bot.getHexString());
+  g.fillStyle = gr; g.fillRect(W / 8, H * .75, W / 8, H / 4); // ô (cột 1, hàng 3) = màu đội của biến thể red
+  const tex = new T.CanvasTexture(c); tex.flipY = base.flipY; tex.encoding = base.encoding; tex.wrapS = base.wrapS; tex.wrapT = base.wrapT; tex.minFilter = base.minFilter; tex.magFilter = base.magFilter; tex.anisotropy = base.anisotropy;
+  return teamTexCache[color] = tex;
+}
+function teamKit(name, color) { const o = kit(name); const tex = teamTex(color); o.traverse(m => { if (m.isMesh) { m.material = m.material.clone(); m.material.map = tex; } }); return o; }
 const HFP = [0, .62, .7, .76, .8, .92];
 function renderDyn(st, o) {
   dyn.clear();
-  const map = E.buildMap(st.mapSeed), col = pi => COLN[pi % 4];
+  const map = E.buildMap(st.mapSeed);
   map.edges.forEach((e, i) => {
     const ow = st.eOwner[i]; if (ow < 0) return;
     const a = map.verts[e.a], b = map.verts[e.b], len = Math.hypot(b.x - a.x, b.y - a.y) * .72;
@@ -224,8 +239,8 @@ function renderDyn(st, o) {
   });
   map.verts.forEach((v, i) => {
     const ow = st.vOwner[i]; if (ow < 0) return;
-    const lv = st.vLevel[i], n = HOUSE[lv] + col(ow);
-    const h = fit(kit(lib[n] ? n : 'building_home_A_red'), HFP[lv], .7 + lv * .14);
+    const lv = st.vLevel[i], n = HOUSE[lv] + 'red';
+    const h = fit(teamKit(lib[n] ? n : 'building_home_A_red', st.players[ow].color), HFP[lv], .7 + lv * .14);
     h.rotation.y = (i * 1.7) % 6.28; at(h, v.x, v.y); dyn.add(h);
     const base = new T.Mesh(new T.CylinderGeometry(.3, .32, .08, 24), new T.MeshStandardMaterial({ color: new T.Color(st.players[ow].color).convertSRGBToLinear() }));
     base.position.set(v.x, topY + .04, v.y); dyn.add(base); h.position.y += .08;
@@ -261,7 +276,7 @@ function explore(ev, st) {
   const map = E.buildMap(st.mapSeed), h = map.hexes[ev.h], g = new T.Group();
   ev.loot.forEach((l, k) => {
     const a = k / Math.max(1, ev.loot.length) * Math.PI * 2 + .4;
-    const f = fit(kit('flag_' + COLN[l.pi % 4]), .4, .7); at(f, h.x + Math.cos(a) * .62, h.y + Math.sin(a) * .62); g.add(f); pop(f);
+    const f = fit(teamKit('flag_red', st.players[l.pi].color), .4, .7); at(f, h.x + Math.cos(a) * .62, h.y + Math.sin(a) * .62); g.add(f); pop(f);
   });
   for (let i = 0; i < 6; i++) { const c = fit(kit('coin_gold'), .22, .22); at(c, h.x, h.y, topY + 1.8 + i * .25); c.userData.v = new T.Vector3((Math.random() - .5) * 1.4, 2 + Math.random(), (Math.random() - .5) * 1.4); g.add(c); }
   fx.add(g);

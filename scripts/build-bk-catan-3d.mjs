@@ -19,7 +19,7 @@ writeFileSync(join(DIR, 'lib', 'three-r128.min.js'), three.trim() + '\n')
 writeFileSync(join(DIR, 'lib', 'GLTFLoader-r128.js'), gltf.trim() + '\n')
 
 // --- mô hình cần dùng
-const COLORS = ['red', 'blue', 'green', 'yellow']
+const COLORS = ['red'] // 24/09: màu đội tô lại ô atlas lúc chạy (teamTex trong bk-catan-3d.js) → chỉ cần biến thể red
 const WANT = [
   'hex_grass', 'hex_water',
   'tree_single_A', 'tree_single_B', 'rock_single_A', 'rock_single_C',

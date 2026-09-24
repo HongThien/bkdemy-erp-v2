@@ -275,7 +275,7 @@ const E=window.BKCATAN, $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmt=n=>Math.floor(n+1e-9).toLocaleString('vi-VN');
 // màu theo THỨ TỰ người chơi, khớp 4 màu nhà của bộ mô hình KayKit (đỏ/xanh dương/xanh lá/vàng)
-const PCOL=['#e8453c','#3d7fe0','#3fae4a','#f2c230'];
+const PCOL=['#1f1f26','#7b2fbf','#ff5fa2','#1f3a8a','#8b1a1a']; // Thùy 24/09: đen · tím · hồng · xanh nước biển · đỏ đậm — tránh trùng màu ô bản đồ (rừng/lúa/gạch/biển)
 const RESCOL={go:'#2f8f4e',gach:'#c8643b',lua:'#e2bd3c',cuu:'#8fd162',quang:'#8a8fa3'};
 const TIERCOL={1:'#5b3f8f',2:'#7b3aa8',3:'#a0237a'};
 const SB_URL='https://osrvycilwshkzhljuxef.supabase.co',SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4';
