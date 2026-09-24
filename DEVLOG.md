@@ -29802,3 +29802,13 @@ sau mutation nạp lại ngầm để cờ lấy từ DB (không tự tính ở 
 `BoTroHubScreen` › tab Yếu = `YeuTab` (toggle Duyệt | Xếp, nhớ lựa chọn). Bỏ `botroyeu:duyet` khỏi folder QLCL › Bổ trợ yếu (còn Nội dung · Trạng thái · Đánh giá ca);
 lá cha `botroyeu` giờ mở Nội dung. Link cũ `botroyeu:duyet` render hub mở sẵn Yếu › Duyệt (prop `mo`, không setState lúc render).
 ⚠ Quyền: Duyệt giờ nằm sau quyền `botro` (Vận hành › Bổ trợ) — ai trước chỉ có quyền `botroyeu` (học thuật) sẽ không thấy Duyệt nữa cho tới khi được cấp `botro`.
+
+## 2026-09-24 (tối) — Trạng thái ca bổ trợ làm lại (Thùy: card 1 dòng, thanh mức, filter có số, bấm card ⇒ popup chi tiết)
+
+Cũ: `layTienDoCa` ghép ở client (vi phạm §2.0), 4 bước cũ không khớp vòng 4 trạng thái. Mới (mig 202609242130):
+- `fn_btyeu_trang_thai_ca(60)`: mỗi case 1 MỨC tính ở DB — cho_noi_dung → can_xep → da_xep → cho_retest → cho_danh_gia → hoan_thanh (60 ngày), kèm chi tiết ngắn.
+- `fn_btyeu_chi_tiet_case(case)`: đầu case (level, vòng, ưu tiên, nguồn, lý do, người mở) · từng dạng (tên theo bản đồ môn, nguồn vào case, điểm lúc mở,
+  dạy, retest, trạng thái) · mọi buổi (kể cả huỷ + lý do, ca trực, chế độ app/giấy) · bài retest · lịch sử duyệt level trong thời gian case mở.
+- Màn: dòng = tên + lớp·môn·L (trái) · chi tiết ngắn · thanh 6 đoạn tô tới mức · chip mức (phải); filter toggle Tất cả + 6 mức kèm số; tìm tên/mã/lớp;
+  nhớ filter khi rời màn. Đo thật: 132 case = 10 chờ chọn dạng · 102 cần xếp · 16 đã xếp · 4 chờ retest.
+`layTienDoCa` (botro_yeu.ts) giờ không còn ai gọi — để lại, chưa xoá.

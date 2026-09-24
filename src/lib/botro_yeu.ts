@@ -588,3 +588,38 @@ export function caTrucConCho(ct: CaTrucDeXuat[], mon: string, dem: Map<string, n
   return ct.map((s) => ({ ...s, soHs: dem.get(khoaCa({ mon, ngay: s.ngay, gio_bat_dau: s.gio_bat_dau, nguoi_day_tg: s.nhan_su_id })) ?? 0 }))
     .filter((s) => s.soHs < s.suc_chua)
 }
+
+// ── Trạng thái ca bổ trợ (Thùy 24/09 tối) — MỨC tính ở DB (fn_btyeu_trang_thai_ca), chi tiết popup (fn_btyeu_chi_tiet_case) ──
+export type MucCa = 'cho_noi_dung' | 'can_xep' | 'da_xep' | 'cho_retest' | 'cho_danh_gia' | 'hoan_thanh'
+export const MUC_CA: { k: MucCa; ten: string }[] = [
+  { k: 'cho_noi_dung', ten: 'Chờ chọn dạng' }, { k: 'can_xep', ten: 'Cần xếp' }, { k: 'da_xep', ten: 'Đã xếp' },
+  { k: 'cho_retest', ten: 'Chờ retest' }, { k: 'cho_danh_gia', ten: 'Chờ đánh giá' }, { k: 'hoan_thanh', ten: 'Hoàn thành' },
+]
+export type TrangThaiCa = {
+  id: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; mon: string; lop: string | null
+  level: number; uu_tien: number; created_at: string; hoan_thanh_at: string | null; ket_qua: string | null
+  so_dang: number; so_dang_can_day: number; so_dang_cho_retest: number; so_dang_xong: number
+  buoi_cho_ngay: string | null; buoi_cho_gio: string | null; buoi_cho_nguoi: string | null; retest_ngay: string | null
+  buoc: MucCa
+}
+export async function listTrangThaiCa(soNgayHoanThanh = 60): Promise<TrangThaiCa[]> {
+  const { data, error } = await supabase.rpc('fn_btyeu_trang_thai_ca', { p_so_ngay_ht: soNgayHoanThanh })
+  if (error) throw error
+  return (data as TrangThaiCa[]) ?? []
+}
+export type ChiTietCase = {
+  case: { id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; mon: string; lop: string | null; nguon: string; ly_do: string | null
+    trang_thai: string; uu_tien: number; created_at: string; hoan_thanh_at: string | null; ket_qua: string | null; ghi_chu_dong: string | null
+    level: number; vong: number; mo_boi: string | null }
+  dang: { ma_dang: string; ten_dang: string; nguon: string; them_at: string; diem_luc_mo: number | null; so_lan_do_luc_mo: number | null
+    day_at: string | null; retest_diem: number | null; retest_at: string | null; dat: boolean | null; dong_at: string | null; tt: 'chua_day' | 'day_lai' | 'cho_retest' | 'xong' }[]
+  buoi: { ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; nguoi: string | null; trang_thai: string
+    ly_do_huy: string | null; diem_danh: string | null; danh_gia_xong_at: string | null; che_do: string | null; ca_truc: boolean }[]
+  retest: { ngay: string; so_cau: number; da_nop: boolean; so_dung: number }[]
+  duyet: { at: string; level_cu: number | null; level_may: number | null; level_chot: number; ly_do_may: string[] | null; kenh: string[] | null; ly_do_nguoi: string | null; nguoi: string | null }[]
+}
+export async function chiTietCase(caseId: string): Promise<ChiTietCase> {
+  const { data, error } = await supabase.rpc('fn_btyeu_chi_tiet_case', { p_case: caseId })
+  if (error) throw error
+  return data as ChiTietCase
+}
