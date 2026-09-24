@@ -1,4 +1,5 @@
-// Ca bổ trợ CHUNG theo ĐƠN VỊ (Thùy 24/09, spec-xep-bo-tro-chung.md) — 1 đơn vị = 30' × 1 TA; Đuổi 4 · Bù 4 · Yếu L2 4 · Yếu L1 2.
+// Ca bổ trợ CHUNG theo ĐƠN VỊ (Thùy 24/09, spec-xep-bo-tro-chung.md) — 1 đơn vị = 30' × 1 TA; Đuổi 4 · Bù 4 · Yếu L2 4 · Yếu L1 1.
+// Ca ĐẦY khi chạm 1 trong 2 ngưỡng: đủ người (3 em/TA) hoặc đủ đơn vị — cờ day_nguoi / day_don_vi tính ở DB.
 // Mọi số liệu tính ở DB (mig 202609241100, §2.0); file này chỉ gọi RPC + gõ kiểu.
 import { supabase } from './supabase'
 
@@ -17,6 +18,7 @@ export type CaBoTro = {
   nhan_su_id: string | null; nhan_su_ten: string | null; nhan_su_2_id: string | null; nhan_su_2_ten: string | null
   don_vi: number; don_vi_dung: number; don_vi_cho: number; so_hs_xn: number; so_hs_cho: number
   trang_thai: 'mo' | 'huy'; ly_do_huy: string | null; phong_so_ca: number
+  toi_da_hs: number; day_nguoi: boolean; day_don_vi: boolean
   hs: HsTrongCa[]
 }
 export type NgayTomTat = { ngay: string; so_ca: number; don_vi: number; don_vi_dung: number; don_vi_cho: number }

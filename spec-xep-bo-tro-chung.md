@@ -22,10 +22,11 @@ xong rồi thì **thống nhất quy tắc xếp lịch**: 1 lá "Bổ trợ", 3
 | Bổ trợ **Đuổi** | **4** | phải bảo đảm **đủ 1 tiếng, không giảm** ⇒ chỉ vào ca ≥60' và ca còn ≥4 |
 | **Bù** | **4** | |
 | **Yếu L2** | **4** | |
-| **Yếu L1** | **2** | L1 = 30' thật; về lý thuyết 1 ca 6 đơn vị chứa 6 L1, nhưng **giai đoạn đầu giới hạn 3 L1/ca** (an toàn; ổn thì nới) |
+| **Yếu L1** | **1** | L1 = 30' thật = 1 đơn vị (CEO sửa 24/09 tối; trước ghi 2). Ca 6 đv về lý thuyết chứa 6 L1 nhưng nắp **3 em/TA** chặn trước |
 | Yếu L3 | — | GV cao cấp, **xếp riêng**, tạm chưa có ⇒ ngoài phạm vi |
 
 - Nắp cứng kèm theo: **≤3 em / 1 TA / ca** (bất kể đơn vị). Ca 2 TA ⇒ ≤6 em.
+- **Ca ĐẦY khi chạm 1 trong 2 ngưỡng** (CEO 24/09): (1) đủ người 3 em/TA · (2) đủ đơn vị. Màn báo "ĐẦY — đủ 3 em / đủ đơn vị". Cờ `day_nguoi`, `day_don_vi` ở `fn_ca_bo_tro_ngay`.
 - Ca **30'** chỉ chứa được L1 (3 đơn vị: 1 L1, vì nắp 3 L1 nhưng chỉ 3 đơn vị ⇒ tối đa 1 L1… **giả định G1, xem §9**).
 
 ## 2. NGUỒN LỰC 1 — Ca trực trợ giảng

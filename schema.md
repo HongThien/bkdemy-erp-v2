@@ -5579,7 +5579,7 @@ SELECT bl.hoc_sinh_id,
 | buoi_danh_gia | buoi_danh_gia_muc_ma_khop_muc_chk | `CHECK (((muc_ma IS NULL) OR ((muc IS NOT NULL) AND (("left"(muc_ma, 1))::smallint = muc))))` |
 | buoi_danh_gia_dang | buoi_danh_gia_dang_diem_check | `CHECK ((diem = ANY (ARRAY[(0)::numeric, 0.5, (1)::numeric])))` |
 | buoi_hoc | buoi_hoc_online_ck | `CHECK (((online_dong_at IS NULL) OR (online_mo_at IS NOT NULL)))` |
-| buoi_hoc_hs | buoi_hoc_hs_don_vi_check | `CHECK (((don_vi IS NULL) OR (don_vi = ANY (ARRAY[2, 4]))))` |
+| buoi_hoc_hs | buoi_hoc_hs_don_vi_check | `CHECK (((don_vi IS NULL) OR (don_vi = ANY (ARRAY[1, 4]))))` |
 | ca_bo_tro | ca_bo_tro_check | `CHECK ((gio_ket_thuc > gio_bat_dau))` |
 | ca_bo_tro | ca_bo_tro_so_ta_check | `CHECK (((so_ta >= 1) AND (so_ta <= 2)))` |
 | ca_test | ca_test_huy_day_du_check | `CHECK ((((trang_thai = 'huy'::text) AND (huy_ly_do IS NOT NULL) AND (btrim(huy_ly_do) <> ''::text) AND (trang_thai_truoc_huy IS NOT NULL)) OR ((trang_thai <> 'huy'::text) AND (huy_ly_do IS NULL) AND (trang_thai_truoc_huy IS NULL))))` |
