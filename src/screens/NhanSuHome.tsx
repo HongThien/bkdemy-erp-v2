@@ -67,6 +67,8 @@ import NoiDungBoTroYeuScreen from './danhgia/NoiDungBoTroYeuScreen'
 import TrangThaiCaBoTroScreen from './danhgia/TrangThaiCaBoTroScreen'
 import DanhGiaCaBoTroScreen from './danhgia/DanhGiaCaBoTroScreen'
 import XepLichBoTroYeuScreen from './danhgia/XepLichBoTroYeuScreen'
+import LichTrucScreen from './botro/LichTrucScreen'
+import LichPhongScreen from './botro/LichPhongScreen'
 import GayScreen from './gay/GayScreen'
 import ThuChiScreen from './thuchi/ThuChiScreen'
 
@@ -677,6 +679,8 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'khaosat' ? <KhaoSatScreen />
       : staffLeaf === 'botro' ? <BoTroScreen />
       : staffLeaf === 'botro_duoi' ? <BoTroDuoiScreen />
+      : staffLeaf === 'botro_lichtruc' ? <LichTrucScreen />
+      : staffLeaf === 'botro_lichphong' ? <LichPhongScreen />
       : staffLeaf === 'buoihoc' ? <BuoiHocScreen />
       : staffLeaf === 'diemso' ? <GamiDiemScreen />
       : staffLeaf === 'thanhtich' ? <ThanhTichScreen />

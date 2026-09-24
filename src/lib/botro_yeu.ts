@@ -517,24 +517,26 @@ export type LichTruc = {
   gio_bat_dau: string; gio_ket_thuc: string; phong: string | null; nhan_su_id: string | null
   hieu_luc_tu: string; hieu_luc_den: string | null; ghi_chu: string | null
   suc_chua: number // mặc định 3 (Thùy 09-16: 1 ca tối đa 3 em — đầy là biến mất khỏi mọi chỗ chọn)
-  lop_ten?: string | null; nhan_su_ten?: string | null
+  so_ta: number; nhan_su_2_id: string | null // Thùy 24/09: ca 2 TA = 1 dòng 2 người (spec-xep-bo-tro-chung.md §2, G3)
+  don_vi?: number // generated ở DB: 3 × (phút/30) × số TA
+  lop_ten?: string | null; nhan_su_ten?: string | null; nhan_su_2_ten?: string | null
 }
 export async function listLichTruc(mon?: string): Promise<LichTruc[]> {
   let q = supabase.from('lich_truc_bo_tro')
-    .select('*, lop:lop_id(ten_lop), ns:nhan_su_id(ho_ten)')
+    .select('*, lop:lop_id(ten_lop), ns:nhan_su_id(ho_ten), ns2:nhan_su_2_id(ho_ten)')
     .order('mon').order('khoi').order('thu').order('gio_bat_dau').limit(LIMIT)
   if (mon) q = q.eq('mon', mon)
   const { data, error } = await q
   if (error) throw error
-  return ((data ?? []) as any[]).map(({ lop, ns, ...r }) => ({ ...r, lop_ten: lop?.ten_lop ?? null, nhan_su_ten: ns?.ho_ten ?? null }))
+  return ((data ?? []) as any[]).map(({ lop, ns, ns2, ...r }) => ({ ...r, lop_ten: lop?.ten_lop ?? null, nhan_su_ten: ns?.ho_ten ?? null, nhan_su_2_ten: ns2?.ho_ten ?? null }))
 }
-export async function themLichTruc(input: Omit<LichTruc, 'id' | 'lop_ten' | 'nhan_su_ten' | 'hieu_luc_tu'> & { hieu_luc_tu?: string }): Promise<string> {
+export async function themLichTruc(input: Omit<LichTruc, 'id' | 'lop_ten' | 'nhan_su_ten' | 'nhan_su_2_ten' | 'don_vi' | 'hieu_luc_tu'> & { hieu_luc_tu?: string }): Promise<string> {
   const { data: { user } } = await supabase.auth.getUser()
   const { data, error } = await supabase.from('lich_truc_bo_tro').insert({ ...input, created_by: user?.id ?? null }).select('id').single()
   if (error) throw error
   return (data as any).id
 }
-export async function suaLichTruc(id: string, patch: Partial<Omit<LichTruc, 'id' | 'lop_ten' | 'nhan_su_ten'>>): Promise<void> {
+export async function suaLichTruc(id: string, patch: Partial<Omit<LichTruc, 'id' | 'lop_ten' | 'nhan_su_ten' | 'nhan_su_2_ten' | 'don_vi'>>): Promise<void> {
   const { error } = await supabase.from('lich_truc_bo_tro').update(patch).eq('id', id)
   if (error) throw error
 }

@@ -253,6 +253,8 @@ export const adminNavFromQuyen = (q: MyQuyen | null): NavGroup[] => {
       navLeaves = collapseGroup(navLeaves, 'vanhanh_lophoc', 'Vận hành lớp học', ['buoihoc', 'ops_report', 'prep', 'phancong_ops'])
       // Tuyển sinh (quản lý level HS) + Test đầu vào (vận hành điểm danh→chấm→trả bài) cùng 1 phễu.
       navLeaves = collapseGroup(navLeaves, 'tuyensinh_hub', 'Tuyển sinh', ['tuyensinh', 'test_dau_vao'])
+      // Thùy 24/09: 3 loại bổ trợ + lịch phòng + lịch trực vào 1 folder — chúng gặp nhau ở nguồn lực (TA, phòng), spec-xep-bo-tro-chung.md §6.
+      navLeaves = collapseGroup(navLeaves, 'botro_hub', 'Bổ trợ', ['botro_duoi', 'botro', 'xep_by', 'botro_lichphong', 'botro_lichtruc'])
     }
     return { nhom: n, leaves: navLeaves }
   })

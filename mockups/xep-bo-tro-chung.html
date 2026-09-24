@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Mockup — Bổ trợ · Lịch phòng</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{--bg:#f5f5f7;--card:#fff;--line:#e5e7eb;--txt:#1e293b;--mut:#64748b;--dim:#94a3b8;--ind:#4f46e5;--ind-bg:#eef2ff;--em:#059669;--em-bg:#ecfdf5;--am:#b45309;--am-bg:#fffbeb;--ro:#e11d48;--ro-bg:#fff1f2;--sky:#0369a1;--sky-bg:#f0f9ff}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);font:13px/1.45 -apple-system,"Segoe UI",Inter,Roboto,sans-serif;color:var(--txt)}
+  .wrap{max-width:1100px;margin:0 auto;padding:24px 16px 80px}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--mut);margin:0 0 16px}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+  .tab{padding:7px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--mut);font-weight:600}
+  .tab.on{background:var(--ind);border-color:var(--ind);color:#fff}
+  .bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px 12px;margin-bottom:14px}
+  .day{padding:6px 12px;border-radius:12px;border:1px solid var(--line);background:#fff;text-align:center;min-width:86px}
+  .day b{display:block;font-size:12.5px}.day small{color:var(--dim);font-size:11px}
+  .day.on{background:var(--ind-bg);border-color:#c7d2fe}.day.on b{color:var(--ind)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px}
+  .ca{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;cursor:pointer;transition:.15s}
+  .ca:hover{border-color:#a5b4fc}
+  .ca.full{border-color:#a7f3d0}.ca.huy{opacity:.55}
+  .ca h3{margin:0;font-size:14px}.ca .meta{color:var(--mut);font-size:12px;margin-top:2px}
+  .dv{display:flex;align-items:center;gap:8px;margin:10px 0 8px}
+  .dv .track{flex:1;height:8px;border-radius:999px;background:#eef0f4;overflow:hidden;display:flex}
+  .dv .used{background:var(--ind)}.dv .wait{background:#c7d2fe}
+  .dv b{font-size:12.5px;white-space:nowrap}
+  .hs{display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:10px;border:1px solid var(--line);margin-top:6px;font-size:12.5px}
+  .hs.wait{border-style:dashed;color:var(--mut)}
+  .pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:700}
+  .p-duoi{background:var(--ro-bg);color:var(--ro)}.p-bu{background:var(--sky-bg);color:var(--sky)}.p-yeu{background:var(--ind-bg);color:var(--ind)}
+  .p-ok{background:var(--em-bg);color:var(--em)}.p-am{background:var(--am-bg);color:var(--am)}.p-gray{background:#f1f5f9;color:var(--mut)}
+  .ml{margin-left:auto}
+  .room{font-size:11.5px;color:var(--dim);margin-top:8px}
+  /* popup */
+  .ov{position:fixed;inset:0;background:rgba(15,23,42,.45);display:flex;align-items:center;justify-content:center;padding:16px}
+  .pop{background:#fff;border-radius:20px;width:760px;max-width:100%;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.25)}
+  .pop header{padding:14px 20px;border-bottom:1px solid var(--line)}
+  .pop header h2{margin:0;font-size:16px}
+  .pop .body{padding:14px 20px;overflow:auto}
+  .ptabs{display:flex;gap:6px;margin:12px 0}
+  .ptab{padding:6px 12px;border-radius:999px;border:1px solid var(--line);font-weight:700;color:var(--mut)}
+  .ptab.on{background:#0f172a;color:#fff;border-color:#0f172a}
+  .row{display:flex;align-items:center;gap:8px;padding:9px 10px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px}
+  .row .n{font-weight:600;font-size:13.5px}.row .m{color:var(--mut);font-size:12px}
+  .btn{padding:6px 12px;border-radius:10px;border:1px solid var(--line);background:#fff;font-weight:700;font-size:12px;cursor:pointer}
+  .btn.pri{background:var(--ind);border-color:var(--ind);color:#fff}.btn.off{opacity:.45;cursor:not-allowed}
+  .note{font-size:11.5px;color:var(--mut)}
+  .foot{padding:10px 20px;border-top:1px solid var(--line);display:flex;gap:8px;align-items:center;background:#fafafa}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--mut);margin:0 0 14px}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;vertical-align:-1px;margin-right:4px}
+  .mock{position:fixed;top:10px;right:12px;background:#0f172a;color:#fff;font-size:11px;padding:4px 10px;border-radius:999px;opacity:.8}
+</style>
+</head>
+<body>
+<span class="mock">MOCKUP · chưa code</span>
+<div class="wrap">
+  <h1>Bổ trợ</h1>
+  <p class="sub"><b>Bấm vào 1 ca để xem popup xếp.</b> 1 lá · 5 sub-tab. Đuổi / Bù / Yếu = quản lý case như cũ. <b>Lịch phòng</b> = nơi duy nhất xếp chỗ, theo đơn vị của ca trực.</p>
+  <div class="tabs">
+    <span class="tab">Đuổi (3)</span><span class="tab">Bù (12)</span><span class="tab">Yếu (114)</span><span class="tab on">Lịch phòng</span><span class="tab">Lịch trực</span>
+  </div>
+
+  <div class="bar">
+    <span class="note">Ngày</span>
+    <span class="day"><b>T3 23/09</b><small>4 ca · 22/24 đv</small></span>
+    <span class="day on"><b>T4 24/09</b><small>4 ca · 10/24 đv</small></span>
+    <span class="day"><b>T5 25/09</b><small>3 ca · 0/18 đv</small></span>
+    <span class="day"><b>T6 26/09</b><small>3 ca · 0/18 đv</small></span>
+    <span class="day"><b>T7 27/09</b><small>5 ca · 4/30 đv</small></span>
+    <span class="day"><b>CN 28/09</b><small>2 ca · 0/12 đv</small></span>
+    <span class="ml note">Chờ xếp hôm nay: <b>Đuổi 3 · Bù 12 · Yếu 114</b></span>
+    <span class="btn">+ Ca ngoài lịch trực</span>
+  </div>
+
+  <div class="legend">
+    <span><i style="background:#4f46e5"></i>đơn vị đã xác nhận (PH đã đồng ý)</span>
+    <span><i style="background:#c7d2fe"></i>đang chờ PH — chưa trừ</span>
+    <span>1 đv = 30' × 1 TA · Đuổi 4 · Bù 4 · Yếu L2 4 · Yếu L1 2 · ≤3 em/TA</span>
+  </div>
+
+  <div class="grid">
+    <div class="ca" onclick="document.getElementById('ov').style.display='flex'">
+      <h3>17:00–18:00 · P201 · Khối 6</h3>
+      <div class="meta">Trực: <b>Tạ Quang Tùng</b> · 1 TA · 6 đơn vị</div>
+      <div class="dv"><div class="track"><div class="used" style="width:33%"></div><div class="wait" style="width:67%"></div></div><b>2/6 đv</b></div>
+      <div class="hs"><span class="pill p-yeu">Yếu L1 · 2</span> Hồ Quang Lâm · 6K1 <span class="pill p-ok ml">✓ PH</span></div>
+      <div class="hs wait"><span class="pill p-bu">Bù · 4</span> Nguyễn Minh Anh · 6A1 · nghỉ 19/09 <span class="pill p-am ml">chờ PH</span></div>
+      <div class="room">P201 lúc 17:00: 2/2 ca — <b>phòng đầy</b></div>
+    </div>
+
+    <div class="ca" onclick="document.getElementById('ov').style.display='flex'">
+      <h3>17:00–18:00 · P201 · Khối 7</h3>
+      <div class="meta">Trực: <b>Lê Thuỳ Giang</b> + <b>Phong Ngọc Cường</b> · 2 TA · 12 đơn vị</div>
+      <div class="dv"><div class="track"><div class="used" style="width:67%"></div></div><b>8/12 đv</b></div>
+      <div class="hs"><span class="pill p-duoi">Đuổi · 4</span> Trần Gia Bảo · 7K2 · vào lớp 10/09 <span class="pill p-ok ml">✓ PH</span></div>
+      <div class="hs"><span class="pill p-yeu">Yếu L2 · 4</span> Phạm Thu Hà · 7A · ưu tiên Cao <span class="pill p-ok ml">✓ PH</span></div>
+      <div class="room">còn 4 đv — vừa 1 Đuổi / 1 Bù / 1 L2 / 2 L1</div>
+    </div>
+
+    <div class="ca full" onclick="document.getElementById('ov').style.display='flex'">
+      <h3>18:30–19:00 · P102 · Khối 8</h3>
+      <div class="meta">Trực: <b>Hoàng Thị Quỳnh Trang</b> · ca 30' · 3 đơn vị</div>
+      <div class="dv"><div class="track"><div class="used" style="width:67%"></div></div><b>2/3 đv</b></div>
+      <div class="hs"><span class="pill p-yeu">Yếu L1 · 2</span> Vũ Diệu Oanh · 8B <span class="pill p-ok ml">✓ PH</span></div>
+      <div class="room">còn 1 đv — <b>không vừa em nào</b> ⇒ coi như kín</div>
+    </div>
+
+    <div class="ca huy">
+      <h3>19:30–20:30 · P305 · Khối 9</h3>
+      <div class="meta">Trực: <b>Lê Văn Quang Khánh</b> · <span class="pill p-gray">ĐÃ HUỶ · TA nghỉ ốm</span></div>
+      <div class="dv"><div class="track"></div><b>0/6 đv</b></div>
+      <div class="hs wait"><span class="pill p-yeu">Yếu L1 · 2</span> Trần Khánh Nhật · 9A — <b>đã trả về hàng chờ</b></div>
+    </div>
+  </div>
+</div>
+
+<!-- POPUP: click ca "17:00–18:00 · P201 · Khối 7" -->
+<div class="ov" id="ov" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+  <div class="pop">
+    <header>
+      <h2>17:00–18:00 · P201 · Khối 7 — Lê Thuỳ Giang + Phong Ngọc Cường</h2>
+      <div class="dv" style="margin:8px 0 0"><div class="track"><div class="used" style="width:67%"></div></div><b>8/12 đv · còn 4 · 2/6 em</b></div>
+      <div class="ptabs">
+        <span class="ptab">Đuổi (2)</span><span class="ptab on">Bù (5)</span><span class="ptab">Yếu (9)</span>
+        <span class="ml note">Ưu tiên: Đuổi → Bù → Yếu · trong tab đã sắp cao → thấp</span>
+      </div>
+    </header>
+    <div class="body">
+      <div class="row"><div><div class="n">Nguyễn Hoàng Long · 7K1</div><div class="m">nghỉ buổi <b>T5 11/09</b> · 13 ngày chưa bù · TA lớp: Lê Thuỳ Giang (đang trực ✓)</div></div><span class="pill p-bu">Bù · 4</span><button class="btn pri">+ Xếp</button></div>
+      <div class="row"><div><div class="n">Đỗ Ngọc Tuấn · 7K1</div><div class="m">nghỉ buổi <b>T2 15/09</b> · 9 ngày chưa bù · TA lớp: Lê Thuỳ Giang (đang trực ✓)</div></div><span class="pill p-bu">Bù · 4</span><button class="btn pri">+ Xếp</button></div>
+      <div class="row"><div><div class="n">Vũ Nhật Minh · 7A</div><div class="m">nghỉ buổi <b>T4 17/09</b> · TA lớp: Nguyễn Hà Giang (không trực ca này → mặc định người trực, đổi được)</div></div><span class="pill p-bu">Bù · 4</span><button class="btn pri">+ Xếp</button></div>
+      <div class="row" style="opacity:.55"><div><div class="n">Lê Khánh Vy · 7B</div><div class="m">nghỉ buổi T6 19/09 · <b>đã xếp ca 18:30 P102 hôm nay</b> (1 em 1 chỗ/loại)</div></div><span class="pill p-bu">Bù · 4</span><button class="btn off">đã xếp</button></div>
+      <div class="row"><div><div class="n">Phan Bảo An · 7K2</div><div class="m">nghỉ buổi T7 20/09 · 4 ngày</div></div><span class="pill p-bu">Bù · 4</span><button class="btn pri">+ Xếp</button></div>
+      <p class="note">Sau khi bấm "+ Xếp": em vào ca ở trạng thái <b>chờ PH</b> (mờ, chưa trừ đơn vị). Lộc báo PH → PH đồng ý → bấm <b>Xác nhận</b> trên ca ⇒ trừ 4 đv, chiếm chỗ. Nếu chỉ còn 2 đv thì nút Bù/Đuổi/L2 mờ, chú "cần 4 · còn 2", chỉ tab Yếu L1 còn bấm được.</p>
+    </div>
+    <div class="foot">
+      <span class="note">Tab Đuổi: em chưa đuổi buổi nào lên đầu, rồi vào lớp sớm hơn trước · Tab Yếu: Cao → Thường → Thấp, rồi case mở lâu hơn</span>
+      <button class="btn ml" onclick="document.getElementById('ov').style.display='none'">Đóng</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

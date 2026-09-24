@@ -29533,6 +29533,14 @@ Sửa phòng thủ (§2 React): xếp/sửa/huỷ xong VÁ case tại chỗ NGAY
 bộ, lỗi nạp lại hiện banner đỏ "Đã lưu buổi nhưng nạp lại lỗi… bấm ↻" thay vì nuốt. Tiện thể sửa nhãn sai: ca qua ngày mà đã điểm danh có mặt
 nhưng TA chưa đóng ca hiện "Đã học · TA chưa đóng ca" (trước hiện "⚠ Quá ngày chưa học" — sai, 3/4 case Đã xếp hôm nay là kiểu này).
 Còn treo: chưa biết Thùy xếp qua modal "Xác nhận" hay tab Ca bổ trợ → tự ghép; không có case HS test để tái hiện luồng tạo buổi thật.
+
+## 2026-09-24 — Kiến trúc: XẾP BỔ TRỢ CHUNG theo ĐƠN VỊ (Thùy 23–24/09) — SPEC + MOCKUP, chưa code
+
+Thùy: 3 loại (Đuổi · Bù · Yếu) xếp riêng bị confuse vì cùng dùng phòng + TA. Chốt: 1 lá "Bổ trợ" 5 sub-tab; đơn vị = 30'×1 TA; ca 60' = 6 đv
+(30' = 3, 2 TA = 12); Đuổi 4 · Bù 4 · Yếu L2 4 · Yếu L1 2 (tạm ≤3 L1/ca); ≤3 em/TA; phòng ≤2 ca cùng giờ; ưu tiên ngày → loại (Đuổi→Bù→Yếu)
+→ trong loại; Đuổi không giảm cho vừa; PH xác nhận rồi Lộc bấm xác nhận mới trừ đv; nghỉ/huỷ trả đv; bù riêng yếu riêng; bậc S/A/B/C bỏ khỏi
+xếp; lịch trực là nguồn (không lấy Phân công); core team xếp; đv làm KPI TA. → `spec-xep-bo-tro-chung.md` (§9 4 giả định chờ chốt: ca 30'
+chứa mấy L1, ưu tiên trong Bù, 2 TA = 1 dòng, bù/đuổi theo khối) + `mockups/xep-bo-tro-chung.html`. Thứ tự làm đề xuất ở §10.
 ## 23/09 — Nhập thêm 2 file Phan Nhật Linh (L11 Hình) + BẮT ĐẦU gắn ảnh hình vẽ cho kho câu
 
 - Sau đợt 8 file L11 sáng nay, Thùy báo "có thêm 3 file mới" — quét lại chỉ thấy 2 file thật sự mới:
@@ -29622,3 +29630,12 @@ Còn treo: chưa biết Thùy xếp qua modal "Xác nhận" hay tab Ca bổ tr�
 - **Bẫy đã né:** xoá không kèm đổi mốc quét = vô ích — quetGayTuDong quét cả tháng, mở tab Đề xuất là đẻ lại 1.140 dòng.
   Đổi `GAY_MOC_LICH_SU` 01/09 → 22/09 + chặn 3 nguồn quét (vận hành / OPS gộp ca / giao việc) theo mốc. Mốc ân xá
   dashboard TA/GV/OPS (fn_*_viec_thang, 01/09) GIỮ NGUYÊN — CEO chốt tách riêng.
+
+## 2026-09-24 — Xếp bổ trợ chung — BƯỚC 1: gom lá + lịch trực số TA (Thùy "OK bắt đầu đi")
+
+- Nav: folder "Bổ trợ" (collapseGroup `botro_hub`) 5 lá: Đuổi · Bù · Yếu (`xep_by`, đổi tên từ "Xếp bổ trợ yếu") · Lịch phòng (`botro_lichphong`,
+  placeholder "đang xây") · Lịch trực (`botro_lichtruc`). 2 lá mới = 2 quyền mới ở Phân quyền (founder thấy sẵn; core team cần bật).
+- Lịch trực: tab rời màn Yếu → `screens/botro/LichTrucScreen.tsx` (bọc `LichTrucTab` export từ XepLichBoTroYeuScreen — nội dung giữ nguyên).
+  Mig 202609240930: `lich_truc_bo_tro.so_ta` (1|2) + `nhan_su_2_id` + cột generated `don_vi` = 3 × (phút/30) × số TA. Form: chọn Số TA
+  (2 TA ⇒ chọn người 2, sức chứa tự 3×n); bảng thêm cột Đơn vị (68 ca hiện có = 6 đv, 1 ca 90' = 9 đv).
+- Không đổi logic xếp nào. Tab "Ca bổ trợ" của Yếu giữ tới khi Lịch phòng chạy (bước 4 mới gỡ).

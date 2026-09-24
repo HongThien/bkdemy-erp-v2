@@ -19,6 +19,10 @@
 - **Luật chung (CEO 19–20/09): mọi bài làm TRÊN APP của bổ trợ (yếu · bù · đuổi) CHỈ dùng TRẮC NGHIỆM (MCQ)** — xem §4. Bù/đuổi khi build
   bài trên app PHẢI dùng đúng hàm điều kiện `_kho_dk_mcq_sql`, không viết điều kiện riêng.
 
+- **24/09 — KIẾN TRÚC MỚI (spec, chưa code): 3 loại gặp nhau ở NGUỒN LỰC** (ca trực TA tính bằng ĐƠN VỊ 30'×1 TA; phòng ≤2 ca/giờ), 1 lá "Bổ trợ" 5 sub-tab
+  (Đuổi · Bù · Yếu · Lịch phòng · Lịch trực). Đọc **** + mockup . Khi code, tab "Ca bổ trợ" +
+  "Lịch trực" của màn Yếu (§5) sẽ chuyển lên sub-tab chung.
+
 Phần còn lại của file nói về **BỔ TRỢ YẾU**.
 
 ---
