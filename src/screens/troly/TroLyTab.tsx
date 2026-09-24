@@ -16,6 +16,7 @@
 //   `scripts/check-troly.mjs`. Model CHỈ đọc bảng đó rồi trò chuyện — không tự tính, không
 //   tự đổi trạng thái gì. Hai tầng dưới chạy được cả khi worker tắt.
 // ============================================================================
+import { moBoTroTab } from '../botro/BoTroHubScreen'
 import { useEffect, useState } from 'react'
 import {
   nhacViecHomNay, nhanDinhHeThong, ghiQuyetDinhNhanDinh, anhChupChuoiDuoi,
@@ -380,8 +381,8 @@ export default function TroLyTab() {
         )
       )}
       {tab === 'vanhanh' && <KhoiVanHanh d={vh} />}
-      {tab === 'bu' && <KhoiBu d={bu} onDen={() => setStaffLeaf('botro')} />}
-      {tab === 'duoi' && <KhoiDuoi d={duoi} onDen={() => setStaffLeaf('botro_duoi')} />}
+      {tab === 'bu' && <KhoiBu d={bu} onDen={() => { moBoTroTab('bu'); setStaffLeaf('botro') }} />}
+      {tab === 'duoi' && <KhoiDuoi d={duoi} onDen={() => { moBoTroTab('duoi'); setStaffLeaf('botro') }} />}
       {tab === 'yeu' && <KhoiYeu d={yeu} />}
       {tab === 'test' && <KhoiTest d={test} onDen={() => setStaffLeaf('tuyensinh')} />}
       {tab === 'toi' && <KhoiViecToi d={toi} />}

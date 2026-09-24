@@ -29704,3 +29704,9 @@ cuối không đụng ERP. Sửa: thiếu PREVIOUS_SHA ⇒ BUILD ngay (đúng lu
 Sau khi sửa script (thiếu PREVIOUS_SHA ⇒ BUILD) vẫn cancel: Vercel cấp PREVIOUS_SHA = deployment VỪA BỊ CANCEL (f196dac) ⇒ diff tới 6d86f14 chỉ có
 scripts/ + DEVLOG (đều trong BO_QUA) ⇒ bỏ qua tiếp ⇒ vòng lặp cancel. Auto-deploy tắt từ 07/09 ⇒ mọi deployment là người bấm tay cho đúng 1 project,
 ignoreCommand không tiết kiệm build nào nữa. Gỡ khỏi vercel.json (giữ script + ghi chú cách bật lại). Từ nay Create Deployment = luôn build.
+
+## 2026-09-24 — Bổ trợ: ĐÚNG 1 lá + thanh toggle 5 nút (Thùy: "không phải 5 lá con; click lá ra màn quản lý, phía trên 5 filter toggle, 1 click chuyển")
+
+Bỏ folder 5 lá (collapseGroup botro_hub) → 1 lá `botro` "Bổ trợ" → `BoTroHubScreen` (thanh toggle Đuổi · Bù · Yếu · Lịch phòng · Lịch trực, nhớ tab
+đang mở; `moBoTroTab()` để Việc của tôi / Trợ lý nhảy thẳng tab). Lá `botro_duoi`/`xep_by`/`botro_lichphong`/`botro_lichtruc` gỡ khỏi menu — quyền cũ
+cho 4 id đó hết tác dụng, ai cần thì cấp quyền "Bổ trợ" (`botro`). Local kiểm: 1 lá, toggle Đuổi/Yếu/Lịch phòng đổi màn ngay, không lỗi console.

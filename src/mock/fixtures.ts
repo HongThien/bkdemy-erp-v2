@@ -80,13 +80,9 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'hs',          nhom: 'Vận hành',  ten: 'Học sinh',                     founderOnly: false },
   { id: 'lop',         nhom: 'Vận hành',  ten: 'Lớp',                          founderOnly: false },
   { id: 'tuyensinh',   nhom: 'Vận hành',  ten: 'Tuyển sinh',                   founderOnly: false }, // quản lý LEVEL học sinh L5-L8, KHÔNG chứa hoạt động test
-  // Bổ trợ (Thùy 24/09, spec-xep-bo-tro-chung.md): 1 folder "Bổ trợ" 5 lá con — Đuổi · Bù · Yếu · Lịch phòng · Lịch trực
-  // (gom ở useStore.adminNavFromQuyen → collapseGroup 'botro_hub'). Mỗi lá vẫn 1 quyền riêng ở Phân quyền.
-  { id: 'botro_duoi',  nhom: 'Vận hành',  ten: 'Đuổi',                         founderOnly: false },
-  { id: 'botro',       nhom: 'Vận hành',  ten: 'Bù',                           founderOnly: false },
-  { id: 'xep_by',      nhom: 'Vận hành',  ten: 'Yếu',                          founderOnly: false }, // OPS xếp case yếu đã duyệt+chọn dạng (PLAN-botro-yeu.md bước 6)
-  { id: 'botro_lichphong', nhom: 'Vận hành', ten: 'Lịch phòng',                founderOnly: false }, // ★ xếp CHUNG theo đơn vị ca trực — đang xây (spec §4)
-  { id: 'botro_lichtruc',  nhom: 'Vận hành', ten: 'Lịch trực',                 founderOnly: false }, // lịch trực TA = nguồn lực chung 3 loại (trước nằm trong Yếu)
+  // Bổ trợ (Thùy 24/09, spec-xep-bo-tro-chung.md §6): ĐÚNG 1 lá → BoTroHubScreen, thanh toggle 5 nút phía trên (Đuổi · Bù · Yếu ·
+  // Lịch phòng · Lịch trực) — "1 click là chuyển", KHÔNG phải folder 5 lá con. 1 quyền 'botro' cho cả màn (quyền cũ botro_duoi/xep_by hết dùng).
+  { id: 'botro',       nhom: 'Vận hành',  ten: 'Bổ trợ',                       founderOnly: false },
   // Vận hành Ops (BKDEMY_OPS_SPEC_DETAIL.md, 07-06): Report/Báo tan (Story 1+2) + Prep phòng (Story 3)
   // + Phân công ca trực (spine). ET (Story 4) GÁC LẠI, không có leaf ở đây.
   { id: 'ops_report',  nhom: 'Vận hành',  ten: 'Report & Báo tan',             founderOnly: false },
