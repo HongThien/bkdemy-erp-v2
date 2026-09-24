@@ -61,7 +61,6 @@ import XemAppScreen from './dashboard/XemAppScreen'
 import ThongBaoPhScreen from './dashboard/ThongBaoPhScreen'
 import DashboardHocTapScreen from './danhgia/DashboardHocTapScreen'
 import BangLamBaiScreen from './theodoi/BangLamBaiScreen'
-import DuyetBoTroYeuScreen from './danhgia/DuyetBoTroYeuScreen'
 import NoiDungBoTroYeuScreen from './danhgia/NoiDungBoTroYeuScreen'
 import TrangThaiCaBoTroScreen from './danhgia/TrangThaiCaBoTroScreen'
 import DanhGiaCaBoTroScreen from './danhgia/DanhGiaCaBoTroScreen'
@@ -659,8 +658,9 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'db_thongbao' ? <ThongBaoPhScreen />
       : staffLeaf === 'db_hoctap' ? <DashboardHocTapScreen />
       : staffLeaf === 'db_theodoi_app' ? <BangLamBaiScreen />
-      : (staffLeaf === 'botroyeu' || staffLeaf === 'botroyeu:duyet') ? <DuyetBoTroYeuScreen />
-      : staffLeaf === 'botroyeu:noidung' ? <NoiDungBoTroYeuScreen />
+      // Thùy 24/09: Duyệt bổ trợ chuyển vào Bổ trợ › Yếu (toggle). Link cũ 'botroyeu:duyet' vẫn mở đúng chỗ mới; lá cha 'botroyeu' mở Nội dung.
+      : staffLeaf === 'botroyeu:duyet' ? <BoTroHubScreen mo={{ tab: 'yeu', yeu: 'duyet' }} />
+      : (staffLeaf === 'botroyeu' || staffLeaf === 'botroyeu:noidung') ? <NoiDungBoTroYeuScreen />
       : staffLeaf === 'botroyeu:trangthai' ? <TrangThaiCaBoTroScreen />
       : staffLeaf === 'botroyeu:danhgia' ? <DanhGiaCaBoTroScreen />
       : staffLeaf === 'ns' ? <NhanSuScreen />

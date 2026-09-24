@@ -223,7 +223,7 @@ export const LAMTAILIEU_CHILDREN: NavLeaf[] = [
 // Bổ trợ yếu (Thùy 08-18: "1 lá riêng, tách khỏi Dashboard học tập, 4 tab con") — PLAN-botro-yeu.md.
 // Xếp lịch (bước 6) KHÔNG ở đây — đó là việc OPS, sống ở nhóm Vận hành cạnh Bù/Đuổi (leaf `xep_by`).
 export const BOTROYEU_CHILDREN: NavLeaf[] = [
-  { id: 'botroyeu:duyet', ten: 'Duyệt bổ trợ' },
+  // 'botroyeu:duyet' (Duyệt bổ trợ) chuyển sang Vận hành › Bổ trợ › Yếu › toggle "Duyệt bổ trợ" (Thùy 24/09)
   { id: 'botroyeu:noidung', ten: 'Nội dung bổ trợ yếu' },
   { id: 'botroyeu:trangthai', ten: 'Trạng thái ca bổ trợ' },
   { id: 'botroyeu:danhgia', ten: 'Đánh giá ca bổ trợ' },

@@ -29796,3 +29796,9 @@ sau mutation nạp lại ngầm để cờ lấy từ DB (không tự tính ở 
 ## 2026-09-24 (tối) — Lịch phòng: 2 khu thành thanh toggle (Thùy: "2 cái toggle bar đi chuyển qua lại cho dễ")
 
 "📅 Lịch trực khối (N)" / "🗂 Lịch riêng" — 1 click chuyển, nhớ khu đang xem khi rời màn (NHO.khu). Không đổi logic.
+
+## 2026-09-24 (tối) — Duyệt bổ trợ chuyển vào Bổ trợ › Yếu (Thùy: "trong subtab Yếu có 2 toggle: Duyệt bổ trợ · Xếp bổ trợ")
+
+`BoTroHubScreen` › tab Yếu = `YeuTab` (toggle Duyệt | Xếp, nhớ lựa chọn). Bỏ `botroyeu:duyet` khỏi folder QLCL › Bổ trợ yếu (còn Nội dung · Trạng thái · Đánh giá ca);
+lá cha `botroyeu` giờ mở Nội dung. Link cũ `botroyeu:duyet` render hub mở sẵn Yếu › Duyệt (prop `mo`, không setState lúc render).
+⚠ Quyền: Duyệt giờ nằm sau quyền `botro` (Vận hành › Bổ trợ) — ai trước chỉ có quyền `botroyeu` (học thuật) sẽ không thấy Duyệt nữa cho tới khi được cấp `botro`.

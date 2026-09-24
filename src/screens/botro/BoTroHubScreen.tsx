@@ -6,6 +6,7 @@ import { useState } from 'react'
 import BoTroDuoiScreen from './BoTroDuoiScreen'
 import BoTroScreen from './BoTroScreen'
 import XepLichBoTroYeuScreen from '../danhgia/XepLichBoTroYeuScreen'
+import DuyetBoTroYeuScreen from '../danhgia/DuyetBoTroYeuScreen'
 import LichPhongScreen from './LichPhongScreen'
 import LichTrucScreen from './LichTrucScreen'
 
@@ -13,17 +14,37 @@ export type BoTroTab = 'duoi' | 'bu' | 'yeu' | 'lichphong' | 'lichtruc'
 const TABS: { k: BoTroTab; ten: string; mo_ta: string }[] = [
   { k: 'duoi', ten: 'Đuổi', mo_ta: 'HS vào lớp giữa chừng — đợt đuổi, kế hoạch dạng' },
   { k: 'bu', ten: 'Bù', mo_ta: 'HS nghỉ buổi thường — lần nghỉ cần bù' },
-  { k: 'yeu', ten: 'Yếu', mo_ta: 'Case bổ trợ yếu: cần xếp · đã xếp · chờ retest · hoàn thành · retest' },
+  { k: 'yeu', ten: 'Yếu', mo_ta: 'Duyệt bổ trợ (hàng đợi máy phát hiện) · Xếp bổ trợ (case đã duyệt)' },
   { k: 'lichphong', ten: 'Lịch phòng', mo_ta: 'Đang diễn ra của cả 3 loại + xếp chung theo đơn vị ca trực' },
   { k: 'lichtruc', ten: 'Lịch trực', mo_ta: 'Ca trực cố định hằng tuần của trợ giảng' },
 ]
-const NHO: { tab: BoTroTab } = { tab: 'lichphong' }
+// Thùy 24/09: trong tab Yếu có thanh toggle 2 nút — Duyệt bổ trợ (lá cũ ở Quản lý chất lượng, chuyển lên đây) · Xếp bổ trợ
+export type YeuSub = 'duyet' | 'xep'
+const NHO: { tab: BoTroTab; yeu: YeuSub } = { tab: 'lichphong', yeu: 'xep' }
 let capNhat: ((t: BoTroTab) => void) | null = null
 // Nhảy tới đúng tab từ nơi khác (Việc của tôi, Trợ lý…): gọi TRƯỚC hoặc SAU setStaffLeaf('botro') đều được.
-export function moBoTroTab(t: BoTroTab) { NHO.tab = t; capNhat?.(t) }
+export function moBoTroTab(t: BoTroTab, yeu?: YeuSub) { NHO.tab = t; if (yeu) NHO.yeu = yeu; capNhat?.(t) }
 
-export default function BoTroHubScreen() {
-  const [tab, setTabState] = useState<BoTroTab>(NHO.tab)
+function YeuTab() {
+  const [sub, setSubState] = useState<YeuSub>(NHO.yeu)
+  const setSub = (s: YeuSub) => { NHO.yeu = s; setSubState(s) }
+  return (
+    <div className="flex min-h-0 flex-1 flex-col">
+      <div className="flex items-center gap-2 bg-[#f5f5f7] px-8 pt-4">
+        <div className="inline-flex rounded-xl border border-slate-200 bg-white p-0.5 text-[13px] font-semibold shadow-sm">
+          {([['duyet', 'Duyệt bổ trợ'], ['xep', 'Xếp bổ trợ']] as const).map(([k, ten]) => (
+            <button key={k} onClick={() => setSub(k)} className={`rounded-lg px-4 py-1.5 ${sub === k ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-50'}`}>{ten}</button>
+          ))}
+        </div>
+      </div>
+      {sub === 'duyet' ? <DuyetBoTroYeuScreen /> : <XepLichBoTroYeuScreen />}
+    </div>
+  )
+}
+
+// `mo`: mở thẳng 1 tab (vd link cũ "Duyệt bổ trợ") — ghi vào NHO trước khi YeuTab đọc, không setState lúc render.
+export default function BoTroHubScreen({ mo }: { mo?: { tab: BoTroTab; yeu?: YeuSub } } = {}) {
+  const [tab, setTabState] = useState<BoTroTab>(() => { if (mo) { NHO.tab = mo.tab; if (mo.yeu) NHO.yeu = mo.yeu } return NHO.tab })
   capNhat = setTabState
   const setTab = (t: BoTroTab) => { NHO.tab = t; setTabState(t) }
   return (
@@ -38,7 +59,7 @@ export default function BoTroHubScreen() {
         ))}
         <span className="ml-auto hidden text-[11.5px] text-slate-400 md:inline">{TABS.find((t) => t.k === tab)?.mo_ta}</span>
       </div>
-      {tab === 'duoi' ? <BoTroDuoiScreen /> : tab === 'bu' ? <BoTroScreen /> : tab === 'yeu' ? <XepLichBoTroYeuScreen /> : tab === 'lichtruc' ? <LichTrucScreen /> : <LichPhongScreen />}
+      {tab === 'duoi' ? <BoTroDuoiScreen /> : tab === 'bu' ? <BoTroScreen /> : tab === 'yeu' ? <YeuTab /> : tab === 'lichtruc' ? <LichTrucScreen /> : <LichPhongScreen />}
     </div>
   )
 }

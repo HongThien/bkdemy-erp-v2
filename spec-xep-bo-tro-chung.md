@@ -95,6 +95,8 @@ Giao diện: Apple-clean (nền xám, card trắng, pill mềm) như mọi màn 
 - Màu thẻ theo loại (nền nhạt): **Yếu đỏ · Đuổi xanh da trời · Bù cam**. Em yếu trong ca trực hiện luôn trạng thái sống (đang luyện / im lâu / chờ test · x/y câu).
 - Chọn ngày: 3 ô (hôm qua · hôm nay · ngày mai quanh ngày chọn) + mũi tên + chọn thẳng.
 - Bù · Đuổi · Yếu: chip khối + ô tìm tên/mã **góc trên bên phải**, cùng hàng tab.
+- **Tab Yếu có toggle 2 nút: Duyệt bổ trợ · Xếp bổ trợ** (CEO 24/09) — lá "Duyệt bổ trợ" rời Quản lý chất lượng › Bổ trợ yếu, vào đây. Link cũ `botroyeu:duyet` vẫn mở đúng chỗ.
+- Lịch phòng: 2 khu **Lịch trực khối / Lịch riêng** là toggle 2 nút.
 
 ## 7. QUYỀN
 
