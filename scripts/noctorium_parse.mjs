@@ -188,12 +188,17 @@ async function bocFile(file) {
   const flush = () => { if (cur) { cau.push(cur); cur = null } }
   // Tách đoạn theo xuống dòng mềm (w:br): có đề gõ "Câu 1. …⏎a)Cho góc…⏎b)…" trong CÙNG 1 đoạn ⇒ mệnh đề bị nuốt vào đề bài
   const lines = paras.slice(1).flatMap((p) => nfc(p.text).split('\n').map((text, i) => ({ text: text.trim(), imgs: i === 0 ? p.imgs : [] })))
-  for (const p of lines) {
-    const t = p.text
+  for (let li = 0; li < lines.length; li++) {
+    const p = lines[li]; const t = p.text
     const mp = t.match(/^Phần\s+(\d+)\s*:\s*(.+?)\s*$/i)
     if (mp) { flush(); const tenPhan = mp[2].trim(); const [dt, diem] = PHAN_MAP[tenPhan.toLowerCase()] ?? ['tu_luan', 0.5]; curPhan = { thu_tu: +mp[1], ten: tenPhan, dang_thuc: dt, diem_moi_cau: diem }; phan.push(curPhan); continue }
     const mc = t.match(/^Câu\s+(\d+)\s*\.\s*(.*)$/s)
-    if (mc) { flush(); cur = { so: +mc[1], phan: curPhan?.thu_tu ?? null, dang_thuc: curPhan?.dang_thuc ?? 'tu_luan', stem: [mc[2].trim()], imgs: [...p.imgs], luaChon: [], menhDe: [], giai: [], imgsGiai: [] }; mode = 'de'; continue }
+    if (mc) {
+      flush(); cur = { so: +mc[1], phan: curPhan?.thu_tu ?? null, dang_thuc: curPhan?.dang_thuc ?? 'tu_luan', stem: [], imgs: [...p.imgs], luaChon: [], menhDe: [], giai: [], imgsGiai: [] }; mode = 'de'
+      // Phần sau "Câu k." đi qua bộ phân loại như 1 dòng thường (có đề gõ "Câu 1.\ta)Cho góc…" — mệnh đề nằm ngay dòng Câu)
+      const rest = mc[2].trim(); if (rest) lines.splice(li + 1, 0, { text: rest, imgs: [] })
+      continue
+    }
     if (!cur) continue
     if (/^Lời giải\s*[:.]?\s*$/i.test(t)) { mode = 'giai'; continue }
     if (mode === 'de') {
