@@ -29820,3 +29820,14 @@ Bỏ lá `botroyeu` khỏi menu QLCL (fixtures) + bỏ BOTROYEU_CHILDREN. NhanSu
 ⚠ Quyền: tất cả nằm sau quyền `botro`; quyền `botroyeu` cũ hết tác dụng — ai cần phải được cấp "Bổ trợ".
 Kèm: xác nhận retest ĐÃ có trên app TA (ô Bổ trợ yếu màn chính "N retest đến hạn" + tab Bổ trợ mục "Retest đến hạn · đưa iPad cho em sau ET"); Thùy: không cần push riêng.
 Thêm cấu hình chạy app TA worktree này: launch `botroyeu-ta` port 5193 (mở /ta.html).
+
+## 2026-09-24 (khuya) — "Triệu Đức Tùng xếp mãi vẫn Cần xếp": buổi đã học bị ĐỔI NGÀY thay vì xếp buổi mới — sửa dữ liệu + khoá ở DB
+
+Gốc: form Xếp bổ trợ yếu bản cũ (trước 36224d3) mở buổi 'mo' ĐÃ ĐÓNG CA ở chế độ SỬA ⇒ "xếp" chỉ dời ngày buổi cũ ⇒ không có buổi chờ học ⇒ kẹt Cần xếp,
+buổi đã học hiện sai ở tương lai (app TA "xong" hôm nay, Lịch phòng gắn nhầm vào ca trực + trừ đơn vị). UI đã sửa ở 36224d3 (prod đã có) — nhưng chỉ chặn 1 đường.
+Rà toàn hệ: 4 buổi dính. Mig 202609242300: trả 3 em thật về ngày học thật (≥2 nhân chứng trùng: đóng ca · làm bài · nhận xét · sinh bài), gỡ khỏi ca trực:
+Bùi Tuệ An 21/09→18/09 · Minh Quân 27/09→20/09 · Nguyễn Quang Minh 28/09→21/09. Trigger `trg_buoi_bo_tro_khoa_ngay`: buổi bổ trợ (yếu·bù·đuổi) đã đóng ca /
+hoàn tất KHÔNG đổi được ngày/giờ từ bất kỳ đường nào ("Muốn học tiếp thì XẾP BUỔI MỚI"); đổi phòng/người vẫn được. Sau sửa: Bùi Tuệ An + Minh Quân đúng là
+còn Cần xếp (OPS tưởng đã xếp, thật ra chỉ dời buổi cũ) · Nguyễn Quang Minh đã có buổi mới 28/09.
+Nghi thêm (chưa đủ chứng cứ, để nguyên): buổi bù Nguyễn Ngọc Hải Linh ngày 28/08 đóng ca 27/08.
+Tùng = dữ liệu TEST của Thùy (3 buổi yếu do daothuybk tạo) — chờ Thùy gật danh sách xoá (Luật xoá).
