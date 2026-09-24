@@ -42,8 +42,8 @@
   .hic{text-anchor:middle;dominant-baseline:central;pointer-events:none}
   .lbl{text-anchor:middle;dominant-baseline:central;fill:#fff;font-weight:800;pointer-events:none;paint-order:stroke;stroke:#0008;stroke-width:3px}
   .road{stroke-linecap:round}
-  .tgt{fill:#ffd16655;stroke:var(--gold);stroke-width:2.5;cursor:pointer;animation:pulse 1s infinite alternate}
-  .tgtE{stroke:#ffd166;stroke-width:9;stroke-linecap:round;opacity:.55;cursor:pointer;animation:pulse 1s infinite alternate}
+  .tgt{fill:#ffd166aa;stroke:var(--gold);stroke-width:3;cursor:pointer} /* KHÔNG animation: iPad Safari vẽ lại cả SVG ~700 phần tử mỗi khung khi vài chục mục tiêu đổi opacity ⇒ "quét màn hình nhấp nháy 1s/lần" (Thùy 24/09) */
+  .tgtE{stroke:#ffd166;stroke-width:9;stroke-linecap:round;opacity:.8;cursor:pointer}
   @keyframes pulse{from{opacity:.35}to{opacity:.95}}
   .flash{animation:flash 1.2s 3}
   @keyframes flash{50%{filter:drop-shadow(0 0 10px #fff) brightness(1.8)}}
