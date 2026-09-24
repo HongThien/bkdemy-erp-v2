@@ -29670,3 +29670,21 @@ chứa mấy L1, ưu tiên trong Bù, 2 TA = 1 dòng, bù/đuổi theo khối) +
 - (Thùy 24/09 sau khi xem ảnh) gạch nhạt đi: ô 0xb3452a → 0xc9694a, đất 0xa03d24 → 0xb5563a; đá đậm hơn: ô 0x9ea3ae → 0x7b8090, núi 0xa2a6b0 → 0x8a8f9c (vẫn tách rõ khỏi ô khám phá trắng/xám nhạt). Ảnh `.snap/board-mau2*.jpg`.
 - (Thùy 24/09, tiếp) **Ô khám phá bỏ quái 3D** — ô trống trắng/xám, dấu ? nhạt (#7a7f8e, 1.2) in trên mặt lệch lên trên, vòng sáng trắng nhấp nháy rất nhẹ (.14–.4) thay vòng vàng; nhãn "Cấp x · %" thu .85, đặt sát mặt ở mép dưới ô. Bỏ `monster()` + 4 model quái/rig khỏi WANT ⇒ assets 6.7MB → 5.0MB (44 model). **Thẻ số hạ từ cao 1.35 xuống .12** (sprite `depthTest:false` để không bị cây/nhà che): treo cao thì camera nghiêng ~52° chiếu số lên đỉnh ô, giờ nằm chính giữa ô. Ảnh `.snap/board-v8*.jpg`.
 - (Thùy 24/09, tiếp) **Màu nhà không trùng bản đồ**: `PCOL` = đen #1f1f26 · tím #7b2fbf · hồng #ff5fa2 · xanh nước biển #1f3a8a · đỏ đậm #8b1a1a (5 màu, ván tối đa 4). KayKit chỉ có 4 biến thể red/blue/green/yellow — đo UV thấy chúng khác nhau DUY NHẤT ở 1 ô atlas 8×4 (red = cột 1 hàng 3, blue = cột 0, yellow = cột 2, green = cột 3; atlas chung `hexagons_medieval.png` cho mọi model). ⇒ `teamTex(color)`: clone atlas ra canvas, tô ô (1,3) bằng gradient sáng→tối của màu người chơi, cache theo mã màu; nhà/cờ luôn dùng model `*_red` + map mới (`teamKit`). Bỏ 3 bộ màu khỏi bundle: assets 5.0MB → **1.8MB** (26 model). Ảnh `.snap/board-v9*.jpg`: lâu đài đen, nhà tím, quán navy, hồng — nổi trên mọi ô.
+
+## 24/09 — Xoá chuyên đề K12 `T1120301` "Ứng dụng đạo hàm xử lí bài toán thực tế" (CEO yêu cầu)
+
+- **Phạm vi (đã liệt kê theo Luật xoá, CEO gật):** 4 dạng `T112030101..04` (99 câu, 45 đã duyệt, 97 có lời giải) +
+  3 lý thuyết `dai_dang_ly_thuyet`. Chủ đề `T11203` chỉ có 1 chuyên đề này ⇒ biến luôn khỏi bản đồ.
+  KHÔNG đụng 2 chuyên đề "thực tế" khác (Nguyên hàm `T1120402`, Tích phân `T1120503`).
+- **Kẹt phát hiện khi dry-run (rollback):** FK `dai_cau_hoi.dang_chinh → dai_ban_do` là `ON DELETE RESTRICT` ⇒ câu
+  ĐÃ VÀO RÁC (`xoa_at`) vẫn giữ dạng lại, không xoá cứng dạng được. **⇒ `deleteDaiCum()` trong `src/lib/kho/api.ts`
+  (và bản KHTN/HGT tương tự) chết y hệt khi cụm còn câu — bug tiềm ẩn chưa ai bấm trúng.** Chưa sửa.
+- **Cách đi (CEO chọn):** 1 transaction — 99 câu `xoa_at=now()` + `dang_chinh → 'T112000000'` (dạng chờ K12 có sẵn)
+  + `da_duyet=false` (trigger `trg_chan_duyet_dang_cho` cấm câu đã duyệt nằm ở dạng chờ) → rồi `delete dai_ban_do`
+  4 dạng (cascade 3 lý thuyết). `trg_log_doi_dang` tự ghi 99 dòng `kho_doi_dang_log` làm vết. Mã câu `T1120301…`
+  giữ nguyên ⇒ vẫn truy được gốc. Script `scripts/_xoa_cd_T1120301_2409.mjs`, verify đếm trước/sau, COMMIT ✅.
+- **Hệ quả đã báo CEO:** dữ liệu HS đã đo trên 4 dạng (gami_session_problems 23 · tu_luyen_dang_lan 7 · bai_test_cau 7 ·
+  ca_test_cau 12) thành mồ côi (ma_dang không còn trong bản đồ). 32 form MCQ đã duyệt còn trong `dai_cau_form_tn` nhưng
+  câu gốc trong rác nên không được chọn. 6 tài liệu (GT/BTVN 12A1 buổi 3, ET 12B1 08/07, KT đầu vào K12 ×3) vẫn in/chấm
+  được vì resolve không lọc rác.
+- **Bẫy script:** `unaccent()` không có trên DB — so tên tiếng Việt thẳng bằng `lower() like '%đạo hàm%'`.
