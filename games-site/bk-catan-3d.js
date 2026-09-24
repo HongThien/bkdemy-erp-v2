@@ -5,9 +5,9 @@
 const T = window.THREE, E = window.BKCATAN, A = window.BKC_ASSETS;
 const COLN = ['red', 'blue', 'green', 'yellow'];
 // màu mặt ô: lớp phủ gốc của hex_grass là vàng-xanh nên nhuộm nhân không ra tím/xám → bỏ map, tô màu phẳng
-const RES_TINT = { go: 0x3f8f45, gach: 0xc46a42, lua: 0xe6bf45, cuu: 0x98d066, quang: 0x8e95a8 };
-const TIER_TINT = { 1: 0x7a62c4, 2: 0x9a4fd0, 3: 0xc8448f };
-const COOL_TINT = 0x5d6278;
+const RES_TINT = { go: 0x3f8f45, gach: 0xb3452a, lua: 0xe9c94c, cuu: 0xb9e69c, quang: 0x9ea3ae };
+const TIER_TINT = { 1: 0xf1f1f4, 2: 0xd2d5dc, 3: 0xaeb3bf }; // ô khám phá: trắng → xám theo cấp (Thùy 24/09)
+const COOL_TINT = 0x80859a;
 const CHAR = ['Barbarian', 'Rogue', 'Druid']; // quái 0/1/2
 const GAP = 0.9; // ô co còn 90% → khe giữa các ô là chỗ của đường
 
@@ -86,6 +86,22 @@ function fit(o, fp, maxH) {
 }
 const at = (o, x, z, y) => { o.position.x = x; o.position.z = z; o.position.y += (y == null ? topY : y); return o; };
 
+// cừu low-poly từ khối cơ bản (KayKit không có cừu): thân trắng, đầu/chân đen, cao ~.2
+let sheepMat = null;
+function sheep(x, z, ry) {
+  if (!sheepMat) sheepMat = { w: new T.MeshStandardMaterial({ color: new T.Color(0xf6f3ea).convertSRGBToLinear(), roughness: 1 }), k: new T.MeshStandardMaterial({ color: new T.Color(0x2e2a2a).convertSRGBToLinear(), roughness: .9 }) };
+  const g = new T.Group();
+  const body = new T.Mesh(new T.SphereGeometry(.11, 10, 8), sheepMat.w); body.scale.set(1, .8, 1.35); body.position.y = .13; g.add(body);
+  const head = new T.Mesh(new T.BoxGeometry(.08, .075, .09), sheepMat.k); head.position.set(0, .16, .17); g.add(head);
+  for (const [lx, lz] of [[-.05, .07], [.05, .07], [-.05, -.07], [.05, -.07]]) { const l = new T.Mesh(new T.CylinderGeometry(.016, .016, .09, 6), sheepMat.k); l.position.set(lx, .045, lz); g.add(l); }
+  g.traverse(m => { if (m.isMesh) { m.castShadow = true; } });
+  g.rotation.y = ry || 0; g.scale.setScalar(1.3); g.position.set(x, topY, z); root.add(g); return g;
+}
+let qmTex = null;
+function qmark() {
+  if (!qmTex) { const c = document.createElement('canvas'); c.width = c.height = 128; const g = c.getContext('2d'); g.fillStyle = '#3b3f4c'; g.font = 'bold 112px Segoe UI, Arial'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('?', 64, 70); qmTex = new T.CanvasTexture(c); qmTex.encoding = T.sRGBEncoding; }
+  const m = new T.Mesh(new T.PlaneGeometry(1.05, 1.05), new T.MeshBasicMaterial({ map: qmTex, transparent: true, depthWrite: false })); m.rotation.x = -Math.PI / 2; m.renderOrder = 2; return m;
+}
 // nhãn nổi (sprite canvas)
 function label(lines, o) {
   o = o || {};
@@ -129,13 +145,19 @@ function buildStatic(st) {
   for (const h of map.hexes) {
     const x = h.x, z = h.y;
     const t = kit('hex_grass', h.zone ? TIER_TINT[h.tier] : RES_TINT[h.res], true); t.scale.multiplyScalar(GAP); t.rotation.y = tileRot; at(t, x, z, 0); root.add(t); tiles[h.id] = t;
-    if (h.zone) { h._tile = t; continue; }
+    if (h.zone) { h._tile = t; const qm = qmark(); qm.position.set(x, topY + .012, z); root.add(qm); const tk = label(['?', ''], { token: true, size: .72 }); tk.position.set(x, topY + 1.35, z + .1); root.add(tk); continue; } // ô khám phá: dấu ? in trên mặt ô + thẻ ? nổi (cùng cỡ thẻ số)
     const deco = (n, fp, mh, dx, dz, ry) => { const o = fit(kit(n), fp, mh); o.rotation.y = ry == null ? rnd() * 6.28 : ry; at(o, x + (dx || 0), z + (dz || 0)); root.add(o); };
-    if (h.res === 'go') { deco('trees_A_large', 1.25, 1.1, -.15, .05); deco('tree_single_A', .45, .7, .5, -.35); }
-    if (h.res === 'gach') { deco('hills_B_trees', 1.5, .8, 0, 0); }
-    if (h.res === 'lua') { deco('building_windmill_blue', .75, 1.1, -.2, -.1, 0.4); deco('crate_A_big', .22, .3, .45, .3); }
-    if (h.res === 'cuu') { deco('ks_fence_1x3', .9, .25, -.1, .35, 0.2); deco('cb_bush', .35, .3, .45, -.3); deco('tent', .5, .45, -.35, -.3); }
-    if (h.res === 'quang') { deco('mountain_B_grass', 1.35, 1.3, 0, -.05); deco('rock_single_A', .3, .25, .55, .35); }
+    // Thùy 24/09: 3D tài nguyên phải BÉ (cao ≤ ~.45, nhà cao .7–1.4) và đặc trưng — gỗ = rừng cây nhỏ dày,
+    // gạch = đất đỏ gạch (không cây), cừu = đồng cỏ + cừu + cây bé, lúa = ruộng lúa vàng, đá = núi đá thấp.
+    const decoT = (n, fp, mh, dx, dz, tint, ry) => { const o = fit(kit(n, tint, true), fp, mh); o.rotation.y = ry == null ? rnd() * 6.28 : ry; at(o, x + (dx || 0), z + (dz || 0)); root.add(o); };
+    if (h.res === 'go') { // rừng: ~9 cây nhỏ rải đều trong bán kính .58 (đỉnh lục giác = nút nhà ở bán kính 1)
+      for (let k = 0; k < 9; k++) { const a = k / 9 * 6.283 + rnd() * .5, r = .22 + rnd() * .36; deco(k % 3 ? 'tree_single_A' : 'tree_single_B', .2 + rnd() * .08, .32 + rnd() * .1, Math.cos(a) * r, Math.sin(a) * r); }
+      deco('trees_B_small', .38, .34, 0, 0);
+    }
+    if (h.res === 'gach') { decoT('building_dirt', 1.4, .1, 0, 0, 0xa03d24); decoT('resource_stone', .26, .16, .3, .2, 0xc2573a); decoT('resource_stone', .2, .13, -.32, -.18, 0xb44d33); }
+    if (h.res === 'lua') { deco('building_grain', 1.65, .12, 0, 0, tileRot); deco('sack', .16, .18, .5, .38); }
+    if (h.res === 'cuu') { sheep(x - .18, z + .1, rnd() * 6.28); sheep(x + .3, z - .22, rnd() * 6.28); deco('trees_B_small', .3, .3, -.4, -.35); deco('tree_single_B', .18, .28, .42, .3); }
+    if (h.res === 'quang') { decoT('mountain_C', .9, .5, 0, -.05, 0xa2a6b0); deco('rock_single_B', .22, .18, .5, .32); deco('rock_single_D', .18, .15, -.5, .3); }
     // thẻ số + bị động
     const tok = label([String(h.num), '•'.repeat(h.pips), `+${E.CFG.bidong[h.pips]}/lượt`], { token: true, hot: h.pips === 5, size: .72 });
     tok.position.set(x, topY + 1.35, z + .1); root.add(tok);
@@ -194,7 +216,7 @@ function renderZones(st) {
     if (z.hoi > 0) continue;
     const qu = E.QUAI[z.quai];
     zs.lbl = label([`Cấp ${z.tier} · ${pct}%`, `yếu ${E.UNIT[qu.yeu].ic}`], { fs: 46, size: 1.05, h: 170 });
-    zs.lbl.position.set(h.x, topY + 1.55, h.y); zs.group.add(zs.lbl);
+    zs.lbl.position.set(h.x, topY + 2.05, h.y); zs.group.add(zs.lbl); // cao hơn thẻ ? (1.35) để không đè
   }
 }
 

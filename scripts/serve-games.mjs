@@ -1,7 +1,7 @@
 // Server tĩnh cho games-site (hub + các game) để xem local — production là project Vercel bkdemy-games.
 // Chạy: node scripts/serve-games.mjs [port]  (mặc định 5260)
 import { createServer } from 'node:http'
-import { readFile, stat } from 'node:fs/promises'
+import { readFile, stat, writeFile, mkdir } from 'node:fs/promises'
 import { join, extname, normalize } from 'node:path'
 
 const ROOT = join(process.cwd(), 'games-site')
@@ -9,6 +9,16 @@ const PORT = +(process.argv[2] || process.env.PORT || 5260)
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.glb': 'model/gltf-binary', '.mp3': 'audio/mpeg', '.wav': 'audio/wav' }
 
 createServer(async (req, res) => {
+  // DEV: POST /_snap?name=x với body = dataURL/base64 JPEG → ghi file .snap/<name>.jpg để Claude xem ảnh
+  // (Browser pane không chụp được trang WebGL — screenshot timeout).
+  if (req.method === 'POST' && req.url.startsWith('/_snap')) {
+    const chunks = []; for await (const c of req) chunks.push(c)
+    const b64 = Buffer.concat(chunks).toString().replace(/^data:[^,]*,/, '')
+    const name = (new URL(req.url, 'http://x').searchParams.get('name') || 'snap').replace(/[^a-z0-9_-]/gi, '')
+    const dir = join(process.cwd(), '.snap'); await mkdir(dir, { recursive: true })
+    await writeFile(join(dir, name + '.jpg'), Buffer.from(b64, 'base64'))
+    res.writeHead(200, { 'Content-Type': 'text/plain' }); return res.end(join(dir, name + '.jpg'))
+  }
   try {
     let p = decodeURIComponent(new URL(req.url, 'http://x').pathname)
     if (p.endsWith('/')) p += 'index.html'
