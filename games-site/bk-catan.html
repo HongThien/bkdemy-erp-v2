@@ -42,8 +42,8 @@
   .hic{text-anchor:middle;dominant-baseline:central;pointer-events:none}
   .lbl{text-anchor:middle;dominant-baseline:central;fill:#fff;font-weight:800;pointer-events:none;paint-order:stroke;stroke:#0008;stroke-width:3px}
   .road{stroke-linecap:round}
-  .tgt{fill:#ffd16655;stroke:var(--gold);stroke-width:2.5;cursor:pointer;animation:pulse 1s infinite alternate}
-  .tgtE{stroke:#ffd166;stroke-width:9;stroke-linecap:round;opacity:.55;cursor:pointer;animation:pulse 1s infinite alternate}
+  .tgt{fill:#ffd166aa;stroke:var(--gold);stroke-width:3;cursor:pointer} /* KHÔNG animation: iPad Safari vẽ lại cả SVG ~700 phần tử mỗi khung khi vài chục mục tiêu đổi opacity ⇒ "quét màn hình nhấp nháy 1s/lần" (Thùy 24/09) */
+  .tgtE{stroke:#ffd166;stroke-width:9;stroke-linecap:round;opacity:.8;cursor:pointer}
   @keyframes pulse{from{opacity:.35}to{opacity:.95}}
   .flash{animation:flash 1.2s 3}
   @keyframes flash{50%{filter:drop-shadow(0 0 10px #fff) brightness(1.8)}}
@@ -275,7 +275,7 @@ const E=window.BKCATAN, $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmt=n=>Math.floor(n+1e-9).toLocaleString('vi-VN');
 // màu theo THỨ TỰ người chơi, khớp 4 màu nhà của bộ mô hình KayKit (đỏ/xanh dương/xanh lá/vàng)
-const PCOL=['#e8453c','#3d7fe0','#3fae4a','#f2c230'];
+const PCOL=['#1f1f26','#7b2fbf','#ff5fa2','#1f3a8a','#8b1a1a']; // Thùy 24/09: đen · tím · hồng · xanh nước biển · đỏ đậm — tránh trùng màu ô bản đồ (rừng/lúa/gạch/biển)
 const RESCOL={go:'#2f8f4e',gach:'#c8643b',lua:'#e2bd3c',cuu:'#8fd162',quang:'#8a8fa3'};
 const TIERCOL={1:'#5b3f8f',2:'#7b3aa8',3:'#a0237a'};
 const SB_URL='https://osrvycilwshkzhljuxef.supabase.co',SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4';
@@ -290,7 +290,7 @@ function saveC(){try{localStorage.setItem(KEY,JSON.stringify(C))}catch(e){}}
 
 // ---------- âm thanh ----------
 let AC=null;function beep(f,d,t,v){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.type=t||'triangle';o.frequency.value=f;g.gain.setValueAtTime(v||.05,AC.currentTime);g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+d);o.connect(g);g.connect(AC.destination);o.start();o.stop(AC.currentTime+d)}catch(e){}}
-const SFX={dice(){for(let i=0;i<6;i++)setTimeout(()=>beep(300+Math.random()*300,.05,'square',.03),i*60)},build(){beep(520,.1);setTimeout(()=>beep(780,.12),90)},war(){beep(140,.35,'sawtooth',.06);setTimeout(()=>beep(110,.4,'sawtooth',.06),200)},coin(){beep(880,.08);setTimeout(()=>beep(1320,.1),70)},bad(){beep(200,.25,'sawtooth',.05)},win(){[523,659,784,1046].forEach((f,i)=>setTimeout(()=>beep(f,.25),i*140))}};
+const SFX={dice(){for(let i=0;i<9;i++)setTimeout(()=>beep(300+Math.random()*300,.05,'square',.03),i*110)},diceLand(){beep(160,.12,'sine',.12);setTimeout(()=>beep(420,.08,'triangle',.08),60)},build(){beep(520,.1);setTimeout(()=>beep(780,.12),90)},war(){beep(140,.35,'sawtooth',.06);setTimeout(()=>beep(110,.4,'sawtooth',.06),200)},coin(){beep(880,.08);setTimeout(()=>beep(1320,.1),70)},bad(){beep(200,.25,'sawtooth',.05)},win(){[523,659,784,1046].forEach((f,i)=>setTimeout(()=>beep(f,.25),i*140))}};
 
 // ---------- mạng: Supabase Realtime (hoặc BroadcastChannel khi ?net=local để thử trên 1 máy) ----------
 let chan=null,netOK=false;const handlers={};let offset=0;const offS=[];
@@ -328,7 +328,7 @@ function drawBoard(svg,st,o){
   o=o||{};const map=E.buildMap(st.mapSeed);
   const xs=map.verts.map(v=>v.x*U),ys=map.verts.map(v=>v.y*U),pad=U*.9;
   const minX=Math.min(...xs)-pad,maxX=Math.max(...xs)+pad,minY=Math.min(...ys)-pad,maxY=Math.max(...ys)+pad;
-  svg._vb=[minX,minY,maxX-minX,maxY-minY];svg.setAttribute('viewBox',`${minX} ${minY} ${maxX-minX} ${maxY-minY}`);
+  svg._vb=[minX,minY,maxX-minX,maxY-minY];const vbs=`${minX} ${minY} ${maxX-minX} ${maxY-minY}`;if(svg!==$('padBoard')||svg.getAttribute('viewBox')!==vbs&&!svg._zoomed)svg.setAttribute('viewBox',vbs);
   let s='';
   // cảng
   for(const pt of map.ports){const e=map.edges[pt.edge],a=map.verts[e.a],b=map.verts[e.b];const mx=(a.x+b.x)/2,my=(a.y+b.y)/2,len=Math.hypot(mx,my),px=mx/len*(len+.55)*U,py=my/len*(len+.55)*U;
@@ -463,11 +463,13 @@ function onTurnStart(){const st=TV.st;TV.rollDeadline=Date.now()+ROLLWAIT+1800;
 // một lần đổ: xúc xắc to giữa TV → kết quả → sáng các ô trúng số → ai được bao nhiêu
 async function playRoll1(e,all){const st=TV.st,p=st.players[e.pi],ord=e.type==='orderRoll';TV.anim=true;broadcast();SFX.dice();
   const F=['','⚀','⚁','⚂','⚃','⚄','⚅'];$('bdN').innerHTML=`<span style="color:${p.color}">${esc(p.name)}</span> ${ord?'đổ chọn thứ tự đặt nhà':'đổ xúc xắc'}`;$('bdS').textContent='';$('bdG').innerHTML='';
-  const d=$('bdD');d.classList.add('spin');$('bigDice').classList.add('show');
-  const spin=setInterval(()=>{d.textContent=F[1+Math.floor(Math.random()*6)]+F[1+Math.floor(Math.random()*6)]},90);
-  await sleep(1200);clearInterval(spin);d.classList.remove('spin');d.textContent=F[e.d1]+F[e.d2];
+  const d=$('bdD'),d3=use3D();d.style.display=d3?'none':'';
+  if(d3){await BKC3D.rollDice(e.d1,e.d2);SFX.diceLand();$('bigDice').classList.add('show')} // xúc xắc 3D rơi trên bàn (giống Cờ Tỷ Phú), hộp chỉ hiện sau khi dừng
+  else{d.classList.add('spin');$('bigDice').classList.add('show');
+    const spin=setInterval(()=>{d.textContent=F[1+Math.floor(Math.random()*6)]+F[1+Math.floor(Math.random()*6)]},90);
+    await sleep(1200);clearInterval(spin);d.classList.remove('spin');d.textContent=F[e.d1]+F[e.d2]}
   $('bdS').textContent=!ord&&e.sum===7?`7 → ${p.name} +${E.CFG.baySo} ${E.RES_IC[e.bonus]}`:e.sum;SFX.coin();
-  if(ord){renderDice();await sleep(1800);$('bigDice').classList.remove('show');await sleep(300);TV.anim=false;
+  if(ord){renderDice();await sleep(1800);$('bigDice').classList.remove('show');if(d3)BKC3D.hideDice();await sleep(300);TV.anim=false;
     const done=(all||[]).find(x=>x.type==='orderDone');
     if(done){banner('🏠 Thứ tự chọn nhà',done.order.map((i,k)=>`${k+1}. <b style="color:${st.players[i].color}">${esc(st.players[i].name)}</b> (${st.orderRoll.key[i][0]})`).join(' → ')+(done.tied.length?'<br><span style="font-size:16px;color:var(--muted)">🤝 hoà điểm → máy bốc ngẫu nhiên</span>':'')+'<br><span style="font-size:16px;color:var(--muted)">vòng 2 đi ngược lại — người chọn cuối được đặt 2 nhà liền</span>',3500)}
     TV.rollDeadline=Date.now()+ROLLWAIT;renderTV();broadcast();tvSave();return}
@@ -476,7 +478,7 @@ async function playRoll1(e,all){const st=TV.st,p=st.players[e.pi],ord=e.type==='
   const g=e.gains.map((x,i)=>x>0?`<span style="color:${st.players[i].color}">${esc(st.players[i].name)} sẽ nhận +${fmt(x)}</span>`:'').filter(Boolean);
   $('bdG').innerHTML=g.length?g.join(''):(e.sum===7?'':'<span class="muted">Không ai có nhà cạnh ô số '+e.sum+'</span>');
   renderDice();
-  await sleep(2000);$('bigDice').classList.remove('show');await sleep(300);
+  await sleep(2000);$('bigDice').classList.remove('show');if(d3)BKC3D.hideDice();await sleep(300);
   TV.anim=false;
   if(TV.st.phase==='roll')TV.rollDeadline=Date.now()+ROLLWAIT;
   else if(TV.st.phase==='act'){const s2=TV.st;
@@ -608,8 +610,11 @@ function targets(){const st=P.st,pi=myPi(),m=P.mode;if(!m||pi<0)return{};
   if(m.k==='upgrade')return{tV:E.houses(st,pi).filter(v=>st.vLevel[v]<5)};
   if(m.k==='sab')return{tV:st.vOwner.map((o,v)=>o>=0&&o!==pi&&st.players[o].shield<=0?v:-1).filter(v=>v>=0)};
   return{}}
+function boardSig(st,o){return JSON.stringify([st.mapSeed,st.vOwner,st.vLevel,st.eOwner,st.vDebuff,st.zone,st.pending,st.players.map(p=>p.color),o])}
 function renderBoardPad(){if(!P.st)return;const t=targets(),o=Object.assign({mine:myPi()},t);
   $('pad3d').style.display=P.view3d?'block':'none';$('padBoard').style.display=P.view3d?'none':'';
+  // chỉ vẽ lại khi thứ hiện trên bàn thật sự đổi — state tới mỗi 2.5s + mỗi thao tác của người khác mà cứ dựng lại SVG/3D thì bàn chớp
+  const sig=(P.view3d?'3d':'2d')+boardSig(P.st,o);if(sig===P._boardSig)return;P._boardSig=sig;
   if(P.view3d&&window.BKC3D&&BKC3D.ok){BKC3D.render(P.st,o);$('zoomLv').textContent=BKC3D.view.k>1.01?`🔍 ×${BKC3D.view.k.toFixed(1)} · kéo để di chuyển`:''}
   else{drawBoard($('padBoard'),P.st,o);applyZoom()}}
 // iPad 3D: nạp mô hình khi bấm nút 3D lần đầu (7MB), chạm chọn bằng dò điểm trên mặt bàn
@@ -632,7 +637,7 @@ const Z={k:1,cx:null,cy:null,ptrs:new Map(),moved:0,pinch:null};
 function applyZoom(){const svg=$('padBoard'),vb=svg._vb;if(!vb)return;const [x0,y0,w0,h0]=vb;
   Z.k=Math.max(1,Math.min(4,Z.k));if(Z.cx==null||Z.k===1){Z.cx=x0+w0/2;Z.cy=y0+h0/2}
   const w=w0/Z.k,h=h0/Z.k;Z.cx=Math.max(x0+w/2,Math.min(x0+w0-w/2,Z.cx));Z.cy=Math.max(y0+h/2,Math.min(y0+h0-h/2,Z.cy));
-  svg.setAttribute('viewBox',`${Z.cx-w/2} ${Z.cy-h/2} ${w} ${h}`);$('zoomLv').textContent=Z.k>1.01?`🔍 ×${Z.k.toFixed(1)} · kéo để di chuyển`:''}
+  svg.setAttribute('viewBox',`${Z.cx-w/2} ${Z.cy-h/2} ${w} ${h}`);svg._zoomed=Z.k>1.001;$('zoomLv').textContent=Z.k>1.01?`🔍 ×${Z.k.toFixed(1)} · kéo để di chuyển`:''}
 function svgPt(evt){const svg=$('padBoard'),pt=svg.createSVGPoint();pt.x=evt.clientX;pt.y=evt.clientY;return pt.matrixTransform(svg.getScreenCTM().inverse())}
 function zoomAt(f,cx,cy){const k0=Z.k;Z.k=Math.max(1,Math.min(4,Z.k*f));if(cx!=null&&Z.k!==k0){const r=k0/Z.k;Z.cx=cx+(Z.cx-cx)*r;Z.cy=cy+(Z.cy-cy)*r}applyZoom()}
 function zoomInit(){const svg=$('padBoard');

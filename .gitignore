@@ -72,3 +72,4 @@ dist-khaosat
 token.txt
 dist-verify/
 .env*
+.snap/
