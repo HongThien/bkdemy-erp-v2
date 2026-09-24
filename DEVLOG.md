@@ -29699,6 +29699,60 @@ cuối không đụng ERP. Sửa: thiếu PREVIOUS_SHA ⇒ BUILD ngay (đúng lu
 - (Thùy 24/09, tiếp) **Xúc xắc 3D giống Cờ Tỷ Phú**: `BKC3D.rollDice(d1,d2)` — 2 viên (BoxGeometry 1.05, mặt canvas chấm, thứ tự mặt +x,-x,+y,-y,+z,-z = 3,4,1,6,2,5) rơi từ cao 4.5 trước tâm khung nhìn (z+2.6), xoay loạn, nảy 2 nhịp, .72–.9 slerp về mặt đúng, Promise xong ở .9 (~1.25s); `hideDice()` khi đóng hộp kết quả. **Bảng DIE_ROT của Cờ Tỷ Phú đảo 3↔4** (kiểm bằng quaternion·pháp tuyến: 3:[0,0,-π/2] cho mặt 4 lên) — đã sửa ở Catan, Cờ Tỷ Phú vẫn sai (chưa đụng). Xúc xắc material `transparent:true` + renderOrder 20 để vào danh sách vẽ sau sprite thẻ số (depthTest:false) — không thì thẻ số đè lên viên. TV `playRoll1`: 3D ⇒ ẩn dòng ⚀⚁, chờ viên dừng rồi mới hiện hộp tên/tổng/ai nhận + `SFX.diceLand`; 2D giữ như cũ. Verify: override rAF=setTimeout (pane ẩn không chạy rAF), 3 lần roll (3,5)(6,1)(5,3) mặt ngửa đúng và giữ nguyên; autoRoll của ván thật chạy qua nhánh 3D (bdD display none). Ảnh `.snap/dice4-air.jpg`, `dice4-rest.jpg`.
 - (Thùy 24/09, "vẫn nhấp nháy, quét màn hình") **Nguyên nhân thật**: CSS `.tgt`/`.tgtE` (đỉnh/cạnh hợp lệ) có `animation:pulse 1s infinite alternate` (opacity .35↔.95). Lúc đặt nhà ban đầu bàn có **100 phần tử** mục tiêu cùng đổi opacity ⇒ Safari iPad vẽ lại cả SVG ~700 phần tử mỗi khung hình ⇒ nhìn như quét/chớp, chu kỳ đúng 1s. Dedup vẽ lại ở bước trước cần nhưng chưa đủ. Fix: bỏ animation, mục tiêu tĩnh (fill #ffd166aa, stroke 3; cạnh opacity .8). Kiểm: pad slot 3 ở setup, 100 `.tgt`, `animationName=none`, 0 animation trong `#padBoard`. `.dr.now`/`#rollBtn` pulse giữ (phần tử đơn, ngoài bàn).
 
+## 2026-09-24 — Đề thi Noctorium 11+12: bóc DOCX → kho tạm (CEO: "đẩy hết lên kho tạm, chương đủ thông tin thì gán dạng")
+
+**Bộ 12 tải lại (2 zip ~120MB) = "Noctorium - 7449 câu"** gồm cả Toán 11 (107 đề) + Toán 12 (181 đề ghi khối + 116 đề thi thử TN 2026
+không ghi khối) + bản dạng. Lần đầu Thùy tải nhầm (2 file "Lớp 12" chứa Toán 11) — kiểm bằng unzip -l + sha256 rồi mới nói.
+
+**3 script mới (commit 227cedd, 035f91e):**
+- `noctorium_parse.mjs` — docx (Word Equation/OMML) → JSON đề/câu/hình, 0 token AI. OMML→LaTeX mở rộng từ docx-doc.mjs: sepChr (bộ này mã hoá
+  "2x−1" trong ngoặc thành 2 m:e nối bằng sepChr="−" — ban đầu ra "2x; 1"), cases/array, lim, mathbb, prime A', text chỉ cho chữ có dấu,
+  bảng Word → array có kẻ ô, tách dòng mềm (mệnh đề dính "Câu 1.\ta)…"). Máy rút đáp án TN từ lời giải (phương án xuất hiện trong câu "Vậy…")
+  ~70%, TLN ~74%; kiểm 12 mẫu ngẫu nhiên 12/12 đúng. Khối 12: 297 đề/5135 câu/2890 hình; khối 11: 107 đề/2314 câu.
+- `noctorium_crosswalk.mjs` — dạng của họ (105 dạng k12, 31 dạng k11 ở các chương liên quan) → ma_dang BK, t làm trong context (rẻ hơn AI
+  từng câu); vài dạng có rule regex theo nội dung; không chắc ⇒ CHUA. Khối 12: 3443/5135 câu có dạng (60 dạng BK), 1692 dạng chờ.
+- `noctorium_insert.mjs` — 1 tx/đề: insertCauBatch (lọc trùng + dạng chờ sẵn có) → tai_lieu(de_thi) + tai_lieu_phan(custom) + tai_lieu_cau
+  (đường A theo spec) + nhap_kho_log(folder='co_giai', ghi_chu 'noctorium de_thi:<id>'). Điểm/thời gian ở cau_hinh.deThi (chưa cột mới).
+  Đ/S: mọi mệnh đề = dạng chờ (chưa có kênh AI đọc từng ý). Nhập thử 1 đề (Hoa Sen) verify DB đúng rồi mới chạy cả bộ ở nền.
+
+**Sai/sửa:** (1) heredoc Bash nuốt 1 dấu backslash ⇒ patch bằng heredoc làm hỏng file đầy LaTeX (tab+"ext") — đúng bẫy memory cũ, chuyển
+sang Write tool. (2) --loc lọc nhầm cả folder dạng ⇒ 0 nhãn. (3) nhap_kho_log.folder có CHECK (co_giai/khong_giai) ⇒ rollback lần đầu, đổi
+sang co_giai + ghi_chu. (4) kho_anh.mjs tự chạy CLI khi import ⇒ viết lại upload trong script. (5) 14 câu k11 không có câu dẫn ⇒ vá payload.
+
+**Chưa chốt / chờ Thùy:** khối 11 chương IV+VII (hình không gian) — kho đích? (hinh_hoc_ban_do k11 chỉ 1 dạng, _kho_insert không hỗ trợ
+hinh_hoc) ⇒ 61/107 đề k11 giữ lại chưa nhập · kênh AI (CLI claude chưa login; có API key .env.local chưa được phép tiêu) cho ~1200 TN + ~400 TLN
+chưa đáp án và dạng từng mệnh đề Đ/S · bản đồ BK k12 thiếu dạng (đọc tiệm cận từ BBT/đồ thị, đếm tiệm cận, tâm đối xứng, giao điểm với
+trục, véc tơ bằng nhau/cùng phương hình khối, độ dài véc tơ hình khối, cực trị Oxyz thực tiễn).
+
+## 2026-09-24 (tiếp) — Thử AI trích đáp án còn thiếu: 2 hướng đều KHÔNG đủ tin, chưa triển khai tiếp
+
+**Hướng 1 — vá quy tắc so chuỗi (`scripts/noctorium_dapan.mjs`, đã đánh dấu ⛔ KHÔNG CHẠY):** ưu tiên phương
+án khớp gần cuối câu + bỏ phương án là chuỗi con của phương án khác. Đo trên 14 mẫu ngẫu nhiên: SAI 4/14 (29%).
+3 lỗi gốc: câu kết nhắc lại đề bài gốc (trùng chữ với 1 phương án nhiễu, đứng sau đáp số thật) · xoá `{}`
+làm 2 số dính liền thành chuỗi giả trùng phương án khác (`\dfrac{7}{4}`→"74" trùng đáp án 74 thật) · đáp số
+1 chữ số bị luật an toàn (≥2 ký tự) loại bỏ trong khi số trung gian (dưới dấu căn) dài hơn bị chọn nhầm.
+
+**Hướng 2 — Agent Haiku (subagent trong phiên, không qua CLI vì `claude` local CHƯA login):** thí điểm 20
+câu, Haiku tự đọc lời giải + 4 phương án, Sonnet (t) đọc lại 100% để kiểm — không kiểm mẫu được vì công kiểm
+= công tự trích. Kết quả 16/20 đúng, nhưng: 1 câu Haiku hiểu đúng nội dung mà GÁN SAI CHỮ CÁI · 3/20 câu
+trích dẫn TRÙNG với câu KHÁC trong cùng lô (dấu hiệu "đuối" khi xử lý lô 20 câu 1 lượt — giống hệt lỗi CEO
+đã đo 11/09 với Haiku dồn cục). Kết luận: vì kiểm ⇒ phải đọc lại từ đầu, Haiku không tiết kiệm được gì đáng
+kể cho việc trích đơn giản này — nếu làm tiếp thì Sonnet tự đọc trực tiếp, không qua Haiku middleman.
+
+**Quy mô thật (chưa làm):** ~1.635 câu TN/TLN còn thiếu đáp án + ~5.460 mệnh đề Đúng/Sai còn thiếu dạng
+(100% đang ở dạng chờ, mỗi câu Đ/S có 4 mệnh đề). Việc nhiều phiên, hỏi Thùy có bắt đầu ngay từng đợt nhỏ
+hay để làm việc riêng sau. Insert nền (297 đề k12 + 46 đề k11) vẫn đang chạy, ~29/297 và 27/46 lúc ghi log.
+
+## 2026-09-24 — Đóng vòng BTVN 7S1 20/09: xoá 64 điểm nhầm, hệ tự dọn 8 ô
+- Thùy đã tự bấm "Mở lại để sửa" trước khi t quay lại → lưới tự sinh đúng 20 ô phiếu thật, giữ 8 ô nhầm
+  (còn điểm) đánh dấu "Ngoài phiếu" — khớp đúng thiết kế banner sửa hôm qua (commit 4adfd55).
+- Thùy chạy `scripts/_del_btvn_7s1_2309_wrong.mjs` (t viết, DELETE FROM gami_grades where problem_id = 8 id
+  câu nhầm) — xoá sạch 64 dòng. Mở lại tab BTVN (admin dev, dev-alt2 5203) → sync tự động DELETE nốt 8 ô
+  rỗng (đúng logic `syncDocProblems`: thua rỗng → xoá, không hỏi). Verify DB: lưới còn đúng 20 ô (2 dạng
+  T107020303/T107020401), 0 điểm — sẵn sàng TA nhập lại ĐCS. `btvn_ket_qua` (nộp/thái độ) không đụng.
+- **Bài học chế độ auto:** classifier chặn DELETE qua Bash/PowerShell kể cả khi Thùy đã gật rõ trong chat
+  ("xóa đi nhập lại") — phải để Thùy tự chạy script (Write tool tạo file được, Bash chạy DELETE thì không).
+
 ## 2026-09-24 — Gỡ `ignoreCommand` khỏi vercel.json (Thùy: "ko build được, đang build nó biến mất")
 
 Sau khi sửa script (thiếu PREVIOUS_SHA ⇒ BUILD) vẫn cancel: Vercel cấp PREVIOUS_SHA = deployment VỪA BỊ CANCEL (f196dac) ⇒ diff tới 6d86f14 chỉ có
