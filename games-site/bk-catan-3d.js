@@ -308,6 +308,53 @@ function flashHex(ids) {
     anims.push({ t: 0, dur: 2.2, fn: k => { const e = Math.sin(Math.min(1, k * 1.15) * Math.PI); ms.forEach(m => { m.emissive.setHex(0xffc233); m.emissiveIntensity = e * .65; }); t.position.y = y0 + e * .12; } });
   }
 }
+// ---------- xúc xắc 3D (Thùy 24/09 "giống Cờ Tỷ Phú"): 2 viên rơi từ trên xuống trước bàn, xoay loạn, nảy 2 nhịp, dừng đúng mặt ----------
+const DIE_ROT = { 1: [0, 0, 0], 6: [Math.PI, 0, 0], 2: [-Math.PI / 2, 0, 0], 5: [Math.PI / 2, 0, 0], 3: [0, 0, Math.PI / 2], 4: [0, 0, -Math.PI / 2] }; // xoay để mặt v hướng lên (+y) — đã kiểm bằng quaternion·pháp tuyến (bản Cờ Tỷ Phú đảo 3↔4)
+const DIE_S = 1.05;
+let dice = null;
+function makeDie() {
+  const pips = { 1: [[0, 0]], 2: [[-1, -1], [1, 1]], 3: [[-1, -1], [0, 0], [1, 1]], 4: [[-1, -1], [1, -1], [-1, 1], [1, 1]], 5: [[-1, -1], [1, -1], [0, 0], [-1, 1], [1, 1]], 6: [[-1, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [1, 1]] };
+  const face = v => { const c = document.createElement('canvas'); c.width = c.height = 128; const g = c.getContext('2d'); g.fillStyle = '#fff8e6'; g.fillRect(0, 0, 128, 128); g.fillStyle = '#2a1f10'; pips[v].forEach(([x, y]) => { g.beginPath(); g.arc(64 + x * 34, 64 + y * 34, 11, 0, Math.PI * 2); g.fill(); }); const t = new T.CanvasTexture(c); t.encoding = T.sRGBEncoding; return new T.MeshStandardMaterial({ map: t, roughness: .5, transparent: true }); }; // transparent để vào danh sách vẽ sau sprite (thẻ số depthTest:false) — không thì thẻ đè lên xúc xắc
+  // thứ tự mặt BoxGeometry: +x,-x,+y,-y,+z,-z → 3,4,1,6,2,5 (đối diện cộng 7)
+  const m = new T.Mesh(new T.BoxGeometry(DIE_S, DIE_S, DIE_S), [3, 4, 1, 6, 2, 5].map(face)); m.castShadow = true; m.visible = false; m.renderOrder = 20; return m; // renderOrder > nhãn (10) để xúc xắc đè lên thẻ số
+}
+// rollDice(d1,d2) → Promise xong lúc 2 viên dừng (~1.4s). Viên nằm trước tâm khung nhìn, cao hơn mặt ô nửa cạnh.
+function rollDice(d1, d2) {
+  if (!API.ok) return Promise.resolve();
+  if (!dice) { dice = [makeDie(), makeDie()]; dice.forEach(d => fx.add(d)); }
+  const cx = VIEW.tx, cz = VIEW.tz + 2.6, floor = topY + DIE_S / 2, dur = 1.4;
+  const vals = [d1, d2], W = [], X0 = [], Z0 = [], Q1 = [];
+  dice.forEach((d, k) => {
+    d.visible = true; X0[k] = cx + (k ? .95 : -.95) + (Math.random() - .5) * .3; Z0[k] = cz + (Math.random() - .5) * .3;
+    d.position.set(X0[k] - (k ? .5 : -.5), floor + 4.5, Z0[k] - .8); d.rotation.set(Math.random() * 6, Math.random() * 6, Math.random() * 6);
+    W[k] = new T.Vector3(8 + Math.random() * 6, 6 + Math.random() * 6, 5 + Math.random() * 6);
+    const e = new T.Euler(...DIE_ROT[vals[k]]); Q1[k] = new T.Quaternion().setFromEuler(e);
+  });
+  return new Promise(res => {
+    let prev = 0, done = false;
+    anims.push({ t: 0, dur, fn: kk => {
+      const dt = (kk - prev) * dur; prev = kk;
+      dice.forEach((d, k) => {
+        // độ cao: rơi (0–.5) → nảy 1 (.5–.72) → nảy 2 (.72–.86) → nằm
+        let y = 0;
+        if (kk < .5) { const u = kk / .5; y = 4.5 * (1 - u * u); }
+        else if (kk < .72) { y = .9 * Math.sin(Math.PI * (kk - .5) / .22); }
+        else if (kk < .86) { y = .3 * Math.sin(Math.PI * (kk - .72) / .14); }
+        // trượt ngang dần về chỗ đậu
+        const s = Math.min(1, kk / .8), ease = 1 - (1 - s) * (1 - s);
+        d.position.set(X0[k] - (k ? .5 : -.5) * (1 - ease), floor + y, Z0[k] - .8 * (1 - ease));
+        if (kk < .72) { d.rotation.x += W[k].x * dt; d.rotation.y += W[k].y * dt; d.rotation.z += W[k].z * dt; }
+        else { // .72–.9: quay dần về mặt đúng
+          const u = Math.min(1, (kk - .72) / .18); if (!d.userData.q0) d.userData.q0 = d.quaternion.clone();
+          d.quaternion.slerpQuaternions(d.userData.q0, Q1[k], u * u * (3 - 2 * u));
+        }
+        if (kk >= 1) { d.quaternion.copy(Q1[k]); d.position.y = floor; delete d.userData.q0; }
+      });
+      if (kk >= .9 && !done) { done = true; res(); }
+    } });
+  });
+}
+function hideDice() { if (dice) dice.forEach(d => { d.visible = false; delete d.userData.q0; }); }
 // ---------- máy quay: zoom + kéo (iPad), lượn nhẹ (TV) ----------
 const VIEW = { k: 1, tx: 0, tz: -0.3, dist0: 20, idle: true };
 function placeCam(t) {
@@ -326,6 +373,6 @@ function pick(clientX, clientY) {
   ray.setFromCamera(v, cam); plane.constant = -topY; const p = new T.Vector3();
   return ray.ray.intersectPlane(plane, p) ? { x: p.x, y: p.z } : null;
 }
-const API = { ok: false, init, render, explore, flashHex, zoomBy, panBy, resetView, pick, setIdle: b => { VIEW.idle = b; }, view: VIEW, resize: () => R && resize(), _dbg: () => ({ lib, scene, cam, R, tileScale, tileRot, topY }) };
+const API = { ok: false, init, render, explore, flashHex, rollDice, hideDice, zoomBy, panBy, resetView, pick, setIdle: b => { VIEW.idle = b; }, view: VIEW, resize: () => R && resize(), _dbg: () => ({ lib, scene, cam, R, tileScale, tileRot, topY }) };
 window.BKC3D = API;
 })();
