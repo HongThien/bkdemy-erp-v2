@@ -40,8 +40,11 @@ async function upAnh(pngPath, ten) {
 
 // ── payload câu theo format _kho_insert ───────────────────────────────────────
 function payload(q, de, dang, anhDe, anhGiai) {
+  // Câu không có câu dẫn riêng (14 câu khối 11): tự luận chỉ có ý a) b) ⇒ các ý LÀ nội dung; Đ/S mệnh đề độc lập ⇒ câu dẫn chuẩn
+  let noiDung = (q.noi_dung ?? '').trim()
+  if (!noiDung) noiDung = q.loai_cau === 'tu_luan' && q.y?.length ? q.y.join('\n') : q.loai_cau === 'dung_sai' ? 'Xét tính đúng sai của các khẳng định sau:' : noiDung
   const base = {
-    dang_chinh: dang, khoi: String(de.khoi), loai_cau: q.loai_cau, noi_dung: q.noi_dung,
+    dang_chinh: dang, khoi: String(de.khoi), loai_cau: q.loai_cau, noi_dung: noiDung,
     nguon: 'de_thi', nguon_giai: 'nguoi', ten_de_goc: de.file.replace(/\.docx$/i, ''),
     anh_de: anhDe ?? null, anh_dap_an: anhGiai ?? null,
   }
@@ -49,7 +52,7 @@ function payload(q, de, dang, anhDe, anhGiai) {
   if (q.loai_cau === 'dung_sai') return { ...base, menh_de: q.menh_de.map((m) => ({ noi_dung: m.noi_dung, dap_an: m.dap_an, ma_dang: 'CHUA', loi_giai: m.loi_giai ?? null })), dap_an: null, loi_giai: null }
   if (q.loai_cau === 'tra_loi_ngan') return { ...base, dap_an: q.dap_an ?? null, loi_giai: q.loi_giai || null }
   // tự luận: giữ nguyên (CEO 22/09: chỉ ý có đáp số mới đổi TLN — bước sau, cần đọc)
-  return { ...base, dap_an: null, loi_giai: [q.y?.length ? q.y.join('\n') : '', q.loi_giai || ''].filter(Boolean).join('\n\n') || null }
+  return { ...base, dap_an: null, loi_giai: [q.y?.length && noiDung !== q.y.join('\n') ? q.y.join('\n') : '', q.loi_giai || ''].filter(Boolean).join('\n\n') || null }
 }
 
 // ── main ─────────────────────────────────────────────────────────────────────
