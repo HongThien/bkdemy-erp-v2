@@ -11,7 +11,7 @@ const COOL_TINT = 0x5d6278;
 const CHAR = ['Barbarian', 'Rogue', 'Druid']; // quái 0/1/2
 const GAP = 0.9; // ô co còn 90% → khe giữa các ô là chỗ của đường
 
-let R, scene, cam, clock, loader, root, dyn, zoneG, fx;
+let R, scene, cam, clock, loader, root, dyn, zoneG, fx, tgtG;
 const lib = {}; let clips = [];
 let tileScale = 1, tileRot = 0, topY = 0, builtSeed = null;
 const mixers = [], anims = [], tiles = {};
@@ -52,6 +52,7 @@ async function init(canvas) {
   dyn = new T.Group(); scene.add(dyn);
   zoneG = new T.Group(); scene.add(zoneG);
   fx = new T.Group(); scene.add(fx);
+  tgtG = new T.Group(); scene.add(tgtG);
   // mây trôi
   for (let i = 0; i < 6; i++) {
     const c = kit(i % 2 ? 'cloud_big' : 'cloud_small'); c.position.set(-18 + i * 7, 9 + (i % 3), -12 + (i * 3) % 6); // mây trôi phía sau bàn, không che ô
@@ -69,9 +70,8 @@ function resize() {
   // vừa khít bàn dẹt: nửa rộng ~8.8, nửa sâu ~6.5 (tính cả mép biển), máy quay nghiêng ~52°
   const vf = cam.fov * Math.PI / 360, hf = Math.atan(Math.tan(vf) * cam.aspect);
   const dist = Math.max(8.9 / Math.tan(hf), 7.4 / Math.tan(vf)); // bàn 51 ô: rộng ~15.6
-  cam.position.set(0, dist * 0.79, dist * 0.61); cam.lookAt(0, 0, -0.3);
-  cam.userData.base = cam.position.clone();
-  cam.updateProjectionMatrix();
+  VIEW.dist0 = dist;
+  cam.updateProjectionMatrix(); placeCam(0);
 }
 function kit(name, tint, flat) {
   const o = lib[name].clone(true);
@@ -222,12 +222,25 @@ function renderDyn(st, o) {
     if (o.flashV && o.flashV.includes(i)) pop(h);
   });
 }
+function renderTargets(st, o) {
+  tgtG.clear(); const map = E.buildMap(st.mapSeed);
+  const gold = () => new T.MeshBasicMaterial({ color: 0xffd166, transparent: true, opacity: .7, depthWrite: false });
+  for (const i of o.tV || []) { const v = map.verts[i], m = new T.Mesh(new T.CylinderGeometry(.2, .2, .06, 20), gold()); m.position.set(v.x, topY + .09, v.y); tgtG.add(m); }
+  for (const i of o.tE || []) { const e = map.edges[i], a = map.verts[e.a], b = map.verts[e.b]; const m = new T.Mesh(new T.BoxGeometry(.2, .06, Math.hypot(b.x - a.x, b.y - a.y) * .7), gold()); m.position.set((a.x + b.x) / 2, topY + .09, (a.y + b.y) / 2); m.rotation.y = Math.atan2(b.x - a.x, b.y - a.y); tgtG.add(m); }
+  // đăng ký của chính mình: bóng mờ màu người chơi
+  if (o.mine != null) for (const x of (st.pending && st.pending[o.mine]) || []) {
+    const col = new T.Color(st.players[o.mine].color).convertSRGBToLinear(), mat = new T.MeshStandardMaterial({ color: col, transparent: true, opacity: .45 });
+    if (x.t === 'road') { const e = map.edges[x.e], a = map.verts[e.a], b = map.verts[e.b]; const m = new T.Mesh(new T.BoxGeometry(.2, .14, Math.hypot(b.x - a.x, b.y - a.y) * .68), mat); m.position.set((a.x + b.x) / 2, topY + .07, (a.y + b.y) / 2); m.rotation.y = Math.atan2(b.x - a.x, b.y - a.y); tgtG.add(m); }
+    if (x.t === 'house') { const v = map.verts[x.v], m = new T.Mesh(new T.ConeGeometry(.28, .45, 4), mat); m.position.set(v.x, topY + .25, v.y); tgtG.add(m); }
+  }
+}
 function pop(o) { const s = o.scale.clone(); o.scale.multiplyScalar(.01); anims.push({ t: 0, dur: .6, fn: k => { const e = 1 + 2.7 * Math.pow(k - 1, 3) + 1.7 * Math.pow(k - 1, 2); o.scale.copy(s).multiplyScalar(Math.max(.01, e)); } }); }
 
 function render(st, o) {
   if (!API.ok || !st) return;
+  o = o || {};
   if (builtSeed !== st.mapSeed) buildStatic(st);
-  renderZones(st); renderDyn(st, o || {});
+  renderZones(st); renderDyn(st, o); renderTargets(st, o);
   last = st;
 }
 
@@ -251,10 +264,8 @@ function loop() {
   for (let i = anims.length - 1; i >= 0; i--) { const a = anims[i]; a.t += dt; const k = Math.min(1, a.t / a.dur); a.fn(k); if (k >= 1) anims.splice(i, 1); }
   fx.children.forEach(c => { if (c.userData.drift) { c.position.x += c.userData.drift * dt; if (c.position.x > 18) c.position.x = -18; } });
   for (const k in zoneState) { const r = zoneState[k].ring; if (r) { r.rotation.z = t * .6; r.material.opacity = .45 + .3 * Math.sin(t * 2.5); } }
-  // lượn máy quay rất nhẹ cho sống động
-  const base = cam.userData.base;
-  const a = Math.sin(t * 0.08) * 0.06, c = Math.cos(a), s = Math.sin(a);
-  cam.position.set(base.x * c - base.z * s, base.y, base.x * s + base.z * c); cam.lookAt(0, 0, -0.3);
+  placeCam(t); // TV: lượn rất nhẹ cho sống động; iPad: đứng yên, zoom/kéo tay
+  if (tgtG.children.length) { const k = .55 + .45 * Math.sin(t * 5); tgtG.children.forEach(m => { m.material.opacity = .35 + .5 * k; }); }
   R.render(scene, cam);
 }
 
@@ -266,6 +277,24 @@ function flashHex(ids) {
     anims.push({ t: 0, dur: 2.2, fn: k => { const e = Math.sin(Math.min(1, k * 1.15) * Math.PI); ms.forEach(m => { m.emissive.setHex(0xffc233); m.emissiveIntensity = e * .65; }); t.position.y = y0 + e * .12; } });
   }
 }
-const API = { ok: false, init, render, explore, flashHex, resize: () => R && resize(), _dbg: () => ({ lib, scene, cam, R, tileScale, tileRot, topY }) };
+// ---------- máy quay: zoom + kéo (iPad), lượn nhẹ (TV) ----------
+const VIEW = { k: 1, tx: 0, tz: -0.3, dist0: 20, idle: true };
+function placeCam(t) {
+  const d = VIEW.dist0 / VIEW.k, a = VIEW.idle ? Math.sin(t * 0.08) * 0.06 : 0;
+  const ox = 0, oy = d * 0.79, oz = d * 0.61, c = Math.cos(a), s = Math.sin(a);
+  cam.position.set(VIEW.tx + ox * c - oz * s, oy, VIEW.tz + ox * s + oz * c); cam.lookAt(VIEW.tx, 0, VIEW.tz);
+}
+function clampView() { VIEW.k = Math.max(1, Math.min(4, VIEW.k)); const m = (1 - 1 / VIEW.k); VIEW.tx = Math.max(-8 * m, Math.min(8 * m, VIEW.tx)); VIEW.tz = Math.max(-0.3 - 5.5 * m, Math.min(-0.3 + 5.5 * m, VIEW.tz)); if (VIEW.k === 1) { VIEW.tx = 0; VIEW.tz = -0.3; } }
+function zoomBy(f) { VIEW.k *= f; clampView(); }
+function panBy(dx, dy) { const c = R.domElement, h = 2 * Math.tan(cam.fov * Math.PI / 360) * VIEW.dist0 / VIEW.k, wpp = h / c.clientHeight; VIEW.tx -= dx * wpp; VIEW.tz -= dy * wpp * 1.3; clampView(); }
+function resetView() { VIEW.k = 1; clampView(); }
+// chạm → điểm trên mặt bàn (toạ độ bản đồ x,y) để dùng chung logic chọn đỉnh/cạnh/ô với bàn 2D
+const ray = new T.Raycaster(), plane = new T.Plane(new T.Vector3(0, 1, 0), 0);
+function pick(clientX, clientY) {
+  const r = R.domElement.getBoundingClientRect(), v = new T.Vector2((clientX - r.left) / r.width * 2 - 1, -(clientY - r.top) / r.height * 2 + 1);
+  ray.setFromCamera(v, cam); plane.constant = -topY; const p = new T.Vector3();
+  return ray.ray.intersectPlane(plane, p) ? { x: p.x, y: p.z } : null;
+}
+const API = { ok: false, init, render, explore, flashHex, zoomBy, panBy, resetView, pick, setIdle: b => { VIEW.idle = b; }, view: VIEW, resize: () => R && resize(), _dbg: () => ({ lib, scene, cam, R, tileScale, tileRot, topY }) };
 window.BKC3D = API;
 })();

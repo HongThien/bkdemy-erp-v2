@@ -48,6 +48,7 @@ const RIENG = [
 // Đường dẫn KHÔNG ảnh hưởng bundle nào
 const BO_QUA = [
   'public/games/', // game Trung Thu — project Vercel riêng (Root Directory=public/games), không app nào build
+  'games-site/',   // thư mục game hiện tại (hub + Cờ Tỷ Phú + BK Catan…) — project Vercel game riêng; thiếu dòng này thì sửa game là build oan cả 8 app ERP
   'design/', 'docs/', 'supabase/', 'scripts/', 'worker/', '.claude/', '.github/', 'dist', 'schema.md', 'DEVLOG.md', 'HANDOFF.md',
   'CLAUDE.md', 'README', '_v1_ref/', '.gitignore', '.env.example',
 ]

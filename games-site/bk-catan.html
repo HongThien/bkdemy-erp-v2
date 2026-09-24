@@ -127,18 +127,22 @@
   .rc{flex:1;min-width:84px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:5px 8px;text-align:center}
   .rc .v{font-size:19px;font-weight:900;font-variant-numeric:tabular-nums}
   .rc .n{font-size:11px;color:var(--muted)} .rc .g{font-size:11px;color:var(--green);font-weight:700}
-  #padBody{flex:1;display:grid;grid-template-columns:3fr 2fr;min-height:0} /* iPad ngang: bàn cờ 60% */
-  @media (orientation:portrait){#padBody{grid-template-columns:1fr;grid-template-rows:3fr 2fr}#padPanel{border-left:none;border-top:1px solid var(--line)}}
+  /* iPad: TAB toàn màn — Bản đồ · Xây · Quân · Thẻ · Chợ · Đăng ký; chọn tab nào thì tab đó chiếm cả màn (CEO 24/09) */
+  #padBody{flex:1;display:flex;flex-direction:column;min-height:0}
+  #padMain{flex:1;position:relative;min-height:0}
+  #pad3d{position:absolute;inset:0;width:100%;height:100%;display:none;touch-action:none}
+  #zoomBar .v3{font-size:15px}
   #padBoard{touch-action:none}
   #zoomBar{position:absolute;right:10px;bottom:10px;display:flex;flex-direction:column;gap:6px;z-index:3}
   #zoomBar button{width:46px;height:46px;padding:0;font-size:22px;font-weight:900;border-radius:14px;background:#141d4ae6}
   #zoomLv{position:absolute;left:10px;bottom:12px;font-size:12px;color:var(--muted);z-index:3}
-  #padBoardWrap{position:relative;min-height:0;background:radial-gradient(circle,#1e5a8a,#0b2345)}
+  #padBoardWrap{position:absolute;inset:0;min-height:0;background:radial-gradient(circle,#1e5a8a,#0b2345)}
   #modeHint{position:absolute;left:10px;right:10px;top:10px;background:#141d4aee;border:2px solid var(--gold);border-radius:14px;padding:8px 12px;font-weight:800;display:none;align-items:center;gap:10px;z-index:3}
   #modeHint.show{display:flex} #modeHint button{margin-left:auto;padding:6px 12px}
-  #padPanel{display:flex;flex-direction:column;min-height:0;border-left:1px solid var(--line);background:#0f1740}
-  #tabs{display:flex}
-  #tabs button{flex:1;border-radius:0;border:none;border-bottom:3px solid transparent;background:none;padding:12px 4px;font-weight:800;font-size:15px}
+  #padPanel{position:absolute;inset:0;display:flex;flex-direction:column;min-height:0;background:#0f1740}
+  #padPanel #tabBody{width:min(980px,100%);margin:0 auto}
+  #tabs{display:flex;background:#0f1740;border-bottom:1px solid var(--line)}
+  #tabs button{flex:1;border-radius:0;border:none;border-bottom:4px solid transparent;background:none;padding:13px 4px;font-weight:800;font-size:17px}
   #tabs button.sel{border-bottom-color:var(--gold);color:var(--gold);box-shadow:none}
   #tabBody{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:10px}
   .act{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
@@ -152,7 +156,7 @@
   .zc .hd{display:flex;align-items:center;gap:8px;font-weight:800}
   .zc .urow{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:14px}
   .zc .urow .un{width:92px}
-  #endBtn{margin:10px;padding:16px;font-size:20px}
+  #endBtn{margin:8px 10px 10px;padding:14px;font-size:20px}
   #toast{position:absolute;left:50%;bottom:90px;transform:translateX(-50%);background:#5a1f2a;border:2px solid var(--red);border-radius:14px;padding:10px 18px;font-weight:800;opacity:0;transition:opacity .3s;z-index:40;pointer-events:none;max-width:90vw;text-align:center}
   #toast.show{opacity:1} #toast.good{background:#123f2a;border-color:var(--green)}
   .sheet{position:absolute;inset:0;background:#000a;display:none;align-items:center;justify-content:center;z-index:30}
@@ -190,7 +194,7 @@
     <div class="t">🏝 BK Catan</div>
     <div class="ph" id="tvPhase">Sảnh chờ</div>
     <div class="row"><span id="tvNet" class="muted" style="font-size:13px"><span class="dot"></span>…</span>
-      <button id="tvPl" class="pbtn" style="padding:6px 10px" title="Ẩn/hiện bảng người chơi (phím 1)">👥</button><button id="tvSd" class="pbtn" style="padding:6px 10px" title="Ẩn/hiện xúc xắc · khám phá · tin (phím 2)">📋</button><button id="tvView" style="padding:6px 10px;display:none" title="Đổi bàn 3D / 2D (phím M)">🗺 2D</button><button id="tvPause" style="padding:6px 10px">⏸</button><button id="tvSkip" style="padding:6px 10px">⏭ Chốt lượt</button>
+      <button id="tvPl" class="pbtn" style="padding:6px 10px" title="Ẩn/hiện bảng người chơi (phím 1)">👥</button><button id="tvSd" class="pbtn" style="padding:6px 10px" title="Ẩn/hiện xúc xắc · khám phá · tin (phím 2)">📋</button><button id="tvView" style="padding:6px 10px;display:none" title="Đổi bàn 3D / 2D (phím M)">🗺 2D</button><button id="tvPause" style="padding:6px 10px">⏸</button><button id="tvSkip" style="padding:6px 10px">⏭ Chốt lượt</button><button id="tvLobbyBtn" style="padding:6px 10px" title="Dừng ván, về sảnh chờ để người mới vào">⏹ Sảnh</button><span id="tvWaiting" class="pill" style="display:none;background:#5a1f2a"></span>
       <div id="tvClock">--</div></div>
   </div>
   <div id="tvMain">
@@ -232,7 +236,9 @@
   <div class="muted" id="plMsg">Chờ TV bắt đầu…</div>
   <div class="muted" style="font-size:13px"><span class="dot" id="plDot"></span><span id="plNet">…</span></div>
 </div>
-<div id="padWait" class="screen"><div class="big" id="pwTxt">Ván đang chơi — máy này không có trong ván.</div></div>
+<div id="padWait" class="screen"><h1>🏝 BK Catan</h1><div class="big" id="pwTxt">Ván đang chơi — máy này không có trong ván.</div>
+  <div class="muted" style="max-width:520px;line-height:1.6">TV đang có một ván đã bắt đầu (có thể là ván cũ bấm "Chơi tiếp").<br>Muốn vào chơi: trên TV bấm <b>⏹ Sảnh</b> để về sảnh chờ → máy này sẽ hiện ô nhập tên và nút <b>Sẵn sàng</b>.</div>
+  <div class="muted" style="font-size:13px" id="pwWho"></div></div>
 <div id="padEnd" class="screen"><h1 id="peRank"></h1><div class="big" id="peScore"></div><div class="muted" id="peDet"></div></div>
 <div id="pad" class="screen">
   <div id="padTop">
@@ -244,17 +250,17 @@
   </div>
   <div id="resBar"></div>
   <div id="padBody">
-    <div id="padBoardWrap"><svg class="board" id="padBoard"></svg>
-      <div id="modeHint"><span id="modeTxt"></span><button id="modeCancel">Huỷ</button></div>
-      <div id="zoomBar"><button id="zIn" title="Phóng to">＋</button><button id="zOut" title="Thu nhỏ">－</button><button id="zFit" title="Xem cả bàn">⤢</button></div><div id="zoomLv"></div>
-</div>
-    <div id="padPanel">
-      <div id="tabs">
-        <button data-t="xay">🏗 Xây</button><button data-t="quan">⚔️ Quân</button><button data-t="the">🃏 Thẻ</button><button data-t="cho">💱 Chợ</button><button data-t="dk">📋 <span id="dkN"></span></button>
-      </div>
-      <div id="tabBody"></div>
-      <button id="endBtn" class="ok">✔ Kết thúc lượt</button>
+    <div id="tabs">
+      <button data-t="map">🗺 Bản đồ</button><button data-t="xay">🏗 Xây</button><button data-t="quan">⚔️ Quân</button><button data-t="the">🃏 Thẻ</button><button data-t="cho">💱 Chợ</button><button data-t="dk">📋 <span id="dkN"></span></button>
     </div>
+    <div id="padMain">
+    <div id="padBoardWrap"><svg class="board" id="padBoard"></svg><canvas id="pad3d"></canvas>
+      <div id="modeHint"><span id="modeTxt"></span><button id="modeCancel">Huỷ</button></div>
+      <div id="zoomBar"><button id="zIn" title="Phóng to">＋</button><button id="zOut" title="Thu nhỏ">－</button><button id="zFit" title="Xem cả bàn">⤢</button><button id="z3d" class="v3" title="Đổi bàn 2D / 3D">3D</button></div><div id="zoomLv"></div>
+</div>
+    <div id="padPanel"><div id="tabBody"></div></div>
+    </div>
+    <button id="endBtn" class="ok">✔ Kết thúc lượt</button>
   </div>
   <div id="toast"></div>
   <div id="rollBox"><div id="rollTxt" class="big" style="font-size:28px"></div><div id="rollBtnWrap"></div><div class="ord" id="rollOrd"></div><div class="mine" id="rollMine"></div></div>
@@ -371,8 +377,9 @@ function drawBoard(svg,st,o){
 }
 // chạm: tìm mục tiêu gần nhất trong vùng rộng (ngón tay to hơn chấm)
 function pickAt(svg,evt,o,st){
-  const map=E.buildMap(st.mapSeed),pt=svg.createSVGPoint();pt.x=evt.clientX;pt.y=evt.clientY;const p=pt.matrixTransform(svg.getScreenCTM().inverse());const x=p.x/U,y=p.y/U;
-  let best=null,bd=.45/Math.sqrt((svg===document.getElementById('padBoard')&&typeof Z!=='undefined'?Z.k:1));
+  const map=E.buildMap(st.mapSeed);let x,y;if(evt.mapXY){x=evt.mapXY.x;y=evt.mapXY.y}else{const pt=svg.createSVGPoint();pt.x=evt.clientX;pt.y=evt.clientY;const p=pt.matrixTransform(svg.getScreenCTM().inverse());x=p.x/U;y=p.y/U}
+  const zk=evt.mapXY?(window.BKC3D?BKC3D.view.k:1):(svg===document.getElementById('padBoard')&&typeof Z!=='undefined'?Z.k:1);
+  let best=null,bd=.45/Math.sqrt(zk);
   for(const i of o.tV||[]){const v=map.verts[i],d=Math.hypot(v.x-x,v.y-y);if(d<bd){bd=d;best={v:i}}}
   for(const i of o.tE||[]){const e=map.edges[i],a=map.verts[e.a],b=map.verts[e.b],d=Math.hypot((a.x+b.x)/2-x,(a.y+b.y)/2-y);if(d<bd){bd=d;best={e:i}}}
   if(!best)for(const i of o.tH||[]){const h=map.hexes[i];if(Math.hypot(h.x-x,h.y-y)<.9)best={h:i}}
@@ -388,12 +395,14 @@ const ROLLWAIT=10000; // ms chờ người tới phiên bấm đổ, quá thì T
 const TV={view:'3d',rollDeadline:0,st:null,players:{},actEndsAt:0,paused:null,anim:false,flash:{},dirty:false};
 function tvBoot(){
   $('tv').classList.add('show');$('lbRoom').textContent=C.room;
-  onMsg('player',p=>{if(!p||!p.slot)return;TV.players[p.slot]=Object.assign(TV.players[p.slot]||{},p,{last:Date.now()});if(!TV.st)renderLobby()});
+  onMsg('player',p=>{if(!p||!p.slot)return;TV.players[p.slot]=Object.assign(TV.players[p.slot]||{},p,{last:Date.now()});if(!TV.st)renderLobby();else renderWaiting()});
+  setInterval(renderWaiting,3000);
   onMsg('hello',()=>broadcast());
   onMsg('intent',m=>{if(!m||!m.a||!TV.st)return;if(TV.anim&&m.a.t==='rollDice'){send('toast',{slot:m.slot,text:'Chờ TV quay xong lần đổ trước…'});return}apply(Object.assign({},m.a,{slot:m.slot}))});
   const sv=tvLoad();if(sv)$('lbResume').style.display='';
   $('lbResume').onclick=()=>{const s=tvLoad();if(!s)return;TV.st=s.st;$('tvLobby').classList.remove('show');if(TV.st.phase==='act')TV.actEndsAt=Date.now()+TV.st.timer*1000;if(TV.st.phase==='roll'||TV.st.phase==='order')TV.rollDeadline=Date.now()+ROLLWAIT;renderTV();broadcast()};
   $('lbStart').onclick=tvStart;$('endNew').onclick=()=>{if(confirm('Bắt đầu ván mới?')){TV.st=null;localStorage.removeItem('bk-catan-save');$('tvEnd').classList.remove('show');showLobby()}};
+  $('tvLobbyBtn').onclick=()=>{if(!TV.st)return;if(!confirm('Dừng ván đang chơi và về sảnh chờ?\n(Ván này vẫn được lưu — ở sảnh bấm "Chơi tiếp ván cũ" để quay lại)'))return;tvSave();TV.st=null;TV.anim=false;$('tvEnd').classList.remove('show');$('lbResume').style.display=tvLoad()?'':'none';showLobby();broadcast()};
   $('tvSkip').onclick=()=>{if(TV.st&&TV.st.phase==='act'&&!TV.anim)doResolve()};
   $('tvPause').onclick=()=>{if(!TV.st||TV.st.phase!=='act')return;if(TV.paused==null){TV.paused=TV.actEndsAt-Date.now();$('tvPause').textContent='▶'}else{TV.actEndsAt=Date.now()+TV.paused;TV.paused=null;$('tvPause').textContent='⏸'}broadcast()};
   showLobby();
@@ -408,6 +417,9 @@ function tvBoot(){
   addEventListener('keydown',e=>{if(/INPUT|SELECT/.test(e.target.tagName))return;if(e.key==='1')panel('pl');if(e.key==='2')panel('sd')});addEventListener('keydown',e=>{if((e.key==='m'||e.key==='M')&&!/INPUT|SELECT/.test(e.target.tagName))toggleView()});
 }
 if(q.get('dev')==='1')window.TVDBG={TV,apply,give(n){TV.st.players.forEach(p=>E.RES_ALL.forEach(r=>p.res[r]+=n));renderTV();broadcast()},resolve:()=>doResolve()};
+function renderWaiting(){const el=$('tvWaiting');if(!el)return;const st=TV.st;if(!st){el.style.display='none';return}
+  const out=Object.values(TV.players).filter(p=>Date.now()-p.last<15000&&!st.players.some(q=>q.slot===p.slot));
+  el.style.display=out.length?'':'none';el.textContent=out.length?`📱 ${out.length} iPad chờ ngoài ván (máy ${out.map(p=>p.slot).join(', ')}) — bấm ⏹ Sảnh để cho vào`:''}
 function showLobby(){$('tvLobby').classList.add('show');$('tvPhase').textContent='Sảnh chờ';renderLobby()}
 function lobbyPlayers(){return Object.values(TV.players).filter(p=>p.name&&p.ready&&Date.now()-p.last<60000).sort((a,b)=>a.slot-b.slot).slice(0,4)}
 function renderLobby(){const all=Object.values(TV.players).filter(p=>p.name).sort((a,b)=>a.slot-b.slot);
@@ -527,10 +539,10 @@ function renderBoardTV(){const o={flashV:TV.flash.v,flashE:TV.flash.e,flashH:TV.
 function toggleView(){TV.view=TV.view==='3d'?'2d':'3d';$('tvView').textContent=TV.view==='3d'?'🗺 2D':'🏝 3D';if(TV.st)renderBoardTV();if(TV.view==='3d'&&window.BKC3D)BKC3D.resize()}
 // 3D chỉ nạp trên TV (iPad giữ bàn 2D để chạm chính xác). Lỗi/thiếu WebGL → tự dùng bàn 2D.
 function loadScript(src){return new Promise((res,rej)=>{const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=()=>rej(new Error('không tải được '+src));document.head.appendChild(s)})}
-async function load3D(){if(q.get('3d')==='0')return;$('tvLoad').textContent='Đang nạp bàn cờ 3D…';
+async function load3D(){if(q.get('3d')==='0')return;$('tvLoad').textContent='Đang nạp bàn cờ 3D…';$('tvView').style.display='';$('tvView').textContent='🏝 3D…';$('tvView').disabled=true;
   try{for(const f of ['lib/three-r128.min.js','lib/GLTFLoader-r128.js','bk-catan-assets.js','bk-catan-3d.js'])await loadScript(f);
-    $('gl3d').style.display='block';await BKC3D.init($('gl3d'));$('tvBoard').style.display='none';$('tvLoad').textContent='';$('tvView').style.display='';if(TV.st)renderTV()}
-  catch(e){console.error(e);$('gl3d').style.display='none';$('tvBoard').style.display='';$('tvLoad').textContent='(bàn 2D — không nạp được 3D: '+e.message+')'}}
+    $('gl3d').style.display='block';await BKC3D.init($('gl3d'));$('tvBoard').style.display='none';$('tvLoad').textContent='';$('tvView').disabled=false;$('tvView').textContent=TV.view==='3d'?'🗺 2D':'🏝 3D';if(TV.st)renderTV()}
+  catch(e){console.error(e);$('gl3d').style.display='none';$('tvBoard').style.display='';$('tvLoad').textContent='(bàn 2D — không nạp được 3D: '+e.message+')';$('tvView').textContent='⚠ 3D lỗi';$('tvView').title='Không nạp được 3D: '+e.message}}
 function renderTV(){const st=TV.st;if(!st)return;
   renderBoardTV();TV.flash={};
   renderDice();
@@ -559,16 +571,16 @@ function showEnd(){const st=TV.st;SFX.win();$('tvPhase').textContent='Kết thú
 // =====================================================================
 // iPad
 // =====================================================================
-const P={st:null,meta:{},mode:null,tab:'xay',ready:false,joined:false,sheet:null,lastSt:null};
+const P={view3d:false,st:null,meta:{},mode:null,tab:'map',ready:false,joined:false,sheet:null,lastSt:null};
 function padBoot(){
   $('plSlot').textContent='iPad '+C.slot+' · phòng '+C.room;$('plName').value=C.name||'';
   $('padLobby').classList.add('show');
   $('plReady').onclick=()=>{const n=$('plName').value.trim();if(!n){$('plName').focus();return}C.name=n;saveC();P.ready=!P.ready;$('plReady').textContent=P.ready?'Huỷ sẵn sàng':'Sẵn sàng';$('plReady').className=P.ready?'':'primary';$('plMsg').textContent=P.ready?'✅ Đã sẵn sàng — chờ TV bắt đầu…':'Chờ TV bắt đầu…';sendJoin()};
   onMsg('state',m=>{if(!m||!m.st)return;noteOffset(m.now);P.meta=m.meta||{};const prev=P.st;P.st=m.st;renderPad(prev)});
-  onMsg('lobby',m=>{if(m&&m.now)noteOffset(m.now);if(P.st&&!m.players){}P.st=null;showOnly('padLobby')});
+  onMsg('lobby',m=>{if(m&&m.now)noteOffset(m.now);P.st=null;showOnly('padLobby')});
   onMsg('toast',m=>{if(m&&m.slot===C.slot)toast(m.text)});
   onMsg('cardres',m=>{if(m&&m.slot===C.slot)showCard(m)});
-  document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{P.tab=b.dataset.t;renderPanel()});
+  document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{P.tab=b.dataset.t;renderPanel();if(P.tab==='map'&&P.view3d&&window.BKC3D)BKC3D.resize()});
   $('endBtn').onclick=()=>{const me=myP();if(!me)return;intent({t:'ready',on:!me.ready})};
   $('modeCancel').onclick=()=>setMode(null);$('helpBtn').onclick=rulesSheet;
   $('padBoard').addEventListener('click',onBoardTap);zoomInit();
@@ -585,7 +597,7 @@ function toast(t,good){const el=$('toast');el.textContent=t;el.className=good?'g
 function showCard(m){SFX.coin();openSheet(`<div style="text-align:center"><div class="muted">Thẻ cấp ${m.tier}</div><div style="font-size:64px">${m.card.ic}</div><h2 style="color:var(--gold)">${esc(m.card.ten)}</h2><div style="margin:8px 0 14px">${esc(m.card.mo)}</div><button class="primary" onclick="document.getElementById('sheet').classList.remove('show')">OK</button></div>`)}
 function openSheet(html){$('sheetBody').innerHTML=html;$('sheet').classList.add('show')}
 function closeSheet(){$('sheet').classList.remove('show')}
-function setMode(m){P.mode=m;renderBoardPad();const h=$('modeHint');if(!m){h.classList.remove('show');return}
+function setMode(m){P.mode=m;if(m&&P.tab!=='map'){P.tab='map';renderPanel()}renderBoardPad();const h=$('modeHint');if(!m){h.classList.remove('show');return}
   const T={road:'🛤 Chạm vào cạnh sáng để đăng ký đường',house:'🏠 Chạm vào đỉnh sáng để đăng ký nhà',upgrade:'⬆️ Chạm vào nhà của bạn để nâng cấp',sab:'💣 Chạm vào nhà đối thủ để dùng kỹ năng',setupHouse:'🏠 Chọn chỗ đặt nhà ban đầu',setupRoad:'🛤 Chọn đường nối từ nhà vừa đặt'};
   $('modeTxt').textContent=T[m.k]||'';h.classList.add('show');$('modeCancel').style.display=m.k.startsWith('setup')?'none':''}
 function targets(){const st=P.st,pi=myPi(),m=P.mode;if(!m||pi<0)return{};
@@ -596,7 +608,25 @@ function targets(){const st=P.st,pi=myPi(),m=P.mode;if(!m||pi<0)return{};
   if(m.k==='upgrade')return{tV:E.houses(st,pi).filter(v=>st.vLevel[v]<5)};
   if(m.k==='sab')return{tV:st.vOwner.map((o,v)=>o>=0&&o!==pi&&st.players[o].shield<=0?v:-1).filter(v=>v>=0)};
   return{}}
-function renderBoardPad(){if(!P.st)return;const t=targets();drawBoard($('padBoard'),P.st,Object.assign({mine:myPi()},t));applyZoom()}
+function renderBoardPad(){if(!P.st)return;const t=targets(),o=Object.assign({mine:myPi()},t);
+  $('pad3d').style.display=P.view3d?'block':'none';$('padBoard').style.display=P.view3d?'none':'';
+  if(P.view3d&&window.BKC3D&&BKC3D.ok){BKC3D.render(P.st,o);$('zoomLv').textContent=BKC3D.view.k>1.01?`🔍 ×${BKC3D.view.k.toFixed(1)} · kéo để di chuyển`:''}
+  else{drawBoard($('padBoard'),P.st,o);applyZoom()}}
+// iPad 3D: nạp mô hình khi bấm nút 3D lần đầu (7MB), chạm chọn bằng dò điểm trên mặt bàn
+let pad3dLoading=null;
+async function togglePad3D(){if(P.view3d){P.view3d=false;$('z3d').textContent='3D';renderBoardPad();return}
+  if(!(window.BKC3D&&BKC3D.ok)){if(pad3dLoading)return;$('z3d').textContent='…';toast('Đang nạp bàn 3D (lần đầu hơi lâu)…',true);
+    pad3dLoading=(async()=>{for(const f of ['lib/three-r128.min.js','lib/GLTFLoader-r128.js','bk-catan-assets.js','bk-catan-3d.js'])await loadScript(f);$('pad3d').style.display='block';await BKC3D.init($('pad3d'));BKC3D.setIdle(false)})();
+    try{await pad3dLoading}catch(e){console.error(e);pad3dLoading=null;$('z3d').textContent='3D';$('pad3d').style.display='none';toast('Không nạp được 3D: '+e.message);return}}
+  P.view3d=true;$('z3d').textContent='2D';renderBoardPad();BKC3D.resize()}
+function init3DInput(){const cv=$('pad3d'),Z3={ptrs:new Map(),pinch:null};
+  cv.addEventListener('wheel',e=>{e.preventDefault();if(BKC3D.ok){BKC3D.zoomBy(e.deltaY<0?1.2:1/1.2);renderBoardPad()}},{passive:false});
+  cv.addEventListener('pointerdown',e=>{Z3.ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});Z.moved=0;if(Z3.ptrs.size===2){const [a,b]=[...Z3.ptrs.values()];Z3.pinch=Math.hypot(a.x-b.x,a.y-b.y)}});
+  cv.addEventListener('pointermove',e=>{const old=Z3.ptrs.get(e.pointerId);if(!old||!BKC3D.ok)return;const nw={x:e.clientX,y:e.clientY};Z3.ptrs.set(e.pointerId,nw);
+    if(Z3.ptrs.size===2&&Z3.pinch){const [a,b]=[...Z3.ptrs.values()],d=Math.hypot(a.x-b.x,a.y-b.y);BKC3D.zoomBy(d/Z3.pinch);Z3.pinch=d;Z.moved=99;renderBoardPad();return}
+    if(Z3.ptrs.size===1&&BKC3D.view.k>1){const dx=nw.x-old.x,dy=nw.y-old.y;Z.moved+=Math.abs(dx)+Math.abs(dy);if(Z.moved>8){BKC3D.panBy(dx,dy);renderBoardPad()}}});
+  const up=e=>{Z3.ptrs.delete(e.pointerId);if(Z3.ptrs.size<2)Z3.pinch=null};cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
+  cv.addEventListener('click',e=>{if(!BKC3D.ok)return;const p=BKC3D.pick(e.clientX,e.clientY);if(!p)return;onBoardTap({clientX:e.clientX,clientY:e.clientY,mapXY:p})})}
 // ====== ZOOM iPad: nút ＋/－/⤢, chụm 2 ngón, kéo 1 ngón để di chuyển, con lăn chuột ======
 const Z={k:1,cx:null,cy:null,ptrs:new Map(),moved:0,pinch:null};
 function applyZoom(){const svg=$('padBoard'),vb=svg._vb;if(!vb)return;const [x0,y0,w0,h0]=vb;
@@ -606,7 +636,8 @@ function applyZoom(){const svg=$('padBoard'),vb=svg._vb;if(!vb)return;const [x0,
 function svgPt(evt){const svg=$('padBoard'),pt=svg.createSVGPoint();pt.x=evt.clientX;pt.y=evt.clientY;return pt.matrixTransform(svg.getScreenCTM().inverse())}
 function zoomAt(f,cx,cy){const k0=Z.k;Z.k=Math.max(1,Math.min(4,Z.k*f));if(cx!=null&&Z.k!==k0){const r=k0/Z.k;Z.cx=cx+(Z.cx-cx)*r;Z.cy=cy+(Z.cy-cy)*r}applyZoom()}
 function zoomInit(){const svg=$('padBoard');
-  $('zIn').onclick=()=>zoomAt(1.5);$('zOut').onclick=()=>zoomAt(1/1.5);$('zFit').onclick=()=>{Z.k=1;applyZoom()};
+  $('zIn').onclick=()=>{if(P.view3d){BKC3D.zoomBy(1.5);renderBoardPad()}else zoomAt(1.5)};$('zOut').onclick=()=>{if(P.view3d){BKC3D.zoomBy(1/1.5);renderBoardPad()}else zoomAt(1/1.5)};
+  $('zFit').onclick=()=>{if(P.view3d){BKC3D.resetView();renderBoardPad()}else{Z.k=1;applyZoom()}};$('z3d').onclick=togglePad3D;init3DInput();
   svg.addEventListener('wheel',e=>{e.preventDefault();const p=svgPt(e);zoomAt(e.deltaY<0?1.2:1/1.2,p.x,p.y)},{passive:false});
   svg.addEventListener('pointerdown',e=>{Z.ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});Z.moved=0;if(Z.ptrs.size===2){const [a,b]=[...Z.ptrs.values()];Z.pinch={d:Math.hypot(a.x-b.x,a.y-b.y),k:Z.k}}});
   svg.addEventListener('pointermove',e=>{const old=Z.ptrs.get(e.pointerId);if(!old)return;const nw={x:e.clientX,y:e.clientY};Z.ptrs.set(e.pointerId,nw);
@@ -626,8 +657,8 @@ function onBoardTap(evt){const st=P.st;if(!st)return;if(Z.moved>8){Z.moved=0;ret
   if(m.k==='sab'&&hit.v!=null){intent({t:'useCard',i:m.i,v:hit.v});setMode(null);return}
 }
 // ====== BẢNG THÔNG TIN: chạm vào gì trên bàn cũng có giải thích ======
-function portAt(evt,st){const map=E.buildMap(st.mapSeed),svg=$('padBoard'),pt=svg.createSVGPoint();pt.x=evt.clientX;pt.y=evt.clientY;const p=pt.matrixTransform(svg.getScreenCTM().inverse());
-  for(const po of map.ports){const e=map.edges[po.edge],a=map.verts[e.a],b=map.verts[e.b],mx=(a.x+b.x)/2,my=(a.y+b.y)/2,len=Math.hypot(mx,my),px=mx/len*(len+.55),py=my/len*(len+.55);if(Math.hypot(px-p.x/U,py-p.y/U)<.4)return po}return null}
+function portAt(evt,st){const map=E.buildMap(st.mapSeed);let X,Y;if(evt.mapXY){X=evt.mapXY.x;Y=evt.mapXY.y}else{const svg=$('padBoard'),pt=svg.createSVGPoint();pt.x=evt.clientX;pt.y=evt.clientY;const p=pt.matrixTransform(svg.getScreenCTM().inverse());X=p.x/U;Y=p.y/U}
+  for(const po of map.ports){const e=map.edges[po.edge],a=map.verts[e.a],b=map.verts[e.b],mx=(a.x+b.x)/2,my=(a.y+b.y)/2,len=Math.hypot(mx,my),k=evt.mapXY?.75:.55,px=mx/len*(len+k),py=my/len*(len+k);if(Math.hypot(px-X,py-Y)<.4)return po}return null}
 const LVNAME=['','Nhà','Nhà lớn','Quán trọ','Nhà thờ','Lâu đài'];
 const ln=(k,v)=>`<div class="ln"><b>${k}</b><span>${v}</span></div>`;
 const pn=(st,i)=>`<b style="color:${st.players[i].color}">${esc(st.players[i].name)}</b>`;
@@ -710,7 +741,7 @@ function padTick(){const st=P.st;
   const left=(P.meta.paused!=null?P.meta.paused:P.meta.actEndsAt-now())/1000;
   $('pClock').textContent=P.meta.anim?'⏳':(P.meta.paused!=null?'⏸ ':'')+Math.max(0,Math.ceil(left))+'s';$('pClock').classList.toggle('last',left<=10)}
 function renderPad(prev){const st=P.st,pi=myPi();
-  if(pi<0){if(st.ended){showOnly('padWait');$('pwTxt').textContent='Ván đã kết thúc.'}else{showOnly('padWait');$('pwTxt').textContent='Ván đang chơi — máy này không có trong ván.'}return}
+  if(pi<0){showOnly('padWait');$('pwTxt').textContent=st.ended?'Ván đã kết thúc — chờ TV bấm Ván mới.':'Ván đang chơi — máy này (iPad '+C.slot+') không có trong ván.';$('pwWho').textContent='Đang chơi: '+st.players.map(p=>p.name+' (máy '+p.slot+')').join(', ');return}
   if(st.ended){const r=st.ranking.find(x=>x.i===pi);showOnly('padEnd');$('peRank').textContent=r.rank===1?'🥇 Vô địch!':'Hạng '+r.rank+' / '+st.players.length;$('peScore').textContent=fmt(r.tong)+' điểm';$('peDet').textContent=`🏠 ${fmt(r.ct)} · 🏅 ${fmt(r.cc)} · 🛤 ${r.duong} · ⭐ ẩn ${fmt(r.an)}`;return}
   showOnly('pad');const p=st.players[pi];
   $('pSw').style.background=p.color;$('pName').textContent=p.name;
@@ -720,6 +751,7 @@ function renderPad(prev){const st=P.st,pi=myPi();
   const th=p.thuLuot&&p.thuLuot.theo||{};
   $('resBar').innerHTML=E.RES_ALL.map(r=>`<div class="rc"><div class="v">${E.RES_IC[r]} ${fmt(p.res[r])}</div><div class="n">${E.RES_NAME[r]}</div>${th[r]>0?`<div class="g">+${fmt(th[r])}</div>`:'<div class="g">&nbsp;</div>'}</div>`).join('');
   // chế độ bàn cờ
+  if(st.phase==='setup'&&P.tab!=='map'){P.tab='map'}
   if(st.phase==='setup'){const S=st.setup,cur=S.order[S.idx];if(cur===pi)setMode({k:S.step==='house'?'setupHouse':'setupRoad'});else{P.mode=null;$('modeHint').classList.add('show');$('modeTxt').innerHTML=`Chờ <b style="color:${st.players[cur].color}">${esc(st.players[cur].name)}</b> đặt ${S.step==='house'?'nhà':'đường'}…`;$('modeCancel').style.display='none'}}
   else if(!P.mode||P.mode.k.startsWith('setup'))setMode(null); // tắt cả dòng "Chờ X đặt…" còn sót từ lúc đặt nhà
   if(st.phase!=='act'&&P.mode&&!P.mode.k.startsWith('setup'))setMode(null);
@@ -763,6 +795,8 @@ function btn(label,on,dis,cls){return `<button ${dis?'disabled':''} class="${cls
 function renderPanel(){const st=P.st,pi=myPi();if(!st||pi<0)return;const p=st.players[pi];
   document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('sel',b.dataset.t===P.tab));
   const pend=(st.pending&&st.pending[pi])||[];$('dkN').textContent=pend.length?`Đăng ký (${pend.length})`:'Đăng ký';
+  const isMap=P.tab==='map';$('padBoardWrap').style.display=isMap?'':'none';$('padPanel').style.display=isMap?'none':'';
+  if(isMap){renderBoardPad();return}
   const act=st.phase==='act'&&!p.ready&&!P.meta.anim;
   let h='';
   if(st.phase==='setup'){h=`<div class="card"><b>Đặt nhà ban đầu</b><div class="muted" style="margin-top:6px">Mỗi người đặt 2 nhà + 2 đường theo thứ tự rắn (1→${st.players.length}, rồi ${st.players.length}→1). Nhà thứ 2 nhận ngay 100 mỗi tài nguyên của ô kề.<br><br>💡 Ô số 6/8 ra nhiều khi đổ xúc xắc, ô 2/12 ít ra nhưng <b>thu bị động</b> cao (số +…/lượt ghi dưới mỗi ô). Hai loại gần ngang nhau!</div></div>`}

@@ -29606,3 +29606,10 @@ Còn treo: chưa biết Thùy xếp qua modal "Xác nhận" hay tab Ca bổ tr�
   kéo/chụm xong KHÔNG tính là chạm chọn (Z.moved > 8px); vùng bắt chạm co theo mức zoom. Test: ×2.3 + kéo → viewBox dời đúng, không mở nhầm bảng thông tin.
 - Đầu ván thêm phase `order`: đổ chọn thứ tự đặt nhà (luật Catan gốc). Bản đầu cho người hoà đổ lại → CEO: mỗi người bấm 1 lần, hoà thì máy bốc ngẫu nhiên cho nhanh.
   Engine: `doOrderRoll`, sắp theo điểm + thăm bốc rng; `st.setup.order` = thứ tự rắn. Test 60 ván (40 ván có hoà): mỗi người đổ đúng 1 lần, thứ tự không tăng. Browser: Minh 5 = Lan 5 → máy xếp Lan trước, không đổ lại.
+- Lỗi CEO báo: vào game chọn iPad + số máy "không có nút Sẵn sàng". Local tái hiện đường chọn vai → vẫn ra nút; nghi ca TV đang có ván (vd bấm "Chơi tiếp ván cũ")
+  ⇒ iPad mới rơi vào màn chờ trắng "không có trong ván", TV không có đường về sảnh. Sửa: TV thêm nút ⏹ Sảnh (dừng ván, vẫn lưu để chơi tiếp) + nhãn "📱 N iPad chờ ngoài ván";
+  màn chờ iPad giải thích lý do + cách vào + ai đang chơi. Test: iPad 4 vào giữa ván → màn chờ có hướng dẫn, TV hiện nhãn; bấm ⏹ Sảnh → iPad 4 ra ô tên + Sẵn sàng.
+- iPad đổi sang TAB toàn màn (CEO: map không chiếm cố định, chọn tab nào tab đó chiếm màn): 🗺 Bản đồ · 🏗 Xây · ⚔️ Quân · 🃏 Thẻ · 💱 Chợ · 📋 Đăng ký;
+  "Chọn chỗ"/đặt nhà ban đầu tự nhảy sang Bản đồ. iPad có 3D (CEO: "TV có 3D, iPad chưa"): nút 3D nạp mô hình lần đầu (7MB), chạm chọn bằng dò điểm trên mặt bàn
+  (`BKC3D.pick` → toạ độ bản đồ → dùng chung logic chọn đỉnh/cạnh/ô với 2D), zoom/kéo/chụm 2 ngón, mục tiêu sáng + đăng ký của mình hiện bóng mờ trong 3D.
+  TV: nút 3D luôn hiện, nạp lỗi thì ghi "⚠ 3D lỗi" + lý do. Test: chạm ô tâm trong 3D mở đúng bảng; tab Xây → Chọn chỗ đường → tự về Bản đồ 3D, 7 khe sáng, chạm → Đăng ký (1).
