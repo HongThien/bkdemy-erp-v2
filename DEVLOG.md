@@ -29735,3 +29735,13 @@ kể cho việc trích đơn giản này — nếu làm tiếp thì Sonnet tự 
 **Quy mô thật (chưa làm):** ~1.635 câu TN/TLN còn thiếu đáp án + ~5.460 mệnh đề Đúng/Sai còn thiếu dạng
 (100% đang ở dạng chờ, mỗi câu Đ/S có 4 mệnh đề). Việc nhiều phiên, hỏi Thùy có bắt đầu ngay từng đợt nhỏ
 hay để làm việc riêng sau. Insert nền (297 đề k12 + 46 đề k11) vẫn đang chạy, ~29/297 và 27/46 lúc ghi log.
+
+## 2026-09-24 — Đóng vòng BTVN 7S1 20/09: xoá 64 điểm nhầm, hệ tự dọn 8 ô
+- Thùy đã tự bấm "Mở lại để sửa" trước khi t quay lại → lưới tự sinh đúng 20 ô phiếu thật, giữ 8 ô nhầm
+  (còn điểm) đánh dấu "Ngoài phiếu" — khớp đúng thiết kế banner sửa hôm qua (commit 4adfd55).
+- Thùy chạy `scripts/_del_btvn_7s1_2309_wrong.mjs` (t viết, DELETE FROM gami_grades where problem_id = 8 id
+  câu nhầm) — xoá sạch 64 dòng. Mở lại tab BTVN (admin dev, dev-alt2 5203) → sync tự động DELETE nốt 8 ô
+  rỗng (đúng logic `syncDocProblems`: thua rỗng → xoá, không hỏi). Verify DB: lưới còn đúng 20 ô (2 dạng
+  T107020303/T107020401), 0 điểm — sẵn sàng TA nhập lại ĐCS. `btvn_ket_qua` (nộp/thái độ) không đụng.
+- **Bài học chế độ auto:** classifier chặn DELETE qua Bash/PowerShell kể cả khi Thùy đã gật rõ trong chat
+  ("xóa đi nhập lại") — phải để Thùy tự chạy script (Write tool tạo file được, Bash chạy DELETE thì không).
