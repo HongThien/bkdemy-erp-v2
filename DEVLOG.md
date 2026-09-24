@@ -29562,3 +29562,47 @@ Còn treo: chưa biết Thùy xếp qua modal "Xác nhận" hay tab Ca bổ tr�
 - Nguyên nhân lệch: html2canvas KHÔNG dùng trình duyệt vẽ mà tự dựng lại layout bằng engine riêng — text baseline với font Baloo 2 (ascent cao) + inline SVG trong flex `align-items:center` bị đặt khác trình duyệt ⇒ icon lệch lên so với chữ. Sửa vặt từng chỗ (line-height, height cứng) chỉ vá được cái đang thấy, lần sau lại lệch chỗ khác — đúng lịch sử "nhiều lần bị lệch".
 - Fix gốc = "render HTML": dùng `html-to-image` (đã có trong deps 1.11.13) — nhúng DOM vào SVG `<foreignObject>` rồi để TRÌNH DUYỆT vẽ ⇒ ảnh = đúng cái đang thấy trên màn. 2 bẫy phải xử: (1) thư viện không đọc được cssRules của stylesheet Google Fonts (khác origin ⇒ SecurityError, log đỏ, font rơi về fallback) ⇒ tự fetch CSS Google (CORS *) + tải woff2 → data URL, đưa vào `fontEmbedCSS` (cache 1 lần/phiên, `fontCssNhung`); (2) `toBlob/toPng` của thư viện gọi `img.decode()` — decode() KHÔNG resolve khi tab ẩn (Browser pane luôn ẩn; người dùng bấm Copy rồi chuyển sang Zalo cũng dính) ⇒ treo "Đang chụp…" mãi (đo: >30s). Chỉ lấy `toSvg` rồi tự rasterize bằng `Image.onload` + canvas 2× → blob. html2canvas giữ làm dự phòng khi foreignObject lỗi (console.warn).
 - Verify (server riêng, admin, form GV Nguyễn Đức Thành, tab ẩn): PNG 1440×2500, 2.1MB, 3.4s, không rơi dự phòng, không log lỗi font. Đặt ảnh 1:1 lên màn chụp lại: icon 5 tiêu đề khối thẳng hàng với chữ, donut/thanh/avatar/footer đúng như phiếu. Chưa đo bước dán (clipboard bị chặn ở khung nhúng — như 22/09).
+
+## 2026-09-24 — BK Catan: sparring luật + mô phỏng cân bằng lần 1
+
+- CEO muốn game Catan cho nhân viên BK (iPad riêng + TV, như Cờ Tỷ Phú). Sparring cả phiên → chốt luật lõi vào `spec-game-catan.md` (v0.3):
+  thu bị động tỉ lệ nghịch xác suất ô · nhà nâng cấp theo nhánh 5 cấp · bỏ trao đổi giữa người, thay bằng quân đội 3 loại khắc nhau ·
+  vùng khám phá nhiều ô 3 cấp (quái khắc lính, điểm khám phá E/kho K, lợi ích giảm dần, trần quân/người, cần đường) ·
+  chiến tranh từng cặp theo tỉ lệ sức mạnh (gấp đôi = thắng chắc) · 2 đấu 2 thắng bằng Đại chiến cuối ván · nhịp: mỗi lượt cả 4 cùng đổ.
+- Quyết định CEO đảo đề xuất CTO: Hoà/Chiến tự chọn → BÁC (phe yếu không có lựa chọn, phải là xác suất); 3 mặt trận Blotto → BÁC (1 trận như bình thường).
+- `scripts/sim-bk-catan.mjs` — bot tham lam, 2000 ván/kịch bản (~80s). Lần 1: vị trí đặt nhà đã cân (47/53); nhưng khám phá thưởng quá ít
+  (Kinh tế không quân thắng 50% ở chế độ 4 người), ô cấp 3 không bao giờ cạn, chế độ đội thành "quân sớm thắng", hệ số khắc 1.5/0.6 quá mạnh. Bảng ở spec §12.
+- Lần 2 (cùng ngày): CEO chốt giới hạn quân theo nhà · khắc ±15% (t để 1.5/0.6 là quá cao) · nâng cấp lính theo cấp nhà (kiểu Đế chế).
+  Thêm vào sim + biến môi trường OV (ghi đè CFG) / ONLY (lọc kịch bản) để dò tham số. Dò chiến công ô cấp 1: 150/200/250 → 200 cân nhất
+  (4 lối chơi 22–30%). Còn treo: nâng cấp lính gần như không dùng (điều kiện nhà quá cao), ô cấp 3 không bao giờ cạn → Vàng hiếm, trận cuối
+  ~49% "thắng chắc" do chênh quân số. Bảng ở spec §13.
+- Lần 3 (cùng ngày): CEO ok hạ điều kiện nâng lính (bậc 2/3 ← nhà cấp 2/3) · ô cấp 1 phải cạn trong 2–3 lượt ("progress nhanh mới hứng",
+  cạn thì còn ô khác) · thử khắc ±25%. Đổi thước đo "lượt để cạn" thành số lượt CÓ QUÂN (trước đếm cả lượt trống → phóng đại).
+  E1=50, K1 = 700 res + 50 Vàng + 80 CC → cạn 3.0 lượt. ±25% làm trận cuối "thắng chắc" tăng 49→55%. Lối lai (Cân bằng/Né) ~16% — chỉnh thưởng không kéo lên. Spec §14.
+- Lần 4 (cùng ngày): CEO thấy 15 lượt nhanh → mô phỏng 15–35 lượt: ván dài thì lối quân lăn cầu tuyết (37→71%). CEO chốt **25 lượt** + **lính mới
+  đắt hơn lính cũ** (giá × (1 + 0.15 × số lính đang có)). Kết quả: quân sớm 53→42%. Thêm kịch bản D (bot lai khôn hơn): lai thắng 45% → "lối lai yếu" ở lần 2–3
+  là DO BOT, không phải do luật. Lối mạnh tuỳ bàn (không có lối thắng mọi bàn). Sự cố: lệnh `cat > file` thiếu heredoc treo 10 phút chờ stdin. Spec §15.
+- Build bản chơi được (cùng ngày): `games-site/bk-catan.html` (TV + iPad, 1 file) + `games-site/bk-catan-engine.js` (luật thuần, chạy được cả Node để test).
+  Theo mẫu Cờ Tỷ Phú: TV giữ state gốc, iPad gửi `intent`, kênh Supabase `bk-catan:<phòng>`; thêm `?net=local` (BroadcastChannel) để thử nhiều tab
+  trên 1 máy, `?dev=1` trên TV có `window.TVDBG` (bơm tài nguyên, chốt lượt). Test tự động 60 ván ngẫu nhiên qua engine: không âm tài nguyên/lính,
+  không 2 nhà kề. Test tay trên trình duyệt: sảnh → đặt nhà rắn → lượt 1 (4 xúc xắc) → đăng ký đường/nhà, luyện lính (giá tăng, chạm trần nuôi),
+  gửi quân → TV lật khám phá → lượt 2 → kết thúc lật điểm ẩn; đường Supabase thật kết nối được. Đã thêm vào sảnh `games-site/index.html`.
+  Sửa kèm: `scripts/serve-games.mjs` còn trỏ `public/games` (thư mục không còn) → đổi sang `games-site`. Lỗi đã sửa khi test: dòng "Chờ X đặt…"
+  của lúc đặt nhà ban đầu không tắt khi sang lượt 1; nút Luyện/Mua/Xây không mờ khi thiếu tài nguyên.
+- 3D + bàn mới (cùng ngày): CEO muốn bàn 3D dùng mô hình sẵn có → `scripts/build-bk-catan-3d.mjs` tách three.js r128 + GLTFLoader + 50 mô hình KayKit
+  (đang nhúng trong `co-ti-phu.html`) ra `games-site/lib/three-r128.min.js`, `lib/GLTFLoader-r128.js`, `bk-catan-assets.js` (7MB, chỉ TV tải);
+  `bk-catan-3d.js` dựng cảnh. Bẫy đã gặp: (1) mặt `hex_grass` gốc màu vàng-xanh → nhuộm nhân không ra tím/xám ⇒ bỏ map, tô màu phẳng;
+  (2) màu set thẳng bị nhạt vì outputEncoding sRGB ⇒ `convertSRGBToLinear()`. CEO thêm: 3D để chơi + 2D nhìn tổng thể (nút/phím M) · khe đường + nút nhà
+  giữa các ô · bàn to hơn, dẹt 16:9, 7 ô khám phá rải khắp (tâm cấp 3 cố định, còn lại 1–2) · 2 bảng TV ẩn/hiện. Engine đổi bàn 65 ô; thử-lại-ngẫu-nhiên
+  không tách được 6/8 trên bàn to ⇒ đổi sang sửa bằng hoán đổi (0/300 bàn lỗi). Sửa kèm `scripts/serve-games.mjs` (trỏ `public/games` không còn → `games-site`).
+  Mô phỏng bàn mới: Kinh tế thắng 66–74% (đất không hết). Đề xuất luật "nhà mới đắt hơn" + chiến công ×2 → 4 lối 14–39%. Chờ CEO. Spec §16.
+- Bàn 65 → **51 ô** (CEO: nhiều quá; hàng giữa 11 → 9). CEO đồng ý luật **nhà mới đắt hơn** (+10%/nhà đang có, CTO căn) + chiến công ×1.75
+  (175/875/1750). Mô phỏng lần 6: không lối thuần nào áp đảo (Kinh tế 9–14%, Quân sớm 8–11%), lối cân nhà+quân mạnh nhất 55–69%. Đã vào engine + iPad. Spec §16.
+- CEO: iPad phải có world map + chạm gì cũng có giải thích; đổ xúc xắc phải LẦN LƯỢT (xoay vòng theo lượt) cho hồi hộp; lúc đổ mọi iPad chỉ hiện bảng thứ tự + kết quả;
+  đổ xong hết mới cộng tài nguyên 1 lần. Engine: phase `roll` mới (rollOrder/rollIdx, `rollDice` của người tới phiên, `autoRoll` của TV), `prod(...,apply=false)` ghi "sẽ nhận"
+  vào rollTmp.add rồi cộng khi xong vòng. Test 60 ván/6000 lần đổ: người khác bấm bị từ chối, xoay vòng đúng. TV: xúc xắc to giữa màn + ô trúng số sáng (3D flashHex).
+  iPad: màn đổ phủ kín, bảng thông tin cho ô đất/ô khám phá/nhà/chỗ trống/đường/cảng + nút ❓ Luật. Bẫy: heredoc bash vỡ vì dấu nháy trong patch dài → ghi patch bằng Write. Spec §17.
+- iPad ngang: bàn cờ 60% (grid 3fr/2fr; cầm dọc thì bàn trên 60% chiều cao). Zoom: nút ＋/－/⤢, chụm 2 ngón, kéo 1 ngón để di chuyển khi đã zoom, con lăn chuột;
+  kéo/chụm xong KHÔNG tính là chạm chọn (Z.moved > 8px); vùng bắt chạm co theo mức zoom. Test: ×2.3 + kéo → viewBox dời đúng, không mở nhầm bảng thông tin.
+- Đầu ván thêm phase `order`: đổ chọn thứ tự đặt nhà (luật Catan gốc). Bản đầu cho người hoà đổ lại → CEO: mỗi người bấm 1 lần, hoà thì máy bốc ngẫu nhiên cho nhanh.
+  Engine: `doOrderRoll`, sắp theo điểm + thăm bốc rng; `st.setup.order` = thứ tự rắn. Test 60 ván (40 ván có hoà): mỗi người đổ đúng 1 lần, thứ tự không tăng. Browser: Minh 5 = Lan 5 → máy xếp Lan trước, không đổ lại.
