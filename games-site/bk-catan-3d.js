@@ -8,7 +8,7 @@ const COLN = ['red', 'blue', 'green', 'yellow'];
 const RES_TINT = { go: 0x3f8f45, gach: 0xc9694a, lua: 0xe9c94c, cuu: 0xb9e69c, quang: 0x7b8090 };
 const TIER_TINT = { 1: 0xf1f1f4, 2: 0xd2d5dc, 3: 0xaeb3bf }; // ô khám phá: trắng → xám theo cấp (Thùy 24/09)
 const COOL_TINT = 0x80859a;
-const CHAR = ['Barbarian', 'Rogue', 'Druid']; // quái 0/1/2
+const CHAR = []; // quái 3D đã bỏ (Thùy 24/09) — ô khám phá chỉ còn dấu ?
 const GAP = 0.9; // ô co còn 90% → khe giữa các ô là chỗ của đường
 
 let R, scene, cam, clock, loader, root, dyn, zoneG, fx, tgtG;
@@ -99,8 +99,8 @@ function sheep(x, z, ry) {
 }
 let qmTex = null;
 function qmark() {
-  if (!qmTex) { const c = document.createElement('canvas'); c.width = c.height = 128; const g = c.getContext('2d'); g.fillStyle = '#3b3f4c'; g.font = 'bold 112px Segoe UI, Arial'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('?', 64, 70); qmTex = new T.CanvasTexture(c); qmTex.encoding = T.sRGBEncoding; }
-  const m = new T.Mesh(new T.PlaneGeometry(1.05, 1.05), new T.MeshBasicMaterial({ map: qmTex, transparent: true, depthWrite: false })); m.rotation.x = -Math.PI / 2; m.renderOrder = 2; return m;
+  if (!qmTex) { const c = document.createElement('canvas'); c.width = c.height = 128; const g = c.getContext('2d'); g.fillStyle = '#7a7f8e'; g.font = 'bold 112px Segoe UI, Arial'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('?', 64, 70); qmTex = new T.CanvasTexture(c); qmTex.encoding = T.sRGBEncoding; }
+  const m = new T.Mesh(new T.PlaneGeometry(1.2, 1.2), new T.MeshBasicMaterial({ map: qmTex, transparent: true, depthWrite: false })); m.rotation.x = -Math.PI / 2; m.renderOrder = 2; return m;
 }
 // nhãn nổi (sprite canvas)
 function label(lines, o) {
@@ -124,7 +124,7 @@ function label(lines, o) {
     });
   }
   const tex = new T.CanvasTexture(c); tex.encoding = T.sRGBEncoding; tex.anisotropy = 4;
-  const sp = new T.Sprite(new T.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
+  const sp = new T.Sprite(new T.SpriteMaterial({ map: tex, transparent: true, depthWrite: false, depthTest: false })); // luôn nổi trên cây/nhà
   const s = o.size || 1; sp.scale.set(s, s * c.height / 256, 1); sp.renderOrder = 10;
   return sp;
 }
@@ -145,7 +145,7 @@ function buildStatic(st) {
   for (const h of map.hexes) {
     const x = h.x, z = h.y;
     const t = kit('hex_grass', h.zone ? TIER_TINT[h.tier] : RES_TINT[h.res], true); t.scale.multiplyScalar(GAP); t.rotation.y = tileRot; at(t, x, z, 0); root.add(t); tiles[h.id] = t;
-    if (h.zone) { h._tile = t; const qm = qmark(); qm.position.set(x, topY + .012, z); root.add(qm); const tk = label(['?', ''], { token: true, size: .72 }); tk.position.set(x, topY + 1.35, z + .1); root.add(tk); continue; } // ô khám phá: dấu ? in trên mặt ô + thẻ ? nổi (cùng cỡ thẻ số)
+    if (h.zone) { h._tile = t; const qm = qmark(); qm.position.set(x, topY + .012, z - .12); root.add(qm); continue; } // ô khám phá: dấu ? in trên mặt ô, không quái, không thẻ nổi
     const deco = (n, fp, mh, dx, dz, ry) => { const o = fit(kit(n), fp, mh); o.rotation.y = ry == null ? rnd() * 6.28 : ry; at(o, x + (dx || 0), z + (dz || 0)); root.add(o); };
     // Thùy 24/09: 3D tài nguyên phải BÉ (cao ≤ ~.45, nhà cao .7–1.4) và đặc trưng — gỗ = rừng cây nhỏ dày,
     // gạch = đất đỏ gạch (không cây), cừu = đồng cỏ + cừu + cây bé, lúa = ruộng lúa vàng, đá = núi đá thấp.
@@ -160,7 +160,7 @@ function buildStatic(st) {
     if (h.res === 'quang') { decoT('mountain_C', .9, .5, 0, -.05, 0x8a8f9c); deco('rock_single_B', .22, .18, .5, .32); deco('rock_single_D', .18, .15, -.5, .3); }
     // thẻ số + bị động
     const tok = label([String(h.num), '•'.repeat(h.pips), `+${E.CFG.bidong[h.pips]}/lượt`], { token: true, hot: h.pips === 5, size: .72 });
-    tok.position.set(x, topY + 1.35, z + .1); root.add(tok);
+    tok.position.set(x, topY + .12, z); root.add(tok); // Thùy 24/09: sát mặt ô — treo cao 1.35 thì nhìn nghiêng số rơi lên đỉnh ô
   }
   // khe đường (mọi cạnh) + nút nhà (mọi đỉnh): có sẵn trên bàn để nhìn/chọn dễ
   const slotMat = new T.MeshStandardMaterial({ color: new T.Color(0xd9c7a0).convertSRGBToLinear(), roughness: 1 });
@@ -185,15 +185,6 @@ function buildStatic(st) {
 }
 
 // ---------- ô khám phá: quái + nhãn (dựng lại khi quái/hồi đổi) ----------
-async function monster(q) {
-  const g = await parse(CHAR[q]); const m = g.scene;
-  m.traverse(o => { if (o.isMesh) { o.castShadow = true; } });
-  const b = new T.Box3().setFromObject(m); const s = 0.95 / (b.max.y - b.min.y); m.scale.setScalar(s);
-  const mx = new T.AnimationMixer(m); const idle = clips.find(c => /idle/i.test(c.name)) || clips[0];
-  if (idle) mx.clipAction(idle).play();
-  mixers.push(mx); m.userData.mixer = mx;
-  return m;
-}
 function renderZones(st) {
   const map = E.buildMap(st.mapSeed);
   for (const z of st.zone) {
@@ -204,19 +195,17 @@ function renderZones(st) {
       if (zs) { zoneG.remove(zs.group); if (zs.mixer) mixers.splice(mixers.indexOf(zs.mixer), 1); }
       const g = new T.Group(); zs = zoneState[z.h] = { key, group: g }; zoneG.add(g);
       h._tile && h._tile.traverse(m => { if (m.isMesh) m.material.color.setHex(z.hoi > 0 ? COOL_TINT : TIER_TINT[z.tier]).convertSRGBToLinear(); });
-      if (z.hoi > 0) { const l = label(['⏳', `hồi ${z.hoi}`], { fs: 56, size: .9, bg: false }); l.position.set(h.x, topY + .7, h.y); g.add(l); zs.cool = l; }
-      else {
-        if (z.tier === 3) { const c = fit(kit('rock_single_C'), .5, .4); at(c, h.x - .5, h.y + .35); g.add(c); const r2 = fit(kit('rock_single_A'), .35, .3); at(r2, h.x + .55, h.y + .3); g.add(r2); }
-        const ring = new T.Mesh(new T.RingGeometry(.52, .62, 40), new T.MeshBasicMaterial({ color: 0xffd166, transparent: true, opacity: .7, side: T.DoubleSide }));
+      if (z.hoi > 0) { const l = label(['⏳', `hồi ${z.hoi}`], { fs: 56, size: .9, bg: false }); l.position.set(h.x, topY + .12, h.y); g.add(l); zs.cool = l; }
+      else { // Thùy 24/09: bỏ quái 3D — ô trống, dấu ? in trên mặt (đã có ở buildStatic) + vòng sáng trắng nhạt lấp lánh
+        const ring = new T.Mesh(new T.RingGeometry(.58, .68, 48), new T.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: .3, side: T.DoubleSide, depthWrite: false }));
         ring.rotation.x = -Math.PI / 2; ring.position.set(h.x, topY + .02, h.y); g.add(ring); zs.ring = ring;
-        monster(z.quai).then(m => { if (zoneState[z.h] !== zs) return; m.scale.multiplyScalar(z.tier === 3 ? 1.35 : z.tier === 2 ? 1.15 : 1); at(m, h.x, h.y); m.rotation.y = 0.3; g.add(m); zs.mixer = m.userData.mixer; });
       }
     }
     if (zs.lbl) zs.group.remove(zs.lbl);
     if (z.hoi > 0) continue;
     const qu = E.QUAI[z.quai];
-    zs.lbl = label([`Cấp ${z.tier} · ${pct}%`, `yếu ${E.UNIT[qu.yeu].ic}`], { fs: 46, size: 1.05, h: 170 });
-    zs.lbl.position.set(h.x, topY + 2.05, h.y); zs.group.add(zs.lbl); // cao hơn thẻ ? (1.35) để không đè
+    zs.lbl = label([`Cấp ${z.tier} · ${pct}%`, `yếu ${E.UNIT[qu.yeu].ic}`], { fs: 46, size: .85, h: 170 });
+    zs.lbl.position.set(h.x, topY + .12, h.y + .5); zs.group.add(zs.lbl); // sát mặt, dịch xuống mép dưới ô để không đè dấu ?
   }
 }
 
@@ -285,7 +274,7 @@ function loop() {
   mixers.forEach(m => m.update(dt));
   for (let i = anims.length - 1; i >= 0; i--) { const a = anims[i]; a.t += dt; const k = Math.min(1, a.t / a.dur); a.fn(k); if (k >= 1) anims.splice(i, 1); }
   fx.children.forEach(c => { if (c.userData.drift) { c.position.x += c.userData.drift * dt; if (c.position.x > 18) c.position.x = -18; } });
-  for (const k in zoneState) { const r = zoneState[k].ring; if (r) { r.rotation.z = t * .6; r.material.opacity = .45 + .3 * Math.sin(t * 2.5); } }
+  for (const k in zoneState) { const r = zoneState[k].ring; if (r) { r.rotation.z = t * .6; r.material.opacity = .27 + .13 * Math.sin(t * 2.2); } }
   placeCam(t); // TV: lượn rất nhẹ cho sống động; iPad: đứng yên, zoom/kéo tay
   if (tgtG.children.length) { const k = .55 + .45 * Math.sin(t * 5); tgtG.children.forEach(m => { m.material.opacity = .35 + .5 * k; }); }
   R.render(scene, cam);

@@ -26,7 +26,7 @@ const WANT = [
   'barrel', 'building_bridge_A',
   'coin_gold', 'cloud_big', 'cloud_small',
   ...COLORS.flatMap(c => [`building_home_A_${c}`, `building_home_B_${c}`, `building_tavern_${c}`, `building_church_${c}`, `building_castle_${c}`, `flag_${c}`]),
-  'Rig_General', 'Barbarian', 'Rogue', 'Druid',
+
 ]
 const models = {}
 const EXTRA = join(process.cwd(), 'scripts', 'bk-catan-models')
