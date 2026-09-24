@@ -9,7 +9,7 @@ import {
 import SearchSelect from '../../components/SearchSelect'
 import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdfRender'
 import type { BranchConfig, LyThuyetApi } from './branches'
-import { BacChip, Code, inp, Shell, Field, Row, Seg, Ghost, Actions, mucDoTone, MathText, readClipboardImageFile } from './ui'
+import { BacChip, Code, inp, Shell, Field, Row, Seg, Ghost, Actions, mucDoTone, readClipboardImageFile, LT_CORE_CSS, LyThuyetBlocksPreview } from './ui'
 import DangHub from './DangHub'
 import DungSaiPanel from './DungSaiBank'
 import ChoDuyetPanel from './ChoDuyetPanel'
@@ -668,13 +668,14 @@ export function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, o
             <div className="border-b border-slate-100 px-4 py-1.5 text-[12px] font-bold uppercase tracking-wide text-slate-500">Code (LaTeX) — sửa tự do</div>
             <textarea ref={taRef} value={noiDung} onChange={(e) => setNoiDung(e.target.value)}
               onPaste={(e) => { const f = Array.from(e.clipboardData.files).find((x) => x.type.startsWith('image/')); if (f) { e.preventDefault(); void insertImg(f) } }}
-              placeholder={'Lý thuyết · phương pháp · ví dụ…\nCông thức $\\dfrac{-b}{2a}$, $x \\neq 0$\nChèn hình: ![](url) — nút 🖼 Chèn ảnh / ✂️ Cắt hình chèn, hoặc dán ảnh (Ctrl+V) thẳng vào đây'}
+              placeholder={'Lý thuyết · phương pháp · ví dụ…\nCông thức $\\dfrac{-b}{2a}$, $x \\neq 0$\nChèn hình: ![](url) — nút 🖼 Chèn ảnh / ✂️ Cắt hình chèn, hoặc dán ảnh (Ctrl+V) thẳng vào đây\nĐóng khung: ##ĐL định lý · ##ĐN định nghĩa · ##CY chú ý · ##PP phương pháp giải · ##VD ví dụ · ##NX nhận xét — đầu dòng, có thể kèm tiêu đề cùng dòng'}
               className="min-h-0 flex-1 resize-none p-4 font-mono text-[13px] leading-relaxed outline-none" />
           </div>
           <div className="flex min-h-0 flex-col">
             <div className="border-b border-slate-100 px-4 py-1.5 text-[12px] font-bold uppercase tracking-wide text-slate-500">Xem trước</div>
+            <style>{LT_CORE_CSS}</style>
             <div className="min-h-0 flex-1 overflow-auto p-4 text-[16px] leading-loose text-slate-800">
-              {noiDung.trim() ? <MathText>{noiDung}</MathText> : <span className="text-slate-400">— preview hiện ở đây</span>}
+              {noiDung.trim() ? <LyThuyetBlocksPreview text={noiDung} /> : <span className="text-slate-400">— preview hiện ở đây</span>}
             </div>
           </div>
         </div>

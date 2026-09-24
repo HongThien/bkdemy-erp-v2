@@ -8,7 +8,8 @@ import { listLop } from '../../lib/nhansu'
 import { hsCoMatCuaBuoi, ngayBuoiHopLeCuaLop } from '../../lib/gami'
 import { congNgay } from '../../lib/tuan'
 import { BK_CSS, BtvnBkHead } from './bkPrint'
-import { MathText } from '../kho/ui'
+import { MathText, LT_CORE_CSS, LyThuyetBlockView } from '../kho/ui'
+import { parseLyThuyetBlocks } from '../../lib/lythuyetBlocks'
 import { uploadKhoFile } from '../../lib/kho/api'
 import type { CauHoi } from '../../lib/kho/api'
 
@@ -244,7 +245,7 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
     //   thắng cascade, sơn "Lớp 6S2 · 16/07" lên trang 8B1 đang xem. Scope selector khớp đúng container.
     const scopeCls = `pv-scope-${++pvRenderSeq}`
     const css = buildPagedCss(full.taiLieu, ch, ch0.mau || '#E91E8C', undefined, `.${scopeCls}`)
-      + BK_CSS + GT_BK_CSS + gtPageCss(`.${scopeCls} `)
+      + BK_CSS + GT_BK_CSS + LT_CORE_CSS + gtPageCss(`.${scopeCls} `)
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
     // Race-safe: mỗi lần render vào CONTAINER RIÊNG (append live để paged.js đo layout). KHÔNG xoá DOM
@@ -574,19 +575,31 @@ function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByC
 // đủ chỗ ngắt hợp lệ → trang vừa đầy vừa không phí. Khối ngắn (≤ LT_BLK_MAX dòng) giữ nguyên để 1 Ví dụ
 // ngắn không bị xé rời khỏi nhãn của nó. Dòng đầu khối dài dính dòng sau nhờ .pv-blk-keep (break-after:avoid).
 const LT_BLK_MAX = 3
+// ⭐ spec-format-noidung.md: đoạn có kí hiệu (##ĐL/##ĐN/##CY/##PP/##VD/##NX) render qua LyThuyetBlockView
+// (khung riêng, break-inside:avoid TUYỆT ĐỐI — không đi qua logic chẻ-theo-dòng bên dưới, khung phải
+// NGUYÊN VẸN, thà đẩy cả sang trang sau còn hơn vỡ giữa chừng). Đoạn KHÔNG kí hiệu (loai:'text') giữ
+// NGUYÊN VẸN logic né-mồ-côi cũ (comment gốc ở TextChunks) — không đổi hành vi cũ khi chưa dùng kí hiệu.
 function LyThuyetBody({ text }: { text: string }) {
-  const blocks = text.split(/\n[ \t]*\n/).map((b) => b.trim()).filter(Boolean)
-  if (blocks.length <= 1 && blocks[0] && blocks[0].split('\n').length <= LT_BLK_MAX) {
+  const blocks = parseLyThuyetBlocks(text)
+  if (blocks.length <= 1 && blocks[0]?.loai === 'text' && blocks[0].noiDung.split('\n').length <= LT_BLK_MAX) {
     return <div className="pv-math"><MathText>{text}</MathText></div>
   }
-  const out: { html: string; keep: boolean }[] = []
-  for (const b of blocks) {
-    const lines = b.split('\n').map((l) => l.trim()).filter(Boolean)
-    if (lines.length <= LT_BLK_MAX) { out.push({ html: b, keep: false }); continue }
-    // chẻ theo dòng; dòng ĐẦU của khối giữ dính dòng kế (nhãn "Ví dụ N." không mồ côi cuối trang)
-    lines.forEach((l, i) => out.push({ html: l, keep: i === 0 }))
-  }
-  return <>{out.map((o, i) => <div key={i} className={`pv-blk pv-math${o.keep ? ' pv-blk-keep' : ''}`}><MathText>{o.html}</MathText></div>)}</>
+  return <>{blocks.map((b, i) => b.loai === 'text'
+    ? <LyThuyetTextChunks key={i} text={b.noiDung} />
+    : <LyThuyetBlockView key={i} b={b} />)}</>
+}
+
+// Logic ngắt trang GỐC (trước khi có kí hiệu) — 1 đoạn text thường, tách bởi dòng trống ở tầng trên.
+// ⭐ Khối DÀI còn được chẻ tiếp theo TỪNG DÒNG. Lý do KHÔNG phải thẩm mỹ mà là né bug paged.js: ngắt trang
+// GIỮA hai .pv-blk (anh em ruột) thì chạy đúng, nhưng ngắt TRONG lòng 1 .pv-blk (sâu 2 tầng, giữa các
+// .mline) thì paged.js bỏ phí nốt phần trang còn lại — dạng kế tiếp nhảy hẳn trang mới (Thùy báo 8S1).
+// Vậy nên: cấm xé trong khối (.pv-blk break-inside:avoid) + chẻ khối dài thành nhiều khối NGẮN để vẫn có
+// đủ chỗ ngắt hợp lệ → trang vừa đầy vừa không phí. Khối ngắn (≤ LT_BLK_MAX dòng) giữ nguyên để 1 Ví dụ
+// ngắn không bị xé rời khỏi nhãn của nó. Dòng đầu khối dài dính dòng sau nhờ .pv-blk-keep (break-after:avoid).
+function LyThuyetTextChunks({ text }: { text: string }) {
+  const lines = text.split('\n').map((l) => l.trim()).filter(Boolean)
+  if (lines.length <= LT_BLK_MAX) return <div className="pv-blk pv-math"><MathText>{text}</MathText></div>
+  return <>{lines.map((l, i) => <div key={i} className={`pv-blk pv-math${i === 0 ? ' pv-blk-keep' : ''}`}><MathText>{l}</MathText></div>)}</>
 }
 
 function LtBlock({ title, lt, big }: { title: string; lt?: { noi_dung: string; file_url: string | null; ten_file: string | null } | null; big?: boolean }) {
