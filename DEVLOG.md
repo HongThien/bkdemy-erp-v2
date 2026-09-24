@@ -29812,3 +29812,11 @@ Cũ: `layTienDoCa` ghép ở client (vi phạm §2.0), 4 bước cũ không kh�
 - Màn: dòng = tên + lớp·môn·L (trái) · chi tiết ngắn · thanh 6 đoạn tô tới mức · chip mức (phải); filter toggle Tất cả + 6 mức kèm số; tìm tên/mã/lớp;
   nhớ filter khi rời màn. Đo thật: 132 case = 10 chờ chọn dạng · 102 cần xếp · 16 đã xếp · 4 chờ retest.
 `layTienDoCa` (botro_yeu.ts) giờ không còn ai gọi — để lại, chưa xoá.
+
+## 2026-09-24 (tối) — CẢ folder "Bổ trợ yếu" vào Bổ trợ › Yếu (Thùy: "m nhầm rồi, phải đưa toàn bộ lá, không phải mỗi Duyệt")
+
+Lần trước chỉ chuyển Duyệt. Giờ tab Yếu = toggle 5 nút theo thứ tự luồng: Duyệt bổ trợ · Nội dung · Xếp bổ trợ · Trạng thái ca · Đánh giá ca.
+Bỏ lá `botroyeu` khỏi menu QLCL (fixtures) + bỏ BOTROYEU_CHILDREN. NhanSuHome: `botroyeu`/`botroyeu:duyet|noidung|trangthai|danhgia` ⇒ BoTroHubScreen mở đúng toggle.
+⚠ Quyền: tất cả nằm sau quyền `botro`; quyền `botroyeu` cũ hết tác dụng — ai cần phải được cấp "Bổ trợ".
+Kèm: xác nhận retest ĐÃ có trên app TA (ô Bổ trợ yếu màn chính "N retest đến hạn" + tab Bổ trợ mục "Retest đến hạn · đưa iPad cho em sau ET"); Thùy: không cần push riêng.
+Thêm cấu hình chạy app TA worktree này: launch `botroyeu-ta` port 5193 (mở /ta.html).

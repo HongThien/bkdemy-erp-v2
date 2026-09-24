@@ -7,6 +7,9 @@ import BoTroDuoiScreen from './BoTroDuoiScreen'
 import BoTroScreen from './BoTroScreen'
 import XepLichBoTroYeuScreen from '../danhgia/XepLichBoTroYeuScreen'
 import DuyetBoTroYeuScreen from '../danhgia/DuyetBoTroYeuScreen'
+import NoiDungBoTroYeuScreen from '../danhgia/NoiDungBoTroYeuScreen'
+import TrangThaiCaBoTroScreen from '../danhgia/TrangThaiCaBoTroScreen'
+import DanhGiaCaBoTroScreen from '../danhgia/DanhGiaCaBoTroScreen'
 import LichPhongScreen from './LichPhongScreen'
 import LichTrucScreen from './LichTrucScreen'
 
@@ -14,12 +17,14 @@ export type BoTroTab = 'duoi' | 'bu' | 'yeu' | 'lichphong' | 'lichtruc'
 const TABS: { k: BoTroTab; ten: string; mo_ta: string }[] = [
   { k: 'duoi', ten: 'Đuổi', mo_ta: 'HS vào lớp giữa chừng — đợt đuổi, kế hoạch dạng' },
   { k: 'bu', ten: 'Bù', mo_ta: 'HS nghỉ buổi thường — lần nghỉ cần bù' },
-  { k: 'yeu', ten: 'Yếu', mo_ta: 'Duyệt bổ trợ (hàng đợi máy phát hiện) · Xếp bổ trợ (case đã duyệt)' },
+  { k: 'yeu', ten: 'Yếu', mo_ta: 'Trọn luồng bổ trợ yếu: duyệt → nội dung → xếp → trạng thái → đánh giá ca' },
   { k: 'lichphong', ten: 'Lịch phòng', mo_ta: 'Đang diễn ra của cả 3 loại + xếp chung theo đơn vị ca trực' },
   { k: 'lichtruc', ten: 'Lịch trực', mo_ta: 'Ca trực cố định hằng tuần của trợ giảng' },
 ]
-// Thùy 24/09: trong tab Yếu có thanh toggle 2 nút — Duyệt bổ trợ (lá cũ ở Quản lý chất lượng, chuyển lên đây) · Xếp bổ trợ
-export type YeuSub = 'duyet' | 'xep'
+// Thùy 24/09: CẢ folder "Bổ trợ yếu" ở Quản lý chất lượng (Duyệt · Nội dung · Trạng thái ca · Đánh giá ca) chuyển vào đây, cùng Xếp bổ trợ —
+// thanh toggle theo đúng thứ tự luồng: Duyệt → Nội dung → Xếp → Trạng thái ca → Đánh giá ca.
+export type YeuSub = 'duyet' | 'noidung' | 'xep' | 'trangthai' | 'danhgia'
+const YEU_SUB: [YeuSub, string][] = [['duyet', 'Duyệt bổ trợ'], ['noidung', 'Nội dung'], ['xep', 'Xếp bổ trợ'], ['trangthai', 'Trạng thái ca'], ['danhgia', 'Đánh giá ca']]
 const NHO: { tab: BoTroTab; yeu: YeuSub } = { tab: 'lichphong', yeu: 'xep' }
 let capNhat: ((t: BoTroTab) => void) | null = null
 // Nhảy tới đúng tab từ nơi khác (Việc của tôi, Trợ lý…): gọi TRƯỚC hoặc SAU setStaffLeaf('botro') đều được.
@@ -32,12 +37,12 @@ function YeuTab() {
     <div className="flex min-h-0 flex-1 flex-col">
       <div className="flex items-center gap-2 bg-[#f5f5f7] px-8 pt-4">
         <div className="inline-flex rounded-xl border border-slate-200 bg-white p-0.5 text-[13px] font-semibold shadow-sm">
-          {([['duyet', 'Duyệt bổ trợ'], ['xep', 'Xếp bổ trợ']] as const).map(([k, ten]) => (
+          {YEU_SUB.map(([k, ten]) => (
             <button key={k} onClick={() => setSub(k)} className={`rounded-lg px-4 py-1.5 ${sub === k ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-50'}`}>{ten}</button>
           ))}
         </div>
       </div>
-      {sub === 'duyet' ? <DuyetBoTroYeuScreen /> : <XepLichBoTroYeuScreen />}
+      {sub === 'duyet' ? <DuyetBoTroYeuScreen /> : sub === 'noidung' ? <NoiDungBoTroYeuScreen /> : sub === 'trangthai' ? <TrangThaiCaBoTroScreen /> : sub === 'danhgia' ? <DanhGiaCaBoTroScreen /> : <XepLichBoTroYeuScreen />}
     </div>
   )
 }

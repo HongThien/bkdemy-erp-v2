@@ -222,12 +222,8 @@ export const LAMTAILIEU_CHILDREN: NavLeaf[] = [
 ]
 // Bổ trợ yếu (Thùy 08-18: "1 lá riêng, tách khỏi Dashboard học tập, 4 tab con") — PLAN-botro-yeu.md.
 // Xếp lịch (bước 6) KHÔNG ở đây — đó là việc OPS, sống ở nhóm Vận hành cạnh Bù/Đuổi (leaf `xep_by`).
-export const BOTROYEU_CHILDREN: NavLeaf[] = [
-  // 'botroyeu:duyet' (Duyệt bổ trợ) chuyển sang Vận hành › Bổ trợ › Yếu › toggle "Duyệt bổ trợ" (Thùy 24/09)
-  { id: 'botroyeu:noidung', ten: 'Nội dung bổ trợ yếu' },
-  { id: 'botroyeu:trangthai', ten: 'Trạng thái ca bổ trợ' },
-  { id: 'botroyeu:danhgia', ten: 'Đánh giá ca bổ trợ' },
-]
+// ⚠ 24/09: folder này KHÔNG còn trên menu — toàn bộ (Duyệt · Nội dung · Trạng thái ca · Đánh giá ca) chuyển vào Vận hành › Bổ trợ › Yếu (toggle,
+// BoTroHubScreen). Link cũ 'botroyeu:*' vẫn được NhanSuHome chuyển tới đúng toggle.
 // Gộp NHIỀU leaf con thành 1 leaf CHA (folder tầng 2, ẨN mặc định — bấm mới xoè tầng 3, giống
 // "Làm tài liệu"). Cha chỉ xuất hiện khi CÒN ≥1 con sau lọc quyền (mỗi con vẫn 1 permission-id
 // RIÊNG ở Phân quyền — khác `lamtailieu` dùng chung 1 quyền cho cả cha lẫn con); vị trí cha = vị
@@ -246,7 +242,6 @@ export const adminNavFromQuyen = (q: MyQuyen | null): NavGroup[] => {
   return nhoms.map((n) => {
     let navLeaves: NavLeaf[] = leaves.filter((l) => l.nhom === n).map((l): NavLeaf =>
       l.id === 'lamtailieu' ? { id: l.id, ten: l.ten, children: LAMTAILIEU_CHILDREN }
-      : l.id === 'botroyeu' ? { id: l.id, ten: l.ten, children: BOTROYEU_CHILDREN }
       : { id: l.id, ten: l.ten })
     if (n === 'Vận hành') {
       // Việc "làm-xong-là-mất" trong ngày (điểm danh/report/tan/prep) → gọn vào 1 folder, đỡ rối cây.
