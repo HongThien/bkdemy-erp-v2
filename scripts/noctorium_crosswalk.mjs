@@ -130,7 +130,7 @@ const K12 = {
 }
 // Cùng tên dạng ở 2 bài khác nhau (bài 15 vs 14; 17- vs 8) ⇒ ghi đè theo bài
 const K12_THEO_BAI = {
-  'Bài 15.|Tìm điểm hoặc tham số thoả mãn điều kiện cho trước': 'T312010201',
+  'Bài 15|Tìm điểm hoặc tham số thoả mãn điều kiện cho trước': 'T312010201',
   'Bài 17-|Toạ độ hoá một bài toán hình học không gian': CHUA,
 }
 
@@ -177,12 +177,14 @@ const K11 = {
 }
 // Cùng tên ở bài 6 (CSC) và bài 7 (CSN)
 const K11_THEO_BAI = {
-  'Bài 6.|Tìm một số hạng cụ thể hoặc số hạng tổng quát': 'T111060202',
-  'Bài 7.|Tìm một số hạng cụ thể hoặc số hạng tổng quát': 'T111060302',
+  'Bài 6|Tìm một số hạng cụ thể hoặc số hạng tổng quát': 'T111060202',
+  'Bài 7|Tìm một số hạng cụ thể hoặc số hạng tổng quát': 'T111060302',
 }
 
 const chuongCua = (nhan) => nhan?.chuong?.match(/^Chương ([IVX]+)\./)?.[1] ?? null
-const baiCua = (nhan) => nhan?.bai?.match(/^(Bài \d+-?\.?)/)?.[1] ?? ''
+const baiCua = (nhan) => nhan?.bai?.match(/^(Bài \d+-?)/)?.[1] ?? '' // "Bài 17-" (thực tiễn) khác "Bài 17" (mặt cầu); KHÔNG kèm dấu chấm
+// Rào: mã dạng phải cùng kho với subject (T1… = dai, T3… = hgt) — lệch là lỗi crosswalk ⇒ dạng chờ, không đâm vào FK
+const hopKho = (subject, dang) => dang === CHUA || (subject === 'dai' ? dang.startsWith('T1') : dang.startsWith('T3'))
 
 /**
  * @returns {{ subject: 'dai'|'hgt'|null, dang: string, ly_do: string }}
@@ -197,6 +199,7 @@ export function ganDang(khoi, q) {
     const rule = K12_THEO_BAI[`${bai}|${ten}`] ?? K12[ten]
     if (rule === undefined) return { subject, dang: CHUA, ly_do: `dạng lạ: ${ten}` }
     const dang = typeof rule === 'function' ? rule(q) : rule
+    if (!hopKho(subject, dang)) return { subject, dang: CHUA, ly_do: `crosswalk lệch kho (${dang} vs ${subject}): ${ten}` }
     return { subject, dang, ly_do: dang === CHUA ? `crosswalk CHUA: ${ten}` : 'crosswalk' }
   }
   if (String(khoi) === '11') {
