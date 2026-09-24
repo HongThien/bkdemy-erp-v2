@@ -59,6 +59,10 @@ Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt d
   nhãn 🚨 trên card) — cờ cứng của người, không cần đề xuất. Chưa có case ⇒ vào hàng đợi Duyệt như cũ (báo động tự đủ tín hiệu). (CEO 22/09.)
 - **Ca đã xếp mà KHÔNG DIỄN RA** (qua ngày không điểm danh có mặt, hoặc TA huỷ) ⇒ tự huỷ buổi (giữ dấu, `ly_do_huy` ghi "tự động"), case về Cần xếp với tag
   "⚠ Ca DD/MM không diễn ra · N lần" (`fn_btyeu_don_ca_khong_dien_ra`, chạy mỗi lần mở màn Xếp; lần đầu 23/09 huỷ 12 buổi treo). (CEO 23/09.)
+- **Luật buổi (CEO 24/09):** buổi CHƯA học xong mà bị huỷ ⇒ case về Cần xếp · buổi XONG ⇒ case sang trạng thái tiếp. Lúc HOÀN TẤT CA, TA tick
+  dạng đã dạy (mặc định tick hết dạng còn mở; bỏ tick = dạy buổi sau) — `fn_btyeu_hoan_tat(..., p_dang_day)`. Mọi dạng vừa dạy được bổ sung câu retest
+  (`_btyeu_bu_retest`; màn Xếp chạy `fn_btyeu_bu_retest_ton` mỗi lần mở — dạng chưa có MCQ tự thông khi có MCQ). Buổi đã đóng ca KHÔNG đổi được
+  ngày/giờ (trigger `trg_buoi_bo_tro_khoa_ngay`) — học tiếp = xếp buổi mới. Có mặt mà TA chưa đóng ca ⇒ card Xếp đỏ "TA CHƯA ĐÓNG CA — nhắc TA".
 - Nguồn dạng trong case: `bo_tro_yeu_dang.nguon` = duyet (bước Nội dung) · tay (+ Thêm dạng) · may (đề xuất máy, người bấm) · bao_dong (chuông, add thẳng).
 
 ---

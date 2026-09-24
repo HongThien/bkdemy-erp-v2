@@ -94,8 +94,9 @@ export async function dongCa(buoiId: string): Promise<KetQuaDongCa> {
   return data as KetQuaDongCa
 }
 // Hoàn tất ca: nhận xét + mức; test chưa nộp thì bắt buộc có lý do "không test" (Thùy 03/09).
-export async function hoanTatCa(buoiId: string, nhanXet: string, mucMa: string | null, khongTestLyDo: string | null): Promise<void> {
-  const { error } = await supabase.rpc('fn_btyeu_hoan_tat', { p_buoi: buoiId, p_nhan_xet: nhanXet, p_muc_ma: mucMa, p_khong_test_ly_do: khongTestLyDo })
+// Thùy 24/09: buổi xong ⇒ case phải tiến — TA tick dạng ĐÃ DẠY (dangDay). DB đánh dấu dạy + bổ sung retest cho mọi dạng vừa dạy.
+export async function hoanTatCa(buoiId: string, nhanXet: string, mucMa: string | null, khongTestLyDo: string | null, dangDay?: string[]): Promise<void> {
+  const { error } = await supabase.rpc('fn_btyeu_hoan_tat', { p_buoi: buoiId, p_nhan_xet: nhanXet, p_muc_ma: mucMa, p_khong_test_ly_do: khongTestLyDo, p_dang_day: dangDay ?? null })
   if (error) throw error
 }
 

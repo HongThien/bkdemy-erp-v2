@@ -213,6 +213,12 @@ export async function donCaKhongDienRa(): Promise<{ buoi_id: string; ngay: strin
   if (error) throw error
   return (data as any[]) ?? []
 }
+// Tự bù retest (Thùy 24/09): dạng chờ retest mà chưa có câu retest nào đang mở ⇒ bổ sung (dạng chưa có MCQ tự thông khi có MCQ). Chạy khi mở màn Xếp.
+export async function buRetestTon(): Promise<number> {
+  const { data, error } = await supabase.rpc('fn_btyeu_bu_retest_ton')
+  if (error) throw error
+  return (data as number) ?? 0
+}
 // Lịch sử bổ trợ 1 em (1 môn) N ngày — mọi hoạt động (buổi yếu/bù/đuổi · retest · duyệt · báo động · case), sắp giảm dần theo thời gian.
 export type SuKienBoTro = { t: string; loai: 'buoi' | 'retest' | 'duyet' | 'bao_dong' | 'case_mo' | 'case_dong'; d: Record<string, unknown> }
 export async function lichSuBoTroHS(hocSinhId: string, mon: string, soNgay = 14): Promise<SuKienBoTro[]> {

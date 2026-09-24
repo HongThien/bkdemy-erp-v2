@@ -12,7 +12,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
   listCaseChoXepLich, taoBuoiBoTroYeu, listBuoiCuaCase, goiYXepLichBoTroYeu,
-  listLichTruc, themLichTruc, ketThucLichTruc, lichTrucCuaHS, goiYTheoLichTruc, caSapToi, khoaCa, caTrucConCho, datUuTienCase, UU_TIEN_TEN, deXuatDangMoi, themDangMayVaoCase, donCaKhongDienRa, GIAI_DOAN_TEN, type UuTienCase, type DangMayDeXuat,
+  listLichTruc, themLichTruc, ketThucLichTruc, lichTrucCuaHS, goiYTheoLichTruc, caSapToi, khoaCa, caTrucConCho, datUuTienCase, UU_TIEN_TEN, deXuatDangMoi, themDangMayVaoCase, donCaKhongDienRa, buRetestTon, GIAI_DOAN_TEN, type UuTienCase, type DangMayDeXuat,
   type CaseChoXep, type BuoiBoTroYeuDaXep, type BuoiChoHoc, type GoiYXepLich, type LichTruc, type CaTrucDeXuat, type CaSapToi,
 } from '../../lib/botro_yeu'
 import { supabase } from '../../lib/supabase'
@@ -83,7 +83,7 @@ export default function XepLichBoTroYeuScreen() {
     setLoading(true)
     taiDeXuat()
     // Mở màn = dọn ca đã xếp mà không diễn ra (qua ngày không điểm danh) ⇒ tự huỷ, case về Cần xếp — Thùy 23/09.
-    donCaKhongDienRa().then((d) => setVuaDon(d.length)).catch(() => {}).then(() => listCaseChoXepLich()).then((r) => {
+    donCaKhongDienRa().then((d) => setVuaDon(d.length)).catch(() => {}).then(() => buRetestTon().catch(() => 0)).then(() => listCaseChoXepLich()).then((r) => {
       setItems(r)
       setMuc(new Map(r.map((c) => [c.hoc_sinh_id, c.level]))) // level đi kèm RPC — không gọi getLevels riêng nữa
     }).finally(() => setLoading(false))
@@ -246,7 +246,7 @@ function CaseCard({ c, mucLv, onMo, onUuTien, daXep, deXuat, onThemMay }: { c: C
           )}
           {b && (
             <div className="mt-1.5 text-[12px] font-medium text-emerald-700">
-              {b.qua_ngay ? (b.diem_danh === 'co_mat' ? <span className="text-sky-700">Đã học · TA chưa đóng ca: </span> : <span className="text-amber-700">⚠ Quá ngày chưa học: </span>) : 'Đã xếp · chưa bổ trợ: '}
+              {b.qua_ngay ? (b.diem_danh === 'co_mat' ? <span className="font-bold text-rose-600">⚠ Học {soNgayCach(b.ngay, homNayVN())} ngày trước, TA CHƯA ĐÓNG CA — nhắc TA hoàn tất: </span> : <span className="text-amber-700">⚠ Quá ngày chưa học: </span>) : 'Đã xếp · chưa bổ trợ: '}
               {thuCuaNgay(b.ngay)} {ddmmVN(b.ngay)}{b.gio_bat_dau ? ` · ${hhmm(b.gio_bat_dau)}` : ''}{b.phong ? ` · ${b.phong}` : ''}{b.nguoi_ten ? ` · ${b.nguoi_ten}` : ''}
             </div>
           )}

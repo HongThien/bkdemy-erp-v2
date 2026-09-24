@@ -29831,3 +29831,18 @@ hoàn tất KHÔNG đổi được ngày/giờ từ bất kỳ đường nào ("
 còn Cần xếp (OPS tưởng đã xếp, thật ra chỉ dời buổi cũ) · Nguyễn Quang Minh đã có buổi mới 28/09.
 Nghi thêm (chưa đủ chứng cứ, để nguyên): buổi bù Nguyễn Ngọc Hải Linh ngày 28/08 đóng ca 27/08.
 Tùng = dữ liệu TEST của Thùy (3 buổi yếu do daothuybk tạo) — chờ Thùy gật danh sách xoá (Luật xoá).
+
+## 2026-09-24 (khuya) — Luật buổi: huỷ ⇒ xếp lại (đã đúng) · XONG ⇒ case phải tiến (đang sai → sửa). Mig 202609242330.
+
+Đo: 10/14 buổi yếu đã đóng ca có 0 dạng được ghi "đã dạy" (đóng ca chỉ ghi dạng em luyện APP; học giấy/không luyện ⇒ `khong_hoc`) ⇒ case về Cần xếp
+nguyên dạng cũ, trông như chưa học ⇒ OPS đi sửa buổi cũ (gốc thật của vụ Tùng/Minh Quân). Thùy chọn: TA tick dạng đã dạy lúc hoàn tất (mặc định tick hết);
+10 buổi cũ coi như dạy hết dạng của buổi; ca có mặt chưa đóng ⇒ nhắc TA (không tự đóng).
+- `fn_btyeu_hoan_tat(+p_dang_day text[])`: tick ⇒ day_at; bỏ tick dạng máy tự đánh ở buổi này ⇒ trả về cần dạy; retest trượt được tick ⇒ dat=null (chờ retest mới).
+- `_btyeu_bu_retest(buoi, dangs)`: dạng vừa dạy chưa có câu trong bài retest chưa nộp ⇒ bổ sung (bài retest của buổi, hoặc sinh bài mới ngày = buổi thường kế tiếp);
+  3 câu/dạng, tổng ~9, MCQ tuyệt đối. Sửa lỗi cũ: bài retest chỉ lấy ≤3 dạng ⇒ dạng còn lại kẹt "Chờ retest" mãi (Bảo Châu, Nguyễn Ngọc Trâm Anh).
+- `fn_btyeu_bu_retest_ton()` chạy mỗi lần mở màn Xếp (cạnh dọn ca không diễn ra) ⇒ tự thông khi dạng có MCQ.
+- Backfill 10 buổi: 8 em sang Chờ retest (retest 26–28/09) · Minh Quân còn 2 dạng cần dạy (thêm vào case SAU buổi 20/09 — đúng) · Lê Hà Khoa chờ retest nhưng dạng 0 MCQ.
+  Còn 6 dạng chờ retest KHÔNG ra được câu vì 0 MCQ (Lê Hà Khoa T107010507 · Minh Quân T106030102 · Nguyễn Đăng Đức T107010505/0506/0507 · Nguyễn Quang Minh T106020601)
+  ⇒ việc của phiên MCQ; sinh xong tự thông. Nguyễn Quang Minh giờ Chờ retest nhưng vẫn còn buổi 28/09 OPS vừa xếp — có thể thừa.
+- App TA: bước "Nhận xét · hoàn tất ca" có ô "Dạng đã dạy buổi này" (tick mặc định, kèm số câu luyện). Màn Xếp: ca có mặt quá ngày chưa đóng ⇒ đỏ "TA CHƯA ĐÓNG CA — nhắc TA".
+  Kiểm local app TA (Trần Khánh Nhật): 9 dạng tick sẵn. Không bấm hoàn tất (HS thật).
