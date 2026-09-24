@@ -29792,3 +29792,7 @@ Mig 202609242000: `_ca_bo_tro_don_vi` L1 2 → 1 · ràng buộc `buoi_hoc_hs.do
 lý do "đủ N em" · `fn_ca_bo_tro_ngay` trả `toi_da_hs`, `day_nguoi`, `day_don_vi`. Màn: cạnh thanh đơn vị hiện "x/3 em", pill ĐẦY, gợi ý "ĐẦY — đủ 3 em · đủ đơn vị";
 sau mutation nạp lại ngầm để cờ lấy từ DB (không tự tính ở màn). Kết quả: 24/09 21:00 Trần Thị Thảo Nguyên từ LỐ 6/3 ⇒ 3/3 đv · 3/3 em = ĐẦY cả 2;
 27/09 16:00 Nguyễn Hà Giang vẫn LỐ 9/6 (2 bù + 1 L1). Mockup + spec §1 sửa theo.
+
+## 2026-09-24 (tối) — Lịch phòng: 2 khu thành thanh toggle (Thùy: "2 cái toggle bar đi chuyển qua lại cho dễ")
+
+"📅 Lịch trực khối (N)" / "🗂 Lịch riêng" — 1 click chuyển, nhớ khu đang xem khi rời màn (NHO.khu). Không đổi logic.
