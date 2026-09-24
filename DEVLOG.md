@@ -29659,6 +29659,13 @@ chứa mấy L1, ưu tiên trong Bù, 2 TA = 1 dòng, bù/đuổi theo khối) +
 - Local kiểm: 24/09 sinh 5 ca (tóm tắt từng ghi 6 vì đếm cả dòng lịch trực trùng bậc → mig 202609241230 áp cùng luật dedupe); popup ca K6 Tạ Quang Tùng:
   Đuổi 1 (Ding Phạm Hoàng Nhi, đã đuổi 1/3, TA lớp Nguyễn Hà Giang) · Bù 0 (DB: bù chờ K6 = 0, K7/9/11 = 5) · Yếu 9. KHÔNG bấm xếp thật (HS thật).
 - Chưa làm (chờ CEO dùng thử): bước 4 gỡ đường xếp tay ở Đuổi/Bù/Yếu + tab "Ca bổ trợ" của Yếu; bước 5 KPI tải TA (Σ đv em có mặt).
+
+## 2026-09-24 — Prod không lên dù đã push: vercel-ignore bỏ qua build khi deploy TAY (Thùy: "deploy main mới nhất nhưng không thấy gom 5 lá")
+
+Kiểm: ac3c808 đã trong origin/main; `npm run build` local OK và bundle có `botro_hub`; prod vẫn bundle cũ (edge cache 16,9h, không có deployment production mới).
+Mô phỏng `scripts/vercel-ignore.mjs` như Vercel gọi khi deploy tay (auto-deploy tắt từ 07/09 ⇒ KHÔNG có VERCEL_GIT_PREVIOUS_SHA): script rơi về so HEAD^,
+tức chỉ nhìn commit cuối f196dac (BK Catan, toàn games-site) ⇒ "0 liên quan ERP" ⇒ exit 0 = BỎ QUA build. Mọi deploy tay từ 07/09 đều dính khi commit
+cuối không đụng ERP. Sửa: thiếu PREVIOUS_SHA ⇒ BUILD ngay (đúng luật "không chắc → BUILD" ghi ở đầu file); push GitHub thường (có PREVIOUS_SHA) vẫn lọc như cũ.
 ## 24/09 — BK Catan 3D: tài nguyên bé + đặc trưng, ô khám phá trắng/xám có dấu ?, nhà nổi bật (Thùy 24/09 "màn 3D quá rối, chả nhìn thấy nhà đâu")
 
 **(CEO 24/09: gỗ = ô full cây nhỏ nhiều · gạch = đỏ gạch, không cây, tìm asset gạch không thì đất · cừu = đồng xanh nhạt + 1–2 cừu + cây bé, không công trình · lúa = vàng, tìm asset lúa · đá = mỏ/đồi tháp thoai thoải · ô khám phá dấu ?, trắng/xám · 3D tài nguyên bé đi để nổi nhà)**
@@ -29745,3 +29752,36 @@ hay để làm việc riêng sau. Insert nền (297 đề k12 + 46 đề k11) v�
   T107020303/T107020401), 0 điểm — sẵn sàng TA nhập lại ĐCS. `btvn_ket_qua` (nộp/thái độ) không đụng.
 - **Bài học chế độ auto:** classifier chặn DELETE qua Bash/PowerShell kể cả khi Thùy đã gật rõ trong chat
   ("xóa đi nhập lại") — phải để Thùy tự chạy script (Write tool tạo file được, Bash chạy DELETE thì không).
+
+## 2026-09-24 — Gỡ `ignoreCommand` khỏi vercel.json (Thùy: "ko build được, đang build nó biến mất")
+
+Sau khi sửa script (thiếu PREVIOUS_SHA ⇒ BUILD) vẫn cancel: Vercel cấp PREVIOUS_SHA = deployment VỪA BỊ CANCEL (f196dac) ⇒ diff tới 6d86f14 chỉ có
+scripts/ + DEVLOG (đều trong BO_QUA) ⇒ bỏ qua tiếp ⇒ vòng lặp cancel. Auto-deploy tắt từ 07/09 ⇒ mọi deployment là người bấm tay cho đúng 1 project,
+ignoreCommand không tiết kiệm build nào nữa. Gỡ khỏi vercel.json (giữ script + ghi chú cách bật lại). Từ nay Create Deployment = luôn build.
+
+## 2026-09-24 — Bổ trợ: ĐÚNG 1 lá + thanh toggle 5 nút (Thùy: "không phải 5 lá con; click lá ra màn quản lý, phía trên 5 filter toggle, 1 click chuyển")
+
+Bỏ folder 5 lá (collapseGroup botro_hub) → 1 lá `botro` "Bổ trợ" → `BoTroHubScreen` (thanh toggle Đuổi · Bù · Yếu · Lịch phòng · Lịch trực, nhớ tab
+đang mở; `moBoTroTab()` để Việc của tôi / Trợ lý nhảy thẳng tab). Lá `botro_duoi`/`xep_by`/`botro_lichphong`/`botro_lichtruc` gỡ khỏi menu — quyền cũ
+cho 4 id đó hết tác dụng, ai cần thì cấp quyền "Bổ trợ" (`botro`). Local kiểm: 1 lá, toggle Đuổi/Yếu/Lịch phòng đổi màn ngay, không lỗi console.
+
+## 2026-09-24 (chiều) — Bổ trợ: 4 sửa sau khi Thùy dùng thử + "Yếu không còn logic riêng"
+
+1. **Sửa ca đã xếp rồi lưu không chuyển Đã xếp**: modal Yếu mở chế độ SỬA trên buổi `mo` đầu tiên — kể cả buổi ĐÃ HỌC (danh_gia_xong_at) ⇒ sửa buổi cũ, không đẻ
+   buổi chờ ⇒ case đứng yên. Giờ chỉ sửa đúng buổi RPC coi là "chờ học" (`c.buoiChoHoc`), không có thì chế độ TẠO; buổi đã học hiện nhãn "đã học".
+2. **Yếu có chip khối + ô tìm** như Bù/Đuổi; cả 3 màn đưa filter lên góc trên phải cùng hàng tab. Bỏ tab "Ca bổ trợ" + "Đang diễn ra" khỏi Yếu (Thùy).
+3. **Lịch phòng khớp ca đã xếp** (mig 202609241600): `fn_ca_bo_tro_sinh_ngay` gắn buổi Bù/Đuổi/Yếu chưa gắn ca vào ca trực trùng người + giao giờ, ghi `don_vi`
+   + `xac_nhan_ph_at = lúc tạo buổi`; buổi hoan_tat vẫn chiếm đơn vị (chỉ huỷ mới trả). Đo rollback: 24/09 cả 7 em yếu vào đúng ca (Hồ Quang Lâm → 17:00 Tạ Quang Tùng);
+   ca 21:00–21:30 Trần Thị Thảo Nguyên = 3 L1 = 6/3 đv ⇒ hiện "LỐ". 25/09: 5 buổi bù/đuổi không khớp ca trực nào ⇒ khu Lịch riêng.
+   2 khu Lịch trực khối / Lịch riêng; ngày = 3 ô + mũi tên + chọn thẳng.
+4. **Lịch phòng = Đang diễn ra 3 loại**, màu nền: Yếu đỏ · Đuổi xanh da trời · Bù cam (cả thẻ trong ca lẫn TheoDoiCaBoTroTab). Em yếu trong ca trực hiện trạng thái sống
+   (TT/trangThai export từ TheoDoiCaBoTroTab, poll 15s).
+Chưa làm: form xếp riêng của Yếu vẫn gợi ý ca trực theo khối+bậc/sức chứa 3 em (logic cũ) — đơn vị đã tính chung nhờ gắn ca, nhưng muốn bỏ hẳn thì nút "Xếp" của Yếu
+nên mở Lịch phòng (spec §6) — chờ Thùy.
+
+## 2026-09-24 (tối) — Gắn buổi đã xếp vào ca trực cho 23/09 → 16/10 (Thùy: "đã khớp các lịch đã xếp chưa")
+
+Gắn chỉ chạy khi MỞ ngày ở Lịch phòng ⇒ lúc hỏi mới có 24/09. Chạy `fn_ca_bo_tro_sinh_ngay` cho 23/09 → 16/10 (y hệt mở từng ngày, đã COMMIT):
+33 buổi bổ trợ · 14 vào ca trực · 19 ở Lịch riêng (người/giờ không trùng ca trực — phần lớn Bù/Đuổi 19:30 TA lớp dạy ngoài giờ trực, không gắn đại).
+Ca LỐ đơn vị: 24/09 21:00 Trần Thị Thảo Nguyên 6/3 · 27/09 16:00 Nguyễn Hà Giang 10/6 — OPS cần gỡ bớt.
+Còn hở: buổi xếp MỚI bằng form riêng chỉ gắn khi ngày được mở ⇒ tóm tắt dải ngày đếm thiếu ngày chưa ai mở.

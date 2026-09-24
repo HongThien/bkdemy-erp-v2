@@ -1,16 +1,23 @@
-// Bổ trợ › Lịch phòng (Thùy 24/09, spec-xep-bo-tro-chung.md §4): NGÀY → CA TRỰC (đơn vị đã dùng/tổng) → popup ứng viên 3 tab
-// Đuổi · Bù · Yếu (đã sắp ưu tiên ở DB) → "+ Xếp" (chờ PH, chưa trừ) → "Xác nhận" (PH đồng ý ⇒ trừ đơn vị, ai chốt trước chiếm chỗ).
+// Bổ trợ › Lịch phòng (Thùy 24/09, spec-xep-bo-tro-chung.md §4) = "ĐANG DIỄN RA" của CẢ 3 loại bổ trợ + nơi xếp chung theo ĐƠN VỊ.
+// 2 khu: (1) LỊCH TRỰC BỔ TRỢ KHỐI — ca trực cố định (trước/sau giờ học), mở ngày thì DB tự gắn buổi đã xếp bằng form riêng vào ca khớp
+// người + giờ (mig 202609241600) · (2) LỊCH RIÊNG — ca tạo tay + buổi xếp riêng không khớp ca trực nào (nhúng TheoDoiCaBoTroTab).
+// Màu theo loại (nền nhạt): Yếu đỏ · Đuổi xanh da trời · Bù cam. Ngày: 3 ô (qua · nay · mai quanh ngày chọn) + mũi tên + chọn thẳng.
 // Máy chỉ CHẶN (đơn vị, 3 em/TA, Đuổi ≥60', phòng ≤2 ca) — không tự xếp. Mọi mutation vá tại chỗ (CLAUDE.md §2), không reload list.
 import { useEffect, useMemo, useState } from 'react'
 import { caCuaNgay, tomTatNgay, ungVienCa, xepVaoCa, xacNhanPH, goKhoiCa, huyCa, taoCaTay, LOAI_TEN, type CaBoTro, type HsTrongCa, type NgayTomTat, type UngVien, type UngVienCa, type LoaiBoTro } from '../../lib/ca_bo_tro'
+import { caTheoDoi, type CaTheoDoi } from '../../lib/botro_yeu_ca'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listPhong, type Phong } from '../../lib/phong'
 import SearchSelect from '../../components/SearchSelect'
+import TheoDoiCaBoTroTab, { TT, trangThai } from '../danhgia/TheoDoiCaBoTroTab'
 
 const hhmm = (t: string | null | undefined) => (t ? String(t).slice(0, 5) : '')
 const KHUNG_GIO = Array.from({ length: (22 - 6) * 2 + 1 }, (_, i) => `${String(6 + Math.floor(i / 2)).padStart(2, '0')}:${i % 2 ? '30' : '00'}`)
-const LOAI_CLS: Record<LoaiBoTro, string> = { duoi: 'bg-rose-50 text-rose-700', bu: 'bg-sky-50 text-sky-700', yeu: 'bg-indigo-50 text-indigo-700' }
+// Thùy 24/09: màu nhận diện theo loại — Yếu đỏ · Đuổi xanh da trời · Bù cam (nền nhạt)
+const LOAI_CLS: Record<LoaiBoTro, string> = { yeu: 'bg-rose-100 text-rose-700', duoi: 'bg-sky-100 text-sky-700', bu: 'bg-orange-100 text-orange-700' }
+const LOAI_ROW: Record<LoaiBoTro, string> = { yeu: 'bg-rose-50 border-rose-200', duoi: 'bg-sky-50 border-sky-200', bu: 'bg-orange-50 border-orange-200' }
+const POLL_MS = 15000
 // Nhớ ngày + môn đang xem khi rời màn (CLAUDE.md §2 "rời màn rồi quay lại = đúng chỗ cũ").
 const NHO: { ngay: string | null; mon: string } = { ngay: null, mon: '' }
 
@@ -19,6 +26,8 @@ export default function LichPhongScreen() {
   const [ngay, setNgay] = useState<string>(NHO.ngay ?? homNay)
   const [tomTat, setTomTat] = useState<NgayTomTat[]>([])
   const [cas, setCas] = useState<CaBoTro[]>([])
+  const [live, setLive] = useState<Map<string, CaTheoDoi>>(new Map()) // buoi_id → trạng thái sống của ca yếu
+  const [now, setNow] = useState(Date.now())
   const [loading, setLoading] = useState(true)
   const [loi, setLoi] = useState<string | null>(null)
   const [monF, setMonF] = useState(NHO.mon)
@@ -28,14 +37,19 @@ export default function LichPhongScreen() {
   const [nss, setNss] = useState<NhanSu[]>([])
   const [phongs, setPhongs] = useState<Phong[]>([])
 
-  const taiTomTat = () => tomTatNgay(congNgay(homNay, -1), congNgay(homNay, 13)).then(setTomTat).catch(() => {})
+  const taiTomTat = (d: string) => tomTatNgay(congNgay(d, -1), congNgay(d, 1)).then(setTomTat).catch(() => {})
+  const taiLive = (d: string) => caTheoDoi(d).then((r) => { setLive(new Map(r.map((x) => [x.buoi_id, x]))); setNow(Date.now()) }).catch(() => {})
   const taiNgay = (d: string) => { setLoading(true); setLoi(null); caCuaNgay(d).then(setCas).catch((e: any) => setLoi(e?.message ?? String(e))).finally(() => setLoading(false)) }
-  useEffect(() => { taiTomTat(); listNhanSu().then((l) => setNss(l.filter((n) => n.trang_thai === 'dang_lam'))).catch(() => {}); listPhong(true).then(setPhongs).catch(() => {}) }, [])
-  useEffect(() => { NHO.ngay = ngay; taiNgay(ngay) }, [ngay])
+  useEffect(() => { listNhanSu().then((l) => setNss(l.filter((n) => n.trang_thai === 'dang_lam'))).catch(() => {}); listPhong(true).then(setPhongs).catch(() => {}) }, [])
+  useEffect(() => { NHO.ngay = ngay; taiNgay(ngay); taiTomTat(ngay); taiLive(ngay) }, [ngay])
   useEffect(() => { NHO.mon = monF }, [monF])
+  useEffect(() => { const id = setInterval(() => { if (document.visibilityState === 'visible') taiLive(NHO.ngay ?? homNay) }, POLL_MS); return () => clearInterval(id) }, [])
 
   const mons = useMemo(() => [...new Set(cas.map((c) => c.mon))].sort(), [cas])
   const hien = useMemo(() => cas.filter((c) => (!monF || c.mon === monF) && (hienHuy || c.trang_thai === 'mo')), [cas, monF, hienHuy])
+  const caTruc = hien.filter((c) => c.lich_truc_id)
+  const caRieng = hien.filter((c) => !c.lich_truc_id)
+  const anBuoiIds = useMemo(() => new Set(cas.flatMap((c) => c.hs.map((h) => h.buoi_hoc_id))), [cas]) // đã hiện trong card ca ⇒ Lịch riêng ẩn
   const moCa = cas.find((c) => c.id === moCaId) ?? null
   const tenNs = (id: string | null) => (id ? nss.find((n) => n.id === id)?.ho_ten ?? null : null)
 
@@ -82,40 +96,56 @@ export default function LichPhongScreen() {
     } catch (e: any) { setLoi(e?.message ?? String(e)) }
   }
 
-  const ngays = useMemo(() => Array.from({ length: 15 }, (_, i) => congNgay(homNay, i - 1)), [homNay])
+  const nhanNgay = (d: string) => d === homNay ? 'Hôm nay' : d === congNgay(homNay, -1) ? 'Hôm qua' : d === congNgay(homNay, 1) ? 'Ngày mai' : thuCuaNgay(d)
+  const theCa = (c: CaBoTro) => <CaCard key={c.id} c={c} live={live} now={now} onMo={() => setMoCaId(c.id)} onXacNhan={(h) => xacNhan(c, h)} onGo={(h) => go(c, h)} onHuy={() => huy(c)} />
   return (
     <section className="min-h-0 overflow-auto bg-[#f5f5f7] p-8">
       <div className="mx-auto max-w-[1100px]">
-        <header className="mb-4">
-          <h1 className="text-[22px] font-bold text-slate-800">Lịch phòng</h1>
-          <p className="mt-1 text-[13px] text-slate-500">Chọn ngày → bấm vào ca trực → xếp em từ 3 hàng chờ (Đuổi → Bù → Yếu). 1 đv = 30' × 1 TA · Đuổi 4 · Bù 4 · Yếu L2 4 · Yếu L1 2 · tối đa 3 em/TA.</p>
+        <header className="mb-4 flex flex-wrap items-center gap-3">
+          <div className="min-w-0 flex-1">
+            <h1 className="text-[22px] font-bold text-slate-800">Lịch phòng · đang diễn ra</h1>
+            <p className="mt-1 text-[12.5px] text-slate-500">Mọi bổ trợ trong ngày. Bấm "+ Xếp" trên ca trực để xếp em (Đuổi → Bù → Yếu). 1 đv = 30' × 1 TA · Đuổi 4 · Bù 4 · Yếu L2 4 · Yếu L1 2 · ≤3 em/TA.</p>
+          </div>
+          {/* Ngày: 3 ô quanh ngày chọn + mũi tên + chọn thẳng (Thùy 24/09: gọn, tiết kiệm chỗ) */}
+          <div className="flex items-center gap-1 rounded-2xl bg-white p-1.5 ring-1 ring-slate-200">
+            <button onClick={() => setNgay(congNgay(ngay, -1))} title="Lùi 1 ngày" className="h-9 w-8 rounded-lg text-[16px] text-slate-500 hover:bg-slate-100">‹</button>
+            {[congNgay(ngay, -1), ngay, congNgay(ngay, 1)].map((d) => { const t = tomTat.find((x) => x.ngay === d); const on = d === ngay; return (
+              <button key={d} onClick={() => setNgay(d)} className={`min-w-[92px] rounded-xl px-2.5 py-1 text-center ${on ? 'bg-indigo-50 ring-1 ring-indigo-200' : 'hover:bg-slate-50'}`}>
+                <div className={`text-[12.5px] font-bold ${on ? 'text-indigo-700' : 'text-slate-700'}`}>{nhanNgay(d)} · {ddmmVN(d)}</div>
+                <div className="text-[11px] text-slate-400">{t ? `${t.so_ca} ca · ${t.don_vi_dung}${t.don_vi_cho ? `+${t.don_vi_cho}` : ''}/${t.don_vi} đv` : '…'}</div>
+              </button>) })}
+            <button onClick={() => setNgay(congNgay(ngay, 1))} title="Tới 1 ngày" className="h-9 w-8 rounded-lg text-[16px] text-slate-500 hover:bg-slate-100">›</button>
+            <input type="date" value={ngay} onChange={(e) => e.target.value && setNgay(e.target.value)} title="Chọn ngày" className="ml-1 w-[34px] cursor-pointer rounded-lg border border-slate-200 px-1 py-1.5 text-[12px] text-transparent [color-scheme:light] focus:w-[130px] focus:text-slate-700" />
+            {ngay !== homNay && <button onClick={() => setNgay(homNay)} className="ml-1 rounded-lg px-2 py-1 text-[12px] font-semibold text-indigo-600 hover:bg-indigo-50">Hôm nay</button>}
+          </div>
         </header>
 
-        <div className="mb-3 flex flex-wrap items-center gap-1.5 rounded-2xl bg-white p-2.5 ring-1 ring-slate-200">
-          {ngays.map((d) => { const t = tomTat.find((x) => x.ngay === d); const on = d === ngay; return (
-            <button key={d} onClick={() => setNgay(d)} className={`min-w-[84px] rounded-xl border px-2.5 py-1.5 text-center ${on ? 'border-indigo-200 bg-indigo-50' : 'border-slate-200 bg-white hover:border-indigo-200'} ${d < homNay ? 'opacity-60' : ''}`}>
-              <div className={`text-[12.5px] font-bold ${on ? 'text-indigo-700' : 'text-slate-700'}`}>{thuCuaNgay(d)} {ddmmVN(d)}{d === homNay ? ' ·' : ''}</div>
-              <div className="text-[11px] text-slate-400">{t ? `${t.so_ca} ca · ${t.don_vi_dung}${t.don_vi_cho ? `+${t.don_vi_cho}` : ''}/${t.don_vi} đv` : '…'}</div>
-            </button>) })}
-        </div>
-
         <div className="mb-3 flex flex-wrap items-center gap-2">
-          <select value={monF} onChange={(e) => setMonF(e.target.value)} className="rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-[13px]"><option value="">Tất cả môn</option>{mons.map((m) => <option key={m} value={m}>{m}</option>)}</select>
-          <label className="flex items-center gap-1.5 text-[12px] text-slate-500"><input type="checkbox" checked={hienHuy} onChange={(e) => setHienHuy(e.target.checked)} /> hiện ca đã huỷ</label>
-          <span className="ml-auto flex items-center gap-3 text-[11.5px] text-slate-500"><span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-indigo-600 align-[-1px]" />đã xác nhận PH</span><span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-indigo-200 align-[-1px]" />chờ PH — chưa trừ</span></span>
-          <button onClick={() => setTaoMoi((v) => !v)} className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[12.5px] font-semibold text-slate-700 hover:bg-slate-50">+ Ca ngoài lịch trực</button>
-          <button onClick={() => { taiNgay(ngay); taiTomTat() }} title="Tải lại" className="rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-[12px] text-slate-500 hover:bg-slate-100">↻</button>
+          {mons.length > 1 && <select value={monF} onChange={(e) => setMonF(e.target.value)} className="rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-[13px]"><option value="">Tất cả môn</option>{mons.map((m) => <option key={m} value={m}>{m}</option>)}</select>}
+          <span className="flex items-center gap-2 text-[11.5px] text-slate-500">
+            {(['yeu', 'duoi', 'bu'] as const).map((k) => <span key={k} className={`rounded-full px-2 py-0.5 font-bold ${LOAI_CLS[k]}`}>{LOAI_TEN[k]}</span>)}
+            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-indigo-600 align-[-1px]" />đã xác nhận PH</span><span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-indigo-200 align-[-1px]" />chờ PH</span>
+          </span>
+          <label className="ml-auto flex items-center gap-1.5 text-[12px] text-slate-500"><input type="checkbox" checked={hienHuy} onChange={(e) => setHienHuy(e.target.checked)} /> hiện ca đã huỷ</label>
+          <button onClick={() => { taiNgay(ngay); taiTomTat(ngay); taiLive(ngay) }} title="Tải lại" className="rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-[12px] text-slate-500 hover:bg-slate-100">↻</button>
         </div>
         {loi && <p className="mb-3 rounded-xl bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</p>}
-        {taoMoi && <TaoCaForm ngay={ngay} nss={nss} phongs={phongs} mons={mons} onXong={(id) => { setTaoMoi(false); taiNgay(ngay); taiTomTat(); setMoCaId(id) }} onDong={() => setTaoMoi(false)} />}
 
-        {loading ? <div className="rounded-2xl bg-white p-8 text-center text-[13px] text-slate-400 ring-1 ring-slate-200">Đang tải…</div>
-          : hien.length === 0 ? <div className="rounded-2xl bg-white p-8 text-center text-[13px] text-slate-400 ring-1 ring-slate-200">{thuCuaNgay(ngay)} {ddmmVN(ngay)} không có ca trực nào{monF ? ` (${monF})` : ''}. Thêm ở tab Lịch trực, hoặc "+ Ca ngoài lịch trực".</div>
-          : (
-            <div className="grid gap-3 md:grid-cols-2">
-              {hien.map((c) => <CaCard key={c.id} c={c} onMo={() => setMoCaId(c.id)} onXacNhan={(h) => xacNhan(c, h)} onGo={(h) => go(c, h)} onHuy={() => huy(c)} />)}
-            </div>
-          )}
+        {/* ── Khu 1: Lịch trực bổ trợ khối ── */}
+        <h2 className="mb-2 mt-1 flex items-baseline gap-2 text-[14px] font-bold text-slate-700">📅 Lịch trực bổ trợ khối <span className="text-[12px] font-normal text-slate-400">ca trực cố định, trước/sau giờ học · {caTruc.length} ca</span></h2>
+        {loading ? <div className="mb-6 rounded-2xl bg-white p-6 text-center text-[13px] text-slate-400 ring-1 ring-slate-200">Đang tải…</div>
+          : caTruc.length === 0 ? <div className="mb-6 rounded-2xl bg-white p-6 text-center text-[13px] text-slate-400 ring-1 ring-slate-200">{thuCuaNgay(ngay)} {ddmmVN(ngay)} không có ca trực nào{monF ? ` (${monF})` : ''} — thêm ở tab Lịch trực.</div>
+          : <div className="mb-6 grid gap-3 md:grid-cols-2">{caTruc.map(theCa)}</div>}
+
+        {/* ── Khu 2: Lịch riêng ── */}
+        <div className="mb-2 flex flex-wrap items-baseline gap-2">
+          <h2 className="text-[14px] font-bold text-slate-700">🗂 Lịch riêng</h2>
+          <span className="text-[12px] text-slate-400">ca ngoài lịch trực + buổi xếp riêng không khớp ca trực nào</span>
+          <button onClick={() => setTaoMoi((v) => !v)} className="ml-auto rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[12.5px] font-semibold text-slate-700 hover:bg-slate-50">+ Ca ngoài lịch trực</button>
+        </div>
+        {taoMoi && <TaoCaForm ngay={ngay} nss={nss} phongs={phongs} mons={mons} onXong={(id) => { setTaoMoi(false); taiNgay(ngay); taiTomTat(ngay); setMoCaId(id) }} onDong={() => setTaoMoi(false)} />}
+        {caRieng.length > 0 && <div className="mb-3 grid gap-3 md:grid-cols-2">{caRieng.map(theCa)}</div>}
+        <TheoDoiCaBoTroTab monF={monF} khoiF="" ngay={ngay} anBuoiIds={anBuoiIds} />
       </div>
       {moCa && moCa.trang_thai === 'mo' && <UngVienModal ca={moCa} onDong={() => setMoCaId(null)} onXep={(u) => xep(moCa, u)} />}
     </section>
@@ -123,21 +153,22 @@ export default function LichPhongScreen() {
 }
 
 function ThanhDonVi({ c }: { c: Pick<CaBoTro, 'don_vi' | 'don_vi_dung' | 'don_vi_cho'> }) {
+  const lo = c.don_vi_dung > c.don_vi
   const pDung = Math.min(100, (100 * c.don_vi_dung) / Math.max(1, c.don_vi)), pCho = Math.min(100 - pDung, (100 * c.don_vi_cho) / Math.max(1, c.don_vi))
   return (
     <div className="flex items-center gap-2">
-      <div className="flex h-2 flex-1 overflow-hidden rounded-full bg-slate-100"><div className="bg-indigo-600" style={{ width: `${pDung}%` }} /><div className="bg-indigo-200" style={{ width: `${pCho}%` }} /></div>
-      <b className="whitespace-nowrap text-[12.5px] text-slate-700">{c.don_vi_dung}{c.don_vi_cho ? <span className="text-slate-400">+{c.don_vi_cho}</span> : null}/{c.don_vi} đv</b>
+      <div className="flex h-2 flex-1 overflow-hidden rounded-full bg-slate-100"><div className={lo ? 'bg-rose-500' : 'bg-indigo-600'} style={{ width: `${pDung}%` }} /><div className="bg-indigo-200" style={{ width: `${pCho}%` }} /></div>
+      <b className={`whitespace-nowrap text-[12.5px] ${lo ? 'text-rose-600' : 'text-slate-700'}`}>{c.don_vi_dung}{c.don_vi_cho ? <span className="text-slate-400">+{c.don_vi_cho}</span> : null}/{c.don_vi} đv{lo ? ' · LỐ' : ''}</b>
     </div>
   )
 }
 
-function CaCard({ c, onMo, onXacNhan, onGo, onHuy }: { c: CaBoTro; onMo: () => void; onXacNhan: (h: HsTrongCa) => void; onGo: (h: HsTrongCa) => void; onHuy: () => void }) {
+function CaCard({ c, live, now, onMo, onXacNhan, onGo, onHuy }: { c: CaBoTro; live: Map<string, CaTheoDoi>; now: number; onMo: () => void; onXacNhan: (h: HsTrongCa) => void; onGo: (h: HsTrongCa) => void; onHuy: () => void }) {
   const con = c.don_vi - c.don_vi_dung
   const huy = c.trang_thai === 'huy'
-  const goiY = con <= 0 ? 'kín đơn vị' : con < 2 ? 'còn 1 đv — không vừa em nào' : con < 4 ? `còn ${con} đv — chỉ vừa Yếu L1` : `còn ${con} đv — vừa ${c.phut >= 60 ? '1 Đuổi / ' : ''}1 Bù / 1 L2 / ${Math.floor(con / 2)} L1`
+  const goiY = con < 0 ? `LỐ ${-con} đv — ca xếp theo đường cũ vượt sức, cân nhắc gỡ bớt` : con === 0 ? 'kín đơn vị' : con < 2 ? 'còn 1 đv — không vừa em nào' : con < 4 ? `còn ${con} đv — chỉ vừa Yếu L1` : `còn ${con} đv — vừa ${c.phut >= 60 ? '1 Đuổi / ' : ''}1 Bù / 1 L2 / ${Math.floor(con / 2)} L1`
   return (
-    <div className={`rounded-2xl bg-white p-4 ring-1 ${huy ? 'opacity-60 ring-slate-200' : con <= 0 ? 'ring-emerald-200' : 'ring-slate-200'}`}>
+    <div className={`rounded-2xl bg-white p-4 ring-1 ${huy ? 'opacity-60 ring-slate-200' : con < 0 ? 'ring-rose-300' : con === 0 ? 'ring-emerald-200' : 'ring-slate-200'}`}>
       <div className="flex items-start gap-2">
         <div>
           <h3 className="text-[14px] font-bold text-slate-800">{hhmm(c.gio_bat_dau)}–{hhmm(c.gio_ket_thuc)}{c.phong ? ` · ${c.phong}` : ''}{c.khoi ? ` · Khối ${c.khoi}` : ''} <span className="font-normal text-slate-400">· {c.mon}</span></h3>
@@ -147,17 +178,22 @@ function CaCard({ c, onMo, onXacNhan, onGo, onHuy }: { c: CaBoTro; onMo: () => v
           : <div className="ml-auto flex shrink-0 gap-1.5"><button onClick={onMo} className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[12px] font-bold text-white hover:bg-indigo-700">+ Xếp</button><button onClick={onHuy} title="Huỷ ca (TA nghỉ…)" className="rounded-lg border border-slate-200 px-2 py-1.5 text-[12px] text-slate-400 hover:text-rose-600">Huỷ</button></div>}
       </div>
       {!huy && <div className="mt-2.5"><ThanhDonVi c={c} /></div>}
-      {c.hs.map((h) => (
-        <div key={h.bhh_id} className={`mt-1.5 flex flex-wrap items-center gap-1.5 rounded-xl border px-2.5 py-1.5 text-[12.5px] ${h.xac_nhan_ph_at ? 'border-slate-200' : 'border-dashed border-slate-300 text-slate-500'}`}>
-          <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${LOAI_CLS[h.loai]}`}>{LOAI_TEN[h.loai]} · {h.don_vi}</span>
-          <span className="font-semibold text-slate-800">{h.ho_ten}</span><span className="text-slate-400">{h.lop ?? ''} · {h.chi_tiet}{h.nguoi_day_ten ? ` · dạy: ${h.nguoi_day_ten}` : ''}</span>
-          {h.diem_danh ? <span className="ml-auto rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-bold text-slate-600">{h.diem_danh === 'co_mat' ? 'có mặt' : 'vắng'}</span>
-            : h.xac_nhan_ph_at ? <span className="ml-auto rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-700">✓ PH</span>
-            : <span className="ml-auto flex items-center gap-1"><span className="rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-bold text-amber-700">chờ PH</span><button onClick={() => onXacNhan(h)} className="rounded-md bg-indigo-600 px-2 py-0.5 text-[11px] font-bold text-white hover:bg-indigo-700">Xác nhận</button></span>}
-          {!h.diem_danh && <button onClick={() => onGo(h)} title="Gỡ khỏi ca" className="text-slate-300 hover:text-rose-600">✕</button>}
-        </div>
-      ))}
-      {!huy && <div className="mt-2 text-[11.5px] text-slate-400">{goiY}{c.phong ? ` · ${c.phong}: ${c.phong_so_ca}/2 ca${c.phong_so_ca >= 2 ? ' — phòng đầy' : ''}` : ''}</div>}
+      {c.hs.map((h) => {
+        const lv = h.loai === 'yeu' ? live.get(h.buoi_hoc_id) : undefined
+        const tt = lv ? trangThai(lv, now) : null
+        return (
+          <div key={h.bhh_id} className={`mt-1.5 flex flex-wrap items-center gap-1.5 rounded-xl border px-2.5 py-1.5 text-[12.5px] ${LOAI_ROW[h.loai]} ${h.xac_nhan_ph_at ? '' : 'border-dashed opacity-75'}`}>
+            <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${LOAI_CLS[h.loai]}`}>{LOAI_TEN[h.loai]} · {h.don_vi}</span>
+            <span className="font-semibold text-slate-800">{h.ho_ten}</span><span className="text-slate-500">{h.lop ?? ''} · {h.chi_tiet}{h.nguoi_day_ten ? ` · dạy: ${h.nguoi_day_ten}` : ''}</span>
+            {lv && tt && tt !== 'chua_dd' && <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${TT[tt].cls}`} title={`đã làm ${lv.so_dung}/${lv.so_cau} câu đúng`}>{TT[tt].ten} · {lv.so_dung}/{lv.so_cau}</span>}
+            {h.diem_danh ? <span className="ml-auto rounded-full bg-white/70 px-2 py-0.5 text-[11px] font-bold text-slate-600">{h.diem_danh === 'co_mat' ? 'có mặt' : 'vắng'}</span>
+              : h.xac_nhan_ph_at ? <span className="ml-auto rounded-full bg-emerald-100 px-2 py-0.5 text-[11px] font-bold text-emerald-700">✓ PH</span>
+              : <span className="ml-auto flex items-center gap-1"><span className="rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-bold text-amber-700">chờ PH</span><button onClick={() => onXacNhan(h)} className="rounded-md bg-indigo-600 px-2 py-0.5 text-[11px] font-bold text-white hover:bg-indigo-700">Xác nhận</button></span>}
+            {!h.diem_danh && <button onClick={() => onGo(h)} title="Gỡ khỏi ca" className="text-slate-400 hover:text-rose-600">✕</button>}
+          </div>
+        )
+      })}
+      {!huy && <div className={`mt-2 text-[11.5px] ${con < 0 ? 'font-semibold text-rose-600' : 'text-slate-400'}`}>{goiY}{c.phong ? ` · ${c.phong}: ${c.phong_so_ca}/2 ca${c.phong_so_ca >= 2 ? ' — phòng đầy' : ''}` : ''}</div>}
     </div>
   )
 }

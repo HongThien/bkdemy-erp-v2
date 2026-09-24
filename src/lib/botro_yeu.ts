@@ -433,10 +433,11 @@ export async function layTienDoCa(mon?: string): Promise<TienDoCase[]> {
 export type BuoiBoTroYeuDaXep = {
   id: string; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null
   nguoi_day_tg: string | null; trang_thai: string
+  danh_gia_xong_at: string | null // buổi 'mo' nhưng ĐÃ HỌC + đóng ca ⇒ không phải "buổi chờ học" (Thùy 24/09: sửa buổi cũ rồi lưu ≠ xếp)
 }
 export async function listBuoiCuaCase(boTroYeuId: string): Promise<BuoiBoTroYeuDaXep[]> {
   const { data, error } = await supabase.from('buoi_hoc_hs')
-    .select('buoi:buoi_hoc_id(id, ngay, gio_bat_dau, gio_ket_thuc, phong, nguoi_day_tg, trang_thai)')
+    .select('buoi:buoi_hoc_id(id, ngay, gio_bat_dau, gio_ket_thuc, phong, nguoi_day_tg, trang_thai, danh_gia_xong_at)')
     .eq('bo_tro_yeu_id', boTroYeuId).limit(LIMIT)
   if (error) throw error
   return ((data ?? []) as any[]).map((r) => r.buoi).filter(Boolean)

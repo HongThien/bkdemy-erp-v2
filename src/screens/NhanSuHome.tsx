@@ -54,8 +54,7 @@ import ScanDaChamScreen from './vanhanhops/ScanDaChamScreen'
 import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
 import TestDauVaoScreen, { moTabTestDauVao } from './tuyensinh/TestDauVaoScreen'
 import KhaoSatScreen from './khaosat/KhaoSatScreen'
-import BoTroScreen from './botro/BoTroScreen'
-import BoTroDuoiScreen from './botro/BoTroDuoiScreen'
+import BoTroHubScreen, { moBoTroTab } from './botro/BoTroHubScreen'
 import ChatLuongVanHanhScreen from './dashboard/ChatLuongVanHanhScreen'
 import PhDangNhapScreen from './dashboard/PhDangNhapScreen'
 import XemAppScreen from './dashboard/XemAppScreen'
@@ -66,9 +65,6 @@ import DuyetBoTroYeuScreen from './danhgia/DuyetBoTroYeuScreen'
 import NoiDungBoTroYeuScreen from './danhgia/NoiDungBoTroYeuScreen'
 import TrangThaiCaBoTroScreen from './danhgia/TrangThaiCaBoTroScreen'
 import DanhGiaCaBoTroScreen from './danhgia/DanhGiaCaBoTroScreen'
-import XepLichBoTroYeuScreen from './danhgia/XepLichBoTroYeuScreen'
-import LichTrucScreen from './botro/LichTrucScreen'
-import LichPhongScreen from './botro/LichPhongScreen'
 import GayScreen from './gay/GayScreen'
 import ThuChiScreen from './thuchi/ThuChiScreen'
 
@@ -533,7 +529,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
         <div>
           {/* Team học thuật: đợt bổ trợ đuổi chờ chốt dạng (derive theo hocThuatMons) — Thùy 07-15 */}
           {choDuyetDuoi > 0 && (
-            <button onClick={() => setStaffLeaf('botro_duoi')} className="mx-auto mb-3 block w-full max-w-[900px] rounded-2xl border border-amber-200 bg-amber-50 p-3.5 text-left shadow-sm hover:shadow-md">
+            <button onClick={() => { moBoTroTab('duoi'); setStaffLeaf('botro') }} className="mx-auto mb-3 block w-full max-w-[900px] rounded-2xl border border-amber-200 bg-amber-50 p-3.5 text-left shadow-sm hover:shadow-md">
               <div className="flex items-center gap-2 text-[14px] font-semibold text-amber-800">📚 {choDuyetDuoi} đợt bổ trợ đuổi chờ chốt dạng</div>
               <p className="mt-1 text-[12px] leading-relaxed text-amber-700">Ops đã tạo card đuổi — bạn (team học thuật) chốt dạng cần đuổi + số buổi để GV dạy bám theo.</p>
             </button>
@@ -667,7 +663,6 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'botroyeu:noidung' ? <NoiDungBoTroYeuScreen />
       : staffLeaf === 'botroyeu:trangthai' ? <TrangThaiCaBoTroScreen />
       : staffLeaf === 'botroyeu:danhgia' ? <DanhGiaCaBoTroScreen />
-      : staffLeaf === 'xep_by' ? <XepLichBoTroYeuScreen />
       : staffLeaf === 'ns' ? <NhanSuScreen />
       : staffLeaf === 'phancong' ? <PhanCongScreen />
       : staffLeaf === 'tkb' ? <TKBScreen />
@@ -677,10 +672,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'tuyensinh' ? <TuyenSinhScreen />
       : staffLeaf === 'test_dau_vao' ? <TestDauVaoScreen />
       : staffLeaf === 'khaosat' ? <KhaoSatScreen />
-      : staffLeaf === 'botro' ? <BoTroScreen />
-      : staffLeaf === 'botro_duoi' ? <BoTroDuoiScreen />
-      : staffLeaf === 'botro_lichtruc' ? <LichTrucScreen />
-      : staffLeaf === 'botro_lichphong' ? <LichPhongScreen />
+      : staffLeaf === 'botro' ? <BoTroHubScreen />
       : staffLeaf === 'buoihoc' ? <BuoiHocScreen />
       : staffLeaf === 'diemso' ? <GamiDiemScreen />
       : staffLeaf === 'thanhtich' ? <ThanhTichScreen />

@@ -72,7 +72,7 @@ Mở sub-tab LỊCH PHÒNG → chọn NGÀY (mặc định hôm nay; đi từng 
 | **Bù** | *(CEO chưa nói — giả định G2)* buổi nghỉ **cũ hơn trước**; cùng buổi ⇒ em nghỉ nhiều buổi chưa bù hơn trước |
 | **Yếu** | `uu_tien` Cao → Thường → Thấp, rồi case mở lâu hơn trước (như hiện nay). **Không xét bậc** |
 
-## 6. MÀN HÌNH — lá "BỔ TRỢ" 5 sub-tab (menu Vận hành)
+## 6. MÀN HÌNH — ĐÚNG 1 lá "BỔ TRỢ" (menu Vận hành) → thanh toggle 5 nút phía trên (CEO 24/09: "không phải 5 lá con; 1 click là chuyển")
 
 | Sub-tab | Là gì | Đổi gì so với nay |
 |---|---|---|
@@ -82,7 +82,18 @@ Mở sub-tab LỊCH PHÒNG → chọn NGÀY (mặc định hôm nay; đi từng 
 | **Lịch phòng** ★ mới | ngày → ca trực → popup 3 tab → xếp theo đơn vị (§4) — mockup `mockups/xep-bo-tro-chung.html` | thay cho tab "Ca bổ trợ" + form xếp tay của cả 3 loại |
 | **Lịch trực** | tab hiện có của Yếu, thêm cột số TA | lên chung |
 
+Hub: `src/screens/botro/BoTroHubScreen.tsx` (thanh toggle, nhớ tab đang mở; nơi khác nhảy tới bằng `moBoTroTab('duoi'|'bu'|'yeu'|'lichphong'|'lichtruc')`). 1 quyền `botro` cho cả màn.
 Giao diện: Apple-clean (nền xám, card trắng, pill mềm) như mọi màn staff — không sci-fi.
+
+## 6b. Cập nhật 24/09 chiều (sau khi CEO dùng thử)
+
+- **Yếu không còn logic xếp riêng** — tab "Ca bổ trợ" (tự ghép khối+bậc) và "Đang diễn ra" bỏ khỏi màn Yếu; đơn vị tính chung 3 loại.
+- **Lịch phòng = "Đang diễn ra" của cả 3 loại**, 2 khu: 📅 **Lịch trực bổ trợ khối** (ca trực cố định trước/sau giờ học) · 🗂 **Lịch riêng** (ca tạo tay + buổi xếp riêng
+  không khớp ca trực nào — nhúng TheoDoiCaBoTroTab). Mở ngày ⇒ DB gắn buổi đã xếp bằng form Bù/Đuổi/Yếu vào ca trực khớp NGƯỜI + GIỜ, tính đơn vị,
+  coi như PH đã chốt (mig 202609241600). Ca lố đơn vị (xếp đường cũ) hiện đỏ "LỐ".
+- Màu thẻ theo loại (nền nhạt): **Yếu đỏ · Đuổi xanh da trời · Bù cam**. Em yếu trong ca trực hiện luôn trạng thái sống (đang luyện / im lâu / chờ test · x/y câu).
+- Chọn ngày: 3 ô (hôm qua · hôm nay · ngày mai quanh ngày chọn) + mũi tên + chọn thẳng.
+- Bù · Đuổi · Yếu: chip khối + ô tìm tên/mã **góc trên bên phải**, cùng hàng tab.
 
 ## 7. QUYỀN
 
