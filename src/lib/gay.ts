@@ -25,9 +25,12 @@ export const GAY_DON_GIA = 20000
 // Lỗi hệ thống gắn cho gậy tự động (seed trong migration, tìm bằng khoá tự nhiên `ma`).
 export const MA_LOI_CHAM_DEADLINE = 'cham_deadline'
 // Mốc lịch sử CỐ ĐỊNH (CEO 07/09 → nhắc lại 15/09: bỏ hẳn dữ liệu trước mốc này khỏi
-// hàng đợi, không phải "tháng hiện tại" — không tự trôi). Cùng mốc với ân xá dashboard
-// TA/GV/OPS (mig 202609070015_gay_amnesty_truoc_thang9.sql).
-export const GAY_MOC_LICH_SU = '2026-09-01T00:00:00+07:00'
+// hàng đợi, không phải "tháng hiện tại" — không tự trôi). **CEO 24/09: ân xá lần 2 — việc có
+// hạn trước 22/09 không xét gậy nữa**, đề xuất/ledger cũ đã XOÁ (mig 202609241402). Quét tự
+// động cũng dừng ở mốc này (không thì đẻ lại). Mốc ân xá dashboard TA/GV/OPS vẫn là 01/09
+// (mig 202609070015) — CEO chốt tách riêng, đừng đồng bộ.
+export const GAY_MOC_LICH_SU = '2026-09-22T00:00:00+07:00'
+const GAY_MOC_LICH_SU_MS = new Date(GAY_MOC_LICH_SU).getTime()
 // Lỗi mặc định khi đánh gậy THEO TASK (Thùy 05/09: "task nào có gậy = không đạt chuẩn").
 export const MA_LOI_KHONG_DAT_CHUAN = 'khong_dat_chuan'
 
@@ -172,7 +175,7 @@ export async function quetGayTuDong(): Promise<number> {
   // trước có deadline lấn sang tháng này (vd ET trưa hôm sau).
   const rows = await listAllStaffTasks(congNgay(monthStart, -7), today)
   for (const r of rows) {
-    if (r.deadline == null || r.deadline < monthStartMs) continue
+    if (r.deadline == null || r.deadline < monthStartMs || r.deadline < GAY_MOC_LICH_SU_MS) continue
     // chỉ tính cho NGƯỜI PHỤ TRÁCH CHÍNH của khâu này — task của người khác bỏ qua.
     // MT: owner (trưởng khối → GV lớp) đã do fn_viec_buoi_thuong chọn duy nhất — không tra phan_cong_lop.
     if (r.tab !== 'mt' && nguoiPhuTrach(pcByLop.get(r.lopId) ?? [], r.tab) !== r.nhan_su_id) continue
@@ -196,7 +199,7 @@ export async function quetGayTuDong(): Promise<number> {
   // không còn theo từng lớp/phòng. Sở hữu + % đã tính sẵn ở DB.
   const opsRows = await listAllOpsTaskNhom(congNgay(monthStart, -7), today)
   for (const r of opsRows) {
-    if (r.han < monthStartMs) continue
+    if (r.han < monthStartMs || r.han < GAY_MOC_LICH_SU_MS) continue
     if (mien.has(r.nhanSuId)) continue
     if (r.kqRaw !== 'khong_dat') continue
     const tre = Math.max(1, now - r.han)
@@ -213,7 +216,7 @@ export async function quetGayTuDong(): Promise<number> {
   // deadline (deadline hiện hành, tức đã tính gia hạn được duyệt). hold/huy/chuyen bỏ.
   const { data: viecs, error } = await supabase.from('viec')
     .select('id, tieu_de, nguoi_lam_id, deadline, ngay_nop, hoan_thanh_at, trang_thai')
-    .not('deadline', 'is', null).gte('deadline', monthStart)
+    .not('deadline', 'is', null).gte('deadline', monthStart).gte('deadline', GAY_MOC_LICH_SU.slice(0, 10))
     .in('trang_thai', ['moi_giao', 'dang_lam', 'cho_nghiem_thu', 'tra_lai', 'dat'])
     .limit(LIMIT)
   if (error) throw error
