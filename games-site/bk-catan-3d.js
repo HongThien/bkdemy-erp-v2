@@ -262,10 +262,15 @@ function renderTargets(st, o) {
 }
 function pop(o) { const s = o.scale.clone(); o.scale.multiplyScalar(.01); anims.push({ t: 0, dur: .6, fn: k => { const e = 1 + 2.7 * Math.pow(k - 1, 3) + 1.7 * Math.pow(k - 1, 2); o.scale.copy(s).multiplyScalar(Math.max(.01, e)); } }); }
 
+let lastSig = null;
 function render(st, o) {
   if (!API.ok || !st) return;
   o = o || {};
   if (builtSeed !== st.mapSeed) buildStatic(st);
+  // bỏ qua nếu không có gì đổi trên bàn (trừ khi có flash) — mỗi lần render là dựng lại nhà/đường/nhãn, gọi dồn thì chớp
+  const sig = JSON.stringify([st.mapSeed, st.vOwner, st.vLevel, st.eOwner, st.vDebuff, st.zone, st.pending, st.players.map(p => p.color), o.tV, o.tE, o.mine]);
+  if (sig === lastSig && !o.flashV && !o.flashE) { last = st; return; }
+  lastSig = sig;
   renderZones(st); renderDyn(st, o); renderTargets(st, o);
   last = st;
 }

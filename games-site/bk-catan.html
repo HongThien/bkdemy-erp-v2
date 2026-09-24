@@ -328,7 +328,7 @@ function drawBoard(svg,st,o){
   o=o||{};const map=E.buildMap(st.mapSeed);
   const xs=map.verts.map(v=>v.x*U),ys=map.verts.map(v=>v.y*U),pad=U*.9;
   const minX=Math.min(...xs)-pad,maxX=Math.max(...xs)+pad,minY=Math.min(...ys)-pad,maxY=Math.max(...ys)+pad;
-  svg._vb=[minX,minY,maxX-minX,maxY-minY];svg.setAttribute('viewBox',`${minX} ${minY} ${maxX-minX} ${maxY-minY}`);
+  svg._vb=[minX,minY,maxX-minX,maxY-minY];const vbs=`${minX} ${minY} ${maxX-minX} ${maxY-minY}`;if(svg!==$('padBoard')||svg.getAttribute('viewBox')!==vbs&&!svg._zoomed)svg.setAttribute('viewBox',vbs);
   let s='';
   // cảng
   for(const pt of map.ports){const e=map.edges[pt.edge],a=map.verts[e.a],b=map.verts[e.b];const mx=(a.x+b.x)/2,my=(a.y+b.y)/2,len=Math.hypot(mx,my),px=mx/len*(len+.55)*U,py=my/len*(len+.55)*U;
@@ -608,8 +608,11 @@ function targets(){const st=P.st,pi=myPi(),m=P.mode;if(!m||pi<0)return{};
   if(m.k==='upgrade')return{tV:E.houses(st,pi).filter(v=>st.vLevel[v]<5)};
   if(m.k==='sab')return{tV:st.vOwner.map((o,v)=>o>=0&&o!==pi&&st.players[o].shield<=0?v:-1).filter(v=>v>=0)};
   return{}}
+function boardSig(st,o){return JSON.stringify([st.mapSeed,st.vOwner,st.vLevel,st.eOwner,st.vDebuff,st.zone,st.pending,st.players.map(p=>p.color),o])}
 function renderBoardPad(){if(!P.st)return;const t=targets(),o=Object.assign({mine:myPi()},t);
   $('pad3d').style.display=P.view3d?'block':'none';$('padBoard').style.display=P.view3d?'none':'';
+  // chỉ vẽ lại khi thứ hiện trên bàn thật sự đổi — state tới mỗi 2.5s + mỗi thao tác của người khác mà cứ dựng lại SVG/3D thì bàn chớp
+  const sig=(P.view3d?'3d':'2d')+boardSig(P.st,o);if(sig===P._boardSig)return;P._boardSig=sig;
   if(P.view3d&&window.BKC3D&&BKC3D.ok){BKC3D.render(P.st,o);$('zoomLv').textContent=BKC3D.view.k>1.01?`🔍 ×${BKC3D.view.k.toFixed(1)} · kéo để di chuyển`:''}
   else{drawBoard($('padBoard'),P.st,o);applyZoom()}}
 // iPad 3D: nạp mô hình khi bấm nút 3D lần đầu (7MB), chạm chọn bằng dò điểm trên mặt bàn
@@ -632,7 +635,7 @@ const Z={k:1,cx:null,cy:null,ptrs:new Map(),moved:0,pinch:null};
 function applyZoom(){const svg=$('padBoard'),vb=svg._vb;if(!vb)return;const [x0,y0,w0,h0]=vb;
   Z.k=Math.max(1,Math.min(4,Z.k));if(Z.cx==null||Z.k===1){Z.cx=x0+w0/2;Z.cy=y0+h0/2}
   const w=w0/Z.k,h=h0/Z.k;Z.cx=Math.max(x0+w/2,Math.min(x0+w0-w/2,Z.cx));Z.cy=Math.max(y0+h/2,Math.min(y0+h0-h/2,Z.cy));
-  svg.setAttribute('viewBox',`${Z.cx-w/2} ${Z.cy-h/2} ${w} ${h}`);$('zoomLv').textContent=Z.k>1.01?`🔍 ×${Z.k.toFixed(1)} · kéo để di chuyển`:''}
+  svg.setAttribute('viewBox',`${Z.cx-w/2} ${Z.cy-h/2} ${w} ${h}`);svg._zoomed=Z.k>1.001;$('zoomLv').textContent=Z.k>1.01?`🔍 ×${Z.k.toFixed(1)} · kéo để di chuyển`:''}
 function svgPt(evt){const svg=$('padBoard'),pt=svg.createSVGPoint();pt.x=evt.clientX;pt.y=evt.clientY;return pt.matrixTransform(svg.getScreenCTM().inverse())}
 function zoomAt(f,cx,cy){const k0=Z.k;Z.k=Math.max(1,Math.min(4,Z.k*f));if(cx!=null&&Z.k!==k0){const r=k0/Z.k;Z.cx=cx+(Z.cx-cx)*r;Z.cy=cy+(Z.cy-cy)*r}applyZoom()}
 function zoomInit(){const svg=$('padBoard');
