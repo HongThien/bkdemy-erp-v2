@@ -29649,3 +29649,13 @@ chứa mấy L1, ưu tiên trong Bù, 2 TA = 1 dòng, bù/đuổi theo khối) +
   người dạy mặc định = TA lớp nếu đang trực) · `fn_ca_bo_tro_xac_nhan` (chặn vượt đv, kín 3 em/TA) · `fn_ca_bo_tro_go` · `fn_ca_bo_tro_huy` · `fn_ca_bo_tro_tao`.
   Trigger phòng ≤2 ca cùng giờ. Test trong tx rollback: xếp Nguyễn Bảo 5A2 L2 4đv → xác nhận 4/6 → gỡ 0/6 → huỷ ca; trùng buổi yếu bị trigger cũ chặn.
 - Bẫy plpgsql: biến `hh record` trùng alias `hh` trong SELECT ⇒ "record hh is not assigned yet" — đổi tên biến. Tham số `smallint` không nhận literal int ⇒ dùng integer.
+
+## 2026-09-24 — Xếp bổ trợ chung — BƯỚC 3: sub-tab LỊCH PHÒNG chạy thật
+
+- `src/lib/ca_bo_tro.ts` (gõ kiểu + gọi RPC) · `LichPhongScreen.tsx`: dải 15 ngày (hôm qua → +13, tóm tắt "N ca · dùng+chờ/tổng đv"), mở ngày = sinh ca từ
+  lịch trực (idempotent) rồi đọc; card ca: thanh đơn vị (đậm = PH xác nhận, nhạt = chờ PH), em đã xếp (pill loại·đv, chi tiết, người dạy, ✓PH / chờ PH
+  → nút Xác nhận, ✕ gỡ), gợi ý "còn N đv — vừa …", phòng x/2 ca, Huỷ ca (prompt lý do); popup ứng viên 3 tab từ `fn_ca_bo_tro_ung_vien` ("+ Xếp" chỉ
+  bật khi `vua`, không thì hiện lý do); form "+ Ca ngoài lịch trực". Mọi mutation vá tại chỗ + vá tóm tắt ngày; nhớ ngày/môn khi rời màn (NHO).
+- Local kiểm: 24/09 sinh 5 ca (tóm tắt từng ghi 6 vì đếm cả dòng lịch trực trùng bậc → mig 202609241230 áp cùng luật dedupe); popup ca K6 Tạ Quang Tùng:
+  Đuổi 1 (Ding Phạm Hoàng Nhi, đã đuổi 1/3, TA lớp Nguyễn Hà Giang) · Bù 0 (DB: bù chờ K6 = 0, K7/9/11 = 5) · Yếu 9. KHÔNG bấm xếp thật (HS thật).
+- Chưa làm (chờ CEO dùng thử): bước 4 gỡ đường xếp tay ở Đuổi/Bù/Yếu + tab "Ca bổ trợ" của Yếu; bước 5 KPI tải TA (Σ đv em có mặt).
