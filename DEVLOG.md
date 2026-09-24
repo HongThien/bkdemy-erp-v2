@@ -29852,3 +29852,10 @@ nguyên dạng cũ, trông như chưa học ⇒ OPS đi sửa buổi cũ (gốc 
 Vụ Mạnh Duy 24/09: đợt đuổi 0 dạng tới 18:17 (học thuật chốt 9 dạng 18:17, duyệt 18:18) ⇒ card ẩn đúng luật; em vào HTD từ 18:19. Nhưng app chỉ gọi
 htd_co_mo 1 lần lúc mở ⇒ mở app trước khi chốt dạng thì phải mở lại. Sửa HocSinhApp: kiểm lại mỗi khi về màn chính (direct/khu = null) + khi app
 quay lại từ nền (visibilitychange); lỗi mạng không tắt card đang hiện. Chỉ verify tsc + đọc logic (không đăng nhập được tài khoản HS để thử).
+
+## 2026-09-25 (0h) — Lịch phòng: bỏ "chờ PH / Xác nhận"; tag loại tô đặc, dòng trắng viền xám (Thùy)
+
+- "PH là cái gì — vô nghĩa, Lộc chốt với PH rồi mới điền": mig 202609250010 `fn_ca_bo_tro_xep` ghi xac_nhan_ph_at ngay + chặn đủ đơn vị / đủ 3 em/TA lúc xếp
+  (thử rollback: 3 em L1 vào ca 6 đv ⇒ 3 đv · 3 em, không còn "chờ"). Dòng chờ PH cũ: 0. Màn bỏ nhãn ✓PH/chờ PH, nút Xác nhận, chú thích; số em vượt ⇒ đỏ "· LỐ".
+- "Đừng nền đỏ rối mắt; tag Yếu thành card nhỏ đỏ rực chữ trắng, Đuổi/Bù tương tự; viền card xám": dòng bg-white border-slate-300; tag bg-rose-600 /
+  bg-sky-600 / bg-orange-500 text-white (Lịch phòng + khu Lịch riêng TheoDoiCaBoTroTab). Kiểm local OK.

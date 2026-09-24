@@ -4,7 +4,7 @@
 // Màu theo loại (nền nhạt): Yếu đỏ · Đuổi xanh da trời · Bù cam. Ngày: 3 ô (qua · nay · mai quanh ngày chọn) + mũi tên + chọn thẳng.
 // Máy chỉ CHẶN (đơn vị, 3 em/TA, Đuổi ≥60', phòng ≤2 ca) — không tự xếp. Mọi mutation vá tại chỗ (CLAUDE.md §2), không reload list.
 import { useEffect, useMemo, useState } from 'react'
-import { caCuaNgay, tomTatNgay, ungVienCa, xepVaoCa, xacNhanPH, goKhoiCa, huyCa, taoCaTay, LOAI_TEN, type CaBoTro, type HsTrongCa, type NgayTomTat, type UngVien, type UngVienCa, type LoaiBoTro } from '../../lib/ca_bo_tro'
+import { caCuaNgay, tomTatNgay, ungVienCa, xepVaoCa, goKhoiCa, huyCa, taoCaTay, LOAI_TEN, type CaBoTro, type HsTrongCa, type NgayTomTat, type UngVien, type UngVienCa, type LoaiBoTro } from '../../lib/ca_bo_tro'
 import { caTheoDoi, type CaTheoDoi } from '../../lib/botro_yeu_ca'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
@@ -14,9 +14,9 @@ import TheoDoiCaBoTroTab, { TT, trangThai } from '../danhgia/TheoDoiCaBoTroTab'
 
 const hhmm = (t: string | null | undefined) => (t ? String(t).slice(0, 5) : '')
 const KHUNG_GIO = Array.from({ length: (22 - 6) * 2 + 1 }, (_, i) => `${String(6 + Math.floor(i / 2)).padStart(2, '0')}:${i % 2 ? '30' : '00'}`)
-// Thùy 24/09: màu nhận diện theo loại — Yếu đỏ · Đuổi xanh da trời · Bù cam (nền nhạt)
-const LOAI_CLS: Record<LoaiBoTro, string> = { yeu: 'bg-rose-100 text-rose-700', duoi: 'bg-sky-100 text-sky-700', bu: 'bg-orange-100 text-orange-700' }
-const LOAI_ROW: Record<LoaiBoTro, string> = { yeu: 'bg-rose-50 border-rose-200', duoi: 'bg-sky-50 border-sky-200', bu: 'bg-orange-50 border-orange-200' }
+// Thùy 24/09: màu nhận diện CHỈ ở tag loại — ô nhỏ tô đặc, chữ trắng (Yếu đỏ · Đuổi xanh da trời · Bù cam). Dòng nền trắng, không tô cả dòng (rối mắt).
+const LOAI_CLS: Record<LoaiBoTro, string> = { yeu: 'bg-rose-600 text-white', duoi: 'bg-sky-600 text-white', bu: 'bg-orange-500 text-white' }
+const LOAI_ROW: Record<LoaiBoTro, string> = { yeu: 'bg-white border-slate-300', duoi: 'bg-white border-slate-300', bu: 'bg-white border-slate-300' } // viền xám rõ (Thùy: không viền nhìn không đẹp)
 const POLL_MS = 15000
 // Nhớ ngày + môn đang xem khi rời màn (CLAUDE.md §2 "rời màn rồi quay lại = đúng chỗ cũ").
 const NHO: { ngay: string | null; mon: string; khu: 'truc' | 'rieng' } = { ngay: null, mon: '', khu: 'truc' }
@@ -64,19 +64,12 @@ export default function LichPhongScreen() {
   async function xep(ca: CaBoTro, u: UngVien): Promise<boolean> {
     try {
       const r = await xepVaoCa(ca.id, u)
-      const hs: HsTrongCa = { bhh_id: r.bhh_id, buoi_hoc_id: r.buoi_hoc_id, loai: u.loai, hoc_sinh_id: u.hoc_sinh_id, ho_ten: u.ho_ten, ma_hs: u.ma_hs, khoi: u.khoi, lop: u.lop, don_vi: r.don_vi, xac_nhan_ph_at: null, diem_danh: null, nguoi_day_tg: r.nguoi_day_tg, nguoi_day_ten: tenNs(r.nguoi_day_tg), chi_tiet: u.chi_tiet }
-      vaCa(ca.id, (c) => ({ ...c, hs: [...c.hs, hs], don_vi_cho: c.don_vi_cho + r.don_vi, so_hs_cho: c.so_hs_cho + 1 }))
-      capNhatTomTat(ca.ngay, 0, r.don_vi)
+      const hs: HsTrongCa = { bhh_id: r.bhh_id, buoi_hoc_id: r.buoi_hoc_id, loai: u.loai, hoc_sinh_id: u.hoc_sinh_id, ho_ten: u.ho_ten, ma_hs: u.ma_hs, khoi: u.khoi, lop: u.lop, don_vi: r.don_vi, xac_nhan_ph_at: new Date().toISOString(), diem_danh: null, nguoi_day_tg: r.nguoi_day_tg, nguoi_day_ten: tenNs(r.nguoi_day_tg), chi_tiet: u.chi_tiet }
+      // Thùy 24/09: Lộc chốt với PH rồi mới điền ⇒ xếp = đã chốt ⇒ trừ đơn vị ngay (bỏ bước "chờ PH / Xác nhận").
+      vaCa(ca.id, (c) => ({ ...c, hs: [...c.hs, hs], don_vi_dung: c.don_vi_dung + r.don_vi, so_hs_xn: c.so_hs_xn + 1 }))
+      capNhatTomTat(ca.ngay, r.don_vi, 0)
       return true
     } catch (e: any) { setLoi(e?.message ?? String(e)); return false }
-  }
-  async function xacNhan(ca: CaBoTro, h: HsTrongCa) {
-    setLoi(null)
-    try {
-      await xacNhanPH(h.bhh_id)
-      vaCa(ca.id, (c) => ({ ...c, hs: c.hs.map((x) => x.bhh_id === h.bhh_id ? { ...x, xac_nhan_ph_at: new Date().toISOString() } : x), don_vi_dung: c.don_vi_dung + h.don_vi, don_vi_cho: c.don_vi_cho - h.don_vi, so_hs_xn: c.so_hs_xn + 1, so_hs_cho: c.so_hs_cho - 1 }))
-      capNhatTomTat(ca.ngay, h.don_vi, -h.don_vi)
-    } catch (e: any) { setLoi(e?.message ?? String(e)) }
   }
   async function go(ca: CaBoTro, h: HsTrongCa) {
     if (!confirm(`Gỡ ${h.ho_ten} (${LOAI_TEN[h.loai]} · ${h.don_vi} đv) khỏi ca ${hhmm(ca.gio_bat_dau)}? Em quay lại hàng chờ.`)) return
@@ -101,7 +94,7 @@ export default function LichPhongScreen() {
   }
 
   const nhanNgay = (d: string) => d === homNay ? 'Hôm nay' : d === congNgay(homNay, -1) ? 'Hôm qua' : d === congNgay(homNay, 1) ? 'Ngày mai' : thuCuaNgay(d)
-  const theCa = (c: CaBoTro) => <CaCard key={c.id} c={c} live={live} now={now} onMo={() => setMoCaId(c.id)} onXacNhan={(h) => xacNhan(c, h)} onGo={(h) => go(c, h)} onHuy={() => huy(c)} />
+  const theCa = (c: CaBoTro) => <CaCard key={c.id} c={c} live={live} now={now} onMo={() => setMoCaId(c.id)} onGo={(h) => go(c, h)} onHuy={() => huy(c)} />
   return (
     <section className="min-h-0 overflow-auto bg-[#f5f5f7] p-8">
       <div className="mx-auto max-w-[1100px]">
@@ -132,7 +125,6 @@ export default function LichPhongScreen() {
           {mons.length > 1 && <select value={monF} onChange={(e) => setMonF(e.target.value)} className="rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-[13px]"><option value="">Tất cả môn</option>{mons.map((m) => <option key={m} value={m}>{m}</option>)}</select>}
           <span className="flex items-center gap-2 text-[11.5px] text-slate-500">
             {(['yeu', 'duoi', 'bu'] as const).map((k) => <span key={k} className={`rounded-full px-2 py-0.5 font-bold ${LOAI_CLS[k]}`}>{LOAI_TEN[k]}</span>)}
-            <span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-indigo-600 align-[-1px]" />đã xác nhận PH</span><span><i className="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-indigo-200 align-[-1px]" />chờ PH</span>
           </span>
           <label className="ml-auto flex items-center gap-1.5 text-[12px] text-slate-500"><input type="checkbox" checked={hienHuy} onChange={(e) => setHienHuy(e.target.checked)} /> hiện ca đã huỷ</label>
           <button onClick={() => { taiNgay(ngay); taiTomTat(ngay); taiLive(ngay) }} title="Tải lại" className="rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-[12px] text-slate-500 hover:bg-slate-100">↻</button>
@@ -174,7 +166,7 @@ function ThanhDonVi({ c }: { c: Pick<CaBoTro, 'don_vi' | 'don_vi_dung' | 'don_vi
   )
 }
 
-function CaCard({ c, live, now, onMo, onXacNhan, onGo, onHuy }: { c: CaBoTro; live: Map<string, CaTheoDoi>; now: number; onMo: () => void; onXacNhan: (h: HsTrongCa) => void; onGo: (h: HsTrongCa) => void; onHuy: () => void }) {
+function CaCard({ c, live, now, onMo, onGo, onHuy }: { c: CaBoTro; live: Map<string, CaTheoDoi>; now: number; onMo: () => void; onGo: (h: HsTrongCa) => void; onHuy: () => void }) {
   const con = c.don_vi - c.don_vi_dung
   const cho = c.toi_da_hs - c.so_hs_xn // chỗ người còn lại
   const huy = c.trang_thai === 'huy'
@@ -182,7 +174,7 @@ function CaCard({ c, live, now, onMo, onXacNhan, onGo, onHuy }: { c: CaBoTro; li
   // Thùy 24/09: ca đầy khi (1) đủ người 3 em/TA hoặc (2) đủ đơn vị — chạm cái nào báo cái đó
   const goiY = con < 0 ? `LỐ ${-con} đv — ca xếp theo đường cũ vượt sức, cân nhắc gỡ bớt` : day ? `ĐẦY — ${[c.day_nguoi && `đủ ${c.toi_da_hs} em`, c.day_don_vi && 'đủ đơn vị'].filter(Boolean).join(' · ')}` : con < 4 ? `còn ${con} đv · ${cho} chỗ — chỉ vừa Yếu L1` : `còn ${con} đv · ${cho} chỗ — vừa ${c.phut >= 60 ? 'Đuổi / ' : ''}Bù / L2 / L1`
   return (
-    <div className={`rounded-2xl bg-white p-4 ring-1 ${huy ? 'opacity-60 ring-slate-200' : con < 0 ? 'ring-rose-300' : day ? 'ring-emerald-300' : 'ring-slate-200'}`}>
+    <div className={`rounded-2xl bg-white p-4 ring-1 ${huy ? 'opacity-60 ring-slate-300' : con < 0 ? 'ring-rose-400' : day ? 'ring-emerald-400' : 'ring-slate-300'}`}>
       <div className="flex items-start gap-2">
         <div>
           <h3 className="text-[14px] font-bold text-slate-800">{hhmm(c.gio_bat_dau)}–{hhmm(c.gio_ket_thuc)}{c.phong ? ` · ${c.phong}` : ''}{c.khoi ? ` · Khối ${c.khoi}` : ''} <span className="font-normal text-slate-400">· {c.mon}</span></h3>
@@ -191,18 +183,16 @@ function CaCard({ c, live, now, onMo, onXacNhan, onGo, onHuy }: { c: CaBoTro; li
         {huy ? <span className="ml-auto rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-bold text-slate-500">ĐÃ HUỶ{c.ly_do_huy ? ` · ${c.ly_do_huy}` : ''}</span>
           : <div className="ml-auto flex shrink-0 gap-1.5"><button onClick={onMo} className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[12px] font-bold text-white hover:bg-indigo-700">+ Xếp</button><button onClick={onHuy} title="Huỷ ca (TA nghỉ…)" className="rounded-lg border border-slate-200 px-2 py-1.5 text-[12px] text-slate-400 hover:text-rose-600">Huỷ</button></div>}
       </div>
-      {!huy && <div className="mt-2.5 flex items-center gap-2"><div className="flex-1"><ThanhDonVi c={c} /></div><b className={`whitespace-nowrap text-[12.5px] ${c.day_nguoi ? 'text-emerald-700' : 'text-slate-700'}`}>{c.so_hs_xn}{c.so_hs_cho ? <span className="text-slate-400">+{c.so_hs_cho}</span> : null}/{c.toi_da_hs} em</b>{day && con >= 0 && <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[11px] font-bold text-emerald-700">ĐẦY</span>}</div>}
+      {!huy && <div className="mt-2.5 flex items-center gap-2"><div className="flex-1"><ThanhDonVi c={c} /></div><b className={`whitespace-nowrap text-[12.5px] ${c.so_hs_xn > c.toi_da_hs ? 'text-rose-600' : c.day_nguoi ? 'text-emerald-700' : 'text-slate-700'}`}>{c.so_hs_xn}/{c.toi_da_hs} em{c.so_hs_xn > c.toi_da_hs ? ' · LỐ' : ''}</b>{day && con >= 0 && <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[11px] font-bold text-emerald-700">ĐẦY</span>}</div>}
       {c.hs.map((h) => {
         const lv = h.loai === 'yeu' ? live.get(h.buoi_hoc_id) : undefined
         const tt = lv ? trangThai(lv, now) : null
         return (
-          <div key={h.bhh_id} className={`mt-1.5 flex flex-wrap items-center gap-1.5 rounded-xl border px-2.5 py-1.5 text-[12.5px] ${LOAI_ROW[h.loai]} ${h.xac_nhan_ph_at ? '' : 'border-dashed opacity-75'}`}>
+          <div key={h.bhh_id} className={`mt-1.5 flex flex-wrap items-center gap-1.5 rounded-xl border px-2.5 py-1.5 text-[12.5px] ${LOAI_ROW[h.loai]}`}>
             <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${LOAI_CLS[h.loai]}`}>{LOAI_TEN[h.loai]} · {h.don_vi}</span>
             <span className="font-semibold text-slate-800">{h.ho_ten}</span><span className="text-slate-500">{h.lop ?? ''} · {h.chi_tiet}{h.nguoi_day_ten ? ` · dạy: ${h.nguoi_day_ten}` : ''}</span>
             {lv && tt && tt !== 'chua_dd' && <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${TT[tt].cls}`} title={`đã làm ${lv.so_dung}/${lv.so_cau} câu đúng`}>{TT[tt].ten} · {lv.so_dung}/{lv.so_cau}</span>}
-            {h.diem_danh ? <span className="ml-auto rounded-full bg-white/70 px-2 py-0.5 text-[11px] font-bold text-slate-600">{h.diem_danh === 'co_mat' ? 'có mặt' : 'vắng'}</span>
-              : h.xac_nhan_ph_at ? <span className="ml-auto rounded-full bg-emerald-100 px-2 py-0.5 text-[11px] font-bold text-emerald-700">✓ PH</span>
-              : <span className="ml-auto flex items-center gap-1"><span className="rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-bold text-amber-700">chờ PH</span><button onClick={() => onXacNhan(h)} className="rounded-md bg-indigo-600 px-2 py-0.5 text-[11px] font-bold text-white hover:bg-indigo-700">Xác nhận</button></span>}
+            {h.diem_danh ? <span className="ml-auto rounded-full bg-white/70 px-2 py-0.5 text-[11px] font-bold text-slate-600">{h.diem_danh === 'co_mat' ? 'có mặt' : 'vắng'}</span> : <span className="ml-auto" />}
             {!h.diem_danh && <button onClick={() => onGo(h)} title="Gỡ khỏi ca" className="text-slate-400 hover:text-rose-600">✕</button>}
           </div>
         )
@@ -248,7 +238,7 @@ function UngVienModal({ ca, onDong, onXep }: { ca: CaBoTro; onDong: () => void; 
                   : <span className="rounded-lg border border-slate-200 px-2 py-1 text-[11.5px] text-slate-400" title={u.ly_do_khong_vua ?? ''}>{u.ly_do_khong_vua ?? 'không vừa'}</span>}
               </div>
             ))}
-          <p className="mt-2 text-[11.5px] text-slate-400">"+ Xếp" ⇒ em vào ca ở trạng thái <b>chờ PH</b> (chưa trừ đơn vị). PH đồng ý ⇒ bấm <b>Xác nhận</b> trên ca ⇒ trừ đơn vị, chiếm chỗ.</p>
+          <p className="mt-2 text-[11.5px] text-slate-400">Chốt lịch với phụ huynh xong rồi mới bấm "+ Xếp" — xếp là trừ đơn vị ngay, chiếm chỗ.</p>
         </div>
       </div>
     </div>

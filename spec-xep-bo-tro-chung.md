@@ -99,6 +99,10 @@ Giao diện: Apple-clean (nền xám, card trắng, pill mềm) như mọi màn 
   "Bổ trợ yếu" rời Quản lý chất lượng vào đây (folder đó không còn trên menu). Link cũ `botroyeu:*` mở đúng toggle tương ứng.
 - Lịch phòng: 2 khu **Lịch trực khối / Lịch riêng** là toggle 2 nút.
 
+- **24/09 khuya — BỎ bước "chờ PH → Xác nhận"** (CEO: "Lộc chốt với PH rồi mới điền, đã điền là đã chốt"): "+ Xếp" = trừ đơn vị NGAY, chặn đủ đơn vị /
+  đủ 3 em/TA ngay lúc xếp (mig 202609250010). Bỏ nhãn ✓ PH / chờ PH / nút Xác nhận. §4 bullet "chờ PH không giữ chỗ" HẾT hiệu lực.
+- Màu: dòng nền trắng viền xám; màu CHỈ ở tag loại — ô đặc chữ trắng: Yếu đỏ · Đuổi xanh da trời · Bù cam.
+
 ## 7. QUYỀN
 
 Core team xếp / xác nhận / huỷ ca. Học thuật + TA xem. (Đuổi: GV chọn nội dung như cũ.)

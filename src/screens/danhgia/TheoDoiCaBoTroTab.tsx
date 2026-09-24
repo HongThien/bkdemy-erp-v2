@@ -118,8 +118,8 @@ export default function TheoDoiCaBoTroTab({ monF, khoiF, ngay: ngayNgoai, anBuoi
           <h3 className="mb-2 text-[13px] font-bold text-slate-700">{k === 'bu' ? '🔁 Học bù' : '🏃 Học đuổi'} · {kh[k].length} buổi <span className="font-normal text-slate-400">— xử lý ở màn {k === 'bu' ? 'Bù' : 'Đuổi'}</span></h3>
           <div className="space-y-1.5">
             {kh[k].map((b) => (
-              <div key={b.buoi_id} className={`rounded-xl px-3 py-2 text-[12.5px] ring-1 ${k === 'bu' ? 'bg-orange-50 ring-orange-200' : 'bg-sky-50 ring-sky-200'}`}>
-                <div className="flex flex-wrap items-center gap-2"><span className="font-semibold text-slate-800">{hhmm(b.gio_bat_dau) || '—'}{b.gio_ket_thuc ? `–${hhmm(b.gio_ket_thuc)}` : ''}</span>{b.phong && <span className="text-slate-500">{b.phong}</span>}<span className="text-slate-500">{b.nguoi ?? 'chưa có người dạy'}</span><span className="ml-auto rounded-full bg-white px-2 py-0.5 text-[11px] font-semibold text-slate-600 ring-1 ring-slate-200">{b.so_hs} em · {b.trang_thai}</span></div>
+              <div key={b.buoi_id} className="rounded-xl bg-white px-3 py-2 text-[12.5px] ring-1 ring-slate-300">
+                <div className="flex flex-wrap items-center gap-2"><span className={`rounded-md px-1.5 py-0.5 text-[11px] font-bold text-white ${k === 'bu' ? 'bg-orange-500' : 'bg-sky-600'}`}>{k === 'bu' ? 'Bù' : 'Đuổi'}</span><span className="font-semibold text-slate-800">{hhmm(b.gio_bat_dau) || '—'}{b.gio_ket_thuc ? `–${hhmm(b.gio_ket_thuc)}` : ''}</span>{b.phong && <span className="text-slate-500">{b.phong}</span>}<span className="text-slate-500">{b.nguoi ?? 'chưa có người dạy'}</span><span className="ml-auto rounded-full bg-white px-2 py-0.5 text-[11px] font-semibold text-slate-600 ring-1 ring-slate-200">{b.so_hs} em · {b.trang_thai}</span></div>
                 <div className="mt-1 flex flex-wrap gap-x-3 gap-y-0.5 text-slate-600">{b.hs.map((h, i) => <span key={i}>{h.ho_ten}{h.khoi ? ` K${h.khoi}` : ''}{(h.lop_goc ?? h.lop) ? ` (${h.lop_goc ?? h.lop})` : ''}{h.diem_danh === 'co_mat' ? ' ✓' : h.diem_danh ? ' ✗' : ''}</span>)}</div>
               </div>
             ))}
@@ -137,8 +137,9 @@ export default function TheoDoiCaBoTroTab({ monF, khoiF, ngay: ngayNgoai, anBuoi
                 const im = c.cau_cuoi_at ? Math.floor((now - Date.parse(c.cau_cuoi_at)) / 60000) : null
                 const dangMo = c.trang_thai === 'mo' && !c.da_dong
                 return (
-                  <div key={c.buoi_id} className={`rounded-xl border bg-rose-50 px-3 py-2 ${tt === 'im' ? 'border-amber-400' : 'border-rose-200'}`}>
+                  <div key={c.buoi_id} className={`rounded-xl border bg-white px-3 py-2 ${tt === 'im' ? 'border-amber-400' : 'border-slate-300'}`}>
                     <div className="flex flex-wrap items-center gap-2">
+                      <span className="rounded-md bg-rose-600 px-1.5 py-0.5 text-[11px] font-bold text-white">Yếu</span>
                       <span className="text-[14px] font-semibold text-slate-800">{c.ho_ten}</span>
                       <span className="text-[11.5px] text-slate-400">{c.ma_hs} · K{c.khoi} · {c.mon} · L{c.level}{c.uu_tien === 3 ? ' · ▲ ưu tiên cao' : ''}</span>
                       <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${TT[tt].cls}`}>{TT[tt].ten}{tt === 'im' && im != null ? ` ${im}'` : ''}</span>
