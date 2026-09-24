@@ -29630,3 +29630,13 @@ chứa mấy L1, ưu tiên trong Bù, 2 TA = 1 dòng, bù/đuổi theo khối) +
   Mig 202609240930: `lich_truc_bo_tro.so_ta` (1|2) + `nhan_su_2_id` + cột generated `don_vi` = 3 × (phút/30) × số TA. Form: chọn Số TA
   (2 TA ⇒ chọn người 2, sức chứa tự 3×n); bảng thêm cột Đơn vị (68 ca hiện có = 6 đv, 1 ca 90' = 9 đv).
 - Không đổi logic xếp nào. Tab "Ca bổ trợ" của Yếu giữ tới khi Lịch phòng chạy (bước 4 mới gỡ).
+
+## 2026-09-24 — Xếp bổ trợ chung — BƯỚC 2: DB ca + đơn vị (mig 202609241100)
+
+- Bảng `ca_bo_tro` (ca trực của 1 NGÀY: lich_truc_id|null, ngày, giờ, môn, khối, phòng, so_ta, 2 nhân sự, `don_vi` generated, mo|huy). `buoi_hoc.ca_bo_tro_id`;
+  `buoi_hoc_hs.don_vi` (2|4) + `xac_nhan_ph_at/boi`. Đơn vị dùng = Σ don_vi em ĐÃ xác nhận PH, buổi 'mo', không vắng. Chờ PH không giữ chỗ (câu 13).
+- RPC: `fn_ca_bo_tro_sinh_ngay` (idempotent; 1 TA 1 ca/khung giờ — 68 lịch trực có 5 dòng trùng bậc S/A cùng TA cùng giờ ⇒ bỏ qua dòng sau) ·
+  `fn_ca_bo_tro_ngay` · `fn_ca_bo_tro_tuan` · `fn_ca_bo_tro_ung_vien` (3 tab sắp ưu tiên §5, cờ `vua` + lý do) · `fn_ca_bo_tro_xep` (chờ PH; đuổi cần ≥60';
+  người dạy mặc định = TA lớp nếu đang trực) · `fn_ca_bo_tro_xac_nhan` (chặn vượt đv, kín 3 em/TA) · `fn_ca_bo_tro_go` · `fn_ca_bo_tro_huy` · `fn_ca_bo_tro_tao`.
+  Trigger phòng ≤2 ca cùng giờ. Test trong tx rollback: xếp Nguyễn Bảo 5A2 L2 4đv → xác nhận 4/6 → gỡ 0/6 → huỷ ca; trùng buổi yếu bị trigger cũ chặn.
+- Bẫy plpgsql: biến `hh record` trùng alias `hh` trong SELECT ⇒ "record hh is not assigned yet" — đổi tên biến. Tham số `smallint` không nhận literal int ⇒ dùng integer.
