@@ -286,8 +286,15 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   useEffect(() => { laCap2HS().then(setCap2).catch(() => setCap2(false)) }, [])
   useEffect(() => { hoSoCuaToi().then((h) => { setGioiTinh(h?.gioi_tinh ?? null); setAnhUrl(h?.anh_url ?? null) }).catch(() => setGioiTinh(null)) }, [])
   useEffect(() => { taiChuaDoc() }, [])
+  // Thùy 24/09: TRƯỚC chỉ kiểm 1 lần lúc mở app ⇒ học thuật chốt dạng đuổi SAU lúc em mở app (vụ Mạnh Duy 24/09 18:17) thì card
+  // 'Học từ đầu' không hiện tới khi mở lại app. Giờ kiểm lại MỖI LẦN về màn chính (direct/khu = null) + khi app quay lại từ nền.
+  // Lỗi mạng giữ nguyên trạng thái cũ (không tắt card đang hiện vì 1 lần gọi hỏng).
+  const kiemHTD = () => monCuaHS().then((m) => { if (!m) return; setHtdMon(m); return htdCoMo(m) }).then((mo) => { if (mo !== undefined) setHtdMo(!!mo) }).catch(() => {})
+  useEffect(() => { if (!direct && !khu) kiemHTD() }, [direct, khu])
   useEffect(() => {
-    monCuaHS().then((m) => { if (!m) return; setHtdMon(m); return htdCoMo(m) }).then((mo) => { if (mo !== undefined) setHtdMo(!!mo) }).catch(() => setHtdMo(false))
+    const f = () => { if (document.visibilityState === 'visible') kiemHTD() }
+    document.addEventListener('visibilitychange', f)
+    return () => document.removeEventListener('visibilitychange', f)
   }, [])
   // Badge ô "May mắn" — có 1 lượt để quay khi (đủ điều kiện + chưa quay hôm nay + active).
   // Cả cấp 1 (HomeCap1 → BOX_CAP1 có ô 'may_man') LẪN cấp 2 (KHU_CAP2) đều có ô này → cả 2 phải

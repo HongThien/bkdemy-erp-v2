@@ -29846,3 +29846,9 @@ nguyên dạng cũ, trông như chưa học ⇒ OPS đi sửa buổi cũ (gốc 
   ⇒ việc của phiên MCQ; sinh xong tự thông. Nguyễn Quang Minh giờ Chờ retest nhưng vẫn còn buổi 28/09 OPS vừa xếp — có thể thừa.
 - App TA: bước "Nhận xét · hoàn tất ca" có ô "Dạng đã dạy buổi này" (tick mặc định, kèm số câu luyện). Màn Xếp: ca có mặt quá ngày chưa đóng ⇒ đỏ "TA CHƯA ĐÓNG CA — nhắc TA".
   Kiểm local app TA (Trần Khánh Nhật): 9 dạng tick sẵn. Không bấm hoàn tất (HS thật).
+
+## 2026-09-24 (khuya) — App HS: "Học từ đầu" kiểm lại mỗi lần về màn chính (Thùy: "đỡ phải mở lại app")
+
+Vụ Mạnh Duy 24/09: đợt đuổi 0 dạng tới 18:17 (học thuật chốt 9 dạng 18:17, duyệt 18:18) ⇒ card ẩn đúng luật; em vào HTD từ 18:19. Nhưng app chỉ gọi
+htd_co_mo 1 lần lúc mở ⇒ mở app trước khi chốt dạng thì phải mở lại. Sửa HocSinhApp: kiểm lại mỗi khi về màn chính (direct/khu = null) + khi app
+quay lại từ nền (visibilitychange); lỗi mạng không tắt card đang hiện. Chỉ verify tsc + đọc logic (không đăng nhập được tài khoản HS để thử).
