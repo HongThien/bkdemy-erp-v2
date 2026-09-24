@@ -130,7 +130,7 @@
   <canvas id="gl"></canvas>
   <div id="ui">
     <div class="hint"><div class="t" id="hintT">Chọn rương và bấm MỞ RƯƠNG</div><div class="s" id="hintS">LƯỢT 1</div></div>
-    <div class="legend" id="legend"><span>🎀 <b>Quà chắc chắn</b> luôn có</span><span>🍀 <b>Quà may mắn</b> có thể lớn hoặc trượt</span><span>💎 <b>Quà bí ẩn</b> hiếm, gấp tới 3 lần</span></div>
+    <div class="legend" id="legend"><span>🎀 <b>Quà chắc chắn</b> luôn có</span><span>🍀 <b>Quà may mắn</b> cộng thêm</span><span>💎 <b>Quà bí ẩn</b> tổng có thể tới gấp đôi giá rương</span></div>
     <button id="histBtn">📜 Lịch sử</button>
     <div id="histPanel"><table><thead><tr><th>#</th><th>Tên</th><th>Rương</th><th>3 quà</th><th style="text-align:right">Tổng</th></tr></thead><tbody id="hist"></tbody></table></div>
 
@@ -170,7 +170,7 @@
       <label class="chk" style="grid-column:span 2"><input type="checkbox" id="cCtrl"> Bật tự điều chỉnh xác suất theo tỉ lệ thực tế</label>
       <label class="chk"><input type="checkbox" id="cSound"> Âm thanh</label>
     </div>
-    <h4>Bảng xác suất (giá trị quà = bội số giá rương)</h4>
+    <h4>Bảng xác suất tổng quà (bội số giá rương, luôn 70%–200%)</h4>
     <div class="prof" id="prof"></div>
     <div class="ratio" id="ratioBox"></div>
     <div class="dlgBtns">
@@ -3845,21 +3845,26 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
   const $=id=>document.getElementById(id);
   const CHESTS=[{name:'Rương Gỗ',pill:'w',model:'wood'},{name:'Rương Bạc',pill:'s',model:'silver'},{name:'Rương Vàng',pill:'g',model:'gold'}];
   const SLOTS=[{lb:'Quà chắc chắn',ic:'🎀'},{lb:'Quà may mắn',ic:'🍀'},{lb:'Quà bí ẩn',ic:'💎'}];
-  const VALS=[[0.2,0.4],[0,0.2,0.6,1],[0,1,2,3]];
-  const DEF={prices:[5,10,15],target:1.10,band:0.10,budget:300,warm:10,ctrl:true,sound:true,
-    prof:{chuan:[[50,50],[28,25,25,22],[78,13,7,2]],haophong:[[40,60],[20,20,30,30],[72,16,9,3]],tietkiem:[[50,50],[40,30,20,10],[84,10,5,1]]}};
+  // Tổng quà = K × giá (làm tròn, tối thiểu 70% giá). Quà chắc chắn = 70% giá, 2 quà sau chia phần dư.
+  const K=[0.7,0.8,1.0,1.2,1.5,2.0],BASE=0.7;
+  const DEF={prices:[5,10,15],target:1.10,band:0.10,budget:300,warm:10,ctrl:true,sound:true,v:3,
+    prof:{chuan:[22,24,20,16,11,7],haophong:[12,18,22,20,16,12],tietkiem:[38,28,16,9,6,3]}};
   const PROF_NAMES={chuan:'Chuẩn',haophong:'Hào phóng',tietkiem:'Tiết kiệm'};
-  const TIER={0:{n:'Trượt rồi',c:0x8a93b8,models:['cookie'],size:.7},1:{n:'Quà nhỏ',c:0x5ee08a,models:['present_A_red','present_C_blue','present_D_green'],size:.85},
-    2:{n:'Quà ngon',c:0x7cc4ff,models:['Gold_Nugget_Medium','Gold_Bar','present_sphere_A_red'],size:.95},3:{n:'Quà lớn',c:0xffd166,models:['Gold_Bars','Gold_Bars_Stack_Medium'],size:1.15},4:{n:'JACKPOT',c:0xff7bd1,models:['Gold_Bars_Stack_Large'],size:1.35}};
+  const TIER={0:{n:'Không thêm',c:0x8a93b8,models:['cookie'],size:.7},1:{n:'Quà nhỏ',c:0x5ee08a,models:['present_A_red','present_C_blue','present_D_green'],size:.85},
+    2:{n:'Quà ngon',c:0x7cc4ff,models:['Gold_Nugget_Medium','Gold_Bar','present_sphere_A_red'],size:.95},3:{n:'Quà lớn',c:0xffd166,models:['Gold_Bars','Gold_Bars_Stack_Medium'],size:1.15},4:{n:'GẤP ĐÔI',c:0xff7bd1,models:['Gold_Bars_Stack_Large'],size:1.35}};
 
   function fresh(cfg){return {cfg:cfg||JSON.parse(JSON.stringify(DEF)),history:[],thu:0,chi:0}}
-  function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.history){s.cfg={...JSON.parse(JSON.stringify(DEF)),...s.cfg};return s}}catch(e){}return null}
+  function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.history){const d=JSON.parse(JSON.stringify(DEF));if(!s.cfg||s.cfg.v!==3)s.cfg=Object.assign({},s.cfg,{prof:d.prof,v:3});s.cfg={...d,...s.cfg};return s}}catch(e){}return null}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
   let S=load()||fresh();
   let sel=1, cur=null, phase='pick'; // pick | opening | loot | done | closing
 
   // ---------- Math ----------
-  function ev(prof){let e=0;for(let s=0;s<3;s++){const w=prof[s],tot=w.reduce((a,b)=>a+b,0)||1;for(let i=0;i<w.length;i++)e+=VALS[s][i]*w[i]/tot}return e}
+  function ev(prof){const tot=prof.reduce((a,b)=>a+b,0)||1;return prof.reduce((e,w,i)=>e+K[i]*w/tot,0)}
+  const payOf=(k,P)=>Math.max(Math.ceil(BASE*P),Math.round(k*P));
+  // chia tổng thành 3 quà: [70% giá, may mắn, bí ẩn]; bí ẩn thường là phần lớn hơn
+  function splitGifts(total,P){const a=Math.min(total,Math.ceil(BASE*P)),r=total-a;if(r<=0)return [a,0,0];const u=new Uint32Array(1);crypto.getRandomValues(u);const x=Math.round(r*(.2+.4*u[0]/4294967296));return [a,x,r-x]}
+  function giftTiers(vals,P,k){return vals.map((v,i)=>i===0?1:v===0?0:(i===2&&k>=2)?4:v/P>=.35?3:v/P>=.15?2:1)}
   function drawIdx(w){const tot=w.reduce((a,b)=>a+b,0);const a=new Uint32Array(1);crypto.getRandomValues(a);let r=(a[0]/4294967296)*tot;for(let i=0;i<w.length;i++){r-=w[i];if(r<0)return i}return w.length-1}
   function pickMode(){const c=S.cfg,n=S.history.length;if(!c.ctrl||n<c.warm||S.thu===0)return 'chuan';const r=S.chi/S.thu,net=S.chi-S.thu;
     if(net>=c.budget||r>c.target+c.band)return 'tietkiem';if(r<c.target-c.band)return 'haophong';return 'chuan'}
@@ -3977,7 +3982,7 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
   function selectChest(i){if(phase!=='pick')return;sel=i;renderBtns();beep(520,.07,'square',.03)}
   function renderNames(){$('names').innerHTML=[...new Set(S.history.map(h=>h.name).filter(Boolean))].sort().map(n=>`<option value="${esc(n)}">`).join('')}
   function renderHist(){
-    $('hist').innerHTML=S.history.slice(-12).reverse().map(h=>`<tr><td style="color:var(--muted)">${h.n}</td><td>${esc(h.name||'—')}</td><td><span class="pill ${CHESTS[h.chest].pill}">${h.price}</span></td><td>${h.vals.map((v,i)=>`<span class="gv t${tierOf(h.mults[i])}">${v}</span>`).join(' · ')}</td><td style="text-align:right"><b>${h.total}</b></td></tr>`).join('')||'<tr><td colspan="5" style="color:var(--muted)">Chưa có lượt nào.</td></tr>';
+    $('hist').innerHTML=S.history.slice(-12).reverse().map(h=>`<tr><td style="color:var(--muted)">${h.n}</td><td>${esc(h.name||'—')}</td><td><span class="pill ${CHESTS[h.chest].pill}">${h.price}</span></td><td>${h.vals.map((v,i)=>`<span class="gv t${h.tiers?h.tiers[i]:tierOf(h.mults[i])}">${v}</span>`).join(' · ')}</td><td style="text-align:right"><b>${h.total}</b></td></tr>`).join('')||'<tr><td colspan="5" style="color:var(--muted)">Chưa có lượt nào.</td></tr>';
     $('histBtn').textContent=`📜 Lịch sử${S.history.length?' ('+S.history.length+')':''}`;
     $('hintS').textContent='LƯỢT '+(cur?cur.n:S.history.length+1);
   }
@@ -3987,8 +3992,8 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
   async function startOpen(){
     if(phase!=='pick'||!chestObjs.length)return;
     const name=$('pname').value.trim(),price=S.cfg.prices[sel],mode=pickMode(),prof=S.cfg.prof[mode];
-    const mults=[0,1,2].map(s=>VALS[s][drawIdx(prof[s])]);
-    cur={name,chest:sel,price,mults,vals:mults.map(m=>Math.round(m*price)),revealed:0,mode,n:S.history.length+1};
+    const k=K[drawIdx(prof)],total=payOf(k,price),vals=splitGifts(total,price);
+    cur={name,chest:sel,price,k,vals,mults:vals.map(v=>+(v/price).toFixed(3)),tiers:giftTiers(vals,price,k),revealed:0,mode,n:S.history.length+1};
     phase='opening';
     $('pickUI').classList.add('hide');$('legend').style.display='none';$('histPanel').classList.remove('show');
     hint(`${name?`<b>${esc(name)}</b> mở `:'Mở '}<b>${CHESTS[sel].name}</b> · ${price} xu`,'LƯỢT '+cur.n);
@@ -4014,7 +4019,7 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
   async function reveal(){
     if(phase!=='loot'||revealing||cur.revealed>=3)return;
     revealing=true;
-    const i=cur.revealed++,m=cur.mults[i],v=cur.vals[i],t=tierOf(m),tier=TIER[t];
+    const i=cur.revealed++,v=cur.vals[i],t=cur.tiers[i],tier=TIER[t];
     $('btnReveal').disabled=true;
     const src=lootLib[rnd(tier.models)]||Object.values(lootLib)[0];
     const obj=normalize(src.clone(true),tier.size);
@@ -4027,7 +4032,7 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
     const from=new T.Vector3(0,.9,0),to=SLOT_POS[i].clone();
     await tween(950,(p,raw)=>{g.position.lerpVectors(from,to,p);g.position.y+=Math.sin(raw*Math.PI)*1.6;g.scale.setScalar(Math.max(.01,E.back(raw)));g.rotation.y=raw*Math.PI*4;glow.position.copy(g.position);glow.material.opacity=p*.9},E.out);
     g.scale.setScalar(1);
-    const lbl=$('lbl'+i);lbl.className='lbl t'+t;lbl.innerHTML=`<div class="slot">${SLOTS[i].ic} ${SLOTS[i].lb}</div><div class="v">${v===0?'0':'+'+v} xu</div><div class="tier">${tier.n}${m>=1?` · gấp ${m}`:''}</div>`;
+    const lbl=$('lbl'+i);lbl.className='lbl t'+t;lbl.innerHTML=`<div class="slot">${SLOTS[i].ic} ${SLOTS[i].lb}</div><div class="v">${v===0?'0':'+'+v} xu</div><div class="tier">${tier.n}${i===2?` · tổng ${cur.vals[0]+cur.vals[1]+cur.vals[2]} xu`:''}</div>`;
     requestAnimationFrame(()=>lbl.classList.add('show'));
     if(t===0){beep(140,.4,'sawtooth',.05)}
     else if(t<=2){beep(660+t*160,.2,'triangle',.1);burst(to,tier.c,14)}
@@ -4041,11 +4046,11 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
   function finish(){
     phase='done';
     const total=cur.vals.reduce((a,b)=>a+b,0);
-    S.history.push({n:cur.n,name:cur.name,chest:cur.chest,price:cur.price,mults:cur.mults,vals:cur.vals,total,mode:cur.mode,t:Date.now()});
+    S.history.push({n:cur.n,name:cur.name,chest:cur.chest,price:cur.price,k:cur.k,mults:cur.mults,tiers:cur.tiers,vals:cur.vals,total,mode:cur.mode,t:Date.now()});
     S.thu+=cur.price;S.chi+=total;save();
     const k=total/cur.price;
     $('bTot').textContent=`Tổng nhận: ${total} xu`;
-    $('bSub').textContent=k>=2?`Gấp ${(+k.toFixed(1))} lần giá rương! 🎉`:k>1?'Lãi rồi! 🎉':k===1?'Hòa vốn, vẫn vui 😄':'Chúc may mắn lần sau 🍀';
+    $('bSub').textContent=k>=1.95?'GẤP ĐÔI giá rương! 🎉':k>1?'Lãi rồi! 🎉':k===1?'Hòa vốn, vẫn vui 😄':'Chúc may mắn lần sau 🍀';
     $('banner').classList.add('show');if(k>=2)confetti(200);
     $('btnReveal').style.display='none';$('btnDone').style.display='';
     hint($('hintT').innerHTML,'SPACE ĐỂ SANG LƯỢT TIẾP');
@@ -4101,7 +4106,7 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
     lanterns.forEach(g=>{g.position.y+=Math.sin(t*1.3+g.userData.ph)*.0025;g.rotation.z=Math.sin(t*.9+g.userData.ph)*.1;g.rotation.y=t*.3+g.userData.ph});
     stars.rotation.y=t*.004;
     const st=$('stage');
-    lootObjs.forEach((g,i)=>{if(!g||!cur)return;const sz=TIER[tierOf(cur.mults[i])].size;
+    lootObjs.forEach((g,i)=>{if(!g||!cur)return;const sz=TIER[cur.tiers[i]].size;
       if(phase!=='closing'&&i<cur.revealed&&g.scale.x>=1){g.rotation.y+=dt*1.2;g.position.y=SLOT_POS[i].y+Math.sin(t*2+i)*.12;lootGlow[i].position.copy(g.position);lootGlow[i].scale.setScalar(sz*(2.6+Math.sin(t*3+i)*.3))}
       tmpV.copy(g.position);tmpV.y-=sz*.55+.15;tmpV.project(camera);
       $('lbl'+i).style.left=((tmpV.x*.5+.5)*st.clientWidth)+'px';$('lbl'+i).style.top=((-tmpV.y*.5+.5)*st.clientHeight)+'px'});
@@ -4119,19 +4124,16 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
 
   // ---------- Settings ----------
   const dlg=$('dlg');
-  function profHTML(){const c=S.cfg;return Object.keys(c.prof).map(k=>`<h4 style="margin-top:10px">${PROF_NAMES[k]} · kỳ vọng <span class="ev" id="ev_${k}">${ev(c.prof[k]).toFixed(2)}</span></h4>
-      <table><thead><tr><th>Lượt</th><th colspan="4">Xác suất từng giá trị (%)</th></tr></thead><tbody>
-      ${[0,1,2].map(s=>`<tr><td>${SLOTS[s].ic} ${SLOTS[s].lb}</td>${VALS[s].map((v,i)=>`<td>${v}×giá: <input type="number" min="0" data-p="${k}" data-s="${s}" data-i="${i}" value="${c.prof[k][s][i]}">%</td>`).join('')}</tr>`).join('')}
-      </tbody></table>`).join('')}
+  function profHTML(){const c=S.cfg;return `<table><thead><tr><th>Bộ</th>${K.map(k=>`<th>${Math.round(k*100)}%</th>`).join('')}<th>Kỳ vọng</th></tr></thead><tbody>`+
+      Object.keys(c.prof).map(p=>`<tr><td>${PROF_NAMES[p]}</td>${K.map((k,i)=>`<td><input type="number" min="0" data-p="${p}" data-i="${i}" value="${c.prof[p][i]}"></td>`).join('')}<td class="ev" id="ev_${p}">${ev(c.prof[p]).toFixed(2)}</td></tr>`).join('')+
+      `</tbody></table><div class="tip">Giá 5 / 10 / 15 xu nhận lần lượt: ${S.cfg.prices.map(P=>K.map(k=>payOf(k,P)).join('·')).join(' | ')} xu (đã làm tròn). Quà chắc chắn = 70% giá.</div>`}
   function fillDlg(){const c=S.cfg;[0,1,2].forEach(i=>$('cP'+i).value=c.prices[i]);$('cTarget').value=c.target;$('cBand').value=c.band;$('cBudget').value=c.budget;$('cWarm').value=c.warm;$('cCtrl').checked=c.ctrl;$('cSound').checked=c.sound;
     $('prof').innerHTML=profHTML();$('prof').querySelectorAll('input').forEach(el=>el.addEventListener('input',updateRatio));updateRatio()}
   function readDlg(){const c=JSON.parse(JSON.stringify(S.cfg));c.prices=[0,1,2].map(i=>Math.max(1,+$('cP'+i).value||1));c.target=+$('cTarget').value||1;c.band=Math.max(0,+$('cBand').value||0);c.budget=Math.max(0,+$('cBudget').value||0);c.warm=Math.max(0,+$('cWarm').value||0);c.ctrl=$('cCtrl').checked;c.sound=$('cSound').checked;
-    $('prof').querySelectorAll('input').forEach(el=>{c.prof[el.dataset.p][+el.dataset.s][+el.dataset.i]=Math.max(0,+el.value||0)});return c}
+    $('prof').querySelectorAll('input').forEach(el=>{c.prof[el.dataset.p][+el.dataset.i]=Math.max(0,+el.value||0)});return c}
   function updateRatio(){const c=readDlg();for(const k in c.prof)$('ev_'+k).textContent=ev(c.prof[k]).toFixed(2);
-    const p=c.prof.chuan,norm=w=>{const t=w.reduce((a,b)=>a+b,0)||1;return w.map(x=>x/t)},w=[norm(p[0]),norm(p[1]),norm(p[2])],dist={};
-    for(let a=0;a<2;a++)for(let b=0;b<4;b++)for(let d=0;d<4;d++){const t=+(VALS[0][a]+VALS[1][b]+VALS[2][d]).toFixed(2);dist[t]=(dist[t]||0)+w[0][a]*w[1][b]*w[2][d]}
-    const P=f=>Object.keys(dist).reduce((s,k)=>s+(f(+k)?dist[k]:0),0);
-    $('ratioBox').innerHTML=`Bộ Chuẩn: nhận ít hơn giá <b>${(P(k=>k<1)*100).toFixed(0)}%</b> · nhiều hơn giá <b>${(P(k=>k>1)*100).toFixed(0)}%</b> · từ gấp đôi <b>${(P(k=>k>=2)*100).toFixed(1)}%</b> · từ gấp ba <b>${(P(k=>k>=3)*100).toFixed(1)}%</b><br>Máy giữ tỉ lệ chi/thu quanh <b>${c.target.toFixed(2)}</b> (±${c.band.toFixed(2)}) và không phát sinh quá <b>${c.budget} xu</b>.`}
+    const w=c.prof.chuan,tw=w.reduce((a,b)=>a+b,0)||1,P=f=>K.reduce((s,k,i)=>s+(f(k)?w[i]/tw:0),0);
+    $('ratioBox').innerHTML=`Bộ Chuẩn: nhận ít hơn giá <b>${(P(k=>k<1)*100).toFixed(0)}%</b> · nhiều hơn giá <b>${(P(k=>k>1)*100).toFixed(0)}%</b> · từ 150% <b>${(P(k=>k>=1.5)*100).toFixed(0)}%</b> · gấp đôi <b>${(P(k=>k>=2)*100).toFixed(1)}%</b><br>Máy giữ tỉ lệ chi/thu quanh <b>${c.target.toFixed(2)}</b> (±${c.band.toFixed(2)}) và không phát sinh quá <b>${c.budget} xu</b>.`}
   $('btnSettings').onclick=()=>{fillDlg();dlg.showModal()};$('dlgCancel').onclick=()=>dlg.close();
   $('dlgSave').onclick=()=>{S.cfg=readDlg();save();dlg.close();renderBtns()};
   $('btnReset').onclick=()=>{if(phase!=='pick'){alert('Hãy kết thúc lượt hiện tại trước.');return}if(!confirm('Xóa toàn bộ lịch sử và thống kê, bắt đầu lại từ đầu?'))return;S=fresh(S.cfg);save();renderHist();renderNames()};
