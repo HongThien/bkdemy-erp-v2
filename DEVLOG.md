@@ -29724,3 +29724,10 @@ cho 4 id đó hết tác dụng, ai cần thì cấp quyền "Bổ trợ" (`botr
    (TT/trangThai export từ TheoDoiCaBoTroTab, poll 15s).
 Chưa làm: form xếp riêng của Yếu vẫn gợi ý ca trực theo khối+bậc/sức chứa 3 em (logic cũ) — đơn vị đã tính chung nhờ gắn ca, nhưng muốn bỏ hẳn thì nút "Xếp" của Yếu
 nên mở Lịch phòng (spec §6) — chờ Thùy.
+
+## 2026-09-24 (tối) — Gắn buổi đã xếp vào ca trực cho 23/09 → 16/10 (Thùy: "đã khớp các lịch đã xếp chưa")
+
+Gắn chỉ chạy khi MỞ ngày ở Lịch phòng ⇒ lúc hỏi mới có 24/09. Chạy `fn_ca_bo_tro_sinh_ngay` cho 23/09 → 16/10 (y hệt mở từng ngày, đã COMMIT):
+33 buổi bổ trợ · 14 vào ca trực · 19 ở Lịch riêng (người/giờ không trùng ca trực — phần lớn Bù/Đuổi 19:30 TA lớp dạy ngoài giờ trực, không gắn đại).
+Ca LỐ đơn vị: 24/09 21:00 Trần Thị Thảo Nguyên 6/3 · 27/09 16:00 Nguyễn Hà Giang 10/6 — OPS cần gỡ bớt.
+Còn hở: buổi xếp MỚI bằng form riêng chỉ gắn khi ngày được mở ⇒ tóm tắt dải ngày đếm thiếu ngày chưa ai mở.
