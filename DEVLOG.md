@@ -29613,3 +29613,12 @@ Còn treo: chưa biết Thùy xếp qua modal "Xác nhận" hay tab Ca bổ tr�
   "Chọn chỗ"/đặt nhà ban đầu tự nhảy sang Bản đồ. iPad có 3D (CEO: "TV có 3D, iPad chưa"): nút 3D nạp mô hình lần đầu (7MB), chạm chọn bằng dò điểm trên mặt bàn
   (`BKC3D.pick` → toạ độ bản đồ → dùng chung logic chọn đỉnh/cạnh/ô với 2D), zoom/kéo/chụm 2 ngón, mục tiêu sáng + đăng ký của mình hiện bóng mờ trong 3D.
   TV: nút 3D luôn hiện, nạp lỗi thì ghi "⚠ 3D lỗi" + lý do. Test: chạm ô tâm trong 3D mở đúng bảng; tab Xây → Chọn chỗ đường → tự về Bản đồ 3D, 7 khe sáng, chạm → Đăng ký (1).
+
+## 2026-09-24 — Gậy: ÂN XÁ lần 2 — xoá lịch sử duyệt gậy từ 21/9 về trước (mig 202609241402)
+- CEO: "gậy từ trước 21/9 coi như không phạt, xoá toàn bộ lịch sử duyệt gậy từ 21/9 về trước". Mốc = hạn việc < 22/09 00:00 VN.
+  Theo luật xoá: đo → liệt kê (1.747 đề xuất = 1.140 chờ · 602 bỏ qua · 5 đã đánh; 2 ledger Tạ Quang Tùng đánh 21/9;
+  ~2.310 gay_log) → CEO gật → mới chạy. Hard delete trong DO block 1 transaction, có GUARD số dòng phải khớp đo trước
+  (lệch ⇒ raise, rollback). Re-đo ngay trước khi áp: vẫn 1.747/2. Còn lại: 44 chờ + 3 bỏ qua (từ 22/9), 5 ledger, 55 log.
+- **Bẫy đã né:** xoá không kèm đổi mốc quét = vô ích — quetGayTuDong quét cả tháng, mở tab Đề xuất là đẻ lại 1.140 dòng.
+  Đổi `GAY_MOC_LICH_SU` 01/09 → 22/09 + chặn 3 nguồn quét (vận hành / OPS gộp ca / giao việc) theo mốc. Mốc ân xá
+  dashboard TA/GV/OPS (fn_*_viec_thang, 01/09) GIỮ NGUYÊN — CEO chốt tách riêng.
