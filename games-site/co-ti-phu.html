@@ -4461,7 +4461,7 @@ function buildLotScene(i,st){const t=BOARD.tiles[i],o=st.own[i];const sc=new T.S
   const col=t.type==='prop'?GCOL[t.group]:t.type==='station'?'#666':'#5aa';
   const ground=bx(9,.04,9,M(0x7fbf5e,{roughness:1}),0,-.06,lz);ground.receiveShadow=true;g.add(ground);
   const slab=bx(w-.08,.32,d-.08,M(0xf2e6c8),0,0,0);slab.receiveShadow=true;g.add(slab);g.add(bx(w,.12,d,M(0x8a6a3a),0,0,0));
-  const lbl=new T.Mesh(new T.PlaneGeometry(w-.3,d-.3),new T.MeshBasicMaterial({map:labelTex(t.name,t.price?t.price+' Xu':'',col),transparent:true}));lbl.rotation.x=-Math.PI/2;lbl.position.y=.33;g.add(lbl);
+  const lbl=new T.Mesh(new T.PlaneGeometry(w-.3,d-.3),new T.MeshBasicMaterial({map:labelTex(t.name,t.price?t.price+' Xu':'',col),transparent:true}));lbl.rotation.x=-Math.PI/2;lbl.position.y=.33;if(p.side===1||p.side===3)lbl.rotation.z=Math.PI;g.add(lbl);
   if(t.type==='prop')g.add(bx(w-.08,.1,.46,M(col,{emissive:col,emissiveIntensity:.15}),0,.32,-d/2+.28));
   const lot=bx(w-.06,.26,lotD-.06,M(0x8cc46a,{roughness:.95}),0,0,lz);lot.receiveShadow=true;g.add(lot);g.add(bx(w,.1,lotD,M(0x5f8f45),0,0,lz));
   const h=new T.Group();h.position.y=.26;g.add(h);
@@ -4504,7 +4504,7 @@ function playAct(ch,name,once){if(!ch.acts[name]||ch.cur===name)return;const a=c
 const S=2,CN=3,L=9*S+2*CN,H=L/2,RD=2.4,LD=2.6; // RD: bề rộng mặt đường, LD: chiều sâu khu đất ngoài đường
 function tilePos(i){ // tâm ô, hướng "trong" (về tâm bàn) và góc xoay để chữ đọc từ ngoài
   if(i===0)return{x:H-CN/2,z:H-CN/2,rot:0,corner:true};if(i===10)return{x:-H+CN/2,z:H-CN/2,rot:0,corner:true};if(i===20)return{x:-H+CN/2,z:-H+CN/2,rot:0,corner:true};if(i===30)return{x:H-CN/2,z:-H+CN/2,rot:0,corner:true};
-  if(i<10)return{x:H-CN-(i-.5)*S,z:H-CN/2,rot:0,side:0};if(i<20)return{x:-H+CN/2,z:H-CN-(i-10-.5)*S,rot:Math.PI/2,side:1};if(i<30)return{x:-H+CN+(i-20-.5)*S,z:-H+CN/2,rot:Math.PI,side:2};return{x:H-CN/2,z:-H+CN+(i-30-.5)*S,rot:-Math.PI/2,side:3}}
+  if(i<10)return{x:H-CN-(i-.5)*S,z:H-CN/2,rot:0,side:0};if(i<20)return{x:-H+CN/2,z:H-CN-(i-10-.5)*S,rot:-Math.PI/2,side:1};if(i<30)return{x:-H+CN+(i-20-.5)*S,z:-H+CN/2,rot:Math.PI,side:2};return{x:H-CN/2,z:-H+CN+(i-30-.5)*S,rot:Math.PI/2,side:3}}
 function tokenOffset(pi,n){const a=(pi/Math.max(1,n))*Math.PI*2;const r=n>1?.55:0;return[Math.cos(a)*r,Math.sin(a)*r]}
 function labelTex(text,sub,color){const c=document.createElement('canvas');c.width=256;c.height=384;const g=c.getContext('2d');g.fillStyle='#f4ead2';g.fillRect(0,0,256,384);if(color){g.fillStyle=color;g.fillRect(0,0,256,80)}g.fillStyle='#2a1f10';g.textAlign='center';g.font='bold 30px Segoe UI, Arial';const words=text.split(' ');let lines=[],cur='';for(const w of words){if((cur+' '+w).trim().length>11){lines.push(cur.trim());cur=w}else cur+=' '+w}lines.push(cur.trim());lines.forEach((l,k)=>g.fillText(l,128,150+k*36));if(sub){g.font='26px Segoe UI, Arial';g.fillStyle='#6b4f2a';g.fillText(sub,128,330)}const t=new T.CanvasTexture(c);t.encoding=T.sRGBEncoding;t.anisotropy=4;return t}
 
@@ -4544,7 +4544,7 @@ async function buildScene(){
     const slab=new T.Mesh(new T.BoxGeometry(w-.08,.32,d-.08),p.corner?cornerMat:slabMat);slab.position.y=.16;slab.castShadow=true;slab.receiveShadow=true;g.add(slab);
     const base=new T.Mesh(new T.BoxGeometry(w,.12,d),edgeMat);base.position.y=.06;g.add(base);
     const col=t.type==='prop'?GCOL[t.group]:t.type==='station'?'#666':t.type==='util'?'#5aa':t.type==='chance'?'#ff9a3c':t.type==='community'?'#7cc4ff':t.type==='tax'?'#888':null;
-    const lbl=new T.Mesh(new T.PlaneGeometry(w-.3,d-.3),new T.MeshBasicMaterial({map:labelTex(t.name,t.price?t.price+' Xu':(t.amount?t.amount+' Xu':''),col),transparent:true}));lbl.rotation.x=-Math.PI/2;lbl.position.y=.33;g.add(lbl);
+    const lbl=new T.Mesh(new T.PlaneGeometry(w-.3,d-.3),new T.MeshBasicMaterial({map:labelTex(t.name,t.price?t.price+' Xu':(t.amount?t.amount+' Xu':''),col),transparent:true}));lbl.rotation.x=-Math.PI/2;lbl.position.y=.33;if(p.side===1||p.side===3)lbl.rotation.z=Math.PI;g.add(lbl);
     if(col&&t.type==='prop'){const band=new T.Mesh(new T.BoxGeometry(w-.08,.1,.46),new T.MeshStandardMaterial({color:col,roughness:.6,emissive:new T.Color(col),emissiveIntensity:.15}));band.position.set(0,.36,-d/2+.28);g.add(band)}
     const hasLot=t.type==='prop'||t.type==='station'||t.type==='util';
     // khu đất phía ngoài đường (local +z): thảm cỏ, viền đá, không chữ — chỗ đặt nhà và vườn
