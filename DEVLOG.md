@@ -29716,3 +29716,22 @@ sang co_giai + ghi_chu. (4) kho_anh.mjs tự chạy CLI khi import ⇒ viết l�
 hinh_hoc) ⇒ 61/107 đề k11 giữ lại chưa nhập · kênh AI (CLI claude chưa login; có API key .env.local chưa được phép tiêu) cho ~1200 TN + ~400 TLN
 chưa đáp án và dạng từng mệnh đề Đ/S · bản đồ BK k12 thiếu dạng (đọc tiệm cận từ BBT/đồ thị, đếm tiệm cận, tâm đối xứng, giao điểm với
 trục, véc tơ bằng nhau/cùng phương hình khối, độ dài véc tơ hình khối, cực trị Oxyz thực tiễn).
+
+## 2026-09-24 (tiếp) — Thử AI trích đáp án còn thiếu: 2 hướng đều KHÔNG đủ tin, chưa triển khai tiếp
+
+**Hướng 1 — vá quy tắc so chuỗi (`scripts/noctorium_dapan.mjs`, đã đánh dấu ⛔ KHÔNG CHẠY):** ưu tiên phương
+án khớp gần cuối câu + bỏ phương án là chuỗi con của phương án khác. Đo trên 14 mẫu ngẫu nhiên: SAI 4/14 (29%).
+3 lỗi gốc: câu kết nhắc lại đề bài gốc (trùng chữ với 1 phương án nhiễu, đứng sau đáp số thật) · xoá `{}`
+làm 2 số dính liền thành chuỗi giả trùng phương án khác (`\dfrac{7}{4}`→"74" trùng đáp án 74 thật) · đáp số
+1 chữ số bị luật an toàn (≥2 ký tự) loại bỏ trong khi số trung gian (dưới dấu căn) dài hơn bị chọn nhầm.
+
+**Hướng 2 — Agent Haiku (subagent trong phiên, không qua CLI vì `claude` local CHƯA login):** thí điểm 20
+câu, Haiku tự đọc lời giải + 4 phương án, Sonnet (t) đọc lại 100% để kiểm — không kiểm mẫu được vì công kiểm
+= công tự trích. Kết quả 16/20 đúng, nhưng: 1 câu Haiku hiểu đúng nội dung mà GÁN SAI CHỮ CÁI · 3/20 câu
+trích dẫn TRÙNG với câu KHÁC trong cùng lô (dấu hiệu "đuối" khi xử lý lô 20 câu 1 lượt — giống hệt lỗi CEO
+đã đo 11/09 với Haiku dồn cục). Kết luận: vì kiểm ⇒ phải đọc lại từ đầu, Haiku không tiết kiệm được gì đáng
+kể cho việc trích đơn giản này — nếu làm tiếp thì Sonnet tự đọc trực tiếp, không qua Haiku middleman.
+
+**Quy mô thật (chưa làm):** ~1.635 câu TN/TLN còn thiếu đáp án + ~5.460 mệnh đề Đúng/Sai còn thiếu dạng
+(100% đang ở dạng chờ, mỗi câu Đ/S có 4 mệnh đề). Việc nhiều phiên, hỏi Thùy có bắt đầu ngay từng đợt nhỏ
+hay để làm việc riêng sau. Insert nền (297 đề k12 + 46 đề k11) vẫn đang chạy, ~29/297 và 27/46 lúc ghi log.
