@@ -223,10 +223,11 @@ const $=id=>document.getElementById(id);
 const useTimer=/loop=timer/.test(location.search);const nextFrame=useTimer?(f=>setTimeout(()=>f(performance.now()),16)):(f=>requestAnimationFrame(f));
 const KEY='bk-mecung-v1';
 const MAXP=8,SLOTS=Array.from({length:MAXP},(_,i)=>i+1);
-const DEF={role:null,slot:1,room:'BK01',sbUrl:'https://osrvycilwshkzhljuxef.supabase.co',sbKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4',entry:0,prizes:[10,9,8,7,6,5,4,3],perfect:2,dur:75,cols:16,rows:10,loops:15};
+const DEF={role:null,slot:1,room:'BK01',sbUrl:'https://osrvycilwshkzhljuxef.supabase.co',sbKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4',entry:0,prizes:[5,3,2,2,2,2,2,2],perfect:2,dur:75,cols:16,rows:10,loops:15};
 let C=Object.assign({},DEF);try{Object.assign(C,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
 const q=new URLSearchParams(location.search);if(q.get('role'))C.role=q.get('role');if(q.get('slot'))C.slot=+q.get('slot');if(q.get('room'))C.room=q.get('room');
 function saveC(){localStorage.setItem(KEY,JSON.stringify(C))}
+if(C.prizev!==1){C.prizes=DEF.prizes.slice();C.prizev=1;saveC()} // luật thưởng chung iPad (Thùy 25/09): Nhất 5 · Nhì 3 · còn lại 2
 
 // ---------- sound / confetti ----------
 let AC=null;function beep(f,d,t,v,sl){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.type=t||'triangle';o.frequency.setValueAtTime(f,AC.currentTime);if(sl)o.frequency.exponentialRampToValueAtTime(sl,AC.currentTime+d);g.gain.setValueAtTime(v||.08,AC.currentTime);g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+d);o.connect(g);g.connect(AC.destination);o.start();o.stop(AC.currentTime+d)}catch(e){}}
