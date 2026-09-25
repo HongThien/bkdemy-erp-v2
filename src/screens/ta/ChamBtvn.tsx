@@ -236,7 +236,7 @@ function ChamMotHS({ r, ten, buoi, n, dx, v, probs, gradeOf, dong, moCoiIds, url
 
       <div className="flex min-h-0 flex-1 flex-col landscape:flex-row">
         {coAnh && (
-          <div className="flex min-h-0 flex-col border-slate-200 portrait:h-[55%] portrait:border-b landscape:w-[70%] landscape:border-r">
+          <div className="flex min-h-0 flex-col border-slate-200 portrait:h-[70%] portrait:border-b landscape:w-[70%] landscape:border-r">
             <VeAnh key={hsId} ten={ten} anhDs={n!.anh} urls={urls} reloadNop={reloadNop} daTra={!!n!.tra_at} />
           </div>
         )}
@@ -702,30 +702,36 @@ function VeAnh({ ten, anhDs, urls, reloadNop, daTra }: { ten: string; anhDs: Btv
   const conTro = tool === 'text' || tool === 'D' || tool === 'S' ? 'cursor-cell' : 'cursor-crosshair'
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <div className="flex flex-wrap items-center gap-1.5 border-b border-slate-200 bg-white px-2 py-1.5">
+      {/* Dòng 1 — CUỘN NGANG trên màn hẹp (điện thoại): trước đây flex-wrap bung tới 3 dòng, ăn hết
+          chỗ của ảnh trên portrait (CEO 25/09: "ảnh đang chiếm ít diện tích quá"). Chỉ 1 dòng cố định
+          + shrink-0 từng nút để scroll ngang thay vì bị bóp chữ. */}
+      <div className="flex items-center gap-1.5 overflow-x-auto border-b border-slate-200 bg-white px-2 py-1.5">
         {MAUS.map((m) => (
           <button key={m.v} onClick={() => { setMau(m.v); if (tool !== 'text') setTool('but') }} title={`${m.lbl} (phím ${m.phim})`} aria-label={`Màu ${m.lbl}`}
-            className={`h-9 w-9 rounded-full border-2 ${m.cls} ${mau === m.v ? 'border-slate-900 ring-2 ring-slate-300' : 'border-white'}`} />
+            className={`h-9 w-9 shrink-0 rounded-full border-2 ${m.cls} ${mau === m.v ? 'border-slate-900 ring-2 ring-slate-300' : 'border-white'}`} />
         ))}
-        <span className="mx-0.5 h-6 w-px bg-slate-200" />
+        <span className="mx-0.5 h-6 w-px shrink-0 bg-slate-200" />
         {TOOLS.map((t) => (
           <button key={t.t} onClick={() => { setTool(t.t); setNhap(null) }} title={`phím ${t.phim}`}
-            className={`min-h-[36px] min-w-[40px] rounded-lg border px-2 text-[12.5px] font-bold ${tool === t.t ? t.cls : 'border-slate-200 bg-white text-slate-600'}`}>{t.lbl}</button>
+            className={`min-h-[36px] min-w-[40px] shrink-0 rounded-lg border px-2 text-[12.5px] font-bold ${tool === t.t ? t.cls : 'border-slate-200 bg-white text-slate-600'}`}>{t.lbl}</button>
         ))}
-        <span className="mx-1 h-6 w-px bg-slate-200" />
-        <label className="flex items-center gap-1 text-[11px] font-semibold text-slate-400">Cỡ chữ
+        <span className="mx-1 h-6 w-px shrink-0 bg-slate-200" />
+        <label className="flex shrink-0 items-center gap-1 text-[11px] font-semibold text-slate-400">Cỡ chữ
           <select value={co} onChange={(e) => setCo(Number(e.target.value))} title="Cỡ chữ (áp cho Chữ và dấu Đ/S)"
             className="h-9 rounded-lg border border-slate-200 bg-white px-1.5 text-[13px] font-bold text-slate-700">
             {CO_LIST.map((c) => <option key={c} value={c}>{c}</option>)}
           </select>
         </label>
-        <button onClick={() => xoay90(-1)} disabled={!ready || busy} title="Xoay trái 90° (phím [)" aria-label="Xoay trái" className="min-h-[36px] min-w-[40px] rounded-lg border border-slate-200 px-2 text-[15px] font-bold text-slate-600 disabled:opacity-30">⟲</button>
-        <button onClick={() => xoay90(1)} disabled={!ready || busy} title="Xoay phải 90° (phím ])" aria-label="Xoay phải" className="min-h-[36px] min-w-[40px] rounded-lg border border-slate-200 px-2 text-[15px] font-bold text-slate-600 disabled:opacity-30">⟳</button>
-        <button onClick={undo} disabled={!soNet} title="Ctrl+Z" className="min-h-[36px] rounded-lg border border-slate-200 px-2.5 text-[12.5px] font-semibold text-slate-600 disabled:opacity-30">↩ Hoàn tác</button>
+        <button onClick={() => xoay90(-1)} disabled={!ready || busy} title="Xoay trái 90° (phím [)" aria-label="Xoay trái" className="min-h-[36px] min-w-[40px] shrink-0 rounded-lg border border-slate-200 px-2 text-[15px] font-bold text-slate-600 disabled:opacity-30">⟲</button>
+        <button onClick={() => xoay90(1)} disabled={!ready || busy} title="Xoay phải 90° (phím ])" aria-label="Xoay phải" className="min-h-[36px] min-w-[40px] shrink-0 rounded-lg border border-slate-200 px-2 text-[15px] font-bold text-slate-600 disabled:opacity-30">⟳</button>
+        <button onClick={undo} disabled={!soNet} title="Ctrl+Z" className="min-h-[36px] shrink-0 rounded-lg border border-slate-200 px-2.5 text-[12.5px] font-semibold text-slate-600 disabled:opacity-30">↩ Hoàn tác</button>
         {anh?.path_cham && !daTra && (
           <button onClick={lamLai} disabled={busy} title="Bỏ bản chấm đã lưu của trang này, quay về ảnh gốc"
-            className="min-h-[36px] rounded-lg border border-rose-200 px-2.5 text-[12.5px] font-semibold text-rose-600 active:bg-rose-50 disabled:opacity-40">↺ Làm lại trang</button>
+            className="min-h-[36px] shrink-0 rounded-lg border border-rose-200 px-2.5 text-[12.5px] font-semibold text-rose-600 active:bg-rose-50 disabled:opacity-40">↺ Làm lại trang</button>
         )}
+      </div>
+      {/* Dòng 2 — LUÔN THẤY, không cuộn: Lưu là nút quan trọng nhất, không được để phải cuộn mới bấm được. */}
+      <div className="flex items-center gap-1.5 border-b border-slate-200 bg-white px-2 py-1.5">
         <button onClick={taiTrangNay} disabled={taiBusy || !ready} title="Tải ảnh gốc HS nộp (trang này) về máy"
           className="min-h-[36px] rounded-lg border border-slate-200 px-2.5 text-[12.5px] font-semibold text-slate-600 disabled:opacity-30">⬇ Tải ảnh</button>
         {anhs.length > 1 && (
