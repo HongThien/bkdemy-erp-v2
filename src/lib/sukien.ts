@@ -3,9 +3,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { supabase } from './supabase'
 
+export type Vai = 'checkin' | 'quantro' | 'quaqua' | 'quanly'
 export type SuKien = {
   id: string; ten: string; ngay: string; trang_thai: 'mo' | 'dong'
   cau_hinh: { vong_quay: { xu: number; ti_le: number }[]; toi_da_luot?: number; so_van?: number }
+  vai: Vai[]      // việc TÔI được giao ở sự kiện này (admin/quanly ⇒ đủ 4) — fn_sk_cua_toi
+  la_admin: boolean
 }
 export type NguoiHang = { dang_ky_id: string; ten: string; so: number; la_khach: boolean; so_lan_bo_qua: number }
 export type NguoiLuot = { dang_ky_id: string; slot: number; ten: string; so: number }
@@ -30,11 +33,11 @@ async function rpc<T>(fn: string, args: Record<string, unknown>): Promise<T> {
   return data as T
 }
 
-export async function listSuKien(): Promise<SuKien[]> {
-  const { data, error } = await supabase.from('sk_su_kien').select('*').order('ngay', { ascending: false }).limit(50)
-  if (error) throw new Error(error.message)
-  return (data ?? []) as SuKien[]
-}
+// Chỉ sự kiện TÔI được giao việc (admin thấy tất cả) — mig 202609260219.
+export const listSuKien = () => rpc<SuKien[]>('fn_sk_cua_toi', {})
+export const phanCongDs = (suKien: string) => rpc<{ nhan_su_id: string; ho_ten: string; email: string | null; vai: Vai[] }[]>('fn_sk_phan_cong_ds', { p_su_kien: suKien })
+export const phanCongLuu = (suKien: string, nhanSu: string, vai: Vai[]) => rpc<Vai[]>('fn_sk_phan_cong_luu', { p_su_kien: suKien, p_nhan_su: nhanSu, p_vai: vai })
+export const timNhanSu = (q: string) => rpc<{ id: string; ho_ten: string; email: string | null }[]>('fn_sk_tim_nhan_su', { p_q: q })
 
 export const tongQuan = (suKien: string) => rpc<TongQuan>('fn_sk_tong_quan', { p_su_kien: suKien })
 export const tim = (suKien: string, q: string) => rpc<KetQuaTim[]>('fn_sk_tim', { p_su_kien: suKien, p_q: q })

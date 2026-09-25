@@ -142,3 +142,12 @@ Mutation trong cùng màn: **vá tại chỗ**, không reload trắng (§2); rea
 - Link theo vị trí trực: `/#man=checkin` · `/#man=quantro` · `/#man=quaqua` (tab Cài đặt có nút Copy). TV: `/#sk-tv=quay|hang&sk=<id>`.
 - Deploy: Vercel project `bkdemy-erp-v2-sukien` · Build `npm run build:sukien` · Output `dist-sukien` · env `VITE_SUPABASE_URL` + `VITE_SUPABASE_KEY` (anon)
   · domain đề xuất `sukien.bkacademy.edu.vn`. Dev: `npm run dev:sukien` → `http://localhost:5186/sukien.html`.
+
+## 8. Giao việc (Thùy 26/09: "giao task check-in, quản trò cho nhân sự — đứa nào không giao thì không thấy gì")
+
+- Bảng `sk_phan_cong` (sự kiện × nhân sự × vai), vai ∈ `checkin · quantro · quaqua · quanly`. Mig `202609260219`.
+- **DB chặn**: mọi `fn_sk_*` gọi `_sk_can(su_kien, vai[])`. Admin hệ thống (`la_admin_he_thong`) = quanly mọi sự kiện;
+  `quanly` = đủ 4 vai + cài đặt + giao việc + điều chỉnh xu. Tạo sự kiện mới: chỉ admin hệ thống.
+- Màn: chỉ hiện sự kiện được giao (`fn_sk_cua_toi`). 1 việc ⇒ vào thẳng; nhiều việc ⇒ chọn (máy nhớ); chưa giao ⇒ "chưa được giao việc".
+  Giao việc ở Cài đặt › 👥 Giao việc (tìm tên → bấm chip, lưu ngay). Vết giao/gỡ: trigger `sk_phan_cong_log`.
+- Máy nối TV phải đăng nhập tài khoản có việc (dùng tài khoản quản lý).
