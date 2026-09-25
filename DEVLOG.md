@@ -29859,3 +29859,66 @@ quay lại từ nền (visibilitychange); lỗi mạng không tắt card đang h
   (thử rollback: 3 em L1 vào ca 6 đv ⇒ 3 đv · 3 em, không còn "chờ"). Dòng chờ PH cũ: 0. Màn bỏ nhãn ✓PH/chờ PH, nút Xác nhận, chú thích; số em vượt ⇒ đỏ "· LỐ".
 - "Đừng nền đỏ rối mắt; tag Yếu thành card nhỏ đỏ rực chữ trắng, Đuổi/Bù tương tự; viền card xám": dòng bg-white border-slate-300; tag bg-rose-600 /
   bg-sky-600 / bg-orange-500 text-white (Lịch phòng + khu Lịch riêng TheoDoiCaBoTroTab). Kiểm local OK.
+
+## 2026-09-25 (sáng) — App TA chấm BTVN ảnh: điện thoại dọc không kéo xem được trang, không tải ảnh về (Lộ Thị Dương, bài Hoàng Anh Thư 5A1)
+
+- Dữ liệu đúng: nộp 24/09 21:06, 4 ảnh, gán tạm buổi 22/09 5A1 (co_mat), chưa chốt buổi. Ảnh TẢI ĐƯỢC (ảnh chụp màn hình Dương thấy trang 1).
+- Lỗi thật = UX điện thoại dọc: toolbar 3 hàng ăn chỗ ⇒ khung ảnh chỉ 1 dải; canvas nét `touch-none` ⇒ vuốt không cuộn; ta.html
+  `user-scalable=no` ⇒ không pinch; KHÔNG có nút tải về (💾 "Lưu trang này" = lưu bản chấm vào hệ, xám tới khi có nét — dễ hiểu nhầm).
+- Sửa `ChamBtvn.tsx` VeAnh: tool **✋ Kéo** (phím H; canvas `pointer-events-none` ⇒ khung cuộn nhận chạm) — điện thoại (coarse + ≤767px) mở
+  sẵn ở Kéo, iPad/laptop vẫn Bút · **－/＋ phóng** 100/150/200/300% (phím - +; toạ độ vẽ vẫn đúng vì map qua rect) · **⬇ Tải về** (nền đã xoay
+  + nét, iPhone qua share sheet ⇒ Lưu hình ảnh; không ghi hệ) · portrait: toolbar 1 hàng cuộn ngang. tsc + build:ta OK; CHƯA thử trên máy thật
+  (cần đăng nhập TA). Prod TA phải Create Deployment tay.
+
+## 2026-09-25 (trưa) — Chấm BTVN ảnh: CHẠM ẢNH ⇒ TOÀN MÀN + chụm phóng (thay bản sáng)
+
+- Thùy: "cần thao tác trên từng ảnh — bấm vào ảnh thì full màn, phóng to thu nhỏ để khoanh lỗi; full màn vẫn còn chỗ cho nút; UI khác không cần".
+  ⇒ bỏ hướng sáng (toolbar 1 hàng cuộn, phóng bằng đổi width, Kéo mặc định trên điện thoại).
+- VeAnh 2 chế độ trên CÙNG cây DOM (chỉ đổi class/style ⇒ canvas không unmount, nền + nét giữ nguyên): thường = xem trước, badge "⤢ Chạm để chấm",
+  KHÔNG có toolbar; chạm ⇒ `fixed inset-0 z-[80]` toolbar trên + khung ảnh vừa màn + dải trang dưới. Phóng = CSS transform (translate+scale,
+  origin 0 0) lên khối ảnh — tự viết chụm 2 ngón vì ta.html khoá pinch; + nút －/％(về vừa màn)/＋, lăn chuột (listener native passive:false,
+  đọc qua ref). 2 ngón luôn là chụm (nét ngón 1 vừa bắt đầu bị bỏ); chụm xong còn 1 ngón thì bỏ tới khi nhấc hết; bút iPad đang chạm thì bỏ touch
+  (lòng bàn tay). ✋ Kéo = 1 ngón dời. Esc thoát. ⬇ Tải về giữ (trong toàn màn). toaDo() đọc rect đã transform ⇒ nét rơi đúng chỗ ở mọi mức phóng.
+- Kiểm: mount VeAnh riêng trong dev (export tạm, đã gỡ) viewport 375×812, ảnh giả 1200×1600 — chụm 100→250% quanh tâm, nét vẽ ở 250% nằm đúng
+  dưới ngón, Kéo dời 50/100px, thoát toàn màn nét còn, 0 lỗi console. tsc + build:ta OK. Chưa thử máy thật / Apple Pencil.
+
+## 2026-09-25 (chiều) — BTVN nộp app: auto gán buổi CHỈ lớp Toán (bài Minh Hiếu rơi vào 5E1 Anh)
+
+- Hỏi: "Minh Hiếu 5T2 sao nộp bài lại vào 5E1". Gốc: `fn_btvn_nop_tao_auto` chọn buổi thường gần nhất trong MỌI lớp, không xét môn; em học
+  5T1 Toán 8h + 5E1 Anh 14h chủ nhật ⇒ luôn rơi 5E1. 2 lượt (15/09, 22/09) kẹt ở 5E1, không ai chấm. DB: em đã rời 5T2 (`da_roi`), đang 5T1.
+  57 HS học ≥2 môn cùng rủi ro.
+- CEO: "Chỉ gán Toán thôi. Tiếng Anh chưa có. Sau này có thì lúc gửi ảnh cho PH chọn lớp."
+- mig 202609251219: hàm auto join `lop.mon = 'Toán'` (chữ ký giữ ⇒ app PH không sửa) + revoke anon; DO block chuyển lượt nộp chưa trả ở lớp
+  khác Toán sang buổi Toán gần nhất ≤ ngày nộp (giữ chưa chốt buổi, đích đã có lượt thì bỏ qua). Dry-run read-only: đúng 2 dòng → 5T1 13/09, 5T1
+  20/09; FK btvn_nop_anh ON UPDATE CASCADE (confupdtype c). CHƯA ÁP — cần chuỗi ghi.
+
+## 2026-09-25 (chiều) — Pull main: đụng độ ChamBtvn.tsx với 1 phiên chạy song song (2 hướng vẽ ảnh khác nhau cùng lúc)
+
+- `git pull` đụng 3 commit remote (10:45–11:41) chỉ sửa `ChamBtvn.tsx` VeAnh: 154264e "fix ảnh bị fix cứng — thêm cuộn 2 ngón", 6fcee0d
+  "nút Tải ảnh HS nộp về máy (zip)", c7900af "70% + toolbar 2 dòng". Cả 3 build trên nền `pointersRef/panRef/scrollRef` (kéo bằng 2 ngón,
+  KHÔNG toàn màn) — đúng hướng "sáng" mà phiên NÀY đã bỏ lúc trưa (xem mục "(trưa)" phía trên) sau khi CEO chốt "bấm ảnh ⇒ full màn, chụm
+  phóng to nhỏ". Một phiên khác (máy khác / cùng lúc) không biết quyết định trưa nên tiếp tục xây + push hướng cũ.
+- Stash WIP local (full màn + `taiVe` share 1 trang) rồi pull rồi pop ⇒ conflict 7 chỗ trong `VeAnh`. Đối chiếu kỹ từng bên
+  (`git diff <base> stash@{0}` vs nội dung remote) trước khi giải, KHÔNG đoán theo "bên nào mới hơn": remote mới hơn theo commit time
+  nhưng SAI hướng theo quyết định CEO trong ngày.
+- Quyết định: giữ kiến trúc TOÀN MÀN (đã CEO duyệt), GHÉP THÊM tính năng cộng dồn có giá trị riêng của remote — "Tải ảnh gốc HS nộp về máy"
+  (`tenFileAnToan`/`taiBlob`/`taiMotAnh`/`taiNhieuAnhZip`/`taiTrangNay`/`taiTatCa`, dùng `ten` prop) + portrait 55%→70% + tách toolbar
+  1 hàng cuộn ngang / 1 hàng Lưu luôn thấy (bên trong `{full && (...)}`) — bỏ hẳn `pointersRef/panRef/scrollRef` (không tương thích, đã có
+  `kDown/kMove/kUp` xử lý chụm/kéo trong toàn màn). tsc + `npm run build:ta` sạch.
+- **Bài học:** phiên chạy song song cùng sửa 1 màn, không tự động lấy "bên mới push" — commit time không phải bằng chứng đúng hướng.
+  Đọc DEVLOG/quyết định CEO trong ngày TRƯỚC khi giải conflict; đối chiếu diff-với-base từng bên để hiểu đúng ai đã bỏ hướng nào.
+  Stash cũ (`stash@{0}` lúc viết dòng này) CHƯA xoá — giữ tới khi CEO xác nhận merge đúng ý, xem [[worktree-khi-chay-song-song]].
+
+## 2026-09-25 (chiều) — Lịch phòng (bổ trợ): 2 nhãn trên popup ứng viên ca — "Cùng lớp" (xanh lá) · "Đã từng bổ trợ" (tím)
+
+- Thùy: popup xếp ca (`UngVienModal`, `LichPhongScreen.tsx`) cần 2 nhãn dạng pill bo tròn chữ trắng để Lộc nhận nhanh: (1) TA trực ca này
+  là TA lớp của em ⇒ "Cùng lớp" xanh lá; (2) em từng có mặt ở ĐÚNG ca trực này (tuần trước) ⇒ "Đã từng bổ trợ" tím.
+- (1) không cần đổi DB — tín hiệu `ta_dang_truc` đã có sẵn trong `fn_ca_bo_tro_ung_vien` từ 24/09 (dùng chọn người dạy mặc định), trước đó chỉ
+  hiện dạng text "(đang trực ✓)". Chỉ thêm badge ở UI.
+- (2) mới: mig `202609251302_ca_bo_tro_nhan_cung_lop_da_tung.sql` — helper `_ca_bo_tro_da_tung(hoc_sinh, lich_truc_id, ngay)` = tồn tại buổi
+  bổ trợ `diem_danh='co_mat'` gắn `ca_bo_tro` CÙNG `lich_truc_id`, `ngay` SỚM HƠN ca đang xem (ca tạo tay không có `lich_truc_id` ⇒ luôn false —
+  không có "ca lặp lại" để so). Trả thêm field `da_tung_bo_tro` trong cả 3 nhóm (duoi/bu/yeu) của `fn_ca_bo_tro_ung_vien` (giữ nguyên phần còn lại
+  của bản 202609242000). Áp bằng `--only` (không đụng 5 migration treo khác của phiên trước — 4 file Sổ tay + 1 file BTVN-auto-gán-Toán chưa sẵn
+  sàng ghi). `npm run schema` xong, `tsc` + `npm run build` sạch.
+- **Quyết định ngầm cần biết:** "đã từng bổ trợ" đòi `diem_danh='co_mat'` (thật sự có mặt), không tính buổi chỉ mới XẾP/xác nhận PH — tránh nhãn
+  hiện cho em chưa từng học buổi nào ở ca đó. Nếu sau này Lộc muốn nới ra "đã từng ĐƯỢC XẾP" (kể cả chưa học) thì đổi điều kiện, không phải bug.

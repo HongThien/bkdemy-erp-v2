@@ -368,7 +368,7 @@ function ChotBuoiBanner({ lopId, buoiNgay, onDungBuoi, onChuyen }: {
 // trang giữ trong memory khi chuyển trang (mất khi đóng màn). Toạ độ chạm map qua tỉ lệ rect (né zoom CSS).
 // Bộ tool (CEO 09/09): bút đỏ/xanh (iPad) · tẩy · dấu Đ/S đỏ · khoanh ◯ / khung ▭ kéo to nhỏ · chữ (laptop,
 // ô nhập tại chỗ) · cỡ Nhỏ/Vừa/Lớn áp cho chữ + dấu + nét · phím tắt 1 2 3 D S T O R, Ctrl+Z.
-type Tool = 'but' | 'tay' | 'D' | 'S' | 'text' | 'tron' | 'cn'
+type Tool = 'xem' | 'but' | 'tay' | 'D' | 'S' | 'text' | 'tron' | 'cn'
 type Co = number // cỡ chữ kiểu Paint (14…72) — px trên ảnh rộng 800, ảnh khác tự tỉ lệ
 type Xoay = 0 | 90 | 180 | 270
 type Nen = { w: number; h: number; el: CanvasImageSource } // ảnh nền (đã xoay) — vẽ lên canvas nền + ghép khi lưu
@@ -385,6 +385,8 @@ const MAUS: { v: string; lbl: string; cls: string; phim: string }[] = [
   { v: DEN, lbl: 'Đen', cls: 'bg-slate-900', phim: '3' },
 ]
 const TOOLS: { t: Tool; lbl: string; phim: string; cls: string }[] = [
+  // ✋ Kéo: 1 ngón dời ảnh đang phóng (2 ngón thì luôn chụm phóng + dời, tool nào cũng vậy).
+  { t: 'xem', lbl: '✋ Kéo', phim: 'H', cls: 'bg-slate-700 text-white border-transparent' },
   { t: 'but', lbl: '✏️ Bút', phim: 'B', cls: 'bg-slate-700 text-white border-transparent' },
   { t: 'tay', lbl: '🧹 Tẩy', phim: 'E', cls: 'bg-slate-600 text-white border-transparent' },
   { t: 'D', lbl: 'Đ', phim: 'D', cls: 'bg-rose-600 text-white border-transparent' },
@@ -393,9 +395,15 @@ const TOOLS: { t: Tool; lbl: string; phim: string; cls: string }[] = [
   { t: 'cn', lbl: '▭ Khung', phim: 'R', cls: 'bg-rose-600 text-white border-transparent' },
   { t: 'text', lbl: 'Aa Chữ', phim: 'T', cls: 'bg-slate-700 text-white border-transparent' },
 ]
-const PHIM_TOOL: Record<string, Tool> = { b: 'but', e: 'tay', d: 'D', s: 'S', o: 'tron', r: 'cn', t: 'text' }
+const PHIM_TOOL: Record<string, Tool> = { h: 'xem', b: 'but', e: 'tay', d: 'D', s: 'S', o: 'tron', r: 'cn', t: 'text' }
 const CO_LIST: Co[] = [14, 16, 18, 20, 22, 24, 26, 28, 32, 36, 40, 48, 56, 64, 72]
 const pxChu = (co: Co, W: number) => Math.round(co * (W / 800))
+// TOÀN MÀN (Dương 25/09 — điện thoại dọc chỉ thấy 1 dải ảnh, không kéo/phóng được): chạm ảnh ⇒ mở toàn màn, bộ tool
+// ở trên, ảnh vừa khung; phóng = chụm 2 ngón / nút －＋ / lăn chuột, tự viết vì ta.html khoá pinch (user-scalable=no).
+// Phóng bằng CSS transform lên khối ảnh ⇒ toaDo() đọc rect đã biến đổi nên nét vẫn rơi đúng chỗ.
+const PHONG_MIN = 1, PHONG_MAX = 6
+type Vp = { s: number; x: number; y: number } // phóng + dời (px khung) khi toàn màn
+const VP0: Vp = { s: 1, x: 0, y: 0 }
 
 // Lưu ảnh HS nộp về máy (CEO 25/09) — TẢI ẢNH GỐC (anh.path), không phải bản đã chấm.
 // Đặt tên an toàn Windows/macOS: bỏ dấu tiếng Việt + ký tự lạ.
@@ -429,6 +437,15 @@ function VeAnh({ ten, anhDs, urls, reloadNop, daTra }: { ten: string; anhDs: Btv
   const [localUrls, setLocalUrls] = useState<Record<string, string>>(urls)
   const [idx, setIdx] = useState(0)
   const [tool, setTool] = useState<Tool>('but')
+  const [full, setFull] = useState(false)
+  const [vp, setVp] = useState<Vp>(VP0)
+  const vpRef = useRef<Vp>(VP0)
+  vpRef.current = vp
+  const khungRef = useRef<HTMLDivElement>(null) // khung nhìn toàn màn (nhận mọi chạm)
+  const [khung, setKhung] = useState({ w: 0, h: 0 })
+  const ptrs = useRef(new Map<number, { x: number; y: number; pen: boolean }>())
+  // cử chỉ đang chạy: kéo 1 ngón · chụm 2 ngón · 'bo' = vừa chụm xong còn 1 ngón trên kính → bỏ tới khi nhấc hết
+  const cu = useRef<null | { kieu: 'keo'; x0: number; y0: number; v0: Vp } | { kieu: 'chum'; d0: number; mx: number; my: number; v0: Vp } | { kieu: 'bo' }>(null)
   const [mau, setMau] = useState<string>(DO)
   const [co, setCo] = useState<Co>(24)
   const [ready, setReady] = useState(false)
@@ -451,13 +468,7 @@ function VeAnh({ ten, anhDs, urls, reloadNop, daTra }: { ten: string; anhDs: Btv
   const xoayRef = useRef<Record<string, Xoay>>({}) // góc xoay CHƯA LƯU theo trang (như nháp nét)
   const marksRef = useRef<Record<string, Mark[]>>({}) // nháp theo TRANG (key = anh.id)
   const drawing = useRef(false)
-  // Cuộn ảnh bằng 2 NGÓN (canvas touch-none chặn hết cử chỉ pan gốc của trình duyệt — không làm thế thì
-  // 1 ngón kéo cũng bị hiểu thành vẽ, TA phản ánh "ảnh bị fix cứng, không kéo lên xuống được", 25/09).
-  // Quy ước như Apple Notes/GoodNotes: 1 ngón hoặc bút = vẽ, 2 ngón = cuộn — không cần đổi tool.
-  const pointersRef = useRef<Map<number, { x: number; y: number }>>(new Map())
-  const panRef = useRef<{ cx: number; cy: number; scrollTop: number; scrollLeft: number } | null>(null)
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const toolRef = useRef<Tool>('but')
+  const toolRef = useRef<Tool>(tool)
   toolRef.current = tool
   const mauRef = useRef(DO)
   mauRef.current = mau
@@ -501,8 +512,92 @@ function VeAnh({ ten, anhDs, urls, reloadNop, daTra }: { ten: string; anhDs: Btv
     if (!nen || !bg) return
     bg.width = nen.w; bg.height = nen.h
     bg.getContext('2d')!.drawImage(nen.el, 0, 0)
+    setVp(VP0) // đổi trang / xoay ⇒ về vừa khung
     setReady(true); paint()
   }, [nen]) // eslint-disable-line
+
+  // ── TOÀN MÀN: đo khung, ảnh vừa khung ở s=1, phóng/dời bằng transform ──
+  useEffect(() => {
+    const el = khungRef.current
+    if (!full || !el) return
+    const ro = new ResizeObserver(() => setKhung({ w: el.clientWidth, h: el.clientHeight }))
+    ro.observe(el)
+    // lăn chuột = phóng quanh con trỏ (laptop). Listener native vì React gắn wheel passive — không preventDefault được.
+    const lan = (e: WheelEvent) => {
+      e.preventDefault()
+      const r = el.getBoundingClientRect()
+      phongTai(vpRef.current.s * (e.deltaY < 0 ? 1.15 : 1 / 1.15), e.clientX - r.left, e.clientY - r.top)
+    }
+    el.addEventListener('wheel', lan, { passive: false })
+    return () => { ro.disconnect(); el.removeEventListener('wheel', lan) }
+  }, [full]) // eslint-disable-line
+  const vua = (() => {
+    if (!nen || !khung.w || !khung.h) return { w: 0, h: 0, ox: 0, oy: 0 }
+    const w = Math.min(khung.w, (khung.h * nen.w) / nen.h), h = (w * nen.h) / nen.w
+    return { w, h, ox: (khung.w - w) / 2, oy: (khung.h - h) / 2 }
+  })()
+  const vuaRef = useRef(vua)
+  vuaRef.current = vua
+  // Phóng tới mức s, giữ nguyên điểm ảnh đang nằm dưới (px, py) của khung. Đọc qua REF — listener lăn chuột đăng ký 1 lần.
+  function phongTai(s: number, px: number, py: number) {
+    s = Math.min(PHONG_MAX, Math.max(PHONG_MIN, s))
+    if (s <= PHONG_MIN + 0.001) { setVp(VP0); return }
+    const v = vpRef.current, f = vuaRef.current
+    const cx = (px - f.ox - v.x) / v.s, cy = (py - f.oy - v.y) / v.s
+    setVp({ s, x: px - f.ox - cx * s, y: py - f.oy - cy * s })
+  }
+  const phongGiua = (k: number) => { const el = khungRef.current; if (el) phongTai(vpRef.current.s * k, el.clientWidth / 2, el.clientHeight / 2) }
+  function diemKhung(e: React.PointerEvent) {
+    const r = khungRef.current!.getBoundingClientRect()
+    return { x: e.clientX - r.left, y: e.clientY - r.top, pen: e.pointerType === 'pen' }
+  }
+  function haiNgon() {
+    const [a, b] = [...ptrs.current.values()]
+    return { d: Math.hypot(a.x - b.x, a.y - b.y) || 1, mx: (a.x + b.x) / 2, my: (a.y + b.y) / 2 }
+  }
+  function kDown(e: React.PointerEvent) {
+    if (!ready || (e.target as HTMLElement).tagName === 'INPUT') return // chạm trong ô nhập chữ ≠ chạm ảnh
+    // iPad: bút đang trên kính thì bỏ qua lòng bàn tay (touch) — không cho nó thành ngón thứ 2 chụm
+    if (e.pointerType === 'touch' && [...ptrs.current.values()].some((p) => p.pen)) return
+    ptrs.current.set(e.pointerId, diemKhung(e))
+    try { khungRef.current!.setPointerCapture(e.pointerId) } catch { /* pointer đã nhấc */ }
+    if (ptrs.current.size === 2) {
+      // ngón thứ 2 ⇒ chụm; nét ngón 1 vừa bắt đầu là chạm nhầm ⇒ bỏ
+      if (drawing.current) { drawing.current = false; marks().pop(); paint(); setTick((n) => n + 1) }
+      const g = haiNgon()
+      cu.current = { kieu: 'chum', d0: g.d, mx: g.mx, my: g.my, v0: vpRef.current }
+      return
+    }
+    if (ptrs.current.size > 2 || cu.current?.kieu === 'bo') return
+    const p = ptrs.current.get(e.pointerId)!
+    if (toolRef.current === 'xem') { cu.current = { kieu: 'keo', x0: p.x, y0: p.y, v0: vpRef.current }; return }
+    cu.current = null
+    down(e)
+  }
+  function kMove(e: React.PointerEvent) {
+    if (!ptrs.current.has(e.pointerId)) return
+    const p = diemKhung(e)
+    ptrs.current.set(e.pointerId, p)
+    const c = cu.current
+    if (c?.kieu === 'chum' && ptrs.current.size >= 2) {
+      const g = haiNgon()
+      const s = Math.min(PHONG_MAX, Math.max(PHONG_MIN, (c.v0.s * g.d) / c.d0))
+      if (s <= PHONG_MIN + 0.001) { setVp(VP0); return }
+      // điểm ảnh dưới tâm 2 ngón lúc bắt đầu đi theo tâm 2 ngón hiện tại (chụm + dời cùng lúc)
+      const cx = (c.mx - vua.ox - c.v0.x) / c.v0.s, cy = (c.my - vua.oy - c.v0.y) / c.v0.s
+      setVp({ s, x: g.mx - vua.ox - cx * s, y: g.my - vua.oy - cy * s })
+    } else if (c?.kieu === 'keo') {
+      if (c.v0.s > PHONG_MIN) setVp({ s: c.v0.s, x: c.v0.x + p.x - c.x0, y: c.v0.y + p.y - c.y0 })
+    } else if (!c) move(e)
+  }
+  function kUp(e: React.PointerEvent) {
+    if (!ptrs.current.delete(e.pointerId)) return
+    if (drawing.current) up()
+    if (cu.current?.kieu === 'chum') cu.current = { kieu: 'bo' }
+    if (!ptrs.current.size) cu.current = null
+  }
+  function moFull() { if (ready) { setVp(VP0); setFull(true) } }
+  function dongFull() { setNhap(null); setFull(false); ptrs.current.clear(); cu.current = null; drawing.current = false }
 
   // Xoay 90° trang hiện tại: nền dựng lại + nét CHƯA LƯU xoay theo (toạ độ khung cũ W×H → khung mới H×W).
   function xoay90(chieu: 1 | -1) {
@@ -532,6 +627,9 @@ function VeAnh({ ten, anhDs, urls, reloadNop, daTra }: { ten: string; anhDs: Btv
       if (e.key === ']') { xoay90(1); return }
       const m = MAUS.find((x) => x.phim === e.key)
       if (m) { setMau(m.v); if (toolRef.current !== 'text') setTool('but'); return }
+      if (e.key === 'Escape') { dongFull(); return }
+      if (e.key === '+' || e.key === '=') { phongGiua(1.25); return }
+      if (e.key === '-') { phongGiua(1 / 1.25); return }
       const t = PHIM_TOOL[e.key.toLowerCase()]
       if (t) { setTool(t); setNhap(null) }
     }
@@ -586,19 +684,7 @@ function VeAnh({ ten, anhDs, urls, reloadNop, daTra }: { ten: string; anhDs: Btv
     return { x: px * cv.width, y: py * cv.height, px, py }
   }
   function down(e: React.PointerEvent) {
-    pointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY })
-    if (pointersRef.current.size >= 2) {
-      // Ngón thứ 2 chạm xuống = chuyển sang CUỘN — huỷ nét/hình 1 ngón vừa bắt đầu dở (đang kéo mà thêm
-      // ngón thì không phải ý định vẽ), đóng ô nhập chữ nếu có.
-      if (drawing.current) { drawing.current = false; marks().pop(); paint() }
-      setNhap(null)
-      ;(e.target as Element).setPointerCapture(e.pointerId)
-      const [p1, p2] = [...pointersRef.current.values()]
-      const sc = scrollRef.current
-      panRef.current = { cx: (p1.x + p2.x) / 2, cy: (p1.y + p2.y) / 2, scrollTop: sc?.scrollTop ?? 0, scrollLeft: sc?.scrollLeft ?? 0 }
-      return
-    }
-    if (!ready) return
+    if (!ready || toolRef.current === 'xem') return
     if (nhap) { setNhap(null); return } // đang có ô nhập → chạm ngoài = huỷ
     const p = toaDo(e)
     const t = toolRef.current
@@ -608,27 +694,16 @@ function VeAnh({ ten, anhDs, urls, reloadNop, daTra }: { ten: string; anhDs: Btv
     drawing.current = true
     if (t === 'tron' || t === 'cn') marks().push({ k: 'hinh', loai: t, x1: p.x, y1: p.y, x2: p.x, y2: p.y })
     else marks().push({ k: 'net', mau: mauRef.current, tay: t === 'tay', pts: [p] })
-    ;(e.target as Element).setPointerCapture(e.pointerId)
     paint()
   }
   function move(e: React.PointerEvent) {
-    if (pointersRef.current.has(e.pointerId)) pointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY })
-    if (panRef.current && pointersRef.current.size >= 2) {
-      const [p1, p2] = [...pointersRef.current.values()]
-      const cx = (p1.x + p2.x) / 2, cy = (p1.y + p2.y) / 2
-      const sc = scrollRef.current
-      if (sc) { sc.scrollTop = panRef.current.scrollTop - (cy - panRef.current.cy); sc.scrollLeft = panRef.current.scrollLeft - (cx - panRef.current.cx) }
-      return
-    }
     if (!drawing.current) return
     const ms = marks(); const m = ms[ms.length - 1]; const p = toaDo(e)
     if (m?.k === 'net') m.pts.push(p)
     else if (m?.k === 'hinh') { m.x2 = p.x; m.y2 = p.y }
     paint()
   }
-  function up(e: React.PointerEvent) {
-    pointersRef.current.delete(e.pointerId)
-    if (pointersRef.current.size < 2) panRef.current = null
+  function up() {
     if (!drawing.current) return
     drawing.current = false
     const ms = marks(); const m = ms[ms.length - 1]
@@ -664,22 +739,29 @@ function VeAnh({ ten, anhDs, urls, reloadNop, daTra }: { ten: string; anhDs: Btv
     } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
   }
 
-  const soNet = marks().length
-  const chuaLuu = (id: string) => (marksRef.current[id]?.length ?? 0) > 0
-  // "Làm lại trang": bỏ bản chấm đã lưu (nét đã ghép vào ảnh không hoàn tác được) → về ảnh gốc PH nộp.
-  async function lamLai() {
-    if (!anh?.path_cham || busy) return
-    if (!confirm('Bỏ bản chấm của trang này và quay về ảnh gốc? Nét đã vẽ trên trang này sẽ mất.')) return
-    setBusy(true)
+  // Tải trang đang xem VỀ MÁY (nền đã xoay + nét đang có, kể cả chưa lưu). iPhone: share sheet ⇒ "Lưu hình ảnh";
+  // máy khác: tải file. Không ghi gì vào hệ thống.
+  async function taiVe() {
+    const cv = canvasRef.current, n = nenRef.current
+    if (!cv || !n) return
     try {
-      await boAnhCham(anh.id)
-      marksRef.current[anh.id] = []
-      xoayRef.current[anh.id] = 0
-      setAnhs((cur) => cur.map((a) => (a.id === anh.id ? { ...a, path_cham: null } : a)))
-      setNhap(null); setTick((n) => n + 1)
-      reloadNop().catch(() => {})
-    } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
+      const out = document.createElement('canvas')
+      out.width = n.w; out.height = n.h
+      const ctx = out.getContext('2d')!
+      ctx.drawImage(n.el, 0, 0); ctx.drawImage(cv, 0, 0)
+      const blob = await new Promise<Blob>((res, rej) => out.toBlob((b) => (b ? res(b) : rej(new Error('Không xuất được ảnh'))), 'image/jpeg', 0.9))
+      const file = new File([blob], `${tenSlug}-trang${idx + 1}.jpg`, { type: 'image/jpeg' })
+      if (navigator.canShare?.({ files: [file] })) {
+        try { await navigator.share({ files: [file] }) } catch { /* người dùng đóng share sheet */ }
+        return
+      }
+      const u = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = u; a.download = file.name; document.body.appendChild(a); a.click(); a.remove()
+      setTimeout(() => URL.revokeObjectURL(u), 5000)
+    } catch (e: any) { alert(e.message ?? String(e)) }
   }
+
   // Lưu ảnh HS nộp về máy — LUÔN là ảnh GỐC (anh.path có URL riêng trong localUrls dù đã chấm), không
   // phải bản đánh dấu. Từng cái tải thẳng; ≥2 ảnh gộp ZIP để né trình duyệt chặn tải-nhiều-file.
   async function taiTrangNay() {
@@ -699,13 +781,35 @@ function VeAnh({ ten, anhDs, urls, reloadNop, daTra }: { ten: string; anhDs: Btv
       await taiNhieuAnhZip(items, `${tenSlug}_BTVN.zip`)
     } catch (e: any) { alert(e.message ?? String(e)) } finally { setTaiBusy(false) }
   }
-  const conTro = tool === 'text' || tool === 'D' || tool === 'S' ? 'cursor-cell' : 'cursor-crosshair'
+
+  const soNet = marks().length
+  const chuaLuu = (id: string) => (marksRef.current[id]?.length ?? 0) > 0
+  // "Làm lại trang": bỏ bản chấm đã lưu (nét đã ghép vào ảnh không hoàn tác được) → về ảnh gốc PH nộp.
+  async function lamLai() {
+    if (!anh?.path_cham || busy) return
+    if (!confirm('Bỏ bản chấm của trang này và quay về ảnh gốc? Nét đã vẽ trên trang này sẽ mất.')) return
+    setBusy(true)
+    try {
+      await boAnhCham(anh.id)
+      marksRef.current[anh.id] = []
+      xoayRef.current[anh.id] = 0
+      setAnhs((cur) => cur.map((a) => (a.id === anh.id ? { ...a, path_cham: null } : a)))
+      setNhap(null); setTick((n) => n + 1)
+      reloadNop().catch(() => {})
+    } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
+  }
+  const conTro = tool === 'xem' ? 'cursor-grab' : tool === 'text' || tool === 'D' || tool === 'S' ? 'cursor-cell' : 'cursor-crosshair'
+  // CÙNG 1 cây DOM cho 2 chế độ (chỉ đổi class/style) — canvas không bị unmount nên nền + nét giữ nguyên khi vào/ra toàn màn.
   return (
-    <div className="flex min-h-0 flex-1 flex-col">
+    <div className={full ? 'fixed inset-0 z-[80] flex flex-col bg-slate-900' : 'flex min-h-0 flex-1 flex-col'}
+      style={full ? { paddingTop: 'env(safe-area-inset-top)', paddingBottom: 'env(safe-area-inset-bottom)' } : undefined}>
+      {full && (
+      <>
       {/* Dòng 1 — CUỘN NGANG trên màn hẹp (điện thoại): trước đây flex-wrap bung tới 3 dòng, ăn hết
-          chỗ của ảnh trên portrait (CEO 25/09: "ảnh đang chiếm ít diện tích quá"). Chỉ 1 dòng cố định
-          + shrink-0 từng nút để scroll ngang thay vì bị bóp chữ. */}
+          chỗ của ảnh trên toàn màn. Chỉ 1 dòng cố định + shrink-0 từng nút để scroll ngang thay vì bị bóp chữ. */}
       <div className="flex items-center gap-1.5 overflow-x-auto border-b border-slate-200 bg-white px-2 py-1.5">
+        <button onClick={dongFull} title="Thoát toàn màn (Esc)" className="min-h-[36px] shrink-0 rounded-lg border border-slate-300 px-2.5 text-[12.5px] font-bold text-slate-700 active:bg-slate-100">✕ Thu nhỏ</button>
+        <span className="mx-0.5 h-6 w-px shrink-0 bg-slate-200" />
         {MAUS.map((m) => (
           <button key={m.v} onClick={() => { setMau(m.v); if (tool !== 'text') setTool('but') }} title={`${m.lbl} (phím ${m.phim})`} aria-label={`Màu ${m.lbl}`}
             className={`h-9 w-9 shrink-0 rounded-full border-2 ${m.cls} ${mau === m.v ? 'border-slate-900 ring-2 ring-slate-300' : 'border-white'}`} />
@@ -724,6 +828,10 @@ function VeAnh({ ten, anhDs, urls, reloadNop, daTra }: { ten: string; anhDs: Btv
         </label>
         <button onClick={() => xoay90(-1)} disabled={!ready || busy} title="Xoay trái 90° (phím [)" aria-label="Xoay trái" className="min-h-[36px] min-w-[40px] shrink-0 rounded-lg border border-slate-200 px-2 text-[15px] font-bold text-slate-600 disabled:opacity-30">⟲</button>
         <button onClick={() => xoay90(1)} disabled={!ready || busy} title="Xoay phải 90° (phím ])" aria-label="Xoay phải" className="min-h-[36px] min-w-[40px] shrink-0 rounded-lg border border-slate-200 px-2 text-[15px] font-bold text-slate-600 disabled:opacity-30">⟳</button>
+        <button onClick={() => phongGiua(1 / 1.25)} disabled={vp.s <= PHONG_MIN} title="Thu nhỏ (phím -, hoặc chụm 2 ngón)" aria-label="Thu nhỏ" className="min-h-[36px] min-w-[40px] shrink-0 rounded-lg border border-slate-200 px-2 text-[14px] font-bold text-slate-600 disabled:opacity-30">－</button>
+        <button onClick={() => setVp(VP0)} title="Vừa màn" className="min-h-[36px] min-w-[46px] shrink-0 rounded-lg border border-slate-200 px-1 text-[11.5px] font-semibold text-slate-500">{Math.round(vp.s * 100)}%</button>
+        <button onClick={() => phongGiua(1.25)} disabled={vp.s >= PHONG_MAX} title="Phóng to (phím +, hoặc chụm 2 ngón)" aria-label="Phóng to" className="min-h-[36px] min-w-[40px] shrink-0 rounded-lg border border-slate-200 px-2 text-[14px] font-bold text-slate-600 disabled:opacity-30">＋</button>
+        <button onClick={taiVe} disabled={!ready} title="Tải trang này (đã đánh dấu) về máy" className="min-h-[36px] shrink-0 rounded-lg border border-slate-200 px-2.5 text-[12.5px] font-semibold text-slate-600 disabled:opacity-30">⬇ Tải về</button>
         <button onClick={undo} disabled={!soNet} title="Ctrl+Z" className="min-h-[36px] shrink-0 rounded-lg border border-slate-200 px-2.5 text-[12.5px] font-semibold text-slate-600 disabled:opacity-30">↩ Hoàn tác</button>
         {anh?.path_cham && !daTra && (
           <button onClick={lamLai} disabled={busy} title="Bỏ bản chấm đã lưu của trang này, quay về ảnh gốc"
@@ -742,16 +850,24 @@ function VeAnh({ ten, anhDs, urls, reloadNop, daTra }: { ten: string; anhDs: Btv
           className={`ml-auto min-h-[36px] rounded-lg px-3.5 text-[12.5px] font-bold text-white active:bg-teal-500 ${daLuu ? 'bg-emerald-600 disabled:opacity-100' : 'bg-teal-600 disabled:opacity-40'}`}>
           {busy ? 'Đang lưu…' : daLuu ? '✓ Đã lưu trang' : '💾 Lưu trang này'}</button>
       </div>
+      </>
+      )}
 
-      {src && nen && <p className="border-b border-slate-200 bg-slate-50 py-1 text-center text-[10.5px] text-slate-400">✌️ 2 ngón kéo để cuộn ảnh · 1 ngón/bút để vẽ</p>}
-      <div ref={scrollRef} className="min-h-0 flex-1 overflow-auto bg-slate-800 p-2">
+      {/* Khung ảnh. Thường: xem trước, chạm = mở toàn màn. Toàn màn: nhận mọi chạm (vẽ / kéo / chụm), ảnh vừa khung ở 100%. */}
+      <div ref={khungRef} onPointerDown={full ? kDown : undefined} onPointerMove={full ? kMove : undefined}
+        onPointerUp={full ? kUp : undefined} onPointerCancel={full ? kUp : undefined}
+        className={full ? `relative min-h-0 flex-1 touch-none select-none overflow-hidden ${conTro}` : 'relative min-h-0 flex-1 overflow-auto bg-slate-800 p-2'}>
         {!src && <p className="p-6 text-center text-[13px] text-white/60">Không có URL ảnh (thử mở lại tab BTVN).</p>}
         {src && (
-          <div className="relative mx-auto w-full max-w-[1100px]">
+          <div onClick={full ? undefined : moFull}
+            className={full ? 'absolute left-0 top-0' : `relative mx-auto w-full max-w-[1100px] ${ready ? 'cursor-zoom-in' : ''}`}
+            style={full ? { width: vua.w, height: vua.h, transformOrigin: '0 0', transform: `translate(${vua.ox + vp.x}px, ${vua.oy + vp.y}px) scale(${vp.s})` } : undefined}>
             {!nen && <p className="p-6 text-center text-[13px] text-white/60">Đang tải ảnh…</p>}
-            <canvas ref={bgRef} className={`block h-auto w-full select-none rounded-lg ${nen ? '' : 'hidden'}`} />
-            <canvas ref={canvasRef} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up}
-              className={`absolute inset-0 h-full w-full touch-none select-none rounded-lg ${conTro}`} data-tick={tick} />
+            <canvas ref={bgRef} className={`block w-full select-none ${full ? 'h-full' : 'h-auto rounded-lg'} ${nen ? '' : 'hidden'}`} />
+            <canvas ref={canvasRef} className={`pointer-events-none absolute inset-0 h-full w-full select-none ${full ? '' : 'rounded-lg'}`} data-tick={tick} />
+            {!full && ready && (
+              <span className="pointer-events-none absolute right-2 top-2 rounded-lg bg-slate-900/75 px-2.5 py-1.5 text-[12px] font-bold text-white shadow">⤢ Chạm để chấm</span>
+            )}
             {nhap && (
               <input autoFocus ref={(el) => { if (el && document.activeElement !== el) setTimeout(() => el.focus(), 0) }}
                 value={nhapText} onChange={(e) => setNhapText(e.target.value)}
