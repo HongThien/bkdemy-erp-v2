@@ -54,20 +54,18 @@
   .mole{position:absolute;left:50%;bottom:14%;width:min(22vh,150px);height:min(24vh,165px);margin-left:calc(min(22vh,150px)/-2);transform:translateY(120%);transition:transform .14s cubic-bezier(.2,1.3,.4,1);will-change:transform}
   .mole.up{transform:translateY(0)}
   .mole.hit{transition:transform .12s;transform:translateY(20%) scale(1.25,.55)}
-  .mole .body{position:absolute;inset:0;border-radius:50% 50% 34% 34%/55% 55% 30% 30%;background:linear-gradient(180deg,#b07a4a,#7a4f28);box-shadow:inset -8px -10px 0 rgba(0,0,0,.18),0 6px 14px rgba(0,0,0,.4)}
-  .mole .ear{position:absolute;top:2%;width:26%;height:26%;border-radius:50%;background:#b07a4a;box-shadow:inset 0 0 0 6px #d9a07a}
-  .mole .ear.l{left:4%}.mole .ear.r{right:4%}
-  .mole .eye{position:absolute;top:34%;width:12%;height:14%;border-radius:50%;background:#111}
-  .mole .eye.l{left:28%}.mole .eye.r{right:28%}
-  .mole .eye::after{content:"";position:absolute;left:25%;top:15%;width:40%;height:40%;border-radius:50%;background:#fff}
-  .mole .nose{position:absolute;top:50%;left:50%;width:18%;height:12%;margin-left:-9%;border-radius:50%;background:#ff8aa8}
-  .mole .mouth{position:absolute;top:62%;left:50%;width:22%;height:10%;margin-left:-11%;border-radius:0 0 30px 30px;border:3px solid #3a1a08;border-top:none}
+  /* Chuột SVG (Thùy 25/09 "đưa hình con chuột vào") — màu lông theo loại qua biến CSS, bom là quả bom thật */
+  /* mép trước của hang vẽ ĐÈ lên chuột → chuột như chui ra từ trong hang */
+  .hole::after{content:"";position:absolute;left:12%;right:12%;bottom:8%;height:13%;border-radius:0 0 50% 50%/0 0 100% 100%;background:linear-gradient(180deg,#1a1006,#3d2a14);box-shadow:0 3px 0 #4a3318;z-index:2;pointer-events:none}
+  .hole .mole{bottom:12%}
+  .mole{--fur:#b08463;--fur2:#8a5f40;--muz:#f3dcc6;--ear:#ffb0c0;--glow:transparent}
+  .mole .mz{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 6px 8px rgba(0,0,0,.45)) drop-shadow(0 0 16px var(--glow))}
+  .mole .uB{display:none} .mole.bomb .uM{display:none} .mole.bomb .uB{display:inline}
   .mole .badge{position:absolute;top:-18%;left:50%;transform:translateX(-50%);font-size:min(7vh,46px);filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
-  .mole.fast .body{background:linear-gradient(180deg,#7cc4ff,#2e6fc9)}.mole.fast .ear{background:#7cc4ff;box-shadow:inset 0 0 0 6px #bfe2ff}
-  .mole.gold .body{background:linear-gradient(180deg,#ffe27a,#e0a000);box-shadow:inset -8px -10px 0 rgba(0,0,0,.12),0 0 26px rgba(255,209,102,.7)}.mole.gold .ear{background:#ffe27a;box-shadow:inset 0 0 0 6px #fff1b8}
-  .mole.bomb .body{background:linear-gradient(180deg,#5a5a66,#1b1b22);box-shadow:inset -8px -10px 0 rgba(0,0,0,.3),0 0 26px rgba(255,80,80,.55)}.mole.bomb .ear{background:#5a5a66;box-shadow:inset 0 0 0 6px #8a8a96}
-  .mole.bomb .eye{background:#ff3b3b}.mole.bomb .eye::after{display:none}.mole.bomb .mouth{border-radius:30px 30px 0 0;border:3px solid #ff3b3b;border-bottom:none;top:66%}
-  .mole.gift .body{background:linear-gradient(180deg,#ff9ad6,#c93a95);box-shadow:inset -8px -10px 0 rgba(0,0,0,.12),0 0 30px rgba(255,123,209,.8)}.mole.gift .ear{background:#ff9ad6;box-shadow:inset 0 0 0 6px #ffd0ec}
+  .mole.fast{--fur:#7fb4ee;--fur2:#3f74c4;--muz:#dcecff;--ear:#c4dcff}
+  .mole.gold{--fur:#ffd84d;--fur2:#d99a00;--muz:#fff3c4;--ear:#ffe9a6;--glow:rgba(255,209,102,.85)}
+  .mole.gift{--fur:#ff9ad6;--fur2:#c93a95;--muz:#ffe0f2;--ear:#ffd0ec;--glow:rgba(255,123,209,.85)}
+  .mole.bomb{--glow:rgba(255,70,70,.6)} .mole.bomb .badge{display:none}
   .float{position:absolute;left:50%;top:30%;transform:translateX(-50%);font-size:min(6vh,42px);font-weight:900;pointer-events:none;animation:fl .7s ease-out forwards;text-shadow:0 2px 8px rgba(0,0,0,.7)}
   .float.neg{color:var(--red)} .float.pos{color:var(--gold)}
   @keyframes fl{to{transform:translate(-50%,-90px);opacity:0}}
@@ -137,6 +135,34 @@
 </head>
 <body>
 <canvas id="confetti"></canvas>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="sMouse" viewBox="0 0 120 130">
+    <ellipse cx="60" cy="122" rx="36" ry="24" style="fill:var(--fur2)"/>
+    <circle cx="27" cy="34" r="23" style="fill:var(--fur)"/><circle cx="93" cy="34" r="23" style="fill:var(--fur)"/>
+    <circle cx="29" cy="36" r="14" style="fill:var(--ear)"/><circle cx="91" cy="36" r="14" style="fill:var(--ear)"/>
+    <ellipse cx="60" cy="72" rx="42" ry="38" style="fill:var(--fur)"/>
+    <ellipse cx="46" cy="52" rx="14" ry="9" fill="#fff" opacity=".22"/>
+    <ellipse cx="60" cy="90" rx="23" ry="16" style="fill:var(--muz)"/>
+    <ellipse cx="44" cy="66" rx="7.5" ry="9.5" fill="#1d1a22"/><ellipse cx="76" cy="66" rx="7.5" ry="9.5" fill="#1d1a22"/>
+    <circle cx="46.5" cy="62.5" r="3" fill="#fff"/><circle cx="78.5" cy="62.5" r="3" fill="#fff"/>
+    <circle cx="33" cy="82" r="6" fill="#ff7fa0" opacity=".45"/><circle cx="87" cy="82" r="6" fill="#ff7fa0" opacity=".45"/>
+    <g stroke="#4a3426" stroke-width="1.6" stroke-linecap="round" opacity=".8"><path d="M42 86 L14 80"/><path d="M42 90 L13 92"/><path d="M78 86 L106 80"/><path d="M78 90 L107 92"/></g>
+    <ellipse cx="60" cy="82" rx="6.5" ry="5" fill="#ff5f86"/>
+    <path d="M52 92 Q60 99 68 92" fill="none" stroke="#4a3426" stroke-width="2" stroke-linecap="round"/>
+    <rect x="56" y="94" width="8" height="7" rx="1.5" fill="#fff" stroke="#c9b9a8" stroke-width="1"/>
+    <ellipse cx="36" cy="112" rx="11" ry="8" style="fill:var(--fur)"/><ellipse cx="84" cy="112" rx="11" ry="8" style="fill:var(--fur)"/>
+  </symbol>
+  <symbol id="sBomb" viewBox="0 0 120 130">
+    <path d="M78 38 Q92 22 104 26" fill="none" stroke="#7a5a3a" stroke-width="5" stroke-linecap="round"/>
+    <g transform="translate(106 24)"><path d="M0 -12 L3 -3 L12 0 L3 3 L0 12 L-3 3 L-12 0 L-3 -3 Z" fill="#ffcc33"/><circle r="4" fill="#fff4b0"/></g>
+    <rect x="66" y="34" width="18" height="14" rx="3" transform="rotate(40 75 41)" fill="#4a4a55"/>
+    <circle cx="58" cy="80" r="42" fill="#26262e"/>
+    <ellipse cx="44" cy="62" rx="12" ry="8" fill="#fff" opacity=".18" transform="rotate(-30 44 62)"/>
+    <path d="M40 76 L52 82 M80 76 L68 82" stroke="#ff4545" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="46" cy="88" rx="5" ry="6" fill="#ff4545"/><ellipse cx="70" cy="88" rx="5" ry="6" fill="#ff4545"/>
+    <path d="M48 104 Q58 98 68 104" fill="none" stroke="#ff4545" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+</defs></svg>
 
 <!-- ===== ROLE SELECT ===== -->
 <div class="screen" id="roleScr">
@@ -346,7 +372,7 @@ $('slotOk').onclick=()=>{C.role='player';C.slot=pickSlot;saveC();boot()};
 // ================= PLAYER =================
 const P={name:'',ready:false,score:0,combo:0,maxCombo:0,token:false,playing:false,sched:null,perm:null,t0:0,idx:0,active:{},timers:[],dur:60,pts:DEF.pts,practice:false,matchId:null,lastPush:0,fin:false};
 function pShow(id){['pLobby','pGame','pResult'].forEach(s=>$(s).classList.toggle('show',s===id));$('pTop').style.display=id==='pGame'?'none':'flex'}
-function buildGrid(){$('grid').innerHTML=[...Array(9)].map((_,h)=>`<div class="hole" data-h="${h}"><div class="dirt"></div><div class="mole" id="m${h}"><div class="body"></div><div class="ear l"></div><div class="ear r"></div><div class="eye l"></div><div class="eye r"></div><div class="nose"></div><div class="mouth"></div><div class="badge"></div></div></div>`).join('');
+function buildGrid(){$('grid').innerHTML=[...Array(9)].map((_,h)=>`<div class="hole" data-h="${h}"><div class="dirt"></div><div class="mole" id="m${h}"><svg class="mz" viewBox="0 0 120 130" preserveAspectRatio="xMidYMax meet"><use class="uM" href="#sMouse"/><use class="uB" href="#sBomb"/></svg><div class="badge"></div></div></div>`).join('');
   $('grid').querySelectorAll('.hole').forEach(el=>el.addEventListener('pointerdown',e=>{e.preventDefault();tap(+el.dataset.h)}))}
 function hud(){$('hScore').textContent=P.score;$('hCombo').textContent=P.combo>=3?'🔥 '+P.combo:'';$('hCombo').classList.toggle('hot',P.combo>=10)}
 function floatTxt(h,txt,neg){const f=document.createElement('div');f.className='float '+(neg?'neg':'pos');f.textContent=txt;$('grid').children[h].appendChild(f);setTimeout(()=>f.remove(),700)}
