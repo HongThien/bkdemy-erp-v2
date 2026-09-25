@@ -302,12 +302,12 @@ const $=id=>document.getElementById(id);
 const useTimer=/loop=timer/.test(location.search);const nextFrame=useTimer?(f=>setTimeout(()=>f(performance.now()),16)):(f=>requestAnimationFrame(f));
 const KEY='bk-dapchuot-v1';
 const MAXP=8,SLOTS=Array.from({length:MAXP},(_,i)=>i+1);
-const DEF={role:null,slot:1,room:'BK01',sbUrl:'https://osrvycilwshkzhljuxef.supabase.co',sbKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4',entry:0,prizes:[5,3,2,2,2,2,2,2],dur:25,pts:{normal:1,fast:3,gold:5,bomb:-5,gift:10},den:1};
+const DEF={role:null,slot:1,room:'BK01',sbUrl:'https://osrvycilwshkzhljuxef.supabase.co',sbKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4',entry:0,prizes:[5,3,2,2,2,2,2,2],dur:40,pts:{normal:1,fast:3,gold:5,bomb:-5,gift:10},den:1};
 let C=Object.assign({},DEF);try{Object.assign(C,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
 const q=new URLSearchParams(location.search);if(q.get('role'))C.role=q.get('role');if(q.get('slot'))C.slot=+q.get('slot');if(q.get('room'))C.room=q.get('room');
 function saveC(){localStorage.setItem(KEY,JSON.stringify(C))}
-if(C.prizev!==2){C.prizes=DEF.prizes.slice();C.perfect=DEF.perfect;C.prizev=2;saveC()} // luật thưởng chung iPad (Thùy 25/09): Nhất 5 · Nhì 3 · còn lại 2, KHÔNG thưởng hoàn hảo
-if(C.cfgv!==2){C.dur=25;C.cfgv=2;saveC()}
+if(C.prizev!==3){C.prizes=DEF.prizes.slice();C.perfect=DEF.perfect;C.dur=DEF.dur;C.prizev=3;saveC()} // luật chung iPad (Thùy 25/09): Nhất 5 · Nhì 3 · còn lại 2, KHÔNG thưởng hoàn hảo, 40 giây
+if(C.cfgv!==2){C.dur=DEF.dur;C.cfgv=2;saveC()}
 const TYPES={normal:{ic:'🐹',dur:[900,1200]},fast:{ic:'⚡',dur:[450,620]},gold:{ic:'👑',dur:[650,800]},bomb:{ic:'💣',dur:[800,1000]},gift:{ic:'🎁',dur:[550,700]}};
 const COMBO_BONUS={10:3,20:5,30:10,40:15};
 
@@ -414,7 +414,7 @@ function playerNet(){
     const prev=pState;pState=st;const changed=!prev||prev.phase!==st.phase||prev.matchId!==st.matchId;
     if(st.phase==='lobby'&&changed){if(P.fin){$('pName').value='';P.name='';P.fin=false}P.ready=false;$('pReady').classList.remove('on');$('pReady').textContent='SẴN SÀNG';$('pWait').textContent='';if(!P.playing)pShow('pLobby');P.matchId=null;sendPlayer()}
     if(st.phase==='countdown'&&P.matchId!==st.matchId&&!P.playing){P.matchId=st.matchId;P.name=$('pName').value.trim();
-      const localStart=performance.now()+(st.startAt-serverNow());startGame(st.seed,st.dur||60,st.pts||DEF.pts,false,localStart);sendPlayer()}
+      const localStart=performance.now()+(st.startAt-serverNow());startGame(st.seed,st.dur||40,st.pts||DEF.pts,false,localStart);sendPlayer()}
     if(st.phase==='playing'&&P.matchId!==st.matchId&&!P.playing){$('pWait').textContent='Trận đang diễn ra, chờ trận sau nhé'}
     if(st.phase==='result'&&st.results&&st.results[C.slot]&&P.matchId===st.matchId){const r=st.results[C.slot];if($('rRank').textContent===''){$('rRank').textContent='Hạng '+r.rank+' / '+st.n;$('rXu').textContent='+'+r.xu+' xu';$('rWait').textContent='';if(r.rank===1)confetti(200)}}
     if(st.phase==='abort'&&changed){P.playing=false;P.timers.forEach(clearTimeout);$('cdOverlay').classList.remove('show');pShow('pLobby')}
@@ -425,8 +425,8 @@ async function bootPlayer(){
   const ok=await connectNet();$('pOffline').style.display=ok?'none':'block';$('pReady').style.display=ok?'':'none';$('pHint').textContent=ok?'Nhập tên rồi bấm SẴN SÀNG':'Chưa kết nối TV · chơi theo mã trận';if(ok)playerNet();else setNet(false,'không mạng');
   $('pReady').onclick=()=>{if(!room){return}P.name=$('pName').value.trim();if(!P.name){$('pName').focus();return}P.ready=!P.ready;$('pReady').classList.toggle('on',P.ready);$('pReady').textContent=P.ready?'✅ ĐÃ SẴN SÀNG':'SẴN SÀNG';$('pWait').textContent=P.ready?'Chờ nhân sự bắt đầu trận…':'';sendPlayer();beep(P.ready?880:440,.12,'triangle',.08);$('pName').blur()};
   $('pName').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(room)$('pReady').click();else $('pStartOff').click()}});
-  $('pStartOff').onclick=()=>{let seed=parseInt($('pSeed').value,10);if(isNaN(seed)){seed=Math.floor(Math.random()*9000)+1000;$('pSeed').value=seed}P.name=$('pName').value.trim();P.matchId=seed;startGame(seed,C.dur||60,C.pts,false,performance.now()+3200)};
-  $('pPractice').onclick=()=>{startGame(Math.floor(Math.random()*9999),C.dur||25,C.pts,true,performance.now()+2200)};
+  $('pStartOff').onclick=()=>{let seed=parseInt($('pSeed').value,10);if(isNaN(seed)){seed=Math.floor(Math.random()*9000)+1000;$('pSeed').value=seed}P.name=$('pName').value.trim();P.matchId=seed;startGame(seed,C.dur||40,C.pts,false,performance.now()+3200)};
+  $('pPractice').onclick=()=>{startGame(Math.floor(Math.random()*9999),C.dur||40,C.pts,true,performance.now()+2200)};
   $('pAgain').onclick=()=>{pShow('pLobby');if(room){P.ready=false;$('pReady').classList.remove('on');$('pReady').textContent='SẴN SÀNG';$('pWait').textContent=''}};
   $('pSettings').onclick=openSettings;
   document.addEventListener('gesturestart',e=>e.preventDefault());
@@ -481,7 +481,7 @@ function flashBig(ms){const b=$('tvBig');b.classList.add('show');clearTimeout(b.
 function applyPhaseUI(){const ph=TV.state.phase;$('tvStateLbl').textContent={lobby:'Sảnh chờ',countdown:'Đếm ngược',playing:'Đang chơi',result:'Kết quả'}[ph]||ph;
   $('tvStart').style.display=ph==='lobby'?'':'none';$('tvNew').style.display=(ph==='result'||(ph==='lobby'&&!room))?'':'none';$('tvAbort').style.display=(ph==='playing'||ph==='countdown')?'':'none';
   if(ph==='result'){renderPodium()}else{$('podium').classList.remove('show')}
-  if(ph==='lobby'){TV.lastLead=null;TV.feedSeen={};$('tvTimer').textContent=C.dur||60;$('tvTimer').classList.remove('last')}
+  if(ph==='lobby'){TV.lastLead=null;TV.feedSeen={};$('tvTimer').textContent=C.dur||40;$('tvTimer').classList.remove('last')}
   renderLB()}
 function tvStart(){
   if(!room){alert('Chưa kết nối mạng. Dùng phần "Nhập điểm tay" hoặc kiểm tra Supabase trong Cài đặt.');return}
@@ -489,8 +489,8 @@ function tvStart(){
   const seed=Math.floor(Math.random()*9000)+1000,startAt=serverNow()+4000;const matchId=Date.now();
   TV.lastLead=null;TV.feedSeen={};$('feed').innerHTML='';
   SLOTS.forEach(i=>{if(TV.players[i])Object.assign(TV.players[i],{score:0,combo:0,maxCombo:0,token:false,fin:false})});
-  TV.cur={matchId,seed,startAt,dur:C.dur||60,endAt:startAt+(C.dur||60)*1000,players:ready.map(p=>p.slot)};
-  setState({phase:'countdown',matchId,seed,startAt,dur:C.dur||60,pts:C.pts,entry:C.entry,prizes:C.prizes});
+  TV.cur={matchId,seed,startAt,dur:C.dur||40,endAt:startAt+(C.dur||40)*1000,players:ready.map(p=>p.slot)};
+  setState({phase:'countdown',matchId,seed,startAt,dur:C.dur||40,pts:C.pts,entry:C.entry,prizes:C.prizes});
 }
 function tvLoop(){const st=TV.state,cur=TV.cur;
   if(cur&&(st.phase==='countdown'||st.phase==='playing')){const now=serverNow();
@@ -522,7 +522,7 @@ const dlg=$('dlg'),sum=$('sum');
 function openSettings(){$('cRoom').value=C.room;$('cRole').value=C.role||'tv';$('cSlot').value=C.slot;$('cSbUrl').value=C.sbUrl||'';$('cSbKey').value=C.sbKey||'';$('cEntry').value=C.entry;$('cPrizes').value=(C.prizes||[]).join(',');$('cDur').value=C.dur;$('cPn').value=C.pts.normal;$('cPf').value=C.pts.fast;$('cPg').value=C.pts.gold;$('cPb').value=C.pts.bomb;$('cPq').value=C.pts.gift;$('cDen').value=C.den;$('tvOnly').style.display=C.role==='tv'?'':'none';dlg.showModal()}
 $('dlgCancel').onclick=()=>dlg.close();
 $('dlgSave').onclick=()=>{C.room=$('cRoom').value.trim()||'BK01';C.role=$('cRole').value;C.slot=Math.min(MAXP,Math.max(1,+$('cSlot').value||1));C.sbUrl=$('cSbUrl').value.trim();C.sbKey=$('cSbKey').value.trim();
-  if(C.role==='tv'){C.entry=Math.max(0,+$('cEntry').value||0);C.prizes=$('cPrizes').value.split(',').map(x=>+x.trim()).filter(x=>!isNaN(x));if(!C.prizes.length)C.prizes=DEF.prizes;C.dur=Math.max(10,+$('cDur').value||25);C.pts={normal:+$('cPn').value||1,fast:+$('cPf').value||3,gold:+$('cPg').value||5,bomb:+$('cPb').value||-5,gift:+$('cPq').value||10};C.den=Math.max(.5,Math.min(2,+$('cDen').value||1))}
+  if(C.role==='tv'){C.entry=Math.max(0,+$('cEntry').value||0);C.prizes=$('cPrizes').value.split(',').map(x=>+x.trim()).filter(x=>!isNaN(x));if(!C.prizes.length)C.prizes=DEF.prizes;C.dur=Math.max(10,+$('cDur').value||40);C.pts={normal:+$('cPn').value||1,fast:+$('cPf').value||3,gold:+$('cPg').value||5,bomb:+$('cPb').value||-5,gift:+$('cPq').value||10};C.den=Math.max(.5,Math.min(2,+$('cDen').value||1))}
   saveC();location.reload()};
 $('btnSummary').onclick=openSummary;$('sumClose').onclick=()=>sum.close();
 function openSummary(){let h='';

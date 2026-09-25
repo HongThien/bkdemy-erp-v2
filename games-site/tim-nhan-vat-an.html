@@ -327,7 +327,7 @@ const DEF={role:null,slot:1,room:'BK01',sbUrl:'https://osrvycilwshkzhljuxef.supa
 let C=Object.assign({},DEF);try{Object.assign(C,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
 const q=new URLSearchParams(location.search);if(q.get('role'))C.role=q.get('role');if(q.get('slot'))C.slot=+q.get('slot');if(q.get('room'))C.room=q.get('room');
 function saveC(){localStorage.setItem(KEY,JSON.stringify(C))}
-if(C.prizev!==2){C.prizes=DEF.prizes.slice();C.perfect=DEF.perfect;C.prizev=2;saveC()} // luật thưởng chung iPad (Thùy 25/09): Nhất 5 · Nhì 3 · còn lại 2, KHÔNG thưởng hoàn hảo
+if(C.prizev!==3){C.prizes=DEF.prizes.slice();C.perfect=DEF.perfect;C.dur=DEF.dur;C.prizev=3;saveC()} // luật chung iPad (Thùy 25/09): Nhất 5 · Nhì 3 · còn lại 2, KHÔNG thưởng hoàn hảo, 40 giây
 
 // ---------- sound / confetti ----------
 let AC=null;function beep(f,d,t,v,sl){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.type=t||'triangle';o.frequency.setValueAtTime(f,AC.currentTime);if(sl)o.frequency.exponentialRampToValueAtTime(sl,AC.currentTime+d);g.gain.setValueAtTime(v||.08,AC.currentTime);g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+d);o.connect(g);g.connect(AC.destination);o.start();o.stop(AC.currentTime+d)}catch(e){}}
@@ -673,7 +673,7 @@ const dlg=$('dlg'),sum=$('sum');
 function openSettings(){$('cRoom').value=C.room;$('cRole').value=C.role||'tv';$('cSlot').value=C.slot;$('cSbUrl').value=C.sbUrl||'';$('cSbKey').value=C.sbKey||'';$('cEntry').value=C.entry;$('cPrizes').value=(C.prizes||[]).join(',');$('cPerfect').value=C.perfect;$('cDur').value=C.dur;$('cN').value=C.nT;$('cPen').value=C.pen;$('cHint').value=C.hint;$('cGold').value=C.gold;$('cMulti').value=C.multi;$('cMinus').value=C.minus;$('tvOnly').style.display=C.role==='tv'?'':'none';dlg.showModal()}
 $('dlgCancel').onclick=()=>dlg.close();
 $('dlgSave').onclick=()=>{C.room=$('cRoom').value.trim()||'BK01';C.role=$('cRole').value;C.slot=Math.min(MAXP,Math.max(1,+$('cSlot').value||1));C.sbUrl=$('cSbUrl').value.trim();C.sbKey=$('cSbKey').value.trim();
-  if(C.role==='tv'){C.entry=Math.max(0,+$('cEntry').value||0);C.prizes=$('cPrizes').value.split(',').map(x=>+x.trim()).filter(x=>!isNaN(x));if(!C.prizes.length)C.prizes=DEF.prizes;C.perfect=Math.max(0,+$('cPerfect').value||0);C.dur=Math.max(30,+$('cDur').value||120);C.nT=Math.min(30,Math.max(8,+$('cN').value||20));C.pen=$('cPen').value;C.minus=Math.min(5,Math.max(0,+$('cMinus').value||0));C.hint=$('cHint').value;C.gold=Math.min(6,Math.max(0,+$('cGold').value||0));C.multi=Math.min(5,Math.max(0,+$('cMulti').value||0))}
+  if(C.role==='tv'){C.entry=Math.max(0,+$('cEntry').value||0);C.prizes=$('cPrizes').value.split(',').map(x=>+x.trim()).filter(x=>!isNaN(x));if(!C.prizes.length)C.prizes=DEF.prizes;C.perfect=Math.max(0,+$('cPerfect').value||0);C.dur=Math.max(30,+$('cDur').value||40);C.nT=Math.min(30,Math.max(8,+$('cN').value||20));C.pen=$('cPen').value;C.minus=Math.min(5,Math.max(0,+$('cMinus').value||0));C.hint=$('cHint').value;C.gold=Math.min(6,Math.max(0,+$('cGold').value||0));C.multi=Math.min(5,Math.max(0,+$('cMulti').value||0))}
   saveC();location.reload()};
 $('btnSummary').onclick=openSummary;$('sumClose').onclick=()=>sum.close();
 function openSummary(){let h='';

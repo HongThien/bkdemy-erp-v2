@@ -223,11 +223,11 @@ const $=id=>document.getElementById(id);
 const useTimer=/loop=timer/.test(location.search);const nextFrame=useTimer?(f=>setTimeout(()=>f(performance.now()),16)):(f=>requestAnimationFrame(f));
 const KEY='bk-mecung-v1';
 const MAXP=8,SLOTS=Array.from({length:MAXP},(_,i)=>i+1);
-const DEF={role:null,slot:1,room:'BK01',sbUrl:'https://osrvycilwshkzhljuxef.supabase.co',sbKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4',entry:0,prizes:[5,3,2,2,2,2,2,2],perfect:0,dur:75,cols:16,rows:10,loops:15};
+const DEF={role:null,slot:1,room:'BK01',sbUrl:'https://osrvycilwshkzhljuxef.supabase.co',sbKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4',entry:0,prizes:[5,3,2,2,2,2,2,2],perfect:0,dur:40,cols:16,rows:10,loops:15};
 let C=Object.assign({},DEF);try{Object.assign(C,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
 const q=new URLSearchParams(location.search);if(q.get('role'))C.role=q.get('role');if(q.get('slot'))C.slot=+q.get('slot');if(q.get('room'))C.room=q.get('room');
 function saveC(){localStorage.setItem(KEY,JSON.stringify(C))}
-if(C.prizev!==2){C.prizes=DEF.prizes.slice();C.perfect=DEF.perfect;C.prizev=2;saveC()} // luật thưởng chung iPad (Thùy 25/09): Nhất 5 · Nhì 3 · còn lại 2, KHÔNG thưởng hoàn hảo
+if(C.prizev!==3){C.prizes=DEF.prizes.slice();C.perfect=DEF.perfect;C.dur=DEF.dur;C.prizev=3;saveC()} // luật chung iPad (Thùy 25/09): Nhất 5 · Nhì 3 · còn lại 2, KHÔNG thưởng hoàn hảo, 40 giây
 
 // ---------- sound / confetti ----------
 let AC=null;function beep(f,d,t,v,sl){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.type=t||'triangle';o.frequency.setValueAtTime(f,AC.currentTime);if(sl)o.frequency.exponentialRampToValueAtTime(sl,AC.currentTime+d);g.gain.setValueAtTime(v||.08,AC.currentTime);g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+d);o.connect(g);g.connect(AC.destination);o.start();o.stop(AC.currentTime+d)}catch(e){}}
@@ -350,7 +350,7 @@ function playerNet(){
     if(st.names&&st.names[C.slot]&&!$('pName').value&&!P.ready)$('pName').value=st.names[C.slot];
     const prev=pState;pState=st;const changed=!prev||prev.phase!==st.phase||prev.matchId!==st.matchId;
     if(st.phase==='lobby'&&changed){if(P.fin){$('pName').value='';P.name='';P.fin=false}P.ready=false;$('pReady').classList.remove('on');$('pReady').textContent='SẴN SÀNG';$('pWait').textContent='';if(!P.playing)pShow('pLobby');P.matchId=null;sendPlayer()}
-    if(st.phase==='countdown'&&P.matchId!==st.matchId&&!P.playing){P.matchId=st.matchId;P.name=$('pName').value.trim();startGame(st.seed,st.dur||75,st.cfg||C,false,performance.now()+(st.startAt-serverNow()));sendPlayer()}
+    if(st.phase==='countdown'&&P.matchId!==st.matchId&&!P.playing){P.matchId=st.matchId;P.name=$('pName').value.trim();startGame(st.seed,st.dur||40,st.cfg||C,false,performance.now()+(st.startAt-serverNow()));sendPlayer()}
     if(st.phase==='playing'&&P.matchId!==st.matchId&&!P.playing){$('pWait').textContent='Trận đang diễn ra, chờ trận sau nhé'}
     if(st.phase==='result'&&P.matchId===st.matchId){if(P.playing)timeUp();if(st.results&&st.results[C.slot]){const r=st.results[C.slot];if($('rRank').textContent===''){$('rRank').textContent='Hạng '+r.rank+' / '+st.n;$('rXu').textContent='+'+r.xu+' xu'+(r.perfect?' · ⭐ Perfect':'');$('rWait').textContent='';if(r.rank===1)confetti(200)}}}
     if(st.phase==='abort'&&changed){P.playing=false;$('cdOverlay').classList.remove('show');pShow('pLobby')}
@@ -361,8 +361,8 @@ async function bootPlayer(){
   const ok=await connectNet();$('pOffline').style.display=ok?'none':'block';$('pReady').style.display=ok?'':'none';$('pHint').textContent=ok?'Nhập tên rồi bấm SẴN SÀNG':'Chưa kết nối TV · chơi theo mã đề';if(ok)playerNet();else setNet(false,'không mạng');
   $('pReady').onclick=()=>{if(!room)return;P.name=$('pName').value.trim();if(!P.name){$('pName').focus();return}P.ready=!P.ready;$('pReady').classList.toggle('on',P.ready);$('pReady').textContent=P.ready?'✅ ĐÃ SẴN SÀNG':'SẴN SÀNG';$('pWait').textContent=P.ready?'Chờ nhân sự bắt đầu trận…':'';sendPlayer();beep(P.ready?880:440,.12,'triangle',.08);$('pName').blur()};
   $('pName').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(room)$('pReady').click();else $('pStartOff').click()}});
-  $('pStartOff').onclick=()=>{let seed=parseInt($('pSeed').value,10);if(isNaN(seed)){seed=Math.floor(Math.random()*9000)+1000;$('pSeed').value=seed}P.name=$('pName').value.trim();P.matchId=seed;startGame(seed,C.dur||75,C,false,performance.now()+3200)};
-  $('pPractice').onclick=()=>startGame(Math.floor(Math.random()*9999),C.dur||75,C,true,performance.now()+2200);
+  $('pStartOff').onclick=()=>{let seed=parseInt($('pSeed').value,10);if(isNaN(seed)){seed=Math.floor(Math.random()*9000)+1000;$('pSeed').value=seed}P.name=$('pName').value.trim();P.matchId=seed;startGame(seed,C.dur||40,C,false,performance.now()+3200)};
+  $('pPractice').onclick=()=>startGame(Math.floor(Math.random()*9999),C.dur||40,C,true,performance.now()+2200);
   $('pAgain').onclick=()=>{pShow('pLobby');if(room){P.ready=false;$('pReady').classList.remove('on');$('pReady').textContent='SẴN SÀNG';$('pWait').textContent=''}};
   $('pSettings').onclick=openSettings;document.addEventListener('gesturestart',e=>e.preventDefault())}
 
@@ -406,7 +406,7 @@ function applyPhaseUI(){const ph=TV.state.phase;$('tvStateLbl').textContent={lob
   $('tvStart').style.display=ph==='lobby'?'':'none';$('tvNew').style.display=(ph==='result'||(ph==='lobby'&&!room))?'':'none';$('tvAbort').style.display=(ph==='playing'||ph==='countdown')?'':'none';
   $('tvSeed').disabled=$('tvDice').disabled=ph!=='lobby';
   if(ph==='result')renderPodium();else $('podium').classList.remove('show');
-  if(ph==='lobby'){TV.lastLead=null;TV.feedSeen={};$('tvTimer').textContent=C.dur||75;$('tvTimer').classList.remove('last')}}
+  if(ph==='lobby'){TV.lastLead=null;TV.feedSeen={};$('tvTimer').textContent=C.dur||40;$('tvTimer').classList.remove('last')}}
 const PCOL=['#ff5c5c','#ffb347','#5ee08a','#7cc4ff','#c58cff','#ff7bd1','#f5f07a','#7af5e0'];
 function renderTV(now){const w=tc.clientWidth,h=tc.clientHeight;if(!w||!h||!TV.maze)return;const d=Math.min(devicePixelRatio||1,2);if(tc.width!==w*d||tc.height!==h*d){tc.width=w*d;tc.height=h*d}tg.setTransform(d,0,0,d,0,0);tg.clearRect(0,0,w,h);
   const ph=TV.state.phase,m=TV.maze;
@@ -432,8 +432,8 @@ function tvStart(){if(!room){alert('Chưa kết nối mạng. Dùng "Nhập đi�
   const ready=plist().filter(p=>p.ready&&p.online!==false);if(!ready.length){alert('Chưa có iPad nào bấm SẴN SÀNG.');return}
   const seed=TV.seed,startAt=serverNow()+4000,matchId=Date.now();TV.lastLead=null;TV.feedSeen={};$('feed').innerHTML='';$('tvShowOpt').checked=false;
   SLOTS.forEach(i=>{if(TV.players[i])Object.assign(TV.players[i],{steps:0,mistakes:0,progress:0,finished:false,finishMs:0,path:[],fin:false})});
-  TV.cur={matchId,seed,startAt,dur:C.dur||75,endAt:startAt+(C.dur||75)*1000,players:ready.map(p=>p.slot),allDoneAt:0};
-  setState({phase:'countdown',matchId,seed,startAt,dur:C.dur||75,cfg:{cols:C.cols,rows:C.rows,loops:C.loops},entry:C.entry,prizes:C.prizes})}
+  TV.cur={matchId,seed,startAt,dur:C.dur||40,endAt:startAt+(C.dur||40)*1000,players:ready.map(p=>p.slot),allDoneAt:0};
+  setState({phase:'countdown',matchId,seed,startAt,dur:C.dur||40,cfg:{cols:C.cols,rows:C.rows,loops:C.loops},entry:C.entry,prizes:C.prizes})}
 function computeResults(list,opt){const prizes=C.prizes||DEF.prizes;const sorted=list.slice().sort(cmp);const res={};sorted.forEach((p,i)=>{const perfect=!!(p.finished&&opt&&opt/p.steps>=.95);res[p.slot]={rank:i+1,xu:(prizes[Math.min(i,prizes.length-1)]||0)+(perfect?(C.perfect||0):0),score:p.finished?p.steps:Math.round((p.progress||0)*100),finished:!!p.finished,name:p.name,mistakes:p.mistakes||0,perfect,eff:p.finished&&opt?+(opt/p.steps).toFixed(3):0}});return res}
 function tvFinish(){const cur=TV.cur;if(!cur)return;TV.cur=null;
   const list=plist().filter(p=>cur.players.includes(p.slot)).map(p=>({slot:p.slot,name:p.name||'Máy '+p.slot,steps:p.steps||0,mistakes:p.mistakes||0,progress:p.progress||0,finished:!!p.finished,finishMs:p.finishMs||0}));
@@ -454,7 +454,7 @@ const dlg=$('dlg'),sum=$('sum');
 function openSettings(){$('cRoom').value=C.room;$('cRole').value=C.role||'tv';$('cSlot').value=C.slot;$('cSbUrl').value=C.sbUrl||'';$('cSbKey').value=C.sbKey||'';$('cEntry').value=C.entry;$('cPrizes').value=(C.prizes||[]).join(',');$('cPerfect').value=C.perfect;$('cDur').value=C.dur;$('cCols').value=C.cols;$('cRows').value=C.rows;$('cLoops').value=C.loops;$('tvOnly').style.display=C.role==='tv'?'':'none';dlg.showModal()}
 $('dlgCancel').onclick=()=>dlg.close();
 $('dlgSave').onclick=()=>{C.room=$('cRoom').value.trim()||'BK01';C.role=$('cRole').value;C.slot=Math.min(MAXP,Math.max(1,+$('cSlot').value||1));C.sbUrl=$('cSbUrl').value.trim();C.sbKey=$('cSbKey').value.trim();
-  if(C.role==='tv'){C.entry=Math.max(0,+$('cEntry').value||0);C.prizes=$('cPrizes').value.split(',').map(x=>+x.trim()).filter(x=>!isNaN(x));if(!C.prizes.length)C.prizes=DEF.prizes;C.perfect=Math.max(0,+$('cPerfect').value||0);C.dur=Math.max(20,+$('cDur').value||75);C.cols=Math.max(8,Math.min(24,+$('cCols').value||16));C.rows=Math.max(5,Math.min(16,+$('cRows').value||10));C.loops=Math.max(0,Math.min(40,+$('cLoops').value||0))}
+  if(C.role==='tv'){C.entry=Math.max(0,+$('cEntry').value||0);C.prizes=$('cPrizes').value.split(',').map(x=>+x.trim()).filter(x=>!isNaN(x));if(!C.prizes.length)C.prizes=DEF.prizes;C.perfect=Math.max(0,+$('cPerfect').value||0);C.dur=Math.max(20,+$('cDur').value||40);C.cols=Math.max(8,Math.min(24,+$('cCols').value||16));C.rows=Math.max(5,Math.min(16,+$('cRows').value||10));C.loops=Math.max(0,Math.min(40,+$('cLoops').value||0))}
   saveC();location.reload()};
 $('btnSummary').onclick=openSummary;$('sumClose').onclick=()=>sum.close();
 function openSummary(){let h='';
