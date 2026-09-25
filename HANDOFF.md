@@ -343,6 +343,18 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
   1900 tok/em · trần tiền 25k/lượt · trần token theo cỡ lớp · KHÔNG thử lại lỗi tất định · Haiku loại
   khỏi adaptive thinking. Model picker Sonnet 5 / Opus 4.8 (Thùy tự so). Mặc định gửi CHỈ em có tín hiệu.
 
+### Đã build (26/09 — ⭐ HỆ SỰ KIỆN: Trung thu 26/09 + các sự kiện sau) — ĐỌC `spec-su-kien.md` §9–§10 trước khi sửa
+- **App riêng "BK Sự kiện"** (`sukien.html`/`AppSuKien.tsx`, Vercel `bkdemy-erp-v2-sukien`) + lá `su_kien` trong ERP (cùng `src/screens/sukien/*`).
+  Dữ liệu vận hành, KHÔNG nhãn môn; xu sự kiện = sổ riêng `sk_xu`, KHÔNG đụng ví BK. Đổi quà KHÔNG thuộc hệ này (Thùy bỏ Quầy quà).
+- **DB `sk_*`** (8 bảng + `sk_phan_cong`), ghi CHỈ qua `fn_sk_*` security definer; luật chặn bằng unique partial (quay 1 lần · không
+  cộng đúp game · 1 chỗ chờ/HS · 1 lượt/phòng). **Giao việc theo vai** mỗi sự kiện (`checkin · dangky · quay · quantro · quanly`), DB
+  chặn theo vai qua `_sk_can`; admin hệ thống = quanly mọi sự kiện. Mỗi vai = 1 tab.
+- **Luồng:** laptop 1 Check-in (HS BK) + Đăng ký game (HS BK + khách cấp số) → laptop 2 Bàn quay (danh sách chờ quay + nút QUAY, random ở
+  Postgres) → điện thoại Quản trò (có mặt/bỏ qua 2 lần = loại, bắt đầu gán slot iPad, kết thúc cộng xu) · TV vòng quay / TV hàng chờ qua hash.
+- **Nối iPad:** điện thoại quản trò join kênh broadcast game `bk-<game>:<ma_hub>`, cộng `results[slot].xu` theo `matchId`, gửi `sk_names`
+  xuống TV game (handler thêm vào 5 game `games-site`). **CHƯA test với iPad thật.**
+- 6 mig áp bằng SQL Editor, **sổ `_migrations` chưa ghi** (xem spec §10). Test: PGlite mọi RPC × mọi vai (0 lỗi) + app thật trên sự kiện TEST (đã đóng).
+
 ### 🔜 PHA 4 — ĐƯỜNG ỐNG CA YẾU (bổ trợ) — THIẾT KẾ XONG, CHƯA BUILD (ưu tiên tiếp theo)
 Vòng: đề xuất → **team học thuật DUYỆT** → **OPS xếp lịch** → dạy + BT-ngay → buổi kế BT-xác-nhận → đóng.
 - **⭐ MỘT mastery + NHÃN trạng thái** (KHÔNG đẻ nhiều mastery — Thùy: "chia ra rối"). "Đã xử lý chưa"
@@ -2171,6 +2183,24 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
 - **⭐ Phân biệt "chặn ở GRANT" vs "chặn trong THÂN HÀM" bằng HTTP code — đừng thấy bị từ chối là yên tâm.** Anon gọi ra `400 / P0001 / <message tự viết>` nghĩa là **hàm ĐÃ CHẠY**, chỉ bị guard trong thân chặn ⇒ còn đúng 1 lớp. Ra `401 / 42501 / permission denied for function` mới là chặn ở tầng GRANT, hàm không chạy. Với `security definer` đọc kho thì phải là 401. (`404 / PGRST202` = hàm không tồn tại/sai chữ ký — PostgREST khớp hàm theo TÊN THAM SỐ, gọi `{}` thì hàm nào cũng 404, đừng vội kết luận "chưa áp".)
 - **⭐ Migration siết quyền phải SELF-VERIFY 2 CHIỀU trong cùng transaction.** Chiều xuôi: `anon` phải MẤT EXECUTE. Chiều ngược: `authenticated` phải CÒN — siết lố role là lỗi dễ mắc và **chỉ lộ khi người dùng bấm vào màn**, lúc đó đã muộn. Dùng `has_function_privilege(role, 'public.ten(argtypes)', 'EXECUTE')`, raise là rollback sạch. (Migration `revoke` phải do OWNER chạy — `claude_build` revoke hàm của `postgres` sẽ chết với "must be owner of function", fail rõ ràng nên không cần guard thêm.)
 - **⭐⭐ Comment khẳng định "đã an toàn" mà chưa đo = nợ nguy hiểm hơn không có comment.** Mig 181946 tự viết *"không để cửa mở"* dựa trên suy luận từ tiền lệ, chưa hề đo ACL. Đúng cái §2.1 đã cảnh báo về chính mục quyền DB — và vẫn đạp lại. **Viết xong câu "đã chặn/đã an toàn" thì việc kế tiếp là ĐO, không phải commit.** Sửa comment sai ở file đã áp là KHÔNG được (lịch sử bất biến) — ghi đính chính trong migration mới.
+- **⭐ SQL Editor cũng grant TOÀN QUYỀN BẢNG cho `anon`/`authenticated` (không chỉ EXECUTE hàm).** Đo 26/09: bảng `sk_*` tạo bằng SQL
+  Editor ⇒ `has_table_privilege('anon', …, 'INSERT') = true`. RLS không có policy ghi thì vẫn chặn, nhưng chỉ còn 1 lớp ⇒ bảng "ghi chỉ qua
+  RPC" phải `revoke all … from anon` + `revoke insert, update, delete … from authenticated` ngay trong migration. `information_schema.role_table_grants`
+  KHÔNG hiện grant của role mình không thuộc — đo bằng `has_table_privilege`.
+
+### Bài học 26/09 — hệ sự kiện (plpgsql · test theo vai · test UI qua ô trình duyệt ẩn)
+
+- **⭐⭐ plpgsql: alias bảng TRÙNG TÊN biến `record` trong hàm ⇒ Postgres bind vào BIẾN, không phải bảng.** `declare d record;` rồi
+  `(select … from sk_dang_ky d … where d.id = …)` ⇒ nổ `record "d" is not assigned yet` ở dòng đầu hàm (PostgREST trả 500). Không lỗi
+  lúc `create function` — chỉ lộ khi CHẠY. Cổng quyền/tra cứu phụ nên gói vào hàm riêng (`_sk_sk_cua_dang_ky`), không alias trong hàm có biến.
+- **⭐ Đổi cổng quyền ⇒ test MỌI RPC dưới MỌI vai, không chọn mẫu.** Lỗi trên lọt vì test persona chỉ chạy check-in/đăng ký, bỏ qua 3 hàm
+  quản trò. Script PGlite (stub `jwt_email/la_thanh_vien/hoc_sinh/nhan_su`) chạy đủ vai + người ngoài trong vài giây — rẻ hơn 1 vòng dán SQL.
+- **Ô trình duyệt của app Claude khi bị ẨN: ảnh chụp đứng hình + click toạ độ trượt vì layout dịch.** Kết luận "bấm không ăn" từ ảnh là sai
+  (bàn quay đã quay thật, xu tăng 38→63). Xác nhận bằng TEXT/dữ liệu (`get_page_text`, gọi RPC), click bằng ref/JS, không tin screenshot.
+  Nhưng chính việc đó lộ lỗi thật: khung `items-center overflow-hidden` cắt mất nút nằm dưới mép — màn làm việc phải có vùng tự cuộn.
+- **Máy "nhớ lựa chọn" (localStorage) phải kiểm lại khi dữ liệu đổi**: máy nhớ sự kiện TEST đã đóng ⇒ mở app vào nhầm TEST cùng ngày. Nhớ
+  thì được, nhưng mở lại phải ưu tiên trạng thái hợp lệ (sự kiện đang mở).
+
 - **⭐ Query kiểm chứng phải KHÔNG ĐƯỢC tautology, và luôn có ĐỐI CHỨNG.** Viết `where not f(x) and f(x)` để "đếm cái lọt" thì kết quả 0 là do logic, không phải do dữ liệu — vô giá trị nhưng trông y hệt bằng chứng. Tương tự, "không thấy trong kết quả" chỉ có nghĩa khi có một mẫu ĐỐI CHỨNG chắc chắn PHẢI thấy và nó thật sự hiện ra; không thì "không thấy" có thể chỉ vì query nhân bản bị hỏng.
 - **Đọc dữ liệu bằng anon key để kết luận "bảng rỗng" là SAI** — RLS member-gate trả **HTTP 200 + `[]`**, không phải lỗi. Cùng họ với bẫy §2.1. Muốn số thật phải `DATABASE_URL_RO` (`claude_ro`), và `claude_ro` không gọi được RPC `grant to authenticated` nên **không thay thế được việc test end-to-end bằng tài khoản thật**.
 - **Bookkeeping `_migrations`:** `bam` = sha256(nội dung utf8 **đã bỏ hết `\r`**), hex, **cắt 16 ký tự** (`migrate.mjs:105-107`); `ten` = basename. Trước khi đưa số cho người dán, **tính lại bam cho toàn bộ file đã có trong sổ và đối chiếu** (477 khớp / 0 lệch) — rẻ, và nó chứng minh mình replicate đúng thuật toán thay vì đọc code rồi tin.

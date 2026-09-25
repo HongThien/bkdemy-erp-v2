@@ -1,6 +1,8 @@
 # spec-su-kien.md — Hệ thống tổ chức SỰ KIỆN (Trung thu 26/09/2026 + các sự kiện sau)
 
-> Trạng thái: **CHỐT YÊU CẦU (Thùy 25/09)** · CHƯA code · chạy thật **26/09**.
+> Trạng thái (26/09 ~03h30): **ĐÃ BUILD + ĐÃ ÁP DB + ĐÃ DEPLOY app riêng `bkdemy-erp-v2-sukien.vercel.app`** · test app thật đủ
+> luồng trên sự kiện "TEST (xoá được)" (đã đóng) · **CHƯA test với iPad thật** (Thùy test 26/09) — xem §10. Mục §1–§6 là
+> yêu cầu gốc 25/09; các thay đổi sau đó ở §7–§9 (§9 THẮNG §1 nếu lệch: bỏ Quầy quà, thêm Bàn quay, tách Đăng ký game).
 > Dữ liệu **KHÔNG gắn môn** (vận hành, không phải học tập — §1.6). Tiền tệ **riêng của sự kiện**, KHÔNG đụng ví `qlht_xu_ledger`.
 > Tên gọi quốc tế: **event check-in + virtual queue** (kiểu hàng đợi ảo Disney FastPass / waitlist nhà hàng).
 
@@ -161,3 +163,31 @@ Mutation trong cùng màn: **vá tại chỗ**, không reload trắng (§2); rea
 - **Tách Check-in / Đăng ký game** (vai `dangky`, mig `202609260315`): Check-in chỉ HS BK + danh sách đã check-in ngay bên dưới
   (`fn_sk_da_checkin`, mới nhất trên cùng, có cột đã quay/chưa quay). Đăng ký game: HS BK + khách (cấp số), tóm tắt hàng chờ.
   Dự kiến 1 người làm cả 2 ⇒ giao cả 2 vai, thấy 2 tab. Bỏ màn "chọn việc": mỗi việc được giao = 1 tab.
+
+## 10. Hiện trạng cuối phiên 26/09 ~03h30 + checklist test iPad
+
+**DB (Thùy dán SQL Editor, đã verify DB thật):** `202609260129` (bảng + hàm gốc) · `0156` (thu quyền ghi tầng bảng) · `0219` (giao việc) ·
+`0243` (vá cổng 3 hàm quản trò) · `0307` (vai quay) · `0315` (vai đăng ký). ⚠ Áp qua SQL Editor ⇒ **sổ `_migrations` CHƯA ghi 6 file** —
+khi có chuỗi ghi: `node scripts/migrate.mjs --baseline <file>` từng file (cả 6 chạy lại vô hại, nhưng đừng để migrate chạy lại mù).
+
+**App:** Vercel `bkdemy-erp-v2-sukien` (build `npm run build:sukien`, out `dist-sukien`). ERP chính vẫn có lá `su_kien` (cùng component).
+**Việc (vai) → tab:** 🚪 Check-in · 📝 Đăng ký game · 🎡 Bàn quay · 🎮 Quản trò · ⚙️ Quản lý (= mọi tab + Cài đặt + giao việc). Admin hệ thống = Quản lý mọi sự kiện.
+**Sự kiện thật:** "Trung thu 2026" — sạch (0 check-in), phòng "Phòng iPad" hub `BK01`, vòng quay 15/20/25 · 25/50/25 %, 6 người/lượt, 3 ván.
+**TEST (xoá được):** đã ĐÓNG, còn dữ liệu test (2 HS check-in, 1 khách, 2 lượt chờ) — không ảnh hưởng Trung thu. Xoá thật thì hỏi Thùy (Luật xoá).
+
+**Checklist trước giờ mở cửa (Thùy):**
+1. Cài đặt › 👥 Giao việc cho "Trung thu 2026": laptop 1 → Check-in + Đăng ký game · laptop 2 → Bàn quay · phòng iPad → Quản trò · 1–2 người Quản lý.
+2. Máy nối TV (nếu dùng): đăng nhập tài khoản có việc (Quản lý), Cài đặt › 📺 TV Vòng quay / TV Hàng chờ → F11.
+3. Mã hub `BK01` ở Cài đặt › Phòng chơi phải TRÙNG mã phòng đang đặt ở hub iPad (`games-site/index.html`, mặc định `BK01`).
+4. `games-site` phải deploy bản có handler `sk_names` (5 game: dap-chuot, me-cung, tim-diem-khac-nhau, tim-nhan-vat-an, xep-thap) —
+   chưa deploy thì tên KHÔNG tự điền, quản trò gõ tay trên TV game.
+
+**Test iPad (chưa làm — Thùy 26/09):**
+- Quản trò: có mặt 2–3 bạn → chọn game đang mở trên hub (tự chọn theo event `open` của `bk-hub:<ma_hub>`) → BẮT ĐẦU.
+- TV game (laptop phòng) phải tự điền tên "Tên #số" vào ô slot 1..n (event `sk_names`, chỉ nhận khi TV ở sảnh `lobby`; mỗi ván mới TV xoá tên ⇒ điện thoại tự gửi lại).
+- HS ngồi ĐÚNG iPad số slot (iPad số = slot hub). Chơi 3 ván.
+- Điện thoại: nhãn "● nghe iPad · N ván" tăng sau mỗi ván; ô xu từng slot tự cộng (bỏ kết quả có `matchId` < lúc bắt đầu lượt − 30s).
+- Soát xu → KẾT THÚC LƯỢT → số dư HS tăng đúng. Hỏng bất kỳ bước tự động nào ⇒ gõ tay tên/xu, hệ vẫn chạy.
+
+**Còn mở:** 1 lần tìm `#1` ra rỗng ngay sau khi chuyển tab (không tái hiện, DB luôn trả đúng) · chưa test tải 150 người / 2 điện thoại ·
+xu sự kiện dùng vào đâu (đổi quà ngoài hệ) — nếu cần số dư từng HS thì làm trang xem/xuất Excel.
