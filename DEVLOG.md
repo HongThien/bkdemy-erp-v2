@@ -29922,3 +29922,6 @@ quay lại từ nền (visibilitychange); lỗi mạng không tắt card đang h
   sàng ghi). `npm run schema` xong, `tsc` + `npm run build` sạch.
 - **Quyết định ngầm cần biết:** "đã từng bổ trợ" đòi `diem_danh='co_mat'` (thật sự có mặt), không tính buổi chỉ mới XẾP/xác nhận PH — tránh nhãn
   hiện cho em chưa từng học buổi nào ở ca đó. Nếu sau này Lộc muốn nới ra "đã từng ĐƯỢC XẾP" (kể cả chưa học) thì đổi điều kiện, không phải bug.
+## 25/09 — Luật chơi game Trung Thu: bản nháp Game 1 Đoán Số (chờ Thùy duyệt)
+- `luat-choi-game.md` (gốc repo, gom mọi game): mỗi game 2 phần A. luật cho người chơi · B. hướng dẫn nhân sự + mục "Cần Thùy chốt". Viết từ code `games-site/doan-so.html` (không có spec riêng). Số liệu = mặc định DEF: đặt 1 xu, khởi điểm 10, x30 / x10 (lệch 1–2) / x5 (lệch 3–5), vòng tròn 99↔00. Tính lại bằng script: P = 1% / 4% / 6% / 89%, kỳ vọng chi/thu = 1.00 (tắt vòng tròn 0.982).
+- Phát hiện khi đọc code: xu **không chặn âm** (`p.coins+=win-stake` không kiểm), game không có điểm kết thúc, xu không nối ví — đưa vào mục chốt, chưa sửa code.
