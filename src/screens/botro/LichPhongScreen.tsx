@@ -230,7 +230,11 @@ function UngVienModal({ ca, onDong, onXep }: { ca: CaBoTro; onDong: () => void; 
             : list.map((u) => (
               <div key={u.ref_id} className="mb-2 flex flex-wrap items-center gap-2 rounded-xl border border-slate-200 px-3 py-2">
                 <div className="min-w-0 flex-1">
-                  <div className="text-[13.5px] font-semibold text-slate-800">{u.ho_ten} <span className="font-normal text-slate-400">· {u.lop ?? '?'}{u.khoi ? ` · K${u.khoi}` : ''}</span></div>
+                  <div className="flex flex-wrap items-center gap-1.5 text-[13.5px] font-semibold text-slate-800">
+                    <span>{u.ho_ten} <span className="font-normal text-slate-400">· {u.lop ?? '?'}{u.khoi ? ` · K${u.khoi}` : ''}</span></span>
+                    {u.ta_dang_truc && <span className="rounded-full bg-green-600 px-2 py-0.5 text-[10.5px] font-bold text-white">Cùng lớp</span>}
+                    {u.da_tung_bo_tro && <span className="rounded-full bg-purple-600 px-2 py-0.5 text-[10.5px] font-bold text-white">Đã từng bổ trợ</span>}
+                  </div>
                   <div className="text-[12px] text-slate-500">{u.chi_tiet}{u.ta_lop_ten ? ` · TA lớp: ${u.ta_lop_ten}${u.ta_dang_truc ? ' (đang trực ✓)' : ''}` : ''}{u.da_xep_ngay_khac ? ' · đã có buổi ngày khác' : ''}</div>
                 </div>
                 <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${LOAI_CLS[u.loai]}`}>{LOAI_TEN[u.loai]}{u.level ? ` L${u.level}` : ''} · {u.don_vi}</span>

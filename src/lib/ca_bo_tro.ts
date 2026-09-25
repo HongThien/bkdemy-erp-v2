@@ -24,7 +24,7 @@ export type CaBoTro = {
 export type NgayTomTat = { ngay: string; so_ca: number; don_vi: number; don_vi_dung: number; don_vi_cho: number }
 export type UngVien = {
   loai: LoaiBoTro; ref_id: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; lop: string | null
-  don_vi: number; chi_tiet: string; ta_lop_id: string | null; ta_lop_ten: string | null; ta_dang_truc: boolean
+  don_vi: number; chi_tiet: string; ta_lop_id: string | null; ta_lop_ten: string | null; ta_dang_truc: boolean; da_tung_bo_tro: boolean
   vua: boolean; ly_do_khong_vua: string | null; da_xep_ngay_khac?: boolean; uu_tien?: number; level?: number
 }
 export type UngVienCa = {
