@@ -6,7 +6,8 @@ import { supabase } from '../../lib/supabase'
 import * as sk from '../../lib/sukien'
 import type { KetQuaTim, PhongTQ, SuKien, TongQuan } from '../../lib/sukien'
 
-type Tab = 'checkin' | 'quantro' | 'quaqua' | 'caidat'
+export type TabSuKien = 'checkin' | 'quantro' | 'quaqua' | 'caidat'
+type Tab = TabSuKien
 const LS_SK = 'sk-su-kien-dang-chon'
 const LS_TAB = 'sk-tab'
 const lsGet = (k: string) => { try { return localStorage.getItem(k) } catch { return null } }
@@ -26,10 +27,10 @@ function useToast() {
   return { show, el }
 }
 
-export default function SuKienScreen() {
+export default function SuKienScreen({ tabDau, appRieng = false }: { tabDau?: Tab; appRieng?: boolean } = {}) {
   const [ds, setDs] = useState<SuKien[] | null>(null)
   const [skId, setSkId] = useState<string | null>(lsGet(LS_SK))
-  const [tab, setTab] = useState<Tab>((lsGet(LS_TAB) as Tab) || 'checkin')
+  const [tab, setTab] = useState<Tab>(tabDau || (lsGet(LS_TAB) as Tab) || 'checkin')
   const [loiTai, setLoiTai] = useState<string | null>(null)
   const toast = useToast()
 
@@ -77,7 +78,7 @@ export default function SuKienScreen() {
           : tab === 'checkin' ? <CheckinTab skId={skId} tq={live.tq} toast={toast.show} onDoi={live.tai} />
           : tab === 'quantro' ? <QuanTroTab tq={live.tq} toast={toast.show} onDoi={live.tai} setTq={live.setTq} />
           : tab === 'quaqua' ? <QuayQuaTab skId={skId} toast={toast.show} />
-          : <CaiDatTab ds={ds} skId={skId} tq={live.tq} toast={toast.show} onDoi={() => { taiDs(); live.tai() }} onChon={setSkId} />}
+          : <CaiDatTab appRieng={appRieng} ds={ds} skId={skId} tq={live.tq} toast={toast.show} onDoi={() => { taiDs(); live.tai() }} onChon={setSkId} />}
       </div>
       {toast.el}
     </section>
@@ -532,7 +533,7 @@ function QuayQuaTab({ skId, toast }: { skId: string; toast: (t: string, loi?: bo
 }
 
 // ─────────────────────────────── CÀI ĐẶT ───────────────────────────────
-function CaiDatTab({ ds, skId, tq, toast, onDoi, onChon }: { ds: SuKien[]; skId: string; tq: TongQuan | null; toast: (t: string, loi?: boolean) => void; onDoi: () => void; onChon: (id: string) => void }) {
+function CaiDatTab({ appRieng, ds, skId, tq, toast, onDoi, onChon }: { appRieng: boolean; ds: SuKien[]; skId: string; tq: TongQuan | null; toast: (t: string, loi?: boolean) => void; onDoi: () => void; onChon: (id: string) => void }) {
   const s = ds.find((x) => x.id === skId)!
   const [ten, setTen] = useState(s.ten)
   const [ngay, setNgay] = useState(s.ngay)
@@ -558,7 +559,20 @@ function CaiDatTab({ ds, skId, tq, toast, onDoi, onChon }: { ds: SuKien[]; skId:
           <a href={`${base}#sk-tv=quay&sk=${s.id}`} target="_blank" rel="noreferrer" className="rounded-xl bg-amber-500 px-4 py-2 font-bold text-white">🎡 TV Vòng quay</a>
           <a href={`${base}#sk-tv=hang&sk=${s.id}`} target="_blank" rel="noreferrer" className="rounded-xl bg-indigo-600 px-4 py-2 font-bold text-white">📋 TV Hàng chờ</a>
         </div>
-        <p className="mt-2 text-xs text-slate-500">Mở link → bấm F11 để toàn màn hình. Quản trò dùng điện thoại: vào lá Sự kiện › 🎮 Quản trò.</p>
+        <p className="mt-2 text-xs text-slate-500">Mở link → bấm F11 để toàn màn hình.</p>
+        {appRieng ? <>
+        <h3 className="mb-2 mt-4 font-bold">🔗 Link cho từng vị trí trực (mở thẳng đúng màn)</h3>
+        <div className="space-y-1 text-sm">
+          {([['checkin', '🚪 Laptop check-in'], ['quantro', '🎮 Điện thoại quản trò'], ['quaqua', '🎁 Quầy quà']] as const).map(([m, t]) => (
+            <div key={m} className="flex items-center gap-2">
+              <span className="w-44 shrink-0">{t}</span>
+              <code className="min-w-0 flex-1 truncate rounded bg-slate-100 px-2 py-1 text-xs">{`${base}#man=${m}`}</code>
+              <button onClick={() => { navigator.clipboard?.writeText(`${base}#man=${m}`).then(() => toast('Đã copy link'), () => toast('Không copy được — bôi đen link để copy', true)) }}
+                className="shrink-0 rounded-md border border-slate-300 px-2 py-1 text-xs">Copy</button>
+            </div>
+          ))}
+        </div>
+        </> : <p className="mt-3 text-xs text-slate-500">Nhân sự trực nên dùng app riêng <b>BK Sự kiện</b> (không có menu ERP) — link từng vị trí nằm ở tab Cài đặt bên đó.</p>}
       </div>
 
       <div className="rounded-2xl bg-white p-4 shadow-sm">

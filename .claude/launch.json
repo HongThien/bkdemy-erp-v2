@@ -162,6 +162,15 @@
       "port": 5260
     },
     {
+      "name": "dev-sukien",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:sukien"
+      ],
+      "port": 5186
+    },
+    {
       "name": "dev-alt2",
       "runtimeExecutable": "npm",
       "runtimeArgs": [

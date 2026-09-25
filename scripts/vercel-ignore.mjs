@@ -16,9 +16,9 @@ import { execSync } from 'node:child_process'
 const URL_APP = [
   ['bkdemy-erp-v2-ta-v2', 'ta'], ['bkdemy-erp-v2-ta', 'ta'], ['bkdemy-erp-v2-gv', 'gv'], ['bkdemy-erp-v2-ops', 'ops'],
   ['bkdemy-erp-v2-hs', 'hs'], ['bkdemy-erp-v2-pt', 'pt'], ['bkdemy-erp-v2-chi', 'chi'], ['bkdemy-erp-v2-gb', 'giaibai'],
-  ['bkdemy-erp-v2-giaibai', 'giaibai'], ['bkdemy-erp-v2-soan', 'soan'], ['bkdemy-erp-v2-khaosat', 'khaosat'], ['bkdemy-erp-v2.vercel.app', 'erp'],
+  ['bkdemy-erp-v2-giaibai', 'giaibai'], ['bkdemy-erp-v2-soan', 'soan'], ['bkdemy-erp-v2-khaosat', 'khaosat'], ['bkdemy-erp-v2-sukien', 'sukien'], ['bkdemy-erp-v2.vercel.app', 'erp'],
 ]
-const APPS = ['erp', 'ta', 'gv', 'ops', 'hs', 'pt', 'chi', 'giaibai', 'soan', 'khaosat']
+const APPS = ['erp', 'ta', 'gv', 'ops', 'hs', 'pt', 'chi', 'giaibai', 'soan', 'khaosat', 'sukien']
 
 // Đường dẫn RIÊNG → chủ sở hữu. Prefix khớp đầu chuỗi; thư mục kết thúc bằng '/'.
 const RIENG = [
@@ -32,6 +32,8 @@ const RIENG = [
   { p: ['giaibai.html', 'vite.config.giaibai.ts', 'src/main-giaibai.tsx', 'src/AppGiaiBai.tsx', 'src/screens/giaibai/'], chu: ['giaibai'] },
   { p: ['soan.html', 'vite.config.soan.ts', 'src/main-soan.tsx', 'src/AppSoan.tsx'], chu: ['soan'] },
   { p: ['khaosat.html', 'vite.config.khaosat.ts', 'src/main-khaosat.tsx', 'src/AppKhaoSat.tsx', 'src/screens/khaosat/'], chu: ['khaosat'] },
+  { p: ['sukien.html', 'vite.config.sukien.ts', 'src/main-sukien.tsx', 'src/AppSuKien.tsx'], chu: ['sukien'] },
+  { p: ['src/screens/sukien/', 'src/lib/sukien.ts'], chu: ['sukien', 'erp'] }, // ERP cũng có lá Sự kiện + TV qua hash
   { p: ['index.html', 'vite.config.ts', 'src/main.tsx', 'src/App.tsx'], chu: ['erp'] },
   // khu "Của tôi" (TA đã lắp; OPS/GV sắp lắp cùng khuôn) — 3 app cùng sở hữu để không bỏ lỡ
   { p: ['src/components/bk/', 'public/bk-ui/'], chu: ['ta', 'ops', 'gv'] },

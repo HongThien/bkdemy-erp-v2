@@ -133,3 +133,12 @@ Mutation trong cùng màn: **vá tại chỗ**, không reload trắng (§2); rea
 3. **TV vòng quay** + **Quầy quà**.
 4. Nối iPad hub (tự điền kết quả). Chưa kịp ⇒ quản trò nhập tay xu, hệ vẫn chạy đủ.
 5. Test tải giả: 150 người chơi, 1 phòng, 2 điện thoại quản trò mở cùng lúc (chống bấm đúp/đua).
+
+## 7. App riêng "BK Sự kiện" (Thùy 26/09: "tách khỏi ERP cho đỡ lẫn")
+
+- Bundle thứ 11, khuôn y hệt app Khảo sát: `sukien.html` · `vite.config.sukien.ts` · `src/main-sukien.tsx` · `src/AppSuKien.tsx`
+  (không kéo `NhanSuHome`/`useStore`). Dùng lại nguyên `src/screens/sukien/*` — ERP vẫn giữ lá `su_kien` (cùng component).
+- Đăng nhập nhân sự; quyền thật ở DB (`fn_sk_*` kiểm `la_thanh_vien()`) ⇒ app riêng **không cần cấp lá** ở Phân quyền.
+- Link theo vị trí trực: `/#man=checkin` · `/#man=quantro` · `/#man=quaqua` (tab Cài đặt có nút Copy). TV: `/#sk-tv=quay|hang&sk=<id>`.
+- Deploy: Vercel project `bkdemy-erp-v2-sukien` · Build `npm run build:sukien` · Output `dist-sukien` · env `VITE_SUPABASE_URL` + `VITE_SUPABASE_KEY` (anon)
+  · domain đề xuất `sukien.bkacademy.edu.vn`. Dev: `npm run dev:sukien` → `http://localhost:5186/sukien.html`.

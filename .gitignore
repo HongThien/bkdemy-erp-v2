@@ -73,3 +73,5 @@ token.txt
 dist-verify/
 .env*
 .snap/
+# build output app Sự kiện (như dist-khaosat)
+dist-sukien/
