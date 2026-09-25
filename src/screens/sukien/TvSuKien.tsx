@@ -24,6 +24,7 @@ type Quay = { id: string; ten: string; so: number; xu: number }
 
 function TvVongQuay({ skId }: { skId: string }) {
   const [cfg, setCfg] = useState<{ xu: number; ti_le: number }[] | null>(null)
+  const [tenSk, setTenSk] = useState('')
   const [goc, setGoc] = useState(0)
   const [dangQuay, setDangQuay] = useState<Quay | null>(null)
   const [hien, setHien] = useState<Quay | null>(null)
@@ -33,7 +34,7 @@ function TvVongQuay({ skId }: { skId: string }) {
   const ban = useRef(false)
 
   useEffect(() => {
-    sk.tongQuan(skId).then((t) => setCfg(t.su_kien.cau_hinh.vong_quay)).catch(() => setCfg([{ xu: 15, ti_le: 25 }, { xu: 20, ti_le: 50 }, { xu: 25, ti_le: 25 }]))
+    sk.tongQuan(skId).then((t) => { setCfg(t.su_kien.cau_hinh.vong_quay); setTenSk(t.su_kien.ten) }).catch(() => setCfg([{ xu: 15, ti_le: 25 }, { xu: 20, ti_le: 50 }, { xu: 25, ti_le: 25 }]))
   }, [skId])
 
   // Ô trên vòng: chia theo tỉ lệ (25/50/25 ⇒ 2/4/2 ô), xen kẽ cho đẹp.
@@ -86,7 +87,8 @@ function TvVongQuay({ skId }: { skId: string }) {
   const R = 300
   return (
     <div className="flex h-screen w-screen items-center justify-center gap-12 overflow-hidden text-white" style={{ background: NEN }}>
-      <div className="relative" style={{ width: R * 2 + 40, height: R * 2 + 40 }}>
+      {/* Vừa khít mọi màn: cạnh = min(86% chiều cao, 50% chiều ngang) — SVG viewBox tự co theo. */}
+      <div className="relative aspect-square shrink-0" style={{ width: 'min(86vh, 50vw)' }}>
         <div className="absolute left-1/2 top-0 z-10 -translate-x-1/2" style={{ width: 0, height: 0, borderLeft: '22px solid transparent', borderRight: '22px solid transparent', borderTop: '48px solid #fde047', filter: 'drop-shadow(0 4px 6px rgba(0,0,0,.5))' }} />
         <svg viewBox={`${-R - 20} ${-R - 20} ${2 * R + 40} ${2 * R + 40}`} className="h-full w-full"
           style={{ transform: `rotate(${goc}deg)`, transition: dangQuay ? 'transform 6s cubic-bezier(.12,.72,.12,1)' : 'none' }}>
@@ -110,7 +112,7 @@ function TvVongQuay({ skId }: { skId: string }) {
         </svg>
       </div>
       <div className="w-[34vw] min-w-[320px]">
-        <div className="text-4xl font-black text-yellow-300">🎡 VÒNG QUAY TRUNG THU</div>
+        <div className="text-4xl font-black text-yellow-300">🎡 VÒNG QUAY{tenSk ? ` · ${tenSk.toUpperCase()}` : ''}</div>
         <div className="mt-6 min-h-[220px] rounded-3xl bg-white/10 p-6">
           {dangQuay ? (
             <><div className="text-2xl text-white/70">Đang quay cho…</div><div className="mt-2 text-6xl font-black">{dangQuay.ten}</div></>
