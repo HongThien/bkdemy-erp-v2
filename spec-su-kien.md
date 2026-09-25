@@ -104,26 +104,26 @@ Mutation trong cùng màn: **vá tại chỗ**, không reload trắng (§2); rea
 
 ---
 
-## 5. Nối iPad hub () — đã dò 25/09
+## 5. Nối iPad hub (`games-site/`) — đã dò 25/09
 
 **Hiện trạng:**
-- Hub : kênh , TV gửi , iPad nhận  và nạp iframe .
-- Mỗi game có kênh riêng (, , , , …). Mẫu :
-  - **TV (laptop phòng game) là trọng tài.** Nó phát  mỗi 1s. Khi ván kết thúc,  mang , với  (5·3·2).
-  - **TV đã có ô gõ sẵn tên theo slot** (), iPad tự điền từ đó. Có sẵn cả nhập điểm tay ().
-  - **Xu không ghi DB**, chỉ nằm ở localStorage của TV ().
+- Hub `index.html`: kênh `bk-hub:<room>`, TV gửi `open {game}`, iPad nhận `slot 1..8` và nạp iframe `<game>.html?role&slot&room`.
+- Mỗi game có kênh riêng (`bk-dapchuot:<room>`, `bk-mecung:`, `bk-timdiem:`, `bk-timnhanvat:`, `bk-xepthap:`…). Mẫu `dap-chuot.html`:
+  - **TV (laptop phòng game) là trọng tài.** Nó phát `state` mỗi 1s. Khi ván kết thúc, `phase:'result'` mang `{matchId, results:{[slot]:{rank, xu, score, name}}}`, với `xu = prizes[hạng]` (5·3·2).
+  - **TV đã có ô gõ sẵn tên theo slot** (`state.names`), iPad tự điền từ đó. Có sẵn cả nhập điểm tay (`tvManual`).
+  - **Xu không ghi DB**, chỉ nằm ở localStorage của TV (`bk-dapchuot-tvhist`).
 
 **Cách nối (chốt):**
-1. **Điện thoại quản trò join kênh game của phòng** () bằng supabase-js broadcast. Không cần sửa code từng game.
-2.  trả . Quản trò gửi xuống TV game để **điền sẵn  theo slot**.
-   Cách tối thiểu: sửa TV game nhận thêm 1 message . Fallback: quản trò gõ tay tên vào TV như hiện nay.
-3. Điện thoại nghe , **cộng dồn  theo slot qua 3  khác nhau** (bỏ trùng theo matchId vì  phát lại mỗi 1s). Kết quả điền sẵn vào form **Kết thúc lượt**. Quản trò soát rồi bấm → .
+1. **Điện thoại quản trò join kênh game của phòng** (`bk-<game>:<ma_hub>`) bằng supabase-js broadcast. Không cần sửa code từng game.
+2. `fn_sk_bat_dau` trả `[{slot, ten, so}]`. Quản trò gửi xuống TV game để **điền sẵn `names` theo slot**.
+   Cách tối thiểu: sửa TV game nhận thêm 1 message `names`. Fallback: quản trò gõ tay tên vào TV như hiện nay.
+3. Điện thoại nghe `state.phase==='result'`, **cộng dồn `xu` theo slot qua 3 `matchId` khác nhau** (bỏ trùng theo `matchId` vì `state` phát lại mỗi 1s). Kết quả điền sẵn vào form **Kết thúc lượt**. Quản trò soát rồi bấm → `fn_sk_ket_thuc`.
 4. **iPad/anon không ghi DB.** Chỉ điện thoại quản trò (đã đăng nhập) ghi. Fallback: nhập tay xu từng slot.
-5. Chênh lệch nhỏ: hub cho 8 slot, sự kiện tối đa 6 →  gán slot 1..6.
+5. Chênh lệch nhỏ: hub cho 8 slot, sự kiện tối đa 6 → `fn_sk_bat_dau` gán slot 1..6.
 
 **Ghi chú app ERP (dò 25/09):**
-- Màn mới = leaf trong  () + nhánh route  + cấp  cho nhân sự trực (Phân quyền).
--  **chưa dùng Realtime ở đâu** (màn đều poll 5–7s). Sự kiện dùng  trên bảng  (thêm vào  như mig ). Kèm **poll 5s dự phòng**, rớt socket không kẹt màn.
+- Màn mới = leaf trong `adminLeaves` (`src/mock/fixtures.ts`) + nhánh route `NhanSuHome.tsx` + cấp `chuc_nang` cho nhân sự trực (Phân quyền).
+- `src/` **chưa dùng Realtime ở đâu** (màn đều poll 5–7s). Sự kiện dùng `postgres_changes` trên bảng `sk_*` (thêm vào `supabase_realtime` như mig `202608291119_hoi_dap_nhan_su`). Kèm **poll 5s dự phòng**, rớt socket không kẹt màn.
 - TV vòng quay / TV hàng chờ: đăng nhập bằng 1 tài khoản nhân sự, mở route toàn màn hình.
 
 ## 6. Thứ tự build (ưu tiên nếu thiếu giờ)
