@@ -104,18 +104,27 @@ Mutation trong cùng màn: **vá tại chỗ**, không reload trắng (§2); rea
 
 ---
 
-## 5. Nối iPad hub (`games-site/`) — ⚠️ CÒN PHẢI DÒ
+## 5. Nối iPad hub () — đã dò 25/09
 
-Hub hiện: TV chọn game → iPad theo `slot` trong room (`bk-hub:<room>`, Supabase Realtime broadcast), mỗi game tự tính thứ hạng + xu
-(Nhất 5 · Nhì 3 · còn lại 2). Việc cần làm:
-1. `fn_sk_bat_dau` trả `[{slot, ten, so}]` → broadcast xuống hub để **iPad hiện tên HS** đúng slot.
-2. Hub cộng xu **3 ván** theo slot → broadcast `ket_qua` → màn Quản trò nhận và điền sẵn vào form **Kết thúc lượt**.
-3. **Ghi DB do điện thoại quản trò** (đã đăng nhập) gọi `fn_sk_ket_thuc` — iPad/anon **không ghi DB** (không mở RPC cho anon).
-4. Fallback: iPad lỗi ⇒ quản trò nhập tay xu từng slot, hoặc trả xu ngoài hệ.
+**Hiện trạng:**
+- Hub : kênh , TV gửi , iPad nhận  và nạp iframe .
+- Mỗi game có kênh riêng (, , , , …). Mẫu :
+  - **TV (laptop phòng game) là trọng tài.** Nó phát  mỗi 1s. Khi ván kết thúc,  mang , với  (5·3·2).
+  - **TV đã có ô gõ sẵn tên theo slot** (), iPad tự điền từ đó. Có sẵn cả nhập điểm tay ().
+  - **Xu không ghi DB**, chỉ nằm ở localStorage của TV ().
 
-**Chưa biết (dò khi code):** message shape hiện tại các game gửi kết quả; hub có chỗ nhận tên người chơi chưa; cộng dồn 3 ván đặt ở hub hay ở màn quản trò.
+**Cách nối (chốt):**
+1. **Điện thoại quản trò join kênh game của phòng** () bằng supabase-js broadcast. Không cần sửa code từng game.
+2.  trả . Quản trò gửi xuống TV game để **điền sẵn  theo slot**.
+   Cách tối thiểu: sửa TV game nhận thêm 1 message . Fallback: quản trò gõ tay tên vào TV như hiện nay.
+3. Điện thoại nghe , **cộng dồn  theo slot qua 3  khác nhau** (bỏ trùng theo matchId vì  phát lại mỗi 1s). Kết quả điền sẵn vào form **Kết thúc lượt**. Quản trò soát rồi bấm → .
+4. **iPad/anon không ghi DB.** Chỉ điện thoại quản trò (đã đăng nhập) ghi. Fallback: nhập tay xu từng slot.
+5. Chênh lệch nhỏ: hub cho 8 slot, sự kiện tối đa 6 →  gán slot 1..6.
 
----
+**Ghi chú app ERP (dò 25/09):**
+- Màn mới = leaf trong  () + nhánh route  + cấp  cho nhân sự trực (Phân quyền).
+-  **chưa dùng Realtime ở đâu** (màn đều poll 5–7s). Sự kiện dùng  trên bảng  (thêm vào  như mig ). Kèm **poll 5s dự phòng**, rớt socket không kẹt màn.
+- TV vòng quay / TV hàng chờ: đăng nhập bằng 1 tài khoản nhân sự, mở route toàn màn hình.
 
 ## 6. Thứ tự build (ưu tiên nếu thiếu giờ)
 
