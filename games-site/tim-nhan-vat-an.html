@@ -327,7 +327,7 @@ const DEF={role:null,slot:1,room:'BK01',sbUrl:'https://osrvycilwshkzhljuxef.supa
 let C=Object.assign({},DEF);try{Object.assign(C,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
 const q=new URLSearchParams(location.search);if(q.get('role'))C.role=q.get('role');if(q.get('slot'))C.slot=+q.get('slot');if(q.get('room'))C.room=q.get('room');
 function saveC(){localStorage.setItem(KEY,JSON.stringify(C))}
-if(C.prizev!==1){C.prizes=DEF.prizes.slice();C.prizev=1;saveC()} // luật thưởng chung iPad (Thùy 25/09): Nhất 5 · Nhì 3 · còn lại 2
+if(C.prizev!==2){C.prizes=DEF.prizes.slice();C.perfect=DEF.perfect;C.prizev=2;saveC()} // luật thưởng chung iPad (Thùy 25/09): Nhất 5 · Nhì 3 · còn lại 2, KHÔNG thưởng hoàn hảo
 
 // ---------- sound / confetti ----------
 let AC=null;function beep(f,d,t,v,sl){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.type=t||'triangle';o.frequency.setValueAtTime(f,AC.currentTime);if(sl)o.frequency.exponentialRampToValueAtTime(sl,AC.currentTime+d);g.gain.setValueAtTime(v||.08,AC.currentTime);g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+d);o.connect(g);g.connect(AC.destination);o.start();o.stop(AC.currentTime+d)}catch(e){}}
@@ -547,7 +547,7 @@ function playerNet(){
     if(st.phase==='countdown'&&P.matchId!==st.matchId&&!P.playing){P.matchId=st.matchId;P.name=$('pName').value.trim();
       const localStart=performance.now()+(st.startAt-serverNow());startGame(st.seed,st.cfg||C,false,localStart);sendPlayer()}
     if(st.phase==='playing'&&P.matchId!==st.matchId&&!P.playing){$('pWait').textContent='Trận đang diễn ra, chờ trận sau nhé'}
-    if(st.phase==='result'&&st.results&&st.results[C.slot]&&P.matchId===st.matchId){const r=st.results[C.slot];if($('rRank').textContent===''){$('rRank').textContent='Hạng '+r.rank+' / '+st.n;$('rXu').textContent='+'+r.xu+' xu'+(r.perfect?' (có thưởng Perfect)':'');$('rWait').textContent='';if(r.rank===1)confetti(200)}}
+    if(st.phase==='result'&&st.results&&st.results[C.slot]&&P.matchId===st.matchId){const r=st.results[C.slot];if($('rRank').textContent===''){$('rRank').textContent='Hạng '+r.rank+' / '+st.n;$('rXu').textContent='+'+r.xu+' xu'+(r.perfect?' · ⭐ Perfect':'');$('rWait').textContent='';if(r.rank===1)confetti(200)}}
     if(st.phase==='abort'&&changed){P.playing=false;$('cdOverlay').classList.remove('show');pShow('pLobby')}
   });
 }

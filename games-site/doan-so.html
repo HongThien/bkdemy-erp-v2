@@ -186,7 +186,7 @@
     </div>
   </div>
   <div class="actions">
-    <button id="btnNext">Ván mới ▶</button>
+    <button id="btnNext">Lượt tiếp ▶</button>
     <button id="btnSettings">⚙ Cài đặt</button>
     <button id="btnReset">↺ Chơi lại từ đầu</button>
   </div>
@@ -200,7 +200,7 @@
       <div class="reel" id="reelT"><div class="mid"></div><div class="strip"></div></div>
       <div class="reel" id="reelO"><div class="mid"></div><div class="strip"></div></div>
     </div>
-    <div class="resultMsg" id="resultMsg">Nhập số đoán của từng người rồi bấm QUAY SỐ</div>
+    <div class="resultMsg" id="resultMsg">Gõ tên và số đoán của các bạn mua vé rồi bấm QUAY SỐ</div>
     <div class="spinRow">
       <input id="manualNum" type="number" min="0" max="99" placeholder="Số" style="display:none" title="Nhập số kết quả thủ công">
       <button class="primary" id="btnSpin">🎲 QUAY SỐ</button>
@@ -214,7 +214,7 @@
       <thead><tr><th>#</th><th>Tên</th><th>Số đoán</th><th style="text-align:center">Kết quả</th><th style="text-align:right">Xu</th></tr></thead>
       <tbody id="players"></tbody>
     </table>
-    <div class="tip">Bỏ trống số đoán nếu người đó không chơi ván này. Enter để nhảy sang người tiếp theo.</div>
+    <div class="tip">Lượt 1: gõ tên + số đoán cho các bạn đã mua vé (dòng trống = không chơi). Từ lượt 2 cả nhóm phải đoán đủ mới quay được. Enter để nhảy sang bạn tiếp theo.</div>
     <h2 style="margin-top:16px"><span>📜 Lịch sử</span></h2>
     <div class="history" id="history">Chưa có ván nào.</div>
   </section>
@@ -225,8 +225,8 @@
     <h3>⚙ Cài đặt luật chơi</h3>
     <div class="grid">
       <label>Số người chơi <input type="number" id="cPlayers" min="1" max="30"></label>
-      <label>Xu khởi điểm mỗi người <input type="number" id="cStart" min="0"></label>
-      <label>Xu đặt mỗi ván <input type="number" id="cStake" min="1"></label>
+      <label>Số lượt mỗi vé <input type="number" id="cLuot" min="1" max="20"></label>
+      <label>Xu đặt mỗi lượt <input type="number" id="cStake" min="1"></label>
       <label>Trúng đúng: nhân <input type="number" id="cExact" min="0"></label>
       <label>Lệch tối đa (mức 2) <input type="number" id="cNearR" min="1" max="49"></label>
       <label>Mức 2: nhân <input type="number" id="cNear" min="0"></label>
@@ -242,7 +242,7 @@
       <button id="dlgCancel">Đóng</button>
       <button class="primary" id="dlgSave">Lưu</button>
     </div>
-    <div class="tip">Đổi số người chơi hoặc xu khởi điểm chỉ áp dụng khi "Chơi lại từ đầu". Phím tắt tổng kết: Ctrl+Shift+T.</div>
+    <div class="tip">Đổi số người / số lượt mỗi vé áp dụng từ nhóm mới. Phím tắt tổng kết: Ctrl+Shift+T.</div>
   </div>
 </dialog>
 
@@ -270,19 +270,23 @@
 <script>
 (function(){
   const KEY='bk-doanso-v1';
-  const DEF={exact:30,near:10,far:5,nearRange:2,farRange:5,wrap:true,stake:1,startCoins:10,manual:false,sound:true,nPlayers:10};
+  // LUẬT VÉ (Thùy 25/09): mỗi bạn mua VÉ = `luot` lượt × `stake` xu (mặc định 5 lượt × 1 xu = 5 xu).
+  // Nhóm = các bạn đoán ở lượt 1. Lượt 2..luot: cả nhóm PHẢI đoán mới quay được (không bỏ lượt). Hết luot lượt ⇒ nhóm xong,
+  // xu còn lại = xu nhận về; bấm "Nhóm mới" cho các bạn khác. Trước đây: 10 xu khởi điểm, chơi vô hạn, được bỏ ván.
+  const DEF={exact:30,near:10,far:5,nearRange:2,farRange:5,wrap:true,stake:1,luot:5,startCoins:5,manual:false,sound:true,nPlayers:10,v:2};
   const $=id=>document.getElementById(id);
+  const defName=i=>'Người chơi '+(i+1);
 
   // ---------- State ----------
-  function fresh(cfg){
-    cfg=cfg||{...DEF};
-    return {cfg,round:0,thu:0,chi:0,history:[],
-      players:Array.from({length:cfg.nPlayers},(_,i)=>({name:'Người chơi '+(i+1),coins:cfg.startCoins,guess:'',last:null,delta:0}))};
-  }
-  function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.players){s.cfg={...DEF,...s.cfg};return s}}catch(e){}return null}
+  function newPlayers(cfg){return Array.from({length:cfg.nPlayers},(_,i)=>({name:defName(i),coins:cfg.startCoins,guess:'',last:null,delta:0}))}
+  function fresh(cfg){cfg=cfg||{...DEF};return {cfg,round:0,thu:0,chi:0,history:[],groups:[],grp:{n:1,luot:0,members:null},players:newPlayers(cfg)}}
+  function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.players){if(!s.cfg||s.cfg.v!==2)return null; // dữ liệu luật cũ (trước vé) ⇒ bắt đầu mới
+    s.cfg={...DEF,...s.cfg};s.groups=s.groups||[];s.grp=s.grp||{n:1,luot:0,members:null};return s}}catch(e){}return null}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
   let S=load()||fresh();
   let spinning=false, roundDone=false;
+  const inGroup=i=>!S.grp.members||S.grp.members.includes(i);
+  const groupDone=()=>S.grp.luot>=S.cfg.luot;
 
   // ---------- Math ----------
   function dist(g,r,wrap){let d=Math.abs(g-r);if(wrap)d=Math.min(d,100-d);return d}
@@ -357,40 +361,46 @@
   function renderPlayers(){
     const tb=$('players');tb.innerHTML='';
     S.players.forEach((p,i)=>{
-      const tr=document.createElement('tr');
+      const tr=document.createElement('tr');const out=!inGroup(i);
       if(p.last&&p.last!=='miss'&&roundDone)tr.className='win-'+p.last;
+      if(out)tr.style.opacity='.35';
       const d=p.delta?`<span class="delta ${p.delta>0?'up':'down'}">${p.delta>0?'+':''}${p.delta}</span>`:'';
       tr.innerHTML=`<td class="num">${i+1}</td>
         <td><input class="name" data-i="${i}" value="${esc(p.name)}"></td>
-        <td><input class="guess" data-i="${i}" type="number" min="0" max="99" inputmode="numeric" value="${p.guess}" ${spinning||roundDone?'disabled':''}></td>
-        <td class="res">${roundDone?badge(p.last,mult(p.last,S.cfg)):''}</td>
-        <td class="coins">${p.coins}${roundDone?d:''}</td>`;
+        <td><input class="guess" data-i="${i}" type="number" min="0" max="99" inputmode="numeric" value="${p.guess}" ${spinning||roundDone||out?'disabled':''}></td>
+        <td class="res">${roundDone&&!out?badge(p.last,mult(p.last,S.cfg)):''}</td>
+        <td class="coins">${out?'–':p.coins}${roundDone&&!out?d:''}</td>`;
       tb.appendChild(tr);
     });
     tb.querySelectorAll('input.name').forEach(el=>el.addEventListener('input',e=>{S.players[+el.dataset.i].name=el.value;save()}));
     tb.querySelectorAll('input.guess').forEach(el=>{
       el.addEventListener('input',()=>{let v=el.value.replace(/\D/g,'').slice(0,2);el.value=v;S.players[+el.dataset.i].guess=v;save();updateCount()});
-      el.addEventListener('keydown',e=>{if(e.key==='Enter'){const nx=tb.querySelectorAll('input.guess')[+el.dataset.i+1];if(nx)nx.focus();else $('btnSpin').focus()}});
+      el.addEventListener('keydown',e=>{if(e.key==='Enter'){const all=[...tb.querySelectorAll('input.guess')];const nx=all.slice(+el.dataset.i+1).find(x=>!x.disabled);if(nx)nx.focus();else $('btnSpin').focus()}});
     });
     updateCount();
   }
   function updateCount(){
-    const n=S.players.filter(p=>p.guess!=='').length;
-    $('playingCount').textContent=`${n}/${S.players.length} người đặt`;
+    const m=S.grp.members;
+    const n=S.players.filter((p,i)=>inGroup(i)&&p.guess!=='').length;
+    $('playingCount').textContent=m?`${n}/${m.length} bạn đã đoán`:`${n} bạn mua vé`;
   }
   function renderStats(){
-    $('roundLabel').textContent='Ván '+(roundDone?S.round:S.round+1);
-    const c=S.cfg;
+    const c=S.cfg,done=groupDone();
+    const cur=Math.min(c.luot,S.grp.luot+(roundDone?0:1));
+    $('roundLabel').textContent=`Nhóm ${S.grp.n} · Lượt ${cur}/${c.luot}`;
     $('rulesText').innerHTML=`
       <div class="title">Luật chơi</div>
-      <div class="rule stake"><span class="ic">🪙</span><span class="lbl">Mỗi ván đặt cược</span><span class="val">${c.stake} xu</span></div>
+      <div class="rule stake"><span class="ic">🎟</span><span class="lbl">Vé ${c.luot} lượt<small>mỗi lượt đặt ${c.stake} xu · phải chơi đủ, không bỏ lượt</small></span><span class="val">${c.luot*c.stake} xu</span></div>
       <div class="rule exact"><span class="ic">🎯</span><span class="lbl">Trúng đúng số</span><span class="val">x${c.exact}</span></div>
       <div class="rule near"><span class="ic">🔥</span><span class="lbl">Lệch 1 – ${c.nearRange}<small>${c.wrap?'99 và 0 tính là kề nhau':''}</small></span><span class="val">x${c.near}</span></div>
       <div class="rule far"><span class="ic">✨</span><span class="lbl">Lệch ${c.nearRange+1} – ${c.farRange}</span><span class="val">x${c.far}</span></div>`;
-    $('history').innerHTML=S.history.length?S.history.slice().reverse().map(h=>`Ván ${h.round}: <b>${String(h.num).padStart(2,'0')}</b>${h.winners.length?' · '+h.winners.join(', '):' · không ai trúng'}`).join('<br>'):'Chưa có ván nào.';
+    const gl=S.groups.slice().reverse().map(g=>`🏁 <b>Nhóm ${g.n}</b>: ${g.res.map(r=>esc(r.name)+' <b>'+r.coins+' xu</b>').join(' · ')}`);
+    const rl=S.history.slice().reverse().map(h=>`${h.grp?'N'+h.grp+' · L'+h.luot:'Ván '+h.round}: <b>${String(h.num).padStart(2,'0')}</b>${h.winners.length?' · '+h.winners.join(', '):' · không ai trúng'}`);
+    $('history').innerHTML=gl.concat(rl).join('<br>')||'Chưa có lượt nào.';
     $('manualNum').style.display=c.manual?'':'none';
     $('btnSpin').disabled=spinning||roundDone;
     $('btnNext').disabled=spinning||!roundDone;
+    $('btnNext').textContent=done?'Nhóm mới ▶':'Lượt tiếp ▶';
   }
   function esc(s){return String(s).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]))}
   function renderAll(){renderPlayers();renderStats()}
@@ -399,8 +409,10 @@
   async function spin(){
     if(spinning||roundDone)return;
     const c=S.cfg;
-    const active=S.players.filter(p=>p.guess!=='');
-    if(!active.length){msg('Chưa ai đặt số cả!');return}
+    if(groupDone()){msg('Nhóm đã chơi đủ '+c.luot+' lượt — bấm "Nhóm mới"');return}
+    let members=S.grp.members;
+    if(!members){members=S.players.map((p,i)=>p.guess!==''?i:-1).filter(i=>i>=0);if(!members.length){msg('Chưa ai đoán số cả!');return}}
+    else{const miss=members.filter(i=>S.players[i].guess==='');if(miss.length){msg('Chưa đoán: '+miss.map(i=>S.players[i].name).join(', ')+' — lượt nào cũng phải chơi');return}}
     let num;
     if(c.manual){
       num=parseInt($('manualNum').value,10);
@@ -408,6 +420,7 @@
     }else{
       const a=new Uint32Array(1);crypto.getRandomValues(a);num=a[0]%100;
     }
+    S.grp.members=members; // lượt 1 chốt nhóm: ai đoán ở lượt 1 là người mua vé
     spinning=true;renderAll();
     msg('Đang quay…');
     document.querySelectorAll('.reel').forEach(r=>r.classList.remove('hit'));
@@ -418,12 +431,12 @@
     const pO=setReel('O',num%10,4300).then(()=>beep(1175,.2,'triangle',.12));
     await Promise.all([pT,pO]);clearInterval(ticker);
 
-    // settle
-    S.round++;
+    // settle — chỉ các bạn trong nhóm
+    S.round++;S.grp.luot++;
     let thu=0,chi=0;const winners=[];let best='miss';
     const order={miss:0,far:1,near:2,exact:3};
-    S.players.forEach(p=>{
-      if(p.guess===''){p.last=null;p.delta=0;return}
+    S.players.forEach((p,i)=>{
+      if(!members.includes(i)){p.last=null;p.delta=0;return}
       const g=parseInt(p.guess,10);
       const t=tier(dist(g,num,c.wrap),c),m=mult(t,c);
       const win=m*c.stake;
@@ -432,29 +445,38 @@
       if(t!=='miss'){winners.push(`${p.name} (${String(g).padStart(2,'0')}, x${m})`);if(order[t]>order[best])best=t}
     });
     S.thu+=thu;S.chi+=chi;
-    S.history.push({round:S.round,num,thu,chi,winners});
+    S.history.push({round:S.round,grp:S.grp.n,luot:S.grp.luot,num,thu,chi,winners});
+    const end=groupDone();
+    if(end)S.groups.push({n:S.grp.n,res:members.map(i=>({name:S.players[i].name,coins:S.players[i].coins}))});
     spinning=false;roundDone=true;save();
     document.querySelectorAll('.reel').forEach(r=>r.classList.add('hit'));
-    if(best==='exact'){msg(`🎉 TRÚNG ĐÚNG ${String(num).padStart(2,'0')}! ${winners.length} người thắng`,true);confetti(260);fanfare()}
-    else if(best!=='miss'){msg(`Số ${String(num).padStart(2,'0')} — ${winners.length} người có thưởng`,true);confetti(80);beep(660,.3,'triangle',.1)}
-    else msg(`Số ${String(num).padStart(2,'0')} — không ai trúng, thử lại ván sau nhé!`);
+    const tail=end?` · 🏁 HẾT ${c.luot} LƯỢT — xem xu cuối cùng`:'';
+    if(best==='exact'){msg(`🎉 TRÚNG ĐÚNG ${String(num).padStart(2,'0')}! ${winners.length} người thắng`+tail,true);confetti(260);fanfare()}
+    else if(best!=='miss'){msg(`Số ${String(num).padStart(2,'0')} — ${winners.length} người có thưởng`+tail,true);confetti(80);beep(660,.3,'triangle',.1)}
+    else msg(`Số ${String(num).padStart(2,'0')} — không ai trúng`+tail,!!end);
     renderAll();
   }
   function msg(t,big){const el=$('resultMsg');el.textContent=t;el.className='resultMsg'+(big?' big':'')}
   function nextRound(){
-    S.players.forEach(p=>{p.guess='';p.last=null;p.delta=0});
+    if(groupDone()){ // nhóm mới: các bạn khác mua vé — xoá tên, xu về giá vé
+      S.grp={n:S.grp.n+1,luot:0,members:null};
+      S.players=newPlayers(S.cfg);
+      msg('Nhóm mới: gõ tên và số đoán của các bạn mua vé rồi bấm QUAY SỐ');
+    }else{
+      S.players.forEach(p=>{p.guess='';p.last=null;p.delta=0});
+      msg('Lượt '+(S.grp.luot+1)+'/'+S.cfg.luot+': cả nhóm đoán số rồi bấm QUAY SỐ');
+    }
     roundDone=false;$('manualNum').value='';
     document.querySelectorAll('.reel').forEach(r=>r.classList.remove('hit'));
-    msg('Nhập số đoán của từng người rồi bấm QUAY SỐ');
     save();renderAll();
-    const f=document.querySelector('input.guess');if(f)f.focus();
+    const f=[...document.querySelectorAll('input.guess')].find(x=>!x.disabled);if(f)f.focus();
   }
 
   // ---------- Settings ----------
   const dlg=$('dlg');
   function fillDlg(){
     const c=S.cfg;
-    $('cPlayers').value=S.players.length;$('cStart').value=c.startCoins;$('cStake').value=c.stake;
+    $('cPlayers').value=S.players.length;$('cLuot').value=c.luot;$('cStake').value=c.stake;
     $('cExact').value=c.exact;$('cNear').value=c.near;$('cFar').value=c.far;
     $('cNearR').value=c.nearRange;$('cFarR').value=c.farRange;
     $('cWrap').checked=c.wrap;$('cManual').checked=c.manual;$('cSound').checked=c.sound;
@@ -462,30 +484,29 @@
   }
   function readDlg(){
     return {...S.cfg,
-      nPlayers:Math.max(1,+$('cPlayers').value||10),startCoins:Math.max(0,+$('cStart').value||0),stake:Math.max(1,+$('cStake').value||1),
+      nPlayers:Math.max(1,+$('cPlayers').value||10),luot:Math.max(1,+$('cLuot').value||5),stake:Math.max(1,+$('cStake').value||1),
       exact:Math.max(0,+$('cExact').value||0),near:Math.max(0,+$('cNear').value||0),far:Math.max(0,+$('cFar').value||0),
       nearRange:Math.max(1,+$('cNearR').value||1),farRange:Math.max(1,+$('cFarR').value||1),
-      wrap:$('cWrap').checked,manual:$('cManual').checked,sound:$('cSound').checked};
+      wrap:$('cWrap').checked,manual:$('cManual').checked,sound:$('cSound').checked,v:2};
   }
+  function readCfg(){const c=readDlg();c.startCoins=c.luot*c.stake;return c} // giá vé = số lượt × xu mỗi lượt
   function updateRatio(){
     const c=readDlg();if(c.farRange<c.nearRange)c.farRange=c.nearRange;
     const r=expectedRatio(c);
     const pHit=(1+2*c.farRange)/100*100;
-    $('ratioBox').innerHTML=`Kỳ vọng xu chi / xu thu: <b>${r.toFixed(2)}</b> &nbsp;·&nbsp; Xác suất 1 người có thưởng: <b>${pHit.toFixed(0)}%</b><br>
+    $('ratioBox').innerHTML=`Giá vé: <b>${c.luot*c.stake} xu</b> = ${c.luot} lượt × ${c.stake} xu<br>Kỳ vọng xu chi / xu thu: <b>${r.toFixed(2)}</b> &nbsp;·&nbsp; Xác suất 1 người có thưởng: <b>${pHit.toFixed(0)}%</b><br>
       <span style="color:var(--muted)">${r>1.05?'BK sẽ lỗ về lâu dài':r<0.95?'BK sẽ lãi về lâu dài':'Gần như hòa vốn'}</span>`;
   }
   dlg.querySelectorAll('input').forEach(el=>el.addEventListener('input',updateRatio));
   $('btnSettings').onclick=()=>{fillDlg();dlg.showModal()};
   $('dlgCancel').onclick=()=>dlg.close();
   $('dlgSave').onclick=()=>{
-    const c=readDlg();if(c.farRange<c.nearRange)c.farRange=c.nearRange;
+    const c=readCfg();if(c.farRange<c.nearRange)c.farRange=c.nearRange;
     S.cfg=c;save();dlg.close();renderAll();
   };
   $('btnReset').onclick=()=>{
     if(!confirm('Xóa toàn bộ điểm và lịch sử, bắt đầu lại từ đầu?'))return;
-    const names=S.players.map(p=>p.name);
     S=fresh({...S.cfg});
-    S.players.forEach((p,i)=>{if(names[i]&&!/^Người chơi \d+$/.test(names[i]))p.name=names[i]});
     roundDone=false;spinning=false;
     setReel('T',0);setReel('O',0);
     msg('Nhập số đoán của từng người rồi bấm QUAY SỐ');save();renderAll();
@@ -513,6 +534,7 @@
 
   // ---------- Init ----------
   if(S.history.length){const h=S.history[S.history.length-1];setReel('T',Math.floor(h.num/10));setReel('O',h.num%10);}
+  if(groupDone())roundDone=true; // tải lại trang lúc nhóm vừa xong ⇒ vẫn hiện nút Nhóm mới
   renderAll();
 })();
 </script>

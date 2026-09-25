@@ -11,6 +11,8 @@
 
 ## Game 1 — 🎲 Đoán Số Trung Thu
 
+> **Cập nhật 25/09 — Thùy chốt, code đã đổi:** vé **5 xu = 5 lượt × 1 xu**; nhóm = các bạn đoán ở lượt 1; lượt 2–5 cả nhóm **phải đoán đủ** mới quay được (không bỏ lượt); hết 5 lượt ⇒ xu còn lại là xu nhận về, bấm "Nhóm mới". Xu không thể âm nữa (mục ❓1, ❓2, ❓5 bên dưới đã xong). Phần A/B bên dưới còn viết theo luật cũ (10 xu, được bỏ ván) — **bản đúng cho học sinh là `games-site/luat-choi.html`**.
+
 **Một câu:** Mỗi ván, mỗi người đoán một số từ **00 đến 99** và đặt **1 xu**. Máy quay ra một số —
 đoán càng gần, thưởng càng to.
 
