@@ -2,7 +2,7 @@
 // AppKhaoSat: đăng nhập nhân sự, cùng Supabase, KHÔNG kéo NhanSuHome/useStore → bundle nhẹ, người trực không thấy
 // menu ERP. Quyền thật nằm ở DB: mọi fn_sk_* kiểm la_thanh_vien() — nhân sự nào đăng nhập cũng dùng được.
 // Hash:  #sk-tv=quay|hang&sk=<id>  → màn TV toàn màn hình
-//        #man=checkin|quay|quantro|caidat → mở thẳng tab đó (link riêng cho từng vị trí trực)
+//        #man=checkin|dangky|quay|quantro|caidat → mở thẳng tab đó (link riêng cho từng vị trí trực)
 import { useEffect, useState } from 'react'
 import type { Session } from '@supabase/supabase-js'
 import { supabase } from './lib/supabase'
@@ -22,7 +22,7 @@ function ManThongBao({ text }: { text: string }) {
 }
 const DangTai = () => <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải…</div>
 
-const TABS: TabSuKien[] = ['checkin', 'quay', 'quantro', 'caidat']
+const TABS: TabSuKien[] = ['checkin', 'dangky', 'quay', 'quantro', 'caidat']
 const tabTuHash = (): TabSuKien | undefined => {
   const m = new URLSearchParams(location.hash.replace(/^#/, '')).get('man')
   return TABS.includes(m as TabSuKien) ? (m as TabSuKien) : undefined

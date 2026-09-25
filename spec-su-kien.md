@@ -158,3 +158,6 @@ Mutation trong cùng màn: **vá tại chỗ**, không reload trắng (§2); rea
 - **Bàn quay riêng** (vai `quay`, mig `202609260307`): 2 laptop — 1 người check-in, 1 người ở bàn quay. Bàn quay = vòng quay to +
   danh sách HS đã check-in mà chưa quay (`fn_sk_cho_quay`, đến trước quay trước); HS tìm tên mình, bấm 🎡 QUAY ⇒ quay ngay trên màn đó
   (TV riêng nếu có cũng quay theo). `fn_sk_quay` chỉ cho vai `quay`; màn Check-in bỏ nút Quay, hiện "→ Mời ra bàn quay".
+- **Tách Check-in / Đăng ký game** (vai `dangky`, mig `202609260315`): Check-in chỉ HS BK + danh sách đã check-in ngay bên dưới
+  (`fn_sk_da_checkin`, mới nhất trên cùng, có cột đã quay/chưa quay). Đăng ký game: HS BK + khách (cấp số), tóm tắt hàng chờ.
+  Dự kiến 1 người làm cả 2 ⇒ giao cả 2 vai, thấy 2 tab. Bỏ màn "chọn việc": mỗi việc được giao = 1 tab.

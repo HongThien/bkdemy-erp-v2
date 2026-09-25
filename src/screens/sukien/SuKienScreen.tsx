@@ -7,7 +7,7 @@ import * as sk from '../../lib/sukien'
 import type { KetQuaTim, PhongTQ, SuKien, TongQuan } from '../../lib/sukien'
 import { VongQuay } from './TvSuKien'
 
-export type TabSuKien = 'checkin' | 'quay' | 'quantro' | 'caidat'
+export type TabSuKien = 'checkin' | 'dangky' | 'quay' | 'quantro' | 'caidat'
 type Tab = TabSuKien
 const LS_SK = 'sk-su-kien-dang-chon'
 const LS_TAB = 'sk-tab'
@@ -29,54 +29,23 @@ function useToast() {
 }
 
 // VIỆC ĐƯỢC GIAO (Thùy 26/09: "giao task check-in, quản trò cho nhân sự, đứa nào không giao thì không thấy gì").
-// Quản lý giao việc ở Cài đặt (sk_phan_cong, mig 202609260219); DB chặn mọi RPC ngoài việc được giao.
-// Được giao 1 việc ⇒ vào thẳng màn đó. Nhiều việc ⇒ chọn 1 lần (máy nhớ), có nút đổi.
-// 'tatca' = Quản lý (vai quanly / admin hệ thống): đủ tab + Cài đặt + giao việc + điều chỉnh xu.
-type ViTri = Exclude<Tab, 'caidat'> | 'tatca'
-const LS_VITRI = 'sk-vi-tri'
-const VI_TRI: { k: ViTri; icon: string; ten: string; mo: string; bg: string; ill: string }[] = [
-  { k: 'checkin', icon: '🚪', ten: 'Check-in', mo: 'Laptop ở cửa · check-in, quay, đăng ký game', bg: 'bg-emerald-50', ill: 'bg-emerald-200' },
-  { k: 'quantro', icon: '🎮', ten: 'Quản trò', mo: 'Điện thoại phòng iPad · gọi tên, bắt đầu, cộng xu', bg: 'bg-indigo-50', ill: 'bg-indigo-200' },
-  { k: 'quay', icon: '🎡', ten: 'Bàn quay', mo: 'Laptop thứ 2 · HS check-in xong ra đây bấm quay', bg: 'bg-amber-50', ill: 'bg-amber-200' },
-  { k: 'tatca', icon: '⚙️', ten: 'Quản lý', mo: 'Xem tất cả · cài đặt · giao việc · màn TV', bg: 'bg-amber-50', ill: 'bg-amber-200' },
+// Quản lý giao việc ở Cài đặt (sk_phan_cong); DB chặn mọi RPC ngoài việc được giao.
+// Mỗi việc được giao = 1 TAB (1 người làm cả Check-in + Đăng ký game thì thấy 2 tab, bấm qua lại).
+// Quản lý (vai quanly / admin hệ thống) thấy mọi tab + Cài đặt.
+const TAB_VIEC: { k: Exclude<Tab, 'caidat'>; t: string }[] = [
+  { k: 'checkin', t: '🚪 Check-in' }, { k: 'dangky', t: '📝 Đăng ký game' }, { k: 'quay', t: '🎡 Bàn quay' }, { k: 'quantro', t: '🎮 Quản trò' },
 ]
-const TEN_VI_TRI: Record<ViTri, string> = { checkin: '🚪 Check-in', quantro: '🎮 Quản trò', quay: '🎡 Bàn quay', tatca: '⚙️ Quản lý' }
-const viTriDuoc = (vai: sk.Vai[]): ViTri[] =>
-  VI_TRI.map((v) => v.k).filter((k) => k === 'tatca' ? vai.includes('quanly') : vai.includes(k as sk.Vai))
-
-function ChonViTri({ ds, onChon }: { ds: ViTri[]; onChon: (v: ViTri) => void }) {
-  return (
-    <div className="mx-auto max-w-2xl p-4">
-      <h2 className="mb-1 text-xl font-black text-slate-800">Bạn trực ở đâu?</h2>
-      <p className="mb-4 text-sm text-slate-500">Bạn được giao {ds.length} việc — chọn việc đang làm trên máy này (máy sẽ nhớ).</p>
-      <div className="grid grid-cols-2 gap-3">
-        {VI_TRI.filter((v) => ds.includes(v.k)).map((v) => (
-          <button key={v.k} onClick={() => onChon(v.k)} className={`relative flex aspect-[4/3] flex-col items-start justify-between rounded-2xl p-4 text-left shadow-sm transition active:scale-[.98] ${v.bg}`}>
-            <span className={`flex h-14 w-14 items-center justify-center rounded-2xl text-3xl ${v.ill}`}>{v.icon}</span>
-            <span>
-              <span className="block text-lg font-black text-slate-800">{v.ten}</span>
-              <span className="block text-xs text-slate-500">{v.mo}</span>
-            </span>
-            <span className="absolute bottom-3 right-3 text-xl text-slate-400">›</span>
-          </button>
-        ))}
-      </div>
-    </div>
-  )
-}
+const tabDuoc = (vai: sk.Vai[]): [Tab, string][] => [
+  ...TAB_VIEC.filter((x) => vai.includes(x.k)).map((x) => [x.k, x.t] as [Tab, string]),
+  ...(vai.includes('quanly') ? [['caidat', '⚙️ Cài đặt'] as [Tab, string]] : []),
+]
 
 export default function SuKienScreen({ tabDau, appRieng = false }: { tabDau?: Tab; appRieng?: boolean } = {}) {
   const [ds, setDs] = useState<SuKien[] | null>(null)
   const [skId, setSkId] = useState<string | null>(lsGet(LS_SK))
-  // Vị trí MUỐN (từ link #man= hoặc máy đã nhớ) — chỉ có hiệu lực nếu nằm trong việc được giao.
-  const [viTriMuon, setViTriMuon] = useState<ViTri | null>(() => (tabDau && tabDau !== 'caidat' ? tabDau : (lsGet(LS_VITRI) as ViTri | null)))
-  const [tab, setTab] = useState<Tab>(tabDau || (lsGet(LS_TAB) as Tab) || 'checkin')
+  const [tabMuon, setTabMuon] = useState<Tab | null>(tabDau || (lsGet(LS_TAB) as Tab | null))
   const [loiTai, setLoiTai] = useState<string | null>(null)
   const toast = useToast()
-  const chonViTri = (v: ViTri | null) => {
-    setViTriMuon(v)
-    if (v) { lsSet(LS_VITRI, v); if (v !== 'tatca') setTab(v) } else { try { localStorage.removeItem(LS_VITRI) } catch { /* bỏ qua */ } }
-  }
 
   const taiDs = async () => {
     try {
@@ -92,22 +61,19 @@ export default function SuKienScreen({ tabDau, appRieng = false }: { tabDau?: Ta
   }
   useEffect(() => { taiDs() }, [])
   useEffect(() => { if (skId) lsSet(LS_SK, skId) }, [skId])
-  useEffect(() => { lsSet(LS_TAB, tab) }, [tab])
 
   const ev = ds?.find((s) => s.id === skId) ?? null
-  const duoc = ev ? viTriDuoc(ev.vai) : []
-  const viTri: ViTri | null = viTriMuon && duoc.includes(viTriMuon) ? viTriMuon : duoc.length === 1 ? duoc[0] : null
-  const quanLy = viTri === 'tatca'
-  const tabHien: Tab = viTri === 'tatca' ? tab : (viTri ?? 'checkin')
+  const tabs = ev ? tabDuoc(ev.vai) : []
+  const tab: Tab | null = tabMuon && tabs.some(([k]) => k === tabMuon) ? tabMuon : tabs[0]?.[0] ?? null
+  const chonTab = (k: Tab) => { setTabMuon(k); lsSet(LS_TAB, k) }
+  const quanLy = !!ev?.vai.includes('quanly')
 
   const live = sk.useTongQuan(skId)
 
   if (loiTai) return <section className="p-6 text-sm text-rose-600">Không tải được sự kiện: {loiTai}</section>
   if (!ds) return <section className="p-6 text-sm text-slate-400">Đang tải…</section>
-  if (!ev || !duoc.length) return <section className="flex min-h-0 flex-col items-center justify-center gap-2 p-8 text-center"><div className="text-4xl">🏮</div><div className="font-bold text-slate-700">Bạn chưa được giao việc ở sự kiện nào</div><div className="text-sm text-slate-500">Nhờ quản lý sự kiện giao việc cho bạn (Cài đặt › Giao việc), rồi tải lại trang.</div><button onClick={() => taiDs()} className="mt-2 rounded-lg border border-slate-300 px-3 py-1.5 text-sm">↻ Tải lại</button></section>
-  if (!viTri) return <section className="min-h-0 overflow-auto bg-[#f5f5f7]"><ChonViTri ds={duoc} onChon={chonViTri} /></section>
+  if (!ev || !tab) return <section className="flex min-h-0 flex-col items-center justify-center gap-2 p-8 text-center"><div className="text-4xl">🏮</div><div className="font-bold text-slate-700">Bạn chưa được giao việc ở sự kiện nào</div><div className="text-sm text-slate-500">Nhờ quản lý sự kiện giao việc cho bạn (Cài đặt › Giao việc), rồi tải lại trang.</div><button onClick={() => taiDs()} className="mt-2 rounded-lg border border-slate-300 px-3 py-1.5 text-sm">↻ Tải lại</button></section>
 
-  const TABS: [Tab, string][] = [['checkin', '🚪 Check-in'], ['quantro', '🎮 Quản trò'], ['quay', '🎡 Bàn quay'], ['caidat', '⚙️ Cài đặt']]
   return (
     <section className="flex min-h-0 flex-col overflow-hidden bg-[#f5f5f7]">
       <div className="flex shrink-0 flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-3 py-2">
@@ -115,37 +81,35 @@ export default function SuKienScreen({ tabDau, appRieng = false }: { tabDau?: Ta
           <select value={skId ?? ''} onChange={(e) => setSkId(e.target.value)} className="rounded-lg border border-slate-300 px-2 py-1.5 text-sm font-semibold">
             {ds.map((s) => <option key={s.id} value={s.id}>{s.ten}{s.trang_thai === 'dong' ? ' (đã đóng)' : ''}</option>)}
           </select>
-        ) : <span className="px-1 text-sm font-bold text-slate-800">🏮 {ds.find((s) => s.id === skId)?.ten ?? 'Chưa có sự kiện'}</span>}
-        {quanLy ? (
-          <div className="flex flex-wrap gap-1">
-            {TABS.map(([k, t]) => (
-              <button key={k} onClick={() => setTab(k)}
-                className={`rounded-lg px-3 py-1.5 text-sm font-semibold ${tab === k ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-100'}`}>{t}</button>
-            ))}
-          </div>
-        ) : <span className="rounded-lg bg-indigo-600 px-3 py-1.5 text-sm font-bold text-white">{TEN_VI_TRI[viTri]}</span>}
-        {duoc.length > 1 && <button onClick={() => chonViTri(null)} className="rounded-md px-2 py-1 text-xs text-slate-500 hover:bg-slate-100">⇄ Đổi việc</button>}
+        ) : <span className="px-1 text-sm font-bold text-slate-800">🏮 {ev.ten}</span>}
+        <div className="flex flex-wrap gap-1">
+          {tabs.map(([k, t]) => (
+            tabs.length > 1
+              ? <button key={k} onClick={() => chonTab(k)} className={`rounded-lg px-3 py-1.5 text-sm font-semibold ${tab === k ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-100'}`}>{t}</button>
+              : <span key={k} className="rounded-lg bg-indigo-600 px-3 py-1.5 text-sm font-bold text-white">{t}</span>
+          ))}
+        </div>
         {live.tq && (
           <div className="ml-auto hidden gap-3 text-xs text-slate-500 md:flex">
             <span>✅ {live.tq.tong_checkin} check-in</span><span>👥 {live.tq.tong_nguoi} người chơi ({live.tq.tong_khach} khách)</span>
-            <span>🪙 phát {live.tq.xu_phat} · đổi {live.tq.xu_doi}</span>
+            <span>🪙 phát {live.tq.xu_phat} xu</span>
           </div>
         )}
       </div>
       {live.err && <div className="shrink-0 bg-amber-50 px-3 py-1 text-xs text-amber-700">⚠ Mất kết nối số liệu: {live.err} — đang thử lại…</div>}
       <div className="min-h-0 flex-1 overflow-auto">
-        {!skId ? <div className="p-6 text-sm text-slate-500">Chưa có sự kiện — vào ⚙️ Cài đặt để tạo.</div>
-          : tabHien === 'checkin' ? <CheckinTab skId={skId} tq={live.tq} toast={toast.show} onDoi={live.tai} />
-          : tabHien === 'quantro' ? <QuanTroTab tq={live.tq} toast={toast.show} onDoi={live.tai} setTq={live.setTq} />
-          : tabHien === 'quay' ? <VongQuay skId={skId} banQuay onLoi={(t) => toast.show(t, true)} />
-          : <CaiDatTab appRieng={appRieng} laAdmin={ev.la_admin} ds={ds} skId={skId} tq={live.tq} toast={toast.show} onDoi={() => { taiDs(); live.tai() }} onChon={setSkId} />}
+        {tab === 'checkin' ? <CheckinTab skId={skId!} toast={toast.show} onDoi={live.tai} />
+          : tab === 'dangky' ? <DangKyTab skId={skId!} tq={live.tq} toast={toast.show} onDoi={live.tai} />
+          : tab === 'quantro' ? <QuanTroTab tq={live.tq} toast={toast.show} onDoi={live.tai} setTq={live.setTq} />
+          : tab === 'quay' ? <VongQuay skId={skId!} banQuay onLoi={(t) => toast.show(t, true)} />
+          : <CaiDatTab appRieng={appRieng} laAdmin={ev.la_admin} ds={ds} skId={skId!} tq={live.tq} toast={toast.show} onDoi={() => { taiDs(); live.tai() }} onChon={setSkId} />}
       </div>
       {toast.el}
     </section>
   )
 }
 
-// ─────────────────────────────── Ô TÌM (dùng chung check-in + quầy quà) ───────────────────────────────
+// ─────────────────────────────── Ô TÌM (dùng chung check-in + đăng ký game) ───────────────────────────────
 function useTim(skId: string) {
   const [q, setQ] = useState('')
   const [rows, setRows] = useState<KetQuaTim[]>([])
@@ -163,13 +127,82 @@ function useTim(skId: string) {
   return { q, setQ, rows, setRows, dangTim, lamMoi: () => chay(q) }
 }
 
-// ─────────────────────────────── CHECK-IN ───────────────────────────────
-function CheckinTab({ skId, tq, toast, onDoi }: { skId: string; tq: TongQuan | null; toast: (t: string, loi?: boolean) => void; onDoi: () => void }) {
+// ─────────────────────────────── CHECK-IN (chỉ HS BK) ───────────────────────────────
+// Check-in xong ⇒ HS ra BÀN QUAY. Danh sách đã check-in hiện ngay dưới ô tìm (Thùy 26/09), mới nhất trên cùng.
+function CheckinTab({ skId, toast, onDoi }: { skId: string; toast: (t: string, loi?: boolean) => void; onDoi: () => void }) {
+  const t = useTim(skId)
+  const [ban, setBan] = useState<string | null>(null)
+  const [daCi, setDaCi] = useState<Awaited<ReturnType<typeof sk.daCheckin>> | null>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+  const taiDaCi = async () => { try { setDaCi(await sk.daCheckin(skId)) } catch { /* giữ list cũ */ } }
+  sk.useSkLive(['sk_checkin', 'sk_xu'], taiDaCi, 5000)
+  useEffect(() => { setDaCi(null); taiDaCi() }, [skId]) // eslint-disable-line
+
+  const checkin = async (r: KetQuaTim) => {
+    setBan(r.hoc_sinh_id)
+    try {
+      const id = await sk.checkin(skId, r.hoc_sinh_id!)
+      toast(`✓ Check-in ${r.ten} — mời ra bàn quay`)
+      // vá tại chỗ: dòng tìm được ⇒ đã check-in; đưa lên đầu danh sách
+      t.setRows((prev) => prev.map((x) => x.hoc_sinh_id === r.hoc_sinh_id ? { ...x, da_checkin: true, nguoi_choi_id: id } : x))
+      setDaCi((prev) => prev && !prev.some((x) => x.nguoi_choi_id === id)
+        ? [{ nguoi_choi_id: id, ten: r.ten, so: r.so ?? 0, lop: r.lop, checkin_at: new Date().toISOString(), xu_quay: null }, ...prev] : prev)
+      t.setQ(''); inputRef.current?.focus()
+      taiDaCi(); onDoi()
+    } catch (e) { toast((e as Error).message, true) }
+    finally { setBan(null) }
+  }
+  const hs = t.rows.filter((r) => !r.la_khach)
+
+  return (
+    <div className="mx-auto max-w-3xl space-y-4 p-4">
+      <div className="rounded-2xl bg-white p-4 shadow-sm">
+        <h3 className="mb-2 text-base font-bold text-slate-800">Check-in học sinh BK</h3>
+        <input ref={inputRef} autoFocus value={t.q} onChange={(e) => t.setQ(e.target.value)} placeholder="Gõ tên học sinh (không cần dấu)…"
+          className="w-full rounded-xl border-2 border-slate-200 px-4 py-3 text-lg outline-none focus:border-emerald-500" />
+        <div className="mt-2 divide-y divide-slate-100">
+          {t.q.trim() && !hs.length && !t.dangTim && <div className="py-3 text-sm text-slate-400">Không thấy học sinh BK nào khớp.</div>}
+          {hs.map((r) => (
+            <div key={r.hoc_sinh_id} className="flex flex-wrap items-center gap-2 py-2.5">
+              <div className="min-w-0 flex-1">
+                <div className="font-semibold text-slate-800">{r.ten} {r.so != null && <span className="font-mono text-xs text-slate-400">#{r.so}</span>}</div>
+                <div className="text-xs text-slate-500">{r.lop ?? '—'}</div>
+              </div>
+              {!r.da_checkin ? (
+                <button disabled={ban === r.hoc_sinh_id} onClick={() => checkin(r)}
+                  className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-bold text-white hover:bg-emerald-700 disabled:opacity-50">Check-in</button>
+              ) : r.xu_quay == null ? (
+                <span className="rounded-lg bg-amber-100 px-3 py-2 text-sm font-bold text-amber-800">✓ Đã check-in · 🎡 mời ra bàn quay</span>
+              ) : <span className="rounded-lg bg-emerald-50 px-3 py-2 text-sm font-semibold text-emerald-700">✓ Đã check-in · quay {r.xu_quay} xu</span>}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="rounded-2xl bg-white p-4 shadow-sm">
+        <h3 className="mb-2 text-base font-bold text-slate-800">✅ Đã check-in ({daCi?.length ?? '…'})</h3>
+        {daCi?.length === 0 && <div className="text-sm text-slate-400">Chưa ai check-in.</div>}
+        <div className="divide-y divide-slate-100">
+          {daCi?.map((x, i) => (
+            <div key={x.nguoi_choi_id} className="flex items-center gap-2 py-2 text-sm">
+              <span className="w-8 text-right text-xs text-slate-400">{daCi.length - i}</span>
+              <span className="w-12 text-xs text-slate-400">{new Date(x.checkin_at).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })}</span>
+              <span className="min-w-0 flex-1 truncate font-semibold">{x.ten} <span className="font-normal text-slate-400">{x.lop ?? ''}</span></span>
+              {x.xu_quay != null ? <span className="text-xs font-semibold text-emerald-700">🎡 {x.xu_quay} xu</span> : <span className="text-xs text-amber-700">chưa quay</span>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─────────────────────────────── ĐĂNG KÝ GAME (HS BK + khách ngoài) ───────────────────────────────
+function DangKyTab({ skId, tq, toast, onDoi }: { skId: string; tq: TongQuan | null; toast: (t: string, loi?: boolean) => void; onDoi: () => void }) {
   const t = useTim(skId)
   const [ban, setBan] = useState<string | null>(null)
   const [khach, setKhach] = useState('')
   const [khachMoi, setKhachMoi] = useState<{ id: string; so: number; ten: string; daDk: boolean }[]>([])
-  const inputRef = useRef<HTMLInputElement>(null)
   const phongHang = (tq?.phong ?? []).filter((p) => p.hang_doi)
   const [phongId, setPhongId] = useState<string | null>(null)
   const phong = phongHang.find((p) => p.id === phongId) ?? phongHang[0]
@@ -187,43 +220,32 @@ function CheckinTab({ skId, tq, toast, onDoi }: { skId: string; tq: TongQuan | n
       <div className="space-y-4">
         <div className="rounded-2xl bg-white p-4 shadow-sm">
           <div className="mb-2 flex items-center justify-between">
-            <h3 className="text-base font-bold text-slate-800">Học sinh BK / tìm theo số</h3>
+            <h3 className="text-base font-bold text-slate-800">Đăng ký game — HS BK hoặc khách theo số</h3>
             {phongHang.length > 1 && (
               <select value={phong?.id ?? ''} onChange={(e) => setPhongId(e.target.value)} className="rounded-md border border-slate-300 px-2 py-1 text-xs">
-                {phongHang.map((p) => <option key={p.id} value={p.id}>Đăng ký vào: {p.ten}</option>)}
+                {phongHang.map((p) => <option key={p.id} value={p.id}>Vào: {p.ten}</option>)}
               </select>
             )}
           </div>
-          <input ref={inputRef} autoFocus value={t.q} onChange={(e) => t.setQ(e.target.value)} placeholder="Gõ tên học sinh (không cần dấu) hoặc số #37…"
+          <input autoFocus value={t.q} onChange={(e) => t.setQ(e.target.value)} placeholder="Gõ tên (không cần dấu) hoặc số #37…"
             className="w-full rounded-xl border-2 border-slate-200 px-4 py-3 text-lg outline-none focus:border-indigo-500" />
           <div className="mt-3 divide-y divide-slate-100">
-            {t.q.trim() && !t.rows.length && !t.dangTim && <div className="py-3 text-sm text-slate-400">Không thấy ai khớp.</div>}
+            {t.q.trim() && !t.rows.length && !t.dangTim && <div className="py-3 text-sm text-slate-400">Không thấy ai khớp. Khách ngoài chưa có số thì cấp số ở dưới.</div>}
             {t.rows.map((r) => {
               const key = (r.hoc_sinh_id ?? r.nguoi_choi_id)!
-              const dangBan = ban?.startsWith(key)
               return (
                 <div key={key} className="flex flex-wrap items-center gap-2 py-2.5">
                   <div className="min-w-0 flex-1">
                     <div className="font-semibold text-slate-800">{r.ten} {r.so != null && <span className="font-mono text-xs text-slate-400">#{r.so}</span>}</div>
                     <div className="flex flex-wrap gap-1.5 text-xs">
                       <span className="text-slate-500">{r.la_khach ? 'Khách ngoài BK' : (r.lop ?? '—')}</span>
-                      {r.da_checkin && <span className="rounded bg-emerald-50 px-1.5 text-emerald-700">✓ đã check-in</span>}
-                      {r.xu_quay != null && <span className="rounded bg-amber-50 px-1.5 text-amber-700">🎡 quay {r.xu_quay} xu</span>}
                       {r.so_du > 0 && <span className="rounded bg-yellow-50 px-1.5 text-yellow-800">🪙 {r.so_du}</span>}
                       {r.dang_ky_trang_thai && <span className="rounded bg-indigo-50 px-1.5 text-indigo-700">{r.dang_ky_trang_thai === 'dang_choi' ? '🎮 đang chơi' : '⏳ đang chờ'} · {r.phong_ten}</span>}
                     </div>
                   </div>
-                  {!r.la_khach && !r.da_checkin && (
-                    <button disabled={dangBan} onClick={() => lam(key + 'c', async () => { await sk.checkin(skId, r.hoc_sinh_id!); return `✓ Check-in ${r.ten} — mời ra bàn quay` })}
-                      className="rounded-lg bg-emerald-600 px-3 py-2 text-sm font-bold text-white hover:bg-emerald-700 disabled:opacity-50">Check-in</button>
-                  )}
-                  {/* Quay ở BÀN QUAY riêng (laptop thứ 2, Thùy 26/09) — ở đây chỉ nhắc HS ra đó. */}
-                  {!r.la_khach && r.da_checkin && r.xu_quay == null && (
-                    <span className="rounded-lg bg-amber-100 px-3 py-2 text-sm font-bold text-amber-800">🎡 → Mời ra bàn quay</span>
-                  )}
                   {!r.dang_ky_trang_thai && phong && (
-                    <button disabled={dangBan} onClick={() => lam(key + 'd', async () => { await sk.dangKy(phong.id, await ensure(r)); return `⏳ ${r.ten} đã vào hàng chờ ${phong.ten}` })}
-                      className="rounded-lg border-2 border-indigo-600 px-3 py-1.5 text-sm font-bold text-indigo-700 hover:bg-indigo-50 disabled:opacity-50">+ Đăng ký game</button>
+                    <button disabled={ban === key} onClick={() => lam(key, async () => { await sk.dangKy(phong.id, await ensure(r)); return `⏳ ${r.ten} đã vào hàng chờ ${phong.ten}` })}
+                      className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-bold text-white hover:bg-indigo-700 disabled:opacity-50">+ Đăng ký</button>
                   )}
                 </div>
               )
@@ -232,7 +254,7 @@ function CheckinTab({ skId, tq, toast, onDoi }: { skId: string; tq: TongQuan | n
         </div>
 
         <div className="rounded-2xl bg-white p-4 shadow-sm">
-          <h3 className="mb-2 text-base font-bold text-slate-800">Khách ngoài BK</h3>
+          <h3 className="mb-2 text-base font-bold text-slate-800">Khách ngoài BK — cấp số</h3>
           <form className="flex gap-2" onSubmit={(e) => {
             e.preventDefault()
             const ten = khach.trim()
@@ -258,7 +280,7 @@ function CheckinTab({ skId, tq, toast, onDoi }: { skId: string; tq: TongQuan | n
                       await sk.dangKy(phong.id, k.id)
                       setKhachMoi((prev) => prev.map((x) => x.id === k.id ? { ...x, daDk: true } : x))
                       return `⏳ ${k.ten} #${k.so} đã vào hàng chờ`
-                    })} className="rounded-lg border-2 border-indigo-600 px-3 py-1 text-sm font-bold text-indigo-700 disabled:opacity-50">+ Đăng ký game</button>
+                    })} className="rounded-lg bg-indigo-600 px-3 py-1 text-sm font-bold text-white disabled:opacity-50">+ Đăng ký</button>
                   )}
                 </div>
               ))}
@@ -523,7 +545,7 @@ function LuotDangChoi({ phong, toast, onDoi }: { phong: PhongTQ; toast: (t: stri
 // ─────────────────────────────── CÀI ĐẶT ───────────────────────────────
 // ── GIAO VIỆC: tìm nhân sự (gợi ý realtime, không dropdown) → bấm chip việc. Lưu ngay từng lần bấm, vá tại chỗ.
 const VAI_CHIP: { k: sk.Vai; t: string }[] = [
-  { k: 'checkin', t: '🚪 Check-in' }, { k: 'quantro', t: '🎮 Quản trò' }, { k: 'quay', t: '🎡 Bàn quay' }, { k: 'quanly', t: '⚙️ Quản lý' },
+  { k: 'checkin', t: '🚪 Check-in' }, { k: 'dangky', t: '📝 Đăng ký game' }, { k: 'quay', t: '🎡 Bàn quay' }, { k: 'quantro', t: '🎮 Quản trò' }, { k: 'quanly', t: '⚙️ Quản lý' },
 ]
 function GiaoViec({ skId, toast }: { skId: string; toast: (t: string, loi?: boolean) => void }) {
   const [rows, setRows] = useState<{ nhan_su_id: string; ho_ten: string; email: string | null; vai: sk.Vai[] }[] | null>(null)
@@ -620,7 +642,7 @@ function CaiDatTab({ appRieng, laAdmin, ds, skId, tq, toast, onDoi, onChon }: { 
         {appRieng ? <>
         <h3 className="mb-2 mt-4 font-bold">🔗 Link cho từng vị trí trực (mở thẳng đúng màn)</h3>
         <div className="space-y-1 text-sm">
-          {([['checkin', '🚪 Laptop check-in'], ['quantro', '🎮 Điện thoại quản trò'], ['quay', '🎡 Laptop bàn quay']] as const).map(([m, t]) => (
+          {([['checkin', '🚪 Check-in'], ['dangky', '📝 Đăng ký game'], ['quay', '🎡 Bàn quay'], ['quantro', '🎮 Quản trò']] as const).map(([m, t]) => (
             <div key={m} className="flex items-center gap-2">
               <span className="w-44 shrink-0">{t}</span>
               <code className="min-w-0 flex-1 truncate rounded bg-slate-100 px-2 py-1 text-xs">{`${base}#man=${m}`}</code>
