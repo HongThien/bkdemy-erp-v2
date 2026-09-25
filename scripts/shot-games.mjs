@@ -16,6 +16,8 @@ const PORT = 9333, sleep = ms => new Promise(r => setTimeout(r, ms))
 // ---------- cảnh từng game ----------
 const IPAD = { w: 1024, h: 768 }, TV = { w: 1400, h: 860 }
 const SHOTS = [
+  // trang nội bộ xem 52 cảnh của lib/bk-scenes.js — chỉ chụp khi gọi đích danh: node scripts/shot-games.mjs xem-canh
+  { name: 'xem-canh', only: true, w: 1600, h: 3600, url: '/_xem-canh.html', after: 4000, setup: '' },
   { name: 'doan-so', ...TV, url: '/doan-so.html', pre: `localStorage.removeItem('bk-doanso-v1')`, after: 9000, setup: `
     const $=id=>document.getElementById(id);$('btnSettings').click();$('cManual').checked=true;$('dlgSave').click(); // mở hộp trước để fillDlg nạp số, không thì Lưu đọc ô trống
     const set=(i,sel,v)=>{const el=document.querySelectorAll(sel)[i];el.value=v;el.dispatchEvent(new Event('input',{bubbles:true}))};
@@ -74,7 +76,7 @@ try {
   await new Promise((res, rej) => { ws.onopen = res; ws.onerror = rej })
   ws.onmessage = ev => { const m = JSON.parse(ev.data); if (m.id && pending.has(m.id)) { const p = pending.get(m.id); pending.delete(m.id); m.error ? p.rej(new Error(p.method + ': ' + m.error.message)) : p.res(m.result) } }
   for (const s of SHOTS) {
-    if (only.length && !only.includes(s.name)) continue
+    if (only.length ? !only.includes(s.name) : s.only) continue
     const { targetId } = await cdp('Target.createTarget', { url: 'about:blank' })
     const { sessionId: sid } = await cdp('Target.attachToTarget', { targetId, flatten: true })
     await cdp('Page.enable', {}, sid); await cdp('Runtime.enable', {}, sid)

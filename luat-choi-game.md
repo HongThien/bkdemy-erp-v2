@@ -78,6 +78,7 @@
 ## 3. 🔎 Tìm Nhân Vật Ẩn (iPad · 40 giây)
 
 **Luật cho học sinh**
+- **Mỗi trận một bức tranh khác** (52 cảnh: 13 chủ đề × 4 kiểu nền/giờ/cách xếp, đồ vật và vị trí xáo lại theo mã trận).
 - Khung **"Hãy tìm"** hiện tên + hình mẫu một đồ vật. Chạm đúng vật đó trong tranh; tìm xong mới hiện vật tiếp theo (tối đa 20 vật).
 - Chạm đúng **+1**, chạm sai **−1** (tranh khoá một chút). Chạm lại vật đã tìm cũng tính là sai.
 - Nhiều điểm nhất thắng; bằng điểm thì ai **sai ít hơn** thắng, rồi ai tìm xong sớm hơn.
@@ -88,6 +89,7 @@
 ## 4. 👀 Tìm Điểm Khác Nhau (iPad · 40 giây)
 
 **Luật cho học sinh**
+- **Mỗi trận một cặp tranh khác** (dùng chung bộ 52 cảnh với Tìm Nhân Vật Ẩn). Chỉ dùng kiểu khác biệt nhìn ra được với từng vật (vật đối xứng không bị "lật", vật tròn không bị "xoay", vật trắng/xám không bị "đổi màu").
 - Tìm **10 điểm khác nhau** giữa tranh A và tranh B; chạm vào chỗ khác ở **tranh nào cũng được**.
 - Chỗ khác có thể là: đổi màu · biến mất · to/nhỏ hơn · bị xoay · bị lật · đổi thành vật khác · thêm vật mới.
 - Tìm đúng **+1**. Chạm sai **không trừ điểm**, tranh khoá nửa giây.
