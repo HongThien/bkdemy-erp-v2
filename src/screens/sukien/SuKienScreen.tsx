@@ -81,7 +81,12 @@ export default function SuKienScreen({ tabDau, appRieng = false }: { tabDau?: Ta
     try {
       const d = await sk.listSuKien()
       setDs(d)
-      setSkId((cur) => (cur && d.some((x) => x.id === cur)) ? cur : (d.find((x) => x.trang_thai === 'mo') ?? d[0])?.id ?? null)
+      // Máy nhớ sự kiện cũ nhưng nó đã ĐÓNG (vd TEST) mà đang có sự kiện mở ⇒ chuyển sang sự kiện mở, không kẹt ở cái đã đóng.
+      setSkId((cur) => {
+        const mo = d.find((x) => x.trang_thai === 'mo')
+        const giu = cur ? d.find((x) => x.id === cur) : undefined
+        return (giu && (giu.trang_thai === 'mo' || !mo) ? giu : (mo ?? d[0]))?.id ?? null
+      })
     } catch (e) { setLoiTai((e as Error).message) }
   }
   useEffect(() => { taiDs() }, [])
@@ -477,7 +482,7 @@ function LuotDangChoi({ phong, toast, onDoi }: { phong: PhongTQ; toast: (t: stri
   return (
     <div className="rounded-2xl border-2 border-indigo-500 bg-white p-3 shadow-sm">
       <div className="mb-2 flex flex-wrap items-center gap-2">
-        <h3 className="font-bold text-indigo-700">🎮 Đang chơi · {g?.ten ?? luot.game}</h3>
+        <h3 className="font-bold text-indigo-700">🎮 Đang chơi · {g?.ten ?? (luot.game === 'khac' ? 'Game khác' : luot.game)}</h3>
         {g && phong.ma_hub && <span className={`rounded px-1.5 text-[11px] ${ketNoi ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>{ketNoi ? `● nghe iPad · ${soVan} ván` : '○ đang nối iPad…'}</span>}
         {g && phong.ma_hub && <button onClick={() => { guiTen(); toast('Đã gửi tên xuống TV game') }} className="ml-auto rounded-md px-2 py-1 text-xs text-indigo-600 hover:bg-indigo-50">↻ Gửi lại tên</button>}
       </div>
