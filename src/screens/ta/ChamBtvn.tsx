@@ -423,6 +423,12 @@ function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: R
   const xoayRef = useRef<Record<string, Xoay>>({}) // góc xoay CHƯA LƯU theo trang (như nháp nét)
   const marksRef = useRef<Record<string, Mark[]>>({}) // nháp theo TRANG (key = anh.id)
   const drawing = useRef(false)
+  // Cuộn ảnh bằng 2 NGÓN (canvas touch-none chặn hết cử chỉ pan gốc của trình duyệt — không làm thế thì
+  // 1 ngón kéo cũng bị hiểu thành vẽ, TA phản ánh "ảnh bị fix cứng, không kéo lên xuống được", 25/09).
+  // Quy ước như Apple Notes/GoodNotes: 1 ngón hoặc bút = vẽ, 2 ngón = cuộn — không cần đổi tool.
+  const pointersRef = useRef<Map<number, { x: number; y: number }>>(new Map())
+  const panRef = useRef<{ cx: number; cy: number; scrollTop: number; scrollLeft: number } | null>(null)
+  const scrollRef = useRef<HTMLDivElement>(null)
   const toolRef = useRef<Tool>('but')
   toolRef.current = tool
   const mauRef = useRef(DO)
@@ -552,6 +558,18 @@ function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: R
     return { x: px * cv.width, y: py * cv.height, px, py }
   }
   function down(e: React.PointerEvent) {
+    pointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY })
+    if (pointersRef.current.size >= 2) {
+      // Ngón thứ 2 chạm xuống = chuyển sang CUỘN — huỷ nét/hình 1 ngón vừa bắt đầu dở (đang kéo mà thêm
+      // ngón thì không phải ý định vẽ), đóng ô nhập chữ nếu có.
+      if (drawing.current) { drawing.current = false; marks().pop(); paint() }
+      setNhap(null)
+      ;(e.target as Element).setPointerCapture(e.pointerId)
+      const [p1, p2] = [...pointersRef.current.values()]
+      const sc = scrollRef.current
+      panRef.current = { cx: (p1.x + p2.x) / 2, cy: (p1.y + p2.y) / 2, scrollTop: sc?.scrollTop ?? 0, scrollLeft: sc?.scrollLeft ?? 0 }
+      return
+    }
     if (!ready) return
     if (nhap) { setNhap(null); return } // đang có ô nhập → chạm ngoài = huỷ
     const p = toaDo(e)
@@ -566,13 +584,23 @@ function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: R
     paint()
   }
   function move(e: React.PointerEvent) {
+    if (pointersRef.current.has(e.pointerId)) pointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY })
+    if (panRef.current && pointersRef.current.size >= 2) {
+      const [p1, p2] = [...pointersRef.current.values()]
+      const cx = (p1.x + p2.x) / 2, cy = (p1.y + p2.y) / 2
+      const sc = scrollRef.current
+      if (sc) { sc.scrollTop = panRef.current.scrollTop - (cy - panRef.current.cy); sc.scrollLeft = panRef.current.scrollLeft - (cx - panRef.current.cx) }
+      return
+    }
     if (!drawing.current) return
     const ms = marks(); const m = ms[ms.length - 1]; const p = toaDo(e)
     if (m?.k === 'net') m.pts.push(p)
     else if (m?.k === 'hinh') { m.x2 = p.x; m.y2 = p.y }
     paint()
   }
-  function up() {
+  function up(e: React.PointerEvent) {
+    pointersRef.current.delete(e.pointerId)
+    if (pointersRef.current.size < 2) panRef.current = null
     if (!drawing.current) return
     drawing.current = false
     const ms = marks(); const m = ms[ms.length - 1]
@@ -656,7 +684,8 @@ function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: R
           {busy ? 'Đang lưu…' : daLuu ? '✓ Đã lưu trang' : '💾 Lưu trang này'}</button>
       </div>
 
-      <div className="min-h-0 flex-1 overflow-auto bg-slate-800 p-2">
+      {src && nen && <p className="border-b border-slate-200 bg-slate-50 py-1 text-center text-[10.5px] text-slate-400">✌️ 2 ngón kéo để cuộn ảnh · 1 ngón/bút để vẽ</p>}
+      <div ref={scrollRef} className="min-h-0 flex-1 overflow-auto bg-slate-800 p-2">
         {!src && <p className="p-6 text-center text-[13px] text-white/60">Không có URL ảnh (thử mở lại tab BTVN).</p>}
         {src && (
           <div className="relative mx-auto w-full max-w-[1100px]">
