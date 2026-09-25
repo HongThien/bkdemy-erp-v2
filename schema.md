@@ -2,14 +2,14 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `15` BẢNG
-> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `sk_checkin` · `sk_dang_ky` · `sk_dang_ky_log` · `sk_luot` · `sk_nguoi_choi` · `sk_phong` · `sk_su_kien` · `sk_xu` · `thong_bao_hs` · `thong_bao_ph`
+> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `17` BẢNG
+> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `sk_checkin` · `sk_dang_ky` · `sk_dang_ky_log` · `sk_luot` · `sk_nguoi_choi` · `sk_phan_cong` · `sk_phan_cong_log` · `sk_phong` · `sk_su_kien` · `sk_xu` · `thong_bao_hs` · `thong_bao_ph`
 > Các bảng này bật RLS với policy `to authenticated`, nên `SELECT` từ script/CLI trả **0 dòng,
 > im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-248 bảng · 19 view · 0 enum · 85 trigger · 501 function
+250 bảng · 19 view · 0 enum · 86 trigger · 512 function
 
 ## _app_secrets
 
@@ -3070,6 +3070,28 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | nguoi_ghi | uuid | Y | jwt_uid() |  |  |
 
+## sk_phan_cong
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| su_kien_id | uuid |  |  | PK FK→sk_su_kien.id |  |
+| nhan_su_id | uuid |  |  | PK FK→nhan_su.id |  |
+| vai | text |  |  | PK | `checkin` · `quantro` · `quaqua` · `quanly` |
+| created_at | timestamp with time zone |  | now() |  |  |
+| nguoi_ghi | uuid | Y | jwt_uid() |  |  |
+
+## sk_phan_cong_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| su_kien_id | uuid |  |  |  |  |
+| nhan_su_id | uuid |  |  |  |  |
+| vai | text |  |  |  |  |
+| hanh_dong | text |  |  |  | `giao` · `go` |
+| actor | uuid | Y |  |  |  |
+| ts | timestamp with time zone |  | now() |  |  |
+
 ## sk_phong
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -5157,6 +5179,7 @@ SELECT bl.hoc_sinh_id,
 | qlht_qua_nhap | trg_log_qlht_qua_nhap | AFTER | INSERT/UPDATE | log_qlht |
 | qlht_qua_order | trg_log_qlht_qua_order | AFTER | INSERT/UPDATE | log_qlht |
 | sk_dang_ky | sk_dang_ky_log_trg | AFTER | INSERT/UPDATE | _sk_dang_ky_log |
+| sk_phan_cong | sk_phan_cong_log_trg | AFTER | INSERT/DELETE | _sk_phan_cong_log |
 | soan_cum | trg_soan_cum_log | AFTER | INSERT/DELETE/UPDATE | fn_soan_cum_log |
 | soan_cum | trg_soan_cum_touch | BEFORE | UPDATE | fn_soan_touch |
 | soan_thu_muc | trg_soan_thu_muc_touch | BEFORE | UPDATE | fn_soan_touch |
@@ -5216,10 +5239,17 @@ SELECT bl.hoc_sinh_id,
 - `_mcq_kiem_kho(p_kho text)` → void
 - `_phase_log_ghi(p_buoi uuid, p_phase text, p_cu timestamp with time zone, p_moi timestamp with time zone, p_actor uuid)` → void
 - `_push_bao_cap_nhat(p_ns uuid, p_app text)` → void
+- `_sk_can(p_su_kien uuid, p_vai text[])` → void
+- `_sk_can_admin()` → void
 - `_sk_cap_so(p_su_kien uuid)` → integer
 - `_sk_chan()` → void
+- `_sk_co_vai(p_su_kien uuid, p_vai text[])` → boolean
 - `_sk_dang_ky_log()` → trigger
+- `_sk_la_admin()` → boolean
+- `_sk_ns_id()` → uuid
+- `_sk_phan_cong_log()` → trigger
 - `_sk_so_du(p_nguoi uuid)` → integer
+- `_sk_vai(p_su_kien uuid)` → text[]
 - `_sotay_duoc_doc()` → boolean
 - `_sotay_nhom(p_muc_do smallint)` → text
 - `_sync_cau_menh_de(p_bang_con text, p_ban_do text, p_ma_cau text, p_menh_de jsonb)` → void
@@ -5501,6 +5531,7 @@ SELECT bl.hoc_sinh_id,
 - `fn_shop_don_cua_toi()` → SETOF shop_don
 - `fn_sk_bat_dau(p_phong uuid, p_game text)` → jsonb
 - `fn_sk_checkin(p_su_kien uuid, p_hoc_sinh uuid)` → uuid
+- `fn_sk_cua_toi()` → TABLE(id uuid, ten text, ngay date, trang_thai text, cau_hinh jsonb, vai text[], la_admin boolean)
 - `fn_sk_dang_ky(p_phong uuid, p_nguoi uuid)` → uuid
 - `fn_sk_danh_dau(p_dang_ky uuid, p_hanh_dong text)` → jsonb
 - `fn_sk_dieu_chinh(p_nguoi uuid, p_xu integer, p_ghi_chu text)` → integer
@@ -5511,10 +5542,13 @@ SELECT bl.hoc_sinh_id,
 - `fn_sk_luu_phong(p_su_kien uuid, p_id uuid, p_ten text, p_ma_hub text, p_hang_doi boolean, p_thu_tu integer)` → uuid
 - `fn_sk_luu_su_kien(p_id uuid, p_ten text, p_ngay date, p_cau_hinh jsonb, p_trang_thai text)` → uuid
 - `fn_sk_nguoi_choi_bk(p_su_kien uuid, p_hoc_sinh uuid)` → uuid
+- `fn_sk_phan_cong_ds(p_su_kien uuid)` → TABLE(nhan_su_id uuid, ho_ten text, email text, vai text[])
+- `fn_sk_phan_cong_luu(p_su_kien uuid, p_nhan_su uuid, p_vai text[])` → text[]
 - `fn_sk_quay(p_nguoi uuid)` → jsonb
 - `fn_sk_quay_gan_day(p_su_kien uuid, p_limit integer DEFAULT 10)` → TABLE(id uuid, ten text, so integer, xu integer, at timestamp with time zone)
 - `fn_sk_them_khach(p_su_kien uuid, p_ten text)` → TABLE(id uuid, so integer)
 - `fn_sk_tim(p_su_kien uuid, p_q text)` → TABLE(nguoi_choi_id uuid, hoc_sinh_id uuid, ten text, so integer, lop text, la_khach boolean, da_checkin boolean, xu_quay integer, so_du integer, dang_ky_id uuid, dang_ky_trang_thai text, phong_ten text)
+- `fn_sk_tim_nhan_su(p_q text)` → TABLE(id uuid, ho_ten text, email text)
 - `fn_sk_tong_quan(p_su_kien uuid)` → jsonb
 - `fn_soan_cum_log()` → trigger
 - `fn_soan_touch()` → trigger
@@ -5669,9 +5703,9 @@ SELECT bl.hoc_sinh_id,
 - `trg_han_nop_ngoai_le_log()` → trigger
 - `trg_htd_test_nop()` → trigger
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
