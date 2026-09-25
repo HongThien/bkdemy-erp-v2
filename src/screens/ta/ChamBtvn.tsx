@@ -8,6 +8,7 @@
 // Màn chấm 1 HS (09/09): full-screen, landscape = ảnh+tool 70% trái · form 30% phải; portrait = xếp dọc.
 // HS không có ảnh = chấm giấy, chỉ có form.
 import { useEffect, useRef, useState } from 'react'
+import JSZip from 'jszip'
 import {
   listProblems, listGrades, gradeET, gradeETBulk, deleteGrade, loadBTVNForBuoi, syncBTVNProblems,
   loadHinhForBuoiPhase, syncHinhProblems, getBtvnKetQua, setBtvnKetQua, closeBTVN, reopenBTVN,
@@ -236,7 +237,7 @@ function ChamMotHS({ r, ten, buoi, n, dx, v, probs, gradeOf, dong, moCoiIds, url
       <div className="flex min-h-0 flex-1 flex-col landscape:flex-row">
         {coAnh && (
           <div className="flex min-h-0 flex-col border-slate-200 portrait:h-[55%] portrait:border-b landscape:w-[70%] landscape:border-r">
-            <VeAnh key={hsId} anhDs={n!.anh} urls={urls} reloadNop={reloadNop} daTra={!!n!.tra_at} />
+            <VeAnh key={hsId} ten={ten} anhDs={n!.anh} urls={urls} reloadNop={reloadNop} daTra={!!n!.tra_at} />
           </div>
         )}
         <div className="min-h-0 flex-1 overflow-y-auto bg-white px-3 py-2.5">
@@ -396,7 +397,33 @@ const PHIM_TOOL: Record<string, Tool> = { b: 'but', e: 'tay', d: 'D', s: 'S', o:
 const CO_LIST: Co[] = [14, 16, 18, 20, 22, 24, 26, 28, 32, 36, 40, 48, 56, 64, 72]
 const pxChu = (co: Co, W: number) => Math.round(co * (W / 800))
 
-function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: Record<string, string>; reloadNop: () => Promise<void>; daTra: boolean }) {
+// Lưu ảnh HS nộp về máy (CEO 25/09) — TẢI ẢNH GỐC (anh.path), không phải bản đã chấm.
+// Đặt tên an toàn Windows/macOS: bỏ dấu tiếng Việt + ký tự lạ.
+function tenFileAnToan(s: string): string {
+  const khongDau = s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[Đđ]/g, (m) => (m === 'Đ' ? 'D' : 'd'))
+  return khongDau.replace(/[^a-zA-Z0-9]+/g, '_').replace(/^_+|_+$/g, '') || 'anh'
+}
+const duoiFile = (path: string) => path.match(/\.([a-zA-Z0-9]+)$/)?.[1] ?? 'jpg'
+function taiBlob(blob: Blob, tenFile: string) {
+  const a = document.createElement('a')
+  a.href = URL.createObjectURL(blob); a.download = tenFile
+  document.body.appendChild(a); a.click(); a.remove()
+  setTimeout(() => URL.revokeObjectURL(a.href), 10000)
+}
+async function taiMotAnh(url: string, tenFile: string) {
+  const blob = await fetch(url).then((r) => r.blob())
+  taiBlob(blob, tenFile)
+}
+// >1 ảnh → gộp ZIP (tải rời nhiều file cùng lúc dễ bị trình duyệt chặn/hỏi xác nhận từng cái).
+async function taiNhieuAnhZip(items: { url: string; ten: string }[], tenZip: string) {
+  const zip = new JSZip()
+  const blobs = await Promise.all(items.map((it) => fetch(it.url).then((r) => r.blob())))
+  blobs.forEach((b, i) => zip.file(items[i].ten, b))
+  taiBlob(await zip.generateAsync({ type: 'blob' }), tenZip)
+}
+
+function VeAnh({ ten, anhDs, urls, reloadNop, daTra }: { ten: string; anhDs: BtvnNopAnh[]; urls: Record<string, string>; reloadNop: () => Promise<void>; daTra: boolean }) {
+  const tenSlug = tenFileAnToan(ten)
   // Bản local của xấp ảnh + URL: sau Lưu tự cập nhật path_cham ngay, không chờ cha reload.
   const [anhs, setAnhs] = useState<BtvnNopAnh[]>(anhDs)
   const [localUrls, setLocalUrls] = useState<Record<string, string>>(urls)
@@ -406,6 +433,7 @@ function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: R
   const [co, setCo] = useState<Co>(24)
   const [ready, setReady] = useState(false)
   const [busy, setBusy] = useState(false)
+  const [taiBusy, setTaiBusy] = useState(false)
   const [daLuu, setDaLuu] = useState(false) // flash "✓ Đã lưu" 2.5s (§6: feedback sau lưu, không alert)
   const [tick, setTick] = useState(0)
   // ô nhập chữ tại chỗ: toạ độ canvas + vị trí % để đặt input đè lên ảnh
@@ -652,6 +680,25 @@ function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: R
       reloadNop().catch(() => {})
     } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
   }
+  // Lưu ảnh HS nộp về máy — LUÔN là ảnh GỐC (anh.path có URL riêng trong localUrls dù đã chấm), không
+  // phải bản đánh dấu. Từng cái tải thẳng; ≥2 ảnh gộp ZIP để né trình duyệt chặn tải-nhiều-file.
+  async function taiTrangNay() {
+    if (!anh || taiBusy) return
+    const url = localUrls[anh.path]
+    if (!url) { alert('Chưa có URL ảnh gốc — thử mở lại tab.'); return }
+    setTaiBusy(true)
+    try { await taiMotAnh(url, `${tenSlug}_trang${idx + 1}.${duoiFile(anh.path)}`) }
+    catch (e: any) { alert(e.message ?? String(e)) } finally { setTaiBusy(false) }
+  }
+  async function taiTatCa() {
+    if (taiBusy || !anhs.length) return
+    setTaiBusy(true)
+    try {
+      const items = anhs.map((a, i) => ({ url: localUrls[a.path], ten: `trang${i + 1}.${duoiFile(a.path)}` })).filter((x): x is { url: string; ten: string } => !!x.url)
+      if (!items.length) throw new Error('Chưa có URL ảnh gốc — thử mở lại tab.')
+      await taiNhieuAnhZip(items, `${tenSlug}_BTVN.zip`)
+    } catch (e: any) { alert(e.message ?? String(e)) } finally { setTaiBusy(false) }
+  }
   const conTro = tool === 'text' || tool === 'D' || tool === 'S' ? 'cursor-cell' : 'cursor-crosshair'
   return (
     <div className="flex min-h-0 flex-1 flex-col">
@@ -678,6 +725,12 @@ function VeAnh({ anhDs, urls, reloadNop, daTra }: { anhDs: BtvnNopAnh[]; urls: R
         {anh?.path_cham && !daTra && (
           <button onClick={lamLai} disabled={busy} title="Bỏ bản chấm đã lưu của trang này, quay về ảnh gốc"
             className="min-h-[36px] rounded-lg border border-rose-200 px-2.5 text-[12.5px] font-semibold text-rose-600 active:bg-rose-50 disabled:opacity-40">↺ Làm lại trang</button>
+        )}
+        <button onClick={taiTrangNay} disabled={taiBusy || !ready} title="Tải ảnh gốc HS nộp (trang này) về máy"
+          className="min-h-[36px] rounded-lg border border-slate-200 px-2.5 text-[12.5px] font-semibold text-slate-600 disabled:opacity-30">⬇ Tải ảnh</button>
+        {anhs.length > 1 && (
+          <button onClick={taiTatCa} disabled={taiBusy} title="Tải tất cả ảnh gốc HS nộp (gộp .zip)"
+            className="min-h-[36px] rounded-lg border border-slate-200 px-2.5 text-[12.5px] font-semibold text-slate-600 disabled:opacity-30">{taiBusy ? 'Đang nén…' : `⬇ Tất cả (${anhs.length})`}</button>
         )}
         <button onClick={luu} disabled={busy || !ready || (!soNet && !(xoayRef.current[anh?.id ?? ''] ?? 0))}
           className={`ml-auto min-h-[36px] rounded-lg px-3.5 text-[12.5px] font-bold text-white active:bg-teal-500 ${daLuu ? 'bg-emerald-600 disabled:opacity-100' : 'bg-teal-600 disabled:opacity-40'}`}>
