@@ -1,12 +1,13 @@
 // SỰ KIỆN (spec-su-kien.md) — 1 lá, 4 tab: Check-in (laptop cửa) · Quản trò (điện thoại phòng iPad) ·
-// Quầy quà · Cài đặt. 2 màn TV (vòng quay / hàng chờ) mở toàn màn hình qua hash — xem TvSuKien.tsx.
+// Bàn quay · Cài đặt (Quầy quà đã bỏ 26/09 — đổi quà không thuộc hệ này). 2 màn TV (vòng quay / hàng chờ) mở toàn màn hình qua hash — xem TvSuKien.tsx.
 // Mọi con số/luật ở Postgres (fn_sk_*); ở đây chỉ gọi RPC, nghe realtime, vá tại chỗ.
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import * as sk from '../../lib/sukien'
 import type { KetQuaTim, PhongTQ, SuKien, TongQuan } from '../../lib/sukien'
+import { VongQuay } from './TvSuKien'
 
-export type TabSuKien = 'checkin' | 'quantro' | 'quaqua' | 'caidat'
+export type TabSuKien = 'checkin' | 'quay' | 'quantro' | 'caidat'
 type Tab = TabSuKien
 const LS_SK = 'sk-su-kien-dang-chon'
 const LS_TAB = 'sk-tab'
@@ -36,10 +37,10 @@ const LS_VITRI = 'sk-vi-tri'
 const VI_TRI: { k: ViTri; icon: string; ten: string; mo: string; bg: string; ill: string }[] = [
   { k: 'checkin', icon: '🚪', ten: 'Check-in', mo: 'Laptop ở cửa · check-in, quay, đăng ký game', bg: 'bg-emerald-50', ill: 'bg-emerald-200' },
   { k: 'quantro', icon: '🎮', ten: 'Quản trò', mo: 'Điện thoại phòng iPad · gọi tên, bắt đầu, cộng xu', bg: 'bg-indigo-50', ill: 'bg-indigo-200' },
-  { k: 'quaqua', icon: '🎁', ten: 'Quầy quà', mo: 'Xem số dư · trừ xu đổi quà', bg: 'bg-rose-50', ill: 'bg-rose-200' },
+  { k: 'quay', icon: '🎡', ten: 'Bàn quay', mo: 'Laptop thứ 2 · HS check-in xong ra đây bấm quay', bg: 'bg-amber-50', ill: 'bg-amber-200' },
   { k: 'tatca', icon: '⚙️', ten: 'Quản lý', mo: 'Xem tất cả · cài đặt · giao việc · màn TV', bg: 'bg-amber-50', ill: 'bg-amber-200' },
 ]
-const TEN_VI_TRI: Record<ViTri, string> = { checkin: '🚪 Check-in', quantro: '🎮 Quản trò', quaqua: '🎁 Quầy quà', tatca: '⚙️ Quản lý' }
+const TEN_VI_TRI: Record<ViTri, string> = { checkin: '🚪 Check-in', quantro: '🎮 Quản trò', quay: '🎡 Bàn quay', tatca: '⚙️ Quản lý' }
 const viTriDuoc = (vai: sk.Vai[]): ViTri[] =>
   VI_TRI.map((v) => v.k).filter((k) => k === 'tatca' ? vai.includes('quanly') : vai.includes(k as sk.Vai))
 
@@ -106,7 +107,7 @@ export default function SuKienScreen({ tabDau, appRieng = false }: { tabDau?: Ta
   if (!ev || !duoc.length) return <section className="flex min-h-0 flex-col items-center justify-center gap-2 p-8 text-center"><div className="text-4xl">🏮</div><div className="font-bold text-slate-700">Bạn chưa được giao việc ở sự kiện nào</div><div className="text-sm text-slate-500">Nhờ quản lý sự kiện giao việc cho bạn (Cài đặt › Giao việc), rồi tải lại trang.</div><button onClick={() => taiDs()} className="mt-2 rounded-lg border border-slate-300 px-3 py-1.5 text-sm">↻ Tải lại</button></section>
   if (!viTri) return <section className="min-h-0 overflow-auto bg-[#f5f5f7]"><ChonViTri ds={duoc} onChon={chonViTri} /></section>
 
-  const TABS: [Tab, string][] = [['checkin', '🚪 Check-in'], ['quantro', '🎮 Quản trò'], ['quaqua', '🎁 Quầy quà'], ['caidat', '⚙️ Cài đặt']]
+  const TABS: [Tab, string][] = [['checkin', '🚪 Check-in'], ['quantro', '🎮 Quản trò'], ['quay', '🎡 Bàn quay'], ['caidat', '⚙️ Cài đặt']]
   return (
     <section className="flex min-h-0 flex-col overflow-hidden bg-[#f5f5f7]">
       <div className="flex shrink-0 flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-3 py-2">
@@ -136,7 +137,7 @@ export default function SuKienScreen({ tabDau, appRieng = false }: { tabDau?: Ta
         {!skId ? <div className="p-6 text-sm text-slate-500">Chưa có sự kiện — vào ⚙️ Cài đặt để tạo.</div>
           : tabHien === 'checkin' ? <CheckinTab skId={skId} tq={live.tq} toast={toast.show} onDoi={live.tai} />
           : tabHien === 'quantro' ? <QuanTroTab tq={live.tq} toast={toast.show} onDoi={live.tai} setTq={live.setTq} />
-          : tabHien === 'quaqua' ? <QuayQuaTab skId={skId} toast={toast.show} choDieuChinh={quanLy} />
+          : tabHien === 'quay' ? <VongQuay skId={skId} banQuay onLoi={(t) => toast.show(t, true)} />
           : <CaiDatTab appRieng={appRieng} laAdmin={ev.la_admin} ds={ds} skId={skId} tq={live.tq} toast={toast.show} onDoi={() => { taiDs(); live.tai() }} onChon={setSkId} />}
       </div>
       {toast.el}
@@ -213,12 +214,12 @@ function CheckinTab({ skId, tq, toast, onDoi }: { skId: string; tq: TongQuan | n
                     </div>
                   </div>
                   {!r.la_khach && !r.da_checkin && (
-                    <button disabled={dangBan} onClick={() => lam(key + 'c', async () => { await sk.checkin(skId, r.hoc_sinh_id!); return `✓ Check-in ${r.ten}` })}
+                    <button disabled={dangBan} onClick={() => lam(key + 'c', async () => { await sk.checkin(skId, r.hoc_sinh_id!); return `✓ Check-in ${r.ten} — mời ra bàn quay` })}
                       className="rounded-lg bg-emerald-600 px-3 py-2 text-sm font-bold text-white hover:bg-emerald-700 disabled:opacity-50">Check-in</button>
                   )}
+                  {/* Quay ở BÀN QUAY riêng (laptop thứ 2, Thùy 26/09) — ở đây chỉ nhắc HS ra đó. */}
                   {!r.la_khach && r.da_checkin && r.xu_quay == null && (
-                    <button disabled={dangBan} onClick={() => lam(key + 'q', async () => { const x = await sk.quay(r.nguoi_choi_id!); return `🎡 ${r.ten} quay được ${x.xu} xu — xem TV!` })}
-                      className="rounded-lg bg-amber-500 px-3 py-2 text-sm font-bold text-white hover:bg-amber-600 disabled:opacity-50">🎡 Quay</button>
+                    <span className="rounded-lg bg-amber-100 px-3 py-2 text-sm font-bold text-amber-800">🎡 → Mời ra bàn quay</span>
                   )}
                   {!r.dang_ky_trang_thai && phong && (
                     <button disabled={dangBan} onClick={() => lam(key + 'd', async () => { await sk.dangKy(phong.id, await ensure(r)); return `⏳ ${r.ten} đã vào hàng chờ ${phong.ten}` })}
@@ -519,82 +520,10 @@ function LuotDangChoi({ phong, toast, onDoi }: { phong: PhongTQ; toast: (t: stri
   )
 }
 
-// ─────────────────────────────── QUẦY QUÀ ───────────────────────────────
-function QuayQuaTab({ skId, toast, choDieuChinh }: { skId: string; toast: (t: string, loi?: boolean) => void; choDieuChinh: boolean }) {
-  const t = useTim(skId)
-  const [chon, setChon] = useState<KetQuaTim | null>(null)
-  const [ls, setLs] = useState<Awaited<ReturnType<typeof sk.lichSuXu>>>([])
-  const [soDu, setSoDu] = useState(0)
-  const [xu, setXu] = useState('')
-  const [ghiChu, setGhiChu] = useState('')
-  const [ban, setBan] = useState(false)
-  const [dieuChinh, setDieuChinh] = useState(false)
-
-  const moNguoi = async (r: KetQuaTim) => {
-    setChon(r); setSoDu(r.so_du); setXu(''); setGhiChu(''); setLs([])
-    if (r.nguoi_choi_id) { try { setLs(await sk.lichSuXu(r.nguoi_choi_id)) } catch { /* bỏ qua */ } }
-  }
-  const ghi = async () => {
-    if (!chon?.nguoi_choi_id) return
-    const n = parseInt(xu, 10)
-    if (!n) return
-    setBan(true)
-    try {
-      const du = dieuChinh ? await sk.dieuChinh(chon.nguoi_choi_id, n, ghiChu) : await sk.doiQua(chon.nguoi_choi_id, n, ghiChu)
-      setSoDu(du)
-      t.setRows((prev) => prev.map((r) => r.nguoi_choi_id === chon.nguoi_choi_id ? { ...r, so_du: du } : r))
-      setLs(await sk.lichSuXu(chon.nguoi_choi_id))
-      toast(dieuChinh ? `Điều chỉnh ${n > 0 ? '+' : ''}${n} xu — còn ${du}` : `🎁 Trừ ${n} xu — ${chon.ten} còn ${du} xu`)
-      setXu(''); setGhiChu('')
-    } catch (e) { toast((e as Error).message, true) } finally { setBan(false) }
-  }
-
-  return (
-    <div className="grid gap-4 p-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-      <div className="rounded-2xl bg-white p-4 shadow-sm">
-        <input autoFocus value={t.q} onChange={(e) => t.setQ(e.target.value)} placeholder="Tên hoặc số #37…" className="w-full rounded-xl border-2 border-slate-200 px-4 py-3 text-lg outline-none focus:border-indigo-500" />
-        <div className="mt-2 divide-y divide-slate-100">
-          {t.rows.filter((r) => r.nguoi_choi_id).map((r) => (
-            <button key={r.nguoi_choi_id} onClick={() => moNguoi(r)} className={`flex w-full items-center gap-2 px-2 py-2.5 text-left hover:bg-slate-50 ${chon?.nguoi_choi_id === r.nguoi_choi_id ? 'bg-indigo-50' : ''}`}>
-              <span className="font-mono text-xs text-slate-400">#{r.so}</span>
-              <span className="flex-1 font-semibold">{r.ten} <span className="text-xs font-normal text-slate-400">{r.la_khach ? 'khách' : r.lop}</span></span>
-              <span className="font-bold text-yellow-700">🪙 {r.so_du}</span>
-            </button>
-          ))}
-          {t.q.trim() && !t.dangTim && !t.rows.some((r) => r.nguoi_choi_id) && <div className="py-3 text-sm text-slate-400">Không có người chơi nào khớp (chưa check-in / chưa chơi thì chưa có xu).</div>}
-        </div>
-      </div>
-      {chon && (
-        <div className="rounded-2xl bg-white p-4 shadow-sm">
-          <div className="text-lg font-bold">{chon.ten} <span className="font-mono text-sm text-slate-400">#{chon.so}</span></div>
-          <div className="my-2 text-4xl font-black text-yellow-600">🪙 {soDu} <span className="text-base font-semibold text-slate-500">xu</span></div>
-          <div className="flex flex-wrap gap-2">
-            <input inputMode="numeric" value={xu} onChange={(e) => setXu(dieuChinh ? e.target.value.replace(/[^0-9-]/g, '') : e.target.value.replace(/[^0-9]/g, ''))} placeholder={dieuChinh ? '± xu' : 'Số xu quà'}
-              className="w-28 rounded-xl border-2 border-slate-200 px-3 py-2 text-lg font-bold" />
-            <input value={ghiChu} onChange={(e) => setGhiChu(e.target.value)} placeholder={dieuChinh ? 'Lý do (bắt buộc)' : 'Quà gì (tuỳ chọn)'} className="min-w-0 flex-1 rounded-xl border-2 border-slate-200 px-3 py-2" />
-            <button disabled={ban || !parseInt(xu, 10) || (dieuChinh && !ghiChu.trim())} onClick={ghi}
-              className={`rounded-xl px-4 py-2 font-bold text-white disabled:opacity-40 ${dieuChinh ? 'bg-slate-700' : 'bg-rose-600'}`}>{dieuChinh ? 'Điều chỉnh' : '🎁 Trừ xu'}</button>
-          </div>
-          {choDieuChinh && <label className="mt-2 flex items-center gap-1.5 text-xs text-slate-500"><input type="checkbox" checked={dieuChinh} onChange={(e) => setDieuChinh(e.target.checked)} /> Điều chỉnh tay (cộng bù / trừ sai sót)</label>}
-          <div className="mt-3 max-h-72 overflow-auto text-sm">
-            {ls.map((x) => (
-              <div key={x.id} className="flex items-center gap-2 border-b border-slate-100 py-1.5">
-                <span className="w-14 text-xs text-slate-400">{new Date(x.at).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })}</span>
-                <span className="flex-1">{sk.tenNguon[x.nguon] ?? x.nguon}{x.ghi_chu ? <span className="text-slate-400"> · {x.ghi_chu}</span> : null}</span>
-                <b className={x.so_xu > 0 ? 'text-emerald-600' : 'text-rose-600'}>{x.so_xu > 0 ? '+' : ''}{x.so_xu}</b>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  )
-}
-
 // ─────────────────────────────── CÀI ĐẶT ───────────────────────────────
 // ── GIAO VIỆC: tìm nhân sự (gợi ý realtime, không dropdown) → bấm chip việc. Lưu ngay từng lần bấm, vá tại chỗ.
 const VAI_CHIP: { k: sk.Vai; t: string }[] = [
-  { k: 'checkin', t: '🚪 Check-in' }, { k: 'quantro', t: '🎮 Quản trò' }, { k: 'quaqua', t: '🎁 Quầy quà' }, { k: 'quanly', t: '⚙️ Quản lý' },
+  { k: 'checkin', t: '🚪 Check-in' }, { k: 'quantro', t: '🎮 Quản trò' }, { k: 'quay', t: '🎡 Bàn quay' }, { k: 'quanly', t: '⚙️ Quản lý' },
 ]
 function GiaoViec({ skId, toast }: { skId: string; toast: (t: string, loi?: boolean) => void }) {
   const [rows, setRows] = useState<{ nhan_su_id: string; ho_ten: string; email: string | null; vai: sk.Vai[] }[] | null>(null)
@@ -691,7 +620,7 @@ function CaiDatTab({ appRieng, laAdmin, ds, skId, tq, toast, onDoi, onChon }: { 
         {appRieng ? <>
         <h3 className="mb-2 mt-4 font-bold">🔗 Link cho từng vị trí trực (mở thẳng đúng màn)</h3>
         <div className="space-y-1 text-sm">
-          {([['checkin', '🚪 Laptop check-in'], ['quantro', '🎮 Điện thoại quản trò'], ['quaqua', '🎁 Quầy quà']] as const).map(([m, t]) => (
+          {([['checkin', '🚪 Laptop check-in'], ['quantro', '🎮 Điện thoại quản trò'], ['quay', '🎡 Laptop bàn quay']] as const).map(([m, t]) => (
             <div key={m} className="flex items-center gap-2">
               <span className="w-44 shrink-0">{t}</span>
               <code className="min-w-0 flex-1 truncate rounded bg-slate-100 px-2 py-1 text-xs">{`${base}#man=${m}`}</code>

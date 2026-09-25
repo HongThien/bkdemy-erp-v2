@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { supabase } from './supabase'
 
-export type Vai = 'checkin' | 'quantro' | 'quaqua' | 'quanly'
+export type Vai = 'checkin' | 'quay' | 'quantro' | 'quaqua' | 'quanly' // 'quaqua' còn trong DB nhưng app KHÔNG dùng (Thùy 26/09: đổi quà không thuộc hệ này)
 export type SuKien = {
   id: string; ten: string; ngay: string; trang_thai: 'mo' | 'dong'
   cau_hinh: { vong_quay: { xu: number; ti_le: number }[]; toi_da_luot?: number; so_van?: number }
@@ -44,6 +44,7 @@ export const tim = (suKien: string, q: string) => rpc<KetQuaTim[]>('fn_sk_tim', 
 export const nguoiChoiBK = (suKien: string, hs: string) => rpc<string>('fn_sk_nguoi_choi_bk', { p_su_kien: suKien, p_hoc_sinh: hs })
 export const checkin = (suKien: string, hs: string) => rpc<string>('fn_sk_checkin', { p_su_kien: suKien, p_hoc_sinh: hs })
 export const themKhach = async (suKien: string, ten: string) => (await rpc<{ id: string; so: number }[]>('fn_sk_them_khach', { p_su_kien: suKien, p_ten: ten }))[0]
+export const choQuay = (suKien: string) => rpc<{ nguoi_choi_id: string; ten: string; so: number; lop: string | null; checkin_at: string }[]>('fn_sk_cho_quay', { p_su_kien: suKien })
 export const quay = (nguoi: string) => rpc<{ xu: number; da_quay: boolean }>('fn_sk_quay', { p_nguoi: nguoi })
 export const dangKy = (phong: string, nguoi: string) => rpc<string>('fn_sk_dang_ky', { p_phong: phong, p_nguoi: nguoi })
 export const danhDau = (dangKy: string, hanhDong: 'co_mat' | 'bo_qua' | 'tra_ve' | 'huy') =>

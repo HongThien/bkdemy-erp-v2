@@ -151,3 +151,10 @@ Mutation trong cùng màn: **vá tại chỗ**, không reload trắng (§2); rea
 - Màn: chỉ hiện sự kiện được giao (`fn_sk_cua_toi`). 1 việc ⇒ vào thẳng; nhiều việc ⇒ chọn (máy nhớ); chưa giao ⇒ "chưa được giao việc".
   Giao việc ở Cài đặt › 👥 Giao việc (tìm tên → bấm chip, lưu ngay). Vết giao/gỡ: trigger `sk_phan_cong_log`.
 - Máy nối TV phải đăng nhập tài khoản có việc (dùng tài khoản quản lý).
+
+## 9. Thay đổi 26/09 (sau test thật)
+
+- **Bỏ Quầy quà** khỏi app — Thùy: "việc đổi quà không liên quan đến hệ thống này". Vai `quaqua` + `fn_sk_doi_qua` để nguyên trong DB (không ai được giao ⇒ vô hại).
+- **Bàn quay riêng** (vai `quay`, mig `202609260307`): 2 laptop — 1 người check-in, 1 người ở bàn quay. Bàn quay = vòng quay to +
+  danh sách HS đã check-in mà chưa quay (`fn_sk_cho_quay`, đến trước quay trước); HS tìm tên mình, bấm 🎡 QUAY ⇒ quay ngay trên màn đó
+  (TV riêng nếu có cũng quay theo). `fn_sk_quay` chỉ cho vai `quay`; màn Check-in bỏ nút Quay, hiện "→ Mời ra bàn quay".

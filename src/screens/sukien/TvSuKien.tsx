@@ -22,7 +22,11 @@ const MAU = ['#f59e0b', '#ef4444', '#10b981', '#3b82f6', '#a855f7', '#ec4899', '
 // ─────────────────────────────── VÒNG QUAY ───────────────────────────────
 type Quay = { id: string; ten: string; so: number; xu: number }
 
-function TvVongQuay({ skId }: { skId: string }) {
+function TvVongQuay({ skId }: { skId: string }) { return <VongQuay skId={skId} /> }
+
+// Vòng quay dùng chung: TV (chỉ xem) và BÀN QUAY (banQuay — laptop thứ 2, Thùy 26/09: HS check-in xong ra đây,
+// tìm tên mình trong danh sách chờ quay rồi bấm QUAY; vòng quay chạy ngay trên chính màn này).
+export function VongQuay({ skId, banQuay = false, onLoi }: { skId: string; banQuay?: boolean; onLoi?: (t: string) => void }) {
   const [cfg, setCfg] = useState<{ xu: number; ti_le: number }[] | null>(null)
   const [tenSk, setTenSk] = useState('')
   const [goc, setGoc] = useState(0)
@@ -57,6 +61,22 @@ function TvVongQuay({ skId }: { skId: string }) {
     } catch { /* thử lại lần poll sau */ }
   }
   sk.useSkLive(['sk_xu'], tai, 2000)
+
+  // Bàn quay: danh sách HS đã check-in mà chưa quay (fn_sk_cho_quay — đến trước quay trước).
+  const [cho, setCho] = useState<Awaited<ReturnType<typeof sk.choQuay>> | null>(null)
+  const [dangGoi, setDangGoi] = useState<string | null>(null)
+  const taiCho = async () => { if (!banQuay) return; try { setCho(await sk.choQuay(skId)) } catch { /* giữ list cũ */ } }
+  sk.useSkLive(banQuay ? ['sk_checkin', 'sk_xu'] : [], taiCho, 3000)
+  useEffect(() => { taiCho() }, [skId, banQuay]) // eslint-disable-line
+  const bamQuay = async (id: string) => {
+    setDangGoi(id)
+    try {
+      await sk.quay(id)
+      setCho((p) => p?.filter((x) => x.nguoi_choi_id !== id) ?? p)
+      await tai() // bắt kết quả ngay, không chờ nhịp poll
+    } catch (e) { onLoi?.((e as Error).message) } finally { setDangGoi(null) }
+  }
+  const khoa = !!dangQuay || !!hien || !!dangGoi
   useEffect(() => { tai() }, [skId]) // eslint-disable-line
   useEffect(() => { if (o.length) chayKe() }, [o.length]) // eslint-disable-line -- lượt quay tới trước khi tải xong cấu hình
 
@@ -86,9 +106,9 @@ function TvVongQuay({ skId }: { skId: string }) {
 
   const R = 300
   return (
-    <div className="flex h-screen w-screen items-center justify-center gap-12 overflow-hidden text-white" style={{ background: NEN }}>
+    <div className={`flex items-center justify-center overflow-hidden text-white ${banQuay ? 'h-full w-full gap-8 p-4' : 'h-screen w-screen gap-12'}`} style={{ background: NEN }}>
       {/* Vừa khít mọi màn: cạnh = min(86% chiều cao, 50% chiều ngang) — SVG viewBox tự co theo. */}
-      <div className="relative aspect-square shrink-0" style={{ width: 'min(86vh, 50vw)' }}>
+      <div className="relative aspect-square shrink-0" style={{ width: banQuay ? 'min(74vh, 46vw)' : 'min(86vh, 50vw)' }}>
         <div className="absolute left-1/2 top-0 z-10 -translate-x-1/2" style={{ width: 0, height: 0, borderLeft: '22px solid transparent', borderRight: '22px solid transparent', borderTop: '48px solid #fde047', filter: 'drop-shadow(0 4px 6px rgba(0,0,0,.5))' }} />
         <svg viewBox={`${-R - 20} ${-R - 20} ${2 * R + 40} ${2 * R + 40}`} className="h-full w-full"
           style={{ transform: `rotate(${goc}deg)`, transition: dangQuay ? 'transform 6s cubic-bezier(.12,.72,.12,1)' : 'none' }}>
@@ -118,9 +138,23 @@ function TvVongQuay({ skId }: { skId: string }) {
             <><div className="text-2xl text-white/70">Đang quay cho…</div><div className="mt-2 text-6xl font-black">{dangQuay.ten}</div></>
           ) : hien ? (
             <><div className="text-6xl font-black">{hien.ten}</div><div className="mt-3 text-8xl font-black text-yellow-300">+{hien.xu} xu 🎉</div></>
-          ) : <div className="text-3xl text-white/60">Check-in ở bàn bên cạnh để được quay nhé!</div>}
+          ) : <div className="text-3xl text-white/60">{banQuay ? 'Tìm tên mình bên dưới rồi bấm QUAY nhé!' : 'Check-in ở bàn bên cạnh để được quay nhé!'}</div>}
         </div>
-        {ganDay.length > 0 && (
+        {banQuay ? (
+          <div className="mt-4 rounded-3xl bg-white/5 p-4">
+            <div className="mb-2 text-xl font-bold text-yellow-300">⏳ Chờ quay: {cho?.length ?? '…'} bạn</div>
+            <div className="max-h-[38vh] space-y-2 overflow-auto pr-1">
+              {cho?.length === 0 && <div className="text-lg text-white/50">Chưa có bạn nào — check-in xong ở bàn bên cạnh là tên hiện ở đây.</div>}
+              {cho?.map((c) => (
+                <div key={c.nguoi_choi_id} className="flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-3">
+                  <div className="min-w-0 flex-1"><div className="truncate text-2xl font-bold">{c.ten}</div><div className="text-sm text-white/50">{c.lop ?? ''} · #{c.so}</div></div>
+                  <button disabled={khoa} onClick={() => bamQuay(c.nguoi_choi_id)}
+                    className="shrink-0 rounded-2xl bg-yellow-400 px-6 py-3 text-2xl font-black text-purple-900 shadow-lg transition active:scale-95 disabled:opacity-30">{dangGoi === c.nguoi_choi_id ? '…' : '🎡 QUAY'}</button>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : ganDay.length > 0 && (
           <div className="mt-6 space-y-1 text-xl text-white/80">
             {ganDay.slice(0, 6).map((q) => <div key={q.id} className="flex justify-between"><span>{q.ten}</span><b className="text-yellow-300">+{q.xu}</b></div>)}
           </div>
