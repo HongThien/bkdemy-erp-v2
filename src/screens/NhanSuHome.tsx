@@ -40,6 +40,7 @@ import VietCuaToiTab from './giaoviec/VietCuaToiTab'
 import CongKhaiTab from './giaoviec/CongKhaiTab'
 import TroLyTab from './troly/TroLyTab'
 import HoiDapTab from './hoidap/HoiDapTab'
+import SuKienScreen from './sukien/SuKienScreen'
 import { hoiDapDuocDung } from '../lib/hoidap'
 import { listDotChoDuyetDuoi } from '../lib/botro_duoi'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
@@ -669,6 +670,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'tuyensinh' ? <TuyenSinhScreen />
       : staffLeaf === 'test_dau_vao' ? <TestDauVaoScreen />
       : staffLeaf === 'khaosat' ? <KhaoSatScreen />
+      : staffLeaf === 'su_kien' ? <SuKienScreen />
       : staffLeaf === 'botro' ? <BoTroHubScreen />
       : staffLeaf === 'buoihoc' ? <BuoiHocScreen />
       : staffLeaf === 'diemso' ? <GamiDiemScreen />

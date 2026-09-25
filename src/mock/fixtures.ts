@@ -98,6 +98,8 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'tu_qua',      nhom: 'Vận hành',  ten: 'Tủ quà (đổi xu)',              founderOnly: false },
   // Khảo sát 'Bạn của con ở BK' (CEO 08/09, spec-khao-sat-hs.md): đồ thị quan hệ HS — làm trên iPad (PWA riêng) + khớp tên + kết quả ở đây.
   { id: 'khaosat',     nhom: 'Vận hành',  ten: 'Khảo sát Bạn của con',         founderOnly: false },
+  // Sự kiện (spec-su-kien.md, Trung thu 26/09): check-in · vòng quay · hàng chờ phòng iPad · quầy quà. Cấp cho nhân sự trực.
+  { id: 'su_kien',     nhom: 'Vận hành',  ten: 'Sự kiện',                      founderOnly: false },
 
   // ── GAMIFICATION: Elo/EXP, thành tích, level ──
   { id: 'diemso',      nhom: 'Gamification', ten: 'Điểm số (Elo/EXP)',        founderOnly: false },

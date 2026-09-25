@@ -526,6 +526,7 @@ function broadcastState(){if(!room)return;send('state',Object.assign({},TV.state
 function setState(st){TV.state=st;applyPhaseUI();broadcastState()}
 function tvNet(){
   TV.state={phase:'lobby',matchId:Date.now()};applyPhaseUI();
+  onMsg('sk_names',p=>{if(!p||!p.names||(TV.state&&TV.state.phase!=='lobby'))return;TV.names={};Object.keys(p.names).forEach(k=>{TV.names[+k]=String(p.names[k]||'')});$('tvNames').querySelectorAll('input').forEach(el=>{el.value=TV.names[+el.dataset.i]||''});broadcastState()}); // ERP sự kiện: điện thoại quản trò điền tên theo slot
   onMsg('player',p=>{if(!p||!p.slot)return;const old=TV.players[p.slot]||{};
     if(TV.cur&&p.matchId!==TV.cur.matchId){p=Object.assign({},p,{score:old.score||0,mistakes:old.mistakes||0,doneMs:old.doneMs||null,lastAt:old.lastAt||null,streak:0})}
     TV.players[p.slot]=Object.assign({},p,{last:Date.now(),online:true});renderLB();checkEvents()});
