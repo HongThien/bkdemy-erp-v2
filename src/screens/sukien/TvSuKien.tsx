@@ -105,32 +105,66 @@ export function VongQuay({ skId, banQuay = false, onLoi }: { skId: string; banQu
   }
 
   const R = 300
-  return (
-    <div className={`flex items-center justify-center overflow-hidden text-white ${banQuay ? 'h-full w-full gap-8 p-4' : 'h-screen w-screen gap-12'}`} style={{ background: NEN }}>
-      {/* Vừa khít mọi màn: cạnh = min(86% chiều cao, 50% chiều ngang) — SVG viewBox tự co theo. */}
-      <div className="relative aspect-square shrink-0" style={{ width: banQuay ? 'min(74vh, 46vw)' : 'min(86vh, 50vw)' }}>
-        <div className="absolute left-1/2 top-0 z-10 -translate-x-1/2" style={{ width: 0, height: 0, borderLeft: '22px solid transparent', borderRight: '22px solid transparent', borderTop: '48px solid #fde047', filter: 'drop-shadow(0 4px 6px rgba(0,0,0,.5))' }} />
-        <svg viewBox={`${-R - 20} ${-R - 20} ${2 * R + 40} ${2 * R + 40}`} className="h-full w-full"
-          style={{ transform: `rotate(${goc}deg)`, transition: dangQuay ? 'transform 6s cubic-bezier(.12,.72,.12,1)' : 'none' }}>
-          <circle r={R + 14} fill="#7c2d12" stroke="#fde047" strokeWidth="6" />
-          {o.map((xu, i) => {
-            const b = (2 * Math.PI) / o.length
-            const a0 = i * b - Math.PI / 2, a1 = (i + 1) * b - Math.PI / 2
-            const x0 = R * Math.cos(a0), y0 = R * Math.sin(a0), x1 = R * Math.cos(a1), y1 = R * Math.sin(a1)
-            const am = (a0 + a1) / 2
-            const tx = R * 0.66 * Math.cos(am), ty = R * 0.66 * Math.sin(am)
-            return (
-              <g key={i}>
-                <path d={`M0 0 L${x0} ${y0} A${R} ${R} 0 0 1 ${x1} ${y1} Z`} fill={MAU[i % MAU.length]} stroke="#fff7" strokeWidth="3" />
-                <text x={tx} y={ty} fill="#fff" fontSize="56" fontWeight="900" textAnchor="middle" dominantBaseline="middle"
-                  transform={`rotate(${(am * 180) / Math.PI + 90} ${tx} ${ty})`} style={{ paintOrder: 'stroke', stroke: '#0006', strokeWidth: 6 }}>{xu}</text>
-              </g>
-            )
-          })}
-          <circle r="46" fill="#fde047" stroke="#7c2d12" strokeWidth="6" />
-          <text y="4" fontSize="40" textAnchor="middle" dominantBaseline="middle">🏮</text>
-        </svg>
+  const banhXe = (rong: string) => (
+        <div className="relative aspect-square shrink-0" style={{ width: rong }}>
+          <div className="absolute left-1/2 top-0 z-10 -translate-x-1/2" style={{ width: 0, height: 0, borderLeft: '22px solid transparent', borderRight: '22px solid transparent', borderTop: '48px solid #fde047', filter: 'drop-shadow(0 4px 6px rgba(0,0,0,.5))' }} />
+          <svg viewBox={`${-R - 20} ${-R - 20} ${2 * R + 40} ${2 * R + 40}`} className="h-full w-full"
+            style={{ transform: `rotate(${goc}deg)`, transition: dangQuay ? 'transform 6s cubic-bezier(.12,.72,.12,1)' : 'none' }}>
+            <circle r={R + 14} fill="#7c2d12" stroke="#fde047" strokeWidth="6" />
+            {o.map((xu, i) => {
+              const b = (2 * Math.PI) / o.length
+              const a0 = i * b - Math.PI / 2, a1 = (i + 1) * b - Math.PI / 2
+              const x0 = R * Math.cos(a0), y0 = R * Math.sin(a0), x1 = R * Math.cos(a1), y1 = R * Math.sin(a1)
+              const am = (a0 + a1) / 2
+              const tx = R * 0.66 * Math.cos(am), ty = R * 0.66 * Math.sin(am)
+              return (
+                <g key={i}>
+                  <path d={`M0 0 L${x0} ${y0} A${R} ${R} 0 0 1 ${x1} ${y1} Z`} fill={MAU[i % MAU.length]} stroke="#fff7" strokeWidth="3" />
+                  <text x={tx} y={ty} fill="#fff" fontSize="56" fontWeight="900" textAnchor="middle" dominantBaseline="middle"
+                    transform={`rotate(${(am * 180) / Math.PI + 90} ${tx} ${ty})`} style={{ paintOrder: 'stroke', stroke: '#0006', strokeWidth: 6 }}>{xu}</text>
+                </g>
+              )
+            })}
+            <circle r="46" fill="#fde047" stroke="#7c2d12" strokeWidth="6" />
+            <text y="4" fontSize="40" textAnchor="middle" dominantBaseline="middle">🏮</text>
+          </svg>
+        </div>
+    )
+
+  if (banQuay) {
+    // BÀN QUAY (laptop): 2 cột — vòng quay bên trái, bên phải danh sách chờ quay TỰ CUỘN (màn thấp vẫn bấm được QUAY).
+    return (
+      <div className="grid h-full min-h-0 w-full grid-cols-[auto_minmax(0,1fr)] items-center gap-6 overflow-hidden p-4 text-white" style={{ background: NEN }}>
+        {banhXe('min(calc(100vh - 170px), 44vw)')}
+        <div className="flex h-full min-h-0 flex-col gap-3">
+          <div className="text-xl font-black text-yellow-300">🎡 VÒNG QUAY{tenSk ? ` · ${tenSk.toUpperCase()}` : ''}</div>
+          <div className="shrink-0 rounded-3xl bg-white/10 p-4">
+            {dangQuay ? (
+              <><div className="text-lg text-white/70">Đang quay cho…</div><div className="text-4xl font-black">{dangQuay.ten}</div></>
+            ) : hien ? (
+              <><div className="text-3xl font-black">{hien.ten}</div><div className="text-6xl font-black text-yellow-300">+{hien.xu} xu 🎉</div></>
+            ) : <div className="text-2xl text-white/60">Tìm tên mình bên dưới rồi bấm QUAY nhé!</div>}
+          </div>
+          <div className="text-lg font-bold text-yellow-300">⏳ Chờ quay: {cho?.length ?? '…'} bạn</div>
+          <div className="min-h-0 flex-1 space-y-2 overflow-auto pr-1">
+            {cho?.length === 0 && <div className="text-lg text-white/50">Chưa có bạn nào — check-in xong ở bàn bên cạnh là tên hiện ở đây.</div>}
+            {cho?.map((c) => (
+              <div key={c.nguoi_choi_id} className="flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-2.5">
+                <div className="min-w-0 flex-1"><div className="break-words text-xl font-bold leading-tight">{c.ten}</div><div className="text-sm text-white/50">{c.lop ?? ''} · #{c.so}</div></div>
+                <button disabled={khoa} onClick={() => bamQuay(c.nguoi_choi_id)}
+                  className="shrink-0 rounded-2xl bg-yellow-400 px-5 py-2.5 text-xl font-black text-purple-900 shadow-lg transition active:scale-95 disabled:opacity-30">{dangGoi === c.nguoi_choi_id ? '…' : '🎡 QUAY'}</button>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+    )
+  }
+
+  return (
+    <div className="flex h-screen w-screen items-center justify-center gap-12 overflow-hidden text-white" style={{ background: NEN }}>
+      {/* Vừa khít mọi màn: cạnh = min(86% chiều cao, 50% chiều ngang) — SVG viewBox tự co theo. */}
+      {banhXe('min(86vh, 50vw)')}
       <div className="w-[34vw] min-w-[320px]">
         <div className="text-4xl font-black text-yellow-300">🎡 VÒNG QUAY{tenSk ? ` · ${tenSk.toUpperCase()}` : ''}</div>
         <div className="mt-6 min-h-[220px] rounded-3xl bg-white/10 p-6">
@@ -138,23 +172,9 @@ export function VongQuay({ skId, banQuay = false, onLoi }: { skId: string; banQu
             <><div className="text-2xl text-white/70">Đang quay cho…</div><div className="mt-2 text-6xl font-black">{dangQuay.ten}</div></>
           ) : hien ? (
             <><div className="text-6xl font-black">{hien.ten}</div><div className="mt-3 text-8xl font-black text-yellow-300">+{hien.xu} xu 🎉</div></>
-          ) : <div className="text-3xl text-white/60">{banQuay ? 'Tìm tên mình bên dưới rồi bấm QUAY nhé!' : 'Check-in ở bàn bên cạnh để được quay nhé!'}</div>}
+          ) : <div className="text-3xl text-white/60">Check-in ở bàn bên cạnh để được quay nhé!</div>}
         </div>
-        {banQuay ? (
-          <div className="mt-4 rounded-3xl bg-white/5 p-4">
-            <div className="mb-2 text-xl font-bold text-yellow-300">⏳ Chờ quay: {cho?.length ?? '…'} bạn</div>
-            <div className="max-h-[38vh] space-y-2 overflow-auto pr-1">
-              {cho?.length === 0 && <div className="text-lg text-white/50">Chưa có bạn nào — check-in xong ở bàn bên cạnh là tên hiện ở đây.</div>}
-              {cho?.map((c) => (
-                <div key={c.nguoi_choi_id} className="flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-3">
-                  <div className="min-w-0 flex-1"><div className="truncate text-2xl font-bold">{c.ten}</div><div className="text-sm text-white/50">{c.lop ?? ''} · #{c.so}</div></div>
-                  <button disabled={khoa} onClick={() => bamQuay(c.nguoi_choi_id)}
-                    className="shrink-0 rounded-2xl bg-yellow-400 px-6 py-3 text-2xl font-black text-purple-900 shadow-lg transition active:scale-95 disabled:opacity-30">{dangGoi === c.nguoi_choi_id ? '…' : '🎡 QUAY'}</button>
-                </div>
-              ))}
-            </div>
-          </div>
-        ) : ganDay.length > 0 && (
+        {ganDay.length > 0 && (
           <div className="mt-6 space-y-1 text-xl text-white/80">
             {ganDay.slice(0, 6).map((q) => <div key={q.id} className="flex justify-between"><span>{q.ten}</span><b className="text-yellow-300">+{q.xu}</b></div>)}
           </div>
