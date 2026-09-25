@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luật chơi BK Games</title>
+<!-- Tờ luật dán tường cho học sinh (Thùy 25/09): mỗi game đúng 1 trang A4, bấm In / Ctrl+P.
+     Số liệu = mặc định của từng game (xem luat-choi-game.md ở gốc repo). Đổi Cài đặt trong game thì sửa lại ở đây. -->
+<style>
+  :root{--ink:#1d2340;--muted:#5b6285;--line:#d9dcec;--gold:#f2a900;--card:#fff;--page:#eef0f7}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--ink);font-family:"Segoe UI",Roboto,Arial,sans-serif}
+  .bar{position:sticky;top:0;z-index:5;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;padding:12px 16px;background:#1d2340;color:#fff}
+  .bar button{font:inherit;font-weight:700;padding:8px 18px;border-radius:10px;border:none;background:#ffd166;color:#3a2400;cursor:pointer}
+  .bar span{font-size:14px;opacity:.8}
+  .poster{width:210mm;min-height:297mm;margin:16px auto;padding:14mm 14mm 10mm;background:var(--card);box-shadow:0 6px 30px rgba(0,0,0,.12);display:flex;flex-direction:column}
+  @media (max-width:820px){.poster{width:auto;min-height:0;margin:12px 16px;padding:20px 16px}}
+  .head{border-radius:18px;padding:12pt 16pt;color:#fff;display:flex;align-items:center;gap:14pt}
+  .head .ic{font-size:54pt;line-height:1}
+  .head h1.long{font-size:32pt}
+  .head h1{margin:0;font-size:40pt;line-height:1.05;letter-spacing:1px;text-transform:uppercase}
+  .head .tag{margin-top:6pt;font-size:15pt;font-weight:600;opacity:.95}
+  .goal{margin:16pt 0 6pt;font-size:23pt;font-weight:800;line-height:1.3}
+  h2{margin:16pt 0 6pt;font-size:15pt;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+  ol{margin:0;padding-left:26pt;font-size:19pt;line-height:1.45}
+  ol li{margin:3pt 0}
+  .rows{display:flex;flex-direction:column;gap:5pt}
+  .row{display:flex;align-items:center;gap:12pt;border:2px solid var(--line);border-radius:12px;padding:5pt 12pt;font-size:18pt}
+  .row .i{font-size:22pt;line-height:1;min-width:34pt;text-align:center;white-space:nowrap}
+  .row .l{flex:1}
+  .row .v{font-weight:900;font-size:21pt;white-space:nowrap}
+  .row.good .v{color:#1b8a3a} .row.bad .v{color:#c62828}
+  .note{padding-top:4pt}
+  .note ul{margin:0;padding-left:22pt;font-size:16pt;line-height:1.45;color:#2d3456}
+  .prize{font-size:18pt;line-height:1.45}
+  .foot{margin-top:auto;padding-top:8pt;border-top:2px dashed var(--line);font-size:11pt;color:var(--muted);display:flex;justify-content:space-between}
+  b.k{color:#c47b00}
+  @media print{
+    @page{size:A4 portrait;margin:0}
+    body{background:#fff}
+    .bar{display:none}
+    .poster{margin:0;box-shadow:none;height:297mm;page-break-after:always;break-after:page;overflow:hidden}
+    .head{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+<div class="bar"><button onclick="print()">🖨 In tất cả</button><span>Mỗi game 1 trang A4 · Ctrl+P để chọn trang cần in</span></div>
+
+<!-- 1 ĐOÁN SỐ -->
+<section class="poster">
+  <div class="head" style="background:#6a3fd0"><div class="ic">🎲</div><div><h1>Đoán Số</h1><div class="tag">📺 Chơi trên TV · anh chị điều khiển</div></div></div>
+  <div class="goal">Đoán 1 số từ 00 đến 99. Càng gần số máy quay ra, càng nhiều xu!</div>
+  <h2>Cách chơi</h2>
+  <ol>
+    <li>Mỗi bạn bắt đầu với <b>10 xu</b>. Chơi 1 ván = đặt <b>1 xu</b>.</li>
+    <li>Nói số bạn chọn cho anh chị điều khiển.</li>
+    <li>Máy quay ra <b>số trúng</b>. So với số bạn đoán:</li>
+  </ol>
+  <h2>Nhận thưởng</h2>
+  <div class="rows">
+    <div class="row good"><span class="i">🎯</span><span class="l">Trúng đúng số</span><span class="v">30 xu</span></div>
+    <div class="row good"><span class="i">🔥</span><span class="l">Lệch 1 hoặc 2</span><span class="v">10 xu</span></div>
+    <div class="row good"><span class="i">✨</span><span class="l">Lệch 3, 4 hoặc 5</span><span class="v">5 xu</span></div>
+    <div class="row bad"><span class="i">❌</span><span class="l">Lệch từ 6 trở lên</span><span class="v">mất 1 xu</span></div>
+  </div>
+  <div class="note"><h2>Lưu ý</h2><ul>
+    <li><b>99 và 00 đứng cạnh nhau.</b> Máy ra 98, bạn đoán 01 → chỉ lệch 3.</li>
+    <li>Nhiều bạn trúng cùng lúc thì <b>ai cũng nhận đủ</b>.</li>
+    <li>Không muốn chơi ván nào thì bỏ qua, không mất xu.</li>
+  </ul></div>
+  <div class="foot"><span>BK Academy · Trung Thu</span><span>Đoán Số</span></div>
+</section>
+
+<!-- 2 ĐẬP CHUỘT -->
+<section class="poster">
+  <div class="head" style="background:#8a5a2b"><div class="ic">🐹</div><div><h1>Đập Chuột</h1><div class="tag">📱 Chơi trên iPad · ⏱ 25 giây</div></div></div>
+  <div class="goal">Đập thật nhiều chuột trong 25 giây!</div>
+  <h2>Cách chơi</h2>
+  <ol>
+    <li>Nhập tên, bấm <b>SẴN SÀNG</b>.</li>
+    <li>Đếm ngược 3 – 2 – 1… <b>ĐẬP!</b></li>
+    <li>Chạm vào chuột vừa thò lên khỏi hang.</li>
+  </ol>
+  <h2>Tính điểm</h2>
+  <div class="rows">
+    <div class="row good"><span class="i">🐹</span><span class="l">Chuột nâu</span><span class="v">+1</span></div>
+    <div class="row good"><span class="i">⚡</span><span class="l">Chuột xanh (chạy nhanh)</span><span class="v">+3</span></div>
+    <div class="row good"><span class="i">👑</span><span class="l">Chuột vàng</span><span class="v">+5</span></div>
+    <div class="row good"><span class="i">🎁</span><span class="l">Chuột quà (hiếm) + 1 vé quà</span><span class="v">+10</span></div>
+    <div class="row bad"><span class="i">💣</span><span class="l">Bom — đừng đập!</span><span class="v">−5</span></div>
+  </div>
+  <div class="note"><h2>Combo & thưởng</h2><ul>
+    <li>Đập trúng liên tiếp <b>10 / 20 / 30 / 40</b> con: thưởng thêm <b>+3 / +5 / +10 / +15</b>. Chạm hang trống hoặc bom là <b>mất combo</b>.</li>
+    <li>10 giây cuối: chuột ra dày, <b>có bom</b>!</li>
+    <li class="prize">Điểm cao nhất thắng. Ai chơi cũng có xu: <b class="k">hạng 1: 10 xu</b>, hạng 2: 9 xu … hạng 8: 3 xu.</li>
+  </ul></div>
+  <div class="foot"><span>BK Academy · Trung Thu</span><span>Đập Chuột</span></div>
+</section>
+
+<!-- 3 TÌM NHÂN VẬT ẨN -->
+<section class="poster">
+  <div class="head" style="background:#1f6fb2"><div class="ic">🔎</div><div><h1>Tìm Nhân Vật Ẩn</h1><div class="tag">📱 Chơi trên iPad · ⏱ 40 giây</div></div></div>
+  <div class="goal">Tìm thật nhanh đồ vật được gọi tên trong bức tranh Trung Thu!</div>
+  <h2>Cách chơi</h2>
+  <ol>
+    <li>Nhập tên, bấm <b>SẴN SÀNG</b>.</li>
+    <li>Nhìn khung <b>"Hãy tìm"</b> phía trên: có tên và hình mẫu.</li>
+    <li>Chạm đúng vật đó trong tranh. Tìm xong mới hiện vật tiếp theo.</li>
+  </ol>
+  <h2>Tính điểm</h2>
+  <div class="rows">
+    <div class="row good"><span class="i">✅</span><span class="l">Chạm đúng</span><span class="v">+1</span></div>
+    <div class="row bad"><span class="i">❌</span><span class="l">Chạm sai (tranh khoá một chút)</span><span class="v">−1</span></div>
+  </div>
+  <div class="note"><h2>Lưu ý & thưởng</h2><ul>
+    <li>Chạm lại vật đã tìm được cũng tính là <b>chạm sai</b>.</li>
+    <li>Nhiều điểm nhất thắng. Bằng điểm thì ai <b>sai ít hơn</b> thắng.</li>
+    <li class="prize">Ai chơi cũng có xu: <b class="k">hạng 1: 30 xu</b>, hạng 2: 25, hạng 3: 20, hạng 4: 15, hạng 5: 12, hạng 6: 10, hạng 7: 8, hạng 8: 6 xu.</li>
+  </ul></div>
+  <div class="foot"><span>BK Academy · Trung Thu</span><span>Tìm Nhân Vật Ẩn</span></div>
+</section>
+
+<!-- 4 TÌM ĐIỂM KHÁC NHAU -->
+<section class="poster">
+  <div class="head" style="background:#0f8a7a"><div class="ic">👀</div><div><h1 class="long">Tìm Điểm Khác Nhau</h1><div class="tag">📱 Chơi trên iPad · ⏱ 2 phút</div></div></div>
+  <div class="goal">Tìm 10 điểm khác nhau giữa hai bức tranh!</div>
+  <h2>Cách chơi</h2>
+  <ol>
+    <li>Nhập tên, bấm <b>SẴN SÀNG</b>.</li>
+    <li>So sánh tranh <b>A</b> và tranh <b>B</b>.</li>
+    <li>Thấy chỗ khác thì chạm vào chỗ đó — chạm tranh nào cũng được.</li>
+  </ol>
+  <h2>Chỗ khác có thể là</h2>
+  <div class="prize">🎨 đổi màu · 👻 biến mất · 🔍 to hoặc nhỏ hơn · 🔄 bị xoay · ↔️ bị lật · 🔁 đổi thành vật khác · ➕ có thêm vật mới</div>
+  <h2>Tính điểm</h2>
+  <div class="rows">
+    <div class="row good"><span class="i">✅</span><span class="l">Tìm đúng 1 điểm</span><span class="v">+1</span></div>
+    <div class="row bad"><span class="i">⏸</span><span class="l">Chạm sai: không trừ điểm, tranh khoá nửa giây</span><span class="v">0</span></div>
+  </div>
+  <div class="note"><h2>Thưởng</h2><ul>
+    <li>Nhiều điểm nhất thắng. Bằng điểm thì ai <b>xong trước</b> thắng.</li>
+    <li class="prize">Ai chơi cũng có xu: <b class="k">hạng 1: 30 xu</b>, hạng 2: 25 … hạng 8: 6 xu.</li>
+    <li><b>Tìm đủ cả 10 điểm: thưởng thêm 5 xu!</b></li>
+  </ul></div>
+  <div class="foot"><span>BK Academy · Trung Thu</span><span>Tìm Điểm Khác Nhau</span></div>
+</section>
+
+<!-- 5 XẾP THÁP -->
+<section class="poster">
+  <div class="head" style="background:#c46a1a"><div class="ic">🥮</div><div><h1>Xếp Tháp</h1><div class="tag">📱 Chơi trên iPad · ⏱ 30 giây</div></div></div>
+  <div class="goal">Xếp tháp bánh trung thu cao nhất trong 30 giây!</div>
+  <h2>Cách chơi</h2>
+  <ol>
+    <li>Nhập tên, bấm <b>SẴN SÀNG</b>.</li>
+    <li>Tầng bánh chạy qua chạy lại. <b>Chạm màn hình để thả.</b></li>
+    <li>Phần thò ra ngoài bị cắt đi, nên tầng sau hẹp dần.</li>
+  </ol>
+  <h2>Mẹo</h2>
+  <div class="rows">
+    <div class="row good"><span class="i">⭐</span><span class="l">Thả thẳng hàng = PERFECT, không bị cắt</span><span class="v"></span></div>
+    <div class="row good"><span class="i">🔥</span><span class="l">Từ PERFECT thứ 3 liên tiếp: tầng rộng ra lại</span><span class="v"></span></div>
+    <div class="row bad"><span class="i">💥</span><span class="l">Thả trượt hẳn: tháp sập, xây lại từ đầu</span><span class="v"></span></div>
+  </div>
+  <div class="note"><h2>Lưu ý & thưởng</h2><ul>
+    <li>Tháp càng cao, bánh chạy càng nhanh.</li>
+    <li>Tính <b>tháp cao nhất</b> bạn từng xây trong trận — sập rồi vẫn không mất kỷ lục.</li>
+    <li class="prize">Tháp cao nhất thắng. Ai chơi cũng có xu: <b class="k">hạng 1: 10 xu</b>, hạng 2: 9 xu … hạng 8: 3 xu.</li>
+  </ul></div>
+  <div class="foot"><span>BK Academy · Trung Thu</span><span>Xếp Tháp</span></div>
+</section>
+
+<!-- 6 MÊ CUNG -->
+<section class="poster">
+  <div class="head" style="background:#2d4bb3"><div class="ic">🌀</div><div><h1>Mê Cung</h1><div class="tag">📱 Chơi trên iPad theo đội · ⏱ 75 giây</div></div></div>
+  <div class="goal">Đi từ VÀO đến ĐÍCH bằng đường ngắn nhất!</div>
+  <h2>Cách chơi</h2>
+  <ol>
+    <li>Nhập <b>tên đội</b>, bấm <b>SẴN SÀNG</b>.</li>
+    <li>Đặt ngón tay vào <b>chấm sáng</b> rồi kéo để đi.</li>
+    <li>Đụng tường thì chỉ đứng lại, <b>không bị phạt</b>.</li>
+  </ol>
+  <h2>Tính điểm</h2>
+  <div class="rows">
+    <div class="row good"><span class="i">👣</span><span class="l">Máy đếm số ô bạn đã đi — <b>càng ít càng tốt</b></span><span class="v"></span></div>
+    <div class="row bad"><span class="i">↩️</span><span class="l">Đi lùi cũng bị đếm ô</span><span class="v"></span></div>
+  </div>
+  <div class="note"><h2>Xếp hạng & thưởng</h2><ul>
+    <li>Đội về đích xếp trên đội chưa về. Cùng về đích: <b>ít ô nhất</b> thắng, bằng nhau thì ai <b>nhanh hơn</b>.</li>
+    <li>Chưa về đích: đội nào <b>gần đích hơn</b> xếp trên.</li>
+    <li class="prize">Ai chơi cũng có xu: <b class="k">hạng 1: 10 xu</b>, hạng 2: 9 xu … hạng 8: 3 xu.</li>
+    <li>Đi gần bằng <b>đường ngắn nhất</b> (màn hình có ghi "tối ưu … ô"): thưởng thêm <b>2 xu</b>.</li>
+  </ul></div>
+  <div class="foot"><span>BK Academy · Trung Thu</span><span>Mê Cung</span></div>
+</section>
+
+<!-- 7 CHIẾM ĐẤT -->
+<section class="poster">
+  <div class="head" style="background:#a8322d"><div class="ic">🏯</div><div><h1>Chiếm Đất</h1><div class="tag">📺 Chơi trên TV · anh chị điều khiển</div></div></div>
+  <div class="goal">Mua ô đất, mở ra nhận xu — săn ô ĐỘC ĐẮC 75 xu!</div>
+  <h2>Cách chơi</h2>
+  <ol>
+    <li>Chọn 1 ô đất và trả xu cho anh chị.</li>
+    <li>Chỉ mở được ô <b>nằm sát đất đã mở</b>. Bắt đầu từ ngôi làng giữa bản đồ.</li>
+    <li>Ô mở ra có quà xu. Ô đó mang tên bạn trên bản đồ.</li>
+  </ol>
+  <h2>Giá & quà</h2>
+  <div class="rows">
+    <div class="row"><span class="i">★</span><span class="l">Ô 5 xu → nhận 4 đến 10 xu</span><span class="v">5 xu</span></div>
+    <div class="row"><span class="i">★★</span><span class="l">Ô 10 xu → nhận 7 đến 20 xu</span><span class="v">10 xu</span></div>
+    <div class="row"><span class="i">★★★</span><span class="l">Ô 15 xu → nhận 11 đến 30 xu</span><span class="v">15 xu</span></div>
+    <div class="row good"><span class="i">💎</span><span class="l">1 ô ★★★ giấu <b>ĐỘC ĐẮC</b></span><span class="v">75 xu</span></div>
+  </div>
+  <div class="note"><h2>Lưu ý</h2><ul>
+    <li>Đây là trò <b>may mắn</b>: có ô lời, có ô lỗ một chút.</li>
+    <li>Mở hết 36 ô là hết bản đồ. Màn hình vinh danh bạn chiếm được nhiều ô nhất.</li>
+  </ul></div>
+  <div class="foot"><span>BK Academy · Trung Thu</span><span>Chiếm Đất</span></div>
+</section>
+
+<!-- 8 ĐUA TRUNG THU -->
+<section class="poster">
+  <div class="head" style="background:#1c7a3c"><div class="ic">🏁</div><div><h1>Đua Trung Thu</h1><div class="tag">📺 Chơi trên TV · tối đa 10 bạn</div></div></div>
+  <div class="goal">Chọn một tay đua. Tay đua về nhất thì bạn thắng!</div>
+  <h2>Cách chơi</h2>
+  <ol>
+    <li>Mỗi bạn chọn <b>1 nhân vật</b> và nói tên mình cho anh chị.</li>
+    <li>Anh chị bấm <b>BẮT ĐẦU ĐUA</b>. Cuộc đua tự chạy — bạn chỉ việc <b>cổ vũ</b>!</li>
+    <li>Nhân vật về đích đầu tiên thắng.</li>
+  </ol>
+  <h2>Thưởng</h2>
+  <div class="rows">
+    <div class="row good"><span class="i">🏆</span><span class="l">Về nhất</span><span class="v">9 xu</span></div>
+  </div>
+  <div class="note"><h2>Lưu ý</h2><ul>
+    <li>Kết quả <b>hoàn toàn may mắn</b>: nhân vật nào cũng có cơ hội như nhau.</li>
+    <li>🍌 và 🚀 trên đường đua chỉ là hiệu ứng cho vui.</li>
+  </ul></div>
+  <div class="foot"><span>BK Academy · Trung Thu</span><span>Đua Trung Thu</span></div>
+</section>
+
+<!-- 9 MỞ RƯƠNG -->
+<section class="poster">
+  <div class="head" style="background:#b8860b"><div class="ic">🎁</div><div><h1>Mở Rương</h1><div class="tag">📺 Chơi trên TV · anh chị điều khiển</div></div></div>
+  <div class="goal">Chọn rương, mở ra nhận quà xu!</div>
+  <h2>Cách chơi</h2>
+  <ol>
+    <li>Chọn 1 rương và trả xu cho anh chị.</li>
+    <li>Anh chị bấm <b>MỞ RƯƠNG</b>.</li>
+    <li>Mở lần lượt 3 món quà: 🎀 <b>Quà chắc chắn</b> · 🍀 <b>Quà may mắn</b> · 💎 <b>Quà bí ẩn</b>.</li>
+  </ol>
+  <h2>Giá & quà</h2>
+  <div class="rows">
+    <div class="row"><span class="i">🟫</span><span class="l">Rương Gỗ → nhận 4 đến 10 xu</span><span class="v">5 xu</span></div>
+    <div class="row"><span class="i">⬜</span><span class="l">Rương Bạc → nhận 7 đến 20 xu</span><span class="v">10 xu</span></div>
+    <div class="row"><span class="i">🟨</span><span class="l">Rương Vàng → nhận 11 đến 30 xu</span><span class="v">15 xu</span></div>
+  </div>
+  <div class="note"><h2>Lưu ý</h2><ul>
+    <li>Rương nào cũng có <b>quà chắc chắn</b>. Quà may mắn và quà bí ẩn có thể có hoặc không.</li>
+    <li>Đây là trò <b>may mắn</b>: có lần lời gấp đôi, có lần lỗ một chút.</li>
+  </ul></div>
+  <div class="foot"><span>BK Academy · Trung Thu</span><span>Mở Rương</span></div>
+</section>
+</body>
+</html>

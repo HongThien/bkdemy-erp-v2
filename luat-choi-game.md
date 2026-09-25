@@ -1,5 +1,6 @@
 # Luật chơi — BK Trung Thu Games
 
+> **Tờ luật dán tường cho học sinh (9 game, mỗi game 1 trang A4): `games-site/luat-choi.html`** — bấm In. File này giữ bản dài + hướng dẫn nhân sự.
 > **Trạng thái: BẢN NHÁP chờ Thùy duyệt.** Viết từ code đang chạy trong `games-site/` (chưa có spec riêng
 > cho từng game, trừ BK Catan có `spec-game-catan.md`). Số liệu trong luật là **giá trị mặc định** của game;
 > nhân sự đổi được trong ⚙ Cài đặt — đổi thì luật in ra phải sửa theo.

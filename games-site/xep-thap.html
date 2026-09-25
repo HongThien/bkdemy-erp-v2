@@ -409,7 +409,7 @@ function applyPhaseUI(){const ph=TV.state.phase;$('tvStateLbl').textContent={lob
   if(ph==='lobby'){TV.lastLead=null;TV.feedSeen={};$('tvTimer').textContent=C.dur||30;$('tvTimer').classList.remove('last')}}
 // ---- vẽ 6 tháp ----
 function renderTV(){const w=tc.clientWidth,h=tc.clientHeight;if(!w||!h)return;const d=Math.min(devicePixelRatio||1,2);if(tc.width!==w*d||tc.height!==h*d){tc.width=w*d;tc.height=h*d}tg.setTransform(d,0,0,d,0,0);tg.clearRect(0,0,w,h);
-  const ph=TV.state.phase,ps=ph==='lobby'?plist():ranked(),res=TV.state.results||{};const n=6,colW=w/n;
+  const ph=TV.state.phase,ps=ph==='lobby'?plist():ranked(),res=TV.state.results||{};const n=MAXP,colW=w/n; // 8 cột — trước là 6, máy 7–8 bị khuất (sót khi nâng 6→8 ngày 23/09)
   const order=ph==='lobby'?plist():plist().sort(cmp);const rankOf={};order.forEach((p,i)=>rankOf[p.slot]=i+1);
   plist().forEach((p,i)=>{const x0=i*colW,cx=x0+colW/2;const inMatch=!TV.cur||TV.cur.players.includes(p.slot);
     // tên + tầng

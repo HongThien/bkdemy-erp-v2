@@ -406,14 +406,14 @@ function applyPhaseUI(){const ph=TV.state.phase;$('tvStateLbl').textContent={lob
   $('tvSeed').disabled=$('tvDice').disabled=ph!=='lobby';
   if(ph==='result')renderPodium();else $('podium').classList.remove('show');
   if(ph==='lobby'){TV.lastLead=null;TV.feedSeen={};$('tvTimer').textContent=C.dur||75;$('tvTimer').classList.remove('last')}}
-const PCOL=['#ff5c5c','#ffb347','#5ee08a','#7cc4ff','#c58cff','#ff7bd1'];
+const PCOL=['#ff5c5c','#ffb347','#5ee08a','#7cc4ff','#c58cff','#ff7bd1','#f5f07a','#7af5e0'];
 function renderTV(now){const w=tc.clientWidth,h=tc.clientHeight;if(!w||!h||!TV.maze)return;const d=Math.min(devicePixelRatio||1,2);if(tc.width!==w*d||tc.height!==h*d){tc.width=w*d;tc.height=h*d}tg.setTransform(d,0,0,d,0,0);tg.clearRect(0,0,w,h);
   const ph=TV.state.phase,m=TV.maze;
   if(ph==='lobby'){const lay=layout(m,w,h-40,20);drawMaze(tg,m,lay,{optPath:$('tvShowOpt').checked?TV.opt:null,wall:'#ffd166'});
     tg.fillStyle='#aab2e0';tg.font='16px Segoe UI, sans-serif';tg.textAlign='center';tg.fillText('Mã đề '+TV.seed+' · đường tối ưu '+(TV.opt.length-1)+' ô'+($('tvShowOpt').checked?' (đường xanh chỉ nhân sự thấy, tắt trước khi chiếu)':''),w/2,h-12);
     const ps=plist();tg.font='bold 15px Segoe UI, sans-serif';ps.forEach((p,i)=>{tg.fillStyle=p.ready?'#5ee08a':'#6b74a8';tg.textAlign='left';tg.fillText((p.ready?'✅ ':'○ ')+(p.name||'Máy '+p.slot),16+i*(w/MAXP),22)});return}
   // 6 mê cung mini
-  const cols=3,rows=2,cellW=w/cols,cellH=(h-8)/rows;const res=TV.state.results||{};const order=plist().sort(cmp);const rankOf={};order.forEach((p,i)=>rankOf[p.slot]=i+1);
+  const cols=Math.ceil(MAXP/2),rows=2,cellW=w/cols /* 4×2 = 8 mê cung nhỏ — trước 3×2, máy 7–8 bị khuất (sót khi nâng 6→8) */,cellH=(h-8)/rows;const res=TV.state.results||{};const order=plist().sort(cmp);const rankOf={};order.forEach((p,i)=>rankOf[p.slot]=i+1);
   plist().forEach((p,i)=>{const x0=(i%cols)*cellW,y0=Math.floor(i/cols)*cellH;const inMatch=!TV.cur||TV.cur.players.includes(p.slot)||res[p.slot];
     const lay=layout(m,cellW-24,cellH-56,8);lay.ox+=x0+12;lay.oy+=y0+40;
     drawMaze(tg,m,lay,{wall:inMatch?'rgba(255,209,102,.8)':'rgba(255,209,102,.25)',lw:1.5,path:inMatch?(p.path||[]):null,head:inMatch&&p.path?p.path[p.path.length-1]:null,now,pathColor:p.finished?'#5ee08a':PCOL[i]});
