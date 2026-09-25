@@ -29957,3 +29957,8 @@ quay lại từ nền (visibilitychange); lỗi mạng không tắt card đang h
 - Tìm Nhân Vật Ẩn: mục tiêu = đồ vật chỉ có 1 bản trên tranh, nhãn = tên tiếng Việt, hình mẫu = đúng ảnh. Tìm Điểm Khác Nhau: đổi màu = xoay sắc (feColorMatrix hueRotate) · biến mất · to/nhỏ · xoay · lật · đổi vật · thêm vật (đúng vùng) — **chỉ chọn kiểu nhìn ra được theo cờ đo sẵn**. Nạp trước hình trong lúc đếm ngược.
 - Verify: 1000 mã Tìm Nhân Vật Ẩn đều đủ 20 mục tiêu, mục tiêu nào cũng duy nhất, dùng đủ 52 cảnh; 600 mã Tìm Điểm Khác Nhau đều đủ 10 điểm, 0 điểm khác "vô hình", 0 vật nước lệch vùng; chơi thử iPad: chạm đúng +1/vòng xanh, chạm sai −1. Trang nội bộ `games-site/_xem-canh.html` xem cả 52 cảnh (`node scripts/shot-games.mjs xem-canh`).
 - Lỗi đi qua: trước khi nới, 8/10 điểm khác ở vài mã (khoảng cách tối thiểu chặt) → nới `max(104,(s1+s2)*.72)`; zoo/biển còn 17–19 mục tiêu (bản sao chiếm chỗ) → xếp đồ chính trước.
+
+## 25/09 — Hệ thống sự kiện (Trung thu 26/09)
+- Làm: hỏi–chốt yêu cầu với Thùy (check-in BK · vòng quay 15/20/25 xu tỉ lệ 25/50/25 · hàng chờ 1 phòng iPad tối đa 6 · bỏ qua 2 lần = loại · 1 lần vào = 3 ván · xu sự kiện riêng, đổi quà tại quầy · HS ngoài chỉ tên + cấp số). Viết `spec-su-kien.md` (DB `sk_*`, RPC `fn_sk_*`, 6 màn).
+- Quyết định: xu sự kiện KHÔNG vào `qlht_xu_ledger`; iPad không ghi DB — điện thoại quản trò (đã login) gọi `fn_sk_ket_thuc`.
+- Còn treo: dò message kết quả của hub iPad `games-site/` để tự điền xu 3 ván.
