@@ -20,7 +20,7 @@
 | 6 | HS ngoài BK | Chỉ ghi **tên**; hệ **cấp số thứ tự** (#37) để phân biệt trùng tên — quản trò hô "Lan số 37" |
 | 7 | Check-in bắt buộc? | **Không.** HS ngoài không check-in được nhưng **vẫn đăng ký game** |
 | 8 | Xu | **Tiền tệ riêng của sự kiện** (không vào ví BK). HS ngoài cũng nhận xu như thường |
-| 9 | Vòng quay | Chỉ HS BK **đã check-in**, **1 lần/sự kiện**: 15 / 20 / 25 xu, tỉ lệ **25 / 50 / 25 %** |
+| 9 | Vòng quay | Chỉ HS BK **đã check-in**, **1 lần/sự kiện**: 15 / 20 / 25 xu, tỉ lệ **70 / 20 / 10 %** (Thùy 26/09; trước 25/50/25) — **KHÔNG công bố**: vòng quay chia ô ĐỀU 3 mức, tỉ lệ thật chỉ ở fn_sk_quay |
 | 10 | Màn quay | Check-in trên **laptop**, vòng quay hiện trên **TV riêng** đặt gần đó |
 | 11 | Phí chơi | Đăng ký game **miễn phí** |
 | 12 | Phòng | Nhiều phòng chơi, nhưng **chỉ 1 phòng dùng hàng đợi** (phòng iPad). Vẫn thiết kế theo `phong` để sau thêm được |
@@ -179,7 +179,7 @@ khi có chuỗi ghi: `node scripts/migrate.mjs --baseline <file>` từng file (c
 
 **App:** Vercel `bkdemy-erp-v2-sukien` (build `npm run build:sukien`, out `dist-sukien`). ERP chính vẫn có lá `su_kien` (cùng component).
 **Việc (vai) → tab:** 🚪 Check-in · 📝 Đăng ký game · 🎡 Bàn quay · 🎮 Quản trò · ⚙️ Quản lý (= mọi tab + Cài đặt + giao việc). Admin hệ thống = Quản lý mọi sự kiện.
-**Sự kiện thật:** "Trung thu 2026" — sạch (0 check-in), phòng "Phòng iPad" hub `BK01`, vòng quay 15/20/25 · 25/50/25 %, 6 người/lượt, 3 ván.
+**Sự kiện thật:** "Trung thu 2026" — sạch (0 check-in), phòng "Phòng iPad" hub `BK01`, vòng quay 15/20/25 · 70/20/10 % (từ 26/09 chiều), 6 người/lượt, 3 ván.
 **TEST (xoá được):** đã ĐÓNG, còn dữ liệu test (2 HS check-in, 1 khách, 2 lượt chờ) — không ảnh hưởng Trung thu. Xoá thật thì hỏi Thùy (Luật xoá).
 
 **Checklist trước giờ mở cửa (Thùy):**
