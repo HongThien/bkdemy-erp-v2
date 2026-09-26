@@ -7,6 +7,7 @@
   *(Bộ 80 mảnh cũ quá dễ: biết 2/4 số vẫn đoán trúng 53% — bỏ 26/09.)*
 - Dán theo từng tờ là tự tản đều: các mảnh cùng họ đã được xáo sang các tờ khác nhau.
 - 1 nhóm dùng 1 iPad. Quản trò mở `bk-escape.html`, nhập tên nhóm, bấm Bắt đầu. HS không bóc / di chuyển giấy.
+- Bấm Bắt đầu ⇒ **4 màn hướng dẫn bắt buộc** (nhiệm vụ · lấy mã · tìm giấy & nhập chữ · thắng & luật phòng), mỗi màn phải đứng ≥5 giây mới bấm Tiếp; đồng hồ chỉ chạy khi bấm "Bắt đầu" ở màn cuối.
 
 ## Một lượt = 4 chữ cái, tối đa 22 phút
 Mỗi chữ cái có **tối đa 5 phút 30 giây**:

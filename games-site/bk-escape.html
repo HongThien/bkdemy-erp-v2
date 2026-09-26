@@ -94,6 +94,23 @@
   #letters button{font-size:28px;font-weight:900;width:clamp(52px,8vw,72px);height:clamp(52px,8vw,72px);padding:0}
   #letters button.sel{background:var(--gold);color:#3a2400;border-color:var(--gold)}
 
+  /* ===== hướng dẫn ===== */
+  #tut{align-items:center;justify-content:center}
+  .tBox{background:rgba(20,29,74,.95);border:1px solid var(--line);border-radius:26px;padding:24px 30px;width:min(96vw,900px);max-height:calc(100vh - 40px);overflow:auto;display:flex;flex-direction:column;gap:14px}
+  .tHead{display:flex;align-items:center;gap:12px}
+  .tStep{font-size:14px;font-weight:800;color:#3a2400;background:var(--gold);border-radius:999px;padding:4px 12px}
+  .tTitle{font-size:clamp(26px,3.6vw,38px);font-weight:900;color:var(--gold);margin:0}
+  .tBody{font-size:clamp(18px,2.3vw,23px);line-height:1.55}
+  .tBody ul{margin:6px 0;padding-left:26px}.tBody li{margin:6px 0}
+  .tBody b{color:#fff}.tBody .hl{color:var(--gold);font-weight:800}.tBody .warn{color:#ff9a9a;font-weight:800}
+  .tDemo{display:flex;gap:18px;align-items:center;justify-content:center;flex-wrap:wrap;margin:6px 0}
+  .slipMock{width:120px;height:130px;background:#fff;color:#111;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+  .slipMock .L{font-size:64px;font-weight:900;line-height:1;font-family:"Arial Black",Arial,sans-serif}
+  .slipMock .C{font-size:20px;font-weight:800;font-family:Consolas,monospace;letter-spacing:2px;border-bottom:3px solid #111}
+  .tDots{display:flex;gap:8px;justify-content:center}
+  .tDots i{width:12px;height:12px;border-radius:50%;background:var(--line)}.tDots i.on{background:var(--gold)}
+  .tNav{display:flex;gap:12px;justify-content:space-between;align-items:center}
+  .tNav button{font-size:20px;padding:14px 26px}
   /* ===== review ===== */
   .rvL{background:rgba(20,29,74,.9);border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:14px}
   .rvL h3{margin:0 0 10px;font-size:20px}
@@ -131,6 +148,16 @@
     <table><thead><tr><th>#</th><th>Nhóm</th><th>Chữ đúng</th><th>Thời gian</th><th>Thưởng</th></tr></thead><tbody id="rankBody"></tbody></table>
   </div>
   <div class="links"><a href="index.html">← BK Games</a><a href="bk-escape-in.html" target="_blank">🖨 In mảnh giấy</a><a href="escape/LUAT.md" target="_blank">📜 Luật chơi</a></div>
+</div>
+
+<!-- ============ HƯỚNG DẪN (bắt buộc đọc trước khi chơi) ============ -->
+<div class="screen" id="tut">
+  <div class="tBox">
+    <div class="tHead"><span class="tStep" id="tStep"></span><h2 class="tTitle" id="tTitle"></h2></div>
+    <div class="tBody" id="tBody"></div>
+    <div class="tDots" id="tDots"></div>
+    <div class="tNav"><button id="tBack">← Quay lại</button><button class="primary" id="tNext"></button></div>
+  </div>
 </div>
 
 <!-- ============ ĐANG CHƠI ============ -->
@@ -256,9 +283,51 @@ const now=()=>(pausedAt||Date.now())-pauseAcc;
 let LAST=null,G=null,timer=null,flashUntil=0,flashNext=null,selDigit=null,selLetter=null,lastTick=-1;
 // G={team,start,L:[{slip,qs,st:'play'|'ok'|'bad'|'miss',t0,qi,qT0,entered,end}],li,done}
 
+// ---------- hướng dẫn 4 màn: đọc hết mới được chơi; mỗi màn phải đứng ≥ TUT_WAIT giây mới bấm Tiếp ----------
+const TUT_WAIT=DEV?1:5;
+const TUT=[
+ {t:'Nhiệm vụ của nhóm',b:`<p>Cả nhóm đang bị nhốt. Muốn thoát ra phải tìm đủ <span class="hl">MẬT KHẨU gồm 4 CHỮ CÁI</span>.</p>
+  <div class="tDemo"><div class="slipMock"><div class="L">K</div><div class="C">3718</div></div><div class="slipMock"><div class="L">A</div><div class="C">3710</div></div><div class="slipMock"><div class="L">T</div><div class="C">3918</div></div></div>
+  <ul><li>Khắp phòng có <b>gần 200 mảnh giấy</b>. Mỗi mảnh có <b>1 chữ cái to</b> và <b>1 mã 4 chữ số</b>.</li>
+  <li>Mỗi chữ cái của mật khẩu nằm trên <b>đúng 1 mảnh</b>. Muốn biết mảnh nào đúng thì phải có <span class="hl">MÃ 4 SỐ</span> của nó.</li>
+  <li class="warn">Nhiều mảnh có mã gần giống nhau (như 3 mảnh ở trên) — nhìn thật kỹ!</li></ul>`},
+ {t:'Trả lời câu hỏi để lấy mã',b:`<p>Mỗi chữ cái có <span class="hl">4 câu hỏi</span>. Mỗi câu trả lời ĐÚNG sẽ mở ra <b>1 chữ số</b> của mã.</p>
+  <div class="tDemo"><div class="dg ok">3</div><div class="dg bad">?</div><div class="dg cur">…</div><div class="dg"></div></div>
+  <ul><li><b>Câu 1</b> — câu bẫy, làm nhanh: <span class="hl">30 giây</span>.</li>
+  <li><b>Câu 2, 3, 4</b> — câu suy luận: <span class="hl">1 phút 30 giây</span> mỗi câu.</li>
+  <li>Đáp án luôn là <b>1 chữ số từ 0 đến 9</b>: bấm số → bấm <b>Chốt đáp án</b>.</li>
+  <li class="warn">Mỗi câu chỉ được trả lời 1 LẦN. Sai hoặc hết giờ ⇒ mất chữ số đó (hiện dấu ?) và tự sang câu sau. Không quay lại được.</li></ul>`},
+ {t:'Đi tìm mảnh giấy & nhập chữ cái',b:`<ul><li>Có mã rồi thì <b>cử 1–2 bạn đi tìm</b> mảnh giấy, các bạn còn lại làm tiếp câu sau — không cần chờ làm hết 4 câu.</li>
+  <li>Thiếu 1–2 số vẫn có thể <b>đoán</b> — nhưng nhớ: có nhiều mảnh gần giống nhau.</li>
+  <li>Tìm thấy rồi thì bấm nút xanh <b>🔎 Đã tìm thấy mảnh giấy</b> → chọn chữ cái.</li>
+  <li class="warn">Chữ cái chỉ được nhập 1 LẦN: đúng ⇒ sang chữ tiếp theo ngay · sai ⇒ mất chữ đó.</li>
+  <li>Đến phút <span class="hl">5:00</span> của mỗi chữ, iPad tự <b>hiện đủ mã 4 số</b> — nhưng chỉ còn <span class="hl">30 giây</span> để tìm và nhập.</li></ul>`},
+ {t:'Thắng & luật phòng',b:`<ul><li>Mỗi chữ cái tối đa <span class="hl">5 phút 30 giây</span> · cả lượt tối đa <span class="hl">22 phút</span>. Xong sớm thì sang chữ tiếp luôn.</li>
+  <li>Tìm đúng <b>cả 4 chữ cái</b> = <span class="hl">🔓 THOÁT</span>.</li>
+  <li>Xếp hạng: <b>nhiều chữ đúng hơn</b> xếp trên; bằng nhau thì <b>nhanh hơn</b> xếp trên. Thưởng <b>Nhất 5 · Nhì 3 · còn lại 2 xu</b>.</li>
+  <li>Xong mỗi chữ cái, iPad cho xem <b>đáp án + giải thích</b> 4 câu vừa làm (lúc đó đồng hồ dừng).</li>
+  <li class="warn">KHÔNG bóc, KHÔNG di chuyển, KHÔNG làm rách mảnh giấy. Giữ iPad cẩn thận.</li></ul>
+  <p style="text-align:center;margin-top:10px">Bấm nút dưới đây là <b>đồng hồ bắt đầu chạy</b>. Chúc may mắn! 🍀</p>`},
+];
+let PEND=null,tutI=0,tutT=null;
+function renderTut(){
+  const x=TUT[tutI],last=tutI===TUT.length-1;
+  $('tStep').textContent=`Hướng dẫn ${tutI+1}/${TUT.length}`;$('tTitle').textContent=x.t;$('tBody').innerHTML=x.b;
+  $('tDots').innerHTML=TUT.map((_,i)=>`<i class="${i<=tutI?'on':''}"></i>`).join('');
+  $('tBack').style.visibility=tutI?'visible':'hidden';$('tut').querySelector('.tBox').scrollTop=0;
+  const label=last?'🚀 Bắt đầu — đồng hồ chạy!':'Tiếp →';
+  clearInterval(tutT);let w=TUT_WAIT;const b=$('tNext');b.disabled=true;b.textContent=`${label} (${w})`;
+  tutT=setInterval(()=>{w--;if(w>0){b.textContent=`${label} (${w})`;return}clearInterval(tutT);b.disabled=false;b.textContent=label},1000);
+}
+$('tBack').onclick=()=>{if(tutI>0){tutI--;renderTut()}};
+$('tNext').onclick=()=>{if($('tNext').disabled)return;if(tutI<TUT.length-1){tutI++;renderTut()}else{clearInterval(tutT);begin(PEND.team,PEND.plan)}};
+
 function start(){
   const team=$('team').value.trim();if(!team){$('team').focus();$('setupNote').textContent='Nhập tên nhóm trước đã.';return}
   const plan=buildRound();if(!plan){$('setupNote').textContent='Không ghép được đề — báo kỹ thuật.';return}
+  PEND={team,plan};tutI=0;show('tut');renderTut();
+}
+function begin(team,plan){
   pauseAcc=0;pausedAt=0;
   G={team,start:Date.now(),L:plan.map(p=>({...p,st:'wait',t0:0,qi:0,qT0:0,entered:null,end:0})),li:0};
   $('teamLbl').textContent='👥 '+team;
@@ -346,7 +415,7 @@ function tick(){
 }
 
 // ---------- render ----------
-function show(id){['setup','play','end','review'].forEach(s=>$(s).classList.toggle('show',s===id))}
+function show(id){['setup','tut','play','end','review'].forEach(s=>$(s).classList.toggle('show',s===id))}
 function renderProg(){$('prog').innerHTML=G.L.map((l,i)=>`<div class="lt ${l.st==='ok'?'ok':l.st==='bad'||l.st==='miss'?'bad':i===G.li?'cur':''}">${l.st==='ok'?l.slip.letter:l.st==='bad'||l.st==='miss'?'✗':i+1}</div>`).join('')}
 function renderCode(rev){
   const L=cur();$('code').innerHTML=L.qs.map((q,i)=>{
