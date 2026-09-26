@@ -3,7 +3,7 @@ import { Fragment, type ReactNode } from 'react'
 import katex from 'katex'
 import { katexMacros } from '../../lib/math/macros'
 import { fixAccentScript, widenSingleHat } from '../../lib/math/latex-fix'
-import { parseLyThuyetBlocks, splitPhuongPhapBuoc, splitViDu, laDauNhomBaiTap, type LyThuyetBlock } from '../../lib/lythuyetBlocks'
+import { parseLyThuyetBlocks, splitPhuongPhapBuoc, splitViDu, splitLoiGiaiLabel, laDauNhomBaiTap, type LyThuyetBlock } from '../../lib/lythuyetBlocks'
 
 // Render text có LaTeX ($…$ inline, $$…$$ block) thành công thức đẹp.
 const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -183,10 +183,10 @@ export const LT_CORE_CSS = `
 .pv-lt-tag{font-size:12px;font-weight:800;letter-spacing:.04em}
 .pv-lt-dinhnghia{border-left:5px solid #c89b52;background:#fdf9f1;padding:8px 14px 8px 18px;margin:14px 0;break-inside:avoid}
 .pv-lt-dinhnghia .pv-lt-tag{color:#c89b52;display:block;margin-bottom:6px}
-.pv-lt-dinhly{position:relative;border:2px solid #4c6fff;background:#f2f4ff;border-radius:14px;padding:22px 18px 18px;margin:26px 0 20px;font-size:15px;line-height:1.65;break-inside:avoid}
-.pv-lt-dinhly .pv-lt-tag{position:absolute;top:-14px;left:18px;background:#4c6fff;color:#fff;padding:6px 16px;border-radius:8px;font-size:12px;box-shadow:0 3px 6px rgba(76,111,255,.28)}
-.pv-lt-tinhchat{position:relative;border:2px solid #7c5cbf;background:#f6f2fb;border-radius:14px;padding:22px 18px 18px;margin:26px 0 20px;font-size:15px;line-height:1.65;break-inside:avoid}
-.pv-lt-tinhchat .pv-lt-tag{position:absolute;top:-14px;left:18px;background:#7c5cbf;color:#fff;padding:6px 16px;border-radius:8px;font-size:12px;box-shadow:0 3px 6px rgba(124,92,191,.28)}
+.pv-lt-dinhly{position:relative;border:2px solid #7c5cbf;background:#f6f2fb;border-radius:14px;padding:22px 18px 18px;margin:26px 0 20px;font-size:15px;line-height:1.65;break-inside:avoid}
+.pv-lt-dinhly .pv-lt-tag{position:absolute;top:-14px;left:18px;background:#7c5cbf;color:#fff;padding:6px 16px;border-radius:8px;font-size:12px;box-shadow:0 3px 6px rgba(124,92,191,.28)}
+.pv-lt-tinhchat{position:relative;border:2px solid #2D9CDB;background:#eaf6fd;border-radius:14px;padding:22px 18px 18px;margin:26px 0 20px;font-size:15px;line-height:1.65;break-inside:avoid}
+.pv-lt-tinhchat .pv-lt-tag{position:absolute;top:-14px;left:18px;background:#2D9CDB;color:#fff;padding:6px 16px;border-radius:8px;font-size:12px;box-shadow:0 3px 6px rgba(45,156,219,.28)}
 .pv-lt-chuy{display:flex;gap:12px;align-items:flex-start;border:2px dashed #c2673f;border-radius:12px;padding:14px 16px;margin:14px 0;background:#fdf6f2;break-inside:avoid}
 .pv-lt-chuy .pv-lt-tag{color:#c2673f;display:block;margin-bottom:4px}
 .pv-lt-chuy .pv-lt-body{font-weight:700;color:#8a3b1c}
@@ -201,18 +201,19 @@ export const LT_CORE_CSS = `
 .pv-lt-vd{position:relative;border:2px solid #b23a72;background:#fbf0f5;border-radius:14px;padding:22px 18px 18px;font-size:15px;line-height:1.65}
 .pv-lt-vd .pv-lt-tag{position:absolute;top:-14px;left:18px;background:#b23a72;color:#fff;padding:6px 16px;border-radius:8px;font-size:12px;box-shadow:0 3px 6px rgba(178,58,114,.28)}
 .pv-lt-vd-giai{margin-top:8px;padding-left:2px;font-size:14px;color:#3a4356}
+.pv-lt-vd-giai-nhan{text-align:center;font-weight:800;text-decoration:underline;text-underline-offset:3px;margin-bottom:6px;color:#3a4356}
 .pv-lt-nx{display:flex;gap:12px;margin:14px 0;break-inside:avoid}
 .pv-lt-nx-quote{font-size:32px;line-height:.6;color:#2f9e6e;flex:0 0 auto;padding-top:6px}
 .pv-lt-nx-body{padding-top:2px}
 .pv-lt-nx .pv-lt-tag{color:#2f9e6e;display:block;margin-bottom:3px;font-size:11.5px}
 .pv-lt-nx-txt{font-style:italic;color:#2c4b3c}
 .pv-lt-bt-header{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#24324b;margin:20px 0 10px;break-after:avoid}
-.pv-lt-bt{border:1.5px solid #c9d2e0;border-radius:12px;padding:12px 16px;margin-bottom:12px;break-inside:avoid}
-.pv-lt-bt .pv-lt-tag{color:#24324b;display:block;margin-bottom:4px}
+.pv-lt-bt{position:relative;border:2px solid #16a34a;background:#eefbf3;border-radius:14px;padding:22px 18px 18px;margin:22px 0 18px;font-size:15px;line-height:1.65;break-inside:avoid}
+.pv-lt-bt .pv-lt-tag{position:absolute;top:-14px;left:18px;background:#16a34a;color:#fff;padding:6px 16px;border-radius:8px;font-size:12px;box-shadow:0 3px 6px rgba(22,163,74,.28)}
 `
 
 const LT_TIEU_DE_MAC_DINH: Record<LyThuyetBlock['loai'], string> = {
-  text: '', dinh_ly: 'Định lý', dinh_nghia: 'Định nghĩa', tinh_chat: 'Tính chất', chu_y: 'Chú ý',
+  text: '', dinh_ly: 'Định lý', dinh_nghia: 'Định nghĩa', tinh_chat: 'Kiến thức cần nhớ', chu_y: 'Chú ý',
   phuong_phap: 'Phương pháp giải', vi_du: 'Ví dụ', nhan_xet: 'Nhận xét', bai_tap: 'Bài tập',
 }
 
@@ -248,10 +249,16 @@ export function LyThuyetBlockView({ b }: { b: LyThuyetBlock }) {
     }
     case 'vi_du': {
       const { de, loiGiai } = splitViDu(b.noiDung)
+      const { nhan, than } = loiGiai ? splitLoiGiaiLabel(loiGiai) : { nhan: '', than: '' }
       return (
         <div className="pv-lt-vd-wrap">
           <div className="pv-lt-vd"><span className="pv-lt-tag">{tieuDe}</span><MathText>{de}</MathText></div>
-          {loiGiai && <div className="pv-lt-vd-giai"><MathText>{loiGiai}</MathText></div>}
+          {loiGiai && (
+            <div className="pv-lt-vd-giai">
+              {nhan && <div className="pv-lt-vd-giai-nhan">{nhan}</div>}
+              {than && <MathText>{than}</MathText>}
+            </div>
+          )}
         </div>
       )
     }

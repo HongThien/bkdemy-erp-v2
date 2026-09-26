@@ -99,3 +99,11 @@ export function splitViDu(noiDung: string): { de: string; loiGiai: string } {
   if (!m) return { de: noiDung, loiGiai: '' }
   return { de: noiDung.slice(0, m.index).trim(), loiGiai: noiDung.slice(m.index).trim() }
 }
+
+// Tách nhãn ("Lời giải"/"Bài giải"/"Giải"...) ra khỏi phần lời giải để hiển thị RIÊNG — nhãn căn giữa
+// + gạch chân (CEO chốt 26/09), thân lời giải render bình thường bên dưới. Nhãn luôn đứng 1 mình 1
+// dòng theo quy ước viết sẵn trong kho — không cần đoán, chỉ tách dòng đầu.
+export function splitLoiGiaiLabel(loiGiai: string): { nhan: string; than: string } {
+  const lines = loiGiai.split('\n')
+  return { nhan: (lines[0] || '').trim(), than: lines.slice(1).join('\n').trim() }
+}
