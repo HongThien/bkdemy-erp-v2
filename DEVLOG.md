@@ -29983,3 +29983,9 @@ quay lại từ nền (visibilitychange); lỗi mạng không tắt card đang h
 - **Sửa** (5 game iPad + hub): mỗi TV có mã ngẫu nhiên (`TVID`/`HID`) gửi kèm trạng thái; iPad **bám 1 TV**, chỉ đổi sang TV khác khi TV đang bám im >8 giây; trong game **đang chơi thì bỏ qua mọi state khác matchId của mình**. TV (game + hub) đếm presence: >1 TV cùng phòng hoặc 2 iPad trùng số máy ⇒ dải cảnh báo đỏ. Màn đăng ký máy ghi "mỗi trạm một mã riêng, vd TRAM1".
 - Verify (Supabase thật, browser pane, `?loop=timer`): Tìm Nhân Vật Ẩn 2 TV cùng KICK26 — iPad vào trận từ TV1, 12s TV2 phát lobby: vẫn chơi, cùng matchId; TV1 tải lại giữa trận: iPad vẫn chơi 12s. Hub 2 TV cùng HUB26 mở 2 game khác: bản mới iPad nạp 1 lần/15s (bản cũ 14 lần). Cảnh báo đỏ hiện trên cả TV game và TV hub. Chưa thử trên iPad thật.
 - Lưu ý vận hành: mỗi trạm đặt mã phòng khác nhau (⚙ trên hub) — bản vá chống văng nhưng 2 trạm chung phòng vẫn làm iPad chỉ theo 1 trạm.
+
+## 2026-09-26 — PDF: khung "Bài tập tự luyện" mồ côi đầu khung cuối trang
+- Sai: đỉnh khung + tag (`.pv-bt-cap`) là phần tử riêng, trông vào `break-after:avoid`. paged.js 0.4.3 chỉ xét avoid khi chính anh em liền sau tràn; câu 1 nằm TRONG `.pv-caulist` ⇒ avoid bị bỏ qua ⇒ Thùy chụp đỉnh khung trơ trọi cuối trang 1, câu sang trang 2 (card giáo trình BK, câu được phép tách trang).
+- Sửa: gộp cap + câu/hàng đầu vào `.pv-bt-dau{break-inside:avoid}` (PrintView CauColumns `dau`). Lề trong 16→22px (Thùy: câu 1 cách viền thêm 40%).
+- Đo: Chrome headless + paged.js thật, 61 vị trí sát đáy: cũ 14/61 mồ côi (chỉ khi câu tách được), mới 0/61. Chưa đo lại trên app (Browser pane không vẽ khi cửa sổ bị che).
+- Luật: đầu khung/tiêu đề phải cùng khối nguyên tử với nội dung đầu tiên — ghi ở spec-format-noidung.md.

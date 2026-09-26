@@ -15,6 +15,14 @@
 >   ⚠ Kết luận cũ "div bọc làm paged.js treo" là SAI — lần đo đó bị nhiễu (Browser pane bị ẩn ⇒ cả bản
 >   KHÔNG khung cũng >30s). Vẫn giữ cách không-bọc cho chắc (bug div-bọc thật ở BuoiBlock).
 >   Chưa áp cho Hình (`HinhPrintView`/MucsBlock render câu kiểu khác).
+> - **⭐ LUẬT CHỐNG MỒ CÔI ĐẦU KHUNG (26/09, Thùy chụp đỉnh khung "Bài tập tự luyện" trơ trọi cuối trang,
+>   câu 1 sang trang sau):** đầu khung / tag / tiêu đề **KHÔNG được là phần tử riêng rồi trông vào
+>   `break-after:avoid`**. paged.js 0.4.3 (`layout.js` findBreakToken) chỉ xét avoid khi CHÍNH phần tử liền sau
+>   tràn trang; nếu cái tràn là con BÊN TRONG phần tử đó (câu 1 nằm trong `.pv-caulist`) thì avoid bị bỏ qua.
+>   ⇒ Luôn gộp đầu khung + nội dung ĐẦU TIÊN vào 1 khối `break-inside:avoid` (ở đây `.pv-bt-dau` = cap + câu/hàng
+>   đầu). Đo bằng Chrome headless + paged.js thật, quét 61 vị trí sát đáy trang: cũ mồ côi 14/61 (khi câu được
+>   phép tách trang, như card giáo trình BK `.gtbk-card-body .pv-cau{break-inside:auto}`), mới 0/61.
+>   Lề trong khung 16px → 22px (CEO: "câu 1 cách xa viền thêm 40%").
 > - Nhãn lời giải: mọi "Giải"/"Lời giải"/"Bài giải" (kể cả `**Giải:**`) HIỆN là "Bài giải:" căn giữa +
 >   gạch chân + đậm — cả trong `##VD` lẫn dòng đứng riêng trong lý thuyết cũ chưa gắn kí hiệu (khối
 >   `nhan_giai`, `tachNhanGiai` trong lythuyetBlocks.ts). Dữ liệu: mig `202609261247_chuan_hoa_nhan_bai_giai`
