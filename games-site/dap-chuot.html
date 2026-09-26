@@ -302,6 +302,10 @@ const $=id=>document.getElementById(id);
 const useTimer=/loop=timer/.test(location.search);const nextFrame=useTimer?(f=>setTimeout(()=>f(performance.now()),16)):(f=>requestAnimationFrame(f));
 const KEY='bk-dapchuot-v1';
 const MAXP=8,SLOTS=Array.from({length:MAXP},(_,i)=>i+1);
+// Chống "văng game" (Thùy 26/09): mỗi TV có mã riêng (TVID); iPad BÁM 1 TV, bỏ qua TV khác cùng phòng (chỉ đổi TV khi TV đang bám
+// im lặng >8 giây), và ĐANG CHƠI thì bỏ qua mọi trạng thái không thuộc trận của mình. TV thấy trùng TV/số máy thì cảnh báo đỏ.
+const TVID=Math.random().toString(36).slice(2,8),FOLLOW={tv:null,at:0};
+function dupWarn(msg){let el=document.getElementById('dupWarn');if(!el){el=document.createElement('div');el.id='dupWarn';el.style.cssText='position:fixed;left:50%;top:8px;transform:translateX(-50%);z-index:99;background:#c62828;color:#fff;font:700 16px Segoe UI,sans-serif;padding:8px 16px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.4);max-width:92vw;text-align:center;pointer-events:none';document.body.appendChild(el)}el.textContent=msg||'';el.style.display=msg?'':'none'}
 const DEF={role:null,slot:1,room:'BK01',sbUrl:'https://osrvycilwshkzhljuxef.supabase.co',sbKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4',entry:0,prizes:[5,3,2,2,2,2,2,2],dur:40,pts:{normal:1,fast:3,gold:5,bomb:-5,gift:10},den:1};
 let C=Object.assign({},DEF);try{Object.assign(C,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
 const q=new URLSearchParams(location.search);if(q.get('role'))C.role=q.get('role');if(q.get('slot'))C.slot=+q.get('slot');if(q.get('room'))C.room=q.get('room');
@@ -409,7 +413,10 @@ function addLocalHist(h){try{const k='bk-dapchuot-hist';const a=JSON.parse(local
 let pState=null;
 function playerNet(){
   setInterval(()=>{if(!P.playing)sendPlayer()},1000);sendPlayer();
-  onMsg('state',st=>{if(!st)return;if(st.now)noteOffset(st.now);
+  onMsg('state',st=>{if(!st)return;
+    if(st.tv){const nw=Date.now();if(FOLLOW.tv&&FOLLOW.tv!==st.tv&&nw-FOLLOW.at<8000)return;if(FOLLOW.tv!==st.tv){FOLLOW.tv=st.tv;pState=null}FOLLOW.at=nw} // chỉ nghe 1 TV
+    if(P.playing&&P.matchId&&st.matchId!==P.matchId)return; // đang chơi: không để trạng thái khác (sảnh chờ của TV khác, TV vừa tải lại…) đá ra
+    if(st.now)noteOffset(st.now);
     if(st.names&&st.names[C.slot]&&!$('pName').value&&!P.ready)$('pName').value=st.names[C.slot];
     const prev=pState;pState=st;const changed=!prev||prev.phase!==st.phase||prev.matchId!==st.matchId;
     if(st.phase==='lobby'&&changed){if(P.fin){$('pName').value='';P.name='';P.fin=false}P.ready=false;$('pReady').classList.remove('on');$('pReady').textContent='SẴN SÀNG';$('pWait').textContent='';if(!P.playing)pShow('pLobby');P.matchId=null;sendPlayer()}
@@ -444,7 +451,7 @@ function tvBoot(){
   connectNet().then(ok=>{if(ok)tvNet();else setNet(false,'không mạng · dùng nhập điểm tay')});
   renderLB();tvLoop();
 }
-function broadcastState(){if(!room)return;send('state',Object.assign({},TV.state,{now:Date.now(),names:TV.names}))}
+function broadcastState(){if(!room)return;send('state',Object.assign({},TV.state,{now:Date.now(),names:TV.names,tv:TVID}))}
 function setState(st){TV.state=st;applyPhaseUI();broadcastState()}
 function tvNet(){
   TV.state={phase:'lobby',matchId:Date.now()};applyPhaseUI();
@@ -452,7 +459,7 @@ function tvNet(){
   onMsg('player',p=>{if(!p||!p.slot)return;const old=TV.players[p.slot]||{};
     if(TV.cur&&p.matchId!==TV.cur.matchId){p=Object.assign({},p,{score:old.score||0,combo:0,maxCombo:old.maxCombo||0,token:old.token||false})}
     TV.players[p.slot]=Object.assign({},p,{last:Date.now(),online:true});renderLB();checkEvents()});
-  onMsg('presence',ps=>{const on={};Object.values(ps).forEach(arr=>arr.forEach(x=>{if(x.role==='player')on[x.slot]=true}));TV.online=on;renderLB()});
+  onMsg('presence',ps=>{const on={},cnt={};let ntv=0;Object.values(ps).forEach(arr=>arr.forEach(x=>{if(x.role==='player'){on[x.slot]=true;cnt[x.slot]=(cnt[x.slot]||0)+1}else if(x.role==='tv')ntv++}));TV.online=on;const dup=Object.keys(cnt).filter(k=>cnt[k]>1);dupWarn((ntv>1?'⚠ Có '+ntv+' màn hình TV cùng mở game này ở phòng '+C.room+' — tắt bớt kẻo iPad bị văng. ':'')+(dup.length?'⚠ Trùng số máy: '+dup.map(k=>'iPad '+k).join(', ')+' — mỗi iPad một số khác.':''));renderLB()});
   setInterval(()=>{broadcastState();const now=Date.now();for(const k in TV.players){if(now-TV.players[k].last>6000)TV.players[k].online=false}},1000);
   broadcastState();
 }
