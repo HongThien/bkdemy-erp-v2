@@ -135,7 +135,7 @@
 <!-- ============ QUẢN TRÒ: CHUẨN BỊ ============ -->
 <div class="screen show" id="setup">
   <h1>🚪 BK Escape</h1>
-  <div class="muted" style="text-align:center">4 chữ cái · mỗi chữ 4 câu hỏi · tối đa 22 phút</div>
+  <div class="muted" style="text-align:center">4 chữ cái · mỗi chữ 4 câu hỏi · tối đa 21 phút</div>
   <div style="text-align:center;font-size:15px">Bộ giấy: <b id="slipsId" style="color:var(--gold);font-size:20px"></b> <span class="muted">— phải trùng mã in ở góc mỗi trang giấy</span></div>
   <div class="box">
     <input id="team" maxlength="30" placeholder="Tên nhóm" autocomplete="off">
@@ -165,13 +165,13 @@
   <div id="top">
     <span id="teamLbl"></span>
     <div id="prog"></div>
-    <span class="clock" id="gClock"><small>CÒN LẠI</small><span id="gTime">22:00</span></span>
+    <span class="clock" id="gClock"><small>CÒN LẠI</small><span id="gTime">21:00</span></span>
     <button id="btnPause">⏸</button>
   </div>
   <div id="codeRow">
     <span class="lbl" id="letterLbl">Chữ cái 1/4 · Mã:</span>
     <div id="code"></div>
-    <div id="lClock">Chữ này còn <b class="clock" id="lTime">5:30</b><br><span id="lNote">Mã đầy đủ hiện lúc 5:00</span></div>
+    <div id="lClock">Chữ này còn <b class="clock" id="lTime">5:15</b><br><span id="lNote">Mã đầy đủ hiện lúc 5:00</span></div>
   </div>
   <div id="main">
     <div id="qCard">
@@ -231,7 +231,7 @@ const $=id=>document.getElementById(id);
 const P=new URLSearchParams(location.search);
 const DEV=P.get('dev')==='1', SPEED=DEV?(+P.get('speed')||10):1; // dev: thời gian chạy nhanh x10, hiện đáp án
 const LIM={1:ESC_LIMIT[1]*1000/SPEED,2:ESC_LIMIT[2]*1000/SPEED,3:ESC_LIMIT[3]*1000/SPEED};
-const REVEAL=300000/SPEED, LETTER=330000/SPEED, TOTAL=4*LETTER;
+const REVEAL=300000/SPEED, LETTER=315000/SPEED /* 5:00 hiện mã + 15s tìm (Thùy 26/09: 30s nhiều quá) */, TOTAL=4*LETTER;
 const KEY_RANK='bk-escape-rank', KEY_USED='bk-escape-used', KEY_HUB='bk-escape-hub';
 const ls={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 const rnd=n=>Math.floor(Math.random()*n);
@@ -301,8 +301,8 @@ const TUT=[
   <li>Thiếu 1–2 số vẫn có thể <b>đoán</b> — nhưng nhớ: có nhiều mảnh gần giống nhau.</li>
   <li>Tìm thấy rồi thì bấm nút xanh <b>🔎 Đã tìm thấy mảnh giấy</b> → chọn chữ cái.</li>
   <li class="warn">Chữ cái chỉ được nhập 1 LẦN: đúng ⇒ sang chữ tiếp theo ngay · sai ⇒ mất chữ đó.</li>
-  <li>Đến phút <span class="hl">5:00</span> của mỗi chữ, iPad tự <b>hiện đủ mã 4 số</b> — nhưng chỉ còn <span class="hl">30 giây</span> để tìm và nhập.</li></ul>`},
- {t:'Thắng & luật phòng',b:`<ul><li>Mỗi chữ cái tối đa <span class="hl">5 phút 30 giây</span> · cả lượt tối đa <span class="hl">22 phút</span>. Xong sớm thì sang chữ tiếp luôn.</li>
+  <li>Đến phút <span class="hl">5:00</span> của mỗi chữ, iPad tự <b>hiện đủ mã 4 số</b> — nhưng chỉ còn <span class="hl">15 giây</span> để tìm và nhập.</li></ul>`},
+ {t:'Thắng & luật phòng',b:`<ul><li>Mỗi chữ cái tối đa <span class="hl">5 phút 15 giây</span> · cả lượt tối đa <span class="hl">21 phút</span>. Xong sớm thì sang chữ tiếp luôn.</li>
   <li>Tìm đúng <b>cả 4 chữ cái</b> = <span class="hl">🔓 THOÁT</span>.</li>
   <li>Xếp hạng: <b>nhiều chữ đúng hơn</b> xếp trên; bằng nhau thì <b>nhanh hơn</b> xếp trên. Thưởng <b>Nhất 5 · Nhì 3 · còn lại 2 xu</b>.</li>
   <li>Xong mỗi chữ cái, iPad cho xem <b>đáp án + giải thích</b> 4 câu vừa làm (lúc đó đồng hồ dừng).</li>
@@ -400,7 +400,7 @@ function tick(){
   const lt=t-L.t0;
   // hết thời gian của chữ cái
   if(lt>=LETTER){missLetter();return}
-  // mốc 5:00: hiện mã — câu nào còn dở coi như hết giờ (luật: 5 phút hiện đáp án, 30s đi tìm)
+  // mốc 5:00: hiện mã — câu nào còn dở coi như hết giờ (luật: 5 phút hiện đáp án, 15s đi tìm)
   if(lt>=REVEAL&&L.qi<4){for(let i=L.qi;i<4;i++)L.qs[i].st='timeout';L.qi=4;renderQ()}
   // câu hỏi hết giờ
   if(L.qi<4){const q=L.qs[L.qi],lim=LIM[q.g],left=Math.min(lim,lim-(t-L.qT0));
@@ -443,7 +443,7 @@ function renderFind(lt){
   const partial=L.qs.map(q=>q.st==='ok'?q.a:'?').join('');
   $('findCard').innerHTML=rev
     ?`<div class="big">⏰ MÃ ĐẦY ĐỦ</div><div class="code">${L.slip.code}</div><div class="muted" style="font-size:20px">Tìm mảnh giấy có mã này — còn</div><div class="cd clock">${fmt((LETTER-lt)*SPEED)}</div>`
-    :`<div class="big">Hết câu hỏi của chữ này — đi tìm mảnh giấy!</div><div class="code" style="color:var(--text)">${partial}</div><div class="muted" style="font-size:20px">Mã đầy đủ sẽ hiện sau <b class="clock" style="color:var(--text)">${fmt((REVEAL-lt)*SPEED)}</b> (chỉ còn 30 giây để tìm)</div>`;
+    :`<div class="big">Hết câu hỏi của chữ này — đi tìm mảnh giấy!</div><div class="code" style="color:var(--text)">${partial}</div><div class="muted" style="font-size:20px">Mã đầy đủ sẽ hiện sau <b class="clock" style="color:var(--text)">${fmt((REVEAL-lt)*SPEED)}</b> (chỉ còn 15 giây để tìm)</div>`;
 }
 function flash(html,ms,after){$('flashBox').innerHTML=html;$('flash').classList.add('show');flashUntil=Date.now()+ms;flashNext=after||null;if(after){$('letterOv').classList.remove('show')}}
 
