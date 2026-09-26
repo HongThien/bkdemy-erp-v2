@@ -41,13 +41,13 @@ export function VongQuay({ skId, banQuay = false, onLoi }: { skId: string; banQu
     sk.tongQuan(skId).then((t) => { setCfg(t.su_kien.cau_hinh.vong_quay); setTenSk(t.su_kien.ten) }).catch(() => setCfg([{ xu: 15, ti_le: 25 }, { xu: 20, ti_le: 50 }, { xu: 25, ti_le: 25 }]))
   }, [skId])
 
-  // Ô trên vòng: chia theo tỉ lệ (25/50/25 ⇒ 2/4/2 ô), xen kẽ cho đẹp.
+  // Ô trên vòng: MỖI MỨC XU SỐ Ô BẰNG NHAU, xen kẽ (Thùy 26/09: "không hiển thị tỉ lệ %" — trước chia ô theo tỉ lệ,
+  // 70/20/10 ⇒ 6/2/1 ô: nhìn vòng là đoán ra tỉ lệ). Tỉ lệ thật vẫn do fn_sk_quay ở DB quyết định; vòng chỉ diễn dừng đúng ô.
   const o = useMemo(() => {
     if (!cfg?.length) return [] as number[]
-    const tong = cfg.reduce((a, x) => a + x.ti_le, 0) || 1
-    const dem = cfg.map((x) => Math.max(1, Math.round((x.ti_le / tong) * 8)))
+    const moiMuc = Math.max(2, Math.floor(9 / cfg.length))
     const ra: number[] = []
-    while (dem.some((d) => d > 0)) cfg.forEach((x, i) => { if (dem[i] > 0) { ra.push(x.xu); dem[i]-- } })
+    for (let k = 0; k < moiMuc; k++) cfg.forEach((x) => ra.push(x.xu))
     return ra
   }, [cfg])
 
