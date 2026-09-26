@@ -94,6 +94,15 @@
   #letters button{font-size:28px;font-weight:900;width:clamp(52px,8vw,72px);height:clamp(52px,8vw,72px);padding:0}
   #letters button.sel{background:var(--gold);color:#3a2400;border-color:var(--gold)}
 
+  /* ===== review ===== */
+  .rvL{background:rgba(20,29,74,.9);border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:14px}
+  .rvL h3{margin:0 0 10px;font-size:20px}
+  .rvQ{border-top:1px solid var(--line);padding:10px 0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px}
+  .rvQ .st{font-size:26px;font-weight:900;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;grid-row:span 4}
+  .rvQ .st.ok{background:rgba(94,224,138,.2);color:var(--green)} .rvQ .st.bad{background:rgba(255,92,92,.15);color:#ff9a9a}
+  .rvQ .qt{white-space:pre-line;font-size:16px;line-height:1.45;color:#dfe3ff}
+  .rvQ .ans{font-size:16px} .rvQ .ans b{color:var(--gold);font-size:20px}
+  .rvQ .why{font-size:15px;color:#bfe3ff;background:rgba(60,140,255,.12);border-radius:10px;padding:8px 10px}
   /* ===== end ===== */
   #end{align-items:center;justify-content:center;text-align:center}
   #end .res{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
@@ -159,7 +168,13 @@
   <div id="endSub" style="font-size:22px"></div>
   <div class="res" id="endRes"></div>
   <div id="endRank" style="font-size:20px"></div>
-  <button class="primary" id="btnBack" style="font-size:22px;padding:14px 40px">Về màn quản trò</button>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><button id="btnReview" style="font-size:22px;padding:14px 30px;background:linear-gradient(180deg,#3fb3ff,#1a6fd6);border:none;font-weight:800">📖 Xem lại 16 câu + giải thích</button><button class="primary" id="btnBack" style="font-size:22px;padding:14px 40px">Về màn quản trò</button></div>
+</div>
+
+<!-- ============ XEM LẠI ============ -->
+<div class="screen" id="review">
+  <div style="display:flex;align-items:center;gap:12px"><h1 style="font-size:32px;text-align:left">📖 Xem lại</h1><button id="btnRevBack" style="margin-left:auto">← Kết quả</button></div>
+  <div id="revBody"></div>
 </div>
 
 <!-- overlays -->
@@ -177,7 +192,7 @@
 </div></div>
 
 <script src="escape/slips.js?v=G195"></script>
-<script src="escape/bank.js?v=2"></script>
+<script src="escape/bank.js?v=3"></script>
 <script>
 (function(){
 const $=id=>document.getElementById(id);
@@ -221,7 +236,7 @@ function buildRound(){
         if(r.length===3){rest=r;r.forEach(x=>tk.add(x.b.id));break}}
       if(!rest){ok=false;break}
       tk.forEach(id=>taken.add(id));
-      plan.push({slip:s,qs:[q0,...rest].map((x,i)=>({id:x.b.id,g:x.b.g,name:x.b.name,q:x.v.q,a:x.v.a,st:'wait'}))});
+      plan.push({slip:s,qs:[q0,...rest].map((x,i)=>({id:x.b.id,g:x.b.g,name:x.b.name,q:x.v.q,a:x.v.a,w:x.v.w,st:'wait'}))});
     }
     if(ok){plan.forEach(l=>{usedHub[l.slip.code]=(usedHub[l.slip.code]||0)+1;l.qs.forEach(q=>used[q.id]=(used[q.id]||0)+1)});ls.set(KEY_USED,used);ls.set(KEY_HUB,usedHub);return plan}
   }
@@ -233,7 +248,7 @@ let pauseAcc=0,pausedAt=0;
 const now=()=>(pausedAt||Date.now())-pauseAcc;
 
 // ---------- trạng thái lượt ----------
-let G=null,timer=null,flashUntil=0,flashNext=null,selDigit=null,selLetter=null,lastTick=-1;
+let LAST=null,G=null,timer=null,flashUntil=0,flashNext=null,selDigit=null,selLetter=null,lastTick=-1;
 // G={team,start,L:[{slip,qs,st:'play'|'ok'|'bad'|'miss',t0,qi,qT0,entered,end}],li,done}
 
 function start(){
@@ -254,7 +269,7 @@ function answer(d){ // trả lời câu hiện tại (1 lần)
   const L=cur();if(!L||L.qi>=4)return;const q=L.qs[L.qi];
   q.st=(d===q.a)?'ok':'bad';q.given=d;
   if(q.st==='ok'){sOk();flash(`<div class="big" style="color:var(--green)">✓ ĐÚNG</div><div style="font-size:26px">Chữ số thứ ${L.qi+1} là <b style="color:var(--gold);font-size:40px">${q.a}</b></div>`,1300)}
-  else{sBad();flash(`<div class="big" style="color:var(--red)">✗ SAI</div><div class="muted" style="font-size:20px">Mất chữ số thứ ${L.qi+1} — sang câu tiếp</div>`,1300)}
+  else{sBad();flash(`<div class="big" style="color:var(--red)">✗ SAI</div><div class="muted" style="font-size:20px">Mất chữ số thứ ${L.qi+1} — sang câu tiếp<br>(đáp án + giải thích xem ở cuối lượt)</div>`,1300)}
   nextQ();
 }
 function nextQ(){const L=cur();L.qi++;L.qT0=now()+1300/SPEED; /* đồng hồ câu mới chạy sau khi tắt thông báo đúng/sai */ selDigit=null;lastTick=-1;renderQ()}
@@ -270,7 +285,7 @@ function missLetter(){const L=cur();L.st='miss';L.end=now();sBad();
 function nextLetter(){if(G.li<3)startLetter(G.li+1);else finish()}
 
 function finish(){
-  clearInterval(timer);timer=null;
+  clearInterval(timer);timer=null;LAST=G;
   const n=G.L.filter(l=>l.st==='ok').length, t=now()-G.start;
   const rank=ls.get(KEY_RANK,[]);const rec={team:G.team,n,t:Math.round(t*SPEED),at:Date.now(),dev:DEV};
   if(!DEV){rank.push(rec);ls.set(KEY_RANK,rank)}
@@ -280,6 +295,11 @@ function finish(){
   $('endRes').innerHTML=G.L.map(l=>`<div class="rl ${l.st==='ok'?'ok':'bad'}"><div class="L">${l.slip.letter}</div><div class="muted">mã ${l.slip.code}</div><div>${l.st==='ok'?'✓ tìm đúng':l.st==='bad'?'✗ nhập '+esc(l.entered):'⌛ hết giờ'}</div></div>`).join('');
   $('endRank').innerHTML=`Đang xếp hạng <b style="color:var(--gold)">${pos}</b> / ${list.length} nhóm`;
   show('end');renderRank();
+}
+function renderReview(){
+  if(!LAST)return;
+  $('revBody').innerHTML=LAST.L.map((l,i)=>`<div class="rvL"><h3>Chữ cái ${i+1}: mã <span style="color:var(--gold)">${l.slip.code}</span> → chữ <span style="color:var(--gold)">${l.slip.letter}</span> · ${l.st==='ok'?'<span style="color:var(--green)">✓ tìm đúng</span>':l.st==='bad'?'<span style="color:#ff9a9a">✗ nhập '+esc(l.entered)+'</span>':'<span style="color:#ff9a9a">⌛ hết giờ</span>'}</h3>`+
+    l.qs.map((q,j)=>`<div class="rvQ"><div class="st ${q.st==='ok'?'ok':q.st==='wait'?'':'bad'}">${q.st==='ok'?'✓':q.st==='wait'?'–':'✗'}</div><div class="muted" style="font-size:13px">Câu ${j+1} · ${ESC_GNAME[q.g]} · ${esc(q.name)}</div><div class="qt">${esc(q.q)}</div><div class="ans">Nhóm: ${q.st==='ok'?'<b style="color:var(--green)">'+q.given+' ✓</b>':q.st==='bad'?'<span style="color:#ff9a9a">'+q.given+' ✗</span>':q.st==='timeout'?'<span style="color:#ff9a9a">hết giờ / không trả lời</span>':'<span class="muted">chưa tới câu này</span>'} · Đáp án đúng: <b>${q.a}</b></div><div class="why">💡 ${esc(q.w||'')}</div></div>`).join('')+`</div>`).join('');
 }
 const sortRank=a=>[...a].sort((x,y)=>y.n-x.n||x.t-y.t);
 const xu=i=>i===0?5:i===1?3:2;
@@ -313,7 +333,7 @@ function tick(){
 }
 
 // ---------- render ----------
-function show(id){['setup','play','end'].forEach(s=>$(s).classList.toggle('show',s===id))}
+function show(id){['setup','play','end','review'].forEach(s=>$(s).classList.toggle('show',s===id))}
 function renderProg(){$('prog').innerHTML=G.L.map((l,i)=>`<div class="lt ${l.st==='ok'?'ok':l.st==='bad'||l.st==='miss'?'bad':i===G.li?'cur':''}">${l.st==='ok'?l.slip.letter:l.st==='bad'||l.st==='miss'?'✗':i+1}</div>`).join('')}
 function renderCode(rev){
   const L=cur();$('code').innerHTML=L.qs.map((q,i)=>{
@@ -360,6 +380,8 @@ $('btnResume').onclick=()=>{if(!pausedAt)return;const d=Date.now()-pausedAt;paus
 $('btnAbort').onclick=()=>{if(!confirm('Huỷ lượt này? Kết quả không được lưu.'))return;clearInterval(timer);timer=null;G=null;pausedAt=0;$('pauseOv').classList.remove('show');$('flash').classList.remove('show');flashUntil=0;flashNext=null;show('setup');renderRank()};
 $('btnStart').onclick=start;
 $('team').onkeydown=e=>{if(e.key==='Enter')start()};
+$('btnReview').onclick=()=>{renderReview();show('review');$('review').scrollTop=0};
+$('btnRevBack').onclick=()=>show('end');
 $('btnBack').onclick=()=>{G=null;$('team').value='';$('setupNote').textContent='';show('setup');renderRank()};
 $('btnClear').onclick=()=>{if(confirm('Xoá toàn bộ bảng xếp hạng trên iPad này?')){ls.set(KEY_RANK,[]);renderRank()}};
 $('slipsId').textContent=window.ESC_SLIPS_ID||'(bộ giấy cũ — KHÔNG khớp giấy in mới)';

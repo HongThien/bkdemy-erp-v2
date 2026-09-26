@@ -1,5 +1,7 @@
 # BK Escape — Ngân hàng câu hỏi STYLE 1 (bản 4 — CHỐT)
 
+> ⚠ **Lời câu hỏi chính thức + giải thích nằm ở `escape/bank.js`** (26/09 đã viết lại cho rõ theo góp ý Thùy). File này là danh mục gốc & nguồn; lời trong bảng dưới có thể cũ hơn.
+
 > Chỉ dùng câu đố **kinh điển thế giới** (Cognitive Reflection Test, Smullyan, Gardner, Kordemsky, Lewis Carroll,
 > Professor Layton, câu phỏng vấn Google, olympiad…), đã Việt hoá lời & chỉnh số để đáp án là **1 chữ số**.
 > Mọi đáp án đã tự giải lại (cột "vì sao"). Style 2 (hình ảnh minh hoạ) → **làm sau**.
