@@ -123,8 +123,8 @@
 
 **Luật cho học sinh**
 - Chọn 1 ô đất, trả xu: ★ **5 xu** · ★★ **10 xu** · ★★★ **15 xu**. Chỉ mở được ô **sát đất đã mở** (bắt đầu từ ngôi làng giữa bản đồ).
-- Ô mở ra **thắng đậm hoặc thua đậm**, không có hoà (Thùy 26/09): thua còn 20%–50% giá, thắng 150%–200% giá. Bộ Chuẩn: 50% thua / 50% thắng.
-  ★ (5 xu): thua 1–3 · thắng 8–10 · ★★ (10 xu): thua 2–5 · thắng 15–20 · ★★★ (15 xu): thua 3–8 · thắng 23–30.
+- Ô mở ra **thắng đậm hoặc thua đậm**, không có hoà (Thùy 26/09): thua còn 20%–50% giá, thắng 150%–300% giá (tối đa gấp ba). Bộ Chuẩn: 50% thua / 50% thắng, gấp ba 3%.
+  ★ (5 xu): thua 1–3 · thắng 8–15 · ★★ (10 xu): thua 2–5 · thắng 15–30 · ★★★ (15 xu): thua 3–8 · thắng 23–45. Màn hình ghi "tối đa" từng loại ô.
 - **ĐỘC ĐẮC 50 xu** trong 1 ô ★★★ — chỉ khoảng **50% bản đồ có** (chỉnh ở ⚙ "% bản đồ có độc đắc"). Màn hình không lộ bản đồ này có hay không; chiếm hết mới biết.
 - Tỉ lệ chi giữ **~110%** tiền thu mỗi bản đồ (bộ tự điều chỉnh vẫn bật). Mở hết 36 ô là hết bản đồ.
 
@@ -147,9 +147,9 @@
 **Luật cho học sinh**
 - Chọn rương và trả xu: Gỗ **5 xu** · Bạc **10 xu** · Vàng **15 xu**.
 - Mở lần lượt 3 quà: 🎀 Quà 1 · 🍀 Quà 2 · 💎 **Quà bí ẩn**. Quà 1–2 luôn nhỏ; **quà bí ẩn quyết định** (Thùy 26/09).
-- **Thắng đậm hoặc xịt**, không hoà — giống Chiếm Đất: xịt còn 20%–50% giá, thắng 150%–200% giá. Bộ Chuẩn 50% / 50%, tỉ lệ chi ~110%.
-  Gỗ (5 xu): xịt 1–3 · thắng 8–10 · Bạc (10 xu): xịt 2–5 · thắng 15–20 · Vàng (15 xu): xịt 3–8 · thắng 23–30.
-- **Nhìn hình là biết, số xu hiện sau:** 🍪 xịt < 🎁 hộp nhỏ < 🎁 hộp to < thỏi vàng < ĐỐNG VÀNG (175%) < NÚI VÀNG gấp đôi (200%). Thua ⇒ cả 3 món là hộp nhỏ; thắng 150% ⇒ quà bí ẩn là thỏi vàng.
+- **Thắng đậm hoặc xịt**, không hoà — giống Chiếm Đất: xịt còn 20%–50% giá, thắng 150%–300% giá (tối đa gấp ba). Bộ Chuẩn 50% / 50%, gấp ba 5%, tỉ lệ chi ~110%.
+  Gỗ (5 xu): xịt 1–3 · thắng 8–15 · Bạc (10 xu): xịt 2–5 · thắng 15–30 · Vàng (15 xu): xịt 3–8 · thắng 23–45. Nút rương ghi "tối đa".
+- **Nhìn hình là biết, số xu hiện sau:** 🍪 xịt < 🎁 hộp nhỏ < 🎁 hộp to < thỏi vàng (150%) < ĐỐNG VÀNG gấp đôi (200%) < NÚI VÀNG gấp ba (300%). Thua ⇒ cả 3 món là hộp nhỏ; thắng 150% ⇒ quà bí ẩn là thỏi vàng.
 
 **Vận hành:** gõ tên → chọn rương (phím 1/2/3 hoặc bấm) → **🔓 MỞ RƯƠNG** (Space/Enter) → Space mở từng quà → trả xu theo "Tổng nhận" → Space lượt tiếp. Ctrl+Shift+T tổng kết nội bộ. **↺ Chơi lại** xoá toàn bộ lịch sử.
 

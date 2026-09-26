@@ -50,6 +50,7 @@
   .cb .pr{font-size:24px;font-weight:900;color:var(--gold)}
   .cb .pr small{font-size:13px;color:var(--muted);font-weight:600}
   .cb .k{font-size:11px;color:var(--muted)}
+.cb .mx{font-size:15px;font-weight:900;color:var(--green);margin:2px 0}
   #btnOpen{font-size:24px;padding:14px 46px;border-radius:18px;letter-spacing:2px}
 
   #lootUI{position:absolute;inset:0;pointer-events:none!important}
@@ -133,7 +134,7 @@
   <canvas id="gl"></canvas>
   <div id="ui">
     <div class="hint"><div class="t" id="hintT">Chọn rương và bấm MỞ RƯƠNG</div><div class="s" id="hintS">LƯỢT 1</div></div>
-    <div class="legend" id="legend"><span>🎀 <b>Quà chắc chắn</b> luôn có</span><span>🍀 <b>Quà may mắn</b> cộng thêm</span><span>💎 <b>Quà bí ẩn</b> tổng có thể tới gấp đôi giá rương</span></div>
+    <div class="legend" id="legend"><span>🎀 Quà 1 · 🍀 Quà 2</span><span>💎 <b>Quà bí ẩn</b> quyết định: 🎁 hộp nhỏ = xịt · 🪙 vàng = thắng</span><span>Tối đa <b>gấp ba</b> giá rương</span></div>
     <button id="histBtn">📜 Lịch sử</button>
     <div id="histPanel"><table><thead><tr><th>#</th><th>Tên</th><th>Rương</th><th>3 quà</th><th style="text-align:right">Tổng</th></tr></thead><tbody id="hist"></tbody></table></div>
 
@@ -173,7 +174,7 @@
       <label class="chk" style="grid-column:span 2"><input type="checkbox" id="cCtrl"> Bật tự điều chỉnh xác suất theo tỉ lệ thực tế</label>
       <label class="chk"><input type="checkbox" id="cSound"> Âm thanh</label>
     </div>
-    <h4>Bảng xác suất tổng quà (bội số giá rương: THUA 20%–50% hoặc THẮNG 150%–200%)</h4>
+    <h4>Bảng xác suất tổng quà (bội số giá rương: THUA 20%–50% hoặc THẮNG 150%–300%)</h4>
     <div class="prof" id="prof"></div>
     <div class="ratio" id="ratioBox"></div>
     <div class="dlgBtns">
@@ -3848,21 +3849,21 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
   const $=id=>document.getElementById(id);
   const CHESTS=[{name:'Rương Gỗ',pill:'w',model:'wood'},{name:'Rương Bạc',pill:'s',model:'silver'},{name:'Rương Vàng',pill:'g',model:'gold'}];
   const SLOTS=[{lb:'Quà 1',ic:'🎀'},{lb:'Quà 2',ic:'🍀'},{lb:'Quà bí ẩn',ic:'💎'}];
-  // Thùy 26/09 — giống Chiếm Đất: HOẶC THUA ĐẬM (tổng 20%–50% giá) HOẶC THẮNG ĐẬM (150%–200%), không hoà.
-  // Bộ Chuẩn đúng 50% thua / 50% thắng, tỉ lệ chi ~110% (rương 5/10/15: 1.14/1.10/1.09). Hào phóng ~1.3, Tiết kiệm ~0.88.
-  const K=[0.2,0.35,0.5,1.5,1.75,2.0],BASE=0.2;
-  const DEF={prices:[5,10,15],target:1.10,band:0.10,budget:300,warm:10,ctrl:true,sound:true,v:4,
-    prof:{chuan:[10,15,25,15,17,18],haophong:[6,10,18,20,22,24],tietkiem:[16,20,26,16,12,10]}};
+  // Thùy 26/09 — giống Chiếm Đất: HOẶC THUA ĐẬM (tổng 20%–50% giá) HOẶC THẮNG ĐẬM (150%–300%, tối đa GẤP BA), không hoà.
+  // Bộ Chuẩn đúng 50% thua / 50% thắng, gấp ba 5% ⇒ tỉ lệ chi ~110% (TB 3 rương). Hào phóng ~1.25, Tiết kiệm ~0.89.
+  const K=[0.2,0.35,0.5,1.5,2.0,3.0],BASE=0.2;
+  const DEF={prices:[5,10,15],target:1.10,band:0.10,budget:300,warm:10,ctrl:true,sound:true,v:5,
+    prof:{chuan:[12,18,20,33,12,5],haophong:[10,14,16,38,16,6],tietkiem:[20,22,20,28,7,3]}};
   const PROF_NAMES={chuan:'Chuẩn',haophong:'Hào phóng',tietkiem:'Tiết kiệm'};
   // Thùy 26/09: nhìn HÌNH là biết — hộp nhỏ = xịt, đống vàng = thắng lớn; số xu hiện SAU. Giá trị tăng theo kích thước + độ hiếm.
   const TIER={0:{n:'Xịt',c:0x8a93b8,models:['cookie'],size:.55},1:{n:'Hộp quà nhỏ',c:0x5ee08a,models:['present_A_red','present_C_blue','present_D_green'],size:.6},
     2:{n:'Hộp quà to',c:0x7cc4ff,models:['present_A_red','present_C_blue','present_D_green','present_sphere_A_red'],size:.95},
     3:{n:'Thỏi vàng',c:0xffd166,models:['Gold_Bar','Gold_Bars','Gold_Nugget_Medium'],size:1.15},
-    4:{n:'ĐỐNG VÀNG',c:0xffb020,models:['Gold_Bars_Stack_Medium'],size:1.4},
-    5:{n:'NÚI VÀNG · GẤP ĐÔI',c:0xff7bd1,models:['Gold_Bars_Stack_Large'],size:1.7}};
+    4:{n:'ĐỐNG VÀNG · GẤP ĐÔI',c:0xffb020,models:['Gold_Bars_Stack_Medium'],size:1.4},
+    5:{n:'NÚI VÀNG · GẤP BA',c:0xff7bd1,models:['Gold_Bars_Stack_Large'],size:1.7}};
 
   function fresh(cfg){return {cfg:cfg||JSON.parse(JSON.stringify(DEF)),history:[],thu:0,chi:0}}
-  function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.history){const d=JSON.parse(JSON.stringify(DEF));if(!s.cfg||s.cfg.v!==4)s.cfg=Object.assign({},s.cfg,{prof:d.prof,v:4});s.cfg={...d,...s.cfg};return s}}catch(e){}return null}
+  function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.history){const d=JSON.parse(JSON.stringify(DEF));if(!s.cfg||s.cfg.v!==5)s.cfg=Object.assign({},s.cfg,{prof:d.prof,v:5});s.cfg={...d,...s.cfg};return s}}catch(e){}return null}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
   let S=load()||fresh();
   let sel=1, cur=null, phase='pick'; // pick | opening | loot | done | closing
@@ -3876,7 +3877,7 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
     if(k<1){const a=Math.round(total*(.25+.15*rnd01())),b=Math.round((total-a)*(.4+.2*rnd01()));return [a,b,total-a-b]}
     const a=Math.max(1,Math.round(P*(.08+.12*rnd01()))),b=Math.max(1,Math.round(P*(.1+.15*rnd01())));return [a,b,total-a-b]}
   // hình theo kết quả CẢ RƯƠNG (không theo tỉ lệ từng món): thua ⇒ hộp nhỏ; thắng ⇒ 2 hộp rồi vàng to dần theo mức thắng
-  function giftTiers(vals,P,k){return vals.map((v,i)=>v===0?0:k<1?1:i<2?(v/P>=.2?2:1):k>=2?5:k>=1.75?4:3)}
+  function giftTiers(vals,P,k){return vals.map((v,i)=>v===0?0:k<1?1:i<2?(v/P>=.2?2:1):k>=3?5:k>=2?4:3)}
   function drawIdx(w){const tot=w.reduce((a,b)=>a+b,0);const a=new Uint32Array(1);crypto.getRandomValues(a);let r=(a[0]/4294967296)*tot;for(let i=0;i<w.length;i++){r-=w[i];if(r<0)return i}return w.length-1}
   function pickMode(){const c=S.cfg,n=S.history.length;if(!c.ctrl||n<c.warm||S.thu===0)return 'chuan';const r=S.chi/S.thu,net=S.chi-S.thu;
     if(net>=c.budget||r>c.target+c.band)return 'tietkiem';if(r<c.target-c.band)return 'haophong';return 'chuan'}
@@ -3989,7 +3990,7 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
 
   // ---------- UI render ----------
   function esc(s){return String(s).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]))}
-  function renderBtns(){$('chestBtns').innerHTML=CHESTS.map((c,i)=>`<div class="cb ${i===sel?'sel':''}" data-i="${i}"><div class="nm">${c.name}</div><div class="pr">${S.cfg.prices[i]} <small>xu</small></div><div class="k">phím ${i+1}</div></div>`).join('');
+  function renderBtns(){$('chestBtns').innerHTML=CHESTS.map((c,i)=>`<div class="cb ${i===sel?'sel':''}" data-i="${i}"><div class="nm">${c.name}</div><div class="pr">${S.cfg.prices[i]} <small>xu</small></div><div class="mx">tối đa ${payOf(K[K.length-1],S.cfg.prices[i])} xu</div><div class="k">phím ${i+1}</div></div>`).join('');
     $('chestBtns').querySelectorAll('.cb').forEach(el=>el.onclick=()=>selectChest(+el.dataset.i))}
   function selectChest(i){if(phase!=='pick')return;sel=i;renderBtns();beep(520,.07,'square',.03)}
   function renderNames(){$('names').innerHTML=[...new Set(S.history.map(h=>h.name).filter(Boolean))].sort().map(n=>`<option value="${esc(n)}">`).join('')}
@@ -4063,7 +4064,7 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
     S.thu+=cur.price;S.chi+=total;save();
     const k=total/cur.price;
     $('bTot').textContent=`Tổng nhận: ${total} xu`;
-    $('bSub').textContent=k>=1.95?'NÚI VÀNG — GẤP ĐÔI giá rương! 🎉':k>1?'THẮNG ĐẬM! 🎉':'Xịt rồi 😅 Chúc may mắn lần sau 🍀';
+    $('bSub').textContent=k>=2.9?'NÚI VÀNG — GẤP BA giá rương! 🎉🎉':k>=1.95?'ĐỐNG VÀNG — GẤP ĐÔI giá rương! 🎉':k>1?'THẮNG ĐẬM! 🎉':'Xịt rồi 😅 Chúc may mắn lần sau 🍀';
     $('banner').classList.add('show');if(k>=2)confetti(200);
     $('btnReveal').style.display='none';$('btnDone').style.display='';
     hint($('hintT').innerHTML,'SPACE ĐỂ SANG LƯỢT TIẾP');
@@ -4146,7 +4147,7 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
     $('prof').querySelectorAll('input').forEach(el=>{c.prof[el.dataset.p][+el.dataset.i]=Math.max(0,+el.value||0)});return c}
   function updateRatio(){const c=readDlg();for(const k in c.prof)$('ev_'+k).textContent=ev(c.prof[k]).toFixed(2);
     const w=c.prof.chuan,tw=w.reduce((a,b)=>a+b,0)||1,P=f=>K.reduce((s,k,i)=>s+(f(k)?w[i]/tw:0),0);
-    $('ratioBox').innerHTML=`Bộ Chuẩn: nhận ít hơn giá <b>${(P(k=>k<1)*100).toFixed(0)}%</b> · nhiều hơn giá <b>${(P(k=>k>1)*100).toFixed(0)}%</b> · từ 150% <b>${(P(k=>k>=1.5)*100).toFixed(0)}%</b> · gấp đôi <b>${(P(k=>k>=2)*100).toFixed(1)}%</b><br>Máy giữ tỉ lệ chi/thu quanh <b>${c.target.toFixed(2)}</b> (±${c.band.toFixed(2)}) và không phát sinh quá <b>${c.budget} xu</b>.`}
+    $('ratioBox').innerHTML=`Bộ Chuẩn: nhận ít hơn giá <b>${(P(k=>k<1)*100).toFixed(0)}%</b> · nhiều hơn giá <b>${(P(k=>k>1)*100).toFixed(0)}%</b> · từ 150% <b>${(P(k=>k>=1.5)*100).toFixed(0)}%</b> · gấp đôi <b>${(P(k=>k>=2)*100).toFixed(1)}%</b> · gấp ba <b>${(P(k=>k>=3)*100).toFixed(1)}%</b><br>Máy giữ tỉ lệ chi/thu quanh <b>${c.target.toFixed(2)}</b> (±${c.band.toFixed(2)}) và không phát sinh quá <b>${c.budget} xu</b>.`}
   $('btnSettings').onclick=()=>{fillDlg();dlg.showModal()};$('dlgCancel').onclick=()=>dlg.close();
   $('dlgSave').onclick=()=>{S.cfg=readDlg();save();dlg.close();renderBtns()};
   $('btnReset').onclick=()=>{if(phase!=='pick'){alert('Hãy kết thúc lượt hiện tại trước.');return}if(!confirm('Xóa toàn bộ lịch sử và thống kê, bắt đầu lại từ đầu?'))return;S=fresh(S.cfg);save();renderHist();renderNames()};

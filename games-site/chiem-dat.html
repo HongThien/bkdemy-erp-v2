@@ -50,7 +50,8 @@
   #hintBar{position:absolute;left:50%;top:14px;transform:translateX(-50%);text-align:center;pointer-events:none;white-space:nowrap;font-size:18px;font-weight:700;text-shadow:0 2px 8px rgba(0,0,0,.8);z-index:3}
   #hintBar b{color:var(--gold)}
   #legend{position:absolute;left:14px;bottom:14px;display:flex;gap:8px;flex-wrap:wrap;pointer-events:none;z-index:3}
-  #legend span{background:rgba(11,18,48,.8);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:14px;font-weight:700}
+  #legend span{background:rgba(11,18,48,.8);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:17px;font-weight:700}
+#legend .mx{color:#5ee08a;font-weight:900;margin-left:4px}
   .lv1{color:#8df5b0}.lv2{color:#8fd0ff}.lv3{color:#ffd166}
 
   /* iPad */
@@ -135,7 +136,7 @@
   <div class="card"><h3>Đất đã khám phá</h3><div id="prog">0 <small>/ 36 ô</small></div><div class="bar"><i id="progBar" style="width:0"></i></div><div class="tip" id="mapInfo"></div></div>
   <div class="card"><h3>Vừa mở</h3><div id="feed"><div class="muted" style="background:none">Chưa có ai mở đất.</div></div></div>
   <div class="card"><h3>Bảng lãnh thổ</h3><div class="terr" id="terr"></div></div>
-  <div class="tip" style="padding:0 6px">Bấm vào ô sáng → gõ tên học sinh → Enter. Space / Enter: lượt tiếp. Ctrl+Shift+T: tổng kết nội bộ.</div>
+  <div class="tip" style="padding:0 6px">Thu xu → bấm vào ô sáng → Enter để mở. Space / Enter: lượt tiếp. Ctrl+Shift+T: tổng kết nội bộ.</div>
 </div>
 
 <div id="bigOv"><div class="a" id="ovA"></div><div class="b" id="ovB"></div><div class="c" id="ovC"></div><div class="row" id="ovBtns" style="margin-top:14px"></div></div>
@@ -172,7 +173,7 @@
       <label>Lượt khởi động <input id="cWarm" type="number" min="0"></label>
       <label class="chk" style="grid-column:1/-1"><input type="checkbox" id="cCtrl"> Tự điều chỉnh xác suất theo tỉ lệ thực tế (như Mở rương)</label>
     </div>
-    <h4>Xác suất phần thưởng ô thường (bội số giá: THUA 20%–50% hoặc THẮNG 150%–200%)</h4>
+    <h4>Xác suất phần thưởng ô thường (bội số giá: THUA 20%–50% hoặc THẮNG 150%–300%)</h4>
     <div class="prof" id="prof"></div>
     <div class="ratio" id="ratioBox"></div>
   </div>
@@ -3825,18 +3826,19 @@ const $=id=>document.getElementById(id);
 const useTimer=/loop=timer/.test(location.search);const nextFrame=useTimer?(f=>setTimeout(()=>f(performance.now()),16)):(f=>requestAnimationFrame(f));
 const KEY='bk-chiemdat-v1';
 const DEF={sound:true,
-  prices:[5,10,15],jackpot:50,jackP:0.5,n2:4,n3:10,target:1.10,band:0.10,budget:300,warm:10,ctrl:true,pv:3,
-  // Thùy 26/09: "hoặc THUA ĐẬM hoặc THẮNG ĐẬM" — quà chỉ 20%–50% hoặc 150%–200% giá, không có mức giữa/hoà (trước 70%–200%,
-  // ô ★ ra 4 xu 64% số lần). Độc đắc 50 xu (trước 75) và chỉ jackP bản đồ có (trước 100%). Bộ Chuẩn: đúng 50% thua / 50% thắng,
-  // tỉ lệ chi ~110%/bản đồ (mặc định 14★·12★★·10★★★ + độc đắc 50% ⇒ 1.10). Hào phóng ~1.25 (thua 40%), Tiết kiệm ~0.93 (thua 62%).
-  prof:{chuan:[14,18,18,22,16,12],haophong:[10,14,16,24,20,16],tietkiem:[20,22,20,18,12,8]}};
+  prices:[5,10,15],jackpot:50,jackP:0.5,n2:4,n3:10,target:1.10,band:0.10,budget:300,warm:10,ctrl:true,pv:4,
+  // Thùy 26/09: "hoặc THUA ĐẬM hoặc THẮNG ĐẬM" — thua 20%–50% giá, thắng 150%–300% (tối đa GẤP BA), không có mức giữa/hoà
+  // (trước 70%–200%, ô ★ ra 4 xu 64% số lần). Độc đắc 50 xu (trước 75) và chỉ jackP bản đồ có (trước 100%).
+  // Bộ Chuẩn: đúng 50% thua / 50% thắng, gấp ba 3% ⇒ tỉ lệ chi ~110%/bản đồ (14★·12★★·10★★★ + độc đắc 50% ⇒ 1.10).
+  // Hào phóng ~1.28 (thua 40%), Tiết kiệm ~0.94 (thua 62%).
+  prof:{chuan:[15,18,17,36,11,3],haophong:[10,14,16,40,14,6],tietkiem:[20,22,20,28,7,3]}};
 let C=JSON.parse(JSON.stringify(DEF));try{Object.assign(C,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
 function saveC(){localStorage.setItem(KEY,JSON.stringify(C))}
 // máy đã lưu cài đặt cũ (75 xu · 70–200% · 6 mức) ⇒ chuyển sang bộ số mới 1 lần
-if(C.pv!==3){C.jackpot=DEF.jackpot;C.jackP=DEF.jackP;C.prof=JSON.parse(JSON.stringify(DEF.prof));C.pv=3;try{saveC()}catch(e){}}
+if(C.pv!==4){C.jackpot=DEF.jackpot;C.jackP=DEF.jackP;C.prof=JSON.parse(JSON.stringify(DEF.prof));C.pv=4;try{saveC()}catch(e){}}
 
 // ---------- kinh tế (hàm thuần) ----------
-const K=[0.2,0.35,0.5,1.5,1.75,2.0],BASE=0.2;
+const K=[0.2,0.35,0.5,1.5,2.0,3.0],BASE=0.2;
 const PROF_NAMES={chuan:'Chuẩn',haophong:'Hào phóng',tietkiem:'Tiết kiệm'};
 const TIERS={1:'Quà nhỏ',2:'Quà ngon',3:'Quà lớn',4:'ĐỘC ĐẮC'};
 const payOf=(k,P)=>Math.max(Math.ceil(BASE*P),Math.round(k*P));
@@ -4120,12 +4122,12 @@ function tvMapDone(){const by={};TV.open.forEach(o=>{if(!o||o.base)return;const 
 function tvClick(e){if(!TV.map||revealing)return;const i=tileAt(e);if(i<0)return;const o=TV.open[i];
   if(o){if(!o.base)toast(`${STARS(o.lvl)} ${esc(sceneOf(o.lvl,TV.map.sc[i],o.jack).n)}${o.name?' · '+esc(o.name):''} · +${o.val} xu`);return}
   if(TV.map.done)return;if(!frontierSet.has(i)){toast('Chỉ mở được ô sát đất đã khám phá');return}
-  const l=TV.map.lvl[i];$('odTitle').innerHTML=`Mở ô <span class="lv${l}">${STARS(l)}</span> cấp ${l} · <span style="color:var(--gold)">${C.prices[l-1]} xu</span>`;$('odInfo').textContent='Thu '+C.prices[l-1]+' xu của học sinh rồi bấm Mở đất (Enter).';
+  const l=TV.map.lvl[i];$('odTitle').innerHTML=`Mở ô <span class="lv${l}">${STARS(l)}</span> cấp ${l} · <span style="color:var(--gold)">${C.prices[l-1]} xu</span> <span style="color:#5ee08a">· tối đa ${maxOf(C.prices[l-1])} xu</span>`;$('odInfo').textContent='Thu '+C.prices[l-1]+' xu của học sinh rồi bấm Mở đất (Enter).';
   selTile=i;$('openDlg').showModal();$('odGo').focus();$('odGo').onclick=()=>{$('openDlg').close();tvHandleOpen(i,'')}}
 async function tvBoot(){document.body.className='tv';$('top').style.display='flex';
   init3D();nextFrame(loop3);
   if(!tvLoad())tvNewMap();
-  await loadModels();$('loading').style.display='none';buildBoard(TV.map,TV.open,C.prices);camHome(true);tvUI();
+  await loadModels();$('loading').style.display='none';buildBoard(TV.map,TV.open,C.prices);camHome(true);updLegend(C.prices);tvUI();
   if(TV.map.done)tvMapDone();
   $('gl').addEventListener('pointerdown',tvClick);$('odCancel').onclick=()=>$('openDlg').close();$('openDlg').addEventListener('close',()=>{if(!revealing)selTile=-1});$('rcOk').onclick=tvCardDone;
   $('btnNewMap').onclick=()=>{if(TV.map&&!TV.map.done&&!confirm('Bản đồ hiện tại chưa mở hết ('+openCount()+'/'+(NT-1)+' ô). Bỏ và tạo bản đồ mới?'))return;tvNewMap()};
@@ -4146,7 +4148,8 @@ function updRatio(){const c=readTV();for(const p in c.prof)$('ev_'+p).textConten
     `Một bản đồ: ${n[1]} ô ★ + ${n[2]} ô ★★ + ${n[3]} ô ★★★ (độc đắc ${c.jackpot} xu, ${Math.round(jp(c)*100)}% bản đồ có). Thu <b>${m.thu}</b> xu, bộ Chuẩn kỳ vọng chi <b>${m.chi.toFixed(0)}</b> xu → tỉ lệ <b>${m.r.toFixed(2)}</b>, BK lỗ khoảng <b>${(m.chi-m.thu).toFixed(0)}</b> xu/bản đồ.`}
 $('dlgCancel').onclick=()=>dlg.close();
 $('dlgSave').onclick=()=>{C=Object.assign(C,readTV());saveC();dlg.close();setBadgePrices(C.prices);updLegend(C.prices);tvUI()};
-function updLegend(P){$('legend').innerHTML=`<span class="lv1">★ ${P[0]} xu</span><span class="lv2">★★ ${P[1]} xu</span><span class="lv3">★★★ ${P[2]} xu</span>`}
+const maxOf=P=>payOf(K[K.length-1],P);
+function updLegend(P){$('legend').innerHTML=[1,2,3].map(l=>`<span class="lv${l}">${STARS(l)} ${P[l-1]} xu <b class="mx">→ tối đa ${maxOf(P[l-1])} xu</b></span>`).join('')}
 $('btnSettings').onclick=openSettings;
 $('btnReset').onclick=()=>{if(!confirm('Xóa toàn bộ lịch sử thu/chi và tạo bản đồ mới?'))return;Object.assign(TV,{hist:[],thu:0,chi:0,maps:0,jacks:0});tvNewMap();dlg.close()};
 $('btnSummary').onclick=openSummary;$('sumClose').onclick=()=>sum.close();
