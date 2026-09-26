@@ -145,8 +145,10 @@
 
 **Luật cho học sinh**
 - Chọn rương và trả xu: Gỗ **5 xu** · Bạc **10 xu** · Vàng **15 xu**.
-- Mở lần lượt 3 quà: 🎀 **Quà chắc chắn** (luôn có) · 🍀 **Quà may mắn** · 💎 **Quà bí ẩn** (có thể có hoặc không).
-- Tổng nhận từ 70% đến 200% giá rương: Gỗ 4–10 xu · Bạc 7–20 xu · Vàng 11–30 xu. Trò may mắn — có lần lời gấp đôi, có lần lỗ một chút.
+- Mở lần lượt 3 quà: 🎀 Quà 1 · 🍀 Quà 2 · 💎 **Quà bí ẩn**. Quà 1–2 luôn nhỏ; **quà bí ẩn quyết định** (Thùy 26/09).
+- **Thắng đậm hoặc xịt**, không hoà — giống Chiếm Đất: xịt còn 20%–50% giá, thắng 150%–200% giá. Bộ Chuẩn 50% / 50%, tỉ lệ chi ~110%.
+  Gỗ (5 xu): xịt 1–3 · thắng 8–10 · Bạc (10 xu): xịt 2–5 · thắng 15–20 · Vàng (15 xu): xịt 3–8 · thắng 23–30.
+- **Nhìn hình là biết, số xu hiện sau:** 🍪 xịt < 🎁 hộp nhỏ < 🎁 hộp to < thỏi vàng < ĐỐNG VÀNG (175%) < NÚI VÀNG gấp đôi (200%). Thua ⇒ cả 3 món là hộp nhỏ; thắng 150% ⇒ quà bí ẩn là thỏi vàng.
 
 **Vận hành:** gõ tên → chọn rương (phím 1/2/3 hoặc bấm) → **🔓 MỞ RƯƠNG** (Space/Enter) → Space mở từng quà → trả xu theo "Tổng nhận" → Space lượt tiếp. Ctrl+Shift+T tổng kết nội bộ. **↺ Chơi lại** xoá toàn bộ lịch sử.
 
