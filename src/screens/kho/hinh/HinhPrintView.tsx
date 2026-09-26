@@ -338,12 +338,9 @@ export function MucsBlock({ mucs, gv, moHinhLyThuyet, batDau = 1, cauTu }: { muc
         return (
           <Fragment key={i}>
             {hienLt && (
-              <div className="hp-box-lt">
-                <div className="hp-box-lt-t">Lý thuyết · {ltMh!.ten}</div>
-                {parseLyThuyetBlocks(ltMh!.noiDung).map((b, i) => b.loai === 'text'
-                  ? <MathText key={i}>{b.noiDung}</MathText>
-                  : <LyThuyetBlockView key={i} b={b} />)}
-              </div>
+              <>{parseLyThuyetBlocks(ltMh!.noiDung).map((b, i) => b.loai === 'text'
+                ? <MathText key={i}>{b.noiDung}</MathText>
+                : <LyThuyetBlockView key={i} b={b} />)}</>
             )}
           <div className="hp-de">
             {/* ⭐ 16/08 (Thùy): ĐỀ và ĐÁP ÁN là HAI KHU RIÊNG — hình của đề ngang với đề, hình của lời

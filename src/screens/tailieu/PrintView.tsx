@@ -642,7 +642,7 @@ function DangBlock({ p, gv, lt = true, colByCau, hinhCheDoByCau }: { p: PhanReso
       </div>
       <div className="gtbk-card-body">
         {lt && p.hien_lt !== false && p.lyThuyetDang?.noi_dung?.trim() && (
-          <div className="pv-box-lt"><div className="pv-box-label">Lý thuyết · Ví dụ</div><LyThuyetBody text={p.lyThuyetDang.noi_dung} /></div>
+          <LyThuyetBody text={p.lyThuyetDang.noi_dung} />
         )}
         {p.caus.length > 0 && (
           <CauFlow items={p.caus.map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau?.[c.ma_cau] }) }))} />

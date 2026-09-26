@@ -17,6 +17,19 @@
 > app HS mở tới. Cần CEO xác nhận có muốn áp cùng chuẩn box này cho app HS không trước khi sửa
 > (khác bundle Vercel, khác đối tượng xem — HS thấy khung "Chú ý"/"Định lý" có thể cần thiết kế
 > responsive riêng, không bê nguyên CSS in ấn `LT_CORE_CSS` sang).
+>
+> **⭐ 26/09 — bỏ khung/nhãn "Lý thuyết · Ví dụ" bọc NGOÀI (CEO chốt, thấy 2 lớp lặp nhau:**
+> nền xanh nhạt + nhãn "LÝ THUYẾT · VÍ DỤ" bọc ngoài, rồi bên trong lại có khung "Ví dụ" riêng
+> của chính khối đó — thừa). Bỏ hẳn `<div className="pv-box-lt"><div className="pv-box-label">
+> Lý thuyết · Ví dụ</div>...</div>` ở `DangBlock` (PrintView.tsx) và `<div className="hp-box-lt">
+> <div className="hp-box-lt-t">Lý thuyết · {ten}</div>...</div>` ở `HinhPrintView.tsx` — giờ
+> `LyThuyetBody`/các khối `##XX` render THẲNG trong thân card, không còn lớp bọc ngoài nào.
+> Nền (nếu có) CHỈ nằm trong từng khung riêng (`pv-lt-chuy` nền cam nhạt...), không có nền
+> chung nào phủ cả đoạn lý thuyết nữa. `LtBlock` (lý thuyết CẤP CHUYÊN ĐỀ, tiêu đề `<h2>` to)
+> KHÔNG đụng — đó là tiêu đề mục lớn, khác bản chất với combo nhãn-lặp bị bỏ ở đây.
+> **Verify:** chỉ `tsc` sạch, KHÔNG kịp click-through 1 tài liệu PDF thật (cần ghi dữ liệu test
+> vào 1 dạng thật rồi dọn lại, tốn công hơn giá trị biên) — rủi ro thấp vì chỉ bỏ 2 lớp div bọc
+> ngoài, không đổi logic bên trong `LyThuyetBlockView`/`LyThuyetBody` (đã verify nhiều lần).
 
 ## 0. Vấn đề
 
