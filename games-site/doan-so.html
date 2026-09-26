@@ -211,7 +211,7 @@
   <section class="panel">
     <h2><span>👥 Người chơi</span><span id="playingCount" style="font-size:13px;color:var(--muted)"></span></h2>
     <table>
-      <thead><tr><th>#</th><th>Tên</th><th>Số đoán</th><th style="text-align:center">Kết quả</th><th style="text-align:right">Xu</th></tr></thead>
+      <thead><tr><th>#</th><th>Tên</th><th>Số đoán</th><th style="text-align:center">Kết quả</th><th style="text-align:right">Xu thưởng</th></tr></thead>
       <tbody id="players"></tbody>
     </table>
     <div class="tip">Lượt 1: gõ tên + số đoán cho các bạn đã mua vé (dòng trống = không chơi). Từ lượt 2 cả nhóm phải đoán đủ mới quay được. Enter để nhảy sang bạn tiếp theo.</div>
@@ -226,12 +226,12 @@
     <div class="grid">
       <label>Số người chơi <input type="number" id="cPlayers" min="1" max="30"></label>
       <label>Số lượt mỗi vé <input type="number" id="cLuot" min="1" max="20"></label>
-      <label>Xu đặt mỗi lượt <input type="number" id="cStake" min="1"></label>
-      <label>Trúng đúng: nhân <input type="number" id="cExact" min="0"></label>
+      <label>Giá vé (xu) <input type="number" id="cStake" min="1"></label>
+      <label>Trúng đúng: thưởng (xu) <input type="number" id="cExact" min="0"></label>
       <label>Lệch tối đa (mức 2) <input type="number" id="cNearR" min="1" max="49"></label>
-      <label>Mức 2: nhân <input type="number" id="cNear" min="0"></label>
+      <label>Mức 2: thưởng (xu) <input type="number" id="cNear" min="0"></label>
       <label>Lệch tối đa (mức 3) <input type="number" id="cFarR" min="1" max="49"></label>
-      <label>Mức 3: nhân <input type="number" id="cFar" min="0"></label>
+      <label>Mức 3: thưởng (xu) <input type="number" id="cFar" min="0"></label>
       <label class="chk"><input type="checkbox" id="cWrap"> Vòng tròn: 99 và 0 kề nhau (công bằng cho số ở mép)</label>
       <label class="chk"><input type="checkbox" id="cManual"> Nhập số kết quả thủ công (thay vì máy quay ngẫu nhiên)</label>
       <label class="chk"><input type="checkbox" id="cSound"> Âm thanh</label>
@@ -260,7 +260,7 @@
       <tbody id="sumRounds"></tbody>
     </table></div>
     <div class="sumTbl"><table>
-      <thead><tr><th>#</th><th>Tên</th><th style="text-align:right">Xu hiện có</th><th style="text-align:right">Lãi / lỗ</th></tr></thead>
+      <thead><tr><th>#</th><th>Tên</th><th style="text-align:right">Tổng thưởng</th><th></th></tr></thead>
       <tbody id="sumPlayers"></tbody>
     </table></div>
     <div class="dlgBtns"><button id="sumClose">Đóng</button></div>
@@ -270,17 +270,18 @@
 <script>
 (function(){
   const KEY='bk-doanso-v1';
-  // LUẬT VÉ (Thùy 25/09): mỗi bạn mua VÉ = `luot` lượt × `stake` xu (mặc định 5 lượt × 1 xu = 5 xu).
-  // Nhóm = các bạn đoán ở lượt 1. Lượt 2..luot: cả nhóm PHẢI đoán mới quay được (không bỏ lượt). Hết luot lượt ⇒ nhóm xong,
-  // xu còn lại = xu nhận về; bấm "Nhóm mới" cho các bạn khác. Trước đây: 10 xu khởi điểm, chơi vô hạn, được bỏ ván.
-  const DEF={exact:30,near:10,far:5,nearRange:2,farRange:5,wrap:true,stake:1,luot:5,startCoins:5,manual:false,sound:true,nPlayers:10,v:2};
+  // LUẬT VÉ (Thùy 26/09): VÉ 10 xu = 3 lượt (trước: 5 xu = 5 lượt × 1 xu). `stake` giờ là GIÁ VÉ; thưởng exact/near/far là
+  // SỐ XU CỐ ĐỊNH mỗi lượt trúng (trước: hệ số × xu đặt). Chỉ hiện xu ĐƯỢC THƯỞNG, không hiện xu bị trừ/số dư.
+  // 100 số, 99↔00 kề: đúng 1% · lệch 1–2: 4% · lệch 3–5: 6% ⇒ kỳ vọng/lượt 100×.01+35×.04+20×.06 = 3.6 xu ⇒ 3 lượt 10.8 xu / vé 10 xu = 108%.
+  // Nhóm = các bạn đoán ở lượt 1. Lượt 2..luot: cả nhóm PHẢI đoán mới quay được (không bỏ lượt). Hết luot lượt ⇒ trả tổng thưởng.
+  const DEF={exact:100,near:35,far:20,nearRange:2,farRange:5,wrap:true,stake:10,luot:3,manual:false,sound:true,nPlayers:10,v:3};
   const $=id=>document.getElementById(id);
   const defName=i=>'Người chơi '+(i+1);
 
   // ---------- State ----------
-  function newPlayers(cfg){return Array.from({length:cfg.nPlayers},(_,i)=>({name:defName(i),coins:cfg.startCoins,guess:'',last:null,delta:0}))}
+  function newPlayers(cfg){return Array.from({length:cfg.nPlayers},(_,i)=>({name:defName(i),won:0,guess:'',last:null,delta:0}))}
   function fresh(cfg){cfg=cfg||{...DEF};return {cfg,round:0,thu:0,chi:0,history:[],groups:[],grp:{n:1,luot:0,members:null},players:newPlayers(cfg)}}
-  function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.players){if(!s.cfg||s.cfg.v!==2)return null; // dữ liệu luật cũ (trước vé) ⇒ bắt đầu mới
+  function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.players){if(!s.cfg||s.cfg.v!==3)return null; // dữ liệu luật cũ ⇒ bắt đầu mới
     s.cfg={...DEF,...s.cfg};s.groups=s.groups||[];s.grp=s.grp||{n:1,luot:0,members:null};return s}}catch(e){}return null}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
   let S=load()||fresh();
@@ -292,9 +293,9 @@
   function dist(g,r,wrap){let d=Math.abs(g-r);if(wrap)d=Math.min(d,100-d);return d}
   function tier(d,c){if(d===0)return 'exact';if(d<=c.nearRange)return 'near';if(d<=c.farRange)return 'far';return 'miss'}
   function mult(t,c){return t==='exact'?c.exact:t==='near'?c.near:t==='far'?c.far:0}
-  function expectedRatio(c){
+  function expectedRatio(c){ // xu thưởng kỳ vọng cả vé (luot lượt) / giá vé
     let t=0;for(let g=0;g<100;g++)for(let r=0;r<100;r++)t+=mult(tier(dist(g,r,c.wrap),c),c);
-    return t/10000;
+    return t/10000*c.luot/c.stake;
   }
 
   // ---------- Reels ----------
@@ -317,6 +318,23 @@
     strip.style.transform=`translateY(${-target*H}px)`;
     r.pos=digit;
     return new Promise(res=>setTimeout(res,animateMs+30));
+  }
+  // Hàng ĐƠN VỊ quay 2 pha (Thùy 26/09 "hàng chục quay trước, đơn vị sau và chậm lại để hồi hộp"):
+  // pha 1 quay nhanh tới khi hàng chục đã dừng; pha 2 BÒ CHẬM DẦN qua `steps` số cuối, mỗi số đi qua kêu "tạch" thưa dần.
+  function setReelSlow(k,digit,fastMs,slowMs,steps){
+    const r=reels[k],strip=r.el.querySelector('.strip');const cur=r.pos%10;
+    strip.style.transition='none';strip.style.transform=`translateY(${-cur*H}px)`;void strip.offsetHeight;
+    const target=cur+6*10+((digit-cur+10)%10),mid=target-steps;
+    strip.style.transition=`transform ${fastMs}ms cubic-bezier(.5,0,.75,.75)`; // tăng tốc rồi giữ tốc độ (không hãm ở cuối pha 1)
+    strip.style.transform=`translateY(${-mid*H}px)`;r.pos=digit;
+    return new Promise(res=>setTimeout(()=>{
+      strip.style.transition=`transform ${slowMs}ms cubic-bezier(.05,.58,.3,1)`; // nối tốc độ pha 1 rồi hãm dần tới đứng
+      strip.style.transform=`translateY(${-target*H}px)`;
+      let last=-1;const t0=performance.now();
+      const tick=()=>{let idx=last;try{idx=Math.round(-new DOMMatrix(getComputedStyle(strip).transform).m42/H)}catch(e){}
+        if(idx!==last){if(last>=0)beep(1000,.045,'square',.05);last=idx}if(performance.now()-t0<slowMs)requestAnimationFrame(tick)};
+      requestAnimationFrame(tick);
+      setTimeout(res,slowMs+30)},fastMs));
   }
 
   // ---------- Sound ----------
@@ -355,7 +373,7 @@
   // ---------- Render ----------
   function badge(t,m){
     if(!t)return '';
-    const lbl={exact:'🎯 x'+m,near:'🔥 x'+m,far:'✨ x'+m,miss:'—'}[t];
+    const lbl={exact:'🎯 +'+m+' xu',near:'🔥 +'+m+' xu',far:'✨ +'+m+' xu',miss:'—'}[t];
     return `<span class="badge ${t}">${lbl}</span>`;
   }
   function renderPlayers(){
@@ -364,12 +382,12 @@
       const tr=document.createElement('tr');const out=!inGroup(i);
       if(p.last&&p.last!=='miss'&&roundDone)tr.className='win-'+p.last;
       if(out)tr.style.opacity='.35';
-      const d=p.delta?`<span class="delta ${p.delta>0?'up':'down'}">${p.delta>0?'+':''}${p.delta}</span>`:'';
+      const d=p.delta>0?`<span class="delta up">+${p.delta}</span>`:'';
       tr.innerHTML=`<td class="num">${i+1}</td>
         <td><input class="name" data-i="${i}" value="${esc(p.name)}"></td>
         <td><input class="guess" data-i="${i}" type="number" min="0" max="99" inputmode="numeric" value="${p.guess}" ${spinning||roundDone||out?'disabled':''}></td>
         <td class="res">${roundDone&&!out?badge(p.last,mult(p.last,S.cfg)):''}</td>
-        <td class="coins">${out?'–':p.coins}${roundDone&&!out?d:''}</td>`;
+        <td class="coins">${out?'–':(p.won||0)}${roundDone&&!out?d:''}</td>`;
       tb.appendChild(tr);
     });
     tb.querySelectorAll('input.name').forEach(el=>el.addEventListener('input',e=>{S.players[+el.dataset.i].name=el.value;save()}));
@@ -390,11 +408,11 @@
     $('roundLabel').textContent=`Nhóm ${S.grp.n} · Lượt ${cur}/${c.luot}`;
     $('rulesText').innerHTML=`
       <div class="title">Luật chơi</div>
-      <div class="rule stake"><span class="ic">🎟</span><span class="lbl">Vé ${c.luot} lượt<small>mỗi lượt đặt ${c.stake} xu · phải chơi đủ, không bỏ lượt</small></span><span class="val">${c.luot*c.stake} xu</span></div>
-      <div class="rule exact"><span class="ic">🎯</span><span class="lbl">Trúng đúng số</span><span class="val">x${c.exact}</span></div>
-      <div class="rule near"><span class="ic">🔥</span><span class="lbl">Lệch 1 – ${c.nearRange}<small>${c.wrap?'99 và 0 tính là kề nhau':''}</small></span><span class="val">x${c.near}</span></div>
-      <div class="rule far"><span class="ic">✨</span><span class="lbl">Lệch ${c.nearRange+1} – ${c.farRange}</span><span class="val">x${c.far}</span></div>`;
-    const gl=S.groups.slice().reverse().map(g=>`🏁 <b>Nhóm ${g.n}</b>: ${g.res.map(r=>esc(r.name)+' <b>'+r.coins+' xu</b>').join(' · ')}`);
+      <div class="rule stake"><span class="ic">🎟</span><span class="lbl">Vé ${c.luot} lượt<small>phải chơi đủ, không bỏ lượt</small></span><span class="val">${c.stake} xu</span></div>
+      <div class="rule exact"><span class="ic">🎯</span><span class="lbl">Trúng đúng số</span><span class="val">${c.exact} xu</span></div>
+      <div class="rule near"><span class="ic">🔥</span><span class="lbl">Lệch 1 – ${c.nearRange}<small>${c.wrap?'99 và 0 tính là kề nhau':''}</small></span><span class="val">${c.near} xu</span></div>
+      <div class="rule far"><span class="ic">✨</span><span class="lbl">Lệch ${c.nearRange+1} – ${c.farRange}</span><span class="val">${c.far} xu</span></div>`;
+    const gl=S.groups.slice().reverse().map(g=>`🏁 <b>Nhóm ${g.n}</b>: ${g.res.map(r=>esc(r.name)+' <b>+'+(r.won!=null?r.won:r.coins)+' xu</b>').join(' · ')}`);
     const rl=S.history.slice().reverse().map(h=>`${h.grp?'N'+h.grp+' · L'+h.luot:'Ván '+h.round}: <b>${String(h.num).padStart(2,'0')}</b>${h.winners.length?' · '+h.winners.join(', '):' · không ai trúng'}`);
     $('history').innerHTML=gl.concat(rl).join('<br>')||'Chưa có lượt nào.';
     $('manualNum').style.display=c.manual?'':'none';
@@ -428,7 +446,8 @@
     // ticking sound while spinning
     let tickI=0;const ticker=setInterval(()=>{beep(700+((tickI++)%3)*80,.04,'square',.03)},90);
     const pT=setReel('T',Math.floor(num/10),2800).then(()=>beep(880,.15,'triangle',.1));
-    const pO=setReel('O',num%10,4300).then(()=>beep(1175,.2,'triangle',.12));
+    setTimeout(()=>clearInterval(ticker),3400); // pha chậm dùng tiếng tạch theo từng số
+    const pO=setReelSlow('O',num%10,3400,4500,7).then(()=>beep(1175,.2,'triangle',.12));
     await Promise.all([pT,pO]);clearInterval(ticker);
 
     // settle — chỉ các bạn trong nhóm
@@ -439,18 +458,19 @@
       if(!members.includes(i)){p.last=null;p.delta=0;return}
       const g=parseInt(p.guess,10);
       const t=tier(dist(g,num,c.wrap),c),m=mult(t,c);
-      const win=m*c.stake;
-      p.coins+=win-c.stake;p.delta=win-c.stake;p.last=t;
-      thu+=c.stake;chi+=win;
-      if(t!=='miss'){winners.push(`${p.name} (${String(g).padStart(2,'0')}, x${m})`);if(order[t]>order[best])best=t}
+      const win=m; // thưởng = số xu cố định của mức trúng
+      p.won=(p.won||0)+win;p.delta=win;p.last=t;
+      if(S.grp.luot===1)thu+=c.stake; // tiền vé thu 1 lần, lúc lượt 1 của nhóm
+      chi+=win;
+      if(t!=='miss'){winners.push(`${p.name} (${String(g).padStart(2,'0')}, +${m} xu)`);if(order[t]>order[best])best=t}
     });
     S.thu+=thu;S.chi+=chi;
     S.history.push({round:S.round,grp:S.grp.n,luot:S.grp.luot,num,thu,chi,winners});
     const end=groupDone();
-    if(end)S.groups.push({n:S.grp.n,res:members.map(i=>({name:S.players[i].name,coins:S.players[i].coins}))});
+    if(end)S.groups.push({n:S.grp.n,res:members.map(i=>({name:S.players[i].name,won:S.players[i].won||0}))});
     spinning=false;roundDone=true;save();
     document.querySelectorAll('.reel').forEach(r=>r.classList.add('hit'));
-    const tail=end?` · 🏁 HẾT ${c.luot} LƯỢT — xem xu cuối cùng`:'';
+    const tail=end?` · 🏁 HẾT ${c.luot} LƯỢT — trả xu thưởng`:'';
     if(best==='exact'){msg(`🎉 TRÚNG ĐÚNG ${String(num).padStart(2,'0')}! ${winners.length} người thắng`+tail,true);confetti(260);fanfare()}
     else if(best!=='miss'){msg(`Số ${String(num).padStart(2,'0')} — ${winners.length} người có thưởng`+tail,true);confetti(80);beep(660,.3,'triangle',.1)}
     else msg(`Số ${String(num).padStart(2,'0')} — không ai trúng`+tail,!!end);
@@ -458,7 +478,7 @@
   }
   function msg(t,big){const el=$('resultMsg');el.textContent=t;el.className='resultMsg'+(big?' big':'')}
   function nextRound(){
-    if(groupDone()){ // nhóm mới: các bạn khác mua vé — xoá tên, xu về giá vé
+    if(groupDone()){ // nhóm mới: các bạn khác mua vé — xoá tên, thưởng về 0
       S.grp={n:S.grp.n+1,luot:0,members:null};
       S.players=newPlayers(S.cfg);
       msg('Nhóm mới: gõ tên và số đoán của các bạn mua vé rồi bấm QUAY SỐ');
@@ -484,17 +504,17 @@
   }
   function readDlg(){
     return {...S.cfg,
-      nPlayers:Math.max(1,+$('cPlayers').value||10),luot:Math.max(1,+$('cLuot').value||5),stake:Math.max(1,+$('cStake').value||1),
+      nPlayers:Math.max(1,+$('cPlayers').value||10),luot:Math.max(1,+$('cLuot').value||3),stake:Math.max(1,+$('cStake').value||10),
       exact:Math.max(0,+$('cExact').value||0),near:Math.max(0,+$('cNear').value||0),far:Math.max(0,+$('cFar').value||0),
       nearRange:Math.max(1,+$('cNearR').value||1),farRange:Math.max(1,+$('cFarR').value||1),
-      wrap:$('cWrap').checked,manual:$('cManual').checked,sound:$('cSound').checked,v:2};
+      wrap:$('cWrap').checked,manual:$('cManual').checked,sound:$('cSound').checked,v:3};
   }
-  function readCfg(){const c=readDlg();c.startCoins=c.luot*c.stake;return c} // giá vé = số lượt × xu mỗi lượt
+  function readCfg(){return readDlg()}
   function updateRatio(){
     const c=readDlg();if(c.farRange<c.nearRange)c.farRange=c.nearRange;
     const r=expectedRatio(c);
     const pHit=(1+2*c.farRange)/100*100;
-    $('ratioBox').innerHTML=`Giá vé: <b>${c.luot*c.stake} xu</b> = ${c.luot} lượt × ${c.stake} xu<br>Kỳ vọng xu chi / xu thu: <b>${r.toFixed(2)}</b> &nbsp;·&nbsp; Xác suất 1 người có thưởng: <b>${pHit.toFixed(0)}%</b><br>
+    $('ratioBox').innerHTML=`Vé <b>${c.stake} xu</b> = ${c.luot} lượt · kỳ vọng thưởng mỗi vé <b>${(r*c.stake).toFixed(1)} xu</b><br>Kỳ vọng xu chi / xu thu: <b>${r.toFixed(2)}</b> &nbsp;·&nbsp; Xác suất 1 người có thưởng: <b>${pHit.toFixed(0)}%</b><br>
       <span style="color:var(--muted)">${r>1.05?'BK sẽ lỗ về lâu dài':r<0.95?'BK sẽ lãi về lâu dài':'Gần như hòa vốn'}</span>`;
   }
   dlg.querySelectorAll('input').forEach(el=>el.addEventListener('input',updateRatio));
@@ -517,7 +537,7 @@
     $('stRound').textContent=S.round;$('stThu').textContent=S.thu;$('stChi').textContent=S.chi;
     $('stRatio').textContent=S.thu?(S.chi/S.thu).toFixed(2):'–';
     $('sumRounds').innerHTML=S.history.length?S.history.map(h=>`<tr><td>${h.round}</td><td><b>${String(h.num).padStart(2,'0')}</b></td><td>${h.thu}</td><td>${h.chi}</td><td>${h.winners.length?h.winners.join(', '):'—'}</td></tr>`).join(''):'<tr><td colspan="5">Chưa có ván nào.</td></tr>';
-    $('sumPlayers').innerHTML=S.players.map((p,i)=>{const net=p.coins-S.cfg.startCoins;return `<tr><td>${i+1}</td><td>${esc(p.name)}</td><td style="text-align:right"><b>${p.coins}</b></td><td style="text-align:right" class="${net>0?'delta up':net<0?'delta down':''}">${net>0?'+':''}${net}</td></tr>`}).join('');
+    $('sumPlayers').innerHTML=S.players.map((p,i)=>`<tr><td>${i+1}</td><td>${esc(p.name)}</td><td style="text-align:right"><b>${p.won||0}</b></td><td></td></tr>`).join('');
     if(dlg.open)dlg.close();
     sum.showModal();
   }

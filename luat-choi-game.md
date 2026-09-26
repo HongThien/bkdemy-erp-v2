@@ -30,28 +30,29 @@
 ## 1. 🎲 Đoán Số (TV)
 
 **Luật cho học sinh**
-- Mua **vé 5 xu = 5 lượt**, mỗi lượt đặt 1 xu từ vé.
+- Mua **vé 10 xu = 3 lượt** (Thùy 26/09; trước: 5 xu = 5 lượt × 1 xu).
 - Mỗi lượt nói **1 số từ 00 đến 99**. Máy quay ra số trúng:
 
 | Kết quả | Nhận |
 |---|---|
-| 🎯 Trúng đúng số | 30 xu |
-| 🔥 Lệch 1 – 2 | 10 xu |
-| ✨ Lệch 3 – 5 | 5 xu |
+| 🎯 Trúng đúng số | 100 xu |
+| 🔥 Lệch 1 – 2 | 35 xu |
+| ✨ Lệch 3 – 5 | 20 xu |
 | Lệch từ 6 | 0 xu |
 
-- **Phải chơi đủ 5 lượt**, không bỏ lượt. Hết 5 lượt: nhận số xu còn lại, nhường chỗ cho nhóm sau.
+- **Phải chơi đủ 3 lượt**, không bỏ lượt. Hết 3 lượt: nhận **tổng xu thưởng**, nhường chỗ cho nhóm sau.
 - **99 và 00 đứng cạnh nhau** (máy ra 98, đoán 01 = lệch 3). Nhiều bạn trúng cùng lúc thì ai cũng nhận đủ.
-- Ví dụ: 5 lượt trúng đúng 1 lần, trượt 4 lần → hết vé có **30 xu**.
+- Ví dụ: 3 lượt có 1 lần lệch 2, 2 lần trượt → nhận **35 xu**.
+- Máy quay **hàng chục dừng trước**, **hàng đơn vị bò chậm dần** qua 7 số cuối rồi mới dừng (~8 giây/lượt).
 
 **Vận hành**
-1. Thu 5 xu mỗi bạn. Lượt 1: gõ **tên + số đoán** cho các bạn mua vé (dòng trống = không chơi). Ai đoán ở lượt 1 là người trong nhóm.
+1. Thu 10 xu mỗi bạn. Lượt 1: gõ **tên + số đoán** cho các bạn mua vé (dòng trống = không chơi). Ai đoán ở lượt 1 là người trong nhóm.
 2. Bấm **🎲 QUAY SỐ** (hoặc Space/Enter khi không gõ ô nào). Từ lượt 2, **thiếu bạn nào chưa đoán thì máy không quay** và báo tên bạn đó.
-3. **Lượt tiếp ▶** sang lượt sau. Hết lượt 5 nút thành **Nhóm mới ▶**: xoá tên, xu về 5 cho nhóm sau.
-4. Trả xu theo cột **Xu** lúc hết lượt 5. Lịch sử bên phải ghi 🏁 xu cuối của từng nhóm để đối chiếu.
-- ⚙ Cài đặt: số lượt mỗi vé, xu đặt mỗi lượt (giá vé = lượt × xu), hệ số thưởng, vòng tròn 99↔00, **nhập số thủ công** (khi muốn bốc số bằng cách khác). Hộp dưới cùng hiện giá vé và kỳ vọng chi/thu.
+3. **Lượt tiếp ▶** sang lượt sau. Hết lượt 3 nút thành **Nhóm mới ▶**: xoá tên cho nhóm sau.
+4. Trả xu theo cột **Xu thưởng** lúc hết lượt 3 (màn hình chỉ hiện xu được thưởng, không hiện xu trừ). Lịch sử bên phải ghi 🏁 tổng thưởng từng bạn để đối chiếu.
+- ⚙ Cài đặt: số lượt mỗi vé, giá vé, xu thưởng từng mức, vòng tròn 99↔00, **nhập số thủ công** (khi muốn bốc số bằng cách khác). Hộp dưới cùng hiện giá vé và kỳ vọng chi/thu.
 - **📊 Tổng kết nội bộ** (Ctrl+Shift+T): số lượt, tổng thu/chi. Không chiếu lên TV.
-- Cân bằng mặc định: mỗi lượt xác suất trúng đúng 1% · lệch 1–2 là 4% · lệch 3–5 là 6% · trượt 89%; kỳ vọng chi/thu = 1.00 (BK hoà vốn về lâu dài).
+- Cân bằng mặc định: mỗi lượt xác suất trúng đúng 1% · lệch 1–2 là 4% · lệch 3–5 là 6% · trượt 89%; mỗi lượt kỳ vọng 100×1% + 35×4% + 20×6% = 3,6 xu ⇒ 3 lượt 10,8 xu / vé 10 xu = **108%** (ngang các trò khác ~110%).
 
 ---
 
