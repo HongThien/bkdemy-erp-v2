@@ -650,7 +650,7 @@ function DangBlock({ p, gv, lt = true, colByCau, hinhCheDoByCau }: { p: PhanReso
         {p.caus.length > 0 && (
           <>
             <BaiTapHeader />
-            <CauFlow items={p.caus.map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau?.[c.ma_cau] }) }))} />
+            <CauFlow hop items={p.caus.map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau?.[c.ma_cau] }) }))} />
           </>
         )}
       </div>
@@ -886,8 +886,11 @@ export function TLNTable({ rows }: { rows: TLNRow[] }) {
 // NHẤT → đề thấp chừa dòng trống → dòng kẻ 2 cột bắt đầu NGANG NHAU. DÒNG KẺ = từng HÀNG lưới riêng (mỗi hàng
 // 1 dòng/cột), là block rời nên paged.js NGẮT ĐƯỢC giữa các dòng → chảy lấp đáy trang, KHÔNG nhảy cả câu
 // (khác atomic). Lưới --pitch giữ mọi dòng thẳng hàng. cols<=1 → 1 cột như thường.
-export function CauColumns({ cols, parts }: { cols: number; parts: CauPart[] }) {
-  if (cols <= 1) return <div className="pv-caulist">{parts.map((p) => <div key={p.key} className="pv-cau">{p.content}{p.lines > 0 && <WriteLines n={p.lines} />}</div>)}</div>
+// `hop` = đóng khung TỪNG câu (class gắn lên .pv-caulist có sẵn — KHÔNG thêm lớp div bọc, xem bug
+// "Fragment không phải div" ở BuoiBlock: hộp lồng quanh nhiều mục làm paged.js trắng trang/lặp nội dung).
+export function CauColumns({ cols, parts, hop }: { cols: number; parts: CauPart[]; hop?: boolean }) {
+  const hc = hop ? ' pv-caulist-hop' : ''
+  if (cols <= 1) return <div className={`pv-caulist${hc}`}>{parts.map((p) => <div key={p.key} className="pv-cau">{p.content}{p.lines > 0 && <WriteLines n={p.lines} />}</div>)}</div>
   const rows: (CauPart | null)[][] = []
   for (let i = 0; i < parts.length; i += cols) {
     const row: (CauPart | null)[] = parts.slice(i, i + cols)
@@ -895,7 +898,7 @@ export function CauColumns({ cols, parts }: { cols: number; parts: CauPart[] }) 
     rows.push(row)
   }
   return (
-    <div className="pv-caulist pv-cols">
+    <div className={`pv-caulist pv-cols${hc}`}>
       {rows.map((row, i) => {
         const maxLines = Math.max(0, ...row.map((p) => p?.lines ?? 0))
         return (
@@ -917,7 +920,7 @@ export function CauColumns({ cols, parts }: { cols: number; parts: CauPart[] }) 
 // ảnh cao tới 60mm (.pv-img) làm băng dễ cao hơn khoảng trống còn lại cuối trang → cả băng nhảy sang trang
 // sau, bỏ trống trang trước (Thùy báo). Câu có ảnh in full-width, không xé nhóm 2 cột xung quanh nó.
 export type CauFlowItem = CauPart & { cols: number }
-export function CauFlow({ items }: { items: CauFlowItem[] }) {
+export function CauFlow({ items, hop }: { items: CauFlowItem[]; hop?: boolean }) {
   const groups: { cols: number; parts: CauPart[] }[] = []
   for (const it of items) {
     const cols = it.cols > 1 && !it.hasImg ? it.cols : 1
@@ -925,7 +928,7 @@ export function CauFlow({ items }: { items: CauFlowItem[] }) {
     if (last && last.cols === cols) last.parts.push(it)
     else groups.push({ cols, parts: [it] })
   }
-  return <>{groups.map((g, i) => <CauColumns key={i} cols={g.cols} parts={g.parts} />)}</>
+  return <>{groups.map((g, i) => <CauColumns key={i} cols={g.cols} parts={g.parts} hop={hop} />)}</>
 }
 
 // CSS toàn cục (màn hình + cô lập khi in) — KHÔNG đưa vào paged.js.
@@ -974,6 +977,12 @@ const CONTENT_CSS = `
 .pv-row > .pv-cau:not(:first-child){margin-left:9mm}
 .pv-cau{margin:12px 0;break-inside:avoid}
 .pv-cau-no{font-weight:700;color:var(--pv-accent,#E91E8C);margin-right:5px}
+/* "Bài tập tự luyện" (DangBlock, CEO 26/09): đóng khung TỪNG câu xanh lá — cùng họ màu khung ##BT
+   (LT_CORE_CSS). Khung đặt lên .pv-cau / .pv-pcell (vốn đã là khối anh-em break-inside:avoid, kiểu
+   paged.js ngắt đúng) — KHÔNG bọc 1 hộp quanh cả danh sách (bug trắng trang, xem BuoiBlock). */
+.pv-caulist-hop .pv-cau,.pv-caulist-hop .pv-pcell{border:2px solid #16a34a;background:#eefbf3;border-radius:12px;padding:10px 14px;box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pv-caulist-hop .pv-pcell:empty{border:none;background:none}
+.pv-caulist-hop .pv-cau-no{color:#16a34a}
 /* Trả lời ngắn dạng BẢNG (TLNTable, xem PrintView.tsx) — cột 1 đề, cột 2 chỗ điền đáp án. Mỗi hàng
    break-inside:avoid (không xé đôi 1 câu) nhưng cả khối vẫn CHẢY được giữa các hàng qua trang. */
 .pv-tlnt{margin:4px 0}

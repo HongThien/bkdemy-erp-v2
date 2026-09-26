@@ -4,7 +4,7 @@
 // đúng luật đối xứng §1.6 CLAUDE.md. Dùng ở 2 nơi: preview trong LyThuyetModal (screens/kho/ui.tsx) và
 // render PDF (LyThuyetBody, screens/tailieu/PrintView.tsx).
 
-export type LyThuyetBlockLoai = 'text' | 'dinh_ly' | 'dinh_nghia' | 'tinh_chat' | 'chu_y' | 'phuong_phap' | 'vi_du' | 'nhan_xet' | 'bai_tap'
+export type LyThuyetBlockLoai = 'text' | 'dinh_ly' | 'dinh_nghia' | 'tinh_chat' | 'chu_y' | 'phuong_phap' | 'vi_du' | 'nhan_xet' | 'bai_tap' | 'nhan_giai'
 export type LyThuyetBlock = { loai: LyThuyetBlockLoai; tieuDe: string; noiDung: string }
 
 // Kí hiệu đứng đầu dòng đầu tiên của 1 đoạn (đoạn = tách bởi dòng trống, đúng quy ước ngắt đoạn lý
@@ -35,15 +35,33 @@ const LEADING_LABEL_RE: Partial<Record<LyThuyetBlockLoai, RegExp>> = {
   bai_tap: /^(Câu|Bài(?:\s*tập)?)\s*\d*\s*[.:]?\s*/i,
 }
 
+// Nhãn lời giải CHUẨN HOÁ (CEO chốt 26/09): mọi "Giải"/"Lời giải"/"Bài giải" đều HIỆN là "Bài giải:",
+// căn giữa + gạch chân. Dòng đứng RIÊNG trong đoạn thường (lý thuyết cũ chưa gắn kí hiệu) tách thành khối
+// 'nhan_giai' — nhờ vậy áp cho cả kho, không chỉ trong ##VD.
+export const NHAN_BAI_GIAI = 'Bài giải:'
+const NHAN_GIAI_DONG_RE = /^[ \t]*(\*\*)?[ \t]*(Lời giải|Bài giải|Giải)[ \t]*[:.]?[ \t]*(\*\*)?[ \t\r]*$/
+
+function tachNhanGiai(doan: string): LyThuyetBlock[] {
+  const out: LyThuyetBlock[] = []
+  let buf: string[] = []
+  const xa = () => { const t = buf.join('\n').trim(); if (t) out.push({ loai: 'text', tieuDe: '', noiDung: t }); buf = [] }
+  for (const dong of doan.split('\n')) {
+    if (NHAN_GIAI_DONG_RE.test(dong)) { xa(); out.push({ loai: 'nhan_giai', tieuDe: NHAN_BAI_GIAI, noiDung: '' }) }
+    else buf.push(dong)
+  }
+  xa()
+  return out
+}
+
 export function parseLyThuyetBlocks(text: string): LyThuyetBlock[] {
   const doans = (text || '').split(/\n[ \t]*\n/).map((d) => d.trim()).filter(Boolean)
   let soViDu = 0
   let soBaiTap = 0
-  return doans.map((doan) => {
+  return doans.flatMap((doan): LyThuyetBlock | LyThuyetBlock[] => {
     const lines = doan.split('\n')
     const dongDau = lines[0].trim()
     const found = MARKER_LOAI.find(([ky]) => dongDau.toUpperCase().startsWith(ky.toUpperCase()))
-    if (!found) return { loai: 'text', tieuDe: '', noiDung: doan }
+    if (!found) return tachNhanGiai(doan)
     const [ky, loai] = found
     let tieuDe = dongDau.slice(ky.length).trim()
     let than = lines.slice(1).join('\n').trim()
@@ -93,17 +111,19 @@ export function splitPhuongPhapBuoc(noiDung: string): string[] {
 // ##VD riêng 1 quy tắc (CEO chốt 26/09): CHỈ đề bài nằm trong khung, "Lời giải" đứng NGOÀI khung (plain).
 // Tách tại dòng bắt đầu bằng "Lời giải"/"Bài giải"/"Giải" + dấu . hoặc : ngay sau (tránh khớp nhầm câu
 // văn kiểu "Giải phương trình..." — vốn không có dấu câu ngay sau "Giải").
-const LOI_GIAI_RE = /^[ \t]*(Lời giải|Bài giải|Giải)\s*[.:]/im
+const LOI_GIAI_RE = /^[ \t]*(\*\*)?[ \t]*(Lời giải|Bài giải|Giải)[ \t]*([.:]|(\*\*)?[ \t\r]*$)/im
 export function splitViDu(noiDung: string): { de: string; loiGiai: string } {
   const m = LOI_GIAI_RE.exec(noiDung)
   if (!m) return { de: noiDung, loiGiai: '' }
   return { de: noiDung.slice(0, m.index).trim(), loiGiai: noiDung.slice(m.index).trim() }
 }
 
-// Tách nhãn ("Lời giải"/"Bài giải"/"Giải"...) ra khỏi phần lời giải để hiển thị RIÊNG — nhãn căn giữa
-// + gạch chân (CEO chốt 26/09), thân lời giải render bình thường bên dưới. Nhãn luôn đứng 1 mình 1
-// dòng theo quy ước viết sẵn trong kho — không cần đoán, chỉ tách dòng đầu.
+// Tách nhãn ("Lời giải"/"Bài giải"/"Giải", kể cả bọc **đậm**) ra khỏi lời giải — nhãn HIỆN chuẩn hoá
+// "Bài giải:" căn giữa + gạch chân (CEO chốt 26/09), thân render thường bên dưới. Cắt đúng phần nhãn
+// (không cắt cả dòng) để ca "Lời giải. Ta có…" cùng dòng không bị nuốt nội dung vào nhãn.
+const NHAN_GIAI_DAU_RE = /^[ \t]*(\*\*)?[ \t]*(Lời giải|Bài giải|Giải)[ \t]*[:.]?[ \t]*(\*\*)?[ \t]*/
 export function splitLoiGiaiLabel(loiGiai: string): { nhan: string; than: string } {
-  const lines = loiGiai.split('\n')
-  return { nhan: (lines[0] || '').trim(), than: lines.slice(1).join('\n').trim() }
+  const m = loiGiai.match(NHAN_GIAI_DAU_RE)
+  if (!m) return { nhan: '', than: loiGiai }
+  return { nhan: NHAN_BAI_GIAI, than: loiGiai.slice(m[0].length).trim() }
 }

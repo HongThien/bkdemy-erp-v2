@@ -3,6 +3,21 @@
 > ĐỌC trước khi đụng `LyThuyetModal` (src/screens/kho/BanDo.tsx) hoặc `LyThuyetBody`/PrintView.
 > Trạng thái: **ĐÃ CODE + DEPLOY (24–26/09).** Thêm `##TC` (Tính chất) và đóng khung `##VD` ngày 26/09.
 >
+> **⭐ 26/09 (tiếp) — palette + khung câu hỏi + chuẩn hoá "Bài giải".**
+> - Màu: Định nghĩa vàng `#c89b52` · Định lý TÍM `#7c5cbf` · `##TC` nhãn mặc định "Kiến thức cần nhớ"
+>   XANH DƯƠNG `#2D9CDB` · Chú ý cam · Phương pháp xám · Ví dụ hồng `#b23a72` · Nhận xét xanh ngọc ·
+>   Bài tập XANH LÁ `#16a34a`.
+> - Câu hỏi THẬT trong "Bài tập tự luyện" (DangBlock/`CauFlow hop`) đóng khung TỪNG câu xanh lá — class
+>   `pv-caulist-hop` gắn lên `.pv-caulist` có sẵn, KHÔNG thêm div bọc (bug trắng trang BuoiBlock).
+>   Chưa áp cho Hình (`HinhPrintView`/MucsBlock render câu kiểu khác).
+> - Nhãn lời giải: mọi "Giải"/"Lời giải"/"Bài giải" (kể cả `**Giải:**`) HIỆN là "Bài giải:" căn giữa +
+>   gạch chân + đậm — cả trong `##VD` lẫn dòng đứng riêng trong lý thuyết cũ chưa gắn kí hiệu (khối
+>   `nhan_giai`, `tachNhanGiai` trong lythuyetBlocks.ts). Dữ liệu: mig `202609261247_chuan_hoa_nhan_bai_giai`
+>   thay 146 dòng / 94 bản ghi (dai_dang 78, khtn_dang 13, hgt_dang 2, dai_chuyen_de 1) "Giải" → "Bài giải:",
+>   áp bằng `--only` (10 file treo khác của phiên khác KHÔNG đụng). Prompt Gemini tự chuẩn hoá khi bóc.
+> - Verify trên PDF thật Giáo trình 8A: 29 câu khung xanh lá, 3 nhãn "Bài giải:" căn giữa/gạch chân,
+>   0 dòng "Giải" trần. CHƯA đo được mức lấp đầy trang (khung mỗi câu thêm padding ⇒ có thể dài thêm trang).
+>
 > **⭐ 26/09 — HIỂU NHẦM đã sửa: "Bài tập tự luyện" KHÔNG nằm trong lý thuyết.** Lúc đầu tôi tưởng
 > "Câu 1/Câu 2" CEO chỉ trong ảnh là nội dung lý thuyết cần `##BT` — SAI. Đó là CÂU HỎI THẬT lấy
 > từ kho, render qua `CauFlow` trong `DangBlock` (PrintView.tsx), HOÀN TOÀN KHÔNG liên quan

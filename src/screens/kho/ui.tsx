@@ -201,20 +201,20 @@ export const LT_CORE_CSS = `
 .pv-lt-vd{position:relative;border:2px solid #b23a72;background:#fbf0f5;border-radius:14px;padding:22px 18px 18px;font-size:15px;line-height:1.65}
 .pv-lt-vd .pv-lt-tag{position:absolute;top:-14px;left:18px;background:#b23a72;color:#fff;padding:6px 16px;border-radius:8px;font-size:12px;box-shadow:0 3px 6px rgba(178,58,114,.28)}
 .pv-lt-vd-giai{margin-top:8px;padding-left:2px;font-size:14px;color:#3a4356}
-.pv-lt-vd-giai-nhan{text-align:center;font-weight:800;text-decoration:underline;text-underline-offset:3px;margin-bottom:6px;color:#3a4356}
+.pv-lt-vd-giai-nhan{text-align:center;font-weight:800;text-decoration:underline;text-underline-offset:3px;margin:8px 0 6px;color:#3a4356;break-after:avoid}
 .pv-lt-nx{display:flex;gap:12px;margin:14px 0;break-inside:avoid}
 .pv-lt-nx-quote{font-size:32px;line-height:.6;color:#2f9e6e;flex:0 0 auto;padding-top:6px}
 .pv-lt-nx-body{padding-top:2px}
 .pv-lt-nx .pv-lt-tag{color:#2f9e6e;display:block;margin-bottom:3px;font-size:11.5px}
 .pv-lt-nx-txt{font-style:italic;color:#2c4b3c}
-.pv-lt-bt-header{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#24324b;margin:20px 0 10px;break-after:avoid}
+.pv-lt-bt-header{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#16a34a;margin:20px 0 10px;break-after:avoid}
 .pv-lt-bt{position:relative;border:2px solid #16a34a;background:#eefbf3;border-radius:14px;padding:22px 18px 18px;margin:22px 0 18px;font-size:15px;line-height:1.65;break-inside:avoid}
 .pv-lt-bt .pv-lt-tag{position:absolute;top:-14px;left:18px;background:#16a34a;color:#fff;padding:6px 16px;border-radius:8px;font-size:12px;box-shadow:0 3px 6px rgba(22,163,74,.28)}
 `
 
 const LT_TIEU_DE_MAC_DINH: Record<LyThuyetBlock['loai'], string> = {
   text: '', dinh_ly: 'Định lý', dinh_nghia: 'Định nghĩa', tinh_chat: 'Kiến thức cần nhớ', chu_y: 'Chú ý',
-  phuong_phap: 'Phương pháp giải', vi_du: 'Ví dụ', nhan_xet: 'Nhận xét', bai_tap: 'Bài tập',
+  phuong_phap: 'Phương pháp giải', vi_du: 'Ví dụ', nhan_xet: 'Nhận xét', bai_tap: 'Bài tập', nhan_giai: 'Bài giải:',
 }
 
 // Render 1 khối ĐÃ có kí hiệu (loai !== 'text'). Khối 'text' (đoạn thường, không kí hiệu) do nơi gọi tự
@@ -271,6 +271,8 @@ export function LyThuyetBlockView({ b }: { b: LyThuyetBlock }) {
       )
     case 'bai_tap':
       return <div className="pv-lt-bt"><span className="pv-lt-tag">{tieuDe}</span><MathText>{b.noiDung}</MathText></div>
+    case 'nhan_giai':
+      return <div className="pv-lt-vd-giai-nhan">{tieuDe}</div>
     default:
       return null
   }
