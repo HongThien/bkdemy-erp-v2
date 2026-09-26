@@ -332,16 +332,20 @@ function QuanTroTab({ tq, toast, onDoi, setTq }: { tq: TongQuan | null; toast: (
   const [game, setGame] = useState<string>(lsGet('sk-qt-game') || sk.GAME_IPAD[0].id)
   useEffect(() => { lsSet('sk-qt-game', game) }, [game])
 
-  // Hub iPad báo game đang mở → chọn sẵn.
+  // Hub iPad báo game đang mở → chọn sẵn. Giữ kênh để quản trò RA LỆNH mở game trên TV (event 'sk_open', hub TV xử lý).
+  const hubRef = useRef<ReturnType<typeof supabase.channel> | null>(null)
   useEffect(() => {
     if (!phong?.ma_hub) return
     const ch = supabase.channel('bk-hub:' + phong.ma_hub, { config: { broadcast: { self: false } } })
     ch.on('broadcast', { event: 'open' }, (m) => {
-      const g = (m.payload as { game?: string })?.game
-      if (g) { setGameHub(g); if (sk.GAME_IPAD.some((x) => x.id === g)) setGame(g) }
+      const g = (m.payload as { game?: string | null })?.game ?? null
+      setGameHub(g); if (g && sk.GAME_IPAD.some((x) => x.id === g)) setGame(g)
     }).subscribe()
-    return () => { supabase.removeChannel(ch) }
+    hubRef.current = ch
+    return () => { hubRef.current = null; supabase.removeChannel(ch) }
   }, [phong?.ma_hub])
+  // Thùy 26/09: bấm BẮT ĐẦU mà TV đang đứng menu hub ⇒ iPad cứ "đang chờ". Giờ điện thoại bảo TV mở đúng game luôn.
+  const moTv = (id: string) => { if (sk.GAME_IPAD.some((x) => x.id === id)) hubRef.current?.send({ type: 'broadcast', event: 'sk_open', payload: { game: id } }) }
 
   if (!tq) return <div className="p-4 text-sm text-slate-400">Đang tải…</div>
   if (!phong) return <div className="p-4 text-sm text-slate-500">Sự kiện chưa có phòng dùng hàng chờ — vào ⚙️ Cài đặt.</div>
@@ -385,7 +389,7 @@ function QuanTroTab({ tq, toast, onDoi, setTq }: { tq: TongQuan | null; toast: (
         <span className="ml-auto text-xs text-slate-500">{phong.so_luot_xong} lượt xong</span>
       </div>
 
-      {phong.luot && <LuotDangChoi key={phong.luot.id} phong={phong} gameHub={gameHub} toast={toast} onDoi={onDoi} />}
+      {phong.luot && <LuotDangChoi key={phong.luot.id} phong={phong} gameHub={gameHub} moTv={moTv} toast={toast} onDoi={onDoi} />}
       {(
           <div className="rounded-2xl border-2 border-emerald-500 bg-white p-3 shadow-sm">
             <div className="mb-2 flex items-center justify-between">
@@ -411,7 +415,8 @@ function QuanTroTab({ tq, toast, onDoi, setTq }: { tq: TongQuan | null; toast: (
                   setBan('bd')
                   try {
                     const r = await sk.batDau(phong.id, game)
-                    toast(`▶ Bắt đầu lượt ${r.nguoi.length} bạn — ngồi đúng iPad số slot`)
+                    moTv(game)
+                    toast(`▶ Bắt đầu lượt ${r.nguoi.length} bạn — TV tự mở game, ngồi đúng iPad số slot`)
                     onDoi()
                   } catch (e) { toast((e as Error).message, true) }
                   finally { setBan(null) }
@@ -450,7 +455,7 @@ function QuanTroTab({ tq, toast, onDoi, setTq }: { tq: TongQuan | null; toast: (
 const namesTheoSlot = (nguoi: { slot: number; ten: string; so: number }[]) =>
   Object.fromEntries(nguoi.map((n) => [n.slot, `${n.ten} #${n.so}`])) as Record<number, string>
 
-function LuotDangChoi({ phong, gameHub, toast, onDoi }: { phong: PhongTQ; gameHub: string | null; toast: (t: string, loi?: boolean) => void; onDoi: () => void }) {
+function LuotDangChoi({ phong, gameHub, moTv, toast, onDoi }: { phong: PhongTQ; gameHub: string | null; moTv: (game: string) => void; toast: (t: string, loi?: boolean) => void; onDoi: () => void }) {
   const luot = phong.luot!
   const g = sk.GAME_IPAD.find((x) => x.id === luot.game)
   // Game iPad: xu trả NGAY mỗi ván (Thùy 26/09 "quản trò ko cần lưu xu nữa, qua mỗi trận trả xu luôn") — tình trạng đọc từ DB.
@@ -529,12 +534,12 @@ function LuotDangChoi({ phong, gameHub, toast, onDoi }: { phong: PhongTQ; gameHu
         <h3 className="font-bold text-indigo-700">🎮 Đang chơi · {g?.ten ?? (luot.game === 'khac' ? 'Game khác' : luot.game)}</h3>
         {g && <span className="rounded bg-indigo-600 px-2 py-0.5 text-sm font-black text-white">Ván {Math.min(soVan + 1, toiDaVan)}/{toiDaVan}</span>}
         {g && phong.ma_hub && <span className={`rounded px-1.5 text-[11px] ${!ketNoi ? 'bg-slate-100 text-slate-500' : coTv ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-100 font-bold text-amber-800'}`}>{!ketNoi ? '○ đang nối…' : coTv ? `● TV đã nối · xong ${soVan} ván` : '⚠ chưa thấy TV'}</span>}
-        {g && phong.ma_hub && <button onClick={() => { guiTen(); toast('Đã gửi tên xuống TV game') }} className="ml-auto rounded-md px-2 py-1 text-xs text-indigo-600 hover:bg-indigo-50">↻ Gửi lại tên</button>}
+        {g && phong.ma_hub && <button onClick={() => { moTv(luot.game); guiTen(); toast('Đã gửi lệnh mở game + tên xuống TV') }} className="ml-auto rounded-md px-2 py-1 text-xs text-indigo-600 hover:bg-indigo-50">↻ Gửi lại tên</button>}
       </div>
       {g && phong.ma_hub && gameHub && gameHub !== luot.game ? (
-        <div className="mb-2 rounded-lg bg-amber-100 px-3 py-2 text-sm font-semibold text-amber-900">⚠ TV phòng {phong.ma_hub} đang mở <b>{sk.GAME_IPAD.find((x) => x.id === gameHub)?.ten ?? gameHub}</b>, lượt này là <b>{g.ten}</b>. Chuyển TV sang {g.ten}, hoặc Huỷ lượt rồi bắt đầu lại đúng game.</div>
+        <div className="mb-2 rounded-lg bg-amber-100 px-3 py-2 text-sm font-semibold text-amber-900">⚠ TV phòng {phong.ma_hub} đang mở <b>{sk.GAME_IPAD.find((x) => x.id === gameHub)?.ten ?? gameHub}</b>, lượt này là <b>{g.ten}</b>. Chuyển TV sang {g.ten}, hoặc Huỷ lượt rồi bắt đầu lại đúng game.<button onClick={() => moTv(luot.game)} className="mt-1.5 block rounded-lg bg-amber-600 px-3 py-1.5 text-sm font-bold text-white">📺 Mở {g.ten} trên TV</button></div>
       ) : g && phong.ma_hub && ketNoi && !coTv ? (
-        <div className="mb-2 rounded-lg bg-amber-100 px-3 py-2 text-sm font-semibold text-amber-900">⚠ Không thấy TV {g.ten} ở phòng <b>{phong.ma_hub}</b> — tên chưa xuống được iPad. Kiểm tra: TV đã mở {g.ten} chưa, mã phòng trên hub TV có đúng {phong.ma_hub} không (sai thì sửa ở ⚙️ Cài đặt › Phòng chơi).</div>
+        <div className="mb-2 rounded-lg bg-amber-100 px-3 py-2 text-sm font-semibold text-amber-900">⚠ Không thấy TV {g.ten} ở phòng <b>{phong.ma_hub}</b> — tên chưa xuống được iPad. Kiểm tra: TV đã mở {g.ten} chưa, mã phòng trên hub TV có đúng {phong.ma_hub} không (sai thì sửa ở ⚙️ Cài đặt › Phòng chơi).<button onClick={() => moTv(luot.game)} className="mt-1.5 block rounded-lg bg-amber-600 px-3 py-1.5 text-sm font-bold text-white">📺 Mở {g.ten} trên TV</button></div>
       ) : null}
       <div className="space-y-1.5">
         {luot.nguoi.map((n) => (

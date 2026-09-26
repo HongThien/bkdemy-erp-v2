@@ -168,6 +168,8 @@ async function connect(){
     chan=sb.channel('bk-hub:'+D.room,{config:{broadcast:{self:false,ack:false},presence:{key:isTV()?'tv':'p'+D.slot}}});
     chan.on('broadcast',{event:'open'},m=>onOpen(m.payload));
     chan.on('broadcast',{event:'hello'},()=>{if(isTV())pushState()});
+    // BK Sự kiện (Thùy 26/09): quản trò bấm BẮT ĐẦU lượt ⇒ TV hub tự mở đúng game ⇒ iPad theo TV. Chỉ game iPad (không solo/không chỉ-TV).
+    chan.on('broadcast',{event:'sk_open'},m=>{const id=m.payload&&m.payload.game,g=GAMES.find(x=>x.id===id);if(isTV()&&g&&!g.solo&&!g.tv&&cur!==id)openGame(id)});
     chan.on('presence',{event:'sync'},()=>{online={};ntv=0;Object.values(chan.presenceState()).forEach(a=>a.forEach(x=>{if(x.role==='player')online[x.slot]=true;else if(x.role==='tv')ntv++}));renderChips()});
     await new Promise((res,rej)=>{const to=setTimeout(()=>rej(new Error('quá thời gian')),10000);
       chan.subscribe(st=>{if(st==='SUBSCRIBED'){clearTimeout(to);setNet(true,'đã kết nối');chan.track({role:D.role,slot:D.slot});res()}
