@@ -1,8 +1,11 @@
 # BK Escape — Luật chơi (Thùy chốt 26/09/2026)
 
 ## Chuẩn bị (1 lần)
-- Dán ~80 mảnh giấy khắp bàn, ghế, tường. Mỗi mảnh: **1 chữ cái to + mã 4 chữ số** (in từ `bk-escape-in.html`).
-- Mảnh giấy xếp theo "họ": các mảnh trong 1 họ **trùng 3/4 chữ số**, mang chữ cái khác nhau ⇒ biết thiếu 1 số là phải đoán.
+- Dán **195 mảnh giấy** (10 trang A4, 20 mảnh/trang) khắp bàn, ghế, tường. Mỗi mảnh: **1 chữ cái to + mã 4 chữ số** (in từ `bk-escape-in.html`).
+- 15 "họ", mỗi họ = 1 mảnh GỐC + 12 mảnh khác gốc đúng 1 chữ số (3 mảnh cho mỗi vị trí), chữ cái khác nhau. iPad chỉ chọn mảnh gốc làm đích.
+  ⇒ Sai 1 câu (biết 3/4 số): ~4 mảnh khớp, đoán trúng ~25% · sai 2 câu: ~8 mảnh, ~13% · biết 1/4: ~7%.
+  *(Bộ 80 mảnh cũ quá dễ: biết 2/4 số vẫn đoán trúng 53% — bỏ 26/09.)*
+- Dán theo từng tờ là tự tản đều: các mảnh cùng họ đã được xáo sang các tờ khác nhau.
 - 1 nhóm dùng 1 iPad. Quản trò mở `bk-escape.html`, nhập tên nhóm, bấm Bắt đầu. HS không bóc / di chuyển giấy.
 
 ## Một lượt = 4 chữ cái, tối đa 22 phút

@@ -12,22 +12,22 @@
   .bar b{color:#ffd166}
   .bar button{font:inherit;padding:8px 16px;border-radius:10px;border:none;background:#ffd166;font-weight:800;cursor:pointer}
   .bar label{font-size:14px}
-  .page{width:194mm;margin:10px auto;background:#fff;display:grid;grid-template-columns:repeat(3,1fr);gap:0;page-break-after:always;break-after:page}
-  .slip{height:66mm;border:1px dashed #999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4mm;position:relative}
-  .slip .L{font-size:120pt;font-weight:900;line-height:.9;font-family:"Arial Black","Segoe UI",Arial,sans-serif}
-  .slip .C{font-size:30pt;font-weight:800;letter-spacing:4pt;font-variant-numeric:tabular-nums;font-family:Consolas,"Courier New",monospace;border-bottom:3pt solid #111;padding:0 2mm} /* gạch dưới = chiều đọc, tránh nhầm 6/9 khi dán ngược */
+  .page{width:194mm;margin:10px auto;background:#fff;display:grid;grid-template-columns:repeat(4,1fr);gap:0;page-break-after:always;break-after:page}
+  .slip{height:55mm;border:1px dashed #999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4mm;position:relative}
+  .slip .L{font-size:88pt;font-weight:900;line-height:.9;font-family:"Arial Black","Segoe UI",Arial,sans-serif}
+  .slip .C{font-size:22pt;font-weight:800;letter-spacing:4pt;font-variant-numeric:tabular-nums;font-family:Consolas,"Courier New",monospace;border-bottom:3pt solid #111;padding:0 2mm} /* gạch dưới = chiều đọc, tránh nhầm 6/9 khi dán ngược */
   .slip .f{position:absolute;bottom:2mm;right:3mm;font-size:7pt;color:#bbb}
   .key{width:194mm;margin:10px auto;background:#fff;padding:10mm}
   .key h2{margin:0 0 6mm}
-  .key table{border-collapse:collapse;width:100%;font-size:11pt}
-  .key td,.key th{border:1px solid #ccc;padding:2mm 3mm;text-align:center}
+  .key table{border-collapse:collapse;width:100%;font-size:8pt}
+  .key td,.key th{border:1px solid #ccc;padding:1mm;text-align:center}
   .key td.fam{font-weight:800;background:#f5f5f5}
   @media print{body{background:#fff}.bar{display:none}.page,.key{margin:0}.slip .f{color:#ccc}}
 </style>
 </head>
 <body>
 <div class="bar">
-  <span>🖨 <b>BK Escape</b> — <span id="cnt"></span> mảnh giấy · 12 mảnh / trang A4 · cắt theo nét đứt</span>
+  <span>🖨 <b>BK Escape</b> — <span id="cnt"></span> mảnh giấy · 20 mảnh / trang A4 · cắt theo nét đứt</span>
   <label><input type="checkbox" id="showKey"> In kèm bảng kiểm cho quản trò</label>
   <button onclick="print()">In</button>
 </div>
@@ -39,11 +39,11 @@ const S=[...ESC_SLIPS];
 document.getElementById('cnt').textContent=S.length;
 function render(){
   let h='';
-  for(let i=0;i<S.length;i+=12)h+='<div class="page">'+S.slice(i,i+12).map(s=>`<div class="slip"><div class="L">${s.letter}</div><div class="C">${s.code}</div></div>`).join('')+'</div>';
+  for(let i=0;i<S.length;i+=20)h+='<div class="page">'+S.slice(i,i+20).map(s=>`<div class="slip"><div class="L">${s.letter}</div><div class="C">${s.code}</div></div>`).join('')+'</div>';
   if(document.getElementById('showKey').checked){
     const fam={};S.forEach(s=>(fam[s.fam]=fam[s.fam]||[]).push(s));
-    h+='<div class="key"><h2>Bảng kiểm (quản trò giữ — KHÔNG dán)</h2><table><tr><th>Họ</th><th colspan="4">Mã → chữ</th></tr>'+
-      Object.keys(fam).sort((a,b)=>a-b).map(f=>`<tr><td class="fam">${f}</td>${fam[f].map(s=>`<td>${s.code} → <b>${s.letter}</b></td>`).join('')}</tr>`).join('')+'</table></div>';
+    h+='<div class="key"><h2>Bảng kiểm (quản trò giữ — KHÔNG dán)</h2><p>Ô vàng = mảnh GỐC (iPad chỉ chọn mảnh gốc làm đích). Dùng để kiểm tra đủ giấy, không đưa HS.</p><table><tr><th>Họ</th><th colspan="13">Mã → chữ</th></tr>'+
+      Object.keys(fam).sort((a,b)=>a-b).map(f=>`<tr><td class="fam">${f}</td>${fam[f].sort((a,b)=>(b.hub||0)-(a.hub||0)).map(s=>`<td${s.hub?' style="background:#ffe08a"':''}>${s.code}<br><b>${s.letter}</b></td>`).join('')}</tr>`).join('')+'</table></div>';
   }
   document.getElementById('out').innerHTML=h;
 }

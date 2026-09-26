@@ -184,7 +184,7 @@ const P=new URLSearchParams(location.search);
 const DEV=P.get('dev')==='1', SPEED=DEV?(+P.get('speed')||10):1; // dev: thời gian chạy nhanh x10, hiện đáp án
 const LIM={1:ESC_LIMIT[1]*1000/SPEED,2:ESC_LIMIT[2]*1000/SPEED,3:ESC_LIMIT[3]*1000/SPEED};
 const REVEAL=300000/SPEED, LETTER=330000/SPEED, TOTAL=4*LETTER;
-const KEY_RANK='bk-escape-rank', KEY_USED='bk-escape-used';
+const KEY_RANK='bk-escape-rank', KEY_USED='bk-escape-used', KEY_HUB='bk-escape-hub';
 const ls={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 const rnd=n=>Math.floor(Math.random()*n);
 const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=rnd(i+1);[a[i],a[j]]=[a[j],a[i]]}return a};
@@ -200,12 +200,13 @@ const sOk=()=>{beep(660,.12);setTimeout(()=>beep(990,.18),120)}, sBad=()=>beep(1
 // ---------- chọn đề: 4 mảnh giấy + 16 câu có đáp án khớp mã ----------
 // Mỗi chữ: câu 1 = Nhóm 1; câu 2–4 = Nhóm 2/3 (có cả 2 nhóm). Trong 1 lượt không lặp câu gốc; ưu tiên câu ít dùng.
 function buildRound(){
-  const used=ls.get(KEY_USED,{});
+  const used=ls.get(KEY_USED,{}),usedHub=ls.get(KEY_HUB,{});
   const byG={1:[],2:[],3:[]};ESC_BANK.forEach(b=>byG[b.g].push(b));
   const PAT=[[2,3,2],[3,2,3],[2,2,3],[3,3,2],[2,3,3],[3,2,2]];
   for(let attempt=0;attempt<500;attempt++){
-    const fams=new Set(),slips=[];
-    for(const s of shuffle([...ESC_SLIPS])){if(fams.has(s.fam))continue;fams.add(s.fam);slips.push(s);if(slips.length===4)break}
+    // Đích CHỈ là mảnh gốc (hub) — mảnh còn lại trong họ là nhiễu; ưu tiên gốc lâu chưa làm đích (chống nhóm trước mách)
+    const hubs=shuffle(ESC_SLIPS.filter(s=>s.hub)).sort((x,y)=>(usedHub[x.code]||0)-(usedHub[y.code]||0));
+    const slips=attempt<50?hubs.slice(0,4):shuffle(hubs.slice(0,8)).slice(0,4);
     const taken=new Set(),plan=[];let ok=true;
     const pick=(g,d,tk)=>{const c=byG[g].filter(b=>!taken.has(b.id)&&!tk.has(b.id)&&b.v.some(v=>v.a===d));
       if(!c.length)return null;c.sort((x,y)=>(used[x.id]||0)-(used[y.id]||0)||Math.random()-.5);
@@ -221,7 +222,7 @@ function buildRound(){
       tk.forEach(id=>taken.add(id));
       plan.push({slip:s,qs:[q0,...rest].map((x,i)=>({id:x.b.id,g:x.b.g,name:x.b.name,q:x.v.q,a:x.v.a,st:'wait'}))});
     }
-    if(ok){plan.forEach(l=>l.qs.forEach(q=>used[q.id]=(used[q.id]||0)+1));ls.set(KEY_USED,used);return plan}
+    if(ok){plan.forEach(l=>{usedHub[l.slip.code]=(usedHub[l.slip.code]||0)+1;l.qs.forEach(q=>used[q.id]=(used[q.id]||0)+1)});ls.set(KEY_USED,used);ls.set(KEY_HUB,usedHub);return plan}
   }
   return null;
 }
