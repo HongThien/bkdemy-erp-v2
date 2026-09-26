@@ -2,6 +2,21 @@
 
 > ĐỌC trước khi đụng `LyThuyetModal` (src/screens/kho/BanDo.tsx) hoặc `LyThuyetBody`/PrintView.
 > Trạng thái: **ĐÃ CODE + DEPLOY (24–26/09).** Thêm `##TC` (Tính chất) và đóng khung `##VD` ngày 26/09.
+>
+> **⭐ 26/09 — bug đã vá: KHÔNG PHẢI chỉ 1 chỗ render.** Ngoài `LyThuyetBody`
+> (src/screens/tailieu/PrintView.tsx, dùng chung Đại/HGT/KHTN), nhánh **Hình** có `HinhPrintView.tsx`
+> (src/screens/kho/hinh/) render "Lý thuyết mô hình" (`hp-box-lt`) BẰNG 1 ĐƯỜNG RIÊNG, gọi thẳng
+> `<MathText>` KHÔNG qua parser — builder Hình vẫn hiện `##TC` trần cho tới khi vá (26/09, cùng
+> lúc thêm `LT_CORE_CSS` vào CSS của `HinhPrintView.tsx` + `MTPrintView.tsx`, nơi tái dùng
+> `MucsBlock` của Hình). **Trước khi coi 1 luồng "đã xong" phải grep `hp-box-lt`/`MathText` quanh
+> chữ "Lý thuyết" trong TOÀN REPO, không chỉ sửa đúng 1 file rồi coi là đủ.**
+>
+> **Chưa vá (phát hiện thêm 26/09, ngoài phạm vi PDF nên chưa đụng):** app học sinh cũng render
+> lý thuyết trực tiếp bằng `<MathText>` không qua parser — `src/screens/hocsinh/HocTuDau.tsx:230`
+> và `src/screens/hocsinh/HocSinhApp.tsx:670`. HS sẽ thấy `##TC` trần nếu lý thuyết có kí hiệu mà
+> app HS mở tới. Cần CEO xác nhận có muốn áp cùng chuẩn box này cho app HS không trước khi sửa
+> (khác bundle Vercel, khác đối tượng xem — HS thấy khung "Chú ý"/"Định lý" có thể cần thiết kế
+> responsive riêng, không bê nguyên CSS in ấn `LT_CORE_CSS` sang).
 
 ## 0. Vấn đề
 

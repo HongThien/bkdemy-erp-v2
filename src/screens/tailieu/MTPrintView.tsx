@@ -18,7 +18,7 @@ import { MucsBlock, HINH_CSS, type MucIn } from '../kho/hinh/HinhPrintView'
 import { applyBanToPick, chuoiSig, type CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
 import { pickCuaHinhRow } from '../../lib/mt'
 type HinhMucs = Record<string, (MucIn | null)[]> // ma hàng → [gốc, đề 2, đề 3]
-import { MathText } from '../kho/ui'
+import { MathText, LT_CORE_CSS } from '../kho/ui'
 import { BK_CSS, BK_PAGE_CSS } from './bkPrint'
 import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, questionOnlyContent, TLNTable, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename, pruneGhostBlankPages } from './PrintView'
 
@@ -92,7 +92,7 @@ export default function MTPrintView({ id, onClose, headless, linkOnly, onFail, o
     // Kiểu BK có thương hiệu riêng trong thân → bỏ cả header lẫn footer cũ (đồng bộ ET/BTVN, Thùy báo MT
     // còn sót lại chrome cũ). Footer giờ là dải liên hệ cố định đáy trang của BK_PAGE_CSS.
     const ch = { ...(full.taiLieu.cau_hinh ?? {}), header: 'none' as const, footer: 'none' as const }
-    const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#7c3aed') + MT_CSS + BK_CSS + BK_PAGE_CSS + HINH_CSS
+    const css = buildPagedCss(full.taiLieu, ch, ch.mau || '#7c3aed') + MT_CSS + BK_CSS + BK_PAGE_CSS + HINH_CSS + LT_CORE_CSS
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
     // Race-safe: KHÔNG xoá DOM của container cũ (rút DOM giữa lúc paged.js còn đo layout dở → sinh trang
