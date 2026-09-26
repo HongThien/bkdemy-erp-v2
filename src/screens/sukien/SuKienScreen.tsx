@@ -322,6 +322,60 @@ const Stat = ({ n, t }: { n: number; t: string }) => (
 
 // ─────────────────────────────── QUẢN TRÒ ───────────────────────────────
 
+// Màn TỔNG KẾT lượt (Thùy 26/09): hết lượt KHÔNG nhảy ngay sang chọn HS mới — hiện bảng xu Ván 1/2/3 + Tổng,
+// quản trò trả xu xong bấm "Lượt tiếp" mới hiện Lượt kế + hàng chờ. Nhớ ở module: đổi tab rồi quay lại vẫn còn (tới F5).
+type TongKet = { phongId: string; game: string; nguoi: sk.NguoiLuot[]; xl: sk.XuLuot }
+const NHO_TK: { v: TongKet | null } = { v: null }
+
+// Bảng xu: mỗi ván 1 cột + cột Tổng. Số từng ván + tổng đều từ DB (_sk_xu_luot), client chỉ đặt vào ô.
+function BangXu({ nguoi, xl }: { nguoi: sk.NguoiLuot[]; xl: sk.XuLuot | null }) {
+  const toiDa = xl?.toi_da ?? 3, vans = xl?.van ?? []
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full border-separate border-spacing-y-1 text-sm">
+        <thead>
+          <tr className="text-xs text-slate-500">
+            <th className="px-1 text-left font-semibold">iPad · tên</th>
+            {Array.from({ length: toiDa }, (_, i) => <th key={i} className="w-12 px-1 text-center font-semibold">Ván {i + 1}</th>)}
+            <th className="w-14 px-1 text-center font-bold text-emerald-700">Tổng</th>
+          </tr>
+        </thead>
+        <tbody>
+          {nguoi.map((n) => (
+            <tr key={n.dang_ky_id} className="bg-indigo-50">
+              <td className="rounded-l-lg px-2 py-1.5">
+                <span className="mr-1.5 rounded bg-indigo-600 px-1.5 py-0.5 text-xs font-bold text-white">{n.slot}</span>
+                <span className="font-semibold">{n.ten}</span> <span className="font-mono text-xs text-slate-400">#{n.so}</span>
+              </td>
+              {Array.from({ length: toiDa }, (_, i) => {
+                const v = vans[i]
+                return <td key={i} className="px-1 text-center font-bold text-slate-700">{v ? (v.xu[String(n.slot)] ?? 0) : <span className="font-normal text-slate-300">·</span>}</td>
+              })}
+              <td className="rounded-r-lg px-1 text-center text-base font-black text-emerald-700">{xl?.tong[String(n.slot)] ?? 0}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+function TongKetLuot({ tk, onTiep }: { tk: TongKet; onTiep: () => void }) {
+  const g = sk.GAME_IPAD.find((x) => x.id === tk.game)
+  return (
+    <div className="overflow-hidden rounded-2xl bg-white shadow-md ring-2 ring-emerald-500">
+      <div className="bg-emerald-600 px-3 py-2.5 text-white">
+        <div className="text-lg font-black">🏁 Tổng kết lượt · {g?.ten ?? tk.game}</div>
+        <div className="text-xs opacity-90">Đã chơi {tk.xl.so_van}/{tk.xl.toi_da} ván · xu đã vào ví sự kiện — trả xu cho từng bạn theo cột Tổng</div>
+      </div>
+      <div className="p-3">
+        <BangXu nguoi={tk.nguoi} xl={tk.xl} />
+        <button onClick={onTiep} className="mt-3 w-full rounded-xl bg-emerald-600 px-4 py-3 text-base font-black text-white">✓ Đã trả xu · Lượt tiếp ▶</button>
+      </div>
+    </div>
+  )
+}
+
 function QuanTroTab({ tq, toast, onDoi, setTq }: { tq: TongQuan | null; toast: (t: string, loi?: boolean) => void; onDoi: () => void; setTq: (f: (p: TongQuan | null) => TongQuan | null) => void }) {
   const phongHang = (tq?.phong ?? []).filter((p) => p.hang_doi)
   const [phongId, setPhongId] = useState<string | null>(lsGet('sk-qt-phong'))
@@ -329,6 +383,8 @@ function QuanTroTab({ tq, toast, onDoi, setTq }: { tq: TongQuan | null; toast: (
   useEffect(() => { if (phong) lsSet('sk-qt-phong', phong.id) }, [phong?.id]) // eslint-disable-line
   const [ban, setBan] = useState<string | null>(null)
   const [gameHub, setGameHub] = useState<string | null>(null)
+  const [tongKet, setTongKetS] = useState<TongKet | null>(NHO_TK.v)
+  const setTongKet = (t: TongKet | null) => { NHO_TK.v = t; setTongKetS(t) }
   const [game, setGame] = useState<string>(lsGet('sk-qt-game') || sk.GAME_IPAD[0].id)
   useEffect(() => { lsSet('sk-qt-game', game) }, [game])
 
@@ -389,7 +445,10 @@ function QuanTroTab({ tq, toast, onDoi, setTq }: { tq: TongQuan | null; toast: (
         <span className="ml-auto text-xs text-slate-500">{phong.so_luot_xong} lượt xong</span>
       </div>
 
-      {phong.luot && <LuotDangChoi key={phong.luot.id} phong={phong} gameHub={gameHub} moTv={moTv} toast={toast} onDoi={onDoi} />}
+      {tongKet && tongKet.phongId === phong.id && <TongKetLuot tk={tongKet} onTiep={() => setTongKet(null)} />}
+      {phong.luot && <LuotDangChoi key={phong.luot.id} phong={phong} gameHub={gameHub} moTv={moTv} toast={toast} onDoi={onDoi}
+        onXong={(t) => setTongKet({ phongId: phong.id, ...t })} />}
+      {!(tongKet && tongKet.phongId === phong.id) && (<>
       {(
           <div className="rounded-2xl border-2 border-emerald-500 bg-white p-3 shadow-sm">
             <div className="mb-2 flex items-center justify-between">
@@ -446,6 +505,7 @@ function QuanTroTab({ tq, toast, onDoi, setTq }: { tq: TongQuan | null; toast: (
         </div>
         {phong.co_mat.length >= toiDa && <p className="mt-2 text-xs text-slate-500">Lượt kế đã đủ {toiDa} bạn.</p>}
       </div>
+      </>)}
     </div>
   )
 }
@@ -455,7 +515,7 @@ function QuanTroTab({ tq, toast, onDoi, setTq }: { tq: TongQuan | null; toast: (
 const namesTheoSlot = (nguoi: { slot: number; ten: string; so: number }[]) =>
   Object.fromEntries(nguoi.map((n) => [n.slot, `${n.ten} #${n.so}`])) as Record<number, string>
 
-function LuotDangChoi({ phong, gameHub, moTv, toast, onDoi }: { phong: PhongTQ; gameHub: string | null; moTv: (game: string) => void; toast: (t: string, loi?: boolean) => void; onDoi: () => void }) {
+function LuotDangChoi({ phong, gameHub, moTv, toast, onDoi, onXong }: { phong: PhongTQ; gameHub: string | null; moTv: (game: string) => void; toast: (t: string, loi?: boolean) => void; onDoi: () => void; onXong: (t: Omit<TongKet, 'phongId'>) => void }) {
   const luot = phong.luot!
   const g = sk.GAME_IPAD.find((x) => x.id === luot.game)
   // Game iPad: xu trả NGAY mỗi ván (Thùy 26/09 "quản trò ko cần lưu xu nữa, qua mỗi trận trả xu luôn") — tình trạng đọc từ DB.
@@ -479,6 +539,8 @@ function LuotDangChoi({ phong, gameHub, moTv, toast, onDoi }: { phong: PhongTQ; 
   xlRef.current = xl
   const onDoiRef = useRef(onDoi)
   onDoiRef.current = onDoi
+  const onXongRef = useRef(onXong)
+  onXongRef.current = onXong
   const chRef = useRef<ReturnType<typeof supabase.channel> | null>(null)
   const guiTen = () => {
     chRef.current?.send({ type: 'broadcast', event: 'sk_names', payload: { names: namesRef.current, luot: luot.id, van: xlRef.current?.so_van ?? 0, soVan: xlRef.current?.toi_da ?? 3 } })
@@ -509,7 +571,7 @@ function LuotDangChoi({ phong, gameHub, moTv, toast, onDoi }: { phong: PhongTQ; 
             sk.traXuVan(luot.id, Number(st.matchId), ketQua).then((d) => {
               daGui[id] = -1
               setXl(d); xlRef.current = d; guiTen()
-              if (d.xong) { toast(`✓ Đủ ${d.toi_da} ván — xu đã cộng, lượt kết thúc`); onDoiRef.current() }
+              if (d.xong) { toast(`✓ Đủ ${d.toi_da} ván — xu đã cộng, lượt kết thúc`); onXongRef.current({ game: luot.game, nguoi: luot.nguoi, xl: d }); onDoiRef.current() }
               else toast(`💰 Ván ${d.so_van}/${d.toi_da} — đã cộng xu`)
             }).catch((e) => { if (lanDau) toast((e as Error).message, true) })
           }
@@ -541,14 +603,13 @@ function LuotDangChoi({ phong, gameHub, moTv, toast, onDoi }: { phong: PhongTQ; 
       ) : g && phong.ma_hub && ketNoi && !coTv ? (
         <div className="mb-2 rounded-lg bg-amber-100 px-3 py-2 text-sm font-semibold text-amber-900">⚠ Không thấy TV {g.ten} ở phòng <b>{phong.ma_hub}</b> — tên chưa xuống được iPad. Kiểm tra: TV đã mở {g.ten} chưa, mã phòng trên hub TV có đúng {phong.ma_hub} không (sai thì sửa ở ⚙️ Cài đặt › Phòng chơi).<button onClick={() => moTv(luot.game)} className="mt-1.5 block rounded-lg bg-amber-600 px-3 py-1.5 text-sm font-bold text-white">📺 Mở {g.ten} trên TV</button></div>
       ) : null}
+      {g ? <BangXu nguoi={luot.nguoi} xl={xl} /> : (
       <div className="space-y-1.5">
         {luot.nguoi.map((n) => (
           <div key={n.dang_ky_id} className="flex items-center gap-2 rounded-lg bg-indigo-50 px-2 py-1.5">
             <span className="rounded bg-indigo-600 px-2 py-0.5 text-sm font-bold text-white">iPad {n.slot}</span>
             <span className="min-w-0 flex-1 truncate font-semibold">{n.ten} <span className="font-mono text-xs text-slate-400">#{n.so}</span></span>
-            {g ? (
-              <span className="text-base font-bold text-emerald-700">+{xl?.tong[String(n.slot)] ?? 0} <span className="text-xs font-normal text-slate-400">xu</span></span>
-            ) : (<>
+            {(<>
               <input inputMode="numeric" value={xuSlot(n.slot)} onChange={(e) => setSua((p) => ({ ...p, [n.slot]: e.target.value.replace(/[^0-9]/g, '') }))}
                 placeholder="xu" className="w-16 rounded-lg border border-slate-300 px-2 py-1.5 text-right text-base font-bold" />
               <span className="text-xs text-slate-400">xu</span>
@@ -556,8 +617,9 @@ function LuotDangChoi({ phong, gameHub, moTv, toast, onDoi }: { phong: PhongTQ; 
           </div>
         ))}
       </div>
+      )}
       <p className="mt-2 text-[11px] text-slate-500">{g
-        ? `Mỗi ván xong là xu tự vào ví sự kiện (Nhất 5 · Nhì 3 · còn lại 2). Đủ ${toiDaVan} ván lượt tự kết thúc — không cần ghi, không cần bấm.`
+        ? `Mỗi ván xong là xu tự vào ví sự kiện (Nhất 5 · Nhì 3 · còn lại 2). Đủ ${toiDaVan} ván lượt tự kết thúc và hiện bảng tổng kết để trả xu.`
         : 'Game khác: nhập tổng xu cả lượt từng bạn rồi bấm Kết thúc lượt.'}</p>
       <div className="mt-3 flex gap-2">
         {soVan === 0 && <button disabled={ban} onClick={async () => {
@@ -572,6 +634,7 @@ function LuotDangChoi({ phong, gameHub, moTv, toast, onDoi }: { phong: PhongTQ; 
           try {
             const r = await sk.ketThuc(luot.id, ketQua)
             toast(g ? '✓ Đã kết thúc lượt' : `✓ Kết thúc lượt — phát ${r.tong_xu} xu`)
+            if (g) { try { onXong({ game: luot.game, nguoi: luot.nguoi, xl: await sk.xuLuot(luot.id) }) } catch { /* không có tổng kết vẫn sang lượt kế được */ } }
             onDoi()
           } catch (e) { toast((e as Error).message, true) } finally { setBan(false) }
         }} className={g ? 'flex-1 rounded-xl border border-indigo-300 px-4 py-2.5 text-sm font-bold text-indigo-700 disabled:opacity-50'

@@ -53,7 +53,8 @@ export const danhDau = (dangKy: string, hanhDong: 'co_mat' | 'bo_qua' | 'tra_ve'
 export const batDau = (phong: string, game: string) => rpc<{ luot_id: string; nguoi: NguoiLuot[] }>('fn_sk_bat_dau', { p_phong: phong, p_game: game })
 export const ketThuc = (luot: string, ketQua: { slot: number; xu: number }[]) => rpc<{ tong_xu: number }>('fn_sk_ket_thuc', { p_luot: luot, p_ket_qua: ketQua })
 // Xu game trả THEO TỪNG VÁN (mig 202609261450): so_van = số ván đã trả, đủ toi_da ⇒ DB tự kết thúc lượt (xong=true).
-export type XuLuot = { so_van: number; toi_da: number; xong: boolean; tong: Record<string, number> }
+export type XuLuot = { so_van: number; toi_da: number; xong: boolean; tong: Record<string, number>
+  van?: { van: number; xu: Record<string, number> }[] } // xu TỪNG VÁN theo thứ tự chơi (mig 202609261541; chưa áp thì không có)
 export const xuLuot = (luot: string) => rpc<XuLuot>('fn_sk_xu_luot', { p_luot: luot })
 export const traXuVan = (luot: string, van: number, ketQua: { slot: number; xu: number }[]) =>
   rpc<XuLuot>('fn_sk_tra_xu_van', { p_luot: luot, p_van: van, p_ket_qua: ketQua })
