@@ -33,6 +33,7 @@ for (let h = 0; h < HUBS; h++) {
 shuffle(slips)
 const out = `// AUTO-GEN bởi scripts/gen-escape-slips.mjs (seed ${SEED}) — KHÔNG sửa tay.
 // Bộ giấy đã in & dán trong phòng: mã ↔ chữ phải khớp 100% với giấy thật. hub:1 = mảnh gốc (chỉ mảnh này được chọn làm đích).
+window.ESC_SLIPS_ID='G${slips.length}-${SEED % 10000}'; // mã bộ giấy: in trên từng trang + hiện ở màn quản trò ⇒ lệch phiên bản là thấy ngay
 window.ESC_SLIPS=${JSON.stringify(slips)};
 `
 writeFileSync('games-site/escape/slips.js', out)

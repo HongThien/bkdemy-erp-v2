@@ -110,6 +110,7 @@
 <div class="screen show" id="setup">
   <h1>🚪 BK Escape</h1>
   <div class="muted" style="text-align:center">4 chữ cái · mỗi chữ 4 câu hỏi · tối đa 22 phút</div>
+  <div style="text-align:center;font-size:15px">Bộ giấy: <b id="slipsId" style="color:var(--gold);font-size:20px"></b> <span class="muted">— phải trùng mã in ở góc mỗi trang giấy</span></div>
   <div class="box">
     <input id="team" maxlength="30" placeholder="Tên nhóm" autocomplete="off">
     <button class="primary" id="btnStart">▶ Bắt đầu</button>
@@ -175,8 +176,8 @@
   <div style="display:flex;gap:12px"><button class="primary" id="btnResume" style="font-size:22px">▶ Chơi tiếp</button><button id="btnAbort">Huỷ lượt</button></div>
 </div></div>
 
-<script src="escape/slips.js"></script>
-<script src="escape/bank.js"></script>
+<script src="escape/slips.js?v=G195"></script>
+<script src="escape/bank.js?v=2"></script>
 <script>
 (function(){
 const $=id=>document.getElementById(id);
@@ -361,6 +362,8 @@ $('btnStart').onclick=start;
 $('team').onkeydown=e=>{if(e.key==='Enter')start()};
 $('btnBack').onclick=()=>{G=null;$('team').value='';$('setupNote').textContent='';show('setup');renderRank()};
 $('btnClear').onclick=()=>{if(confirm('Xoá toàn bộ bảng xếp hạng trên iPad này?')){ls.set(KEY_RANK,[]);renderRank()}};
+$('slipsId').textContent=window.ESC_SLIPS_ID||'(bộ giấy cũ — KHÔNG khớp giấy in mới)';
+if(!ESC_SLIPS.some(s=>s.hub)){$('btnStart').disabled=true;$('setupNote').innerHTML='<b style="color:var(--red)">⚠ iPad đang dùng bộ giấy cũ — tải lại trang (hoặc deploy bản mới) trước khi chơi.</b>'}
 renderRank();
 if(DEV)$('setupNote').textContent='[dev] thời gian chạy nhanh x'+SPEED+', hiện đáp án';
 window.__esc={get G(){return G},buildRound,answer,enterLetter};
