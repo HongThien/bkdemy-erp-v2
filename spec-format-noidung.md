@@ -53,10 +53,19 @@ Lời giải. Ta có a = 2, b = −5, c = 2 ⇒ Δ = 9 > 0. Vậy x₁ = 2, x₂
   sẵn trong lý thuyết hiện tại — không đổi thói quen soạn).
 - **`##PP` riêng 1 quy tắc khác:** mỗi DÒNG không trống bên trong khối = 1 bước, tự đánh số
   thứ tự + nối bằng đường kẻ dọc (timeline) khi render — không cần gõ số ①②③ tay như trước.
-- **`##VD` đóng khung NGUYÊN CẢ ĐỀ BÀI LẪN LỜI GIẢI** (CEO chốt 26/09 — ban đầu định để nhẹ
-  không khung, đổi ý muốn đề bài cũng nằm trong khung). Không tách riêng đề/lời giải thành
-  2 khối — cả khối `##VD` (kể cả dòng "Lời giải. ..." người soạn gõ tiếp theo) nằm chung 1
-  khung viền, giống `dinh_ly`/`tinh_chat` (khung + tag nổi trên viền, chỉ khác màu — navy).
+- **`##VD` — CHỈ ĐỀ BÀI nằm trong khung, "Lời giải" đứng NGOÀI khung** (CEO chốt 26/09, 2
+  lần đổi ý: ban đầu định để nhẹ không khung → rồi định đóng khung nguyên cả đề+lời giải →
+  chốt cuối là tách: khung (viền tím-hồng `#b23a72` + tag nổi trên viền, cùng họ `dinh_ly`/
+  `tinh_chat`) chỉ bọc đề bài; dòng bắt đầu bằng "Lời giải"/"Bài giải"/"Giải" + dấu `.`/`:`
+  ngay sau (né khớp nhầm câu kiểu "Giải phương trình...") được tách ra render PHẲNG bên dưới
+  khung, không viền — xem `splitViDu()` trong `lythuyetBlocks.ts`.
+- **Tiêu đề khung TỰ BÓC từ nhãn có sẵn trong nội dung** (vd nội dung đã viết sẵn "Ví dụ 1.",
+  "Định lý 2:"...) khi kí hiệu KHÔNG có tiêu đề riêng trên cùng dòng (`##VD` trần) — parser
+  tự nhận diện nhãn đó, đưa lên làm tag khung, XOÁ khỏi thân để không hiện lặp 2 lần (bug đã
+  gặp thật: box hiện "Ví dụ" ở tag VÀ "Ví dụ 1." lặp lại ngay trong đề — xem `LEADING_LABEL_RE`).
+  Prompt Gemini (`buildLyThuyetPrompt`/`buildTheoryIngestPrompt`) cũng được dặn: nếu tài liệu
+  gốc đã có nhãn kiểu này, viết nhãn NGAY sau kí hiệu trên CÙNG dòng (`##VD Ví dụ 1`) thay vì
+  để trần — 2 cơ chế (prompt + parser tự bóc) bổ trợ nhau, không cái nào bắt buộc phải đúng.
 - **`##TC` (Tính chất)** dùng khi nội dung là 1 tính chất/hệ quả (gần giống định lý nhưng
   không phải định lý được chứng minh hình thức) — cùng kiểu khung với `dinh_ly` (viền + tag
   nổi trên viền), chỉ khác màu (tím `#7c5cbf` — phân biệt mắt với xanh của `dinh_ly`).

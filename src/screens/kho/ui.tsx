@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 import katex from 'katex'
 import { katexMacros } from '../../lib/math/macros'
 import { fixAccentScript, widenSingleHat } from '../../lib/math/latex-fix'
-import { parseLyThuyetBlocks, splitPhuongPhapBuoc, type LyThuyetBlock } from '../../lib/lythuyetBlocks'
+import { parseLyThuyetBlocks, splitPhuongPhapBuoc, splitViDu, type LyThuyetBlock } from '../../lib/lythuyetBlocks'
 
 // Render text có LaTeX ($…$ inline, $$…$$ block) thành công thức đẹp.
 const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -197,8 +197,10 @@ export const LT_CORE_CSS = `
 .pv-lt-pp-circle{width:20px;height:20px;border-radius:50%;background:#525a6e;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
 .pv-lt-pp-line{width:2px;flex:1;background:#c9c9d6;margin:2px 0}
 .pv-lt-pp-txt{padding-bottom:10px;font-size:14px}
-.pv-lt-vd{position:relative;border:2px solid #24324b;border-radius:6px;padding:20px 18px 16px;margin:26px 0 18px;break-inside:avoid}
-.pv-lt-vd .pv-lt-tag{position:absolute;top:-12px;left:18px;background:#fff;padding:0 8px;color:#24324b;font-size:14px}
+.pv-lt-vd-wrap{margin:26px 0 18px;break-inside:avoid}
+.pv-lt-vd{position:relative;border:2px solid #b23a72;border-radius:6px;padding:20px 18px 16px}
+.pv-lt-vd .pv-lt-tag{position:absolute;top:-12px;left:18px;background:#fff;padding:0 8px;color:#b23a72;font-size:14px}
+.pv-lt-vd-giai{margin-top:8px;padding-left:2px;font-size:14px;color:#3a4356}
 .pv-lt-nx{display:flex;gap:12px;margin:14px 0;break-inside:avoid}
 .pv-lt-nx-quote{font-size:32px;line-height:.6;color:#2f9e6e;flex:0 0 auto;padding-top:6px}
 .pv-lt-nx-body{padding-top:2px}
@@ -241,8 +243,15 @@ export function LyThuyetBlockView({ b }: { b: LyThuyetBlock }) {
         </div>
       )
     }
-    case 'vi_du':
-      return <div className="pv-lt-vd"><span className="pv-lt-tag">{tieuDe}</span><MathText>{b.noiDung}</MathText></div>
+    case 'vi_du': {
+      const { de, loiGiai } = splitViDu(b.noiDung)
+      return (
+        <div className="pv-lt-vd-wrap">
+          <div className="pv-lt-vd"><span className="pv-lt-tag">{tieuDe}</span><MathText>{de}</MathText></div>
+          {loiGiai && <div className="pv-lt-vd-giai"><MathText>{loiGiai}</MathText></div>}
+        </div>
+      )
+    }
     case 'nhan_xet':
       return (
         <div className="pv-lt-nx">

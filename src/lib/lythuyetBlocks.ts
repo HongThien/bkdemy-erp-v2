@@ -20,6 +20,19 @@ const MARKER_LOAI: [string, LyThuyetBlockLoai][] = [
   ['##NX', 'nhan_xet'],
 ]
 
+// Nhãn ĐÃ CÓ SẴN trong chính văn bản gốc (kiểu "Ví dụ 1.", "Định lý 2:"...) — quy ước viết sách rất phổ
+// biến, AI OCR hay giữ nguyên khi bóc. Nếu marker KHÔNG có tiêu đề riêng (đầu dòng chỉ có ##VD trần),
+// tự bóc nhãn này ra làm tiêu đề khung + xoá khỏi thân để KHÔNG hiện lặp 2 lần (1 lần ở khung, 1 lần
+// trong đề) — xem BanDo.tsx report 26/09 ("Ví dụ" hiện cả ở tag lẫn trong đề).
+const LEADING_LABEL_RE: Partial<Record<LyThuyetBlockLoai, RegExp>> = {
+  vi_du: /^(Ví dụ\s*\d*)\s*[.:]?\s*/i,
+  dinh_ly: /^(Định lý\s*\d*)\s*[.:—-]?\s*/i,
+  dinh_nghia: /^(Định nghĩa\s*\d*)\s*[.:—-]?\s*/i,
+  tinh_chat: /^(Tính chất\s*\d*)\s*[.:—-]?\s*/i,
+  chu_y: /^(Chú ý|Lưu ý)\s*[.:]?\s*/i,
+  nhan_xet: /^(Nhận xét)\s*[.:]?\s*/i,
+}
+
 export function parseLyThuyetBlocks(text: string): LyThuyetBlock[] {
   const doans = (text || '').split(/\n[ \t]*\n/).map((d) => d.trim()).filter(Boolean)
   return doans.map((doan) => {
@@ -28,8 +41,13 @@ export function parseLyThuyetBlocks(text: string): LyThuyetBlock[] {
     const found = MARKER_LOAI.find(([ky]) => dongDau.toUpperCase().startsWith(ky.toUpperCase()))
     if (!found) return { loai: 'text', tieuDe: '', noiDung: doan }
     const [ky, loai] = found
-    const tieuDe = dongDau.slice(ky.length).trim()
-    const than = lines.slice(1).join('\n').trim()
+    let tieuDe = dongDau.slice(ky.length).trim()
+    let than = lines.slice(1).join('\n').trim()
+    if (!tieuDe) {
+      const re = LEADING_LABEL_RE[loai]
+      const m = re ? than.match(re) : null
+      if (m) { tieuDe = (m[1] ?? m[0]).trim(); than = than.slice(m[0].length).trim() }
+    }
     return { loai, tieuDe, noiDung: than }
   })
 }
@@ -38,4 +56,14 @@ export function parseLyThuyetBlocks(text: string): LyThuyetBlock[] {
 // timeline khi render, không cần gõ số ①②③ tay.
 export function splitPhuongPhapBuoc(noiDung: string): string[] {
   return noiDung.split('\n').map((l) => l.trim()).filter(Boolean)
+}
+
+// ##VD riêng 1 quy tắc (CEO chốt 26/09): CHỈ đề bài nằm trong khung, "Lời giải" đứng NGOÀI khung (plain).
+// Tách tại dòng bắt đầu bằng "Lời giải"/"Bài giải"/"Giải" + dấu . hoặc : ngay sau (tránh khớp nhầm câu
+// văn kiểu "Giải phương trình..." — vốn không có dấu câu ngay sau "Giải").
+const LOI_GIAI_RE = /^[ \t]*(Lời giải|Bài giải|Giải)\s*[.:]/im
+export function splitViDu(noiDung: string): { de: string; loiGiai: string } {
+  const m = LOI_GIAI_RE.exec(noiDung)
+  if (!m) return { de: noiDung, loiGiai: '' }
+  return { de: noiDung.slice(0, m.index).trim(), loiGiai: noiDung.slice(m.index).trim() }
 }
