@@ -22,9 +22,6 @@
 | 1-04 | *(Lewis Carroll)* 3 con mèo bắt 3 con chuột hết 3 phút. **Mấy con mèo bắt 100 con chuột trong 100 phút?** | **3** | Bẫy "100" | V |
 | 1-05 | *(Professor Layton)* "7 ngày sau của 70 ngày trước" là thứ Tư. **"7 ngày trước của 70 ngày sau" là thứ mấy?** | **4** | Hai ngày cách nhau 126 = 18 tuần. *Khuôn: đổi thứ ⇒ ra 2–7* | V |
 | 1-06 | Cái hố sâu 2m, rộng 2m, dài 2m. **Trong hố có mấy mét khối đất?** | **0** | Bẫy "8" | N |
-| 1-07 | Đang chạy đua, bạn vượt qua người đứng thứ 2. **Bạn đứng thứ mấy?** | **2** | Bẫy "1" (CRT-2) | N |
-| 1-08 | Người nông dân có 15 con cừu, chết hết chỉ còn 8 con. **Còn mấy con?** | **8** | Bẫy "7" (CRT-2). *Khuôn: đổi 8 ⇒ ra mọi số* | N |
-| 1-09 | Nam uống hết 1 thùng nước trong 6 ngày, Lan uống hết trong 12 ngày. **Cả hai cùng uống thì hết thùng trong mấy ngày?** | **4** | Bẫy "9". 1/6 + 1/12 = 1/4 | V |
 | 1-10 | Trong lớp, Minh vừa đứng thứ 5 từ trên xuống, vừa thứ 5 từ dưới lên. **Lớp có mấy người?** | **9** | Bẫy "10". *Khuôn: thứ k ⇒ 2k−1* | N |
 | 1-11 | Mua con heo 60 nghìn, bán 70 nghìn, mua lại 80 nghìn, bán 90 nghìn. **Lãi mấy chục nghìn?** | **2** | Bẫy "1" hoặc "0". Hai lần lãi 10 | V |
 | 1-12 | Bác sĩ đưa 3 viên thuốc, dặn cứ 30 phút uống 1 viên, uống viên đầu ngay. **Mấy giờ thì uống hết?** | **1** | Bẫy "1,5". Uống ở phút 0 – 30 – 60 | N |
@@ -35,11 +32,9 @@
 | 1-17 | 2 người cha và 2 người con đi câu, mỗi người đúng 1 con cá, về có 3 con, không mất con nào. **Có mấy người đi câu?** | **3** | Ông – bố – con | N |
 | 1-18 | Phòng vuông có 4 góc, mỗi góc 1 con mèo, trước mặt mỗi con có 3 con mèo. **Phòng có mấy con mèo?** | **4** | Bẫy "16" | N |
 | 1-19 | Có 2 đồng xu tổng 6.000đ, một đồng **không phải** 5.000đ. **Đồng đó là mấy nghìn?** | **1** | Đồng *kia* mới là 5.000đ | V |
-| 1-20 | Xe buýt có 7 người. Bến 1: 3 xuống, 2 lên. Bến 2: 4 xuống, 1 lên. **Xe đã dừng mấy bến?** | **2** | Đánh lạc sang đếm người | N |
 | 1-21 | Tôi có 6 quả trứng. Làm vỡ 2, rán 2, ăn 2. **Còn mấy quả?** | **4** | Quả vỡ chính là quả rán và ăn | N |
-| 1-22 | Tàu neo ở bến, thang dây thả bên mạn, 6 bậc chìm dưới nước. Thuỷ triều dâng thêm 1m. **Còn mấy bậc chìm?** | **6** | Tàu nổi lên theo nước | V |
 
-**Độ phủ Nhóm 1:** 0 (1-06) · 1 (12,16,19) · 2 (07,11,20) · 3 (04,17) · 4 (05,09,18,21) · 5 (01,02,14) · 6 (22) · 7 (khuôn 05/08) · 8 (08,13) · 9 (03,10,15)
+**Độ phủ Nhóm 1:** 0 (06) · 1 (12,16,19) · 2 (11) · 3 (04,17) · 4 (05,18,21) · 5 (01,02,14) · 6–7 (khuôn 05) · 8 (13) · 9 (03,10,15) — *đã bỏ 07·08·09·20·22 (Thùy 26/09)*
 
 ---
 
@@ -63,7 +58,7 @@
 | 2-14 | **Vòng tròn Josephus** | 7 người đứng vòng tròn; người 1 loại người 2, đưa kiếm cho 3; 3 loại 4… **Người số mấy còn lại?** | **7** | Loại dần 2,4,6,1,5,3. *Khuôn: 5 người ⇒ 3 · 6 người ⇒ 5* | D |
 | 2-15 | **Đấu loại trực tiếp** | 9 kỳ thủ đấu loại trực tiếp (lẻ thì có người được miễn). **Tổng mấy trận** để có vô địch? | **8** | Mỗi trận loại đúng 1 người. *Khuôn: n ⇒ n−1* | V |
 | 2-16 | **Trò đếm tới 10** (Nim) | 2 người lần lượt đếm tiếp 1 hoặc 2 số; ai nói "10" thắng. Bạn đi trước. **Lượt đầu dừng ở số mấy** để chắc thắng? | **1** | Số chốt 1-4-7-10 | D |
-| 2-16b | **Trò đếm tới 20** (Nim) | Như trên nhưng mỗi lượt đếm 1–3 số, ai nói "20" thắng. **Lượt đầu dừng ở số mấy?** | **4** | Số chốt 4-8-12-16-20 | D |
+| 2-16b | **Trò đếm tới 23** (Nim) | Như trên nhưng mỗi lượt đếm 1–3 số, ai nói "23" thắng. **Lượt đầu dừng ở số mấy?** | **3** | Số chốt 3-7-11-15-19-23. *(Bản trước ghi "tới 20 ⇒ 4" là SAI: 20 chia hết cho 4 thì người đi trước luôn thua)* | D |
 | 2-17 | **Kim đồng hồ trùng nhau** | Từ sau 12 giờ trưa đến 6 giờ chiều, **kim giờ và kim phút trùng nhau mấy lần?** | **5** | ~1:05 · 2:11 · 3:16 · 4:22 · 5:27 | D |
 | 2-18 | **Sinh nhật Cheryl** (olympiad Singapore 2015) | Cheryl cho 10 ngày: 15/5, 16/5, 19/5, 17/6, 18/6, 14/7, 16/7, 14/8, 15/8, 17/8. Nói riêng tháng cho Albert, ngày cho Bernard. Albert: "Tôi không biết, nhưng chắc Bernard cũng không biết." Bernard: "Lúc đầu tôi không biết, giờ tôi biết rồi." Albert: "Giờ tôi cũng biết." **Sinh nhật tháng mấy?** | **7** | Đáp án 16/7 | D |
 | 2-19 | **Người lính & 2 cậu bé** (Kordemsky) | Bố 80kg, 2 con mỗi đứa 40kg; thuyền chở tối đa 80kg, phải có người chèo. **Ít nhất mấy chuyến qua sông** để cả 3 sang? | **5** | 2 con → 1 về → bố → con về → 2 con | V |
@@ -73,7 +68,7 @@
 | 2-23 | **Sudoku 4×4** | *(khuôn: iPad sinh lưới có đúng 1 lời giải)* **Ô tô đậm là số mấy?** | 1–4 | Máy tự kiểm tra lời giải duy nhất | V |
 | 2-24 | **Ma phương Lạc Thư** | Điền 1–9 vào lưới 3×3, mọi hàng/cột/chéo tổng 15. **Ô chính giữa là số mấy?** | **5** | *Khuôn: cho 1 ô góc/cạnh, hỏi ô đối diện = 10 − ô đó* | D |
 
-**Độ phủ Nhóm 2:** 0 (06) · 1 (04,09,16) · 2 (05,10,22) · 3 (07,08,11) · 4 (16b,22b) · 5 (03,17,19) · 6 (20) · 7 (02,12,13,14,18) · 8 (15,21) · 9 (01)
+**Độ phủ Nhóm 2:** 0 (06) · 1 (04,09,16) · 2 (05,10,22) · 3 (07,08,11) · 3 (16b) · 4 (22b) · 5 (03,17,19) · 6 (20) · 7 (02,12,13,14,18) · 8 (15,21) · 9 (01)
 
 ---
 
