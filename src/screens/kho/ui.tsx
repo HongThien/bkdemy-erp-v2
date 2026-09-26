@@ -181,11 +181,11 @@ export function MathText({ children, className, prefix, editable }: { children: 
 // ở đây thà đẩy nguyên sang trang sau còn hơn vỡ giữa chừng, xem PrintView.tsx).
 export const LT_CORE_CSS = `
 .pv-lt-tag{font-size:12px;font-weight:800;letter-spacing:.04em}
-.pv-lt-dinhnghia{border-left:5px solid #c89b52;padding:2px 0 2px 18px;margin:14px 0;break-inside:avoid}
+.pv-lt-dinhnghia{border-left:5px solid #c89b52;background:#fdf9f1;padding:8px 14px 8px 18px;margin:14px 0;break-inside:avoid}
 .pv-lt-dinhnghia .pv-lt-tag{color:#c89b52;display:block;margin-bottom:6px}
-.pv-lt-dinhly{position:relative;border:2px solid #4c6fff;border-radius:6px;padding:20px 18px 16px;margin:26px 0 18px;break-inside:avoid}
+.pv-lt-dinhly{position:relative;border:2px solid #4c6fff;background:#f2f4ff;border-radius:6px;padding:20px 18px 16px;margin:26px 0 18px;break-inside:avoid}
 .pv-lt-dinhly .pv-lt-tag{position:absolute;top:-12px;left:18px;background:#fff;padding:0 8px;color:#4c6fff}
-.pv-lt-tinhchat{position:relative;border:2px solid #7c5cbf;border-radius:6px;padding:20px 18px 16px;margin:26px 0 18px;break-inside:avoid}
+.pv-lt-tinhchat{position:relative;border:2px solid #7c5cbf;background:#f6f2fb;border-radius:6px;padding:20px 18px 16px;margin:26px 0 18px;break-inside:avoid}
 .pv-lt-tinhchat .pv-lt-tag{position:absolute;top:-12px;left:18px;background:#fff;padding:0 8px;color:#7c5cbf}
 .pv-lt-chuy{display:flex;gap:12px;align-items:flex-start;border:2px dashed #c2673f;border-radius:12px;padding:14px 16px;margin:14px 0;background:#fdf6f2;break-inside:avoid}
 .pv-lt-chuy .pv-lt-tag{color:#c2673f;display:block;margin-bottom:4px}
@@ -198,7 +198,7 @@ export const LT_CORE_CSS = `
 .pv-lt-pp-line{width:2px;flex:1;background:#c9c9d6;margin:2px 0}
 .pv-lt-pp-txt{padding-bottom:10px;font-size:14px}
 .pv-lt-vd-wrap{margin:26px 0 18px;break-inside:avoid}
-.pv-lt-vd{position:relative;border:2px solid #b23a72;border-radius:6px;padding:20px 18px 16px}
+.pv-lt-vd{position:relative;border:2px solid #b23a72;background:#fbf0f5;border-radius:6px;padding:20px 18px 16px}
 .pv-lt-vd .pv-lt-tag{position:absolute;top:-12px;left:18px;background:#fff;padding:0 8px;color:#b23a72;font-size:14px}
 .pv-lt-vd-giai{margin-top:8px;padding-left:2px;font-size:14px;color:#3a4356}
 .pv-lt-nx{display:flex;gap:12px;margin:14px 0;break-inside:avoid}
