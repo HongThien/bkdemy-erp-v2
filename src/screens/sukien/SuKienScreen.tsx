@@ -385,7 +385,7 @@ function QuanTroTab({ tq, toast, onDoi, setTq }: { tq: TongQuan | null; toast: (
         <span className="ml-auto text-xs text-slate-500">{phong.so_luot_xong} lượt xong</span>
       </div>
 
-      {phong.luot && <LuotDangChoi key={phong.luot.id} phong={phong} toast={toast} onDoi={onDoi} />}
+      {phong.luot && <LuotDangChoi key={phong.luot.id} phong={phong} gameHub={gameHub} toast={toast} onDoi={onDoi} />}
       {(
           <div className="rounded-2xl border-2 border-emerald-500 bg-white p-3 shadow-sm">
             <div className="mb-2 flex items-center justify-between">
@@ -450,7 +450,7 @@ function QuanTroTab({ tq, toast, onDoi, setTq }: { tq: TongQuan | null; toast: (
 const namesTheoSlot = (nguoi: { slot: number; ten: string; so: number }[]) =>
   Object.fromEntries(nguoi.map((n) => [n.slot, `${n.ten} #${n.so}`])) as Record<number, string>
 
-function LuotDangChoi({ phong, toast, onDoi }: { phong: PhongTQ; toast: (t: string, loi?: boolean) => void; onDoi: () => void }) {
+function LuotDangChoi({ phong, gameHub, toast, onDoi }: { phong: PhongTQ; gameHub: string | null; toast: (t: string, loi?: boolean) => void; onDoi: () => void }) {
   const luot = phong.luot!
   const g = sk.GAME_IPAD.find((x) => x.id === luot.game)
   // Game iPad: xu trả NGAY mỗi ván (Thùy 26/09 "quản trò ko cần lưu xu nữa, qua mỗi trận trả xu luôn") — tình trạng đọc từ DB.
@@ -458,6 +458,9 @@ function LuotDangChoi({ phong, toast, onDoi }: { phong: PhongTQ; toast: (t: stri
   const [sua, setSua] = useState<Record<number, string>>({}) // chỉ "Game khác": nhập tay xu cả lượt
   const [ban, setBan] = useState(false)
   const [ketNoi, setKetNoi] = useState(false)
+  // Có TV game đang mở trong kênh không (presence role tv). "Đã nối kênh" ≠ "có TV nghe": sai mã hub / TV mở game khác
+  // thì kênh vẫn nối xanh mà tên gửi đi rơi vào khoảng không (Thùy 26/09: hub BK01 trong app, TV thật ở BK09).
+  const [coTv, setCoTv] = useState(false)
   useEffect(() => {
     if (!g) return
     let huy = false
@@ -484,6 +487,9 @@ function LuotDangChoi({ phong, toast, onDoi }: { phong: PhongTQ; toast: (t: stri
     const daGui: Record<string, number> = {} // matchId → lúc gửi; -1 = xong. TV phát lại mỗi 1s ⇒ không gửi lặp; lỗi thì 5s sau thử lại
     const ch = supabase.channel(g.kenh + ':' + phong.ma_hub, { config: { broadcast: { self: false } } })
     let phaseTruoc = ''
+    ch.on('presence', { event: 'sync' }, () => {
+      setCoTv(Object.values(ch.presenceState()).flat().some((x) => (x as { role?: string }).role === 'tv'))
+    })
     ch.on('broadcast', { event: 'state' }, (m) => {
       const st = m.payload as { phase?: string; matchId?: number; skLuot?: string | null; results?: Record<string, { xu: number }> }
       const cuaLuot = st.skLuot ? st.skLuot === luot.id : Number(st.matchId) > moc
@@ -522,9 +528,14 @@ function LuotDangChoi({ phong, toast, onDoi }: { phong: PhongTQ; toast: (t: stri
       <div className="mb-2 flex flex-wrap items-center gap-2">
         <h3 className="font-bold text-indigo-700">🎮 Đang chơi · {g?.ten ?? (luot.game === 'khac' ? 'Game khác' : luot.game)}</h3>
         {g && <span className="rounded bg-indigo-600 px-2 py-0.5 text-sm font-black text-white">Ván {Math.min(soVan + 1, toiDaVan)}/{toiDaVan}</span>}
-        {g && phong.ma_hub && <span className={`rounded px-1.5 text-[11px] ${ketNoi ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>{ketNoi ? `● nghe TV · xong ${soVan} ván` : '○ đang nối TV…'}</span>}
+        {g && phong.ma_hub && <span className={`rounded px-1.5 text-[11px] ${!ketNoi ? 'bg-slate-100 text-slate-500' : coTv ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-100 font-bold text-amber-800'}`}>{!ketNoi ? '○ đang nối…' : coTv ? `● TV đã nối · xong ${soVan} ván` : '⚠ chưa thấy TV'}</span>}
         {g && phong.ma_hub && <button onClick={() => { guiTen(); toast('Đã gửi tên xuống TV game') }} className="ml-auto rounded-md px-2 py-1 text-xs text-indigo-600 hover:bg-indigo-50">↻ Gửi lại tên</button>}
       </div>
+      {g && phong.ma_hub && gameHub && gameHub !== luot.game ? (
+        <div className="mb-2 rounded-lg bg-amber-100 px-3 py-2 text-sm font-semibold text-amber-900">⚠ TV phòng {phong.ma_hub} đang mở <b>{sk.GAME_IPAD.find((x) => x.id === gameHub)?.ten ?? gameHub}</b>, lượt này là <b>{g.ten}</b>. Chuyển TV sang {g.ten}, hoặc Huỷ lượt rồi bắt đầu lại đúng game.</div>
+      ) : g && phong.ma_hub && ketNoi && !coTv ? (
+        <div className="mb-2 rounded-lg bg-amber-100 px-3 py-2 text-sm font-semibold text-amber-900">⚠ Không thấy TV {g.ten} ở phòng <b>{phong.ma_hub}</b> — tên chưa xuống được iPad. Kiểm tra: TV đã mở {g.ten} chưa, mã phòng trên hub TV có đúng {phong.ma_hub} không (sai thì sửa ở ⚙️ Cài đặt › Phòng chơi).</div>
+      ) : null}
       <div className="space-y-1.5">
         {luot.nguoi.map((n) => (
           <div key={n.dang_ky_id} className="flex items-center gap-2 rounded-lg bg-indigo-50 px-2 py-1.5">
