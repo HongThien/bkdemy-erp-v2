@@ -155,10 +155,11 @@
 1. **Laptop TV:** mở hub BK Games (máy đã đăng ký 📺 TV) → bấm game → mọi iPad trong phòng tự mở game đó.
 2. **iPad:** học sinh nhập tên (Mê Cung: tên đội) → **SẴN SÀNG**. TV có thể gõ sẵn tên ở ô "Tên người chơi", iPad tự hiện.
 3. **TV bấm ▶ BẮT ĐẦU TRẬN** (hoặc Space/Enter). Chỉ iPad **đã sẵn sàng và đang online** lúc bấm mới vào trận; vào muộn thì chờ trận sau.
-4. Hết giờ (hoặc cả phòng xong) → TV hiện bục vinh danh + xu từng bạn → trả xu → **🔄 Trận mới**.
+4. Hết giờ (hoặc cả phòng xong) → TV hiện bục vinh danh + xu từng bạn → **trả xu ngay sau trận đó**, không cần ghi sổ hay cộng dồn → **🔄 Trận mới**.
+   iPad **tự nhớ tên** (qua trận mới, đổi game, tải lại trang) — bạn khác ngồi vào thì sửa ô tên. Nếu dùng app BK Sự kiện: quản trò bấm BẮT ĐẦU là tên tự điền xuống TV + iPad, xu tự vào ví sự kiện sau mỗi ván, đủ 3 ván TV báo "Đủ 3 ván" và lượt tự kết thúc.
 - **🎯 Tập thử** trên iPad: chơi thử 1 mình, không tính điểm, không gửi lên TV.
 - **Mất mạng:** TV giữ điểm cuối cùng nhận được. Không kết nối được hẳn: iPad hiện "Chơi theo mã trận" — mọi iPad gõ cùng mã, nhân sự hô 3-2-1 cùng bấm; học sinh đọc điểm, nhân sự gõ vào **Nhập điểm tay** trên TV rồi **Chốt**.
-- ⚙ Cài đặt (TV): thời gian, mức thưởng, phạt chạm sai… Ctrl+Shift+T: tổng kết nội bộ.
+- ⚙ Cài đặt (TV): thời gian, mức thưởng, phạt chạm sai… (Ctrl+Shift+T tổng kết nội bộ vẫn còn nhưng **không bắt buộc** — xu đã trả từng trận.)
 
 ---
 

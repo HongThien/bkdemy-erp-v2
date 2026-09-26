@@ -24,7 +24,7 @@
 | 10 | Màn quay | Check-in trên **laptop**, vòng quay hiện trên **TV riêng** đặt gần đó |
 | 11 | Phí chơi | Đăng ký game **miễn phí** |
 | 12 | Phòng | Nhiều phòng chơi, nhưng **chỉ 1 phòng dùng hàng đợi** (phòng iPad). Vẫn thiết kế theo `phong` để sau thêm được |
-| 13 | 1 lần vào phòng | = **3 ván liền**; iPad **cộng tổng xu 3 ván** (Nhất 5 · Nhì 3 · còn lại 2 mỗi ván) |
+| 13 | 1 lần vào phòng | = **3 ván liền**; **xu trả NGAY sau mỗi ván** (Nhất 5 · Nhì 3 · còn lại 2), quản trò không giữ/cộng dồn gì; **đủ 3 ván lượt tự kết thúc** (Thùy 26/09 chiều — trước đó: cộng tổng 3 ván rồi bấm Kết thúc) |
 | 14 | Xếp hàng | Mỗi HS chỉ **1 chỗ chờ** tại 1 thời điểm; chơi xong **đăng ký lại được**, không giới hạn |
 | 15 | Mỗi lượt | Tối đa **6 HS** mọi game; quản trò chủ động bắt đầu khi <6 |
 | 16 | Bỏ qua | HS vắng lần 1 → **giữ vị trí**, được gọi lại thêm 1 lần; vắng lần 2 → **loại khỏi hàng** (đăng ký lại từ đầu nếu muốn) |
@@ -47,7 +47,7 @@
 [Phòng iPad] Điện thoại quản trò        ▼
   Danh sách chờ (theo thứ tự) → hô tên → ✔ Có mặt  /  ✖ Bỏ qua (lần 2 = loại)
   Đủ 6 (hoặc quản trò quyết) → BẮT ĐẦU → HS được gán slot iPad 1..6
-  3 ván → iPad gửi tổng xu từng slot → KẾT THÚC LƯỢT → xu vào ví sự kiện, HS rảnh, đăng ký lại được
+  Mỗi ván xong → xu vào ví sự kiện ngay (fn_sk_tra_xu_van) → đủ 3 ván lượt TỰ kết thúc, HS rảnh, đăng ký lại được
                                         │ realtime
 [TV hàng chờ] "Đang chơi: … · Mời vào: … · Đang chờ: N bạn"   (+ đồng thời số liệu hiện ở laptop check-in)
 
@@ -119,7 +119,14 @@ Mutation trong cùng màn: **vá tại chỗ**, không reload trắng (§2); rea
 1. **Điện thoại quản trò join kênh game của phòng** (`bk-<game>:<ma_hub>`) bằng supabase-js broadcast. Không cần sửa code từng game.
 2. `fn_sk_bat_dau` trả `[{slot, ten, so}]`. Quản trò gửi xuống TV game để **điền sẵn `names` theo slot**.
    Cách tối thiểu: sửa TV game nhận thêm 1 message `names`. Fallback: quản trò gõ tay tên vào TV như hiện nay.
-3. Điện thoại nghe `state.phase==='result'`, **cộng dồn `xu` theo slot qua 3 `matchId` khác nhau** (bỏ trùng theo `matchId` vì `state` phát lại mỗi 1s). Kết quả điền sẵn vào form **Kết thúc lượt**. Quản trò soát rồi bấm → `fn_sk_ket_thuc`.
+3. ~~Cộng dồn 3 ván rồi bấm Kết thúc lượt~~ → **(26/09 chiều, mig `202609261450`) trả xu TỪNG VÁN:** điện thoại nghe `state.phase==='result'` → gọi
+   `fn_sk_tra_xu_van(luot, matchId, [{slot,xu}])` ngay ⇒ `sk_xu` 1 dòng/người/ván (cột `van` = matchId, unique `(luot_id, nguoi_choi_id, van)`
+   ⇒ TV phát lại mỗi 1s / 2 điện thoại cùng nghe không cộng đúp). Số ván = số `van` khác nhau trong sổ (suy động); đủ `cau_hinh.so_van`
+   ⇒ hàm tự kết thúc lượt. `sk_names` mang thêm `{luot, van, soVan}`: TV nhớ lượt, gắn `skLuot` vào mọi `state` (điện thoại chỉ trả xu
+   ván mang ĐÚNG mã lượt — khoá tự nhiên, không đoán theo giờ; TV chưa nhận mã thì mới lùi về mốc `matchId > bat_dau − 30s`),
+   hiện "Lượt sự kiện · xong x/3 ván", đủ thì chặn BẮT ĐẦU (vẫn cho chơi thêm nếu xác nhận — ván thêm không được xu).
+   Lượt mới chỉ nhận khi TV ở sảnh chờ ⇒ kết quả ván cũ đang chiếu không bị gắn sang lượt mới. `fn_sk_huy_luot` chặn khi đã trả xu ván nào
+   (huỷ ⇒ HS về Lượt kế ⇒ nhận xu 2 lần) — dùng **Kết thúc sớm** (`fn_sk_ket_thuc` với `[]`). "Game khác" vẫn nhập tay xu cả lượt như cũ.
 4. **iPad/anon không ghi DB.** Chỉ điện thoại quản trò (đã đăng nhập) ghi. Fallback: nhập tay xu từng slot.
 5. Chênh lệch nhỏ: hub cho 8 slot, sự kiện tối đa 6 → `fn_sk_bat_dau` gán slot 1..6.
 
@@ -184,10 +191,10 @@ khi có chuỗi ghi: `node scripts/migrate.mjs --baseline <file>` từng file (c
 
 **Test iPad (chưa làm — Thùy 26/09):**
 - Quản trò: có mặt 2–3 bạn → chọn game đang mở trên hub (tự chọn theo event `open` của `bk-hub:<ma_hub>`) → BẮT ĐẦU.
-- TV game (laptop phòng) phải tự điền tên "Tên #số" vào ô slot 1..n (event `sk_names`, chỉ nhận khi TV ở sảnh `lobby`; mỗi ván mới TV xoá tên ⇒ điện thoại tự gửi lại).
+- TV game (laptop phòng) phải tự điền tên "Tên #số" vào ô slot 1..n (event `sk_names`, chỉ nhận khi TV ở sảnh `lobby`). Từ 26/09 chiều TV **giữ tên** qua "Trận mới", iPad **tự lưu tên** (localStorage `bk-games-pname`, dùng chung 5 game) — tên quản trò gửi đè tên iPad khi khác.
 - HS ngồi ĐÚNG iPad số slot (iPad số = slot hub). Chơi 3 ván.
-- Điện thoại: nhãn "● nghe iPad · N ván" tăng sau mỗi ván; ô xu từng slot tự cộng (bỏ kết quả có `matchId` < lúc bắt đầu lượt − 30s).
-- Soát xu → KẾT THÚC LƯỢT → số dư HS tăng đúng. Hỏng bất kỳ bước tự động nào ⇒ gõ tay tên/xu, hệ vẫn chạy.
+- Điện thoại: "Ván x/3" + toast "💰 Ván x/3 — đã cộng xu" sau mỗi ván; cột xu từng bạn = tổng đã vào sổ (đọc DB). Ván 3 xong ⇒ lượt tự kết thúc.
+- TV: góc dưới trái "🎟 Lượt sự kiện · đã xong x/3 ván" → đủ thì đỏ "✅ Đủ 3 ván". Số dư HS tăng sau từng ván. Hỏng tự động ⇒ quản lý dùng Điều chỉnh xu.
 
 **Còn mở:** 1 lần tìm `#1` ra rỗng ngay sau khi chuyển tab (không tái hiện, DB luôn trả đúng) · chưa test tải 150 người / 2 điện thoại ·
 xu sự kiện dùng vào đâu (đổi quà ngoài hệ) — nếu cần số dư từng HS thì làm trang xem/xuất Excel.

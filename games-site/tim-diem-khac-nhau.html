@@ -306,6 +306,18 @@ const MAXP=8,SLOTS=Array.from({length:MAXP},(_,i)=>i+1);
 // Chống "văng game" (Thùy 26/09): mỗi TV có mã riêng (TVID); iPad BÁM 1 TV, bỏ qua TV khác cùng phòng (chỉ đổi TV khi TV đang bám
 // im lặng >8 giây), và ĐANG CHƠI thì bỏ qua mọi trạng thái không thuộc trận của mình. TV thấy trùng TV/số máy thì cảnh báo đỏ.
 const TVID=Math.random().toString(36).slice(2,8),FOLLOW={tv:null,at:0};
+// Nối BK Sự kiện (Thùy 26/09): điện thoại quản trò gửi 'sk_names' = tên theo slot + MÃ LƯỢT + số ván đã trả xu.
+// TV nhớ lượt (TV.sk), gắn mã lượt vào mọi state (điện thoại chỉ trả xu ván mang đúng mã lượt của nó), đếm ván, đủ thì chặn BẮT ĐẦU.
+// Lượt mới chỉ nhận khi TV ở sảnh chờ ⇒ kết quả ván cũ đang chiếu không bao giờ bị gắn nhầm sang lượt mới.
+const SKK='bk-sk-'+location.pathname;
+function skLoad(){try{const o=JSON.parse(localStorage.getItem(SKK)||'null');TV.sk=o&&Date.now()-(o.at||0)<3*3600e3?o:null}catch(e){TV.sk=null}skBadge()}
+function skSave(){try{TV.sk.at=Date.now();localStorage.setItem(SKK,JSON.stringify(TV.sk))}catch(e){}}
+function skNhan(p){const same=TV.sk&&TV.sk.luot===p.luot;if(!same&&TV.state&&TV.state.phase&&TV.state.phase!=='lobby')return;
+  const v=+p.van||0,n=+p.soVan||3;TV.sk=same?{luot:p.luot,van:Math.max(TV.sk.van,v),soVan:n}:{luot:p.luot,van:v,soVan:n};skSave();skBadge()}
+function skBadge(){let el=document.getElementById('skBadge');if(!TV.sk){if(el)el.style.display='none';return}
+  if(!el){el=document.createElement('div');el.id='skBadge';el.style.cssText='position:fixed;left:12px;bottom:12px;z-index:98;color:#fff;font:800 18px Segoe UI,sans-serif;padding:8px 16px;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,.35);pointer-events:none';document.body.appendChild(el)}
+  const du=TV.sk.van>=TV.sk.soVan;el.style.display='';el.style.background=du?'#c62828':'#3949ab';
+  el.textContent=du?'✅ Đủ '+TV.sk.soVan+' ván — hết lượt, mời nhóm sau':'🎟 Lượt sự kiện · đã xong '+TV.sk.van+'/'+TV.sk.soVan+' ván'}
 function dupWarn(msg){let el=document.getElementById('dupWarn');if(!el){el=document.createElement('div');el.id='dupWarn';el.style.cssText='position:fixed;left:50%;top:8px;transform:translateX(-50%);z-index:99;background:#c62828;color:#fff;font:700 16px Segoe UI,sans-serif;padding:8px 16px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.4);max-width:92vw;text-align:center;pointer-events:none';document.body.appendChild(el)}el.textContent=msg||'';el.style.display=msg?'':'none'}
 const DEF={role:null,slot:1,room:'BK01',sbUrl:'https://osrvycilwshkzhljuxef.supabase.co',sbKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4',entry:0,prizes:[5,3,2,2,2,2,2,2],perfect:0,dur:40,nDiff:10,pen:'cool',cool:500};
 let C=Object.assign({},DEF);try{Object.assign(C,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
@@ -489,18 +501,21 @@ function playerNet(){
     if(st.tv){const nw=Date.now();if(FOLLOW.tv&&FOLLOW.tv!==st.tv&&nw-FOLLOW.at<8000)return;if(FOLLOW.tv!==st.tv){FOLLOW.tv=st.tv;pState=null}FOLLOW.at=nw} // chỉ nghe 1 TV
     if(P.playing&&P.matchId&&st.matchId!==P.matchId)return; // đang chơi: không để trạng thái khác (sảnh chờ của TV khác, TV vừa tải lại…) đá ra
     if(st.now)noteOffset(st.now);
-    if(st.names&&st.names[C.slot]&&!$('pName').value&&!P.ready)$('pName').value=st.names[C.slot];
+    if(st.names&&st.names[C.slot]&&st.names[C.slot]!==P.tvName&&!P.ready){P.tvName=st.names[C.slot];$('pName').value=st.names[C.slot];try{localStorage.setItem('bk-games-pname',P.tvName)}catch(e){}}
     const prev=pState;pState=st;const changed=!prev||prev.phase!==st.phase||prev.matchId!==st.matchId;
-    if(st.phase==='lobby'&&changed){if(P.fin){$('pName').value='';P.name='';P.fin=false}P.ready=false;$('pReady').classList.remove('on');$('pReady').textContent='SẴN SÀNG';$('pWait').textContent='';if(!P.playing)pShow('pLobby');P.matchId=null;sendPlayer()}
+    if(st.phase==='lobby'&&changed){if(P.fin)P.fin=false;P.ready=false;$('pReady').classList.remove('on');$('pReady').textContent='SẴN SÀNG';$('pWait').textContent='';if(!P.playing)pShow('pLobby');P.matchId=null;sendPlayer()}
     if(st.phase==='countdown'&&P.matchId!==st.matchId&&!P.playing){P.matchId=st.matchId;P.name=$('pName').value.trim();
       const localStart=performance.now()+(st.startAt-serverNow());startGame(st.seed,st.cfg||C,false,localStart);sendPlayer()}
     if(st.phase==='playing'&&P.matchId!==st.matchId&&!P.playing){$('pWait').textContent='Trận đang diễn ra, chờ trận sau nhé'}
-    if(st.phase==='result'&&st.results&&st.results[C.slot]&&P.matchId===st.matchId){const r=st.results[C.slot];if($('rRank').textContent===''){$('rRank').textContent='Hạng '+r.rank+' / '+st.n;$('rXu').textContent='+'+r.xu+' xu'+(r.perfect?' · ⭐ Perfect':'');$('rWait').textContent='';if(r.rank===1)confetti(200)}}
+    if(st.phase==='result'&&st.results&&st.results[C.slot]&&P.matchId===st.matchId){const r=st.results[C.slot];if($('rRank').textContent===''){$('rRank').textContent='Hạng '+r.rank+' / '+st.n;$('rXu').textContent='+'+r.xu+' xu — nhận luôn từ anh chị nhé'+(r.perfect?' · ⭐ Perfect':'');$('rWait').textContent='';if(r.rank===1)confetti(200)}}
     if(st.phase==='abort'&&changed){P.playing=false;$('cdOverlay').classList.remove('show');pShow('pLobby')}
   });
 }
 async function bootPlayer(){
   $('pTop').style.display='flex';$('pSlotLbl').textContent='Máy '+C.slot;pShow('pLobby');
+  // Tự lưu tên (Thùy 26/09): iPad nhớ tên người đang chơi — qua trận mới, đổi game, tải lại trang vẫn còn; bạn khác vào thì sửa ô tên.
+  try{const nm=localStorage.getItem('bk-games-pname');if(nm&&!$('pName').value)$('pName').value=nm}catch(e){}
+  $('pName').addEventListener('input',()=>{try{localStorage.setItem('bk-games-pname',$('pName').value.trim())}catch(e){}});
   ['picA','picB'].forEach(id=>$(id).addEventListener('pointerdown',onTap));
   $('pReady').onclick=()=>{if(!room){return}P.name=$('pName').value.trim();if(!P.name){$('pName').focus();return}P.ready=!P.ready;$('pReady').classList.toggle('on',P.ready);$('pReady').textContent=P.ready?'✅ ĐÃ SẴN SÀNG':'SẴN SÀNG';$('pWait').textContent=P.ready?'Chờ nhân sự bắt đầu trận…':'';sendPlayer();beep(P.ready?880:440,.12,'triangle',.08);$('pName').blur()};
   $('pName').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(room)$('pReady').click();else $('pStartOff').click()}});
@@ -529,11 +544,11 @@ function tvSeedVal(){let s=parseInt($('tvSeed').value,10);if(isNaN(s)){s=Math.fl
 function tvPreview(){const s=parseInt($('tvSeed').value,10);if(isNaN(s)){$('tvPrevA').innerHTML='';$('tvPrevB').innerHTML='';$('tvPrevTip').textContent='Bấm 🎲 hoặc nhập mã để xem đề';return}
   const p=genPuzzle(s,C.nDiff);TV.preview=p;$('tvPrevA').innerHTML=svgScene(p,'A',null,true);$('tvPrevB').innerHTML=svgScene(p,'B',null,true);
   $('tvPrevTip').textContent='Mã '+s+' · '+p.diffs.length+' điểm: '+p.diffs.map(d=>d.label).join(', ')}
-function broadcastState(){if(!room)return;send('state',Object.assign({},TV.state,{now:Date.now(),names:TV.names,tv:TVID}))}
+function broadcastState(){if(!room)return;send('state',Object.assign({},TV.state,{now:Date.now(),names:TV.names,tv:TVID,skLuot:TV.sk?TV.sk.luot:null}))}
 function setState(st){TV.state=st;applyPhaseUI();broadcastState()}
 function tvNet(){
   TV.state={phase:'lobby',matchId:Date.now()};applyPhaseUI();
-  onMsg('sk_names',p=>{if(!p||!p.names||(TV.state&&TV.state.phase!=='lobby'))return;TV.names={};Object.keys(p.names).forEach(k=>{TV.names[+k]=String(p.names[k]||'')});$('tvNames').querySelectorAll('input').forEach(el=>{el.value=TV.names[+el.dataset.i]||''});broadcastState()}); // ERP sự kiện: điện thoại quản trò điền tên theo slot
+  skLoad();onMsg('sk_names',p=>{if(!p)return;if(p.luot)skNhan(p);if(!p.names||(TV.state&&TV.state.phase!=='lobby'))return;TV.names={};Object.keys(p.names).forEach(k=>{TV.names[+k]=String(p.names[k]||'')});$('tvNames').querySelectorAll('input').forEach(el=>{el.value=TV.names[+el.dataset.i]||''});broadcastState()}); // ERP sự kiện: điện thoại quản trò điền tên theo slot
   onMsg('player',p=>{if(!p||!p.slot)return;const old=TV.players[p.slot]||{};
     if(TV.cur&&p.matchId!==TV.cur.matchId){p=Object.assign({},p,{score:old.score||0,mistakes:old.mistakes||0,doneMs:old.doneMs||null,lastAt:old.lastAt||null,streak:0})}
     TV.players[p.slot]=Object.assign({},p,{last:Date.now(),online:true});renderLB();checkEvents()});
@@ -581,6 +596,7 @@ function curCfg(){return {dur:C.dur,nDiff:C.nDiff,pen:C.pen,cool:C.cool,prizes:C
 function tvStart(){
   if(!room){alert('Chưa kết nối mạng. Dùng phần "Nhập điểm tay" hoặc kiểm tra Supabase trong Cài đặt.');return}
   const ready=plist().filter(p=>p.ready&&p.online!==false);if(!ready.length){alert('Chưa có iPad nào bấm SẴN SÀNG.');return}
+  if(TV.sk&&TV.sk.van>=TV.sk.soVan&&!confirm('Lượt sự kiện này đã chơi đủ '+TV.sk.soVan+' ván — chờ quản trò bắt đầu lượt mới.\n\nVẫn chơi thêm 1 ván? (ván thêm KHÔNG được cộng xu)'))return;
   const seed=tvSeedVal(),startAt=serverNow()+4000;const matchId=Date.now();const cfg=curCfg();
   TV.lastLead=null;TV.feedSeen={};TV.prevRank={};$('feed').innerHTML='';tvPreview();
   SLOTS.forEach(i=>{if(TV.players[i])Object.assign(TV.players[i],{score:0,mistakes:0,doneMs:null,lastAt:null,streak:0,fin:false})});
@@ -594,7 +610,7 @@ function tvLoop(){const st=TV.state,cur=TV.cur;
       const all=cur.players.every(s=>TV.players[s]&&TV.players[s].doneMs!=null);
       if(now>=cur.endAt+2500||(all&&now>=cur.startAt+3000))tvFinish()}}
   nextFrame(tvLoop)}
-function tvFinish(){const cur=TV.cur;if(!cur)return;TV.cur=null;
+function tvFinish(){const cur=TV.cur;if(!cur)return;TV.cur=null;if(TV.sk){TV.sk.van++;skSave();skBadge()}
   const list=plist().filter(p=>cur.players.includes(p.slot)).map(p=>({slot:p.slot,name:p.name||'Máy '+p.slot,score:p.score||0,mistakes:p.mistakes||0,doneMs:p.doneMs||null,lastAt:p.lastAt||null}));
   const results=computeResults(list,cur.cfg);setState({phase:'result',matchId:cur.matchId,results,n:list.length,cfg:cur.cfg});
   recordMatch(results,list.length,cur.seed,cur.cfg)}
@@ -607,8 +623,8 @@ function recordMatch(results,n,seed,cfg){const entry=cfg.entry||0;const chi=Obje
 function renderPodium(){const res=TV.state.results||{};const arr=Object.values(res).sort((a,b)=>a.rank-b.rank);const top=[arr[1],arr[0],arr[2]];const total=(TV.state.cfg||C).nDiff;
   $('podium').innerHTML=top.map((r,i)=>r?`<div class="pd p${r.rank}"><div class="who">${esc(r.name)}</div><div class="pts">${r.score}/${total}${r.doneMs?' · '+(r.doneMs/1000).toFixed(1)+'s':''}<br>+${r.xu} xu</div><div class="blk">${['🥇','🥈','🥉'][r.rank-1]}</div></div>`:'').join('');$('podium').classList.add('show')}
 function tvNew(){$('feed').innerHTML='';$('podium').classList.remove('show');TV.cur=null;
-  SLOTS.forEach(i=>{if(TV.players[i])Object.assign(TV.players[i],{ready:false,score:null,mistakes:null,doneMs:null,lastAt:null,streak:0,fin:null,name:''})});
-  TV.names={};$('tvNames').querySelectorAll('input').forEach(el=>el.value='');$('tvSeed').value='';tvPreview();
+  SLOTS.forEach(i=>{if(TV.players[i])Object.assign(TV.players[i],{ready:false,score:null,mistakes:null,doneMs:null,lastAt:null,streak:0,fin:null})});
+  $('tvSeed').value='';tvPreview();
   if(room)setState({phase:'lobby',matchId:Date.now()});else{TV.state={phase:'lobby'};TV.players={};applyPhaseUI()}}
 function tvAbort(){if(!room)return;if(!confirm('Hủy trận đang chơi?'))return;const id=TV.cur?TV.cur.matchId:Date.now();TV.cur=null;setState({phase:'abort',matchId:id});setTimeout(()=>setState({phase:'lobby',matchId:Date.now()}),600)}
 function tvManual(){const list=[];$('manual').querySelectorAll('input[data-s]').forEach(el=>{const s=el.value.trim();if(s==='')return;const i=+el.dataset.s;const n=$('manual').querySelector(`input[data-n="${i}"]`).value.trim();const t=$('manual').querySelector(`input[data-t="${i}"]`).value.trim();list.push({slot:i,name:n||'Máy '+i,score:+s,mistakes:0,doneMs:(+s>=C.nDiff&&t)?Math.round(+t*1000):null,lastAt:null})});

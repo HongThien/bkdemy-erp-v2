@@ -1,7 +1,7 @@
 // SỰ KIỆN (spec-su-kien.md) — 1 lá, 4 tab: Check-in (laptop cửa) · Quản trò (điện thoại phòng iPad) ·
 // Bàn quay · Cài đặt (Quầy quà đã bỏ 26/09 — đổi quà không thuộc hệ này). 2 màn TV (vòng quay / hàng chờ) mở toàn màn hình qua hash — xem TvSuKien.tsx.
 // Mọi con số/luật ở Postgres (fn_sk_*); ở đây chỉ gọi RPC, nghe realtime, vá tại chỗ.
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import * as sk from '../../lib/sukien'
 import type { KetQuaTim, PhongTQ, SuKien, TongQuan } from '../../lib/sukien'
@@ -321,8 +321,6 @@ const Stat = ({ n, t }: { n: number; t: string }) => (
 )
 
 // ─────────────────────────────── QUẢN TRÒ ───────────────────────────────
-type KetQuaVan = Record<string, Record<number, number>> // matchId → slot → xu
-const lsKQ = (luot: string) => 'sk-kq-' + luot
 
 function QuanTroTab({ tq, toast, onDoi, setTq }: { tq: TongQuan | null; toast: (t: string, loi?: boolean) => void; onDoi: () => void; setTq: (f: (p: TongQuan | null) => TongQuan | null) => void }) {
   const phongHang = (tq?.phong ?? []).filter((p) => p.hang_doi)
@@ -447,44 +445,66 @@ function QuanTroTab({ tq, toast, onDoi, setTq }: { tq: TongQuan | null; toast: (
   )
 }
 
-// Tên theo slot cho TV game (games-site nghe event 'sk_names' — chỉ nhận khi TV đang ở sảnh chờ).
+// Tên theo slot cho TV game (games-site nghe event 'sk_names'): tên chỉ nhận khi TV ở sảnh chờ; kèm mã lượt + số ván
+// đã trả ⇒ TV đếm "Ván x/3", đủ thì chặn BẮT ĐẦU, và gắn mã lượt vào kết quả ván (khoá tự nhiên để điện thoại nhận đúng ván).
 const namesTheoSlot = (nguoi: { slot: number; ten: string; so: number }[]) =>
   Object.fromEntries(nguoi.map((n) => [n.slot, `${n.ten} #${n.so}`])) as Record<number, string>
 
 function LuotDangChoi({ phong, toast, onDoi }: { phong: PhongTQ; toast: (t: string, loi?: boolean) => void; onDoi: () => void }) {
   const luot = phong.luot!
   const g = sk.GAME_IPAD.find((x) => x.id === luot.game)
-  const [kq, setKq] = useState<KetQuaVan>(() => { try { return JSON.parse(lsGet(lsKQ(luot.id)) || '{}') } catch { return {} } })
-  const [sua, setSua] = useState<Record<number, string>>({})
+  // Game iPad: xu trả NGAY mỗi ván (Thùy 26/09 "quản trò ko cần lưu xu nữa, qua mỗi trận trả xu luôn") — tình trạng đọc từ DB.
+  const [xl, setXl] = useState<sk.XuLuot | null>(null)
+  const [sua, setSua] = useState<Record<number, string>>({}) // chỉ "Game khác": nhập tay xu cả lượt
   const [ban, setBan] = useState(false)
   const [ketNoi, setKetNoi] = useState(false)
-  useEffect(() => { lsSet(lsKQ(luot.id), JSON.stringify(kq)) }, [kq, luot.id])
+  useEffect(() => {
+    if (!g) return
+    let huy = false
+    sk.xuLuot(luot.id).then((d) => { if (!huy) setXl(d) }).catch((e) => toast((e as Error).message, true))
+    return () => { huy = true }
+  }, [luot.id]) // eslint-disable-line
 
-  // Nghe kết quả từng ván từ TV game (state.phase==='result' phát lại mỗi 1s ⇒ khử trùng theo matchId).
-  // Về sảnh (lobby) thì gửi lại tên — TV xoá tên mỗi khi sang ván mới.
   const namesRef = useRef<Record<number, string>>({})
   namesRef.current = namesTheoSlot(luot.nguoi)
+  const xlRef = useRef<sk.XuLuot | null>(null)
+  xlRef.current = xl
+  const onDoiRef = useRef(onDoi)
+  onDoiRef.current = onDoi
   const chRef = useRef<ReturnType<typeof supabase.channel> | null>(null)
-  const guiTen = () => { chRef.current?.send({ type: 'broadcast', event: 'sk_names', payload: { names: namesRef.current } }) }
+  const guiTen = () => {
+    chRef.current?.send({ type: 'broadcast', event: 'sk_names', payload: { names: namesRef.current, luot: luot.id, van: xlRef.current?.so_van ?? 0, soVan: xlRef.current?.toi_da ?? 3 } })
+  }
   useEffect(() => {
     if (!g || !phong.ma_hub) return
     const slots = new Set(luot.nguoi.map((n) => n.slot))
-    // matchId của TV = Date.now() lúc bắt đầu ván ⇒ bỏ kết quả ván của lượt TRƯỚC (TV còn đứng ở màn kết quả, phát lại mỗi 1s).
+    // TV đã nhận mã lượt ⇒ kết quả mang skLuot, so thẳng. TV chưa nhận (vừa tải lại…) ⇒ lùi về mốc giờ:
+    // matchId = Date.now() lúc bắt đầu ván ⇒ bỏ kết quả ván của lượt TRƯỚC (TV còn đứng ở màn kết quả, phát lại mỗi 1s).
     const moc = new Date(luot.bat_dau_at).getTime() - 30_000
+    const daGui: Record<string, number> = {} // matchId → lúc gửi; -1 = xong. TV phát lại mỗi 1s ⇒ không gửi lặp; lỗi thì 5s sau thử lại
     const ch = supabase.channel(g.kenh + ':' + phong.ma_hub, { config: { broadcast: { self: false } } })
     let phaseTruoc = ''
     ch.on('broadcast', { event: 'state' }, (m) => {
-      const st = m.payload as { phase?: string; matchId?: number; results?: Record<string, { xu: number }> }
-      if (st.phase === 'result' && st.results && st.matchId != null && Number(st.matchId) > moc) {
-        const id = String(st.matchId)
-        setKq((prev) => {
-          if (prev[id]) return prev
-          const theoSlot: Record<number, number> = {}
-          for (const [slot, r] of Object.entries(st.results!)) if (slots.has(+slot)) theoSlot[+slot] = Number(r?.xu) || 0
-          return { ...prev, [id]: theoSlot }
-        })
+      const st = m.payload as { phase?: string; matchId?: number; skLuot?: string | null; results?: Record<string, { xu: number }> }
+      const cuaLuot = st.skLuot ? st.skLuot === luot.id : Number(st.matchId) > moc
+      if (st.phase === 'result' && st.results && st.matchId != null && cuaLuot) {
+        const id = String(st.matchId), nw = Date.now(), t = daGui[id]
+        if (t === undefined || (t >= 0 && nw - t >= 5000)) {
+          const ketQua = Object.entries(st.results).filter(([s]) => slots.has(+s)).map(([s, r]) => ({ slot: +s, xu: Number(r?.xu) || 0 }))
+          if (!ketQua.length) daGui[id] = -1
+          else {
+            const lanDau = t === undefined
+            daGui[id] = nw
+            sk.traXuVan(luot.id, Number(st.matchId), ketQua).then((d) => {
+              daGui[id] = -1
+              setXl(d); xlRef.current = d; guiTen()
+              if (d.xong) { toast(`✓ Đủ ${d.toi_da} ván — xu đã cộng, lượt kết thúc`); onDoiRef.current() }
+              else toast(`💰 Ván ${d.so_van}/${d.toi_da} — đã cộng xu`)
+            }).catch((e) => { if (lanDau) toast((e as Error).message, true) })
+          }
+        }
       }
-      if (st.phase === 'lobby' && phaseTruoc !== 'lobby') guiTen() // TV xoá tên mỗi ván mới ⇒ điền lại
+      if (st.phase === 'lobby' && phaseTruoc !== 'lobby') guiTen() // TV vừa về sảnh (hoặc vừa tải lại) ⇒ điền lại tên + số ván
       phaseTruoc = st.phase ?? ''
     }).subscribe((s) => {
       setKetNoi(s === 'SUBSCRIBED')
@@ -494,19 +514,15 @@ function LuotDangChoi({ phong, toast, onDoi }: { phong: PhongTQ; toast: (t: stri
     return () => { chRef.current = null; supabase.removeChannel(ch) }
   }, [g?.kenh, phong.ma_hub, luot.id]) // eslint-disable-line
 
-  const soVan = Object.keys(kq).length
-  const tongTuIpad = useMemo(() => {
-    const t: Record<number, number> = {}
-    for (const v of Object.values(kq)) for (const [s, x] of Object.entries(v)) t[+s] = (t[+s] ?? 0) + x
-    return t
-  }, [kq])
-  const xuSlot = (slot: number) => sua[slot] !== undefined ? sua[slot] : String(tongTuIpad[slot] ?? '')
+  const soVan = xl?.so_van ?? 0, toiDaVan = xl?.toi_da ?? 3
+  const xuSlot = (slot: number) => sua[slot] ?? ''
 
   return (
     <div className="rounded-2xl border-2 border-indigo-500 bg-white p-3 shadow-sm">
       <div className="mb-2 flex flex-wrap items-center gap-2">
         <h3 className="font-bold text-indigo-700">🎮 Đang chơi · {g?.ten ?? (luot.game === 'khac' ? 'Game khác' : luot.game)}</h3>
-        {g && phong.ma_hub && <span className={`rounded px-1.5 text-[11px] ${ketNoi ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>{ketNoi ? `● nghe iPad · ${soVan} ván` : '○ đang nối iPad…'}</span>}
+        {g && <span className="rounded bg-indigo-600 px-2 py-0.5 text-sm font-black text-white">Ván {Math.min(soVan + 1, toiDaVan)}/{toiDaVan}</span>}
+        {g && phong.ma_hub && <span className={`rounded px-1.5 text-[11px] ${ketNoi ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>{ketNoi ? `● nghe TV · xong ${soVan} ván` : '○ đang nối TV…'}</span>}
         {g && phong.ma_hub && <button onClick={() => { guiTen(); toast('Đã gửi tên xuống TV game') }} className="ml-auto rounded-md px-2 py-1 text-xs text-indigo-600 hover:bg-indigo-50">↻ Gửi lại tên</button>}
       </div>
       <div className="space-y-1.5">
@@ -514,29 +530,36 @@ function LuotDangChoi({ phong, toast, onDoi }: { phong: PhongTQ; toast: (t: stri
           <div key={n.dang_ky_id} className="flex items-center gap-2 rounded-lg bg-indigo-50 px-2 py-1.5">
             <span className="rounded bg-indigo-600 px-2 py-0.5 text-sm font-bold text-white">iPad {n.slot}</span>
             <span className="min-w-0 flex-1 truncate font-semibold">{n.ten} <span className="font-mono text-xs text-slate-400">#{n.so}</span></span>
-            <input inputMode="numeric" value={xuSlot(n.slot)} onChange={(e) => setSua((p) => ({ ...p, [n.slot]: e.target.value.replace(/[^0-9]/g, '') }))}
-              placeholder="xu" className="w-16 rounded-lg border border-slate-300 px-2 py-1.5 text-right text-base font-bold" />
-            <span className="text-xs text-slate-400">xu</span>
+            {g ? (
+              <span className="text-base font-bold text-emerald-700">+{xl?.tong[String(n.slot)] ?? 0} <span className="text-xs font-normal text-slate-400">xu</span></span>
+            ) : (<>
+              <input inputMode="numeric" value={xuSlot(n.slot)} onChange={(e) => setSua((p) => ({ ...p, [n.slot]: e.target.value.replace(/[^0-9]/g, '') }))}
+                placeholder="xu" className="w-16 rounded-lg border border-slate-300 px-2 py-1.5 text-right text-base font-bold" />
+              <span className="text-xs text-slate-400">xu</span>
+            </>)}
           </div>
         ))}
       </div>
-      <p className="mt-2 text-[11px] text-slate-500">Xu = tổng các ván (Nhất 5 · Nhì 3 · còn lại 2 mỗi ván). Tự điền từ iPad, sửa tay được trước khi kết thúc.</p>
+      <p className="mt-2 text-[11px] text-slate-500">{g
+        ? `Mỗi ván xong là xu tự vào ví sự kiện (Nhất 5 · Nhì 3 · còn lại 2). Đủ ${toiDaVan} ván lượt tự kết thúc — không cần ghi, không cần bấm.`
+        : 'Game khác: nhập tổng xu cả lượt từng bạn rồi bấm Kết thúc lượt.'}</p>
       <div className="mt-3 flex gap-2">
-        <button disabled={ban} onClick={async () => {
+        {soVan === 0 && <button disabled={ban} onClick={async () => {
           if (!confirm('Huỷ lượt này? Các bạn quay lại "Lượt kế", không ai được xu.')) return
           setBan(true)
           try { await sk.huyLuot(luot.id); toast('Đã huỷ lượt'); onDoi() } catch (e) { toast((e as Error).message, true) } finally { setBan(false) }
-        }} className="rounded-xl border border-slate-300 px-3 py-2 text-sm text-slate-600">Huỷ lượt</button>
+        }} className="rounded-xl border border-slate-300 px-3 py-2 text-sm text-slate-600">Huỷ lượt</button>}
         <button disabled={ban} onClick={async () => {
-          const ketQua = luot.nguoi.map((n) => ({ slot: n.slot, xu: Number(xuSlot(n.slot)) || 0 }))
+          if (g && !confirm(`Kết thúc lượt khi mới xong ${soVan}/${toiDaVan} ván? Xu các ván đã chơi giữ nguyên.`)) return
+          const ketQua = g ? [] : luot.nguoi.map((n) => ({ slot: n.slot, xu: Number(xuSlot(n.slot)) || 0 }))
           setBan(true)
           try {
             const r = await sk.ketThuc(luot.id, ketQua)
-            try { localStorage.removeItem(lsKQ(luot.id)) } catch { /* bỏ qua */ }
-            toast(`✓ Kết thúc lượt — phát ${r.tong_xu} xu`)
+            toast(g ? '✓ Đã kết thúc lượt' : `✓ Kết thúc lượt — phát ${r.tong_xu} xu`)
             onDoi()
           } catch (e) { toast((e as Error).message, true) } finally { setBan(false) }
-        }} className="flex-1 rounded-xl bg-indigo-600 px-4 py-2.5 text-base font-bold text-white disabled:opacity-50">■ KẾT THÚC LƯỢT · cộng xu</button>
+        }} className={g ? 'flex-1 rounded-xl border border-indigo-300 px-4 py-2.5 text-sm font-bold text-indigo-700 disabled:opacity-50'
+          : 'flex-1 rounded-xl bg-indigo-600 px-4 py-2.5 text-base font-bold text-white disabled:opacity-50'}>{g ? '■ Kết thúc sớm' : '■ KẾT THÚC LƯỢT · cộng xu'}</button>
       </div>
     </div>
   )

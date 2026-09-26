@@ -52,7 +52,12 @@ export const danhDau = (dangKy: string, hanhDong: 'co_mat' | 'bo_qua' | 'tra_ve'
   rpc<{ trang_thai: string; so_lan_bo_qua: number }>('fn_sk_danh_dau', { p_dang_ky: dangKy, p_hanh_dong: hanhDong })
 export const batDau = (phong: string, game: string) => rpc<{ luot_id: string; nguoi: NguoiLuot[] }>('fn_sk_bat_dau', { p_phong: phong, p_game: game })
 export const ketThuc = (luot: string, ketQua: { slot: number; xu: number }[]) => rpc<{ tong_xu: number }>('fn_sk_ket_thuc', { p_luot: luot, p_ket_qua: ketQua })
-export const huyLuot = (luot: string) => rpc<void>('fn_sk_huy_luot', { p_luot: luot })
+// Xu game trả THEO TỪNG VÁN (mig 202609261450): so_van = số ván đã trả, đủ toi_da ⇒ DB tự kết thúc lượt (xong=true).
+export type XuLuot = { so_van: number; toi_da: number; xong: boolean; tong: Record<string, number> }
+export const xuLuot = (luot: string) => rpc<XuLuot>('fn_sk_xu_luot', { p_luot: luot })
+export const traXuVan = (luot: string, van: number, ketQua: { slot: number; xu: number }[]) =>
+  rpc<XuLuot>('fn_sk_tra_xu_van', { p_luot: luot, p_van: van, p_ket_qua: ketQua })
+export const huyLuot = (luot: string) =>rpc<void>('fn_sk_huy_luot', { p_luot: luot })
 export const doiQua = (nguoi: string, xu: number, ghiChu: string) => rpc<number>('fn_sk_doi_qua', { p_nguoi: nguoi, p_xu: xu, p_ghi_chu: ghiChu })
 export const dieuChinh = (nguoi: string, xu: number, ghiChu: string) => rpc<number>('fn_sk_dieu_chinh', { p_nguoi: nguoi, p_xu: xu, p_ghi_chu: ghiChu })
 export const lichSuXu = (nguoi: string) => rpc<{ id: string; so_xu: number; nguon: string; ghi_chu: string | null; at: string }[]>('fn_sk_lich_su_xu', { p_nguoi: nguoi })
