@@ -122,10 +122,12 @@
 
 **Luật cho học sinh**
 - Chọn 1 ô đất, trả xu: ★ **5 xu** · ★★ **10 xu** · ★★★ **15 xu**. Chỉ mở được ô **sát đất đã mở** (bắt đầu từ ngôi làng giữa bản đồ).
-- Ô mở ra có quà từ 70% đến 200% giá: ★ nhận 4–10 xu · ★★ 7–20 xu · ★★★ 11–30 xu.
-- 1 ô ★★★ giấu **ĐỘC ĐẮC 75 xu**. Mở hết 36 ô là hết bản đồ; màn hình vinh danh bạn chiếm nhiều ô nhất (không thêm thưởng).
+- Ô mở ra **thắng đậm hoặc thua đậm**, không có hoà (Thùy 26/09): thua còn 20%–50% giá, thắng 150%–200% giá. Bộ Chuẩn: 50% thua / 50% thắng.
+  ★ (5 xu): thua 1–3 · thắng 8–10 · ★★ (10 xu): thua 2–5 · thắng 15–20 · ★★★ (15 xu): thua 3–8 · thắng 23–30.
+- **ĐỘC ĐẮC 50 xu** trong 1 ô ★★★ — chỉ khoảng **50% bản đồ có** (chỉnh ở ⚙ "% bản đồ có độc đắc"). Màn hình không lộ bản đồ này có hay không; chiếm hết mới biết.
+- Tỉ lệ chi giữ **~110%** tiền thu mỗi bản đồ (bộ tự điều chỉnh vẫn bật). Mở hết 36 ô là hết bản đồ.
 
-**Vận hành:** thu xu → bấm ô đang sáng viền → gõ tên học sinh → Enter → đọc thẻ quà, trả xu → Space/Enter lượt tiếp. Gõ tên **đúng một cách** cho cùng một bạn (khác chữ là thành 2 người). **Bản đồ mới** khi muốn chơi lại. Ctrl+Shift+T tổng kết nội bộ.
+**Vận hành:** thu xu → bấm ô đang sáng viền → **Mở đất** (Enter) — không gõ tên → đọc thẻ quà, trả xu → Space/Enter lượt tiếp. **Bản đồ mới** khi muốn chơi lại. Ctrl+Shift+T tổng kết nội bộ.
 
 ---
 
