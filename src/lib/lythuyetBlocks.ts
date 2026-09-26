@@ -4,7 +4,7 @@
 // đúng luật đối xứng §1.6 CLAUDE.md. Dùng ở 2 nơi: preview trong LyThuyetModal (screens/kho/ui.tsx) và
 // render PDF (LyThuyetBody, screens/tailieu/PrintView.tsx).
 
-export type LyThuyetBlockLoai = 'text' | 'dinh_ly' | 'dinh_nghia' | 'tinh_chat' | 'chu_y' | 'phuong_phap' | 'vi_du' | 'nhan_xet'
+export type LyThuyetBlockLoai = 'text' | 'dinh_ly' | 'dinh_nghia' | 'tinh_chat' | 'chu_y' | 'phuong_phap' | 'vi_du' | 'nhan_xet' | 'bai_tap'
 export type LyThuyetBlock = { loai: LyThuyetBlockLoai; tieuDe: string; noiDung: string }
 
 // Kí hiệu đứng đầu dòng đầu tiên của 1 đoạn (đoạn = tách bởi dòng trống, đúng quy ước ngắt đoạn lý
@@ -18,6 +18,7 @@ const MARKER_LOAI: [string, LyThuyetBlockLoai][] = [
   ['##PP', 'phuong_phap'],
   ['##VD', 'vi_du'],
   ['##NX', 'nhan_xet'],
+  ['##BT', 'bai_tap'],
 ]
 
 // Nhãn ĐÃ CÓ SẴN trong chính văn bản gốc (kiểu "Ví dụ 1.", "Định lý 2:"...) — quy ước viết sách rất phổ
@@ -31,10 +32,13 @@ const LEADING_LABEL_RE: Partial<Record<LyThuyetBlockLoai, RegExp>> = {
   tinh_chat: /^(Tính chất\s*\d*)\s*[.:—-]?\s*/i,
   chu_y: /^(Chú ý|Lưu ý)\s*[.:]?\s*/i,
   nhan_xet: /^(Nhận xét)\s*[.:]?\s*/i,
+  bai_tap: /^(Câu|Bài(?:\s*tập)?)\s*\d*\s*[.:]?\s*/i,
 }
 
 export function parseLyThuyetBlocks(text: string): LyThuyetBlock[] {
   const doans = (text || '').split(/\n[ \t]*\n/).map((d) => d.trim()).filter(Boolean)
+  let soViDu = 0
+  let soBaiTap = 0
   return doans.map((doan) => {
     const lines = doan.split('\n')
     const dongDau = lines[0].trim()
@@ -43,6 +47,26 @@ export function parseLyThuyetBlocks(text: string): LyThuyetBlock[] {
     const [ky, loai] = found
     let tieuDe = dongDau.slice(ky.length).trim()
     let than = lines.slice(1).join('\n').trim()
+    // ##VD CHUẨN HOÁ (CEO chốt 26/09): tag LUÔN "Ví dụ N" đánh số theo thứ tự xuất hiện — bỏ hẳn
+    // tiêu đề gốc (nếu người soạn/Gemini có ghi), không bao giờ để trần "Ví dụ" (thiếu số) hay dính
+    // dấu chấm. Vẫn cắt nhãn "Ví dụ ..." khỏi ĐẦU THÂN nếu có, tránh lặp chữ trong đề.
+    if (loai === 'vi_du') {
+      soViDu++
+      const reVd = LEADING_LABEL_RE.vi_du!
+      const m = than.match(reVd)
+      if (m) than = than.slice(m[0].length).trim()
+      return { loai, tieuDe: `Ví dụ ${soViDu}`, noiDung: than }
+    }
+    // ##BT CHUẨN HOÁ y hệt ##VD (CEO chốt 26/09): tag LUÔN "Câu N" đánh số riêng (KHÁC bộ đếm Ví dụ) —
+    // bài tập là đề để HS TỰ GIẢI (khác Ví dụ có lời giải), nên gộp nhóm dưới 1 tiêu đề "Bài tập tự
+    // luyện" khi render (xem groupLyThuyetBlocks) thay vì đóng khung màu riêng từng câu.
+    if (loai === 'bai_tap') {
+      soBaiTap++
+      const reBt = LEADING_LABEL_RE.bai_tap!
+      const m = than.match(reBt)
+      if (m) than = than.slice(m[0].length).trim()
+      return { loai, tieuDe: `Câu ${soBaiTap}`, noiDung: than }
+    }
     if (!tieuDe) {
       const re = LEADING_LABEL_RE[loai]
       const m = re ? than.match(re) : null
@@ -50,6 +74,14 @@ export function parseLyThuyetBlocks(text: string): LyThuyetBlock[] {
     }
     return { loai, tieuDe, noiDung: than }
   })
+}
+
+// Nhóm các khối "bai_tap" LIÊN TIẾP dưới 1 tiêu đề "Bài tập tự luyện" dùng chung (CEO chốt 26/09 —
+// khác Ví dụ, bài tập không đóng khung màu riêng từng câu mà gộp thành 1 mục). Dùng ở CẢ 3 nơi render
+// (LyThuyetBlocksPreview, LyThuyetBody/PrintView.tsx, HinhPrintView.tsx) — viết 1 lần, gọi lại, tránh
+// lặp logic rải rác 3 chỗ (bài học 26/09: sửa 1 chỗ tưởng xong, quên các chỗ khác).
+export function laDauNhomBaiTap(blocks: LyThuyetBlock[], i: number): boolean {
+  return blocks[i].loai === 'bai_tap' && (i === 0 || blocks[i - 1].loai !== 'bai_tap')
 }
 
 // ##PP riêng 1 quy tắc (spec §1): mỗi DÒNG không trống trong thân khối = 1 bước — tự đánh số + nối

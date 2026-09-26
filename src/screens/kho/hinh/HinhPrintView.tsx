@@ -13,8 +13,8 @@
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
-import { MathText, LT_CORE_CSS, LyThuyetBlockView } from '../ui'
-import { parseLyThuyetBlocks } from '../../../lib/lythuyetBlocks'
+import { MathText, LT_CORE_CSS, LyThuyetBlockView, BaiTapHeader } from '../ui'
+import { parseLyThuyetBlocks, laDauNhomBaiTap } from '../../../lib/lythuyetBlocks'
 import { type CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 import { CHROME_CSS, buildPagedCss, gtPageCss, printWithFilename, safeFileName, GT_BK_CSS } from '../../tailieu/PrintView'
 import { BK_CSS, BK_PAGE_CSS, ETHeaderBK, BtvnBkHead } from '../../tailieu/bkPrint'
@@ -337,11 +337,15 @@ export function MucsBlock({ mucs, gv, moHinhLyThuyet, batDau = 1, cauTu }: { muc
         if (hienLt) moHinhLtDaHien = m.moHinhId!
         return (
           <Fragment key={i}>
-            {hienLt && (
-              <>{parseLyThuyetBlocks(ltMh!.noiDung).map((b, i) => b.loai === 'text'
-                ? <MathText key={i}>{b.noiDung}</MathText>
-                : <LyThuyetBlockView key={i} b={b} />)}</>
-            )}
+            {hienLt && (() => {
+              const blocks = parseLyThuyetBlocks(ltMh!.noiDung)
+              return <>{blocks.map((b, j) => (
+                <Fragment key={j}>
+                  {laDauNhomBaiTap(blocks, j) && <BaiTapHeader />}
+                  {b.loai === 'text' ? <MathText>{b.noiDung}</MathText> : <LyThuyetBlockView b={b} />}
+                </Fragment>
+              ))}</>
+            })()}
           <div className="hp-de">
             {/* ⭐ 16/08 (Thùy): ĐỀ và ĐÁP ÁN là HAI KHU RIÊNG — hình của đề ngang với đề, hình của lời
                 giải ngang với lời giải. Trước đây cả bài là MỘT dòng chảy: hình đề `float:right` còn

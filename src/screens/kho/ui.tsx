@@ -1,9 +1,9 @@
 // Primitives UI gu SaaS — dùng chung cho mọi nhánh bản đồ (Đại / Hình).
-import type { ReactNode } from 'react'
+import { Fragment, type ReactNode } from 'react'
 import katex from 'katex'
 import { katexMacros } from '../../lib/math/macros'
 import { fixAccentScript, widenSingleHat } from '../../lib/math/latex-fix'
-import { parseLyThuyetBlocks, splitPhuongPhapBuoc, splitViDu, type LyThuyetBlock } from '../../lib/lythuyetBlocks'
+import { parseLyThuyetBlocks, splitPhuongPhapBuoc, splitViDu, laDauNhomBaiTap, type LyThuyetBlock } from '../../lib/lythuyetBlocks'
 
 // Render text có LaTeX ($…$ inline, $$…$$ block) thành công thức đẹp.
 const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -206,11 +206,14 @@ export const LT_CORE_CSS = `
 .pv-lt-nx-body{padding-top:2px}
 .pv-lt-nx .pv-lt-tag{color:#2f9e6e;display:block;margin-bottom:3px;font-size:11.5px}
 .pv-lt-nx-txt{font-style:italic;color:#2c4b3c}
+.pv-lt-bt-header{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#24324b;margin:20px 0 10px;break-after:avoid}
+.pv-lt-bt{border:1.5px solid #c9d2e0;border-radius:12px;padding:12px 16px;margin-bottom:12px;break-inside:avoid}
+.pv-lt-bt .pv-lt-tag{color:#24324b;display:block;margin-bottom:4px}
 `
 
 const LT_TIEU_DE_MAC_DINH: Record<LyThuyetBlock['loai'], string> = {
   text: '', dinh_ly: 'Định lý', dinh_nghia: 'Định nghĩa', tinh_chat: 'Tính chất', chu_y: 'Chú ý',
-  phuong_phap: 'Phương pháp giải', vi_du: 'Ví dụ', nhan_xet: 'Nhận xét',
+  phuong_phap: 'Phương pháp giải', vi_du: 'Ví dụ', nhan_xet: 'Nhận xét', bai_tap: 'Bài tập',
 }
 
 // Render 1 khối ĐÃ có kí hiệu (loai !== 'text'). Khối 'text' (đoạn thường, không kí hiệu) do nơi gọi tự
@@ -259,18 +262,31 @@ export function LyThuyetBlockView({ b }: { b: LyThuyetBlock }) {
           <div className="pv-lt-nx-body"><span className="pv-lt-tag">{tieuDe}</span><div className="pv-lt-nx-txt"><MathText>{b.noiDung}</MathText></div></div>
         </div>
       )
+    case 'bai_tap':
+      return <div className="pv-lt-bt"><span className="pv-lt-tag">{tieuDe}</span><MathText>{b.noiDung}</MathText></div>
     default:
       return null
   }
+}
+
+// "BÀI TẬP TỰ LUYỆN" — tiêu đề DÙNG CHUNG, hiện 1 LẦN trước NHÓM các khối bai_tap liên tiếp (CEO chốt
+// 26/09: tách khỏi Ví dụ, không đóng khung màu riêng từng câu). Gọi ở cả 3 nơi render — xem lythuyetBlocks.ts.
+export function BaiTapHeader() {
+  return <div className="pv-lt-bt-header">Bài tập tự luyện</div>
 }
 
 // Preview MÀN HÌNH (LyThuyetModal) — không cần chunk theo dòng như bản PDF (không phân trang), nên đoạn
 // 'text' render thẳng luôn.
 export function LyThuyetBlocksPreview({ text }: { text: string }) {
   const blocks = parseLyThuyetBlocks(text)
-  return <>{blocks.map((b, i) => b.loai === 'text'
-    ? <div key={i} className="mb-3 last:mb-0"><MathText>{b.noiDung}</MathText></div>
-    : <LyThuyetBlockView key={i} b={b} />)}</>
+  return <>{blocks.map((b, i) => (
+    <Fragment key={i}>
+      {laDauNhomBaiTap(blocks, i) && <BaiTapHeader />}
+      {b.loai === 'text'
+        ? <div className="mb-3 last:mb-0"><MathText>{b.noiDung}</MathText></div>
+        : <LyThuyetBlockView b={b} />}
+    </Fragment>
+  ))}</>
 }
 
 export const inp = 'w-full rounded-md border border-slate-300 px-2.5 py-1.5 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20'

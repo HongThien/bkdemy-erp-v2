@@ -1,4 +1,4 @@
-# spec-format-noidung.md — Đóng khung nội dung lý thuyết (định lý · định nghĩa · tính chất · chú ý · phương pháp giải · ví dụ · nhận xét)
+# spec-format-noidung.md — Đóng khung nội dung lý thuyết (định lý · định nghĩa · tính chất · chú ý · phương pháp giải · ví dụ · nhận xét · bài tập)
 
 > ĐỌC trước khi đụng `LyThuyetModal` (src/screens/kho/BanDo.tsx) hoặc `LyThuyetBody`/PrintView.
 > Trạng thái: **ĐÃ CODE + DEPLOY (24–26/09).** Thêm `##TC` (Tính chất) và đóng khung `##VD` ngày 26/09.
@@ -38,6 +38,23 @@
 > luôn (giữ nguyên `<h2 className="pv-h-lt">{title}</h2>` — tiêu đề mục, không phải combo nhãn
 > lặp). **Bài học: xoá 1 lớp bọc ở DangBlock chưa đủ — phải soát MỌI nơi gọi `<div
 > className="pv-box-lt">`/`hp-box-lt` bằng grep, không suy luận "chỗ kia chắc khác".**
+>
+> **⭐ 26/09 — thêm `##BT` (Bài tập tự luyện) — khối THỨ 8, gộp nhóm dưới 1 tiêu đề dùng chung.**
+> Khác `##VD` (có lời giải, đóng khung màu riêng từng câu): `##BT` là đề cho HS TỰ GIẢI, KHÔNG
+> có lời giải, KHÔNG đóng khung màu — nhiều khối `##BT` LIÊN TIẾP gộp chung dưới 1 tiêu đề
+> "BÀI TẬP TỰ LUYỆN" (giống mockup) thay vì mỗi câu 1 tiêu đề riêng. Tag luôn "Câu N" đánh số
+> riêng (khác bộ đếm Ví dụ). Cơ chế gộp nhóm (`laDauNhomBaiTap`) viết 1 lần trong
+> `lythuyetBlocks.ts`, gọi lại ở CẢ 3 nơi render (`LyThuyetBlocksPreview`, `LyThuyetBody`,
+> `HinhPrintView.tsx`) — đúng bài học §grep-toàn-repo ở trên, không viết lặp logic 3 lần.
+> **Verify:** `tsc` sạch; click-through trên app KHÔNG thành công lần này (layout màn Bản đồ bị
+> bóp hẹp bất thường trong phiên browser test, thao tác click sai dạng liên tục) — dựa vào suy
+> luận code + cùng pattern đã verify nhiều lần trước đó, RỦI RO THẤP nhưng CHƯA mắt thấy tận nơi
+> như các lần khác. Bạn tự kiểm khi rảnh, báo lại nếu sai.
+>
+> **⭐ 26/09 — `##VD` chuẩn hoá TUYỆT ĐỐI: tag luôn "Ví dụ N" (đánh số theo thứ tự xuất hiện),
+> KHÔNG BAO GIỜ để trần "Ví dụ" (thiếu số) hay dính dấu chấm** — bỏ hẳn việc lấy tiêu đề từ
+> marker/nhãn gốc cho loại này, luôn tự đếm và ghi đè. Áp dụng ngay cả khi Gemini/người soạn có
+> lỡ ghi tiêu đề khác sau `##VD`.
 >
 > **⭐ 26/09 — `dinh_ly`/`tinh_chat`/`vd` đổi format giống "Kiến thức cần nhớ" trong mockup**
 > (tag phẳng cắt viền → tag PILL ĐẶC màu + drop-shadow, border-radius 14px, chữ thân 15px/1.65

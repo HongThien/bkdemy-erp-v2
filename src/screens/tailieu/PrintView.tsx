@@ -8,8 +8,8 @@ import { listLop } from '../../lib/nhansu'
 import { hsCoMatCuaBuoi, ngayBuoiHopLeCuaLop } from '../../lib/gami'
 import { congNgay } from '../../lib/tuan'
 import { BK_CSS, BtvnBkHead } from './bkPrint'
-import { MathText, LT_CORE_CSS, LyThuyetBlockView } from '../kho/ui'
-import { parseLyThuyetBlocks } from '../../lib/lythuyetBlocks'
+import { MathText, LT_CORE_CSS, LyThuyetBlockView, BaiTapHeader } from '../kho/ui'
+import { parseLyThuyetBlocks, laDauNhomBaiTap } from '../../lib/lythuyetBlocks'
 import { uploadKhoFile } from '../../lib/kho/api'
 import type { CauHoi } from '../../lib/kho/api'
 
@@ -584,9 +584,12 @@ function LyThuyetBody({ text }: { text: string }) {
   if (blocks.length <= 1 && blocks[0]?.loai === 'text' && blocks[0].noiDung.split('\n').length <= LT_BLK_MAX) {
     return <div className="pv-math"><MathText>{text}</MathText></div>
   }
-  return <>{blocks.map((b, i) => b.loai === 'text'
-    ? <LyThuyetTextChunks key={i} text={b.noiDung} />
-    : <LyThuyetBlockView key={i} b={b} />)}</>
+  return <>{blocks.map((b, i) => (
+    <Fragment key={i}>
+      {laDauNhomBaiTap(blocks, i) && <BaiTapHeader />}
+      {b.loai === 'text' ? <LyThuyetTextChunks text={b.noiDung} /> : <LyThuyetBlockView b={b} />}
+    </Fragment>
+  ))}</>
 }
 
 // Logic ngắt trang GỐC (trước khi có kí hiệu) — 1 đoạn text thường, tách bởi dòng trống ở tầng trên.
