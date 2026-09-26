@@ -88,6 +88,8 @@
   </div>
   <div class="roomRow"><span class="muted">Mã phòng</span><input id="regRoom" maxlength="8" autocomplete="off"><span class="muted" style="font-size:12px">TV và iPad cùng mã mới thấy nhau · <b>mỗi trạm (mỗi TV) một mã riêng</b>, vd TRAM1, TRAM2</span></div>
   <button class="primary" id="regOk" style="font-size:22px;padding:14px 50px">Xong</button>
+  <div class="muted" style="font-size:14px">Game chơi riêng, không cần TV — bấm là vào thẳng:</div>
+  <div class="grid" id="gridSolo" style="grid-template-columns:repeat(auto-fit,minmax(200px,260px));justify-content:center"></div>
 </div>
 
 <!-- TV: menu game -->
@@ -122,6 +124,7 @@
 const $=id=>document.getElementById(id);
 const MAXP=8,SLOTS=Array.from({length:MAXP},(_,i)=>i+1);
 // Danh mục game — nguồn duy nhất cho cả TV lẫn iPad. tv:true = chỉ chơi trên laptop/TV, iPad không mở.
+// solo:true = game chơi riêng trên 1 máy, KHÔNG nối TV: bấm là mở thẳng trên chính máy đó (không bắt chọn TV/iPad, không đẩy sang máy khác).
 const GAMES=[
   {id:'dap-chuot',ic:'🐹',n:'Đập Chuột',d:'iPad · 40 giây'},
   {id:'tim-nhan-vat-an',ic:'🔎',n:'Tìm Nhân Vật Ẩn',d:'iPad · 40 giây, đúng +1 sai −1'},
@@ -135,7 +138,7 @@ const GAMES=[
   {id:'dua-vit',ic:'🏁',n:'Đua Trung Thu',d:'10 người, nhân vật 3D',tv:true},
   {id:'mo-ruong',ic:'🎁',n:'Mở Rương',d:'cảnh 3D',tv:true},
   {id:'doan-so',ic:'🎲',n:'Đoán Số',d:'10 người',tv:true},
-  {id:'bk-escape',ic:'🚪',n:'BK Escape',d:'1 iPad / nhóm · 4 chữ cái · 22 phút · quản trò'},
+  {id:'bk-escape',ic:'🚪',n:'BK Escape',d:'1 iPad / nhóm · 4 chữ cái · 22 phút · quản trò',solo:true},
   {id:'giai-ma',ic:'🔐',n:'Giải Mã Đồng Đội',d:'giáo viên · mỗi người một điện thoại, chủ trò mở ở đây',tv:true},
 ];
 const SB_URL='https://osrvycilwshkzhljuxef.supabase.co',SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4';
@@ -180,8 +183,11 @@ function onOpen(p){if(isTV()||!p)return;const nw=Date.now();if(p.tv){if(HF.tv&&H
 
 function show(id){['reg','menu','wait','tvonly'].forEach(s=>$(s).classList.toggle('show',s===id));$('frame').classList.toggle('show',id==='frame')}
 function gameUrl(g){const u=new URLSearchParams({role:isTV()?'tv':'player',slot:D.slot,room:D.room});return g.id+'.html?'+u}
+function openSolo(g){location.href=g.id+'.html'}
 function openGame(id,fromTV){
-  const g=GAMES.find(x=>x.id===id);cur=id;
+  const g=GAMES.find(x=>x.id===id);
+  if(g&&g.solo){if(!fromTV)openSolo(g);return}
+  cur=id;
   if(!g){$('frame').src='about:blank';show(isTV()?'menu':'wait');$('btnMenu').style.display='none';if(isTV())pushState();return}
   if(!isTV()&&g.tv){$('frame').src='about:blank';$('tvonlyName').textContent=g.ic+' '+g.n;show('tvonly');return}
   $('frame').src=gameUrl(g);show('frame');
@@ -191,7 +197,7 @@ function openGame(id,fromTV){
 function toMenu(){openGame(null)}
 
 // ---------- render ----------
-function card(g){return `<div class="card${g.tv?' tv':''}" data-id="${g.id}"><span class="tag">${g.tv?'CHỈ TV':'iPad'}</span><div class="ic">${g.ic}</div><div class="n">${g.n}</div><div class="d">${g.d}</div></div>`}
+function card(g){return `<div class="card${g.tv?' tv':''}" data-id="${g.id}"><span class="tag">${g.tv?'CHỈ TV':g.solo?'CHƠI RIÊNG':'iPad'}</span><div class="ic">${g.ic}</div><div class="n">${g.n}</div><div class="d">${g.d}</div></div>`}
 function bindGrid(el){el.innerHTML=GAMES.map(card).join('');el.querySelectorAll('.card').forEach(c=>c.onclick=()=>openGame(c.dataset.id))}
 function renderChips(){if(!isTV())return;const w=$('dupHub');if(w){w.style.display=ntv>1?'':'none';w.textContent='⚠ Có '+ntv+' màn hình TV cùng phòng '+D.room+' — iPad sẽ bị nhảy game/văng. Mỗi trạm phải đặt MÃ PHÒNG KHÁC (bấm ⚙ góc phải).'}$('chips').innerHTML=SLOTS.map(i=>`<span class="chip${online[i]?' on':''}">iPad ${i}${online[i]?' ✓':''}</span>`).join('')}
 
@@ -211,6 +217,7 @@ $('btnMenu').onclick=toMenu;
 document.addEventListener('gesturestart',e=>e.preventDefault());
 addEventListener('keydown',e=>{if(isTV()&&cur&&e.key==='Escape')toMenu()});
 async function boot(){
+  { const el=$('gridSolo'),sg=GAMES.filter(g=>g.solo); el.innerHTML=sg.map(card).join(''); el.querySelectorAll('.card').forEach(c=>c.onclick=()=>openSolo(GAMES.find(g=>g.id===c.dataset.id))) }
   if(!D.role){showReg(true);return}
   $('who').textContent=whoLbl();$('roomLbl').textContent='· phòng '+D.room;
   if(isTV()){bindGrid($('gridTV'));renderChips();show('menu');
