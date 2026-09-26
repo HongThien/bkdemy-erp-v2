@@ -1,7 +1,7 @@
-# spec-format-noidung.md — Đóng khung nội dung lý thuyết (định lý · định nghĩa · chú ý · phương pháp giải · ví dụ · nhận xét)
+# spec-format-noidung.md — Đóng khung nội dung lý thuyết (định lý · định nghĩa · tính chất · chú ý · phương pháp giải · ví dụ · nhận xét)
 
 > ĐỌC trước khi đụng `LyThuyetModal` (src/screens/kho/BanDo.tsx) hoặc `LyThuyetBody`/PrintView.
-> Trạng thái: **CHỐT XONG (24/09) — sẵn sàng code.**
+> Trạng thái: **ĐÃ CODE + DEPLOY (24–26/09).** Thêm `##TC` (Tính chất) và đóng khung `##VD` ngày 26/09.
 
 ## 0. Vấn đề
 
@@ -12,11 +12,11 @@ Nội dung lý thuyết của 1 dạng hiện là **1 chuỗi text phẳng** (c�
 Khi ghép ra PDF, `LyThuyetBody` (src/screens/tailieu/PrintView.tsx:577-590) chỉ lo
 **ngắt trang** (né mồ côi dòng cuối) — không hiểu ngữ nghĩa "đây là định lý/chú ý".
 
-Cần: **6 loại khối** — định lý, định nghĩa, chú ý, phương pháp giải, ví dụ, nhận xét —
-đúng cấu trúc chuẩn 1 dạng toán hay có trong sách/tài liệu (lý thuyết → phương pháp giải
-→ ví dụ → nhận xét). KHÔNG đổi cách soạn (vẫn gõ text liền mạch trong textarea đó), KHÔNG
-cần UI chọn block riêng (không có màn "build tài liệu thủ công" — tài liệu do hệ tự ghép
-từ kho). Hình vẽ KHÔNG thuộc phạm vi file này — xem §5.
+Cần: **7 loại khối** — định lý, định nghĩa, tính chất, chú ý, phương pháp giải, ví dụ,
+nhận xét — đúng cấu trúc chuẩn 1 dạng toán hay có trong sách/tài liệu (lý thuyết →
+phương pháp giải → ví dụ → nhận xét). KHÔNG đổi cách soạn (vẫn gõ text liền mạch trong
+textarea đó), KHÔNG cần UI chọn block riêng (không có màn "build tài liệu thủ công" —
+tài liệu do hệ tự ghép từ kho). Hình vẽ KHÔNG thuộc phạm vi file này — xem §5.
 
 ## 1. Cú pháp đánh dấu — kí hiệu đầu dòng, kiểu admonition (MkDocs/Docusaurus)
 
@@ -28,6 +28,9 @@ Nếu Δ = b² − 4ac ≥ 0 thì phương trình có nghiệm x = (−b ± √�
 
 ##ĐN Định nghĩa 1
 Phương trình bậc hai một ẩn là phương trình có dạng ax² + bx + c = 0...
+
+##TC Tính chất giao hoán
+Nếu a = b thì a + c = b + c với mọi c.
 
 ##CY
 Luôn kiểm tra a ≠ 0 trước khi áp dụng công thức nghiệm...
@@ -44,19 +47,26 @@ Lời giải. Ta có a = 2, b = −5, c = 2 ⇒ Δ = 9 > 0. Vậy x₁ = 2, x₂
 Δ là số chính phương nên nghiệm là số hữu tỉ — có thể thử nhẩm nghiệm trước.
 ```
 
-- `##ĐL` / `##ĐN` / `##CY` / `##PP` / `##VD` / `##NX`, đứng đầu dòng, có thể kèm tiêu đề
-  ngay trên cùng dòng.
+- `##ĐL` / `##ĐN` / `##TC` / `##CY` / `##PP` / `##VD` / `##NX`, đứng đầu dòng, có thể kèm
+  tiêu đề ngay trên cùng dòng.
 - Nội dung khối = mọi dòng sau đó **tới dòng trống kế tiếp** (đúng quy ước ngắt đoạn đã có
   sẵn trong lý thuyết hiện tại — không đổi thói quen soạn).
 - **`##PP` riêng 1 quy tắc khác:** mỗi DÒNG không trống bên trong khối = 1 bước, tự đánh số
   thứ tự + nối bằng đường kẻ dọc (timeline) khi render — không cần gõ số ①②③ tay như trước.
+- **`##VD` đóng khung NGUYÊN CẢ ĐỀ BÀI LẪN LỜI GIẢI** (CEO chốt 26/09 — ban đầu định để nhẹ
+  không khung, đổi ý muốn đề bài cũng nằm trong khung). Không tách riêng đề/lời giải thành
+  2 khối — cả khối `##VD` (kể cả dòng "Lời giải. ..." người soạn gõ tiếp theo) nằm chung 1
+  khung viền, giống `dinh_ly`/`tinh_chat` (khung + tag nổi trên viền, chỉ khác màu — navy).
+- **`##TC` (Tính chất)** dùng khi nội dung là 1 tính chất/hệ quả (gần giống định lý nhưng
+  không phải định lý được chứng minh hình thức) — cùng kiểu khung với `dinh_ly` (viền + tag
+  nổi trên viền), chỉ khác màu (tím `#7c5cbf` — phân biệt mắt với xanh của `dinh_ly`).
 - Đoạn KHÔNG có kí hiệu → render y như cũ (text phẳng, không khung).
 - **KHÔNG có `##HV`/hình ở đây** — xem §5 "Ngoài phạm vi": hình vẽ không thuộc lý thuyết.
 
 ## 2. Parser dùng chung — không phân biệt môn
 
-1 hàm (`src/lib/lythuyetBlocks.ts`, chưa tạo) tách chuỗi `noi_dung` thành mảng:
-`{ loai: 'text' | 'dinh_ly' | 'dinh_nghia' | 'chu_y' | 'phuong_phap' | 'vi_du' | 'nhan_xet', tieuDe?: string, noiDung: string }[]`.
+1 hàm (`src/lib/lythuyetBlocks.ts`) tách chuỗi `noi_dung` thành mảng:
+`{ loai: 'text' | 'dinh_ly' | 'dinh_nghia' | 'tinh_chat' | 'chu_y' | 'phuong_phap' | 'vi_du' | 'nhan_xet', tieuDe: string, noiDung: string }[]`.
 
 Vì cả 4 bảng lý thuyết dùng chung shape `noi_dung: text`, parser này **không cần biết đang
 ở môn nào** — đúng luật đối xứng §1.6 CLAUDE.md (1 cơ chế chạy y hệt mọi môn).
@@ -73,14 +83,14 @@ Mockup đã CEO duyệt: https://claude.ai/artifact/8Q1AZwDGR14f7AjzX67Vcw (2 tr
   — CEO đã xác nhận hướng này hợp lý hơn cho người dùng (22/09).
 - **`LyThuyetBody` trong PrintView.tsx** — tách 2 luồng trong cùng hàm:
   - Đoạn `loai: 'text'` → giữ nguyên logic ngắt trang hiện tại (CHO PHÉP vỡ dòng để né mồ côi).
-  - Đoạn có khung (`dinh_ly`/`dinh_nghia`/`chu_y`/`phuong_phap`/`vi_du`/`nhan_xet`) → render
-    qua core CSS với `break-inside: avoid` — **ngược hẳn** logic phía trên (khung TUYỆT ĐỐI
-    không vỡ giữa 2 trang, thà đẩy nguyên khối sang trang sau). Đây là chỗ dễ lẫn nhất khi
-    code, phải tách rõ nhánh, không dùng chung 1 logic ngắt trang cho cả 2 loại.
+  - Đoạn có khung (`dinh_ly`/`dinh_nghia`/`tinh_chat`/`chu_y`/`phuong_phap`/`vi_du`/`nhan_xet`)
+    → render qua core CSS với `break-inside: avoid` — **ngược hẳn** logic phía trên (khung
+    TUYỆT ĐỐI không vỡ giữa 2 trang, thà đẩy nguyên khối sang trang sau). Đây là chỗ dễ lẫn
+    nhất khi code, phải tách rõ nhánh, không dùng chung 1 logic ngắt trang cho cả 2 loại.
     `phuong_phap` (timeline nhiều bước) dài hơn các khối khác — nếu 1 khối `##PP` quá dài
     tự nó tràn quá 1 trang thì vẫn phải cho vỡ giữa các BƯỚC (không vỡ giữa 1 bước), khác
-    với `dinh_ly`/`dinh_nghia`/`chu_y`/`vi_du`/`nhan_xet` (luôn nguyên khối, không có "bước"
-    con bên trong nên không có chỗ để vỡ hợp lý).
+    với các khối còn lại (luôn nguyên khối, không có "bước" con bên trong nên không có chỗ
+    để vỡ hợp lý).
 
 ## 4. Phạm vi môn (CEO chốt 24/09)
 
@@ -88,6 +98,17 @@ Mockup đã CEO duyệt: https://claude.ai/artifact/8Q1AZwDGR14f7AjzX67Vcw (2 tr
 `khtn_dang_ly_thuyet` / `hinh_hoc_bai_ly_thuyet`) — KHÔNG làm từng môn riêng rồi rollout dần.
 Hợp lý vì parser/core CSS vốn đã không phân biệt môn (§2) — code 1 lần, cắm vào cả 4 nơi
 `LyThuyetModal`/`LyThuyetBody` đọc/ghi 4 bảng đó cùng lúc.
+
+## 5b. AI tự gợi ý gắn kí hiệu lúc bóc OCR (CEO chốt 26/09)
+
+`buildLyThuyetPrompt`/`buildTheoryIngestPrompt` (`src/lib/kho/api.ts`) — dùng khi bấm
+"🪄 Bóc chữ"/"🖼 Bóc + hình" trong `LyThuyetModal` — đã được dặn thêm: khối nào AI RÕ RÀNG
+nhận ra thuộc 1 trong 7 loại thì tự gắn `##XX` ngay khi bóc, mơ hồ thì để nguyên không đoán.
+
+**Đây KHÔNG phải "máy tự động gắn nhãn không giám sát"** — khác hẳn cách làm bị cấm ở §5:
+kết quả AI luôn đổ vào textarea soạn, người soạn NHÌN THẤY khung ngay trong preview
+(nhờ đã có ở phần trên) và có thể sửa/xoá kí hiệu sai TRƯỚC khi bấm Lưu — đúng nguyên tắc
+"AI gợi ý → người confirm" đã có sẵn ở CLAUDE.md §5 (Principle 6), không phải ngoại lệ mới.
 
 ## 5. Ngoài phạm vi (CEO chốt 22/09) — KHÔNG thuộc file này
 

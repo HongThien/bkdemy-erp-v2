@@ -4,7 +4,7 @@
 // đúng luật đối xứng §1.6 CLAUDE.md. Dùng ở 2 nơi: preview trong LyThuyetModal (screens/kho/ui.tsx) và
 // render PDF (LyThuyetBody, screens/tailieu/PrintView.tsx).
 
-export type LyThuyetBlockLoai = 'text' | 'dinh_ly' | 'dinh_nghia' | 'chu_y' | 'phuong_phap' | 'vi_du' | 'nhan_xet'
+export type LyThuyetBlockLoai = 'text' | 'dinh_ly' | 'dinh_nghia' | 'tinh_chat' | 'chu_y' | 'phuong_phap' | 'vi_du' | 'nhan_xet'
 export type LyThuyetBlock = { loai: LyThuyetBlockLoai; tieuDe: string; noiDung: string }
 
 // Kí hiệu đứng đầu dòng đầu tiên của 1 đoạn (đoạn = tách bởi dòng trống, đúng quy ước ngắt đoạn lý
@@ -13,6 +13,7 @@ export type LyThuyetBlock = { loai: LyThuyetBlockLoai; tieuDe: string; noiDung: 
 const MARKER_LOAI: [string, LyThuyetBlockLoai][] = [
   ['##ĐL', 'dinh_ly'], ['##DL', 'dinh_ly'],
   ['##ĐN', 'dinh_nghia'], ['##DN', 'dinh_nghia'],
+  ['##TC', 'tinh_chat'],
   ['##CY', 'chu_y'],
   ['##PP', 'phuong_phap'],
   ['##VD', 'vi_du'],
