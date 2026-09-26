@@ -30,6 +30,20 @@
 > **Verify:** chỉ `tsc` sạch, KHÔNG kịp click-through 1 tài liệu PDF thật (cần ghi dữ liệu test
 > vào 1 dạng thật rồi dọn lại, tốn công hơn giá trị biên) — rủi ro thấp vì chỉ bỏ 2 lớp div bọc
 > ngoài, không đổi logic bên trong `LyThuyetBlockView`/`LyThuyetBody` (đã verify nhiều lần).
+>
+> **⭐ 26/09 (tiếp) — `LtBlock` (lý thuyết CẤP CHUYÊN ĐỀ) CŨNG bị lặp nền y hệt DangBlock, sót
+> lại lúc đầu vì tưởng h2 title là "khác bản chất".** Ảnh CEO gửi (builder Hình, "T14T110102")
+> thực ra render qua `LtBlock` (`pv-h-lt` + `pv-box-lt` nền xanh) — nền xanh NGOÀI bao quanh cả
+> khung "Tính chất" tím bên trong. Đã bỏ `<div className="pv-box-lt">` wrapper của `LtBlock`
+> luôn (giữ nguyên `<h2 className="pv-h-lt">{title}</h2>` — tiêu đề mục, không phải combo nhãn
+> lặp). **Bài học: xoá 1 lớp bọc ở DangBlock chưa đủ — phải soát MỌI nơi gọi `<div
+> className="pv-box-lt">`/`hp-box-lt` bằng grep, không suy luận "chỗ kia chắc khác".**
+>
+> **⭐ 26/09 — `dinh_ly`/`tinh_chat`/`vd` đổi format giống "Kiến thức cần nhớ" trong mockup**
+> (tag phẳng cắt viền → tag PILL ĐẶC màu + drop-shadow, border-radius 14px, chữ thân 15px/1.65
+> thay vì kế thừa cỡ chữ ambient — CEO chê "chữ nhỏ, xấu hơn mockup"). `##TC` giờ dùng khi nội
+> dung là tính chất/hệ quả HOẶC đọc như mục "Kiến thức cần nhớ"/tóm tắt kiến thức — prompt
+> Gemini đã dặn thêm (không tách `##TC`/kiến-thức-cần-nhớ thành 2 loại riêng, gộp làm 1).
 
 ## 0. Vấn đề
 

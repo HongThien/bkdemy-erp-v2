@@ -607,7 +607,7 @@ function LtBlock({ title, lt, big }: { title: string; lt?: { noi_dung: string; f
   return (
     <section className="pv-sec">
       <h2 className={big ? 'pv-h-lt' : 'pv-h-bt'}>{title}</h2>
-      {lt.noi_dung?.trim() && <div className="pv-box-lt"><LyThuyetBody text={lt.noi_dung} /></div>}
+      {lt.noi_dung?.trim() && <LyThuyetBody text={lt.noi_dung} />}
       {lt.file_url && <a href={lt.file_url} className="pv-filelink">📎 {lt.ten_file || 'Tài liệu kèm'}</a>}
     </section>
   )
