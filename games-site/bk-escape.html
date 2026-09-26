@@ -185,6 +185,11 @@
   <div id="letters"></div>
   <div style="display:flex;gap:12px"><button id="btnLCancel">Huỷ</button><button class="primary" id="btnLOk" disabled>Chốt chữ cái</button></div>
 </div></div>
+<div class="ov" id="lrOv"><div class="ovBox" style="max-height:92vh;overflow:auto;text-align:left;align-items:stretch;width:min(94vw,860px)">
+  <div style="font-size:14px;color:var(--muted);text-align:center">⏸ Đồng hồ đang dừng — xem đáp án xong bấm nút dưới cùng</div>
+  <div id="lrBody"></div>
+  <button class="primary" id="btnLrNext" style="font-size:22px;padding:14px;align-self:center"></button>
+</div></div>
 <div class="ov" id="pauseOv"><div class="ovBox">
   <div style="font-size:48px;font-weight:900">⏸ TẠM DỪNG</div>
   <div class="muted">Đồng hồ đang đứng. Chỉ quản trò bấm.</div>
@@ -282,7 +287,14 @@ function enterLetter(ch){ // nhập chữ cái (1 lần) — bất cứ lúc nà
 }
 function missLetter(){const L=cur();L.st='miss';L.end=now();sBad();
   flash(`<div class="big" style="color:var(--red)">⌛ HẾT GIỜ</div><div style="font-size:22px">Mất chữ cái này</div>`,2200,nextLetter)}
-function nextLetter(){if(G.li<3)startLetter(G.li+1);else finish()}
+function nextLetter(){ // xong 1 chữ ⇒ dừng đồng hồ, hiện đáp án + giải thích 4 câu của chữ đó (chữ đã khép nên không lộ gì)
+  if(G.li>=3){finish();return}
+  pausedAt=Date.now();
+  $('lrBody').innerHTML=letterHTML(G.L[G.li],G.li);
+  $('btnLrNext').textContent=`▶ Sang chữ cái ${G.li+2}/4`;
+  $('lrOv').classList.add('show');$('lrOv').querySelector('.ovBox').scrollTop=0;
+}
+$('btnLrNext').onclick=()=>{if(!pausedAt)return;pauseAcc+=Date.now()-pausedAt;pausedAt=0;$('lrOv').classList.remove('show');startLetter(G.li+1)};
 
 function finish(){
   clearInterval(timer);timer=null;LAST=G;
@@ -298,9 +310,10 @@ function finish(){
 }
 function renderReview(){
   if(!LAST)return;
-  $('revBody').innerHTML=LAST.L.map((l,i)=>`<div class="rvL"><h3>Chữ cái ${i+1}: mã <span style="color:var(--gold)">${l.slip.code}</span> → chữ <span style="color:var(--gold)">${l.slip.letter}</span> · ${l.st==='ok'?'<span style="color:var(--green)">✓ tìm đúng</span>':l.st==='bad'?'<span style="color:#ff9a9a">✗ nhập '+esc(l.entered)+'</span>':'<span style="color:#ff9a9a">⌛ hết giờ</span>'}</h3>`+
-    l.qs.map((q,j)=>`<div class="rvQ"><div class="st ${q.st==='ok'?'ok':q.st==='wait'?'':'bad'}">${q.st==='ok'?'✓':q.st==='wait'?'–':'✗'}</div><div class="muted" style="font-size:13px">Câu ${j+1} · ${ESC_GNAME[q.g]} · ${esc(q.name)}</div><div class="qt">${esc(q.q)}</div><div class="ans">Nhóm: ${q.st==='ok'?'<b style="color:var(--green)">'+q.given+' ✓</b>':q.st==='bad'?'<span style="color:#ff9a9a">'+q.given+' ✗</span>':q.st==='timeout'?'<span style="color:#ff9a9a">hết giờ / không trả lời</span>':'<span class="muted">chưa tới câu này</span>'} · Đáp án đúng: <b>${q.a}</b></div><div class="why">💡 ${esc(q.w||'')}</div></div>`).join('')+`</div>`).join('');
+  $('revBody').innerHTML=LAST.L.map(letterHTML).join('');
 }
+function letterHTML(l,i){return `<div class="rvL"><h3>Chữ cái ${i+1}: mã <span style="color:var(--gold)">${l.slip.code}</span> → chữ <span style="color:var(--gold)">${l.slip.letter}</span> · ${l.st==='ok'?'<span style="color:var(--green)">✓ tìm đúng</span>':l.st==='bad'?'<span style="color:#ff9a9a">✗ nhập '+esc(l.entered)+'</span>':'<span style="color:#ff9a9a">⌛ hết giờ</span>'}</h3>`+
+    l.qs.map((q,j)=>`<div class="rvQ"><div class="st ${q.st==='ok'?'ok':q.st==='wait'?'':'bad'}">${q.st==='ok'?'✓':q.st==='wait'?'–':'✗'}</div><div class="muted" style="font-size:13px">Câu ${j+1} · ${ESC_GNAME[q.g]} · ${esc(q.name)}</div><div class="qt">${esc(q.q)}</div><div class="ans">Nhóm: ${q.st==='ok'?'<b style="color:var(--green)">'+q.given+' ✓</b>':q.st==='bad'?'<span style="color:#ff9a9a">'+q.given+' ✗</span>':q.st==='timeout'?'<span style="color:#ff9a9a">hết giờ / không trả lời</span>':'<span class="muted">chưa tới câu này</span>'} · Đáp án đúng: <b>${q.a}</b></div><div class="why">💡 ${esc(q.w||'')}</div></div>`).join('')+`</div>`}
 const sortRank=a=>[...a].sort((x,y)=>y.n-x.n||x.t-y.t);
 const xu=i=>i===0?5:i===1?3:2;
 function renderRank(){
