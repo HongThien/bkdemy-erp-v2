@@ -649,7 +649,6 @@ function DangBlock({ p, gv, lt = true, colByCau, hinhCheDoByCau }: { p: PhanReso
         )}
         {p.caus.length > 0 && (
           <>
-            <BaiTapHeader />
             <CauFlow hop items={p.caus.map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau?.[c.ma_cau] }) }))} />
           </>
         )}
@@ -886,10 +885,11 @@ export function TLNTable({ rows }: { rows: TLNRow[] }) {
 // NHẤT → đề thấp chừa dòng trống → dòng kẻ 2 cột bắt đầu NGANG NHAU. DÒNG KẺ = từng HÀNG lưới riêng (mỗi hàng
 // 1 dòng/cột), là block rời nên paged.js NGẮT ĐƯỢC giữa các dòng → chảy lấp đáy trang, KHÔNG nhảy cả câu
 // (khác atomic). Lưới --pitch giữ mọi dòng thẳng hàng. cols<=1 → 1 cột như thường.
-// `hop` = đóng khung TỪNG câu (class gắn lên .pv-caulist có sẵn — KHÔNG thêm lớp div bọc, xem bug
-// "Fragment không phải div" ở BuoiBlock: hộp lồng quanh nhiều mục làm paged.js trắng trang/lặp nội dung).
-export function CauColumns({ cols, parts, hop }: { cols: number; parts: CauPart[]; hop?: boolean }) {
-  const hc = hop ? ' pv-caulist-hop' : ''
+// `hop` (CauFlow hop): vẽ viền trái/phải lên CHÍNH .pv-caulist (nhóm cuối thêm viền đáy) — khung liền 1 cụm
+// mà KHÔNG thêm div bọc (phòng bug div-bọc-nhiều-mục của BuoiBlock). Đo 26/09 trên 8S0: có/không khung đều
+// 8 trang, không trang trắng mới, không lặp câu. (Div bọc CHƯA được chứng minh gây treo — lần đo đó bị nhiễu.)
+export function CauColumns({ cols, parts, hop }: { cols: number; parts: CauPart[]; hop?: 'giua' | 'cuoi' }) {
+  const hc = hop ? ` pv-caulist-hop${hop === 'cuoi' ? ' hop-cuoi' : ''}` : ''
   if (cols <= 1) return <div className={`pv-caulist${hc}`}>{parts.map((p) => <div key={p.key} className="pv-cau">{p.content}{p.lines > 0 && <WriteLines n={p.lines} />}</div>)}</div>
   const rows: (CauPart | null)[][] = []
   for (let i = 0; i < parts.length; i += cols) {
@@ -928,7 +928,12 @@ export function CauFlow({ items, hop }: { items: CauFlowItem[]; hop?: boolean })
     if (last && last.cols === cols) last.parts.push(it)
     else groups.push({ cols, parts: [it] })
   }
-  return <>{groups.map((g, i) => <CauColumns key={i} cols={g.cols} parts={g.parts} hop={hop} />)}</>
+  // `hop` = 1 khung liền cả cụm câu, tag "Bài tập tự luyện" nổi trên viền (vai trò như tag "Ví dụ", CEO 26/09).
+  // Không bọc div quanh cả cụm (thận trọng, xem CauColumns). Đầu khung = .pv-bt-cap đứng TRƯỚC (anh em, không
+  // bọc); thân = viền trái/phải vẽ lên từng .pv-caulist; nhóm cuối đóng viền đáy.
+  const ds = groups.map((g, i) => <CauColumns key={i} cols={g.cols} parts={g.parts} hop={hop ? (i === groups.length - 1 ? 'cuoi' : 'giua') : undefined} />)
+  if (!hop) return <>{ds}</>
+  return <><div className="pv-bt-cap"><span className="pv-lt-tag">Bài tập tự luyện</span></div>{ds}</>
 }
 
 // CSS toàn cục (màn hình + cô lập khi in) — KHÔNG đưa vào paged.js.
@@ -977,12 +982,16 @@ const CONTENT_CSS = `
 .pv-row > .pv-cau:not(:first-child){margin-left:9mm}
 .pv-cau{margin:12px 0;break-inside:avoid}
 .pv-cau-no{font-weight:700;color:var(--pv-accent,#E91E8C);margin-right:5px}
-/* "Bài tập tự luyện" (DangBlock, CEO 26/09): đóng khung TỪNG câu xanh lá — cùng họ màu khung ##BT
-   (LT_CORE_CSS). Khung đặt lên .pv-cau / .pv-pcell (vốn đã là khối anh-em break-inside:avoid, kiểu
-   paged.js ngắt đúng) — KHÔNG bọc 1 hộp quanh cả danh sách (bug trắng trang, xem BuoiBlock). */
-.pv-caulist-hop .pv-cau,.pv-caulist-hop .pv-pcell{border:2px solid #16a34a;background:#eefbf3;border-radius:12px;padding:10px 14px;box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.pv-caulist-hop .pv-pcell:empty{border:none;background:none}
-.pv-caulist-hop .pv-cau-no{color:#16a34a}
+/* "Bài tập tự luyện" (DangBlock, CEO 26/09): 1 khung liền cả cụm câu, tag nổi trên viền như "Ví dụ".
+   Xanh dương thương hiệu BK (#4c6fff, --blue ở bkPrint.tsx). Không dùng div bọc cả cụm (thận trọng — bug
+   div-bọc ở BuoiBlock). Khung = .pv-bt-cap (đỉnh, dính câu đầu) + viền trái/phải trên .pv-caulist-hop + đáy ở .hop-cuoi.
+   Sang trang giữa cụm thì khung "hở" ở mép trang — chấp nhận (như sách in). */
+.pv-bt-cap{position:relative;height:16px;margin-top:30px;border:2px solid #4c6fff;border-bottom:none;border-radius:14px 14px 0 0;background:#f5f7ff;break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pv-bt-cap > .pv-lt-tag{position:absolute;top:-14px;left:18px;background:#4c6fff;color:#fff;padding:6px 16px;border-radius:8px;font-size:12px;font-weight:800;letter-spacing:.04em;box-shadow:0 3px 6px rgba(76,111,255,.28)}
+.pv-caulist-hop{margin:0;padding:0 16px;border-left:2px solid #4c6fff;border-right:2px solid #4c6fff;background:#f5f7ff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pv-caulist-hop > .pv-cau:first-child{margin-top:4px}
+.pv-caulist-hop.hop-cuoi{border-bottom:2px solid #4c6fff;border-radius:0 0 14px 14px;padding-bottom:6px;margin-bottom:14px}
+.pv-caulist-hop .pv-cau-no{color:#4c6fff}
 /* Trả lời ngắn dạng BẢNG (TLNTable, xem PrintView.tsx) — cột 1 đề, cột 2 chỗ điền đáp án. Mỗi hàng
    break-inside:avoid (không xé đôi 1 câu) nhưng cả khối vẫn CHẢY được giữa các hàng qua trang. */
 .pv-tlnt{margin:4px 0}

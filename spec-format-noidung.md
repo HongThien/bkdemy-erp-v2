@@ -6,16 +6,21 @@
 > **⭐ 26/09 (tiếp) — palette + khung câu hỏi + chuẩn hoá "Bài giải".**
 > - Màu: Định nghĩa vàng `#c89b52` · Định lý TÍM `#7c5cbf` · `##TC` nhãn mặc định "Kiến thức cần nhớ"
 >   XANH DƯƠNG `#2D9CDB` · Chú ý cam · Phương pháp xám · Ví dụ hồng `#b23a72` · Nhận xét xanh ngọc ·
->   Bài tập XANH LÁ `#16a34a`.
-> - Câu hỏi THẬT trong "Bài tập tự luyện" (DangBlock/`CauFlow hop`) đóng khung TỪNG câu xanh lá — class
->   `pv-caulist-hop` gắn lên `.pv-caulist` có sẵn, KHÔNG thêm div bọc (bug trắng trang BuoiBlock).
+>   Bài tập XANH DƯƠNG BK `#4c6fff` (CEO bác xanh lá 26/09).
+> - Câu hỏi THẬT trong "Bài tập tự luyện" (DangBlock/`CauFlow hop`): **1 khung liền bao CẢ CỤM câu**
+>   (KHÔNG khung từng câu — CEO sửa 26/09), tag "Bài tập tự luyện" nổi trên viền, vai trò như tag "Ví dụ".
+>   Dựng KHÔNG div bọc: `.pv-bt-cap` (đỉnh khung + tag, anh em đứng trước) + viền trái/phải trên từng
+>   `.pv-caulist-hop` + viền đáy ở nhóm cuối `.hop-cuoi`. Qua trang thì khung hở ở mép trang (chấp nhận).
+>   Đo Giáo trình 8S0: có/không khung đều 8 trang, danh sách lặp câu y hệt (do đánh số BTVN, không phải khung).
+>   ⚠ Kết luận cũ "div bọc làm paged.js treo" là SAI — lần đo đó bị nhiễu (Browser pane bị ẩn ⇒ cả bản
+>   KHÔNG khung cũng >30s). Vẫn giữ cách không-bọc cho chắc (bug div-bọc thật ở BuoiBlock).
 >   Chưa áp cho Hình (`HinhPrintView`/MucsBlock render câu kiểu khác).
 > - Nhãn lời giải: mọi "Giải"/"Lời giải"/"Bài giải" (kể cả `**Giải:**`) HIỆN là "Bài giải:" căn giữa +
 >   gạch chân + đậm — cả trong `##VD` lẫn dòng đứng riêng trong lý thuyết cũ chưa gắn kí hiệu (khối
 >   `nhan_giai`, `tachNhanGiai` trong lythuyetBlocks.ts). Dữ liệu: mig `202609261247_chuan_hoa_nhan_bai_giai`
 >   thay 146 dòng / 94 bản ghi (dai_dang 78, khtn_dang 13, hgt_dang 2, dai_chuyen_de 1) "Giải" → "Bài giải:",
 >   áp bằng `--only` (10 file treo khác của phiên khác KHÔNG đụng). Prompt Gemini tự chuẩn hoá khi bóc.
-> - Verify trên PDF thật Giáo trình 8A: 29 câu khung xanh lá, 3 nhãn "Bài giải:" căn giữa/gạch chân,
+> - Verify trên PDF thật Giáo trình 8A (bản khung-từng-câu cũ): 29 câu, 3 nhãn "Bài giải:" căn giữa/gạch chân,
 >   0 dòng "Giải" trần. CHƯA đo được mức lấp đầy trang (khung mỗi câu thêm padding ⇒ có thể dài thêm trang).
 >
 > **⭐ 26/09 — HIỂU NHẦM đã sửa: "Bài tập tự luyện" KHÔNG nằm trong lý thuyết.** Lúc đầu tôi tưởng

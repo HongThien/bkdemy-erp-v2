@@ -207,9 +207,9 @@ export const LT_CORE_CSS = `
 .pv-lt-nx-body{padding-top:2px}
 .pv-lt-nx .pv-lt-tag{color:#2f9e6e;display:block;margin-bottom:3px;font-size:11.5px}
 .pv-lt-nx-txt{font-style:italic;color:#2c4b3c}
-.pv-lt-bt-header{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#16a34a;margin:20px 0 10px;break-after:avoid}
-.pv-lt-bt{position:relative;border:2px solid #16a34a;background:#eefbf3;border-radius:14px;padding:22px 18px 18px;margin:22px 0 18px;font-size:15px;line-height:1.65;break-inside:avoid}
-.pv-lt-bt .pv-lt-tag{position:absolute;top:-14px;left:18px;background:#16a34a;color:#fff;padding:6px 16px;border-radius:8px;font-size:12px;box-shadow:0 3px 6px rgba(22,163,74,.28)}
+.pv-lt-bt-header{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#4c6fff;margin:20px 0 10px;break-after:avoid}
+.pv-lt-bt{position:relative;border:2px solid #4c6fff;background:#f5f7ff;border-radius:14px;padding:22px 18px 18px;margin:22px 0 18px;font-size:15px;line-height:1.65;break-inside:avoid}
+.pv-lt-bt .pv-lt-tag{position:absolute;top:-14px;left:18px;background:#4c6fff;color:#fff;padding:6px 16px;border-radius:8px;font-size:12px;box-shadow:0 3px 6px rgba(76,111,255,.28)}
 `
 
 const LT_TIEU_DE_MAC_DINH: Record<LyThuyetBlock['loai'], string> = {
