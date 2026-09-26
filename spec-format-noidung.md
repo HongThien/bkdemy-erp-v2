@@ -3,6 +3,16 @@
 > ĐỌC trước khi đụng `LyThuyetModal` (src/screens/kho/BanDo.tsx) hoặc `LyThuyetBody`/PrintView.
 > Trạng thái: **ĐÃ CODE + DEPLOY (24–26/09).** Thêm `##TC` (Tính chất) và đóng khung `##VD` ngày 26/09.
 >
+> **⭐ 26/09 — HIỂU NHẦM đã sửa: "Bài tập tự luyện" KHÔNG nằm trong lý thuyết.** Lúc đầu tôi tưởng
+> "Câu 1/Câu 2" CEO chỉ trong ảnh là nội dung lý thuyết cần `##BT` — SAI. Đó là CÂU HỎI THẬT lấy
+> từ kho, render qua `CauFlow` trong `DangBlock` (PrintView.tsx), HOÀN TOÀN KHÔNG liên quan
+> `lythuyetBlocks.ts`. Đã thêm `<BaiTapHeader />` ngay trước `<CauFlow>` trong `DangBlock` — đúng
+> chỗ thật. **Verify LẦN NÀY THÀNH CÔNG**: mở PDF thật của "Giáo trình 8A" (buổi 17), lấy text
+> render ra, thấy "Bài tập tự luyện" xuất hiện đúng 1 lần ngay trước "Câu 1/Câu 2/Câu 3/Câu 4" ở
+> cả 2 dạng đầu — đúng thiết kế. `##BT` trong lý thuyết (thêm nhầm trước đó) vẫn giữ lại — vô hại,
+> có thể dùng nếu ai đó thật sự viết bài tập ngay trong ghi chú lý thuyết, nhưng KHÔNG phải chỗ
+> chính để làm "Bài tập tự luyện" — chỗ chính là `DangBlock`.
+>
 > **⭐ 26/09 — bug đã vá: KHÔNG PHẢI chỉ 1 chỗ render.** Ngoài `LyThuyetBody`
 > (src/screens/tailieu/PrintView.tsx, dùng chung Đại/HGT/KHTN), nhánh **Hình** có `HinhPrintView.tsx`
 > (src/screens/kho/hinh/) render "Lý thuyết mô hình" (`hp-box-lt`) BẰNG 1 ĐƯỜNG RIÊNG, gọi thẳng

@@ -648,7 +648,10 @@ function DangBlock({ p, gv, lt = true, colByCau, hinhCheDoByCau }: { p: PhanReso
           <LyThuyetBody text={p.lyThuyetDang.noi_dung} />
         )}
         {p.caus.length > 0 && (
-          <CauFlow items={p.caus.map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau?.[c.ma_cau] }) }))} />
+          <>
+            <BaiTapHeader />
+            <CauFlow items={p.caus.map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau?.[c.ma_cau] }) }))} />
+          </>
         )}
       </div>
     </section>
