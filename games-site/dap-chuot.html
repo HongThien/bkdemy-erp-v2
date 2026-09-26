@@ -3,6 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<style id="bk-ipad">/* Chống phóng to / cuộn / nảy trang khi chạm liên tục trên iPad (Thùy 26/09: "thanh trắng trồi lên ở dưới").
+   Nền html mặc định TRẮNG — trang nảy (rubber-band) là lộ ra; tô cùng màu tối của game. touch-action trên html áp cho mọi phần tử con
+   (trình duyệt lấy giao của cả chuỗi tổ tiên) ⇒ tắt chạm-đúp-phóng-to ở mọi chỗ, vẫn giữ chạm nhanh. */
+html{background:#080d24;overscroll-behavior:none;touch-action:manipulation}
+body{overscroll-behavior:none}
+*{-webkit-touch-callout:none}
+input,textarea{-webkit-touch-callout:default}
+img,svg,image{-webkit-user-drag:none}
+iframe{background:#080d24}
+</style>
+<script>
+(function(){ // chặn cuộn/nảy/pinch/nhấn-giữ; CHỈ cho cuộn trong khung thật sự cuộn được (hộp cài đặt, danh sách…)
+  function cuonDuoc(el){for(;el&&el.nodeType===1&&el!==document.body&&el!==document.documentElement;el=el.parentElement){var s=getComputedStyle(el);
+    if(/(auto|scroll)/.test(s.overflowY+' '+s.overflowX)&&(el.scrollHeight>el.clientHeight+1||el.scrollWidth>el.clientWidth+1))return true}return false}
+  document.addEventListener('touchmove',function(e){if(e.touches.length>1||!cuonDuoc(e.target))e.preventDefault()},{passive:false});
+  ['gesturestart','gesturechange','gestureend'].forEach(function(t){document.addEventListener(t,function(e){e.preventDefault()},{passive:false})});
+  document.addEventListener('dblclick',function(e){e.preventDefault()},{passive:false});
+  document.addEventListener('contextmenu',function(e){if(!(e.target.closest&&e.target.closest('input,textarea')))e.preventDefault()});
+})();
+</script>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Đập Chuột Trung Thu</title>
@@ -390,15 +410,22 @@ $('slotOk').onclick=()=>{C.role='player';C.slot=pickSlot;saveC();boot()};
 const P={name:'',ready:false,score:0,combo:0,maxCombo:0,token:false,playing:false,sched:null,perm:null,t0:0,idx:0,active:{},timers:[],dur:60,pts:DEF.pts,practice:false,matchId:null,lastPush:0,fin:false};
 function pShow(id){['pLobby','pGame','pResult'].forEach(s=>$(s).classList.toggle('show',s===id));$('pTop').style.display=id==='pGame'?'none':'flex'}
 function buildGrid(){$('grid').innerHTML=[...Array(9)].map((_,h)=>`<div class="hole" data-h="${h}"><div class="dirt"></div><div class="mole" id="m${h}"><svg class="mz" viewBox="0 0 120 130" preserveAspectRatio="xMidYMax meet"><use class="uM" href="#sMouse"/><use class="uB" href="#sBomb"/></svg><div class="badge"></div></div></div>`).join('');
-  $('grid').querySelectorAll('.hole').forEach(el=>el.addEventListener('pointerdown',e=>{e.preventDefault();tap(+el.dataset.h)}))}
+  const g=$('grid');if(!g._bound){g._bound=true;g.addEventListener('pointerdown',e=>{e.preventDefault();const t=holeAt(e.clientX,e.clientY);if(t.h>=0)tap(t.h,t.trong)},{passive:false})}}
+// Chạm nhạy hơn (Thùy 26/09 "bấm nhiều lần vẫn miss"): nghe cả LƯỚI (khe giữa hang, lề 2 bên không còn là vùng chết);
+// chọn hang gần nhất theo cỡ ô, ƯU TIÊN hang đang có chuột nếu ngón chạm lệch sang mép (≤0.75 ô tính từ tâm).
+function holeAt(x,y){let best=-1,bd=9,act=-1,ad=9;
+  for(const el of $('grid').children){if(!el.classList.contains('hole'))continue;const r=el.getBoundingClientRect(),h=+el.dataset.h;
+    const d=Math.max(Math.abs(x-(r.left+r.width/2))/r.width,Math.abs(y-(r.top+r.height/2))/r.height);
+    if(d<bd){bd=d;best=h}const a=P.active[h];if(a&&!a.hit&&d<0.75&&d<ad){ad=d;act=h}}
+  return act>=0?{h:act,trong:true}:{h:bd<0.75?best:-1,trong:bd<0.5}}
 function hud(){$('hScore').textContent=P.score;$('hCombo').textContent=P.combo>=3?'🔥 '+P.combo:'';$('hCombo').classList.toggle('hot',P.combo>=10)}
 function floatTxt(h,txt,neg){const f=document.createElement('div');f.className='float '+(neg?'neg':'pos');f.textContent=txt;$('grid').children[h].appendChild(f);setTimeout(()=>f.remove(),700)}
 function bigMsg(t,ms){const b=$('bigMsg');b.textContent=t;b.classList.add('show');clearTimeout(b._t);b._t=setTimeout(()=>b.classList.remove('show'),ms||900)}
 function showMole(m){const h=P.perm[m.hole],el=$('m'+h);el.className='mole '+m.type;el.querySelector('.badge').textContent=m.type==='normal'?'':TYPES[m.type].ic;el.querySelector('.badge').style.display=m.type==='normal'?'none':'';
   P.active[h]={m,hit:false};void el.offsetWidth;el.classList.add('up');
-  P.timers.push(setTimeout(()=>{if(P.active[h]&&P.active[h].m===m){el.classList.remove('up');P.active[h]=null;if(m.type!=='bomb'&&m.type!=='normal'){}}},m.dur))}
-function tap(h){if(!P.playing)return;const a=P.active[h];
-  if(!a||a.hit){if(P.combo>0){P.combo=0;hud()}return}
+  P.timers.push(setTimeout(()=>{if(P.active[h]&&P.active[h].m===m){el.classList.remove('up');P.timers.push(setTimeout(()=>{if(P.active[h]&&P.active[h].m===m)P.active[h]=null},220))}},m.dur))}
+function tap(h,trong){if(!P.playing)return;const a=P.active[h];
+  if(!a||a.hit){if(trong!==false&&P.combo>0){P.combo=0;hud()}return}
   a.hit=true;const el=$('m'+h),ty=a.m.type,pts=P.pts[ty];el.classList.add('hit');setTimeout(()=>{el.classList.remove('up','hit')},140);P.active[h]=null;
   if(ty==='bomb'){P.score=Math.max(0,P.score+pts);P.combo=0;floatTxt(h,pts,true);$('flash').style.opacity=1;setTimeout(()=>$('flash').style.opacity=0,200);beep(90,.35,'sawtooth',.12);if(navigator.vibrate)navigator.vibrate(80)}
   else{P.score+=pts;P.combo++;if(P.combo>P.maxCombo)P.maxCombo=P.combo;let txt='+'+pts;const b=COMBO_BONUS[P.combo];if(b){P.score+=b;txt+=' 🔥+'+b;bigMsg('🔥 '+P.combo+' COMBO!',800);beep(880,.2,'triangle',.1);setTimeout(()=>beep(1175,.3,'triangle',.1),120)}

@@ -3,6 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<style id="bk-ipad">/* Chống phóng to / cuộn / nảy trang khi chạm liên tục trên iPad (Thùy 26/09: "thanh trắng trồi lên ở dưới").
+   Nền html mặc định TRẮNG — trang nảy (rubber-band) là lộ ra; tô cùng màu tối của game. touch-action trên html áp cho mọi phần tử con
+   (trình duyệt lấy giao của cả chuỗi tổ tiên) ⇒ tắt chạm-đúp-phóng-to ở mọi chỗ, vẫn giữ chạm nhanh. */
+html{background:#080d24;overscroll-behavior:none;touch-action:manipulation}
+body{overscroll-behavior:none}
+*{-webkit-touch-callout:none}
+input,textarea{-webkit-touch-callout:default}
+img,svg,image{-webkit-user-drag:none}
+iframe{background:#080d24}
+</style>
+<script>
+(function(){ // chặn cuộn/nảy/pinch/nhấn-giữ; CHỈ cho cuộn trong khung thật sự cuộn được (hộp cài đặt, danh sách…)
+  function cuonDuoc(el){for(;el&&el.nodeType===1&&el!==document.body&&el!==document.documentElement;el=el.parentElement){var s=getComputedStyle(el);
+    if(/(auto|scroll)/.test(s.overflowY+' '+s.overflowX)&&(el.scrollHeight>el.clientHeight+1||el.scrollWidth>el.clientWidth+1))return true}return false}
+  document.addEventListener('touchmove',function(e){if(e.touches.length>1||!cuonDuoc(e.target))e.preventDefault()},{passive:false});
+  ['gesturestart','gesturechange','gestureend'].forEach(function(t){document.addEventListener(t,function(e){e.preventDefault()},{passive:false})});
+  document.addEventListener('dblclick',function(e){e.preventDefault()},{passive:false});
+  document.addEventListener('contextmenu',function(e){if(!(e.target.closest&&e.target.closest('input,textarea')))e.preventDefault()});
+})();
+</script>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Xếp Tháp Trung Thu</title>
