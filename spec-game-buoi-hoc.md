@@ -95,6 +95,19 @@ Thùy: trong phần chấm bài trên lớp có tính năng mới **xếp hạng
 | 10 | Chọn game | **GV chọn** game cho buổi |
 | 11 | Mở lại khi đã chơi | **Đã có EXP ghi (có HS chơi) ⇒ KHÔNG mở lại được nữa** |
 
+| 12 | "Lớp trên 10" tính theo | **Số HS có mặt** buổi đó |
+
+**LUẬT MỞ RƯƠNG BẢN LỚP (Thùy duyệt 27/09)** — giải nào mở rương đó, EXP bước 20, TB cả lớp ~200 EXP/HS/buổi:
+
+| Giải → Rương | EXP : tỉ lệ % | TB |
+|---|---|---|
+| Nhất → Vàng (200–400) | 200:2 · 220:4 · 240:7 · 260:10 · 280:14 · 300:26 · 320:14 · 340:10 · 360:7 · 380:4 · 400:2 | 300 |
+| Nhì → Bạc (200–300) | 200:10 · 220:15 · 240:25 · 260:25 · 280:15 · 300:10 | 250 |
+| Giải 3 → Gỗ (100–200) | 100:4 · 120:6 · 140:9 · 160:14 · 180:25 · 200:42 | 175 |
+
+TB/HS theo số có mặt: 3→242 · 5→215 · **8→200** · 10→195 · 11(1 Nhì)→193 · 11(2 Nhì)→200 · 12(2 Nhì)→198 · 14(2 Nhì)→195.
+Thùy yêu cầu đầu tiên "TB 250" — không đạt được với 3 khoảng này (lớp 8 bạn, tất cả ra MAX mới 238) ⇒ Thùy hạ mục tiêu còn 200.
+
 **Luồng dữ liệu (cách nối — CTO, theo 11 điểm trên):**
 1. Khung **🏆 Xếp hạng buổi** trong phần chấm bài trên lớp: gợi ý từ điểm `ingame` của buổi (hoà hiện là hoà), không dữ liệu ⇒ trống.
 2. GV chọn Nhất + Nhì → **Chốt** (khoá) / **Mở lại** (chỉ khi chưa HS nào chơi). Mỗi lần chốt/mở lại: trigger ghi lịch sử (ai, lúc nào).
