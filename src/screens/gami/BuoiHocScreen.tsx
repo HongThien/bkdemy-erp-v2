@@ -17,6 +17,7 @@ import type { MTPhanCaus } from '../../lib/mt'
 import { getOrCreateKyThiMTChoBuoi, listDiemThiByKyThi, upsertDiemThi, setKhungMT, tinhDiemMT, currentMua, type KyThi, type DiemThi } from '../../lib/thanhtich'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import TruocBuoiTab from './TruocBuoiTab'
+import XepHangBuoi from './XepHangBuoi'
 import { listDaiDang, type CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
@@ -421,7 +422,11 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
               ? <EloExpTab roster={roster} mon={(buoi as any).lop?.mon ?? ''} tenLop={(buoi as any).lop?.ten_lop ?? ''} />
               : tab === 'truocbuoi'
               ? <TruocBuoiTab lopId={buoi.lop_id ?? ''} ngayBuoi={buoi.ngay} mon={(buoi as any).lop?.mon ?? ''} />
-              : <ChamTab buoiId={id} phase="ingame" roster={roster} buoi={buoi} dangOpts={dangOpts} onChange={reload} />}
+              : <>
+                  {/* 🏆 Xếp hạng buổi + game trong buổi (spec-game-buoi-hoc §5b) — chỉ buổi thường */}
+                  {buoi.loai === 'thuong' && <XepHangBuoi buoiId={id} soCoMat={soCoMat} />}
+                  <ChamTab buoiId={id} phase="ingame" roster={roster} buoi={buoi} dangOpts={dangOpts} onChange={reload} />
+                </>}
           </div>
         </>
       )}

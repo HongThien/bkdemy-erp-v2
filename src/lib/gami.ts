@@ -827,7 +827,8 @@ export async function listDangHinhChoChuong(khoi?: string | null): Promise<{ ma_
 
 // Nguồn EXP hợp lệ khi CỘNG TỔNG: nhóm key theo note=ym (chi tiết mới + exp_thang gộp legacy) và
 // attend_floor (bù/bổ trợ, không note → lọc created_at). Reader nào cộng EXP đều dùng 2 hằng này.
-export const EXP_NOTE_SOURCES = ['exp_thang', 'exp_et', 'exp_btvn', 'exp_btvn_thang']
+// 'exp_tren_lop' (27/09) = EXP game trong buổi học (fn_buoi_game_choi, spec-game-buoi-hoc §5b) — cũng có note=tháng buổi.
+export const EXP_NOTE_SOURCES = ['exp_thang', 'exp_et', 'exp_btvn', 'exp_btvn_thang', 'exp_tren_lop']
 export const EXP_SOURCES = [...EXP_NOTE_SOURCES, 'attend_floor']
 
 // ⚠ PostgREST cắt cứng 1000 dòng/response — `.limit(10000)` KHÔNG vượt được (đã ghi ở fetchBtvnAcc).

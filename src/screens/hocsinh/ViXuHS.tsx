@@ -34,6 +34,7 @@ const NHAN_NGUON: Record<string, { icon: string; ten: string }> = {
   exp_btvn: { icon: '🏠', ten: 'Điểm BTVN' },
   exp_btvn_thang: { icon: '📊', ten: 'Thưởng/phạt BTVN tháng' },
   attend_floor: { icon: '✅', ten: 'Điểm tham dự' },
+  exp_tren_lop: { icon: '🎮', ten: 'Game trên lớp' },
   may_man: { icon: '🎰', ten: 'Vòng quay may mắn' },
   chot_thang: { icon: '🪙', ten: 'Chốt xu tháng' },
   chot_lai: { icon: '🔄', ten: 'Điều chỉnh xu' },
@@ -49,8 +50,7 @@ const NHOM_META: Record<NhomKey, { icon: string; ten: string; donVi: 'exp' | 'xu
   btvn: { icon: '🏠', ten: 'BTVN', donVi: 'exp' },
   may_man: { icon: '🎰', ten: 'Vòng quay may mắn', donVi: 'exp' },
   attend_floor: { icon: '✅', ten: 'Điểm tham dự', donVi: 'exp' },
-  // Placeholder — CHƯA có dữ liệu thật (Thùy 27/09: "hoạt động game mới sắp làm, m cứ tạo sẵn card
-  // — tý t làm bên game sẽ link sang"). Không map từ nguồn nào cả, luôn 0 hoạt động tới khi nối.
+  // Nối 27/09: nguồn 'exp_tren_lop' = EXP game trong buổi học (xếp hạng buổi → lượt game, spec-game-buoi-hoc §5b).
   hoat_dong_lop: { icon: '🎮', ten: 'Hoạt động trên lớp', donVi: 'exp' },
   cong_tay: { icon: '➕', ten: 'Thầy cô tặng', donVi: 'xu' },
   tru_tay: { icon: '➖', ten: 'Bị trừ (thầy cô)', donVi: 'xu' },
@@ -61,7 +61,7 @@ const NHOM_META: Record<NhomKey, { icon: string; ten: string; donVi: 'exp' | 'xu
 const THU_TU_NHOM: NhomKey[] = ['et', 'btvn', 'may_man', 'attend_floor', 'hoat_dong_lop', 'cong_tay', 'tru_tay', 'chot_xu']
 const NGUON_TOI_NHOM: Record<string, NhomKey> = {
   exp_et: 'et', exp_btvn: 'btvn', exp_btvn_thang: 'btvn',
-  attend_floor: 'attend_floor', may_man: 'may_man',
+  attend_floor: 'attend_floor', may_man: 'may_man', exp_tren_lop: 'hoat_dong_lop',
   cong_tay: 'cong_tay', tru_tay: 'tru_tay', chot_thang: 'chot_xu', chot_lai: 'chot_xu',
   // Nguồn cũ/một-lần (exp_thang trước khi tách ET/BTVN, rank_et/rank_ingame/btvn — data lịch sử 06-08/2026)
   // không đủ căn cứ gán đúng ET hay BTVN ⇒ để "Khác", KHÔNG đoán bừa (§1.5 thà bỏ trống hơn đánh sai).

@@ -119,6 +119,20 @@ Sự thật đo 27/09 (30 ngày, 253 buổi thường): bài trên lớp có đ�
 chấm/buổi; điểm ô 20/40/60/80/100. ⇒ đa số buổi đề xuất TRỐNG, GV tự chọn. `fn_dong_phase('ingame')` hiện đã xếp theo
 tổng điểm (chỉ để hiện, exp 0) — hoà điểm thì xếp theo `hoc_sinh_id` (≈ ngẫu nhiên) ⇒ đề xuất mới phải hiện HOÀ là hoà, để GV chọn.
 
+## 5c. ĐÃ BUILD (27/09) — Xếp hạng buổi + Mở Rương bản lớp
+
+- DB (áp): mig `202609272045_xep_hang_buoi_va_game_lop` · `202609272048_recompute_exp_thang_khong_xoa_exp_tren_lop` ·
+  `202609272053_game_choi_tra_min_max_khi_choi_lai`. **CHỜ Thùy chạy SQL Editor:** `202609272045_exp_tren_lop_vao_chot_xu_thang.sql`
+  (fn_gami_exp_xu_thang owner postgres) — chưa chạy thì EXP game KHÔNG được chốt thành xu cuối tháng.
+- ERP: khung **🏆 Xếp hạng buổi** đầu tab "Chấm bài trên lớp" (chỉ buổi thường) — `src/screens/gami/XepHangBuoi.tsx`,
+  RPC ở `src/lib/gameLop.ts`. Sau chốt: chọn game, "📺 Mở màn TV", đèn "● TV đã nối" (presence), nút "Mở cho bạn này" từng HS, "↻ TV" chiếu lại.
+- TV: `games-site/mo-ruong.html?che_do=lop&buoi=<id>` — kênh `bk-lop:<buổi>`, hàng chờ lệnh, giải → rương (Nhất Vàng · Nhì Bạc ·
+  Giải 3 Gỗ), đơn vị EXP, không sổ xu. Hình quà bí ẩn theo EXP tuyệt đối, ngưỡng chung mọi giải: ≤140 hộp to · ≤200 thỏi vàng ·
+  ≤280 đống vàng · >280 núi vàng. Bản sự kiện (không `?che_do`) giữ nguyên.
+- Nhãn nguồn: ví xu HS → card "🎮 Hoạt động trên lớp" (nguồn `exp_tren_lop`); bảng điểm gami "Trên lớp (game)"; `EXP_NOTE_SOURCES`.
+- Link TV dùng `VITE_GAMES_URL` (mặc định `https://bkdemy-games.vercel.app` — CHƯA xác nhận domain thật).
+- Chưa làm: Chiếm Đất / Đoán Số bản lớp (chờ luật Thùy) — hiện trong ô chọn game nhưng khoá "(chờ luật)".
+
 ## 6. Đường nối ERP (đã dò DB/code thật 27/09 — sự thật, không phải đề xuất)
 
 - **Buổi → lớp → môn:** `buoi_hoc.lop_id` → `lop.mon` (lop có cột `mon`, `khoi`). Danh sách + điểm danh: `getRoster(buoiId)` (src/lib/gami.ts:203), đổi điểm danh `diemDanh` (:270).
