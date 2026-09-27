@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-250 bảng · 19 view · 0 enum · 86 trigger · 519 function
+251 bảng · 19 view · 0 enum · 89 trigger · 531 function
 
 ## _app_secrets
 
@@ -108,6 +108,7 @@
 | hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |  |
 | buoi_hoc_id | uuid | Y |  | FK→buoi_hoc.id |  |
 | in_giay_at | timestamp with time zone | Y |  |  |  |
+| thoi_gian_phut | integer | Y |  |  |  |
 
 ## bai_test_cau
 
@@ -135,6 +136,8 @@
 | dien | jsonb | Y |  |  |  |
 | form_dien_id | uuid | Y |  | FK→hinh_form_dien.id |  |
 | o_rule | jsonb | Y |  |  |  |
+| phan | text | Y |  |  |  |
+| form_tn_hgt_id | uuid | Y |  | FK→hgt_cau_form_tn.id |  |
 
 ## bai_test_cau_phat_hanh
 
@@ -3239,6 +3242,8 @@
 | stt_lop | integer | Y |  |  |  |
 | nhanh | text | Y |  |  |  |
 | test_dang_dung_at | timestamp with time zone | Y |  |  |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
 
 ## tai_lieu_cau
 
@@ -3248,6 +3253,18 @@
 | phan_id | uuid |  |  | FK→tai_lieu_phan.id |  |
 | ma_cau | text |  |  |  |  |
 | thu_tu | integer |  | 0 |  |  |
+| diem | numeric | Y |  |  |  |
+
+## tai_lieu_duyet_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| tai_lieu_id | uuid |  |  | FK→tai_lieu.id |  |
+| duyet_cu | timestamp with time zone | Y |  |  |  |
+| duyet_moi | timestamp with time zone | Y |  |  |  |
+| nhan_su_id | uuid | Y |  | FK→nhan_su.id |  |
+| at | timestamp with time zone |  | now() |  |  |
 
 ## tai_lieu_phan
 
@@ -3262,6 +3279,7 @@
 | noi_dung | text | Y |  |  |  |
 | kieu | text |  | 'thuong'::text |  |  |
 | hien_lt | boolean |  | true |  |  |
+| diem_moi_cau | numeric | Y |  |  |  |
 
 ## team
 
@@ -5108,8 +5126,10 @@ SELECT bl.hoc_sinh_id,
 
 | bảng | trigger | timing | event | function |
 |---|---|---|---|---|
+| bai_lam | trg_bai_lam_thi | BEFORE | INSERT/UPDATE | _trg_bai_lam_thi |
 | bai_lam | trg_btyeu_retest_lam | AFTER | UPDATE | _trg_btyeu_retest_lam |
 | bai_lam | trg_htd_test_nop | AFTER | UPDATE | trg_htd_test_nop |
+| bai_lam_cau | trg_bai_lam_cau_thi | BEFORE | INSERT/UPDATE | _trg_bai_lam_cau_thi |
 | bai_lam_cau | trg_btyeu_retest_cau | AFTER | INSERT/UPDATE | _trg_btyeu_retest_cau |
 | bai_test | trg_ta_retest_push_badge | AFTER | INSERT | _trg_ta_retest_push |
 | bai_test_cau | tg_bt_dang_ph_auto_dang1 | AFTER | INSERT | fn_bt_tu_phat_hanh_dang1 |
@@ -5184,6 +5204,7 @@ SELECT bl.hoc_sinh_id,
 | soan_cum | trg_soan_cum_log | AFTER | INSERT/DELETE/UPDATE | fn_soan_cum_log |
 | soan_cum | trg_soan_cum_touch | BEFORE | UPDATE | fn_soan_touch |
 | soan_thu_muc | trg_soan_thu_muc_touch | BEFORE | UPDATE | fn_soan_touch |
+| tai_lieu | trg_tai_lieu_duyet_log | AFTER | UPDATE | _trg_tai_lieu_duyet_log |
 | test_dau_vao_phan_cong | trg_log_test_dau_vao_phan_cong | BEFORE | INSERT/UPDATE | log_test_dau_vao_phan_cong |
 | thanh_toan | tg_thanh_toan_trang_thai | AFTER | INSERT/DELETE/UPDATE | fn_hoa_don_cap_nhat_trang_thai |
 | thong_bao_ph | trg_tbph_updated_at | BEFORE | UPDATE | tbph_updated_at |
@@ -5212,8 +5233,10 @@ SELECT bl.hoc_sinh_id,
 - `_ca_bo_tro_don_vi(p_loai text, p_hs uuid, p_mon text)` → smallint
 - `_ca_bo_tro_tinh(p_ca uuid, p_tru_bhh uuid DEFAULT NULL::uuid)` → TABLE(don_vi_dung integer, don_vi_cho integer, so_hs_xn integer, so_hs_cho integer)
 - `_chi_ky_json(p_ky uuid)` → jsonb
+- `_de_thi_kho(p_cau_hinh jsonb, p_nhanh text, p_mon text, p_ma_cau text)` → text
 - `_dien_buoc_hs(p_buoc jsonb, p_o jsonb)` → jsonb
 - `_dien_hs_view(p_o jsonb)` → jsonb
+- `_et_cham(p_bai_lam uuid)` → void
 - `_gay_nhan_tre(p_tu timestamp with time zone, p_den timestamp with time zone)` → text
 - `_gay_ten_actor(p_id uuid)` → text
 - `_htd_chon_cau_bat_ky(p_cautbl text, p_ma_dang text, p_tru text[], p_n integer)` → text[]
@@ -5260,6 +5283,8 @@ SELECT bl.hoc_sinh_id,
 - `_ta_cua_lop(p_lop uuid)` → uuid
 - `_thu_cua_ngay(p date)` → smallint
 - `_tich_luy_cua(p_ns uuid, p_ym text)` → TABLE(diem_thang integer, chuoi integer, ngay_cuoi date, ngay_trot date)
+- `_trg_bai_lam_cau_thi()` → trigger
+- `_trg_bai_lam_thi()` → trigger
 - `_trg_btc_phat_hanh_log()` → trigger
 - `_trg_btyeu_bao_dong_vao_case()` → trigger
 - `_trg_btyeu_mot_buoi_cho_hoc()` → trigger
@@ -5277,6 +5302,7 @@ SELECT bl.hoc_sinh_id,
 - `_trg_sync_hgt_menh_de()` → trigger
 - `_trg_ta_buoi_hoc_push()` → trigger
 - `_trg_ta_retest_push()` → trigger
+- `_trg_tai_lieu_duyet_log()` → trigger
 - `_tu_luyen_dau_cua_so_truoc()` → timestamp with time zone
 - `bai_lam_cau_ghi_duoc(p_bai_lam uuid, p_cau uuid)` → boolean
 - `bai_test_con_han(p_bai_test uuid)` → boolean
@@ -5394,6 +5420,13 @@ SELECT bl.hoc_sinh_id,
 - `fn_dai_sinh_ma_dang(p_ma_chuyen_de text, p_stt smallint DEFAULT NULL::smallint)` → text
 - `fn_de_test_dat_dang_dung(p_tai_lieu_id uuid)` → void
 - `fn_de_test_xoa(p_tai_lieu_id uuid)` → void
+- `fn_de_thi_cau(p_de uuid)` → TABLE(stt integer, phan_id uuid, phan_thu_tu integer, phan_tieu_de text, ma_cau text, kho text, loai_cau text, dang_chinh text, dap_an text, lua_chon jsonb, menh_de jsonb, da_duyet boolean, xoa boolean, co_form boolean, form_duyet boolean, diem numeric)
+- `fn_de_thi_diem_cua_toi(p_bai_test uuid)` → jsonb
+- `fn_de_thi_duyet(p_de uuid)` → jsonb
+- `fn_de_thi_ket_qua(p_bai_test uuid)` → jsonb
+- `fn_de_thi_mo(p_de uuid, p_lop uuid, p_ngay date, p_thoi_gian_phut integer, p_khoa_dap_an boolean DEFAULT true)` → uuid
+- `fn_de_thi_thieu(p_de uuid)` → jsonb
+- `fn_de_thi_thu_bai(p_bai_test uuid)` → integer
 - `fn_diem_thi_tinh()` → trigger
 - `fn_dien_cau_hinh()` → jsonb
 - `fn_dien_cham(p_key jsonb, p_hs jsonb)` → TABLE(verdict text, ti_le numeric)
@@ -5711,9 +5744,9 @@ SELECT bl.hoc_sinh_id,
 - `trg_han_nop_ngoai_le_log()` → trigger
 - `trg_htd_test_nop()` → trigger
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
@@ -5721,6 +5754,7 @@ SELECT bl.hoc_sinh_id,
 
 | bảng | constraint | định nghĩa |
 |---|---|---|
+| bai_test | bai_test_thoi_gian_phut_check | `CHECK (((thoi_gian_phut IS NULL) OR (thoi_gian_phut > 0)))` |
 | bao_cao_ph | bao_cao_ph_cs_ky_nang_chk | `CHECK (((cs_ky_nang IS NULL) OR ((cs_ky_nang >= 1) AND (cs_ky_nang <= 5))))` |
 | bao_cao_ph | bao_cao_ph_cs_tap_trung_chk | `CHECK (((cs_tap_trung IS NULL) OR ((cs_tap_trung >= 1) AND (cs_tap_trung <= 5))))` |
 | bao_cao_ph | bao_cao_ph_cs_thai_do_chk | `CHECK (((cs_thai_do IS NULL) OR ((cs_thai_do >= 1) AND (cs_thai_do <= 5))))` |
