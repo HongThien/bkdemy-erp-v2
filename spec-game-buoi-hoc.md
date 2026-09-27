@@ -90,6 +90,17 @@ Thùy: trong phần chấm bài trên lớp có tính năng mới **xếp hạng
 | 5 | Sau duyệt | **Khoá**. GV muốn sửa thì **mở lại** |
 | 6 | Ảnh hưởng Elo | **Tạm thời không** (Elo vẫn chỉ từ ET) |
 | 7 | Giải → game | **Lượt chơi mang mức giải của HS** |
+| 8 | Số lượng giải | **1 Nhất**. Nhì: 1; lớp **trên 10 HS** được chọn **tối đa 2 Nhì** |
+| 9 | Số lượt | **1 lượt / HS / buổi** |
+| 10 | Chọn game | **GV chọn** game cho buổi |
+| 11 | Mở lại khi đã chơi | **Đã có EXP ghi (có HS chơi) ⇒ KHÔNG mở lại được nữa** |
+
+**Luồng dữ liệu (cách nối — CTO, theo 11 điểm trên):**
+1. Khung **🏆 Xếp hạng buổi** trong phần chấm bài trên lớp: gợi ý từ điểm `ingame` của buổi (hoà hiện là hoà), không dữ liệu ⇒ trống.
+2. GV chọn Nhất + Nhì → **Chốt** (khoá) / **Mở lại** (chỉ khi chưa HS nào chơi). Mỗi lần chốt/mở lại: trigger ghi lịch sử (ai, lúc nào).
+3. Chỉ lưu dòng cho Nhất/Nhì; **Giải 3 = có mặt − Nhất − Nhì (suy động)** ⇒ HS điểm danh muộn tự vào Giải 3; HS có giải bị sửa thành vắng ⇒ nêu cờ cho GV.
+4. Sau chốt: mỗi HS có mặt có **1 lượt** mang mức giải; GV chọn game → TV mở game `?che_do=lop` → mỗi lượt chơi: DB rút + ghi EXP (nguồn mới, 1 transaction, khoá 1 lượt/HS/buổi) → TV diễn.
+5. EXP ghi đúng `mon` của lớp, `note` = tháng của ngày buổi; thêm nguồn mới vào đủ 4 chỗ liệt kê cứng (§6).
 
 Sự thật đo 27/09 (30 ngày, 253 buổi thường): bài trên lớp có đề 208 buổi nhưng **có chấm chỉ 25 buổi (~12%)**, TB 26 ô
 chấm/buổi; điểm ô 20/40/60/80/100. ⇒ đa số buổi đề xuất TRỐNG, GV tự chọn. `fn_dong_phase('ingame')` hiện đã xếp theo
