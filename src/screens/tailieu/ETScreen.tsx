@@ -14,7 +14,7 @@ import { hsCoMatCuaBuoi } from '../../lib/gami'
 import { listCauByDang, LOAI_CAU, type CauHoi } from '../../lib/kho/api'
 import { fetchCausByMa } from '../../lib/ontap'
 import { MathText } from '../kho/ui'
-import { KhoPicker } from './TaiLieuBuilder'
+import { KhoPicker, DangPicker } from './TaiLieuBuilder'
 import ETPrintView from './ETPrintView'
 import SearchSelect from '../../components/SearchSelect'
 import DangPickerOne from '../../components/DangPickerOne'
@@ -64,9 +64,11 @@ export function ETEditor({ et, onClose, presetHinh }: { et?: ETView; onClose?: (
   // ── Thêm nhanh theo dạng + số câu (ET cấp 3 — trắc nghiệm nhiều câu, click từng dòng rất mệt).
   // planRows = kế hoạch "dạng nào bao nhiêu câu" (vd Dạng 1: 5 · Dạng 2: 6 · Dạng 3: 3), sinh 1 lượt →
   // đổ thẳng vào `rows` (đè các hàng trống mặc định, giữ nguyên hàng đã có câu).
-  const [planOpen, setPlanOpen] = useState(false)
+  // ⭐ 27/09 (CEO): "làm giống BTVN — pick nhiều dạng cùng lúc, chỉnh số lượng bài mỗi dạng". Mặc định MỞ luôn,
+  //   nút "+ Chọn dạng" dùng DangPicker MULTI (giống BTVN) thay cho DangPickerOne 1-dạng-1-lần.
+  const [planOpen, setPlanOpen] = useState(true)
+  const [planPickerOpen, setPlanPickerOpen] = useState(false)
   const [planRows, setPlanRows] = useState<{ maDang: string | null; soCau: number }[]>([{ maDang: null, soCau: 5 }])
-  const [planDangModal, setPlanDangModal] = useState<number | null>(null)
   const [bulkBusy, setBulkBusy] = useState(false)
   const [picker, setPicker] = useState<{ idx: number; maDang: string } | null>(null)
   const [varPicker, setVarPicker] = useState<{ baseMaCau: string; v: number; maDang: string; form: ETFormKind } | null>(null)
@@ -297,8 +299,7 @@ export function ETEditor({ et, onClose, presetHinh }: { et?: ETView; onClose?: (
   // Sinh hàng loạt theo kế hoạch (planRows): mỗi dạng lấy N câu ÍT DÙNG NHẤT trong 1 lượt (suggestNForDang,
   // không lặp suggestCauForDang từng câu — tránh N round-trip). `usedNow` cộng dồn XUYÊN các dạng trong
   // CÙNG 1 lượt sinh (không chỉ trong nội bộ 1 dạng) để câu không trùng nhau giữa các dạng khác nhau.
-  const themDongKeHoach = () => setPlanRows((rs) => [...rs, { maDang: null, soCau: 5 }])
-  const xoaDongKeHoach = (i: number) => setPlanRows((rs) => rs.filter((_, j) => j !== i))
+  // 27/09: bỏ themDongKeHoach/xoaDongKeHoach — DangPicker MULTI thay bằng replace toàn bộ planRows (giữ soCau cũ).
   async function sinhTheoKeHoach() {
     const plans = planRows.filter((p) => p.maDang && p.soCau > 0)
     if (!plans.length) return
@@ -508,21 +509,22 @@ export function ETEditor({ et, onClose, presetHinh }: { et?: ETView; onClose?: (
               {!planOpen && <p className="mt-1 text-[11px] text-slate-400">Hợp cho ET cấp 3 (trắc nghiệm nhiều câu): gõ dạng + số câu, hệ tự gợi ý cả loạt câu ít-dùng-nhất, không cần bấm từng dòng.</p>}
               {planOpen && (
                 <div className="mt-2 space-y-1.5">
-                  {planRows.map((p, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <button onClick={() => setPlanDangModal(i)} className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-left text-[13px] hover:border-indigo-400">
-                        {p.maDang ? <span className="text-slate-700">{tenDang(p.maDang)}</span> : <span className="text-indigo-500">+ chọn dạng…</span>}
-                      </button>
+                  {planRows.filter((p) => p.maDang).length === 0
+                    ? <div className="rounded-md border border-dashed border-indigo-200 bg-white px-3 py-4 text-center text-[12px] italic text-slate-400">Chưa chọn dạng nào — bấm <b>+ Chọn dạng</b> để chọn nhiều dạng cùng lúc.</div>
+                    : planRows.filter((p) => p.maDang).map((p, i) => (
+                    <div key={p.maDang!} className="flex items-center gap-2">
+                      <span className="w-6 shrink-0 text-center text-[12px] font-bold text-violet-600">{i + 1}</span>
+                      <span className="min-w-0 flex-1 truncate rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-[13px] text-slate-700" title={tenDang(p.maDang)}>{tenDang(p.maDang)}</span>
                       <span className="text-[12px] text-slate-400">×</span>
                       <input type="number" min={1} max={50} value={p.soCau}
-                        onChange={(e) => setPlanRows((rs) => rs.map((x, j) => (j === i ? { ...x, soCau: Math.max(1, Math.min(50, +e.target.value || 1)) } : x)))}
+                        onChange={(e) => { const v = Math.max(1, Math.min(50, +e.target.value || 1)); setPlanRows((rs) => rs.map((x) => (x.maDang === p.maDang ? { ...x, soCau: v } : x))) }}
                         className="h-8 w-16 rounded border border-slate-300 px-1 text-center text-[13px]" />
                       <span className="text-[12px] text-slate-400">câu</span>
-                      {planRows.length > 1 && <button onClick={() => xoaDongKeHoach(i)} title="Bỏ dòng" className="text-[13px] text-slate-300 hover:text-rose-600">✕</button>}
+                      <button onClick={() => setPlanRows((rs) => rs.filter((x) => x.maDang !== p.maDang))} title="Bỏ dạng" className="text-[13px] text-slate-300 hover:text-rose-600">✕</button>
                     </div>
                   ))}
                   <div className="flex items-center gap-2 pt-1">
-                    <button onClick={themDongKeHoach} className="rounded-md border border-dashed border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">+ thêm dạng khác</button>
+                    <button onClick={() => setPlanPickerOpen(true)} className="rounded-md border border-dashed border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">+ Chọn dạng {planRows.filter((p) => p.maDang).length > 0 ? '(thêm)' : '(nhiều dạng cùng lúc)'}</button>
                     <button onClick={sinhTheoKeHoach} disabled={bulkBusy || !planRows.some((p) => p.maDang && p.soCau > 0)}
                       className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[12px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">
                       {bulkBusy ? 'Đang sinh…' : `⚡ Sinh ${planRows.reduce((s, p) => s + (p.maDang ? p.soCau : 0), 0)} câu`}
@@ -532,9 +534,19 @@ export function ETEditor({ et, onClose, presetHinh }: { et?: ETView; onClose?: (
               )}
             </div>
           )}
-          {planDangModal !== null && (
-            <DangPickerOne khoi={khoi} mon={mon} nhanh={nhanh} onClose={() => setPlanDangModal(null)}
-              onPick={(ma) => { const i = planDangModal; setPlanDangModal(null); setPlanRows((rs) => rs.map((x, j) => (j === i ? { ...x, maDang: ma } : x))) }} />
+          {/* ⭐ 27/09 (CEO): DangPicker MULTI (giống BTVN) — pick nhiều dạng 1 lượt, gộp vào planRows.
+              Dạng đã có sẵn giữ nguyên soCau; dạng mới thêm vào với soCau=5 (mặc định). */}
+          {planPickerOpen && (
+            <DangPicker khoi={khoi} mon={mon} nhanh={nhanh}
+              selected={planRows.map((p) => p.maDang).filter((m): m is string => !!m)}
+              onClose={() => setPlanPickerOpen(false)}
+              onConfirm={(maDangs) => {
+                setPlanPickerOpen(false)
+                setPlanRows((rs) => {
+                  const cu = new Map(rs.filter((p) => p.maDang).map((p) => [p.maDang!, p.soCau]))
+                  return maDangs.map((md) => ({ maDang: md, soCau: cu.get(md) ?? 5 }))   // thứ tự = thứ tự pick, giữ soCau cũ nếu đã có
+                })
+              }} />
           )}
           {soCau > 0 && (() => { const t = oTrong().length; const gen = !!(ch.etMaDe && Object.keys(ch.etMaDe).length)
             return (
