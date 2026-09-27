@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-250 bảng · 19 view · 0 enum · 86 trigger · 512 function
+250 bảng · 19 view · 0 enum · 86 trigger · 519 function
 
 ## _app_secrets
 
@@ -3076,7 +3076,7 @@
 |---|---|---|---|---|---|
 | su_kien_id | uuid |  |  | PK FK→sk_su_kien.id |  |
 | nhan_su_id | uuid |  |  | PK FK→nhan_su.id |  |
-| vai | text |  |  | PK | `checkin` · `quantro` · `quaqua` · `quanly` |
+| vai | text |  |  | PK | `checkin` · `dangky` · `quay` · `quantro` · `quaqua` · `quanly` |
 | created_at | timestamp with time zone |  | now() |  |  |
 | nguoi_ghi | uuid | Y | jwt_uid() |  |  |
 
@@ -3126,6 +3126,7 @@
 | ghi_chu | text | Y |  |  |  |
 | at | timestamp with time zone |  | now() |  |  |
 | nguoi_ghi | uuid | Y | jwt_uid() |  |  |
+| van | bigint | Y |  |  |  |
 
 ## soan_cum
 
@@ -5248,8 +5249,11 @@ SELECT bl.hoc_sinh_id,
 - `_sk_la_admin()` → boolean
 - `_sk_ns_id()` → uuid
 - `_sk_phan_cong_log()` → trigger
+- `_sk_sk_cua_dang_ky(p uuid)` → uuid
+- `_sk_sk_cua_luot(p uuid)` → uuid
 - `_sk_so_du(p_nguoi uuid)` → integer
 - `_sk_vai(p_su_kien uuid)` → text[]
+- `_sk_xu_luot(p_luot uuid)` → jsonb
 - `_sotay_duoc_doc()` → boolean
 - `_sotay_nhom(p_muc_do smallint)` → text
 - `_sync_cau_menh_de(p_bang_con text, p_ban_do text, p_ma_cau text, p_menh_de jsonb)` → void
@@ -5531,7 +5535,9 @@ SELECT bl.hoc_sinh_id,
 - `fn_shop_don_cua_toi()` → SETOF shop_don
 - `fn_sk_bat_dau(p_phong uuid, p_game text)` → jsonb
 - `fn_sk_checkin(p_su_kien uuid, p_hoc_sinh uuid)` → uuid
+- `fn_sk_cho_quay(p_su_kien uuid)` → TABLE(nguoi_choi_id uuid, ten text, so integer, lop text, checkin_at timestamp with time zone)
 - `fn_sk_cua_toi()` → TABLE(id uuid, ten text, ngay date, trang_thai text, cau_hinh jsonb, vai text[], la_admin boolean)
+- `fn_sk_da_checkin(p_su_kien uuid)` → TABLE(nguoi_choi_id uuid, ten text, so integer, lop text, checkin_at timestamp with time zone, xu_quay integer)
 - `fn_sk_dang_ky(p_phong uuid, p_nguoi uuid)` → uuid
 - `fn_sk_danh_dau(p_dang_ky uuid, p_hanh_dong text)` → jsonb
 - `fn_sk_dieu_chinh(p_nguoi uuid, p_xu integer, p_ghi_chu text)` → integer
@@ -5550,6 +5556,8 @@ SELECT bl.hoc_sinh_id,
 - `fn_sk_tim(p_su_kien uuid, p_q text)` → TABLE(nguoi_choi_id uuid, hoc_sinh_id uuid, ten text, so integer, lop text, la_khach boolean, da_checkin boolean, xu_quay integer, so_du integer, dang_ky_id uuid, dang_ky_trang_thai text, phong_ten text)
 - `fn_sk_tim_nhan_su(p_q text)` → TABLE(id uuid, ho_ten text, email text)
 - `fn_sk_tong_quan(p_su_kien uuid)` → jsonb
+- `fn_sk_tra_xu_van(p_luot uuid, p_van bigint, p_ket_qua jsonb)` → jsonb
+- `fn_sk_xu_luot(p_luot uuid)` → jsonb
 - `fn_soan_cum_log()` → trigger
 - `fn_soan_touch()` → trigger
 - `fn_sua_key_va_cham_lai(p_bai_test_cau_id uuid, p_key jsonb, p_ly_do text)` → jsonb
@@ -5703,9 +5711,9 @@ SELECT bl.hoc_sinh_id,
 - `trg_han_nop_ngoai_le_log()` → trigger
 - `trg_htd_test_nop()` → trigger
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
@@ -5791,6 +5799,7 @@ SELECT bl.hoc_sinh_id,
 | qlht_xu_ledger | qlht_xu_ledger_amount_check | `CHECK ((amount <> 0))` |
 | shop_vat_pham | shop_vat_pham_gia_diem_check | `CHECK ((gia_diem > 0))` |
 | sk_xu | sk_xu_so_xu_check | `CHECK ((so_xu <> 0))` |
+| sk_xu | sk_xu_van_chi_game | `CHECK (((van IS NULL) OR (nguon = 'game'::text)))` |
 | thoi_khoa_bieu | thoi_khoa_bieu_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | thong_bao_ph | chk_scope_ca_nhan | `CHECK (((scope <> 'ca_nhan'::text) OR (hoc_sinh_id IS NOT NULL)))` |
 | thong_bao_ph | chk_scope_khoi | `CHECK (((scope <> 'khoi'::text) OR (khoi IS NOT NULL)))` |
