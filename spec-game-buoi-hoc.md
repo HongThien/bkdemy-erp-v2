@@ -1,7 +1,8 @@
 # Game trong buổi học — spec (DRAFT, chờ CEO duyệt)
 
 > Thùy 27/09: sau sự kiện Trung thu, đưa game vào buổi học BK. **Mỗi game 2 phiên bản luật**: bản SỰ KIỆN (giữ nguyên
-> cho sự kiện sau) và bản BUỔI HỌC (link thẳng lớp đang học, luật hợp lớp). Trạng thái: chờ duyệt — CHƯA code.
+> cho sự kiện sau) và bản BUỔI HỌC (link thẳng lớp đang học, luật hợp lớp). Trạng thái: NHÁP — CHƯA code.
+> **Thùy 27/09: "đừng chốt cái gì — t đề xuất kịch bản, luật chơi t viết".** CTO chỉ lo: hỏi OUTPUT + đường nối ERP (§6).
 
 ## 1. Quyết định đã chốt (27/09)
 
@@ -33,7 +34,7 @@
   - **Trần DB: 500 EXP game/HS/buổi** — vượt thì cắt ở hàm, không ở client.
 - RPC (mẫu `fn_*`, security definer có cổng quyền GV của lớp): `fn_game_phat_luot` · `fn_game_choi` (rút + ghi, trả kết quả cho TV diễn) · `fn_game_tinh_hinh_buoi` (lượt còn/đã chơi/EXP từng HS).
 
-## 3. Luật bản BUỔI HỌC (đề xuất số — CEO chỉnh)
+## 3. Luật bản BUỔI HỌC — ⛔ THÙY VIẾT (số dưới chỉ là nháp CTO để hình dung, KHÔNG dùng)
 
 Nguyên tắc: **mỗi lượt kỳ vọng ~100 EXP** ⇒ GV phát ~3 lượt/HS/buổi ≈ 300 EXP (dải thực tế ~200–500, trần 500).
 Không vé, không "thua mất vốn": lượt nào cũng có EXP, chỉ khác nhiều hay ít.
@@ -74,3 +75,15 @@ Kỳ vọng ≈ 3 + 8 + 7,8 + 80 ≈ **99 EXP/lượt**. Hàng chục dừng tr�
 3. Độc đắc bản lớp: bỏ hẳn hay giữ 1 ô hiếm?
 4. Tên nguồn EXP mới hiển thị cho HS/PH: "Trên lớp"?
 5. TV lớp: dùng laptop GV nối máy chiếu (hub `?che_do=lop`) — đúng thiết bị thực tế ở lớp?
+
+## 6. Đường nối ERP (đã dò DB/code thật 27/09 — sự thật, không phải đề xuất)
+
+- **Buổi → lớp → môn:**  →  (có cột , ). Danh sách + điểm danh:  (src/lib/gami.ts:203), đổi điểm danh  (:270).
+- **Sổ EXP:**  (hoc_sinh_id, source, amount, ref_buoi_hoc_id, note, mon). Nguồn đang có dữ liệu: exp_et 2822 · exp_btvn 2443 · exp_btvn_thang 611 · attend_floor 327 · exp_thang 284 · rank_et 122 · btvn 98 · rank_ingame 64 dòng.
+- ⚠ **BẪY: nguồn EXP bị LIỆT KÊ CỨNG ở 4 chỗ** — thêm nguồn mới mà quên 1 chỗ thì EXP game **không bao giờ thành xu / không hiện**, im lặng không lỗi:
+  -  (chốt xu tháng) ·  ·  (ví xu trên app HS):  +  theo khoảng ngày.
+  -  src/lib/gami.ts:830 (comment trong mig 202609031903 đã cảnh báo "sửa CẢ HAI").
+  - Tháng của 1 dòng EXP xác định bằng ****, không phải created_at ⇒ nguồn game phải ghi note = tháng của NGÀY BUỔI HỌC.
+  - ( hiện KHÔNG có  trong danh sách — khác 2 hàm kia; ghi nhận, chưa rõ cố ý hay sót.)
+- **Điều khiển TV từ ERP:** đã có mẫu chạy thật (quản trò sự kiện 26/09): máy ERP đã đăng nhập ↔ TV game qua kênh Supabase Realtime (gửi tên theo slot, nghe kết quả, ghi DB qua RPC, khoá theo ván chống cộng đúp).
+- **Chỗ đặt nút mở game:** màn Buổi học  (GV/TA đang dùng để điểm danh/chấm).
