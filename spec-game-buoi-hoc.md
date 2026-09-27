@@ -76,6 +76,25 @@ Kỳ vọng ≈ 3 + 8 + 7,8 + 80 ≈ **99 EXP/lượt**. Hàng chục dừng tr�
 4. Tên nguồn EXP mới hiển thị cho HS/PH: "Trên lớp"?
 5. TV lớp: dùng laptop GV nối máy chiếu (hub `?che_do=lop`) — đúng thiết bị thực tế ở lớp?
 
+## 5b. XẾP HẠNG BUỔI HỌC → giải → lượt game (kịch bản Thùy 27/09)
+
+Thùy: trong phần chấm bài trên lớp có tính năng mới **xếp hạng buổi học** (bạn nào xuất sắc nhất hôm đó). Hệ thống
+đề xuất từ dữ liệu trên lớp (không đầy đủ), GV duyệt/sửa. Mỗi lớp: **Nhất · Nhì · còn lại Giải 3** — ứng 3 mức của game.
+
+| # | Câu hỏi | Thùy chốt 27/09 |
+|---|---|---|
+| 1 | Đề xuất dựa vào đâu | **Chỉ điểm bài trên lớp (phase `ingame`) của chính buổi**. KHÔNG dùng ET (thưởng chốt TRƯỚC ET; ET buổi trước thì sai logic) |
+| 2 | Buổi không có dữ liệu | **GV tự chọn** |
+| 3 | GV duyệt ra gì | **Chỉ chọn Nhất + Nhì**; HS có mặt còn lại = Giải 3 |
+| 4 | HS vắng | Không có giải |
+| 5 | Sau duyệt | **Khoá**. GV muốn sửa thì **mở lại** |
+| 6 | Ảnh hưởng Elo | **Tạm thời không** (Elo vẫn chỉ từ ET) |
+| 7 | Giải → game | **Lượt chơi mang mức giải của HS** |
+
+Sự thật đo 27/09 (30 ngày, 253 buổi thường): bài trên lớp có đề 208 buổi nhưng **có chấm chỉ 25 buổi (~12%)**, TB 26 ô
+chấm/buổi; điểm ô 20/40/60/80/100. ⇒ đa số buổi đề xuất TRỐNG, GV tự chọn. `fn_dong_phase('ingame')` hiện đã xếp theo
+tổng điểm (chỉ để hiện, exp 0) — hoà điểm thì xếp theo `hoc_sinh_id` (≈ ngẫu nhiên) ⇒ đề xuất mới phải hiện HOÀ là hoà, để GV chọn.
+
 ## 6. Đường nối ERP (đã dò DB/code thật 27/09 — sự thật, không phải đề xuất)
 
 - **Buổi → lớp → môn:** `buoi_hoc.lop_id` → `lop.mon` (lop có cột `mon`, `khoi`). Danh sách + điểm danh: `getRoster(buoiId)` (src/lib/gami.ts:203), đổi điểm danh `diemDanh` (:270).
