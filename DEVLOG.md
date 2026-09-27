@@ -30021,3 +30021,9 @@ quay lại từ nền (visibilitychange); lỗi mạng không tắt card đang h
 - Parser: ##PP bỏ "Bước N:"/"**Bước N:**"/"- " đầu dòng khi hiện (vòng tròn đã đánh số).
 - Để nguyên (không chắc loại): "b) Kí hiệu", "c) Độ dài vecto", "Chú ý 2" (xen ảnh) ở T3100101; "Loại 1/2" đề bài; "Ngoài cách làm trên…". Chưa sửa lỗi chính tả gốc "Gợi" (= Gọi) ở T312010205.
 - Verify: parser thật trên 19 bản mới + render LyThuyetBlocksPreview tĩnh → Chrome headless, ảnh đúng mẫu.
+
+## 2026-09-27 — Khung "Bài tập tự luyện" ở chế độ 2 cột: tag đè Câu 1/Câu 2
+- Thùy chụp 4A1: tag "Bài tập tự luyện" dính sát/đè chữ Câu 1, Câu 2. Nguyên nhân: tag nằm trong `.pv-caulist.pv-cols` ⇒ kế thừa `line-height: --pitch` (7.5mm) ⇒ tag cao ~40px, tràn xuống dòng câu. Bản 1 cột không bị (lúc test 26/09 chỉ thử 1 cột — bài học: khung dùng chung phải thử CẢ 2 chế độ cột).
+- Sửa: cap `line-height:1.2`, cao 26px; câu/hàng đầu cách đỉnh khung 8px (cả 1 cột lẫn nhiều cột).
+- Kèm 2 lỗi thấy khi dựng thử: (1) góc trên phải lòi vạch thẳng trên góc bo của cap ⇒ nhóm đầu `.hop-dau` bo góc 14px trùng cap; (2) cụm trộn 1 cột + nhiều cột: margin câu ở mép nhóm gộp ra ngoài viền ⇒ khung đứt khe trắng ⇒ đệm 1px trên (trừ nhóm đầu) / dưới (trừ nhóm cuối).
+- Verify: Chrome headless — dựng lại đúng lỗi 4A1 ở bản cũ, bản mới hết; thử mồ côi cuối trang lại vẫn 0/61.

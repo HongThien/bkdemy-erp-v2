@@ -895,7 +895,7 @@ export function TLNTable({ rows }: { rows: TLNRow[] }) {
 // với nội dung đầu tiên thì không tách được.
 const BT_CAP = <div className="pv-bt-cap"><span className="pv-lt-tag">Bài tập tự luyện</span></div>
 export function CauColumns({ cols, parts, hop, dau }: { cols: number; parts: CauPart[]; hop?: 'giua' | 'cuoi'; dau?: boolean }) {
-  const hc = hop ? ` pv-caulist-hop${hop === 'cuoi' ? ' hop-cuoi' : ''}` : ''
+  const hc = hop ? ` pv-caulist-hop${hop === 'cuoi' ? ' hop-cuoi' : ''}${dau ? ' hop-dau' : ''}` : ''
   if (cols <= 1) return <div className={`pv-caulist${hc}`}>{parts.map((p, i) => {
     const cau = <div key={p.key} className="pv-cau">{p.content}{p.lines > 0 && <WriteLines n={p.lines} />}</div>
     return dau && i === 0 ? <div key={p.key} className="pv-bt-dau">{BT_CAP}{cau}</div> : cau
@@ -998,10 +998,20 @@ const CONTENT_CSS = `
    .pv-caulist-hop để phủ đúng mép khung. Lề trong 22px (CEO 26/09: "cách xa viền thêm 40%", từ 16px).
    Sang trang giữa cụm thì khung "hở" ở mép trang — chấp nhận (như sách in). */
 .pv-bt-dau{break-inside:avoid}
-.pv-bt-cap{position:relative;height:22px;margin:30px -24px 0;border:2px solid #4c6fff;border-bottom:none;border-radius:14px 14px 0 0;background:#f5f7ff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pv-bt-cap{position:relative;height:26px;line-height:1.2;margin:30px -24px 0;border:2px solid #4c6fff;border-bottom:none;border-radius:14px 14px 0 0;background:#f5f7ff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .pv-bt-cap > .pv-lt-tag{position:absolute;top:-14px;left:18px;background:#4c6fff;color:#fff;padding:6px 16px;border-radius:8px;font-size:12px;font-weight:800;letter-spacing:.04em;box-shadow:0 3px 6px rgba(76,111,255,.28)}
 .pv-caulist-hop{margin:0;padding:0 22px;border-left:2px solid #4c6fff;border-right:2px solid #4c6fff;background:#f5f7ff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.pv-bt-dau > .pv-cau{margin-top:6px}
+/* line-height:1.2 ở cap: trong .pv-cols chữ kế thừa line-height = --pitch (7.5mm) ⇒ tag phình ~40px đè lên
+   Câu 1/Câu 2 (Thùy chụp 4A1, 27/09). Câu/hàng đầu cách đỉnh khung 8px cho CẢ 1 cột lẫn nhiều cột. */
+.pv-bt-dau > .pv-cau,.pv-bt-dau > .pv-band{margin-top:8px}
+/* Nhóm đầu bo góc trên TRÙNG góc cap (margin-top của cap gộp xuyên lên .pv-caulist ⇒ viền trái/phải bắt đầu
+   ngang đỉnh cap). Không bo thì viền thẳng lòi lên trên góc cong của cap thành vạch nhỏ ở 2 góc (ảnh 4A1). */
+.pv-caulist-hop.hop-dau{border-radius:14px 14px 0 0}
+.pv-caulist-hop.hop-dau.hop-cuoi{border-radius:14px}
+/* Giữa 2 nhóm (1 cột ↔ nhiều cột) cần 1px đệm: không có thì margin câu/hàng ở mép nhóm "gộp" xuyên ra NGOÀI viền ⇒
+   khung đứt 1 khe trắng (thấy khi dựng thử 27/09). Nhóm đầu KHÔNG đệm trên — margin-top của cap phải gộp ra ngoài. */
+.pv-caulist-hop:not(.hop-cuoi){padding-bottom:1px}
+.pv-caulist-hop:not(.hop-dau){padding-top:1px}
 .pv-caulist-hop.hop-cuoi{border-bottom:2px solid #4c6fff;border-radius:0 0 14px 14px;padding-bottom:6px;margin-bottom:14px}
 .pv-caulist-hop .pv-cau-no{color:#4c6fff}
 /* Trả lời ngắn dạng BẢNG (TLNTable, xem PrintView.tsx) — cột 1 đề, cột 2 chỗ điền đáp án. Mỗi hàng
