@@ -1,7 +1,7 @@
 # spec-de-thi.md — ĐỀ THI: 1 input → 2 output (kho theo dạng + đề thi được trên app)
 
 > CEO chốt đích 20/09/2026 (phiên hỏi–đáp 9 câu). Bản này là spec build; paste-ready sang Notion » ERP V2.
-> Trạng thái: **CHỜ CEO DUYỆT SPEC** — chưa code dòng nào.
+> Trạng thái: CEO chốt đích 20–22/09; 27/09 CEO "làm đi thôi" ⇒ build P2 (Duyệt đề) + P3 (thi trên lớp) theo §9. P4 (tự luyện) chưa làm.
 
 ---
 
@@ -213,3 +213,68 @@ Khác `phatHanhTest` hiện tại: **`diem` lấy từ phần/câu**, không ghi
 4. `toan_de_thi` "0 dòng" là số đọc qua CLI — trước khi ngừng dùng, đối chiếu dashboard 1 lần (§2.1).
 5. **Còn mở (đích, chờ CEO):** thi trên lớp có cần **giám sát chống rời tab** không? · HS khối 11 có được thấy đề 12 trong thư viện không?
 6. **Đã đóng 22/09:** bản đồ trước · tự luận→TLN (chỉ ý có đáp số) · điểm theo khuôn Bộ quy về 10 · 90 phút mặc định (§1b).
+
+---
+
+## 9. Thiết kế BUILD P2 + P3 (27/09 — bám hạ tầng thật, đã đo)
+
+### 9.0 Đo hạ tầng trước khi thiết kế (27/09)
+
+| Đo được | Hệ quả |
+|---|---|
+| Chế độ THI đã có: `et_de` (trả đề KHÔNG key) + `et_nop` (chấm server, chỉ lần nộp đầu) + màn HS `LamET`; cả 2 hàm đã nhận `loai='de_thi'` | **Không xây luồng thi mới** — mở rộng cái đang chạy cho ET |
+| ⚠️ RLS `bai_test_cau_hs_read` (mig 202609030307) **rơi mất `de_thi`** khỏi danh sách loại trừ ⇒ HS SELECT thẳng được `dap_an_key` + `loi_giai` của đề thi | Vá NGAY trong mig P2/P3 (lỗ bảo mật, hồi quy từ 03/09) |
+| `bai_test.khoa_reveal` là cột chết — không hàm/policy/UI nào đọc | `et_nop` phải đọc nó |
+| Không có đồng hồ; `bai_lam.bat_dau_at` có sẵn nhưng không ai dùng | Hạn cá nhân = `bat_dau_at + thoi_gian_phut`, server chặn |
+| `diem` câu cứng = 1 (cả client lẫn `_kho_snapshot_cau`); không có hàm tổng điểm | Điểm theo phần + hàm điểm ở SQL |
+| HS ghi thẳng được `verdict/diem` vào `bai_lam_cau` qua PostgREST, và sửa `dap_an_hs` sau khi đã nộp | Trigger chặn cho các loại THI |
+| App HS: ô "Làm đề thi thử" đang `sapCo`, không lọc `loai` ⇒ đề thi đã phát hành **HS không thấy** | Mở ô cho cấp 3 |
+| ERP đã có quy ước ĐS trong đề thi: chọn 1 chuyên đề, stamp dạng đại diện vào cả 4 mệnh đề (`DungSaiBoc`) | Duyệt đề dùng lại đúng quy ước này |
+
+### 9.1 Dữ liệu (1 migration)
+
+| Thay đổi | Vì sao |
+|---|---|
+| `tai_lieu.duyet_at`, `tai_lieu.duyet_boi` (NULL = không áp dụng cho loại khác / đề chưa có dấu duyệt) + bảng `tai_lieu_duyet_log` do **trigger** ghi | §4 CLAUDE.md: đổi state phải có vết do DB tự ghi |
+| `tai_lieu_phan.diem_moi_cau numeric null`, `tai_lieu_cau.diem numeric null` — ghi đè khuôn Bộ khi đề lệch | NULL = theo khuôn Bộ theo **loại câu gốc**: TN 0,25 · ĐS 1 · TLN 0,5 (TLN chuyển MCQ vẫn 0,5 — giữ vị trí + giữ điểm) |
+| `bai_test.thoi_gian_phut int null` (NULL = không giới hạn) | Đồng hồ |
+| `bai_test_cau.phan text null` (tiêu đề phần; NULL = test không chia phần) | App HS hiện "Phần I/II/III" |
+
+### 9.2 Hàm Postgres (nguồn công thức DUY NHẤT — §2.0)
+
+| Hàm | Việc |
+|---|---|
+| `fn_de_thi_cau(de)` | Danh sách câu của đề theo thứ tự phần→câu, **resolve kho từng câu** (`nhanhByCau` → `tai_lieu.nhanh` → môn), điểm hiệu lực. MỌI hàm dưới đọc qua đây — 1 chỗ resolve |
+| `fn_de_thi_thieu(de)` | Invariant "đề sẵn sàng" — trả từng câu thiếu gì. **Chặn:** dạng chờ · thiếu đáp án · mệnh đề thiếu Đ/S · mệnh đề dạng chờ · TLN chưa có phương án MCQ · câu đã vào kho rác. **Không chặn:** tự luận (chỉ in, app bỏ qua) |
+| `fn_de_thi_duyet(de)` | 1 cửa: `thieu` rỗng ⇒ trong 1 transaction duyệt mọi câu + mệnh đề + form MCQ của đề, đóng dấu `tai_lieu.duyet_at` |
+| `fn_de_thi_mo(de, lop, ngay, phut, khoa)` | Phát hành: bắt buộc đã duyệt; tạo `bai_test` + snapshot từng câu qua `_kho_snapshot_cau` (TLN tự hiện thành 4 phương án), gắn điểm + phần. Thay `phatHanhTest` client cho đề thi (tính+ghi cùng transaction) |
+| `_et_cham(bai_lam)` | Tách vòng chấm của `et_nop` ra (logic giữ nguyên byte-for-byte) để staff "thu bài" dùng chung |
+| `et_nop` (sửa) | Chấm như cũ; **nếu `khoa_reveal` ⇒ không trả key/lời giải/đúng-sai**, chỉ trả cờ khoá |
+| `fn_de_thi_thu_bai(bai_test)` | Staff thu bài: bài đang làm ⇒ nộp + chấm (HS tắt app giữa chừng vẫn có điểm) |
+| `fn_de_thi_ket_qua(bai_test)` | Staff: từng HS trong lớp — chưa làm / đang làm / đã nộp · điểm thang 10 · điểm từng phần |
+| `fn_de_thi_diem_cua_toi(bai_test)` | HS: điểm của mình — chỉ khi đã nộp **và** đáp án đã mở |
+| Trigger `bai_lam` / `bai_lam_cau` | Khi client ghi thẳng (role `authenticated`) vào bài loại THI: cấm ghi sau khi nộp · cấm tự ghi `verdict/diem` · cấm ghi quá `bat_dau_at + phut + 2'` · cấm sửa `bat_dau_at/bien_the/trang_thai` (nộp phải qua `et_nop`) |
+
+Điểm thang 10 = `Σ điểm đạt / Σ điểm tối đa × 10` (đề lệch khuôn vẫn quy đúng về 10). ĐS bậc thang 0 · 0,1 · 0,25 · 0,5 · 1 giữ nguyên như `et_nop` đang chấm.
+
+### 9.3 Màn staff (ERP — trong `DeThiEditor`)
+
+1. **Duyệt đề** — đề hiện nguyên bố cục giấy; mỗi câu sửa tại chỗ, lưu ngay, **vá tại chỗ không tải lại danh sách**:
+   - Dạng: chọn trong bản đồ đúng kho + khối của câu. ĐS: 1 lựa chọn chuyên đề/dạng cho cả câu, stamp vào 4 mệnh đề (quy ước `DungSaiBoc`).
+   - TN: bấm A/B/C/D để đặt đáp án. ĐS: Đ/S từng ý. TLN: ô đáp số.
+   - TLN → MCQ: 4 phương án, đáp án đúng = đáp số (khoá); **3 phương án nhiễu máy gợi ý rẻ** (đổi dấu, ×2, lệch ±1…), người duyệt sửa/xác nhận ⇒ lưu `<kho>_cau_form_tn` (`nguon='nguoi'`).
+   - Thanh trên: "còn N câu thiếu" (đọc `fn_de_thi_thieu`) · nút **Duyệt đề** chỉ tắt khi còn thiếu dữ liệu.
+2. **Phát hành online** — lớp · ngày · thời gian (mặc định meta hoặc 90') · "Khoá đáp án tới khi mở" (mặc định bật). Chưa duyệt ⇒ nói rõ lý do, không cho phát hành.
+3. **Các lượt thi** — mỗi lượt: bảng kết quả (tên HS, trạng thái, điểm /10, điểm từng phần) · **Thu bài** · **Mở đáp án**.
+
+### 9.4 App HS
+
+- Cấp 3: ô **"Làm đề thi thử"** mở ra, liệt kê `loai='de_thi'` (dùng chung khung danh sách của ET/BTVN).
+- `LamET` khi `loai='de_thi'`: **giữ thứ tự câu + thứ tự ý Đ/S của đề gốc** (không xáo), tiêu đề phần, **ẩn nút 💡 Gợi ý** (đang thi), **đồng hồ đếm ngược** từ `bat_dau_at + thoi_gian_phut` — hết giờ tự nộp; đã nộp mà đáp án còn khoá ⇒ màn "Đã nộp — chờ thầy/cô mở đáp án"; mở rồi ⇒ điểm /10 + từng câu như ET.
+
+### 9.5 Quyết định CTO trong §9 (đổi được, nói nếu lệch ý)
+
+1. Đáp án đang khoá thì **ẩn cả đúng/sai lẫn điểm**, không chỉ ẩn lời giải — tránh HS nộp trước báo đáp án cho bạn còn đang làm.
+2. Phương án nhiễu cho TLN: máy gợi ý kiểu **số gần đúng**, không phải "theo lỗi" như `spec-mcq-form.md` — người duyệt là lớp chặn. Muốn nhiễu theo lỗi thì là việc riêng của pipeline MCQ.
+3. Ân hạn **2 phút** sau hết giờ cho lưu đáp án (mạng chậm), rồi server khoá.
+4. Thang điểm cố định 10 (đúng khuôn Bộ).
