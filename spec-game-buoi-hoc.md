@@ -78,12 +78,12 @@ Kỳ vọng ≈ 3 + 8 + 7,8 + 80 ≈ **99 EXP/lượt**. Hàng chục dừng tr�
 
 ## 6. Đường nối ERP (đã dò DB/code thật 27/09 — sự thật, không phải đề xuất)
 
-- **Buổi → lớp → môn:**  →  (có cột , ). Danh sách + điểm danh:  (src/lib/gami.ts:203), đổi điểm danh  (:270).
-- **Sổ EXP:**  (hoc_sinh_id, source, amount, ref_buoi_hoc_id, note, mon). Nguồn đang có dữ liệu: exp_et 2822 · exp_btvn 2443 · exp_btvn_thang 611 · attend_floor 327 · exp_thang 284 · rank_et 122 · btvn 98 · rank_ingame 64 dòng.
+- **Buổi → lớp → môn:** `buoi_hoc.lop_id` → `lop.mon` (lop có cột `mon`, `khoi`). Danh sách + điểm danh: `getRoster(buoiId)` (src/lib/gami.ts:203), đổi điểm danh `diemDanh` (:270).
+- **Sổ EXP:** `gami_exp_ledger` (hoc_sinh_id, source, amount, ref_buoi_hoc_id, note, mon). Nguồn đang có dữ liệu: exp_et 2822 · exp_btvn 2443 · exp_btvn_thang 611 · attend_floor 327 · exp_thang 284 · rank_et 122 · btvn 98 · rank_ingame 64 dòng.
 - ⚠ **BẪY: nguồn EXP bị LIỆT KÊ CỨNG ở 4 chỗ** — thêm nguồn mới mà quên 1 chỗ thì EXP game **không bao giờ thành xu / không hiện**, im lặng không lỗi:
-  -  (chốt xu tháng) ·  ·  (ví xu trên app HS):  +  theo khoảng ngày.
-  -  src/lib/gami.ts:830 (comment trong mig 202609031903 đã cảnh báo "sửa CẢ HAI").
-  - Tháng của 1 dòng EXP xác định bằng ****, không phải created_at ⇒ nguồn game phải ghi note = tháng của NGÀY BUỔI HỌC.
-  - ( hiện KHÔNG có  trong danh sách — khác 2 hàm kia; ghi nhận, chưa rõ cố ý hay sót.)
+  - `fn_gami_exp_xu_thang` (chốt xu tháng) · `fn_gami_exp_chi_tiet_thang` · `fn_hs_vi_xu_cua_toi` (ví xu trên app HS): `source in ('exp_thang','exp_et','exp_btvn','exp_btvn_thang') and note = <tháng>` + `attend_floor` theo khoảng ngày.
+  - `EXP_NOTE_SOURCES` src/lib/gami.ts:830 (comment trong mig 202609031903 đã cảnh báo "sửa CẢ HAI").
+  - Tháng của 1 dòng EXP xác định bằng **`note = 'YYYY-MM'`**, không phải created_at ⇒ nguồn game phải ghi note = tháng của NGÀY BUỔI HỌC.
+  - (`fn_hs_vi_xu_cua_toi` hiện KHÔNG có `exp_thang` trong danh sách — khác 2 hàm kia; ghi nhận, chưa rõ cố ý hay sót.)
 - **Điều khiển TV từ ERP:** đã có mẫu chạy thật (quản trò sự kiện 26/09): máy ERP đã đăng nhập ↔ TV game qua kênh Supabase Realtime (gửi tên theo slot, nghe kết quả, ghi DB qua RPC, khoá theo ván chống cộng đúp).
-- **Chỗ đặt nút mở game:** màn Buổi học  (GV/TA đang dùng để điểm danh/chấm).
+- **Chỗ đặt nút mở game:** màn Buổi học `src/screens/gami/BuoiHocScreen.tsx` (GV/TA đang dùng để điểm danh/chấm).
