@@ -407,9 +407,14 @@ export function DangPicker({ khoi, mon, nhanh, selected, onClose, onConfirm }: {
   const [tree, setTree] = useState<Tier1Node[]>([])
   const [sel, setSel] = useState<Set<string>>(new Set(selected))
   const [loading, setLoading] = useState(true)
+  // ⭐ 27/09 (CEO): filter độ khó 1-5 khi chọn Bài (Hình học). Toggle set — rỗng = KHÔNG lọc; có mục = chỉ hiện Bài có mucDo khớp.
+  const [mucDoLoc, setMucDoLoc] = useState<Set<number>>(new Set())
   useEffect(() => { khoCuaMon(mon, nhanh).listMap(khoi).then((r) => { setTree(groupMap(r)); setLoading(false) }).catch(() => setLoading(false)) }, [khoi, mon, nhanh])
   const toggle = (ma: string) => setSel((s) => { const n = new Set(s); n.has(ma) ? n.delete(ma) : n.add(ma); return n })
   const toggleCd = (mas: string[], on: boolean) => setSel((s) => { const n = new Set(s); mas.forEach((m) => on ? n.add(m) : n.delete(m)); return n })
+  const toggleMd = (n: number) => setMucDoLoc((s) => { const x = new Set(s); x.has(n) ? x.delete(n) : x.add(n); return x })
+  const coMucDo = tree.some((t1) => t1.tier2s.some((t2) => t2.leaves.some((l) => l.mucDo != null)))   // chỉ hiện bar khi có Bài đã gán độ khó
+  const khopMucDo = (mucDo: number | null) => mucDoLoc.size === 0 || (mucDo != null && mucDoLoc.has(mucDo))
   // ⭐ 07-24 (Thùy chốt): trả về ĐÚNG THỨ TỰ CHỌN — chọn trước ra trước. `sel` là Set, JS Set giữ thứ tự
   // CHÈN nên [...sel] chính là thứ tự bấm (dạng đã có sẵn nạp vào theo thứ tự hiện tại của buổi → không
   // bị xáo khi mở lại picker; bỏ chọn rồi chọn lại = đưa xuống cuối, đúng ý "chọn sau thì ở sau").
@@ -426,6 +431,24 @@ export function DangPicker({ khoi, mon, nhanh, selected, onClose, onConfirm }: {
           <span className="text-[13px] text-slate-400">đã chọn <b className="text-indigo-600">{sel.size}</b></span>
           <button onClick={onClose} className="ml-auto flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
         </div>
+        {/* ⭐ 27/09 (CEO): filter độ khó 1-5 — chỉ hiện khi bản đồ có Bài đã gán mucDo (Hình học Học). */}
+        {coMucDo && (
+          <div className="flex items-center gap-1.5 border-b border-slate-100 bg-slate-50/60 px-6 py-2">
+            <span className="mr-1 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Độ khó</span>
+            {[1, 2, 3, 4, 5].map((n) => {
+              const on = mucDoLoc.has(n)
+              const tone = ['bg-emerald-500', 'bg-lime-500', 'bg-amber-500', 'bg-orange-500', 'bg-rose-500'][n - 1]
+              return (
+                <button key={n} onClick={() => toggleMd(n)}
+                  className={`h-6 w-6 rounded-md text-[11px] font-bold shadow-sm ${on ? `${tone} text-white` : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:ring-slate-300'}`}>
+                  {n}
+                </button>
+              )
+            })}
+            {mucDoLoc.size > 0 && <button onClick={() => setMucDoLoc(new Set())} className="ml-1 text-[12px] text-slate-400 hover:text-rose-600">✕ Bỏ lọc</button>}
+            <span className="ml-auto text-[11px] italic text-slate-400">Rỗng = không lọc</span>
+          </div>
+        )}
         <div className="min-h-0 flex-1 overflow-auto p-5">
           {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
             : tree.length === 0 ? <p className="text-sm text-slate-400">Khối này chưa có dạng.</p>
@@ -433,7 +456,9 @@ export function DangPicker({ khoi, mon, nhanh, selected, onClose, onConfirm }: {
               <div key={t1.t1Ma} className="mb-4">
                 <div className="mb-1 text-[12px] font-bold uppercase tracking-wide text-slate-500">{t1.t1Ten}</div>
                 {t1.tier2s.map((t2) => {
-                  const mas = t2.leaves.map((l) => l.leafMa)
+                  const leavesLoc = t2.leaves.filter((l) => khopMucDo(l.mucDo))
+                  if (leavesLoc.length === 0) return null                           // ẩn t2 nếu tất cả Bài bị lọc
+                  const mas = leavesLoc.map((l) => l.leafMa)
                   const allOn = mas.every((m) => sel.has(m))
                   return (
                     <div key={t2.t2Ma} className="mb-3 rounded-lg border border-slate-100 p-2">
@@ -442,10 +467,11 @@ export function DangPicker({ khoi, mon, nhanh, selected, onClose, onConfirm }: {
                         <button onClick={() => toggleCd(mas, !allOn)} className="ml-auto rounded px-2 py-0.5 text-[11px] font-medium text-indigo-600 hover:bg-indigo-50">{allOn ? 'Bỏ cả chuyên đề' : 'Chọn cả chuyên đề'}</button>
                       </div>
                       <div className="grid grid-cols-2 gap-1">
-                        {t2.leaves.map((l) => (
+                        {leavesLoc.map((l) => (
                           <label key={l.leafMa} className={`flex cursor-pointer items-start gap-2 rounded-md border px-2.5 py-1.5 ${sel.has(l.leafMa) ? 'border-indigo-300 bg-indigo-50/40' : 'border-slate-100 hover:bg-slate-50'}`}>
                             <input type="checkbox" checked={sel.has(l.leafMa)} onChange={() => toggle(l.leafMa)} className="mt-0.5" />
                             <span className="min-w-0 flex-1 text-[13px] text-slate-700">{l.leafTen}</span>
+                            {l.mucDo != null && <span className={`shrink-0 rounded px-1.5 text-[10px] font-bold text-white ${['bg-emerald-500','bg-lime-500','bg-amber-500','bg-orange-500','bg-rose-500'][l.mucDo - 1] ?? 'bg-slate-400'}`}>{l.mucDo}</span>}
                           </label>
                         ))}
                       </div>

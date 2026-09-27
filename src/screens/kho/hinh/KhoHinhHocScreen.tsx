@@ -108,7 +108,8 @@ export default function KhoHinhHocScreen({ khoi }: { khoi: string }) {
               <BaiCard key={b.ma_bai} bai={b} thuTuHienThi={i + 1}
                 soCau={counts[b.ma_bai] ?? 0} coLyThuyet={!!(lyThuyets[b.ma_bai]?.noi_dung?.trim() || lyThuyets[b.ma_bai]?.file_url)}
                 onOpen={() => setOpenBai(b)} onLyThuyet={() => setLtBai(b)}
-                onToggleDuyet={() => toggleDuyet(b)} />
+                onToggleDuyet={() => toggleDuyet(b)}
+                onMucDo={async (v) => { await updateHinhHocBai(b.ma_bai, { muc_do: v }); await reload() }} />
             ))}
           </div>
         )}
@@ -138,10 +139,24 @@ export default function KhoHinhHocScreen({ khoi }: { khoi: string }) {
   )
 }
 
-function BaiCard({ bai, thuTuHienThi, soCau, coLyThuyet, onOpen, onLyThuyet, onToggleDuyet }: {
+// ⭐ 27/09 (CEO): độ khó Bài (1-5) thay bậc S/A/B/C — hình không có "dạng" nên đánh trực tiếp trên Bài.
+//   Ramp màu ấm (emerald → rose) đồng bộ với MUCDO_TONE bên Đại. Bấm chip = xoay 1→2→3→4→5→null→1.
+const MUCDO_TONE_HH: Record<number | string, string> = {
+  1: 'bg-emerald-500 text-white',
+  2: 'bg-lime-500 text-white',
+  3: 'bg-amber-500 text-white',
+  4: 'bg-orange-500 text-white',
+  5: 'bg-rose-500 text-white',
+  none: 'bg-slate-100 text-slate-400 hover:bg-slate-200',
+}
+
+function BaiCard({ bai, thuTuHienThi, soCau, coLyThuyet, onOpen, onLyThuyet, onToggleDuyet, onMucDo }: {
   bai: HinhHocBai; thuTuHienThi: number; soCau: number; coLyThuyet: boolean
   onOpen: () => void; onLyThuyet: () => void; onToggleDuyet: () => void
+  onMucDo: (v: number | null) => void
 }) {
+  const md = bai.muc_do
+  const nextMd = md == null ? 1 : md >= 5 ? null : md + 1
   return (
     <div onClick={onOpen}
       className="group cursor-pointer rounded-xl border border-slate-200 bg-white p-4 transition hover:border-indigo-300 hover:shadow-md">
@@ -150,6 +165,11 @@ function BaiCard({ bai, thuTuHienThi, soCau, coLyThuyet, onOpen, onLyThuyet, onT
           <div className="flex items-center gap-2">
             <span className="text-[13px] font-bold text-slate-300">Bài {thuTuHienThi}</span>
             <Code>{bai.ma_bai}</Code>
+            <button onClick={(e) => { e.stopPropagation(); onMucDo(nextMd) }}
+              title={md == null ? 'Chưa gán độ khó — bấm để đặt' : `Độ khó ${md}. Bấm xoay 1→2→3→4→5→bỏ.`}
+              className={`h-5 min-w-5 shrink-0 rounded px-1 text-[11px] font-bold ${MUCDO_TONE_HH[md ?? 'none']}`}>
+              {md ?? '?'}
+            </button>
           </div>
           <h3 className="mt-1 text-[15px] font-semibold leading-tight text-slate-900">{bai.ten_bai}</h3>
         </div>
