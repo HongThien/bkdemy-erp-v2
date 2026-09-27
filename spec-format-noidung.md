@@ -31,6 +31,14 @@
 > - Verify trên PDF thật Giáo trình 8A (bản khung-từng-câu cũ): 29 câu, 3 nhãn "Bài giải:" căn giữa/gạch chân,
 >   0 dòng "Giải" trần. CHƯA đo được mức lấp đầy trang (khung mỗi câu thêm padding ⇒ có thể dài thêm trang).
 >
+> **⭐ 27/09 — Hình giải tích đã gắn kí hiệu.** HGT dùng CHUNG đường render với Đại; "chưa áp" là do dữ liệu
+> (0/19 bản ghi có `##`). Gắn tay-có-kiểm bằng `scripts/data/hgt_lt_gan_tag_2609.mjs` (bản cũ ở
+> `hgt_lt_truoc_tag_2609.json`). Quy ước đã dùng — áp tiếp cho môn/nhánh khác: "1. Phương pháp làm bài" ⇒
+> `##PP Phương pháp làm bài`, mỗi trường hợp 1 dòng (bước con "Bước 1/2" nối vào dòng của trường hợp) · công
+> thức/quy tắc/tính chất cần nhớ ⇒ `##TC <tên>` · nhãn "Định nghĩa/Nhận xét/Chú ý/Lưu ý" có sẵn ⇒ chuyển lên
+> dòng kí hiệu · ảnh để ĐOẠN RIÊNG ngoài khung (trừ khi xen giữa các ý) · khối mơ hồ (a/b/c, "Loại 1") để nguyên.
+> Parser ##PP tự bỏ "Bước N:"/"- " đầu dòng (vòng tròn đã đánh số).
+>
 > **⭐ 26/09 — HIỂU NHẦM đã sửa: "Bài tập tự luyện" KHÔNG nằm trong lý thuyết.** Lúc đầu tôi tưởng
 > "Câu 1/Câu 2" CEO chỉ trong ảnh là nội dung lý thuyết cần `##BT` — SAI. Đó là CÂU HỎI THẬT lấy
 > từ kho, render qua `CauFlow` trong `DangBlock` (PrintView.tsx), HOÀN TOÀN KHÔNG liên quan

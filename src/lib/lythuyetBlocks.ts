@@ -103,9 +103,11 @@ export function laDauNhomBaiTap(blocks: LyThuyetBlock[], i: number): boolean {
 }
 
 // ##PP riêng 1 quy tắc (spec §1): mỗi DÒNG không trống trong thân khối = 1 bước — tự đánh số + nối
-// timeline khi render, không cần gõ số ①②③ tay.
+// timeline khi render, không cần gõ số ①②③ tay. Nhãn "Bước N:" / "**Bước N:**" / gạch đầu dòng "- " ở đầu
+// dòng (tài liệu gốc hay có sẵn) bị BỎ khi hiện — vòng tròn số đã đánh rồi, giữ thì thành "① Bước 1: …".
+const BUOC_DAU_RE = /^(\*\*)?[ \t]*Bước[ \t]*\d+[ \t]*[:.]?[ \t]*(\*\*)?[ \t]*|^[-–][ \t]+/i
 export function splitPhuongPhapBuoc(noiDung: string): string[] {
-  return noiDung.split('\n').map((l) => l.trim()).filter(Boolean)
+  return noiDung.split('\n').map((l) => l.trim().replace(BUOC_DAU_RE, '').trim()).filter(Boolean)
 }
 
 // ##VD riêng 1 quy tắc (CEO chốt 26/09): CHỈ đề bài nằm trong khung, "Lời giải" đứng NGOÀI khung (plain).
