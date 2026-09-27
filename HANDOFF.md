@@ -351,9 +351,36 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
   chặn theo vai qua `_sk_can`; admin hệ thống = quanly mọi sự kiện. Mỗi vai = 1 tab.
 - **Luồng:** laptop 1 Check-in (HS BK) + Đăng ký game (HS BK + khách cấp số) → laptop 2 Bàn quay (danh sách chờ quay + nút QUAY, random ở
   Postgres) → điện thoại Quản trò (có mặt/bỏ qua 2 lần = loại, bắt đầu gán slot iPad, kết thúc cộng xu) · TV vòng quay / TV hàng chờ qua hash.
-- **Nối iPad:** điện thoại quản trò join kênh broadcast game `bk-<game>:<ma_hub>`, cộng `results[slot].xu` theo `matchId`, gửi `sk_names`
-  xuống TV game (handler thêm vào 5 game `games-site`). **CHƯA test với iPad thật.**
-- 6 mig áp bằng SQL Editor, **sổ `_migrations` chưa ghi** (xem spec §10). Test: PGlite mọi RPC × mọi vai (0 lỗi) + app thật trên sự kiện TEST (đã đóng).
+- **Nối iPad (đã chạy thật tối 26/09, sự kiện đã XONG):** điện thoại quản trò join kênh game `bk-<game>:<ma_hub>`; BẮT ĐẦU lượt ⇒ gửi
+  `sk_open` bảo hub TV tự mở đúng game + `sk_names {names, luot, van, soVan}` ⇒ TV giữ tên, đếm ván, gắn `skLuot` vào state, đủ 3 ván chặn
+  BẮT ĐẦU. **Xu trả TỪNG VÁN** (`fn_sk_tra_xu_van`, cột `sk_xu.van` = matchId, unique theo ván; đủ `so_van` DB tự kết thúc lượt) · màn
+  **Tổng kết lượt** (Ván 1/2/3 + Tổng, `_sk_xu_luot.van`) giữ tới khi bấm "Lượt tiếp" · cảnh báo "không thấy TV" bằng presence.
+  Vòng quay check-in 70/20/10% (cấu hình DB), vòng chia ô ĐỀU — không lộ tỉ lệ.
+- Mig sự kiện áp bằng SQL Editor, **sổ `_migrations` không ghi** (vẫn hiện "treo" ở `--status` — ĐỪNG `npm run migrate` trơn). Đã áp tới
+  `202609261450`; `202609261541` (tổng kết theo ván) — Thùy chưa xác nhận đã chạy.
+- **Số liệu tối 26/09 18:30–21:30 (DB):** chi 3.277 xu = vòng quay 2.115 (124 lượt) + 4 game iPad 1.162 (Xếp Tháp 376 · Tìm Điểm 334 ·
+  Đập Chuột 262 · Mê Cung 190). Thu vào: 0 trong hệ (game đăng ký miễn phí). Trò TV (Đoán Số/Chiếm Đất/Mở Rương) lưu localStorage từng laptop.
+
+### Game `games-site/` — trạng thái sau Trung thu (26–27/09) — bản SỰ KIỆN (luật: `luat-choi-game.md`, tờ dán `luat-choi.html`)
+- 5 game iPad: tự lưu tên (`localStorage bk-games-pname`, dùng chung), TV "Trận mới" giữ tên · chống văng (TVID/FOLLOW) · chặn nảy/cuộn/zoom
+  iPad (nền `html` tối, `touch-action:manipulation`, touchmove guard) · Đập Chuột nhận chạm cả lưới + ân hạn 220ms.
+- **Chiếm Đất / Mở Rương:** thua đậm 20–50% hoặc thắng đậm 150–300% (không hoà), Chuẩn 50/50, tỉ lệ chi ~110%, hiện "tối đa" trên màn.
+  Chiếm Đất: độc đắc 50 xu, ~50% bản đồ có, bỏ gõ tên. Mở Rương: hình quà theo giá trị (quà 1–2 nhỏ, quà bí ẩn quyết định), số hiện sau hình.
+- **Đoán Số:** vé 10 xu = 3 lượt, thưởng 100/35/20 xu (~108%), chỉ hiện xu thưởng; hàng chục dừng trước, hàng đơn vị bò chậm 7 số cuối.
+
+### Đã build (27/09 — ⭐ GAME TRONG BUỔI HỌC: xếp hạng buổi + Mở Rương bản lớp) — ĐỌC `spec-game-buoi-hoc.md` §5b–§6
+- **Mỗi game 2 bản luật, 1 bộ code** (không copy file): mặc định = sự kiện; `?che_do=lop&buoi=<id>` = buổi học. Luật bản lớp do **Thùy viết**
+  (CTO chỉ hỏi output + nối ERP). Đã có luật: **Mở Rương**. Chiếm Đất / Đoán Số: CHỜ LUẬT (ô chọn game khoá "(chờ luật)").
+- **Xếp hạng buổi** (khung 🏆 đầu tab "Chấm bài trên lớp", chỉ buổi thường, `src/screens/gami/XepHangBuoi.tsx`): gợi ý từ điểm `ingame`
+  của CHÍNH buổi (không ET), bằng điểm = cùng hạng; GV chọn 1 Nhất + Nhì (có mặt >10 ⇒ tối đa 2 Nhì), còn lại Giải 3 (suy động) → Chốt
+  (khoá, `buoi_hoc.giai_chot_at`, trigger log `buoi_giai_log`) · Mở lại chỉ khi chưa ai chơi · không đụng Elo.
+- **Lượt game:** 1 lượt/HS/buổi mang mức giải; `fn_buoi_game_choi` RÚT ở DB theo `game_lop_thuong` + ghi `buoi_game_luot` + `gami_exp_ledger`
+  source **`exp_tren_lop`** (note = tháng buổi, mon = lop.mon) trong 1 transaction; ERP gửi kết quả xuống TV (kênh `bk-lop:<buổi>`, presence
+  role=tv); TV chỉ diễn. Mở Rương lớp: Nhất 200–400 (TB300) · Nhì 200–300 (TB250) · Giải 3 100–200 (TB175), bước 20 ⇒ lớp 8 bạn TB 200 EXP/HS.
+- **CHỜ THÙY:** chạy SQL Editor `202609272045_exp_tren_lop_vao_chot_xu_thang.sql` (chưa chạy ⇒ EXP game KHÔNG thành xu cuối tháng) ·
+  cho domain thật của trang game (`VITE_GAMES_URL`, đang tạm `bkdemy-games.vercel.app`) · deploy ERP + app HS + bkdemy-games · test 1 lớp thật
+  (chưa ai bấm Chốt/Mở trên dữ liệu thật — luồng ghi mới verify bằng transaction ROLLBACK).
+- Việc tách riêng, CHƯA làm: đích mới EXP ET 100 cố định / BTVN 200/bài (DB hiện ET 200–300, BTVN 189–300).
 
 ### 🔜 PHA 4 — ĐƯỜNG ỐNG CA YẾU (bổ trợ) — THIẾT KẾ XONG, CHƯA BUILD (ưu tiên tiếp theo)
 Vòng: đề xuất → **team học thuật DUYỆT** → **OPS xếp lịch** → dạy + BT-ngay → buổi kế BT-xác-nhận → đóng.
@@ -2200,6 +2227,33 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
   Nhưng chính việc đó lộ lỗi thật: khung `items-center overflow-hidden` cắt mất nút nằm dưới mép — màn làm việc phải có vùng tự cuộn.
 - **Máy "nhớ lựa chọn" (localStorage) phải kiểm lại khi dữ liệu đổi**: máy nhớ sự kiện TEST đã đóng ⇒ mở app vào nhầm TEST cùng ngày. Nhớ
   thì được, nhưng mở lại phải ưu tiên trạng thái hợp lệ (sự kiện đang mở).
+
+### Bài học 26–27/09 — game chạy thật (sự kiện) + game trong buổi học
+- **⭐⭐ Thêm NGUỒN EXP mới: rà cả chỗ ĐỌC lẫn chỗ XOÁ.** Đọc: nguồn bị liệt kê cứng ở 4 chỗ (`fn_gami_exp_xu_thang` chốt xu ·
+  `fn_gami_exp_chi_tiet_thang` · `fn_hs_vi_xu_cua_toi` · `EXP_NOTE_SOURCES`), tháng xác định bằng `note='YYYY-MM'` (không created_at) —
+  sót 1 chỗ là EXP không bao giờ thành xu, im lặng. Xoá: `fn_recompute_exp_thang` (chạy mỗi lần đóng ET/BTVN) xoá theo `ref_buoi_hoc_id`
+  KHÔNG lọc nguồn ⇒ suýt xoá sạch EXP game (bắt trước khi mở cho GV, vá mig `202609272048`). Grep `delete from gami_exp_ledger` mỗi khi thêm nguồn.
+- **⭐ Sửa hàm mà phiên khác cũng đang sửa: ĐỪNG chép đè thân hàm.** Migration đọc `pg_get_functiondef` lúc áp, `replace` đúng chỗ cần,
+  ASSERT đúng 1 chỗ khớp rồi `execute` (mẫu: mig `202609272045_*`). Chép bản lấy lúc sáng = xoá sửa của người khác lúc trưa.
+- **⭐ Verify migration GHI trên DB thật: chạy cả file + gọi RPC trong 1 transaction rồi ROLLBACK** (claude_build, node qua stdin từ repo).
+  Thấy được kết quả trên buổi/HS thật, không để lại dòng nào; chạy 2 lần (trước/sau vá) để CHỨNG MINH bug thay vì suy luận.
+- **`scripts/migrate.mjs` KHÔNG có `--help` — gõ là nó ÁP THẬT mọi file treo** (27/09 lỡ gõ, may dừng ở file đầu do thiếu quyền). Chỉ dùng
+  `--status` (đọc) hoặc `--only <file>`. Trong repo luôn có file treo của sự kiện/Sổ tay (áp bằng SQL Editor, sổ không ghi).
+- **⭐ "Đã nối kênh" ≠ "có máy nghe".** Tối 26/09 app để hub BK01, TV thật ở BK09 ⇒ nhãn xanh "● nghe TV" mà tên gửi vào khoảng không.
+  Máy điều khiển phải đọc **presence** của máy nhận (`role:'tv'`) và cảnh báo khi vắng; nút "bắt đầu" phải kéo theo mọi bước TV (mở game)
+  thay vì trông người vận hành nhớ làm tay.
+- **Cú pháp hợp lệ ≠ chạy đúng**: patch làm rơi `;` ⇒ `P.fin=falseP.ready=false` — `new Function` qua, chạy thì ReferenceError, iPad kẹt
+  màn kết quả. Game nhiều ván phải chạy ≥2 ván liên tiếp khi verify.
+- **Hình phần thưởng theo GIÁ TRỊ TUYỆT ĐỐI, không theo vị trí trong khoảng của từng hạng** (Giải 3 200 EXP từng ra "núi vàng" to hơn Nhất
+  340). Loại rương/khung đã báo hạng; hình chỉ nói "được nhiều hay ít".
+- **Kinh tế game: tính TB theo SĨ SỐ THẬT trước khi nhận mục tiêu.** Lớp TB 8 bạn có mặt ⇒ Giải 3 chiếm ~3/4 ⇒ "TB 250" bất khả với Giải 3
+  ≤200 (max tất cả = 238). Đưa bảng TB theo sĩ số cho CEO chọn. Thêm độc đắc hiếm/nhỏ hơn ⇒ phải bù vào ô thường để giữ tỉ lệ chi.
+- **iPad Safari:** nền `html` mặc định TRẮNG — trang nảy là lộ "thanh trắng"; tô `html` cùng màu game + `overscroll-behavior:none`.
+  `touch-action` trên `html` áp cho mọi phần tử (lấy giao chuỗi tổ tiên) ⇒ tắt chạm-đúp-zoom toàn trang một chỗ.
+- **Commit CHỈ phần mình khi file có sửa đổi chưa commit của người khác:** dựng bản index = `git show HEAD:file` + đúng patch của mình
+  (script patch chạy được cho cả 2 bản) → `git hash-object -w` → `git update-index --cacheinfo`. Không `git add` cả file.
+- **CEO nói "đừng chốt — t đề xuất kịch bản, luật t viết"** ⇒ CTO chỉ hỏi OUTPUT + tìm đường nối hệ thống; không tự điền số rồi build (R3).
+  Số liệu luật CTO đưa ra phải dán nhãn "nháp, không dùng".
 
 - **⭐ Query kiểm chứng phải KHÔNG ĐƯỢC tautology, và luôn có ĐỐI CHỨNG.** Viết `where not f(x) and f(x)` để "đếm cái lọt" thì kết quả 0 là do logic, không phải do dữ liệu — vô giá trị nhưng trông y hệt bằng chứng. Tương tự, "không thấy trong kết quả" chỉ có nghĩa khi có một mẫu ĐỐI CHỨNG chắc chắn PHẢI thấy và nó thật sự hiện ra; không thì "không thấy" có thể chỉ vì query nhân bản bị hỏng.
 - **Đọc dữ liệu bằng anon key để kết luận "bảng rỗng" là SAI** — RLS member-gate trả **HTTP 200 + `[]`**, không phải lỗi. Cùng họ với bẫy §2.1. Muốn số thật phải `DATABASE_URL_RO` (`claude_ro`), và `claude_ro` không gọi được RPC `grant to authenticated` nên **không thay thế được việc test end-to-end bằng tài khoản thật**.
