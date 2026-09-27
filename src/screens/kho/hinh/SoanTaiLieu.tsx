@@ -1012,11 +1012,11 @@ export async function goiYMaDeChoBai(chuoi: BaiToan[], gocBan: Ban, n: number): 
 // Enter/blur mới ghi (tránh ghi đè mỗi keystroke); ghi xong bài MỚI thêm sau vẫn dùng mặc định chung.
 function ApplyDongChuoi({ soBai, onApply }: { soBai: number; onApply: (n: number) => void }) {
   const [val, setVal] = useState('')
-  const commit = () => { if (val.trim() === '') return; onApply(Math.max(0, Math.min(30, +val || 0))); setVal('') }
+  const commit = () => { if (val.trim() === '') return; onApply(Math.max(0, Math.min(50, +val || 0))); setVal('') }
   return (
     <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-500" title={soBai ? `Áp số dòng này cho cả ${soBai} bài Về nhà của chuỗi` : 'Chưa có bài Về nhà để áp'}>
       dòng kẻ (cả chuỗi)
-      <input type="number" min={0} max={30} value={val} placeholder={String(DONG_BTVN)} disabled={!soBai}
+      <input type="number" min={0} max={50} value={val} placeholder={String(DONG_BTVN)} disabled={!soBai}
         onChange={(e) => setVal(e.target.value)} onBlur={commit} onKeyDown={(e) => e.key === 'Enter' && commit()}
         className="h-6 w-11 rounded border border-violet-300 px-1 text-center text-[12px] disabled:bg-slate-50 disabled:text-slate-300" />
     </label>

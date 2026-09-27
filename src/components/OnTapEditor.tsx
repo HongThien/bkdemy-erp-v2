@@ -241,7 +241,7 @@ function OnTapCauRow({ c, line, col, onLine, onCol }: { c: CauHoi; line: number;
       <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500">{c.ma_cau}</span>
       <span className="min-w-0 flex-1 truncate text-[12px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
       <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết bài này">dòng
-        <input type="number" min={0} max={30} value={line} onChange={(e) => onLine(Math.max(0, Math.min(30, +e.target.value || 0)))} className={numIn} />
+        <input type="number" min={0} max={50} value={line} onChange={(e) => onLine(Math.max(0, Math.min(50, +e.target.value || 0)))} className={numIn} />
       </label>
       <ColSel value={col} onChange={onCol} />
     </li>
@@ -289,11 +289,11 @@ function TuChonDangBlock({ d, ten, cauCache, cauTbl, usedExcept, onApply, onLine
 // mới ghi (tránh ghi đè N câu mỗi keystroke). Ghi xong vẫn sửa riêng từng câu bình thường.
 function ApplyLinesAll({ count, onApply }: { count: number; onApply: (n: number) => void }) {
   const [val, setVal] = useState('')
-  const commit = () => { if (val.trim() === '') return; onApply(Math.max(0, Math.min(30, +val || 0))); setVal('') }
+  const commit = () => { if (val.trim() === '') return; onApply(Math.max(0, Math.min(50, +val || 0))); setVal('') }
   return (
     <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title={`Áp số dòng này cho cả ${count} câu ôn tập của dạng — vẫn sửa riêng từng câu được sau đó`}>
       dòng cả dạng
-      <input type="number" min={0} max={30} value={val} placeholder="—"
+      <input type="number" min={0} max={50} value={val} placeholder="—"
         onChange={(e) => setVal(e.target.value)} onBlur={commit} onKeyDown={(e) => e.key === 'Enter' && commit()}
         className="h-6 w-11 rounded border border-violet-300 px-1 text-center text-[12px]" />
     </label>

@@ -579,7 +579,7 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                                 </>
                               )}
                               <label className="ml-auto flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ cho HS viết (bản in) — trống = mặc định như ET">dòng
-                                <input type="number" min={0} max={30} value={h?.soDong ?? DONG_BTVN} onChange={(e) => setHinhInfo(ma, { soDong: e.target.value === '' ? null : Math.max(0, Math.min(30, +e.target.value || 0)) })} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
+                                <input type="number" min={0} max={50} value={h?.soDong ?? DONG_BTVN} onChange={(e) => setHinhInfo(ma, { soDong: e.target.value === '' ? null : Math.max(0, Math.min(50, +e.target.value || 0)) })} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
                               </label>
                               <button onClick={() => doiHinh(ma)} title="Đổi bản khác (cùng node, ít dùng nhất)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
                               <button onClick={() => setHinhPicker({ phanId: p.id, idx: i })} className="rounded-md border border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">✎ Chọn</button>
@@ -634,7 +634,7 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                           </div>
                           {c && form === 'tu_luan' && (
                             <label className="flex shrink-0 items-center gap-1 pt-1.5 text-[11px] text-slate-400" title="Số dòng kẻ cho HS viết (bản in)">dòng
-                              <input type="number" min={0} max={30} value={ch.btvnLinesByCau?.[c.ma_cau] ?? 4} onChange={(e) => setLines(c.ma_cau, Math.max(0, Math.min(30, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
+                              <input type="number" min={0} max={50} value={ch.btvnLinesByCau?.[c.ma_cau] ?? 4} onChange={(e) => setLines(c.ma_cau, Math.max(0, Math.min(50, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
                             </label>
                           )}
                           {r.maDang && (

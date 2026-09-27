@@ -369,7 +369,7 @@ function DangBlockUI({ no, p, ch, cauTbl, usedExcept, grades, onApply, onLine, o
                   </div>
                   {form === 'tu_luan' && (
                     <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết bài này">dòng
-                      <input type="number" min={0} max={30} value={ch.btvnLinesByCau?.[c.ma_cau] ?? DEFAULT_BTVN_LINES} onChange={(e) => onLine(c.ma_cau, Math.max(0, Math.min(30, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
+                      <input type="number" min={0} max={50} value={ch.btvnLinesByCau?.[c.ma_cau] ?? DEFAULT_BTVN_LINES} onChange={(e) => onLine(c.ma_cau, Math.max(0, Math.min(50, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
                     </label>
                   )}
                   <div className="flex shrink-0 gap-1" title="Chấm bài (sau khi HS làm xong)">

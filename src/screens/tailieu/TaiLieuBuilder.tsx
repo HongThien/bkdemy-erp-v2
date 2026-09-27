@@ -324,7 +324,7 @@ function DangCard({ dang, btvn, linesByCau, colByCau, onCol, onLine, onLineAll, 
                 <span className="min-w-0 flex-1 truncate text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
                 <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
                 <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết bài này">dòng
-                  <input type="number" min={0} max={30} value={linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES} onChange={(e) => onLine(c.ma_cau, Math.max(0, Math.min(30, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
+                  <input type="number" min={0} max={50} value={linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES} onChange={(e) => onLine(c.ma_cau, Math.max(0, Math.min(50, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
                 </label>
                 <ColSel value={colByCau[c.ma_cau] ?? 1} onChange={(n) => onCol(c.ma_cau, n)} />
                 {coCheDoHinh && c.anh_de && <CheDoHinhBtn cur={hinhCheDoByCau[c.ma_cau] ?? 'hien'} onChange={(v) => onHinhCheDo(c.ma_cau, v)} />}
@@ -344,11 +344,11 @@ function DangCard({ dang, btvn, linesByCau, colByCau, onCol, onLine, onLineAll, 
 // keystroke). Ghi xong vẫn sửa riêng từng câu bình thường (áp cả dạng chỉ là 1 lần ghi đè, không khoá).
 function ApplyLinesAll({ maCaus, onApply }: { maCaus: string[]; onApply: (n: number) => void }) {
   const [val, setVal] = useState('')
-  const commit = () => { if (val.trim() === '') return; onApply(Math.max(0, Math.min(30, +val || 0))); setVal('') }
+  const commit = () => { if (val.trim() === '') return; onApply(Math.max(0, Math.min(50, +val || 0))); setVal('') }
   return (
     <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title={`Áp số dòng này cho cả ${maCaus.length} câu BTVN của dạng — vẫn sửa riêng từng câu được sau đó`}>
       dòng cả dạng
-      <input type="number" min={0} max={30} value={val} placeholder="—"
+      <input type="number" min={0} max={50} value={val} placeholder="—"
         onChange={(e) => setVal(e.target.value)} onBlur={commit} onKeyDown={(e) => e.key === 'Enter' && commit()}
         className="h-7 w-12 rounded border border-violet-300 px-1 text-center text-[12px]" />
     </label>
