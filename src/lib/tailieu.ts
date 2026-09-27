@@ -127,7 +127,7 @@ export function canBeETForm(c: { lua_chon?: string[] | null; menh_de?: unknown[]
 }
 // Kho nào ĐÃ CÓ bảng form trắc nghiệm AI (<kho>_cau_form_tn). khoCuaMon().formTnTbl là TÊN theo quy ước cho mọi kho;
 // bảng chưa tạo thì PostgREST 404 → chỗ gọi kiểm qua đây trước. Tạo bảng cho kho mới = thêm tên vào đây (registry, §1.6).
-const KHO_CO_FORM_TN = new Set(['dai_cau_form_tn'])
+const KHO_CO_FORM_TN = new Set(['dai_cau_form_tn', 'hgt_cau_form_tn']) // hgt: bảng có từ mig 202609080230
 export const coFormTn = (formTnTbl: string): boolean => KHO_CO_FORM_TN.has(formTnTbl)
 // ⭐ THỨ TỰ CHUẨN CỦA ET (Thùy chốt 07-20) — gom theo NHÓM IN: trắc nghiệm → trả lời ngắn → tự luận,
 // GIỮ NGUYÊN thứ tự chọn bên trong mỗi nhóm. Gom TẠI LÚC LƯU (ETScreen.luu) → ghi thẳng vào `thu_tu`.

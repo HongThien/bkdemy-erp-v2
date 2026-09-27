@@ -13,6 +13,7 @@ import {
   getETDe, luuDapAnET, nopET, getETDapAnDaLuu, xemGoiY, daHetHan, laNopMuon,
   type BaiTestCuaHS, type BaiTestFull, type BaiLamCau, type ETCauDe, type ETReveal,
 } from '../../lib/testonline'
+import { diemDeThiCuaToi, type DiemCuaToi } from '../../lib/dethi'
 import { mucDeadline, nhanConLai } from '../../lib/tuan'
 import { seededShuffleWithOrig, seededPermByDang } from '../../lib/shuffle'
 import {
@@ -70,7 +71,7 @@ const KHU: { id: KhuId; ten: string; icon: string; loai?: string; direct?: boole
   { id: 'thong_tin', ten: 'Thông tin học tập', icon: '📈', direct: true, mau: 'brand' },
   { id: 'so_tay', ten: 'Sổ tay kiến thức', icon: '📖', direct: true, mau: 'ph-purple' },
   { id: 'xep_hang', ten: 'Bảng xếp hạng', icon: '🏆', direct: true, mau: 'ph-orange' },
-  { id: 'de_thi_thu', ten: 'Làm đề thi thử', icon: '📄', mau: 'ph-purple' },
+  { id: 'de_thi_thu', ten: 'Làm đề thi thử', icon: '📄', loai: 'de_thi', mau: 'ph-purple' }, // 27/09: đề thi thầy/cô phát hành cho lớp (fn_de_thi_mo)
 ]
 // ── KHU cấp 2 (lớp 6-9) — Thùy 11/09: ẨN Bài tập trên lớp/ET/BTVN, thêm 3 ô mới ─────────────────
 // (Bài tập được giao "sắp có" — sau này nối bổ trợ; Thành tựu = giai_thuong đã công bố; May mắn =
@@ -97,7 +98,7 @@ const KIT_O: Record<KhuId, Pick<HomeCard, 'ill' | 'emoji' | 'doodle' | 'tone'>> 
   thong_tin:    { ill: 'study_progress_chart', doodle: 'Hiểu mình để tiến bộ hơn!', tone: 'blue' },
   so_tay:       { ill: 'purple_bookmark_book', doodle: 'Quên đâu tra đó!', tone: 'purple' },
   xep_hang:     { ill: 'self_practice_target', doodle: 'Thi đua vui!', tone: 'green' },
-  de_thi_thu:   { ill: 'mock_exam_locked', doodle: 'Sắp ra mắt! Hãy chờ nhé!', tone: 'gray' },
+  de_thi_thu:   { ill: 'orange_documents', emoji: '📄', doodle: 'Bình tĩnh, tự tin!', tone: 'blue' },
   bai_tap_giao: { ill: 'mock_exam_locked', emoji: '📚', doodle: 'Sắp có nè!', tone: 'blue' },
   thanh_tuu:    { ill: 'self_practice_target', emoji: '🏆', doodle: 'Đầy tự hào ♡', tone: 'orange' },
   may_man:      { ill: 'self_practice_target', emoji: '🎰', doodle: 'Luyện chăm là quay!', tone: 'pink' },
@@ -418,7 +419,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
             : ['', 'xam']
           const badge = k.id === 'may_man' && maymanCoLuot ? 1 : 0
           return {
-            id: k.id, ten: k.ten, sub, subMau, badge, disabled: !!k.sapCo, ...KIT_O[k.id],
+            id: k.id, ten: k.ten, sub, subMau, badge, disabled: !!k.sapCo, ...KIT_O[k.id], ...(k.sapCo ? { ill: 'mock_exam_locked', emoji: undefined, doodle: 'Sắp ra mắt! Hãy chờ nhé!', tone: 'gray' as const } : {}),
             onClick: k.sapCo ? undefined : k.direct
               ? () => setDirect(k.id === 'tu_luyen' ? 'tu_luyen_chon' : (k.id as 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu'))
               : () => { setKhu(k.id); setTab('chua') },
@@ -468,7 +469,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     return {
       id: t.id,
       ten: `${LOAI_TEN[t.loai] ?? 'Bài'} ${t.mon} · ${t.lop_ten}`,
-      sub: `Buổi ${fmtNgay(t.ngay)} · ${t.so_cau} câu${THI_LOAI.has(t.loai) ? ' · nộp 1 lần' : ''}`,
+      sub: `Buổi ${fmtNgay(t.ngay)} · ${t.so_cau} câu${t.thoi_gian_phut ? ` · ${t.thoi_gian_phut} phút` : ''}${THI_LOAI.has(t.loai) ? ' · nộp 1 lần' : ''}`,
       laThi: THI_LOAI.has(t.loai),
       trangThai: daNop ? 'xong' : khoa ? 'qua_han' : sapNopMuon ? 'qua_han_mo' : t.bai_lam ? 'dang_lam' : 'moi',
       han: dlMs !== null && !daNop && muc ? { text: `Hạn ${fmtHan(t.deadline!)} · ${nhanConLai(dlMs)}`, muc } : null,
@@ -1100,7 +1101,20 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
   const [goiY, setGoiY] = useState(false)
   const [confNop, setConfNop] = useState(false)
   const [busy, setBusy] = useState(false)
+  // ĐỀ THI (spec-de-thi §9.4): giữ bố cục giấy (không xáo câu/ý, có tiêu đề phần) · đồng hồ đếm ngược
+  // từ bai_lam.bat_dau_at (server đóng dấu, trigger trg_bai_lam_thi — HS không sửa được) · đáp án có thể
+  // KHOÁ tới khi thầy/cô mở (et_nop trả {khoa:true}). Luật giờ/nộp thật sự nằm ở trigger DB; ở đây chỉ hiển thị.
+  const laDeThi = test.loai === 'de_thi'
+  const [batDau, setBatDau] = useState<number | null>(null)
+  const [conLai, setConLai] = useState<number | null>(null) // giây
+  const [loi, setLoi] = useState<string | null>(null)
+  const [diem, setDiem] = useState<DiemCuaToi | null>(null)
+  const nopRef = useRef(false)
 
+  function nhanReveal(rev: ETReveal[]) {
+    setReveal(Object.fromEntries(rev.map((r) => [r.bai_test_cau_id, r])))
+    if (laDeThi && !rev.some((r) => r.khoa)) diemDeThiCuaToi(test.id).then(setDiem).catch(() => {})
+  }
   useEffect(() => {
     (async () => {
       // moBaiLam TRƯỚC getETDe: bien_the (mã đề gán riêng HS) chốt lúc mở slot, et_de đọc đúng
@@ -1108,36 +1122,72 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
       const bl = await moBaiLam(test.id, hocSinhId)
       const d = await getETDe(test.id)
       setDe(d); setBaiLamId(bl.id)
+      if (bl.bat_dau_at) setBatDau(new Date(bl.bat_dau_at).getTime())
       setAns(await getETDapAnDaLuu(bl.id) as Record<string, Chon>)
-      if (bl.trang_thai === 'da_nop') { const rev = await nopET(bl.id); setReveal(Object.fromEntries(rev.map((r) => [r.bai_test_cau_id, r]))) }
+      if (bl.trang_thai === 'da_nop') { nopRef.current = true; nhanReveal(await nopET(bl.id)) }
     })().catch(console.error)
-  }, [test.id, hocSinhId])
+  }, [test.id, hocSinhId]) // eslint-disable-line
   useEffect(() => { setGoiY(false) }, [idx])
   // Xáo THỨ TỰ CÂU theo (HS×bài) — cùng cơ chế LamBai (xem ghi chú ở đó): chỉ xáo trong cùng 1 dạng.
   // Test có ĐỦ 3 MÃ ĐỀ (test.co_nhieu_ma_de) → GIỮ NGUYÊN thứ tự thu_tu, KHÔNG xáo nữa (Thùy 18/08:
   // "có nhiều mã đề thì không cần đảo thứ tự câu nữa" — mã đề đã khác nội dung, tự phân biệt HS rồi,
   // xáo thêm thứ tự là thừa). et_de đã `order by bc.thu_tu` sẵn nên dùng thẳng `de`.
+  // Đề thi: giữ đúng thứ tự đề giấu (CEO 20/09 "vị trí trong đề giữ nguyên").
   const caus = useMemo(() => {
     if (!de) return []
-    return test.co_nhieu_ma_de ? de : seededPermByDang(de, `${hocSinhId}:${test.id}:q`).map((i) => de[i])
-  }, [de, hocSinhId, test.id, test.co_nhieu_ma_de])
+    return test.co_nhieu_ma_de || laDeThi ? de : seededPermByDang(de, `${hocSinhId}:${test.id}:q`).map((i) => de[i])
+  }, [de, hocSinhId, test.id, test.co_nhieu_ma_de, laDeThi])
+
+  const daNop = !!reveal
+  const hanMs = laDeThi && test.thoi_gian_phut && batDau ? batDau + test.thoi_gian_phut * 60000 : null
+  useEffect(() => {
+    if (!hanMs || daNop) { setConLai(null); return }
+    const tick = () => {
+      const s = Math.max(0, Math.round((hanMs - Date.now()) / 1000))
+      setConLai(s)
+      if (s === 0 && !nopRef.current) doNop() // hết giờ ⇒ tự nộp (server vẫn chặn ghi quá giờ + 2' ân hạn)
+    }
+    tick()
+    const t = setInterval(tick, 1000)
+    return () => clearInterval(t)
+  }, [hanMs, daNop]) // eslint-disable-line
 
   if (!de) return <div className="flex min-h-screen items-center justify-center bg-ios text-sm text-ph-label-2">Đang tải đề…</div>
   const total = caus.length
-  const daNop = !!reveal
   const daTraLoi = caus.filter((c) => ans[c.id] != null && ans[c.id] !== '' && !(Array.isArray(ans[c.id]) && (ans[c.id] as unknown[]).some((x) => x == null))).length
 
   async function luu(cauId: string, v: Chon) {
     if (daNop || !baiLamId) return
     setAns((s) => ({ ...s, [cauId]: v }))
-    try { await luuDapAnET(baiLamId, cauId, v) } catch (e) { console.error(e) }
+    try { await luuDapAnET(baiLamId, cauId, v); setLoi(null) } catch (e: any) { console.error(e); setLoi(e?.message ?? 'Không lưu được đáp án') }
   }
   async function doNop() {
-    if (!baiLamId) return
+    if (!baiLamId || nopRef.current) return
+    nopRef.current = true
     setBusy(true)
-    try { const rev = await nopET(baiLamId); setReveal(Object.fromEntries(rev.map((r) => [r.bai_test_cau_id, r]))); setIdx(0); setConfNop(false) }
+    try { nhanReveal(await nopET(baiLamId)); setIdx(0); setConfNop(false) }
+    catch (e: any) { nopRef.current = false; setLoi(e?.message ?? 'Nộp chưa được — thử lại') }
     finally { setBusy(false) }
   }
+  async function xemLaiKhoa() {
+    if (!baiLamId) return
+    setBusy(true)
+    try { nhanReveal(await nopET(baiLamId)) } finally { setBusy(false) }
+  }
+
+  // Đề thi đã nộp nhưng thầy/cô CHƯA mở đáp án ⇒ không lộ đúng/sai, không lộ điểm (spec §9.5.1).
+  const dangKhoa = daNop && Object.values(reveal!).some((r) => r.khoa)
+  if (dangKhoa) return (
+    <div className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center gap-3 bg-ios px-6 text-center md:max-w-3xl">
+      <p className="text-5xl">📨</p>
+      <p className="text-[18px] font-bold text-ph-label">Đã nộp bài thi</p>
+      <p className="text-[14px] text-ph-label-2">Em đã trả lời {daTraLoi}/{total} câu. Đáp án và điểm sẽ hiện khi thầy/cô mở đáp án.</p>
+      <div className="mt-2 flex w-full gap-2">
+        <button onClick={onXong} className="flex-1 rounded-xl bg-black/[0.04] py-3 text-sm text-ph-label-2">Về trang chính</button>
+        <button onClick={xemLaiKhoa} disabled={busy} className="flex-1 rounded-xl bg-ph-purple py-3 text-sm font-medium text-white disabled:opacity-40">{busy ? 'Đang xem…' : '↻ Xem đã mở chưa'}</button>
+      </div>
+    </div>
+  )
 
   const cau = caus[idx]
   const rv = daNop && cau ? reveal![cau.id] : undefined
@@ -1150,7 +1200,11 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
   // Xáo THỨ TỰ ĐÁP ÁN hiển thị (cùng cơ chế LamBai) — orig ghi state/so đúng, dispI chỉ để đặt nhãn.
   const optsShown = laTN && cau ? seededShuffleWithOrig(cau.lua_chon ?? [], `${hocSinhId}:${test.id}:${cau.id}:opt`) : []
   const correctOrigTN = laTN && daNop ? chiSoCuaChu(rv?.dap_an_key) : -1
-  const menhOrder = laDS && cau ? seededShuffleWithOrig(cau.menh_de ?? [], `${hocSinhId}:${test.id}:${cau.id}:ds`) : []
+  // Đề thi: giữ a) b) c) d) như đề giấy (không xáo ý).
+  const menhOrder = laDS && cau ? (laDeThi ? (cau.menh_de ?? []).map((item, orig) => ({ item, orig })) : seededShuffleWithOrig(cau.menh_de ?? [], `${hocSinhId}:${test.id}:${cau.id}:ds`)) : []
+  // Số câu hiển thị: đề thi đánh số LẠI trong từng phần như đề giấy (Phần II bắt đầu lại Câu 1).
+  const soTrongPhan = laDeThi && cau ? caus.slice(0, idx + 1).filter((c) => (c.phan ?? '') === (cau.phan ?? '')).length : idx + 1
+  const dongHo = conLai != null ? `${Math.floor(conLai / 60)}:${String(conLai % 60).padStart(2, '0')}` : null
 
   return (
     <div className="mx-auto flex h-screen max-w-md flex-col bg-ios md:max-w-3xl">
@@ -1160,13 +1214,25 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
           <div className="h-full bg-ph-purple transition-all" style={{ width: `${((idx + 1) / total) * 100}%` }} />
         </div>
         <span className="text-[12px] text-ph-label-2">{idx + 1}/{total}</span>
+        {dongHo && <span className={`rounded-lg px-2 py-1 font-mono text-[13px] font-semibold ${conLai! <= 300 ? 'bg-ph-red/10 text-ph-red' : 'bg-ph-purple/10 text-ph-purple'}`}>⏱ {dongHo}</span>}
       </div>
       {!daNop && <p className="px-4 pb-1 text-center text-[12px] text-ph-purple">📝 Bài THI · nộp xong mới hiện đáp án · đã trả lời {daTraLoi}/{total}</p>}
+      {loi && <p className="mx-4 mb-1 rounded-lg bg-ph-red/10 px-3 py-1.5 text-center text-[12px] text-ph-red">{loi}</p>}
+      {daNop && diem && (
+        <div className="mx-4 mb-2 rounded-2xl bg-white p-3 text-center shadow-sm">
+          <p className="text-[12px] text-ph-label-2">Điểm bài thi</p>
+          <p className="text-[28px] font-bold text-ph-purple">{diem.diem_10 ?? '—'}<span className="text-[15px] text-ph-label-2">/10</span></p>
+          <div className="mt-1 flex flex-wrap justify-center gap-x-3 text-[12px] text-ph-label-2">
+            {diem.phan.map((p) => <span key={p.phan}>{p.phan || 'Câu'}: <b className="text-ph-label">{p.diem}</b>/{p.toi_da}</span>)}
+          </div>
+        </div>
+      )}
 
       <div className="flex-1 overflow-y-auto px-4 pb-4">
         <div className="rounded-2xl bg-white p-4 shadow-sm">
+          {laDeThi && cau.phan && <p className="mb-1 text-[12px] font-bold uppercase tracking-wide text-ph-purple">{cau.phan}</p>}
           <div className="mb-2 flex items-center justify-between">
-            <p className="text-[13px] font-semibold text-ph-label-2">Câu {idx + 1}</p>
+            <p className="text-[13px] font-semibold text-ph-label-2">Câu {soTrongPhan}</p>
             {cau.ly_thuyet && <button onClick={() => setGoiY((v) => !v)} className={`rounded-full border px-3 py-1 text-[12px] font-medium ${goiY ? 'border-ph-orange/40 bg-ph-orange/15 text-ph-orange' : 'border-ph-orange/25 bg-ph-orange/10 text-ph-orange'}`}>💡 Gợi ý</button>}
           </div>
           {goiY && cau.ly_thuyet && <div className="mb-3 rounded-xl border border-ph-orange/25 bg-ph-orange/[0.06] p-3 text-[14px] leading-relaxed text-ph-label"><MathText>{cau.ly_thuyet}</MathText></div>}

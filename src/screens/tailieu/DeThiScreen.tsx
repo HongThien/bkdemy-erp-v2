@@ -17,14 +17,12 @@ import {
   addPhanDeThi, getPhanCauList, type DeThi, type DeThiMeta,
 } from '../../lib/dethi'
 import { getTaiLieuFull, deletePhan, setCauOfPhan, khoCuaMon, type PhanResolved } from '../../lib/tailieu'
-import { listLop, type Lop } from '../../lib/nhansu'
-import { phatHanhTest } from '../../lib/testonline'
+import { DuyetDeView, PhatHanhDeThiModal, LuotThiPanel } from './DuyetDeThi'
 import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdfRender'
 import { MathText, inp, readClipboardImageFile } from '../kho/ui'
 import { CauEditor, type ReviewItem } from '../kho/DangHub'
 import DangPickerOne from '../../components/DangPickerOne'
 import ChuyenDePickerOne from '../../components/ChuyenDePickerOne'
-import SearchSelect from '../../components/SearchSelect'
 import {
   KHOI_OPTIONS, DEFAULT_KHOI, uploadKhoImage, uploadKhoFile, saveCauToDang, createCauDungSai,
   searchCau, buildDeThiIngestPrompt, DETHI_INGEST_SCHEMA, parseDeThiIngestJson, callGeminiRich,
@@ -134,6 +132,8 @@ export function DeThiEditor({ id, onClose }: { id: string; onClose: () => void }
   const [printing, setPrinting] = useState(false)
   const [bocPhan, setBocPhan] = useState<string | null>(null) // id phần đang bóc câu
   const [phatHanh, setPhatHanh] = useState(false)
+  const [duyet, setDuyet] = useState(false)
+  const [lamMoiLuot, setLamMoiLuot] = useState(0)
   const pdfRef = useRef<HTMLInputElement>(null)
   const markSaved = () => { setSaved(true); setTimeout(() => setSaved(false), 2000) }
 
@@ -188,6 +188,7 @@ export function DeThiEditor({ id, onClose }: { id: string; onClose: () => void }
           {meta.pdfGocUrl
             ? <a href={meta.pdfGocUrl} target="_blank" rel="noreferrer" className="rounded-md border border-slate-300 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-400">📎 Xem đề gốc</a>
             : <button onClick={() => pdfRef.current?.click()} className="rounded-md border border-dashed border-slate-300 px-2.5 py-1.5 text-[12px] font-medium text-slate-500 hover:border-indigo-400">📎 Đính kèm đề gốc</button>}
+          <button onClick={() => setDuyet(true)} disabled={!soCau} className={`rounded-md border px-3 py-1.5 text-[13px] font-medium disabled:opacity-40 ${d.duyet_at ? 'border-emerald-300 bg-white text-emerald-700 hover:bg-emerald-50' : 'border-amber-300 bg-amber-50 text-amber-800 hover:bg-amber-100'}`}>{d.duyet_at ? '✓ Đã duyệt · xem lại' : '✅ Duyệt đề'}</button>
           <button onClick={() => setPhatHanh(true)} disabled={!soCau} className="rounded-md border border-emerald-300 bg-emerald-50 px-3 py-1.5 text-[13px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40">📱 Phát hành online</button>
           <button onClick={() => setPrinting(true)} disabled={!soCau} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">🖨 Xem / In</button>
         </div>
@@ -230,6 +231,7 @@ export function DeThiEditor({ id, onClose }: { id: string; onClose: () => void }
             ))}
             <button onClick={themPhan} className="w-full rounded-xl border-2 border-dashed border-slate-300 bg-white py-3 text-[14px] font-medium text-slate-600 hover:border-indigo-300 hover:text-indigo-700">+ Thêm phần (vd "Phần II. Tự luận")</button>
           </div>
+          <LuotThiPanel deId={id} lamMoi={lamMoiLuot} />
         </div>
       </div>
 
@@ -239,7 +241,8 @@ export function DeThiEditor({ id, onClose }: { id: string; onClose: () => void }
           onDone={async () => { setBocPhan(null); await reload(); markSaved() }} />
       )}
       {printing && <DeThiPrintView id={id} onClose={() => setPrinting(false)} />}
-      {phatHanh && <PhatHanhModal taiLieuId={id} onClose={() => setPhatHanh(false)} />}
+      {phatHanh && <PhatHanhDeThiModal de={d} thoiGianMacDinh={meta.thoiGianPhut} onClose={() => setPhatHanh(false)} onDone={() => setLamMoiLuot((n) => n + 1)} />}
+      {duyet && <DuyetDeView de={d} onClose={() => setDuyet(false)} onDaDuyet={(at) => setD((x) => (x ? { ...x, duyet_at: at } : x))} />}
     </div>
   )
 }
@@ -248,48 +251,8 @@ function MetaField({ label, children }: { label: string; children: React.ReactNo
   return <div><label className="mb-1 block text-[11px] font-medium uppercase tracking-wide text-slate-500">{label}</label>{children}</div>
 }
 
-// ── PHÁT HÀNH ONLINE — đề thi không tự bám lớp+ngày như ET/BTVN → chọn lớp + hạn nộp tại đây ──
-function PhatHanhModal({ taiLieuId, onClose }: { taiLieuId: string; onClose: () => void }) {
-  const [lops, setLops] = useState<Lop[]>([])
-  const [lopId, setLopId] = useState<string | null>(null)
-  const [ngay, setNgay] = useState('')
-  const [busy, setBusy] = useState(false)
-  const [res, setRes] = useState<{ ok: boolean; msg: string } | null>(null)
-  useEffect(() => { listLop().then(setLops) }, [])
-  async function xacNhan() {
-    if (!lopId || !ngay) return
-    setBusy(true)
-    try {
-      const kq = await phatHanhTest(taiLieuId, { lopId, ngay })
-      setRes({ ok: true, msg: `Đã phát hành ${kq.added} câu cho lớp thi online. ${kq.skipped.length ? `${kq.skipped.length} câu bị bỏ qua (chưa hỗ trợ online).` : ''}` })
-    } catch (e: any) { setRes({ ok: false, msg: e.message ?? String(e) }) } finally { setBusy(false) }
-  }
-  return (
-    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/30 px-4" onClick={onClose}>
-      <div className="w-[440px] max-w-full rounded-2xl bg-white p-5 shadow-xl" onClick={(e) => e.stopPropagation()}>
-        <p className="text-[15px] font-semibold text-slate-900">Phát hành đề thi online</p>
-        {res ? (
-          <>
-            <p className={`mt-3 text-[13px] ${res.ok ? 'text-emerald-700' : 'text-rose-600'}`}>{res.msg}</p>
-            <div className="mt-4 text-right"><button onClick={onClose} className="rounded-lg bg-slate-800 px-4 py-2 text-sm font-medium text-white">Đóng</button></div>
-          </>
-        ) : (
-          <>
-            <p className="mt-1 text-[12px] text-slate-500">Đề thi = chế độ THI (giấu đáp án tới khi nộp, chấm server, chỉ tính lần nộp đầu — như ET).</p>
-            <label className="mt-3 block text-[12px] font-medium text-slate-600">Lớp</label>
-            <div className="mt-1"><SearchSelect value={lopId} onChange={setLopId} placeholder="Chọn lớp…" options={lops.map((l) => ({ id: l.id, label: l.ten_lop, sub: `${l.mon}${l.khoi ? ' · K' + l.khoi : ''}` }))} /></div>
-            <label className="mt-3 block text-[12px] font-medium text-slate-600">Ngày thi</label>
-            <input type="date" value={ngay} onChange={(e) => setNgay(e.target.value)} className={`${inp} mt-1 w-full`} />
-            <div className="mt-4 flex justify-end gap-2">
-              <button onClick={onClose} className="rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600">Huỷ</button>
-              <button disabled={!lopId || !ngay || busy} onClick={xacNhan} className="rounded-lg bg-emerald-600 px-4 py-1.5 text-[13px] font-medium text-white disabled:opacity-40">{busy ? 'Đang phát hành…' : 'Phát hành'}</button>
-            </div>
-          </>
-        )}
-      </div>
-    </div>
-  )
-}
+// Phát hành online / Duyệt đề / Lượt thi: DuyetDeThi.tsx (spec-de-thi §9.3) — snapshot + chấm ở SQL
+// (fn_de_thi_mo), thay đường phatHanhTest phía client cũ (đi vòng cửa duyệt, không có điểm theo phần).
 
 // ── BÓC CÂU — engine dùng chung cho BocCauModal (tay, 1 phần đã có sẵn) và NhapDeThiWizard (1 lượt).
 // Đúng/Sai: r.chuyenDeRep = ma_dang ĐẠI DIỆN của chuyên đề đã chọn (anchor ẩn, KHÔNG hiện) — mỗi mệnh

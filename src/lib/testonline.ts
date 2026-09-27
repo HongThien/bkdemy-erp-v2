@@ -21,6 +21,7 @@ export type BaiTest = {
   id: string; nguon_tai_lieu_id: string | null; lop_id: string; hoc_sinh_id: string | null; ngay: string
   loai: TestLoai; mon: string; trang_thai: 'mo' | 'dong'; so_cau: number
   deadline: string | null; khoa_reveal: boolean; co_nhieu_ma_de: boolean; created_at: string
+  thoi_gian_phut?: number | null // đề thi: giới hạn phút tính từ bai_lam.bat_dau_at (mig 202609272027) — null = không giới hạn
 }
 export type BaiTestCau = {
   id: string; bai_test_id: string; thu_tu: number; bien_the: number; ma_cau: string | null; loai_cau: string
@@ -31,7 +32,7 @@ export type BaiTestCau = {
   // không có phương án sẵn. lua_chon_rule song song lua_chon (null = đúng, 'R19' = sai theo rule) — cùng INSERT.
   form_tn_id?: string | null; lua_chon_rule?: (string | null)[] | null
 }
-export type BaiLam = { id: string; bai_test_id: string; hoc_sinh_id: string; trang_thai: 'dang_lam' | 'da_nop'; nop_at: string | null; bien_the: number }
+export type BaiLam = { id: string; bai_test_id: string; hoc_sinh_id: string; trang_thai: 'dang_lam' | 'da_nop'; nop_at: string | null; bien_the: number; bat_dau_at?: string | null }
 export type BaiLamCau = { id: string; bai_lam_id: string; bai_test_cau_id: string; dap_an_hs: unknown; verdict: string | null; diem: number | null; cham_boi: string | null }
 
 // HS bấm "💡 Gợi ý" → ghi vết (idempotent — chỉ cần biết ĐÃ xem, không đếm số lần). GV dùng ở màn Xem live.
@@ -377,7 +378,7 @@ export async function traLoiCau(baiLamId: string, cau: BaiTestCau, dapAnHs: unkn
 
 // ── ET chế độ THI (giấu key) ─────────────────────────────────────────────────
 // Đề ET đã LỌC key (rpc security-definer). Câu: id/thu_tu/loai_cau/noi_dung/lua_chon/menh_de(chỉ noi_dung)/ma_dang/ly_thuyet/diem.
-export type ETCauDe = { id: string; thu_tu: number; loai_cau: string; noi_dung: string | null; lua_chon: string[] | null; anh_de: string | null; menh_de: { noi_dung: string }[] | null; ma_dang: string | null; ly_thuyet: string | null; diem: number }
+export type ETCauDe = { id: string; thu_tu: number; loai_cau: string; noi_dung: string | null; lua_chon: string[] | null; anh_de: string | null; menh_de: { noi_dung: string }[] | null; ma_dang: string | null; ly_thuyet: string | null; diem: number; phan?: string | null }
 export async function getETDe(baiTestId: string): Promise<ETCauDe[]> {
   const { data, error } = await supabase.rpc('et_de', { p_bai_test: baiTestId })
   if (error) throw error
@@ -398,7 +399,7 @@ export async function getETDapAnDaLuu(baiLamId: string): Promise<Record<string, 
   for (const r of (data ?? []) as { bai_test_cau_id: string; dap_an_hs: unknown }[]) m[r.bai_test_cau_id] = r.dap_an_hs
   return m
 }
-export type ETReveal = { bai_test_cau_id: string; verdict: string | null; dap_an_key: unknown; loi_giai: string | null; anh_dap_an: string | null; menh_de: unknown }
+export type ETReveal = { bai_test_cau_id: string; verdict: string | null; dap_an_key: unknown; loi_giai: string | null; anh_dap_an: string | null; menh_de: unknown; khoa?: boolean } // khoa=true: đề thi đang khoá đáp án (et_nop chỉ trả id+khoa)
 // Nộp ET → server chấm (đọc key) + đông cứng + trả reveal (key/lời giải/verdict). Idempotent claim.
 export async function nopET(baiLamId: string): Promise<ETReveal[]> {
   const { data, error } = await supabase.rpc('et_nop', { p_bai_lam: baiLamId })
