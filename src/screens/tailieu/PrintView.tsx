@@ -812,7 +812,7 @@ export function cauItemParts({ no, c, gv, lines = 0, cheDoHinh }: { no: number; 
   const cd = cheDoHinh ?? 'hien'
   const anhBlock = cd === 'khong' ? null
     : cd === 'o_trong'
-      ? (gv && c.anh_de ? <img src={c.anh_de} alt="" className="pv-img" /> : <div className="pv-vebox"><span>Vẽ hình</span></div>)
+      ? (gv && c.anh_de ? <img src={c.anh_de} alt="" className="pv-img" /> : <div className="pv-vebox" />)
       : (c.anh_de ? <img src={c.anh_de} alt="" className="pv-img" /> : null)
   return {
     content: (<>
@@ -1027,8 +1027,11 @@ const CONTENT_CSS = `
 .pv-tlnt-a{width:42mm;flex-shrink:0;border-left:1px solid #e2e8f0}
 .pv-img{display:block;margin:7px auto;max-height:60mm;max-width:100%}
 /* ⭐ 21/09 (CEO): ô "Vẽ hình" — chế độ o_trong (bản HS) chừa khung cho HS tự vẽ; bản GV vẫn dùng .pv-img
-   để hiện ảnh đối chiếu. Soi khung tương đương .pv-img (max-height 60mm) để layout không nhảy. */
-.pv-vebox{display:flex;align-items:center;justify-content:center;margin:7px auto;height:60mm;max-width:100%;border:1.5px dashed #94a3b8;border-radius:6px;color:#94a3b8;font-style:italic;font-size:12px;break-inside:avoid}
+   để hiện ảnh đối chiếu. Soi khung tương đương .pv-img (max-height 60mm) để layout không nhảy.
+   ⭐ 27/09 (CEO): đổi thành LƯỚI Ô VUÔNG kiểu vở caro (5mm/ô), bỏ chữ "Vẽ hình" — HS vẽ hình học dựa lưới. */
+.pv-vebox{display:block;margin:7px auto;height:60mm;max-width:100%;border:1px solid #cbd5e1;border-radius:4px;break-inside:avoid;
+  background-image:linear-gradient(to right,#e2e8f0 0.5px,transparent 0.5px),linear-gradient(to bottom,#e2e8f0 0.5px,transparent 0.5px);
+  background-size:5mm 5mm}
 .mt-img{display:block;margin:6px auto;max-height:60mm;max-width:100%;break-inside:avoid}
 .pv-opts{display:grid;column-gap:22px;row-gap:11px;margin-top:7px;align-items:start}
 .pv-opt{display:flex;align-items:flex-start;gap:5px;line-height:2}
