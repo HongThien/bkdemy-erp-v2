@@ -382,6 +382,27 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
   (chưa ai bấm Chốt/Mở trên dữ liệu thật — luồng ghi mới verify bằng transaction ROLLBACK).
 - Việc tách riêng, CHƯA làm: đích mới EXP ET 100 cố định / BTVN 200/bài (DB hiện ET 200–300, BTVN 189–300).
 
+### Đã build (24–27/09 — ⭐ FORMAT NỘI DUNG LÝ THUYẾT + khung "Bài tập tự luyện" trong PDF) — ĐỌC `spec-format-noidung.md`
+- **Kí hiệu khối đầu đoạn** (đoạn = tách bởi dòng trống): `##ĐN` Định nghĩa (vàng, vạch trái) · `##ĐL` Định lý (tím, khung) · `##TC`
+  "Kiến thức cần nhớ" (xanh dương, cả tính chất/hệ quả/công thức) · `##CY` Chú ý (cam, nét đứt) · `##PP` Phương pháp (mỗi dòng = 1 bước,
+  vòng tròn tự đánh số, tự bỏ "Bước N:"/"- " đầu dòng) · `##VD` (hồng; tag LUÔN "Ví dụ N" tự đánh số, chỉ ĐỀ trong khung, lời giải ngoài) ·
+  `##NX` Nhận xét (xanh ngọc) · `##BT` bài tập trong lý thuyết. Nhãn có sẵn viết cùng dòng kí hiệu ("##VD Ví dụ 1", "##CY Lưu ý").
+  Mọi "Giải"/"Lời giải"/"Bài giải" hiện "**Bài giải:**" căn giữa gạch chân (kể cả dòng đứng riêng trong lý thuyết cũ chưa gắn kí hiệu).
+- **Code:** parser `src/lib/lythuyetBlocks.ts` (dùng chung mọi môn) · render + CSS `LT_CORE_CSS`/`LyThuyetBlockView` ở `src/screens/kho/ui.tsx`
+  · **3 chỗ render phải đi cùng nhau:** preview `LyThuyetModal` (BanDo.tsx) · PDF `LyThuyetBody` trong `PrintView.tsx` (DangBlock + LtBlock) ·
+  `HinhPrintView.tsx` (MucsBlock, cả MTPrintView). Prompt Gemini (`buildLyThuyetPrompt`/`buildTheoryIngestPrompt`, `src/lib/kho/api.ts`) tự gắn
+  kí hiệu + chuẩn hoá "Giải"→"Bài giải" khi bóc ảnh. Bỏ nền xanh bọc ngoài + nhãn "Lý thuyết · Ví dụ" (CEO: "nền nếu có chỉ trong ô khoanh").
+- **Dữ liệu:** mig `202609261247_chuan_hoa_nhan_bai_giai` (146 dòng "Giải" → "Bài giải:", áp `--only`) · **Hình giải tích 19/19 bản ghi đã gắn
+  kí hiệu** (27/09, `scripts/data/hgt_lt_gan_tag_2609.mjs`, bản cũ `hgt_lt_truoc_tag_2609.json`). **Đại chỉ 3/365 dạng có kí hiệu, KHTN 0** — lý thuyết
+  cũ hiện như đoạn thường tới khi gắn (dùng lại script HGT làm mẫu: thay đoạn chính xác + so từ cũ/mới + 1 transaction có điều kiện).
+- **Khung "Bài tập tự luyện"** (câu hỏi THẬT do builder chọn, `DangBlock` → `CauFlow hop`): 1 khung liền bao CẢ cụm câu của dạng, tag nổi trên viền
+  (vai trò như tag Ví dụ), xanh BK `#4c6fff`/`#f5f7ff`. KHÔNG div bọc cả cụm: đỉnh+tag `.pv-bt-cap` nằm CHUNG khối `.pv-bt-dau` (break-inside:avoid)
+  với câu/hàng đầu · viền trái/phải trên từng `.pv-caulist-hop` · nhóm đầu `.hop-dau` bo góc trên · nhóm cuối `.hop-cuoi` đóng đáy · đệm 1px giữa các nhóm.
+  Sang trang giữa cụm thì khung hở ở mép trang (chấp nhận). BTVN KHÔNG có khung.
+- **Còn treo:** app HS (`HocTuDau.tsx`, `HocSinhApp.tsx`) hiện lý thuyết CHƯA qua parser · khung Bài tập tự luyện chưa có cho Hình học
+  (`HinhPrintView`) · chưa dựng lại 4A1/giáo trình HGT thật trong app sau 3 lần sửa khung (chỉ verify Chrome headless) · lỗi gõ gốc "Gợi" ở
+  HGT T312010205 · `hinh_bo_de`/`hinh_dang` đọc 0 dòng bằng `claude_build` (điểm mù RLS) · khu vẽ hình / bảng điền = bật-tắt theo bài tập (chưa làm).
+
 ### 🔜 PHA 4 — ĐƯỜNG ỐNG CA YẾU (bổ trợ) — THIẾT KẾ XONG, CHƯA BUILD (ưu tiên tiếp theo)
 Vòng: đề xuất → **team học thuật DUYỆT** → **OPS xếp lịch** → dạy + BT-ngay → buổi kế BT-xác-nhận → đóng.
 - **⭐ MỘT mastery + NHÃN trạng thái** (KHÔNG đẻ nhiều mastery — Thùy: "chia ra rối"). "Đã xử lý chưa"
@@ -1801,6 +1822,19 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
 - **Số thứ tự xuyên nhóm:** đếm liên tục qua nested map = counter ngoài (`let no=0` rồi `++no` trong map con), KHÔNG `index+1` (reset mỗi nhóm). BTVN/ET đều vướng.
 - **Gemini `CONSUMER_SUSPENDED` (403) = CHẠM spend cap, KHÔNG mặc định là leak key.** Đoán "key bị trảm vì lộ" là SAI (đã sai 1 lần). Check **Console → Spend cap + email Google** trước. Nâng cap có **~10 phút latency** (F5 vô ích, không phải lỗi client). Cache `accepted_answers` + (sau) proxy server-side để giảm gọi/né cap.
 - **Preview-phải-bằng-bản-in → dùng paged.js, ĐỪNG tự cuộn 1 mạch.** Tự phân trang HTML là vô vọng: **flex chặn page-break**; `@page` counter (số trang) **cần có margin** mới hiện. paged.js cho A4 thật + header/footer mỗi trang + đếm trang, **1 engine cho cả preview lẫn in** nên khớp.
+- **⭐ paged.js — đầu khung/tiêu đề KHÔNG được là phần tử riêng trông vào `break-after:avoid` (27/09).** paged.js 0.4.3 chỉ xét avoid khi
+  CHÍNH anh em liền sau tràn trang; nếu cái tràn là con BÊN TRONG nó (câu 1 trong `.pv-caulist`) thì avoid bị bỏ qua ⇒ đỉnh khung mồ côi cuối
+  trang. Luật: gộp đầu khung + nội dung ĐẦU TIÊN vào 1 khối `break-inside:avoid`. Đo: cũ 14/61 vị trí mồ côi, mới 0/61.
+- **⭐ Khung/CSS dùng chung phải thử CẢ 1 cột lẫn nhiều cột.** `.pv-caulist.pv-cols` đặt `line-height: --pitch` (7.5mm) ⇒ mọi thứ đặt trong nó
+  (tag, nhãn) kế thừa, phình cao gấp đôi, đè chữ (lỗi 4A1 27/09 — test 26/09 chỉ thử 1 cột). Phần tử trang trí trong câu ⇒ đặt `line-height` tường minh.
+- **⭐ Verify PDF khi Browser pane không vẽ được** (cửa sổ bị che ⇒ paged.js >30s, 0 trang, screenshot timeout — KHÔNG phải lỗi code; từng kết luận
+  sai "div bọc làm treo" vì thế): dựng HTML tối giản + CSS rút thẳng từ `PrintView.tsx` + `node_modules/pagedjs/dist/paged.polyfill.js` → Chrome
+  headless (`puppeteer-core` + Chrome máy), quét filler 0..N px để đo mọi vị trí sát đáy trang; so bản cũ (`git show HEAD:…`) vs mới. Component
+  thật: `renderToStaticMarkup` qua `npx vite-node` (file .ts, không JSX; tránh `'\\'` trong heredoc — dùng `String.fromCharCode(92)`).
+- **Sửa dữ liệu nội dung hàng loạt:** thay ĐOẠN CHÍNH XÁC (mỗi đoạn tìm đúng 1 lần, lệch là bỏ cả lượt) thay vì gõ lại; nhân chứng = so multiset
+  từ cũ/mới; `update … where noi_dung = <bản cũ>` trong 1 transaction; lưu bản cũ vào repo. Editor tự xoá dấu cách cuối dòng trong file script ⇒
+  chuẩn hoá `[ 	]+
+` của bản gốc trước khi tìm.
 - **⭐⭐ paged.js — LUẬT NGẮT TRANG ĐÚNG (bản 08-14, GỘP & SỬA bản cũ "cứ để `auto` là trang đầy"):** bản cũ nói *avoid trên khối TO làm nhảy cả khối → bỏ trống cuối trang, nên để `break-inside:auto`* — **đúng một nửa, và nửa sai đã gây bug thật**. Sự thật đo được (render thật + đo **% diện tích mỗi trang thực dùng**, không nhìn mắt):
   - **Ngắt GIỮA hai khối anh-em ruột (sibling) → paged.js chạy ĐÚNG.** **Ngắt VÀO TRONG lòng một khối, sâu ≥2 tầng** (vd giữa các `.mline` bên trong `.pv-blk` bên trong `.pv-box-lt`) → paged.js **bỏ phí nốt phần trang còn lại**: phần tử KẾ TIẾP không chịu nằm cùng trang mà nhảy hẳn trang mới (đo được: trang chỉ dùng **10%**). Nặng hơn: có ca nó dựng DỞ rồi để TRẮNG 1 trang rồi DỰNG LẠI TỪ ĐẦU → **lặp/mất nội dung THẬT**, không chỉ xấu.
   - **⇒ Công thức đúng: CẤM xé trong lòng khối (`break-inside:avoid`) + CHẺ khối dài thành nhiều khối NGẮN** để vẫn đủ chỗ ngắt HỢP LỆ (ở tầng sibling). Vừa không phí trang vừa không vỡ. (`LyThuyetBody` chẻ theo dòng khi khối > `LT_BLK_MAX`=3 dòng; dòng đầu giữ `.pv-blk-keep{break-after:avoid}` cho nhãn "Ví dụ N." không mồ côi.) Đo GT 8S1: **8 trang (99/10/97/95/85/72/82/34%) → 6 trang (96/91/96/85/96/85%)**.
