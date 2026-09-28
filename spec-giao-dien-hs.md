@@ -6,6 +6,14 @@
 > (5 skin: Tối giản · Đấu trường · Y2K · Soft Hàn · Anime RPG) · `HomeHS912.tsx` (Home mới + nút **Hình nền** + tấm chọn + hướng
 > dẫn lần đầu) · `src/lib/giaodien_hs.ts`. Còn: Lo-fi (chờ Đơn 3) · nhập ngày thi vào `lich_thi_lon` · lớp 3–5 / 6–8 (chờ Đơn 1–2) ·
 > tầng 2 (màu nhấn, widget) · reskin các màn con (mới chỉ bỏ màu theo giới tính).
+>
+> **⭐ CẬP NHẬT 29/09 (đè phần trên chỗ nào mâu thuẫn):**
+> - **Chỉ còn 1 style dùng thật: Anime RPG** — 4 skin code-dựng (Tối giản · Đấu trường · Y2K · Soft Hàn) ĐÃ XOÁ (Thùy gật); 12 em đang lưu skin cũ
+>   ⇒ `laySkin()` tự ra RPG, DB giữ nguyên. Style áp cho TOÀN BỘ màn HS (không chỉ Home), mặc định RPG cho mọi em.
+> - **Luật style = `design/STYLE-HS.md`** (1 style gồm gì · màn mới dựng thế nào · thêm style thế nào) · hợp đồng `skin/kieu.ts` · gói `skin/styles/<id>.ts`
+>   · `npm run check:style-hs` chạy trước mọi commit đụng app HS (màu gõ tay chỉ được giảm · mọi ô có icon ở mọi style · mọi file hình tồn tại).
+> - **Style 2 = Thị trấn (Town)** — hình đã về 29/09, kiểm hàng + kế hoạch build ở **§9**.
+> - Hình gamification (huy hiệu, bậc rank) là 1 bộ CHUNG mọi style — xem `spec-thanh-tuu-nhiem-vu.md` §0.8 C11.
 
 ---
 
@@ -94,3 +102,33 @@ Tính năng đi kèm: thẻ thành tích dọc 9:16 để đăng story (có logo
 
 Toàn bộ đơn (4 đơn: lớp 3–5 Thị trấn · lớp 6–8 Khối vuông · lớp 9–12 Lo-fi · lớp 9–12 Anime RPG) nằm ở
 `design/DON-HANG-SKIN-HS.md` — 1 nguồn duy nhất, không chép lại ở đây.
+
+## 9. Style 2 — Thị trấn (Town) · kiểm hàng + kế hoạch build (29/09)
+
+**Hình:** `design/bk-ui-src/Style_Town/Town_01…27.png` (Đơn 1 v2, giao từng hình). Bảng kiểm từng file + đơn bổ sung + bảng đổi tên:
+`design/DON-HANG-SKIN-HS.md` mục "Đơn 1 v2 — KIỂM HÀNG 29/09".
+- **Đủ:** 2 ảnh toàn cảnh (iPad #01 · điện thoại #02 — chuẩn để dựng) · nền làng biển + làng nấm (ngang + dọc) · 3 linh vật (mèo · cún · rồng) ·
+  7 icon ô (tự luyện · thông tin · sổ tay · thi thử khoá · bài tập giao · cúp · may mắn) · banner kiểm tra lại · lịch.
+- **Thiếu 7 hình** (từ #19 ChatGPT vẽ lệch danh sách): 5 icon ô **bài trên lớp · BTVN · ET · ví xu (heo đất) · học từ đầu** + 2 nền **làng kẹo**
+  (bản dọc sai tỉ lệ 2:3, cả 2 kín chi tiết). Đơn bổ sung #28–#34 đã soạn, dán vào đúng context đang vẽ.
+
+**Khác RPG:** Town là style **SÁNG** (chữ tối trên nền sáng, `cheDo: ['sang']`), font **Baloo 2**, ô kiểu "thạch" (nền kem, viền dưới đậm cùng tông),
+và dùng **LINH VẬT** thay nhân vật người.
+
+**Kế hoạch build (thứ tự):**
+1. **Gói style** `skin/styles/town.ts` theo hợp đồng `kieu.ts`: bảng màu sáng lấy từ ảnh #01/#02 · `hinhNen` = lang_bien · lang_nam (lang_keo thêm khi
+   #33/#34 về — thiếu 1 nền không chặn ra mắt) · `anhO` 13 ô · `anhBanner` (lịch · kiểm tra lại) · không `trangTri` (ảnh gốc không có).
+   Font Baloo 2 vào `hs.html`. Hình nén vào `public/bk-ui/hs/skin/town/` (nền JPG ~q80, icon PNG 160–192px), ảnh #01/#02 vào
+   `design/handoff/hs-skin-town-v1/reference/`.
+   5 ô thiếu icon: **tạm** dùng hình thừa gần nghĩa nhất (ET ← bia bắn cung #26 · học từ đầu ← bản đồ đường đi #24 · ví xu ← rương xu #19 ·
+   bài trên lớp / BTVN ← chưa có hình gần nghĩa ⇒ `dauThayIcon`) và ghi rõ là tạm; #28–#32 về thì thay. (`check:style-hs` đòi mọi ô có icon ⇒
+   2 ô dùng dấu thay phải được script chấp nhận có ghi chú, không nới luật im lặng.)
+2. **Migration nới CHECK `hs_giao_dien.skin`** thêm `'town'` (hiện: toi_gian · dau_truong · y2k · soft · rpg — GIỮ 4 giá trị cũ vì 12 em còn lưu).
+   Thiếu bước này ⇒ DB chặn đúng lúc em bấm Lưu (CLAUDE.md §2.1).
+3. **Nhân vật / linh vật lên Home** — việc chung mọi style (RPG cũng đang treo mục này): hợp đồng thêm `nhanVat?: { id, ten, anh }[]` ·
+   cột MỚI `hs_giao_dien.nhan_vat` (chỉ có giá trị khi em chọn; chưa chọn = con đầu danh sách) · tấm chọn trong nút Hình nền · HomeHS912 có chỗ
+   đặt nhân vật theo "BỐ CỤC CHUNG" — style không khai `nhanVat` thì không hiện (dữ liệu quyết định, không `if skin`).
+4. **Lời chào + thanh Cấp/XP/xu + bong bóng thoại có số thật** (ảnh #01: "Chào Minh Khang!" · "Cấp 12 · 640/1000" · "1.240 xu" · "Còn 3 câu nữa
+   là đủ 10 câu hôm nay!") — cũng là việc chung mọi style. Số phải từ DB: thêm vào `fn_hs_home_912` (cấp, XP trong cấp, xu, câu thoại).
+   **Chặn trước:** công thức cấp/XP đang ở client `src/gami/level.js` ⇒ phải chuyển sang hàm Postgres trước (CLAUDE.md §2.0).
+5. Soi bằng mắt: Home 2 khổ × 2 nền · 1 màn danh sách · 1 màn làm bài · 1 màn rỗng · màn gamification (hình chung RPG trên nền sáng phải còn đọc được).

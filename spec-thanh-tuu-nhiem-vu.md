@@ -175,6 +175,13 @@
 - **Danh hiệu = giải thưởng tháng đã trao** (màn Trao giải: Xuất sắc / Tiến bộ / Chăm chỉ của lớp) — hiện giải gần nhất em nhận, vd "Xuất sắc tháng 9". Không chờ C5.
 - **Đừng lẫn 3 thứ (Thùy 28/09):** *bậc rank* (Captain, Hero, God of War… — chỉ ở khối Rank) · *huy hiệu* (Helios, Athena… — khối khoe + album) · *danh hiệu* (giải thưởng tháng — ô dưới tên). Mỗi thứ 1 chỗ, không dùng tên của thứ này cho thứ kia.
 - Đơn design gửi ChatGPT: `design/DON-HANG-GAMI-HS.md` (Huy hiệu · Nhiệm vụ + Album · Hồ sơ).
+- **✅ ĐÃ BUILD 29/09 (bản thô, chờ hình design):** `src/screens/hocsinh/HoSoHS.tsx` — đủ 7 khối + tấm chọn 3 khoe + thẻ TV lớp. Home khối 6–12:
+  bấm avatar ⇒ Hồ sơ; **đổi ảnh đại diện chuyển vào trong Hồ sơ** (bấm avatar trong khung). Rank/Album mở từ Hồ sơ thì quay lại về Hồ sơ.
+  - DB (mig `202609290015`): bảng MỚI `hs_huy_hieu_khoe` (em × môn × vị trí 1–3; chỉ có dòng khi em chọn) — **không** dùng `hoc_sinh_thanh_tich_ghim`
+    (FK sang catalog cũ `thanh_tich_loai`, khác hệ huy hiệu). `fn_hs_ho_so(mon)` = sao 8 huy hiệu mùa này + cao nhất mọi mùa, tổng sao, bản cứng đã
+    nhận, 3 khoe (rẻ ~60ms, không gọi `fn_hs_album`). `fn_hs_khoe_dat(mon, keys[])` chặn > 3 · trùng · huy hiệu chưa từng đạt.
+  - **Danh hiệu CHƯA có nguồn DB** ⇒ ô đang ẩn. Còn phải làm: hàm trả giải tháng gần nhất em nhận (màn Trao giải) rồi truyền `danhHieu`.
+  - **Kỷ niệm các mùa:** chưa hết mùa nào ⇒ ô trống có chữ giải thích. Cần bảng/hàm chốt bậc cao nhất cuối mùa (30/6) — làm trước 30/06/2027.
 
 ### 0.7c "Thế giới BK" — học cùng nhau + kênh khoe (Thùy chốt logic 28/09)
 > **→ Bản gom đầy đủ, mới nhất: `spec-the-gioi-bk.md` (29/09)** — đọc file đó trước khi build; mục này giữ lịch sử chốt theo vòng.
@@ -218,6 +225,19 @@
 - **C5** Danh hiệu top theo dạng: logic A4 đã có (Điểm Dạng từ mọi nguồn, chốt tuần) — cấp / %, sàn, tốc độ giảm.
 - **C8** Quà đua lớp.
 - **C11** Giao diện các màn (app HS: Rank / Nhiệm vụ / Vòng quay / Album · TV · màn GV trao bản cứng · admin Ma trận).
+  **Trạng thái 29/09 — ĐÃ DỌN ĐƯỜNG "đổi vỏ"** (Thùy: *"m làm mock up với dọn đường sẵn, t design xong m chỉ cần đổi vỏ"*):
+  - **Sổ hình** `src/screens/hocsinh/gami/hinh.ts` = 1 chỗ duy nhất cho mọi đường dẫn PNG gamification + màu game (8 màu huy hiệu, 5 màu chương,
+    `MAU_GAMI`) + cờ `KIT.{huy_hieu, rank, rank_chung, nhiem_vu}`. Cờ chưa bật ⇒ `gami/HinhGami.tsx` vẽ HÌNH TẠM bằng code (huy hiệu = huy chương
+    TRÒN, rank = KHIÊN). Component: `HinhHuyHieu` · `BieuTuongBac` · `SaoBac` · `AvatarKhung` (lỗ 62%) · `HaoQuang` · `IconNV`.
+  - **Tách VIEW khỏi container:** `NhiemVuView` · `AlbumView` · `RankView` · `HoSoView` (chỉ vẽ từ object RPC) ⇒ ảnh design duyệt thì sửa VIEW.
+  - **Lớp phủ chúc mừng** `gami/ChucMung.tsx`: đạt sao mới (Album) · lên bậc (Rank). "Đã xem" nhớ ở localStorage (tiện ích từng máy — xem ở máy
+    khác thì hiện lại 1 lần, vô hại). Nhiều sao mới cùng lúc ⇒ chỉ chúc cái cao nhất.
+  - **Trang xem mẫu** `hs.html?xem=gami[&man=…&tt=…][&an]`: dữ liệu giả (`gami/mauGami.ts`, số khớp đơn design), không DB, không đăng nhập —
+    chụp ảnh gửi ChatGPT + soát hình sau khi đổi vỏ (`man=bo_hinh`).
+  - **Đơn design v3** `design/DON-HANG-GAMI-HS.md`: style Anime RPG · mỗi đơn = ảnh toàn cảnh duyệt trước → từng hình riêng (1 hình/lượt, không zip)
+    · bảng đổi tên file giao → file code. Bản nhỏ (48/64/96px) Claude tự thu nhỏ.
+  - **Hình gamification là 1 BỘ CHUNG mọi style** (CTO đề xuất 29/09, Thùy bác thì đổi — không vẽ lại theo từng style như icon ô Home): huy hiệu / bậc rank là "tài sản sưu tầm" —
+    em đổi style không được làm đổi thứ em đã đạt; vẽ 80+ hình × mỗi style cũng không kham nổi.
 - **C12** Build plan. **Thùy 28/09: làm HẾT trong cùng đợt, không chia đợt ra mắt.** Thứ tự code bên trong đợt:
   1. Điểm Rank + Thử thách + bậc + khoe TV.
   2. Nhiệm vụ + vòng quay + trần xu.

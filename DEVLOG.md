@@ -31289,3 +31289,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   20 icon tương tác = ChatGPT vẽ theo style (không mua sticker). Đơn 5 v2: 5 ảnh toàn cảnh (Thế giới + thẻ gộp · Bạn bè · tấm Kết bạn · Kênh lớp +
   tấm thả tương tác · dải đang học + ô Home), luật tên kèm nhãn lớp, 45 hình vẽ riêng tên phẳng tiền tố tg_ (+ tab bạn bè, kết bạn, lời mời) +
   dòng bảng đổi tên tg_ → public/bk-ui/hs/gami/the-gioi/. Câu mở còn lại (ngưỡng B, giới hạn bạn, chặn, mã HS với bạn) là logic, không đổi hình.
+
+## 2026-09-29 (8) — Ghi spec + HANDOFF (Thùy: "ghi vào spec và handoff đã" trước khi code Town)
+- `spec-thanh-tuu-nhiem-vu.md` §0.7b (Hồ sơ đã build + còn thiếu danh hiệu/kỷ niệm mùa) · §0.8 C11 (dọn đường đổi vỏ; hình gamification = 1 bộ chung
+  mọi style — CTO đề xuất, chờ Thùy). `spec-giao-dien-hs.md`: khối cập nhật 29/09 (chỉ còn RPG, STYLE-HS.md) + **§9 Style 2 Town** (kiểm hàng +
+  kế hoạch 5 bước). HANDOFF: viết lại mục Giao diện HS (bỏ "5 skin" cũ), gamification thêm 29/09 + việc tiếp, ② thêm 4 bài học.

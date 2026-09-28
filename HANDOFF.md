@@ -426,32 +426,23 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
   (`HinhPrintView`) · chưa dựng lại 4A1/giáo trình HGT thật trong app sau 3 lần sửa khung (chỉ verify Chrome headless) · lỗi gõ gốc "Gợi" ở
   HGT T312010205 · `hinh_bo_de`/`hinh_dang` đọc 0 dòng bằng `claude_build` (điểm mù RLS) · khu vẽ hình / bảng điền = bật-tắt theo bài tập (chưa làm).
 
-### Đã build (28/09 — ⭐ GIAO DIỆN APP HS: skin tự chọn, khối 6–12) — ĐỌC `spec-giao-dien-hs.md` + `design/DON-HANG-SKIN-HS.md` trước khi sửa
-- **Vì sao:** nhiều HS chê Home v4 (pastel, chibi, khẩu hiệu tiếng Anh viết tay, màu gán theo giới tính = "trẻ con"). Không cho HS bầu trước —
-  làm rồi đo (log đổi skin = phiếu bầu). Điểm của ai người đó thấy.
-- **⭐ Thùy 28/09 tối: MỌI skin mở cho MỌI em, không khoá theo tuổi** ("lớp 6 vẫn thích anime"). Nhóm tuổi (3–5 Thị trấn · 6–8 Khối vuông ·
-  9–12) chỉ là CHUẨN THIẾT KẾ skin, không phải hàng rào. `KHOI_CHON_SKIN` = khối 6–12 dùng HomeHS912; **cấp 1 còn HomeCap1** (bố cục iPad + bộ ô
-  BOX_CAP1 riêng) — chưa chuyển, chờ Thùy chốt.
-- **Code:** `HomeHS912.tsx` (đầu trang · Việc tiếp theo · widget Elo+hạng lớp / đếm ngược kỳ thi · kiểm tra lại · lưới ô) + nút **Hình nền** (tấm chọn
-  skin · sáng/tối/theo máy · hình nền) + **hướng dẫn lần đầu**. 5 skin trong `src/screens/hocsinh/skin/registry.ts` (1 nguồn; component chỉ đọc
-  `--sk-*`, cấm `if skin`): Tối giản · Đấu trường · Y2K · Soft Hàn · Anime RPG. Danh sách ô GIỮ theo khối; màn con bỏ màu theo giới tính (`gt = null`).
-  Registry có: `hinhNen[].toiDoc/sangDoc` (tranh riêng màn dọc, HomeHS912 chọn theo `(orientation: portrait)` qua `nenCua`/`bienCss(…, doc)`) ·
-  `anhO` (ảnh từng ô) · `anhBanner` (lịch ở thẻ ca bổ trợ, tờ bài ở banner kiểm tra lại) · `trangTri`.
-- **Skin RPG đã có hình ChatGPT thật (28/09 tối):** `public/bk-ui/hs/skin/rpg/` — 3 nền (Đảo trời id `bau_troi` · Lâu đài · Đêm sao), 2 tranh có bản
-  ngang 1672×941 + dọc 940×1672 (JPG q80) · 13 icon ô `o_*.png` + `b_lich`/`b_kiem_tra_lai` + `sao_cap`/`o_pha_le` (160px). Thành tựu (khối 9) và Bảng
-  xếp hạng (10–12) dùng chung cúp — không bao giờ cùng lưới. File cũ `ill_*`, `bg_bau_troi.jpg` không còn dùng.
-- **Nguồn hình:** ảnh gốc ChatGPT ở `design/bk-ui-src/Nền app HS cấp 3_1..36.png` (bảng số → vai trò: DEVLOG 28/09 "ảnh lẻ 1–30" + "đưa hình vào app").
-  Zip `hs-skin-rpg-v2/v3` (+ bản giải nén ở `design/handoff/`) KHÔNG dùng: v2 cắt từ mockup, v3 lẫn 10 icon ChatGPT tự dựng bằng code.
-- **DB (mig `202609281346_hs_giao_dien_skin`):** `hs_giao_dien` (1 dòng/HS; CHECK skin 5 giá trị — thêm skin PHẢI nới CHECK; `hinh_nen` chỉ regex
-  `^[a-z0-9_]{1,40}$`) · `hs_giao_dien_log` (trigger) · `lich_thi_lon` (kỳ thi lớn, KHÁC `ky_thi`) · RPC `fn_hs_giao_dien_cua_toi` / `fn_hs_luu_giao_dien` / `fn_hs_home_912`.
-- **Việc tiếp:** ① **nhân vật lên Home** — cần cột mới `hs_giao_dien.nhan_vat` (migration) + bố cục cột trái theo "BỐ CỤC CHUNG"; có sẵn ảnh 3 (nam+mèo,
-  nửa người) · 35 (nữ đội mũ + cú, TOÀN THÂN — cắt về nửa người cho khớp) · 34 (cú riêng); còn thiếu mèo riêng · ② Thùy gửi **Đơn 3 v3** (Lo-fi) và
-  **Đơn 1 v2** (Thị trấn — skin SÁNG, linh vật thay người) — cả 2 giao 1 hình/lượt, KHÔNG zip · ③ Đơn 2 (Khối vuông) chưa soạn lại theo luật mới ·
-  ④ cấp 1 có chuyển sang HomeHS912 không (hỏi Thùy) · ⑤ công thức cấp/XP (`src/gami/level.js`) sang Postgres (§2.0) · ⑥ reskin màn con · tầng 2.
-- **Bài học ChatGPT (còn hiệu lực):** ảnh ChatGPT VẼ trong chat ≠ file nó ĐÓNG ZIP — zip hay chứa bản nó tự dựng bằng code/cắt từ mockup. Đơn mới:
-  mỗi lượt đúng 1 hình, Thùy tải thẳng ảnh đó; Claude kiểm bằng số đo (kích thước, % trong suốt, % khung vật thể) + nhìn ảnh, không tin DESIGN.md.
-- **Verify không có tài khoản HS thử:** trang tạm `xem-thu-912.html` + `src/_xem_912.tsx` (dữ liệu mẫu, không đăng nhập, KHÔNG commit — xoá khi Thùy
-  gật; `?khoi=9|11 &nen=… &trong=1`). Vite `dev-hs` có thể báo port khác port thật — đọc `preview_logs` lấy port đúng.
+### ⭐ GIAO DIỆN APP HS — STYLE (cập nhật 29/09) — ĐỌC `design/STYLE-HS.md` + `spec-giao-dien-hs.md` (§ đầu + §9) trước khi sửa
+- **Hiện tại: 1 style dùng thật = Anime RPG**, áp cho TOÀN BỘ màn HS, mặc định mọi em. 4 skin code-dựng (Tối giản/Đấu trường/Y2K/Soft Hàn) ĐÃ XOÁ
+  29/09 (Thùy gật); 12 em còn lưu skin cũ ⇒ `laySkin()` tự ra RPG, CHECK `hs_giao_dien.skin` vẫn giữ 5 giá trị cũ.
+- **Cấu trúc:** hợp đồng `skin/kieu.ts` · gói style `skin/styles/rpg.ts` (màu, font, nền ngang+dọc, 13 icon ô `anhO`, banner, trang trí) ·
+  `registry.ts` = danh sách style · mọi màn chỉ dùng `skin/KhungHS.tsx` (ManHS/DauTrangHS/TheHS/NutHS…/MAU/THE/HEAD), cấm màu gõ tay + `if skin`.
+  **`npm run check:style-hs` trước mọi commit đụng app HS** (màu gõ tay kiểu chỉ-giảm theo mốc · mọi ô có icon ở mọi style · file hình tồn tại).
+- **Mọi skin mở cho mọi em khối 6–12** (Thùy 28/09 tối: "lớp 6 vẫn thích anime"); nhóm tuổi chỉ là chuẩn thiết kế. Cấp 1 còn HomeCap1 (chờ Thùy).
+- **DB:** `hs_giao_dien` (1 dòng/HS, có dòng khi em chọn) + `hs_giao_dien_log` (trigger = phiếu bầu) · `lich_thi_lon` · RPC `fn_hs_giao_dien_cua_toi` /
+  `fn_hs_luu_giao_dien` / `fn_hs_home_912`.
+- **⭐ ĐANG LÀM — Style 2 Thị trấn (Town)** (`spec-giao-dien-hs.md` §9): 27 hình ở `design/bk-ui-src/Style_Town/` đã kiểm 29/09 — ĐỦ 2 ảnh toàn
+  cảnh, nền biển + nấm, 3 linh vật, 7 icon ô, banner; THIẾU 5 icon ô (bài trên lớp · BTVN · ET · ví xu heo đất · học từ đầu) + 2 nền kẹo ⇒ đơn bổ sung
+  #28–#34 trong `DON-HANG-SKIN-HS.md` (Thùy dán vào đúng context đang vẽ). Code theo §9: ① `styles/town.ts` (SÁNG, Baloo 2) với hình đã có, ô thiếu
+  dùng tạm có ghi chú ② migration nới CHECK skin thêm `town` ③ nhân vật/linh vật lên Home (cột mới `hs_giao_dien.nhan_vat`, chung mọi style)
+  ④ lời chào + Cấp/XP/xu + bong bóng thoại — chặn bởi công thức cấp ở client `src/gami/level.js` phải xuống Postgres trước.
+- **Việc khác còn treo:** Đơn 3 v3 Lo-fi / Đơn 2 Khối vuông (chưa gửi) · cấp 1 có chuyển HomeHS912 không · tầng 2 (màu nhấn, widget).
+- **Nguồn hình RPG:** `design/bk-ui-src/Nền app HS cấp 3_*.png` (ảnh 37 = nền dọc Lâu đài) · ảnh chuẩn `design/handoff/hs-skin-rpg-v1/reference/`.
+- **Verify không có tài khoản HS:** Home: `xem-thu-912.html` (tạm, không commit) · gamification: `hs.html?xem=gami` (đã commit, dữ liệu giả).
 
 ### ⭐ GAMIFICATION HS — Rank · Thử thách · Nhiệm vụ · Vòng quay · Huy hiệu — ĐÃ BUILD 28/09 (DB đã áp, app CHƯA push/deploy) · phase 1 CHỈ TOÁN
 > Đọc: `spec-thanh-tuu-nhiem-vu.md` **§0** (luật đã chốt, số mới nhất) · `spec-huy-hieu-build.md` (đo 14 thành tựu, schema, RPC) ·
@@ -479,13 +470,22 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
 - App HS: Tự luyện có thẻ ⚔️ Thử thách + link 📜 Nhiệm vụ / 🏆 Rank · `RankHS` · `NhiemVuHS` · `MayManHS` 2 chế độ · `AlbumHS` (mở từ Thành tựu).
   Nhân sự: lá `huyhieu` (Trao bản cứng · Chốt tháng · Ma trận). Giao diện HS là BẢN THÔ, chờ design (đơn ChatGPT).
 - Verify giao diện bằng trang tạm `_xem_rank.html` + `src/_xem_rank.tsx` (mock RPC, KHÔNG commit — xoá khi Thùy gật).
+- **29/09 — DỌN ĐƯỜNG "ĐỔI VỎ" + HỒ SƠ (pushed, chưa deploy):** sổ hình `src/screens/hocsinh/gami/hinh.ts` (mọi PNG + màu game + cờ `KIT.*`; chưa
+  bật cờ ⇒ `gami/HinhGami.tsx` vẽ hình tạm) · tách VIEW (`NhiemVuView`/`AlbumView`/`RankView`/`HoSoView`) · lớp phủ đạt sao mới / lên bậc
+  (`gami/ChucMung.tsx`, "đã xem" ở localStorage) · **màn Hồ sơ** `HoSoHS.tsx` (7 khối, chọn 3 khoe, thẻ TV; Home 6–12 bấm avatar ⇒ Hồ sơ, đổi ảnh
+  vào trong Hồ sơ) · mig **`202609290015`** (bảng `hs_huy_hieu_khoe` + `fn_hs_ho_so` + `fn_hs_khoe_dat`, ĐÃ ÁP) · **trang mẫu `hs.html?xem=gami`**
+  (mọi màn × trạng thái, dữ liệu giả `gami/mauGami.ts`, `man=bo_hinh` soát hình). Chi tiết: spec §0.7b + §0.8 C11.
+- **Đơn design v3** `design/DON-HANG-GAMI-HS.md`: style Anime RPG · ảnh toàn cảnh duyệt trước → từng hình riêng (1 hình/lượt, #số + tên file, không zip)
+  · bảng đổi tên file giao → file code (bản 48/64/96px Claude tự thu nhỏ). Đơn 5 "Thế giới BK" (phiên khác) cũng nằm trong file này.
+  **Hình về:** Claude nén + đổi tên vào `public/bk-ui/hs/gami/` → bật cờ `KIT.*` → soát `?xem=gami&man=bo_hinh` → sửa VIEW theo ảnh toàn cảnh.
 
 **VIỆC TIẾP (theo thứ tự):**
 1. **Thùy:** chốt huy hiệu tháng 7 rồi 8 ở màn Huy hiệu › Chốt tháng (**chỉ admin** — mig 202609282350: DB chặn bằng `co_quyen_ghi('huyhieu')`, hết timeout: chốt T7 ~2s, T8 ~4s) · cấp lá **`huyhieu_trao`** (chỉ tab Trao bản cứng) cho vai GV — **KHÔNG** cấp `huyhieu` cho GV (Thùy 28/09: *"chốt 1 tháng 1 lần bấm tay, không cần GV — GV chỉ được báo trao quà"*) ·
-   gửi đơn ChatGPT `design/DON-HANG-GAMI-HS.md` (đánh số lại 29/09: Đơn 1 màn Nhiệm vụ + Thành tựu · Đơn 2 Huy hiệu · **Đơn 3 Avatar Rank MỚI** (biểu tượng 10 bậc + khung avatar + màn Rank) · Đơn 4 Hồ sơ) — gửi **Đơn 2 + 3 trước** (bộ hình), rồi 1, rồi 4 · push + deploy khi muốn HS thấy.
+   gửi đơn ChatGPT `design/DON-HANG-GAMI-HS.md` **v3** (Thùy đang gửi 29/09) — **Đơn 2 + 3 trước** (bộ hình), rồi 1, rồi 4 · deploy khi muốn HS thấy.
 2. Chốt tháng 9 từ 10/10. Theo dõi 01/10: nhiệm vụ + vòng quay luật mới tự bật.
-3. Còn làm: ghim 3 huy hiệu khoe (bảng mới) + tắt catalog cũ `thanh_tich_loai`/đổi FK `hoc_sinh_thanh_tich_ghim` (đụng bảng đang dùng — hỏi trước) ·
-   màn Hồ sơ theo design · ô Home Rank/Nhiệm vụ (C11) · ví xu hiện dòng EXP nhiệm vụ/huy hiệu · danh hiệu top dạng (C5) · quà đua lớp (C8).
+3. Còn làm: danh hiệu trên Hồ sơ (hàm trả giải tháng gần nhất — ô đang ẩn) · kỷ niệm mùa (chốt bậc cuối mùa, trước 30/06/2027) · catalog cũ
+   `thanh_tich_loai` / `hoc_sinh_thanh_tich_ghim` còn nguyên, chưa ai tắt (đụng bảng đang dùng — hỏi trước) · ô Home Rank/Nhiệm vụ · ví xu hiện dòng
+   EXP nhiệm vụ/huy hiệu · danh hiệu top dạng (C5) · quà đua lớp (C8) · soi 4 màn bằng tài khoản HS thật (mới soi bằng trang mẫu).
 4. Nợ cũ còn: chọn dạng Tự luyện/Thử thách đang chạy ở CLIENT (`chonDangTuLuyen`, JS) — §2.0 muốn đẩy xuống DB.
 
 ### ✅ PHA 4 — ĐƯỜNG ỐNG CA YẾU (bổ trợ) — ĐÃ BUILD (09→28/09), khác thiết kế 25/07 ở vài chỗ
@@ -1726,6 +1726,18 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
 - MT/Đề thi/Bổ trợ yếu/Đánh giá còn đọc `banDoTbl` theo `ma_chuyen_de` — `hinh_hoc_bai` có cột compat (rỗng) nên không vỡ, nhưng logic theo chuyên đề vô nghĩa với Hình học; chưa bật nhánh này ở đó.
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
+
+- **⭐⭐ Đơn ChatGPT = ẢNH CHUNG trước + TỪNG HÌNH riêng, và kiểm hàng bằng MẮT (29/09).** Đơn chỉ có mô tả + "nhận zip" là thiếu (Thùy trả).
+  Khuôn đúng: A ảnh toàn cảnh/bảng duyệt → DỪNG chờ duyệt → B, C… mỗi lượt 1 hình có "#số tên_file", hình cùng họ vẽ dựa trên hình đã duyệt,
+  bản nhỏ Claude tự thu nhỏ. Kiểm hàng: số đo (cỡ, % trong suốt) KHÔNG đủ — Town 29/09: 19 hình đều nền trong chuẩn nhưng từ #19 ChatGPT vẽ
+  lệch danh sách (rương/bản đồ/cúp lặp). Luôn ghép tờ liên hoàn (nền hồng cánh sen lộ chỗ trong suốt) + xem từng hình đối chiếu đơn.
+- **⭐ Màu game trong màn HS phải nằm ở sổ riêng, không gõ trong màn (29/09).** `check:style-hs` đếm hex + `bg/text-white` trong `*.tsx` theo mốc
+  chỉ-giảm (file mới mốc 0). Màu có nghĩa (màu huy hiệu, chương rank, vàng sao) ⇒ khai 1 lần ở `gami/hinh.ts` (`MAU_GAMI`), màn chỉ tham chiếu.
+- **Worktree + xem app (29/09):** `preview_start` đọc `.claude/launch.json` của repo CHÍNH ⇒ `dev-hs` chạy code main, KHÔNG phải worktree (kiểm:
+  `fetch('/src/…')` có chuỗi mới không); phiên worktree không sửa được file đó ⇒ chạy vite nền từ worktree cổng riêng, xong nhớ tắt tiến trình
+  (TaskStop không giết con vite ⇒ tìm PID theo cổng). Worktree cần copy `.env.local` (VITE_SUPABASE_URL), không chỉ `.env`.
+- **Giả lập HS khi test RPC trong transaction:** `my_hoc_sinh_id()` đọc `jwt_uid()` = claim `sub` → `tai_khoan.id` (không phải email, không phải
+  `hoc_sinh.id`). `set_config('request.jwt.claims', {"sub": <tai_khoan.id>}, true)`.
 
 - **⭐⭐ Bổ trợ: "xếp mãi vẫn Cần xếp" có 2 gốc — đừng vá triệu chứng (24/09).** (1) Form xếp mở buổi 'mo' ĐÃ ĐÓNG CA ở chế độ SỬA ⇒ "xếp" chỉ dời
   ngày buổi cũ (dữ liệu học bị đẩy sang tương lai) — giờ chặn cứng bằng trigger `trg_buoi_bo_tro_khoa_ngay`. (2) Đóng ca chỉ ghi "đã dạy" cho dạng em
