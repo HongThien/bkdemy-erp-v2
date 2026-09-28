@@ -95,6 +95,57 @@ LUẬT RIÊNG (lý do: HS chê bản cũ vì sến và dạy đời):
 Bắt đầu với #01.
 ```
 
+### Đơn 1 v2 — KIỂM HÀNG 29/09 (27 file `design/bk-ui-src/Style_Town/Town_01…27.png`) + ĐƠN BỔ SUNG
+
+Kiểm bằng máy (cỡ + kênh trong suốt) và xem từng hình:
+
+| File | Đơn đặt | Nhận được | Kết luận |
+|---|---|---|---|
+| Town_01 · 02 | #01 · #02 ảnh toàn cảnh iPad · điện thoại | đúng | ✔ (làm chuẩn dựng màn) |
+| Town_03 · 04 | nền làng biển ngang · dọc | đúng, 1672×941 / 940×1672 | ✔ |
+| Town_05 · 06 | #05 nấm NGANG · #06 nấm DỌC | 05 = nấm DỌC, 06 = nấm NGANG (đảo thứ tự) | ✔ dùng được, chỉ đổi tên |
+| Town_07 | #07 kẹo NGANG | kẹo DỌC nhưng 1024×1536 (tỉ lệ 2:3, không phải 9:16) + kín chi tiết cả khung | ✖ vẽ lại |
+| Town_08 | #08 kẹo DỌC | kẹo NGANG 1602×981, kín chi tiết cả khung (không chừa 65% bên phải sáng, ít chi tiết) | ✖ vẽ lại |
+| Town_09 · 10 · 11 | linh vật mèo · cún · rồng | đúng, nền trong | ✔ |
+| Town_12 … 18 | tự luyện · thông tin · sổ tay · thi thử (khoá) · bài tập giao · cúp · may mắn | đúng | ✔ |
+| Town_19 | vi_xu = heo đất | rương đầy xu | ✖ lệch (ảnh toàn cảnh #01 dùng heo đất) |
+| Town_20 | bai_tren_lop = cặp sách | cuộn bản đồ + rương | ✖ lệch |
+| Town_21 | et = đồng hồ báo thức + tờ bài | rương đá quý | ✖ lệch |
+| Town_22 | btvn = chồng vở + bút chì | bản đồ + la bàn | ✖ lệch |
+| Town_23 | hoc_tu_dau = đường đá bậc thang lên đồi | cúp có sao (trùng cúp #17) | ✖ lệch |
+| Town_24 | lich | cuộn bản đồ kho báu | ✖ lệch |
+| Town_25 | kiem_tra_lai | tờ bài dấu tích hồng | ✔ |
+| Town_26 | sao_cap | bia bắn cung | ✖ lệch |
+| Town_27 | dong_xu | lịch để bàn | ✔ dùng làm `lich` |
+
+Từ #19 ChatGPT trượt khỏi danh sách (vẽ rương / bản đồ / cúp — 3 bản đồ, 2 rương, 2 cúp). `sao_cap` + `dong_xu` code hiện KHÔNG dùng
+(hợp đồng style không có chỗ) ⇒ không cần vẽ lại. **Thiếu thật: 5 icon ô + 2 nền kẹo = 7 hình.**
+
+Dán tiếp vào ĐÚNG context ChatGPT đang vẽ Town (giữ phong cách đã duyệt):
+
+```
+BỔ SUNG — từ #19 bạn đã vẽ lệch danh sách. Vẽ lại đúng 7 hình dưới, vẫn luật cũ: MỖI LƯỢT ĐÚNG 1 HÌNH, dòng đầu ghi số + tên file,
+vẽ xong dừng chờ "tiếp". Cùng phong cách, góc nhìn 3/4, nắng trái-trên, cùng độ chi tiết với #12–#18 đã vẽ.
+ICON: vuông 1254×1254, nền TRONG SUỐT thật, vật ở giữa ~80% khung, không chữ/số, không khung ô phía sau.
+   #28 ill_town_bai_tren_lop — cặp sách đi học (ba lô) màu xanh dương, quai da nâu, 1 cuốn sách thò ra
+   #29 ill_town_btvn         — chồng 3 cuốn vở màu + 1 bút chì vàng đặt chéo trên cùng
+   #30 ill_town_et           — đồng hồ báo thức tròn 2 chuông đứng cạnh 1 tờ bài kiểm tra có dấu tích
+   #31 ill_town_vi_xu        — heo đất hồng (GIỐNG con heo trong ảnh toàn cảnh #01) + vài đồng xu vàng dưới chân
+   #32 ill_town_hoc_tu_dau   — con đường đá bậc thang uốn lên 1 ngọn đồi xanh nhỏ, lá cờ nhỏ trên đỉnh
+NỀN làng kẹo (vẽ lại — bản cũ kín chi tiết cả khung, bản dọc sai tỉ lệ):
+   #33 backdrop_town_lang_keo_ngang — 1672×941, nền đặc, KHÔNG linh vật, KHÔNG chữ. Nhà bánh quy + kẹo mút dồn sang TRÁI;
+       65% bên PHẢI là trời xanh + mây bông hồng + đồi cỏ SÁNG, ÍT chi tiết (để đặt ô lên, chữ tối phải đọc được).
+   #34 backdrop_town_lang_keo_doc   — 940×1672 (đúng 9:16), nền đặc. Cảnh làng kẹo ở 40% TRÊN; 60% DƯỚI là đường gạch hồng nhạt /
+       bãi cỏ sáng dịu, ít chi tiết.
+Bắt đầu với #28.
+```
+
+**Bảng đổi tên khi dựng style** (Claude làm): 01–02 → `design/handoff/hs-skin-town-v1/reference/` · 03 `bg_lang_bien_ngang` · 04 `bg_lang_bien_doc` ·
+06 `bg_lang_nam_ngang` · 05 `bg_lang_nam_doc` · #33/#34 `bg_lang_keo_ngang/doc` · 09–11 `pet_meo/cun/rong` · 12 `o_tu_luyen` · 13 `o_thong_tin` ·
+14 `o_so_tay` · 15 `o_thi_thu` · 16 `o_bai_tap_giao` · 17 `o_cup` · 18 `o_may_man` · #31 `o_vi_xu` · #28 `o_tren_lop` · #30 `o_et` · #29 `o_btvn` ·
+#32 `o_hoc_tu_dau` · 27 `b_lich` · 25 `b_kiem_tra_lai` (vào `public/bk-ui/hs/skin/town/`, nền nén JPG như RPG).
+Town_19–24, 26 thừa — giữ trong `design/bk-ui-src/`, không đưa vào app.
+
 ---
 
 ## Đơn 2 — Lớp 6–8 · Khối vuông

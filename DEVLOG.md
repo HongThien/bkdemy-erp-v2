@@ -31247,3 +31247,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   riêng: icon ô Home, 2 icon kênh, 3 dấu tầng S/A/B, ruy băng + pháo giấy tin S, 👑 Thầy cô khen, đèn "đang học", avatar ẩn danh (mã HS),
   9 icon loại tin, 20 icon tương tác. Chờ Thùy chốt: 20 icon tương tác VẼ theo style (CTO đề xuất) hay MUA sticker (spec §8 cũ).
 - Mockup trên artifact: dừng (Thùy ngắt) — làm lại khi có ảnh toàn cảnh từ ChatGPT hoặc khi Thùy yêu cầu.
+
+## 2026-09-29 (7) — Kiểm hàng style 2 Town (27 hình Style_Town)
+- Thùy: "trong BK UI có sẵn style 2 Town, đủ ảnh 01–27, kiểm đủ chưa, thiếu gì bổ sung". Kiểm máy (cỡ, kênh alpha) + xem từng hình (ghép tờ
+  liên hoàn, nền hồng cánh sen để lộ chỗ trong suốt). 19 hình rời đều nền trong thật 1254².
+- ĐỦ: 2 ảnh toàn cảnh · nền biển ngang/dọc · nền nấm (05/06 đảo thứ tự ngang↔dọc, chỉ đổi tên) · 3 linh vật · 7 icon ô (#12–18) · kiểm tra lại (#25) ·
+  lịch (#27, đơn đặt ở #24). THIẾU: từ #19 ChatGPT trượt danh sách (rương/bản đồ/cúp lặp) ⇒ thiếu 5 icon ô bai_tren_lop · btvn · et · vi_xu (heo đất
+  như ảnh #01) · hoc_tu_dau; 2 nền kẹo hỏng (dọc 1024×1536 sai 9:16, cả 2 kín chi tiết không chừa vùng sáng). sao_cap/dong_xu code không dùng.
+- Ghi bảng kiểm + đơn bổ sung #28–#34 (dán vào đúng context đang vẽ) + bảng đổi tên vào `DON-HANG-SKIN-HS.md` dưới Đơn 1 v2.
+- Việc CODE (chưa làm, chờ đủ hình): styles/town.ts (sáng, Baloo 2 trong hs.html) · migration nới CHECK hs_giao_dien.skin (đang toi_gian/dau_truong/
+  y2k/soft/rpg — chưa có town) · Home ảnh toàn cảnh có linh vật + bong bóng thoại + thanh Cấp/xu mà hợp đồng Skin/HomeHS912 chưa có chỗ.
