@@ -297,6 +297,11 @@
   CHƯA XÂY (`scripts/mcq-dien.mjs` + bảng `dai_cau_form_dien` chưa tồn tại) — không phải spec mới. Kèm hàng
   đợi cụ thể các dạng đã xác nhận không hợp khuôn "4 đáp án nguyên câu" (12/09).
 - `erp-v2-ui-spec.md` — Shell UI/UX **view-first**: React + Vite + Zustand + Tailwind, **mock data, CHƯA đụng Supabase**. Đơn vị = ROLE; derive nav/queue theo role; 2 loại việc (vận hành derive / phát triển giao tay) tách hẳn. Kho = 1 lá "Bản đồ kiến thức" trong cây Admin.
+- **`spec-luong-kho.md` — ĐỌC BẮT BUỘC trước khi đụng LUỒNG KHO** (tài liệu vào → bản đồ + câu đạt chuẩn; CEO chốt 28/09): 3 lớp
+  Tri thức / Dây chuyền / Đo · luật phân tầng dạng–cụm–biến thể · cổng ghi "không biên bản kiểm thì không ghi" · luật lên cấp tự duyệt
+  (đo tỉ lệ LỌT, câu bẫy, ngưỡng theo mức nặng) · hậu kiểm báo sai · phương pháp build 6 việc (dựng bài thi trước). Toán Đại, K12 trước.
+  **Luồng tự giải bài cũ (`auto-giai-scheduler.mjs`) ĐÃ NGỪNG 28/09** — đừng bật lại, đừng viết luồng mới theo kiểu một phiên tự làm tự kiểm tự ghi.
+  Pha đang làm: **`spec-luong-kho-p0.md`** (đã có gì · đã kiểm gì · việc kế tiếp · lệnh chạy ở máy công ty).
 ## Luật xoá (bắt buộc)
 Trước khi XOÁ bất cứ gì — xoá file, drop/alter/delete bảng/cột/dòng DB,
 hay lệnh git phá lịch sử (reset --hard, push -f, branch -D, clean) — DỪNG lại:

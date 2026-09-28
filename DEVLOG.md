@@ -30320,3 +30320,23 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   nên đáp án trắc nghiệm đánh dấu bằng gạch chân/màu bị mất · gạch en gõ thay dấu trừ.
 - **Còn:** Thùy gật áp migration `kho_sua_log` · Thùy chạy `do-claude-p.mjs` trên máy công ty · Thùy tắt lịch Task Scheduler ở máy công ty ·
   vá 2 lỗ chặn MathType trước khi vào P2.
+
+## 2026-09-28 (10) — LUỒNG KHO P0: Thùy đã áp migration `kho_sua_log` + sổ bàn giao `spec-luong-kho-p0.md` để làm tiếp ở máy công ty
+
+- **Thùy:** "t áp migration rồi. M ghi spec riêng cho phần này. t đến máy công ty làm tiếp."
+- **Kiểm sau khi áp (chỉ-đọc):** bảng `kho_sua_log` 13 cột + RLS · `kho_doi_dang_log.actor` có · trigger `trg_log_kho_sua` trên cả 3 bảng câu ·
+  `_trg_log_doi_dang` đã ghi actor · `anon` không chạy được `fn_kho_sua_tk`. **Chủ sở hữu bảng + 3 hàm mới = `postgres`** ⇒ áp bằng SQL Editor.
+- **Hệ quả của việc áp bằng SQL Editor (đã ghi spec-luong-kho-p0 §4):**
+  (a) role CLI đọc `kho_sua_log` ra 0 dòng im lặng (RLS, policy chỉ cho `authenticated`) — `npm run schema` đã nêu trong danh sách điểm mù.
+      Cần chạy 2 câu `create policy … for select to claude_ro / claude_build` trong SQL Editor.
+  (b) sổ `_migrations` chưa có file này ⇒ `npm run migrate` lần tới sẽ áp lại bằng `claude_build` và chết ở `create or replace function`
+      (hàm của `postgres`). `--baseline` KHÔNG dùng được: sổ đang có 14 file treo của phiên khác, baseline sẽ đánh dấu cả 14.
+  (c) trigger chưa được thử chạy thật.
+- **Làm:** `scripts/migrate.mjs --ghi-so <file>` (ghi sổ đúng 1 file, không chạy SQL) · `scripts/kho/kiem-trigger-sua.mjs` (UPDATE thử trong
+  giao dịch rồi ROLLBACK, 4 phép kiểm) · `spec-luong-kho-p0.md` · trỏ 2 spec từ `CLAUDE.md` §7 · `npm run schema` làm mới `schema.md`.
+  **Chưa chạy:** `--ghi-so`, `kiem-trigger-sua.mjs`, `do-claude-p.mjs` — cả ba chờ máy công ty.
+- **Bài học:** migration của dây chuyền nên áp bằng `node scripts/migrate.mjs --only <file>` chứ không qua SQL Editor — một lệnh là có luôn
+  chủ sở hữu đúng, dòng sổ, và policy đọc cho `claude_ro`. Lần này t chỉ nói "chờ m gật áp" mà không nói ÁP BẰNG ĐƯỜNG NÀO ⇒ 3 việc dọn sau.
+  Lần sau đưa kèm đúng câu lệnh.
+- **Còn (máy công ty, theo thứ tự ở spec-luong-kho-p0 §5):** pull · tắt lịch tự giải bài · policy đọc · ghi sổ · thử trigger · test ·
+  đo `claude -p` · T0 trên ổ thật. Rồi vá 2 lỗ chặn của đường đọc MathType (§6).

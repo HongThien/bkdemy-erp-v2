@@ -534,13 +534,15 @@ Ba luật của vòng tối ưu:
 | Lệch nhãn kho | Học thuật | Phân xử: agent sai hay kho sai | theo ca |
 | Bước 7 | Học thuật | Duyệt như thường; gật/bác đề xuất luật cuối lô | cuối mỗi lô |
 
-### 9.7 P0 — trạng thái (CEO gật "làm P0" 28/09 · nhánh `worktree-luong-kho`)
+### 9.7 P0 — trạng thái (CEO gật "làm P0" 28/09)
+
+> **Sổ bàn giao chi tiết của P0 — lệnh chạy, hợp đồng gói, việc ở máy công ty, việc code kế tiếp: `spec-luong-kho-p0.md`.**
 
 | # | Việc | Trạng thái | Ở đâu |
 |---|---|---|---|
 | 1 | Thử đọc thẳng MathType | ✅ **LÀM ĐƯỢC** — 99,69% trên 6 file chưa từng thấy (4.212/4.225 công thức). Còn 2 lỗ chặn: mất số thứ tự tự động, mất đánh dấu đáp án | `scripts/kho/mathtype-thu/` + README |
 | 2 | Đo 1 lượt `claude -p` gọi skill | 🟡 **script xong, CHƯA CHẠY** — máy viết script không cài CLI `claude` | `scripts/kho/do-claude-p.mjs` |
-| 3 | Trigger ghi vết người sửa | 🟡 **nháp xong, CHƯA ÁP vào DB** — chờ CEO gật | `supabase/migrations/202609281225_kho_sua_log.sql` |
+| 3 | Trigger ghi vết người sửa | ✅ **CEO đã áp 28/09** qua SQL Editor. Còn 3 việc sổ sách: policy đọc cho role CLI · ghi sổ `_migrations` · thử trigger (`spec-luong-kho-p0.md` §4) | `supabase/migrations/202609281225_kho_sua_log.sql` |
 | 4 | Cổng ghi | ✅ xét được gói, có test. Chưa nối vào lệnh ghi thật (làm ở P2) | `scripts/kho/cong-ghi.mjs` |
 | 5 | T0 cửa vào + gốc folder thành cấu hình | ✅ chạy trên folder thật, có test | `scripts/kho/t0-cua-vao.mjs`, `cau-hinh.mjs` |
 
