@@ -247,6 +247,7 @@ Mỗi **phương diện một kiểu khung / màu riêng**. Nhìn album như m�
 | Ghi khi đạt thật (append, không xoá) | `hs_thanh_tuu_dat` (hs, key, kỳ, dat_at) · `hs_huy_hieu_dat` (hs, cap_id, lần, dat_at, **trao_at** — GV bấm "Đã trao") |
 | Việc trao bản cứng | **Suy động:** đạt cấp có bản cứng **TRỪ** đã có `trao_at` (§4 invariant) |
 | Catalog cũ `thanh_tich_loai` (12 key) + `hoc_sinh_thanh_tich_ghim` | Migrate vào `thanh_tuu` / huy hiệu. Ghim khoe dùng lại |
+| **Màn "Ma trận Thành tựu × Huy hiệu"** (admin, Thùy chốt 28/09) | Hàng = thành tựu · cột = huy hiệu × sao · **tích ô = nối điều kiện** (ghi bảng nối N–N). Nhìn 1 màn thấy: huy hiệu X cần gì, thành tựu Y nuôi những huy hiệu nào. Bản nháp ma trận: `de-xuat-huy-hieu.md` |
 - **Ngoài ma trận:**
   - 🤝 **Tập thể lớp** — cả lớp cùng nhận khi thắng đua lớp tháng (Socializer).
   - ✨ **Bí ẩn & Kỷ niệm** — ẩn tới khi đạt (vd báo sai đề được xác nhận, trúng trà sữa) · huy hiệu sự kiện / mùa (Explorer).

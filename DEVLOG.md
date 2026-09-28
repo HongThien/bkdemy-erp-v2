@@ -30629,3 +30629,13 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   2 chữ cuối · tên đè tranh nền RPG khó đọc → bóng chữ theo `--sk-bg` · "Hạng 3/14 trong lớp" bị cắt → "Hạng 3/14 lớp".
 - **Còn:** `lich_thi_lon` đang RỖNG ⇒ widget đếm ngược chưa hiện (cần Thùy đưa ngày thi) · Lo-fi chờ Đơn 3 · nhóm 3–5 / 6–8 chờ Đơn 1–2 ·
   preview tool chỉ đọc launch.json thư mục chính ⇒ dev server worktree chạy nền tay (vite --port 5204).
+
+## 2026-09-28 (21) — Ma trận Thành tựu × Huy hiệu (nháp 1, Toán)
+
+- Thùy: "m sẽ cần 1 cái bảng ma trận". Làm 2 việc: (1) spec A5.7 thêm màn admin **Ma trận Thành tựu × Huy hiệu** (hàng thành tựu,
+  cột huy hiệu × sao, tích ô = ghi bảng nối N–N); (2) `de-xuat-huy-hieu.md` nháp 1: tầng 1 = 18 dòng × 3 sao (54 bản mềm, ngưỡng
+  theo số đo Toán ~5–6 buổi / 5 ET / 5 BTVN / 1 MT mỗi tháng); tầng 2 = ma trận 19 thành tựu tháng (A đi học/BTVN/tự luyện/Thử
+  thách/chặng · B ET/MT top/BTVN ≥85–90%/10‑10/top đua tháng · C MT tăng hạng/BTVN tăng/lấp lỗ/hạng đua tháng tăng) × 6 cột
+  (Chăm chỉ / Thành tích / Tiến bộ × 4★ / 5★), 4–6 điều kiện mỗi cột; A2 (BTVN đủ) nuôi 5 cột. Ngoài ma trận: tập thể lớp, bí ẩn,
+  kỷ niệm. Album ~68. Giả định H7/H8 theo đề xuất. Bước sau: Thùy duyệt ma trận → mô phỏng số bản cứng/tháng.
+- Merge 2 lần với phiên song song: xung đột chỉ ở DEVLOG (cả 2 cùng append) → giữ cả hai.
