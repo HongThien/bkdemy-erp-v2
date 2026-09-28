@@ -30191,3 +30191,25 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - **Sai/bài học:** (1) lệnh kiểm 6 file trên ổ streaming treo quá 240s — với ổ Drive phải chép local trước rồi mới đọc, đừng đọc tại chỗ.
   (2) chuỗi `&&` có `grep -c` ra 0 ⇒ exit 1 ⇒ cả đoạn commit phía sau không chạy mà không báo gì; lệnh kiểm không được đứng giữa chuỗi `&&`.
 - **Còn:** 4 câu §8 (nhận điểm phản biện nào · máy nào chạy dây chuyền · hình sửa bằng GeoGebra? · workflow vs agent); §9 cách build chưa viết.
+
+## 2026-09-28 (7) — LUỒNG KHO: chốt kiến trúc + cách build skill/agent (chưa build) — `spec-luong-kho.md` §5.6b, §5.7, §9
+
+- **Thùy chốt:** nhận **cả 6 điểm phản biện** luật 95% · dây chuyền là workflow, agent ở lớp Tri thức, các trạm dùng skill — "nhưng skill
+  phải build kĩ, check chính xác chỗ này" · máy chạy dây chuyền = **máy công ty** (file trực tiếp, máy phiên này chỉ streaming) ·
+  **thêm hậu kiểm:** có báo sai ⇒ câu tự về chưa duyệt, không được tái sử dụng, người xử lý rồi mới dùng tiếp · GeoGebra OK, TikZ chưa biết,
+  hỏi CTO cái nào tốt hơn.
+- **Đã đối chiếu tài liệu gốc Claude Code** (skills / sub-agents / headless / hooks): command đã gộp vào skill, trùng tên skill thắng ·
+  skill là lời dặn nạp vào ngữ cảnh đang chạy, KHÔNG tạo độc lập · `allowed-tools` chỉ cấp quyền, không giới hạn · agent có ngữ cảnh riêng
+  nhưng CÓ nạp CLAUDE.md · `claude -p "/skill"` chạy được, `--json-schema` ép khuôn · hook chặn được thật · `--bare` không dùng subscription
+  và sẽ thành mặc định của `-p` ở bản sau (rủi ro nền tảng).
+- **Quyết định CTO:** độc lập của trạm kiểm đến từ **gọi riêng từng trạm**, không phải từ skill · skill build 4 lớp (SKILL.md / references /
+  scripts / evals) · "cái gì PHẢI đúng thì nằm trong code": thứ tự trạm, khuôn đầu ra, **cổng ghi DB từ chối khi thiếu biên bản kiểm**,
+  quyền công cụ, hook · lớp gọi AI mỏng và thay được để chống rủi ro `--bare` · hình: đợt Đại tự render BBT/xét dấu/đồ thị từ bản mô tả,
+  không cần GeoGebra lẫn TikZ; hình học thì GeoGebra (người sửa được + đúng theo cách dựng).
+- **Đo/kiểm:** `bai_test_report` (HS báo "em nghĩ mình đúng") đã có nhưng chỉ chấm lại bài của em đó, chưa nối về kho · **`da_duyet=false`
+  KHÔNG đủ rút câu cũ khỏi kho chuẩn** — `_kho_cau_chuan` có vế "câu trước 08/09 tạm dùng"; phải kèm `kiem_may='nghi'` · 51 file `.ggb`
+  của học thuật nằm ở K8/K9/8T/K7, đặt tên theo mã bài · điều khoản GeoGebra: miễn phí cho phi thương mại, thương mại phải thoả thuận.
+- **Sai/bài học:** báo cáo tra cứu của subagent sai 2 điểm ảnh hưởng thiết kế (nói command/skill tách biệt; nói agent không nạp CLAUDE.md)
+  + đường dẫn file agent sai + bảng exit code không có trong tài liệu. Chỉ lộ vì t mở tài liệu gốc đối chiếu. **Subagent tra cứu = người
+  làm; vẫn phải có người kiểm đọc nguồn gốc** — lần thứ 2 trong ngày dính (lần 1: "3 nhánh chưa merge").
+- **Còn:** CEO gật P0 (§9.6) · "xác nhận câu đúng" khi người báo nhầm · CEO hỏi GeoGebra về giấy phép trước đợt Hình.

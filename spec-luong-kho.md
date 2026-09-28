@@ -1,7 +1,7 @@
 # spec-luong-kho.md — LUỒNG KHO: tài liệu vào → bản đồ + câu đạt chuẩn
 
-> **Trạng thái: THIẾT KẾ — CEO đã trả lời 3 vòng (28/09). Đang BÀN KIẾN TRÚC (§5). Sau kiến trúc mới tới cách build
-> skill/agent/flow (§9, chưa viết).** Chưa build gì. Khi chốt ⇒ chép intent lên Notion, file này thành spec build.
+> **Trạng thái: THIẾT KẾ — CEO đã trả lời 4 vòng (28/09). KIẾN TRÚC §5 ĐÃ CHỐT (3 lớp, workflow, 6 điểm phản biện, hậu kiểm
+> báo sai). Cách build skill/agent/flow ở §9 — CTO đề xuất, chờ CEO gật để vào P0.** Chưa build gì. Khi chốt ⇒ chép intent lên Notion, file này thành spec build.
 > **Đích vận hành (CEO):** đoạn đầu người tham gia nhiều để xây logic; **về sau phần lớn phải TỰ ĐỘNG.**
 
 ## 0. Đích (CEO 28/09)
@@ -256,8 +256,50 @@ Hai lượt kiểm của hình **không phải hai lượt giống nhau** mà ki
 
 Thứ tự làm: đồ thị hàm số · bảng biến thiên · bảng xét dấu (1.734 câu, vẽ được từ mô tả hàm) → hình phẳng → không gian → minh hoạ tiểu học.
 
-**Chưa chốt — định dạng bản mô tả hình:** học thuật đang vẽ bằng GeoGebra (51 file `.ggb` trong Kho dạng bài). Nếu bản mô tả
-mở được bằng GeoGebra thì người duyệt **sửa hình bằng công cụ quen tay** thay vì trả về cho AI vẽ lại.
+### 5.6b Công cụ vẽ: GeoGebra hay TikZ? (CEO hỏi 28/09)
+
+**Trả lời: tuỳ LOẠI hình. Đợt Đại không cần chọn cái nào trong hai.**
+
+| Loại hình | Số câu Đại | Công cụ đề xuất | Vì sao |
+|---|---|---|---|
+| Bảng biến thiên · bảng xét dấu | 543 | **Tự render từ bản mô tả** (mốc x, dấu, chiều, giá trị) → SVG | Đây là BẢNG, không phải hình học. GeoGebra không làm được. Người sửa = sửa số trong form |
+| Đồ thị hàm số | 1.191 | **Tự render từ bản mô tả** (hàm hoặc điểm đặc trưng + khung nhìn + nhãn) → SVG | Code vẽ ⇒ đúng tuyệt đối với bản mô tả; code kiểm được cực trị/tiệm cận |
+| Hình phẳng · không gian | 357+ | **GeoGebra** (chốt ở đợt Hình) | Xem bảng so sánh dưới |
+
+| Tiêu chí (cho hình học) | GeoGebra | TikZ |
+|---|---|---|
+| Học thuật sửa tay được | **Có** — đang dùng (51 file `.ggb`, đặt tên theo mã bài `HH00062010.ggb`) | Không ai ở BK biết |
+| Đúng theo cách dựng | **Có** — lệnh dựng mang quan hệ (trung điểm, vuông góc) nên hình tự đúng | Phần lớn là toạ độ AI tự tính tay ⇒ dễ sai mà không lộ |
+| Máy kiểm được | Có — hỏi lại được toạ độ/quan hệ | Khó — chỉ là lệnh vẽ |
+| Hợp với app + bản in hiện tại (web, in bằng Chrome) | Xuất SVG | Phải cài LaTeX (vài GB) rồi đổi PDF → SVG |
+| Đẹp kiểu sách in | Khá | **Đẹp nhất** |
+| Giấy phép | **Miễn phí cho phi thương mại; dùng thương mại phải thoả thuận với GeoGebra** | Tự do |
+
+- **Khuyến nghị:** hình học dùng GeoGebra làm ngôn ngữ dựng hình, vì cái quyết định là *người sửa được* và *đúng theo cách dựng*.
+- **Việc của CEO trước đợt Hình:** điều khoản GeoGebra ghi bản miễn phí chỉ cho mục đích phi thương mại, dùng thương mại thì liên hệ
+  `office@geogebra.org` để ký thoả thuận ([geogebra.org/license](https://www.geogebra.org/license)). BK là trung tâm thu phí, và học
+  thuật **đang** dùng GeoGebra ⇒ nên hỏi GeoGebra cho rõ. Nếu không xin được thì đường lùi là JSXGraph (tự do, cùng kiểu dựng hình,
+  nhưng phải tự làm màn sửa).
+- **Chưa kiểm chứng:** render GeoGebra tự động không cần người mở app. Phải thử ở đợt Hình.
+
+### 5.7 Hậu kiểm: BÁO SAI ⇒ câu tự rút khỏi kho (CEO 28/09)
+
+**CEO chốt:** có báo sai ⇒ câu **tự động về trạng thái chưa duyệt, không được tái sử dụng**; buộc người xử lý rồi mới dùng tiếp.
+
+| Nguồn cờ | Hiện trạng |
+|---|---|
+| HS báo "em nghĩ mình đúng" | **Đã có** `bai_test_report` + màn Duyệt chấm — nhưng hiện chỉ để chấm lại bài của em đó, **chưa nối ngược về kho** |
+| GV / TA báo câu sai khi dạy | Chưa có |
+| Máy: câu mà HS giỏi sai nhiều bất thường | Chưa có |
+
+- **Hành vi:** có cờ ⇒ câu rút khỏi kho chuẩn **ngay** ⇒ không được chọn cho bài MỚI. Bài đã phát giữ nguyên (bài lưu bản chụp câu).
+- **Mở lại — 2 đường** (đề xuất CTO, chờ CEO): **(a)** câu sai thật ⇒ sửa ⇒ duyệt lại; **(b)** câu đúng, người báo nhầm ⇒ học thuật
+  bấm "xác nhận câu đúng". Không có (b) thì câu đúng bị kẹt vĩnh viễn vì không có gì để sửa.
+- **⚠️ Bẫy kỹ thuật đã kiểm:** đặt `da_duyet=false` là **KHÔNG ĐỦ**. `_kho_cau_chuan` có vế "câu cũ (trước 08/09) tạm dùng bất kể
+  da_duyet" ⇒ câu cũ bị báo sai vẫn `kho_chuan=true`. Phải đặt kèm `kiem_may='nghi'` (vế này có sẵn trong công thức, không phải
+  viết lại cột generated).
+- **Hệ quả phải làm cùng:** đáp án bị sửa ⇒ các bài HS **đã làm** câu đó đang mang điểm sai ⇒ phải chấm lại (điểm, mastery, Elo).
+- Mọi lần rút/mở ghi vết bằng trigger (§4 CLAUDE.md). Mỗi lần rút vì sai thật = 1 lần **lọt** tính ngược vào thước đo §5.5.
 
 ### 5.7 Hình hài trong Claude Code
 
@@ -290,13 +332,94 @@ K12 có sẵn đáp án — lời giải gốc còn là nhân chứng tốt nh�
 ## 8. Câu còn mở
 
 Đã đóng ở vòng 3: khối pilot (K12) · "phía trước" · bài nhiều ý · folder nguồn.
+Đã đóng ở vòng 4 (CEO 28/09): **6 điểm phản biện §5.5 — nhận cả 6** · **dây chuyền là workflow, agent ở lớp Tri thức — OK** ·
+máy chạy dây chuyền = **máy công ty** (file nằm trực tiếp, không streaming) · thêm **hậu kiểm báo sai** (§5.7).
 
-1. ⛔ **Sáu điểm sửa thước đo ở §5.5** — CEO nhận điểm nào? Đặc biệt: ngưỡng lọt 1% cho đáp số/hình sai toán, và **câu bẫy** cho người duyệt.
-2. ⛔ **Máy chạy dây chuyền là máy nào?** Máy phiên này không có Word/LibreOffice; folder ở đây là ổ streaming. Máy gốc (`E:\`) có Word không?
-3. ⛔ **Hình sửa bằng GeoGebra?** Học thuật có muốn mở hình AI vẽ bằng GeoGebra để sửa tay không?
-4. **Dây chuyền là workflow (script điều phối), agent tự do chỉ ở lớp Tri thức** (§5.0) — CEO đồng ý hướng này không?
-5. *(CEO hoãn, bàn sau kiến trúc)* ranh "quá dễ" (≤2 bước) · chia cụm cho 176 dạng cũ.
+1. ⛔ **Báo sai mà câu đúng** (người báo nhầm): cho học thuật bấm "xác nhận câu đúng" để mở lại mà không cần sửa? (§5.7)
+2. ⛔ **Bắt đầu P0?** Việc đầu tiên ở §9.6.
+3. **Giấy phép GeoGebra** — CEO hỏi GeoGebra trước đợt Hình (§5.6b). Không chặn đợt Đại.
+4. **Máy công ty có Word không?** Chỉ cần trả lời nếu cách đọc thẳng MathType thất bại.
+5. *(CEO hoãn)* ranh "quá dễ" (≤2 bước) · chia cụm cho 176 dạng cũ.
 
 ## 9. Cách build skill / agent / flow
 
-*(Chưa viết — bàn sau khi chốt kiến trúc §5.)*
+### 9.1 Sự thật về công cụ — đã đối chiếu tài liệu gốc 28/09
+
+Nguồn: [skills](https://code.claude.com/docs/en/skills) · [sub-agents](https://code.claude.com/docs/en/sub-agents) ·
+[headless](https://code.claude.com/docs/en/headless) · [hooks](https://code.claude.com/docs/en/hooks).
+
+| # | Sự thật | Hệ quả cho thiết kế |
+|---|---|---|
+| 1 | **Command đã gộp vào skill.** `.claude/commands/nhap-kho.md` vẫn chạy; trùng tên thì **skill thắng**. | Skill mới đặt tên KHÁC `nhap-kho`/`nhap-de-thi` để không đè luồng đang dùng. |
+| 2 | **Skill = lời chỉ dẫn nạp vào ngữ cảnh ĐANG CHẠY.** Chỉ phần mô tả luôn nằm sẵn (bị cắt ở 1.536 ký tự); thân chỉ nạp khi gọi. | Skill KHÔNG tạo ra sự độc lập. Người làm và người kiểm chung một phiên = chung ngữ cảnh. |
+| 3 | `SKILL.md` nên **dưới 500 dòng**; tài liệu dài để file riêng, nạp khi cần; script trong skill được **CHẠY chứ không nạp**. | Hồ sơ dạng + luật từng khối để file riêng, chỉ nạp chủ đề đang làm. |
+| 4 | `allowed-tools` của skill **chỉ cấp quyền, KHÔNG giới hạn**. Muốn cấm phải dùng `disallowed-tools`. | Đừng tưởng `allowed-tools` là rào. |
+| 5 | **Agent = ngữ cảnh RIÊNG**: không thấy hội thoại cha, không thấy skill đã gọi, không thấy file đã đọc. **CÓ nạp CLAUDE.md** (tắt bằng `omitClaudeMd`). File `.claude/agents/<tên>.md`. `tools` của agent là rào CỨNG. | Cần độc lập thì dùng agent hoặc tiến trình riêng. |
+| 6 | `claude -p "/ten-skill …"` **chạy được skill**; `--json-schema` ép khuôn đầu ra; thoát mã khác 0 khi hỏng. Mỗi lần gọi là một ngữ cảnh MỚI. | Trong dây chuyền, **mỗi trạm là một lần gọi riêng ⇒ tự động độc lập**, không cần định nghĩa agent. |
+| 7 | **Hook chặn được thật** (`PreToolUse` thoát mã 2 = chặn lệnh). Hook khai trong skill **sống tới hết phiên**; khai trong agent chỉ sống khi agent chạy. | Luật cứng có chỗ để cài. |
+| 8 | ⚠️ `--bare` **không dùng đăng nhập subscription**, và tài liệu ghi bare *"will become the default for `-p` in a future release"*. | **Rủi ro nền tảng** — xem §9.4. |
+
+Hai điểm báo cáo tra cứu tự động đã nói SAI và được sửa sau khi đối chiếu: (a) "command và skill tách biệt" — sai, đã gộp;
+(b) "agent không nạp CLAUDE.md" — sai, có nạp. **Bài học: kết quả tra cứu của máy cũng phải qua kiểm độc lập** — đúng nguyên tắc §5.1.
+
+### 9.2 Cái gì dùng cái gì
+
+Skill và agent không phải "đơn giản" với "thông minh". Khác nhau ở chỗ **chung ngữ cảnh hay ngữ cảnh riêng**.
+
+| Thành phần | Dùng | Vì sao |
+|---|---|---|
+| Điều phối dây chuyền | **Script Node** (không AI) | Đường đi biết trước; phải chạy lại được, đoán trước được |
+| T0 cửa vào · render hình · ghi DB · ghi đề thi | **Script Node** | Không cần phán đoán |
+| T1 đọc | **Script gọi Gemini API** | CEO chốt G20 |
+| T2 gán + giải · T3 kiểm · T4 viết bản mô tả hình | **Skill**, gọi bằng `claude -p` + `--json-schema`, **mỗi trạm một lần gọi riêng** | Cần phán đoán. Gọi riêng ⇒ người kiểm không thấy bài người làm |
+| Lớp Tri thức: bàn bản đồ, tổng kết luật | **Phiên tương tác + skill `kho-ban-do` + agent đọc** | Cần trao đổi với người. Agent đọc hàng chục tài liệu rồi chỉ trả về tóm tắt ⇒ phiên chính không bị đầy |
+
+Khớp với ý CEO "tri thức cần agent, còn lại skill là đủ". Điểm cần chính xác: **sự độc lập của trạm kiểm đến từ việc gọi riêng
+từng trạm, không phải từ skill.** Nếu sau này gom nhiều trạm vào một phiên cho nhanh thì mất độc lập mà không có gì báo.
+
+### 9.3 Giải phẫu một skill build kĩ — 4 lớp
+
+| Lớp | Chứa gì | Tính chất |
+|---|---|---|
+| `SKILL.md` | Quy trình ngắn · đầu vào/ra · khi nào dừng và trả làn 🔴 | Lời dặn — model có thể lệch |
+| `references/` | Hồ sơ dạng · `kho-rules/dai/k12.md` | Nạp theo chủ đề đang làm |
+| `scripts/` | Lấy lô · lấy hồ sơ dạng · tính lại đáp số · **ghi DB** | Code — không lệch |
+| `evals/` | Bộ đề chấm rút từ kho đã duyệt + ngưỡng điểm | Sửa skill xong phải chấm lại; tụt điểm thì không dùng bản mới |
+
+**Luật build: cái gì PHẢI đúng thì nằm trong code, không nằm trong lời dặn.** Năm chỗ cài cứng:
+
+1. **Thứ tự trạm** — script điều phối quyết.
+2. **Khuôn đầu ra** — `--json-schema`; sai khuôn là hỏng lượt, không ghi gì.
+3. **Cổng ghi DB** — ghi DB chỉ qua script; script **từ chối** khi thiếu biên bản kiểm của trạm T3. (Hiện `hangdoi-giai --ghi` không ép verify — đúng lỗ này.)
+4. **Quyền công cụ** — `disallowed-tools` cấm skill tự sửa file / tự chạy lệnh ngoài script của nó.
+5. **Hook** — chặn mọi lệnh ghi DB đi vòng qua cổng.
+
+Công cụ build: skill `skill-creator` (có sẵn) — chạy eval, đo độ dao động giữa các lần chạy, tối ưu phần mô tả.
+
+### 9.4 Rủi ro nền tảng đã biết
+
+| Rủi ro | Cách giữ |
+|---|---|
+| `-p` đổi mặc định sang `--bare` ⇒ mất đăng nhập subscription + không tự nạp skill | Lớp gọi AI **mỏng và thay được**: trạm chỉ biết "đưa đề + hồ sơ dạng vào, nhận JSON ra". Hôm nay sau lớp đó là `claude -p`, mai đổi sang khoá API hay Gemini thì không đụng trạm |
+| Chạm hạn mức subscription giữa lô — tài liệu không ghi rõ hành vi | P0 đo thật. Script coi mọi lượt gọi hỏng là "để nguyên, lượt sau làm lại"; không lượt nào được ghi dở |
+| `CLAUDE.md` của repo dài, nạp lại ở MỖI lượt gọi ⇒ ăn hạn mức | P0 đo. Đường lùi: chạy dây chuyền từ thư mục riêng có `CLAUDE.md` gọn |
+| Skill của dây chuyền tự kích hoạt trong phiên code ERP thường ngày | `disable-model-invocation: true` — chỉ chạy khi được gọi đích danh |
+
+### 9.5 Bộ skill + agent dự kiến
+
+| Tên | Loại | Trạm | Build ở pha |
+|---|---|---|---|
+| `kho-ban-do` | skill (tương tác) | Tri thức: rút dạng/cụm từ câu, đề xuất bản đồ, hồ sơ dạng | P1 |
+| `kho-doc-tai-lieu` | agent | Tri thức: đọc nhiều tài liệu, trả tóm tắt | P1 |
+| `kho-gan-dang` | skill | T2a: gán dạng/cụm, trả làn | P2 |
+| `kho-kiem` | skill | T3: kiểm độc lập | P2 |
+| `kho-tong-ket` | skill (tương tác) | Bánh đà: gom lần sửa → đề xuất luật | P3 |
+| `kho-giai` | skill | T2b: giải theo phương pháp dạng, trong phạm vi | P4 |
+| `kho-hinh` | skill | T4: viết bản mô tả hình | P5 |
+
+### 9.6 Việc đầu tiên của P0 (chờ CEO gật)
+
+1. **Thử đọc thẳng MathType** trên 3 file K12 (chỉ đọc, làm ở thư mục nháp). Quyết định đường đọc cho 361 file Word.
+2. **Đo 1 lượt `claude -p` gọi skill** trên máy công ty: chạy được với đăng nhập subscription không, tốn bao nhiêu, `--json-schema` có giữ khuôn không.
+3. **Trigger ghi vết người sửa** khi duyệt câu (migration — cần CEO gật vì đụng DB).
+4. **Cổng ghi DB** thay cho `hangdoi-giai --ghi` không ép verify.
