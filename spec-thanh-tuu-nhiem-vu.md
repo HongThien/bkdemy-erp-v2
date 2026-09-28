@@ -210,6 +210,17 @@ Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như c�
 >
 > - Mỗi huy hiệu 5★ (1–3★ điều kiện đơn, 4–5★ nhiều điều kiện) ⇒ **30–40 cấp**, **6–8 phôi bản cứng**.
 > - Ma trận phase 1: `ma-tran-thanh-tuu-huy-hieu.xlsx`.
+>
+> **✅ CHỐT PHASE 1 (Thùy 28/09, vòng sau):**
+> - **8 huy hiệu, tên bộ Hy Lạp** — Helios (chuyên cần) · Chronos (BTVN đúng hạn) · Athena (ET) · Zeus (MT top) · **Phoenix** (bứt phá — giữ, là biểu tượng) · Hercules (Thử thách) · Hephaestus (lấp lỗ) · Nike (Bảng đua tháng).
+> - **Bộ Việt Nam dành cho GIẢI THƯỞNG.**
+> - **Thang sao theo THÁNG trong 1 năm học (10 tháng): ★1/★2/★3/★4/★5 = 1/2/4/6/9 tháng.**
+>   - ★1–3 đếm **tháng đạt chuẩn** (1 điều kiện).
+>   - ★4–5 đếm **tháng hoàn hảo** (chuẩn + các điều kiện thêm).
+>   - ⇒ 5★ = gần như hoàn hảo cả năm.
+> - **Mô phỏng** (`scripts/sim-huy-hieu.mjs`, hiệu chỉnh theo DB thật):
+>   - ★4 ~2–7% HS · ★5 ~0–2%.
+>   - **~66 bản cứng / năm** cho Toán cấp 2 ⇒ ~13 / tháng từ tháng 6.
 
 **A5.6 — Sao thấp ĐIỀU KIỆN ĐƠN · sao cao NHIỀU ĐIỀU KIỆN** (Thùy chốt 28/09)
 

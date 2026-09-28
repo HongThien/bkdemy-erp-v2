@@ -30734,3 +30734,15 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   Phép đo phân bố đạn đầu tiên ra "100% một loại" — do câu đo (lateral không tương quan ⇒ random tính 1 lần), KHÔNG phải hàm; đo lại đúng câu trong vòng lặp plpgsql ⇒ khớp ±1%.
   Đường dẫn Windows trong heredoc Bash mất dấu `\` ⇒ ghi file tạm trong repo (`games-site/_tmp_*`, xoá sau test).
 - Trả lời Thùy: Mở Rương/Chiếm Đất ĐÃ nối (DB rút + ERP + TV) nhưng 0 buổi chạy thật + chưa deploy.
+
+## 2026-09-28 (28) — Huy hiệu phase 1 chốt: 8 cái Hy Lạp · sao = 1/2/4/6/9 tháng · mô phỏng năm học
+
+- Thùy: giữ Phoenix · lấy 8 · "5★ phải gần hết năm học (10 tháng hoàn hảo 8–9)" → rồi chốt thang "1 2 4 6 9 tháng là đẹp".
+- **Làm:** `scripts/sim-huy-hieu.mjs` (năm học 10 tháng, khối 54, 200 lần): ★1–3 đếm tháng đạt chuẩn (1 điều kiện), ★4–5 đếm tháng
+  hoàn hảo (chuẩn + điều kiện thêm). Lần 1 giả định BTVN mỗi bài độc lập ⇒ 4★ gần 0 → **đo DB thật**: tháng BTVN đủ đúng hạn ~47%
+  và BỀN theo em (3 tháng: 23% đủ cả 3 · 28% không tháng nào), tháng không vắng ~65%, tháng ET≥80%/¾ ~44% ⇒ mô hình xác suất riêng
+  từng em. Helios chuẩn đổi "không vắng" (tính bù thì 82–91% quá dễ); Phoenix bỏ "BTVN tăng mỗi tháng" (nhiễu). Kết quả: ★3
+  30–60% (Helios 83% = huy hiệu nhập môn), ★4 2–7%, ★5 0–2%, ~66 bản cứng/năm Toán C2.
+- xlsx dựng lại: Ma trận 14 thành tựu tháng × 8 huy hiệu (★1–5 = chuẩn, ★4–5 = thêm) · Thang sao · Huy hiệu 40 cấp (số điều kiện
+  = COUNTIF về Ma trận, kiểm Python 40/40) · Ghi chú.
+- Bài học: đừng giả định các lần đo của 1 HS là độc lập — hành vi HS BỀN theo người; luôn đo phân bố thật theo HS trước khi mô phỏng.

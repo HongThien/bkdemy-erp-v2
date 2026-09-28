@@ -25,6 +25,20 @@
 
 ---
 
+## ★ CHỐT PHASE 1 (28/09) — đọc mục này trước
+
+- **8 huy hiệu Hy Lạp.**
+- **Sao = 1 / 2 / 4 / 6 / 9 tháng** trong năm học: ★1–3 = tháng đạt chuẩn, ★4–5 = tháng hoàn hảo.
+- Ma trận + thang sao + kết quả mô phỏng: **`ma-tran-thanh-tuu-huy-hieu.xlsx`** (14 thành tựu tháng × 8 huy hiệu, 40 cấp).
+- **Các ngưỡng "chuỗi 10 / 30 / 60…" ở §2 bên dưới đã THAY bằng thang tháng** — §2 chỉ còn là tham khảo cho bản đầy đủ.
+
+**Hiệu chỉnh theo DB thật (T7–T9 Toán):**
+- Tháng "không vắng buổi nào" ~48–72%.
+- Tháng "BTVN đủ, đúng hạn mọi bài" ~43–51%, **bền theo từng em** (3 tháng: 23% đạt cả 3, 28% không tháng nào).
+- Tháng "ET ≥ 80% ở ≥ 3/4 bài" ~41–46%.
+- Chuẩn Helios đổi thành **"không vắng buổi nào"** (vì "tính cả bù" thì 82–91% em đạt, quá dễ).
+- Phoenix: tháng hoàn hảo bỏ điều kiện "BTVN tăng mỗi tháng" (dao động ngẫu nhiên, 6 tháng liền gần như không thể) → thay bằng "không vắng".
+
 ## 0. TÊN HUY HIỆU PHASE 1 — theo biểu tượng / vị thần / danh nhân (đề xuất 28/09, chờ Thùy chọn bộ)
 
 > Thùy: *"Đặt tên huy hiệu kêu kêu vào — tốt nhất là tên các biểu tượng, các vị thần, các danh nhân tượng trưng cho loại đấy."*
