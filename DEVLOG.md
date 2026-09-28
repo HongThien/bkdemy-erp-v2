@@ -30861,3 +30861,22 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
 - **App HS:** Tự luyện thêm thẻ ⚔️ Thử thách + link 🏆 Rank; `LamThuThach` (bọc LamBai, màn xong hiện pass/điểm/trần); `RankHS.tsx` (card kiểu 1:
   bậc+sao+tiến độ, đua tháng, Thử thách hôm nay/tháng, hành trình 8 bậc, top 10 mùa/tháng). Tổng hợp lọc bỏ lượt Thử thách khỏi "lượt dở".
   Verify bằng trang xem thử tạm `_xem_rank.html` + `src/_xem_rank.tsx` (mock RPC, KHÔNG commit).
+
+## 2026-09-28 — Kiểm zip Anime RPG v3 (`design/bk-ui-src/hs-skin-rpg-v3.zip`) ⇒ nhận MỘT PHẦN, chờ ChatGPT đóng gói nốt
+
+- Giải nén bản chép sang `design/handoff/hs-skin-rpg-v3/`. DESIGN.md đã có cột "Vị trí & cỡ" + đối chiếu; đủ 6 reference (3 trạng thái × 2 khổ).
+- ĐẠT: 4 backdrop (lau_dai/dao_troi × ngang/dọc, tranh vẽ thật, không nhân vật) · 2 character nam/nu (alpha thật 1200×1500) ·
+  6 icon mới vẽ thật (bai_tren_lop, btvn, et, hoc_tu_dau, sao_cap, dong_xu).
+- KHÔNG ĐẠT: 10 icon cũ (tuluyen, thongtin, sotay, thithu, baitap, thanhtuu, mayman, vixu, botro, kiemtralai) là hình phẳng kiểu clip-art
+  (7–55 KB/1024px) — lệch hẳn phong cách; 6 reference là mockup dựng bằng code (chữ trần, ô phẳng), không phải ảnh ChatGPT vẽ.
+  Ảnh chụp chat Thùy gửi cho thấy ChatGPT ĐÃ vẽ bộ icon + màn toàn cảnh + mèo/cú tách riêng + nhân vật nữ đội mũ ⇒ có vẽ nhưng không đóng vào zip.
+- `character_rpg_nu` trong zip: váy ngắn + đai đùi — cần Thùy xem có hợp app HS không.
+- File lẻ `public/bk-ui/Ảnh ChatGPT 17_29_41 …png` (ngôi sao 1254²) nằm sai chỗ, chưa đụng.
+
+## 2026-09-28 (32) — Rank Toán: 8 buổi/tháng = 1 MT + 7 ET (mig 202609281739 đã áp)
+
+- Thùy: "1 tháng học 8 buổi thì có 1 MT và 7 ET; tháng rồi tụt ET là do hệ thống lỗi ET hình". DB: BTVN chỉ đi kèm buổi ET (buổi MT cũng loai 'thuong').
+- Cùng luật ¼, đổi số đầu vào: tối đa 3 nguồn 2.400 ⇒ trần Thử thách 600/tháng · 30/ngày · điểm tối đa tháng 3.000 ⇒ ngưỡng bậc ×1,2
+  (Soldier 1.800 … Emperor 29.400). Spec §0.2–0.3 sửa số. UI đọc số từ RPC nên không phải sửa.
+- Đo lại (rollback trước khi áp): phong độ max tại 10/08 khối 9 = 0,985 (trước 1,148). Khối 7 hôm nay max 0,699, 0 ghế thần — vì ET tháng 8–9
+  thiếu do lỗi ET hình: Điểm Rank tính lùi của 2 tháng này THẤP hơn thật tới khi dữ liệu ET hình được bù.

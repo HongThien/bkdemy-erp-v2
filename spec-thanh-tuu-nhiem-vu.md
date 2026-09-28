@@ -65,8 +65,8 @@
 **Thử thách** = kiểu tự luyện thứ 3, 1 lượt **y hệt Tự luyện tổng hợp**:
 - Chỉ **pass ≥ 80%** mới có điểm.
 - **Vô hạn lượt, chỉ ĐIỂM có trần.**
-  - Trần tháng = ¼ × (điểm tối đa ET + BTVN + MT của môn): **Toán 500 · KHTN 375.**
-  - Trần ngày = trần tháng ÷ 20 (**25 · 19**).
+  - Trần tháng = ¼ × (điểm tối đa ET + BTVN + MT của môn): **Toán 600 · KHTN 375.** *(Toán sửa 28/09: 1 tháng = 8 buổi = 1 MT + 7 ET + 7 BTVN ⇒ tối đa 3 nguồn 2.400; bản trước giả định 5 ET → 500)*
+  - Trần ngày = trần tháng ÷ 20 (**30 · 19**).
 - ⇒ Em chạm trần: Thử thách chiếm 21–25% Điểm Rank.
 
 **Không cộng Điểm Rank:** có mặt · lên bảng · bổ trợ · Học từ đầu · dạng lên đạt · thưởng nhiệm vụ / thành tựu.
@@ -75,18 +75,18 @@
 
 ### 0.3 Rank — MÙA = 1 NĂM, hành trình "người thường → thần"
 
-**8 bậc cố định (mỗi bậc 3 sao, chỉ lên trong mùa).** Ngưỡng = hệ số × điểm tối đa 1 tháng của môn (Toán 2.500 · KHTN 1.875).
+**8 bậc cố định (mỗi bậc 3 sao, chỉ lên trong mùa).** Ngưỡng = hệ số × điểm tối đa 1 tháng của môn (**Toán 3.000** · KHTN 1.875 — Toán sửa 28/09 theo 8 buổi/tháng, hệ số giữ nguyên).
 
 | # | Bậc | Hệ số | Ngưỡng Toán | Ngưỡng KHTN |
 |---|---|---|---|---|
 | 1 | Novice | 0 | 0 | 0 |
-| 2 | Soldier | 0,6 | 1.500 | 1.125 |
-| 3 | Captain | 1,6 | 4.000 | 3.000 |
-| 4 | General | 3,0 | 7.500 | 5.625 |
-| 5 | **Hero** | 4,6 | 11.500 | 8.625 |
-| 6 | Legend | 7,0 | 17.500 | 13.125 |
-| 7 | King | 8,0 | 20.000 | 15.000 |
-| 8 | Emperor | 9,8 | 24.500 | 18.375 |
+| 2 | Soldier | 0,6 | 1.800 | 1.125 |
+| 3 | Captain | 1,6 | 4.800 | 3.000 |
+| 4 | General | 3,0 | 9.000 | 5.625 |
+| 5 | **Hero** | 4,6 | 13.800 | 8.625 |
+| 6 | Legend | 7,0 | 21.000 | 13.125 |
+| 7 | King | 8,0 | 24.000 | 15.000 |
+| 8 | Emperor | 9,8 | 29.400 | 18.375 |
 
 **2 bậc GHẾ** (xét lại hằng ngày, ngồi được quanh năm, bị vượt / tụt phong độ thì rơi):
 
