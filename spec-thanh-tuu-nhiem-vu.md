@@ -1,6 +1,6 @@
 # Spec — Gamification HS: RANK · DANH HIỆU TOP DẠNG · THÀNH TỰU · NHIỆM VỤ · ĐUA LỚP — v4 (LOGIC)
 
-> **Trạng thái: v4 — CHỈ LOGIC THIẾT KẾ (CTO, 28/09/2026). Chờ CEO chốt 4 câu logic ở §B.** Chưa code.
+> **Trạng thái: v4 — LOGIC ĐÃ CHỐT (Thùy chốt L1–L4 ngày 28/09/2026).** Bước tiếp: bàn detail Phần C. Chưa code.
 >
 > **Luật tài liệu (Thùy 28/09):** *"Chốt logic thiết kế trước. Detail từng cái bàn sau. Đừng lẫn."*
 > - **Phần A** chỉ gồm: có những cấu phần gì, điểm lấy từ đâu, cái gì nối với cái gì.
@@ -62,10 +62,16 @@
 |---|---|---|
 | **ET** | Mỗi bài ET → **điểm cố định** | Fix |
 | **BTVN** | Mỗi bài BTVN → **điểm cố định** | Fix |
-| **MT** | Mỗi tháng, xếp hạng MT trong **khối × môn**. Hàm có sẵn `fn_bxh_diem_mt_khoi(mon, khoi, ym)` đã trả `rank_now`. Thứ hạng → điểm theo **bảng hạng 1–50** (Phụ lục) | Tương đối: phân biệt giỏi/yếu nhưng không cách quá xa |
+| **MT** | **Chỉ bài MT sát hạch tại trung tâm** (`ky_thi.loai='mt_sat_hach'`). Mỗi tháng xếp hạng trong **khối × môn** theo logic bảng xếp hạng MT đang có (`fn_bxh_diem_mt_khoi`: TB điểm MT trong cửa sổ 25 tháng này → hết mùng 10 tháng sau). Thứ hạng → điểm theo **bảng hạng 1–50** (Phụ lục) | Tương đối: phân biệt giỏi/yếu nhưng không cách quá xa |
 | **Thử thách** (A2) | Chỉ khi **pass** (≥80% đúng). Đúng càng nhiều càng được nhiều. Có **trần ngày + trần tháng** | Có trần. **Tổng ≈ 20% Điểm Rank** |
 
-- **Đã bỏ khỏi Điểm Rank:** có mặt · bài trên lớp (ingame) · lên bảng.
+- **Chỉ 4 nguồn trên** (L1 — Thùy chốt).
+  - **Không** cộng Điểm Rank: có mặt, bài trên lớp (ingame), lên bảng, **bổ trợ**, Học từ đầu, dạng lên đạt.
+  - **Không** tính: thi trên trường (`ky_thi.loai='truong'`), khảo sát tháng.
+- **Thưởng nhiệm vụ / thành tựu KHÔNG cộng Điểm Rank** (L2 — Thùy chốt). Các hoạt động ngoài 4 nguồn vẫn được thưởng qua nhiệm vụ / thành tựu (EXP → xu, đồ).
+- **MT — chỉ em CÓ điểm MT thật mới nhận điểm** (§1.5).
+  - `fn_bxh_diem_mt_khoi` hiện xếp cả em chưa thi, coi là 0đ, đứng cuối bảng, để hiển thị bảng xếp hạng.
+  - Khi đổi hạng ra Điểm Rank, em không có điểm trong cửa sổ = **không có dòng điểm**, không phải "hạng cuối được 50".
 - **Luật 20%:**
   - Trần tháng của Thử thách = **¼ × tổng điểm tối đa ET + BTVN + MT kỳ vọng trong tháng**.
   - ⇒ HS kịch trần thì Thử thách ≈ 20%, ba nguồn kia ≈ 80%.
@@ -77,7 +83,7 @@
 Màn Tự luyện (`TuLuyenChuDe.tsx`) có 3 lựa chọn: **Tổng hợp · Theo chủ đề · Thử thách** *(mới)*.
 
 ```
-Chọn môn → vào Thử thách (câu ra như Tự luyện tổng hợp) → làm → nộp
+Chọn môn → vào Thử thách (1 lượt GIỐNG HỆT Tự luyện tổng hợp: cùng số câu, cùng cách ra câu — L4 Thùy chốt) → làm → nộp
    ├─ đúng ≥ 80%  → PASS → + Điểm Rank (tăng theo số câu đúng)   [nếu chưa chạm trần ngày/tháng]
    └─ đúng < 80%  → không pass → 0 Điểm Rank
 Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như câu tự luyện thường.
@@ -147,14 +153,14 @@ Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như c�
 
 ---
 
-## PHẦN B — 4 CÂU LOGIC CẦN CHỐT (trước khi sang detail)
+## PHẦN B — CÂU LOGIC — ✅ ĐÃ CHỐT (Thùy, 28/09/2026)
 
-| # | Câu hỏi | CTO đề xuất |
+| # | Câu hỏi | Thùy chốt |
 |---|---|---|
-| **L1** | Điểm Rank **chỉ 4 nguồn** (ET, BTVN, MT, Thử thách), hay **bổ trợ / Học từ đầu / dạng lên đạt** cũng cộng? (Mày nói "các hoạt động học tập đều có điểm Rank" nhưng chỉ liệt kê 4.) | **Chỉ 4 nguồn** cho HS dễ hiểu. Bổ trợ và Học từ đầu vẫn được thưởng qua **nhiệm vụ + thành tựu** |
-| **L2** | Thưởng nhiệm vụ / thành tựu có cộng **Điểm Rank** không? | **Không.** Rank thuần từ 4 nguồn học ⇒ luật 20% giữ đúng. Nhiệm vụ / thành tựu thưởng EXP → xu + đồ |
-| **L3** | "MT" = bài **MT sát hạch hằng tháng** (đang xếp hạng bằng `fn_bxh_diem_mt_khoi`)? Khảo sát tháng / thi trường có tính vào MT không? | MT = bài MT sát hạch tháng, như bảng xếp hạng MT đang có |
-| **L4** | Thử thách là **1 lượt = như Tự luyện tổng hợp** (cùng số câu, cùng cách ra câu), chỉ khác luật pass 80% + điểm rank? | Đúng vậy. Không đẻ nguồn câu mới |
+| **L1** | Điểm Rank chỉ 4 nguồn hay cả bổ trợ / Học từ đầu / dạng lên đạt? | **Chỉ 4 nguồn** (ET, BTVN, MT, Thử thách). **Bổ trợ không cộng rank** |
+| **L2** | Thưởng nhiệm vụ / thành tựu có cộng Điểm Rank? | **Không** |
+| **L3** | MT = bài MT sát hạch tháng? Thi trường có tính? | **Đúng, MT = MT sát hạch tại trung tâm. Thi trên trường không tính** |
+| **L4** | Thử thách = 1 lượt như Tự luyện tổng hợp, chỉ thêm luật pass 80% + điểm rank? | **Đúng** |
 
 ---
 

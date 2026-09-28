@@ -30264,3 +30264,11 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - **Bài học:** đếm lỗi theo NGUYÊN NHÂN trước khi sửa bất cứ gì — nhìn con số 74% dễ kết luận "AI gán dạng kém, phải viết lại prompt",
   trong khi 71% lỗi đến từ đúng 1 ranh giới chưa ai viết ra.
 - **Còn:** CEO gật phương pháp + gật P0 (§9.7).
+
+## 2026-09-28 (8) — Gamification: Thùy chốt 4 câu logic L1–L4
+
+- L1: Điểm Rank CHỈ 4 nguồn (ET, BTVN, MT, Thử thách) — bổ trợ không cộng rank. L2: thưởng nhiệm vụ/thành tựu không cộng rank.
+  L3: MT = MT sát hạch tại trung tâm; thi trường không tính. L4: Thử thách = 1 lượt y hệt Tự luyện tổng hợp + luật pass 80%.
+- Thêm vào logic (t tự phát hiện khi đọc `fn_bxh_diem_mt_khoi`): hàm xếp cả HS chưa thi = 0đ cuối bảng (để hiển thị BXH) ⇒ khi đổi
+  hạng ra Điểm Rank chỉ HS CÓ điểm MT thật mới nhận (§1.5), không để "vắng MT vẫn được điểm hạng cuối".
+- Spec v4 phần logic ĐÃ CHỐT; bước tiếp = bàn detail Phần C.
