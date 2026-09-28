@@ -30547,3 +30547,19 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - **Sai (script, không phải hàng):** `design-check` báo 4 RỚT đều là chấm nhầm cho loại đơn chỉ-asset → sửa script (`--chi-asset`, backdrop
   đo 75% dưới, decor cạnh dài ≥512, decor mảnh chỉ CHÚ Ý) · kit thêm mục ĐƠN CHỈ-ASSET · HANDOFF-PIPELINE §8. hs-home-v4 chạy lại không đổi.
 - **Còn:** Đơn 1 (lớp 3–5), Đơn 2 (lớp 6–8), Đơn 3 (Lo-fi) chưa có hàng.
+
+## 2026-09-28 (12) — Game mới: Hình Nhân Nhảy Múa (giải mã kiểu Sherlock Holmes)
+- Thùy chốt: mỗi chữ = 1 hình nhân, hình giống nhau = chữ giống nhau; gán chữ bằng 2 cách (chạm hình trong câu / chạm ở bảng hình nhân
+  bên dưới), gán xong mọi hình giống nhau hiện chữ; **giới hạn gán ≤ x% số loại hình** (Dễ 60 · Vừa 45 · Khó 30%), gán chỉ là nháp —
+  cuối cùng **gõ cả câu** rồi Hoàn thành 1 lần; Dễ/Vừa có cách, **Khó viết liền + hình cầm cờ = chữ cuối từ** (như truyện); bảng mã xáo
+  độc lập mỗi câu; BXH riêng. T tự thêm (không bị bác): chữ mồi sẵn (Dễ 30 · Vừa 20 · Khó 10% số loại, ≥1) + bảng tần suất (×n).
+- `games-site/hinh-nhan.html`: hình nhân SVG tự vẽ (tay 5 × chân 4 mỗi bên = 400 tư thế; mỗi câu chọn 26 tư thế lệch nhau ≥2 chi);
+  chữ không dấu A–Z (có dấu quá nhiều hình); 2 bộ Tiếng Việt / English × 3 mức × 10 câu; điểm = số chữ×10 + lượt gán dư×25 (dư tính theo
+  đỉnh số hình gán cùng lúc — xoá trước khi nộp không ăn gian được); đáp án so sau khi bỏ dấu/cách.
+- DB: mig `202609281334_game_bxh_chung_hinh_nhan` (claude_build, --only) — BXH **tổng quát** `game_bxh_cau`/`game_bxh_man` có cột `game`
+  (CHECK chỉ 'hinh_nhan') + `fn_game_bxh_ghi/_da_choi/fn_game_bxh/_sanh`; game sau chỉ nới CHECK. Xếp Chữ vẫn ở bảng riêng (dời sang cần gật
+  vì phải bỏ bảng/hàm cũ). Verify rollback: lần 2 không đè, game lạ bị CHECK chặn, 0 dòng còn lại; anon chỉ execute hàm.
+- Verify (375×812, BXH đọc thật, hàm ghi giả để không ghi DB): chạm hình ⇒ cả nhóm + ô bảng sáng, bàn phím trượt lên; gán tự nhảy sang
+  hình kế; chạm giới hạn ⇒ báo "Hết lượt gán"; gán chữ đã dùng ⇒ chữ rời hình cũ; đáp án gõ có dấu/thường vẫn khớp; hết màn ra tổng kết.
+  Sai/sửa: thẻ kết quả co về cao 0 (con flex của .screen co lại) ⇒ `#play>*{flex-shrink:0}`; giải đúng mà ô chưa gán tô đỏ ⇒ thắng thì xanh
+  hết, thua chỉ đỏ ô gán sai.

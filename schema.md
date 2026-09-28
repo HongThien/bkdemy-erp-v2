@@ -2,14 +2,14 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `18` BẢNG
-> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `kho_sua_log` · `sk_checkin` · `sk_dang_ky` · `sk_dang_ky_log` · `sk_luot` · `sk_nguoi_choi` · `sk_phan_cong` · `sk_phan_cong_log` · `sk_phong` · `sk_su_kien` · `sk_xu` · `thong_bao_hs` · `thong_bao_ph`
+> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `17` BẢNG
+> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `sk_checkin` · `sk_dang_ky` · `sk_dang_ky_log` · `sk_luot` · `sk_nguoi_choi` · `sk_phan_cong` · `sk_phan_cong_log` · `sk_phong` · `sk_su_kien` · `sk_xu` · `thong_bao_hs` · `thong_bao_ph`
 > Các bảng này bật RLS với policy `to authenticated`, nên `SELECT` từ script/CLI trả **0 dòng,
 > im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-260 bảng · 19 view · 0 enum · 93 trigger · 545 function
+262 bảng · 19 view · 0 enum · 93 trigger · 550 function
 
 ## _app_secrets
 
@@ -1126,6 +1126,37 @@
 | diem_thi_lai_co_ban | numeric | Y |  |  |  |
 | diem_thi_lai_nang_cao | numeric | Y |  |  |  |
 | full_thi_lai | boolean |  | false |  |  |
+
+## game_bxh_cau
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| game | text |  |  | PK |  |
+| bo | text |  |  | PK |  |
+| cau | text |  |  | PK |  |
+| ten_key | text |  |  | PK |  |
+| ten | text |  |  |  |  |
+| diem | integer |  |  |  |  |
+| ms | integer |  |  |  |  |
+| dung | boolean |  |  |  |  |
+| at | timestamp with time zone |  | now() |  |  |
+
+## game_bxh_man
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| game | text |  |  | PK |  |
+| bo | text |  |  | PK |  |
+| muc | text |  |  | PK | `de` · `vua` · `kho` |
+| ten_key | text |  |  | PK |  |
+| ten | text |  |  |  |  |
+| luot | uuid |  |  |  |  |
+| diem | integer |  |  |  |  |
+| ms | integer |  |  |  |  |
+| giai | smallint |  |  |  |  |
+| xong | smallint |  |  |  |  |
+| at | timestamp with time zone |  | now() |  |  |
+| sua_at | timestamp with time zone |  | now() |  |  |
 
 ## game_lop_qua_dac_biet
 
@@ -5356,6 +5387,7 @@ SELECT bl.hoc_sinh_id,
 - `_dien_buoc_hs(p_buoc jsonb, p_o jsonb)` → jsonb
 - `_dien_hs_view(p_o jsonb)` → jsonb
 - `_et_cham(p_bai_lam uuid)` → void
+- `_game_bxh_ten(p text)` → text
 - `_gay_nhan_tre(p_tu timestamp with time zone, p_den timestamp with time zone)` → text
 - `_gay_ten_actor(p_id uuid)` → text
 - `_htd_chon_cau_bat_ky(p_cautbl text, p_ma_dang text, p_tru text[], p_n integer)` → text[]
@@ -5568,6 +5600,10 @@ SELECT bl.hoc_sinh_id,
 - `fn_exp_btvn_bai(p_trang_thai text, p_thai_do text)` → numeric
 - `fn_exp_et_rank(p_rank integer, p_n integer)` → numeric
 - `fn_exp_for_rank(p_rank integer, p_n integer, p_bands numeric[])` → numeric
+- `fn_game_bxh(p_game text, p_loai text, p_bo text, p_ma text, p_ten text, p_top integer DEFAULT 10)` → jsonb
+- `fn_game_bxh_da_choi(p_game text, p_bo text, p_muc text, p_ten text, p_caus text[])` → jsonb
+- `fn_game_bxh_ghi(p_game text, p_bo text, p_muc text, p_cau text, p_ten text, p_luot uuid, p_diem integer, p_ms integer, p_dung boolean, p_man_diem integer, p_man_ms integer, p_man_giai integer, p_man_xong integer)` → jsonb
+- `fn_game_bxh_sanh(p_game text, p_bo text)` → jsonb
 - `fn_gami_exp_chi_tiet_thang(p_hoc_sinh_id uuid, p_ym text)` → TABLE(source text, mon text, amount integer, created_at timestamp with time zone, ngay date, lop text)
 - `fn_gami_exp_xu_thang(p_ym text, p_hoc_sinh_id uuid DEFAULT NULL::uuid, p_mon text DEFAULT NULL::text)` → TABLE(hoc_sinh_id uuid, mon text, exp integer, xu integer, moc_ke integer, xu_moc_ke integer)
 - `fn_gay_bang(p_ky date)` → TABLE(nhan_su_id uuid, ns_ten text, so_gay_danh bigint, so_gay_go bigint, con_lai bigint, don_gia numeric, tien_phat numeric)
@@ -5925,6 +5961,20 @@ SELECT bl.hoc_sinh_id,
 | dai_cau_menh_de | dai_cau_menh_de_thu_tu_check | `CHECK ((thu_tu >= 1))` |
 | dai_cum_tien_de | dai_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | dai_dang_tien_de | dai_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
+| game_bxh_cau | game_bxh_cau_bo_check | `CHECK ((bo ~ '^[a-z]{2,4}$'::text))` |
+| game_bxh_cau | game_bxh_cau_cau_check | `CHECK (((length(cau) >= 1) AND (length(cau) <= 80)))` |
+| game_bxh_cau | game_bxh_cau_diem_check | `CHECK (((diem >= 0) AND (diem <= 2000)))` |
+| game_bxh_cau | game_bxh_cau_game_check | `CHECK ((game = 'hinh_nhan'::text))` |
+| game_bxh_cau | game_bxh_cau_ms_check | `CHECK (((ms >= 0) AND (ms <= 86400000)))` |
+| game_bxh_cau | game_bxh_cau_ten_check | `CHECK (((length(ten) >= 1) AND (length(ten) <= 20)))` |
+| game_bxh_man | game_bxh_man_bo_check | `CHECK ((bo ~ '^[a-z]{2,4}$'::text))` |
+| game_bxh_man | game_bxh_man_check | `CHECK ((giai <= xong))` |
+| game_bxh_man | game_bxh_man_diem_check | `CHECK (((diem >= 0) AND (diem <= 20000)))` |
+| game_bxh_man | game_bxh_man_game_check | `CHECK ((game = 'hinh_nhan'::text))` |
+| game_bxh_man | game_bxh_man_giai_check | `CHECK (((giai >= 0) AND (giai <= 10)))` |
+| game_bxh_man | game_bxh_man_ms_check | `CHECK (((ms >= 0) AND (ms <= 86400000)))` |
+| game_bxh_man | game_bxh_man_ten_check | `CHECK (((length(ten) >= 1) AND (length(ten) <= 20)))` |
+| game_bxh_man | game_bxh_man_xong_check | `CHECK (((xong >= 1) AND (xong <= 10)))` |
 | game_lop_qua_dac_biet | game_lop_qua_dac_biet_giai_check | `CHECK ((giai = ANY (ARRAY[1, 2, 3])))` |
 | game_lop_qua_dac_biet | game_lop_qua_dac_biet_ti_le_pt_check | `CHECK (((ti_le_pt >= (0)::numeric) AND (ti_le_pt <= (100)::numeric)))` |
 | game_lop_thuong | game_lop_thuong_exp_check | `CHECK ((exp > 0))` |
