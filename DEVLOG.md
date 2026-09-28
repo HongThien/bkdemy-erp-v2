@@ -30329,3 +30329,12 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Sai/sửa: toàn cảnh để mặt đất thấp ⇒ thẻ đạn đè khẩu súng (nâng khung +165px, tô đất dưới đáy thế giới); hộp trà sữa không đặt được ⇒ nới
   điều kiện cách nhau. **Lỗi ghi chép:** lần ghi spec v1 thay chuỗi `## 6. Còn hỏi Thùy` bằng nội dung mới mà QUÊN giữ lại tiêu đề ⇒ mất mục câu hỏi;
   lần v2 script báo "không thấy mốc" mới lộ. Đã ghi lại. Bài học: chèn TRƯỚC một mốc thì chuỗi thay phải kết thúc bằng chính mốc đó.
+
+## 2026-09-28 (8) — Xếp Chữ v0 (game giải trí, máy cá nhân)
+- Thùy chốt luật: kéo thả tự do · **Check = 1 ô/lần, đúng hay sai đều tốn 1 lượt** (lượt = ceil(số chữ/3)) · nút **Hoàn thành** riêng,
+  chỉ nộp **1 lần, sai là thua câu** (bấm 2 nhịp chống lỡ tay) · không gợi ý · lượt Check dư ×25 điểm · đo giờ lập kỷ lục.
+- Làm `games-site/xep-chu.html` (1 file, localStorage `bk-xep-chu-v1`: kỷ lục từng câu, điểm cao nhất màn, phá đảo nhanh nhất) + dòng `solo` ở sảnh.
+  3 mức × 10 câu cố định (thứ tự xáo) để kỷ lục màn so được. Ô chữ giữ nguyên dấu; ô đáp án chia theo từ; chữ trùng chấm theo mặt chữ.
+  Check sai ⇒ chữ về khay + ô ghi "≠X". Còn hiện chủ đề câu (`HIEN_CHU_DE`) — Thùy muốn khó hơn thì tắt.
+- Verify (375×812): chạm/kéo/đổi chỗ/kéo về khay, Check đúng khoá + Check sai loại chữ, Hoàn thành đúng/sai, chạy hết màn ⇒ kỷ lục lưu đúng.
+- Sai/sửa: câu 21 chữ tràn đè thanh trên (board co lại + cỡ ô chỉ tính theo bề ngang) ⇒ tính cỡ ô theo cả chiều cao (hàng ô + khay vừa 1 màn).
