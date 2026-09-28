@@ -30372,3 +30372,14 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   tay, cho cuộn trên iPad) + "Luật riêng" (không khẩu hiệu, không chữ Anh trang trí, câu thoại linh vật phải có số thật). Bỏ biến thể nam/nữ.
 - **Lưu ý build:** code hiện chia cấp 1 / khối 6–9 / khối 10–12; nhóm mới là 3–5 / 6–8 / 9–12 ⇒ khối 9 phải chuyển nhóm. Home 3–5 và 6–8 thêm
   cấp + XP + xu + linh vật (dữ liệu có sẵn: EXP, ví xu) — chưa có hàm trả gộp cho Home.
+
+## 2026-09-28 (9) — Xếp Chữ v1: 3 bộ chữ + tên người chơi + bảng xếp hạng
+- Thùy: thêm bản **tiếng Việt không dấu** và **tiếng Anh**; có **chỗ nhập tên** và **leaderboard**.
+- Không dấu = cùng bộ câu tiếng Việt, bỏ dấu (NFD bỏ dấu kết hợp, Đ→D). English: 30 câu mới (từ đơn / từ ghép / thành ngữ),
+  từ dài nhất ≤ 8 chữ để ô không quá nhỏ trên điện thoại; chủ đề vẫn ghi tiếng Việt.
+- Tên: bắt buộc trước khi chơi (ô đỏ + rung nếu trống), nhớ 8 tên gần đây làm nút chạm nhanh (iPad dùng chung).
+- Bảng xếp hạng **trên máy** (localStorage `bk-xep-chu-v2`, bỏ key v1 chưa ai dùng): theo bộ × mức, mỗi người 1 dòng = thành tích
+  tốt nhất, xếp điểm giảm dần rồi thời gian; top 20; tên so không phân biệt hoa thường; tên được escape. Kỷ lục câu + phá đảo ghi tên người lập.
+- Verify (375×812): chưa nhập tên thì không vào được; 5 lượt 3 người ở bản Không dấu ⇒ bảng đúng, người chơi kém hơn lần trước
+  không bị đè; bản English Khó vừa màn, tổng kết hiện bảng xếp hạng. Sửa kèm: 3 thẻ mức gộp 1 hàng, thanh trên không xuống dòng.
+- Chưa làm: bảng xếp hạng chung giữa các máy (cần bảng Supabase — chờ Thùy chốt).

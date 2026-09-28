@@ -37,20 +37,42 @@ img,svg,image{-webkit-user-drag:none}
   a.back{color:var(--blue);text-decoration:none;font-size:15px;padding:6px 12px;border:1px solid var(--line);border-radius:10px}
 
   /* ===== sảnh chọn mức ===== */
-  .lvls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;width:min(100%,860px)}
-  .lv{background:rgba(20,29,74,.9);border:2px solid var(--line);border-radius:20px;padding:18px;cursor:pointer;display:flex;flex-direction:column;gap:6px}
-  .lv:active{transform:scale(.98)}
-  .lv .ic{font-size:40px}
-  .lv .n{font-size:26px;font-weight:900;color:var(--gold)}
-  .lv .rec{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.5}
+  .lvls{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:min(100%,860px)}
+  .lv{background:rgba(20,29,74,.9);border:2px solid var(--line);border-radius:18px;padding:12px 10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;text-align:center;gap:3px;min-width:0}
+  .lv:active{transform:scale(.97)}
+  .lv .ic{font-size:30px}
+  .lv .n{font-size:22px;font-weight:900;color:var(--gold)}
+  .lv>.muted{font-size:12px}
+  .lv .rec{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.45;overflow-wrap:anywhere}
   .lv .rec b{color:var(--text)}
+  .who{width:min(100%,860px);display:flex;flex-direction:column;gap:8px}
+  .who label{font-weight:700}
+  .who input{font:inherit;font-size:20px;font-weight:700;color:#fff;background:#0e1640;border:2px solid var(--line);border-radius:14px;padding:12px 16px;-webkit-user-select:text;user-select:text;width:100%}
+  .who input:focus{outline:none;border-color:var(--gold)}
+  .who input.need{border-color:var(--red);animation:shake .45s}
+  .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .chips button{padding:5px 12px;font-size:14px;border-radius:999px}
+  .chips button.on{border-color:var(--gold);color:var(--gold)}
+  .tabs{display:flex;gap:6px;background:rgba(20,29,74,.85);border:1px solid var(--line);border-radius:14px;padding:4px;width:min(100%,860px)}
+  .tabs button{flex:1;border:none;background:transparent;padding:10px 8px;font-weight:800;font-size:16px;border-radius:10px;color:var(--muted)}
+  .tabs button.on{background:linear-gradient(180deg,#ffd97a,#f4a300);color:#3a2400}
+  .tabs.sm{width:auto;padding:3px}
+  .tabs.sm button{padding:5px 12px;font-size:14px;flex:none}
+  .lb{width:min(100%,860px);background:rgba(20,29,74,.85);border:1px solid var(--line);border-radius:18px;padding:12px 16px;display:flex;flex-direction:column;gap:8px}
+  .lbHead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:18px}
+  table.lbt,#lbTbl{width:100%;border-collapse:collapse;font-size:15px}
+  table.lbt td,#lbTbl td{padding:6px;border-bottom:1px solid var(--line)}
+  table.lbt td.h,#lbTbl td.h{width:34px;text-align:center;font-weight:900}
+  table.lbt td.r,#lbTbl td.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  table.lbt tr.me td,#lbTbl tr.me td{background:rgba(255,209,102,.14);color:var(--gold);font-weight:800}
   .rules{width:min(100%,860px);background:rgba(20,29,74,.7);border:1px solid var(--line);border-radius:16px;padding:12px 18px;font-size:15px;line-height:1.6}
   .rules b{color:var(--gold)}
 
   /* ===== chơi ===== */
   #play{gap:10px}
-  #top{width:min(100%,900px);display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:15px}
-  #top .lvName{font-weight:800;color:var(--gold)}
+  #top{width:min(100%,900px);display:flex;align-items:center;gap:8px;flex-wrap:nowrap;font-size:15px}
+  #top>*{flex-shrink:0;white-space:nowrap}
+  #top .lvName{font-weight:800;color:var(--gold);flex-shrink:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
   #top .clock{font-variant-numeric:tabular-nums;font-weight:900;font-size:24px;margin-left:auto}
   #top .pill{background:rgba(20,29,74,.85);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-variant-numeric:tabular-nums}
   #top button{padding:6px 12px;font-size:14px;border-radius:10px}
@@ -114,7 +136,18 @@ img,svg,image{-webkit-user-drag:none}
   <div style="width:min(100%,860px)"><a class="back" href="index.html">← BK Games</a></div>
   <h1>🔤 Xếp Chữ</h1>
   <div class="muted" style="text-align:center">Xếp các chữ cái bị xáo thành cụm từ đúng. Mỗi mức 10 câu.</div>
+  <div class="who">
+    <label for="ten">👤 Tên người chơi</label>
+    <input id="ten" maxlength="20" placeholder="Nhập tên của bạn…" autocomplete="off">
+    <div class="chips" id="tenGan"></div>
+  </div>
+  <div class="tabs" id="bos"></div>
   <div class="lvls" id="lvls"></div>
+  <div class="lb">
+    <div class="lbHead"><b>🏆 Bảng xếp hạng</b><span class="tabs sm" id="lbLv"></span></div>
+    <div class="muted" style="font-size:13px" id="lbNote"></div>
+    <table id="lbTbl"></table>
+  </div>
   <div class="rules">
     <b>Luật</b><br>
     • Kéo chữ vào ô (hoặc chạm chữ để đặt vào ô trống). Kéo ô sang ô để đổi chỗ, kéo ra ngoài để trả về khay.<br>
@@ -161,6 +194,8 @@ img,svg,image{-webkit-user-drag:none}
     <div class="score" id="endScore"></div>
     <div id="endMsg"></div>
     <table id="endTbl"></table>
+    <div style="text-align:left;margin-top:6px"><b>🏆 Bảng xếp hạng</b> <span class="muted" style="font-size:13px" id="endLbNote"></span></div>
+    <table id="endLb" class="lbt"></table>
     <div class="row"><button id="bHome">← Chọn mức</button><button class="primary" id="bAgain">Chơi lại</button></div>
   </div>
 </div>
@@ -170,7 +205,7 @@ img,svg,image{-webkit-user-drag:none}
 // Mỗi mức đúng 10 câu (1 màn = cả 10, thứ tự xáo) ⇒ kỷ lục màn so sánh được giữa các lần chơi.
 // c = chủ đề (hiện trên đầu câu — tắt bằng HIEN_CHU_DE=false nếu muốn khó hơn).
 const HIEN_CHU_DE=true;
-const LV={
+const LV_VN={
   de:{n:'Dễ',ic:'🌱',d:'1–2 từ · 5–7 chữ',q:[
     {c:'Địa danh',a:'HÀ NỘI'},{c:'Địa danh',a:'ĐÀ NẴNG'},{c:'Con vật',a:'CON MÈO'},{c:'Con vật',a:'CÁ HEO'},
     {c:'Đồ dùng học tập',a:'BÚT CHÌ'},{c:'Đồ dùng học tập',a:'THƯỚC KẺ'},{c:'Thiên nhiên',a:'MẶT TRỜI'},{c:'Loài hoa',a:'HOA SEN'},
@@ -185,14 +220,48 @@ const LV={
     {c:'Thành ngữ',a:'ĂN QUẢ NHỚ KẺ TRỒNG CÂY'},{c:'Thành ngữ',a:'MỘT CÂY LÀM CHẲNG NÊN NON'},{c:'Thành ngữ',a:'CÓ CHÍ THÌ NÊN'},
     {c:'Thành ngữ',a:'THẤT BẠI LÀ MẸ THÀNH CÔNG'}]},
 };
-const PT_CHU=10,PT_CHECK=25;
+// Không dấu = cùng bộ câu tiếng Việt, bỏ hết dấu (Đ→D). Ít chữ phân biệt hơn ⇒ khó hơn bản có dấu.
+const boDau=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/Đ/g,'D').replace(/đ/g,'d');
+const LV_KD=Object.fromEntries(Object.entries(LV_VN).map(([k,L])=>[k,{...L,q:L.q.map(x=>({...x,a:boDau(x.a)}))}]));
+// English: chủ đề vẫn ghi tiếng Việt (HS đọc nhanh). Từ dài nhất ≤ 8 chữ để ô chữ không quá nhỏ trên điện thoại.
+const LV_EN={
+  de:{n:'Dễ',ic:'🌱',d:'1 từ · 5–6 chữ',q:[
+    {c:'Hoa quả',a:'APPLE'},{c:'Hoa quả',a:'BANANA'},{c:'Hoa quả',a:'ORANGE'},{c:'Con vật',a:'TIGER'},{c:'Con vật',a:'RABBIT'},
+    {c:'Nhà cửa',a:'HOUSE'},{c:'Nhà cửa',a:'GARDEN'},{c:'Thiên nhiên',a:'WATER'},{c:'Trường học',a:'PENCIL'},{c:'Trường học',a:'SCHOOL'}]},
+  vua:{n:'Vừa',ic:'🔥',d:'1–2 từ · 7–9 chữ',q:[
+    {c:'Thiên nhiên',a:'RAINBOW'},{c:'Thiên nhiên',a:'MOUNTAIN'},{c:'Trường học',a:'HOMEWORK'},{c:'Món ăn',a:'ICE CREAM'},
+    {c:'Món ăn',a:'POPCORN'},{c:'Con vật',a:'ELEPHANT'},{c:'Con vật',a:'DINOSAUR'},{c:'Thể thao',a:'FOOTBALL'},
+    {c:'Đồ chơi',a:'TEDDY BEAR'},{c:'Sự kiện',a:'BIRTHDAY'}]},
+  kho:{n:'Khó',ic:'💀',d:'thành ngữ · 11–20 chữ',q:[
+    {c:'Thành ngữ',a:'PRACTICE MAKES PERFECT'},{c:'Thành ngữ',a:'BETTER LATE THAN NEVER'},{c:'Thành ngữ',a:'LOOK BEFORE YOU LEAP'},
+    {c:'Thành ngữ',a:'ONCE IN A BLUE MOON'},{c:'Thành ngữ',a:'NO PAIN NO GAIN'},{c:'Thành ngữ',a:'SLOW AND STEADY'},
+    {c:'Thành ngữ',a:'HOME SWEET HOME'},{c:'Thành ngữ',a:'TIME IS MONEY'},{c:'Thành ngữ',a:'PIECE OF CAKE'},{c:'Thành ngữ',a:'NEVER GIVE UP'}]},
+};
+const BO={vn:{n:'Tiếng Việt',lv:LV_VN},kd:{n:'Không dấu',lv:LV_KD},en:{n:'English',lv:LV_EN}};
+const PT_CHU=10,PT_CHECK=25,LB_MAX=20;
 const soCheck=n=>Math.ceil(n/3);
 
-// ================= KỶ LỤC (localStorage, lưu trên máy) =================
-const RK='bk-xep-chu-v1';
-let REC={cau:{},man:{},clear:{}};
+// ================= KỶ LỤC + BẢNG XẾP HẠNG (localStorage — trên máy này) =================
+// lb[bo:mức] = mỗi người 1 dòng (thành tích tốt nhất), xếp điểm giảm dần rồi thời gian tăng dần.
+// clear[bo:mức] = phá đảo (đúng 10/10) nhanh nhất · cau[bo:đáp án] = câu giải nhanh nhất. names = tên gần đây (chạm để chọn nhanh).
+const RK='bk-xep-chu-v2';
+let REC={cau:{},lb:{},clear:{},names:[],bo:'vn',ten:''};
 try{Object.assign(REC,JSON.parse(localStorage.getItem(RK)||'{}'))}catch(e){}
 function saveRec(){try{localStorage.setItem(RK,JSON.stringify(REC))}catch(e){}}
+const tenKey=t=>t.toLocaleLowerCase('vi');
+const hon=(a,b)=>a.diem!==b.diem?a.diem>b.diem:a.ms<b.ms; // a tốt hơn b?
+function ghiLb(key,e){ // trả về hạng của e trong bảng (null nếu rơi khỏi top)
+  const L=REC.lb[key]||[],i=L.findIndex(x=>tenKey(x.ten)===tenKey(e.ten));
+  let moi=false;
+  if(i<0){L.push(e);moi=true}else if(hon(e,L[i])){L[i]=e;moi=true}
+  L.sort((a,b)=>hon(a,b)?-1:hon(b,a)?1:0);REC.lb[key]=L.slice(0,LB_MAX);
+  const h=REC.lb[key].findIndex(x=>tenKey(x.ten)===tenKey(e.ten));return {hang:h<0?null:h+1,moi};
+}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function lbRows(key,ten){
+  const L=REC.lb[key]||[];if(!L.length)return '<tr><td class="muted">Chưa có ai chơi mức này.</td></tr>';
+  return L.map((x,i)=>`<tr class="${ten&&tenKey(x.ten)===tenKey(ten)?'me':''}"><td class="h">${i<3?['🥇','🥈','🥉'][i]:i+1}</td><td>${esc(x.ten)}</td><td class="r">${x.diem} điểm</td><td class="r muted">${x.giai}/10 · ${fmt(x.ms)}</td></tr>`).join('');
+}
 
 // ================= tiện ích =================
 const $=id=>document.getElementById(id);
@@ -204,20 +273,38 @@ function beep(f,d,v,t){try{AC=AC||new (window.AudioContext||window.webkitAudioCo
 function show(id){['home','play','end'].forEach(s=>$(s).classList.toggle('show',s===id))}
 
 // ================= sảnh =================
+let lbK='de';
+const tenNhap=()=>$('ten').value.replace(/\s+/g,' ').trim();
 function renderHome(){
+  const bo=REC.bo in BO?REC.bo:'vn',LV=BO[bo].lv,ten=tenNhap()||REC.ten;
+  $('ten').value=ten;
+  $('tenGan').innerHTML=REC.names.map(n=>`<button class="${tenKey(n)===tenKey(ten)?'on':''}">${esc(n)}</button>`).join('');
+  $('tenGan').querySelectorAll('button').forEach((b,i)=>b.onclick=()=>{$('ten').value=REC.names[i];$('ten').classList.remove('need');renderHome()});
+  $('bos').innerHTML=Object.entries(BO).map(([k,B])=>`<button data-k="${k}" class="${k===bo?'on':''}">${B.n}</button>`).join('');
+  $('bos').querySelectorAll('button').forEach(b=>b.onclick=()=>{REC.bo=b.dataset.k;saveRec();renderHome()});
   $('lvls').innerHTML=Object.entries(LV).map(([k,L])=>{
-    const m=REC.man[k],c=REC.clear[k];
+    const top=(REC.lb[bo+':'+k]||[])[0],c=REC.clear[bo+':'+k];
     return `<div class="lv" data-k="${k}"><div class="ic">${L.ic}</div><div class="n">${L.n}</div><div class="muted">${L.d}</div>
-      <div class="rec">🏆 Điểm cao nhất: <b>${m?m.diem:'—'}</b>${m?' ('+m.giai+'/10 câu)':''}<br>⏱ Phá đảo nhanh nhất: <b>${c?fmt(c):'—'}</b></div></div>`}).join('');
+      <div class="rec">🥇 ${top?`<b>${esc(top.ten)}</b> · ${top.diem}`:'—'}<br>⚡ phá đảo ${c?`<b>${fmt(c.ms)}</b> · ${esc(c.ten)}`:'—'}</div></div>`}).join('');
   $('lvls').querySelectorAll('.lv').forEach(el=>el.onclick=()=>startMan(el.dataset.k));
+  $('lbLv').innerHTML=Object.entries(LV).map(([k,L])=>`<button data-k="${k}" class="${k===lbK?'on':''}">${L.n}</button>`).join('');
+  $('lbLv').querySelectorAll('button').forEach(b=>b.onclick=()=>{lbK=b.dataset.k;renderHome()});
+  $('lbNote').textContent=BO[bo].n+' · mức '+LV[lbK].n+' · mỗi người 1 dòng (thành tích tốt nhất) · lưu trên máy này';
+  $('lbTbl').innerHTML=lbRows(bo+':'+lbK,ten);
   show('home');
 }
+$('ten').addEventListener('input',()=>$('ten').classList.remove('need'));
+$('ten').addEventListener('keydown',e=>{if(e.key==='Enter')$('ten').blur()});
 
 // ================= màn & câu =================
 let G=null,Q=null,tick=null;
 function startMan(k){
-  G={k,list:shuf(LV[k].q),i:0,diem:0,ms:0,giai:0,log:[]};
-  $('lvName').textContent=LV[k].ic+' '+LV[k].n;
+  const ten=tenNhap();
+  if(!ten){const el=$('ten');el.classList.remove('need');void el.offsetWidth;el.classList.add('need');el.focus();el.scrollIntoView({block:'center'});return}
+  const bo=REC.bo in BO?REC.bo:'vn',L=BO[bo].lv[k];
+  REC.ten=ten;REC.names=[ten,...REC.names.filter(n=>tenKey(n)!==tenKey(ten))].slice(0,8);saveRec();
+  G={bo,k,key:bo+':'+k,ten,list:shuf(L.q),i:0,diem:0,ms:0,giai:0,log:[]};
+  $('lvName').textContent=L.ic+' '+BO[bo].n+' · '+L.n;
   show('play');startCau();
 }
 function tron(ans){ // xáo: không trùng đáp án, ít chữ đứng yên đúng chỗ
@@ -236,7 +323,7 @@ function startCau(){
      tiles:letters.map(ch=>({ch,at:-1})),tray:tron(ans),sel:null,over:false,t0:performance.now(),ms:0,flash:null};
   $('qNo').textContent='Câu '+(G.i+1)+'/'+G.list.length;
   $('cat').textContent=HIEN_CHU_DE?item.c:'';
-  const r=REC.cau[ans];$('qRec').textContent='Kỷ lục câu: '+(r?fmt1(r):'—');
+  const r=REC.cau[G.bo+':'+ans];$('qRec').textContent='Kỷ lục câu: '+(r?fmt1(r.ms)+' · '+r.ten:'—');
   $('res').classList.remove('show');['tray','acts'].forEach(id=>$(id).style.display='');
   size();render();
   clearInterval(tick);tick=setInterval(()=>{if(!Q.over)$('clock').textContent=fmt(G.ms+performance.now()-Q.t0)},250);
@@ -347,7 +434,7 @@ function ketThucCau(){
   const dung=Q.slots.every(s=>Q.tiles[s.t].ch===s.ans);
   let diem=0,nr=false;
   if(dung){diem=Q.n*PT_CHU+(Q.checks-Q.used)*PT_CHECK;G.diem+=diem;G.giai++;
-    const r=REC.cau[Q.ans];if(!r||Q.ms<r){REC.cau[Q.ans]=Math.round(Q.ms);nr=!!r;saveRec()}
+    const ck=G.bo+':'+Q.ans,r=REC.cau[ck];if(!r||Q.ms<r.ms){REC.cau[ck]={ms:Math.round(Q.ms),ten:G.ten};nr=!!r;saveRec()}
     Q.slots.forEach(s=>s.lock=true);beep(660,.1,.07);setTimeout(()=>beep(880,.1,.07),110);setTimeout(()=>beep(1320,.2,.07),220);
   }else{Q.slots.forEach(s=>{if(Q.tiles[s.t].ch!==s.ans)s.miss=true;else s.lock=true});beep(200,.4,.08,'sawtooth')}
   G.log.push({a:Q.ans,dung,diem,ms:Q.ms,du:Q.checks-Q.used});
@@ -365,11 +452,17 @@ $('bNext').onclick=()=>{G.i++;if(G.i<G.list.length)startCau();else ketThucMan()}
 
 function ketThucMan(){
   clearInterval(tick);
-  const k=G.k,m=REC.man[k];let msg=[];
-  if(!m||G.diem>m.diem||(G.diem===m.diem&&G.ms<m.ms)){REC.man[k]={diem:G.diem,ms:Math.round(G.ms),giai:G.giai};if(m)msg.push('🏆 Kỷ lục điểm mới!')}
-  if(G.giai===G.list.length){const c=REC.clear[k];if(!c||G.ms<c){REC.clear[k]=Math.round(G.ms);msg.push('⚡ Phá đảo nhanh nhất mới: '+fmt(G.ms))}}
+  const key=G.key,L=BO[G.bo].lv[G.k],msg=[];
+  const truoc=(REC.lb[key]||[])[0];
+  const r=ghiLb(key,{ten:G.ten,diem:G.diem,ms:Math.round(G.ms),giai:G.giai,t:Date.now()});
+  if(r.hang===1&&(!truoc||tenKey(truoc.ten)!==tenKey(G.ten)||r.moi))msg.push('🥇 Đứng đầu bảng xếp hạng!');
+  else if(r.moi&&r.hang)msg.push('📈 Thành tích tốt nhất mới của bạn — hạng '+r.hang);
+  else if(r.hang)msg.push('Bạn đang hạng '+r.hang+' (chưa vượt thành tích cũ)');
+  if(G.giai===G.list.length){const c=REC.clear[key];if(!c||G.ms<c.ms){REC.clear[key]={ms:Math.round(G.ms),ten:G.ten};msg.push('⚡ Phá đảo nhanh nhất mới: '+fmt(G.ms))}}
   saveRec();
-  $('endLv').textContent=LV[k].ic+' Mức '+LV[k].n+' · '+G.giai+'/'+G.list.length+' câu đúng · ⏱ '+fmt(G.ms);
+  $('endLv').textContent=G.ten+' · '+L.ic+' '+BO[G.bo].n+' · '+L.n+' · '+G.giai+'/'+G.list.length+' câu đúng · ⏱ '+fmt(G.ms);
+  $('endLbNote').textContent=BO[G.bo].n+' · '+L.n+' · trên máy này';
+  $('endLb').innerHTML=lbRows(key,G.ten);
   $('endScore').textContent=G.diem;
   $('endMsg').innerHTML=msg.map(x=>`<div class="newrec">${x}</div>`).join('');
   $('endTbl').innerHTML=G.log.map(l=>`<tr><td>${l.dung?'✓':'✗'} ${l.a}</td><td>${fmt1(l.ms)}</td><td>${l.dung?'+'+l.diem:'0'}</td></tr>`).join('');
