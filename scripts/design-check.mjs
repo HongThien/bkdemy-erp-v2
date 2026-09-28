@@ -1,5 +1,9 @@
 // Kiểm cơ học gói thiết kế ChatGPT giao (design/HANDOFF-PIPELINE.md §5 bước 2) TRƯỚC khi dựng UI.
 // Chạy: node scripts/design-check.mjs design/handoff/hs-home-v3
+//       node scripts/design-check.mjs design/handoff/hs-skin-rpg-v1 --chi-asset
+//   --chi-asset = đơn CHỈ SINH ASSET (bố cục đã dựng bằng code, đơn dặn bỏ Pha B/C): thiếu reference/ không rớt.
+//   (28/09 hs-skin-rpg-v1: 4 RỚT đều là chấm nhầm — reference thiếu đúng theo đơn, tranh nền chi tiết ở 1/4 trên
+//   theo đơn, hoa văn góc 512 theo đơn, đường phân cách mảnh 98% trong suốt nhưng có hình thật.)
 // In bảng ĐẠT/RỚT từng file; exit 1 nếu có RỚT. Chỉ đọc, không sửa gì.
 // Kiểm: kích thước tối thiểu · PNG có alpha THẬT (đếm pixel trong suốt, không tin header) · backdrop các
 // biến thể có KHÁC nhau thật không (so pixel) · SVG không bọc <image>/base64 · có DESIGN.md + reference/.
@@ -9,6 +13,7 @@ import { join, extname, basename } from 'node:path'
 import { PNG } from 'pngjs'
 
 const root = process.argv[2]
+const CHI_ASSET = process.argv.includes('--chi-asset')
 if (!root || !existsSync(root)) { console.error('Cách dùng: node scripts/design-check.mjs <thư mục handoff>'); process.exit(2) }
 
 // Chuẩn tối thiểu theo loại thư mục (HANDOFF-PIPELINE §1 / §3.1)
@@ -17,7 +22,7 @@ const RULE = {
   characters:    { minH: 800, alpha: true },
   illustrations: { minW: 512, minH: 512, alpha: true },
   doodles:       { minW: 400, alpha: true },
-  decor:         { minW: 600, alpha: true },
+  decor:         { minLong: 512, alpha: true }, // cạnh DÀI ≥ 512 (hoa văn góc 512×512 hiện ~50px trên máy — đủ nét)
 }
 
 const rows = [] // { file, ket: 'ĐẠT'|'RỚT'|'CHÚ Ý', ly_do }
@@ -56,13 +61,14 @@ function holePct(info) {
 
 // % pixel có CẠNH SẮC (độ sáng đổi > 48 so với pixel kề) — tranh nền chỉ mây/màu mềm gần 0%;
 // chữ, viền card, nhân vật nướng vào ảnh đẩy số này lên (v3: backdrop vẫn nướng chào + hero + cậu bé).
-function edgePct(info) {
-  const S = 2, w = Math.floor(info.width / S), h = Math.floor(info.height / S)
+// tuTi = tính từ tỉ lệ chiều cao này trở xuống (0.25 = chỉ 75% dưới, vùng code đặt thẻ lên).
+function edgePct(info, tuTi = 0) {
+  const S = 2, w = Math.floor(info.width / S), h = Math.floor(info.height / S), y0 = Math.floor(h * tuTi)
   const L = new Float32Array(w * h)
   for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const i = ((y * S) * info.width + x * S) * 4; L[y * w + x] = 0.299 * info.data[i] + 0.587 * info.data[i + 1] + 0.114 * info.data[i + 2] }
   let e = 0
-  for (let y = 0; y < h - 1; y++) for (let x = 0; x < w - 1; x++) { const i = y * w + x; if (Math.abs(L[i] - L[i + 1]) > 48 || Math.abs(L[i] - L[i + w]) > 48) e++ }
-  return (100 * e) / (w * h)
+  for (let y = y0; y < h - 1; y++) for (let x = 0; x < w - 1; x++) { const i = y * w + x; if (Math.abs(L[i] - L[i + 1]) > 48 || Math.abs(L[i] - L[i + w]) > 48) e++ }
+  return (100 * e) / (w * (h - y0))
 }
 
 // ── 1. Cấu trúc bắt buộc ─────────────────────────────────────────────────────
@@ -83,7 +89,9 @@ else {
   for (const f of coThat) if (!nhac.has(f) && /\.(png|svg)$/.test(f)) warn(`assets/${f}`, 'có file nhưng DESIGN.md không nhắc tới — mồ côi, sẽ không được dùng')
 }
 const refs = walk(join(root, 'reference')).filter((p) => /\.(png|jpg|jpeg)$/i.test(p))
-refs.length ? ok('reference/', `${refs.length} ảnh mockup`) : fail('reference/', 'không có ảnh mockup nào — không có gì để so')
+refs.length ? ok('reference/', `${refs.length} ảnh mockup`)
+  : CHI_ASSET ? warn('reference/', 'không có — đúng với đơn chỉ-asset (--chi-asset)')
+  : fail('reference/', 'không có ảnh mockup nào — không có gì để so (đơn chỉ-asset thì chạy thêm --chi-asset)')
 
 // ── 2. Từng PNG theo loại thư mục ────────────────────────────────────────────
 const backdrops = []
@@ -104,13 +112,17 @@ for (const loai of Object.keys(RULE)) {
     const mem = loai === 'backdrop' && info.width >= 900 && info.height >= 1600
     if (r.minW && info.width < r.minW) (mem ? warn(rel, `ngang ${info.width} < ${r.minW} — chấp nhận được`) : loi.push(`ngang ${info.width} < ${r.minW}`))
     if (r.minH && info.height < r.minH) (mem ? warn(rel, `cao ${info.height} < ${r.minH} — chấp nhận được`) : loi.push(`cao ${info.height} < ${r.minH}`))
+    if (r.minLong && Math.max(info.width, info.height) < r.minLong) loi.push(`cạnh dài ${Math.max(info.width, info.height)} < ${r.minLong}`)
     let them = ''
     if (r.alpha) {
       // "Có alpha" phải là pixel trong suốt THẬT ≥ 5% và góc ảnh trong suốt — header RGBA không đủ.
       if (info.transparentPct < 5) loi.push(`nền KHÔNG trong suốt (${info.transparentPct.toFixed(0)}% pixel alpha=0) — là crop nền trắng?`)
-      else if (info.transparentPct > 95) loi.push(`ảnh RỖNG (${info.transparentPct.toFixed(0)}% trong suốt) — chủ thể bị xoá cùng nền?`)
+      else if (info.transparentPct > 99.5) loi.push(`ảnh RỖNG (${info.transparentPct.toFixed(1)}% trong suốt) — chủ thể bị xoá cùng nền?`)
+      // Decor mảnh (đường phân cách, viền) vốn gần hết là nền trong suốt ⇒ chỉ CHÚ Ý, mở ảnh xem; loại khác vẫn RỚT.
+      else if (info.transparentPct > 95 && loai !== 'decor') loi.push(`ảnh RỖNG (${info.transparentPct.toFixed(0)}% trong suốt) — chủ thể bị xoá cùng nền?`)
       else {
-        if (info.cornerAlpha !== 0) loi.push('góc ảnh không trong suốt')
+        if (info.transparentPct > 95) warn(rel, `${info.transparentPct.toFixed(0)}% trong suốt — decor mảnh? MỞ ẢNH xem có hình thật`)
+      if (info.cornerAlpha !== 0) loi.push('góc ảnh không trong suốt')
         const hp = holePct(info)
         if (hp > 4) loi.push(`THỦNG ${hp.toFixed(0)}% — xoá nền bằng cách xoá màu trắng (áo/tóc/cốc trắng thành lỗ), không phải cutout thật`)
         else them = ` · thủng ${hp.toFixed(1)}%`
@@ -118,8 +130,11 @@ for (const loai of Object.keys(RULE)) {
     }
     if (loai === 'backdrop') {
       backdrops.push({ rel, info })
-      const ep = edgePct(info)
-      if (ep > 0.5) loi.push(`có CHỮ/CARD/NHÂN VẬT nướng trong ảnh (cạnh sắc ${ep.toFixed(2)}% pixel, tranh nền mềm phải < 0.5%)`)
+      // Chấm RỚT theo 75% DƯỚI (vùng code đặt thẻ): chữ/card nướng vào đó mới hỏng màn. 1/4 trên được phép nhiều chi
+      // tiết (đơn skin 28/09 đặt vẽ đảo nổi/cửa sổ ở đó) ⇒ cả ảnh sắc mà phần dưới mềm = CHÚ Ý, mở ảnh xem có chữ không.
+      const ep = edgePct(info), epDuoi = edgePct(info, 0.25)
+      if (epDuoi > 0.5) loi.push(`có CHỮ/CARD/NHÂN VẬT nướng trong 75% dưới (cạnh sắc ${epDuoi.toFixed(2)}% pixel, tranh nền mềm phải < 0.5%)`)
+      else if (ep > 0.5) { warn(rel, `1/4 trên nhiều chi tiết (cạnh sắc cả ảnh ${ep.toFixed(2)}%, 75% dưới ${epDuoi.toFixed(2)}%) — MỞ ẢNH xem có chữ/card không`); them = ` · cạnh sắc 75% dưới ${epDuoi.toFixed(2)}%` }
       else them = ` · cạnh sắc ${ep.toFixed(2)}%`
     }
     loi.length ? fail(rel, loi.join(' · ')) : ok(rel, `${info.width}×${info.height}${r.alpha ? ` · trong suốt ${info.transparentPct.toFixed(0)}%` : ''}${them}`)

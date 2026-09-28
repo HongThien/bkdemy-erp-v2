@@ -176,3 +176,9 @@ không lệch bố cục · không chữ nào bị raster hoá · tsc + build s�
   (script chưa bắt được). Dựng xong DanhSachHS.tsx dùng chung 3 khu.
 - Kết luận chung: càng bảo ChatGPT viết spec/code, càng nhiều thứ phải bỏ. Bảo nó vẽ đúng, sinh asset riêng
   từng cái bằng công cụ tạo ảnh, còn lại Claude làm từ ảnh đích.
+- **hs-skin-rpg-v1 (28/09, đơn CHỈ-ASSET đầu tiên — Đơn 4 `design/DON-HANG-SKIN-HS.md`):** ChatGPT giao đủ 7 file đúng tên/cỡ,
+  alpha thật, không viền trắng trên nền tối, không chữ — **đạt ngay v1, không trả lại**. Nhưng `design-check` báo 4 RỚT, cả 4 là
+  chấm nhầm do script viết cho đơn nguyên màn: thiếu reference (đơn dặn bỏ) · tranh nền "có chữ" (đảo nổi chi tiết ở 1/4 trên theo
+  đơn) · decor 512 < 600 (đơn ghi 512) · đường phân cách "rỗng" 98% (decor mảnh). → sửa script: cờ `--chi-asset`, đo cạnh sắc
+  backdrop trên 75% DƯỚI, decor cạnh dài ≥ 512, decor >95% trong suốt chỉ CHÚ Ý (RỖNG khi >99.5%); kit §2 thêm "ĐƠN CHỈ-ASSET",
+  §5 decor 512. Chạy lại hs-home-v4: kết quả không đổi. Bài học: **script RỚT ≠ hàng hỏng** — mở ảnh trước khi trả.

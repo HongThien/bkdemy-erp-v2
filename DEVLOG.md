@@ -30538,3 +30538,12 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   Sau (8 map): Bom to 36 · Thường 38 · Nảy 39 · Chùm 41 · Xuyên 41. Lưu thành `lib/ban-qua-gia-lap.js` (?gia_lap=1) để chỉnh số sau này tự đo lại.
 - Sai/sửa: dòng nạp `document.write('<script …></script>')` trong HTML — chuỗi `</script>` đóng thẻ script ngoài sớm ⇒ SyntaxError
   (heredoc Node nuốt mất `\` của `</script>`). Đổi sang createElement. Giả lập nạp sau `load` ⇒ nút không hiện: gắn ngay nếu readyState=complete.
+
+## 2026-09-28 (10) — Nhận gói ChatGPT `hs-skin-rpg-v1` (Đơn 4, skin Anime RPG lớp 9–12): ĐẠT, không trả lại
+
+- **Thùy tải gói** vào `public/bk-ui/` → chuyển sang `design/handoff/hs-skin-rpg-v1(.zip)` (để trong public/ là 3MB zip vào bản build).
+- **Kiểm:** đủ 7 file + DESIGN.md đúng đơn · đúng cỡ · 6 PNG alpha thật, không nền #00FF00, không khoét trắng · ghép lên nền #141a33
+  không viền trắng · tranh nền 75% dưới tối (độ sáng TB 26/255), không chữ/nhân vật · 4 icon cùng phong cách, không logo game.
+- **Sai (script, không phải hàng):** `design-check` báo 4 RỚT đều là chấm nhầm cho loại đơn chỉ-asset → sửa script (`--chi-asset`, backdrop
+  đo 75% dưới, decor cạnh dài ≥512, decor mảnh chỉ CHÚ Ý) · kit thêm mục ĐƠN CHỈ-ASSET · HANDOFF-PIPELINE §8. hs-home-v4 chạy lại không đổi.
+- **Còn:** Đơn 1 (lớp 3–5), Đơn 2 (lớp 6–8), Đơn 3 (Lo-fi) chưa có hàng.

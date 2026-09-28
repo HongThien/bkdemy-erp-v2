@@ -68,6 +68,12 @@ Gửi bảng để duyệt danh sách asset **trước khi sinh** bất kỳ ả
 
 ---
 
+**ĐƠN CHỈ-ASSET** (từ 28/09, skin app HS): khi đơn ghi "Bỏ Pha B và C", bố cục + chữ + thẻ đã do code dựng —
+bạn KHÔNG vẽ mockup, KHÔNG có `reference/`; vào thẳng Pha D, sinh đúng danh sách file trong đơn, DESIGN.md chỉ
+kiểm kê các file đó. Kích thước trong đơn ưu tiên hơn mục 5.
+
+---
+
 ## 3. LOGIC PHÂN LOẠI PHẦN TỬ (cốt lõi — áp cho mọi màn)
 
 Với **từng phần tử nhìn thấy** trong mockup, hỏi lần lượt, dừng ở câu đầu tiên đúng:
@@ -79,7 +85,7 @@ Với **từng phần tử nhìn thấy** trong mockup, hỏi lần lượt, d�
 | 3 | Là **glyph** 1–2 màu, nét đơn, vẽ được bằng ≤10 đường? (mũi tên, chuông, chìa khoá, tick, sao, tim, vương miện, dấu ›) | `GLYPH` | **SVG gõ tay**: `viewBox`, chỉ `<path>/<circle>/<rect>/<polygon>`, KHÔNG `<image>`, KHÔNG `<text>`. |
 | 4 | Là **minh hoạ** có khối, bóng, nhiều màu, chi tiết? (icon 3D của ô chức năng, đồ vật, mascot) | `ILLUST` | **PNG cutout sinh bằng công cụ tạo ảnh**, nền trong suốt, ≥512px. |
 | 5 | Là **nhân vật** (người/thú đại diện)? | `CHAR` | **PNG cutout**, nền trong suốt, cao ≥800px. Mỗi biến thể 1 file. |
-| 6 | Là **nhóm trang trí** không tương tác (sách, cốc, cây, hoa, sticker hình)? | `DECOR` | **PNG cutout**, nền trong suốt, ≥600px cạnh dài. |
+| 6 | Là **nhóm trang trí** không tương tác (sách, cốc, cây, hoa, sticker hình)? | `DECOR` | **PNG cutout**, nền trong suốt, ≥512px cạnh dài. |
 | 7 | Là **không khí nền** (mây, mảng màu, ánh sáng, chấm lấp lánh mờ)? | `BACKDROP` | **PNG full màn**, ≥1080×1920, **chỉ chứa không khí**: không chữ, không thẻ, không nhân vật, không icon. Mỗi biến thể 1 file. |
 
 Nguyên tắc khi phân vân:
@@ -124,7 +130,7 @@ Mỗi phần tử nhìn thấy trong mockup = **đúng 1 dòng**. Thiếu dòng 
   khoá màu. Tuyệt đối không tự xoá nền bằng xoá màu trắng (áo, giấy, cốc trắng sẽ thủng lỗ; icon xám, chữ
   nhạt sẽ bị xoá sạch thành ảnh rỗng).
 - Chủ thể căn giữa, lề ~5%, không đổ bóng ra ngoài chủ thể, không cảnh nền.
-- Kích thước tối thiểu: `BACKDROP` 1080×1920 · `CHAR` cao 800 · `ILLUST` 512 · `DECOR` 600 cạnh dài.
+- Kích thước tối thiểu: `BACKDROP` 1080×1920 · `CHAR` cao 800 · `ILLUST` 512 · `DECOR` 512 cạnh dài.
 - Định dạng: **PNG có alpha** (trừ backdrop: PNG thường). Không WebP, không JPG.
 - Đặt tên: `snake_case`, không dấu, tiền tố theo loại: `backdrop_`, `character_`, `ill_`, `decor_`;
   hậu tố biến thể `_male` / `_female` / `_default`. Glyph SVG: tên ngắn (`bell.svg`, `arrow_pink.svg`).
