@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-258 bảng · 19 view · 0 enum · 93 trigger · 540 function
+260 bảng · 19 view · 0 enum · 93 trigger · 545 function
 
 ## _app_secrets
 
@@ -1143,6 +1143,35 @@
 | giai | smallint |  |  | PK |  |
 | exp | integer |  |  | PK |  |
 | ti_le | integer |  |  |  |  |
+
+## game_xep_chu_cau
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| bo | text |  |  | PK | `vn` · `kd` · `en` |
+| cau | text |  |  | PK |  |
+| ten_key | text |  |  | PK |  |
+| ten | text |  |  |  |  |
+| diem | integer |  |  |  |  |
+| ms | integer |  |  |  |  |
+| dung | boolean |  |  |  |  |
+| at | timestamp with time zone |  | now() |  |  |
+
+## game_xep_chu_man
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| bo | text |  |  | PK | `vn` · `kd` · `en` |
+| muc | text |  |  | PK | `de` · `vua` · `kho` |
+| ten_key | text |  |  | PK |  |
+| ten | text |  |  |  |  |
+| luot | uuid |  |  |  |  |
+| diem | integer |  |  |  |  |
+| ms | integer |  |  |  |  |
+| giai | smallint |  |  |  |  |
+| xong | smallint |  |  |  |  |
+| at | timestamp with time zone |  | now() |  |  |
+| sua_at | timestamp with time zone |  | now() |  |  |
 
 ## gami_elo
 
@@ -5396,6 +5425,7 @@ SELECT bl.hoc_sinh_id,
 - `_trg_ta_retest_push()` → trigger
 - `_trg_tai_lieu_duyet_log()` → trigger
 - `_tu_luyen_dau_cua_so_truoc()` → timestamp with time zone
+- `_xep_chu_ten(p text)` → text
 - `bai_lam_cau_ghi_duoc(p_bai_lam uuid, p_cau uuid)` → boolean
 - `bai_test_con_han(p_bai_test uuid)` → boolean
 - `bao_cao_ph_preset_touch()` → trigger
@@ -5746,6 +5776,10 @@ SELECT bl.hoc_sinh_id,
 - `fn_viec_nghiem_thu_tinh()` → trigger
 - `fn_viec_ops_thuong(p_tu date, p_den date, p_tat_ca boolean DEFAULT false)` → TABLE(nhan_su_id uuid, ten_viec text, ngay date, ca text, tab text, dong_at timestamp with time zone, han timestamp with time zone, chat_luong numeric, ref_key text)
 - `fn_vvhd_tinh()` → trigger
+- `fn_xep_chu_bxh(p_loai text, p_bo text, p_ma text, p_ten text, p_top integer DEFAULT 10)` → jsonb
+- `fn_xep_chu_da_choi(p_bo text, p_muc text, p_ten text, p_caus text[])` → jsonb
+- `fn_xep_chu_ghi(p_bo text, p_muc text, p_cau text, p_ten text, p_luot uuid, p_diem integer, p_ms integer, p_dung boolean, p_man_diem integer, p_man_ms integer, p_man_giai integer, p_man_xong integer)` → jsonb
+- `fn_xep_chu_sanh(p_bo text)` → jsonb
 - `fn_xephang_chung(p_ym text)` → jsonb
 - `fn_xu_tu_exp(p_exp integer)` → integer
 - `giai_thuong_check_slot()` → trigger
@@ -5842,8 +5876,8 @@ SELECT bl.hoc_sinh_id,
 - `trg_han_nop_ngoai_le_log()` → trigger
 - `trg_htd_test_nop()` → trigger
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
@@ -5896,6 +5930,16 @@ SELECT bl.hoc_sinh_id,
 | game_lop_thuong | game_lop_thuong_exp_check | `CHECK ((exp > 0))` |
 | game_lop_thuong | game_lop_thuong_giai_check | `CHECK ((giai = ANY (ARRAY[1, 2, 3])))` |
 | game_lop_thuong | game_lop_thuong_ti_le_check | `CHECK ((ti_le > 0))` |
+| game_xep_chu_cau | game_xep_chu_cau_cau_check | `CHECK (((length(cau) >= 1) AND (length(cau) <= 60)))` |
+| game_xep_chu_cau | game_xep_chu_cau_diem_check | `CHECK (((diem >= 0) AND (diem <= 1000)))` |
+| game_xep_chu_cau | game_xep_chu_cau_ms_check | `CHECK (((ms >= 0) AND (ms <= 86400000)))` |
+| game_xep_chu_cau | game_xep_chu_cau_ten_check | `CHECK (((length(ten) >= 1) AND (length(ten) <= 20)))` |
+| game_xep_chu_man | game_xep_chu_man_check | `CHECK ((giai <= xong))` |
+| game_xep_chu_man | game_xep_chu_man_diem_check | `CHECK (((diem >= 0) AND (diem <= 10000)))` |
+| game_xep_chu_man | game_xep_chu_man_giai_check | `CHECK (((giai >= 0) AND (giai <= 10)))` |
+| game_xep_chu_man | game_xep_chu_man_ms_check | `CHECK (((ms >= 0) AND (ms <= 86400000)))` |
+| game_xep_chu_man | game_xep_chu_man_ten_check | `CHECK (((length(ten) >= 1) AND (length(ten) <= 20)))` |
+| game_xep_chu_man | game_xep_chu_man_xong_check | `CHECK (((xong >= 1) AND (xong <= 10)))` |
 | gay_de_xuat | gay_de_xuat_so_gay_check | `CHECK ((so_gay > 0))` |
 | gay_hoat_dong | gay_hoat_dong_so_gay_mac_dinh_check | `CHECK ((so_gay_mac_dinh > 0))` |
 | gay_ledger | gay_ledger_danh_co_loi | `CHECK (((loai = 'go'::text) OR (loi_id IS NOT NULL)))` |

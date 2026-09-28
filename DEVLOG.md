@@ -30425,6 +30425,20 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Phần RANK coi như chốt xong logic + số. Detail còn lại của spec: C5 danh hiệu dạng · C6 thành tựu · C7 nhiệm vụ · C8 đua lớp ·
   C10 ngân sách xu · C11 UI · C12 thứ tự build · chi tiết Bảng đua tháng.
 
+## 2026-09-28 (11) — Xếp Chữ v3: bảng xếp hạng CHUNG mọi máy (Supabase)
+- Thùy: "làm đi. chơi chung mà" ⇒ bỏ BXH trên máy, dùng DB.
+- Mig `202609281307_xep_chu_bxh_chung` (claude_build, `migrate --only`): `game_xep_chu_cau` PK (bo,cau,ten_key) = lần đầu mỗi người mỗi câu
+  (on conflict do nothing ⇒ DB tự giữ luật lần đầu) · `game_xep_chu_man` PK (bo,muc,ten_key) + `luot` uuid: dòng ra đời khi câu đầu xong,
+  chỉ lượt đầu cập nhật tiếp (xong tăng dần). 4 hàm security definer cho anon: `fn_xep_chu_ghi` · `fn_xep_chu_da_choi` · `fn_xep_chu_bxh`
+  (top N + dòng của mình + tổng + phá đảo; xếp hạng ở DB §2.0) · `fn_xep_chu_sanh`. Bảng RLS không policy anon, revoke anon/authenticated.
+  Game giải trí ⇒ không nhãn `mon`, không gắn HS (tên tự gõ). Điểm vẫn do game tính (luật chơi), DB chỉ kiểm biên.
+- Verify: logic trong transaction rồi ROLLBACK (lần 2 không đè câu/màn, tên "  lan " = "Lan", sai không vào BXH câu nhưng tính đã chơi)
+  ⇒ 0 dòng còn lại; quyền: anon execute 4 hàm, không select/insert bảng, không gọi hàm nội bộ. Từ trình duyệt (anon key thật): 3 hàm đọc OK,
+  ghi với bo sai ⇒ 23514 (tìm thấy hàm, không tạo dòng), đọc thẳng bảng ⇒ 42501. Luồng UI chạy với hàm ghi/bxh giả (không ghi DB thật).
+- Máy: localStorage chỉ còn tên gần đây + bộ. Ghi xếp hàng + thử lại 3 lần; mất mạng thì báo "chưa lưu được", game vẫn chơi được.
+- Rủi ro đã biết: trùng tên giữa 2 HS = 1 người (không đăng nhập) ⇒ nên gõ họ tên đầy đủ; anon gọi được hàm ghi ⇒ ai biết cách vẫn gửi điểm giả
+  trong biên (game giải trí, chấp nhận).
+
 ## 2026-09-28 (9) — LUỒNG KHO P0: dựng nền (nhánh `worktree-luong-kho`) + NGỪNG luồng tự giải bài cũ — `spec-luong-kho.md` §9.7
 
 - **Thùy:** "làm P0 thôi" · sau đó "huỷ luồng giải bài đang chạy luôn, huỷ luôn cron".

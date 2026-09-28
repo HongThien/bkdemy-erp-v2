@@ -84,7 +84,7 @@ img,svg,image{-webkit-user-drag:none}
   .lv>.bd{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;font-size:12.5px;line-height:1.45;color:var(--ink2);padding:8px 6px 10px}
   .lv>.bd b{color:var(--ink)}
   .lv>.bd>div{overflow-wrap:anywhere}
-  .lv>.bd>div:last-of-type{margin-bottom:8px}
+  .lv .sn>div:last-child{margin-bottom:8px}
   .lv .play{margin-top:auto;display:inline-block;font-weight:700;color:#fff;border-radius:999px;padding:3px 12px;background:linear-gradient(180deg,var(--c1),var(--c2))}
   .lb .hd{justify-content:space-between}
   .lbnote{font-size:12.5px;color:var(--ink2);margin:8px 0 4px}
@@ -280,6 +280,7 @@ img,svg,image{-webkit-user-drag:none}
   </div>
 </div>
 
+<script src="lib/supabase.js"></script>
 <script>
 // ================= BỘ CÂU =================
 // Mỗi mức đúng 10 câu (1 màn = cả 10, thứ tự xáo) ⇒ bảng xếp hạng màn so sánh được.
@@ -322,33 +323,32 @@ const BO={vn:{n:'Tiếng Việt',lv:LV_VN},kd:{n:'Không dấu',lv:LV_KD},en:{n:
 const PT_CHU=10,PT_CHECK=25,TOP=10;
 const soCheck=n=>Math.ceil(n/3);
 
-// ================= BẢNG XẾP HẠNG (localStorage — trên máy này) =================
+// ================= BẢNG XẾP HẠNG CHUNG (Supabase — mọi máy) =================
 // Luật (Thùy 28/09): mỗi người góp mặt 1 lần = LẦN ĐẦU TIÊN chơi (chơi lại đã biết đáp án ⇒ chỉ là luyện tập).
-//  cq[bo:đáp án] = lần đầu của từng người ở câu đó {ten,diem,ms,dung}. Xếp hạng câu: chỉ người làm đúng.
-//  lb[bo:mức]    = lần đầu của từng người ở màn đó {ten,diem,ms,giai,xong}; cập nhật dần sau mỗi câu của lượt đầu
-//                  (bỏ giữa chừng thì lượt đó vẫn là lần đầu — không "chơi thử rồi chơi thật" được).
-const RK='bk-xep-chu-v3';
-let REC={cq:{},lb:{},names:[],bo:'vn',ten:''};
+// DB tự giữ luật "lần đầu" + xếp hạng (mig 202609281307_xep_chu_bxh_chung): máy chỉ gửi kết quả từng câu và hỏi bảng.
+//  fn_xep_chu_ghi   — ghi 1 câu vừa xong + tổng màn của lượt này (DB bỏ qua nếu không phải lần đầu / không phải lượt đầu).
+//  fn_xep_chu_da_choi — lúc vào màn: màn này + các câu này người này đã có lần đầu chưa (chỉ để hiện nhãn).
+//  fn_xep_chu_bxh   — top 10 câu/màn + dòng của mình · fn_xep_chu_sanh — người đứng đầu + phá đảo nhanh nhất từng mức.
+// Trên máy (localStorage) chỉ còn: tên gần đây + bộ đang chọn.
+const SB_URL='https://osrvycilwshkzhljuxef.supabase.co',SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4';
+let SB=null;try{SB=supabase.createClient(SB_URL,SB_KEY,{auth:{persistSession:false}})}catch(e){}
+async function rpc(fn,args){if(!SB)throw new Error('thiếu thư viện');const {data,error}=await SB.rpc(fn,args);if(error)throw error;return data}
+const RK='bk-xep-chu-v4';
+let REC={names:[],bo:'vn',ten:''};
 try{Object.assign(REC,JSON.parse(localStorage.getItem(RK)||'{}'))}catch(e){}
-function saveRec(){try{localStorage.setItem(RK,JSON.stringify(REC))}catch(e){}}
+function saveRec(){try{localStorage.setItem(RK,JSON.stringify({names:REC.names,bo:REC.bo,ten:REC.ten}))}catch(e){}}
 const tenKey=t=>t.toLocaleLowerCase('vi');
-const la=(x,ten)=>tenKey(x.ten)===tenKey(ten);
-const hon=(a,b)=>a.diem!==b.diem?a.diem>b.diem:a.ms<b.ms;
-const xep=L=>L.slice().sort((a,b)=>hon(a,b)?-1:hon(b,a)?1:0);
-const bxhMan=key=>xep(REC.lb[key]||[]);
-const bxhCau=ck=>xep((REC.cq[ck]||[]).filter(x=>x.dung));
-const daChoi=(L,ten)=>(L||[]).some(x=>la(x,ten));
-const hangCua=(L,ten)=>{const i=L.findIndex(x=>la(x,ten));return i<0?null:i+1};
-const phaDao=key=>(REC.lb[key]||[]).filter(x=>x.giai===10).sort((a,b)=>a.ms-b.ms)[0];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-function bxhHtml(L,ten,kieu){
-  if(!L.length)return `<div class="empty">Chưa có ai ${kieu==='cau'?'giải đúng câu này':'chơi mức này'} — bạn là người đầu tiên? 🚀</div>`;
-  const row=(x,h)=>`<tr class="${h<=3?'m'+h:''} ${ten&&la(x,ten)?'me':''}"><td>${h<=3?['🥇','🥈','🥉'][h-1]:h}</td><td class="nm">${esc(x.ten)}</td>
-    <td><span class="pt">${x.diem} điểm</span><span class="sub">${kieu==='man'?(x.giai+'/10 câu · '):''}${kieu==='cau'?(x.ms/1000).toFixed(1)+'s':fmt(x.ms)}</span></td></tr>`;
-  let h=L.slice(0,TOP).map((x,i)=>row(x,i+1)).join('');
-  const me=ten?hangCua(L,ten):null;
-  if(me&&me>TOP)h+=`<tr class="gap"><td colspan="3">⋯</td></tr>`+row(L[me-1],me);
-  return `<table class="bxh">${h}</table>`;
+const uuid=()=>crypto.randomUUID?crypto.randomUUID():'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0;return(c==='x'?r:(r&3|8)).toString(16)});
+const LOI='<div class="empty">⚠ Không kết nối được bảng xếp hạng — kiểm tra mạng.</div>',TAI='<div class="empty">Đang tải…</div>';
+function bxhHtml(B,kieu){ // B = kết quả fn_xep_chu_bxh
+  if(!B||!B.top.length)return `<div class="empty">Chưa có ai ${kieu==='cau'?'giải đúng câu này':'chơi mức này'} — bạn là người đầu tiên? 🚀</div>`;
+  const me=B.toi,la=x=>me&&x.hang===me.hang;
+  const row=x=>`<tr class="${x.hang<=3?'m'+x.hang:''} ${la(x)?'me':''}"><td>${x.hang<=3?['🥇','🥈','🥉'][x.hang-1]:x.hang}</td><td class="nm">${esc(x.ten)}</td>
+    <td><span class="pt">${x.diem} điểm</span><span class="sub">${kieu==='man'?(x.giai+'/10 câu · '+fmt(x.ms)):fmt1(x.ms)}</span></td></tr>`;
+  let h=B.top.map(row).join('');
+  if(me&&me.hang>B.top.length)h+=`<tr class="gap"><td colspan="3">⋯</td></tr>`+row(me);
+  return `<table class="bxh">${h}</table><div class="lbnote" style="text-align:right">${B.tong} người trên bảng</div>`;
 }
 
 // ================= tiện ích =================
@@ -372,28 +372,43 @@ function renderHome(){
   $('tenGan').querySelectorAll('button').forEach((b,i)=>b.onclick=()=>{$('ten').value=REC.names[i];$('nameBox').classList.remove('need');renderHome()});
   $('bos').innerHTML=Object.entries(BO).map(([k,B])=>`<button data-k="${k}" class="${k===bo?'on':''}">${B.n}</button>`).join('');
   $('bos').querySelectorAll('button').forEach(b=>b.onclick=()=>{REC.bo=b.dataset.k;saveRec();renderHome()});
-  $('lvls').innerHTML=Object.entries(LV).map(([k,L])=>{
-    const st=LVSTYLE[k],top=bxhMan(bo+':'+k)[0],c=phaDao(bo+':'+k);
+  const the=(k,S)=>{const top=S&&S.top1,c=S&&S.pha_dao,cho=S===undefined?'…':'—';
+    return `<div>🥇 ${top?`<b>${esc(top.ten)}</b> ${top.diem}`:cho}</div><div>⚡ ${c?`<b>${fmt(c.ms)}</b> ${esc(c.ten)}`:cho}</div>`};
+  $('lvls').innerHTML=Object.entries(LV).map(([k,L])=>{const st=LVSTYLE[k];
     return `<div class="card lv b-${st.c}" data-k="${k}"><div class="hd"><img src="${IMG(st.img)}" alt="">${L.n}</div>
-      <div class="bd"><div>${L.d}</div><div>🥇 ${top?`<b>${esc(top.ten)}</b> ${top.diem}`:'—'}</div><div>⚡ ${c?`<b>${fmt(c.ms)}</b> ${esc(c.ten)}`:'—'}</div><span class="play">Chơi ▶</span></div></div>`}).join('');
+      <div class="bd"><div>${L.d}</div><div class="sn" style="display:contents">${the(k)}</div><span class="play">Chơi ▶</span></div></div>`}).join('');
   $('lvls').querySelectorAll('.lv').forEach(el=>el.onclick=()=>startMan(el.dataset.k));
   $('lbLv').innerHTML=Object.entries(LV).map(([k,L])=>`<button data-k="${k}" class="${k===lbK?'on':''}">${L.n}</button>`).join('');
   $('lbLv').querySelectorAll('button').forEach(b=>b.onclick=()=>{lbK=b.dataset.k;renderHome()});
-  $('lbNote').textContent=BO[bo].n+' · mức '+LV[lbK].n+' · top 10 · chỉ tính lần chơi đầu tiên của mỗi người';
-  $('lbTbl').innerHTML=bxhHtml(bxhMan(bo+':'+lbK),ten,'man');
+  $('lbNote').textContent=BO[bo].n+' · mức '+LV[lbK].n+' · top 10 · chung mọi máy · chỉ tính lần chơi đầu tiên';
+  $('lbTbl').innerHTML=TAI;
   show('home');
+  // dữ liệu chung: tải nền, bỏ kết quả cũ nếu người dùng đã đổi bộ/mức trong lúc chờ
+  const tok=++homeTok;
+  rpc('fn_xep_chu_sanh',{p_bo:bo}).then(S=>{if(tok!==homeTok)return;
+    $('lvls').querySelectorAll('.lv').forEach(el=>el.querySelector('.sn').innerHTML=the(el.dataset.k,S[el.dataset.k]||null))}).catch(()=>{});
+  rpc('fn_xep_chu_bxh',{p_loai:'man',p_bo:bo,p_ma:lbK,p_ten:ten,p_top:TOP}).then(B=>{if(tok===homeTok)$('lbTbl').innerHTML=bxhHtml(B,'man')})
+    .catch(()=>{if(tok===homeTok)$('lbTbl').innerHTML=LOI});
 }
+let homeTok=0;
 $('ten').addEventListener('input',()=>$('nameBox').classList.remove('need'));
 $('ten').addEventListener('keydown',e=>{if(e.key==='Enter')$('ten').blur()});
 
 // ================= màn & câu =================
 let G=null,Q=null,tick=null;
-function startMan(k){
+let dangVao=false;
+async function startMan(k){
   const ten=tenNhap();
   if(!ten){const el=$('nameBox');el.classList.remove('need');void el.offsetWidth;el.classList.add('need');$('ten').focus();el.scrollIntoView({block:'center'});return}
-  const bo=boHT(),L=BO[bo].lv[k],key=bo+':'+k;
+  if(dangVao)return;dangVao=true;
+  const bo=boHT(),L=BO[bo].lv[k];
   REC.ten=ten;REC.names=[ten,...REC.names.filter(n=>tenKey(n)!==tenKey(ten))].slice(0,8);saveRec();
-  G={bo,k,key,ten,first:!daChoi(REC.lb[key],ten),list:shuf(L.q),i:0,diem:0,ms:0,giai:0,log:[]};
+  // hỏi DB: màn này + các câu này người này đã có lần đầu chưa (chỉ để hiện nhãn — DB tự giữ luật khi ghi)
+  let dc=null;
+  try{dc=await rpc('fn_xep_chu_da_choi',{p_bo:bo,p_muc:k,p_ten:ten,p_caus:L.q.map(x=>x.a.normalize('NFC'))})}catch(e){}
+  dangVao=false;
+  G={bo,k,ten,luot:uuid(),online:!!dc,first:dc?!dc.man_luot:null,daChoi:new Set(dc?dc.cau_da_choi:[]),
+     list:shuf(L.q),i:0,diem:0,ms:0,giai:0,log:[],ghi:Promise.resolve(),loiGhi:0};
   $('lvName').innerHTML=`<small>${BO[bo].n}</small>${L.n}`;
   show('play');startCau();
 }
@@ -407,14 +422,14 @@ function tron(ans){ // xáo: không trùng đáp án, ít chữ đứng yên đ�
 function startCau(){
   const item=G.list[G.i],ans=item.a.normalize('NFC');
   const words=ans.split(' ').map(w=>Array.from(w));
-  const letters=words.flat(),ck=G.bo+':'+ans;
-  Q={item,ans,ck,words,n:letters.length,checks:soCheck(letters.length),used:0,first:!daChoi(REC.cq[ck],G.ten),
+  const letters=words.flat();
+  Q={item,ans,words,n:letters.length,checks:soCheck(letters.length),used:0,first:G.online?!G.daChoi.has(ans):null,
      slots:letters.map(ch=>({ans:ch,t:null,lock:false,ex:[]})),
      tiles:letters.map(ch=>({ch,at:-1})),tray:tron(ans),sel:null,over:false,t0:performance.now(),ms:0,flash:null};
   $('prog').innerHTML=G.list.map((_,i)=>`<i class="${i<G.log.length?(G.log[i].dung?'ok':'bad'):i===G.i?'cur':''}"></i>`).join('');
   $('cat').textContent=HIEN_CHU_DE?item.c:'';$('cat').style.display=HIEN_CHU_DE?'':'none';
-  $('firstTag').className='tagc '+(Q.first?'first':'prac');
-  $('firstTag').textContent=Q.first?'⭐ Lần đầu · tính BXH':'Luyện tập';
+  $('firstTag').className='tagc '+(Q.first===null?'':Q.first?'first':'prac');
+  $('firstTag').textContent=Q.first===null?'⚠ Mất mạng · chưa rõ lần đầu':Q.first?'⭐ Lần đầu · tính BXH':'Luyện tập';
   $('res').classList.remove('show');['tray','acts'].forEach(id=>$(id).style.display='');
   size();render();
   clearInterval(tick);tick=setInterval(()=>{if(!Q.over)$('clock').textContent=fmt(G.ms+performance.now()-Q.t0)},250);
@@ -528,11 +543,21 @@ function ketThucCau(){
     Q.slots.forEach(s=>s.lock=true);beep(660,.1,.07);setTimeout(()=>beep(880,.1,.07),110);setTimeout(()=>beep(1320,.2,.07),220);
   }else{Q.slots.forEach(s=>{if(Q.tiles[s.t].ch!==s.ans)s.miss=true;else s.lock=true});beep(200,.4,.08,'sawtooth')}
   G.log.push({a:Q.ans,dung,diem,ms:Q.ms});
-  // ghi lần đầu: câu (nếu người này chưa từng chơi câu này) + màn (nếu đây là lượt đầu của người này ở màn này)
-  if(Q.first)(REC.cq[Q.ck]=REC.cq[Q.ck]||[]).push({ten:G.ten,diem,ms:Math.round(Q.ms),dung});
-  if(G.first){const L=(REC.lb[G.key]=REC.lb[G.key]||[]),e={ten:G.ten,diem:G.diem,ms:Math.round(G.ms),giai:G.giai,xong:G.log.length};
-    const i=L.findIndex(x=>la(x,G.ten));if(i<0)L.push(e);else L[i]=e}
-  saveRec();
+  // gửi DB (xếp hàng theo thứ tự, thử lại tối đa 3 lần). DB tự quyết có tính "lần đầu" hay không.
+  const cau=Q.ans,args={p_bo:G.bo,p_muc:G.k,p_cau:cau,p_ten:G.ten,p_luot:G.luot,p_diem:diem,p_ms:Math.round(Q.ms),p_dung:dung,
+    p_man_diem:G.diem,p_man_ms:Math.round(G.ms),p_man_giai:G.giai,p_man_xong:G.log.length};
+  const g=G,q=Q;
+  const lan=async()=>{for(let t=0;;t++){try{return await rpc('fn_xep_chu_ghi',args)}catch(e){if(t>=2)throw e;await new Promise(r=>setTimeout(r,800*(t+1)))}}};
+  const p=g.ghi.then(lan);g.ghi=p.catch(()=>{});
+  $('resRank').textContent='Đang lưu…';
+  p.then(async r=>{
+    g.daChoi.add(cau);if(r.man_tinh&&g.first===null)g.first=true;
+    if(q!==Q)return;
+    if(!r.cau_tinh){$('resRank').textContent='Luyện tập — không tính bảng xếp hạng.';return}
+    if(!dung){$('resRank').textContent='Lần đầu của bạn ở câu này đã được ghi.';return}
+    const B=await rpc('fn_xep_chu_bxh',{p_loai:'cau',p_bo:g.bo,p_ma:cau,p_ten:g.ten,p_top:TOP});
+    if(q===Q&&B.toi)$('resRank').textContent=`🏅 Hạng ${B.toi.hang} / ${B.tong} người giải đúng câu này`;
+  }).catch(()=>{g.loiGhi++;if(q===Q)$('resRank').textContent='⚠ Chưa lưu được kết quả (mất mạng).'});
   $('prog').querySelectorAll('i')[G.i].className=dung?'ok':'bad';
   Q.sel=null;render();
   ['tray','acts'].forEach(id=>$(id).style.display='none');
@@ -541,36 +566,47 @@ function ketThucCau(){
   $('resSub').innerHTML=dung
     ?`${Q.n} chữ × ${PT_CHU} + ${Q.checks-Q.used} lượt Check dư × ${PT_CHECK} · ⏱ <b>${fmt1(Q.ms)}</b>`
     :`Đáp án: <b>${Q.ans}</b>`;
-  const L=bxhCau(Q.ck),h=hangCua(L,G.ten);
-  $('resRank').textContent=Q.first?(dung?`🏅 Hạng ${h} / ${L.length} người giải đúng câu này`:'Lần đầu của bạn ở câu này đã được ghi.'):'Luyện tập — không tính bảng xếp hạng.';
   $('bNext').textContent=G.i+1<G.list.length?'Câu tiếp →':'Xem kết quả →';
   $('res').classList.add('show');
 }
 $('bNext').onclick=()=>{G.i++;if(G.i<G.list.length)startCau();else ketThucMan()};
 
-function ketThucMan(){
+async function ketThucMan(){
   clearInterval(tick);
-  const key=G.key,L=BO[G.bo].lv[G.k],B=bxhMan(key),h=hangCua(B,G.ten),msg=[];
-  if(G.first){msg.push(h===1?'🥇 Bạn đứng đầu bảng xếp hạng!':h<=TOP?`🏅 Bạn vào top ${TOP} — hạng ${h}`:`Bạn đang hạng ${h}`);
-    const pd=phaDao(key);if(G.giai===10&&pd&&la(pd,G.ten))msg.push('⚡ Phá đảo nhanh nhất: '+fmt(G.ms))}
-  else msg.push('Lượt luyện tập — bảng xếp hạng giữ lần đầu của bạn'+(h?` (hạng ${h})`:''));
-  $('endLv').textContent=G.ten+' · '+BO[G.bo].n+' · '+L.n+' · '+G.giai+'/'+G.list.length+' câu đúng · ⏱ '+fmt(G.ms);
-  $('endScore').textContent=G.diem;
-  $('endMsg').innerHTML=msg.map(x=>`<div class="msg">${x}</div>`).join('');
-  $('endTbl').innerHTML=G.log.map(l=>`<tr><td><span class="${l.dung?'v':'x'}">${l.dung?'✓':'✗'}</span> ${l.a}</td><td>${fmt1(l.ms)}</td><td>${l.dung?'+'+l.diem:'0'}</td></tr>`).join('');
-  $('endLbNote').textContent=BO[G.bo].n+' · '+L.n+' · top 10 · chỉ tính lần đầu';
-  $('endLb').innerHTML=bxhHtml(B,G.ten,'man');
+  const g=G,L=BO[g.bo].lv[g.k];
+  $('endLv').textContent=g.ten+' · '+BO[g.bo].n+' · '+L.n+' · '+g.giai+'/'+g.list.length+' câu đúng · ⏱ '+fmt(g.ms);
+  $('endScore').textContent=g.diem;
+  $('endMsg').innerHTML='';
+  $('endTbl').innerHTML=g.log.map(l=>`<tr><td><span class="${l.dung?'v':'x'}">${l.dung?'✓':'✗'}</span> ${l.a}</td><td>${fmt1(l.ms)}</td><td>${l.dung?'+'+l.diem:'0'}</td></tr>`).join('');
+  $('endLbNote').textContent=BO[g.bo].n+' · '+L.n+' · top 10 · chung mọi máy · chỉ tính lần đầu';
+  $('endLb').innerHTML=TAI;
   show('end');
+  await g.ghi; // chờ các câu cuối lưu xong rồi mới hỏi bảng
+  try{
+    const B=await rpc('fn_xep_chu_bxh',{p_loai:'man',p_bo:g.bo,p_ma:g.k,p_ten:g.ten,p_top:TOP});
+    if(G!==g)return;
+    const h=B.toi&&B.toi.hang,msg=[];
+    if(g.loiGhi)msg.push(`⚠ ${g.loiGhi} câu chưa lưu được (mất mạng) — bảng có thể thiếu.`);
+    if(g.first){if(h)msg.push(h===1?'🥇 Bạn đứng đầu bảng xếp hạng!':h<=TOP?`🏅 Bạn vào top ${TOP} — hạng ${h}`:`Bạn đang hạng ${h} / ${B.tong}`);
+      if(g.giai===10&&B.pha_dao&&tenKey(B.pha_dao.ten)===tenKey(g.ten)&&B.pha_dao.ms===Math.round(g.ms))msg.push('⚡ Phá đảo nhanh nhất: '+fmt(g.ms))}
+    else msg.push('Lượt luyện tập — bảng xếp hạng giữ lần đầu của bạn'+(h?` (hạng ${h})`:''));
+    $('endMsg').innerHTML=msg.map(x=>`<div class="msg">${x}</div>`).join('');
+    $('endLb').innerHTML=bxhHtml(B,'man');
+  }catch(e){if(G===g)$('endLb').innerHTML=LOI}
 }
 
 // ---- hộp bảng xếp hạng ----
 let mTab='cau';
-function openLb(t){mTab=t||mTab;
+let mTok=0;
+async function openLb(t){mTab=t||mTab;
   $('mTabs').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.t===mTab));
-  const L=BO[G.bo].lv[G.k];
-  if(mTab==='cau'){$('mNote').textContent=`Câu ${G.i+1} · ${Q.item.c} · top 10 người giải đúng · chỉ tính lần đầu`;$('mTbl').innerHTML=bxhHtml(bxhCau(Q.ck),G.ten,'cau')}
-  else{$('mNote').textContent=`${BO[G.bo].n} · ${L.n} · top 10 · chỉ tính lần đầu`;$('mTbl').innerHTML=bxhHtml(bxhMan(G.key),G.ten,'man')}
-  $('modal').classList.add('show');
+  const L=BO[G.bo].lv[G.k],tok=++mTok,cau=mTab==='cau';
+  $('mNote').textContent=cau?`Câu ${G.i+1} · ${Q.item.c} · top 10 người giải đúng · chỉ tính lần đầu`:`${BO[G.bo].n} · ${L.n} · top 10 · chỉ tính lần đầu`;
+  $('mTbl').innerHTML=TAI;$('modal').classList.add('show');
+  try{await G.ghi;
+    const B=await rpc('fn_xep_chu_bxh',{p_loai:mTab,p_bo:G.bo,p_ma:cau?Q.ans:G.k,p_ten:G.ten,p_top:TOP});
+    if(tok===mTok)$('mTbl').innerHTML=bxhHtml(B,mTab)}
+  catch(e){if(tok===mTok)$('mTbl').innerHTML=LOI}
 }
 $('mTabs').querySelectorAll('button').forEach(b=>b.onclick=()=>openLb(b.dataset.t));
 $('mClose').onclick=()=>$('modal').classList.remove('show');
