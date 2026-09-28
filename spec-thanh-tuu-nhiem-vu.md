@@ -1,6 +1,6 @@
-# Spec — Gamification HS: RANK · DANH HIỆU TOP DẠNG · THÀNH TỰU · NHIỆM VỤ · ĐUA LỚP — v4 (LOGIC)
+# Spec — Gamification HS: RANK · THỬ THÁCH · NHIỆM VỤ · VÒNG QUAY · HUY HIỆU · ĐUA LỚP — v5 (tổng kết 28/09/2026)
 
-> **Trạng thái: v4 — LOGIC ĐÃ CHỐT (Thùy chốt L1–L4 ngày 28/09/2026).** Bước tiếp: bàn detail Phần C. Chưa code.
+> **Trạng thái 28/09/2026: THIẾT KẾ PHASE 1 (TOÁN) ĐÃ CHỐT — CHƯA CODE.** Đọc **§0 TỔNG KẾT** ngay dưới. Các phần A–C phía sau là logic chi tiết + lịch sử bàn luận (chỗ nào lệch §0 thì **§0 đúng**).
 >
 > **Luật tài liệu (Thùy 28/09):** *"Chốt logic thiết kế trước. Detail từng cái bàn sau. Đừng lẫn."*
 > - **Phần A** chỉ gồm: có những cấu phần gì, điểm lấy từ đâu, cái gì nối với cái gì.
@@ -21,6 +21,167 @@
 > - Lấy **cơ chế** game (cày cuốc, đua top), **không lấy tên** của game nào.
 > - Không chống cày ở phần luyện thường. HS cày càng nhiều càng tốt.
 > - Mọi dữ liệu học tập **theo môn** (§1.6 CLAUDE.md).
+
+---
+
+
+---
+
+## §0 — TỔNG KẾT ĐÃ CHỐT (28/09/2026) · phase 1 chỉ môn TOÁN
+
+**Tài liệu đi kèm:**
+
+| File | Nội dung |
+|---|---|
+| `phan-tich-diem-rank.md` | Số đo DB + mô phỏng Điểm Rank (vòng 4 = mùa năm) |
+| `de-xuat-nhiem-vu.md` | Nhiệm vụ + vòng quay + ngân sách xu |
+| `de-xuat-huy-hieu.md` | Huy hiệu: tên, lịch sử, bản đầy đủ 10 loại |
+| **`ma-tran-thanh-tuu-huy-hieu.xlsx`** | **Output cuối của huy hiệu** |
+| `scripts/sim-diem-rank.mjs` (`--chot`, `--nam`) · `scripts/sim-huy-hieu.mjs` | Mô phỏng, chạy lại được |
+
+### 0.1 Nguyên tắc (Thùy)
+- **Game thật** — cày cuốc, đua top. Lấy **cơ chế** game, **không lấy tên** game.
+- **Không chống cày.**
+- HS học **offline, không được nghỉ.**
+- **Mỗi môn riêng hoàn toàn:** điểm, ngưỡng, bảng, hồ sơ "rank X Toán · rank Y KHTN". App cũng riêng, chỉ chung cổng vào.
+- Mọi việc học **ghi nhận đủ 3 góc: chăm chỉ · thành tích · tiến bộ.** Phục vụ đủ kiểu người chơi — không phải ai cũng thích xu.
+- Tính ở Postgres, **suy động**. Chỉ ghi dòng khi có sự kiện thật (CLAUDE.md §1.5, §2.0, §4).
+
+### 0.2 Điểm Rank (theo môn) — đúng 4 nguồn
+
+| Nguồn | Điểm |
+|---|---|
+| ET | **100** / bài |
+| BTVN | **100** đúng hạn · **50** muộn |
+| MT tháng (MT sát hạch tại trung tâm; thi trường không tính) | Bảng hạng 1–50 (`50 + 50·((51−h)/50)^1.5`) **× 10** ⇒ 1.000 → 500 |
+| **Thử thách** | 8/9/10 câu đúng = **10 / 20 / 30** |
+
+**Luật MT:**
+- Hạng **quy theo sĩ số dự thi:** `ceil(hạng × 50 / số em thi)`.
+- **Chỉ em có điểm MT thật mới được điểm.**
+- Lỡ MT ⇒ **thi lại**, tính bằng điểm thi lại.
+
+**Thử thách** = kiểu tự luyện thứ 3, 1 lượt **y hệt Tự luyện tổng hợp**:
+- Chỉ **pass ≥ 80%** mới có điểm.
+- **Vô hạn lượt, chỉ ĐIỂM có trần.**
+  - Trần tháng = ¼ × (điểm tối đa ET + BTVN + MT của môn): **Toán 500 · KHTN 375.**
+  - Trần ngày = trần tháng ÷ 20 (**25 · 19**).
+- ⇒ Em chạm trần: Thử thách chiếm 21–25% Điểm Rank.
+
+**Không cộng Điểm Rank:** có mặt · lên bảng · bổ trợ · Học từ đầu · dạng lên đạt · thưởng nhiệm vụ / thành tựu.
+
+**Elo:** giữ cho việc đang dùng, **không liên quan rank.** Điểm Rank ≠ EXP (EXP → xu là hệ riêng).
+
+### 0.3 Rank — MÙA = 1 NĂM, hành trình "người thường → thần"
+
+**8 bậc cố định (mỗi bậc 3 sao, chỉ lên trong mùa).** Ngưỡng = hệ số × điểm tối đa 1 tháng của môn (Toán 2.500 · KHTN 1.875).
+
+| # | Bậc | Hệ số | Ngưỡng Toán | Ngưỡng KHTN |
+|---|---|---|---|---|
+| 1 | Novice | 0 | 0 | 0 |
+| 2 | Soldier | 0,6 | 1.500 | 1.125 |
+| 3 | Captain | 1,6 | 4.000 | 3.000 |
+| 4 | General | 3,0 | 7.500 | 5.625 |
+| 5 | **Hero** | 4,6 | 11.500 | 8.625 |
+| 6 | Legend | 7,0 | 17.500 | 13.125 |
+| 7 | King | 8,0 | 20.000 | 15.000 |
+| 8 | Emperor | 9,8 | 24.500 | 18.375 |
+
+**2 bậc GHẾ** (xét lại hằng ngày, ngồi được quanh năm, bị vượt / tụt phong độ thì rơi):
+
+| # | Bậc | Điều kiện |
+|---|---|---|
+| 9 | **God of War** | top 3% khối × môn **và** phong độ ≥ 84% |
+| 10 | **Supreme God** | hạng 1 **và** phong độ ≥ 92% |
+
+- Phong độ = điểm từ đầu mùa ÷ (điểm tối đa tháng × số tháng đã qua).
+- **Bậc thần phải ít**: đa số chỉ tới 6–7, bậc 8–10 mới danh giá.
+  - Mô phỏng hết năm (Toán): Hero 17% · **Legend 41% · King 34%** · Emperor 8% · 1–2 ghế thần / khối.
+- **Bảng đua tháng:** xếp Điểm Rank kiếm trong tháng (khối × môn), vinh danh TV, gộp giải tháng. **Không đổi bậc.**
+- **Hết năm:** về Novice. Bậc đỉnh năm cũ giữ thành huy hiệu vĩnh viễn.
+
+### 0.4 Nhiệm vụ (mỗi môn 1 bảng · tổng thưởng tối đa 15 xu / tháng / môn)
+
+- Nhiệm vụ lẻ **chỉ cho Điểm Chặng**. **Không cộng Điểm Rank.**
+- Thưởng nằm ở **chặng tháng + rương tuần.**
+
+| Tầng | Nhiệm vụ | Điểm Chặng |
+|---|---|---|
+| **Ngày** (sống 3 ngày) | N1 Thử thách (pass 1 lượt) · N2 Luyện 20 (đúng 20 câu app) · N3 Sửa sai (đúng lại 2 câu thuộc dạng từng sai trong 14 ngày) | +10 / cái |
+| **Tuần** (chưa xong dồn tới hết tháng) | T1 BTVN đúng hẹn cả tuần · T2 ≥ 1 bài ET ≥ 80% · T3 Thử thách 4 ngày khác nhau · T4 Lấp 1 lỗ (yếu → đạt) | +40 / cái |
+| **Rương tuần** | Xong 12 nhiệm vụ / tuần | +60 · **75 EXP** |
+| **Tháng** | M1 MT bứt phá (hạng tăng **hoặc** top 30% khối) · M2 Thử thách 15 ngày | +150 / cái |
+| **Chặng tháng** | 30 cấp × 50 Điểm Chặng | **25 EXP / cấp** + mốc 10 / 20 / 30 = **+100 / 150 / 200 EXP** (chỉ EXP, không quà hiện vật) |
+
+### 0.5 Vòng quay may mắn
+
+- **Lượt quay** = xong ≥ 2 nhiệm vụ ngày của môn đó. Tối đa 1 lượt / ngày / môn. Thay điều kiện cũ "tự luyện ≥ 70%".
+- **Giải:** 20 / 30 / 50 / 100 / 200 EXP (40 / 35 / 18 / 6 / 1%) ⇒ trung bình ~36 EXP / lượt.
+- **Đổi ra xu thật.** Hiện EXP vòng quay nằm riêng `may_man_hs_luot`, không bao giờ thành xu.
+
+### 0.6 Ngân sách xu trên app
+
+- **30 xu / HS / tháng / MÔN** = vòng quay **10** · nhiệm vụ **15** · thành tựu **5**.
+- Chặn ở **hàm chốt xu tháng:** `xu app môn X = min(30, ceil(EXP app môn X / 100))`. EXP vẫn ghi đủ.
+- Xu từ học trên lớp (~25 / tháng) **không tính** vào trần.
+- Bảng đua tháng / đua lớp **không trả xu app** — vinh danh, giải tháng, thưởng tập thể.
+
+### 0.7 Huy hiệu (thành tựu) — phase 1: 8 huy hiệu bộ HY LẠP · bộ VIỆT NAM dành cho GIẢI THƯỞNG
+
+| Huy hiệu | Ghi nhận | Tháng ĐẠT CHUẨN (★1–3) | Tháng HOÀN HẢO (★4–5) = chuẩn + … |
+|---|---|---|---|
+| **Helios** | chuyên cần | không vắng buổi nào | BTVN đủ đúng hạn + Thử thách ≥ 15 ngày |
+| **Chronos** | BTVN | nộp đủ, đúng hạn mọi bài | không vắng + tự luyện ≥ 200 câu đúng |
+| **Athena** | ET | ET ≥ 80% ở ≥ ¾ số bài | BTVN đủ đúng hạn + BTVN đúng TB ≥ 85% |
+| **Zeus** | MT | MT top 30% khối | ET tốt + BTVN đúng TB ≥ 90% |
+| **Phoenix** *(biểu tượng, không phải thần)* | bứt phá | hạng MT tốt hơn tháng đầu năm (hoặc giữ top 10%) | BTVN đủ đúng hạn + không vắng |
+| **Hercules** | Thử thách | pass ≥ 10 ngày | ≥ 15 ngày + ≥ 5 lượt 10/10 + BTVN đủ đúng hạn |
+| **Hephaestus** | lấp lỗ | lấp ≥ 1 dạng yếu (hoặc hết dạng yếu) | BTVN đủ đúng hạn + Thử thách ≥ 10 ngày |
+| **Nike** | đua tháng | top 30% Bảng đua tháng | top 10% + không vắng + BTVN đủ đúng hạn |
+
+**Thang sao** — đếm trong 1 năm học 10 tháng:
+
+| ★1 | ★2 | ★3 | ★4 | ★5 |
+|---|---|---|---|---|
+| 1 tháng | 2 tháng | 4 tháng | 6 tháng | 9 tháng |
+| tháng đạt chuẩn | | | tháng hoàn hảo | |
+
+**Luật:**
+- **Sao thấp = điều kiện đơn · sao cao = nhiều điều kiện.**
+- **Thành tựu ↔ huy hiệu N–N:** 1 điều kiện nuôi nhiều huy hiệu, 1 huy hiệu dùng nhiều điều kiện.
+  - Cấu hình bằng **màn admin Ma trận** (tích ô). Output hiện tại = `ma-tran-thanh-tuu-huy-hieu.xlsx`.
+- **Bản mềm ★1–3 · BẢN CỨNG ★4–5, GIÁO VIÊN lớp trao** + bấm "Đã trao" (việc trao **suy động**: đạt ★4/★5 trừ đã trao).
+  - Đề xuất 1 phôi / huy hiệu, ★4 / ★5 phân biệt bằng tấm sao / màu viền.
+- Đạt rồi **không mất.** Đạt lại năm sau ⇒ bản mềm ×2, bản cứng chỉ lần đầu (H8 — đề xuất, chưa bị bác).
+- **Album:** % hoàn thành · "Sắp đạt" · "N bạn trong khối có" (< 10% = Hiếm). Ghim 3 huy hiệu khoe hồ sơ + TV lớp.
+- **Tên:** nhân vật lớn, việc cần làm nhỏ bên dưới (vd "Phoenix ★★★ — hạng MT tốt hơn đầu năm 4 tháng").
+- **EXP** (thứ yếu, trần 5 xu): ★3 = 100 · ★4 = 200 · ★5 = 300 EXP.
+- **Mô phỏng** (hiệu chỉnh DB thật):
+  - ★3: 25–83% em (Helios = huy hiệu nhập môn).
+  - ★4: 2–7% · ★5: 0–2%.
+  - **~66 bản cứng / năm** Toán cấp 2 (211 em) ⇒ ~13 / tháng từ tháng 6.
+- **Bản đầy đủ 10 loại / ~100 cấp** (`de-xuat-huy-hieu.md`) = **lộ trình mở dần**, không đưa HS ngay (Thùy: nhiều quá bị ngợp).
+
+### 0.8 Còn mở — chưa bàn
+- **C5** Danh hiệu top theo dạng: logic A4 đã có (Điểm Dạng từ mọi nguồn, chốt tuần) — cấp / %, sàn, tốc độ giảm.
+- **C8** Quà đua lớp.
+- **C11** Giao diện các màn (app HS: Rank / Nhiệm vụ / Vòng quay / Album · TV · màn GV trao bản cứng · admin Ma trận).
+- **C12** Build plan. Đề xuất thứ tự:
+  1. Điểm Rank + Thử thách + bậc + khoe TV.
+  2. Nhiệm vụ + vòng quay + trần xu.
+  3. Huy hiệu + ma trận + bản cứng.
+  4. Danh hiệu dạng + đua lớp.
+
+### 0.9 Bẫy kỹ thuật khi build (đã soi DB 28/09)
+- **Nguồn EXP mới** (`exp_nhiem_vu`, `exp_thanh_tuu`, `exp_may_man`):
+  - sửa đủ 4 chỗ đọc viết cứng: `fn_gami_exp_xu_thang` · `fn_gami_exp_chi_tiet_thang` · `fn_hs_vi_xu_cua_toi` · `EXP_NOTE_SOURCES`;
+  - loại khỏi delete của `fn_recompute_exp_thang`.
+- Trần 30 xu / môn: tính **trong** hàm chốt.
+- `qlht_xu_ledger.loai` có CHECK (thiếu loại tự động) + `nguoi_tao NOT NULL FK nhan_su` ⇒ migration nới + nhân sự "hệ thống".
+- `may_man_hs_luot` unique `(hoc_sinh_id, ngay)` ⇒ đổi `(…, mon)` khi mở môn 2.
+- `fn_bxh_diem_mt_khoi` xếp cả em chưa thi = 0đ (để hiển thị) ⇒ đổi hạng ra Điểm Rank chỉ lấy em có điểm.
+- Catalog cũ `thanh_tich_loai` (12 key) + `hoc_sinh_thanh_tich_ghim` ⇒ migrate / dùng lại. **Không đẻ catalog thứ 2.**
+- RPC cho HS: `security definer` + `revoke execute … from anon` (bài học 18/09).
 
 ---
 

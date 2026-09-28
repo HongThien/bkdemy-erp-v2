@@ -117,7 +117,7 @@
 - **⭐ 3 HỆ ĐIỂM (ADR Notion):** **Level** (Σ điểm sát hạch, max 21/mùa/môn, khó nhất, nổi nhất) · **Elo+Hạng** (phong độ) · **EXP→Xu** (LƯƠNG tháng, reset THÁNG, tra `luong_bac`). Mùa = niên khóa (1/7). Engine `src/gami/season.js`+`level.js` (đường cong dormant), service `src/lib/thanhtich.ts` (`getLevelXu`/`currentMua`/`verdictDiem`/exam CRUD).
 - **⭐ ENTITY ĐIỂM THI + ghi hạng:** mig 0042 `gami_elo_history`+`rank`/`rank_total` (closePhase LƯU hạng mỗi buổi → đếm Top-1). mig 0043 `ky_thi`(loai truong/mt_sat_hach/khao_sat_thang·he_so 2/2/1·dot·`buoi_hoc_id?` nối MT) + `diem_thi`(verdict đạt/gần/không·`band_luc_thi` snapshot·vuot_band) + `muc_nang_luc.diem_ky_vong`. **MT = 1 sự kiện 3 vai** (Elo+Level+vượt-band, KHÔNG tách "ST"). 4 kì trường = 4 INSTANCE cùng loai.
 - **⭐ TAB QUẢN LÝ LEVEL** (`QuanLyLevelScreen`, leaf `quanlylevel`, staff SaaS): chọn lớp→môn+roster+kì thi mùa · tạo kì thi · nhập điểm/verdict/vượt-band 1 kì thi · ma trận HS×kì thi + cột Level=Σ.
-- **Thành tích catalog:** `thanh_tich_loai` (seed 12 loại, pure-derive) + `hoc_sinh_thanh_tich_ghim` (HS chọn khoe / hệ gợi ý). `btvn_ket_qua` (chờ luồng nộp BTVN). **CÒN:** compute catalog còn lại + gợi ý/ghim + skin game + kì-vọng-band + số-xu-bậc (đang provisional) + art nhân vật.
+- **Thành tích catalog:** `thanh_tich_loai` (seed 12 loại, pure-derive) + `hoc_sinh_thanh_tich_ghim` (HS chọn khoe / hệ gợi ý). `btvn_ket_qua` (chờ luồng nộp BTVN). **CÒN → ⚠ SUPERSEDE 28/09 bởi hệ huy hiệu mới (mục ⭐ GAMIFICATION HS):** compute catalog còn lại + gợi ý/ghim + skin game + kì-vọng-band + số-xu-bậc (đang provisional) + art nhân vật.
 - **⭐ REPORT PHỤ HUYNH (tháng)** — leaf `report_ph` (nhóm Quản lý chất lượng), 1 report / (HS × môn × tháng). `src/lib/report.ts` + `src/screens/report/ReportPHScreen.tsx`. Chọn **Môn → Lớp → HS** + tháng ‹›. **Số liệu SUY ĐỘNG** (không lưu): bảng theo buổi `getReportBuoiHS` (ET% · BTVN% · thái độ; **vắng → "Vắng" ở cột ET** vì ET = điểm danh) + tổng quan `getTongQuanHS` (hoàn thành cơ bản/nâng cao, ET/BTVN/MT %). **Chỉ nhận xét GV được LƯU** ở bảng `bao_cao_ph(hoc_sinh_id, mon, thang)`: 4 ô `thai_do`·`kien_thuc_ky_nang`·`ket_luan` + `muc_tieu` (🎯 tháng tới) + `ket_luan_muc` (5 mức: vượt bậc/tiến bộ/ổn định/đi xuống/cần hỗ trợ). Layout 2 cột DỮ LIỆU trái · NHẬN XÉT phải; on-screen gộp **Bản đồ kiến thức + 3 card ET/BTVN/MT** (Tổng·Cơ bản·Nâng cao). **Ảnh gửi PH** (`PhAnhModal`) khớp mockup "BK Academy" (`bk_academy_monthly_report_mobile.html`): hero gradient + ring SVG %hoàn-thành + 2 skill bar (Kiến thức=độ đúng ET · Thái độ=TB thái độ BTVN) + status 3 ô + bảng đánh giá + goal card; copy clipboard = **pattern V1** (popup + html2canvas CDN + inline-hex né oklch → paste Zalo). Migrations lẻ: `202607281900_bao_cao_ph` · `202607282000_ketluanmuc` · `202607282100_muctieu` · `202607291500_muc_skill`(muc_kien_thuc/muc_thai_do smallint 1..5). **2 skill bar = THANG 5 GV TỰ CHỌN** (không suy động): GV bấm mức 1..5 ở NhanXet (`SKILL_MUC` Cần cố gắng→Xuất sắc) → bar 5 đoạn trên ảnh. Ảnh teacher-card giờ ghép **cả text** `kien_thuc_ky_nang`/`thai_do` (kèm tag) + bar. **GV chủ nhiệm** = `getGVChinhLop(lopId)` (phan_cong_lop vai_tro=gv la_chinh=true) → dòng "GV …" ở hero + subtitle. Còn nhỏ: trend pill trống ở tháng đầu môn (chưa có kỳ trước để so).
 
 ### Đã build (06-17 phiên 3 — mobile chấm bài, profile fit+ghim, fix tài liệu, clone Phase 0)
@@ -423,6 +423,93 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
 - **Verify không có tài khoản HS thử:** không dùng mã/PIN HS thật ⇒ dựng trang xem thử tạm (không commit) render HomeHS912 bằng dữ liệu mẫu, không
   đăng nhập ⇒ lưu bị DB từ chối, không ghi dữ liệu thật. Preview tool chỉ đọc `.claude/launch.json` thư mục chính ⇒ trong worktree chạy `npx vite --port 52xx` nền.
 
+### 🔜 ⭐ GAMIFICATION HS — Rank · Thử thách · Nhiệm vụ · Vòng quay · Huy hiệu (28/09) — THIẾT KẾ ĐÃ CHỐT, CHƯA BUILD · phase 1 CHỈ TOÁN
+> Đọc theo thứ tự:
+> 1. `spec-thanh-tuu-nhiem-vu.md` **§0 TỔNG KẾT**.
+> 2. `phan-tich-diem-rank.md` (số + mô phỏng Điểm Rank, vòng 4 = mùa năm).
+> 3. `de-xuat-nhiem-vu.md` (nhiệm vụ + vòng quay + xu).
+> 4. `de-xuat-huy-hieu.md` + **`ma-tran-thanh-tuu-huy-hieu.xlsx`** (output cuối của huy hiệu).
+>
+> Mô phỏng chạy lại được: `node scripts/sim-diem-rank.mjs --chot|--nam` · `node scripts/sim-huy-hieu.mjs`.
+
+**Khung (Thùy chốt):**
+- **GAME** — cày cuốc + đua top. Lấy **cơ chế** game, **không lấy tên** game nào.
+- HS học **offline, không được nghỉ**.
+- **Mỗi môn riêng hoàn toàn** (rank, ngưỡng, bảng, hồ sơ "rank X Toán · rank Y KHTN").
+- Không chống cày.
+
+**Điểm Rank — chỉ 4 nguồn:**
+
+| Nguồn | Điểm |
+|---|---|
+| ET | 100 / bài |
+| BTVN | 100 đúng hạn · 50 muộn |
+| MT | bảng hạng 1–50 quy theo sĩ số dự thi (`ceil(hạng×50/số em thi)`) × 10 = 1.000 → 500. **Chỉ HS có điểm MT thật**: `fn_bxh_diem_mt_khoi` xếp cả em chưa thi = 0đ. Lỡ MT thì thi lại (`diem_thi_lai`) |
+| **Thử thách** | kiểu tự luyện thứ 3, 1 lượt y hệt Tổng hợp. Pass ≥ 80% ⇒ 8/9/10 đúng = 10/20/30 điểm. **Vô hạn lượt, chỉ điểm có trần:** tháng = ¼ × (tối đa ET+BTVN+MT) = Toán 500 / KHTN 375 · ngày = tháng ÷ 20 |
+
+- **Không cộng rank:** có mặt · lên bảng · bổ trợ · Học từ đầu · thưởng nhiệm vụ / thành tựu.
+- **Elo giữ nguyên, không dính rank.** Điểm Rank ≠ EXP.
+
+**Rank:**
+- **Mùa = 1 năm.** Thang 10 bậc: Novice · Soldier · Captain · General · **Hero** · Legend · King · Emperor.
+  - 8 bậc × 3 sao. Ngưỡng = hệ số 0 / 0,6 / 1,6 / 3 / 4,6 / 7 / 8 / 9,8 × điểm tối đa tháng (Toán 2.500).
+- **God of War** = ghế top 3% khối × môn & phong độ ≥ 84%. **Supreme God** = hạng 1 & ≥ 92%.
+  - Phong độ = điểm từ đầu mùa ÷ (max tháng × số tháng). Xét hằng ngày ⇒ có thần quanh năm.
+- **Bảng đua tháng** (không đổi bậc). Hết năm về Novice.
+- Mô phỏng: hết năm ~70% ở Legend / King, Emperor ~8%, thần 1–2 em / khối.
+
+**Nhiệm vụ** (mỗi môn 1 bảng; lẻ chỉ cho Điểm Chặng; KHÔNG thưởng rank):
+
+| Tầng | Nhiệm vụ | Điểm Chặng |
+|---|---|---|
+| Ngày (sống 3 ngày) | N1 Thử thách · N2 Luyện 20 · N3 Sửa sai | +10 |
+| Tuần (dồn tới hết tháng) | T1 BTVN đúng hẹn · T2 ET ≥ 80% · T3 Thử thách 4 ngày · T4 Lấp lỗ | +40 |
+| Rương tuần | 12 nhiệm vụ / tuần | +60 · 75 EXP |
+| Tháng | M1 MT bứt phá (hạng tăng hoặc top 30%) · M2 Thử thách 15 ngày | +150 |
+
+- Chặng 30 cấp × 50: 25 EXP/cấp + mốc 10 / 20 / 30 = +100 / 150 / 200 EXP. **Chỉ EXP**, bỏ quà hiện vật.
+
+**Vòng quay may mắn:**
+- Lượt = xong ≥ 2 nhiệm vụ ngày **của môn đó** (thay "tự luyện ≥ 70%").
+- Giải 20 / 30 / 50 / 100 / 200 EXP (40 / 35 / 18 / 6 / 1%). **Đổi ra xu thật** — hiện EXP vòng quay nằm riêng `may_man_hs_luot`, KHÔNG thành xu.
+
+**Ngân sách xu trên app:** **30 / HS / tháng / MÔN** = vòng quay 10 · nhiệm vụ 15 · thành tựu 5. Chặn ở hàm chốt tháng. Đua tháng / đua lớp không trả xu app.
+
+**Huy hiệu phase 1** — 8 cái, bộ Hy Lạp. Bộ Việt Nam dành cho GIẢI THƯỞNG.
+
+| Huy hiệu | Ghi nhận |
+|---|---|
+| Helios | chuyên cần |
+| Chronos | BTVN đúng hạn |
+| Athena | ET |
+| Zeus | MT top |
+| Phoenix (biểu tượng, không phải thần) | bứt phá hạng MT |
+| Hercules | Thử thách |
+| Hephaestus | lấp lỗ |
+| Nike | Bảng đua tháng |
+
+- **Sao = 1 / 2 / 4 / 6 / 9 tháng** trong năm học: ★1–3 = tháng đạt chuẩn (1 điều kiện) · ★4–5 = tháng hoàn hảo (nhiều điều kiện).
+- Bản cứng từ ★4, **GV trao** + nút "Đã trao" (việc suy động).
+- Thành tựu ↔ huy hiệu **N–N**, có **màn admin ma trận**.
+- Mô phỏng (hiệu chỉnh DB): ★4 2–7%, ★5 0–2%, **~66 bản cứng / năm** Toán cấp 2.
+- Bản đầy đủ 10 loại / ~100 cấp = lộ trình mở dần.
+
+**CÒN MỞ:**
+- H8 — đạt lại: bản mềm ×2, bản cứng lần đầu. Đề xuất, Thùy chưa phản đối.
+- Danh hiệu top dạng (C5).
+- Quà đua lớp (C8).
+- UI (C11).
+- **Build plan (C12)** — đề xuất thứ tự: Điểm Rank + Thử thách → Nhiệm vụ + Vòng quay → Huy hiệu.
+
+**Khi build nhớ:**
+- **Pure-derive** (không bảng `tasks`, không dòng chờ). Chỉ ghi khi sự kiện thật: huy hiệu đạt · thưởng đã phát · chốt ghế / tháng.
+- **Nguồn EXP mới** (`exp_nhiem_vu` / `exp_thanh_tuu` / `exp_may_man`):
+  - sửa **4 chỗ đọc** + loại khỏi delete của `fn_recompute_exp_thang` (bài học ② 26–27/09);
+  - `qlht_xu_ledger.loai` CHECK + `nguoi_tao NOT NULL FK nhan_su`.
+- `may_man_hs_luot` unique `(hs, ngay)` → `(hs, ngay, mon)` khi mở môn 2.
+- RPC HS: `security definer` + `revoke … from anon`.
+- Catalog cũ `thanh_tich_loai` (12 key) + ghim khoe ⇒ migrate / dùng lại, không đẻ catalog thứ 2.
+
 ### 🔜 PHA 4 — ĐƯỜNG ỐNG CA YẾU (bổ trợ) — THIẾT KẾ XONG, CHƯA BUILD (ưu tiên tiếp theo)
 Vòng: đề xuất → **team học thuật DUYỆT** → **OPS xếp lịch** → dạy + BT-ngay → buổi kế BT-xác-nhận → đóng.
 - **⭐ MỘT mastery + NHÃN trạng thái** (KHÔNG đẻ nhiều mastery — Thùy: "chia ra rối"). "Đã xử lý chưa"
@@ -453,7 +540,7 @@ Vòng: đề xuất → **team học thuật DUYỆT** → **OPS xếp lịch** 
 - **⭐ Chiều MÔN — MÔ HÌNH CHỐT 06-29 (xem `ADR-mon.md` + CLAUDE.md §1.6):** **mỗi MÔN = 1 TRUNG TÂM riêng** (4 môn đối xứng; chung HS + vận hành; content RIÊNG từng môn/nhánh, **KHÔNG gộp bảng**). **Luật: mọi dữ liệu HỌC TẬP có nhãn `mon`** (chỉ phi-học-tập mới chung). ĐÃ: lớp `mon` · Elo/EXP per-môn (0041) · kho KHTN (0050) · tuyển-sinh đa-môn + `mon.ts` · `nhan_su_mon` (0056)+gate kho · `vi_tri.mon` (0057)+sơ đồ mỗi-môn-1-cây · `tai_lieu.mon` (0058)+tài-liệu-theo-môn · Điểm số/Buổi học theo môn. CÒN (theo ADR mới): Đại/Hình→1 trung tâm Toán có nhánh · 1 registry dispatch · ref vận hành mang `mon` · Anh/Văn chưa có kho.
 - **Cấp quyền:** leaf "Làm tài liệu"/Kho cho role **Học thuật**; OPS muốn 1-màn-work-view thì trim role OPS bỏ màn admin (Phân quyền tab1). (Hiện seed roles có sẵn nhiều màn.)
 - **GAMI tiếp:** **TIVI** (xem mục NGAY trên) · **bù/bổ trợ** UI (schema sẵn) · MT/Đội/Boss (GĐ B) · Test e2e 1 buổi thật. **Tinh chỉnh Elo:** nếu vẫn "đụng trần ±40 nhiều" → hạ K_calibration tiếp (32→24) hoặc nới cap (`src/gami/config.js`).
-- **Thành tích còn lại (06-17):** compute catalog `thanh_tich_loai` còn thiếu (vượt-band/điểm-10/9+/chuỗi-BTVN/lên-band…) + hệ gợi-ý-top + ghim · **danh hiệu Mythwings = data thật** (cấp/% từ điều kiện — đang placeholder cấp1/0%; nối khi define) · **số liệu chờ define:** số xu mỗi `luong_bac` (provisional) · `muc_nang_luc.diem_ky_vong` từng band · trọng số "độ hiếm" · điều kiện/% 3 danh hiệu · luồng nộp BTVN · art nhân vật theo Level · "Player Level tổng" cross-môn. (Skin game ĐÃ áp.)
+- **Thành tích còn lại (06-17) — ⚠ SUPERSEDE 28/09 bởi mục ⭐ GAMIFICATION HS (8 huy hiệu Hy Lạp; Mythwings chỉ còn là art phượng hoàng cho Phoenix); dưới đây chỉ để tham khảo:** compute catalog `thanh_tich_loai` còn thiếu (vượt-band/điểm-10/9+/chuỗi-BTVN/lên-band…) + hệ gợi-ý-top + ghim · **danh hiệu Mythwings = data thật** (cấp/% từ điều kiện — đang placeholder cấp1/0%; nối khi define) · **số liệu chờ define:** số xu mỗi `luong_bac` (provisional) · `muc_nang_luc.diem_ky_vong` từng band · trọng số "độ hiếm" · điều kiện/% 3 danh hiệu · luồng nộp BTVN · art nhân vật theo Level · "Player Level tổng" cross-môn. (Skin game ĐÃ áp.)
 - **Data:** khối 6-10 vừa xóa ghi danh (Thùy xếp lại tay) → sĩ số 0, card báo thiếu band tới khi xếp.
 - **Nợ khối nhân sự (trước khi vận hành thật):** trigger ghi-log lịch sử §4 (đổi band/phân công/TKB/membership chưa có vết — timeline tiến bộ HS cần nó) · màn Phụ huynh riêng (list PH + các con) · hiện tên người tạo tài liệu (map `tai_khoan`→`nhan_su`) · import HS/NS từ V1 · siết RLS theo phạm vi (cách A).
 - **Làm tài liệu — còn lại**: **BLOCK P2** (1 dạng chia NHIỀU block khác kiểu + gom dưới 1 header — nền `tai_lieu_phan.kieu` sẵn) · **kiểu block mới**: `bang` (bảng) · `ve_hinh` (khu vẽ) · `nhieu_y` (bài có ý con — cần chỗ chứa stem) · reorder buổi (reorder DẠNG ✅) · header/footer nhiều mẫu (mới 1 dải sóng) · watermark · gu B/C · Hub tab Đề thi / Tài liệu bổ trợ = placeholder.
@@ -2258,6 +2345,37 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
 - **⭐ `ma_cau` phải EXPLICIT theo convention `<dang><STT 3 số>` (`src/lib/kho/api.ts:447`), đừng để default `GC000001`.** Column default `('GC'||nextval)` là legacy — mọi câu thật đều dùng convention TS. STT = `MAX(ma_cau WHERE ma_cau LIKE '<dang>%')` + 1. FK `parent_ma_cau` + `hgt_cau_hoi_yeu_cau_giai.ma_cau` đều ON UPDATE CASCADE nên rename sau cũng an toàn (đã test) — nhưng vẫn nên đúng ngay từ đầu để CEO không phải sửa tay lúc duyệt.
 - **⭐ Verify script phải in `duyet_at` để phân biệt "trigger tự set" vs "người bấm".** Sau UPDATE nếu thấy `da_duyet=true` bất ngờ, đọc `duyet_at`: đồng loạt cùng timestamp = trigger; rải rác vài giây/câu = CEO đang bấm duyệt SONG SONG (Claude làm việc trong lúc CEO mở màn duyệt). Đã suýt gọi bug oan 1 lần. Trigger `_kho_cau_duyet_nguon` thực chất chỉ trigger `BEFORE INSERT OR UPDATE OF da_duyet, duyet_nguon` — không chạm khi rename `ma_cau` hay set `anh_de`.
 - **`dang_ai_de_xuat=dang_chinh` khi AI đề xuất, không NULL.** Spec `202609080938_kho_duyet_hop_nhat.sql` dùng cột này đo precision AI = count(ai=chính)/count(ai not null). Nếu bỏ NULL thì mất mọi câu AI nạp trong mẫu số ⇒ số precision không đo được. Người duyệt đổi `dang_chinh` khi sai; `dang_ai_de_xuat` giữ vết bản gốc.
+
+### Bài học 28/09 — thiết kế gamification HS với CEO (spec `spec-thanh-tuu-nhiem-vu.md`)
+- **⭐⭐ Gami BK = GAME (cày cuốc, đua top), KHÔNG khung app học online** (Khan / Duolingo / nghiên cứu edu "chống leaderboard"). Thùy bác v1:
+  *"Khan vẫn là online, BK là offline"*. Lấy **cơ chế** game, **không lấy tên** game (Liên Quân…) — HS sẽ bảo trung tâm copy.
+- **⭐ Đừng tự thêm giá trị CEO không đặt:**
+  - "Chống cày ảo" là t tự thêm → Thùy: *"cày càng nhiều càng ok"*.
+  - "Trần theo chính em" để chặn bỏ lớp → Thùy: *"HS offline không được nghỉ"*.
+  - Chuẩn hoá để so chung giữa môn → Thùy: *"mỗi môn riêng hoàn toàn"*.
+- **⭐⭐ CEO thêm NGUYÊN TẮC ≠ đổi CẤU TRÚC đã chốt.** Thùy thêm "3 phương diện chăm chỉ / thành tích / tiến bộ" ⇒ t dựng lại thành 3 huy hiệu lớn
+  (trái luôn H1 "mỗi dòng 5★" t tự bẻ để giảm mẫu bản cứng) ⇒ sai 2 lần.
+  - Đúng: áp nguyên tắc **vào trong** cấu trúc cũ (10 loại, 5★/dòng). Phương diện là góc nhìn thiết kế, **không phải output**.
+  - Muốn đổi điều đã chốt vì lý do vận hành thì **nêu ra và hỏi**.
+- **⭐ Spec cho CEO: LOGIC trước, DETAIL sau, không trộn** (bảng số / catalog để danh sách "bàn sau").
+  - **Phase 1 phải vừa phải:** đưa ~100 cấp huy hiệu ngay ⇒ *"nhiều quá bị ngợp"* ⇒ 6–8 cái.
+  - Đưa quyết định dạng **bảng có đề xuất**, CEO trả lời theo mã (L1–L4, D1–D6, B-L…, H…).
+- **⭐ Đặt bộ tên "theo gốc X" phải kiểm gốc tích TỪNG tên:**
+  - Nữ Oa (thần thoại Trung Quốc) lọt vào bộ "Việt Nam".
+  - Phoenix là chim thần thoại, không phải thần — vẫn hợp vì tiêu chí có "biểu tượng".
+- **⭐⭐ Mô phỏng: ĐO phân bố thật THEO TỪNG HS trước, đừng giả định các lần đo độc lập.**
+  - "BTVN đủ đúng hạn trong tháng" thật ~47% và **bền theo người** (3 tháng: 23% đủ cả 3, 28% không tháng nào).
+  - Mô hình tung xu từng bài ra ~24% ⇒ ★4 gần 0 ⇒ kết luận sai.
+- **⭐ Ngưỡng bậc cộng dồn đặt theo CUỐI mùa ⇒ đầu mùa cả khối dồn 1 bậc** (mùa 3 tháng: hết tháng 1 có 99% cùng bậc 2).
+  - Luôn in phân bố theo **từng mốc thời gian**, không chỉ cuối mùa.
+  - Ghế top phải xét theo **phong độ** (điểm ÷ max × thời gian) mới có quanh năm.
+- **`.env` chỉ có `DATABASE_URL` role GHI** ⇒ script dò dữ liệu mở đầu `set default_transaction_read_only = on` + in `show transaction_read_only`
+  làm bằng chứng.
+- **Máy CEO:**
+  - Python chỉ gọi được qua `py` (`python` = alias Store).
+  - Không có LibreOffice ⇒ `recalc.py` của skill xlsx chết (AF_UNIX) ⇒ bật `fullCalcOnLoad` + tự kiểm công thức bằng Python.
+- **DEVLOG xung đột merge với phiên song song** (cả hai cùng append cuối file) ⇒ giữ CẢ HAI phía (xoá 3 dòng marker), commit merge.
+  Không rebase / đè.
 
 ## ③ Nhật ký
 → Chuyển sang **`DEVLOG.md`** (log thô append-only, theo ngày, KHÔNG load khi làm). Là nguồn bất biến để truy lại / tổng hợp lại HANDOFF nếu bản này sai logic.

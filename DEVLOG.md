@@ -30746,3 +30746,11 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - xlsx dựng lại: Ma trận 14 thành tựu tháng × 8 huy hiệu (★1–5 = chuẩn, ★4–5 = thêm) · Thang sao · Huy hiệu 40 cấp (số điều kiện
   = COUNTIF về Ma trận, kiểm Python 40/40) · Ghi chú.
 - Bài học: đừng giả định các lần đo của 1 HS là độc lập — hành vi HS BỀN theo người; luôn đo phân bố thật theo HS trước khi mô phỏng.
+
+## 2026-09-28 (29) — Tổng kết gamification vào spec §0 + distill HANDOFF
+
+- Thùy: "tổng kết vào spec và handoff, t đến công ty làm tiếp". Spec `spec-thanh-tuu-nhiem-vu.md` → v5: thêm **§0 TỔNG KẾT ĐÃ CHỐT**
+  (nguyên tắc · Điểm Rank 4 nguồn + Thử thách · rank mùa năm 10 bậc · nhiệm vụ · vòng quay · ngân sách 30 xu/môn · 8 huy hiệu Hy Lạp
+  sao 1/2/4/6/9 tháng · còn mở C5/C8/C11/C12 · bẫy kỹ thuật); phần A–C giữ làm logic chi tiết/lịch sử, lệch thì §0 đúng.
+- HANDOFF ①: thêm mục "⭐ GAMIFICATION HS (28/09) — thiết kế đã chốt, chưa build", đánh dấu SUPERSEDE 2 dòng cũ về thành tích/Mythwings;
+  ②: thêm "Bài học 28/09 — thiết kế gamification HS với CEO".
