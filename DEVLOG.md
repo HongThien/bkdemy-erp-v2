@@ -31162,3 +31162,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 ## 2026-09-29 (3) — Thế giới BK: thêm 15 câu trend 2025–26
 - Thùy: 30 câu ok, cần trendy hơn. Không đọc thẳng Threads/TikTok được (đăng nhập) ⇒ đọc bài tổng hợp (Kenh14, The Influencer nửa đầu 2026, TGDĐ, Thơ Fleur); thêm B5 (12 ✅ + 3 ⚠), loại flex/cap/sus/rút wifi còn 5G/nó ok/khen ngoại hình.
+
+## 2026-09-29 (2) — Xoá 4 skin thử (Thùy gật)
+
+- Xoá khỏi registry: Tối giản · Đấu trường · Y2K · Soft Hàn (`SkinId` chỉ còn 'rpg') · hs.html bỏ font Lexend/Chakra Petch/Unbounded · xoá 2 file
+  xem thử tạm (`xem-thu-skin.html`, `src/_xem_skin.tsx`). Câu hướng dẫn lần đầu bỏ "Có N phong cách… sáng/tối" (sai với 1 skin chỉ nền tối).
+- DB GIỮ nguyên: 12 em đang lưu skin thử (toi_gian 6 · soft 3 · dau_truong 2 · y2k 1) ⇒ `laySkin()` tự ra RPG; CHECK `hs_giao_dien.skin` còn 5
+  giá trị cũ — sẽ viết lại 1 lần khi thêm 4–5 style mới (Thùy đang làm).

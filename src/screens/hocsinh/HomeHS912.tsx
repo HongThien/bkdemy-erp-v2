@@ -292,7 +292,7 @@ function ChiNut({ nutRef, onXong, dangLuu, loi }: { nutRef: RefObject<HTMLButton
       <div className="absolute w-[300px] rounded-2xl bg-white p-4 text-[#16161d] shadow-2xl" style={{ left: trai, top: r.bottom + 16, fontFamily: "'Be Vietnam Pro', system-ui, sans-serif" }}>
         <span className="absolute -top-2 h-4 w-4 rotate-45 bg-white" style={{ left: Math.min(Math.max(r.left + r.width / 2 - trai - 8, 16), 268) }} />
         <p className="text-[16px] font-bold">Đổi giao diện ở đây</p>
-        <p className="mt-1 text-[14px] leading-snug text-[#4a4d5a]">Bấm nút <b>Hình nền</b> bất cứ lúc nào để đổi phong cách, chế độ sáng/tối và hình nền.</p>
+        <p className="mt-1 text-[14px] leading-snug text-[#4a4d5a]">Bấm nút <b>Hình nền</b> bất cứ lúc nào để đổi phong cách và hình nền.</p>
         {loi && <p className="mt-2 text-[13px] font-semibold text-[#d23c3c]">{loi}</p>}
         <button onClick={onXong} disabled={dangLuu} className="mt-3 h-11 w-full rounded-xl bg-[#16161d] text-[15px] font-bold text-white">{dangLuu ? 'Đang lưu…' : loi ? 'Thử lại' : 'Đã hiểu'}</button>
       </div>
@@ -341,7 +341,7 @@ export default function HomeHS912({ giaoDien, onDaLuu, ...p }: HomeProps & { gia
           <div className="w-full max-w-[360px] rounded-3xl bg-white p-6 text-[#16161d] shadow-2xl" style={{ fontFamily: "'Be Vietnam Pro', system-ui, sans-serif" }}>
             <p className="text-[13px] font-bold uppercase tracking-[0.08em] text-[#2f5bea]">Mới</p>
             <p className="mt-1 text-[22px] font-extrabold leading-tight">App có giao diện mới, {p.hoTen.trim().split(/\s+/).slice(-2).join(' ')} tự chọn nhé</p>
-            <p className="mt-2 text-[14.5px] leading-snug text-[#4a4d5a]">Có {SKINS.length} phong cách, mỗi cái có nhiều hình nền và chế độ sáng/tối. Chọn xong vẫn đổi lại được bất cứ lúc nào.</p>
+            <p className="mt-2 text-[14.5px] leading-snug text-[#4a4d5a]">Chọn phong cách và hình nền em thích. Chọn xong vẫn đổi lại được bất cứ lúc nào.</p>
             <button onClick={() => setBuoc('chon')} className="mt-5 h-12 w-full rounded-xl bg-[#16161d] text-[15px] font-bold text-white">Chọn giao diện</button>
             <button onClick={() => setBuoc('chi_nut')} className="mt-2 h-11 w-full rounded-xl text-[14px] font-semibold text-[#4a4d5a]">Để sau, dùng {laySkin(SKIN_MAC_DINH).ten}</button>
           </div>
