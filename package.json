@@ -19,6 +19,7 @@
     "build:gv": "vite build --config vite.config.gv.ts",
     "preview:gv": "vite preview --config vite.config.gv.ts --outDir dist-gv",
     "schema": "node scripts/introspect.mjs",
+    "check:style-hs": "node scripts/check-style-hs.mjs",
     "smoke:sotay": "node scripts/smoke-sotay.mjs",
     "migrate": "node scripts/migrate.mjs",
     "migrate:status": "node scripts/migrate.mjs --status",

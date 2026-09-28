@@ -31169,3 +31169,16 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   xem thử tạm (`xem-thu-skin.html`, `src/_xem_skin.tsx`). Câu hướng dẫn lần đầu bỏ "Có N phong cách… sáng/tối" (sai với 1 skin chỉ nền tối).
 - DB GIỮ nguyên: 12 em đang lưu skin thử (toi_gian 6 · soft 3 · dau_truong 2 · y2k 1) ⇒ `laySkin()` tự ra RPG; CHECK `hs_giao_dien.skin` còn 5
   giá trị cũ — sẽ viết lại 1 lần khi thêm 4–5 style mới (Thùy đang làm).
+
+## 2026-09-29 (3) — Gói RPG thành 1 STYLE + luật/script để tính năng mới tự theo style
+
+- **Thùy:** "lưu cái này thành 1 style, các file, icon phục vụ nó. Sau này có thêm nhiều tính năng mới cũng phải tự cập nhật UI theo style này".
+- **Làm:** tách `skin/kieu.ts` (hợp đồng 1 style) · `skin/styles/rpg.ts` (gói RPG: màu, font, thẻ, 3 nền, 13 icon ô, banner, trang trí) ·
+  `registry.ts` chỉ còn danh sách style + hàm chung (re-export kiểu — import cũ không đổi). HomeHS912 bỏ bản sao THE/HEAD/useMedia, dùng
+  KhungHS; popup hướng dẫn lần đầu theo style (trước tô cứng trắng/đen). `design/STYLE-HS.md` (style gồm gì · cách chạy · thêm tính năng ·
+  thêm style) · `npm run check:style-hs` (`scripts/check-style-hs.mjs`): ① màu gõ tay kiểu RATCHET theo mốc `check-style-hs.moc.json`
+  (13 file còn màu có nghĩa; file mới mốc 0) ② mọi ô KHU/KHU_CAP2/hoc_tu_dau có icon trong anhO mọi style ③ mọi file hình style khai tồn tại.
+  CLAUDE.md §6 thêm luật app HS theo style + chạy script trước commit. Memory `feedback_app-hs-theo-style`.
+- **Kiểm:** tsc sạch · build:hs qua · check:style-hs ✔ (19 file, 13 ô). Popup hướng dẫn chưa soi lại bằng mắt (đổi màu, bố cục giữ nguyên).
+- **Còn trong public/bk-ui/hs/skin/rpg/ nhưng KHÔNG dùng:** bg_bau_troi.jpg, bg_lau_dai_doc.jpg (thay bằng _sang), ill_btvn/ill_lop/ill_luyen/ill_thithu.png
+  (bộ v1 cũ) — chờ Thùy gật mới xoá (luật xoá).
