@@ -13,41 +13,25 @@
 // ============================================================================
 import { useEffect, useState } from 'react'
 import { layDangChuDe, monCuaHS, type DangChuDe } from '../../lib/tuluyen'
+import { ManHS, MAU, THE, THE_TRON, HEAD } from './skin/KhungHS'
 
-const A = '/bk-ui/hs'
-const NAVY = '#0F1745'
-export const THEME = {
-  nam: {
-    bg: `${A}/bg_home_male.jpg`, decor: `${A}/decor_books.png`, primary: '#1673D8', sec: '#6E7EAA',
-    cardTint: 'linear-gradient(160deg,#ffffff,#f6f9ff)', shadow: '0 8px 24px rgba(76,108,170,.10)',
-    quote: 'Cố gắng hôm nay\nđể tốt hơn ngày mai!', quoteColor: '#4A5BC4',
-  },
-  nu: {
-    bg: `${A}/bg_home_female.jpg`, decor: `${A}/decor_books_female.png`, primary: '#F23886', sec: '#756F9F',
-    cardTint: 'linear-gradient(160deg,#ffffff,#fff5fb)', shadow: '0 8px 24px rgba(182,96,145,.10)',
-    quote: 'Cố lên\nbạn nhé!', quoteColor: '#E84A8F',
-  },
+// Thùy 29/09: mọi màn theo STYLE (skin) em đang chọn — khung/màu lấy từ skin/KhungHS, bỏ nền mây + chồng sách + khẩu hiệu
+// + màu theo giới tính. THEME giữ đúng hình dạng cũ để các màn còn import (Album/NhiemVu/Rank) vẫn chạy, nhưng mọi giá trị
+// giờ là biến skin — màn MỚI dùng thẳng KhungHS (ManHS/DauTrangHS/TheHS/NutHS), đừng dùng THEME.
+const NAVY = MAU.ink
+const T_SKIN = {
+  bg: '', decor: '', primary: MAU.acc, sec: MAU.muted,
+  cardTint: MAU.surface, shadow: 'var(--sk-card-shadow)', quote: '', quoteColor: MAU.acc,
 }
+export const THEME = { nam: T_SKIN, nu: T_SKIN }
 
-export function Khung({ gioiTinh, children }: { gioiTinh: 'nam' | 'nu' | null; children: React.ReactNode }) {
-  const t = THEME[gioiTinh === 'nu' ? 'nu' : 'nam']
-  return (
-    <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] md:max-w-[820px] lg:max-w-[1180px]" style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
-      <img src={t.bg} alt="" className="pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover md:max-w-[820px] lg:max-w-[1180px]" />
-      <div className="pointer-events-none fixed inset-x-0 bottom-0 mx-auto flex w-full max-w-[430px] flex-col items-end md:max-w-[820px] lg:max-w-[1180px]">
-        <div className="font-hand mb-1 mr-[14%] -rotate-[6deg] whitespace-pre-line text-right text-[20px] leading-[1.15]" style={{ color: t.quoteColor }}>{t.quote}</div>
-        <img src={t.decor} alt="" className="block w-[46%]" style={{ marginRight: '-2%', marginBottom: '-2%' }} />
-      </div>
-      <div className="relative px-4 pb-[46vh] pt-[calc(10px+env(safe-area-inset-top))]">
-        {children}
-      </div>
-    </div>
-  )
+export function Khung({ children }: { gioiTinh?: 'nam' | 'nu' | null; children: React.ReactNode }) {
+  return <ManHS className="!gap-0">{children}</ManHS>
 }
 export function NutBack({ onBack }: { onBack: () => void }) {
   return (
-    <button onClick={onBack} className="mb-3 flex items-center gap-1 text-[13px] font-medium" style={{ color: NAVY, opacity: .55 }}>
-      <span aria-hidden>←</span> Quay lại
+    <button onClick={onBack} className="mb-3 flex w-fit items-center gap-1.5 rounded-full px-3 py-1.5 text-[13px] font-semibold active:scale-95" style={THE_TRON}>
+      <span aria-hidden>‹</span> Quay lại
     </button>
   )
 }
@@ -57,19 +41,19 @@ export function ChonLoaiTuLuyen({ onTongHop, onChuDe, onThuThach, onRank, onNhie
   return (
     <Khung gioiTinh={gioiTinh}>
       <NutBack onBack={onBack} />
-      <h1 className="text-[22px] font-extrabold leading-tight tracking-tight" style={{ color: NAVY }}>Tự luyện</h1>
+      <h1 className="text-[22px] font-extrabold leading-tight tracking-tight" style={{ ...HEAD, color: NAVY }}>Tự luyện</h1>
       <p className="mt-1 text-[13px]" style={{ color: t.sec }}>Chọn cách em muốn luyện hôm nay.</p>
       <div className="mt-5 flex flex-col gap-3">
-        <button onClick={onTongHop} className="rounded-[26px] p-4 text-left transition active:scale-[0.98]" style={{ background: t.cardTint, boxShadow: t.shadow }}>
+        <button onClick={onTongHop} className="p-4 text-left transition active:scale-[0.98]" style={THE}>
           <span className="block text-[15px] font-extrabold" style={{ color: NAVY }}>🎯 Tổng hợp</span>
           <span className="mt-1 block text-[12.5px]" style={{ color: t.sec }}>Hệ tự chọn câu — ưu tiên dạng em đang yếu, xen ngẫu nhiên dạng đã học.</span>
         </button>
-        <button onClick={onChuDe} className="rounded-[26px] p-4 text-left transition active:scale-[0.98]" style={{ background: t.cardTint, boxShadow: t.shadow }}>
+        <button onClick={onChuDe} className="p-4 text-left transition active:scale-[0.98]" style={THE}>
           <span className="block text-[15px] font-extrabold" style={{ color: NAVY }}>📚 Theo chủ đề</span>
           <span className="mt-1 block text-[12.5px]" style={{ color: t.sec }}>Em tự chọn 1 dạng cụ thể để luyện riêng, xem mình đang yếu dạng nào nhất.</span>
         </button>
         {onThuThach && (
-          <button onClick={onThuThach} className="rounded-[26px] p-4 text-left transition active:scale-[0.98]" style={{ background: t.cardTint, boxShadow: t.shadow }}>
+          <button onClick={onThuThach} className="p-4 text-left transition active:scale-[0.98]" style={THE}>
             <span className="block text-[15px] font-extrabold" style={{ color: NAVY }}>⚔️ Thử thách</span>
             <span className="mt-1 block text-[12.5px]" style={{ color: t.sec }}>Như Tổng hợp, nhưng đúng từ 80% trở lên là được cộng Điểm Rank để leo bậc.</span>
           </button>
@@ -88,9 +72,9 @@ export function ChonLoaiTuLuyen({ onTongHop, onChuDe, onThuThach, onRank, onNhie
 // Màu pill % theo MỨC mastery (khớp bảng muc dùng chung toàn hệ: dat/can_luyen/yeu) —
 // null (chưa đánh giá được) dùng màu trung tính, không phải đỏ (đó là KHÔNG RÕ, không phải yếu).
 const MUC_MAU: Record<'dat' | 'can_luyen' | 'yeu', { bg: string; chu: string }> = {
-  dat: { bg: '#DFF6EA', chu: '#1A9A5C' },
-  can_luyen: { bg: '#FFF3D6', chu: '#B4791C' },
-  yeu: { bg: '#FDE3E3', chu: '#C23B3B' },
+  dat: { bg: 'rgba(34,160,107,0.16)', chu: MAU.dung },
+  can_luyen: { bg: 'rgba(224,144,30,0.16)', chu: MAU.canhBao },
+  yeu: { bg: 'rgba(229,72,77,0.16)', chu: MAU.sai },
 }
 
 export function ChonDangChuDe({ onPick, onBack, gioiTinh }: { onPick: (d: { ma_dang: string; ten_dang: string; chiCauMoi: boolean }) => void; onBack: () => void; gioiTinh: 'nam' | 'nu' | null }) {
@@ -112,14 +96,14 @@ export function ChonDangChuDe({ onPick, onBack, gioiTinh }: { onPick: (d: { ma_d
   return (
     <Khung gioiTinh={gioiTinh}>
       <NutBack onBack={onBack} />
-      <h1 className="text-[22px] font-extrabold leading-tight tracking-tight" style={{ color: NAVY }}>Chọn dạng để luyện</h1>
+      <h1 className="text-[22px] font-extrabold leading-tight tracking-tight" style={{ ...HEAD, color: NAVY }}>Chọn dạng để luyện</h1>
       <p className="mt-1 text-[13px]" style={{ color: t.sec }}>% là mức em đang làm dạng đó — dạng yếu nhất lên đầu để luyện trước.</p>
 
       {/* Toggle "Chỉ câu mới" */}
       <button onClick={() => setChiCauMoi((v) => !v)}
-        className="mt-3.5 flex w-full items-center gap-3 rounded-[22px] p-3 text-left transition"
-        style={{ background: chiCauMoi ? t.cardTint : '#ffffffcc', boxShadow: t.shadow }}>
-        <span className="relative h-6 w-11 shrink-0 rounded-full transition" style={{ background: chiCauMoi ? t.primary : '#d7dbe6' }}>
+        className="mt-3.5 flex w-full items-center gap-3 p-3 text-left transition"
+        style={{ ...THE, background: chiCauMoi ? MAU.surface2 : MAU.surface }}>
+        <span className="relative h-6 w-11 shrink-0 rounded-full transition" style={{ background: chiCauMoi ? t.primary : MAU.line }}>
           <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition ${chiCauMoi ? 'left-[22px]' : 'left-0.5'}`} />
         </span>
         <span className="min-w-0 flex-1">
@@ -128,19 +112,19 @@ export function ChonDangChuDe({ onPick, onBack, gioiTinh }: { onPick: (d: { ma_d
         </span>
       </button>
 
-      {state === 'dang_tai' && <p className="mt-8 text-center text-[13px]" style={{ color: t.sec }}>Đang tải…</p>}
-      {state === 'loi' && <p className="mt-8 text-center text-[13px] text-ph-red">{err}</p>}
+      {state === 'dang_tai' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: t.sec }}>Đang tải…</p>}
+      {state === 'loi' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.sai }}>{err}</p>}
       {state === 'san_sang' && dangs.length === 0 && (
-        <p className="mt-8 text-center text-[13px]" style={{ color: t.sec }}>Chưa có dạng nào trong kho cho khối của em.</p>
+        <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: t.sec }}>Chưa có dạng nào trong kho cho khối của em.</p>
       )}
 
       {state === 'san_sang' && dangs.length > 0 && (
         <div className="mt-4 flex flex-col gap-2.5 md:grid md:grid-cols-2 md:gap-3 lg:grid-cols-3">
           {dangs.map((d) => {
-            const mau = d.muc ? MUC_MAU[d.muc] : { bg: '#F1F3F8', chu: '#8792B5' }
+            const mau = d.muc ? MUC_MAU[d.muc] : { bg: MAU.surface2, chu: MAU.muted }
             return (
               <button key={d.ma_dang} onClick={() => onPick({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, chiCauMoi })}
-                className="flex items-center gap-3 rounded-[22px] p-3.5 text-left transition active:scale-[0.98]" style={{ background: t.cardTint, boxShadow: t.shadow }}>
+                className="flex items-center gap-3 p-3.5 text-left transition active:scale-[0.98]" style={THE}>
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-[14px] font-bold" style={{ color: NAVY }}>{d.ten_dang}</span>
                   <span className="mt-0.5 block truncate text-[11px]" style={{ color: t.sec }}>{d.ten_chuyen_de}</span>

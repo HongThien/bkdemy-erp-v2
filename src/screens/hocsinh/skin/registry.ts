@@ -55,8 +55,10 @@ export type Skin = {
 const A = '/bk-ui/hs/skin'
 const LEX = "'Lexend', 'Be Vietnam Pro', system-ui, sans-serif"
 const BVP = "'Be Vietnam Pro', system-ui, sans-serif"
+// Thùy 29/09: lớp phủ cũ (tối đặc từ 48% xuống) làm nửa dưới đen kịt, không giống ảnh gốc ⇒ chỉ phủ nhẹ phần đáy cho chữ
+// trên thẻ vẫn đọc được; thẻ đã có nền trong mờ + blur riêng.
 const rpgNen = (f: string) =>
-  `linear-gradient(180deg, rgba(20,26,51,0.05) 0%, rgba(20,26,51,0.45) 22%, rgba(20,26,51,0.88) 48%, #141a33 75%), url(${A}/rpg/${f}.jpg) center top / cover no-repeat, #141a33`
+  `linear-gradient(180deg, rgba(20,26,51,0) 0%, rgba(20,26,51,0) 45%, rgba(20,26,51,0.35) 100%), url(${A}/rpg/${f}.jpg) center top / cover no-repeat, #141a33`
 
 export const SKINS: Skin[] = [
   {
@@ -123,8 +125,9 @@ export const SKINS: Skin[] = [
     // Tranh vẽ riêng 2 khổ (ChatGPT Đơn 4, 28/09): ngang 1672×941 cho iPad/máy tính, dọc 940×1672 cho điện thoại.
     // Lớp phủ tối dần xuống dưới: chi tiết ở phần trên, vùng đặt ô thì tối và yên. Id 'bau_troi' giữ nguyên — HS đã lưu.
     hinhNen: [
+      // Lâu đài lên ĐẦU = mặc định (Thùy 29/09: dùng ảnh 37 — bản dọc sáng hơn, giống ảnh gốc). HS đã lưu 'bau_troi' vẫn giữ.
+      { id: 'lau_dai', ten: 'Lâu đài', toi: rpgNen('bg_lau_dai_ngang'), toiDoc: rpgNen('bg_lau_dai_doc_sang') },
       { id: 'bau_troi', ten: 'Đảo trời', toi: rpgNen('bg_dao_troi_ngang'), toiDoc: rpgNen('bg_dao_troi_doc') },
-      { id: 'lau_dai', ten: 'Lâu đài', toi: rpgNen('bg_lau_dai_ngang'), toiDoc: rpgNen('bg_lau_dai_doc') },
       { id: 'dem_sao', ten: 'Đêm sao', toi: 'radial-gradient(1.5px 1.5px at 20% 12%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 70% 30%, #fff 50%, transparent 51%), radial-gradient(1.2px 1.2px at 40% 60%, #e9c77b 50%, transparent 51%), radial-gradient(1px 1px at 85% 75%, #fff 50%, transparent 51%), radial-gradient(90% 60% at 50% 0%, #2c3a66 0%, #141a33 70%), #141a33' },
     ],
     // Mỗi ô 1 hình khác nhau. Khối 9 có Thành tựu, khối 10–12 có Bảng xếp hạng (không bao giờ cùng lưới) ⇒ dùng chung cúp.
@@ -142,7 +145,7 @@ export const SKINS: Skin[] = [
   },
 ]
 
-export const SKIN_MAC_DINH: SkinId = 'toi_gian'
+export const SKIN_MAC_DINH: SkinId = 'rpg' // Thùy 29/09: chỉ Anime RPG dùng thật — em chưa chọn cũng ra RPG
 
 export function laySkin(id: string | null | undefined): Skin {
   return SKINS.find((s) => s.id === id) ?? SKINS.find((s) => s.id === SKIN_MAC_DINH)!
@@ -178,6 +181,8 @@ export function bienCss(skin: Skin, cd: 'sang' | 'toi', hinhNenId: string | null
     '--sk-radius': skin.radius, '--sk-blur': skin.blur,
     '--sk-next-bg': skin.theTiep?.bg ?? m.acc, '--sk-next-ink': skin.theTiep?.ink ?? m.accInk, '--sk-next-border': skin.theTiep?.border ?? 'none',
     '--sk-name-plate': skin.nenTen ?? 'transparent',
+    // Bóng chữ kế thừa cho MỌI chữ trong khung trang: skin nền ẢNH (có nenTen) cần — chữ đè đèn/lâu đài không đọc được (Thùy 29/09).
+    '--sk-chu-bong': skin.nenTen ? '0 1px 6px rgba(8,10,24,0.9)' : 'none',
     '--sk-font': skin.font, '--sk-font-head': skin.fontHead, '--sk-head-case': skin.headCase, '--sk-head-track': skin.headTrack,
     colorScheme: cd === 'toi' ? 'dark' : 'light',
   }

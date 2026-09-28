@@ -14,69 +14,56 @@
 // cho MỌI màn ở đây — CEO: "chỉ màn làm bài mới không cần, còn lại đều cần". Bỏ luôn
 // cờ `desktop` (không còn khác biệt nội dung theo cấp, chỉ còn bề rộng — đã có
 // md:/lg: lo, xem bài học rút ra từ đợt fix layout PC 22/09).
+// Thùy 29/09: BACKDROP/quote/màu theo giới tính bỏ hẳn — mọi màn theo skin em chọn (skin/KhungHS).
 // ============================================================================
 import { useEffect, useState } from 'react'
 import { htdLoTrinh, htdLyThuyet, type DangHTD } from '../../lib/hoctudau'
 import { MathText } from '../kho/ui'
+import { ManHS, MAU, THE, THE_TRON, HEAD } from './skin/KhungHS'
 
-const A = '/bk-ui/hs'
-const NAVY = '#0F1745'
-// THEME nam/nữ — cùng bộ ảnh/màu với DanhSachHS.tsx (kit dùng chung, không bịa palette riêng).
-const THEME = {
-  nam: {
-    bg: `${A}/bg_home_male.jpg`, decor: `${A}/decor_books.png`, primary: '#1673D8', sec: '#6E7EAA',
-    iconTint: '#E8ECFF', cardTint: 'linear-gradient(160deg,#ffffff,#f6f9ff)', shadow: '0 8px 24px rgba(76,108,170,.10)',
-    quote: 'Cố gắng hôm nay\nđể tốt hơn ngày mai!', quoteColor: '#4A5BC4',
-  },
-  nu: {
-    bg: `${A}/bg_home_female.jpg`, decor: `${A}/decor_books_female.png`, primary: '#F23886', sec: '#756F9F',
-    iconTint: '#F3E4F6', cardTint: 'linear-gradient(160deg,#ffffff,#fff5fb)', shadow: '0 8px 24px rgba(182,96,145,.10)',
-    quote: 'Cố lên\nbạn nhé!', quoteColor: '#E84A8F',
-  },
+// Thùy 29/09: mọi màn theo STYLE (skin) em đang chọn — bỏ nền mây + chồng sách + khẩu hiệu + màu theo giới tính.
+// THEME giữ đúng hình dạng cũ (type `Theme` còn được CaBoTroHS dùng cho CardBai) nhưng mọi giá trị là biến skin.
+const NAVY = MAU.ink
+const T_SKIN = {
+  bg: '', decor: '', primary: MAU.acc, sec: MAU.muted,
+  iconTint: MAU.surface2, cardTint: MAU.surface, shadow: 'var(--sk-card-shadow)',
+  quote: '', quoteColor: MAU.acc,
 }
+const THEME = { nam: T_SKIN, nu: T_SKIN }
 type Theme = typeof THEME.nam
+// Nền xanh nhạt ngữ nghĩa "đã xong" — trong suốt để đứng được trên skin tối.
+const XONG_BG = 'rgba(34,160,107,0.16)'
 
 function Chevron({ color }: { color: string }) {
   return <svg viewBox="0 0 48 48" className="h-5 w-5 shrink-0" fill="none" aria-hidden><path d="M19 10l14 14-14 14" stroke={color} strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" /></svg>
 }
 
-// Khung dùng chung 5 màn — backdrop trời cố định (không cuộn) + nội dung cuộn đè lên, y hệt DanhSachHS.
-function Khung({ gioiTinh, children }: { gioiTinh: 'nam' | 'nu' | null; children: React.ReactNode }) {
-  const t = THEME[gioiTinh === 'nu' ? 'nu' : 'nam']
-  return (
-    <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] md:max-w-[820px] lg:max-w-[1180px]" style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
-      <img src={t.bg} alt="" className="pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover md:max-w-[820px] lg:max-w-[1180px]" />
-      <div className="pointer-events-none fixed inset-x-0 bottom-0 mx-auto flex w-full max-w-[430px] flex-col items-end md:max-w-[820px] lg:max-w-[1180px]">
-        <div className="font-hand mb-1 mr-[14%] -rotate-[6deg] whitespace-pre-line text-right text-[20px] leading-[1.15]" style={{ color: t.quoteColor }}>{t.quote}</div>
-        <img src={t.decor} alt="" className="block w-[46%]" style={{ marginRight: '-2%', marginBottom: '-2%' }} />
-      </div>
-      <div className="relative px-4 pb-[46vh] pt-[calc(10px+env(safe-area-inset-top))]">
-        {children}
-      </div>
-    </div>
-  )
+// Khung dùng chung 5 màn — khung trang của skin (ManHS). gioiTinh giữ trong chữ ký nhưng KHÔNG đổi màu nữa.
+function Khung({ children }: { gioiTinh?: 'nam' | 'nu' | null; children: React.ReactNode }) {
+  return <ManHS className="!gap-0">{children}</ManHS>
 }
 function NutBack({ onBack }: { onBack: () => void }) {
   return (
-    <button onClick={onBack} className="mb-3 flex items-center gap-1 text-[13px] font-medium" style={{ color: NAVY, opacity: .55 }}>
-      <span aria-hidden>←</span> Quay lại
+    <button onClick={onBack} className="mb-3 flex w-fit items-center gap-1.5 rounded-full px-3 py-1.5 text-[13px] font-semibold active:scale-95" style={THE_TRON}>
+      <span aria-hidden>‹</span> Quay lại
     </button>
   )
 }
 // Card khuôn "Bài tập trên lớp" (DanhSachHS.tsx) — icon box tint + tên/mô tả + chevron (Thùy 22/09:
 // "card cũ xấu, làm giống card bài tập trên lớp"). `tag` = badge nhỏ góc trên phải (vd "✓ xong").
+// Khung/nền/viền lấy từ skin (THE) — `t` chỉ còn cấp màu phụ/ô icon (đều là biến skin).
 function CardBai({ t, icon, ten, sub, tag, onClick, disabled }: { t: Theme; icon: string; ten: string; sub: string; tag?: string; onClick: () => void; disabled?: boolean }) {
   return (
-    <button onClick={onClick} disabled={disabled} className="relative rounded-[26px] p-4 text-left transition active:scale-[0.98] disabled:opacity-55" style={{ background: t.cardTint, boxShadow: t.shadow }}>
+    <button onClick={onClick} disabled={disabled} className="relative p-4 text-left transition active:scale-[0.98] disabled:opacity-55" style={THE}>
       <div className="flex items-start gap-3">
         <span className="flex h-[56px] w-[56px] shrink-0 items-center justify-center rounded-[18px] text-[26px]" style={{ background: t.iconTint }}>{icon}</span>
         <span className={`min-w-0 flex-1 pt-1 ${tag ? 'pr-14' : ''}`}>
-          <span className="block truncate text-[15px] font-extrabold leading-tight" style={{ color: NAVY }}>{ten}</span>
+          <span className="block truncate text-[15px] font-extrabold leading-tight" style={{ ...HEAD, color: NAVY }}>{ten}</span>
           <span className="mt-1 block text-[12px] leading-snug" style={{ color: t.sec }}>{sub}</span>
         </span>
         <span className="pt-1"><Chevron color={t.sec} /></span>
       </div>
-      {tag && <span className="absolute right-4 top-4 rounded-full px-2.5 py-1 text-[11px] font-bold" style={{ background: '#DDF7EA', color: '#1E9E6A' }}>{tag}</span>}
+      {tag && <span className="absolute right-4 top-4 rounded-full px-2.5 py-1 text-[11px] font-bold" style={{ background: XONG_BG, color: MAU.dung }}>{tag}</span>}
     </button>
   )
 }
@@ -114,13 +101,13 @@ export function ChonChuDeHTD({ mon, gioiTinh, onPick, onBack }: { mon: string; g
   return (
     <Khung gioiTinh={gioiTinh}>
       <NutBack onBack={onBack} />
-      <h1 className="text-[22px] font-extrabold leading-tight tracking-tight" style={{ color: NAVY }}>Học từ đầu</h1>
+      <h1 className="text-[22px] font-extrabold leading-tight tracking-tight" style={{ ...HEAD, color: NAVY }}>Học từ đầu</h1>
       <p className="mt-1 text-[13px]" style={{ color: t.sec }}>Chọn 1 chủ đề để bắt đầu. Được phép bỏ qua, làm chủ đề khác trước.</p>
 
-      {state === 'dang_tai' && <p className="mt-8 text-center text-[13px]" style={{ color: t.sec }}>Đang tải…</p>}
-      {state === 'loi' && <p className="mt-8 text-center text-[13px] text-ph-red">{err}</p>}
+      {state === 'dang_tai' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: t.sec }}>Đang tải…</p>}
+      {state === 'loi' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.sai }}>{err}</p>}
       {state === 'san_sang' && cay.length === 0 && (
-        <p className="mt-8 text-center text-[13px]" style={{ color: t.sec }}>Em chưa có lộ trình bổ trợ đuổi nào cần học.</p>
+        <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: t.sec }}>Em chưa có lộ trình bổ trợ đuổi nào cần học.</p>
       )}
       {state === 'san_sang' && cay.length > 0 && (
         <div className="mt-4 flex flex-col gap-3 md:grid md:grid-cols-2 lg:grid-cols-3">
@@ -144,7 +131,7 @@ export function ChonChuyenDeHTD({ chuDe, gioiTinh, onPick, onBack }: { chuDe: Ch
   return (
     <Khung gioiTinh={gioiTinh}>
       <NutBack onBack={onBack} />
-      <h1 className="text-[22px] font-extrabold leading-tight tracking-tight" style={{ color: NAVY }}>{chuDe.ten_chu_de}</h1>
+      <h1 className="text-[22px] font-extrabold leading-tight tracking-tight" style={{ ...HEAD, color: NAVY }}>{chuDe.ten_chu_de}</h1>
       <p className="mt-1 text-[13px]" style={{ color: t.sec }}>Chọn chuyên đề — vào là học tiếp đúng chỗ em đang dừng.</p>
       <div className="mt-4 flex flex-col gap-3 md:grid md:grid-cols-2 lg:grid-cols-3">
         {chuDe.chuyenDes.map((cde) => {
@@ -176,17 +163,17 @@ export function ChiTietDangHTD({ dang, dangCungChuyenDe, gioiTinh, onLyThuyet, o
     <Khung gioiTinh={gioiTinh}>
       <NutBack onBack={onBack} />
       <div className="flex items-start justify-between gap-2">
-        <h1 className="text-[20px] font-extrabold leading-tight tracking-tight" style={{ color: NAVY }}>{dang.ten_dang}</h1>
+        <h1 className="text-[20px] font-extrabold leading-tight tracking-tight" style={{ ...HEAD, color: NAVY }}>{dang.ten_dang}</h1>
         {dangCungChuyenDe.length > 0 && (
           <button onClick={() => setXemLoTrinh((v) => !v)} title="Xem lộ trình chuyên đề"
-            className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[13px] font-bold" style={{ color: t.sec, boxShadow: t.shadow }}>ⓘ</button>
+            className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-bold" style={{ ...THE_TRON, borderRadius: '999px', color: t.sec }}>ⓘ</button>
         )}
       </div>
       {thuTu > 0 && <p className="mt-0.5 text-[12px]" style={{ color: t.sec }}>Dạng {thuTu}/{dangCungChuyenDe.length} trong chuyên đề</p>}
-      {dang.xong && <p className="mt-1 text-[12.5px] font-semibold text-emerald-600">✅ Đã có bài test cho dạng này</p>}
+      {dang.xong && <p className="mt-1 text-[12.5px] font-semibold" style={{ color: MAU.dung }}>✅ Đã có bài test cho dạng này</p>}
 
       {xemLoTrinh && (
-        <div className="mt-3 flex flex-col gap-1.5 rounded-2xl bg-white p-3" style={{ boxShadow: t.shadow }}>
+        <div className="mt-3 flex flex-col gap-1.5 p-3" style={THE}>
           {dangCungChuyenDe.map((d) => (
             <div key={d.ma_dang} className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-[12.5px]"
               style={d.ma_dang === dang.ma_dang ? { background: t.iconTint, color: t.primary, fontWeight: 600 } : { color: t.sec }}>
@@ -221,11 +208,11 @@ export function LyThuyetHTD({ mon, dang, gioiTinh, onBack }: { mon: string; dang
   return (
     <Khung gioiTinh={gioiTinh}>
       <NutBack onBack={onBack} />
-      <h1 className="text-[20px] font-extrabold leading-tight tracking-tight" style={{ color: NAVY }}>{dang.ten_dang}</h1>
-      {state === 'dang_tai' && <p className="mt-8 text-center text-[13px]" style={{ color: t.sec }}>Đang tải…</p>}
-      {state === 'loi' && <p className="mt-8 text-center text-[13px] text-ph-red">{err}</p>}
+      <h1 className="text-[20px] font-extrabold leading-tight tracking-tight" style={{ ...HEAD, color: NAVY }}>{dang.ten_dang}</h1>
+      {state === 'dang_tai' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: t.sec }}>Đang tải…</p>}
+      {state === 'loi' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.sai }}>{err}</p>}
       {state === 'san_sang' && (
-        <div className="mt-4 rounded-[26px] p-4" style={{ background: t.cardTint, boxShadow: t.shadow }}>
+        <div className="mt-4 p-4" style={THE}>
           <p className="mb-2 text-[13px] font-bold" style={{ color: t.primary }}>📖 Lý thuyết</p>
           {noiDung
             ? <div className="whitespace-pre-line text-[14px] leading-relaxed" style={{ color: NAVY }}><MathText>{noiDung}</MathText></div>
@@ -260,13 +247,13 @@ export function LoTrinhDuoiHS({ mon, gioiTinh, onPickDang, onBack }: {
     }).catch((e) => { setErr(e?.message ?? String(e)); setState('loi') })
   }, [mon])
 
-  if (state === 'dang_tai') return <Khung gioiTinh={gioiTinh}><p className="mt-8 text-center text-[13px]" style={{ color: t.sec }}>Đang tải…</p></Khung>
-  if (state === 'loi') return <Khung gioiTinh={gioiTinh}><p className="mt-8 text-center text-[13px] text-ph-red">{err}</p></Khung>
+  if (state === 'dang_tai') return <Khung gioiTinh={gioiTinh}><p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: t.sec }}>Đang tải…</p></Khung>
+  if (state === 'loi') return <Khung gioiTinh={gioiTinh}><p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.sai }}>{err}</p></Khung>
 
   if (!chon) return (
     <Khung gioiTinh={gioiTinh}>
       <NutBack onBack={onBack} />
-      <h1 className="text-[22px] font-extrabold leading-tight tracking-tight" style={{ color: NAVY }}>Lộ trình bổ trợ đuổi</h1>
+      <h1 className="text-[22px] font-extrabold leading-tight tracking-tight" style={{ ...HEAD, color: NAVY }}>Lộ trình bổ trợ đuổi</h1>
       <p className="mt-1 text-[13px]" style={{ color: t.sec }}>Em đang đuổi {cdes.length} chuyên đề — chọn 1 để xem lộ trình.</p>
       <div className="mt-4 flex flex-col gap-3 md:grid md:grid-cols-2 lg:grid-cols-3">
         {cdes.map((cde) => {
@@ -283,22 +270,22 @@ export function LoTrinhDuoiHS({ mon, gioiTinh, onPickDang, onBack }: {
   return (
     <Khung gioiTinh={gioiTinh}>
       <NutBack onBack={() => (cdes.length > 1 ? setChon(null) : onBack())} />
-      <h1 className="text-[22px] font-extrabold leading-tight tracking-tight" style={{ color: NAVY }}>Lộ trình bổ trợ đuổi</h1>
+      <h1 className="text-[22px] font-extrabold leading-tight tracking-tight" style={{ ...HEAD, color: NAVY }}>Lộ trình bổ trợ đuổi</h1>
       <p className="mt-1 text-[13px]" style={{ color: t.sec }}>{chon.ten_chuyen_de} — học lần lượt từng dạng, dạng khoá tự mở khi dạng trước xong.</p>
       <div className="mt-4 flex flex-col gap-3 lg:grid lg:grid-cols-2">
         {chon.dangs.map((d) => {
           const hienTai = !d.xong && d.mo
           return (
             <button key={d.ma_dang} disabled={!d.mo} onClick={() => onPickDang(d, chon)}
-              className="relative flex items-center gap-3 rounded-[26px] p-4 text-left transition disabled:opacity-55"
-              style={{ background: t.cardTint, boxShadow: (d.xong || hienTai) ? t.shadow : 'none' }}>
+              className="relative flex items-center gap-3 p-4 text-left transition disabled:opacity-55"
+              style={{ ...THE, ...((d.xong || hienTai) ? {} : { boxShadow: 'none' }) }}>
               <span className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-[16px] text-[24px]"
-                style={{ background: d.xong ? '#DDF7EA' : hienTai ? t.iconTint : '#EEF1F6' }}>
+                style={{ background: d.xong ? XONG_BG : t.iconTint, opacity: d.xong || hienTai ? 1 : 0.7 }}>
                 {d.xong ? '✅' : hienTai ? '📖' : '🔒'}
               </span>
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-[15px] font-extrabold leading-tight"
-                  style={{ color: d.xong ? '#1E9E6A' : hienTai ? t.primary : NAVY }}>{d.ten_dang}</span>
+                  style={{ ...HEAD, color: d.xong ? MAU.dung : hienTai ? t.primary : NAVY }}>{d.ten_dang}</span>
                 {hienTai && <span className="mt-0.5 block text-[12px] font-semibold" style={{ color: t.primary }}>Đang học hôm nay</span>}
               </span>
               {d.mo && <Chevron color={t.sec} />}

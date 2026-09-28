@@ -4,7 +4,7 @@
 //   → hiện đáp án + lời giải chi tiết của câu → "Câu tiếp". BTVN reveal ngay, làm lại tới hạn.
 // Skin = plain-clean; game (Fredoka/mascot/gradient) làm phiên design sau.
 // ============================================================================
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { supabase } from '../../lib/supabase'
 import { MathText } from '../kho/ui'
 import { LamDienO } from './DienOCau'
@@ -33,6 +33,7 @@ import { listThongBaoHS, docTatCaThongBao, type ThongBaoHS } from '../../lib/tho
 import HomeHS, { type HomeCard } from './HomeHS'
 import HomeHS912 from './HomeHS912'
 import { KHOI_CHON_SKIN, type GiaoDien } from './skin/registry'
+import { useApSkinGoc, GD_MAC_DINH, GD_CAP1, ManHS, DauTrangHS, TheHS, TrongHS, MAU, THE, THE_TRON, HEAD } from './skin/KhungHS'
 import { giaoDienCuaToi, home912, type Home912 } from '../../lib/giaodien_hs'
 import DanhSachHS, { type DsRow } from './DanhSachHS'
 import MayManHS from './MayManHS'
@@ -113,20 +114,58 @@ const KIT_O: Record<KhuId, Pick<HomeCard, 'ill' | 'emoji' | 'doodle' | 'tone'>> 
   may_man:      { ill: 'self_practice_target', emoji: '🎰', doodle: 'Luyện chăm là quay!', tone: 'pink' },
   vi_xu:        { ill: 'self_practice_target', emoji: '🪙', doodle: 'Tích xu đổi quà!', tone: 'orange' },
 }
-const SHADOW = 'shadow-[0_8px_24px_rgba(28,38,61,0.07)]' // ĐÚNG --shadow của bkdemy-ph-app/app/ph-v3.css
+// ── Style màn con theo SKIN (Thùy 29/09: đổi style là đổi CẢ màn trong, không chỉ Home) ─────────────────
+// Mọi nền/chữ/viền đọc biến --sk-* (skin/KhungHS). Màu cố định CHỈ còn màu ngữ nghĩa đúng/sai/cảnh báo — nền
+// ngữ nghĩa dạng TRONG SUỐT để đọc được cả skin sáng lẫn tối. KHÔNG dùng MAU.acc làm màu CHỮ trên nền thẻ
+// (Y2K sáng: acc = xanh chanh trên trắng, không đọc được) — chọn/nhấn = viền acc + nền pha acc + chữ ink.
+const NEN_MAN: CSSProperties = { background: 'var(--sk-page)', backgroundAttachment: 'fixed', color: MAU.ink, fontFamily: 'var(--sk-font)' }
+const NEN_DUNG = 'rgba(34,160,107,0.16)', NEN_SAI = 'rgba(229,72,77,0.16)', NEN_CB = 'rgba(224,144,30,0.16)'
+const VIEN_DUNG = 'rgba(34,160,107,0.5)', VIEN_SAI = 'rgba(229,72,77,0.5)', VIEN_CB = 'rgba(224,144,30,0.45)'
+const NEN_ACC = 'color-mix(in srgb, var(--sk-acc) 16%, transparent)' // trình duyệt cũ bỏ qua ⇒ trong suốt, vẫn còn viền acc
+const R_TRONG = 'calc(var(--sk-radius) * 0.6)' // bo góc ô con bên trong thẻ — theo skin (Đấu trường = vuông)
+const NUT_CHINH: CSSProperties = { background: MAU.acc, color: MAU.accInk, borderRadius: 'var(--sk-radius)', clipPath: 'var(--sk-card-clip)', fontFamily: 'var(--sk-font-head)' }
+const NUT_PHU: CSSProperties = { background: MAU.surface, color: MAU.ink, border: `1.5px solid ${MAU.line}`, borderRadius: 'var(--sk-radius)', fontFamily: 'var(--sk-font-head)', backdropFilter: 'var(--sk-blur)', WebkitBackdropFilter: 'var(--sk-blur)' }
+const NUT_NOP: CSSProperties = { ...NUT_CHINH, background: MAU.dung, color: '#fff' } // "Nộp bài" giữ xanh ngữ nghĩa (nền màu cố định ⇒ chữ trắng)
+// Trạng thái 1 ô đáp án (TN) / nút Đúng-Sai (ĐS) — dùng chung LamBai + LamET.
+type TtO = 'dung' | 'sai' | 'chon' | 'thuong'
+const O_DAP_AN = (t: TtO): CSSProperties => ({
+  borderRadius: R_TRONG, color: MAU.ink,
+  ...(t === 'dung' ? { border: `1.5px solid ${VIEN_DUNG}`, background: NEN_DUNG }
+    : t === 'sai' ? { border: `1.5px solid ${VIEN_SAI}`, background: NEN_SAI }
+    : t === 'chon' ? { border: `2px solid ${MAU.acc}`, background: NEN_ACC }
+    : { border: `1.5px solid ${MAU.line}`, background: MAU.surface2 }),
+})
+// Vòng chữ A/B/C/D: đúng/sai = nền ngữ nghĩa + chữ trắng; đang chọn = nền acc + chữ accInk.
+const TRON_CHU = (t: TtO): CSSProperties =>
+  t === 'dung' ? { background: MAU.dung, color: '#fff' } : t === 'sai' ? { background: MAU.sai, color: '#fff' }
+  : t === 'chon' ? { background: MAU.acc, color: MAU.accInk } : { background: MAU.surface, color: MAU.muted, border: `1px solid ${MAU.line}` }
+const NUT_DS = (t: TtO): CSSProperties => ({
+  ...O_DAP_AN(t), color: t === 'dung' ? MAU.dung : t === 'sai' ? MAU.sai : t === 'chon' ? MAU.ink : MAU.muted,
+  ...(t === 'thuong' ? { background: MAU.surface } : {}),
+})
+// Ô trả lời ngắn — nền/viền skin, focus viền acc.
+const O_NHAP: CSSProperties = { background: MAU.surface2, color: MAU.ink, border: `1.5px solid ${MAU.line}`, borderRadius: R_TRONG }
+const O_NHAP_CLS = 'w-full px-4 py-3 outline-none placeholder:text-[color:var(--sk-muted)] focus:!border-[color:var(--sk-acc)] disabled:opacity-70'
+// Nút/hộp "Gợi ý" (cảnh báo = cam ngữ nghĩa).
+const NUT_GOI_Y = (mo: boolean): CSSProperties => ({ border: `1px solid ${VIEN_CB}`, background: mo ? 'rgba(224,144,30,0.26)' : NEN_CB, color: MAU.canhBao })
+const HOP_GOI_Y: CSSProperties = { border: `1px solid ${VIEN_CB}`, background: NEN_CB, borderRadius: R_TRONG }
 
-// Header sub-màn (Thùy: "làm header giống app phụ huynh") — ĐÚNG `.pageHead` (ph-v3.css:65-67):
-// nút back vuông-tròn (squircle, KHÔNG tròn) nổi trên nền trang (không phải thanh trắng riêng).
-function Head({ title, sub, onBack }: { title: string; sub?: string; onBack: () => void }) {
+// Màn chờ (đang tải…) — nền skin, chữ mờ.
+function ManCho({ children }: { children: ReactNode }) {
+  return <div className="flex min-h-[100dvh] items-center justify-center px-6 text-center text-sm" style={{ ...NEN_MAN, color: MAU.muted }}>{children}</div>
+}
+// Màn căn giữa (kết quả cuối / lỗi / rỗng) — nền skin, cột giữa.
+function ManGiua({ children }: { children: ReactNode }) {
   return (
-    <div className="sticky top-0 z-10 -mx-4 flex items-center gap-3 bg-ios px-4 pb-3 pt-[calc(12px+env(safe-area-inset-top))]">
-      <button onClick={onBack} className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-[13px] bg-white text-[20px] text-ph-label-2 ${SHADOW}`}>‹</button>
-      <div className="min-w-0">
-        <h1 className="text-[21px] font-bold leading-tight tracking-tight text-ph-label">{title}</h1>
-        {sub && <p className="mt-0.5 text-[12px] text-ph-label-2">{sub}</p>}
-      </div>
+    <div className="flex min-h-[100dvh] flex-col items-center justify-center px-6 text-center" style={NEN_MAN}>
+      <div className="flex w-full max-w-md flex-col items-center md:max-w-3xl">{children}</div>
     </div>
   )
+}
+
+// Header sub-màn — giờ là DauTrangHS của skin (nút back + tiêu đề font đầu skin).
+function Head({ title, sub, onBack }: { title: string; sub?: string; onBack: () => void }) {
+  return <DauTrangHS tieuDe={title} phu={sub} onBack={onBack} />
 }
 
 // ── MÀN CHÍNH CẤP 1 — desktop/iPad-first (Thùy 21/08, theo mockup HTML "BK_Academy_Student_App_
@@ -311,9 +350,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   useEffect(() => {
     if (!nhom912) return
     // Lỗi mạng ⇒ coi như đã có lựa chọn mặc định (không bật hướng dẫn chỉ vì 1 lần gọi hỏng).
-    giaoDienCuaToi().then(setGiaoDien).catch(() => setGiaoDien({ skin: 'toi_gian', che_do: 'he_thong', hinh_nen: 'mac_dinh' }))
+    giaoDienCuaToi().then(setGiaoDien).catch(() => setGiaoDien(GD_MAC_DINH))
   }, [nhom912])
   useEffect(() => { if (nhom912 && !direct && !khu) home912().then(setDuLieu912).catch(() => {}) }, [nhom912, direct, khu])
+  // Style (skin) của em áp cho TOÀN app, không chỉ Home (Thùy 29/09): biến --sk-* gắn lên <html>, mọi màn đọc qua skin/KhungHS.
+  // Cấp 1 chưa có skin riêng ⇒ tạm Soft Hàn sáng.
+  useApSkinGoc(nhom912 ? (giaoDien ?? GD_MAC_DINH) : GD_CAP1)
   // Thùy 24/09: TRƯỚC chỉ kiểm 1 lần lúc mở app ⇒ học thuật chốt dạng đuổi SAU lúc em mở app (vụ Mạnh Duy 24/09 18:17) thì card
   // 'Học từ đầu' không hiện tới khi mở lại app. Giờ kiểm lại MỖI LẦN về màn chính (direct/khu = null) + khi app quay lại từ nền.
   // Lỗi mạng giữ nguyên trạng thái cũ (không tắt card đang hiện vì 1 lần gọi hỏng).
@@ -431,7 +473,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const CHU_DUOI: Partial<Record<KhuId, string>> = { tu_luyen: 'Luyện theo dạng yếu', thong_tin: 'Dạng đang yếu', xep_hang: 'Thi đua tự luyện', so_tay: 'Tra lý thuyết & bài mẫu' }
 
   // ── MÀN CHÍNH: ô vuông (theo cấp/khối), 2 cột ─────────────────────────────
-  if (!khu && (cap1 === null || cap2 === null || nhom912 === null || (nhom912 && giaoDien === undefined))) return <div className="flex min-h-screen items-center justify-center bg-ios text-sm text-ph-label-2">Đang tải…</div>
+  if (!khu && (cap1 === null || cap2 === null || nhom912 === null || (nhom912 && giaoDien === undefined))) return <ManCho>Đang tải…</ManCho>
   // CẤP 1 (Thùy 12/09: "cấp 1 học sinh không dùng điện thoại — chỉ iPad hoặc laptop") — HomeCap1
   // desktop/iPad-first (grid 3 cột full màn theo mockup CEO), KHÔNG dùng HomeHS mobile centered
   // (max-w 430 hoang phí 2 bên trên iPad/laptop). BOX_CAP1 đã đồng bộ nội dung KHU_CAP2: Tự luyện ·
@@ -542,11 +584,11 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     <DanhSachHS tieuDe={tenKhu} ill={KIT_O[khu].ill} gioiTinh={gt} tab={tab} nChua={nChua} nXong={nXong}
       rows={rows} dangTai={tests === null} onBack={() => setKhu(null)} onTab={setTab}
       empty={
-        <div className="rounded-[26px] bg-white/90 p-8 text-center" style={{ boxShadow: '0 8px 24px rgba(76,108,170,.10)' }}>
+        <TheHS className="p-8 text-center">
           <p className="text-3xl">{tab === 'xong' ? '📭' : '🎉'}</p>
-          <p className="mt-2 text-[15px] font-bold" style={{ color: '#0F1745' }}>{tab === 'xong' ? 'Chưa hoàn thành bài nào' : 'Không có bài nào cần làm'}</p>
-          <p className="mt-1 text-[13px]" style={{ color: '#6E7EAA' }}>{tab === 'xong' ? 'Làm xong bài sẽ chuyển sang đây.' : `Khi thầy cô giao ${tenKhu.toLowerCase()}, bài sẽ hiện ở đây.`}</p>
-        </div>
+          <p className="mt-2 text-[15px] font-bold" style={{ ...HEAD, color: MAU.ink }}>{tab === 'xong' ? 'Chưa hoàn thành bài nào' : 'Không có bài nào cần làm'}</p>
+          <p className="mt-1 text-[13px]" style={{ color: MAU.muted }}>{tab === 'xong' ? 'Làm xong bài sẽ chuyển sang đây.' : `Khi thầy cô giao ${tenKhu.toLowerCase()}, bài sẽ hiện ở đây.`}</p>
+        </TheHS>
       } />
   )
 }
@@ -619,7 +661,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
     return seededPermByDang(full.caus, `${hocSinhId}:${baiTestId}:q`).map((i) => full.caus[i])
   }, [full, khoaThuTuGoc, hocSinhId, baiTestId])
 
-  if (!full) return <div className={`flex min-h-screen items-center justify-center text-sm text-ph-label-2 ${desktop ? 'bg-[#f4f7fb]' : 'bg-ios'}`}>Đang tải bài…</div>
+  if (!full) return <ManCho>Đang tải bài…</ManCho>
   const total = caus.length
   const daXongHet = caus.every((c) => st[c.id]?.kq)
   const cau = caus[idx]
@@ -682,37 +724,35 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   if (idx >= total) {
     const dung = caus.filter((c) => st[c.id]?.kq?.verdict === 'correct').length
     return (
-      <div className={desktop
-        ? 'flex min-h-screen flex-col items-center justify-center bg-[#f4f7fb] px-6 text-center'
-        : 'mx-auto flex min-h-screen max-w-md flex-col items-center justify-center bg-ios px-6 text-center md:max-w-3xl'}>
-        <div className={`flex items-center justify-center rounded-full bg-ph-green/10 ${desktop ? 'h-24 w-24 text-5xl' : 'h-20 w-20 text-4xl'}`}>🏆</div>
-        <p className={`mt-4 font-bold tracking-tight text-ph-label ${desktop ? 'text-3xl' : 'text-2xl'}`}>{dung} / {total} đúng</p>
-        <p className="mt-1 text-[16px] text-ph-label-2">{doneCaption ?? 'Làm lại được tới hạn nộp. Kết quả gửi thầy cô tham khảo.'}</p>
-        <button onClick={onXong} className={`mt-6 rounded-xl bg-brand font-medium text-white ${desktop ? 'px-8 py-3.5 text-[19px] shadow-[0_10px_24px_rgba(115,87,245,.22)]' : 'px-6 py-3 text-[18px]'}`}>Về danh sách</button>
+      <ManGiua>
+        <div className={`flex items-center justify-center rounded-full ${desktop ? 'h-24 w-24 text-5xl' : 'h-20 w-20 text-4xl'}`} style={{ ...THE_TRON, borderRadius: '999px', background: NEN_DUNG }}>🏆</div>
+        <p className={`mt-4 font-bold tracking-tight ${desktop ? 'text-3xl' : 'text-2xl'}`} style={{ ...HEAD, color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>{dung} / {total} đúng</p>
+        <p className="mt-1 text-[16px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>{doneCaption ?? 'Làm lại được tới hạn nộp. Kết quả gửi thầy cô tham khảo.'}</p>
+        <button onClick={onXong} className={`mt-6 font-bold ${desktop ? 'px-8 py-3.5 text-[19px]' : 'px-6 py-3 text-[18px]'}`} style={NUT_CHINH}>Về danh sách</button>
         {doneExtra}
-      </div>
+      </ManGiua>
     )
   }
 
   const vd = daCham ? cs!.kq!.verdict : ''
-  const boxCls = vd === 'correct' ? 'bg-ph-green/10' : vd === 'partial' ? 'bg-ph-orange/10' : 'bg-ph-red/10'
-  const txtCls = vd === 'correct' ? 'text-ph-green' : vd === 'partial' ? 'text-ph-orange' : 'text-ph-red'
+  const boxNen = vd === 'correct' ? NEN_DUNG : vd === 'partial' ? NEN_CB : NEN_SAI
+  const txtMau = vd === 'correct' ? MAU.dung : vd === 'partial' ? MAU.canhBao : MAU.sai
   const dsDung = laDS && daCham ? chonArr.filter((x, i) => x != null && String(x).toUpperCase() === String(keyDS[i]).toUpperCase()).length : 0
   const trongTam = (
     <>
       <div className={desktop ? 'mb-4 flex shrink-0 items-center gap-4' : 'flex shrink-0 items-center gap-3 px-4 py-3'}>
-        <button onClick={onXong} className={desktop ? 'flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]' : 'text-ph-label-2'}>✕</button>
-        <div className={desktop ? 'h-2.5 flex-1 overflow-hidden rounded-full bg-black/[0.06]' : 'h-2 flex-1 overflow-hidden rounded-full bg-black/[0.08]'}>
-          <div className="h-full bg-brand transition-all" style={{ width: `${((idx + 1) / total) * 100}%` }} />
+        <button onClick={onXong} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full" style={{ ...THE_TRON, borderRadius: '999px', color: MAU.muted }}>✕</button>
+        <div className={`flex-1 overflow-hidden rounded-full ${desktop ? 'h-2.5' : 'h-2'}`} style={{ background: MAU.line }}>
+          <div className="h-full transition-all" style={{ width: `${((idx + 1) / total) * 100}%`, background: MAU.acc }} />
         </div>
-        <span className={desktop ? 'text-[16px] font-semibold text-[#7b8499]' : 'text-[15px] text-ph-label-2'}>{idx + 1}/{total}</span>
+        <span className={desktop ? 'text-[16px] font-semibold' : 'text-[15px] font-semibold'} style={{ color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>{idx + 1}/{total}</span>
       </div>
 
       {/* Thùy 13/09: content SCROLL riêng, footer luôn nằm trong viewport (không phải kéo trang xuống mới bấm Xác nhận). */}
       <div className={desktop ? 'flex-1 min-h-0 overflow-y-auto' : 'flex-1 overflow-y-auto px-4 pb-4'}>
-        <div className={desktop ? 'rounded-[26px] bg-white p-8 shadow-[0_16px_40px_rgba(31,47,79,0.08)] lg:p-10' : 'rounded-2xl bg-white p-4 shadow-sm'}>
+        <div className={desktop ? 'p-8 lg:p-10' : 'p-4'} style={THE}>
           <div className="mb-2 flex items-center justify-between">
-            <p className="text-[16px] font-semibold text-ph-label-2">Câu {idx + 1}</p>
+            <p className="text-[16px] font-semibold" style={{ color: MAU.muted }}>Câu {idx + 1}</p>
             {cau.ly_thuyet && (
               <button onClick={() => setGoiY((v) => {
                 const nv = !v
@@ -720,19 +760,20 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
                 if (nv && baiLamId) xemGoiY(baiLamId, cau.id).catch(() => {})
                 return nv
               })}
-                className={`rounded-full border px-3 py-1 text-[15px] font-medium transition ${goiY ? 'border-ph-orange/40 bg-ph-orange/15 text-ph-orange' : 'border-ph-orange/25 bg-ph-orange/10 text-ph-orange'}`}>
+                className="rounded-full px-3 py-1 text-[15px] font-medium transition" style={NUT_GOI_Y(goiY)}>
                 💡 Gợi ý
               </button>
             )}
           </div>
           {goiY && cau.ly_thuyet && (
-            <div className="mb-3 rounded-xl border border-ph-orange/25 bg-ph-orange/[0.06] p-3">
-              <p className="mb-1 text-[15px] font-semibold uppercase tracking-wide text-ph-orange">Lý thuyết dạng bài</p>
-              <div className="text-[18px] leading-relaxed text-ph-label"><MathText>{cau.ly_thuyet}</MathText></div>
+            <div className="mb-3 p-3" style={HOP_GOI_Y}>
+              <p className="mb-1 text-[15px] font-semibold uppercase tracking-wide" style={{ color: MAU.canhBao }}>Lý thuyết dạng bài</p>
+              <div className="text-[18px] leading-relaxed" style={{ color: MAU.ink }}><MathText>{cau.ly_thuyet}</MathText></div>
             </div>
           )}
-          {cau.noi_dung && <div className="mb-3 text-[19px] leading-relaxed text-ph-label"><MathText>{cau.noi_dung}</MathText></div>}
-          {cau.anh_de && <img src={cau.anh_de} alt="đề" className="mb-3 max-h-80 rounded-lg border border-black/[0.08]" />}
+          {cau.noi_dung && <div className="mb-3 text-[19px] leading-relaxed" style={{ color: MAU.ink }}><MathText>{cau.noi_dung}</MathText></div>}
+          {/* Hình đề: nền trắng cố định — hình vẽ/ảnh chụp đề là nét đen trên trắng, đặt thẳng lên thẻ tối là mất nét. */}
+          {cau.anh_de && <img src={cau.anh_de} alt="đề" className="mb-3 max-h-80 rounded-lg bg-white" style={{ border: `1px solid ${MAU.line}` }} />}
 
           {laTN ? (
             <div className="flex flex-col gap-2.5">
@@ -740,12 +781,11 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
                 const chon = cs?.chon === orig
                 const laDapAn = daCham && orig === correctOrigTN
                 const chonSai = daCham && chon && !laDapAn
+                const tt: TtO = laDapAn ? 'dung' : chonSai ? 'sai' : chon ? 'chon' : 'thuong'
                 return (
                   <button key={orig} onClick={() => setChon(orig)} disabled={daCham}
-                    className={`flex items-start gap-3 rounded-xl border p-3 text-left text-[19px] transition ${
-                      laDapAn ? 'border-ph-green/40 bg-ph-green/10' : chonSai ? 'border-ph-red/40 bg-ph-red/10' : chon ? 'border-brand bg-brand/10' : 'border-black/[0.08] bg-white'}`}>
-                    <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[16px] font-semibold ${
-                      laDapAn ? 'bg-ph-green text-white' : chonSai ? 'bg-ph-red text-white' : chon ? 'bg-brand text-white' : 'bg-black/[0.05] text-ph-label-2'}`}>{chuCaiChon(dispI)}</span>
+                    className="flex items-start gap-3 p-3 text-left text-[19px] transition" style={O_DAP_AN(tt)}>
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[16px] font-semibold" style={TRON_CHU(tt)}>{chuCaiChon(dispI)}</span>
                     <span className="flex-1 pt-0.5"><MathText>{stripLabel(opt)}</MathText></span>
                   </button>
                 )
@@ -757,9 +797,9 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
                 const key = String(keyDS[orig] ?? '').toUpperCase()
                 const pick = chonArr[orig] ? String(chonArr[orig]).toUpperCase() : null
                 return (
-                  <div key={orig} className="rounded-xl border border-black/[0.08] p-3">
-                    <div className="mb-2 flex gap-2 text-[19px] text-ph-label">
-                      <span className="font-semibold text-ph-label-2">{'abcd'[dispI] ?? dispI + 1})</span>
+                  <div key={orig} className="p-3" style={{ border: `1px solid ${MAU.line}`, background: MAU.surface2, borderRadius: R_TRONG }}>
+                    <div className="mb-2 flex gap-2 text-[19px]" style={{ color: MAU.ink }}>
+                      <span className="font-semibold" style={{ color: MAU.muted }}>{'abcd'[dispI] ?? dispI + 1})</span>
                       <span className="flex-1"><MathText>{m.noi_dung}</MathText></span>
                     </div>
                     <div className="flex gap-2">
@@ -767,16 +807,16 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
                         const on = pick === v
                         const dungChoi = daCham && v === key       // đáp án đúng của ý
                         const saiChoi = daCham && on && v !== key   // HS chọn sai
+                        const tt: TtO = dungChoi ? 'dung' : saiChoi ? 'sai' : on ? 'chon' : 'thuong'
                         return (
                           <button key={v} onClick={() => setDS(orig, v)} disabled={daCham}
-                            className={`flex-1 rounded-lg border py-1.5 text-[16px] font-medium transition ${
-                              dungChoi ? 'border-ph-green/40 bg-ph-green/10 text-ph-green' : saiChoi ? 'border-ph-red/40 bg-ph-red/10 text-ph-red' : on ? 'border-brand bg-brand/10 text-brand' : 'border-black/[0.08] text-ph-label-2'}`}>
+                            className="flex-1 py-1.5 text-[16px] font-medium transition" style={NUT_DS(tt)}>
                             {v === 'D' ? 'Đúng' : 'Sai'}
                           </button>
                         )
                       })}
                     </div>
-                    {daCham && m.loi_giai && <div className="mt-2 border-t border-black/[0.06] pt-1.5 text-[16px] text-ph-label-2"><MathText>{m.loi_giai}</MathText></div>}
+                    {daCham && m.loi_giai && <div className="mt-2 pt-1.5 text-[16px]" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.muted }}><MathText>{m.loi_giai}</MathText></div>}
                   </div>
                 )
               })}
@@ -784,27 +824,27 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
           ) : (
             <input value={(cs?.chon as string) ?? ''} onChange={(e) => setChon(e.target.value)} disabled={daCham}
               placeholder="Nhập đáp án…" inputMode="text"
-              className="w-full rounded-xl border border-black/[0.1] px-4 py-3 text-[19px] outline-none focus:border-brand disabled:bg-black/[0.03]" />
+              className={`${O_NHAP_CLS} text-[19px]`} style={O_NHAP} />
           )}
 
           {daCham && (
-            <div className={`mt-4 rounded-xl p-3 ${boxCls}`}>
-              <p className={`text-[19px] font-semibold ${txtCls}`}>
+            <div className="mt-4 p-3" style={{ background: boxNen, borderRadius: R_TRONG }}>
+              <p className="text-[19px] font-semibold" style={{ color: txtMau }}>
                 {vd === 'correct' ? '🎉 Đúng hết!' : vd === 'partial' ? '👍 Đúng một phần' : '😔 Chưa đúng'}
                 {laDS && <span className="ml-1 text-[16px] font-normal">· {dsDung}/{menhDe.length} ý đúng</span>}
               </p>
-              {cau.loai_cau === 'tra_loi_ngan' && vd !== 'correct' && <p className="mt-1 text-[16px] text-ph-label-2">Đáp án đúng: <b className="text-ph-green">{String(cau.dap_an_key)}</b></p>}
+              {cau.loai_cau === 'tra_loi_ngan' && vd !== 'correct' && <p className="mt-1 text-[16px]" style={{ color: MAU.muted }}>Đáp án đúng: <b style={{ color: MAU.dung }}>{String(cau.dap_an_key)}</b></p>}
               {cau.loi_giai && (
-                <div className="mt-2 border-t border-black/[0.06] pt-2 text-[18px] leading-relaxed text-ph-label">
-                  <p className="mb-1 text-[15px] font-semibold uppercase text-ph-label-2">Lời giải</p>
+                <div className="mt-2 pt-2 text-[18px] leading-relaxed" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.ink }}>
+                  <p className="mb-1 text-[15px] font-semibold uppercase" style={{ color: MAU.muted }}>Lời giải</p>
                   <MathText>{cau.loi_giai}</MathText>
                 </div>
               )}
-              {cau.anh_dap_an && <img src={cau.anh_dap_an} alt="lời giải" className="mt-2 max-h-72 rounded-lg border border-black/[0.08]" />}
+              {cau.anh_dap_an && <img src={cau.anh_dap_an} alt="lời giải" className="mt-2 max-h-72 rounded-lg bg-white" style={{ border: `1px solid ${MAU.line}` }} />}
               {(cau.loai_cau === 'tra_loi_ngan' || baoSaiDe) && vd !== 'correct' && (
                 cs!.baoRoi
-                  ? <p className="mt-2 text-[15px] text-ph-label-2">✓ Đã gửi ý kiến cho thầy cô.</p>
-                  : <button onClick={guiBaoSai} className="mt-2 rounded-lg border border-black/[0.1] px-3 py-1.5 text-[15px] text-ph-label-2">
+                  ? <p className="mt-2 text-[15px]" style={{ color: MAU.muted }}>✓ Đã gửi ý kiến cho thầy cô.</p>
+                  : <button onClick={guiBaoSai} className="mt-2 px-3 py-1.5 text-[15px]" style={{ ...NUT_PHU, borderRadius: R_TRONG, color: MAU.muted }}>
                       🚩 Em nghĩ mình đúng
                     </button>
               )}
@@ -813,21 +853,22 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
         </div>
       </div>
 
-      <div className={desktop ? 'mt-4 flex shrink-0 items-center gap-3' : 'flex shrink-0 items-center gap-2 border-t border-black/[0.06] bg-white p-3'}>
+      <div className={desktop ? 'mt-4 flex shrink-0 items-center gap-3' : 'flex shrink-0 items-center gap-2 p-3'}
+        style={desktop ? undefined : { background: MAU.surface, borderTop: `1px solid ${MAU.line}`, backdropFilter: 'var(--sk-blur)', WebkitBackdropFilter: 'var(--sk-blur)' }}>
         {idx > 0 && (
           <button onClick={() => setIdx((i) => i - 1)}
-            className={desktop ? 'rounded-2xl bg-white px-6 py-3.5 text-[19px] font-medium text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]' : 'rounded-xl bg-black/[0.04] px-4 py-3 text-[18px] text-ph-label-2'}>
+            className={desktop ? 'px-6 py-3.5 text-[19px] font-medium' : 'px-4 py-3 text-[18px]'} style={NUT_PHU}>
             {desktop ? '‹ Câu trước' : '‹'}
           </button>
         )}
         {!daCham ? (
           <button onClick={xacNhan} disabled={busy || !daDu}
-            className={desktop ? 'flex-1 rounded-2xl bg-brand py-3.5 text-[19px] font-semibold text-white shadow-[0_10px_24px_rgba(115,87,245,.22)] disabled:opacity-40' : 'flex-1 rounded-xl bg-brand py-3 text-[18px] font-medium text-white disabled:opacity-40'}>
+            className={`flex-1 font-semibold disabled:opacity-40 ${desktop ? 'py-3.5 text-[19px]' : 'py-3 text-[18px]'}`} style={NUT_CHINH}>
             {busy ? 'Đang chấm…' : 'Xác nhận'}
           </button>
         ) : (
           <button onClick={() => setIdx((i) => i + 1)}
-            className={desktop ? 'flex-1 rounded-2xl bg-brand py-3.5 text-[19px] font-semibold text-white shadow-[0_10px_24px_rgba(115,87,245,.22)]' : 'flex-1 rounded-xl bg-brand py-3 text-[18px] font-medium text-white'}>
+            className={`flex-1 font-semibold ${desktop ? 'py-3.5 text-[19px]' : 'py-3 text-[18px]'}`} style={NUT_CHINH}>
             {idx + 1 < total ? 'Câu tiếp →' : (daXongHet ? 'Xem kết quả →' : 'Câu tiếp →')}
           </button>
         )}
@@ -838,11 +879,13 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   // Thùy 13/09: MÀN LÀM BÀI phải gọn 1 viewport (Xác nhận đáp án luôn thấy). h-[100dvh]+flex col
   // → header/content/footer chia vùng; content overflow riêng, không phải cuộn cả trang.
   return desktop ? (
-    <div className="flex h-[100dvh] flex-col bg-[#f4f7fb] px-8 py-4">
+    <div className="flex h-[100dvh] flex-col px-8 py-4" style={NEN_MAN}>
       <div className="mx-auto flex min-h-0 w-full max-w-3xl flex-1 flex-col lg:max-w-4xl">{trongTam}</div>
     </div>
   ) : (
-    <div className="mx-auto flex h-[100dvh] max-w-md flex-col bg-ios md:max-w-3xl lg:max-w-4xl">{trongTam}</div>
+    <div style={NEN_MAN}>
+      <div className="mx-auto flex h-[100dvh] max-w-md flex-col md:max-w-3xl lg:max-w-4xl">{trongTam}</div>
+    </div>
   )
 }
 
@@ -894,19 +937,18 @@ function LamTuLuyen({ hocSinhId, onXong, desktop, chuDe, onDoiDang }: { hocSinhI
     } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
   }
 
-  if (state === 'dang_tai') return <div className={`flex min-h-screen items-center justify-center text-sm text-ph-label-2 ${desktop ? 'bg-[#f4f7fb]' : 'bg-ios'}`}>Đang chuẩn bị bài…</div>
+  if (state === 'dang_tai') return <ManCho>Đang chuẩn bị bài…</ManCho>
   if (dienO) return <LamDienO hocSinhId={hocSinhId} onXong={() => setDienO(false)} desktop={desktop} />
   if (state === 'trong' || !baiTestId || !mon) return (
-    <div className={desktop
-      ? 'flex min-h-screen flex-col items-center justify-center bg-[#f4f7fb] px-6 text-center'
-      : 'mx-auto flex min-h-screen max-w-md flex-col items-center justify-center bg-ios px-6 text-center md:max-w-3xl'}>
-      <p className="text-3xl">🌱</p>
-      <p className="mt-3 text-[15px] font-medium text-ph-label">{err ?? 'Chưa có dữ liệu học tập để tự luyện.'}</p>
-      {!chuDe && <p className="mt-1 text-[13px] text-ph-label-2">Học vài buổi trên lớp rồi quay lại nhé.</p>}
-      <button onClick={onXong} className={`mt-6 rounded-xl bg-white font-medium text-ph-label-2 shadow-sm ${desktop ? 'px-8 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>Về trang chính</button>
-    </div>
+    <ManGiua>
+      <TheHS className="w-full p-6">
+        <p className="text-3xl">🌱</p>
+        <p className="mt-3 text-[15px] font-medium" style={{ color: MAU.ink }}>{err ?? 'Chưa có dữ liệu học tập để tự luyện.'}</p>
+        {!chuDe && <p className="mt-1 text-[13px]" style={{ color: MAU.muted }}>Học vài buổi trên lớp rồi quay lại nhé.</p>}
+      </TheHS>
+      <button onClick={onXong} className={`mt-6 font-medium ${desktop ? 'px-8 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`} style={NUT_PHU}>Về trang chính</button>
+    </ManGiua>
   )
-
   return (
     <LamBai
       key={baiTestId}
@@ -917,19 +959,19 @@ function LamTuLuyen({ hocSinhId, onXong, desktop, chuDe, onDoiDang }: { hocSinhI
       doneCaption={chuDe ? `Em vừa luyện ${tongNgay} câu dạng "${chuDe.ten_dang}".` : `Hôm nay em đã luyện ${tongNgay} câu.`}
       doneExtra={
         <div className={`mt-3 w-full ${desktop ? 'max-w-sm' : ''}`}>
-          {err && <p className="mb-2 text-[12.5px] text-ph-red">{err}</p>}
+          {err && <p className="mb-2 text-[12.5px]" style={{ color: MAU.sai }}>{err}</p>}
           <button onClick={lamThem} disabled={busy}
-            className={`w-full rounded-xl bg-brand/10 font-medium text-brand disabled:opacity-40 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
+            className={`w-full font-medium disabled:opacity-40 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`} style={NUT_PHU}>
             {busy ? 'Đang tạo lượt mới…' : `Luyện lượt mới ${TU_LUYEN_SO_CAU_MOI_LUOT} câu`}
           </button>
           {chuDe && onDoiDang && (
             <button onClick={onDoiDang} disabled={busy}
-              className={`mt-2 w-full rounded-xl bg-ph-label-2/10 font-medium text-ph-label-2 disabled:opacity-40 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
+              className={`mt-2 w-full font-medium disabled:opacity-40 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`} style={{ ...NUT_PHU, color: MAU.muted }}>
               🔄 Đổi dạng khác
             </button>
           )}
           {!chuDe && <button onClick={() => setDienO(true)}
-            className={`mt-2 w-full rounded-xl bg-ph-orange/10 font-medium text-ph-orange ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
+            className={`mt-2 w-full font-medium ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`} style={NUT_PHU}>
             📐 Luyện chứng minh (điền vào lời giải)
           </button>}
         </div>
@@ -967,13 +1009,15 @@ function LamThuThach({ hocSinhId, onXong, onRank, desktop }: { hocSinhId: string
     try { setBaiTestId(await sinhThuThach(mon)) } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
   }
 
-  if (state === 'dang_tai') return <div className={`flex min-h-screen items-center justify-center text-sm text-ph-label-2 ${desktop ? 'bg-[#f4f7fb]' : 'bg-ios'}`}>Đang chuẩn bị Thử thách…</div>
+  if (state === 'dang_tai') return <ManCho>Đang chuẩn bị Thử thách…</ManCho>
   if (state === 'loi' || !baiTestId) return (
-    <div className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center bg-ios px-6 text-center md:max-w-3xl">
-      <p className="text-3xl">⚔️</p>
-      <p className="mt-3 text-[15px] font-medium text-ph-label">{err ?? 'Không tạo được lượt Thử thách.'}</p>
-      <button onClick={onXong} className="mt-6 rounded-xl bg-white px-6 py-3 text-sm font-medium text-ph-label-2 shadow-sm">Quay lại</button>
-    </div>
+    <ManGiua>
+      <TheHS className="w-full p-6">
+        <p className="text-3xl">⚔️</p>
+        <p className="mt-3 text-[15px] font-medium" style={{ color: MAU.ink }}>{err ?? 'Không tạo được lượt Thử thách.'}</p>
+      </TheHS>
+      <button onClick={onXong} className="mt-6 px-6 py-3 text-sm font-medium" style={NUT_PHU}>Quay lại</button>
+    </ManGiua>
   )
   return (
     <LamBai
@@ -991,28 +1035,29 @@ function LamThuThach({ hocSinhId, onXong, onRank, desktop }: { hocSinhId: string
 function KetQuaThuThachBox({ baiTestId, busy, err, onLuotMoi, onRank, desktop }: { baiTestId: string; busy: boolean; err: string | null; onLuotMoi: () => void; onRank: () => void; desktop?: boolean }) {
   const [kq, setKq] = useState<KetQuaThuThach | null | undefined>(undefined)
   useEffect(() => { setKq(undefined); ketQuaThuThach(baiTestId).then(setKq).catch(() => setKq(null)) }, [baiTestId])
-  const nut = `w-full rounded-xl font-medium ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`
+  const nut = `w-full font-medium ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`
   return (
     <div className={`mt-3 w-full ${desktop ? 'max-w-sm' : ''}`}>
-      {kq === undefined && <p className="mb-2 text-center text-[13px] text-ph-label-2">Đang chấm Thử thách…</p>}
-      {kq === null && <p className="mb-2 text-center text-[13px] text-ph-label-2">Chưa lấy được kết quả — xem lại ở màn Rank nhé.</p>}
+      {kq === undefined && <p className="mb-2 text-center text-[13px]" style={{ color: MAU.muted }}>Đang chấm Thử thách…</p>}
+      {kq === null && <p className="mb-2 text-center text-[13px]" style={{ color: MAU.muted }}>Chưa lấy được kết quả — xem lại ở màn Rank nhé.</p>}
       {kq && (
-        <div className={`mb-3 rounded-2xl p-4 text-center ${kq.pass ? 'bg-ph-green/10' : 'bg-ph-orange/10'}`}>
-          <p className={`text-[16px] font-extrabold ${kq.pass ? 'text-ph-green' : 'text-ph-orange'}`}>
+        // Thẻ skin phủ lớp màu ngữ nghĩa (vượt = xanh / chưa = cam) — dưới là nền thẻ nên đọc được cả trên nền ảnh.
+        <div className="mb-3 p-4 text-center" style={{ ...THE_TRON, background: `linear-gradient(${kq.pass ? NEN_DUNG : NEN_CB}, ${kq.pass ? NEN_DUNG : NEN_CB}), var(--sk-surface)` }}>
+          <p className="text-[16px] font-extrabold" style={{ color: kq.pass ? MAU.dung : MAU.canhBao }}>
             {kq.pass ? `Vượt Thử thách! ${kq.so_dung}/${kq.so_cau} câu đúng` : `Chưa vượt — ${kq.so_dung}/${kq.so_cau} câu đúng (cần ${kq.pass_can})`}
           </p>
-          <p className="mt-1 text-[13px] text-ph-label">
+          <p className="mt-1 text-[13px]" style={{ color: MAU.ink }}>
             {kq.pass
               ? (kq.diem > 0 ? `+${kq.diem} Điểm Rank` : 'Hôm nay em đã lấy đủ điểm Thử thách — làm tiếp vẫn tính vào luyện tập')
               : 'Làm lượt mới nhé, không giới hạn số lượt'}
             {kq.pass && kq.diem > 0 && kq.diem < kq.diem_goc ? ` (chạm trần ngày)` : ''}
           </p>
-          <p className="mt-1 text-[12px] text-ph-label-2">Hôm nay {kq.hom_nay}/{kq.tran_ngay} · tháng này {kq.thang}/{kq.tran_thang}</p>
+          <p className="mt-1 text-[12px]" style={{ color: MAU.muted }}>Hôm nay {kq.hom_nay}/{kq.tran_ngay} · tháng này {kq.thang}/{kq.tran_thang}</p>
         </div>
       )}
-      {err && <p className="mb-2 text-[12.5px] text-ph-red">{err}</p>}
-      <button onClick={onLuotMoi} disabled={busy} className={`${nut} bg-brand/10 text-brand disabled:opacity-40`}>{busy ? 'Đang tạo lượt mới…' : 'Thử thách lượt mới'}</button>
-      <button onClick={onRank} className={`${nut} mt-2 bg-ph-orange/10 text-ph-orange`}>🏆 Xem Rank</button>
+      {err && <p className="mb-2 text-[12.5px]" style={{ color: MAU.sai }}>{err}</p>}
+      <button onClick={onLuotMoi} disabled={busy} className={`${nut} disabled:opacity-40`} style={NUT_PHU}>{busy ? 'Đang tạo lượt mới…' : 'Thử thách lượt mới'}</button>
+      <button onClick={onRank} className={`${nut} mt-2`} style={NUT_PHU}>🏆 Xem Rank</button>
     </div>
   )
 }
@@ -1048,18 +1093,18 @@ function LamHTD({ hocSinhId, mon, dang, loai, desktop, onVeChiTiet, onSangTest, 
   }
   useEffect(() => { if (daGoi.current) return; daGoi.current = true; sinh() }, []) // eslint-disable-line
 
-  if (state === 'dang_tai') return <div className={`flex min-h-screen items-center justify-center text-sm text-ph-label-2 ${desktop ? 'bg-[#f4f7fb]' : 'bg-ios'}`}>Đang chuẩn bị bài…</div>
+  if (state === 'dang_tai') return <ManCho>Đang chuẩn bị bài…</ManCho>
   if (state === 'san_sang' && baiTestId && caus) return (
     <XemDeKhongMCQ dang={dang} loai={loai} caus={caus} desktop={desktop} onVeChiTiet={onVeChiTiet} onSangTest={onSangTest} />
   )
   if (state === 'loi' || !baiTestId) return (
-    <div className={desktop
-      ? 'flex min-h-screen flex-col items-center justify-center bg-[#f4f7fb] px-6 text-center'
-      : 'mx-auto flex min-h-screen max-w-md flex-col items-center justify-center bg-ios px-6 text-center md:max-w-3xl'}>
-      <p className="text-3xl">🌱</p>
-      <p className="mt-3 text-[15px] font-medium text-ph-label">{err ?? 'Không sinh được bài.'}</p>
-      <button onClick={onVeChiTiet} className={`mt-6 rounded-xl bg-white font-medium text-ph-label-2 shadow-sm ${desktop ? 'px-8 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>Quay lại</button>
-    </div>
+    <ManGiua>
+      <TheHS className="w-full p-6">
+        <p className="text-3xl">🌱</p>
+        <p className="mt-3 text-[15px] font-medium" style={{ color: MAU.ink }}>{err ?? 'Không sinh được bài.'}</p>
+      </TheHS>
+      <button onClick={onVeChiTiet} className={`mt-6 font-medium ${desktop ? 'px-8 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`} style={NUT_PHU}>Quay lại</button>
+    </ManGiua>
   )
 
   const laTest = loai === 'htd_test'
@@ -1073,25 +1118,25 @@ function LamHTD({ hocSinhId, mon, dang, loai, desktop, onVeChiTiet, onSangTest, 
       doneCaption={laTest ? `Đã nộp bài test dạng "${dang.ten_dang}" — dạng này đã xong!` : `Em vừa luyện ${tongLuot} câu dạng "${dang.ten_dang}".`}
       doneExtra={
         <div className={`mt-3 w-full ${desktop ? 'max-w-sm' : ''}`}>
-          {err && <p className="mb-2 text-[12.5px] text-ph-red">{err}</p>}
+          {err && <p className="mb-2 text-[12.5px]" style={{ color: MAU.sai }}>{err}</p>}
           {laTest ? (
             <>
-              <button onClick={onXongDang} className={`w-full rounded-xl bg-brand font-medium text-white ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
+              <button onClick={onXongDang} className={`w-full font-medium ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`} style={NUT_CHINH}>
                 Qua dạng mới →
               </button>
-              <button onClick={onVeChiTiet} className={`mt-2 w-full rounded-xl bg-ph-label-2/10 font-medium text-ph-label-2 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
+              <button onClick={onVeChiTiet} className={`mt-2 w-full font-medium ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`} style={{ ...NUT_PHU, color: MAU.muted }}>
                 Luyện tập thêm dạng này
               </button>
-              <button onClick={sinh} disabled={busy} className={`mt-2 w-full rounded-xl bg-ph-orange/10 font-medium text-ph-orange disabled:opacity-40 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
+              <button onClick={sinh} disabled={busy} className={`mt-2 w-full font-medium disabled:opacity-40 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`} style={NUT_PHU}>
                 {busy ? 'Đang tạo…' : '🔁 Test lại'}
               </button>
             </>
           ) : (
             <>
-              <button onClick={sinh} disabled={busy} className={`w-full rounded-xl bg-brand/10 font-medium text-brand disabled:opacity-40 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
+              <button onClick={sinh} disabled={busy} className={`w-full font-medium disabled:opacity-40 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`} style={NUT_PHU}>
                 {busy ? 'Đang tạo lượt mới…' : 'Luyện tiếp 10 câu'}
               </button>
-              <button onClick={onSangTest} className={`mt-2 w-full rounded-xl bg-brand font-medium text-white ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>
+              <button onClick={onSangTest} className={`mt-2 w-full font-medium ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`} style={NUT_CHINH}>
                 📝 Chuyển sang làm bài Test
               </button>
             </>
@@ -1113,33 +1158,35 @@ function XemDeKhongMCQ({ dang, loai, caus, desktop, onVeChiTiet, onSangTest }: {
 }) {
   const laTest = loai === 'htd_test'
   return (
-    <div className={desktop ? 'mx-auto min-h-screen max-w-2xl bg-[#f4f7fb] px-8 py-6 md:max-w-3xl' : 'mx-auto flex min-h-screen max-w-md flex-col bg-ios px-4 pb-8 pt-[calc(14px+env(safe-area-inset-top))] md:max-w-3xl'}>
-      <button onClick={onVeChiTiet} className={`mb-3 flex items-center gap-1 text-ph-label-2 ${desktop ? 'text-[14px]' : 'text-[13px]'}`}><span aria-hidden>←</span> Quay lại</button>
-      <h1 className={`font-extrabold text-ph-label ${desktop ? 'text-[20px]' : 'text-[17px]'}`}>{dang.ten_dang}</h1>
-      <div className={`mt-2 rounded-2xl px-3.5 py-3 text-[13px] leading-relaxed ${laTest ? 'bg-amber-50 text-amber-800' : 'bg-brand/10 text-brand'}`}>
+    <ManHS rong="hep" className="!gap-0">
+      <DauTrangHS tieuDe={dang.ten_dang} onBack={onVeChiTiet} />
+      {/* Dải báo 1 dòng: test = phủ cam cảnh báo (làm ra giấy), luyện = thẻ thường. */}
+      <div className="mt-3 px-3.5 py-3 text-[13px] leading-relaxed" style={laTest
+        ? { ...THE_TRON, background: `linear-gradient(${NEN_CB}, ${NEN_CB}), var(--sk-surface)`, color: MAU.ink }
+        : { ...THE_TRON, color: MAU.ink }}>
         {laTest
           ? 'Dạng này chưa có câu trắc nghiệm — em làm các câu dưới đây ra giấy hoặc nói với thầy cô, trợ giảng sẽ chấm giúp em.'
           : 'Dạng này chưa có câu trắc nghiệm — em đọc và luyện các câu dưới đây, không cần nộp gì cả.'}
       </div>
       <div className="mt-3 flex flex-col gap-2.5">
         {caus.map((c, i) => (
-          <div key={c.id} className="rounded-2xl bg-white p-3.5 shadow-sm">
-            <p className="text-[12px] font-bold text-ph-label-2">Câu {i + 1}</p>
-            <div className="mt-1 text-[14px] leading-relaxed text-ph-label"><MathText>{c.noi_dung ?? ''}</MathText></div>
-          </div>
+          <TheHS key={c.id} className="p-3.5">
+            <p className="text-[12px] font-bold" style={{ color: MAU.muted }}>Câu {i + 1}</p>
+            <div className="mt-1 text-[14px] leading-relaxed" style={{ color: MAU.ink }}><MathText>{c.noi_dung ?? ''}</MathText></div>
+          </TheHS>
         ))}
       </div>
       <div className={`mt-4 ${desktop ? 'max-w-sm' : ''}`}>
         {laTest ? (
-          <button onClick={onVeChiTiet} className={`w-full rounded-xl bg-brand font-medium text-white ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>Đã đọc xong — quay lại</button>
+          <button onClick={onVeChiTiet} className={`w-full font-medium ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`} style={NUT_CHINH}>Đã đọc xong — quay lại</button>
         ) : (
           <>
-            <button onClick={onSangTest} className={`w-full rounded-xl bg-brand font-medium text-white ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>📝 Chuyển sang làm bài Test</button>
-            <button onClick={onVeChiTiet} className={`mt-2 w-full rounded-xl bg-ph-label-2/10 font-medium text-ph-label-2 ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`}>Quay lại</button>
+            <button onClick={onSangTest} className={`w-full font-medium ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`} style={NUT_CHINH}>📝 Chuyển sang làm bài Test</button>
+            <button onClick={onVeChiTiet} className={`mt-2 w-full font-medium ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`} style={{ ...NUT_PHU, color: MAU.muted }}>Quay lại</button>
           </>
         )}
       </div>
-    </div>
+    </ManHS>
   )
 }
 
@@ -1162,38 +1209,39 @@ function BangXepHang({ onXong }: { onXong: () => void }) {
     })().catch(() => setRows([]))
   }, [])
 
-  if (rows === null) return <div className="flex min-h-screen items-center justify-center bg-[#f4f7fb] text-sm text-ph-label-2">Đang tải…</div>
+  if (rows === null) return <ManCho>Đang tải…</ManCho>
 
   return (
-    <div className="mx-auto min-h-screen max-w-2xl bg-[#f4f7fb] px-8 py-6">
-      <div className="mb-5 flex items-center gap-4">
-        <button onClick={onXong} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[18px] text-[#576073] shadow-[0_6px_16px_rgba(31,47,79,0.06)]">‹</button>
-        <div className="min-w-0">
-          <h1 className="text-[26px] font-black tracking-tight text-[#171a2b]">Bảng xếp hạng</h1>
-          {khoi && <p className="mt-0.5 text-[13px] text-[#7b8499]">Số câu làm ĐÚNG tự luyện · các bạn khối {khoi}</p>}
-        </div>
-      </div>
+    <ManHS rong="hep">
+      <DauTrangHS tieuDe="Bảng xếp hạng" phu={khoi ? `Số câu làm ĐÚNG tự luyện · các bạn khối ${khoi}` : undefined} onBack={onXong} />
 
       {rows.length === 0 ? (
-        <div className={`mt-3 rounded-[21px] bg-white p-8 text-center ${SHADOW}`}>
+        <TheHS className="mt-2 p-8 text-center">
           <p className="text-3xl">🏆</p>
-          <p className="mt-2 text-[15px] font-medium text-ph-label">Chưa có ai làm Tự luyện</p>
-          <p className="mt-1 text-[13px] text-ph-label-2">Làm bài đầu tiên để dẫn đầu bảng xếp hạng!</p>
-        </div>
+          <p className="mt-2 text-[15px] font-medium" style={{ color: MAU.ink }}>Chưa có ai làm Tự luyện</p>
+          <p className="mt-1 text-[13px]" style={{ color: MAU.muted }}>Làm bài đầu tiên để dẫn đầu bảng xếp hạng!</p>
+        </TheHS>
       ) : (
         // ĐÚNG ".classTable"+".row"+".rank"+".score" (ph-v3.css) — bảng xếp hạng cả lớp có sẵn
-        <div className={`overflow-hidden rounded-[24px] bg-white ${SHADOW}`}>
+        <TheHS className="overflow-hidden">
           {rows.map((r, i) => (
-            <div key={r.ma_hs} className={`grid grid-cols-[42px_1fr_64px] items-center gap-3.5 px-5 py-4 text-[14px] ${i > 0 ? 'border-t border-black/[0.06]' : ''} ${r.la_toi ? 'bg-brand/10' : ''}`}>
-              <span className={`flex h-9 w-9 items-center justify-center rounded-[11px] text-[14px] font-black ${
-                r.la_toi ? 'bg-brand text-white' : i === 0 ? 'bg-ph-orange text-white' : i === 1 ? 'bg-ph-label-2 text-white' : i === 2 ? 'bg-[#c77e4a] text-white' : 'bg-[#f0f2f6] text-ph-label'}`}>{i + 1}</span>
-              <p className={`min-w-0 truncate font-bold ${r.la_toi ? 'text-brand' : 'text-ph-label'}`}>{r.ho_ten}{r.la_toi ? ' (Bạn)' : ''}</p>
-              <span className={`rounded-full px-2.5 py-1.5 text-center text-[13px] font-black ${r.la_toi ? 'bg-brand text-white' : 'bg-ph-green/10 text-ph-green'}`}>{r.so_cau_dung}</span>
+            <div key={r.ma_hs} className="grid grid-cols-[42px_1fr_64px] items-center gap-3.5 px-5 py-4 text-[14px]"
+              style={{ borderTop: i > 0 ? `1px solid ${MAU.line}` : undefined, background: r.la_toi ? NEN_ACC : undefined }}>
+              {/* Top 3 = màu huy chương vàng/bạc/đồng (cố định, chữ trắng trên nền màu); em = màu nhấn skin. */}
+              <span className="flex h-9 w-9 items-center justify-center text-[14px] font-black" style={{ borderRadius: R_TRONG, ...(
+                r.la_toi ? { background: MAU.acc, color: MAU.accInk }
+                : i === 0 ? { background: MAU.canhBao, color: '#fff' }
+                : i === 1 ? { background: '#8e96a8', color: '#fff' }
+                : i === 2 ? { background: '#c77e4a', color: '#fff' }
+                : { background: MAU.surface2, color: MAU.ink }) }}>{i + 1}</span>
+              <p className="min-w-0 truncate font-bold" style={{ color: MAU.ink }}>{r.ho_ten}{r.la_toi ? ' (Bạn)' : ''}</p>
+              <span className="rounded-full px-2.5 py-1.5 text-center text-[13px] font-black"
+                style={r.la_toi ? { background: MAU.acc, color: MAU.accInk } : { background: NEN_DUNG, color: MAU.dung }}>{r.so_cau_dung}</span>
             </div>
           ))}
-        </div>
+        </TheHS>
       )}
-    </div>
+    </ManHS>
   )
 }
 
@@ -1209,24 +1257,25 @@ function HopThuHS({ onXong }: { onXong: () => void }) {
     }).catch(() => setItems([]))
   }, [])
   return (
-    <div className="mx-auto min-h-screen max-w-md bg-ios px-4 pb-10 md:max-w-3xl">
+    <ManHS rong="hep">
       <Head title="Hòm thư" onBack={onXong} />
-      {items === null && <p className="py-10 text-center text-sm text-ph-label-2">Đang tải…</p>}
+      {items === null && <TrongHS>Đang tải…</TrongHS>}
       {items && items.length === 0 && (
-        <div className={`mt-3 rounded-[21px] bg-white p-8 text-center ${SHADOW}`}>
+        <TheHS className="p-8 text-center">
           <p className="text-3xl">📭</p>
-          <p className="mt-2 text-sm font-medium text-ph-label">Chưa có thông báo nào</p>
-        </div>
+          <p className="mt-2 text-sm font-medium" style={{ color: MAU.ink }}>Chưa có thông báo nào</p>
+        </TheHS>
       )}
-      <div className="mt-3 flex flex-col gap-3">
+      <div className="flex flex-col gap-3">
         {items?.map((tb) => (
-          <div key={tb.id} className={`rounded-[18px] bg-white p-4 ${SHADOW} ${!tb.doc_at ? 'ring-2 ring-brand/30' : ''}`}>
-            <p className="text-[14px] leading-snug text-ph-label">{tb.noi_dung}</p>
-            <p className="mt-1.5 text-[11px] text-ph-label-2">{fmtShort(tb.created_at)}</p>
-          </div>
+          // Thư chưa đọc: viền nhấn skin (thay ring brand cũ).
+          <TheHS key={tb.id} className="p-4" style={!tb.doc_at ? { outline: `2px solid ${MAU.acc}`, outlineOffset: '-2px' } : undefined}>
+            <p className="text-[14px] leading-snug" style={{ color: MAU.ink }}>{tb.noi_dung}</p>
+            <p className="mt-1.5 text-[11px]" style={{ color: MAU.muted }}>{fmtShort(tb.created_at)}</p>
+          </TheHS>
         ))}
       </div>
-    </div>
+    </ManHS>
   )
 }
 
@@ -1291,7 +1340,7 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
     return () => clearInterval(t)
   }, [hanMs, daNop]) // eslint-disable-line
 
-  if (!de) return <div className="flex min-h-screen items-center justify-center bg-ios text-sm text-ph-label-2">Đang tải đề…</div>
+  if (!de) return <ManCho>Đang tải đề…</ManCho>
   const total = caus.length
   const daTraLoi = caus.filter((c) => ans[c.id] != null && ans[c.id] !== '' && !(Array.isArray(ans[c.id]) && (ans[c.id] as unknown[]).some((x) => x == null))).length
 
@@ -1317,15 +1366,17 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
   // Đề thi đã nộp nhưng thầy/cô CHƯA mở đáp án ⇒ không lộ đúng/sai, không lộ điểm (spec §9.5.1).
   const dangKhoa = daNop && Object.values(reveal!).some((r) => r.khoa)
   if (dangKhoa) return (
-    <div className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center gap-3 bg-ios px-6 text-center md:max-w-3xl">
-      <p className="text-5xl">📨</p>
-      <p className="text-[18px] font-bold text-ph-label">Đã nộp bài thi</p>
-      <p className="text-[14px] text-ph-label-2">Em đã trả lời {daTraLoi}/{total} câu. Đáp án và điểm sẽ hiện khi thầy/cô mở đáp án.</p>
-      <div className="mt-2 flex w-full gap-2">
-        <button onClick={onXong} className="flex-1 rounded-xl bg-black/[0.04] py-3 text-sm text-ph-label-2">Về trang chính</button>
-        <button onClick={xemLaiKhoa} disabled={busy} className="flex-1 rounded-xl bg-ph-purple py-3 text-sm font-medium text-white disabled:opacity-40">{busy ? 'Đang xem…' : '↻ Xem đã mở chưa'}</button>
+    <ManGiua>
+      <TheHS className="flex w-full flex-col items-center gap-3 p-6">
+        <p className="text-5xl">📨</p>
+        <p className="text-[18px] font-bold" style={{ ...HEAD, color: MAU.ink }}>Đã nộp bài thi</p>
+        <p className="text-[14px]" style={{ color: MAU.muted }}>Em đã trả lời {daTraLoi}/{total} câu. Đáp án và điểm sẽ hiện khi thầy/cô mở đáp án.</p>
+      </TheHS>
+      <div className="mt-3 flex w-full gap-2">
+        <button onClick={onXong} className="flex-1 py-3 text-sm" style={{ ...NUT_PHU, color: MAU.muted }}>Về trang chính</button>
+        <button onClick={xemLaiKhoa} disabled={busy} className="flex-1 py-3 text-sm font-medium disabled:opacity-40" style={NUT_CHINH}>{busy ? 'Đang xem…' : '↻ Xem đã mở chưa'}</button>
       </div>
-    </div>
+    </ManGiua>
   )
 
   const cau = caus[idx]
@@ -1345,38 +1396,42 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
   const soTrongPhan = laDeThi && cau ? caus.slice(0, idx + 1).filter((c) => (c.phan ?? '') === (cau.phan ?? '')).length : idx + 1
   const dongHo = conLai != null ? `${Math.floor(conLai / 60)}:${String(conLai % 60).padStart(2, '0')}` : null
 
+
   return (
-    <div className="mx-auto flex h-screen max-w-md flex-col bg-ios md:max-w-3xl">
+    <div style={NEN_MAN}>
+    <div className="mx-auto flex h-screen max-w-md flex-col md:max-w-3xl">
       <div className="flex items-center gap-3 px-4 py-3">
-        <button onClick={onXong} className="text-ph-label-2">✕</button>
-        <div className="h-2 flex-1 overflow-hidden rounded-full bg-ph-purple/15">
-          <div className="h-full bg-ph-purple transition-all" style={{ width: `${((idx + 1) / total) * 100}%` }} />
+        <button onClick={onXong} className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full" style={{ ...THE_TRON, borderRadius: '999px', color: MAU.muted }}>✕</button>
+        <div className="h-2 flex-1 overflow-hidden rounded-full" style={{ background: MAU.line }}>
+          <div className="h-full transition-all" style={{ width: `${((idx + 1) / total) * 100}%`, background: MAU.acc }} />
         </div>
-        <span className="text-[12px] text-ph-label-2">{idx + 1}/{total}</span>
-        {dongHo && <span className={`rounded-lg px-2 py-1 font-mono text-[13px] font-semibold ${conLai! <= 300 ? 'bg-ph-red/10 text-ph-red' : 'bg-ph-purple/10 text-ph-purple'}`}>⏱ {dongHo}</span>}
+        <span className="text-[12px] font-semibold" style={{ color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>{idx + 1}/{total}</span>
+        {dongHo && <span className="rounded-lg px-2 py-1 font-mono text-[13px] font-semibold"
+          style={conLai! <= 300 ? { background: NEN_SAI, color: MAU.sai, border: `1px solid ${VIEN_SAI}` } : { ...THE_TRON, color: MAU.ink }}>⏱ {dongHo}</span>}
       </div>
-      {!daNop && <p className="px-4 pb-1 text-center text-[12px] text-ph-purple">📝 Bài THI · nộp xong mới hiện đáp án · đã trả lời {daTraLoi}/{total}</p>}
-      {loi && <p className="mx-4 mb-1 rounded-lg bg-ph-red/10 px-3 py-1.5 text-center text-[12px] text-ph-red">{loi}</p>}
+      {!daNop && <p className="px-4 pb-1 text-center text-[12px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>📝 Bài THI · nộp xong mới hiện đáp án · đã trả lời {daTraLoi}/{total}</p>}
+      {loi && <p className="mx-4 mb-1 px-3 py-1.5 text-center text-[12px]" style={{ background: `linear-gradient(${NEN_SAI}, ${NEN_SAI}), var(--sk-surface)`, color: MAU.sai, borderRadius: R_TRONG }}>{loi}</p>}
       {daNop && diem && (
-        <div className="mx-4 mb-2 rounded-2xl bg-white p-3 text-center shadow-sm">
-          <p className="text-[12px] text-ph-label-2">Điểm bài thi</p>
-          <p className="text-[28px] font-bold text-ph-purple">{diem.diem_10 ?? '—'}<span className="text-[15px] text-ph-label-2">/10</span></p>
-          <div className="mt-1 flex flex-wrap justify-center gap-x-3 text-[12px] text-ph-label-2">
-            {diem.phan.map((p) => <span key={p.phan}>{p.phan || 'Câu'}: <b className="text-ph-label">{p.diem}</b>/{p.toi_da}</span>)}
+        <div className="mx-4 mb-2 p-3 text-center" style={THE}>
+          <p className="text-[12px]" style={{ color: MAU.muted }}>Điểm bài thi</p>
+          <p className="text-[28px] font-bold" style={{ ...HEAD, color: MAU.ink }}>{diem.diem_10 ?? '—'}<span className="text-[15px]" style={{ color: MAU.muted }}>/10</span></p>
+          <div className="mt-1 flex flex-wrap justify-center gap-x-3 text-[12px]" style={{ color: MAU.muted }}>
+            {diem.phan.map((p) => <span key={p.phan}>{p.phan || 'Câu'}: <b style={{ color: MAU.ink }}>{p.diem}</b>/{p.toi_da}</span>)}
           </div>
         </div>
       )}
 
       <div className="flex-1 overflow-y-auto px-4 pb-4">
-        <div className="rounded-2xl bg-white p-4 shadow-sm">
-          {laDeThi && cau.phan && <p className="mb-1 text-[12px] font-bold uppercase tracking-wide text-ph-purple">{cau.phan}</p>}
+        <div className="p-4" style={THE}>
+          {laDeThi && cau.phan && <p className="mb-1 text-[12px] font-bold uppercase tracking-wide" style={{ ...HEAD, color: MAU.muted }}>{cau.phan}</p>}
           <div className="mb-2 flex items-center justify-between">
-            <p className="text-[13px] font-semibold text-ph-label-2">Câu {soTrongPhan}</p>
-            {cau.ly_thuyet && <button onClick={() => setGoiY((v) => !v)} className={`rounded-full border px-3 py-1 text-[12px] font-medium ${goiY ? 'border-ph-orange/40 bg-ph-orange/15 text-ph-orange' : 'border-ph-orange/25 bg-ph-orange/10 text-ph-orange'}`}>💡 Gợi ý</button>}
+            <p className="text-[13px] font-semibold" style={{ color: MAU.muted }}>Câu {soTrongPhan}</p>
+            {cau.ly_thuyet && <button onClick={() => setGoiY((v) => !v)} className="rounded-full px-3 py-1 text-[12px] font-medium" style={NUT_GOI_Y(goiY)}>💡 Gợi ý</button>}
           </div>
-          {goiY && cau.ly_thuyet && <div className="mb-3 rounded-xl border border-ph-orange/25 bg-ph-orange/[0.06] p-3 text-[14px] leading-relaxed text-ph-label"><MathText>{cau.ly_thuyet}</MathText></div>}
-          {cau.noi_dung && <div className="mb-3 text-[15px] leading-relaxed text-ph-label"><MathText>{cau.noi_dung}</MathText></div>}
-          {cau.anh_de && <img src={cau.anh_de} alt="đề" className="mb-3 max-h-80 rounded-lg border border-black/[0.08]" />}
+          {goiY && cau.ly_thuyet && <div className="mb-3 p-3 text-[14px] leading-relaxed" style={{ ...HOP_GOI_Y, color: MAU.ink }}><MathText>{cau.ly_thuyet}</MathText></div>}
+          {cau.noi_dung && <div className="mb-3 text-[15px] leading-relaxed" style={{ color: MAU.ink }}><MathText>{cau.noi_dung}</MathText></div>}
+          {/* Hình đề: nền trắng cố định — nét đen trên trắng, đặt thẳng lên thẻ tối là mất nét. */}
+          {cau.anh_de && <img src={cau.anh_de} alt="đề" className="mb-3 max-h-80 rounded-lg bg-white" style={{ border: `1px solid ${MAU.line}` }} />}
 
           {laTN ? (
             <div className="flex flex-col gap-2.5">
@@ -1384,10 +1439,11 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
                 const chon = ans[cau.id] === orig
                 const laDapAn = daNop && orig === correctOrigTN
                 const chonSai = daNop && chon && !laDapAn
+                const tt: TtO = laDapAn ? 'dung' : chonSai ? 'sai' : chon ? 'chon' : 'thuong'
                 return (
                   <button key={orig} onClick={() => luu(cau.id, orig)} disabled={daNop}
-                    className={`flex items-start gap-3 rounded-xl border p-3 text-left text-[15px] ${laDapAn ? 'border-ph-green/40 bg-ph-green/10' : chonSai ? 'border-ph-red/40 bg-ph-red/10' : chon ? 'border-ph-purple bg-ph-purple/[0.06]' : 'border-black/[0.08]'}`}>
-                    <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold ${laDapAn ? 'bg-ph-green text-white' : chonSai ? 'bg-ph-red text-white' : chon ? 'bg-ph-purple text-white' : 'bg-black/[0.05] text-ph-label-2'}`}>{chuCaiChon(dispI)}</span>
+                    className="flex items-start gap-3 p-3 text-left text-[15px]" style={O_DAP_AN(tt)}>
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold" style={TRON_CHU(tt)}>{chuCaiChon(dispI)}</span>
                     <span className="flex-1 pt-0.5"><MathText>{stripLabel(opt)}</MathText></span>
                   </button>
                 )
@@ -1399,59 +1455,61 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
                 const pick = chonArr[orig] ? String(chonArr[orig]).toUpperCase() : null
                 const key = daNop ? String(keyDS[orig] ?? '').toUpperCase() : null
                 return (
-                  <div key={orig} className="rounded-xl border border-black/[0.08] p-3">
-                    <div className="mb-2 flex gap-2 text-[15px] text-ph-label"><span className="font-semibold text-ph-label-2">{'abcd'[dispI] ?? dispI + 1})</span><span className="flex-1"><MathText>{m.noi_dung}</MathText></span></div>
+                  <div key={orig} className="p-3" style={{ border: `1px solid ${MAU.line}`, background: MAU.surface2, borderRadius: R_TRONG }}>
+                    <div className="mb-2 flex gap-2 text-[15px]" style={{ color: MAU.ink }}><span className="font-semibold" style={{ color: MAU.muted }}>{'abcd'[dispI] ?? dispI + 1})</span><span className="flex-1"><MathText>{m.noi_dung}</MathText></span></div>
                     <div className="flex gap-2">
                       {(['D', 'S'] as const).map((v) => {
                         const on = pick === v
                         const dung = daNop && v === key
                         const sai = daNop && on && v !== key
+                        const tt: TtO = dung ? 'dung' : sai ? 'sai' : on ? 'chon' : 'thuong'
                         return <button key={v} onClick={() => { const cur = (ans[cau.id] as (string | null)[]) ?? (cau.menh_de ?? []).map(() => null); const next = [...cur]; next[orig] = v; luu(cau.id, next) }} disabled={daNop}
-                          className={`flex-1 rounded-lg border py-1.5 text-[13px] font-medium ${dung ? 'border-ph-green/40 bg-ph-green/10 text-ph-green' : sai ? 'border-ph-red/40 bg-ph-red/10 text-ph-red' : on ? 'border-ph-purple bg-ph-purple/[0.06] text-ph-purple' : 'border-black/[0.08] text-ph-label-2'}`}>{v === 'D' ? 'Đúng' : 'Sai'}</button>
+                          className="flex-1 py-1.5 text-[13px] font-medium" style={NUT_DS(tt)}>{v === 'D' ? 'Đúng' : 'Sai'}</button>
                       })}
                     </div>
-                    {daNop && menhDeReveal[orig]?.loi_giai && <div className="mt-2 border-t border-black/[0.06] pt-1.5 text-[13px] text-ph-label-2"><MathText>{menhDeReveal[orig].loi_giai as string}</MathText></div>}
+                    {daNop && menhDeReveal[orig]?.loi_giai && <div className="mt-2 pt-1.5 text-[13px]" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.muted }}><MathText>{menhDeReveal[orig].loi_giai as string}</MathText></div>}
                   </div>
                 )
               })}
             </div>
           ) : (
             <input value={(ans[cau.id] as string) ?? ''} onChange={(e) => setAns((s) => ({ ...s, [cau.id]: e.target.value }))} onBlur={(e) => luu(cau.id, e.target.value)} disabled={daNop}
-              placeholder="Nhập đáp án…" className="w-full rounded-xl border border-black/[0.1] px-4 py-3 text-[15px] outline-none focus:border-ph-purple disabled:bg-black/[0.03]" />
+              placeholder="Nhập đáp án…" className={`${O_NHAP_CLS} text-[15px]`} style={O_NHAP} />
           )}
 
           {daNop && (
-            <div className={`mt-4 rounded-xl p-3 ${vd === 'correct' ? 'bg-ph-green/10' : vd === 'partial' ? 'bg-ph-orange/10' : 'bg-ph-red/10'}`}>
-              <p className={`text-[15px] font-semibold ${vd === 'correct' ? 'text-ph-green' : vd === 'partial' ? 'text-ph-orange' : 'text-ph-red'}`}>{vd === 'correct' ? '🎉 Đúng' : vd === 'partial' ? '👍 Đúng một phần' : '😔 Chưa đúng'}</p>
-              {cau.loai_cau === 'tra_loi_ngan' && vd !== 'correct' && <p className="mt-1 text-[13px] text-ph-label-2">Đáp án đúng: <b className="text-ph-green">{String(rv?.dap_an_key)}</b></p>}
-              {rv?.loi_giai && <div className="mt-2 border-t border-black/[0.06] pt-2 text-[14px] leading-relaxed text-ph-label"><p className="mb-1 text-[12px] font-semibold uppercase text-ph-label-2">Lời giải</p><MathText>{rv.loi_giai}</MathText></div>}
-              {rv?.anh_dap_an && <img src={rv.anh_dap_an} alt="lời giải" className="mt-2 max-h-72 rounded-lg border border-black/[0.08]" />}
+            <div className="mt-4 p-3" style={{ background: vd === 'correct' ? NEN_DUNG : vd === 'partial' ? NEN_CB : NEN_SAI, borderRadius: R_TRONG }}>
+              <p className="text-[15px] font-semibold" style={{ color: vd === 'correct' ? MAU.dung : vd === 'partial' ? MAU.canhBao : MAU.sai }}>{vd === 'correct' ? '🎉 Đúng' : vd === 'partial' ? '👍 Đúng một phần' : '😔 Chưa đúng'}</p>
+              {cau.loai_cau === 'tra_loi_ngan' && vd !== 'correct' && <p className="mt-1 text-[13px]" style={{ color: MAU.muted }}>Đáp án đúng: <b style={{ color: MAU.dung }}>{String(rv?.dap_an_key)}</b></p>}
+              {rv?.loi_giai && <div className="mt-2 pt-2 text-[14px] leading-relaxed" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.ink }}><p className="mb-1 text-[12px] font-semibold uppercase" style={{ color: MAU.muted }}>Lời giải</p><MathText>{rv.loi_giai}</MathText></div>}
+              {rv?.anh_dap_an && <img src={rv.anh_dap_an} alt="lời giải" className="mt-2 max-h-72 rounded-lg bg-white" style={{ border: `1px solid ${MAU.line}` }} />}
             </div>
           )}
         </div>
       </div>
 
-      <div className="flex items-center gap-2 border-t border-black/[0.06] bg-white p-3">
-        {idx > 0 && <button onClick={() => setIdx((i) => i - 1)} className="rounded-xl bg-black/[0.04] px-4 py-3 text-sm text-ph-label-2">‹</button>}
+      <div className="flex items-center gap-2 p-3" style={{ background: MAU.surface, borderTop: `1px solid ${MAU.line}`, backdropFilter: 'var(--sk-blur)', WebkitBackdropFilter: 'var(--sk-blur)' }}>
+        {idx > 0 && <button onClick={() => setIdx((i) => i - 1)} className="px-4 py-3 text-sm" style={NUT_PHU}>‹</button>}
         {idx + 1 < total
-          ? <button onClick={() => setIdx((i) => i + 1)} className="flex-1 rounded-xl bg-ph-purple py-3 text-sm font-medium text-white">Câu tiếp →</button>
+          ? <button onClick={() => setIdx((i) => i + 1)} className="flex-1 py-3 text-sm font-medium" style={NUT_CHINH}>Câu tiếp →</button>
           : daNop
-            ? <button onClick={onXong} className="flex-1 rounded-xl bg-ph-purple py-3 text-sm font-medium text-white">Xong</button>
-            : <button onClick={() => setConfNop(true)} className="flex-1 rounded-xl bg-ph-green py-3 text-sm font-medium text-white">Nộp bài</button>}
+            ? <button onClick={onXong} className="flex-1 py-3 text-sm font-medium" style={NUT_CHINH}>Xong</button>
+            : <button onClick={() => setConfNop(true)} className="flex-1 py-3 text-sm font-medium" style={NUT_NOP}>Nộp bài</button>}
       </div>
 
       {confNop && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 px-4 pb-6" onClick={() => setConfNop(false)}>
-          <div className="w-full max-w-md rounded-2xl bg-white p-5" onClick={(e) => e.stopPropagation()}>
-            <p className="text-[15px] font-semibold text-ph-label">Nộp bài thi?</p>
-            <p className="mt-1 text-[13px] text-ph-label-2">Đã trả lời {daTraLoi}/{total} câu. Nộp xong sẽ chấm và <b>không sửa được</b> nữa.</p>
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 px-4 pb-6" onClick={() => setConfNop(false)}>
+          <div className="w-full max-w-md p-5" style={THE_TRON} onClick={(e) => e.stopPropagation()}>
+            <p className="text-[15px] font-semibold" style={{ ...HEAD, color: MAU.ink }}>Nộp bài thi?</p>
+            <p className="mt-1 text-[13px]" style={{ color: MAU.muted }}>Đã trả lời {daTraLoi}/{total} câu. Nộp xong sẽ chấm và <b style={{ color: MAU.ink }}>không sửa được</b> nữa.</p>
             <div className="mt-4 flex gap-2">
-              <button onClick={() => setConfNop(false)} className="flex-1 rounded-xl bg-black/[0.04] py-3 text-sm text-ph-label-2">Để xem lại</button>
-              <button onClick={doNop} disabled={busy} className="flex-1 rounded-xl bg-ph-green py-3 text-sm font-medium text-white disabled:opacity-40">{busy ? 'Đang nộp…' : 'Nộp bài'}</button>
+              <button onClick={() => setConfNop(false)} className="flex-1 py-3 text-sm" style={{ ...NUT_PHU, color: MAU.muted }}>Để xem lại</button>
+              <button onClick={doNop} disabled={busy} className="flex-1 py-3 text-sm font-medium disabled:opacity-40" style={NUT_NOP}>{busy ? 'Đang nộp…' : 'Nộp bài'}</button>
             </div>
           </div>
         </div>
       )}
+    </div>
     </div>
   )
 }

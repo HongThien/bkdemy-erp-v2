@@ -31122,3 +31122,25 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   cổng `co_quyen_ghi('huyhieu')`; tự kiểm 2 chiều quyền). Thử trước trong ROLLBACK với trần 8s + JWT thật: admin chốt T7 2,1s / T8 3,7s (613 / 840
   sao mới), nhân sự thường bị chặn. Áp `migrate --only` OK, schema.md refresh. UI: lá mới `huyhieu_trao` (GV, chỉ tab Trao) · `huyhieu` = admin.
 - Chưa chốt thật tháng nào — để Thùy bấm (T7 rồi T8). Không commit 17 file app HS đang sửa dở của phiên song song.
+
+## 2026-09-29 (1) — App HS: STYLE áp cho TOÀN BỘ màn (không chỉ Home) + nền RPG ảnh 37 sáng hơn
+
+- **Thùy:** màn HS "chưa giống thiết kế, hơi tối ở dưới" ⇒ đổi ảnh 37 · "không chỉ đổi home mà phải đổi toàn bộ các màn bên trong thành 1 style
+  thống nhất" · "toàn bộ trang trí lưu thành style, đổi là đổi hết" · "làm đúng cái anime thôi, mấy cái kia m test".
+- **Nền RPG:** `bg_lau_dai_doc_sang.jpg` (ảnh 37, 940×1672) = bản dọc của Lâu đài; Lâu đài lên đầu = mặc định. Lớp phủ cũ (tối đặc từ 48%) → chỉ
+  phủ nhẹ đáy (0 → 0,35). Skin mặc định mọi em (kể cả chưa chọn, kể cả cấp 1) = Anime RPG.
+- **Gốc vấn đề:** 15 màn con mỗi màn tự chép 1 bảng THEME kiểu Home v4 (nền mây, chồng sách, khẩu hiệu viết tay, hồng/xanh theo giới tính) + ~500 mã
+  màu gõ tay + ~280 token `ph-*` ⇒ Home đổi skin mà vào trong vẫn cũ.
+- **Làm:** `skin/KhungHS.tsx` = bộ khung chung: `useApSkinGoc` gắn biến `--sk-*` lên <html> (HocSinhApp gọi 1 lần; `ganSkinMacDinh()` ở main-hs cho
+  màn hiện trước HocSinhApp như đổi mật khẩu bắt buộc) · `ManHS`/`DauTrangHS`/`TheHS`/`NutHS`/`NhanHS`/`BadgeHS`/`NhomHS`/`TrongHS` + hằng
+  `MAU`/`THE`/`THE_TRON`/`HEAD` · biến mới `--sk-chu-bong` (bóng chữ kế thừa cho skin nền ảnh). Chuyển 18 file màn HS (TuLuyenChuDe làm mẫu,
+  4 agent song song chia file): HocSinhApp (làm bài/ET/tự luyện/Thử thách/HTD/hòm thư/BXH; KHÔNG đụng HomeCap1) · CaBoTro/HocTuDau/DienOCau ·
+  ThongTin/SoTay/DanhSach/BaiTapGiao · MayMan/ThanhTuu/ViXu/Album/NhiemVu/Rank/DoiMatKhau. Màu còn cố định = có nghĩa (đúng/sai, huy chương, màu
+  bậc Rank, ô vòng quay, bục BXH ảnh) hoặc nền trắng sau ảnh đề (hình đen nét mảnh mất trên nền tối).
+- **Kiểm (không tin báo cáo agent):** agent HocSinhApp tự khai 1 lệnh awk ghi đè ~560 dòng rồi khôi phục từ HEAD ⇒ t đối chiếu HEAD↔mới: số `await`/
+  `set…(`/`if (`/`useState`/`useEffect`/nộp bài/`MathText`/`disabled=`/`key=` KHỚP; lệch `function`+2/`return <`+2 (ManCho/ManGiua mới),
+  `onClick`−3 (nút back → `onBack`); chữ hiển thị không mất câu nào. `tsc` sạch · `build:hs` qua · soi trang xem thử tạm (không đăng nhập) RPG
+  375×812: Tự luyện, Thông tin, Sổ tay, May mắn, Rank, Ví xu, Đổi MK. Sửa: lỗi/đang tải/"chưa mở cho môn" đặt trần trên ảnh không đọc được →
+  bọc thẻ (Rank/NhiemVu/Album/TuLuyen/HocTuDau/SoTay/ThongTin/ViXu/ThanhTuu).
+- **Chưa soi được:** màn làm bài/ET/tự luyện (cần đăng nhập HS) — chỉ kiểm bằng đối chiếu logic + tsc.
+- **Chờ Thùy gật:** xoá hẳn 4 skin thử (Tối giản/Đấu trường/Y2K/Soft Hàn) khỏi registry + 3 font; 12 em đang lưu skin thử (DB giữ nguyên, app tự ra RPG).

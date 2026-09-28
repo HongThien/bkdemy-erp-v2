@@ -5,6 +5,7 @@ import { createRoot } from 'react-dom/client'
 import { registerSW } from 'virtual:pwa-register'
 import AppHS from './AppHS'
 import './index.css'
+import { ganSkinMacDinh } from './screens/hocsinh/skin/KhungHS'
 import 'katex/dist/katex.min.css'
 import { initErrorBuffer } from './lib/errorBuffer'
 
@@ -29,6 +30,8 @@ registerSW({ immediate: true })
 // style) — bundle HS không cần "mật độ desktop" của staff, luôn net 1.0.
 document.documentElement.style.setProperty('--app-z', '1')
 
+// Skin mặc định (Anime RPG) gắn trước khi vẽ — HocSinhApp gắn lại theo lựa chọn của em (spec-giao-dien-hs.md).
+ganSkinMacDinh()
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <AppHS />

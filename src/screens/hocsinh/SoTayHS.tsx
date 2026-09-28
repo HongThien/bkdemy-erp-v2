@@ -22,63 +22,46 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { MathText } from '../kho/ui'
 import { monCuaHS } from '../../lib/tuluyen'
 import {
-  soTayCay, soTayTim, soTayDang, SOTAY_NHANH, NHOM_TEN, NHOM_MAU,
+  soTayCay, soTayTim, soTayDang, SOTAY_NHANH, NHOM_TEN,
   type SoTayCay, type SoTayChuDe, type SoTayChuyenDe, type SoTayNhanh, type SoTayNhom,
   type SoTayTimRow, type SoTayNoiDung,
 } from '../../lib/sotay'
+import { ManHS, DauTrangHS, MAU, THE, THE_TRON, HEAD } from './skin/KhungHS'
 
-const A = '/bk-ui/hs'
-const NAVY = '#0F1745'
-const THEME = {
-  nam: { bg: `${A}/bg_home_male.jpg`, decor: `${A}/decor_books.png`, primary: '#1673D8', sec: '#6E7EAA',
-    cardTint: 'linear-gradient(160deg,#ffffff,#f6f9ff)', shadow: '0 8px 24px rgba(76,108,170,.10)',
-    quote: 'Không biết thì tra\nbiết rồi thì ôn!', quoteColor: '#4A5BC4', underline: false },
-  nu: { bg: `${A}/bg_home_female.jpg`, decor: `${A}/decor_books_female.png`, primary: '#F23886', sec: '#756F9F',
-    cardTint: 'linear-gradient(160deg,#ffffff,#fff5fb)', shadow: '0 8px 24px rgba(182,96,145,.10)',
-    quote: 'Tra một lần\nnhớ thật lâu ♡', quoteColor: '#E84A8F', underline: true },
+// Thùy 29/09: mọi màn theo STYLE (skin) em đang chọn — bỏ nền mây + chồng sách + khẩu hiệu + màu theo giới tính.
+// `t` còn truyền qua các mảnh con nhưng mọi giá trị giờ là biến skin (1 bản cho cả nam/nữ).
+const NAVY = MAU.ink
+const T_SKIN = { primary: MAU.acc, sec: MAU.muted }
+const THEME = { nam: T_SKIN, nu: T_SKIN }
+type Theme = typeof T_SKIN
+
+// Màu nhóm độ khó — dùng màu NGỮ NGHĨA + nền trong suốt (NHOM_MAU ở lib là pastel, chết trên skin tối).
+const NHOM_MAU_SKIN: Record<SoTayNhom, { chu: string; nen: string }> = {
+  co_ban: { chu: MAU.dung, nen: 'rgba(34,160,107,0.16)' },
+  trung_binh: { chu: MAU.canhBao, nen: 'rgba(224,144,30,0.16)' },
+  nang_cao: { chu: MAU.sai, nen: 'rgba(229,72,77,0.16)' },
 }
-type Theme = typeof THEME.nam
 
-// Shell RIÊNG (không tái dùng `Kung` của ThongTinHocTap) vì cần cờ `decor`: màn ĐỌC lý thuyết
-// phải TẮT hình trang trí — nó `fixed bottom-0` chiếm 46% chiều cao, bài dài cuộn qua là chữ
-// chui xuống dưới ảnh. Màn danh sách thì bật như các màn HS khác cho đồng bộ.
-function Kung({ t, title, sub, onBack, decor = true, children }: {
-  t: Theme; title: string; sub?: string; onBack: () => void; decor?: boolean; children: ReactNode
+// Shell = khung skin + đầu trang. Không còn hình trang trí cố định ở đáy ⇒ cờ `decor` giữ cho chữ ký cũ, không còn tác dụng.
+function Kung({ title, sub, onBack, children }: {
+  t?: Theme; title: string; sub?: string; onBack: () => void; decor?: boolean; children: ReactNode
 }) {
   return (
-    <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] md:max-w-[820px] lg:max-w-[1180px]"
-      style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
-      <img src={t.bg} alt="" className="pointer-events-none fixed inset-0 mx-auto h-[100dvh] w-full max-w-[430px] object-cover md:max-w-[820px] lg:max-w-[1180px]" />
-      {decor && (
-        <div className="pointer-events-none fixed inset-x-0 bottom-0 mx-auto flex w-full max-w-[430px] flex-col items-end md:max-w-[820px] lg:max-w-[1180px]">
-          <div className="font-hand mb-1 mr-[14%] -rotate-[6deg] whitespace-pre-line text-right text-[20px] leading-[1.15]" style={{ color: t.quoteColor }}>{t.quote}</div>
-          <img src={t.decor} alt="" className="block w-[46%]" style={{ marginRight: '-2%', marginBottom: '-2%' }} />
-        </div>
-      )}
-      <div className={`relative px-4 pt-[calc(10px+env(safe-area-inset-top))] ${decor ? 'pb-[46vh]' : 'pb-16'}`}>
-        <div className="relative flex items-start gap-3">
-          <button onClick={onBack} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] bg-white active:scale-95" style={{ boxShadow: t.shadow }}>
-            <svg viewBox="0 0 48 48" className="h-5 w-5" fill="none" aria-hidden><path d="M29 10L15 24l14 14" stroke="#5B69A8" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-          </button>
-          <div className="min-w-0 pt-0.5">
-            <h1 className="relative inline-block text-[22px] font-extrabold leading-tight tracking-tight" style={{ color: NAVY }}>
-              {title}
-              {t.underline && <span className="absolute -bottom-1 left-[35%] h-[3px] w-[55%] rounded-full" style={{ background: t.primary, opacity: .8 }} />}
-            </h1>
-            {sub && <p className="mt-1.5 text-[12.5px]" style={{ color: t.sec }}>{sub}</p>}
-          </div>
-        </div>
-        {children}
-      </div>
-    </div>
+    <ManHS>
+      <DauTrangHS tieuDe={<span className="whitespace-normal">{title}</span>} onBack={onBack} />
+      {sub && <p className="-mt-1 text-[12.5px] leading-snug" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>{sub}</p>}
+      <div>{children}</div>
+    </ManHS>
   )
 }
 
-function Chip({ chon, ten, onClick, t }: { chon: boolean; ten: string; onClick: () => void; t: Theme }) {
+function Chip({ chon, ten, onClick }: { chon: boolean; ten: string; onClick: () => void; t?: Theme }) {
   return (
     <button onClick={onClick}
-      className={`rounded-full px-3 py-1.5 text-[12.5px] font-bold transition active:scale-95 ${chon ? 'text-white' : ''}`}
-      style={chon ? { background: t.primary } : { background: '#ffffffcc', color: t.sec }}>
+      className="px-3 py-1.5 text-[12.5px] font-bold transition active:scale-95"
+      style={chon
+        ? { background: MAU.acc, color: MAU.accInk, borderRadius: '999px', border: `1px solid ${MAU.acc}` }
+        : { ...THE_TRON, borderRadius: '999px', color: MAU.muted }}>
       {ten}
     </button>
   )
@@ -86,35 +69,35 @@ function Chip({ chon, ten, onClick, t }: { chon: boolean; ten: string; onClick: 
 
 function NhomChip({ nhom }: { nhom: SoTayNhom | null }) {
   if (!nhom) return null
-  const m = NHOM_MAU[nhom]
+  const m = NHOM_MAU_SKIN[nhom]
   return <span className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-black" style={{ background: m.nen, color: m.chu }}>{NHOM_TEN[nhom]}</span>
 }
 
 // Dòng danh sách dùng chung cho cả 3 tầng + kết quả tìm.
-function Dong({ t, ten, phu, duoi, onClick }: { t: Theme; ten: string; phu?: ReactNode; duoi?: string | null; onClick: () => void }) {
+function Dong({ ten, phu, duoi, onClick }: { t?: Theme; ten: string; phu?: ReactNode; duoi?: string | null; onClick: () => void }) {
   return (
-    <button onClick={onClick} className="flex w-full items-center gap-3 rounded-[20px] p-3.5 text-left transition active:scale-[0.98]"
-      style={{ background: t.cardTint, boxShadow: t.shadow }}>
+    <button onClick={onClick} className="flex w-full items-center gap-3 p-3.5 text-left transition active:scale-[0.98]"
+      style={THE}>
       <span className="min-w-0 flex-1">
         <span className="flex items-center gap-2">
           <span className="min-w-0 text-[14.5px] font-extrabold leading-snug" style={{ color: NAVY }}>{ten}</span>
           {phu}
         </span>
-        {duoi && <span className="mt-1 block truncate text-[11.5px]" style={{ color: t.sec }}>{duoi}</span>}
+        {duoi && <span className="mt-1 block truncate text-[11.5px]" style={{ color: MAU.muted }}>{duoi}</span>}
       </span>
-      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full" style={{ background: `${t.primary}18` }}>
-        <svg viewBox="0 0 48 48" className="h-3.5 w-3.5" fill="none" aria-hidden><path d="M18 12l12 12-12 12" stroke={t.primary} strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full" style={{ background: MAU.surface2 }}>
+        <svg viewBox="0 0 48 48" className="h-3.5 w-3.5" fill="none" aria-hidden><path d="M18 12l12 12-12 12" stroke={MAU.acc} strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" /></svg>
       </span>
     </button>
   )
 }
 
-function Trong({ t, icon, title, mo_ta }: { t: Theme; icon: string; title: string; mo_ta: string }) {
+function Trong({ icon, title, mo_ta }: { t?: Theme; icon: string; title: string; mo_ta: string }) {
   return (
-    <div className="mt-6 rounded-[24px] p-6 text-center" style={{ background: t.cardTint, boxShadow: t.shadow }}>
+    <div className="mt-4 p-6 text-center" style={THE}>
       <div className="text-[34px]">{icon}</div>
-      <p className="mt-2 text-[15px] font-extrabold" style={{ color: NAVY }}>{title}</p>
-      <p className="mt-1 text-[12.5px] leading-snug" style={{ color: t.sec }}>{mo_ta}</p>
+      <p className="mt-2 text-[15px] font-extrabold" style={{ ...HEAD, color: NAVY }}>{title}</p>
+      <p className="mt-1 text-[12.5px] leading-snug" style={{ color: MAU.muted }}>{mo_ta}</p>
     </div>
   )
 }
@@ -233,14 +216,14 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
   return (
     <Kung t={t} title={title} sub={sub} onBack={back}>
       {/* Ô tìm — luôn hiện ở mọi tầng: em đang lần mò mà chợt nhớ ra tên thì gõ được ngay. */}
-      <div className="relative mt-4">
-        <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[15px]">🔍</span>
+      <div className="relative mt-2">
+        <span className="pointer-events-none absolute left-3.5 top-1/2 z-[1] -translate-y-1/2 text-[15px]">🔍</span>
         <input value={q} onChange={(e) => setQ(e.target.value)} inputMode="search"
           placeholder="Tìm tên dạng bài, chuyên đề…"
-          className="w-full rounded-[18px] border-0 py-3 pl-10 pr-10 text-[14px] outline-none"
-          style={{ background: '#ffffffe6', color: NAVY, boxShadow: t.shadow }} />
+          className="w-full py-3 pl-10 pr-10 text-[14px] outline-none"
+          style={{ ...THE_TRON, color: NAVY }} />
         {q && (
-          <button onClick={() => setQ('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-[15px]" style={{ color: t.sec }}>✕</button>
+          <button onClick={() => setQ('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-[15px]" style={{ color: MAU.muted }}>✕</button>
         )}
       </div>
 
@@ -254,14 +237,14 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
           </div>
           {(cay?.khoi_list?.length ?? 0) > 1 && (
             <div className="mt-2 flex flex-wrap items-center gap-2">
-              <span className="text-[11.5px] font-bold" style={{ color: t.sec }}>Khối</span>
+              <span className="text-[11.5px] font-bold" style={{ color: MAU.muted }}>Khối</span>
               {cay!.khoi_list.map((k) => (
                 <Chip key={k} t={t} ten={k} chon={(khoi ?? cay!.khoi) === k} onClick={() => setKhoi(k)} />
               ))}
             </div>
           )}
           <div className="mt-2 flex flex-wrap items-center gap-2">
-            <span className="text-[11.5px] font-bold" style={{ color: t.sec }}>Độ khó</span>
+            <span className="text-[11.5px] font-bold" style={{ color: MAU.muted }}>Độ khó</span>
             <Chip t={t} ten="Tất cả" chon={nhomLoc === null} onClick={() => setNhomLoc(null)} />
             {(['co_ban', 'trung_binh', 'nang_cao'] as SoTayNhom[]).map((n) => (
               <Chip key={n} t={t} ten={NHOM_TEN[n]} chon={nhomLoc === n} onClick={() => setNhomLoc(n)} />
@@ -271,7 +254,7 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
       )}
 
       {loi && <Trong t={t} icon="⚠️" title="Không tải được sổ tay" mo_ta={loi} />}
-      {!loi && cay === null && <p className="mt-8 text-center text-[13px]" style={{ color: t.sec }}>Đang tải…</p>}
+      {!loi && cay === null && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
 
       <div className="mt-4 flex flex-col gap-2.5">
         {/* ── Kết quả tìm ─────────────────────────────────────────────── */}
@@ -316,7 +299,6 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
 }
 
 // ── MÀN ĐỌC 1 DẠNG — lý thuyết + phương pháp + bài mẫu (gói chung trong `noi_dung`) ─────────
-// Tắt decor: bài dài, hình trang trí fixed dưới đáy sẽ đè lên chữ khi cuộn.
 function DocDang({ t, maDang, mon, nhanh, api, onBack }: { t: Theme; maDang: string; mon: string; nhanh: SoTayNhanh; api: SoTayApi; onBack: () => void }) {
   const [d, setD] = useState<SoTayNoiDung | null | undefined>(undefined) // undefined = đang tải · null = không có
   const [loi, setLoi] = useState<string | null>(null)
@@ -335,15 +317,15 @@ function DocDang({ t, maDang, mon, nhanh, api, onBack }: { t: Theme; maDang: str
     <Kung t={t} decor={false} onBack={onBack}
       title={d ? d.ten_dang : d === undefined ? 'Đang mở…' : 'Chưa có nội dung'}
       sub={d ? `Khối ${d.khoi} · ${d.ten_chu_de} › ${d.ten_chuyen_de}` : undefined}>
-      {d === undefined && <p className="mt-8 text-center text-[13px]" style={{ color: t.sec }}>Đang tải…</p>}
+      {d === undefined && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
       {d === null && (
         <Trong t={t} icon={loi ? '⚠️' : '📭'} title={loi ? 'Không mở được' : 'Dạng này chưa có lý thuyết'}
           mo_ta={loi ?? 'Thầy cô chưa soạn phần này. Em chọn dạng khác hoặc quay lại sau nhé.'} />
       )}
       {d && (
-        <div className="mt-4 rounded-[24px] p-4" style={{ background: '#ffffffee', boxShadow: t.shadow }}>
+        <div className="mt-2 p-4" style={THE}>
           {d.nhom && <div className="mb-2"><NhomChip nhom={d.nhom} /></div>}
-          {d.mo_ta_ngan && <p className="mb-3 text-[12.5px] italic leading-snug" style={{ color: t.sec }}>{d.mo_ta_ngan}</p>}
+          {d.mo_ta_ngan && <p className="mb-3 text-[12.5px] italic leading-snug" style={{ color: MAU.muted }}>{d.mo_ta_ngan}</p>}
           {/* MathText = đúng trình render lý thuyết của màn Kho/trang in: LaTeX $…$ + ảnh ![](url).
               Dùng lại để HS thấy y hệt bản thầy cô soạn, không đẻ bộ render thứ hai. */}
           <div className="text-[14.5px] leading-[1.75]" style={{ color: NAVY }}>
