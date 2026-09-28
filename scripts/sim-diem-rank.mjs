@@ -69,11 +69,13 @@ function sinhNen(n, apDung) {
   return ds
 }
 
-function chayKhoi({ mon, siSo, pa, tranKieu, apDung, thang = 3, tranNgayChia = 0 }) {
+function chayKhoi({ mon, siSo, pa, tranKieu, apDung, thang = 3, tranNgayChia = 0, quyHang = false, thiLai = false, kieu = KIEU }) {
+  // quyHang (D4): hạng MT quy đổi = ceil(hạng × 50 / số em có thi) rồi mới tra bảng 1–50
+  // thiLai (D6): lỡ MT ⇒ thi lại, vẫn có điểm xếp hạng (HS offline không nghỉ ⇒ mọi em đều có MT)
   // tranNgayChia > 0 ⇒ trần ngày = trần tháng CỐ ĐỊNH ÷ tranNgayChia (D3); 0 ⇒ dùng TT_TRAN_NGAY
   const tranNgay = tranNgayChia ? Math.round(tranThang(pa, mon, 'co_dinh') / tranNgayChia) : TT_TRAN_NGAY
-  const hs = [...KIEU.map(k => ({ ...k })), ...sinhNen(siSo - KIEU.length, apDung)]
-  hs.forEach(h => { h.tong = 0; h.src = { et: 0, btvn: 0, mt: 0, tt: 0 }; h.thang = [] })
+  const hs = [...kieu.map(k => ({ ...k })), ...sinhNen(Math.max(0, siSo - kieu.length), apDung)]
+  hs.forEach(h => { h.tong = 0; h.src = { et: 0, btvn: 0, mt: 0, tt: 0 }; h.thang = []; h.cum = [] })
   const m = MON[mon]
   for (let t = 1; t <= thang; t++) {
     // MT: điểm = 10×skill + nhiễu, xếp hạng trong khối (chỉ người thi)
@@ -83,11 +85,13 @@ function chayKhoi({ mon, siSo, pa, tranKieu, apDung, thang = 3, tranNgayChia = 0
       if (h.vao && t < h.vao) continue
       for (let i = 0; i < m.et; i++) if (rnd() < h.coMat) h.m.et += pa.et
       for (let i = 0; i < m.btvn; i++) { const u = rnd(); if (u < h.dh) h.m.btvn += pa.btvn; else if (u < h.dh + h.muon) h.m.btvn += pa.muon }
-      const coThi = !(h.lo_mt || []).includes(t) && rnd() < (h.coMat >= .9 ? .97 : h.coMat >= .8 ? .9 : .75)
+      const coThi = thiLai || (!(h.lo_mt || []).includes(t) && rnd() < (h.coMat >= .9 ? .97 : h.coMat >= .8 ? .9 : .75))
       if (coThi) thi.push({ h, d: Math.round(clip(10 * h.skill + 0.9 * gauss(), 0, 10) * 4) / 4 })
     }
     thi.sort((a, b) => b.d - a.d)
-    thi.forEach((x, i) => { let hang = i + 1; while (hang > 1 && thi[hang - 2].d === x.d) hang--; x.h.m.mt = mtBang(hang) * pa.mtHeSo })
+    thi.forEach((x, i) => { let hang = i + 1; while (hang > 1 && thi[hang - 2].d === x.d) hang--
+      if (quyHang) hang = Math.ceil(hang * 50 / thi.length)
+      x.h.m.mt = mtBang(hang) * pa.mtHeSo })
     // Thử thách theo ngày, rồi áp trần tháng
     for (const h of hs) {
       if (h.vao && t < h.vao) continue
@@ -101,7 +105,7 @@ function chayKhoi({ mon, siSo, pa, tranKieu, apDung, thang = 3, tranNgayChia = 0
       h.m.tt = Math.min(tt, tran)
       const tongThang = h.m.et + h.m.btvn + h.m.mt + h.m.tt
       for (const k in h.m) h.src[k] += h.m[k]
-      h.tong += tongThang; h.thang.push(tongThang)
+      h.tong += tongThang; h.thang.push(tongThang); h.cum[t] = h.tong
     }
   }
   const sorted = [...hs].sort((a, b) => b.tong - a.tong)
@@ -139,6 +143,80 @@ function inKieu(title, cfg) {
     console.log(`| ${k.id} ${a.ten} | ${f(a.t1)} | ${f(a.t2)} | ${f(a.t3)} | **${f(a.tong)}** | ${Math.round(a.hang)} | ${f(a.et)} | ${f(a.btvn)} | ${f(a.mt)} | ${f(a.tt)} | ${pc(a.tt, a.tong)} |`) }
   console.log(`\nPhân bố tổng 3 tháng của HS nền: p10 ${f(pct(.1))} · p30 ${f(pct(.3))} · p50 ${f(pct(.5))} · p70 ${f(pct(.7))} · p85 ${f(pct(.85))} · p95 ${f(pct(.95))} · max ${f(pct(1))}`)
   return { acc, pct }
+}
+
+// ============================================================================
+// BỘ SỐ ĐÃ CHỐT (Thùy 28/09): node scripts/sim-diem-rank.mjs --chot
+//   D1 ET 100 · BTVN 100/50 · MT bảng×10 · Thử thách 10/20/30 · trần tháng CỐ ĐỊNH ¼ · trần ngày = tháng/20
+//   D4 quy hạng MT theo sĩ số dự thi · D6 lỡ MT thi lại · mỗi môn riêng · Thử thách vô hạn lượt
+// ============================================================================
+const KIEU_CHOT = [
+  ...KIEU.filter(k => ['K1', 'K2', 'K3', 'K4', 'K5', 'K6', 'K8', 'K9', 'K12', 'K13'].includes(k.id)),
+  { id: 'K7', ten: 'Ốm lỡ MT tháng 2, thi lại', skill: .75, coMat: .9, dh: .85, muon: .1, app: .5, lo_mt: [2] },
+]
+const HE_SO_BAC = [0, 0.4, 1.0, 1.6, 2.0, 2.4]   // bậc 1..6 (mùa 3 tháng) × điểm tối đa 1 tháng của môn
+const maxThang = (pa, mon) => { const m = MON[mon]; return m.et * pa.et + m.btvn * pa.btvn + 100 * pa.mtHeSo + tranThang(pa, mon, 'co_dinh') }
+
+function chayChot(mon, siSo, title, soThang = 3, heSo = HE_SO_BAC) {
+  const pa = PA.B_can_bang, mx = maxThang(pa, mon)
+  const nguong = heSo.map(k => Math.round(k * mx))
+  const ghe = Math.max(1, Math.round(0.03 * siSo))
+  const bacCua = (diem, laGhe) => laGhe ? 7 : nguong.reduce((b, n, i) => diem >= n ? i + 1 : b, 1)
+  const acc = {}; const phanBo = [null, Array(8).fill(0), Array(8).fill(0), Array(8).fill(0)]; let soNen = 0; let mtNen = 0, mtNenN = 0
+  for (let r = 0; r < RUNS; r++) {
+    const hs = chayKhoi({ mon, siSo, pa, tranKieu: 'co_dinh', apDung: .6, tranNgayChia: 20, quyHang: true, thiLai: true, kieu: KIEU_CHOT, thang: soThang })
+    const bac = {}
+    for (let t = 1; t <= soThang; t++) {
+      const xep = [...hs].sort((a, b) => (b.cum[t] || 0) - (a.cum[t] || 0))
+      xep.forEach((h, i) => { const d = h.cum[t] || 0; (bac[t] ??= new Map()).set(h, bacCua(d, i < ghe && d >= nguong[5])) })
+    }
+    const xep3 = [...hs].sort((a, b) => b.tong - a.tong); xep3.forEach((h, i) => h.hang = i + 1)
+    for (const h of hs) {
+      if (h.id === 'nen') { soNen++; for (let t = 1; t <= soThang; t++) phanBo[t][bac[t].get(h)]++; mtNen += h.src.mt; mtNenN++; continue }
+      const a = acc[h.id] ??= { ten: h.ten, c1: 0, c2: 0, c3: 0, hang: 0, tt: 0, mt: 0, b1: [], b2: [], b3: [] }
+      a.c1 += h.cum[1] || 0; a.c2 += h.cum[2] || 0; a.c3 += h.tong; a.hang += h.hang; a.tt += h.src.tt; a.mt += h.src.mt
+      for (let t = 1; t <= soThang; t++) a['b' + t].push(bac[t].get(h))
+    }
+  }
+  const mode = (arr) => { const c = {}; arr.forEach(x => c[x] = (c[x] || 0) + 1); return +Object.entries(c).sort((a, b) => b[1] - a[1])[0][0] }
+  console.log(`\n### ${title}\n`)
+  console.log(`Điểm tối đa 1 tháng: **${f(mx)}** · Ngưỡng bậc 2–6: ${nguong.slice(1).map(f).join(' / ')} · Ghế bậc 7: top ${ghe} và ≥ ${f(nguong[5])}${mtNenN ? ' · MT TB/tháng HS nền: ' + f(mtNen / mtNenN / soThang) : ''}\n`)
+  const n = RUNS, T = [...Array(soThang).keys()].map(i => i + 1)
+  if (soThang === 3) {
+    console.log('| Kiểu HS | Cộng dồn T1 | Cộng dồn T2 | **Cuối mùa T3** | Hạng /' + siSo + ' | Bậc T1 → T2 → T3 | MT 3 tháng | Thử thách | % TT |')
+    console.log('|---|---|---|---|---|---|---|---|---|')
+  } else {
+    console.log('| Kiểu HS | **Điểm mùa (1 tháng)** | Hạng /' + siSo + ' | **Bậc** | MT | Thử thách | % TT |')
+    console.log('|---|---|---|---|---|---|---|')
+  }
+  for (const [, a] of Object.entries(acc).sort((x, y) => y[1].c3 - x[1].c3))
+    console.log(soThang === 3
+      ? `| ${a.ten} | ${f(a.c1 / n)} | ${f(a.c2 / n)} | **${f(a.c3 / n)}** | ${Math.round(a.hang / n)} | ${T.map(t => t === 3 ? '**' + mode(a['b' + t]) + '**' : mode(a['b' + t])).join(' → ')} | ${f(a.mt / n)} | ${f(a.tt / n)} | ${pc(a.tt, a.c3)} |`
+      : `| ${a.ten} | **${f(a.c3 / n)}** | ${Math.round(a.hang / n)} | **${mode(a.b1)}** | ${f(a.mt / n)} | ${f(a.tt / n)} | ${pc(a.tt, a.c3)} |`)
+  if (soNen) {
+    console.log('\nPhân bố bậc của HS nền (% số em):\n')
+    console.log('| Sau | Bậc 1 | Bậc 2 | Bậc 3 | Bậc 4 | Bậc 5 | Bậc 6 | Bậc 7 (ghế) |')
+    console.log('|---|---|---|---|---|---|---|---|')
+    for (let t = 1; t <= soThang; t++) { const tot = phanBo[t].reduce((s, x) => s + x, 0)
+      console.log(`| Tháng ${t} | ${[1, 2, 3, 4, 5, 6, 7].map(b => Math.round(100 * phanBo[t][b] / tot) + '%').join(' | ')} |`) }
+  }
+}
+
+if (process.argv.includes('--chot')) {
+  console.log('# BỘ SỐ ĐÃ CHỐT — mô phỏng mùa 3 tháng, ' + RUNS + ' lần/khối, 60% HS dùng Thử thách\n')
+  console.log('ET 100 · BTVN 100 (muộn 50) · MT bảng hạng quy theo sĩ số × 10 (500–1.000) · Thử thách 8/9/10 đúng = 10/20/30')
+  console.log('Trần Thử thách: Toán ' + tranThang(PA.B_can_bang, 'Toan', 'co_dinh') + '/tháng, ' + Math.round(tranThang(PA.B_can_bang, 'Toan', 'co_dinh') / 20) + '/ngày · KHTN ' + tranThang(PA.B_can_bang, 'KHTN', 'co_dinh') + '/tháng, ' + Math.round(tranThang(PA.B_can_bang, 'KHTN', 'co_dinh') / 20) + '/ngày')
+  chayChot('Toan', 54, 'TOÁN khối 7 — 54 em')
+  chayChot('Toan', 68, 'TOÁN khối 9 — 68 em (khối lớn nhất)')
+  chayChot('Toan', 11, 'TOÁN khối 4 — 11 em (khối nhỏ, kiểm D4)')
+  chayChot('KHTN', 34, 'KHTN khối 9 — 34 em')
+  chayChot('KHTN', 11, 'KHTN khối 8 — 11 em (khối nhỏ, kiểm D4)')
+  // Phương án MÙA 1 THÁNG (C4 chưa chốt): ngưỡng = hệ số × điểm tối đa 1 tháng
+  const HE_SO_1T = [0, 0.4, 0.56, 0.68, 0.76, 0.84]
+  console.log('\n---\n## Phương án MÙA 1 THÁNG — hệ số bậc 2–6: ' + HE_SO_1T.slice(1).join(' / '))
+  chayChot('Toan', 54, 'MÙA 1 THÁNG — TOÁN khối 7 — 54 em', 1, HE_SO_1T)
+  chayChot('KHTN', 34, 'MÙA 1 THÁNG — KHTN khối 9 — 34 em', 1, HE_SO_1T)
+  process.exit(0)
 }
 
 console.log('# Kết quả mô phỏng Điểm Rank — ' + RUNS + ' lần/kịch bản\n')

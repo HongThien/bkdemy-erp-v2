@@ -6,7 +6,94 @@
 
 ---
 
-## ★ CẬP NHẬT SAU KHI THÙY CHỐT (28/09, vòng 2) — đọc mục này trước; §0–§6 bên dưới là vòng 1
+## ★★ VÒNG 3 — BỘ SỐ ĐÃ CHỐT TOÀN BỘ (Thùy 28/09) · kết quả tính lại
+
+Chạy lại: `node scripts/sim-diem-rank.mjs --chot`. Mỗi khối chạy 400 lần, 60% HS dùng Thử thách.
+
+### Bộ số đã chốt (mỗi môn một bộ, cùng công thức)
+
+| Mục | Toán | KHTN | Chốt |
+|---|---|---|---|
+| ET | 100 / bài | 100 / bài | D1 |
+| BTVN | 100 đúng hạn · 50 muộn | như Toán | D1 |
+| MT | Bảng hạng 1–50 × 10 (1.000 → 500). **Hạng quy theo sĩ số dự thi:** `ceil(hạng × 50 / số em thi)` | như Toán | D1 · D4 |
+| Lỡ MT | Thi lại, tính hạng bằng điểm thi lại (`diem_thi_lai`) | như Toán | D6 |
+| Thử thách, 1 lượt pass | 8/10 = 10 · 9/10 = 20 · 10/10 = 30. **Vô hạn lượt** | như Toán | D1 |
+| Trần tháng Thử thách | **500** = ¼ × (500 + 500 + 1.000) | **375** = ¼ × (300 + 200 + 1.000) | D2 · trần ¼ |
+| Trần ngày Thử thách | **25** | **19** | D3 |
+| Điểm tối đa 1 tháng | **2.500** | **1.875** | — |
+
+### Kết quả — Toán khối 7 (54 em), mùa 3 tháng
+
+| Kiểu HS | Tháng 1 | Hết tháng 2 | **Hết mùa** | Hạng | Bậc T1 → T2 → T3 | % Thử thách |
+|---|---|---|---|---|---|---|
+| Giỏi toàn diện | 2.434 | 4.862 | **7.279** | 1 | 2 → 4 → **7** | 21% |
+| Giỏi, cày app điên | 2.336 | 4.677 | **7.020** | 2 | 2 → 4 → **7** | 21% |
+| Trung bình, cày 6 lượt/ngày | 2.091 | 4.190 | **6.298** | 6 | 2 → 4 → **6** | 24% |
+| Khá, chăm | 2.021 | 4.032 | **6.039** | 8 | 2 → 4 → **6** | 14% |
+| Giỏi, không dùng app | 1.932 | 3.861 | **5.786** | 11 | 2 → 3 → **5** | 0% |
+| Yếu, cày 15 lượt/ngày | 1.915 | 3.826 | **5.746** | 12 | 2 → 3 → **5** | 23% |
+| Ốm lỡ MT tháng 2, thi lại | 1.762 | 3.509 | **5.259** | 21 | 2 → 3 → **5** | 6% |
+| Yếu, cày 3 lượt/ngày | 1.589 | 3.171 | **4.765** | 33 | 2 → 3 → **4** | 7% |
+| Trung bình | 1.574 | 3.154 | **4.715** | 35 | 2 → 3 → **4** | 3% |
+| Vào học từ tháng 2 | — | 2.165 | **4.340** | 45 | 1 → 2 → **4** | 16% |
+| Yếu, lười | 1.217 | 2.439 | **3.667** | 53 | 2 → 2 → **3** | 0% |
+
+**Kiểm D4 — quy hạng theo sĩ số chạy đúng:**
+- Cùng một kiểu HS cho ra điểm gần như nhau dù khối lớn hay nhỏ.
+  - Giỏi toàn diện: 7.279 (khối 54) · 7.284 (khối 68) · 7.090 (khối 11).
+  - Yếu, lười: 3.667 · 3.668 · 3.638.
+- MT trung bình của HS nền ~710/tháng ở cả khối 54 lẫn 68.
+- Trước D4, khối nhỏ được "cho không" ~860–1.000 điểm MT.
+
+**Kiểm D6 — thi lại chạy đúng:** em ốm lỡ MT tháng 2 vẫn đứng **hạng 21, bậc 5**. Trước D6, em này tụt về hạng ~51.
+
+**KHTN khối 9 (34 em)** cho cùng hình dạng, thang nhỏ hơn: top 5.361 · yếu lười 2.674. Mỗi môn so riêng nên không ảnh hưởng.
+
+### ⚠ Phát hiện mới: mùa 3 tháng thì 2 tháng đầu gần như ai cũng cùng bậc
+
+Phân bố bậc của HS nền, Toán khối 7:
+
+| Mùa 3 tháng | Bậc 1 | Bậc 2 | Bậc 3 | Bậc 4 | Bậc 5 | Bậc 6 | Bậc 7 |
+|---|---|---|---|---|---|---|---|
+| Hết tháng 1 | 1% | **99%** | 0% | 0% | 0% | 0% | 0% |
+| Hết tháng 2 | 0% | 4% | **86%** | 10% | 0% | 0% | 0% |
+| Hết tháng 3 | 0% | 0% | 7% | 50% | 34% | 9% | 1% |
+
+- Ngưỡng bậc đặt cho điểm **cuối mùa**. Điểm chỉ cộng dồn, nên tháng 1–2 cả khối dồn vào 1 bậc. Bậc chỉ phân hoá ở tháng cuối.
+- Với trẻ, như vậy là **2 tháng không có gì để đua**.
+
+**Phương án MÙA 1 THÁNG** (cùng bộ số, ngưỡng = hệ số × điểm tối đa 1 tháng; hệ số bậc 2–6 = 0,4 / 0,56 / 0,68 / 0,76 / 0,84):
+
+| | Bậc 1 | Bậc 2 | Bậc 3 | Bậc 4 | Bậc 5 | Bậc 6 | Bậc 7 (ghế) |
+|---|---|---|---|---|---|---|---|
+| Ngưỡng Toán | 0 | 1.000 | 1.400 | 1.700 | 1.900 | 2.100 | top 2 & ≥ 2.100 |
+| Ngưỡng KHTN | 0 | 750 | 1.050 | 1.275 | 1.425 | 1.575 | top 1 & ≥ 1.575 |
+| % em Toán | 1% | 14% | 45% | 22% | 11% | 6% | 1% |
+| % em KHTN | 1% | 23% | 39% | 20% | 11% | 7% | 0% |
+
+Bậc cuối tháng của từng kiểu (Toán):
+
+| Bậc | Kiểu HS |
+|---|---|
+| 7 | Giỏi toàn diện · Giỏi cày điên |
+| 6 | Trung bình cày 6 lượt |
+| 5 | Khá chăm · Giỏi không app · Yếu cày 15 lượt |
+| 4 | Ốm thi lại |
+| 3 | Trung bình · Yếu cày 3 lượt |
+| 2 | Yếu lười |
+
+⇒ **Phân hoá ngay trong tháng.**
+
+**Đề xuất cho C4: mùa = 1 tháng.**
+- Cùng nhịp với những thứ đã chạy theo tháng: MT tháng, giải thưởng tháng, chốt xu tháng.
+- Tháng nào cũng có đua, có vinh danh, có "tháng sau gỡ lại".
+- Khung mùa mang tên tháng.
+- Nếu vẫn muốn mùa dài (3 tháng) thì phải chia **mỗi bậc 3 đoàn** để tháng 1–2 còn thấy lên đoàn. Nhưng vẫn là cả khối cùng một vùng bậc, chỉ khác đoàn.
+
+---
+
+## ★ VÒNG 2 (28/09) — Thùy chốt D2 / D3 / D5 / Q-A
 
 **Thùy chốt:**
 

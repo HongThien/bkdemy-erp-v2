@@ -30383,3 +30383,13 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Verify (375×812): chưa nhập tên thì không vào được; 5 lượt 3 người ở bản Không dấu ⇒ bảng đúng, người chơi kém hơn lần trước
   không bị đè; bản English Khó vừa màn, tổng kết hiện bảng xếp hạng. Sửa kèm: 3 thẻ mức gộp 1 hàng, thanh trên không xuống dòng.
 - Chưa làm: bảng xếp hạng chung giữa các máy (cần bảng Supabase — chờ Thùy chốt).
+
+## 2026-09-28 (11) — Điểm Rank: chốt toàn bộ bộ số (¼ · D1 · D4 · D6) · tính lại · phát hiện độ dài mùa
+
+- Thùy chốt: trần Thử thách ¼ · D1 bộ số · D4 quy hạng MT theo sĩ số dự thi · D6 lỡ MT thi lại.
+- **Làm:** `sim-diem-rank.mjs --chot` (mode riêng: quyHang, thiLai, bỏ kiểu HS "nghỉ/bỏ lớp/không thi MT" vì BK offline, thêm
+  "ốm lỡ MT thi lại"; khối 54/68/11 Toán + 34/11 KHTN; phân bố bậc theo tháng). Kết quả: D4 đúng (cùng kiểu HS ra điểm như nhau
+  bất kể sĩ số khối 11–68), D6 đúng (ốm lỡ MT vẫn hạng 21 thay vì ~51).
+- **Phát hiện:** ngưỡng bậc theo điểm cuối mùa 3 tháng ⇒ hết T1 99% HS cùng bậc 2, hết T2 86% cùng bậc 3 — 2 tháng không có gì
+  để đua. Chạy PA mùa 1 tháng (hệ số 0,4/0,56/0,68/0,76/0,84 × điểm tối đa tháng) ⇒ phân bố 14/45/22/11/6/1% ngay trong tháng.
+  Đề xuất C4: mùa = 1 tháng (cùng nhịp MT/giải tháng/chốt xu). Chờ Thùy.

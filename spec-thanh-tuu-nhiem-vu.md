@@ -172,7 +172,16 @@ Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như c�
 ## PHẦN C — DETAIL: BÀN SAU (chưa có nội dung, cố ý để trống)
 
 > **28/09:** C1 · C2 · C3 (xem trước C4) đã có **đề xuất + mô phỏng 3 tháng** ở `phan-tich-diem-rank.md` (chạy lại bằng `scripts/sim-diem-rank.mjs`).
-> Đang chờ Thùy chốt **D1–D6 + Q-A**. Số đo DB xác nhận BK có **1 cơ sở** ⇒ không cần tầng cơ sở (A4).
+> **Đã chốt 28/09 (C1 · C2 · C3):**
+> - D1: ET 100 · BTVN 100 / 50 · MT bảng × 10 · Thử thách 10 / 20 / 30.
+> - D2: trần Thử thách cố định = ¼.
+> - D3: trần ngày = tháng ÷ 20.
+> - D4: quy hạng MT theo sĩ số dự thi.
+> - D5: mỗi môn riêng.
+> - D6: lỡ MT thì thi lại.
+> - Q-A: giữ nguyên (Thử thách vô hạn lượt).
+>
+> **Bước tiếp — C4:** mô phỏng cho thấy mùa 3 tháng làm 2 tháng đầu cả khối cùng bậc ⇒ đề xuất **mùa = 1 tháng** (chờ chốt). Số đo DB: BK có **1 cơ sở** ⇒ không cần tầng cơ sở (A4).
 
 | # | Việc | Thuộc |
 |---|---|---|
