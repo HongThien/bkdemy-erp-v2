@@ -15,6 +15,7 @@
 //   fx/sao_moi_sang.png (vầng sáng lớp phủ sao mới — Đơn 1)
 //   the-gioi/<tab_the_gioi|tab_ban_be|tab_lop|ket_ban|loi_moi|tang_s|tang_a|tang_b|ruy_bang_s|thay_co_khen|dang_hoc|avatar_an_danh>.png
 //   the-gioi/tin/<kieu>.png · the-gioi/tuong-tac/<ma icon ở the_gioi_danh_muc>.png · fx/phao_giay.png   (Đơn 5 Thế giới BK)
+//   the-gioi/sticker/<ma sticker ở the_gioi_danh_muc, vd s_goat>.png   (bộ sticker Thùy mua — cờ KIT.sticker_tg)
 //   nhiem-vu/<ma>.png (ma: N1 N2 N3 T1..T4 M1 M2 · chang ngay tuan thang · ruong_dong ruong_mo · vong_quay)
 //   Tên file ChatGPT giao → tên ở đây: bảng cuối design/DON-HANG-GAMI-HS.md (Claude thu nhỏ nho_48 / bieu_tuong_64 / khung_avatar_96).
 // ============================================================================
@@ -27,7 +28,8 @@ export const KIT = {
   rank: false,       // Đơn 3: 10 × (bieu_tuong, bieu_tuong_64, khung_avatar, khung_avatar_96)
   rank_chung: false, // Đơn 3: sao, hao_quang_than, len_bac
   nhiem_vu: false,   // Đơn 1: icon nhiệm vụ + rương (nhiem-vu/<ma>.png) — nếu kit có vẽ icon riêng
-  the_gioi: false,   // Đơn 5: Thế giới BK — the-gioi/*.png · the-gioi/tin/<kieu>.png · the-gioi/tuong-tac/<ma>.png
+  the_gioi: false,
+  sticker_tg: false, // bộ sticker bình luận Thế giới BK (Thùy mua — spec-the-gioi-bk §8) ⇒ the-gioi/sticker/<ma>.png; tắt = emoji to   // Đơn 5: Thế giới BK — the-gioi/*.png · the-gioi/tin/<kieu>.png · the-gioi/tuong-tac/<ma>.png
 }
 
 // ── Huy hiệu ─────────────────────────────────────────────────────────────────
@@ -117,4 +119,5 @@ export const ICON_TG = { tab_the_gioi: '🌏', tab_ban_be: '🤝', tab_lop: '�
 export const anhTG = (ten: keyof typeof ICON_TG | 'ruy_bang_s' | 'tang_s' | 'tang_a' | 'tang_b'): string | null => (KIT.the_gioi ? `${GOC}/the-gioi/${ten}.png` : null)
 export const anhTin = (kieu: string): string | null => (KIT.the_gioi && ICON_TIN[kieu] ? `${GOC}/the-gioi/tin/${kieu}.png` : null)
 export const anhTuongTac = (ma: string): string | null => (KIT.the_gioi ? `${GOC}/the-gioi/tuong-tac/${ma}.png` : null)
+export const anhSticker = (ma: string): string | null => (KIT.sticker_tg ? `${GOC}/the-gioi/sticker/${ma}.png` : null)
 export const anhPhaoGiay = (): string | null => (KIT.the_gioi ? `${GOC}/fx/phao_giay.png` : null)

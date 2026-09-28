@@ -31311,3 +31311,20 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   lời mời) · thegioi/mauTheGioi.ts + XemMauGami man=the_gioi tt 1..6 · hinh.ts KIT.the_gioi + ICON_TIN/ICON_TG/anhTG/anhTin/anhTuongTac · ô Home
   the_gioi (KHU + KHU_CAP2, icon TẠM o_pha_le trong rpg.anhO). tsc sạch · check:style-hs ✔ (24 file, 14 ô; file mới 0 màu gõ tay) · build:hs qua ·
   soi 6 trạng thái RPG 375×812, 0 lỗi console. Chưa chạy với tài khoản HS thật (không có TK thử) — hàm DB đã thử bằng HS thật trong transaction.
+
+### 29/09 (11) — Thế giới BK: tương tác Y HỆT FACEBOOK (Thùy: "UX quen thuộc giống FB, đừng bắt học cái mới")
+- Bỏ tấm "Khen" (chọn 1 icon + 1 câu rồi bấm Gửi — HS phải học cách mới). Tách như FB: ① THẢ CẢM XÚC (bấm 👍 Thích · GIỮ 0,4s = dải 6
+  cảm xúc + ＋ mở đủ 22 · bấm lại = bỏ) ② BÌNH LUẬN (tấm trượt, bong bóng xám tên [lớp], "Gỡ"/"Ẩn", ô "Viết bình luận…" + 🙂 — chạm ô bật
+  bàn phím câu soạn sẵn / sticker, CHẠM LÀ GỬI; vẫn không chữ tự do theo spec §5). Dòng "👍❤️🔥 Em, Hà [9A1] và 12 người khác · 5 bình luận",
+  bấm ⇒ danh sách ai thả gì, tab theo cảm xúc. 1 bình luận xem trước dưới thẻ (bạn bè trước).
+- Mig 202609290148_the_gioi_tha_va_binh_luan (áp --only, schema.md): danh mục +loai 'sticker' (nới CHECK) + cột `nhan` (CHECK icon⇔có nhãn) ·
+  thêm 👍 thich ❤️ tim lên đầu, xếp lại thứ tự 22 cảm xúc · 12 sticker TẠM = emoji · 5 câu `cam_on` chỉ chủ tin dùng · bảng the_gioi_binh_luan
+  (an_at chủ tin ẩn · go_at người viết gỡ · trigger log) · the_gioi_khen chỉ còn icon (CHECK cau_ma is null) · hàm fn_the_gioi_tha (null = bỏ) ·
+  fn_the_gioi_binh_luan (tối đa 3 còn hiện / em / tin — CTO đặt) · fn_the_gioi_go_binh_luan · fn_the_gioi_an_binh_luan · fn_the_gioi_chi_tiet ·
+  _the_gioi_khen_json đổi dạng (dem+nhan · ten 2 người · so_bl · bl xem trước) · fn_the_gioi_khen cũ giữ = thả + 1 bình luận (tương thích).
+  Thử trong transaction ROLLBACK với HS thật (Thăng/Vũ/Châu): thả/đổi/bỏ, bình luận câu+sticker, câu cảm ơn chỉ chủ tin, chặn lần 4, gỡ rồi
+  bình luận lại, chủ tin ẩn (chủ vẫn thấy mờ, người khác không), người lạ ẩn bị chặn, tự thả bị chặn — đều đúng. Bảng lúc áp: 0 dòng.
+- TREO chờ Thùy (luật xoá): cột the_gioi_khen.cau_ma thôi dùng (0 dòng) — xin xoá cột.
+- App: lib/thegioi.ts (type + thaCamXuc/guiBinhLuan/goBinhLuan/anBinhLuan/layChiTiet) · TheGioiHS.tsx (NutThich giữ-để-chọn · DaiCamXuc ·
+  DongTuongTac · BongBL · TamBinhLuan · TamCamXuc; nút đổi màu ngay, số đếm lấy từ DB; vá tại chỗ ở mọi tab + tấm đang mở) · hinh.ts
+  KIT.sticker_tg + anhSticker · mauTheGioi + XemMauGami tt 1..11. tsc sạch · check:style-hs ✔. Đơn 5 + spec §5 sửa theo.

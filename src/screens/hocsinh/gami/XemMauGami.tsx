@@ -14,7 +14,7 @@ import { HoSoView, ChonKhoe, TheTVHS } from '../HoSoHS'
 import { HinhHuyHieu, BieuTuongBac, SaoBac, AvatarKhung, IconNV } from './HinhGami'
 import { KIT, BAC, MAU_HH, ICON_NV } from './hinh'
 import * as M from './mauGami'
-import { TheGioiView, TamKhen, TamKetBan } from '../thegioi/TheGioiHS'
+import { TheGioiView, TamBinhLuan, TamCamXuc, TamKetBan, type BanPhim } from '../thegioi/TheGioiHS'
 import * as TG from '../thegioi/mauTheGioi'
 
 const noop = () => {}
@@ -25,7 +25,7 @@ const MAN: { id: string; ten: string; tt: string[] }[] = [
   { id: 'ho_so', ten: 'Hồ sơ', tt: ['Em khá (Captain)', 'Em mới (Novice)', 'Em bậc thần', 'Chọn 3 huy hiệu khoe'] },
   { id: 'the_tv', ten: 'Thẻ TV lớp', tt: ['3 mẫu'] },
   { id: 'bo_hinh', ten: 'Bộ hình', tt: ['Tất cả hình'] },
-  { id: 'the_gioi', ten: 'Thế giới BK', tt: ['Thế giới', 'Thế giới (thẻ gộp mở)', 'Bạn bè', 'Kết bạn', 'Lớp + khen', 'Lớp + menu ⋯'] },
+  { id: 'the_gioi', ten: 'Thế giới BK', tt: ['Thế giới', 'Thế giới (thẻ gộp mở)', 'Bạn bè', 'Kết bạn', 'Lớp + giữ nút Thích', 'Lớp + menu ⋯', 'Bình luận', 'Bình luận · chọn câu', 'Bình luận · sticker', 'Ai đã bày tỏ cảm xúc', 'Tất cả cảm xúc (＋)'] },
 ]
 
 function Dau({ tieuDe, phu }: { tieuDe: string; phu: string }) {
@@ -39,17 +39,23 @@ function Dau({ tieuDe, phu }: { tieuDe: string; phu: string }) {
 }
 
 function MauTheGioi({ tt }: { tt: number }) {
-  // Đơn 5 (design/DON-HANG-GAMI-HS.md): 1 Thế giới · 2 thẻ gộp mở · 3 Bạn bè · 4 tấm Kết bạn · 5 Lớp + tấm khen · 6 Lớp + menu ⋯
-  const tab = tt === 3 || tt === 4 ? 'ban' : tt >= 5 ? 'lop' : 'tg'
+  // Đơn 5 (design/DON-HANG-GAMI-HS.md): 1 Thế giới · 2 thẻ gộp mở · 3 Bạn bè · 4 tấm Kết bạn · 5 Lớp + dải cảm xúc (giữ Thích) · 6 Lớp + menu ⋯
+  // 7–9 tấm Bình luận (đóng / bàn phím câu / sticker) · 10 Ai đã bày tỏ cảm xúc · 11 tấm đủ mọi cảm xúc (＋). Bấm được thật (dữ liệu giả, không ghi DB).
+  const tab = tt === 3 || tt === 4 ? 'ban' : tt === 5 || tt === 6 ? 'lop' : 'tg'
   const kenh = tab === 'ban' ? TG.KENH_BAN : tab === 'lop' ? TG.KENH_LOP : TG.KENH_TG
-  const [icon, setIcon] = useState<string | null>('lua')
-  const [cau, setCau] = useState<string | null>('c01')
+  const [thanh, setThanh] = useState<string | null>(tt === 5 ? 'nhat_buoi:1' : null)
+  const [banPhim, setBanPhim] = useState<BanPhim>(tt === 8 ? 'cau' : tt === 9 ? 'sticker' : 'dong')
+  const [xem, setXem] = useState<'bl' | 'tha'>(tt === 10 ? 'tha' : 'bl')
+  const [loc, setLoc] = useState<string | null>(null)
   return (
     <TheGioiView tab={tab} onTab={noop} kenh={kenh} loi={null} banBe={TG.BAN_BE} hien="ten" onHien={noop}
       moGop={tt === 2 ? { nhat_buoi: true } : {}} onMoGop={noop} menuKhoa={tt === 6 ? 'no_luc:em' : null} onMenu={noop}
-      onKhen={noop} onAnTin={noop} onDongY={noop} onDeSau={noop} onMoKetBan={noop} onBack={noop}>
+      danhMuc={TG.DANH_MUC} thanhKhoa={thanh} onThanh={setThanh} onTha={noop} onThemCamXuc={noop} onMoBl={noop}
+      onAnTin={noop} onDongY={noop} onDeSau={noop} onMoKetBan={noop} onBack={noop}>
       {tt === 4 && <TamKetBan tim="" onTim={noop} ds={TG.GOI_Y} onGui={noop} onDong={noop} />}
-      {tt === 5 && <TamKhen tin={TG.TIN_DANG_KHEN} danhMuc={TG.DANH_MUC} icon={icon} cau={cau} onIcon={setIcon} onCau={setCau} onGui={noop} dangGui={false} loi={null} onDong={noop} />}
+      {tt >= 7 && tt <= 10 && <TamBinhLuan tin={TG.TIN_MO} ct={TG.CHI_TIET} xem={xem} onXem={setXem} loc={loc} onLoc={setLoc} banPhim={banPhim} onBanPhim={setBanPhim}
+        danhMuc={TG.DANH_MUC} onGui={noop} dangGui={false} loi={null} onGo={noop} onAn={noop} onDong={noop} />}
+      {tt === 11 && <TamCamXuc tin={TG.TIN_MO} danhMuc={TG.DANH_MUC} onChon={noop} onDong={noop} />}
     </TheGioiView>
   )
 }

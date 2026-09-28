@@ -56,10 +56,16 @@
   Chờ Thùy: giữ thẻ gộp A ở Thế giới (mockup) hay bỏ hẳn A, Thế giới chỉ còn S.
 - **Chỉ tin tốt** (luật A8 gamification: hạng thấp chỉ em đó thấy). Phải có loại tin **ai chăm cũng đạt** (tầng B) để bạn yếu cũng lên kênh.
 
-## 5. Tương tác — không chat, không chữ tự do
+## 5. Tương tác — Y HỆT FACEBOOK, chỉ khác: không chữ tự do
 
-- Mỗi em mỗi tin: **1 icon** (đổi được) **+ 1 câu meme** chọn từ danh mục soạn sẵn. Không có "chỉ 1 nút chúc mừng" (Thùy).
-- Dưới tin: đếm theo icon + vài câu mới nhất (tên/mã người gửi) + "+N bạn".
+- **Thùy 29/09: "UX quen thuộc giống FB, đừng bắt học cái mới"** (mig `202609290148`). Tách 2 việc như FB:
+  - **Thả cảm xúc:** mỗi em 1 cảm xúc / tin. Bấm **👍 Thích** · **giữ** = dải 6 cảm xúc bật lên (+ nút ＋ mở đủ 22, như Messenger) · bấm lại = bỏ.
+    Cảm xúc có tên như FB (Thích · Yêu thích · Cháy · Vỗ tay · GOAT · Nổ não…). 👍 ❤️ thêm vào đầu danh mục.
+  - **Bình luận:** tấm trượt kiểu FB (bong bóng xám, tên [lớp], "Gỡ" của mình, chủ tin "Ẩn"). Ô "Viết bình luận…" + 🙂 — chạm ô bật **bàn phím
+    câu soạn sẵn / sticker, CHẠM LÀ GỬI** (không gõ chữ). Tối đa 3 bình luận / em / tin. Chủ tin trả lời bằng **câu cảm ơn** riêng (nhóm `cam_on`).
+- Dưới tin: "👍❤️🔥 Em, Hà [9A1] và 12 người khác · 5 bình luận" (bấm ⇒ danh sách ai thả gì, tab theo cảm xúc) · thanh [👍 Thích] [💬 Bình luận] ·
+  "Xem tất cả N bình luận" + 1 bình luận xem trước (bạn bè trước).
+- Sticker: tạm = emoji to; bộ sticker Thùy mua (§8) gắn vào `the-gioi/sticker/<mã>.png` + bật cờ `KIT.sticker_tg`, không đổi DB.
 - **"👑 Thầy cô khen":** icon RIÊNG chỉ GV/TA thả được, hiện nổi bật (khen công khai của thầy cô > chục icon bạn bè).
 - **Không cộng EXP** cho việc thả tương tác (chống bấm hàng loạt kiếm điểm).
 - Danh mục icon/câu nằm ở **DB, admin sửa được** (trend Gen Z sống 3–6 tháng ⇒ làm mới mỗi quý). Ẩn câu = không cho chọn mới; câu đã dùng trên
