@@ -30790,3 +30790,15 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
 - `kiem-trigger-sua.mjs` lần chạy thật đầu tiên: **5/5 ✔**, ROLLBACK, sót 0.
 - `claude` CLI vẫn `loggedIn:false` sau khi Thùy báo đã login (kể cả gỡ hết biến CLAUDE*/ANTHROPIC* thừa kế từ app desktop;
   `.credentials.json` vẫn ngày 06/09) ⇒ đo `claude -p` còn treo.
+
+## 2026-09-28 (30) — Huy hiệu: Thùy chốt Q1–Q4 · viết spec build (`spec-huy-hieu-build.md`)
+
+- Thùy: năm huy hiệu = **tháng 7 → 4** (giữa tháng 5 nghỉ hè) · **tính lùi từ 07/2026** (điều kiện tính năng chưa mở = không áp dụng) ·
+  **làm hết cùng đợt, không chia** · H8 chốt (bản mềm ×N, bản cứng lần đầu).
+- Soi DB (đọc): MT tổ chức ĐẦU tháng sau (03–07) ⇒ khớp cửa sổ 25/T→10/T+1 của `fn_bxh_diem_mt_khoi` ⇒ chốt tháng T từ 10/T+1.
+  `btvn_ket_qua.hoan_thanh` luôn false → đo bằng `trang_thai_nop`. ET online mirror vào `gami_grades` từ 09 (tháng 8 lệch 32 câu, bỏ qua).
+  `fn_mastery_cells` không có mốc "tính đến" → thêm `p_den` (drop+create, không chép công thức). `fn_bxh_diem_mt_khoi` xếp theo roster HIỆN TẠI
+  + coi chưa thi = 0 ⇒ viết `fn_mt_hang_thang` riêng chỉ xếp em có điểm. `thanh_tich_loai` 12 key, ghim 0 dòng ⇒ tắt active, ghim đổi FK sang `huy_hieu`.
+  Không có pg_cron ⇒ chốt huy hiệu gắn quy trình chốt xu tháng, hàm idempotent.
+- Tự quyết (chờ Thùy bác): `vang_phep` = vắng (A1) · `xin_phep` = không đúng hạn (A2) — theo luật "không nghỉ". Mô hình nối N–N đơn giản
+  thành vai `chuan`/`them` theo huy hiệu (đúng xlsx), thay `huy_hieu_cap_dieu_kien` theo từng sao ở A5.7.

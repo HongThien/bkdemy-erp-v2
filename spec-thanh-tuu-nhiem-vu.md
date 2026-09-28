@@ -38,6 +38,7 @@
 | `de-xuat-huy-hieu.md` | Huy hiệu: tên, lịch sử, bản đầy đủ 10 loại |
 | **`ma-tran-thanh-tuu-huy-hieu.xlsx`** | **Output cuối của huy hiệu** |
 | `scripts/sim-diem-rank.mjs` (`--chot`, `--nam`) · `scripts/sim-huy-hieu.mjs` | Mô phỏng, chạy lại được |
+| **`spec-huy-hieu-build.md`** | **Huy hiệu: cách đo chính xác 14 thành tựu · schema · RPC · màn** (28/09, sau Q1–Q4) |
 
 ### 0.1 Nguyên tắc (Thùy)
 - **Game thật** — cày cuốc, đua top. Lấy **cơ chế** game, **không lấy tên** game.
@@ -152,7 +153,8 @@
   - Cấu hình bằng **màn admin Ma trận** (tích ô). Output hiện tại = `ma-tran-thanh-tuu-huy-hieu.xlsx`.
 - **Bản mềm ★1–3 · BẢN CỨNG ★4–5, GIÁO VIÊN lớp trao** + bấm "Đã trao" (việc trao **suy động**: đạt ★4/★5 trừ đã trao).
   - Đề xuất 1 phôi / huy hiệu, ★4 / ★5 phân biệt bằng tấm sao / màu viền.
-- Đạt rồi **không mất.** Đạt lại năm sau ⇒ bản mềm ×2, bản cứng chỉ lần đầu (H8 — đề xuất, chưa bị bác).
+- Đạt rồi **không mất.** Đạt lại năm sau ⇒ bản mềm ×2, bản cứng chỉ lần đầu (**H8 — Thùy chốt 28/09**).
+- **Năm huy hiệu = tháng 7 → tháng 4** (10 tháng; giữa tháng 5 nghỉ hè, tháng 5–6 không đếm). **Tính lùi từ 07/2026**; điều kiện của tính năng chưa mở = *không áp dụng* (Thùy 28/09).
 - **Album:** % hoàn thành · "Sắp đạt" · "N bạn trong khối có" (< 10% = Hiếm). Ghim 3 huy hiệu khoe hồ sơ + TV lớp.
 - **Tên:** nhân vật lớn, việc cần làm nhỏ bên dưới (vd "Phoenix ★★★ — hạng MT tốt hơn đầu năm 4 tháng").
 - **EXP** (thứ yếu, trần 5 xu): ★3 = 100 · ★4 = 200 · ★5 = 300 EXP.
@@ -166,7 +168,7 @@
 - **C5** Danh hiệu top theo dạng: logic A4 đã có (Điểm Dạng từ mọi nguồn, chốt tuần) — cấp / %, sàn, tốc độ giảm.
 - **C8** Quà đua lớp.
 - **C11** Giao diện các màn (app HS: Rank / Nhiệm vụ / Vòng quay / Album · TV · màn GV trao bản cứng · admin Ma trận).
-- **C12** Build plan. Đề xuất thứ tự:
+- **C12** Build plan. **Thùy 28/09: làm HẾT trong cùng đợt, không chia đợt ra mắt.** Thứ tự code bên trong đợt:
   1. Điểm Rank + Thử thách + bậc + khoe TV.
   2. Nhiệm vụ + vòng quay + trần xu.
   3. Huy hiệu + ma trận + bản cứng.
