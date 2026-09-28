@@ -20,8 +20,9 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
   const [game, setGame] = useState<string>(NHO_GAME[buoiId] ?? 'mo_ruong')
   const [coTv, setCoTv] = useState(false)
   const [msg, setMsg] = useState<string | null>(null)
-  // 🖥 TRÌNH CHIẾU 1 MÀN (Thùy 28/09: "không cần 2 màn — cast laptop sang TV, màn quay hiện danh sách từng HS để so"):
-  // overlay toàn màn = game (iframe bản lớp, vẫn nghe kênh bk-lop như TV rời) + danh sách cả lớp theo giải, GV bấm tên ngay đây.
+  // 2 CHẾ ĐỘ HIỂN THỊ (Thùy 28/09):
+  //  · Chế độ 1 — TV RIÊNG: GV làm việc ở ERP (khung này), TV riêng mở trang game + BẢNG LỚP (ERP gửi 'ds' qua kênh) để HS thi đua cả buổi.
+  //  · Chế độ 2 — CAST CHUNG: overlay toàn màn = game (iframe ?nhung=1) + danh sách cả lớp theo giải, GV bấm tên ngay đây, cast laptop lên TV.
   const [trinhChieu, setTrinhChieu] = useState(false)
   const chRef = useRef<ReturnType<typeof supabase.channel> | null>(null)
   const ngheTV = useRef<((p: Record<string, unknown>) => void) | null>(null) // tin TV gửi về (Bắn Quà: điểm ván)
@@ -54,7 +55,8 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
     if (!daChot) return
     const ch = supabase.channel(kenhTV(buoiId), { config: { broadcast: { self: false } } })
     ch.on('presence', { event: 'sync' }, () => {
-      setCoTv(Object.values(ch.presenceState()).flat().some((x) => (x as { role?: string }).role === 'tv'))
+      const co = Object.values(ch.presenceState()).flat().some((x) => (x as { role?: string }).role === 'tv')
+      setCoTv(co); if (co) window.setTimeout(() => guiDsRef.current(), 300) // TV vừa nối/tải lại ⇒ gửi bảng lớp
     }).on('broadcast', { event: 'mo' }, (m) => ngheTV.current?.((m.payload ?? {}) as Record<string, unknown>)).subscribe()
     chRef.current = ch
     return () => { chRef.current = null; supabase.removeChannel(ch); setCoTv(false) }
@@ -64,6 +66,14 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
     chRef.current?.send({ type: 'broadcast', event: 'mo', payload: { ten: k.ho_ten, giai: k.giai, exp: k.exp, min: k.min, max: k.max, game: k.game, qua: k.qua, t: Date.now() } })
   }
   const guiTVTho = (payload: Record<string, unknown>) => { chRef.current?.send({ type: 'broadcast', event: 'mo', payload }) }
+  // BẢNG LỚP cho TV riêng (chế độ 1): chỉ số liệu đã có từ DB (tinh_hinh), TV chỉ vẽ. TV tự giấu số của bạn đang mở tới khi diễn xong.
+  const guiDs = () => {
+    const d = tt; if (!d?.da_chot || !chRef.current) return
+    chRef.current.send({ type: 'broadcast', event: 'ds', payload: { game, so_co_mat: d.so_co_mat, so_da_choi: d.so_da_choi,
+      hs: d.hs.map((h) => ({ ten: h.ho_ten, giai: h.giai, exp: h.exp, qua: h.qua })) } })
+  }
+  const guiDsRef = useRef(guiDs); guiDsRef.current = guiDs
+  useEffect(() => { if (coTv) guiDs() }, [tt, game, coTv]) // eslint-disable-line
   const bao = (t: string) => { setMsg(t); window.setTimeout(() => setMsg((m) => (m === t ? null : m)), 2500) }
 
   const g = GAME_LOP.find((x) => x.id === game) ?? GAME_LOP[0]
@@ -158,9 +168,12 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
               <select value={game} disabled={tt.so_da_choi > 0} onChange={(e) => setGame(e.target.value)} className="rounded-md border border-slate-300 px-2 py-1 text-sm disabled:bg-slate-100">
                 {GAME_LOP.map((x) => <option key={x.id} value={x.id} disabled={!x.co_luat}>{x.ten}{x.co_luat ? '' : ' (chờ luật)'}</option>)}
               </select>
-              <button disabled={!g.co_luat} onClick={() => setTrinhChieu(true)} className="rounded-md bg-indigo-600 px-3 py-1 text-sm font-bold text-white disabled:opacity-40" title="Game + danh sách cả lớp trên 1 màn — cast laptop lên TV">🖥 Trình chiếu</button>
-              <a href={linkTV(g.file, buoiId)} target="_blank" rel="noreferrer" className="text-xs text-indigo-600 underline" title="Mở game ở tab riêng (khi dùng 2 màn hình)">tab riêng</a>
-              {coTv && <span className="rounded bg-emerald-50 px-1.5 text-[11px] text-emerald-700">● game đã nối</span>}
+              <a href={g.co_luat ? linkTV(g.file, buoiId) : undefined} target="_blank" rel="noreferrer"
+                className={`rounded-md bg-indigo-600 px-3 py-1 text-sm font-bold text-white ${g.co_luat ? '' : 'pointer-events-none opacity-40'}`}
+                title="Mở trang game ở cửa sổ riêng → kéo sang TV. TV hiện game + bảng cả lớp; thầy cô làm việc tiếp trên máy tính">📺 Chế độ 1 · TV riêng</a>
+              <button disabled={!g.co_luat} onClick={() => setTrinhChieu(true)} className="rounded-md bg-violet-600 px-3 py-1 text-sm font-bold text-white disabled:opacity-40"
+                title="Game + danh sách cả lớp trên 1 màn — cast cả màn laptop lên TV">🖥 Chế độ 2 · Cast chung</button>
+              <span className={`rounded px-1.5 text-[11px] ${coTv ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>{coTv ? '● game đã nối' : '○ chưa mở game'}</span>
               <span className="ml-auto text-xs text-slate-500">{tt.so_da_choi}/{tt.so_co_mat} bạn đã chơi</span>
             </div>
             {tt.so_qua_chua_trao > 0 && (
@@ -233,7 +246,7 @@ function TrinhChieu({ tt, g, buoiId, ban, coTv, msg, onMo, onChieuLai, onDong, c
   return (
     <div ref={vungRef} className="fixed inset-0 z-[100] flex bg-[#0b1030] text-white">
       <div className="relative min-w-0 flex-1">
-        <iframe src={linkTV(g.file, buoiId)} title="game" className="h-full w-full border-0" allow="autoplay; fullscreen" />
+        <iframe src={linkTV(g.file, buoiId) + '&nhung=1'} title="game" className="h-full w-full border-0" allow="autoplay; fullscreen" />
         {!coTv && <div className="pointer-events-none absolute left-1/2 top-3 -translate-x-1/2 rounded-lg bg-amber-500/90 px-3 py-1 text-sm font-bold">Đang nối game…</div>}
       </div>
       <aside className="flex w-[min(34vw,460px)] shrink-0 flex-col border-l border-white/10 bg-[#121a45]">

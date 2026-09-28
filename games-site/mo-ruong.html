@@ -3850,7 +3850,7 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
   // Không vé, không chọn rương, không sổ xu: GV bấm "Mở cho bạn này" ⇒ DB rút EXP + ghi sổ (fn_buoi_game_choi) ⇒ ERP gửi
   // {ten,giai,exp,min,max} qua kênh bk-lop:<buổi> ⇒ TV CHỈ DIỄN: giải → rương (Nhất Vàng · Nhì Bạc · Giải 3 Gỗ).
   // Bản SỰ KIỆN (không có ?che_do) giữ nguyên 100%.
-  const QS=new URLSearchParams(location.search),LOP=QS.get('che_do')==='lop',BUOI=QS.get('buoi')||'';
+  const QS=new URLSearchParams(location.search),LOP=QS.get('che_do')==='lop',BUOI=QS.get('buoi')||'',NHUNG=QS.get('nhung')==='1'; // nhung=1: chế độ 2 (nhúng trong màn Trình chiếu của ERP)
   const DV=LOP?'EXP':'xu';
   const SB_URL='https://osrvycilwshkzhljuxef.supabase.co',SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4';
   const GIAI_LOP={1:'🥇 Giải Nhất',2:'🥈 Giải Nhì',3:'🎖 Giải 3'};
@@ -4076,6 +4076,7 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
     if(LOP){ // EXP đã được DB ghi lúc ERP bấm — TV chỉ báo
       $('bTot').textContent=`${cur.name?cur.name+' · ':''}+${total} EXP`;
       $('bSub').textContent=GIAI_LOP[cur.giai]+' · EXP đã vào tài khoản 🎉';
+      window.BKLopBang&&BKLopBang.xong(cur.name);
       $('banner').classList.add('show');confetti(cur.tiers[2]>=4?220:90);
       // Thùy 28/09: quà đặc biệt TRÀ SỮA (DB rút cùng lượt, siêu hiếm) — TV chỉ báo, quà trao tay
       if(cur.qua==='tra_sua'){$('bSub').innerHTML='🧋 <b>TRÚNG TRÀ SỮA!</b> Quà đặc biệt siêu hiếm · '+GIAI_LOP[cur.giai]+' · +'+total+' EXP đã vào tài khoản';shake=.35;if(window.bkTraSua)window.bkTraSua({ten:cur.name,giai:cur.giai,exp:total,sound:S.cfg.sound});else{fanfare();confetti(500)}}
@@ -4198,6 +4199,8 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
   function bomHang(){if(!hangLop.length||!chestObjs.length)return;if(phase==='pick')startOpen(hangLop.shift());else if(phase==='done')nextTurn()}
   function ketNoiLop(){
     document.body.classList.add('lop');
+  // Chế độ 1 (TV riêng): bảng cả lớp ERP gửi qua kênh (lib/bk-lop-bang.js). Chế độ 2 nhúng trong ERP đã có danh sách ⇒ không nạp.
+  if(!NHUNG){const lb=document.createElement('script');lb.src='lib/bk-lop-bang.js';document.head.appendChild(lb)}
     const st=document.createElement('style');st.textContent='body.lop #pname,body.lop .nameRow,body.lop #chestBtns,body.lop #btnOpen,body.lop #legend,body.lop #btnSettings,body.lop #histBtn,body.lop #btnReset{display:none!important}';document.head.appendChild(st);
     const ts=document.createElement('script');ts.src='lib/bk-tra-sua.js';document.head.appendChild(ts); // hiệu ứng 🧋 dùng chung mọi game bản lớp (xem thử: Ctrl+Shift+M)
     hint(BUOI?'Chờ thầy cô mở rương cho bạn…':'Thiếu mã buổi — mở từ màn Buổi học trên ERP','BUỔI HỌC');
@@ -4206,8 +4209,9 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
     s.onload=()=>{const sb=window.supabase.createClient(SB_URL,SB_KEY);
       const ch=sb.channel('bk-lop:'+BUOI,{config:{broadcast:{self:false},presence:{key:'tv'}}});
       // cùng kênh bk-lop:<buổi> với các TV game khác ⇒ chỉ nhận lệnh của ĐÚNG game này (GV có thể mở 2 tab TV)
-      ch.on('broadcast',{event:'mo'},m=>{const p=m.payload||{};if(p.game&&p.game!=='mo_ruong')return;hangLop.push(p);bomHang()});
-      ch.subscribe(t=>{if(t==='SUBSCRIBED')ch.track({role:'tv'})})}; // ERP thấy "● TV đã nối" qua presence
+      ch.on('broadcast',{event:'mo'},m=>{const p=m.payload||{};if(p.game&&p.game!=='mo_ruong')return;window.BKLopBang&&BKLopBang.cho(p.ten);hangLop.push(p);bomHang()});
+      ch.on('broadcast',{event:'ds'},m=>{window.BKLopBang&&BKLopBang.cap(m.payload)}); // bảng lớp (chế độ 1)
+    ch.subscribe(t=>{if(t==='SUBSCRIBED')ch.track({role:'tv'})})}; // ERP thấy "● TV đã nối" qua presence
     s.onerror=()=>hint('Không tải được thư viện kết nối — kiểm tra mạng','BUỔI HỌC');
     document.head.appendChild(s)}
   if(LOP)ketNoiLop();

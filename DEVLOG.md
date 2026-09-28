@@ -31001,6 +31001,21 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
 - Thứ tự hiển thị: chạy NGUYÊN thuật toán `sapXepTheoThuTuHoc` trên dữ liệu thật ⇒ I(T11201) → II(T11207) → III(T11209) → IV(T11204) → V(T11210) → VI(T11208),
   chuyên đề 1..19 đúng SGK. CHƯA xem được trên màn Bản đồ thật: preview cần đăng nhập (gửi mật khẩu lên Supabase — t không tự bấm), chờ Thùy bấm.
 
+## 2026-09-28 — Skin RPG: đưa hình ChatGPT vào app · mở chọn skin cho khối 6–12
+
+- Ảnh lẻ mới: 28 bản đồ · 29 cổng đá khoá · 30 cúp · 31 lịch · 32 tờ kiểm tra lại (hồng) · 33 bảng đen · 34 cú · 35 nữ đội mũ (kín đáo, TOÀN THÂN
+  — nam là nửa người, lệch khung khi đặt cạnh) · 36 lâu đài dọc (đạt). Chưa có: mèo riêng.
+- `public/bk-ui/hs/skin/rpg/`: 13 icon ô `o_*.png` + 2 `b_*.png` + `sao_cap.png` (cắt sát vật thể, lề 8%, 160px ~26–56KB; PIL hỏng trên Python 3.15
+  ⇒ dùng System.Drawing qua PowerShell) · 4 nền `bg_{lau_dai,dao_troi}_{ngang,doc}.jpg` (q80, 106–402KB). File cũ (ill_*, bg_bau_troi) để nguyên, không dùng nữa.
+- Registry: `HinhNen.toiDoc/sangDoc` + `nenCua()` + `bienCss(…, doc)`; HomeHS912 chọn bản theo `(orientation: portrait)`. RPG: 3 nền (Đảo trời giữ id
+  `bau_troi` vì HS đã lưu · Lâu đài mới · Đêm sao), `anhO` đủ 13 ô (thanh_tuu/xep_hang chung cúp — không bao giờ cùng lưới), `anhBanner` (lịch ở thẻ
+  ca bổ trợ, tờ bài ở banner kiểm tra lại). Icon ô 36→48px.
+- Thùy: "cứ mở cho tất cả chọn, không cần giới hạn độ tuổi" ⇒ `KHOI_912` → `KHOI_CHON_SKIN` = 6–12 (khối 6–8 bỏ HomeHS v4 sang HomeHS912; màn con bỏ
+  màu theo giới tính như 9–12). Cấp 1 giữ HomeCap1 (bố cục iPad riêng + bộ ô BOX_CAP1) — chờ Thùy. spec §2 thêm quyết định #7.
+- Verify: trang tạm `xem-thu-912.html` + `src/_xem_912.tsx` (không commit), 1180×820 và 390×844, khối 9 + 11, nền Đảo trời/Lâu đài — đúng bản
+  ngang/dọc, icon đủ, không lỗi console. tsc sạch.
+- ⚠ Phiên Claude khác sửa song song HomeHS912/HocSinhApp (thanh chọn môn `ThanhChonMon`) ⇒ CHƯA commit, tránh gói nửa việc của phiên kia.
+
 ## 2026-09-28 (38) — App HS: THANH CHỌN MÔN (vụ Gia Khiêm HS0557 "app chỉ hiện KHTN, không hiện Toán") · mig 202609281900 đã áp
 
 - **Hỏi:** Gia Khiêm (khối 9) vì sao app chỉ hiện lớp KHTN, không hiện Toán. **Dữ liệu xếp lớp ĐÚNG** (9B1 Toán · 9K3 KHTN · 9E1 Tiếng Anh, đều
@@ -31023,3 +31038,5 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
 - **Còn treo:** (a) Dòng ghi danh 9C1 của Khiêm (id 6dd93e7a, log 'sua' 11/06) KHÔNG còn trong `hoc_sinh_lop` mà log không có bản ghi xoá/rời lớp —
   từng có xoá cứng không vết (§4), chưa truy. (b) Danh sách bài ET/BTVN ở màn chính chưa lọc theo môn đang chọn (đang hiện mọi môn, không giấu gì).
   (c) `DienOCau`/`SoTayHS` còn đường lùi cứng `'Toán'` khi không xác định được môn.
+- (28/09 tiếp) Thùy đổi ý: giữ **2 chế độ** — Chế độ 1 "TV riêng" (GV làm việc/cộng điểm trên máy tính, TV riêng chiếu game + BẢNG LỚP cả buổi để HS thi đua) · Chế độ 2 "Cast chung" (màn Trình chiếu 1 màn). Làm: ERP 2 nút "📺 Chế độ 1 · TV riêng" (mở trang game ?che_do=lop) / "🖥 Chế độ 2 · Cast chung" (overlay, iframe thêm `&nhung=1`); ERP gửi event `ds` {hs:[ten,giai,exp,qua]} qua kênh bk-lop mỗi khi tình hình đổi + khi TV vừa nối (presence). TV: `games-site/lib/bk-lop-bang.js` dùng chung — Chiếm Đất chèn đầu `#side`, Mở Rương thêm cột phải + thu `#stage` rồi resize; `nhung=1` không nạp. Chống lộ kết quả: game gọi `BKLopBang.cho(ten)` khi NHẬN lệnh mở ⇒ "🎁 đang mở…", `xong(ten)` khi diễn xong (Mở Rương: banner kết quả, cả nhánh trà sữa; Chiếm Đất: thẻ kết quả) mới hiện +EXP. Bắn Quà không đụng (đã có danh sách riêng).
+- Verify (trang game local + giả lập ERP qua supabase-js, kênh test, không DB): bảng hiện đúng + sắp xếp (đã mở lên trên, EXP cao trước, 🧋); mở cho Nhất 300: lúc mở "🎁 đang mở…" dù ERP đã gửi +300, diễn xong mới +300 & 3/5; nhung=1 không có bảng; Chiếm Đất bảng ở đầu #side; 0 lỗi console. ERP: typecheck sạch (chưa chạy thử ERP lần này — phần ERP chỉ thêm nút + gửi ds).
