@@ -176,6 +176,26 @@
 - **Đừng lẫn 3 thứ (Thùy 28/09):** *bậc rank* (Captain, Hero, God of War… — chỉ ở khối Rank) · *huy hiệu* (Helios, Athena… — khối khoe + album) · *danh hiệu* (giải thưởng tháng — ô dưới tên). Mỗi thứ 1 chỗ, không dùng tên của thứ này cho thứ kia.
 - Đơn design gửi ChatGPT: `design/DON-HANG-GAMI-HS.md` (Huy hiệu · Nhiệm vụ + Album · Hồ sơ).
 
+### 0.7c "Thế giới BK" — học cùng nhau + kênh khoe (Thùy chốt logic 28/09)
+- **Gốc (Thùy):** HS học một mình trên app thấy **cô đơn**; thấy bạn khác cũng đang làm bài, đang đạt thành tích ⇒ hứng thú + động lực; được
+  "show hàng" trước bạn bè. **KHÔNG làm mạng xã hội đăng bài** — làm "mạng xã hội khoe", không rủi ro.
+  Tên gọi thế giới: *social presence / body doubling* (Forest, Focusmate, "Study With Me") + *khoe tự động, bạn bè bấm tương tác* (Strava Kudos, Duolingo).
+- **2 lớp, không lớp nào cho HS gõ chữ tự do:**
+  1. **"Đang học cùng em"** (ngay trong màn làm bài): "🟢 N bạn BK đang học lúc này" (realtime presence, không ghi DB) + dòng tin chạy nhẹ
+     "X vừa làm xong 10 câu" — **chỉ tin nỗ lực / tin tốt**, không bao giờ hiện điểm kém, câu sai, hạng thấp (luật A8).
+  2. **Kênh khoe:** **🌏 Thế giới BK** (toàn trung tâm) + **🏫 Kênh lớp** (mỗi lớp em học — lớp gắn môn ⇒ đúng §1.6). Tin do HỆ THỐNG tự sinh
+     từ sự kiện thật: lên bậc rank · huy hiệu ★ · giải tháng · Nhất buổi · đội thắng game buổi · trúng 🧋 · chuỗi nhiệm vụ… Bấm tên ⇒ hồ sơ khoe (§0.7b).
+- **Tương tác (Thùy):** KHÔNG chat, KHÔNG chữ tự do; **KHÔNG chỉ 1 nút "chúc mừng"** — em **thả icon trendy** hoặc **chọn câu meme trendy soạn sẵn**.
+  Danh mục icon/câu nằm ở **DB, admin sửa được** (theo trend) ⇒ không có nội dung ngoài danh mục ⇒ không cần kiểm duyệt. Người nhận có thông báo.
+- **Riêng tư (Thùy):** mỗi em **tự chọn hiện TÊN hoặc hiện MÃ SỐ HS** (`hoc_sinh.ma_hs`, dạng `HS####` — đo 28/09: 338/338 HS đang học có mã, không trùng).
+  Áp cho mọi chỗ em xuất hiện trên 2 lớp trên. **Phụ huynh KHÔNG xem** kênh (riêng tư của HS).
+- **Luật dữ liệu:** kênh = **SUY RA** từ bảng sự kiện đã có (bài làm, huy hiệu, giải, game…) bằng hàm `fn_*` — **không có bảng "bài đăng"**, không đẻ dòng chờ.
+  Chỉ ghi thêm: lượt tương tác (ai · tin nào · icon/câu nào) + lựa chọn tên/mã của em. Nhiều sự kiện là dữ liệu học tập ⇒ mang `mon`; Thế giới gộp mọi môn.
+- **Thiết kế cố ý (CTO):** kênh **không bao giờ vắng** (lúc ít người: tổng kết "Hôm nay 87 bạn đã luyện 1.240 câu", không hiện "0 bạn") · phải có loại tin
+  **ai chăm cũng đạt** (làm xong bài, chuỗi ngày, tiến bộ so với chính mình) để bạn yếu cũng lên kênh — chỉ khoe bạn giỏi thì bạn yếu càng lạc lõng.
+- **Bàn sau (detail):** danh mục icon + câu meme (Thùy chọn) · danh sách loại tin + ngưỡng (vd "10 câu" hay "1 bài") · giới hạn tương tác/ngày
+  (chống bấm hàng loạt) · có thưởng gì không (CTO đề xuất KHÔNG cộng EXP cho việc thả tương tác) · vị trí trên app HS (tab riêng hay ô trên Home).
+
 ### 0.8 Còn mở — chưa bàn
 - **C5** Danh hiệu top theo dạng: logic A4 đã có (Điểm Dạng từ mọi nguồn, chốt tuần) — cấp / %, sàn, tốc độ giảm.
 - **C8** Quà đua lớp.

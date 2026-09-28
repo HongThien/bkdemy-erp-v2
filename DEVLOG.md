@@ -31101,3 +31101,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 ## 2026-09-28 (13) — exp_tren_lop đã vào chốt xu tháng
 - Thùy xin file SQL để chạy; đo DB trước: `fn_gami_exp_xu_thang` đã chứa `exp_tren_lop` ⇒ file đã được chạy (sổ `_migrations` không ghi vì SQL Editor). Gỡ khỏi việc chờ.
+
+## 2026-09-28 (14) — "Thế giới BK": spec logic học cùng nhau + kênh khoe
+- Thùy: gốc = HS học một mình trên app thấy cô đơn; làm "mạng xã hội khoe", không đăng bài. Chốt: thả icon/câu meme soạn sẵn (không chat, không chỉ 1 nút chúc mừng) · em chọn hiện tên hoặc mã HS · kênh Thế giới + kênh lớp · PH không xem.
+- Ghi `spec-thanh-tuu-nhiem-vu.md` §0.7c (chèn TRƯỚC mốc §0.8, giữ nguyên mốc). Đo DB: 338/338 HS đang học có `ma_hs` riêng (HS####). Chưa code.
