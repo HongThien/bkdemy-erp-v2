@@ -30994,3 +30994,9 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
   tiến độ sao kế, N bạn/khối + Hiếm, checklist tháng này, lịch sử tháng) mở từ thẻ Huy hiệu ở màn Thành tựu.
 - Phiên khác đổi `monCuaHS` sang `hs_lop_mon_cua_toi` (em học nhiều môn) — các màn mới gọi monCuaHS nên tự theo.
 - **Chưa làm:** ghim 3 huy hiệu khoe + tắt catalog cũ thanh_tich_loai (đụng bảng đang dùng — làm cùng màn khoe C11) · ví xu hiện dòng EXP nhiệm vụ/huy hiệu.
+- (tiếp, 28/09 tối) **Migration khung K12 ĐÃ ÁP** (Thùy chạy `migrate.mjs --only`, lần đầu fail vì t đưa lệnh đường dẫn tương đối không ghi thư mục —
+  đúng cái bẫy đã ghi ở spec-luong-kho-p0 §8; từ nay lệnh đưa người chạy = đường dẫn tuyệt đối). `migrate.mjs` tự thêm policy `claude_ro_select`
+  cho `dai_chuyen_de_thu_tu`. Kiểm DB thật: 112 dạng · 19 chuyên đề · 6 chủ đề · 19 dòng thứ tự · `fn_dai_kiem_ma()` K12 = 0 · câu K12 sống vẫn 6.056 ·
+  câu chờ 1.516 · chủ đề cũ T11202/05/06 = 0 dòng · 38 dạng có `mo_ta_ngan`. `schema.md` refresh + commit.
+- Thứ tự hiển thị: chạy NGUYÊN thuật toán `sapXepTheoThuTuHoc` trên dữ liệu thật ⇒ I(T11201) → II(T11207) → III(T11209) → IV(T11204) → V(T11210) → VI(T11208),
+  chuyên đề 1..19 đúng SGK. CHƯA xem được trên màn Bản đồ thật: preview cần đăng nhập (gửi mật khẩu lên Supabase — t không tự bấm), chờ Thùy bấm.
