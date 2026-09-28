@@ -30338,3 +30338,15 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   Check sai ⇒ chữ về khay + ô ghi "≠X". Còn hiện chủ đề câu (`HIEN_CHU_DE`) — Thùy muốn khó hơn thì tắt.
 - Verify (375×812): chạm/kéo/đổi chỗ/kéo về khay, Check đúng khoá + Check sai loại chữ, Hoàn thành đúng/sai, chạy hết màn ⇒ kỷ lục lưu đúng.
 - Sai/sửa: câu 21 chữ tràn đè thanh trên (board co lại + cỡ ô chỉ tính theo bề ngang) ⇒ tính cỡ ô theo cả chiều cao (hàng ô + khay vừa 1 màn).
+
+## 2026-09-28 (8) — Giao diện app HS: Thùy chốt 6 câu → viết `spec-giao-dien-hs.md` (chưa code)
+
+- **Chốt:** (1) nhóm = **khối 9–12 vì có điện thoại riêng**, khối ≤8 dùng máy chung ⇒ hành vi khác, làm riêng (không phải chia theo tuổi 15–18
+  như mục (7)) · (2) không bầu trước — làm rồi đo ⇒ trigger ghi vết đổi skin = phiếu bầu · (3) ngày thi trung tâm nhập sẵn (bảng `ky_thi`) ·
+  (4) điểm của ai người đó thấy, không tuỳ chọn công khai (rank mùa vẫn công khai theo spec thành tựu) · (5) Claude design bằng code, phần
+  hình viết prompt ChatGPT · (6) chia sẻ thẻ thành tích không cần PH đồng ý.
+- **Làm:** `spec-giao-dien-hs.md` (phạm vi · Home mới · 6 skin · dữ liệu · 3 tầng tự chỉnh · lộ trình · §8 prompt ChatGPT cho Lo-fi và Anime RPG,
+  theo khuôn `design/CHATGPT-UI-KIT.md` nhưng bỏ Pha B/C vì bố cục đã dựng bằng code). Trang đề xuất cập nhật theo quyết định (bỏ nút
+  riêng tư rank, bỏ P0 bầu chọn).
+- **P1 đề xuất:** Home mới + registry skin + `hs_giao_dien` (+ trigger log) + `ky_thi` + màn chọn skin · 4 skin chỉ-code (Tối giản, Đấu trường,
+  Y2K, Soft Hàn). Chờ Thùy gật để build.
