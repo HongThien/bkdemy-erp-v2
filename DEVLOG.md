@@ -31082,3 +31082,16 @@ HANDOFF ②: +5 bài học (2 gốc "xếp mãi vẫn Cần xếp" · retest ch�
   output ngắn bất thường. Vá file bằng `replace` phải throw khi không thấy chuỗi (đã làm vậy ở script vá KhoScreen).
 - Ghi chú cho P2: RPC dời câu từ dạng chờ → dạng mới sinh log `kho_doi_dang_log` CÓ actor ⇒ `fn_kho_sua_tk` khâu `dang` có thể đếm là "người sửa";
   dang_cu là dạng chờ thì thực chất là ĐIỀN, không phải SỬA — cần loại khi đo.
+
+## 2026-09-28 — ĐÃ XOÁ dữ liệu TEST bổ trợ yếu của Triệu Đức Tùng (Thùy: "ok xoá", danh sách gửi 24/09)
+
+Kiểm kê lại qua MỌI FK trước khi xoá — khớp đúng danh sách, không phát sinh. Xoá 1 transaction lá→gốc, commit chỉ khi mọi số khớp:
+log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 5 (3 luyện + 1 test cuối ca + 1 retest) · dạng 6 · nhận xét 1 · buoi_hoc_hs 3 · buổi 3
+(03/09 ×2 + buổi 14/09 đang hiện 24/09, đã gắn ca trực ⇒ ca được trả 1 đơn vị) · case 1. hs_level Toán L1 ⇒ L0 (xoá dòng, +1 hs_level_log nguồn
+"xoa_du_lieu_test"). GIỮ: 2 buổi bù thật (06/07, 01/08) · chuông BTVN 22/07 · 3 dòng hs_level_log cũ · 1 bài khác của em.
+
+## 2026-09-28 — Đơn 1 v2 (Thị trấn) · HANDOFF mục giao diện HS viết lại
+
+- Đơn 1 viết lại thành v2 trong `design/DON-HANG-SKIN-HS.md`: Thị trấn = skin trong bộ chung (mở mọi khối) ⇒ theo BỐ CỤC CHUNG, đủ ô khối 9 + 10–12;
+  skin SÁNG (vùng đặt ô sáng dịu, chữ tối) · linh vật thay người · giao 1 hình/lượt không zip như Đơn 3 v3 · 27 hình (2 toàn cảnh, 6 nền, 3 linh vật, 16 icon).
+- HANDOFF: mục "GIAO DIỆN APP HS" viết lại sạch (mở 6–12, hình RPG thật, nguồn ảnh, việc tiếp, bài học zip ChatGPT).
