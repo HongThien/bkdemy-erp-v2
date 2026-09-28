@@ -31153,3 +31153,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   sao rời; hào quang bậc thần; lớp phủ lên bậc; màn Rank chi tiết 4 trạng thái; không vẽ mặt người; khác hẳn ngôn ngữ hình huy hiệu:
   rank = khiên/mũ trụ/vương miện, huy hiệu = huy chương tròn men màu) · Đơn 4 = Hồ sơ (gửi sau, dùng hình Đơn 2 + 3; khung avatar lấy từ
   Đơn 3 thay "5 kiểu khung" tự định nghĩa). Thứ tự gửi: 2 + 3 (song song) → 1 → 4. HANDOFF sửa dòng thứ tự đơn.
+
+## 2026-09-29 — Thế giới BK: chốt logic vòng 2
+- Thùy "ok" cả 5 điểm: 3 tầng tin S/A/B (B chỉ kênh lớp, gộp/ngày) · 1 icon + 1 câu meme / em / tin, không EXP · icon riêng "👑 Thầy cô khen" cho GV/TA · push HS gom ~20h · chủ tin ẩn được tương tác + tin. Ghi spec gamification §0.7c. Chưa code; bước 1 dùng sự kiện đã có (~1,5–2 tuần), bước 2 chinh phục dạng (cần nhật ký vượt ngưỡng).

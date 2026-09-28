@@ -194,7 +194,24 @@
 - **Thiết kế cố ý (CTO):** kênh **không bao giờ vắng** (lúc ít người: tổng kết "Hôm nay 87 bạn đã luyện 1.240 câu", không hiện "0 bạn") · phải có loại tin
   **ai chăm cũng đạt** (làm xong bài, chuỗi ngày, tiến bộ so với chính mình) để bạn yếu cũng lên kênh — chỉ khoe bạn giỏi thì bạn yếu càng lạc lõng.
 - **Bàn sau (detail):** danh mục icon + câu meme (Thùy chọn) · danh sách loại tin + ngưỡng (vd "10 câu" hay "1 bài") · giới hạn tương tác/ngày
-  (chống bấm hàng loạt) · có thưởng gì không (CTO đề xuất KHÔNG cộng EXP cho việc thả tương tác) · vị trí trên app HS (tab riêng hay ô trên Home).
+  (chống bấm hàng loạt) · vị trí trên app HS (tab riêng hay ô trên Home).
+- **✅ Logic chốt vòng 2 (Thùy "ok" 29/09 — 5 điểm):**
+  1. **3 tầng tin:** **S** cực phẩm (lên bậc rank · huy hiệu ★4–5 · giải tháng · 🧋) ⇒ Thế giới, ghim đầu 24h, hiệu ứng lớn ·
+     **A** đáng khoe (huy hiệu ★1–3 · Nhất buổi · đội thắng game buổi · **chinh phục 1 dạng** yếu→đạt · chuỗi 7/30 ngày) ⇒ Thế giới + lớp ·
+     **B** nỗ lực (xong nhiệm vụ ngày · chuỗi 3 ngày · tiến bộ so với chính mình · xong bài) ⇒ **chỉ kênh lớp** + tin chạy "đang học cùng em".
+     Tin B của 1 em trong ngày **gộp thành 1**; Thế giới có trần tin/em/ngày.
+  2. **Tương tác:** mỗi em **1 icon / tin** (đổi được) **+ 1 câu meme / tin**; dưới tin: đếm theo icon + vài câu mới nhất (tên/mã) + "+N bạn".
+     Danh mục chỉ câu **khen/hype một chiều** (Thùy duyệt từng câu — câu soạn sẵn vẫn có thể thành mỉa mai). **Không cộng EXP** cho việc thả tương tác.
+  3. **"👑 Thầy cô khen":** icon RIÊNG chỉ GV/TA thả được, hiện nổi bật trên tin (khen công khai của thầy cô > chục icon bạn bè).
+  4. **Thông báo đẩy cho HS** (Web Push, hạ tầng `push.ts`/`push_dang_ky` đang chạy cho app pt/ta ⇒ thêm app `hs`): "🔥 Bình và 4 bạn thả tim…",
+     "👑 Cô Lan khen em" — **gom 1–2 lần/ngày quanh 20h** (giờ đông nhất theo §0.10), không bắn từng cái. iPhone phải "Thêm vào MH chính" mới nhận.
+  5. **Chủ tin tự quản:** ẩn từng **tương tác** trên tin mình · ẩn từng **tin** của mình. Admin gỡ được mọi tin.
+     Chế độ **hiện mã**: avatar chung, bấm vẫn xem hồ sơ khoe (rank/huy hiệu) nhưng **không lộ tên + lớp**.
+- **Kỹ thuật (CTO):** tương tác gắn vào **KHOÁ TỰ NHIÊN của sự kiện gốc** (vd `huy_hieu:<id>`, `buoi_giai:<buổi>:<hs>`), không gắn vị trí trong feed
+  (CLAUDE.md §2 "danh tính bám khoá tự nhiên"). "Chinh phục dạng": mastery **không lưu** (§1) ⇒ cần nhật ký **append-only** mỗi lần vượt ngưỡng
+  (sự kiện thật, không phải lưu mastery) — tốn công hơn các tin khác ⇒ để bước 2.
+- **Build 2 bước:** **Bước 1** (~1,5–2 tuần) = tin từ sự kiện ĐÃ CÓ: Nhất buổi · game buổi (Mở Rương/Chiếm Đất/Bắn Quà/🧋) · bài làm · nhiệm vụ ·
+  rank · huy hiệu (lõi gamification build 28/09) + icon/meme + 👑 + push HS. **Bước 2** = chinh phục dạng + tiến bộ so với chính mình.
 
 ### 0.8 Còn mở — chưa bàn
 - **C5** Danh hiệu top theo dạng: logic A4 đã có (Điểm Dạng từ mọi nguồn, chốt tuần) — cấp / %, sàn, tốc độ giảm.
