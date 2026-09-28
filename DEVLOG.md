@@ -30142,3 +30142,15 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   lên cấp vẫn rút mẫu 10% · khối pilot đề xuất K7 · build P0 (nền đo) trước P1 (một cửa).
 - **Còn:** 6 câu ở `spec-luong-kho.md` §8 (khối pilot · "phía trước" gồm khối dưới/nhánh Hình? · bài nhiều ý · folder nguồn ở máy nào ·
   xác nhận cách đo 95% + 3 giai đoạn hình · ranh "quá dễ" + chia cụm dạng cũ). `E:\BK ACADEMY\…` không có trên máy chạy phiên này.
+
+## 2026-09-28 (5) — Spec thành tựu/nhiệm vụ v2: đổi khung sang GAME (cày cuốc + đua top)
+
+- **Sai (v1, mục (4)):** lấy Khan/Duolingo + nghiên cứu giáo dục làm khung ⇒ né leaderboard, streak tuần nhẹ. Thùy bác: "Khan vẫn là
+  online, BK là offline… bản chất game thì cày cuốc đua top". Bài học: CEO nói "research game" = lấy GAME làm xương sống; lý thuyết edu
+  không được lấn thành khung. Đã lưu memory `gami-theo-game-khong-theo-app-hoc`.
+- **Làm:** thêm 1 nhánh research chỉ game (Liên Quân/HoK lực chiến + chiến khu, rank mùa LoL/FF/PUBG/Hearthstone, Sổ Sứ Mệnh, quân
+  đoàn FF/Clan Games, chống cày ảo) ⇒ viết lại `spec-thanh-tuu-nhiem-vu.md` v2: 3 trục GIỎI (rank mùa theo Elo lớp, Thách Đấu ghế có
+  hạn) · CÀY (Lực dạng = lực chiến tướng, danh hiệu Top/Đệ nhất dạng × khối chốt tuần) · SƯU TẬP (28 thành tựu, bậc đỉnh Huyền Thoại
+  = phân vị) + Sổ Sứ Mệnh (ngày sống 3 ngày, tuần dồn, 10 nv ⇒ rương, 30 cấp/tháng, khiên/thẻ gửi ngày) + đua lớp best-5.
+- **Giữ nguyên tắc chống cày ảo theo kiểu GAME:** điểm theo độ khó câu, câu đã đúng = 0, best-10/dạng/ngày, khoá 22:00, rank chỉ từ
+  bài trên lớp (có giám sát), decay chỉ danh hiệu không đụng mastery/Elo. 7 câu chờ Thùy (Q1–Q7).
