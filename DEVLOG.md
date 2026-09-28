@@ -30213,3 +30213,10 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   + đường dẫn file agent sai + bảng exit code không có trong tài liệu. Chỉ lộ vì t mở tài liệu gốc đối chiếu. **Subagent tra cứu = người
   làm; vẫn phải có người kiểm đọc nguồn gốc** — lần thứ 2 trong ngày dính (lần 1: "3 nhánh chưa merge").
 - **Còn:** CEO gật P0 (§9.6) · "xác nhận câu đúng" khi người báo nhầm · CEO hỏi GeoGebra về giấy phép trước đợt Hình.
+
+## 2026-09-28 (4) — Game "Bắn Quà" (artillery kiểu Worms/GunBound): chốt luật đợt 1 + rà asset
+- Thùy đề xuất game bắn quà giờ ra chơi (cá nhân + đội hỗn chiến), trả lời 15 câu ⇒ ghi `spec-game-ban-qua.md` §1. Lớp chỉ 1–2 iPad
+  ⇒ bắn LẦN LƯỢT (CTO tự quyết), 2.5D three.js + địa hình bitmap phá được.
+- Rà asset `Documents/ChatGPT/KayKit`: có đủ — Adventurers (đã dùng ở BK Hero Universe), **`snowball_cannon`** (KayKit Holiday, pháo có sẵn),
+  Kenney `siege-catapult`/`ballista` (castle-kit), `present_A…F`, `hot_chocolate_decorated` (hộp trà sữa), `snowball`/`basketball`.
+  Trang xem thử tạm `games-site/_xem-asset/` (KHÔNG commit — copy asset để nhìn). Chưa code.
