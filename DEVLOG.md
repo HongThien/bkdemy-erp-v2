@@ -30955,3 +30955,22 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
   PUBLIC (có từ trước, owner postgres) — thực tế vô hại vì gami_exp_ledger RLS ⇒ anon ra 0 dòng. Muốn kín hẳn: SQL Editor
   `revoke execute on function public.fn_gami_exp_xu_thang(text, uuid, text) from public;` (authenticated có grant riêng, không ảnh hưởng app).
 - `migrate --ghi-so` 202609281817 + 202609272045 (file 272045 thành thừa vì 281817 đã gộp exp_tren_lop). Còn treo 13 file của phiên khác.
+
+### 28/09 tối — P1: CEO chốt vòng 2 + migration khung K12 viết xong, dry-run qua (chưa áp)
+- CEO vòng 2: **L2 (gộp thống kê) · L3 (giữ Đơn điệu/Cực trị) · L4 (góc về B16): GẬT; L1 (bỏ chuyên đề "thực tế"): KHÔNG** ⇒ giữ
+  chuyên đề B5 SGK, 8 dạng ①–⑧ đặt trong đó. 673 câu chạy như lô đầu: gật. Chưa có tên "học thuật" duyệt bản đồ.
+- Kiểm trước khi viết: quy tắc kho (CEO 12/09) **ma_dang phải bắt đầu bằng ma_chuyen_de** (UI suy cây bằng `maChuDeCua/maChuyenDeCua`)
+  ⇒ dời dạng = ĐỔI MÃ + re-point. Đã có RPC `fn_dai_chuyen_chuyen_de` (18/09) và `fn_dai_chuyen_dang` re-point 8 bảng text-ref + FK cascade
+  ⇒ dùng lại, không viết tay. Bán kính: 1.420 câu · 13 cụm · 18 LT dạng · 33 gami_session_problems · 2 ca_test_cau; 3 bảng text-ref mới
+  hơn RPC (hoc_tu_dau_dang · bai_test_dang_phat_hanh · dai_cau_hoi_clone_cho_duyet) = 0 dòng — migration §0 assert điều này.
+- `202609281833_khung_ban_do_k12.sql`: xoá rác · chương I nhận 2 chuyên đề từ T11202 (T1120105 Khảo sát & vẽ 11 dạng, LT 3 chuyên đề nối;
+  T1120106 Thực tiễn 2 cũ + 8 mới) · chương IV gộp T11205 vào T11204 (T1120403 Tích phân, T1120404 ƯD hình học, T1120402 nghỉ) · chương III
+  `T11209` 7 dạng · chương V `T11210` 4 chuyên đề 19 dạng · VI +3 dạng · bảng `dai_chuyen_de_thu_tu` (19 dòng K12) + `fn_kho_pham_vi` · kiểm sau.
+  Mã chủ đề mới T11209/T11210, KHÔNG dùng lại T11203/T11206 đã xoá.
+- **Công cụ mới `scripts/thu-migration.mjs`:** BEGIN → chạy file → chạy file SELECT kiểm → ROLLBACK. Bắt được 2 lỗi trước khi áp thật:
+  (1) FK `dai_cau_hoi_dang_chinh_fkey` on delete RESTRICT: 19 câu ĐÃ XOÁ MỀM vẫn trỏ 2 dạng rác ("0 câu" chỉ đúng với câu sống) ⇒ dời
+  19 câu rác về dạng chờ (đều da_duyet=false nên qua `trg_chan_duyet_dang_cho`); (2) RPC tạo temp table `_cd_map on commit drop` ⇒ gọi
+  nhiều lần trong 1 transaction phải `drop table if exists` trước. Dry-run cuối: 112 dạng · 19 chuyên đề · 6 chủ đề, `fn_dai_kiem_ma()` sạch,
+  0 text-ref trỏ mã cũ.
+- UI: `listDaiDang` sắp theo `dai_chuyen_de_thu_tu` (chủ đề theo min thứ tự chuyên đề); bảng chưa có ⇒ warn + giữ thứ tự mã, không gãy màn.
+- **Cách áp (CEO):** `node scripts/migrate.mjs --only 202609281833_khung_ban_do_k12.sql` — sổ đang treo 13 file của phiên khác, KHÔNG `npm run migrate` trần.

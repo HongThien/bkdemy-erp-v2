@@ -36,14 +36,42 @@ export async function listLopBac(): Promise<LopBac[]> {
 }
 
 // ── Đọc dạng Đại theo khối ───────────────────────────────────────
+// Thứ tự hiển thị chủ đề/chuyên đề = THỨ TỰ HỌC (SGK) trong `dai_chuyen_de_thu_tu` (mig 202609281833),
+// không phải thứ tự mã — mã là danh tính, không nhét thứ tự vào mã (K12: chương III mang mã T11209,
+// chương V mang T11210 nhưng phải đứng giữa II và IV/VI). Khối chưa xếp thứ tự ⇒ giữ thứ tự mã như cũ.
+// Sort ở client là sort hiển thị thuần (§2.0), không tính toán nghiệp vụ.
 export async function listDaiDang(khoi: string): Promise<DaiDang[]> {
-  const { data, error } = await supabase
-    .from('dai_ban_do').select('*')
-    .eq('khoi', khoi).not('ma_dang', 'like', '%000000') // ẩn dạng chờ "Chưa phân dạng"
-    .order('ma_chu_de').order('ma_chuyen_de').order('ma_dang')
-    .limit(LIMIT)
+  const [{ data, error }, tt] = await Promise.all([
+    supabase
+      .from('dai_ban_do').select('*')
+      .eq('khoi', khoi).not('ma_dang', 'like', '%000000') // ẩn dạng chờ "Chưa phân dạng"
+      .order('ma_chu_de').order('ma_chuyen_de').order('ma_dang')
+      .limit(LIMIT),
+    thuTuChuyenDe(khoi),
+  ])
   if (error) throw error
-  return (data ?? []) as DaiDang[]
+  return sapXepTheoThuTuHoc((data ?? []) as DaiDang[], tt)
+}
+async function thuTuChuyenDe(khoi: string): Promise<Map<string, number>> {
+  const { data, error } = await supabase
+    .from('dai_chuyen_de_thu_tu').select('ma_chuyen_de, thu_tu').eq('khoi', khoi).limit(500)
+  // Bảng chưa áp (deploy trước migration) ⇒ không làm gãy Bản đồ, chỉ mất thứ tự học.
+  if (error) { console.warn('dai_chuyen_de_thu_tu:', error.message); return new Map() }
+  return new Map((data ?? []).map((r: { ma_chuyen_de: string; thu_tu: number }) => [r.ma_chuyen_de, r.thu_tu]))
+}
+/** Sắp dạng theo (chủ đề → chuyên đề → mã dạng), trong đó chủ đề/chuyên đề xếp theo thứ tự học nếu có. Stable. */
+export function sapXepTheoThuTuHoc(rows: DaiDang[], tt: Map<string, number>): DaiDang[] {
+  if (tt.size === 0) return rows
+  const cdRank = new Map<string, number>()
+  for (const r of rows) {
+    const t = tt.get(r.ma_chuyen_de) ?? Infinity
+    cdRank.set(r.ma_chu_de, Math.min(cdRank.get(r.ma_chu_de) ?? Infinity, t))
+  }
+  const cmp = (a: number, b: number) => (a === b ? 0 : a < b ? -1 : 1)
+  return [...rows].sort((a, b) =>
+    cmp(cdRank.get(a.ma_chu_de)!, cdRank.get(b.ma_chu_de)!) || a.ma_chu_de.localeCompare(b.ma_chu_de)
+    || cmp(tt.get(a.ma_chuyen_de) ?? Infinity, tt.get(b.ma_chuyen_de) ?? Infinity) || a.ma_chuyen_de.localeCompare(b.ma_chuyen_de)
+    || a.ma_dang.localeCompare(b.ma_dang))
 }
 
 // ── CÂU HỎI của một dạng (dai_cau_hoi) ───────────────────────────

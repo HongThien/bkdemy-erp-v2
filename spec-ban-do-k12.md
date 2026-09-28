@@ -151,16 +151,30 @@ Thứ tự điền: chuyên đề có nhiều câu chờ trước (C1 B5 · C4 �
 **Vòng 1 (CEO 28/09):** khung theo SGK — *"gần giống, không 100%"* ⇒ §2b · 673 câu — *"bỏ qua cái đã phân, đề xuất theo góc nhìn của CTO"* ⇒ §3b ·
 **xoá 3 thứ rác: GẬT** (`T112070106` "." · `T11206`/`T1120602`/`T112060201` · `T1120301`) · **dạng seed nháp CTO: GẬT**.
 
-**Vòng 2 — còn chờ:**
-1. **4 chỗ lệch SGK §2b (L1 bỏ chuyên đề "thực tế" → KP thật + thuộc tính `thuc_te` · L2 gộp thống kê 1 chuyên đề · L3 giữ Đơn điệu/Cực trị 2 chuyên đề · L4 góc về B16):** gật cái nào, sửa cái nào? Và CEO có chỗ lệch nào khác trong đầu chưa nêu?
-2. **673 câu §3b:** 8 dạng ①–⑧ + chạy như lô đầu của dây chuyền, xong xoá 2 dạng cũ — OK?
-3. **Ai là "học thuật" duyệt bản đồ K12** (B6: quyền theo role, không riêng CEO)? Cần tên người để đặt quyền màn đề xuất.
+**Vòng 2 (CEO 28/09):** **L2 · L3 · L4: GẬT** · **L1 KHÔNG gật** ⇒ giữ chuyên đề "Ứng dụng đạo hàm để giải quyết một số vấn đề thực tiễn"
+(B5 SGK), 8 dạng ①–⑧ nằm trong đó (không rải về B2/B3, không thuộc tính `thuc_te`) · **673 câu chạy như lô đầu: GẬT**.
+
+**Còn chờ:** ai là "học thuật" duyệt bản đồ K12 (B6) — cần tên để đặt quyền màn đề xuất dạng/cụm.
+
+## 6b. Khung đã chốt — bản build (migration `202609281833_khung_ban_do_k12.sql`, dry-run ROLLBACK 28/09 qua)
+
+| TT | Chủ đề (mã) | Chuyên đề (mã) | Dạng | Ghi chú |
+|---|---|---|---|---|
+| 1–6 | I. Ứng dụng đạo hàm để KSHS (`T11201`) | Đơn điệu `T1120101` · Cực trị `T1120102` · GTLN–GTNN `T1120104` · Tiệm cận `T1120103` · **Khảo sát & vẽ `T1120105`** (11 dạng dời từ T11202 bậc 3 / b1/b1 / b2/b1, LT 3 chuyên đề nối lại) · **Thực tiễn `T1120106`** (2 dạng cũ 673 câu "đang phân lại" + 8 dạng mới ①–⑧) | 4·2·3·7·11·10 | `T11202` biến mất |
+| 7–9 | II. Vectơ & hệ trục (`T11207`) | `T1120701` · `T1120702` · `T1120703` | 7·3·11 | xoá dạng "." |
+| 10 | **III. Số đặc trưng độ phân tán (`T11209`)** | `T1120901` (L2 gộp B9+B10) | 7 mới | |
+| 11–13 | IV. Nguyên hàm & tích phân (`T11204`) | Nguyên hàm `T1120401` (+2 dạng thực tế) · **Tích phân `T1120403`** (4 + 3 thực tế) · **ƯD hình học `T1120404`** | 8·7·6 | `T11205` biến mất; mã `T1120402` nghỉ |
+| 14–17 | **V. PP toạ độ (`T11210`)** | mp `T1121001` · đt `T1121002` · góc `T1121003` (L4) · mặt cầu `T1121004` | 6·5·4·4 mới | |
+| 18–19 | VI. XS có điều kiện (`T11208`) | `T1120801` (+3 dạng) · `T1120802` | 4·3 | xoá `T11206` |
+
+Tổng sau migration: **6 chủ đề · 19 chuyên đề · 112 dạng** (77 − 2 rác + 37 mới). Thứ tự ở bảng `dai_chuyen_de_thu_tu`; UI Bản đồ sắp theo đó (`listDaiDang`).
+Phạm vi C8: `fn_kho_pham_vi(ma_chuyen_de)`. 19 câu rác (đã xoá mềm) trỏ 2 dạng rác được dời về dạng chờ để FK cho xoá.
 
 ## 7. Sau khi chốt — việc build P1 (theo thứ tự)
 
 | # | Việc | Ra cái gì |
 |---|---|---|
-| 1 | Migration khung K12: bảng `dai_chuyen_de_thu_tu` + hàm `fn_kho_pham_vi` · tạo 8 chuyên đề mới + dạng seed (kèm `mo_ta_ngan`) · dời dạng theo bảng §2 (giữ `ma_dang`; đổi `ma_chu_de/ma_chuyen_de`; dời khoá `dai_chuyen_de_ly_thuyet` khi gộp) · xoá rác đã gật. **Có bảng đối chiếu cũ→mới trong migration.** | Bản đồ K12 6/19/~110 |
+| 1 | ✅ **Viết xong, dry-run qua, CHỜ ÁP:** `202609281833_khung_ban_do_k12.sql` — bảng `dai_chuyen_de_thu_tu` + `fn_kho_pham_vi` · 6 chuyên đề mới + 37 dạng seed kèm `mo_ta_ngan` · dời dạng bằng RPC `fn_dai_chuyen_chuyen_de`/`fn_dai_chuyen_dang` (**đổi mã** — quy tắc kho: mã dạng phải bắt đầu bằng mã chuyên đề; bảng đối chiếu cũ→mới ở đầu file) · xoá rác đã gật. Áp bằng `node scripts/migrate.mjs --only 202609281833_khung_ban_do_k12.sql` (sổ đang treo 13 file của phiên khác — KHÔNG `npm run migrate` trần). Công cụ mới `scripts/thu-migration.mjs` = chạy thử trong transaction rồi ROLLBACK. | Bản đồ K12 6/19/112 |
 | 2 | Bảng **đề xuất dạng/cụm** `dai_de_xuat_dang` (chuyên đề, tên, mô tả, câu làm chứng, dạng gần nhất, vì sao không gộp, trạng thái, người duyệt) + màn duyệt đề xuất 3 làn trong Bản đồ kiến thức | Chỗ cho làn 🟡 |
 | 3 | Skill `kho-ban-do` (tương tác): lấy lô câu chờ theo chuyên đề → phép thử §2 → 3 làn; nháp `mo_ta_ngan` cho dạng thiếu | Lô đầu: C5 + C3 (chuyên đề mới, câu chờ rõ nhất) |
 | 4 | Đo sau lô đầu: câu chờ K12 còn lại · tỉ lệ đề xuất nhận nguyên / sửa / bác · số câu phải hỏi người | Con số đầu tiên của skill ② |
