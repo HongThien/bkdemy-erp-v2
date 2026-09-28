@@ -6,6 +6,88 @@
 
 ---
 
+## ★★★ VÒNG 4 — MÙA 1 NĂM · THANG 10 BẬC "NGƯỜI THƯỜNG → THẦN" (Thùy 28/09)
+
+**Thùy chốt:**
+- **Mùa = 1 năm.** Nhiều bậc, mỗi bậc lớn có bậc nhỏ. Theo câu chuyện *người bình thường thành thần*.
+- **Bậc thần phải ÍT:** đa số chỉ tới bậc 6–7, bậc 8–9–10 mới là danh giá.
+
+Chạy lại: `node scripts/sim-diem-rank.mjs --nam` (12 tháng, 100 lần/khối).
+
+### Thang đề xuất
+
+**8 bậc cố định** (mỗi bậc 3 sao ★ → ★★★) **+ 2 bậc ghế** (chỉ vài em ngồi).
+
+| # | Bậc | Chương truyện | Ngưỡng (hệ số × điểm tối đa 1 tháng) | Toán | KHTN |
+|---|---|---|---|---|---|
+| 1 | **Novice** | Người thường | 0 | 0 | 0 |
+| 2 | **Soldier** | Chiến binh | 0,6 | 1.500 | 1.125 |
+| 3 | **Captain** | Chiến binh | 1,6 | 4.000 | 3.000 |
+| 4 | **General** | Chiến binh | 3,0 | 7.500 | 5.625 |
+| 5 | **Master** *(hoặc Hero — Q-N1)* | Anh hùng | 4,6 | 11.500 | 8.625 |
+| 6 | **Legend** | Anh hùng | 7,0 | 17.500 | 13.125 |
+| 7 | **King** | Vương giả | 8,0 | 20.000 | 15.000 |
+| 8 | **Emperor** | Vương giả | 9,8 | 24.500 | 18.375 |
+| 9 | **God of War** | Thần | **Ghế:** top 3% khối × môn **và** phong độ ≥ 84% | 2 em / khối 54 | 1 em / khối 34 |
+| 10 | **Supreme God** | Thần | **Ghế:** hạng 1 khối × môn **và** phong độ ≥ 92% | 1 em | 1 em |
+
+- **Phong độ** = điểm từ đầu mùa ÷ (điểm tối đa 1 tháng × số tháng đã qua).
+- Ghế thần **xét lại hằng ngày** và **ngồi được quanh năm**: tháng 1 cũng có thần, tháng 12 cũng có. Bị vượt hoặc tụt phong độ thì rơi về bậc cố định của mình.
+- Nếu ghế chỉ mở khi đủ điểm cả năm thì tới tháng 11 mới có thần — đã thử, loại.
+
+### Kết quả — Toán khối 7 (54 em)
+
+| Kiểu HS | Hết T1 | Hết T3 | Hết T6 | Hết T9 | **Hết năm** |
+|---|---|---|---|---|---|
+| Giỏi toàn diện | Supreme God | Supreme God | Supreme God | Supreme God | **Supreme God** (29.119) |
+| Giỏi, cày app điên | God of War | God of War | God of War | God of War | **God of War** (28.156) |
+| Trung bình, cày 6 lượt/ngày | Soldier ★ | Captain ★★ | Master ★ | Legend ★★ | **Emperor ★** (25.225) |
+| Khá, chăm | Soldier ★ | Captain ★★ | Master ★ | Legend ★ | **King ★★★** (24.202) |
+| Giỏi, không dùng app | Soldier ★ | Captain ★★ | Master ★ | Master ★★★ | **King ★★★** (23.198) |
+| Yếu, cày 15 lượt/ngày | Soldier ★ | Captain ★★ | General ★★★ | Master ★★★ | **King ★★** (22.956) |
+| Ốm lỡ MT, thi lại | Soldier ★ | Captain ★★ | General ★★★ | Master ★★★ | **King ★★** (21.066) |
+| Trung bình | Soldier ★ | Captain ★ | General ★★ | Master ★★ | **Legend ★★** (18.889) |
+| Yếu, lười | Novice ★★★ | Soldier ★★★ | Captain ★★★ | General ★★★ | **Master ★★** (14.662) |
+| Vào học tháng 7 | — | — | — | Captain ★★★ | **Master ★** (13.063) |
+
+**Phân bố cả khối theo bậc lớn:**
+
+| Hết tháng | Novice | Soldier | Captain | General | Master | Legend | King | Emperor | God of War + Supreme |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | 27% | 72% | | | | | | | 2 ghế |
+| 3 | | 6% | 93% | | | | | | 2 ghế |
+| 6 | | | 3% | 83% | 14% | | | | 2 ghế |
+| 9 | | | | 4% | 84% | 10% | 2% | | 2 ghế |
+| **12** | | | | | 17% | **41%** | **34%** | **8%** | **2 ghế (~3%)** |
+
+KHTN khối 9 (34 em), hết năm: Master 28% · **Legend 36% · King 29%** · Emperor 7% · 1–2 ghế thần.
+
+**Đạt đúng đích Thùy đặt:**
+- **Đa số (~70%) dừng ở bậc 6–7** (Legend, King).
+- **Emperor ~8%.**
+- **Thần: 1–2 em mỗi khối.**
+- Em yếu lười cả năm vẫn lên được Master (bậc 5): hành trình ai cũng đi, nhưng lên thần thì không phải ai cũng tới.
+
+### ⚠ Điểm cần biết: giữa năm cả khối đi cùng một đoạn
+
+- Điểm cộng dồn cả năm ⇒ tại một thời điểm, đa số em đứng cùng 1–2 bậc lớn: tháng 6 có 83% ở General, tháng 9 có 84% ở Master.
+- Khác biệt giữa các em lúc đó chỉ thấy qua **sao** (★) và **hạng trong khối**.
+- Đây là bản chất của thang cả năm (giống battle pass / Trophy Road): **bậc = hành trình**, còn **đua = hạng**.
+- **Q-N2:** có thêm **Bảng đua tháng** không? Đó là xếp hạng Điểm Rank **kiếm được trong tháng**, vinh danh top tháng trên TV, **không đổi bậc**. Mục đích là tháng nào cũng có một cuộc đua mới. Có thể gộp luôn với giải thưởng tháng đang có.
+
+### Tên gọi — góp ý (Q-N1)
+
+- **Mạch truyện 5 chương:** Người thường (Novice) → Chiến binh (Soldier · Captain · General) → Anh hùng (bậc 5 · Legend) → Vương giả (King · Emperor) → Thần (God of War · Supreme God).
+- **Bậc 5 "Master" hay "Hero"?**
+  - *Master* hợp nghĩa học tập ("làm chủ kiến thức").
+  - *Hero* liền mạch truyện hơn: tướng quân → anh hùng → huyền thoại.
+- Sửa chính tả: **Soldier** (không phải "Sodier").
+- **Giữ tên tiếng Anh.** Nếu dịch tiếng Việt thì tránh "Chiến Thần" và "Huyền Thoại" — trùng tên bậc rank của Liên Quân.
+- **Mỗi chương một màu / một hình khung:** đồng → bạc → vàng → tím → lửa thần. Nhìn khung là biết em đang ở chương nào.
+- **Hết năm:** mùa mới **về lại Novice** (hợp câu chuyện "tái sinh"). Bậc cao nhất năm cũ giữ vĩnh viễn thành huy hiệu, vd *"Mùa 2026–27 · Emperor"*.
+
+---
+
 ## ★★ VÒNG 3 — BỘ SỐ ĐÃ CHỐT TOÀN BỘ (Thùy 28/09) · kết quả tính lại
 
 Chạy lại: `node scripts/sim-diem-rank.mjs --chot`. Mỗi khối chạy 400 lần, 60% HS dùng Thử thách.

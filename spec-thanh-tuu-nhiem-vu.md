@@ -99,14 +99,17 @@ Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như c�
 
 ### A3. RANK MÙA
 
-- **Bậc** = f(Điểm Rank tích luỹ trong mùa). **Lên tuần tự**, chỉ lên, không tụt trong mùa.
-- **Bậc đỉnh = ghế có hạn:**
-  - Điều kiện: Top N Điểm Rank trong **khối × môn**, **và** đạt sàn của bậc ngay dưới.
-  - Chốt hằng ngày. Bị vượt thì rơi xuống.
-  - Đây là **chỗ duy nhất có tụt**.
-- **Mùa:**
-  - Thưởng cuối mùa theo **bậc cao nhất** đạt được, là đồ mang tên mùa nên hiếm vĩnh viễn.
-  - Mùa mới reset mềm: khởi đầu thấp hơn bậc cũ.
+- **Mùa = 1 NĂM** (Thùy 28/09). Thang bậc theo câu chuyện **"người bình thường thành thần"**.
+- **Thang 10 bậc (tên đang bàn — `phan-tich-diem-rank.md` vòng 4):**
+  - **8 bậc cố định**, mỗi bậc **3 sao**: Novice → Soldier → Captain → General → Master/Hero → Legend → King → Emperor.
+    - Bậc = f(Điểm Rank cộng dồn trong năm). **Lên tuần tự**, chỉ lên, không tụt trong mùa.
+  - **2 bậc ghế** (God of War, Supreme God) — **bậc thần phải ÍT**; đa số chỉ tới bậc 6–7, bậc 8–10 là danh giá:
+    - Điều kiện: top trong **khối × môn** **và** **phong độ** cao (điểm từ đầu mùa so với mức tối đa có thể kiếm tới lúc đó).
+    - Xét lại hằng ngày, ngồi được quanh năm. Bị vượt thì rơi về bậc cố định.
+    - Đây là **chỗ duy nhất có tụt**.
+- **Hết năm:**
+  - Thưởng theo **bậc cao nhất** đạt được trong năm, là đồ mang tên mùa nên hiếm vĩnh viễn.
+  - Mùa mới **về lại Novice** ("tái sinh"). Bậc đỉnh năm cũ giữ thành huy hiệu vĩnh viễn.
 - **Elo giữ nguyên** cho việc đang dùng, **không liên quan** rank.
 
 ### A4. DANH HIỆU TOP DẠNG
@@ -181,7 +184,14 @@ Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như c�
 > - D6: lỡ MT thì thi lại.
 > - Q-A: giữ nguyên (Thử thách vô hạn lượt).
 >
-> **Bước tiếp — C4:** mô phỏng cho thấy mùa 3 tháng làm 2 tháng đầu cả khối cùng bậc ⇒ đề xuất **mùa = 1 tháng** (chờ chốt). Số đo DB: BK có **1 cơ sở** ⇒ không cần tầng cơ sở (A4).
+> **C4:**
+> - Thùy chốt **mùa = 1 năm**, thang 10 bậc "người thường → thần" (8 cố định × 3 sao + 2 ghế thần). Bậc thần ít; đa số dừng ở bậc 6–7.
+> - Ngưỡng đề xuất + mô phỏng 12 tháng: `phan-tich-diem-rank.md` vòng 4.
+> - Chờ chốt: **Q-N1** tên bậc 5 (Master / Hero) · **Q-N2** có Bảng đua tháng không.
+>
+> **C9:** theme = hành trình "người thường → thần", tên tiếng Anh.
+>
+> Số đo DB: BK có **1 cơ sở** ⇒ không cần tầng cơ sở (A4).
 
 | # | Việc | Thuộc |
 |---|---|---|

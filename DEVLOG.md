@@ -30403,3 +30403,16 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   trong `assets/scene/obj`: cú mèo, mầm cây/tên lửa/kim cương cho 3 mức, vương miện BXH, bóng đèn = lượt Check). Không sci-fi (memory).
 - Verify (375×812): 5 lượt / 3 người — lần 2 của Minh là luyện tập, BXH giữ lần đầu; Huy thoát sau 4 câu ⇒ lượt sau 4 câu đó
   là luyện tập, câu chưa làm vẫn tính; hộp BXH câu/màn, thẻ kết quả, trang tổng kết hiện đúng.
+
+## 2026-09-28 (12) — Rank: mùa 1 NĂM · thang 10 bậc "người thường → thần" · mô phỏng 12 tháng
+
+- Thùy: mùa to 1 năm, nhiều bậc (lần trước làm 4 bậc × 3 bậc nhỏ), theo câu chuyện "người bình thường thành thần":
+  Novice · Soldier · Captain · General · Master · Legend · King · Emperor · God of War · Supreme God. Giữa lúc t chạy: "bậc thần
+  ít là đúng — đa số chỉ tới 6–7, bậc 8–9–10 mới danh giá".
+- **Làm:** `sim-diem-rank.mjs --nam` (12 tháng): 8 bậc cố định × 3 sao + 2 bậc GHẾ. Lần đầu ghế thần đòi ≥ ngưỡng cả năm ⇒ tới
+  T11 mới có thần ⇒ đổi sang ghế theo PHONG ĐỘ (điểm từ đầu mùa ÷ max tháng × số tháng; God of War top 3% & ≥84%, Supreme hạng 1
+  & ≥92%) ⇒ có thần quanh năm, 1–2 em/khối. Ngưỡng hệ số × max tháng: 0/0,6/1,6/3/4,6/7/8/9,8. Hết năm Toán: Master 17% ·
+  Legend 41% · King 34% · Emperor 8% · 2 ghế thần; KHTN tương tự — đúng đích Thùy.
+- Ghi nhận: thang cộng dồn cả năm ⇒ giữa năm đa số cùng 1–2 bậc lớn (T6: 83% General) — bậc = hành trình, đua = hạng ⇒ hỏi Thùy
+  thêm "Bảng đua tháng" (Q-N2). Q-N1: bậc 5 Master (nghĩa học tập) hay Hero (liền mạch truyện). Tránh dịch VN "Chiến Thần",
+  "Huyền Thoại" (trùng rank Liên Quân).

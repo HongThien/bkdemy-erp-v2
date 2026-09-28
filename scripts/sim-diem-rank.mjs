@@ -202,6 +202,64 @@ function chayChot(mon, siSo, title, soThang = 3, heSo = HE_SO_BAC) {
   }
 }
 
+// ============================================================================
+// MÙA 1 NĂM — thang bậc "người thường → thần" (Thùy 28/09): node scripts/sim-diem-rank.mjs --nam
+//   8 bậc CỐ ĐỊNH (mỗi bậc 3 sao) + 2 bậc GHẾ (chỉ top khối × môn mới ngồi)
+//   Ngưỡng = hệ số × điểm tối đa 1 tháng của môn (Toán 2.500 · KHTN 1.875) — cùng công thức mọi môn
+// ============================================================================
+const BAC_NAM = [
+  { ten: 'Novice', hs: 0 }, { ten: 'Soldier', hs: 0.6 }, { ten: 'Captain', hs: 1.6 }, { ten: 'General', hs: 3.0 },
+  { ten: 'Master', hs: 4.6 }, { ten: 'Legend', hs: 7.0 }, { ten: 'King', hs: 8.0 }, { ten: 'Emperor', hs: 9.8 },
+]
+// Ghế thần ngồi được QUANH NĂM: xét phong độ = điểm từ đầu mùa ÷ (điểm tối đa tháng × số tháng đã qua)
+const GHE_GOD = 0.03, PHONG_DO_GOD = 0.84        // God of War: top 3% khối × môn VÀ phong độ ≥ 84%
+const PHONG_DO_SUPREME = 0.92                    // Supreme God: hạng 1 khối × môn VÀ phong độ ≥ 92%
+function chayNam(mon, siSo, title, soThang = 12) {
+  const pa = PA.B_can_bang, mx = maxThang(pa, mon)
+  const ng = BAC_NAM.map(b => Math.round(b.hs * mx))
+  const ghe = Math.max(1, Math.round(GHE_GOD * siSo))
+  const TEN = [...BAC_NAM.map(b => b.ten), 'God of War', 'Supreme God']
+  const bacCua = (d, hang, t) => {
+    if (hang === 1 && d >= PHONG_DO_SUPREME * mx * t) return [9, 0]
+    if (hang <= ghe && d >= PHONG_DO_GOD * mx * t) return [8, 0]
+    let b = 0; ng.forEach((n, i) => { if (d >= n) b = i })
+    const tren = b < 7 ? ng[b + 1] : ng[7] + (ng[7] - ng[6])
+    const sao = Math.min(3, 1 + Math.floor(3 * (d - ng[b]) / (tren - ng[b])))
+    return [b, sao]
+  }
+  const MOC = [1, 3, 6, 9, 12].filter(t => t <= soThang)
+  const kieu = [...KIEU_CHOT.filter(k => k.id !== 'K8'), { id: 'K14', ten: 'Vào học tháng 7 (giữa năm)', skill: .85, coMat: 1, dh: .95, muon: 0, app: 1, vao: 7 }]
+  const acc = {}; const pb = {}; MOC.forEach(t => pb[t] = Array(10).fill(0))
+  for (let r = 0; r < RUNS / 4; r++) {
+    const hs = chayKhoi({ mon, siSo, pa, tranKieu: 'co_dinh', apDung: .6, tranNgayChia: 20, quyHang: true, thiLai: true, kieu, thang: soThang })
+    for (const t of MOC) {
+      const xep = [...hs].sort((a, b) => (b.cum[t] || 0) - (a.cum[t] || 0))
+      xep.forEach((h, i) => { const [b, s] = bacCua(h.cum[t] || 0, i + 1, t)
+        if (h.id === 'nen') pb[t][b]++
+        else { const a = acc[h.id] ??= { ten: h.ten, d: {}, b: {} }; (a.d[t] ??= []).push(h.cum[t] || 0); (a.b[t] ??= []).push(b * 10 + s) } })
+    }
+  }
+  const tenBac = (code) => { const b = Math.floor(code / 10), s = code % 10; return TEN[b] + (b <= 7 ? ' ' + '★'.repeat(s) : '') }
+  const mode = (arr) => { const c = {}; arr.forEach(x => c[x] = (c[x] || 0) + 1); return +Object.entries(c).sort((a, b) => b[1] - a[1])[0][0] }
+  const avg = (arr) => arr.reduce((s, x) => s + x, 0) / arr.length
+  console.log(`\n### ${title}\n`)
+  console.log('Ngưỡng vào bậc: ' + BAC_NAM.map((b, i) => `${b.ten} ${f(ng[i])}`).join(' · ') + ` · God of War: top ${ghe} & phong độ ≥ 84% (${f(PHONG_DO_GOD * mx)}/tháng) · Supreme God: hạng 1 & phong độ ≥ 92% (${f(PHONG_DO_SUPREME * mx)}/tháng)\n`)
+  console.log('| Kiểu HS | ' + MOC.map(t => 'Hết T' + t).join(' | ') + ' |')
+  console.log('|---|' + MOC.map(() => '---').join('|') + '|')
+  for (const [, a] of Object.entries(acc).sort((x, y) => avg(y[1].d[soThang]) - avg(x[1].d[soThang])))
+    console.log(`| ${a.ten} | ` + MOC.map(t => `${tenBac(mode(a.b[t]))} (${f(avg(a.d[t]))})`).join(' | ') + ' |')
+  console.log('\nPhân bố HS nền theo bậc lớn (%):\n')
+  console.log('| Hết tháng | ' + TEN.join(' | ') + ' |')
+  console.log('|---|' + TEN.map(() => '---').join('|') + '|')
+  for (const t of MOC) { const tot = pb[t].reduce((s, x) => s + x, 0); console.log(`| ${t} | ` + pb[t].map(x => Math.round(100 * x / tot) + '%').join(' | ') + ' |') }
+}
+if (process.argv.includes('--nam')) {
+  console.log('# MÙA 1 NĂM (12 tháng) — ' + (RUNS / 4) + ' lần/khối · bộ số đã chốt')
+  chayNam('Toan', 54, 'TOÁN khối 7 — 54 em')
+  chayNam('KHTN', 34, 'KHTN khối 9 — 34 em')
+  process.exit(0)
+}
+
 if (process.argv.includes('--chot')) {
   console.log('# BỘ SỐ ĐÃ CHỐT — mô phỏng mùa 3 tháng, ' + RUNS + ' lần/khối, 60% HS dùng Thử thách\n')
   console.log('ET 100 · BTVN 100 (muộn 50) · MT bảng hạng quy theo sĩ số × 10 (500–1.000) · Thử thách 8/9/10 đúng = 10/20/30')
