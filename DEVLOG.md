@@ -31182,3 +31182,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Kiểm:** tsc sạch · build:hs qua · check:style-hs ✔ (19 file, 13 ô). Popup hướng dẫn chưa soi lại bằng mắt (đổi màu, bố cục giữ nguyên).
 - **Còn trong public/bk-ui/hs/skin/rpg/ nhưng KHÔNG dùng:** bg_bau_troi.jpg, bg_lau_dai_doc.jpg (thay bằng _sang), ill_btvn/ill_lop/ill_luyen/ill_thithu.png
   (bộ v1 cũ) — chờ Thùy gật mới xoá (luật xoá).
+
+## 2026-09-29 (4) — Xoá 6 file hình RPG không dùng (Thùy gật)
+
+- 0 chỗ tham chiếu (grep src/*.html/games-site/public): bg_bau_troi.jpg · bg_lau_dai_doc.jpg (thay bằng bg_lau_dai_doc_sang từ ảnh 37) ·
+  ill_btvn/ill_lop/ill_luyen/ill_thithu.png (bộ icon v1). Ảnh gốc vẫn trong design/. check:style-hs ✔ sau khi xoá.
