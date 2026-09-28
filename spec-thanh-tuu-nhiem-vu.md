@@ -77,6 +77,10 @@
   - ⇒ HS kịch trần thì Thử thách ≈ 20%, ba nguồn kia ≈ 80%.
   - Con số cụ thể suy ra từ công thức này khi chốt điểm fix (Phần C).
 - Điểm Rank **chỉ cộng trong mùa**, không trừ.
+- **Mỗi môn RIÊNG hoàn toàn** (Thùy 28/09): Điểm Rank, ngưỡng bậc, ghế đỉnh, bảng xếp hạng đều **theo môn**. Không có gì so chung giữa các môn.
+  - Hồ sơ HS ghi *"rank X Toán · rank Y KHTN"*.
+  - Mỗi môn **một bộ cấu hình** (điểm, trần, ngưỡng) theo **cùng công thức**.
+- **Trần Thử thách CỐ ĐỊNH theo môn** (Thùy 28/09 — HS học offline, không được nghỉ, nên không cần trần "theo chính em").
 
 ### A2. THỬ THÁCH — tính năng tự luyện thứ 3
 
@@ -89,19 +93,23 @@ Chọn môn → vào Thử thách (1 lượt GIỐNG HỆT Tự luyện tổng h
 Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như câu tự luyện thường.
 ```
 
+- **Số lượt Thử thách VÔ HẠN — chỉ ĐIỂM có trần** (Thùy 28/09). Em yếu cứ làm tới khi pass.
 - **Chạm trần** ngày/tháng thì vẫn làm Thử thách được, chỉ không cộng thêm Điểm Rank. App báo rõ "Hôm nay em đã lấy đủ điểm Thử thách".
 - Theo môn: mỗi môn có trần riêng.
 
 ### A3. RANK MÙA
 
-- **Bậc** = f(Điểm Rank tích luỹ trong mùa). **Lên tuần tự**, chỉ lên, không tụt trong mùa.
-- **Bậc đỉnh = ghế có hạn:**
-  - Điều kiện: Top N Điểm Rank trong **khối × môn**, **và** đạt sàn của bậc ngay dưới.
-  - Chốt hằng ngày. Bị vượt thì rơi xuống.
-  - Đây là **chỗ duy nhất có tụt**.
-- **Mùa:**
-  - Thưởng cuối mùa theo **bậc cao nhất** đạt được, là đồ mang tên mùa nên hiếm vĩnh viễn.
-  - Mùa mới reset mềm: khởi đầu thấp hơn bậc cũ.
+- **Mùa = 1 NĂM** (Thùy 28/09). Thang bậc theo câu chuyện **"người bình thường thành thần"**.
+- **Thang 10 bậc (tên đang bàn — `phan-tich-diem-rank.md` vòng 4):**
+  - **8 bậc cố định**, mỗi bậc **3 sao**: Novice → Soldier → Captain → General → Master/Hero → Legend → King → Emperor.
+    - Bậc = f(Điểm Rank cộng dồn trong năm). **Lên tuần tự**, chỉ lên, không tụt trong mùa.
+  - **2 bậc ghế** (God of War, Supreme God) — **bậc thần phải ÍT**; đa số chỉ tới bậc 6–7, bậc 8–10 là danh giá:
+    - Điều kiện: top trong **khối × môn** **và** **phong độ** cao (điểm từ đầu mùa so với mức tối đa có thể kiếm tới lúc đó).
+    - Xét lại hằng ngày, ngồi được quanh năm. Bị vượt thì rơi về bậc cố định.
+    - Đây là **chỗ duy nhất có tụt**.
+- **Hết năm:**
+  - Thưởng theo **bậc cao nhất** đạt được trong năm, là đồ mang tên mùa nên hiếm vĩnh viễn.
+  - Mùa mới **về lại Novice** ("tái sinh"). Bậc đỉnh năm cũ giữ thành huy hiệu vĩnh viễn.
 - **Elo giữ nguyên** cho việc đang dùng, **không liên quan** rank.
 
 ### A4. DANH HIỆU TOP DẠNG
@@ -165,6 +173,25 @@ Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như c�
 ---
 
 ## PHẦN C — DETAIL: BÀN SAU (chưa có nội dung, cố ý để trống)
+
+> **28/09:** C1 · C2 · C3 (xem trước C4) đã có **đề xuất + mô phỏng 3 tháng** ở `phan-tich-diem-rank.md` (chạy lại bằng `scripts/sim-diem-rank.mjs`).
+> **Đã chốt 28/09 (C1 · C2 · C3):**
+> - D1: ET 100 · BTVN 100 / 50 · MT bảng × 10 · Thử thách 10 / 20 / 30.
+> - D2: trần Thử thách cố định = ¼.
+> - D3: trần ngày = tháng ÷ 20.
+> - D4: quy hạng MT theo sĩ số dự thi.
+> - D5: mỗi môn riêng.
+> - D6: lỡ MT thì thi lại.
+> - Q-A: giữ nguyên (Thử thách vô hạn lượt).
+>
+> **C4:**
+> - Thùy chốt **mùa = 1 năm**, thang 10 bậc "người thường → thần" (8 cố định × 3 sao + 2 ghế thần). Bậc thần ít; đa số dừng ở bậc 6–7.
+> - Ngưỡng đề xuất + mô phỏng 12 tháng: `phan-tich-diem-rank.md` vòng 4.
+> - Chờ chốt: **Q-N1** tên bậc 5 (Master / Hero) · **Q-N2** có Bảng đua tháng không.
+>
+> **C9:** theme = hành trình "người thường → thần", tên tiếng Anh.
+>
+> Số đo DB: BK có **1 cơ sở** ⇒ không cần tầng cơ sở (A4).
 
 | # | Việc | Thuộc |
 |---|---|---|

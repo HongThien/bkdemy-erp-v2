@@ -29,6 +29,18 @@ function log(msg) {
   console.log(line.trim())
 }
 
+// ── 0) ĐÃ NGỪNG (Thùy 28/09: "huỷ luồng giải bài đang chạy, huỷ luôn cron") ──
+// Luồng này để MỘT phiên Claude tự liệt kê → tự giải → tự "verify" → tự ghi DB trong cùng ngữ cảnh,
+// không có người kiểm độc lập, không có cổng ghi. Thay bằng dây chuyền mới (spec-luong-kho.md §5, §9).
+// Công tắc nằm TRONG script để máy nào còn lịch Task Scheduler trỏ vào đây thì kéo code về là tự dừng,
+// không gọi Claude, không đụng DB. Bật lại có chủ đích: chạy với biến môi trường AUTO_GIAI_BAT=1.
+if (process.env.AUTO_GIAI_BAT !== '1') {
+  const msg = 'Luồng tự giải bài ĐÃ NGỪNG theo quyết định 28/09 — bỏ lượt, không gọi Claude. Gỡ lịch Task Scheduler trỏ vào script này.'
+  const last = existsSync(LOG) ? readFileSync(LOG, 'utf8').trimEnd().split('\n').pop() : ''
+  if (!last.endsWith(msg)) log(msg)   // ghi 1 lần, không lặp mỗi 5–10 phút
+  process.exit(0)
+}
+
 // ── 1) Khoá ──
 if (existsSync(LOCK)) {
   const age = Date.now() - Number(readFileSync(LOCK, 'utf8').trim() || 0)

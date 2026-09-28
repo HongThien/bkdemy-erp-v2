@@ -30282,6 +30282,141 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Verify: auto-play 10 lượt bắn thật → bảng + EXP đúng TB 200, 0 lỗi. Screenshot giữa lúc nổ phải dùng `?cham=` (nổ chỉ ~0,3s).
 - Trang tạm `games-site/_xem-asset/` (xem asset + render sprite) KHÔNG commit.
 
+## 2026-09-28 (6) — Bắn Quà v1: tường đá, map 2400 + camera, hộp không máu + nơ +20% + mọc lại
+- Thùy chơi thử v0, 3 góp ý (spec §5b): tường chắn trước súng · map to + nhiều hộp + hộp treo trời · bỏ HP (người sau lợi), chỉ "chính xác 100%" +20%.
+- Viết lại script (1 khối): lớp đá `DA` riêng không phá được; thế giới 2400 + camera lerp (toàn cảnh ↔ bám đạn) + mini-map; hộp trúng là vỡ, nơ = tâm nắp;
+  `mocLai()` đầu mỗi lượt; hộp vàng treo 3 bóng bay nhấp nhô.
+- Sai/sửa: hộp chồng nhau (điều kiện chỗ trống viết rối + bãi quá chật: tổng bề rộng ≈ bề rộng bãi) ⇒ điều kiện tách đất/trời, hộp nhỏ lại,
+  bớt hộp đất thêm hộp trời, hết chỗ thì BỎ (không fallback random). Test gọi `vaoTran()` khi DS rỗng ⇒ nhảy thẳng màn kết quả trống (lỗi của test, không phải game).
+- Verify: tường chặn phát 8° + còn nguyên; trúng nơ 40→48; auto 10 lượt bắn bừa 7/10 trúng, hộp luôn 16/lượt; 8 map 0 chồng.
+
+## 2026-09-28 (7) — Giao diện app HS: SỬA mục (6) — đối tượng là 15–18 tuổi, không phải 9–12
+
+- **Sai:** Thùy viết "độ tuổi 9 - 12", t hiểu là 9–12 TUỔI. Đúng ra là khối lớp: Thùy sửa lại "15 – 18 tuổi", còn **9–14 là nhóm riêng**.
+  Mockup Home v4 ghi sẵn "11A1/11A2" mà t không dùng để kiểm. Bài học: ở BK, "9–12" đứng cạnh HS thường là KHỐI; số tuổi/khối
+  lệch nghĩa ⇒ đối chiếu với data/mockup có sẵn trước khi làm cả trang.
+- **Chẩn đoán lại (15–18):** vấn đề chính là Home v4 coi HS như trẻ con: khẩu hiệu động viên viết tay (NN/g: teen ghét giọng kẻ cả,
+  ghét thiết kế con nít) · pastel/trái tim/chibi · gán màu theo giới tính · hero dành cho hình trang trí thay vì việc tiếp theo ·
+  không có nền tối (73–82% Gen Z) · chữ viết tay 10–11px.
+- **Đề xuất 15–18:** bố cục Home mới (việc tiếp theo → widget đếm ngược kỳ thi + rank mùa → 4 ô → nav), bỏ nhân vật và khẩu hiệu.
+  6 skin: Tối giản (mặc định) · Đấu trường (Valorant/Liên Quân) · Lo-fi đêm · Y2K · Anime RPG (Genshin, làm cuối) · Soft Hàn (= bản cũ
+  bớt sến). Custom kiểu màn khoá iPhone: skin + sáng/tối (free) → màu nhấn, hình nền riêng, widget, **quyền riêng tư rank/điểm (P1,
+  "imaginary audience" Elkind)**, khung → không cho tự thiết kế. Thêm thẻ story 9:16 + tổng kết tháng kiểu Spotify Wrapped.
+- **Kỹ thuật:** registry skin có nhãn nhóm tuổi (15–18 và 9–14 dùng chung cơ chế, khác danh sách) · `hs_giao_dien` ở DB · mức riêng tư
+  áp ở DB, không chỉ ẩn UI · "việc tiếp theo"/đếm ngược = `fn_hs_home_*`.
+- **Trang:** 15–18 https://claude.ai/artifact/LZF11536BxanSuLQcnbWiR · bản ở mục (6) đổi nhãn thành nháp cho nhóm 9–14
+  (https://claude.ai/artifact/M2w9GCJzYAaa1hB1NULg6x). 6 câu chờ Thùy (ranh giới khối 9 · bầu P0 · kỳ thi đếm ngược · điểm công khai
+  hay riêng · ai vẽ art · chia sẻ thẻ lên MXH có cần PH đồng ý).
+
+## 2026-09-28 (9) — Mô phỏng Điểm Rank 3 tháng (detail C1–C3)
+
+- Thùy: "phân tích đề xuất số liệu, test mấy tháng xem kết quả, giả định đủ các trường hợp".
+- **Đo DB thật (read-only: `set default_transaction_read_only=on` vì .env chỉ có role ghi):** sĩ số khối Toán 40/54/49/68,
+  KHTN 9–34; ET/em/tháng Toán ~4,6 KHTN ~2,5; BTVN ~4,8 / ~2 (75% đúng hạn); MT 1/tháng, TB ~7; tự luyện T9 74/~300 em dùng,
+  trung vị 6 lượt, p90 55, max 208/tháng & 84/ngày, 71% lượt ≥80%; `lop.co_so` NULL cả 47 lớp ⇒ 1 cơ sở.
+- **Làm:** `scripts/sim-diem-rank.mjs` (Monte Carlo 400 lần, 11 kiểu HS + HS nền theo phân bố thật, 3 PA trọng số MT, 2 kiểu
+  trần Thử thách, khối nhỏ/lớn, KHTN) + `phan-tich-diem-rank.md`. Đề xuất: ET 100 · BTVN 100/50 · MT bảng×10 · Thử thách 10/20/30
+  · trần tháng = ¼ điểm học CỦA EM · trần ngày = trần tháng/20.
+- **Phát hiện:** trần cố định cho "bỏ lớp bù app" lên hạng 21 (30% từ app) ⇒ trần theo em; HS yếu gần như không pass 80% (≈10%
+  lượt) ⇒ không lên rank bằng app (Q-A cho Thùy, đổi L4 thì phải hỏi); khối nhỏ làm bảng MT 1–50 mất tác dụng ⇒ quy hạng theo sĩ
+  số; KHTN ít buổi ⇒ chuẩn hoá quỹ ET/BTVN theo môn; lỡ MT mất ~40% điểm tháng ⇒ thi lại; không trần ngày thì HS giỏi chạm trần
+  tháng sau ~11 ngày.
+
+## 2026-09-28 (7) — Bắn Quà v2: reset map mỗi lượt + hộp trời siêu khó
+- Thùy: "người trước bắn vỡ hết quà" ⇒ mỗi lượt reset NGUYÊN map (snapshot ImageData đất + SOLID + danh sách hộp); bỏ `mocLai`.
+  Hộp trời: 2 hộp nhỏ, rất cao, trôi ngang, chỉ vỡ khi chạm trực tiếp, 150 điểm.
+- Verify: 10 lượt tự động, lượt nào chữ ký map cũng giống lượt đầu, đủ 16 hộp; Monte Carlo 4.000 phát bừa ⇒ 2,7% trúng hộp trời.
+- Sai/sửa: toàn cảnh để mặt đất thấp ⇒ thẻ đạn đè khẩu súng (nâng khung +165px, tô đất dưới đáy thế giới); hộp trà sữa không đặt được ⇒ nới
+  điều kiện cách nhau. **Lỗi ghi chép:** lần ghi spec v1 thay chuỗi `## 6. Còn hỏi Thùy` bằng nội dung mới mà QUÊN giữ lại tiêu đề ⇒ mất mục câu hỏi;
+  lần v2 script báo "không thấy mốc" mới lộ. Đã ghi lại. Bài học: chèn TRƯỚC một mốc thì chuỗi thay phải kết thúc bằng chính mốc đó.
+
+## 2026-09-28 (8) — Xếp Chữ v0 (game giải trí, máy cá nhân)
+- Thùy chốt luật: kéo thả tự do · **Check = 1 ô/lần, đúng hay sai đều tốn 1 lượt** (lượt = ceil(số chữ/3)) · nút **Hoàn thành** riêng,
+  chỉ nộp **1 lần, sai là thua câu** (bấm 2 nhịp chống lỡ tay) · không gợi ý · lượt Check dư ×25 điểm · đo giờ lập kỷ lục.
+- Làm `games-site/xep-chu.html` (1 file, localStorage `bk-xep-chu-v1`: kỷ lục từng câu, điểm cao nhất màn, phá đảo nhanh nhất) + dòng `solo` ở sảnh.
+  3 mức × 10 câu cố định (thứ tự xáo) để kỷ lục màn so được. Ô chữ giữ nguyên dấu; ô đáp án chia theo từ; chữ trùng chấm theo mặt chữ.
+  Check sai ⇒ chữ về khay + ô ghi "≠X". Còn hiện chủ đề câu (`HIEN_CHU_DE`) — Thùy muốn khó hơn thì tắt.
+- Verify (375×812): chạm/kéo/đổi chỗ/kéo về khay, Check đúng khoá + Check sai loại chữ, Hoàn thành đúng/sai, chạy hết màn ⇒ kỷ lục lưu đúng.
+- Sai/sửa: câu 21 chữ tràn đè thanh trên (board co lại + cỡ ô chỉ tính theo bề ngang) ⇒ tính cỡ ô theo cả chiều cao (hàng ô + khay vừa 1 màn).
+
+## 2026-09-28 (8) — Giao diện app HS: Thùy chốt 6 câu → viết `spec-giao-dien-hs.md` (chưa code)
+
+- **Chốt:** (1) nhóm = **khối 9–12 vì có điện thoại riêng**, khối ≤8 dùng máy chung ⇒ hành vi khác, làm riêng (không phải chia theo tuổi 15–18
+  như mục (7)) · (2) không bầu trước — làm rồi đo ⇒ trigger ghi vết đổi skin = phiếu bầu · (3) ngày thi trung tâm nhập sẵn (bảng `ky_thi`) ·
+  (4) điểm của ai người đó thấy, không tuỳ chọn công khai (rank mùa vẫn công khai theo spec thành tựu) · (5) Claude design bằng code, phần
+  hình viết prompt ChatGPT · (6) chia sẻ thẻ thành tích không cần PH đồng ý.
+- **Làm:** `spec-giao-dien-hs.md` (phạm vi · Home mới · 6 skin · dữ liệu · 3 tầng tự chỉnh · lộ trình · §8 prompt ChatGPT cho Lo-fi và Anime RPG,
+  theo khuôn `design/CHATGPT-UI-KIT.md` nhưng bỏ Pha B/C vì bố cục đã dựng bằng code). Trang đề xuất cập nhật theo quyết định (bỏ nút
+  riêng tư rank, bỏ P0 bầu chọn).
+- **P1 đề xuất:** Home mới + registry skin + `hs_giao_dien` (+ trigger log) + `ky_thi` + màn chọn skin · 4 skin chỉ-code (Tối giản, Đấu trường,
+  Y2K, Soft Hàn). Chờ Thùy gật để build.
+
+## 2026-09-28 (10) — Điểm Rank: Thùy chốt D2/D3/D5 + Thử thách vô hạn lượt · mô phỏng lại
+
+- Thùy: D2 — HS học offline KHÔNG được nghỉ ⇒ không cần trần "theo chính em", dùng trần CỐ ĐỊNH (Toán 500 · KHTN 375/tháng).
+  D5 — mỗi môn riêng hoàn toàn (rank/ngưỡng/BXH/hồ sơ "rank X Toán, rank Y KHTN"; app cũng riêng, chỉ chung cổng) ⇒ bỏ đề xuất
+  chuẩn hoá giữa môn. Thử thách VÔ HẠN lượt, chỉ điểm có trần ⇒ Q-A giữ (a). D3 trần ngày = tháng/20 (Toán 25 · KHTN 19).
+- **Mô phỏng lại S8–S10** (thêm K12 yếu cày 15 lượt/ngày, K13 TB cày 6 lượt/ngày): cày là leo — K13 lên top 6–8, K12 ngang HS
+  giỏi không dùng app (hạng ~12). HS chạm trần: Thử thách 21% (giỏi) → 25% (yếu/TB) ⇒ hỏi Thùy trần ¼ hay ⅕. Ngưỡng bậc theo môn =
+  hệ số × điểm tối đa 1 tháng của môn (Toán 2.500 · KHTN 1.875), hệ số 0,4/1/1,6/2/2,4 cho mùa 3 tháng.
+- Còn chờ: D1 (bộ số), D4 (quy hạng MT theo sĩ số — vẫn cần TRONG 1 môn vì khối 6→68 em), D6 (thi lại MT), trần ¼ hay ⅕.
+- Bài học: t đề xuất D2/D5 từ giả định kiểu app online (HS có thể bỏ lớp; cần so chung giữa môn) — BK offline + môn là trung tâm
+  riêng. Đã ghi memory.
+
+## 2026-09-28 (9) — Giao diện app HS: 3 nhóm khối + đơn đặt hàng ChatGPT (`design/DON-HANG-SKIN-HS.md`)
+
+- **Thùy chốt:** 3 nhóm, mỗi nhóm bộ skin riêng — lớp 3–5 gốc **Thị trấn** · lớp 6–8 gốc **Khối vuông** · lớp 9–12 nhiều skin để chọn.
+- **Làm:** 4 đơn theo khuôn `CHATGPT-UI-KIT.md`: Đơn 1 lớp 3–5 (iPad ngang + laptop, 3 làng + 3 linh vật, 8 ô lấy đúng `BOX_CAP1`) ·
+  Đơn 2 lớp 6–8 (điện thoại dọc + iPad ngang, 3 vùng đất trong đó "hang mỏ" là bản tối, 3 bạn đồng hành, ô lấy đúng `KHU_CAP2` + Học từ đầu) ·
+  Đơn 3–4 lớp 9–12 Lo-fi / Anime RPG (chuyển từ spec §8 sang file đơn — 1 nguồn). Mỗi đơn có mục "Ghi đè kit §1" (bỏ Pacifico/chữ viết
+  tay, cho cuộn trên iPad) + "Luật riêng" (không khẩu hiệu, không chữ Anh trang trí, câu thoại linh vật phải có số thật). Bỏ biến thể nam/nữ.
+- **Lưu ý build:** code hiện chia cấp 1 / khối 6–9 / khối 10–12; nhóm mới là 3–5 / 6–8 / 9–12 ⇒ khối 9 phải chuyển nhóm. Home 3–5 và 6–8 thêm
+  cấp + XP + xu + linh vật (dữ liệu có sẵn: EXP, ví xu) — chưa có hàm trả gộp cho Home.
+
+## 2026-09-28 (9) — Xếp Chữ v1: 3 bộ chữ + tên người chơi + bảng xếp hạng
+- Thùy: thêm bản **tiếng Việt không dấu** và **tiếng Anh**; có **chỗ nhập tên** và **leaderboard**.
+- Không dấu = cùng bộ câu tiếng Việt, bỏ dấu (NFD bỏ dấu kết hợp, Đ→D). English: 30 câu mới (từ đơn / từ ghép / thành ngữ),
+  từ dài nhất ≤ 8 chữ để ô không quá nhỏ trên điện thoại; chủ đề vẫn ghi tiếng Việt.
+- Tên: bắt buộc trước khi chơi (ô đỏ + rung nếu trống), nhớ 8 tên gần đây làm nút chạm nhanh (iPad dùng chung).
+- Bảng xếp hạng **trên máy** (localStorage `bk-xep-chu-v2`, bỏ key v1 chưa ai dùng): theo bộ × mức, mỗi người 1 dòng = thành tích
+  tốt nhất, xếp điểm giảm dần rồi thời gian; top 20; tên so không phân biệt hoa thường; tên được escape. Kỷ lục câu + phá đảo ghi tên người lập.
+- Verify (375×812): chưa nhập tên thì không vào được; 5 lượt 3 người ở bản Không dấu ⇒ bảng đúng, người chơi kém hơn lần trước
+  không bị đè; bản English Khó vừa màn, tổng kết hiện bảng xếp hạng. Sửa kèm: 3 thẻ mức gộp 1 hàng, thanh trên không xuống dòng.
+- Chưa làm: bảng xếp hạng chung giữa các máy (cần bảng Supabase — chờ Thùy chốt).
+
+## 2026-09-28 (11) — Điểm Rank: chốt toàn bộ bộ số (¼ · D1 · D4 · D6) · tính lại · phát hiện độ dài mùa
+
+- Thùy chốt: trần Thử thách ¼ · D1 bộ số · D4 quy hạng MT theo sĩ số dự thi · D6 lỡ MT thi lại.
+- **Làm:** `sim-diem-rank.mjs --chot` (mode riêng: quyHang, thiLai, bỏ kiểu HS "nghỉ/bỏ lớp/không thi MT" vì BK offline, thêm
+  "ốm lỡ MT thi lại"; khối 54/68/11 Toán + 34/11 KHTN; phân bố bậc theo tháng). Kết quả: D4 đúng (cùng kiểu HS ra điểm như nhau
+  bất kể sĩ số khối 11–68), D6 đúng (ốm lỡ MT vẫn hạng 21 thay vì ~51).
+- **Phát hiện:** ngưỡng bậc theo điểm cuối mùa 3 tháng ⇒ hết T1 99% HS cùng bậc 2, hết T2 86% cùng bậc 3 — 2 tháng không có gì
+  để đua. Chạy PA mùa 1 tháng (hệ số 0,4/0,56/0,68/0,76/0,84 × điểm tối đa tháng) ⇒ phân bố 14/45/22/11/6/1% ngay trong tháng.
+  Đề xuất C4: mùa = 1 tháng (cùng nhịp MT/giải tháng/chốt xu). Chờ Thùy.
+
+## 2026-09-28 (10) — Xếp Chữ v2: BXH từng câu + chỉ tính LẦN ĐẦU + giao diện game
+- Thùy: leaderboard cho **từng câu** (nút xem trong lúc chơi, top 10); **mỗi người góp mặt 1 lần = lần đầu tiên**; làm giao diện đẹp hơn.
+- Luật lần đầu áp cho CẢ BXH câu lẫn BXH màn (chơi lại = đã biết đáp án). BXH màn ghi dần sau mỗi câu của lượt đầu ⇒ bỏ giữa chừng
+  vẫn là lần đầu (chặn "chơi thử rồi chơi thật"). BXH câu chỉ xếp người giải đúng, người sai vẫn bị tính là đã chơi. Phá đảo nhanh nhất
+  suy từ BXH màn (không lưu riêng). localStorage `bk-xep-chu-v3`. Trong lúc chơi có nhãn "⭐ Lần đầu · tính BXH" / "Luyện tập".
+- Giao diện: style game (Fredoka, nền tím-hồng, nút nổi khối, ô chữ kem, thẻ kiểu 1 header màu + thân trắng, ảnh Fluent 3D có sẵn
+  trong `assets/scene/obj`: cú mèo, mầm cây/tên lửa/kim cương cho 3 mức, vương miện BXH, bóng đèn = lượt Check). Không sci-fi (memory).
+- Verify (375×812): 5 lượt / 3 người — lần 2 của Minh là luyện tập, BXH giữ lần đầu; Huy thoát sau 4 câu ⇒ lượt sau 4 câu đó
+  là luyện tập, câu chưa làm vẫn tính; hộp BXH câu/màn, thẻ kết quả, trang tổng kết hiện đúng.
+
+## 2026-09-28 (12) — Rank: mùa 1 NĂM · thang 10 bậc "người thường → thần" · mô phỏng 12 tháng
+
+- Thùy: mùa to 1 năm, nhiều bậc (lần trước làm 4 bậc × 3 bậc nhỏ), theo câu chuyện "người bình thường thành thần":
+  Novice · Soldier · Captain · General · Master · Legend · King · Emperor · God of War · Supreme God. Giữa lúc t chạy: "bậc thần
+  ít là đúng — đa số chỉ tới 6–7, bậc 8–9–10 mới danh giá".
+- **Làm:** `sim-diem-rank.mjs --nam` (12 tháng): 8 bậc cố định × 3 sao + 2 bậc GHẾ. Lần đầu ghế thần đòi ≥ ngưỡng cả năm ⇒ tới
+  T11 mới có thần ⇒ đổi sang ghế theo PHONG ĐỘ (điểm từ đầu mùa ÷ max tháng × số tháng; God of War top 3% & ≥84%, Supreme hạng 1
+  & ≥92%) ⇒ có thần quanh năm, 1–2 em/khối. Ngưỡng hệ số × max tháng: 0/0,6/1,6/3/4,6/7/8/9,8. Hết năm Toán: Master 17% ·
+  Legend 41% · King 34% · Emperor 8% · 2 ghế thần; KHTN tương tự — đúng đích Thùy.
+- Ghi nhận: thang cộng dồn cả năm ⇒ giữa năm đa số cùng 1–2 bậc lớn (T6: 83% General) — bậc = hành trình, đua = hạng ⇒ hỏi Thùy
+  thêm "Bảng đua tháng" (Q-N2). Q-N1: bậc 5 Master (nghĩa học tập) hay Hero (liền mạch truyện). Tránh dịch VN "Chiến Thần",
+  "Huyền Thoại" (trùng rank Liên Quân).
+
 ## 2026-09-28 (9) — LUỒNG KHO P0: dựng nền (nhánh `worktree-luong-kho`) + NGỪNG luồng tự giải bài cũ — `spec-luong-kho.md` §9.7
 
 - **Thùy:** "làm P0 thôi" · sau đó "huỷ luồng giải bài đang chạy luôn, huỷ luôn cron".
