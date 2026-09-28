@@ -380,6 +380,15 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
   (CTO chỉ hỏi output + nối ERP). Có luật: **Mở Rương** · **Chiếm Đất** (3 loại ô = 3 giải, EXP như Mở Rương, chọn ô bất kì) · **Bắn Quà**
   (`ca_lop`: cả lớp 1 ván cá nhân/đội, khung `BanQuaLop.tsx`, mig `202609281425`). Đoán Số: CHỜ LUẬT. Quà đặc biệt 🧋 trà sữa rút ở DB
   (`game_lop_qua_dac_biet`), ERP có nút "Đã trao". (Chiếm Đất/Bắn Quà/trà sữa do phiên khác làm 28/09.)
+- **🎯 Bắn Quà** (game pháo 2D kiểu Worms/GunBound — ĐỌC `spec-game-ban-qua.md` §1–§7 trước khi sửa): `games-site/ban-qua.html` (canvas 2D, sprite
+  render từ KayKit Holiday ở `games-site/assets/ban-qua/`). **Cá nhân:** 1 phát/bạn, map **reset mỗi lượt**, tường đá không phá trước súng, hộp
+  không máu (trúng là vỡ; gần 20 · vừa 40 · xa 70 · hộp trời 150 trôi ngang, chỉ vỡ khi chạm trực tiếp), trúng nơ "Chính xác 100%" +20% (1 lần/phát,
+  chỉ vụ nổ đầu). **Đội:** 2–4 xe máu 150, ụ đá giữa các xe, bắn trúng mình không mất máu, GV đặt giờ, xếp theo sát thương gây ra → đội nhất
+  Vàng / còn lại Bạc (1 lần/đội). **10 loại đạn** (5 thường + Cừu nổ bấm Space · Chuối bom · Sao băng · Lửa lan · Sét) **cân đều 35–39 điểm/phát**
+  bằng giả lập chạy CHÍNH bộ máy của game (`?gia_lap=1` → `giaLap()` / `canBang()`; đổi luật đạn ⇒ chạy lại rồi chép `he`). **Nối ERP**
+  (mig `202609281425_ban_qua_lop`): DB quay đạn theo giải + chia đội (🎲 ngẫu nhiên / GV tự xếp) + chốt (hạng, EXP Nhất 300→cuối 100, rương,
+  trà sữa, sổ EXP 1 transaction); TV chỉ gửi ĐIỂM THÔ về, GV xem rồi Chốt. Đã verify trọn chuỗi trên buổi thật (ghi DB trong ROLLBACK);
+  **màn ERP `BanQuaLop` CHƯA bấm thật** (mới tsc). Còn hỏi Thùy: đội có hộp quà? máu xe 150 ổn? (hoà đầu ⇒ đang cho cùng Vàng).
 - **2 CHẾ ĐỘ HIỂN THỊ** (Thùy 28/09, sau chốt Nhất/Nhì): **📺 Chế độ 1 · TV riêng** — GV làm việc trên ERP, TV riêng mở trang game = game +
   **bảng lớp** (ERP gửi event `ds` qua kênh khi đổi + khi TV nối; `games-site/lib/bk-lop-bang.js`; số của bạn đang mở giấu tới khi diễn xong) ·
   **🖥 Chế độ 2 · Cast chung** — overlay toàn màn trong ERP = iframe game `&nhung=1` + danh sách cả lớp theo giải, bấm "Mở" trên tên.
@@ -2436,6 +2445,18 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
 - **Màn công khai (TV) không được lộ kết quả trước hoạt ảnh:** dữ liệu tổng (bảng lớp) đến NHANH hơn hoạt ảnh ⇒ đánh dấu "đang mở" lúc NHẬN
   lệnh, chỉ hiện số khi game diễn xong (`BKLopBang.cho/xong`).
 - Liệt kê dữ liệu để xin xoá: t đọc `date` bằng `toISOString()` ⇒ lệch 1 ngày (27/09 thay vì 28/09) — đúng cái §2 CẤM; luôn format ngày theo VN.
+- **⭐ Cân game bằng GIẢ LẬP, và giả lập phải chạy CHÍNH bộ máy của game** (Bắn Quà 28/09): cảm giác "đạn không cân" của CEO đúng — đo ra
+  Chùm 52 vs Bom to 27. Bản giả lập đầu chép lại vật lý ⇒ "công thức 2 nơi" (§2.0 cấm); làm đúng là tách vật lý + điểm thành bộ máy THUẦN
+  (trả sự kiện, không vẽ/âm thanh), game "diễn" sự kiện, giả lập gọi cùng bộ máy. Có bộ máy chung thì thêm 5 đạn mới + tự cân (`canBang`) rẻ.
+- **Game kỹ năng nối ERP: TV tính điểm, DB tính mọi thứ còn lại.** Vật lý không chạy ở Postgres được ⇒ chỉ nhận ĐIỂM THÔ từ TV, kẹp trần, GV xem
+  rồi Chốt; vòng quay, chia đội, hạng, EXP, rương, trà sữa đều rút/tính ở DB (cùng họ `fn_sk_tra_xu_van` sự kiện). Bắt đầu lại ván GIỮ đạn đã quay.
+- **plpgsql: `create temp table … on commit drop` trong hàm = gọi 2 lần/transaction là trùng tên** — dùng CTE trong `for x in with … loop`.
+- **Đo phân bố ngẫu nhiên bằng SQL: `lateral (… order by random() limit 1)` KHÔNG tương quan với hàng ngoài ⇒ Postgres tính 1 lần** ⇒ ra "100% một
+  loại" dù hàm đúng. Đo bằng đúng câu của hàm, chạy trong vòng lặp plpgsql.
+- **Chèn mục vào spec bằng "replace mốc" làm MẤT mốc 2 lần liền** (chuỗi thay không kết thúc bằng chính mốc). Mục "còn hỏi" để CUỐI file; thêm
+  mục = cắt đuôi, ghi mục mới, dán lại đuôi.
+- Vặt: tab trình duyệt ẩn ⇒ `requestAnimationFrame` đứng (game 3D "kẹt" không phải bug — `?loop=timer`) · file game `games-site/*.html` là **CRLF**,
+  Edit tool chèn LF ⇒ chuẩn hoá lại · đường dẫn Windows nhúng vào heredoc Bash mất `\` ⇒ ghi file tạm trong repo rồi xoá · máy không có `python`.
 
 - **⭐ Query kiểm chứng phải KHÔNG ĐƯỢC tautology, và luôn có ĐỐI CHỨNG.** Viết `where not f(x) and f(x)` để "đếm cái lọt" thì kết quả 0 là do logic, không phải do dữ liệu — vô giá trị nhưng trông y hệt bằng chứng. Tương tự, "không thấy trong kết quả" chỉ có nghĩa khi có một mẫu ĐỐI CHỨNG chắc chắn PHẢI thấy và nó thật sự hiện ra; không thì "không thấy" có thể chỉ vì query nhân bản bị hỏng.
 - **Đọc dữ liệu bằng anon key để kết luận "bảng rỗng" là SAI** — RLS member-gate trả **HTTP 200 + `[]`**, không phải lỗi. Cùng họ với bẫy §2.1. Muốn số thật phải `DATABASE_URL_RO` (`claude_ro`), và `claude_ro` không gọi được RPC `grant to authenticated` nên **không thay thế được việc test end-to-end bằng tài khoản thật**.
