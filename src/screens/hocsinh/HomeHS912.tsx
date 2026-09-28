@@ -16,21 +16,23 @@ import type { HomeCard } from './HomeHS'
 import { LOAI_BO_TRO_TEN, type LichBoTro } from '../../lib/botro_yeu_ca'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { luuGiaoDien, type Home912 } from '../../lib/giaodien_hs'
-import { SKINS, SKIN_MAC_DINH, laySkin, cheDoThat, bienCss, layHinhNen, type GiaoDien, type CheDo, type Skin } from './skin/registry'
+import { SKINS, SKIN_MAC_DINH, laySkin, cheDoThat, bienCss, layHinhNen, nenCua, type GiaoDien, type CheDo, type Skin } from './skin/registry'
 
 const MAC_DINH: GiaoDien = { skin: SKIN_MAC_DINH, che_do: 'he_thong', hinh_nen: 'mac_dinh' }
 
-function useHeThongToi(): boolean {
-  const mq = typeof window !== 'undefined' && window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null
-  const [toi, setToi] = useState(!!mq?.matches)
+function useMedia(q: string): boolean {
+  const mq = typeof window !== 'undefined' && window.matchMedia ? window.matchMedia(q) : null
+  const [khop, setKhop] = useState(!!mq?.matches)
   useEffect(() => {
     if (!mq) return
-    const f = (e: MediaQueryListEvent) => setToi(e.matches)
+    const f = (e: MediaQueryListEvent) => setKhop(e.matches)
     mq.addEventListener('change', f)
     return () => mq.removeEventListener('change', f)
   }, [mq])
-  return toi
+  return khop
 }
+const useHeThongToi = () => useMedia('(prefers-color-scheme: dark)')
+const useManDoc = () => useMedia('(orientation: portrait)') // chọn bản tranh nền dọc/ngang
 
 // ── Khung dùng chung (thẻ theo skin) ────────────────────────────────────────
 const THE: CSSProperties = {
@@ -45,7 +47,7 @@ function Badge({ n }: { n: number }) {
 }
 
 // ── Việc tiếp theo: ca bổ trợ gần nhất → ô đang có việc → Tự luyện ──────────
-type Viec = { nhan: string; tieuDe: string; phu: string; onClick?: () => void; gap?: boolean }
+type Viec = { nhan: string; tieuDe: string; phu: string; onClick?: () => void; gap?: boolean; laCa?: boolean }
 function viecTiepTheo(lich: LichBoTro[], cards: HomeCard[], onLich: () => void): Viec {
   const c = lich[0]
   if (c) {
@@ -54,7 +56,7 @@ function viecTiepTheo(lich: LichBoTro[], cards: HomeCard[], onLich: () => void):
       nhan: c.vao_ca ? 'Đang tới giờ' : c.hom_nay ? `Hôm nay${gio}` : `${thuCuaNgay(c.ngay)} ${ddmmVN(c.ngay)}${gio}`,
       tieuDe: `${LOAI_BO_TRO_TEN[c.loai]}${c.mon ? ` · ${c.mon}` : ''}`,
       phu: c.vao_ca ? 'Bấm để vào ca ngay' : [c.phong ? `Phòng ${c.phong}` : '', c.nguoi ?? ''].filter(Boolean).join(' · ') || 'Xem lịch bổ trợ',
-      onClick: onLich, gap: c.vao_ca,
+      onClick: onLich, gap: c.vao_ca, laCa: true,
     }
   }
   const coViec = cards.find((k) => !k.disabled && (k.badge ?? 0) > 0)
@@ -133,9 +135,10 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
           <img src={skin.trangTri.goc} alt="" className="pointer-events-none absolute left-1 top-1 h-10 w-10 opacity-70" />
           <img src={skin.trangTri.goc} alt="" className="pointer-events-none absolute bottom-1 right-1 h-10 w-10 rotate-180 opacity-70" />
         </>}
-        <span className="text-[11px] font-bold uppercase tracking-[0.08em] opacity-80">{viec.nhan}</span>
-        <span className="text-[19px] font-bold leading-snug" style={HEAD}>{viec.tieuDe}</span>
-        <span className="text-[13px] opacity-85">{viec.phu}{viec.gap ? ' →' : ''}</span>
+        {viec.laCa && skin.anhBanner?.lich && <img src={skin.anhBanner.lich} alt="" className="pointer-events-none absolute right-3 top-1/2 h-14 w-14 -translate-y-1/2 object-contain" />}
+        <span className={`text-[11px] font-bold uppercase tracking-[0.08em] opacity-80 ${viec.laCa && skin.anhBanner?.lich ? 'pr-16' : ''}`}>{viec.nhan}</span>
+        <span className={`text-[19px] font-bold leading-snug ${viec.laCa && skin.anhBanner?.lich ? 'pr-16' : ''}`} style={HEAD}>{viec.tieuDe}</span>
+        <span className={`text-[13px] opacity-85 ${viec.laCa && skin.anhBanner?.lich ? 'pr-16' : ''}`}>{viec.phu}{viec.gap ? ' →' : ''}</span>
       </button>
 
       {/* WIDGET — chỉ hiện cái có dữ liệu thật (§1.5: không có kỳ thi thì không vẽ ô "0 ngày") */}
@@ -153,7 +156,8 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
 
       {p.soRetest > 0 && (
         <button onClick={p.onRetest} className="flex items-center justify-between gap-3 px-4 py-3 text-left active:scale-[0.99]" style={THE}>
-          <span className="min-w-0">
+          {skin.anhBanner?.kiemTraLai && <img src={skin.anhBanner.kiemTraLai} alt="" className="h-11 w-11 shrink-0 object-contain" />}
+          <span className="min-w-0 flex-1">
             <span className="block text-[15px] font-bold" style={HEAD}>Bài kiểm tra lại</span>
             <span className="block text-[12.5px]" style={{ color: 'var(--sk-muted)' }}>{p.soRetest} bài chờ làm sau ET · nộp 1 lần</span>
           </span>
@@ -170,7 +174,7 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
             <button key={c.id} disabled={c.disabled} onClick={c.onClick}
               className={`relative flex min-h-[92px] flex-col items-start gap-1.5 p-3 text-left transition lg:min-h-[120px] lg:p-4 ${c.disabled ? 'opacity-50' : 'active:scale-[0.98]'}`} style={THE}>
               {anh
-                ? <img src={anh} alt="" className="h-9 w-9 object-contain lg:h-12 lg:w-12" />
+                ? <img src={anh} alt="" className="h-12 w-12 object-contain lg:h-14 lg:w-14" />
                 : <span className="text-[24px] leading-none lg:text-[30px]" style={skin.dauThayIcon ? { color: 'var(--sk-acc)' } : undefined} aria-hidden>{skin.dauThayIcon ?? c.icon ?? c.emoji ?? '•'}</span>}
               <span className="pr-6 text-[14px] font-bold leading-tight lg:text-[17px]" style={HEAD}>{c.ten}</span>
               <span className="text-[11.5px] leading-snug lg:text-[13px]" style={{ color: mauPhu, fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500 }}>{c.sub}</span>
@@ -246,7 +250,7 @@ function ChonGiaoDien({ gd, setGd, heThongToi, nutChinh, onNutChinh, onDong, dan
               const chon = layHinhNen(skin, gd.hinh_nen).id === h.id
               return (
                 <button key={h.id} onClick={() => setGd({ ...gd, hinh_nen: h.id })} className="flex flex-col items-center gap-1 rounded-xl p-1" style={nut(chon)} aria-pressed={chon}>
-                  <span className="block aspect-[3/4] w-full rounded-lg" style={{ background: (cd === 'toi' ? h.toi : h.sang) ?? h.toi ?? h.sang, border: '1px solid var(--sk-line)' }} />
+                  <span className="block aspect-[3/4] w-full rounded-lg" style={{ background: nenCua(h, cd, true), border: '1px solid var(--sk-line)' }} />
                   <span className="text-[11px] font-semibold leading-tight">{h.ten}</span>
                 </button>
               )
@@ -299,6 +303,7 @@ function ChiNut({ nutRef, onXong, dangLuu, loi }: { nutRef: RefObject<HTMLButton
 // ── VỎ: giữ lựa chọn đã lưu + bản đang xem thử, lo lưu ──────────────────────
 export default function HomeHS912({ giaoDien, onDaLuu, ...p }: HomeProps & { giaoDien: GiaoDien | null; onDaLuu: (g: GiaoDien) => void }) {
   const heThongToi = useHeThongToi()
+  const manDoc = useManDoc()
   const daLuu = giaoDien ?? MAC_DINH
   const [xem, setXem] = useState<GiaoDien>(daLuu)           // bản đang vẽ (xem thử khi tấm chọn mở)
   const [buoc, setBuoc] = useState<'chao' | 'chon' | 'chi_nut' | null>(giaoDien ? null : 'chao')
@@ -309,7 +314,7 @@ export default function HomeHS912({ giaoDien, onDaLuu, ...p }: HomeProps & { gia
   const nutRef = useRef<HTMLButtonElement>(null)
 
   const skin = laySkin(xem.skin)
-  const v = bienCss(skin, cheDoThat(skin, xem.che_do, heThongToi), xem.hinh_nen) as CSSProperties
+  const v = bienCss(skin, cheDoThat(skin, xem.che_do, heThongToi), xem.hinh_nen, manDoc) as CSSProperties
 
   async function luu(sau: () => void) {
     setDangLuu(true); setLoi(null)

@@ -11,15 +11,17 @@ export type SkinId = 'toi_gian' | 'dau_truong' | 'y2k' | 'soft' | 'rpg'
 export type CheDo = 'sang' | 'toi' | 'he_thong'
 export type GiaoDien = { skin: SkinId; che_do: CheDo; hinh_nen: string }
 
-// Khối thuộc nhóm "có điện thoại riêng" (Thùy 28/09: lớp 9–12). Khối lấy từ hs_khoi_cua_toi.
-export const KHOI_912 = new Set(['9', '10', '11', '12'])
+// Khối dùng Home mới + tự chọn skin. Thùy 28/09 tối: MỌI skin mở cho MỌI em, không giới hạn tuổi ("lớp 6 vẫn thích anime")
+// — nhóm tuổi chỉ là chuẩn để THIẾT KẾ skin. Cấp 1 (3–5) còn HomeCap1 riêng cho iPad, chưa chuyển. Khối lấy từ hs_khoi_cua_toi.
+export const KHOI_CHON_SKIN = new Set(['6', '7', '8', '9', '10', '11', '12'])
 
 type Mau = {
   bg: string; surface: string; surface2: string; ink: string; muted: string; line: string
   acc: string; accInk: string; badge: string; badgeInk: string
   cardBorder: string; cardShadow: string
 }
-type HinhNen = { id: string; ten: string; sang?: string; toi?: string }
+// sangDoc/toiDoc: bản cho màn DỌC (điện thoại) — tranh vẽ riêng khổ 9:16, không có thì dùng bản thường.
+type HinhNen = { id: string; ten: string; sang?: string; toi?: string; sangDoc?: string; toiDoc?: string }
 
 export type Skin = {
   id: SkinId
@@ -43,6 +45,7 @@ export type Skin = {
   // (Thùy 28/09 chê bản RPG đầu: 📈📖 cạnh cuộn giấy/thư vẽ tay).
   dauThayIcon?: string
   trangTri?: { goc?: string; gach?: string } // hoa văn góc thẻ "Tiếp theo" + gạch phân cách dưới đầu trang
+  anhBanner?: { lich?: string; kiemTraLai?: string } // ảnh vẽ riêng cho thẻ ca bổ trợ + banner bài kiểm tra lại
   // Thẻ "Việc tiếp theo": mặc định tô đặc màu nhấn. Skin nền tối sang (RPG) tô đặc thì thành mảng vàng thô — dùng kiểu riêng.
   theTiep?: { bg: string; ink: string; border: string }
   // Tấm mờ sau tên HS — skin nền ẢNH cần (tên đè lên tia sáng/lâu đài thì không đọc được). 'transparent' = không có.
@@ -52,6 +55,8 @@ export type Skin = {
 const A = '/bk-ui/hs/skin'
 const LEX = "'Lexend', 'Be Vietnam Pro', system-ui, sans-serif"
 const BVP = "'Be Vietnam Pro', system-ui, sans-serif"
+const rpgNen = (f: string) =>
+  `linear-gradient(180deg, rgba(20,26,51,0.05) 0%, rgba(20,26,51,0.45) 22%, rgba(20,26,51,0.88) 48%, #141a33 75%), url(${A}/rpg/${f}.jpg) center top / cover no-repeat, #141a33`
 
 export const SKINS: Skin[] = [
   {
@@ -115,16 +120,23 @@ export const SKINS: Skin[] = [
     radius: '8px', cardClip: 'none', cardAccentLeft: 'none', blur: 'blur(6px)',
     cheDo: ['toi'],
     toi: { bg: '#141a33', surface: 'rgba(20,26,51,0.72)', surface2: 'rgba(233,199,123,0.12)', ink: '#f3ead0', muted: '#bfb08a', line: 'rgba(233,199,123,0.3)', acc: '#e9c77b', accInk: '#141a33', badge: '#e9c77b', badgeInk: '#141a33', cardBorder: '1px solid rgba(233,199,123,0.35)', cardShadow: 'none' },
+    // Tranh vẽ riêng 2 khổ (ChatGPT Đơn 4, 28/09): ngang 1672×941 cho iPad/máy tính, dọc 940×1672 cho điện thoại.
+    // Lớp phủ tối dần xuống dưới: chi tiết ở phần trên, vùng đặt ô thì tối và yên. Id 'bau_troi' giữ nguyên — HS đã lưu.
     hinhNen: [
-      // Tranh DỌC (1080×1920): màn ngang máy tính phải phóng to cho phủ bề ngang ⇒ lâu đài tràn khắp màn (Thùy 28/09).
-      // Lớp phủ tối dần xuống dưới giữ đúng ý đơn: chi tiết ở phần trên, vùng đặt ô thì tối và yên — ở mọi khổ màn.
-      { id: 'bau_troi', ten: 'Đảo trời', toi: `linear-gradient(180deg, rgba(20,26,51,0.05) 0%, rgba(20,26,51,0.45) 22%, rgba(20,26,51,0.88) 48%, #141a33 75%), url(${A}/rpg/bg_bau_troi.jpg) center top / cover no-repeat, #141a33` },
+      { id: 'bau_troi', ten: 'Đảo trời', toi: rpgNen('bg_dao_troi_ngang'), toiDoc: rpgNen('bg_dao_troi_doc') },
+      { id: 'lau_dai', ten: 'Lâu đài', toi: rpgNen('bg_lau_dai_ngang'), toiDoc: rpgNen('bg_lau_dai_doc') },
       { id: 'dem_sao', ten: 'Đêm sao', toi: 'radial-gradient(1.5px 1.5px at 20% 12%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 70% 30%, #fff 50%, transparent 51%), radial-gradient(1.2px 1.2px at 40% 60%, #e9c77b 50%, transparent 51%), radial-gradient(1px 1px at 85% 75%, #fff 50%, transparent 51%), radial-gradient(90% 60% at 50% 0%, #2c3a66 0%, #141a33 70%), #141a33' },
     ],
-    // ET KHÔNG mượn icon "Bài trên lớp" (2 ô cạnh nhau cùng hình = khó phân biệt) — chờ icon riêng (đơn bổ sung 4b).
-    anhO: { giao_trinh: `${A}/rpg/ill_lop.png`, btvn: `${A}/rpg/ill_btvn.png`, tu_luyen: `${A}/rpg/ill_luyen.png`, de_thi_thu: `${A}/rpg/ill_thithu.png` },
+    // Mỗi ô 1 hình khác nhau. Khối 9 có Thành tựu, khối 10–12 có Bảng xếp hạng (không bao giờ cùng lưới) ⇒ dùng chung cúp.
+    anhO: {
+      giao_trinh: `${A}/rpg/o_tren_lop.png`, et: `${A}/rpg/o_et.png`, btvn: `${A}/rpg/o_btvn.png`, tu_luyen: `${A}/rpg/o_tu_luyen.png`,
+      thong_tin: `${A}/rpg/o_thong_tin.png`, so_tay: `${A}/rpg/o_so_tay.png`, de_thi_thu: `${A}/rpg/o_thi_thu.png`,
+      bai_tap_giao: `${A}/rpg/o_bai_tap_giao.png`, thanh_tuu: `${A}/rpg/o_cup.png`, xep_hang: `${A}/rpg/o_cup.png`,
+      may_man: `${A}/rpg/o_ruong.png`, vi_xu: `${A}/rpg/o_vi_xu.png`, hoc_tu_dau: `${A}/rpg/o_hoc_tu_dau.png`,
+    },
     dauThayIcon: '✦',
     trangTri: { goc: `${A}/rpg/corner.png`, gach: `${A}/rpg/divider.png` },
+    anhBanner: { lich: `${A}/rpg/b_lich.png`, kiemTraLai: `${A}/rpg/b_kiem_tra_lai.png` },
     theTiep: { bg: 'linear-gradient(100deg, rgba(233,199,123,0.26) 0%, rgba(20,26,51,0.78) 70%)', ink: '#f3ead0', border: '1px solid rgba(233,199,123,0.7)' },
     nenTen: 'rgba(20,26,51,0.6)',
   },
@@ -148,11 +160,17 @@ export function layHinhNen(skin: Skin, id: string | null | undefined): HinhNen {
 }
 
 // Biến CSS cho 1 (skin × chế độ × hình nền) — đặt lên thẻ gốc, mọi thứ bên trong đọc var(--sk-*).
-export function bienCss(skin: Skin, cd: 'sang' | 'toi', hinhNenId: string | null | undefined): Record<string, string> {
+// Hình nền 1 khổ: màn dọc lấy bản Doc nếu có, không thì bản thường.
+export function nenCua(hn: HinhNen, cd: 'sang' | 'toi', doc: boolean): string | undefined {
+  const thuong = (cd === 'toi' ? hn.toi : hn.sang) ?? hn.toi ?? hn.sang
+  return doc ? ((cd === 'toi' ? hn.toiDoc : hn.sangDoc) ?? hn.toiDoc ?? hn.sangDoc ?? thuong) : thuong
+}
+
+export function bienCss(skin: Skin, cd: 'sang' | 'toi', hinhNenId: string | null | undefined, doc = false): Record<string, string> {
   const m = (cd === 'toi' ? skin.toi : skin.sang) ?? (skin.toi ?? skin.sang)!
   const hn = layHinhNen(skin, hinhNenId)
   return {
-    '--sk-page': (cd === 'toi' ? hn.toi : hn.sang) ?? hn.toi ?? hn.sang ?? m.bg,
+    '--sk-page': nenCua(hn, cd, doc) ?? m.bg,
     '--sk-bg': m.bg, '--sk-surface': m.surface, '--sk-surface2': m.surface2, '--sk-ink': m.ink, '--sk-muted': m.muted,
     '--sk-line': m.line, '--sk-acc': m.acc, '--sk-acc-ink': m.accInk, '--sk-badge': m.badge, '--sk-badge-ink': m.badgeInk,
     '--sk-card-border': m.cardBorder, '--sk-card-shadow': m.cardShadow, '--sk-card-clip': skin.cardClip,

@@ -1,10 +1,10 @@
 # Đơn đặt hàng ChatGPT — skin app HS theo 3 nhóm khối
 
 > Soạn 28/09/2026. Thùy chốt: **mỗi nhóm khối có bộ skin riêng**.
-> - **Lớp 3–5** · gốc **Thị trấn** · iPad/laptop, không có điện thoại riêng → **Đơn 1**
+> - **Thị trấn** (chuẩn thiết kế lớp 3–5, mở cho mọi khối — Thùy 28/09 tối) → **Đơn 1 v2** (giao không qua zip, như Đơn 3 v3)
 > - **Lớp 6–8** · gốc **Khối vuông** · không có điện thoại riêng → **Đơn 2**
 > - **Lớp 9–12** · nhiều skin để HS chọn · có điện thoại riêng. 4 skin (Tối giản, Đấu trường, Y2K, Soft Hàn) Claude dựng bằng code, không cần ChatGPT.
->   2 skin cần hình → **Đơn 3 v2 (Lo-fi đêm)** và **Đơn 4 v2 (Anime RPG)** — cả 2 theo "BỐ CỤC CHUNG lớp 9–12" (ảnh gốc RPG Thùy đã xem).
+>   2 skin cần hình → **Đơn 3 v3 (Lo-fi đêm)** và **Đơn 4 v2 (Anime RPG)** — cả 2 theo "BỐ CỤC CHUNG lớp 9–12" (ảnh gốc RPG Thùy đã xem).
 >
 > Spec tổng: `spec-giao-dien-hs.md`.
 
@@ -17,70 +17,82 @@
    - Đơn 3–4: https://claude.ai/artifact/LZF11536BxanSuLQcnbWiR (mẫu "Lo-fi đêm", "Anime RPG")
    Đơn 1–2: ảnh chỉ để lấy **không khí và màu**. Đơn 3–4: đính kèm `design/handoff/hs-skin-rpg-v1/reference/reference_rpg_ipad.png` làm BỐ CỤC GỐC.
 4. Đơn 1–2 chạy đủ 4 pha (A→D). Duyệt mockup ở Pha B **trước** khi cho sinh asset.
-   Đơn 3–4 cũng chạy đủ 4 pha (luật 28/09: KHÔNG còn đơn "chỉ sinh hình"). Đơn 3–4 dán thêm mục "BỐ CỤC CHUNG lớp 9–12" ngay sau khối đơn.
+   Đơn 3–4 cũng chạy đủ 4 pha (luật 28/09: KHÔNG còn đơn "chỉ sinh hình"). Đơn 3–4 dán thêm mục "BỐ CỤC CHUNG lớp 9–12" ngay sau khối đơn. **Đơn 3 v3 giao KHÔNG qua zip** — xem cách gửi riêng trong đơn (bước 5–6 dưới không áp).
 5. Kiểm trước khi nhận: zip PHẢI có `reference/` (ảnh toàn cảnh mọi khổ màn + trạng thái) và DESIGN.md có cột "Vị trí & cỡ".
    Thiếu 1 trong 2 → trả lại ngay, chưa cần gửi Claude.
 6. Nhận zip → bỏ vào `design/handoff/` (KHÔNG bỏ vào `public/`) → báo Claude.
 
 ---
 
-## Đơn 1 — Lớp 3–5 · Thị trấn
+## Đơn 1 v2 — skin Thị trấn (chuẩn thiết kế lớp 3–5, mở cho MỌI khối) — soạn 28/09 tối
+
+> v1 (chưa gửi) viết cho màn riêng cấp 1 (HomeCap1, iPad, 8 ô). Soạn lại vì 2 quyết định mới của Thùy 28/09:
+> (1) **mọi skin mở cho mọi em** — nhóm tuổi chỉ là chuẩn để THIẾT KẾ ⇒ Thị trấn là 1 skin trong bộ chung, chạy trên Home chung
+> (HomeHS912) ⇒ phải theo "BỐ CỤC CHUNG lớp 9–12" và đủ ô của cả khối 9 lẫn khối 10–12;
+> (2) **giao KHÔNG qua zip** (bài học Đơn 4: ảnh vẽ trong chat đẹp, file đóng zip lại là bản dựng bằng code).
+> Khác Lo-fi/RPG: Thị trấn là skin **SÁNG** (chữ tối trên nền sáng) và dùng **LINH VẬT** thay nhân vật người.
+>
+> **Cách gửi:** context ChatGPT MỚI → dán `CHATGPT-UI-KIT.md` → dán khối đơn dưới + mục "BỐ CỤC CHUNG lớp 9–12" →
+> đính kèm `design/bk-ui-src/Nền app HS cấp 3_11.png` (mockup RPG đã duyệt, CHỈ lấy bố cục). Mỗi hình xong: tải về `design/bk-ui-src/`,
+> gõ "tiếp". Xong nhóm nào báo Claude kiểm nhóm đó.
 
 ```
 ĐƠN ĐẶT HÀNG
 App:            hs
-Màn:            home-k35
-Mô tả màn:      Màn chính app học sinh LỚP 3–5 (8–11 tuổi) của trung tâm dạy thêm BK Academy. Các em KHÔNG có điện thoại
-                riêng: dùng iPad hoặc laptop ở trung tâm/ở nhà, máy dùng chung. Mở app để vào luyện bài, xem lịch bổ trợ,
-                quay may mắn, xem thành tựu.
-                Thiết bị: iPad NGANG 1180×820 (ảnh chính) + laptop 1440×900 (1 ảnh, cùng bố cục, rộng hơn).
-                Màn ĐƯỢC CUỘN nhẹ (không bắt buộc gọn 1 màn).
+Màn:            home-skin-thi-tran
+Mô tả màn:      Màn chính app học sinh trung tâm dạy thêm BK Academy, skin "Thị trấn". Skin thiết kế theo chuẩn học sinh LỚP 3–5
+                (8–11 tuổi) nhưng em lớn hơn cũng chọn được ⇒ dễ thương nhưng KHÔNG sến, không trẻ con quá.
+                Bố cục theo đúng mục "BỐ CỤC CHUNG lớp 9–12" dán kèm + ảnh mockup đính kèm (CHỈ lấy BỐ CỤC, không lấy phong cách).
+                Chỗ "nhân vật" trong bố cục = LINH VẬT (không có người).
+                2 khổ: iPad NGANG 1180×820 và điện thoại DỌC 430px 9:16.
+Phong cách:     thị trấn ấm áp kiểu Play Together / Animal Crossing / Toca Boca nhưng THIẾT KẾ GỐC (không nhân vật, logo, hình dạng
+                nhận ra được của game nào). Ban ngày, nắng dịu. Khối tròn mập, bo góc lớn; màu kẹo tươi, độ bão hoà VỪA PHẢI.
+                Ô/nút kiểu "thạch": nền trắng kem, 1 viền dưới đậm cùng tông (như bóng cứng 5px), bấm được rõ ràng.
+                Icon = minh hoạ 3D mềm, mỗi ô 1 ĐỒ VẬT CỦA THỊ TRẤN, khác nhau.
+Biến thể:       3 "làng" HS tự chọn (chỉ đổi tranh nền, bố cục y hệt), PHẢI khác nhau rõ ràng từ xa:
+                  lang_bien : làng biển — xanh ngọc, cát vàng, thuyền, hải đăng xa
+                  lang_nam  : làng rừng nấm — xanh lá, nấm đỏ chấm trắng, đom đóm
+                  lang_keo  : làng kẹo — hồng, vàng bơ, mây bông, nhà bánh quy
+                3 linh vật HS tự chọn, dùng chung cho cả 3 làng: meo (mèo cam) · cun (cún trắng tai nâu) · rong (rồng con xanh ngọc).
+                KHÔNG có biến thể nam/nữ.
+Phiên bản kit:  v2
 
-Phần tử ĐỘNG (mọi thứ đổi theo dữ liệu — vẽ bằng chữ/khối, không vẽ vào ảnh):
-  - Thanh trên: avatar nhỏ (ảnh thật hoặc 2 chữ viết tắt trong vòng tròn) · họ tên · mã HS (vd HS0412) · nút Hòm thư có
-    badge số tin chưa đọc (0 thì ẩn badge) · nút Thoát.
-  - Khu chào: "Chào Minh Khang!" (2 từ cuối của tên) · CẤP (vd "Cấp 12") · thanh XP (vd 640/1000) · số XU (vd 1.240).
-  - Linh vật + bong bóng thoại 1 câu CÓ SỐ THẬT, vd "Còn 3 câu nữa là đủ 10 câu hôm nay!", "Em có 1 lượt quay may mắn!".
-  - Banner BỔ TRỢ (chỉ hiện khi có lịch): "Bổ trợ yếu · Thứ 5 12/10 · 17:30 · Phòng 204". Khi tới giờ: nút nổi "Vào ca ngay".
-  - Banner BÀI KIỂM TRA LẠI (chỉ hiện khi có): "2 bài chờ làm".
-  - 8 ô chức năng, đúng thứ tự, mỗi ô: icon + tên + 1 dòng trạng thái + (badge số nếu có):
-      1 Tự luyện            — "Luyện theo dạng yếu"
-      2 Thông tin học tập   — "Xem dạng đang yếu"
-      3 Sổ tay kiến thức    — "Tra lý thuyết & bài mẫu"
-      4 Làm đề thi thử      — "Sắp có" (ô xám, khoá, không bấm được)
-      5 Bài tập được giao   — "2 bài chưa làm" (badge 2) / "Chưa có bài"
-      6 Thành tựu           — "Xem giải thưởng của em"
-      7 May mắn             — "Có 1 lượt quay!" (badge 1) / "Luyện 10 câu đúng ≥70%"
-      8 Ví xu               — "1.240 xu"
+══ CÁCH GIAO HÀNG (bắt buộc — khác kit) ══
+- KHÔNG đóng zip. KHÔNG viết DESIGN.md. KHÔNG dựng hình bằng code / SVG / HTML / Python-PIL / ghép khối.
+- MỖI LƯỢT TRẢ LỜI = ĐÚNG 1 HÌNH, vẽ bằng công cụ tạo ảnh. Dòng đầu câu trả lời ghi số thứ tự + tên file, vd "#12 ill_town_tu_luyen".
+  Vẽ xong dừng, chờ tôi gõ "tiếp". KHÔNG gộp nhiều hình vào 1 ảnh (trừ mục A là ảnh toàn cảnh).
+- Tôi tải chính ảnh bạn vẽ ra — ảnh đó LÀ file giao, nên phải đạt chuẩn ngay trong chat.
 
-Trạng thái (mỗi cái 1 ảnh, CÙNG bố cục):
-  ① thường: có banner bổ trợ, Bài tập được giao có 2 bài, May mắn có lượt
-  ② trống: không banner nào, mọi ô ở trạng thái "chưa có"
-  ③ tới giờ bổ trợ: banner bổ trợ nổi bật với nút "Vào ca ngay" + có banner bài kiểm tra lại
+══ CHUẨN TỪNG LOẠI ══
+- ICON: vuông 1254×1254, nền TRONG SUỐT thật, vật thể ở GIỮA chiếm ~80% khung (chừa lề), không chữ/số/badge, không khung ô phía sau.
+  Tất cả icon cùng góc nhìn 3/4 từ trên, cùng nguồn sáng (nắng từ trái-trên), cùng độ chi tiết.
+- LINH VẬT: vuông 1254×1254, nền TRONG SUỐT, toàn thân, tư thế vẫy tay, nhìn về phía người xem. 3 con cùng cỡ, cùng nét vẽ.
+- NỀN NGANG: 1672×941, nền đặc, KHÔNG linh vật, KHÔNG chữ. Cảnh làng dồn sang TRÁI; 65% bên PHẢI là trời/đồng cỏ SÁNG, ÍT chi tiết
+  (để đặt ô lên, chữ tối phải đọc được).
+- NỀN DỌC: 940×1672, nền đặc, KHÔNG linh vật. Cảnh làng ở 40% TRÊN; 60% DƯỚI sáng dịu, ít chi tiết (trời/cỏ/cát nhạt).
 
-Biến thể = 3 "làng" HS TỰ CHỌN (KHÔNG có biến thể nam/nữ). Chỉ đổi tranh nền + bảng màu + decor, bố cục y hệt:
-  - lang_bien  : làng biển — xanh ngọc, cát vàng, thuyền, hải đăng xa
-  - lang_nam   : làng rừng nấm — xanh lá, nấm đỏ chấm trắng, đom đóm
-  - lang_keo   : làng kẹo — hồng, vàng bơ, mây bông, nhà bánh quy
-Linh vật = 3 con HS TỰ CHỌN, dùng chung cho cả 3 làng: meo (mèo cam), cun (cún trắng tai nâu), rong (rồng con xanh ngọc).
-  Mỗi con 1 file CHAR, tư thế vẫy tay, nhìn về phía người xem.
+══ DANH SÁCH GIAO (đúng thứ tự) ══
+A. Ảnh toàn cảnh để duyệt (mỗi ảnh 1 màn, có chữ + số mẫu, CHỈ để xem bố cục — không cắt ra dùng):
+   #01 iPad ngang – trạng thái ① khối 9 thường, làng biển, linh vật mèo   → DỪNG, chờ Thùy duyệt phong cách rồi mới làm tiếp
+   #02 điện thoại dọc – trạng thái ① cùng làng + linh vật
+B. Nền:      #03 backdrop_town_lang_bien_ngang · #04 backdrop_town_lang_bien_doc · #05 backdrop_town_lang_nam_ngang
+             #06 backdrop_town_lang_nam_doc · #07 backdrop_town_lang_keo_ngang · #08 backdrop_town_lang_keo_doc
+C. Linh vật: #09 pet_town_meo · #10 pet_town_cun · #11 pet_town_rong
+D. Icon ô:   #12 ill_town_tu_luyen (bình tưới cây) · #13 ill_town_thong_tin (bảng tin gỗ ghim giấy) · #14 ill_town_so_tay (cuốn sổ có dây)
+             #15 ill_town_thi_thu (cổng trường nhỏ khoá — tông XÁM, không nắng, vì ô đang khoá)
+             #16 ill_town_bai_tap_giao (hộp thư có lá thư) · #17 ill_town_cup (cúp vàng trên bục gỗ) · #18 ill_town_may_man (máy gắp thú)
+             #19 ill_town_vi_xu (heo đất) · #20 ill_town_bai_tren_lop (cặp sách) · #21 ill_town_et (đồng hồ báo thức + tờ bài)
+             #22 ill_town_btvn (chồng vở + bút chì) · #23 ill_town_hoc_tu_dau (con đường đá bậc thang lên đồi)
+E. Icon phụ: #24 ill_town_lich (lịch để bàn — thẻ ca bổ trợ) · #25 ill_town_kiem_tra_lai (tờ bài có dấu tích, ánh HỒNG)
+             #26 ill_town_sao_cap (ngôi sao kẹo) · #27 ill_town_dong_xu (đồng xu vàng)
 
-Phong cách: thị trấn ấm áp kiểu Play Together / Animal Crossing / Toca Boca nhưng THIẾT KẾ GỐC (không nhân vật, logo,
-  hình dạng nhận ra được của game nào). Khối tròn mập, bo góc lớn; màu kẹo tươi nhưng độ bão hoà vừa phải; nút và ô kiểu
-  "thạch": có 1 viền dưới đậm cùng tông (như bóng cứng 5px), bấm được rõ ràng; icon 8 ô là minh hoạ 3D mềm, mỗi ô 1 đồ vật
-  của thị trấn (vd Tự luyện = bình tưới cây, Sổ tay = cuốn sổ có dây, May mắn = máy gắp thú, Ví xu = heo đất...).
-
-Giữ nguyên: 8 chức năng, tên và thứ tự như trên. Không thêm chức năng. Không thêm nhân vật người.
-Phiên bản kit:  v1
-
-GHI ĐÈ KIT §1 "Nền tảng chung" cho đơn này:
-  - Font: Baloo 2 cho MỌI chữ. KHÔNG dùng Pacifico/Itim, KHÔNG có chữ viết tay/doodle.
-  - Màn được cuộn; khổ iPad ngang, không phải điện thoại 9:16.
+GHI ĐÈ KIT §1: font = Baloo 2 cho MỌI chữ. KHÔNG Pacifico/Itim, KHÔNG chữ viết tay/doodle. Màn được cuộn.
 LUẬT RIÊNG (lý do: HS chê bản cũ vì sến và dạy đời):
-  - KHÔNG khẩu hiệu động viên ("Cố lên!", "Mỗi ngày tiến bộ", "You can do it"...). KHÔNG chữ tiếng Anh.
-  - Câu duy nhất có "giọng" là câu thoại của linh vật, và phải có số thật.
-  - Chữ chính ≥ 16px ở khổ iPad; tương phản chữ/nền đủ đọc (chữ tối trên nền sáng).
-  - Mọi chữ tiếng Việt đúng dấu.
+  - KHÔNG khẩu hiệu động viên ("Cố lên!", "Mỗi ngày tiến bộ"...). KHÔNG chữ tiếng Anh. Câu duy nhất có "giọng" = bong bóng thoại
+    của linh vật, phải có số thật (vd "Còn 3 câu nữa là đủ 10 câu hôm nay!").
+  - Chữ chính ≥ 16px ở khổ iPad; chữ tối trên nền sáng, đủ tương phản. Mọi chữ tiếng Việt đúng dấu.
+
+Bắt đầu với #01.
 ```
 
 ---
@@ -177,43 +189,68 @@ thuốc đếm ngược THPT, chỉ banner Bổ trợ · ③ trống — không 
 
 ---
 
-## Đơn 3 v2 — Lớp 9–12 · skin Lo-fi đêm (làm lại TOÀN BỘ — v1 bị trả)
+## Đơn 3 v3 — Lớp 9–12 · skin Lo-fi đêm (làm lại — soạn 28/09 theo bài học Đơn 4)
 
-> v1 bị trả vì: 2 tranh nền là khối hình phẳng ghép bằng code (không phải tranh vẽ bằng công cụ tạo ảnh), 2 biến thể gần trùng nhau
-> (lệch trung bình 0,4/255), DESIGN.md thiếu 4/6 mục, không có ảnh toàn cảnh.
+> v1 bị trả: tranh nền là khối phẳng ghép bằng code, 2 biến thể gần trùng nhau.
+> v2 chưa gửi — soạn lại vì Đơn 4 lộ lỗi mới: **ảnh ChatGPT VẼ trong chat thì đẹp, nhưng file nó ĐÓNG ZIP lại là bản dựng bằng code**
+> (10/16 icon phẳng kiểu clip-art, 6 ảnh tham chiếu dựng HTML), còn icon đẹp chỉ nằm trong mockup ~100px, cắt ra thì mờ.
+> ⇒ v3 **KHÔNG DÙNG ZIP**. Mỗi lượt ChatGPT vẽ ĐÚNG 1 hình, Thùy tải thẳng ảnh đó về `design/bk-ui-src/`. Claude tự kiểm kê.
+>
+> **Cách gửi v3:** context ChatGPT MỚI → dán `CHATGPT-UI-KIT.md` → dán khối đơn dưới + mục "BỐ CỤC CHUNG lớp 9–12" →
+> đính kèm `design/bk-ui-src/Nền app HS cấp 3_11.png` (mockup RPG đã duyệt, CHỈ lấy bố cục). Mỗi hình xong: tải về, gõ "tiếp".
+> Xong nhóm nào báo Claude kiểm nhóm đó (đừng đợi đủ 25 hình).
 
 ```
 ĐƠN ĐẶT HÀNG
 App:            hs
 Màn:            home-912-lofi
-Mô tả màn:      Màn chính app học sinh LỚP 9–12 (14–18 tuổi, có điện thoại riêng), skin "Lo-fi đêm". Bố cục theo đúng mục
-                "BỐ CỤC CHUNG lớp 9–12" dán kèm bên dưới + ảnh bố cục mẫu reference_rpg_ipad.png (chỉ lấy BỐ CỤC, không lấy phong cách).
-                2 khổ: iPad NGANG 1180×820 (ảnh chính) và điện thoại DỌC 430px 9:16.
-Phần tử ĐỘNG:   như "BỐ CỤC CHUNG": tên, mã, cấp + XP, xu, Elo + hạng, đếm ngược THPT, 2 banner, badge, trạng thái từng ô, câu thoại.
-Trạng thái:     ① ② ③ như "BỐ CỤC CHUNG" — mỗi trạng thái 1 ảnh cho MỖI khổ màn (6 ảnh).
-Biến thể:       2 tranh nền HS tự chọn — `thanh_pho` (cửa sổ nhìn ra thành phố đêm) và `mua` (cửa sổ mưa). PHẢI khác nhau rõ ràng.
-                2 nhân vật HS tự chọn — `nam` và `nu`.
-Phong cách:     lo-fi study aesthetic kiểu tranh nền Lofi Girl / anime (TỰ VẼ, không chép): phòng học ban đêm, đèn bàn ấm cam #ffb066,
-                tông chàm #1d1b3a → tím mận #3b2b52. Nhân vật = học sinh cấp 3 mặc hoodie, đeo tai nghe, cầm bút/sách; bạn đồng
-                hành = mèo cam ngủ gật. Thẻ/ô nền tối trong mờ, viền mảnh sáng. Icon 11 ô vẽ cùng phong cách (đồ vật trên bàn học
-                ban đêm: đèn, sổ, cốc, tai nghe…), mỗi ô 1 đồ vật khác nhau.
-Giữ nguyên:     danh sách ô, tên, thứ tự theo khối; không thêm chức năng.
-Phiên bản kit:  v2
-Chạy đủ 4 pha A→D. Pha B: vẽ ảnh ① iPad ngang trước, chờ Thùy duyệt, rồi mới vẽ các ảnh còn lại.
+Mô tả màn:      Màn chính app học sinh LỚP 9–12 (14–18 tuổi, có điện thoại riêng, hay mở app buổi tối), skin "Lo-fi đêm".
+                Bố cục theo đúng mục "BỐ CỤC CHUNG lớp 9–12" dán kèm + ảnh mockup đính kèm (CHỈ lấy BỐ CỤC, không lấy phong cách).
+                2 khổ: iPad NGANG 1180×820 và điện thoại DỌC 430px 9:16.
+Phong cách:     lo-fi study kiểu tranh nền Lofi Girl / anime (TỰ VẼ, không chép): phòng học ban đêm, đèn bàn ấm cam #ffb066,
+                tông chàm #1d1b3a → tím mận #3b2b52, ánh sáng dịu, hạt nhiễu nhẹ. Ô/thẻ nền tối trong mờ, viền mảnh sáng.
+                Icon = đồ vật trên bàn học ban đêm, vẽ kiểu tranh anime có đổ bóng mềm + ánh đèn cam hắt lên, MỖI Ô 1 ĐỒ VẬT KHÁC NHAU.
+Biến thể:       2 tranh nền HS tự chọn — `thanh_pho` (cửa sổ nhìn ra thành phố đêm, đèn neon xa) và `mua` (cửa sổ mưa, giọt nước chảy
+                trên kính, đèn đường nhoè). PHẢI khác nhau rõ ràng từ xa.
+                2 nhân vật HS tự chọn — `nam` và `nu`: học sinh cấp 3 mặc hoodie, đeo tai nghe, cầm bút/sách, ngồi hoặc đứng nghiêng 3/4.
+                Trang phục KÍN ĐÁO (hoodie + quần dài / váy dài qua gối). Bạn đồng hành = mèo cam ngủ gật.
+Phiên bản kit:  v3
 
-GHI ĐÈ KIT §1: font chữ = Nunito (tiêu đề + thân), KHÔNG Baloo 2 / Pacifico, KHÔNG chữ viết tay. Màn được cuộn.
+══ CÁCH GIAO HÀNG (bắt buộc — khác kit) ══
+- KHÔNG đóng zip. KHÔNG viết DESIGN.md. KHÔNG dựng hình bằng code / SVG / HTML / Python-PIL / ghép khối.
+- MỖI LƯỢT TRẢ LỜI = ĐÚNG 1 HÌNH, vẽ bằng công cụ tạo ảnh. Dòng đầu câu trả lời ghi số thứ tự + tên file, vd "#07 ill_lofi_tu_luyen".
+  Vẽ xong dừng, chờ tôi gõ "tiếp". KHÔNG gộp nhiều hình vào 1 ảnh (trừ mục A là ảnh toàn cảnh).
+- Tôi tải chính ảnh bạn vẽ ra — ảnh đó LÀ file giao, nên phải đạt chuẩn ngay trong chat.
+
+══ CHUẨN TỪNG LOẠI ══
+- ICON: vuông 1254×1254, nền TRONG SUỐT thật, vật thể ở GIỮA chiếm ~80% khung (chừa lề), không chữ/số/badge, không khung ô phía sau.
+  Tất cả icon cùng góc nhìn, cùng nguồn sáng (đèn bàn cam từ trái-trên), cùng độ chi tiết.
+- NHÂN VẬT: dọc 1122×1402, nền TRONG SUỐT, nửa người trở lên, mèo cam nằm trên vai hoặc trong lòng.
+- MÈO riêng: 1024×1024, nền trong suốt.
+- NỀN NGANG: 1672×941, nền đặc, KHÔNG nhân vật, KHÔNG chữ. Nửa PHẢI (65%) tối và ít chi tiết để đặt ô lên; cửa sổ/đèn dồn sang trái.
+- NỀN DỌC: 940×1672, nền đặc, KHÔNG nhân vật. Cảnh chính ở 40% TRÊN, 60% DƯỚI tối, ít chi tiết (đặt nội dung app lên).
+
+══ DANH SÁCH GIAO (đúng thứ tự) ══
+A. Ảnh toàn cảnh để duyệt (mỗi ảnh 1 màn, có chữ + số mẫu, CHỈ để xem bố cục — không cắt ra dùng):
+   #01 iPad ngang – trạng thái ① khối 9 thường      → DỪNG, chờ Thùy duyệt phong cách rồi mới làm tiếp
+   #02 điện thoại dọc – trạng thái ①
+B. Nền:      #03 backdrop_lofi_thanh_pho_ngang · #04 backdrop_lofi_thanh_pho_doc · #05 backdrop_lofi_mua_ngang · #06 backdrop_lofi_mua_doc
+C. Nhân vật: #07 character_lofi_nam · #08 character_lofi_nu · #09 pet_lofi_meo
+D. Icon ô:   #10 ill_lofi_tu_luyen (tập nháp + bút chì) · #11 ill_lofi_thong_tin (bảng ghim giấy note) · #12 ill_lofi_so_tay (sổ tay bìa da + bút)
+             #13 ill_lofi_thi_thu (tờ đề kẹp bìa + ổ khoá nhỏ — tông XÁM, không ánh cam, vì ô đang khoá)
+             #14 ill_lofi_bai_tap_giao (phong bì giấy kraft) · #15 ill_lofi_thanh_tuu (cúp nhỏ trên kệ sách)
+             #16 ill_lofi_may_man (quả cầu tuyết phát sáng) · #17 ill_lofi_vi_xu (hũ thuỷ tinh đựng xu)
+             #18 ill_lofi_bai_tren_lop (balo + sách giáo khoa) · #19 ill_lofi_et (đồng hồ bấm giờ + tờ bài)
+             #20 ill_lofi_btvn (chồng vở + cốc cacao) · #21 ill_lofi_hoc_tu_dau (bậc thang bằng sách)
+E. Icon phụ: #22 ill_lofi_lich (lịch để bàn — banner Bổ trợ) · #23 ill_lofi_kiem_tra_lai (tờ bài có dấu tích, ánh HỒNG)
+             #24 ill_lofi_sao_cap (ngôi sao giấy gấp phát sáng) · #25 ill_lofi_dong_xu (đồng xu vàng)
+
+GHI ĐÈ KIT §1: font = Nunito (tiêu đề + thân), KHÔNG Baloo 2 / Pacifico, KHÔNG chữ viết tay. Màn được cuộn.
 LUẬT RIÊNG:
-  - MỌI hình (tranh nền, nhân vật, icon) sinh bằng CÔNG CỤ TẠO ẢNH, từng cái một. CẤM vẽ bằng code / SVG / Python-PIL / ghép khối hình.
   - Không khẩu hiệu động viên, không chữ tiếng Anh trang trí. Câu duy nhất có "giọng" = bong bóng thoại, phải có số thật.
-  - DESIGN.md: bảng kiểm kê có cột "Vị trí & cỡ" cho TỪNG khổ màn (kit §4). Đếm đối chiếu ảnh ↔ assets trước khi đóng zip (kit §8 câu 9–11).
+  - Mọi chữ tiếng Việt trong ảnh toàn cảnh đúng dấu.
 
-ASSETS TỐI THIỂU (đếm lại theo ảnh toàn cảnh, thấy gì trong ảnh phải có file):
-  backdrop/backdrop_lofi_thanh_pho_ngang.png 1920×1080 · backdrop_lofi_thanh_pho_doc.png 1080×1920
-  backdrop/backdrop_lofi_mua_ngang.png 1920×1080 · backdrop_lofi_mua_doc.png 1080×1920
-  characters/character_lofi_nam.png · character_lofi_nu.png (cao ≥ 1200, nền trong suốt, CÓ mèo)
-  illustrations/ill_lofi_<id>.png × 11 ô: tu_luyen, thong_tin, so_tay, de_thi_thu, bai_tap_giao, thanh_tuu, may_man, vi_xu,
-                 bai_tren_lop, et, btvn  + hoc_tu_dau  + 2 icon banner: lich, kiem_tra_lai   (≥ 512, nền trong suốt)
-  illustrations/ill_lofi_sao_cap.png · ill_lofi_dong_xu.png (icon nhỏ trong viên thuốc)
+Bắt đầu với #01.
 ```
 
 ---

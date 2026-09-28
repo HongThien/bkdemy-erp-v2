@@ -417,25 +417,32 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
   (`HinhPrintView`) · chưa dựng lại 4A1/giáo trình HGT thật trong app sau 3 lần sửa khung (chỉ verify Chrome headless) · lỗi gõ gốc "Gợi" ở
   HGT T312010205 · `hinh_bo_de`/`hinh_dang` đọc 0 dòng bằng `claude_build` (điểm mù RLS) · khu vẽ hình / bảng điền = bật-tắt theo bài tập (chưa làm).
 
-### Đã build (28/09 — ⭐ GIAO DIỆN APP HS: skin tự chọn lớp 9–12) — ĐỌC `spec-giao-dien-hs.md` + `design/DON-HANG-SKIN-HS.md` trước khi sửa
-- **Vì sao:** nhiều HS chê Home v4 (pastel, chibi, khẩu hiệu tiếng Anh viết tay, màu gán theo giới tính = "trẻ con"). Thùy chốt **3 nhóm khối,
-  mỗi nhóm bộ skin riêng**: lớp 3–5 gốc Thị trấn · 6–8 gốc Khối vuông (cả 2 KHÔNG có điện thoại riêng) · **9–12 có điện thoại riêng, nhiều skin HS chọn**.
-  "9-12" Thùy nói cạnh HS = KHỐI, không phải tuổi. Không cho HS bầu trước — làm rồi đo (log đổi skin = phiếu bầu). Điểm của ai người đó thấy.
-- **ĐANG CHẠY (khối 9–12, đã deploy):** `HomeHS912.tsx` (đầu trang · Việc tiếp theo · widget Elo+hạng lớp / đếm ngược kỳ thi · lưới ô) + nút
-  **Hình nền** (tấm chọn skin · sáng/tối/theo máy · hình nền, Home phía sau đổi ngay) + **hướng dẫn lần đầu** (chào → chọn → khoanh sáng nút Hình nền → lưu).
-  5 skin trong `src/screens/hocsinh/skin/registry.ts` (1 nguồn; component chỉ đọc `--sk-*`, cấm `if skin`): Tối giản · Đấu trường · Y2K · Soft Hàn · Anime RPG.
-  Danh sách ô GIỮ theo khối (khối 9 vẫn bộ ô cấp 2); màn con nhóm này bỏ màu theo giới tính (`gt = null`). Khối ≤8 chưa đổi gì.
-- **DB (mig `202609281346_hs_giao_dien_skin`):** `hs_giao_dien` (1 dòng/HS, ra đời khi xong hướng dẫn; CHECK skin 5 giá trị — thêm skin PHẢI nới CHECK) ·
-  `hs_giao_dien_log` (trigger) · `lich_thi_lon` (kỳ thi lớn, KHÁC `ky_thi`; hiện 1 dòng: THPT QG 2027 · 11/07/2027 dự kiến · khối {12}) ·
-  RPC `fn_hs_giao_dien_cua_toi` / `fn_hs_luu_giao_dien` / `fn_hs_home_912`.
-- **Chưa khớp ảnh gốc:** Thùy muốn skin RPG đúng `design/handoff/hs-skin-rpg-v1/reference/reference_rpg_ipad.png` (nhân vật anime + mèo cột trái,
-  lời chào to, cấp/XP/xu, 2 banner tím/hồng, lưới 4 cột icon vẽ). Bản đang chạy chỉ là tạm (lớp phủ tối trên tranh nền, thẻ viền vàng, ✦ thay emoji).
-  **Việc tiếp:** ① Thùy gửi ChatGPT **Đơn 4 v2** (RPG) + **Đơn 3 v2** (Lo-fi, v1 bị trả) trong `design/DON-HANG-SKIN-HS.md`, kèm mục "BỐ CỤC CHUNG
-  lớp 9–12" + ảnh gốc · ② chuyển công thức cấp/XP (`src/gami/level.js`, đang chỉ ở JS) sang hàm Postgres (§2.0) · ③ khi có kit v2: dựng lại
-  HomeHS912 theo BỐ CỤC CHUNG (áp cho mọi skin 9–12; nhân vật = asset tuỳ skin, HS chọn nam/nữ không gán) · ④ Đơn 1 (3–5) / Đơn 2 (6–8) chờ ChatGPT ·
-  ⑤ reskin các màn con · tầng 2 (màu nhấn, chọn widget).
-- **Verify không có tài khoản HS thử:** không dùng mã/PIN HS thật ⇒ dựng trang xem thử tạm (không commit) render HomeHS912 bằng dữ liệu mẫu, không
-  đăng nhập ⇒ lưu bị DB từ chối, không ghi dữ liệu thật. Preview tool chỉ đọc `.claude/launch.json` thư mục chính ⇒ trong worktree chạy `npx vite --port 52xx` nền.
+### Đã build (28/09 — ⭐ GIAO DIỆN APP HS: skin tự chọn, khối 6–12) — ĐỌC `spec-giao-dien-hs.md` + `design/DON-HANG-SKIN-HS.md` trước khi sửa
+- **Vì sao:** nhiều HS chê Home v4 (pastel, chibi, khẩu hiệu tiếng Anh viết tay, màu gán theo giới tính = "trẻ con"). Không cho HS bầu trước —
+  làm rồi đo (log đổi skin = phiếu bầu). Điểm của ai người đó thấy.
+- **⭐ Thùy 28/09 tối: MỌI skin mở cho MỌI em, không khoá theo tuổi** ("lớp 6 vẫn thích anime"). Nhóm tuổi (3–5 Thị trấn · 6–8 Khối vuông ·
+  9–12) chỉ là CHUẨN THIẾT KẾ skin, không phải hàng rào. `KHOI_CHON_SKIN` = khối 6–12 dùng HomeHS912; **cấp 1 còn HomeCap1** (bố cục iPad + bộ ô
+  BOX_CAP1 riêng) — chưa chuyển, chờ Thùy chốt.
+- **Code:** `HomeHS912.tsx` (đầu trang · Việc tiếp theo · widget Elo+hạng lớp / đếm ngược kỳ thi · kiểm tra lại · lưới ô) + nút **Hình nền** (tấm chọn
+  skin · sáng/tối/theo máy · hình nền) + **hướng dẫn lần đầu**. 5 skin trong `src/screens/hocsinh/skin/registry.ts` (1 nguồn; component chỉ đọc
+  `--sk-*`, cấm `if skin`): Tối giản · Đấu trường · Y2K · Soft Hàn · Anime RPG. Danh sách ô GIỮ theo khối; màn con bỏ màu theo giới tính (`gt = null`).
+  Registry có: `hinhNen[].toiDoc/sangDoc` (tranh riêng màn dọc, HomeHS912 chọn theo `(orientation: portrait)` qua `nenCua`/`bienCss(…, doc)`) ·
+  `anhO` (ảnh từng ô) · `anhBanner` (lịch ở thẻ ca bổ trợ, tờ bài ở banner kiểm tra lại) · `trangTri`.
+- **Skin RPG đã có hình ChatGPT thật (28/09 tối):** `public/bk-ui/hs/skin/rpg/` — 3 nền (Đảo trời id `bau_troi` · Lâu đài · Đêm sao), 2 tranh có bản
+  ngang 1672×941 + dọc 940×1672 (JPG q80) · 13 icon ô `o_*.png` + `b_lich`/`b_kiem_tra_lai` + `sao_cap`/`o_pha_le` (160px). Thành tựu (khối 9) và Bảng
+  xếp hạng (10–12) dùng chung cúp — không bao giờ cùng lưới. File cũ `ill_*`, `bg_bau_troi.jpg` không còn dùng.
+- **Nguồn hình:** ảnh gốc ChatGPT ở `design/bk-ui-src/Nền app HS cấp 3_1..36.png` (bảng số → vai trò: DEVLOG 28/09 "ảnh lẻ 1–30" + "đưa hình vào app").
+  Zip `hs-skin-rpg-v2/v3` (+ bản giải nén ở `design/handoff/`) KHÔNG dùng: v2 cắt từ mockup, v3 lẫn 10 icon ChatGPT tự dựng bằng code.
+- **DB (mig `202609281346_hs_giao_dien_skin`):** `hs_giao_dien` (1 dòng/HS; CHECK skin 5 giá trị — thêm skin PHẢI nới CHECK; `hinh_nen` chỉ regex
+  `^[a-z0-9_]{1,40}$`) · `hs_giao_dien_log` (trigger) · `lich_thi_lon` (kỳ thi lớn, KHÁC `ky_thi`) · RPC `fn_hs_giao_dien_cua_toi` / `fn_hs_luu_giao_dien` / `fn_hs_home_912`.
+- **Việc tiếp:** ① **nhân vật lên Home** — cần cột mới `hs_giao_dien.nhan_vat` (migration) + bố cục cột trái theo "BỐ CỤC CHUNG"; có sẵn ảnh 3 (nam+mèo,
+  nửa người) · 35 (nữ đội mũ + cú, TOÀN THÂN — cắt về nửa người cho khớp) · 34 (cú riêng); còn thiếu mèo riêng · ② Thùy gửi **Đơn 3 v3** (Lo-fi) và
+  **Đơn 1 v2** (Thị trấn — skin SÁNG, linh vật thay người) — cả 2 giao 1 hình/lượt, KHÔNG zip · ③ Đơn 2 (Khối vuông) chưa soạn lại theo luật mới ·
+  ④ cấp 1 có chuyển sang HomeHS912 không (hỏi Thùy) · ⑤ công thức cấp/XP (`src/gami/level.js`) sang Postgres (§2.0) · ⑥ reskin màn con · tầng 2.
+- **Bài học ChatGPT (còn hiệu lực):** ảnh ChatGPT VẼ trong chat ≠ file nó ĐÓNG ZIP — zip hay chứa bản nó tự dựng bằng code/cắt từ mockup. Đơn mới:
+  mỗi lượt đúng 1 hình, Thùy tải thẳng ảnh đó; Claude kiểm bằng số đo (kích thước, % trong suốt, % khung vật thể) + nhìn ảnh, không tin DESIGN.md.
+- **Verify không có tài khoản HS thử:** trang tạm `xem-thu-912.html` + `src/_xem_912.tsx` (dữ liệu mẫu, không đăng nhập, KHÔNG commit — xoá khi Thùy
+  gật; `?khoi=9|11 &nen=… &trong=1`). Vite `dev-hs` có thể báo port khác port thật — đọc `preview_logs` lấy port đúng.
 
 ### ⭐ GAMIFICATION HS — Rank · Thử thách · Nhiệm vụ · Vòng quay · Huy hiệu — ĐÃ BUILD 28/09 (DB đã áp, app CHƯA push/deploy) · phase 1 CHỈ TOÁN
 > Đọc: `spec-thanh-tuu-nhiem-vu.md` **§0** (luật đã chốt, số mới nhất) · `spec-huy-hieu-build.md` (đo 14 thành tựu, schema, RPC) ·

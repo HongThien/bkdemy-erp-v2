@@ -32,7 +32,7 @@ import { caCuaToi, retestCuaToi, lichBoTroCuaToi, type LichBoTro } from '../../l
 import { listThongBaoHS, docTatCaThongBao, type ThongBaoHS } from '../../lib/thongbaohs'
 import HomeHS, { type HomeCard } from './HomeHS'
 import HomeHS912 from './HomeHS912'
-import { KHOI_912, type GiaoDien } from './skin/registry'
+import { KHOI_CHON_SKIN, type GiaoDien } from './skin/registry'
 import { giaoDienCuaToi, home912, type Home912 } from '../../lib/giaodien_hs'
 import DanhSachHS, { type DsRow } from './DanhSachHS'
 import MayManHS from './MayManHS'
@@ -302,12 +302,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   useEffect(() => { laCap2HS().then(setCap2).catch(() => setCap2(false)) }, [])
   useEffect(() => { hoSoCuaToi().then((h) => { setGioiTinh(h?.gioi_tinh ?? null); setAnhUrl(h?.anh_url ?? null) }).catch(() => setGioiTinh(null)) }, [])
   useEffect(() => { taiChuaDoc() }, [])
-  // Lớp 9–12 (có điện thoại riêng — Thùy 28/09) dùng HomeHS912 + skin tự chọn (spec-giao-dien-hs.md).
+  // Khối 6–12 dùng HomeHS912 + skin tự chọn (spec-giao-dien-hs.md; Thùy 28/09: mọi skin mở cho mọi em, cấp 1 còn HomeCap1).
   // giaoDien: undefined = đang tải · null = chưa có dòng hs_giao_dien ⇒ HomeHS912 mở hướng dẫn lần đầu.
   const [nhom912, setNhom912] = useState<boolean | null>(null)
   const [giaoDien, setGiaoDien] = useState<GiaoDien | null | undefined>(undefined)
   const [duLieu912, setDuLieu912] = useState<Home912 | null>(null)
-  useEffect(() => { khoiCuaHS().then((k) => setNhom912(!!k && KHOI_912.has(k))).catch(() => setNhom912(false)) }, [])
+  useEffect(() => { khoiCuaHS().then((k) => setNhom912(!!k && KHOI_CHON_SKIN.has(k))).catch(() => setNhom912(false)) }, [])
   useEffect(() => {
     if (!nhom912) return
     // Lỗi mạng ⇒ coi như đã có lựa chọn mặc định (không bật hướng dẫn chỉ vì 1 lần gọi hỏng).

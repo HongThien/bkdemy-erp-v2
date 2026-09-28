@@ -33,6 +33,7 @@
 | 4 | Điểm công khai hay riêng? | **Điểm của ai người đó thấy.** Không có nút tuỳ chọn. (Rank/Elo trên bảng xếp hạng vẫn theo `spec-thanh-tuu-nhiem-vu.md` v2 — công khai vì là game) |
 | 5 | Ai design | Claude design bằng code; phần cần vẽ hình thì Claude viết prompt, Thùy đưa ChatGPT (§6) |
 | 6 | Chia sẻ thẻ thành tích lên MXH cần PH đồng ý? | Không cần |
+| 7 | Skin có khoá theo nhóm tuổi? | **Không** (28/09 tối). Mọi skin mở cho mọi em — "lớp 6 vẫn thích anime". Nhóm tuổi chỉ là chuẩn để THIẾT KẾ skin. Đã mở Home mới cho khối 6–12 (`KHOI_CHON_SKIN`); cấp 1 còn HomeCap1 iPad, chưa chuyển |
 
 ## 3. Chẩn đoán (vì sao HS chê Home v4)
 
