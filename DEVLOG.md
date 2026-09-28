@@ -31098,3 +31098,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 ## 2026-09-28 (12) — Bắn Quà: chốt 2 câu cuối
 - Thùy: chế độ đội KHÔNG có hộp quà · máu xe 150 giữ. Trùng code hiện tại ⇒ không sửa code; spec §6 đổi thành "đã chốt hết", HANDOFF cập nhật.
+
+## 2026-09-28 (13) — exp_tren_lop đã vào chốt xu tháng
+- Thùy xin file SQL để chạy; đo DB trước: `fn_gami_exp_xu_thang` đã chứa `exp_tren_lop` ⇒ file đã được chạy (sổ `_migrations` không ghi vì SQL Editor). Gỡ khỏi việc chờ.

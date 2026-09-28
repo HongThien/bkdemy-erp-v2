@@ -400,7 +400,7 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
   source **`exp_tren_lop`** (note = tháng buổi, mon = lop.mon) trong 1 transaction; ERP gửi kết quả xuống TV (kênh `bk-lop:<buổi>`, presence
   role=tv); TV chỉ diễn. Mở Rương lớp: Nhất 200–400 (TB300) · Nhì 200–300 (TB250) · Giải 3 100–200 (TB175), bước 20 ⇒ lớp 8 bạn TB 200 EXP/HS.
 - **Test thật:** Thùy chạy lớp 7S2 (28/09) → dữ liệu test ĐÃ XOÁ (Thùy gật; 2 dòng EXP 440 + 2 lượt + Nhất/Nhì + 2 log, buổi về chưa chốt).
-- **CHỜ THÙY:** chạy SQL Editor `202609272045_exp_tren_lop_vao_chot_xu_thang.sql` (chưa chạy ⇒ EXP game KHÔNG thành xu cuối tháng) ·
+- **CHỜ THÙY:** (✓ 28/09 đo DB: `fn_gami_exp_xu_thang` ĐÃ có `exp_tren_lop` — file `202609272045_exp_tren_lop_vao_chot_xu_thang.sql` đã chạy) ·
   **deploy ERP chính** (có sửa link game 404 + 2 chế độ) + **trang game** (`bkdemy-erp-v2-2ogm`) · test lại 7S2 cả 2 chế độ ·
   quyết app GV/TA có cần khung game không (hiện CHỈ ERP chính `BuoiHocScreen`; app GV `ChamBuoiGv.tsx`, TA `ChamBuoi.tsx` chưa có).
 - Việc tách riêng, CHƯA làm: đích mới EXP ET 100 cố định / BTVN 200/bài (DB hiện ET 200–300, BTVN 189–300).
