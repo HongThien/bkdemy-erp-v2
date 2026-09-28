@@ -114,11 +114,28 @@ export async function sinhTuLuyenChuDe(mon: string, maDang: string, chiCauMoi = 
 // Môn HS đang học — cần đọc THẲNG qua RPC vì `lop`/`hoc_sinh_lop` staff-only (verify: HS SELECT
 // hoc_sinh_lop → 0 dòng, không lỗi). Trước giờ app chỉ suy mon GIÁN TIẾP từ bai_test HS đang có
 // (tests[0]?.mon) — HS cấp 1 (chỉ tự luyện, không ET/BTVN online) sẽ ra rỗng theo đường đó.
-// Hiện thực tế 100% dữ liệu là 1 môn (Toán) — lấy phần tử đầu; nhiều môn thật thì cần chọn môn ở UI.
-export async function monCuaHS(): Promise<string | null> {
-  const { data, error } = await supabase.rpc('hs_mon_cua_toi')
+// 28/09: em học NHIỀU môn là chuyện thật (57 HS) — bản cũ lấy phần tử đầu của mảng sắp theo chữ cái
+// ⇒ em học Toán + KHTN chỉ thấy KHTN (vụ Gia Khiêm). Giờ: danh sách (môn, lớp) từ DB theo thứ tự em
+// vào học (mig 202609281900) + môn em ĐANG CHỌN ở thanh chọn môn màn chính. Lựa chọn nhớ theo MÁY
+// (localStorage — sở thích hiển thị của riêng người xem, không phải dữ liệu nghiệp vụ); luôn đối chiếu
+// lại với danh sách thật nên máy dùng chung 2 anh em / em đã rời lớp môn đó thì tự về môn đầu.
+export type LopMonHS = { mon: string; ten_lop: string }
+export async function lopMonCuaHS(): Promise<LopMonHS[]> {
+  const { data, error } = await supabase.rpc('hs_lop_mon_cua_toi')
   if (error) throw error
-  return (data as string[] | null)?.[0] ?? null
+  return ((data ?? []) as LopMonHS[]).map((d) => ({ mon: String(d.mon), ten_lop: String(d.ten_lop ?? '') }))
+}
+const KHOA_MON_CHON = 'hs_mon_chon'
+export function chonMonHS(mon: string): void {
+  try { localStorage.setItem(KHOA_MON_CHON, mon) } catch { /* chế độ riêng tư: mất nhớ, app vẫn chạy */ }
+}
+export function monDangChon(ds: LopMonHS[]): string | null {
+  let nho: string | null = null
+  try { nho = localStorage.getItem(KHOA_MON_CHON) } catch { /* như trên */ }
+  return ds.find((d) => d.mon === nho)?.mon ?? ds[0]?.mon ?? null
+}
+export async function monCuaHS(): Promise<string | null> {
+  return monDangChon(await lopMonCuaHS())
 }
 
 // Cấp 1 hay không — màn chính app HS cần ẨN 3 ô ET/BTVN/Bài tập trên lớp cho cấp 1 (Thùy: chỉ có

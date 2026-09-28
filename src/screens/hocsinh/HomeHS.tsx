@@ -9,6 +9,8 @@
 // ============================================================================
 import type { ReactNode } from 'react'
 import AvatarHS from './AvatarHS'
+import ThanhChonMon from './ThanhChonMon'
+import type { LopMonHS } from '../../lib/tuluyen'
 import { LOAI_BO_TRO_TEN, type LichBoTro } from '../../lib/botro_yeu_ca'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 
@@ -88,8 +90,9 @@ function NutTron({ onClick, title, children }: { onClick: () => void; title: str
   )
 }
 
-export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, anhUrl, onAnhChanged, chuaDoc, lich, soRetest, cards, onHopThu, onDoiMK, onThoat, onLich, onRetest }: {
+export default function HomeHS({ hoTen, maHS, lopMon, mons, mon, onChonMon, gioiTinh, anhUrl, onAnhChanged, chuaDoc, lich, soRetest, cards, onHopThu, onDoiMK, onThoat, onLich, onRetest }: {
   hoTen: string; maHS: string; lopMon: string | null; gioiTinh: 'nam' | 'nu' | null
+  mons: LopMonHS[]; mon: string | null; onChonMon: (mon: string) => void
   anhUrl: string | null; onAnhChanged: (url: string) => void
   chuaDoc: number; lich: LichBoTro[]; soRetest: number; cards: HomeCard[]
   onHopThu: () => void; onDoiMK: () => void; onThoat: () => void; onLich: () => void; onRetest: () => void
@@ -159,6 +162,12 @@ export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, anhUrl, onAnhCha
           <div className="font-hand pointer-events-none absolute right-2 top-2.5 rotate-[8deg] text-right text-[10.5px] leading-[1.05] text-white/90">Dream<br />Learn<br />Grow<br />Repeat</div>
           <div className="font-hand pointer-events-none absolute bottom-1.5 left-2.5 -rotate-[8deg] text-[9px] leading-[1.05] text-white/80">Better Student<br />Brighter You!</div>
         </div>
+
+        {/* CHỌN MÔN — chỉ hiện khi em học ≥2 môn; đổi môn là cả app (tự luyện, rank, sổ tay…) chạy theo môn đó */}
+        <ThanhChonMon mons={mons} mon={mon} onChon={onChonMon} className="mt-2.5"
+          nut={(chon) => chon
+            ? { background: t.hero, color: '#fff', boxShadow: SHADOW }
+            : { background: '#fff', color: SEC, boxShadow: '0 2px 6px rgba(67,92,160,.08)' }} />
 
         {/* 2 BOX (Thùy 09-09): "Bổ trợ" (lịch 3 loại yếu/bù/đuổi — trigger cái nào hiện cái đó) · "Bài tập được giao"
             (bàn sau — placeholder). LUÔN hiện 2 box, kể cả chưa có lịch, để em biết chỗ xem. */}

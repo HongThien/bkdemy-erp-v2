@@ -71,6 +71,9 @@ function DemoHome() {
   const q = new URLSearchParams(location.search)
   const nu = q.get('demo') === 'nu' || q.get('nu') !== null
   const khong = q.has('khong')
+  // `&mon` — em học 3 môn: hiện thanh chọn môn, bấm đổi môn thì dòng lớp ở hero đổi theo (28/09).
+  const DEMO_MONS = q.has('mon') ? [{ mon: 'Toán', ten_lop: '9B1' }, { mon: 'KHTN', ten_lop: '9K3' }, { mon: 'Tiếng Anh', ten_lop: '9E1' }] : []
+  const [demoMon, setDemoMon] = useState<string | null>(DEMO_MONS[0]?.mon ?? null)
   const noopBack = () => history.back()
   // ?demo=thanhtuu / ?demo=baitapgiao — verify UI static (Thùy 11/09).
   // ?demo=maymai KHÔNG hoạt động vì screen thật gọi supabase.rpc — cần HS thật, không hack ở đây.
@@ -145,7 +148,9 @@ function DemoHome() {
     { id: 'thong_tin', ten: 'Thông tin học tập', sub: 'Dạng đang yếu', subMau: 'xam', doodle: 'Hiểu mình để tiến bộ hơn!', ill: 'study_progress_chart', tone: 'blue', onClick: noop },
     { id: 'de_thi_thu', ten: 'Làm đề thi thử', sub: 'Sắp có', subMau: 'xam', doodle: 'Sắp ra mắt! Hãy chờ nhé!', ill: 'mock_exam_locked', tone: 'gray', disabled: true },
   ]
-  return <HomeHS hoTen={nu ? 'Trần Mai Anh' : 'Nguyễn Văn Đức Huy'} maHS={nu ? 'hs0088' : 'hs0059'} lopMon={nu ? '11A2 - Toán' : '11A1 - Toán'} gioiTinh={nu ? 'nu' : 'nam'}
+  return <HomeHS hoTen={nu ? 'Trần Mai Anh' : 'Nguyễn Văn Đức Huy'} maHS={nu ? 'hs0088' : 'hs0059'} gioiTinh={nu ? 'nu' : 'nam'}
+    lopMon={demoMon ? `${DEMO_MONS.find((m) => m.mon === demoMon)?.ten_lop} · ${demoMon}` : nu ? '11A2 - Toán' : '11A1 - Toán'}
+    mons={DEMO_MONS} mon={demoMon} onChonMon={setDemoMon}
     anhUrl={null} onAnhChanged={noop} chuaDoc={3} lich={q.has('ca') ? [{ buoi_id: 'x', loai: 'bo_tro_yeu', ngay: '2026-09-10', gio_bat_dau: '16:00:00', gio_ket_thuc: '17:00:00', phong: 'P102', mon: 'Toán', nguoi: 'Cô Thùy', diem_danh: null, hom_nay: true, vao_ca: false }] : []} soRetest={q.has('ca') ? 1 : 0} cards={cards}
     onHopThu={noop} onDoiMK={noop} onThoat={noop} onLich={noop} onRetest={noop} />
 }

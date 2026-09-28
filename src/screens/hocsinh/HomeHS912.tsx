@@ -10,6 +10,8 @@
 // ============================================================================
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from 'react'
 import AvatarHS from './AvatarHS'
+import ThanhChonMon from './ThanhChonMon'
+import type { LopMonHS } from '../../lib/tuluyen'
 import type { HomeCard } from './HomeHS'
 import { LOAI_BO_TRO_TEN, type LichBoTro } from '../../lib/botro_yeu_ca'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
@@ -64,6 +66,7 @@ function viecTiepTheo(lich: LichBoTro[], cards: HomeCard[], onLich: () => void):
 // ── MÀN CHÍNH (chỉ vẽ) ───────────────────────────────────────────────────────
 type HomeProps = {
   hoTen: string; maHS: string; lopMon: string | null; anhUrl: string | null; onAnhChanged: (url: string) => void
+  mons: LopMonHS[]; mon: string | null; onChonMon: (mon: string) => void
   chuaDoc: number; lich: LichBoTro[]; soRetest: number; cards: HomeCard[]; data: Home912 | null
   onHopThu: () => void; onDoiMK: () => void; onThoat: () => void; onLich: () => void; onRetest: () => void
 }
@@ -116,6 +119,11 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
         <p className="truncate text-[24px] font-bold" style={{ ...HEAD, textShadow: '0 1px 10px var(--sk-bg), 0 0 2px var(--sk-bg)' }}>{tenNgan}</p>
         <p className="truncate text-[13px]" style={{ color: 'var(--sk-muted)', textShadow: '0 1px 8px var(--sk-bg), 0 0 2px var(--sk-bg)' }}>{p.maHS.toUpperCase()}{p.lopMon ? ` · ${p.lopMon}` : ''}</p>
       </div>
+      {/* CHỌN MÔN — chỉ hiện khi em học ≥2 môn; màu đọc biến skin, không if theo skin */}
+      <ThanhChonMon mons={p.mons} mon={p.mon} onChon={p.onChonMon}
+        nut={(chon) => chon
+          ? { background: 'var(--sk-acc)', color: 'var(--sk-badge-ink)', border: '1px solid var(--sk-acc)' }
+          : { background: 'var(--sk-surface)', color: 'var(--sk-ink)', border: '1px solid var(--sk-line)', backdropFilter: 'var(--sk-blur)', WebkitBackdropFilter: 'var(--sk-blur)' }} />
       {skin.trangTri?.gach && <img src={skin.trangTri.gach} alt="" className="pointer-events-none mx-auto -my-1 h-6 w-auto opacity-90" />}
 
       {/* VIỆC TIẾP THEO */}

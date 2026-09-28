@@ -31000,3 +31000,26 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
   câu chờ 1.516 · chủ đề cũ T11202/05/06 = 0 dòng · 38 dạng có `mo_ta_ngan`. `schema.md` refresh + commit.
 - Thứ tự hiển thị: chạy NGUYÊN thuật toán `sapXepTheoThuTuHoc` trên dữ liệu thật ⇒ I(T11201) → II(T11207) → III(T11209) → IV(T11204) → V(T11210) → VI(T11208),
   chuyên đề 1..19 đúng SGK. CHƯA xem được trên màn Bản đồ thật: preview cần đăng nhập (gửi mật khẩu lên Supabase — t không tự bấm), chờ Thùy bấm.
+
+## 2026-09-28 (38) — App HS: THANH CHỌN MÔN (vụ Gia Khiêm HS0557 "app chỉ hiện KHTN, không hiện Toán") · mig 202609281900 đã áp
+
+- **Hỏi:** Gia Khiêm (khối 9) vì sao app chỉ hiện lớp KHTN, không hiện Toán. **Dữ liệu xếp lớp ĐÚNG** (9B1 Toán · 9K3 KHTN · 9E1 Tiếng Anh, đều
+  `dang_hoc`) — lỗi ở app: `hs_mon_cua_toi` trả `array_agg(distinct mon)` (distinct tự sắp CHỮ CÁI) và `monCuaHS()` lấy `[0]` ⇒ `KHTN`. Comment
+  ngay trên hàm đã ghi giả định "100% dữ liệu là 1 môn (Toán)… nhiều môn thật thì cần chọn môn ở UI" — hết đúng từ khi mở lớp KHTN/Anh.
+- **Phạm vi đo thật:** 57 HS đang học ≥2 môn; app chọn KHTN 46 · Tiếng Anh 5 · Toán 6 ⇒ **51 em học Toán kèm môn khác không thấy Toán**.
+- **Sửa:** mig `202609281900_hs_lop_mon_cua_toi` (áp bằng `migrate.mjs --only`, owner claude_build, ACL không có anon) — mỗi môn đang học 1 dòng
+  `(mon, ten_lop)`, thứ tự = môn em VÀO HỌC TRƯỚC đứng trước (`min(ngay_vao)`), không ưu tiên cứng môn nào (§1.6 symmetry). `hs_mon_cua_toi` giữ nguyên.
+  `tuluyen.ts`: `lopMonCuaHS()` · `chonMonHS()` · `monDangChon()`; `monCuaHS()` giờ trả MÔN ĐANG CHỌN ⇒ mọi màn con (tự luyện, thử thách, rank,
+  nhiệm vụ, sổ tay, thông tin học tập, điền ô, học từ đầu) tự ăn theo, không sửa từng màn. Lựa chọn nhớ theo máy (localStorage — sở thích hiển thị),
+  luôn đối chiếu lại danh sách thật. `ThanhChonMon.tsx` (chỉ vẽ, màu do màn cha đưa) gắn vào HomeHS · HomeHS912 · HomeCap1; em 1 môn không thấy gì.
+  Dòng lớp ở đầu trang = lớp của môn đang chọn (trước lấy `tests[0]`). Đổi môn ⇒ hỏi lại card "Học từ đầu" cho môn mới.
+- **Verify:** DB — giả JWT của Khiêm trong transaction read-only: hàm mới trả Toán 9B1 → KHTN 9K3 → Tiếng Anh 9E1 (bản cũ: KHTN đầu). Toàn trường môn
+  mặc định mới của 57 em: Toán 48 · KHTN 6 · Tiếng Anh 2 · Văn 1. UI — `hs.html?demo=cap2&mon` và `xem-thu-912.html?khoi=9&mon=KHTN` ở 375×812: 3 nút
+  môn, bấm KHTN thì hero đổi "9K3 · KHTN". **CHƯA đăng nhập HS thật** (không có mật khẩu) — đường dữ liệu thật mới kiểm ở tầng DB.
+- **Bẫy gặp:** (1) 3 dev server chung `node_modules/.vite` ⇒ React nạp 2 bản, trang trắng "Cannot read properties of null (reading 'useState')" —
+  không phải lỗi code; chạy vite với config phụ `node_modules/.vite-verify-hs/vite.config.mts` (cacheDir riêng). (2) Commit `8ed7c0a` (Huy hiệu, phiên
+  khác) cuốn theo `HocSinhApp.tsx` đang sửa dở của phiên này mà thiếu `ThanhChonMon.tsx`/`tuluyen.ts` ⇒ HEAD không build được tới commit này.
+  `HomeHS912.tsx` phiên skin RPG cũng đang sửa ⇒ commit này chỉ đưa 3 đoạn của thanh chọn môn (dựng blob từ HEAD + patch, `update-index --cacheinfo`).
+- **Còn treo:** (a) Dòng ghi danh 9C1 của Khiêm (id 6dd93e7a, log 'sua' 11/06) KHÔNG còn trong `hoc_sinh_lop` mà log không có bản ghi xoá/rời lớp —
+  từng có xoá cứng không vết (§4), chưa truy. (b) Danh sách bài ET/BTVN ở màn chính chưa lọc theo môn đang chọn (đang hiện mọi môn, không giấu gì).
+  (c) `DienOCau`/`SoTayHS` còn đường lùi cứng `'Toán'` khi không xác định được môn.
