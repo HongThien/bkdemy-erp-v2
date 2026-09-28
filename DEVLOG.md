@@ -30083,3 +30083,8 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Verify: Chiếm Đất (lệnh giả qua hàng chờ) + Mở Rương (broadcast thật kênh test) đều bật hiệu ứng đúng tên/giải; Space đóng hiệu ứng
   mà phase game vẫn 'done'. Chụp 3 pha (hồi hộp · bùm · cao trào). Lần đo đầu "không thấy hiệu ứng" là đo sớm (camera + 2s chưa xong),
   không phải lỗi.
+
+## 2026-09-28 (3) — Trà sữa gấp đôi lần nữa
+- Thùy hỏi "sao cả trung tâm chỉ 2–3 ly, 300 buổi cơ mà" — giải thích: lớp 10 bạn (1 Nhất · 1 Nhì · 8 Giải 3) ⇒ 1,15%/buổi ⇒ 300 buổi ≈ 3,5 ly
+  (con số 2–3 cũ dùng 253 buổi đo DB + lớp 8 bạn). Thùy chốt gấp đôi: mig `202609281052` ⇒ 1 / 0,5 / 0,1 % ≈ 2,3%/buổi ≈ 7 ly/tháng,
+  mỗi lớp ~1,5 năm 1 lần. "Jackpot thì phải khó" — đừng tự đề xuất nới thêm.
