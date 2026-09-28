@@ -85,3 +85,16 @@
 
 - Chế độ đội: đạn trúng xe đội mình có mất máu? bắn trúng hộp quà có cộng điểm đội? (chưa trả lời — CTO tạm: có mất máu nhưng không tính điểm; đội chỉ bắn nhau)
 - EXP đội: rương Vàng (TB 300) / Bạc (TB 250) của Mở Rương ⇒ TB ~260–275/HS, **cao hơn mốc 200**. Giữ, hay đội thua = Gỗ (175)?
+
+## 5c. v2 (Thùy 28/09) — THAY "mọc lại" của v1
+
+- **Mỗi lượt RESET về đúng map ban đầu** (đất đã khoét + hộp đã vỡ trở lại nguyên trạng — `chupMap()` lúc vào trận, `resetMap()` đầu mỗi lượt).
+  Lý do Thùy: bắn cá nhân mà người trước bắn vỡ hết quà thì người sau thiệt ⇒ ai cũng bắn cùng 1 bàn. Gió vẫn đổi mỗi lượt (may mắn).
+- **Hộp trời "siêu khó":** 2 hộp nhỏ (rộng 54), treo rất cao (y −150…40, gần đỉnh cung bắn), **trôi ngang qua lại** ±100–170px,
+  **chỉ vỡ khi đạn CHẠM TRỰC TIẾP** (nổ lan không tính), 150 điểm. Hộp trà sữa cùng luật.
+  Đo (mô phỏng 4.000 phát bắn "bừa" góc 45–75°, lực 30–90, gió ngẫu nhiên): **2,7% trúng hộp trời** ⇒ lớp 10 bạn ≈ 1/4 số ván có người ăn.
+- Khung toàn cảnh nâng mặt đất lên trên bảng điều khiển (trước đó thẻ đạn đè khẩu súng); vùng hộp trời tránh bảng gió + bảng điểm.
+
+## 6. Còn hỏi Thùy
+- Chế độ đội: đạn trúng xe đội mình có mất máu? bắn trúng hộp quà có cộng điểm đội? (CTO tạm: có mất máu nhưng không tính điểm; đội chỉ bắn nhau)
+- EXP đội: rương Vàng (TB 300) / Bạc (TB 250) của Mở Rương ⇒ TB ~260–275/HS, **cao hơn mốc 200**. Giữ, hay đội thua = Gỗ (175)?

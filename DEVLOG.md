@@ -30321,3 +30321,11 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   lượt) ⇒ không lên rank bằng app (Q-A cho Thùy, đổi L4 thì phải hỏi); khối nhỏ làm bảng MT 1–50 mất tác dụng ⇒ quy hạng theo sĩ
   số; KHTN ít buổi ⇒ chuẩn hoá quỹ ET/BTVN theo môn; lỡ MT mất ~40% điểm tháng ⇒ thi lại; không trần ngày thì HS giỏi chạm trần
   tháng sau ~11 ngày.
+
+## 2026-09-28 (7) — Bắn Quà v2: reset map mỗi lượt + hộp trời siêu khó
+- Thùy: "người trước bắn vỡ hết quà" ⇒ mỗi lượt reset NGUYÊN map (snapshot ImageData đất + SOLID + danh sách hộp); bỏ `mocLai`.
+  Hộp trời: 2 hộp nhỏ, rất cao, trôi ngang, chỉ vỡ khi chạm trực tiếp, 150 điểm.
+- Verify: 10 lượt tự động, lượt nào chữ ký map cũng giống lượt đầu, đủ 16 hộp; Monte Carlo 4.000 phát bừa ⇒ 2,7% trúng hộp trời.
+- Sai/sửa: toàn cảnh để mặt đất thấp ⇒ thẻ đạn đè khẩu súng (nâng khung +165px, tô đất dưới đáy thế giới); hộp trà sữa không đặt được ⇒ nới
+  điều kiện cách nhau. **Lỗi ghi chép:** lần ghi spec v1 thay chuỗi `## 6. Còn hỏi Thùy` bằng nội dung mới mà QUÊN giữ lại tiêu đề ⇒ mất mục câu hỏi;
+  lần v2 script báo "không thấy mốc" mới lộ. Đã ghi lại. Bài học: chèn TRƯỚC một mốc thì chuỗi thay phải kết thúc bằng chính mốc đó.
