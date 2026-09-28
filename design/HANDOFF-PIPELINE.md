@@ -182,3 +182,13 @@ không lệch bố cục · không chữ nào bị raster hoá · tsc + build s�
   đơn) · decor 512 < 600 (đơn ghi 512) · đường phân cách "rỗng" 98% (decor mảnh). → sửa script: cờ `--chi-asset`, đo cạnh sắc
   backdrop trên 75% DƯỚI, decor cạnh dài ≥ 512, decor >95% trong suốt chỉ CHÚ Ý (RỖNG khi >99.5%); kit §2 thêm "ĐƠN CHỈ-ASSET",
   §5 decor 512. Chạy lại hs-home-v4: kết quả không đổi. Bài học: **script RỚT ≠ hàng hỏng** — mở ảnh trước khi trả.
+  → **SAI, BỎ cùng ngày (xem dòng dưới):** "đạt v1" chỉ đúng với 7 mảnh đơn ghi; cả kiểu đơn chỉ-asset là sai từ gốc.
+- **hs-skin-rpg-v1 — bài học thật (28/09 chiều):** ChatGPT vẽ CẢ ảnh toàn cảnh (nhân vật pháp sư + mèo, lâu đài ngang, 8 icon
+  khác, banner tím/hồng) cùng lúc với 7 mảnh, nhưng ảnh đó KHÔNG vào zip và các mảnh của nó KHÔNG được sinh. Claude dựng từ
+  7 mảnh + mockup tự vẽ ⇒ Thùy mở app thấy "méo giống ảnh thiết kế gốc". Lỗi do ĐƠN (Claude soạn): đơn chỉ-asset bỏ Pha B/C
+  ⇒ không có gì buộc ảnh toàn cảnh đi kèm, không có gì buộc mảnh khớp ảnh. Kèm theo: hs-skin-lofi-v1 là khối hình ghép bằng
+  code (không phải tranh), 2 biến thể lệch 0,4/255, DESIGN.md thiếu 4/6 mục. → Thùy chốt **mọi kit đủ 3 phần**: ảnh toàn cảnh
+  mọi khổ màn trong `reference/` · cột **Vị trí & cỡ** trong bảng kiểm kê · đủ asset thấy trong ảnh. Kit §2 thay mục CHỈ-ASSET,
+  §4 thêm cột, §8 thêm câu 9–11 (đếm đối chiếu ảnh ↔ assets); `design-check` bỏ `--chi-asset`, rớt khi thiếu cột Vị trí & cỡ.
+  Đơn 3 v2 + 4 v2 viết lại theo ảnh gốc (`design/DON-HANG-SKIN-HS.md`). Luật phụ: Thùy thả ảnh vào `public/` thì bị đóng vào
+  bản build — đơn ghi rõ chỉ bỏ vào `design/handoff/`.

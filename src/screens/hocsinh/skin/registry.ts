@@ -38,8 +38,15 @@ export type Skin = {
   sang?: Mau
   toi?: Mau
   hinhNen: HinhNen[]    // phần tử đầu = mặc định ('mac_dinh' hoặc id riêng)
-  anhO?: Record<string, string> // id ô → ảnh minh hoạ riêng của skin (không có thì dùng emoji của ô)
+  anhO?: Record<string, string> // id ô → ảnh minh hoạ riêng của skin (không có thì dùng dauThayIcon, rồi emoji của ô)
+  // Skin có bộ icon vẽ riêng mà chưa đủ ô ⇒ ô thiếu hiện DẤU này (màu nhấn) thay vì emoji — emoji lẫn icon vẽ tay trông lệch
+  // (Thùy 28/09 chê bản RPG đầu: 📈📖 cạnh cuộn giấy/thư vẽ tay).
+  dauThayIcon?: string
   trangTri?: { goc?: string; gach?: string } // hoa văn góc thẻ "Tiếp theo" + gạch phân cách dưới đầu trang
+  // Thẻ "Việc tiếp theo": mặc định tô đặc màu nhấn. Skin nền tối sang (RPG) tô đặc thì thành mảng vàng thô — dùng kiểu riêng.
+  theTiep?: { bg: string; ink: string; border: string }
+  // Tấm mờ sau tên HS — skin nền ẢNH cần (tên đè lên tia sáng/lâu đài thì không đọc được). 'transparent' = không có.
+  nenTen?: string
 }
 
 const A = '/bk-ui/hs/skin'
@@ -109,11 +116,17 @@ export const SKINS: Skin[] = [
     cheDo: ['toi'],
     toi: { bg: '#141a33', surface: 'rgba(20,26,51,0.72)', surface2: 'rgba(233,199,123,0.12)', ink: '#f3ead0', muted: '#bfb08a', line: 'rgba(233,199,123,0.3)', acc: '#e9c77b', accInk: '#141a33', badge: '#e9c77b', badgeInk: '#141a33', cardBorder: '1px solid rgba(233,199,123,0.35)', cardShadow: 'none' },
     hinhNen: [
-      { id: 'bau_troi', ten: 'Đảo trời', toi: `url(${A}/rpg/bg_bau_troi.jpg) center top / cover no-repeat, #141a33` },
+      // Tranh DỌC (1080×1920): màn ngang máy tính phải phóng to cho phủ bề ngang ⇒ lâu đài tràn khắp màn (Thùy 28/09).
+      // Lớp phủ tối dần xuống dưới giữ đúng ý đơn: chi tiết ở phần trên, vùng đặt ô thì tối và yên — ở mọi khổ màn.
+      { id: 'bau_troi', ten: 'Đảo trời', toi: `linear-gradient(180deg, rgba(20,26,51,0.05) 0%, rgba(20,26,51,0.45) 22%, rgba(20,26,51,0.88) 48%, #141a33 75%), url(${A}/rpg/bg_bau_troi.jpg) center top / cover no-repeat, #141a33` },
       { id: 'dem_sao', ten: 'Đêm sao', toi: 'radial-gradient(1.5px 1.5px at 20% 12%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 70% 30%, #fff 50%, transparent 51%), radial-gradient(1.2px 1.2px at 40% 60%, #e9c77b 50%, transparent 51%), radial-gradient(1px 1px at 85% 75%, #fff 50%, transparent 51%), radial-gradient(90% 60% at 50% 0%, #2c3a66 0%, #141a33 70%), #141a33' },
     ],
-    anhO: { giao_trinh: `${A}/rpg/ill_lop.png`, et: `${A}/rpg/ill_lop.png`, btvn: `${A}/rpg/ill_btvn.png`, tu_luyen: `${A}/rpg/ill_luyen.png`, de_thi_thu: `${A}/rpg/ill_thithu.png` },
+    // ET KHÔNG mượn icon "Bài trên lớp" (2 ô cạnh nhau cùng hình = khó phân biệt) — chờ icon riêng (đơn bổ sung 4b).
+    anhO: { giao_trinh: `${A}/rpg/ill_lop.png`, btvn: `${A}/rpg/ill_btvn.png`, tu_luyen: `${A}/rpg/ill_luyen.png`, de_thi_thu: `${A}/rpg/ill_thithu.png` },
+    dauThayIcon: '✦',
     trangTri: { goc: `${A}/rpg/corner.png`, gach: `${A}/rpg/divider.png` },
+    theTiep: { bg: 'linear-gradient(100deg, rgba(233,199,123,0.26) 0%, rgba(20,26,51,0.78) 70%)', ink: '#f3ead0', border: '1px solid rgba(233,199,123,0.7)' },
+    nenTen: 'rgba(20,26,51,0.6)',
   },
 ]
 
@@ -145,6 +158,8 @@ export function bienCss(skin: Skin, cd: 'sang' | 'toi', hinhNenId: string | null
     '--sk-card-border': m.cardBorder, '--sk-card-shadow': m.cardShadow, '--sk-card-clip': skin.cardClip,
     '--sk-card-left': skin.cardAccentLeft === 'none' ? m.cardBorder : skin.cardAccentLeft,
     '--sk-radius': skin.radius, '--sk-blur': skin.blur,
+    '--sk-next-bg': skin.theTiep?.bg ?? m.acc, '--sk-next-ink': skin.theTiep?.ink ?? m.accInk, '--sk-next-border': skin.theTiep?.border ?? 'none',
+    '--sk-name-plate': skin.nenTen ?? 'transparent',
     '--sk-font': skin.font, '--sk-font-head': skin.fontHead, '--sk-head-case': skin.headCase, '--sk-head-track': skin.headTrack,
     colorScheme: cd === 'toi' ? 'dark' : 'light',
   }

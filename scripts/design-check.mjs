@@ -1,9 +1,7 @@
 // Kiểm cơ học gói thiết kế ChatGPT giao (design/HANDOFF-PIPELINE.md §5 bước 2) TRƯỚC khi dựng UI.
 // Chạy: node scripts/design-check.mjs design/handoff/hs-home-v3
-//       node scripts/design-check.mjs design/handoff/hs-skin-rpg-v1 --chi-asset
-//   --chi-asset = đơn CHỈ SINH ASSET (bố cục đã dựng bằng code, đơn dặn bỏ Pha B/C): thiếu reference/ không rớt.
-//   (28/09 hs-skin-rpg-v1: 4 RỚT đều là chấm nhầm — reference thiếu đúng theo đơn, tranh nền chi tiết ở 1/4 trên
-//   theo đơn, hoa văn góc 512 theo đơn, đường phân cách mảnh 98% trong suốt nhưng có hình thật.)
+//   28/09: BỎ chế độ "đơn chỉ-asset" (--chi-asset) — Thùy chốt mọi kit phải đủ ảnh toàn cảnh + cột Vị trí & cỡ + đủ
+//   asset thấy trong ảnh (kit hs-skin-rpg-v1 thiếu cả 3 ⇒ dựng ra màn khác hẳn ảnh Thùy đã xem). Cờ cũ bị bỏ qua.
 // In bảng ĐẠT/RỚT từng file; exit 1 nếu có RỚT. Chỉ đọc, không sửa gì.
 // Kiểm: kích thước tối thiểu · PNG có alpha THẬT (đếm pixel trong suốt, không tin header) · backdrop các
 // biến thể có KHÁC nhau thật không (so pixel) · SVG không bọc <image>/base64 · có DESIGN.md + reference/.
@@ -13,7 +11,6 @@ import { join, extname, basename } from 'node:path'
 import { PNG } from 'pngjs'
 
 const root = process.argv[2]
-const CHI_ASSET = process.argv.includes('--chi-asset')
 if (!root || !existsSync(root)) { console.error('Cách dùng: node scripts/design-check.mjs <thư mục handoff>'); process.exit(2) }
 
 // Chuẩn tối thiểu theo loại thư mục (HANDOFF-PIPELINE §1 / §3.1)
@@ -82,6 +79,9 @@ else {
   const nDong = (md.match(/\|\s*(TEXT|SHAPE|GLYPH|ILLUST|CHAR|DECOR|BACKDROP)(\+[A-Z]+)*\s*\|/g) ?? []).length
   nDong < 5 ? fail('DESIGN.md · bảng kiểm kê', `chỉ ${nDong} dòng có cột Loại (TEXT/SHAPE/GLYPH/ILLUST/CHAR/DECOR/BACKDROP) — thiếu bảng kiểm kê phần tử`)
             : ok('DESIGN.md · bảng kiểm kê', `${nDong} phần tử`)
+  // Cột "Vị trí & cỡ" (kit §4, bắt buộc từ 28/09): thiếu thì lập trình viên phải đoán chỗ đặt nhân vật/ô/banner.
+  /\|\s*Vị trí\s*&(amp;)?\s*cỡ\s*\|/i.test(md) ? ok('DESIGN.md · cột Vị trí & cỡ', 'có')
+    : fail('DESIGN.md · cột Vị trí & cỡ', 'bảng kiểm kê thiếu cột "Vị trí & cỡ" (kit §4) — không biết đặt phần tử ở đâu, to bao nhiêu')
   // Đối chiếu 2 chiều: file asset ghi trong DESIGN.md phải tồn tại; file trong assets/ phải được DESIGN.md nhắc tới.
   const nhac = new Set((md.match(/(backdrop|characters|illustrations|decor|svg)\/[a-z0-9_@.-]+\.(png|svg)/gi) ?? []).map((s) => s.toLowerCase()))
   const coThat = new Set(walk(join(root, 'assets')).map((p) => p.slice(join(root, 'assets').length + 1).replace(/\\/g, '/').toLowerCase()))
@@ -89,9 +89,7 @@ else {
   for (const f of coThat) if (!nhac.has(f) && /\.(png|svg)$/.test(f)) warn(`assets/${f}`, 'có file nhưng DESIGN.md không nhắc tới — mồ côi, sẽ không được dùng')
 }
 const refs = walk(join(root, 'reference')).filter((p) => /\.(png|jpg|jpeg)$/i.test(p))
-refs.length ? ok('reference/', `${refs.length} ảnh mockup`)
-  : CHI_ASSET ? warn('reference/', 'không có — đúng với đơn chỉ-asset (--chi-asset)')
-  : fail('reference/', 'không có ảnh mockup nào — không có gì để so (đơn chỉ-asset thì chạy thêm --chi-asset)')
+refs.length ? ok('reference/', `${refs.length} ảnh mockup`) : fail('reference/', 'không có ảnh toàn cảnh nào — không có gì để so')
 
 // ── 2. Từng PNG theo loại thư mục ────────────────────────────────────────────
 const backdrops = []

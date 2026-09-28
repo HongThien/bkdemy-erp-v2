@@ -112,7 +112,7 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
         </div>
       </div>
       {/* Tên riêng 1 hàng — chung hàng với 3 nút thì màn 375px chỉ còn "M.." */}
-      <div className="min-w-0 leading-tight">
+      <div className="min-w-0 self-start rounded-2xl leading-tight" style={{ background: 'var(--sk-name-plate)', padding: '6px 10px 6px 0', boxShadow: '-10px 0 0 var(--sk-name-plate)' }}>
         <p className="truncate text-[24px] font-bold" style={{ ...HEAD, textShadow: '0 1px 10px var(--sk-bg), 0 0 2px var(--sk-bg)' }}>{tenNgan}</p>
         <p className="truncate text-[13px]" style={{ color: 'var(--sk-muted)', textShadow: '0 1px 8px var(--sk-bg), 0 0 2px var(--sk-bg)' }}>{p.maHS.toUpperCase()}{p.lopMon ? ` · ${p.lopMon}` : ''}</p>
       </div>
@@ -120,7 +120,7 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
 
       {/* VIỆC TIẾP THEO */}
       <button onClick={viec.onClick} disabled={!viec.onClick} className="relative flex flex-col items-start gap-0.5 overflow-hidden px-4 py-3.5 text-left active:scale-[0.99]"
-        style={{ ...THE, background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)', border: 'none', borderLeft: 'none' }}>
+        style={{ ...THE, background: 'var(--sk-next-bg)', color: 'var(--sk-next-ink)', border: 'var(--sk-next-border)', borderLeft: 'var(--sk-next-border)' }}>
         {skin.trangTri?.goc && <>
           <img src={skin.trangTri.goc} alt="" className="pointer-events-none absolute left-1 top-1 h-10 w-10 opacity-70" />
           <img src={skin.trangTri.goc} alt="" className="pointer-events-none absolute bottom-1 right-1 h-10 w-10 rotate-180 opacity-70" />
@@ -132,7 +132,7 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
 
       {/* WIDGET — chỉ hiện cái có dữ liệu thật (§1.5: không có kỳ thi thì không vẽ ô "0 ngày") */}
       {widgets.length > 0 && (
-        <div className={`grid gap-2.5 ${widgets.length === 2 ? 'grid-cols-2' : 'grid-cols-1'}`}>
+        <div className={`grid grid-cols-2 gap-2.5 md:grid-cols-3`}>
           {widgets.map((w) => (
             <div key={w.nhan} className="flex min-w-0 flex-col px-3.5 py-3" style={THE}>
               <span className="truncate text-[11px] font-bold uppercase tracking-[0.07em]" style={{ color: 'var(--sk-muted)' }}>{w.nhan}</span>
@@ -163,7 +163,7 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
               className={`relative flex min-h-[92px] flex-col items-start gap-1.5 p-3 text-left transition lg:min-h-[120px] lg:p-4 ${c.disabled ? 'opacity-50' : 'active:scale-[0.98]'}`} style={THE}>
               {anh
                 ? <img src={anh} alt="" className="h-9 w-9 object-contain lg:h-12 lg:w-12" />
-                : <span className="text-[24px] leading-none lg:text-[30px]" aria-hidden>{c.icon ?? c.emoji ?? '•'}</span>}
+                : <span className="text-[24px] leading-none lg:text-[30px]" style={skin.dauThayIcon ? { color: 'var(--sk-acc)' } : undefined} aria-hidden>{skin.dauThayIcon ?? c.icon ?? c.emoji ?? '•'}</span>}
               <span className="pr-6 text-[14px] font-bold leading-tight lg:text-[17px]" style={HEAD}>{c.ten}</span>
               <span className="text-[11.5px] leading-snug lg:text-[13px]" style={{ color: mauPhu, fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500 }}>{c.sub}</span>
               {!!c.badge && c.badge > 0 && <span className="absolute right-2.5 top-2.5"><Badge n={c.badge} /></span>}

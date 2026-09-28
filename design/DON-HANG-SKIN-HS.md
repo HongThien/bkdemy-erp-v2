@@ -4,7 +4,7 @@
 > - **Lớp 3–5** · gốc **Thị trấn** · iPad/laptop, không có điện thoại riêng → **Đơn 1**
 > - **Lớp 6–8** · gốc **Khối vuông** · không có điện thoại riêng → **Đơn 2**
 > - **Lớp 9–12** · nhiều skin để HS chọn · có điện thoại riêng. 4 skin (Tối giản, Đấu trường, Y2K, Soft Hàn) Claude dựng bằng code, không cần ChatGPT.
->   Chỉ 2 skin cần hình → **Đơn 3 (Lo-fi đêm)** và **Đơn 4 (Anime RPG)**
+>   2 skin cần hình → **Đơn 3 v2 (Lo-fi đêm)** và **Đơn 4 v2 (Anime RPG)** — cả 2 theo "BỐ CỤC CHUNG lớp 9–12" (ảnh gốc RPG Thùy đã xem).
 >
 > Spec tổng: `spec-giao-dien-hs.md`.
 
@@ -15,10 +15,12 @@
 3. Đính kèm ảnh tham chiếu ghi trong đơn. Ảnh chụp mockup từ trang:
    - Đơn 1–2: https://claude.ai/artifact/M2w9GCJzYAaa1hB1NULg6x (mẫu "Thị trấn", "Khối vuông")
    - Đơn 3–4: https://claude.ai/artifact/LZF11536BxanSuLQcnbWiR (mẫu "Lo-fi đêm", "Anime RPG")
-   Ảnh chỉ để lấy **không khí và màu**. Chữ và bố cục theo đơn, không theo ảnh.
+   Đơn 1–2: ảnh chỉ để lấy **không khí và màu**. Đơn 3–4: đính kèm `design/handoff/hs-skin-rpg-v1/reference/reference_rpg_ipad.png` làm BỐ CỤC GỐC.
 4. Đơn 1–2 chạy đủ 4 pha (A→D). Duyệt mockup ở Pha B **trước** khi cho sinh asset.
-   Đơn 3–4 bỏ Pha B/C (bố cục đã dựng bằng code), vào thẳng Pha D.
-5. Nhận zip → bỏ vào `design/handoff/` → báo Claude.
+   Đơn 3–4 cũng chạy đủ 4 pha (luật 28/09: KHÔNG còn đơn "chỉ sinh hình"). Đơn 3–4 dán thêm mục "BỐ CỤC CHUNG lớp 9–12" ngay sau khối đơn.
+5. Kiểm trước khi nhận: zip PHẢI có `reference/` (ảnh toàn cảnh mọi khổ màn + trạng thái) và DESIGN.md có cột "Vị trí & cỡ".
+   Thiếu 1 trong 2 → trả lại ngay, chưa cần gửi Claude.
+6. Nhận zip → bỏ vào `design/handoff/` (KHÔNG bỏ vào `public/`) → báo Claude.
 
 ---
 
@@ -145,76 +147,108 @@ LUẬT RIÊNG (lý do: HS chê bản cũ vì sến và dạy đời):
 
 ---
 
-## Đơn 3 — Lớp 9–12 · skin Lo-fi đêm (chỉ tranh nền)
+## BỐ CỤC CHUNG lớp 9–12 (dùng cho Đơn 3, Đơn 4 — và 4 skin code dựng theo)
+
+Gốc = ảnh toàn cảnh ChatGPT vẽ cho skin Anime RPG, Thùy đã xem và muốn đúng như vậy:
+`design/handoff/hs-skin-rpg-v1/reference/reference_rpg_ipad.png`. Mọi skin lớp 9–12 CHUNG bố cục này, chỉ khác phong cách.
+
+**iPad / laptop NGANG (ảnh chính):**
+- **Góc trên trái:** avatar tròn + họ tên + mã HS.
+- **Góc trên phải:** nút **Hình nền** (MỚI — ảnh gốc chưa có, bắt buộc thêm: icon bảng màu + chữ "Hình nền") · Hòm thư (badge số) · Thoát.
+- **Cột trái ≈ 35% bề ngang:** NHÂN VẬT (cao ≈ 80% màn, chân chạm mép dưới) + BẠN ĐỒNG HÀNH (thú nhỏ trên vai/cạnh người) +
+  BONG BÓNG THOẠI 1 câu có số thật, đè lên góc trên vai nhân vật.
+- **Cột phải ≈ 65%:** "Chào {tên 2 chữ cuối}!" chữ to 2 dòng → HÀNG VIÊN THUỐC: sao Cấp + thanh XP (640/1000) · đồng xu (1.240 xu)
+  · Elo môn (1482 · hạng 3/14) · [khối 12] đếm ngược THPT (còn 286 ngày) → 2 BANNER ngang nhau: "Bổ trợ yếu · Thứ 5 12/10 · 17:30
+  · Phòng 204" (tím) và "2 bài kiểm tra lại chờ làm" (hồng) → LƯỚI Ô 4 cột, mỗi ô: icon vẽ riêng đặt GIỮA, tên, 1 dòng trạng thái, badge đỏ.
+
+**Điện thoại DỌC 430px (9:16):** đầu trang 1 hàng (avatar · nút Hình nền · hòm thư · ⋯) → hàng lời chào: chữ "Chào …!" bên trái,
+NHÂN VẬT thu nhỏ bên phải (cao ≈ 28% màn, cắt ngang hông) + bong bóng thoại → hàng viên thuốc (xuống 2 dòng nếu chật) →
+2 banner XẾP DỌC → lưới ô 2 cột. Được cuộn.
+
+**Ô chức năng theo khối (đúng tên, đúng thứ tự):**
+- Khối 9: Tự luyện · Thông tin học tập · Sổ tay kiến thức · Làm đề thi thử (khoá, "Sắp có") · Bài tập được giao · Thành tựu ·
+  May mắn · Ví xu  (+ "Học từ đầu" chỉ hiện với một số em).
+- Khối 10–12: Bài tập trên lớp · ET · BTVN · Tự luyện · Thông tin học tập · Sổ tay kiến thức · Làm đề thi thử  (+ "Học từ đầu").
+
+**Trạng thái phải vẽ (mỗi cái 1 ảnh, CẢ 2 khổ màn):** ① khối 9 thường — có 2 banner, badge ở 2 ô · ② khối 12 — 7 ô khối 10–12, có viên
+thuốc đếm ngược THPT, chỉ banner Bổ trợ · ③ trống — không banner, không badge.
+
+**Nhân vật:** 2 nhân vật HS TỰ CHỌN (KHÔNG gán theo giới tính): `nam` và `nu`, cùng phong cách, cùng tư thế đứng, cùng bạn đồng hành.
+
+---
+
+## Đơn 3 v2 — Lớp 9–12 · skin Lo-fi đêm (làm lại TOÀN BỘ — v1 bị trả)
+
+> v1 bị trả vì: 2 tranh nền là khối hình phẳng ghép bằng code (không phải tranh vẽ bằng công cụ tạo ảnh), 2 biến thể gần trùng nhau
+> (lệch trung bình 0,4/255), DESIGN.md thiếu 4/6 mục, không có ảnh toàn cảnh.
 
 ```
 ĐƠN ĐẶT HÀNG
 App:            hs
-Màn:            skin-lofi
-Mô tả màn:      Bộ tranh nền cho skin "Lo-fi đêm" của màn Home app học sinh LỚP 9–12 (14–18 tuổi, có điện thoại riêng),
-                điện thoại dọc 430px. Bố cục, chữ, thẻ, nút ĐÃ DỰNG BẰNG CODE (xem ảnh tham chiếu). Bạn CHỈ sinh tranh nền.
-Phần tử ĐỘNG:   không có trong asset (toàn bộ chữ/số do code vẽ).
-Trạng thái:     không.
-Biến thể:       2 tranh nền HS tự chọn: "cửa sổ đêm thành phố" và "cửa sổ mưa".
-Phong cách:     lo-fi study aesthetic, tranh nền anime (kiểu Lofi Girl / Makoto Shinkai nhưng TỰ VẼ, không chép), tông chàm
-                #1d1b3a → tím mận #3b2b52, một nguồn sáng ấm đèn bàn cam #ffb066 ở góc trên phải.
-Giữ nguyên:     không vẽ thẻ/chữ/nhân vật. Code đặt các thẻ bán trong suốt lên 75% phía dưới.
-Phiên bản kit:  v1
-Bỏ Pha B và C. Vào thẳng Pha D: sinh 2 file dưới, viết DESIGN.md ngắn (bảng 2 dòng loại BACKDROP), đóng zip hs-skin-lofi-v1.zip.
-```
+Màn:            home-912-lofi
+Mô tả màn:      Màn chính app học sinh LỚP 9–12 (14–18 tuổi, có điện thoại riêng), skin "Lo-fi đêm". Bố cục theo đúng mục
+                "BỐ CỤC CHUNG lớp 9–12" dán kèm bên dưới + ảnh bố cục mẫu reference_rpg_ipad.png (chỉ lấy BỐ CỤC, không lấy phong cách).
+                2 khổ: iPad NGANG 1180×820 (ảnh chính) và điện thoại DỌC 430px 9:16.
+Phần tử ĐỘNG:   như "BỐ CỤC CHUNG": tên, mã, cấp + XP, xu, Elo + hạng, đếm ngược THPT, 2 banner, badge, trạng thái từng ô, câu thoại.
+Trạng thái:     ① ② ③ như "BỐ CỤC CHUNG" — mỗi trạng thái 1 ảnh cho MỖI khổ màn (6 ảnh).
+Biến thể:       2 tranh nền HS tự chọn — `thanh_pho` (cửa sổ nhìn ra thành phố đêm) và `mua` (cửa sổ mưa). PHẢI khác nhau rõ ràng.
+                2 nhân vật HS tự chọn — `nam` và `nu`.
+Phong cách:     lo-fi study aesthetic kiểu tranh nền Lofi Girl / anime (TỰ VẼ, không chép): phòng học ban đêm, đèn bàn ấm cam #ffb066,
+                tông chàm #1d1b3a → tím mận #3b2b52. Nhân vật = học sinh cấp 3 mặc hoodie, đeo tai nghe, cầm bút/sách; bạn đồng
+                hành = mèo cam ngủ gật. Thẻ/ô nền tối trong mờ, viền mảnh sáng. Icon 11 ô vẽ cùng phong cách (đồ vật trên bàn học
+                ban đêm: đèn, sổ, cốc, tai nghe…), mỗi ô 1 đồ vật khác nhau.
+Giữ nguyên:     danh sách ô, tên, thứ tự theo khối; không thêm chức năng.
+Phiên bản kit:  v2
+Chạy đủ 4 pha A→D. Pha B: vẽ ảnh ① iPad ngang trước, chờ Thùy duyệt, rồi mới vẽ các ảnh còn lại.
 
-```
-BACKDROP 1: Generate backdrop_lofi_city.png, 1080×1920 portrait. Cozy teenager's study corner at night seen from inside:
-a large window in the upper third showing a distant Vietnamese city skyline with soft bokeh lights, a warm desk lamp glow
-entering from the top-right corner, a few plants and a stack of books silhouetted on the windowsill. Lo-fi anime background
-painting, soft grain, deep indigo #1d1b3a to plum #3b2b52 palette, warm orange #ffb066 accent light only near the lamp.
-The lower 75% must be calm, dark and low-detail (just a softly lit wall/desk surface) so translucent cards on top stay readable.
-ABSOLUTELY NO text, NO people, NO characters, NO animals, NO UI, NO frames, NO logos.
+GHI ĐÈ KIT §1: font chữ = Nunito (tiêu đề + thân), KHÔNG Baloo 2 / Pacifico, KHÔNG chữ viết tay. Màn được cuộn.
+LUẬT RIÊNG:
+  - MỌI hình (tranh nền, nhân vật, icon) sinh bằng CÔNG CỤ TẠO ẢNH, từng cái một. CẤM vẽ bằng code / SVG / Python-PIL / ghép khối hình.
+  - Không khẩu hiệu động viên, không chữ tiếng Anh trang trí. Câu duy nhất có "giọng" = bong bóng thoại, phải có số thật.
+  - DESIGN.md: bảng kiểm kê có cột "Vị trí & cỡ" cho TỪNG khổ màn (kit §4). Đếm đối chiếu ảnh ↔ assets trước khi đóng zip (kit §8 câu 9–11).
 
-BACKDROP 2: Generate backdrop_lofi_rain.png, same size, same palette and same composition rules as backdrop_lofi_city.png,
-but the window shows rain: raindrops and streaks on the glass, blurred street lights behind, slightly cooler blue in the window.
-Lower 75% calm and dark. ABSOLUTELY NO text, NO people, NO characters, NO animals, NO UI, NO frames, NO logos.
+ASSETS TỐI THIỂU (đếm lại theo ảnh toàn cảnh, thấy gì trong ảnh phải có file):
+  backdrop/backdrop_lofi_thanh_pho_ngang.png 1920×1080 · backdrop_lofi_thanh_pho_doc.png 1080×1920
+  backdrop/backdrop_lofi_mua_ngang.png 1920×1080 · backdrop_lofi_mua_doc.png 1080×1920
+  characters/character_lofi_nam.png · character_lofi_nu.png (cao ≥ 1200, nền trong suốt, CÓ mèo)
+  illustrations/ill_lofi_<id>.png × 11 ô: tu_luyen, thong_tin, so_tay, de_thi_thu, bai_tap_giao, thanh_tuu, may_man, vi_xu,
+                 bai_tren_lop, et, btvn  + hoc_tu_dau  + 2 icon banner: lich, kiem_tra_lai   (≥ 512, nền trong suốt)
+  illustrations/ill_lofi_sao_cap.png · ill_lofi_dong_xu.png (icon nhỏ trong viên thuốc)
 ```
 
 ---
 
-## Đơn 4 — Lớp 9–12 · skin Anime RPG (tranh nền + hoa văn + 4 icon)
+## Đơn 4 v2 — Lớp 9–12 · skin Anime RPG (bổ sung theo ảnh toàn cảnh đã có)
+
+> v1 giao 7 mảnh rời, không có ảnh toàn cảnh; ảnh toàn cảnh ChatGPT vẽ cùng lúc (nhân vật + mèo, lâu đài ngang, 8 icon khác) không nằm
+> trong zip và các mảnh của nó không được sinh ⇒ app dựng ra khác hẳn. Giờ lấy CHÍNH ảnh đó làm gốc.
 
 ```
 ĐƠN ĐẶT HÀNG
 App:            hs
-Màn:            skin-rpg
-Mô tả màn:      Bộ asset cho skin "Anime RPG" của màn Home app học sinh LỚP 9–12, điện thoại dọc 430px.
-                Bố cục, chữ, thẻ, nút ĐÃ DỰNG BẰNG CODE (xem ảnh tham chiếu). Bạn CHỈ sinh: 1 tranh nền, 2 hoa văn, 4 icon ô chức năng.
-Phần tử ĐỘNG:   không có trong asset.
-Trạng thái:     không.
-Biến thể:       không.
-Phong cách:     giao diện game anime fantasy cao cấp (cảm hứng Genshin Impact / Honkai: Star Rail) nhưng THIẾT KẾ GỐC — không dùng
-                nhân vật, biểu tượng, logo hay hoa văn nhận ra được của game nào. Xanh đêm #141a33 / #2c3a66 + vàng cổ #e9c77b / #f4d98f.
-Giữ nguyên:     chữ tiếng Việt do code vẽ bằng font Philosopher, không đưa chữ vào asset.
-Phiên bản kit:  v1
-Bỏ Pha B và C. Vào thẳng Pha D: sinh 7 file dưới, viết DESIGN.md (bảng 7 dòng), đóng zip hs-skin-rpg-v1.zip.
-```
+Màn:            home-912-rpg
+Mô tả màn:      Màn chính app học sinh LỚP 9–12, skin "Anime RPG". Ảnh ① iPad ngang ĐÃ DUYỆT = ảnh đính kèm reference_rpg_ipad.png
+                (bạn đã vẽ ở context trước). Giữ nguyên ảnh đó, CHỈ thêm nút "Hình nền" ở góc trên phải cạnh Hòm thư.
+                Vẽ nốt các ảnh còn lại theo mục "BỐ CỤC CHUNG lớp 9–12" dán kèm: điện thoại DỌC 430px + trạng thái ② ③ ở cả 2 khổ.
+Phần tử ĐỘNG:   như "BỐ CỤC CHUNG".
+Trạng thái:     ① (đã có, thêm nút Hình nền) ② ③ — mỗi trạng thái cả 2 khổ màn.
+Biến thể:       2 nhân vật HS tự chọn: `nam` = pháp sư áo choàng + mèo đen (như ảnh gốc) · `nu` = pháp sư nữ cùng phong cách + cú trắng.
+                2 tranh nền HS tự chọn: `lau_dai` (như ảnh gốc) · `dao_troi` (đảo nổi + thác nước, cùng bảng màu).
+Phong cách:     đúng như ảnh gốc: anime fantasy đêm, xanh tím + vàng cổ, ô viền vàng trong mờ, banner tím / hồng.
+Giữ nguyên:     bố cục ảnh gốc; danh sách ô theo khối.
+Phiên bản kit:  v2
+Pha B: ảnh ① coi như đã duyệt (thêm nút Hình nền rồi gửi lại để Thùy xem). Vẽ các ảnh còn lại → Pha C kiểm kê có cột "Vị trí & cỡ"
+→ Pha D sinh ĐỦ mảnh. File v1 (backdrop_rpg_sky, decor_rpg_corner/divider, 4 ill_rpg_*) KHÔNG dùng lại nếu không có trong ảnh.
 
-```
-BACKDROP: Generate backdrop_rpg_sky.png, 1080×1920 portrait. Fantasy night sky: deep navy #141a33 fading to #2c3a66 at the top,
-faint constellations, a few small floating islands with tiny glowing ruins in the upper quarter only, thin gold light rays.
-Painterly anime-game style, high polish. The lower 75% must be calm, dark, nearly empty (only faint stars) so cards stay readable.
-ABSOLUTELY NO text, NO characters, NO UI panels, NO frames, NO logos.
+GHI ĐÈ KIT §1: font = Be Vietnam Pro đậm cho chữ (tiêu đề có thể Philosopher), KHÔNG Pacifico, KHÔNG chữ viết tay. Màn được cuộn.
+LUẬT RIÊNG: như Đơn 3 (mọi hình sinh bằng công cụ tạo ảnh; không khẩu hiệu; cột Vị trí & cỡ; đếm đối chiếu ảnh ↔ assets).
 
-DECOR 1: Generate decor_rpg_corner.png, 512×512, TRANSPARENT background. One ornate antique-gold filigree corner ornament
-(top-left orientation, the two arms run along the top and left edges), fine engraved lines, subtle metallic shading, gold #e9c77b
-to #f4d98f with dark bronze #6b5a33 edges. Will be rotated in code for the other 3 corners. Nothing else in the image.
-
-DECOR 2: Generate decor_rpg_divider.png, 1024×128, TRANSPARENT background. A horizontal ornamental divider: thin gold line
-with a small four-point star gem in the center and tapered flourishes to both ends, same gold palette as decor_rpg_corner.png.
-Nothing else in the image.
-
-ILLUST (×4, each 512×512, TRANSPARENT background, same lighting, same gold+navy+one accent colour, game item icon style,
-centered with ~8% margin, no frame, no text):
-  ill_rpg_lop.png      — a quill resting on an open parchment scroll with a faint blue glow (bài trên lớp)
-  ill_rpg_btvn.png     — a sealed letter with a gold wax seal and a small ribbon (bài tập về nhà)
-  ill_rpg_luyen.png    — a floating faceted crystal, cyan core, gold cage (tự luyện)
-  ill_rpg_thithu.png   — an ornate closed treasure chest with gold trim and a keyhole glow (thi thử)
-If you cannot produce real transparency, say so and use a flat #00FF00 background instead. Never erase white by colour-keying.
+ASSETS TỐI THIỂU (thấy gì trong ảnh toàn cảnh phải có file — đặc biệt MỌI thứ trong reference_rpg_ipad.png):
+  backdrop/backdrop_rpg_lau_dai_ngang.png 1920×1080 · backdrop_rpg_lau_dai_doc.png 1080×1920   (lâu đài đêm, đèn lồng, KHÔNG nhân vật)
+  backdrop/backdrop_rpg_dao_troi_ngang.png · backdrop_rpg_dao_troi_doc.png
+  characters/character_rpg_nam.png (pháp sư + mèo đen + quả cầu sáng, như ảnh gốc) · character_rpg_nu.png   (cao ≥ 1200, trong suốt)
+  illustrations/ill_rpg_<id>.png: tu_luyen (sách phép), thong_tin (bản đồ cuộn), so_tay (chồng sách + bút lông), de_thi_thu (cổng đá khoá),
+                 bai_tap_giao (cuộn giấy), thanh_tuu (cúp vàng), may_man (cầu pha lê tím), vi_xu (túi xu)   ← đúng như ảnh gốc
+                 + bai_tren_lop, et, btvn, hoc_tu_dau (MỚI, cùng phong cách)  + banner: lich (lịch tím), kiem_tra_lai (tờ tài liệu hồng)
+                 + sao_cap (ngôi sao cấp), dong_xu (đồng xu)   (≥ 512, nền trong suốt)
 ```
