@@ -30639,3 +30639,11 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   (Chăm chỉ / Thành tích / Tiến bộ × 4★ / 5★), 4–6 điều kiện mỗi cột; A2 (BTVN đủ) nuôi 5 cột. Ngoài ma trận: tập thể lớp, bí ẩn,
   kỷ niệm. Album ~68. Giả định H7/H8 theo đề xuất. Bước sau: Thùy duyệt ma trận → mô phỏng số bản cứng/tháng.
 - Merge 2 lần với phiên song song: xung đột chỉ ở DEVLOG (cả 2 cùng append) → giữ cả hai.
+
+## 2026-09-28 (21) — Nhập ngày thi đầu tiên cho widget đếm ngược + dọn worktree `skin-hs-912`
+
+- Thùy: "để ngày thi THPT quốc gia dự kiến là 11/07/2027, cứ thế mà đếm ngược tạm" ⇒ `lich_thi_lon`: 'THPT quốc gia 2027' · 2027-07-11 ·
+  khối {12} (chỉ khối 12 thi năm 2027; khối 9–11 chưa có kỳ thi nào ⇒ widget không hiện, chỉ còn ô Elo). Ngày DỰ KIẾN — có lịch Bộ
+  chính thức thì sửa dòng này. Hôm nay còn 286 ngày.
+- Worktree `skin-hs-912` đã xoá (Thùy đồng ý): gỡ junction node_modules TRƯỚC (tránh xoá lan sang node_modules repo chính), tắt vite
+  sót ở cổng 5204 đang giữ thư mục, xoá nhánh (commit 8bd20d0 đã trên main). 4 file tạm (2 script dò DB + trang xem thử) mất theo.
