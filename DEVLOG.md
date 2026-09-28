@@ -30572,3 +30572,12 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Sai/sửa: `P.dans.push(...).tach=0` (push trả SỐ, strict mode ném lỗi) · camera mưa sao băng bám viên cao nhất ⇒ không thấy đất · mô tả thẻ đạn tràn khung.
 - **Lặp lại lỗi ghi spec LẦN 2 (+ để lại 2 bản câu hỏi mồ côi):** ở (8) lại thay mốc `## 6. Còn hỏi Thùy` mà không giữ tiêu đề. Bài học (7) đã ghi mà vẫn lặp
   ⇒ bài học dạng "nhớ làm X" không đủ. Chữa tận gốc: mục câu hỏi luôn ở CUỐI file; thêm mục = cắt đuôi câu hỏi ra, ghi mục mới, dán lại đuôi (như lần này), không replace mốc.
+
+## 2026-09-28 (13) — Hình Nhân: BỎ giới hạn gán x%
+- Thùy lo cho gán hết thì thành thử-sai. Phân tích: gán KHÔNG báo đúng/sai (chỉ chấm lúc Hoàn thành 1 lần) ⇒ không thử-sai được; giới hạn
+  chỉ ép nhớ trong đầu (đo trí nhớ, không đo suy luận). Cryptogram/Cryptoquote đều cho điền tự do. Thùy gật ⇒ bỏ.
+- Độ khó còn lại: không phản hồi + nộp 1 lần + mồi 30/20/10% + Khó viết liền. Điểm: bỏ "lượt gán dư", thay **thưởng tốc độ**
+  (mốc = số chữ × 5 giây, mỗi giây sớm +3). Hoàn thành: có chữ gõ ⇒ nộp chữ gõ; không gõ mà đã gán đủ ⇒ nộp bản giải (khỏi gõ lại).
+  Thanh "Đã gán n/m hình" thay cho hạn mức; gán đủ thì bàn phím tự đóng.
+- Verify (375×812, hàm ghi giả): chưa đủ + chưa gõ ⇒ Hoàn thành không nộp; gán đủ đúng ⇒ thắng +thưởng; đổi chỗ 2 hình ⇒ thua, 3 ô đỏ (đúng
+  số ô của 2 hình sai), còn lại xanh.

@@ -123,10 +123,8 @@ img,svg,image{-webkit-user-drag:none}
   .tagc{background:rgba(20,10,90,.3);border-radius:999px;padding:4px 12px;font-weight:600}
   .tagc.first{background:var(--gold);color:#5a3a00}
   .tagc.prac{background:rgba(255,255,255,.2)}
-  #quota{margin-left:auto;display:flex;align-items:center;gap:6px;font-weight:700;background:rgba(255,255,255,.95);color:var(--ink);border-radius:999px;padding:4px 10px}
-  #quota i{width:11px;height:11px;border-radius:50%;background:var(--p2);display:inline-block}
-  #quota i.free{background:#dcd8ff}
-  #quota.full{animation:shake .45s;background:#ffe0e5}
+  #quota{margin-left:auto;font-weight:700;background:rgba(255,255,255,.95);color:var(--ink);border-radius:999px;padding:4px 12px}
+  #quota.du{background:var(--g1);color:#fff}
 
   .panel{width:min(100%,900px);background:rgba(255,255,255,.96);border-radius:22px;color:var(--ink);box-shadow:0 6px 0 rgba(20,20,110,.25);padding:12px 10px}
   .ptitle{font-size:13px;font-weight:700;color:var(--ink2);margin:0 4px 8px;display:flex;justify-content:space-between;gap:8px}
@@ -230,10 +228,10 @@ img,svg,image{-webkit-user-drag:none}
       <div class="bd rules">
         • Mỗi câu có <b>bảng mã riêng</b>: mỗi chữ cái là 1 hình nhân. Vài chữ được <b>mồi sẵn</b> (xanh).<br>
         • Chạm 1 hình nhân (trong câu hoặc ở bảng bên dưới) rồi chọn chữ ⇒ <u>mọi hình giống nó</u> hiện chữ đó. Hai hình khác nhau không trùng chữ.<br>
-        • Chỉ được gán tối đa <b>x% số hình</b> (Dễ 60% · Vừa 45% · Khó 30%) — phần còn lại tự suy ra!<br>
-        • Gõ <b>cả câu đáp án</b> (không cần dấu) rồi bấm <b>Hoàn thành</b> — chỉ nộp <u>1 lần</u>, sai là thua câu.<br>
+        • Gán thoải mái — nhưng gán <b>không báo đúng sai</b>: chỉ lúc Hoàn thành mới chấm.<br>
+        • Gán đủ mọi hình rồi bấm <b>Hoàn thành</b> (hoặc đoán ra sớm thì gõ luôn cả câu, không cần dấu) — chỉ nộp <u>1 lần</u>, sai là thua câu.<br>
         • Mức <b>Khó</b> giống truyện: câu viết liền, hình nhân <b>cầm cờ 🚩</b> là chữ cuối của một từ.<br>
-        • Điểm = số chữ × 10 + mỗi lượt gán còn dư × 25. <b>Bảng xếp hạng chỉ tính lần đầu</b> bạn chơi mỗi câu / mỗi màn.
+        • Điểm = số chữ × 10 + <b>thưởng tốc độ</b> (giải trước mốc số chữ × 5 giây: mỗi giây sớm +3). <b>Bảng xếp hạng chỉ tính lần đầu</b> bạn chơi mỗi câu / mỗi màn.
       </div>
     </div>
   </div>
@@ -256,7 +254,7 @@ img,svg,image{-webkit-user-drag:none}
   <div class="panel"><div class="ptitle"><span>🔐 Thông điệp</span><span id="msgInfo"></span></div><div id="msg"></div></div>
   <div class="panel" id="legPanel"><div class="ptitle"><span>🗂 Bảng hình nhân · số lần xuất hiện</span></div><div id="leg"></div></div>
   <div id="ansRow">
-    <input id="ans" placeholder="Gõ cả câu đáp án…" autocomplete="off" autocapitalize="characters" spellcheck="false">
+    <input id="ans" placeholder="…hoặc gõ luôn cả câu" autocomplete="off" autocapitalize="characters" spellcheck="false">
     <button class="btn b-g" id="bDone">✔ Hoàn thành</button>
   </div>
   <div id="res" class="card">
@@ -317,8 +315,9 @@ img,svg,image{-webkit-user-drag:none}
 // Chữ không dấu A–Z (có dấu thì Ă/Â/Ầ… mỗi chữ 1 hình ⇒ quá nhiều hình, không suy luận nổi). 1 màn = 10 câu, thứ tự xáo.
 // Mỗi câu 1 bảng mã xáo độc lập (Thùy 28/09) ⇒ không học thuộc bảng được, lần nào cũng phải suy luận.
 const LVSTYLE={de:{img:'seedling',c:'g'},vua:{img:'rocket',c:'o'},kho:{img:'crystal-ball',c:'p'}};
-// moi = tỉ lệ số hình được mồi sẵn · cap = tỉ lệ tối đa số hình (còn lại sau mồi) được gán · cach = có khoảng cách giữa các từ
-const CFG={de:{moi:.3,cap:.6,cach:true},vua:{moi:.2,cap:.45,cach:true},kho:{moi:.1,cap:.3,cach:false}};
+// moi = tỉ lệ số loại hình được mồi sẵn · cach = có khoảng cách giữa các từ.
+// KHÔNG giới hạn số lần gán (Thùy 28/09): gán không báo đúng/sai nên không thử-sai được; độ khó = không phản hồi + nộp 1 lần + ít mồi + viết liền.
+const CFG={de:{moi:.3,cach:true},vua:{moi:.2,cach:true},kho:{moi:.1,cach:false}};
 const BO={
   vn:{n:'Tiếng Việt',lv:{
     de:{n:'Dễ',d:'2–3 từ · có cách',q:['HOC SINH GIOI','BANH CHUNG XANH','MUA XUAN VE','MEO CON','TRUNG THU VUI','BAN BE TOT',
@@ -337,7 +336,7 @@ const BO={
       'ACTIONS SPEAK LOUDER THAN WORDS','THE EARLY BIRD CATCHES THE WORM','ALL THAT GLITTERS IS NOT GOLD','CURIOSITY KILLED THE CAT',
       'WHERE THERE IS A WILL THERE IS A WAY','EVERY CLOUD HAS A SILVER LINING']}}},
 };
-const GAME='hinh_nhan',PT_CHU=10,PT_GAN=25,TOP=10,ABC='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const GAME='hinh_nhan',PT_CHU=10,MOC_GIAY=5,PT_GIAY=3,TOP=10,ABC='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const boDau=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/Đ/g,'D').replace(/đ/g,'d');
 const chuan=s=>boDau(String(s).toUpperCase()).replace(/[^A-Z]/g,''); // so đáp án: bỏ dấu, bỏ cách, bỏ ký tự lạ
 
@@ -451,7 +450,7 @@ function startCau(){
   const dem={};words.flat().forEach(ch=>dem[ch]=(dem[ch]||0)+1);
   const chu=Object.keys(dem),nMoi=Math.max(1,Math.round(chu.length*cfg.moi));
   const moi=new Set(shuf(chu).slice(0,nMoi));
-  Q={text,words,dem,chu,ma:bangMa(),moi,cap:Math.max(1,Math.round((chu.length-nMoi)*cfg.cap)),peak:0,gan:{},sel:null,
+  Q={text,words,dem,chu,ma:bangMa(),moi,gan:{},sel:null,
      n:words.flat().length,first:G.online?!G.daChoi.has(text):null,over:false,t0:performance.now(),ms:0};
   $('prog').innerHTML=G.list.map((_,i)=>`<i class="${i<G.log.length?(G.log[i].dung?'ok':'bad'):i===G.i?'cur':''}"></i>`).join('');
   $('firstTag').className='tagc '+(Q.first===null?'':Q.first?'first':'prac');
@@ -482,9 +481,9 @@ function render(){
   // bảng hình nhân: mỗi loại 1 ô, xếp theo số lần xuất hiện (công cụ phân tích tần suất của Holmes)
   const ds=Q.chu.slice().sort((a,b)=>Q.dem[b]-Q.dem[a]||Q.text.indexOf(a)-Q.text.indexOf(b));
   $('leg').innerHTML=ds.map(ch=>`<div class="lg${Q.moi.has(ch)?' seed':''}${Q.sel===ch?' hot':''}" data-c="${ch}"><span class="n">×${Q.dem[ch]}</span>${hinh(Q.ma[ch],false)}<div class="lt">${chuCua(ch)||'?'}</div></div>`).join('');
-  const dung=Object.keys(Q.gan).length;
-  $('quota').className='';
-  $('quota').innerHTML=`Gán ${dung}/${Q.cap} `+Array.from({length:Q.cap},(_,i)=>`<i class="${i<dung?'':'free'}"></i>`).join('');
+  const can=Q.chu.length-Q.moi.size,da=Object.keys(Q.gan).length;
+  $('quota').className=da>=can?'du':'';
+  $('quota').textContent=da>=can?'✓ Đã gán đủ — bấm Hoàn thành':`Đã gán ${da}/${can} hình`;
   $('score').textContent=G.diem;
   if(!Q.over)document.querySelectorAll('#msg .cell,#leg .lg').forEach(el=>el.onclick=()=>chon(el.dataset.c));
   if(Q.sel)renderKb();
@@ -513,24 +512,23 @@ function gan(k){
   const ch=Q.sel;if(!ch||Q.over)return;
   if(k==='x'){dongKb();render();return}
   if(k===''){delete Q.gan[ch];beep(330,.05,.04);render();return}
-  const moi=!(ch in Q.gan);
-  if(moi&&Object.keys(Q.gan).length>=Q.cap){ // hết lượt gán: phải bỏ bớt 1 hình mới gán hình mới được
-    $('kbMsg').textContent=`Hết lượt gán (${Q.cap}/${Q.cap}) — bỏ bớt 1 hình, hoặc tự suy phần còn lại!`;
-    $('quota').classList.add('full');beep(160,.25,.07,'sawtooth');return}
   Object.keys(Q.gan).forEach(f=>{if(Q.gan[f]===k&&f!==ch)delete Q.gan[f]}); // 1 chữ chỉ thuộc 1 hình
-  Q.gan[ch]=k;Q.peak=Math.max(Q.peak,Object.keys(Q.gan).length);beep(700,.06,.05);
-  // tự nhảy sang hình chưa có chữ kế tiếp (theo thứ tự trong câu) cho nhanh, nếu còn lượt
+  Q.gan[ch]=k;beep(700,.06,.05);
+  // tự nhảy sang hình chưa có chữ kế tiếp (theo thứ tự trong câu) cho nhanh; gán đủ thì đóng bàn phím
   const con=Q.words.flat().find(c=>!Q.moi.has(c)&&!(c in Q.gan));
-  if(con&&Object.keys(Q.gan).length<Q.cap)Q.sel=con;
+  if(con)Q.sel=con;else{dongKb()}
   render();
 }
 
-// ---- Hoàn thành: gõ cả câu, nộp 1 lần, bấm 2 nhịp ----
+// ---- Hoàn thành: nộp 1 lần, bấm 2 nhịp. Nộp chữ đã GÕ nếu có; không gõ thì nộp BẢN GIẢI (khi đã gán đủ mọi hình) ----
+const daGanDu=()=>Q.chu.every(c=>Q.moi.has(c)||c in Q.gan);
+const banGiai=()=>Q.words.map(w=>w.map(chuCua).join('')).join(' ');
+const baiNop=()=>chuan($('ans').value)?$('ans').value:(daGanDu()?banGiai():'');
 let doneArm=null;
 function resetDone(){clearTimeout(doneArm);doneArm=null;$('bDone').classList.remove('warn');$('bDone').textContent='✔ Hoàn thành'}
 $('bDone').onclick=()=>{
   if(Q.over)return;
-  if(!chuan($('ans').value)){$('ans').focus();$('ans').animate([{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'none'}],{duration:300});return}
+  if(!baiNop()){$('quota').animate([{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'none'}],{duration:300});$('ans').animate([{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'none'}],{duration:300});return}
   if(!doneArm){$('bDone').classList.add('warn');$('bDone').textContent='Chắc chưa? Bấm lại';doneArm=setTimeout(resetDone,2500);return}
   resetDone();ketThucCau();
 };
@@ -540,9 +538,11 @@ $('ans').addEventListener('focus',()=>{dongKb();render()});
 function ketThucCau(){
   Q.over=true;dongKb();$('ans').blur();$('ans').disabled=true;
   Q.ms=performance.now()-Q.t0;G.ms+=Q.ms;clearInterval(tick);$('clock').textContent=fmt(G.ms);
-  const dung=chuan($('ans').value)===chuan(Q.text);Q.thang=dung;
+  const nop=baiNop(),dung=chuan(nop)===chuan(Q.text);Q.thang=dung;
+  // thưởng tốc độ: mốc = số chữ × MOC_GIAY giây; mỗi giây giải sớm hơn mốc +PT_GIAY
+  const thuong=Math.max(0,Math.round((Q.n*MOC_GIAY-Q.ms/1000)*PT_GIAY));
   let diem=0;
-  if(dung){diem=Q.n*PT_CHU+(Q.cap-Q.peak)*PT_GAN;G.diem+=diem;G.giai++;
+  if(dung){diem=Q.n*PT_CHU+thuong;G.diem+=diem;G.giai++;
     beep(660,.1,.07);setTimeout(()=>beep(880,.1,.07),110);setTimeout(()=>beep(1320,.2,.07),220);
   }else beep(200,.4,.08,'sawtooth');
   G.log.push({a:Q.text,dung,diem,ms:Q.ms});
@@ -565,7 +565,7 @@ function ketThucCau(){
   ['legPanel','ansRow'].forEach(id=>$(id).style.display='none');
   $('res').style.setProperty('--c1',dung?'var(--g1)':'var(--r1)');$('res').style.setProperty('--c2',dung?'var(--g2)':'var(--r2)');
   $('resHd').innerHTML=dung?`<img src="${IMG('party-popper')}" alt="">Giải mã thành công! +${diem}`:'😵 Sai rồi — thua câu này';
-  $('resSub').innerHTML=(dung?`${Q.n} chữ × ${PT_CHU} + ${Q.cap-Q.peak} lượt gán dư × ${PT_GAN} · ⏱ <b>${fmt1(Q.ms)}</b><br>`:`Bạn gõ: <b>${esc($('ans').value.toUpperCase())}</b><br>`)
+  $('resSub').innerHTML=(dung?`${Q.n} chữ × ${PT_CHU} + thưởng tốc độ ${thuong} · ⏱ <b>${fmt1(Q.ms)}</b><br>`:`Bạn nộp: <b>${esc(nop.toUpperCase())}</b><br>`)
     +`Thông điệp: <b>${Q.text}</b>`;
   $('bNext').textContent=G.i+1<G.list.length?'Câu tiếp →':'Xem kết quả →';
   $('res').classList.add('show');
