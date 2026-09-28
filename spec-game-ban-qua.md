@@ -46,5 +46,30 @@
 
 ⚠ KayKit Adventurers bản SOURCE là hàng trả phí — không đưa file source lên repo public (chỉ GLB runtime như Hero Universe).
 
-## 4. Còn hỏi Thùy
-Xem trả lời CTO 28/09 (DEVLOG). Câu 1 = rương đội rút chung hay riêng từng người.
+## 4. Chốt đợt 2 (Thùy 28/09)
+
+| # | Câu | Chốt |
+|---|---|---|
+| 15 | Rương đội | **Mở 1 lần cho cả đội, cả đội nhận CHUNG 1 quà** ("mỗi người tự mở lâu quá") |
+| 16 | EXP cá nhân | Như luật cũ, **TB 200** — CTO phân: tuyến tính **Nhất 300 → cuối 100**, bước 10; bằng điểm = cùng hạng, chia TB EXP các hạng đó |
+| 17 | Vòng quay đạn | **Giải khác nhau**: Nhất dễ ra đạn xịn (xuyên/bom to/chùm) hơn — bảng trọng số `QUAY` trong game (bản chính thức: DB) |
+| 18 | Hình ảnh | **Pháo/súng**, **2D kiểu Worms, hiệu ứng mượt, KHÔNG cần 3D** ⇒ bỏ three.js; sprite render sẵn từ KayKit (`games-site/assets/ban-qua/`) |
+| 19 | Bối cảnh | **Chung chung (không Trung thu), sẽ có nhiều bối cảnh** — làm 1 cái test trước (`THEMES.dong_co` "Đồng cỏ") |
+
+## 5. BẢN CHƠI THỬ v0 (28/09) — `games-site/ban-qua.html` (hub: 🎯 Bắn Quà · THỬ NGHIỆM)
+
+- Chế độ CÁ NHÂN, chạy trên laptop (← → góc · 1 2 3 đạn · GIỮ Space nạp / THẢ bắn) hoặc cảm ứng (nút phải dưới + chạm thẻ đạn).
+- Luồng: gõ danh sách **Tên | giải** → 🎰 vòng quay (mỗi bạn 3 đạn, thứ tự bắn xáo) → mỗi bạn 1 phát, 10s ngắm (hết giờ mất lượt) →
+  🏆 bảng kết quả + EXP. Gió −10…+10 đổi mỗi lượt (mây trôi theo gió), vạch **lực + góc lượt trước** để lớp học theo nhau.
+- Đạn: Thường r58/45 · Bom to r115/28 · Xuyên r28/100 · Chùm tách 3 ở đỉnh r42/24 · Nảy 2 lần r58/45; mép nổ còn 30%. Hộp: nhỏ 40 máu/+30 ·
+  vừa 80/+80 · to 140/+150 khi phá; điểm = sát thương gây ra + thưởng phá hộp. Máu hộp giữ qua các lượt (bạn sau "ăn" hộp bạn trước đánh dở).
+- Địa hình bitmap khoét hố + cháy xém, hộp/pháo rơi khi mất đất. Hiệu ứng: chớp màn, cầu lửa, sóng xung kích, khói, đất văng, tàn lửa,
+  pháo giấy + xu khi phá hộp, số sát thương, "CHÍNH XÁC!" khi trúng gần tâm, rung màn, hit-stop. Âm thanh WebAudio tổng hợp.
+- `?trasua=1` đặt 1 hộp trà sữa (phá ⇒ hiệu ứng `lib/bk-tra-sua.js`) · `?cham=0.25` quay chậm để soi hiệu ứng.
+- Verify: chơi tự động trọn 10 lượt (bắn thật qua vật lý) → bảng 10 hạng, EXP 300…100 TB đúng 200, 0 lỗi console.
+- CHƯA: chế độ đội · nối ERP (danh sách/giải từ Buổi học, vòng quay + EXP rút ở DB, trà sữa theo `game_lop_qua_dac_biet`) · iPad làm tay cầm ·
+  thêm bối cảnh · Thùy chơi thử & chỉnh số.
+
+## 6. Còn hỏi Thùy
+- Chế độ đội: đạn trúng xe đội mình có mất máu? bắn trúng hộp quà có cộng điểm đội? (chưa trả lời — CTO tạm: có mất máu nhưng không tính điểm; đội chỉ bắn nhau)
+- EXP đội: rương Vàng (TB 300) / Bạc (TB 250) của Mở Rương ⇒ TB ~260–275/HS, **cao hơn mốc 200**. Giữ, hay đội thua = Gỗ (175)?

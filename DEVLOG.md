@@ -30272,3 +30272,12 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Thêm vào logic (t tự phát hiện khi đọc `fn_bxh_diem_mt_khoi`): hàm xếp cả HS chưa thi = 0đ cuối bảng (để hiển thị BXH) ⇒ khi đổi
   hạng ra Điểm Rank chỉ HS CÓ điểm MT thật mới nhận (§1.5), không để "vắng MT vẫn được điểm hạng cuối".
 - Spec v4 phần logic ĐÃ CHỐT; bước tiếp = bàn detail Phần C.
+
+## 2026-09-28 (5) — Bắn Quà v0 chơi được (chế độ cá nhân)
+- Thùy chốt đợt 2 (spec §4): rương đội chung 1 quà · EXP TB 200 (CTO: 300→100 tuyến tính) · vòng quay đạn theo giải · 2D kiểu Worms không 3D · bối cảnh chung.
+- Làm `games-site/ban-qua.html` (canvas 2D thuần, không three.js) + sprite PNG render nhìn ngang từ KayKit Holiday (pháo `snowball_cannon`,
+  6 hộp quà, ly trà sữa, quả tuyết, bóng rổ) ở `games-site/assets/ban-qua/`. Hub thêm ô "🎯 Bắn Quà · THỬ NGHIỆM".
+- Sai/sửa trong lúc làm: HUD vẽ đè lúc vòng quay · nút cảm ứng đè thẻ đạn/thanh lực (dời pad sang phải, bỏ nút ⇄) · hộp `present_B` quá cao
+  (khống chế cạnh dài) · khói đen che lửa + số sát thương (vẽ THEO LỚP: khói < đất < lửa/tia < chữ; chớp màn riêng) · emoji ⚪ không thấy trên nền tối.
+- Verify: auto-play 10 lượt bắn thật → bảng + EXP đúng TB 200, 0 lỗi. Screenshot giữa lúc nổ phải dùng `?cham=` (nổ chỉ ~0,3s).
+- Trang tạm `games-site/_xem-asset/` (xem asset + render sprite) KHÔNG commit.
