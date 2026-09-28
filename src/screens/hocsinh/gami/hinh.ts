@@ -27,7 +27,7 @@ export const KIT = {
   huy_hieu: false,   // Đơn 2: 8 × (sao1..5, khoa, nho_48) + an
   rank: false,       // Đơn 3: 10 × (bieu_tuong, bieu_tuong_64, khung_avatar, khung_avatar_96)
   rank_chung: false, // Đơn 3: sao, hao_quang_than, len_bac
-  nhiem_vu: false,   // Đơn 1: icon nhiệm vụ + rương (nhiem-vu/<ma>.png) — nếu kit có vẽ icon riêng
+  nhiem_vu: true,    // Đơn 1: icon nhiệm vụ + rương (nhiem-vu/<ma>.png) + fx/sao_moi_sang.png — kit về 29/09 (design/bk-ui-src/Mission, #09–24 + #28)
   the_gioi: false,
   sticker_tg: false, // bộ sticker bình luận Thế giới BK (Thùy mua — spec-the-gioi-bk §8) ⇒ the-gioi/sticker/<ma>.png; tắt = emoji to   // Đơn 5: Thế giới BK — the-gioi/*.png · the-gioi/tin/<kieu>.png · the-gioi/tuong-tac/<ma>.png
 }

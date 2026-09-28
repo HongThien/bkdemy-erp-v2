@@ -31328,3 +31328,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - App: lib/thegioi.ts (type + thaCamXuc/guiBinhLuan/goBinhLuan/anBinhLuan/layChiTiet) · TheGioiHS.tsx (NutThich giữ-để-chọn · DaiCamXuc ·
   DongTuongTac · BongBL · TamBinhLuan · TamCamXuc; nút đổi màu ngay, số đếm lấy từ DB; vá tại chỗ ở mọi tab + tấm đang mở) · hinh.ts
   KIT.sticker_tg + anhSticker · mauTheGioi + XemMauGami tt 1..11. tsc sạch · check:style-hs ✔. Đơn 5 + spec §5 sửa theo.
+
+### 29/09 (12) — Kit Đơn 1 Nhiệm vụ về → ghép vào app, dựng lại màn Nhiệm vụ theo ảnh toàn cảnh
+- Thùy tải về `design/bk-ui-src/Mission/Mission_01..28.png`. Map: #09–24 = N1 N2 N3 T1 T2 T3 T4 M1 M2 chang ngay tuan thang ruong_dong ruong_mo
+  vong_quay (đúng DANH SÁCH GIAO, đã soi hình) · #25–27 trùng byte #22–24 (bỏ) · #28 = fx sao_moi_sang. Nén → public/bk-ui/hs/gami/nhiem-vu/<mã>.png
+  (160², ~45KB) + fx/sao_moi_sang.png (384²). KIT.nhiem_vu = true.
+- NhiemVuHS: dựng lại NhiemVuView theo #01 — thẻ viền style + tiêu đề ✦ (bỏ dải màu), mỗi nhiệm vụ 1 ô con icon to bên trái luôn hiện (trước bị ✓
+  thay mất icon), "+10 ✦" + vòng tick tròn bên phải, Chặng có huy hiệu to + thanh CẢ THÁNG với mốc 10/20/30, khối Tuần dòng gọn + hàng 4 rương nối
+  dây (rương mở có nhãn +75 EXP, tuần hiện tại có khung). Bỏ 2 màu rgba gõ tay. tsc sạch · check:style-hs ✔. Soi 375×812: nhiem_vu tt=1, album tt=3.
+- Ghi chú quy trình vào HANDOFF-PIPELINE §8 (đánh số lệch + hình trùng ⇒ soi rồi mới map).
