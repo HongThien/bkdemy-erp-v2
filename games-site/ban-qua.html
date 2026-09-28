@@ -105,14 +105,16 @@ let T=THEMES.dong_co;
 
 // ---------- ĐẠN (Thùy 28/09: rộng thì yếu, hẹp thì mạnh) ----------
 // r = bán kính nổ; he = hệ số điểm ở TÂM (mép còn 40%); crat = hố đất.
+// he CÂN BẰNG BẰNG GIẢ LẬP 28/09 (?gia_lap=1, lib/ban-qua-gia-lap.js): tay nghề TB ⇒ Thường ≈ Bom to ≈ Nảy (±5%), Chùm/Xuyên ≈ +10% (đạn 'xịn' Nhất dễ quay ra).
+// Trước cân: Chùm 52 · Xuyên 50 · Nảy 37 · Thường 32 · Bom to 27.
 const DAN={
   thuong:{ten:'Thường',ic:'❄️',r:60,he:1.0,crat:44,mau:'#ffffff',sz:13,hiem:1},
-  bomto:{ten:'Bom to',ic:'💣',r:120,he:.55,crat:80,mau:'#3b3f55',sz:19,hiem:2},
-  xuyen:{ten:'Xuyên',ic:'🎯',r:30,he:1.6,crat:22,mau:'#ff3b5c',sz:9,hiem:3},
-  chum:{ten:'Chùm',ic:'🎆',r:46,he:.55,crat:30,mau:'#c77dff',sz:12,hiem:2,tach:3},
-  nay:{ten:'Nảy',ic:'🏀',r:60,he:1.0,crat:42,mau:'#ff8a2b',sz:14,hiem:2,nay:2}
+  bomto:{ten:'Bom to',ic:'💣',r:120,he:.76,crat:80,mau:'#3b3f55',sz:19,hiem:2},
+  xuyen:{ten:'Xuyên',ic:'🎯',r:30,he:1.27,crat:22,mau:'#ff3b5c',sz:9,hiem:3},
+  chum:{ten:'Chùm',ic:'🎆',r:46,he:.42,crat:30,mau:'#c77dff',sz:12,hiem:2,tach:3},
+  nay:{ten:'Nảy',ic:'🏀',r:60,he:.95,crat:42,mau:'#ff8a2b',sz:14,hiem:2,nay:2}
 };
-const TA_DAN=D=>`tầm ${D.r>=100?'rất rộng':D.r>=55?'vừa':D.r>=40?'hẹp ×3':'rất hẹp'} · ${D.he>=1.5?'điểm ×'+D.he:D.he>=1?'điểm ×1':'điểm ×'+D.he}`;
+const TA_DAN=D=>`tầm ${D.r>=100?'rất rộng':D.r>=55?'vừa':D.r>=40?'hẹp, tách 3':'rất hẹp'} · điểm ×${D.he}${D.tach?' mỗi viên':''}`;
 // Trọng số vòng quay theo giải (Nhất dễ ra đạn xịn). Bản chính thức: bảng ở DB.
 const QUAY={1:{thuong:12,nay:18,chum:22,bomto:22,xuyen:26},2:{thuong:26,nay:22,chum:20,bomto:17,xuyen:15},3:{thuong:40,nay:25,chum:15,bomto:12,xuyen:8}};
 function quay3(giai){const w={...QUAY[giai]||QUAY[3]},out=[];for(let k=0;k<3;k++){const tot=Object.values(w).reduce((a,b)=>a+b,0);let r=Math.random()*tot;
@@ -435,5 +437,6 @@ window.__bq={get pha(){return pha},get DS(){return DS},get hop(){return hop},get
 })();
 </script>
 <script src="lib/bk-tra-sua.js"></script>
+<script>if(/gia_lap=1/.test(location.search)){const s=document.createElement('script');s.src='lib/ban-qua-gia-lap.js';document.head.appendChild(s)}</script>
 </body>
 </html>

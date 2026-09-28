@@ -95,6 +95,22 @@
   Đo (mô phỏng 4.000 phát bắn "bừa" góc 45–75°, lực 30–90, gió ngẫu nhiên): **2,7% trúng hộp trời** ⇒ lớp 10 bạn ≈ 1/4 số ván có người ăn.
 - Khung toàn cảnh nâng mặt đất lên trên bảng điều khiển (trước đó thẻ đạn đè khẩu súng); vùng hộp trời tránh bảng gió + bảng điểm.
 
-## 6. Còn hỏi Thùy
+## 5d. Cân đạn bằng giả lập (Thùy 28/09: "không cân đối các loại đạn")
+
+Giả lập `games-site/lib/ban-qua-gia-lap.js` (mở `ban-qua.html?gia_lap=1` → nút 🧪): đúng vật lý + điểm của game; mỗi phát = 1 map mới
+(vì game reset map mỗi lượt). HS nhắm nơ 1 hộp đất ngẫu nhiên, lệch góc/lực theo tay nghề (giỏi ±2,5°/±3,4 · TB ±6,8°/±8,5 · kém ±13,6°/±17), KHÔNG bù gió.
+
+| Đạn | hệ số cũ → mới | TB điểm (TB) TRƯỚC | SAU (8 map, 200 phát/ô) | giỏi / kém | % trúng |
+|---|---|---|---|---|---|
+| Thường | 1,0 → 1,0 | 32 | **38** | 41 / 27 | 79% |
+| Bom to | 0,55 → **0,76** | 27 (bét) | **36** | 42 / 29 | 80% |
+| Nảy | 1,0 → **0,95** | 37 | **39** | 42 / 31 | 81% |
+| Chùm | 0,55 → **0,42** mỗi viên | 52 (gần ×2) | **41** | 45 / 33 | 87% |
+| Xuyên | 1,6 → **1,27** | 50 | **41** | 44 / 31 | 69% |
+
+Đích CTO chọn: Thường ≈ Bom to ≈ Nảy (±5%), đạn "xịn" Chùm/Xuyên ≈ +8–10% (vì vòng quay cho Nhất dễ ra xịn — Thùy §4#17). Mỗi đạn khác
+nhau ở CÁCH ra điểm (Xuyên trúng ít mà trúng đậm; Chùm/Bom to dễ trúng mà điểm vụn), không khác ở kỳ vọng.
+⚠ "Chính xác 100%" đang xảy ra ~20% số phát (Chùm 46% vì 3 viên) — xem §6.
+
 - Chế độ đội: đạn trúng xe đội mình có mất máu? bắn trúng hộp quà có cộng điểm đội? (CTO tạm: có mất máu nhưng không tính điểm; đội chỉ bắn nhau)
 - EXP đội: rương Vàng (TB 300) / Bạc (TB 250) của Mở Rương ⇒ TB ~260–275/HS, **cao hơn mốc 200**. Giữ, hay đội thua = Gỗ (175)?

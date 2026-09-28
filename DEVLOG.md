@@ -30531,3 +30531,10 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Thùy "OK": vòng quay đổi xu thật trong trần 30 · lượt quay = ≥2 nhiệm vụ ngày của môn · nhiệm vụ lẻ chỉ Điểm Chặng · bỏ thẻ ×2
   rank · đua tháng/lớp không trả xu app · chia 10/15/5 · bảng 20/30/50/100/200 (40/35/18/6/1%). Thùy hỏi lại danh sách nhiệm vụ
   cụ thể ⇒ trình lại N1–N3 / T1–T4 / M1–M2 trong chat, chờ gật.
+
+## 2026-09-28 (8) — Bắn Quà: cân đạn bằng giả lập
+- Thùy: "đạn có vẻ không cân đối". Viết giả lập trong trang (đúng vật lý/điểm game, 1 phát/map, 3 tay nghề, không bù gió).
+  Trước: Chùm 52 · Xuyên 50 · Nảy 37 · Thường 32 · Bom to 27 (tay nghề TB). Chỉnh hệ số: Bom to .55→.76 · Chùm .55→.42 · Xuyên 1.6→1.27 · Nảy 1→.95.
+  Sau (8 map): Bom to 36 · Thường 38 · Nảy 39 · Chùm 41 · Xuyên 41. Lưu thành `lib/ban-qua-gia-lap.js` (?gia_lap=1) để chỉnh số sau này tự đo lại.
+- Sai/sửa: dòng nạp `document.write('<script …></script>')` trong HTML — chuỗi `</script>` đóng thẻ script ngoài sớm ⇒ SyntaxError
+  (heredoc Node nuốt mất `\` của `</script>`). Đổi sang createElement. Giả lập nạp sau `load` ⇒ nút không hiện: gắn ngay nếu readyState=complete.
