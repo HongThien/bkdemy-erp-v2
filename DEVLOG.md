@@ -30088,3 +30088,35 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Thùy hỏi "sao cả trung tâm chỉ 2–3 ly, 300 buổi cơ mà" — giải thích: lớp 10 bạn (1 Nhất · 1 Nhì · 8 Giải 3) ⇒ 1,15%/buổi ⇒ 300 buổi ≈ 3,5 ly
   (con số 2–3 cũ dùng 253 buổi đo DB + lớp 8 bạn). Thùy chốt gấp đôi: mig `202609281052` ⇒ 1 / 0,5 / 0,1 % ≈ 2,3%/buổi ≈ 7 ly/tháng,
   mỗi lớp ~1,5 năm 1 lần. "Jackpot thì phải khó" — đừng tự đề xuất nới thêm.
+
+## 2026-09-28 (3) — LUỒNG KHO end-to-end: mở thiết kế (Sparring, chưa build) — `spec-luong-kho.md`
+
+- **Thùy mở bài:** đưa tài liệu vào ⇒ tự đề xuất cập nhật bản đồ, gán dạng, giải đúng phạm vi, vẽ hình, chuyển MCQ, vào kho đạt chuẩn;
+  tài liệu lưu cấu trúc để tái dùng. 6 skill; skill "tư duy bản đồ" làm CÙNG CEO, không solo.
+- **Thùy chốt:** (A1) mỗi môn logic riêng, làm **Toán Đại trước** · (A2) chạy trên **máy CEO**, vài trăm PDF / mấy chục nghìn câu,
+  cần liên tục + ổn định chứ không cần nhanh · (A3) PDF chữ + scan + Word, ~50% có đáp án · (B1) **dạng** = cùng kiến thức–kĩ năng–
+  phương pháp; bài quá dễ gộp vào dạng "cơ bản" của phần đó; **cụm** = hình thái đề của cùng dạng (tìm x tổng / hiệu / tích),
+  KHÔNG phải đổi số.
+- **Đo (DB live, phiên read-only):** Đại 685 dạng / 26.760 câu · `mo_ta_ngan` ~0 · cụm mới phủ 106/685 dạng, 19% câu · 176 dạng ≥50 câu
+  chưa có cụm · 1.836 câu ở dạng chờ · thiếu đáp án 1.394 / lời giải 1.796 · K12 là ổ nợ (589/6.056 đã duyệt).
+- **Sai/bài học:** (1) subagent khảo sát báo 3 nhánh kho "chưa merge" — kiểm `git rev-list main..origin/x` ra 0 cả 3 ⇒ báo cáo subagent
+  phải verify trước khi đưa CEO. (2) `dang_ai_de_xuat` khớp `dang_chinh` 98,6% KHÔNG phải độ chính xác — cột được ghi bằng chính
+  `dang_chinh` lúc insert. (3) heredoc Git Bash trên máy này nuốt 1 lớp `` ⇒ regex `s` thành `s`, chuỗi kết nối bị cắt đuôi
+  ("database postgre does not exist") — viết script ra file thay vì heredoc. (4) `.env` chỉ có `DATABASE_URL` = `claude_build` (role ghi),
+  KHÔNG có `DATABASE_URL_RO` ⇒ lệch CLAUDE.md §2.1; phiên này tự khoá `default_transaction_read_only`.
+- **Phát hiện phụ:** `auto-giai-scheduler.mjs:92` regex `(d+)` thiếu `` ⇒ `napN` luôn 0 (chưa sửa, đã tách việc riêng) ·
+  `/nhap-de-thi` còn ghi đường B `toan_de_thi` đã ngừng dùng.
+- **Còn:** 7 câu ⛔ ở `spec-luong-kho.md` §6 chờ Thùy.
+
+## 2026-09-28 (3) — Nghiên cứu + đề xuất THÀNH TỰU & NHIỆM VỤ ngày/tuần/tháng cho app HS (chưa code)
+
+- Thùy: achievement là phần "cực kì quan trọng" của gamification + hệ daily/weekly/monthly quest; đích = HS thấy danh sách
+  thành tựu/nhiệm vụ/phần thưởng để có động lực làm bài trên app.
+- **Làm:** 3 nhánh song song (soi hiện trạng DB/code · ~20 hệ achievement game/app · ~20 hệ quest) ⇒ `spec-thanh-tuu-nhiem-vu.md`
+  (taxonomy, 26 thành tựu 6 nhóm 4 bậc, quest ngày thanh 100 ĐH + 3 nhiệm vụ / tuần rương chọn 1 + nhiệm vụ dồn / tháng 20 tem +
+  thử thách cá nhân kẹp trần, streak TUẦN, kiến trúc pure-derive, 6 câu chờ CEO chốt Q1–Q6).
+- **Phát hiện hiện trạng:** `thanh_tich_loai` có catalog nhưng KHÔNG có sổ "HS đạt gì lúc nào"; tự luyện/HTĐ/bổ trợ không sinh EXP;
+  `chuoi_di_hoc` tính ở client (nợ §2.0); EXP May mắn nằm riêng `may_man_hs_luot`; `qlht_xu_ledger.loai` CHECK chưa có loại cho
+  thưởng tự động + `nguoi_tao` NOT NULL FK nhan_su ⇒ phải xử khi build.
+- **Quyết định CTO (chờ CEO):** thưởng chủ đạo = danh hiệu/khung/điểm thành tựu (không tiêu), xu/EXP vừa phải ≤25% xu tháng;
+  đo trên ô (HS × dạng) chống farm; không bảng xếp hạng toàn trường trong màn thành tựu.
