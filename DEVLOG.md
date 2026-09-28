@@ -30281,3 +30281,11 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   (khống chế cạnh dài) · khói đen che lửa + số sát thương (vẽ THEO LỚP: khói < đất < lửa/tia < chữ; chớp màn riêng) · emoji ⚪ không thấy trên nền tối.
 - Verify: auto-play 10 lượt bắn thật → bảng + EXP đúng TB 200, 0 lỗi. Screenshot giữa lúc nổ phải dùng `?cham=` (nổ chỉ ~0,3s).
 - Trang tạm `games-site/_xem-asset/` (xem asset + render sprite) KHÔNG commit.
+
+## 2026-09-28 (6) — Bắn Quà v1: tường đá, map 2400 + camera, hộp không máu + nơ +20% + mọc lại
+- Thùy chơi thử v0, 3 góp ý (spec §5b): tường chắn trước súng · map to + nhiều hộp + hộp treo trời · bỏ HP (người sau lợi), chỉ "chính xác 100%" +20%.
+- Viết lại script (1 khối): lớp đá `DA` riêng không phá được; thế giới 2400 + camera lerp (toàn cảnh ↔ bám đạn) + mini-map; hộp trúng là vỡ, nơ = tâm nắp;
+  `mocLai()` đầu mỗi lượt; hộp vàng treo 3 bóng bay nhấp nhô.
+- Sai/sửa: hộp chồng nhau (điều kiện chỗ trống viết rối + bãi quá chật: tổng bề rộng ≈ bề rộng bãi) ⇒ điều kiện tách đất/trời, hộp nhỏ lại,
+  bớt hộp đất thêm hộp trời, hết chỗ thì BỎ (không fallback random). Test gọi `vaoTran()` khi DS rỗng ⇒ nhảy thẳng màn kết quả trống (lỗi của test, không phải game).
+- Verify: tường chặn phát 8° + còn nguyên; trúng nơ 40→48; auto 10 lượt bắn bừa 7/10 trúng, hộp luôn 16/lượt; 8 map 0 chồng.

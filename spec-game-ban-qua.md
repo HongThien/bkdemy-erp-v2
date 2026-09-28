@@ -70,6 +70,18 @@
 - CHƯA: chế độ đội · nối ERP (danh sách/giải từ Buổi học, vòng quay + EXP rút ở DB, trà sữa theo `game_lop_qua_dac_biet`) · iPad làm tay cầm ·
   thêm bối cảnh · Thùy chơi thử & chỉnh số.
 
-## 6. Còn hỏi Thùy
+## 5b. v1 (Thùy 28/09 chơi thử v0 ⇒ 3 góp ý) — THAY luật hộp của v0
+
+| # | Góp ý Thùy | Đã làm |
+|---|---|---|
+| 1 | Sau súng phải có địa hình chắn, buộc ngẩng lên trời, không bắn ngang | **Tường đá KHÔNG phá được** (lớp `DA` riêng, `khoet` không đụng) cao tới y≈330 ngay trước súng ⇒ bắn thẳng ngang là đâm tường |
+| 2 | Map to hơn · nhiều hộp hơn · khó ở điểm cao chứ không khó bắn trúng · treo hộp đặc biệt trên trời | Thế giới **2400 px** (1,5×) + **camera**: ngắm = lùi xa thấy cả map, đạn bay = bám đạn zoom gần, nổ = giữ rồi lùi ra, mini-map khi zoom. **12–14 hộp dưới đất + 4 hộp vàng treo bóng bay**. Điểm ghi trên hộp: gần nhỏ 20 · vừa 40 · xa to 70 · **trên trời vàng 120** |
+| 3 | Người bắn sau lợi vì phá hộp dở · bỏ HP · chỉ có "Chính xác 100%" = trúng điểm đặc biệt ⇒ +20% | **Bỏ máu: trúng là vỡ.** Điểm = điểm hộp × hệ số đạn × (1 → 0,4 ra mép nổ). **Trúng NƠ** (vòng nhấp nháy trên nắp hộp, bán kính 18) ⇒ "🎯 CHÍNH XÁC 100%! +20%". **Hộp vỡ mọc lại chỗ mới đầu lượt sau** ⇒ ai cũng đối mặt số hộp như nhau |
+
+- Hệ số đạn (thay "sát thương"): Thường ×1 r60 · Bom to ×0,55 r120 (dính nhiều hộp) · Xuyên ×1,6 r30 · Chùm 3×0,55 r46 · Nảy ×1 r60.
+- Đo 28/09 (máy bắn "bừa" góc 45–75°, lực 30–90, gió ngẫu nhiên, 10 lượt): **7/10 phát trúng**, điểm 0–51; mỗi lượt đều thấy 16 hộp (mọc lại đúng).
+  Bắn trúng nơ hộp 40 ⇒ 48 (đúng +20%). 8 lần sinh map: 0 hộp chồng nhau (hết chỗ thì bỏ bớt 1 hộp, không chồng).
+
+
 - Chế độ đội: đạn trúng xe đội mình có mất máu? bắn trúng hộp quà có cộng điểm đội? (chưa trả lời — CTO tạm: có mất máu nhưng không tính điểm; đội chỉ bắn nhau)
 - EXP đội: rương Vàng (TB 300) / Bạc (TB 250) của Mở Rương ⇒ TB ~260–275/HS, **cao hơn mốc 200**. Giữ, hay đội thua = Gỗ (175)?
