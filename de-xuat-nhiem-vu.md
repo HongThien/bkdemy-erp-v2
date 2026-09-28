@@ -74,26 +74,28 @@ Cuối tuần: đủ 12 nhiệm vụ → rương tuần · Cuối tháng: cấp 
 |---|---|---|
 | **Ngày** (sống 3 ngày) | N1 Pass 1 lượt Thử thách · N2 Làm đúng 20 câu trên app · N3 Sửa sai: làm đúng lại 2 câu thuộc dạng từng sai (sai ở ET / BTVN / MT / app đều tính) | +10 / cái |
 | **Tuần** (dồn tới hết tháng) | T1 Nộp đúng hạn mọi BTVN của tuần · T2 ≥ 1 bài ET đúng ≥ 80% · T3 Pass Thử thách ở 4 ngày khác nhau · T4 Đưa 1 dạng từ yếu → đạt | +40 / cái |
-| **Rương tuần** | Xong 12 nhiệm vụ trong tuần | +60 · **+100 EXP** + tỉ lệ nhỏ sticker hiếm |
+| **Rương tuần** | Xong 12 nhiệm vụ trong tuần | +60 · **+75 EXP** (chỉ EXP — Thùy 28/09) |
 | **Tháng** | M1 MT bứt phá (hạng tăng so với tháng trước **hoặc** top 30% khối) · M2 Pass Thử thách ở 15 ngày | +150 / cái |
 
 **Chặng tháng:** 30 cấp × 50 Điểm Chặng, reset đầu tháng.
 
+**Thùy 28/09: quà hiện vật / quyền lợi ở mốc cấp làm rắc rối ⇒ quy HẾT ra EXP thưởng thêm.**
+
 | Cấp | Quà |
 |---|---|
-| Mỗi cấp | +30 EXP |
-| 10 | Sticker dùng trên TV lớp |
-| 20 | Quyền **chọn ô trước** ở Chiếm Đất buổi kế tiếp |
-| 30 | **Khung tháng** (sưu tập) + **200 EXP** |
+| Mỗi cấp | +25 EXP |
+| Mốc 10 | **+100 EXP** thưởng thêm |
+| Mốc 20 | **+150 EXP** thưởng thêm |
+| Mốc 30 | **+200 EXP** thưởng thêm |
 
-**Tối đa 1 môn:** 900 + 200 + 4 rương × 100 = **1.500 EXP = 15 xu**.
+**Tối đa 1 môn:** 30 × 25 = 750 + mốc 450 + 4 rương × 75 = 300 ⇒ **1.500 EXP = 15 xu** (đúng phần nhiệm vụ trong trần 30).
 
 ### 2.3 Ai được bao nhiêu (ước lượng 1 tháng, HS 1 môn)
 
 | Kiểu HS | Vòng quay | Nhiệm vụ | Thành tựu | **Xu từ app** | + xu từ lớp | **Tổng xu / tháng** |
 |---|---|---|---|---|---|---|
 | **Cày đều** (app gần như mỗi ngày) | ~28 lượt → 10 | cấp 30 + 4 rương → 15 | ~3–5 | **28–30** (chạm trần) | ~25–35 | **~55–65** ≈ 2–3 quà |
-| **Chăm vừa** (~3 ngày/tuần) | ~12 lượt → 4 | cấp ~18 + 1–2 rương → 7 | ~2 | **~13** | ~25 | **~38** |
+| **Chăm vừa** (~3 ngày/tuần) | ~12 lượt → 4 | cấp ~18 (450 + mốc 10: 100) + 1–2 rương → ~7 | ~2 | **~13** | ~25 | **~38** |
 | **Không dùng app** | 0 | cấp ~8 → 2 | ~1 | **~3** | ~20–25 | **~25** |
 
 **Mỗi môn một trần 30 riêng** (B-L1). Giai đoạn đầu chỉ Toán.
@@ -123,3 +125,4 @@ Cuối tuần: đủ 12 nhiệm vụ → rương tuần · Cuối tháng: cấp 
 | Chia 10 / 15 / 5 | ✅ Vòng quay / Nhiệm vụ / Thành tựu | Đã chốt 28/09 |
 | Bảng thưởng vòng quay | ✅ 20 / 30 / 50 / 100 / 200 EXP (40 / 35 / 18 / 6 / 1%) | Đã chốt 28/09 |
 | Danh sách nhiệm vụ §2.2 | N1–N3 · T1–T4 · M1–M2 · chặng 30 cấp | Thùy hỏi lại danh sách 28/09 — chờ gật |
+| Quà mốc chặng + rương | ✅ Chỉ EXP: cấp 25 · mốc 10/20/30 = +100/150/200 · rương 75 | Đã chốt 28/09 |

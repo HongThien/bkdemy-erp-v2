@@ -30581,3 +30581,9 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   Thanh "Đã gán n/m hình" thay cho hạn mức; gán đủ thì bàn phím tự đóng.
 - Verify (375×812, hàm ghi giả): chưa đủ + chưa gõ ⇒ Hoàn thành không nộp; gán đủ đúng ⇒ thắng +thưởng; đổi chỗ 2 hình ⇒ thua, 3 ô đỏ (đúng
   số ô của 2 hình sai), còn lại xanh.
+
+## 2026-09-28 (18) — Quà chặng tháng + rương tuần: quy hết ra EXP
+
+- Thùy: quà mốc cấp 10/20 (sticker TV, chọn ô trước Chiếm Đất) rắc rối ⇒ quy hết ra EXP. Chia lại giữ đúng 15 xu nhiệm vụ:
+  mỗi cấp 25 EXP (750) + mốc 10/20/30 = +100/+150/+200 (450) + rương tuần 75 EXP × 4 (300) = 1.500 EXP. Bỏ luôn khung tháng và
+  sticker hiếm trong rương. Danh sách nhiệm vụ N1–N3/T1–T4/M1–M2 vẫn chờ gật.
