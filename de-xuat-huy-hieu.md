@@ -38,7 +38,7 @@
 | MT top khối | **Nguyễn Hiền** | Trạng nguyên trẻ nhất sử Việt, **đỗ đầu năm 12–13 tuổi** — đúng tuổi HS | **Zeus** | Vua của các vị thần, đứng trên đỉnh Olympus |
 | Hạng MT tăng (bứt phá) | **Thánh Gióng** | Cậu bé chưa biết nói bỗng **vươn vai thành tráng sĩ** | **Phoenix** | Phượng hoàng tái sinh từ tro, bay vút lên |
 | Ngày pass Thử thách | **Thạch Sanh** | Vượt hết **thử thách** này đến thử thách khác (chằn tinh, đại bàng…) | **Hercules** | 12 kỳ công — 12 thử thách |
-| *(tuỳ chọn)* Lấp lỗ yếu → đạt | **Nữ Oa** | **Luyện đá vá trời** — lấp chỗ thủng bầu trời | **Hephaestus** | Thần thợ rèn — rèn lại, sửa chỗ hỏng |
+| *(tuỳ chọn)* Lấp lỗ yếu → đạt | **Cao Bá Quát** | "Văn hay chữ tốt" — **chữ xấu** bị quan đuổi, khổ luyện thành người viết chữ đẹp nổi tiếng ⇒ **biến điểm yếu thành điểm mạnh** *(sửa 28/09: bản trước ghi Nữ Oa — thần thoại Trung Quốc, sai bộ Việt Nam)* | **Hephaestus** | Thần thợ rèn — rèn lại, sửa chỗ hỏng |
 | *(tuỳ chọn)* Leo Rank | **Quang Trung** | Áo vải cờ đào → lên ngôi Hoàng đế — đúng mạch "người thường → đỉnh cao" | **Nike** | Nữ thần Chiến Thắng |
 
 **CTO đề xuất: Bộ A — Việt Nam.**
@@ -53,7 +53,9 @@
 - Nguyễn Hiền → mũ trạng nguyên.
 - Quang Trung → cờ đào.
 
-Nhân vật truyền thuyết thì vẽ được: Thánh Gióng cưỡi ngựa sắt · Sơn Tinh + núi · Thạch Sanh + cây cung · Nữ Oa vá trời.
+Nhân vật truyền thuyết thì vẽ được: Thánh Gióng cưỡi ngựa sắt · Sơn Tinh + núi · Thạch Sanh + cây cung. Cao Bá Quát (người thật) → bút lông + nghiên mực.
+
+**Kiểm gốc tích (28/09):** mọi tên Bộ A là người / truyền thuyết Việt. Riêng chuyện Mạc Đĩnh Chi học bằng đom đóm có bản gốc Trung Quốc (Xa Dận), nhưng ở Việt Nam vẫn kể phổ biến gắn với Mạc Đĩnh Chi — giữ, ghi chú.
 
 **Hiển thị:** tên lớn là **tên nhân vật**, dòng nhỏ bên dưới là **việc cần làm**. Ví dụ:
 > **Thánh Gióng ★★★** — *Hạng MT tăng 6 lần*

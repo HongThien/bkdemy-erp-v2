@@ -30710,3 +30710,10 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - **Còn:** dựng lại Home 9–12 theo BỐ CỤC CHUNG khi có kit v2 · cấp/XP đang chỉ có công thức JS (`src/gami/level.js`) ⇒ phải chuyển sang hàm
   Postgres (§2.0) trước khi đưa lên Home · 2 file Thùy thả vào `public/bk-ui/` (ảnh gốc + lofi zip) đã chép sang design/handoff — bản trong
   public/ nên gỡ (chờ Thùy gật, luật xoá).
+
+## 2026-09-28 (26) — Sửa tên huy hiệu: Nữ Oa → Cao Bá Quát
+
+- Thùy bắt lỗi: bộ "Việt Nam" mà có Nữ Oa (thần thoại Trung Quốc). Thay bằng Cao Bá Quát ("Văn hay chữ tốt": chữ xấu → khổ luyện →
+  chữ đẹp nổi tiếng = biến điểm yếu thành điểm mạnh, khớp huy hiệu "dạng yếu → đạt"). Rà lại cả bộ: còn lại đều Việt; ghi chú chuyện
+  đom đóm của Mạc Đĩnh Chi có bản gốc Trung Quốc (Xa Dận) nhưng VN kể phổ biến gắn với ông.
+- Bài học: đặt bộ tên "theo gốc X" thì phải kiểm gốc TỪNG tên trước khi đưa CEO — t chọn theo độ khớp ý nghĩa mà quên kiểm gốc tích.
