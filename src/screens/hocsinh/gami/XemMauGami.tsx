@@ -14,6 +14,8 @@ import { HoSoView, ChonKhoe, TheTVHS } from '../HoSoHS'
 import { HinhHuyHieu, BieuTuongBac, SaoBac, AvatarKhung, IconNV } from './HinhGami'
 import { KIT, BAC, MAU_HH, ICON_NV } from './hinh'
 import * as M from './mauGami'
+import { TheGioiView, TamKhen, TamKetBan } from '../thegioi/TheGioiHS'
+import * as TG from '../thegioi/mauTheGioi'
 
 const noop = () => {}
 const MAN: { id: string; ten: string; tt: string[] }[] = [
@@ -23,6 +25,7 @@ const MAN: { id: string; ten: string; tt: string[] }[] = [
   { id: 'ho_so', ten: 'Hồ sơ', tt: ['Em khá (Captain)', 'Em mới (Novice)', 'Em bậc thần', 'Chọn 3 huy hiệu khoe'] },
   { id: 'the_tv', ten: 'Thẻ TV lớp', tt: ['3 mẫu'] },
   { id: 'bo_hinh', ten: 'Bộ hình', tt: ['Tất cả hình'] },
+  { id: 'the_gioi', ten: 'Thế giới BK', tt: ['Thế giới', 'Thế giới (thẻ gộp mở)', 'Bạn bè', 'Kết bạn', 'Lớp + khen', 'Lớp + menu ⋯'] },
 ]
 
 function Dau({ tieuDe, phu }: { tieuDe: string; phu: string }) {
@@ -35,10 +38,27 @@ function Dau({ tieuDe, phu }: { tieuDe: string; phu: string }) {
   )
 }
 
+function MauTheGioi({ tt }: { tt: number }) {
+  // Đơn 5 (design/DON-HANG-GAMI-HS.md): 1 Thế giới · 2 thẻ gộp mở · 3 Bạn bè · 4 tấm Kết bạn · 5 Lớp + tấm khen · 6 Lớp + menu ⋯
+  const tab = tt === 3 || tt === 4 ? 'ban' : tt >= 5 ? 'lop' : 'tg'
+  const kenh = tab === 'ban' ? TG.KENH_BAN : tab === 'lop' ? TG.KENH_LOP : TG.KENH_TG
+  const [icon, setIcon] = useState<string | null>('lua')
+  const [cau, setCau] = useState<string | null>('c01')
+  return (
+    <TheGioiView tab={tab} onTab={noop} kenh={kenh} loi={null} banBe={TG.BAN_BE} hien="ten" onHien={noop}
+      moGop={tt === 2 ? { nhat_buoi: true } : {}} onMoGop={noop} menuKhoa={tt === 6 ? 'no_luc:em' : null} onMenu={noop}
+      onKhen={noop} onAnTin={noop} onDongY={noop} onDeSau={noop} onMoKetBan={noop} onBack={noop}>
+      {tt === 4 && <TamKetBan tim="" onTim={noop} ds={TG.GOI_Y} onGui={noop} onDong={noop} />}
+      {tt === 5 && <TamKhen tin={TG.TIN_DANG_KHEN} danhMuc={TG.DANH_MUC} icon={icon} cau={cau} onIcon={setIcon} onCau={setCau} onGui={noop} dangGui={false} loi={null} onDong={noop} />}
+    </TheGioiView>
+  )
+}
+
 function Man({ man, tt }: { man: string; tt: number }) {
   const [mo, setMo] = useState<string | null>(tt === 1 ? 'athena' : null)
   const [mon, setMon] = useState('Toán')
   const [dong, setDong] = useState(false) // đóng lớp phủ để xem màn phía sau
+  if (man === 'the_gioi') return <MauTheGioi key={tt} tt={tt} />
   if (man === 'nhiem_vu') {
     const d = [M.NV_GIUA_THANG, M.NV_DAU_THANG, M.NV_CHUA_MO][tt - 1] ?? M.NV_GIUA_THANG
     return <Khung><Dau tieuDe="Nhiệm vụ Toán" phu="Xong nhiệm vụ → Điểm Chặng → lên cấp nhận EXP (đổi ra xu cuối tháng)." /><NhiemVuView d={d} onThuThach={noop} onTuLuyen={noop} onVongQuay={noop} /></Khung>

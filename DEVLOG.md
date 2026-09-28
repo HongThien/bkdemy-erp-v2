@@ -31294,3 +31294,20 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - `spec-thanh-tuu-nhiem-vu.md` §0.7b (Hồ sơ đã build + còn thiếu danh hiệu/kỷ niệm mùa) · §0.8 C11 (dọn đường đổi vỏ; hình gamification = 1 bộ chung
   mọi style — CTO đề xuất, chờ Thùy). `spec-giao-dien-hs.md`: khối cập nhật 29/09 (chỉ còn RPG, STYLE-HS.md) + **§9 Style 2 Town** (kiểm hàng +
   kế hoạch 5 bước). HANDOFF: viết lại mục Giao diện HS (bỏ "5 skin" cũ), gamification thêm 29/09 + việc tiếp, ② thêm 4 bài học.
+
+## 2026-09-29 (10) — CODE SẴN Thế giới BK đợt 1 (worktree the-gioi-bk) — chờ hình Đơn 5
+
+- Thùy: "sau khi đặt đơn xong thì m code sẵn đi, rồi design xong ghép vào". Dò nguồn (agent Explore, t đối chiếu lại cột thật trong DB): sự kiện có
+  dòng thật + mốc giờ = buoi_giai · buoi_game_luot/qua · buoi_ban_qua(_doi/_hs) · hs_huy_hieu_dat · giai_thuong · thu_thach_luot · bai_lam; rank bậc +
+  nhiệm vụ chỉ tính tức thời (đợt sau); push_dang_ky chỉ cho nhân sự. Tiền tố tg_ đã là quy ước hàm trigger ⇒ bảng tên the_gioi_* / ban_be_*.
+- DB (mig 202609290108, áp --only): danh mục 20 icon + câu ✅ (bỏ câu ⚠) · the_gioi_khen (1 lượt/em/tin, đổi được; thầy cô = ns_id) · the_gioi_an_tin ·
+  the_gioi_cai_dat (tên|mã) · ban_be_loi_moi (1 dòng/cặp, chờ/đồng ý/để sau/huỷ) · the_gioi_log + trigger chung · _the_gioi_tin (suy tin S/A/B) ·
+  fn_the_gioi_kenh (tg = S riêng + A gộp theo loại, huy hiệu gộp 7 ngày; lop/ban chi tiết) · khen/ẩn/cài đặt · bạn bè (gửi = đồng ý luôn nếu bạn kia
+  đã mời; gợi ý cùng lớp/bạn chung; tìm tên/mã/lớp; em chế độ mã chỉ tìm được bằng đúng mã; BẠN vẫn thấy tên thật — đề xuất CTO, chờ Thùy).
+  Chạy thử trong transaction + ROLLBACK với 3 HS thật 9A1: 3 kênh · kết bạn → tab Bạn bè có tin · khen/đổi khen · 4 ca PHẢI lỗi đều bị chặn (câu sai loại,
+  icon lạ, tự khen, ẩn tin người khác) · chế độ mã (bạn thấy tên, người lạ thấy mã) · ẩn tin · thẻ gộp. SAI bắt được: gợi ý ghi "Cùng lớp 9K2" thay
+  vì lớp chung 9A1 (lấy lớp đầu của bạn kia) → sửa lấy đúng lớp chung. fn_the_gioi_kenh đầu khai stable mà ghi bảng tạm → volatile.
+- App: lib/thegioi.ts · thegioi/TheGioiHS.tsx (TheGioiView/TamKhen/TamKetBan chỉ vẽ + container nhớ dữ liệu từng tab, VÁ tại chỗ sau khen/ẩn/trả lời
+  lời mời) · thegioi/mauTheGioi.ts + XemMauGami man=the_gioi tt 1..6 · hinh.ts KIT.the_gioi + ICON_TIN/ICON_TG/anhTG/anhTin/anhTuongTac · ô Home
+  the_gioi (KHU + KHU_CAP2, icon TẠM o_pha_le trong rpg.anhO). tsc sạch · check:style-hs ✔ (24 file, 14 ô; file mới 0 màu gõ tay) · build:hs qua ·
+  soi 6 trạng thái RPG 375×812, 0 lỗi console. Chưa chạy với tài khoản HS thật (không có TK thử) — hàm DB đã thử bằng HS thật trong transaction.

@@ -13,6 +13,8 @@
 //   rank/<bac 1..10>/bieu_tuong.png · bieu_tuong_64.png · khung_avatar.png · khung_avatar_96.png
 //   rank/sao.png · rank/hao_quang_than.png · rank/len_bac.png
 //   fx/sao_moi_sang.png (vầng sáng lớp phủ sao mới — Đơn 1)
+//   the-gioi/<tab_the_gioi|tab_ban_be|tab_lop|ket_ban|loi_moi|tang_s|tang_a|tang_b|ruy_bang_s|thay_co_khen|dang_hoc|avatar_an_danh>.png
+//   the-gioi/tin/<kieu>.png · the-gioi/tuong-tac/<ma icon ở the_gioi_danh_muc>.png · fx/phao_giay.png   (Đơn 5 Thế giới BK)
 //   nhiem-vu/<ma>.png (ma: N1 N2 N3 T1..T4 M1 M2 · chang ngay tuan thang · ruong_dong ruong_mo · vong_quay)
 //   Tên file ChatGPT giao → tên ở đây: bảng cuối design/DON-HANG-GAMI-HS.md (Claude thu nhỏ nho_48 / bieu_tuong_64 / khung_avatar_96).
 // ============================================================================
@@ -25,6 +27,7 @@ export const KIT = {
   rank: false,       // Đơn 3: 10 × (bieu_tuong, bieu_tuong_64, khung_avatar, khung_avatar_96)
   rank_chung: false, // Đơn 3: sao, hao_quang_than, len_bac
   nhiem_vu: false,   // Đơn 1: icon nhiệm vụ + rương (nhiem-vu/<ma>.png) — nếu kit có vẽ icon riêng
+  the_gioi: false,   // Đơn 5: Thế giới BK — the-gioi/*.png · the-gioi/tin/<kieu>.png · the-gioi/tuong-tac/<ma>.png
 }
 
 // ── Huy hiệu ─────────────────────────────────────────────────────────────────
@@ -105,3 +108,13 @@ export const ICON_NV: Record<string, string> = {
 const NV_DUNG_LAI: Record<string, string> = { thu_thach: 'N1', tu_luyen: 'N2' }
 export const anhNV = (ma: string): string | null => (KIT.nhiem_vu ? `${GOC}/nhiem-vu/${NV_DUNG_LAI[ma] ?? ma}.png` : null)
 export const anhFxSaoMoi = (): string | null => (KIT.nhiem_vu ? `${GOC}/fx/sao_moi_sang.png` : null)
+
+// ── Thế giới BK (Đơn 5) — chưa có kit ⇒ emoji. Mã icon tương tác = the_gioi_danh_muc.ma (DB), không ghép tên ở màn.
+export const ICON_TIN: Record<string, string> = {
+  nhat_buoi: '🏆', game_nhat: '🎯', doi_thang: '🚩', tra_sua: '🧋', huy_hieu: '🏅', giai_thang: '🎖️', no_luc: '🔥', len_bac: '⬆️',
+}
+export const ICON_TG = { tab_the_gioi: '🌏', tab_ban_be: '🤝', tab_lop: '🏰', ket_ban: '➕', loi_moi: '💌', thay_co_khen: '👑', dang_hoc: '🟢', avatar_an_danh: '🧙' }
+export const anhTG = (ten: keyof typeof ICON_TG | 'ruy_bang_s' | 'tang_s' | 'tang_a' | 'tang_b'): string | null => (KIT.the_gioi ? `${GOC}/the-gioi/${ten}.png` : null)
+export const anhTin = (kieu: string): string | null => (KIT.the_gioi && ICON_TIN[kieu] ? `${GOC}/the-gioi/tin/${kieu}.png` : null)
+export const anhTuongTac = (ma: string): string | null => (KIT.the_gioi ? `${GOC}/the-gioi/tuong-tac/${ma}.png` : null)
+export const anhPhaoGiay = (): string | null => (KIT.the_gioi ? `${GOC}/fx/phao_giay.png` : null)

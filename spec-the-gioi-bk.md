@@ -127,6 +127,13 @@
 
 ## 10. Build
 
+> **ĐỢT 1 ĐÃ CODE SẴN 29/09 (chờ hình Đơn 5):** mig `202609290108_the_gioi_bk` (danh mục icon/câu · khen · ẩn tin · hiện tên/mã · bạn bè 1 dòng/cặp + log;
+> `_the_gioi_tin` suy tin từ Nhất buổi · Nhất game · đội thắng Bắn Quà · 🧋 · huy hiệu · giải tháng · nỗ lực (bài nộp + Thử thách, gộp 1/em/ngày/môn);
+> `fn_the_gioi_kenh(tg|ban|lop)` · `fn_the_gioi_khen` · `fn_the_gioi_an_tin` · `fn_the_gioi_cai_dat` · `fn_ban_be_*` · `fn_the_gioi_thay_co_khen`) ·
+> app: `src/screens/hocsinh/thegioi/TheGioiHS.tsx` (VIEW + container) · `src/lib/thegioi.ts` · ô Home `the_gioi` (icon TẠM cầu pha lê) ·
+> hình ở `gami/hinh.ts` cờ `KIT.the_gioi` (tắt ⇒ emoji) · xem mẫu `hs.html?xem=gami&man=the_gioi&tt=1..6`.
+> **Chưa:** tin "lên bậc rank" (cần nhật ký lên bậc) · nhiệm vụ/chuỗi ngày · dải "đang học" realtime · push HS · nút 👑 ở app GV · giới hạn số bạn / chặn.
+
 | Bước | Nội dung | Ước lượng |
 |---|---|---|
 | **1** | Tin từ sự kiện ĐÃ CÓ (Nhất buổi · game buổi · 🧋 · bài làm · nhiệm vụ · rank · huy hiệu) · 2 kênh · icon + câu meme · 👑 Thầy cô khen · chọn tên/mã · ẩn tin/tương tác · push HS gom 20h · "đang học cùng em" | ~1,5–2 tuần |
