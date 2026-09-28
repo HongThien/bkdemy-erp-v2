@@ -30654,3 +30654,15 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Camera: `camBamDan` giữ mặt đất trong khung (trước đó đạn lên cao là màn toàn trời).
 - Verify: bắn trúng xe mình máu không đổi; trận 2 đội chạy trọn; 4 đội dựng đúng. Console "SyntaxError" nhìn thấy là log CŨ còn lưu từ trang trước (tab mới: 0 lỗi).
 - Mục §6 spec: lần này cắt đuôi + ghi mục mới + dựng lại §6 (không replace mốc) — không lặp lỗi (7)/(8).
+
+## 2026-09-28 (22) — Huy hiệu: 10 LOẠI (không phải 3) · mỗi loại phủ 3 phương diện · mọi dòng đủ 5★
+
+- **Sai 2 lần liền, t hiểu lệch ý Thùy:** nháp 1 dồn 4–5★ vào 3 huy hiệu lớn Chăm chỉ/Thành tích/Tiến bộ (trái luôn H1 "mỗi dòng
+  5★" đã chốt — t tự bẻ để giảm số mẫu bản cứng); nháp 2 nhóm dòng theo phương diện. Thùy: "huy hiệu sao mới có 3 loại" → "ý t
+  không phải 3 loại huy hiệu, mà thành tựu phải để ý cả 3 phương diện" → "huy hiệu 10 loại như ban đầu chứ".
+- **Bài học:** (1) CEO thêm một NGUYÊN TẮC (3 phương diện) ≠ đổi CẤU TRÚC đã chốt (10 loại, 5★/dòng) — áp nguyên tắc vào trong
+  cấu trúc cũ, đừng dựng cấu trúc mới quanh nó. (2) Muốn đổi 1 điều đã chốt (H1) vì lý do vận hành (số mẫu bản cứng) thì phải
+  NÊU RA và hỏi, không lặng lẽ đổi trong bản nháp.
+- **Làm:** spec A5.5–A5.6 viết lại (10 loại = trang album; 3 phương diện = góc nhìn thiết kế; luật sao áp mọi dòng; bản cứng 1
+  phôi/loại + gắn sao); `de-xuat-huy-hieu.md` nháp 3: 20 dòng trong 10 loại, 15 thành tựu phụ, bảng N–N chiều ngược (A2 BTVN đủ
+  nuôi 12 cấp), album ~104. Chờ Thùy duyệt + H7/H8 + phôi bản cứng.

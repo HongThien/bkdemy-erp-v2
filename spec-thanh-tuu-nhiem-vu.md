@@ -168,57 +168,51 @@ Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như c�
 | **Explorer** — khám phá | Điều bất ngờ | Nhóm **Bí ẩn**: ẩn tới khi đạt |
 | **Socializer** — thể hiện | Được nhìn thấy | **Ghim 3 huy hiệu** lên hồ sơ + TV lớp · bản cứng đeo ngoài đời · huy hiệu **tập thể lớp** |
 
-**A5.5 — MA TRẬN huy hiệu: HOẠT ĐỘNG × 3 PHƯƠNG DIỆN** (Thùy chốt 28/09)
+**A5.5 — 10 LOẠI HUY HIỆU · mỗi loại phủ 3 PHƯƠNG DIỆN** (Thùy chốt 28/09)
 
-> *"1 việc cần ghi nhận các phương diện: **chăm chỉ, thành tích, tiến bộ**."*
-> Ví dụ BTVN: *chăm chỉ làm đầy đủ* là 1 huy hiệu, *điểm cao* là 1 huy hiệu khác.
+> *"1 việc cần ghi nhận các phương diện: **chăm chỉ, thành tích, tiến bộ**."* — BTVN làm đủ là 1 huy hiệu, điểm cao là 1 huy hiệu khác.
+> *"Ý t không phải 3 loại huy hiệu, mà thành tựu phải để ý cả 3 phương diện. Huy hiệu 10 loại như ban đầu."*
 
-**3 phương diện:**
-- 🔥 **CHĂM CHỈ** — làm đều, đủ, liên tục. Ai chịu làm cũng đạt.
-- ⭐ **THÀNH TÍCH** — làm giỏi: điểm cao, top.
-- 📈 **TIẾN BỘ** — hơn **chính mình** trước đây. Em yếu cũng đạt được.
+**Cấu trúc:**
+- **LOẠI huy hiệu** = trang album.
+- Mỗi loại có **các DÒNG huy hiệu**, mỗi dòng **5★**.
+- **3 phương diện là GÓC NHÌN khi thiết kế thành tựu**, không phải cách chia huy hiệu. Trong mỗi loại, cố gắng có dòng cho cả 3 phương diện; ô nào vô nghĩa thì bỏ, **không ép cho đủ**.
 
-**Luật tiến bộ:** so với **chính em**, không so với bạn. Em đã ở mức đỉnh thì **giữ vững cũng tính là tiến bộ**, để không phạt em giỏi. Ngưỡng cụ thể bàn sau.
+| # | Loại huy hiệu | 🔥 Chăm chỉ | ⭐ Thành tích | 📈 Tiến bộ |
+|---|---|---|---|---|
+| 1 | 🏫 **Chuyên cần** | Chuỗi buổi có mặt liên tục | — | — |
+| 2 | 📝 **Bài về nhà** | Chuỗi BTVN nộp đủ, đúng hạn | Số bài BTVN đúng ≥ 90% | Tỉ lệ đúng BTVN tăng (tháng) |
+| 3 | ⚔️ **Trên lớp** | — | ET ≥ 80% · Nhất / lên bảng xếp hạng buổi | ET tốt hơn tháng trước |
+| 4 | 🎯 **Thi (MT)** | Số kỳ MT đã dự | MT top khối | Hạng MT tăng |
+| 5 | 💪 **Thử thách** | Tổng ngày pass | Số lượt 10/10 | Tỉ lệ pass tăng (tháng) |
+| 6 | 👑 **Chinh phục dạng** | Số dạng đã luyện | Số dạng đạt | Lấp lỗ (yếu → đạt) |
+| 7 | 🏆 **Rank** | — | Bậc cao nhất trong năm | Tăng hạng bảng đua tháng |
+| 8 | 📜 **Nhiệm vụ** | Số tháng xong chặng 30 | — | — |
+| 9 | 🤝 **Tập thể lớp** | Lớp thắng đua lớp tháng (cả lớp cùng nhận) | | |
+| 10 | ✨ **Bí ẩn & Kỷ niệm** | Ẩn tới khi đạt · sự kiện · mùa | | |
 
-Mỗi **phương diện một kiểu khung / màu riêng**. Nhìn album như một ma trận: hàng là hoạt động, cột là 3 phương diện.
+**Luật tiến bộ:** so với **chính em**, không so với bạn. Em đã ở đỉnh thì **giữ vững cũng tính là tiến bộ** — không phạt em giỏi.
 
-| Hoạt động | 🔥 Chăm chỉ | ⭐ Thành tích | 📈 Tiến bộ |
-|---|---|---|---|
-| 🏫 **Trên lớp** (buổi · ET) | Chuỗi buổi đi học liên tục | ET ≥ 80% · Nhất / lên bảng xếp hạng buổi | ET tháng này tốt hơn tháng trước |
-| 📝 **Bài về nhà** | Chuỗi BTVN nộp đủ, đúng hạn | Số bài BTVN đúng ≥ 90% | Tỉ lệ đúng BTVN tháng này cao hơn tháng trước |
-| 🎯 **Thi (MT)** | Số kỳ MT dự (kể cả thi lại) | MT top khối · điểm 9–10 | Hạng MT tăng so với tháng trước |
-| 💪 **Thử thách (app)** | Chuỗi / tổng ngày pass Thử thách | Số lượt 10/10 | Tỉ lệ pass tháng này cao hơn tháng trước |
-| 👑 **Kiến thức (dạng)** | Số dạng đã luyện (≥ N câu) | Số dạng đạt · giữ danh hiệu top dạng | **Lấp lỗ:** số dạng từ yếu → đạt |
-| 🏆 **Rank** | — | Bậc cao nhất đạt được trong năm · top bảng đua tháng | Số tháng lên bậc / tăng hạng bảng đua tháng |
-| 📜 **Nhiệm vụ** | Số tháng xong chặng 30 · số rương tuần | — | — |
-
-- Ô "—" = phương diện đó không có nghĩa với hoạt động đó. **Không ép cho đủ ô.**
-
-**A5.6 — HAI TẦNG: sao thấp ĐIỀU KIỆN ĐƠN · sao cao NHIỀU ĐIỀU KIỆN** (Thùy chốt 28/09)
+**A5.6 — Sao thấp ĐIỀU KIỆN ĐƠN · sao cao NHIỀU ĐIỀU KIỆN** (Thùy chốt 28/09)
 
 > *"Huy hiệu bậc thấp là điều kiện đơn, bậc cao phải là nhiều điều kiện."*
-> *Ví dụ Chăm chỉ 5★: vừa đi học đủ, làm BTVN đủ, còn cần thêm tự luyện và Thử thách đạt tiêu chuẩn số lượng.*
+> *Ví dụ chăm chỉ 5★: vừa đi học đủ, làm BTVN đủ, còn cần thêm tự luyện và Thử thách đạt tiêu chuẩn số lượng.*
 
-| Tầng | Sao | Huy hiệu | Điều kiện | Dạng |
-|---|---|---|---|---|
-| **Tầng 1 — Hoạt động** | 1★ · 2★ · 3★ | **Mỗi ô của ma trận A5.5** (vd "Chăm chỉ — Bài về nhà") | **ĐƠN:** 1 chỉ số của 1 hoạt động (vd chuỗi 10 / 30 / 60 bài BTVN đúng hạn) | Bản mềm |
-| **Tầng 2 — Phương diện** | **4★ · 5★** | **3 huy hiệu lớn mỗi môn:** 🔥 **CHĂM CHỈ** · ⭐ **THÀNH TÍCH** · 📈 **TIẾN BỘ** | **NHIỀU điều kiện cùng lúc (VÀ):** gom **mọi hoạt động** của phương diện đó | Bản mềm **+ BẢN CỨNG (GV trao)** |
+**Áp cho MỌI dòng huy hiệu:**
 
-**Ví dụ khung** — con số bàn sau, ở đây chỉ để thấy cấu trúc:
+| Sao | Điều kiện | Dạng |
+|---|---|---|
+| 1★ · 2★ · 3★ | **ĐƠN:** chỉ số chính của dòng (vd chuỗi 10 / 30 / 60 buổi có mặt) | Bản mềm |
+| **4★ · 5★** | **NHIỀU:** chỉ số chính ở mức cao **VÀ** các **thành tựu phụ** lấy từ hoạt động / phương diện khác (vd Chuyên cần 5★ = chuỗi 150 buổi **VÀ** BTVN đủ **VÀ** Thử thách ≥ 15 ngày/tháng) | Bản mềm **+ BẢN CỨNG (GV trao)** |
 
-- 🔥 **Chăm chỉ 5★** = trong kỳ xét:
-  - đi học đủ **VÀ** BTVN đủ, đúng hạn
-  - **VÀ** tự luyện ≥ N câu **VÀ** Thử thách ≥ M ngày.
-- ⭐ **Thành tích 5★** = ET ≥ 80% đa số buổi **VÀ** MT top khối **VÀ** BTVN đúng ≥ 90% **VÀ** ≥ K dạng đạt.
-- 📈 **Tiến bộ 5★** = hạng MT tăng **VÀ** tỉ lệ đúng BTVN tăng **VÀ** lấp ≥ L lỗ (yếu → đạt).
-- **4★** cùng bộ điều kiện nhưng **ngưỡng thấp hơn** hoặc **ít điều kiện hơn** 5★.
+- ⇒ Sao cao **toàn diện**: không cày lệch 1 mảng mà lên được.
+- ⇒ Mọi em có đường lên sao cao qua dòng hợp với mình: em chăm → dòng chăm chỉ; em giỏi → dòng thành tích; em đang lên → dòng tiến bộ.
 
-**Vì sao chia hai tầng như vậy:**
-- Sao thấp **dễ hiểu, dễ đạt** — HS mới cũng có huy hiệu ngay. Sao cao **khó và toàn diện** — không cày lệch 1 mảng mà lên được.
-- **Bản cứng chỉ có 3 mẫu × 2 cấp = 6 mẫu / môn** (Chăm chỉ / Thành tích / Tiến bộ × 4★ / 5★) ⇒ trung tâm **dễ sản xuất**, và mỗi mẫu thành **biểu tượng dễ nhận ra** khi HS đeo.
-- Mọi em đều có đường lên bản cứng: em chăm → Chăm chỉ, em giỏi → Thành tích, em đang lên → Tiến bộ.
+**UI:** mỗi cấp 4★ / 5★ hiện **checklist điều kiện** (✓ chuỗi 150 buổi · ✓ BTVN đủ · ☐ Thử thách 9/15 ngày…) ⇒ HS biết còn thiếu đúng mảng nào.
 
-**UI:** mỗi huy hiệu tầng 2 hiện **checklist điều kiện** (✓ đi học đủ · ✓ BTVN đủ · ☐ Thử thách 9/15 ngày…) ⇒ HS biết còn thiếu đúng mảng nào.
+**Bản cứng:** đề xuất **1 phôi / loại (10 phôi)**. Tên dòng + cấp 4★ / 5★ phân biệt bằng tấm sao gắn thêm / màu viền ⇒ trung tâm dễ sản xuất.
+
+Danh sách dòng + ngưỡng + thành tựu phụ (detail): `de-xuat-huy-hieu.md`.
 
 **A5.7 — MÔ HÌNH: THÀNH TỰU ↔ HUY HIỆU là liên kết N–N** (Thùy chốt 28/09)
 
@@ -311,7 +305,7 @@ Mỗi **phương diện một kiểu khung / màu riêng**. Nhìn album như m�
 H1–H6 đồng ý theo đề xuất, trừ H4:
 - **H4 = GIÁO VIÊN trao bản cứng** — việc trao hiện cho GV lớp của môn đó.
 - **Thêm luật 3 phương diện** (A5.5).
-- **Thêm luật hai tầng** (A5.6): 1–3★ điều kiện đơn theo hoạt động; 4–5★ nhiều điều kiện, gom theo phương diện.
+- **Thêm luật sao** (A5.6): 1–3★ điều kiện đơn; 4–5★ nhiều điều kiện — áp cho MỌI dòng. Huy hiệu vẫn **10 loại** (A5.5); 3 phương diện là góc nhìn thiết kế thành tựu.
 
 **Còn mở (chờ Thùy):**
 
