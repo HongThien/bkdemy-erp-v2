@@ -30977,3 +30977,20 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
 - (28/09 tiếp) Thùy test thật lớp 7S2 (buổi 95100555…, 28/09) rồi yêu cầu xoá dữ liệu test. Liệt kê trước, Thùy gật ⇒ xoá trong 1 transaction có assert số dòng: gami_exp_ledger exp_tren_lop 2 dòng (440 EXP: Lê Bảo Châu 200 · Minh Trang 240) · buoi_game_luot 2 · buoi_giai 2 · buoi_giai_log 2 (1 chốt + 1 mở-lại do trigger tự ghi khi bỏ chốt) · giai_chot_at → NULL. Kiểm lại: 0/0/0/0/null. (Lúc liệt kê t đọc ngày buổi bằng `toISOString()` ⇒ lệch thành 27/09 — đúng là 28/09; đúng cái §2 CẤM.)
 - Thùy: "không cần 2 màn — làm chung 1 màn, cast laptop sang TV; màn quay hiện danh sách từng HS để chúng so". Làm: nút **🖥 Trình chiếu** (sau chốt) mở overlay toàn màn trong ERP = iframe game `?che_do=lop` (trang game không đổi, vẫn nghe kênh bk-lop + presence) + cột danh sách cả lớp theo giải (chữ to, +EXP, 🧋), bấm "Mở" ngay trên tên; ⛶ toàn màn, Esc/✕ thoát; Bắn Quà (ca_lop) hiện khung BanQuaLop trong cột. Link "tab riêng" giữ nhỏ cho ca 2 màn. Gom hành động mở/chiếu lại thành `moChoBan`/`chieuLai` dùng chung. game.bkacademy.edu.vn không chặn iframe (không X-Frame-Options/CSP).
 - Verify không ghi DB: chặn `supabase.rpc` trong trang (giả chốt + giả kết quả, mọi fn_buoi_*/fn_ban_qua_* khác bị chặn), mỗi bước kiểm lệnh chặn còn sống (Vite dev tự reload do phiên khác sửa file ⇒ mất override — lần 1 bị reload giữa chừng, đã dừng & cài lại). Kết quả: overlay + iframe đúng buổi, "Mở" cập nhật +180 & 1/8; tên dài bị cắt ⇒ đổi sang xuống dòng. DB sau test vẫn 0/0/0/0/null.
+
+## 2026-09-28 (37) — Build HUY HIỆU (mig 202609281846 + 202609281857 đã áp) · màn nhân sự + album HS
+
+- **DB:** catalog `thanh_tuu` (14 điều kiện tháng, loai_chi_so + tham_so + mo_tu) · `huy_hieu` (8 Hy Lạp) · `huy_hieu_dieu_kien` (N–N, vai chuan/them =
+  đúng xlsx) · `huy_hieu_thang_sao` (1/2/4/6/9 tháng, bản cứng ★4–5, EXP 100/200/300) · `hs_thanh_tuu_thang` (chỉ ghi lúc chốt) · `hs_huy_hieu_dat`
+  (lan theo mùa — H8) · `hs_huy_hieu_trao`. Hàm: `fn_thanh_tuu_thang` (đo chung, dispatch) · `fn_huy_hieu_thang` (chốt → đọc bảng, chưa → tạm tính) ·
+  `fn_huy_hieu_chot_thang` (từ 10/T+1, theo thứ tự, idempotent) · `fn_exp_app_thang` +exp_thanh_tuu (drop+create, EXP vào tháng đạt, chung trần 30 xu) ·
+  `fn_hs_album` · `fn_huy_hieu_viec_trao/_trao` · `fn_huy_hieu_thang_da_chot`.
+- **Phát hiện:** `btvn_ket_qua.ti_le_dung` rỗng 100% ⇒ B4/B5 đo từ gami_grades phase btvn (online đã mirror). A4 "tự luyện ≥200 câu/tháng": T8 chỉ 1 em,
+  T9 14 em (tự luyện bùng lên tháng 9) — t tưởng bug, hoá ra đúng.
+- **Test rollback chốt T7+T8 (`scripts/_thu_mig_huy_hieu.mjs`):** A1 48/63% · A2 36/41% · B1 36/43% · B2 21/26% · C3 34% · D30 30% — sát mô phỏng.
+  Sau 2 tháng Helios ★2 98 em … Phoenix ★1 93 (T7 là tháng mốc). Chốt 1 tháng 4–5 s; album 1 em 1 s.
+- **Chưa chốt thật T7/T8:** chốt ghi chot_boi = nhân sự bấm ⇒ để Thùy bấm ở màn Huy hiệu › Chốt tháng (không mạo danh tài khoản ai).
+- **App:** lá nhân sự `huyhieu` (Trao bản cứng · Chốt tháng · Ma trận tích ô) — cần cấp quyền lá cho vai GV ở Phân quyền · `AlbumHS.tsx` (sắp đạt, 8 thẻ kiểu 1,
+  tiến độ sao kế, N bạn/khối + Hiếm, checklist tháng này, lịch sử tháng) mở từ thẻ Huy hiệu ở màn Thành tựu.
+- Phiên khác đổi `monCuaHS` sang `hs_lop_mon_cua_toi` (em học nhiều môn) — các màn mới gọi monCuaHS nên tự theo.
+- **Chưa làm:** ghim 3 huy hiệu khoe + tắt catalog cũ thanh_tich_loai (đụng bảng đang dùng — làm cùng màn khoe C11) · ví xu hiện dòng EXP nhiệm vụ/huy hiệu.

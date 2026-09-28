@@ -1,6 +1,6 @@
 // ============================================================================
 // ThanhTuuHS — Màn "Thành tựu" cho HS cấp 2 (Thùy 11/09).
-// Nội dung: giải thưởng cuối tháng đã CÔNG BỐ (fn_hs_thanh_tuu_cua_toi) + placeholder Huy hiệu.
+// Nội dung: giải thưởng cuối tháng đã CÔNG BỐ (fn_hs_thanh_tuu_cua_toi) + lối vào Album huy hiệu (AlbumHS).
 // Layout dựng theo KIT `design/handoff/hs-*-v1` để KHỚP theme HomeHS: BACKDROP mây (bg_home_*.jpg)
 // cố định · decor + quote handwritten cố định đáy · header squircle + tiêu đề extrabold theo giới
 // tính · card gradient trắng + shadow theo theme. Chữ viết tay = Pacifico, UI = Baloo.
@@ -21,7 +21,7 @@ const THEME = {
 
 function labelThang(ym: string): string { const [y, m] = ym.split('-'); return `Tháng ${parseInt(m, 10)}/${y}` }
 
-export default function ThanhTuuHS({ gioiTinh, onXong }: { gioiTinh: 'nam' | 'nu' | null; onXong: () => void }) {
+export default function ThanhTuuHS({ gioiTinh, onXong, onAlbum }: { gioiTinh: 'nam' | 'nu' | null; onXong: () => void; onAlbum?: () => void }) {
   const [items, setItems] = useState<TT[] | null>(null)
   const [err, setErr] = useState<string | null>(null)
   useEffect(() => {
@@ -108,14 +108,14 @@ export default function ThanhTuuHS({ gioiTinh, onXong }: { gioiTinh: 'nam' | 'nu
               </section>
             ))}
 
-            {/* Placeholder Huy hiệu */}
+            {/* Huy hiệu — mở album (AlbumHS, mig 202609281846) */}
             <section>
               <p className="mb-2 ml-1 text-[10.5px] font-extrabold uppercase tracking-[0.2em]" style={{ color: t.sec }}>Huy hiệu</p>
-              <div className="rounded-[26px] p-6 text-center" style={{ background: t.cardTint, boxShadow: t.shadow, border: `1.5px dashed ${t.underline ? '#F3E4F6' : '#DDE8F7'}` }}>
+              <button onClick={onAlbum} disabled={!onAlbum} className="w-full rounded-[26px] p-6 text-center transition active:scale-[0.98]" style={{ background: t.cardTint, boxShadow: t.shadow }}>
                 <p className="text-3xl">🎖️</p>
-                <p className="mt-1.5 text-[14px] font-extrabold" style={{ color: NAVY }}>Sắp ra mắt</p>
-                <p className="mt-0.5 text-[11.5px]" style={{ color: t.sec }}>Huy hiệu + mốc học tập sẽ hiện ở đây.</p>
-              </div>
+                <p className="mt-1.5 text-[14px] font-extrabold" style={{ color: NAVY }}>Album huy hiệu</p>
+                <p className="mt-0.5 text-[11.5px]" style={{ color: t.sec }}>Helios · Athena · Zeus… — mỗi tháng học tốt là thêm sao</p>
+              </button>
             </section>
           </div>
         )}

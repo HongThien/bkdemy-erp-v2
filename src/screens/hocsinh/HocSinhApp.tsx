@@ -18,8 +18,10 @@ import { mucDeadline, nhanConLai } from '../../lib/tuan'
 import { seededShuffleWithOrig, seededPermByDang } from '../../lib/shuffle'
 import {
   luotTuLuyenHomNay, sinhTuLuyen, sinhTuLuyenChuDe, monCuaHS, laCap1HS, khoiCuaHS, hoSoCuaToi, xepHangTuLuyen,
-  TU_LUYEN_SO_CAU_MOI_LUOT, type XepHangRow,
+  lopMonCuaHS, chonMonHS, monDangChon,
+  TU_LUYEN_SO_CAU_MOI_LUOT, type XepHangRow, type LopMonHS,
 } from '../../lib/tuluyen'
+import ThanhChonMon from './ThanhChonMon'
 import { ChonLoaiTuLuyen, ChonDangChuDe } from './TuLuyenChuDe'
 import { laCap2HS, mayManHSCuaToi } from '../../lib/maymai_hs'
 import { htdCoMo, htdSinh, htdCauBaiTest, type CauHTD } from '../../lib/hoctudau'
@@ -41,6 +43,7 @@ import SoTayHS from './SoTayHS'
 import ViXuHS from './ViXuHS'
 import RankHS from './RankHS'
 import NhiemVuHS from './NhiemVuHS'
+import AlbumHS from './AlbumHS'
 import { thuThachLuotDo, sinhThuThach, ketQuaThuThach, type KetQuaThuThach } from '../../lib/rank'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
@@ -256,7 +259,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
-  const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'rank' | 'nhiem_vu' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
+  const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'rank' | 'nhiem_vu' | 'album' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
   const [chuDeDang, setChuDeDang] = useState<{ ma_dang: string; ten_dang: string; chiCauMoi?: boolean } | null>(null) // dạng đã chọn cho "Tự luyện theo chủ đề" (null = luồng tổng hợp)
   // "Học từ đầu" (Thùy 19/09) — ô CHỈ hiện khi HS có case bổ trợ đuổi ĐANG MỞ (tự suy
   // bo_tro_duoi.trang_thai='can_duoi', KHÔNG lưu cờ riêng — xem htd_co_mo). htdMon lưu
@@ -288,6 +291,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [chuaDoc, setChuaDoc] = useState(0)
   const taiChuaDoc = () => listThongBaoHS().then((ds) => setChuaDoc(ds.filter((d) => !d.doc_at).length)).catch(() => {})
 
+  // MÔN (28/09, vụ Gia Khiêm): em học nhiều môn thì chọn môn ở màn chính; mọi màn con đọc môn đang chọn qua
+  // monCuaHS(). Lỗi mạng ⇒ danh sách rỗng ⇒ không vẽ thanh chọn, màn con tự báo lỗi của nó như trước.
+  const [lopMons, setLopMons] = useState<LopMonHS[]>([])
+  const [monChon, setMonChon] = useState<string | null>(null)
+  useEffect(() => { lopMonCuaHS().then((ds) => { setLopMons(ds); setMonChon(monDangChon(ds)) }).catch(() => {}) }, [])
+
   useEffect(() => { listBaiTestCuaHS().then(setTests).catch(() => setTests([])) }, [])
   useEffect(() => { laCap1HS().then(setCap1).catch(() => setCap1(false)) }, [])
   useEffect(() => { laCap2HS().then(setCap2).catch(() => setCap2(false)) }, [])
@@ -310,6 +319,11 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Lỗi mạng giữ nguyên trạng thái cũ (không tắt card đang hiện vì 1 lần gọi hỏng).
   const kiemHTD = () => monCuaHS().then((m) => { if (!m) return; setHtdMon(m); return htdCoMo(m) }).then((mo) => { if (mo !== undefined) setHtdMo(!!mo) }).catch(() => {})
   useEffect(() => { if (!direct && !khu) kiemHTD() }, [direct, khu])
+  function doiMon(m: string) {
+    if (m === monChon) return
+    chonMonHS(m); setMonChon(m)
+    setHtdMo(false); kiemHTD() // card "Học từ đầu" là của TỪNG môn — tắt cái của môn cũ, hỏi lại cho môn mới
+  }
   useEffect(() => {
     const f = () => { if (document.visibilityState === 'visible') kiemHTD() }
     document.addEventListener('visibilitychange', f)
@@ -391,7 +405,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'lich_bo_tro') return <LichBoTroHS lich={boTro.lich} coCa={boTro.coCa} gioiTinh={gt} onXong={() => setDirect(null)} onVaoCa={onVaoCaBoTro} />
   if (direct === 'hop_thu') return <HopThuHS onXong={() => { setDirect(null); taiChuaDoc() }} />
   if (direct === 'may_man') return <MayManHS gioiTinh={gt} onXong={() => setDirect(null)} onNhiemVu={() => setDirect('nhiem_vu')} />
-  if (direct === 'thanh_tuu') return <ThanhTuuHS gioiTinh={gt} onXong={() => setDirect(null)} />
+  if (direct === 'thanh_tuu') return <ThanhTuuHS gioiTinh={gt} onXong={() => setDirect(null)} onAlbum={() => setDirect('album')} />
+  if (direct === 'album') return <AlbumHS gioiTinh={gt} onBack={() => setDirect('thanh_tuu')} />
   if (direct === 'bai_tap_giao') return <BaiTapGiaoHS gioiTinh={gt} onXong={() => setDirect(null)} />
   if (direct === 'so_tay') return <SoTayHS gioiTinh={gt} onXong={() => setDirect(null)} />
   if (direct === 'vi_xu') return <ViXuHS gioiTinh={gt} onXong={() => setDirect(null)} />
@@ -408,8 +423,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     const loai = KHU.find((k) => k.id === id)?.loai
     return loai ? (tests ?? []).filter((t) => t.loai === loai) : []
   }
-  // Danh tính hiển thị: lấy từ chính test HS thấy (đã qua RLS) — không query thêm bảng nào.
-  const lopMon = tests?.[0] ? `${tests[0].lop_ten} · ${tests[0].mon}` : null
+  // Danh tính hiển thị = lớp của MÔN ĐANG CHỌN (hs_lop_mon_cua_toi). Bản cũ lấy tests[0] — em nhiều môn thì
+  // hiện lớp của bài test nào tình cờ đứng đầu; giữ làm đường lùi khi danh sách môn chưa tải được.
+  const lopCuaMon = lopMons.find((l) => l.mon === monChon)
+  const lopMon = lopCuaMon ? `${lopCuaMon.ten_lop} · ${lopCuaMon.mon}` : tests?.[0] ? `${tests[0].lop_ten} · ${tests[0].mon}` : null
 
   const CHU_DUOI: Partial<Record<KhuId, string>> = { tu_luyen: 'Luyện theo dạng yếu', thong_tin: 'Dạng đang yếu', xep_hang: 'Thi đua tự luyện', so_tay: 'Tra lý thuyết & bài mẫu' }
 
@@ -421,7 +438,13 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Thông tin học tập · Đề thi thử (sắp có) · Bài tập được giao · Thành tựu · May mắn.
   if (!khu && cap1) return <HomeCap1 hoTen={hoTen} maHS={maHS} maymanCoLuot={maymanCoLuot}
     onOpen={(d) => setDirect(d === 'tu_luyen' ? 'tu_luyen_chon' : d)} chuaDoc={chuaDoc} onHopThu={() => setDirect('hop_thu')}
-    extra={<BoTroBanner lich={boTro.lich} coCa={boTro.coCa} soRetest={boTro.soRetest} desktop onLich={() => setDirect('lich_bo_tro')} onCa={() => onVaoCaBoTro(boTro.lich.find((l) => l.vao_ca))} onRetest={() => setDirect('retest')} />} />
+    extra={<>
+      <ThanhChonMon mons={lopMons} mon={monChon} onChon={doiMon} className="mt-5"
+        nut={(chon) => chon
+          ? { background: 'linear-gradient(135deg, #6549ea, #8368f7)', color: '#fff', boxShadow: '0 6px 16px rgba(101,73,234,.28)', fontSize: 15, padding: '9px 20px' }
+          : { background: '#fff', color: '#576073', boxShadow: '0 6px 16px rgba(31,47,79,.06)', fontSize: 15, padding: '9px 20px' }} />
+      <BoTroBanner lich={boTro.lich} coCa={boTro.coCa} soRetest={boTro.soRetest} desktop onLich={() => setDirect('lich_bo_tro')} onCa={() => onVaoCaBoTro(boTro.lich.find((l) => l.vao_ca))} onRetest={() => setDirect('retest')} />
+    </>} />
   // CẤP 2 (khối 6-9) — HomeHS mobile-first + KHU_CAP2 (đã build cho phone: em cấp 2 có thể dùng
   // điện thoại). CẤP 3 (khối 10-12): giữ KHU cũ (BTL/ET/BTVN), không đụng flow đang chạy.
   // HomeHS thuần vẽ. Badge = việc CÒN LÀM ĐƯỢC (bài quá hạn không đếm vào badge — nhiễu).
@@ -474,10 +497,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     // Lớp 9–12: cùng danh sách ô (giữ nguyên chức năng từng khối), khác màn vẽ — HomeHS912 + skin tự chọn.
     if (nhom912 && giaoDien !== undefined) return <HomeHS912 giaoDien={giaoDien} onDaLuu={setGiaoDien} data={duLieu912}
       hoTen={hoTen} maHS={maHS} lopMon={lopMon} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
+      mons={lopMons} mon={monChon} onChonMon={doiMon}
       lich={boTro.lich} soRetest={boTro.soRetest} cards={cards}
       onHopThu={() => setDirect('hop_thu')} onDoiMK={() => setDoiMK(true)} onThoat={() => supabase.auth.signOut()}
       onLich={() => setDirect('lich_bo_tro')} onRetest={() => setDirect('retest')} />
     return <HomeHS hoTen={hoTen} maHS={maHS} lopMon={lopMon} gioiTinh={gt} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
+      mons={lopMons} mon={monChon} onChonMon={doiMon}
       lich={boTro.lich} soRetest={boTro.soRetest} cards={cards}
       onHopThu={() => setDirect('hop_thu')} onDoiMK={() => setDoiMK(true)} onThoat={() => supabase.auth.signOut()}
       onLich={() => setDirect('lich_bo_tro')} onRetest={() => setDirect('retest')} />

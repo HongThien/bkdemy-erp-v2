@@ -106,6 +106,7 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'thanhtich',   nhom: 'Gamification', ten: 'Thành tích',               founderOnly: false },
   { id: 'quanlylevel', nhom: 'Gamification', ten: 'Quản lý Level',            founderOnly: false },
   { id: 'chotxu',      nhom: 'Gamification', ten: 'Chốt xu tháng',            founderOnly: true }, // CEO chỉnh mốc + chốt (Thùy 08-29)
+  { id: 'huyhieu',     nhom: 'Gamification', ten: 'Huy hiệu',                 founderOnly: false }, // trao bản cứng (GV) · chốt tháng · ma trận — spec-huy-hieu-build.md
   { id: 'traogiai',    nhom: 'Gamification', ten: 'Trao giải',                founderOnly: false }, // thưởng tháng theo lớp (Xuất sắc/Tiến bộ/Chăm chỉ) — xem lib/traogiai.ts
 
   // ── HỌC THUẬT: kho + soạn tài liệu ──
