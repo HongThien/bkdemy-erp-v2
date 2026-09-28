@@ -154,8 +154,17 @@ function TabMaTran() {
   )
 }
 
-export default function HuyHieuScreen() {
+// chiTrao = lá 'huyhieu_trao' của GV: chỉ tab Trao bản cứng. Chốt tháng + Ma trận là việc của admin (lá 'huyhieu') — Thùy 28/09.
+export default function HuyHieuScreen({ chiTrao = false }: { chiTrao?: boolean }) {
   const [tab, setTab] = useState<'trao' | 'chot' | 'ma_tran'>('trao')
+  if (chiTrao) {
+    return (
+      <section className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto p-6">
+        <h1 className="text-lg font-bold text-slate-900">Trao huy hiệu · {MON}</h1>
+        <TabTrao />
+      </section>
+    )
+  }
   return (
     <section className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto p-6">
       <div className="flex flex-wrap items-center gap-3">

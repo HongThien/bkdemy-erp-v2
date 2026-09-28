@@ -481,7 +481,7 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
 - Verify giao diện bằng trang tạm `_xem_rank.html` + `src/_xem_rank.tsx` (mock RPC, KHÔNG commit — xoá khi Thùy gật).
 
 **VIỆC TIẾP (theo thứ tự):**
-1. **Thùy:** chốt huy hiệu tháng 7 rồi 8 ở màn Huy hiệu › Chốt tháng (chot_boi = người bấm) · cấp lá `huyhieu` cho vai GV ở Phân quyền ·
+1. **Thùy:** chốt huy hiệu tháng 7 rồi 8 ở màn Huy hiệu › Chốt tháng (**chỉ admin** — mig 202609282350: DB chặn bằng `co_quyen_ghi('huyhieu')`, hết timeout: chốt T7 ~2s, T8 ~4s) · cấp lá **`huyhieu_trao`** (chỉ tab Trao bản cứng) cho vai GV — **KHÔNG** cấp `huyhieu` cho GV (Thùy 28/09: *"chốt 1 tháng 1 lần bấm tay, không cần GV — GV chỉ được báo trao quà"*) ·
    gửi 3 đơn ChatGPT (Đơn 1 huy hiệu trước) · push + deploy khi muốn HS thấy.
 2. Chốt tháng 9 từ 10/10. Theo dõi 01/10: nhiệm vụ + vòng quay luật mới tự bật.
 3. Còn làm: ghim 3 huy hiệu khoe (bảng mới) + tắt catalog cũ `thanh_tich_loai`/đổi FK `hoc_sinh_thanh_tich_ghim` (đụng bảng đang dùng — hỏi trước) ·
@@ -2325,6 +2325,17 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
 - **⭐ `ma_cau` phải EXPLICIT theo convention `<dang><STT 3 số>` (`src/lib/kho/api.ts:447`), đừng để default `GC000001`.** Column default `('GC'||nextval)` là legacy — mọi câu thật đều dùng convention TS. STT = `MAX(ma_cau WHERE ma_cau LIKE '<dang>%')` + 1. FK `parent_ma_cau` + `hgt_cau_hoi_yeu_cau_giai.ma_cau` đều ON UPDATE CASCADE nên rename sau cũng an toàn (đã test) — nhưng vẫn nên đúng ngay từ đầu để CEO không phải sửa tay lúc duyệt.
 - **⭐ Verify script phải in `duyet_at` để phân biệt "trigger tự set" vs "người bấm".** Sau UPDATE nếu thấy `da_duyet=true` bất ngờ, đọc `duyet_at`: đồng loạt cùng timestamp = trigger; rải rác vài giây/câu = CEO đang bấm duyệt SONG SONG (Claude làm việc trong lúc CEO mở màn duyệt). Đã suýt gọi bug oan 1 lần. Trigger `_kho_cau_duyet_nguon` thực chất chỉ trigger `BEFORE INSERT OR UPDATE OF da_duyet, duyet_nguon` — không chạm khi rename `ma_cau` hay set `anh_de`.
 - **`dang_ai_de_xuat=dang_chinh` khi AI đề xuất, không NULL.** Spec `202609080938_kho_duyet_hop_nhat.sql` dùng cột này đo precision AI = count(ai=chính)/count(ai not null). Nếu bỏ NULL thì mất mọi câu AI nạp trong mẫu số ⇒ số precision không đo được. Người duyệt đổi `dang_chinh` khi sai; `dang_ai_de_xuat` giữ vết bản gốc.
+
+### Bài học 28/09 (đêm) — hàm Postgres chậm do CTE bị inline + trần timeout của app
+- **⭐⭐ plpgsql `return query with …` có CTE dùng trong subquery TƯƠNG QUAN (vd `(select … from dd where dd.hs = h.hs)` trong `case`) ⇒ planner có thể INLINE CTE vào subquery chạy cho TỪNG dòng ngoài.**
+  `fn_thanh_tuu_thang` gọi `fn_mastery_cells` trong CTE ⇒ bị gọi lại hàng trăm lần: cả tháng 70s (lúc khác đo 4–7s — planner đổi kế hoạch, nên nút lúc chạy lúc không).
+  Ép `as materialized (` cho mọi CTE ⇒ 2–4s, khối 9: 9,3s → 0,56s; kết quả cũ vs mới 0 dòng khác (EXCEPT 2 chiều). **Hàm đo lớn: mặc định `materialized`.**
+- **⭐ `SET statement_timeout` gắn vào hàm (`create function … set statement_timeout`) KHÔNG vượt được trần của phiên** (đo bằng hàm `pg_temp` với trần 1s).
+  Role `authenticated` = 8s, `anon` = 3s (`pg_roles.rolconfig`). Việc nặng gọi từ app ⇒ phải NHANH (hoặc chạy ngoài PostgREST), không nới trần được từ trong hàm.
+- **⭐ Hàm nặng chạy INVOKER bị RLS `la_thanh_vien()` gắn lên từng dòng mọi bảng nó đọc** ⇒ đo bằng `claude_build` (bỏ qua RLS) luôn LẠC QUAN hơn app.
+  Hàm batch của admin: `security definer` + cổng quyền ngay dòng đầu (`co_quyen_ghi('<leaf>')`) + `revoke … from public, anon`.
+- **`claude_build` không `set role authenticated` được** ⇒ muốn thử dưới danh tính người dùng: `set_config('request.jwt.claims', '{"email":…}', true)` rồi gọi hàm
+  (cổng `co_quyen_ghi` / `la_thanh_vien` đọc JWT) — thử cả người CÓ quyền lẫn KHÔNG quyền, trong transaction + ROLLBACK.
 
 ### Bài học 28/09 — thiết kế gamification HS với CEO (spec `spec-thanh-tuu-nhiem-vu.md`)
 - **⭐⭐ Gami BK = GAME (cày cuốc, đua top), KHÔNG khung app học online** (Khan / Duolingo / nghiên cứu edu "chống leaderboard"). Thùy bác v1:

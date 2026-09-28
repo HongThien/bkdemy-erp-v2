@@ -31109,3 +31109,16 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 2026-09-28 (15) — Số nền gắn bó app HS (trước gamification)
 - Thùy: "chưa triển khai hết đo không đúng lắm, nhưng cứ làm 1 con số nền". Đo 4 tuần 31/08–27/09 từ `bai_lam` (giờ VN): tuần 21/09 37% HS dùng app, 25% tự nguyện; HS-tuần ≥3 ngày 7,1%; quay lại 89% (62/70); đỉnh 21h, tối trong tuần ~27–36 HS, đồng thời max 22/30 phút. Ghi spec gamification §0.10; script `scripts/do-gan-bo-app.mjs` (read only) để đo lại cùng cách.
 - Sai: dòng in phụ dùng `toISOString()` ⇒ lệch lùi 1 ngày (đúng bẫy §2 cấm) — tự bắt khi đọc lại, sửa trong báo cáo; script lưu dùng to_char ở DB nên không dính.
+
+## 2026-09-28 (30) — Chốt huy hiệu timeout → sửa: CTE materialized + chỉ admin chốt + lá GV riêng
+
+- Thùy bấm "Chốt tháng 7" → "canceling statement due to statement timeout". Thùy hỏi "chốt huy hiệu là chốt gì — huy hiệu hệ thống tự track, không
+  liên quan GV" → t đề xuất pg_cron tự chốt ngày 10 → Thùy: "không cần cron, bấm tay 1 tháng 1 lần được, ý t là không cần GV".
+- **Đo** (transaction + ROLLBACK): trần authenticated 8s · `fn_thanh_tuu_thang` cả tháng 70s (có lúc 4–7s — planner inline CTE vào subquery tương
+  quan ⇒ `fn_mastery_cells` chạy lại theo từng em × thành tựu) · chia lô theo khối còn TỆ hơn (khối 9: 9–11s) · từng phần riêng <0,3s. Thử
+  `SET statement_timeout` trên hàm (pg_temp): KHÔNG vượt trần phiên. Bản `materialized` 13 CTE: 2,0/3,1/4,0s tháng 7/8/9, khối 9 0,56s, kết quả
+  cũ vs mới 0 dòng khác (T7, T9).
+- **Làm:** mig `202609282350_huy_hieu_chot_nhanh_chi_admin` (sửa thân hàm bằng pg_get_functiondef + replace có ASSERT; chốt → security definer,
+  cổng `co_quyen_ghi('huyhieu')`; tự kiểm 2 chiều quyền). Thử trước trong ROLLBACK với trần 8s + JWT thật: admin chốt T7 2,1s / T8 3,7s (613 / 840
+  sao mới), nhân sự thường bị chặn. Áp `migrate --only` OK, schema.md refresh. UI: lá mới `huyhieu_trao` (GV, chỉ tab Trao) · `huyhieu` = admin.
+- Chưa chốt thật tháng nào — để Thùy bấm (T7 rồi T8). Không commit 17 file app HS đang sửa dở của phiên song song.

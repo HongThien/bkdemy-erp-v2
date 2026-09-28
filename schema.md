@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-283 bảng · 19 view · 0 enum · 95 trigger · 586 function
+286 bảng · 19 view · 0 enum · 95 trigger · 589 function
 
 ## _app_secrets
 
@@ -1120,6 +1120,44 @@
 |---|---|---|---|---|---|
 | id | text |  | ('TT'::text \|\| lpad((nextval('dai_tt_seq'::regclass))::text, 4, '0'::text)) | PK |  |
 | ten | text |  |  |  |  |
+
+## dai_de_xuat
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| loai | text |  |  |  | `dang_moi` · `cum_moi` · `trao_doi` |
+| khoi | text |  |  |  |  |
+| ma_chuyen_de | text |  |  |  |  |
+| ma_dang | text | Y |  | FK→dai_ban_do.ma_dang |  |
+| ten | text | Y |  |  |  |
+| mo_ta_ngan | text | Y |  |  |  |
+| dang_gan_nhat | text | Y |  | FK→dai_ban_do.ma_dang |  |
+| ly_do | text |  |  |  |  |
+| lo | text |  |  |  |  |
+| nguon | text |  | 'ai'::text |  | `ai` · `nguoi` |
+| ai_model | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## dai_de_xuat_cau
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| de_xuat_id | uuid |  |  | PK FK→dai_de_xuat.id |  |
+| ma_cau | text |  |  | PK FK→dai_cau_hoi.ma_cau |  |
+
+## dai_de_xuat_quyet_dinh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| de_xuat_id | uuid |  |  | PK FK→dai_de_xuat.id |  |
+| hanh_dong | text |  |  |  | `nhan` · `nhan_co_sua` · `gop` · `bac` · `tra_loi` |
+| ket_qua_ma_dang | text | Y |  | FK→dai_ban_do.ma_dang |  |
+| ket_qua_ma_cum | text | Y |  | FK→dai_cum_bai.ma_cum |  |
+| tra_loi | text | Y |  |  |  |
+| so_cau_doi | integer |  | 0 |  |  |
+| nguoi | uuid |  |  | FK→nhan_su.id |  |
+| quyet_at | timestamp with time zone |  | now() |  |  |
 
 ## dai_mcq_rule
 
@@ -2550,7 +2588,7 @@
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→huy_hieu.mon |  |
+| mon | text |  |  | PK FK→thanh_tuu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -5841,6 +5879,9 @@ SELECT bl.hoc_sinh_id,
 - `fn_dai_chuyen_chuyen_de(p_ma_chuyen_de text, p_ma_chu_de_moi text)` → text
 - `fn_dai_chuyen_dang(p_ma_dang text, p_ma_chuyen_de_moi text)` → text
 - `fn_dai_chuyen_dang_ma_moi(p_ma_dang text, p_ma_chuyen_de_moi text)` → text
+- `fn_dai_de_xuat_ds(p_khoi text, p_chi_cho boolean DEFAULT true)` → TABLE(id uuid, loai text, khoi text, ma_chuyen_de text, ten_chuyen_de text, ma_dang text, ten_dang text, ten text, mo_ta_ngan text, dang_gan_nhat text, ten_dang_gan_nhat text, ly_do text, lo text, nguon text, created_at timestamp with time zone, cau jsonb, quyet_dinh jsonb)
+- `fn_dai_de_xuat_quyet(p_id uuid, p_hanh_dong text, p_ten text DEFAULT NULL::text, p_mo_ta_ngan text DEFAULT NULL::text, p_ma_dang_dich text DEFAULT NULL::text, p_tra_loi text DEFAULT NULL::text)` → jsonb
+- `fn_dai_de_xuat_tk(p_khoi text)` → TABLE(lo text, loai text, tong integer, cho integer, nhan integer, nhan_co_sua integer, gop integer, bac integer, tra_loi integer)
 - `fn_dai_gop_cau_dang(p_ma_dang_nguon text, p_ma_dang_dich text)` → jsonb
 - `fn_dai_kiem_ma()` → TABLE(loai text, ma_dang text, ma_chuyen_de text, ma_chu_de text, khoi text, ly_do text)
 - `fn_dai_ma_hop_le(p_ma text, p_tang text)` → boolean
@@ -6207,8 +6248,8 @@ SELECT bl.hoc_sinh_id,
 - `trg_htd_test_nop()` → trigger
 - `trg_thu_thach_nop()` → trigger
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
@@ -6266,6 +6307,8 @@ SELECT bl.hoc_sinh_id,
 | dai_cau_menh_de | dai_cau_menh_de_thu_tu_check | `CHECK ((thu_tu >= 1))` |
 | dai_cum_tien_de | dai_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | dai_dang_tien_de | dai_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
+| dai_de_xuat | dai_de_xuat_hinh_dang | `CHECK ((((loai = 'dang_moi'::text) AND (ten IS NOT NULL) AND (mo_ta_ngan IS NOT NULL) AND (ma_dang IS NULL)) OR ((loai = 'cum_moi'::text) AND (ten IS NOT NULL) AND (ma_dang IS NOT NULL)) OR ((loai = 'trao_doi'::text) AND (ten IS NULL))))` |
+| dai_de_xuat_quyet_dinh | dai_de_xuat_qd_tra_loi | `CHECK (((hanh_dong <> ALL (ARRAY['bac'::text, 'tra_loi'::text])) OR (NULLIF(btrim(tra_loi), ''::text) IS NOT NULL)))` |
 | game_bxh_cau | game_bxh_cau_bo_check | `CHECK ((bo ~ '^[a-z]{2,4}$'::text))` |
 | game_bxh_cau | game_bxh_cau_cau_check | `CHECK (((length(cau) >= 1) AND (length(cau) <= 80)))` |
 | game_bxh_cau | game_bxh_cau_diem_check | `CHECK (((diem >= 0) AND (diem <= 2000)))` |
