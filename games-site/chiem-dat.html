@@ -4114,7 +4114,7 @@ async function tvReveal(ti,info){selTile=-1;tv3.forEach(o=>{if(o.badge)o.badge.m
   const t=info.jack?4:info.tier,sc=sceneOf(info.lvl,TV.map.sc[ti],info.jack).n;
   $('rcScene').textContent=(info.name?info.name+' khám phá':'Khám phá')+' được: '+sc;$('rcVal').textContent='+'+info.val+' '+DV;$('rcTier').className='tier t'+t;$('rcTier').textContent=LOP?TIERS_LOP[t]:TIERS[t];
   $('rcNote').textContent=LOP?GIAI_LOP[info.giai]+' · EXP đã vào tài khoản 🎉':info.jack?'🎉 TRÚNG Ô ĐỘC ĐẮC '+info.val+' XU!':'Mở ô '+STARS(info.lvl)+' giá '+info.price+' xu';$('resCard').classList.add('show');if(info.jack)confetti(350);revealing='card';
-  if(LOP&&info.qua==='tra_sua'){fanfare();confetti(500);shake=.35;showOv('🧋 TRÚNG TRÀ SỮA!',(info.name?info.name+' · ':'')+GIAI_LOP[info.giai],'Quà đặc biệt SIÊU HIẾM — nhận trà sữa từ thầy cô nhé! (+'+info.val+' EXP vẫn vào tài khoản)',[['Tuyệt vời ▶',()=>$('bigOv').classList.remove('show'),true]])}}
+  if(LOP&&info.qua==='tra_sua'){shake=.35;if(window.bkTraSua)return void window.bkTraSua({ten:info.name,giai:info.giai,exp:info.val,sound:C.sound});/* lib chưa tải kịp ⇒ bản dự phòng */fanfare();confetti(500);showOv('🧋 TRÚNG TRÀ SỮA!',(info.name?info.name+' · ':'')+GIAI_LOP[info.giai],'Quà đặc biệt SIÊU HIẾM — nhận trà sữa từ thầy cô nhé! (+'+info.val+' EXP vẫn vào tài khoản)',[['Tuyệt vời ▶',()=>$('bigOv').classList.remove('show'),true]])}}
 function tvCardDone(){if(revealing!=='card')return;$('resCard').classList.remove('show');revealing=false;if(LOP)choLop=null;refreshFrontier(TV.open);camTo(camHomePos.clone(),camHomeTgt.clone(),800);tvUI();if(TV.map.done)setTimeout(tvMapDone,700);else if(LOP)setTimeout(bomHang,300)}
 function tvFeed(ti,info){const f=$('feed');if(f.firstChild&&f.firstChild.classList.contains('muted'))f.innerHTML='';const d=document.createElement('div');
   const sc=sceneOf(info.lvl,TV.map.sc[ti],info.jack).n;d.innerHTML=`${info.name?`<span class="sw" style="background:${PCOL[info.slot]}"></span> ${esc(info.name)} · `:''}${STARS(info.lvl)} ${esc(sc)} · <b>+${info.val} ${DV}</b>${info.jack?' 💰':''}${info.qua?' 🧋':''}`;f.prepend(d);while(f.children.length>7)f.lastChild.remove()}
@@ -4207,6 +4207,7 @@ function ketNoiLop(){
   document.body.classList.add('lop');
   const st=document.createElement('style');st.textContent='body.lop #btnSettings,body.lop #jackPill{display:none!important}';document.head.appendChild(st);
   $('side').querySelector('.tip').innerHTML='Thầy cô bấm <b>Mở cho bạn này</b> trên ERP → ô đúng cấp sáng lên → bạn chọn ô bất kì → bấm ô để mở. Space / Enter: bạn tiếp.';
+  const ts=document.createElement('script');ts.src='lib/bk-tra-sua.js';document.head.appendChild(ts); // hiệu ứng 🧋 dùng chung mọi game bản lớp (xem thử: Ctrl+Shift+M)
   if(!BUOI){$('hintBar').innerHTML='Thiếu mã buổi — mở từ màn Buổi học trên ERP';return}
   const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
   s.onload=()=>{const sb=window.supabase.createClient(SB_URL,SB_KEY);

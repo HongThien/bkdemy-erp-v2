@@ -4078,7 +4078,7 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
       $('bSub').textContent=GIAI_LOP[cur.giai]+' · EXP đã vào tài khoản 🎉';
       $('banner').classList.add('show');confetti(cur.tiers[2]>=4?220:90);
       // Thùy 28/09: quà đặc biệt TRÀ SỮA (DB rút cùng lượt, siêu hiếm) — TV chỉ báo, quà trao tay
-      if(cur.qua==='tra_sua'){$('bSub').innerHTML='🧋 <b>TRÚNG TRÀ SỮA!</b> Quà đặc biệt siêu hiếm · '+GIAI_LOP[cur.giai]+' · +'+total+' EXP đã vào tài khoản';fanfare();confetti(500);shake=.35}
+      if(cur.qua==='tra_sua'){$('bSub').innerHTML='🧋 <b>TRÚNG TRÀ SỮA!</b> Quà đặc biệt siêu hiếm · '+GIAI_LOP[cur.giai]+' · +'+total+' EXP đã vào tài khoản';shake=.35;if(window.bkTraSua)window.bkTraSua({ten:cur.name,giai:cur.giai,exp:total,sound:S.cfg.sound});else{fanfare();confetti(500)}}
       $('btnReveal').style.display='none';$('btnDone').style.display='';
       hint($('hintT').innerHTML,'SPACE ĐỂ SANG BẠN TIẾP');return}
     S.history.push({n:cur.n,name:cur.name,chest:cur.chest,price:cur.price,k:cur.k,mults:cur.mults,tiers:cur.tiers,vals:cur.vals,total,mode:cur.mode,t:Date.now()});
@@ -4199,6 +4199,7 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
   function ketNoiLop(){
     document.body.classList.add('lop');
     const st=document.createElement('style');st.textContent='body.lop #pname,body.lop .nameRow,body.lop #chestBtns,body.lop #btnOpen,body.lop #legend,body.lop #btnSettings,body.lop #histBtn,body.lop #btnReset{display:none!important}';document.head.appendChild(st);
+    const ts=document.createElement('script');ts.src='lib/bk-tra-sua.js';document.head.appendChild(ts); // hiệu ứng 🧋 dùng chung mọi game bản lớp (xem thử: Ctrl+Shift+M)
     hint(BUOI?'Chờ thầy cô mở rương cho bạn…':'Thiếu mã buổi — mở từ màn Buổi học trên ERP','BUỔI HỌC');
     if(!BUOI)return;
     const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';

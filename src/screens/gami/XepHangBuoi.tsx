@@ -177,7 +177,7 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
             </div>
             <p className="mt-2 text-[11px] text-slate-500">Mỗi bạn 1 lượt/buổi. Kết quả do hệ thống rút và cộng EXP ngay (nguồn "Trên lớp"); TV chỉ chiếu lại cho cả lớp xem.
               {game === 'chiem_dat' && ' Chiếm Đất: bạn chọn ô bất kì đúng cấp giải trên TV (Giải 3 ★ · Nhì ★★ · Nhất ★★★), thầy cô bấm ô đó.'}
-              {' '}Quà đặc biệt 🧋 trà sữa: rất hiếm (Nhất 0,1% · Nhì 0,05% · Giải 3 0,01%), trúng thì ERP báo và có nút "Đã trao".</p>
+              {' '}Quà đặc biệt 🧋 trà sữa: rất hiếm, giải càng cao càng dễ trúng; trúng thì ERP báo và có nút "Đã trao".</p>
           </div>
 
           {tt.so_da_choi === 0 && (

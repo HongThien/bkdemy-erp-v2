@@ -143,7 +143,7 @@ Trúng thì vẫn nhận EXP như thường + 1 trà sữa (quà thật, trao ta
 
 - DB (mig `202609281021_chiem_dat_lop_va_tra_sua`, đã áp qua `npm run migrate --only`):
   - `game_lop_thuong` thêm `game='chiem_dat'` = chép nguyên 23 dòng `mo_ruong` (TB Nhất 300 · Nhì 250 · Giải 3 175).
-  - `game_lop_qua_dac_biet(qua, giai, ti_le_pt numeric %)` — seed `tra_sua` 0.1/0.05/0.01. Đổi số ở đây, không sửa code. Áp mọi game.
+  - `game_lop_qua_dac_biet(qua, giai, ti_le_pt numeric %)` — seed `tra_sua` 0.1/0.05/0.01, **Thùy 28/09 nhân 5 ⇒ 0,5 / 0,25 / 0,05** (mig `202609281044`). Đổi số ở đây, không sửa code. Áp mọi game.
   - `buoi_game_qua(luot_id PK → buoi_game_luot, buoi_hoc_id, hoc_sinh_id, qua, trao_at, trao_boi)` — dòng CHỈ khi trúng (§1.5);
     `trao_at` NULL = chưa trao tay.
   - `fn_buoi_game_choi`: sau khi rút EXP, duyệt `game_lop_qua_dac_biet` theo giải, `random()*100 < ti_le_pt` ⇒ insert
@@ -176,3 +176,9 @@ Trúng thì vẫn nhận EXP như thường + 1 trà sữa (quà thật, trao ta
   - (`fn_hs_vi_xu_cua_toi` hiện KHÔNG có `exp_thang` trong danh sách — khác 2 hàm kia; ghi nhận, chưa rõ cố ý hay sót.)
 - **Điều khiển TV từ ERP:** đã có mẫu chạy thật (quản trò sự kiện 26/09): máy ERP đã đăng nhập ↔ TV game qua kênh Supabase Realtime (gửi tên theo slot, nghe kết quả, ghi DB qua RPC, khoá theo ván chống cộng đúp).
 - **Chỗ đặt nút mở game:** màn Buổi học `src/screens/gami/BuoiHocScreen.tsx` (GV/TA đang dùng để điểm danh/chấm).
+- **Hiệu ứng trúng trà sữa (Thùy 28/09: "phải thật bùng nổ")** — `games-site/lib/bk-tra-sua.js`, 1 file dùng chung mọi game bản lớp
+  (`window.bkTraSua({ten,giai,exp,sound})`, game nạp khi vào `?che_do=lop`; chưa nạp kịp thì dùng overlay cũ). Kịch bản ~1,3s hồi hộp
+  (hộp quà rung + phóng to + trống dồn, "QUÀ ĐẶC BIỆT…") → BÙM: chớp trắng, rung màn, ly 🧋 nổ to rồi nhún, chữ "TRÚNG TRÀ SỮA!"
+  từng chữ bật ra đổi màu cầu vồng, nền tia sáng xoay đổi màu, pháo hoa dồn dập ~6s rồi thưa dần, pháo giấy 2 góc, mưa ly trà sữa +
+  trân châu nảy đáy, kèn vàng 3 lần. Nút "Tuyệt vời ▶" hiện sau 2,8s (chống bấm lỡ); Space/Enter/Esc/chạm đều đóng và **bị chặn không
+  xuống game** (không nhảy sang bạn tiếp). Xem thử không dữ liệu: **Ctrl+Shift+M** trên TV bản lớp.

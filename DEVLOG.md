@@ -30073,3 +30073,13 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   front tab hoặc thêm `?loop=timer` (đã có sẵn trong code).
 - **Còn:** test lớp thật · deploy · Đoán Số bản lớp chờ luật (3 hướng đã nêu ở spec §5c) · HANDOFF distill cuối ngày (mục 27/09
   vẫn ghi Chiếm Đất "chờ luật" — đã lỗi thời).
+
+## 2026-09-28 (2) — Trà sữa: hiệu ứng bùng nổ + tỉ lệ ×5
+
+- Thùy: "trúng trà sữa hiệu ứng phải thật bùng nổ" + "nhân 5 tỉ lệ". Mig `202609281044_tra_sua_nhan_5` ⇒ 0,5 / 0,25 / 0,05 %
+  (áp `--only`, đọc lại DB đúng). Lớp 8 bạn ≈ 1% / buổi ⇒ ~2–3 ly / tháng toàn trung tâm (253 buổi thường / 30 ngày).
+- Hiệu ứng tách file chung `games-site/lib/bk-tra-sua.js` (không chép vào từng game — cùng lý do "1 bộ code" §2). Tự chứa canvas 2D +
+  WebAudio, không đụng three.js của game. Chặn keydown ở capture phase ⇒ Space không lọt xuống game.
+- Verify: Chiếm Đất (lệnh giả qua hàng chờ) + Mở Rương (broadcast thật kênh test) đều bật hiệu ứng đúng tên/giải; Space đóng hiệu ứng
+  mà phase game vẫn 'done'. Chụp 3 pha (hồi hộp · bùm · cao trào). Lần đo đầu "không thấy hiệu ứng" là đo sớm (camera + 2s chưa xong),
+  không phải lỗi.
