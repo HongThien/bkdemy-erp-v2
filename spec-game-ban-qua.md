@@ -82,10 +82,6 @@
 - Đo 28/09 (máy bắn "bừa" góc 45–75°, lực 30–90, gió ngẫu nhiên, 10 lượt): **7/10 phát trúng**, điểm 0–51; mỗi lượt đều thấy 16 hộp (mọc lại đúng).
   Bắn trúng nơ hộp 40 ⇒ 48 (đúng +20%). 8 lần sinh map: 0 hộp chồng nhau (hết chỗ thì bỏ bớt 1 hộp, không chồng).
 
-
-- Chế độ đội: đạn trúng xe đội mình có mất máu? bắn trúng hộp quà có cộng điểm đội? (chưa trả lời — CTO tạm: có mất máu nhưng không tính điểm; đội chỉ bắn nhau)
-- EXP đội: rương Vàng (TB 300) / Bạc (TB 250) của Mở Rương ⇒ TB ~260–275/HS, **cao hơn mốc 200**. Giữ, hay đội thua = Gỗ (175)?
-
 ## 5c. v2 (Thùy 28/09) — THAY "mọc lại" của v1
 
 - **Mỗi lượt RESET về đúng map ban đầu** (đất đã khoét + hộp đã vỡ trở lại nguyên trạng — `chupMap()` lúc vào trận, `resetMap()` đầu mỗi lượt).
@@ -110,7 +106,34 @@ Giả lập `games-site/lib/ban-qua-gia-lap.js` (mở `ban-qua.html?gia_lap=1` �
 
 Đích CTO chọn: Thường ≈ Bom to ≈ Nảy (±5%), đạn "xịn" Chùm/Xuyên ≈ +8–10% (vì vòng quay cho Nhất dễ ra xịn — Thùy §4#17). Mỗi đạn khác
 nhau ở CÁCH ra điểm (Xuyên trúng ít mà trúng đậm; Chùm/Bom to dễ trúng mà điểm vụn), không khác ở kỳ vọng.
-⚠ "Chính xác 100%" đang xảy ra ~20% số phát (Chùm 46% vì 3 viên) — xem §6.
+⚠ "Chính xác 100%" đang xảy ra ~20% số phát (Chùm 46% vì 3 viên) — đã xử lý ở §5e.
 
+## 5e. 10 loại đạn, CÂN ĐỀU (Thùy 28/09: "tự cân bằng cho đều nhau, để các loại đạn đều kịch tính" + "thêm ~5 đạn đặc biệt, tham khảo các game kia")
+
+**Kiến trúc:** vật lý + tính điểm gom về **1 bộ máy thuần** trong `ban-qua.html` (`taoPhien/phatMoi/buocPhien` — không vẽ, không âm thanh, trả điểm +
+danh sách sự kiện). Game chỉ "diễn" sự kiện (`dienSuKien`); giả lập `lib/ban-qua-gia-lap.js` chạy CHÍNH bộ máy đó (xoá bản vật lý thứ 2 của §5d —
+tránh "công thức 2 nơi"). `canBang()` tự chỉnh `he` cho điểm TB (tay nghề TB) mọi đạn bằng đạn Thường.
+
+| Đạn | Nguồn ý tưởng | Cơ chế | he |
+|---|---|---|---|
+| ❄️ Thường | — | nổ vừa r60 | 1,00 |
+| 💣 Bom to | — | nổ r120 | 0,72 |
+| 🏀 Nảy | — | nảy 2 lần rồi nổ | 0,87 |
+| 🎯 Xuyên | — | nổ r30 | 1,16 |
+| 🎆 Chùm | GunBound | tách 3 viên ở đỉnh cung | 0,37/viên |
+| 🐑 **Cừu nổ** | Worms "Sheep" | đáp đất rồi CHẠY (leo dốc ≤16px, vướng thì quay đầu + nhảy); **HS bấm Space để nổ**; chạm hộp tự nổ; tự nổ sau 3s · r80 | 0,81 |
+| 🍌 **Chuối bom** | Worms "Banana Bomb" | nổ r40 + văng 5 quả chuối, mỗi quả nổ r44 (he×0,6) | 0,45 |
+| ☄️ **Sao băng** | Worms "Air Strike" | chạm đất gọi 5 sao băng rơi từ trời quanh chỗ đó, mỗi viên r52 (he×0,6); camera lùi xa giữ mặt đất | 0,48 |
+| 🔥 **Lửa lan** | Worms "Napalm" | vỡ 7 giọt lửa lăn trên đất 1,8s, giọt chạm hộp ĐẤT là đốt (he×0,8) | 0,43 |
+| ⚡ **Sét** | GunBound "Lightning" | nổ r30 + 3 tia sét đánh 3 hộp đất ngẫu nhiên trong ±380px (he×0,8) | 0,39 |
+
+- Hộp trời vẫn CHỈ vỡ khi chạm trực tiếp (sét/lửa không đánh hộp trời).
+- **"Chính xác 100%"**: vòng nơ 18→**11px** và **chỉ xét ở vụ nổ ĐẦU** của phát. Trước: 20% số phát (Chùm 46%).
+- Vòng quay: 10 loại, Nhất nghiêng về đạn đặc biệt (`QUAY`); đạn đặc biệt ô vàng lấp lánh. EV mọi đạn như nhau ⇒ "xịn" = kịch tính hơn, không phải điểm cao hơn.
+- **Kết quả cân** (canBang 3 vòng × 8 map, kiểm lại 10 map MỚI, 200 phát/ô): tay nghề TB mọi đạn **35–39 điểm/phát**; giỏi 37–44 · kém 27–31;
+  % trúng 68% (Xuyên) … 94% (Sét); chính xác 10–13%. Trước khi cân: đạn đặc biệt gấp đôi (Sét 86 · Sao băng 78 · Chuối 74 · Lửa 72 vs Thường 34).
+- Verify trong game: mưa sao băng + 3 tia sét chụp màn hình; Chuối tách 5 quả (44 điểm); Space kích nổ Cừu ngay (0,17s); ván 10 lượt đạn ngẫu nhiên chạy hết không lỗi.
+
+## 6. Còn hỏi Thùy
 - Chế độ đội: đạn trúng xe đội mình có mất máu? bắn trúng hộp quà có cộng điểm đội? (CTO tạm: có mất máu nhưng không tính điểm; đội chỉ bắn nhau)
 - EXP đội: rương Vàng (TB 300) / Bạc (TB 250) của Mở Rương ⇒ TB ~260–275/HS, **cao hơn mốc 200**. Giữ, hay đội thua = Gỗ (175)?

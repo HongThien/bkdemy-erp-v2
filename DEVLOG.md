@@ -30563,3 +30563,12 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   hình kế; chạm giới hạn ⇒ báo "Hết lượt gán"; gán chữ đã dùng ⇒ chữ rời hình cũ; đáp án gõ có dấu/thường vẫn khớp; hết màn ra tổng kết.
   Sai/sửa: thẻ kết quả co về cao 0 (con flex của .screen co lại) ⇒ `#play>*{flex-shrink:0}`; giải đúng mà ô chưa gán tô đỏ ⇒ thắng thì xanh
   hết, thua chỉ đỏ ô gán sai.
+
+## 2026-09-28 (9) — Bắn Quà: bộ máy đạn dùng chung + 5 đạn đặc biệt + cân đều 10 loại
+- Thùy: "tự cân bằng cho đều nhau" + "thêm ~5 đạn đặc biệt, tham khảo các game kia". Thêm Cừu nổ · Chuối bom · Sao băng · Lửa lan · Sét (Worms/GunBound).
+- Refactor: vật lý + điểm → bộ máy thuần `taoPhien/phatMoi/buocPhien` (trả sự kiện); game diễn `dienSuKien`; giả lập viết lại để chạy CHÍNH bộ máy (bỏ bản
+  vật lý thứ 2 viết ở (8) — chính là "công thức 2 nơi" CLAUDE.md cấm, lẽ ra phải làm vậy từ đầu). `canBang()` tự chỉnh he.
+- Kết quả: 10 đạn 35–39 điểm/phát (tay nghề TB), chính xác 10–13% (nơ 11px, chỉ vụ nổ đầu).
+- Sai/sửa: `P.dans.push(...).tach=0` (push trả SỐ, strict mode ném lỗi) · camera mưa sao băng bám viên cao nhất ⇒ không thấy đất · mô tả thẻ đạn tràn khung.
+- **Lặp lại lỗi ghi spec LẦN 2 (+ để lại 2 bản câu hỏi mồ côi):** ở (8) lại thay mốc `## 6. Còn hỏi Thùy` mà không giữ tiêu đề. Bài học (7) đã ghi mà vẫn lặp
+  ⇒ bài học dạng "nhớ làm X" không đủ. Chữa tận gốc: mục câu hỏi luôn ở CUỐI file; thêm mục = cắt đuôi câu hỏi ra, ghi mục mới, dán lại đuôi (như lần này), không replace mốc.
