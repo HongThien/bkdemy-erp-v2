@@ -2,7 +2,10 @@
 
 > Nguồn: phiên 28/09/2026 (Thùy + Claude). Trang đề xuất có mockup chạy được:
 > https://claude.ai/artifact/LZF11536BxanSuLQcnbWiR · DEVLOG 28/09 (6)(7)(8).
-> Trạng thái: **ĐÃ CHỐT HƯỚNG, CHƯA CODE.**
+> Trạng thái: **P1 lớp 9–12 ĐÃ BUILD 28/09** — mig `202609281346_hs_giao_dien_skin` · `src/screens/hocsinh/skin/registry.ts`
+> (5 skin: Tối giản · Đấu trường · Y2K · Soft Hàn · Anime RPG) · `HomeHS912.tsx` (Home mới + nút **Hình nền** + tấm chọn + hướng
+> dẫn lần đầu) · `src/lib/giaodien_hs.ts`. Còn: Lo-fi (chờ Đơn 3) · nhập ngày thi vào `lich_thi_lon` · lớp 3–5 / 6–8 (chờ Đơn 1–2) ·
+> tầng 2 (màu nhấn, widget) · reskin các màn con (mới chỉ bỏ màu theo giới tính).
 
 ---
 
