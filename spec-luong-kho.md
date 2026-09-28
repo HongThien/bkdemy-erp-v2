@@ -534,9 +534,43 @@ Ba luật của vòng tối ưu:
 | Lệch nhãn kho | Học thuật | Phân xử: agent sai hay kho sai | theo ca |
 | Bước 7 | Học thuật | Duyệt như thường; gật/bác đề xuất luật cuối lô | cuối mỗi lô |
 
-### 9.7 Việc đầu tiên của P0 (chờ CEO gật)
+### 9.7 P0 — trạng thái (CEO gật "làm P0" 28/09 · nhánh `worktree-luong-kho`)
 
-1. **Thử đọc thẳng MathType** trên 3 file K12 (chỉ đọc, làm ở thư mục nháp). Quyết định đường đọc cho 361 file Word.
-2. **Đo 1 lượt `claude -p` gọi skill** trên máy công ty: chạy được với đăng nhập subscription không, tốn bao nhiêu, `--json-schema` có giữ khuôn không.
-3. **Trigger ghi vết người sửa** khi duyệt câu (migration — cần CEO gật vì đụng DB).
-4. **Cổng ghi DB** thay cho `hangdoi-giai --ghi` không ép verify.
+| # | Việc | Trạng thái | Ở đâu |
+|---|---|---|---|
+| 1 | Thử đọc thẳng MathType trên 3 file K12 | ⏳ đang chạy | thư mục nháp, chưa vào repo |
+| 2 | Đo 1 lượt `claude -p` gọi skill | 🟡 **script xong, CHƯA CHẠY** — máy viết script không cài CLI `claude` | `scripts/kho/do-claude-p.mjs` |
+| 3 | Trigger ghi vết người sửa | 🟡 **nháp xong, CHƯA ÁP vào DB** — chờ CEO gật | `supabase/migrations/202609281225_kho_sua_log.sql` |
+| 4 | Cổng ghi | ✅ xét được gói, có test. Chưa nối vào lệnh ghi thật (làm ở P2) | `scripts/kho/cong-ghi.mjs` |
+| 5 | T0 cửa vào + gốc folder thành cấu hình | ✅ chạy trên folder thật, có test | `scripts/kho/t0-cua-vao.mjs`, `cau-hinh.mjs` |
+
+Test: `node --test scripts/kho/kho.test.mjs` — 28/28 qua.
+
+**T0 trên folder K12 thật** (chỉ liệt kê, ghép theo tên):
+
+| Thư mục | Tệp | Cặp đề ↔ đáp án | Đơn lẻ | Mơ hồ |
+|---|---|---|---|---|
+| Kho đề/Khối 12 | 358 | 164 | 30 (24 đề không có đáp án · 6 đáp án không tìm thấy đề cùng tên) | 0 |
+| NBV | 118 | 44 (20 cặp SUY từ tên: `X - CH` + `X`) | 28 | 0 |
+| PNL | 105 | 48 | 0 | 0 |
+| Toán Từ Tâm | 57 | 0 — chỉ có bản học sinh | 57 | 0 |
+
+- Chép thử 4 file từ ổ Drive: 1–2,4 giây/file; chạy lại lần hai nhận ra file đã có, không chép lại.
+- **Một số file Word có bản PDF cùng tên nằm cạnh** (NBV, PNL) ⇒ vừa là đường đọc thay thế, vừa là nhân chứng độc lập để kiểm đường đọc MathType.
+- **PDF đề thi K12 không có lớp chữ** (4 file thử: 3 file 0 ký tự, 1 file có một phần và chữ vỡ dấu) ⇒ PDF đề chỉ đọc được bằng nhìn ảnh, đúng như CEO chốt dùng Gemini.
+- Máy viết code không có `pdftoppm` ⇒ không mở PDF thành ảnh được ở đây; máy công ty phải có (luồng `/nhap-kho` cũ đang dùng).
+
+**Luật ghép cặp đã cài:** khoá = tên file chuẩn hoá bỏ hậu tố vai (`- CH`/`- DA`, `_HS`/`_GV`, thư mục `Đáp án/`, đuôi ` (1)` của trình duyệt).
+Hai file cùng khoá, cùng vai, cùng định dạng ⇒ MƠ HỒ, không ghép. Không có chỗ nào ghép theo thứ tự hay theo số lượng.
+
+**Cổng ghi từ chối khi:** thiếu biên bản của một trạm bắt buộc · biên bản kiểm nội dung khác với nội dung sắp ghi (so dấu băm) ·
+người kiểm cùng lượt chạy với người làm · khai "model khác" mà cùng model · cách kiểm không nằm trong danh sách.
+Trạm không đạt ⇒ câu vẫn vào kho nhưng `kiem_may='nghi'`. Mọi câu qua cổng đều `da_duyet=false`.
+AI tự điền `kiem_may`/`da_duyet` vào câu cũng vô ích — cổng không đọc hai trường đó.
+
+**Migration `kho_sua_log` (chưa áp) — đã kiểm bằng truy vấn chỉ-đọc:** đủ cột trên 3 bảng câu · không trùng tên với thứ đang có ·
+thân hàm `_trg_log_doi_dang` trong DB đúng bằng bản sắp thay (chỉ thêm `actor`) · biểu thức chuẩn hoá qua 9/9 ca thử.
+**Chưa kiểm được:** trigger chạy thật (phải áp mới thử được). Mất gì: không — chỉ thêm.
+
+**Phát hiện thêm khi làm P0:** `auto-giai-scheduler.mjs` đang là đúng kiểu kiến trúc mới muốn bỏ — một phiên Claude tự liệt kê, tự giải,
+tự "verify", tự ghi, tất cả trong cùng ngữ cảnh, không cổng. Chưa đụng; thay ở P4.
