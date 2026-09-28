@@ -13,7 +13,8 @@
 //   rank/<bac 1..10>/bieu_tuong.png · bieu_tuong_64.png · khung_avatar.png · khung_avatar_96.png
 //   rank/sao.png · rank/hao_quang_than.png · rank/len_bac.png
 //   fx/sao_moi_sang.png (vầng sáng lớp phủ sao mới — Đơn 1)
-//   nhiem-vu/<ma>.png (ma: N1 N2 N3 T1..T4 M1 M2 · chang ngay tuan thang · ruong_dong ruong_mo · vong_quay thu_thach tu_luyen)
+//   nhiem-vu/<ma>.png (ma: N1 N2 N3 T1..T4 M1 M2 · chang ngay tuan thang · ruong_dong ruong_mo · vong_quay)
+//   Tên file ChatGPT giao → tên ở đây: bảng cuối design/DON-HANG-GAMI-HS.md (Claude thu nhỏ nho_48 / bieu_tuong_64 / khung_avatar_96).
 // ============================================================================
 
 export const GOC = '/bk-ui/hs/gami'
@@ -100,5 +101,7 @@ export const ICON_NV: Record<string, string> = {
   N1: '⚔️', N2: '📝', N3: '🔧', T1: '⏰', T2: '🎯', T3: '🔥', T4: '🩹', M1: '📈', M2: '🗓️',
   chang: '🎖️', ngay: '☀️', tuan: '📅', thang: '🏔️', ruong_dong: '📦', ruong_mo: '🎁', vong_quay: '🎰', thu_thach: '⚔️', tu_luyen: '📚',
 }
-export const anhNV = (ma: string): string | null => (KIT.nhiem_vu ? `${GOC}/nhiem-vu/${ma}.png` : null)
+// 2 nút phụ dùng lại icon nhiệm vụ (đơn v3 không đặt vẽ riêng): Thử thách = N1, Tự luyện = N2.
+const NV_DUNG_LAI: Record<string, string> = { thu_thach: 'N1', tu_luyen: 'N2' }
+export const anhNV = (ma: string): string | null => (KIT.nhiem_vu ? `${GOC}/nhiem-vu/${NV_DUNG_LAI[ma] ?? ma}.png` : null)
 export const anhFxSaoMoi = (): string | null => (KIT.nhiem_vu ? `${GOC}/fx/sao_moi_sang.png` : null)

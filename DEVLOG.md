@@ -31220,3 +31220,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   + link chụp `?xem=gami` cho từng đơn. Huy hiệu = huy chương tròn kim loại vàng cổ + ĐÁ QUÝ màu chủ (ghi mã màu khớp code), khoá = bóng
   xanh đêm (không xám nhạt). Mỗi đơn có mục TÊN FILE khớp cây file của `hinh.ts`. Thêm `fx/sao_moi_sang.png` (Đơn 1) vào sổ hình.
 - Hình tạm trong code chỉnh theo đơn: vành vàng cổ, khoá + dải "chưa đạt" xanh đêm. Soi 375×812 album trống + chọn khoe.
+
+## 2026-09-29 (6) — Đơn design gamification v3: ảnh chung + đặt TỪNG hình riêng
+- Thùy: "bình thường phải có ảnh chung và design các phần nhỏ riêng. t ko thấy có đoạn m đặt ảnh riêng". v2 chỉ có mô tả + "Pha A→D, nhận zip".
+- v3 theo khuôn đơn skin Lo-fi v3 / Thị trấn v2: KHÔNG zip · mỗi lượt 1 hình có "#số tên_file" · A = ảnh toàn cảnh/bảng duyệt → DỪNG chờ duyệt
+  → B, C, D… từng hình rời. CÁCH GIAO HÀNG + CHUẨN CHUNG (1254² nền trong, vật ~80%, không chữ) đặt trong khối PHONG CÁCH CHUNG dán kèm mọi đơn.
+  Đơn 2: #01 bảng duyệt + 57 hình (8 ★1 làm gốc họ → ★2–5 vẽ dựa trên ★1 → 8 khoá → bí ẩn → 8 phôi bản cứng phẳng ≤5 màu). Thang 5 sao mô tả
+  cụ thể từng sao (đồng trơn → khắc → vàng cổ 2 lớp → bạc+ruy băng → vàng sáng+tia+cánh). Đơn 3: bảng 10 biểu tượng + 5 ảnh màn Rank
+  (① dt/iPad ② ③ ④) + 10 biểu tượng + 10 khung (lỗ 62%, lùi #FF00FF nếu không trong suốt được) + sao/hào quang/ánh sáng bùng.
+  Đơn 1: 8 ảnh màn + 16 icon nhiệm vụ (mỗi cái 1 vật fantasy riêng, không trùng huy hiệu/rank/icon ô) + vầng sáng sao mới. Đơn 4: 6 ảnh màn.
+- Bản nhỏ (nho_48, bieu_tuong_64, khung_avatar_96) KHÔNG đặt vẽ — Claude thu nhỏ từ bản to. Bảng đổi tên file giao → file code ở cuối đơn.
+- Code: nút Thử thách / Tự luyện dùng lại icon N1 / N2 (`NV_DUNG_LAI` trong hinh.ts). tsc + check:style-hs ✔.
