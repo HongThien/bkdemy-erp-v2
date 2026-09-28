@@ -30362,3 +30362,13 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Còn chờ: D1 (bộ số), D4 (quy hạng MT theo sĩ số — vẫn cần TRONG 1 môn vì khối 6→68 em), D6 (thi lại MT), trần ¼ hay ⅕.
 - Bài học: t đề xuất D2/D5 từ giả định kiểu app online (HS có thể bỏ lớp; cần so chung giữa môn) — BK offline + môn là trung tâm
   riêng. Đã ghi memory.
+
+## 2026-09-28 (9) — Giao diện app HS: 3 nhóm khối + đơn đặt hàng ChatGPT (`design/DON-HANG-SKIN-HS.md`)
+
+- **Thùy chốt:** 3 nhóm, mỗi nhóm bộ skin riêng — lớp 3–5 gốc **Thị trấn** · lớp 6–8 gốc **Khối vuông** · lớp 9–12 nhiều skin để chọn.
+- **Làm:** 4 đơn theo khuôn `CHATGPT-UI-KIT.md`: Đơn 1 lớp 3–5 (iPad ngang + laptop, 3 làng + 3 linh vật, 8 ô lấy đúng `BOX_CAP1`) ·
+  Đơn 2 lớp 6–8 (điện thoại dọc + iPad ngang, 3 vùng đất trong đó "hang mỏ" là bản tối, 3 bạn đồng hành, ô lấy đúng `KHU_CAP2` + Học từ đầu) ·
+  Đơn 3–4 lớp 9–12 Lo-fi / Anime RPG (chuyển từ spec §8 sang file đơn — 1 nguồn). Mỗi đơn có mục "Ghi đè kit §1" (bỏ Pacifico/chữ viết
+  tay, cho cuộn trên iPad) + "Luật riêng" (không khẩu hiệu, không chữ Anh trang trí, câu thoại linh vật phải có số thật). Bỏ biến thể nam/nữ.
+- **Lưu ý build:** code hiện chia cấp 1 / khối 6–9 / khối 10–12; nhóm mới là 3–5 / 6–8 / 9–12 ⇒ khối 9 phải chuyển nhóm. Home 3–5 và 6–8 thêm
+  cấp + XP + xu + linh vật (dữ liệu có sẵn: EXP, ví xu) — chưa có hàm trả gộp cho Home.
