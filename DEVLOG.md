@@ -30685,3 +30685,11 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Dựng lại xlsx phase 1: 54 thành tựu × 8 huy hiệu, 40 cấp; kiểm Python 40/40 khớp. Spec A5.5 thêm khối PHASE 1.
 - Bài học: t đưa ~104 cấp ngay vòng đầu — thiết kế đầy đủ ≠ thứ HS nhìn thấy ở phase đầu. Lần sau luôn tách "bản đầy đủ" và "phase 1
   vừa phải" ngay từ đề xuất.
+
+## 2026-09-28 (25) — Đặt tên huy hiệu theo biểu tượng / thần / danh nhân
+
+- Thùy: tên huy hiệu "kêu kêu", tốt nhất là biểu tượng / vị thần / danh nhân tượng trưng cho loại đó. Đề xuất 2 bộ trong
+  `de-xuat-huy-hieu.md` §0, mỗi tên khớp câu chuyện với việc được ghi nhận: Bộ A Việt Nam (Mạc Đĩnh Chi · Sơn Tinh · Lương Thế Vinh ·
+  Nguyễn Hiền · Thánh Gióng · Thạch Sanh · +Nữ Oa · +Quang Trung) — Bộ B Hy Lạp (Helios · Chronos · Athena · Zeus · Phoenix · Hercules
+  · +Hephaestus · +Nike). CTO chọn Bộ A (đúng "danh nhân", SGK, GV kể chuyện lúc trao, bản sắc riêng, tách hệ với rank tiếng Anh).
+  Danh nhân thật vẽ bằng biểu tượng, không chân dung. Chờ Thùy chọn rồi mới đổi tên trong xlsx.

@@ -25,6 +25,41 @@
 
 ---
 
+## 0. TÊN HUY HIỆU PHASE 1 — theo biểu tượng / vị thần / danh nhân (đề xuất 28/09, chờ Thùy chọn bộ)
+
+> Thùy: *"Đặt tên huy hiệu kêu kêu vào — tốt nhất là tên các biểu tượng, các vị thần, các danh nhân tượng trưng cho loại đấy."*
+> **Nguyên tắc:** câu chuyện của nhân vật phải **khớp đúng việc huy hiệu ghi nhận**, để HS nghe tên là hiểu, và nhớ luôn câu chuyện.
+
+| Huy hiệu (mô tả) | **Bộ A — Việt Nam** (danh nhân · truyền thuyết HS học trong SGK) | Câu chuyện khớp | **Bộ B — Thần thoại Hy Lạp** (hợp tên rank tiếng Anh) | Câu chuyện khớp |
+|---|---|---|---|---|
+| Chuỗi đi học liên tục | **Mạc Đĩnh Chi** | Nhà nghèo vẫn bắt đom đóm làm đèn học, không bỏ buổi nào | **Helios** | Thần Mặt Trời — ngày nào cũng mọc, chưa từng nghỉ |
+| BTVN đúng hạn | **Sơn Tinh** | Mang sính lễ đến **sớm, đúng hẹn** nên cưới được Mỵ Nương | **Chronos** | Thần Thời Gian |
+| ET giỏi trên lớp | **Lương Thế Vinh** | "Trạng Lường" — thần đồng **Toán** | **Athena** | Nữ thần Trí Tuệ |
+| MT top khối | **Nguyễn Hiền** | Trạng nguyên trẻ nhất sử Việt, **đỗ đầu năm 12–13 tuổi** — đúng tuổi HS | **Zeus** | Vua của các vị thần, đứng trên đỉnh Olympus |
+| Hạng MT tăng (bứt phá) | **Thánh Gióng** | Cậu bé chưa biết nói bỗng **vươn vai thành tráng sĩ** | **Phoenix** | Phượng hoàng tái sinh từ tro, bay vút lên |
+| Ngày pass Thử thách | **Thạch Sanh** | Vượt hết **thử thách** này đến thử thách khác (chằn tinh, đại bàng…) | **Hercules** | 12 kỳ công — 12 thử thách |
+| *(tuỳ chọn)* Lấp lỗ yếu → đạt | **Nữ Oa** | **Luyện đá vá trời** — lấp chỗ thủng bầu trời | **Hephaestus** | Thần thợ rèn — rèn lại, sửa chỗ hỏng |
+| *(tuỳ chọn)* Leo Rank | **Quang Trung** | Áo vải cờ đào → lên ngôi Hoàng đế — đúng mạch "người thường → đỉnh cao" | **Nike** | Nữ thần Chiến Thắng |
+
+**CTO đề xuất: Bộ A — Việt Nam.**
+- **Đúng chữ "danh nhân"** Thùy nói. HS đã học các nhân vật này ở SGK.
+- Mỗi huy hiệu là **một câu chuyện có sẵn để GV kể** lúc trao bản cứng. Trao huy hiệu Nguyễn Hiền kèm câu "trạng nguyên 12 tuổi" có sức nặng hơn nhiều.
+- **Bản sắc riêng BK**, không ai bảo copy game. Bộ Hy Lạp thì game nào cũng dùng.
+- Rank dùng tên tiếng Anh (hành trình thành thần), còn huy hiệu dùng danh nhân Việt ⇒ **2 hệ phân biệt rõ**, không lẫn.
+
+**Lưu ý thiết kế hình.** Với danh nhân có thật (Mạc Đĩnh Chi, Lương Thế Vinh, Nguyễn Hiền, Quang Trung), hình huy hiệu dùng **biểu tượng**, không vẽ chân dung:
+- Mạc Đĩnh Chi → đom đóm + ngọn đèn.
+- Lương Thế Vinh → bàn tính.
+- Nguyễn Hiền → mũ trạng nguyên.
+- Quang Trung → cờ đào.
+
+Nhân vật truyền thuyết thì vẽ được: Thánh Gióng cưỡi ngựa sắt · Sơn Tinh + núi · Thạch Sanh + cây cung · Nữ Oa vá trời.
+
+**Hiển thị:** tên lớn là **tên nhân vật**, dòng nhỏ bên dưới là **việc cần làm**. Ví dụ:
+> **Thánh Gióng ★★★** — *Hạng MT tăng 6 lần*
+
+---
+
 ## 1. THÀNH TỰU PHỤ — điều kiện trong 1 tháng, dùng chung cho 4★ / 5★ (N–N)
 
 | Mã | Thành tựu (trong 1 tháng) | Phương diện |
