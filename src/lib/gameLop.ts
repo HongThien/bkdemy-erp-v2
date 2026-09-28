@@ -36,11 +36,30 @@ export const TEN_QUA: Record<string, string> = { tra_sua: '🧋 Trà sữa' }
 
 // Game có bản lớp. `co_luat=false` ⇒ chưa có bảng thưởng (Thùy chưa viết luật) — hiện nhưng khoá.
 // Chiếm Đất (Thùy 28/09): 3 loại ô = 3 mức giải (Giải 3 ★ · Nhì ★★ · Nhất ★★★), EXP y Mở Rương, chọn ô bất kì.
-export const GAME_LOP: { id: string; ten: string; file: string; co_luat: boolean }[] = [
+// Bắn Quà (Thùy 28/09, spec-game-ban-qua.md §7): game KỸ NĂNG — cả lớp chơi 1 ván trên TV (cá nhân / đội), không mở từng bạn:
+//   `ca_lop=true` ⇒ màn Buổi học hiện khung ván (BanQuaLop) thay cho nút "Mở cho bạn này".
+export const GAME_LOP: { id: string; ten: string; file: string; co_luat: boolean; ca_lop?: boolean }[] = [
   { id: 'mo_ruong', ten: '🎁 Mở Rương', file: 'mo-ruong.html', co_luat: true },
   { id: 'chiem_dat', ten: '🏯 Chiếm Đất', file: 'chiem-dat.html', co_luat: true },
+  { id: 'ban_qua', ten: '🎯 Bắn Quà', file: 'ban-qua.html', co_luat: true, ca_lop: true },
   { id: 'doan_so', ten: '🎲 Đoán Số', file: 'doan-so.html', co_luat: false },
 ]
+
+// ---------- Bắn Quà bản lớp (mig 202609281425) — mọi rút/tính ở DB; TV chỉ chơi + gửi điểm thô về ----------
+export type BanQuaHS = {
+  hoc_sinh_id: string; ho_ten: string; giai: 1 | 2 | 3; doi: number | null; dan: string[]; thu_tu: number; co_mat: boolean
+  diem: number | null; exp: number | null; qua: string | null // null = chưa chốt
+}
+export type BanQuaVan = { che_do: 'canhan' | 'doi'; so_doi: number | null; phut: number | null; chot_at: string | null; created_at: string }
+export type BanQuaDoi = { doi: number; sat_thuong: number; hang: number; ruong: 'vang' | 'bac'; exp: number }
+export type BanQuaTinhHinh = { buoi_id: string; van: BanQuaVan | null; hs: BanQuaHS[]; doi: BanQuaDoi[] }
+export type BanQuaKetQua = { hs: Record<string, number>; doi?: Record<string, number> } // TV gửi về: điểm từng HS · sát thương từng đội
+export const banQuaTinhHinh = (buoi: string) => rpc<BanQuaTinhHinh>('fn_ban_qua_tinh_hinh', { p_buoi: buoi })
+export const banQuaChiaDoi = (buoi: string, soDoi: number) => rpc<Record<string, number>>('fn_ban_qua_chia_doi', { p_buoi: buoi, p_so_doi: soDoi })
+export const banQuaBatDau = (buoi: string, cheDo: 'canhan' | 'doi', soDoi: number | null, phut: number | null, doi: Record<string, number>) =>
+  rpc<BanQuaTinhHinh>('fn_ban_qua_bat_dau', { p_buoi: buoi, p_che_do: cheDo, p_so_doi: soDoi, p_phut: phut, p_doi: doi })
+export const banQuaChot = (buoi: string, kq: BanQuaKetQua) => rpc<BanQuaTinhHinh>('fn_ban_qua_chot', { p_buoi: buoi, p_kq: kq })
+export const TEN_DOI = ['Đỏ', 'Xanh', 'Vàng', 'Tím'], MAU_DOI = ['#ff5c5c', '#3d9bff', '#ffbf2e', '#b36bff']
 // Trang game (project Vercel bkdemy-games). Đặt VITE_GAMES_URL nếu dùng domain riêng.
 export const GAMES_URL = ((import.meta as any).env?.VITE_GAMES_URL as string | undefined) || 'https://bkdemy-games.vercel.app'
 export const linkTV = (file: string, buoi: string) => `${GAMES_URL.replace(/\/$/, '')}/${file}?che_do=lop&buoi=${buoi}`

@@ -30725,3 +30725,12 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Thùy hỏi "Phoenix có phải thần Hy Lạp không" → không: là chim thần thoại (biểu tượng tái sinh, gốc Ai Cập — Bennu); hợp tiêu chí
   "biểu tượng" Thùy nêu, BK có sẵn art phượng hoàng. Hercules = tên La Mã, á thần. Phương án toàn-vị-thần: Phoenix → Nike, Leo Rank →
   Olympus. Chờ Thùy chọn giữ Phoenix hay đổi.
+
+## 2026-09-28 (11) — Bắn Quà nối ERP (bản buổi học) — mọi dữ liệu ở DB
+- Thùy: "Mở Rương/Chiếm Đất nối chưa? Bắn Quà như nhau, dữ liệu phải trên DB" + "chia đội là chức năng riêng: ngẫu nhiên hoặc GV tự xếp".
+- Mig `202609281425_ban_qua_lop`: ván/HS/đội + vòng quay đạn ở DB + chốt (hạng, EXP, rương, trà sữa, sổ EXP 1 transaction); refactor 2 hàm rút dùng chung.
+  ERP: `BanQuaLop.tsx` + `gameLop.ts` + XepHangBuoi (kênh TV nhận tin ngược, khoá chọn game). TV: `?che_do=lop` nghe bat_dau/xin_ket_qua/da_chot, gửi điểm thô.
+- Sai/sửa: `fn_ban_qua_chot` dùng `create temp table … on commit drop` ⇒ gọi 2 lần trong 1 transaction báo trùng (bắt được nhờ test gọi 2 ván liền) → viết lại bằng CTE.
+  Phép đo phân bố đạn đầu tiên ra "100% một loại" — do câu đo (lateral không tương quan ⇒ random tính 1 lần), KHÔNG phải hàm; đo lại đúng câu trong vòng lặp plpgsql ⇒ khớp ±1%.
+  Đường dẫn Windows trong heredoc Bash mất dấu `\` ⇒ ghi file tạm trong repo (`games-site/_tmp_*`, xoá sau test).
+- Trả lời Thùy: Mở Rương/Chiếm Đất ĐÃ nối (DB rút + ERP + TV) nhưng 0 buổi chạy thật + chưa deploy.

@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-265 bảng · 19 view · 0 enum · 94 trigger · 554 function
+269 bảng · 19 view · 0 enum · 94 trigger · 560 function
 
 ## _app_secrets
 
@@ -198,6 +198,14 @@
 | duyet_at | timestamp with time zone | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | nguon | text |  | 'hs_bao_sai'::text |  | `hs_bao_sai` · `ai_de_xuat` |
+
+## ban_qua_quay
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| giai | smallint |  |  | PK |  |
+| dan | text |  |  | PK | `thuong` · `bomto` · `nay` · `xuyen` · `chum` · `cuu` · `chuoi` · `saobang` · `lua` · `set` |
+| trong_so | integer |  |  |  |  |
 
 ## bang_khong_bu
 
@@ -425,6 +433,42 @@
 | updated_by | uuid | Y |  |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
 
+## buoi_ban_qua
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| buoi_hoc_id | uuid |  |  | PK FK→buoi_hoc.id |  |
+| mon | text |  |  |  |  |
+| che_do | text |  |  |  | `canhan` · `doi` |
+| so_doi | smallint | Y |  |  |  |
+| phut | smallint | Y |  |  |  |
+| chot_at | timestamp with time zone | Y |  |  |  |
+| nguoi | uuid | Y | jwt_uid() |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## buoi_ban_qua_doi
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| buoi_hoc_id | uuid |  |  | PK FK→buoi_ban_qua.buoi_hoc_id |  |
+| doi | smallint |  |  | PK |  |
+| sat_thuong | integer |  |  |  |  |
+| hang | smallint |  |  |  |  |
+| ruong | text |  |  |  | `vang` · `bac` |
+| exp | integer |  |  |  |  |
+
+## buoi_ban_qua_hs
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| buoi_hoc_id | uuid |  |  | PK FK→buoi_ban_qua.buoi_hoc_id |  |
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
+| giai | smallint |  |  |  |  |
+| doi | smallint | Y |  |  |  |
+| dan | text[] |  |  |  |  |
+| thu_tu | smallint |  |  |  |  |
+
 ## buoi_danh_gia
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -462,6 +506,7 @@
 | exp | integer |  |  |  |  |
 | nguoi | uuid | Y | jwt_uid() |  |  |
 | at | timestamp with time zone |  | now() |  |  |
+| diem_game | integer | Y |  |  |  |
 
 ## buoi_game_qua
 
@@ -5421,6 +5466,8 @@ SELECT bl.hoc_sinh_id,
 - `_dien_hs_view(p_o jsonb)` → jsonb
 - `_et_cham(p_bai_lam uuid)` → void
 - `_game_bxh_ten(p text)` → text
+- `_game_lop_rut_exp(p_game text, p_giai smallint)` → integer
+- `_game_lop_rut_qua(p_luot uuid, p_buoi uuid, p_hs uuid, p_giai smallint)` → text
 - `_gay_nhan_tre(p_tu timestamp with time zone, p_den timestamp with time zone)` → text
 - `_gay_ten_actor(p_id uuid)` → text
 - `_hs_giao_dien_ghi_log()` → trigger
@@ -5511,6 +5558,10 @@ SELECT bl.hoc_sinh_id,
 - `dai_dang_tien_de_bao_dong(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `et_de(p_bai_test uuid)` → jsonb
 - `et_nop(p_bai_lam uuid)` → jsonb
+- `fn_ban_qua_bat_dau(p_buoi uuid, p_che_do text, p_so_doi smallint, p_phut smallint, p_doi jsonb)` → jsonb
+- `fn_ban_qua_chia_doi(p_buoi uuid, p_so_doi smallint)` → jsonb
+- `fn_ban_qua_chot(p_buoi uuid, p_kq jsonb)` → jsonb
+- `fn_ban_qua_tinh_hinh(p_buoi uuid)` → jsonb
 - `fn_bo_dau(p text)` → text
 - `fn_bo_tro_trong_ngay(p_ngay date DEFAULT NULL::date)` → jsonb
 - `fn_botro_cham_tay(p_bai_test_cau uuid, p_verdict text)` → jsonb
@@ -5950,8 +6001,8 @@ SELECT bl.hoc_sinh_id,
 - `trg_htd_test_nop()` → trigger
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
@@ -5960,6 +6011,8 @@ SELECT bl.hoc_sinh_id,
 | bảng | constraint | định nghĩa |
 |---|---|---|
 | bai_test | bai_test_thoi_gian_phut_check | `CHECK (((thoi_gian_phut IS NULL) OR (thoi_gian_phut > 0)))` |
+| ban_qua_quay | ban_qua_quay_giai_check | `CHECK ((giai = ANY (ARRAY[1, 2, 3])))` |
+| ban_qua_quay | ban_qua_quay_trong_so_check | `CHECK ((trong_so > 0))` |
 | bao_cao_ph | bao_cao_ph_cs_ky_nang_chk | `CHECK (((cs_ky_nang IS NULL) OR ((cs_ky_nang >= 1) AND (cs_ky_nang <= 5))))` |
 | bao_cao_ph | bao_cao_ph_cs_tap_trung_chk | `CHECK (((cs_tap_trung IS NULL) OR ((cs_tap_trung >= 1) AND (cs_tap_trung <= 5))))` |
 | bao_cao_ph | bao_cao_ph_cs_thai_do_chk | `CHECK (((cs_thai_do IS NULL) OR ((cs_thai_do >= 1) AND (cs_thai_do <= 5))))` |
@@ -5976,6 +6029,14 @@ SELECT bl.hoc_sinh_id,
 | bo_tro_yeu | bo_tro_yeu_muc_may_ck | `CHECK (((muc_may_de_xuat IS NULL) OR (muc_may_de_xuat = ANY (ARRAY[1, 2, 3]))))` |
 | bo_tro_yeu | bo_tro_yeu_uu_tien_check | `CHECK (((uu_tien >= 1) AND (uu_tien <= 3)))` |
 | btvn_nop | btvn_nop_nguon_check | `CHECK ((nguon = 'ph_app'::text))` |
+| buoi_ban_qua | buoi_ban_qua_check | `CHECK ((((che_do = 'canhan'::text) = (so_doi IS NULL)) AND ((che_do = 'canhan'::text) = (phut IS NULL))))` |
+| buoi_ban_qua | buoi_ban_qua_phut_check | `CHECK (((phut >= 1) AND (phut <= 10)))` |
+| buoi_ban_qua | buoi_ban_qua_so_doi_check | `CHECK (((so_doi >= 2) AND (so_doi <= 4)))` |
+| buoi_ban_qua_doi | buoi_ban_qua_doi_doi_check | `CHECK (((doi >= 1) AND (doi <= 4)))` |
+| buoi_ban_qua_doi | buoi_ban_qua_doi_sat_thuong_check | `CHECK ((sat_thuong >= 0))` |
+| buoi_ban_qua_hs | buoi_ban_qua_hs_dan_check | `CHECK ((cardinality(dan) = 3))` |
+| buoi_ban_qua_hs | buoi_ban_qua_hs_doi_check | `CHECK (((doi >= 1) AND (doi <= 4)))` |
+| buoi_ban_qua_hs | buoi_ban_qua_hs_giai_check | `CHECK ((giai = ANY (ARRAY[1, 2, 3])))` |
 | buoi_danh_gia | buoi_danh_gia_hoan_thanh_pct_check | `CHECK (((hoan_thanh_pct IS NULL) OR (((hoan_thanh_pct >= 0) AND (hoan_thanh_pct <= 100)) AND (((hoan_thanh_pct)::integer % 5) = 0))))` |
 | buoi_danh_gia | buoi_danh_gia_muc_chk | `CHECK (((muc IS NULL) OR ((muc >= 1) AND (muc <= 5))))` |
 | buoi_danh_gia | buoi_danh_gia_muc_ma_khop_muc_chk | `CHECK (((muc_ma IS NULL) OR ((muc IS NOT NULL) AND (("left"(muc_ma, 1))::smallint = muc))))` |

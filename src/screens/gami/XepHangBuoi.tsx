@@ -6,6 +6,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import { tinhHinhGiai, chotGiai, moLaiGiai, choiLuot, traoQua, GAME_LOP, linkTV, kenhTV, TEN_GIAI, TEN_QUA, type GiaiBuoi, type KetQuaLuot } from '../../lib/gameLop'
+import BanQuaLop from './BanQuaLop'
 
 const NHO_GAME: Record<string, string> = {} // buổi → game GV đã chọn (sống tới F5, đổi tab không mất)
 
@@ -19,7 +20,11 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
   const [coTv, setCoTv] = useState(false)
   const [msg, setMsg] = useState<string | null>(null)
   const chRef = useRef<ReturnType<typeof supabase.channel> | null>(null)
+  const ngheTV = useRef<((p: Record<string, unknown>) => void) | null>(null) // tin TV gửi về (Bắn Quà: điểm ván)
   useEffect(() => { NHO_GAME[buoiId] = game }, [buoiId, game])
+
+  // Buổi đã có lượt game ⇒ khoá đúng game đó (mỗi buổi 1 game)
+  useEffect(() => { const gd = tt?.hs.find((h) => h.game)?.game; if (gd && gd !== game) setGame(gd) }, [tt]) // eslint-disable-line
 
   // Lựa chọn ban đầu: đã có Nhất/Nhì lưu (sau Mở lại) thì lấy lại; chưa có thì chỉ tự điền khi gợi ý RÕ RÀNG (không hoà).
   const napLuaChon = (d: GiaiBuoi) => {
@@ -46,7 +51,7 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
     const ch = supabase.channel(kenhTV(buoiId), { config: { broadcast: { self: false } } })
     ch.on('presence', { event: 'sync' }, () => {
       setCoTv(Object.values(ch.presenceState()).flat().some((x) => (x as { role?: string }).role === 'tv'))
-    }).subscribe()
+    }).on('broadcast', { event: 'mo' }, (m) => ngheTV.current?.((m.payload ?? {}) as Record<string, unknown>)).subscribe()
     chRef.current = ch
     return () => { chRef.current = null; supabase.removeChannel(ch); setCoTv(false) }
   }, [buoiId, daChot])
@@ -54,6 +59,7 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
     // `game` để TV lọc (2 TV game có thể cùng nghe 1 kênh) · `qua` = quà đặc biệt (🧋) DB đã rút — TV chỉ báo
     chRef.current?.send({ type: 'broadcast', event: 'mo', payload: { ten: k.ho_ten, giai: k.giai, exp: k.exp, min: k.min, max: k.max, game: k.game, qua: k.qua, t: Date.now() } })
   }
+  const guiTVTho = (payload: Record<string, unknown>) => { chRef.current?.send({ type: 'broadcast', event: 'mo', payload }) }
   const bao = (t: string) => { setMsg(t); window.setTimeout(() => setMsg((m) => (m === t ? null : m)), 2500) }
 
   const g = GAME_LOP.find((x) => x.id === game) ?? GAME_LOP[0]
@@ -132,7 +138,7 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
           <div className="mt-3 rounded-xl border border-indigo-200 p-2.5">
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-sm font-bold text-indigo-700">🎮 Game của buổi</span>
-              <select value={game} onChange={(e) => setGame(e.target.value)} className="rounded-md border border-slate-300 px-2 py-1 text-sm">
+              <select value={game} disabled={tt.so_da_choi > 0} onChange={(e) => setGame(e.target.value)} className="rounded-md border border-slate-300 px-2 py-1 text-sm disabled:bg-slate-100">
                 {GAME_LOP.map((x) => <option key={x.id} value={x.id} disabled={!x.co_luat}>{x.ten}{x.co_luat ? '' : ' (chờ luật)'}</option>)}
               </select>
               <a href={linkTV(g.file, buoiId)} target="_blank" rel="noreferrer" className="rounded-md bg-indigo-600 px-3 py-1 text-sm font-bold text-white">📺 Mở màn TV</a>
@@ -142,8 +148,12 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
             {tt.so_qua_chua_trao > 0 && (
               <div className="mt-2 rounded-lg bg-pink-50 px-3 py-1.5 text-sm font-bold text-pink-700">🧋 Có {tt.so_qua_chua_trao} bạn trúng quà đặc biệt chưa trao — trao xong bấm "Đã trao" cạnh tên.</div>
             )}
+            {g.ca_lop && (
+              <BanQuaLop buoiId={buoiId} coTv={coTv} guiTV={guiTVTho} ngheTV={ngheTV} onXong={() => tai()}
+                coMat={tt.hs.map((h) => ({ hoc_sinh_id: h.hoc_sinh_id, ho_ten: h.ho_ten, giai: h.giai }))} />
+            )}
             <div className="mt-2 space-y-1">
-              {tt.hs.map((h) => (
+              {tt.hs.filter((h) => !g.ca_lop || h.exp != null).map((h) => (
                 <div key={h.hoc_sinh_id} className="flex items-center gap-2 rounded-lg bg-indigo-50/60 px-2 py-1.5">
                   <span className="w-16 shrink-0 text-xs font-bold text-slate-500">{TEN_GIAI[h.giai]}</span>
                   <span className="min-w-0 flex-1 truncate text-sm font-semibold text-slate-800">{h.ho_ten}</span>
@@ -156,10 +166,10 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
                             setBan('qua' + h.hoc_sinh_id)
                             try { const d = await traoQua(buoiId, h.hoc_sinh_id); setTt(d); bao('✓ Đã ghi trao ' + (TEN_QUA[h.qua!] ?? h.qua)) } catch (e) { bao('❌ ' + (e as Error).message) } finally { setBan(null) }
                           }} className="min-h-9 rounded-md bg-pink-500 px-2.5 text-xs font-bold text-white disabled:opacity-40" title="Trúng quà đặc biệt — bấm khi đã trao tay">{TEN_QUA[h.qua] ?? h.qua} · Đã trao</button>)}
-                      <button disabled={ban === h.hoc_sinh_id} onClick={async () => {
+                      {!g.ca_lop && <button disabled={ban === h.hoc_sinh_id} onClick={async () => {
                         setBan(h.hoc_sinh_id)
                         try { const k = await choiLuot(buoiId, h.hoc_sinh_id, h.game ?? game); guiTV(k); bao('↻ Đã chiếu lại lên TV') } catch (e) { bao('❌ ' + (e as Error).message) } finally { setBan(null) }
-                      }} className="rounded-md px-2 py-1 text-xs text-indigo-600 hover:bg-white" title="Chiếu lại lên TV (không cộng thêm)">↻ TV</button>
+                      }} className="rounded-md px-2 py-1 text-xs text-indigo-600 hover:bg-white" title="Chiếu lại lên TV (không cộng thêm)">↻ TV</button>}
                     </>
                   ) : (
                     <button disabled={ban === h.hoc_sinh_id || !g.co_luat} onClick={async () => {
@@ -175,7 +185,7 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
                 </div>
               ))}
             </div>
-            <p className="mt-2 text-[11px] text-slate-500">Mỗi bạn 1 lượt/buổi. Kết quả do hệ thống rút và cộng EXP ngay (nguồn "Trên lớp"); TV chỉ chiếu lại cho cả lớp xem.
+            <p className="mt-2 text-[11px] text-slate-500">{g.ca_lop ? 'Bắn Quà: cả lớp chơi 1 ván trên TV; hệ thống quay đạn, xếp hạng và cộng EXP khi thầy cô bấm Chốt (nguồn "Trên lớp"). Mỗi buổi 1 game.' : 'Mỗi bạn 1 lượt/buổi. Kết quả do hệ thống rút và cộng EXP ngay (nguồn "Trên lớp"); TV chỉ chiếu lại cho cả lớp xem.'}
               {game === 'chiem_dat' && ' Chiếm Đất: bạn chọn ô bất kì đúng cấp giải trên TV (Giải 3 ★ · Nhì ★★ · Nhất ★★★), thầy cô bấm ô đó.'}
               {' '}Quà đặc biệt 🧋 trà sữa: rất hiếm, giải càng cao càng dễ trúng; trúng thì ERP báo và có nút "Đã trao".</p>
           </div>

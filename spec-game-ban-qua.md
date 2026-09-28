@@ -149,6 +149,32 @@ tránh "công thức 2 nơi"). `canBang()` tự chỉnh `he` cho điểm TB (tay
 - Verify: tự bắn thẳng lên rơi trúng xe mình ⇒ máu 150/150; trận 2 đội tự đánh chạy tới màn kết quả (Đỏ 49 ⇒ Vàng +300/bạn · Xanh 43 ⇒ Bạc +240/bạn, máu 2 xe khớp sát thương đối phương); 4 đội dựng đúng 4 xe + 3 ụ đá.
 - ⚠ R1: EXP đội TB ≈ 260–275/HS (cao hơn mốc 200 của game lớp) — Thùy đã chốt Vàng/Bạc, CTO ghi nhận không nới.
 
+## 7. NỐI ERP — bản BUỔI HỌC (Thùy 28/09: "như Mở Rương/Chiếm Đất, dữ liệu đều phải trên DB" · "chia đội là 1 chức năng riêng: ngẫu nhiên hoặc GV tự xếp")
+
+**Luồng:** ERP › Buổi học › Chấm bài trên lớp › 🏆 chốt xếp hạng › 🎮 Game của buổi = **🎯 Bắn Quà** → khung `BanQuaLop` (`src/screens/gami/BanQuaLop.tsx`):
+chọn 👤 Cá nhân / 👥 Đội (số đội 2–4, giờ 2–5 phút) → chia đội: **🎲 Chia ngẫu nhiên** (`fn_ban_qua_chia_doi` — đề xuất, chưa ghi) hoặc GV bấm chip
+đội cạnh tên từng bạn → **▶ Bắt đầu ván** (`fn_ban_qua_bat_dau`) → ERP gửi danh sách xuống TV (kênh `bk-lop:<buổi>`, `{game:'ban_qua',loai:'bat_dau'}`)
+→ 📺 TV `ban-qua.html?che_do=lop&buoi=<id>` chơi → TV gửi **điểm thô** về (`loai:'ket_qua'`: điểm từng HS + sát thương từng đội) → GV xem → **✓ Chốt**
+(`fn_ban_qua_chot`) → ERP gửi `loai:'da_chot'` → TV chiếu EXP + rương + hiệu ứng trà sữa. Nút phụ: ↻ Gửi lại lên TV · 📨 Xin kết quả từ TV · ↻ Chiếu kết quả.
+
+| Dữ liệu | Ở đâu (mig `202609281425_ban_qua_lop`) |
+|---|---|
+| Ván (chế độ, số đội, giờ, chot_at) | `buoi_ban_qua` — ra đời lúc Bắt đầu |
+| HS trong ván: giải snapshot · đội · **3 đạn DB đã quay** · thứ tự bắn | `buoi_ban_qua_hs` — rút có trọng số theo `ban_qua_quay` (giải), không trùng; **bắt đầu lại GIỮ đạn** (không quay lại để đổi đạn); HS điểm danh muộn ⇒ quay mới, xếp cuối |
+| Kết quả đội (sát thương, hạng, rương, EXP) | `buoi_ban_qua_doi` — ra đời lúc Chốt; nhất (bằng nhau cùng nhất, >0) Vàng, còn lại Bạc, rút 1 lần/đội từ `game_lop_thuong` game `ban_qua_doi` |
+| Lượt + EXP từng HS | `buoi_game_luot` (game `ban_qua`, cột mới `diem_game` = điểm thô) + `gami_exp_ledger` nguồn `exp_tren_lop` |
+| Trà sữa | rút ở DB lúc chốt, từng HS theo giải (`_game_lop_rut_qua`, cùng hàm Mở Rương/Chiếm Đất). Hộp trà sữa bay trên trời chỉ ở bản thử |
+
+- EXP cá nhân: Nhất 300 → cuối 100 theo hạng điểm, bằng điểm = TB EXP các vị trí đó (TB lớp ≈ 200). Điểm từ TV kẹp 0…5000 (đội: 0…100.000).
+- Chặn: mỗi buổi 1 game (Bắn Quà ↔ Mở Rương/Chiếm Đất chặn lẫn nhau) · không mở lại xếp hạng khi đã bắt đầu ván · không chốt 2 lần · ERP khoá ô chọn game khi buổi đã có lượt.
+- Refactor: rút EXP theo bảng + rút quà → `_game_lop_rut_exp` / `_game_lop_rut_qua`, `fn_buoi_game_choi` gọi lại (công thức 1 nơi).
+- ⚠ Điểm thô đến từ TV (vật lý chạy ở TV) qua kênh anon — GV **xem trước khi Chốt** là chốt chặn; DB tự xếp hạng/tính EXP/kẹp trần.
+- Verify (28/09, mọi ghi DB trong transaction ROLLBACK): cá nhân (điểm có hoà + 1 số bậy ⇒ kẹp; EXP TB 202,9; 7 dòng sổ) · đội 3 đội (hoà đầu ⇒ 2 đội cùng Vàng;
+  cả đội chung EXP) · bắt đầu lại giữ đạn · chặn mở lại / chốt 2 lần / 2 game · Mở Rương sau refactor vẫn chạy · phân bố đạn 3.000 lượt/giải khớp trọng số ±1%.
+  **Trọn chuỗi thật:** buổi thật → gói bat_dau từ DB → TV (presence "TV đã nối") → vòng quay đúng đạn DB → ván đội 2 phút tự chơi → TV gửi về
+  `{hs:{…},doi:{1:150,2:54}}` khớp màn TV → `fn_ban_qua_chot` trên đúng gói đó ⇒ Đỏ Vàng / Xanh Bạc, 7 dòng EXP → TV chiếu kết quả + trà sữa.
+- CHƯA: bấm thử màn ERP thật (cần đăng nhập — mới qua tsc) · deploy ERP + bkdemy-games · chạy 1 lớp thật.
+
 ## 6. Còn hỏi Thùy
 - Chế độ đội có hộp quà không? (CTO đang làm: KHÔNG — đội chỉ bắn nhau.) Có thì hộp cộng điểm vào "sát thương gây ra" của đội?
 - Máu xe 150 (≈ 3 phát trúng tâm đạn thường). Muốn trận dài/ngắn hơn thì chỉnh. Hoà sát thương giữa 2 đội đứng đầu: cả 2 cùng Vàng?

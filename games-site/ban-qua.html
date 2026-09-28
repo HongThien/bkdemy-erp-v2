@@ -45,7 +45,7 @@
   .kr{display:flex;align-items:center;gap:12px;font-size:23px;padding:7px 14px;border-radius:14px;margin-bottom:5px;background:#f3f5ff;opacity:0;transform:translateX(-30px);transition:all .35s}
   .kr.in{opacity:1;transform:none}
   .kr .h{width:52px;font-weight:700;text-align:center;font-size:26px}
-  .kr .n{flex:1;font-weight:600}.kr .d{color:#5a6394;width:130px;text-align:right}.kr .x{width:130px;text-align:right;font-weight:700;color:#1a9a55}
+  .kr .n{flex:1;font-weight:600}.kr .d{color:#5a6394;width:150px;text-align:right;white-space:nowrap}.kr .x{width:200px;text-align:right;font-weight:700;color:#1a9a55;white-space:nowrap}
   .kr.top1{background:linear-gradient(90deg,#fff2c2,#ffe08a)}.kr.top2{background:#eef1f7}.kr.top3{background:#fde6d5}
   .note{font-size:14px;color:#8a92b8;margin-top:6px}
   /* nút cảm ứng */
@@ -58,6 +58,7 @@
 </head>
 <body>
 <div id="wrap"><canvas id="cv"></canvas></div>
+<script>if(/che_do=lop/.test(location.search))document.write('<script src="lib/supabase.js"><\/script>')</script>
 <div id="ui">
   <div class="pan show" id="setup"><div class="card pe">
     <h1>🎯 BẮN QUÀ</h1>
@@ -70,6 +71,11 @@
     <div style="margin-top:16px"><button class="big" id="bStart">🎰 Quay đạn &amp; bắt đầu</button><button class="ghost" id="bDemo">Danh sách mẫu</button></div>
     <div class="note">Bản chơi thử (chưa nối ERP): xếp hạng &amp; EXP ở đây chỉ để xem. Bản chính thức: danh sách + giải lấy từ Buổi học, vòng quay và EXP rút ở hệ thống.</div>
   </div></div>
+  <div class="pan" id="choLop"><div class="card pe" style="width:760px">
+    <h1>🎯 BẮN QUÀ</h1>
+    <div class="sub" id="choLopT">Chờ thầy cô bấm <b>▶ Bắt đầu ván</b> trên ERP (Buổi học › Chấm bài trên lớp › Game của buổi)…</div>
+    <div class="note" id="choLopTv">Đang nối kênh lớp…</div>
+  </div></div>
   <div class="pan" id="quay"><div class="card pe">
     <h1 style="font-size:44px">🎰 Vòng quay đạn</h1>
     <div class="sub">Mỗi bạn nhận <b>3 loại đạn</b> — tới lượt chọn 1. Giải càng cao càng dễ ra đạn xịn.</div>
@@ -80,7 +86,7 @@
     <h1 style="font-size:48px">🏆 Kết quả</h1>
     <div id="bxh"></div>
     <button class="big" id="bLai">Chơi ván mới</button>
-    <div class="note">EXP mỗi hạng cố định, cả lớp trung bình 200 (Nhất 300 → cuối 100). Bản chính thức do hệ thống tính &amp; cộng.</div>
+    <div class="note" id="kqNote">EXP mỗi hạng cố định, cả lớp trung bình 200 (Nhất 300 → cuối 100). Bản chính thức do hệ thống tính &amp; cộng.</div>
   </div></div>
   <div id="pad"><button class="pe" id="bL">◀</button><button class="pe" id="bR">▶</button><button class="pe" id="bFire">🔥 GIỮ NẠP · THẢ BẮN</button></div>
 </div>
@@ -95,6 +101,9 @@
 // · nhiều hộp, KHÔNG máu: trúng là vỡ, điểm ghi trên hộp, xa/cao = điểm to · trúng NƠ = "Chính xác 100%" +20% · hộp vỡ MỌC LẠI sau
 // mỗi lượt (bạn sau không lợi) · hộp vàng treo bóng bay trên trời.
 // ============================================================================
+// BẢN BUỔI HỌC (spec §7, Thùy 28/09): ?che_do=lop&buoi=<id> — danh sách + giải + ĐẠN (DB đã quay) + chế độ/đội do ERP gửi xuống qua kênh
+// bk-lop:<buổi>; hết ván TV gửi ĐIỂM THÔ về ERP; GV chốt ⇒ DB xếp hạng + EXP + rương + trà sữa ⇒ ERP gửi kết quả xuống để TV chiếu. TV KHÔNG tính EXP.
+const QS=new URLSearchParams(location.search),LOP=QS.get('che_do')==='lop',BUOI=QS.get('buoi')||'';
 const W=1600,H=900;          // khung màn hình (logic)
 const WW=2400,WH=900;        // thế giới
 const cv=document.getElementById('cv'),ctx=cv.getContext('2d'),UI=document.getElementById('ui');
@@ -317,7 +326,7 @@ function taoHop(loai){const L=LOAI[loai],sp=L.sp[(Math.random()*L.sp.length)|0],
   const b={loai,x,w,h,sp,bay:!!L.bay,diem:L.diem,vy:0,chet:false,hien:0,pha:rnd(0,6.28)};
   if(b.bay){b.y0=yb;b.y=yb;b.x0=x;b.bien=rnd(100,170);b.toc=rnd(.7,1.15)}else b.y=matDat(x)-h;return b}
 function datHop(){hop=[];const coTS=/trasua=1/.test(location.search); // bản chính thức: hộp trà sữa do DB rút (game_lop_qua_dac_biet)
-  for(const loai in LOAI){const n=LOAI[loai].sl+(loai==='trasua'&&coTS?1:0);for(let i=0;i<n;i++){const b=taoHop(loai);if(b)hop.push(b)}}}
+  for(const loai in LOAI){const n=LOAI[loai].sl+(loai==='trasua'&&coTS&&!LOP?1:0);for(let i=0;i<n;i++){const b=taoHop(loai);if(b)hop.push(b)}}}
 // Thùy 28/09: bắn cá nhân ⇒ MỖI LƯỢT RESET về đúng map ban đầu (đất + hộp) — ai cũng bắn cùng 1 bàn, người trước không phá hết quà của người sau.
 let GOC=null;
 function chupMap(){GOC={ter:tg.getImageData(0,0,WW,WH),solid:SOLID.slice(),hop:hop.map(b=>({...b}))}}
@@ -560,6 +569,7 @@ function vaoTran(){HAT.length=0;luot=0;lucTruoc=null;gocTruoc=null;
   batDauLuot()}
 function expTheoHang(h,n){if(n<=1)return 200;return Math.round((300-200*(h-1)/(n-1))/10)*10} // Nhất 300 → cuối 100, TB 200
 function ketThuc(){pha='ketqua';$('pad').classList.remove('show');huyt(false);
+  if(LOP){lopGuiKetQua();return}
   if(CHE==='doi'){ // xếp đội theo sát thương gây ra; đội nhất: rương Vàng, còn lại: rương Bạc — 1 lần mở/đội, cả đội chung quà
     const xs=DOI.slice().sort((a,b)=>b.gay-a.gay);xs.forEach((d,i)=>{d.ruong=i===0&&d.gay>0?'vang':'bac';d.exp=rutRuong(d.ruong)});
     $('bxh').innerHTML=xs.map((d,i)=>`<div class="kr ${i===0?'top1':'top2'}"><span class="h">${i===0?'🏆':i+1}</span><span class="n"><span class="doi" style="background:${d.mau}"></span>Đội ${d.ten}${d.chet?' 💥':''}
@@ -572,10 +582,46 @@ function ketThuc(){pha='ketqua';$('pad').classList.remove('show');huyt(false);
   $('bxh').innerHTML=xs.map(p=>`<div class="kr ${p.hang<=3?'top'+p.hang:''}"><span class="h">${p.hang===1?'🥇':p.hang===2?'🥈':p.hang===3?'🥉':p.hang}</span><span class="n">${esc(p.ten)}${p.trasua?' 🧋':''}</span><span class="d">${p.diem} điểm</span><span class="x">+${p.exp} EXP</span></div>`).join('');
   setTimeout(()=>{$('ketqua').classList.add('show');[...$('bxh').children].reverse().forEach((el,k)=>setTimeout(()=>{el.classList.add('in');tone(600+k*40,.08,'triangle',.05)},250+k*140))},1000);
   [523,659,784,1047].forEach((f,k)=>tone(f,.35,'triangle',.1,null,1+k*.12))}
+// ---------- BẢN LỚP: nối ERP ----------
+let KENH=null,LOP_KQ=null;
+function lopGuiKetQua(){ // điểm thô: từng HS (cá nhân: điểm bắn · đội: sát thương bạn đó gây ra) + từng đội
+  LOP_KQ={game:'ban_qua',loai:'ket_qua',hs:Object.fromEntries(DS.map(p=>[p.id,p.diem||0])),t:Date.now()};
+  if(CHE==='doi')LOP_KQ.doi=Object.fromEntries(DOI.map((d,k)=>[String(k+1),d.gay]));
+  KENH&&KENH.send({type:'broadcast',event:'mo',payload:LOP_KQ});
+  const xs=CHE==='doi'?DOI.slice().sort((a,b)=>b.gay-a.gay):DS.slice().sort((a,b)=>b.diem-a.diem);
+  $('bxh').innerHTML=CHE==='doi'
+    ?xs.map((d,i)=>`<div class="kr ${i===0?'top1':'top2'}"><span class="h">${i+1}</span><span class="n"><span class="doi" style="background:${d.mau}"></span>Đội ${d.ten}</span><span class="d">${d.gay} sát thương</span><span class="x">…</span></div>`).join('')
+    :xs.map((p,i)=>`<div class="kr ${i<3?'top'+(i+1):''}"><span class="h">${i+1}</span><span class="n">${esc(p.ten)}</span><span class="d">${p.diem} điểm</span><span class="x">…</span></div>`).join('');
+  $('kqNote').textContent='Đã gửi điểm về ERP — chờ thầy cô bấm ✓ Chốt để hệ thống xếp hạng, cộng EXP và rút trà sữa.';$('bLai').style.display='none';
+  setTimeout(()=>{$('ketqua').classList.add('show');[...$('bxh').children].forEach((el,k)=>setTimeout(()=>el.classList.add('in'),200+k*120))},900)}
+function lopDaChot(p){ // kết quả DB đã chốt: EXP + rương + trà sữa — TV chỉ chiếu
+  const trung=(p.hs||[]).filter(h=>h.qua==='tra_sua');
+  if(p.doi&&p.doi.length){$('bxh').innerHTML=p.doi.map(d=>{const tv=(p.hs||[]).filter(h=>h.doi===d.doi);return `<div class="kr in ${d.hang===1?'top1':'top2'}"><span class="h">${d.hang===1?'🏆':d.hang}</span><span class="n"><span class="doi" style="background:${MAU_DOI[d.doi-1].c}"></span>Đội ${MAU_DOI[d.doi-1].ten}
+      <div style="font-size:15px;color:#5a6394;font-weight:500">${tv.map(h=>esc(h.ten)+(h.qua?' 🧋':'')).join(' · ')}</div></span><span class="d">${d.sat_thuong} sát thương</span><span class="x">${d.ruong==='vang'?'🟨 Rương Vàng':'⬜ Rương Bạc'}<br>+${d.exp} EXP/bạn</span></div>`}).join('')}
+  else{const xs=(p.hs||[]).slice().sort((a,b)=>b.diem-a.diem);$('bxh').innerHTML=xs.map((h,i)=>`<div class="kr in ${i<3?'top'+(i+1):''}"><span class="h">${i===0?'🥇':i===1?'🥈':i===2?'🥉':i+1}</span><span class="n">${esc(h.ten)}${h.qua?' 🧋':''}</span><span class="d">${h.diem} điểm</span><span class="x">+${h.exp} EXP</span></div>`).join('')}
+  $('kqNote').textContent='✓ Đã chốt — EXP đã vào tài khoản (nguồn "Trên lớp").';$('ketqua').classList.add('show');$('choLop').classList.remove('show');
+  [523,659,784,1047].forEach((f,k)=>tone(f,.35,'triangle',.1,null,k*.12));
+  let t=1200;for(const h of trung){setTimeout(()=>window.bkTraSua&&window.bkTraSua({ten:h.ten,giai:h.giai,exp:h.exp}),t);t+=9000}}
+function lopBatDau(p){ // ERP gửi: chế độ, số đội, giờ, danh sách (id, tên, giải, đội, 3 đạn DB đã quay, thứ tự bắn)
+  HAT.length=0;dans=[];huyt(false);['setup','choLop','ketqua','quay'].forEach(id=>$(id).classList.remove('show'));
+  chonChe(p.che_do==='doi'?'doi':'canhan');if(p.phut)$('phut').value=String(p.phut);
+  DS=(p.ds||[]).slice().sort((a,b)=>a.thu_tu-b.thu_tu).map(h=>({id:h.id,ten:h.ten,giai:h.giai,dan:h.dan.slice(),diem:0,doi:h.doi?h.doi-1:0}));
+  if(!DS.length){$('choLop').classList.add('show');$('choLopT').textContent='Danh sách trống — kiểm điểm danh trên ERP.';return}
+  LOP_KQ=null;vongQuay()}
+function ketNoiLop(){
+  $('setup').classList.remove('show');$('choLop').classList.add('show');
+  if(!BUOI){$('choLopT').textContent='Thiếu mã buổi — mở màn TV từ ERP (Buổi học › Game của buổi › 📺 Mở màn TV).';return}
+  if(!window.supabase){$('choLopTv').textContent='Không tải được thư viện kết nối — kiểm tra mạng';return}
+  const sb=window.supabase.createClient('https://osrvycilwshkzhljuxef.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4');
+  KENH=sb.channel('bk-lop:'+BUOI,{config:{broadcast:{self:false},presence:{key:'tv'}}});
+  KENH.on('broadcast',{event:'mo'},m=>{const p=m.payload||{};if(p.game!=='ban_qua')return; // cùng kênh với TV game khác ⇒ chỉ nhận lệnh Bắn Quà
+    if(p.loai==='bat_dau')lopBatDau(p);else if(p.loai==='xin_ket_qua'){if(LOP_KQ)KENH.send({type:'broadcast',event:'mo',payload:LOP_KQ})}else if(p.loai==='da_chot')lopDaChot(p)});
+  KENH.subscribe(t=>{if(t==='SUBSCRIBED'){KENH.track({role:'tv'});$('choLopTv').textContent='● Đã nối kênh lớp — ERP sẽ thấy "TV đã nối"'}})} // presence role=tv
 $('bLai').onclick=()=>{$('ketqua').classList.remove('show');$('setup').classList.add('show');pha='setup'};
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 
 // ---------- khởi động ----------
+if(LOP)ketNoiLop();
 fit();taiAnh().then(()=>{taoDiaHinh();veNen();PHAO.y=matDat(PHAO.x);datHop();frame(loop)});
 window.__bq={engine:{taoPhien,phatMoi,buocPhien},CON,QUAY,get pha(){return pha},get DS(){return DS},get hop(){return hop},get luot(){return luot},get gio(){return gio},set gio(v){gio=v},get goc(){return goc},set goc(v){goc=v},set luc(v){luc=v},ban,get dans(){return dans},vaoTran,ketThuc,DAN,get PHAO(){return PHAO},dac,WW,WH,get DOI(){return DOI},get CHE(){return CHE},get cam(){return cam}};
 })();
