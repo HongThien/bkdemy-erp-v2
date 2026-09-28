@@ -31064,3 +31064,10 @@ HANDOFF ②: +5 bài học (2 gốc "xếp mãi vẫn Cần xếp" · retest ch�
   bảng "đừng lẫn 3 thứ", Đơn 1 huy hiệu gửi trước; giả định vẽ cho lớp 6–8).
 - Classifier quyền tự động lỗi tạm ~10 lượt (không ghi được file/commit) — chờ rồi làm lại, không lách.
 - HANDOFF ①: mục GAMIFICATION đổi sang "ĐÃ BUILD" + số mới nhất + việc tiếp; ②: supersede "ghế top theo phong độ", thêm 5 bài học build.
+
+## 2026-09-28 — ĐÃ XOÁ dữ liệu TEST bổ trợ yếu của Triệu Đức Tùng (Thùy: "ok xoá", danh sách gửi 24/09)
+
+Kiểm kê lại qua MỌI FK trước khi xoá — khớp đúng danh sách, không phát sinh. Xoá 1 transaction lá→gốc, commit chỉ khi mọi số khớp:
+log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 5 (3 luyện + 1 test cuối ca + 1 retest) · dạng 6 · nhận xét 1 · buoi_hoc_hs 3 · buổi 3
+(03/09 ×2 + buổi 14/09 đang hiện 24/09, đã gắn ca trực ⇒ ca được trả 1 đơn vị) · case 1. hs_level Toán L1 ⇒ L0 (xoá dòng, +1 hs_level_log nguồn
+"xoa_du_lieu_test"). GIỮ: 2 buổi bù thật (06/07, 01/08) · chuông BTVN 22/07 · 3 dòng hs_level_log cũ · 1 bài khác của em.

@@ -18,7 +18,7 @@
   (mặc định tick hết) + mọi dạng vừa dạy được bổ sung câu retest (`_btyeu_bu_retest`, màn Xếp tự bù mỗi lần mở). Buổi đã đóng ca **không đổi được
   ngày/giờ** (trigger). App TA: chạm lại nút điểm danh = bỏ (chỉ khi em chưa làm câu nào). Bài trên app **MCQ tuyệt đối — ngoại lệ duy nhất: dạng
   mức độ 4–5 mà cả dạng 0 MCQ ⇒ trả lời ngắn** (28/09). App HS: card "Học từ đầu" (đuổi) kiểm lại mỗi lần về màn chính.
-  **Treo:** dữ liệu TEST Triệu Đức Tùng chờ Thùy "OK xoá" (danh sách ở DEVLOG 24/09) · 3 dạng mức 2–3 chờ retest không có MCQ + 3 dạng mức 4 chỉ
+  **Treo:** 3 dạng mức 2–3 chờ retest không có MCQ + 3 dạng mức 4 chỉ
   có tự luận (phiên MCQ) · retest chỉ hiện trên app TA TỪ NGÀY làm (ERP hiện cả sắp tới — nếu muốn TA biết trước: thêm "Retest sắp tới") · bước 5 KPI
   tải TA (Σ đơn vị có mặt) chưa làm · `migrate` dùng `--only` (4 migration Sổ tay treo).
 
