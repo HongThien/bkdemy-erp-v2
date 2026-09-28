@@ -6,6 +6,13 @@ import { useEffect, useRef, useState } from 'react'
 import { banQuaTinhHinh, banQuaChiaDoi, banQuaBatDau, banQuaChot, TEN_DOI, MAU_DOI, TEN_GIAI, TEN_QUA, type BanQuaTinhHinh, type BanQuaKetQua } from '../../lib/gameLop'
 
 type HSCoMat = { hoc_sinh_id: string; ho_ten: string; giai: 1 | 2 | 3 }
+// Chế độ 🖥 Cast chung: game nằm trong iframe CÙNG trang với nút ERP. Bấm nút xong, focus còn ở nút ⇒ HS bấm Space (nạp lực) = BẤM LẠI NÚT
+// (vd "Bắt đầu lại ván"). Mỗi thao tác xong: bỏ focus nút + trả focus cho iframe game (nếu có). Chế độ TV riêng: không có iframe ⇒ chỉ blur.
+const traFocusGame = () => {
+  (document.activeElement as HTMLElement | null)?.blur?.()
+  const fr = document.querySelector<HTMLIFrameElement>('iframe[title="game"]')
+  if (fr) { fr.focus(); fr.contentWindow?.focus() }
+}
 const TEN_DAN: Record<string, string> = { thuong: '❄️', bomto: '💣', nay: '🏀', xuyen: '🎯', chum: '🎆', cuu: '🐑', chuoi: '🍌', saobang: '☄️', lua: '🔥', set: '⚡' }
 
 export default function BanQuaLop({ buoiId, coMat, coTv, guiTV, ngheTV, onXong }: {
@@ -124,14 +131,14 @@ export default function BanQuaLop({ buoiId, coMat, coTv, guiTV, ngheTV, onXong }
           setBan('bd')
           try {
             const d = await banQuaBatDau(buoiId, cheDo, cheDo === 'doi' ? soDoi : null, cheDo === 'doi' ? phut : null, cheDo === 'doi' ? doi : {})
-            setTt(d); setKq(null); guiTV(payloadBatDau(d))
+            setTt(d); setKq(null); guiTV(payloadBatDau(d)); traFocusGame()
             bao(coTv ? '▶ Đã gửi danh sách + đạn xuống TV' : '▶ Đã bắt đầu — mở màn TV (TV nhận khi bấm ↻ Gửi lại)')
           } catch (e) { bao('❌ ' + (e as Error).message) } finally { setBan(null) }
         }} className="rounded-xl bg-orange-500 px-4 py-2 text-sm font-bold text-white disabled:opacity-40">
           {van ? '↻ Bắt đầu lại ván (giữ đạn đã quay)' : '▶ Bắt đầu ván — quay đạn & gửi lên TV'}
         </button>
-        {van && <button onClick={() => { guiTV(payloadBatDau(tt)); bao('↻ Đã gửi lại danh sách lên TV') }} className="rounded-md px-2 py-1 text-xs text-indigo-600 hover:bg-indigo-50">↻ Gửi lại lên TV</button>}
-        {van && <button onClick={() => { guiTV({ game: 'ban_qua', loai: 'xin_ket_qua', t: Date.now() }); bao('📨 Đã xin TV gửi lại kết quả') }} className="rounded-md px-2 py-1 text-xs text-indigo-600 hover:bg-indigo-50">📨 Xin kết quả từ TV</button>}
+        {van && <button onClick={() => { guiTV(payloadBatDau(tt)); traFocusGame(); bao('↻ Đã gửi lại danh sách lên TV') }} className="rounded-md px-2 py-1 text-xs text-indigo-600 hover:bg-indigo-50">↻ Gửi lại lên TV</button>}
+        {van && <button onClick={() => { guiTV({ game: 'ban_qua', loai: 'xin_ket_qua', t: Date.now() }); traFocusGame(); bao('📨 Đã xin TV gửi lại kết quả') }} className="rounded-md px-2 py-1 text-xs text-indigo-600 hover:bg-indigo-50">📨 Xin kết quả từ TV</button>}
         {!duDoi && cheDo === 'doi' && <span className="text-xs text-amber-700">Xếp đủ đội cho mọi bạn (mỗi đội ≥1 bạn)</span>}
       </div>
 
@@ -148,7 +155,7 @@ export default function BanQuaLop({ buoiId, coMat, coTv, guiTV, ngheTV, onXong }
             <button disabled={ban === 'chot'} onClick={async () => {
               if (!confirm('Chốt kết quả ván Bắn Quà? EXP sẽ vào tài khoản HS, không sửa lại được.')) return
               setBan('chot')
-              try { const d = await banQuaChot(buoiId, kq); setTt(d); guiTV(payloadChot(d)); onXong(); bao('✓ Đã chốt — EXP đã vào tài khoản') }
+              try { const d = await banQuaChot(buoiId, kq); setTt(d); guiTV(payloadChot(d)); traFocusGame(); onXong(); bao('✓ Đã chốt — EXP đã vào tài khoản') }
               catch (e) { bao('❌ ' + (e as Error).message) } finally { setBan(null) }
             }} className="mt-2 w-full rounded-xl bg-emerald-600 py-2 text-sm font-bold text-white disabled:opacity-40">✓ Chốt kết quả (DB xếp hạng + tính EXP)</button>
           ) : <p className="mt-1 text-[11px] text-slate-500">Chơi xong, TV tự gửi điểm về đây. Chưa thấy thì bấm 📨 Xin kết quả từ TV.</p>}
