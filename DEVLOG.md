@@ -30307,3 +30307,17 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - **Trang:** 15–18 https://claude.ai/artifact/LZF11536BxanSuLQcnbWiR · bản ở mục (6) đổi nhãn thành nháp cho nhóm 9–14
   (https://claude.ai/artifact/M2w9GCJzYAaa1hB1NULg6x). 6 câu chờ Thùy (ranh giới khối 9 · bầu P0 · kỳ thi đếm ngược · điểm công khai
   hay riêng · ai vẽ art · chia sẻ thẻ lên MXH có cần PH đồng ý).
+
+## 2026-09-28 (9) — Mô phỏng Điểm Rank 3 tháng (detail C1–C3)
+
+- Thùy: "phân tích đề xuất số liệu, test mấy tháng xem kết quả, giả định đủ các trường hợp".
+- **Đo DB thật (read-only: `set default_transaction_read_only=on` vì .env chỉ có role ghi):** sĩ số khối Toán 40/54/49/68,
+  KHTN 9–34; ET/em/tháng Toán ~4,6 KHTN ~2,5; BTVN ~4,8 / ~2 (75% đúng hạn); MT 1/tháng, TB ~7; tự luyện T9 74/~300 em dùng,
+  trung vị 6 lượt, p90 55, max 208/tháng & 84/ngày, 71% lượt ≥80%; `lop.co_so` NULL cả 47 lớp ⇒ 1 cơ sở.
+- **Làm:** `scripts/sim-diem-rank.mjs` (Monte Carlo 400 lần, 11 kiểu HS + HS nền theo phân bố thật, 3 PA trọng số MT, 2 kiểu
+  trần Thử thách, khối nhỏ/lớn, KHTN) + `phan-tich-diem-rank.md`. Đề xuất: ET 100 · BTVN 100/50 · MT bảng×10 · Thử thách 10/20/30
+  · trần tháng = ¼ điểm học CỦA EM · trần ngày = trần tháng/20.
+- **Phát hiện:** trần cố định cho "bỏ lớp bù app" lên hạng 21 (30% từ app) ⇒ trần theo em; HS yếu gần như không pass 80% (≈10%
+  lượt) ⇒ không lên rank bằng app (Q-A cho Thùy, đổi L4 thì phải hỏi); khối nhỏ làm bảng MT 1–50 mất tác dụng ⇒ quy hạng theo sĩ
+  số; KHTN ít buổi ⇒ chuẩn hoá quỹ ET/BTVN theo môn; lỡ MT mất ~40% điểm tháng ⇒ thi lại; không trần ngày thì HS giỏi chạm trần
+  tháng sau ~11 ngày.

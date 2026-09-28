@@ -166,6 +166,9 @@ Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như c�
 
 ## PHẦN C — DETAIL: BÀN SAU (chưa có nội dung, cố ý để trống)
 
+> **28/09:** C1 · C2 · C3 (xem trước C4) đã có **đề xuất + mô phỏng 3 tháng** ở `phan-tich-diem-rank.md` (chạy lại bằng `scripts/sim-diem-rank.mjs`).
+> Đang chờ Thùy chốt **D1–D6 + Q-A**. Số đo DB xác nhận BK có **1 cơ sở** ⇒ không cần tầng cơ sở (A4).
+
 | # | Việc | Thuộc |
 |---|---|---|
 | C1 | Điểm cố định của 1 ET, 1 BTVN (có phụ thuộc kết quả/thái độ không) | A1 |
