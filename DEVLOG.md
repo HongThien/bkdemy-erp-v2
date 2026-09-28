@@ -30763,3 +30763,24 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Test `kho.test.mjs` 28/28. T0 `Kho đề/Khối 12` trên E: = 358 tệp · 164 cặp · 30 đơn lẻ · 0 mơ hồ — khớp máy phụ.
 - `do-claude-p.mjs`: dừng ở bước 0 — CLI `claude` **chưa đăng nhập** (`authMethod: none`; app desktop đăng nhập riêng). Cần `claude login`.
 - `migrate --ghi-so 202609281225_kho_sua_log.sql`: bị chặn quyền tự động (ghi DB dùng chung) ⇒ Thùy tự chạy. Policy đọc §4(a) chưa chạy (SQL Editor, Thùy).
+## 2026-09-28 — Bổ trợ yếu: chạm lại để bỏ điểm danh + sửa 2 buổi TA điểm danh nhầm (mig 202609281000)
+
+- Thùy: "chạm 1 lần là điểm danh, chạm 2 lần là bỏ". `fn_btyeu_bo_diem_danh(bhh)` — kiểm ở DB: chỉ bỏ khi em CHƯA trả lời câu nào, chưa đóng ca (chưa sinh
+  test), chưa hoàn tất; bỏ "vắng" = mở lại buổi đã huỷ (chặn nếu case đã có buổi chờ khác). App TA: 2 nút giữ trạng thái (Có mặt xanh / Vắng đỏ), chạm lại nút
+  đang chọn = bỏ; ca đã đóng ⇒ khoá + ghi rõ. Test rollback (admin): bỏ vắng ⇒ buổi mở lại; bỏ có mặt khi chưa làm gì ⇒ OK; ca đã đóng ⇒ chặn.
+- "Hải Nam 21/09 và Tuệ Lâm 24/09 HS không đi nhưng TA vẫn điểm danh": cả 2 buổi 0 bài, 0 câu, chưa đóng ca, không test/retest/dạng ⇒ sửa VẮNG + HUỶ buổi
+  (lý do ghi rõ) ⇒ case về Cần xếp + tag không diễn ra; ca trực 24/09 21:00 trả đơn vị. Nhận xét nháp của Hải Nam giữ nguyên.
+
+## 2026-09-28 — Đổi mức bổ trợ trên card (hạ L0 = dừng bổ trợ) · màn Xếp chỉ L1/L2 (mig 202609281200)
+
+Thùy: "tuần trước kết luận cần bổ trợ, em tự luyện thêm hết yếu thì đổi trạng thái để không phải xếp nữa" + "xếp bổ trợ luôn hiển thị L1 L2, L0 thì không".
+- `fn_btyeu_doi_level(case, level, lý do)`: log hs_level_log (như duyetLevel); L0 ⇒ xoá dòng hs_level (§1.5), đóng case ket_qua 'bo' + ghi_chu_dong, huỷ buổi chờ
+  chưa điểm danh, đóng retest chưa nộp; có ca điểm danh có mặt chưa đóng ⇒ chặn. L1↔L2 ⇒ cập nhật don_vi buổi chờ. Test rollback: hạ L0 Khuất Hải Anh ⇒ case
+  Hoàn thành, huỷ 1 buổi; lên L2 Ngô Gia Linh ⇒ đơn vị buổi chờ 1→4.
+- `fn_btyeu_case_xep_lich` + tab Yếu `fn_ca_bo_tro_ung_vien`: lọc level ∈ {1,2} (dựng từ bản ĐANG CHẠY pg_get_functiondef — phiên khác vừa sửa ung_vien).
+  Đo: case mở 125 L1 · 6 L2 · 1 L0 (HS test TEST QLHT 003 — giờ ẩn).
+- Màn Xếp: chip mức thành ô chọn (L0 hỏi lý do, vá tại chỗ: case sang Hoàn thành). Sửa nhãn MUC_TEN[3] ghi nhầm "Mức 2 · … (GV cao cấp)" ⇒ "Mức 3".
+
+## 2026-09-28 — Màn Xếp hiện cả Mức 3 (Thùy: "Mức 3 cũng hiện luôn, t quên") · hạ L0 ghi "Bỏ" là đúng
+
+Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều kiện level ∈ {1,2} ⇒ level ≥ 1 (dựng từ bản đang chạy). Hiện có 125 L1 · 6 L2 · 0 L3.

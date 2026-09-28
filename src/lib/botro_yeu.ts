@@ -511,6 +511,12 @@ export async function getDanhGiaCase(boTroYeuId: string, hocSinhId: string, mon:
 
 // Đóng case (kết thúc pipeline). KHÔNG tự "chốt level" — người duyệt vẫn gọi `duyetLevel` riêng nếu
 // hành vi tiếp theo cần đổi level (giữ nguyên nguyên tắc "máy/luồng derive, người quyết level").
+// Thùy 28/09: đổi mức bổ trợ của case. L0 = hết yếu, dừng bổ trợ ⇒ DB đóng case, huỷ buổi đã xếp chưa học, đóng retest chưa làm (fn_btyeu_doi_level).
+export async function doiLevelCase(caseId: string, level: number, lyDo?: string | null): Promise<{ level_cu: number; level: number; buoi_huy: number; retest_dong: number; dong_case: boolean }> {
+  const { data, error } = await supabase.rpc('fn_btyeu_doi_level', { p_case: caseId, p_level: level, p_ly_do: lyDo ?? null })
+  if (error) throw error
+  return data as any
+}
 export async function dongCase(boTroYeuId: string): Promise<void> {
   const { error } = await supabase.from('bo_tro_yeu')
     .update({ trang_thai: 'hoan_thanh', hoan_thanh_at: new Date().toISOString() }).eq('id', boTroYeuId)

@@ -63,6 +63,9 @@ Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt d
   dạng đã dạy (mặc định tick hết dạng còn mở; bỏ tick = dạy buổi sau) — `fn_btyeu_hoan_tat(..., p_dang_day)`. Mọi dạng vừa dạy được bổ sung câu retest
   (`_btyeu_bu_retest`; màn Xếp chạy `fn_btyeu_bu_retest_ton` mỗi lần mở — dạng chưa có MCQ tự thông khi có MCQ). Buổi đã đóng ca KHÔNG đổi được
   ngày/giờ (trigger `trg_buoi_bo_tro_khoa_ngay`) — học tiếp = xếp buổi mới. Có mặt mà TA chưa đóng ca ⇒ card Xếp đỏ "TA CHƯA ĐÓNG CA — nhắc TA".
+- **Đổi mức ngay trên card màn Xếp (CEO 28/09):** ô chọn L0/L1/L2/L3 — `fn_btyeu_doi_level`. **L0 = em tự luyện hết yếu, dừng bổ trợ**: đóng case
+  (ket_qua `bo`, ghi chú lý do), huỷ buổi đã xếp chưa học, đóng retest chưa làm; có ca đã điểm danh chưa đóng thì chặn. L1↔L2 đổi đơn vị buổi chờ.
+  Ghi hs_level_log như Duyệt. **Màn Xếp + Lịch phòng hiện case L1/L2/L3, ẩn L0** (CEO 28/09 sửa: "Mức 3 cũng hiện luôn"). Hạ L0 ghi kết quả `bo` — CEO xác nhận đúng.
 - Nguồn dạng trong case: `bo_tro_yeu_dang.nguon` = duyet (bước Nội dung) · tay (+ Thêm dạng) · may (đề xuất máy, người bấm) · bao_dong (chuông, add thẳng).
 
 ---
