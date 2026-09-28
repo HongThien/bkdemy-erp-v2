@@ -25,6 +25,15 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
   //  · Chế độ 2 — CAST CHUNG: overlay toàn màn = game (iframe ?nhung=1) + danh sách cả lớp theo giải, GV bấm tên ngay đây, cast laptop lên TV.
   const [trinhChieu, setTrinhChieu] = useState(false)
   const chRef = useRef<ReturnType<typeof supabase.channel> | null>(null)
+  // Chống lộ kết quả (Thùy 29/09): bạn vừa bấm "Mở" ⇒ GIẤU +EXP / 🧋 tới khi game báo "xong" (TV gửi {loai:'xong', hid}); không có TV ⇒ hiện luôn.
+  // Dự phòng 25s (TV rớt mạng). Ref giữ dữ liệu, state chỉ để vẽ lại.
+  const dangMoRef = useRef(new Map<string, string | null>()) // hid → tin 🧋 hoãn (null = không có)
+  const [, veLai] = useState(0)
+  const xongMo = (hid: string) => {
+    if (!dangMoRef.current.has(hid)) return
+    const tin = dangMoRef.current.get(hid); dangMoRef.current.delete(hid); veLai((x) => x + 1); if (tin) bao(tin)
+  }
+  const dangMo = (hid: string) => dangMoRef.current.has(hid)
   const ngheTV = useRef<((p: Record<string, unknown>) => void) | null>(null) // tin TV gửi về (Bắn Quà: điểm ván)
   useEffect(() => { NHO_GAME[buoiId] = game }, [buoiId, game])
 
@@ -57,13 +66,17 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
     ch.on('presence', { event: 'sync' }, () => {
       const co = Object.values(ch.presenceState()).flat().some((x) => (x as { role?: string }).role === 'tv')
       setCoTv(co); if (co) window.setTimeout(() => guiDsRef.current(), 300) // TV vừa nối/tải lại ⇒ gửi bảng lớp
-    }).on('broadcast', { event: 'mo' }, (m) => ngheTV.current?.((m.payload ?? {}) as Record<string, unknown>)).subscribe()
+    }).on('broadcast', { event: 'mo' }, (m) => {
+      const p = (m.payload ?? {}) as Record<string, unknown>
+      if (p.loai === 'xong' && typeof p.hid === 'string') xongMo(p.hid)
+      ngheTV.current?.(p)
+    }).subscribe()
     chRef.current = ch
     return () => { chRef.current = null; supabase.removeChannel(ch); setCoTv(false) }
   }, [buoiId, daChot])
-  const guiTV = (k: KetQuaLuot) => {
+  const guiTV = (k: KetQuaLuot, hid?: string) => {
     // `game` để TV lọc (2 TV game có thể cùng nghe 1 kênh) · `qua` = quà đặc biệt (🧋) DB đã rút — TV chỉ báo
-    chRef.current?.send({ type: 'broadcast', event: 'mo', payload: { ten: k.ho_ten, giai: k.giai, exp: k.exp, min: k.min, max: k.max, game: k.game, qua: k.qua, t: Date.now() } })
+    chRef.current?.send({ type: 'broadcast', event: 'mo', payload: { ten: k.ho_ten, hid, giai: k.giai, exp: k.exp, min: k.min, max: k.max, game: k.game, qua: k.qua, t: Date.now() } })
   }
   const guiTVTho = (payload: Record<string, unknown>) => { chRef.current?.send({ type: 'broadcast', event: 'mo', payload }) }
   // BẢNG LỚP cho TV riêng (chế độ 1): chỉ số liệu đã có từ DB (tinh_hinh), TV chỉ vẽ. TV tự giấu số của bạn đang mở tới khi diễn xong.
@@ -81,14 +94,15 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
     setBan(hid)
     try {
       const k = await choiLuot(buoiId, hid, game)
-      guiTV(k)
+      guiTV(k, hid)
+      if (coTv && !k.da_choi) { dangMoRef.current.set(hid, k.qua ? `🧋 ${k.ho_ten} TRÚNG ${TEN_QUA[k.qua] ?? k.qua}! Trao xong bấm "Đã trao".` : null); window.setTimeout(() => xongMo(hid), 25000) }
       setTt((p) => p && ({ ...p, so_da_choi: p.so_da_choi + (k.da_choi ? 0 : 1), so_qua_chua_trao: p.so_qua_chua_trao + (k.qua && !k.da_choi ? 1 : 0), hs: p.hs.map((x) => (x.hoc_sinh_id === hid ? { ...x, exp: k.exp, game: k.game, qua: k.qua, qua_trao_at: x.qua_trao_at ?? null } : x)) }))
-      if (k.qua && !k.da_choi) bao(`🧋 ${k.ho_ten} TRÚNG ${TEN_QUA[k.qua] ?? k.qua}! Trao xong bấm "Đã trao".`)
+      if (k.qua && !k.da_choi && !dangMo(hid)) bao(`🧋 ${k.ho_ten} TRÚNG ${TEN_QUA[k.qua] ?? k.qua}! Trao xong bấm "Đã trao".`)
     } catch (e) { bao('❌ ' + (e as Error).message) } finally { setBan(null) }
   }
   const chieuLai = async (hid: string, gm: string | null) => {
     setBan(hid)
-    try { const k = await choiLuot(buoiId, hid, gm ?? game); guiTV(k); bao('↻ Đã chiếu lại') } catch (e) { bao('❌ ' + (e as Error).message) } finally { setBan(null) }
+    try { const k = await choiLuot(buoiId, hid, gm ?? game); guiTV(k, hid); bao('↻ Đã chiếu lại') } catch (e) { bao('❌ ' + (e as Error).message) } finally { setBan(null) }
   }
   const soNhiCan = tt ? (tt.so_co_mat >= 2 ? 1 : 0) : 0
   const duChon = !!nhat && nhi.length >= soNhiCan && (!tt || nhi.length <= tt.toi_da_nhi)
@@ -188,7 +202,7 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
                 <div key={h.hoc_sinh_id} className="flex items-center gap-2 rounded-lg bg-indigo-50/60 px-2 py-1.5">
                   <span className="w-16 shrink-0 text-xs font-bold text-slate-500">{TEN_GIAI[h.giai]}</span>
                   <span className="min-w-0 flex-1 truncate text-sm font-semibold text-slate-800">{h.ho_ten}</span>
-                  {h.exp != null ? (
+                  {h.exp != null && dangMo(h.hoc_sinh_id) ? <span className="text-sm font-bold text-amber-600">🎁 đang mở…</span> : h.exp != null ? (
                     <>
                       <span className="text-sm font-black text-emerald-700">+{h.exp} EXP</span>
                       {h.qua && (h.qua_trao_at
@@ -221,7 +235,7 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
       )}
       {msg && <div className="border-t border-slate-100 px-4 py-1.5 text-xs font-medium text-slate-600">{msg}</div>}
       {trinhChieu && tt.da_chot && createPortal(
-        <TrinhChieu tt={tt} g={g} buoiId={buoiId} ban={ban} coTv={coTv} msg={msg} onMo={moChoBan} onChieuLai={chieuLai}
+        <TrinhChieu tt={tt} g={g} buoiId={buoiId} ban={ban} coTv={coTv} msg={msg} onMo={moChoBan} onChieuLai={chieuLai} dangMo={dangMo}
           onDong={() => { setTrinhChieu(false); if (document.fullscreenElement) document.exitFullscreen().catch(() => {}) }}>
           {g.ca_lop && (
             <BanQuaLop buoiId={buoiId} coTv={coTv} guiTV={guiTVTho} ngheTV={ngheTV} onXong={() => tai()}
@@ -235,9 +249,9 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
 // ───────── 🖥 MÀN TRÌNH CHIẾU: game (iframe bản lớp) + bảng cả lớp — 1 màn để cast lên TV ─────────
 // iframe vẫn là trang game `?che_do=lop` (nghe kênh bk-lop:<buổi>, báo presence) ⇒ không đổi gì phía game.
 // Danh sách chữ TO để cả lớp đọc từ TV: nhóm theo giải, ai đã mở thì hiện +EXP (và 🧋 nếu trúng), GV bấm "Mở" ngay trên tên.
-function TrinhChieu({ tt, g, buoiId, ban, coTv, msg, onMo, onChieuLai, onDong, children }: {
+function TrinhChieu({ tt, g, buoiId, ban, coTv, msg, onMo, onChieuLai, onDong, dangMo, children }: {
   tt: GiaiBuoi; g: (typeof GAME_LOP)[number]; buoiId: string; ban: string | null; coTv: boolean; msg: string | null
-  onMo: (hid: string) => void; onChieuLai: (hid: string, gm: string | null) => void; onDong: () => void; children?: React.ReactNode
+  onMo: (hid: string) => void; onChieuLai: (hid: string, gm: string | null) => void; onDong: () => void; dangMo: (hid: string) => boolean; children?: React.ReactNode
 }) {
   const vungRef = useRef<HTMLDivElement | null>(null)
   useEffect(() => { const k = (e: KeyboardEvent) => { if (e.key === 'Escape' && !document.fullscreenElement) onDong() }; addEventListener('keydown', k); return () => removeEventListener('keydown', k) }, [onDong])
@@ -264,9 +278,9 @@ function TrinhChieu({ tt, g, buoiId, ban, coTv, msg, onMo, onChieuLai, onDong, c
               <div className={`mb-1.5 inline-block rounded-lg bg-gradient-to-r px-3 py-1 text-base font-black text-white shadow ${MAU[i + 1]}`}>{TEN_GIAI[(i + 1) as 1 | 2 | 3]}</div>
               <div className="space-y-1.5">
                 {ds.map((h) => (
-                  <div key={h.hoc_sinh_id} className={`flex items-center gap-2 rounded-xl px-3 py-2 ${h.exp != null ? 'bg-emerald-500/15' : 'bg-white/5'}`}>
+                  <div key={h.hoc_sinh_id} className={`flex items-center gap-2 rounded-xl px-3 py-2 ${h.exp != null && !dangMo(h.hoc_sinh_id) ? 'bg-emerald-500/15' : 'bg-white/5'}`}>
                     <span className="min-w-0 flex-1 break-words text-lg font-bold leading-tight">{h.ho_ten}</span>
-                    {h.exp != null ? (
+                    {h.exp != null && dangMo(h.hoc_sinh_id) ? <span className="text-lg font-black text-amber-300">🎁 đang mở…</span> : h.exp != null ? (
                       <>
                         {h.qua && <span className="text-lg" title={TEN_QUA[h.qua] ?? h.qua}>🧋</span>}
                         <span className="text-xl font-black text-emerald-300 tabular-nums">+{h.exp}</span>

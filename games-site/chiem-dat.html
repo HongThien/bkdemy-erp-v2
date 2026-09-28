@@ -4115,7 +4115,7 @@ async function tvReveal(ti,info){selTile=-1;tv3.forEach(o=>{if(o.badge)o.badge.m
   $('rcScene').textContent=(info.name?info.name+' khám phá':'Khám phá')+' được: '+sc;$('rcVal').textContent='+'+info.val+' '+DV;$('rcTier').className='tier t'+t;$('rcTier').textContent=LOP?TIERS_LOP[t]:TIERS[t];
   $('rcNote').textContent=LOP?GIAI_LOP[info.giai]+' · EXP đã vào tài khoản 🎉':info.jack?'🎉 TRÚNG Ô ĐỘC ĐẮC '+info.val+' XU!':'Mở ô '+STARS(info.lvl)+' giá '+info.price+' xu';$('resCard').classList.add('show');if(info.jack)confetti(350);revealing='card';if(LOP&&window.BKLopBang)BKLopBang.xong(info.name);
   if(LOP&&info.qua==='tra_sua'){shake=.35;if(window.bkTraSua)return void window.bkTraSua({ten:info.name,giai:info.giai,exp:info.val,sound:C.sound});/* lib chưa tải kịp ⇒ bản dự phòng */fanfare();confetti(500);showOv('🧋 TRÚNG TRÀ SỮA!',(info.name?info.name+' · ':'')+GIAI_LOP[info.giai],'Quà đặc biệt SIÊU HIẾM — nhận trà sữa từ thầy cô nhé! (+'+info.val+' EXP vẫn vào tài khoản)',[['Tuyệt vời ▶',()=>$('bigOv').classList.remove('show'),true]])}}
-function tvCardDone(){if(revealing!=='card')return;$('resCard').classList.remove('show');revealing=false;if(LOP)choLop=null;refreshFrontier(TV.open);camTo(camHomePos.clone(),camHomeTgt.clone(),800);tvUI();if(TV.map.done)setTimeout(tvMapDone,700);else if(LOP)setTimeout(bomHang,300)}
+function tvCardDone(){if(revealing!=='card')return;$('resCard').classList.remove('show');revealing=false;if(LOP){if(KENH_LOP&&choLop&&choLop.hid)KENH_LOP.send({type:'broadcast',event:'mo',payload:{game:'chiem_dat',loai:'xong',hid:choLop.hid,t:Date.now()}});choLop=null}refreshFrontier(TV.open);camTo(camHomePos.clone(),camHomeTgt.clone(),800);tvUI();if(TV.map.done)setTimeout(tvMapDone,700);else if(LOP)setTimeout(bomHang,300)}
 function tvFeed(ti,info){const f=$('feed');if(f.firstChild&&f.firstChild.classList.contains('muted'))f.innerHTML='';const d=document.createElement('div');
   const sc=sceneOf(info.lvl,TV.map.sc[ti],info.jack).n;d.innerHTML=`${info.name?`<span class="sw" style="background:${PCOL[info.slot]}"></span> ${esc(info.name)} · `:''}${STARS(info.lvl)} ${esc(sc)} · <b>+${info.val} ${DV}</b>${info.jack?' 💰':''}${info.qua?' 🧋':''}`;f.prepend(d);while(f.children.length>7)f.lastChild.remove()}
 function tvUI(){if(!TV.map)return;const n=openCount();$('prog').innerHTML=`${n} <small>/ ${NT-1} ô</small>`;$('progBar').style.width=(n/(NT-1)*100)+'%';
@@ -4188,7 +4188,7 @@ $('bigOv').addEventListener('click',e=>{if(e.target===$('bigOv')&&!(TV.map&&TV.m
 
 // ================= Bản buổi học: nhận lệnh từ ERP =================
 const TIERS_LOP={1:'Quà nhỏ',2:'Quà ngon',3:'Quà lớn',4:'SIÊU QUÀ'};
-const hangLop=[];let choLop=null;// choLop = bạn đang chờ chọn ô (đã có EXP từ DB)
+const hangLop=[];let choLop=null,KENH_LOP=null;// choLop = bạn đang chờ chọn ô (đã có EXP từ DB)
 function bomHang(){if(!LOP||choLop||revealing||!TV.map||!hangLop.length)return;choLop=hangLop.shift();refreshFrontier(TV.open);tvUI();
   if(!frontierSet.size)toast('Hết ô '+STARS(LV_GIAI[choLop.giai])+' — bấm 🗺 Bản đồ mới rồi chọn tiếp',4000)}
 // Hình quà theo GIÁ TRỊ THẬT của EXP, ngưỡng chung mọi giải (như Mở Rương bản lớp): ≤140 nhỏ · ≤200 ngon · ≤280 lớn · >280 siêu quà
@@ -4213,9 +4213,9 @@ function ketNoiLop(){
   if(!BUOI){$('hintBar').innerHTML='Thiếu mã buổi — mở từ màn Buổi học trên ERP';return}
   const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
   s.onload=()=>{const sb=window.supabase.createClient(SB_URL,SB_KEY);
-    const ch=sb.channel('bk-lop:'+BUOI,{config:{broadcast:{self:false},presence:{key:'tv'}}});
+    const ch=sb.channel('bk-lop:'+BUOI,{config:{broadcast:{self:false},presence:{key:'tv'}}});KENH_LOP=ch;
     // cùng kênh với TV Mở Rương ⇒ chỉ nhận lệnh của ĐÚNG game này
-    ch.on('broadcast',{event:'mo'},m=>{const p=m.payload||{};if(p.game&&p.game!=='chiem_dat')return;window.BKLopBang&&BKLopBang.cho(p.ten);hangLop.push(p);bomHang()});
+    ch.on('broadcast',{event:'mo'},m=>{const p=m.payload||{};if(p.game&&p.game!=='chiem_dat')return;if(p.loai)return;window.BKLopBang&&BKLopBang.cho(p.ten);hangLop.push(p);bomHang()});
     ch.on('broadcast',{event:'ds'},m=>{window.BKLopBang&&BKLopBang.cap(m.payload)}); // bảng lớp (chế độ 1)
     ch.subscribe(t=>{if(t==='SUBSCRIBED')ch.track({role:'tv'})})}; // ERP thấy "● TV đã nối" qua presence
   s.onerror=()=>toast('Không tải được thư viện kết nối — kiểm tra mạng',5000);

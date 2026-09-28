@@ -31247,3 +31247,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   riêng: icon ô Home, 2 icon kênh, 3 dấu tầng S/A/B, ruy băng + pháo giấy tin S, 👑 Thầy cô khen, đèn "đang học", avatar ẩn danh (mã HS),
   9 icon loại tin, 20 icon tương tác. Chờ Thùy chốt: 20 icon tương tác VẼ theo style (CTO đề xuất) hay MUA sticker (spec §8 cũ).
 - Mockup trên artifact: dừng (Thùy ngắt) — làm lại khi có ảnh toàn cảnh từ ChatGPT hoặc khi Thùy yêu cầu.
+
+### 29/09 — Mở Rương: lộ kết quả trước khi mở xong + bỏ luật "2 quà đầu luôn nhỏ" (Thùy)
+- **Sai:** ERP hiện ngay "+EXP" (và 🧋) lúc bấm mở ⇒ cả lớp đọc kết quả trước khi TV mở xong rương.
+- **Sửa:** payload `'mo'` mang `hid`; TV Mở Rương gửi lại `{game:'mo_ruong',loai:'xong',hid}` sau khi mở món 3, Chiếm Đất gửi khi đóng thẻ kết quả.
+  ERP (`XepHangBuoi.tsx`) giữ dòng "🎁 đang mở…" (cả list lẫn TrinhChieu) tới khi nhận `xong`, phòng hờ 25s nếu TV rớt. TV bỏ qua payload có `loai`.
+  Đo trên trình duyệt: `xong` về lúc 9,8s — sau khi mở món 3, không có gì lọt ra sau món 1–2.
+- **Luật chia mới (`chiaKichBan`):** 3 kịch bản ngẫu nhiên — nổ 1 món (45%) · hai món to (25%) · chia đều (30%), xáo vị trí. Giả lập 20k rương:
+  món to nhất ở quà 1/2/3 = 36/33/31% · NÚI VÀNG mỗi vị trí 10% · tương quan quà 1↔tổng 0,23 · đoán lãi/lỗ sau 2 món trúng 67%.
+  Tổng vẫn do DB rút, không đổi phân phối EXP. Bản lớp chia theo bội 10. Sửa luật `luat-choi-game.md` + `luat-choi.html`.
