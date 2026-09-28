@@ -30754,3 +30754,11 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   sao 1/2/4/6/9 tháng · còn mở C5/C8/C11/C12 · bẫy kỹ thuật); phần A–C giữ làm logic chi tiết/lịch sử, lệch thì §0 đúng.
 - HANDOFF ①: thêm mục "⭐ GAMIFICATION HS (28/09) — thiết kế đã chốt, chưa build", đánh dấu SUPERSEDE 2 dòng cũ về thành tích/Mythwings;
   ②: thêm "Bài học 28/09 — thiết kế gamification HS với CEO".
+
+## 2026-09-28 — Bổ trợ yếu: chạm lại để bỏ điểm danh + sửa 2 buổi TA điểm danh nhầm (mig 202609281000)
+
+- Thùy: "chạm 1 lần là điểm danh, chạm 2 lần là bỏ". `fn_btyeu_bo_diem_danh(bhh)` — kiểm ở DB: chỉ bỏ khi em CHƯA trả lời câu nào, chưa đóng ca (chưa sinh
+  test), chưa hoàn tất; bỏ "vắng" = mở lại buổi đã huỷ (chặn nếu case đã có buổi chờ khác). App TA: 2 nút giữ trạng thái (Có mặt xanh / Vắng đỏ), chạm lại nút
+  đang chọn = bỏ; ca đã đóng ⇒ khoá + ghi rõ. Test rollback (admin): bỏ vắng ⇒ buổi mở lại; bỏ có mặt khi chưa làm gì ⇒ OK; ca đã đóng ⇒ chặn.
+- "Hải Nam 21/09 và Tuệ Lâm 24/09 HS không đi nhưng TA vẫn điểm danh": cả 2 buổi 0 bài, 0 câu, chưa đóng ca, không test/retest/dạng ⇒ sửa VẮNG + HUỶ buổi
+  (lý do ghi rõ) ⇒ case về Cần xếp + tag không diễn ra; ca trực 24/09 21:00 trả đơn vị. Nhận xét nháp của Hải Nam giữ nguyên.

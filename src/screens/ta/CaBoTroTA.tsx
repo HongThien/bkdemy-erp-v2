@@ -4,7 +4,7 @@
 // → điểm test theo dạng → nhận xét (mẫu + gõ) + mức → "Hoàn tất ca" (khoá sau khi xong). Mọi số từ fn_btyeu_*.
 // KHÔNG import màn ERP desktop (luật app TA). Class màu literal (Tailwind JIT).
 import { useEffect, useState, type ReactNode } from 'react'
-import { caTA, dongCa, hoanTatCa, cauTlnCuaCa, suaKetQuaTln, listPhieuGiayCuaCa, inSinhBaiGiay, inLayBaiGiay, layCheDoCa, datCheDoCa, inTestGiay, type CaTA, type ViecCaBoTro, type ViecRetest, type CauTlnTA, type BaiInGiay, type CheDoCa } from '../../lib/botro_yeu_ca'
+import { caTA, boDiemDanhYeu, dongCa, hoanTatCa, cauTlnCuaCa, suaKetQuaTln, listPhieuGiayCuaCa, inSinhBaiGiay, inLayBaiGiay, layCheDoCa, datCheDoCa, inTestGiay, type CaTA, type ViecCaBoTro, type ViecRetest, type CauTlnTA, type BaiInGiay, type CheDoCa } from '../../lib/botro_yeu_ca'
 import { TrangIn, NhapKetQua } from './PhieuGiayYeuTA'
 import { MathText } from '../kho/ui'
 import { diemDanh, huyBuoi, MUC_CATALOG } from '../../lib/gami'
@@ -202,8 +202,18 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
 
         {/* 1. Điểm danh */}
         <Khoi so={1} ten="Điểm danh" trang={coMat ? 'xong' : vang ? 'xong' : 'dang'}>
-          {coMat ? <p className="text-[13px] text-emerald-700">✓ Em có mặt — iPad của em đã thấy ca.</p>
-            : vang ? <p className="text-[13px] text-rose-700">Em vắng — buổi đã huỷ (đếm số lần huỷ của ca).</p>
+          {/* Thùy 28/09: chạm 1 lần = điểm danh, chạm LẠI nút đang chọn = bỏ điểm danh (DB chặn nếu em đã làm bài / đã đóng ca). */}
+          {coMat || vang ? (
+            <div className="flex flex-col gap-1.5">
+              <div className="flex gap-2">
+                <button disabled={!!busy || hoanTat || daDong} onClick={() => coMat && chay('bo', () => boDiemDanhYeu(ca.buoi_hoc_hs_id), 'Đã bỏ điểm danh.')}
+                  className={`flex-1 rounded-xl py-2.5 text-[14px] font-bold disabled:opacity-60 ${coMat ? 'bg-emerald-600 text-white' : 'border border-slate-200 text-slate-400'}`}>{busy === 'bo' && coMat ? '…' : '✓ Em có mặt'}</button>
+                <button disabled={!!busy || hoanTat || daDong} onClick={() => vang && chay('bo', () => boDiemDanhYeu(ca.buoi_hoc_hs_id), 'Đã bỏ điểm danh vắng — buổi mở lại.')}
+                  className={`rounded-xl px-4 py-2.5 text-[14px] font-semibold disabled:opacity-60 ${vang ? 'bg-rose-600 text-white' : 'border border-slate-200 text-slate-400'}`}>{busy === 'bo' && vang ? '…' : 'Vắng'}</button>
+              </div>
+              <p className="text-[11.5px] text-slate-500">{hoanTat || daDong ? 'Ca đã đóng — không đổi điểm danh được.' : coMat ? 'Em có mặt — iPad của em đã thấy ca. Chạm lại “Em có mặt” để bỏ điểm danh (chỉ khi em chưa làm câu nào).' : 'Em vắng — buổi đã huỷ. Chạm lại “Vắng” nếu điểm danh nhầm (buổi mở lại).'}</p>
+            </div>
+          )
             : hoiVang ? (
               <div className="flex flex-wrap items-center gap-2 text-[13px]">
                 <span className="text-slate-600">Đánh vắng và HUỶ buổi này?</span>

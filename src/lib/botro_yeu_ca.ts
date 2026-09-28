@@ -88,6 +88,11 @@ export async function caTA(buoiId: string): Promise<CaTA | null> {
 }
 export type KetQuaDongCa = { bo_tro_test_id: string | null; retest_id: string | null; retest_ngay: string | null; khong_hoc: boolean; da_dong_truoc?: boolean }
 // Đóng ca: chốt dạng đã dạy + sinh test cuối ca + sinh retest tầng 2 (1 transaction, idempotent).
+// Thùy 28/09: chạm lại nút điểm danh = BỎ điểm danh. DB chỉ cho bỏ khi em chưa làm câu nào, chưa đóng ca, chưa hoàn tất; bỏ "vắng" = mở lại buổi.
+export async function boDiemDanhYeu(buoiHocHsId: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_btyeu_bo_diem_danh', { p_bhh: buoiHocHsId })
+  if (error) throw error
+}
 export async function dongCa(buoiId: string): Promise<KetQuaDongCa> {
   const { data, error } = await supabase.rpc('fn_btyeu_dong_ca', { p_buoi: buoiId })
   if (error) throw error
