@@ -30784,3 +30784,9 @@ Thùy: "tuần trước kết luận cần bổ trợ, em tự luyện thêm h�
 ## 2026-09-28 — Màn Xếp hiện cả Mức 3 (Thùy: "Mức 3 cũng hiện luôn, t quên") · hạ L0 ghi "Bỏ" là đúng
 
 Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều kiện level ∈ {1,2} ⇒ level ≥ 1 (dựng từ bản đang chạy). Hiện có 125 L1 · 6 L2 · 0 L3.
+- (tiếp) Policy đọc `kho_sua_log` cho claude_ro/claude_build **đã có sẵn** (SQL Editor báo 42710) ⇒ CLI đọc được: 539 dòng, toàn bộ 1 người gán
+  CỤM Đại 14:58–16:23 hôm nay (533 điền ô trống · 6 đổi cụm có sẵn) — trigger ghi vết đúng trên dữ liệu thật.
+- Thùy đã `--ghi-so 202609281225_kho_sua_log.sql` (không còn trong CÒN TREO).
+- `kiem-trigger-sua.mjs` lần chạy thật đầu tiên: **5/5 ✔**, ROLLBACK, sót 0.
+- `claude` CLI vẫn `loggedIn:false` sau khi Thùy báo đã login (kể cả gỡ hết biến CLAUDE*/ANTHROPIC* thừa kế từ app desktop;
+  `.credentials.json` vẫn ngày 06/09) ⇒ đo `claude -p` còn treo.
