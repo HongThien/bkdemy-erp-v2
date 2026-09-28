@@ -30928,3 +30928,23 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
 - **Báo động giả đã tự bắt:** console Git Bash in câu mẫu rụng chữ "s" ("ản phẩm", " au khi", "Di covery") — tưởng lỗi OCR hàng loạt; kiểm code
   point trong DB thì `s` (U+0073) còn nguyên, regex đếm ra 0/26.760. Bài học: **lỗi thấy qua console/tool output phải kiểm bằng byte trong DB
   trước khi báo** — đúng nguyên tắc "kết quả tra cứu của máy cũng phải qua kiểm độc lập".
+
+## 2026-09-28 (35) — Build NHIỆM VỤ + VÒNG QUAY (mig 202609281809 + 202609281810 đã áp · 202609281817 chờ SQL Editor) · app HS
+
+- Thùy chốt 2 ngưỡng thần, "làm tiếp thôi".
+- **DB:** `fn_mastery_cells` thêm `p_den` (drop+create, thân lấy từ bản đang chạy, grant cũ) · `nhiem_vu_cau_hinh` (Toán bật, **mở 01/10/2026**) ·
+  `_nv_xep/_nv_con_mo` (1 lần làm lấp nhiệm vụ CŨ NHẤT còn treo; ngày treo tối đa 3, tuần dồn tới hết tháng) · `fn_nhiem_vu_hoan_thanh`
+  (nguồn DUY NHẤT: xong ngày/tuần/tháng/rương + còn treo + tiến độ) · `fn_nhiem_vu_chang_thang` (Điểm Chặng → cấp ≤30 → EXP + mốc + rương) ·
+  `fn_exp_app_thang` (nhiệm vụ + vòng quay từ ngày mở) · vòng quay 3 hàm thay thân: TRƯỚC ngày mở giữ nguyên luật cũ, SAU = 2 nhiệm vụ ngày,
+  giải nv_ti_le_20..200 · `fn_hs_nhiem_vu_cua_toi`.
+- **Tự quyết (ghi trong mig):** suy động hoàn toàn, không nút nhận thưởng · tuần = 4 khối 1–7/8–14/15–21/22–cuối (đúng 4 rương = ngân sách) ·
+  T1 chỉ xét tuần đã hết · T4 = dạng yếu đầu tháng → đạt (tin ≥ tb) cuối tuần, dạng lọc theo bản đồ môn qua `_kho_ban_do_tbl`.
+- **Test rollback (bat_dau lùi 01/09, `scripts/_thu_mig_nhiem_vu.mjs`):** cả khối Toán T9 2,5–4 s (chốt tháng) · 1 HS 0,8 s. Em dùng app nhiều nhất
+  (chưa có Thử thách): cấp 12, 475 EXP, 1 rương. EXP app TB ~2 xu/em (sẽ tăng khi có Thử thách). Trần xu: bản mới khớp tuyệt đối bản cũ khi chưa
+  mở (7.416 xu T9); giả mở từ 01/09 ⇒ 8.018.
+- **Sai/sửa:** tien_do N1 tham chiếu cột sai (`p.hs`) · `mon` mơ hồ trong fn_exp_app_thang (cột OUT trùng tên) ⇒ đặt alias bảng.
+- **`202609281817_tran_xu_app_sql_editor.sql` CHỜ THÙY chạy SQL Editor** (fn_gami_exp_xu_thang owner postgres): xu = xu(EXP lớp) + min(30, xu(EXP app));
+  gộp luôn `exp_tren_lop` của 202609272045 (file đó sẽ tự bỏ qua) ⇒ sau đó `migrate --ghi-so` cả 2. Phải xong TRƯỚC khi chốt xu tháng 10.
+- **App HS:** `NhiemVuHS.tsx` (chặng · hôm nay + nút Thử thách/Tự luyện/Vòng quay · tuần + 4 rương · tháng) · MayManHS 2 chế độ (5 ô luật mới,
+  dòng điều kiện "xong 2 nhiệm vụ" + nút Nhiệm vụ) · link 📜 Nhiệm vụ ở màn Tự luyện · bỏ chữ cứng "≥70%" ở Home.
+- **Còn treo:** ví xu HS chưa hiện dòng EXP nhiệm vụ (fn_hs_vi_xu_cua_toi) · ô Home cho Rank/Nhiệm vụ (C11) · Huy hiệu.

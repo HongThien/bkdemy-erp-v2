@@ -52,7 +52,7 @@ export function NutBack({ onBack }: { onBack: () => void }) {
   )
 }
 
-export function ChonLoaiTuLuyen({ onTongHop, onChuDe, onThuThach, onRank, onBack, gioiTinh }: { onTongHop: () => void; onChuDe: () => void; onThuThach?: () => void; onRank?: () => void; onBack: () => void; gioiTinh: 'nam' | 'nu' | null }) {
+export function ChonLoaiTuLuyen({ onTongHop, onChuDe, onThuThach, onRank, onNhiemVu, onBack, gioiTinh }: { onTongHop: () => void; onChuDe: () => void; onThuThach?: () => void; onRank?: () => void; onNhiemVu?: () => void; onBack: () => void; gioiTinh: 'nam' | 'nu' | null }) {
   const t = THEME[gioiTinh === 'nu' ? 'nu' : 'nam']
   return (
     <Khung gioiTinh={gioiTinh}>
@@ -74,10 +74,11 @@ export function ChonLoaiTuLuyen({ onTongHop, onChuDe, onThuThach, onRank, onBack
             <span className="mt-1 block text-[12.5px]" style={{ color: t.sec }}>Như Tổng hợp, nhưng đúng từ 80% trở lên là được cộng Điểm Rank để leo bậc.</span>
           </button>
         )}
-        {onRank && (
-          <button onClick={onRank} className="mt-1 text-center text-[13px] font-bold underline-offset-2 hover:underline" style={{ color: t.primary }}>
-            🏆 Xem Rank của em
-          </button>
+        {(onRank || onNhiemVu) && (
+          <div className="mt-1 flex justify-center gap-5">
+            {onNhiemVu && <button onClick={onNhiemVu} className="text-[13px] font-bold underline-offset-2 hover:underline" style={{ color: t.primary }}>📜 Nhiệm vụ</button>}
+            {onRank && <button onClick={onRank} className="text-[13px] font-bold underline-offset-2 hover:underline" style={{ color: t.primary }}>🏆 Rank của em</button>}
+          </div>
         )}
       </div>
     </Khung>

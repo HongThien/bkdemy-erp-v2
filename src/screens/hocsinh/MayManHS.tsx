@@ -4,8 +4,8 @@
 // quote handwritten + header squircle đúng theme nam/nữ. Vòng quay đặt trong CARD trắng để nổi
 // bật trên nền mây (không thả thẳng vào nền, sẽ chìm mất pattern).
 // Server quyết giải (fn_may_man_hs_quay) — client CHỈ chạy animation tới ô server trả về.
-// Điều kiện: batch 10 câu tự luyện hôm nay đúng ≥70%. Tối đa 1 lượt/ngày.
-// Phần thưởng: 50 EXP (40%) · 100 EXP (40%) · 150 EXP (15%) · 200 EXP (5%).
+// Điều kiện + giải do server quyết theo che_do (lib/maymai_hs.ts): cũ = tự luyện ≥70% · 50/100/150/200;
+// mới (từ 01/10/2026) = xong ≥2 nhiệm vụ ngày · 20/30/50/100/200, EXP đổi ra xu. Tối đa 1 lượt/ngày.
 // ============================================================================
 import { useEffect, useRef, useState } from 'react'
 import { mayManHSCuaToi, mayManHSQuay, type MayManHSCuaToi, type MayManHSKetQua } from '../../lib/maymai_hs'
@@ -24,15 +24,22 @@ const THEME = {
 // 4 ô theo chiều kim đồng hồ, ô đầu ở đỉnh dưới mũi kim. 2 giải hiếm (200/150) đối diện 2 giải
 // phổ biến (50/100) để bánh xe cân đối; server chỉ trả `exp`, client tìm index tương ứng.
 type O = { exp: number; mau: string; icon: string; nhan: string }
-const O_LIST: O[] = [
+const O_CU: O[] = [
   { exp: 100, mau: '#BFE0FF', icon: '🎁', nhan: '100 EXP' },
   { exp: 200, mau: '#FFD1E1', icon: '💎', nhan: '200 EXP' },
   { exp: 50,  mau: '#FFEAA5', icon: '⭐', nhan: '50 EXP'  },
   { exp: 150, mau: '#D6C8FF', icon: '🎉', nhan: '150 EXP' },
 ]
-const oCua = (exp: number) => O_LIST.findIndex((o) => o.exp === exp)
+// Luật nhiệm vụ: 5 ô, jackpot 200 kẹp giữa 2 ô phổ biến.
+const O_MOI: O[] = [
+  { exp: 30,  mau: '#BFE0FF', icon: '🎁', nhan: '30 EXP' },
+  { exp: 200, mau: '#FFD1E1', icon: '💎', nhan: '200 EXP' },
+  { exp: 20,  mau: '#FFEAA5', icon: '⭐', nhan: '20 EXP' },
+  { exp: 100, mau: '#D6C8FF', icon: '🎉', nhan: '100 EXP' },
+  { exp: 50,  mau: '#C9F2D5', icon: '🍭', nhan: '50 EXP' },
+]
 
-function Wheel({ goc, size }: { goc: number; size: number }) {
+function Wheel({ goc, size, O_LIST }: { goc: number; size: number; O_LIST: O[] }) {
   const n = O_LIST.length, g = 360 / n
   const bg = `conic-gradient(from ${-g / 2}deg, ${O_LIST.map((o, i) => `${o.mau} ${i * g}deg ${(i + 1) * g}deg`).join(', ')})`
   return (
@@ -73,7 +80,7 @@ const luc = (iso: string) => {
   return ph < 1 ? 'vừa xong' : ph < 60 ? `${ph} phút trước` : ph < 1440 ? `${Math.floor(ph / 60)} giờ trước` : `${Math.floor(ph / 1440)} ngày trước`
 }
 
-export default function MayManHS({ gioiTinh, onXong }: { gioiTinh: 'nam' | 'nu' | null; onXong: () => void }) {
+export default function MayManHS({ gioiTinh, onXong, onNhiemVu }: { gioiTinh: 'nam' | 'nu' | null; onXong: () => void; onNhiemVu?: () => void }) {
   const [d, setD] = useState<MayManHSCuaToi | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [goc, setGoc] = useState(0)
@@ -82,6 +89,8 @@ export default function MayManHS({ gioiTinh, onXong }: { gioiTinh: 'nam' | 'nu' 
   const vong = useRef(0)
   const t = THEME[gioiTinh === 'nu' ? 'nu' : 'nam']
 
+  const O_LIST = d?.che_do === 'nhiem_vu' ? O_MOI : O_CU
+  const oCua = (exp: number) => O_LIST.findIndex((o) => o.exp === exp)
   const load = () => mayManHSCuaToi().then(setD).catch((e) => setErr(e?.message ?? String(e)))
   useEffect(() => { load() }, [])
 
@@ -92,7 +101,7 @@ export default function MayManHS({ gioiTinh, onXong }: { gioiTinh: 'nam' | 'nu' 
       const r = await mayManHSQuay()
       const idx = Math.max(0, oCua(r.exp))
       vong.current += 5
-      setGoc(vong.current * 360 - idx * 90)  // ô i ở góc i*90° → xoay -i*90 để kim trỏ vào ô i
+      setGoc(vong.current * 360 - idx * (360 / O_LIST.length))  // ô i ở góc i·g → xoay -i·g để kim trỏ vào ô i
       setTimeout(() => { setKq(r); setDangQuay(false); load() }, 4400)
     } catch (e: any) { setErr(e?.message ?? String(e)); setDangQuay(false) }
   }
@@ -122,7 +131,7 @@ export default function MayManHS({ gioiTinh, onXong }: { gioiTinh: 'nam' | 'nu' 
               {t.underline && <span className="absolute -bottom-1 left-[35%] h-[3px] w-[55%] rounded-full" style={{ background: t.primary, opacity: .8 }} />}
             </h1>
             {!t.underline && <p className="mt-1 text-[9.5px] font-semibold tracking-[0.22em]" style={{ color: t.sec }}>— BK ACADEMY —</p>}
-            <p className="mt-1.5 text-[12.5px]" style={{ color: t.sec }}>Mỗi ngày 1 lượt — luyện chăm để mở khoá</p>
+            <p className="mt-1.5 text-[12.5px]" style={{ color: t.sec }}>{d?.che_do === 'nhiem_vu' ? 'Mỗi ngày 1 lượt — xong 2 nhiệm vụ ngày để mở khoá' : 'Mỗi ngày 1 lượt — luyện chăm để mở khoá'}</p>
           </div>
           <img src={`${A}/sparkle.svg`} alt="" className="pointer-events-none absolute right-2 top-0 h-4 w-4" />
           {t.plane
@@ -133,7 +142,15 @@ export default function MayManHS({ gioiTinh, onXong }: { gioiTinh: 'nam' | 'nu' 
         {/* Trạng thái điều kiện — pill mềm */}
         <div className="mt-4 rounded-[18px] px-3.5 py-2.5" style={{ background: du ? '#e7f9ee' : '#fff1e0', border: `1.5px solid ${du ? '#a4e3b6' : '#ffd18a'}` }}>
           {!d ? <p className="text-[12px] font-semibold" style={{ color: t.sec }}>Đang tải…</p>
-            : du ? (
+            : d.che_do === 'nhiem_vu' ? (
+              <div className="flex items-center gap-2">
+                <p className="min-w-0 flex-1 text-[12.5px] font-extrabold" style={{ color: du ? '#1a7c3a' : '#b4691a' }}>
+                  {du ? `✓ Đã xong ${d.du_dieu_kien.so_nv} nhiệm vụ ngày hôm nay${daQuay ? ' · đã quay hôm nay' : ' · quay ngay!'}`
+                      : `🎯 Xong ${d.du_dieu_kien.can ?? 2} nhiệm vụ ngày hôm nay để mở khoá quay (đang ${d.du_dieu_kien.so_nv ?? 0}/${d.du_dieu_kien.can ?? 2}).`}
+                </p>
+                {onNhiemVu && <button onClick={onNhiemVu} className="shrink-0 rounded-full bg-white px-3 py-1 text-[12px] font-extrabold" style={{ color: t.primary }}>Nhiệm vụ →</button>}
+              </div>
+            ) : du ? (
               <p className="text-[12.5px] font-extrabold" style={{ color: '#1a7c3a' }}>
                 ✓ Đủ điều kiện — {d.du_dieu_kien.so_dung}/{d.du_dieu_kien.so_cau} câu đúng ({d.du_dieu_kien.mon})
                 {daQuay ? ' · đã quay hôm nay' : ' · quay ngay!'}
@@ -148,7 +165,7 @@ export default function MayManHS({ gioiTinh, onXong }: { gioiTinh: 'nam' | 'nu' 
         {/* CARD trung tâm chứa vòng quay + nút — nổi lên trên nền mây */}
         <div className="mt-4 rounded-[26px] p-5" style={{ background: t.cardTint, boxShadow: t.shadow }}>
           <div className="relative flex items-center justify-center pt-2">
-            <Wheel goc={goc} size={280} />
+            <Wheel goc={goc} size={280} O_LIST={O_LIST} />
           </div>
           <button disabled={!conLuot || dangQuay} onClick={quay}
             className="relative mt-4 block w-full rounded-full border-[3px] border-white/80 py-3 text-[16px] font-extrabold text-white shadow-[0_8px_20px_rgba(255,93,120,.4)] transition active:scale-95 disabled:opacity-60"
@@ -162,9 +179,9 @@ export default function MayManHS({ gioiTinh, onXong }: { gioiTinh: 'nam' | 'nu' 
         {d && (
           <div className="mt-3 rounded-[22px] p-3" style={{ background: t.cardTint, boxShadow: t.shadow }}>
             <p className="mb-1.5 text-[10.5px] font-extrabold uppercase tracking-[0.2em]" style={{ color: t.sec }}>Cơ hội trúng thưởng</p>
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${O_LIST.length}, minmax(0, 1fr))` }}>
               {O_LIST.slice().sort((a, b) => a.exp - b.exp).map((o) => {
-                const pct = (d.ti_le as any)[`ti_le_${o.exp}`] ?? 0
+                const pct = d.ti_le[`ti_le_${o.exp}`] ?? 0
                 return (
                   <div key={o.exp} className="rounded-[14px] p-2 text-center" style={{ background: o.mau }}>
                     <span className="text-[20px]">{o.icon}</span>
@@ -219,7 +236,7 @@ export default function MayManHS({ gioiTinh, onXong }: { gioiTinh: 'nam' | 'nu' 
             <p className="mt-3 text-[22px] font-extrabold" style={{ color: NAVY }}>Chúc mừng!</p>
             <p className="text-[18px] font-black" style={{ color: t.primary }}>+{kq.exp} EXP May Mắn</p>
             <p className="font-hand mt-2 -rotate-[3deg] text-[16px]" style={{ color: t.quoteColor }}>Tuyệt vời ♡</p>
-            <p className="mt-2 text-[12.5px]" style={{ color: t.sec }}>Mai luyện tiếp để có thêm 1 lượt quay nhé!</p>
+            <p className="mt-2 text-[12.5px]" style={{ color: t.sec }}>{d?.che_do === 'nhiem_vu' ? 'EXP này được đổi ra xu cuối tháng. Mai làm nhiệm vụ để quay tiếp nhé!' : 'Mai luyện tiếp để có thêm 1 lượt quay nhé!'}</p>
             <button onClick={() => setKq(null)} className="mt-4 w-full rounded-full py-3 text-[14px] font-extrabold text-white" style={{ background: t.underline ? 'linear-gradient(135deg,#FF8EB8,#F46BA9)' : 'linear-gradient(135deg,#3C85FF,#5868F7)' }}>Tuyệt! ♡</button>
           </div>
         </div>

@@ -40,6 +40,7 @@ import ThongTinHocTap from './ThongTinHocTap'
 import SoTayHS from './SoTayHS'
 import ViXuHS from './ViXuHS'
 import RankHS from './RankHS'
+import NhiemVuHS from './NhiemVuHS'
 import { thuThachLuotDo, sinhThuThach, ketQuaThuThach, type KetQuaThuThach } from '../../lib/rank'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
@@ -143,7 +144,7 @@ const BOX_CAP1: BoxCap1[] = [
   { id: 'de_thi_thu',   ten: 'Làm đề thi thử',     mo_ta: 'Đề trường/sở để em luyện làm bài thi thật — sắp mở.',                 icon: '📄', grad: 'from-[#eef2ff] to-[#f7f9ff]', sapCo: true },
   { id: 'bai_tap_giao', ten: 'Bài tập được giao',  mo_ta: 'Làm các bài tập giáo viên giao thêm cho cá nhân hoặc cả lớp.',        icon: '📚', grad: 'from-[#e8f4ff] to-[#f7fbff]' },
   { id: 'thanh_tuu',    ten: 'Thành tựu',          mo_ta: 'Xem giải thưởng cuối tháng, huy hiệu và mốc học tập đã đạt được.',    icon: '🏆', grad: 'from-[#fff8de] to-[#fffbef]' },
-  { id: 'may_man',      ten: 'May mắn',            mo_ta: 'Luyện đủ 10 câu đúng ≥70% mỗi ngày → mở 1 lượt quay may mắn nhận EXP.', icon: '🎰', grad: 'from-[#ffedf5] to-[#fff8fb]' },
+  { id: 'may_man',      ten: 'May mắn',            mo_ta: 'Mỗi ngày đủ điều kiện → mở 1 lượt quay may mắn nhận EXP.', icon: '🎰', grad: 'from-[#ffedf5] to-[#fff8fb]' },
   { id: 'vi_xu',        ten: 'Ví xu',              mo_ta: 'Xem số xu hiện có, lịch sử đổi quà và các hoạt động kiếm điểm của em.', icon: '🪙', grad: 'from-[#fff8de] to-[#fffbef]' },
 ]
 // Thùy 22/08 gửi thẳng file mockup tỉ lệ đúng ý (`BK_Academy_Student_Desktop.html`) sau khi bản
@@ -255,7 +256,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
-  const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'rank' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
+  const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'rank' | 'nhiem_vu' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
   const [chuDeDang, setChuDeDang] = useState<{ ma_dang: string; ten_dang: string; chiCauMoi?: boolean } | null>(null) // dạng đã chọn cho "Tự luyện theo chủ đề" (null = luồng tổng hợp)
   // "Học từ đầu" (Thùy 19/09) — ô CHỈ hiện khi HS có case bổ trợ đuổi ĐANG MỞ (tự suy
   // bo_tro_duoi.trang_thai='can_duoi', KHÔNG lưu cờ riêng — xem htd_co_mo). htdMon lưu
@@ -342,7 +343,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onChuDe={() => setDirect('tu_luyen_chu_de_ds')}
     onThuThach={() => setDirect('thu_thach')}
     onRank={() => setDirect('rank')}
+    onNhiemVu={() => setDirect('nhiem_vu')}
     onBack={() => setDirect(null)} />
+  if (direct === 'nhiem_vu') return <NhiemVuHS gioiTinh={gt} onBack={() => setDirect('tu_luyen_chon')}
+    onThuThach={() => setDirect('thu_thach')} onTuLuyen={() => { setChuDeDang(null); setDirect('tu_luyen') }} onVongQuay={() => setDirect('may_man')} />
   if (direct === 'thu_thach') return <LamThuThach hocSinhId={hocSinhId} desktop={!!cap1}
     onXong={() => setDirect('tu_luyen_chon')} onRank={() => setDirect('rank')} />
   if (direct === 'rank') return <RankHS gioiTinh={gt} onBack={() => setDirect('tu_luyen_chon')} onThuThach={() => setDirect('thu_thach')} />
@@ -386,7 +390,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'retest') return <RetestHS hocSinhId={hocSinhId} gioiTinh={gt} onXong={() => setDirect(null)} LamET={LamET} />
   if (direct === 'lich_bo_tro') return <LichBoTroHS lich={boTro.lich} coCa={boTro.coCa} gioiTinh={gt} onXong={() => setDirect(null)} onVaoCa={onVaoCaBoTro} />
   if (direct === 'hop_thu') return <HopThuHS onXong={() => { setDirect(null); taiChuaDoc() }} />
-  if (direct === 'may_man') return <MayManHS gioiTinh={gt} onXong={() => setDirect(null)} />
+  if (direct === 'may_man') return <MayManHS gioiTinh={gt} onXong={() => setDirect(null)} onNhiemVu={() => setDirect('nhiem_vu')} />
   if (direct === 'thanh_tuu') return <ThanhTuuHS gioiTinh={gt} onXong={() => setDirect(null)} />
   if (direct === 'bai_tap_giao') return <BaiTapGiaoHS gioiTinh={gt} onXong={() => setDirect(null)} />
   if (direct === 'so_tay') return <SoTayHS gioiTinh={gt} onXong={() => setDirect(null)} />
@@ -435,7 +439,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
           const [sub, subMau]: [string, HomeCard['subMau']] =
             k.sapCo ? ['Sắp có', 'xam']
             : k.id === 'thanh_tuu' ? ['Xem giải thưởng của em', 'xam']
-            : k.id === 'may_man' ? (maymanCoLuot ? ['Có 1 lượt quay!', 'ton'] : ['Luyện 10 câu đúng ≥70%', 'xam'])
+            : k.id === 'may_man' ? (maymanCoLuot ? ['Có 1 lượt quay!', 'ton'] : ['Chưa có lượt hôm nay', 'xam'])
             : k.id === 'bai_tap_giao' ? ['Đang phát triển', 'xam']
             : k.id === 'tu_luyen' ? ['Luyện theo dạng yếu', 'xam']
             : k.id === 'thong_tin' ? ['Dạng đang yếu', 'xam']
