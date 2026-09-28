@@ -126,10 +126,67 @@ Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như c�
 
 ### A5. THÀNH TỰU
 
-- Mỗi thành tựu **tự lên bậc tuần tự** Đồng → Bạc → Vàng → Kim Cương (hết bậc này mới hiện bậc sau). **Đạt rồi không bao giờ mất.**
-- Chia **nhóm theo mảng hoạt động:** trên lớp · BTVN · thi (MT) · tự luyện / Thử thách · chinh phục dạng · nhiệm vụ. Thêm nhóm ẩn / kỷ niệm (hết mùa thì khoá).
-- Thưởng mỗi bậc: EXP / xu / đồ trang trí (Phần C).
-- Mỗi thẻ hiện "N bạn trong khối đã đạt".
+> **Thùy 28/09 — định hướng:**
+> - Phần thưởng chính của thành tựu là **HUY HIỆU**, xu chỉ là thứ yếu.
+> - Hướng tới người thích **sưu tập** (Collector), nhưng gami phải phục vụ **đủ các kiểu người chơi** — không phải ai cũng thích xu.
+> - Cùng 1 thành tựu, càng lên cao **huy hiệu càng lên sao**. Ví dụ: đi học liên tục 10 buổi = 1★, 30 buổi = 2★…
+> - Có **bộ sưu tập** huy hiệu. **Cấp thấp = bản mềm** trên app; **cấp cao = trung tâm làm BẢN CỨNG tặng HS.**
+
+**A5.1 — Huy hiệu (đơn vị của hệ thành tựu)**
+
+- **1 thành tựu = 1 dòng huy hiệu, 5 sao.** Lên sao **tuần tự** 1★ → 5★: hết sao này mới hiện thanh tiến độ tới sao sau.
+- Hình huy hiệu **đổi theo sao**: cùng một hình, sao càng cao càng hoành tráng.
+- **Đạt rồi không bao giờ mất.**
+- **Không reset** theo mùa rank: huy hiệu là của em mãi mãi. Riêng nhóm Kỷ niệm có huy hiệu giới hạn thời gian.
+- **Theo môn** (§1.6): album Toán riêng, album môn khác riêng. Giai đoạn đầu chỉ Toán.
+
+**A5.2 — Bản mềm / bản cứng**
+
+| Sao | Dạng | Trao thế nào |
+|---|---|---|
+| 1★ – 3★ | **Bản mềm** — hiện trong album + có thể ghim khoe | Tự động khi đạt |
+| **4★ – 5★** | Bản mềm **+ BẢN CỨNG** (huy hiệu thật, cài cặp / áo) | Hệ **tự sinh việc "trao huy hiệu"** cho OPS / GV. Trao xong bấm **"Đã trao"** (giống nút trà sữa) |
+
+- Việc trao **suy động theo invariant (§4):** *(HS đạt 4★/5★) TRỪ (đã có dòng "đã trao")* = việc còn treo. Không đẻ dòng chờ.
+- Ngưỡng 4★ / 5★ phải đặt sao cho **số bản cứng mỗi tháng nằm trong khả năng in / mua** của trung tâm. Sẽ ước lượng bằng mô phỏng như Điểm Rank trước khi chốt.
+- Bản cứng là thứ **đeo được ra ngoài lớp** ⇒ khoe offline trước bạn bè, phụ huynh. Đây là lợi thế BK học trực tiếp có mà game online không có.
+
+**A5.3 — Album bộ sưu tập**
+
+- Lưới **mọi dòng huy hiệu × 5 sao**. Sao chưa đạt hiện **bóng mờ**. Huy hiệu bí ẩn hiện **"???"**.
+- **% hoàn thành album** (vd "Album Toán: 23 / 60 sao"). Mỗi nhóm có thanh hoàn thành riêng.
+- Mỗi huy hiệu đã đạt hiện: ngày đạt · **"N bạn trong khối có"** (hiếm < 10% gắn nhãn *Hiếm*) · đã nhận bản cứng chưa.
+- Mục **"Sắp đạt"** ở đầu album: 3–5 huy hiệu gần lên sao nhất, ghi kiểu *"còn 2 buổi nữa"*.
+
+**A5.4 — Phục vụ đủ kiểu người chơi** (Bartle + Collector)
+
+| Kiểu người | Thích | Hệ đáp ứng bằng |
+|---|---|---|
+| **Collector** — sưu tập | Lấp đầy album | Album % hoàn thành · nhóm huy hiệu · bản cứng để giữ |
+| **Achiever** — chinh phục | Mốc khó, sao cao | Dòng 5★ cày cả năm · nhãn *Hiếm* |
+| **Competitor** — đua top | Hơn người khác | Huy hiệu gắn **rank / danh hiệu top dạng / bảng đua tháng** |
+| **Explorer** — khám phá | Điều bất ngờ | Nhóm **Bí ẩn**: ẩn tới khi đạt |
+| **Socializer** — thể hiện | Được nhìn thấy | **Ghim 3 huy hiệu** lên hồ sơ + TV lớp · bản cứng đeo ngoài đời · huy hiệu **tập thể lớp** |
+
+**A5.5 — Nhóm huy hiệu** (danh mục đo cái gì — ngưỡng sao bàn sau)
+
+| Nhóm | Đo | Kiểu người |
+|---|---|---|
+| 🏫 **Chuyên cần** | Chuỗi buổi đi học · tổng buổi | Collector · Achiever |
+| 📝 **Bài về nhà** | Chuỗi BTVN đúng hạn · BTVN đúng ≥ 90% | Collector · Achiever |
+| ⚔️ **Trên lớp** | ET ≥ 80% · Nhất / lên bảng xếp hạng buổi | Competitor |
+| 🎯 **Thi** | Dự MT · MT tăng hạng · MT top khối · điểm 9–10 | Achiever · Competitor |
+| 💪 **Thử thách** | Số lượt pass · chuỗi ngày pass · lượt 10/10 | Achiever · Collector |
+| 👑 **Chinh phục dạng** | Số dạng đạt · lấp lỗ (yếu → đạt) · giữ danh hiệu top dạng | Achiever · Competitor |
+| 🏆 **Rank** | Bậc cao nhất đạt được trong năm · lọt top bảng đua tháng | Competitor |
+| 📜 **Nhiệm vụ** | Số tháng xong chặng 30 · số rương tuần | Collector |
+| 🤝 **Tập thể** | Lớp em thắng đua lớp tháng (mọi em trong lớp cùng nhận) | Socializer |
+| ✨ **Bí ẩn & Kỷ niệm** | Ẩn tới khi đạt (vd báo sai đề được xác nhận, trúng trà sữa) · huy hiệu sự kiện / mùa | Explorer · Collector |
+
+**A5.6 — Xu (thứ yếu)**
+
+- Trong trần 5 xu / tháng / môn (đã chốt).
+- Chỉ **3★ trở lên** có EXP thưởng. Sao thấp chỉ có huy hiệu.
 
 ### A6. NHIỆM VỤ ngày / tuần / tháng
 
@@ -175,6 +232,17 @@ Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như c�
 | **L4** | Thử thách = 1 lượt như Tự luyện tổng hợp, chỉ thêm luật pass 80% + điểm rank? | **Đúng** |
 
 ---
+
+### B2 — Câu logic THÀNH TỰU (28/09, chờ Thùy)
+
+| # | Câu | CTO đề xuất |
+|---|---|---|
+| **H1** | Mỗi dòng huy hiệu mấy sao? | **5 sao.** Đủ dài để cày cả năm; khung 5 cấp đã có sẵn mẫu trong `Student badge design.zip` (chỉ dùng khung + sao, không bắt buộc hình chim) |
+| **H2** | Bản cứng từ mấy sao? | **4★ và 5★.** Ngưỡng chốt sau khi ước lượng số lượng bản cứng / tháng |
+| **H3** | Huy hiệu vĩnh viễn, không reset theo mùa rank? | **Có.** Chỉ nhóm Kỷ niệm có giới hạn thời gian |
+| **H4** | Trao bản cứng: hệ tự sinh việc cho OPS / GV, trao xong bấm "Đã trao"? | **Có.** Ai trao: OPS hay GV lớp — Thùy chọn |
+| **H5** | 10 nhóm ở A5.5 — thêm / bớt? | Như bảng |
+| **H6** | Có huy hiệu **tập thể lớp** (cả lớp cùng nhận khi thắng đua lớp tháng)? | **Có** — cho kiểu Socializer |
 
 ## PHẦN C — DETAIL: BÀN SAU (chưa có nội dung, cố ý để trống)
 

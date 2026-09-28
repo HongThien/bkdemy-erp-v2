@@ -30587,3 +30587,13 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Thùy: quà mốc cấp 10/20 (sticker TV, chọn ô trước Chiếm Đất) rắc rối ⇒ quy hết ra EXP. Chia lại giữ đúng 15 xu nhiệm vụ:
   mỗi cấp 25 EXP (750) + mốc 10/20/30 = +100/+150/+200 (450) + rương tuần 75 EXP × 4 (300) = 1.500 EXP. Bỏ luôn khung tháng và
   sticker hiếm trong rương. Danh sách nhiệm vụ N1–N3/T1–T4/M1–M2 vẫn chờ gật.
+
+## 2026-09-28 (19) — Nhiệm vụ chốt danh sách · mở THÀNH TỰU = HUY HIỆU (logic)
+
+- Thùy gật danh sách nhiệm vụ (N1–N3 · T1–T4 · M1–M2). Sang thành tựu: xu là thứ yếu, cốt lõi là HUY HIỆU hướng Collector nhưng
+  phục vụ đủ kiểu người chơi; cùng thành tựu càng cao huy hiệu càng lên sao (10 buổi 1★, 30 buổi 2★…); có album sưu tập; cấp thấp
+  bản mềm, cấp cao trung tâm làm BẢN CỨNG tặng HS.
+- **Làm:** viết lại spec A5 (logic): 1 thành tựu = 1 dòng huy hiệu 5★ tuần tự, vĩnh viễn, theo môn · 1–3★ bản mềm, 4–5★ thêm bản
+  cứng — việc trao suy động invariant (đạt 4–5★ trừ đã trao), OPS/GV bấm "Đã trao" · album % hoàn thành + "Sắp đạt" + "N bạn có"/Hiếm
+  · bảng kiểu người chơi (Collector/Achiever/Competitor/Explorer/Socializer) · 10 nhóm huy hiệu · EXP chỉ từ 3★ trong trần 5 xu.
+  B2: 6 câu logic H1–H6 chờ Thùy. Ngưỡng 4–5★ sẽ ước lượng số bản cứng/tháng bằng mô phỏng trước khi chốt.
