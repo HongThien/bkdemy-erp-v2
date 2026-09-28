@@ -193,6 +193,24 @@ Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như c�
 
 **Luật tiến bộ:** so với **chính em**, không so với bạn. Em đã ở đỉnh thì **giữ vững cũng tính là tiến bộ** — không phạt em giỏi.
 
+> **⭐ PHASE 1 — chỉ 6–8 huy hiệu** (Thùy 28/09: *"Nhiều quá bị ngợp. Chọn loại dễ đo, ảnh hưởng lớn nhất… phase này 6–8 cái thôi"*).
+> - Bảng 10 loại ở trên là **bản đầy đủ để mở dần** về sau.
+> - Phase 1 chọn theo 2 tiêu chí: **dễ đo** (dữ liệu có sẵn, đo chắc) + **ảnh hưởng lớn** (kéo đúng hành vi cốt lõi).
+>
+> | # | Huy hiệu | Đo | Vì sao chọn |
+> |---|---|---|---|
+> | 1 | **Không Nghỉ** | Chuỗi buổi có mặt | Đi học là nền, `buoi_hoc_hs` chắc chắn |
+> | 2 | **Đúng Hẹn** | Chuỗi BTVN nộp đủ, đúng hạn | BTVN mới ~75% đúng hạn ⇒ còn nhiều chỗ kéo lên |
+> | 3 | **Lên Tay** | Số bài ET đúng ≥ 80% | Học tốt trên lớp, `gami_grades` có sẵn |
+> | 4 | **Tốp Đầu** | Số lần MT top 30% khối | MT là thước đo chính, hàm xếp hạng có sẵn |
+> | 5 | **Bứt Phá** | Số lần hạng MT tăng | Đường cho **em đang lên**, cùng nguồn MT |
+> | 6 | **Bền Bỉ** | Tổng ngày pass Thử thách | Kéo HS vào app đều đặn, đúng mục tiêu gami |
+> | +7 | *Lấp Lỗ* (tuỳ chọn) | Số dạng từ yếu → đạt | Ảnh hưởng lớn nhất tới học thật, nhưng đo khó hơn (cần lịch sử mastery) |
+> | +8 | *Leo Rank* (tuỳ chọn) | Bậc rank cao nhất năm | Dễ đo **khi hệ rank đã chạy** |
+>
+> - Mỗi huy hiệu 5★ (1–3★ điều kiện đơn, 4–5★ nhiều điều kiện) ⇒ **30–40 cấp**, **6–8 phôi bản cứng**.
+> - Ma trận phase 1: `ma-tran-thanh-tuu-huy-hieu.xlsx`.
+
 **A5.6 — Sao thấp ĐIỀU KIỆN ĐƠN · sao cao NHIỀU ĐIỀU KIỆN** (Thùy chốt 28/09)
 
 > *"Huy hiệu bậc thấp là điều kiện đơn, bậc cao phải là nhiều điều kiện."*

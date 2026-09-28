@@ -30676,3 +30676,12 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - **Không recalc được:** máy không có LibreOffice và `recalc.py` của skill dùng AF_UNIX (không chạy trên Windows) ⇒ bật
   `fullCalcOnLoad` cho Excel tự tính khi mở + tự kiểm bằng Python: 104/104 cấp số điều kiện khớp, 162 ô nối N–N; A2·3T (BTVN đủ 3
   tháng) nuôi nhiều nhất (7 cấp).
+
+## 2026-09-28 (24) — Huy hiệu PHASE 1: chỉ 6 (+2) cái
+
+- Thùy: "nhiều quá bị ngợp, chọn loại dễ đo – ảnh hưởng lớn nhất… phase này 6–8 cái thôi". Chọn 6 cốt lõi: Không Nghỉ · Đúng
+  Hẹn · Lên Tay · Tốp Đầu · Bứt Phá · Bền Bỉ (dữ liệu có sẵn, đo chắc; phủ lớp/BTVN/ET/MT/app và cả 3 góc nhìn) + 2 tuỳ chọn Lấp
+  Lỗ (ảnh hưởng lớn nhưng cần lịch sử mastery) · Leo Rank (dễ khi rank chạy). Bản 10 loại giữ làm lộ trình mở dần.
+- Dựng lại xlsx phase 1: 54 thành tựu × 8 huy hiệu, 40 cấp; kiểm Python 40/40 khớp. Spec A5.5 thêm khối PHASE 1.
+- Bài học: t đưa ~104 cấp ngay vòng đầu — thiết kế đầy đủ ≠ thứ HS nhìn thấy ở phase đầu. Lần sau luôn tách "bản đầy đủ" và "phase 1
+  vừa phải" ngay từ đề xuất.

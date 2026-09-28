@@ -21,7 +21,7 @@
 
 ---
 
-> **Output cuối (ma trận đầy đủ, sửa được): `ma-tran-thanh-tuu-huy-hieu.xlsx`** — sheet *Ma trận* (126 thành tựu × 24 huy hiệu, ô = sao dùng), *Huy hiệu* (104 cấp, mỗi cấp cần gì, số điều kiện đếm bằng công thức từ Ma trận), *Ghi chú*. Tài liệu này là bản giải thích; khi hai nơi lệch nhau thì file Excel là bản cuối.
+> **⭐ PHASE 1 (Thùy 28/09: "nhiều quá bị ngợp, phase này 6–8 cái"):** chỉ **6 huy hiệu cốt lõi** (Không Nghỉ · Đúng Hẹn · Lên Tay · Tốp Đầu · Bứt Phá · Bền Bỉ) **+ 2 tuỳ chọn** (Lấp Lỗ · Leo Rank). Ma trận phase 1: **`ma-tran-thanh-tuu-huy-hieu.xlsx`** (54 thành tựu × 8 huy hiệu, 40 cấp). Tài liệu dưới đây là **bản đầy đủ 10 loại để mở dần** về sau.
 
 ---
 
