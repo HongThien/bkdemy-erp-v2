@@ -31275,3 +31275,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Thùy góp ý v1: ① tên phải kèm lớp mới biết là ai ⇒ chip lớp cạnh MỌI tên · ② phải có tab Bạn bè + kết bạn ("bạn là người ảnh hưởng lớn nhất") ⇒
   v2: 3 tab Thế giới · Bạn bè · Lớp; tab Bạn bè = bạn đang học, lời mời (Đồng ý/Để sau), tin khoe + tin nỗ lực của bạn; + Kết bạn (tìm tên/mã/lớp,
   gợi ý cùng lớp/bạn chung, 2 chiều). Spec §3.2/§6/§6b/§11 cập nhật; câu mở: giới hạn số bạn, huỷ/chặn, chế độ mã với bạn, push lời mời.
+
+## 2026-09-29 (7) — Thế giới BK: Thế giới không ngập — chỉ tin S riêng + thẻ gộp tin A; Lớp/Bạn bè chi tiết
+
+- Thùy: "Thế giới chỉ nên để tin cấp S, A; cùng lớp và bạn bè mới hiển thị chi tiết, chứ không thế giới ngập tin". Đo DB 4 tuần: 278 buổi thường/25 ngày
+  ≈ 11 buổi/ngày ⇒ A từng tin ở Thế giới ≈ 20–25 tin/ngày (Nhất buổi + game), ngày chốt huy hiệu vài trăm ⇒ vẫn ngập. Đề xuất + mockup v3: Thế giới
+  = S riêng + A GỘP 1 thẻ/loại/ngày (mở ra khen từng bạn; huy hiệu ★1–3 gộp tuần); Lớp + Bạn bè = chi tiết S+A+B. 🧋 trà sữa về đúng tầng S (spec §4).
+  Spec §4 cập nhật bảng tầng + luật. Chờ Thùy: giữ thẻ gộp A hay Thế giới chỉ S.

@@ -46,10 +46,14 @@
 | Tầng | Loại tin (tự sinh từ sự kiện thật) | Hiện ở | Hiệu ứng |
 |---|---|---|---|
 | **S · Cực phẩm** | Lên bậc rank mới · huy hiệu ★4–5 · giải tháng · 🧋 trúng trà sữa | 🌏 Thế giới, **ghim đầu 24h** | Lớn (khung vàng, pháo giấy) |
-| **A · Đáng khoe** | Huy hiệu ★1–3 · Nhất buổi · đội thắng game buổi · **chinh phục 1 dạng** (yếu→đạt) · chuỗi 7/30 ngày | 🌏 Thế giới + 🏫 lớp | Thẻ thường |
-| **B · Nỗ lực** | Xong nhiệm vụ ngày · chuỗi 3 ngày · tiến bộ so với chính mình · xong bài | 🏫 **Chỉ kênh lớp** + tin chạy §3.1 | Dòng nhỏ |
+| **A · Đáng khoe** | Huy hiệu ★1–3 · Nhất buổi · đội thắng game buổi · **chinh phục 1 dạng** (yếu→đạt) · chuỗi 7/30 ngày | 🌏 Thế giới (**gộp thẻ theo loại**) + 🏫 lớp + 🤝 bạn bè (chi tiết) | Thẻ thường |
+| **B · Nỗ lực** | Xong nhiệm vụ ngày · chuỗi 3 ngày · tiến bộ so với chính mình · xong bài | 🏫 kênh lớp + 🤝 bạn bè + tin chạy §3.1 (**không** lên Thế giới) | Dòng nhỏ |
 
-- Tin B của 1 em trong ngày **gộp thành 1**. Thế giới có **trần tin / em / ngày**.
+- Tin B của 1 em trong ngày **gộp thành 1**.
+- **⭐ Thế giới KHÔNG ngập (Thùy 29/09):** Thế giới chỉ hiện **tin S riêng từng cái** + **tin A GỘP 1 thẻ / loại / ngày** ("🏆 Hôm nay 11 bạn Nhất buổi"
+  — bấm mở danh sách, khen từng bạn; huy hiệu ★1–3 gộp theo tuần). **Lớp + Bạn bè hiện CHI TIẾT** đủ S + A + B từng tin.
+  Số đo 4 tuần (29/09): ~11 buổi thường/ngày ⇒ không gộp thì ~20–25 tin A/ngày chỉ riêng Nhất buổi + game, ngày chốt huy hiệu vài trăm.
+  Chờ Thùy: giữ thẻ gộp A ở Thế giới (mockup) hay bỏ hẳn A, Thế giới chỉ còn S.
 - **Chỉ tin tốt** (luật A8 gamification: hạng thấp chỉ em đó thấy). Phải có loại tin **ai chăm cũng đạt** (tầng B) để bạn yếu cũng lên kênh.
 
 ## 5. Tương tác — không chat, không chữ tự do
