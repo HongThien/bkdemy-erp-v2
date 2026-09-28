@@ -9,11 +9,18 @@
 
 ## ① TRẠNG THÁI HIỆN TẠI
 
-- **⭐ BỔ TRỢ (yếu · bù · đuổi) — trạng thái + luật đã chốt tới 21/09: đọc `spec-bo-tro.md`** (file tổng riêng, Thùy yêu cầu 21/09). Tóm 1 dòng:
-  phát hiện 4 kênh/2 cửa sổ (②: >15% hoặc >10%&đạt<50%) → duyệt level + `uu_tien` → xếp theo lịch trực KHỐI+BẬC (S≥A≥B≥C, ca ≤3 em, 1 case ≤1 buổi chờ
-  học — trigger DB) → ca 2 chế độ 📱 app / 📄 giấy (in phiếu cùng bộ chọn câu, TA nhập đáp án em khoanh, máy chấm, test giấy có Nộp) · bài trên app
-  **MCQ tuyệt đối** (`_kho_dk_mcq_sql`, không nhánh lùi) · ERP tab "● Đang diễn ra". Treo: 25 dạng chưa có MCQ (phiên MCQ) · chưa in riêng 1 dạng ·
-  8 buổi quá ngày chưa học · `migrate` phải dùng `--only` (4 migration Sổ tay treo).
+- **⭐ BỔ TRỢ (yếu · bù · đuổi) — trạng thái 28/09: đọc `spec-bo-tro.md` (luồng yếu) + `spec-xep-bo-tro-chung.md` (xếp chung).** Tóm:
+  **1 lá "Bổ trợ"** (Vận hành) → toggle Đuổi · Bù · **Yếu** · **Lịch phòng** · **Lịch trực**. Yếu = toggle 5 bước Duyệt → Nội dung → Xếp → Trạng thái ca
+  → Đánh giá ca (cả folder QLCL cũ chuyển vào; quyền `botro`). Xếp CHUNG theo **đơn vị** (30'×1 TA; Đuổi 4 · Bù 4 · Yếu L2/L3 4 · **Yếu L1 1**; ca
+  **đầy khi đủ 3 em/TA HOẶC đủ đơn vị**; phòng ≤2 ca/giờ) · **"+ Xếp" = đã chốt PH, trừ đơn vị ngay** (bỏ bước chờ PH). Lịch phòng = "đang diễn ra"
+  3 loại, 2 khu toggle Lịch trực khối / Lịch riêng; mở ngày ⇒ DB gắn buổi xếp bằng form riêng vào ca trực khớp người+giờ. Màn Xếp chỉ hiện **L1–L3**
+  (L0 ẩn); **đổi mức trên card**, hạ L0 = dừng bổ trợ (đóng case ket_qua `bo`). **Buổi xong ⇒ case tiến:** TA tick "dạng đã dạy" lúc hoàn tất
+  (mặc định tick hết) + mọi dạng vừa dạy được bổ sung câu retest (`_btyeu_bu_retest`, màn Xếp tự bù mỗi lần mở). Buổi đã đóng ca **không đổi được
+  ngày/giờ** (trigger). App TA: chạm lại nút điểm danh = bỏ (chỉ khi em chưa làm câu nào). Bài trên app **MCQ tuyệt đối — ngoại lệ duy nhất: dạng
+  mức độ 4–5 mà cả dạng 0 MCQ ⇒ trả lời ngắn** (28/09). App HS: card "Học từ đầu" (đuổi) kiểm lại mỗi lần về màn chính.
+  **Treo:** dữ liệu TEST Triệu Đức Tùng chờ Thùy "OK xoá" (danh sách ở DEVLOG 24/09) · 3 dạng mức 2–3 chờ retest không có MCQ + 3 dạng mức 4 chỉ
+  có tự luận (phiên MCQ) · retest chỉ hiện trên app TA TỪ NGÀY làm (ERP hiện cả sắp tới — nếu muốn TA biết trước: thêm "Retest sắp tới") · bước 5 KPI
+  tải TA (Σ đơn vị có mặt) chưa làm · `migrate` dùng `--only` (4 migration Sổ tay treo).
 
 ### Kiến trúc & file chính
 - Kho = lá `bdkt` trong cây Admin → `src/screens/kho/KhoScreen.tsx`. Build **THẬT, wire Supabase DB v2** (ngoại lệ so với mock-first của shell — vì schema Kho đã đông cứng).
@@ -465,24 +472,10 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
    màn Hồ sơ theo design · ô Home Rank/Nhiệm vụ (C11) · ví xu hiện dòng EXP nhiệm vụ/huy hiệu · danh hiệu top dạng (C5) · quà đua lớp (C8).
 4. Nợ cũ còn: chọn dạng Tự luyện/Thử thách đang chạy ở CLIENT (`chonDangTuLuyen`, JS) — §2.0 muốn đẩy xuống DB.
 
-### 🔜 PHA 4 — ĐƯỜNG ỐNG CA YẾU (bổ trợ) — THIẾT KẾ XONG, CHƯA BUILD (ưu tiên tiếp theo)
-Vòng: đề xuất → **team học thuật DUYỆT** → **OPS xếp lịch** → dạy + BT-ngay → buổi kế BT-xác-nhận → đóng.
-- **⭐ MỘT mastery + NHÃN trạng thái** (KHÔNG đẻ nhiều mastery — Thùy: "chia ra rối"). "Đã xử lý chưa"
-  = trạng thái CA (bo_tro_yeu), không phải số thứ hai. Dashboard mỗi dạng yếu = 1 điểm + 1 nhãn
-  (chưa xử lý·đang bổ trợ·đã bổ trợ chờ xác nhận·nghi BTVN che).
-- **⭐ 2 BÀI BT (vì ET=bài mới, MT=tháng/lần, không tự phủ lại dạng cũ ⇒ phải cố ý tạo tín hiệu):**
-  `bt_ngay` (tại buổi bổ trợ, nhiễm vì vừa dạy → **weight 0**, không gỡ diện) · `bt_xn` (buổi kế, HS
-  đến sớm/ở lại, giám sát, cold-check 2–3 câu tự bơm từ kho, **BẮT BUỘC** → **weight >0** = tín hiệu
-  gỡ diện). **Đóng ca (bt_xn đạt) ≠ ra khỏi diện (bt_xn vào mastery vượt mốc)** — 2 sự kiện, cùng do bt_xn.
-- **Hiệu quả BT** = mastery ĐỘC LẬP trước ca vs tại bt_xn, tính OFFLINE (đo immutable, dựng lại mốc).
-  Gap tại-chỗ (bt_ngay−trước) = tín hiệu QUẢN TRỊ, KHÔNG phải hiệu quả bền — đừng gộp (thổi phồng moat).
-- **Vận hành pure-derive:** task BT-xn tự bắn cho TA/OPS của ca (phan_cong_ca), buổi kế; xong tự tắt.
-  **Van xả:** quá hạn (Thùy CHƯA chốt: 2 buổi HS có mặt hay 4 tuần) ⇒ đóng `ket_qua='khong_do_duoc'`
-  (≠ chua_dat; anti-NULL) ⇒ chặn trần backlog.
-- **VIỆC CÒN:** (1) migration `202607241948` — BỎ ô `retest_*` đơn → **bảng con `bo_tro_yeu_retest`**
-  (`loai∈{ngay,xac_nhan}`, mỗi đo 1 dòng), thêm `khong_do_duoc` vào CHECK ket_qua; (2) config mastery
-  thêm nguồn `bt_xn` weight>0, `bt_ngay`=0, napLanDo đọc thêm; (3) đóng ca=có dòng xac_nhan; (4) Thùy
-  chốt ngưỡng quá hạn. Chi tiết raw: DEVLOG 2026-07-25 (3 mục).
+### ✅ PHA 4 — ĐƯỜNG ỐNG CA YẾU (bổ trợ) — ĐÃ BUILD (09→28/09), khác thiết kế 25/07 ở vài chỗ
+Thay bằng luồng thật ở `spec-bo-tro.md`: retest 2 tầng = **test cuối ca** (`bo_tro_test`, tính mastery như ET) + **retest** (`bai_test.loai='retest'`,
+buổi thường kế tiếp, TA lớp đưa iPad; `fn_btyeu_retest_ghi` ghi dat/dong_at từng dạng) — KHÔNG làm bảng con `bo_tro_yeu_retest`/`bt_ngay`/`bt_xn`
+như phác 25/07. Vòng 4 trạng thái: Chờ duyệt → Đang bổ trợ → Chờ retest → Hoàn thành (`case_truoc_id` = vòng). Tóm tắt ở đầu ① (dòng ⭐ BỔ TRỢ).
 
 ### Chưa làm
 - ✅ **(XONG 07-03)** KB3 nhập-kho ingest-first — màn `nhapkho` (xem section trên). AI auto-tag dạng ĐÃ làm (không còn "điền tay 100%"). Còn: mo_ta_ngan + distiller.
@@ -1717,6 +1710,22 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
 - MT/Đề thi/Bổ trợ yếu/Đánh giá còn đọc `banDoTbl` theo `ma_chuyen_de` — `hinh_hoc_bai` có cột compat (rỗng) nên không vỡ, nhưng logic theo chuyên đề vô nghĩa với Hình học; chưa bật nhánh này ở đó.
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
+
+- **⭐⭐ Bổ trợ: "xếp mãi vẫn Cần xếp" có 2 gốc — đừng vá triệu chứng (24/09).** (1) Form xếp mở buổi 'mo' ĐÃ ĐÓNG CA ở chế độ SỬA ⇒ "xếp" chỉ dời
+  ngày buổi cũ (dữ liệu học bị đẩy sang tương lai) — giờ chặn cứng bằng trigger `trg_buoi_bo_tro_khoa_ngay`. (2) Đóng ca chỉ ghi "đã dạy" cho dạng em
+  luyện APP ⇒ em học giấy đóng xong 0 dạng tiến ⇒ case trông như chưa học ⇒ OPS đi sửa buổi cũ (10/14 buổi dính) — giờ TA tick dạng lúc hoàn tất.
+  **Áp dụng:** "trạng thái không chuyển" ⇒ tra DB từng buổi (danh_gia_xong_at, day_buoi_id, updated_at) trước khi sửa UI; trả ngày thật chỉ khi ≥2
+  nhân chứng độc lập trùng nhau (đóng ca · làm bài · nhận xét · sinh bài).
+- **⭐ Retest chỉ chấm dạng CÓ câu trong bài retest** (`fn_btyeu_retest_ghi`) ⇒ mọi đường làm dạng sang "chờ retest" PHẢI đảm bảo có câu retest cho
+  dạng đó, không thì kẹt vĩnh viễn (bài cũ chỉ lấy ≤3 dạng). Dạng 0 MCQ vẫn kẹt tới khi có câu — `fn_btyeu_bu_retest_ton` tự thông khi mở màn Xếp.
+- **⭐ Sửa hàm SQL mà phiên khác cũng sửa ⇒ dựng từ bản ĐANG CHẠY (`pg_get_functiondef`), không từ file migration cũ** — `fn_ca_bo_tro_ung_vien`
+  bị phiên khác thêm nhãn "cùng lớp" sau file gốc; dựng từ file cũ là đè mất. Hàm mình viết cũng có thể bị phiên khác sửa lỗi (vd `fn_btyeu_hoan_tat`
+  thiếu cột `buoi_danh_gia.muc` ⇒ CHECK nổ khi TA chọn mức) — pull main trước khi đụng lại.
+- **⭐ Vercel: auto-deploy TẮT, deploy TAY ⇒ `ignoreCommand` lọc theo diff là vô nghĩa và nguy hiểm** (không có PREVIOUS_SHA, hoặc PREVIOUS_SHA =
+  deployment vừa bị cancel ⇒ "đang build thì biến mất"). Đã gỡ khỏi vercel.json (24/09). "Push rồi mà prod không đổi" ⇒ kiểm bundle prod có chuỗi mới
+  không trước khi nghi code.
+- **Luật CEO đổi thì sửa CẢ spec + CLAUDE.md** (MCQ tuyệt đối 20/09 → ngoại lệ mức 4–5 ngày 28/09): 1 dòng "tuyệt đối" còn sót trong CLAUDE.md sẽ
+  khiến phiên sau "sửa lại cho đúng luật" và phá quyết định mới.
 
 - **⭐⭐ Kit ChatGPT PHẢI đủ 3 phần — không bao giờ đặt "đơn chỉ sinh asset" (28/09, skin RPG).** Đơn chỉ-asset (bỏ vẽ mockup) ⇒ ChatGPT vẫn vẽ
   ảnh toàn cảnh (nhân vật + 8 icon khác) nhưng không đóng vào zip, và chỉ sinh 7 mảnh rời theo danh sách ⇒ Claude dựng ra màn khác hẳn ảnh Thùy

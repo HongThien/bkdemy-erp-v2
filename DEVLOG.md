@@ -31049,6 +31049,12 @@ Thùy: "dạng nâng cao không có MCQ thì phải hiện trả lời ngắn ch
 (câu gốc tra_loi_ngan nhưng có form 4 đáp án đã duyệt — vẫn là MCQ); T107010506 (mức 5, 0 MCQ) ⇒ 5 câu TLN. 3 dạng mức 4 chỉ có tự luận ⇒ vẫn học giấy.
 Sửa CLAUDE.md + spec-bo-tro §4 ghi rõ ngoại lệ (luật cũ "MCQ tuyệt đối, không nhánh lùi" 20/09).
 
+## 2026-09-28 — Distill HANDOFF + spec-bo-tro (Thùy: "ghi md và handoff rồi push")
+
+HANDOFF ①: viết lại dòng ⭐ BỔ TRỢ (trạng thái 28/09 + treo) · mục "🔜 PHA 4 ĐƯỜNG ỐNG CA YẾU — chưa build" (stale từ 25/07) ⇒ "✅ đã build, khác thiết kế ở…".
+HANDOFF ②: +5 bài học (2 gốc "xếp mãi vẫn Cần xếp" · retest chỉ chấm dạng có câu · dựng hàm từ bản đang chạy · Vercel deploy tay + ignoreCommand ·
+đổi luật CEO phải sửa cả spec + CLAUDE.md). spec-bo-tro: mốc 28/09, tiêu đề §4/§5/§7 theo hiện tại, thêm §12 tóm 24–28/09.
+
 ## 2026-09-28 (38) — Hồ sơ khoe: mockup + quyết định · đơn ChatGPT 3 món · distill HANDOFF cuối ngày
 
 - Thùy: cần chỗ khoe profile (rank, huy hiệu…). T làm wireframe (bản em tự xem + bản bạn/TV xem). Thùy chốt: **bấm avatar mở** · **tường của nhau = phase sau** ·

@@ -1,7 +1,7 @@
 # BỔ TRỢ — tài liệu tổng (yếu · bù · đuổi)
 
 > **Đọc file này TRƯỚC khi sửa bất cứ gì thuộc luồng bổ trợ.** Đây là bản TỔNG HỢP các quyết định CEO (Thùy) đã chốt + những gì ĐÃ BUILT,
-> tính tới **23/09/2026**. Lịch sử/số đo từng quyết định: `DEVLOG.md` theo ngày. Thiết kế gốc: `PLAN-botro-yeu.md` (phát hiện → duyệt →
+> tính tới **28/09/2026** (xem §12 cho thay đổi 24–28/09). Lịch sử/số đo từng quyết định: `DEVLOG.md` theo ngày. Thiết kế gốc: `PLAN-botro-yeu.md` (phát hiện → duyệt →
 > nội dung → xếp → đánh giá) và `PLAN-botro-yeu-ca.md` (1 ca diễn ra thế nào, 2 app). Code/DB là chân lý runtime; file này là bản đồ.
 
 ---
@@ -98,7 +98,7 @@ Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt d
   người chọn. Sau khi mở, máy KHÔNG tự đổ thêm — chỉ nút "🤖 +N dạng yếu mới" (§1.1) + người ở màn Nội dung. Case máy không tìm ra dạng
   (chuông đỏ/thái độ, dạng yếu chưa đủ 3 lần đo — Hà Linh 11A1 09/09) ⇒ card Nội dung đỏ "Chưa có dạng — chọn tay".
 
-## 4. Nội dung bài trên app — MCQ TUYỆT ĐỐI
+## 4. Nội dung bài trên app — MCQ TUYỆT ĐỐI (ngoại lệ duy nhất: dạng mức độ 4–5 không có MCQ ⇒ trả lời ngắn, 28/09)
 
 - Mọi bài của ca (luyện · test cuối ca · retest · phiếu giấy) chọn câu qua **`_btyeu_chon_cau`** với điều kiện DUY NHẤT **`_kho_dk_mcq_sql`** =
   `kho_chuan` + (trắc nghiệm gốc có đáp án | có `dai_cau_form_tn` ĐÃ DUYỆT). `_kho_snapshot_cau` tự hiện form thành 4 đáp án. Né câu em đã gặp
@@ -111,7 +111,7 @@ Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt d
   `cham_at`; MCQ không cho chỉnh).
 - ⚠ CHƯA nối form **Điền Ô** (`dai_cau_form_dien` — "trắc nghiệm từng phần" cho dạng nâng cao K6–7) vào bổ trợ — chờ CEO chốt có tính là MCQ không.
 
-## 5. ④ Xếp lịch — màn "Xếp bổ trợ yếu" (8 tab, CEO 23/09: **Cần xếp · Đã xếp · Chờ retest · Hoàn thành** theo CASE như màn Bù · **📝 Retest** · ● Đang diễn ra · Ca bổ trợ · Lịch trực)
+## 5. ④ Xếp lịch — Bổ trợ › Yếu › "Xếp bổ trợ" (5 tab: **Cần xếp · Đã xếp · Chờ retest · Hoàn thành · 📝 Retest**; từ 24/09 "Ca bổ trợ", "Lịch trực", "● Đang diễn ra" RỜI màn này — sang Bổ trợ › Lịch phòng / Lịch trực, xếp chung 3 loại theo đơn vị: `spec-xep-bo-tro-chung.md`)
 
 - **Lịch trực** `lich_truc_bo_tro`: môn × **KHỐI × BẬC** × thứ × giờ × phòng × **người trực (bắt buộc)** × hiệu lực × `suc_chua` (mặc định **3**).
   BK bổ trợ theo khối, KHÔNG theo lớp. Bậc theo `lop_bac.thu_tu`: **S > A > B > C** — **ca bậc cao nhận HS bậc thấp hơn, không ngược lại** (ca 7S
@@ -157,7 +157,7 @@ tới khi đóng ca.
 `fn_btyeu_lich_su_hs(hs, mon, 14)` → popup dòng thời gian TOÀN BỘ hoạt động 2 tuần (chọn 14/30/60 ngày): buổi yếu/bù/đuổi (điểm danh, dạng dạy, luyện,
 test cuối ca, nhận xét, 📱/📄, lý do huỷ) · retest (đạt/trượt từng dạng) · lượt duyệt level · báo động · case mở/đóng. `LichSuBoTroModal.tsx`.
 
-## 7. Theo dõi — tab "● Đang diễn ra" (ERP → Xếp bổ trợ yếu)
+## 7. Theo dõi — "Đang diễn ra" (từ 24/09 nằm trong Bổ trợ › Lịch phòng, khu Lịch riêng + trạng thái sống trên card ca trực)
 
 `fn_btyeu_ca_theo_doi(ngay)`: mọi ca trong ngày, nhóm theo giờ, tự cập nhật 15s (không blank). Trạng thái: **Chưa điểm danh · Vắng · Đang luyện ·
 Im lâu (≥5', viền vàng) · Đã đóng chờ em làm test · Test xong chờ nhận xét · Hoàn tất**; badge chế độ 📱/📄/chưa chọn; ngay tại dòng ca:
@@ -212,3 +212,15 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
   chỉ để em luyện. Retest tầng 2 / dat của case — KHÔNG đổi gì, vẫn chạy y hệt cũ.
 - KHÔNG đụng: 4 kênh phát hiện, duyệt+ưu tiên, lịch trực khối+bậc, cụm luyện+lô 3 câu,
   4 trạng thái vòng, báo động chuông — giữ nguyên 100% như trước 22/09.
+
+## 12. Cập nhật 24–28/09 (tóm; chi tiết DEVLOG)
+
+- **Menu:** 1 lá "Bổ trợ" (Vận hành, quyền `botro`) → toggle Đuổi · Bù · Yếu · Lịch phòng · Lịch trực. Yếu = toggle Duyệt → Nội dung → Xếp → Trạng thái ca →
+  Đánh giá ca (cả folder "Bổ trợ yếu" ở Quản lý chất lượng chuyển vào; link cũ `botroyeu:*` mở đúng toggle).
+- **Xếp chung theo đơn vị** (`spec-xep-bo-tro-chung.md`): Yếu L1 = 1 đv, L2/L3 = 4; ca đầy khi đủ 3 em/TA hoặc đủ đơn vị; "+ Xếp" = đã chốt PH.
+- **Xếp chỉ hiện L1–L3** (L0 ẩn); **đổi mức trên card** — hạ L0 = dừng bổ trợ, đóng case `ket_qua=bo` (CEO xác nhận "Bỏ" là đúng).
+- **Trạng thái ca** (màn riêng): 1 dòng/case + thanh 6 mức (Chờ chọn dạng → Cần xếp → Đã xếp → Chờ retest → Chờ đánh giá → Hoàn thành), filter có số,
+  bấm ⇒ popup chi tiết (dạng · buổi · retest · lịch sử duyệt). Mức tính ở DB (`fn_btyeu_trang_thai_ca`, `fn_btyeu_chi_tiet_case`).
+- **Buổi xong ⇒ case tiến**: TA tick dạng đã dạy khi hoàn tất; mọi dạng vừa dạy có câu retest; buổi đã đóng ca khóa ngày/giờ; chạm lại nút điểm danh = bỏ.
+- **Dạng vào case lúc mở** = dạng yếu (<0,5) · ≥3 lần đo · có đo trong 2 cửa sổ (engine `dien` + `fn_btyeu_dang_yeu_2_cua_so`).
+- **Retest trên app TA** chỉ hiện từ NGÀY làm (`fn_btyeu_viec_cua_toi`: ngay ≤ hôm nay); ERP hiện cả sắp tới. Thùy: không cần push riêng.
