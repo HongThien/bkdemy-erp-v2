@@ -31223,3 +31223,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 ## 2026-09-29 (4) — spec-the-gioi-bk.md
 - Thùy: sticker miễn phí (Noto/LottieFiles) "hơi xấu" ⇒ Thùy tự tìm mua. Gom toàn bộ bàn 28–29/09 thành `spec-the-gioi-bk.md` (đích, số nền, 2 lớp, 3 tầng tin, tương tác, riêng tư, push, bản quyền sticker, dữ liệu, build, còn mở, ý tưởng liên quan); §0.7c trỏ sang.
+
+## 2026-09-29 (5) — Bắn Quà: kiểm đã lên prod + vá focus chế độ Cast
+- Thùy hỏi đã ghép Bắn Quà vào ERP chưa: kiểm code sau khi phiên khác làm 2 chế độ (TV riêng / Cast chung) — BanQuaLop có ở CẢ 2 chế độ; prod game.bkacademy.edu.vn/ban-qua.html = bản mới nhất; bundle ERP bkdemy-erp-v2.vercel.app có fn_ban_qua_bat_dau ⇒ đã lên mạng.
+- Lỗi tìm được khi đọc code: Cast chung = game (iframe) + nút ERP cùng trang ⇒ bấm "Bắt đầu ván" xong focus còn ở nút ⇒ HS bấm Space nạp lực = bấm lại nút (khởi động lại ván). Chứng minh bằng trang giả lập + click/phím thật: trước sửa 1 click + 2 Space = nút chạy 3 lần; sau sửa (blur + focus iframe game) = 1 lần, focus ở IFRAME. Vá `BanQuaLop.tsx` (traFocusGame sau bắt đầu/gửi lại/xin kết quả/chốt). Chưa deploy.
