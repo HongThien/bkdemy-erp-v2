@@ -30717,3 +30717,11 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   chữ đẹp nổi tiếng = biến điểm yếu thành điểm mạnh, khớp huy hiệu "dạng yếu → đạt"). Rà lại cả bộ: còn lại đều Việt; ghi chú chuyện
   đom đóm của Mạc Đĩnh Chi có bản gốc Trung Quốc (Xa Dận) nhưng VN kể phổ biến gắn với ông.
 - Bài học: đặt bộ tên "theo gốc X" thì phải kiểm gốc TỪNG tên trước khi đưa CEO — t chọn theo độ khớp ý nghĩa mà quên kiểm gốc tích.
+
+## 2026-09-28 (27) — Chốt: huy hiệu bộ Hy Lạp · bộ Việt Nam cho giải thưởng
+
+- Thùy: thích bộ Việt Nam nhưng trẻ con thích khoe bộ Hy Lạp hơn → hỏi ý t. T nghiêng Hy Lạp (thiết kế cho HS khoe; cùng thế giới
+  với rank God of War; thần thoại là của chung). Thùy chốt: **huy hiệu = Hy Lạp, bộ Việt Nam dùng cho các giải thưởng**.
+- Thùy hỏi "Phoenix có phải thần Hy Lạp không" → không: là chim thần thoại (biểu tượng tái sinh, gốc Ai Cập — Bennu); hợp tiêu chí
+  "biểu tượng" Thùy nêu, BK có sẵn art phượng hoàng. Hercules = tên La Mã, á thần. Phương án toàn-vị-thần: Phoenix → Nike, Leo Rank →
+  Olympus. Chờ Thùy chọn giữ Phoenix hay đổi.

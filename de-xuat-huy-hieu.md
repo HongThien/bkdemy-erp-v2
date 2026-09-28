@@ -41,7 +41,16 @@
 | *(tuỳ chọn)* Lấp lỗ yếu → đạt | **Cao Bá Quát** | "Văn hay chữ tốt" — **chữ xấu** bị quan đuổi, khổ luyện thành người viết chữ đẹp nổi tiếng ⇒ **biến điểm yếu thành điểm mạnh** *(sửa 28/09: bản trước ghi Nữ Oa — thần thoại Trung Quốc, sai bộ Việt Nam)* | **Hephaestus** | Thần thợ rèn — rèn lại, sửa chỗ hỏng |
 | *(tuỳ chọn)* Leo Rank | **Quang Trung** | Áo vải cờ đào → lên ngôi Hoàng đế — đúng mạch "người thường → đỉnh cao" | **Nike** | Nữ thần Chiến Thắng |
 
-**CTO đề xuất: Bộ A — Việt Nam.**
+**✅ Thùy chốt 28/09:**
+- **Huy hiệu dùng Bộ B — Hy Lạp.** Trẻ con thích khoe, và cùng thế giới với rank "người thường → thần".
+- **Bộ A — Việt Nam dùng cho các GIẢI THƯỞNG**, hợp lý hơn.
+
+**Ghi chú gốc tích Bộ B:**
+- **Phoenix không phải vị thần** mà là **chim thần thoại** (biểu tượng tái sinh; có trong thần thoại Hy Lạp, gốc Ai Cập — chim Bennu). Hợp lệ theo tiêu chí *"biểu tượng"*. BK đã có sẵn art phượng hoàng (Mythwings).
+- **Hercules** = tên La Mã của Heracles, là **á thần** (được phong thần sau khi mất). Giữ vì HS nhận ra ngay.
+- Nếu muốn **toàn vị thần** thì Phoenix → **Nike** (nữ thần Chiến thắng), Leo Rank → **Olympus**.
+
+~~CTO đề xuất: Bộ A — Việt Nam.~~ (đề xuất ban đầu, đã thay bằng chốt ở trên)
 - **Đúng chữ "danh nhân"** Thùy nói. HS đã học các nhân vật này ở SGK.
 - Mỗi huy hiệu là **một câu chuyện có sẵn để GV kể** lúc trao bản cứng. Trao huy hiệu Nguyễn Hiền kèm câu "trạng nguyên 12 tuổi" có sức nặng hơn nhiều.
 - **Bản sắc riêng BK**, không ai bảo copy game. Bộ Hy Lạp thì game nào cũng dùng.
