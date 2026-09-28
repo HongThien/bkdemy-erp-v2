@@ -403,6 +403,26 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
   (`HinhPrintView`) · chưa dựng lại 4A1/giáo trình HGT thật trong app sau 3 lần sửa khung (chỉ verify Chrome headless) · lỗi gõ gốc "Gợi" ở
   HGT T312010205 · `hinh_bo_de`/`hinh_dang` đọc 0 dòng bằng `claude_build` (điểm mù RLS) · khu vẽ hình / bảng điền = bật-tắt theo bài tập (chưa làm).
 
+### Đã build (28/09 — ⭐ GIAO DIỆN APP HS: skin tự chọn lớp 9–12) — ĐỌC `spec-giao-dien-hs.md` + `design/DON-HANG-SKIN-HS.md` trước khi sửa
+- **Vì sao:** nhiều HS chê Home v4 (pastel, chibi, khẩu hiệu tiếng Anh viết tay, màu gán theo giới tính = "trẻ con"). Thùy chốt **3 nhóm khối,
+  mỗi nhóm bộ skin riêng**: lớp 3–5 gốc Thị trấn · 6–8 gốc Khối vuông (cả 2 KHÔNG có điện thoại riêng) · **9–12 có điện thoại riêng, nhiều skin HS chọn**.
+  "9-12" Thùy nói cạnh HS = KHỐI, không phải tuổi. Không cho HS bầu trước — làm rồi đo (log đổi skin = phiếu bầu). Điểm của ai người đó thấy.
+- **ĐANG CHẠY (khối 9–12, đã deploy):** `HomeHS912.tsx` (đầu trang · Việc tiếp theo · widget Elo+hạng lớp / đếm ngược kỳ thi · lưới ô) + nút
+  **Hình nền** (tấm chọn skin · sáng/tối/theo máy · hình nền, Home phía sau đổi ngay) + **hướng dẫn lần đầu** (chào → chọn → khoanh sáng nút Hình nền → lưu).
+  5 skin trong `src/screens/hocsinh/skin/registry.ts` (1 nguồn; component chỉ đọc `--sk-*`, cấm `if skin`): Tối giản · Đấu trường · Y2K · Soft Hàn · Anime RPG.
+  Danh sách ô GIỮ theo khối (khối 9 vẫn bộ ô cấp 2); màn con nhóm này bỏ màu theo giới tính (`gt = null`). Khối ≤8 chưa đổi gì.
+- **DB (mig `202609281346_hs_giao_dien_skin`):** `hs_giao_dien` (1 dòng/HS, ra đời khi xong hướng dẫn; CHECK skin 5 giá trị — thêm skin PHẢI nới CHECK) ·
+  `hs_giao_dien_log` (trigger) · `lich_thi_lon` (kỳ thi lớn, KHÁC `ky_thi`; hiện 1 dòng: THPT QG 2027 · 11/07/2027 dự kiến · khối {12}) ·
+  RPC `fn_hs_giao_dien_cua_toi` / `fn_hs_luu_giao_dien` / `fn_hs_home_912`.
+- **Chưa khớp ảnh gốc:** Thùy muốn skin RPG đúng `design/handoff/hs-skin-rpg-v1/reference/reference_rpg_ipad.png` (nhân vật anime + mèo cột trái,
+  lời chào to, cấp/XP/xu, 2 banner tím/hồng, lưới 4 cột icon vẽ). Bản đang chạy chỉ là tạm (lớp phủ tối trên tranh nền, thẻ viền vàng, ✦ thay emoji).
+  **Việc tiếp:** ① Thùy gửi ChatGPT **Đơn 4 v2** (RPG) + **Đơn 3 v2** (Lo-fi, v1 bị trả) trong `design/DON-HANG-SKIN-HS.md`, kèm mục "BỐ CỤC CHUNG
+  lớp 9–12" + ảnh gốc · ② chuyển công thức cấp/XP (`src/gami/level.js`, đang chỉ ở JS) sang hàm Postgres (§2.0) · ③ khi có kit v2: dựng lại
+  HomeHS912 theo BỐ CỤC CHUNG (áp cho mọi skin 9–12; nhân vật = asset tuỳ skin, HS chọn nam/nữ không gán) · ④ Đơn 1 (3–5) / Đơn 2 (6–8) chờ ChatGPT ·
+  ⑤ reskin các màn con · tầng 2 (màu nhấn, chọn widget).
+- **Verify không có tài khoản HS thử:** không dùng mã/PIN HS thật ⇒ dựng trang xem thử tạm (không commit) render HomeHS912 bằng dữ liệu mẫu, không
+  đăng nhập ⇒ lưu bị DB từ chối, không ghi dữ liệu thật. Preview tool chỉ đọc `.claude/launch.json` thư mục chính ⇒ trong worktree chạy `npx vite --port 52xx` nền.
+
 ### 🔜 PHA 4 — ĐƯỜNG ỐNG CA YẾU (bổ trợ) — THIẾT KẾ XONG, CHƯA BUILD (ưu tiên tiếp theo)
 Vòng: đề xuất → **team học thuật DUYỆT** → **OPS xếp lịch** → dạy + BT-ngay → buổi kế BT-xác-nhận → đóng.
 - **⭐ MỘT mastery + NHÃN trạng thái** (KHÔNG đẻ nhiều mastery — Thùy: "chia ra rối"). "Đã xử lý chưa"
@@ -1655,6 +1675,13 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
 - MT/Đề thi/Bổ trợ yếu/Đánh giá còn đọc `banDoTbl` theo `ma_chuyen_de` — `hinh_hoc_bai` có cột compat (rỗng) nên không vỡ, nhưng logic theo chuyên đề vô nghĩa với Hình học; chưa bật nhánh này ở đó.
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
+
+- **⭐⭐ Kit ChatGPT PHẢI đủ 3 phần — không bao giờ đặt "đơn chỉ sinh asset" (28/09, skin RPG).** Đơn chỉ-asset (bỏ vẽ mockup) ⇒ ChatGPT vẫn vẽ
+  ảnh toàn cảnh (nhân vật + 8 icon khác) nhưng không đóng vào zip, và chỉ sinh 7 mảnh rời theo danh sách ⇒ Claude dựng ra màn khác hẳn ảnh Thùy
+  đã xem, còn tự ghi "đạt v1". **Áp dụng:** mọi kit = `reference/` ảnh toàn cảnh mọi khổ màn + bảng kiểm kê có cột **Vị trí & cỡ** + đủ asset thấy
+  trong ảnh (kit §2/§4/§8 câu 9–11, `design-check` tự rớt). "Đạt" = khớp ẢNH TOÀN CẢNH, không phải khớp danh sách file mình tự liệt kê.
+  Thùy thả file vào `public/` là bị đóng vào bản build ⇒ luôn chuyển sang `design/handoff/`. Kiểm kit cũng phải nhìn "được sinh bằng
+  công cụ tạo ảnh hay ghép khối bằng code" (Lo-fi v1 là khối hình phẳng — script đo cạnh sắc vẫn ĐẠT).
 
 - **⭐⭐ Snapshot text-ref phải sync khi RPC đổi mã cha (bug 18/09 Test đầu vào không load chuyên đề mới).** `ca_test_cau` lưu SNAPSHOT `ten_chuyen_de` + `muc_do` tại thời điểm tạo ca test (phiếu `fn_test_dau_vao_phieu` đọc thẳng, KHÔNG JOIN dai_ban_do runtime — có ý đồ giữ lịch sử "HS làm câu này khi câu thuộc chuyên đề X"). RPC `fn_dai_chuyen_dang` lượt đầu chỉ update `ma_dang`, quên sync 2 cột snapshot → sau khi CEO chuyển 1 đống dạng, phiếu hiện chuyên đề CŨ. Fix mig `202609181342`: sync retroactive + tách `ca_test_cau` ra update riêng trong RPC (không lẫn với 7 bảng text-ref khác chỉ có `ma_dang`). **Áp dụng:** viết RPC đổi mã nào (`fn_*_chuyen_*`, `fn_*_gop_*`) → grep `schema.md` cột `ten_chuyen_de|ten_chu_de|muc_do|ten_dang` để tìm mọi snapshot cần sync, KHÔNG chỉ update PK/FK. Snapshot là "ý đồ giữ lịch sử" ở CHỖ ĐÚNG (đo lường) nhưng "ý đồ giữ lịch sử" ở CHỖ SAI (đổi tên/rename) là bug.
 
