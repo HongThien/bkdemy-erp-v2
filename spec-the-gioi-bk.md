@@ -120,7 +120,7 @@
 
 ## 11. Còn mở (bàn sau — detail)
 
-- **Bộ sticker** (Thùy đang tìm mua) · danh mục icon cuối cùng.
+- **Bộ sticker** (Thùy đang tìm mua) · danh mục icon cuối cùng. **Đơn ChatGPT đã soạn (29/09):** `design/DON-HANG-GAMI-HS.md` Đơn 5 — 4 ảnh toàn cảnh + 41 hình vẽ riêng (gồm 20 icon tương tác vẽ theo style — CTO đề xuất thay cho mua sticker, chờ Thùy chốt).
 - Danh sách loại tin + ngưỡng cụ thể (vd "xong 10 câu" hay "xong 1 bài") · trần tin/em/ngày ở Thế giới · giới hạn tương tác/ngày.
 - Vị trí trên app HS (tab riêng hay ô trên Home) · giao diện (đơn ChatGPT).
 - Lịch build.

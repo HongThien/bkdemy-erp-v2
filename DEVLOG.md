@@ -31227,3 +31227,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 2026-09-29 (5) — Bắn Quà: kiểm đã lên prod + vá focus chế độ Cast
 - Thùy hỏi đã ghép Bắn Quà vào ERP chưa: kiểm code sau khi phiên khác làm 2 chế độ (TV riêng / Cast chung) — BanQuaLop có ở CẢ 2 chế độ; prod game.bkacademy.edu.vn/ban-qua.html = bản mới nhất; bundle ERP bkdemy-erp-v2.vercel.app có fn_ban_qua_bat_dau ⇒ đã lên mạng.
 - Lỗi tìm được khi đọc code: Cast chung = game (iframe) + nút ERP cùng trang ⇒ bấm "Bắt đầu ván" xong focus còn ở nút ⇒ HS bấm Space nạp lực = bấm lại nút (khởi động lại ván). Chứng minh bằng trang giả lập + click/phím thật: trước sửa 1 click + 2 Space = nút chạy 3 lần; sau sửa (blur + focus iframe game) = 1 lần, focus ở IFRAME. Vá `BanQuaLop.tsx` (traFocusGame sau bắt đầu/gửi lại/xin kết quả/chốt). Chưa deploy.
+
+## 2026-09-29 (5) — Đơn ChatGPT "Thế giới BK" (Đơn 5 trong DON-HANG-GAMI-HS.md)
+
+- Thùy: đơn của Thế giới BK phải có icon riêng — "bình thường phải có ảnh chung và design các phần nhỏ riêng". T lúc đầu định mockup bằng
+  emoji ⇒ trái luật style (tính năng mới phải có icon của style).
+- Làm: Đơn 5 — 4 ảnh toàn cảnh (Kênh Thế giới · Tấm thả tương tác · Kênh lớp · dải "đang học cùng em", đủ trạng thái, dọc + iPad) + 41 hình vẽ
+  riêng: icon ô Home, 2 icon kênh, 3 dấu tầng S/A/B, ruy băng + pháo giấy tin S, 👑 Thầy cô khen, đèn "đang học", avatar ẩn danh (mã HS),
+  9 icon loại tin, 20 icon tương tác. Chờ Thùy chốt: 20 icon tương tác VẼ theo style (CTO đề xuất) hay MUA sticker (spec §8 cũ).
+- Mockup trên artifact: dừng (Thùy ngắt) — làm lại khi có ảnh toàn cảnh từ ChatGPT hoặc khi Thùy yêu cầu.

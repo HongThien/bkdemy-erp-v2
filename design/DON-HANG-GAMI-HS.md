@@ -10,6 +10,7 @@
 > | **2** | Huy hiệu: 8 huy hiệu × 5 sao + bản cứng | bộ hình |
 > | **3** | Avatar của Rank: biểu tượng 10 bậc + khung avatar + màn Rank | bộ hình + 1 màn |
 > | 4 | Hồ sơ (profile) học sinh | 1 màn — *gửi sau, dùng hình của Đơn 2 + 3* |
+> | **5** | "Thế giới BK" — mạng xã hội khoe: 4 ảnh toàn cảnh + 41 hình vẽ riêng | 4 màn + bộ hình — *gửi sau Đơn 2 + 3* |
 >
 > **Nguồn logic** (đã chốt + đã build): `spec-thanh-tuu-nhiem-vu.md` §0 · `spec-huy-hieu-build.md`.
 
@@ -279,4 +280,87 @@ Phiên bản kit:  v1
 LUẬT RIÊNG:
   - Tách bạch BẬC RANK / HUY HIỆU / DANH HIỆU (bảng đầu file) — không dùng màu/khung của thứ này cho thứ kia.
   - Hạng thấp chỉ em tự thấy: thẻ TV chỉ hiện bậc + huy hiệu, KHÔNG hiện hạng.
+```
+
+---
+
+## Đơn 5 — "Thế giới BK": mạng xã hội KHOE nội bộ — GỬI SAU Đơn 2 + 3
+
+> Logic: `spec-the-gioi-bk.md` (chốt 28–29/09, CHƯA code ⇒ chưa có màn để chụp — ChatGPT vẽ từ mô tả dưới đây).
+> Cấu trúc đơn đúng khuôn: **ẢNH TOÀN CẢNH trước** (4 màn, Pha B — Thùy duyệt) → **vẽ RIÊNG từng phần nhỏ** (Pha D, mỗi file 1 lượt).
+> ⚠ Mục 20 icon tương tác (TÊN FILE nhóm `tuong-tac/`): spec §8 đang ghi "Thùy tự mua bộ sticker". Vẽ theo style = BK sở hữu, không
+> vướng bản quyền, đổi style là đổi theo ⇒ CTO đề xuất VẼ. **Thùy chốt vẽ hay mua trước khi gửi phần này.**
+
+Đính kèm: `reference_rpg_ipad.png` + hình đã duyệt của Đơn 2 (huy hiệu) + Đơn 3 (biểu tượng bậc + khung avatar) — tin khoe dùng lại chúng.
+
+```
+ĐƠN ĐẶT HÀNG
+App:            hs
+Màn:            the-gioi-bk (4 ảnh toàn cảnh, cùng style Anime RPG — theo PHONG CÁCH CHUNG)
+Mô tả:          "Thế giới BK" = mạng xã hội KHOE nội bộ của học sinh trung tâm BK Academy. HS KHÔNG đăng bài, KHÔNG chat, KHÔNG gõ chữ:
+                tin do HỆ THỐNG tự sinh từ thành tích thật; bạn bè chỉ thả 1 ICON + 1 CÂU chọn sẵn. Cảm giác: "bảng tin chiến công" của
+                một thành phố game nhập vai — ai cũng thấy bạn mình đang cố gắng. CHỈ tin tốt, không bao giờ hiện điểm kém / hạng thấp.
+
+MÀN 1 — KÊNH THẾ GIỚI (mở từ ô "Thế giới BK" ở màn chính). Phần tử ĐỘNG (chữ/khối do code vẽ, không vẽ vào ảnh):
+  - Đầu trang: nút quay lại · tiêu đề "Thế giới BK" · 2 TAB có icon: "Thế giới" (toàn trung tâm) | "Lớp 9A1 · Toán" (kênh lớp).
+  - Dải "đang học": đèn nhỏ phát sáng + "14 bạn BK đang học lúc này".
+  - TIN TẦNG S (cực phẩm) GHIM ĐẦU: thẻ LỚN viền vàng dày + ruy băng vàng trên đầu thẻ (chữ "Cực phẩm" code vẽ đè) + pháo giấy vàng ·
+    avatar trong khung rank · "Nguyễn Minh Khang lên bậc Hero · Toán" · hình BIỂU TƯỢNG BẬC Hero (Đơn 3) to giữa thẻ · "2 giờ trước".
+  - TIN TẦNG A (đáng khoe), thẻ thường: "Mai Anh đạt huy hiệu Athena ★3" (hình huy hiệu Đơn 2) · "Đội Rồng thắng Bắn Quà — buổi 29/09 · 9A1"
+    (icon loại tin game) · "HS0412 trúng trà sữa 🧋 ở Mở Rương" (em chọn ẨN TÊN: avatar chung + mã HS).
+  - DƯỚI MỖI TIN: hàng đếm icon "🔥 12 · 👏 8 · 🐐 5" (icon VẼ theo style, không phải emoji) · 2 câu mới nhất kèm tên người gửi:
+    "Đỉnh nóc, kịch trần — Bình · Xin vía học giỏi — Hà" · "+14 bạn" · nút "Khen" (hoặc "Đã khen 🔥" nếu em đã thả).
+  - "THẦY CÔ KHEN": trên 1 tin có dòng nổi bật riêng: icon 👑 VẼ RIÊNG + "Cô Lan khen" — nổi hơn hẳn icon bạn bè.
+  Trạng thái: ① có tin S ghim + 3 tin A · ② ít tin (chỉ 1 tin A, dải "đang học" chuyển thành "Hôm nay 87 bạn đã luyện 1.240 câu").
+
+MÀN 2 — TẤM THẢ TƯƠNG TÁC (trượt từ dưới lên khi bấm "Khen" trên 1 tin):
+  - Đầu tấm: tóm tắt tin đang khen (1 dòng) · nút đóng.
+  - "Chọn 1 icon": lưới 20 icon (5 × 4), icon đang chọn có vòng sáng vàng.
+  - "Chọn 1 câu": 8–10 câu soạn sẵn HỢP LOẠI TIN (vd tin lên bậc: "Đỉnh nóc, kịch trần, bay phấp phới" · "Idol của em đây rồi" ·
+    "Xin vía học giỏi" · "Thua Gia Cát Lượng đúng cây quạt" · "Thần đồng BK xuất hiện" · "10 điểm không có nhưng" · "Stan cậu luôn rồi" ·
+    "Gooo!"), mỗi câu 1 chip/dòng bấm được, câu đang chọn viền vàng.
+  - Xem trước: "🔥 Đỉnh nóc, kịch trần, bay phấp phới — Em" · nút lớn "Gửi" (vàng cổ, chữ xanh đêm).
+  Trạng thái: ① chưa chọn gì (nút Gửi mờ) · ② đã chọn icon + câu.
+
+MÀN 3 — KÊNH LỚP ("Lớp 9A1 · Toán"):
+  - Như màn 1 nhưng có thêm TIN TẦNG B (nỗ lực) — DÒNG NHỎ, không thẻ lớn, mỗi em gộp 1 dòng/ngày:
+    "Tuấn xong 3 nhiệm vụ hôm nay · chuỗi 3 ngày" · "Linh luyện 40 câu hôm nay" (icon loại tin nhỏ đầu dòng).
+  - 1 tin của CHÍNH EM: có nút "⋯" mở menu "Ẩn tin này" · "Ẩn tương tác đã chọn".
+  - Góc trên phải: công tắc "Hiện: Tên | Mã HS" (em chọn cách hiện mình ở mọi nơi).
+  Trạng thái: ① bình thường · ② menu "⋯" đang mở.
+
+MÀN 4 — "ĐANG HỌC CÙNG EM" (dải nhỏ ĐÈ lên màn làm bài có sẵn — chỉ vẽ phần dải):
+  - Dải mảnh đầu màn làm bài: đèn phát sáng + "14 bạn BK đang học lúc này" + dòng tin chạy chậm "Hà vừa làm xong 10 câu · Khang vừa lên bậc Hero".
+  Trạng thái: ① đông (14 bạn) · ② vắng (thay bằng "Hôm nay 87 bạn đã luyện 1.240 câu" — KHÔNG BAO GIỜ hiện "0 bạn").
+
+Thiết bị:       điện thoại DỌC 430px (ảnh chính) + iPad NGANG 1180×820 cho màn 1 (2 cột tin).
+Phong cách:     theo PHONG CÁCH CHUNG (Anime RPG), cùng họ ảnh gốc + Đơn 2/3. THIẾT KẾ GỐC — không giống feed của Facebook/Instagram/TikTok.
+Giữ nguyên:     KHÔNG ô nhập chữ, KHÔNG nút chat/bình luận/chia sẻ/theo dõi, KHÔNG số lượt xem. Tin chỉ tốt.
+Phiên bản kit:  v1
+
+PHẦN VẼ RIÊNG (Pha D — mỗi file 1 lượt tạo ảnh, PNG nền TRONG SUỐT, cùng họ 13 icon ô trong ảnh gốc; kích thước = cạnh dài):
+  the-gioi/o_the_gioi.png        192  icon Ô "Thế giới BK" ở màn chính (vd quả cầu thế giới pha lê có lâu đài nhỏ, sáng vàng)
+  the-gioi/kenh_the_gioi.png     128  icon tab Thế giới (quả cầu / bản đồ thế giới cổ)
+  the-gioi/kenh_lop.png          128  icon tab Lớp (lâu đài nhỏ / cổng trường cổ)
+  the-gioi/tang_s.png             96  dấu tầng S — viên đá quý VÀNG rực
+  the-gioi/tang_a.png             96  dấu tầng A — viên đá quý XANH LAM
+  the-gioi/tang_b.png             96  dấu tầng B — viên đá quý ĐỒNG
+  the-gioi/ruy_bang_s.png   1024×160  ruy băng vàng cổ vắt ngang đầu thẻ tin S — KHÔNG chữ (code viết "Cực phẩm" đè lên), giữa trống
+  fx/phao_giay.png         1024×1024  pháo giấy vàng + đốm sáng rơi, nền trong suốt, dùng phủ lên thẻ tin S
+  the-gioi/thay_co_khen.png      128  "Thầy cô khen" — vương miện vàng đính đá, sang hơn mọi icon tương tác (chỉ GV/TA thả)
+  the-gioi/dang_hoc.png           96  đèn lồng / ngọn lửa ma thuật nhỏ phát sáng ("đang học")
+  the-gioi/avatar_an_danh.png    256  avatar chung khi em chọn hiện MÃ HS — áo choàng trùm mũ, KHÔNG thấy mặt, nền tròn xanh đêm
+  ICON LOẠI TIN (đầu thẻ/dòng tin, 96): tin/len_bac.png (mũi tên vàng vút lên) · tin/huy_hieu_moi.png (huy chương + tia sáng) ·
+    tin/nhat_buoi.png (cúp nhỏ) · tin/game_buoi.png (cờ đội) · tin/tra_sua.png (ly trà sữa phong cách phép thuật) ·
+    tin/chuoi_ngay.png (ngọn lửa) · tin/nhiem_vu.png (cuộn nhiệm vụ đóng dấu) · tin/xong_bai.png (sách + dấu tích) ·
+    tin/chinh_phuc_dang.png (lá cờ cắm trên đỉnh núi)
+  20 ICON TƯƠNG TÁC (tuong-tac/<mã>.png, 128 — phải ĐỌC RA NGHĨA ở cỡ 28px; giữ nghĩa emoji gốc, vẽ theo style):
+    lua 🔥 · vo_tay 👏 · tram_diem 💯 · cup 🏆 · ten_lua 🚀 · set ⚡ · de_goat 🐐 · co_bap 💪 · nao 🧠 · no_nao 🤯 ·
+    ngau 😎 · chao 🫡 · bai_su 🙇 · kim_cuong 💎 · ngoi_sao 🌟 · an_mung 🥳 · hong_tam 🎯 · co_4_la 🍀 · tim_tay 🫶 · bat_tay 🤝
+    (mặt cười/biểu cảm: vẽ kiểu linh vật tròn dễ thương, KHÔNG mặt người thật; tất cả cùng 1 khung tròn đế đồng nhẹ để đồng bộ)
+
+LUẬT RIÊNG:
+  - Chữ, tên, số, câu meme: code vẽ — KHÔNG vẽ vào ảnh.
+  - Không icon/câu nào đọc thành mỉa (đã loại 💀 🗿 🤡 😂 🤓…). 👑 chỉ dùng cho "Thầy cô khen".
+  - Ảnh toàn cảnh + bảng kiểm kê có cột "Vị trí & cỡ" + đủ file vẽ riêng ở trên (kit §2/§4/§8).
 ```
