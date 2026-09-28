@@ -30597,3 +30597,15 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   cứng — việc trao suy động invariant (đạt 4–5★ trừ đã trao), OPS/GV bấm "Đã trao" · album % hoàn thành + "Sắp đạt" + "N bạn có"/Hiếm
   · bảng kiểu người chơi (Collector/Achiever/Competitor/Explorer/Socializer) · 10 nhóm huy hiệu · EXP chỉ từ 3★ trong trần 5 xu.
   B2: 6 câu logic H1–H6 chờ Thùy. Ngưỡng 4–5★ sẽ ước lượng số bản cứng/tháng bằng mô phỏng trước khi chốt.
+
+## 2026-09-28 (20) — Thành tựu/Huy hiệu: chốt H1–H6 · 3 phương diện · 2 tầng · N–N
+
+- Thùy (liên tiếp trong 1 lượt): OK H1–H6, **GV trao bản cứng**; mỗi hoạt động ghi nhận 3 phương diện **chăm chỉ · thành tích ·
+  tiến bộ** (BTVN làm đủ ≠ BTVN điểm cao); **sao thấp điều kiện đơn, sao cao nhiều điều kiện** (vd Chăm chỉ 5★ = đi học đủ + BTVN
+  đủ + tự luyện + Thử thách đạt số lượng); **thành tựu ↔ huy hiệu là N–N**.
+- **Làm (spec A5.5–A5.7):** ma trận hoạt động × 3 phương diện (ô vô nghĩa để "—", không ép đủ) · luật tiến bộ so với chính em, ở
+  đỉnh thì giữ vững cũng tính · tầng 1 (1–3★) = huy hiệu theo ô ma trận, điều kiện đơn, bản mềm; tầng 2 (4–5★) = 3 huy hiệu lớn
+  Chăm chỉ / Thành tích / Tiến bộ, nhiều điều kiện, bản cứng ⇒ chỉ 6 mẫu bản cứng / môn · mô hình THÀNH TỰU (điều kiện đo được:
+  chỉ số + ngưỡng + kỳ) nối N–N với HUY HIỆU × sao; 1 hàm đánh giá chung dispatch theo loại chỉ số, đổi điều kiện = sửa cấu hình.
+  Còn mở: H7 kỳ xét tầng 2 (đề xuất 4★ trong 1 tháng · 5★ 3 tháng liên tiếp), H8 đạt lại (×2, bản cứng chỉ lần đầu).
+- Memory gami bổ sung luật 3 phương diện.
