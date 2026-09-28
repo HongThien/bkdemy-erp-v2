@@ -6,7 +6,69 @@
 
 ---
 
-## 0. Kết luận nhanh
+## ★ CẬP NHẬT SAU KHI THÙY CHỐT (28/09, vòng 2) — đọc mục này trước; §0–§6 bên dưới là vòng 1
+
+**Thùy chốt:**
+
+| # | Chốt | Hệ quả |
+|---|---|---|
+| **D2** | **Trần Thử thách CỐ ĐỊNH theo môn.** HS học offline, **không được nghỉ** ⇒ không có ca "bỏ lớp bù app" | Kiểu K7 (hay nghỉ), K11 (bỏ lớp) chỉ còn là tham khảo, không dùng để quyết. Trần tháng = ¼ × (ET + BTVN + MT hạng 1 tối đa của môn): **Toán 500 · KHTN 375** |
+| **D3** | Trần ngày = trần tháng ÷ 20: **Toán 25 · KHTN 19** | Thùy nhấn: **Thử thách làm VÔ HẠN lượt, chỉ ĐIỂM có trần** |
+| **D5** | **Mỗi môn riêng hoàn toàn:** điểm, ngưỡng bậc, bảng xếp hạng. Hồ sơ ghi "rank X Toán · rank Y KHTN". Không có gì so chung. App cũng riêng từng môn, chỉ chung cổng vào | **Bỏ** đề xuất chuẩn hoá quỹ điểm giữa các môn. Mỗi môn có bộ cấu hình riêng |
+| **Q-A** | Không cần đổi logic L4. Thử thách vô hạn lượt ⇒ em yếu cứ làm tới khi pass | Giữ **(a)** |
+
+**Mô phỏng lại (S8–S10 trong `scripts/sim-diem-rank.mjs`)** — trần cố định, trần ngày ÷ 20, 60% HS dùng app. Thêm 2 kiểu:
+- **K12:** em yếu cày Thử thách vô hạn, 15 lượt/ngày.
+- **K13:** em trung bình cày 6 lượt/ngày.
+
+| Kiểu | Toán 54 em: tổng · hạng | Toán 68 em: tổng · hạng | KHTN 34 em: tổng · hạng | % Thử thách |
+|---|---|---|---|---|
+| K1 Giỏi toàn diện | 7.210 · **2** | 7.163 · 2 | 5.414 · 2 | 21% |
+| K9 Giỏi, cày app điên | 6.973 · 2 | 6.903 · 3 | 5.277 · 2 | 21–22% |
+| **K13 Trung bình, cày 6 lượt/ngày** | 6.245 · **6** | 6.064 · 8 | 4.813 · 5 | 23–25% |
+| K3 Khá, chăm | 5.992 · 9 | 5.886 · 10 | 4.680 · 6 | 14–15% |
+| **K12 Yếu, cày 15 lượt/ngày** | 5.702 · **12** | 5.609 · 13 | 4.471 · 8 | 23–24% |
+| K2 Giỏi, **không** dùng app | 5.692 · 12 | 5.667 · 13 | 4.267 · 11 | 0% |
+| K5 Yếu, cày 3 lượt/ngày | 4.763 · 30 | 4.643 · 37 | 3.714 · 20 | 7–8% |
+| K4 Trung bình | 4.680 · 32 | 4.523 · 41 | 3.716 · 20 | 3–4% |
+| K6 Yếu, lười | 3.514 · 50 | 3.406 · 63 | 2.946 · 30 | 0% |
+
+**Đọc kết quả:**
+
+1. **Thử thách vô hạn lượt ⇒ cày là leo.**
+   - Em **trung bình** chịu cày 6 lượt/ngày (~60 câu) lên **top 6–8**.
+   - Em **yếu** chịu cày 15 lượt/ngày (~150 câu, khoảng 1,5–2 giờ) lên **ngang em giỏi không dùng app** (hạng ~12).
+   - Đúng tinh thần "cày càng nhiều càng tốt". Trần giữ cho app không vượt quá ~¼ điểm của em.
+2. **Ai chạm trần thì Thử thách chiếm 21–25%.**
+   - Em giỏi chạm trần: ~21%, vì điểm ET + BTVN + MT cao.
+   - Em yếu / trung bình chạm trần: 23–25%, vì các phần kia thấp hơn.
+   - ⇒ "≈20%" đúng ở tầm trung bình. Muốn **đúng 20% với em giỏi nhất** thì giữ nguyên. Muốn **không em nào quá 20%** thì hạ trần xuống ≈ 1/5 thay vì 1/4.
+3. **Em giỏi chạm trần tháng vào khoảng ngày 20**, không phải ngày 11 như vòng 1. Trần ngày đã dàn đều ra cả tháng.
+4. **Không có mâu thuẫn giữa các môn**, vì mỗi môn so riêng. Mức điểm KHTN thấp hơn Toán (trung vị 3.810 so với 4.815) chỉ vì KHTN ít buổi hơn, và không ảnh hưởng gì (D5).
+
+**Ngưỡng bậc theo từng môn (xem trước C4).** Một **công thức chung** (đối xứng §1.6), ra **con số riêng** cho mỗi môn:
+- Ngưỡng = hệ số × **điểm tối đa 1 tháng của môn** (ET + BTVN + MT hạng 1 + trần Thử thách).
+- Toán: 500 + 500 + 1.000 + 500 = **2.500**.
+- KHTN: 300 + 200 + 1.000 + 375 = **1.875**.
+
+| Bậc | Hệ số (mùa 3 tháng) | Toán | KHTN | Toán: tỉ lệ em đạt | KHTN: tỉ lệ em đạt |
+|---|---|---|---|---|---|
+| 2 | 0,4 | 1.000 | 750 | ~100% | ~100% |
+| 3 | 1,0 | 2.500 | 1.875 | ~100% | ~100% |
+| 4 | 1,6 | 4.000 | 3.000 | ~85% | ~90% |
+| 5 | 2,0 | 5.000 | 3.750 | ~40% | ~50% |
+| 6 | 2,4 | 6.000 | 4.500 | ~9% | ~13% |
+| 7 | Ghế: top 3% khối × môn + ≥ bậc 6 | | | 1–2 em | 1 em |
+
+**Còn chờ chốt:**
+- **D1** bộ số §0.
+- **D4** quy hạng MT theo sĩ số dự thi. Vẫn cần, **ngay trong 1 môn**: Toán có khối 6 em (khối 3) đến 68 em (khối 9); KHTN có khối 9 em đến 34 em. Khối nhỏ thì ai cũng hạng cao, dễ lên bậc hơn khối lớn.
+- **D6** thi lại MT.
+- **Mới:** trần tháng Thử thách = **¼** (em giỏi nhất đúng 20%, em khác chạm trần tới 25%) hay **⅕** (không em nào quá 20%)?
+
+---
+
+## 0. Kết luận nhanh (vòng 1)
 
 **Bộ số đề xuất** (thang ×10 cho số to, HS thích):
 

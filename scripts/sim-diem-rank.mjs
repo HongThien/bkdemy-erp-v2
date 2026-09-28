@@ -50,6 +50,9 @@ const KIEU = [
   { id: 'K9', ten: 'Giỏi, cày app điên (8 lượt/ngày)',       skill: .88, coMat: .95, dh: .95, muon: 0,   app: 8 },
   { id: 'K10', ten: 'Chăm nhưng KHÔNG BAO GIỜ thi MT',       skill: .80, coMat: .95, dh: .9,  muon: .05, app: 1, lo_mt: [1, 2, 3] },
   { id: 'K11', ten: 'Giỏi, bỏ lớp (50%) bù bằng app',        skill: .90, coMat: .5,  dh: .5,  muon: 0,   app: 4 },
+  // thêm 28/09 sau khi Thùy chốt "Thử thách vô hạn lượt, chỉ điểm có trần"
+  { id: 'K12', ten: 'Yếu, cày Thử thách vô hạn (15 lượt/ngày)', skill: .55, coMat: .95, dh: .9, muon: .05, app: 15 },
+  { id: 'K13', ten: 'Trung bình, cày Thử thách (6 lượt/ngày)',  skill: .70, coMat: .95, dh: .85, muon: .1, app: 6 },
 ]
 
 // quần thể nền 1 khối (phân bố theo số đo thật)
@@ -66,7 +69,9 @@ function sinhNen(n, apDung) {
   return ds
 }
 
-function chayKhoi({ mon, siSo, pa, tranKieu, apDung, thang = 3 }) {
+function chayKhoi({ mon, siSo, pa, tranKieu, apDung, thang = 3, tranNgayChia = 0 }) {
+  // tranNgayChia > 0 ⇒ trần ngày = trần tháng CỐ ĐỊNH ÷ tranNgayChia (D3); 0 ⇒ dùng TT_TRAN_NGAY
+  const tranNgay = tranNgayChia ? Math.round(tranThang(pa, mon, 'co_dinh') / tranNgayChia) : TT_TRAN_NGAY
   const hs = [...KIEU.map(k => ({ ...k })), ...sinhNen(siSo - KIEU.length, apDung)]
   hs.forEach(h => { h.tong = 0; h.src = { et: 0, btvn: 0, mt: 0, tt: 0 }; h.thang = [] })
   const m = MON[mon]
@@ -91,7 +96,7 @@ function chayKhoi({ mon, siSo, pa, tranKieu, apDung, thang = 3 }) {
       for (let d = 0; d < m.ngay; d++) {
         let ngay = 0; const luot = poisson(h.app)
         for (let l = 0; l < luot; l++) { const dung = binom(10, h.skill); if (dung >= 8) ngay += TT_DIEM[dung] }
-        tt += Math.min(ngay, TT_TRAN_NGAY)
+        tt += Math.min(ngay, tranNgay)
       }
       h.m.tt = Math.min(tt, tran)
       const tongThang = h.m.et + h.m.btvn + h.m.mt + h.m.tt
@@ -147,3 +152,10 @@ inKieu('S4 — PA A MT nặng (750–1500) · trần theo em · 60%', { mon: 'To
 inKieu('S5 — PA C MT nhẹ (250–500) · trần theo em · 60%', { mon: 'Toan', siSo: 54, pa: PA.C_MT_nhe, tranKieu: 'theo_em', apDung: .6 })
 inKieu('S6 — KHTN khối NHỎ 12 HS · PA B · trần theo em · 60%', { mon: 'KHTN', siSo: 12, pa: PA.B_can_bang, tranKieu: 'theo_em', apDung: .6 })
 inKieu('S7 — Toán khối LỚN 68 HS · PA B · trần theo em · 60%', { mon: 'Toan', siSo: 68, pa: PA.B_can_bang, tranKieu: 'theo_em', apDung: .6 })
+
+// ---- sau khi Thùy chốt D2 (trần cố định — HS offline không được nghỉ), D3 (trần ngày), D5 (mỗi môn riêng) ----
+console.log('\n---\n## Sau chốt 28/09: trần CỐ ĐỊNH · trần ngày = trần tháng ÷ 20 · mỗi môn tính riêng')
+console.log('Trần ngày Toán = ' + Math.round(tranThang(PA.B_can_bang, 'Toan', 'co_dinh') / 20) + ' · KHTN = ' + Math.round(tranThang(PA.B_can_bang, 'KHTN', 'co_dinh') / 20))
+inKieu('S8 — TOÁN khối 54 · CHỐT', { mon: 'Toan', siSo: 54, pa: PA.B_can_bang, tranKieu: 'co_dinh', apDung: .6, tranNgayChia: 20 })
+inKieu('S9 — TOÁN khối 68 · CHỐT', { mon: 'Toan', siSo: 68, pa: PA.B_can_bang, tranKieu: 'co_dinh', apDung: .6, tranNgayChia: 20 })
+inKieu('S10 — KHTN khối 34 · CHỐT', { mon: 'KHTN', siSo: 34, pa: PA.B_can_bang, tranKieu: 'co_dinh', apDung: .6, tranNgayChia: 20 })

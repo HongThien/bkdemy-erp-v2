@@ -30350,3 +30350,15 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   riêng tư rank, bỏ P0 bầu chọn).
 - **P1 đề xuất:** Home mới + registry skin + `hs_giao_dien` (+ trigger log) + `ky_thi` + màn chọn skin · 4 skin chỉ-code (Tối giản, Đấu trường,
   Y2K, Soft Hàn). Chờ Thùy gật để build.
+
+## 2026-09-28 (10) — Điểm Rank: Thùy chốt D2/D3/D5 + Thử thách vô hạn lượt · mô phỏng lại
+
+- Thùy: D2 — HS học offline KHÔNG được nghỉ ⇒ không cần trần "theo chính em", dùng trần CỐ ĐỊNH (Toán 500 · KHTN 375/tháng).
+  D5 — mỗi môn riêng hoàn toàn (rank/ngưỡng/BXH/hồ sơ "rank X Toán, rank Y KHTN"; app cũng riêng, chỉ chung cổng) ⇒ bỏ đề xuất
+  chuẩn hoá giữa môn. Thử thách VÔ HẠN lượt, chỉ điểm có trần ⇒ Q-A giữ (a). D3 trần ngày = tháng/20 (Toán 25 · KHTN 19).
+- **Mô phỏng lại S8–S10** (thêm K12 yếu cày 15 lượt/ngày, K13 TB cày 6 lượt/ngày): cày là leo — K13 lên top 6–8, K12 ngang HS
+  giỏi không dùng app (hạng ~12). HS chạm trần: Thử thách 21% (giỏi) → 25% (yếu/TB) ⇒ hỏi Thùy trần ¼ hay ⅕. Ngưỡng bậc theo môn =
+  hệ số × điểm tối đa 1 tháng của môn (Toán 2.500 · KHTN 1.875), hệ số 0,4/1/1,6/2/2,4 cho mùa 3 tháng.
+- Còn chờ: D1 (bộ số), D4 (quy hạng MT theo sĩ số — vẫn cần TRONG 1 môn vì khối 6→68 em), D6 (thi lại MT), trần ¼ hay ⅕.
+- Bài học: t đề xuất D2/D5 từ giả định kiểu app online (HS có thể bỏ lớp; cần so chung giữa môn) — BK offline + môn là trung tâm
+  riêng. Đã ghi memory.

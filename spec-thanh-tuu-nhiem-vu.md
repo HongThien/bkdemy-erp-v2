@@ -77,6 +77,10 @@
   - ⇒ HS kịch trần thì Thử thách ≈ 20%, ba nguồn kia ≈ 80%.
   - Con số cụ thể suy ra từ công thức này khi chốt điểm fix (Phần C).
 - Điểm Rank **chỉ cộng trong mùa**, không trừ.
+- **Mỗi môn RIÊNG hoàn toàn** (Thùy 28/09): Điểm Rank, ngưỡng bậc, ghế đỉnh, bảng xếp hạng đều **theo môn**. Không có gì so chung giữa các môn.
+  - Hồ sơ HS ghi *"rank X Toán · rank Y KHTN"*.
+  - Mỗi môn **một bộ cấu hình** (điểm, trần, ngưỡng) theo **cùng công thức**.
+- **Trần Thử thách CỐ ĐỊNH theo môn** (Thùy 28/09 — HS học offline, không được nghỉ, nên không cần trần "theo chính em").
 
 ### A2. THỬ THÁCH — tính năng tự luyện thứ 3
 
@@ -89,6 +93,7 @@ Chọn môn → vào Thử thách (1 lượt GIỐNG HỆT Tự luyện tổng h
 Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như câu tự luyện thường.
 ```
 
+- **Số lượt Thử thách VÔ HẠN — chỉ ĐIỂM có trần** (Thùy 28/09). Em yếu cứ làm tới khi pass.
 - **Chạm trần** ngày/tháng thì vẫn làm Thử thách được, chỉ không cộng thêm Điểm Rank. App báo rõ "Hôm nay em đã lấy đủ điểm Thử thách".
 - Theo môn: mỗi môn có trần riêng.
 
