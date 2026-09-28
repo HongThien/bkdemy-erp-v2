@@ -30948,3 +30948,10 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
 - **App HS:** `NhiemVuHS.tsx` (chặng · hôm nay + nút Thử thách/Tự luyện/Vòng quay · tuần + 4 rương · tháng) · MayManHS 2 chế độ (5 ô luật mới,
   dòng điều kiện "xong 2 nhiệm vụ" + nút Nhiệm vụ) · link 📜 Nhiệm vụ ở màn Tự luyện · bỏ chữ cứng "≥70%" ở Home.
 - **Còn treo:** ví xu HS chưa hiện dòng EXP nhiệm vụ (fn_hs_vi_xu_cua_toi) · ô Home cho Rank/Nhiệm vụ (C11) · Huy hiệu.
+
+## 2026-09-28 (36) — Thùy chạy SQL Editor 202609281817 (trần 30 xu app) · ghi sổ
+
+- Kiểm DB: fn_gami_exp_xu_thang có exp_tren_lop + nhánh fn_exp_app_thang; xu T9 = 7.416 (khớp trước). Grant anon tường minh đã gỡ, còn quyền qua
+  PUBLIC (có từ trước, owner postgres) — thực tế vô hại vì gami_exp_ledger RLS ⇒ anon ra 0 dòng. Muốn kín hẳn: SQL Editor
+  `revoke execute on function public.fn_gami_exp_xu_thang(text, uuid, text) from public;` (authenticated có grant riêng, không ảnh hưởng app).
+- `migrate --ghi-so` 202609281817 + 202609272045 (file 272045 thành thừa vì 281817 đã gộp exp_tren_lop). Còn treo 13 file của phiên khác.
