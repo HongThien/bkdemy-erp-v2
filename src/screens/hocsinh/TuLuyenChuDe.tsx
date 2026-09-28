@@ -16,7 +16,7 @@ import { layDangChuDe, monCuaHS, type DangChuDe } from '../../lib/tuluyen'
 
 const A = '/bk-ui/hs'
 const NAVY = '#0F1745'
-const THEME = {
+export const THEME = {
   nam: {
     bg: `${A}/bg_home_male.jpg`, decor: `${A}/decor_books.png`, primary: '#1673D8', sec: '#6E7EAA',
     cardTint: 'linear-gradient(160deg,#ffffff,#f6f9ff)', shadow: '0 8px 24px rgba(76,108,170,.10)',
@@ -29,7 +29,7 @@ const THEME = {
   },
 }
 
-function Khung({ gioiTinh, children }: { gioiTinh: 'nam' | 'nu' | null; children: React.ReactNode }) {
+export function Khung({ gioiTinh, children }: { gioiTinh: 'nam' | 'nu' | null; children: React.ReactNode }) {
   const t = THEME[gioiTinh === 'nu' ? 'nu' : 'nam']
   return (
     <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] md:max-w-[820px] lg:max-w-[1180px]" style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
@@ -44,7 +44,7 @@ function Khung({ gioiTinh, children }: { gioiTinh: 'nam' | 'nu' | null; children
     </div>
   )
 }
-function NutBack({ onBack }: { onBack: () => void }) {
+export function NutBack({ onBack }: { onBack: () => void }) {
   return (
     <button onClick={onBack} className="mb-3 flex items-center gap-1 text-[13px] font-medium" style={{ color: NAVY, opacity: .55 }}>
       <span aria-hidden>←</span> Quay lại
@@ -52,7 +52,7 @@ function NutBack({ onBack }: { onBack: () => void }) {
   )
 }
 
-export function ChonLoaiTuLuyen({ onTongHop, onChuDe, onBack, gioiTinh }: { onTongHop: () => void; onChuDe: () => void; onBack: () => void; gioiTinh: 'nam' | 'nu' | null }) {
+export function ChonLoaiTuLuyen({ onTongHop, onChuDe, onThuThach, onRank, onBack, gioiTinh }: { onTongHop: () => void; onChuDe: () => void; onThuThach?: () => void; onRank?: () => void; onBack: () => void; gioiTinh: 'nam' | 'nu' | null }) {
   const t = THEME[gioiTinh === 'nu' ? 'nu' : 'nam']
   return (
     <Khung gioiTinh={gioiTinh}>
@@ -68,6 +68,17 @@ export function ChonLoaiTuLuyen({ onTongHop, onChuDe, onBack, gioiTinh }: { onTo
           <span className="block text-[15px] font-extrabold" style={{ color: NAVY }}>📚 Theo chủ đề</span>
           <span className="mt-1 block text-[12.5px]" style={{ color: t.sec }}>Em tự chọn 1 dạng cụ thể để luyện riêng, xem mình đang yếu dạng nào nhất.</span>
         </button>
+        {onThuThach && (
+          <button onClick={onThuThach} className="rounded-[26px] p-4 text-left transition active:scale-[0.98]" style={{ background: t.cardTint, boxShadow: t.shadow }}>
+            <span className="block text-[15px] font-extrabold" style={{ color: NAVY }}>⚔️ Thử thách</span>
+            <span className="mt-1 block text-[12.5px]" style={{ color: t.sec }}>Như Tổng hợp, nhưng đúng từ 80% trở lên là được cộng Điểm Rank để leo bậc.</span>
+          </button>
+        )}
+        {onRank && (
+          <button onClick={onRank} className="mt-1 text-center text-[13px] font-bold underline-offset-2 hover:underline" style={{ color: t.primary }}>
+            🏆 Xem Rank của em
+          </button>
+        )}
       </div>
     </Khung>
   )

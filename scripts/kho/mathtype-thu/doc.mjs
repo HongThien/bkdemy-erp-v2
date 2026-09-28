@@ -3,6 +3,19 @@ import { createRequire } from 'node:module';
 import fs from 'node:fs';
 import { parseCFB } from './cfb.mjs';
 import { convertEquation } from './mtef.mjs';
+import { docNumbering, taoBoDem } from './so-thu-tu.mjs';
+
+// Định dạng chữ giữ lại (lỗ chặn #2): đề trắc nghiệm đánh dấu đáp án đúng bằng gạch chân / màu / in đậm.
+// Thẻ đóng-mở quanh đoạn chữ, thứ tự cố định u → b → mau → nen; run liền nhau cùng định dạng được gộp.
+const FMT_TAGS = {
+  u: ['[[u]]', '[[/u]]'],
+  b: ['[[b]]', '[[/b]]'],
+  mau: (v) => ['[[mau:' + v + ']]', '[[/mau]]'],
+  nen: (v) => ['[[nen:' + v + ']]', '[[/nen]]'],
+};
+const fmtKey = (f) => (f ? [f.u ? 'u' : '', f.b ? 'b' : '', f.mau ? 'mau:' + f.mau : '', f.nen ? 'nen:' + f.nen : ''].join('|') : '|||');
+const fmtOpen = (f) => (f.u ? FMT_TAGS.u[0] : '') + (f.b ? FMT_TAGS.b[0] : '') + (f.mau ? FMT_TAGS.mau(f.mau)[0] : '') + (f.nen ? FMT_TAGS.nen(f.nen)[0] : '');
+const fmtClose = (f) => (f.nen ? FMT_TAGS.nen(f.nen)[1] : '') + (f.mau ? FMT_TAGS.mau(f.mau)[1] : '') + (f.b ? FMT_TAGS.b[1] : '') + (f.u ? FMT_TAGS.u[1] : '');
 
 const require = createRequire(import.meta.url);
 const JSZip = require('jszip');
@@ -46,6 +59,10 @@ export async function convertDocx(filePath) {
   };
   const base = (p) => (p ? p.split('/').pop() : '?');
 
+  const numFile = zip.file('word/numbering.xml');
+  const numbering = docNumbering(numFile ? await numFile.async('string') : '');
+  const boDem = taoBoDem(numbering);
+
   const eqCache = new Map();
   async function equationFor(rid) {
     const rel = rels[rid];
@@ -73,7 +90,9 @@ export async function convertDocx(filePath) {
   const equations = [];
   const stats = {
     wObjects: 0, oleByProgId: {}, equationsInFallbackSkipped: 0, images: 0, shapesWithoutImage: 0, oMath: 0,
-    symChars: 0, autoNumberedParagraphs: 0, textOutsideParagraph: 0, nestedParagraphs: 0,
+    symChars: 0, autoNumberedParagraphs: 0, autoNumberedUnresolved: 0, numFmtLa: boDem.fmtLa,
+    runsUnderline: 0, runsBold: 0, runsColor: {}, runsHighlight: {}, runsWhiteText: 0, runsHidden: 0,
+    textOutsideParagraph: 0, nestedParagraphs: 0,
     binsInZip: Object.keys(zip.files).filter((n) => /^word\/embeddings\/.*\.bin$/i.test(n)).length,
   };
 
@@ -85,21 +104,39 @@ export async function convertDocx(filePath) {
   let acDepth = 0;
   let acBlock = null;
 
-  const stack = []; // open paragraph buffers
+  const stack = []; // open paragraph buffers: { text, openFmt, nhan }
   let inT = false;
   let fallback = 0;
   let object = null; // { progId, rid }
   let drawing = null; // { blips, paragraphsBefore }
   let pict = 0;
+  let numPr = null; // đang trong <w:numPr> của đoạn: { numId, ilvl }
+  let pPrChange = 0; // <w:pPrChange> (track changes) chứa numPr CŨ — không đếm
+  let run = null; // định dạng của <w:r> đang mở: { u, b, mau, nen, an }
+  let inRPr = false;
   const cur = () => stack[stack.length - 1];
-  const emit = (s) => {
-    const p = cur();
-    if (p) p.text += s;
-    else if (s.trim()) {
-      stats.textOutsideParagraph++;
-      paragraphs.push({ text: s });
-    }
+  // Đóng thẻ định dạng đang mở của đoạn (khi đổi định dạng hoặc kết thúc đoạn).
+  const dongFmt = (p) => {
+    if (p?.openFmt) { p.text += fmtClose(p.openFmt); p.openFmt = null; }
   };
+  const emit = (s, fmt = run) => {
+    const p = cur();
+    if (!p) {
+      if (s.trim()) { stats.textOutsideParagraph++; paragraphs.push({ text: s }); }
+      return;
+    }
+    // Chữ ẩn (w:vanish) không hiện khi in ⇒ không đưa vào văn bản, chỉ đếm.
+    if (fmt?.an) return;
+    const co = fmt && (fmt.u || fmt.b || fmt.mau || fmt.nen) ? fmt : null;
+    // Khoảng trắng thuần theo định dạng đang mở, không mở/đóng thẻ vì nó.
+    if (!s.trim()) { p.text += s; return; }
+    if (fmtKey(co) !== fmtKey(p.openFmt)) {
+      dongFmt(p);
+      if (co) { p.text += fmtOpen(co); p.openFmt = { ...co }; }
+    }
+    p.text += s;
+  };
+  const ketThucDoan = (p) => { dongFmt(p); return p; };
 
   const re = /<!--[\s\S]*?-->|<[^>]+>|[^<]+/g;
   let m;
@@ -165,19 +202,71 @@ export async function convertDocx(filePath) {
       case 'w:p':
         if (closing) {
           const p = stack.pop();
-          if (p) paragraphs.push(p);
+          if (p) paragraphs.push(ketThucDoan(p));
         } else if (selfClose) paragraphs.push({ text: '' });
         else {
           if (stack.length) stats.nestedParagraphs++;
-          stack.push({ text: '' });
+          stack.push({ text: '', openFmt: null, nhan: null });
         }
         break;
+      case 'w:pPrChange':
+        if (!selfClose) pPrChange += closing ? -1 : 1;
+        break;
       case 'w:numPr':
-        if (!closing && cur() && !cur().numbered) {
-          cur().numbered = true;
-          stats.autoNumberedParagraphs++;
-          cur().text = '[[#]] ' + cur().text;
+        // numPr trong w:pPr của đoạn. (numPr trong styles.xml không đi qua đây — 10 file mẫu không dùng;
+        // gặp file dùng thì stats.autoNumberedParagraphs = 0 mà PDF vẫn có "Câu N" ⇒ biết ngay.)
+        if (pPrChange || !cur() || cur().nhan) break;
+        if (!closing && !selfClose) numPr = { numId: null, ilvl: 0 };
+        else if (closing && numPr) {
+          const p = cur();
+          if (numPr.numId && numPr.numId !== '0') {
+            const nh = boDem.nhan(numPr.numId, numPr.ilvl);
+            stats.autoNumberedParagraphs++;
+            if (nh) {
+              p.nhan = nh;
+              if (nh.text) p.text = nh.text + ' ' + p.text;
+            } else {
+              stats.autoNumberedUnresolved++;
+              p.text = '[[#]] ' + p.text;
+            }
+          }
+          numPr = null;
         }
+        break;
+      case 'w:ilvl':
+        if (numPr && !closing) numPr.ilvl = +(attr(tok, 'w:val') ?? 0);
+        break;
+      case 'w:numId':
+        if (numPr && !closing) numPr.numId = attr(tok, 'w:val');
+        break;
+      case 'w:r':
+        if (!closing && !selfClose) run = { u: false, b: false, mau: null, nen: null, an: false };
+        else if (closing) run = null;
+        break;
+      case 'w:rPr':
+        // chỉ rPr NẰM TRONG w:r — rPr trong w:pPr là định dạng dấu đoạn, không phải của chữ
+        if (run && !selfClose) inRPr = !closing;
+        break;
+      case 'w:u':
+        if (inRPr && run && !closing) { const v = attr(tok, 'w:val'); if (v && v !== 'none') { run.u = true; stats.runsUnderline++; } }
+        break;
+      case 'w:b':
+        if (inRPr && run && !closing) { const v = attr(tok, 'w:val'); if (v === null || (v !== '0' && v !== 'false')) { run.b = true; stats.runsBold++; } }
+        break;
+      case 'w:color':
+        if (inRPr && run && !closing) {
+          const v = (attr(tok, 'w:val') ?? '').toUpperCase();
+          if (v && v !== 'AUTO' && v !== '000000') {
+            run.mau = v; stats.runsColor[v] = (stats.runsColor[v] || 0) + 1;
+            if (v === 'FFFFFF') stats.runsWhiteText++; // chữ trắng = giấu đáp án trên nền trắng
+          }
+        }
+        break;
+      case 'w:highlight':
+        if (inRPr && run && !closing) { const v = attr(tok, 'w:val'); if (v && v !== 'none') { run.nen = v; stats.runsHighlight[v] = (stats.runsHighlight[v] || 0) + 1; } }
+        break;
+      case 'w:vanish':
+        if (inRPr && run && !closing) { const v = attr(tok, 'w:val'); if (v === null || (v !== '0' && v !== 'false')) { run.an = true; stats.runsHidden++; } }
         break;
       case 'w:t':
         inT = !closing && !selfClose;
@@ -264,11 +353,16 @@ export async function convertDocx(filePath) {
         break;
     }
   }
-  while (stack.length) paragraphs.push(stack.pop());
+  while (stack.length) paragraphs.push(ketThucDoan(stack.pop()));
 
   const referenced = new Set(equations.filter((e) => e.bin).map((e) => e.bin));
   stats.binsReferencedByEmittedEquations = referenced.size;
   for (const e of fallbackEquations) if (e.bin) referenced.add(e.bin);
   stats.binsReferencedIncludingFallback = referenced.size;
-  return { paragraphs: paragraphs.map((p) => p.text.replace(/[ \t]+$/g, '')), equations, fallbackEquations, stats };
+  return {
+    paragraphs: paragraphs.map((p) => p.text.replace(/[ \t]+$/g, '')),
+    // nhan[i] = nhãn đánh số tự động của đoạn i ({ text, numId, ilvl, fmt, so }) hoặc null
+    nhan: paragraphs.map((p) => p.nhan ?? null),
+    equations, fallbackEquations, stats,
+  };
 }

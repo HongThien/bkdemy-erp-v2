@@ -21,7 +21,7 @@ P0 dựng nền cho dây chuyền, chưa có trạm AI nào. Bốn thứ phải 
 |---|---|---|---|
 | 1 | T0 cửa vào | ✅ chạy trên folder thật | — |
 | 2 | Cấu hình theo máy | ✅ | Máy công ty đặt `KHO_LAM_VIEC` nếu không muốn mặc định |
-| 3 | Đọc thẳng MathType | ✅ làm được (bản thử) | **2 lỗ chặn** §6 |
+| 3 | Đọc thẳng MathType | ✅ **2 lỗ chặn đã vá 28/09 chiều, bài thi 10/10** (§6) | Lỗ không chặn: `w:sym`, gạch en, bảng, hộp chữ |
 | 4 | Cổng ghi | ✅ xét được gói | Nối vào lệnh ghi thật — làm ở P2 |
 | 5 | Migration `kho_sua_log` | ✅ **CEO đã áp 28/09** (SQL Editor) | 3 việc sổ sách §4 |
 | 6 | Đo `claude -p` | 🟡 script xong, **chưa từng chạy** | Chạy ở máy công ty §5 |
@@ -171,22 +171,22 @@ Get-ScheduledTask | Where-Object { ($_.Actions | ForEach-Object { "$($_.Execute)
 
 **Đừng tắt** tác vụ `BKdemy HoiDap Luoi Vot` — đó là bot hỏi–đáp.
 
-## 6. Việc code kế tiếp — vá đường đọc MathType
+## 6. Đường đọc MathType — 2 lỗ chặn ĐÃ VÁ (28/09 chiều, máy công ty)
 
-Bộ đọc đổi được 99,69% công thức trên file chưa từng thấy, nhưng **chưa dùng thật được** vì 2 lỗ:
+Làm đúng §9.6: **dựng bài thi trước** (`scripts/kho/mathtype-thu/bai-thi.mjs`, 10 file K12 có PDF cùng tên làm nhân chứng độc lập:
+3 Từ Tâm · 3 NBV · 3 PNL · 1 đề NBV — danh sách `bai-thi-nguon.txt`), đo mức nền (9/10 file 0 nhãn "Câu N", 0 gạch chân), rồi vá,
+rồi thi lại tới **10/10 đạt**. Chi tiết tiêu chí + kết quả ở `scripts/kho/mathtype-thu/README.md`.
 
-| # | Lỗ | Bằng chứng | Hướng vá |
+| # | Lỗ | Đã vá bằng | Bằng chứng |
 |---|---|---|---|
-| 1 | **Số thứ tự tự động của Word bị mất** | File PNL, Từ Tâm đọc ra **0 dòng "Câu N"**; đoạn đánh số chỉ còn dấu `[[#]]` (28–78 chỗ/file) | Đọc `word/numbering.xml` + `w:numPr` của từng đoạn, dựng lại nhãn theo định dạng và bộ đếm từng cấp |
-| 2 | **Định dạng chữ bị bỏ** | Đề trắc nghiệm đánh dấu đáp án đúng bằng gạch chân / tô màu / in đậm | Giữ `w:u`, `w:color`, `w:highlight`, `w:b` ở mức đoạn chữ; xuất dấu đánh dấu quanh phương án |
+| 1 | Số thứ tự tự động bị mất | `so-thu-tu.mjs`: đọc `numbering.xml`, đếm theo luật Word (num cùng abstractNum đếm nối; startOverride đếm riêng) | 9/9 file có PDF chữ: số "Câu N" đọc = số trong PDF; 6 unit test |
+| 2 | Định dạng chữ bị bỏ | thẻ `[[u]]/[[b]]/[[mau:]]/[[nen:]]` quanh run, gộp run liền nhau | 245/253 câu TN có đáp án rõ; PNL 107/107 gạch chân |
 
-Sau 2 lỗ chặn: `w:sym` → ký tự thật · gạch en `–` trong công thức → dấu trừ (luật chuẩn hoá, ghi vết đã đổi) · bảng · thứ tự hộp chữ · ký tự riêng chưa có trong bảng (`U+F700`, `↷`, tab).
+**Phát hiện ngoài dự kiến — mâu thuẫn trong FILE GỐC:** 4 câu (NBV1 17 · TT2 7 · TT3 19, 20) gạch chân một chữ, "Chọn X" ghi chữ khác;
+soi lời giải thì **gạch chân đúng, "Chọn X" sai**. ⇒ Trạm đọc phải xuất cả hai dấu hiệu, lệch nhau là làn 🔴, không được tin riêng cái nào.
 
-**Xong khi:** chọn 10 file (3 NBV · 3 PNL · 3 Từ Tâm · 1 khác), với mỗi file đếm được số câu, và số câu khớp với số câu nhìn bằng mắt
-trong bản PDF/Word; với file trắc nghiệm, đáp án đọc ra khớp bảng đáp án cuối file nếu có. **Làm theo phương pháp §9.6 của
-`spec-luong-kho.md`: dựng bài thi trước, sửa sau.**
-
-Nhân chứng độc lập có sẵn: một số file Word có **bản PDF cùng tên nằm cạnh** (NBV, PNL) — T0 gom chúng vào cùng cặp.
+Còn lại (không chặn): `w:sym` → ký tự thật · gạch en `–` trong công thức → dấu trừ (luật chuẩn hoá, ghi vết) · bảng · thứ tự hộp chữ ·
+ký tự riêng chưa có trong bảng (`U+F700`, `↷`, tab) · `numPr` khai trong `styles.xml` (10 file mẫu không dùng).
 
 ## 7. Số đo gốc — để biết về sau có tụt không
 

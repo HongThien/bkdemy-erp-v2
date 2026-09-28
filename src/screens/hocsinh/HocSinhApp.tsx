@@ -39,6 +39,8 @@ import BaiTapGiaoHS from './BaiTapGiaoHS'
 import ThongTinHocTap from './ThongTinHocTap'
 import SoTayHS from './SoTayHS'
 import ViXuHS from './ViXuHS'
+import RankHS from './RankHS'
+import { thuThachLuotDo, sinhThuThach, ketQuaThuThach, type KetQuaThuThach } from '../../lib/rank'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
 type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
@@ -253,7 +255,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
-  const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
+  const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'rank' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
   const [chuDeDang, setChuDeDang] = useState<{ ma_dang: string; ten_dang: string; chiCauMoi?: boolean } | null>(null) // dạng đã chọn cho "Tự luyện theo chủ đề" (null = luồng tổng hợp)
   // "Học từ đầu" (Thùy 19/09) — ô CHỈ hiện khi HS có case bổ trợ đuổi ĐANG MỞ (tự suy
   // bo_tro_duoi.trang_thai='can_duoi', KHÔNG lưu cờ riêng — xem htd_co_mo). htdMon lưu
@@ -338,7 +340,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'tu_luyen_chon') return <ChonLoaiTuLuyen gioiTinh={gt}
     onTongHop={() => { setChuDeDang(null); setDirect('tu_luyen') }}
     onChuDe={() => setDirect('tu_luyen_chu_de_ds')}
+    onThuThach={() => setDirect('thu_thach')}
+    onRank={() => setDirect('rank')}
     onBack={() => setDirect(null)} />
+  if (direct === 'thu_thach') return <LamThuThach hocSinhId={hocSinhId} desktop={!!cap1}
+    onXong={() => setDirect('tu_luyen_chon')} onRank={() => setDirect('rank')} />
+  if (direct === 'rank') return <RankHS gioiTinh={gt} onBack={() => setDirect('tu_luyen_chon')} onThuThach={() => setDirect('thu_thach')} />
   if (direct === 'tu_luyen_chu_de_ds') return <ChonDangChuDe gioiTinh={gt}
     onPick={(d) => { setChuDeDang(d); setDirect('tu_luyen') }}
     onBack={() => setDirect('tu_luyen_chon')} />
@@ -899,6 +906,85 @@ function LamTuLuyen({ hocSinhId, onXong, desktop, chuDe, onDoiDang }: { hocSinhI
         </div>
       }
     />
+  )
+}
+
+// ── THỬ THÁCH (spec-thanh-tuu-nhiem-vu.md A2, mig 202609281711): 1 lượt y hệt Tổng hợp, bọc NGOÀI LamBai
+// giống LamTuLuyen. Khác: màn xong hiện kết quả Thử thách (pass ≥ 80%, điểm, trần ngày) — chấm + trần ở DB.
+function LamThuThach({ hocSinhId, onXong, onRank, desktop }: { hocSinhId: string; onXong: () => void; onRank: () => void; desktop?: boolean }) {
+  const [state, setState] = useState<'dang_tai' | 'san_sang' | 'loi'>('dang_tai')
+  const [mon, setMon] = useState<string | null>(null)
+  const [baiTestId, setBaiTestId] = useState<string | null>(null)
+  const [busy, setBusy] = useState(false)
+  const [err, setErr] = useState<string | null>(null)
+  const daGoi = useRef(false) // StrictMode chạy effect 2 lần ⇒ sinh thừa 1 lượt (xem LamTuLuyen)
+
+  useEffect(() => {
+    if (daGoi.current) return; daGoi.current = true
+    ;(async () => {
+      try {
+        const m = await monCuaHS()
+        if (!m) throw new Error('Chưa xác định được môn học của em — báo thầy cô nhé.')
+        setMon(m)
+        setBaiTestId((await thuThachLuotDo(m)) ?? (await sinhThuThach(m)))
+        setState('san_sang')
+      } catch (e: any) { setErr(e?.message ?? String(e)); setState('loi') }
+    })()
+  }, [])
+
+  async function luotMoi() {
+    if (!mon) return
+    setBusy(true); setErr(null)
+    try { setBaiTestId(await sinhThuThach(mon)) } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
+  }
+
+  if (state === 'dang_tai') return <div className={`flex min-h-screen items-center justify-center text-sm text-ph-label-2 ${desktop ? 'bg-[#f4f7fb]' : 'bg-ios'}`}>Đang chuẩn bị Thử thách…</div>
+  if (state === 'loi' || !baiTestId) return (
+    <div className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center bg-ios px-6 text-center md:max-w-3xl">
+      <p className="text-3xl">⚔️</p>
+      <p className="mt-3 text-[15px] font-medium text-ph-label">{err ?? 'Không tạo được lượt Thử thách.'}</p>
+      <button onClick={onXong} className="mt-6 rounded-xl bg-white px-6 py-3 text-sm font-medium text-ph-label-2 shadow-sm">Quay lại</button>
+    </div>
+  )
+  return (
+    <LamBai
+      key={baiTestId}
+      baiTestId={baiTestId}
+      hocSinhId={hocSinhId}
+      onXong={onXong}
+      desktop={desktop}
+      doneCaption="Em vừa xong 1 lượt Thử thách."
+      doneExtra={<KetQuaThuThachBox baiTestId={baiTestId} busy={busy} err={err} onLuotMoi={luotMoi} onRank={onRank} desktop={desktop} />}
+    />
+  )
+}
+
+function KetQuaThuThachBox({ baiTestId, busy, err, onLuotMoi, onRank, desktop }: { baiTestId: string; busy: boolean; err: string | null; onLuotMoi: () => void; onRank: () => void; desktop?: boolean }) {
+  const [kq, setKq] = useState<KetQuaThuThach | null | undefined>(undefined)
+  useEffect(() => { setKq(undefined); ketQuaThuThach(baiTestId).then(setKq).catch(() => setKq(null)) }, [baiTestId])
+  const nut = `w-full rounded-xl font-medium ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`
+  return (
+    <div className={`mt-3 w-full ${desktop ? 'max-w-sm' : ''}`}>
+      {kq === undefined && <p className="mb-2 text-center text-[13px] text-ph-label-2">Đang chấm Thử thách…</p>}
+      {kq === null && <p className="mb-2 text-center text-[13px] text-ph-label-2">Chưa lấy được kết quả — xem lại ở màn Rank nhé.</p>}
+      {kq && (
+        <div className={`mb-3 rounded-2xl p-4 text-center ${kq.pass ? 'bg-ph-green/10' : 'bg-ph-orange/10'}`}>
+          <p className={`text-[16px] font-extrabold ${kq.pass ? 'text-ph-green' : 'text-ph-orange'}`}>
+            {kq.pass ? `Vượt Thử thách! ${kq.so_dung}/${kq.so_cau} câu đúng` : `Chưa vượt — ${kq.so_dung}/${kq.so_cau} câu đúng (cần ${kq.pass_can})`}
+          </p>
+          <p className="mt-1 text-[13px] text-ph-label">
+            {kq.pass
+              ? (kq.diem > 0 ? `+${kq.diem} Điểm Rank` : 'Hôm nay em đã lấy đủ điểm Thử thách — làm tiếp vẫn tính vào luyện tập')
+              : 'Làm lượt mới nhé, không giới hạn số lượt'}
+            {kq.pass && kq.diem > 0 && kq.diem < kq.diem_goc ? ` (chạm trần ngày)` : ''}
+          </p>
+          <p className="mt-1 text-[12px] text-ph-label-2">Hôm nay {kq.hom_nay}/{kq.tran_ngay} · tháng này {kq.thang}/{kq.tran_thang}</p>
+        </div>
+      )}
+      {err && <p className="mb-2 text-[12.5px] text-ph-red">{err}</p>}
+      <button onClick={onLuotMoi} disabled={busy} className={`${nut} bg-brand/10 text-brand disabled:opacity-40`}>{busy ? 'Đang tạo lượt mới…' : 'Thử thách lượt mới'}</button>
+      <button onClick={onRank} className={`${nut} mt-2 bg-ph-orange/10 text-ph-orange`}>🏆 Xem Rank</button>
+    </div>
   )
 }
 

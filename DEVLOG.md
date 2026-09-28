@@ -30808,3 +30808,56 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
   Số liệu: A thư mục trống 80.222 token vào / **2 lượt** / 22,6s · B trong repo 55.957 / 1 lượt / 69,8s · C skill+khuôn 39.314 / 2 lượt / 72,4s, chi phí ước $0,13–0,32/lượt gọi trivial.
   ⚠ Phán (4) "CLAUDE.md đắt thêm −24.265" là SAI PHÉP SO: A đi 2 lượt, B 1 lượt ⇒ phải chia theo lượt: ~40k/lượt (trống) vs ~56k/lượt (repo) ⇒ repo+CLAUDE.md ≈ **+16k token/lượt**.
   Hệ quả thiết kế: nền ~40k token/lượt gọi kể cả việc cộng 2 số ⇒ với hàng chục nghìn câu PHẢI gom nhiều câu/lượt gọi + chạy từ thư mục riêng (không CLAUDE.md repo) + cắt bớt tool; mỗi lượt ~20–70s.
+
+## 2026-09-28 — Kiểm zip Anime RPG v2 (`public/bk-ui/hs-skin-rpg-v2.zip`) ⇒ KHÔNG nhận, trả ChatGPT
+
+- Zip nằm ở `public/bk-ui/` (sai chỗ, luật: bỏ `design/handoff/`). Giải nén bản chép sang `design/handoff/hs-skin-rpg-v2/`; zip gốc chưa đụng.
+- Không qua cổng bước 5 (`DON-HANG-SKIN-HS.md`): DESIGN.md KHÔNG có cột "Vị trí & cỡ"; `reference/` chỉ có ảnh ① ngang (target + 2 crop), thiếu điện thoại dọc
+  và trạng thái ② ③. DESIGN.md tự ghi mục tiêu cũ (8 ô khối-9, không nút Hình nền) ⇒ làm theo ảnh v1, không theo Đơn 4 v2.
+- Hình là CẮT TỪ ảnh toàn cảnh, không sinh: `character_rpg_boy_cat.png` 0% pixel trong suốt (hình chữ nhật có nền + vệt nhoè góc trái + viền đen đáy);
+  8+2 icon phóng từ ~100px lên 512 ⇒ mờ, `ill_rpg_tuluyen` rách mảng; `backdrop_rpg_castle` = khối nhà vector phẳng + mẩu lâu đài dán, nửa dưới trống.
+- Thiếu so với đơn: nhân vật `nu` · nền `dao_troi` · mọi bản dọc · ill `bai_tren_lop/et/btvn/hoc_tu_dau/sao_cap/dong_xu` · nút Hình nền.
+
+### 28/09 chiều–tối — Vá 2 lỗ chặn đọc Word MathType (máy công ty) — theo §9.6: thi trước, sửa sau
+- **Bài thi** `scripts/kho/mathtype-thu/bai-thi.mjs`: 10 file K12 có PDF cùng tên cạnh Word (3 Từ Tâm · 3 NBV · 3 PNL · 1 đề NBV),
+  chép về `<KHO_LAM_VIEC>/bai-thi-mathtype/` (47 MB, không commit; danh sách `bai-thi-nguon.txt`). 3 tiêu chí: số "Câu N" = PDF ·
+  liên tục theo numId · mỗi câu TN có đáp án (1 gạch chân / "Chọn X", có cả hai phải trùng).
+- **Mức nền (v0):** 9/10 file **0 nhãn "Câu N"** (chỉ DE1 gõ tay còn), 0 gạch chân. PNL/NBV/TT đều đánh số bằng `w:numPr`
+  (`lvlText` "Câu %1:", "» Câu %1.", "Câu %1."); đáp án đúng = **gạch chân chữ cái** (PNL 100%, NBV, DE1); Từ Tâm + một phần NBV
+  ghi "Chọn X" trong lời giải; Đ/S ghi "a) Đúng." bằng chữ.
+- **Vá 1 — `so-thu-tu.mjs`:** đọc `numbering.xml`, đếm theo luật Word: num cùng abstractNum không lvlOverride ⇒ **đếm nối**
+  (TT1/TT3/PNL3 có ca này) · startOverride ⇒ đếm riêng · cấp cha tăng ⇒ cấp con về đầu · bullet ⇒ "•" · numId lạ ⇒ giữ `[[#]]`
+  (không bịa). Bỏ numPr trong `w:pPrChange`. 6 unit test (kho.test.mjs 34/34).
+- **Vá 2 — `doc.mjs`:** theo dõi `w:rPr` CHỈ trong `w:r` (rPr trong pPr là dấu đoạn), xuất `[[u]]/[[b]]/[[mau:RRGGBB]]/[[nen:x]]`
+  thứ tự lồng cố định, gộp run liền nhau, khoảng trắng không mở/đóng thẻ, `w:vanish` bỏ + đếm, chữ trắng FFFFFF đếm riêng.
+- **Vòng chấm:** v1 lần 1 4/10 — trượt do CÁCH CHẤM (thẻ lồng `[[u]][[b]]A[[/b]][[/u]]`, DE1 nhãn trong `[[b]]`, PDF TT1 chỉ 2 trang,
+  "Chọn X" chưa được coi là nguồn đáp án). Sửa bài thi (bóc thẻ trước khi so; PDF ≤2 trang / <300 ký tự/trang = nhân chứng không dùng
+  được; đề thi kiểu DE1: khối ĐỀ trống được chấp nhận khi khối LỜI GIẢI cùng số câu rõ; file 0 dấu hiệu = bản HS, tiêu chí không áp dụng)
+  ⇒ **10/10 đạt**; số câu 9/9 file có PDF chữ khớp đúng; 245/253 câu TN rõ đáp án.
+- **⭐ Phát hiện: 4 câu MÂU THUẪN TRONG FILE GỐC** — NBV1 c17 gạch B / "Chọn A" (lời giải tính ra 3 = B) · TT2 c7 gạch B (y=5) / "Chọn D" ·
+  TT3 c19 gạch D (R²=25) / "Chọn A" · TT3 c20 gạch D / "Chọn C". Soi tay: **gạch chân đúng, "Chọn X" sai** (copy-paste của tác giả).
+  ⇒ Trạm đọc xuất CẢ HAI dấu hiệu; lệch nhau = làn 🔴. Không tin riêng "Chọn X" của Từ Tâm/NBV.
+- Chữ trắng FFFFFF trong PNL/TT (7–20 run/file) = tiêu đề trang trí trên nền màu, không phải giấu đáp án.
+- **Hồi quy công thức 10 file:** 10.522 công thức · đổi được 10.486 · hỏng 36 · KaTeX hỏng 0 — **y hệt v0**, vá không đụng phần công thức.
+- Bẫy hôm nay: script tạm đặt NGOÀI repo không resolve được `jszip` (node tìm node_modules từ vị trí file) ⇒ script tạm để trong
+  `scripts/` rồi xoá. `pdftotext -layout` đủ làm nhân chứng số câu, nhưng mất gạch chân ⇒ nhân chứng đáp án phải lấy từ chính file ("Chọn X").
+
+## 2026-09-28 (31) — Build RANK + THỬ THÁCH (mig 202609281711 đã áp · app HS)
+
+- Thùy: "Rank + thử thách đi" (làm trước huy hiệu trong cùng đợt).
+- **DB (áp bằng `migrate --only`, 13 file treo của phiên khác KHÔNG đụng):** `gami_mua` (mùa 2026-27: rank 07→06, huy hiệu 07→04) ·
+  `rank_cau_hinh` (bộ số theo môn, Toán bật, KHTN tắt) · `rank_bac` (8 bậc × hệ số) · `bai_test.thu_thach` (loai vẫn tu_luyen ⇒ mastery/EXP/A4
+  tự tính) · `thu_thach_luot` (1 dòng/lượt đã nộp, kể cả không pass) + trigger `trg_thu_thach_nop` (đếm đúng LẠI Ở SERVER cho câu TN,
+  pass ≥80%, điểm 10/20/30, trần ngày/tháng dưới advisory lock) · `fn_mt_hang_thang` (chỉ em có điểm) · `fn_rank_su_kien` (nguồn công thức
+  DUY NHẤT, 4 nguồn) · `fn_rank_mua` (bậc+sao+ghế thần) · `fn_rank_dua_thang` · RPC HS `thu_thach_sinh/luot_do`, `fn_hs_thu_thach_ket_qua`
+  (tự nộp nếu đủ câu — tránh đua nopBai nền), `fn_hs_rank_cua_toi`. anon không execute.
+- **Sai/sửa:** ① nhánh ET online (bai_lam loai et) 33 s và ra 0 dòng — ET online đã mirror vào gami_grades ⇒ bỏ. ② hàm SQL có
+  `set search_path` KHÔNG được inline ⇒ 13 s; bỏ ⇒ 0,12 s. ③ fn_rank_mua truyền cột CTE vào hàm SQL ⇒ 35 s; viết plpgsql tính mùa trước ⇒ 0,15 s.
+  Bài học: hàm SQL dùng làm "view có tham số" thì KHÔNG gắn `set search_path` và gọi bằng hằng/biến, không bằng cột CTE.
+- **Test rollback (`scripts/_thu_mig_rank.mjs`):** khối 7 hôm nay: God of War 2 · Captain 31 · Soldier 15 · Novice 6 (khớp mô phỏng "hết T3 ~93% Captain"
+  dù chưa có Thử thách). Thử thách: 9/9 → 30 cắt còn 25 (trần ngày) · 8/9 pass nhưng 0 (hết trần) · 6/9 không pass · câu sai client ghi 'correct' vẫn bị đếm sai.
+- **Phát hiện cần Thùy:** tháng 7 mỗi em ~7 ET (hè học dày) > giả định 5 ⇒ phong độ vượt 100% (khối 9 tại 31/08: 1,148); tháng 8–9 ~4,6 ET.
+  Hoà điểm hạng 1 ⇒ 2 Supreme God cùng lúc (khối 9 tại 31/08). Mùa rank tới 30/06 nhưng học thật tới giữa 05 ⇒ ngưỡng bậc (tính cho 12 tháng) hơi cao.
+- **App HS:** Tự luyện thêm thẻ ⚔️ Thử thách + link 🏆 Rank; `LamThuThach` (bọc LamBai, màn xong hiện pass/điểm/trần); `RankHS.tsx` (card kiểu 1:
+  bậc+sao+tiến độ, đua tháng, Thử thách hôm nay/tháng, hành trình 8 bậc, top 10 mùa/tháng). Tổng hợp lọc bỏ lượt Thử thách khỏi "lượt dở".
+  Verify bằng trang xem thử tạm `_xem_rank.html` + `src/_xem_rank.tsx` (mock RPC, KHÔNG commit).

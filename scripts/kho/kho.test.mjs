@@ -247,3 +247,50 @@ test('xetGoi: hình máy vẽ cần đủ 2 lượt, lượt A phải là code',
   g.vet.kiem[3].cach = 'code'; delete g.vet.kiem[3].model
   assert.equal(xetGoi(g).duoc_ghi, true)
 })
+
+// ── so-thu-tu: dựng lại nhãn đánh số tự động của Word ──────────────────────────
+import { docNumbering, taoBoDem, dinhDangSo } from './mathtype-thu/so-thu-tu.mjs'
+
+const NUM_XML = `<w:numbering>
+<w:abstractNum w:abstractNumId="1"><w:lvl w:ilvl="0"><w:start w:val="1"/><w:numFmt w:val="decimal"/><w:lvlText w:val="Câu %1."/></w:lvl>
+  <w:lvl w:ilvl="1"><w:start w:val="1"/><w:numFmt w:val="lowerLetter"/><w:lvlText w:val="%2)"/></w:lvl></w:abstractNum>
+<w:abstractNum w:abstractNumId="2"><w:lvl w:ilvl="0"><w:start w:val="1"/><w:numFmt w:val="bullet"/><w:lvlText w:val="&#xF0B7;"/></w:lvl></w:abstractNum>
+<w:num w:numId="10"><w:abstractNumId w:val="1"/></w:num>
+<w:num w:numId="11"><w:abstractNumId w:val="1"/></w:num>
+<w:num w:numId="12"><w:abstractNumId w:val="1"/><w:lvlOverride w:ilvl="0"><w:startOverride w:val="1"/></w:lvlOverride></w:num>
+<w:num w:numId="20"><w:abstractNumId w:val="2"/></w:num>
+</w:numbering>`
+
+test('so-thu-tu: lvlText "Câu %1." + đếm tăng dần', () => {
+  const d = taoBoDem(docNumbering(NUM_XML))
+  assert.equal(d.nhan('10', 0).text, 'Câu 1.')
+  assert.equal(d.nhan('10', 0).text, 'Câu 2.')
+})
+test('so-thu-tu: hai num CÙNG abstractNum không override ⇒ ĐẾM NỐI (bẫy Word)', () => {
+  const d = taoBoDem(docNumbering(NUM_XML))
+  d.nhan('10', 0); d.nhan('10', 0)
+  assert.equal(d.nhan('11', 0).text, 'Câu 3.')
+})
+test('so-thu-tu: num có startOverride ⇒ đếm RIÊNG, bắt đầu lại', () => {
+  const d = taoBoDem(docNumbering(NUM_XML))
+  d.nhan('10', 0); d.nhan('10', 0)
+  assert.equal(d.nhan('12', 0).text, 'Câu 1.')
+  assert.equal(d.nhan('10', 0).text, 'Câu 3.') // bộ đếm chung không bị đụng
+})
+test('so-thu-tu: cấp con về đầu khi cấp cha tăng', () => {
+  const d = taoBoDem(docNumbering(NUM_XML))
+  d.nhan('10', 0)
+  assert.equal(d.nhan('10', 1).text, 'a)')
+  assert.equal(d.nhan('10', 1).text, 'b)')
+  d.nhan('10', 0)
+  assert.equal(d.nhan('10', 1).text, 'a)')
+})
+test('so-thu-tu: bullet ⇒ "•"; numId lạ ⇒ null (để [[#]] lộ ra, không bịa)', () => {
+  const d = taoBoDem(docNumbering(NUM_XML))
+  assert.equal(d.nhan('20', 0).text, '•')
+  assert.equal(d.nhan('99', 0), null)
+})
+test('so-thu-tu: định dạng số chữ / La Mã kiểu Word', () => {
+  assert.equal(dinhDangSo(1, 'upperLetter'), 'A'); assert.equal(dinhDangSo(27, 'upperLetter'), 'AA')
+  assert.equal(dinhDangSo(4, 'lowerRoman'), 'iv'); assert.equal(dinhDangSo(9, 'decimalZero'), '09')
+})

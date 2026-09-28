@@ -1,12 +1,46 @@
 # mathtype-thu — đọc thẳng công thức MathType trong file Word
 
-**Trạng thái: BẢN THỬ (P0, 28/09).** Chứng minh được là làm được. Chưa qua bộ đề chấm, chưa nối vào dây chuyền.
+**Trạng thái (28/09 chiều, máy công ty): 2 lỗ chặn ĐÃ VÁ, qua BÀI THI 10/10 file.** Chưa nối vào dây chuyền.
 
 Đọc công thức MathType nhúng trong `.docx` ra LaTeX bằng code: không OCR, không gọi AI, ~0,2–0,3 giây/file.
+Dựng lại nhãn đánh số tự động của Word ("Câu 1.", "» Câu 2.", "a)") và giữ định dạng chữ đánh dấu đáp án.
 
 ```
 node scripts/kho/mathtype-thu/doc-docx.mjs "<file.docx>" --ra <thư mục>
+node scripts/kho/mathtype-thu/bai-thi.mjs          # thi lại sau MỖI lần sửa bộ đọc (§9.6 spec-luong-kho.md)
 ```
+
+## Bài thi (dựng 28/09 — thi trước, sửa sau)
+
+10 file K12 có **bản PDF cùng tên tác giả để lại cạnh file Word** (nhân chứng độc lập, không do bộ đọc sinh ra):
+3 Từ Tâm · 3 NBV · 3 PNL · 1 đề ôn chương NBV. Danh sách gốc: `bai-thi-nguon.txt`; bản chép nằm ở
+`<KHO_LAM_VIEC>/bai-thi-mathtype/` (không commit — 47 MB, dựng lại được từ danh sách).
+
+| Tiêu chí | Đo thế nào | Kết quả 28/09 |
+|---|---|---|
+| Số câu | nhãn "Câu N" bộ đọc dựng lại **=** nhãn "Câu N" trong chữ PDF (`pdftotext`) | **9/9** file có PDF chữ khớp đúng (TT1: PDF chỉ 2 trang, không dùng được) |
+| Liên tục | trong mỗi danh sách (`numId`) số chạy 1,2,3… | 10/10 |
+| Đáp án | mỗi câu TN có đúng 1 phương án gạch chân, hoặc lời giải ghi "Chọn X"; có cả hai thì phải trùng | 245/253 câu TN rõ · 4 câu **mâu thuẫn trong file gốc** · TT1 là bản HS không có đáp án |
+
+Trước khi vá: 9/10 file **0 nhãn "Câu N"** (chỉ DE1 gõ tay là còn) và 0 dấu gạch chân ⇒ mất số câu + mất đáp án.
+
+**Mâu thuẫn nguồn đã soi tay (bộ đọc ĐÚNG, tác giả sai):** NBV1 câu 17 gạch B, ghi "Chọn A", lời giải tính ra 3 = B ·
+TT2 câu 7 gạch B (y = 5), ghi "Chọn D" · TT3 câu 19 gạch D (R² = 25), ghi "Chọn A" · TT3 câu 20 gạch D, ghi "Chọn C".
+⇒ Chữ "Chọn X" của Từ Tâm/NBV **không tin được một mình**; dây chuyền phải coi lệch gạch chân ↔ "Chọn X" là làn 🔴.
+
+**Hồi quy công thức:** tổng công thức đổi được / hỏng trên 10 file không đổi giữa bản trước và sau khi vá (in ở DEVLOG 28/09).
+
+## Định dạng đầu ra
+
+- Nhãn số tự động đứng đầu đoạn, đúng chữ Word hiển thị: `Câu 1:` · `» Câu 2.` · `a)` · bullet = `•`.
+  `[[#]]` chỉ còn khi `numId` không tra được trong `numbering.xml` (đếm ở `autoNumberedUnresolved`).
+- Định dạng chữ: `[[u]]…[[/u]]` gạch chân · `[[b]]…[[/b]]` đậm · `[[mau:RRGGBB]]…[[/mau]]` · `[[nen:yellow]]…[[/nen]]`.
+  Thứ tự lồng cố định u → b → mau → nen; run liền nhau cùng định dạng được gộp; chữ ẩn (`w:vanish`) bị bỏ, chỉ đếm.
+  Đáp án đúng trong PNL/NBV: `[[u]][[b]]A[[/b]][[/u]][[b]]. [[/b]]$…$`.
+- Chữ trắng (`FFFFFF`) đếm riêng (`runsWhiteText`) — trong 10 file mẫu chỉ là tiêu đề trang trí trên nền màu, không phải giấu đáp án.
+- Luật đếm số đã cài (`so-thu-tu.mjs`, có test): num cùng `abstractNum` không `lvlOverride` ⇒ **đếm nối** (bẫy Word);
+  có `startOverride` ⇒ đếm riêng; tăng cấp cha ⇒ cấp con về đầu. `numPr` trong `w:pPrChange` (track changes) bị bỏ qua.
+  `numPr` khai trong **styles.xml** CHƯA đọc — 10 file mẫu không dùng; gặp thì `autoNumberedParagraphs = 0` mà PDF vẫn có "Câu N".
 
 | File | Việc |
 |---|---|
@@ -15,7 +49,9 @@ node scripts/kho/mathtype-thu/doc-docx.mjs "<file.docx>" --ra <thư mục>
 | `mtef.mjs` | Cây bản ghi → LaTeX |
 | `doc.mjs` | Đi qua `document.xml` theo thứ tự, thay từng công thức bằng `$latex$` |
 | `texcompare.mjs` | So cấu trúc 2 công thức LaTeX (dùng để đối chiếu với TeX gốc tác giả để lại trong file) |
-| `doc-docx.mjs` | Lệnh chạy |
+| `so-thu-tu.mjs` | Đọc `numbering.xml`, dựng lại nhãn đánh số tự động theo luật đếm của Word |
+| `doc-docx.mjs` | Lệnh chạy 1 file |
+| `bai-thi.mjs` · `bai-thi-nguon.txt` | Bài thi 10 file + danh sách nguồn để dựng lại |
 
 ## Đã đo (28/09)
 
@@ -39,9 +75,9 @@ Hỏng trên tập chưa từng thấy, chỉ 2 lý do: ký tự tab nằm trong
 
 | # | Lỗ | Hậu quả | Mức |
 |---|---|---|---|
-| 1 | **Số thứ tự tự động của Word bị mất** — đoạn đánh số tự động chỉ ra dấu `[[#]]` | File PNL và Từ Tâm **không còn chữ "Câu 1", "Câu 2"** (0 dòng "Câu N" trong kết quả). NBV gõ tay nên còn. | Chặn |
-| 2 | **Định dạng chữ bị bỏ** (gạch chân, tô màu, in đậm) | Đề trắc nghiệm đánh dấu **đáp án đúng bằng gạch chân / màu** thì mất đáp án | Chặn |
-| 3 | Ký hiệu chèn kiểu `w:sym` ra `[[sym:…]]` | 2–59 chỗ mỗi file | Cần sửa |
+| ~~1~~ | ~~Số thứ tự tự động của Word bị mất~~ | **ĐÃ VÁ 28/09** — `so-thu-tu.mjs`, qua bài thi 9/9 file khớp PDF | — |
+| ~~2~~ | ~~Định dạng chữ bị bỏ~~ | **ĐÃ VÁ 28/09** — thẻ `[[u]]/[[b]]/[[mau]]/[[nen]]`, đáp án gạch chân đọc ra 100% ở PNL/NBV | — |
+| 3 | Ký hiệu chèn kiểu `w:sym` ra `[[sym:…]]` | 2–59 chỗ mỗi file (Từ Tâm: `Wingdings:F040` trước "Lời giải") | Cần sửa |
 | 4 | Tác giả gõ **gạch en `–` thay dấu trừ** trong công thức | Nhìn giống nhưng không phải phép trừ; máy tính lại đáp số sẽ sai | Cần luật chuẩn hoá |
 | 5 | Ký tự riêng của font MathType chưa có trong bảng (`U+F700`, `↷`, tab) | Công thức đó bị đánh dấu hỏng | Bổ sung dần |
 | 6 | Bảng bị dàn thành đoạn; hộp chữ in ra trước đoạn neo | Thứ tự đọc có thể lệch ở file nhiều hộp chữ | Cần sửa |

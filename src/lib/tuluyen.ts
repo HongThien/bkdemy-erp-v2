@@ -27,7 +27,7 @@ export async function luotTuLuyenHomNay(mon: string): Promise<LuotHomNay> {
   if (!hocSinhId) return { dangDo: null, tongCau: 0 }
   const homNay = ngayVN()
   const { data: bts, error } = await supabase.from('bai_test').select('id, so_cau')
-    .eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('loai', 'tu_luyen').eq('ngay', homNay)
+    .eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('loai', 'tu_luyen').eq('thu_thach', false).eq('ngay', homNay)
     .order('created_at', { ascending: false }).limit(100)
   if (error) throw error
   const rows = (bts ?? []) as { id: string; so_cau: number }[]

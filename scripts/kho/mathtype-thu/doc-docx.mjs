@@ -22,7 +22,7 @@ const thuMucRa = iRa >= 0 ? args[iRa + 1] : null
 if (!tep) { console.error('Dùng: node scripts/kho/mathtype-thu/doc-docx.mjs "<file.docx>" [--ra <thư mục>]'); process.exit(2) }
 
 const t0 = Date.now()
-const { paragraphs, equations, fallbackEquations, stats } = await convertDocx(tep)
+const { paragraphs, nhan, equations, fallbackEquations, stats } = await convertDocx(tep)
 const dem = { tong: equations.length, doi_duoc: 0, rong: 0, hong: 0, katex_dat: 0, katex_hong: 0 }
 const lyDoHong = {}
 const hong = []
@@ -43,8 +43,13 @@ const tomTat = {
   cong_thuc_trong_van_ban: dem,
   cong_thuc_ban_sao_fallback_khong_dua_vao: fallbackEquations.length,
   ly_do_hong: lyDoHong,
-  // Ba chỗ bản thử CHƯA làm được — người đọc kết quả phải biết:
+  // Đánh số tự động: đã dựng lại nhãn từ numbering.xml; [[#]] chỉ còn khi numId không tra được
+  so_doan_danh_so_tu_dong: nhan.filter(Boolean).length,
+  nhan_cau_dung_lai: nhan.filter((n) => n && /Câu\s*\d+/i.test(n.text)).length,
   so_tu_dong_bi_mat_nhan: (vanBan.match(/\[\[#\]\]/g) || []).length,
+  // Định dạng chữ giữ lại: [[u]] gạch chân · [[b]] đậm · [[mau:RRGGBB]] · [[nen:màu]]
+  doan_co_gach_chan: paragraphs.filter((p) => p.includes('[[u]]')).length,
+  chu_trang_giau: stats.runsWhiteText,
   ky_hieu_chua_doi: (vanBan.match(/\[\[sym:/g) || []).length,
   anh_thuong: (vanBan.match(/\[\[img:/g) || []).length,
   thong_ke_tai_lieu: stats,
