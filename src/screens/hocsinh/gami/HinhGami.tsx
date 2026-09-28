@@ -27,12 +27,12 @@ export function HinhHuyHieu({ hhKey, sao, size = 64, kieu = 'sao', title }: { hh
       style={{
         width: size, height: size,
         background: khoa ? MAU_GAMI.khoa : m.mau,
-        boxShadow: khoa ? 'inset 0 0 0 2px rgba(255,255,255,.5)'
-          : `inset 0 0 0 ${vien}px ${sao >= 4 ? VANG : 'rgba(255,255,255,.75)'}, 0 ${size * 0.05}px ${size * 0.14}px rgba(0,0,0,.25)`,
-        opacity: khoa ? 0.75 : 1,
+        boxShadow: khoa ? 'inset 0 0 0 2px rgba(200,210,230,.35)'
+          : `inset 0 0 0 ${vien}px ${sao >= 4 ? MAU_GAMI.vanhSang : MAU_GAMI.vanh}, 0 ${size * 0.05}px ${size * 0.14}px rgba(0,0,0,.25)`,
+        opacity: khoa ? 0.85 : 1,
       }}>
       {sao >= 5 && <span aria-hidden className="absolute inset-[-8%] rounded-full" style={{ background: `conic-gradient(from 0deg, transparent, ${VANG}55, transparent 30%, ${VANG}55, transparent 60%, ${VANG}55, transparent 90%)`, zIndex: -1 }} />}
-      <span aria-hidden style={{ fontSize: size * 0.46, filter: khoa ? 'grayscale(1) brightness(1.2)' : 'none', lineHeight: 1 }}>{khoa ? '🔒' : m.emoji}</span>
+      <span aria-hidden style={{ fontSize: size * 0.46, filter: khoa ? 'grayscale(1) brightness(.9)' : 'none', lineHeight: 1 }}>{khoa ? '🔒' : m.emoji}</span>
       {!khoa && kieu !== 'nho' && size >= 44 && (
         <span className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-1.5 font-extrabold leading-none"
           style={{ color: MAU_GAMI.chu, bottom: -size * 0.06, fontSize: Math.max(9, size * 0.14), padding: `${size * 0.03}px ${size * 0.07}px`, background: sao >= 4 ? VANG : m.dam, boxShadow: '0 1px 3px rgba(0,0,0,.3)' }}>

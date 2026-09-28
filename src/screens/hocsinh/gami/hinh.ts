@@ -12,6 +12,7 @@
 //   huy-hieu/<key>/sao1..sao5.png · khoa.png · nho_48.png        huy-hieu/an.png
 //   rank/<bac 1..10>/bieu_tuong.png · bieu_tuong_64.png · khung_avatar.png · khung_avatar_96.png
 //   rank/sao.png · rank/hao_quang_than.png · rank/len_bac.png
+//   fx/sao_moi_sang.png (vầng sáng lớp phủ sao mới — Đơn 1)
 //   nhiem-vu/<ma>.png (ma: N1 N2 N3 T1..T4 M1 M2 · chang ngay tuan thang · ruong_dong ruong_mo · vong_quay thu_thach tu_luyen)
 // ============================================================================
 
@@ -46,13 +47,14 @@ export const MAU_HH: Record<string, { mau: string; dam: string; emoji: string }>
   nike: { mau: 'linear-gradient(135deg,#AB47BC,#7B1FA2)', dam: '#7B1FA2', emoji: '🏅' },
 }
 export const mauHH = (key: string) => MAU_HH[key] ?? MAU_HH.nike
-export const MAU_CHUA_DAT = 'linear-gradient(135deg,#B0B7C9,#8E97AD)'
+export const MAU_CHUA_DAT = 'linear-gradient(135deg,#4A5478,#2E3656)' // dải thẻ huy hiệu chưa có sao — xanh đêm xám
 export const VANG = '#C9950F'                     // hoàn hảo / bản cứng / Hiếm
 export const VANG_NEN = 'rgba(233,170,30,0.18)'
 // Màu GAME dùng chung của hình / lớp phủ (cố định mọi style — màu có nghĩa, không theo skin).
 export const MAU_GAMI = {
   chu: '#FFFFFF',                                             // chữ trên dải màu huy hiệu / chương / lớp phủ tối
-  khoa: 'linear-gradient(135deg,#C9CED9,#9AA2B4)',            // huy hiệu chưa đạt
+  khoa: 'linear-gradient(135deg,#3A4670,#232B4D)',            // huy hiệu chưa đạt — bóng xanh đêm (đơn v2 Anime RPG)
+  vanh: '#E9C77B', vanhSang: '#F4D98F',                       // vành vàng cổ / vàng sáng của style RPG
   sao: '#E0B01E',                                             // sao bậc rank + hạng top 3
   exp: '#7CF0B0',                                             // "+100 EXP" trên lớp phủ tối
   nutSang: '#FFFFFF', nutSangChu: '#1B1B2F',                  // nút "Tuyệt!" trên lớp phủ tối
@@ -99,3 +101,4 @@ export const ICON_NV: Record<string, string> = {
   chang: '🎖️', ngay: '☀️', tuan: '📅', thang: '🏔️', ruong_dong: '📦', ruong_mo: '🎁', vong_quay: '🎰', thu_thach: '⚔️', tu_luyen: '📚',
 }
 export const anhNV = (ma: string): string | null => (KIT.nhiem_vu ? `${GOC}/nhiem-vu/${ma}.png` : null)
+export const anhFxSaoMoi = (): string | null => (KIT.nhiem_vu ? `${GOC}/fx/sao_moi_sang.png` : null)

@@ -5,7 +5,7 @@
 // ============================================================================
 import type { Album } from '../../../lib/huyhieu'
 import { HinhHuyHieu, BieuTuongBac, KEYFRAMES } from './HinhGami'
-import { anhRankChung, chuongCua, mauHH, laThan, VANG, MAU_GAMI } from './hinh'
+import { anhRankChung, anhFxSaoMoi, chuongCua, mauHH, laThan, VANG, MAU_GAMI } from './hinh'
 
 function doc<T>(k: string): T | null { try { const s = localStorage.getItem(k); return s ? (JSON.parse(s) as T) : null } catch { return null } }
 function ghi(k: string, v: unknown) { try { localStorage.setItem(k, JSON.stringify(v)) } catch { /* không có storage: bỏ qua */ } }
@@ -42,8 +42,8 @@ export function bacChuaXem(mon: string, bac: number): number | null {
 export function daXemBac(mon: string, bac: number) { ghi(khoaBac(mon), bac) }
 
 // ── Vỏ lớp phủ ───────────────────────────────────────────────────────────────
-function Vo({ nen, children, onDong }: { nen: string; children: React.ReactNode; onDong: () => void }) {
-  const bung = anhRankChung('len_bac')
+function Vo({ nen, fx, children, onDong }: { nen: string; fx: string | null; children: React.ReactNode; onDong: () => void }) {
+  const bung = fx
   return (
     <div role="dialog" aria-modal className="fixed inset-0 z-50 flex items-center justify-center p-6" onClick={onDong}
       style={{ background: 'rgba(8,10,24,.78)', backdropFilter: 'blur(3px)', animation: 'gamiMo .25s ease-out' }}>
@@ -60,7 +60,7 @@ function Vo({ nen, children, onDong }: { nen: string; children: React.ReactNode;
 
 export function ChucMungSao({ s, onDong }: { s: SaoMoi; onDong: () => void }) {
   return (
-    <Vo nen={mauHH(s.key).dam} onDong={onDong}>
+    <Vo nen={mauHH(s.key).dam} fx={anhFxSaoMoi()} onDong={onDong}>
       <div className="relative" style={{ animation: 'gamiBung .6s cubic-bezier(.2,.9,.3,1.3) both' }}>
         <HinhHuyHieu hhKey={s.key} sao={s.sao} size={180} title={s.ten} />
       </div>
@@ -74,7 +74,7 @@ export function ChucMungSao({ s, onDong }: { s: SaoMoi; onDong: () => void }) {
 
 export function ChucMungBac({ bac, ten, onDong }: { bac: number; ten: string; onDong: () => void }) {
   return (
-    <Vo nen={chuongCua(bac).dam} onDong={onDong}>
+    <Vo nen={chuongCua(bac).dam} fx={anhRankChung('len_bac')} onDong={onDong}>
       <div className="relative" style={{ animation: 'gamiBung .7s cubic-bezier(.2,.9,.3,1.3) both' }}>
         <BieuTuongBac bac={bac} size={190} />
       </div>

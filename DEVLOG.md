@@ -31209,3 +31209,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 - 0 chỗ tham chiếu (grep src/*.html/games-site/public): bg_bau_troi.jpg · bg_lau_dai_doc.jpg (thay bằng bg_lau_dai_doc_sang từ ảnh 37) ·
   ill_btvn/ill_lop/ill_luyen/ill_thithu.png (bộ icon v1). Ảnh gốc vẫn trong design/. check:style-hs ✔ sau khi xoá.
+
+## 2026-09-29 (5) — Đơn design gamification viết lại theo style Anime RPG + hợp luật style
+- Merge main (phiên khác vừa chốt "app HS = 1 style RPG" + `check:style-hs`): 4 file mới của t rớt "màu gõ tay" ⇒ gom màu game vào
+  `gami/hinh.ts` (`MAU_GAMI`: chữ trên dải màu, khoá, sao, EXP, nút sáng, hào quang, vành vàng cổ); trang mẫu dùng biến skin. Album/Rank về 0
+  màu gõ tay ⇒ `--ghi-moc` siết mốc (20→0, 13→0). ✔ 23 file.
+- Thùy: "viết lại (đơn đặt hàng) theo hướng phù hợp với style anime cho thống nhất". `design/DON-HANG-GAMI-HS.md` v2: bỏ giọng kit pastel
+  lớp 6–8 (thân trắng, 3D mềm, màu tươi); thêm khối PHONG CÁCH CHUNG — ANIME RPG dán kèm mọi đơn (bảng màu xanh đêm/vàng cổ, thẻ trong mờ viền
+  vàng 1px bo 8px, Philosopher + Be Vietnam Pro, icon kiểu anime game cùng họ icon ô, phải nổi trên nền tối) + đính kèm reference_rpg_ipad.png
+  + link chụp `?xem=gami` cho từng đơn. Huy hiệu = huy chương tròn kim loại vàng cổ + ĐÁ QUÝ màu chủ (ghi mã màu khớp code), khoá = bóng
+  xanh đêm (không xám nhạt). Mỗi đơn có mục TÊN FILE khớp cây file của `hinh.ts`. Thêm `fx/sao_moi_sang.png` (Đơn 1) vào sổ hình.
+- Hình tạm trong code chỉnh theo đơn: vành vàng cổ, khoá + dải "chưa đạt" xanh đêm. Soi 375×812 album trống + chọn khoe.
