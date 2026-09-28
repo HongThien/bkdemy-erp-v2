@@ -37,7 +37,8 @@
 - **Không bao giờ vắng:** lúc ít người hiện số tổng "Hôm nay 87 bạn đã luyện 1.240 câu", không hiện "0 bạn".
 
 ### 3.2 Kênh khoe
-- **🌏 Thế giới BK** (toàn trung tâm, gộp mọi môn) + **🏫 Kênh lớp** (mỗi lớp em học — lớp gắn môn, đúng CLAUDE.md §1.6).
+- **🌏 Thế giới BK** (toàn trung tâm, gộp mọi môn) + **🤝 Bạn bè** (MỚI 29/09 — xem §6b) + **🏫 Kênh lớp** (mỗi lớp em học — lớp gắn môn, đúng CLAUDE.md §1.6).
+- Mockup bấm được (29/09): https://claude.ai/artifact/QNDbroHiEMNPctHjS5dWTb
 - Bấm tên ⇒ **hồ sơ khoe** của bạn đó (`spec-thanh-tuu-nhiem-vu.md` §0.7b: khung avatar theo rank, 3 huy hiệu ghim, danh hiệu).
 
 ## 4. Tin nào lên kênh — 3 tầng
@@ -70,6 +71,18 @@
   Chế độ mã: avatar chung, bấm vẫn xem hồ sơ khoe (rank/huy hiệu) nhưng **không lộ tên + lớp**.
 - **Chủ tin tự quản:** ẩn từng **tương tác** trên tin mình · ẩn từng **tin** của mình. Admin gỡ được mọi tin.
 - **Phụ huynh KHÔNG xem** kênh (riêng tư của HS).
+- **Tên LUÔN kèm lớp** (Thùy 29/09: "tên học sinh phải kèm lớp người khác mới nhìn được") — trên tin, lời khen, danh sách bạn, gợi ý kết bạn.
+  Chế độ mã HS: ẩn cả tên lẫn lớp.
+
+## 6b. Bạn bè & kết bạn (Thùy 29/09 — "bạn nó là người ảnh hưởng lớn nhất đến nó")
+
+- **Tab 🤝 Bạn bè** trong Thế giới BK: bạn đang học lúc này (chấm xanh) · lời mời kết bạn (Đồng ý / Để sau) · tin khoe của bạn · **cả tin nỗ lực
+  tầng B của bạn** (bình thường chỉ ở kênh lớp — với bạn thì thấy hết, vì bạn bè kéo nhau học). Ở tab Thế giới, tin của bạn có nhãn "bạn".
+- **Kết bạn 2 chiều:** gửi lời mời → người kia đồng ý mới thành bạn. Chỉ học sinh BK. Tìm bằng tên / mã HS / lớp; gợi ý = cùng lớp · bạn chung.
+- Dải "đang học cùng em" (§3.1) ưu tiên bạn bè: "14 bạn BK đang học · 3 bạn của em"; tin chạy lấy bạn bè trước.
+- Vẫn KHÔNG chat, KHÔNG nhắn tin — kết bạn chỉ để thấy nhau cố gắng + khen nhau.
+- **Dữ liệu (đề xuất CTO, chưa chốt):** lời mời = dòng thật khi em bấm gửi (người gửi · người nhận · lúc gửi); đồng ý / từ chối / huỷ kết bạn =
+  ghi trạng thái + TRIGGER log (CLAUDE §4). Quan hệ bạn là dữ liệu KHÔNG-học-tập ⇒ không nhãn môn. Lọc "tin của bạn" ở hàm Postgres (§2.0).
 
 ## 7. Thông báo đẩy — bộ máy kéo HS quay lại
 
@@ -119,6 +132,10 @@
 - Sau ra mắt: đo lại bằng `scripts/do-gan-bo-app.mjs`, so 3 chỉ số §2 (chính: **≥3 ngày/tuần**, nền 7,1%).
 
 ## 11. Còn mở (bàn sau — detail)
+
+- **Bạn bè (29/09):** giới hạn số bạn (đề xuất 50) · có nút huỷ kết bạn + CHẶN (đề xuất có, im lặng) · em để chế độ Mã HS thì bạn đã kết bạn
+  thấy tên thật (đề xuất) hay chỉ mã · thông báo đẩy khi có lời mời / bạn lên bậc · Đơn 5 ChatGPT phải thêm màn tab Bạn bè + tấm Kết bạn
+  + icon tab/lời mời (sửa đơn SAU khi chốt mockup).
 
 - **Bộ sticker** (Thùy đang tìm mua) · danh mục icon cuối cùng. **Đơn ChatGPT đã soạn (29/09):** `design/DON-HANG-GAMI-HS.md` Đơn 5 — 4 ảnh toàn cảnh + 41 hình vẽ riêng (gồm 20 icon tương tác vẽ theo style — CTO đề xuất thay cho mua sticker, chờ Thùy chốt).
 - Danh sách loại tin + ngưỡng cụ thể (vd "xong 10 câu" hay "xong 1 bài") · trần tin/em/ngày ở Thế giới · giới hạn tương tác/ngày.

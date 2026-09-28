@@ -31256,3 +31256,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Luật chia mới (`chiaKichBan`):** 3 kịch bản ngẫu nhiên — nổ 1 món (45%) · hai món to (25%) · chia đều (30%), xáo vị trí. Giả lập 20k rương:
   món to nhất ở quà 1/2/3 = 36/33/31% · NÚI VÀNG mỗi vị trí 10% · tương quan quà 1↔tổng 0,23 · đoán lãi/lỗ sau 2 món trúng 67%.
   Tổng vẫn do DB rút, không đổi phân phối EXP. Bản lớp chia theo bội 10. Sửa luật `luat-choi-game.md` + `luat-choi.html`.
+
+## 2026-09-29 (6) — Mockup Thế giới BK (bấm được) + Thùy thêm: tên kèm lớp · tab Bạn bè + kết bạn
+
+- Thùy: "cứ làm mockup đi đã, chốt xong rồi mới để ChatGPT design" ⇒ Đơn 5 chờ; mockup https://claude.ai/artifact/QNDbroHiEMNPctHjS5dWTb (style RPG,
+  hình thật cúp/rương/sao/nền Lâu đài; icon chưa vẽ = emoji tạm): kênh Thế giới/Lớp, tin S/A/B, thả 1 icon + 1 câu (gửi cập nhật tin, khen lại để đổi),
+  👑 Thầy cô khen, Tên|Mã HS, ⋯ ẩn tin/tương tác, dải "đang học cùng em" (đông/vắng), thông báo 20h, bảng câu cần chốt.
+- Thùy góp ý v1: ① tên phải kèm lớp mới biết là ai ⇒ chip lớp cạnh MỌI tên · ② phải có tab Bạn bè + kết bạn ("bạn là người ảnh hưởng lớn nhất") ⇒
+  v2: 3 tab Thế giới · Bạn bè · Lớp; tab Bạn bè = bạn đang học, lời mời (Đồng ý/Để sau), tin khoe + tin nỗ lực của bạn; + Kết bạn (tìm tên/mã/lớp,
+  gợi ý cùng lớp/bạn chung, 2 chiều). Spec §3.2/§6/§6b/§11 cập nhật; câu mở: giới hạn số bạn, huỷ/chặn, chế độ mã với bạn, push lời mời.
