@@ -101,7 +101,7 @@ try {
   if (tong === 0 && tongPool > 0) {
     const nap = spawnSync('node', ['scripts/auto-nap-hang-doi.mjs', '--n', '5'], { cwd: root, encoding: 'utf8' })
     log(`auto-nap-hang-doi: ${nap.stdout?.trim()}${nap.stderr ? ' | lỗi: ' + nap.stderr.trim() : ''}`)
-    napN = Number((nap.stdout || '').match(/Đã nạp (d+)/)?.[1] ?? 0)
+    napN = Number((nap.stdout || '').match(/Đã nạp (\d+)/)?.[1] ?? 0)
   }
   const coGiai = tong > 0 || napN > 0
   if (!coGiai && tongClone === 0) {

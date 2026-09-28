@@ -30362,3 +30362,20 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Còn chờ: D1 (bộ số), D4 (quy hạng MT theo sĩ số — vẫn cần TRONG 1 môn vì khối 6→68 em), D6 (thi lại MT), trần ¼ hay ⅕.
 - Bài học: t đề xuất D2/D5 từ giả định kiểu app online (HS có thể bỏ lớp; cần so chung giữa môn) — BK offline + môn là trung tâm
   riêng. Đã ghi memory.
+
+## 2026-09-28 (11) — Sửa regex `napN` trong `auto-giai-scheduler.mjs` (thiếu `\` ⇒ luôn = 0)
+
+- **Sai:** `scripts/auto-giai-scheduler.mjs` đọc số bài auto-nạp bằng `/Đã nạp (d+)/` — thiếu dấu `\` nên `(d+)` khớp CHỮ "d",
+  không khớp chữ số ⇒ `match` luôn `null` ⇒ `napN` luôn = 0. Hệ quả: hàng đợi ưu tiên rỗng (`tong === 0`) mà auto-nạp vừa nạp
+  được N bài thì `coGiai` vẫn `false` ⇒ lượt đó không gọi `claude -p` giải các bài vừa nạp (bài nằm treo tới lượt sau, lúc đó
+  `tong > 0` mới được giải); nếu `tongClone === 0` còn ghi log sai "auto-nạp 0 bài".
+- **Đối chiếu nguồn:** `scripts/auto-nap-hang-doi.mjs` dòng 70 in đúng
+  `Đã nạp ${nap}/${pool.rows.length} bài từ pool tổng vào hàng đợi…` — sau "Đã nạp " là chữ số liền, rồi `/`. Hai nhánh thoát
+  sớm ("Còn N yêu cầu ưu tiên…", "Pool tổng cũng rỗng…") không có chuỗi "Đã nạp" ⇒ `napN` = 0 là đúng. Cả 2 file đều NFC.
+- **Sửa:** `(d+)` → `(\d+)`. Đúng 1 ký tự, không đụng gì khác.
+- **Verify (node, regex lấy từ file scheduler thật + chuỗi dựng từ template thật của auto-nap, không gõ lại tay):**
+  `5/5`→5 · `3/5`→3 · `0/5`→0 · `12/20`→12 · 2 nhánh thoát sớm→0 · stdout rỗng→0. Regex cũ cho 0 ở MỌI ca. `node --check` qua.
+- **Lưu ý:** luồng này đang NGỪNG (công tắc `AUTO_GIAI_BAT`, quyết định 28/09) nên sửa không đổi hành vi đang chạy — chỉ để
+  nếu bật lại có chủ đích thì không mang theo lỗi. Chưa chạy thật end-to-end (cần DB + `claude -p`).
+- **Bài học:** con số bóc từ stdout bằng regex mà sai thì hỏng ÂM THẦM (ra 0, không lỗi) — và log dòng ngay trên vẫn in đúng
+  "Đã nạp 5/5" nên nhìn log không thấy gì lạ. Bóc số từ text ⇒ phải có 1 phép thử trên chuỗi thật.
