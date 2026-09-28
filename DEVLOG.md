@@ -30393,3 +30393,13 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - **Phát hiện:** ngưỡng bậc theo điểm cuối mùa 3 tháng ⇒ hết T1 99% HS cùng bậc 2, hết T2 86% cùng bậc 3 — 2 tháng không có gì
   để đua. Chạy PA mùa 1 tháng (hệ số 0,4/0,56/0,68/0,76/0,84 × điểm tối đa tháng) ⇒ phân bố 14/45/22/11/6/1% ngay trong tháng.
   Đề xuất C4: mùa = 1 tháng (cùng nhịp MT/giải tháng/chốt xu). Chờ Thùy.
+
+## 2026-09-28 (10) — Xếp Chữ v2: BXH từng câu + chỉ tính LẦN ĐẦU + giao diện game
+- Thùy: leaderboard cho **từng câu** (nút xem trong lúc chơi, top 10); **mỗi người góp mặt 1 lần = lần đầu tiên**; làm giao diện đẹp hơn.
+- Luật lần đầu áp cho CẢ BXH câu lẫn BXH màn (chơi lại = đã biết đáp án). BXH màn ghi dần sau mỗi câu của lượt đầu ⇒ bỏ giữa chừng
+  vẫn là lần đầu (chặn "chơi thử rồi chơi thật"). BXH câu chỉ xếp người giải đúng, người sai vẫn bị tính là đã chơi. Phá đảo nhanh nhất
+  suy từ BXH màn (không lưu riêng). localStorage `bk-xep-chu-v3`. Trong lúc chơi có nhãn "⭐ Lần đầu · tính BXH" / "Luyện tập".
+- Giao diện: style game (Fredoka, nền tím-hồng, nút nổi khối, ô chữ kem, thẻ kiểu 1 header màu + thân trắng, ảnh Fluent 3D có sẵn
+  trong `assets/scene/obj`: cú mèo, mầm cây/tên lửa/kim cương cho 3 mức, vương miện BXH, bóng đèn = lượt Check). Không sci-fi (memory).
+- Verify (375×812): 5 lượt / 3 người — lần 2 của Minh là luyện tập, BXH giữ lần đầu; Huy thoát sau 4 câu ⇒ lượt sau 4 câu đó
+  là luyện tập, câu chưa làm vẫn tính; hộp BXH câu/màn, thẻ kết quả, trang tổng kết hiện đúng.
