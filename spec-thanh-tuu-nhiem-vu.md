@@ -195,7 +195,10 @@ Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như c�
 >
 > **C9:** theme = hành trình "người thường → thần", tên tiếng Anh.
 >
-> **C7 · C10 (28/09):** đề xuất nhiệm vụ + ngân sách xu ở `de-xuat-nhiem-vu.md`. Chờ chốt 3 điểm logic (N-L1..3) + bộ số (N-D1..3).
+> **C7 · C10 (28/09):** đề xuất nhiệm vụ + vòng quay + ngân sách xu ở `de-xuat-nhiem-vu.md` (vòng 2).
+> - ✅ Chốt: **trần xu app 30 / HS / tháng MỖI MÔN**.
+> - ✅ **Phạm vi triển khai: tạm thời chỉ TOÁN.** Thiết kế vẫn đối xứng; môn khác bật sau bằng cờ cấu hình theo môn.
+> - Chờ chốt: B-L3..7, chia 10 / 15 / 5, bảng thưởng vòng quay.
 >
 > Số đo DB: BK có **1 cơ sở** ⇒ không cần tầng cơ sở (A4).
 

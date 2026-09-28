@@ -30518,3 +30518,10 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   chia vòng quay 10 · nhiệm vụ 15 · thành tựu 5; vòng quay đổi xu thật + bảng mới 20/30/50/100/200 EXP (40/35/18/6/1%, EV ~36);
   lượt quay = xong ≥2 nhiệm vụ ngày (thay "tự luyện ≥70%"); chặng 30 cấp × 30 EXP + cấp 30 200 EXP + rương 100 EXP = 15 xu/môn;
   đua tháng / đua lớp không trả xu app. Ước lượng: cày đều chạm trần 30, chăm vừa ~13, không app ~3. Chờ Thùy chốt B-L1..7.
+
+## 2026-09-28 (16) — Chốt: trần xu app 30 MỖI MÔN · tạm chỉ triển khai Toán
+
+- Thùy: "30 xu mỗi môn, tạm thời chỉ Toán thôi". Sửa `de-xuat-nhiem-vu.md`: B-L2 chặn theo từng môn (min(30, ceil(EXP app môn/100)));
+  B-L4 vòng quay theo môn (≥2 nhiệm vụ ngày của môn đó → 1 lượt môn đó; giai đoạn đầu chỉ vòng Toán; khi mở môn 2 thì unique
+  `may_man_hs_luot (hs, ngay)` → `(hs, ngay, mon)` bằng migration mới). Spec: phạm vi triển khai Toán trước, thiết kế vẫn đối xứng,
+  bật môn bằng cờ cấu hình. Còn chờ: B-L3..7, chia 10/15/5, bảng thưởng vòng quay.

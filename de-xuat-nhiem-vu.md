@@ -26,10 +26,10 @@
 
 | # | Điểm logic | Đề xuất |
 |---|---|---|
-| **B-L1** | "30 xu" tính thế nào | **30 xu / HS / tháng, TỔNG mọi môn, mọi hoạt động trên app.** Ví xu là của chung, nên trần cũng chung |
-| **B-L2** | Cách chặn trần | Cuối tháng (hàm chốt xu ở DB): **xu từ app = min(30, ceil(tổng EXP app / 100))**. EXP vẫn ghi đủ theo từng môn (§1.6), chỉ phần **đổi ra xu** bị chặn. Xu từ học trên lớp **không tính** vào trần này |
+| **B-L1** | "30 xu" tính thế nào | ✅ **Thùy chốt: 30 xu / HS / tháng MỖI MÔN** (mọi hoạt động trên app của môn đó). **Tạm thời chỉ triển khai TOÁN**; môn khác bật sau, cùng khuôn (cờ bật/tắt theo môn trong bảng cấu hình) |
+| **B-L2** | Cách chặn trần | Cuối tháng (hàm chốt xu ở DB), **theo từng môn**: **xu app môn X = min(30, ceil(EXP app môn X / 100))**. EXP vẫn ghi đủ. Chỉ phần **đổi ra xu** bị chặn. Xu từ học trên lớp **không tính** vào trần này |
 | **B-L3** | Vòng quay may mắn | **Gộp vào ngân sách app và đổi ra xu thật** (hiện chưa đổi — lỗ hổng trên). Hạ mức thưởng cho vừa phần 10 xu (§2.1) |
-| **B-L4** | Điều kiện quay | **Vòng quay = phần thưởng hằng ngày của nhiệm vụ:** hôm nào xong **≥ 2 nhiệm vụ ngày** (bất kỳ môn) thì được **1 lượt quay**. Tối đa 1 lượt/ngày, 1 vòng chung cho mọi môn. Thay cho điều kiện cũ "tự luyện ≥ 70%" (nay đã nằm trong nhiệm vụ N1 / N2) |
+| **B-L4** | Điều kiện quay | **Vòng quay = phần thưởng hằng ngày của nhiệm vụ:** hôm nào xong **≥ 2 nhiệm vụ ngày của môn đó** thì được **1 lượt quay của môn đó**. Tối đa 1 lượt/ngày/môn. Vòng quay **theo môn** vì ngân sách theo môn (B-L1); giai đoạn đầu chỉ có vòng Toán. Thay cho điều kiện cũ "tự luyện ≥ 70%" (nay đã nằm trong nhiệm vụ N1 / N2). *Kỹ thuật:* `may_man_hs_luot` đã có cột `mon`; khi mở môn thứ 2 thì đổi unique `(hs, ngay)` → `(hs, ngay, mon)` bằng migration mới |
 | **B-L5** | Nhiệm vụ lẻ | Chỉ cho **Điểm Chặng**. Thưởng nằm ở **cấp chặng + rương tuần** (kiểu battle pass) ⇒ tính trước được chính xác |
 | **B-L6** | Bỏ thẻ ×2 Điểm Rank | Vì nhiệm vụ không được cộng rank (L2) |
 | **B-L7** | Bảng đua tháng · đua lớp | **Không trả xu app.** Vinh danh TV + gộp **giải thưởng tháng đang có**. Đua lớp thưởng tập thể (vd thêm lượt game buổi) ⇒ nằm ngoài trần 30 |
@@ -96,7 +96,7 @@ Cuối tuần: đủ 12 nhiệm vụ → rương tuần · Cuối tháng: cấp 
 | **Chăm vừa** (~3 ngày/tuần) | ~12 lượt → 4 | cấp ~18 + 1–2 rương → 7 | ~2 | **~13** | ~25 | **~38** |
 | **Không dùng app** | 0 | cấp ~8 → 2 | ~1 | **~3** | ~20–25 | **~25** |
 
-HS học 2 môn: nhiệm vụ 2 bảng nên đầy nhanh hơn, nhưng **vẫn chặn ở 30 xu tổng**.
+**Mỗi môn một trần 30 riêng** (B-L1). Giai đoạn đầu chỉ Toán.
 
 ---
 
@@ -116,7 +116,7 @@ HS học 2 môn: nhiệm vụ 2 bảng nên đầy nhanh hơn, nhưng **vẫn ch
 
 | # | Câu | Đề xuất |
 |---|---|---|
-| B-L1 · B-L2 | 30 xu / HS / tháng, tổng mọi môn, chặn ở hàm chốt | Có |
+| B-L1 · B-L2 | ✅ 30 xu / HS / tháng **mỗi môn**, chặn ở hàm chốt · **tạm chỉ Toán** | Đã chốt 28/09 |
 | B-L3 | Vòng quay đổi ra xu thật, nằm trong trần 30 | Có |
 | B-L4 | Lượt quay = xong ≥ 2 nhiệm vụ ngày (thay "tự luyện ≥ 70%") | Có |
 | B-L5 · B-L6 · B-L7 | Nhiệm vụ lẻ chỉ cho Điểm Chặng · bỏ thẻ ×2 rank · đua tháng / đua lớp không trả xu app | Có |
