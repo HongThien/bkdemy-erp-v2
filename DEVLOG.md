@@ -31159,3 +31159,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 ## 2026-09-29 (2) — Thế giới BK: nháp danh mục icon + câu meme
 - Thùy: "m soạn trước, lớp 8 trở lên". Soạn `design/THE-GIOI-BK-danh-muc-tuong-tac.md`: 20 icon (👑 dành GV) + 30 câu chia 4 nhóm theo loại tin; loại các icon/câu teen dùng 2 nghĩa (💀 🗿 🤓, "ảo thật đấy", "con nhà người ta"…). Chờ Thùy lọc.
+
+## 2026-09-29 (3) — Thế giới BK: thêm 15 câu trend 2025–26
+- Thùy: 30 câu ok, cần trendy hơn. Không đọc thẳng Threads/TikTok được (đăng nhập) ⇒ đọc bài tổng hợp (Kenh14, The Influencer nửa đầu 2026, TGDĐ, Thơ Fleur); thêm B5 (12 ✅ + 3 ⚠), loại flex/cap/sus/rút wifi còn 5G/nó ok/khen ngoại hình.

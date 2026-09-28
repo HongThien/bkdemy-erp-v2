@@ -84,6 +84,34 @@
 | 29 | Trà sữa đâu, khao đi! 🧋 | trúng 🧋 — vui, không ác ý | ✅ |
 | 30 | Số hưởng quá trời | ⚠ có thể bị đọc thành "chỉ ăn may" (hạ thành tích) — chỉ cho tin may mắn (🧋, rương), không cho tin học tập | ⚠ |
 
+### B5. Trend 2025–2026 (bổ sung 29/09 — Thùy: "cần trendy hơn, xem Threads/TikTok")
+> Nguồn: bài tổng hợp từ lóng lấy từ Threads/TikTok — Kenh14 (từ lóng 2025 · từ vựng Threads/TikTok 2026), The Influencer #SocialSlang nửa đầu 2026,
+> Thế Giới Di Động, Thơ Fleur (CTO không đọc thẳng được Threads/TikTok — cần đăng nhập). Chỉ giữ câu mang nghĩa KHEN.
+
+| # | Câu (trên app) | Gốc trend / nghĩa | Hợp tin | Dùng |
+|---|---|---|---|---|
+| 31 | Thua Gia Cát Lượng đúng cây quạt 🪭 | 2025 — khen cực thông minh | S/A học tập | ✅ |
+| 32 | Cổ điển, tôn trọng 🫡 | 2026 (cộng đồng streamer) — cách quen mà hiệu quả | B nỗ lực · chuỗi ngày | ✅ |
+| 33 | 10 điểm không có nhưng | hoàn hảo tuyệt đối | mọi tin | ✅ |
+| 34 | Tuyệt đối điện ảnh 🎬 | 2025 — khoảnh khắc đẹp, ấn tượng | game buổi · bắn trúng · Nhất buổi | ✅ |
+| 35 | Bốc trúng sít rịt | 2025 — trúng mánh bất ngờ | 🧋 · rương · may mắn | ✅ |
+| 36 | 8386 phát tài phát lộc 🍀 | may mắn | 🧋 · rương | ✅ |
+| 37 | Vuýp quá trời | 2025 — "VIP", ngưỡng mộ kiểu hài | mọi tin | ✅ |
+| 38 | Kiwi kiwi, xịn xò | ngon, xịn | mọi tin | ✅ |
+| 39 | Gooo! 🚀 | cổ vũ mạnh | mọi tin | ✅ |
+| 40 | Đỉnh thật sự, no cap | "không nói xạo" — khẳng định khen | mọi tin | ✅ |
+| 41 | Stan cậu luôn rồi | trở thành fan | S/A | ✅ |
+| 42 | Mãi mận mãi keo 🤝 | gắn bó bền chặt | đội thắng · chuỗi ngày | ✅ |
+| 43 | Hoàn thành nhiệm vụ hệ thống ✅ | 2026 — trend "nhiệm vụ hệ thống"; chơi chữ với Nhiệm vụ của app | tin nhiệm vụ | ⚠ trend gốc hơi trêu chọc, nhưng trong ngữ cảnh "xong nhiệm vụ" thì là khen |
+| 44 | Về kể không ai tin | chuyện khó tin | S | ⚠ trung tính — có thể đọc thành "không tin nổi (là em làm được)" |
+| 45 | Built different | "khác người" | S/A | ⚠ bài nguồn ghi rõ dùng được cả khen lẫn mỉa |
+
+**Trend đã xét và LOẠI:** "Flex" (mỉa khoe khoang) · "Cap"/"Toàn cap" (nói xạo) · "Sus" · "Toang" · "Rút wifi vẫn còn 5G" (mỉa mâu thuẫn) ·
+"Nó ok" (mỉa) · "Đi làm công ty không em xin cho?" (châm rảnh rỗi) · "Khá niche" · "Cạn phước" · "Lốp trưởng" · các câu khen ngoại hình
+("Đẹp giống như sao", "Cơm nước gì chưa người đẹp") — kênh là khoe HỌC TẬP, không khen ngoại hình.
+
+> ⚠ Trend Gen Z sống ~3–6 tháng. Danh mục ở DB nên admin ẩn/thêm mỗi quý; nên có 1 bạn HS lớp 10–11 "cố vấn trend" góp câu mới (người trong cuộc bắt trend chuẩn hơn bài báo).
+
 ### ❌ Đã xét và loại (ghi để Thùy biết)
 - "Ảo thật đấy", "Tới công chuyện", "Ét ô ét", "Báo quá", "Hơi bị ghê" — teen dùng **hai nghĩa**, thả vào tin người khác dễ thành mỉa.
 - "Học bá thì khác", "Con nhà người ta" — đọc được thành **châm chọc** "mọt sách" / so sánh gây áp lực.
