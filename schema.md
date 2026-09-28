@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-255 bảng · 19 view · 0 enum · 90 trigger · 536 function
+257 bảng · 19 view · 0 enum · 90 trigger · 537 function
 
 ## _app_secrets
 
@@ -461,6 +461,18 @@
 | giai | smallint |  |  |  |  |
 | exp | integer |  |  |  |  |
 | nguoi | uuid | Y | jwt_uid() |  |  |
+| at | timestamp with time zone |  | now() |  |  |
+
+## buoi_game_qua
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| luot_id | uuid |  |  | PK FK→buoi_game_luot.id |  |
+| buoi_hoc_id | uuid |  |  | FK→buoi_hoc.id |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| qua | text |  |  |  |  |
+| trao_at | timestamp with time zone | Y |  |  |  |
+| trao_boi | uuid | Y |  |  |  |
 | at | timestamp with time zone |  | now() |  |  |
 
 ## buoi_giai
@@ -1114,6 +1126,14 @@
 | diem_thi_lai_co_ban | numeric | Y |  |  |  |
 | diem_thi_lai_nang_cao | numeric | Y |  |  |  |
 | full_thi_lai | boolean |  | false |  |  |
+
+## game_lop_qua_dac_biet
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| qua | text |  |  | PK |  |
+| giai | smallint |  |  | PK |  |
+| ti_le_pt | numeric |  |  |  |  |
 
 ## game_lop_thuong
 
@@ -5420,6 +5440,7 @@ SELECT bl.hoc_sinh_id,
 - `fn_btyeu_trang_thai_ca(p_so_ngay_ht integer DEFAULT 60)` → jsonb
 - `fn_btyeu_viec_cua_toi()` → jsonb
 - `fn_buoi_game_choi(p_buoi uuid, p_hoc_sinh uuid, p_game text)` → jsonb
+- `fn_buoi_game_qua_trao(p_buoi uuid, p_hoc_sinh uuid)` → jsonb
 - `fn_buoi_giai_chot(p_buoi uuid, p_nhat uuid, p_nhi uuid[])` → jsonb
 - `fn_buoi_giai_mo_lai(p_buoi uuid)` → jsonb
 - `fn_buoi_giai_tinh_hinh(p_buoi uuid)` → jsonb
@@ -5796,8 +5817,8 @@ SELECT bl.hoc_sinh_id,
 - `trg_han_nop_ngoai_le_log()` → trigger
 - `trg_htd_test_nop()` → trigger
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
@@ -5845,6 +5866,8 @@ SELECT bl.hoc_sinh_id,
 | dai_cau_menh_de | dai_cau_menh_de_thu_tu_check | `CHECK ((thu_tu >= 1))` |
 | dai_cum_tien_de | dai_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | dai_dang_tien_de | dai_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
+| game_lop_qua_dac_biet | game_lop_qua_dac_biet_giai_check | `CHECK ((giai = ANY (ARRAY[1, 2, 3])))` |
+| game_lop_qua_dac_biet | game_lop_qua_dac_biet_ti_le_pt_check | `CHECK (((ti_le_pt >= (0)::numeric) AND (ti_le_pt <= (100)::numeric)))` |
 | game_lop_thuong | game_lop_thuong_exp_check | `CHECK ((exp > 0))` |
 | game_lop_thuong | game_lop_thuong_giai_check | `CHECK ((giai = ANY (ARRAY[1, 2, 3])))` |
 | game_lop_thuong | game_lop_thuong_ti_le_check | `CHECK ((ti_le > 0))` |

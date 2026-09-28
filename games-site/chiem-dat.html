@@ -3825,6 +3825,15 @@ const ASSETS={"hex":{"barrel":"Z2xURgIAAADQfwAATAUAAEpTT057ImFzc2V0Ijp7ImdlbmVyY
 const $=id=>document.getElementById(id);
 const useTimer=/loop=timer/.test(location.search);const nextFrame=useTimer?(f=>setTimeout(()=>f(performance.now()),16)):(f=>requestAnimationFrame(f));
 const KEY='bk-chiemdat-v1';
+// ===== BẢN BUỔI HỌC (spec-game-buoi-hoc §5c, Thùy 28/09) — mở bằng ?che_do=lop&buoi=<id> từ màn Buổi học (ERP).
+// 3 loại ô = 3 mức giải: Giải 3 → ô ★ · Nhì → ô ★★ · Nhất → ô ★★★. EXP y hệt Mở Rương (DB rút, fn_buoi_game_choi), TV CHỈ DIỄN:
+// GV bấm "Mở cho bạn này" ⇒ ERP gửi {ten,giai,exp,min,max,qua} qua kênh bk-lop:<buổi> ⇒ TV sáng các ô đúng cấp, HS chọn Ô BẤT KÌ
+// (không cần sát đất đã mở, không độc đắc), GV bấm ô ⇒ mở ra đúng EXP đã rút. Quà đặc biệt 🧋 trà sữa: DB rút, TV chỉ báo.
+// Bản SỰ KIỆN (không có ?che_do) giữ nguyên 100%.
+const QS=new URLSearchParams(location.search),LOP=QS.get('che_do')==='lop',BUOI=QS.get('buoi')||'';
+const DV=LOP?'EXP':'xu';
+const SB_URL='https://osrvycilwshkzhljuxef.supabase.co',SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4';
+const GIAI_LOP={1:'🥇 Giải Nhất',2:'🥈 Giải Nhì',3:'🎖 Giải 3'},LV_GIAI={1:3,2:2,3:1},BADGE_LOP={1:'G.3',2:'NHÌ',3:'NHẤT'};
 const DEF={sound:true,
   prices:[5,10,15],jackpot:50,jackP:0.5,n2:4,n3:10,target:1.10,band:0.10,budget:300,warm:10,ctrl:true,pv:4,
   // Thùy 26/09: "hoặc THUA ĐẬM hoặc THẮNG ĐẬM" — thua 20%–50% giá, thắng 150%–300% (tối đa GẤP BA), không có mức giữa/hoà
@@ -3836,6 +3845,8 @@ let C=JSON.parse(JSON.stringify(DEF));try{Object.assign(C,JSON.parse(localStorag
 function saveC(){localStorage.setItem(KEY,JSON.stringify(C))}
 // máy đã lưu cài đặt cũ (75 xu · 70–200% · 6 mức) ⇒ chuyển sang bộ số mới 1 lần
 if(C.pv!==4){C.jackpot=DEF.jackpot;C.jackP=DEF.jackP;C.prof=JSON.parse(JSON.stringify(DEF.prof));C.pv=4;try{saveC()}catch(e){}}
+// bản lớp: bản đồ 18 ô ★ (Giải 3 đông nhất) · 15 ô ★★ · 3 ô ★★★, không độc đắc — không lưu vào cài đặt sự kiện
+if(LOP){C.n2=0;C.n3=3;C.jackP=0}
 
 // ---------- kinh tế (hàm thuần) ----------
 const K=[0.2,0.35,0.5,1.5,2.0,3.0],BASE=0.2;
@@ -3870,7 +3881,8 @@ function genMap(seed,n2,n3){const rnd=mulberry32(seed*2654435761+17);const lvl=T
   shuffle(TILES.filter(t=>t.ring===3).map(t=>t.i),rnd).slice(0,n3).forEach(i=>lvl[i]=3);
   const sc=TILES.map((t,i)=>Math.floor(rnd()*1000));const rot=TILES.map(()=>Math.floor(rnd()*6));
   return {seed,lvl,sc,rot}}
-function frontier(open){const f=new Set();for(let i=0;i<NT;i++){if(open[i])continue;if(NB[i].some(j=>open[j]))f.add(i)}return f}
+function frontier(open){const f=new Set();if(LOP){if(!choLop||!map3)return f;const lv=LV_GIAI[choLop.giai]||1;for(let i=0;i<NT;i++){if(!open[i]&&map3.lvl[i]===lv)f.add(i)}return f}
+  for(let i=0;i<NT;i++){if(open[i])continue;if(NB[i].some(j=>open[j]))f.add(i)}return f}
 
 // ---------- âm thanh / confetti ----------
 let AC=null;function beep(f,d,t,v,sl){if(!C.sound)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.type=t||'triangle';o.frequency.setValueAtTime(f,AC.currentTime);if(sl)o.frequency.exponentialRampToValueAtTime(sl,AC.currentTime+d);g.gain.setValueAtTime(v||.08,AC.currentTime);g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+d);o.connect(g);g.connect(AC.destination);o.start();o.stop(AC.currentTime+d)}catch(e){}}
@@ -3908,8 +3920,9 @@ const badgeCache={};
 function badgeTex(lvl,price){const k=lvl+':'+price;if(badgeCache[k])return badgeCache[k];return badgeCache[k]=textCanvas(256,256,(g,w,h)=>{const col=LVCOL[lvl];
   g.shadowColor='rgba(0,0,0,.6)';g.shadowBlur=14;g.fillStyle='rgba(11,18,48,.88)';g.beginPath();g.arc(128,140,86,0,Math.PI*2);g.fill();g.shadowBlur=0;
   g.lineWidth=12;g.strokeStyle=col;g.beginPath();g.arc(128,140,80,0,Math.PI*2);g.stroke();
-  g.fillStyle=col;g.textAlign='center';g.textBaseline='middle';g.font='900 86px Segoe UI, Arial, sans-serif';g.fillText(String(price),128,132);
-  g.font='800 28px Segoe UI, Arial, sans-serif';g.fillStyle='#f3f4ff';g.fillText('xu',128,190);
+  g.fillStyle=col;g.textAlign='center';g.textBaseline='middle';
+  if(LOP){g.font='900 58px Segoe UI, Arial, sans-serif';g.fillText(BADGE_LOP[lvl],128,140)}
+  else{g.font='900 86px Segoe UI, Arial, sans-serif';g.fillText(String(price),128,132);g.font='800 28px Segoe UI, Arial, sans-serif';g.fillStyle='#f3f4ff';g.fillText('xu',128,190)}
   g.font='900 44px Segoe UI, Arial, sans-serif';g.fillStyle=col;g.fillText(STARS(lvl),128,34)})}
 function labelSprite(text,col,sub){const tex=textCanvas(512,200,(g,w,h)=>{g.textAlign='center';g.textBaseline='middle';g.font='900 110px Segoe UI, Arial, sans-serif';g.lineWidth=14;g.strokeStyle='rgba(8,13,36,.9)';g.strokeText(text,w/2,sub?80:100);g.fillStyle=col;g.fillText(text,w/2,sub?80:100);
   if(sub){g.font='800 44px Segoe UI, Arial, sans-serif';g.lineWidth=10;g.strokeText(sub,w/2,165);g.fillStyle='#f3f4ff';g.fillText(sub,w/2,165)}});
@@ -4072,8 +4085,9 @@ function tileAt(e){const r=$('gl').getBoundingClientRect();mouse.set(((e.clientX
 
 // ================= TV (nguồn sự thật) =================
 const TV={map:null,open:[],hist:[],thu:0,chi:0,maps:0,jacks:0};
-function tvSave(){try{localStorage.setItem('bk-chiemdat-tv',JSON.stringify({map:TV.map,open:TV.open,hist:TV.hist.slice(-3000),thu:TV.thu,chi:TV.chi,maps:TV.maps,jacks:TV.jacks}))}catch(e){}}
-function tvLoad(){try{const s=JSON.parse(localStorage.getItem('bk-chiemdat-tv')||'null');if(s&&s.map){Object.assign(TV,s);return true}}catch(e){}return false}
+const TV_KEY=LOP?'bk-chiemdat-lop:'+BUOI:'bk-chiemdat-tv';// bản lớp: mỗi buổi 1 bản đồ riêng, F5 không mất
+function tvSave(){try{localStorage.setItem(TV_KEY,JSON.stringify({map:TV.map,open:TV.open,hist:TV.hist.slice(-3000),thu:TV.thu,chi:TV.chi,maps:TV.maps,jacks:TV.jacks}))}catch(e){}}
+function tvLoad(){try{const s=JSON.parse(localStorage.getItem(TV_KEY)||'null');if(s&&s.map){Object.assign(TV,s);return true}}catch(e){}return false}
 function tvNewMap(){const seed=1000+cryptoInt(9000);const m=genMap(seed,C.n2,C.n3);const l3=[];m.lvl.forEach((l,i)=>{if(l===3)l3.push(i)});
   TV.map={id:Date.now(),seed,n2:C.n2,n3:C.n3,lvl:m.lvl,sc:m.sc,rot:m.rot,jack:(cryptoInt(10000)<jp(C)*10000&&l3.length)?l3[cryptoInt(l3.length)]:-1,done:false,at:Date.now()};
   TV.open=Array(NT).fill(null);TV.open[CENTER]={base:true};TV.maps++;tvSave();
@@ -4098,18 +4112,19 @@ function tvHandleOpen(ti,name){if(revealing)return;const r=tvDoOpen(ti,colorSlot
   const info=r.info;revealing='anim';refreshFrontier(TV.open);tvFeed(ti,info);tvUI();tvReveal(ti,info);return r}
 async function tvReveal(ti,info){selTile=-1;tv3.forEach(o=>{if(o.badge)o.badge.material.opacity=.12});await camToTile(ti);animateOpen(ti,info,true);await wait(info.jack?2600:2000);
   const t=info.jack?4:info.tier,sc=sceneOf(info.lvl,TV.map.sc[ti],info.jack).n;
-  $('rcScene').textContent=(info.name?info.name+' khám phá':'Khám phá')+' được: '+sc;$('rcVal').textContent='+'+info.val+' xu';$('rcTier').className='tier t'+t;$('rcTier').textContent=TIERS[t];
-  $('rcNote').textContent=info.jack?'🎉 TRÚNG Ô ĐỘC ĐẮC '+info.val+' XU!':'Mở ô '+STARS(info.lvl)+' giá '+info.price+' xu';$('resCard').classList.add('show');if(info.jack)confetti(350);revealing='card'}
-function tvCardDone(){if(revealing!=='card')return;$('resCard').classList.remove('show');revealing=false;refreshFrontier(TV.open);camTo(camHomePos.clone(),camHomeTgt.clone(),800);tvUI();if(TV.map.done)setTimeout(tvMapDone,700)}
+  $('rcScene').textContent=(info.name?info.name+' khám phá':'Khám phá')+' được: '+sc;$('rcVal').textContent='+'+info.val+' '+DV;$('rcTier').className='tier t'+t;$('rcTier').textContent=LOP?TIERS_LOP[t]:TIERS[t];
+  $('rcNote').textContent=LOP?GIAI_LOP[info.giai]+' · EXP đã vào tài khoản 🎉':info.jack?'🎉 TRÚNG Ô ĐỘC ĐẮC '+info.val+' XU!':'Mở ô '+STARS(info.lvl)+' giá '+info.price+' xu';$('resCard').classList.add('show');if(info.jack)confetti(350);revealing='card';
+  if(LOP&&info.qua==='tra_sua'){fanfare();confetti(500);shake=.35;showOv('🧋 TRÚNG TRÀ SỮA!',(info.name?info.name+' · ':'')+GIAI_LOP[info.giai],'Quà đặc biệt SIÊU HIẾM — nhận trà sữa từ thầy cô nhé! (+'+info.val+' EXP vẫn vào tài khoản)',[['Tuyệt vời ▶',()=>$('bigOv').classList.remove('show'),true]])}}
+function tvCardDone(){if(revealing!=='card')return;$('resCard').classList.remove('show');revealing=false;if(LOP)choLop=null;refreshFrontier(TV.open);camTo(camHomePos.clone(),camHomeTgt.clone(),800);tvUI();if(TV.map.done)setTimeout(tvMapDone,700);else if(LOP)setTimeout(bomHang,300)}
 function tvFeed(ti,info){const f=$('feed');if(f.firstChild&&f.firstChild.classList.contains('muted'))f.innerHTML='';const d=document.createElement('div');
-  const sc=sceneOf(info.lvl,TV.map.sc[ti],info.jack).n;d.innerHTML=`${info.name?`<span class="sw" style="background:${PCOL[info.slot]}"></span> ${esc(info.name)} · `:''}${STARS(info.lvl)} ${esc(sc)} · <b>+${info.val} xu</b>${info.jack?' 💰':''}`;f.prepend(d);while(f.children.length>7)f.lastChild.remove()}
+  const sc=sceneOf(info.lvl,TV.map.sc[ti],info.jack).n;d.innerHTML=`${info.name?`<span class="sw" style="background:${PCOL[info.slot]}"></span> ${esc(info.name)} · `:''}${STARS(info.lvl)} ${esc(sc)} · <b>+${info.val} ${DV}</b>${info.jack?' 💰':''}${info.qua?' 🧋':''}`;f.prepend(d);while(f.children.length>7)f.lastChild.remove()}
 function tvUI(){if(!TV.map)return;const n=openCount();$('prog').innerHTML=`${n} <small>/ ${NT-1} ô</small>`;$('progBar').style.width=(n/(NT-1)*100)+'%';
   const cnt=levelCounts(TV.map);$('mapInfo').textContent=`Bản đồ #${TV.maps} · mã ${TV.map.seed} · ${cnt[1]} ô ★ · ${cnt[2]} ô ★★ · ${cnt[3]} ô ★★★`;
   const jf=TV.open.find(o=>o&&o.jack);jackPill(jf);
   const by={};TV.open.forEach((o,i)=>{if(!o||o.base)return;const k=o.name||'Khách';by[k]=by[k]||{n:0,xu:0,s:o.slot};by[k].n++;by[k].xu+=o.val});
   const rows=Object.keys(by).sort((a,b)=>by[b].n-by[a].n||by[b].xu-by[a].xu).slice(0,10);
-  $('terr').innerHTML=rows.length&&rows.some(k=>k!=='Khách')?rows.map(k=>`<span class="sw" style="background:${PCOL[by[k].s]}"></span><span>${esc(k)}</span><b>${by[k].n} ô</b><span class="muted">${by[k].xu} xu</span>`).join(''):`<span></span><span class="muted">${openCount()?'Đã mở '+openCount()+' ô':'Chưa có ai mở đất.'}</span><span></span><span></span>`;
-  $('hintBar').innerHTML=TV.map.done?'Đã chiếm hết bản đồ · bấm <b>🗺 Bản đồ mới</b>':revealing?'':'Bấm vào ô <b>sáng viền màu</b> để mở đất · chỉ mở được ô sát đất đã khám phá'}
+  $('terr').innerHTML=rows.length&&rows.some(k=>k!=='Khách')?rows.map(k=>`<span class="sw" style="background:${PCOL[by[k].s]}"></span><span>${esc(k)}</span><b>${by[k].n} ô</b><span class="muted">${by[k].xu} ${DV}</span>`).join(''):`<span></span><span class="muted">${openCount()?'Đã mở '+openCount()+' ô':'Chưa có ai mở đất.'}</span><span></span><span></span>`;
+  $('hintBar').innerHTML=LOP?(revealing?'':choLop?`<b>${esc(choLop.ten||'Bạn')}</b> (${GIAI_LOP[choLop.giai]}) — chọn <b>1 ô ${STARS(LV_GIAI[choLop.giai])} bất kì</b>${frontierSet.size?'':' · <span style="color:#ff5c5c">HẾT ô cấp này — bấm 🗺 Bản đồ mới</span>'}`:TV.map.done?'Đã chiếm hết bản đồ · bấm <b>🗺 Bản đồ mới</b>':'Chờ thầy cô mở đất cho bạn tiếp theo…'):TV.map.done?'Đã chiếm hết bản đồ · bấm <b>🗺 Bản đồ mới</b>':revealing?'':'Bấm vào ô <b>sáng viền màu</b> để mở đất · chỉ mở được ô sát đất đã khám phá'}
 function jackPill(found){const p=$('jackPill');if(found){p.textContent='💰 Đã có người trúng ĐỘC ĐẮC '+found.val+' xu!';p.classList.add('found')}
   else if(TV.map&&TV.map.done){p.textContent='Bản đồ này không có độc đắc';p.classList.remove('found')}
   else{p.textContent='💰 Có thể có ĐỘC ĐẮC '+C.jackpot+' xu trong 1 ô ★★★ (không phải bản đồ nào cũng có)';p.classList.remove('found')}}
@@ -4120,8 +4135,10 @@ function tvMapDone(){const by={};TV.open.forEach(o=>{if(!o||o.base)return;const 
   showOv('🎉 ĐÃ CHIẾM HẾT BẢN ĐỒ!',jf?'Bản đồ này có ĐỘC ĐẮC '+jf.val+' xu — đã có người trúng!':'Bản đồ này không có độc đắc',top.filter(k=>by[k]&&TV.open.some(o=>o&&o.name===k)).map((k,i)=>`${['🥇','🥈','🥉','4.','5.'][i]} ${esc(k)}: ${by[k].n} ô · ${by[k].xu} xu`).join('<br>'),[['🗺 BẢN ĐỒ MỚI (Space)',tvNewMap,true]]);
   confetti(250);fanfare();tvUI()}
 function tvClick(e){if(!TV.map||revealing)return;const i=tileAt(e);if(i<0)return;const o=TV.open[i];
-  if(o){if(!o.base)toast(`${STARS(o.lvl)} ${esc(sceneOf(o.lvl,TV.map.sc[i],o.jack).n)}${o.name?' · '+esc(o.name):''} · +${o.val} xu`);return}
-  if(TV.map.done)return;if(!frontierSet.has(i)){toast('Chỉ mở được ô sát đất đã khám phá');return}
+  if(o){if(!o.base)toast(`${STARS(o.lvl)} ${esc(sceneOf(o.lvl,TV.map.sc[i],o.jack).n)}${o.name?' · '+esc(o.name):''} · +${o.val} ${DV}`);return}
+  if(TV.map.done)return;
+  if(LOP){if(!choLop){toast('Chờ thầy cô bấm "Mở cho bạn này" trên ERP');return}if(!frontierSet.has(i)){toast(`${esc(choLop.ten||'Bạn này')} phải chọn ô ${STARS(LV_GIAI[choLop.giai])}`);return}tvHandleOpenLop(i);return}
+  if(!frontierSet.has(i)){toast('Chỉ mở được ô sát đất đã khám phá');return}
   const l=TV.map.lvl[i];$('odTitle').innerHTML=`Mở ô <span class="lv${l}">${STARS(l)}</span> cấp ${l} · <span style="color:var(--gold)">${C.prices[l-1]} xu</span> <span style="color:#5ee08a">· tối đa ${maxOf(C.prices[l-1])} xu</span>`;$('odInfo').textContent='Thu '+C.prices[l-1]+' xu của học sinh rồi bấm Mở đất (Enter).';
   selTile=i;$('openDlg').showModal();$('odGo').focus();$('odGo').onclick=()=>{$('openDlg').close();tvHandleOpen(i,'')}}
 async function tvBoot(){document.body.className='tv';$('top').style.display='flex';
@@ -4129,6 +4146,7 @@ async function tvBoot(){document.body.className='tv';$('top').style.display='fle
   if(!tvLoad())tvNewMap();
   await loadModels();$('loading').style.display='none';buildBoard(TV.map,TV.open,C.prices);camHome(true);updLegend(C.prices);tvUI();
   if(TV.map.done)tvMapDone();
+  if(LOP)ketNoiLop();
   $('gl').addEventListener('pointerdown',tvClick);$('odCancel').onclick=()=>$('openDlg').close();$('openDlg').addEventListener('close',()=>{if(!revealing)selTile=-1});$('rcOk').onclick=tvCardDone;
   $('btnNewMap').onclick=()=>{if(TV.map&&!TV.map.done&&!confirm('Bản đồ hiện tại chưa mở hết ('+openCount()+'/'+(NT-1)+' ô). Bỏ và tạo bản đồ mới?'))return;tvNewMap()};
   $('odName').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('odGo').click()}});}
@@ -4149,7 +4167,7 @@ function updRatio(){const c=readTV();for(const p in c.prof)$('ev_'+p).textConten
 $('dlgCancel').onclick=()=>dlg.close();
 $('dlgSave').onclick=()=>{C=Object.assign(C,readTV());saveC();dlg.close();setBadgePrices(C.prices);updLegend(C.prices);tvUI()};
 const maxOf=P=>payOf(K[K.length-1],P);
-function updLegend(P){$('legend').innerHTML=[1,2,3].map(l=>`<span class="lv${l}">${STARS(l)} ${P[l-1]} xu <b class="mx">→ tối đa ${maxOf(P[l-1])} xu</b></span>`).join('')}
+function updLegend(P){$('legend').innerHTML=LOP?[1,2,3].map(l=>`<span class="lv${l}">${STARS(l)} ${GIAI_LOP[4-l]}</span>`).join(''):[1,2,3].map(l=>`<span class="lv${l}">${STARS(l)} ${P[l-1]} xu <b class="mx">→ tối đa ${maxOf(P[l-1])} xu</b></span>`).join('')}
 $('btnSettings').onclick=openSettings;
 $('btnReset').onclick=()=>{if(!confirm('Xóa toàn bộ lịch sử thu/chi và tạo bản đồ mới?'))return;Object.assign(TV,{hist:[],thu:0,chi:0,maps:0,jacks:0});tvNewMap();dlg.close()};
 $('btnSummary').onclick=openSummary;$('sumClose').onclick=()=>sum.close();
@@ -4168,7 +4186,38 @@ addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==='
   if(!dlg.open&&!sum.open&&!$('openDlg').open&&e.target.tagName!=='INPUT'&&(e.key===' '||e.key==='Enter')){e.preventDefault();if(revealing==='card')tvCardDone();else if(TV.map&&TV.map.done&&!revealing)tvNewMap();else $('bigOv').classList.remove('show')}});
 $('bigOv').addEventListener('click',e=>{if(e.target===$('bigOv')&&!(TV.map&&TV.map.done))$('bigOv').classList.remove('show')});
 
-window.__dbg={TILES,NB,genMap,frontier,payOf,mapEV,get TV(){return TV},C,tvHandleOpen,tvCardDone,get revealing(){return revealing},get camera(){return camera},tv3};
+// ================= Bản buổi học: nhận lệnh từ ERP =================
+const TIERS_LOP={1:'Quà nhỏ',2:'Quà ngon',3:'Quà lớn',4:'SIÊU QUÀ'};
+const hangLop=[];let choLop=null;// choLop = bạn đang chờ chọn ô (đã có EXP từ DB)
+function bomHang(){if(!LOP||choLop||revealing||!TV.map||!hangLop.length)return;choLop=hangLop.shift();refreshFrontier(TV.open);tvUI();
+  if(!frontierSet.size)toast('Hết ô '+STARS(LV_GIAI[choLop.giai])+' — bấm 🗺 Bản đồ mới rồi chọn tiếp',4000)}
+// Hình quà theo GIÁ TRỊ THẬT của EXP, ngưỡng chung mọi giải (như Mở Rương bản lớp): ≤140 nhỏ · ≤200 ngon · ≤280 lớn · >280 siêu quà
+function tvDoOpenLop(ti,ep){const m=TV.map;if(!m||m.done)return {ok:false,reason:'Bản đồ đã chiếm hết, bấm Bản đồ mới'};
+  if(ti<0||ti>=NT||TV.open[ti])return {ok:false,reason:'Ô này đã mở rồi, chọn ô khác nhé'};
+  const lvl=m.lvl[ti],exp=Math.max(1,+ep.exp||0),tier=exp<=140?1:exp<=200?2:exp<=280?3:4;
+  const info={slot:colorSlot(ep.ten),name:ep.ten||'',val:exp,k:0,tier,jack:false,req:'lop'+(ep.t||Date.now()),lvl,price:0,mode:'lop',giai:+ep.giai||3,qua:ep.qua||null,t:Date.now()};
+  TV.open[ti]=info;TV.chi+=exp;
+  TV.hist.push({game:'chiem-dat',session:'lop-'+BUOI,round:TV.hist.length+1,seed:m.seed,map:m.id,at:info.t,tile:ti,lvl,
+    players:[{slot:info.slot,student_id:null,name:info.name,stake:0,xu:exp,extra:{giai:info.giai,qua:info.qua,scene:sceneOf(lvl,m.sc[ti],false).n}}],thu:0,chi:exp,mode:'lop'});
+  if(openCount()>=NT-1)m.done=true;
+  tvSave();return {ok:true,info}}
+function tvHandleOpenLop(ti){if(revealing||!choLop)return;const r=tvDoOpenLop(ti,choLop);if(!r.ok){toast(r.reason);return r}
+  const info=r.info;revealing='anim';refreshFrontier(TV.open);tvFeed(ti,info);tvUI();tvReveal(ti,info);return r}
+function ketNoiLop(){
+  document.body.classList.add('lop');
+  const st=document.createElement('style');st.textContent='body.lop #btnSettings,body.lop #jackPill{display:none!important}';document.head.appendChild(st);
+  $('side').querySelector('.tip').innerHTML='Thầy cô bấm <b>Mở cho bạn này</b> trên ERP → ô đúng cấp sáng lên → bạn chọn ô bất kì → bấm ô để mở. Space / Enter: bạn tiếp.';
+  if(!BUOI){$('hintBar').innerHTML='Thiếu mã buổi — mở từ màn Buổi học trên ERP';return}
+  const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
+  s.onload=()=>{const sb=window.supabase.createClient(SB_URL,SB_KEY);
+    const ch=sb.channel('bk-lop:'+BUOI,{config:{broadcast:{self:false},presence:{key:'tv'}}});
+    // cùng kênh với TV Mở Rương ⇒ chỉ nhận lệnh của ĐÚNG game này
+    ch.on('broadcast',{event:'mo'},m=>{const p=m.payload||{};if(p.game&&p.game!=='chiem_dat')return;hangLop.push(p);bomHang()});
+    ch.subscribe(t=>{if(t==='SUBSCRIBED')ch.track({role:'tv'})})}; // ERP thấy "● TV đã nối" qua presence
+  s.onerror=()=>toast('Không tải được thư viện kết nối — kiểm tra mạng',5000);
+  document.head.appendChild(s)}
+
+window.__dbg={TILES,NB,genMap,frontier,payOf,mapEV,get TV(){return TV},C,tvHandleOpen,tvCardDone,get revealing(){return revealing},get camera(){return camera},tv3,get choLop(){return choLop},hangLop,bomHang};
 tvBoot();
 })();
 </script>

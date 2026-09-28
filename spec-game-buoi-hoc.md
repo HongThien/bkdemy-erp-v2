@@ -131,7 +131,39 @@ tổng điểm (chỉ để hiện, exp 0) — hoà điểm thì xếp theo `hoc
   ≤280 đống vàng · >280 núi vàng. Bản sự kiện (không `?che_do`) giữ nguyên.
 - Nhãn nguồn: ví xu HS → card "🎮 Hoạt động trên lớp" (nguồn `exp_tren_lop`); bảng điểm gami "Trên lớp (game)"; `EXP_NOTE_SOURCES`.
 - Link TV dùng `VITE_GAMES_URL` (mặc định `https://bkdemy-games.vercel.app` — CHƯA xác nhận domain thật).
-- Chưa làm: Chiếm Đất / Đoán Số bản lớp (chờ luật Thùy) — hiện trong ô chọn game nhưng khoá "(chờ luật)".
+- Chưa làm: Đoán Số bản lớp (chờ luật Thùy — luật sự kiện là cả nhóm đoán chung 1 lần quay, giải không có chỗ tác động;
+  Thùy chọn 1 trong: giải quyết định EXP mỗi mức lệch / số lần đoán / độ rộng vùng trúng) — ô chọn game khoá "(chờ luật)".
+
+## 5d. ĐÃ BUILD (28/09) — Chiếm Đất bản lớp + quà đặc biệt 🧋 trà sữa (Thùy chốt 28/09)
+
+**Luật Thùy:** Chiếm Đất — 3 loại ô = 3 mức giải: **Giải 3 → ô ★ · Nhì → ô ★★ · Nhất → ô ★★★**. Thưởng EXP **y hệt Mở Rương**
+(cùng bảng §5b). Mỗi HS **chọn ô bất kì**, không giới hạn (không cần sát đất đã mở, không độc đắc).
+**Trà sữa** (cả Mở Rương + Chiếm Đất): rút THÊM, độc lập với EXP — **Nhất 0,1% · Nhì 0,05% · Giải 3 0,01%** mỗi lượt.
+Trúng thì vẫn nhận EXP như thường + 1 trà sữa (quà thật, trao tay).
+
+- DB (mig `202609281021_chiem_dat_lop_va_tra_sua`, đã áp qua `npm run migrate --only`):
+  - `game_lop_thuong` thêm `game='chiem_dat'` = chép nguyên 23 dòng `mo_ruong` (TB Nhất 300 · Nhì 250 · Giải 3 175).
+  - `game_lop_qua_dac_biet(qua, giai, ti_le_pt numeric %)` — seed `tra_sua` 0.1/0.05/0.01. Đổi số ở đây, không sửa code. Áp mọi game.
+  - `buoi_game_qua(luot_id PK → buoi_game_luot, buoi_hoc_id, hoc_sinh_id, qua, trao_at, trao_boi)` — dòng CHỈ khi trúng (§1.5);
+    `trao_at` NULL = chưa trao tay.
+  - `fn_buoi_game_choi`: sau khi rút EXP, duyệt `game_lop_qua_dac_biet` theo giải, `random()*100 < ti_le_pt` ⇒ insert
+    `buoi_game_qua` (cùng transaction). Trả thêm `qua` (null = không trúng). Nhánh đã-chơi trả `qua` của lượt cũ (không rút lại).
+  - `fn_buoi_giai_tinh_hinh`: mỗi HS thêm `qua`, `qua_trao_at`; tổng `so_qua_chua_trao`.
+  - `fn_buoi_game_qua_trao(p_buoi, p_hoc_sinh)`: khép quà (set `trao_at`/`trao_boi`); lỗi nếu bạn đó không có quà chưa trao.
+  - Verify: chạy toàn bộ trong transaction ROLLBACK trên buổi thật (chốt → chơi Nhất chiem_dat 320 EXP → chơi lại trả `da_choi`
+    cùng số → ép tỉ lệ 100% để đi nhánh trúng → `buoi_game_qua` 1 dòng → trao → lỗi đúng khi trao bạn không có quà);
+    mô phỏng 20.000 lượt Nhất TB 299,8 ≈ 300.
+- ERP (`gameLop.ts` · `XepHangBuoi.tsx`): Chiếm Đất mở khoá; payload xuống TV thêm `game` (TV lọc đúng game — GV mở 2 tab TV vẫn
+  đúng) + `qua`; ERP báo "🧋 X TRÚNG Trà sữa!" + khung hồng "có N bạn trúng quà chưa trao" + nút **"🧋 Trà sữa · Đã trao"** cạnh tên
+  (bấm ⇒ RPC trao ⇒ thay thành "🧋 Trà sữa ✓"). Vá tại chỗ từ RPC, không reload khung.
+- TV `chiem-dat.html?che_do=lop&buoi=<id>` (bản sự kiện không đổi — đã đối chiếu: 14/12/10 ô, xu, sát đất, độc đắc):
+  bản đồ **18 ô ★ · 15 ô ★★ · 3 ô ★★★**, không độc đắc, lưu `localStorage bk-chiemdat-lop:<buổi>` (F5 giữ). Huy hiệu ô ghi
+  G.3/NHÌ/NHẤT thay giá xu; chú giải "★ Giải 3 · ★★ Nhì · ★★★ Nhất". Nhận lệnh ⇒ hàng chờ; tới lượt ⇒ chỉ các ô CHƯA MỞ ĐÚNG CẤP
+  sáng, hint "<Tên> (🥇 Nhất) — chọn 1 ô ★★★ bất kì"; bấm ô sai cấp ⇒ toast; bấm đúng ⇒ mở ngay (không hộp thoại thu xu), thẻ
+  "+340 EXP · SIÊU QUÀ · Giải Nhất · EXP đã vào tài khoản"; Space/Enter ⇒ bạn tiếp. Hình quà theo EXP tuyệt đối như Mở Rương
+  (≤140 nhỏ · ≤200 ngon · ≤280 lớn · >280 siêu quà). Hết ô đúng cấp ⇒ hint đỏ "bấm 🗺 Bản đồ mới" (nút vẫn hiện ở bản lớp).
+  Trúng trà sữa ⇒ overlay to "🧋 TRÚNG TRÀ SỮA!" + pháo giấy. Mở Rương bản lớp: dòng phụ banner đổi thành "🧋 TRÚNG TRÀ SỮA!…".
+- CHƯA: test 1 lớp thật (như Mở Rương) · deploy bkdemy-games + ERP · Đoán Số bản lớp (chờ luật).
 
 ## 6. Đường nối ERP (đã dò DB/code thật 27/09 — sự thật, không phải đề xuất)
 

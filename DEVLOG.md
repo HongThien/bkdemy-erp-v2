@@ -30054,3 +30054,22 @@ quay lại từ nền (visibilitychange); lỗi mạng không tắt card đang h
 - 27/09: độ khó Bài 1-5 (chip xoay trên card, dùng cột muc_do có sẵn) + filter 1-5 trong DangPicker; ET "Thêm nhanh theo dạng" dùng DangPicker multi (mặc định mở, mỗi dạng 1 input số câu); giới hạn dòng kẻ 30→50 ở 7 chỗ.
 - 27/09 ghép kho Luyện lớp 7 → Học: `hinh_bai` RỖNG hoàn toàn (0 dòng mọi khối) — data thật ở hinh_mo_hinh (12) + hinh_baitoan (150; phat_bieu chỉ là câu hỏi, de_bai_chuan 100% NULL) + hinh_cach_giai (154, 100% có la_mac_dinh). CEO: "Ko có đề riêng thì mới dùng mô hình". noi_dung = mh.gia_thiet + gia_thiet_them + bt.gia_thiet_rieng/phu + phat_bieu; anh_de = bt.anh_chuan ?? mh.anh_cau_hinh. Kết quả: 3 Bài mới + 9 merge theo tên, 150 câu da_duyet=false; lớp 7 = 13 Bài/267 câu. Script 1 lần, không idempotent, đã xoá.
 - git 16/09: commit sau stash-pop/rebase dính 6 file ngoài scope đã staged sẵn (CEO cho push chung). Từ đó: git status ngay trước commit, add theo tên.
+
+## 2026-09-28 — Chiếm Đất bản lớp + quà đặc biệt 🧋 trà sữa (spec-game-buoi-hoc §5d)
+
+**Thùy chốt:** Chiếm Đất 3 loại ô = 3 mức giải (Giải 3 ★ · Nhì ★★ · Nhất ★★★), EXP như Mở Rương, chọn ô bất kì không giới hạn.
+Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · Giải 3 0,01% (t giả định giải cao tỉ lệ cao, rút thêm độc lập EXP).
+
+- **Làm:** mig `202609281021_chiem_dat_lop_va_tra_sua` (chiem_dat chép bảng mo_ruong · `game_lop_qua_dac_biet` % theo giải ·
+  `buoi_game_qua` chỉ dòng khi trúng, `trao_at` khép vận hành · `fn_buoi_game_choi` rút quà cùng transaction, trả `qua` ·
+  `fn_buoi_giai_tinh_hinh` thêm qua/qua_trao_at/so_qua_chua_trao · `fn_buoi_game_qua_trao`). Áp `migrate --only`, schema.md refresh.
+  ERP: Chiếm Đất mở khoá, payload TV thêm `game`+`qua`, nút "🧋 Trà sữa · Đã trao". TV chiem-dat `?che_do=lop` (18/15/3 ô, ô đúng cấp
+  sáng, mở ngay không thu xu, storage theo buổi) + mo-ruong báo trà sữa; cả 2 TV lọc `payload.game` (cùng kênh bk-lop).
+- **Verify:** RPC trong transaction ROLLBACK trên buổi thật (đủ nhánh, ép tỉ lệ 100% để đi nhánh trúng); TV test qua serve-games
+  + broadcast thật trên kênh test (lệnh game khác bị bỏ qua, đúng game chạy tới banner); bản sự kiện Chiếm Đất đối chiếu không đổi.
+- **Sai/bài học:** (1) `python` không có trên máy — patch file 6MB bằng Node. (2) `chiem-dat.html`/`mo-ruong.html` là **CRLF**;
+  Edit tool chèn LF ⇒ chuỗi thay thế nhiều dòng không khớp + git báo "LF will be replaced"; sau patch chuẩn hoá lại CRLF cả file.
+  (3) Tab trình duyệt **ẩn** ⇒ `requestAnimationFrame` đứng ⇒ Mở Rương kẹt "opening" — không phải bug; test game 3D phải
+  front tab hoặc thêm `?loop=timer` (đã có sẵn trong code).
+- **Còn:** test lớp thật · deploy · Đoán Số bản lớp chờ luật (3 hướng đã nêu ở spec §5c) · HANDOFF distill cuối ngày (mục 27/09
+  vẫn ghi Chiếm Đất "chờ luật" — đã lỗi thời).

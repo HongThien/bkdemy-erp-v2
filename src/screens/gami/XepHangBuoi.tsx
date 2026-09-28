@@ -5,7 +5,7 @@
 // mở lại được. Mọi số ở DB; ở đây chỉ hiển thị + vá tại chỗ từ kết quả RPC trả về (không reload cả khung).
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { supabase } from '../../lib/supabase'
-import { tinhHinhGiai, chotGiai, moLaiGiai, choiLuot, GAME_LOP, linkTV, kenhTV, TEN_GIAI, type GiaiBuoi, type KetQuaLuot } from '../../lib/gameLop'
+import { tinhHinhGiai, chotGiai, moLaiGiai, choiLuot, traoQua, GAME_LOP, linkTV, kenhTV, TEN_GIAI, TEN_QUA, type GiaiBuoi, type KetQuaLuot } from '../../lib/gameLop'
 
 const NHO_GAME: Record<string, string> = {} // buổi → game GV đã chọn (sống tới F5, đổi tab không mất)
 
@@ -51,7 +51,8 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
     return () => { chRef.current = null; supabase.removeChannel(ch); setCoTv(false) }
   }, [buoiId, daChot])
   const guiTV = (k: KetQuaLuot) => {
-    chRef.current?.send({ type: 'broadcast', event: 'mo', payload: { ten: k.ho_ten, giai: k.giai, exp: k.exp, min: k.min, max: k.max, game: k.game, t: Date.now() } })
+    // `game` để TV lọc (2 TV game có thể cùng nghe 1 kênh) · `qua` = quà đặc biệt (🧋) DB đã rút — TV chỉ báo
+    chRef.current?.send({ type: 'broadcast', event: 'mo', payload: { ten: k.ho_ten, giai: k.giai, exp: k.exp, min: k.min, max: k.max, game: k.game, qua: k.qua, t: Date.now() } })
   }
   const bao = (t: string) => { setMsg(t); window.setTimeout(() => setMsg((m) => (m === t ? null : m)), 2500) }
 
@@ -138,6 +139,9 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
               <span className={`rounded px-1.5 text-[11px] ${coTv ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-100 font-bold text-amber-800'}`}>{coTv ? '● TV đã nối' : '⚠ chưa thấy TV'}</span>
               <span className="ml-auto text-xs text-slate-500">{tt.so_da_choi}/{tt.so_co_mat} bạn đã chơi</span>
             </div>
+            {tt.so_qua_chua_trao > 0 && (
+              <div className="mt-2 rounded-lg bg-pink-50 px-3 py-1.5 text-sm font-bold text-pink-700">🧋 Có {tt.so_qua_chua_trao} bạn trúng quà đặc biệt chưa trao — trao xong bấm "Đã trao" cạnh tên.</div>
+            )}
             <div className="mt-2 space-y-1">
               {tt.hs.map((h) => (
                 <div key={h.hoc_sinh_id} className="flex items-center gap-2 rounded-lg bg-indigo-50/60 px-2 py-1.5">
@@ -146,6 +150,12 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
                   {h.exp != null ? (
                     <>
                       <span className="text-sm font-black text-emerald-700">+{h.exp} EXP</span>
+                      {h.qua && (h.qua_trao_at
+                        ? <span className="rounded bg-slate-100 px-1.5 text-[11px] text-slate-500" title={`đã trao ${new Date(h.qua_trao_at).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })}`}>{TEN_QUA[h.qua] ?? h.qua} ✓</span>
+                        : <button disabled={ban === 'qua' + h.hoc_sinh_id} onClick={async () => {
+                            setBan('qua' + h.hoc_sinh_id)
+                            try { const d = await traoQua(buoiId, h.hoc_sinh_id); setTt(d); bao('✓ Đã ghi trao ' + (TEN_QUA[h.qua!] ?? h.qua)) } catch (e) { bao('❌ ' + (e as Error).message) } finally { setBan(null) }
+                          }} className="min-h-9 rounded-md bg-pink-500 px-2.5 text-xs font-bold text-white disabled:opacity-40" title="Trúng quà đặc biệt — bấm khi đã trao tay">{TEN_QUA[h.qua] ?? h.qua} · Đã trao</button>)}
                       <button disabled={ban === h.hoc_sinh_id} onClick={async () => {
                         setBan(h.hoc_sinh_id)
                         try { const k = await choiLuot(buoiId, h.hoc_sinh_id, h.game ?? game); guiTV(k); bao('↻ Đã chiếu lại lên TV') } catch (e) { bao('❌ ' + (e as Error).message) } finally { setBan(null) }
@@ -157,14 +167,17 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
                       try {
                         const k = await choiLuot(buoiId, h.hoc_sinh_id, game)
                         guiTV(k)
-                        setTt((p) => p && ({ ...p, so_da_choi: p.so_da_choi + (k.da_choi ? 0 : 1), hs: p.hs.map((x) => (x.hoc_sinh_id === h.hoc_sinh_id ? { ...x, exp: k.exp, game: k.game } : x)) }))
+                        setTt((p) => p && ({ ...p, so_da_choi: p.so_da_choi + (k.da_choi ? 0 : 1), so_qua_chua_trao: p.so_qua_chua_trao + (k.qua && !k.da_choi ? 1 : 0), hs: p.hs.map((x) => (x.hoc_sinh_id === h.hoc_sinh_id ? { ...x, exp: k.exp, game: k.game, qua: k.qua, qua_trao_at: null } : x)) }))
+                        if (k.qua) bao(`🧋 ${k.ho_ten} TRÚNG ${TEN_QUA[k.qua] ?? k.qua}! Trao xong bấm "Đã trao".`)
                       } catch (e) { bao('❌ ' + (e as Error).message) } finally { setBan(null) }
                     }} className="min-h-9 rounded-md bg-indigo-600 px-3 text-xs font-bold text-white disabled:opacity-40">{g.ten.split(' ')[0]} Mở cho bạn này</button>
                   )}
                 </div>
               ))}
             </div>
-            <p className="mt-2 text-[11px] text-slate-500">Mỗi bạn 1 lượt/buổi. Kết quả do hệ thống rút và cộng EXP ngay (nguồn "Trên lớp"); TV chỉ chiếu lại cho cả lớp xem.</p>
+            <p className="mt-2 text-[11px] text-slate-500">Mỗi bạn 1 lượt/buổi. Kết quả do hệ thống rút và cộng EXP ngay (nguồn "Trên lớp"); TV chỉ chiếu lại cho cả lớp xem.
+              {game === 'chiem_dat' && ' Chiếm Đất: bạn chọn ô bất kì đúng cấp giải trên TV (Giải 3 ★ · Nhì ★★ · Nhất ★★★), thầy cô bấm ô đó.'}
+              {' '}Quà đặc biệt 🧋 trà sữa: rất hiếm (Nhất 0,1% · Nhì 0,05% · Giải 3 0,01%), trúng thì ERP báo và có nút "Đã trao".</p>
           </div>
 
           {tt.so_da_choi === 0 && (

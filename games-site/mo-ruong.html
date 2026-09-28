@@ -4077,6 +4077,8 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
       $('bTot').textContent=`${cur.name?cur.name+' · ':''}+${total} EXP`;
       $('bSub').textContent=GIAI_LOP[cur.giai]+' · EXP đã vào tài khoản 🎉';
       $('banner').classList.add('show');confetti(cur.tiers[2]>=4?220:90);
+      // Thùy 28/09: quà đặc biệt TRÀ SỮA (DB rút cùng lượt, siêu hiếm) — TV chỉ báo, quà trao tay
+      if(cur.qua==='tra_sua'){$('bSub').innerHTML='🧋 <b>TRÚNG TRÀ SỮA!</b> Quà đặc biệt siêu hiếm · '+GIAI_LOP[cur.giai]+' · +'+total+' EXP đã vào tài khoản';fanfare();confetti(500);shake=.35}
       $('btnReveal').style.display='none';$('btnDone').style.display='';
       hint($('hintT').innerHTML,'SPACE ĐỂ SANG BẠN TIẾP');return}
     S.history.push({n:cur.n,name:cur.name,chest:cur.chest,price:cur.price,k:cur.k,mults:cur.mults,tiers:cur.tiers,vals:cur.vals,total,mode:cur.mode,t:Date.now()});
@@ -4192,7 +4194,7 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
   function curLop(ep){const exp=Math.max(1,+ep.exp||0),g=+ep.giai||3;
     const a=Math.max(10,Math.round(exp*(.05+.05*rnd01())/10)*10),b=Math.max(10,Math.round(exp*(.07+.07*rnd01())/10)*10),c=exp-a-b;
     const t3=exp<=140?2:exp<=200?3:exp<=280?4:5;
-    return {name:ep.ten||'',giai:g,chest:g===1?2:g===2?1:0,price:0,k:0,vals:[a,b,c],mults:[0,0,0],tiers:[1,1,t3],revealed:0,mode:'lop',n:++nLop}}
+    return {name:ep.ten||'',giai:g,chest:g===1?2:g===2?1:0,price:0,k:0,vals:[a,b,c],mults:[0,0,0],tiers:[1,1,t3],revealed:0,mode:'lop',n:++nLop,qua:ep.qua||null}}
   function bomHang(){if(!hangLop.length||!chestObjs.length)return;if(phase==='pick')startOpen(hangLop.shift());else if(phase==='done')nextTurn()}
   function ketNoiLop(){
     document.body.classList.add('lop');
@@ -4202,7 +4204,8 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
     const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
     s.onload=()=>{const sb=window.supabase.createClient(SB_URL,SB_KEY);
       const ch=sb.channel('bk-lop:'+BUOI,{config:{broadcast:{self:false},presence:{key:'tv'}}});
-      ch.on('broadcast',{event:'mo'},m=>{hangLop.push(m.payload||{});bomHang()});
+      // cùng kênh bk-lop:<buổi> với các TV game khác ⇒ chỉ nhận lệnh của ĐÚNG game này (GV có thể mở 2 tab TV)
+      ch.on('broadcast',{event:'mo'},m=>{const p=m.payload||{};if(p.game&&p.game!=='mo_ruong')return;hangLop.push(p);bomHang()});
       ch.subscribe(t=>{if(t==='SUBSCRIBED')ch.track({role:'tv'})})}; // ERP thấy "● TV đã nối" qua presence
     s.onerror=()=>hint('Không tải được thư viện kết nối — kiểm tra mạng','BUỔI HỌC');
     document.head.appendChild(s)}
