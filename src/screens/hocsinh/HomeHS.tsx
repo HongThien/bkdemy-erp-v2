@@ -35,6 +35,8 @@ export type HomeCard = {
   /** Nếu có emoji thì render emoji trong khung 31% thay cho ảnh PNG (dùng cho ô cấp 2 mới chưa có cutout PNG:
    *  Thành tựu · May mắn · Bài tập được giao). ill vẫn giữ để backward-compat với cards cũ có PNG. */
   emoji?: string
+  /** Emoji chức năng của ô (lấy từ danh mục KHU) — HomeHS912 (lớp 9–12) dùng khi skin không có ảnh riêng cho ô. */
+  icon?: string
   ill: string // tên file trong public/bk-ui/hs (không đuôi) — bỏ qua nếu có emoji
   tone: HomeTone
   disabled?: boolean

@@ -30597,3 +30597,24 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   cứng — việc trao suy động invariant (đạt 4–5★ trừ đã trao), OPS/GV bấm "Đã trao" · album % hoàn thành + "Sắp đạt" + "N bạn có"/Hiếm
   · bảng kiểu người chơi (Collector/Achiever/Competitor/Explorer/Socializer) · 10 nhóm huy hiệu · EXP chỉ từ 3★ trong trần 5 xu.
   B2: 6 câu logic H1–H6 chờ Thùy. Ngưỡng 4–5★ sẽ ước lượng số bản cứng/tháng bằng mô phỏng trước khi chốt.
+
+## 2026-09-28 (20) — BUILD giao diện app HS lớp 9–12: Home mới + 5 skin + nút Hình nền + hướng dẫn lần đầu (worktree `skin-hs-912`)
+
+- **Thùy:** "build thôi. nhớ có nút chọn hình nền, và khi HS mở app lần đầu từ bây giờ có hướng dẫn và notice để HS biết chỗ đổi hình nền".
+- **DB (mig 202609281346, áp `--only`):** `hs_giao_dien` (1 dòng/HS, ra đời khi xong hướng dẫn lần đầu — chưa có dòng = chưa xem + mặc định;
+  CHECK skin 5 giá trị — thêm Lo-fi PHẢI nới CHECK) · `hs_giao_dien_log` (trigger ghi actor/ts/cũ/mới, bỏ qua lưu trùng) = "phiếu bầu" thay
+  vòng hỏi HS · `lich_thi_lon` (kỳ thi lớn cho widget đếm ngược, KHÁC `ky_thi` = sát hạch Level) · RPC `fn_hs_giao_dien_cua_toi` ·
+  `fn_hs_luu_giao_dien` · `fn_hs_home_912` (Elo từng môn + hạng trong lớp đang học + ≤2 kỳ thi, ngày VN). Verify trong transaction rồi
+  ROLLBACK (HS khối 9 thật: Toán 1082 hạng 10/12, KHTN 1061 hạng 5/13; lưu 2 lần giống nhau ⇒ 1 log; skin lạ bị CHECK chặn).
+- **Code:** `skin/registry.ts` (1 nguồn: màu sáng/tối, font, dáng thẻ, hình nền; component chỉ đọc `--sk-*`, không `if skin`) · `HomeHS912.tsx`
+  (đầu trang → Việc tiếp theo → widget → kiểm tra lại → lưới ô; nút **Hình nền** mở tấm chọn skin/chế độ/hình nền, Home phía sau đổi ngay;
+  hướng dẫn lần đầu: chào → chọn → khoanh sáng nút Hình nền + lời nhắc → lưu) · `HocSinhApp`: khối 9–12 (`KHOI_912`, qua hs_khoi_cua_toi)
+  dùng HomeHS912, GIỮ nguyên danh sách ô từng khối (khối 9 vẫn bộ ô cấp 2) · màn con của nhóm này bỏ màu theo giới tính (`gt = null`).
+  Hình RPG tối ưu 3,2MB → ~380KB ở `public/bk-ui/hs/skin/rpg/`. Font thêm vào hs.html: Lexend, Chakra Petch, Unbounded, Philosopher.
+- **Verify:** không có tài khoản HS thử (không dùng mã/PIN HS thật) ⇒ trang xem thử tạm `xem-thu-912.html` (không commit) dựng HomeHS912
+  bằng dữ liệu mẫu, không đăng nhập ⇒ lưu bị DB từ chối (401), DB 0 dòng. 375×812: đủ luồng hướng dẫn (chào → chọn RPG → khoanh nút →
+  lỗi mạng hiện "Thử lại"), 5 skin sáng/tối, tấm chọn từ nút. `tsc` sạch · `build:hs` qua.
+- **Sai/sửa trong lúc verify:** tên chung hàng 3 nút ⇒ màn 375 còn "M.." → tách tên xuống hàng riêng · lời chào lấy 1 chữ cuối ("Anh") →
+  2 chữ cuối · tên đè tranh nền RPG khó đọc → bóng chữ theo `--sk-bg` · "Hạng 3/14 trong lớp" bị cắt → "Hạng 3/14 lớp".
+- **Còn:** `lich_thi_lon` đang RỖNG ⇒ widget đếm ngược chưa hiện (cần Thùy đưa ngày thi) · Lo-fi chờ Đơn 3 · nhóm 3–5 / 6–8 chờ Đơn 1–2 ·
+  preview tool chỉ đọc launch.json thư mục chính ⇒ dev server worktree chạy nền tay (vite --port 5204).
