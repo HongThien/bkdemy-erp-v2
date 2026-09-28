@@ -30897,3 +30897,18 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
   Emperor 25.725 · God of War 28.350 (90% tối đa năm 31.500) · Supreme God 30.240 (96%) — 2 ngưỡng thần là đề xuất, chờ Thùy.
   Hôm nay: khối 7 Captain 34 · Soldier 14 · Novice 6 · khối 9 Captain 61 · Soldier 6 · Novice 1 · 0 thần. RankHS sửa chữ (bỏ "ghế/phong độ").
 - Bài học: t hiểu "ghế thần" thành luật vị trí (top/hạng) suốt từ vòng 4 — Thùy muốn đích tuyệt đối theo điểm. Chữ "ghế" trong spec cũ gây hiểu lệch.
+
+## 2026-09-28 — RPG: ảnh lẻ 1–30 ở `design/bk-ui-src/` · soạn Đơn 3 v3 (Lo-fi) giao KHÔNG qua zip
+
+- 27 ảnh Thùy tải thẳng từ chat ChatGPT: dùng được 1,2,15 (nền; 15 = đảo trời dọc, nửa dưới tối — tốt hơn bản zip) · 3,4 (nhân vật) ·
+  5–10,19,20,21,23 (icon) · 16,18 (hoa văn). 11–14,17,22 = mockup (tham khảo; 11 đẹp nhất). 24–27 = skin khác. Zip v3 chứa bản
+  phóng/cắt của 1–10 + 10 icon code-vẽ ⇒ nguồn thật là ảnh lẻ, không phải zip.
+- Prompt xuất riêng 10 hình còn thiếu (1 hình/lượt). Về được 28 bản đồ (Thông tin) · 29 cổng đá khoá (Thi thử) · 30 cúp (Thành tựu) — đạt,
+  vật thể chiếm 93–97% khung (dặn 80%) ⇒ code tự chừa lề. Còn: bổ trợ, kiểm tra lại, bài trên lớp, mèo, cú, nữ đội mũ, lâu đài dọc.
+- Đơn 3 v3 thay v2 (chưa gửi): mỗi lượt 1 hình, tải thẳng, không zip/DESIGN.md; chuẩn kích thước theo ảnh RPG đạt (icon 1254², nhân vật 1122×1402,
+  nền 1672×941 / 940×1672 chừa vùng tối); #01 dừng chờ duyệt; nhân vật kín đáo; đính kèm mockup RPG ảnh 11 làm bố cục.
+
+## 28/09 — "Chưa thấy game trên ERP" (Thùy)
+- Pull: máy đã có code mới nhất (phiên khác làm Bắn Quà/Chiếm Đất bản lớp/trà sữa trên cùng checkout, đã push). Đo bản đang chạy: ERP chính (`bkdemy-erp-v2.vercel.app`) ĐÃ có khung Xếp hạng buổi + Bắn Quà; trang game thật `game.bkacademy.edu.vn` (Vercel `bkdemy-erp-v2-2ogm`) ĐÃ có `?che_do=lop` cho Mở Rương/Chiếm Đất/Bắn Quà.
+- **SAI của t (27/09):** mặc định `GAMES_URL = 'https://bkdemy-games.vercel.app'` là ĐOÁN, không kiểm — trả 404 ⇒ nút 📺 Mở màn TV hỏng. Sửa sang `https://game.bkacademy.edu.vn` (tìm bằng `vercel project ls`). Bài học: URL/domain phải ĐO (curl/vercel CLI) trước khi làm mặc định, không để "tạm" rồi quên.
+- App GV (`bkdemy-erp-v2-gv`, màn `ChamBuoiGv.tsx`) và app TA (`ChamBuoi.tsx`) CHƯA gắn khung game — chỉ ERP chính (`BuoiHocScreen`). Hỏi Thùy có gắn vào app GV/TA không.

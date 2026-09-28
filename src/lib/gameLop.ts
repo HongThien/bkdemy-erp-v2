@@ -60,8 +60,9 @@ export const banQuaBatDau = (buoi: string, cheDo: 'canhan' | 'doi', soDoi: numbe
   rpc<BanQuaTinhHinh>('fn_ban_qua_bat_dau', { p_buoi: buoi, p_che_do: cheDo, p_so_doi: soDoi, p_phut: phut, p_doi: doi })
 export const banQuaChot = (buoi: string, kq: BanQuaKetQua) => rpc<BanQuaTinhHinh>('fn_ban_qua_chot', { p_buoi: buoi, p_kq: kq })
 export const TEN_DOI = ['Đỏ', 'Xanh', 'Vàng', 'Tím'], MAU_DOI = ['#ff5c5c', '#3d9bff', '#ffbf2e', '#b36bff']
-// Trang game (project Vercel bkdemy-games). Đặt VITE_GAMES_URL nếu dùng domain riêng.
-export const GAMES_URL = ((import.meta as any).env?.VITE_GAMES_URL as string | undefined) || 'https://bkdemy-games.vercel.app'
+// Trang game thật = https://game.bkacademy.edu.vn (Vercel project bkdemy-erp-v2-2ogm, đo 28/09 qua `vercel project ls`).
+// Mặc định cũ 'bkdemy-games.vercel.app' là ĐOÁN, trả 404 ⇒ nút 📺 Mở màn TV hỏng (Thùy 28/09 "chưa thấy game trên ERP").
+export const GAMES_URL = ((import.meta as any).env?.VITE_GAMES_URL as string | undefined) || 'https://game.bkacademy.edu.vn'
 export const linkTV = (file: string, buoi: string) => `${GAMES_URL.replace(/\/$/, '')}/${file}?che_do=lop&buoi=${buoi}`
 export const kenhTV = (buoi: string) => 'bk-lop:' + buoi
 export const TEN_GIAI: Record<1 | 2 | 3, string> = { 1: '🥇 Nhất', 2: '🥈 Nhì', 3: '🎖 Giải 3' }

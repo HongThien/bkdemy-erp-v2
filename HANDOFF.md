@@ -378,7 +378,7 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
   source **`exp_tren_lop`** (note = tháng buổi, mon = lop.mon) trong 1 transaction; ERP gửi kết quả xuống TV (kênh `bk-lop:<buổi>`, presence
   role=tv); TV chỉ diễn. Mở Rương lớp: Nhất 200–400 (TB300) · Nhì 200–300 (TB250) · Giải 3 100–200 (TB175), bước 20 ⇒ lớp 8 bạn TB 200 EXP/HS.
 - **CHỜ THÙY:** chạy SQL Editor `202609272045_exp_tren_lop_vao_chot_xu_thang.sql` (chưa chạy ⇒ EXP game KHÔNG thành xu cuối tháng) ·
-  cho domain thật của trang game (`VITE_GAMES_URL`, đang tạm `bkdemy-games.vercel.app`) · deploy ERP + app HS + bkdemy-games · test 1 lớp thật
+  trang game thật = `https://game.bkacademy.edu.vn` (sửa 28/09; mặc định cũ vercel.app trả 404) · deploy ERP + app HS + bkdemy-games · test 1 lớp thật
   (chưa ai bấm Chốt/Mở trên dữ liệu thật — luồng ghi mới verify bằng transaction ROLLBACK).
 - Việc tách riêng, CHƯA làm: đích mới EXP ET 100 cố định / BTVN 200/bài (DB hiện ET 200–300, BTVN 189–300).
 

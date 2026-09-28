@@ -130,7 +130,7 @@ tổng điểm (chỉ để hiện, exp 0) — hoà điểm thì xếp theo `hoc
   Giải 3 Gỗ), đơn vị EXP, không sổ xu. Hình quà bí ẩn theo EXP tuyệt đối, ngưỡng chung mọi giải: ≤140 hộp to · ≤200 thỏi vàng ·
   ≤280 đống vàng · >280 núi vàng. Bản sự kiện (không `?che_do`) giữ nguyên.
 - Nhãn nguồn: ví xu HS → card "🎮 Hoạt động trên lớp" (nguồn `exp_tren_lop`); bảng điểm gami "Trên lớp (game)"; `EXP_NOTE_SOURCES`.
-- Link TV dùng `VITE_GAMES_URL` (mặc định `https://bkdemy-games.vercel.app` — CHƯA xác nhận domain thật).
+- Link TV dùng `VITE_GAMES_URL`, mặc định **`https://game.bkacademy.edu.vn`** (domain thật, đo 28/09 qua `vercel project ls` — project `bkdemy-erp-v2-2ogm`). Mặc định cũ `bkdemy-games.vercel.app` là đoán, trả 404.
 - Chưa làm: Đoán Số bản lớp (chờ luật Thùy — luật sự kiện là cả nhóm đoán chung 1 lần quay, giải không có chỗ tác động;
   Thùy chọn 1 trong: giải quyết định EXP mỗi mức lệch / số lần đoán / độ rộng vùng trúng) — ô chọn game khoá "(chờ luật)".
 
