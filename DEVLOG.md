@@ -31041,6 +31041,7 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
 - (28/09 tiếp) Thùy đổi ý: giữ **2 chế độ** — Chế độ 1 "TV riêng" (GV làm việc/cộng điểm trên máy tính, TV riêng chiếu game + BẢNG LỚP cả buổi để HS thi đua) · Chế độ 2 "Cast chung" (màn Trình chiếu 1 màn). Làm: ERP 2 nút "📺 Chế độ 1 · TV riêng" (mở trang game ?che_do=lop) / "🖥 Chế độ 2 · Cast chung" (overlay, iframe thêm `&nhung=1`); ERP gửi event `ds` {hs:[ten,giai,exp,qua]} qua kênh bk-lop mỗi khi tình hình đổi + khi TV vừa nối (presence). TV: `games-site/lib/bk-lop-bang.js` dùng chung — Chiếm Đất chèn đầu `#side`, Mở Rương thêm cột phải + thu `#stage` rồi resize; `nhung=1` không nạp. Chống lộ kết quả: game gọi `BKLopBang.cho(ten)` khi NHẬN lệnh mở ⇒ "🎁 đang mở…", `xong(ten)` khi diễn xong (Mở Rương: banner kết quả, cả nhánh trà sữa; Chiếm Đất: thẻ kết quả) mới hiện +EXP. Bắn Quà không đụng (đã có danh sách riêng).
 - Verify (trang game local + giả lập ERP qua supabase-js, kênh test, không DB): bảng hiện đúng + sắp xếp (đã mở lên trên, EXP cao trước, 🧋); mở cho Nhất 300: lúc mở "🎁 đang mở…" dù ERP đã gửi +300, diễn xong mới +300 & 3/5; nhung=1 không có bảng; Chiếm Đất bảng ở đầu #side; 0 lỗi console. ERP: typecheck sạch (chưa chạy thử ERP lần này — phần ERP chỉ thêm nút + gửi ds).
 
+<<<<<<< HEAD
 ## 2026-09-28 (38) — Hồ sơ khoe: mockup + quyết định · đơn ChatGPT 3 món · distill HANDOFF cuối ngày
 
 - Thùy: cần chỗ khoe profile (rank, huy hiệu…). T làm wireframe (bản em tự xem + bản bạn/TV xem). Thùy chốt: **bấm avatar mở** · **tường của nhau = phase sau** ·
@@ -31050,3 +31051,12 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
   bảng "đừng lẫn 3 thứ", Đơn 1 huy hiệu gửi trước; giả định vẽ cho lớp 6–8).
 - Classifier quyền tự động lỗi tạm ~10 lượt (không ghi được file/commit) — chờ rồi làm lại, không lách.
 - HANDOFF ①: mục GAMIFICATION đổi sang "ĐÃ BUILD" + số mới nhất + việc tiếp; ②: supersede "ghế top theo phong độ", thêm 5 bài học build.
+=======
+## 2026-09-28 — Ngoại lệ MCQ: dạng nâng cao (mức 4–5) không có MCQ ⇒ trả lời ngắn (mig 202609281500)
+
+Thùy: "dạng nâng cao không có MCQ thì phải hiện trả lời ngắn chứ" ⇒ chọn "mức 4–5". `_btyeu_chon_cau` (dựng từ bản đang chạy): muc_do ≥ 4 VÀ cả dạng 0 MCQ
+⇒ điều kiện câu = kho_chuan + tra_loi_ngan + có đáp án; còn lại giữ `_kho_dk_mcq_sql`. Kèm chạy `fn_btyeu_bu_retest_ton()`.
+Đo rollback: dạng chờ retest mà không có câu 12 → 3 (3 còn lại mức 2–3: đúng luật). Mẫu: T108010103 (mức 1) & T108020202 (mức 4, có MCQ) ⇒ 5/5 MCQ
+(câu gốc tra_loi_ngan nhưng có form 4 đáp án đã duyệt — vẫn là MCQ); T107010506 (mức 5, 0 MCQ) ⇒ 5 câu TLN. 3 dạng mức 4 chỉ có tự luận ⇒ vẫn học giấy.
+Sửa CLAUDE.md + spec-bo-tro §4 ghi rõ ngoại lệ (luật cũ "MCQ tuyệt đối, không nhánh lùi" 20/09).
+>>>>>>> a53ddd38ef74b7a0004bbf83685ca806cb1497b6

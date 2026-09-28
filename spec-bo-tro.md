@@ -103,7 +103,9 @@ Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt d
 - Mọi bài của ca (luyện · test cuối ca · retest · phiếu giấy) chọn câu qua **`_btyeu_chon_cau`** với điều kiện DUY NHẤT **`_kho_dk_mcq_sql`** =
   `kho_chuan` + (trắc nghiệm gốc có đáp án | có `dai_cau_form_tn` ĐÃ DUYỆT). `_kho_snapshot_cau` tự hiện form thành 4 đáp án. Né câu em đã gặp
   trong ca; cạn thì lặp lại câu MCQ.
-- **KHÔNG có nhánh lùi** sang trả lời ngắn/đúng-sai. (19/09 từng để "dạng 0 MCQ thì tạm ra TLN" — CEO bác 20/09: luật là luật.) Dạng chưa có MCQ ⇒
+- **Ngoại lệ duy nhất (CEO 28/09):** dạng **mức độ 4–5** (bản đồ `muc_do`) mà cả dạng KHÔNG có câu MCQ nào ⇒ dùng câu **trả lời ngắn** có đáp án (kho chuẩn)
+  — trong `_btyeu_chon_cau`, áp cho luyện · test cuối ca · retest · phiếu giấy. Mức 1–3 (hoặc mức 4–5 có MCQ) vẫn MCQ tuyệt đối.
+- Ngoài ngoại lệ trên: **KHÔNG có nhánh lùi** sang trả lời ngắn/đúng-sai. (19/09 từng để "dạng 0 MCQ thì tạm ra TLN" — CEO bác 20/09: luật là luật.) Dạng chưa có MCQ ⇒
   app báo "Dạng này chưa có câu TRẮC NGHIỆM — em học với thầy cô trên giấy"; việc cần làm là SINH + DUYỆT MCQ (phiên MCQ, `spec-mcq-quy-trinh-sinh.md`).
 - Dữ liệu cũ còn câu trả lời ngắn ⇒ TA được **tích lại Đúng/Sai câu TLN** trong ca (`fn_btyeu_ta_sua_ket_qua`; log `bai_lam_cau_sua_log`; giữ
   `cham_at`; MCQ không cho chỉnh).
