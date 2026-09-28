@@ -63,6 +63,11 @@ img,svg,image{-webkit-user-drag:none}
   .hero h1{margin:0;font-size:clamp(40px,11vw,62px);line-height:1;font-weight:700;letter-spacing:1px;
     color:#fff;-webkit-text-stroke:2px #3a1f9a;paint-order:stroke fill;text-shadow:0 5px 0 #3a1f9a}
   .hero .tag{font-size:15px;opacity:.9;font-weight:500;margin-top:6px;text-align:center}
+  .ded{display:flex;justify-content:center;margin-top:8px}
+  .ded span{font-size:14px;font-weight:600;color:#5a3a00;background:linear-gradient(180deg,#ffe58a,#ffc83d);padding:5px 14px;border-radius:999px;
+    box-shadow:0 3px 0 #d99a16;transform:rotate(-2deg);animation:wig 3s ease-in-out infinite}
+  .ded b{font-weight:700}
+  @keyframes wig{50%{transform:rotate(2deg) scale(1.03)}}
   @keyframes bob{50%{transform:translateY(-6px) rotate(-4deg)}}
   .name{display:flex;gap:8px;align-items:center;background:#fff;border-radius:20px;padding:6px 6px 6px 14px;box-shadow:0 6px 0 rgba(40,20,120,.22)}
   .name span{font-size:22px}
@@ -185,6 +190,7 @@ img,svg,image{-webkit-user-drag:none}
     <div>
       <div class="hero"><img src="assets/scene/obj/owl.webp" alt=""><h1>Xếp Chữ</h1></div>
       <div class="hero tag">Sắp lại các chữ cái bị xáo thành cụm từ đúng!</div>
+      <div class="ded"><span>✨ This game was made for <b>Trần Bảo Lộc</b> 💛</span></div>
     </div>
     <div class="name" id="nameBox"><span>👤</span><input id="ten" maxlength="20" placeholder="Nhập tên của bạn…" autocomplete="off"></div>
     <div class="chips" id="tenGan"></div>
