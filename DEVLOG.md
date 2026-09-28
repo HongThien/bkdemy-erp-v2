@@ -30525,3 +30525,9 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   B-L4 vòng quay theo môn (≥2 nhiệm vụ ngày của môn đó → 1 lượt môn đó; giai đoạn đầu chỉ vòng Toán; khi mở môn 2 thì unique
   `may_man_hs_luot (hs, ngay)` → `(hs, ngay, mon)` bằng migration mới). Spec: phạm vi triển khai Toán trước, thiết kế vẫn đối xứng,
   bật môn bằng cờ cấu hình. Còn chờ: B-L3..7, chia 10/15/5, bảng thưởng vòng quay.
+
+## 2026-09-28 (17) — Chốt vòng quay + ngân sách (B-L3..7, 10/15/5, bảng thưởng)
+
+- Thùy "OK": vòng quay đổi xu thật trong trần 30 · lượt quay = ≥2 nhiệm vụ ngày của môn · nhiệm vụ lẻ chỉ Điểm Chặng · bỏ thẻ ×2
+  rank · đua tháng/lớp không trả xu app · chia 10/15/5 · bảng 20/30/50/100/200 (40/35/18/6/1%). Thùy hỏi lại danh sách nhiệm vụ
+  cụ thể ⇒ trình lại N1–N3 / T1–T4 / M1–M2 trong chat, chờ gật.

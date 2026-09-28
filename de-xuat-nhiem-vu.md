@@ -117,8 +117,9 @@ Cuối tuần: đủ 12 nhiệm vụ → rương tuần · Cuối tháng: cấp 
 | # | Câu | Đề xuất |
 |---|---|---|
 | B-L1 · B-L2 | ✅ 30 xu / HS / tháng **mỗi môn**, chặn ở hàm chốt · **tạm chỉ Toán** | Đã chốt 28/09 |
-| B-L3 | Vòng quay đổi ra xu thật, nằm trong trần 30 | Có |
-| B-L4 | Lượt quay = xong ≥ 2 nhiệm vụ ngày (thay "tự luyện ≥ 70%") | Có |
-| B-L5 · B-L6 · B-L7 | Nhiệm vụ lẻ chỉ cho Điểm Chặng · bỏ thẻ ×2 rank · đua tháng / đua lớp không trả xu app | Có |
-| Chia 10 / 15 / 5 | Vòng quay / Nhiệm vụ / Thành tựu | Như bảng §2 |
-| Bảng thưởng vòng quay | 20 / 30 / 50 / 100 / 200 EXP | Như §2.1 |
+| B-L3 | ✅ Vòng quay đổi ra xu thật, nằm trong trần 30 | Đã chốt 28/09 |
+| B-L4 | ✅ Lượt quay = xong ≥ 2 nhiệm vụ ngày của môn (thay "tự luyện ≥ 70%") | Đã chốt 28/09 |
+| B-L5 · B-L6 · B-L7 | ✅ Nhiệm vụ lẻ chỉ cho Điểm Chặng · bỏ thẻ ×2 rank · đua tháng / đua lớp không trả xu app | Đã chốt 28/09 |
+| Chia 10 / 15 / 5 | ✅ Vòng quay / Nhiệm vụ / Thành tựu | Đã chốt 28/09 |
+| Bảng thưởng vòng quay | ✅ 20 / 30 / 50 / 100 / 200 EXP (40 / 35 / 18 / 6 / 1%) | Đã chốt 28/09 |
+| Danh sách nhiệm vụ §2.2 | N1–N3 · T1–T4 · M1–M2 · chặng 30 cấp | Thùy hỏi lại danh sách 28/09 — chờ gật |
