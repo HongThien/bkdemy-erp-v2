@@ -30154,3 +30154,20 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   = phân vị) + Sổ Sứ Mệnh (ngày sống 3 ngày, tuần dồn, 10 nv ⇒ rương, 30 cấp/tháng, khiên/thẻ gửi ngày) + đua lớp best-5.
 - **Giữ nguyên tắc chống cày ảo theo kiểu GAME:** điểm theo độ khó câu, câu đã đúng = 0, best-10/dạng/ngày, khoá 22:00, rank chỉ từ
   bài trên lớp (có giám sát), decay chỉ danh hiệu không đụng mastery/Elo. 7 câu chờ Thùy (Q1–Q7).
+
+## 2026-09-28 (6) — Giao diện app HS: nhiều em 9–12 tuổi chê Home v4 → đề xuất 6 skin tự chọn (Sparring, chưa code)
+
+- **Bối cảnh:** Thùy báo nhiều HS không thích design Home v4 (pastel "góc học tập", nhân vật anime, `THEME = {nam, nu}` trong
+  `HomeHS.tsx` gán màu theo `gioi_tinh`). Muốn 5–6 style cho HS tự chọn, có thể cho HS tự custom.
+- **Chẩn đoán (GIẢ THUYẾT, chưa hỏi HS):** (1) khoá màu theo giới tính · (2) nhân vật trông cấp 3 (mockup ghi 11A1) — NN/g: trẻ phản ứng xấu
+  với nội dung lệch 1 lớp · (3) khẩu hiệu tiếng Anh viết tay = giọng phụ huynh · (4) Pacifico nhỏ trên pastel, tương phản thấp ·
+  (5) màn đứng yên = danh sách việc, ngược spec thành tựu v2 (game).
+- **Đề xuất:** 6 skin cùng 1 bố cục, chỉ đổi token + gói hình + giọng văn: Khối vuông (Minecraft/Roblox) · Đấu trường (Liên Quân) ·
+  Thị trấn (Play Together) · Truyện tranh · Vũ trụ · Sổ sticker (= bản hiện tại bớt khẩu hiệu). + chế độ Gọn cho em lớn.
+  Custom 3 tầng: chọn skin (miễn phí) → phối đồ trong skin (màu nhấn/avatar ghép/khung/linh vật; free · xu · chỉ-qua-thành-tựu) →
+  KHÔNG cho tự thiết kế tự do. Lý thuyết: SDT (autonomy), choice overload, IKEA effect, Proteus effect.
+- **Kỹ thuật:** registry skin (biến CSS), cấm `if (skin===…)` trong component (như luật đối xứng môn); lưu `hs_giao_dien` ở DB (1 dòng/HS,
+  chưa có dòng = mặc định); skin = dữ liệu không-học-tập, không nhãn môn.
+- **Lộ trình:** P0 cho HS bầu 6 mẫu + hỏi mở → P1 khung skin + gỡ gán giới tính + 2 skin → P2 tầng 2 đi cùng GĐ1–2 thành tựu → P3 đủ 6 + skin mùa.
+- **Trang đề xuất (mockup chạy được):** https://claude.ai/artifact/M2w9GCJzYAaa1hB1NULg6x · 6 câu chờ Thùy (khối nào · có bầu P0 không ·
+  ai vẽ art · skin free hết? · PH/GV khoá skin? · linh vật chung hay riêng).
