@@ -30754,3 +30754,12 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   sao 1/2/4/6/9 tháng · còn mở C5/C8/C11/C12 · bẫy kỹ thuật); phần A–C giữ làm logic chi tiết/lịch sử, lệch thì §0 đúng.
 - HANDOFF ①: thêm mục "⭐ GAMIFICATION HS (28/09) — thiết kế đã chốt, chưa build", đánh dấu SUPERSEDE 2 dòng cũ về thành tích/Mythwings;
   ②: thêm "Bài học 28/09 — thiết kế gamification HS với CEO".
+
+### 28/09 chiều — Luồng kho P0 ở MÁY CÔNG TY (spec-luong-kho-p0.md §5)
+- Pull main (ff). Máy công ty có sẵn `claude` 2.1.263, `pdftoppm`, `E:\BK ACADEMY`.
+- **Luồng tự giải cũ vẫn chạy thật tới 16:22:** task `BKdemy-AutoGiaiBai` (10 phút/lần) chạy `bkdemy-erp-v2-auto/scripts/auto-giai-scheduler.mjs`
+  — worktree -auto đứng ở code 09/09, KHÔNG có công tắc `AUTO_GIAI_BAT` ⇒ công tắc trên main vô tác dụng. Đã **Disable** task (không xoá, Thùy gật).
+  Bài học: công tắc trong code chỉ có hiệu lực ở checkout mà lịch thực sự chạy — phải xem `Actions` của task trỏ đâu.
+- Test `kho.test.mjs` 28/28. T0 `Kho đề/Khối 12` trên E: = 358 tệp · 164 cặp · 30 đơn lẻ · 0 mơ hồ — khớp máy phụ.
+- `do-claude-p.mjs`: dừng ở bước 0 — CLI `claude` **chưa đăng nhập** (`authMethod: none`; app desktop đăng nhập riêng). Cần `claude login`.
+- `migrate --ghi-so 202609281225_kho_sua_log.sql`: bị chặn quyền tự động (ghi DB dùng chung) ⇒ Thùy tự chạy. Policy đọc §4(a) chưa chạy (SQL Editor, Thùy).
