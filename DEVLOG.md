@@ -30438,3 +30438,14 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Máy: localStorage chỉ còn tên gần đây + bộ. Ghi xếp hàng + thử lại 3 lần; mất mạng thì báo "chưa lưu được", game vẫn chơi được.
 - Rủi ro đã biết: trùng tên giữa 2 HS = 1 người (không đăng nhập) ⇒ nên gõ họ tên đầy đủ; anon gọi được hàm ghi ⇒ ai biết cách vẫn gửi điểm giả
   trong biên (game giải trí, chấp nhận).
+
+## 2026-09-28 (14) — Đề xuất NHIỆM VỤ ngày/tuần/tháng + ngân sách xu (C7 · C10)
+
+- **Đo DB (read-only):** EXP/em/tháng Toán ~2.100–2.500, KHTN ~1.100; xu chốt T8 TB 25/em (p90 39); 55 món quà 5–60 xu
+  (trung vị 22) ⇒ 1 tháng học ≈ 1 quà cỡ trung; T9 119 em đổi 165 lượt / 4.311 xu.
+- **Làm:** `de-xuat-nhiem-vu.md` — 3 logic mới (N-L1 bảng nhiệm vụ theo môn; N-L2 nhiệm vụ lẻ chỉ cho Điểm Chặng, thưởng qua
+  chặng 30 cấp + rương tuần kiểu battle pass ⇒ ngân sách tính trước; N-L3 bỏ thẻ ×2 Điểm Rank vì trái L2). Bộ: ngày N1 Thử thách ·
+  N2 Luyện 20 · N3 Sửa sai (sống 3 ngày, +10); tuần T1 BTVN đúng hẹn · T2 ET ≥80% · T3 Thử thách 4 ngày · T4 Lấp lỗ (+40, dồn); rương
+  khi 12 nv/tuần; tháng M1 MT bứt phá (hạng tăng hoặc top 30%) · M2 Thử thách 15 ngày (+150); chặng 30 cấp × 50, +30 EXP/cấp,
+  mốc 10 sticker TV · 20 chọn ô trước Chiếm Đất · 30 khung tháng + 300 EXP; rương +100 EXP. Ước lượng: cày đều +16 xu/tháng/môn
+  (+64%), chăm vừa +7, không app +2–3. Chờ Thùy chốt N-L1..3, N-D1..3.

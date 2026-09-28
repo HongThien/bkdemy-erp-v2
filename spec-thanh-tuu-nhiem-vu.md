@@ -195,6 +195,8 @@ Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như c�
 >
 > **C9:** theme = hành trình "người thường → thần", tên tiếng Anh.
 >
+> **C7 · C10 (28/09):** đề xuất nhiệm vụ + ngân sách xu ở `de-xuat-nhiem-vu.md`. Chờ chốt 3 điểm logic (N-L1..3) + bộ số (N-D1..3).
+>
 > Số đo DB: BK có **1 cơ sở** ⇒ không cần tầng cơ sở (A4).
 
 | # | Việc | Thuộc |
