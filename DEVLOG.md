@@ -30802,3 +30802,9 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
   Không có pg_cron ⇒ chốt huy hiệu gắn quy trình chốt xu tháng, hàm idempotent.
 - Tự quyết (chờ Thùy bác): `vang_phep` = vắng (A1) · `xin_phep` = không đúng hạn (A2) — theo luật "không nghỉ". Mô hình nối N–N đơn giản
   thành vai `chuan`/`them` theo huy hiệu (đúng xlsx), thay `huy_hieu_cap_dieu_kien` theo từng sao ở A5.7.
+- (tiếp) **Bẫy đăng nhập:** app desktop đăng nhập ≠ CLI đăng nhập. `.claude.json` có `oauthAccount` (app ghi) nhưng `.credentials.json` chỉ có token MCP
+  ⇒ `claude -p` "Not logged in". Thùy chạy `claude auth login` ⇒ `loggedIn:true, claude.ai, max`.
+- **`do-claude-p.mjs` chạy thật lần đầu — PHÁN:** (1) chạy nền bằng subscription ĐƯỢC · (2) `/ten-skill` nạp skill CÓ · (3) `--json-schema` ĐÚNG khuôn.
+  Số liệu: A thư mục trống 80.222 token vào / **2 lượt** / 22,6s · B trong repo 55.957 / 1 lượt / 69,8s · C skill+khuôn 39.314 / 2 lượt / 72,4s, chi phí ước $0,13–0,32/lượt gọi trivial.
+  ⚠ Phán (4) "CLAUDE.md đắt thêm −24.265" là SAI PHÉP SO: A đi 2 lượt, B 1 lượt ⇒ phải chia theo lượt: ~40k/lượt (trống) vs ~56k/lượt (repo) ⇒ repo+CLAUDE.md ≈ **+16k token/lượt**.
+  Hệ quả thiết kế: nền ~40k token/lượt gọi kể cả việc cộng 2 số ⇒ với hàng chục nghìn câu PHẢI gom nhiều câu/lượt gọi + chạy từ thư mục riêng (không CLAUDE.md repo) + cắt bớt tool; mỗi lượt ~20–70s.
