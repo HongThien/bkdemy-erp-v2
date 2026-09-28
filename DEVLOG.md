@@ -30685,3 +30685,21 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Dựng lại xlsx phase 1: 54 thành tựu × 8 huy hiệu, 40 cấp; kiểm Python 40/40 khớp. Spec A5.5 thêm khối PHASE 1.
 - Bài học: t đưa ~104 cấp ngay vòng đầu — thiết kế đầy đủ ≠ thứ HS nhìn thấy ở phase đầu. Lần sau luôn tách "bản đầy đủ" và "phase 1
   vừa phải" ngay từ đề xuất.
+
+## 2026-09-28 (25) — Skin RPG "méo giống ảnh gốc": ảnh toàn cảnh ChatGPT KHÔNG nằm trong zip → đổi luật đơn + sửa nhanh
+
+- **Thùy:** mở app (laptop) thấy RPG khác ảnh gốc — ảnh gốc có nhân vật anime + mèo, lâu đài ngang, 8 icon, banner tím/hồng, bố cục như game.
+  Ảnh đó (`public/bk-ui/Anh nền cấp 3.png`, 14:15) ChatGPT vẽ cùng lúc Đơn 4 nhưng KHÔNG có trong zip v1 (8 file, đã liệt kê lúc nhận).
+- **Sai (Claude):** đơn chỉ-asset (bỏ Pha B/C) do t đề ra ⇒ ảnh toàn cảnh không bắt buộc đi kèm, mảnh không buộc khớp ảnh. Ghi "đạt v1" là
+  sai — chỉ đạt so với danh sách mảnh t tự liệt kê. Thùy: "phải nhận cả ảnh toàn cảnh và mô tả vị trí thì mới làm được".
+- **Đổi luật (Thùy chốt):** mọi kit đủ 3 phần — reference mọi khổ màn · cột **Vị trí & cỡ** · đủ asset thấy trong ảnh. Sửa kit §2/§4/§8,
+  `design-check` (bỏ `--chi-asset`, rớt khi thiếu cột), HANDOFF-PIPELINE §8. `DON-HANG-SKIN-HS.md`: thêm "BỐ CỤC CHUNG lớp 9–12" (lấy từ ảnh
+  gốc RPG: nhân vật cột trái, lời chào + cấp/XP/xu/Elo, 2 banner, lưới 4 cột; bản dọc điện thoại) · Đơn 3 v2 (Lo-fi làm lại) · Đơn 4 v2
+  (RPG: giữ ảnh gốc, thêm nút Hình nền, vẽ nốt khổ dọc + trạng thái, sinh đủ nhân vật nam/nữ, 2 tranh nền ngang+dọc, 16 icon).
+- **Lo-fi v1 trả lại:** 2 tranh nền là khối hình ghép bằng code, 2 biến thể lệch TB 0,4/255, DESIGN.md thiếu 4/6 mục.
+- **Sửa nhanh bản đang chạy (tạm, chờ kit v2):** RPG thêm lớp phủ tối dần xuống trên tranh nền (màn ngang không còn lâu đài tràn khắp),
+  thẻ "Việc tiếp theo" RPG nền xanh trong mờ viền vàng (hết mảng vàng đặc), tấm mờ sau tên, ô thiếu icon vẽ ⇒ dấu ✦ vàng thay emoji,
+  ET thôi mượn icon Bài trên lớp, widget luôn lưới 2/3 cột (1 widget không kéo hết bề ngang). Registry thêm `theTiep`/`nenTen`/`dauThayIcon`.
+- **Còn:** dựng lại Home 9–12 theo BỐ CỤC CHUNG khi có kit v2 · cấp/XP đang chỉ có công thức JS (`src/gami/level.js`) ⇒ phải chuyển sang hàm
+  Postgres (§2.0) trước khi đưa lên Home · 2 file Thùy thả vào `public/bk-ui/` (ảnh gốc + lofi zip) đã chép sang design/handoff — bản trong
+  public/ nên gỡ (chờ Thùy gật, luật xoá).

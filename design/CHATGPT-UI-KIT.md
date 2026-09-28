@@ -68,9 +68,12 @@ Gửi bảng để duyệt danh sách asset **trước khi sinh** bất kỳ ả
 
 ---
 
-**ĐƠN CHỈ-ASSET** (từ 28/09, skin app HS): khi đơn ghi "Bỏ Pha B và C", bố cục + chữ + thẻ đã do code dựng —
-bạn KHÔNG vẽ mockup, KHÔNG có `reference/`; vào thẳng Pha D, sinh đúng danh sách file trong đơn, DESIGN.md chỉ
-kiểm kê các file đó. Kích thước trong đơn ưu tiên hơn mục 5.
+**MỌI KIT ĐỀU ĐỦ 3 PHẦN — KHÔNG CÓ "ĐƠN CHỈ SINH ASSET"** (Thùy chốt 28/09). Kit giao về LUÔN có:
+① `reference/` ảnh toàn cảnh đã duyệt (mọi khổ màn trong đơn) · ② DESIGN.md có cột **Vị trí & cỡ** cho từng phần tử ·
+③ `assets/` có **đủ** mọi minh hoạ / nhân vật / trang trí / tranh nền **thấy trong ảnh toàn cảnh**.
+Vì sao: 28/09 kit `hs-skin-rpg-v1` giao 7 mảnh rời không kèm ảnh toàn cảnh; ảnh toàn cảnh ChatGPT vẽ cùng lúc (có nhân vật
+anime + 8 icon khác) lại KHÔNG nằm trong zip và các mảnh của nó KHÔNG được sinh ⇒ lập trình viên dựng ra màn khác hẳn ảnh
+Thùy đã xem. Ảnh toàn cảnh nào bạn vẽ ra cũng phải vào `reference/`, và mọi thứ trong ảnh đó phải có file.
 
 ---
 
@@ -118,8 +121,14 @@ Mỗi phần tử nhìn thấy trong mockup = **đúng 1 dòng**. Thiếu dòng 
 | 10 | footer | Sách + cốc | DECOR | — | nam/nữ | decor/decor_books_male.png, _female.png | góc phải dưới |
 | 11 | nền | Tranh nền | BACKDROP | — | nam/nữ | backdrop/backdrop_male.png, _female.png | trời mây pastel, không chữ |
 
-`Vùng` = top / hero / banner / body / footer / nền (mô tả bằng lời, KHÔNG cần toạ độ — lập trình viên đo từ
-ảnh reference). Thứ tự dòng = thứ tự từ trên xuống, trái sang phải.
+`Vùng` = top / hero / banner / body / footer / nền. Thứ tự dòng = thứ tự từ trên xuống, trái sang phải.
+
+**Cột bắt buộc thêm từ 28/09 — `Vị trí & cỡ`** (đặt ngay sau cột `Phần tử`): mô tả BẰNG LỜI, theo TỪNG khổ màn trong đơn,
+3 ý: **neo** vào đâu (mép trái / giữa / góc trên phải / ngay dưới phần tử 05…) · **chiếm bao nhiêu** (≈% bề ngang và bề
+cao màn, hoặc so với phần tử khác: "cao bằng 2 hàng ô") · **đè / nằm sau** cái gì (nhân vật đè lên tranh nền, bong bóng thoại
+đè lên vai nhân vật…). Không cần toạ độ pixel. Ví dụ:
+`iPad ngang: cột trái, rộng ≈35% màn, đáy chạm mép dưới, đầu cao ≈75% màn; nằm SAU bong bóng thoại · Điện thoại dọc: ẩn`.
+Phần tử nào đổi chỗ giữa 2 khổ màn (vd điện thoại dọc gập 4 ô thành 2 cột) PHẢI ghi rõ từng khổ.
 
 ---
 
@@ -208,6 +217,10 @@ base64, no <text>) for: [a rounded yellow key icon].
 6. Backdrop **không** có chữ, thẻ, nhân vật, icon? Mỗi biến thể là ảnh khác nhau thật?
 7. Tên file đúng tiền tố/hậu tố, đúng thư mục, khớp cột "File asset" trong bảng kiểm kê?
 8. DESIGN.md đủ 6 mục? Zip không có thư mục thừa?
+9. **Đếm đối chiếu ảnh toàn cảnh ↔ assets/:** mở từng ảnh `reference/`, đếm mọi hình minh hoạ / nhân vật / trang trí /
+   tranh nền nhìn thấy — số đó có BẰNG số file tương ứng trong `assets/` không? Thiếu 1 cái = chưa đóng zip.
+10. Mọi ảnh toàn cảnh bạn đã vẽ trong context này (kể cả khi đơn không đòi) đều nằm trong `reference/`?
+11. Bảng kiểm kê có cột `Vị trí & cỡ` điền cho MỌI dòng, đủ từng khổ màn trong đơn?
 
 Sai câu nào → sửa rồi mới đóng zip. Không viết "PASS" thay cho việc nhìn ảnh.
 
