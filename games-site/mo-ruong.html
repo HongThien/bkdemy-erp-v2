@@ -134,7 +134,7 @@
   <canvas id="gl"></canvas>
   <div id="ui">
     <div class="hint"><div class="t" id="hintT">Chọn rương và bấm MỞ RƯƠNG</div><div class="s" id="hintS">LƯỢT 1</div></div>
-    <div class="legend" id="legend"><span>🎀 Quà 1 · 🍀 Quà 2</span><span>💎 <b>Quà bí ẩn</b> quyết định: 🎁 hộp nhỏ = xịt · 🪙 vàng = thắng</span><span>Tối đa <b>gấp ba</b> giá rương</span></div>
+    <div class="legend" id="legend"><span>🎀 Quà 1 · 🍀 Quà 2 · 💎 Quà 3</span><span><b>Món nào cũng có thể nổ hũ</b> — mở hết mới biết lãi hay lỗ</span><span>Tối đa <b>gấp ba</b> giá rương</span></div>
     <button id="histBtn">📜 Lịch sử</button>
     <div id="histPanel"><table><thead><tr><th>#</th><th>Tên</th><th>Rương</th><th>3 quà</th><th style="text-align:right">Tổng</th></tr></thead><tbody id="hist"></tbody></table></div>
 
@@ -3857,7 +3857,7 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
   const TIER_LOP={0:'Quà',1:'Hộp quà nhỏ',2:'Hộp quà to',3:'Thỏi vàng',4:'Đống vàng',5:'NÚI VÀNG'};
   const $=id=>document.getElementById(id);
   const CHESTS=[{name:'Rương Gỗ',pill:'w',model:'wood'},{name:'Rương Bạc',pill:'s',model:'silver'},{name:'Rương Vàng',pill:'g',model:'gold'}];
-  const SLOTS=[{lb:'Quà 1',ic:'🎀'},{lb:'Quà 2',ic:'🍀'},{lb:'Quà bí ẩn',ic:'💎'}];
+  const SLOTS=[{lb:'Quà 1',ic:'🎀'},{lb:'Quà 2',ic:'🍀'},{lb:'Quà 3',ic:'💎'}];
   // Thùy 26/09 — giống Chiếm Đất: HOẶC THUA ĐẬM (tổng 20%–50% giá) HOẶC THẮNG ĐẬM (150%–300%, tối đa GẤP BA), không hoà.
   // Bộ Chuẩn đúng 50% thua / 50% thắng, gấp ba 5% ⇒ tỉ lệ chi ~110% (TB 3 rương). Hào phóng ~1.25, Tiết kiệm ~0.89.
   const K=[0.2,0.35,0.5,1.5,2.0,3.0],BASE=0.2;
@@ -3868,8 +3868,8 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
   const TIER={0:{n:'Xịt',c:0x8a93b8,models:['cookie'],size:.55},1:{n:'Hộp quà nhỏ',c:0x5ee08a,models:['present_A_red','present_C_blue','present_D_green'],size:.6},
     2:{n:'Hộp quà to',c:0x7cc4ff,models:['present_A_red','present_C_blue','present_D_green','present_sphere_A_red'],size:.95},
     3:{n:'Thỏi vàng',c:0xffd166,models:['Gold_Bar','Gold_Bars','Gold_Nugget_Medium'],size:1.15},
-    4:{n:'ĐỐNG VÀNG · GẤP ĐÔI',c:0xffb020,models:['Gold_Bars_Stack_Medium'],size:1.4},
-    5:{n:'NÚI VÀNG · GẤP BA',c:0xff7bd1,models:['Gold_Bars_Stack_Large'],size:1.7}};
+    4:{n:'ĐỐNG VÀNG',c:0xffb020,models:['Gold_Bars_Stack_Medium'],size:1.4},
+    5:{n:'NÚI VÀNG',c:0xff7bd1,models:['Gold_Bars_Stack_Large'],size:1.7}};
   const tierTen=t=>LOP?TIER_LOP[t]:TIER[t].n;
 
   function fresh(cfg){return {cfg:cfg||JSON.parse(JSON.stringify(DEF)),history:[],thu:0,chi:0}}
@@ -3881,13 +3881,26 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
   // ---------- Math ----------
   function ev(prof){const tot=prof.reduce((a,b)=>a+b,0)||1;return prof.reduce((e,w,i)=>e+K[i]*w/tot,0)}
   const payOf=(k,P)=>Math.max(Math.ceil(BASE*P),Math.round(k*P));
-  // 3 quà LEO THANG: quà 1, 2 luôn nhỏ (hồi hộp), QUÀ BÍ ẨN quyết định. Thua: cả 3 là hộp nhỏ/xịt. Thắng: quà bí ẩn là vàng.
+  // Thùy 29/09: BỎ luật "quà 1–2 luôn nhỏ, quà bí ẩn quyết định" (có quy luật thì hết là game may mắn). Tổng (đã rút) KHÔNG đổi — chỉ
+  // đổi CÁCH CHIA thành 3 món theo KỊCH BẢN NGẪU NHIÊN: nổ 1 món (45%, rơi vào quà 1/2/3 như nhau) · hai món to (25%) · chia đều (30%).
+  // Hình mỗi món theo GIÁ TRỊ CỦA CHÍNH MÓN ĐÓ ⇒ núi vàng có thể ra ngay quà 1; mở 1–2 món vẫn chưa biết tổng lãi hay lỗ.
   function rnd01(){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]/4294967296}
-  function splitGifts(total,P,k){
-    if(k<1){const a=Math.round(total*(.25+.15*rnd01())),b=Math.round((total-a)*(.4+.2*rnd01()));return [a,b,total-a-b]}
-    const a=Math.max(1,Math.round(P*(.08+.12*rnd01()))),b=Math.max(1,Math.round(P*(.1+.15*rnd01())));return [a,b,total-a-b]}
-  // hình theo kết quả CẢ RƯƠNG (không theo tỉ lệ từng món): thua ⇒ hộp nhỏ; thắng ⇒ 2 hộp rồi vàng to dần theo mức thắng
-  function giftTiers(vals,P,k){return vals.map((v,i)=>v===0?0:k<1?1:i<2?(v/P>=.2?2:1):k>=3?5:k>=2?4:3)}
+  function chiaKichBan(total,buoc){ // 3 số là bội của `buoc`, tổng đúng = total
+    const x=rnd01,r=x();let f;
+    if(r<.45){const lon=.55+.25*x(),a=x();f=[lon,(1-lon)*a,(1-lon)*(1-a)]}          // nổ 1 món
+    else if(r<.70){const nho=.08+.14*x(),a=.4+.2*x();f=[(1-nho)*a,(1-nho)*(1-a),nho]} // hai món to
+    else{const a=.25+.17*x(),b=.25+.17*x();f=[a,b,Math.max(.16,1-a-b)]}               // chia đều
+    const s=f.reduce((p,q)=>p+q,0);f=f.map(v=>v/s);
+    for(let i=2;i>0;i--){const j=Math.floor(x()*(i+1));[f[i],f[j]]=[f[j],f[i]]}       // xáo VỊ TRÍ
+    const donVi=Math.round(total/buoc);
+    if(donVi<3){const v=[0,0,0];for(let k=0;k<donVi;k++)v[Math.floor(x()*3)]+=buoc;return v} // tổng quá nhỏ (xịt 1–2 xu)
+    let v=f.map(p=>Math.max(1,Math.round(donVi*p)));
+    let du=donVi-v.reduce((a,b)=>a+b,0);
+    while(du!==0){const i=du>0?v.indexOf(Math.max(...v)):v.indexOf(Math.max(...v));if(du<0&&v[i]<=1)break;v[i]+=du>0?1:-1;du+=du>0?-1:1}
+    return v.map(d=>d*buoc)}
+  function splitGifts(total,P,k){return chiaKichBan(total,1)}
+  // hình theo GIÁ TRỊ TỪNG MÓN so với giá rương (0 = xịt)
+  function giftTiers(vals,P,k){return vals.map(v=>tierOf(v/P))}
   function drawIdx(w){const tot=w.reduce((a,b)=>a+b,0);const a=new Uint32Array(1);crypto.getRandomValues(a);let r=(a[0]/4294967296)*tot;for(let i=0;i<w.length;i++){r-=w[i];if(r<0)return i}return w.length-1}
   function pickMode(){const c=S.cfg,n=S.history.length;if(!c.ctrl||n<c.warm||S.thu===0)return 'chuan';const r=S.chi/S.thu,net=S.chi-S.thu;
     if(net>=c.budget||r>c.target+c.band)return 'tietkiem';if(r<c.target-c.band)return 'haophong';return 'chuan'}
@@ -4077,7 +4090,9 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
       $('bTot').textContent=`${cur.name?cur.name+' · ':''}+${total} EXP`;
       $('bSub').textContent=GIAI_LOP[cur.giai]+' · EXP đã vào tài khoản 🎉';
       window.BKLopBang&&BKLopBang.xong(cur.name);
-      $('banner').classList.add('show');confetti(cur.tiers[2]>=4?220:90);
+      // báo ERP "diễn xong" ⇒ ERP mới hiện +EXP / 🧋 của bạn này (chống lộ kết quả ở màn Cast chung — Thùy 29/09)
+      if(KENH_LOP&&cur.hid)KENH_LOP.send({type:'broadcast',event:'mo',payload:{game:'mo_ruong',loai:'xong',hid:cur.hid,t:Date.now()}});
+      $('banner').classList.add('show');confetti(Math.max(...cur.tiers)>=4?220:90);
       // Thùy 28/09: quà đặc biệt TRÀ SỮA (DB rút cùng lượt, siêu hiếm) — TV chỉ báo, quà trao tay
       if(cur.qua==='tra_sua'){$('bSub').innerHTML='🧋 <b>TRÚNG TRÀ SỮA!</b> Quà đặc biệt siêu hiếm · '+GIAI_LOP[cur.giai]+' · +'+total+' EXP đã vào tài khoản';shake=.35;if(window.bkTraSua)window.bkTraSua({ten:cur.name,giai:cur.giai,exp:total,sound:S.cfg.sound});else{fanfare();confetti(500)}}
       $('btnReveal').style.display='none';$('btnDone').style.display='';
@@ -4188,14 +4203,15 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
   $('btnSummary').onclick=openSummary;$('sumClose').onclick=()=>sum.close();
 
   // ---------- Bản buổi học: nhận lệnh từ ERP ----------
-  const hangLop=[];let nLop=0;
+  const hangLop=[];let nLop=0,KENH_LOP=null;
   // 3 quà: 2 món đầu nhỏ, món cuối to dần theo GIÁ TRỊ THẬT của EXP, NGƯỠNG CHUNG mọi giải (loại rương đã báo giải):
   // ≤140 hộp to · ≤200 thỏi vàng · ≤280 đống vàng · >280 núi vàng. (Bản đầu chia theo vị trí trong khoảng từng giải ⇒ Giải 3
   // 200 EXP ra NÚI VÀNG còn Nhất 340 chỉ Đống vàng — ngược nguyên tắc 'hình to theo giá trị' Thùy chốt 26/09.)
-  function curLop(ep){const exp=Math.max(1,+ep.exp||0),g=+ep.giai||3;
-    const a=Math.max(10,Math.round(exp*(.05+.05*rnd01())/10)*10),b=Math.max(10,Math.round(exp*(.07+.07*rnd01())/10)*10),c=exp-a-b;
-    const t3=exp<=140?2:exp<=200?3:exp<=280?4:5;
-    return {name:ep.ten||'',giai:g,chest:g===1?2:g===2?1:0,price:0,k:0,vals:[a,b,c],mults:[0,0,0],tiers:[1,1,t3],revealed:0,mode:'lop',n:++nLop,qua:ep.qua||null}}
+  // Thùy 29/09: chia 3 món theo kịch bản ngẫu nhiên (chiaKichBan) — hình mỗi món theo EXP của CHÍNH món đó:
+  // ≤30 hộp nhỏ · ≤60 hộp to · ≤110 thỏi vàng · ≤180 đống vàng · >180 núi vàng (ngưỡng chung mọi giải; loại rương đã báo giải).
+  const tierExp=v=>v<=30?1:v<=60?2:v<=110?3:v<=180?4:5;
+  function curLop(ep){const exp=Math.max(10,Math.round((+ep.exp||0)/10)*10),g=+ep.giai||3,vals=chiaKichBan(exp,10);
+    return {name:ep.ten||'',hid:ep.hid||null,giai:g,chest:g===1?2:g===2?1:0,price:0,k:0,vals,mults:[0,0,0],tiers:vals.map(tierExp),revealed:0,mode:'lop',n:++nLop,qua:ep.qua||null}}
   function bomHang(){if(!hangLop.length||!chestObjs.length)return;if(phase==='pick')startOpen(hangLop.shift());else if(phase==='done')nextTurn()}
   function ketNoiLop(){
     document.body.classList.add('lop');
@@ -4207,9 +4223,10 @@ const ASSETS = {"chests":{"wood":"Z2xURgIAAAAEPgEAZA0AAEpTT057ImFzc2V0Ijp7Imdlbm
     if(!BUOI)return;
     const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
     s.onload=()=>{const sb=window.supabase.createClient(SB_URL,SB_KEY);
-      const ch=sb.channel('bk-lop:'+BUOI,{config:{broadcast:{self:false},presence:{key:'tv'}}});
+      const ch=sb.channel('bk-lop:'+BUOI,{config:{broadcast:{self:false},presence:{key:'tv'}}});KENH_LOP=ch;
       // cùng kênh bk-lop:<buổi> với các TV game khác ⇒ chỉ nhận lệnh của ĐÚNG game này (GV có thể mở 2 tab TV)
-      ch.on('broadcast',{event:'mo'},m=>{const p=m.payload||{};if(p.game&&p.game!=='mo_ruong')return;window.BKLopBang&&BKLopBang.cho(p.ten);hangLop.push(p);bomHang()});
+      ch.on('broadcast',{event:'mo'},m=>{const p=m.payload||{};if(p.game&&p.game!=='mo_ruong')return;if(p.loai)return; // loai = tin báo (xong…), không phải lệnh mở
+window.BKLopBang&&BKLopBang.cho(p.ten);hangLop.push(p);bomHang()});
       ch.on('broadcast',{event:'ds'},m=>{window.BKLopBang&&BKLopBang.cap(m.payload)}); // bảng lớp (chế độ 1)
     ch.subscribe(t=>{if(t==='SUBSCRIBED')ch.track({role:'tv'})})}; // ERP thấy "● TV đã nối" qua presence
     s.onerror=()=>hint('Không tải được thư viện kết nối — kiểm tra mạng','BUỔI HỌC');

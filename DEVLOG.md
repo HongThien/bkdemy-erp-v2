@@ -31257,3 +31257,21 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Ghi bảng kiểm + đơn bổ sung #28–#34 (dán vào đúng context đang vẽ) + bảng đổi tên vào `DON-HANG-SKIN-HS.md` dưới Đơn 1 v2.
 - Việc CODE (chưa làm, chờ đủ hình): styles/town.ts (sáng, Baloo 2 trong hs.html) · migration nới CHECK hs_giao_dien.skin (đang toi_gian/dau_truong/
   y2k/soft/rpg — chưa có town) · Home ảnh toàn cảnh có linh vật + bong bóng thoại + thanh Cấp/xu mà hợp đồng Skin/HomeHS912 chưa có chỗ.
+
+### 29/09 — Mở Rương: lộ kết quả trước khi mở xong + bỏ luật "2 quà đầu luôn nhỏ" (Thùy)
+- **Sai:** ERP hiện ngay "+EXP" (và 🧋) lúc bấm mở ⇒ cả lớp đọc kết quả trước khi TV mở xong rương.
+- **Sửa:** payload `'mo'` mang `hid`; TV Mở Rương gửi lại `{game:'mo_ruong',loai:'xong',hid}` sau khi mở món 3, Chiếm Đất gửi khi đóng thẻ kết quả.
+  ERP (`XepHangBuoi.tsx`) giữ dòng "🎁 đang mở…" (cả list lẫn TrinhChieu) tới khi nhận `xong`, phòng hờ 25s nếu TV rớt. TV bỏ qua payload có `loai`.
+  Đo trên trình duyệt: `xong` về lúc 9,8s — sau khi mở món 3, không có gì lọt ra sau món 1–2.
+- **Luật chia mới (`chiaKichBan`):** 3 kịch bản ngẫu nhiên — nổ 1 món (45%) · hai món to (25%) · chia đều (30%), xáo vị trí. Giả lập 20k rương:
+  món to nhất ở quà 1/2/3 = 36/33/31% · NÚI VÀNG mỗi vị trí 10% · tương quan quà 1↔tổng 0,23 · đoán lãi/lỗ sau 2 món trúng 67%.
+  Tổng vẫn do DB rút, không đổi phân phối EXP. Bản lớp chia theo bội 10. Sửa luật `luat-choi-game.md` + `luat-choi.html`.
+
+## 2026-09-29 (6) — Mockup Thế giới BK (bấm được) + Thùy thêm: tên kèm lớp · tab Bạn bè + kết bạn
+
+- Thùy: "cứ làm mockup đi đã, chốt xong rồi mới để ChatGPT design" ⇒ Đơn 5 chờ; mockup https://claude.ai/artifact/QNDbroHiEMNPctHjS5dWTb (style RPG,
+  hình thật cúp/rương/sao/nền Lâu đài; icon chưa vẽ = emoji tạm): kênh Thế giới/Lớp, tin S/A/B, thả 1 icon + 1 câu (gửi cập nhật tin, khen lại để đổi),
+  👑 Thầy cô khen, Tên|Mã HS, ⋯ ẩn tin/tương tác, dải "đang học cùng em" (đông/vắng), thông báo 20h, bảng câu cần chốt.
+- Thùy góp ý v1: ① tên phải kèm lớp mới biết là ai ⇒ chip lớp cạnh MỌI tên · ② phải có tab Bạn bè + kết bạn ("bạn là người ảnh hưởng lớn nhất") ⇒
+  v2: 3 tab Thế giới · Bạn bè · Lớp; tab Bạn bè = bạn đang học, lời mời (Đồng ý/Để sau), tin khoe + tin nỗ lực của bạn; + Kết bạn (tìm tên/mã/lớp,
+  gợi ý cùng lớp/bạn chung, 2 chiều). Spec §3.2/§6/§6b/§11 cập nhật; câu mở: giới hạn số bạn, huỷ/chặn, chế độ mã với bạn, push lời mời.
