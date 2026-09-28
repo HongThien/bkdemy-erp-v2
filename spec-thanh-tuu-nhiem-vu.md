@@ -172,7 +172,9 @@
 ### 0.7b Hồ sơ khoe (C11 phần profile — Thùy 28/09, mockup chờ Thùy design)
 - **Bấm vào avatar là mở** hồ sơ của chính em: đầu hồ sơ (khung avatar theo chương rank, tên, lớp, danh hiệu) · chọn môn · rank mùa · 3 huy hiệu tự chọn khoe · album thu gọn · tháng này (đua tháng / chặng / bản cứng) · kỷ niệm các mùa.
 - **Xem tường của nhau (kiểu mạng xã hội) = phase sau.** Phase này chỉ em tự xem + thẻ nhỏ trên TV lớp (hạng thấp không lộ — A8).
-- **Danh hiệu: dùng danh hiệu hiện có** (không chờ C5).
+- **Danh hiệu = giải thưởng tháng đã trao** (màn Trao giải: Xuất sắc / Tiến bộ / Chăm chỉ của lớp) — hiện giải gần nhất em nhận, vd "Xuất sắc tháng 9". Không chờ C5.
+- **Đừng lẫn 3 thứ (Thùy 28/09):** *bậc rank* (Captain, Hero, God of War… — chỉ ở khối Rank) · *huy hiệu* (Helios, Athena… — khối khoe + album) · *danh hiệu* (giải thưởng tháng — ô dưới tên). Mỗi thứ 1 chỗ, không dùng tên của thứ này cho thứ kia.
+- Đơn design gửi ChatGPT: `design/DON-HANG-GAMI-HS.md` (Huy hiệu · Nhiệm vụ + Album · Hồ sơ).
 
 ### 0.8 Còn mở — chưa bàn
 - **C5** Danh hiệu top theo dạng: logic A4 đã có (Điểm Dạng từ mọi nguồn, chốt tuần) — cấp / %, sàn, tốc độ giảm.

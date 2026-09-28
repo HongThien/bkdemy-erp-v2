@@ -31040,3 +31040,13 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
   (c) `DienOCau`/`SoTayHS` còn đường lùi cứng `'Toán'` khi không xác định được môn.
 - (28/09 tiếp) Thùy đổi ý: giữ **2 chế độ** — Chế độ 1 "TV riêng" (GV làm việc/cộng điểm trên máy tính, TV riêng chiếu game + BẢNG LỚP cả buổi để HS thi đua) · Chế độ 2 "Cast chung" (màn Trình chiếu 1 màn). Làm: ERP 2 nút "📺 Chế độ 1 · TV riêng" (mở trang game ?che_do=lop) / "🖥 Chế độ 2 · Cast chung" (overlay, iframe thêm `&nhung=1`); ERP gửi event `ds` {hs:[ten,giai,exp,qua]} qua kênh bk-lop mỗi khi tình hình đổi + khi TV vừa nối (presence). TV: `games-site/lib/bk-lop-bang.js` dùng chung — Chiếm Đất chèn đầu `#side`, Mở Rương thêm cột phải + thu `#stage` rồi resize; `nhung=1` không nạp. Chống lộ kết quả: game gọi `BKLopBang.cho(ten)` khi NHẬN lệnh mở ⇒ "🎁 đang mở…", `xong(ten)` khi diễn xong (Mở Rương: banner kết quả, cả nhánh trà sữa; Chiếm Đất: thẻ kết quả) mới hiện +EXP. Bắn Quà không đụng (đã có danh sách riêng).
 - Verify (trang game local + giả lập ERP qua supabase-js, kênh test, không DB): bảng hiện đúng + sắp xếp (đã mở lên trên, EXP cao trước, 🧋); mở cho Nhất 300: lúc mở "🎁 đang mở…" dù ERP đã gửi +300, diễn xong mới +300 & 3/5; nhung=1 không có bảng; Chiếm Đất bảng ở đầu #side; 0 lỗi console. ERP: typecheck sạch (chưa chạy thử ERP lần này — phần ERP chỉ thêm nút + gửi ds).
+
+## 2026-09-28 (38) — Hồ sơ khoe: mockup + quyết định · đơn ChatGPT 3 món · distill HANDOFF cuối ngày
+
+- Thùy: cần chỗ khoe profile (rank, huy hiệu…). T làm wireframe (bản em tự xem + bản bạn/TV xem). Thùy chốt: **bấm avatar mở** · **tường của nhau = phase sau** ·
+  **danh hiệu = giải thưởng tháng** (t hỏi lại vì "danh hiệu hiện tại" mơ hồ: tên bậc rank hay giải tháng) · "đừng lẫn mấy cái đấy" ⇒ tách bạch bậc rank /
+  huy hiệu / danh hiệu, ghi vào spec §0.7b.
+- Thùy: "viết md đặt hàng ChatGPT" cho Huy hiệu · Nhiệm vụ–Thành tựu · Profile ⇒ `design/DON-HANG-GAMI-HS.md` (khuôn DON-HANG-SKIN-HS: 3 khối ĐƠN ĐẶT HÀNG,
+  bảng "đừng lẫn 3 thứ", Đơn 1 huy hiệu gửi trước; giả định vẽ cho lớp 6–8).
+- Classifier quyền tự động lỗi tạm ~10 lượt (không ghi được file/commit) — chờ rồi làm lại, không lách.
+- HANDOFF ①: mục GAMIFICATION đổi sang "ĐÃ BUILD" + số mới nhất + việc tiếp; ②: supersede "ghế top theo phong độ", thêm 5 bài học build.
