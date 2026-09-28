@@ -30666,3 +30666,13 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - **Làm:** spec A5.5–A5.6 viết lại (10 loại = trang album; 3 phương diện = góc nhìn thiết kế; luật sao áp mọi dòng; bản cứng 1
   phôi/loại + gắn sao); `de-xuat-huy-hieu.md` nháp 3: 20 dòng trong 10 loại, 15 thành tựu phụ, bảng N–N chiều ngược (A2 BTVN đủ
   nuôi 12 cấp), album ~104. Chờ Thùy duyệt + H7/H8 + phôi bản cứng.
+
+## 2026-09-28 (23) — Ma trận output cuối: `ma-tran-thanh-tuu-huy-hieu.xlsx`
+
+- Thùy: "cho t ma trận đầy đủ… chăm chỉ/tiến bộ là góc nhìn thiết kế, không phải output cuối". Làm file Excel (openpyxl, cài
+  `pip --user` vì máy chưa có): sheet Ma trận 126 thành tựu (100 chính ★1–★5 của 20 dòng · 10 phụ ·1T cho ★4 · 12 phụ ·3T cho ★5 ·
+  4 bí ẩn) × 24 huy hiệu (10 loại), ô = nhãn sao, cột E đếm số cấp mỗi thành tựu nuôi (COUNTA); sheet Huy hiệu 104 cấp với số
+  điều kiện = COUNTIF về Ma trận; sheet Ghi chú (cách đọc/sửa, giả định H7/H8). Không nhãn phương diện.
+- **Không recalc được:** máy không có LibreOffice và `recalc.py` của skill dùng AF_UNIX (không chạy trên Windows) ⇒ bật
+  `fullCalcOnLoad` cho Excel tự tính khi mở + tự kiểm bằng Python: 104/104 cấp số điều kiện khớp, 162 ô nối N–N; A2·3T (BTVN đủ 3
+  tháng) nuôi nhiều nhất (7 cấp).

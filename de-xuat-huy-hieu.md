@@ -21,6 +21,10 @@
 
 ---
 
+> **Output cuối (ma trận đầy đủ, sửa được): `ma-tran-thanh-tuu-huy-hieu.xlsx`** — sheet *Ma trận* (126 thành tựu × 24 huy hiệu, ô = sao dùng), *Huy hiệu* (104 cấp, mỗi cấp cần gì, số điều kiện đếm bằng công thức từ Ma trận), *Ghi chú*. Tài liệu này là bản giải thích; khi hai nơi lệch nhau thì file Excel là bản cuối.
+
+---
+
 ## 1. THÀNH TỰU PHỤ — điều kiện trong 1 tháng, dùng chung cho 4★ / 5★ (N–N)
 
 | Mã | Thành tựu (trong 1 tháng) | Phương diện |
