@@ -31144,3 +31144,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   bọc thẻ (Rank/NhiemVu/Album/TuLuyen/HocTuDau/SoTay/ThongTin/ViXu/ThanhTuu).
 - **Chưa soi được:** màn làm bài/ET/tự luyện (cần đăng nhập HS) — chỉ kiểm bằng đối chiếu logic + tsc.
 - **Chờ Thùy gật:** xoá hẳn 4 skin thử (Tối giản/Đấu trường/Y2K/Soft Hàn) khỏi registry + 3 font; 12 em đang lưu skin thử (DB giữ nguyên, app tự ra RPG).
+
+## 2026-09-29 — Gửi lại đơn design gamification: thêm đơn Avatar Rank
+
+- Thùy: "gửi lại yêu cầu design: (1) quest daily/weekly/monthly + achievement · (2) huy hiệu · (3) avatar của rank".
+- Làm lại `design/DON-HANG-GAMI-HS.md`, đánh số theo 3 mục Thùy: Đơn 1 = màn Nhiệm vụ + Thành tựu (album) · Đơn 2 = bộ huy hiệu ·
+  **Đơn 3 MỚI = Avatar Rank** (biểu tượng 10 bậc theo 5 chương, màu chương lấy đúng `RankHS.tsx`; khung avatar 512 lỗ giữa 62% + bản 96;
+  sao rời; hào quang bậc thần; lớp phủ lên bậc; màn Rank chi tiết 4 trạng thái; không vẽ mặt người; khác hẳn ngôn ngữ hình huy hiệu:
+  rank = khiên/mũ trụ/vương miện, huy hiệu = huy chương tròn men màu) · Đơn 4 = Hồ sơ (gửi sau, dùng hình Đơn 2 + 3; khung avatar lấy từ
+  Đơn 3 thay "5 kiểu khung" tự định nghĩa). Thứ tự gửi: 2 + 3 (song song) → 1 → 4. HANDOFF sửa dòng thứ tự đơn.

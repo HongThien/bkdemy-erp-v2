@@ -482,7 +482,7 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
 
 **VIỆC TIẾP (theo thứ tự):**
 1. **Thùy:** chốt huy hiệu tháng 7 rồi 8 ở màn Huy hiệu › Chốt tháng (**chỉ admin** — mig 202609282350: DB chặn bằng `co_quyen_ghi('huyhieu')`, hết timeout: chốt T7 ~2s, T8 ~4s) · cấp lá **`huyhieu_trao`** (chỉ tab Trao bản cứng) cho vai GV — **KHÔNG** cấp `huyhieu` cho GV (Thùy 28/09: *"chốt 1 tháng 1 lần bấm tay, không cần GV — GV chỉ được báo trao quà"*) ·
-   gửi 3 đơn ChatGPT (Đơn 1 huy hiệu trước) · push + deploy khi muốn HS thấy.
+   gửi đơn ChatGPT `design/DON-HANG-GAMI-HS.md` (đánh số lại 29/09: Đơn 1 màn Nhiệm vụ + Thành tựu · Đơn 2 Huy hiệu · **Đơn 3 Avatar Rank MỚI** (biểu tượng 10 bậc + khung avatar + màn Rank) · Đơn 4 Hồ sơ) — gửi **Đơn 2 + 3 trước** (bộ hình), rồi 1, rồi 4 · push + deploy khi muốn HS thấy.
 2. Chốt tháng 9 từ 10/10. Theo dõi 01/10: nhiệm vụ + vòng quay luật mới tự bật.
 3. Còn làm: ghim 3 huy hiệu khoe (bảng mới) + tắt catalog cũ `thanh_tich_loai`/đổi FK `hoc_sinh_thanh_tich_ghim` (đụng bảng đang dùng — hỏi trước) ·
    màn Hồ sơ theo design · ô Home Rank/Nhiệm vụ (C11) · ví xu hiện dòng EXP nhiệm vụ/huy hiệu · danh hiệu top dạng (C5) · quà đua lớp (C8).
