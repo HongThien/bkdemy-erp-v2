@@ -368,18 +368,25 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
   Chiếm Đất: độc đắc 50 xu, ~50% bản đồ có, bỏ gõ tên. Mở Rương: hình quà theo giá trị (quà 1–2 nhỏ, quà bí ẩn quyết định), số hiện sau hình.
 - **Đoán Số:** vé 10 xu = 3 lượt, thưởng 100/35/20 xu (~108%), chỉ hiện xu thưởng; hàng chục dừng trước, hàng đơn vị bò chậm 7 số cuối.
 
-### Đã build (27/09 — ⭐ GAME TRONG BUỔI HỌC: xếp hạng buổi + Mở Rương bản lớp) — ĐỌC `spec-game-buoi-hoc.md` §5b–§6
+### Đã build (27–28/09 — ⭐ GAME TRONG BUỔI HỌC: xếp hạng buổi + game bản lớp) — ĐỌC `spec-game-buoi-hoc.md` §5b–§6
 - **Mỗi game 2 bản luật, 1 bộ code** (không copy file): mặc định = sự kiện; `?che_do=lop&buoi=<id>` = buổi học. Luật bản lớp do **Thùy viết**
-  (CTO chỉ hỏi output + nối ERP). Đã có luật: **Mở Rương**. Chiếm Đất / Đoán Số: CHỜ LUẬT (ô chọn game khoá "(chờ luật)").
+  (CTO chỉ hỏi output + nối ERP). Có luật: **Mở Rương** · **Chiếm Đất** (3 loại ô = 3 giải, EXP như Mở Rương, chọn ô bất kì) · **Bắn Quà**
+  (`ca_lop`: cả lớp 1 ván cá nhân/đội, khung `BanQuaLop.tsx`, mig `202609281425`). Đoán Số: CHỜ LUẬT. Quà đặc biệt 🧋 trà sữa rút ở DB
+  (`game_lop_qua_dac_biet`), ERP có nút "Đã trao". (Chiếm Đất/Bắn Quà/trà sữa do phiên khác làm 28/09.)
+- **2 CHẾ ĐỘ HIỂN THỊ** (Thùy 28/09, sau chốt Nhất/Nhì): **📺 Chế độ 1 · TV riêng** — GV làm việc trên ERP, TV riêng mở trang game = game +
+  **bảng lớp** (ERP gửi event `ds` qua kênh khi đổi + khi TV nối; `games-site/lib/bk-lop-bang.js`; số của bạn đang mở giấu tới khi diễn xong) ·
+  **🖥 Chế độ 2 · Cast chung** — overlay toàn màn trong ERP = iframe game `&nhung=1` + danh sách cả lớp theo giải, bấm "Mở" trên tên.
+  Trang game thật **`https://game.bkacademy.edu.vn`** (Vercel `bkdemy-erp-v2-2ogm`), không chặn iframe.
 - **Xếp hạng buổi** (khung 🏆 đầu tab "Chấm bài trên lớp", chỉ buổi thường, `src/screens/gami/XepHangBuoi.tsx`): gợi ý từ điểm `ingame`
   của CHÍNH buổi (không ET), bằng điểm = cùng hạng; GV chọn 1 Nhất + Nhì (có mặt >10 ⇒ tối đa 2 Nhì), còn lại Giải 3 (suy động) → Chốt
   (khoá, `buoi_hoc.giai_chot_at`, trigger log `buoi_giai_log`) · Mở lại chỉ khi chưa ai chơi · không đụng Elo.
 - **Lượt game:** 1 lượt/HS/buổi mang mức giải; `fn_buoi_game_choi` RÚT ở DB theo `game_lop_thuong` + ghi `buoi_game_luot` + `gami_exp_ledger`
   source **`exp_tren_lop`** (note = tháng buổi, mon = lop.mon) trong 1 transaction; ERP gửi kết quả xuống TV (kênh `bk-lop:<buổi>`, presence
   role=tv); TV chỉ diễn. Mở Rương lớp: Nhất 200–400 (TB300) · Nhì 200–300 (TB250) · Giải 3 100–200 (TB175), bước 20 ⇒ lớp 8 bạn TB 200 EXP/HS.
+- **Test thật:** Thùy chạy lớp 7S2 (28/09) → dữ liệu test ĐÃ XOÁ (Thùy gật; 2 dòng EXP 440 + 2 lượt + Nhất/Nhì + 2 log, buổi về chưa chốt).
 - **CHỜ THÙY:** chạy SQL Editor `202609272045_exp_tren_lop_vao_chot_xu_thang.sql` (chưa chạy ⇒ EXP game KHÔNG thành xu cuối tháng) ·
-  trang game thật = `https://game.bkacademy.edu.vn` (sửa 28/09; mặc định cũ vercel.app trả 404) · deploy ERP + app HS + bkdemy-games · test 1 lớp thật
-  (chưa ai bấm Chốt/Mở trên dữ liệu thật — luồng ghi mới verify bằng transaction ROLLBACK).
+  **deploy ERP chính** (có sửa link game 404 + 2 chế độ) + **trang game** (`bkdemy-erp-v2-2ogm`) · test lại 7S2 cả 2 chế độ ·
+  quyết app GV/TA có cần khung game không (hiện CHỈ ERP chính `BuoiHocScreen`; app GV `ChamBuoiGv.tsx`, TA `ChamBuoi.tsx` chưa có).
 - Việc tách riêng, CHƯA làm: đích mới EXP ET 100 cố định / BTVN 200/bài (DB hiện ET 200–300, BTVN 189–300).
 
 ### Đã build (24–27/09 — ⭐ FORMAT NỘI DUNG LÝ THUYẾT + khung "Bài tập tự luyện" trong PDF) — ĐỌC `spec-format-noidung.md`
@@ -423,92 +430,40 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
 - **Verify không có tài khoản HS thử:** không dùng mã/PIN HS thật ⇒ dựng trang xem thử tạm (không commit) render HomeHS912 bằng dữ liệu mẫu, không
   đăng nhập ⇒ lưu bị DB từ chối, không ghi dữ liệu thật. Preview tool chỉ đọc `.claude/launch.json` thư mục chính ⇒ trong worktree chạy `npx vite --port 52xx` nền.
 
-### 🔜 ⭐ GAMIFICATION HS — Rank · Thử thách · Nhiệm vụ · Vòng quay · Huy hiệu (28/09) — THIẾT KẾ ĐÃ CHỐT, CHƯA BUILD · phase 1 CHỈ TOÁN
-> Đọc theo thứ tự:
-> 1. `spec-thanh-tuu-nhiem-vu.md` **§0 TỔNG KẾT**.
-> 2. `phan-tich-diem-rank.md` (số + mô phỏng Điểm Rank, vòng 4 = mùa năm).
-> 3. `de-xuat-nhiem-vu.md` (nhiệm vụ + vòng quay + xu).
-> 4. `de-xuat-huy-hieu.md` + **`ma-tran-thanh-tuu-huy-hieu.xlsx`** (output cuối của huy hiệu).
->
-> Mô phỏng chạy lại được: `node scripts/sim-diem-rank.mjs --chot|--nam` · `node scripts/sim-huy-hieu.mjs`.
+### ⭐ GAMIFICATION HS — Rank · Thử thách · Nhiệm vụ · Vòng quay · Huy hiệu — ĐÃ BUILD 28/09 (DB đã áp, app CHƯA push/deploy) · phase 1 CHỈ TOÁN
+> Đọc: `spec-thanh-tuu-nhiem-vu.md` **§0** (luật đã chốt, số mới nhất) · `spec-huy-hieu-build.md` (đo 14 thành tựu, schema, RPC) ·
+> `design/DON-HANG-GAMI-HS.md` (đơn ChatGPT: Huy hiệu · Nhiệm vụ+Album · Hồ sơ). Test chạy lại được (transaction + ROLLBACK):
+> `scripts/_thu_mig_rank.mjs` · `_thu_mig_nhiem_vu.mjs` · `_thu_mig_huy_hieu.mjs`.
 
-**Khung (Thùy chốt):**
-- **GAME** — cày cuốc + đua top. Lấy **cơ chế** game, **không lấy tên** game nào.
-- HS học **offline, không được nghỉ**.
-- **Mỗi môn riêng hoàn toàn** (rank, ngưỡng, bảng, hồ sơ "rank X Toán · rank Y KHTN").
-- Không chống cày.
+**Luật đã chốt (số MỚI NHẤT — §0 spec là nguồn):**
+- **Điểm Rank ≠ EXP** (không đổi xu). 4 nguồn: ET 100/bài · BTVN 100 đúng hạn / 50 muộn · MT bảng hạng 1–50 (quy theo số em thi) ×10 (1.000→500) ·
+  Thử thách pass ≥80% ⇒ 10/20/30. Toán 1 tháng = 8 buổi = 1 MT + 7 ET + 7 BTVN ⇒ tối đa 3 nguồn 2.400 · trần Thử thách **600/tháng · 30/ngày** ·
+  **điểm tối đa tháng 3.000**. Tháng 8–9/2026 mất ET hình (lỗi) ⇒ bù ET theo lớp lên chuẩn 7 (`rank_thang_mat_et`).
+- **10 bậc THUẦN theo điểm tích luỹ mùa** (mùa 1/7→30/6, hết năm về 0), ngưỡng co ×0,875 theo năm học 10,5 tháng: Novice 0 · Soldier 1.575 · Captain 4.200 ·
+  General 7.875 · Hero 12.075 · Legend 18.375 · King 21.000 · Emperor 25.725 · **God of War 28.350 · Supreme God 30.240** (Thùy chốt; có năm không ai thành thần).
+  Bảng đua tháng: xếp điểm tháng, không đổi bậc.
+- **Nhiệm vụ** (mở **01/10/2026**): ngày N1 Thử thách · N2 Luyện 20 · N3 Sửa sai (treo tối đa 3 ngày; 1 lần làm lấp 1 nhiệm vụ cũ nhất) · tuần T1–T4
+  (4 khối 1–7/8–14/15–21/22–cuối, T2–T4 dồn tới hết tháng) + rương 12 nhiệm vụ/tuần · tháng M1 MT bứt phá · M2 Thử thách 15 ngày → Điểm Chặng → 30 cấp → EXP.
+  **Vòng quay** từ 01/10: xong 2 nhiệm vụ ngày, giải 20/30/50/100/200 EXP (40/35/18/6/1%), EXP đổi ra xu. Trước 01/10 chạy luật cũ.
+- **Trần xu app 30/tháng/môn** trong `fn_gami_exp_xu_thang` (SQL Editor đã chạy, đã ghi sổ; Thùy đã revoke PUBLIC ⇒ claude_build KHÔNG gọi được hàm này nữa, app vẫn chạy).
+- **Huy hiệu:** 8 Hy Lạp · sao 1/2/4/6/9 tháng (★1–3 tháng đạt chuẩn, ★4–5 tháng hoàn hảo) · năm huy hiệu tháng 7→4 · tính lùi từ 07/2026 ·
+  chốt tháng T từ 10/T+1, theo thứ tự · ★4–5 bản cứng GV trao · đạt lại năm sau = ×2 (bản cứng chỉ lần đầu).
+- **Hồ sơ khoe:** bấm avatar mở · tường của nhau = phase sau · danh hiệu = giải thưởng tháng. **Đừng lẫn bậc rank / huy hiệu / danh hiệu.**
 
-**Điểm Rank — chỉ 4 nguồn:**
+**Đã build (DB áp bằng `migrate --only`; 13 file treo trong sổ là của phiên khác — đừng `npm run migrate` trần):**
+- Mig 202609281711 · 1739 · 1749 · 1754 (rank + Thử thách) · 1809 (mastery `p_den`) · 1810 (nhiệm vụ + vòng quay) · 1817 (trần xu, SQL Editor) ·
+  1846 + 1857 (huy hiệu).
+- App HS: Tự luyện có thẻ ⚔️ Thử thách + link 📜 Nhiệm vụ / 🏆 Rank · `RankHS` · `NhiemVuHS` · `MayManHS` 2 chế độ · `AlbumHS` (mở từ Thành tựu).
+  Nhân sự: lá `huyhieu` (Trao bản cứng · Chốt tháng · Ma trận). Giao diện HS là BẢN THÔ, chờ design (đơn ChatGPT).
+- Verify giao diện bằng trang tạm `_xem_rank.html` + `src/_xem_rank.tsx` (mock RPC, KHÔNG commit — xoá khi Thùy gật).
 
-| Nguồn | Điểm |
-|---|---|
-| ET | 100 / bài |
-| BTVN | 100 đúng hạn · 50 muộn |
-| MT | bảng hạng 1–50 quy theo sĩ số dự thi (`ceil(hạng×50/số em thi)`) × 10 = 1.000 → 500. **Chỉ HS có điểm MT thật**: `fn_bxh_diem_mt_khoi` xếp cả em chưa thi = 0đ. Lỡ MT thì thi lại (`diem_thi_lai`) |
-| **Thử thách** | kiểu tự luyện thứ 3, 1 lượt y hệt Tổng hợp. Pass ≥ 80% ⇒ 8/9/10 đúng = 10/20/30 điểm. **Vô hạn lượt, chỉ điểm có trần:** tháng = ¼ × (tối đa ET+BTVN+MT) = Toán 500 / KHTN 375 · ngày = tháng ÷ 20 |
-
-- **Không cộng rank:** có mặt · lên bảng · bổ trợ · Học từ đầu · thưởng nhiệm vụ / thành tựu.
-- **Elo giữ nguyên, không dính rank.** Điểm Rank ≠ EXP.
-
-**Rank:**
-- **Mùa = 1 năm.** Thang 10 bậc: Novice · Soldier · Captain · General · **Hero** · Legend · King · Emperor.
-  - 8 bậc × 3 sao. Ngưỡng = hệ số 0 / 0,6 / 1,6 / 3 / 4,6 / 7 / 8 / 9,8 × điểm tối đa tháng (Toán 2.500).
-- **God of War** = ghế top 3% khối × môn & phong độ ≥ 84%. **Supreme God** = hạng 1 & ≥ 92%.
-  - Phong độ = điểm từ đầu mùa ÷ (max tháng × số tháng). Xét hằng ngày ⇒ có thần quanh năm.
-- **Bảng đua tháng** (không đổi bậc). Hết năm về Novice.
-- Mô phỏng: hết năm ~70% ở Legend / King, Emperor ~8%, thần 1–2 em / khối.
-
-**Nhiệm vụ** (mỗi môn 1 bảng; lẻ chỉ cho Điểm Chặng; KHÔNG thưởng rank):
-
-| Tầng | Nhiệm vụ | Điểm Chặng |
-|---|---|---|
-| Ngày (sống 3 ngày) | N1 Thử thách · N2 Luyện 20 · N3 Sửa sai | +10 |
-| Tuần (dồn tới hết tháng) | T1 BTVN đúng hẹn · T2 ET ≥ 80% · T3 Thử thách 4 ngày · T4 Lấp lỗ | +40 |
-| Rương tuần | 12 nhiệm vụ / tuần | +60 · 75 EXP |
-| Tháng | M1 MT bứt phá (hạng tăng hoặc top 30%) · M2 Thử thách 15 ngày | +150 |
-
-- Chặng 30 cấp × 50: 25 EXP/cấp + mốc 10 / 20 / 30 = +100 / 150 / 200 EXP. **Chỉ EXP**, bỏ quà hiện vật.
-
-**Vòng quay may mắn:**
-- Lượt = xong ≥ 2 nhiệm vụ ngày **của môn đó** (thay "tự luyện ≥ 70%").
-- Giải 20 / 30 / 50 / 100 / 200 EXP (40 / 35 / 18 / 6 / 1%). **Đổi ra xu thật** — hiện EXP vòng quay nằm riêng `may_man_hs_luot`, KHÔNG thành xu.
-
-**Ngân sách xu trên app:** **30 / HS / tháng / MÔN** = vòng quay 10 · nhiệm vụ 15 · thành tựu 5. Chặn ở hàm chốt tháng. Đua tháng / đua lớp không trả xu app.
-
-**Huy hiệu phase 1** — 8 cái, bộ Hy Lạp. Bộ Việt Nam dành cho GIẢI THƯỞNG.
-
-| Huy hiệu | Ghi nhận |
-|---|---|
-| Helios | chuyên cần |
-| Chronos | BTVN đúng hạn |
-| Athena | ET |
-| Zeus | MT top |
-| Phoenix (biểu tượng, không phải thần) | bứt phá hạng MT |
-| Hercules | Thử thách |
-| Hephaestus | lấp lỗ |
-| Nike | Bảng đua tháng |
-
-- **Sao = 1 / 2 / 4 / 6 / 9 tháng** trong năm học: ★1–3 = tháng đạt chuẩn (1 điều kiện) · ★4–5 = tháng hoàn hảo (nhiều điều kiện).
-- Bản cứng từ ★4, **GV trao** + nút "Đã trao" (việc suy động).
-- Thành tựu ↔ huy hiệu **N–N**, có **màn admin ma trận**.
-- Mô phỏng (hiệu chỉnh DB): ★4 2–7%, ★5 0–2%, **~66 bản cứng / năm** Toán cấp 2.
-- Bản đầy đủ 10 loại / ~100 cấp = lộ trình mở dần.
-
-**CÒN MỞ:**
-- H8 — đạt lại: bản mềm ×2, bản cứng lần đầu. Đề xuất, Thùy chưa phản đối.
-- Danh hiệu top dạng (C5).
-- Quà đua lớp (C8).
-- UI (C11).
-- **Build plan (C12)** — đề xuất thứ tự: Điểm Rank + Thử thách → Nhiệm vụ + Vòng quay → Huy hiệu.
-
-**Khi build nhớ:**
-- **Pure-derive** (không bảng `tasks`, không dòng chờ). Chỉ ghi khi sự kiện thật: huy hiệu đạt · thưởng đã phát · chốt ghế / tháng.
-- **Nguồn EXP mới** (`exp_nhiem_vu` / `exp_thanh_tuu` / `exp_may_man`):
-  - sửa **4 chỗ đọc** + loại khỏi delete của `fn_recompute_exp_thang` (bài học ② 26–27/09);
-  - `qlht_xu_ledger.loai` CHECK + `nguoi_tao NOT NULL FK nhan_su`.
-- `may_man_hs_luot` unique `(hs, ngay)` → `(hs, ngay, mon)` khi mở môn 2.
-- RPC HS: `security definer` + `revoke … from anon`.
-- Catalog cũ `thanh_tich_loai` (12 key) + ghim khoe ⇒ migrate / dùng lại, không đẻ catalog thứ 2.
+**VIỆC TIẾP (theo thứ tự):**
+1. **Thùy:** chốt huy hiệu tháng 7 rồi 8 ở màn Huy hiệu › Chốt tháng (chot_boi = người bấm) · cấp lá `huyhieu` cho vai GV ở Phân quyền ·
+   gửi 3 đơn ChatGPT (Đơn 1 huy hiệu trước) · push + deploy khi muốn HS thấy.
+2. Chốt tháng 9 từ 10/10. Theo dõi 01/10: nhiệm vụ + vòng quay luật mới tự bật.
+3. Còn làm: ghim 3 huy hiệu khoe (bảng mới) + tắt catalog cũ `thanh_tich_loai`/đổi FK `hoc_sinh_thanh_tich_ghim` (đụng bảng đang dùng — hỏi trước) ·
+   màn Hồ sơ theo design · ô Home Rank/Nhiệm vụ (C11) · ví xu hiện dòng EXP nhiệm vụ/huy hiệu · danh hiệu top dạng (C5) · quà đua lớp (C8).
+4. Nợ cũ còn: chọn dạng Tự luyện/Thử thách đang chạy ở CLIENT (`chonDangTuLuyen`, JS) — §2.0 muốn đẩy xuống DB.
 
 ### 🔜 PHA 4 — ĐƯỜNG ỐNG CA YẾU (bổ trợ) — THIẾT KẾ XONG, CHƯA BUILD (ưu tiên tiếp theo)
 Vòng: đề xuất → **team học thuật DUYỆT** → **OPS xếp lịch** → dạy + BT-ngay → buổi kế BT-xác-nhận → đóng.
@@ -2368,7 +2323,12 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
   - Mô hình tung xu từng bài ra ~24% ⇒ ★4 gần 0 ⇒ kết luận sai.
 - **⭐ Ngưỡng bậc cộng dồn đặt theo CUỐI mùa ⇒ đầu mùa cả khối dồn 1 bậc** (mùa 3 tháng: hết tháng 1 có 99% cùng bậc 2).
   - Luôn in phân bố theo **từng mốc thời gian**, không chỉ cuối mùa.
-  - Ghế top phải xét theo **phong độ** (điểm ÷ max × thời gian) mới có quanh năm.
+  - ~~Ghế top theo phong độ~~ — SUPERSEDE 28/09: Thùy muốn thần là ĐÍCH theo điểm tích luỹ (không ghế top/hạng). T hiểu "ghế" thành luật vị trí suốt 1 ngày.
+- **⭐⭐ Hàm SQL làm "view có tham số": KHÔNG gắn `set search_path`, gọi bằng hằng/biến (không bằng cột CTE)** — mất inline ⇒ 13–35 s thay vì 0,15 s.
+- **⭐ Số đầu vào phải hỏi nhịp vận hành THẬT** (8 buổi/tháng = 1 MT + 7 ET) — t lấy 5 ET từ mô phỏng ⇒ phong độ > 100%.
+- **⭐ Cột "có vẻ đúng" có thể rỗng 100%** (`btvn_ket_qua.ti_le_dung`, `hoan_thanh`) — đo phân bố cột trước khi dùng làm nguồn.
+- **⭐ Tưởng bug phải đo theo THÁNG trước khi sửa** (A4 0% là thật: tự luyện chỉ bùng từ tháng 9).
+- **⭐ Chốt có ghi người chốt ⇒ để CEO bấm, không lấy jwt nhân sự bất kỳ chạy thay** (mạo danh vết).
 - **`.env` chỉ có `DATABASE_URL` role GHI** ⇒ script dò dữ liệu mở đầu `set default_transaction_read_only = on` + in `show transaction_read_only`
   làm bằng chứng.
 - **Máy CEO:**
@@ -2451,6 +2411,15 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
   (script patch chạy được cho cả 2 bản) → `git hash-object -w` → `git update-index --cacheinfo`. Không `git add` cả file.
 - **CEO nói "đừng chốt — t đề xuất kịch bản, luật t viết"** ⇒ CTO chỉ hỏi OUTPUT + tìm đường nối hệ thống; không tự điền số rồi build (R3).
   Số liệu luật CTO đưa ra phải dán nhãn "nháp, không dùng".
+- **⭐ URL/domain phải ĐO trước khi làm mặc định, không "tạm".** 27/09 t đặt `GAMES_URL='bkdemy-games.vercel.app'` theo tên project, không curl
+  ⇒ 404, nút mở TV hỏng tới khi CEO test thật ("chưa thấy game trên ERP"). Domain thật tìm bằng `vercel project ls` (CLI có sẵn, đã đăng nhập)
+  → `game.bkacademy.edu.vn`. Kèm: "chưa thấy tính năng" ⇒ đo bản ĐANG CHẠY (tải bundle prod, grep chuỗi) trước khi kết luận thiếu deploy/pull.
+- **Test UI có nút GHI trên ERP dev mà không ghi DB:** trong trang, `await import('/src/lib/supabase.ts')` rồi thay `supabase.rpc` (giả kết quả,
+  chặn mọi `fn_*` ghi). **Vite dev tự reload khi phiên khác sửa file ⇒ override mất im lặng** — mỗi bước bấm phải kiểm override còn sống
+  (vd `window.__GHI`) rồi mới bấm; xong kiểm lại DB bằng query.
+- **Màn công khai (TV) không được lộ kết quả trước hoạt ảnh:** dữ liệu tổng (bảng lớp) đến NHANH hơn hoạt ảnh ⇒ đánh dấu "đang mở" lúc NHẬN
+  lệnh, chỉ hiện số khi game diễn xong (`BKLopBang.cho/xong`).
+- Liệt kê dữ liệu để xin xoá: t đọc `date` bằng `toISOString()` ⇒ lệch 1 ngày (27/09 thay vì 28/09) — đúng cái §2 CẤM; luôn format ngày theo VN.
 
 - **⭐ Query kiểm chứng phải KHÔNG ĐƯỢC tautology, và luôn có ĐỐI CHỨNG.** Viết `where not f(x) and f(x)` để "đếm cái lọt" thì kết quả 0 là do logic, không phải do dữ liệu — vô giá trị nhưng trông y hệt bằng chứng. Tương tự, "không thấy trong kết quả" chỉ có nghĩa khi có một mẫu ĐỐI CHỨNG chắc chắn PHẢI thấy và nó thật sự hiện ra; không thì "không thấy" có thể chỉ vì query nhân bản bị hỏng.
 - **Đọc dữ liệu bằng anon key để kết luận "bảng rỗng" là SAI** — RLS member-gate trả **HTTP 200 + `[]`**, không phải lỗi. Cùng họ với bẫy §2.1. Muốn số thật phải `DATABASE_URL_RO` (`claude_ro`), và `claude_ro` không gọi được RPC `grant to authenticated` nên **không thay thế được việc test end-to-end bằng tài khoản thật**.
