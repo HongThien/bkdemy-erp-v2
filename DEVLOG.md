@@ -30120,3 +30120,25 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   thưởng tự động + `nguoi_tao` NOT NULL FK nhan_su ⇒ phải xử khi build.
 - **Quyết định CTO (chờ CEO):** thưởng chủ đạo = danh hiệu/khung/điểm thành tựu (không tiêu), xu/EXP vừa phải ≤25% xu tháng;
   đo trên ô (HS × dạng) chống farm; không bảng xếp hạng toàn trường trong màn thành tựu.
+
+## 2026-09-28 (5) — LUỒNG KHO: CEO trả lời vòng 2 + CTO đề xuất kiến trúc (chưa build) — `spec-luong-kho.md` §1, §5–§8
+
+- **Thùy chốt:** làm theo LÔ, trả 3 làn (tự tin ⇒ phân dạng chờ duyệt · không có trong kho ⇒ đề xuất dạng mới · không tự tin ⇒ trao đổi) ·
+  **học thuật được duyệt**, không lo thiếu thời gian duyệt · SGK Kết nối tri thức · phạm vi giải = **chủ đề đó + các chủ đề phía trước** ·
+  máy kiểm độc lập + người duyệt, **>95% liên tục thì máy tự duyệt** · chuẩn giải xây dần, sai lầm tổng kết vào **md riêng từng khối**,
+  AI giải theo lý thuyết + ví dụ của dạng · hình: AI sinh → AI kiểm 2 lần độc lập → người duyệt · **ảnh cắt từ PDF KHÔNG đạt chuẩn, phải
+  vẽ lại** · có hình không gian · 2 mức chuẩn kho/online OK · **chỉ đề thi lưu cấu trúc** · cùng cụm thì câu mới/biến thể như nhau ·
+  không ràng buộc bản quyền · cửa vào = folder quét + báo, cron để sau · OCR = Gemini API, còn lại = Claude subscription.
+- **Đo (DB live, read-only):** luồng nhập kho 11–27/09 có 390 dòng log nhưng **Claude mới đọc 10 tài liệu Đại** (585 câu); 343 file là
+  Noctorium (script), 5.638 câu Đại mà mới 15 câu được duyệt, 1.779 ở dạng chờ. Gán dạng trên câu Claude nhập đã duyệt: **242/326 = 74%**
+  (84 câu người đổi dạng). Kho Đại có **3.112 câu đang dùng ảnh cắt** (K12 2.104); đoán theo chữ trong đề thì đồ thị + bảng biến thiên +
+  bảng xét dấu = 1.734 (56%). Không có cột thứ tự chủ đề; `dai_dang_tien_de` 0 dòng; lý thuyết dạng 365/685.
+- **Sai/bài học:** (1) vòng trước t xếp "vẽ hình" sang đợt Hình vì nghĩ Đại ít hình — sai: chưa đo đã xếp. Đo ra 3.112 câu, và CEO chốt ảnh
+  cắt không đạt chuẩn ⇒ vẽ hình nằm ngay đợt Đại. (2) `kho_doi_dang_log` Đại 2.861 lượt nhưng 2.748 là dạng cũ không còn trong bản đồ =
+  đợt chuẩn hoá mã 18/09, không phải người sửa AI — đọc log đổi dạng phải tách đổi MÃ khỏi đổi DẠNG. (3) "đề vàng" không cần dựng riêng:
+  chính kho đã duyệt là đề vàng (che dạng/lời giải, cho agent làm lại, so).
+- **Quyết định CTO (chờ CEO):** "kiểm độc lập" phải khác CÁCH chứ không chỉ khác lượt (code tính lại > model khác > cùng model ngữ cảnh sạch) ·
+  đề xuất dạng/cụm mới nằm bảng riêng tới khi duyệt, không ghi thẳng bản đồ · luật lên cấp đo theo (khâu × khối), 3 lô liên tiếp ≥95%,
+  lên cấp vẫn rút mẫu 10% · khối pilot đề xuất K7 · build P0 (nền đo) trước P1 (một cửa).
+- **Còn:** 6 câu ở `spec-luong-kho.md` §8 (khối pilot · "phía trước" gồm khối dưới/nhánh Hình? · bài nhiều ý · folder nguồn ở máy nào ·
+  xác nhận cách đo 95% + 3 giai đoạn hình · ranh "quá dễ" + chia cụm dạng cũ). `E:\BK ACADEMY\…` không có trên máy chạy phiên này.
