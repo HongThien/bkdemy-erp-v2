@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-273 bảng · 19 view · 0 enum · 95 trigger · 571 function
+274 bảng · 19 view · 0 enum · 95 trigger · 571 function
 
 ## _app_secrets
 
@@ -3244,6 +3244,15 @@
 | god_top_pct | numeric |  |  |  |  |
 | god_phong_do | numeric |  |  |  |  |
 | supreme_phong_do | numeric |  |  |  |  |
+| et_chuan_thang | integer |  | 7 |  |  |
+
+## rank_thang_mat_et
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| mon | text |  |  | PK FK→rank_cau_hinh.mon |  |
+| thang | text |  |  | PK |  |
+| ly_do | text |  |  |  |  |
 
 ## shop_don
 
@@ -6202,6 +6211,7 @@ SELECT bl.hoc_sinh_id,
 | qlht_qua_order | qlht_qua_order_gia_xu_check | `CHECK ((gia_xu > 0))` |
 | qlht_xu_ledger | qlht_xu_ledger_amount_check | `CHECK ((amount <> 0))` |
 | rank_bac | rank_bac_bac_check | `CHECK (((bac >= 1) AND (bac <= 8)))` |
+| rank_thang_mat_et | rank_thang_mat_et_thang_check | `CHECK ((thang ~ '^\d{4}-\d{2}$'::text))` |
 | shop_vat_pham | shop_vat_pham_gia_diem_check | `CHECK ((gia_diem > 0))` |
 | sk_xu | sk_xu_so_xu_check | `CHECK ((so_xu <> 0))` |
 | sk_xu | sk_xu_van_chi_game | `CHECK (((van IS NULL) OR (nguon = 'game'::text)))` |
