@@ -45,6 +45,8 @@ import ViXuHS from './ViXuHS'
 import RankHS from './RankHS'
 import NhiemVuHS from './NhiemVuHS'
 import AlbumHS from './AlbumHS'
+import HoSoHS from './HoSoHS'
+import AvatarHS from './AvatarHS'
 import { thuThachLuotDo, sinhThuThach, ketQuaThuThach, type KetQuaThuThach } from '../../lib/rank'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
@@ -298,7 +300,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
-  const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'rank' | 'nhiem_vu' | 'album' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
+  const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'rank' | 'nhiem_vu' | 'album' | 'ho_so' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
+  const [tuHoSo, setTuHoSo] = useState(false) // Rank/Album mở từ Hồ sơ ⇒ "Quay lại" về Hồ sơ
   const [chuDeDang, setChuDeDang] = useState<{ ma_dang: string; ten_dang: string; chiCauMoi?: boolean } | null>(null) // dạng đã chọn cho "Tự luyện theo chủ đề" (null = luồng tổng hợp)
   // "Học từ đầu" (Thùy 19/09) — ô CHỈ hiện khi HS có case bổ trợ đuổi ĐANG MỞ (tự suy
   // bo_tro_duoi.trang_thai='can_duoi', KHÔNG lưu cờ riêng — xem htd_co_mo). htdMon lưu
@@ -398,14 +401,19 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onTongHop={() => { setChuDeDang(null); setDirect('tu_luyen') }}
     onChuDe={() => setDirect('tu_luyen_chu_de_ds')}
     onThuThach={() => setDirect('thu_thach')}
-    onRank={() => setDirect('rank')}
+    onRank={() => { setTuHoSo(false); setDirect('rank') }}
     onNhiemVu={() => setDirect('nhiem_vu')}
     onBack={() => setDirect(null)} />
   if (direct === 'nhiem_vu') return <NhiemVuHS gioiTinh={gt} onBack={() => setDirect('tu_luyen_chon')}
     onThuThach={() => setDirect('thu_thach')} onTuLuyen={() => { setChuDeDang(null); setDirect('tu_luyen') }} onVongQuay={() => setDirect('may_man')} />
   if (direct === 'thu_thach') return <LamThuThach hocSinhId={hocSinhId} desktop={!!cap1}
-    onXong={() => setDirect('tu_luyen_chon')} onRank={() => setDirect('rank')} />
-  if (direct === 'rank') return <RankHS gioiTinh={gt} onBack={() => setDirect('tu_luyen_chon')} onThuThach={() => setDirect('thu_thach')} />
+    onXong={() => setDirect('tu_luyen_chon')} onRank={() => { setTuHoSo(false); setDirect('rank') }} />
+  if (direct === 'rank') return <RankHS gioiTinh={gt} onBack={() => setDirect(tuHoSo ? 'ho_so' : 'tu_luyen_chon')} onThuThach={() => setDirect('thu_thach')} />
+  // HỒ SƠ (DON-HANG-GAMI-HS Đơn 4): bấm avatar ở màn chính. Đổi ảnh đại diện nằm trong Hồ sơ (bấm avatar trong khung).
+  if (direct === 'ho_so') return <HoSoHS hoTen={hoTen} anhUrl={anhUrl} mons={lopMons} mon={monChon} onChonMon={doiMon}
+    avatar={<AvatarHS anhUrl={anhUrl} initials={hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()} size={82} fill="var(--sk-surface2)" badge="var(--sk-acc)" onChanged={setAnhUrl} />}
+    onBack={() => { setTuHoSo(false); setDirect(null) }}
+    onRank={() => { setTuHoSo(true); setDirect('rank') }} onAlbum={() => { setTuHoSo(true); setDirect('album') }} />
   if (direct === 'tu_luyen_chu_de_ds') return <ChonDangChuDe gioiTinh={gt}
     onPick={(d) => { setChuDeDang(d); setDirect('tu_luyen') }}
     onBack={() => setDirect('tu_luyen_chon')} />
@@ -447,8 +455,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'lich_bo_tro') return <LichBoTroHS lich={boTro.lich} coCa={boTro.coCa} gioiTinh={gt} onXong={() => setDirect(null)} onVaoCa={onVaoCaBoTro} />
   if (direct === 'hop_thu') return <HopThuHS onXong={() => { setDirect(null); taiChuaDoc() }} />
   if (direct === 'may_man') return <MayManHS gioiTinh={gt} onXong={() => setDirect(null)} onNhiemVu={() => setDirect('nhiem_vu')} />
-  if (direct === 'thanh_tuu') return <ThanhTuuHS gioiTinh={gt} onXong={() => setDirect(null)} onAlbum={() => setDirect('album')} />
-  if (direct === 'album') return <AlbumHS gioiTinh={gt} onBack={() => setDirect('thanh_tuu')} />
+  if (direct === 'thanh_tuu') return <ThanhTuuHS gioiTinh={gt} onXong={() => setDirect(null)} onAlbum={() => { setTuHoSo(false); setDirect('album') }} />
+  if (direct === 'album') return <AlbumHS gioiTinh={gt} onBack={() => setDirect(tuHoSo ? 'ho_so' : 'thanh_tuu')} />
   if (direct === 'bai_tap_giao') return <BaiTapGiaoHS gioiTinh={gt} onXong={() => setDirect(null)} />
   if (direct === 'so_tay') return <SoTayHS gioiTinh={gt} onXong={() => setDirect(null)} />
   if (direct === 'vi_xu') return <ViXuHS gioiTinh={gt} onXong={() => setDirect(null)} />
@@ -542,7 +550,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
       mons={lopMons} mon={monChon} onChonMon={doiMon}
       lich={boTro.lich} soRetest={boTro.soRetest} cards={cards}
       onHopThu={() => setDirect('hop_thu')} onDoiMK={() => setDoiMK(true)} onThoat={() => supabase.auth.signOut()}
-      onLich={() => setDirect('lich_bo_tro')} onRetest={() => setDirect('retest')} />
+      onLich={() => setDirect('lich_bo_tro')} onRetest={() => setDirect('retest')} onHoSo={() => setDirect('ho_so')} />
     return <HomeHS hoTen={hoTen} maHS={maHS} lopMon={lopMon} gioiTinh={gt} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
       mons={lopMons} mon={monChon} onChonMon={doiMon}
       lich={boTro.lich} soRetest={boTro.soRetest} cards={cards}

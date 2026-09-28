@@ -4,7 +4,7 @@
 // — mục tiêu: bundle build riêng (vite.config.hs.ts) không kéo theo code nội bộ, khỏi lộ ra domain
 // công khai + nhẹ hơn nhiều so với app đầy đủ. KHÔNG có nhánh `hsId === null` (staff) — build này
 // chỉ phục vụ HS, nhân sự vẫn dùng domain ERP nội bộ như cũ.
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import type { Session } from '@supabase/supabase-js'
 import { supabase } from './lib/supabase'
 import Login from './auth/Login'
@@ -155,7 +155,13 @@ function DemoHome() {
     onHopThu={noop} onDoiMK={noop} onThoat={noop} onLich={noop} onRetest={noop} />
 }
 
+// TRANG XEM MẪU gamification (hs.html?xem=gami — gami/XemMauGami.tsx): dữ liệu giả, không gọi DB, không cần đăng nhập ⇒ mở cả
+// bản build để chụp ảnh gửi design + soát kit sau khi đổi vỏ. Tách chunk riêng (lazy) — không nặng bundle chính.
+const XemMauGami = lazy(() => import('./screens/hocsinh/gami/XemMauGami'))
+const XEM_GAMI = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'gami'
+
 export default function AppHS() {
+  if (XEM_GAMI) return <Suspense fallback={null}><XemMauGami /></Suspense>
   const [session, setSession] = useState<Session | null | undefined>(undefined)
   const [hsId, setHsId] = useState<string | null | undefined>(undefined)
   if (import.meta.env.DEV && new URLSearchParams(location.search).has('demo')) return <DemoHome />

@@ -24,6 +24,19 @@
 4. Chạy đủ 4 pha (A→D). Duyệt mockup ở Pha B trước khi cho sinh asset.
 5. Nhận zip → kiểm có `reference/` (ảnh toàn cảnh mọi trạng thái) + DESIGN.md có cột "Vị trí & cỡ" → bỏ vào `design/handoff/` → báo Claude.
 
+## Code đã dọn đường — kit về thì chỉ ĐỔI VỎ (29/09)
+
+- **Ảnh chụp đính kèm đơn:** mở `hs.html?xem=gami` (dữ liệu giả, không cần đăng nhập) → chọn màn + trạng thái đúng như đơn;
+  thêm `&an` để ẩn thanh chọn khi chụp. Vd `hs.html?xem=gami&man=rank&tt=3&an` = Rank · God of War.
+  Màn: `nhiem_vu` (3 trạng thái) · `album` (3) · `rank` (4) · `ho_so` (4) · `the_tv` · `bo_hinh` (mọi hình).
+- **Hình:** mọi đường dẫn nằm ở 1 chỗ `src/screens/hocsinh/gami/hinh.ts`. Chép PNG vào `public/bk-ui/hs/gami/` theo cây file
+  ghi đầu file đó (`huy-hieu/<key>/sao1..5.png, khoa.png, nho_48.png` · `rank/<1..10>/bieu_tuong.png, bieu_tuong_64.png,
+  khung_avatar.png, khung_avatar_96.png` · `rank/sao.png, hao_quang_than.png, len_bac.png` · `nhiem-vu/<mã>.png`)
+  → bật cờ `KIT.<bộ>` → mở `?xem=gami&man=bo_hinh` soát (thiếu file = ảnh vỡ ngay ở đó). Bộ chưa bật cờ thì app tự vẽ hình tạm.
+- **Màu game** (8 màu huy hiệu, 5 màu chương) cũng ở `hinh.ts`; khung / chữ / nền thẻ theo skin (`skin/KhungHS.tsx`).
+- **Bố cục màn:** mỗi màn tách VIEW chỉ vẽ (`NhiemVuView` · `AlbumView` · `RankView` · `HoSoView`) khỏi phần gọi DB
+  ⇒ đổi bố cục theo mockup chỉ sửa VIEW, trang xem mẫu tự đổi theo.
+
 **Thứ tự gửi:**
 1. **Đơn 2 (Huy hiệu)** và **Đơn 3 (Avatar Rank)** trước — là bộ hình; gửi song song được, 2 context riêng.
 2. **Đơn 1 (màn Nhiệm vụ + Thành tựu)** sau, đính kèm hình đã duyệt của Đơn 2.

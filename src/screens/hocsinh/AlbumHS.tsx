@@ -4,22 +4,16 @@
 // Số liệu nguyên từ fn_hs_album — ở đây chỉ trình bày. Card KIỂU 1 (CLAUDE.md §6): dải header màu + thân nền skin.
 // Thùy 29/09: khung/chữ/thân thẻ theo skin (KhungHS); màu từng huy hiệu + vàng "hoàn hảo/bản cứng" là màu GAME, giữ.
 // ============================================================================
+// Tách VIEW (AlbumView — chỉ vẽ từ 1 object Album) khỏi container (gọi RPC) để màn xem mẫu hs.html?xem=gami vẽ mọi trạng thái
+// bằng dữ liệu giả; hình + màu huy hiệu lấy từ gami/hinh.ts (đổi vỏ ở đó, không sửa màn).
 import { useEffect, useState } from 'react'
 import { albumCuaToi, type Album, type AlbumHuyHieu } from '../../lib/huyhieu'
 import { monCuaHS } from '../../lib/tuluyen'
 import { Khung, NutBack } from './TuLuyenChuDe'
 import { MAU, THE, HEAD } from './skin/KhungHS'
-
-// Màu riêng từng huy hiệu (màu game — cố định mọi skin, chữ trắng trên dải màu đậm).
-const MAU_HH: Record<string, string> = {
-  helios: 'linear-gradient(135deg,#FFB020,#F57C00)', chronos: 'linear-gradient(135deg,#5C6BC0,#3949AB)',
-  athena: 'linear-gradient(135deg,#26A69A,#00796B)', zeus: 'linear-gradient(135deg,#FFD54F,#F9A825)',
-  phoenix: 'linear-gradient(135deg,#FF7043,#D84315)', hercules: 'linear-gradient(135deg,#8D6E63,#5D4037)',
-  hephaestus: 'linear-gradient(135deg,#78909C,#455A64)', nike: 'linear-gradient(135deg,#AB47BC,#7B1FA2)',
-}
-const CHUA_DAT = 'linear-gradient(135deg,#B0B7C9,#8E97AD)' // dải xám = huy hiệu chưa có sao
-const VANG = '#C9950F'                                      // hoàn hảo / bản cứng / Hiếm — màu game
-const VANG_NEN = 'rgba(233,170,30,0.18)'
+import { mauHH, MAU_CHUA_DAT, VANG, VANG_NEN } from './gami/hinh'
+import { HinhHuyHieu } from './gami/HinhGami'
+import { ChucMungSao, saoChuaXem, daXemHetSao, type SaoMoi } from './gami/ChucMung'
 const sao5 = (n: number) => '★'.repeat(n) + '☆'.repeat(5 - n)
 const thangNgan = (ym: string) => `T${Number(ym.slice(5))}`
 const KQ: Record<string, { t: string; c: string; o?: number }> = {
@@ -40,8 +34,8 @@ function TheHuyHieu({ h, al, mo, onMo }: { h: AlbumHuyHieu; al: Album; mo: boole
   const hiem = cao && al.si_so_khoi > 0 && cao.so_ban_khoi / al.si_so_khoi < 0.1
   return (
     <div className="overflow-hidden" style={{ ...THE, opacity: h.sao ? 1 : 0.92 }}>
-      <button onClick={onMo} className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-white" style={{ background: h.sao ? MAU_HH[h.key] ?? MAU_HH.nike : CHUA_DAT }}>
-        <span className="text-[22px]" aria-hidden style={{ filter: h.sao ? 'none' : 'grayscale(1)' }}>{h.bieu_tuong}</span>
+      <button onClick={onMo} className="flex w-full items-center gap-2.5 px-3 py-2 text-left text-white" style={{ background: h.sao ? mauHH(h.key).mau : MAU_CHUA_DAT }}>
+        <HinhHuyHieu hhKey={h.key} sao={h.sao} size={48} kieu="nho" title={h.ten} />
         <span className="min-w-0 flex-1">
           <span className="block text-[15px] font-extrabold leading-tight" style={HEAD}>{h.ten}</span>
           <span className="block text-[11px] opacity-85">{h.ghi_nhan}</span>
@@ -56,7 +50,7 @@ function TheHuyHieu({ h, al, mo, onMo }: { h: AlbumHuyHieu; al: Album; mo: boole
               {k.ke.ban_cung && <span className="text-[11px] font-bold" style={{ color: VANG }}>🎖 bản cứng</span>}
             </div>
             <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full" style={{ background: MAU.surface2 }}>
-              <div className="h-full rounded-full" style={{ width: `${Math.round(100 * Math.min(1, k.co / k.ke.so_thang))}%`, background: MAU_HH[h.key] ?? MAU_HH.nike }} />
+              <div className="h-full rounded-full" style={{ width: `${Math.round(100 * Math.min(1, k.co / k.ke.so_thang))}%`, background: mauHH(h.key).mau }} />
             </div>
             {h.n_chuan_tam > 0 && <p className="mt-1 text-[11px]" style={{ color: MAU.muted }}>Có tháng đang tạm tính — chốt ngày 10 tháng sau.</p>}
           </>
@@ -99,48 +93,64 @@ function TheHuyHieu({ h, al, mo, onMo }: { h: AlbumHuyHieu; al: Album; mo: boole
   )
 }
 
+// ── VIEW: chỉ vẽ. mo/onMo do cha giữ; chucMung = sao mới cần chúc (null = không) ──
+export function AlbumView({ al, mo, onMo, chucMung, onDongChucMung }: {
+  al: Album; mo: string | null; onMo: (key: string) => void; chucMung?: SaoMoi | null; onDongChucMung?: () => void
+}) {
+  const sapDat = al.huy_hieu.map((h) => ({ h, k: saoKe(h, al) })).filter((x) => x.k && x.k.con > 0 && x.k.con <= 2)
+    .sort((a, b) => a.k!.con - b.k!.con).slice(0, 3)
+  return (
+    <>
+      {sapDat.length > 0 && (
+        <div className="mt-4 p-3.5" style={THE}>
+          <p className="text-[12px] font-extrabold uppercase tracking-wide" style={{ color: MAU.acc }}>⏳ Sắp đạt</p>
+          {sapDat.map(({ h, k }) => (
+            <p key={h.key} className="mt-1.5 flex items-center gap-2 text-[13px]" style={{ color: MAU.ink }}>
+              <HinhHuyHieu hhKey={h.key} sao={h.sao} size={26} kieu="nho" />
+              <span><b>{h.ten} ★{k!.ke.sao}</b> — còn {k!.con} tháng {k!.ke.loai === 'chuan' ? 'đạt chuẩn' : 'hoàn hảo'}</span>
+            </p>
+          ))}
+        </div>
+      )}
+      <div className="mt-3 grid gap-3 md:grid-cols-2">
+        {al.huy_hieu.map((h) => <TheHuyHieu key={h.key} h={h} al={al} mo={mo === h.key} onMo={() => onMo(h.key)} />)}
+      </div>
+      {chucMung && onDongChucMung && <ChucMungSao s={chucMung} onDong={onDongChucMung} />}
+    </>
+  )
+}
+
+export function tieuDeAlbum(al: Album | null) {
+  const tongSao = al ? al.huy_hieu.reduce((s, h) => s + h.sao, 0) : 0   // đếm sao đang hiển thị (badge)
+  return al ? `Mùa ${al.mua} · album ${tongSao}/${al.huy_hieu.length * 5} sao · ★4–★5 được trung tâm tặng bản cứng` : 'Sưu tầm huy hiệu qua từng tháng học'
+}
+
 export default function AlbumHS({ gioiTinh, onBack }: { gioiTinh: 'nam' | 'nu' | null; onBack: () => void }) {
   const [al, setAl] = useState<Album | null>(null)
   const [state, setState] = useState<'dang_tai' | 'san_sang' | 'trong' | 'loi'>('dang_tai')
   const [err, setErr] = useState<string | null>(null)
   const [mo, setMo] = useState<string | null>(null)
+  const [chuc, setChuc] = useState<SaoMoi | null>(null)
 
   useEffect(() => {
     monCuaHS().then((m) => (m ? albumCuaToi(m) : null))
-      .then((r) => { setAl(r); setState(r ? 'san_sang' : 'trong') })
+      .then((r) => { setAl(r); setState(r ? 'san_sang' : 'trong'); if (r) setChuc(saoChuaXem(r)) })
       .catch((e) => { setErr(e?.message ?? String(e)); setState('loi') })
   }, [])
-
-  const tongSao = al ? al.huy_hieu.reduce((s, h) => s + h.sao, 0) : 0   // đếm sao đang hiển thị (badge)
-  const sapDat = al ? al.huy_hieu.map((h) => ({ h, k: saoKe(h, al) })).filter((x) => x.k && x.k.con > 0 && x.k.con <= 2)
-    .sort((a, b) => a.k!.con - b.k!.con).slice(0, 3) : []
 
   return (
     <Khung gioiTinh={gioiTinh}>
       <NutBack onBack={onBack} />
       <h1 className="text-[22px] font-extrabold leading-tight tracking-tight" style={{ ...HEAD, color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>Huy hiệu {al?.mon ?? ''}</h1>
-      <p className="mt-1 text-[13px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>
-        {al ? `Mùa ${al.mua} · album ${tongSao}/${al.huy_hieu.length * 5} sao · ★4–★5 được trung tâm tặng bản cứng` : 'Sưu tầm huy hiệu qua từng tháng học'}
-      </p>
+      <p className="mt-1 text-[13px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>{tieuDeAlbum(al)}</p>
 
       {state === 'dang_tai' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
       {state === 'loi' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.sai }}>{err}</p>}
       {state === 'trong' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Huy hiệu chưa mở cho môn của em.</p>}
 
       {state === 'san_sang' && al && (
-        <>
-          {sapDat.length > 0 && (
-            <div className="mt-4 p-3.5" style={THE}>
-              <p className="text-[12px] font-extrabold uppercase tracking-wide" style={{ color: MAU.acc }}>⏳ Sắp đạt</p>
-              {sapDat.map(({ h, k }) => (
-                <p key={h.key} className="mt-1 text-[13px]" style={{ color: MAU.ink }}>{h.bieu_tuong} <b>{h.ten} ★{k!.ke.sao}</b> — còn {k!.con} tháng {k!.ke.loai === 'chuan' ? 'đạt chuẩn' : 'hoàn hảo'}</p>
-              ))}
-            </div>
-          )}
-          <div className="mt-3 grid gap-3 md:grid-cols-2">
-            {al.huy_hieu.map((h) => <TheHuyHieu key={h.key} h={h} al={al} mo={mo === h.key} onMo={() => setMo((x) => (x === h.key ? null : h.key))} />)}
-          </div>
-        </>
+        <AlbumView al={al} mo={mo} onMo={(k) => setMo((x) => (x === k ? null : k))}
+          chucMung={chuc} onDongChucMung={() => { daXemHetSao(al); setChuc(null) }} />
       )}
     </Khung>
   )

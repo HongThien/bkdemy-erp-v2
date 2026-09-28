@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-286 bảng · 19 view · 0 enum · 95 trigger · 589 function
+287 bảng · 19 view · 0 enum · 95 trigger · 592 function
 
 ## _app_secrets
 
@@ -2524,6 +2524,16 @@
 | lan | integer |  |  |  |  |
 | thang_chot | text |  |  |  |  |
 | dat_at | timestamp with time zone |  | now() |  |  |
+
+## hs_huy_hieu_khoe
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
+| mon | text |  |  | PK FK→huy_hieu.mon |  |
+| vi_tri | smallint |  |  | PK |  |
+| huy_hieu_key | text |  |  | FK→huy_hieu.key |  |
+| chon_at | timestamp with time zone |  | now() |  |  |
 
 ## hs_huy_hieu_trao
 
@@ -5690,6 +5700,7 @@ SELECT bl.hoc_sinh_id,
 - `_gay_nhan_tre(p_tu timestamp with time zone, p_den timestamp with time zone)` → text
 - `_gay_ten_actor(p_id uuid)` → text
 - `_hs_giao_dien_ghi_log()` → trigger
+- `_hs_khoe_json(p_hs uuid, p_mon text)` → jsonb
 - `_htd_chon_cau_bat_ky(p_cautbl text, p_ma_dang text, p_tru text[], p_n integer)` → text[]
 - `_kho_ban_do_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `_kho_cau_chuan(p_da_duyet boolean, p_kiem_may text, p_created_at timestamp with time zone, p_giai_method text)` → boolean
@@ -5977,7 +5988,9 @@ SELECT bl.hoc_sinh_id,
 - `fn_hocphi_tong_hop_ky(p_ky date)` → TABLE(phu_huynh_id uuid, tien_chinh numeric, tien_duoi numeric)
 - `fn_hs_album(p_mon text)` → jsonb
 - `fn_hs_giao_dien_cua_toi()` → jsonb
+- `fn_hs_ho_so(p_mon text)` → jsonb
 - `fn_hs_home_912()` → jsonb
+- `fn_hs_khoe_dat(p_mon text, p_keys text[])` → jsonb
 - `fn_hs_lich_bo_tro()` → jsonb
 - `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_luu_giao_dien(p_skin text, p_che_do text, p_hinh_nen text)` → jsonb
@@ -6248,8 +6261,8 @@ SELECT bl.hoc_sinh_id,
 - `trg_htd_test_nop()` → trigger
 - `trg_thu_thach_nop()` → trigger
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
@@ -6365,6 +6378,7 @@ SELECT bl.hoc_sinh_id,
 | hs_giao_dien | hs_giao_dien_hinh_nen_check | `CHECK ((hinh_nen ~ '^[a-z0-9_]{1,40}$'::text))` |
 | hs_huy_hieu_dat | hs_huy_hieu_dat_lan_check | `CHECK ((lan >= 1))` |
 | hs_huy_hieu_dat | hs_huy_hieu_dat_sao_check | `CHECK (((sao >= 1) AND (sao <= 5)))` |
+| hs_huy_hieu_khoe | hs_huy_hieu_khoe_vi_tri_check | `CHECK (((vi_tri >= 1) AND (vi_tri <= 3)))` |
 | hs_level | hs_level_level_check | `CHECK (((level >= 0) AND (level <= 3)))` |
 | hs_level_log | hs_level_log_level_chot_check | `CHECK (((level_chot >= 0) AND (level_chot <= 3)))` |
 | hs_level_log | hs_level_log_level_cu_check | `CHECK (((level_cu >= 0) AND (level_cu <= 3)))` |

@@ -31162,3 +31162,25 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 ## 2026-09-29 (3) — Thế giới BK: thêm 15 câu trend 2025–26
 - Thùy: 30 câu ok, cần trendy hơn. Không đọc thẳng Threads/TikTok được (đăng nhập) ⇒ đọc bài tổng hợp (Kenh14, The Influencer nửa đầu 2026, TGDĐ, Thơ Fleur); thêm B5 (12 ✅ + 3 ⚠), loại flex/cap/sus/rút wifi còn 5G/nó ok/khen ngoại hình.
+
+## 2026-09-29 (4) — Gamification app HS: dọn đường "đổi vỏ" + trang xem mẫu + màn Hồ sơ
+- Thùy: "m làm mock up với dọn đường sẵn đi. t design xong thì m chỉ cần đổi vỏ là xong". Làm ở worktree `gami-vo` (phiên khác đang sửa app HS).
+- **Sổ hình** `src/screens/hocsinh/gami/hinh.ts`: mọi đường dẫn PNG gamification + màu game (8 huy hiệu, 5 chương) + cờ `KIT.{huy_hieu,rank,rank_chung,nhiem_vu}`.
+  Chưa bật cờ ⇒ `gami/HinhGami.tsx` vẽ hình tạm bằng code (huy hiệu = huy chương TRÒN, rank = KHIÊN — đúng luật tách hình của đơn).
+  Component: HinhHuyHieu (khoá/★1–5/nhỏ) · BieuTuongBac · SaoBac · AvatarKhung (lỗ 62%) · HaoQuang (bậc 9–10, xoay) · IconNV.
+- **Tách VIEW khỏi container:** NhiemVuView · AlbumView · RankView · HoSoView — chỉ vẽ từ object RPC; màn thật và trang mẫu dùng chung.
+  Rank: thêm biểu tượng bậc to, hành trình có biểu tượng từng bậc (bậc chưa tới mờ), top mùa có biểu tượng nhỏ. Bỏ emoji cứng ở 3 màn.
+- **Lớp phủ chúc mừng** `gami/ChucMung.tsx`: đạt sao mới (Album) · lên bậc (Rank). "Đã xem" ở localStorage (tiện ích từng máy; mất thì hiện lại 1 lần,
+  vô hại). Nhiều sao mới cùng lúc ⇒ chỉ chúc 1 cái cao nhất rồi đánh dấu hết. Sang mùa (bậc tụt) ⇒ ghi lại im lặng.
+- **Màn Hồ sơ** `HoSoHS.tsx` (Đơn 4, 7 khối) + chọn 3 huy hiệu khoe + thẻ TV lớp. Home 6–12: bấm avatar ⇒ Hồ sơ; đổi ảnh chuyển vào trong Hồ sơ.
+  Rank/Album mở từ Hồ sơ thì Quay lại về Hồ sơ. Danh hiệu chưa có nguồn DB ⇒ ô ẩn. Kỷ niệm mùa: ô trống giải thích.
+- **Mig 202609290015 (ĐÃ ÁP, `--only`):** bảng MỚI `hs_huy_hieu_khoe` (không đụng `hoc_sinh_thanh_tich_ghim` — bảng đó FK catalog thành tích cũ) +
+  `fn_hs_ho_so` (sao 8 huy hiệu mùa này/cao nhất, tổng sao, bản cứng đã nhận, khoe — 64ms, KHÔNG gọi fn_hs_album nặng) + `fn_hs_khoe_dat`
+  (security definer; chặn >3, trùng, chưa đạt). Thử trong transaction + ROLLBACK với jwt HS thật trước khi áp: đủ 3 ca chặn + ghi/ghi lại đúng.
+  Bẫy: giả lập HS phải qua `tai_khoan.id` làm `sub` (my_hoc_sinh_id đọc jwt_uid → tai_khoan), không phải email.
+- **Trang xem mẫu** `hs.html?xem=gami[&man=&tt=][&an]` (lazy chunk, không DB, mở cả bản build): mọi màn × trạng thái trong đơn + `bo_hinh` soát kit.
+  Soi 375×812 + 1180×820 skin RPG: Nhiệm vụ, Album (+lớp phủ), Rank Captain/God of War (+lớp phủ), Hồ sơ khá/thần/chọn khoe, bộ hình. tsc sạch.
+- Ghi cách đổi vỏ vào đầu `design/DON-HANG-GAMI-HS.md`.
+- **Bẫy môi trường:** `preview_start` đọc `.claude/launch.json` của repo CHÍNH ⇒ `dev-hs` chạy code main, không phải worktree; phiên worktree không sửa được
+  file đó ⇒ tạm chạy vite nền cổng 5207 từ worktree. Worktree cần copy `.env.local` (VITE_SUPABASE_URL), không chỉ `.env`.
+- **Chưa soi được bằng dữ liệu thật** (cần đăng nhập HS): container 4 màn — logic gọi RPC giữ như cũ, Hồ sơ gọi song song 3 RPC.

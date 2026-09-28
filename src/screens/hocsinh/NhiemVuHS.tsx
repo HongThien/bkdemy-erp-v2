@@ -9,6 +9,9 @@ import { nhiemVuCuaToi, type NhiemVuCuaToi } from '../../lib/nhiemvu'
 import { monCuaHS } from '../../lib/tuluyen'
 import { Khung, NutBack } from './TuLuyenChuDe'
 import { MAU, THE, HEAD } from './skin/KhungHS'
+import { IconNV } from './gami/HinhGami'
+// Tách VIEW (NhiemVuView — chỉ vẽ từ 1 object NhiemVuCuaToi) khỏi container để hs.html?xem=gami vẽ mọi trạng thái bằng dữ liệu giả.
+// Icon = mã nhiệm vụ ⇒ gami/hinh.ts ICON_NV (emoji tạm, PNG khi kit Đơn 1 về).
 
 const NEN_DUNG = 'rgba(34,160,107,0.16)'
 const NEN_VANG = 'rgba(233,170,30,0.18)' // rương đã mở
@@ -17,7 +20,7 @@ function Card({ icon, tieuDe, phai, children }: { icon: string; tieuDe: string; 
   return (
     <div className="overflow-hidden" style={THE}>
       <div className="flex items-center gap-2 px-4 py-2.5" style={{ background: MAU.acc, color: MAU.accInk }}>
-        <span className="text-[18px]" aria-hidden>{icon}</span>
+        <IconNV ma={icon} size={18} />
         <span className="min-w-0 flex-1 truncate text-[14px] font-extrabold tracking-tight" style={HEAD}>{tieuDe}</span>
         {phai && <span className="shrink-0 rounded-full px-2 py-0.5 text-[11.5px] font-bold" style={{ background: 'rgba(0,0,0,0.14)' }}>{phai}</span>}
       </div>
@@ -29,7 +32,7 @@ function Card({ icon, tieuDe, phai, children }: { icon: string; tieuDe: string; 
 function DongNV({ icon, ten, mota, xong, phu, diem }: { icon: string; ten: string; mota: string; xong: boolean; phu?: string; diem: number }) {
   return (
     <div className="flex items-center gap-3 border-b py-2.5 last:border-0" style={{ borderColor: MAU.line }}>
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-[18px]" style={{ background: xong ? NEN_DUNG : MAU.surface2, color: xong ? MAU.dung : undefined }}>{xong ? '✓' : icon}</span>
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-[18px]" style={{ background: xong ? NEN_DUNG : MAU.surface2, color: xong ? MAU.dung : undefined }}>{xong ? '✓' : <IconNV ma={icon} size={18} />}</span>
       <span className="min-w-0 flex-1">
         <span className="block text-[13.5px] font-bold" style={{ color: xong ? MAU.dung : MAU.ink }}>{ten}</span>
         <span className="block text-[11.5px] leading-snug" style={{ color: MAU.muted }}>{mota}</span>
@@ -37,6 +40,87 @@ function DongNV({ icon, ten, mota, xong, phu, diem }: { icon: string; ten: strin
       </span>
       <span className="shrink-0 text-[11.5px] font-extrabold" style={{ color: MAU.acc }}>+{diem}</span>
     </div>
+  )
+}
+
+// ── VIEW: chỉ vẽ ──
+export function NhiemVuView({ d, onThuThach, onTuLuyen, onVongQuay }: {
+  d: NhiemVuCuaToi; onThuThach?: () => void; onTuLuyen?: () => void; onVongQuay?: () => void
+}) {
+  const nutPhu = { background: MAU.surface2, color: MAU.acc, border: `1px solid ${MAU.line}` }
+  return (
+    <>
+      {!d.mo && (
+        <p className="mt-8 p-4 text-center text-[14px] font-bold" style={{ ...THE, color: MAU.ink }}>
+          Nhiệm vụ mở từ ngày {d.bat_dau.split('-').reverse().join('/')} — hẹn em nhé!
+        </p>
+      )}
+
+      {d.mo && (() => {
+        const c = d.cau_hinh
+        const trongCap = d.chang.cap >= c.cap_max ? c.cap_diem : d.chang.diem % c.cap_diem
+        const mocKe = c.moc.find(([cap]) => cap > d.chang.cap)
+        const rNay = d.ruong.find((r) => r.tuan === d.tuan)
+        const treo = (n: number, dv: string) => (n > 0 ? `Còn ${n} ${dv} chờ — làm bù được` : undefined)
+        const moQuay = d.vong_quay.xong_hom_nay >= d.vong_quay.can
+        return (
+          <div className="mt-4 grid gap-3 md:grid-cols-2">
+            <Card icon="chang" tieuDe={`Chặng tháng ${parseInt(d.thang.slice(5), 10)}`} phai={`+${d.chang.exp} EXP`}>
+              <div className="flex items-baseline justify-between">
+                <span className="text-[26px] font-extrabold leading-none" style={HEAD}>Cấp {d.chang.cap}<span className="text-[15px]" style={{ color: MAU.muted }}>/{c.cap_max}</span></span>
+                <span className="text-[12px]" style={{ color: MAU.muted }}>{d.chang.diem} Điểm Chặng</span>
+              </div>
+              <div className="mt-2.5 h-2.5 w-full overflow-hidden rounded-full" style={{ background: MAU.surface2 }}>
+                <div className="h-full rounded-full" style={{ width: `${Math.round(100 * trongCap / c.cap_diem)}%`, background: MAU.acc }} />
+              </div>
+              <p className="mt-1 text-[11.5px]" style={{ color: MAU.muted }}>
+                Mỗi cấp +{c.exp_cap} EXP{mocKe ? ` · tới cấp ${mocKe[0]} thưởng thêm ${mocKe[1]} EXP` : ' · đã qua mọi mốc thưởng'}
+              </p>
+            </Card>
+
+            <Card icon="ngay" tieuDe="Hôm nay" phai={`${d.vong_quay.xong_hom_nay} xong`}>
+              <DongNV icon="N1" ten="Vượt 1 Thử thách" mota="Đúng từ 80% trở lên trong 1 lượt Thử thách" diem={c.diem_ngay}
+                xong={d.ngay.N1.xong_hom_nay > 0} phu={treo(d.ngay.N1.con_mo, 'lượt')} />
+              <DongNV icon="N2" ten={`Luyện ${c.n2_cau} câu`} mota={`Làm đúng ${c.n2_cau} câu trên app — hôm nay ${d.ngay.N2.tien_do} câu đúng`} diem={c.diem_ngay}
+                xong={d.ngay.N2.xong_hom_nay > 0} phu={treo(d.ngay.N2.con_mo, 'lượt')} />
+              <DongNV icon="N3" ten="Sửa sai" mota={`Làm đúng ${c.n3_cau} câu thuộc dạng em từng sai (14 ngày) — hôm nay ${d.ngay.N3.tien_do} câu`} diem={c.diem_ngay}
+                xong={d.ngay.N3.xong_hom_nay > 0} phu={treo(d.ngay.N3.con_mo, 'lượt')} />
+              <div className="mt-2.5 flex gap-2">
+                {onThuThach && <button onClick={onThuThach} className="flex flex-1 items-center justify-center gap-1.5 rounded-xl py-2 text-[12.5px] font-bold" style={nutPhu}><IconNV ma="thu_thach" size={14} /> Thử thách</button>}
+                {onTuLuyen && <button onClick={onTuLuyen} className="flex flex-1 items-center justify-center gap-1.5 rounded-xl py-2 text-[12.5px] font-bold" style={nutPhu}><IconNV ma="tu_luyen" size={14} /> Tự luyện</button>}
+              </div>
+              <button onClick={onVongQuay} disabled={!onVongQuay}
+                className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-xl py-2.5 text-[13px] font-extrabold"
+                style={moQuay ? { background: MAU.acc, color: MAU.accInk } : { background: MAU.surface2, color: MAU.muted }}>
+                <IconNV ma="vong_quay" size={15} /> {moQuay ? 'Đã mở lượt quay may mắn!' : `Xong ${d.vong_quay.can} nhiệm vụ hôm nay để quay (${d.vong_quay.xong_hom_nay}/${d.vong_quay.can})`}
+              </button>
+            </Card>
+
+            <Card icon="tuan" tieuDe={`Tuần ${d.tuan}`} phai={rNay?.mo ? 'đã mở rương' : `${rNay?.so_nv ?? 0}/${c.ruong_can} → rương`}>
+              <DongNV icon="T1" ten="Đúng hẹn cả tuần" mota="Nộp đúng hạn mọi BTVN của tuần" diem={c.diem_tuan} xong={d.tuan_nv.T1.xong_tuan_nay > 0} />
+              <DongNV icon="T2" ten="ET từ 80%" mota="1 bài ET đúng từ 80%" diem={c.diem_tuan} xong={d.tuan_nv.T2.xong_tuan_nay > 0} phu={treo(d.tuan_nv.T2.con_mo, 'tuần')} />
+              <DongNV icon="T3" ten={`Thử thách ${c.t3_ngay} ngày`} mota={`Vượt Thử thách ở ${c.t3_ngay} ngày khác nhau`} diem={c.diem_tuan} xong={d.tuan_nv.T3.xong_tuan_nay > 0} phu={treo(d.tuan_nv.T3.con_mo, 'tuần')} />
+              <DongNV icon="T4" ten="Lấp 1 lỗ" mota="Đưa 1 dạng đang yếu lên đạt" diem={c.diem_tuan} xong={d.tuan_nv.T4.xong_tuan_nay > 0} phu={treo(d.tuan_nv.T4.con_mo, 'tuần')} />
+              <div className="mt-2.5 grid grid-cols-4 gap-1.5 text-center">
+                {d.ruong.map((r) => (
+                  <div key={r.tuan} className="rounded-xl py-1.5 text-[11px]"
+                    style={{ background: r.mo ? NEN_VANG : MAU.surface2, boxShadow: r.tuan === d.tuan ? `inset 0 0 0 2px ${MAU.acc}` : undefined }}>
+                    <div className="flex h-[26px] items-center justify-center"><IconNV ma={r.mo ? 'ruong_mo' : 'ruong_dong'} size={20} /></div>
+                    <div className="font-bold">Tuần {r.tuan}</div>
+                    <div style={{ color: MAU.muted }}>{r.mo ? `+${c.ruong_exp} EXP` : `${r.so_nv}/${c.ruong_can}`}</div>
+                  </div>
+                ))}
+              </div>
+            </Card>
+
+            <Card icon="thang" tieuDe="Tháng này">
+              <DongNV icon="M1" ten="MT bứt phá" mota="Hạng MT tốt hơn lần trước, hoặc vào top 30% khối" diem={c.diem_thang} xong={d.thang_nv.M1} />
+              <DongNV icon="M2" ten={`Thử thách ${c.m2_ngay} ngày`} mota={`Vượt Thử thách ở ${c.m2_ngay} ngày trong tháng — đang ${d.thang_nv.ngay_pass}/${c.m2_ngay}`} diem={c.diem_thang} xong={d.thang_nv.M2} />
+            </Card>
+          </div>
+        )
+      })()}
+    </>
   )
 }
 
@@ -53,7 +137,6 @@ export default function NhiemVuHS({ gioiTinh, onBack, onThuThach, onTuLuyen, onV
       .catch((e) => { setErr(e?.message ?? String(e)); setState('loi') })
   }, [])
 
-  const nutPhu = { background: MAU.surface2, color: MAU.acc, border: `1px solid ${MAU.line}` }
   return (
     <Khung gioiTinh={gioiTinh}>
       <NutBack onBack={onBack} />
@@ -63,76 +146,7 @@ export default function NhiemVuHS({ gioiTinh, onBack, onThuThach, onTuLuyen, onV
       {state === 'dang_tai' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
       {state === 'loi' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.sai }}>{err}</p>}
       {state === 'trong' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Nhiệm vụ chưa mở cho môn của em.</p>}
-      {state === 'san_sang' && d && !d.mo && (
-        <p className="mt-8 p-4 text-center text-[14px] font-bold" style={{ ...THE, color: MAU.ink }}>
-          Nhiệm vụ mở từ ngày {d.bat_dau.split('-').reverse().join('/')} — hẹn em nhé!
-        </p>
-      )}
-
-      {state === 'san_sang' && d && d.mo && (() => {
-        const c = d.cau_hinh
-        const trongCap = d.chang.cap >= c.cap_max ? c.cap_diem : d.chang.diem % c.cap_diem
-        const mocKe = c.moc.find(([cap]) => cap > d.chang.cap)
-        const rNay = d.ruong.find((r) => r.tuan === d.tuan)
-        const treo = (n: number, dv: string) => (n > 0 ? `Còn ${n} ${dv} chờ — làm bù được` : undefined)
-        const moQuay = d.vong_quay.xong_hom_nay >= d.vong_quay.can
-        return (
-          <div className="mt-4 grid gap-3 md:grid-cols-2">
-            <Card icon="🎖️" tieuDe={`Chặng tháng ${parseInt(d.thang.slice(5), 10)}`} phai={`+${d.chang.exp} EXP`}>
-              <div className="flex items-baseline justify-between">
-                <span className="text-[26px] font-extrabold leading-none" style={HEAD}>Cấp {d.chang.cap}<span className="text-[15px]" style={{ color: MAU.muted }}>/{c.cap_max}</span></span>
-                <span className="text-[12px]" style={{ color: MAU.muted }}>{d.chang.diem} Điểm Chặng</span>
-              </div>
-              <div className="mt-2.5 h-2.5 w-full overflow-hidden rounded-full" style={{ background: MAU.surface2 }}>
-                <div className="h-full rounded-full" style={{ width: `${Math.round(100 * trongCap / c.cap_diem)}%`, background: MAU.acc }} />
-              </div>
-              <p className="mt-1 text-[11.5px]" style={{ color: MAU.muted }}>
-                Mỗi cấp +{c.exp_cap} EXP{mocKe ? ` · tới cấp ${mocKe[0]} thưởng thêm ${mocKe[1]} EXP` : ' · đã qua mọi mốc thưởng'}
-              </p>
-            </Card>
-
-            <Card icon="☀️" tieuDe="Hôm nay" phai={`${d.vong_quay.xong_hom_nay} xong`}>
-              <DongNV icon="⚔️" ten="Vượt 1 Thử thách" mota="Đúng từ 80% trở lên trong 1 lượt Thử thách" diem={c.diem_ngay}
-                xong={d.ngay.N1.xong_hom_nay > 0} phu={treo(d.ngay.N1.con_mo, 'lượt')} />
-              <DongNV icon="📝" ten={`Luyện ${c.n2_cau} câu`} mota={`Làm đúng ${c.n2_cau} câu trên app — hôm nay ${d.ngay.N2.tien_do} câu đúng`} diem={c.diem_ngay}
-                xong={d.ngay.N2.xong_hom_nay > 0} phu={treo(d.ngay.N2.con_mo, 'lượt')} />
-              <DongNV icon="🔧" ten="Sửa sai" mota={`Làm đúng ${c.n3_cau} câu thuộc dạng em từng sai (14 ngày) — hôm nay ${d.ngay.N3.tien_do} câu`} diem={c.diem_ngay}
-                xong={d.ngay.N3.xong_hom_nay > 0} phu={treo(d.ngay.N3.con_mo, 'lượt')} />
-              <div className="mt-2.5 flex gap-2">
-                {onThuThach && <button onClick={onThuThach} className="flex-1 rounded-xl py-2 text-[12.5px] font-bold" style={nutPhu}>⚔️ Thử thách</button>}
-                {onTuLuyen && <button onClick={onTuLuyen} className="flex-1 rounded-xl py-2 text-[12.5px] font-bold" style={nutPhu}>📚 Tự luyện</button>}
-              </div>
-              <button onClick={onVongQuay} disabled={!onVongQuay}
-                className="mt-2 w-full rounded-xl py-2.5 text-[13px] font-extrabold"
-                style={moQuay ? { background: MAU.acc, color: MAU.accInk } : { background: MAU.surface2, color: MAU.muted }}>
-                🎰 {moQuay ? 'Đã mở lượt quay may mắn!' : `Xong ${d.vong_quay.can} nhiệm vụ hôm nay để quay (${d.vong_quay.xong_hom_nay}/${d.vong_quay.can})`}
-              </button>
-            </Card>
-
-            <Card icon="📅" tieuDe={`Tuần ${d.tuan}`} phai={rNay?.mo ? '🎁 đã mở rương' : `${rNay?.so_nv ?? 0}/${c.ruong_can} → rương`}>
-              <DongNV icon="⏰" ten="Đúng hẹn cả tuần" mota="Nộp đúng hạn mọi BTVN của tuần" diem={c.diem_tuan} xong={d.tuan_nv.T1.xong_tuan_nay > 0} />
-              <DongNV icon="🎯" ten="ET từ 80%" mota="1 bài ET đúng từ 80%" diem={c.diem_tuan} xong={d.tuan_nv.T2.xong_tuan_nay > 0} phu={treo(d.tuan_nv.T2.con_mo, 'tuần')} />
-              <DongNV icon="🔥" ten={`Thử thách ${c.t3_ngay} ngày`} mota={`Vượt Thử thách ở ${c.t3_ngay} ngày khác nhau`} diem={c.diem_tuan} xong={d.tuan_nv.T3.xong_tuan_nay > 0} phu={treo(d.tuan_nv.T3.con_mo, 'tuần')} />
-              <DongNV icon="🩹" ten="Lấp 1 lỗ" mota="Đưa 1 dạng đang yếu lên đạt" diem={c.diem_tuan} xong={d.tuan_nv.T4.xong_tuan_nay > 0} phu={treo(d.tuan_nv.T4.con_mo, 'tuần')} />
-              <div className="mt-2.5 grid grid-cols-4 gap-1.5 text-center">
-                {d.ruong.map((r) => (
-                  <div key={r.tuan} className="rounded-xl py-1.5 text-[11px]"
-                    style={{ background: r.mo ? NEN_VANG : MAU.surface2, boxShadow: r.tuan === d.tuan ? `inset 0 0 0 2px ${MAU.acc}` : undefined }}>
-                    <div className="text-[18px]">{r.mo ? '🎁' : '📦'}</div>
-                    <div className="font-bold">Tuần {r.tuan}</div>
-                    <div style={{ color: MAU.muted }}>{r.mo ? `+${c.ruong_exp} EXP` : `${r.so_nv}/${c.ruong_can}`}</div>
-                  </div>
-                ))}
-              </div>
-            </Card>
-
-            <Card icon="🏔️" tieuDe="Tháng này">
-              <DongNV icon="📈" ten="MT bứt phá" mota="Hạng MT tốt hơn lần trước, hoặc vào top 30% khối" diem={c.diem_thang} xong={d.thang_nv.M1} />
-              <DongNV icon="🗓️" ten={`Thử thách ${c.m2_ngay} ngày`} mota={`Vượt Thử thách ở ${c.m2_ngay} ngày trong tháng — đang ${d.thang_nv.ngay_pass}/${c.m2_ngay}`} diem={c.diem_thang} xong={d.thang_nv.M2} />
-            </Card>
-          </div>
-        )
-      })()}
+      {state === 'san_sang' && d && <NhiemVuView d={d} onThuThach={onThuThach} onTuLuyen={onTuLuyen} onVongQuay={onVongQuay} />}
     </Khung>
   )
 }

@@ -71,6 +71,7 @@ type HomeProps = {
   mons: LopMonHS[]; mon: string | null; onChonMon: (mon: string) => void
   chuaDoc: number; lich: LichBoTro[]; soRetest: number; cards: HomeCard[]; data: Home912 | null
   onHopThu: () => void; onDoiMK: () => void; onThoat: () => void; onLich: () => void; onRetest: () => void
+  onHoSo?: () => void // có ⇒ bấm avatar mở HỒ SƠ (DON-HANG-GAMI-HS Đơn 4); đổi ảnh chuyển vào trong Hồ sơ
 }
 
 function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; onHinhNen: () => void; nutRef: RefObject<HTMLButtonElement> }) {
@@ -89,7 +90,11 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
       {/* ĐẦU TRANG */}
       <div className="flex items-center gap-2.5">
         <div className="shrink-0 rounded-full" style={{ boxShadow: '0 0 0 2px var(--sk-acc)' }}>
-          <AvatarHS anhUrl={p.anhUrl} initials={initials} size={44} fill="var(--sk-surface2)" badge="var(--sk-acc)" onChanged={p.onAnhChanged} />
+          {p.onHoSo
+            ? <button onClick={p.onHoSo} aria-label="Hồ sơ của em" className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full text-[16px] font-extrabold active:scale-95" style={{ background: 'var(--sk-surface2)' }}>
+                {p.anhUrl ? <img src={p.anhUrl} alt="" className="h-full w-full object-cover" /> : initials}
+              </button>
+            : <AvatarHS anhUrl={p.anhUrl} initials={initials} size={44} fill="var(--sk-surface2)" badge="var(--sk-acc)" onChanged={p.onAnhChanged} />}
         </div>
         <span className="flex-1" />
         <button ref={nutRef} onClick={onHinhNen} className="flex h-10 shrink-0 items-center gap-1.5 px-3 text-[13px] font-bold active:scale-95"
