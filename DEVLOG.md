@@ -30912,3 +30912,19 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
 - Pull: máy đã có code mới nhất (phiên khác làm Bắn Quà/Chiếm Đất bản lớp/trà sữa trên cùng checkout, đã push). Đo bản đang chạy: ERP chính (`bkdemy-erp-v2.vercel.app`) ĐÃ có khung Xếp hạng buổi + Bắn Quà; trang game thật `game.bkacademy.edu.vn` (Vercel `bkdemy-erp-v2-2ogm`) ĐÃ có `?che_do=lop` cho Mở Rương/Chiếm Đất/Bắn Quà.
 - **SAI của t (27/09):** mặc định `GAMES_URL = 'https://bkdemy-games.vercel.app'` là ĐOÁN, không kiểm — trả 404 ⇒ nút 📺 Mở màn TV hỏng. Sửa sang `https://game.bkacademy.edu.vn` (tìm bằng `vercel project ls`). Bài học: URL/domain phải ĐO (curl/vercel CLI) trước khi làm mặc định, không để "tạm" rồi quên.
 - App GV (`bkdemy-erp-v2-gv`, màn `ChamBuoiGv.tsx`) và app TA (`ChamBuoi.tsx`) CHƯA gắn khung game — chỉ ERP chính (`BuoiHocScreen`). Hỏi Thùy có gắn vào app GV/TA không.
+
+### 28/09 tối — P1 Bản đồ K12: soi hiện trạng + đề xuất khung (spec-ban-do-k12.md)
+- DB 28/09: K12 = 8 chủ đề · 20 chuyên đề · 77 dạng + dạng chờ **1.516 câu** (TN 672 · Đ/S 581 · TLN 260). Phủ theo 6 chương SGK KNTT:
+  **chương III (thống kê ghép nhóm) và V (mp/đt/góc/mặt cầu) KHÔNG CÓ gì**; VI mới là khung (4 dạng, 6 câu); I cắt theo "đặc điểm chung / hàm tiêu
+  biểu" (di sản chương trình cũ); IV tách 2 chủ đề. Rác: dạng `T112070106` tên "." · `T11206` "XS cổ điển/Kĩ năng bó" rỗng · `T1120301` rỗng.
+  ⇒ **Câu dồn dạng chờ vì bản đồ thiếu chương, không phải AI gán kém.** Nguồn câu chờ = đề thi thử TN 2026 (trải cả 6 chương).
+- Đề xuất v1: chủ đề = chương SGK, chuyên đề = 19 bài, thứ tự = SGK (lưu bảng `dai_chuyen_de_thu_tu`, không nhét vào mã); mã dạng giữ, chỉ dời.
+  CEO vòng 1: khung "gần giống, không 100%" · 673 câu thực tế: "bỏ qua cái đã phân, đề xuất theo góc nhìn của m" · xoá 3 rác: gật · dạng seed CTO: gật.
+- Đọc mẫu 70/673 câu "thực tế": 4 họ KP thật — tối ưu (=GTLN–GTNN, ~38) · đạo hàm=tốc độ thay đổi (~16) · tiệm cận mô hình (~4) · Đ/S khảo sát
+  mô hình (mỗi mệnh đề 1 KP). ⇒ Đề xuất v2 (§2b L1): **không có chuyên đề "thực tế"** — "thực tế" là VỎ bối cảnh, đo mastery phải theo KP thật;
+  thay B5 SGK bằng chuyên đề KP "Tốc độ thay đổi và đạo hàm"; tối ưu thực tế về B2, tiệm cận về B3; dạng phải-lập-hàm mang thuộc tính `thuc_te`
+  (`dai_dang_thuoc_tinh` có bảng, danh mục rỗng). 8 dạng ①–⑧; chạy 673 câu như LÔ ĐẦU của dây chuyền (cũng là bộ đề chấm skill gán dạng).
+  Lệch khác: L2 gộp B9+B10 · L3 giữ Đơn điệu/Cực trị 2 chuyên đề · L4 góc về B16.
+- **Báo động giả đã tự bắt:** console Git Bash in câu mẫu rụng chữ "s" ("ản phẩm", " au khi", "Di covery") — tưởng lỗi OCR hàng loạt; kiểm code
+  point trong DB thì `s` (U+0073) còn nguyên, regex đếm ra 0/26.760. Bài học: **lỗi thấy qua console/tool output phải kiểm bằng byte trong DB
+  trước khi báo** — đúng nguyên tắc "kết quả tra cứu của máy cũng phải qua kiểm độc lập".

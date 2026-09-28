@@ -1,6 +1,8 @@
 # spec-ban-do-k12.md — P1 LUỒNG KHO: BẢN ĐỒ KHỐI 12 (khung chuyên đề + thứ tự + dạng)
 
-> **Trạng thái: ĐỀ XUẤT của CTO (28/09 tối), chờ CEO + học thuật chốt §6.** Số liệu đo trên DB live 28/09 (phiên read-only).
+> **Trạng thái: ĐỀ XUẤT v2 của CTO (28/09 tối) — CEO đã trả lời vòng 1 (§6): khung "gần SGK, không 100%" · xoá rác: gật ·
+> dạng seed nháp CTO: gật · 673 câu thực tế: "bỏ qua cái đã phân, đề xuất theo góc nhìn của CTO" ⇒ §2b + §3b. Chờ CEO chốt vòng 2.**
+> Số liệu đo trên DB live 28/09 (phiên read-only).
 > Là pha **P1** của `spec-luong-kho.md` §7. Đích P1: *học thuật chốt bản đồ K12; 1.516 câu đang nằm dạng chờ có chỗ để về;
 > thứ tự chủ đề tường minh (cho luật phạm vi C8); hồ sơ dạng bắt đầu có.* Chưa build gì cho tới khi §6 được trả lời.
 
@@ -67,7 +69,22 @@ Chuyên đề cũ khớp 1:1 với bài SGK **giữ mã, đổi tên** (vì `dai
 | — | *(rác)* | | **Xoá** `T11206`/`T1120602`/`T112060201` "Xác suất cổ điển / Kĩ năng bó" (0 câu) · `T1120301` chuyên đề rỗng còn sót của chủ đề đã xoá | |
 
 - **Không tạo chủ đề-thùng "Ôn tập / Đề thi"** cho K12: đề thi đã lưu cấu trúc ở `tai_lieu` (F15), câu đề thi vào đúng chuyên đề của nó. (K9 có thùng vì lịch sử; không lặp lại.)
-- Sau khung mới: **6 chủ đề · 19 chuyên đề · ~77 dạng cũ + dạng mới cho 6 chuyên đề tạo mới**.
+
+### 2b. "Gần SGK, không 100%" — 4 chỗ CTO đề xuất LỆCH có chủ đích (CEO 28/09: khung theo SGK nhưng không sao chép)
+
+Nguyên tắc để quyết lệch hay không: **SGK cắt theo BÀI HỌC (để dạy); bản đồ BK cắt theo KIẾN THỨC ĐO ĐƯỢC (HS × KP).** Chỗ nào hai cách cắt
+cho cùng kết quả thì theo SGK (được thứ tự + khớp tài liệu nguồn miễn phí); chỗ nào bài học gom nhiều họ KP, hoặc gom theo *bối cảnh* chứ không
+theo *kiến thức*, thì cắt theo KP.
+
+| # | SGK | BK đề xuất | Vì sao |
+|---|---|---|---|
+| L1 | B5 "Ứng dụng đạo hàm giải bài toán thực tiễn" (1 bài, gom mọi bài toán có lời văn) | **Không có chuyên đề "thực tế".** Thay bằng chuyên đề KP thật **"Tốc độ thay đổi và đạo hàm"** (chuyển động · tốc độ thay đổi đại lượng); còn bài tối ưu thực tế ⇒ về **B2 GTLN–GTNN**, tiệm cận trong mô hình ⇒ về **B3**, đơn điệu/cực trị của mô hình ⇒ về **B1**. Mỗi dạng "có lời văn" mang **thuộc tính `thuc_te`** (`dai_dang_thuoc_tinh`, danh mục hiện rỗng ⇒ tạo) | "Thực tế" là **vỏ bối cảnh**, không phải kiến thức. Đo mastery theo (HS × KP): em làm sai bài "tối ưu doanh thu" là yếu **GTLN–GTNN** (hoặc yếu **lập hàm từ tình huống**), không phải yếu một KP tên "thực tế". Gom theo vỏ thì ô đo vô nghĩa và trùng KP với B1–B3. Chi tiết trên 673 câu: §3b |
+| L2 | B9 Khoảng biến thiên & tứ phân vị · B10 Phương sai & độ lệch chuẩn (2 bài) | **Gộp 1 chuyên đề** "Số đặc trưng đo độ phân tán của mẫu ghép nhóm" (6–7 dạng) | Cùng một họ KP (đọc bảng ghép nhóm → tính một số đặc trưng → so sánh); đề thi 1–2 câu/đề; 2 chuyên đề mỏng làm % phủ và LT chuyên đề rời rạc |
+| L3 | B1 Tính đơn điệu và cực trị (1 bài) | **Giữ 2 chuyên đề** như BK đang có (Đơn điệu · Cực trị) | Hai họ KP độc lập, mỗi họ đã có LT chuyên đề riêng và 4+2 dạng; gộp không được gì |
+| L4 | B14 mp · B15 đt · B16 góc · B17 mặt cầu (4 bài) | Theo SGK **4 chuyên đề** — nhưng **B16 "Công thức tính góc" là chuyên đề công cụ**: đề thường hỏi góc *kèm* mp/đt. Dạng "góc" đặt ở B16, dạng ở B14/B15 chỉ hỏi góc thì gán về B16 | Giữ đúng 1 KP = 1 chỗ; tránh "khoảng cách/góc" xuất hiện ở cả 3 chuyên đề (PNL đang bị vậy) |
+
+Sau khung v2: **6 chủ đề · 19 chuyên đề** (I: Đơn điệu · Cực trị · GTLN–GTNN · Tiệm cận · Khảo sát & vẽ · Tốc độ thay đổi = 6 ·
+II: 3 · III: 1 · IV: 3 · V: 4 · VI: 2) · ~77 dạng cũ dời chỗ + dạng mới cho 8 chuyên đề mới/khuyết.
 
 ## 3. Dạng — độ hạt, nguồn seed, và các chuyên đề mới
 
@@ -85,9 +102,29 @@ Chuyên đề cũ khớp 1:1 với bài SGK **giữ mã, đổi tên** (vì `dai
 | B17 PT mặt cầu | Xác định tâm, bán kính từ PT · Viết PT mặt cầu · Vị trí tương đối mặt cầu với điểm / mp / đt · Bài toán thực tế về mặt cầu |
 | B18 XS có điều kiện | Tính P(A\|B) từ bảng số liệu / dữ kiện đếm · Công thức nhân xác suất · Dùng sơ đồ hình cây · Kiểm tra hai biến cố độc lập |
 | B19 Toàn phần & Bayes | Tính xác suất bằng công thức toàn phần · Tính xác suất hậu nghiệm bằng Bayes · Bài toán thực tiễn (xét nghiệm, sản xuất, lỗi sản phẩm) — *3 dạng đang có giữ nguyên* |
-| B5 Thực tế (673 câu đang gom) | Tách theo PNL: tốc độ thay đổi của đại lượng · tối ưu (diện tích, thể tích, chi phí) · tăng trưởng · kinh tế / sản xuất — **tách bằng lô** (câu đã có dạng, cho agent gán lại dạng con, người duyệt) |
+| ~~B5 Thực tế (673 câu)~~ | → §3b (CEO: bỏ qua cách đã phân, CTO đề xuất theo góc nhìn riêng) |
 
 - Mỗi dạng của chuyên đề mới cần **`mo_ta_ngan`** (dấu hiệu nhận biết 1–2 câu) ngay lúc tạo — đây là thứ 84/84 lỗi gán dạng ở đợt trước đòi hỏi (đòn bẩy 1).
+
+### 3b. 673 câu "ứng dụng thực tế" — đọc lại từ đầu (mẫu ngẫu nhiên 70 câu, 28/09)
+
+Hai dạng hiện có chia theo **đề cho gì** ("có sẵn mô hình" 383 câu / "có sẵn biểu thức" 290 câu). Đó là cắt theo *bề mặt đề bài*.
+Đọc 70 câu theo **phương pháp giải** (cấu trúc sâu, luật §2 `spec-luong-kho.md`) thì chúng rơi vào **4 họ KP, đều đã có chỗ trong B1–B3 + 1 KP chưa có chỗ**:
+
+| Họ KP (phương pháp thật) | Dấu hiệu | Mẫu / 70 | Về chuyên đề | Dạng đề xuất (mỗi dạng = 1 cách LẬP HÀM khác nhau; bước sau — tìm max/min — giống nhau) |
+|---|---|---|---|---|
+| **Tối ưu = GTLN–GTNN** | "lớn nhất / nhỏ nhất / tiết kiệm nhất / tối đa" | **~38** | **B2 GTLN–GTNN** | ① hàm **cho sẵn** (chi phí trung bình, lợi nhuận P(x)) — thực chất là dạng B2 có vỏ · ② phải **lập hàm từ hình học** (hộp, máng tôn, thang, dây uốn, cửa sổ, chóp) · ③ phải **lập hàm từ kinh tế** (giảm giá ↔ thêm khách, doanh thu − chi phí, chia đợt hàng, trạm/ống) · ④ **quãng đường – thời gian** (bơi + đi bộ, hai xã bờ sông, sa mạc; hàm có căn) |
+| **Đạo hàm = tốc độ thay đổi** | s(t), v, a; "tốc độ tăng/lây lan/thay đổi"; "lúc nào tăng nhanh nhất" | **~16** | **"Tốc độ thay đổi và đạo hàm"** (chuyên đề KP thay cho B5 — L1) | ⑤ chuyển động: s → v → a, tính tại thời điểm / khi nào v, a đạt cực trị · ⑥ tốc độ thay đổi của đại lượng bất kỳ (dân số, thuốc, dịch, thể tích nón): ý nghĩa f′, dấu f′, max f′ · ⑦ tốc độ liên quan (thể tích ↔ chiều cao; ít, để làn 🟡) |
+| **Tiệm cận trong mô hình** | "không bao giờ vượt / đạt đến", logistic, C(x)=300x/(100−x) | **~4** | **B3 Tiệm cận** | ⑧ tiệm cận ngang/đứng của hàm mô hình (giới hạn dài hạn, ngưỡng không đạt) |
+| **Khảo sát toàn diện mô hình** (Đ/S 4 mệnh đề) | Đ/S: mỗi mệnh đề hỏi 1 KP khác (đơn điệu · cực trị · giới hạn · giá trị) | **~10** (Đ/S = 127/673) | **mỗi mệnh đề 1 dạng** (model Đ/S v2 đã có: `menh_de[].ma_dang`) | không đẻ dạng mới — mệnh đề về B1/B2/B3/⑤⑥ |
+| Đọc đồ thị/biểu đồ thực nghiệm | biểu đồ mực nước biển | 1 | B1 (đọc đồ thị) | — |
+
+- **Kết luận CTO:** 673 câu không cần chuyên đề riêng. Cần **8 dạng** (①–⑧) đặt vào B2 · B3 · chuyên đề "Tốc độ thay đổi"; dạng ②③④ mang thuộc tính
+  `thuc_te` (phải mô hình hoá — đây mới là kĩ năng riêng, và là kĩ năng đề 2025+ nhắm tới). Dạng ① không cần thuộc tính (vỏ mỏng, phương pháp = B2 thuần).
+- **Hai dạng cũ `T112020401/402` giữ mã, đổi tên** thành ② và ⑥? — KHÔNG: tên cũ cắt theo bề mặt, câu bên trong trộn cả 4 họ. Cách sạch: tạo 8 dạng mới,
+  **chạy 673 câu như LÔ ĐẦU của dây chuyền** (agent gán lại vào ①–⑧ + làn 🟡/🔴, người duyệt), xong thì 2 dạng cũ về 0 câu ⇒ xoá theo Luật xoá. Đây cũng là
+  bộ đề chấm tự nhiên cho skill ③ gán dạng: 673 câu, 8 dạng, ranh giới rõ.
+- Số ước lượng từ mẫu 70 — con số thật có sau lô đầu.
 
 ## 4. Thứ tự chủ đề & luật phạm vi (C8) — cách lưu
 
@@ -109,13 +146,15 @@ Chuyên đề cũ khớp 1:1 với bài SGK **giữ mã, đổi tên** (vì `dai
 
 Thứ tự điền: chuyên đề có nhiều câu chờ trước (C1 B5 · C4 · C3 · C5).
 
-## 6. CEO / học thuật quyết (chờ trả lời rồi mới build)
+## 6. CEO / học thuật quyết
 
-1. **Chủ đề = chương SGK, chuyên đề = bài SGK (19)?** — CTO khuyến nghị **CÓ** (3 lý do §2). Hệ quả: 2 chủ đề BK cũ (`T11201`, `T11202`) biến mất bằng cách dời 30 dạng; Nguyên hàm + Tích phân gộp 1 chủ đề.
-2. **Bài 5 thực tế (673 câu, 2 dạng):** tách dạng con bằng lô (agent gán lại, người duyệt) — hay để nguyên tới khi có nhu cầu?
-3. **Dọn rác (Luật xoá):** xoá dạng `T112070106` "." · chủ đề `T11206` "Xác suất cổ điển" (rỗng) · chuyên đề `T1120301` rỗng. Tất cả **0 câu**, không có FK trỏ tới ngoài bản đồ. Gật thì mới xoá.
-4. **Ai là "học thuật" duyệt bản đồ K12** (B6: quyền theo role, không riêng CEO)? Cần tên người để đặt quyền màn đề xuất.
-5. **Dạng nháp §3 cho 8 chuyên đề mới:** dùng làm seed cho lô đầu (làn 🟡 sẽ sửa) — hay học thuật viết tay trước?
+**Vòng 1 (CEO 28/09):** khung theo SGK — *"gần giống, không 100%"* ⇒ §2b · 673 câu — *"bỏ qua cái đã phân, đề xuất theo góc nhìn của CTO"* ⇒ §3b ·
+**xoá 3 thứ rác: GẬT** (`T112070106` "." · `T11206`/`T1120602`/`T112060201` · `T1120301`) · **dạng seed nháp CTO: GẬT**.
+
+**Vòng 2 — còn chờ:**
+1. **4 chỗ lệch SGK §2b (L1 bỏ chuyên đề "thực tế" → KP thật + thuộc tính `thuc_te` · L2 gộp thống kê 1 chuyên đề · L3 giữ Đơn điệu/Cực trị 2 chuyên đề · L4 góc về B16):** gật cái nào, sửa cái nào? Và CEO có chỗ lệch nào khác trong đầu chưa nêu?
+2. **673 câu §3b:** 8 dạng ①–⑧ + chạy như lô đầu của dây chuyền, xong xoá 2 dạng cũ — OK?
+3. **Ai là "học thuật" duyệt bản đồ K12** (B6: quyền theo role, không riêng CEO)? Cần tên người để đặt quyền màn đề xuất.
 
 ## 7. Sau khi chốt — việc build P1 (theo thứ tự)
 
