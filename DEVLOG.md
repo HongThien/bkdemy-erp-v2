@@ -31220,3 +31220,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   + link chụp `?xem=gami` cho từng đơn. Huy hiệu = huy chương tròn kim loại vàng cổ + ĐÁ QUÝ màu chủ (ghi mã màu khớp code), khoá = bóng
   xanh đêm (không xám nhạt). Mỗi đơn có mục TÊN FILE khớp cây file của `hinh.ts`. Thêm `fx/sao_moi_sang.png` (Đơn 1) vào sổ hình.
 - Hình tạm trong code chỉnh theo đơn: vành vàng cổ, khoá + dải "chưa đạt" xanh đêm. Soi 375×812 album trống + chọn khoe.
+
+## 2026-09-29 (4) — spec-the-gioi-bk.md
+- Thùy: sticker miễn phí (Noto/LottieFiles) "hơi xấu" ⇒ Thùy tự tìm mua. Gom toàn bộ bàn 28–29/09 thành `spec-the-gioi-bk.md` (đích, số nền, 2 lớp, 3 tầng tin, tương tác, riêng tư, push, bản quyền sticker, dữ liệu, build, còn mở, ý tưởng liên quan); §0.7c trỏ sang.

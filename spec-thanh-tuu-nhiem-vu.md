@@ -177,6 +177,7 @@
 - Đơn design gửi ChatGPT: `design/DON-HANG-GAMI-HS.md` (Huy hiệu · Nhiệm vụ + Album · Hồ sơ).
 
 ### 0.7c "Thế giới BK" — học cùng nhau + kênh khoe (Thùy chốt logic 28/09)
+> **→ Bản gom đầy đủ, mới nhất: `spec-the-gioi-bk.md` (29/09)** — đọc file đó trước khi build; mục này giữ lịch sử chốt theo vòng.
 - **Gốc (Thùy):** HS học một mình trên app thấy **cô đơn**; thấy bạn khác cũng đang làm bài, đang đạt thành tích ⇒ hứng thú + động lực; được
   "show hàng" trước bạn bè. **KHÔNG làm mạng xã hội đăng bài** — làm "mạng xã hội khoe", không rủi ro.
   Tên gọi thế giới: *social presence / body doubling* (Forest, Focusmate, "Study With Me") + *khoe tự động, bạn bè bấm tương tác* (Strava Kudos, Duolingo).
