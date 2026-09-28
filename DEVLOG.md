@@ -30416,3 +30416,11 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Ghi nhận: thang cộng dồn cả năm ⇒ giữa năm đa số cùng 1–2 bậc lớn (T6: 83% General) — bậc = hành trình, đua = hạng ⇒ hỏi Thùy
   thêm "Bảng đua tháng" (Q-N2). Q-N1: bậc 5 Master (nghĩa học tập) hay Hero (liền mạch truyện). Tránh dịch VN "Chiến Thần",
   "Huyền Thoại" (trùng rank Liên Quân).
+
+## 2026-09-28 (13) — Rank: chốt bậc 5 = Hero · có Bảng đua tháng
+
+- Thùy chốt Q-N1: bậc 5 = **Hero** (thang: Novice · Soldier · Captain · General · Hero · Legend · King · Emperor · God of War ·
+  Supreme God). Q-N2: **có Bảng đua tháng** — xếp hạng Điểm Rank kiếm trong tháng (khối × môn), vinh danh TV, gộp giải tháng,
+  không đổi bậc. Cập nhật spec A3 + phân tích vòng 4 + tên bậc trong `sim-diem-rank.mjs`.
+- Phần RANK coi như chốt xong logic + số. Detail còn lại của spec: C5 danh hiệu dạng · C6 thành tựu · C7 nhiệm vụ · C8 đua lớp ·
+  C10 ngân sách xu · C11 UI · C12 thứ tự build · chi tiết Bảng đua tháng.

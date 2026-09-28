@@ -101,12 +101,16 @@ Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như c�
 
 - **Mùa = 1 NĂM** (Thùy 28/09). Thang bậc theo câu chuyện **"người bình thường thành thần"**.
 - **Thang 10 bậc (tên đang bàn — `phan-tich-diem-rank.md` vòng 4):**
-  - **8 bậc cố định**, mỗi bậc **3 sao**: Novice → Soldier → Captain → General → Master/Hero → Legend → King → Emperor.
+  - **8 bậc cố định**, mỗi bậc **3 sao**: Novice → Soldier → Captain → General → **Hero** → Legend → King → Emperor.
     - Bậc = f(Điểm Rank cộng dồn trong năm). **Lên tuần tự**, chỉ lên, không tụt trong mùa.
   - **2 bậc ghế** (God of War, Supreme God) — **bậc thần phải ÍT**; đa số chỉ tới bậc 6–7, bậc 8–10 là danh giá:
     - Điều kiện: top trong **khối × môn** **và** **phong độ** cao (điểm từ đầu mùa so với mức tối đa có thể kiếm tới lúc đó).
     - Xét lại hằng ngày, ngồi được quanh năm. Bị vượt thì rơi về bậc cố định.
     - Đây là **chỗ duy nhất có tụt**.
+- **Bảng đua tháng** (Thùy 28/09):
+  - Xếp hạng Điểm Rank **kiếm được trong tháng** theo khối × môn.
+  - Vinh danh top tháng trên TV, gộp với giải thưởng tháng.
+  - **Không đổi bậc** — bậc là hành trình cả năm, bảng tháng là cuộc đua mỗi tháng.
 - **Hết năm:**
   - Thưởng theo **bậc cao nhất** đạt được trong năm, là đồ mang tên mùa nên hiếm vĩnh viễn.
   - Mùa mới **về lại Novice** ("tái sinh"). Bậc đỉnh năm cũ giữ thành huy hiệu vĩnh viễn.
@@ -187,7 +191,7 @@ Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như c�
 > **C4:**
 > - Thùy chốt **mùa = 1 năm**, thang 10 bậc "người thường → thần" (8 cố định × 3 sao + 2 ghế thần). Bậc thần ít; đa số dừng ở bậc 6–7.
 > - Ngưỡng đề xuất + mô phỏng 12 tháng: `phan-tich-diem-rank.md` vòng 4.
-> - Chờ chốt: **Q-N1** tên bậc 5 (Master / Hero) · **Q-N2** có Bảng đua tháng không.
+> - ✅ Đã chốt: bậc 5 = **Hero** · **có Bảng đua tháng** (không đổi bậc).
 >
 > **C9:** theme = hành trình "người thường → thần", tên tiếng Anh.
 >

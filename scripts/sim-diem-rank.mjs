@@ -209,7 +209,7 @@ function chayChot(mon, siSo, title, soThang = 3, heSo = HE_SO_BAC) {
 // ============================================================================
 const BAC_NAM = [
   { ten: 'Novice', hs: 0 }, { ten: 'Soldier', hs: 0.6 }, { ten: 'Captain', hs: 1.6 }, { ten: 'General', hs: 3.0 },
-  { ten: 'Master', hs: 4.6 }, { ten: 'Legend', hs: 7.0 }, { ten: 'King', hs: 8.0 }, { ten: 'Emperor', hs: 9.8 },
+  { ten: 'Hero', hs: 4.6 }, { ten: 'Legend', hs: 7.0 }, { ten: 'King', hs: 8.0 }, { ten: 'Emperor', hs: 9.8 },
 ]
 // Ghế thần ngồi được QUANH NĂM: xét phong độ = điểm từ đầu mùa ÷ (điểm tối đa tháng × số tháng đã qua)
 const GHE_GOD = 0.03, PHONG_DO_GOD = 0.84        // God of War: top 3% khối × môn VÀ phong độ ≥ 84%
