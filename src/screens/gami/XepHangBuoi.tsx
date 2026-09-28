@@ -4,6 +4,7 @@
 // DB rút EXP + ghi sổ (fn_buoi_game_choi) → ERP gửi kết quả xuống TV (kênh bk-lop:<buổi>) để diễn. Đã có bạn chơi ⇒ không
 // mở lại được. Mọi số ở DB; ở đây chỉ hiển thị + vá tại chỗ từ kết quả RPC trả về (không reload cả khung).
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { supabase } from '../../lib/supabase'
 import { tinhHinhGiai, chotGiai, moLaiGiai, choiLuot, traoQua, GAME_LOP, linkTV, kenhTV, TEN_GIAI, TEN_QUA, type GiaiBuoi, type KetQuaLuot } from '../../lib/gameLop'
 import BanQuaLop from './BanQuaLop'
@@ -19,6 +20,9 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
   const [game, setGame] = useState<string>(NHO_GAME[buoiId] ?? 'mo_ruong')
   const [coTv, setCoTv] = useState(false)
   const [msg, setMsg] = useState<string | null>(null)
+  // 🖥 TRÌNH CHIẾU 1 MÀN (Thùy 28/09: "không cần 2 màn — cast laptop sang TV, màn quay hiện danh sách từng HS để so"):
+  // overlay toàn màn = game (iframe bản lớp, vẫn nghe kênh bk-lop như TV rời) + danh sách cả lớp theo giải, GV bấm tên ngay đây.
+  const [trinhChieu, setTrinhChieu] = useState(false)
   const chRef = useRef<ReturnType<typeof supabase.channel> | null>(null)
   const ngheTV = useRef<((p: Record<string, unknown>) => void) | null>(null) // tin TV gửi về (Bắn Quà: điểm ván)
   useEffect(() => { NHO_GAME[buoiId] = game }, [buoiId, game])
@@ -63,6 +67,19 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
   const bao = (t: string) => { setMsg(t); window.setTimeout(() => setMsg((m) => (m === t ? null : m)), 2500) }
 
   const g = GAME_LOP.find((x) => x.id === game) ?? GAME_LOP[0]
+  const moChoBan = async (hid: string) => {
+    setBan(hid)
+    try {
+      const k = await choiLuot(buoiId, hid, game)
+      guiTV(k)
+      setTt((p) => p && ({ ...p, so_da_choi: p.so_da_choi + (k.da_choi ? 0 : 1), so_qua_chua_trao: p.so_qua_chua_trao + (k.qua && !k.da_choi ? 1 : 0), hs: p.hs.map((x) => (x.hoc_sinh_id === hid ? { ...x, exp: k.exp, game: k.game, qua: k.qua, qua_trao_at: x.qua_trao_at ?? null } : x)) }))
+      if (k.qua && !k.da_choi) bao(`🧋 ${k.ho_ten} TRÚNG ${TEN_QUA[k.qua] ?? k.qua}! Trao xong bấm "Đã trao".`)
+    } catch (e) { bao('❌ ' + (e as Error).message) } finally { setBan(null) }
+  }
+  const chieuLai = async (hid: string, gm: string | null) => {
+    setBan(hid)
+    try { const k = await choiLuot(buoiId, hid, gm ?? game); guiTV(k); bao('↻ Đã chiếu lại') } catch (e) { bao('❌ ' + (e as Error).message) } finally { setBan(null) }
+  }
   const soNhiCan = tt ? (tt.so_co_mat >= 2 ? 1 : 0) : 0
   const duChon = !!nhat && nhi.length >= soNhiCan && (!tt || nhi.length <= tt.toi_da_nhi)
   const theoGiai = useMemo(() => (tt ? [1, 2, 3].map((gi) => tt.hs.filter((h) => h.giai === gi)) : []), [tt])
@@ -141,8 +158,9 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
               <select value={game} disabled={tt.so_da_choi > 0} onChange={(e) => setGame(e.target.value)} className="rounded-md border border-slate-300 px-2 py-1 text-sm disabled:bg-slate-100">
                 {GAME_LOP.map((x) => <option key={x.id} value={x.id} disabled={!x.co_luat}>{x.ten}{x.co_luat ? '' : ' (chờ luật)'}</option>)}
               </select>
-              <a href={linkTV(g.file, buoiId)} target="_blank" rel="noreferrer" className="rounded-md bg-indigo-600 px-3 py-1 text-sm font-bold text-white">📺 Mở màn TV</a>
-              <span className={`rounded px-1.5 text-[11px] ${coTv ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-100 font-bold text-amber-800'}`}>{coTv ? '● TV đã nối' : '⚠ chưa thấy TV'}</span>
+              <button disabled={!g.co_luat} onClick={() => setTrinhChieu(true)} className="rounded-md bg-indigo-600 px-3 py-1 text-sm font-bold text-white disabled:opacity-40" title="Game + danh sách cả lớp trên 1 màn — cast laptop lên TV">🖥 Trình chiếu</button>
+              <a href={linkTV(g.file, buoiId)} target="_blank" rel="noreferrer" className="text-xs text-indigo-600 underline" title="Mở game ở tab riêng (khi dùng 2 màn hình)">tab riêng</a>
+              {coTv && <span className="rounded bg-emerald-50 px-1.5 text-[11px] text-emerald-700">● game đã nối</span>}
               <span className="ml-auto text-xs text-slate-500">{tt.so_da_choi}/{tt.so_co_mat} bạn đã chơi</span>
             </div>
             {tt.so_qua_chua_trao > 0 && (
@@ -166,21 +184,10 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
                             setBan('qua' + h.hoc_sinh_id)
                             try { const d = await traoQua(buoiId, h.hoc_sinh_id); setTt(d); bao('✓ Đã ghi trao ' + (TEN_QUA[h.qua!] ?? h.qua)) } catch (e) { bao('❌ ' + (e as Error).message) } finally { setBan(null) }
                           }} className="min-h-9 rounded-md bg-pink-500 px-2.5 text-xs font-bold text-white disabled:opacity-40" title="Trúng quà đặc biệt — bấm khi đã trao tay">{TEN_QUA[h.qua] ?? h.qua} · Đã trao</button>)}
-                      {!g.ca_lop && <button disabled={ban === h.hoc_sinh_id} onClick={async () => {
-                        setBan(h.hoc_sinh_id)
-                        try { const k = await choiLuot(buoiId, h.hoc_sinh_id, h.game ?? game); guiTV(k); bao('↻ Đã chiếu lại lên TV') } catch (e) { bao('❌ ' + (e as Error).message) } finally { setBan(null) }
-                      }} className="rounded-md px-2 py-1 text-xs text-indigo-600 hover:bg-white" title="Chiếu lại lên TV (không cộng thêm)">↻ TV</button>}
+                      {!g.ca_lop && <button disabled={ban === h.hoc_sinh_id} onClick={() => chieuLai(h.hoc_sinh_id, h.game)} className="rounded-md px-2 py-1 text-xs text-indigo-600 hover:bg-white" title="Chiếu lại lên TV (không cộng thêm)">↻ TV</button>}
                     </>
                   ) : (
-                    <button disabled={ban === h.hoc_sinh_id || !g.co_luat} onClick={async () => {
-                      setBan(h.hoc_sinh_id)
-                      try {
-                        const k = await choiLuot(buoiId, h.hoc_sinh_id, game)
-                        guiTV(k)
-                        setTt((p) => p && ({ ...p, so_da_choi: p.so_da_choi + (k.da_choi ? 0 : 1), so_qua_chua_trao: p.so_qua_chua_trao + (k.qua && !k.da_choi ? 1 : 0), hs: p.hs.map((x) => (x.hoc_sinh_id === h.hoc_sinh_id ? { ...x, exp: k.exp, game: k.game, qua: k.qua, qua_trao_at: null } : x)) }))
-                        if (k.qua) bao(`🧋 ${k.ho_ten} TRÚNG ${TEN_QUA[k.qua] ?? k.qua}! Trao xong bấm "Đã trao".`)
-                      } catch (e) { bao('❌ ' + (e as Error).message) } finally { setBan(null) }
-                    }} className="min-h-9 rounded-md bg-indigo-600 px-3 text-xs font-bold text-white disabled:opacity-40">{g.ten.split(' ')[0]} Mở cho bạn này</button>
+                    <button disabled={ban === h.hoc_sinh_id || !g.co_luat} onClick={() => moChoBan(h.hoc_sinh_id)} className="min-h-9 rounded-md bg-indigo-600 px-3 text-xs font-bold text-white disabled:opacity-40">{g.ten.split(' ')[0]} Mở cho bạn này</button>
                   )}
                 </div>
               ))}
@@ -200,6 +207,71 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
         </div>
       )}
       {msg && <div className="border-t border-slate-100 px-4 py-1.5 text-xs font-medium text-slate-600">{msg}</div>}
+      {trinhChieu && tt.da_chot && createPortal(
+        <TrinhChieu tt={tt} g={g} buoiId={buoiId} ban={ban} coTv={coTv} msg={msg} onMo={moChoBan} onChieuLai={chieuLai}
+          onDong={() => { setTrinhChieu(false); if (document.fullscreenElement) document.exitFullscreen().catch(() => {}) }}>
+          {g.ca_lop && (
+            <BanQuaLop buoiId={buoiId} coTv={coTv} guiTV={guiTVTho} ngheTV={ngheTV} onXong={() => tai()}
+              coMat={tt.hs.map((h) => ({ hoc_sinh_id: h.hoc_sinh_id, ho_ten: h.ho_ten, giai: h.giai }))} />
+          )}
+        </TrinhChieu>, document.body)}
+    </div>
+  )
+}
+
+// ───────── 🖥 MÀN TRÌNH CHIẾU: game (iframe bản lớp) + bảng cả lớp — 1 màn để cast lên TV ─────────
+// iframe vẫn là trang game `?che_do=lop` (nghe kênh bk-lop:<buổi>, báo presence) ⇒ không đổi gì phía game.
+// Danh sách chữ TO để cả lớp đọc từ TV: nhóm theo giải, ai đã mở thì hiện +EXP (và 🧋 nếu trúng), GV bấm "Mở" ngay trên tên.
+function TrinhChieu({ tt, g, buoiId, ban, coTv, msg, onMo, onChieuLai, onDong, children }: {
+  tt: GiaiBuoi; g: (typeof GAME_LOP)[number]; buoiId: string; ban: string | null; coTv: boolean; msg: string | null
+  onMo: (hid: string) => void; onChieuLai: (hid: string, gm: string | null) => void; onDong: () => void; children?: React.ReactNode
+}) {
+  const vungRef = useRef<HTMLDivElement | null>(null)
+  useEffect(() => { const k = (e: KeyboardEvent) => { if (e.key === 'Escape' && !document.fullscreenElement) onDong() }; addEventListener('keydown', k); return () => removeEventListener('keydown', k) }, [onDong])
+  const nhom = [1, 2, 3].map((gi) => tt.hs.filter((h) => h.giai === gi))
+  const MAU: Record<number, string> = { 1: 'from-amber-400 to-yellow-600', 2: 'from-slate-300 to-slate-500', 3: 'from-orange-300 to-amber-700' }
+  return (
+    <div ref={vungRef} className="fixed inset-0 z-[100] flex bg-[#0b1030] text-white">
+      <div className="relative min-w-0 flex-1">
+        <iframe src={linkTV(g.file, buoiId)} title="game" className="h-full w-full border-0" allow="autoplay; fullscreen" />
+        {!coTv && <div className="pointer-events-none absolute left-1/2 top-3 -translate-x-1/2 rounded-lg bg-amber-500/90 px-3 py-1 text-sm font-bold">Đang nối game…</div>}
+      </div>
+      <aside className="flex w-[min(34vw,460px)] shrink-0 flex-col border-l border-white/10 bg-[#121a45]">
+        <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
+          <span className="text-xl font-black">{g.ten}</span>
+          <span className="rounded bg-white/10 px-2 py-0.5 text-sm">{tt.so_da_choi}/{tt.so_co_mat} đã chơi</span>
+          <button onClick={() => { if (document.fullscreenElement) document.exitFullscreen().catch(() => {}); else vungRef.current?.requestFullscreen().catch(() => {}) }}
+            className="ml-auto rounded-md bg-white/10 px-2 py-1 text-sm hover:bg-white/20" title="Toàn màn hình">⛶</button>
+          <button onClick={onDong} className="rounded-md bg-white/10 px-2 py-1 text-sm hover:bg-white/20" title="Thoát (Esc)">✕</button>
+        </div>
+        <div className="min-h-0 flex-1 overflow-auto p-3">
+          {children}
+          {!g.ca_lop && nhom.map((ds, i) => ds.length > 0 && (
+            <div key={i} className="mb-3">
+              <div className={`mb-1.5 inline-block rounded-lg bg-gradient-to-r px-3 py-1 text-base font-black text-white shadow ${MAU[i + 1]}`}>{TEN_GIAI[(i + 1) as 1 | 2 | 3]}</div>
+              <div className="space-y-1.5">
+                {ds.map((h) => (
+                  <div key={h.hoc_sinh_id} className={`flex items-center gap-2 rounded-xl px-3 py-2 ${h.exp != null ? 'bg-emerald-500/15' : 'bg-white/5'}`}>
+                    <span className="min-w-0 flex-1 break-words text-lg font-bold leading-tight">{h.ho_ten}</span>
+                    {h.exp != null ? (
+                      <>
+                        {h.qua && <span className="text-lg" title={TEN_QUA[h.qua] ?? h.qua}>🧋</span>}
+                        <span className="text-xl font-black text-emerald-300 tabular-nums">+{h.exp}</span>
+                        <button disabled={ban === h.hoc_sinh_id} onClick={() => onChieuLai(h.hoc_sinh_id, h.game)} className="rounded-md px-1.5 text-sm text-white/60 hover:bg-white/10" title="Chiếu lại (không cộng thêm)">↻</button>
+                      </>
+                    ) : (
+                      <button disabled={ban === h.hoc_sinh_id} onClick={() => onMo(h.hoc_sinh_id)}
+                        className="min-h-10 rounded-lg bg-indigo-500 px-4 text-base font-black text-white hover:bg-indigo-400 disabled:opacity-40">{g.ten.split(' ')[0]} Mở</button>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        {msg && <div className="border-t border-white/10 px-4 py-2 text-sm font-bold text-amber-200">{msg}</div>}
+        <div className="border-t border-white/10 px-4 py-2 text-xs text-white/50">EXP cộng ngay khi bấm Mở (nguồn "Trên lớp"). Esc: thoát trình chiếu.</div>
+      </aside>
     </div>
   )
 }

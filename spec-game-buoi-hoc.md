@@ -165,6 +165,12 @@ Trúng thì vẫn nhận EXP như thường + 1 trà sữa (quà thật, trao ta
   Trúng trà sữa ⇒ overlay to "🧋 TRÚNG TRÀ SỮA!" + pháo giấy. Mở Rương bản lớp: dòng phụ banner đổi thành "🧋 TRÚNG TRÀ SỮA!…".
 - CHƯA: test 1 lớp thật (như Mở Rương) · deploy bkdemy-games + ERP · Đoán Số bản lớp (chờ luật).
 
+## 5d. MÀN TRÌNH CHIẾU 1 MÀN (Thùy 28/09)
+
+- "Không cần 2 màn — cast laptop sang TV; màn quay hiện danh sách từng HS để so." ⇒ sau chốt, nút **🖥 Trình chiếu** mở overlay
+  toàn màn TRONG ERP: game (iframe `game.bkacademy.edu.vn/<game>.html?che_do=lop&buoi=`) + cột danh sách cả lớp theo giải (+EXP, 🧋),
+  GV bấm "Mở" trên tên. Trang game không đổi (vẫn nghe kênh `bk-lop:<buổi>`). "tab riêng" còn cho ca 2 màn.
+
 ## 6. Đường nối ERP (đã dò DB/code thật 27/09 — sự thật, không phải đề xuất)
 
 - **Buổi → lớp → môn:** `buoi_hoc.lop_id` → `lop.mon` (lop có cột `mon`, `khoi`). Danh sách + điểm danh: `getRoster(buoiId)` (src/lib/gami.ts:203), đổi điểm danh `diemDanh` (:270).
