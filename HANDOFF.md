@@ -388,7 +388,7 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
   bằng giả lập chạy CHÍNH bộ máy của game (`?gia_lap=1` → `giaLap()` / `canBang()`; đổi luật đạn ⇒ chạy lại rồi chép `he`). **Nối ERP**
   (mig `202609281425_ban_qua_lop`): DB quay đạn theo giải + chia đội (🎲 ngẫu nhiên / GV tự xếp) + chốt (hạng, EXP Nhất 300→cuối 100, rương,
   trà sữa, sổ EXP 1 transaction); TV chỉ gửi ĐIỂM THÔ về, GV xem rồi Chốt. Đã verify trọn chuỗi trên buổi thật (ghi DB trong ROLLBACK);
-  **màn ERP `BanQuaLop` CHƯA bấm thật** (mới tsc). Còn hỏi Thùy: đội có hộp quà? máu xe 150 ổn? (hoà đầu ⇒ đang cho cùng Vàng).
+  **màn ERP `BanQuaLop` CHƯA bấm thật** (mới tsc). Thùy chốt 28/09: đội KHÔNG hộp quà · máu xe 150 · hoà đầu cùng Vàng — luật đã đủ, chỉ còn test lớp thật.
 - **2 CHẾ ĐỘ HIỂN THỊ** (Thùy 28/09, sau chốt Nhất/Nhì): **📺 Chế độ 1 · TV riêng** — GV làm việc trên ERP, TV riêng mở trang game = game +
   **bảng lớp** (ERP gửi event `ds` qua kênh khi đổi + khi TV nối; `games-site/lib/bk-lop-bang.js`; số của bạn đang mở giấu tới khi diễn xong) ·
   **🖥 Chế độ 2 · Cast chung** — overlay toàn màn trong ERP = iframe game `&nhung=1` + danh sách cả lớp theo giải, bấm "Mở" trên tên.

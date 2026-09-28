@@ -175,6 +175,7 @@ chọn 👤 Cá nhân / 👥 Đội (số đội 2–4, giờ 2–5 phút) → c
   `{hs:{…},doi:{1:150,2:54}}` khớp màn TV → `fn_ban_qua_chot` trên đúng gói đó ⇒ Đỏ Vàng / Xanh Bạc, 7 dòng EXP → TV chiếu kết quả + trà sữa.
 - CHƯA: bấm thử màn ERP thật (cần đăng nhập — mới qua tsc) · deploy ERP + bkdemy-games · chạy 1 lớp thật.
 
-## 6. Còn hỏi Thùy
-- Chế độ đội có hộp quà không? (CTO đang làm: KHÔNG — đội chỉ bắn nhau.) Có thì hộp cộng điểm vào "sát thương gây ra" của đội?
-- Máu xe 150 (≈ 3 phát trúng tâm đạn thường). Muốn trận dài/ngắn hơn thì chỉnh. Hoà sát thương giữa 2 đội đứng đầu: cả 2 cùng Vàng?
+## 6. Đã chốt hết (Thùy 28/09 tối)
+- Chế độ đội **KHÔNG có hộp quà** — các đội chỉ bắn nhau (đúng như đang build).
+- Máu xe **150** — giữ.
+- Hoà sát thương ở đầu: cả các đội hoà cùng mở rương Vàng (CTO làm vậy, Thùy không phản đối).

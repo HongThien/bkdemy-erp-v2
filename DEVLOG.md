@@ -31095,3 +31095,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Đơn 1 viết lại thành v2 trong `design/DON-HANG-SKIN-HS.md`: Thị trấn = skin trong bộ chung (mở mọi khối) ⇒ theo BỐ CỤC CHUNG, đủ ô khối 9 + 10–12;
   skin SÁNG (vùng đặt ô sáng dịu, chữ tối) · linh vật thay người · giao 1 hình/lượt không zip như Đơn 3 v3 · 27 hình (2 toàn cảnh, 6 nền, 3 linh vật, 16 icon).
 - HANDOFF: mục "GIAO DIỆN APP HS" viết lại sạch (mở 6–12, hình RPG thật, nguồn ảnh, việc tiếp, bài học zip ChatGPT).
+
+## 2026-09-28 (12) — Bắn Quà: chốt 2 câu cuối
+- Thùy: chế độ đội KHÔNG có hộp quà · máu xe 150 giữ. Trùng code hiện tại ⇒ không sửa code; spec §6 đổi thành "đã chốt hết", HANDOFF cập nhật.
