@@ -30171,3 +30171,23 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - **Lộ trình:** P0 cho HS bầu 6 mẫu + hỏi mở → P1 khung skin + gỡ gán giới tính + 2 skin → P2 tầng 2 đi cùng GĐ1–2 thành tựu → P3 đủ 6 + skin mùa.
 - **Trang đề xuất (mockup chạy được):** https://claude.ai/artifact/M2w9GCJzYAaa1hB1NULg6x · 6 câu chờ Thùy (khối nào · có bầu P0 không ·
   ai vẽ art · skin free hết? · PH/GV khoá skin? · linh vật chung hay riêng).
+
+## 2026-09-28 (6) — LUỒNG KHO: CEO vòng 3 + phản biện luật 95% + kiến trúc 3 lớp (chưa build) — `spec-luong-kho.md` §3, §5, §7
+
+- **Thùy chốt:** **K12 trước** (sẵn tài liệu có đáp án) · thứ tự chủ đề sẽ làm lại 1 lượt · lý thuyết dạng bổ sung trong đợt này ·
+  **Đại số không làm nhiều ý, mỗi bài 1 ý** (sau này có hệ tiền đề ghép bài như Hình) · folder nguồn máy này =
+  `G:\Other computers\My Computer\BK ACADEMY` · luật 3 giai đoạn hình đúng ý nhưng **yêu cầu CTO phản biện** · bàn kiến trúc trước,
+  rồi mới tới cách build skill/agent/flow · **đích: đoạn đầu người tham gia nhiều, về sau phần lớn tự động.**
+- **Đo (đếm folder):** Kho đề 1.072 PDF · Kho dạng bài 535 PDF + 320 Word + 51 `.ggb` · Tham khảo 888 Word + 192 rar · K12 riêng: 358 đề PDF
+  (171 có file đáp án) + 361 Word. **Word K12 100% MathType** (6/6 file mẫu, 0 công thức Word). Máy phiên này không có Word /
+  LibreOffice / `pdftoppm`. Ổ `G:` là streaming: đọc 6 file Word >4 phút. Mục lục PNL K12 chỉ 38 "dạng" so với 77 dạng BK.
+- **Phản biện luật 95% (6 lỗ):** đồng thuận ≠ đúng · tỉ lệ nền đánh lừa (người kiểm luôn nói "đạt" vẫn qua ngưỡng) ⇒ đo tỉ lệ LỌT và
+  tỉ lệ BẮT · người duyệt quen tay gật ⇒ cài câu bẫy · một ngưỡng cho mọi mức nặng ⇒ đáp số/hình sai toán lọt ≤1%, còn lại ≤5% ·
+  "liên tục" không chống đổi nguồn ⇒ lên cấp theo khâu × chủ đề × loại nguồn · sau tự duyệt cần nhân chứng không phải người ⇒ bài làm HS.
+- **Quyết định CTO (chờ CEO):** 3 lớp Tri thức / Dây chuyền / Đo + bánh đà (người sửa → luật → lô sau sai ít hơn) · dây chuyền là
+  workflow do script điều phối, agent tự do chỉ ở lớp Tri thức · 4 cấp tự động cho từng khâu · trạng thái trung gian ở đĩa local,
+  DB chỉ nhận dòng khi có kết quả thật · Word MathType thử đọc thẳng dữ liệu nhúng trước, đổi PDF là đường lùi · thứ tự build đổi:
+  bản đồ K12 → đọc + gán → bánh đà → giải → hình → đề thi + form → lên cấp.
+- **Sai/bài học:** (1) lệnh kiểm 6 file trên ổ streaming treo quá 240s — với ổ Drive phải chép local trước rồi mới đọc, đừng đọc tại chỗ.
+  (2) chuỗi `&&` có `grep -c` ra 0 ⇒ exit 1 ⇒ cả đoạn commit phía sau không chạy mà không báo gì; lệnh kiểm không được đứng giữa chuỗi `&&`.
+- **Còn:** 4 câu §8 (nhận điểm phản biện nào · máy nào chạy dây chuyền · hình sửa bằng GeoGebra? · workflow vs agent); §9 cách build chưa viết.
