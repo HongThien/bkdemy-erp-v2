@@ -124,8 +124,8 @@ const LOAI={
   nho:{diem:20,w:62,sp:['present_E_red','present_F_blue'],vung:[500,1650],sl:6},
   vua:{diem:40,w:80,sp:['present_A_red','present_C_green'],vung:[850,2100],sl:5},
   to:{diem:70,w:100,sp:['present_D_yellow','present_sphere'],vung:[1450,2340],sl:3},
-  vang:{diem:120,w:78,sp:['present_D_yellow'],bay:true,vung:[750,2280],sl:4},
-  trasua:{diem:0,w:80,sp:['trasua'],bay:true,vung:[1200,2200],sl:0}
+  vang:{diem:150,w:54,sp:['present_D_yellow'],bay:true,vung:[1250,1880],cao:[-150,40],sl:2},
+  trasua:{diem:0,w:58,sp:['trasua'],bay:true,vung:[1100,1880],cao:[-150,60],sl:0}
 };
 const BONUS_NO=.2,R_NO=18; // trúng nơ (tâm trên hộp) ⇒ +20%
 
@@ -190,9 +190,10 @@ function veMay(dt){for(const m of may){m.x+=(gio*14*m.v+6)*dt;if(m.x>W+200)m.x=-
   ctx.fillStyle='rgba(255,255,255,.85)';ctx.beginPath();for(const [dx,dy,r] of [[0,0,34],[36,-14,40],[76,0,32],[38,10,34]])ctx.arc(m.x+dx*m.s,m.y+dy*m.s,r*m.s,0,6.28);ctx.fill()}}
 
 // ---------- CAMERA: ngắm = lùi xa thấy cả map; đạn bay = bám đạn; nổ = giữ một chút rồi lùi ra ----------
-const Z_FIT=W/WW;const cam={x:0,y:WH-H/Z_FIT,z:Z_FIT};let camMuc={x:0,y:WH-H/Z_FIT,z:Z_FIT},camGiu=0;
+// toàn cảnh: nâng mặt đất lên trên bảng điều khiển dưới (HUD cao ~200px) ⇒ lộ thêm 165px đất dưới đáy thế giới (tô màu đất)
+const Z_FIT=W/WW,Y_FIT=WH-H/Z_FIT+165;const cam={x:0,y:Y_FIT,z:Z_FIT};let camMuc={x:0,y:Y_FIT,z:Z_FIT},camGiu=0;
 function camNhin(x,y,z){const vw=W/z,vh=H/z;camMuc={z,x:clamp(x-vw/2,0,Math.max(0,WW-vw)),y:Math.min(y-vh*.55,WH-vh)}}
-function camToanCanh(){camMuc={x:0,y:WH-H/Z_FIT,z:Z_FIT}}
+function camToanCanh(){camMuc={x:0,y:Y_FIT,z:Z_FIT}}
 function capNhatCam(dt){const k=1-Math.pow(.02,dt);cam.z=lerp(cam.z,camMuc.z,k);cam.x=lerp(cam.x,camMuc.x,k);cam.y=lerp(cam.y,camMuc.y,k)}
 
 // ---------- HẠT HIỆU ỨNG (toạ độ THẾ GIỚI) ----------
@@ -222,23 +223,25 @@ const GIO_MAX=10,T_NGAM=10;
 // ---------- HỘP QUÀ ----------
 function kichThuoc(L,sp){const im=IMG[sp];let w=L.w,h=im?L.w*im.height/im.width:L.w*.9;if(h>L.w*1.15){w=w*L.w*1.15/h;h=L.w*1.15}return [w,h]}
 function choTrong(L,w,bay){ // tìm chỗ trống trong vùng của loại hộp
-  for(let t=0;t<80;t++){const x=rnd(L.vung[0],L.vung[1]);const y=bay?rnd(150,430):0;
-    const ok=hop.every(b=>b.chet||(bay?(!b.bay||Math.hypot(b.x-x,b.y0-y)>170):(b.bay||Math.abs(b.x-x)>w/2+b.w/2+18)));
+  for(let t=0;t<80;t++){const x=rnd(L.vung[0],L.vung[1]);const y=bay?rnd(L.cao[0],L.cao[1]):0;
+    const ok=hop.every(b=>b.chet||(bay?(!b.bay||Math.abs(b.y0-y)>75||Math.abs(b.x0-x)>260):(b.bay||Math.abs(b.x-x)>w/2+b.w/2+18)));
     if(ok&&(bay||Math.abs(matDat(x)-matDat(x-w/2))<50&&Math.abs(matDat(x)-matDat(x+w/2))<50))return [x,y]}
   return null} // hết chỗ ⇒ không đặt (thà thiếu 1 hộp còn hơn chồng lên nhau)
 function taoHop(loai){const L=LOAI[loai],sp=L.sp[(Math.random()*L.sp.length)|0],[w,h]=kichThuoc(L,sp),ch=choTrong(L,w,!!L.bay);if(!ch)return null;const [x,yb]=ch;
   const b={loai,x,w,h,sp,bay:!!L.bay,diem:L.diem,vy:0,chet:false,hien:0,pha:rnd(0,6.28)};
-  if(b.bay){b.y0=yb;b.y=yb}else b.y=matDat(x)-h;return b}
+  if(b.bay){b.y0=yb;b.y=yb;b.x0=x;b.bien=rnd(100,170);b.toc=rnd(.7,1.15)}else b.y=matDat(x)-h;return b}
 function datHop(){hop=[];const coTS=/trasua=1/.test(location.search); // bản chính thức: hộp trà sữa do DB rút (game_lop_qua_dac_biet)
   for(const loai in LOAI){const n=LOAI[loai].sl+(loai==='trasua'&&coTS?1:0);for(let i=0;i<n;i++){const b=taoHop(loai);if(b)hop.push(b)}}}
-function mocLai(){ // hộp vỡ ở lượt vừa rồi mọc lại chỗ mới ⇒ mọi bạn đối mặt bàn cờ như nhau (Thùy 28/09)
-  const vo=hop.filter(b=>b.chet&&b.loai!=='trasua').map(b=>b.loai);hop=hop.filter(b=>!b.chet);for(const l of vo){const b=taoHop(l);if(b)hop.push(b)}}
+// Thùy 28/09: bắn cá nhân ⇒ MỖI LƯỢT RESET về đúng map ban đầu (đất + hộp) — ai cũng bắn cùng 1 bàn, người trước không phá hết quà của người sau.
+let GOC=null;
+function chupMap(){GOC={ter:tg.getImageData(0,0,WW,WH),solid:SOLID.slice(),hop:hop.map(b=>({...b}))}}
+function resetMap(){if(!GOC)return;tg.putImageData(GOC.ter,0,0);SOLID.set(GOC.solid);hop=GOC.hop.map(b=>({...b,hien:0}));PHAO.y=matDat(PHAO.x);PHAO.vy=0}
 const diemNo=b=>({x:b.x,y:b.y+Math.min(14,b.h*.12)}); // "nơ" = tâm mép trên hộp
 function hopDung(b){for(const dx of [-.35,0,.35])if(dac(b.x+dx*b.w,b.y+b.h+1))return true;return false}
 
 // ---------- LUỒNG TRẬN ----------
 function batDauLuot(){if(luot>=DS.length){ketThuc();return}
-  if(luot>0)mocLai();
+  if(luot>0)resetMap();
   pha='ngam';dem=T_NGAM;luc=0;napDang=false;chonDan=0;diemLuot=0;
   gio=Math.round(rnd(-GIO_MAX,GIO_MAX));goc=clamp(gocTruoc??55,5,88);camToanCanh();
   $('pad').classList.add('show');tone(660,.12,'triangle',.08);tone(990,.18,'triangle',.08,null,.1)}
@@ -256,7 +259,7 @@ function xongLuot(){pha='cho';huyt(false);const p=DS[luot];p.diem=diemLuot;
   if(diemLuot===0)chu(cam.x+W/cam.z/2,cam.y+H/cam.z*.35,'Trượt rồi 😅','#ffffff',60);
   setTimeout(()=>{camToanCanh();setTimeout(()=>{luot++;batDauLuot()},450)},diemLuot?1300:1100)}
 
-function no(x,y,D){ // NỔ: khoét đất (trừ tường đá), hộp trong tầm vỡ + tính điểm, hiệu ứng
+function no(x,y,D,trungHop){ // NỔ: khoét đất (trừ tường đá), hộp trong tầm vỡ + tính điểm, hiệu ứng
   khoet(x,y,D.crat);rung=Math.max(rung,D.r/7);dungHinh=D.r>=100?.09:.05;
   noise(.5+D.r/300,.28+D.r/400,2400,110);tone(90,.4,'sine',.18,40);
   hat({k:'vong',x,y,R:D.r*1.35,r:9,life:.38,t:0,c:'rgba(255,255,255,.95)'});hat({k:'vong',x,y,R:D.r*1.9,r:4,life:.55,t:0,c:'rgba(255,220,150,.7)'});
@@ -269,7 +272,8 @@ function no(x,y,D){ // NỔ: khoét đất (trừ tường đá), hộp trong t�
   for(let i=0;i<nL*1.6;i++){const a=rnd(Math.PI,2*Math.PI),s=rnd(150,520);hat({k:'dat',x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,g:1300,r:rnd(2.5,6),life:rnd(.8,1.6),t:0,c:[T.dirt[0],T.dirt[1],T.grass[0]][(Math.random()*3)|0],dat:true})}
   for(let i=0;i<nL;i++){const a=rnd(0,6.28),s=rnd(300,800);hat({k:'tia',x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,g:600,r:rnd(2,3.5),life:rnd(.25,.5),t:0,c:'#ffe28a'})}
   // hộp trong tầm nổ: VỠ, điểm = điểm hộp × hệ số đạn × (1 → 0,4 ra mép); trúng NƠ ⇒ +20%
-  let k=0;for(const b of hop){if(b.chet)continue;const nx=clamp(x,b.x-b.w/2,b.x+b.w/2),ny=clamp(y,b.y,b.y+b.h),d=Math.hypot(x-nx,y-ny);if(d>D.r)continue;
+  let k=0;for(const b of hop){if(b.chet)continue;if(b.bay&&b!==trungHop)continue; // hộp trên trời: CHỈ vỡ khi đạn chạm trực tiếp
+    const nx=clamp(x,b.x-b.w/2,b.x+b.w/2),ny=clamp(y,b.y,b.y+b.h),d=Math.hypot(x-nx,y-ny);if(d>D.r)continue;
     const n=diemNo(b),chuan=Math.hypot(x-n.x,y-n.y)<=R_NO;
     let dm=Math.max(1,Math.round(b.diem*D.he*(1-.6*d/D.r)));if(chuan)dm=Math.round(dm*(1+BONUS_NO));
     diemLuot+=dm;DS[luot].diem=diemLuot;phaHop(b,dm,chuan,k++)}}
@@ -291,7 +295,7 @@ function loop(now){let dt=Math.min(.05,(now-tTruoc)/1000)*CHAM;tTruoc=now;tNow+=
 function capNhat(dt){
   if(!dac(PHAO.x,PHAO.y+1)){PHAO.vy+=1400*dt;PHAO.y+=PHAO.vy*dt;if(dac(PHAO.x,PHAO.y)){while(dac(PHAO.x,PHAO.y))PHAO.y--;PHAO.vy=0}}
   for(const b of hop){if(b.chet)continue;b.hien=Math.min(1,b.hien+dt*2.2);
-    if(b.bay){b.y=b.y0+Math.sin(tNow*1.6+b.pha)*9;continue}
+    if(b.bay){b.y=b.y0+Math.sin(tNow*1.6+b.pha)*9;b.x=b.x0+Math.sin(tNow*b.toc+b.pha)*b.bien;continue}
     if(!hopDung(b)){b.vy+=1400*dt;b.y+=b.vy*dt;if(hopDung(b)){while(dac(b.x,b.y+b.h))b.y--;b.vy=0}}
     if(b.y>WH)b.chet=true}
   if(pha==='ngam'){dem-=dt;if(dem<=3&&Math.floor(dem+dt)!==Math.floor(dem)&&dem>0)tone(1200,.08,'square',.05);if(dem<=0)hetGio();
@@ -305,7 +309,7 @@ function capNhat(dt){
       const cham=dac(d.x,d.y);let trungHop=null;for(const b of hop)if(!b.chet&&d.x>b.x-b.w/2&&d.x<b.x+b.w/2&&d.y>b.y&&d.y<b.y+b.h){trungHop=b;break}
       if(cham&&d.nay>0&&!trungHop){d.nay--;const nxl=dac(d.x-6,d.y-2)-dac(d.x+6,d.y-2);d.x-=d.vx*h*1.5;d.y-=d.vy*h*1.5;d.vy=-Math.abs(d.vy)*.62;d.vx=d.vx*.8+nxl*60;tone(300,.12,'sine',.12,500);
         for(let k=0;k<8;k++)hat({k:'dat',x:d.x,y:d.y,vx:rnd(-120,120),vy:rnd(-260,-80),g:1200,r:rnd(2,4),life:.7,t:0,c:T.dirt[0]});continue}
-      if(cham||trungHop){dans.splice(i,1);no(d.x,d.y,d.D);camGiu=.7;continue}
+      if(cham||trungHop){dans.splice(i,1);no(d.x,d.y,d.D,trungHop);camGiu=.7;continue}
       if(d.x<-200||d.x>WW+200||d.y>WH+80){dans.splice(i,1);continue}}}
     for(const d of dans)if(Math.random()<.5)hat({k:'khoi',x:d.x,y:d.y,vx:rnd(-10,10),vy:rnd(-10,10),r:rnd(3,6),life:.5,t:0,c:'255,255,255',a0:.6});
     if(dans.length){const d=dans[0];camNhin(d.x,Math.min(d.y,WH-300),.9)}
@@ -315,7 +319,7 @@ function capNhat(dt){
 
 function ve(dt){ctx.setTransform(SC*DPR,0,0,SC*DPR,0,0);ctx.drawImage(bg,0,0);veMay(dt);
   ctx.save();if(rung>0)ctx.translate(rnd(-rung,rung),rnd(-rung,rung));ctx.scale(cam.z,cam.z);ctx.translate(-cam.x,-cam.y);
-  ctx.drawImage(ter,0,0);ctx.drawImage(rock,0,0);
+  ctx.fillStyle=T.dirt[2];ctx.fillRect(-50,WH-2,WW+100,500);ctx.drawImage(ter,0,0);ctx.drawImage(rock,0,0);
   for(const b of hop)if(!b.chet)veHop(b);
   veDiaTieu();veHatDan();veHat(['khoi','dat','xu','giay','tan','lua','tia','vong']);
   if(chop>0){ctx.restore();ctx.save();ctx.fillStyle=`rgba(255,244,214,${chop})`;ctx.fillRect(0,0,W,H);chop=Math.max(0,chop-dt*2.4);ctx.restore();ctx.save();ctx.scale(cam.z,cam.z);ctx.translate(-cam.x,-cam.y)}
@@ -414,7 +418,7 @@ function vongQuay(){pha='quay';const R=$('reels');R.innerHTML=DS.map((p,i)=>`<di
   let n=0;DS.forEach((p,i)=>[0,1,2].forEach(k=>{setTimeout(()=>{const el=$(`s${i}_${k}`);el.dataset.dung=1;el.textContent=DAN[p.dan[k]].ic;el.title=DAN[p.dan[k]].ten;el.classList.add('dung');if(DAN[p.dan[k]].hiem>=3){el.classList.add('r3');tone(1320,.15,'triangle',.07)}else tone(880,.07,'triangle',.05);
     if(++n===DS.length*3){clearInterval(quayI);$('bQuayXong').style.visibility='visible'}},700+k*420+i*110)}))}
 $('bQuayXong').onclick=()=>{$('quay').classList.remove('show');vaoTran()};
-function vaoTran(){taoDiaHinh();veNen();PHAO.y=matDat(PHAO.x);datHop();HAT.length=0;luot=0;lucTruoc=null;gocTruoc=null;batDauLuot()}
+function vaoTran(){taoDiaHinh();veNen();PHAO.y=matDat(PHAO.x);datHop();chupMap();HAT.length=0;luot=0;lucTruoc=null;gocTruoc=null;batDauLuot()}
 function expTheoHang(h,n){if(n<=1)return 200;return Math.round((300-200*(h-1)/(n-1))/10)*10} // Nhất 300 → cuối 100, TB 200
 function ketThuc(){pha='ketqua';$('pad').classList.remove('show');huyt(false);
   const xs=DS.slice().sort((a,b)=>b.diem-a.diem);let i=0;const n=xs.length;
