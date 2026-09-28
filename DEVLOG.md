@@ -31105,3 +31105,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 2026-09-28 (14) — "Thế giới BK": spec logic học cùng nhau + kênh khoe
 - Thùy: gốc = HS học một mình trên app thấy cô đơn; làm "mạng xã hội khoe", không đăng bài. Chốt: thả icon/câu meme soạn sẵn (không chat, không chỉ 1 nút chúc mừng) · em chọn hiện tên hoặc mã HS · kênh Thế giới + kênh lớp · PH không xem.
 - Ghi `spec-thanh-tuu-nhiem-vu.md` §0.7c (chèn TRƯỚC mốc §0.8, giữ nguyên mốc). Đo DB: 338/338 HS đang học có `ma_hs` riêng (HS####). Chưa code.
+
+## 2026-09-28 (15) — Số nền gắn bó app HS (trước gamification)
+- Thùy: "chưa triển khai hết đo không đúng lắm, nhưng cứ làm 1 con số nền". Đo 4 tuần 31/08–27/09 từ `bai_lam` (giờ VN): tuần 21/09 37% HS dùng app, 25% tự nguyện; HS-tuần ≥3 ngày 7,1%; quay lại 89% (62/70); đỉnh 21h, tối trong tuần ~27–36 HS, đồng thời max 22/30 phút. Ghi spec gamification §0.10; script `scripts/do-gan-bo-app.mjs` (read only) để đo lại cùng cách.
+- Sai: dòng in phụ dùng `toISOString()` ⇒ lệch lùi 1 ngày (đúng bẫy §2 cấm) — tự bắt khi đọc lại, sửa trong báo cáo; script lưu dùng to_char ở DB nên không dính.

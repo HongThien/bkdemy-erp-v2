@@ -219,6 +219,30 @@
 
 ---
 
+### 0.10 SỐ NỀN gắn bó app HS — TRƯỚC gamification (đo 28/09/2026, `node scripts/do-gan-bo-app.mjs 2026-08-31 2026-09-27`)
+> Mục tiêu cuối (Thùy): tăng gắn bó với app ⇒ thêm động lực học. ⚠ Thùy: app **chưa triển khai hết** (tự luyện, bổ trợ app… mở dần trong tháng 9)
+> ⇒ số tăng trong kỳ này phần lớn do **mở tính năng**, không phải do động lực. Đây là **mốc để so**, không phải đánh giá. Đo lại cùng script, cùng cách tính.
+
+- **Hoạt động** = HS bắt đầu 1 bài trên app (`bai_lam.bat_dau_at`, giờ VN). **Tự nguyện** = tự luyện · học-từ-đầu luyện · thử thách (không ai giao).
+  Mẫu số: **337 HS đang học, 337 có tài khoản**.
+
+| Tuần (T2) | HS dùng app | lượt | HS **tự nguyện** | lượt tự nguyện |
+|---|---|---|---|---|
+| 31/08 | 39 (12%) | 230 | 21 | 184 |
+| 07/09 | 61 (18%) | 220 | 33 | 116 |
+| 14/09 | 120 (36%) | 765 | 82 | 542 |
+| **21/09** | **124 (37%)** | **1.619** | **85 (25%)** | **1.301** |
+
+- **Tần suất** (HS-tuần, 4 tuần): **≥3 ngày/tuần 7,1%** · 1–2 ngày 18,4% · **0 ngày 74,5%**.
+- **Quay lại:** 70 HS dùng ở 2 tuần đầu ⇒ **62 (89%) còn dùng** ở 2 tuần sau (cỡ mẫu nhỏ, đang giai đoạn mở).
+- **Loại bài (4 tuần):** tự luyện áp đảo — 139 HS / 2.104 lượt (75% nộp); ET 42 HS · BTVN 42 · giáo trình 44 · bổ trợ 23.
+- **Khối:** 9 dùng ít nhất so với sĩ số (26/76 = 34%) · 6–8 ~50% · 10–11 gần đủ (15/16, 20/21) · 3–5 gần như chưa (0/6, 3/11, 5/20).
+- **Giờ:** đỉnh **16–22h**, cao nhất **21h**. Một tối trong tuần 21/09 có **~27–36 HS** làm bài (T2–T5), T6–CN ít hơn.
+  Đồng thời cao nhất: **22 HS cùng bắt đầu trong 1 khung 30 phút** (T7 27/09 17:30).
+  ⇒ Hệ quả cho §0.7c: "N bạn đang học lúc này" thường chỉ **vài bạn tới ~20** ⇒ phải có số "hôm nay" / "tối nay" làm nền, đúng như thiết kế "kênh không bao giờ vắng".
+- **3 chỉ số theo dõi sau ra mắt:** % HS dùng app mỗi tuần (nền 37%) · **% HS-tuần ≥3 ngày (nền 7,1%)** · % HS tự nguyện mỗi tuần (nền 25%).
+  Chỉ số chính = **≥3 ngày/tuần** (thói quen), không phải tổng lượt (1 bạn cày 200 lượt làm phồng số).
+
 ## PHẦN A — LOGIC THIẾT KẾ
 
 ### A0. Bản đồ hệ thống
