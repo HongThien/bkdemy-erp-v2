@@ -30234,3 +30234,14 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   (bộ IP có sẵn trong `Student badge design.zip`, 3 chim × 5 cấp) Thùy KHÔNG chọn.
 - Bài học: (a) CEO đánh số 1–4 là trỏ đúng 4 bullet tóm tắt của t — đọc feedback theo đúng cấu trúc t đã đưa. (b) "Chống farm"
   là giá trị t tự thêm, không phải đích CEO — hỏi trước khi biến nó thành luật thiết kế.
+
+## 2026-09-28 (7) — Spec gamification v4: tách LOGIC khỏi DETAIL · nguồn Điểm Rank mới · Thử thách
+
+- Thùy: (1) Điểm Rank bỏ có mặt / bài trên lớp / lên bảng; thay bằng ET + BTVN (điểm fix), MT theo thứ hạng (t làm bảng hạng
+  1–50: "phân biệt giỏi dốt nhưng không cách quá xa"), thêm **Thử thách** = tự luyện thứ 3, pass ≥80% mới có điểm rank, đúng càng
+  nhiều càng nhiều, trần ngày + tháng, tổng ≈20% Điểm Rank. (2) **"Chốt logic trước, detail bàn sau, đừng lẫn."**
+- **Làm:** viết lại spec v4 = Phần A logic (bản đồ 5 cấu phần, 3 loại điểm không quy đổi, 4 nguồn Điểm Rank, luồng Thử thách, luật
+  20% = trần tháng Thử thách = ¼ tổng ET+BTVN+MT kỳ vọng) · Phần B 4 câu logic mở (L1 chỉ 4 nguồn? L2 thưởng nhiệm vụ có vào rank?
+  L3 MT là gì? L4 Thử thách = tự luyện tổng hợp?) · Phần C 12 việc detail để trống · Phụ lục bảng MT
+  `50 + 50·((51−h)/50)^1.5` (hạng 1=100, 50=50, dốc đầu thoải cuối). MT xếp theo `fn_bxh_diem_mt_khoi` (khối × môn × tháng) có sẵn.
+- Bài học: spec cho CEO phải tách tầng — trộn con số vào logic làm CEO không chốt được logic (mọi lần sửa lại kéo theo cả bảng số).

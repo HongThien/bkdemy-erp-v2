@@ -1,380 +1,205 @@
-# Spec — RANK · DANH HIỆU TOP DẠNG · THÀNH TỰU · NHIỆM VỤ NGÀY/TUẦN/THÁNG cho Học sinh — v3
+# Spec — Gamification HS: RANK · DANH HIỆU TOP DẠNG · THÀNH TỰU · NHIỆM VỤ · ĐUA LỚP — v4 (LOGIC)
 
-> **Trạng thái: ĐỀ XUẤT v3 (CTO, 28/09/2026) — CHỜ CEO CHỐT §9 (quan trọng nhất: THEME / BỘ TÊN).** Chưa code, chưa migration.
+> **Trạng thái: v4 — CHỈ LOGIC THIẾT KẾ (CTO, 28/09/2026). Chờ CEO chốt 4 câu logic ở §B.** Chưa code.
 >
-> **Lịch sử (trong git):**
+> **Luật tài liệu (Thùy 28/09):** *"Chốt logic thiết kế trước. Detail từng cái bàn sau. Đừng lẫn."*
+> - **Phần A** chỉ gồm: có những cấu phần gì, điểm lấy từ đâu, cái gì nối với cái gì.
+> - **Mọi con số / tên gọi / danh mục** nằm ở **Phần C (danh sách bàn sau)**, chưa có nội dung.
+> - **Ngoại lệ duy nhất:** bảng điểm MT theo thứ hạng (Thùy yêu cầu làm luôn) đặt ở **Phụ lục**, tách hẳn khỏi phần logic.
 >
-> | Bản | Commit | Nội dung | Thùy nhận xét |
-> |---|---|---|---|
-> | v1 | `b52a4eb` | Khung app học (Khan/Duolingo) | Bác |
-> | v2 | `123fb12` | Khung game, dựa Liên Quân | Sửa 4 ý (dưới) |
+> **Lịch sử (git):**
+> - **v1** `b52a4eb` — khung app học. Bị bác.
+> - **v2** `123fb12` — khung game, dựa Liên Quân. Thùy sửa 4 ý.
+> - **v3** `24eafcc` — Điểm Rank từ mọi hoạt động, thành tựu lên bậc tuần tự, bỏ tên Liên Quân, bỏ chống cày.
+> - **v4 (bản này)** — Thùy sửa nguồn Điểm Rank:
+>   - Bỏ có mặt / bài trên lớp / lên bảng.
+>   - Thay bằng **ET + BTVN (điểm cố định)** và **MT (theo thứ hạng)**.
+>   - Thêm **Thử thách** — kiểu tự luyện thứ 3, pass ≥80% mới có điểm, có trần ngày/tháng, chiếm ~20% Điểm Rank.
+>   - Tách logic khỏi detail.
 >
-> **v3 sửa theo 4 ý + 1 luật của Thùy (28/09):**
-> 1. **Rank KHÔNG dựa Elo.** Elo chỉ đổi theo ET, ET ít ⇒ không đủ để làm số đo. Rank mới tính điểm từ **MỌI hoạt động học**.
-> 2. **Danh hiệu top theo dạng: giữ ý tưởng, KHÔNG dùng tên/cơ chế gọi theo Liên Quân** (HS sẽ bảo trung tâm copy).
-> 3. **Thành tựu: mỗi thành tựu tự lên bậc tuần tự** Đồng → Bạc → Vàng → Kim Cương (hết bậc này mới tới bậc kia). Bỏ bậc "Huyền Thoại theo top %".
-> 4. **Nhiệm vụ ngày/tuần/tháng: giữ khung, ĐẶT TÊN KHÁC**, không mượn "Sổ Sứ Mệnh".
-> 5. **KHÔNG chống cày ảo — cày càng nhiều càng tốt.** Và nhiệm vụ/điểm phải phủ **cả việc học trên lớp, đi thi thử, BTVN…**, không riêng tự luyện trên app.
->
-> **Theme:** Thùy chọn "theme khác" (không Mythwings, không trung tính), nhưng chưa nêu theme cụ thể.
-> ⇒ Mọi tên trong spec là **[tên tạm]**, gom về **1 bảng §8**. Có theme thì chỉ thay bảng đó, cấu trúc không đổi.
->
-> **Đích:** HS thấy **rank, danh hiệu, thành tựu, nhiệm vụ và phần thưởng**, rồi cày: đi học đều, làm bài trên lớp tốt, nộp BTVN, đi thi thử, tự luyện trên app.
+> **Nguyên tắc chung (đã chốt trước):**
+> - Lấy **cơ chế** game (cày cuốc, đua top), **không lấy tên** của game nào.
+> - Không chống cày ở phần luyện thường. HS cày càng nhiều càng tốt.
+> - Mọi dữ liệu học tập **theo môn** (§1.6 CLAUDE.md).
 
 ---
 
-## 0. Tóm tắt 1 trang
+## PHẦN A — LOGIC THIẾT KẾ
 
-| Trục | HS hỏi | Điểm từ đâu | Lên/xuống | Khoe |
-|---|---|---|---|---|
-| **① RANK MÙA** (theo môn) | "Em đang bậc gì môn Toán?" | **Điểm Rank** cộng từ **mọi hoạt động**: có mặt · bài trên lớp · lên bảng · BTVN · thi thử/sát hạch · bổ trợ · Học từ đầu · tự luyện · dạng lên đạt · thưởng nhiệm vụ | **Chỉ lên trong mùa** (cày là leo). Reset mềm đầu mùa | Khung avatar · TV lớp |
-| **② DANH HIỆU TOP DẠNG** (theo dạng × khối) | "Em là Top mấy dạng *Tỉ lệ thức* khối 8?" | **Điểm Dạng**: mỗi câu đúng của dạng đó, **từ mọi nguồn** (lớp, BTVN, thi, app) | Chốt **mỗi thứ Hai**. Bị vượt là mất. Bỏ luyện lâu thì tụt | Danh hiệu dưới tên |
-| **③ THÀNH TỰU** | "Em lên Vàng thành tựu nào rồi?" | Đếm hoạt động | Mỗi thành tựu lên **tuần tự Đồng → Bạc → Vàng → Kim Cương**, không bao giờ mất | 3 huy hiệu khoe |
-| **④ NHIỆM VỤ ngày/tuần/tháng** | "Hôm nay em làm gì?" | Việc **trên lớp + ở nhà + thi** | Ngày sống 3 ngày · tuần dồn được · tháng là 1 chặng 30 cấp | Thanh chặng tháng |
-| **⑤ ĐUA LỚP** | "Lớp em đứng mấy khối?" | Tổng Điểm Rank tuần của lớp / sĩ số | Tuần + tháng | TV mọi lớp |
+### A0. Bản đồ hệ thống
 
-**Nguyên tắc cày:** **không có trần, không khoá giờ, không giảm điểm khi làm nhiều.**
-- Điểm Rank và Điểm Dạng **không đổi ra xu**.
-- Xu chỉ đến từ **số nhiệm vụ cố định** mỗi ngày/tuần/tháng và từ **mốc thành tựu**.
-- ⇒ HS cày bao nhiêu cũng được, ngân sách xu vẫn tự có trần. Không phải chặn gì.
+```
+                ┌───────────── HOẠT ĐỘNG HỌC (theo môn) ─────────────┐
+                │  ET · BTVN · MT · Thử thách (app)   │  mọi câu đúng │
+                └──────────────┬──────────────────────┴──────┬────────┘
+                               ▼                             ▼
+                        ① ĐIỂM RANK                   ② ĐIỂM DẠNG
+                     (tích luỹ trong mùa)       (theo từng dạng × khối)
+                               ▼                             ▼
+                     BẬC RANK MÙA + ghế đỉnh      DANH HIỆU TOP DẠNG (chốt tuần)
+                               │                             │
+                               └────────────┬────────────────┘
+                                            ▼
+                                   KHOE (TV lớp · app)
+                                   1 danh hiệu + 3 huy hiệu + khung rank
 
----
+   ③ THÀNH TỰU   — đếm hoạt động, mỗi thành tựu lên bậc tuần tự, không bao giờ mất
+   ④ NHIỆM VỤ    — ngày / tuần / tháng, phủ mọi hoạt động → phần thưởng
+   ⑤ ĐUA LỚP     — Điểm Rank của lớp so với lớp cùng khối, cùng môn
+```
 
-## 1. Hiện trạng BK (soi DB + code 28/09) — nguồn dữ liệu cho điểm
+**Ba loại "điểm" tách biệt, không quy đổi sang nhau:**
 
-| Hoạt động | Bảng (có sẵn) | Có `mon`? |
+| Điểm | Dùng để | Đổi ra xu? |
 |---|---|---|
-| Có mặt / vắng | `buoi_hoc_hs.diem_danh` (`co_mat · vang · vang_phep`) | qua buổi |
-| Bài trên lớp (ingame / ET / MT) | `gami_grades` ⋈ `gami_session_problems` (phase, `ma_dang`) | ✓ |
-| Lên bảng Nhất/Nhì/Giải 3 | `buoi_giai` (Giải 3 = có mặt, không có dòng) | ✓ |
-| Game buổi | `buoi_game_luot` | ✓ |
-| BTVN | `btvn_nop` · `btvn_ket_qua` (`trang_thai_nop`, `ti_le_dung`, `thai_do`) | qua buổi |
-| **Thi thử / sát hạch / khảo sát tháng** | `ky_thi` (loai `truong · mt_sat_hach · khao_sat_thang`, mùa) ⋈ `diem_thi` (`verdict`, `vuot_band`, `full_diem`) · đề thi trên app `bai_test.loai='de_thi'` (ô "Đề thi thử" đang khoá) | ✓ |
-| Bài app từng câu (tự luyện · bổ trợ · Học từ đầu · retest · BTVN app) | `bai_lam_cau` ⋈ `bai_lam` ⋈ `bai_test` (loai, `mon`) ⋈ `bai_test_cau` (`ma_dang`) | ✓ |
-| Bổ trợ / Học từ đầu | `bo_tro_yeu(_dang)` · `hoc_tu_dau_dang` | ✓ |
-| Mastery dạng | `fn_mastery_cells` | ✓ |
-| Giải tháng | `giai_thuong` | ✓ |
-| Catalog thành tích (12 key) + ghim khoe | `thanh_tich_loai` · `hoc_sinh_thanh_tich_ghim` | per_mon |
-| EXP → xu | `gami_exp_ledger` → `qlht_xu_ledger` | ✓ / ví chung |
+| **Điểm Rank** | Leo bậc rank mùa, tranh ghế đỉnh, đua lớp | **Không** |
+| **Điểm Dạng** | Tranh danh hiệu top từng dạng | **Không** |
+| **EXP → xu** (hệ có sẵn) | Phần thưởng của nhiệm vụ / thành tựu | Có (chốt tháng như hiện nay) |
 
-**Ghi chú:**
-- **Elo** (`gami_elo`) **giữ nguyên** cho việc đang dùng (ghép, xếp hạng ET), **không làm nền cho rank** (ý 1).
-- **Chưa có:** rank bậc, danh hiệu, sổ thành tựu đạt, nhiệm vụ.
-- Tự luyện, Học từ đầu, bổ trợ hiện **không sinh gì** ⇒ lần đầu được tính.
+### A1. ① ĐIỂM RANK — đúng 4 nguồn
 
----
-
-## 2. Mẫu game tham khảo (chỉ lấy CƠ CHẾ, không lấy tên)
-
-| Cơ chế | Game dùng | BK lấy gì |
+| Nguồn | Cách tính (logic) | Tính chất |
 |---|---|---|
-| Thang bậc mùa, thưởng theo **bậc cao nhất trong mùa**, đồ mùa hết mùa là hiếm vĩnh viễn, reset mềm | LoL, Free Fire, PUBG, Valorant, Hearthstone | Rank mùa ① |
-| **Ghế top có hạn** cho bậc đỉnh (top N + điểm sàn), chốt hằng ngày | LoL Challenger, PUBG Conqueror, Valorant Radiant | Bậc đỉnh ① |
-| **Điểm theo TỪNG đối tượng** (từng nhân vật/lá bài) + danh hiệu top theo phạm vi, chốt tuần | Honor of Kings, Clash Royale Card Mastery | Danh hiệu top dạng ② |
-| Mỗi thành tựu **lên bậc tuần tự**, ngưỡng giãn dần ×4–×10 | Pokémon GO medal, LoL Challenges, Genshin | Thành tựu ③ |
-| Thành tựu hết mùa khoá vĩnh viễn, không tính tổng | WoW Feats of Strength, LoL Legacy | Kỷ niệm ③ |
-| Nhiệm vụ ngày sống nhiều ngày · tuần dồn được · đủ N nhiệm vụ mở rương · chặng tháng nhiều cấp | Genshin, Fortnite, PUBG Royale Pass, Hearthstone | Nhiệm vụ ④ |
-| Đua tập thể, mốc quà chung, ai góp cũng nhận | Free Fire quân đoàn, Clash of Clans Clan Games | Đua lớp ⑤ |
-| Người chơi **tự chọn** 1 danh hiệu + 3 huy hiệu, hiện ở chỗ người khác thấy | LoL màn loading, Free Fire hồ sơ | Khoe trên TV |
+| **ET** | Mỗi bài ET → **điểm cố định** | Fix |
+| **BTVN** | Mỗi bài BTVN → **điểm cố định** | Fix |
+| **MT** | Mỗi tháng, xếp hạng MT trong **khối × môn**. Hàm có sẵn `fn_bxh_diem_mt_khoi(mon, khoi, ym)` đã trả `rank_now`. Thứ hạng → điểm theo **bảng hạng 1–50** (Phụ lục) | Tương đối: phân biệt giỏi/yếu nhưng không cách quá xa |
+| **Thử thách** (A2) | Chỉ khi **pass** (≥80% đúng). Đúng càng nhiều càng được nhiều. Có **trần ngày + trần tháng** | Có trần. **Tổng ≈ 20% Điểm Rank** |
 
-Nguồn chi tiết: §10.
+- **Đã bỏ khỏi Điểm Rank:** có mặt · bài trên lớp (ingame) · lên bảng.
+- **Luật 20%:**
+  - Trần tháng của Thử thách = **¼ × tổng điểm tối đa ET + BTVN + MT kỳ vọng trong tháng**.
+  - ⇒ HS kịch trần thì Thử thách ≈ 20%, ba nguồn kia ≈ 80%.
+  - Con số cụ thể suy ra từ công thức này khi chốt điểm fix (Phần C).
+- Điểm Rank **chỉ cộng trong mùa**, không trừ.
 
----
+### A2. THỬ THÁCH — tính năng tự luyện thứ 3
 
-## 3. ① RANK MÙA theo môn
+Màn Tự luyện (`TuLuyenChuDe.tsx`) có 3 lựa chọn: **Tổng hợp · Theo chủ đề · Thử thách** *(mới)*.
 
-### 3.1 Điểm Rank — cộng từ mọi hoạt động (theo môn, trong mùa)
+```
+Chọn môn → vào Thử thách (câu ra như Tự luyện tổng hợp) → làm → nộp
+   ├─ đúng ≥ 80%  → PASS → + Điểm Rank (tăng theo số câu đúng)   [nếu chưa chạm trần ngày/tháng]
+   └─ đúng < 80%  → không pass → 0 Điểm Rank
+Mọi câu (pass hay không) vẫn tính vào mastery và Điểm Dạng như câu tự luyện thường.
+```
 
-| Hoạt động | Điểm Rank [đề xuất, chỉnh sau 2 tuần chạy thật] |
-|---|---|
-| Có mặt 1 buổi | 20 |
-| Bài trên lớp (ingame + ET) | 0–30 theo tỉ lệ đúng |
-| Lên bảng: Nhất / Nhì / Giải 3 | 30 / 20 / 10 |
-| BTVN: nộp đúng hạn / nộp muộn | 15 / 5, **+ 0–15** theo tỉ lệ đúng |
-| **Thi thử / khảo sát / sát hạch**: dự thi | 40 |
-| — đạt / vượt band / điểm 10 | +40 / +60 / +80 |
-| Tự luyện / BTVN app / retest: **mỗi câu đúng** | 2 (**không trần**) |
-| Bổ trợ: ca kết quả đạt | 40 |
-| Học từ đầu: xong 1 dạng (đọc lý thuyết + nộp test) | 20 |
-| 1 dạng lên đạt (mastery) | 25 |
-| Thưởng nhiệm vụ / thành tựu | theo §5, §6 |
+- **Chạm trần** ngày/tháng thì vẫn làm Thử thách được, chỉ không cộng thêm Điểm Rank. App báo rõ "Hôm nay em đã lấy đủ điểm Thử thách".
+- Theo môn: mỗi môn có trần riêng.
 
-**Ước lượng:** 1 buổi đi học đầy đủ ≈ 60–110 điểm. 1 lượt tự luyện 10 câu đúng 8 ≈ 16 điểm.
-⇒ Đi học đều là xương sống, cày app là phần leo thêm **không giới hạn**. Tỉ lệ này là Q3 cho CEO chỉnh.
+### A3. RANK MÙA
 
-### 3.2 Bậc
+- **Bậc** = f(Điểm Rank tích luỹ trong mùa). **Lên tuần tự**, chỉ lên, không tụt trong mùa.
+- **Bậc đỉnh = ghế có hạn:**
+  - Điều kiện: Top N Điểm Rank trong **khối × môn**, **và** đạt sàn của bậc ngay dưới.
+  - Chốt hằng ngày. Bị vượt thì rơi xuống.
+  - Đây là **chỗ duy nhất có tụt**.
+- **Mùa:**
+  - Thưởng cuối mùa theo **bậc cao nhất** đạt được, là đồ mang tên mùa nên hiếm vĩnh viễn.
+  - Mùa mới reset mềm: khởi đầu thấp hơn bậc cũ.
+- **Elo giữ nguyên** cho việc đang dùng, **không liên quan** rank.
 
-- 7 bậc, mỗi bậc 3 đoàn (III → I). Riêng bậc đỉnh là **ghế có hạn**. **Tên bậc: §8.**
-- **Ngưỡng điểm** đặt sau 2–4 tuần chạy thật, theo phân bố thật. Mục tiêu cuối mùa: ~30% HS ở 2 bậc đầu, ~5% ở bậc 6.
-- **Bậc đỉnh (bậc 7)** = **Top N Điểm Rank môn trong khối**, N = max(1, 3% HS khối), **và** điểm ≥ sàn bậc 6. Chốt 05:00 hằng ngày.
-  - Bị vượt thì rơi về bậc 6. Đây là chỗ **duy nhất** có tụt ⇒ phải cày giữ ghế.
-- **Không tụt trong mùa** (trừ ghế đỉnh): điểm chỉ cộng.
+### A4. DANH HIỆU TOP DẠNG
 
-### 3.3 Mùa
+- **Điểm Dạng** (HS × dạng × môn): cộng theo **câu đúng của dạng đó từ mọi nguồn** (ET, BTVN, MT, tự luyện, Thử thách, bổ trợ…).
+- **Phạm vi = khối × môn.** Danh hiệu nhiều cấp: top % → top 3 → số 1 dạng; số 1 môn tính theo tháng.
+- **Chốt mỗi tuần.** Bị vượt thì mất danh hiệu và có thông báo kèm nút "luyện dạng này".
+- Có **điểm sàn**, để dạng ít người làm không ra top "rẻ".
+- Bỏ luyện lâu thì **chỉ điểm đua** giảm. **Mastery không bao giờ giảm.**
 
-- **Mùa rank = mùa Level sát hạch** (`ky_thi.mua`) — Q2.
-- **Thưởng cuối mùa theo bậc CAO NHẤT đạt được:** khung avatar **mang tên mùa**. Bậc 5 trở lên thêm danh hiệu mùa. Hết mùa không ai lấy được nữa ⇒ đồ hiếm vĩnh viễn.
-- **Quà cơ bản mùa** cho mọi em dự đủ K buổi. Bậc chỉ đổi **màu** của quà.
-- **Reset mềm:** mùa mới khởi đầu **thấp hơn 2 bậc** so với bậc cuối mùa trước (bậc 1–2 thì về bậc 1).
+### A5. THÀNH TỰU
 
----
+- Mỗi thành tựu **tự lên bậc tuần tự** Đồng → Bạc → Vàng → Kim Cương (hết bậc này mới hiện bậc sau). **Đạt rồi không bao giờ mất.**
+- Chia **nhóm theo mảng hoạt động:** trên lớp · BTVN · thi (MT) · tự luyện / Thử thách · chinh phục dạng · nhiệm vụ. Thêm nhóm ẩn / kỷ niệm (hết mùa thì khoá).
+- Thưởng mỗi bậc: EXP / xu / đồ trang trí (Phần C).
+- Mỗi thẻ hiện "N bạn trong khối đã đạt".
 
-## 4. ② DANH HIỆU TOP DẠNG (dạng × khối × môn)
+### A6. NHIỆM VỤ ngày / tuần / tháng
 
-- **Điểm Dạng** (HS × dạng × môn), tính trọn mùa:
-  - Mỗi câu đúng của dạng đó, **từ mọi nguồn**, +1.
-  - Bài **trên lớp / BTVN chấm / thi thử** được **×2** (quan trọng hơn bài luyện).
-  - Không trần, không khoá giờ.
-- **Phạm vi = khối × môn** (dạng gắn theo chương của khối). Nhiều cơ sở thì thêm tầng cơ sở (Q5).
+- **Phủ mọi hoạt động:** trên lớp (ET), BTVN, MT / thi, tự luyện, Thử thách, sửa sai, danh hiệu dạng. **Không riêng app.**
+- **Ngày:** vài nhiệm vụ, mỗi nhiệm vụ **sống 3 ngày**.
+- **Tuần:** vài nhiệm vụ, **chưa làm thì dồn tới hết tháng**. Làm đủ số nhiệm vụ trong tuần thì mở **rương tuần**.
+- **Tháng:** một **chặng nhiều cấp**, cấp nào cũng có quà. Có nhiệm vụ tháng gắn với MT.
+- Số nhiệm vụ mỗi kỳ **cố định** ⇒ lượng xu phát ra tự có trần.
 
-| Danh hiệu [tên tạm — §8] | Điều kiện | Chu kỳ |
-|---|---|---|
-| Hạng A dạng X | Top **20%** HS khối có đo dạng X, và điểm ≥ sàn A | Chốt 00:00 thứ Hai, giữ 1 tuần |
-| Hạng B dạng X | Top **5%**, và điểm ≥ sàn B | Tuần |
-| Top 3 dạng X khối 8 | Hạng 1–3, và điểm ≥ sàn | Tuần |
-| **Số 1 dạng X khối 8** | Hạng 1 | Tuần |
-| **Số 1 môn khối** | Tổng Điểm Dạng mọi dạng của môn cao nhất khối | **Tháng** (trao cùng giải tháng) |
+### A7. ĐUA LỚP
 
-**Luật đi kèm:**
-- **Có sàn**, để dạng chỉ 2–3 em làm không ra "Top 1" rẻ.
-- Phân vị chỉ tính trên HS **đã có đo** dạng đó (§5 CLAUDE.md: chưa đo ≠ yếu).
-- **Giữ ngôi:** dạng không có câu mới trong **14 ngày** ⇒ Điểm Dạng *đua* giảm 5%/tuần tới khi làm lại. Tuần nghỉ chung của trung tâm thì không giảm.
-  - Chỉ đụng **điểm đua**. **Mastery không bao giờ giảm** (mastery suy từ đo thật).
-- **Bị vượt có thông báo:** "Bạn Minh vừa vượt em ở dạng X — còn 12 điểm để lấy lại". Kèm nút **"Luyện dạng X"** mở thẳng bài.
+- Các lớp **cùng khối, cùng môn** đua với nhau.
+- **Điểm lớp** = Điểm Rank lớp kiếm được trong kỳ ÷ sĩ số.
+- Có mốc quà tập thể (em nào có đóng góp cũng nhận) và vinh danh lớp nhất tháng trên TV.
 
----
+### A8. KHOE
 
-## 5. ③ THÀNH TỰU — mỗi thành tựu tự lên bậc tuần tự
+- HS **tự chọn** 1 danh hiệu + 3 huy hiệu thành tựu. Khung avatar theo bậc rank.
+- Hiện ở TV lớp (công bố xếp hạng buổi, game buổi), màn thành tích chiếu TV, và header app.
+- TV **chỉ xướng tên top**. Hạng thấp chỉ em đó thấy trong app của mình.
 
-| Bậc | Hình | Ngưỡng | Thưởng |
-|---|---|---|---|
-| 🥉 Đồng | 1 sao | Dễ — đạt trong 1–2 tuần | +Điểm Rank 20 |
-| 🥈 Bạc | 2 sao | ×4–5 | +50 EXP · +Điểm Rank 50 |
-| 🥇 Vàng | 3 sao | ×4–5 | +150 EXP · +Điểm Rank 120 |
-| 💎 Kim Cương | 4 sao | ×4–10 (cày cả năm) | +400 EXP · +Điểm Rank 300 · khung nhỏ |
+### A9. Ràng buộc kỹ thuật (khớp CLAUDE.md)
 
-- **Hết Đồng mới hiện thanh tiến độ tới Bạc**, hết Bạc mới tới Vàng. Đã đạt thì **không bao giờ mất**.
-- Thẻ đã đạt hiện **"N bạn trong khối đã đạt"**. Dưới 10% khối thì gắn nhãn **Hiếm**.
-- **Tổng số sao** = "Điểm Sưu tập": khoe trên hồ sơ, không tiêu được.
-
-### 5.1 Danh mục khởi đầu (30 thành tựu, 6 nhóm) — `[M]` theo môn · `[C]` chung
-
-**🏫 Trên lớp**
-
-| key | Tên [tạm] | Điều kiện | Đ / B / V / KC | Nguồn |
-|---|---|---|---|---|
-| `co_mat` [M] | Chuyên Cần | Tổng buổi có mặt | 10 / 40 / 120 / 300 | `buoi_hoc_hs` |
-| `chuoi_co_mat` [M] | Không Nghỉ | Chuỗi buổi có mặt liên tiếp (thay `chuoi_di_hoc`, **chuyển xuống DB**) | 5 / 15 / 40 / 100 | `buoi_hoc_hs` |
-| `nhat_buoi` [M] | Nhất Buổi | Được chốt Nhất xếp hạng buổi | 1 / 5 / 20 / 60 | `buoi_giai` |
-| `len_bang` [M] | Lên Bảng | Vào Nhất/Nhì/Giải 3 | 3 / 15 / 50 / 150 | `buoi_giai` |
-| `top_et` [M] | Đỉnh ET | Hạng 1 ET buổi (key cũ `top1_et`) | 1 / 5 / 20 / 60 | `gami_elo_history.rank` |
-
-**📝 Bài tập về nhà**
-
-| key | Tên [tạm] | Điều kiện | Đ / B / V / KC | Nguồn |
-|---|---|---|---|---|
-| `btvn_nop` [M] | Chăm Bài | Tổng bài BTVN đã nộp | 10 / 40 / 120 / 300 | `btvn_ket_qua` |
-| `btvn_dung_han` [M] | Đúng Hẹn | Chuỗi BTVN nộp đúng hạn (thay `chuoi_btvn`) | 5 / 15 / 40 / 100 | `btvn_ket_qua` |
-| `btvn_gioi` [M] | Bài Đẹp | BTVN tỉ lệ đúng ≥ 90% | 3 / 15 / 50 / 150 | `btvn_ket_qua.ti_le_dung` |
-
-**🎯 Thi cử**
-
-| key | Tên [tạm] | Điều kiện | Đ / B / V / KC | Nguồn |
-|---|---|---|---|---|
-| `di_thi` [M] | Dạn Dày | Số lần dự thi thử / khảo sát / sát hạch | 1 / 5 / 15 / 40 | `diem_thi` |
-| `thi_dat` [M] | Qua Ải | Số bài thi `verdict='dat'` | 1 / 5 / 15 / 40 | `diem_thi` |
-| `vuot_band` [M] | Vượt Band | Số lần vượt band (key cũ `vuot_band` / `len_band`) | 1 / 3 / 8 / 20 | `diem_thi.vuot_band` |
-| `diem_cao` [M] | Điểm Cao | Bài thi ≥ 9 (Kim Cương = 10 tròn ×3) | 1 / 3 / 8 / ×3 | `diem_thi` |
-| `level` [M] | Leo Level | Level sát hạch trong mùa | 3 / 7 / 12 / 21 | `ky_thi` / `diem_thi` |
-
-**💪 Tự luyện** (cày không giới hạn)
-
-| key | Tên [tạm] | Điều kiện | Đ / B / V / KC | Nguồn |
-|---|---|---|---|---|
-| `cau_dung` [M] | Ngàn Câu | Tổng câu đúng trên app | 100 / 500 / 2.000 / 10.000 | `bai_lam_cau` |
-| `luot_luyen` [M] | Luyện Đều | Số lượt tự luyện hoàn thành | 10 / 50 / 200 / 800 | `bai_lam` |
-| `tron_diem` [M] | Trọn Điểm | Lượt 10/10 | 1 / 10 / 50 / 200 | `bai_lam` |
-| `chuoi_dung` [M] | Chuỗi Đúng | Kỷ lục câu đúng liên tiếp | 10 / 25 / 50 / 100 | `bai_lam_cau` |
-| `sua_sai` [M] | Sửa Sai | Câu sai rồi trong 14 ngày làm đúng lại câu cùng dạng | 10 / 50 / 200 / 800 | `bai_lam_cau` |
-
-**👑 Chinh phục dạng**
-
-| key | Tên [tạm] | Điều kiện | Đ / B / V / KC | Nguồn |
-|---|---|---|---|---|
-| `dang_dat` [M] | Kho Dạng | Số dạng đạt | 5 / 20 / 60 / 150 | `fn_mastery_cells` |
-| `lap_lo` [M] | Lật Kèo | Dạng từ yếu → đạt | 1 / 5 / 20 / 50 | lịch sử mastery |
-| `vuot_kho` [M] | Vượt Khó | Ca bổ trợ đạt / xong dạng Học từ đầu | 1 / 5 / 15 / 40 | `bo_tro_yeu` · `hoc_tu_dau_dang` |
-| `top_dang` [M] | Giữ Top | Số tuần giữ bất kỳ danh hiệu Top 3 / Số 1 dạng | 1 / 5 / 20 / 50 | sổ danh hiệu |
-| `so1_dang` [M] | Số 1 | Số **dạng khác nhau** từng giữ Số 1 | 1 / 3 / 10 / 25 | sổ danh hiệu |
-| `rank_dinh` [M] | Leo Rank | Bậc rank cao nhất từng đạt: bậc 3 / 4 / 5 / 6 | 1 mốc mỗi bậc | rank mùa |
-
-**🔥 Nhiệm vụ & Bí ẩn / Kỷ niệm**
-
-| key | Tên [tạm] | Điều kiện | Đ / B / V / KC |
-|---|---|---|---|
-| `nv_tuan` [C] | Siêng Năng | Số tuần mở được rương tuần | 1 / 4 / 12 / 30 |
-| `chang_thang` [C] | Về Đích | Số tháng hoàn thành đủ 30 cấp chặng tháng | 1 / 3 / 6 / 10 |
-
-Bí ẩn / Kỷ niệm: 1 lần · ẩn tới khi đạt · kỷ niệm mùa khoá khi hết mùa.
-
-| key | Điều kiện |
-|---|---|
-| `nguoc_dong` [M] | Từ nửa dưới lớp lên Nhất buổi trong 4 buổi |
-| `tham_tu` | Báo sai đề được xác nhận (`bai_test_report.trang_thai='dung'`) |
-| `tra_sua` | Trúng trà sữa game buổi (`buoi_game_qua`) |
-| `mua_<ma>` | Tham gia mùa rank X |
-| `sk_<ma>` | Kỷ niệm sự kiện (vd Trung thu 2026) |
-
-### 5.2 Khoe
-
-- HS **tự chọn 1 danh hiệu** (top dạng / danh hiệu mùa) **và 3 huy hiệu thành tựu**. Dùng lại `hoc_sinh_thanh_tich_ghim`.
-- Khung avatar = bậc rank cao nhất đang có.
-- **Hiện ở:**
-  - TV khi công bố xếp hạng buổi.
-  - Thẻ tên trong Mở Rương / Chiếm Đất.
-  - Màn thành tích chiếu TV.
-  - Header app HS.
-- TV chỉ xướng tên người trong top. Hạng thấp chỉ em đó thấy trong app của mình.
+- **Mọi phép tính ở Postgres (`fn_*`), client chỉ gọi RPC** (§2.0).
+- Điểm Rank, Điểm Dạng, tiến độ thành tựu / nhiệm vụ đều **suy động** từ bảng đo (§1.5, §4). Không có bảng `tasks`, không đẻ dòng chờ.
+- **Chỉ ghi dòng khi có sự kiện thật:**
+  - thành tựu đạt,
+  - kết quả chốt (danh hiệu tuần, ghế đỉnh, bậc cuối mùa),
+  - thưởng đã phát,
+  - lượt Thử thách pass (để tính trần).
+- Mọi thứ mang nhãn `mon`, 4 môn chạy y hệt nhau.
+- Trọng số, trần, ngưỡng nằm ở **bảng cấu hình**, không viết cứng trong hàm.
 
 ---
 
-## 6. ④ NHIỆM VỤ ngày / tuần / tháng — phủ cả lớp, BTVN, thi, app
-
-| Tầng | Số lượng | Sống | Điểm Chặng |
-|---|---|---|---|
-| **Ngày** | 4 | **3 ngày** (lỡ 1–2 ngày không mất) | 10 / nhiệm vụ |
-| **Tuần** | 4 | **Dồn tới hết tháng** | 30 / nhiệm vụ |
-| **Rương tuần** | Xong **10 nhiệm vụ** trong tuần (ngày + tuần gộp) | Thứ Hai → Chủ nhật | +50 + rương |
-| **Tháng** | **1 chặng 30 cấp × 50 điểm** · 2 nhiệm vụ tháng | Reset đầu tháng (trùng kỳ chốt xu) | 100 / nhiệm vụ tháng |
-
-Không có trần điểm tuần, không khoá giờ. Số nhiệm vụ mỗi kỳ đã cố định nên phần thưởng tự có giới hạn.
-
-**Ngày** (sinh theo HS, mỗi nhiệm vụ gắn `mon`):
-1. **Lên lớp** — có mặt buổi hôm đó. Tự hoàn thành khi OPS điểm danh.
-2. **Luyện tập** — làm đúng 10 câu trên app, bất kỳ dạng.
-3. **Sửa sai** — làm đúng lại 2 câu thuộc dạng em vừa sai (trên lớp hay app đều tính).
-4. **Giữ top / Lên top** — +X Điểm Dạng ở dạng em đang giữ danh hiệu, hoặc dạng đang gần lọt top 3 nhất (hệ tự chọn dạng).
-
-Được đổi nhiệm vụ 2 hoặc 4 một lần/ngày.
-
-**Tuần:**
-- (a) Nộp đủ BTVN các buổi trong tuần.
-- (b) Lên bảng (Nhất/Nhì/Giải 3) ít nhất 1 buổi.
-- (c) Đưa 1 dạng yếu lên đạt.
-- (d) Lọt Top 3 bất kỳ dạng nào trong khối.
-
-**Tháng:**
-- (a) **Dự 1 kỳ thi thử / khảo sát / sát hạch** trong tháng (có lịch thì hiện, không có lịch thì thay bằng "Làm 1 đề thi trên app" khi ô Đề thi thử mở).
-- (b) Lên 1 bậc rank.
-
-**Quà theo cấp chặng tháng** (miễn phí, không có bản trả tiền):
-
-| Cấp | Quà |
-|---|---|
-| Cấp thường | EXP theo môn → xu cuối tháng |
-| Mỗi 5 cấp | Xu trực tiếp |
-| Cấp 10 | **Thẻ Giữ Ngôi** — hoãn giảm Điểm Dạng 7 ngày, dùng khi ốm/nghỉ |
-| Cấp 20 | **Thẻ Nhân Đôi** — ×2 Điểm Rank 1 buổi học tự chọn *(cày càng nhiều càng tốt ⇒ cho phép)* |
-| Cấp 25 | Sticker / khung cảm xúc dùng trên TV |
-| **Cấp 30** | **Khung tháng** mang tên tháng (đồ sưu tập) + 1 lượt "chọn ô trước" ở Chiếm Đất |
-
-**Rương tuần** gồm xu + Điểm Rank + tỉ lệ nhỏ ra Thẻ Giữ Ngôi / Thẻ Nhân Đôi. **Tỉ lệ công khai** như `game_lop_thuong`.
-
-**Sự kiện cuối tuần** (GĐ sau): "Thử thách dạng X", đúng 10 câu trước khi sai 3. Quà theo số câu đúng. Có bảng top sự kiện của khối.
-
----
-
-## 7. ⑤ ĐUA LỚP vs LỚP (cùng khối, cùng môn)
-
-- **Điểm lớp tuần** = tổng Điểm Rank kiếm được trong tuần của cả lớp ÷ sĩ số. Chia sĩ số để lớp 8 em và lớp 15 em đua công bằng.
-- **Mốc tập thể 1 / 2 / 3:** mọi em có đóng góp đều nhận quà.
-- **Tháng:** lớp Nhất khối × môn được vinh danh trên TV mọi lớp, cả lớp nhận thưởng (Q6).
-- TV hiện **thanh điểm theo lớp**. Không hiện chi tiết từng em.
-
----
-
-## 8. BẢNG TÊN [TẠM] — chờ Thùy chọn theme (Q1)
-
-Mọi chỗ trong spec và code sẽ đọc tên từ đây (1 bảng cấu hình trong DB). Đổi theme = đổi bảng này.
-
-| Khái niệm | Key kỹ thuật | Tên tạm trong spec | Theme mới → |
-|---|---|---|---|
-| Điểm leo rank | `diem_rank` | Điểm Rank | ? |
-| 7 bậc rank | `bac_1..bac_7` | Bậc 1 … Bậc 6, bậc 7 = ghế đỉnh | ? |
-| Điểm theo dạng | `diem_dang` | Điểm Dạng | ? |
-| Danh hiệu dạng | `dh_a · dh_b · dh_top3 · dh_so1 · dh_so1_mon` | Hạng A · Hạng B · Top 3 · Số 1 · Số 1 môn | ? |
-| 4 bậc thành tựu | `dong · bac · vang · kim_cuong` | Đồng · Bạc · Vàng · Kim Cương (Thùy dùng từ này ở ý 3) | giữ / ? |
-| 6 nhóm thành tựu | `lop · btvn · thi · luyen · dang · nv` | Trên lớp · BTVN · Thi cử · Tự luyện · Chinh phục dạng · Nhiệm vụ | ? |
-| Hệ nhiệm vụ | `nhiem_vu` | Nhiệm vụ ngày / tuần / tháng | ? |
-| Chặng tháng 30 cấp | `chang_thang` | Chặng tháng | ? |
-| Rương tuần | `ruong_tuan` | Rương tuần | ? |
-| Đạo cụ | `the_giu_ngoi · the_x2` | Thẻ Giữ Ngôi · Thẻ Nhân Đôi | ? |
-| Mùa | `mua` | Mùa 1 2026–27 | ? |
-
-**Nguyên tắc đặt tên:** không dùng từ riêng của game nào (lực chiến, chiến khu, Sổ Sứ Mệnh, Tinh Anh, Cao Thủ, Thách Đấu, Chiến Tướng…).
-
----
-
-## 9. CẦN CEO CHỐT
+## PHẦN B — 4 CÂU LOGIC CẦN CHỐT (trước khi sang detail)
 
 | # | Câu hỏi | CTO đề xuất |
 |---|---|---|
-| **Q1** | **Theme / bộ tên** (m chọn "theme khác") — theme gì? | M nêu. Gợi ý hướng: linh vật riêng BK · vũ trụ/khám phá · học viện/phép thuật · thể thao. Chỉ cần thay bảng §8 |
-| **Q2** | Mùa rank dài bao lâu? | Trùng **mùa Level sát hạch** |
-| **Q3** | Trọng số Điểm Rank §3.1: đi học vs thi vs app có đúng ưu tiên chưa? | Như bảng. Đi học đều là xương sống, thi thử điểm to, app cộng không giới hạn |
-| **Q4** | Ngân sách xu từ nhiệm vụ + thành tựu | Chốt sau khi soi giá quà `qlht_qua.gia_xu`. Tự có trần vì số nhiệm vụ cố định |
-| **Q5** | BK có mấy **cơ sở**? | Nếu >1 thì thêm tầng danh hiệu theo cơ sở |
-| **Q6** | Thưởng lớp thắng đua lớp | Vd cả lớp thêm 1 lượt game buổi / trà sữa tập thể tháng |
-| **Q7** | Thứ tự build | **GĐ1** Điểm Rank + bậc + khoe trên TV (toàn dữ liệu có sẵn) → **GĐ2** Danh hiệu top dạng → **GĐ3** Thành tựu → **GĐ4** Nhiệm vụ → **GĐ5** Đua lớp + sự kiện |
+| **L1** | Điểm Rank **chỉ 4 nguồn** (ET, BTVN, MT, Thử thách), hay **bổ trợ / Học từ đầu / dạng lên đạt** cũng cộng? (Mày nói "các hoạt động học tập đều có điểm Rank" nhưng chỉ liệt kê 4.) | **Chỉ 4 nguồn** cho HS dễ hiểu. Bổ trợ và Học từ đầu vẫn được thưởng qua **nhiệm vụ + thành tựu** |
+| **L2** | Thưởng nhiệm vụ / thành tựu có cộng **Điểm Rank** không? | **Không.** Rank thuần từ 4 nguồn học ⇒ luật 20% giữ đúng. Nhiệm vụ / thành tựu thưởng EXP → xu + đồ |
+| **L3** | "MT" = bài **MT sát hạch hằng tháng** (đang xếp hạng bằng `fn_bxh_diem_mt_khoi`)? Khảo sát tháng / thi trường có tính vào MT không? | MT = bài MT sát hạch tháng, như bảng xếp hạng MT đang có |
+| **L4** | Thử thách là **1 lượt = như Tự luyện tổng hợp** (cùng số câu, cùng cách ra câu), chỉ khác luật pass 80% + điểm rank? | Đúng vậy. Không đẻ nguồn câu mới |
 
 ---
 
-## 10. Kiến trúc (khớp CLAUDE.md — để lập plan khi chốt)
+## PHẦN C — DETAIL: BÀN SAU (chưa có nội dung, cố ý để trống)
 
-- **Tính ở Postgres, client chỉ gọi RPC** (§2.0). Mọi thứ có `mon` (§1.6). Dispatch dạng → bảng kho qua registry.
-- **Điểm Rank, Điểm Dạng, tiến độ thành tựu/nhiệm vụ = HÀM SUY ĐỘNG** từ bảng đo (§1.5, §4 — không row chờ, không bảng `tasks`):
-  - `fn_diem_rank(hs, mon, mua)`
-  - `fn_diem_dang(hs, mon, mua)`
-  - `fn_hs_nhiem_vu_cua_toi(ngay)`
-  - `fn_hs_thanh_tuu_cua_toi(mon)`
-  - Trọng số §3.1 nằm **1 bảng cấu hình**, không rải trong hàm.
-- **Chỉ ghi dòng khi có sự kiện thật** (append, không xoá):
-  - `hs_thanh_tuu_dat` — hs, mon | NULL, key, bac, dat_at.
-  - `hs_danh_hieu_tuan` — kết quả chốt tuần.
-  - `hs_rank_ghe_ngay` — ghế đỉnh chốt 05:00.
-  - `hs_rank_mua_ket` — bậc đỉnh cuối mùa.
-  - `hs_nhiem_vu_nhan` — thưởng đã phát. Unique ⇒ idempotent. Điểm Rank thưởng cũng đọc từ đây.
-  - `hs_dao_cu` — nhận + dùng thẻ, kiểu sổ cái.
-  - `ten_goi_cau_hinh` — bảng tên §8.
-- **Chốt ngày/tuần/mùa** bằng job DB (pg_cron): tính và ghi trong 1 transaction, giờ VN.
-- **Catalog thành tựu:** mở rộng `thanh_tich_loai` (thêm `nguong int[4]`, `an`, `chung`) và migrate 12 key cũ. **Không đẻ catalog thứ 2.**
-- **RPC cho HS:** `security definer` theo mẫu `fn_hs_vi_xu_cua_toi` + **`revoke execute … from anon`** (bài học 18/09).
-- **Nguồn EXP mới** (`exp_nhiem_vu`, `exp_thanh_tuu`):
-  - Sửa đủ 4 chỗ đọc viết cứng: `fn_gami_exp_xu_thang`, `fn_gami_exp_chi_tiet_thang`, `fn_hs_vi_xu_cua_toi`, `EXP_NOTE_SOURCES`.
-  - Loại khỏi lệnh delete của `fn_recompute_exp_thang`.
-- **Xu trực tiếp:** migration nới CHECK `qlht_xu_ledger.loai` và xử `nguoi_tao NOT NULL FK nhan_su`.
+| # | Việc | Thuộc |
+|---|---|---|
+| C1 | Điểm cố định của 1 ET, 1 BTVN (có phụ thuộc kết quả/thái độ không) | A1 |
+| C2 | MT: hạng > 50 được bao nhiêu · khối < 50 HS xử lý thế nào · hoà hạng | A1 / Phụ lục |
+| C3 | Thử thách: số câu/lượt · công thức điểm theo số câu đúng · trần ngày · trần tháng (suy từ luật 20%) | A2 |
+| C4 | Số bậc rank, ngưỡng từng bậc, N ghế đỉnh, độ dài mùa, mức reset | A3 |
+| C5 | Cấp danh hiệu dạng (%), điểm sàn, tốc độ giảm điểm đua khi bỏ luyện | A4 |
+| C6 | Danh mục thành tựu + ngưỡng từng bậc + thưởng | A5 |
+| C7 | Danh sách nhiệm vụ ngày/tuần/tháng + quà từng cấp chặng + rương tuần | A6 |
+| C8 | Quà đua lớp | A7 |
+| C9 | **Theme + toàn bộ tên gọi** (điểm, bậc, danh hiệu, nhóm, nhiệm vụ, chặng, rương) | tất cả |
+| C10 | Ngân sách xu / tháng | A6 / A5 |
+| C11 | Giao diện các màn | tất cả |
+| C12 | Thứ tự build | tất cả |
 
 ---
 
-## 11. Nguồn (cơ chế game)
+## PHỤ LỤC — Bảng điểm MT theo thứ hạng (detail Thùy yêu cầu làm luôn)
 
-- **Honor of Kings:** [Hero Power](https://honor-of-kings.fandom.com/wiki/Hero_Power) · [Star Protection](https://honor-of-kings.fandom.com/wiki/Star_Protection)
-- **LoL:**
-  - [Apex tiers](https://support.riotgames.com/en-us/league-of-legends/gameplay/master-grandmaster-and-challenger-the-apex-tiers)
-  - [Challenges FAQ](https://support.riotgames.com/en-us/league-of-legends/gameplay/challenges-faq-league-of-legends)
-  - [Rank](https://leagueoflegends.fandom.com/wiki/Rank_(League_of_Legends))
-  - [Victorious](https://turbosmurfs.gg/article/victorious-skins-league-of-legends-rewards)
-- **Free Fire:** [Rank](https://freefirehub.com/news/free-fire-rank-system-tiers-rp-season-reset) · [Quân đoàn](https://ff.garena.com/vn/article/1346/)
-- **PUBG / Valorant / Hearthstone:**
-  - [PUBG ranks](https://www.esports.net/wiki/guides/pubg-mobile-ranks/)
-  - [Valorant](https://wecoach.gg/blog/article/valorant-ranks-in-order-distribution-rr-and-act-rank-guide)
-  - [Hearthstone Ranked](https://hearthstone.wiki.gg/wiki/Ranked)
-- **Supercell:**
-  - [Clash Royale Card Mastery](https://clashroyale.fandom.com/wiki/Card_Mastery)
-  - [Clash Royale Tournament](https://clashroyale.fandom.com/wiki/Tournament)
-  - [CoC Clan Games](https://clashofclans.fandom.com/wiki/Clan_Games)
-- **WoW / Genshin / Pokémon GO / Xbox:**
-  - [Feats of Strength](https://wowpedia.fandom.com/wiki/Feats_of_Strength_achievements)
-  - [Genshin Battle Pass](https://genshin-impact.fandom.com/wiki/Battle_Pass)
-  - [Pokémon GO Medals](https://pokemongo.fandom.com/wiki/Medals)
-  - [Xbox Achievement](https://xbox.fandom.com/wiki/Achievement)
+**Phạm vi xếp hạng:** mỗi tháng, trong **khối × môn**, theo `rank_now` của `fn_bxh_diem_mt_khoi`.
+
+**Công thức:** `điểm(h) = round( 50 + 50 × ((51 − h) / 50) ^ 1.5 )` với h = 1…50.
+
+- **Hạng 1 = 100 · hạng 50 = 50.** Đầu bảng gấp đôi cuối bảng, *đủ phân biệt, không cách quá xa*.
+- Đường cong **dốc ở đầu, thoải ở cuối:**
+  - Tốp đầu mỗi hạng chênh ~1,5 điểm (tranh hạng 1–10 có ý nghĩa).
+  - Cuối bảng chênh ~0,2–0,5 điểm (hạng 40 hay 45 gần như nhau, không bị dìm).
+- Thang **100** là đơn vị tương đối. Khi chốt điểm fix ET/BTVN (C1) thì nhân cả bảng theo 1 hệ số, **hình dạng giữ nguyên**.
+
+| Hạng | Điểm | Hạng | Điểm | Hạng | Điểm | Hạng | Điểm | Hạng | Điểm |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | 100 | 11 | 86 | 21 | 73 | 31 | 63 | 41 | 54 |
+| 2 | 99 | 12 | 84 | 22 | 72 | 32 | 62 | 42 | 54 |
+| 3 | 97 | 13 | 83 | 23 | 71 | 33 | 61 | 43 | 53 |
+| 4 | 96 | 14 | 82 | 24 | 70 | 34 | 60 | 44 | 53 |
+| 5 | 94 | 15 | 81 | 25 | 69 | 35 | 59 | 45 | 52 |
+| 6 | 93 | 16 | 79 | 26 | 68 | 36 | 58 | 46 | 52 |
+| 7 | 91 | 17 | 78 | 27 | 67 | 37 | 57 | 47 | 51 |
+| 8 | 90 | 18 | 77 | 28 | 66 | 38 | 57 | 48 | 51 |
+| 9 | 88 | 19 | 76 | 29 | 65 | 39 | 56 | 49 | 50 |
+| 10 | 87 | 20 | 74 | 30 | 64 | 40 | 55 | 50 | 50 |
+
+*Hạng > 50, khối < 50 HS, hoà hạng: bàn ở C2.*
