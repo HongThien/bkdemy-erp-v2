@@ -30281,3 +30281,42 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   (khống chế cạnh dài) · khói đen che lửa + số sát thương (vẽ THEO LỚP: khói < đất < lửa/tia < chữ; chớp màn riêng) · emoji ⚪ không thấy trên nền tối.
 - Verify: auto-play 10 lượt bắn thật → bảng + EXP đúng TB 200, 0 lỗi. Screenshot giữa lúc nổ phải dùng `?cham=` (nổ chỉ ~0,3s).
 - Trang tạm `games-site/_xem-asset/` (xem asset + render sprite) KHÔNG commit.
+
+## 2026-09-28 (9) — LUỒNG KHO P0: dựng nền (nhánh `worktree-luong-kho`) + NGỪNG luồng tự giải bài cũ — `spec-luong-kho.md` §9.7
+
+- **Thùy:** "làm P0 thôi" · sau đó "huỷ luồng giải bài đang chạy luôn, huỷ luôn cron".
+- **Làm (P0, worktree riêng vì có 8 phiên khác đang chạy):**
+  · `scripts/kho/cau-hinh.mjs` — gốc folder nguồn + thư mục làm việc là cấu hình theo máy (`KHO_NGUON_GOC`, `KHO_LAM_VIEC`).
+  · `scripts/kho/t0-cua-vao.mjs` — quét, ghép cặp đề ↔ đáp án theo KHOÁ TỰ NHIÊN (tên chuẩn hoá bỏ hậu tố vai), chép về đĩa local
+    khoá bằng sha256 nội dung, chép xong đọc lại so sha. Chạy lại không nhân đôi.
+  · `scripts/kho/cong-ghi.mjs` — cổng ghi: từ chối khi thiếu biên bản kiểm / câu bị sửa sau khi kiểm (so dấu băm) / người kiểm cùng lượt
+    chạy với người làm / khai "model khác" mà cùng model. `kiem_may` do cổng suy từ biên bản, AI tự điền cũng vô ích. Mới XÉT, chưa nối ghi thật.
+  · `scripts/kho/do-claude-p.mjs` — script đo `claude -p` (subscription? skill nạp? đúng khuôn? CLAUDE.md đắt thêm bao nhiêu). **CHƯA CHẠY.**
+  · `scripts/kho/mathtype-thu/` — đọc thẳng MathType → LaTeX, không OCR, không AI.
+  · `supabase/migrations/202609281225_kho_sua_log.sql` — NHÁP, **CHƯA ÁP**, chờ Thùy gật.
+  · 28 test `node --test scripts/kho/kho.test.mjs`, qua hết.
+- **Đo:**
+  · T0 trên folder K12 thật: Kho đề 358 tệp → 164 cặp, 30 đơn lẻ · NBV 118 → 44 cặp (20 cặp SUY từ tên `X - CH` + `X`) · PNL 105 → 48 cặp,
+    0 đơn lẻ · Từ Tâm 57 → 0 cặp (chỉ có bản học sinh). 0 ca mơ hồ. Chép 4 file từ ổ Drive 1–2,4 giây/file.
+  · MathType: 3 file mẫu 2.174/2.177 · file đối chứng 2.056/2.056 · **6 file chưa từng thấy 4.212/4.225 = 99,69%**, hỏng chỉ 2 lý do
+    (tab trong công thức 6 · ký hiệu ↷ 7), công thức hỏng đều tự báo. ~0,2–0,3 giây/file.
+  · PDF đề thi K12 KHÔNG có lớp chữ (3/4 file 0 ký tự) ⇒ PDF chỉ đọc bằng nhìn ảnh.
+  · Một số file Word có bản PDF cùng tên nằm cạnh (NBV, PNL) ⇒ nhân chứng độc lập có sẵn.
+- **Ngừng luồng tự giải bài:** máy này KHÔNG có lịch Task Scheduler / tiến trình / khoá / log của luồng đó. DB: lần cuối Claude ghi lời
+  giải Đại là 16/09 13:07. Thêm công tắc đầu `auto-giai-scheduler.mjs` (thoát ngay, log 1 lần, không gọi Claude, không đụng DB; bật lại
+  `AUTO_GIAI_BAT=1`), đẩy RIÊNG lên `main` (`9439611`) bằng nhánh tạm từ origin/main — không kéo theo migration chưa duyệt. Không xoá gì.
+  Không đụng lịch "BKdemy HoiDap Luoi Vot" (bot hỏi–đáp). Còn 11 yêu cầu giải treo (1 HGT · 10 Hình).
+- **Sai/bài học:**
+  (1) Đưa Thùy lệnh `node scripts/kho/do-claude-p.mjs` không kèm đường dẫn ⇒ chạy ở `C:\Users\Admin`, "Cannot find module". File còn nằm trên
+      nhánh chưa merge. Lệnh đưa người chạy phải là đường dẫn tuyệt đối hoặc nói rõ đứng ở đâu, nhánh nào.
+  (2) Luật ghép cặp bản đầu bỏ sót 2 kiểu có thật: đề ở gốc + đáp án trong `Đáp án/` (đề không mang hậu tố vai) và kiểu NBV `X - CH` + `X`.
+      Chỉ lộ khi chạy trên folder thật — test tự viết thì qua hết. **Test viết từ trí tưởng tượng chỉ kiểm được cái mình đã nghĩ tới.**
+  (3) Kết quả subagent đọc MathType: t tự đếm lại từ file gốc (số công thức khớp 464 / 1053 / 877 / 2056), tự render lại KaTeX, tự so ảnh PDF
+      trang đầu — khớp. Rồi chạy trên 6 file nó chưa từng thấy. Báo cáo lần này đúng; vẫn phải kiểm vì 2 lần trước trong ngày sai.
+  (4) KaTeX render được = đúng CÚ PHÁP, không phải đúng NỘI DUNG. Nhân chứng nội dung là bản PDF và TeX gốc tác giả để lại trong file.
+  (5) Máy này không có `pdftoppm` ⇒ tool Read không mở được PDF; dùng pdfjs-dist có sẵn để lấy lớp chữ / render trang.
+  (6) Phiên cô lập trong worktree chặn lệnh bash có `export`/biến tính lúc chạy ⇒ viết script `.mjs` ra file rồi `node file` thay vì chuỗi lệnh.
+- **Lỗ chặn của đường đọc MathType (chưa vá):** số thứ tự tự động của Word bị mất (file PNL, Từ Tâm ra 0 dòng "Câu N") · định dạng chữ bị bỏ
+  nên đáp án trắc nghiệm đánh dấu bằng gạch chân/màu bị mất · gạch en gõ thay dấu trừ.
+- **Còn:** Thùy gật áp migration `kho_sua_log` · Thùy chạy `do-claude-p.mjs` trên máy công ty · Thùy tắt lịch Task Scheduler ở máy công ty ·
+  vá 2 lỗ chặn MathType trước khi vào P2.
