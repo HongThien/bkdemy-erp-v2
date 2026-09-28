@@ -1,6 +1,6 @@
 // ============================================================================
 // RankHS — màn RANK của HS theo môn (spec-thanh-tuu-nhiem-vu.md §0.3, mig 202609281711).
-// Bậc mùa + sao · hạng khối · Bảng đua tháng · Thử thách hôm nay/tháng · top khối · hành trình 8 bậc.
+// Bậc mùa (10 bậc theo điểm tích luỹ; 9–10 = thần) + sao · hạng khối · Bảng đua tháng · Thử thách hôm nay/tháng · top khối · hành trình 8 bậc.
 // Mọi con số lấy nguyên từ fn_hs_rank_cua_toi — ở đây chỉ trình bày.
 // Card theo KIỂU 1 (CLAUDE.md §6): dải header màu + thân trắng. Màu header theo CHƯƠNG của bậc
 // (phan-tich-diem-rank.md "Tên gọi"): Người thường đồng → Chiến binh bạc → Anh hùng vàng → Vương giả tím → Thần lửa.
@@ -82,7 +82,7 @@ export default function RankHS({ gioiTinh, onBack, onThuThach }: { gioiTinh: 'na
               <span className="text-[26px] font-extrabold leading-none">{toi.ghe ?? toi.ten_bac}</span>
               {!laThan && <span className="text-[20px] leading-none" style={{ color: '#E0B01E' }}>{sao(toi.sao)}</span>}
             </div>
-            {laThan && <p className="mt-1 text-[12px] opacity-60">Ghế thần xét lại mỗi ngày — giữ phong độ để ngồi tiếp. Bậc gốc: {toi.ten_bac} {sao(toi.sao)}</p>}
+            {laThan && <p className="mt-1 text-[12px] opacity-60">Em đã tích đủ điểm để thành thần mùa này — giữ tới hết mùa.</p>}
             <p className="mt-2 text-[13px]"><b>{so(toi.diem_mua)}</b> Điểm Rank mùa này · hạng <b>{toi.hang_khoi}</b>/{toi.so_em_khoi} khối</p>
             {bacSau && toi.nguong_sau != null && (
               <>
@@ -125,7 +125,7 @@ export default function RankHS({ gioiTinh, onBack, onThuThach }: { gioiTinh: 'na
                   <span>{b.bac === toi.bac ? '▶ ' : ''}{b.ten}</span><span>{so(b.nguong)}</span>
                 </div>
               ))}
-              <p className="mt-1 text-[11px] opacity-55">Trên Emperor là 2 ghế thần: God of War (top 3% khối) · Supreme God (hạng 1) — cần phong độ cao cả mùa.</p>
+              <p className="mt-1 text-[11px] opacity-55">2 bậc thần trên cùng chỉ dành cho ai tích đủ điểm cả năm — có năm không ai đạt.</p>
             </div>
           </Card>
 

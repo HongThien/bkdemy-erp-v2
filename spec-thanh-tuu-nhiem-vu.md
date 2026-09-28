@@ -88,6 +88,11 @@
 | 7 | King | 8,0 | 24.000 | 15.000 |
 | 8 | Emperor | 9,8 | 29.400 | 18.375 |
 
+> **⚠ SỬA 28/09 (Thùy): thần KHÔNG còn là ghế.** *"Ghế đấy phải đạt đủ điểm tích luỹ… không phải hạng 1, mà là phải đủ điều kiện điểm. Nên có thể không có God luôn."*
+> ⇒ **10 bậc thuần theo điểm tích luỹ mùa** (không top %, không hạng, không phong độ). Ngưỡng co ×0,875 theo năm học thật 10,5 tháng (7 → giữa 5):
+> Novice 0 · Soldier 1.575 · Captain 4.200 · General 7.875 · Hero 12.075 · Legend 18.375 · King 21.000 · Emperor 25.725 ·
+> **God of War 28.350 (90% tối đa năm)** · **Supreme God 30.240 (96%)** — 2 ngưỡng thần là CTO đề xuất, chờ Thùy chỉnh. Bảng + đoạn "ghế" dưới đây là bản cũ.
+
 **2 bậc GHẾ** (xét lại hằng ngày, ngồi được quanh năm, bị vượt / tụt phong độ thì rơi):
 
 | # | Bậc | Điều kiện |

@@ -30889,3 +30889,11 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
   Sau bù: khối 7 Captain 20 · Soldier 28 · Novice 6 (0 ghế thần, pd max 0,75) · khối 9 God of War 2 (pd max 0,86).
 - Thùy hỏi "rank God phải hết năm mới có sao giờ đã có rồi" — spec §0.3 đang ghi ghế thần xét hằng ngày, ngồi quanh năm (phan-tich vòng 4 đã loại phương án
   "hết năm mới có thần"). Chờ Thùy chốt lại.
+
+## 2026-09-28 (34) — Thần = bậc 9–10 theo ĐIỂM TÍCH LUỸ, không còn ghế (mig 202609281754 đã áp)
+
+- Thùy: "ghế phải đạt đủ điểm tích luỹ, điểm tích theo năm, mỗi năm reset" · "không phải hạng 1, mà là đủ điều kiện điểm. Nên có thể không có God luôn".
+- Làm: rank_bac 10 bậc (CHECK 1..10), fn_rank_mua bỏ top%/hạng 1/phong độ — thần = bậc thường theo điểm. Co mọi ngưỡng ×0,875 (năm học 10,5 tháng):
+  Emperor 25.725 · God of War 28.350 (90% tối đa năm 31.500) · Supreme God 30.240 (96%) — 2 ngưỡng thần là đề xuất, chờ Thùy.
+  Hôm nay: khối 7 Captain 34 · Soldier 14 · Novice 6 · khối 9 Captain 61 · Soldier 6 · Novice 1 · 0 thần. RankHS sửa chữ (bỏ "ghế/phong độ").
+- Bài học: t hiểu "ghế thần" thành luật vị trí (top/hạng) suốt từ vòng 4 — Thùy muốn đích tuyệt đối theo điểm. Chữ "ghế" trong spec cũ gây hiểu lệch.

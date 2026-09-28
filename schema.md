@@ -6210,7 +6210,7 @@ SELECT bl.hoc_sinh_id,
 | qlht_qua | qlht_qua_gia_xu_check | `CHECK ((gia_xu > 0))` |
 | qlht_qua_order | qlht_qua_order_gia_xu_check | `CHECK ((gia_xu > 0))` |
 | qlht_xu_ledger | qlht_xu_ledger_amount_check | `CHECK ((amount <> 0))` |
-| rank_bac | rank_bac_bac_check | `CHECK (((bac >= 1) AND (bac <= 8)))` |
+| rank_bac | rank_bac_bac_check | `CHECK (((bac >= 1) AND (bac <= 10)))` |
 | rank_thang_mat_et | rank_thang_mat_et_thang_check | `CHECK ((thang ~ '^\d{4}-\d{2}$'::text))` |
 | shop_vat_pham | shop_vat_pham_gia_diem_check | `CHECK ((gia_diem > 0))` |
 | sk_xu | sk_xu_so_xu_check | `CHECK ((so_xu <> 0))` |
