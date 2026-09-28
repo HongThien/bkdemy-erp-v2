@@ -1,10 +1,11 @@
 import { Fragment, useEffect, useState } from 'react'
-import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
+import { KHOI_OPTIONS, DEFAULT_KHOI, listDaiDeXuat } from '../../lib/kho/api'
 import { useStore } from '../../store/useStore'
 import { useMonScope } from '../../hooks/useMonScope'
 import BanDo from './BanDo'
 import SearchCau from './SearchCau'
 import KhoRac from './KhoRac'
+import DeXuatPanel from './DeXuatPanel'
 import { daiBranch, hinhBranch, hinhGiaiTichBranch, khtnBranch } from './branches'
 import KhoHinhScreen from './hinh/KhoHinhScreen'
 import KhoHinhHocScreen from './hinh/KhoHinhHocScreen'
@@ -42,6 +43,18 @@ export default function KhoScreen() {
   const config = mon === 'khtn' ? khtnBranch : tab === 'dai' ? daiBranch : tab === 'hinhgt' ? hinhGiaiTichBranch : hinhBranch
   const [timCau, setTimCau] = useState(false)
   const [rac, setRac] = useState(false)   // kho rác — câu đã xoá, vẫn resolve được cho tài liệu cũ
+  // Đề xuất của dây chuyền (làn 🟡 🔴) — hiện chỉ nhánh Đại có bảng (mig 202609282236). Badge = số đề xuất đang chờ.
+  const [deXuat, setDeXuat] = useState(false)
+  const [soDeXuat, setSoDeXuat] = useState<number | null>(null)
+  const [banDoVer, setBanDoVer] = useState(0) // nhận đề xuất ⇒ bản đồ có dạng mới ⇒ dựng lại cây khi đóng panel
+  const coDeXuat = config.key === 'dai'
+  useEffect(() => {
+    if (!coDeXuat) { setSoDeXuat(null); return }
+    let song = true
+    setSoDeXuat(null)
+    listDaiDeXuat(khoi).then((r) => { if (song) setSoDeXuat(r.length) }).catch(() => { if (song) setSoDeXuat(null) })
+    return () => { song = false }
+  }, [coDeXuat, khoi, deXuat])
 
   // Scope④ THEO MÔN (dùng chung useMonScope — xem lib/mon.ts): admin + Ops thấy tất; người khác chỉ thấy
   // môn được phân (nhan_su_mon). Chưa gán → không thấy môn nào.
@@ -88,6 +101,13 @@ export default function KhoScreen() {
           <button onClick={() => setTimCau(true)}
             className="ml-auto flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-300 hover:text-indigo-700">
             🔍 Tìm câu
+          </button>
+        )}
+        {coDeXuat && (
+          <button onClick={() => setDeXuat(true)} title="Đề xuất dạng/cụm mới và câu hỏi của dây chuyền nhập kho — chờ học thuật quyết"
+            className="flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-amber-300 hover:text-amber-700">
+            💡 Đề xuất
+            {!!soDeXuat && <span className="rounded-full bg-amber-500 px-1.5 text-[11px] font-bold leading-5 text-white">{soDeXuat}</span>}
           </button>
         )}
         {config.cauTbl && (
@@ -137,11 +157,12 @@ export default function KhoScreen() {
             ? (hinhPhase === 'hoc'
                 ? <KhoHinhHocScreen key={`hh-${khoi}`} khoi={khoi} />
                 : <KhoHinhScreen key={`hinh-${khoi}`} khoi={khoi} />)
-            : <BanDo key={`${config.key}-${khoi}`} config={config} khoi={khoi} />}
+            : <BanDo key={`${config.key}-${khoi}-${banDoVer}`} config={config} khoi={khoi} />}
       </div>
 
       {timCau && config.cauTbl && allowed.length > 0 && <SearchCau cauTbl={config.cauTbl} onClose={() => setTimCau(false)} />}
       {rac && config.cauTbl && allowed.length > 0 && <KhoRac cauTbl={config.cauTbl} onClose={() => setRac(false)} />}
+      {deXuat && coDeXuat && allowed.length > 0 && <DeXuatPanel khoi={khoi} onClose={() => setDeXuat(false)} onDoiBanDo={() => setBanDoVer((v) => v + 1)} />}
     </div>
   )
 }

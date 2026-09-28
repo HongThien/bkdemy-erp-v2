@@ -31064,3 +31064,21 @@ HANDOFF ②: +5 bài học (2 gốc "xếp mãi vẫn Cần xếp" · retest ch�
   bảng "đừng lẫn 3 thứ", Đơn 1 huy hiệu gửi trước; giả định vẽ cho lớp 6–8).
 - Classifier quyền tự động lỗi tạm ~10 lượt (không ghi được file/commit) — chờ rồi làm lại, không lách.
 - HANDOFF ①: mục GAMIFICATION đổi sang "ĐÃ BUILD" + số mới nhất + việc tiếp; ②: supersede "ghế top theo phong độ", thêm 5 bài học build.
+
+### 28/09 đêm — P1 việc 2: bảng + màn ĐỀ XUẤT dạng/cụm/trao đổi (làn 🟡 🔴) — viết xong, dry-run qua, chưa áp
+- `202609282236_dai_de_xuat_dang_cum.sql`: mô hình INVARIANT — `dai_de_xuat` (đề xuất) · `dai_de_xuat_cau` (câu làm chứng, khoá ma_cau) ·
+  `dai_de_xuat_quyet_dinh` (PK = de_xuat_id, chỉ ra đời khi người ĐÃ quyết, bất biến). Không cột trạng thái, không dòng chờ; "chờ" = đề xuất
+  TRỪ quyết định. CHECK hình dạng theo loại (dang_moi cần tên + mô tả; cum_moi cần dạng chứa; trao_doi không tên). RLS: select authenticated,
+  KHÔNG grant ghi — đề xuất do dây chuyền ghi (role ghi), quyết định chỉ qua RPC.
+- `fn_dai_de_xuat_quyet` (security definer, cần `current_nhan_su_id()` + `co_quyen_ghi('bdkt')`): nhận → `fn_dai_sinh_ma_dang` + insert dạng
+  (denormalize lấy từ dạng anh em) + dời câu làm chứng; người đổi tên/mô tả ⇒ DB tự ghi `nhan_co_sua` (thước đo skill ②, không tin client);
+  gộp → dời câu về dạng đích; bác/trả lời bắt buộc lý do (nguồn của luật — bánh đà); **câu đã duyệt không tự dời**, đếm trả về cho UI báo.
+- Dry-run (`thu-migration.mjs --kiem`, giả jwt admin bằng `set_config('request.jwt.claims', …, true)`): nhận/gộp/trả lời/nhận-có-sửa đúng;
+  5 ca phải chặn đều chặn (bác không lý do · quyết lần 2 · gộp cho cụm · gộp về dạng chờ · không jwt); log đổi dạng có actor.
+  `thu-migration.mjs` nâng cấp: mỗi khối kiểm trong SAVEPOINT riêng (khối lỗi không làm hỏng khối sau) — nhờ đó kiểm được cả ca PHẢI lỗi.
+- UI: `DeXuatPanel.tsx` (hàng đợi: vá tại chỗ sau quyết định, cache module-level NHO + scrollTop, nút ↻) · nút 💡 Đề xuất + badge trên KhoScreen
+  (chỉ nhánh Đại — `config.key==='dai'`) · đóng panel sau khi có nhận ⇒ dựng lại cây Bản đồ. tsc sạch. CHƯA xem trên màn thật (chờ áp migration + đăng nhập).
+- Bẫy: script node sửa file kiểm bằng `indexOf` trả −1 ⇒ `slice(a, -1)` nuốt gần hết file, bài kiểm còn 1 bước mà không báo lỗi — phát hiện vì
+  output ngắn bất thường. Vá file bằng `replace` phải throw khi không thấy chuỗi (đã làm vậy ở script vá KhoScreen).
+- Ghi chú cho P2: RPC dời câu từ dạng chờ → dạng mới sinh log `kho_doi_dang_log` CÓ actor ⇒ `fn_kho_sua_tk` khâu `dang` có thể đếm là "người sửa";
+  dang_cu là dạng chờ thì thực chất là ĐIỀN, không phải SỬA — cần loại khi đo.

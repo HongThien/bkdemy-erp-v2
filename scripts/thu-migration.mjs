@@ -45,8 +45,14 @@ try {
       const q = khoi.replace(/^--.*$/gm, '').trim()
       if (!q) continue
       console.log('\n▶ ' + tieuDe)
-      try { const r = await c.query(q); console.table(r.rows.slice(0, 60)); if (r.rows.length > 60) console.log(`  … ${r.rows.length} dòng`) }
-      catch (e) { console.log('  ✘ kiểm lỗi:', e.message) }
+      // mỗi khối kiểm trong SAVEPOINT riêng: một khối lỗi không làm hỏng các khối sau
+      await c.query('savepoint kiem')
+      try {
+        const r = await c.query(q)
+        const kq = Array.isArray(r) ? r[r.length - 1] : r   // khối nhiều câu lệnh ⇒ in kết quả câu cuối
+        console.table((kq.rows ?? []).slice(0, 60)); if ((kq.rows ?? []).length > 60) console.log(`  … ${kq.rows.length} dòng`)
+        await c.query('release savepoint kiem')
+      } catch (e) { console.log('  ✘ kiểm lỗi:', e.message); await c.query('rollback to savepoint kiem') }
     }
   }
 } catch (e) {

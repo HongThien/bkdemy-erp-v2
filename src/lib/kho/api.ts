@@ -2515,3 +2515,45 @@ export async function listHinhLyDo(): Promise<HinhLyDo[]> {
   if (error) throw error
   return (data ?? []) as HinhLyDo[]
 }
+
+// ════════════════════════════════════════════════════════════════
+// ĐỀ XUẤT DẠNG / CỤM / TRAO ĐỔI — làn 🟡 🔴 của dây chuyền kho (mig 202609282236, spec-luong-kho.md §5.3)
+// ════════════════════════════════════════════════════════════════
+// Mô hình invariant: đề xuất = 1 dòng; quyết định của người = dòng KHÁC, chỉ ra đời khi đã quyết.
+// "Đang chờ" = chưa có quyết định (không có cột trạng thái). Mọi tính toán + ghi nằm trong RPC.
+export type DeXuatLoai = 'dang_moi' | 'cum_moi' | 'trao_doi'
+export type DeXuatHanhDong = 'nhan' | 'gop' | 'bac' | 'tra_loi'
+export type DeXuatCau = { ma_cau: string; loai_cau: string; noi_dung: string; dang_chinh: string; da_duyet: boolean }
+export type DeXuatQuyetDinh = {
+  hanh_dong: 'nhan' | 'nhan_co_sua' | 'gop' | 'bac' | 'tra_loi'
+  ket_qua_ma_dang: string | null; ket_qua_ma_cum: string | null; tra_loi: string | null
+  so_cau_doi: number; quyet_at: string; nguoi_ten: string | null
+}
+export type DeXuat = {
+  id: string; loai: DeXuatLoai; khoi: string
+  ma_chuyen_de: string; ten_chuyen_de: string | null
+  ma_dang: string | null; ten_dang: string | null
+  ten: string | null; mo_ta_ngan: string | null
+  dang_gan_nhat: string | null; ten_dang_gan_nhat: string | null
+  ly_do: string; lo: string; nguon: string; created_at: string
+  cau: DeXuatCau[]; quyet_dinh: DeXuatQuyetDinh | null
+}
+export type DeXuatKetQua = {
+  hanh_dong: DeXuatQuyetDinh['hanh_dong']; ket_qua_ma_dang: string | null; ket_qua_ma_cum: string | null
+  so_cau_doi: number; so_cau_da_duyet_bo_qua: number
+}
+export async function listDaiDeXuat(khoi: string, chiCho = true): Promise<DeXuat[]> {
+  const { data, error } = await supabase.rpc('fn_dai_de_xuat_ds', { p_khoi: khoi, p_chi_cho: chiCho })
+  if (error) throw error
+  return (data ?? []) as DeXuat[]
+}
+export async function quyetDaiDeXuat(id: string, hanhDong: DeXuatHanhDong, opts: {
+  ten?: string | null; moTaNgan?: string | null; maDangDich?: string | null; traLoi?: string | null
+} = {}): Promise<DeXuatKetQua> {
+  const { data, error } = await supabase.rpc('fn_dai_de_xuat_quyet', {
+    p_id: id, p_hanh_dong: hanhDong, p_ten: opts.ten ?? null, p_mo_ta_ngan: opts.moTaNgan ?? null,
+    p_ma_dang_dich: opts.maDangDich ?? null, p_tra_loi: opts.traLoi ?? null,
+  })
+  if (error) throw error
+  return data as DeXuatKetQua
+}
