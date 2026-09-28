@@ -30507,3 +30507,14 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   Lần sau đưa kèm đúng câu lệnh.
 - **Còn (máy công ty, theo thứ tự ở spec-luong-kho-p0 §5):** pull · tắt lịch tự giải bài · policy đọc · ghi sổ · thử trigger · test ·
   đo `claude -p` · T0 trên ổ thật. Rồi vá 2 lỗ chặn của đường đọc MathType (§6).
+
+## 2026-09-28 (15) — Ngân sách xu trên app 30/tháng + căn vòng quay may mắn
+
+- Thùy: "budget trên app tối đa 30 xu/tháng cho mọi hoạt động, m tự phân bổ, căn với bàn quay may mắn".
+- **Đo DB (read-only):** vòng quay T9 53 em, TB 3 lượt/em (max 9), cấu hình 50/100/150/200 (40/40/15/5%) ⇒ EV ~92 EXP/lượt ⇒ quay
+  đủ tháng ≈ 28 xu nếu đổi — nhưng EXP vòng quay hiện ở `may_man_hs_luot`, KHÔNG vào hàm chốt xu (HS thấy trong ví mà không thành
+  xu). 52/332 HS học ≥2 môn.
+- **Làm:** viết lại `de-xuat-nhiem-vu.md` vòng 2: trần 30 xu/HS/tháng TỔNG mọi môn, chặn trong hàm chốt (EXP vẫn ghi đủ theo môn);
+  chia vòng quay 10 · nhiệm vụ 15 · thành tựu 5; vòng quay đổi xu thật + bảng mới 20/30/50/100/200 EXP (40/35/18/6/1%, EV ~36);
+  lượt quay = xong ≥2 nhiệm vụ ngày (thay "tự luyện ≥70%"); chặng 30 cấp × 30 EXP + cấp 30 200 EXP + rương 100 EXP = 15 xu/môn;
+  đua tháng / đua lớp không trả xu app. Ước lượng: cày đều chạm trần 30, chăm vừa ~13, không app ~3. Chờ Thùy chốt B-L1..7.
