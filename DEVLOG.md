@@ -30880,3 +30880,12 @@ Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều ki�
   (Soldier 1.800 … Emperor 29.400). Spec §0.2–0.3 sửa số. UI đọc số từ RPC nên không phải sửa.
 - Đo lại (rollback trước khi áp): phong độ max tại 10/08 khối 9 = 0,985 (trước 1,148). Khối 7 hôm nay max 0,699, 0 ghế thần — vì ET tháng 8–9
   thiếu do lỗi ET hình: Điểm Rank tính lùi của 2 tháng này THẤP hơn thật tới khi dữ liệu ET hình được bù.
+
+## 2026-09-28 (33) — Rank: bù ET tháng mất dữ liệu (mig 202609281749 đã áp) · Thùy hỏi God có sớm quá
+
+- Thùy: ET hình 8–9 "coi như mất", "scale lên mặc định thành 7 — 4 cái thì nhân hệ số thành 7". Làm: bảng `rank_thang_mat_et` (Toán 2026-08, 2026-09)
+  + `rank_cau_hinh.et_chuan_thang = 7`; fn_rank_su_kien: tháng bị đánh dấu, lớp ghi được k < 7 buổi ET ⇒ mỗi bài ET = 100 × 7/k (theo lớp). Tháng thường không nhân.
+  Đo: ET TB/em tháng 7 = 702 · tháng 8 = 636 · tháng 9 = 635 (trước bù thấp hơn nhiều). Ca cực: lớp chỉ ghi 1 buổi ET ⇒ 1 bài = 700.
+  Sau bù: khối 7 Captain 20 · Soldier 28 · Novice 6 (0 ghế thần, pd max 0,75) · khối 9 God of War 2 (pd max 0,86).
+- Thùy hỏi "rank God phải hết năm mới có sao giờ đã có rồi" — spec §0.3 đang ghi ghế thần xét hằng ngày, ngồi quanh năm (phan-tich vòng 4 đã loại phương án
+  "hết năm mới có thần"). Chờ Thùy chốt lại.
