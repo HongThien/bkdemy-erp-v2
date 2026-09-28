@@ -30245,3 +30245,22 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   L3 MT là gì? L4 Thử thách = tự luyện tổng hợp?) · Phần C 12 việc detail để trống · Phụ lục bảng MT
   `50 + 50·((51−h)/50)^1.5` (hạng 1=100, 50=50, dốc đầu thoải cuối). MT xếp theo `fn_bxh_diem_mt_khoi` (khối × môn × tháng) có sẵn.
 - Bài học: spec cho CEO phải tách tầng — trộn con số vào logic làm CEO không chốt được logic (mọi lần sửa lại kéo theo cả bảng số).
+
+## 2026-09-28 (8) — LUỒNG KHO: phương pháp thiết kế + tối ưu 6 việc (chưa build) — `spec-luong-kho.md` §9.6
+
+- **Thùy:** gật nút "xác nhận câu đúng" khi người báo sai nhầm · "m vẫn chưa nói cách build ra 6 công việc như nào — t cần CÁCH m thiết kế
+  và tối ưu nó". Tức vòng trước t trả lời *dùng công cụ gì* (skill/agent/script) trong khi câu hỏi là *phương pháp làm cho nó tốt lên*.
+- **Phương pháp (đề xuất CTO):** dựng bài thi trước, viết skill sau — 7 bước: hợp đồng → bộ đề chấm từ dữ liệu người đã duyệt (chia
+  luyện / kiểm / khoá) → đo mức nền → nháp mỏng nhất → vòng tối ưu (chạy, máy chấm, học thuật xem 20–30 mẫu, **phân loại lỗi theo nguyên
+  nhân**, sửa nhóm lớn nhất) → khoá bằng hồi quy → ra chạy thật có đo. Mỗi vòng sửa 1 thứ; tập khoá không được nhìn; đo cả chi phí.
+  Thứ tự đòn bẩy rẻ → đắt: tri thức → thông tin đưa vào → chuyển sang code → lời dặn → tách trạm → đổi model. Công cụ: `skill-creator`.
+- **Làm thử trên 84 câu gán dạng bị người đổi (DB live):** **84/84 đúng chuyên đề**, chỉ sai giữa các dạng anh em · 60 câu cùng 1 nguyên
+  nhân: AI xếp vào dạng "nâng cao" khi người chốt dạng thường (ranh cơ bản/nâng cao là quy ước BK, không lộ trong tên dạng) · 11 câu là
+  dạng được tạo SAU khi câu vào kho (không phải lỗi gán, mà thiếu làn đề xuất dạng mới) · 13 câu nhầm dạng anh em thật. Sửa nguyên nhân 1
+  ⇒ 74% → ~93%; thêm làn đề xuất ⇒ ~96%. **Nút thắt là tri thức (hồ sơ dạng), không phải AI.** Cỡ mẫu nhỏ (326 câu, 2 chuyên đề).
+- **Đo bộ đề chấm có sẵn:** gán dạng ~18.000 câu Đại đã duyệt (K12 chỉ 589 câu / 49 dạng, 12 dạng <5 câu; K11 2.973 / 64 dạng) · giải:
+  lời giải người viết đã duyệt K11 1.151, K9 971, K12 chỉ 177 · cụm 4.612 câu · đọc 30 file / 1.027 câu · MCQ 10.749 form đã duyệt.
+  `python` trên máy là stub của Store; `py` chạy được (3.14.7).
+- **Bài học:** đếm lỗi theo NGUYÊN NHÂN trước khi sửa bất cứ gì — nhìn con số 74% dễ kết luận "AI gán dạng kém, phải viết lại prompt",
+  trong khi 71% lỗi đến từ đúng 1 ranh giới chưa ai viết ra.
+- **Còn:** CEO gật phương pháp + gật P0 (§9.7).

@@ -293,7 +293,7 @@ Thứ tự làm: đồ thị hàm số · bảng biến thiên · bảng xét d�
 | Máy: câu mà HS giỏi sai nhiều bất thường | Chưa có |
 
 - **Hành vi:** có cờ ⇒ câu rút khỏi kho chuẩn **ngay** ⇒ không được chọn cho bài MỚI. Bài đã phát giữ nguyên (bài lưu bản chụp câu).
-- **Mở lại — 2 đường** (đề xuất CTO, chờ CEO): **(a)** câu sai thật ⇒ sửa ⇒ duyệt lại; **(b)** câu đúng, người báo nhầm ⇒ học thuật
+- **Mở lại — 2 đường** (CEO gật 28/09): **(a)** câu sai thật ⇒ sửa ⇒ duyệt lại; **(b)** câu đúng, người báo nhầm ⇒ học thuật
   bấm "xác nhận câu đúng". Không có (b) thì câu đúng bị kẹt vĩnh viễn vì không có gì để sửa.
 - **⚠️ Bẫy kỹ thuật đã kiểm:** đặt `da_duyet=false` là **KHÔNG ĐỦ**. `_kho_cau_chuan` có vế "câu cũ (trước 08/09) tạm dùng bất kể
   da_duyet" ⇒ câu cũ bị báo sai vẫn `kho_chuan=true`. Phải đặt kèm `kiem_may='nghi'` (vế này có sẵn trong công thức, không phải
@@ -335,8 +335,10 @@ K12 có sẵn đáp án — lời giải gốc còn là nhân chứng tốt nh�
 Đã đóng ở vòng 4 (CEO 28/09): **6 điểm phản biện §5.5 — nhận cả 6** · **dây chuyền là workflow, agent ở lớp Tri thức — OK** ·
 máy chạy dây chuyền = **máy công ty** (file nằm trực tiếp, không streaming) · thêm **hậu kiểm báo sai** (§5.7).
 
-1. ⛔ **Báo sai mà câu đúng** (người báo nhầm): cho học thuật bấm "xác nhận câu đúng" để mở lại mà không cần sửa? (§5.7)
-2. ⛔ **Bắt đầu P0?** Việc đầu tiên ở §9.6.
+Đã đóng ở vòng 5 (CEO 28/09): báo sai mà câu đúng ⇒ **có nút "xác nhận câu đúng"** để mở lại.
+
+1. ⛔ **Phương pháp §9.6** (dựng bài thi trước, 7 bước) — CEO gật để áp cho cả 6 việc?
+2. ⛔ **Bắt đầu P0?** Việc đầu tiên ở §9.7.
 3. **Giấy phép GeoGebra** — CEO hỏi GeoGebra trước đợt Hình (§5.6b). Không chặn đợt Đại.
 4. **Máy công ty có Word không?** Chỉ cần trả lời nếu cách đọc thẳng MathType thất bại.
 5. *(CEO hoãn)* ranh "quá dễ" (≤2 bước) · chia cụm cho 176 dạng cũ.
@@ -417,7 +419,122 @@ Công cụ build: skill `skill-creator` (có sẵn) — chạy eval, đo độ d
 | `kho-giai` | skill | T2b: giải theo phương pháp dạng, trong phạm vi | P4 |
 | `kho-hinh` | skill | T4: viết bản mô tả hình | P5 |
 
-### 9.6 Việc đầu tiên của P0 (chờ CEO gật)
+### 9.6 PHƯƠNG PHÁP thiết kế + tối ưu từng việc (CEO hỏi 28/09)
+
+**Một câu:** không viết skill rồi hi vọng nó đúng — **dựng bài thi trước, viết skill sau, mỗi lần sửa phải thi lại.**
+Đứng trên vai: *eval-driven development* · *error analysis* (đếm lỗi theo nguyên nhân rồi sửa nhóm lớn nhất) ·
+chia *tập luyện / tập kiểm / tập khoá* của học máy · *regression test*. Công cụ chạy vòng lặp: skill `skill-creator`
+(chạy bản có skill song song bản không skill, trang duyệt cho người xem mẫu, bảng điểm có độ dao động).
+
+#### Bảy bước, áp cho cả 6 việc
+
+| # | Bước | Ra cái gì |
+|---|---|---|
+| 1 | **Viết hợp đồng trước:** đầu vào, khuôn đầu ra, thước đo | 1 trang, CEO/học thuật gật |
+| 2 | **Dựng bộ đề chấm từ dữ liệu người ĐÃ duyệt**, chia 3: *luyện* (xem lỗi để sửa) · *kiểm* (đo mỗi vòng) · *khoá* (chỉ mở khi quyết lên cấp) | Bộ đề có đáp án |
+| 3 | **Đo mức nền:** Claude trần không skill + luồng đang chạy | Biết skill phải thắng con số nào |
+| 4 | **Viết bản nháp mỏng nhất** | Skill v1 |
+| 5 | **Vòng tối ưu:** chạy → máy chấm → học thuật xem 20–30 mẫu, ghi nhận xét → **phân loại lỗi theo nguyên nhân** → sửa nhóm lớn nhất → chạy lại | Mỗi vòng 1 con số mới |
+| 6 | **Khoá bằng hồi quy:** mỗi lỗi đã sửa thành 1 câu trong bộ đề. Bản mới tụt điểm tập kiểm ⇒ không phát hành | Skill không tự xấu đi |
+| 7 | **Ra chạy thật có đo:** mỗi lần người sửa ở màn duyệt ⇒ thành câu mới của bộ đề + thành đề xuất luật | Bánh đà §5.0 |
+
+Ba luật của vòng tối ưu:
+- **Mỗi vòng chỉ sửa MỘT thứ** — sửa 3 thứ cùng lúc thì không biết cái nào có tác dụng.
+- **Tập khoá không được nhìn** trong lúc sửa — nhìn rồi thì skill học tủ, điểm đẹp mà ra thật vẫn sai.
+- **Đo cả chi phí** (token/câu, giây/câu) cạnh độ đúng — bản đúng hơn 1% mà đắt gấp 3 chưa chắc là bản tốt hơn.
+
+**Thứ tự đòn bẩy khi sửa — thử từ rẻ đến đắt:**
+
+| # | Đòn bẩy | Ví dụ |
+|---|---|---|
+| 1 | **Tri thức đưa vào** | Hồ sơ dạng thiếu ranh giới giữa 2 dạng anh em |
+| 2 | **Thông tin đưa vào** | Thu hẹp ứng viên theo chuyên đề; kèm 2 câu mẫu mỗi dạng |
+| 3 | **Chuyển việc sang code** | Tính lại đáp số, chuẩn hoá LaTeX, đếm câu |
+| 4 | **Lời dặn trong `SKILL.md`** | Giải thích VÌ SAO, không viết thêm chữ "PHẢI" |
+| 5 | **Tách trạm** | Tách "tìm đáp số" khỏi "viết trình bày" |
+| 6 | **Đổi model** | Cuối cùng mới tới |
+
+#### Làm thử bước 5 trên dữ liệu thật: 84 câu gán dạng bị người đổi
+
+| Nguyên nhân | Số câu | Bằng chứng | Sửa ở đâu |
+|---|---|---|---|
+| **Ranh "cơ bản / nâng cao" là quy ước của BK, không lộ trong tên dạng** | **60** | Cùng 1 dạng bị gán nhầm: AI xếp vào "bài toán *nâng cao* về cấu tạo số thập phân", người chốt "tính chất số thập phân" (40) và "lời văn số thập phân" (20) | Đòn bẩy 1: hồ sơ dạng |
+| **Dạng đúng CHƯA TỒN TẠI lúc nhập** | 11 | Dạng người chốt được tạo SAU khi câu vào kho ("Tìm x để 3 số lập thành cấp số nhân") | Không phải lỗi gán — thiếu làn 🟡 "đề xuất dạng mới" |
+| Nhầm dạng anh em thật | 13 | Rải trong chuyên đề Cấp số nhân | Đòn bẩy 1–2 |
+
+- **84/84 câu sai đều đúng CHUYÊN ĐỀ.** AI tìm chuyên đề không sai lần nào; chỉ sai khi chọn giữa các dạng anh em.
+- Sửa riêng nguyên nhân 1 ⇒ 74% → **93%**. Thêm làn 🟡 ⇒ **96%**. Không cần đụng một chữ lời dặn nào.
+- **Kết luận cho cả hệ: nút thắt là TRI THỨC (hồ sơ dạng), không phải AI.** Đó là lý do P1 (bản đồ + hồ sơ dạng) đứng trước P2.
+- Cảnh báo cỡ mẫu: 326 câu, 9 tài liệu, 2 chuyên đề chiếm gần hết lỗi ⇒ con số 93%/96% là ước lượng, phải đo lại trên bộ đề rộng.
+
+#### Sáu việc — hợp đồng, thước đo, bộ đề, đòn bẩy
+
+**① ĐỌC tài liệu**
+
+| | |
+|---|---|
+| Vào → ra | File → danh sách câu (đề, phương án, đáp án gốc, lời giải gốc, khung hình) + khoá nguồn |
+| Thước đo | **Đủ câu** (không sót, không bịa) · **đúng nội dung** (câu khớp bản chuẩn sau khi chuẩn hoá công thức) · **ghép đúng** câu ↔ đáp án |
+| Bộ đề chấm | 30 file Claude đã nhập = 1.027 câu (726 đã duyệt) + file gốc trong `DaXuLy` |
+| Kiểm độc lập | Code: công thức render được không, số câu có liên tục không, trắc nghiệm đủ 4 phương án không · Claude nhìn ảnh trang so từng câu |
+| Chỗ khó đã biết | Lời giải tràn trang · 2 cột · scan mờ · MathType · đề và đáp án nằm 2 file |
+| Đòn bẩy chính | Độ phân giải ảnh · 1 trang/lệnh có nhớ trang trước · tách "tìm khung câu" khỏi "đọc nội dung" · so đường Gemini với đường đọc thẳng MathType |
+
+**② TƯ DUY BẢN ĐỒ** — làm cùng CEO, không có đáp án tuyệt đối
+
+| | |
+|---|---|
+| Vào → ra | Lô câu + bản đồ hiện có → đề xuất dạng/cụm mới, hồ sơ dạng, câu làm chứng |
+| Thước đo | Tỉ lệ đề xuất được nhận nguyên / nhận có sửa / bác · số câu còn nằm dạng chờ sau lô · **số câu hỏi phải hỏi người mỗi lô** (phải giảm dần) |
+| Bộ đề chấm | **Thi ngược:** lấy khối bản đồ đã tốt (K9: 64 dạng, 1.940 câu đã duyệt), giấu 10 dạng, trộn câu của chúng vào lô ⇒ xem agent có phát hiện thiếu dạng và vạch ranh giống người không |
+| Đòn bẩy chính | Phép thử §2 · sổ các ca CEO đã quyết (mỗi lần bác đề xuất kèm lý do ⇒ thành luật phân dạng) |
+
+**③ GÁN NHÃN dạng + cụm**
+
+| | |
+|---|---|
+| Vào → ra | Câu (+ lời giải gốc nếu có) + dạng ứng viên → dạng, cụm, làn, lý do |
+| Thước đo | Đúng dạng · **tỉ lệ lọt trong làn 🟢** (tự tin mà sai) · **độ phủ làn 🟢** (bao nhiêu % câu dám tự tin). Hai số kéo nhau: siết lọt thì phủ giảm |
+| Bộ đề chấm | ~18.000 câu Đại đã duyệt. **K12 mỏng: 589 câu, 49 dạng, 12 dạng dưới 5 câu** ⇒ rèn phương pháp trên K11 (2.973 câu, 64 dạng), kiểm trên K12. Cụm: 4.612 câu |
+| Lưu ý | Nhãn trong kho cũng có chỗ sai. Agent lệch nhãn ⇒ học thuật phân xử; ca kho sai thì sửa kho luôn |
+| Đòn bẩy chính | Hồ sơ dạng · thu hẹp theo chuyên đề · câu mẫu mỗi dạng · lời giải làm nhân chứng · bảng "dạng hay nhầm" rút từ ma trận nhầm |
+
+**④ GIẢI BÀI đúng phạm vi**
+
+| | |
+|---|---|
+| Vào → ra | Câu + hồ sơ dạng + luật khối → đáp số, lời giải |
+| Thước đo | **Đáp số đúng** (máy so giá trị) · **trong phạm vi** (không dùng kiến thức chủ đề sau) · đúng phương pháp dạng · trình bày (học thuật chấm mẫu theo bảng tiêu chí) |
+| Bộ đề chấm | Câu đã duyệt có lời giải NGƯỜI viết: K11 1.151 · K9 971 · K6 873 · K7 729 · **K12 chỉ 177** |
+| Kiểm độc lập | Code tính lại · thay đáp số ngược vào đề · model khác giải lại không nhìn bài |
+| Đòn bẩy chính | Lý thuyết + ví dụ của dạng · `kho-rules/dai/k<khối>.md` · tách "tìm đáp số" khỏi "viết trình bày" |
+
+**⑤ VẼ HÌNH**
+
+| | |
+|---|---|
+| Vào → ra | Đề + ảnh cắt gốc → bản mô tả hình → SVG |
+| Thước đo | **Đúng toán** (code kiểm, tự động 100%) · đủ nhãn · khớp ảnh gốc (model khác) · thẩm mỹ (học thuật chấm 1–5 theo hình mẫu) |
+| Bộ đề chấm | 3.112 câu đang có ảnh cắt. Mỗi loại hình bắt đầu 50 câu |
+| Đòn bẩy chính | **Bộ render (code)** — phần lớn chất lượng nằm ở đây chứ không ở AI · bộ kiểu dáng chuẩn BK (nét, cỡ chữ, tỉ lệ) CEO duyệt 1 lần |
+
+**⑥ CHUYỂN FORM (MCQ)** — đã có máy sinh + 10.749 form đã duyệt; việc là nối vào dây chuyền và phủ dạng còn thiếu
+
+| | |
+|---|---|
+| Thước đo | Đúng 1 đáp án đúng duy nhất (máy) · mỗi phương án nhiễu là kết quả của 1 lỗi thật · **hậu kiểm bằng bài làm HS:** phương án nhiễu không em nào chọn = nhiễu vô dụng |
+| Quy trình | Theo `spec-mcq-quy-trinh-sinh.md`, không phát minh lại |
+
+#### Người tham gia ở đâu
+
+| Lúc | Ai | Làm gì | Bao lâu |
+|---|---|---|---|
+| Bước 1 | CEO | Gật hợp đồng + thước đo | 1 lần / việc |
+| Bước 5, mỗi vòng | Học thuật | Xem 20–30 mẫu trong trang duyệt, ghi nhận xét tự do | ~30 phút / vòng |
+| Lệch nhãn kho | Học thuật | Phân xử: agent sai hay kho sai | theo ca |
+| Bước 7 | Học thuật | Duyệt như thường; gật/bác đề xuất luật cuối lô | cuối mỗi lô |
+
+### 9.7 Việc đầu tiên của P0 (chờ CEO gật)
 
 1. **Thử đọc thẳng MathType** trên 3 file K12 (chỉ đọc, làm ở thư mục nháp). Quyết định đường đọc cho 361 file Word.
 2. **Đo 1 lượt `claude -p` gọi skill** trên máy công ty: chạy được với đăng nhập subscription không, tốn bao nhiêu, `--json-schema` có giữ khuôn không.
