@@ -30108,7 +30108,7 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   `/nhap-de-thi` còn ghi đường B `toan_de_thi` đã ngừng dùng.
 - **Còn:** 7 câu ⛔ ở `spec-luong-kho.md` §6 chờ Thùy.
 
-## 2026-09-28 (3) — Nghiên cứu + đề xuất THÀNH TỰU & NHIỆM VỤ ngày/tuần/tháng cho app HS (chưa code)
+## 2026-09-28 (4) — Nghiên cứu + đề xuất THÀNH TỰU & NHIỆM VỤ ngày/tuần/tháng cho app HS (chưa code)
 
 - Thùy: achievement là phần "cực kì quan trọng" của gamification + hệ daily/weekly/monthly quest; đích = HS thấy danh sách
   thành tựu/nhiệm vụ/phần thưởng để có động lực làm bài trên app.
