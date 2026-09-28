@@ -30101,10 +30101,10 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   chưa có cụm · 1.836 câu ở dạng chờ · thiếu đáp án 1.394 / lời giải 1.796 · K12 là ổ nợ (589/6.056 đã duyệt).
 - **Sai/bài học:** (1) subagent khảo sát báo 3 nhánh kho "chưa merge" — kiểm `git rev-list main..origin/x` ra 0 cả 3 ⇒ báo cáo subagent
   phải verify trước khi đưa CEO. (2) `dang_ai_de_xuat` khớp `dang_chinh` 98,6% KHÔNG phải độ chính xác — cột được ghi bằng chính
-  `dang_chinh` lúc insert. (3) heredoc Git Bash trên máy này nuốt 1 lớp `` ⇒ regex `s` thành `s`, chuỗi kết nối bị cắt đuôi
+  `dang_chinh` lúc insert. (3) heredoc Git Bash trên máy này nuốt dấu gạch chéo ngược ⇒ regex `\s` thành `s`, chuỗi kết nối bị cắt đuôi
   ("database postgre does not exist") — viết script ra file thay vì heredoc. (4) `.env` chỉ có `DATABASE_URL` = `claude_build` (role ghi),
   KHÔNG có `DATABASE_URL_RO` ⇒ lệch CLAUDE.md §2.1; phiên này tự khoá `default_transaction_read_only`.
-- **Phát hiện phụ:** `auto-giai-scheduler.mjs:92` regex `(d+)` thiếu `` ⇒ `napN` luôn 0 (chưa sửa, đã tách việc riêng) ·
+- **Phát hiện phụ:** `auto-giai-scheduler.mjs:92` regex `(d+)` thiếu dấu gạch chéo ngược (đúng là `(\d+)`) ⇒ `napN` luôn 0 (chưa sửa, đã tách việc riêng) ·
   `/nhap-de-thi` còn ghi đường B `toan_de_thi` đã ngừng dùng.
 - **Còn:** 7 câu ⛔ ở `spec-luong-kho.md` §6 chờ Thùy.
 
