@@ -30772,3 +30772,7 @@ Thùy: "tuần trước kết luận cần bổ trợ, em tự luyện thêm h�
 - `fn_btyeu_case_xep_lich` + tab Yếu `fn_ca_bo_tro_ung_vien`: lọc level ∈ {1,2} (dựng từ bản ĐANG CHẠY pg_get_functiondef — phiên khác vừa sửa ung_vien).
   Đo: case mở 125 L1 · 6 L2 · 1 L0 (HS test TEST QLHT 003 — giờ ẩn).
 - Màn Xếp: chip mức thành ô chọn (L0 hỏi lý do, vá tại chỗ: case sang Hoàn thành). Sửa nhãn MUC_TEN[3] ghi nhầm "Mức 2 · … (GV cao cấp)" ⇒ "Mức 3".
+
+## 2026-09-28 — Màn Xếp hiện cả Mức 3 (Thùy: "Mức 3 cũng hiện luôn, t quên") · hạ L0 ghi "Bỏ" là đúng
+
+Mig 202609281330: `fn_btyeu_case_xep_lich` + `fn_ca_bo_tro_ung_vien` điều kiện level ∈ {1,2} ⇒ level ≥ 1 (dựng từ bản đang chạy). Hiện có 125 L1 · 6 L2 · 0 L3.
