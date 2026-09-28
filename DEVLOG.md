@@ -31156,3 +31156,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 ## 2026-09-29 — Thế giới BK: chốt logic vòng 2
 - Thùy "ok" cả 5 điểm: 3 tầng tin S/A/B (B chỉ kênh lớp, gộp/ngày) · 1 icon + 1 câu meme / em / tin, không EXP · icon riêng "👑 Thầy cô khen" cho GV/TA · push HS gom ~20h · chủ tin ẩn được tương tác + tin. Ghi spec gamification §0.7c. Chưa code; bước 1 dùng sự kiện đã có (~1,5–2 tuần), bước 2 chinh phục dạng (cần nhật ký vượt ngưỡng).
+
+## 2026-09-29 (2) — Thế giới BK: nháp danh mục icon + câu meme
+- Thùy: "m soạn trước, lớp 8 trở lên". Soạn `design/THE-GIOI-BK-danh-muc-tuong-tac.md`: 20 icon (👑 dành GV) + 30 câu chia 4 nhóm theo loại tin; loại các icon/câu teen dùng 2 nghĩa (💀 🗿 🤓, "ảo thật đấy", "con nhà người ta"…). Chờ Thùy lọc.
