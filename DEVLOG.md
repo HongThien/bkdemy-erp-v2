@@ -30289,3 +30289,21 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Sai/sửa: hộp chồng nhau (điều kiện chỗ trống viết rối + bãi quá chật: tổng bề rộng ≈ bề rộng bãi) ⇒ điều kiện tách đất/trời, hộp nhỏ lại,
   bớt hộp đất thêm hộp trời, hết chỗ thì BỎ (không fallback random). Test gọi `vaoTran()` khi DS rỗng ⇒ nhảy thẳng màn kết quả trống (lỗi của test, không phải game).
 - Verify: tường chặn phát 8° + còn nguyên; trúng nơ 40→48; auto 10 lượt bắn bừa 7/10 trúng, hộp luôn 16/lượt; 8 map 0 chồng.
+
+## 2026-09-28 (7) — Giao diện app HS: SỬA mục (6) — đối tượng là 15–18 tuổi, không phải 9–12
+
+- **Sai:** Thùy viết "độ tuổi 9 - 12", t hiểu là 9–12 TUỔI. Đúng ra là khối lớp: Thùy sửa lại "15 – 18 tuổi", còn **9–14 là nhóm riêng**.
+  Mockup Home v4 ghi sẵn "11A1/11A2" mà t không dùng để kiểm. Bài học: ở BK, "9–12" đứng cạnh HS thường là KHỐI; số tuổi/khối
+  lệch nghĩa ⇒ đối chiếu với data/mockup có sẵn trước khi làm cả trang.
+- **Chẩn đoán lại (15–18):** vấn đề chính là Home v4 coi HS như trẻ con: khẩu hiệu động viên viết tay (NN/g: teen ghét giọng kẻ cả,
+  ghét thiết kế con nít) · pastel/trái tim/chibi · gán màu theo giới tính · hero dành cho hình trang trí thay vì việc tiếp theo ·
+  không có nền tối (73–82% Gen Z) · chữ viết tay 10–11px.
+- **Đề xuất 15–18:** bố cục Home mới (việc tiếp theo → widget đếm ngược kỳ thi + rank mùa → 4 ô → nav), bỏ nhân vật và khẩu hiệu.
+  6 skin: Tối giản (mặc định) · Đấu trường (Valorant/Liên Quân) · Lo-fi đêm · Y2K · Anime RPG (Genshin, làm cuối) · Soft Hàn (= bản cũ
+  bớt sến). Custom kiểu màn khoá iPhone: skin + sáng/tối (free) → màu nhấn, hình nền riêng, widget, **quyền riêng tư rank/điểm (P1,
+  "imaginary audience" Elkind)**, khung → không cho tự thiết kế. Thêm thẻ story 9:16 + tổng kết tháng kiểu Spotify Wrapped.
+- **Kỹ thuật:** registry skin có nhãn nhóm tuổi (15–18 và 9–14 dùng chung cơ chế, khác danh sách) · `hs_giao_dien` ở DB · mức riêng tư
+  áp ở DB, không chỉ ẩn UI · "việc tiếp theo"/đếm ngược = `fn_hs_home_*`.
+- **Trang:** 15–18 https://claude.ai/artifact/LZF11536BxanSuLQcnbWiR · bản ở mục (6) đổi nhãn thành nháp cho nhóm 9–14
+  (https://claude.ai/artifact/M2w9GCJzYAaa1hB1NULg6x). 6 câu chờ Thùy (ranh giới khối 9 · bầu P0 · kỳ thi đếm ngược · điểm công khai
+  hay riêng · ai vẽ art · chia sẻ thẻ lên MXH có cần PH đồng ý).
