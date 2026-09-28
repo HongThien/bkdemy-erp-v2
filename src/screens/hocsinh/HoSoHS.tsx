@@ -13,7 +13,7 @@ import { hoSoGamiCuaToi, datKhoe, type HoSoGami, type Khoe } from '../../lib/hos
 import type { LopMonHS } from '../../lib/tuluyen'
 import { MAU, THE, THE_TRON, HEAD, ManHS, DauTrangHS, NutHS } from './skin/KhungHS'
 import ThanhChonMon from './ThanhChonMon'
-import { chuongCua, laThan, mauHH, VANG } from './gami/hinh'
+import { chuongCua, laThan, mauHH, VANG, MAU_GAMI } from './gami/hinh'
 import { AvatarKhung, BieuTuongBac, SaoBac, HinhHuyHieu } from './gami/HinhGami'
 
 const so = (n: number) => n.toLocaleString('vi-VN')
@@ -66,7 +66,7 @@ export function HoSoView(p: HoSoViewProps) {
 
       {/* ③ RANK */}
       <button onClick={p.onRank} disabled={!p.onRank} className="overflow-hidden text-left active:scale-[0.99]" style={THE}>
-        <div className="flex items-center justify-between px-4 py-2 text-white" style={{ background: c.mau }}>
+        <div className="flex items-center justify-between px-4 py-2" style={{ background: c.mau, color: MAU_GAMI.chu }}>
           <span className="text-[13px] font-extrabold" style={HEAD}>{than ? 'Thần' : `Chương ${c.ten}`}</span>
           {p.onRank && <span className="text-[12px] font-bold opacity-90">Xem Rank ›</span>}
         </div>

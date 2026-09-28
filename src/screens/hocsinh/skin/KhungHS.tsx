@@ -1,5 +1,5 @@
 // ============================================================================
-// KhungHS — BỘ KHUNG DÙNG CHUNG cho MỌI màn app HS (Thùy 29/09: "không chỉ đổi Home mà phải đổi toàn bộ các màn
+// KhungHS — BỘ KHUNG DÙNG CHUNG cho MỌI màn app HS (luật đầy đủ: design/STYLE-HS.md · kiểm: npm run check:style-hs). Thùy 29/09: "không chỉ đổi Home mà phải đổi toàn bộ các màn
 // bên trong thành 1 style thống nhất"). Trước đó mỗi màn tự chép 1 bảng THEME kiểu Home v4 (nền mây pastel, chồng
 // sách, khẩu hiệu viết tay, hồng/xanh theo giới tính) ⇒ Home đổi skin mà vào trong vẫn giao diện cũ.
 //

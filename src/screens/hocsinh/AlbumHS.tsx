@@ -11,7 +11,7 @@ import { albumCuaToi, type Album, type AlbumHuyHieu } from '../../lib/huyhieu'
 import { monCuaHS } from '../../lib/tuluyen'
 import { Khung, NutBack } from './TuLuyenChuDe'
 import { MAU, THE, HEAD } from './skin/KhungHS'
-import { mauHH, MAU_CHUA_DAT, VANG, VANG_NEN } from './gami/hinh'
+import { mauHH, MAU_CHUA_DAT, VANG, VANG_NEN, MAU_GAMI } from './gami/hinh'
 import { HinhHuyHieu } from './gami/HinhGami'
 import { ChucMungSao, saoChuaXem, daXemHetSao, type SaoMoi } from './gami/ChucMung'
 const sao5 = (n: number) => '★'.repeat(n) + '☆'.repeat(5 - n)
@@ -34,7 +34,7 @@ function TheHuyHieu({ h, al, mo, onMo }: { h: AlbumHuyHieu; al: Album; mo: boole
   const hiem = cao && al.si_so_khoi > 0 && cao.so_ban_khoi / al.si_so_khoi < 0.1
   return (
     <div className="overflow-hidden" style={{ ...THE, opacity: h.sao ? 1 : 0.92 }}>
-      <button onClick={onMo} className="flex w-full items-center gap-2.5 px-3 py-2 text-left text-white" style={{ background: h.sao ? mauHH(h.key).mau : MAU_CHUA_DAT }}>
+      <button onClick={onMo} className="flex w-full items-center gap-2.5 px-3 py-2 text-left" style={{ color: MAU_GAMI.chu, background: h.sao ? mauHH(h.key).mau : MAU_CHUA_DAT }}>
         <HinhHuyHieu hhKey={h.key} sao={h.sao} size={48} kieu="nho" title={h.ten} />
         <span className="min-w-0 flex-1">
           <span className="block text-[15px] font-extrabold leading-tight" style={HEAD}>{h.ten}</span>

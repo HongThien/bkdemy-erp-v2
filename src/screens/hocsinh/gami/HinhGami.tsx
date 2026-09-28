@@ -5,7 +5,7 @@
 // Màn chỉ gọi component ở đây — đổi vỏ không phải sửa màn.
 // ============================================================================
 import { useId, type ReactNode } from 'react'
-import { anhHuyHieu, anhBac, anhRankChung, anhNV, ICON_NV, mauHH, bacInfo, chuongCua, laThan, VANG, type KieuHuyHieu } from './hinh'
+import { anhHuyHieu, anhBac, anhRankChung, anhNV, ICON_NV, mauHH, bacInfo, chuongCua, laThan, VANG, MAU_GAMI, type KieuHuyHieu } from './hinh'
 
 // Keyframes dùng chung (xoay hào quang, bùng lớp phủ) — nhúng 1 lần mỗi chỗ dùng, trình duyệt gộp trùng.
 export const KEYFRAMES = `
@@ -26,7 +26,7 @@ export function HinhHuyHieu({ hhKey, sao, size = 64, kieu = 'sao', title }: { hh
     <span title={title} className="relative inline-flex shrink-0 items-center justify-center rounded-full"
       style={{
         width: size, height: size,
-        background: khoa ? 'linear-gradient(135deg,#C9CED9,#9AA2B4)' : m.mau,
+        background: khoa ? MAU_GAMI.khoa : m.mau,
         boxShadow: khoa ? 'inset 0 0 0 2px rgba(255,255,255,.5)'
           : `inset 0 0 0 ${vien}px ${sao >= 4 ? VANG : 'rgba(255,255,255,.75)'}, 0 ${size * 0.05}px ${size * 0.14}px rgba(0,0,0,.25)`,
         opacity: khoa ? 0.75 : 1,
@@ -34,8 +34,8 @@ export function HinhHuyHieu({ hhKey, sao, size = 64, kieu = 'sao', title }: { hh
       {sao >= 5 && <span aria-hidden className="absolute inset-[-8%] rounded-full" style={{ background: `conic-gradient(from 0deg, transparent, ${VANG}55, transparent 30%, ${VANG}55, transparent 60%, ${VANG}55, transparent 90%)`, zIndex: -1 }} />}
       <span aria-hidden style={{ fontSize: size * 0.46, filter: khoa ? 'grayscale(1) brightness(1.2)' : 'none', lineHeight: 1 }}>{khoa ? '🔒' : m.emoji}</span>
       {!khoa && kieu !== 'nho' && size >= 44 && (
-        <span className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-1.5 font-extrabold leading-none text-white"
-          style={{ bottom: -size * 0.06, fontSize: Math.max(9, size * 0.14), padding: `${size * 0.03}px ${size * 0.07}px`, background: sao >= 4 ? VANG : m.dam, boxShadow: '0 1px 3px rgba(0,0,0,.3)' }}>
+        <span className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-1.5 font-extrabold leading-none"
+          style={{ color: MAU_GAMI.chu, bottom: -size * 0.06, fontSize: Math.max(9, size * 0.14), padding: `${size * 0.03}px ${size * 0.07}px`, background: sao >= 4 ? VANG : m.dam, boxShadow: '0 1px 3px rgba(0,0,0,.3)' }}>
           {'★'.repeat(sao)}
         </span>
       )}
@@ -52,7 +52,7 @@ export function HaoQuang({ size }: { size: number }) {
       <style>{KEYFRAMES}</style>
       {src
         ? <img src={src} alt="" className="h-full w-full object-contain" />
-        : <span className="block h-full w-full rounded-full" style={{ background: 'conic-gradient(#FF7A18aa,transparent 12%,#D7263Daa 25%,transparent 37%,#7B2FF7aa 50%,transparent 62%,#FF7A18aa 75%,transparent 87%,#FF7A18aa)', filter: 'blur(6px)' }} />}
+        : <span className="block h-full w-full rounded-full" style={{ background: MAU_GAMI.haoQuang, filter: 'blur(6px)' }} />}
     </span>
   )
 }
@@ -91,7 +91,7 @@ export function SaoBac({ n, size = 18 }: { n: number; size?: number }) {
     <span className="inline-flex items-center gap-0.5" aria-label={`${n} sao`}>
       {[1, 2, 3].map((i) => src
         ? <img key={i} src={src} alt="" style={{ width: size, height: size, opacity: i <= n ? 1 : 0.25, filter: i <= n ? 'none' : 'grayscale(1)' }} />
-        : <span key={i} style={{ fontSize: size, lineHeight: 1, color: i <= n ? '#E0B01E' : 'rgba(150,150,150,.45)' }}>★</span>)}
+        : <span key={i} style={{ fontSize: size, lineHeight: 1, color: i <= n ? MAU_GAMI.sao : 'rgba(150,150,150,.45)' }}>★</span>)}
     </span>
   )
 }
@@ -103,7 +103,7 @@ export function AvatarKhung({ bac, size = 96, anhUrl, initials, avatar }: { bac:
   const lo = Math.round(size * 0.62)
   const src = anhBac(bac, size <= 96 ? 'khung_avatar_96' : 'khung_avatar')
   const ben = avatar ?? (
-    <span className="flex items-center justify-center overflow-hidden rounded-full font-extrabold text-white" style={{ width: lo, height: lo, background: c.dam, fontSize: lo * 0.38 }}>
+    <span className="flex items-center justify-center overflow-hidden rounded-full font-extrabold" style={{ color: MAU_GAMI.chu, width: lo, height: lo, background: c.dam, fontSize: lo * 0.38 }}>
       {anhUrl ? <img src={anhUrl} alt="" className="h-full w-full object-cover" /> : initials}
     </span>
   )

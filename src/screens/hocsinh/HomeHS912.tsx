@@ -8,7 +8,7 @@
 // Lần đầu mở app (chưa có dòng hs_giao_dien): chào → chọn giao diện → khoanh nút "Hình nền" để em biết chỗ đổi → lưu.
 // Component chỉ VẼ: Elo/hạng/đếm ngược do fn_hs_home_912 tính ở Postgres; số trên ô do HocSinhApp suy như Home cũ.
 // ============================================================================
-import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from 'react'
+import { useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from 'react'
 import AvatarHS from './AvatarHS'
 import ThanhChonMon from './ThanhChonMon'
 import type { LopMonHS } from '../../lib/tuluyen'
@@ -16,31 +16,12 @@ import type { HomeCard } from './HomeHS'
 import { LOAI_BO_TRO_TEN, type LichBoTro } from '../../lib/botro_yeu_ca'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { luuGiaoDien, type Home912 } from '../../lib/giaodien_hs'
+import { THE, HEAD, MAU, useHeThongToi, useManDoc } from './skin/KhungHS'
 import { SKINS, SKIN_MAC_DINH, laySkin, cheDoThat, bienCss, layHinhNen, nenCua, type GiaoDien, type CheDo, type Skin } from './skin/registry'
 
 const MAC_DINH: GiaoDien = { skin: SKIN_MAC_DINH, che_do: 'he_thong', hinh_nen: 'mac_dinh' }
 
-function useMedia(q: string): boolean {
-  const mq = typeof window !== 'undefined' && window.matchMedia ? window.matchMedia(q) : null
-  const [khop, setKhop] = useState(!!mq?.matches)
-  useEffect(() => {
-    if (!mq) return
-    const f = (e: MediaQueryListEvent) => setKhop(e.matches)
-    mq.addEventListener('change', f)
-    return () => mq.removeEventListener('change', f)
-  }, [mq])
-  return khop
-}
-const useHeThongToi = () => useMedia('(prefers-color-scheme: dark)')
-const useManDoc = () => useMedia('(orientation: portrait)') // chọn bản tranh nền dọc/ngang
-
-// ── Khung dùng chung (thẻ theo skin) ────────────────────────────────────────
-const THE: CSSProperties = {
-  background: 'var(--sk-surface)', border: 'var(--sk-card-border)', borderLeft: 'var(--sk-card-left)',
-  borderRadius: 'var(--sk-radius)', boxShadow: 'var(--sk-card-shadow)', clipPath: 'var(--sk-card-clip)',
-  backdropFilter: 'var(--sk-blur)', WebkitBackdropFilter: 'var(--sk-blur)',
-}
-const HEAD: CSSProperties = { fontFamily: 'var(--sk-font-head)', textTransform: 'var(--sk-head-case)' as CSSProperties['textTransform'], letterSpacing: 'var(--sk-head-track)' }
+// Thẻ/tiêu đề/màu/hook màn hình lấy từ skin/KhungHS — 1 nguồn style cho Home và mọi màn (Thùy 29/09).
 
 function Badge({ n }: { n: number }) {
   return <span className="flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[11px] font-extrabold" style={{ background: 'var(--sk-badge)', color: 'var(--sk-badge-ink)' }}>{n}</span>
@@ -174,7 +155,7 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
       <div className="grid grid-cols-2 gap-2.5 md:grid-cols-3 lg:gap-4">
         {p.cards.map((c) => {
           const anh = skin.anhO?.[c.id]
-          const mauPhu = c.subMau === 'do' ? '#ef4444' : c.subMau === 'xanh' ? '#22a06b' : c.subMau === 'ton' ? 'var(--sk-ink)' : 'var(--sk-muted)'
+          const mauPhu = c.subMau === 'do' ? MAU.sai : c.subMau === 'xanh' ? MAU.dung : c.subMau === 'ton' ? 'var(--sk-ink)' : 'var(--sk-muted)'
           return (
             <button key={c.id} disabled={c.disabled} onClick={c.onClick}
               className={`relative flex min-h-[92px] flex-col items-start gap-1.5 p-3 text-left transition lg:min-h-[120px] lg:p-4 ${c.disabled ? 'opacity-50' : 'active:scale-[0.98]'}`} style={THE}>
@@ -264,7 +245,7 @@ function ChonGiaoDien({ gd, setGd, heThongToi, nutChinh, onNutChinh, onDong, dan
         </section>
       </div>
       <div className="flex flex-col gap-2 px-5 pb-[calc(16px+env(safe-area-inset-bottom))] pt-2" style={{ borderTop: '1px solid var(--sk-line)' }}>
-        {loi && <p className="text-[13px] font-semibold text-[#ef4444]">{loi}</p>}
+        {loi && <p className="text-[13px] font-semibold" style={{ color: MAU.sai }}>{loi}</p>}
         <button onClick={onNutChinh} disabled={dangLuu} className="h-12 w-full text-[15px] font-bold active:scale-[0.99]"
           style={{ background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)', borderRadius: 'var(--sk-radius)', clipPath: 'var(--sk-card-clip)', fontFamily: 'var(--sk-font-head)', opacity: dangLuu ? 0.7 : 1 }}>
           {dangLuu ? 'Đang lưu…' : nutChinh}
@@ -294,12 +275,12 @@ function ChiNut({ nutRef, onXong, dangLuu, loi }: { nutRef: RefObject<HTMLButton
   return (
     <div className="fixed inset-0 z-50" role="dialog" aria-label="Chỗ đổi hình nền">
       <div className="pointer-events-none absolute rounded-full" style={{ left: r.left - pad, top: r.top - pad, width: r.width + pad * 2, height: r.height + pad * 2, boxShadow: '0 0 0 9999px rgba(0,0,0,0.62), 0 0 0 3px #fff' }} />
-      <div className="absolute w-[300px] rounded-2xl bg-white p-4 text-[#16161d] shadow-2xl" style={{ left: trai, top: r.bottom + 16, fontFamily: "'Be Vietnam Pro', system-ui, sans-serif" }}>
-        <span className="absolute -top-2 h-4 w-4 rotate-45 bg-white" style={{ left: Math.min(Math.max(r.left + r.width / 2 - trai - 8, 16), 268) }} />
+      <div className="absolute w-[300px] rounded-2xl p-4 shadow-2xl" style={{ left: trai, top: r.bottom + 16, background: MAU.bg, color: MAU.ink, border: '1px solid var(--sk-line)' }}>
+        <span className="absolute -top-2 h-4 w-4 rotate-45" style={{ background: MAU.bg, borderLeft: '1px solid var(--sk-line)', borderTop: '1px solid var(--sk-line)', left: Math.min(Math.max(r.left + r.width / 2 - trai - 8, 16), 268) }} />
         <p className="text-[16px] font-bold">Đổi giao diện ở đây</p>
-        <p className="mt-1 text-[14px] leading-snug text-[#4a4d5a]">Bấm nút <b>Hình nền</b> bất cứ lúc nào để đổi phong cách, chế độ sáng/tối và hình nền.</p>
-        {loi && <p className="mt-2 text-[13px] font-semibold text-[#d23c3c]">{loi}</p>}
-        <button onClick={onXong} disabled={dangLuu} className="mt-3 h-11 w-full rounded-xl bg-[#16161d] text-[15px] font-bold text-white">{dangLuu ? 'Đang lưu…' : loi ? 'Thử lại' : 'Đã hiểu'}</button>
+        <p className="mt-1 text-[14px] leading-snug" style={{ color: MAU.muted }}>Bấm nút <b>Hình nền</b> bất cứ lúc nào để đổi phong cách và hình nền.</p>
+        {loi && <p className="mt-2 text-[13px] font-semibold" style={{ color: MAU.sai }}>{loi}</p>}
+        <button onClick={onXong} disabled={dangLuu} className="mt-3 h-11 w-full rounded-xl text-[15px] font-bold" style={{ background: MAU.acc, color: MAU.accInk }}>{dangLuu ? 'Đang lưu…' : loi ? 'Thử lại' : 'Đã hiểu'}</button>
       </div>
     </div>
   )
@@ -343,12 +324,12 @@ export default function HomeHS912({ giaoDien, onDaLuu, ...p }: HomeProps & { gia
 
       {buoc === 'chao' && (
         <Lop>
-          <div className="w-full max-w-[360px] rounded-3xl bg-white p-6 text-[#16161d] shadow-2xl" style={{ fontFamily: "'Be Vietnam Pro', system-ui, sans-serif" }}>
-            <p className="text-[13px] font-bold uppercase tracking-[0.08em] text-[#2f5bea]">Mới</p>
+          <div className="w-full max-w-[360px] rounded-3xl p-6 shadow-2xl" style={{ background: MAU.bg, color: MAU.ink, border: '1px solid var(--sk-line)', fontFamily: 'var(--sk-font)' }}>
+            <p className="text-[13px] font-bold uppercase tracking-[0.08em]" style={{ color: MAU.acc }}>Mới</p>
             <p className="mt-1 text-[22px] font-extrabold leading-tight">App có giao diện mới, {p.hoTen.trim().split(/\s+/).slice(-2).join(' ')} tự chọn nhé</p>
-            <p className="mt-2 text-[14.5px] leading-snug text-[#4a4d5a]">Có {SKINS.length} phong cách, mỗi cái có nhiều hình nền và chế độ sáng/tối. Chọn xong vẫn đổi lại được bất cứ lúc nào.</p>
-            <button onClick={() => setBuoc('chon')} className="mt-5 h-12 w-full rounded-xl bg-[#16161d] text-[15px] font-bold text-white">Chọn giao diện</button>
-            <button onClick={() => setBuoc('chi_nut')} className="mt-2 h-11 w-full rounded-xl text-[14px] font-semibold text-[#4a4d5a]">Để sau, dùng {laySkin(SKIN_MAC_DINH).ten}</button>
+            <p className="mt-2 text-[14.5px] leading-snug" style={{ color: MAU.muted }}>Chọn phong cách và hình nền em thích. Chọn xong vẫn đổi lại được bất cứ lúc nào.</p>
+            <button onClick={() => setBuoc('chon')} className="mt-5 h-12 w-full rounded-xl text-[15px] font-bold" style={{ background: MAU.acc, color: MAU.accInk }}>Chọn giao diện</button>
+            <button onClick={() => setBuoc('chi_nut')} className="mt-2 h-11 w-full rounded-xl text-[14px] font-semibold" style={{ color: MAU.muted }}>Để sau, dùng {laySkin(SKIN_MAC_DINH).ten}</button>
           </div>
         </Lop>
       )}

@@ -5,7 +5,7 @@
 // ============================================================================
 import type { Album } from '../../../lib/huyhieu'
 import { HinhHuyHieu, BieuTuongBac, KEYFRAMES } from './HinhGami'
-import { anhRankChung, chuongCua, mauHH, laThan, VANG } from './hinh'
+import { anhRankChung, chuongCua, mauHH, laThan, VANG, MAU_GAMI } from './hinh'
 
 function doc<T>(k: string): T | null { try { const s = localStorage.getItem(k); return s ? (JSON.parse(s) as T) : null } catch { return null } }
 function ghi(k: string, v: unknown) { try { localStorage.setItem(k, JSON.stringify(v)) } catch { /* không có storage: bỏ qua */ } }
@@ -48,11 +48,11 @@ function Vo({ nen, children, onDong }: { nen: string; children: React.ReactNode;
     <div role="dialog" aria-modal className="fixed inset-0 z-50 flex items-center justify-center p-6" onClick={onDong}
       style={{ background: 'rgba(8,10,24,.78)', backdropFilter: 'blur(3px)', animation: 'gamiMo .25s ease-out' }}>
       <style>{KEYFRAMES}</style>
-      <div className="relative flex w-full max-w-[360px] flex-col items-center text-center text-white" onClick={(e) => e.stopPropagation()}>
+      <div className="relative flex w-full max-w-[360px] flex-col items-center text-center" style={{ color: MAU_GAMI.chu }} onClick={(e) => e.stopPropagation()}>
         <span aria-hidden className="pointer-events-none absolute left-1/2 top-[110px] h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2"
           style={bung ? { background: `url(${bung}) center/contain no-repeat` } : { background: `radial-gradient(circle, ${nen} 0%, transparent 65%)`, opacity: 0.55 }} />
         {children}
-        <button onClick={onDong} className="relative mt-6 h-12 w-full rounded-2xl text-[16px] font-extrabold active:scale-[0.98]" style={{ background: '#fff', color: '#1b1b2f' }}>Tuyệt!</button>
+        <button onClick={onDong} className="relative mt-6 h-12 w-full rounded-2xl text-[16px] font-extrabold active:scale-[0.98]" style={{ background: MAU_GAMI.nutSang, color: MAU_GAMI.nutSangChu }}>Tuyệt!</button>
       </div>
     </div>
   )
@@ -66,7 +66,7 @@ export function ChucMungSao({ s, onDong }: { s: SaoMoi; onDong: () => void }) {
       </div>
       <p className="relative mt-5 text-[13px] font-bold uppercase tracking-[0.14em] opacity-80">Huy hiệu mới</p>
       <p className="relative mt-1 text-[30px] font-extrabold leading-tight">{s.ten} <span style={{ color: VANG }}>★{s.sao}</span></p>
-      {s.exp > 0 && <p className="relative mt-1 text-[18px] font-extrabold" style={{ color: '#7CF0B0' }}>+{s.exp} EXP</p>}
+      {s.exp > 0 && <p className="relative mt-1 text-[18px] font-extrabold" style={{ color: MAU_GAMI.exp }}>+{s.exp} EXP</p>}
       {s.ban_cung && <p className="relative mt-2 text-[14px] opacity-90">🎖 Thầy cô sẽ trao em bản cứng tận tay</p>}
     </Vo>
   )

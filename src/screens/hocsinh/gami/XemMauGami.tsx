@@ -6,7 +6,7 @@
 // ============================================================================
 import { useState, type ReactNode } from 'react'
 import { Khung, NutBack } from '../TuLuyenChuDe'
-import { MAU, THE, HEAD, ManHS, DauTrangHS } from '../skin/KhungHS'
+import { MAU, THE, THE_TRON, HEAD, ManHS, DauTrangHS } from '../skin/KhungHS'
 import { NhiemVuView } from '../NhiemVuHS'
 import { AlbumView, tieuDeAlbum } from '../AlbumHS'
 import { RankView } from '../RankHS'
@@ -131,13 +131,13 @@ export default function XemMauGami() {
     const u = new URL(location.href); u.searchParams.set('man', m); u.searchParams.set('tt', String(t)); history.replaceState(null, '', u)
   }
   const cur = MAN.find((m) => m.id === man) ?? MAN[0]
-  const chip = (chon: boolean) => ({ background: chon ? '#1b1b2f' : '#fff', color: chon ? '#fff' : '#1b1b2f', border: '1px solid #1b1b2f33' })
+  const chip = (chon: boolean) => (chon ? { background: MAU.acc, color: MAU.accInk } : { ...THE_TRON, borderRadius: 999, color: MAU.ink })
   return (
     <>
       {!an && (
-        <div className="sticky top-0 z-30 flex flex-col gap-1.5 px-3 py-2 text-[12px] font-bold" style={{ background: 'rgba(255,255,255,.94)', borderBottom: '1px solid #0002', fontFamily: 'system-ui' }}>
+        <div className="sticky top-0 z-30 flex flex-col gap-1.5 px-3 py-2 text-[12px] font-bold" style={{ background: MAU.bg, borderBottom: `1px solid ${MAU.line}`, color: MAU.ink }}>
           <div className="flex gap-1.5 overflow-x-auto">
-            <span className="shrink-0 self-center pr-1 text-[#1b1b2f99]">XEM MẪU</span>
+            <span className="shrink-0 self-center pr-1" style={{ color: MAU.muted }}>XEM MẪU</span>
             {MAN.map((m) => <button key={m.id} onClick={() => doi(m.id, 1)} className="shrink-0 rounded-full px-3 py-1" style={chip(m.id === cur.id)}>{m.ten}</button>)}
           </div>
           {cur.tt.length > 1 && (

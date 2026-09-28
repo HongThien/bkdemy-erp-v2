@@ -49,6 +49,15 @@ export const mauHH = (key: string) => MAU_HH[key] ?? MAU_HH.nike
 export const MAU_CHUA_DAT = 'linear-gradient(135deg,#B0B7C9,#8E97AD)'
 export const VANG = '#C9950F'                     // hoàn hảo / bản cứng / Hiếm
 export const VANG_NEN = 'rgba(233,170,30,0.18)'
+// Màu GAME dùng chung của hình / lớp phủ (cố định mọi style — màu có nghĩa, không theo skin).
+export const MAU_GAMI = {
+  chu: '#FFFFFF',                                             // chữ trên dải màu huy hiệu / chương / lớp phủ tối
+  khoa: 'linear-gradient(135deg,#C9CED9,#9AA2B4)',            // huy hiệu chưa đạt
+  sao: '#E0B01E',                                             // sao bậc rank + hạng top 3
+  exp: '#7CF0B0',                                             // "+100 EXP" trên lớp phủ tối
+  nutSang: '#FFFFFF', nutSangChu: '#1B1B2F',                  // nút "Tuyệt!" trên lớp phủ tối
+  haoQuang: 'conic-gradient(#FF7A18aa,transparent 12%,#D7263Daa 25%,transparent 37%,#7B2FF7aa 50%,transparent 62%,#FF7A18aa 75%,transparent 87%,#FF7A18aa)',
+}
 
 // ── Rank: 10 bậc, 5 chương (DON-HANG Đơn 3 — màu chương là luật, không đổi theo skin) ─────────────
 export type Chuong = { ten: string; mau: string; dam: string }

@@ -12,11 +12,11 @@ import { rankCuaToi, type RankCuaToi } from '../../lib/rank'
 import { monCuaHS } from '../../lib/tuluyen'
 import { Khung, NutBack } from './TuLuyenChuDe'
 import { MAU, THE, HEAD, NutHS } from './skin/KhungHS'
-import { BAC, chuongCua, laThan as bacThan } from './gami/hinh'
+import { BAC, chuongCua, laThan as bacThan, MAU_GAMI } from './gami/hinh'
 import { BieuTuongBac, SaoBac } from './gami/HinhGami'
 import { ChucMungBac, bacChuaXem, daXemBac } from './gami/ChucMung'
 
-const VANG_SAO = '#E0B01E' // hạng top 3 — màu huy chương
+const VANG_SAO = MAU_GAMI.sao // hạng top 3 — màu huy chương
 const so = (n: number) => n.toLocaleString('vi-VN')
 function labelThang(ym: string) { const [y, m] = ym.split('-'); return `tháng ${parseInt(m, 10)}/${y}` }
 // Tên bậc (DB) → số bậc, để vẽ biểu tượng nhỏ cạnh tên trong bảng top.
@@ -26,7 +26,7 @@ const bacTheoTen = (ten: string) => BAC.find((b) => b.ten === ten)?.bac ?? 1
 function Card({ mau, icon, tieuDe, children }: { mau?: string; icon: React.ReactNode; tieuDe: string; children: React.ReactNode }) {
   return (
     <div className="overflow-hidden" style={THE}>
-      <div className="flex items-center gap-2 px-4 py-2.5" style={mau ? { background: mau, color: '#fff' } : { background: MAU.acc, color: MAU.accInk }}>
+      <div className="flex items-center gap-2 px-4 py-2.5" style={mau ? { background: mau, color: MAU_GAMI.chu } : { background: MAU.acc, color: MAU.accInk }}>
         <span className="text-[18px] leading-none" aria-hidden>{icon}</span>
         <span className="text-[14px] font-extrabold tracking-tight" style={HEAD}>{tieuDe}</span>
       </div>

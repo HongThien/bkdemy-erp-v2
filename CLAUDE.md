@@ -253,6 +253,12 @@
     badge số ở góc trên phải nếu có. Mẫu: lưới `cards` trong `src/screens/hocsinh/HomeHS.tsx`.
   - Chọn kiểu theo **nội dung thật sự có bao nhiêu** (có dòng mô tả/trạng thái → kiểu 1; chỉ điều
     hướng đơn giản → kiểu 2), không phải theo sở thích lúc code.
+- **⭐ APP HỌC SINH = THEO STYLE (CEO chốt 29/09) — ĐỌC `design/STYLE-HS.md` trước khi thêm/sửa BẤT KỲ màn/tính năng nào của app HS.**
+  Style (đang dùng: Anime RPG) = 1 gói trọn: `src/screens/hocsinh/skin/styles/<id>.ts` + tài nguyên `public/bk-ui/hs/skin/<id>/`.
+  Đổi style là đổi HẾT (Home + mọi màn con). Màn mới CHỈ dựng bằng `skin/KhungHS.tsx` (`ManHS`/`DauTrangHS`/`TheHS`/`NutHS`… + `MAU`/`THE`/`HEAD`)
+  — cấm mã màu gõ tay, token `ph-*`/`bg-ios`, màu theo giới tính, `if (skin === …)`. Thêm ô chức năng mới ⇒ mỗi style phải có icon cho ô đó.
+  **`npm run check:style-hs` phải ✔ trước khi commit đụng `src/screens/hocsinh/`.** (Quy ước card kiểu 1/kiểu 2 ở trên vẫn áp,
+  màu lấy từ style.)
 
 ---
 
