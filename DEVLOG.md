@@ -30220,3 +30220,17 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
 - Rà asset `Documents/ChatGPT/KayKit`: có đủ — Adventurers (đã dùng ở BK Hero Universe), **`snowball_cannon`** (KayKit Holiday, pháo có sẵn),
   Kenney `siege-catapult`/`ballista` (castle-kit), `present_A…F`, `hot_chocolate_decorated` (hộp trà sữa), `snowball`/`basketball`.
   Trang xem thử tạm `games-site/_xem-asset/` (KHÔNG commit — copy asset để nhìn). Chưa code.
+
+## 2026-09-28 (6) — Spec thành tựu v3: rank theo MỌI hoạt động, bỏ tên Liên Quân, bỏ chống cày
+
+- Thùy sửa v2 (4 ý): (1) Elo chỉ theo ET, ET ít ⇒ không làm nền rank được; (2) danh hiệu top dạng OK nhưng không lấy tên/khung
+  Liên Quân (HS bảo copy); (3) thành tựu: mỗi cái tự lên bậc tuần tự Đồng→Bạc→Vàng→KC (hỏi lại bằng 3 phương án, Thùy chọn "mỗi
+  thành tựu tự lên bậc"); (4) nhiệm vụ giữ khung, đổi tên. + **Không chống cày ảo — cày càng nhiều càng tốt**; nhiệm vụ phủ cả
+  học trên lớp, BTVN, thi thử, không riêng tự luyện.
+- **Làm:** v3 — Điểm Rank cộng từ mọi hoạt động (có mặt, bài lớp, lên bảng, BTVN, thi thử/sát hạch, bổ trợ, HTĐ, câu đúng app không
+  trần) · chỉ lên trong mùa, ghế đỉnh top N khối là chỗ duy nhất tụt · Điểm Dạng từ mọi nguồn (lớp/thi ×2) · 30 thành tựu 6 nhóm ·
+  nhiệm vụ ngày/tuần/tháng (tháng có "dự 1 kỳ thi thử") · bỏ trần/khoá giờ/best-K · xu tự có trần vì số nhiệm vụ cố định.
+- Theme: Thùy chọn "theme khác" nhưng chưa nêu ⇒ mọi tên là [tạm], gom 1 bảng §8 (dự kiến bảng cấu hình tên trong DB). Mythwings
+  (bộ IP có sẵn trong `Student badge design.zip`, 3 chim × 5 cấp) Thùy KHÔNG chọn.
+- Bài học: (a) CEO đánh số 1–4 là trỏ đúng 4 bullet tóm tắt của t — đọc feedback theo đúng cấu trúc t đã đưa. (b) "Chống farm"
+  là giá trị t tự thêm, không phải đích CEO — hỏi trước khi biến nó thành luật thiết kế.
