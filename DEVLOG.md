@@ -30647,3 +30647,10 @@ Trà sữa cho cả Mở Rương + Chiếm Đất: Nhất 0,1% · Nhì 0,05% · 
   chính thức thì sửa dòng này. Hôm nay còn 286 ngày.
 - Worktree `skin-hs-912` đã xoá (Thùy đồng ý): gỡ junction node_modules TRƯỚC (tránh xoá lan sang node_modules repo chính), tắt vite
   sót ở cổng 5204 đang giữ thư mục, xoá nhánh (commit 8bd20d0 đã trên main). 4 file tạm (2 script dò DB + trang xem thử) mất theo.
+
+## 2026-09-28 (10) — Bắn Quà: chế độ ĐỘI v0
+- Thùy chốt: thắng Vàng / thua Bạc · bắn trúng mình không mất máu. Làm: thiết lập Cá nhân/Đội + giờ chơi; 2–4 xe + ụ đá không phá giữa các xe; lượt xoay vòng đội,
+  thành viên thay nhau; xe máu 150 (bộ máy: `vo()` trừ máu khi mục tiêu có hp, `env.boQua` bỏ qua xe mình); xếp theo sát thương gây ra; rương 1 lần/đội.
+- Camera: `camBamDan` giữ mặt đất trong khung (trước đó đạn lên cao là màn toàn trời).
+- Verify: bắn trúng xe mình máu không đổi; trận 2 đội chạy trọn; 4 đội dựng đúng. Console "SyntaxError" nhìn thấy là log CŨ còn lưu từ trang trước (tab mới: 0 lỗi).
+- Mục §6 spec: lần này cắt đuôi + ghi mục mới + dựng lại §6 (không replace mốc) — không lặp lỗi (7)/(8).

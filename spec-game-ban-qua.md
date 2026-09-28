@@ -134,6 +134,21 @@ tránh "công thức 2 nơi"). `canBang()` tự chỉnh `he` cho điểm TB (tay
   % trúng 68% (Xuyên) … 94% (Sét); chính xác 10–13%. Trước khi cân: đạn đặc biệt gấp đôi (Sét 86 · Sao băng 78 · Chuối 74 · Lửa 72 vs Thường 34).
 - Verify trong game: mưa sao băng + 3 tia sét chụp màn hình; Chuối tách 5 quả (44 điểm); Space kích nổ Cừu ngay (0,17s); ván 10 lượt đạn ngẫu nhiên chạy hết không lỗi.
 
+## 5f. CHẾ ĐỘ ĐỘI v0 (Thùy 28/09: "đội thua mở rương bạc, thắng mở rương vàng · bắn trúng mình không mất máu")
+
+- Màn thiết lập: nút **👤 Cá nhân / 👥 Đội**; danh sách `Tên | giải | đội` (đội 1–4, bỏ trống ⇒ tự rải vào đội ít người nhất), chọn **giờ chơi 2–5 phút** (GV) + số đội khi tự chia.
+- Map: 2 đội x=260/2140 · 3 đội 260/1200/2140 · 4 đội 260/890/1510/2140; bệ phẳng dưới mỗi xe; **ụ đá KHÔNG phá** giữa 2 xe liền kề (cao dần khi nhiều đội ⇒ buộc bắn vòng cầu).
+  Không có hộp quà (đội chỉ bắn nhau). Map KHÔNG reset giữa lượt (là trận đánh).
+- Lượt: các đội lần lượt Đỏ → Xanh → Vàng → Tím → vòng sau; trong đội, thành viên thay nhau (đội ít người thì có bạn bắn 2 lần); **số vòng = sĩ số đội đông nhất**.
+  Xe hạ thì bỏ lượt. Kết thúc khi hết vòng / hết giờ / còn ≤1 đội.
+- Xe: máu **150**, sát thương ở tâm = **60 × he đạn** × (1 → 0,4 ra mép) — dùng CHUNG bộ máy + hệ số đạn đã cân (§5e); "Chính xác 100%" +20% như cá nhân.
+  **Đạn trúng xe đội mình: bay xuyên, không mất máu** (`env.boQua`). Cừu tìm xe địch, Sét/Lửa đánh xe địch trong tầm. Xe rơi xuống vực = bị hạ.
+- Xếp hạng: **tổng sát thương gây ra** (Thùy: không theo máu còn — vì hỗn chiến). **Đội nhất: rương Vàng · các đội còn lại: rương Bạc**, **mở 1 lần/đội, cả đội chung quà**.
+  Bản chơi thử rút EXP tại chỗ theo bảng Mở Rương (Vàng TB 300 · Bạc TB 250) để XEM; bản chính thức rút ở DB (`game_lop_thuong`).
+- HUD đội: ⏱ giờ còn · vòng; bảng "⚔ Sát thương gây ra" từng đội + thanh máu; thẻ người bắn viền màu đội. Camera (cả 2 chế độ): bám đạn nhưng **luôn giữ mặt đất trong khung** (đạn lên cao thì tự lùi xa).
+- Verify: tự bắn thẳng lên rơi trúng xe mình ⇒ máu 150/150; trận 2 đội tự đánh chạy tới màn kết quả (Đỏ 49 ⇒ Vàng +300/bạn · Xanh 43 ⇒ Bạc +240/bạn, máu 2 xe khớp sát thương đối phương); 4 đội dựng đúng 4 xe + 3 ụ đá.
+- ⚠ R1: EXP đội TB ≈ 260–275/HS (cao hơn mốc 200 của game lớp) — Thùy đã chốt Vàng/Bạc, CTO ghi nhận không nới.
+
 ## 6. Còn hỏi Thùy
-- Chế độ đội: đạn trúng xe đội mình có mất máu? bắn trúng hộp quà có cộng điểm đội? (CTO tạm: có mất máu nhưng không tính điểm; đội chỉ bắn nhau)
-- EXP đội: rương Vàng (TB 300) / Bạc (TB 250) của Mở Rương ⇒ TB ~260–275/HS, **cao hơn mốc 200**. Giữ, hay đội thua = Gỗ (175)?
+- Chế độ đội có hộp quà không? (CTO đang làm: KHÔNG — đội chỉ bắn nhau.) Có thì hộp cộng điểm vào "sát thương gây ra" của đội?
+- Máu xe 150 (≈ 3 phát trúng tâm đạn thường). Muốn trận dài/ngắn hơn thì chỉnh. Hoà sát thương giữa 2 đội đứng đầu: cả 2 cùng Vàng?
