@@ -31282,3 +31282,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   ≈ 11 buổi/ngày ⇒ A từng tin ở Thế giới ≈ 20–25 tin/ngày (Nhất buổi + game), ngày chốt huy hiệu vài trăm ⇒ vẫn ngập. Đề xuất + mockup v3: Thế giới
   = S riêng + A GỘP 1 thẻ/loại/ngày (mở ra khen từng bạn; huy hiệu ★1–3 gộp tuần); Lớp + Bạn bè = chi tiết S+A+B. 🧋 trà sữa về đúng tầng S (spec §4).
   Spec §4 cập nhật bảng tầng + luật. Chờ Thùy: giữ thẻ gộp A hay Thế giới chỉ S.
+
+## 2026-09-29 (8) — Đơn 5 v2 (Thế giới BK) theo mockup đã chốt
+
+- Thùy: "ok hợp lý rồi, đủ đặt đơn chưa" (giữ thẻ gộp A ở Thế giới). Áp 2 đề xuất ảnh hưởng tới đơn: vị trí = ô "Thế giới BK" trên Home;
+  20 icon tương tác = ChatGPT vẽ theo style (không mua sticker). Đơn 5 v2: 5 ảnh toàn cảnh (Thế giới + thẻ gộp · Bạn bè · tấm Kết bạn · Kênh lớp +
+  tấm thả tương tác · dải đang học + ô Home), luật tên kèm nhãn lớp, 45 hình vẽ riêng tên phẳng tiền tố tg_ (+ tab bạn bè, kết bạn, lời mời) +
+  dòng bảng đổi tên tg_ → public/bk-ui/hs/gami/the-gioi/. Câu mở còn lại (ngưỡng B, giới hạn bạn, chặn, mã HS với bạn) là logic, không đổi hình.
