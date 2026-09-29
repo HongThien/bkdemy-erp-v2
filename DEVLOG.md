@@ -31672,3 +31672,26 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   nhiệm vụ, thành tựu) · `hs_dang_evals` (app HS) chỉ join dai/hgt ⇒ Hình học không có tên dạng · Đánh giá GV (danhgia.ts) đọc banDoTbl
   theo ma_chuyen_de. Phát hiện kèm: ~1.550 ô chấm Toán (07–09/2026) mang mã Đại CŨ không còn trong dai_ban_do (T107010202 611 ô,
   T106020205, T111010103…) ⇒ cũng rơi khỏi báo cáo — việc riêng.
+
+### 29/09 — KHTN du hành "Liên kết hoá học" bản thử 3: bay tự do + nhấn "hoàn hảo của chính nó" + 5 trạm luyện tập (Thùy test bản 2)
+- Thùy chốt: ① bài này quan sát TỔNG THỂ, không cận cảnh — bắt bay sát điểm sáng chỉ khó nhìn hơn ⇒ để HS tự bay, bấm trả lời câu hỏi
+  LÚC NÀO CŨNG ĐƯỢC; ② nhấn mạnh hơn "nguyên tử luôn muốn tiến tới trạng thái hoàn hảo của CHÍNH NÓ" + phải có câu hỏi về ý này;
+  ③ trạm cuối đổi thành bộ câu hỏi trên mô hình 2 nguyên tử: A thừa/thiếu mấy e → A cho hay nhận → (B tương tự) → liên kết bằng
+  cách nào (A cho B nhận / góp chung) → cho mấy e / góp mấy cặp; xong bộ thì chiếu hoạt cảnh ĐÚNG theo đáp án; cần 4–5 trạm như vậy
+  với các trường hợp khác nhau (Thùy nêu CO₂ làm ví dụ).
+- Làm: trạm học 1–6 — bỏ luật "đi đủ điểm mới hiện nút"; nút "Trả lời câu hỏi" có ngay khi bắt đầu quan sát; khung trái đổi thành
+  "Điều cần quan sát" (gạch đầu dòng, không tích); điểm sáng + chú thích giữ nhưng hiện từ xa hơn (r 28); sai thì chọn lại tại chỗ
+  hoặc "Đóng, bay xem tiếp" (quay lại vẫn đúng câu đang làm). Tập lái (trạm 0) vẫn bắt đi đủ 3 điểm vì đó là bài tập lái.
+  "Hoàn hảo của chính nó": nhãn MỤC TIÊU vàng hiện dưới từng nguyên tử trước khi liên kết ("Muốn: bỏ 1 electron / nhận thêm 1…"),
+  lời dẫn nhấn ý ở trạm 1/2/4/5/6, thêm câu hỏi động cơ ở trạm 1 (vì sao nguyên tử liên kết), 2 (vì sao Na chịu nhường), 4 (vì sao
+  hai H phải góp chung).
+  5 trạm luyện tập (7–11): KCl (ion, cho 1, K 4 lớp) · HCl (cộng hoá trị 1 cặp) · MgO (ion, cho 2 → Mg²⁺ O²⁻) · CO₂ (cộng hoá trị,
+  liên kết đôi O=C=O) · MgCl₂ (ion, 1 Mg cho 2 ⇒ cần 2 Cl). Câu hỏi nằm ở dải dưới, máy quay đặt để mô hình + nhãn tên + nhãn lý luận
+  không bị che; trả lời đúng thì nhãn lý luận vàng hiện dưới nguyên tử ("Thừa 1 → cho đi"); xong 6 câu thì chiếu hoạt cảnh (electron
+  bay sang chỗ trống / góp chung vào vùng chồng → vòng vàng → hiệu ứng ion hoặc cộng hoá trị).
+  Kỹ thuật: makeMolecule nhận BẬC liên kết (bậc 2 = 2 cặp, 2 sợi song song như "="); hiệu ứng ion xoay theo hướng bất kỳ (MgCl₂ có
+  anion bên trái); SHELL_R thêm lớp 4; phim có bước "ask" (câu hỏi trong phụ đề, không tự chạy); ẩn tàu khi chiếu phim.
+- Soi: KCl đủ 6 câu (có nhánh sai → chọn lại) + hoạt cảnh; CO₂; MgCl₂; chạy liền 5 trạm luyện tập tới màn về đích; trạm 1 luồng mới
+  (nút có ngay, sai → đóng → mở lại đúng câu 2/2 → đúng → mở trạm 2); 0 lỗi console.
+  Sửa trong lúc soi: nhãn tên bị viền đen che (công thức đặt máy quay mới D=3r+44) · góc rộng cắt nguyên tử ở màn gần vuông (tự lùi
+  theo tỉ lệ màn) · tiêu đề "LIÊN KẾT ION" cảnh cuối bị che (lùi máy thêm) · nhãn 3 nguyên tử CO₂ đè nhau sau khi ghép (rút về ký hiệu).
