@@ -234,3 +234,33 @@ export async function boTroTrongNgay(ngay?: string): Promise<{ bu: BuoiNgay[]; d
   const d = (data ?? {}) as any
   return { bu: d.bu ?? [], duoi: d.duoi ?? [], retest: d.retest ?? [] }
 }
+
+// ── CA BÙ của tôi (Thùy 29/09: "Bổ trợ bù phải đứng riêng như yếu và đuổi") — ô "Bổ trợ bù" app TA. TA: ca mình đứng; admin: mọi ca.
+export type CaBu = {
+  buoi_id: string; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null
+  nguoi_day_ten: string | null; cua_toi: boolean; et_dong_at: string | null; danh_gia_xong_at: string | null
+  hs: { ho_ten: string; lop: string | null; diem_danh: string | null }[] | null
+}
+export async function caBuCuaToi(): Promise<CaBu[]> {
+  const { data, error } = await supabase.rpc('fn_bu_ca_cua_toi')
+  if (error) throw error
+  return (data as CaBu[]) ?? []
+}
+
+// ── BTVN BÙ (Thùy 29/09, mig 202609291823): dữ liệu ở CA BÙ, người chấm = TA LỚP của em. Việc = em có mặt ca bù + buổi mẹ có BTVN.
+export type BtvnBu = {
+  bhh_id: string; buoi_bu_id: string; ngay_bu: string; buoi_me_id: string; ngay_me: string; lop_id: string; ten_lop: string; mon: string
+  hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; nguoi_day_bu: string | null
+  so_cau: number; da_cham: number; trang_thai_nop: string | null; thai_do: string | null; xong: boolean; han: string; cua_toi: boolean
+}
+export async function btvnBuCuaToi(): Promise<BtvnBu[]> {
+  const { data, error } = await supabase.rpc('fn_bu_btvn_viec_cua_toi')
+  if (error) throw error
+  return (data as BtvnBu[]) ?? []
+}
+// Chép lưới BTVN buổi mẹ sang ca bù cho em (idempotent theo em) — gọi khi mở màn chấm.
+export async function seedBtvnBu(bhhId: string): Promise<number> {
+  const { data, error } = await supabase.rpc('fn_bu_btvn_seed', { p_bhh: bhhId })
+  if (error) throw error
+  return (data as number) ?? 0
+}

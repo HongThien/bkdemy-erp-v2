@@ -32027,3 +32027,36 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **App PH (repo bkdemy-ph-app):** `/api/cron/push` thêm khối `btvnTra` — `btvn_nop_view.tra_at` trong cửa sổ `CRON_TB_WINDOW_H` (25h) ⇒ push
   "Bài tập về nhà buổi dd/mm của <tên> đã được chấm", dedup `push_notified(loai=btvn_tra, key=buoi:hs)`. Cron Vercel 1 lần/ngày 08:00 VN ⇒ PH
   nhận vào sáng hôm sau. Chỉ chạy thử phần ĐỌC (3 dòng/48h, đủ PH) — không gọi route thật (sẽ bắn push thật).
+
+## 2026-09-29 (17h) — App TA: buổi bù có Ô RIÊNG "Bổ trợ bù" ở màn chính (Thùy)
+
+- **Sự cố:** Minh Trí (6A3) có buổi bù 17:00 P102 giao Phong Ngọc Cường. Cường có mặt, mở app nhưng không thấy để mở buổi. Dữ liệu đúng
+  (giả lập JWT Cường: fn_viec_buoi_thuong 51 việc, 0,9s; buổi bù thoả điều kiện hiện; bundle prod có nhãn) — buổi bù bị NHÉT vào ô "Chấm ET"
+  (cuối danh sách, sau các buổi còn nợ chấm) nên TA không tìm ra ⇒ không mở được buổi ⇒ HS ngồi chờ.
+- **Sửa:** `TaHome.tsx` — `BoxBu`: 1 dòng / buổi bù của tôi (gộp việc ET + đánh giá), chưa xong lên trước, hôm nay viền cam, bấm → BuoiBuDetail;
+  buổi xong giữ 7 ngày. `belongsToNv` loại bù ⇒ ô Chấm ET / tab dưới không còn đếm bù. Đứng cạnh ô Bổ trợ yếu · Bổ trợ đuổi.
+- **Bài học:** gom việc theo "nghiệp vụ đo" (ET) thay vì theo "ca phải đứng" là sai góc nhìn người dùng — TA cần thấy CA mình phải đứng hôm nay.
+- **Còn thiếu (chưa làm, chờ Thùy):** app HS chưa có "Vào ca" cho bù (chỉ yếu/đuổi có) — nếu cần, nội dung đề xuất = dạng của buổi em nghỉ.
+- Lúc 17h thử chuyển buổi sang TA trực (Mỹ Hằng) — lệnh bị chặn, KHÔNG ghi gì; bỏ vì Cường đã đến.
+- **(17h30) Vòng 2 — Thùy đăng nhập ĐÚNG tài khoản Cường: ô Chấm ET KHÔNG có buổi bù** (khác kết luận vòng 1 của t "nằm trong Chấm ET" —
+  t kết luận từ đọc code + giả lập SQL, CHƯA mở app bằng phiên thật ⇒ sai). Chưa tìm ra vì sao đường getMyTasks rơi buổi bù trên máy Cường
+  (nghi `fn_viec_buoi_thuong` lỗi/timeout qua PostgREST ⇒ getMyTasks ném ⇒ `.catch(() => [])` nuốt HẾT việc, kể cả bù) — không tái hiện được
+  vì không có phiên Cường. **Sửa tận gốc:** ô "Bổ trợ bù" KHÔNG còn suy từ getMyTasks; đọc CA từ RPC riêng `fn_bu_ca_cua_toi` (mig 202609291720):
+  TA thấy ca mình đứng, admin thấy MỌI ca bù, kể cả ngoài lịch trực; nợ cũ ≤7 ngày + hôm nay + 7 ngày tới; mỗi dòng giờ · phòng · tên em.
+  Kiểm local ta.html (admin): 22 ca, có "Hôm nay · 17:00–18:00 · P102 · Nguyễn Quyền Minh Trí (6A3), Quỳnh Giao · TA: Phong Ngọc Cường";
+  bấm ⇒ mở màn buổi bù (điểm danh · tài liệu buổi đã nghỉ · chấm ET · đánh giá). Giả lập JWT Cường: RPC trả 4 ca của Cường.
+- **Bài học:** "code nói nó hiện" ≠ "người dùng thấy". Báo lỗi hiển thị từ người dùng thật ⇒ tái hiện bằng PHIÊN THẬT trước khi trả lời;
+  không có phiên thì nói rõ "chưa kiểm được", đừng khẳng định vị trí.
+
+## 2026-09-29 (18h30) — BTVN bù: dữ liệu ở ca bù, TA LỚP chấm (Thùy chốt phương án B chỉnh)
+
+- **Yêu cầu:** em học bù xong làm BTVN cần chỗ nhập để tính dữ liệu; người dạy bù ≠ người chấm BTVN.
+- **DB (mig 202609291823):** `fn_bu_btvn_seed(bhh)` chép lưới BTVN buổi mẹ (ô không ẩn, giữ thứ tự, ma_cau/ma_dang) sang ca bù, riêng em
+  (phase 'btvn', hoc_sinh_id) — idempotent theo em, khoá advisory. `fn_bu_btvn_viec_cua_toi()` — việc = em có mặt ca bù (từ 29/09) + buổi mẹ
+  có lưới BTVN; chủ = TA lớp (phan_cong_lop 'tg'), lớp không có TA ⇒ người đứng ca bù; admin thấy hết; XONG = btvn_ket_qua.trang_thai_nop;
+  em đã được chấm BTVN ngay ở buổi mẹ ⇒ không đòi. Hạn = buổi thường kế tiếp theo TKB (CN=8) + 1 ngày.
+  Chạy thử (rollback): admin 1 việc = Minh Trí 6A3, 17 câu, hạn 01/10 (6A3 học T4 30/09); TA lớp 6A3 Nguyễn Hà Giang thấy đúng việc đó.
+- **App TA:** mục "BTVN bù" đầu tab Chấm BTVN + dòng xem trước + số trên ô/tab/badge app; màn `ChamBtvnBu` (trạng thái nộp · thái độ · Đ/C/S
+  từng câu, chạm lại = bỏ, "Tất cả Đ/C/S") ghi gami_grades + btvn_ket_qua theo (em, ca bù). Không EXP (EXP BTVN chỉ khi đóng BTVN cả lớp).
+- Kiểm local ta.html (admin): ô Chấm BTVN "1 BTVN bù · Minh Trí 6A3 · bài 27/09"; mở ra 17 câu (T106020601 ×6 · T106020501 ×5 · T106020503 ×6).
+  Mở màn đã chép lưới thật cho Minh Trí (17 ô, dữ liệu cần có). CHƯA bấm chấm trên dữ liệu thật.
