@@ -16,6 +16,9 @@ import { KIT, BAC, MAU_HH, ICON_NV } from './hinh'
 import * as M from './mauGami'
 import { TheGioiView, TamBinhLuan, TamCamXuc, TamKetBan, type BanPhim } from '../thegioi/TheGioiHS'
 import * as TG from '../thegioi/mauTheGioi'
+import HomeHS912 from '../HomeHS912'
+import type { HomeCard } from '../HomeHS'
+import type { LichBoTro } from '../../../lib/botro_yeu_ca'
 
 const noop = () => {}
 const MAN: { id: string; ten: string; tt: string[] }[] = [
@@ -25,6 +28,7 @@ const MAN: { id: string; ten: string; tt: string[] }[] = [
   { id: 'ho_so', ten: 'Hồ sơ', tt: ['Em khá (Captain)', 'Em mới (Novice)', 'Em bậc thần', 'Chọn 3 huy hiệu khoe'] },
   { id: 'the_tv', ten: 'Thẻ TV lớp', tt: ['3 mẫu'] },
   { id: 'bo_hinh', ten: 'Bộ hình', tt: ['Tất cả hình'] },
+  { id: 'home', ten: 'Màn chính', tt: ['Có ca bổ trợ · nam', 'Kiểm tra lại · nữ', 'Không việc gấp'] },
   { id: 'the_gioi', ten: 'Thế giới BK', tt: ['Thế giới', 'Thế giới (thẻ gộp mở)', 'Bạn bè', 'Kết bạn', 'Lớp + giữ nút Thích', 'Lớp + menu ⋯', 'Bình luận', 'Bình luận · chọn câu', 'Bình luận · sticker', 'Ai đã bày tỏ cảm xúc', 'Tất cả cảm xúc (＋)'] },
 ]
 
@@ -60,11 +64,29 @@ function MauTheGioi({ tt }: { tt: number }) {
   )
 }
 
+// Màn chính HS khối 6–12 (HomeHS912) — mở PC/iPad ngang để soát bố cục theo ảnh gốc style (Nền app HS cấp 3_11.png).
+const oHome = (id: string, ten: string, sub: string, badge?: number, subMau: HomeCard['subMau'] = 'xam') => ({ id, ten, sub, subMau, badge, doodle: '', ill: '', tone: {} } as unknown as HomeCard)
+const O_HOME: HomeCard[] = [
+  oHome('tu_luyen', 'Tự luyện', 'Luyện theo dạng yếu'), oHome('thong_tin', 'Thông tin học tập', 'Xem dạng đang yếu'), oHome('so_tay', 'Sổ tay kiến thức', 'Tra lý thuyết & bài mẫu'),
+  oHome('de_thi_thu', 'Làm đề thi thử', 'Sắp có'), oHome('bai_tap_giao', 'Bài tập được giao', '2 bài chưa làm', 2, 'ton'), oHome('xep_hang', 'Thành tựu', 'Xem giải thưởng của em'),
+  oHome('may_man', 'May mắn', 'Có 1 lượt quay!', 1, 'ton'), oHome('vi_xu', 'Ví xu', '1.240 xu'), oHome('the_gioi', 'Thế giới BK', 'Khoe thành tích · kết bạn'),
+]
+const CA: LichBoTro = { buoi_id: 'b1', loai: 'bo_tro_yeu', ngay: '2026-10-01', gio_bat_dau: '17:30:00', gio_ket_thuc: null, phong: '204', mon: 'Toán', nguoi: 'Cô Lan', diem_danh: null, hom_nay: false, vao_ca: false }
+function MauHome({ tt }: { tt: number }) {
+  return (
+    <HomeHS912 giaoDien={{ skin: 'rpg', che_do: 'toi', hinh_nen: 'lau_dai' }} onDaLuu={noop} data={{ elo: [{ mon: 'Toán', elo: 1240, hang: 3, so_hs: 18 }], thi: [] } as never}
+      hoTen="Nguyễn Minh Khang" maHS="hs0412" lopMon="9A1 Toán" anhUrl={null} onAnhChanged={noop} chuaDoc={3}
+      mons={[]} mon="Toán" onChonMon={noop} lich={tt === 1 ? [CA] : []} soRetest={tt === 2 ? 2 : 0} cards={tt === 3 ? O_HOME.map((c) => ({ ...c, badge: 0 })) : O_HOME}
+      onHopThu={noop} onDoiMK={noop} onThoat={noop} onLich={noop} onRetest={noop} onHoSo={noop} gioiTinh={tt === 2 ? 'nu' : 'nam'} />
+  )
+}
+
 function Man({ man, tt }: { man: string; tt: number }) {
   const [mo, setMo] = useState<string | null>(tt === 1 ? 'athena' : null)
   const [mon, setMon] = useState('Toán')
   const [dong, setDong] = useState(false) // đóng lớp phủ để xem màn phía sau
   if (man === 'the_gioi') return <MauTheGioi key={tt} tt={tt} />
+  if (man === 'home') return <MauHome tt={tt} />
   if (man === 'nhiem_vu') {
     const d = [M.NV_GIUA_THANG, M.NV_DAU_THANG, M.NV_CHUA_MO][tt - 1] ?? M.NV_GIUA_THANG
     return <Khung><Dau tieuDe="Nhiệm vụ Toán" phu="Xong nhiệm vụ → Điểm Chặng → lên cấp nhận EXP (đổi ra xu cuối tháng)." /><NhiemVuView d={d} onThuThach={noop} onTuLuyen={noop} onVongQuay={noop} /></Khung>

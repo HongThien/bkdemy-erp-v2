@@ -44,4 +44,7 @@ export type Skin = {
   theTiep?: { bg: string; ink: string; border: string }
   // Tấm mờ sau tên HS — skin nền ẢNH cần (tên đè lên tia sáng/lâu đài thì không đọc được). Có nenTen ⇒ bật luôn bóng chữ toàn trang.
   nenTen?: string
+  // Nhân vật cắt nền (PNG trong suốt) đứng nửa trái Home khổ NGANG (PC/iPad) kèm bong bóng thoại — như ảnh gốc style
+  // (RPG: design/bk-ui-src/Nền app HS cấp 3_11.png). Chọn theo giới tính HS; chưa biết ⇒ `nam`. Không có ⇒ Home ngang không vẽ nhân vật.
+  nhanVat?: { nam: string; nu: string }
 }

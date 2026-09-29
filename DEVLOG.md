@@ -31337,3 +31337,15 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   thay mất icon), "+10 ✦" + vòng tick tròn bên phải, Chặng có huy hiệu to + thanh CẢ THÁNG với mốc 10/20/30, khối Tuần dòng gọn + hàng 4 rương nối
   dây (rương mở có nhãn +75 EXP, tuần hiện tại có khung). Bỏ 2 màu rgba gõ tay. tsc sạch · check:style-hs ✔. Soi 375×812: nhiem_vu tt=1, album tt=3.
 - Ghi chú quy trình vào HANDOFF-PIPELINE §8 (đánh số lệch + hình trùng ⇒ soi rồi mới map).
+
+### 29/09 (13) — Home PC/iPad ngang theo ảnh gốc #11 + nền ngang phủ tối (Thùy: "PC chói khó nhìn · sao vẫn không giống ảnh gốc")
+- Nguyên nhân: (1) nền ngang dùng CHUNG lớp phủ nhẹ với bản dọc — trên PC tranh trải cả màn, đúng mảng lâu đài + đèn sáng nhất ⇒ chói;
+  (2) HomeHS912 chỉ có 1 bố cục DỌC dùng cho mọi khổ (PC chỉ nới max-w) — ảnh gốc #11 bản ngang là nhân vật nửa trái + "Chào …!" + banner +
+  lưới 4 cột icon to giữa ô, còn nhân vật (#3 nam+mèo · #4 nữ+cú, PNG trong suốt) chưa từng được đưa vào app.
+- Sửa: rpg.ts `nenNgang` phủ tối 0.38→0.86 (dọc giữ nguyên) · hợp đồng Skin thêm `nhanVat {nam, nu}` (STYLE-HS.md) · rpg nv_nam/nv_nu 640×800
+  (~1,1MB, chỉ tải ở khổ ngang) · HomeHS912 thêm `ManNgang` (≥1024px + landscape): đầu trang tấm tên + cụm nút · trái nhân vật + bong bóng
+  thoại (lời suy từ đúng "việc tiếp theo", không bịa số) neo theo chiều cao nhân vật · phải "Chào tên!" 46–54px + pill Elo/đếm ngược + banner
+  việc | kiểm tra lại cạnh nhau + lưới 4 cột (5 cột từ 1280px khi >8 ô). Tách CumNut/AnhDaiDien/ChonMon/NutViec/NutRetest dùng chung 2 bố cục.
+  Nhân vật chọn theo `gioi_tinh` (hoSoCuaToi — tải cho mọi HS). Xem mẫu: hs.html?xem=gami&man=home&tt=1..3.
+- Soi 1440×900 · 1180×820 · 375×812 (điện thoại không đổi), 0 lỗi console. tsc sạch · check:style-hs ✔.
+- Chưa làm: bản DỌC có nhân vật như ảnh #11 hàng dưới (nhân vật giữa + bong bóng + lưới 4 cột nhỏ) — chờ Thùy xem bản PC trước.
