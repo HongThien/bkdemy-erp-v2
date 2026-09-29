@@ -10,6 +10,7 @@
 //   node scripts/check-troly-cong-cu.mjs --goi <tên> '<json>'  → gọi 1 công cụ, in nguyên kết quả
 //   node scripts/check-troly-cong-cu.mjs --bao-cao [YYYY-MM-DD] [--so-ngay 14]
 //                                                              → in báo cáo 3 luồng tính tới ngày đó (bỏ trống = hôm nay)
+//   node scripts/check-troly-cong-cu.mjs --lay [--so-ngay 14]  → thử cửa màn hình gọi: mở màn / mở lại / tính lại
 //
 // ⚠ Kết nối bằng role của `.env` (chủ bảng ⇒ RLS KHÔNG áp). Script này kiểm LOGIC + CỔNG 3 người,
 //   KHÔNG kiểm RLS. RLS chỉ kiểm được bằng đăng nhập thật trên app.
@@ -66,7 +67,7 @@ try {
     } catch (e) { console.log(`✔ cổng chặn ${nhan}: ${e.message}`) }
     await c.query('rollback to savepoint g')
   }
-  if (!goiTen && baoCaoNgay === undefined) {
+  if (!goiTen && baoCaoNgay === undefined && !args.includes('--lay')) {
     await biChan('người ngoài danh sách', nguoiLa.id)
     await biChan('không đăng nhập (anon)', null)
   }
@@ -78,6 +79,30 @@ try {
     return { kq: r.kq, ms: Date.now() - t0 }
   }
 
+  // ── CỬA MÀN HÌNH GỌI: lấy bản lưu / tính rồi lưu (mọi thứ vẫn rollback) ───────
+  if (args.includes('--lay')) {
+    await c.query('savepoint g')
+    await dongVai(nguoiLa.id)
+    try { await c.query(`select public.fn_troly_bao_cao_lay($1, false)`, [soNgay]); console.log('❌ CỔNG HỞ ở fn_troly_bao_cao_lay'); hong++ }
+    catch (e) { console.log(`✔ cổng chặn người ngoài danh sách: ${e.message}`) }
+    await c.query('rollback to savepoint g')
+    await dongVai(ceo.id)
+    const lay = async (nhan, tinhLai) => {
+      const t0 = Date.now()
+      const { rows: [r] } = await c.query(`select public.fn_troly_bao_cao_lay($1, $2) as bc`, [soNgay, tinhLai])
+      console.log(`${nhan}: ${Date.now() - t0} ms · luu = ${JSON.stringify(r.bc.luu)} · tổng = ${JSON.stringify(r.bc.tong)}`)
+      return r.bc
+    }
+    const a = await lay('lượt 1 (mở màn)      ', false)
+    const b = await lay('lượt 2 (mở lại)      ', false)
+    const d = await lay('lượt 3 (bấm tính lại)', true)
+    if (b.luu.vua_tinh) { console.log('❌ lượt 2 phải lấy từ bản lưu, không được tính lại'); hong++ }
+    if (!d.luu.vua_tinh || d.luu.so_lan_tinh !== b.luu.so_lan_tinh + 1) { console.log('❌ bấm tính lại phải tính + tăng so_lan_tinh'); hong++ }
+    if (JSON.stringify(a.tong) !== JSON.stringify(b.tong)) { console.log('❌ bản lưu khác bản vừa tính'); hong++ }
+    const { rows: [n] } = await c.query(`select count(*)::int n from troly_bao_cao_luu where ngay = public._troly_hom_nay() and so_ngay = $1`, [soNgay])
+    console.log(n.n === 1 ? '✔ đúng 1 dòng lưu cho (hôm nay, khoảng này) — tính lại là GHI ĐÈ' : `❌ ${n.n} dòng lưu`)
+    if (n.n !== 1) hong++
+  } else
   // ── BÁO CÁO 3 LUỒNG: in nguyên JSON để đối chiếu với màn hình ───────────────
   if (baoCaoNgay !== undefined) {
     await c.query('savepoint g')

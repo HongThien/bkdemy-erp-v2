@@ -31571,3 +31571,26 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Bài học chung:** hàm Postgres là chỗ NHIỀU phiên cùng sửa; "bản mới nhất" là DB, không phải file của mình. Lượt (15) t chép thân `_troly_bc_canh_bao`
   từ file migration — đúng lúc đó chưa ai sửa nên không sao, nhưng cách làm là sai. Từ giờ: mọi lần `create or replace` một hàm đang có ⇒ lấy thân từ
   `pg_get_functiondef` rồi mới sửa.
+
+## 2026-09-29 (17) — TRỢ LÝ: ⚠ LỖI THẬT trên app "statement timeout" + CEO chốt báo cáo KHÔNG realtime → lưu bản báo cáo vào DB
+
+- **Diễn biến:** Thùy bảo "push lên main đi" rồi "tự pull đi" → đã đẩy `main` (c31f2db) và ff thư mục chính. Thùy mở tab 🤖 Trợ lý ⇒
+  **"Lỗi: canceling statement due to statement timeout"**. Báo cáo KHÔNG chạy được trên app ngay lượt đầu.
+- **⭐ SAI CỦA T — lớp lỗi "kiểm bằng quyền khác quyền chạy thật":** mọi lần thử đều nối bằng `claude_build` = CHỦ BẢNG ⇒ RLS không áp ⇒ 14 ngày chỉ 0,9s.
+  Trên app hàm invoker chạy bằng `authenticated`: RLS kiểm từng dòng (`la_thanh_vien()`) trên bảng 100k+ dòng, và role này bị `statement_timeout=8s`
+  (đo `pg_roles.rolconfig`: authenticated 8s · anon 3s). T đã GHI "chưa kiểm RLS" ở mục 11–14 mà vẫn đẩy main — ghi rủi ro ra không thay được việc kiểm.
+  Đo thời gian bằng quyền chủ bảng KHÔNG nói gì về thời gian người dùng thật chịu.
+- **CEO chốt:** *"Báo cáo ko phải tính realtime đâu. Lượt đầu mở máy m tự tính. Kết quả đấy lưu vào DB luôn để mở lại đỡ phải tính lại. Nếu người dùng ấn
+  tính lại thì kết quả mới đè kết quả cũ luôn (hoặc lưu cũng dc nếu ko nặng)."* ⇒ ghi đè luật 12/08 "số tính lại mỗi lần mở, không lưu" cho báo cáo này.
+- **DB — mig `202609291107_troly_bao_cao_luu`** (đã áp `--only`):
+  - Bảng `troly_bao_cao_luu` — PK (bo, ngay, so_ngay): tính lại trong ngày = GHI ĐÈ; sang ngày = dòng mới ⇒ có lịch sử theo NGÀY, không phình theo số lần
+    bấm. RLS: chỉ nhóm trợ lý đọc; KHÔNG có policy ghi. Cỡ ~40KB/100KB/180KB cho 7/14/30 ngày ⇒ dùng cả 3 khoảng mỗi ngày ≈ 120MB/năm. Chưa có việc dọn.
+  - `fn_troly_bao_cao_lay(p_so_ngay, p_tinh_lai)` — cửa DUY NHẤT màn hình gọi. **SECURITY DEFINER** (ca "thật cần" của §2.0): phải ghi bảng lưu + phần tính
+    phải chạy bằng quyền chủ bảng mới kịp 8s. `_troly_gac()` đứng đầu hàm. Trả thêm khoá `luu` {vua_tinh, tinh_luc, tinh_boi, tinh_mat_ms, so_lan_tinh}.
+  - THU quyền `authenticated` gọi thẳng `fn_troly_bao_cao` + `_troly_bc_*` (đường chắc chắn timeout).
+- **Kiểm:** áp thử + rollback: lượt 1 tính 1.050ms · lượt 2 lấy bản lưu 97ms · lượt 3 tính lại, `so_lan_tinh=2`, vẫn đúng 1 dòng · người ngoài bị chặn.
+  Sau khi áp: soi `has_function_privilege` — authenticated gọi được `fn_troly_bao_cao_lay`, KHÔNG gọi được hàm con, không ghi được bảng lưu; anon không gọi được gì.
+  30 ngày = 2,6s bằng quyền chủ (còn xa 8s).
+- **App:** `getBaoCao(soNgay, tinhLai)` gọi `fn_troly_bao_cao_lay`; đầu báo cáo ghi "Số liệu tính lúc … bởi … · đang xem bản đã lưu / vừa tính xong"; nút ↻ truyền
+  `tinhLai=true`; bộ nhớ của màn chỉ dùng trong cùng ngày (mở qua đêm thì hỏi lại DB).
+- **CHƯA CÓ:** tự tính sẵn buổi sáng (cron) — hiện "lượt đầu" là người đầu tiên mở trong ngày chịu ~1s tính.

@@ -13,7 +13,7 @@
 // và đếm phần tử đang hiển thị.
 // ============================================================================
 import { useEffect, useState } from 'react'
-import { getBaoCao, ddmm, type BaoCaoTroLy, type MucBaoCao, type CanhBao, type LoaiViec, type TiLeNopBtvn } from '../../lib/troly-baocao'
+import { getBaoCao, ddmm, homNayVN, type BaoCaoTroLy, type MucBaoCao, type CanhBao, type LoaiViec, type TiLeNopBtvn } from '../../lib/troly-baocao'
 
 // Rời tab rồi quay lại = đúng khoảng đang xem, không quét lại (CLAUDE.md §2 React). Sống tới F5.
 const NHO: { soNgay: number; bc: BaoCaoTroLy | null } = { soNgay: 14, bc: null }
@@ -288,7 +288,14 @@ export function BanBaoCao({ bc, mo, moSan }: { bc: BaoCaoTroLy; mo?: boolean; mo
       <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
         <div className="border-b border-slate-200 bg-indigo-50/60 px-3 py-2 text-[12.5px] text-slate-600">
           Việc của các buổi từ <b className="text-slate-900">{ddmm(bc.tu)}</b> đến <b className="text-slate-900">{ddmm(bc.den)}</b> ({bc.so_ngay} ngày)
-          <span className="text-slate-400"> · tính lúc {bc.tao_luc} · ngoài ra còn {bc.tong.xong_muon} việc đã xong nhưng đóng muộn</span>
+          <span className="text-slate-400"> · ngoài ra còn {bc.tong.xong_muon} việc đã xong nhưng đóng muộn</span>
+          {/* Báo cáo không tính realtime: nói rõ số này của LÚC NÀO để người đọc tự biết có cần bấm tính lại */}
+          <div className="mt-0.5 text-slate-500">
+            Số liệu tính lúc <b className="text-slate-900">{bc.luu.tinh_luc}</b>
+            {bc.luu.tinh_boi && <> bởi {bc.luu.tinh_boi}</>}
+            {bc.luu.so_lan_tinh > 1 && <> · lần tính thứ {bc.luu.so_lan_tinh} trong ngày</>}
+            <span className="text-slate-400"> · {bc.luu.vua_tinh ? 'vừa tính xong' : 'đang xem bản đã lưu — bấm "↻ Tính lại" nếu cần số mới'}</span>
+          </div>
         </div>
         {bc.muc.map((m) => <Muc key={m.ma} m={m} moSan={moSan} />)}
 
@@ -354,11 +361,14 @@ export default function BaoCao() {
   const [dangTai, setDangTai] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
 
-  async function tai(n: number, ep = false) {
-    if (!ep && NHO.bc && NHO.soNgay === n) { setBc(NHO.bc); return }
+  // `tinhLai` = người BẤM nút: DB tính lại và ghi đè bản lưu của hôm nay. Không bấm thì DB trả bản
+  // lưu (hôm nay chưa ai tính thì tự tính một lần). Bộ nhớ của màn chỉ dùng trong CÙNG ngày:
+  // để tab mở qua đêm thì sáng hôm sau phải hỏi lại DB chứ không bày số hôm qua.
+  async function tai(n: number, tinhLai = false) {
+    if (!tinhLai && NHO.bc && NHO.soNgay === n && NHO.bc.den === homNayVN()) { setBc(NHO.bc); return }
     setLoi(null); setDangTai(true)
     try {
-      const d = await getBaoCao(null, n)
+      const d = await getBaoCao(n, tinhLai)
       NHO.soNgay = n; NHO.bc = d
       setBc(d)
     } catch (e: any) { setLoi(e?.message ?? String(e)) }

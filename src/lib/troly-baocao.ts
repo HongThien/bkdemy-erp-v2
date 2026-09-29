@@ -72,16 +72,24 @@ export type BaoCaoTroLy = {
   canh_bao_chung: CanhBao[]
   theo_nguoi: { phu_trach: string; cham: number; miss: number; xong_muon: number }[]
   cach_hieu: string[]
+  // Báo cáo KHÔNG tính realtime (CEO 29/09): bản này được tính lúc nào, bởi ai, lượt gọi này có tính không.
+  luu: { vua_tinh: boolean; tinh_luc: string; tinh_boi: string | null; tinh_mat_ms: number; so_lan_tinh: number }
 }
 
 // Trợ lý chỉ mở cho nhóm được cấp (CEO 29/09: Thùy · Thùy Trang · Bảo Lộc). Rào thật nằm trong
 // từng hàm `fn_troly_*` ở DB; tab bị ẩn ở NhanSuHome bằng cờ chung với tab Hỏi hệ thống.
-// `den` = 'YYYY-MM-DD' (bỏ trống = hôm nay) · `soNgay` = độ dài khoảng nhìn lại.
-export async function getBaoCao(den: string | null, soNgay: number): Promise<BaoCaoTroLy> {
-  const { data, error } = await supabase.rpc('fn_troly_bao_cao', { p_den: den, p_so_ngay: soNgay })
+//
+// ⭐ Báo cáo KHÔNG tính realtime (CEO 29/09). DB giữ một bản lưu cho mỗi (ngày, khoảng):
+//   · `tinhLai = false` — lấy bản lưu của hôm nay; hôm nay chưa ai tính thì DB tự tính rồi lưu.
+//   · `tinhLai = true`  — tính lại và GHI ĐÈ bản của hôm nay (nút "↻ Tính lại").
+// ⚠ ĐỪNG gọi thẳng `fn_troly_bao_cao`: chạy bằng quyền người dùng thì vượt 8 giây và bị huỷ
+//   ("statement timeout", đã dính 29/09) — quyền gọi thẳng cũng đã bị thu ở DB.
+export async function getBaoCao(soNgay: number, tinhLai = false): Promise<BaoCaoTroLy> {
+  const { data, error } = await supabase.rpc('fn_troly_bao_cao_lay', { p_so_ngay: soNgay, p_tinh_lai: tinhLai })
   if (error) throw error
   return data as BaoCaoTroLy
 }
 
 // ── Ngày giờ VN, KHÔNG toISOString / new Date('YYYY-MM-DD') (CLAUDE.md §2) ──────
+export const homNayVN = (): string => new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' })
 export const ddmm = (ngay: string | null | undefined): string => (ngay ? `${ngay.slice(8, 10)}/${ngay.slice(5, 7)}` : '—')

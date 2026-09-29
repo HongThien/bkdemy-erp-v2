@@ -132,6 +132,11 @@ gán bừa cho ai.
 2. **Nút "Detail"** — bấm mới hiện từng việc: **ngày nào, do ai phụ trách**. Bình thường chỉ là cái nút.
 3. **Cảnh báo rủi ro / bất thường** nếu có.
 
+**Báo cáo KHÔNG tính realtime (CEO chốt 29/09):** *"Lượt đầu mở máy tự tính, kết quả lưu vào DB để mở
+lại đỡ phải tính lại. Người dùng ấn tính lại thì kết quả mới đè kết quả cũ."* ⇒ bảng `troly_bao_cao_luu`,
+1 dòng / (bộ, ngày, khoảng); màn hình CHỈ gọi `fn_troly_bao_cao_lay` và luôn ghi rõ "số liệu tính lúc…".
+Ghi đè lên luật cũ của §4/HANDOFF 12/08 ("số tính lại mỗi lần mở, không lưu") — riêng cho báo cáo này.
+
 Đơn vị của báo cáo = **VIỆC** (có ngày + người phụ trách + hạn), KHÔNG phải "lớp trong một ngày".
 Mỗi việc có ngày riêng ⇒ báo cáo gom việc còn treo của nhiều ngày (7/14/30 ngày, mặc định 14).
 
