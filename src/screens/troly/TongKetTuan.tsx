@@ -162,8 +162,9 @@ function BangChiSo({ ds, hienSo, tuan, cotBang }: { ds: ChiSo[]; hienSo: boolean
       <tbody>
         {ds.map((c) => (
           <tr key={c.ma} className="border-b border-slate-100 last:border-0">
-            <td className={`${TD} font-medium text-slate-800`}>{c.ten}</td>
-            {cotBang && <td className={`${TD} text-[12.5px] text-slate-500`}>{cotBang(c)}</td>}
+            {/* Bề rộng tối thiểu: bật "Số từng tuần" thêm 8 cột, không giữ thì tên chỉ số bị ép xuống từng chữ một dòng */}
+            <td className={`${TD} min-w-[220px] font-medium text-slate-800`}>{c.ten}</td>
+            {cotBang && <td className={`${TD} whitespace-nowrap text-[12.5px] text-slate-500`}>{cotBang(c)}</td>}
             <td className={`${TD} whitespace-nowrap text-right`}>
               <div className="text-[15px] font-semibold tabular-nums text-slate-900">{giaTri(c.gia_tri, c.don_vi)}</div>
               {coSo(c) && <div className="text-[11.5px] tabular-nums text-slate-400">{coSo(c)}</div>}
