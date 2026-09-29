@@ -408,7 +408,8 @@ Bắt đầu với #01.
 App:            hs
 Màn:            the-gioi-bk (5 ảnh toàn cảnh, cùng style Anime RPG — theo PHONG CÁCH CHUNG)
 Mô tả:          "Thế giới BK" = mạng xã hội KHOE nội bộ của học sinh trung tâm BK Academy. HS KHÔNG đăng bài, KHÔNG chat, KHÔNG gõ chữ:
-                tin do HỆ THỐNG tự sinh từ thành tích thật; bạn bè chỉ thả 1 ICON + 1 CÂU chọn sẵn. Cảm giác: "bảng tin chiến công" của
+                tin do HỆ THỐNG tự sinh từ thành tích thật; bạn bè THẢ CẢM XÚC + BÌNH LUẬN bằng câu/sticker chọn sẵn — thao tác Y HỆT FACEBOOK
+                (Thùy 29/09: "UX quen thuộc giống FB, đừng bắt học cái mới"), chỉ vẽ lại theo style. Cảm giác: "bảng tin chiến công" của
                 một thành phố game nhập vai — ai cũng thấy bạn mình đang cố gắng. CHỈ tin tốt, không bao giờ hiện điểm kém / hạng thấp.
                 BỐ CỤC: bám ảnh chụp mockup đính kèm (đúng khối, đúng thứ tự) — vẽ lại cho đẹp theo style.
 LUẬT TÊN:       MỌI tên học sinh đi kèm NHÃN LỚP ngay cạnh (vd "Nguyễn Minh Khang [9A1]" — nhãn nhỏ viền vàng) — trên tin, lời khen,
@@ -444,7 +445,11 @@ MÀN 3 — TẤM KẾT BẠN (trượt từ dưới lên khi bấm "+ Kết bạ
 MÀN 4 — KÊNH LỚP (tab 🏰 9A1) + TẤM THẢ TƯƠNG TÁC:
   - Kênh lớp: tin S + A của lớp CHI TIẾT từng tin · "Nỗ lực hôm nay": dòng nhỏ tầng B · 1 tin của CHÍNH EM có nút "⋯" mở menu
     "Ẩn tin này" · "Ẩn tương tác trên tin".
-  - TẤM THẢ TƯƠNG TÁC (trượt lên khi bấm "Khen"): tóm tắt tin · "Chọn 1 icon" lưới 20 icon 5×4 (đang chọn = vòng sáng vàng) ·
+  - ⚠ SỬA 29/09 (bỏ tấm "Khen" cũ — dùng tương tác kiểu FB): dưới mỗi tin = dòng "👍❤️🔥 Em, Hà [9A1] và 12 người khác · 5 bình luận" ·
+    thanh [👍 Thích] [💬 Bình luận] · 1 bình luận xem trước. GIỮ nút Thích ⇒ dải 6 cảm xúc tròn + nút ＋ bật lên trên nút.
+    Tấm BÌNH LUẬN trượt lên: bong bóng tên [lớp] + câu, sticker hiện to không bong bóng · đáy "Viết bình luận…" + 🙂 · bàn phím 2 tab Câu | Sticker.
+    Trạng thái chụp theo trang xem mẫu hs.html?xem=gami&man=the_gioi&tt=5 · 7 · 8 · 9 · 10 · 11.
+  - (CŨ — BỎ) TẤM THẢ TƯƠNG TÁC (trượt lên khi bấm "Khen"): tóm tắt tin · "Chọn 1 icon" lưới 20 icon 5×4 (đang chọn = vòng sáng vàng) ·
     "Chọn 1 câu" 8–10 câu HỢP LOẠI TIN (tin học tập: "Đỉnh nóc, kịch trần, bay phấp phới" · "Idol của em đây rồi" · "Xin vía học giỏi" ·
     "Thua Gia Cát Lượng đúng cây quạt" · "Thần đồng BK xuất hiện" · "10 điểm không có nhưng" · "Stan cậu luôn rồi" · "Gooo!") ·
     xem trước "🔥 Đỉnh nóc… — Minh Anh (em) [9A1]" · nút lớn "Gửi" (đã khen rồi thì "Đổi lời khen").
@@ -456,8 +461,9 @@ MÀN 5 — "ĐANG HỌC CÙNG EM" (dải nhỏ ĐÈ lên màn làm bài có sẵ
   - Ô "Thế giới BK" trên màn chính: icon ô + "Thế giới BK" + dòng trạng thái "3 bạn đang học · 2 lời mời" + badge số.
 
 Thiết bị:       điện thoại DỌC 430px (ảnh chính) + iPad NGANG 1180×820 cho màn 1 và 2 (2 cột tin).
-Phong cách:     theo PHONG CÁCH CHUNG (Anime RPG), cùng họ ảnh gốc + Đơn 2/3. THIẾT KẾ GỐC — không giống Facebook/Instagram/TikTok/Zalo.
-Giữ nguyên:     KHÔNG ô gõ chữ gửi đi, KHÔNG chat/nhắn tin/bình luận/chia sẻ/theo dõi một chiều, KHÔNG số lượt xem. Tin chỉ tốt.
+Phong cách:     theo PHONG CÁCH CHUNG (Anime RPG), cùng họ ảnh gốc + Đơn 2/3. Khung/màu/hình = thiết kế gốc; CÁCH TƯƠNG TÁC = như Facebook.
+Giữ nguyên:     KHÔNG ô gõ chữ gửi đi, KHÔNG chat/nhắn tin/chia sẻ/theo dõi một chiều, KHÔNG số lượt xem. Tin chỉ tốt.
+                Bình luận CÓ (29/09) nhưng chỉ câu/sticker chọn sẵn. Bố cục tương tác giống FB để HS không phải học — phần còn lại thiết kế gốc.
 Phiên bản kit:  v2
 
 PHẦN VẼ RIÊNG (Pha D — mỗi hình 1 lượt tạo ảnh, PNG nền TRONG SUỐT, cùng họ 13 icon ô trong ảnh gốc; cỡ = cạnh dài).

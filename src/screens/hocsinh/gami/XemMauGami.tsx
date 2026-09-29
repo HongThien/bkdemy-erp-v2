@@ -14,8 +14,11 @@ import { HoSoView, ChonKhoe, TheTVHS } from '../HoSoHS'
 import { HinhHuyHieu, BieuTuongBac, SaoBac, AvatarKhung, IconNV } from './HinhGami'
 import { KIT, BAC, MAU_HH, ICON_NV } from './hinh'
 import * as M from './mauGami'
-import { TheGioiView, TamKhen, TamKetBan } from '../thegioi/TheGioiHS'
+import { TheGioiView, TamBinhLuan, TamCamXuc, TamKetBan, type BanPhim } from '../thegioi/TheGioiHS'
 import * as TG from '../thegioi/mauTheGioi'
+import HomeHS912 from '../HomeHS912'
+import type { HomeCard } from '../HomeHS'
+import type { LichBoTro } from '../../../lib/botro_yeu_ca'
 
 const noop = () => {}
 const MAN: { id: string; ten: string; tt: string[] }[] = [
@@ -25,7 +28,8 @@ const MAN: { id: string; ten: string; tt: string[] }[] = [
   { id: 'ho_so', ten: 'Hồ sơ', tt: ['Em khá (Captain)', 'Em mới (Novice)', 'Em bậc thần', 'Chọn 3 huy hiệu khoe'] },
   { id: 'the_tv', ten: 'Thẻ TV lớp', tt: ['3 mẫu'] },
   { id: 'bo_hinh', ten: 'Bộ hình', tt: ['Tất cả hình'] },
-  { id: 'the_gioi', ten: 'Thế giới BK', tt: ['Thế giới', 'Thế giới (thẻ gộp mở)', 'Bạn bè', 'Kết bạn', 'Lớp + khen', 'Lớp + menu ⋯'] },
+  { id: 'home', ten: 'Màn chính', tt: ['Có ca bổ trợ · nam', 'Kiểm tra lại · nữ', 'Không việc gấp'] },
+  { id: 'the_gioi', ten: 'Thế giới BK', tt: ['Thế giới', 'Thế giới (thẻ gộp mở)', 'Bạn bè', 'Kết bạn', 'Lớp + giữ nút Thích', 'Lớp + menu ⋯', 'Bình luận', 'Bình luận · chọn câu', 'Bình luận · sticker', 'Ai đã bày tỏ cảm xúc', 'Tất cả cảm xúc (＋)'] },
 ]
 
 function Dau({ tieuDe, phu }: { tieuDe: string; phu: string }) {
@@ -39,18 +43,41 @@ function Dau({ tieuDe, phu }: { tieuDe: string; phu: string }) {
 }
 
 function MauTheGioi({ tt }: { tt: number }) {
-  // Đơn 5 (design/DON-HANG-GAMI-HS.md): 1 Thế giới · 2 thẻ gộp mở · 3 Bạn bè · 4 tấm Kết bạn · 5 Lớp + tấm khen · 6 Lớp + menu ⋯
-  const tab = tt === 3 || tt === 4 ? 'ban' : tt >= 5 ? 'lop' : 'tg'
+  // Đơn 5 (design/DON-HANG-GAMI-HS.md): 1 Thế giới · 2 thẻ gộp mở · 3 Bạn bè · 4 tấm Kết bạn · 5 Lớp + dải cảm xúc (giữ Thích) · 6 Lớp + menu ⋯
+  // 7–9 tấm Bình luận (đóng / bàn phím câu / sticker) · 10 Ai đã bày tỏ cảm xúc · 11 tấm đủ mọi cảm xúc (＋). Bấm được thật (dữ liệu giả, không ghi DB).
+  const tab = tt === 3 || tt === 4 ? 'ban' : tt === 5 || tt === 6 ? 'lop' : 'tg'
   const kenh = tab === 'ban' ? TG.KENH_BAN : tab === 'lop' ? TG.KENH_LOP : TG.KENH_TG
-  const [icon, setIcon] = useState<string | null>('lua')
-  const [cau, setCau] = useState<string | null>('c01')
+  const [thanh, setThanh] = useState<string | null>(tt === 5 ? 'nhat_buoi:1' : null)
+  const [banPhim, setBanPhim] = useState<BanPhim>(tt === 8 ? 'cau' : tt === 9 ? 'sticker' : 'dong')
+  const [xem, setXem] = useState<'bl' | 'tha'>(tt === 10 ? 'tha' : 'bl')
+  const [loc, setLoc] = useState<string | null>(null)
   return (
     <TheGioiView tab={tab} onTab={noop} kenh={kenh} loi={null} banBe={TG.BAN_BE} hien="ten" onHien={noop}
       moGop={tt === 2 ? { nhat_buoi: true } : {}} onMoGop={noop} menuKhoa={tt === 6 ? 'no_luc:em' : null} onMenu={noop}
-      onKhen={noop} onAnTin={noop} onDongY={noop} onDeSau={noop} onMoKetBan={noop} onBack={noop}>
+      danhMuc={TG.DANH_MUC} thanhKhoa={thanh} onThanh={setThanh} onTha={noop} onThemCamXuc={noop} onMoBl={noop}
+      onAnTin={noop} onDongY={noop} onDeSau={noop} onMoKetBan={noop} onBack={noop}>
       {tt === 4 && <TamKetBan tim="" onTim={noop} ds={TG.GOI_Y} onGui={noop} onDong={noop} />}
-      {tt === 5 && <TamKhen tin={TG.TIN_DANG_KHEN} danhMuc={TG.DANH_MUC} icon={icon} cau={cau} onIcon={setIcon} onCau={setCau} onGui={noop} dangGui={false} loi={null} onDong={noop} />}
+      {tt >= 7 && tt <= 10 && <TamBinhLuan tin={TG.TIN_MO} ct={TG.CHI_TIET} xem={xem} onXem={setXem} loc={loc} onLoc={setLoc} banPhim={banPhim} onBanPhim={setBanPhim}
+        danhMuc={TG.DANH_MUC} onGui={noop} dangGui={false} loi={null} onGo={noop} onAn={noop} onDong={noop} />}
+      {tt === 11 && <TamCamXuc tin={TG.TIN_MO} danhMuc={TG.DANH_MUC} onChon={noop} onDong={noop} />}
     </TheGioiView>
+  )
+}
+
+// Màn chính HS khối 6–12 (HomeHS912) — mở PC/iPad ngang để soát bố cục theo ảnh gốc style (Nền app HS cấp 3_11.png).
+const oHome = (id: string, ten: string, sub: string, badge?: number, subMau: HomeCard['subMau'] = 'xam') => ({ id, ten, sub, subMau, badge, doodle: '', ill: '', tone: {} } as unknown as HomeCard)
+const O_HOME: HomeCard[] = [
+  oHome('tu_luyen', 'Tự luyện', 'Luyện theo dạng yếu'), oHome('thong_tin', 'Thông tin học tập', 'Xem dạng đang yếu'), oHome('so_tay', 'Sổ tay kiến thức', 'Tra lý thuyết & bài mẫu'),
+  oHome('de_thi_thu', 'Làm đề thi thử', 'Sắp có'), oHome('bai_tap_giao', 'Bài tập được giao', '2 bài chưa làm', 2, 'ton'), oHome('xep_hang', 'Thành tựu', 'Xem giải thưởng của em'),
+  oHome('may_man', 'May mắn', 'Có 1 lượt quay!', 1, 'ton'), oHome('vi_xu', 'Ví xu', '1.240 xu'), oHome('the_gioi', 'Thế giới BK', 'Khoe thành tích · kết bạn'),
+]
+const CA: LichBoTro = { buoi_id: 'b1', loai: 'bo_tro_yeu', ngay: '2026-10-01', gio_bat_dau: '17:30:00', gio_ket_thuc: null, phong: '204', mon: 'Toán', nguoi: 'Cô Lan', diem_danh: null, hom_nay: false, vao_ca: false }
+function MauHome({ tt }: { tt: number }) {
+  return (
+    <HomeHS912 giaoDien={{ skin: 'rpg', che_do: 'toi', hinh_nen: 'lau_dai' }} onDaLuu={noop} data={{ elo: [{ mon: 'Toán', elo: 1240, hang: 3, so_hs: 18 }], thi: [] } as never}
+      hoTen="Nguyễn Minh Khang" maHS="hs0412" lopMon="9A1 Toán" anhUrl={null} onAnhChanged={noop} chuaDoc={3}
+      mons={[]} mon="Toán" onChonMon={noop} lich={tt === 1 ? [CA] : []} soRetest={tt === 2 ? 2 : 0} cards={tt === 3 ? O_HOME.map((c) => ({ ...c, badge: 0 })) : O_HOME}
+      onHopThu={noop} onDoiMK={noop} onThoat={noop} onLich={noop} onRetest={noop} onHoSo={noop} gioiTinh={tt === 2 ? 'nu' : 'nam'} />
   )
 }
 
@@ -59,6 +86,7 @@ function Man({ man, tt }: { man: string; tt: number }) {
   const [mon, setMon] = useState('Toán')
   const [dong, setDong] = useState(false) // đóng lớp phủ để xem màn phía sau
   if (man === 'the_gioi') return <MauTheGioi key={tt} tt={tt} />
+  if (man === 'home') return <MauHome tt={tt} />
   if (man === 'nhiem_vu') {
     const d = [M.NV_GIUA_THANG, M.NV_DAU_THANG, M.NV_CHUA_MO][tt - 1] ?? M.NV_GIUA_THANG
     return <Khung><Dau tieuDe="Nhiệm vụ Toán" phu="Xong nhiệm vụ → Điểm Chặng → lên cấp nhận EXP (đổi ra xu cuối tháng)." /><NhiemVuView d={d} onThuThach={noop} onTuLuyen={noop} onVongQuay={noop} /></Khung>

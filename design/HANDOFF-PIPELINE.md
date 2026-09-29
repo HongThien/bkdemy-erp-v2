@@ -192,3 +192,8 @@ không lệch bố cục · không chữ nào bị raster hoá · tsc + build s�
   §4 thêm cột, §8 thêm câu 9–11 (đếm đối chiếu ảnh ↔ assets); `design-check` bỏ `--chi-asset`, rớt khi thiếu cột Vị trí & cỡ.
   Đơn 3 v2 + 4 v2 viết lại theo ảnh gốc (`design/DON-HANG-SKIN-HS.md`). Luật phụ: Thùy thả ảnh vào `public/` thì bị đóng vào
   bản build — đơn ghi rõ chỉ bỏ vào `design/handoff/`.
+- **Đơn 1 Nhiệm vụ về 29/09 (`design/bk-ui-src/Mission/Mission_01..28.png`, giao từng hình, không zip):** #01–08 ảnh toàn cảnh ·
+  #09–24 đúng 16 icon theo DANH SÁCH GIAO · **#25–27 là bản TRÙNG của #22–24** (cùng byte) · vầng sáng `fx_sao_moi_sang` rơi xuống **#28**
+  ⇒ **không đổi tên theo số thứ tự mù**: soi từng hình (md5 lọc trùng + xem) rồi mới map. Icon 1254² PNG alpha, quầng sáng có viền đỏ/vàng
+  lởm chởm khi xem trên nền đen — ở cỡ thật (≤90px) không thấy. Nén PowerShell System.Drawing: icon 160² (~45KB), fx 384². Icon trong ảnh
+  toàn cảnh KHÁC icon giao riêng (vd #01 N1 là cuộn giấy, #09 là kiếm) — dựng theo BỐ CỤC ảnh toàn cảnh, hình lấy bản giao riêng.

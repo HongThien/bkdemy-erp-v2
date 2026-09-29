@@ -12,6 +12,7 @@
 | Tranh nền (bản NGANG cho iPad/PC + bản DỌC cho điện thoại) | `public/bk-ui/hs/skin/<id>/bg_<nền>_ngang.jpg` · `bg_<nền>_doc*.jpg` | JPG ~q80, ≤ 1672px cạnh dài |
 | Icon từng ô chức năng | `public/bk-ui/hs/skin/<id>/o_<ô>.png` → khai ở `anhO` | PNG trong suốt, 160–192px |
 | Icon banner (lịch bổ trợ, bài kiểm tra lại) | `b_<tên>.png` → `anhBanner` | |
+| Nhân vật Home NGANG (PC/iPad) — nam + nữ, PNG trong suốt | `nv_nam.png` · `nv_nu.png` → `nhanVat` | Home ngang đứng nửa trái + bong bóng thoại (bố cục theo ảnh gốc style). Chọn theo giới tính HS, KHÔNG đổi màu theo giới tính. Không có ⇒ Home ngang trải hết bề ngang |
 | Trang trí (hoa văn góc, gạch phân cách) | `corner.png`, `divider.png` → `trangTri` | |
 | Font | `hs.html` (Google Fonts, có tiếng Việt) | chỉ khai font style thật sự dùng |
 | Ảnh gốc từ ChatGPT (chưa nén) | `design/bk-ui-src/…` · ảnh toàn cảnh chuẩn trong `design/handoff/<kit>/reference/` | nguồn để nén lại khi cần |

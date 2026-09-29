@@ -31312,6 +31312,44 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   the_gioi (KHU + KHU_CAP2, icon TẠM o_pha_le trong rpg.anhO). tsc sạch · check:style-hs ✔ (24 file, 14 ô; file mới 0 màu gõ tay) · build:hs qua ·
   soi 6 trạng thái RPG 375×812, 0 lỗi console. Chưa chạy với tài khoản HS thật (không có TK thử) — hàm DB đã thử bằng HS thật trong transaction.
 
+### 29/09 (11) — Thế giới BK: tương tác Y HỆT FACEBOOK (Thùy: "UX quen thuộc giống FB, đừng bắt học cái mới")
+- Bỏ tấm "Khen" (chọn 1 icon + 1 câu rồi bấm Gửi — HS phải học cách mới). Tách như FB: ① THẢ CẢM XÚC (bấm 👍 Thích · GIỮ 0,4s = dải 6
+  cảm xúc + ＋ mở đủ 22 · bấm lại = bỏ) ② BÌNH LUẬN (tấm trượt, bong bóng xám tên [lớp], "Gỡ"/"Ẩn", ô "Viết bình luận…" + 🙂 — chạm ô bật
+  bàn phím câu soạn sẵn / sticker, CHẠM LÀ GỬI; vẫn không chữ tự do theo spec §5). Dòng "👍❤️🔥 Em, Hà [9A1] và 12 người khác · 5 bình luận",
+  bấm ⇒ danh sách ai thả gì, tab theo cảm xúc. 1 bình luận xem trước dưới thẻ (bạn bè trước).
+- Mig 202609290148_the_gioi_tha_va_binh_luan (áp --only, schema.md): danh mục +loai 'sticker' (nới CHECK) + cột `nhan` (CHECK icon⇔có nhãn) ·
+  thêm 👍 thich ❤️ tim lên đầu, xếp lại thứ tự 22 cảm xúc · 12 sticker TẠM = emoji · 5 câu `cam_on` chỉ chủ tin dùng · bảng the_gioi_binh_luan
+  (an_at chủ tin ẩn · go_at người viết gỡ · trigger log) · the_gioi_khen chỉ còn icon (CHECK cau_ma is null) · hàm fn_the_gioi_tha (null = bỏ) ·
+  fn_the_gioi_binh_luan (tối đa 3 còn hiện / em / tin — CTO đặt) · fn_the_gioi_go_binh_luan · fn_the_gioi_an_binh_luan · fn_the_gioi_chi_tiet ·
+  _the_gioi_khen_json đổi dạng (dem+nhan · ten 2 người · so_bl · bl xem trước) · fn_the_gioi_khen cũ giữ = thả + 1 bình luận (tương thích).
+  Thử trong transaction ROLLBACK với HS thật (Thăng/Vũ/Châu): thả/đổi/bỏ, bình luận câu+sticker, câu cảm ơn chỉ chủ tin, chặn lần 4, gỡ rồi
+  bình luận lại, chủ tin ẩn (chủ vẫn thấy mờ, người khác không), người lạ ẩn bị chặn, tự thả bị chặn — đều đúng. Bảng lúc áp: 0 dòng.
+- TREO chờ Thùy (luật xoá): cột the_gioi_khen.cau_ma thôi dùng (0 dòng) — xin xoá cột.
+- App: lib/thegioi.ts (type + thaCamXuc/guiBinhLuan/goBinhLuan/anBinhLuan/layChiTiet) · TheGioiHS.tsx (NutThich giữ-để-chọn · DaiCamXuc ·
+  DongTuongTac · BongBL · TamBinhLuan · TamCamXuc; nút đổi màu ngay, số đếm lấy từ DB; vá tại chỗ ở mọi tab + tấm đang mở) · hinh.ts
+  KIT.sticker_tg + anhSticker · mauTheGioi + XemMauGami tt 1..11. tsc sạch · check:style-hs ✔. Đơn 5 + spec §5 sửa theo.
+
+### 29/09 (12) — Kit Đơn 1 Nhiệm vụ về → ghép vào app, dựng lại màn Nhiệm vụ theo ảnh toàn cảnh
+- Thùy tải về `design/bk-ui-src/Mission/Mission_01..28.png`. Map: #09–24 = N1 N2 N3 T1 T2 T3 T4 M1 M2 chang ngay tuan thang ruong_dong ruong_mo
+  vong_quay (đúng DANH SÁCH GIAO, đã soi hình) · #25–27 trùng byte #22–24 (bỏ) · #28 = fx sao_moi_sang. Nén → public/bk-ui/hs/gami/nhiem-vu/<mã>.png
+  (160², ~45KB) + fx/sao_moi_sang.png (384²). KIT.nhiem_vu = true.
+- NhiemVuHS: dựng lại NhiemVuView theo #01 — thẻ viền style + tiêu đề ✦ (bỏ dải màu), mỗi nhiệm vụ 1 ô con icon to bên trái luôn hiện (trước bị ✓
+  thay mất icon), "+10 ✦" + vòng tick tròn bên phải, Chặng có huy hiệu to + thanh CẢ THÁNG với mốc 10/20/30, khối Tuần dòng gọn + hàng 4 rương nối
+  dây (rương mở có nhãn +75 EXP, tuần hiện tại có khung). Bỏ 2 màu rgba gõ tay. tsc sạch · check:style-hs ✔. Soi 375×812: nhiem_vu tt=1, album tt=3.
+- Ghi chú quy trình vào HANDOFF-PIPELINE §8 (đánh số lệch + hình trùng ⇒ soi rồi mới map).
+
+### 29/09 (13) — Home PC/iPad ngang theo ảnh gốc #11 + nền ngang phủ tối (Thùy: "PC chói khó nhìn · sao vẫn không giống ảnh gốc")
+- Nguyên nhân: (1) nền ngang dùng CHUNG lớp phủ nhẹ với bản dọc — trên PC tranh trải cả màn, đúng mảng lâu đài + đèn sáng nhất ⇒ chói;
+  (2) HomeHS912 chỉ có 1 bố cục DỌC dùng cho mọi khổ (PC chỉ nới max-w) — ảnh gốc #11 bản ngang là nhân vật nửa trái + "Chào …!" + banner +
+  lưới 4 cột icon to giữa ô, còn nhân vật (#3 nam+mèo · #4 nữ+cú, PNG trong suốt) chưa từng được đưa vào app.
+- Sửa: rpg.ts `nenNgang` phủ tối 0.38→0.86 (dọc giữ nguyên) · hợp đồng Skin thêm `nhanVat {nam, nu}` (STYLE-HS.md) · rpg nv_nam/nv_nu 640×800
+  (~1,1MB, chỉ tải ở khổ ngang) · HomeHS912 thêm `ManNgang` (≥1024px + landscape): đầu trang tấm tên + cụm nút · trái nhân vật + bong bóng
+  thoại (lời suy từ đúng "việc tiếp theo", không bịa số) neo theo chiều cao nhân vật · phải "Chào tên!" 46–54px + pill Elo/đếm ngược + banner
+  việc | kiểm tra lại cạnh nhau + lưới 4 cột (5 cột từ 1280px khi >8 ô). Tách CumNut/AnhDaiDien/ChonMon/NutViec/NutRetest dùng chung 2 bố cục.
+  Nhân vật chọn theo `gioi_tinh` (hoSoCuaToi — tải cho mọi HS). Xem mẫu: hs.html?xem=gami&man=home&tt=1..3.
+- Soi 1440×900 · 1180×820 · 375×812 (điện thoại không đổi), 0 lỗi console. tsc sạch · check:style-hs ✔.
+- Chưa làm: bản DỌC có nhân vật như ảnh #11 hàng dưới (nhân vật giữa + bong bóng + lưới 4 cột nhỏ) — chờ Thùy xem bản PC trước.
+
 ## 2026-09-29 (11) — TRỢ LÝ AI: đo lại → CEO bẻ lái "BÁO CÁO là chính, hỏi là phụ" → báo cáo ngày theo mẫu (worktree troly-hoi-duoc)
 
 - **Yêu cầu:** "tiếp tục phát triển tính năng trợ lý AI, đọc code và handoff trước". Đọc HANDOFF (12/08, 29/08) + toàn bộ `troly*.ts`, `api/troly.mjs`,

@@ -4,13 +4,19 @@ import { supabase } from './supabase'
 
 export type KenhId = 'tg' | 'ban' | 'lop'
 export type NguoiTG = { an: boolean; id?: string; ten?: string; lop?: string; anh?: string; ma?: string }
+// Tương tác kiểu FACEBOOK (mig 202609290148): ① thả cảm xúc (1 / em / tin) · ② bình luận = câu soạn sẵn hoặc sticker.
+export type BinhLuanTG = { id: string; at: string; loai: 'cau' | 'sticker'; ma: string; noi_dung: string; nguoi: NguoiTG; la_em: boolean; an: boolean }
 export type KhenTG = {
-  dem: { icon: string; ma: string; so: number }[]
+  dem: { icon: string; ma: string; nhan: string; so: number }[]
   tong: number
-  cau: { cau: string; nguoi: NguoiTG; la_em: boolean }[]
-  cua_toi: { icon: string; icon_ma: string; cau: string; cau_ma: string } | null
+  ten: { la_em: boolean; nguoi: NguoiTG }[]            // 2 người đứng đầu (em → bạn bè → mới nhất)
+  cua_toi: { icon: string; icon_ma: string; nhan: string } | null
+  so_bl: number
+  bl: BinhLuanTG | null                                 // 1 bình luận xem trước dưới thẻ
   thay_co: string[]
 }
+export type ThaTG = { icon: string; icon_ma: string; nhan: string; la_em: boolean; la_ban: boolean; nguoi: NguoiTG }
+export type ChiTietTG = { chu_tin: boolean; tha: ThaTG[]; bl: BinhLuanTG[]; khen: KhenTG }
 export type TinTG = {
   khoa: string
   tang: 'S' | 'A' | 'B'
@@ -33,7 +39,7 @@ export type KenhTG = { toi: { hien: 'ten' | 'ma'; so_ban: number; loi_moi: numbe
 export type LoiMoiTG = { id: string; nguoi: NguoiTG; ban_chung: number }
 export type BanBeTG = { ban: NguoiTG[]; loi_moi: LoiMoiTG[]; da_gui: string[] }
 export type GoiYTG = { id: string; nguoi: NguoiTG; ly_do: string | null; trang_thai: 'da_gui' | 'cho_em' | null }
-export type DanhMucTG = { ma: string; loai: 'icon' | 'cau'; noi_dung: string; nhom: string[]; thu_tu: number }
+export type DanhMucTG = { ma: string; loai: 'icon' | 'cau' | 'sticker'; noi_dung: string; nhan?: string | null; nhom: string[]; thu_tu: number }
 
 async function rpc<T>(fn: string, args?: Record<string, unknown>): Promise<T> {
   const { data, error } = await supabase.rpc(fn, args)
@@ -42,7 +48,11 @@ async function rpc<T>(fn: string, args?: Record<string, unknown>): Promise<T> {
 }
 
 export const layKenh = (k: KenhId) => rpc<KenhTG>('fn_the_gioi_kenh', { p_kenh: k })
-export const guiKhen = (khoa: string, icon: string, cau: string) => rpc<KhenTG>('fn_the_gioi_khen', { p_khoa: khoa, p_icon: icon, p_cau: cau })
+export const thaCamXuc = (khoa: string, icon: string | null) => rpc<KhenTG>('fn_the_gioi_tha', { p_khoa: khoa, p_icon: icon })   // null = bỏ thả
+export const guiBinhLuan = (khoa: string, ma: string) => rpc<{ bl: BinhLuanTG; khen: KhenTG }>('fn_the_gioi_binh_luan', { p_khoa: khoa, p_ma: ma })
+export const goBinhLuan = (id: string) => rpc<KhenTG>('fn_the_gioi_go_binh_luan', { p_id: id })
+export const anBinhLuan = (id: string, an: boolean) => rpc<KhenTG>('fn_the_gioi_an_binh_luan', { p_id: id, p_an: an })
+export const layChiTiet = (khoa: string) => rpc<ChiTietTG>('fn_the_gioi_chi_tiet', { p_khoa: khoa })
 export const anTin = (khoa: string, an: boolean) => rpc<void>('fn_the_gioi_an_tin', { p_khoa: khoa, p_an: an })
 export const datHien = (hien: 'ten' | 'ma') => rpc<void>('fn_the_gioi_cai_dat', { p_hien: hien })
 export const banBeCuaToi = () => rpc<BanBeTG>('fn_ban_be_cua_toi')
@@ -50,9 +60,9 @@ export const goiYKetBan = (tim: string) => rpc<GoiYTG[]>('fn_ban_be_goi_y', { p_
 export const guiKetBan = (hs: string) => rpc<'da_gui' | 'da_la_ban'>('fn_ban_be_gui', { p_hs: hs })
 export const traLoiKetBan = (loiMoi: string, dongY: boolean) => rpc<void>('fn_ban_be_tra_loi', { p_loi_moi: loiMoi, p_dong_y: dongY })
 
-// Danh mục icon + câu (admin sửa ở DB theo trend — câu đã ẩn không cho chọn mới).
+// Danh mục cảm xúc + câu + sticker (admin sửa ở DB theo trend — mục đã ẩn không cho chọn mới).
 export async function layDanhMuc(): Promise<DanhMucTG[]> {
-  const { data, error } = await supabase.from('the_gioi_danh_muc').select('ma, loai, noi_dung, nhom, thu_tu').is('an_at', null).order('thu_tu').limit(200)
+  const { data, error } = await supabase.from('the_gioi_danh_muc').select('ma, loai, noi_dung, nhan, nhom, thu_tu').is('an_at', null).order('thu_tu').limit(200)
   if (error) throw error
   return (data ?? []) as DanhMucTG[]
 }
