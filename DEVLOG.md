@@ -31984,3 +31984,4 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   · hàng rào KayKit lệch gốc 1 ô + nằm trục z (đo geometry mới thấy) · bong bóng máy đặt theo hộp bao cối xay bay lơ lửng ⇒ đặt tay ·
   nhảy 2 cấp chỉ hiện cấp cuối ⇒ xếp hàng · **"Chơi lại từ đầu" không có tác dụng vì beforeunload lưu đè ván cũ** ⇒ thay state trước khi reload.
 - **Bẫy verify:** pane ẩn ⇒ rAF đứng ⇒ camera/hoạt ảnh không chạy; chụp WebGL bằng `NT_SCENE.chup(ten, soKhung)` (chạy tay khung + POST `/_snap`).
+- **Bổ sung (tối 29/09):** giả lập nhịp lên cấp là NGẪU NHIÊN (đơn hàng random) — chạy lại ra cấp 15 ≈ 31,5h (lần trước 58h) ⇒ đọc là khoảng 30–60h game, không phải 1 con số.
