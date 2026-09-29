@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-298 bảng · 19 view · 0 enum · 101 trigger · 683 function
+298 bảng · 19 view · 0 enum · 101 trigger · 684 function
 
 ## _app_secrets
 
@@ -5951,6 +5951,7 @@ SELECT bl.hoc_sinh_id,
 - `_troly_tuan_doc(p_tu date)` → jsonb
 - `_troly_tuan_duoi(p_tu date, p_den date)` → jsonb
 - `_troly_tuan_hoc_tap(p_tu date, p_den date)` → jsonb
+- `_troly_tuan_phien_ban()` → integer
 - `_troly_tuan_so(p_tu date, p_den date)` → jsonb
 - `_troly_tuan_so_day_du(p_tu date, p_den date)` → jsonb
 - `_troly_tuan_tinh_luu(p_tu date, p_ns uuid)` → troly_bao_cao_luu

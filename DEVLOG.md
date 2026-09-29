@@ -31893,3 +31893,17 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Sai: script sửa cauHop tìm mốc '\n}\n' trên file CRLF ⇒ không khớp ⇒ dán lặp cả file (TS lỗi ngay) ⇒ git checkout file (chỉ bỏ lần sửa hỏng)
   rồi làm lại bằng cách chuẩn hoá LF trước khi cắt. Bài học: script vá file luôn replace(/\r\n/g,'\n') trước khi tìm mốc nhiều dòng.
 - build:hs qua.
+
+## 2026-09-29 (20) — TRỢ LÝ · Thường đạt đổi sang 8 TUẦN GẦN NHẤT — mig 202609291316 ĐÃ ÁP
+
+- **CEO:** "lấy 8 tuần gần nhất đi" (trả lời câu em nêu ở mục (19): toàn lịch sử làm khâu đang cải thiện luôn "trên thường đạt").
+- **Đổi:** cửa sổ tính thường đạt = 8 tuần liền trước tuần đang xem (trung bình trượt). Số tuần ở `_troly_bc_gia_dinh().thuong_dat_so_tuan`.
+  Lọc nhiễu Tukey và ngưỡng 1σ/2σ giữ nguyên, chạy trong cửa sổ. Bảng `troly_tuan_so_luu` KHÔNG đổi (vẫn đủ từ 15/06).
+- **Thêm số PHIÊN BẢN cách tính** `_troly_tuan_phien_ban()` = 2. Lý do: bản lưu hôm nay tính theo luật cũ vẫn "có khoá chi_so" nên cửa
+  `fn_troly_tuan_lay` sẽ trả lại số CŨ cho tới ngày mai. Giờ bản lưu khác phiên bản ⇒ tự tính lại. Lần sau đổi luật chỉ tăng số này.
+- **Cách sinh migration:** script đọc `pg_get_functiondef` của 3 hàm ĐANG CHẠY rồi thay đúng 7 chỗ; mỗi phép thay phải khớp ĐÚNG 1 chỗ,
+  lệch là dừng không ghi file. (Không gõ lại thân hàm 9.000 ký tự bằng tay.)
+- **Số tuần 21–27/09 sau khi đổi:** BTVN đúng chuẩn thường đạt 12 → 19,6 · cả trung tâm 38,5 → 42,8 · ET 68,1 → 69,1 · đánh giá 37,3 → 45,4.
+  **Điểm ET trung bình 78,2% chuyển từ "dưới thường đạt" thành "VẤN ĐỀ"** (thường đạt 82,2; 8 tuần gần đây rất ổn định nên lệch 4 điểm đã là ≥2σ).
+  Vấn đề khác giữ nguyên: HS nộp BTVN đạt chuẩn 67% (84) · 11 lớp nộp dưới ngưỡng (3,9) · 13 HS bị GV báo động (4,7).
+- **Còn lại chưa đổi được bằng cửa sổ:** BTVN/ET/đánh giá đúng chuẩn vẫn "trên thường đạt" vì 8 tuần qua vẫn đang đi lên — đúng thực tế, không phải lỗi.

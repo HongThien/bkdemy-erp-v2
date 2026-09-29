@@ -154,7 +154,7 @@ function BangChiSo({ ds, hienSo, tuan, cotBang }: { ds: ChiSo[]; hienSo: boolean
           {cotBang && <th className={TH}>Mảng</th>}
           <th className={`${TH} text-right`}>Tuần này</th>
           <th className={`${TH} text-right`}>Tuần trước</th>
-          <th className={`${TH} text-right`}>Thường đạt</th>
+          <th className={`${TH} text-right`} title="Trung bình các tuần gần nhất trước tuần đang xem, đã bỏ lần đo nhiễu">Thường đạt</th>
           <th className={TH}>So với thường đạt</th>
           <DauXuHuong hienSo={hienSo} tuan={tuan} />
         </tr>
@@ -449,7 +449,7 @@ export function BanTongKetTuan({ d, mo, moSan, hienSo = false }: { d: DuLieu; mo
       </div>
 
       {/* 0 — CẦN CHÚ Ý: chỉ số đang dưới thường đạt */}
-      <Khung ten="Cần chú ý" phu={`${canChuY.length} chỉ số đang dưới thường đạt của chính nó`}>
+      <Khung ten="Cần chú ý" phu={`${canChuY.length} chỉ số đang dưới thường đạt của chính nó · thường đạt = trung bình ${d.thuong_dat.so_tuan} tuần gần nhất, đã lọc nhiễu`}>
         {canChuY.length === 0
           ? <div className="px-3 py-3 text-[13px] text-slate-500">Tuần này không có chỉ số nào dưới thường đạt.</div>
           : <BangChiSo ds={canChuY} hienSo={hienSo} tuan={tuan} cotBang={(c) => tenBang(c.bang)} />}

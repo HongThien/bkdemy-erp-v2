@@ -211,7 +211,9 @@ Tính năng thứ hai của trợ lý, đứng cạnh Báo cáo. Hai thứ trả
 
 - CEO: *"Mỗi cái sẽ có 1 ngưỡng gọi là ngưỡng thường đạt — là trung bình toàn bộ các lần đã đo. Dưới thường
   đạt quá nhiều là vấn đề."* và *"nhớ lọc nhiễu. những lần đo khác xa những lần khác là nhiễu."*
-- **Một lần đo = số của một tuần.** Thường đạt của tuần đang xem tính trên MỌI tuần trước nó.
+- **Một lần đo = số của một tuần.** Thường đạt của tuần đang xem tính trên **8 tuần liền trước nó**
+  (CEO chốt 29/09: *"lấy 8 tuần gần nhất đi"* — bản đầu lấy toàn bộ lịch sử thì khâu đang cải thiện có
+  thường đạt rất thấp, tuần nào cũng "trên thường đạt"). Mảng chạy chưa đủ 8 tuần thì lấy các tuần đã có.
 - **Lọc nhiễu trước, lấy trung bình sau.** Lần đo bị coi là nhiễu thì không tính vào thường đạt, nhưng vẫn
   hiện trên xu hướng (đánh dấu riêng) — không giấu.
 - **Tuần mà mảng chưa chạy trên hệ KHÔNG phải lần đo** (không phải "đo ra 0").
@@ -243,8 +245,6 @@ Tính năng thứ hai của trợ lý, đứng cạnh Báo cáo. Hai thứ trả
 
 - **Các con số của thường đạt** (đang dùng tạm): nhiễu = ngoài 1,5 × IQR · dưới thường đạt = xấu hơn 1 độ lệch
   chuẩn · vấn đề = 2 độ lệch chuẩn · tối thiểu 4 lần đo · chưa chốt = 7 ngày · xu hướng bày 8 tuần.
-- **Thường đạt lấy toàn bộ lịch sử hay N tuần gần nhất?** Khâu đang cải thiện (BTVN đúng chuẩn 0% → 36%) thì
-  thường đạt toàn lịch sử rất thấp ⇒ tuần nào cũng "trên thường đạt", tuần tốt gần đây bị coi là nhiễu.
 - "Chuyển lịch" bổ trợ: hệ chưa ghi vết đổi ngày/giờ ⇒ chưa đo được. Cần trigger ghi lịch sử nếu CEO muốn số thật.
 - Việc phát triển có đưa vào toàn cảnh không.
 - Thông báo thứ Hai gửi qua app nào; Lộc chưa đăng ký nhận tin ở app pt.

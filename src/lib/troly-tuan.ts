@@ -94,7 +94,9 @@ export type TongKetTuan = {
   lop_hoc_tap: LopHocTap[]         // lớp tụt điểm ET nhiều nhất đứng đầu
   xep_hang: Record<string, DongXepHang[]>   // khoá = mã khâu
   xep_hang_bo_qua: string[]
-  thuong_dat: { tu_tuan: string; so_tuan_toi_thieu: number; he_so_nhieu: number; sigma_luu_y: number; sigma_van_de: number; so_tuan_chua_co_so: number }
+  phien_ban: number                // phiên bản CÁCH TÍNH ở DB; bản lưu khác phiên bản thì DB tự tính lại
+  // so_tuan = thường đạt tính trên mấy tuần liền trước tuần đang xem (CEO 29/09: 8 tuần gần nhất)
+  thuong_dat: { tu_tuan: string; so_tuan: number; so_tuan_toi_thieu: number; he_so_nhieu: number; sigma_luu_y: number; sigma_van_de: number; so_tuan_chua_co_so: number }
   cach_tinh: string[]
   luu: { vua_tinh: boolean; tinh_luc: string; tinh_boi: string | null; tinh_mat_ms: number; so_lan_tinh: number }
 }
