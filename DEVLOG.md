@@ -32074,3 +32074,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   heredoc >~120 dòng lại bị cắt ⇒ script patch viết bằng Write rồi `node file.cjs`.
 - **Kiểm:** test-engine ✔ (thêm: mua giống, chuồng bậc, cây hái–héo–cứu–chặt, cưa vs rìu, nâng file lưu cũ); bot tới cấp 25 ~28 ngày game (không ngủ).
   Dựng trại cấp 30 đầy đủ chụp nhiều góc (15 cây ruộng, vườn đủ trạng thái, cừu chibi, tổ ong, 12 máy); cửa hàng 3 tab; quầy trà; trả ván gốc cấp 1 cho Thùy.
+
+## 2026-09-29 — App HS: màn đăng nhập chữ trắng trên nền trắng (sửa)
+
+- Thùy: "đăng nhập tài khoản giờ bị chữ màu trắng". Nguyên nhân: `main-hs.tsx` gọi `ganSkinMacDinh()` (RPG, `color-scheme: dark` lên `<html>`) TRƯỚC
+  màn đăng nhập; ô nhập ở `src/auth/Login.tsx` không đặt màu chữ ⇒ trình duyệt tô chữ gõ vào màu sáng trên `bg-white`.
+- Sửa: gốc Login `colorScheme: 'light'` + `text-slate-900`; ô nhập `bg-white text-slate-900`. Login dùng chung mọi app (staff chưa từng dính vì
+  không gắn skin) — thay đổi vô hại cho app khác.
+- Verify dev-hs `hs.html`: `<html>` vẫn dark, ô nhập color slate-900 / nền trắng, gõ mã HS đọc rõ.
+- Cũng 29/09: Thùy thấy máy công ty "giao diện cũ, không có tranh nền" dù cùng tài khoản với máy Công Hải — DB đúng (HS0115 lưu rpg/bau_troi 14:45);
+  do Chrome giữ bundle 28/09 gọi `bg_bau_troi.jpg`/`ill_*.png` đã bị đổi tên ⇒ 404 (jpg không nằm trong precache SW). Đề xuất (chờ gật): SW tự
+  kiểm bản mới định kỳ + khi quay lại app; luật không xoá/đổi tên ảnh public mà bản đang chạy còn dùng.
