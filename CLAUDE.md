@@ -311,6 +311,11 @@
   (đo tỉ lệ LỌT, câu bẫy, ngưỡng theo mức nặng) · hậu kiểm báo sai · phương pháp build 6 việc (dựng bài thi trước). Toán Đại, K12 trước.
   **Luồng tự giải bài cũ (`auto-giai-scheduler.mjs`) ĐÃ NGỪNG 28/09** — đừng bật lại, đừng viết luồng mới theo kiểu một phiên tự làm tự kiểm tự ghi.
   Pha đang làm: **`spec-luong-kho-p0.md`** (đã có gì · đã kiểm gì · việc kế tiếp · lệnh chạy ở máy công ty).
+- **`SPEC-troly-nhansu.md` — ĐỌC BẮT BUỘC (§6–§7) trước khi sửa tab 🤖 TRỢ LÝ** (CEO chốt 29/09): **báo cáo là chính, hỏi là phụ** · chỉ 3 tài khoản ·
+  Báo cáo Sư phạm = 3 luồng (đếm chậm/miss → Detail → cảnh báo), mỗi người quản một mảng có một bộ báo cáo riêng (Trang = Sư phạm, Lộc = Vận hành) ·
+  Tổng kết tuần = dashboard theo BẢNG, ngưỡng của mọi chỉ số là **thường đạt** (trung bình 8 tuần gần nhất đã lọc nhiễu), trình chiếu mỗi bảng một màn ·
+  cả hai KHÔNG realtime (lưu DB). Mọi con số tính ở `fn_troly_*`/`_troly_*`; thêm chỉ số = thêm 1 dòng vào `_troly_tuan_danh_muc()`.
+  Kiểm bằng `scripts/check-troly-cong-cu.mjs` rồi **mở trên app bằng phiên đăng nhập thật** (script không thấy RLS và trần 8 giây).
 ## Luật xoá (bắt buộc)
 Trước khi XOÁ bất cứ gì — xoá file, drop/alter/delete bảng/cột/dòng DB,
 hay lệnh git phá lịch sử (reset --hard, push -f, branch -D, clean) — DỪNG lại:

@@ -22,6 +22,11 @@
   có tự luận (phiên MCQ) · retest chỉ hiện trên app TA TỪ NGÀY làm (ERP hiện cả sắp tới — nếu muốn TA biết trước: thêm "Retest sắp tới") · bước 5 KPI
   tải TA (Σ đơn vị có mặt) chưa làm · `migrate` dùng `--only` (4 migration Sổ tay treo).
 
+- **⭐ TRỢ LÝ (tab 🤖 trong Việc của tôi) — trạng thái 29/09: đọc `SPEC-troly-nhansu.md` §6–§7.** Tóm: **báo cáo là chính, hỏi là phụ**;
+  chỉ 3 tài khoản (Thùy · Thùy Trang · Bảo Lộc). Hai bản tính ở Postgres, KHÔNG realtime (lưu DB, "↻ Tính lại" ghi đè): **Báo cáo Sư phạm** (của Trang —
+  3 luồng: đếm chậm/miss → Detail → cảnh báo) và **Tổng kết tuần** (dashboard theo BẢNG, mỗi chỉ số so với **thường đạt = trung bình 8 tuần gần nhất
+  đã lọc nhiễu**, xếp hạng GV–TA, trình chiếu mỗi bảng một màn). **Treo:** báo cáo Vận hành của Lộc chưa có mẫu · thông báo thứ Hai chờ khai
+  `TROLY_PUSH_APP` + deploy · khung hỏi chưa nối 13 công cụ DB. Chi tiết: mục "⭐⭐ TRỢ LÝ" bên dưới.
 ### Kiến trúc & file chính
 - Kho = lá `bdkt` trong cây Admin → `src/screens/kho/KhoScreen.tsx`. Build **THẬT, wire Supabase DB v2** (ngoại lệ so với mock-first của shell — vì schema Kho đã đông cứng).
 - **Seam:** UI KHÔNG gọi `supabase` trực tiếp, chỉ qua `src/lib/kho/api.ts`.
@@ -905,75 +910,94 @@ như phác 25/07. Vòng 4 trạng thái: Chờ duyệt → Đang bổ trợ → 
 
 ---
 
-### Đã build (12/08 — ⭐⭐ TRỢ LÝ AI: hỏi–đáp chạy thật + hạ tầng migrate/introspect)
+### ⭐⭐ TRỢ LÝ (tab 🤖 trong *Việc của tôi*) — trạng thái 29/09 · ĐỌC `SPEC-troly-nhansu.md` §6–§7 trước khi sửa
 
-> Ngày này ĐỔI HƯỚNG 3 lần do CEO bẻ lái. Đọc phần "hướng đã chốt" trước, đừng đọc theo thứ tự thời gian.
+**HƯỚNG HIỆN HÀNH (CEO 29/09 — ghi đè hướng 12/08 "nhắc việc hàng ngày + hỏi được"):**
+*"hỏi là phụ, tính năng chính vẫn là báo cáo. Báo cáo đầy đủ dữ liệu cần thì gần như không cần hỏi lại nữa."*
+Trợ lý = **hai bản báo cáo tất định tính ở Postgres** (Báo cáo Sư phạm · Tổng kết tuần). Model KHÔNG tham gia tính số.
+**Chỉ 3 tài khoản dùng:** Đào Xuân Thùy · Phạm Thị Thùy Trang · Trần Bảo Lộc — danh sách ở MỘT chỗ `hoi_dap_ds_tai_khoan()`;
+cổng `troly_duoc_dung()` / `_troly_gac()` đứng đầu MỌI hàm `_troly_*`; tab bị ẩn với người khác ở `NhanSuHome` (cờ `hoi_dap_duoc_dung`).
 
-**HƯỚNG ĐÃ CHỐT (bản cuối, ghi đè mọi mô tả cũ):** trợ lý = **NHẮC VIỆC HÀNG NGÀY + HỎI ĐƯỢC**,
-KHÔNG phải công cụ kiểm toán dữ liệu, KHÔNG phải thêm một dashboard nữa.
-CEO: *"1 đứa trợ lý nhắc việc hàng ngày, và khi nó nhắc việc thì t sẽ nhận ra được cái gì cần phải làm,
-cái gì cần hủy, cái gì cần gác lại"* · *"t cần trao đổi với nó như đang trao đổi với m. chứ hệ thống
-đưa ra thì khác gì dashboard và việc của tôi nhỉ"*.
+**Màn hình** — `src/screens/troly/TroLyTab.tsx` (KHÔNG đẻ leaf: leaf kéo theo quyền per-leaf + hiện ở nav mọi role). Hàng nút:
+**Báo cáo** (mặc định) · **Tổng kết tuần** · Trợ lý thấy gì · Vận hành · Bổ trợ bù · Bổ trợ đuổi · Bổ trợ yếu · Kiểm tra đầu vào · Việc của bạn.
+Khung hỏi nằm CUỐI trang.
 
-**Màn hình:** tab **"🤖 Trợ lý"** trong *Việc của tôi* (`src/screens/troly/TroLyTab.tsx`) —
-KHÔNG đẻ leaf mới (leaf kéo theo quyền per-leaf + hiện ở nav MỌI role). Bốn khối, trên xuống:
-- **HÔM NAY** — đúng **HAI RỔ** CEO chốt: ① việc có **hạn rơi đúng hôm nay** ② việc **đang dở**
-  (đã bắt đầu, chưa đóng — *"để t nhận thức được nó đang diễn ra"*). Nợ cũ CHỈ là một con số.
-  CEO nhấn: *"ko phải là mấy cái nợ kia nhé"* và *"Hôm nay là những việc có deadline là hôm nay thôi"*.
-  "Đã bắt đầu" suy từ HIỆN VẬT: có dòng `buoi_danh_gia`/`gami_grades`/`btvn_ket_qua` mà cột đóng còn null.
-  ⚠ **Chấm ET CỐ Ý bỏ khỏi rổ ②** — không có bảng dấu vết theo buổi đủ tin; khai thẳng trong `khongBiet`.
-- **KHUNG CHAT** — chỗ AI vào. Client gói bảng sạch → `troly_hoi_dap` → `worker/troly.mjs` (quét 3s) → trả lời.
-- **NHẬN ĐỊNH CẤP HỆ** — 4 nhận định, số tính lại mỗi lần mở (`troly_nhan_dinh` chỉ lưu QUYẾT ĐỊNH, không lưu text).
-- **VIỆC LẺ** — mọi việc chưa xong, 3 nút.
+**① BÁO CÁO SƯ PHẠM** (`BaoCao.tsx` · `lib/troly-baocao.ts` · cửa gọi `fn_troly_bao_cao_lay(p_so_ngay, p_tinh_lai)`)
+- **Của ai:** mỗi người quản một MẢNG có một BỘ báo cáo. Bản này là của **Trang (Sư phạm)**. **Lộc (Vận hành — mọi thứ không thuộc sư phạm,
+  gồm bổ trợ đuổi, xếp bù, xếp lịch) CHƯA có bản, chưa có mẫu.**
+- **Logic 3 luồng, mục nào cũng đủ:** ① đếm việc **chậm / miss** → ② nút **Detail**, bấm mới hiện từng việc (ngày · đối tượng · việc · người phụ
+  trách · hạn · tình trạng) → ③ **cảnh báo** rủi ro/bất thường. Mặc định đóng hết. Đơn vị = **VIỆC có người phụ trách**, cửa sổ 7/14/30 ngày.
+- **Mục:** BTVN · ET · Đánh giá trong buổi · Đánh giá sau buổi · Bổ trợ bù · Bổ trợ yếu (+ "Theo người phụ trách" + cảnh báo chung).
+- **Luật đếm:** miss = không có đề/không gán bài · bấm đóng mà trống · đóng mà còn em có mặt thiếu dữ liệu · ca bổ trợ không test.
+  "Đóng muộn" đếm RIÊNG, không gộp vào chậm. **"Học sinh không đến" là thông số RIÊNG**, không tính miss. "Không có đề" chỉ là miss với lớp
+  THẬT SỰ chạy khâu đó (≥60% buổi/60 ngày). **Chấm bài trên lớp chỉ bắt buộc từ 01/10/2026** — trước mốc không sinh việc ở báo cáo.
+- **BTVN có 2 phần:** *trợ giảng chấm* (việc + **tỉ lệ nộp đạt chuẩn theo lớp**: đạt = đã nộp + có thái độ + có điểm chấm; thiếu thông tin = không
+  đạt; **"xin phép" vẫn là chưa nộp**; lớp dưới **70%** = tệ; Detail = lớp → buổi → em không đạt + TA phân công + người chấm thực tế) và
+  *học sinh làm bài* (các cảnh báo). **ET KHÔNG có phần tỉ lệ nộp** (đi học là có ET) — đừng đề xuất lại.
+- **Người phụ trách + hạn lấy từ `fn_viec_buoi_thuong`**, không định nghĩa lại. Trưởng vận hành tra theo ghế (`_troly_truong_van_hanh()`), không gõ tên.
 
-**BA NÚT `lam` / `huy` / `gac`** (bảng `troly_ra_soat`, khoá buổi×khâu) — ⭐ **gỡ đúng chỗ tưởng là bế tắc.**
-Trước đó kẹt ở *"hệ không biết lớp nào bắt buộc làm khâu nào (must-exist) nên không dám nhắc"* → đâm đi vá
-dữ liệu, sai hướng. **Nhắc sai thì người bấm HUỶ là xong; luật LỘ RA từ các lần bấm.** ⇒ mở HẾT mọi khâu.
-`gac` + `gac_den` biến nó thành công cụ HÀNG NGÀY: việc gác **quay lại** đúng hẹn (nút sẵn 3 ngày/1 tuần/1 tháng —
-bắt gõ ngày thì người ta bỏ qua thay vì gác).
+**② TỔNG KẾT TUẦN** (`TongKetTuan.tsx` · `lib/troly-tuan.ts` · cửa gọi `fn_troly_tuan_lay(p_tuan, p_tinh_lai)`)
+- Trả lời câu KHÁC báo cáo: báo cáo = "việc nào hỏng, của ai"; tổng kết = "cả hệ chạy tốt tới đâu". Không gộp.
+- **Dựng theo BẢNG, mỗi mảng một bảng, cùng bộ cột** (tuần này · tuần trước · thường đạt · so với thường đạt · xu hướng 8 tuần). Bảng đầu = **Cần chú ý**
+  (chỉ số đang dưới thường đạt). 7 mảng: việc sau buổi (đúng chuẩn/chậm/thiếu, Detail = **xếp hạng GV–TA, không tính Thùy và Trang Phạm**) · quy mô &
+  chuyên cần · kết quả học tập · bổ trợ yếu · bổ trợ bù · bổ trợ đuổi · tuyển sinh. **Học phí KHÔNG đưa vào.** Để thẳng trên ERP (không xuất HTML rời).
+- **THƯỜNG ĐẠT** = trung bình **8 tuần liền trước** tuần đang xem, **sau khi lọc nhiễu** (hàng rào Tukey 1,5×IQR). Xấu hơn ≥1 độ lệch chuẩn = "dưới
+  thường đạt", ≥2 = "vấn đề". <4 lần đo = chưa đánh giá. Tuần mà mảng chưa chạy trên hệ KHÔNG phải lần đo (số `neo`). Chỉ số còn đổi sau khi tuần kết
+  thúc (bù, trả kết quả test, điểm BTVN) ghi "chưa chốt" 7 ngày đầu. Mọi hệ số ở `_troly_bc_gia_dinh()`.
+- **Mẫu số việc sau buổi = việc đã tới hạn hoặc đã đóng**; việc còn trong hạn để riêng.
+- **Trình chiếu:** mỗi bảng MỘT màn vừa khít, chuyển ‹ Trước / Sau › + phím mũi tên + mục lục; là lớp phủ kín cửa sổ, toàn màn hình chỉ cộng thêm.
+  Nút "Số từng tuần" đổi nét vẽ thành số.
+- **Tự tính sáng thứ Hai 07:00** — `api/troly-tuan.mjs` + cron `0 0 * * 1` + `fn_troly_tuan_tu_dong(secret, app)`. **CHƯA chạy thật:** cần khai
+  `TROLY_PUSH_APP=pt` trên Vercel project pt rồi deploy. Máy nhận hiện có: Thùy, Trang (app pt); **Lộc chưa đăng ký nhận tin**.
 
-**RANH GIỚI MODEL (doc §4, KHÔNG mở lại):** CODE tính hết số → bảng sạch **đã gộp sẵn** theo lớp/theo khâu
-(để model không có lý do tự cộng); MODEL chỉ đọc rồi trò chuyện. Bảng có mục `khongBiet` liệt kê thẳng
-giới hạn. Ba khối không-chat vẫn chạy khi worker tắt.
+**KHÔNG REALTIME (CEO 29/09):** lượt mở đầu trong ngày thì tính, **lưu DB**, mở lại đọc bản lưu; "↻ Tính lại" ghi đè. Bảng `troly_bao_cao_luu`
+(bo = `su_pham` | `tuan`) giữ bản đã dựng; `troly_tuan_so_luu` giữ số TỪNG TUẦN (nguồn của thường đạt, đủ từ 15/06). Bản lưu tổng kết mang
+`phien_ban` cách tính — đổi luật thì tăng `_troly_tuan_phien_ban()`, bản cũ tự tính lại.
 
-**ĐO THẬT (12/08):** bảng sạch ~10.500 token · **14 giây/câu · ~790 đ** (`claude-sonnet-5`).
-Ước cả tháng 5 câu/ngày: Haiku ~44k · Sonnet ~89k · Opus ~222k đ. Bật cache còn ~1/4.
-⚠ Tiền nằm gần hết ở ĐẦU VÀO ⇒ cắt input mới là cắt thật, đổi model rẻ chỉ giảm phần đã nhỏ.
+**BẢN ĐỒ DB (đều `fn_`/`_troly_`, tìm trong `schema.md`):**
+- Nguồn phân loại việc DUY NHẤT: `_troly_viec_buoi_goc` (mọi việc + nhãn). `_troly_bc_viec_buoi` chỉ là lớp mỏng. Ca bổ trợ yếu: `_troly_ca_yeu_goc`.
+- Báo cáo: `fn_troly_bao_cao` ← `_troly_bc_viec_buoi/_bu/_yeu` · `_troly_bc_canh_bao` · `_troly_bc_thong_so` · `_troly_bc_btvn_ti_le` · `_troly_bc_them`.
+- Tổng kết tuần: `_troly_tuan_so` + `_troly_tuan_hoc_tap/_duoi/_tuyen_sinh` → `_troly_tuan_so_day_du` → `_troly_tuan_cap_nhat` (ghi số tuần) →
+  `_troly_tuan_doc` (dựng dashboard + thường đạt) · `_troly_tuan_xep_hang` · **danh mục chỉ số ở MỘT hàm `_troly_tuan_danh_muc()`** (thêm chỉ số = thêm 1 dòng).
+- Hai cửa `_lay` là `SECURITY DEFINER`; mọi hàm tính bên trong đã thu quyền của `authenticated`/`anon`.
+- 13 công cụ tra cứu `_troly_cc_*` + `fn_troly_goi` + `fn_troly_danh_muc` (mig 202609290143) — **đã có ở DB, CHƯA nối vào khung hỏi.**
 
-**KIỂM CHẤT LƯỢNG — model ĐẠT cả 2 phép thử:**
-- Số: 8S0=31 việc/cũ nhất 56 ngày · 12A1=16 · 9A2=13 · đánh giá 51 · chấm lớp 28 · cảnh báo yếu 20 — **khớp 100%** oracle SQL.
-- Không bịa: hỏi "em X yếu dạng nào" → *"bảng của tôi không có"*, trích đúng mục `khongBiet`, chỉ sang chỗ tra thật.
-- Tự khai giới hạn khi suy luận: *"Đây là góc nối, không phải nhân quả chắc chắn — bảng không cho biết vì sao 8S0 dồn nhiều."*
+**KIỂM:** `node scripts/check-troly-cong-cu.mjs` (mọi thứ trong 1 transaction rồi ROLLBACK, giả JWT): mặc định = cổng + 23 ca công cụ ·
+`--bao-cao [ngày]` · `--lay` · `--tuan [ngày]` · `--thu <file.sql>` áp THỬ migration trước khi gọi. ⚠ Script nối bằng role chủ bảng ⇒
+**không kiểm được RLS và trần 8 giây** — hai thứ đó chỉ kiểm được trên app với phiên đăng nhập thật.
 
-**WORKER KHÔNG KHOÁ NHÀ CUNG CẤP:** adapter mỏng chạy `anthropic` lẫn `moonshot` (Moonshot = Kimi, MỘT nhà)
-trên CÙNG bảng sạch, đổi bằng 1 dòng `.env.local`, log token+tiền mỗi lượt ⇒ **so bằng số**.
-Moonshot dùng giao thức tương thích OpenAI ⇒ `fetch` thẳng, không thêm SDK. Cố ý KHÔNG dùng tính năng
-riêng của từng nhà (thinking/cache) — dùng thì bản so mất công bằng. ⚠ Bảng giá phải TỰ KIỂM lại.
-⚠ `moonshot-v1-8k` KHÔNG dùng được (bảng đã ~13k token). Bản `-vision` thừa. `K2.7 Code` sai việc.
-⭐ Bảng sạch **KHÔNG có tên học sinh** ⇒ thử nhà mới ở đây rủi ro thấp hơn hẳn `danhgia` (vốn gửi `ho_ten`).
+**KHUNG HỎI + CÁC TAB CŨ (12–19/08) — còn chạy, gần như không ai dùng:**
+- Đo 29/09: tab Trợ lý 21 câu cả đời, 3 nút Làm/Huỷ/Gác không ai bấm từ 12/08. Trong 14 câu hỏi thật, ~11 câu không ra thứ người hỏi cần:
+  khung hỏi mù với các tab ngay dưới nó · danh mục thiếu ET · kết quả công cụ không quay về model · bảng sạch phình 10k → 42k token/câu.
+- Khung hỏi gọi thẳng `api/troly.mjs` (Vercel, đồng bộ). Nhà cung cấp đổi bằng biến môi trường (`anthropic` / `moonshot` / `deepseek`), log token + tiền mỗi lượt.
+  Ranh giới giữ nguyên: CODE tính số, MODEL chỉ đọc bảng sạch rồi trò chuyện. Đo 12/08: ~14 giây/câu, ~790 đ/câu (tiền nằm gần hết ở đầu vào).
+- Các tab Trợ lý thấy gì · Vận hành · Bổ trợ bù/đuổi/yếu · Kiểm tra đầu vào · Việc của bạn vẫn tính ở CLIENT (`lib/troly*.ts`). **Mảng Yếu và Test đầu vào
+  lỗi thời** (Yếu còn đếm cờ thô trong khi `bo_tro_yeu` đã là luồng thật) — chưa gỡ.
 
-**HẠ TẦNG (độc lập trợ lý):**
-- **`npm run migrate` SỐNG LẠI** — sổ `_migrations` (tên + vân tay sha256), ghi TRONG CÙNG transaction.
-  `--status` xem thuần · `--baseline <file>` dựng sổ cho DB cũ (đã chạy, không cần lại) · DB có bảng mà
-  chưa có sổ ⇒ **từ chối chạy** + in đúng lệnh. Sửa file đã áp ⇒ nêu cờ, KHÔNG áp lại.
+**⚠️ CÒN TREO:**
+1. **Báo cáo Vận hành của Lộc** — cần CEO đưa mẫu.
+2. **Deploy + khai `TROLY_PUSH_APP`** để thông báo thứ Hai chạy; Lộc đăng ký nhận tin.
+3. **`fn_viec_buoi_thuong` vẫn sinh việc** "chấm bài trên lớp" cho buổi trước 01/10 và việc BTVN cho buổi không được gán BTVN ⇒ màn Việc của tôi,
+   hiệu suất, gậy đang tính oan. Báo cáo đã bỏ qua, engine việc thì CHƯA — sửa engine phải hỏi CEO.
+4. **"Chuyển lịch" bổ trợ chưa đo được:** hệ không ghi vết đổi ngày/giờ buổi bổ trợ; số gần nhất là "OPS gỡ ở Lịch phòng". Cần trigger ghi lịch sử.
+5. **3 dòng của mẫu báo cáo chưa có nguồn dữ liệu** (báo cáo nói thẳng, không bịa): HS làm bài chậm hơn lớp (`gami_grades.speed` 100% mặc định) ·
+   "không làm BTVN đã tác động đến đâu" (không bảng nào ghi) · danh sách CHỜ duyệt bổ trợ (engine phát hiện còn ở client).
+6. **Các con số của thường đạt đang là số em tự đặt** (1,5×IQR · 1σ · 2σ · tối thiểu 4 lần đo · chưa chốt 7 ngày) — chờ CEO chỉnh. SPEC §7.3.
+7. Nối khung hỏi vào `fn_troly_goi` · gỡ mảng Yếu/Test lỗi thời · toàn màn hình thật + bút trình chiếu chưa kiểm được.
+8. Treo từ 12/08, CHƯA kiểm lại: Level thiếu 2/3 loại kỳ thi nên không chốt được.
+
+**SỐ MỐC để đối chiếu (tính 29/09):** báo cáo 14 ngày 16–29/09: 59 chậm · 48 miss · 29 lượt HS không đến · 73 đóng muộn; **87% buổi bấm đóng "chấm bài
+trên lớp" mà không có dòng chấm nào**; 7 lớp có buổi mà chưa phân công đủ GV/TA. Tuần 21–27/09: việc đúng chuẩn cả trung tâm 63,1% (ET 86,2 · đánh giá
+56,5 · BTVN 36,4); **vấn đề:** HS nộp BTVN đạt chuẩn 67% (thường đạt 84) · 11 lớp nộp dưới ngưỡng · 13 HS bị GV báo động · điểm ET TB 78,2% (82,2);
+bổ trợ yếu: cần 120 case, lên lịch 20,8%, đã bổ trợ 10,8%, sự cố 59,4% lượt, duyệt → xếp lịch TB 12,5 ngày.
+
+**HẠ TẦNG dựng từ 12/08 (độc lập trợ lý, còn dùng):**
+- **`npm run migrate`** — sổ `_migrations` (tên + vân tay sha256), ghi TRONG CÙNG transaction. `--status` xem thuần · `--only <tên file>` áp 1 file ·
+  `--baseline <file>` dựng sổ cho DB cũ · DB có bảng mà chưa có sổ ⇒ **từ chối chạy** + in đúng lệnh. Sửa file đã áp ⇒ nêu cờ, KHÔNG áp lại.
 - **`npm run schema` dump được VIEW** + **canary RLS** ghi cảnh báo thẳng vào đầu `schema.md`.
-- **`scripts/census-dulieu.mjs`** — bản đồ dữ liệu THẬT: 125 bảng · 78 sống · 22 nguội · 22 rỗng · 3 bị RLS che.
-- **`scripts/check-troly.mjs`** — oracle SQL độc lập, kiểm "sai đọc = 0%".
-- **`viec.nghiem_thu_nguon`** (`nguoi`/`tu_dong`) — đếm `tu_dong`/tuần = chỉ số đo trợ lý chặn được lỗ đen không.
-- **Quyền DB:** `.env` chỉ có `DATABASE_URL` → role `claude_build`, **GHI ĐƯỢC**, **SỞ HỮU 121/124 bảng**.
-  Rào "chỉ đọc" là **kỷ luật, không phải cơ chế**. Tách `DATABASE_URL_RO` chưa làm (phải kèm `bypassrls`).
-
-**⚠️ CÒN TREO — QUYẾT TRƯỚC KHI ĐI TIẾP:**
-1. **Hạn "đánh giá/chấm lớp" đang là 23:59 CÙNG NGÀY buổi** ⇒ buổi tối qua thành nợ ngay 0h sáng nay
-   ⇒ rổ "phải hoàn thành hôm nay" gần như LUÔN RỖNG (12/08: rỗng, trong khi 4 buổi 11/08 còn nguyên).
-   Đúng luật nhưng vô dụng. **Đề xuất: nới sang trưa hôm sau** (ET vốn đã 12h hôm sau — có tiền lệ).
-2. CEO hẹn bàn tiếp: **cần thông báo những gì** và **CEO hay miss những gì** → đây mới là nguồn thật
-   cho danh sách nhắc, thay cho phỏng đoán của Claude.
-3. Bổ trợ đuổi (lượt 2, `anhChupChuoiDuoi` đã viết sẵn): ngưỡng từ 34 đợt hoàn thành (p50=3·p75=7·p90=12·max=16)
-   ⇒ **4/8 đợt đáng nhắc**, cũ nhất 21 ngày (Phạm Kim Oanh 9C1). Lộc chỉ cần xác nhận 4 SỰ THẬT.
-4. Cụm bổ trợ+level, 3 kiểu hỏng khác nhau: `bo_tro_yeu` **không có đường ghi nào** (chưa xây xong) ·
-   `canh_bao_yeu` 20 dòng đang sống **chảy vào hư không** · Level thiếu **2/3 loại kỳ thi** nên không chốt được.
-5. Tách role RO/RW · ẩn danh (module này vốn đã không gửi tên HS).
+- **`scripts/census-dulieu.mjs`** — bản đồ dữ liệu thật (bảng sống / nguội / rỗng / bị RLS che).
+- **`scripts/check-troly.mjs`** — oracle SQL độc lập cho các tab cũ, kiểm "sai đọc = 0%".
+- **`viec.nghiem_thu_nguon`** (`nguoi`/`tu_dong`).
 
 ### Chuỗi đã dò xong #1 — TEST ĐẦU VÀO (12/08, chờ 1 câu để kích hoạt)
 
@@ -2148,9 +2172,9 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
 
 ### Bài học 12/08 (phần 2) — dựng sản phẩm & bẫy kỹ thuật
 
-- **⭐⭐ DANH SÁCH = DASHBOARD. Thứ biến nó thành TRỢ LÝ là HỎI ĐƯỢC.** CEO: *"trợ lý đưa ra 1 đống thứ thì
-  khác gì dashboard và việc của tôi nhỉ"*. Doc §1 nói *"ERP đã hiển thị đủ dữ liệu, người quá tải không tự
-  tổng hợp nổi"* — mà Claude lại đi dựng THÊM một màn hiển thị. **Đọc-hộ-và-kết-luận** mới là sản phẩm.
+- **⭐⭐ SẢN PHẨM LÀ "ĐỌC-HỘ-VÀ-KẾT-LUẬN", không phải thêm một màn hiển thị.** Doc §1: *"ERP đã hiển thị đủ dữ liệu, người quá tải
+  không tự tổng hợp nổi"*. 12/08 CEO nghĩ đường tới đó là HỎI ĐƯỢC; **29/09 CEO chốt lại: BÁO CÁO là chính, hỏi là phụ** — báo cáo đủ thì không cần hỏi.
+  Điểm chung của cả hai lần: một danh sách đổ ra là vô dụng; phải có **con số kết luận + của ai + so với mức thường đạt**, chi tiết để sau nút bấm.
 - **⭐ CHO NGƯỜI QUYẾT rẻ hơn nhiều so với CỐ HIỂU TRƯỚC.** Cả buổi kẹt ở "chưa biết must-exist nên không dám
   nhắc" → đâm đi kiểm toán 125 bảng. Ba nút Làm/Huỷ/Gác gỡ sạch: **nhắc sai thì bấm Huỷ, luật lộ ra từ các
   lần bấm.** Đúng vòng lặp doc §11 — nhắc trước, người quyết, dữ liệu tự đầy dần. Claude làm NGƯỢC.
@@ -2384,6 +2408,52 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
   - Không có LibreOffice ⇒ `recalc.py` của skill xlsx chết (AF_UNIX) ⇒ bật `fullCalcOnLoad` + tự kiểm công thức bằng Python.
 - **DEVLOG xung đột merge với phiên song song** (cả hai cùng append cuối file) ⇒ giữ CẢ HAI phía (xoá 3 dòng marker), commit merge.
   Không rebase / đè.
+
+### Bài học 29/09 — trợ lý: báo cáo Sư phạm + tổng kết tuần
+
+**Hiểu yêu cầu**
+- **⭐⭐ HỎI "BÁO CÁO NÀY CỦA AI" TRƯỚC KHI XÂY.** Xây 2 lượt mới biết mẫu là của Trang (Sư phạm), còn Lộc (Vận hành) cần bản khác. Mỗi người quản một
+  mảng có một bộ báo cáo — không có "báo cáo chung".
+- **⭐⭐ BÁM MẪU TỪNG CHỮ ≠ HIỂU KHUNG.** Bản đầu chép đúng 7 mục của mẫu, đơn vị là "lớp trong một ngày", mở sẵn mọi danh sách ⇒ đọc xong vẫn không biết
+  việc nào của ai. CEO phải rút khung hộ (3 luồng). **Đơn vị của báo cáo vận hành là VIỆC có người phụ trách + hạn**, không phải lớp hay ngày.
+- **⭐ ĐO VIỆC DÙNG THẬT TRƯỚC KHI LÀM TIẾP MỘT TÍNH NĂNG.** Đếm câu hỏi đã lưu mới lộ: tab trợ lý 21 câu cả đời, 3 nút không ai bấm. Không đo thì đã đi
+  "sửa cho hỏi được" — đúng thứ CEO sau đó gọi là phụ.
+- **Cùng một chữ, hai trục:** "xin phép" hợp lệ về THÁI ĐỘ nhưng nghĩa vụ NỘP BÀI vẫn còn. "Học sinh không đến" là sự cố của học sinh, không phải miss của
+  nhân sự. Gặp trạng thái mơ hồ thì hỏi nó thuộc trục nào, đừng tự gộp.
+
+**Postgres / quyền**
+- **⭐⭐ TEST BẰNG ROLE CHỦ BẢNG KHÔNG THẤY RLS LẪN TRẦN 8 GIÂY.** Hàm báo cáo chạy 1 giây khi test, lên app thì "statement timeout" — vì người dùng thật
+  đi qua RLS của từng bảng. Hàm tổng hợp nặng ⇒ `SECURITY DEFINER` có cổng ở dòng đầu + thu quyền gọi thẳng các hàm bên trong. **Chỉ coi là xong khi đã
+  mở trên app bằng phiên đăng nhập thật.**
+- **⭐ Báo cáo nặng thì LƯU, đừng tính mỗi lần mở.** Và bản lưu phải mang **số phiên bản của cách tính**: nhận biết bằng "có khoá X" không phân biệt được
+  luật cũ/mới ⇒ đổi luật xong người dùng vẫn thấy số cũ tới hết ngày.
+- **⭐ Nhiều phiên cùng sửa một DB: tạo lại hàm có sẵn thì lấy thân từ `pg_get_functiondef`**, thay bằng script "mỗi phép thay phải khớp ĐÚNG 1 chỗ", rồi
+  **so JSON trước/sau**. File migration cũ của chính mình có thể không còn là bản đang chạy (phiên khác đã sửa 2 hàm báo cáo trong lúc làm).
+- **⭐ Công thức dùng ở 2 nơi ⇒ tách HÀM GỐC trả mọi dòng + nhãn, hai nơi đọc từ đó.** Kiểm việc tách bằng "kết quả cũ không đổi một ký tự" (0 chỗ khác).
+- **Cờ nội bộ đặt bằng `set_config(…, true)` sống tới HẾT transaction**, không phải hết hàm ⇒ dùng xong phải hạ ngay, rồi kiểm lại cổng sau khi áp.
+- **Muốn thêm tham số cho hàm đừng `drop` rồi tạo lại** (Luật xoá): `create or replace` đổi được `stable` → `volatile` mà giữ nguyên chữ ký.
+- **Đếm theo buổi bằng subquery tương quan trên `gami_grades`/`btvn_ket_qua` rất chậm** (không có index dẫn đầu bằng `buoi_hoc_id`): 17 giây → 0,14 giây
+  khi gom trước bằng CTE rồi join.
+- **`gami_grades.graded_by` là `tai_khoan.id`, KHÔNG phải `nhan_su.id`** — tra người chấm phải đi qua `tai_khoan`.
+
+**Thống kê trên chuỗi tuần**
+- **⭐⭐ "MẢNG CHƯA CHẠY" ≠ "ĐO RA 0"** (CLAUDE.md §1.5 áp cho cả chuỗi thời gian). Tính cả các tuần trước khi có ca test đầu vào ⇒ thường đạt = 0,1 và mọi
+  tuần có ca test thật bị coi là nhiễu. Mỗi chỉ số cần một số "neo" để biết từ tuần nào mới là lần đo.
+- **⭐ Chỉ số chưa "chín" không đem so với lịch sử đã chín** (bù đã học, test đã trả kết quả): tuần mới nhất luôn ra "vấn đề" giả.
+- **⭐ Mẫu số phải loại việc CHƯA TỚI HẠN**, nếu không tuần mới nhất luôn xấu giả (BTVN tuần vừa rồi: 26/59 việc chưa tới hạn chấm).
+- **Khâu đang đi lên thì trung bình toàn lịch sử vô nghĩa** (luôn "trên thường đạt", tuần tốt gần đây bị lọc như nhiễu) ⇒ cửa sổ trượt. Nêu hệ quả của
+  định nghĩa cho CEO thấy bằng số, để CEO chọn — đừng tự đổi định nghĩa.
+- **Ngưỡng theo độ lệch chuẩn của CHÍNH chỉ số**, không một con số cứng cho mọi chỉ số (chuyên cần dao động ~4 điểm, ET đúng chuẩn ~19 điểm).
+
+**Giao diện**
+- **⭐⭐ TÍNH NĂNG CỐT LÕI KHÔNG TREO VÀO API MÀ TRÌNH DUYỆT CÓ QUYỀN TỪ CHỐI.** Trình chiếu dựa hẳn vào `requestFullscreen` ⇒ nơi bị từ chối thì bấm nút
+  không thấy gì. Dựng lớp phủ của mình trước, toàn màn hình chỉ cộng thêm. Và `fullscreenchange` báo "đã thoát" ngay sau khi vào KHÔNG có nghĩa người
+  dùng muốn thoát.
+- **⭐ Trình chiếu ≠ màn thường phóng to.** Mỗi bảng một màn vừa khít, chuyển trang — đứng chiếu không ai kéo chuột. Co giãn bằng `transform: scale` trên
+  khối có bề rộng gốc cố định (đo bằng ResizeObserver); `zoom` làm đổi kích thước bố cục nên phép đo tự kích lại chính nó.
+- **⭐ Hai lần liền "viết xong, kiểu đúng, build qua" mà bấm thử mới lộ hỏng.** `tsc` sạch không nói gì về việc nút có chạy.
+- **Xem thử từ worktree:** công cụ preview phục vụ checkout CHÍNH. `fetch` file mới trả 200 có thể chỉ là trang index của SPA — phải nhìn nội dung, không
+  nhìn mã trạng thái. Muốn xem bản mới: đẩy lên `main` rồi kéo về checkout chính.
 
 ## ③ Nhật ký
 → Chuyển sang **`DEVLOG.md`** (log thô append-only, theo ngày, KHÔNG load khi làm). Là nguồn bất biến để truy lại / tổng hợp lại HANDOFF nếu bản này sai logic.

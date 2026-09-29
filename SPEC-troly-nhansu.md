@@ -229,7 +229,10 @@ Tính năng thứ hai của trợ lý, đứng cạnh Báo cáo. Hai thứ trả
   tuyển sinh. **Học phí KHÔNG đưa vào.**
 - **Dựng theo BẢNG, mỗi mảng một bảng**, cùng bộ cột: tuần này · tuần trước · thường đạt · so với thường đạt ·
   xu hướng. Bảng đầu = "Cần chú ý" (chỉ số đang dưới thường đạt).
-- **Để thẳng trên ERP** (không xuất file HTML rời). Có chế độ trình chiếu toàn màn hình.
+- **Để thẳng trên ERP** (không xuất file HTML rời).
+- **Trình chiếu: mỗi bảng MỘT màn vừa khít, chuyển Trước / Sau** (CEO: *"mỗi bảng full 1 màn, để dạng next - back
+  đi chứ ko nên để kéo lên kéo xuống ko tiện"*). Không phải màn thường phóng to. Có mục lục để nhảy thẳng tới bảng
+  cần bàn; dùng được phím mũi tên / bút trình chiếu. Trình duyệt từ chối toàn màn hình thì vẫn phải chiếu được.
 - **Tự tính sáng thứ Hai** cho tuần vừa rồi + thông báo cho nhóm được dùng trợ lý.
 
 ### 7.2 Luật kỹ thuật

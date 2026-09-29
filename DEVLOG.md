@@ -31933,3 +31933,17 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **ĐÃ KIỂM trên app thật (localhost, tài khoản Thùy):** bấm Trình chiếu ra trang 1/9 "Cần chú ý" · nút Sau › và phím → chuyển đúng trang ·
   ở khổ ngang 1600×900 bảng 7 dòng (Kết quả học tập) phóng 1,44 lần, vừa khít, KHÔNG cuộn · Esc thoát về màn thường.
   CHƯA kiểm: toàn màn hình thật của trình duyệt (khung xem thử không giữ được) và bút trình chiếu.
+
+## 2026-09-29 (22) — TRỢ LÝ: distill lên HANDOFF + ghi spec (Thùy: "ghi vào md và tổng kết handoff đi")
+
+- **HANDOFF.md — CHỈ đụng phần trợ lý** (các mục khác thuộc phiên khác đang chạy song song, giữ nguyên):
+  - ① thay NGUYÊN mục "Đã build (12/08 — TRỢ LÝ AI…)" (71 dòng) bằng "⭐⭐ TRỢ LÝ — trạng thái 29/09" (90 dòng). Bỏ vì đã lỗi thời: hướng "nhắc việc
+    hàng ngày + hỏi được" · mô tả 4 khối màn hình · luồng chat qua worker quét 3 giây (đã là `api/troly.mjs` đồng bộ từ 19/08) · 4/5 mục "còn treo"
+    của 12/08 (hạn đánh giá 23:59 đã đổi sang +36h; `bo_tro_yeu` đã là luồng thật). Giữ: khối hạ tầng migrate/schema/census, ranh giới model, số đo chi phí.
+    Mục "Level thiếu 2/3 loại kỳ thi" CHƯA kiểm lại nên giữ, ghi rõ là chưa kiểm.
+  - ① thêm 1 dòng trỏ ở đầu file.
+  - ② gộp bài học 12/08 "danh sách = dashboard, phải hỏi được" với quyết định 29/09 đã thay nó · thêm khối "Bài học 29/09" (4 nhóm: hiểu yêu cầu ·
+    Postgres/quyền · thống kê trên chuỗi tuần · giao diện).
+- **CLAUDE.md:** thêm dòng trỏ `SPEC-troly-nhansu.md` vào danh sách spec bắt buộc đọc.
+- **SPEC-troly-nhansu.md §7.1c:** thêm luật trình chiếu mỗi bảng một màn.
+- Bản cũ của mục 12/08 vẫn nằm trong lịch sử git của HANDOFF.md (commit trước commit này).
