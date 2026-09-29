@@ -236,7 +236,12 @@ export type AnhChupViecToi = {
 }
 
 // Kết luận đã rà, khoá theo (buổi × khâu). Đọc riêng để ghép vào ảnh chụp.
+// ⚠ Việc không gắn buổi mang buoiId = '' — để lọt vào `.in()` là PostgREST trả 400 ("invalid input
+//   syntax for type uuid") và hỏng CẢ lượt đọc, không riêng dòng đó (dính thật 29/09). Lọc ở cả 3 hàm.
+const chiIdThat = (ids: string[]) => ids.filter(Boolean)
+
 async function ketLuanDaCo(buoiIds: string[]): Promise<Map<string, { ketLuan: KetLuanRaSoat; ghiChu: string | null }>> {
+  buoiIds = chiIdThat(buoiIds)
   if (!buoiIds.length) return new Map()
   const { data } = await supabase.from('troly_ra_soat')
     .select('buoi_hoc_id, tab, ket_luan, ghi_chu').in('buoi_hoc_id', buoiIds).limit(5000)
@@ -335,6 +340,7 @@ export type BangNhac = {
 // đúng một tập như nhau — việc đã bấm HUỶ mà rổ "nợ" vẫn kêu thì ba nút thành vô nghĩa.
 async function docQuyetDinh(buoiIds: string[]): Promise<Map<string, { quyetDinh: QuyetDinh; gacDen: string | null }>> {
   const m = new Map<string, { quyetDinh: QuyetDinh; gacDen: string | null }>()
+  buoiIds = chiIdThat(buoiIds)
   if (!buoiIds.length) return m
   const { data } = await supabase.from('troly_ra_soat')
     .select('buoi_hoc_id, tab, ket_luan, gac_den').in('buoi_hoc_id', buoiIds).limit(5000)
@@ -773,6 +779,7 @@ const hhmm = (s: string) => String(s).slice(0, 5)
 //   Thà thiếu cờ "đang dở" còn hơn gắn bừa rồi người tin nhầm là đã làm dở.
 async function daBatDau(buoiIds: string[]): Promise<Record<string, Set<string>>> {
   const ra: Record<string, Set<string>> = { danhgia: new Set(), ingame: new Set(), btvn: new Set() }
+  buoiIds = chiIdThat(buoiIds)
   if (!buoiIds.length) return ra
   const [dg, ig, bt] = await Promise.all([
     supabase.from('buoi_danh_gia').select('buoi_hoc_id').in('buoi_hoc_id', buoiIds).limit(5000),

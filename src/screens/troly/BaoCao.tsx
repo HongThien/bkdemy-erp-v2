@@ -365,7 +365,10 @@ export default function BaoCao() {
   // lưu (hôm nay chưa ai tính thì tự tính một lần). Bộ nhớ của màn chỉ dùng trong CÙNG ngày:
   // để tab mở qua đêm thì sáng hôm sau phải hỏi lại DB chứ không bày số hôm qua.
   async function tai(n: number, tinhLai = false) {
-    if (!tinhLai && NHO.bc && NHO.soNgay === n && NHO.bc.den === homNayVN()) { setBc(NHO.bc); return }
+    if (!tinhLai && NHO.bc && NHO.soNgay === n && NHO.bc.den === homNayVN()) {
+      // Quay lại tab = đang xem bản đã có, không phải "vừa tính xong"
+      setBc({ ...NHO.bc, luu: { ...NHO.bc.luu, vua_tinh: false } }); return
+    }
     setLoi(null); setDangTai(true)
     try {
       const d = await getBaoCao(n, tinhLai)
