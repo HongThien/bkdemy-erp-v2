@@ -4,7 +4,7 @@
 //   → hiện đáp án + lời giải chi tiết của câu → "Câu tiếp". BTVN reveal ngay, làm lại tới hạn.
 // Skin = plain-clean; game (Fredoka/mascot/gradient) làm phiên design sau.
 // ============================================================================
-import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { supabase } from '../../lib/supabase'
 import { MathText } from '../kho/ui'
 import { LamDienO } from './DienOCau'
@@ -15,7 +15,6 @@ import {
 } from '../../lib/testonline'
 import { diemDeThiCuaToi, type DiemCuaToi } from '../../lib/dethi'
 import { mucDeadline, nhanConLai } from '../../lib/tuan'
-import { seededShuffleWithOrig, seededPermByDang } from '../../lib/shuffle'
 import {
   luotTuLuyenHomNay, sinhTuLuyen, sinhTuLuyenChuDe, monCuaHS, laCap1HS, khoiCuaHS, hoSoCuaToi, xepHangTuLuyen,
   lopMonCuaHS, chonMonHS, monDangChon,
@@ -654,12 +653,11 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
       setSt(init)
       // TIẾN TRÌNH (Thùy 29/08: "vào toàn bắt bật lại từ câu 1"): mở lại bài dở → nhảy thẳng câu
       // CHƯA làm đầu tiên; xong hết → vào thẳng màn kết quả (tự luyện: nơi có nút "Làm thêm").
-      // Vị trí KHÔNG cần lưu đâu cả — suy từ f.daLam (bai_lam_cau) theo ĐÚNG thứ tự hiển thị đã xáo
-      // seeded (tính lại y hệt useMemo `caus` dưới — seed ổn định nên 2 nơi cho cùng 1 hoán vị).
+      // Vị trí KHÔNG cần lưu đâu cả — suy từ f.daLam (bai_lam_cau) theo ĐÚNG thứ tự hiển thị (= f.caus,
+      // không xáo — xem `caus` dưới).
       if (Object.keys(f.daLam).length > 0) {
-        const order = f.baiTest.loai === 'giao_trinh' ? f.caus : seededPermByDang(f.caus, `${hocSinhId}:${baiTestId}:q`).map((i) => f.caus[i])
-        const dau = order.findIndex((c) => !f.daLam[c.id])
-        setIdx(dau === -1 ? order.length : dau)
+        const dau = f.caus.findIndex((c) => !f.daLam[c.id])
+        setIdx(dau === -1 ? f.caus.length : dau)
       }
     })().catch(console.error)
   }, [baiTestId, hocSinhId])
@@ -672,20 +670,12 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
     if (full.caus.length > 0 && full.caus.every((c) => st[c.id]?.kq)) { setNopped(true); nopBai(baiLamId).catch(() => {}) }
   }, [st, full, baiLamId, nopped])
 
-  // Xáo THỨ TỰ CÂU theo (HS×bài) — ổn định (mở lại vẫn thấy đúng thứ tự cũ), khác nhau giữa các HS
-  // (chống liếc bài). CHỈ xáo câu TRONG CÙNG 1 DẠNG, giữ nguyên khối/thứ tự các dạng (xem shuffle.ts).
-  // Chấm/khôi phục vẫn khớp `cau.id`, không phụ thuộc vị trí → an toàn tuyệt đối.
-  // ⚠ Thùy 22/08: "giáo trình phát hành phải giống HỆT lúc gán — sao lại tự đổi câu và thứ tự".
-  // Xáo trên vốn để chống-liếc-bài cho ET/BTVN — GIÁO TRÌNH không có khái niệm "liếc bài" (cả lớp học
-  // CHUNG 1 tài liệu in/chiếu, thứ tự phải khớp bản GV đang cầm) nên PHẢI khoá y hệt `full.caus` (đã
-  // đúng thứ tự gán từ `trichXuatBuoi`/`copyPhanInto`, xem tailieu.ts). Cùng nguyên tắc đã áp cho ET
-  // khi có ≥2 mã đề (LamET: `test.co_nhieu_ma_de` → bỏ xáo, commit 08b8321) — giáo trình luôn bỏ xáo.
-  const khoaThuTuGoc = full?.baiTest.loai === 'giao_trinh'
-  const caus = useMemo(() => {
-    if (!full) return []
-    if (khoaThuTuGoc) return full.caus
-    return seededPermByDang(full.caus, `${hocSinhId}:${baiTestId}:q`).map((i) => full.caus[i])
-  }, [full, khoaThuTuGoc, hocSinhId, baiTestId])
+  // ⭐ KHÔNG XÁO GÌ CẢ — Thùy 29/09: "tất cả mọi tài liệu phải giống giữa giấy và app, ko xáo đáp án
+  // và thứ tự nữa" (HS báo phiếu BTVN và app lệch thứ tự câu). Thứ tự câu = `full.caus` (bai_test_cau
+  // order by thu_tu = đúng thứ tự tài liệu in); A/B/C/D và a/b/c/d = đúng thứ tự gốc của câu.
+  // Trước đây xáo chống liếc bài (05/07 → 29/09), chỉ giáo trình được khoá (22/08). ĐỪNG bật lại xáo
+  // ở tầng hiển thị: số câu/chữ cái trên app phải khớp phiếu giấy em đang cầm.
+  const caus = full?.caus ?? []
 
   if (!full) return <ManCho>Đang tải bài…</ManCho>
   const total = caus.length
@@ -698,16 +688,12 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   const menhDe: MenhDeSnap[] = laDS ? ((cau!.menh_de as MenhDeSnap[]) ?? []) : []
   const keyDS: string[] = laDS ? ((cau!.dap_an_key as string[]) ?? []) : []
   const chonArr: (string | null)[] = laDS ? ((cs?.chon as (string | null)[]) ?? menhDe.map(() => null)) : []
-  // Xáo THỨ TỰ ĐÁP ÁN hiển thị (TN 4 phương án · ĐS 4 mệnh đề) theo (HS×bài×câu) — orig = chỉ số GỐC
-  // dùng để ghi state/so đáp án đúng; dispI = vị trí hiển thị (chỉ để đặt nhãn A/B/C/D · a/b/c/d).
-  // Giáo trình khoá NGUYÊN thứ tự (xem `khoaThuTuGoc` ở trên) — cùng lý do, cả lớp chung 1 tài liệu.
-  const optsShown = laTN && cau
-    ? (khoaThuTuGoc ? (cau.lua_chon ?? []).map((item, orig) => ({ item, orig })) : seededShuffleWithOrig(cau.lua_chon ?? [], `${hocSinhId}:${baiTestId}:${cau.id}:opt`))
-    : []
+  // Đáp án hiển thị (TN 4 phương án · ĐS 4 mệnh đề) ĐÚNG thứ tự gốc như phiếu giấy (không xáo — xem `caus`
+  // ở trên). orig = chỉ số GỐC dùng ghi state/so đáp án đúng; dispI = vị trí hiển thị (đặt nhãn A/B/C/D ·
+  // a/b/c/d) — giờ trùng nhau, giữ cặp để khối render không phải đổi.
+  const optsShown = laTN && cau ? (cau.lua_chon ?? []).map((item, orig) => ({ item, orig })) : []
   const correctOrigTN = laTN && daCham && cau ? chiSoCuaChu(cau.dap_an_key) : -1
-  const menhOrder = laDS && cau
-    ? (khoaThuTuGoc ? menhDe.map((item, orig) => ({ item, orig })) : seededShuffleWithOrig(menhDe, `${hocSinhId}:${baiTestId}:${cau.id}:ds`))
-    : []
+  const menhOrder = laDS && cau ? menhDe.map((item, orig) => ({ item, orig })) : []
   // Đã chọn đủ để Xác nhận? TN=đã chọn 1 · TLN=nhập khác rỗng · ĐS=đủ 4 ý.
   const daDu = laTN ? typeof cs?.chon === 'number'
     : laDS ? (chonArr.length === menhDe.length && menhDe.length > 0 && chonArr.every((x) => x != null))
@@ -1369,15 +1355,9 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
     })().catch(console.error)
   }, [test.id, hocSinhId]) // eslint-disable-line
   useEffect(() => { setGoiY(false) }, [idx])
-  // Xáo THỨ TỰ CÂU theo (HS×bài) — cùng cơ chế LamBai (xem ghi chú ở đó): chỉ xáo trong cùng 1 dạng.
-  // Test có ĐỦ 3 MÃ ĐỀ (test.co_nhieu_ma_de) → GIỮ NGUYÊN thứ tự thu_tu, KHÔNG xáo nữa (Thùy 18/08:
-  // "có nhiều mã đề thì không cần đảo thứ tự câu nữa" — mã đề đã khác nội dung, tự phân biệt HS rồi,
-  // xáo thêm thứ tự là thừa). et_de đã `order by bc.thu_tu` sẵn nên dùng thẳng `de`.
-  // Đề thi: giữ đúng thứ tự đề giấu (CEO 20/09 "vị trí trong đề giữ nguyên").
-  const caus = useMemo(() => {
-    if (!de) return []
-    return test.co_nhieu_ma_de || laDeThi ? de : seededPermByDang(de, `${hocSinhId}:${test.id}:q`).map((i) => de[i])
-  }, [de, hocSinhId, test.id, test.co_nhieu_ma_de, laDeThi])
+  // KHÔNG XÁO (Thùy 29/09, xem ghi chú `caus` trong LamBai): thứ tự câu = đúng phiếu giấy của mã đề em
+  // được gán — et_de đã `order by bc.thu_tu` theo bien_the của bai_lam nên dùng thẳng `de`.
+  const caus = de ?? []
 
   const daNop = !!reveal
   const hanMs = laDeThi && test.thoi_gian_phut && batDau ? batDau + test.thoi_gian_phut * 60000 : null
@@ -1440,11 +1420,10 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
   const menhDeReveal = (rv?.menh_de as { loi_giai?: string | null }[] | undefined) ?? []
   const chonArr = laDS ? ((ans[cau.id] as (string | null)[]) ?? (cau.menh_de ?? []).map(() => null)) : []
   const vd = rv?.verdict ?? ''
-  // Xáo THỨ TỰ ĐÁP ÁN hiển thị (cùng cơ chế LamBai) — orig ghi state/so đúng, dispI chỉ để đặt nhãn.
-  const optsShown = laTN && cau ? seededShuffleWithOrig(cau.lua_chon ?? [], `${hocSinhId}:${test.id}:${cau.id}:opt`) : []
+  // Đáp án A/B/C/D + ý a/b/c/d ĐÚNG thứ tự gốc như phiếu giấy (không xáo — Thùy 29/09). orig = dispI.
+  const optsShown = laTN && cau ? (cau.lua_chon ?? []).map((item, orig) => ({ item, orig })) : []
   const correctOrigTN = laTN && daNop ? chiSoCuaChu(rv?.dap_an_key) : -1
-  // Đề thi: giữ a) b) c) d) như đề giấy (không xáo ý).
-  const menhOrder = laDS && cau ? (laDeThi ? (cau.menh_de ?? []).map((item, orig) => ({ item, orig })) : seededShuffleWithOrig(cau.menh_de ?? [], `${hocSinhId}:${test.id}:${cau.id}:ds`)) : []
+  const menhOrder = laDS && cau ? (cau.menh_de ?? []).map((item, orig) => ({ item, orig })) : []
   // Số câu hiển thị: đề thi đánh số LẠI trong từng phần như đề giấy (Phần II bắt đầu lại Câu 1).
   const soTrongPhan = laDeThi && cau ? caus.slice(0, idx + 1).filter((c) => (c.phan ?? '') === (cau.phan ?? '')).length : idx + 1
   const dongHo = conLai != null ? `${Math.floor(conLai / 60)}:${String(conLai % 60).padStart(2, '0')}` : null

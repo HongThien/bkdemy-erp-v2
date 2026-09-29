@@ -32120,3 +32120,17 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - UI `GanMauPanel.tsx`: 1 câu/màn, cột phải 8 dạng kèm dấu hiệu nhận biết, phím 1–9 gán · ← → chuyển câu, tự nhảy câu chưa gán kế, dải số câu
   xanh/vàng/xám, xem đáp án + lời giải theo yêu cầu, vá tại chỗ + cache module-level. Nút 🎯 Gán mẫu trên Bản đồ kiến thức (registry `LO_GAN_MAU`,
   thêm lô = thêm 1 dòng). `DaiDang` thêm `mo_ta_ngan`. tsc sạch phần mình. Câu Đ/S: gán dạng Ý CHÍNH cả câu; dạng từng mệnh đề để màn Duyệt Đ/S.
+
+## 2026-09-29 — App HS: BỎ HẲN xáo câu + xáo đáp án — giấy và app phải giống hệt (Thùy: "tất cả mọi tài liệu phải giống giữa giấy và app, ko xáo đáp án và thứ tự nữa")
+
+- **Báo:** HS phản ánh thứ tự câu trên phiếu BTVN và trên app của cùng 1 tài liệu khác nhau.
+- **Đo trước khi sửa:** so `bai_test_cau` (snapshot app) với `tai_lieu_cau` (bản in sống) của 76 bài phát hành 30 ngày (btvn/giáo trình/ET) ⇒ **0 bài đảo thứ tự** —
+  dữ liệu đúng. Lệch nằm ở tầng HIỂN THỊ: `LamBai` xáo câu trong cùng dạng (`seededPermByDang`) + xáo A/B/C/D + a/b/c/d cho mọi loại trừ giáo trình
+  (30/30 BTVN bị lệch, 29 bài lệch cả chữ cái); `LamET` xáo A/B/C/D kể cả ET có 3 mã đề và đề thi. Ngày 22/08 t chỉ khoá giáo trình, để BTVN "chờ Thùy" — sai:
+  Thùy đã muốn khớp giấy từ trước ("t đã bảo là ko khoá nữa mà").
+- **Kiểm rủi ro lộ đáp án trước khi gỡ:** phân bố `dap_an_key` TN 60 ngày theo loại bài (tự luyện, bổ trợ, htd, form AI…) đều ~đều A/B/C/D ⇒ bỏ xáo không làm lộ.
+- **Sửa (`HocSinhApp.tsx`):** `LamBai` `caus = full.caus`, `LamET` `caus = de` (đã order by thu_tu theo mã đề của em); `optsShown`/`menhOrder` = thứ tự gốc (orig = dispI).
+  Tiến trình mở lại bài dở suy từ `f.caus`. Bỏ import `shuffle.ts` (file giữ nguyên, không còn ai dùng — muốn xoá phải hỏi). Chấm không đổi (vốn theo chỉ số gốc).
+  Bài đang làm dở: đáp án lưu theo `bai_test_cau_id` nên không mất, em chỉ thấy thứ tự đổi 1 lần.
+- **Verify:** tsc sạch phần mình · `check:style-hs` ✔ · `build:hs` ✔ · trang xem-thử dữ liệu giả (`xem-thu-thutu.html` + `src/_xem_thutu.tsx`, KHÔNG commit):
+  BTVN Câu 1 = phiếu câu 1, A/B/C/D gốc; giả đã làm 4 câu ⇒ mở đúng Câu 5 (Đ/S, a/b/c/d gốc); ET không mã đề 7/7 câu đúng thứ tự, đáp án gốc.
