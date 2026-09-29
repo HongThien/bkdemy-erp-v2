@@ -125,8 +125,8 @@ function TongQuanTab({ hsId, lop }: { hsId: string; lop: Lop }) {
           <HoanThanhCardUI ten="Toàn bộ" card={tq.hoanThanh.toanBo} trend={tq.trend.hoanThanhToanBo} />
           {laToan && <HoanThanhCardUI ten="Đại số · Cơ bản" card={tq.hoanThanh.daiCoBan} />}
           {laToan && <HoanThanhCardUI ten="Đại số · Nâng cao" card={tq.hoanThanh.daiNangCao} />}
-          {laToan && <HoanThanhCardUI ten="Hình học · Cơ bản" card={tq.hoanThanh.hinhCoBan} />}
-          {laToan && <HoanThanhCardUI ten="Hình học · Nâng cao" card={tq.hoanThanh.hinhNangCao} />}
+          {laToan && <HoanThanhCardUI ten="Hình · Cơ bản" card={tq.hoanThanh.hinhCoBan} />}
+          {laToan && <HoanThanhCardUI ten="Hình · Nâng cao" card={tq.hoanThanh.hinhNangCao} />}
         </div>
       </div>
       {/* ② Chỉ số hoạt động — % đúng câu, 3 nguồn × CB/NC */}
@@ -242,7 +242,7 @@ function DangBaiTab({ hsId, mon }: { hsId: string; mon: string }) {
       {rows.map((r) => <DangRow key={r.ma_dang} ten={r.ten_dang} phu={r.ten_chuyen_de} m={r.mastery} evals={r.evals} />)}
       {hinh.length > 0 && (
         <>
-          <p className="mt-1 px-1 text-[12px] font-bold uppercase tracking-wide text-slate-400">Hình học (mô hình)</p>
+          <p className="mt-1 px-1 text-[12px] font-bold uppercase tracking-wide text-slate-400">Hình Luyện (mô hình, cũ)</p>
           {hinh.map((r) => <DangRow key={r.hinh_baitoan_id} ten={r.ma} phu={r.ten_mo_hinh} m={r.mastery} evals={r.evals} />)}
         </>
       )}

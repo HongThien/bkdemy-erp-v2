@@ -31643,3 +31643,32 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Đo (ROLLBACK, rồi áp thật): ca 📱 5 dạng mở, em làm 2, gửi tick 5 ⇒ chỉ 2 dạng ghi đã dạy, case còn mở, còn 3 · ca 📄 giấy tick 1 ⇒ đúng 1.
 - App TA: 📱 thay ô tick bằng danh sách "Dạng em đã học buổi này" (chỉ đọc) + "còn N dạng" / "⚠ học hết ⇒ Hoàn tất là KẾT THÚC" (so_dang_con_day
   từ DB) + gợi ý chọn 📄 nếu học giấy; 📄 ô tick mặc định trống, chỉ tick sẵn dạng có kết quả phiếu đã nhập. Gửi tick chỉ khi 📄. tsc sạch.
+
+### 29/09 — Fix: ET/BTVN Hình học (cấp 2) "không vào ERP" — lớp báo cáo bỏ im lặng mọi dạng ngoài dai_ban_do (Thùy)
+- **Triệu chứng (Thùy):** "bài tập và ET của hình học đang ko gán được vào ERP" — "không phải 11B, mà là các lớp cấp 2".
+- **Dò (DB chỉ-đọc, phiên `default_transaction_read_only`):** ĐƯỜNG GHI KHÔNG HỎNG. 21 ET + 15 BTVN `tai_lieu.nhanh='hinh_hoc'` (15→28/09)
+  đều gắn lớp+ngày; buổi mở tab chấm là có lưới `gami_session_problems` đúng `ma_cau`→`ma_dang` (HH…) + đã chấm (vd 11A1 19/09 72 ô,
+  8B1 21/09 13/13). Hàm việc/đóng phase/mastery DB/rank đều không phân nhánh. Ngoại lệ vận hành: 9S1 27/09 + 7S1 16/09 có GT+BTVN
+  Hình học nhưng KHÔNG có ET, ET đóng với 0 ô.
+- **Nguyên nhân thật — ĐƯỜNG ĐỌC:** `src/lib/mastery.ts` (Kết quả học tập, Report PH, GV HocSinhView/LopView, Trợ lý, Trước buổi,
+  Ôn tập) tra dạng bằng `khoCuaMon(mon).banDoTbl` = Toán CHỈ `dai_ban_do`, rồi `if (!info) continue` ⇒ Bài Hình học (hinh_hoc_bai)
+  VÀ dạng Hình giải tích (hgt_ban_do) bị coi là "môn khác", rơi im lặng khỏi mọi % (ET/BTVN/MT, hoàn thành bản đồ). Cột "Hình" lại
+  đọc Hình LUYỆN (mô hình) ⇒ từ khi chuyển sang phase Học (16/09) cột Hình trống. Đo 09/2026 khối 6–9: ET HH 171 ô + HGT 231 ô rơi;
+  BTVN HH 287 + HGT 708. (Toàn lịch sử Toán: HGT ET 912 / BTVN 3.194 / MT 528 ô cũng rơi từ trước.)
+- **Thùy chốt (29/09):** Hình học và HGT là 2 nhánh riêng, báo cáo dùng nhãn chung "Hình" · Bài chưa gán độ khó (35/35) tạm tính
+  Cơ bản · cột Hình CHỈ Hình học (Bài) + HGT — bỏ Hình Luyện khỏi báo cáo (Luyện không dùng nữa).
+- **Sửa (client, không migration):** registry `NHANH_CUA_MON` thêm `nhomBC` ('hinh' cho hinh_gt/hinh_hoc) + `mucDoThieu` (hinh_hoc=1).
+  `dangInfoCuaMon(mon, maList)` (mastery.ts) tra MỌI nhánh của môn theo registry, trả `nhanh/nhomBC/mucDoBC` (muc_do thật giữ để hiển thị,
+  mucDoBC chỉ để chia CB/NC; ten_chuyen_de trống ⇒ tên nhánh). Thay ở getMasteryHS · getTongQuanHS (Đại/Hình × CB/NC theo nhomBC, bỏ khối
+  Luyện hinh_baitoan_id) · loadMasteryCells (+pivot lọc theo mucDoBC) · truocbuoi (tên dạng đánh giá). KetQua DangBaiTab tách Đại/Hình theo
+  nhomBC, bỏ getHinhMasteryHS; nhãn cột "Hình — …". GV HocSinhView: danh sách Luyện đổi nhãn "Hình Luyện (mô hình, cũ)".
+- **Giữ phạm vi luồng chưa bật Hình:** bổ trợ yếu `getDangYeuGoiY` lọc `nhanh == null` (MCQ qua `_kho_cau_tbl` chưa biết hinh_hoc).
+  BT bổ trợ: gợi ý chỉ cùng nhánh BT (chưa có dạng thì dạng đầu set nhánh). Ôn tập: bảng câu theo nhánh của từng dạng (trước đây HGT/HH
+  không bao giờ tới bước chọn câu vì return [] sớm — nay tới được nên phải nhánh-aware).
+- **Kiểm:** tsc + vite build sạch. Mô phỏng SQL logic mới, ET Toán 09/2026: 7S1 135→144 · 8B1 108→126 · 9A1 126→167 · 9B2 118→199 ô;
+  0 ô Toán còn ngoài (trừ 9 ô Luyện của 8B1 — bỏ theo chốt). `authenticated` đọc được cả 4 bảng bản đồ (policy member_all).
+  CHƯA soi trên app thật (không tự đăng nhập Supabase thật) — cần mở Kết quả học tập 1 em 8B1/9B2 xem cột Hình.
+- **Còn treo (cùng họ lỗi, chưa đụng):** DB `_kho_cau_tbl`/`_kho_ban_do_tbl` chưa biết hinh_hoc (bổ trợ yếu/bù/đuổi, sổ tay, tự luyện,
+  nhiệm vụ, thành tựu) · `hs_dang_evals` (app HS) chỉ join dai/hgt ⇒ Hình học không có tên dạng · Đánh giá GV (danhgia.ts) đọc banDoTbl
+  theo ma_chuyen_de. Phát hiện kèm: ~1.550 ô chấm Toán (07–09/2026) mang mã Đại CŨ không còn trong dai_ban_do (T107010202 611 ô,
+  T106020205, T111010103…) ⇒ cũng rơi khỏi báo cáo — việc riêng.

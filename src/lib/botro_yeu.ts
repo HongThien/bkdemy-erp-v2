@@ -154,6 +154,9 @@ export type DangGoiY = {
 export async function getDangYeuGoiY(hocSinhId: string, mon: string): Promise<DangGoiY[]> {
   const all = await getMasteryHS(hocSinhId, mon, { includeBTVN: true })
   return all
+    // Chỉ nhánh GỐC của môn: getMasteryHS trả mọi nhánh từ 29/09, nhưng bổ trợ yếu CHƯA bật nhánh Hình (chọn câu
+    // MCQ qua _kho_cau_tbl chưa biết hinh_hoc — HANDOFF "chưa bật nhánh này") ⇒ giữ đúng phạm vi cũ.
+    .filter((d) => d.nhanh == null)
     .filter((d) => d.mastery && d.mastery.muc !== 'dat') // lọc theo NHÃN DB đã tính (fn_mastery_cells), không tính lại
     .map((d) => ({
       ma_dang: d.ma_dang, ten_dang: d.ten_dang, ten_chuyen_de: d.ten_chuyen_de,

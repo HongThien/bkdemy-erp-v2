@@ -25,16 +25,21 @@ export function khoCuaMon(mon?: string | null, nhanh?: string | null): { cauTbl:
 // REGISTRY nhánh dạng-based TRONG 1 môn (UI toggle "chọn bản đồ"). Môn không có trong registry = 1 nhánh
 // duy nhất (nhanh=null), không hiện toggle. Thêm nhánh mới = thêm dòng ở đây + nhánh trong khoCuaMon —
 // KHÔNG `if (mon === 'Toán')` rải rác ở component (symmetry test §1.6).
-const NHANH_CUA_MON: Record<string, { ma: string | null; ten: string }[]> = {
+// `nhomBC` = cột báo cáo (Kết quả học tập / Report PH): Thùy 29/09 — Hình học và Hình giải tích là 2 nhánh
+// RIÊNG nhưng báo cáo gộp chung nhãn "Hình". Thiếu = 'dai' (cột mặc định; môn 1 nhánh như KHTN rơi vào đây).
+// `mucDoThieu` = độ khó dùng để CHIA cơ bản/nâng cao khi dạng chưa gán muc_do (Thùy 29/09: Bài Hình học
+// chưa bấm độ khó ⇒ tạm tính Cơ bản). Chỉ dùng để chia cột, KHÔNG hiển thị như độ khó thật.
+export type NhanhMon = { ma: string | null; ten: string; nhomBC?: 'dai' | 'hinh'; mucDoThieu?: number }
+const NHANH_CUA_MON: Record<string, NhanhMon[]> = {
   'Toán': [
     { ma: null, ten: 'Đại số' },
-    { ma: 'hinh_gt', ten: 'Hình giải tích' },
+    { ma: 'hinh_gt', ten: 'Hình giải tích', nhomBC: 'hinh' },
     // Phase HỌC — Bài phẳng. Phase Luyện (Mô hình/Bổ đề cũ) đi luồng RIÊNG qua GiaoTrinhHinhEntry,
     // KHÔNG chung tab nhánh với Đại (CEO 16/09: "giáo trình chỉ học - giáo trình chỉ luyện độc lập").
-    { ma: 'hinh_hoc', ten: 'Hình học' },
+    { ma: 'hinh_hoc', ten: 'Hình học', nhomBC: 'hinh', mucDoThieu: 1 },
   ],
 }
-export function nhanhCuaMon(mon?: string | null): { ma: string | null; ten: string }[] { return NHANH_CUA_MON[mon ?? ''] ?? [] }
+export function nhanhCuaMon(mon?: string | null): NhanhMon[] { return NHANH_CUA_MON[mon ?? ''] ?? [] }
 export function tenNhanh(mon: string | null | undefined, nhanh: string | null | undefined): string | null {
   return nhanhCuaMon(mon).find((n) => n.ma === (nhanh ?? null))?.ten ?? null
 }

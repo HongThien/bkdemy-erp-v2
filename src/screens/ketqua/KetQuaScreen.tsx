@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listHSDangHoc } from '../../lib/tuyensinh'
 import { listLop, listHSCuaLop, listLopCuaHS, type Lop, type HSTrongLop } from '../../lib/nhansu'
-import { getMasteryHS, getHinhMasteryHS, listBuoiHoatDong, getMasteryRollup, getMasteryByDang, getMasteryByChuyenDe, getTongQuanHS, getClassMatrix, getAllClassesCompletion, bucketMucDo, SRC_LABEL, type DangMastery, type HinhMastery, type DangEval, type BuoiActivity, type HSRollup, type TongQuanHS, type ClassMatrix, type MatrixPhase, type MatrixCell, type ClassCompletion, type ActPct, type BucketPct, type HoanThanhCard as HoanThanhCardT, type MucDoFilter } from '../../lib/mastery'
+import { getMasteryHS, listBuoiHoatDong, getMasteryRollup, getMasteryByDang, getMasteryByChuyenDe, getTongQuanHS, getClassMatrix, getAllClassesCompletion, bucketMucDo, SRC_LABEL, type DangMastery, type DangEval, type BuoiActivity, type HSRollup, type TongQuanHS, type ClassMatrix, type MatrixPhase, type MatrixCell, type ClassCompletion, type ActPct, type BucketPct, type HoanThanhCard as HoanThanhCardT, type MucDoFilter } from '../../lib/mastery'
 import {
   listKyThi, createKyThi, listDiemThiByKyThi, upsertDiemThi, currentMua, getDiemThiTruong, getBXHDiemMTKhoi,
   listKyThiMTChoLop, bulkSetKhungMT, tinhDiemMT,
@@ -183,8 +183,8 @@ function TongQuanTab({ hsId, mon }: { hsId: string; mon: string }) {
             <>
               <HoanThanhCard label="Đại số — Cơ bản (1-3)" card={d.hoanThanh.daiCoBan} />
               <HoanThanhCard label="Đại số — Nâng cao (4-5)" card={d.hoanThanh.daiNangCao} />
-              <HoanThanhCard label="Hình học — Cơ bản" card={d.hoanThanh.hinhCoBan} />
-              <HoanThanhCard label="Hình học — Nâng cao" card={d.hoanThanh.hinhNangCao} />
+              <HoanThanhCard label="Hình — Cơ bản" card={d.hoanThanh.hinhCoBan} />
+              <HoanThanhCard label="Hình — Nâng cao" card={d.hoanThanh.hinhNangCao} />
             </>
           )}
         </div>
@@ -274,40 +274,28 @@ function ActCard({ label, cls, a, trend, sub }: { label: string; cls: string; a:
   )
 }
 
-// Hình (mô hình) → hình chiếu DangMastery-shape để TÁI DÙNG NGUYÊN DangSection/DangRow (KHÔNG bịa UI
-// riêng). `ma_dang`=hinh_baitoan_id (khoá key) · `ten_dang`=mã node (vd "BT.08.047") · `ten_chuyen_de`=
-// tên mô hình chứa node. `muc_do` = `cap` node CLIP về 1-5 — XẤP XỈ `mucDoTuCap` (bucket cơ bản/nâng cao
-// thật cần biết cách giải có bổ đề, chưa join ở đây; đủ dùng cho việc TÁCH 2 bảng, sai số nhỏ ở biên).
-function hinhToDangShape(rows: HinhMastery[]): DangMastery[] {
-  return rows.map((r) => ({ ma_dang: r.hinh_baitoan_id, ten_dang: r.ma, ten_chuyen_de: r.ten_mo_hinh, muc_do: Math.min(5, Math.max(1, r.cap)), mastery: r.mastery, evals: r.evals }))
-}
-
 // SUB-TAB DẠNG BÀI: bảng mastery per-dạng (cửa sổ ngày + toggle BTVN). Mặc định "Tất cả" để khớp % ở Tổng quan.
 // 1 khu riêng (Thùy 07-14): bảng chính (mọi dạng, như cũ) + 4 bảng phụ Đại/Hình × cơ bản/nâng cao (cùng
 // scope filter Cửa sổ/Gộp BTVN, tính 1 lần rồi bucket theo muc_do client-side — không thêm query).
-// Hình (mô hình, Thùy 21/08): KP = hinh_baitoan_id, đo qua `getHinhMasteryHS` (nguồn CHỈ et/mt/btvn TRONG
-// buổi — Hình mô hình chưa có kênh test-online). Chỉ tách nhánh Đại/Hình cho môn Toán.
+// Hình (Thùy 29/09): cột Hình = dạng nhánh Hình học (Bài) + Hình giải tích — lấy CÙNG getMasteryHS như Đại,
+// tách theo nhomBC của nhánh (registry), không còn đọc Hình Luyện (mô hình). Bài chưa gán độ khó tính Cơ bản
+// (mucDoBC). Chỉ tách nhánh Đại/Hình cho môn Toán.
 function DangBaiTab({ hsId, mon }: { hsId: string; mon: string }) {
   const [days, setDays] = useState<number | null>(null) // null = tất cả (khớp Tổng quan all-time)
   const [btvn, setBtvn] = useState(false)
   const [rows, setRows] = useState<DangMastery[] | null>(null)
-  const [hinhRows, setHinhRows] = useState<HinhMastery[] | null>(null)
   const [loading, setLoading] = useState(false)
   const laToan = mon === 'Toán'
   useEffect(() => {
     setLoading(true)
-    Promise.all([
-      getMasteryHS(hsId, mon, { includeBTVN: btvn, days: days ?? undefined }),
-      laToan ? getHinhMasteryHS(hsId, { includeBTVN: btvn, days: days ?? undefined }) : Promise.resolve([]),
-    ]).then(([r, h]) => { setRows(r); setHinhRows(h) }).catch(() => { setRows([]); setHinhRows([]) }).finally(() => setLoading(false))
-  }, [hsId, mon, days, btvn, laToan])
-  const coBan = useMemo(() => (rows ?? []).filter((r) => bucketMucDo(r.muc_do) === 'co_ban'), [rows])
-  const nangCao = useMemo(() => (rows ?? []).filter((r) => bucketMucDo(r.muc_do) === 'nang_cao'), [rows])
-  const hinhShaped = useMemo(() => hinhToDangShape(hinhRows ?? []), [hinhRows])
-  const hinhCoBan = useMemo(() => hinhShaped.filter((r) => bucketMucDo(r.muc_do) === 'co_ban'), [hinhShaped])
-  const hinhNangCao = useMemo(() => hinhShaped.filter((r) => bucketMucDo(r.muc_do) === 'nang_cao'), [hinhShaped])
+    getMasteryHS(hsId, mon, { includeBTVN: btvn, days: days ?? undefined })
+      .then(setRows).catch(() => setRows([])).finally(() => setLoading(false))
+  }, [hsId, mon, days, btvn])
+  const loc = (nhom: 'dai' | 'hinh', muc: 'co_ban' | 'nang_cao') => (rows ?? []).filter((r) => r.nhomBC === nhom && bucketMucDo(r.mucDoBC) === muc)
+  const coBan = loc('dai', 'co_ban'), nangCao = loc('dai', 'nang_cao')
+  const hinhCoBan = loc('hinh', 'co_ban'), hinhNangCao = loc('hinh', 'nang_cao')
   const dayBtn = (on: boolean) => `h-7 rounded-md px-2.5 text-[12px] font-semibold transition ${on ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`
-  const hinhEmptyMsg = 'Chưa có lần đánh giá Hình (mô hình) nào — chấm ET/BTVN có gán giáo trình Hình cho buổi này.'
+  const hinhEmptyMsg = 'Chưa có lần đánh giá Hình nào (Hình học / Hình giải tích).'
   return (
     <>
       <div className="mb-3 flex flex-wrap items-center gap-2">
@@ -331,8 +319,8 @@ function DangBaiTab({ hsId, mon }: { hsId: string; mon: string }) {
               <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
                 <DangSection title="Đại số — Cơ bản (độ khó 1-3)" rows={coBan} compact />
                 <DangSection title="Đại số — Nâng cao (độ khó 4-5)" rows={nangCao} compact />
-                <DangSection title="Hình học — Cơ bản" rows={hinhCoBan} compact emptyMsg={hinhEmptyMsg} />
-                <DangSection title="Hình học — Nâng cao" rows={hinhNangCao} compact emptyMsg={hinhEmptyMsg} />
+                <DangSection title="Hình — Cơ bản (Hình học + Hình giải tích)" rows={hinhCoBan} compact emptyMsg={hinhEmptyMsg} />
+                <DangSection title="Hình — Nâng cao (Hình học + Hình giải tích)" rows={hinhNangCao} compact emptyMsg={hinhEmptyMsg} />
               </div>
             </div>
           )}

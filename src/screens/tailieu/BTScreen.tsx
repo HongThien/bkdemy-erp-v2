@@ -262,7 +262,10 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   if (loading || !bt) return <div className="p-8 text-sm text-slate-400">Đang tải…</div>
   const soCau = phans.reduce((s, p) => s + p.caus.length, 0)
   const dangDaCo = new Set(phans.map((p) => p.ref_ma).filter(Boolean))
-  const goiYCanChu = goiY.filter((d) => d.mastery?.muc === 'yeu' || d.mastery?.muc === 'can_luyen')
+  // Gợi ý có dạng MỌI nhánh (getMasteryHS 29/09). BT dùng 1 bảng câu theo bt.nhanh ⇒ đã có dạng thì chỉ gợi ý
+  // CÙNG nhánh; chưa có dạng thì bấm gợi ý nào cũng được — themDang set nhánh theo dạng đầu tiên.
+  const goiYCanChu = goiY.filter((d) => (d.mastery?.muc === 'yeu' || d.mastery?.muc === 'can_luyen')
+    && (phans.length === 0 || d.nhanh === (bt.nhanh ?? null)))
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
@@ -286,7 +289,7 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                 {goiYCanChu.map((d) => {
                   const daCo = dangDaCo.has(d.ma_dang)
                   return (
-                    <button key={d.ma_dang} onClick={() => !daCo && themDang(d.ma_dang)} disabled={daCo}
+                    <button key={d.ma_dang} onClick={() => !daCo && themDang(d.ma_dang, d.nhanh)} disabled={daCo}
                       className={`rounded-full border px-2.5 py-1 text-[12px] font-medium ${daCo ? 'border-slate-200 bg-slate-50 text-slate-400' : MUC_CLASS[d.mastery!.muc]}`}>
                       {d.ten_dang} <span className="opacity-70">· {MUC_LABEL[d.mastery!.muc]}</span>{daCo ? ' ✓' : ' +'}
                     </button>

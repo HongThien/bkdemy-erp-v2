@@ -2,8 +2,7 @@
 // không insert/update/upsert/delete, không migration, không bảng mới — toàn bộ là view suy động
 // trên dữ liệu đã có. Không gọi AI (đã đo ở Dashboard học tập — tần suất module này quá cao để thêm AI).
 import { supabase } from './supabase'
-import { khoCuaMon } from './tailieu'
-import { loadMasteryCells } from './mastery'
+import { loadMasteryCells, dangInfoCuaMon } from './mastery'
 import { pctFromAgg } from './report'
 import { getLevels } from './danhgia'
 import { tenNganHS } from './hoten'
@@ -140,11 +139,8 @@ export async function getBaoCaoTruocBuoi(a: TruocBuoiArgs): Promise<BaoCaoTruocB
   for (const r of (dgRows ?? []) as any[]) { const arr = dgByHs.get(r.hoc_sinh_id) ?? []; arr.push(r.ma_dang); dgByHs.set(r.hoc_sinh_id, arr) }
   const dgMaList = [...new Set((dgRows ?? []).map((r: any) => r.ma_dang as string))]
   const dgNameMap = new Map<string, string>()
-  if (dgMaList.length) {
-    const K = khoCuaMon(a.mon)
-    const { data: names } = await supabase.from(K.banDoTbl).select('ma_dang, ten_dang').in('ma_dang', dgMaList).limit(LIMIT)
-    for (const n of (names ?? []) as any[]) dgNameMap.set(n.ma_dang, n.ten_dang)
-  }
+  // Tên dạng tra MỌI nhánh của môn (dangInfoCuaMon) — Bài Hình học / dạng Hình GT cũng có tên (29/09).
+  if (dgMaList.length) for (const [ma, x] of await dangInfoCuaMon(a.mon, dgMaList)) dgNameMap.set(ma, x.ten_dang)
 
   // 7) Dạng yếu THÁNG — mastery mức yếu, n đủ mẫu. Tái dùng NGUYÊN VẸN engine dùng chung (khớp "Kết quả
   //    học tập → Dạng bài" — mastery suy động trên TOÀN BỘ lịch sử đo, không tự khoanh lại theo tháng).

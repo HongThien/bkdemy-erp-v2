@@ -90,11 +90,11 @@ export async function goiYOnTap(nguonId: string, buoiId: string, lopId: string, 
   const [rollup, siSo] = await Promise.all([getMasteryByDang({ mon, lopId }), siSoLop(lopId)])
   const tin = nguongTin(siSo)
   const byMa = new Map(rollup.map((r) => [r.ma_dang, r]))
-  const scored: { ma_dang: string; ten_dang: string; score: number }[] = []
+  const scored: { ma_dang: string; ten_dang: string; nhanh: string | null; score: number }[] = []
   for (const ma of candidates) {
     const r = byMa.get(ma)
     if (!r || r.total < tin) continue // chưa đủ đã_đo → không gợi ý (GV vẫn pick tay được qua "+ Dạng")
-    scored.push({ ma_dang: ma, ten_dang: r.ten_dang, score: (r.yeu * 1 + r.can_luyen * 0.5) / r.total })
+    scored.push({ ma_dang: ma, ten_dang: r.ten_dang, nhanh: r.nhanh, score: (r.yeu * 1 + r.can_luyen * 0.5) / r.total })
   }
   if (!scored.length) return []
 
@@ -107,20 +107,20 @@ export async function goiYOnTap(nguonId: string, buoiId: string, lopId: string, 
   // Bước 4: chọn câu ≤2/dạng — cứng né usedCausOfBuoi(nguonId, buoiId) (quét MASTER, doc BTVN đích chưa tồn tại
   // lúc gợi ý); mềm né câu lớp đã làm trong 30 ngày, hết pool thì bỏ né-mềm chứ không chặn. Không ép loại câu
   // (Thùy chốt "tự do theo pool") — suggestCauForDang tự sort least-used.
-  // ⚠ Hình giải tích (nhanh='hinh_gt'): chưa có mastery riêng (Phase 2) → byMa không khớp mã hgt_ → scored
-  // rỗng → return [] sớm ở trên, hàm này không tới đây với candidate hgt (an toàn, không cần K nhánh-aware).
-  const K = khoCuaMon(mon)
+  // Bảng câu theo NHÁNH của từng dạng (getMasteryByDang trả dạng MỌI nhánh từ 29/09 — Hình giải tích / Hình học
+  // giờ có mastery nên tới được bước này; trước đó byMa không khớp mã nhánh khác và hàm return [] sớm).
   const [hardExclude, softExclude] = await Promise.all([usedCausOfBuoi(nguonId, buoiId), neCauLopGanDay(lopId)])
   const out: GoiY[] = []
   for (const t of top) {
+    const cauTbl = khoCuaMon(mon, t.nhanh).cauTbl
     const localExclude = new Set(hardExclude)
     const picked: CauHoi[] = []
     for (let k = 0; k < CAP_CAU_MOI_DANG; k++) {
-      let ma = await suggestCauForDang(t.ma_dang, new Set([...localExclude, ...softExclude]), K.cauTbl)
-      if (!ma) ma = await suggestCauForDang(t.ma_dang, localExclude, K.cauTbl) // pool hết vì né-mềm → bỏ né-mềm, vẫn giữ né-cứng
+      let ma = await suggestCauForDang(t.ma_dang, new Set([...localExclude, ...softExclude]), cauTbl)
+      if (!ma) ma = await suggestCauForDang(t.ma_dang, localExclude, cauTbl) // pool hết vì né-mềm → bỏ né-mềm, vẫn giữ né-cứng
       if (!ma) break
       localExclude.add(ma)
-      const { data: c } = await supabase.from(K.cauTbl).select('*').eq('ma_cau', ma).single()
+      const { data: c } = await supabase.from(cauTbl).select('*').eq('ma_cau', ma).single()
       if (c) picked.push(c as CauHoi)
     }
     if (picked.length) out.push({ ma_dang: t.ma_dang, ten_dang: t.ten_dang, score: t.score, ly_do: 'yeu_lop', caus: picked })
