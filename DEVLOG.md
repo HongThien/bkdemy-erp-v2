@@ -31776,3 +31776,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Thẻ Thế giới ở Home có lời dẫn cố định "Xem học sinh BK đang khoe gì nào!"; chữ dưới ô "Xem HS BK đang khoe gì".
 - Thùy nêu hướng MỚI (chưa build, chờ chốt logic): "Đăng bài khoe" = tính năng chính — HS làm xong việc tốt ⇒ hiện nút "Đăng bài khoe BK nào",
   bấm mới lên kênh Thế giới; tin hệ thống tự đăng chỉ còn tin S giật gân · "làm sao để lên kênh Thế giới cũng ghê gớm".
+
+### 29/09 (18) — Hệ thống thôi tự đăng tin B (Thùy: đa số tin phải là HS khoe; tự sinh chỉ S, chí ít A)
+- Mig 202609291233_the_gioi_bo_tin_b: fn_the_gioi_kenh (lấy nguyên từ DB) thêm t.tang <> 'B'. Tin B vẫn SUY ở _the_gioi_tin ⇒ làm kho
+  'thành tích được quyền khoe' cho Đăng bài khoe. Thử HS Vũ: tg 0 tin + 1 thẻ gộp · lop 0 · ban 0 — kênh sống hay chết là nhờ Đăng bài khoe.
