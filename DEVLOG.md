@@ -31311,3 +31311,48 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   lời mời) · thegioi/mauTheGioi.ts + XemMauGami man=the_gioi tt 1..6 · hinh.ts KIT.the_gioi + ICON_TIN/ICON_TG/anhTG/anhTin/anhTuongTac · ô Home
   the_gioi (KHU + KHU_CAP2, icon TẠM o_pha_le trong rpg.anhO). tsc sạch · check:style-hs ✔ (24 file, 14 ô; file mới 0 màu gõ tay) · build:hs qua ·
   soi 6 trạng thái RPG 375×812, 0 lỗi console. Chưa chạy với tài khoản HS thật (không có TK thử) — hàm DB đã thử bằng HS thật trong transaction.
+
+## 2026-09-29 (11) — TRỢ LÝ AI: đo lại → CEO bẻ lái "BÁO CÁO là chính, hỏi là phụ" → báo cáo ngày theo mẫu (worktree troly-hoi-duoc)
+
+- **Yêu cầu:** "tiếp tục phát triển tính năng trợ lý AI, đọc code và handoff trước". Đọc HANDOFF (12/08, 29/08) + toàn bộ `troly*.ts`, `api/troly.mjs`,
+  `scripts/hoidap/*`. Rồi ĐO trên DB (chỉ SELECT) trước khi đề xuất.
+- **ĐO — gần như không ai dùng:** tab 🤖 Trợ lý 21 câu cả đời (câu nghiêm túc cuối 26/08) · tab 💬 Hỏi hệ thống 2 câu (đều 29/08) · 3 nút Làm/Huỷ/Gác
+  không ai bấm từ 12/08. Từ 19/08 có 14 câu hỏi thật, ~11 câu không ra thứ người hỏi cần. Gốc rễ đọc từ chính câu hỏi + câu trả lời đã lưu:
+  ① khung chat MÙ với các tab ngay dưới nó (`boiCanhChoHoi` không có Vận hành/đuổi/yếu/test — hỏi "lớp hôm nay nhập BTVN chưa" thì số nằm ở tab Vận hành
+  mà chat trả "không có dữ liệu") · ② danh mục thiếu ET ⇒ "điểm ET lớp 9A1" bị gọi sang công cụ MT · ③ kết quả công cụ không quay về model ⇒ một người
+  hỏi 7 câu liền về 1 HS vẫn nhận 1 thẻ trung bình · ④ 2 tab 2 bộ não ("đổi avatar kiểu gì" hỏi nhầm tab) · ⑤ bảng sạch phình 10k → 42k token/câu
+  (rổ nợ chép nguyên 125 dòng). Nội dung lỗi thời: mảng Yếu còn đếm cờ thô trong khi `bo_tro_yeu` đã 131 ca; mảng Test vẫn nói "chưa chốt ai chấm".
+- **CEO chốt (2 lượt):** (a) ưu tiên "sửa cho hỏi được" + **CHỈ 3 người: Thùy · Thùy Trang · Bảo Lộc** · (b) rồi bẻ lái giữa chừng: *"hỏi là phụ, tính
+  năng chính vẫn là báo cáo. Báo cáo đầy đủ dữ liệu cần thì gần như không cần hỏi lại nữa"* + gửi MẪU báo cáo theo ngày (BTVN · ET · Đánh giá trong buổi ·
+  Đánh giá sau buổi · Bổ trợ bù · Bổ trợ yếu · Báo cáo bổ trợ tuần), yêu cầu "kiểm tra dữ liệu và xây quy trình báo cáo theo mẫu".
+- **DB — mig `202609290143_troly_cong_cu_db`** (đã áp `--only`): cổng `troly_duoc_dung()` gọi lại `hoi_dap_duoc_dung()` (MỘT danh sách người, không chép
+  uuid lần hai; `coalesce` vì anon ra NULL mà `if not NULL` không chặn) · 13 công cụ `_troly_cc_*` + cửa gọi `fn_troly_goi(tên, jsonb)` + danh mục
+  `fn_troly_danh_muc()` (danh mục nằm ở DB ⇒ thêm công cụ = 1 migration) · tra tên→id ở DB, trùng tên trả ứng viên không tự chọn · điểm % gọi
+  `fn_matrix_lop`, mastery `fn_mastery_cells`, việc `fn_viec_buoi_thuong`, học phí `hoc_phi_theo_mon_ky` (KHÔNG viết lại công thức) · học phí tự chặn
+  thêm `co_chuc_nang('hocphi')` vì hàm gốc là DEFINER mở cho mọi thành viên. **Phần này là PHỤ sau khi CEO bẻ lái — server/client chat CHƯA nối vào.**
+- **DB — mig `202609290201_troly_bao_cao_ngay`** (đã áp `--only`): `fn_troly_bao_cao_ngay(p_ngay)` trả đúng 7 mục của mẫu, mỗi mục 3 lớp: `tom_tat`
+  (câu đếm) · `lop` (từng lớp) · checklist có tên HS. Tất định, model không tham gia. Chạy 0,35s cho 1 ngày.
+- **KIỂM DỮ LIỆU theo từng dòng mẫu (ngày thử: Thứ 2 28/09, 10 lớp) — khớp số đếm độc lập:** ET 9/10 lớp có đề (5A2 không đề mà vẫn bấm đóng), 7/10 có
+  dữ liệu · BTVN 8/10 có dữ liệu, 7A1+8B2 không được gán · ca bổ trợ yếu 28/09: 9 lượt, 7 chạy, 3 hợp lệ, 3 hoàn tất KHÔNG test, 2 huỷ do HS vắng, 1 TA
+  chưa đóng ca · tuần 21–27/09: 32 lượt xếp, chỉ 3 hợp lệ, 15 huỷ do HS không đến; 11/37 lượt duyệt chốt bổ trợ; 12 case mở chỉ 4 được xếp, trễ 2,9 ngày.
+- **⚠ 3 DÒNG CỦA MẪU CHƯA CÓ NGUỒN DỮ LIỆU** (báo cáo hiện khối vàng kèm lý do, không bịa số, không ẩn): ① "HS làm bài chậm hơn lớp" — `gami_grades.speed`
+  100% = 'normal' (42.547 dòng/30 ngày), chưa ai từng nhập · ② "HS không làm BTVN đã tác động đến đâu" — không bảng nào ghi tác động; `hs_level` loại
+  `thai_do` = 0 dòng · ③ "danh sách chờ duyệt bổ trợ" — engine phát hiện còn ở client (`danhgia.ts listCandidatesLop`), DB chỉ có lượt ĐÃ duyệt.
+- **⚠ PHÁT HIỆN ngoài mẫu:** khâu "chấm bài trên lớp" bị bấm đóng ở ~90% buổi nhưng chỉ 1–2 lớp/ngày có dòng chấm (19–27/09) — đóng khống có hệ thống ·
+  28/09 có 39 lượt duyệt bổ trợ, CẢ 39 chốt L0 · `fn_viec_buoi_thuong` vẫn sinh task BTVN cho buổi không được gán BTVN (7A1, 8B2 đang "quá hạn" oan —
+  dính hiệu suất/gậy) · `gami_grades`/`btvn_ket_qua` không có index dẫn đầu bằng `buoi_hoc_id` (đếm bằng subquery theo buổi: 90 ngày = 17s; gom trước rồi
+  join: 0,14s).
+- **GIẢ ĐỊNH chờ CEO xác nhận** (gom ở `_troly_bc_gia_dinh`, in ở chân báo cáo): A1 "dưới 20% so với TB lớp" = điểm < 80% × TB lớp của buổi, lớp ≥3 em ·
+  A2 "Đánh giá trong buổi học" = Chấm bài trên lớp · A3 báo động qua đánh giá = GV bấm chuông hoặc mức ≤ 2 · A4 ca hợp lệ = hoàn tất + đã nộp test cuối
+  ca · BTVN của báo cáo = bài giao buổi TRƯỚC, đến hạn vào ngày báo cáo · mục Bổ trợ bù mẫu để trống ("- Đã") nên nội dung là đề xuất.
+- **App:** `src/lib/troly-baocao.ts` (kiểu + rpc, không tính) · `src/screens/troly/BaoCaoNgay.tsx` (`BanBaoCao` chỉ vẽ + container chọn ngày, nhớ ngày/báo
+  cáo ở module-level) · `TroLyTab`: tab "Báo cáo ngày" đứng đầu + mặc định, khung chat xuống CUỐI · `NhanSuHome`: tab 🤖 Trợ lý giờ CHỈ hiện cho 3 người
+  (trước đây mọi nhân sự đều thấy) — dùng chung cờ với tab Hỏi hệ thống.
+- **Kiểm:** `scripts/check-troly-cong-cu.mjs` (áp thử migration trong transaction rồi ROLLBACK · giả JWT · cổng chặn người ngoài + anon · 23 ca gọi công cụ ·
+  `--bao-cao <ngày>`). tsc sạch · `vite build` qua · dựng `BanBaoCao` bằng JSON thật 28/09 (SSR) đọc lại từng câu.
+  **CHƯA kiểm được:** (1) trên app với tài khoản thật — không tự đăng nhập tài khoản thật; (2) RLS — script nối bằng role chủ bảng nên RLS không áp;
+  (3) xem thử trên trình duyệt — công cụ preview đọc `launch.json` của checkout chính, phiên worktree không được sửa file đó.
+- **SAI đã mắc:** lần đầu "xem thử" tưởng đang soi code mới vì `fetch('/src/.../BaoCaoNgay.tsx')` trả 200 — thật ra là trang index của SPA (server phục vụ
+  checkout chính, file chưa tồn tại ở đó). Kiểm status là chưa đủ, phải kiểm `content-type`/nội dung. (Cùng lớp lỗi 14/08 "soi nhầm bundle".)
+- **VIỆC TIẾP (chưa làm):** nối khung hỏi vào `fn_troly_goi` (vòng lặp công cụ ở `api/troly.mjs`, bảng sạch co lại) · gửi báo cáo chủ động buổi sáng
+  (cron Vercel đã có khuôn `api/pt-nhac-viec`) · 3 nguồn dữ liệu thiếu ở trên · gỡ mảng Yếu/Test lỗi thời trong `troly-modules.ts`.

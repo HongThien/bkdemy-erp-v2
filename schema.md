@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-293 bảng · 19 view · 0 enum · 99 trigger · 609 function
+294 bảng · 19 view · 0 enum · 100 trigger · 654 function
 
 ## _app_secrets
 
@@ -3795,6 +3795,19 @@
 | an | boolean |  |  |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
 
+## the_gioi_binh_luan
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| tin_khoa | text |  |  |  |  |
+| hs_id | uuid |  |  | FK→hoc_sinh.id |  |
+| noi_dung_ma | text |  |  | FK→the_gioi_danh_muc.ma |  |
+| an_at | timestamp with time zone | Y |  |  |  |
+| go_at | timestamp with time zone | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
 ## the_gioi_cai_dat
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -3808,11 +3821,12 @@
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| loai | text |  |  |  | `icon` · `cau` |
+| loai | text |  |  |  | `icon` · `cau` · `sticker` |
 | noi_dung | text |  |  |  |  |
 | nhom | text[] |  | '{chung}'::text[] |  |  |
 | thu_tu | integer |  | 0 |  |  |
 | an_at | timestamp with time zone | Y |  |  |  |
+| nhan | text | Y |  |  |  |
 
 ## the_gioi_khen
 
@@ -3978,6 +3992,7 @@
 | done_at | timestamp with time zone | Y |  |  |  |
 | cong_cu | text | Y |  |  |  |
 | tham_so | jsonb | Y |  |  |  |
+| buoc | jsonb | Y |  |  |  |
 
 ## troly_nhan_dinh
 
@@ -5729,6 +5744,7 @@ SELECT bl.hoc_sinh_id,
 | test_dau_vao_phan_cong | trg_log_test_dau_vao_phan_cong | BEFORE | INSERT/UPDATE | log_test_dau_vao_phan_cong |
 | thanh_toan | tg_thanh_toan_trang_thai | AFTER | INSERT/DELETE/UPDATE | fn_hoa_don_cap_nhat_trang_thai |
 | the_gioi_an_tin | the_gioi_an_tin_log | AFTER | INSERT/DELETE/UPDATE | _the_gioi_ghi_log |
+| the_gioi_binh_luan | the_gioi_binh_luan_log | AFTER | INSERT/DELETE/UPDATE | _the_gioi_ghi_log |
 | the_gioi_cai_dat | the_gioi_cai_dat_log | AFTER | INSERT/DELETE/UPDATE | _the_gioi_ghi_log |
 | the_gioi_khen | the_gioi_khen_log | AFTER | INSERT/DELETE/UPDATE | _the_gioi_ghi_log |
 | thong_bao_ph | trg_tbph_updated_at | BEFORE | UPDATE | tbph_updated_at |
@@ -5815,11 +5831,13 @@ SELECT bl.hoc_sinh_id,
 - `_sotay_nhom(p_muc_do smallint)` → text
 - `_sync_cau_menh_de(p_bang_con text, p_ban_do text, p_ma_cau text, p_menh_de jsonb)` → void
 - `_ta_cua_lop(p_lop uuid)` → uuid
+- `_the_gioi_bl_json(b the_gioi_binh_luan, p_me uuid, p_ban uuid[])` → jsonb
 - `_the_gioi_ghi_log()` → trigger
 - `_the_gioi_khen_json(p_khoa text, p_me uuid, p_ban uuid[])` → jsonb
 - `_the_gioi_lop(p_hs uuid, p_mon text)` → TABLE(lop_id uuid, ten_lop text)
 - `_the_gioi_nguoi(p_hs uuid, p_lop text, p_ban boolean)` → jsonb
 - `_the_gioi_tin(p_tu timestamp with time zone)` → TABLE(khoa text, tang text, nhom text, kieu text, hoc_sinh_id uuid, thanh_vien uuid[], lop_id uuid, mon text, at timestamp with time zone, chi_tiet jsonb)
+- `_the_gioi_tin_mo(p_khoa text)` → TABLE(nhom text, thanh_vien uuid[])
 - `_thu_cua_ngay(p date)` → smallint
 - `_tich_luy_cua(p_ns uuid, p_ym text)` → TABLE(diem_thang integer, chuoi integer, ngay_cuoi date, ngay_trot date)
 - `_trg_bai_lam_cau_thi()` → trigger
@@ -5843,6 +5861,40 @@ SELECT bl.hoc_sinh_id,
 - `_trg_ta_buoi_hoc_push()` → trigger
 - `_trg_ta_retest_push()` → trigger
 - `_trg_tai_lieu_duyet_log()` → trigger
+- `_troly_bc_bo_tro_tuan(p_ngay date)` → jsonb
+- `_troly_bc_bo_tro_yeu(p_ngay date)` → jsonb
+- `_troly_bc_btvn(p_ngay date)` → jsonb
+- `_troly_bc_bu(p_ngay date)` → jsonb
+- `_troly_bc_ca_yeu(p_tu date, p_den date)` → TABLE(ngay date, gio time without time zone, mon text, nguoi_day text, ho_ten text, ten_lop text, ket_qua text, ly_do_huy text, khoa_ca text)
+- `_troly_bc_ca_yeu_gom(p_tu date, p_den date)` → jsonb
+- `_troly_bc_danh_gia_bao_dong(p_ngay date)` → jsonb
+- `_troly_bc_et_bao_dong(p_ngay date)` → jsonb
+- `_troly_bc_gia_dinh()` → jsonb
+- `_troly_bc_khau(p_ngay date, p_khau text)` → jsonb
+- `_troly_cc_bo_tro(p jsonb)` → jsonb
+- `_troly_cc_hoc_phi_hoc_sinh(p jsonb)` → jsonb
+- `_troly_cc_hoc_phi_no(p jsonb)` → jsonb
+- `_troly_cc_hoc_tap_hoc_sinh(p jsonb)` → jsonb
+- `_troly_cc_ket_qua_lop(p jsonb)` → jsonb
+- `_troly_cc_ket_qua_viec_thang(p jsonb)` → jsonb
+- `_troly_cc_thieu_btvn(p jsonb)` → jsonb
+- `_troly_cc_tinh_trang_buoi(p jsonb)` → jsonb
+- `_troly_cc_tuyen_sinh(p jsonb)` → jsonb
+- `_troly_cc_vang_hoc(p jsonb)` → jsonb
+- `_troly_cc_viec_phat_trien(p jsonb)` → jsonb
+- `_troly_cc_viec_van_hanh(p jsonb)` → jsonb
+- `_troly_cc_xep_hang(p jsonb)` → jsonb
+- `_troly_chon_hs(p_ten text, p_lop text DEFAULT NULL::text)` → jsonb
+- `_troly_chon_lop(p_ten text)` → jsonb
+- `_troly_chon_ns(p_ten text)` → jsonb
+- `_troly_dau_tuan(p date)` → date
+- `_troly_gac()` → void
+- `_troly_hom_nay()` → date
+- `_troly_matrix(p_lop uuid, p_phase text, p_tu date, p_den date)` → TABLE(ngay date, buoi_hoc_id uuid, hoc_sinh_id uuid, pct integer, status text)
+- `_troly_ngay(p text, p_mac_dinh date)` → date
+- `_troly_ten_dang(p_ma text)` → jsonb
+- `_troly_thang(p text, p_mac_dinh date)` → date
+- `_troly_thu(p date)` → text
 - `_tu_luyen_dau_cua_so_truoc()` → timestamp with time zone
 - `_xep_chu_ten(p text)` → text
 - `bai_lam_cau_ghi_duoc(p_bai_lam uuid, p_cau uuid)` → boolean
@@ -6191,11 +6243,16 @@ SELECT bl.hoc_sinh_id,
 - `fn_test_dau_vao_phieu(p_ca_test_id uuid)` → jsonb
 - `fn_test_dau_vao_thong_ke(p_mon text, p_thang text DEFAULT NULL::text, p_khoi text DEFAULT NULL::text)` → TABLE(nhom text, tong integer, dang_test integer, hoan_thanh integer, cho_cham integer, da_cham integer, cho_tra integer, da_tra integer, da_vao_lop integer)
 - `fn_thanh_tuu_thang(p_mon text, p_ym text, p_hs uuid[] DEFAULT NULL::uuid[])` → TABLE(hoc_sinh_id uuid, thanh_tuu_key text, ket_qua text)
+- `fn_the_gioi_an_binh_luan(p_id uuid, p_an boolean)` → jsonb
 - `fn_the_gioi_an_khen(p_khen uuid, p_an boolean)` → void
 - `fn_the_gioi_an_tin(p_khoa text, p_an boolean)` → void
+- `fn_the_gioi_binh_luan(p_khoa text, p_ma text)` → jsonb
 - `fn_the_gioi_cai_dat(p_hien text)` → void
+- `fn_the_gioi_chi_tiet(p_khoa text)` → jsonb
+- `fn_the_gioi_go_binh_luan(p_id uuid)` → jsonb
 - `fn_the_gioi_kenh(p_kenh text)` → jsonb
 - `fn_the_gioi_khen(p_khoa text, p_icon text, p_cau text)` → jsonb
+- `fn_the_gioi_tha(p_khoa text, p_icon text)` → jsonb
 - `fn_the_gioi_thay_co_khen(p_khoa text)` → void
 - `fn_theodoi_bang_lam_bai(p_tu date, p_den date, p_lop_ids uuid[] DEFAULT NULL::uuid[], p_hoc_sinh_ids uuid[] DEFAULT NULL::uuid[])` → TABLE(hoc_sinh_id uuid, ho_ten text, ma_hs text, khoi text, lop_id uuid, ten_lop text, ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_thu_cua_ngay(p_ngay date)` → smallint
@@ -6219,6 +6276,9 @@ SELECT bl.hoc_sinh_id,
 - `fn_traogiai_thang(p_ym text, p_khoi text DEFAULT NULL::text)` → jsonb
 - `fn_traogiai_tong_slot(p_lop uuid, p_thang date)` → integer
 - `fn_traogiai_xac_nhan(p_ym text, p_lop uuid, p_hs uuid, p_loai text)` → uuid
+- `fn_troly_bao_cao_ngay(p_ngay date DEFAULT NULL::date)` → jsonb
+- `fn_troly_danh_muc()` → jsonb
+- `fn_troly_goi(p_cong_cu text, p_tham_so jsonb DEFAULT '{}'::jsonb)` → jsonb
 - `fn_tuqua_actor()` → uuid
 - `fn_tuqua_doi(p_hoc_sinh_id uuid, p_qua_id uuid, p_so_luong integer DEFAULT 1, p_giao_ngay boolean DEFAULT true)` → TABLE(doi_qua_id uuid, so_du_moi integer)
 - `fn_tuqua_doi_giao(p_doi_qua_id uuid)` → void
@@ -6345,10 +6405,11 @@ SELECT bl.hoc_sinh_id,
 - `trg_han_nop_ngoai_le_log()` → trigger
 - `trg_htd_test_nop()` → trigger
 - `trg_thu_thach_nop()` → trigger
+- `troly_duoc_dung()` → boolean
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
@@ -6494,10 +6555,13 @@ SELECT bl.hoc_sinh_id,
 | shop_vat_pham | shop_vat_pham_gia_diem_check | `CHECK ((gia_diem > 0))` |
 | sk_xu | sk_xu_so_xu_check | `CHECK ((so_xu <> 0))` |
 | sk_xu | sk_xu_van_chi_game | `CHECK (((van IS NULL) OR (nguon = 'game'::text)))` |
+| the_gioi_binh_luan | the_gioi_binh_luan_tin_khoa_check | `CHECK ((tin_khoa ~ '^[a-z_]+:'::text))` |
 | the_gioi_danh_muc | the_gioi_danh_muc_ma_check | `CHECK ((ma ~ '^[a-z0-9_]{1,40}$'::text))` |
+| the_gioi_danh_muc | the_gioi_danh_muc_nhan_check | `CHECK (((loai = 'icon'::text) = (nhan IS NOT NULL)))` |
 | the_gioi_danh_muc | the_gioi_danh_muc_noi_dung_check | `CHECK ((length(btrim(noi_dung)) > 0))` |
+| the_gioi_khen | the_gioi_khen_cau_thoi_dung | `CHECK ((cau_ma IS NULL))` |
 | the_gioi_khen | the_gioi_khen_check | `CHECK (((hs_id IS NULL) <> (ns_id IS NULL)))` |
-| the_gioi_khen | the_gioi_khen_check1 | `CHECK (((ns_id IS NOT NULL) OR ((icon_ma IS NOT NULL) AND (cau_ma IS NOT NULL))))` |
+| the_gioi_khen | the_gioi_khen_hs_co_icon | `CHECK (((ns_id IS NOT NULL) OR (icon_ma IS NOT NULL)))` |
 | the_gioi_khen | the_gioi_khen_tin_khoa_check | `CHECK ((tin_khoa ~ '^[a-z_]+:'::text))` |
 | thoi_khoa_bieu | thoi_khoa_bieu_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | thong_bao_ph | chk_scope_ca_nhan | `CHECK (((scope <> 'ca_nhan'::text) OR (hoc_sinh_id IS NOT NULL)))` |

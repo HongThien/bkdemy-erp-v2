@@ -28,6 +28,7 @@ import { anhChupBoTroBu, type AnhChupBu } from '../../lib/botro'
 import { baoCaoVanHanh, type BaoCaoVanHanh } from '../../lib/troly-vanhanh'
 import { chayCongCu, type KetQuaCongCu } from '../../lib/troly-tracuu'
 import { useStore } from '../../store/useStore'
+import BaoCaoNgay from './BaoCaoNgay'
 
 const tienVN2 = (n: number) => Math.round(n).toLocaleString('vi-VN') + 'đ'
 
@@ -264,7 +265,9 @@ function BaNut({ dangMoGac, onLam, onHuy, onGac, onMoGac, nho }: {
 
 // ── THANH TOGGLE chọn module — thay cho 6 card xếp chồng phải cuộn dài (CEO 18/08:
 // "1 click dễ hơn là 1 kéo"). Mỗi pill có SỐ BÁO ĐỘNG riêng để vẫn glance được mà chưa cần bấm.
+// ⭐ 'baocao' đứng đầu và là tab MẶC ĐỊNH (CEO 29/09: "hỏi là phụ, tính năng chính vẫn là báo cáo").
 const TABS = [
+  { key: 'baocao', ten: 'Báo cáo ngày' },
   { key: 'nhandinh', ten: 'Trợ lý thấy gì' },
   { key: 'vanhanh', ten: 'Vận hành' },
   { key: 'bu', ten: 'Bổ trợ bù' },
@@ -307,7 +310,7 @@ export default function TroLyTab() {
   const [test, setTest] = useState<MangTest | null>(null)
   const [duoi, setDuoi] = useState<AnhChupDuoi | null>(null)
   const [toi, setToi] = useState<BangNhac | null>(null)
-  const [tab, setTab] = useState<TabKey>('nhandinh')
+  const [tab, setTab] = useState<TabKey>('baocao')
   const setStaffLeaf = useStore((s) => s.setStaffLeaf)
   const [loi, setLoi] = useState<string | null>(null)
   const [moGac, setMoGac] = useState<string | null>(null)
@@ -337,6 +340,7 @@ export default function TroLyTab() {
   // Số báo động trên từng pill — MỘT số đại diện đúng con số headline của khu đó (không suy lại,
   // đọc thẳng field trùng với dòng "tóm tắt" trong Khu tương ứng để 2 nơi không bao giờ lệch nhau).
   const badge: Record<TabKey, number> = {
+    baocao: 0,
     nhandinh: nhanDinh?.length ?? 0,
     vanhanh: vh?.chuaDong.length ?? 0, // số lớp tồn đọng (④) — bao quát hơn "nợ tuần này" (③)
     bu: bu?.canXep.tong ?? 0,
@@ -348,14 +352,14 @@ export default function TroLyTab() {
 
   return (
     <div className="mx-auto max-w-[1000px] pb-8">
-      <Chat />
-
+      {/* Báo cáo là CHÍNH ⇒ thanh tab + nội dung đứng trên; khung hỏi là PHỤ ⇒ xuống cuối (CEO 29/09). */}
       {/* ⭐ THANH TAB thay cho 6 card xếp chồng phải cuộn dài (CEO 18/08: "1 click dễ hơn là
           1 kéo"). Mỗi module vẫn báo SỐ TỔNG QUAN + đúng thứ cần hành động (CEO 14/08) —
           chỉ khác cách CHUYỂN giữa các module: bấm tab thay vì cuộn qua từng card.
           "Trợ lý thấy gì" giờ CŨNG là 1 tab, và là tab MẶC ĐỊNH (CEO 18/08) — đây là thứ
           hệ thống chủ động nêu ra (khác 5 tab kia là số vận hành đo được), nên đứng đầu. */}
       <ThanhTab tab={tab} setTab={setTab} badge={badge} />
+      {tab === 'baocao' && <BaoCaoNgay />}
       {tab === 'nhandinh' && (
         nhanDinh && nhanDinh.length > 0 ? (
           <div className="space-y-2.5">
@@ -386,6 +390,7 @@ export default function TroLyTab() {
       {tab === 'yeu' && <KhoiYeu d={yeu} />}
       {tab === 'test' && <KhoiTest d={test} onDen={() => setStaffLeaf('tuyensinh')} />}
       {tab === 'toi' && <KhoiViecToi d={toi} />}
+      <div className="mt-5"><Chat /></div>
     </div>
   )
 }
