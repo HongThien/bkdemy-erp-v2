@@ -32060,3 +32060,17 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   từng câu, chạm lại = bỏ, "Tất cả Đ/C/S") ghi gami_grades + btvn_ket_qua theo (em, ca bù). Không EXP (EXP BTVN chỉ khi đóng BTVN cả lớp).
 - Kiểm local ta.html (admin): ô Chấm BTVN "1 BTVN bù · Minh Trí 6A3 · bài 27/09"; mở ra 17 câu (T106020601 ×6 · T106020501 ×5 · T106020503 ×6).
   Mở màn đã chép lưới thật cho Minh Trí (17 ô, dữ liệu cần có). CHƯA bấm chấm trên dữ liệu thật.
+
+## 2026-09-29 (đêm) — NÔNG TRẠI BK: nội dung tới cấp 30, Việt hoá (Thùy: "luôn đi" — cấp 30 + Việt hoá, bắt đầu từ cây ăn quả)
+
+- **Chốt thiết bị (Thùy):** HS chơi Ở NHÀ, GV chơi điện thoại; toàn iPhone 14/15, iPad gen 7/8+ ⇒ không làm tối ưu nặng. Chơi ở nhà ⇒ trước khi phát BẮT BUỘC online.
+- **Git:** game có repo riêng tại `E:\BK ACADEMY\Gaming\KayKit\NongTrai` (99f1492 → 0d50ec2), chưa có remote.
+- **Số liệu:** bóc thêm từ dump wiki: luật cây ăn quả (4 lần hái 2-3-4-4, héo sau lần 3 phải người khác cứu, chết chặt bằng cưa/rìu), giá/giờ cây, cừu/chuồng bậc 2-3, XP lên cấp 26–30.
+  Cấp 24–30 của HD toàn mỏ/câu cá/luyện kim (đã chốt bỏ) ⇒ lấp bằng món Việt. Ký hiệu trong data.js: HD · HD dời (món HD đưa lên sớm) · HD ~X (mượn số món cùng khe) · TỰ ĐẶT.
+- **Làm:** 7 cây ăn quả (cam, cà phê, xoài, vải, chè, chuối, dừa) trong vườn 12 ô + "hàng xóm ảo" cứu cây · 8 cây ruộng (bông, lúa nước, dâu, ớt, hướng dương, dưa hấu, khoai, cà chua) ·
+  cừu + ong (ong ăn hướng dương) · chuồng nhiều bậc theo HD · 5 máy (xưởng dệt, tiệm may → áo dài, tiệm bánh ngọt, máy ép, quầy trà & cà phê → trà sữa) · ~60 món ·
+  trại 40×32, 48 ô ruộng · **đất hoang** (bụi/đá/cỏ) phủ chỗ chưa mở · hết hạt thì mua giống bằng xu (chống kẹt) · file lưu cũ tự nâng (`chuanHoa`).
+- **Sai → sửa:** `obj.visible = 0` (số chuồng) three.js vẫn VẼ — chỉ ẩn khi `=== false` ⇒ ép boolean · cảnh giữ ô ruộng thừa khi state co lại (chơi lại) ⇒ tự dọn ·
+  heredoc >~120 dòng lại bị cắt ⇒ script patch viết bằng Write rồi `node file.cjs`.
+- **Kiểm:** test-engine ✔ (thêm: mua giống, chuồng bậc, cây hái–héo–cứu–chặt, cưa vs rìu, nâng file lưu cũ); bot tới cấp 25 ~28 ngày game (không ngủ).
+  Dựng trại cấp 30 đầy đủ chụp nhiều góc (15 cây ruộng, vườn đủ trạng thái, cừu chibi, tổ ong, 12 máy); cửa hàng 3 tab; quầy trà; trả ván gốc cấp 1 cho Thùy.
