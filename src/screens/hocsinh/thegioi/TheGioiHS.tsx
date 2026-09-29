@@ -14,8 +14,8 @@ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 
 import { ManHS, DauTrangHS, MAU, THE, THE_TRON, HEAD, NhomHS, TrongHS } from '../skin/KhungHS'
 import { ICON_TIN, ICON_TG, anhTG, anhTin, anhTuongTac, anhSticker, anhPhaoGiay } from '../gami/hinh'
 import {
-  layKenh, thaCamXuc, guiBinhLuan, goBinhLuan, anBinhLuan, layChiTiet, anTin, datHien, banBeCuaToi, goiYKetBan, guiKetBan, traLoiKetBan, layDanhMuc,
-  type KenhId, type KenhTG, type TinTG, type GopTG, type KhenTG, type NguoiTG, type BanBeTG, type GoiYTG, type DanhMucTG, type BinhLuanTG, type ChiTietTG,
+  layKenh, layChoKhoe, dangKhoe, goKhoe, thaCamXuc, guiBinhLuan, goBinhLuan, anBinhLuan, layChiTiet, anTin, datHien, banBeCuaToi, goiYKetBan, guiKetBan, traLoiKetBan, layDanhMuc,
+  type KenhId, type KenhTG, type TinTG, type GopTG, type KhenTG, type NguoiTG, type BanBeTG, type GoiYTG, type DanhMucTG, type BinhLuanTG, type ChiTietTG, type ChoKhoe, type ThanhTichKhoe,
 } from '../../../lib/thegioi'
 
 // ── Mảnh nhỏ ────────────────────────────────────────────────────────────────
@@ -146,18 +146,15 @@ type TuongTacProps = {
   danhMuc: DanhMucTG[]; thanhKhoa: string | null
   onThanh: (khoa: string | null) => void; onTha: (t: TinTG, icon: string | null) => void
   onThemCamXuc: (t: TinTG) => void; onMoBl: (t: TinTG, xem: 'bl' | 'tha') => void
+  onGoKhoe?: (t: TinTG) => void
 }
-// Nút Thích: BẤM = 👍 (đã thả thì bỏ) · GIỮ ~0,4s = dải cảm xúc (như FB)
+// Nút Thích: BẤM là mở dải cảm xúc (Thùy 29/09: "1 chỗ để click vào, click xong thì ra list") · chọn lại đúng cảm xúc đang thả = bỏ
 function NutThich({ t, p, nho, canh }: { t: TinTG; p: TuongTacProps; nho?: boolean; canh?: 'trai' | 'phai' }) {
-  const hen = useRef(0), daGiu = useRef(false)
   const k = t.khen.cua_toi
   const icons = p.danhMuc.filter((d) => d.loai === 'icon')
-  const giu = () => { daGiu.current = false; window.clearTimeout(hen.current); hen.current = window.setTimeout(() => { daGiu.current = true; p.onThanh(t.khoa) }, 400) }
-  const tha = () => window.clearTimeout(hen.current)
   return (
     <div className={nho ? "relative flex-none" : "relative"}>
-      <button onPointerDown={giu} onPointerUp={tha} onPointerLeave={tha} onPointerCancel={tha} onContextMenu={(e) => e.preventDefault()}
-        onClick={() => { if (!daGiu.current) p.onTha(t, k ? null : 'thich') }}
+      <button onClick={() => p.onThanh(p.thanhKhoa === t.khoa ? null : t.khoa)} aria-expanded={p.thanhKhoa === t.khoa}
         className={`flex items-center justify-center gap-1.5 rounded-lg font-bold select-none active:scale-95 ${nho ? 'h-8 px-2 text-[12.5px] whitespace-nowrap' : 'h-9 w-full text-[13.5px]'}`}
         style={{ color: k ? MAU.acc : MAU.muted, WebkitTouchCallout: 'none', touchAction: 'manipulation' }} aria-pressed={!!k}>
         {k ? <Hinh src={anhTuongTac(k.icon_ma)} emoji={k.icon} size={nho ? 16 : 19} /> : <Hinh src={anhTuongTac('thich')} emoji="👍" size={nho ? 15 : 18} />}
@@ -212,7 +209,7 @@ function BlXemTruoc({ t, p }: { t: TinTG; p: TuongTacProps }) {
   if (!b) return null
   return (
     <button onClick={() => p.onMoBl(t, 'bl')} className="flex flex-col gap-1.5 text-left">
-      {t.khen.so_bl > 1 && <span className="text-[12.5px] font-semibold" style={{ color: MAU.muted }}>Xem tất cả {t.khen.so_bl} bình luận</span>}
+      {t.khen.so_bl > 1 && <span className="text-[12.5px] font-semibold" style={{ color: MAU.muted }}>Đọc {t.khen.so_bl} bình luận</span>}
       <BongBL b={b} nho duoi={<span>{luc(b.at)}</span>} />
     </button>
   )
@@ -230,13 +227,15 @@ function TheTin({ t, p, onAnTin, menuMo, onMenu, anNhanBan }: {
       <button onClick={() => onMenu(menuMo ? null : t.khoa)} aria-label="Tuỳ chọn tin của em" className="px-1.5 text-[20px] leading-none" style={{ color: MAU.muted }}>⋯</button>
       {menuMo && (
         <div className="absolute right-0 top-7 z-10 min-w-[170px] overflow-hidden rounded-xl shadow-xl" style={{ background: MAU.bg, border: `1px solid ${MAU.line}` }}>
-          <button className="block w-full px-4 py-2.5 text-left text-[13px] font-semibold" onClick={() => { onMenu(null); onAnTin(t, !t.da_an) }}>{t.da_an ? 'Hiện lại tin này' : 'Ẩn tin này'}</button>
+          {t.khoe?.la_em && p.onGoKhoe
+            ? <button className="block w-full px-4 py-2.5 text-left text-[13px] font-semibold" onClick={() => { onMenu(null); p.onGoKhoe!(t) }}>Gỡ bài khoe</button>
+            : <button className="block w-full px-4 py-2.5 text-left text-[13px] font-semibold" onClick={() => { onMenu(null); onAnTin(t, !t.da_an) }}>{t.da_an ? 'Hiện lại tin này' : 'Ẩn tin này'}</button>}
         </div>
       )}
     </div>
   )
 
-  if (t.tang === 'B') {
+  if (t.tang === 'B' && !t.khoe) {
     return (
       <div className="flex items-center gap-2.5 px-3 py-2 text-[13px]" style={{ ...THE, opacity: t.da_an ? 0.55 : 1 }}>
         <span className="flex h-8 w-8 flex-none items-center justify-center rounded-lg" style={{ background: MAU.surface2 }}><Hinh src={anhTin(t.kieu)} emoji={ICON_TIN[t.kieu] ?? '✨'} size={22} /></span>
@@ -250,7 +249,8 @@ function TheTin({ t, p, onAnTin, menuMo, onMenu, anNhanBan }: {
       </div>
     )
   }
-  const laS = t.tang === 'S'
+  const laS = t.tang === 'S' && !t.khoe
+  const to = laS || !!t.khoe // bài khoe vẽ khối thành tích TO như tin S
   return (
     <article className="relative flex flex-col gap-2.5 p-3 pb-1.5" style={{ ...THE, ...(laS ? { border: `2px solid ${MAU.acc}`, paddingTop: 28 } : {}), opacity: t.da_an ? 0.55 : 1 }}>
       {laS && (anhTG('ruy_bang_s')
@@ -261,13 +261,14 @@ function TheTin({ t, p, onAnTin, menuMo, onMenu, anNhanBan }: {
         <Avatar n={t.nguoi} />
         <div className="min-w-0 flex-1 leading-tight">
           <p className="truncate text-[14px] font-bold">{ten}{nhanBan}</p>
-          <p className="text-[11.5px]" style={{ color: MAU.muted }}>{luc(t.at)}{t.ghim ? ' · ghim 24h' : ''}{t.da_an ? ' · em đã ẩn' : ''}</p>
+          <p className="text-[11.5px]" style={{ color: MAU.muted }}>{t.khoe ? <>🌏 đã khoe lên Thế giới · {luc(t.khoe.dang_at)}</> : <>{luc(t.at)}{t.ghim ? ' · ghim 24h' : ''}</>}{t.da_an ? ' · em đã ẩn' : ''}</p>
         </div>
-        <DauTang tang={t.tang} />
+        {!t.khoe && <DauTang tang={t.tang} />}
         {menu}
       </div>
-      {laS
-        ? <div className="flex flex-col items-center gap-1 py-1 text-center"><Hinh src={anhTin(t.kieu)} emoji={ICON_TIN[t.kieu] ?? '✨'} size={64} /><p className="text-[15px] leading-snug">{moTaTin(t)}</p></div>
+      {t.khoe?.cau && <p className="text-[16px] font-semibold leading-snug">{t.khoe.cau}</p>}
+      {to
+        ? <div className={`flex flex-col items-center gap-1 text-center ${t.khoe ? 'rounded-xl px-3 py-4' : 'py-1'}`} style={t.khoe ? { background: MAU.surface2, border: `1px solid ${MAU.line}` } : undefined}><Hinh src={anhTin(t.kieu)} emoji={ICON_TIN[t.kieu] ?? '✨'} size={64} /><p className="text-[15px] leading-snug">{moTaTin(t)}</p></div>
         : <div className="flex items-center gap-2.5"><span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg" style={{ background: MAU.surface2 }}><Hinh src={anhTin(t.kieu)} emoji={ICON_TIN[t.kieu] ?? '✨'} size={26} /></span><p className="text-[14.5px] leading-snug">{moTaTin(t)}</p></div>}
       {t.doi?.thanh_vien && t.doi.thanh_vien.length > 0 && (
         <p className="text-[12px]" style={{ color: MAU.muted }}>{t.doi.thanh_vien.map((m, i) => <span key={i}>{i > 0 && ' · '}<TenLop n={m} rutGon /></span>)}{t.doi.so > t.doi.thanh_vien.length ? ` · +${t.doi.so - t.doi.thanh_vien.length}` : ''}</p>
@@ -302,7 +303,7 @@ function TheGop({ g, mo, onMo, p }: { g: GopTG; mo: boolean; onMo: () => void; p
           </div>
         : <p className="text-[12.5px]" style={{ color: MAU.muted }}>{g.ds.slice(0, 3).map((t, i) => <span key={t.khoa}>{i > 0 && ' · '}{t.nguoi ? <TenLop n={t.nguoi} rutGon /> : <>Đội {String(t.chi_tiet.doi ?? '')}{t.lop && <span style={NHAN_LOP}>{t.lop}</span>}</>}</span>)}{g.so > 3 ? ` · +${g.so - 3}` : ''}</p>}
       <div className="flex justify-end">
-        <button onClick={onMo} className="h-9 rounded-lg px-3.5 text-[13px] font-extrabold" style={{ color: MAU.acc, border: `1.5px solid ${MAU.acc}` }}>{mo ? 'Thu gọn' : 'Xem tất cả · thả tim'}</button>
+        <button onClick={onMo} className="h-9 rounded-lg px-3.5 text-[13px] font-extrabold" style={{ color: MAU.acc, border: `1.5px solid ${MAU.acc}` }}>{mo ? 'Thu gọn' : (g.so_bl ?? 0) > 0 ? `Đọc bình luận (${g.so_bl})` : 'Xem tất cả'}</button>
       </div>
     </article>
   )
@@ -320,6 +321,7 @@ export type TheGioiViewProps = TuongTacProps & {
   onDongY: (id: string) => void; onDeSau: (id: string) => void; onMoKetBan: () => void
   onBack: () => void
   bao?: string | null // thông báo ngắn (lỗi thả/bình luận)
+  choKhoe?: ChoKhoe | null; onKhoe?: (t: ThanhTichKhoe) => void
   children?: ReactNode // tấm trượt (bình luận / cảm xúc / kết bạn) đè lên
 }
 const TABS: { id: KenhId; ten: string; icon: keyof typeof ICON_TG }[] = [
@@ -327,8 +329,8 @@ const TABS: { id: KenhId; ten: string; icon: keyof typeof ICON_TG }[] = [
 ]
 export function TheGioiView(p: TheGioiViewProps) {
   const k = p.kenh
-  const tinS = k?.tin.filter((t) => t.tang !== 'B') ?? []
-  const tinB = k?.tin.filter((t) => t.tang === 'B') ?? []
+  const tinS = k?.tin.filter((t) => t.tang !== 'B' || t.khoe) ?? []
+  const tinB = k?.tin.filter((t) => t.tang === 'B' && !t.khoe) ?? []
   const theTin = (t: TinTG) => <TheTin key={t.khoa} t={t} p={p} onAnTin={p.onAnTin} menuMo={p.menuKhoa === t.khoa} onMenu={p.onMenu} anNhanBan={p.tab === 'ban'} />
   return (
     <ManHS rong="hep"> {/* cột tin ~720px giữa màn như bảng tin FB trên máy tính — trải hết 1440px thì mỏi mắt */}
@@ -349,6 +351,7 @@ export function TheGioiView(p: TheGioiViewProps) {
         ))}
       </div>
 
+      {p.onKhoe && <MucChoKhoe ck={p.choKhoe ?? null} onKhoe={p.onKhoe} />}
       {p.loi && <TrongHS>{p.loi}</TrongHS>}
       {!k && !p.loi && <TrongHS>Đang tải…</TrongHS>}
 
@@ -356,7 +359,7 @@ export function TheGioiView(p: TheGioiViewProps) {
         {tinS.map(theTin)}
         {k.gop.length > 0 && <NhomHS>Hôm nay ở BK</NhomHS>}
         {k.gop.map((g) => <TheGop key={g.kieu} g={g} mo={!!p.moGop[g.kieu]} onMo={() => p.onMoGop(g.kieu)} p={p} />)}
-        {tinS.length === 0 && k.gop.length === 0 && <TrongHS>Hôm nay chưa có tin nổi bật. Làm bài, giành Nhất buổi để lên Thế giới BK nhé!</TrongHS>}
+        {tinS.length === 0 && k.gop.length === 0 && <TrongHS>Chưa có bài khoe nào. Đạt ET 10 điểm, Nhất buổi… rồi bấm "Khoe" để lên Thế giới BK nhé!</TrongHS>}
       </>}
 
       {k && p.tab === 'ban' && <>
@@ -397,6 +400,72 @@ export function TheGioiView(p: TheGioiViewProps) {
   )
 }
 
+// ── ĐĂNG BÀI KHOE (Thùy 29/09 — tính năng chính): thành tích chờ khoe · tấm đăng · màn "Lên sóng" ──
+// Mục đầu kênh: thành tích của em (3 ngày) chưa khoe + lượt còn lại hôm nay (tối đa 3). Bấm "Khoe" ⇒ TamKhoe.
+export function MucChoKhoe({ ck, onKhoe }: { ck: ChoKhoe | null; onKhoe: (t: ThanhTichKhoe) => void }) {
+  if (!ck || ck.tin.length === 0) return null
+  const con = Math.max(0, ck.gioi_han - ck.da_khoe_hom_nay)
+  return (
+    <section className="flex flex-col gap-2 p-3" style={{ ...THE, border: `1.5px solid ${MAU.acc}` }}>
+      <div className="flex items-baseline justify-between gap-2">
+        <p className="text-[16px] font-bold" style={HEAD}>🎉 Thành tích chờ em khoe</p>
+        <span className="shrink-0 text-[12px] font-semibold" style={{ color: con > 0 ? MAU.acc : MAU.muted }}>{con > 0 ? `còn ${con}/${ck.gioi_han} lượt hôm nay` : 'hết lượt hôm nay'}</span>
+      </div>
+      {ck.tin.slice(0, 3).map((t) => (
+        <div key={t.khoa} className="flex items-center gap-2.5 rounded-lg px-2.5 py-2" style={{ background: MAU.surface2 }}>
+          <Hinh src={anhTin(t.kieu)} emoji={ICON_TIN[t.kieu] ?? '✨'} size={28} />
+          <span className="min-w-0 flex-1 text-[13px] leading-snug">Em {moTaTin(t as TinTG)}</span>
+          <button onClick={() => onKhoe(t)} disabled={con === 0} className="h-8 flex-none rounded-lg px-3 text-[12.5px] font-extrabold active:scale-95 disabled:opacity-40"
+            style={{ background: MAU.acc, color: MAU.accInk }}>Khoe</button>
+        </div>
+      ))}
+      {ck.tin.length > 3 && <p className="text-[11.5px]" style={{ color: MAU.muted }}>+{ck.tin.length - 3} thành tích nữa · khoe trong 3 ngày kể từ lúc đạt</p>}
+    </section>
+  )
+}
+
+export function TamKhoe({ tt, danhMuc, cau, onCau, onDang, dangDang, loi, onDong }: {
+  tt: ThanhTichKhoe; danhMuc: DanhMucTG[]; cau: string | null; onCau: (ma: string | null) => void
+  onDang: () => void; dangDang: boolean; loi: string | null; onDong: () => void
+}) {
+  const caus = danhMuc.filter((d) => d.loai === 'cau' && d.nhom.includes('khoe'))
+  return (
+    <TamTruot tieuDe="Đăng bài khoe" phu="Bài khoe lên kênh Thế giới BK — cả trung tâm cùng thấy" onDong={onDong} chan={<>
+      {loi && <p className="text-[13px] font-semibold" style={{ color: MAU.sai }}>{loi}</p>}
+      <button onClick={onDang} disabled={dangDang} className="h-12 rounded-xl text-[15.5px] font-extrabold active:scale-[0.99] disabled:opacity-60" style={{ background: MAU.acc, color: MAU.accInk }}>
+        {dangDang ? 'Đang đăng…' : '🚀 Đăng lên Thế giới BK'}</button>
+    </>}>
+      <div className="flex flex-col items-center gap-1.5 rounded-xl px-3 py-4 text-center" style={{ background: MAU.surface2, border: `1px solid ${MAU.line}` }}>
+        {cau && <p className="text-[16px] font-bold" style={HEAD}>{caus.find((d) => d.ma === cau)?.noi_dung}</p>}
+        <Hinh src={anhTin(tt.kieu)} emoji={ICON_TIN[tt.kieu] ?? '✨'} size={56} />
+        <p className="text-[15px] leading-snug">Em {moTaTin(tt as TinTG)}</p>
+      </div>
+      <NhomHS>Thêm 1 câu (không bắt buộc)</NhomHS>
+      <div className="flex flex-wrap gap-1.5">
+        {caus.map((d) => (
+          <button key={d.ma} onClick={() => onCau(cau === d.ma ? null : d.ma)} aria-pressed={cau === d.ma} className="rounded-full px-3 py-1.5 text-[13.5px] font-semibold active:scale-95"
+            style={{ background: cau === d.ma ? MAU.acc : MAU.surface2, color: cau === d.ma ? MAU.accInk : MAU.ink, border: `1px solid ${cau === d.ma ? MAU.acc : MAU.line}` }}>{d.noi_dung}</button>
+        ))}
+      </div>
+    </TamTruot>
+  )
+}
+
+// Khoảnh khắc lên sóng — Thùy: "làm sao để HS thấy lên kênh Thế giới là cũng ghê gớm".
+export function LenSong({ tt, onXem }: { tt: ThanhTichKhoe; onXem: () => void }) {
+  return (
+    <div className="fixed inset-0 z-[70] flex flex-col items-center justify-center gap-4 px-6 text-center" style={{ background: MAU.bg, color: MAU.ink, fontFamily: 'var(--sk-font)' }} role="dialog" aria-label="Đã lên Thế giới BK">
+      <style>{'@keyframes tgLen{0%{transform:scale(.3) rotate(-12deg);opacity:0}60%{transform:scale(1.15) rotate(4deg);opacity:1}100%{transform:none}}'}</style>
+      {anhPhaoGiay() && <img src={anhPhaoGiay() as string} alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-80" />}
+      <span style={{ animation: 'tgLen .7s ease-out both' }}><Hinh src={anhTG('tab_the_gioi')} emoji="🌏" size={120} /></span>
+      <p className="text-[30px] font-bold leading-tight" style={{ ...HEAD, color: MAU.acc, animation: 'tgLen .7s .15s ease-out both' }}>LÊN SÓNG<br />THẾ GIỚI BK!</p>
+      <p className="max-w-[320px] text-[15px] leading-snug">Cả trung tâm đang thấy: em {moTaTin(tt as TinTG)}</p>
+      <p className="text-[13px]" style={{ color: MAU.muted }}>Bạn bè thả tim, bình luận sẽ báo ngay ở ô Thế giới BK ngoài màn chính.</p>
+      <button onClick={onXem} className="mt-2 h-12 w-full max-w-[320px] rounded-xl text-[15.5px] font-extrabold" style={{ background: MAU.acc, color: MAU.accInk }}>Xem bài của em</button>
+    </div>
+  )
+}
+
 // ── Tấm trượt dùng chung ────────────────────────────────────────────────────
 function TamTruot({ tieuDe, phu, onDong, onLui, children, chan }: { tieuDe: string; phu?: ReactNode; onDong: () => void; onLui?: () => void; children: ReactNode; chan?: ReactNode }) {
   return (
@@ -417,11 +486,14 @@ function TamTruot({ tieuDe, phu, onDong, onLui, children, chan }: { tieuDe: stri
   )
 }
 
-// Câu hợp loại tin: câu riêng loại trước, rồi câu dùng chung — tối đa 10 (spec §5). Chủ tin: chỉ câu cảm ơn.
+// Câu cho người xem bình luận (spec §5). Chủ tin: chỉ câu cảm ơn.
 export function cauHop(ds: DanhMucTG[], nhom: string, chuTin = false): DanhMucTG[] {
   const cau = ds.filter((d) => d.loai === 'cau')
   if (chuTin) return cau.filter((d) => d.nhom.includes('cam_on'))
-  return [...cau.filter((d) => d.nhom.includes(nhom)), ...cau.filter((d) => d.nhom.includes('chung') && !d.nhom.includes(nhom))].slice(0, 10)
+  // Thùy 29/09: hiện ĐỦ mọi câu khen (trước chỉ ~10 câu hợp loại) — câu hợp loại tin lên đầu, rồi câu chung, rồi các câu còn lại
+  const khen = cau.filter((d) => !d.nhom.includes('cam_on') && !d.nhom.includes('khoe'))
+  return [...khen.filter((d) => d.nhom.includes(nhom)), ...khen.filter((d) => d.nhom.includes('chung') && !d.nhom.includes(nhom)),
+    ...khen.filter((d) => !d.nhom.includes(nhom) && !d.nhom.includes('chung'))]
 }
 
 export type BanPhim = 'dong' | 'cau' | 'sticker'
@@ -534,7 +606,7 @@ export function TamKetBan({ tim, onTim, ds, onGui, onDong }: { tim: string; onTi
 
 // ── CONTAINER ───────────────────────────────────────────────────────────────
 // Nhớ dữ liệu từng tab tới F5 ⇒ rời màn quay lại không trắng, tải nền rồi thay (CLAUDE §2).
-const NHO: { tab: KenhId; kenh: Partial<Record<KenhId, KenhTG>>; banBe: BanBeTG | null; danhMuc: DanhMucTG[] | null } = { tab: 'tg', kenh: {}, banBe: null, danhMuc: null }
+const NHO: { tab: KenhId; kenh: Partial<Record<KenhId, KenhTG>>; banBe: BanBeTG | null; danhMuc: DanhMucTG[] | null; choKhoe: ChoKhoe | null } = { tab: 'tg', kenh: {}, banBe: null, danhMuc: null, choKhoe: null }
 const loiText = (e: unknown) => (e as { message?: string })?.message ?? String(e)
 type TamBL = { tin: TinTG; ct: ChiTietTG | null; xem: 'bl' | 'tha'; loc: string | null; banPhim: BanPhim; dangGui: boolean; loi: string | null }
 
@@ -551,12 +623,16 @@ export default function TheGioiHS({ onBack }: { onBack: () => void }) {
   const [tamCX, setTamCX] = useState<TinTG | null>(null)
   const [tamKetBan, setTamKetBan] = useState<{ tim: string; ds: GoiYTG[] | null } | null>(null)
   const [bao, setBao] = useState<string | null>(null)
+  const [choKhoe, setChoKhoe] = useState<ChoKhoe | null>(NHO.choKhoe)
+  const [tamKhoe, setTamKhoe] = useState<{ tt: ThanhTichKhoe; cau: string | null; dang: boolean; loi: string | null } | null>(null)
+  const [lenSong, setLenSong] = useState<ThanhTichKhoe | null>(null)
   const timRef = useRef(0), baoRef = useRef(0)
 
   useEffect(() => { NHO.tab = tab; NHO.kenh = kenh; NHO.banBe = banBe }, [tab, kenh, banBe])
   const taiKenh = (k: KenhId) => layKenh(k).then((d) => { setKenh((x) => ({ ...x, [k]: d })); setLoi(null) }).catch((e) => setLoi(`Chưa tải được Thế giới BK — ${loiText(e)}`))
   const taiBan = () => banBeCuaToi().then(setBanBe).catch(() => {})
   useEffect(() => { taiKenh(tab); if (tab === 'ban') taiBan() }, [tab])
+  useEffect(() => { layChoKhoe().then((c) => { NHO.choKhoe = c; setChoKhoe(c) }).catch(() => {}) }, [])
   useEffect(() => { if (!NHO.danhMuc) layDanhMuc().then((d) => { NHO.danhMuc = d; setDanhMuc(d) }).catch(() => {}) }, [])
   const baoLoi = (s: string) => { setBao(s); window.clearTimeout(baoRef.current); baoRef.current = window.setTimeout(() => setBao(null), 2800) }
 
@@ -610,6 +686,22 @@ export default function TheGioiHS({ onBack }: { onBack: () => void }) {
     setTamBL((b) => b && { ...b, ct: b.ct && { ...b.ct, bl: b.ct.bl.map((x) => (x.id === bl.id ? { ...x, an } : x)) } })
     try { vaKhen(khoa, await anBinhLuan(bl.id, an)) } catch (e) { baoLoi(`Chưa ẩn được — ${loiText(e)}`); moBL(tamBL.tin, 'bl') }
   }
+  // Đăng bài khoe: thành công ⇒ bỏ khỏi danh sách chờ + màn "Lên sóng" + tải nền kênh Thế giới (server vừa thêm bài)
+  const dang = async () => {
+    if (!tamKhoe || tamKhoe.dang) return
+    const tt = tamKhoe.tt
+    setTamKhoe({ ...tamKhoe, dang: true, loi: null })
+    try {
+      const r = await dangKhoe(tt.khoa, tamKhoe.cau)
+      setChoKhoe((c) => { const moi = c && { ...c, da_khoe_hom_nay: r.da_khoe_hom_nay, tin: c.tin.filter((x) => x.khoa !== tt.khoa) }; NHO.choKhoe = moi; return moi })
+      setTamKhoe(null); setLenSong(tt); taiKenh('tg')
+    } catch (e) { setTamKhoe((x) => x && { ...x, dang: false, loi: loiText(e) }) }
+  }
+  const goBaiKhoe = (t: TinTG) => {
+    const bo = (v: KenhTG): KenhTG => ({ ...v, tin: v.tin.filter((x) => !(x.khoa === t.khoa && x.tang === 'B')).map((x) => (x.khoa === t.khoa ? { ...x, khoe: null } : x)) })
+    setKenh((x) => { const moi: Partial<Record<KenhId, KenhTG>> = {}; for (const [k, v] of Object.entries(x) as [KenhId, KenhTG][]) moi[k] = k === 'tg' ? { ...v, tin: v.tin.filter((y) => y.khoa !== t.khoa || y.tang === 'S') } : bo(v); return moi })
+    goKhoe(t.khoa).catch((e) => { baoLoi(`Chưa gỡ được — ${loiText(e)}`); taiKenh(tab) })
+  }
   const timBan = (tim: string) => {
     setTamKetBan({ tim, ds: null })
     const lan = ++timRef.current
@@ -632,10 +724,14 @@ export default function TheGioiHS({ onBack }: { onBack: () => void }) {
       danhMuc={danhMuc} thanhKhoa={thanhKhoa} onThanh={setThanhKhoa} onTha={tha} onThemCamXuc={setTamCX} onMoBl={moBL}
       onAnTin={(t, an) => { vaAn(t.khoa, an); anTin(t.khoa, an).catch(() => vaAn(t.khoa, !an)) }}
       onDongY={(id) => traLoi(id, true)} onDeSau={(id) => traLoi(id, false)}
-      onMoKetBan={() => timBan('')} onBack={onBack} bao={bao}>
+      onMoKetBan={() => timBan('')} onBack={onBack} bao={bao}
+      choKhoe={choKhoe} onKhoe={(tt) => setTamKhoe({ tt, cau: null, dang: false, loi: null })} onGoKhoe={goBaiKhoe}>
       {tamBL && <TamBinhLuan tin={tamBL.tin} ct={tamBL.ct} xem={tamBL.xem} onXem={(xem) => setTamBL((b) => b && { ...b, xem, loc: null })}
         loc={tamBL.loc} onLoc={(loc) => setTamBL((b) => b && { ...b, loc })} banPhim={tamBL.banPhim} onBanPhim={(banPhim) => setTamBL((b) => b && { ...b, banPhim })}
         danhMuc={danhMuc} onGui={guiBL} dangGui={tamBL.dangGui} loi={tamBL.loi} onGo={goBL} onAn={anBL} onDong={() => setTamBL(null)} />}
+      {tamKhoe && <TamKhoe tt={tamKhoe.tt} danhMuc={danhMuc} cau={tamKhoe.cau} onCau={(cau) => setTamKhoe((x) => x && { ...x, cau })}
+        onDang={dang} dangDang={tamKhoe.dang} loi={tamKhoe.loi} onDong={() => setTamKhoe(null)} />}
+      {lenSong && <LenSong tt={lenSong} onXem={() => { setLenSong(null); setMenuKhoa(null); setTab('tg'); window.scrollTo({ top: 0 }) }} />}
       {tamCX && <TamCamXuc tin={tamCX} danhMuc={danhMuc} onDong={() => setTamCX(null)} onChon={(ma) => { const t = tamCX; setTamCX(null); tha(t, ma) }} />}
       {tamKetBan && <TamKetBan tim={tamKetBan.tim} onTim={timBan} ds={tamKetBan.ds} onDong={() => setTamKetBan(null)}
         onGui={(id) => { setTamKetBan((x) => x && { ...x, ds: x.ds?.map((g) => (g.id === id ? { ...g, trang_thai: 'da_gui' } : g)) ?? null })

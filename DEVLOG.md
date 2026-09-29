@@ -31832,3 +31832,17 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   mig 202609291250_bu_seed_et_em_them_sau: vá buổi bù chưa xác nhận ET — chép lưới ET của chính buổi mẹ (ô không ẩn, thứ tự, ma_cau/ma_dang);
   nhân chứng thứ hai: 3 ô mẹ khớp thứ tự dạng với 3 ô đã seed cho Tuệ Nhi. Đo sau: đúng 1 em (37→36). Tuệ Anh có B1–B3 ngay, không chờ deploy.
 - Nợ §2.0 còn lại: việc seed vẫn ở client (lookup ET qua tai_lieu lớp+ngày) — nên chuyển thành hàm/trigger DB khi trả nợ AUDIT-client-tinh-toan.
+### 29/09 (19) — ĐĂNG BÀI KHOE (tính năng chính Thế giới BK) + bấm Thích ra dải cảm xúc + "Đọc bình luận (N)" + đủ 39 câu khen
+- Thùy chốt: HS khoe là lên Thế giới (S/A/B chỉ cho tin hệ thống tự đăng) · khoe gì đủ chuẩn cũng lên · tối đa 3 bài/ngày (t đề 1 — Thùy: "1 quá ít").
+- Mig 202609291239_the_gioi_dang_bai_khoe (áp --only, schema.md): bảng the_gioi_bai_khoe (1 dòng khi em BẤM, unique em×thành tích, go_at gỡ, trigger log)
+  · 12 câu dẫn nhóm 'khoe' (nháp CTO) · _the_gioi_cho_khoe (của em, 3 ngày, không S, chưa khoe) · fn_the_gioi_cho_khoe · fn_the_gioi_khoe (khoá
+  advisory chống bấm đôi vượt giới hạn) · fn_the_gioi_go_khoe · fn_the_gioi_kenh (từ DB đang chạy): tg = S ∪ bài khoe · lop/ban = S,A ∪ bài khoe ·
+  xếp ghim → ngày lên kênh → S/khoe/A; json 'khoe' {dang_at, cau, la_em}; thẻ gộp có 'so_bl' · fn_the_gioi_binh_luan: người xem chọn MỌI câu khen
+  (trừ cam_on/khoe) · fn_the_gioi_home thêm 'cho_khoe'.
+  Thử ROLLBACK HS thật: khoe 3 thành tích tự luyện OK · khoe lại / câu dẫn sai loại / HS khác khoe hộ đều bị chặn · bài thứ 4 trong ngày bị chặn
+  (thử riêng: chèn sẵn 3 bài) · gỡ ⇒ biến khỏi Thế giới · bình luận câu khác loại tin giờ được.
+- App: MucChoKhoe đầu mọi tab (còn X/3 lượt) · TamKhoe (xem trước + 12 câu dẫn) · LenSong toàn màn · bài khoe = thẻ lớn "🌏 đã khoe lên Thế giới" +
+  câu dẫn · menu ⋯ "Gỡ bài khoe" · NutThich BẤM là mở dải cảm xúc (bỏ bấm-giữ — Thùy: "1 chỗ để click, click ra list") · thẻ gộp "Đọc bình luận (N)"
+  (0 ⇒ "Xem tất cả") · bài: "Đọc N bình luận" · cauHop hiện đủ câu (hợp loại lên đầu) · Home: dòng "🎉 Em có N thành tích chưa khoe". Mẫu tt 12–13.
+- Sai suýt lọt: màn Lên sóng ghi "em nhận thông báo ngay" — push HS CHƯA có ⇒ đổi thành "báo ở ô Thế giới BK ngoài màn chính".
+- Số câu khen thật = 39 (không phải 42 như t nói miệng) + 5 cảm ơn + 12 dẫn khoe.

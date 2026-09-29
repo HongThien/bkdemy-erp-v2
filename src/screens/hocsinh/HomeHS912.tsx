@@ -227,11 +227,13 @@ function TheTheGioi({ p, skin, to }: { p: HomeProps; skin: Skin; to?: boolean })
   const g = p.theGioi, tt = g?.tuong_tac
   const anh = skin.anhO?.the_gioi
   const dong: ReactNode[] = []
+  const choKhoe = g?.cho_khoe?.tin.length ?? 0
+  if (choKhoe > 0) dong.push(<>🎉 <b>Em có {choKhoe} thành tích</b> chưa khoe — khoe ngay!</>)
   if (tt && tt.so > 0) dong.push(<>🔥 <b>{tt.nguoi ? <TenLop n={tt.nguoi} rutGon /> : 'Bạn bè'}</b>{tt.so_nguoi > 1 ? ` và ${tt.so_nguoi - 1} bạn` : ''} vừa thả tim, bình luận tin của em</>)
   if (g && g.loi_moi > 0) dong.push(<>💌 <b>{g.loi_moi} lời mời</b> kết bạn đang chờ em</>)
   for (const t of g?.tin ?? []) dong.push(<><b>{t.nguoi ? <TenLop n={t.nguoi} rutGon /> : `Đội ${String(t.chi_tiet.doi ?? '')}`}</b> {moTaTin(t)}</>)
   // lời dẫn cố định dưới tiêu đề (Thùy 29/09) — thông báo nối sau
-  const so = (tt?.so ?? 0) + (g?.loi_moi ?? 0)
+  const so = (tt?.so ?? 0) + (g?.loi_moi ?? 0) + choKhoe
   return (
     <button onClick={p.onTheGioi} className={`relative flex w-full items-center gap-3 text-left active:scale-[0.99] ${to ? 'min-h-[92px] px-5 py-3.5' : 'px-3.5 py-3'}`} style={THE}>
       {anh ? <img src={anh} alt="" className={`${to ? 'h-14 w-14' : 'h-12 w-12'} shrink-0 object-contain`} /> : <span className="text-[30px] leading-none" aria-hidden>🌏</span>}
