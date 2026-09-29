@@ -4,6 +4,23 @@
 > tính tới **28/09/2026** (xem §12 cho thay đổi 24–28/09). Lịch sử/số đo từng quyết định: `DEVLOG.md` theo ngày. Thiết kế gốc: `PLAN-botro-yeu.md` (phát hiện → duyệt →
 > nội dung → xếp → đánh giá) và `PLAN-botro-yeu-ca.md` (1 ca diễn ra thế nào, 2 app). Code/DB là chân lý runtime; file này là bản đồ.
 
+> ## ⏸ HOLD — RETEST tầng 2 ĐANG TẠM DỪNG (CEO 29/09)
+> Thùy 29/09: *"quy trình mới không chạy được retest — hold lại, không dùng nữa, ẩn đi, sau này làm."* Mọi chỗ trong file này nói tới
+> **retest tầng 2** (`bai_test.loai='retest'`, bước ⑥, tab Chờ retest / 📝 Retest, "retest đến hạn" trên app TA, "Bài kiểm tra lại" trên app HS)
+> là thiết kế **đang ngủ** — code vẫn còn, chỉ bị công tắc tắt. **Test cuối ca KHÔNG bị ảnh hưởng** (vẫn sinh, vẫn tính mastery).
+> - **Công tắc — 2 chỗ, lật CÙNG NHAU:** DB `public._btyeu_retest_bat()` (hiện `false`, mig `202609291037_hold_retest_bo_tro_yeu`) ·
+>   client `RETEST_BAT` ở `src/lib/botro_yeu_ca.ts` (re-export qua `botro_yeu.ts`). Bật lại = migration MỚI cho hàm trả `true` + đổi hằng.
+> - **Khi hold:** đóng ca / hoàn tất ca / mở màn Xếp **không sinh, không bổ sung** câu retest · dạng đã dạy **không còn "chờ retest"** ⇒ case dạy hết
+>   dạng đi thẳng **Chờ đánh giá** (luồng thành ⑤ → ⑦; màn Đánh giá ca chấm trước/sau bằng MỌI lần đo, vốn không cần retest) · màn Xếp: tab
+>   "Chờ retest" đổi tên **"Chờ đánh giá"**, tab 📝 Retest ẩn, bỏ gợi ý "cửa sổ retest 3–7 ngày" · Trạng thái ca bỏ mức "Chờ retest"; popup dạng
+>   hiện "Đã dạy" · Đang diễn ra bỏ nút lọc Retest · app TA không còn "retest đến hạn" (badge không đếm) + bỏ dòng "⚠ Không sinh được retest —
+>   báo OPS" · app HS không còn "Bài kiểm tra lại" (DB trả rỗng) · báo cáo trợ lý không báo "retest trễ", dòng thông số ghi "tạm dừng".
+> - **Dữ liệu KHÔNG đụng:** 34 bài retest đã sinh (13 quá hạn, 19 ngày tới — số 29/09) giữ nguyên `trang_thai='mo'`, chỉ ẩn; `retest_diem/dat`
+>   của dạng giữ nguyên (1 dạng trượt thật vẫn hiện "retest trượt · dạy lại"). Lịch sử + popup ca vẫn hiện bài retest **đã nộp**.
+>   Lúc hold: 23 case đang "Chờ retest" ⇒ sang "Chờ đánh giá".
+> - **Khi bật lại phải quyết:** 34 bài treo kia (ngày đã qua từ lâu) — dời ngày, đóng, hay sinh lại; case đã đóng ở Đánh giá ca trong thời
+>   gian hold thì KHÔNG có retest (đúng — không truy sinh).
+
 ---
 
 ## 0. Ba loại bổ trợ
@@ -36,7 +53,7 @@ Dữ liệu đo (ET · MT · BTVN · báo động GV/TA)
    → ③ NỘI DUNG (chọn dạng của case)       → màn Nội dung bổ trợ yếu
    → ④ XẾP LỊCH (OPS, theo lịch trực khối+bậc, ca ≤3 em) → màn Xếp bổ trợ yếu
    → ⑤ CA DIỄN RA (TA đứng ca; 📱 app hoặc 📄 giấy)      → app TA + app HS + tab "Đang diễn ra"
-   → ⑥ RETEST tầng 2 (sau ET buổi thường) → ⑦ ĐÁNH GIÁ CA (xong / theo dõi / bổ trợ tiếp / nâng mức)
+   → ⑥ RETEST tầng 2 (sau ET buổi thường) ⏸ HOLD 29/09 — bỏ qua → ⑦ ĐÁNH GIÁ CA (xong / theo dõi / bổ trợ tiếp / nâng mức)
 ```
 Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt duyệt ghi `hs_level_log` (cả đề xuất máy lẫn chốt người).
 

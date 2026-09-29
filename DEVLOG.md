@@ -31406,3 +31406,23 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   luận "cảnh sai/không chạy" từ tab nền. Thùy bấm thử cùng lúc trên tab đang mở ⇒ kết quả đè nhau.
 - Chạy local: `node scripts/serve-games.mjs 5270 khtn-site` (serve-games nhận thêm tham số thư mục). Bản thử riêng tư:
   https://claude.ai/artifact/Bx3nCocwpxRPLL15wtU2Ai
+
+### 29/09 — HOLD luồng RETEST tầng 2 của bổ trợ yếu (Thùy: "quy trình mới không chạy được retest — hold lại, ẩn đi, sau này làm")
+- Làm: 1 công tắc DB `_btyeu_retest_bat()` = false (mig 202609291037_hold_retest_bo_tro_yeu, áp --only) + hằng client `RETEST_BAT` ở
+  `botro_yeu_ca.ts` (nhẹ, app TA/HS dùng; `botro_yeu.ts` re-export). 13 hàm dựng lại từ pg_get_functiondef bản đang chạy, mỗi hàm chỉ chèn
+  điều kiện công tắc (script sinh bắt mỗi mẫu khớp ĐÚNG 1 lần): _btyeu_bu_retest · fn_btyeu_bu_retest_ton · fn_btyeu_dong_ca (không sinh retest,
+  test cuối ca giữ) · fn_btyeu_case_xep_lich · fn_btyeu_trang_thai_ca (+case_truoc_id) · fn_btyeu_chi_tiet_case (tt 'da_day') ·
+  fn_btyeu_lich_su_hs (chỉ retest đã nộp) · fn_btyeu_viec_cua_toi · fn_btyeu_dem · fn_btyeu_retest_cua_toi · fn_bo_tro_trong_ngay ·
+  _troly_bc_viec_yeu · _troly_bc_thong_so.
+- Quyết định (CTO, R2): bỏ bước ⑥ ⇒ dạy hết dạng = "Chờ đánh giá" (màn Đánh giá ca vốn chấm trước/sau bằng MỌI lần đo, không cần retest).
+  Pure-derive, KHÔNG ghi dữ liệu: 34 bài retest treo (13 quá hạn · 19 sắp tới) giữ nguyên, chỉ ẩn ⇒ bật lại là về đúng chỗ.
+- Đo trước/sau (ROLLBACK rồi áp thật, quyền admin): case "Chờ retest" 23 → 0 (sang cho_danh_gia 23) · retest_ngay 31 case → 0 · app TA
+  retest đến hạn 16 → 0, badge 38 → 22 · Bổ trợ trong ngày retest (hôm nay..+4) [2,0,13,3,1] → 0 · bu_retest_ton → 0.
+- Client: màn Xếp (tab Chờ retest → "Chờ đánh giá", ẩn 📝 Retest, bỏ gợi ý cửa sổ 3–7 ngày, không gọi bu_retest_ton) · Trạng thái ca (bỏ mức) ·
+  Đang diễn ra (bỏ nút lọc Retest) · Đánh giá ca: `listCaseChoDanhGia` đổi sang `fn_btyeu_trang_thai_ca` buoc='cho_danh_gia' (trước: client tự
+  đếm dong_at — vi phạm §2.0, và khi hold sẽ không bao giờ có case) · app TA bỏ dòng "⚠ Không sinh được retest — báo OPS". App HS KHÔNG sửa
+  code (DB trả rỗng ⇒ banner "Bài kiểm tra lại" tự ẩn) — tránh giẫm phiên HS đang chạy song song.
+- Phát hiện kèm: engine level (`gami/danhgia.js`) có luật "dạng kẹt >7 ngày chưa retest ⇒ đề xuất lên level" nhưng `danhgia.ts` không truyền
+  dayAt/retests ⇒ luật đang ngủ sẵn, hold không làm nó báo sai. Chưa có case nào từng đóng dạng qua retest (0 dong_at); 34 case hoàn thành đều `bo` (L0).
+- Phiên trợ lý (worktree troly-hoi-duoc) đang sửa 2 hàm _troly_bc_* ⇒ đã nhắn: sửa tiếp thì dựng từ bản đang chạy, đừng lấy file cũ (mất công tắc).
+- Chưa kiểm trên trình duyệt (ERP cần đăng nhập tài khoản thật) — DB kiểm bằng RPC dưới quyền admin, client bằng tsc.
