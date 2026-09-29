@@ -27,6 +27,16 @@
   3 luồng: đếm chậm/miss → Detail → cảnh báo) và **Tổng kết tuần** (dashboard theo BẢNG, mỗi chỉ số so với **thường đạt = trung bình 8 tuần gần nhất
   đã lọc nhiễu**, xếp hạng GV–TA, trình chiếu mỗi bảng một màn). **Treo:** báo cáo Vận hành của Lộc chưa có mẫu · thông báo thứ Hai chờ khai
   `TROLY_PUSH_APP` + deploy · khung hỏi chưa nối 13 công cụ DB. Chi tiết: mục "⭐⭐ TRỢ LÝ" bên dưới.
+
+- **⭐ GAME NÔNG TRẠI BK — 29/09 CEO đổi hướng sang NHỊP NGÀY. Đọc `spec-nong-trai-nhip-ngay.md` trước khi làm.**
+  - **Hướng mới:** kiểu Nông trại vui vẻ / Khu vườn trên mây. HS vào 1 lần/ngày để thu hoạch, mua hạt, gieo, và thăm vườn bạn cùng lớp để hái trộm/giúp.
+  - **Rào đã chốt:** giờ vàng chỉ chủ hái · mỗi ô chỉ trộm 1–2 quả · chỉ thăm trong lớp · có việc giúp (tưới, bắt sâu, nhổ cỏ) · cây không héo chết · **có trần trộm VÀ trần giúp mỗi ngày**.
+  - **Chưa chốt, đang tạm:** chuyển hẳn (tắt máy/đơn/sạp, không xoá code) · 3–5 phút/ngày · hiện tên người trộm.
+  - **Việc kế tiếp:** build demo offline có "vườn bạn ảo", trên nhánh git `nhip-ngay` của repo NongTrai. Kế hoạch từng file ở spec §6. Chưa có dòng code nhịp ngày nào.
+  - **⚠ Code game KHÔNG nằm trong repo ERP:** ở `E:\BK ACADEMY\Gaming\KayKit\NongTrai`, git riêng, **chưa có remote ⇒ chỉ có trên máy công ty**. Commit cuối `5f0a1e0` là bản nhịp Hay Day cấp 1–30 + cảnh quan kiểu Hay Day.
+    Làm ở máy khác thì phải mang code sang trước.
+  - **Chạy:** launch `nong-trai` (port 5270) · kiểm luật `node NongTrai/tools/test-engine.mjs`.
+  - **Bẫy three r128:** `Texture` không có `userData` · `InstancedMesh` cắt khung theo gốc toạ độ ⇒ chia ô có khối bao riêng hoặc `frustumCulled = false`.
 ### Kiến trúc & file chính
 - Kho = lá `bdkt` trong cây Admin → `src/screens/kho/KhoScreen.tsx`. Build **THẬT, wire Supabase DB v2** (ngoại lệ so với mock-first của shell — vì schema Kho đã đông cứng).
 - **Seam:** UI KHÔNG gọi `supabase` trực tiếp, chỉ qua `src/lib/kho/api.ts`.

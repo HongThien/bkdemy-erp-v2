@@ -32154,3 +32154,17 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - `test-engine` pass (engine không đổi).
   - Chụp cấp 1 và cấp 30 dựng giả qua `dongBo` (không đụng save), rồi nạp lại trang.
 - **Chưa làm:** chưa thử trên iPad gen 7 thật.
+
+## 2026-09-29 tối (muộn) — Nông Trại: CEO đổi hướng sang NHỊP NGÀY (kiểu Nông trại vui vẻ / Khu vườn trên mây)
+
+- **Thùy:** HS vào app 1 lần/ngày. Kiểu "thu hoạch, mua đồ tý, trồng cây, mai vào tiếp" hợp hơn Hay Day, vì Hay Day nhịp nhanh, tốn thời gian. Muốn có hái trộm như ngày xưa.
+- **Chốt 5 rào t đề xuất:**
+  - giờ vàng chỉ chủ hái
+  - trộm 1–2 quả/ô
+  - chỉ trong lớp
+  - có việc giúp
+  - không héo chết
+- **Thêm:** trần số lượt TRỘM và GIÚP mỗi ngày (để HS không online nhiều).
+- **Chưa trả lời:** chuyển hẳn hay lai; 3–5 phút/ngày. t tạm: chuyển hẳn bằng cờ (không xoá code Hay Day), 3–5 phút.
+- **Ghi:** thiết kế + kế hoạch code ở `spec-nong-trai-nhip-ngay.md`; mục ① HANDOFF.
+- **Chưa code.** Phiên dừng khi đang đọc engine/ui/nhiemvu để lên kế hoạch (Thùy về nhà, mai làm tiếp).
