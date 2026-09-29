@@ -113,7 +113,7 @@ export const anhFxSaoMoi = (): string | null => (KIT.nhiem_vu ? `${GOC}/fx/sao_m
 
 // ── Thế giới BK (Đơn 5) — chưa có kit ⇒ emoji. Mã icon tương tác = the_gioi_danh_muc.ma (DB), không ghép tên ở màn.
 export const ICON_TIN: Record<string, string> = {
-  nhat_buoi: '🏆', game_nhat: '🎯', doi_thang: '🚩', tra_sua: '🧋', huy_hieu: '🏅', giai_thang: '🎖️', no_luc: '🔥', len_bac: '⬆️',
+  nhat_buoi: '🏆', game_nhat: '🎯', doi_thang: '🚩', tra_sua: '🧋', huy_hieu: '🏅', giai_thang: '🎖️', et_cao: '💯', tu_luyen: '📚', len_bac: '⬆️',
 }
 export const ICON_TG = { tab_the_gioi: '🌏', tab_ban_be: '🤝', tab_lop: '🏰', ket_ban: '➕', loi_moi: '💌', thay_co_khen: '👑', dang_hoc: '🟢', avatar_an_danh: '🧙' }
 export const anhTG = (ten: keyof typeof ICON_TG | 'ruy_bang_s' | 'tang_s' | 'tang_a' | 'tang_b'): string | null => (KIT.the_gioi ? `${GOC}/the-gioi/${ten}.png` : null)

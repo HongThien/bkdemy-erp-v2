@@ -31738,3 +31738,16 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   (nhãn Na⁺ trên cảnh lộ luôn dấu +) đổi thành "Na còn bao nhiêu electron và mang điện gì?" — phải cộng lớp 2, 8 mới ra.
   Phim lời dẫn vẫn DẠY nội dung (đó là bài giảng); câu hỏi kiểm tra sau.
 - Thêm `<!doctype html>` đầu file: phục vụ trực tiếp trên web chạy chế độ chuẩn (trước đó chế độ quirks); bản artifact bỏ qua dòng này.
+### 29/09 (17) — Thế giới BK: tin phải là THÀNH TÍCH có số + tin chất lượng lên đầu + lời dẫn
+- Thùy: "Xong 1 bài toán đâu thể là tin tức — ít nhất ET 9, 10 điểm, thông tin tích cực" · "người ta chỉ lướt 1–2 trang đầu ⇒ phải tin chất lượng".
+- Đo 28 ngày: ET 1.622 lượt, 663 lượt 10đ (phần lớn ET 1–3 câu) · ET ≥5 câu & 10đ = 140 (~5/ngày) · thu_thach_luot 0 lượt ·
+  btvn_ket_qua.ti_le_dung chưa từng ghi · tự luyện câu đúng/ngày: trung vị 12, p90 59.
+- Mig 202609291226_the_gioi_tin_chat_luong (áp --only, schema.md): `_et_diem_buoi(tu, den)` = NGUỒN CÔNG THỨC DUY NHẤT điểm ET/buổi (tách từ
+  nhiệm vụ T2; invoker giữ RLS như cũ) · fn_nhiem_vu_hoan_thanh tạo lại TỪ pg_get_functiondef đang chạy, chỉ thay khúc T2 — so khúc cũ vs hàm
+  mới tháng 9: Toán 907/907 · KHTN 73/73 dòng giống hệt (lần so đầu lệch do câu so của t thiếu join lop — không phải hàm sai) ·
+  _the_gioi_tin: BỎ no_luc "xong N bài"; THÊM et_cao (≥5 câu; 10đ = A, 9–9,5đ = B) + tu_luyen (≥50 câu đúng/ngày/môn, B) ·
+  fn_the_gioi_kenh xếp S → A → B rồi mới theo giờ. 7 ngày thử: tu_luyen 28 · et_cao B 16 / A 11 · nhat_buoi 5 · game 3.
+- App: moTaTin et_cao "đạt ET 10 điểm (8 câu)" · tu_luyen "luyện đúng 74 câu trong ngày" · gộp "Hôm nay N bạn đạt ET 10 điểm" · ICON_TIN.
+  Thẻ Thế giới ở Home có lời dẫn cố định "Xem học sinh BK đang khoe gì nào!"; chữ dưới ô "Xem HS BK đang khoe gì".
+- Thùy nêu hướng MỚI (chưa build, chờ chốt logic): "Đăng bài khoe" = tính năng chính — HS làm xong việc tốt ⇒ hiện nút "Đăng bài khoe BK nào",
+  bấm mới lên kênh Thế giới; tin hệ thống tự đăng chỉ còn tin S giật gân · "làm sao để lên kênh Thế giới cũng ghê gớm".
