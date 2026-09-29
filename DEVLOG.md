@@ -31572,6 +31572,45 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   từ file migration — đúng lúc đó chưa ai sửa nên không sao, nhưng cách làm là sai. Từ giờ: mọi lần `create or replace` một hàm đang có ⇒ lấy thân từ
   `pg_get_functiondef` rồi mới sửa.
 
+### 29/09 — Bổ trợ yếu KẾT THÚC khi hết dạng yếu + TA đóng ca (Thùy sửa hướng của mục "HOLD luồng RETEST" phía trên)
+- Thùy: "Chờ đánh giá là việc của học thuật — là luồng khác. Luồng bổ trợ yếu sẽ end khi học sinh hết dạng yếu và TA bấm đóng ca." ⇒ SAI của CTO
+  ở mục HOLD: đã cho case dạy hết dạng sang "Chờ đánh giá" (R1 — điểm KẾT THÚC của luồng là câu hỏi về ĐÍCH, lẽ ra phải hỏi, không tự chốt).
+- Mig 202609291055_btyeu_ket_thuc_khi_het_dang (áp --only): nới CHECK ket_qua + 'day_xong' · hàm nội bộ `_btyeu_ket_thuc_case` (revoke public/anon/
+  authenticated) · fn_btyeu_hoan_tat: hold + hết dạng cần dạy ⇒ đóng case (day_xong, dong_boi = người hoàn tất, dạng mở ⇒ dong_at, dat giữ NULL,
+  huỷ buổi chưa học; level KHÔNG đổi) · fn_btyeu_case_xep_lich / fn_btyeu_trang_thai_ca: hold ⇒ case mở luôn là đang bổ trợ (Cần xếp/Đã xếp) ·
+  fn_btyeu_ca_ta + case_trang_thai/case_ket_qua/so_dang_con_day · ĐÓNG HỒI TỐ 17 case (hết dạng, TA đã đóng buổi cuối; mốc = danh_gia_xong_at buổi
+  cuối, người đóng = tài khoản bấm hoàn tất buổi đó). 6 case còn buổi TA chưa hoàn tất ⇒ ở Đã xếp, tự kết thúc khi TA bấm.
+- Bẫy: fn_btyeu_hoan_tat bản đang chạy giữ CRLF trong thân hàm (áp từ Windows) ⇒ mẫu thay nhiều dòng '\n' khớp 0 lần — script sinh phải thử cả CRLF.
+- Đo (ROLLBACK rồi áp thật): buoc {can_xep 58, da_xep 16, cho_danh_gia 23, hoan_thanh 34} → {can_xep 58, da_xep 22, hoan_thanh 51}; kết quả
+  {bo 34} → {bo 34, day_xong 17}. Giả lập TA hoàn tất: ca hết dạng ⇒ case hoan_thanh/day_xong; ca còn dạng, bỏ tick hết ⇒ case vẫn mở, còn 4 dạng.
+- Client: ERP Xếp ẩn tab Chờ retest (cả 📝 Retest), tab Hoàn thành nhãn "Hết dạng yếu · Đã dạy hết N dạng"; Trạng thái ca bỏ mức Chờ đánh giá;
+  nhãn kết quả chung `KET_QUA_CASE_TEN` (botro_yeu_ca.ts) cho Xếp/Trạng thái/Lịch sử; revert mô tả màn Đánh giá ca (học thuật, không đụng) ·
+  app TA: cảnh báo "không bỏ tick dạng nào ⇒ KẾT THÚC" + sau hoàn tất báo "🎉 hết dạng yếu — KẾT THÚC" / "còn N dạng — OPS xếp buổi sau" ·
+  app HS: không gọi retest khi hold. tsc sạch · check:style-hs ✔. Chưa soi trình duyệt (cần đăng nhập tài khoản thật).
+- Hệ quả cần Thùy biết: app TA mặc định tick HẾT dạng còn mở (luật 24/09) ⇒ TA bấm Hoàn tất không bỏ tick = case kết thúc ngay ca đó.
+
+### 29/09 — KHTN du hành "Liên kết hoá học" bản thử 2: cảnh phim + nhiệm vụ quan sát (Thùy test bản 1, chốt lại nhịp)
+- Thùy chốt (sau khi bay thử bản 1): mỗi chặng = ① CẢNH PHIM có lời dẫn kể sự kiện (Na thừa 1, Cl thiếu 1 → lại gần → electron
+  bay sang → Na⁺/Cl⁻ đều ở trạng thái hoàn hảo — "quy tắc bát tử" — → hút nhau âm dương), cộng hoá trị cũng có phim "góp chung để
+  cùng hoàn hảo"; ② HIỆU ỨNG RIÊNG cho từng loại liên kết để phân biệt; ③ sau phim HS mới bay vào, tới gần điểm nào thì hiện chú
+  thích bài học tại chỗ đó; ④ có câu hỏi cuối chặng thì trong lúc bay phải có chỉ dẫn cần quan sát gì — kiểu lời dẫn "Giờ em hãy
+  quan sát các lớp của Ne xem nó có bao nhiêu electron nhé"; ⑤ tàu chậm 20%.
+- Làm: khung phim (viền đen, phụ đề tự chạy theo độ dài chữ, Tiếp/Dừng/Bỏ qua, Enter = tiếp) → bước cuối phim = câu lời dẫn giao việc
+  (chờ bấm "Bắt đầu quan sát"), câu đó ghim ở đầu khung "Nhiệm vụ quan sát" (checklist = câu hỏi dẫn, tích khi tới điểm sáng) → xem
+  đủ mới hiện nút "Trả lời câu hỏi" → sai thì điểm sáng liên quan bật lại, phải bay lại xem. Bỏ vòng soi, thay bằng điểm sáng +
+  thẻ chú thích bám vị trí điểm trên màn (luôn nằm gọn trong màn). "Xem lại phim" dựng lại nội dung trạm rồi chiếu lại.
+  Hiệu ứng: ION = quầng cam (+)/xanh (−) + đường lực cam→xanh có hạt chạy, KHÔNG nối hạt nhân; CỘNG HOÁ TRỊ = vùng chồng sáng xanh
+  ngọc + sợi nối 2 hạt nhân (đúng nét "–" trong H–H) + cặp electron xoay quanh; HOÀN HẢO = vòng ngoài chuyển vàng + "8e ✓"/"2e ✓".
+  Mạng muối: ion tản ra rồi tự xếp thành tinh thể, cạnh tô cam→xanh (cùng ngôn ngữ hình với liên kết ion). Trạm Cl₂ đặt cặp Na⁺Cl⁻
+  bên dưới để so sánh ⇒ ra luật. MAXV 34→27.
+- Soi: 8 trạm, từng phim có ảnh (Ne, He vàng, electron bay có vệt, cảnh hút ion, H₂ cộng hoá trị, mạng muối, Cl₂ vs NaCl); luồng
+  logic trạm 2 (đủ điểm → nút → sai → bật lại → xem lại → đúng → mở trạm 3) và trạm 7 (sai HCl → bay ra vào lại → đúng) tới về đích; 0 lỗi console.
+  Sửa trong lúc soi: bỏ phim thì máy quay kẹt ở cảnh dở (He) trong khi lời dẫn nói về Ne ⇒ bước lời dẫn luôn lùi về toàn cảnh ·
+  bấm Tiếp khi máy quay chưa tới nơi thì cảnh sau (không khai báo góc máy) đứng khựng/quay ngược về trạm cũ ⇒ kế thừa đích của cảnh
+  trước · chú thích 3D bị cắt ở mép màn và đè khung nhiệm vụ ⇒ đổi sang thẻ DOM bám điểm, tự né mép · ion "chưa xếp" tràn ra đường bay.
+- Bẫy soi: Browser pane hoãn requestAnimationFrame khi script đang await ⇒ ảnh chụp là khung cũ. Thêm `__dbg.run(giây)` chạy mô phỏng
+  đồng bộ (tách `tick()` khỏi vòng rAF) — test theo thời gian phải dùng cái này, và chụp 2 lần nếu nghi ảnh cũ.
+
 ## 2026-09-29 (17) — TRỢ LÝ: ⚠ LỖI THẬT trên app "statement timeout" + CEO chốt báo cáo KHÔNG realtime → lưu bản báo cáo vào DB
 
 - **Diễn biến:** Thùy bảo "push lên main đi" rồi "tự pull đi" → đã đẩy `main` (c31f2db) và ff thư mục chính. Thùy mở tab 🤖 Trợ lý ⇒

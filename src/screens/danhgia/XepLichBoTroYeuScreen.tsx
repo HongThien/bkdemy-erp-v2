@@ -12,7 +12,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
   listCaseChoXepLich, taoBuoiBoTroYeu, listBuoiCuaCase, goiYXepLichBoTroYeu,
-  listLichTruc, themLichTruc, ketThucLichTruc, lichTrucCuaHS, goiYTheoLichTruc, caSapToi, khoaCa, caTrucConCho, datUuTienCase, UU_TIEN_TEN, deXuatDangMoi, themDangMayVaoCase, donCaKhongDienRa, buRetestTon, doiLevelCase, GIAI_DOAN_TEN, RETEST_BAT, type UuTienCase, type DangMayDeXuat,
+  listLichTruc, themLichTruc, ketThucLichTruc, lichTrucCuaHS, goiYTheoLichTruc, caSapToi, khoaCa, caTrucConCho, datUuTienCase, UU_TIEN_TEN, deXuatDangMoi, themDangMayVaoCase, donCaKhongDienRa, buRetestTon, doiLevelCase, GIAI_DOAN_TEN, RETEST_BAT, KET_QUA_CASE_TEN, type UuTienCase, type DangMayDeXuat,
   type CaseChoXep, type BuoiBoTroYeuDaXep, type BuoiChoHoc, type GoiYXepLich, type LichTruc, type CaTrucDeXuat, type CaSapToi,
 } from '../../lib/botro_yeu'
 import { supabase } from '../../lib/supabase'
@@ -97,11 +97,12 @@ export default function XepLichBoTroYeuScreen() {
   const choXep = useMemo(() => loc.filter((c) => c.trangThai === 'dang_xu' && c.giaiDoan === 'dang_bo_tro' && !c.daXep), [loc])
   const daXep = useMemo(() => loc.filter((c) => c.trangThai === 'dang_xu' && c.giaiDoan === 'dang_bo_tro' && c.daXep), [loc])
   // Chờ retest: dạy hết dạng, chờ retest đạt — KHÔNG xếp lịch (retest sau ET buổi thường, TA lớp được báo). Retest xong hết ⇒ chờ đánh giá ca.
-  // ⏸ Hold retest (Thùy 29/09, RETEST_BAT=false): tab này thành "Chờ đánh giá" — dạy hết dạng là chờ đánh giá ca luôn; tab 📝 Retest ẩn.
+  // ⏸ Hold retest (Thùy 29/09, RETEST_BAT=false): ẩn tab Chờ retest + 📝 Retest. Bổ trợ yếu KẾT THÚC khi em hết dạng + TA đóng ca
+  // (DB tự đóng case, ket_qua 'day_xong') ⇒ case chỉ còn Cần xếp · Đã xếp · Hoàn thành; "Chờ đánh giá" là việc học thuật — luồng khác.
   const choRetest = useMemo(() => loc.filter((c) => c.trangThai === 'dang_xu' && c.giaiDoan !== 'dang_bo_tro'), [loc])
   const hoanThanh = useMemo(() => loc.filter((c) => c.trangThai === 'hoan_thanh'), [loc])
-  const TAB_TEN: Record<typeof tab, string> = { can_xep: `Cần xếp (${choXep.length})`, da_xep: `Đã xếp (${daXep.length})`, cho_retest: `${RETEST_BAT ? 'Chờ retest' : 'Chờ đánh giá'} (${choRetest.length})`, hoan_thanh: `Hoàn thành (${hoanThanh.length})`, retest: '📝 Retest' }
-  const TABS = (['can_xep', 'da_xep', 'cho_retest', 'hoan_thanh', 'retest'] as const).filter((t) => RETEST_BAT || t !== 'retest')
+  const TAB_TEN: Record<typeof tab, string> = { can_xep: `Cần xếp (${choXep.length})`, da_xep: `Đã xếp (${daXep.length})`, cho_retest: `Chờ retest (${choRetest.length})`, hoan_thanh: `Hoàn thành (${hoanThanh.length})`, retest: '📝 Retest' }
+  const TABS = (['can_xep', 'da_xep', 'cho_retest', 'hoan_thanh', 'retest'] as const).filter((t) => RETEST_BAT || (t !== 'retest' && t !== 'cho_retest'))
   // Đổi ưu tiên = vá tại chỗ + sắp lại (ưu tiên cao trước, cùng ưu tiên thì case mở lâu hơn trước) — Thùy 20/09.
   const sapXep = (ds: CaseChoXep[]) => [...ds].sort((a, b) => b.uuTien - a.uuTien || a.created_at.localeCompare(b.created_at))
   // Thùy 28/09: đổi mức ngay trên card — em tự luyện hết yếu thì hạ L0 (đóng case, không phải xếp nữa); L1↔L2 đổi đơn vị buổi chờ.
@@ -141,7 +142,7 @@ Lý do:`, 'Tự luyện thêm, hết yếu'); if (ly === null) return }
         <header className="mb-6 flex flex-wrap items-end justify-between gap-3">
           <div>
             <h1 className="text-[22px] font-bold text-slate-800">Xếp bổ trợ yếu</h1>
-            <p className="mt-1 text-[13px] text-slate-500">{tab === 'can_xep' ? 'Case đang bổ trợ chưa có buổi chờ học — bấm vào để xếp ngày, giờ, phòng, người với phụ huynh.' : tab === 'da_xep' ? 'Đã có buổi chờ học — qua ngày mà không điểm danh sẽ tự huỷ và quay về Cần xếp.' : tab === 'cho_retest' ? (RETEST_BAT ? 'Dạy hết dạng, chờ retest sau ET buổi thường (TA lớp được báo trên app TA). Retest đạt hết ⇒ Đánh giá ca ⇒ Hoàn thành.' : 'Dạy hết dạng ⇒ chờ đánh giá ca (Bổ trợ › Đánh giá ca bổ trợ) ⇒ Hoàn thành. Retest đang TẠM DỪNG.') : tab === 'hoan_thanh' ? 'Case đã đóng vòng (lưu toàn bộ). Yếu lại ⇒ vòng mới.' : tab === 'retest' ? 'Theo dõi bài retest tầng 2: chờ làm · quá hạn · đã nộp (đạt/trượt từng dạng). Không xếp lịch — TA lớp cho em làm sau ET; quá hạn thì dời ngày.' : 'Theo dõi bài retest tầng 2: chờ làm · quá hạn · đã nộp (đạt/trượt từng dạng). Không xếp lịch — TA lớp cho em làm sau ET; quá hạn thì dời ngày.'}</p>
+            <p className="mt-1 text-[13px] text-slate-500">{tab === 'can_xep' ? 'Case đang bổ trợ chưa có buổi chờ học — bấm vào để xếp ngày, giờ, phòng, người với phụ huynh.' : tab === 'da_xep' ? 'Đã có buổi chờ học — qua ngày mà không điểm danh sẽ tự huỷ và quay về Cần xếp.' : tab === 'cho_retest' ? 'Dạy hết dạng, chờ retest sau ET buổi thường (TA lớp được báo trên app TA). Retest đạt hết ⇒ Đánh giá ca ⇒ Hoàn thành.' : tab === 'hoan_thanh' ? `Case đã đóng vòng (lưu toàn bộ).${RETEST_BAT ? '' : ' Em hết dạng yếu + TA đóng ca cuối ⇒ tự vào đây.'} Yếu lại ⇒ vòng mới.` : tab === 'retest' ? 'Theo dõi bài retest tầng 2: chờ làm · quá hạn · đã nộp (đạt/trượt từng dạng). Không xếp lịch — TA lớp cho em làm sau ET; quá hạn thì dời ngày.' : 'Theo dõi bài retest tầng 2: chờ làm · quá hạn · đã nộp (đạt/trượt từng dạng). Không xếp lịch — TA lớp cho em làm sau ET; quá hạn thì dời ngày.'}</p>
           </div>
           {/* Thùy 24/09: filter giống Bù/Đuổi (chip khối + tìm tên) và nằm góc trên bên phải */}
           <div className="flex flex-wrap items-center justify-end gap-2">
@@ -197,16 +198,16 @@ Lý do:`, 'Tự luyện thêm, hết yếu'); if (ly === null) return }
                       <span className="text-[14px] font-semibold text-slate-800">{c.ho_ten} <span className="font-normal text-slate-400">· {c.mon}{c.khoi ? ` · Khối ${c.khoi}` : ''}</span></span>
                     </div>
                     <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px]">
-                      <span className={`rounded-full px-2 py-0.5 font-bold ${c.giaiDoan === 'hoan_thanh' ? 'bg-emerald-50 text-emerald-700' : 'bg-violet-50 text-violet-700'}`}>{c.giaiDoan === 'hoan_thanh' ? 'Chờ đánh giá' : GIAI_DOAN_TEN[c.giaiDoan]} · vòng {c.vong}</span>
-                      <span className="text-slate-500">{RETEST_BAT ? <>{c.soDangXong}/{c.soDang} dạng đã đạt{c.soDangChoRetest ? ` · ${c.soDangChoRetest} chờ retest` : ''}</> : `Đã dạy hết ${c.soDang} dạng`} · đã học {c.soBuoiDaHoc} buổi</span>
+                      <span className={`rounded-full px-2 py-0.5 font-bold ${c.giaiDoan === 'hoan_thanh' ? 'bg-emerald-50 text-emerald-700' : 'bg-violet-50 text-violet-700'}`}>{GIAI_DOAN_TEN[c.giaiDoan]} · vòng {c.vong}</span>
+                      <span className="text-slate-500">{c.soDangXong}/{c.soDang} dạng đã đạt{c.soDangChoRetest ? ` · ${c.soDangChoRetest} chờ retest` : ''} · đã học {c.soBuoiDaHoc} buổi</span>
                     </div>
                     {(deXuat.get(c.id) ?? []).length > 0 && (
                       <button onClick={() => themDangMay(c)} className="mt-1.5 rounded-md bg-violet-600 px-2 py-0.5 text-[11.5px] font-bold text-white hover:bg-violet-700">🤖 +{(deXuat.get(c.id) ?? []).length} dạng yếu mới — Thêm (về Cần xếp)</button>
                     )}
-                    <div className="mt-1.5 text-[12px] text-slate-500">{c.giaiDoan === 'hoan_thanh' ? `${RETEST_BAT ? 'Retest xong hết' : 'Dạy xong hết dạng'} — chờ đánh giá ca (màn Đánh giá ca bổ trợ).` : c.retestNgay ? `📝 Retest ${thuCuaNgay(c.retestNgay)} ${ddmmVN(c.retestNgay)} — sau ET buổi thường` : '📝 Retest sau ET buổi thường kế tiếp'}</div>
+                    <div className="mt-1.5 text-[12px] text-slate-500">{c.giaiDoan === 'hoan_thanh' ? 'Retest xong hết — chờ đánh giá ca (màn Đánh giá ca bổ trợ).' : c.retestNgay ? `📝 Retest ${thuCuaNgay(c.retestNgay)} ${ddmmVN(c.retestNgay)} — sau ET buổi thường` : '📝 Retest sau ET buổi thường kế tiếp'}</div>
                   </div>
                 ))}
-                {choRetest.length === 0 && <p className="text-[12px] text-slate-400">{RETEST_BAT ? 'Không có case nào chờ retest.' : 'Không có case nào chờ đánh giá.'}</p>}
+                {choRetest.length === 0 && <p className="text-[12px] text-slate-400">Không có case nào chờ retest.</p>}
               </div>
             )}
             {tab === 'hoan_thanh' && (
@@ -215,9 +216,9 @@ Lý do:`, 'Tự luyện thêm, hết yếu'); if (ly === null) return }
                   <div key={c.id} className="rounded-2xl bg-white p-4 ring-1 ring-emerald-200">
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="text-[14px] font-semibold text-slate-800">{c.ho_ten} <span className="font-normal text-slate-400">· {c.mon}{c.khoi ? ` · Khối ${c.khoi}` : ''}</span></span>
-                      <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-700">Hoàn thành · vòng {c.vong}{c.ketQua ? ` · ${({ dat: 'đạt', mot_phan: 'một phần', chua_dat: 'chưa đạt', bo: 'bỏ' } as Record<string, string>)[c.ketQua] ?? c.ketQua}` : ''}</span>
+                      <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-700">Hoàn thành · vòng {c.vong}{c.ketQua ? ` · ${KET_QUA_CASE_TEN[c.ketQua] ?? c.ketQua}` : ''}</span>
                     </div>
-                    <div className="mt-1 text-[12px] text-slate-500">{c.soDangXong}/{c.soDang} dạng đạt · {c.soBuoiDaHoc} buổi · mở {ddmmVN(c.created_at.slice(0, 10))}{c.hoanThanhAt ? ` → đóng ${ddmmVN(c.hoanThanhAt.slice(0, 10))}` : ''}</div>
+                    <div className="mt-1 text-[12px] text-slate-500">{c.ketQua === 'day_xong' ? `Đã dạy hết ${c.soDang} dạng` : `${c.soDangXong}/${c.soDang} dạng đạt`} · {c.soBuoiDaHoc} buổi · mở {ddmmVN(c.created_at.slice(0, 10))}{c.hoanThanhAt ? ` → đóng ${ddmmVN(c.hoanThanhAt.slice(0, 10))}` : ''}</div>
                   </div>
                 ))}
                 {hoanThanh.length === 0 && <p className="text-[12px] text-slate-400">Chưa có case nào hoàn thành.</p>}

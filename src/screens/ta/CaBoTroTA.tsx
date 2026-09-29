@@ -390,6 +390,10 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
           {hoanTat ? (
             <div className="text-[13px] text-slate-700">
               <p className="text-emerald-700">✓ Đã hoàn tất ca.</p>
+              {/* Thùy 29/09: hết dạng yếu + TA đóng ca ⇒ DB đóng case (day_xong). App chỉ báo kết quả DB trả. */}
+              {!RETEST_BAT && (ca.case_trang_thai === 'hoan_thanh'
+                ? <p className="mt-1.5 rounded-xl bg-emerald-50 px-3 py-2 font-semibold text-emerald-800">🎉 {ca.case_ket_qua === 'day_xong' ? `Em đã hết dạng yếu — bổ trợ yếu ${ca.mon} KẾT THÚC.` : `Bổ trợ yếu ${ca.mon} đã đóng.`}</p>
+                : ca.so_dang_con_day > 0 && <p className="mt-1.5 rounded-xl bg-indigo-50 px-3 py-2 text-indigo-800">Còn {ca.so_dang_con_day} dạng phải dạy — OPS xếp buổi sau.</p>)}
               {ca.danh_gia?.muc_ma && <p className="mt-1">Mức: <b>{MUC_CATALOG.find((m) => m.ma === ca.danh_gia!.muc_ma)?.nhan ?? ca.danh_gia.muc_ma}</b></p>}
               {ca.danh_gia?.nhan_xet && <p className="mt-1 whitespace-pre-wrap text-slate-600">{ca.danh_gia.nhan_xet}</p>}
             </div>
@@ -416,7 +420,8 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
               )}
               {dangMo.length > 0 && (
                 <div className="rounded-xl bg-indigo-50/60 px-3 py-2">
-                  <p className="mb-1 text-[12px] font-bold text-indigo-800">Dạng đã dạy buổi này <span className="font-normal text-indigo-600">— bỏ tick dạng chưa kịp dạy (dạng tick ⇒ {RETEST_BAT ? 'chờ retest' : 'xong phần dạy'}, bỏ tick ⇒ xếp buổi sau)</span></p>
+                  <p className="mb-1 text-[12px] font-bold text-indigo-800">Dạng đã dạy buổi này <span className="font-normal text-indigo-600">— bỏ tick dạng chưa kịp dạy (dạng tick ⇒ {RETEST_BAT ? 'chờ retest' : 'đã dạy xong'}, bỏ tick ⇒ xếp buổi sau)</span></p>
+                  {!RETEST_BAT && <p className="mb-1 text-[11.5px] font-semibold text-amber-700">⚠ Không bỏ tick dạng nào ⇒ em HẾT dạng yếu: bấm Hoàn tất là bổ trợ yếu {ca.mon} của em KẾT THÚC.</p>}
                   {dangMo.map((d) => (
                     <label key={d.ma_dang} className="flex items-start gap-2 py-0.5 text-[12.5px] text-slate-700">
                       <input type="checkbox" checked={tick.has(d.ma_dang)} onChange={() => doiTick(d.ma_dang)} className="mt-0.5" />

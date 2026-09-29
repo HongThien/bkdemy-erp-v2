@@ -17,8 +17,8 @@ import { homNayVN, congNgay } from './tuan'
 import { RESULT_VALUE } from '../gami/mastery.js'
 import { fetchAllRows } from './pgrest' // phân trang THẬT — PostgREST cap 1000 dòng/query, xem pgrest.ts
 
-import { RETEST_BAT } from './botro_yeu_ca' // ⏸ hold retest 29/09 — định nghĩa + lý do ở botro_yeu_ca.ts
-export { RETEST_BAT }
+import { RETEST_BAT, KET_QUA_CASE_TEN } from './botro_yeu_ca' // ⏸ hold retest 29/09 — định nghĩa + lý do ở botro_yeu_ca.ts
+export { RETEST_BAT, KET_QUA_CASE_TEN }
 
 const LIMIT = 10000
 
@@ -454,8 +454,9 @@ export async function listBuoiCuaCase(boTroYeuId: string): Promise<BuoiBoTroYeuD
 }
 
 // ── ĐÁNH GIÁ CA BỔ TRỢ (PLAN §12) — case ở mức "Chờ đánh giá" (hết dạng cần dạy, hết chờ retest) ────
-// Mức tính ở DB (`fn_btyeu_trang_thai_ca`, buoc='cho_danh_gia') — cùng nguồn với màn Trạng thái ca. Hold retest (29/09)
-// ⇒ dạy hết dạng là vào đây luôn (trước đó phải retest đạt hết). Đóng case thật khi người duyệt bấm 1 trong 5 hành vi — `dongCase`.
+// Mức tính ở DB (`fn_btyeu_trang_thai_ca`, buoc='cho_danh_gia') — cùng nguồn với màn Trạng thái ca. Đóng case thật khi người duyệt
+// bấm 1 trong 5 hành vi — `dongCase`. ⚠ Hold retest (Thùy 29/09): bổ trợ yếu KẾT THÚC ngay khi hết dạng + TA đóng ca (DB đóng case,
+// ket_qua 'day_xong') ⇒ không case nào tới mức này; "đánh giá sau bổ trợ" là việc học thuật — luồng khác, chưa build.
 export type CaseHoanThanh = { id: string; hoc_sinh_id: string; ho_ten: string; mon: string; created_at: string; caseTruocId: string | null }
 export async function listCaseChoDanhGia(mon?: string): Promise<CaseHoanThanh[]> {
   const ds = await listTrangThaiCa(1) // chỉ cần case đang mở — hoàn thành lấy ngắn nhất
@@ -601,7 +602,8 @@ export type MucCa = 'cho_noi_dung' | 'can_xep' | 'da_xep' | 'cho_retest' | 'cho_
 export const MUC_CA: { k: MucCa; ten: string }[] = [
   { k: 'cho_noi_dung', ten: 'Chờ chọn dạng' }, { k: 'can_xep', ten: 'Cần xếp' }, { k: 'da_xep', ten: 'Đã xếp' },
   { k: 'cho_retest', ten: 'Chờ retest' }, { k: 'cho_danh_gia', ten: 'Chờ đánh giá' }, { k: 'hoan_thanh', ten: 'Hoàn thành' },
-].filter((m) => RETEST_BAT || m.k !== 'cho_retest') as { k: MucCa; ten: string }[] // hold retest ⇒ DB không trả mức này nữa
+].filter((m) => RETEST_BAT || (m.k !== 'cho_retest' && m.k !== 'cho_danh_gia')) as { k: MucCa; ten: string }[]
+// ↑ hold retest: bổ trợ yếu KẾT THÚC khi hết dạng + TA đóng ca (Thùy 29/09) — "Chờ đánh giá" là việc học thuật, DB không trả 2 mức này nữa
 export type TrangThaiCa = {
   id: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; mon: string; lop: string | null
   level: number; uu_tien: number; created_at: string; hoan_thanh_at: string | null; ket_qua: string | null; case_truoc_id: string | null

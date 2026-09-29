@@ -2,7 +2,7 @@
 // test cuối ca, nhận xét, chế độ app/giấy, huỷ vì sao) · retest (đạt/trượt từng dạng) · lượt duyệt level · báo động · case mở/đóng.
 // Dữ liệu = 1 RPC `fn_btyeu_lich_su_hs` (tổng hợp ở DB, §2.0); ở đây chỉ render theo thời gian giảm dần. Dùng ở màn Duyệt bổ trợ + Dashboard.
 import { useEffect, useState } from 'react'
-import { lichSuBoTroHS, type SuKienBoTro } from '../../lib/botro_yeu'
+import { lichSuBoTroHS, KET_QUA_CASE_TEN, type SuKienBoTro } from '../../lib/botro_yeu'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 
 const LOAI_BUOI: Record<string, string> = { bo_tro_yeu: 'Bổ trợ yếu', bu: 'Học bù', bo_tro_duoi: 'Học đuổi' }
@@ -88,6 +88,6 @@ function SuKien({ e }: { e: SuKienBoTro }) {
   )
   if (e.loai === 'bao_dong') return <Khung mau="bg-red-50/60 ring-red-200" tieuDe={<>🚨 Báo động · {d.ma_dang ?? '—'} · nguồn {d.nguon}</>}>{d.ghi_chu}</Khung>
   if (e.loai === 'case_mo') return <Khung mau="bg-amber-50/50 ring-amber-200" tieuDe={<>Mở case bổ trợ · {d.so_dang} dạng · nguồn {d.nguon}{d.uu_tien === 3 ? ' · ▲ ưu tiên cao' : ''}</>} />
-  if (e.loai === 'case_dong') return <Khung mau="bg-emerald-50/50 ring-emerald-200" tieuDe={<>Đóng case · kết quả {d.ket_qua ?? '—'}</>}>{d.ghi_chu}</Khung>
+  if (e.loai === 'case_dong') return <Khung mau="bg-emerald-50/50 ring-emerald-200" tieuDe={<>Đóng case · kết quả {d.ket_qua ? KET_QUA_CASE_TEN[String(d.ket_qua)] ?? String(d.ket_qua) : '—'}</>}>{d.ghi_chu}</Khung>
   return <Khung mau="ring-slate-200" tieuDe={e.loai} />
 }
