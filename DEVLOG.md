@@ -31588,3 +31588,25 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   app TA: cảnh báo "không bỏ tick dạng nào ⇒ KẾT THÚC" + sau hoàn tất báo "🎉 hết dạng yếu — KẾT THÚC" / "còn N dạng — OPS xếp buổi sau" ·
   app HS: không gọi retest khi hold. tsc sạch · check:style-hs ✔. Chưa soi trình duyệt (cần đăng nhập tài khoản thật).
 - Hệ quả cần Thùy biết: app TA mặc định tick HẾT dạng còn mở (luật 24/09) ⇒ TA bấm Hoàn tất không bỏ tick = case kết thúc ngay ca đó.
+=======
+### 29/09 — KHTN du hành "Liên kết hoá học" bản thử 2: cảnh phim + nhiệm vụ quan sát (Thùy test bản 1, chốt lại nhịp)
+- Thùy chốt (sau khi bay thử bản 1): mỗi chặng = ① CẢNH PHIM có lời dẫn kể sự kiện (Na thừa 1, Cl thiếu 1 → lại gần → electron
+  bay sang → Na⁺/Cl⁻ đều ở trạng thái hoàn hảo — "quy tắc bát tử" — → hút nhau âm dương), cộng hoá trị cũng có phim "góp chung để
+  cùng hoàn hảo"; ② HIỆU ỨNG RIÊNG cho từng loại liên kết để phân biệt; ③ sau phim HS mới bay vào, tới gần điểm nào thì hiện chú
+  thích bài học tại chỗ đó; ④ có câu hỏi cuối chặng thì trong lúc bay phải có chỉ dẫn cần quan sát gì — kiểu lời dẫn "Giờ em hãy
+  quan sát các lớp của Ne xem nó có bao nhiêu electron nhé"; ⑤ tàu chậm 20%.
+- Làm: khung phim (viền đen, phụ đề tự chạy theo độ dài chữ, Tiếp/Dừng/Bỏ qua, Enter = tiếp) → bước cuối phim = câu lời dẫn giao việc
+  (chờ bấm "Bắt đầu quan sát"), câu đó ghim ở đầu khung "Nhiệm vụ quan sát" (checklist = câu hỏi dẫn, tích khi tới điểm sáng) → xem
+  đủ mới hiện nút "Trả lời câu hỏi" → sai thì điểm sáng liên quan bật lại, phải bay lại xem. Bỏ vòng soi, thay bằng điểm sáng +
+  thẻ chú thích bám vị trí điểm trên màn (luôn nằm gọn trong màn). "Xem lại phim" dựng lại nội dung trạm rồi chiếu lại.
+  Hiệu ứng: ION = quầng cam (+)/xanh (−) + đường lực cam→xanh có hạt chạy, KHÔNG nối hạt nhân; CỘNG HOÁ TRỊ = vùng chồng sáng xanh
+  ngọc + sợi nối 2 hạt nhân (đúng nét "–" trong H–H) + cặp electron xoay quanh; HOÀN HẢO = vòng ngoài chuyển vàng + "8e ✓"/"2e ✓".
+  Mạng muối: ion tản ra rồi tự xếp thành tinh thể, cạnh tô cam→xanh (cùng ngôn ngữ hình với liên kết ion). Trạm Cl₂ đặt cặp Na⁺Cl⁻
+  bên dưới để so sánh ⇒ ra luật. MAXV 34→27.
+- Soi: 8 trạm, từng phim có ảnh (Ne, He vàng, electron bay có vệt, cảnh hút ion, H₂ cộng hoá trị, mạng muối, Cl₂ vs NaCl); luồng
+  logic trạm 2 (đủ điểm → nút → sai → bật lại → xem lại → đúng → mở trạm 3) và trạm 7 (sai HCl → bay ra vào lại → đúng) tới về đích; 0 lỗi console.
+  Sửa trong lúc soi: bỏ phim thì máy quay kẹt ở cảnh dở (He) trong khi lời dẫn nói về Ne ⇒ bước lời dẫn luôn lùi về toàn cảnh ·
+  bấm Tiếp khi máy quay chưa tới nơi thì cảnh sau (không khai báo góc máy) đứng khựng/quay ngược về trạm cũ ⇒ kế thừa đích của cảnh
+  trước · chú thích 3D bị cắt ở mép màn và đè khung nhiệm vụ ⇒ đổi sang thẻ DOM bám điểm, tự né mép · ion "chưa xếp" tràn ra đường bay.
+- Bẫy soi: Browser pane hoãn requestAnimationFrame khi script đang await ⇒ ảnh chụp là khung cũ. Thêm `__dbg.run(giây)` chạy mô phỏng
+  đồng bộ (tách `tick()` khỏi vòng rAF) — test theo thời gian phải dùng cái này, và chụp 2 lần nếu nghi ảnh cũ.
