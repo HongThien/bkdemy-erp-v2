@@ -31883,3 +31883,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **ĐIỀU CẦN CEO BIẾT (hệ quả của định nghĩa, chưa sửa):** khâu đang CẢI THIỆN theo thời gian (BTVN đúng chuẩn 0% → 36%) thì thường đạt tính
   trên toàn lịch sử rất thấp (12%) ⇒ tuần nào cũng "trên thường đạt", và tuần tốt gần đây (38,5%) bị coi là nhiễu. Phương án: thường đạt
   chỉ lấy N tuần gần nhất. Để ở danh sách bàn sau (SPEC §7.3).
+### 29/09 (20) — Thế giới BK: thêm 30 câu khen + 18 câu dẫn khoe, BỎ LỌC câu (Thùy: "cho chọn cả, HS tự chọn cái phù hợp")
+- Nguồn: bài tổng hợp từ lóng TikTok/Threads 2025–26 (kenh14 · paradox.vn · phongvu.vn · thofleur · bachhoaxanh) — Threads/TikTok gốc cần đăng nhập.
+  Giữ luật khen một chiều: loại "Flex", "Cap", "Cạn phước", "Rút wifi vẫn còn 5G", "Ok", "Dân Zalo", câu khen ngoại hình.
+- Mig 202609291305_the_gioi_them_cau_bo_loc (áp --only, schema.md): 30 câu khen (c43–c59, c65–c77) · 18 câu dẫn khoe (k13–k30) ⇒ 69 khen + 30 dẫn khoe
+  + 5 cảm ơn = 104 câu · fn_the_gioi_binh_luan + fn_the_gioi_khoe (từ DB đang chạy) nhận MỌI câu còn hiện. Thử ROLLBACK: khoe kèm câu khen OK ·
+  bình luận bằng câu dẫn khoe OK · mã câu bịa bị chặn.
+- App: cauHop + TamKhoe hiện đủ 104 câu, chỉ XẾP câu hợp nhất lên đầu. Mẫu sinh danh mục từ dữ liệu nạp trong mig (104 câu).
+- Sai: script sửa cauHop tìm mốc '\n}\n' trên file CRLF ⇒ không khớp ⇒ dán lặp cả file (TS lỗi ngay) ⇒ git checkout file (chỉ bỏ lần sửa hỏng)
+  rồi làm lại bằng cách chuẩn hoá LF trước khi cắt. Bài học: script vá file luôn replace(/\r\n/g,'\n') trước khi tìm mốc nhiều dòng.
+- build:hs qua.

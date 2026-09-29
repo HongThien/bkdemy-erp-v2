@@ -428,7 +428,8 @@ export function TamKhoe({ tt, danhMuc, cau, onCau, onDang, dangDang, loi, onDong
   tt: ThanhTichKhoe; danhMuc: DanhMucTG[]; cau: string | null; onCau: (ma: string | null) => void
   onDang: () => void; dangDang: boolean; loi: string | null; onDong: () => void
 }) {
-  const caus = danhMuc.filter((d) => d.loai === 'cau' && d.nhom.includes('khoe'))
+  // câu dẫn khoe lên đầu, sau đó MỌI câu khác (Thùy 29/09: không lọc)
+  const caus = danhMuc.filter((d) => d.loai === 'cau').sort((x, y) => Number(!x.nhom.includes('khoe')) - Number(!y.nhom.includes('khoe')) || x.thu_tu - y.thu_tu)
   return (
     <TamTruot tieuDe="Đăng bài khoe" phu="Bài khoe lên kênh Thế giới BK — cả trung tâm cùng thấy" onDong={onDong} chan={<>
       {loi && <p className="text-[13px] font-semibold" style={{ color: MAU.sai }}>{loi}</p>}
@@ -440,7 +441,7 @@ export function TamKhoe({ tt, danhMuc, cau, onCau, onDang, dangDang, loi, onDong
         <Hinh src={anhTin(tt.kieu)} emoji={ICON_TIN[tt.kieu] ?? '✨'} size={56} />
         <p className="text-[15px] leading-snug">Em {moTaTin(tt as TinTG)}</p>
       </div>
-      <NhomHS>Thêm 1 câu (không bắt buộc)</NhomHS>
+      <NhomHS>Thêm 1 câu (không bắt buộc) · {caus.length} câu</NhomHS>
       <div className="flex flex-wrap gap-1.5">
         {caus.map((d) => (
           <button key={d.ma} onClick={() => onCau(cau === d.ma ? null : d.ma)} aria-pressed={cau === d.ma} className="rounded-full px-3 py-1.5 text-[13.5px] font-semibold active:scale-95"
@@ -486,14 +487,14 @@ function TamTruot({ tieuDe, phu, onDong, onLui, children, chan }: { tieuDe: stri
   )
 }
 
-// Câu cho người xem bình luận (spec §5). Chủ tin: chỉ câu cảm ơn.
+// Câu cho bình luận (spec §5) — mọi câu, xếp câu hợp nhất lên đầu.
 export function cauHop(ds: DanhMucTG[], nhom: string, chuTin = false): DanhMucTG[] {
+  // Thùy 29/09: KHÔNG lọc — mọi câu đều chọn được, chỉ XẾP câu hợp nhất lên đầu (chủ tin: câu cảm ơn trước; người xem: câu hợp loại tin → câu chung → còn lại)
   const cau = ds.filter((d) => d.loai === 'cau')
-  if (chuTin) return cau.filter((d) => d.nhom.includes('cam_on'))
-  // Thùy 29/09: hiện ĐỦ mọi câu khen (trước chỉ ~10 câu hợp loại) — câu hợp loại tin lên đầu, rồi câu chung, rồi các câu còn lại
-  const khen = cau.filter((d) => !d.nhom.includes('cam_on') && !d.nhom.includes('khoe'))
-  return [...khen.filter((d) => d.nhom.includes(nhom)), ...khen.filter((d) => d.nhom.includes('chung') && !d.nhom.includes(nhom)),
-    ...khen.filter((d) => !d.nhom.includes(nhom) && !d.nhom.includes('chung'))]
+  const uu = (d: DanhMucTG) => chuTin
+    ? (d.nhom.includes('cam_on') ? 0 : d.nhom.includes('khoe') ? 1 : 2)
+    : (d.nhom.includes(nhom) ? 0 : d.nhom.includes('chung') ? 1 : d.nhom.includes('khoe') || d.nhom.includes('cam_on') ? 3 : 2)
+  return [...cau].sort((x, y) => uu(x) - uu(y) || x.thu_tu - y.thu_tu)
 }
 
 export type BanPhim = 'dong' | 'cau' | 'sticker'
