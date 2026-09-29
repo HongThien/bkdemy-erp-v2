@@ -31745,3 +31745,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Lưu ý phạm vi:** bật theo registry nên Hình giải tích cũng vào bổ trợ yếu (đối xứng §1.6) — trước đó HGT cũng bị loại im lặng.
 - tsc + vite build sạch. CHỜ ÁP (quyền ghi DB production): `node <worktree>/scripts/migrate.mjs --only 202609291219_btyeu_nhanh_theo_dang_hinh_hoc.sql`.
   Code client để trên nhánh worktree, merge main SAU khi áp (client đổ dạng Hình vào case mà DB cũ chọn câu bảng Đại ⇒ đừng lệch pha).
+
+### 29/09 — Mig 202609291219 ĐÃ ÁP (Thùy chạy `--only`, sổ 12:31) → merge main
+- Soi DB sống: 6 hàm chọn bảng theo nhánh dạng + 3 hàm tên qua `_kho_ten_dang` đúng bản mới · `hinh_hoc_cum_tien_de` có 2 policy (member_all +
+  claude_ro_select do migrate.mjs tự thêm) · ACL hàm giữ nguyên. Gọi thật (phiên chỉ-đọc, vai nhân sự): `fn_btyeu_dang_yeu_2_cua_so` em khối 11
+  ra HH00087 "Đường thẳng và mặt phẳng trong không gian" (0,40 · n=44) xen dạng Đại · `fn_btyeu_ca_ta` 3 ca gần nhất chạy bình thường.
+- Client (danhgia.ts/botro_yeu.ts/mastery.ts) merge main cùng lúc — cần Thùy bấm deploy mới lên prod.
