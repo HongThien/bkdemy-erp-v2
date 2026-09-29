@@ -8,7 +8,8 @@
 //   node scripts/check-troly-cong-cu.mjs --thu <file.sql>      → áp THỬ file migration trong
 //                                                                transaction trước khi gọi (rồi rollback)
 //   node scripts/check-troly-cong-cu.mjs --goi <tên> '<json>'  → gọi 1 công cụ, in nguyên kết quả
-//   node scripts/check-troly-cong-cu.mjs --bao-cao [YYYY-MM-DD] → in báo cáo ngày (bỏ trống = hôm qua)
+//   node scripts/check-troly-cong-cu.mjs --bao-cao [YYYY-MM-DD] [--so-ngay 14]
+//                                                              → in báo cáo 3 luồng tính tới ngày đó (bỏ trống = hôm nay)
 //
 // ⚠ Kết nối bằng role của `.env` (chủ bảng ⇒ RLS KHÔNG áp). Script này kiểm LOGIC + CỔNG 3 người,
 //   KHÔNG kiểm RLS. RLS chỉ kiểm được bằng đăng nhập thật trên app.
@@ -29,6 +30,8 @@ const args = process.argv.slice(2)
 const fileThu = args.flatMap((a, i) => (a === '--thu' && args[i + 1] ? [args[i + 1]] : []))
 const iBc = args.indexOf('--bao-cao')
 const baoCaoNgay = iBc >= 0 ? (args[iBc + 1] && !args[iBc + 1].startsWith('--') ? args[iBc + 1] : null) : undefined
+const iSn = args.indexOf('--so-ngay')
+const soNgay = iSn >= 0 ? Number(args[iSn + 1]) : 14
 const iGoi = args.indexOf('--goi')
 const goiTen = iGoi >= 0 ? args[iGoi + 1] : null
 const goiThamSo = iGoi >= 0 ? JSON.parse(args[iGoi + 2] ?? '{}') : null
@@ -75,16 +78,16 @@ try {
     return { kq: r.kq, ms: Date.now() - t0 }
   }
 
-  // ── BÁO CÁO NGÀY: in nguyên JSON để đối chiếu với màn hình ──────────────────
+  // ── BÁO CÁO 3 LUỒNG: in nguyên JSON để đối chiếu với màn hình ───────────────
   if (baoCaoNgay !== undefined) {
     await c.query('savepoint g')
     await dongVai(nguoiLa.id)
-    try { await c.query(`select public.fn_troly_bao_cao_ngay($1::date)`, [baoCaoNgay]); console.log('❌ CỔNG HỞ ở báo cáo ngày'); hong++ }
+    try { await c.query(`select public.fn_troly_bao_cao($1::date, $2)`, [baoCaoNgay, soNgay]); console.log('❌ CỔNG HỞ ở báo cáo'); hong++ }
     catch (e) { console.error(`✔ cổng chặn người ngoài danh sách: ${e.message}`) }
     await c.query('rollback to savepoint g')
     await dongVai(ceo.id)
     const t0 = Date.now()
-    const { rows: [r] } = await c.query(`select public.fn_troly_bao_cao_ngay($1::date) as bc`, [baoCaoNgay])
+    const { rows: [r] } = await c.query(`select public.fn_troly_bao_cao($1::date, $2) as bc`, [baoCaoNgay, soNgay])
     console.log(JSON.stringify(r.bc, null, 1))
     console.error(`— ${Date.now() - t0} ms · ${JSON.stringify(r.bc).length} ký tự`)
   } else if (goiTen) {

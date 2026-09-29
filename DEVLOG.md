@@ -31394,3 +31394,31 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   checkout chính, file chưa tồn tại ở đó). Kiểm status là chưa đủ, phải kiểm `content-type`/nội dung. (Cùng lớp lỗi 14/08 "soi nhầm bundle".)
 - **VIỆC TIẾP (chưa làm):** nối khung hỏi vào `fn_troly_goi` (vòng lặp công cụ ở `api/troly.mjs`, bảng sạch co lại) · gửi báo cáo chủ động buổi sáng
   (cron Vercel đã có khuôn `api/pt-nhac-viec`) · 3 nguồn dữ liệu thiếu ở trên · gỡ mảng Yếu/Test lỗi thời trong `troly-modules.ts`.
+
+## 2026-09-29 (12) — TRỢ LÝ: CEO chốt LOGIC báo cáo = 3 LUỒNG → viết lại báo cáo theo VIỆC có người phụ trách (worktree troly-hoi-duoc)
+
+- **CEO (sau khi xem bản theo ngày ở mục 11):** *"Chung quy lại, logic báo cáo như sau: 1. Có bao nhiêu việc đang chậm/đang miss. 2. Có nút bấm vào để
+  xem thông tin cụ thể từng việc: ngày nào, do ai phụ trách. Bấm vào mới hiện, còn bình thường là nút 'Detail'. 3. Có cảnh báo rủi ro/bất thường nếu có.
+  Về cơ bản báo cáo sẽ cần có đủ 3 luồng này."*
+- **SAI của bản mục 11:** đơn vị là LỚP-trong-một-ngày ("6/8 lớp có dữ liệu") và mở sẵn mọi checklist ⇒ đọc xong vẫn không biết việc nào, của AI, và màn
+  dài hàng trăm dòng. Bám mẫu theo từng chữ mà không rút ra khung. Đơn vị đúng = VIỆC (có ngày + người phụ trách + hạn).
+- **Hệ quả thiết kế:** mỗi việc có "ngày nào" ⇒ báo cáo gom việc còn treo của NHIỀU ngày (cửa sổ 7/14/30, mặc định 14), bỏ thanh chọn từng ngày.
+- **DB — mig `202609290956_troly_bao_cao_3_luong`** (đã áp `--only`): `fn_troly_bao_cao(p_den, p_so_ngay)` → `tong` · `muc[]` (mỗi mục: `cham`/`miss`/
+  `xong_muon` + `viec[]` + `canh_bao[]`) · `theo_nguoi[]` · `canh_bao_chung[]`. 0,93s cho 14 ngày.
+  - NGƯỜI PHỤ TRÁCH + HẠN lấy từ `fn_viec_buoi_thuong(…, true)` — không định nghĩa lại (báo cáo nói khác màn Việc của tôi là hỏng).
+  - Phân loại 1 việc, ưu tiên từ trên xuống: **miss** (không có đề/không gán bài · bấm đóng mà trống · đã đóng nhưng còn em có mặt thiếu dữ liệu · ca bổ trợ
+    không test · ca huỷ vì HS không đến) → **xong_muon** (đủ dữ liệu, đóng sau hạn — ĐẾM RIÊNG, không gộp vào chậm) → **cham** (quá hạn chưa đóng).
+  - "Không có đề" chỉ là miss với lớp THẬT SỰ chạy khâu đó (≥60% buổi/60 ngày, <4 buổi coi như có chạy) — luật đo 14/08, nay có bản SQL (trước chỉ ở
+    `troly-vanhanh.ts`). Khâu chấm bài trên lớp KHÔNG xét "thiếu em".
+  - Cảnh báo: mỗi khối tự mang ngưỡng, không có gì thì không sinh. Loại `thieu_nguon` cho dòng CEO cần mà hệ chưa có dữ liệu.
+- **SỐ THẬT 16–29/09 (14 ngày):** 60 việc chậm · 179 miss · 74 đóng muộn · 12 cảnh báo. BTVN 3/13 · ET 2/7 · trong buổi 1/102 · sau buổi 13/7 · bù 19/0 ·
+  yếu 22/50. Cảnh báo nặng nhất: **97/112 buổi (87%) bấm đóng "chấm bài trên lớp" mà không có dòng chấm nào** · chỉ 7/65 lượt bổ trợ yếu hợp lệ (11%),
+  29 lượt huỷ vì HS không đến · 61 case yếu chờ xếp, lâu nhất 20 ngày · 7 lớp có buổi mà chưa phân công đủ GV/TA (việc của các buổi đó VÔ HÌNH với mọi màn).
+- **App:** `BaoCaoNgay.tsx` → đổi tên `BaoCao.tsx` (git mv) và viết lại: 3 ô số tổng → mỗi mục 1 dòng (chậm · miss · đóng muộn · nút Detail) → bảng việc
+  6 cột hiện khi bấm (chip lọc Chậm/Miss/Đóng muộn, mặc định ẩn "đóng muộn") → dòng ⚠ cảnh báo có Detail riêng → "Theo người phụ trách" (gom theo người,
+  bỏ nhãn vai). Mặc định ĐÓNG HẾT. `troly-baocao.ts` thay kiểu. Tab đổi tên "Báo cáo".
+- **Kiểm:** áp thử trong transaction + rollback · cổng chặn người ngoài · tsc sạch · vite build qua · dựng SSR 2 bản (đóng / mở hết Detail) bằng JSON thật.
+  Vẫn CHƯA kiểm trên app bằng tài khoản thật và chưa kiểm RLS (lý do như mục 11).
+- **Còn treo / cần CEO:** `fn_troly_bao_cao_ngay` (mục 11) còn trong DB nhưng không màn nào gọi — muốn drop phải hỏi (Luật xoá) · xếp bù + xếp lịch yếu
+  không có người phụ trách trong dữ liệu ⇒ đang ghi chung "OPS" · 102 miss của khâu chấm bài trên lớp làm phồng tổng: cần chốt khâu này có bắt buộc không ·
+  bổ trợ ĐUỔI chưa có trong báo cáo (mẫu không nêu).

@@ -28,7 +28,7 @@ import { anhChupBoTroBu, type AnhChupBu } from '../../lib/botro'
 import { baoCaoVanHanh, type BaoCaoVanHanh } from '../../lib/troly-vanhanh'
 import { chayCongCu, type KetQuaCongCu } from '../../lib/troly-tracuu'
 import { useStore } from '../../store/useStore'
-import BaoCaoNgay from './BaoCaoNgay'
+import BaoCao from './BaoCao'
 
 const tienVN2 = (n: number) => Math.round(n).toLocaleString('vi-VN') + 'đ'
 
@@ -267,7 +267,7 @@ function BaNut({ dangMoGac, onLam, onHuy, onGac, onMoGac, nho }: {
 // "1 click dễ hơn là 1 kéo"). Mỗi pill có SỐ BÁO ĐỘNG riêng để vẫn glance được mà chưa cần bấm.
 // ⭐ 'baocao' đứng đầu và là tab MẶC ĐỊNH (CEO 29/09: "hỏi là phụ, tính năng chính vẫn là báo cáo").
 const TABS = [
-  { key: 'baocao', ten: 'Báo cáo ngày' },
+  { key: 'baocao', ten: 'Báo cáo' },
   { key: 'nhandinh', ten: 'Trợ lý thấy gì' },
   { key: 'vanhanh', ten: 'Vận hành' },
   { key: 'bu', ten: 'Bổ trợ bù' },
@@ -359,7 +359,7 @@ export default function TroLyTab() {
           "Trợ lý thấy gì" giờ CŨNG là 1 tab, và là tab MẶC ĐỊNH (CEO 18/08) — đây là thứ
           hệ thống chủ động nêu ra (khác 5 tab kia là số vận hành đo được), nên đứng đầu. */}
       <ThanhTab tab={tab} setTab={setTab} badge={badge} />
-      {tab === 'baocao' && <BaoCaoNgay />}
+      {tab === 'baocao' && <BaoCao />}
       {tab === 'nhandinh' && (
         nhanDinh && nhanDinh.length > 0 ? (
           <div className="space-y-2.5">
