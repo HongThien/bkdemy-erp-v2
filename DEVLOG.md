@@ -31482,3 +31482,15 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Kiểm bằng so JSON trước/sau** (script so từng khoá, bỏ `tao_luc`): đúng 3 chỗ khác, cả 3 là chữ; KHÔNG con số nào đổi (14 ngày qua không có dòng xin
   phép nào bị ghi thái độ xấu lặp lại). Phải chép nguyên thân `_troly_bc_canh_bao` (~280 dòng) để đổi 1 điều kiện ⇒ so trước/sau là cách chắc nhất để biết
   lúc chép không làm rơi gì. SPEC §6.3b cập nhật.
+
+## 2026-09-29 (16) — TRỢ LÝ: phiên khác đã sửa 2 hàm báo cáo (HOLD retest) — file migration của nhánh này KHÔNG còn là bản đang chạy
+
+- Phiên "Tạm dừng luồng retest" báo: mig `202609291037_hold_retest_bo_tro_yeu` (đã áp, nằm ở nhánh của phiên đó) sửa `_troly_bc_viec_yeu` và
+  `_troly_bc_thong_so`. Thùy yêu cầu HOLD luồng retest bổ trợ yếu; công tắc `public._btyeu_retest_bat()` (hiện = false).
+  Đã tự kiểm trên DB (`pg_proc.prosrc`): cả 2 hàm có gọi công tắc, công tắc trả false. Báo cáo không còn dòng "Retest hẹn … chưa làm"; thông số
+  "Retest đã nộp" hiện "tạm dừng (hold 29/09)".
+- **⚠ HỆ QUẢ:** thân 2 hàm đó trong `202609291010_troly_bao_cao_su_pham.sql` (nhánh này) đã CŨ. Lần tới sửa `_troly_bc_viec_yeu` / `_troly_bc_thong_so`
+  ⇒ dựng từ `pg_get_functiondef` (bản đang chạy), KHÔNG chép từ file migration cũ — chép là mất công tắc, báo cáo hiện lại retest trễ giả.
+- **Bài học chung:** hàm Postgres là chỗ NHIỀU phiên cùng sửa; "bản mới nhất" là DB, không phải file của mình. Lượt (15) t chép thân `_troly_bc_canh_bao`
+  từ file migration — đúng lúc đó chưa ai sửa nên không sao, nhưng cách làm là sai. Từ giờ: mọi lần `create or replace` một hàm đang có ⇒ lấy thân từ
+  `pg_get_functiondef` rồi mới sửa.
