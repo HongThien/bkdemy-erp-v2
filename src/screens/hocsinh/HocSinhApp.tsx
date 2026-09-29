@@ -30,6 +30,8 @@ import DoiMatKhau from './DoiMatKhau'
 import CaBoTroHS, { RetestHS, BoTroBanner, LichBoTroHS } from './CaBoTroHS'
 import { caCuaToi, retestCuaToi, lichBoTroCuaToi, RETEST_BAT, type LichBoTro, type RetestCuaToi } from '../../lib/botro_yeu_ca'
 import { listThongBaoHS, docTatCaThongBao, type ThongBaoHS } from '../../lib/thongbaohs'
+import { listBaiTraCuaToi, demBaiTraChuaXem, type BaiTraHS as BaiTraRow } from '../../lib/btvntra'
+import BaiTraHS, { ngayNgan } from './BaiTraHS'
 import HomeHS, { type HomeCard } from './HomeHS'
 import HomeHS912 from './HomeHS912'
 import { KHOI_CHON_SKIN, type GiaoDien } from './skin/registry'
@@ -335,8 +337,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     setDirect('bo_tro')
   }
   // Hòm thư — chỉ cần SỐ chưa đọc để hiện badge chuông (đếm items đang render, không phải tính nghiệp vụ).
+  // + số bài BTVN đã trả em chưa mở (đếm ở DB — thư BTVN không nằm trong thong_bao_hs, xem HopThuHS).
   const [chuaDoc, setChuaDoc] = useState(0)
-  const taiChuaDoc = () => listThongBaoHS().then((ds) => setChuaDoc(ds.filter((d) => !d.doc_at).length)).catch(() => {})
+  const taiChuaDoc = () => Promise.all([
+    listThongBaoHS().then((ds) => ds.filter((d) => !d.doc_at).length).catch(() => 0),
+    demBaiTraChuaXem().catch(() => 0),
+  ]).then(([tb, btvn]) => setChuaDoc(tb + btvn))
 
   // MÔN (28/09, vụ Gia Khiêm): em học nhiều môn thì chọn môn ở màn chính; mọi màn con đọc môn đang chọn qua
   // monCuaHS(). Lỗi mạng ⇒ danh sách rỗng ⇒ không vẽ thanh chọn, màn con tự báo lỗi của nó như trước.
@@ -1268,30 +1274,57 @@ function BangXepHang({ onXong }: { onXong: () => void }) {
 // ── HÒM THƯ — hiện tại chỉ 1 nguồn: TA/GV duyệt "Em nghĩ mình đúng" là ĐÚNG (fn_chap_nhan_dap_an).
 // Mở ra là đánh dấu đã đọc HẾT (hòm thư đơn giản, không cần bấm từng cái) — chỉ để HS thấy hệ thống
 // có lắng nghe khi mình báo lỗi, không phải trung tâm điều hành việc phải làm.
-function HopThuHS({ onXong }: { onXong: () => void }) {
+// Hòm thư = 2 nguồn: thong_bao_hs (thư thật — mở hòm là đọc hết) + BTVN ảnh đã trả (thư SUY RA từ
+// btvn_nop.tra_at, CEO 29/09 — chỉ hết sáng khi em mở bài ở BaiTraHS). Trộn theo thời gian chỉ để hiển thị.
+// Mở bài rồi quay lại: giữ list đã vá (da_xem) + vị trí cuộn, không tải lại (CLAUDE §2).
+export function HopThuHS({ onXong }: { onXong: () => void }) {
   const [items, setItems] = useState<ThongBaoHS[] | null>(null)
+  const [baiTra, setBaiTra] = useState<BaiTraRow[] | null>(null)
+  const [mo, setMo] = useState<string | null>(null)
+  const cuonRef = useRef(0)
   useEffect(() => {
     listThongBaoHS().then((ds) => {
       setItems(ds)
       if (ds.some((d) => !d.doc_at)) docTatCaThongBao().catch(() => {})
     }).catch(() => setItems([]))
+    listBaiTraCuaToi().then(setBaiTra).catch(() => setBaiTra([]))
   }, [])
+  useEffect(() => { window.scrollTo(0, mo ? 0 : cuonRef.current) }, [mo])
+  if (mo) return (
+    <BaiTraHS buoiHocId={mo} onXong={() => setMo(null)}
+      onDaXem={(id) => setBaiTra((prev) => prev && prev.map((b) => (b.buoi_hoc_id === id ? { ...b, da_xem: true } : b)))} />
+  )
+  const dangTai = items === null || baiTra === null
+  const thu: ({ at: string; tb: ThongBaoHS; b?: undefined } | { at: string; b: BaiTraRow; tb?: undefined })[] = dangTai ? [] : [
+    ...items.map((tb) => ({ at: tb.created_at, tb })),
+    ...baiTra.map((b) => ({ at: b.tra_at, b })),
+  ].sort((x, y) => y.at.localeCompare(x.at))
+  // Thư chưa đọc: viền nhấn skin (thay ring brand cũ).
+  const vienChuaDoc = { outline: `2px solid ${MAU.acc}`, outlineOffset: '-2px' }
   return (
     <ManHS rong="hep">
       <Head title="Hòm thư" onBack={onXong} />
-      {items === null && <TrongHS>Đang tải…</TrongHS>}
-      {items && items.length === 0 && (
+      {dangTai && <TrongHS>Đang tải…</TrongHS>}
+      {!dangTai && thu.length === 0 && (
         <TheHS className="p-8 text-center">
           <p className="text-3xl">📭</p>
           <p className="mt-2 text-sm font-medium" style={{ color: MAU.ink }}>Chưa có thông báo nào</p>
         </TheHS>
       )}
       <div className="flex flex-col gap-3">
-        {items?.map((tb) => (
-          // Thư chưa đọc: viền nhấn skin (thay ring brand cũ).
-          <TheHS key={tb.id} className="p-4" style={!tb.doc_at ? { outline: `2px solid ${MAU.acc}`, outlineOffset: '-2px' } : undefined}>
-            <p className="text-[14px] leading-snug" style={{ color: MAU.ink }}>{tb.noi_dung}</p>
-            <p className="mt-1.5 text-[11px]" style={{ color: MAU.muted }}>{fmtShort(tb.created_at)}</p>
+        {thu.map((x) => x.b ? (
+          <TheHS key={`btvn:${x.b.buoi_hoc_id}`} className="p-4" style={!x.b.da_xem ? vienChuaDoc : undefined}
+            onClick={() => { cuonRef.current = window.scrollY; setMo(x.b.buoi_hoc_id) }}>
+            <p className="text-[14px] font-semibold leading-snug" style={{ color: MAU.ink }}>📝 Bài tập về nhà buổi {ngayNgan(x.b.ngay)} đã được chấm</p>
+            <p className="mt-1 text-[13px] leading-snug" style={{ color: MAU.muted }}>
+              {x.b.so_cau > 0 ? `Đúng ${x.b.so_dung}/${x.b.so_cau} câu · ` : ''}Bấm để xem bài chấm và nhận xét ›
+            </p>
+            <p className="mt-1.5 text-[11px]" style={{ color: MAU.muted }}>{[x.b.mon, x.b.ten_lop, fmtShort(x.b.tra_at)].filter(Boolean).join(' · ')}</p>
+          </TheHS>
+        ) : (
+          <TheHS key={x.tb.id} className="p-4" style={!x.tb.doc_at ? vienChuaDoc : undefined}>
+            <p className="text-[14px] leading-snug" style={{ color: MAU.ink }}>{x.tb.noi_dung}</p>
+            <p className="mt-1.5 text-[11px]" style={{ color: MAU.muted }}>{fmtShort(x.tb.created_at)}</p>
           </TheHS>
         ))}
       </div>

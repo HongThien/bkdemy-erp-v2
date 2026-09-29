@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-298 bảng · 19 view · 0 enum · 102 trigger · 690 function
+298 bảng · 19 view · 0 enum · 102 trigger · 699 function
 
 ## _app_secrets
 
@@ -420,6 +420,7 @@
 | updated_at | timestamp with time zone |  | now() |  |  |
 | buoi_xac_nhan_at | timestamp with time zone | Y |  |  |  |
 | buoi_xac_nhan_boi | uuid | Y |  | FK→nhan_su.id |  |
+| hs_xem_at | timestamp with time zone | Y |  |  |  |
 
 ## btvn_nop_anh
 
@@ -5805,6 +5806,7 @@ SELECT bl.hoc_sinh_id,
 - `_ban_be_cua(p_hs uuid)` → SETOF uuid
 - `_bt_cau_trang_thai_json(p_bt uuid, p_cau uuid[])` → jsonb
 - `_btc_trang_thai(p_cau uuid, p_bt uuid, p_ma_dang text)` → text
+- `_btvn_hs_xem_anh(p_name text)` → boolean
 - `_btyeu_bu_retest(p_buoi uuid, p_dangs text[])` → uuid
 - `_btyeu_buoi(p_buoi uuid)` → TABLE(buoi_id uuid, hoc_sinh_id uuid, bo_tro_yeu_id uuid, mon text, ngay date, trang_thai text, diem_danh text, nguoi_day_tg uuid, danh_gia_xong_at timestamp with time zone, buoi_hoc_hs_id uuid)
 - `_btyeu_chon_cau(p_cautbl text, p_ma_dang text, p_ma_cum text, p_tru text[], p_n integer)` → text[]
@@ -5817,6 +5819,7 @@ SELECT bl.hoc_sinh_id,
 - `_btyeu_today()` → date
 - `_btyeu_tran_cao()` → integer
 - `_btyeu_tran_dang()` → integer
+- `_bu_btvn_tu_ngay()` → date
 - `_buoi_giai_log()` → trigger
 - `_buoi_online_dang_mo(p_buoi uuid)` → boolean
 - `_ca_bo_tro_da_tung(p_hoc_sinh uuid, p_lich_truc uuid, p_ngay date)` → boolean
@@ -6011,6 +6014,10 @@ SELECT bl.hoc_sinh_id,
 - `fn_btvn_online_dong_bo(p_buoi uuid)` → jsonb
 - `fn_btvn_tra_bai(p_hoc_sinh_id uuid, p_buoi_hoc_id uuid)` → void
 - `fn_btvn_tra_bai_buoi(p_buoi_hoc_id uuid)` → integer
+- `fn_btvn_tra_chi_tiet_cua_toi(p_buoi_hoc_id uuid)` → jsonb
+- `fn_btvn_tra_chua_xem_cua_toi()` → integer
+- `fn_btvn_tra_cua_toi()` → TABLE(buoi_hoc_id uuid, ngay date, mon text, ten_lop text, nop_at timestamp with time zone, tra_at timestamp with time zone, da_xem boolean, so_cau integer, so_dung integer, so_chua_tron integer, so_sai integer)
+- `fn_btvn_tra_da_xem(p_buoi_hoc_id uuid)` → void
 - `fn_btvn_xac_nhan_buoi(p_hoc_sinh_id uuid, p_buoi_hoc_id uuid)` → void
 - `fn_btyeu_bo_diem_danh(p_bhh uuid)` → void
 - `fn_btyeu_bu_retest_ton()` → integer
@@ -6046,6 +6053,9 @@ SELECT bl.hoc_sinh_id,
 - `fn_btyeu_ta_sua_ket_qua(p_bai_lam_cau uuid, p_dung boolean, p_ly_do text DEFAULT NULL::text)` → jsonb
 - `fn_btyeu_trang_thai_ca(p_so_ngay_ht integer DEFAULT 60)` → jsonb
 - `fn_btyeu_viec_cua_toi()` → jsonb
+- `fn_bu_btvn_seed(p_bhh uuid)` → integer
+- `fn_bu_btvn_viec_cua_toi()` → jsonb
+- `fn_bu_ca_cua_toi()` → jsonb
 - `fn_buoi_game_choi(p_buoi uuid, p_hoc_sinh uuid, p_game text)` → jsonb
 - `fn_buoi_game_qua_trao(p_buoi uuid, p_hoc_sinh uuid)` → jsonb
 - `fn_buoi_giai_chot(p_buoi uuid, p_nhat uuid, p_nhi uuid[])` → jsonb
@@ -6487,9 +6497,9 @@ SELECT bl.hoc_sinh_id,
 - `trg_thu_thach_nop()` → trigger
 - `troly_duoc_dung()` → boolean
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 

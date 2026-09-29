@@ -32002,3 +32002,28 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   **Bẫy shell:** `node -e "..."` chứa backtick ⇒ bash chạy `js/am.js`/`NGUON.md` như script (dừng dòng 1, không hại) và README mất tên file ⇒ sửa bằng Edit. Chuỗi có backtick: dùng Write/Edit, không nhét vào `"..."`.
 - **Kiểm:** `test-engine.mjs` ✔ · chụp canvas nhiều góc (ruộng đủ 7 cây 3 giai đoạn, chuồng gà/bò/heo, ao, cảnh xa) · gặt ra hạt vàng, nhặt ra sao · về ván mới qua ⚙.
   Chưa thử iPad thật (≥10 con vật có xương + hạt + bóng đổ).
+
+## 2026-09-29 (tối) — BTVN ẢNH: trả kết quả cho HỌC SINH (Hòm thư app HS) + push "bài đã chấm" cho PH (Thùy)
+- **CEO:** *"Check luồng nộp bài tập trên app… HS đã nộp rồi, giờ phải có luồng trả kết quả cho PH và HS xem."* Chốt qua câu hỏi:
+  kênh = **nộp ẢNH qua app PH** · HS xem ở **Hòm thư** · PH có **thông báo đẩy**.
+- **Check (DB thật, chỉ-đọc):** 2 kênh nộp — ảnh qua app PH (24 lượt từ 30/08, 19 đã trả; chủ yếu cấp 1–2) và BTVN online app HS
+  (10A1/10B1/11A1/11B1/12A1, 126 bài/30 ngày, HS đã thấy đáp án ngay). PH xem bài trả **đã có từ 09/09** (BaiChamScreen + 4 view
+  v_btvn_tra_*). **HS không có đường nào** (RLS btvn_nop = la_thanh_vien, bucket private). **5 lượt kẹt không bao giờ tới PH:**
+  4A1 Nam (buổi 09/09, chấm đủ 44/44 nhưng chưa trả — nộp 11/09 SAU khi đóng BTVN nên fn_btvn_tra_bai_buoi lúc đóng không vớt) ·
+  11A1 Châu Anh ×2 (buổi đã đóng, 1 bài 29/39 câu, 1 bài 0 câu) · 5E1 Hiếu ×2 (lớp Tiếng Anh — không phiếu BTVN, không TA phân công ⇒ ảnh rơi vào khoảng trống). CHƯA sửa — báo CEO.
+- **Thiết kế:** thư BTVN = **SUY RA** từ `btvn_nop.tra_at` (invariant §4), KHÔNG chèn `thong_bao_hs` ⇒ 19 bài cũ tự hiện, mọi đường trả tự có thư.
+  (Kèm lý do quyền: `thong_bao_hs` thuộc postgres, claude_build chỉ `r` ⇒ trigger chèn thư làm chết UPDATE tra_at chạy bằng claude_build.)
+  "Đã xem" = cột mới `btvn_nop.hs_xem_at` (kiểu doc_at).
+- **DB — mig `202609291943_btvn_tra_hs_xem`** (đã áp `--only`, schema.md refresh): `fn_btvn_tra_cua_toi` · `fn_btvn_tra_chi_tiet_cua_toi`
+  (Đ/C/S + tên dạng qua `_kho_ten_dang`, path ảnh) · `fn_btvn_tra_da_xem` · `fn_btvn_tra_chua_xem_cua_toi` · `_btvn_hs_xem_anh` — security definer,
+  lọc `my_hoc_sinh_id()`, đọc lại ĐÚNG 4 view của PH (gate + cách tính 1 nơi). Verify trong transaction ROLLBACK bằng jwt claims HS thật:
+  Anh Khoa 9C1 3 bài/Hà Khoa 7S3 5 bài đúng số Đ/C/S · bài chưa trả ⇒ null · bài người khác ⇒ null · ảnh của mình true / path lạ false · đã xem giảm đếm.
+- **⚠ CHỜ CEO dán SQL Editor:** `scripts/sql_btvn_tra_hs_storage.sql` (policy SELECT storage `btvn_nop_hs_xem_bai_tra`) — claude_build không tạo
+  được policy trên storage.objects. Chưa dán: HS vẫn thấy kết quả + nhận xét, phần ảnh báo "chưa mở được".
+- **App HS:** `src/lib/btvntra.ts` (seam) · `BaiTraHS.tsx` mới (KhungHS, 0 màu gõ tay: kết quả · chip trạng thái nộp/thái độ · Đ/C/S từng câu gom theo
+  dạng liền nhau · nhận xét · ảnh chấm bấm mở cỡ gốc) · `HopThuHS` trộn thư thường + thư BTVN theo thời gian, thư BTVN chỉ hết viền khi em mở bài,
+  quay lại vá da_xem tại chỗ + giữ cuộn · badge chuông = thư chưa đọc + bài chưa mở. `check:style-hs` ✔, tsc sạch file mới.
+  Verify giao diện bằng trang xem-thử cục bộ dữ liệu GIẢ (`xem-thu-baitra.html` + `src/_xem_baitra.tsx`, KHÔNG commit) — không đăng nhập tài khoản HS thật.
+- **App PH (repo bkdemy-ph-app):** `/api/cron/push` thêm khối `btvnTra` — `btvn_nop_view.tra_at` trong cửa sổ `CRON_TB_WINDOW_H` (25h) ⇒ push
+  "Bài tập về nhà buổi dd/mm của <tên> đã được chấm", dedup `push_notified(loai=btvn_tra, key=buoi:hs)`. Cron Vercel 1 lần/ngày 08:00 VN ⇒ PH
+  nhận vào sáng hôm sau. Chỉ chạy thử phần ĐỌC (3 dòng/48h, đủ PH) — không gọi route thật (sẽ bắn push thật).
