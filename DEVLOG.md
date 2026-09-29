@@ -31976,3 +31976,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Bài học:** gom việc theo "nghiệp vụ đo" (ET) thay vì theo "ca phải đứng" là sai góc nhìn người dùng — TA cần thấy CA mình phải đứng hôm nay.
 - **Còn thiếu (chưa làm, chờ Thùy):** app HS chưa có "Vào ca" cho bù (chỉ yếu/đuổi có) — nếu cần, nội dung đề xuất = dạng của buổi em nghỉ.
 - Lúc 17h thử chuyển buổi sang TA trực (Mỹ Hằng) — lệnh bị chặn, KHÔNG ghi gì; bỏ vì Cường đã đến.
+- **(17h30) Vòng 2 — Thùy đăng nhập ĐÚNG tài khoản Cường: ô Chấm ET KHÔNG có buổi bù** (khác kết luận vòng 1 của t "nằm trong Chấm ET" —
+  t kết luận từ đọc code + giả lập SQL, CHƯA mở app bằng phiên thật ⇒ sai). Chưa tìm ra vì sao đường getMyTasks rơi buổi bù trên máy Cường
+  (nghi `fn_viec_buoi_thuong` lỗi/timeout qua PostgREST ⇒ getMyTasks ném ⇒ `.catch(() => [])` nuốt HẾT việc, kể cả bù) — không tái hiện được
+  vì không có phiên Cường. **Sửa tận gốc:** ô "Bổ trợ bù" KHÔNG còn suy từ getMyTasks; đọc CA từ RPC riêng `fn_bu_ca_cua_toi` (mig 202609291720):
+  TA thấy ca mình đứng, admin thấy MỌI ca bù, kể cả ngoài lịch trực; nợ cũ ≤7 ngày + hôm nay + 7 ngày tới; mỗi dòng giờ · phòng · tên em.
+  Kiểm local ta.html (admin): 22 ca, có "Hôm nay · 17:00–18:00 · P102 · Nguyễn Quyền Minh Trí (6A3), Quỳnh Giao · TA: Phong Ngọc Cường";
+  bấm ⇒ mở màn buổi bù (điểm danh · tài liệu buổi đã nghỉ · chấm ET · đánh giá). Giả lập JWT Cường: RPC trả 4 ca của Cường.
+- **Bài học:** "code nói nó hiện" ≠ "người dùng thấy". Báo lỗi hiển thị từ người dùng thật ⇒ tái hiện bằng PHIÊN THẬT trước khi trả lời;
+  không có phiên thì nói rõ "chưa kiểm được", đừng khẳng định vị trí.

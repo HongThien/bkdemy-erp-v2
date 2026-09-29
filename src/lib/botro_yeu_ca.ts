@@ -234,3 +234,15 @@ export async function boTroTrongNgay(ngay?: string): Promise<{ bu: BuoiNgay[]; d
   const d = (data ?? {}) as any
   return { bu: d.bu ?? [], duoi: d.duoi ?? [], retest: d.retest ?? [] }
 }
+
+// ── CA BÙ của tôi (Thùy 29/09: "Bổ trợ bù phải đứng riêng như yếu và đuổi") — ô "Bổ trợ bù" app TA. TA: ca mình đứng; admin: mọi ca.
+export type CaBu = {
+  buoi_id: string; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null
+  nguoi_day_ten: string | null; cua_toi: boolean; et_dong_at: string | null; danh_gia_xong_at: string | null
+  hs: { ho_ten: string; lop: string | null; diem_danh: string | null }[] | null
+}
+export async function caBuCuaToi(): Promise<CaBu[]> {
+  const { data, error } = await supabase.rpc('fn_bu_ca_cua_toi')
+  if (error) throw error
+  return (data as CaBu[]) ?? []
+}

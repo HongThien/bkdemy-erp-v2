@@ -12,7 +12,7 @@ import type { MyQuyen } from '../../lib/quyen'
 import { getMyTasks, type MyTask } from '../../lib/gami'
 import { demNopTheoBuois } from '../../lib/btvnnop'
 import { taDashboard, type TaDash } from '../../lib/tadash'
-import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline, nhanConLai, congNgay } from '../../lib/tuan'
+import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline, nhanConLai } from '../../lib/tuan'
 import { kiemTraHoTro, trangThaiNhacViec } from '../../lib/push'
 import { setAppBadgeCount } from '../../lib/appBadge'
 import { NhacViecNutHeader } from '../../components/NhacViecCaiDat'
@@ -21,7 +21,7 @@ import ChamBuoi from './ChamBuoi'
 import DashTa from './DashTa'
 import GopY from './GopY'
 import CaBoTroTA, { demNoBoTro } from './CaBoTroTA'
-import { viecBoTroCuaToi, type ViecCaBoTro, type ViecRetest } from '../../lib/botro_yeu_ca'
+import { viecBoTroCuaToi, caBuCuaToi, type ViecCaBoTro, type ViecRetest, type CaBu } from '../../lib/botro_yeu_ca'
 import { BuoiBuDetail } from '../botro/BoTroScreen'
 import DuoiCaTA from './DuoiCaTA'
 import TripCountdownBanner, { type CountdownRect } from '../../components/TripCountdownBanner'
@@ -81,7 +81,8 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
   // tóm tắt dashboard tháng cho BOX ở trang chủ (CEO 31/08: dashboard = 1 box riêng cạnh các nghiệp vụ)
   const [dashTom, setDashTom] = useState<TaDash | null>(null)
   const [boTro, setBoTro] = useState<ViecBoTro>({ ca: [], retest: [] })
-  const taiBoTro = () => viecBoTroCuaToi().then(setBoTro).catch(() => {})
+  const [caBu, setCaBu] = useState<CaBu[]>([])
+  const taiBoTro = () => { viecBoTroCuaToi().then(setBoTro).catch(() => {}); caBuCuaToi().then(setCaBu).catch(() => {}) }
   const coQuyen = quyen.laAdmin || quyen.chucNang.includes('buoihoc') // cùng leaf với tab chấm bên ERP
 
   async function reload(silent = false) {
@@ -134,7 +135,7 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
   return (
     <div className="flex h-[100dvh] flex-col" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif", background: BK_TROI }}>
       <div className="min-h-0 flex-1 overflow-auto">
-        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} onOpenBuoi={setView} dashTom={dashTom} boTro={boTro} onAvatarChanged={onAvatarChanged} />}
+        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} onOpenBuoi={setView} dashTom={dashTom} boTro={boTro} caBu={caBu} onAvatarChanged={onAvatarChanged} />}
         {tab === 'dash' && <DashTa profile={profile} />}
         {tab === 'botro' && <CaBoTroTA viec={boTro} onDoi={taiBoTro} />}
         {tab !== 'home' && tab !== 'dash' && tab !== 'botro' && <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => belongsToNv(t, tab))} nopCount={nopCount} now={now} homNay={homNay} onOpen={setView} />}
@@ -168,7 +169,8 @@ function TabBtn({ active, icon, label, no, onClick }: { active: boolean; icon: s
 
 // ── TRANG CHỦ: 1 thẻ hồ sơ (avatar · Chào X · ngày · nợ · chuông/góp ý/thoát) + box tháng + box bổ trợ + 3 box
 //    nghiệp vụ (bubble nợ ở góc icon). CEO 07/09: gộp thanh trên + hero, bỏ dòng tên/"BK Trợ giảng" lặp. ──
-function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, onOpenBuoi, dashTom, boTro, onAvatarChanged }: {
+function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, onOpenBuoi, dashTom, boTro, caBu, onAvatarChanged }: {
+  caBu: CaBu[]
   profile: MyProfile; homNay: string; loading: boolean; coQuyen: boolean
   tasks: MyTask[]; canLam: MyTask[]; noCua: (k: NvKey) => number; now: number; onGo: (t: TabKey) => void; onOpenBuoi: (v: BuoiView) => void
   dashTom: TaDash | null; boTro: ViecBoTro; onAvatarChanged?: (url: string) => void
@@ -252,7 +254,7 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
         {/* BOX DASHBOARD THÁNG — 1 cái riêng đứng cùng các nghiệp vụ (CEO 31/08) */}
         {!loading && coQuyen && <BoxDashThang d={dashTom} onGo={() => onGo('dash')} />}
         {!loading && coQuyen && <BoxBoTro v={boTro} homNay={homNay} onGo={() => onGo('botro')} />}
-        {!loading && coQuyen && <BoxBu tasks={tasks.filter(belongsToBu)} homNay={homNay} onOpen={onOpenBuoi} />}
+        {!loading && coQuyen && <BoxBu ca={caBu} homNay={homNay} onOpen={onOpenBuoi} />}
         {!loading && coQuyen && <BoxDuoi tasks={tasks.filter(belongsToDuoi)} onOpen={onOpenBuoi} />}
 
         {!loading && coQuyen && NGHIEP_VU.map((n) => {
@@ -324,36 +326,34 @@ function BoxBoTro({ v, homNay, onGo }: { v: ViecBoTro; homNay: string; onGo: () 
 // Bổ trợ yếu (không cần: số buổi đuổi/TA thường rất ít), nên MỖI DÒNG tự mở thẳng BuoiDuoiDetail —
 // khác BoxBoTro/box nghiệp vụ (cả box 1 nút, bấm ra tab list). Vì vậy đây là <div>, không phải
 // <button> bọc ngoài (tránh nested button — mỗi dòng mới là nút thật).
-// Box "Bổ trợ bù" — 1 dòng / buổi bù của tôi (gộp 2 việc Chấm ET + Đánh giá của cùng buổi). Chưa xong lên trước, cũ → mới
-// (hôm nay nổi bật). Bấm → BuoiBuDetail (điểm danh · ET seed từ buổi mẹ · đánh giá · 2 nút đóng).
-function BoxBu({ tasks, homNay, onOpen }: { tasks: MyTask[]; homNay: string; onOpen: (v: BuoiView) => void }) {
-  const buois = [...new Map(tasks.map((t) => [t.buoiId, t])).values()].map((t) => {
-    const cua = tasks.filter((x) => x.buoiId === t.buoiId)
-    return { buoiId: t.buoiId, ngay: t.ngay, xong: cua.every((x) => x.done), etXong: cua.some((x) => x.tab === 'et' && x.done) }
-  }).filter((b) => !b.xong || b.ngay >= congNgay(homNay, -7)) // buổi xong chỉ giữ 7 ngày gần nhất
-    .sort((a, b) => Number(a.xong) - Number(b.xong) || (a.xong ? b.ngay.localeCompare(a.ngay) : a.ngay.localeCompare(b.ngay)))
-  const chuaXong = buois.filter((b) => !b.xong)
-  const homNayN = chuaXong.filter((b) => b.ngay === homNay).length
+// Box "Bổ trợ bù" — CA bù (Thùy 29/09): đọc từ DB (fn_bu_ca_cua_toi) — TA thấy ca mình đứng, admin thấy mọi ca, kể cả ca ngoài
+// lịch trực. 1 dòng / ca: giờ · phòng · tên em. Hôm nay viền cam. Bấm → BuoiBuDetail (điểm danh · ET · đánh giá).
+function BoxBu({ ca, homNay, onOpen }: { ca: CaBu[]; homNay: string; onOpen: (v: BuoiView) => void }) {
+  const hn = ca.filter((c) => c.ngay === homNay)
+  const no = ca.filter((c) => c.ngay < homNay).length
+  const hhmm = (g: string | null) => (g ? g.slice(0, 5) : '?')
   return (
     <div className="rounded-[22px] p-3" style={{ background: '#FFE9C7' }}>
       <div className="flex items-center gap-2.5">
-        <span className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/80"><img src={A('pr_tai_nghe')} alt="" className="h-10 w-10 object-contain" draggable={false} /><NoBadge n={chuaXong.length} /></span>
+        <span className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/80"><img src={A('pr_tai_nghe')} alt="" className="h-10 w-10 object-contain" draggable={false} /><NoBadge n={hn.filter((c) => !c.danh_gia_xong_at).length + no} /></span>
         <div className="min-w-0 flex-1 leading-tight">
           <p className="font-bubble text-[17px] font-extrabold text-[#16224D]">Bổ trợ bù</p>
-          <p className="text-[12.5px] text-[#63709A]">{buois.length === 0 ? 'Không có buổi bù' : [homNayN ? `${homNayN} buổi hôm nay` : '', chuaXong.length ? `${chuaXong.length} buổi chưa xong` : '', buois.length - chuaXong.length ? `${buois.length - chuaXong.length} đã xong` : ''].filter(Boolean).join(' · ')}</p>
+          <p className="text-[12.5px] text-[#63709A]">{ca.length === 0 ? 'Không có ca bù' : [hn.length ? `${hn.length} ca hôm nay` : '', no ? `${no} ca chưa đóng` : '', ca.length - hn.length - no ? `${ca.length - hn.length - no} ca sắp tới` : ''].filter(Boolean).join(' · ')}</p>
         </div>
       </div>
-      {buois.length > 0 && (
+      {ca.length > 0 && (
         <div className="mt-2 flex flex-col gap-1">
-          {buois.slice(0, 6).map((b) => (
-            <button key={b.buoiId} onClick={() => onOpen({ buoiId: b.buoiId, tab: 'et', lop: 'Buổi bù', ngay: b.ngay, loai: 'bu' })}
-              className={`flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left active:scale-[.99] ${b.ngay === homNay && !b.xong ? 'bg-white ring-2 ring-[#F59E0B]' : 'bg-white/80'}`}>
-              <span className="text-[13.5px] font-bold text-[#16224D]">{b.ngay === homNay ? 'Hôm nay' : `${thuCuaNgay(b.ngay)} ${ddmmVN(b.ngay)}`}</span>
-              <span className="min-w-0 flex-1 truncate text-[11.5px] text-[#63709A]">{b.ngay > homNay ? 'sắp tới' : 'điểm danh · chấm ET · đánh giá'}</span>
-              <span className={`ml-auto shrink-0 rounded-full px-2 py-0.5 text-[11px] font-bold ${b.xong ? 'bg-[#E4F8EC] text-[#1E8A52]' : 'bg-[#FFF1D6] text-[#C27A00]'}`}>{b.xong ? 'xong' : b.etXong ? 'chờ đánh giá' : 'mở buổi'}</span>
+          {ca.slice(0, 8).map((c) => (
+            <button key={c.buoi_id} onClick={() => onOpen({ buoiId: c.buoi_id, tab: 'et', lop: 'Buổi bù', ngay: c.ngay, loai: 'bu' })}
+              className={`flex w-full flex-col gap-0.5 rounded-xl px-3 py-2 text-left active:scale-[.99] ${c.ngay === homNay && !c.danh_gia_xong_at ? 'bg-white ring-2 ring-[#F59E0B]' : 'bg-white/80'}`}>
+              <span className="flex w-full items-center gap-2">
+                <span className="text-[13.5px] font-bold text-[#16224D]">{c.ngay === homNay ? 'Hôm nay' : `${thuCuaNgay(c.ngay)} ${ddmmVN(c.ngay)}`} · {hhmm(c.gio_bat_dau)}–{hhmm(c.gio_ket_thuc)}{c.phong ? ` · ${c.phong}` : ''}</span>
+                <span className={`ml-auto shrink-0 rounded-full px-2 py-0.5 text-[11px] font-bold ${c.danh_gia_xong_at ? 'bg-[#E4F8EC] text-[#1E8A52]' : 'bg-[#FFF1D6] text-[#C27A00]'}`}>{c.danh_gia_xong_at ? 'xong' : 'mở ca'}</span>
+              </span>
+              <span className="truncate text-[11.5px] text-[#63709A]">{(c.hs ?? []).map((h) => `${h.ho_ten}${h.lop ? ` (${h.lop})` : ''}`).join(', ') || 'chưa có em'}{c.cua_toi ? '' : ` · TA: ${c.nguoi_day_ten ?? '?'}`}</span>
             </button>
           ))}
-          {buois.length > 6 && <p className="px-1 text-[10.5px] font-semibold text-[#63709A]">+ {buois.length - 6} buổi nữa…</p>}
+          {ca.length > 8 && <p className="px-1 text-[10.5px] font-semibold text-[#63709A]">+ {ca.length - 8} ca nữa…</p>}
         </div>
       )}
     </div>
