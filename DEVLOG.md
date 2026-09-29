@@ -31928,3 +31928,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   nút không có tác dụng gì và không báo gì. Sửa: trình chiếu là LỚP PHỦ `fixed inset-0` (portal ra `body`) do màn tự dựng; toàn màn hình chỉ là
   phần cộng thêm, bị từ chối vẫn chiếu được. Esc thoát ở cả hai trường hợp. Bài học: tính năng cốt lõi không được treo vào một API mà
   trình duyệt có quyền từ chối.
+- **SAI lần 2 rồi SỬA (cùng mục 21):** có lớp phủ rồi mà bấm vẫn không thấy gì — khung xem thử CHO vào toàn màn hình rồi đẩy ra NGAY, bộ nghe
+  `fullscreenchange` hiểu là người xem bấm Esc nên đóng luôn trình chiếu. Sửa: bị đẩy ra trong vòng 1 giây kể từ lúc vào thì giữ lớp phủ.
+- **ĐÃ KIỂM trên app thật (localhost, tài khoản Thùy):** bấm Trình chiếu ra trang 1/9 "Cần chú ý" · nút Sau › và phím → chuyển đúng trang ·
+  ở khổ ngang 1600×900 bảng 7 dòng (Kết quả học tập) phóng 1,44 lần, vừa khít, KHÔNG cuộn · Esc thoát về màn thường.
+  CHƯA kiểm: toàn màn hình thật của trình duyệt (khung xem thử không giữ được) và bút trình chiếu.
