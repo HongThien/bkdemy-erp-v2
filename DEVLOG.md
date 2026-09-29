@@ -31908,6 +31908,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Vấn đề khác giữ nguyên: HS nộp BTVN đạt chuẩn 67% (84) · 11 lớp nộp dưới ngưỡng (3,9) · 13 HS bị GV báo động (4,7).
 - **Còn lại chưa đổi được bằng cửa sổ:** BTVN/ET/đánh giá đúng chuẩn vẫn "trên thường đạt" vì 8 tuần qua vẫn đang đi lên — đúng thực tế, không phải lỗi.
 
+### 29/09 (21) — Lớp/Bạn bè tự đăng lại A + B có hạn mức (Thùy: Thế giới tự động chỉ S; kênh cá nhân + lớp A,B nhưng không spam)
+- Mig 202609291323 (fn_the_gioi_kenh từ DB đang chạy): window rn_em (≤1 tin tự động/em/ngày, A trước B) + rn_ngay (≤6/ngày/kênh); S + bài khoe ngoài hạn mức.
+  Thử ROLLBACK 4 lớp đông tin: 9K2 1→7 tin (B 6) · 9K1 1→5 · 8B1 A 3→2 (1 em 2 tin A cùng ngày) · 10A1 giữ 4; không ngày nào >6 tin tự động · Thế giới vẫn chỉ S+khoe.
+
 ## 2026-09-29 (21) — TRỢ LÝ · Tổng kết tuần: TRÌNH CHIẾU mỗi bảng một màn, chuyển Trước / Sau
 
 - **CEO:** "Khi phóng to ra, mỗi bảng full 1 màn, để dạng next - back đi chứ ko nên để kéo lên kéo xuống ko tiện đâu."
