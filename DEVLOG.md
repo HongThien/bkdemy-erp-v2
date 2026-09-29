@@ -31469,3 +31469,16 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Detail bày thẳng từng lớp → từng buổi → từng em không đạt kèm lý do, chip "Dưới 70%" / "Tất cả lớp"; cảnh báo về học sinh nằm dưới tiêu đề "Học sinh làm
   BTVN". `troly-baocao.ts` thêm kiểu `TiLeNopBtvn`. SPEC §6.3b.
 - **Kiểm:** áp thử + rollback → áp thật · tsc sạch · vite build qua · dựng SSR 2 bản bằng JSON thật, đọc lại phần chữ. Vẫn chưa kiểm trên app/RLS.
+
+## 2026-09-29 (15) — TRỢ LÝ: CEO chốt ngưỡng 70% · xin phép vẫn là chưa nộp · ET không cần phần tỉ lệ (worktree troly-hoi-duoc)
+
+- **CEO (nguyên văn):** *"ET ko cần. Học sinh đi học là có ET nhưng chưa chắc đã nộp BTVN."* · *"70% ok"* · *"xin phép tính là hợp lệ về thái độ thôi, còn
+  vẫn phải nộp bài mà. Nên vẫn tính nhé."*
+- **Ý nghĩa:** ET gắn với việc CÓ MẶT (đi học là làm) nên "tỉ lệ nộp" không phải thước đo của ET — đừng đề xuất lại. BTVN thì nộp hay không là chuyện riêng.
+  Xin phép = 2 trục tách nhau: thái độ thì hợp lệ, nghĩa vụ nộp bài thì vẫn còn.
+- **DB — mig `202609291033_troly_btvn_chot_nguong_xin_phep`** (đã áp `--only`): `_troly_bc_gia_dinh` (chú thích ngưỡng = đã chốt) · `_troly_bc_btvn_ti_le`
+  (dòng cách tính: bỏ "tạm, chờ chốt", thêm câu luật xin phép) · `_troly_bc_canh_bao` (cảnh báo thái độ BTVN bỏ dòng `trang_thai_nop = 'xin_phep'`).
+  Cách tính tỉ lệ KHÔNG đổi — bản 14 vốn đã tính xin phép là chưa nộp.
+- **Kiểm bằng so JSON trước/sau** (script so từng khoá, bỏ `tao_luc`): đúng 3 chỗ khác, cả 3 là chữ; KHÔNG con số nào đổi (14 ngày qua không có dòng xin
+  phép nào bị ghi thái độ xấu lặp lại). Phải chép nguyên thân `_troly_bc_canh_bao` (~280 dòng) để đổi 1 điều kiện ⇒ so trước/sau là cách chắc nhất để biết
+  lúc chép không làm rơi gì. SPEC §6.3b cập nhật.

@@ -167,7 +167,12 @@ Chỉ 3 người dùng trợ lý: Thùy · Thùy Trang · Bảo Lộc (`troly_du
 **"Thiếu thông tin cũng tính là chưa đạt chuẩn dữ liệu."** Một em ĐẠT khi đủ cả ba: đã nộp (đúng hạn/
 muộn) · đã tick thái độ · có điểm chấm câu. Mẫu số = em có mặt buổi giao bài + em vắng mà vẫn có dòng
 BTVN. Chỉ tính buổi đã đóng BTVN hoặc đã quá hạn chấm.
-*Bàn sau (số, chưa chốt):* ngưỡng lớp "tệ" đang tạm 70% (`_troly_bc_gia_dinh().btvn_ti_le_nop_toi_thieu`).
+
+- **Ngưỡng lớp "tệ" = dưới 70%** — CEO chốt 29/09 (`_troly_bc_gia_dinh().btvn_ti_le_nop_toi_thieu`).
+- **Xin phép**: *"hợp lệ về thái độ thôi, còn vẫn phải nộp bài"* ⇒ vẫn tính là CHƯA NỘP trong tỉ lệ,
+  nhưng KHÔNG bị gắn cảnh báo thái độ.
+- **ET KHÔNG có phần tỉ lệ tương tự** — CEO: *"Học sinh đi học là có ET nhưng chưa chắc đã nộp BTVN."*
+  ET gắn với việc có mặt nên tỉ lệ nộp không phải thước đo của ET. Đừng đề xuất lại.
 
 ### 6.4 Còn thiếu nguồn dữ liệu (báo cáo nói thẳng, không bịa — luật §3)
 
