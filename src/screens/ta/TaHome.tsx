@@ -12,7 +12,7 @@ import type { MyQuyen } from '../../lib/quyen'
 import { getMyTasks, type MyTask } from '../../lib/gami'
 import { demNopTheoBuois } from '../../lib/btvnnop'
 import { taDashboard, type TaDash } from '../../lib/tadash'
-import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline, nhanConLai } from '../../lib/tuan'
+import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline, nhanConLai, congNgay } from '../../lib/tuan'
 import { kiemTraHoTro, trangThaiNhacViec } from '../../lib/push'
 import { setAppBadgeCount } from '../../lib/appBadge'
 import { NhacViecNutHeader } from '../../components/NhacViecCaiDat'
@@ -56,7 +56,9 @@ const nvOf = (k: NvKey) => NGHIEP_VU.find((n) => n.key === k)!
 export const belongsToBu = (t: MyTask): boolean => t.loai === 'bu'
 export const belongsToDuoi = (t: MyTask): boolean => t.loai === 'bo_tro_duoi'
 export const belongsToBoTro = (t: MyTask): boolean => belongsToBu(t) || belongsToDuoi(t) // dùng để GIỮ task trong `tasks` state — xem reload()
-export const belongsToNv = (t: MyTask, k: NvKey): boolean => t.tab === k || (k === 'et' && t.tab === 'danhgia' && belongsToBu(t))
+// Thùy 29/09: "Bổ trợ bù phải đứng riêng như bổ trợ yếu và đuổi" — buổi bù có BOX RIÊNG (BoxBu), KHÔNG còn núp trong "Chấm ET"
+// (Cường có mặt, mở app mà không tìm ra buổi bù vì nó nằm cuối danh sách chấm ET).
+export const belongsToNv = (t: MyTask, k: NvKey): boolean => t.tab === k && !belongsToBu(t)
 
 export type BuoiView = { buoiId: string; tab: NvKey; lop: string; ngay: string; loai?: 'bu' | 'bo_tro_duoi' }
 
@@ -250,6 +252,7 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
         {/* BOX DASHBOARD THÁNG — 1 cái riêng đứng cùng các nghiệp vụ (CEO 31/08) */}
         {!loading && coQuyen && <BoxDashThang d={dashTom} onGo={() => onGo('dash')} />}
         {!loading && coQuyen && <BoxBoTro v={boTro} homNay={homNay} onGo={() => onGo('botro')} />}
+        {!loading && coQuyen && <BoxBu tasks={tasks.filter(belongsToBu)} homNay={homNay} onOpen={onOpenBuoi} />}
         {!loading && coQuyen && <BoxDuoi tasks={tasks.filter(belongsToDuoi)} onOpen={onOpenBuoi} />}
 
         {!loading && coQuyen && NGHIEP_VU.map((n) => {
@@ -321,6 +324,42 @@ function BoxBoTro({ v, homNay, onGo }: { v: ViecBoTro; homNay: string; onGo: () 
 // Bổ trợ yếu (không cần: số buổi đuổi/TA thường rất ít), nên MỖI DÒNG tự mở thẳng BuoiDuoiDetail —
 // khác BoxBoTro/box nghiệp vụ (cả box 1 nút, bấm ra tab list). Vì vậy đây là <div>, không phải
 // <button> bọc ngoài (tránh nested button — mỗi dòng mới là nút thật).
+// Box "Bổ trợ bù" — 1 dòng / buổi bù của tôi (gộp 2 việc Chấm ET + Đánh giá của cùng buổi). Chưa xong lên trước, cũ → mới
+// (hôm nay nổi bật). Bấm → BuoiBuDetail (điểm danh · ET seed từ buổi mẹ · đánh giá · 2 nút đóng).
+function BoxBu({ tasks, homNay, onOpen }: { tasks: MyTask[]; homNay: string; onOpen: (v: BuoiView) => void }) {
+  const buois = [...new Map(tasks.map((t) => [t.buoiId, t])).values()].map((t) => {
+    const cua = tasks.filter((x) => x.buoiId === t.buoiId)
+    return { buoiId: t.buoiId, ngay: t.ngay, xong: cua.every((x) => x.done), etXong: cua.some((x) => x.tab === 'et' && x.done) }
+  }).filter((b) => !b.xong || b.ngay >= congNgay(homNay, -7)) // buổi xong chỉ giữ 7 ngày gần nhất
+    .sort((a, b) => Number(a.xong) - Number(b.xong) || (a.xong ? b.ngay.localeCompare(a.ngay) : a.ngay.localeCompare(b.ngay)))
+  const chuaXong = buois.filter((b) => !b.xong)
+  const homNayN = chuaXong.filter((b) => b.ngay === homNay).length
+  return (
+    <div className="rounded-[22px] p-3" style={{ background: '#FFE9C7' }}>
+      <div className="flex items-center gap-2.5">
+        <span className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/80"><img src={A('pr_tai_nghe')} alt="" className="h-10 w-10 object-contain" draggable={false} /><NoBadge n={chuaXong.length} /></span>
+        <div className="min-w-0 flex-1 leading-tight">
+          <p className="font-bubble text-[17px] font-extrabold text-[#16224D]">Bổ trợ bù</p>
+          <p className="text-[12.5px] text-[#63709A]">{buois.length === 0 ? 'Không có buổi bù' : [homNayN ? `${homNayN} buổi hôm nay` : '', chuaXong.length ? `${chuaXong.length} buổi chưa xong` : '', buois.length - chuaXong.length ? `${buois.length - chuaXong.length} đã xong` : ''].filter(Boolean).join(' · ')}</p>
+        </div>
+      </div>
+      {buois.length > 0 && (
+        <div className="mt-2 flex flex-col gap-1">
+          {buois.slice(0, 6).map((b) => (
+            <button key={b.buoiId} onClick={() => onOpen({ buoiId: b.buoiId, tab: 'et', lop: 'Buổi bù', ngay: b.ngay, loai: 'bu' })}
+              className={`flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left active:scale-[.99] ${b.ngay === homNay && !b.xong ? 'bg-white ring-2 ring-[#F59E0B]' : 'bg-white/80'}`}>
+              <span className="text-[13.5px] font-bold text-[#16224D]">{b.ngay === homNay ? 'Hôm nay' : `${thuCuaNgay(b.ngay)} ${ddmmVN(b.ngay)}`}</span>
+              <span className="min-w-0 flex-1 truncate text-[11.5px] text-[#63709A]">{b.ngay > homNay ? 'sắp tới' : 'điểm danh · chấm ET · đánh giá'}</span>
+              <span className={`ml-auto shrink-0 rounded-full px-2 py-0.5 text-[11px] font-bold ${b.xong ? 'bg-[#E4F8EC] text-[#1E8A52]' : 'bg-[#FFF1D6] text-[#C27A00]'}`}>{b.xong ? 'xong' : b.etXong ? 'chờ đánh giá' : 'mở buổi'}</span>
+            </button>
+          ))}
+          {buois.length > 6 && <p className="px-1 text-[10.5px] font-semibold text-[#63709A]">+ {buois.length - 6} buổi nữa…</p>}
+        </div>
+      )}
+    </div>
+  )
+}
+
 function BoxDuoi({ tasks, onOpen }: { tasks: MyTask[]; onOpen: (v: BuoiView) => void }) {
   const chuaXong = tasks.filter((t) => !t.done)
   const xong = tasks.length - chuaXong.length

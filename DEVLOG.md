@@ -31965,3 +31965,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Control chung `MucUuTienCase` thay select + chip ưu tiên cũ ở Xếp (lỗi đổi ưu tiên trước đây revert im lặng).
 - **Kiểm trên app (admin, local 5192):** Duyệt 75 ca, 69 chip reset, bộ đếm 25/50 · 1/20 · còn 25 chỗ; Xếp: Cần xếp 0 · Đã xếp 25 · Hoàn thành
   106, 25 card có control; popup Trạng thái ca có control; console 0 lỗi. Chưa bấm thử đổi mức/ưu tiên trên dữ liệu thật.
+
+## 2026-09-29 (17h) — App TA: buổi bù có Ô RIÊNG "Bổ trợ bù" ở màn chính (Thùy)
+
+- **Sự cố:** Minh Trí (6A3) có buổi bù 17:00 P102 giao Phong Ngọc Cường. Cường có mặt, mở app nhưng không thấy để mở buổi. Dữ liệu đúng
+  (giả lập JWT Cường: fn_viec_buoi_thuong 51 việc, 0,9s; buổi bù thoả điều kiện hiện; bundle prod có nhãn) — buổi bù bị NHÉT vào ô "Chấm ET"
+  (cuối danh sách, sau các buổi còn nợ chấm) nên TA không tìm ra ⇒ không mở được buổi ⇒ HS ngồi chờ.
+- **Sửa:** `TaHome.tsx` — `BoxBu`: 1 dòng / buổi bù của tôi (gộp việc ET + đánh giá), chưa xong lên trước, hôm nay viền cam, bấm → BuoiBuDetail;
+  buổi xong giữ 7 ngày. `belongsToNv` loại bù ⇒ ô Chấm ET / tab dưới không còn đếm bù. Đứng cạnh ô Bổ trợ yếu · Bổ trợ đuổi.
+- **Bài học:** gom việc theo "nghiệp vụ đo" (ET) thay vì theo "ca phải đứng" là sai góc nhìn người dùng — TA cần thấy CA mình phải đứng hôm nay.
+- **Còn thiếu (chưa làm, chờ Thùy):** app HS chưa có "Vào ca" cho bù (chỉ yếu/đuổi có) — nếu cần, nội dung đề xuất = dạng của buổi em nghỉ.
+- Lúc 17h thử chuyển buổi sang TA trực (Mỹ Hằng) — lệnh bị chặn, KHÔNG ghi gì; bỏ vì Cường đã đến.
