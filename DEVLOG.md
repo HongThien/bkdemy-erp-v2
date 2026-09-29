@@ -31726,3 +31726,22 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   (nút có ngay, sai → đóng → mở lại đúng câu 2/2 → đúng → mở trạm 2); 0 lỗi console.
   Sửa trong lúc soi: nhãn tên bị viền đen che (công thức đặt máy quay mới D=3r+44) · góc rộng cắt nguyên tử ở màn gần vuông (tự lùi
   theo tỉ lệ màn) · tiêu đề "LIÊN KẾT ION" cảnh cuối bị che (lùi máy thêm) · nhãn 3 nguyên tử CO₂ đè nhau sau khi ghép (rút về ký hiệu).
+
+### 29/09 — Bổ trợ yếu BẬT cho nhánh Hình (Thùy chọn (a): bật luôn, dạng 0 MCQ thì TA dạy giấy) — mig 202609291219 VIẾT + CHẠY THỬ, CHỜ ÁP
+- **Client:** `danhgia.ts napBanDo` (engine phát hiện + đổ dạng vào case) tra MỌI nhánh qua `dangInfoCuaMon` (thêm `ma_chuyen_de` thật); Bài Hình
+  học (ma_chuyen_de null) đứng ngoài tầng chuyên đề/kênh ① — gom null thành 1 khoá là bịa 1 "chuyên đề" gộp mọi Bài; vẫn vào kênh ② + đổ dạng.
+  `getLichSuChuyenDe` tra mọi bảng bản đồ (chuyên đề HGT). `botro_yeu.ts`: tên dạng case (2 chỗ) mọi nhánh; gỡ lọc `nhanh == null` ở
+  `getDangYeuGoiY` (đặt sáng nay khi chưa bật).
+- **Mig 202609291219_btyeu_nhanh_theo_dang_hinh_hoc** (sinh từ bản đang chạy, assert từng chỗ vá): bảng câu/lý thuyết theo nhánh TỪNG dạng trong
+  vòng lặp của `_btyeu_bu_retest` · `fn_btyeu_dong_ca` (test + retest) · `fn_btyeu_in_sinh` · `fn_btyeu_luyen_sinh`; tên dạng qua `_kho_ten_dang`
+  ở `fn_btyeu_in_lay` · `fn_btyeu_dang_yeu_2_cua_so` · `fn_btyeu_de_xuat_dang_moi` (join lateral thay join 1 bảng — vừa lọc thuộc môn vừa ra tên);
+  `fn_btyeu_ca_ta` + `fn_btyeu_ca_cua_toi` dựng JSON dạng bằng VÒNG (mỗi dạng bảng bản đồ/cụm theo nhánh), giữ thứ tự `diem_luc_mo nulls last, created_at`.
+  Tạo `hinh_hoc_cum_tien_de` rỗng đúng shape dai_/hgt_ (FK cụm, check, RLS member_all) — màn ca HS dựng tên bảng bằng replace(cum_bai→cum_tien_de).
+  `fn_btyeu_lich_su_hs` khai báo bảng bản đồ nhưng không dùng ⇒ không đụng. `_btyeu_chon_cau` (luật MCQ) không đổi.
+- **Chạy thử (1 transaction, ROLLBACK), so TRƯỚC/SAU trên dữ liệu thật:** `fn_btyeu_ca_ta` 60/60 ca giống hệt · `fn_btyeu_in_lay` 30/30 giống hệt ·
+  `fn_btyeu_ca_cua_toi` (đóng vai HS, dời ca về hôm nay) giống hệt · `dang_yeu_2_cua_so` 9/40 em THÊM dạng HGT (T309…)/HH00087, không bớt ·
+  đề xuất dạng mới thêm 6 dạng Hình. Kịch bản gắn HH00087 + HH00061 vào 1 ca: `in_sinh` ra 3 câu MCQ HH00087 (hinh_hoc_cau_hoi, có lý thuyết),
+  HH00061 vào `dang_khong_co_cau` (0 MCQ — đúng luật); ca_ta/ca_cua_toi ra tên Bài + 8 cụm HH00087 + số câu kho.
+- **Lưu ý phạm vi:** bật theo registry nên Hình giải tích cũng vào bổ trợ yếu (đối xứng §1.6) — trước đó HGT cũng bị loại im lặng.
+- tsc + vite build sạch. CHỜ ÁP (quyền ghi DB production): `node <worktree>/scripts/migrate.mjs --only 202609291219_btyeu_nhanh_theo_dang_hinh_hoc.sql`.
+  Code client để trên nhánh worktree, merge main SAU khi áp (client đổ dạng Hình vào case mà DB cũ chọn câu bảng Đại ⇒ đừng lệch pha).

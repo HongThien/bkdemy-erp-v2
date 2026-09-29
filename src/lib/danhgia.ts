@@ -18,7 +18,8 @@ import {
   trungBinhTruot3, docAmLienTiep, dangDoiBucketXau, deXuatLevelKienThuc, deXuatLevelThaiDo,
   bucketOfScore, BUCKET_RANK,
 } from '../gami/danhgia.js'
-import { khoCuaMon } from './tailieu'
+import { khoCuaMon, nhanhCuaMon } from './tailieu'
+import { dangInfoCuaMon } from './mastery'
 import { fetchAllRows } from './pgrest' // phân trang THẬT — PostgREST cap 1000 dòng/query, xem pgrest.ts
 
 const LIMIT = 10000
@@ -162,16 +163,13 @@ async function napLanDo(hsIds: string[], mon: string): Promise<DoRow[]> {
   return out
 }
 
-// Bản đồ dạng → chuyên đề + tên + độ khó, tra ĐÚNG 1 bảng theo môn (bẫy #1).
+// Bản đồ dạng → chuyên đề + tên + độ khó, tra đúng bảng theo MÔN (bẫy #1) — MỌI nhánh của môn qua registry
+// (dangInfoCuaMon). 29/09 (Thùy chốt bật bổ trợ yếu cho Hình): trước chỉ tra bảng gốc ⇒ Bài Hình học + dạng Hình
+// giải tích rơi khỏi kênh ② và khỏi bước đổ dạng vào case. Bài Hình học có ma_chuyen_de = null (không có tầng chuyên đề).
 async function napBanDo(mon: string, maDangs: string[]) {
-  const K = khoCuaMon(mon)
-  const info = new Map<string, { ten_dang: string; ma_chuyen_de: string; ten_chuyen_de: string; muc_do: number | null }>()
-  if (!maDangs.length) return info
-  const { data } = await supabase.from(K.banDoTbl)
-    .select('ma_dang, ten_dang, ma_chuyen_de, ten_chuyen_de, muc_do')
-    .in('ma_dang', maDangs).limit(LIMIT)
-  for (const d of (data ?? []) as any[]) {
-    info.set(d.ma_dang, { ten_dang: d.ten_dang, ma_chuyen_de: d.ma_chuyen_de, ten_chuyen_de: d.ten_chuyen_de, muc_do: d.muc_do ?? null })
+  const info = new Map<string, { ten_dang: string; ma_chuyen_de: string | null; ten_chuyen_de: string; muc_do: number | null }>()
+  for (const [ma, d] of await dangInfoCuaMon(mon, maDangs)) {
+    info.set(ma, { ten_dang: d.ten_dang, ma_chuyen_de: d.ma_chuyen_de, ten_chuyen_de: d.ten_chuyen_de, muc_do: d.muc_do })
   }
   return info
 }
@@ -201,7 +199,7 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
   ])
   const banDo = await napBanDo(mon, [...new Set(doRows.map((r) => r.ma_dang))])
   const cdTen = new Map<string, string>()
-  for (const info of banDo.values()) cdTen.set(info.ma_chuyen_de, info.ten_chuyen_de)
+  for (const info of banDo.values()) if (info.ma_chuyen_de) cdTen.set(info.ma_chuyen_de, info.ten_chuyen_de)
 
   // Gom: HS → dạng → lần đo (2 bản: GỘP và chỉ-GIÁM-SÁT, để bắt cờ "BTVN che").
   const byHS = new Map<string, { dang: Map<string, DoEval[]>; dangEtMt: Map<string, DoEval[]>; cd: Map<string, DoEval[]> }>()
@@ -213,7 +211,9 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
     const ev: DoEval = { value: r.value, t: r.t, src: r.src }
     push(h.dang, r.ma_dang, ev)
     if (r.src !== 'btvn') push(h.dangEtMt, r.ma_dang, ev)
-    push(h.cd, info.ma_chuyen_de, ev) // tầng chuyên đề: THẲNG CÂU, mọi dạng con
+    // tầng chuyên đề: THẲNG CÂU, mọi dạng con. Dạng KHÔNG có chuyên đề (Bài Hình học) đứng ngoài kênh ① — gom
+    // chúng vào 1 khoá null là bịa ra 1 "chuyên đề" gộp mọi Bài; vẫn vào kênh ② (dạng) + ③④ (buổi) như thường.
+    if (info.ma_chuyen_de) push(h.cd, info.ma_chuyen_de, ev)
   }
 
   // Điểm chuyên đề của CẢ LỚP theo cửa sổ → nền cho pha 1 (so lớp) + đường B (vượt TB lớp).
@@ -910,10 +910,14 @@ export async function listAiJobs(lopId: string, limit = 8): Promise<AiJob[]> {
 // làm — hàm này nạp riêng, gọi LƯỜI lúc người bấm mở detail (không load sẵn cho mọi chuyên đề).
 export type LanLamChuyenDe = { ma_dang: string; ten_dang: string; nguon: string; ngay: string; result: string }
 export async function getLichSuChuyenDe(hocSinhId: string, maChuyenDe: string, mon: string): Promise<LanLamChuyenDe[]> {
-  const K = khoCuaMon(mon)
-  const { data: dangs, error: eD } = await supabase.from(K.banDoTbl).select('ma_dang, ten_dang').eq('ma_chuyen_de', maChuyenDe).limit(LIMIT)
-  if (eD) throw eD
-  const rows = (dangs ?? []) as { ma_dang: string; ten_dang: string }[]
+  // Chuyên đề có thể thuộc nhánh khác của môn (vd Hình giải tích) — tra MỌI bảng bản đồ của môn theo registry.
+  const tbls = [...new Set([khoCuaMon(mon).banDoTbl, ...nhanhCuaMon(mon).map((n) => khoCuaMon(mon, n.ma).banDoTbl)])]
+  const rows: { ma_dang: string; ten_dang: string }[] = []
+  for (const tbl of tbls) {
+    const { data: dangs, error: eD } = await supabase.from(tbl).select('ma_dang, ten_dang').eq('ma_chuyen_de', maChuyenDe).limit(LIMIT)
+    if (eD) throw eD
+    rows.push(...((dangs ?? []) as { ma_dang: string; ten_dang: string }[]))
+  }
   if (!rows.length) return []
   const tenMap = new Map(rows.map((d) => [d.ma_dang, d.ten_dang]))
   const maDangSet = new Set(rows.map((d) => d.ma_dang))
