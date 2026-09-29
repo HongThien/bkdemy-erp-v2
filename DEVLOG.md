@@ -31588,7 +31588,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   app TA: cảnh báo "không bỏ tick dạng nào ⇒ KẾT THÚC" + sau hoàn tất báo "🎉 hết dạng yếu — KẾT THÚC" / "còn N dạng — OPS xếp buổi sau" ·
   app HS: không gọi retest khi hold. tsc sạch · check:style-hs ✔. Chưa soi trình duyệt (cần đăng nhập tài khoản thật).
 - Hệ quả cần Thùy biết: app TA mặc định tick HẾT dạng còn mở (luật 24/09) ⇒ TA bấm Hoàn tất không bỏ tick = case kết thúc ngay ca đó.
-=======
+
 ### 29/09 — KHTN du hành "Liên kết hoá học" bản thử 2: cảnh phim + nhiệm vụ quan sát (Thùy test bản 1, chốt lại nhịp)
 - Thùy chốt (sau khi bay thử bản 1): mỗi chặng = ① CẢNH PHIM có lời dẫn kể sự kiện (Na thừa 1, Cl thiếu 1 → lại gần → electron
   bay sang → Na⁺/Cl⁻ đều ở trạng thái hoàn hảo — "quy tắc bát tử" — → hút nhau âm dương), cộng hoá trị cũng có phim "góp chung để
