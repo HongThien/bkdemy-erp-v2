@@ -662,9 +662,15 @@ export default function TongKetTuan() {
   // ⭐ Trình chiếu = LỚP PHỦ KÍN CỬA SỔ do màn này tự dựng; toàn màn hình của trình duyệt chỉ là phần
   // cộng thêm. Bản đầu dựa hẳn vào requestFullscreen ⇒ nơi nào trình duyệt từ chối (khung nhúng, vài
   // máy tính bảng) thì bấm nút không thấy gì. Giờ bị từ chối vẫn chiếu được, chỉ còn thanh trình duyệt.
+  const vaoToanManLuc = useRef(0)
   useEffect(() => {
     // Người xem bấm Esc lúc đang toàn màn hình: trình duyệt tự thoát ⇒ mình cũng về màn thường.
-    const nghe = () => { if (!document.fullscreenElement) setChieu(false) }
+    // NHƯNG có nơi (khung nhúng) cho vào toàn màn hình rồi đẩy ra NGAY — đó không phải người xem muốn
+    // thoát. Phân biệt bằng thời gian: bị đẩy ra trong vòng 1 giây thì giữ nguyên lớp phủ, chiếu tiếp.
+    const nghe = () => {
+      if (document.fullscreenElement) { vaoToanManLuc.current = Date.now(); return }
+      if (Date.now() - vaoToanManLuc.current > 1000) setChieu(false)
+    }
     document.addEventListener('fullscreenchange', nghe)
     return () => document.removeEventListener('fullscreenchange', nghe)
   }, [])
