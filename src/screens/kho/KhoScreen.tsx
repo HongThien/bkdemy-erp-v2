@@ -1,11 +1,12 @@
 import { Fragment, useEffect, useState } from 'react'
-import { KHOI_OPTIONS, DEFAULT_KHOI, listDaiDeXuat } from '../../lib/kho/api'
+import { KHOI_OPTIONS, DEFAULT_KHOI, listDaiDeXuat, LO_GAN_MAU } from '../../lib/kho/api'
 import { useStore } from '../../store/useStore'
 import { useMonScope } from '../../hooks/useMonScope'
 import BanDo from './BanDo'
 import SearchCau from './SearchCau'
 import KhoRac from './KhoRac'
 import DeXuatPanel from './DeXuatPanel'
+import GanMauPanel from './GanMauPanel'
 import { daiBranch, hinhBranch, hinhGiaiTichBranch, khtnBranch } from './branches'
 import KhoHinhScreen from './hinh/KhoHinhScreen'
 import KhoHinhHocScreen from './hinh/KhoHinhHocScreen'
@@ -48,13 +49,16 @@ export default function KhoScreen() {
   const [soDeXuat, setSoDeXuat] = useState<number | null>(null)
   const [banDoVer, setBanDoVer] = useState(0) // nhận đề xuất ⇒ bản đồ có dạng mới ⇒ dựng lại cây khi đóng panel
   const coDeXuat = config.key === 'dai'
+  // Gán mẫu: lô đang mở của khối này (registry LO_GAN_MAU) — học thuật gán tay mẫu để có bộ đề chấm cho skill gán dạng.
+  const [ganMau, setGanMau] = useState(false)
+  const loGanMau = coDeXuat ? LO_GAN_MAU.find((l) => l.khoi === khoi) ?? null : null
   useEffect(() => {
     if (!coDeXuat) { setSoDeXuat(null); return }
     let song = true
     setSoDeXuat(null)
     listDaiDeXuat(khoi).then((r) => { if (song) setSoDeXuat(r.length) }).catch(() => { if (song) setSoDeXuat(null) })
     return () => { song = false }
-  }, [coDeXuat, khoi, deXuat])
+  }, [coDeXuat, khoi, deXuat, ganMau])
 
   // Scope④ THEO MÔN (dùng chung useMonScope — xem lib/mon.ts): admin + Ops thấy tất; người khác chỉ thấy
   // môn được phân (nhan_su_mon). Chưa gán → không thấy môn nào.
@@ -101,6 +105,12 @@ export default function KhoScreen() {
           <button onClick={() => setTimCau(true)}
             className="ml-auto flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-300 hover:text-indigo-700">
             🔍 Tìm câu
+          </button>
+        )}
+        {loGanMau && (
+          <button onClick={() => setGanMau(true)} title={`Gán tay dạng cho ${loGanMau.soMau} câu mẫu — ${loGanMau.ten}`}
+            className="flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-emerald-300 hover:text-emerald-700">
+            🎯 Gán mẫu
           </button>
         )}
         {coDeXuat && (
@@ -162,6 +172,7 @@ export default function KhoScreen() {
 
       {timCau && config.cauTbl && allowed.length > 0 && <SearchCau cauTbl={config.cauTbl} onClose={() => setTimCau(false)} />}
       {rac && config.cauTbl && allowed.length > 0 && <KhoRac cauTbl={config.cauTbl} onClose={() => setRac(false)} />}
+      {ganMau && loGanMau && allowed.length > 0 && <GanMauPanel lo={loGanMau} onClose={() => setGanMau(false)} onDoiBanDo={() => setBanDoVer((v) => v + 1)} />}
       {deXuat && coDeXuat && allowed.length > 0 && <DeXuatPanel khoi={khoi} onClose={() => setDeXuat(false)} onDoiBanDo={() => setBanDoVer((v) => v + 1)} />}
     </div>
   )

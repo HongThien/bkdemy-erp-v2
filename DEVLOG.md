@@ -32108,3 +32108,15 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Sai → sửa:** mũi tên nằm dưới bảng (z-index) nên không thấy khi cửa hàng mở ⇒ nâng lên; bước xây lò chỉ nút Cửa hàng ⇒ chỉ tiếp vào nút xây khi bảng mở.
 - **Kiểm:** test 74 → + luồng hướng dẫn trọn 11 bước, nhiệm vụ đổi ngày, nhận điểm/mốc, thành tích bậc I + thần tốc. Trên trình duyệt: chơi trọn hướng dẫn bằng click thật
   (Tiếp, Cửa hàng, nút xây 20 xu), chấm đỏ Nhiệm vụ 1 → nhận +3 điểm → tắt; con đường quà + thành tích hiển thị đúng. Đưa ván của Thùy về đầu (thấy hướng dẫn từ bước 1). Commit game 26a3155.
+
+### 29/09 tối — P1: màn GÁN MẪU cho lô đầu (Thùy: "t gán tay, nhưng vào đâu để gán?")
+- Hiện trạng trước đó: chỗ DUY NHẤT đổi được dạng từng câu là màn Duyệt lời giải (kèm duyệt đáp án/lời giải) — quá nặng để gán 60 câu mẫu.
+  t đã đề nghị "học thuật gán tay 60 câu" mà KHÔNG kiểm có chỗ gán hay chưa — lỗi của t, Thùy hỏi mới lộ.
+- Mig `202609292119_dai_gan_mau_lo.sql` (dry-run qua, CHƯA ÁP): `fn_dai_gan_mau_ds(chuyên đề, N)` = N câu đầu theo md5(ma_cau) trong chuyên đề
+  (mẫu cố định, suy động, không lưu danh sách; gán xong câu vẫn trong chuyên đề nên mẫu không xê dịch — đã kiểm) · `fn_dai_gan_mau_gan(câu, dạng)`
+  chỉ đổi dạng TRONG chuyên đề, chặn dạng chờ / câu đã duyệt / không quyền `bdkt` · `fn_dai_de_xuat_tao` người tạo đề xuất (nguon='nguoi').
+  Nhãn của người = chính `dang_chinh` (trigger ghi actor), không bảng nhãn riêng. "Không khớp dạng nào" = đề xuất `trao_doi` ⇒ hiện ở màn 💡 Đề xuất.
+- Mẫu 60 câu lô `k12-thuc-te-01` (chuyên đề T1120106): 37 TLN · 16 Đ/S · 5 TN · 2 tự luận · 14 câu có hình.
+- UI `GanMauPanel.tsx`: 1 câu/màn, cột phải 8 dạng kèm dấu hiệu nhận biết, phím 1–9 gán · ← → chuyển câu, tự nhảy câu chưa gán kế, dải số câu
+  xanh/vàng/xám, xem đáp án + lời giải theo yêu cầu, vá tại chỗ + cache module-level. Nút 🎯 Gán mẫu trên Bản đồ kiến thức (registry `LO_GAN_MAU`,
+  thêm lô = thêm 1 dòng). `DaiDang` thêm `mo_ta_ngan`. tsc sạch phần mình. Câu Đ/S: gán dạng Ý CHÍNH cả câu; dạng từng mệnh đề để màn Duyệt Đ/S.
