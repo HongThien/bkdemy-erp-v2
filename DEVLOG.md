@@ -31820,3 +31820,40 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   `scripts/check-troly-cong-cu.mjs --tuan [ngày]` (cổng + mở/mở lại/tính lại, JSON ra stdout).
 - **Màu trên dashboard:** 3 màu trạng thái chỉ nằm trên THANH + ô chú giải; chữ/số luôn màu mực (vàng cảnh báo tương phản 1,79:1,
   không làm chữ được). Độ dài đoạn thanh = `flex-grow` theo số đếm, màn hình không chia.
+
+## 2026-09-29 (19) — TRỢ LÝ · Tổng kết tuần vòng 2: THƯỜNG ĐẠT có lọc nhiễu + 3 mảng mới + dựng theo BẢNG + tự tính thứ Hai — mig 202609291251 ĐÃ ÁP
+
+- **CEO duyệt 6 đề xuất:** (1) "mỗi cái sẽ có 1 ngưỡng gọi là ngưỡng thường đạt — là trung bình toàn bộ các lần đã đo. Dưới thường đạt
+  quá nhiều là vấn đề" + "nhớ lọc nhiễu. những lần đo khác xa những lần khác là nhiễu" · (2) kết quả học tập OK · (3) bổ trợ đuổi có ·
+  (4) "học phí ko cần. Tuyển sinh có cần" · (5) xu hướng OK · (6) tự tính thứ Hai + thông báo OK. Thêm: "dashboard nên làm theo bảng.
+  Mỗi loại chỉ số nên là 1 bảng". Hỏi HTML → em đề xuất giữ trong ERP + nút xuất; CEO chốt **"cứ để thẳng trên ERP"** ⇒ KHÔNG làm xuất HTML.
+- **Thường đạt = biểu đồ kiểm soát Shewhart + hàng rào Tukey** (đứng trên vai người đi trước, R7):
+  nhiễu = ngoài [Q1 − 1,5·IQR ; Q3 + 1,5·IQR] · thường đạt = trung bình phần còn lại của MỌI tuần trước tuần đang xem ·
+  xấu hơn ≥1σ = "dưới thường đạt", ≥2σ = "vấn đề", tốt hơn ≥1σ = "trên thường đạt" · <4 lần đo = chưa đánh giá.
+  **Dùng σ thay cho một con số cứng** vì mỗi chỉ số dao động khác nhau (chuyên cần σ≈4, ET đúng chuẩn σ≈19). Hệ số ở `_troly_bc_gia_dinh()`.
+- **Phải GIỮ số từng tuần:** tính 15 tuần mất 4,1s (đo) — cộng mảng mới là ~15s, vượt trần 8s. ⇒ bảng `troly_tuan_so_luu` (mỗi tuần 1 dòng
+  JSON). Tuần chưa chín (chưa qua 14 ngày) tính lại mỗi ngày 1 lần khi có người mở, tối đa 3 tuần/lượt; tuần chín thì thôi.
+  Migration tự dựng 16 tuần từ 15/06 (6,5s).
+- **Danh mục chỉ số ở MỘT hàm** `_troly_tuan_danh_muc()` (44 chỉ số, 7 bảng): tên · đơn vị · chiều tốt · đường dẫn trong JSON · sàn độ lệch ·
+  `can_chin` · `neo`. Thêm chỉ số = thêm 1 dòng; thường đạt/xu hướng/đánh giá tự có kể cả cho tuần cũ. Khâu tra theo MÃ (`khau_ma`), không theo vị trí mảng.
+- **SAI rồi SỬA (bắt được nhờ nhìn số thật trước khi áp):**
+  - Tuần mà mảng CHƯA CHẠY trên hệ bị tính là "lần đo = 0": ca test đầu vào chỉ có từ 31/08 ⇒ thường đạt = 0,1 và mọi tuần có ca test thật
+    (9, 9) bị Tukey coi là NHIỄU; "ca tồn đọng" thành "vấn đề" giả. Đúng luật §1.5: chưa chạy = không có dòng, không phải đo ra 0.
+    Sửa: mỗi chỉ số có số `neo`; chỉ tính từ tuần đầu tiên neo > 0. Sau sửa: ca test thường đạt 6,3 (3 lần đo), không còn nhiễu giả.
+  - Bản đầu cắm `drop function fn_troly_tuan(date)` để thêm tham số — vi phạm Luật xoá (chưa hỏi). Bỏ: giữ nguyên chữ ký, chỉ đổi stable→volatile.
+  - Cờ nội bộ `troly.noi_bo` đặt ở cuối migration sống tới hết transaction ⇒ script kiểm báo "CỔNG HỞ". Sửa: hạ cờ ngay sau khi dùng
+    (cả trong migration lẫn trong `fn_troly_tuan_tu_dong`). Kiểm sau áp: không đăng nhập ⇒ `troly_duoc_dung()` = false.
+- **Chỉ số "chưa chốt":** bù đã xếp/đã học, ca test đã trả kết quả, điểm BTVN — số của tuần còn đổi sau khi tuần kết thúc ⇒ 7 ngày đầu KHÔNG
+  đem so với thường đạt (thường đạt dựng từ tuần đã chín, so sẽ luôn ra "vấn đề" giả).
+- **Kết quả học tập dùng lại nguồn sẵn có:** điểm TB từ `_troly_matrix`; số HS báo động lấy `so` của chính `_troly_bc_canh_bao` (0,3s) — không viết luật báo động thứ hai.
+- **Tự tính thứ Hai:** `fn_troly_tuan_tu_dong(secret, app)` + `api/troly-tuan.mjs` + cron `0 0 * * 1` (07:00 VN). Không có người đăng nhập ⇒
+  cổng nhận cờ `troly.noi_bo`, chỉ đặt được bằng SQL trong hàm có khoá bí mật (PostgREST chỉ đặt `request.*`). Danh sách 3 tài khoản tách ra
+  `hoi_dap_ds_tai_khoan()` để cổng và người nhận thông báo đọc CÙNG một chỗ. **CHƯA kiểm được đầu-cuối:** cần CEO khai `TROLY_PUSH_APP=pt`
+  trên Vercel project pt + deploy. Hiện 2 máy nhận (Thùy, Trang); **Lộc chưa đăng ký nhận tin ở app pt** ⇒ chưa nhận được.
+- **Màn hình:** bảng "Cần chú ý" đứng đầu (chỉ số dưới thường đạt) + 7 bảng cùng bộ cột (Tuần này · Tuần trước · Thường đạt · So với thường đạt ·
+  Xu hướng). Nút "Số từng tuần" đổi nét vẽ thành số; "Trình chiếu" = toàn màn hình, zoom 1,3.
+- **Số tuần 21–27/09:** vấn đề = HS nộp BTVN đạt chuẩn 67% (thường đạt 83,9) · 11 lớp nộp dưới ngưỡng (3,8) · 13 HS bị GV báo động (3,4).
+  Dưới thường đạt = điểm ET TB 78,2 (81,5) · bổ trợ đuổi đã học 38,9% (62,8) · mở case đuổi → xếp lịch 3,6 ngày (1,3).
+- **ĐIỀU CẦN CEO BIẾT (hệ quả của định nghĩa, chưa sửa):** khâu đang CẢI THIỆN theo thời gian (BTVN đúng chuẩn 0% → 36%) thì thường đạt tính
+  trên toàn lịch sử rất thấp (12%) ⇒ tuần nào cũng "trên thường đạt", và tuần tốt gần đây (38,5%) bị coi là nhiễu. Phương án: thường đạt
+  chỉ lấy N tuần gần nhất. Để ở danh sách bàn sau (SPEC §7.3).

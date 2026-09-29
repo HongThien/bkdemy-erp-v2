@@ -207,15 +207,44 @@ Tính năng thứ hai của trợ lý, đứng cạnh Báo cáo. Hai thứ trả
 - **Toàn cảnh thêm:** số buổi / lớp · chuyên cần · học sinh nộp BTVN đạt chuẩn · bổ trợ bù · **chênh lệch với tuần trước** cho mọi tỉ lệ.
 - Không realtime, cùng luật §6: lưu bản tính vào DB, "↻ Tính lại" thì ghi đè.
 
+### 7.1b THƯỜNG ĐẠT — ngưỡng của từng chỉ số (CEO chốt 29/09)
+
+- CEO: *"Mỗi cái sẽ có 1 ngưỡng gọi là ngưỡng thường đạt — là trung bình toàn bộ các lần đã đo. Dưới thường
+  đạt quá nhiều là vấn đề."* và *"nhớ lọc nhiễu. những lần đo khác xa những lần khác là nhiễu."*
+- **Một lần đo = số của một tuần.** Thường đạt của tuần đang xem tính trên MỌI tuần trước nó.
+- **Lọc nhiễu trước, lấy trung bình sau.** Lần đo bị coi là nhiễu thì không tính vào thường đạt, nhưng vẫn
+  hiện trên xu hướng (đánh dấu riêng) — không giấu.
+- **Tuần mà mảng chưa chạy trên hệ KHÔNG phải lần đo** (không phải "đo ra 0").
+- **Chỉ số còn đổi sau khi tuần kết thúc** (bù, trả kết quả test, điểm BTVN) thì 7 ngày đầu ghi "chưa chốt",
+  không đem so.
+- Bốn mức: **vấn đề** · **dưới thường đạt** · bình thường · trên thường đạt. Chỉ số không có chiều tốt/xấu
+  (số buổi, số case cần bổ trợ) thì không đánh giá.
+- Lý thuyết đứng sau: biểu đồ kiểm soát (Shewhart) + hàng rào Tukey.
+
+### 7.1c Mảng trong tổng kết & cách trình bày (CEO chốt 29/09)
+
+- Mảng: việc sau buổi · quy mô & chuyên cần · kết quả học tập · bổ trợ yếu · bổ trợ bù · bổ trợ đuổi ·
+  tuyển sinh. **Học phí KHÔNG đưa vào.**
+- **Dựng theo BẢNG, mỗi mảng một bảng**, cùng bộ cột: tuần này · tuần trước · thường đạt · so với thường đạt ·
+  xu hướng. Bảng đầu = "Cần chú ý" (chỉ số đang dưới thường đạt).
+- **Để thẳng trên ERP** (không xuất file HTML rời). Có chế độ trình chiếu toàn màn hình.
+- **Tự tính sáng thứ Hai** cho tuần vừa rồi + thông báo cho nhóm được dùng trợ lý.
+
 ### 7.2 Luật kỹ thuật
 
 - Luật phân loại việc có **MỘT nguồn**: `_troly_viec_buoi_goc`. Báo cáo và tổng kết tuần đều đọc từ đó —
   sửa luật thì sửa ở hàm gốc, hai nơi tự khớp.
-- Chênh lệch và số gộp tính ở DB, màn hình không trừ / không cộng.
+- Mọi phép tính (chênh lệch, số gộp, thường đạt, lọc nhiễu, đánh giá) ở DB; màn hình không trừ / không cộng.
+- **Danh mục chỉ số có MỘT nguồn**: `_troly_tuan_danh_muc()`. Thêm chỉ số = thêm một dòng ở đó.
+- Số từng tuần giữ ở `troly_tuan_so_luu` (dữ liệu suy ra, tính lại được). Hệ số ngưỡng ở `_troly_bc_gia_dinh()`.
+- Danh sách tài khoản được dùng trợ lý có MỘT nguồn: `hoi_dap_ds_tai_khoan()`.
 
 ### 7.3 Bàn sau (chưa chốt — danh sách, không phải quyết định)
 
+- **Các con số của thường đạt** (đang dùng tạm): nhiễu = ngoài 1,5 × IQR · dưới thường đạt = xấu hơn 1 độ lệch
+  chuẩn · vấn đề = 2 độ lệch chuẩn · tối thiểu 4 lần đo · chưa chốt = 7 ngày · xu hướng bày 8 tuần.
+- **Thường đạt lấy toàn bộ lịch sử hay N tuần gần nhất?** Khâu đang cải thiện (BTVN đúng chuẩn 0% → 36%) thì
+  thường đạt toàn lịch sử rất thấp ⇒ tuần nào cũng "trên thường đạt", tuần tốt gần đây bị coi là nhiễu.
 - "Chuyển lịch" bổ trợ: hệ chưa ghi vết đổi ngày/giờ ⇒ chưa đo được. Cần trigger ghi lịch sử nếu CEO muốn số thật.
-- Thêm mảng nào vào toàn cảnh: học phí · tuyển sinh · kết quả học tập · bổ trợ đuổi · việc phát triển.
-- Ngưỡng tô đỏ cho từng tỉ lệ (hiện chưa có ngưỡng, chỉ bày số + chiều tăng giảm).
-- Tự tính sẵn sáng thứ Hai và gửi thông báo.
+- Việc phát triển có đưa vào toàn cảnh không.
+- Thông báo thứ Hai gửi qua app nào; Lộc chưa đăng ký nhận tin ở app pt.
