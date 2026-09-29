@@ -32,6 +32,7 @@ const S_RANK = tin({ khoa: 'giai_thang:1', tang: 'S', nhom: 'hoc', kieu: 'giai_t
   khen: khen([['lua', 12], ['thich', 8], ['de_goat', 5]], [EM, HA], 7, bl(BINH, 'cau', 'Đỉnh nóc, kịch trần, bay phấp phới 🚀', 35), ['Lan'], 'lua') })
 const S_TRA_SUA = tin({ khoa: 'tra_sua:1', tang: 'S', nhom: 'mayman', kieu: 'tra_sua', at: truoc(300), ghim: true, lop: '7S2',
   nguoi: { an: true, ma: 'HS0412' }, chi_tiet: { game: 'mo_ruong' }, khen: khen([['co_4_la', 7], ['an_mung', 2]], [LINH], 2, bl(LINH, 'sticker', '🧋', 50)) })
+const A_ET = tin({ khoa: 'et:1', tang: 'A', nhom: 'hoc', kieu: 'et_cao', at: truoc(50), lop: '9A2', nguoi: BINH, la_ban: true, chi_tiet: { diem: 10, so_cau: 8, ngay: '2026-09-29' } })
 const A_HA = tin({ khoa: 'nhat_buoi:1', tang: 'A', nhom: 'hoc', kieu: 'nhat_buoi', nguoi: HA, la_ban: true, chi_tiet: { ngay: '2026-09-29' },
   khen: khen([['tram_diem', 3], ['thich', 2]], [KHANG], 1, bl(KHANG, 'cau', '10 điểm không có nhưng', 15)) })
 const A_DUC = tin({ khoa: 'nhat_buoi:2', tang: 'A', nhom: 'hoc', kieu: 'nhat_buoi', lop: '7S2', nguoi: DUC, chi_tiet: { ngay: '2026-09-29' } })
@@ -42,10 +43,10 @@ const A_DOI = tin({ khoa: 'ban_qua:1:2', tang: 'A', nhom: 'game', kieu: 'doi_tha
   khen: khen([['lua', 9], ['bat_tay', 4]], [TUAN, BINH], 3, bl(TUAN, 'cau', 'Carry cả team luôn', 25)) })
 const A_HH = tin({ khoa: 'huy_hieu:1', tang: 'A', nhom: 'hoc', kieu: 'huy_hieu', lop: '8A2', nguoi: MAI_ANH, chi_tiet: { key: 'athena', ten: 'Athena', sao: 3 } })
 const A_BINH_HH = tin({ khoa: 'huy_hieu:2', tang: 'A', nhom: 'hoc', kieu: 'huy_hieu', lop: '9A2', nguoi: BINH, la_ban: true, chi_tiet: { key: 'helios', ten: 'Helios', sao: 2 } })
-const B_TUAN = tin({ khoa: 'no_luc:tuan', tang: 'B', nhom: 'noluc', kieu: 'no_luc', at: truoc(40), nguoi: TUAN, la_ban: true, chi_tiet: { so_bai: 3, so_thu_thach: 1 },
+const B_TUAN = tin({ khoa: 'no_luc:tuan', tang: 'B', nhom: 'noluc', kieu: 'tu_luyen', at: truoc(40), nguoi: TUAN, la_ban: true, chi_tiet: { so_dung: 72 },
   khen: khen([['co_bap', 2]], [HA], 0, null) })
-const B_BINH = tin({ khoa: 'no_luc:binh', tang: 'B', nhom: 'noluc', kieu: 'no_luc', at: truoc(90), lop: '9A2', nguoi: BINH, la_ban: true, chi_tiet: { so_bai: 5, so_thu_thach: 0 } })
-const B_EM = tin({ khoa: 'no_luc:em', tang: 'B', nhom: 'noluc', kieu: 'no_luc', at: truoc(15), nguoi: EM, cua_toi: true, chi_tiet: { so_bai: 2, so_thu_thach: 1 },
+const B_BINH = tin({ khoa: 'no_luc:binh', tang: 'B', nhom: 'noluc', kieu: 'tu_luyen', at: truoc(90), lop: '9A2', nguoi: BINH, la_ban: true, chi_tiet: { so_dung: 112 } })
+const B_EM = tin({ khoa: 'no_luc:em', tang: 'B', nhom: 'noluc', kieu: 'tu_luyen', at: truoc(15), nguoi: EM, cua_toi: true, chi_tiet: { so_dung: 52 },
   khen: khen([['co_bap', 2]], [TUAN], 1, bl(TUAN, 'cau', 'Chăm thế này ai đỡ nổi 💪', 10)) })
 
 const TOI = { hien: 'ten' as const, so_ban: 5, loi_moi: 2 }
@@ -55,7 +56,7 @@ export const KENH_TG: KenhTG = { toi: TOI, tin: [S_RANK, S_TRA_SUA], gop: [
   { kieu: 'huy_hieu', so: 23, ds: [A_BINH_HH, A_HH] },
 ] }
 export const KENH_BAN: KenhTG = { toi: TOI, tin: [S_RANK, A_HA, A_BINH_HH, B_TUAN, B_BINH], gop: [] }
-export const KENH_LOP: KenhTG = { toi: TOI, tin: [S_RANK, A_HA, A_DOI, B_TUAN, B_EM], gop: [] }
+export const KENH_LOP: KenhTG = { toi: TOI, tin: [S_RANK, A_HA, A_ET, A_DOI, B_TUAN, B_EM], gop: [] }
 export const BAN_BE: BanBeTG = {
   ban: [KHANG, HA, BINH, TUAN, ng('Hoàng Vy', '8A2')],
   loi_moi: [{ id: 'm1', nguoi: ng('Phạm Quang Huy', '9A2'), ban_chung: 3 }, { id: 'm2', nguoi: ng('Ngô Khánh Linh', '10A1'), ban_chung: 1 }],

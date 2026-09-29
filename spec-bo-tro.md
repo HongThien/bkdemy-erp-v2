@@ -251,3 +251,13 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
 - **Buổi xong ⇒ case tiến**: TA tick dạng đã dạy khi hoàn tất; mọi dạng vừa dạy có câu retest; buổi đã đóng ca khóa ngày/giờ; chạm lại nút điểm danh = bỏ.
 - **Dạng vào case lúc mở** = dạng yếu (<0,5) · ≥3 lần đo · có đo trong 2 cửa sổ (engine `dien` + `fn_btyeu_dang_yeu_2_cua_so`).
 - **Retest trên app TA** chỉ hiện từ NGÀY làm (`fn_btyeu_viec_cua_toi`: ngay ≤ hôm nay); ERP hiện cả sắp tới. Thùy: không cần push riêng.
+
+## 13. Cập nhật 29/09 — bổ trợ yếu BẬT cho nhánh Hình (Hình học · Hình giải tích)
+
+- **Thùy chốt (a):** bật luôn; dạng Hình chưa có câu trắc nghiệm ⇒ app/phiếu báo "học với thầy cô trên giấy", TA dạy giấy. Luật MCQ §4 KHÔNG đổi.
+  Hiện trạng kho (29/09): Hình học cấp 2 (khối 7/8/8T/9) **0 MCQ** — chỉ khối 11 (HH00087) có 61 MCQ; HGT có MCQ/form.
+- **Phát hiện (client `danhgia.ts napBanDo`):** tra dạng MỌI nhánh của môn (`dangInfoCuaMon`, registry `NHANH_CUA_MON`). Bài Hình học không có
+  chuyên đề ⇒ đứng ngoài kênh ① (không gom các Bài thành 1 "chuyên đề"), vẫn vào kênh ② + đổ dạng vào case; kênh ③④ theo buổi vốn đã gồm Hình.
+- **DB (mig 202609291219):** mọi `fn_btyeu_*` chọn bảng câu/lý thuyết/bản đồ/cụm theo `_kho_nhanh_cua_dang(mon, ma_dang)` của TỪNG dạng (mẫu `fn_duoi_*`);
+  tên dạng qua `_kho_ten_dang`. Tạo `hinh_hoc_cum_tien_de` (rỗng, đúng shape) cho màn ca HS. Case chỉ có Đại: `fn_btyeu_ca_ta`/`ca_cua_toi`/`in_lay`
+  cho ra JSON y hệt bản cũ (đo trên 60 ca + 30 bài thật).

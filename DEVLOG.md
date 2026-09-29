@@ -31727,6 +31727,31 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Sửa trong lúc soi: nhãn tên bị viền đen che (công thức đặt máy quay mới D=3r+44) · góc rộng cắt nguyên tử ở màn gần vuông (tự lùi
   theo tỉ lệ màn) · tiêu đề "LIÊN KẾT ION" cảnh cuối bị che (lùi máy thêm) · nhãn 3 nguyên tử CO₂ đè nhau sau khi ghép (rút về ký hiệu).
 
+### 29/09 — Bổ trợ yếu BẬT cho nhánh Hình (Thùy chọn (a): bật luôn, dạng 0 MCQ thì TA dạy giấy) — mig 202609291219 VIẾT + CHẠY THỬ, CHỜ ÁP
+- **Client:** `danhgia.ts napBanDo` (engine phát hiện + đổ dạng vào case) tra MỌI nhánh qua `dangInfoCuaMon` (thêm `ma_chuyen_de` thật); Bài Hình
+  học (ma_chuyen_de null) đứng ngoài tầng chuyên đề/kênh ① — gom null thành 1 khoá là bịa 1 "chuyên đề" gộp mọi Bài; vẫn vào kênh ② + đổ dạng.
+  `getLichSuChuyenDe` tra mọi bảng bản đồ (chuyên đề HGT). `botro_yeu.ts`: tên dạng case (2 chỗ) mọi nhánh; gỡ lọc `nhanh == null` ở
+  `getDangYeuGoiY` (đặt sáng nay khi chưa bật).
+- **Mig 202609291219_btyeu_nhanh_theo_dang_hinh_hoc** (sinh từ bản đang chạy, assert từng chỗ vá): bảng câu/lý thuyết theo nhánh TỪNG dạng trong
+  vòng lặp của `_btyeu_bu_retest` · `fn_btyeu_dong_ca` (test + retest) · `fn_btyeu_in_sinh` · `fn_btyeu_luyen_sinh`; tên dạng qua `_kho_ten_dang`
+  ở `fn_btyeu_in_lay` · `fn_btyeu_dang_yeu_2_cua_so` · `fn_btyeu_de_xuat_dang_moi` (join lateral thay join 1 bảng — vừa lọc thuộc môn vừa ra tên);
+  `fn_btyeu_ca_ta` + `fn_btyeu_ca_cua_toi` dựng JSON dạng bằng VÒNG (mỗi dạng bảng bản đồ/cụm theo nhánh), giữ thứ tự `diem_luc_mo nulls last, created_at`.
+  Tạo `hinh_hoc_cum_tien_de` rỗng đúng shape dai_/hgt_ (FK cụm, check, RLS member_all) — màn ca HS dựng tên bảng bằng replace(cum_bai→cum_tien_de).
+  `fn_btyeu_lich_su_hs` khai báo bảng bản đồ nhưng không dùng ⇒ không đụng. `_btyeu_chon_cau` (luật MCQ) không đổi.
+- **Chạy thử (1 transaction, ROLLBACK), so TRƯỚC/SAU trên dữ liệu thật:** `fn_btyeu_ca_ta` 60/60 ca giống hệt · `fn_btyeu_in_lay` 30/30 giống hệt ·
+  `fn_btyeu_ca_cua_toi` (đóng vai HS, dời ca về hôm nay) giống hệt · `dang_yeu_2_cua_so` 9/40 em THÊM dạng HGT (T309…)/HH00087, không bớt ·
+  đề xuất dạng mới thêm 6 dạng Hình. Kịch bản gắn HH00087 + HH00061 vào 1 ca: `in_sinh` ra 3 câu MCQ HH00087 (hinh_hoc_cau_hoi, có lý thuyết),
+  HH00061 vào `dang_khong_co_cau` (0 MCQ — đúng luật); ca_ta/ca_cua_toi ra tên Bài + 8 cụm HH00087 + số câu kho.
+- **Lưu ý phạm vi:** bật theo registry nên Hình giải tích cũng vào bổ trợ yếu (đối xứng §1.6) — trước đó HGT cũng bị loại im lặng.
+- tsc + vite build sạch. CHỜ ÁP (quyền ghi DB production): `node <worktree>/scripts/migrate.mjs --only 202609291219_btyeu_nhanh_theo_dang_hinh_hoc.sql`.
+  Code client để trên nhánh worktree, merge main SAU khi áp (client đổ dạng Hình vào case mà DB cũ chọn câu bảng Đại ⇒ đừng lệch pha).
+
+### 29/09 — Mig 202609291219 ĐÃ ÁP (Thùy chạy `--only`, sổ 12:31) → merge main
+- Soi DB sống: 6 hàm chọn bảng theo nhánh dạng + 3 hàm tên qua `_kho_ten_dang` đúng bản mới · `hinh_hoc_cum_tien_de` có 2 policy (member_all +
+  claude_ro_select do migrate.mjs tự thêm) · ACL hàm giữ nguyên. Gọi thật (phiên chỉ-đọc, vai nhân sự): `fn_btyeu_dang_yeu_2_cua_so` em khối 11
+  ra HH00087 "Đường thẳng và mặt phẳng trong không gian" (0,40 · n=44) xen dạng Đại · `fn_btyeu_ca_ta` 3 ca gần nhất chạy bình thường.
+- Client (danhgia.ts/botro_yeu.ts/mastery.ts) merge main cùng lúc — cần Thùy bấm deploy mới lên prod.
+
 ### 29/09 — KHTN du hành "Liên kết hoá học" bản thử 4: không lộ đáp án trước khi HS trả lời (Thùy)
 - Thùy: "không hiện đáp án trước khi học sinh trả lời". Soát ra 4 chỗ lộ: (1) trạm luyện tập hiện sẵn vòng "chỗ trống" trên Cl/O
   (nhìn là biết thiếu 1/thiếu 2) + nhãn/lời mở đầu ghi sẵn "kim loại/phi kim"; (2) chú thích điểm sáng ở trạm học nói thẳng kết luận
@@ -31738,6 +31763,30 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   (nhãn Na⁺ trên cảnh lộ luôn dấu +) đổi thành "Na còn bao nhiêu electron và mang điện gì?" — phải cộng lớp 2, 8 mới ra.
   Phim lời dẫn vẫn DẠY nội dung (đó là bài giảng); câu hỏi kiểm tra sau.
 - Thêm `<!doctype html>` đầu file: phục vụ trực tiếp trên web chạy chế độ chuẩn (trước đó chế độ quirks); bản artifact bỏ qua dòng này.
+### 29/09 (17) — Thế giới BK: tin phải là THÀNH TÍCH có số + tin chất lượng lên đầu + lời dẫn
+- Thùy: "Xong 1 bài toán đâu thể là tin tức — ít nhất ET 9, 10 điểm, thông tin tích cực" · "người ta chỉ lướt 1–2 trang đầu ⇒ phải tin chất lượng".
+- Đo 28 ngày: ET 1.622 lượt, 663 lượt 10đ (phần lớn ET 1–3 câu) · ET ≥5 câu & 10đ = 140 (~5/ngày) · thu_thach_luot 0 lượt ·
+  btvn_ket_qua.ti_le_dung chưa từng ghi · tự luyện câu đúng/ngày: trung vị 12, p90 59.
+- Mig 202609291226_the_gioi_tin_chat_luong (áp --only, schema.md): `_et_diem_buoi(tu, den)` = NGUỒN CÔNG THỨC DUY NHẤT điểm ET/buổi (tách từ
+  nhiệm vụ T2; invoker giữ RLS như cũ) · fn_nhiem_vu_hoan_thanh tạo lại TỪ pg_get_functiondef đang chạy, chỉ thay khúc T2 — so khúc cũ vs hàm
+  mới tháng 9: Toán 907/907 · KHTN 73/73 dòng giống hệt (lần so đầu lệch do câu so của t thiếu join lop — không phải hàm sai) ·
+  _the_gioi_tin: BỎ no_luc "xong N bài"; THÊM et_cao (≥5 câu; 10đ = A, 9–9,5đ = B) + tu_luyen (≥50 câu đúng/ngày/môn, B) ·
+  fn_the_gioi_kenh xếp S → A → B rồi mới theo giờ. 7 ngày thử: tu_luyen 28 · et_cao B 16 / A 11 · nhat_buoi 5 · game 3.
+- App: moTaTin et_cao "đạt ET 10 điểm (8 câu)" · tu_luyen "luyện đúng 74 câu trong ngày" · gộp "Hôm nay N bạn đạt ET 10 điểm" · ICON_TIN.
+  Thẻ Thế giới ở Home có lời dẫn cố định "Xem học sinh BK đang khoe gì nào!"; chữ dưới ô "Xem HS BK đang khoe gì".
+- Thùy nêu hướng MỚI (chưa build, chờ chốt logic): "Đăng bài khoe" = tính năng chính — HS làm xong việc tốt ⇒ hiện nút "Đăng bài khoe BK nào",
+  bấm mới lên kênh Thế giới; tin hệ thống tự đăng chỉ còn tin S giật gân · "làm sao để lên kênh Thế giới cũng ghê gớm".
+
+### 29/09 (18) — Hệ thống thôi tự đăng tin B (Thùy: đa số tin phải là HS khoe; tự sinh chỉ S, chí ít A)
+- Mig 202609291233_the_gioi_bo_tin_b: fn_the_gioi_kenh (lấy nguyên từ DB) thêm t.tang <> 'B'. Tin B vẫn SUY ở _the_gioi_tin ⇒ làm kho
+  'thành tích được quyền khoe' cho Đăng bài khoe. Thử HS Vũ: tg 0 tin + 1 thẻ gộp · lop 0 · ban 0 — kênh sống hay chết là nhờ Đăng bài khoe.
+
+### 29/09 — KHTN lên web: Vercel báo 404 ở link gốc
+- Thùy tạo project Vercel (Root Directory `khtn-site`) → mở link gốc báo 404 NOT_FOUND: thư mục chưa có `index.html`, bài học chỉ ở
+  `/lien-ket-hoa-hoc.html`. Thêm `khtn-site/index.html` (mục lục "Du hành KHTN", hiện 1 bài) + `khtn-site/vercel.json` tắt git
+  auto-deploy (repo ERP push liên tục, để bật thì mỗi push = 1 build, dính trần 100 build/ngày) ⇒ cập nhật web = Thùy bấm Redeploy/
+  Create Deployment như các project khác.
+
 
 ## 2026-09-29 (18) — TRỢ LÝ: thêm TỔNG KẾT TUẦN (dashboard toàn cảnh) — mig 202609291215 + 202609291225 ĐÃ ÁP
 

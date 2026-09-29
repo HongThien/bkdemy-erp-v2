@@ -11,8 +11,7 @@
 // ⭐ Thái độ THUẦN không qua đây (PLAN §0 mục 10) — chỉ `loai='kien_thuc'` mở case. Caller (UI)
 //   chịu trách nhiệm không gọi hàm này cho case thái độ.
 import { supabase } from './supabase'
-import { khoCuaMon } from './tailieu'
-import { getMasteryHS } from './mastery'
+import { getMasteryHS, dangInfoCuaMon } from './mastery'
 import { homNayVN, congNgay } from './tuan'
 import { RESULT_VALUE } from '../gami/mastery.js'
 import { fetchAllRows } from './pgrest' // phân trang THẬT — PostgREST cap 1000 dòng/query, xem pgrest.ts
@@ -130,11 +129,8 @@ export async function getDangCuaCase(boTroYeuId: string, mon: string): Promise<D
   if (error) throw error
   const rows = (data ?? []) as any[]
   if (!rows.length) return []
-  const K = khoCuaMon(mon)
-  const { data: banDo, error: eBanDo } = await supabase.from(K.banDoTbl)
-    .select('ma_dang, ten_dang, ten_chuyen_de').in('ma_dang', rows.map((r) => r.ma_dang)).limit(LIMIT)
-  if (eBanDo) throw eBanDo
-  const ten = new Map((banDo ?? []).map((d: any) => [d.ma_dang, d]))
+  // Bản đồ MỌI nhánh của môn (Đại · Hình giải tích · Hình học) — bổ trợ yếu bật cho Hình 29/09.
+  const ten = await dangInfoCuaMon(mon, rows.map((r) => r.ma_dang))
   return rows.map((r) => ({
     id: r.id, ma_dang: r.ma_dang,
     ten_dang: ten.get(r.ma_dang)?.ten_dang ?? r.ma_dang, // dạng đã xoá khỏi bản đồ → hiện mã, không mất dòng
@@ -153,10 +149,7 @@ export type DangGoiY = {
 }
 export async function getDangYeuGoiY(hocSinhId: string, mon: string): Promise<DangGoiY[]> {
   const all = await getMasteryHS(hocSinhId, mon, { includeBTVN: true })
-  return all
-    // Chỉ nhánh GỐC của môn: getMasteryHS trả mọi nhánh từ 29/09, nhưng bổ trợ yếu CHƯA bật nhánh Hình (chọn câu
-    // MCQ qua _kho_cau_tbl chưa biết hinh_hoc — HANDOFF "chưa bật nhánh này") ⇒ giữ đúng phạm vi cũ.
-    .filter((d) => d.nhanh == null)
+  return all // mọi nhánh của môn — bổ trợ yếu bật cho Hình học + Hình giải tích (Thùy 29/09)
     .filter((d) => d.mastery && d.mastery.muc !== 'dat') // lọc theo NHÃN DB đã tính (fn_mastery_cells), không tính lại
     .map((d) => ({
       ma_dang: d.ma_dang, ten_dang: d.ten_dang, ten_chuyen_de: d.ten_chuyen_de,
@@ -487,9 +480,7 @@ export async function getDanhGiaCase(boTroYeuId: string, hocSinhId: string, mon:
   const grades = await fetchAllRows<any>((from, to) => supabase.from('gami_grades')
     .select('result, graded_at, prob:problem_id(ma_dang, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId)
     .order('graded_at', { ascending: true }).order('id', { ascending: true }).range(from, to))
-  const K = khoCuaMon(mon)
-  const { data: banDo } = await supabase.from(K.banDoTbl).select('ma_dang, ten_dang').in('ma_dang', maDangs).limit(LIMIT)
-  const ten = new Map((banDo ?? []).map((d: any) => [d.ma_dang, d.ten_dang]))
+  const ten = new Map([...(await dangInfoCuaMon(mon, maDangs))].map(([ma, d]) => [ma, d.ten_dang])) // mọi nhánh của môn
   const avg = (arr: number[]) => arr.length ? arr.reduce((s, v) => s + v, 0) / arr.length : null
 
   return rows.map((r) => {

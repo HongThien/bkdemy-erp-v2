@@ -22,6 +22,7 @@ const LIMIT = 10000
 // đứng trước trong registry thắng.
 export type DangInfo = {
   ten_dang: string
+  ma_chuyen_de: string | null // THẬT — Bài Hình học = null (không có tầng chuyên đề; đừng gom các Bài thành 1 "chuyên đề")
   ten_chuyen_de: string    // Bài Hình học không có chuyên đề ⇒ nhãn nhánh ("Hình học") để nhóm/hiển thị được
   muc_do: number | null    // độ khó THẬT (null = chưa gán) — chỉ để hiển thị
   mucDoBC: number | null   // độ khó dùng để CHIA cơ bản/nâng cao (muc_do ?? mucDoThieu của nhánh)
@@ -38,12 +39,13 @@ export async function dangInfoCuaMon(mon: string, maList: string[]): Promise<Map
     const tbl = khoCuaMon(mon, n.ma).banDoTbl
     if (daTra.has(tbl)) continue
     daTra.add(tbl)
-    const { data, error } = await supabase.from(tbl).select('ma_dang, ten_dang, ten_chuyen_de, muc_do').in('ma_dang', maList).limit(LIMIT)
+    const { data, error } = await supabase.from(tbl).select('ma_dang, ten_dang, ma_chuyen_de, ten_chuyen_de, muc_do').in('ma_dang', maList).limit(LIMIT)
     if (error) throw error
-    for (const r of (data ?? []) as { ma_dang: string; ten_dang: string; ten_chuyen_de: string | null; muc_do: number | null }[]) {
+    for (const r of (data ?? []) as { ma_dang: string; ten_dang: string; ma_chuyen_de: string | null; ten_chuyen_de: string | null; muc_do: number | null }[]) {
       if (out.has(r.ma_dang)) continue
       out.set(r.ma_dang, {
         ten_dang: r.ten_dang,
+        ma_chuyen_de: r.ma_chuyen_de || null,
         ten_chuyen_de: r.ten_chuyen_de || tenNhanh(mon, n.ma) || '',
         muc_do: r.muc_do ?? null,
         mucDoBC: r.muc_do ?? n.mucDoThieu ?? null,

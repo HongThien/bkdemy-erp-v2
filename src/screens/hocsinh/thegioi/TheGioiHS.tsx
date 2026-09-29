@@ -52,7 +52,8 @@ export function moTaTin(t: TinTG): ReactNode {
     case 'tra_sua': return <>trúng <b>trà sữa 🧋</b> ở {TEN_GAME[String(c.game)] ?? 'game buổi'}</>
     case 'huy_hieu': return <>đạt huy hiệu <b>{c.ten ?? c.key} ★{c.sao}</b> · {t.mon}</>
     case 'giai_thang': return <>nhận giải <b>{TEN_GIAI[String(c.loai_giai)] ?? 'tháng'} tháng {Number(String(c.thang).slice(5, 7))}</b> · {t.mon}</>
-    case 'no_luc': return <>xong <b>{c.so_bai} bài</b>{Number(c.so_thu_thach) > 0 ? <> · vượt <b>{c.so_thu_thach} Thử thách</b></> : null} · {t.mon}</>
+    case 'et_cao': return <>đạt <b>ET {String(c.diem).replace('.', ',')} điểm</b> ({c.so_cau} câu) · {t.mon} {ddmm(c.ngay)}</>
+    case 'tu_luyen': return <>luyện đúng <b>{c.so_dung} câu</b> trong ngày · {t.mon}</>
     default: return <>{t.kieu}</>
   }
 }
@@ -68,6 +69,7 @@ const TIEU_DE_GOP: Record<string, (so: number) => ReactNode> = {
   game_nhat: (so) => <>Hôm nay <b>{so} bạn</b> Nhất game buổi</>,
   doi_thang: (so) => <>Hôm nay <b>{so} đội</b> thắng game buổi</>,
   huy_hieu: (so) => <>Tuần này <b>{so} bạn</b> nhận huy hiệu</>,
+  et_cao: (so) => <>Hôm nay <b>{so} bạn</b> đạt ET 10 điểm</>,
 }
 
 function DauTang({ tang }: { tang: TinTG['tang'] }) {

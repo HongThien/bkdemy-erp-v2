@@ -230,13 +230,14 @@ function TheTheGioi({ p, skin, to }: { p: HomeProps; skin: Skin; to?: boolean })
   if (tt && tt.so > 0) dong.push(<>🔥 <b>{tt.nguoi ? <TenLop n={tt.nguoi} rutGon /> : 'Bạn bè'}</b>{tt.so_nguoi > 1 ? ` và ${tt.so_nguoi - 1} bạn` : ''} vừa thả tim, bình luận tin của em</>)
   if (g && g.loi_moi > 0) dong.push(<>💌 <b>{g.loi_moi} lời mời</b> kết bạn đang chờ em</>)
   for (const t of g?.tin ?? []) dong.push(<><b>{t.nguoi ? <TenLop n={t.nguoi} rutGon /> : `Đội ${String(t.chi_tiet.doi ?? '')}`}</b> {moTaTin(t)}</>)
-  if (dong.length === 0) dong.push(<>Xem bạn bè BK đang khoe gì hôm nay</>)
+  // lời dẫn cố định dưới tiêu đề (Thùy 29/09) — thông báo nối sau
   const so = (tt?.so ?? 0) + (g?.loi_moi ?? 0)
   return (
     <button onClick={p.onTheGioi} className={`relative flex w-full items-center gap-3 text-left active:scale-[0.99] ${to ? 'min-h-[92px] px-5 py-3.5' : 'px-3.5 py-3'}`} style={THE}>
       {anh ? <img src={anh} alt="" className={`${to ? 'h-14 w-14' : 'h-12 w-12'} shrink-0 object-contain`} /> : <span className="text-[30px] leading-none" aria-hidden>🌏</span>}
       <span className="min-w-0 flex-1">
         <span className={`block font-bold ${to ? 'text-[19px]' : 'text-[16px]'}`} style={HEAD}>Thế giới BK</span>
+        <span className="block truncate text-[12px] italic leading-snug" style={{ color: 'var(--sk-acc)' }}>Xem học sinh BK đang khoe gì nào!</span>
         {dong.slice(0, to ? 3 : 2).map((d, i) => <span key={i} className="block truncate text-[12.5px] leading-snug" style={{ color: i === 0 && so > 0 ? 'var(--sk-ink)' : 'var(--sk-muted)' }}>{d}</span>)}
       </span>
       {so > 0 && <Badge n={so} />}
