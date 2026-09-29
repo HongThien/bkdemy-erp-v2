@@ -31672,3 +31672,28 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   nhiệm vụ, thành tựu) · `hs_dang_evals` (app HS) chỉ join dai/hgt ⇒ Hình học không có tên dạng · Đánh giá GV (danhgia.ts) đọc banDoTbl
   theo ma_chuyen_de. Phát hiện kèm: ~1.550 ô chấm Toán (07–09/2026) mang mã Đại CŨ không còn trong dai_ban_do (T107010202 611 ô,
   T106020205, T111010103…) ⇒ cũng rơi khỏi báo cáo — việc riêng.
+
+### 29/09 — Bật nhánh Hình học ở tầng DB dùng chung (Thùy: "fix đi") — mig 202609291136 VIẾT + CHẠY THỬ, CHƯA ÁP (worktree hinh-hoc-nhanh-db)
+- **Lỗi cùng họ ở DB:** `_kho_nhanh_cua_dang` + `_kho_ban_do_tbl/_cau_tbl/_lt_tbl/_form_tn_tbl/_form_dien_tbl` CHỈ biết 'hinh_gt' ⇒ Bài
+  Hình học (HH…) rơi về bảng Đại. Hệ quả: tên dạng trống (bổ trợ `_kho_ten_dang`, Trợ lý `_troly_ten_dang`, app HS `hs_dang_evals`) ·
+  nhiệm vụ/thành tựu không đếm dạng Hình · tự luyện/thử thách (`tu_luyen_sinh`, 1 bảng/lượt) rút TRÚNG dạng Hình/HGT (client
+  `chonDangTuLuyen` rút từ hs_dang_evals mọi nhánh) nhưng tìm câu trong dai_cau_hoi ⇒ bỏ qua · `tu_luyen_chu_de_sinh`/`htd_ly_thuyet` đoán
+  nhánh bằng tiền tố 'GT%' (HGT thật mã 'T3…' ⇒ cũng trượt).
+- **Lỗi schema phát hiện kèm:** `hinh_hoc_bai_ly_thuyet` có `ma_bai`, KHÔNG có `ma_dang` ⇒ `_kho_snapshot_cau`, `hs_sotay_*` và
+  `src/lib/kho/api.ts:1344` (getDangLyThuyet `.eq('ma_dang')`) nổ "column does not exist" khi gặp Hình học.
+- **Mig 202609291136_hinh_hoc_nhanh_kho_dispatch** (sinh bằng script từ `pg_get_functiondef` bản đang chạy, mỗi chỗ vá assert đúng số lần):
+  alias `ma_dang GENERATED (ma_bai)` cho lý thuyết Bài · 5 hàm dispatch + `_kho_nhanh_cua_dang` + `_kho_muc_do_dang` biết hinh_hoc · `_kho_ten_dang`
+  tra theo nhánh CỦA dạng (sửa luôn HGT) · `_troly_ten_dang` + hinh_hoc · nhiệm vụ/thành tựu union 3 bảng · tu_luyen_chu_de_sinh ×3 + htd_ly_thuyet
+  dò nhánh bằng `_kho_nhanh_cua_dang` (giữ GT% dự phòng) · `tu_luyen_sinh` chọn bảng câu theo nhánh TỪNG dạng khi p_nhanh null · `hs_dang_evals`
+  join hinh_hoc_bai (nhãn chuyên đề "Hình học"). Khối tự kiểm cuối file nhắm thẳng các lỗi trên. Đại/KHTN không đổi (nhánh vẫn null).
+- **Chạy thử (thu-migration, ROLLBACK):** file trót lọt 319ms + tự kiểm qua. Đóng vai HS bằng `request.jwt.claims`: em 8B1 ⇒ hs_dang_evals ra
+  HH00061 "Hình bình hành"/HH00062 "Hình chữ nhật" nhãn "Hình học" · em 11B1 ⇒ tu_luyen_sinh 3 câu MCQ HH00087 (hinh_hoc_cau_hoi, có lý thuyết)
+  + 1 câu Đại. `_kho_snapshot_cau` với bảng Hình học chụp được câu + lý thuyết qua alias.
+- **CHƯA ÁP:** `migrate.mjs --only` bị bộ phân loại quyền chặn (ghi DB production) ⇒ chờ Thùy cho phép / tự chạy. Bản hàm TRƯỚC khi áp đã
+  lưu ngoài repo (scratchpad phiên) để lùi. Sau khi áp: `npm run schema`, commit schema.md.
+- **Chưa làm — cần Thùy chốt:** bổ trợ YẾU cho Hình học. Hình học cấp 2 (khối 7/8/8T/9: 33 Bài, 308 câu) có **0 câu MCQ** (toàn tự luận, vài
+  TLN); chỉ khối 11 có 61 MCQ. Luật "bài bổ trợ trên app CHỈ MCQ" ⇒ bật phát hiện + case cho Hình thì case mở được nhưng app/phiếu in trống
+  ("em học trên giấy"). Các fn_btyeu_* chọn câu theo 1 bảng/ca (`_kho_cau_tbl(b.mon)`) ⇒ muốn bật phải sửa per-dạng ~10 hàm + engine phát hiện
+  client (danhgia.ts napBanDo, kênh ① theo chuyên đề — Bài không có chuyên đề).
+- Đánh giá GV: chuông theo dạng tài liệu (loadDangTaiLieuBuoi → getDangTen registry) đã ra tên Bài Hình học từ 714b161; đánh giá per-dạng
+  (buoi_danh_gia_dang, dạng lấy từ ô ingame) là luồng cũ, không có gì riêng hỏng cho Hình.
