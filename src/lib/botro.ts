@@ -272,16 +272,28 @@ export async function goiYBuoiBu(buoiMeId: string): Promise<{ gv_id: string | nu
   return { gv_id, ta_id, gio: ((b as any)?.gio_bat_dau ?? null) as string | null, phong: ((b as any)?.phong ?? null) as string | null }
 }
 
-// Seed ET buổi bù = ET buổi MẸ của TỪNG HS (per-HS, gắn hoc_sinh_id). Idempotent (chỉ seed khi chưa có problem ET).
+// Seed ET buổi bù = ET buổi MẸ của TỪNG HS (per-HS, gắn hoc_sinh_id + ma_cau). Idempotent THEO EM: chỉ seed em CHƯA có ô ET nào.
+// ⚠ BUG THẬT 28/09 (Thùy: "Tuệ Anh, Tuệ Nhi cùng bù 6A1 mà Tuệ Anh không hiện Đ/C/S"): bản cũ idempotent theo BUỔI
+// (`if (cur.length) return`) ⇒ em được thêm vào buổi bù CÓ SẴN sau khi màn đã mở (đã seed em trước) KHÔNG BAO GIỜ có ô ET —
+// im lặng, chỉ hiện "Buổi mẹ chưa có ET". Đo 29/09: 11 lượt em dính từ 06/07. Cùng họ bug lưới ET 07-21 (gami.ts): seed 1 lần theo khoá SAI CẤP.
+// ET đã xác nhận (et_dong_at) ⇒ không đụng cấu trúc (như lưới ET buổi thường) — muốn chấm thêm thì mở lại ET.
 export async function ensureBuoiBuETProblems(makeupId: string): Promise<void> {
-  const cur = await listProblems(makeupId, 'et')
-  if (cur.length) return
-  const { data: ros } = await supabase.from('buoi_hoc_hs').select('hoc_sinh_id, bu_cho_buoi_id').eq('buoi_hoc_id', makeupId).not('bu_cho_buoi_id', 'is', null).limit(LIMIT)
-  let no = 0
+  const [cur, { data: b }, { data: ros }] = await Promise.all([
+    listProblems(makeupId, 'et'),
+    supabase.from('buoi_hoc').select('et_dong_at').eq('id', makeupId).single(),
+    supabase.from('buoi_hoc_hs').select('hoc_sinh_id, bu_cho_buoi_id').eq('buoi_hoc_id', makeupId).not('bu_cho_buoi_id', 'is', null).order('hoc_sinh_id').limit(LIMIT),
+  ])
+  if ((b as any)?.et_dong_at) return
+  const daCo = new Set(cur.map((p) => p.hoc_sinh_id).filter(Boolean))
+  const canSeed = ((ros ?? []) as { hoc_sinh_id: string; bu_cho_buoi_id: string }[]).filter((r) => !daCo.has(r.hoc_sinh_id))
+  if (!canSeed.length) return
+  // problem_no chỉ là THỨ TỰ hiển thị (danh tính ô = hoc_sinh_id + ma_cau) — nối tiếp sau ô đã có. 2 máy mở cùng lúc tính ra cùng số
+  // (roster sắp theo hoc_sinh_id) ⇒ upsert ignoreDuplicates chặn trùng như bản cũ.
+  let no = Math.max(0, ...cur.map((p) => p.problem_no))
   const rows: any[] = []
-  for (const r of ros ?? []) {
-    const { caus } = await loadETForBuoi((r as any).bu_cho_buoi_id) // ET buổi mẹ
-    for (const c of caus) { no++; rows.push({ buoi_hoc_id: makeupId, phase: 'et', problem_no: no, ma_dang: (c as any).dang_chinh ?? null, hoc_sinh_id: (r as any).hoc_sinh_id }) }
+  for (const r of canSeed) {
+    const { caus } = await loadETForBuoi(r.bu_cho_buoi_id) // ET buổi mẹ
+    for (const c of caus) { no++; rows.push({ buoi_hoc_id: makeupId, phase: 'et', problem_no: no, ma_cau: c.ma_cau ?? null, ma_dang: c.dang_chinh ?? null, hoc_sinh_id: r.hoc_sinh_id }) }
   }
   if (rows.length) { const { error } = await supabase.from('gami_session_problems').upsert(rows, { onConflict: 'buoi_hoc_id,phase,problem_no', ignoreDuplicates: true }); if (error) throw error }
 }

@@ -31820,3 +31820,15 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   `scripts/check-troly-cong-cu.mjs --tuan [ngày]` (cổng + mở/mở lại/tính lại, JSON ra stdout).
 - **Màu trên dashboard:** 3 màu trạng thái chỉ nằm trên THANH + ô chú giải; chữ/số luôn màu mực (vàng cảnh báo tương phản 1,79:1,
   không làm chữ được). Độ dài đoạn thanh = `flex-grow` theo số đếm, màn hình không chia.
+
+### 29/09 — Buổi bù: em thêm vào buổi bù CÓ SẴN không có ô chấm ET (Thùy: Tuệ Anh / Tuệ Nhi bù 6A1 28/09)
+- Triệu chứng: 2 em cùng bù 6A1 24/09 trong buổi bù 28/09 — Tuệ Nhi có B1–B3 Đ/C/S, Tuệ Anh "Buổi mẹ chưa có ET" dù CÙNG buổi mẹ (ET 3 câu).
+- Gốc: `ensureBuoiBuETProblems` (botro.ts) idempotent theo BUỔI (`if (cur.length) return`). Tuệ Nhi xếp 27/09 10:51 ⇒ mở màn seed 3 ô (10:53);
+  Tuệ Anh thêm vào buổi đó 19:40 ⇒ buổi đã có ô ⇒ return ⇒ không bao giờ có ô. Không có trigger DB nào chép (đã soát pg_trigger). Cùng họ bug
+  lưới ET 07-21 (gami.ts): seed 1 lần theo khoá SAI CẤP — lần này khoá phải là (buổi × EM).
+- Đo toàn hệ: 11 lượt em dính (buổi đã có ô em khác, em 0 ô) từ 06/07; 10 lượt đã xác nhận ET (9 có mặt ⇒ mất điểm ET buổi bù, chỉ chấm lại được
+  nếu mở lại ET + còn bài giấy) — KHÔNG vá tự động. Lượt còn mở duy nhất = Tuệ Anh.
+- Sửa: client seed THEO EM (em nào chưa có ô mới seed, problem_no nối tiếp, kèm ma_cau), ET đã xác nhận thì không đụng cấu trúc ·
+  mig 202609291250_bu_seed_et_em_them_sau: vá buổi bù chưa xác nhận ET — chép lưới ET của chính buổi mẹ (ô không ẩn, thứ tự, ma_cau/ma_dang);
+  nhân chứng thứ hai: 3 ô mẹ khớp thứ tự dạng với 3 ô đã seed cho Tuệ Nhi. Đo sau: đúng 1 em (37→36). Tuệ Anh có B1–B3 ngay, không chờ deploy.
+- Nợ §2.0 còn lại: việc seed vẫn ở client (lookup ET qua tai_lieu lớp+ngày) — nên chuyển thành hàm/trigger DB khi trả nợ AUDIT-client-tinh-toan.

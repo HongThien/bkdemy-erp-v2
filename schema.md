@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-296 bảng · 19 view · 0 enum · 100 trigger · 668 function
+297 bảng · 19 view · 0 enum · 101 trigger · 672 function
 
 ## _app_secrets
 
@@ -2617,7 +2617,7 @@
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→thanh_tuu.mon |  |
+| mon | text |  |  | PK FK→huy_hieu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -3801,6 +3801,18 @@
 | hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
 | tin_khoa | text |  |  | PK |  |
 | an | boolean |  |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## the_gioi_bai_khoe
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| tin_khoa | text |  |  |  |  |
+| cau_ma | text | Y |  | FK→the_gioi_danh_muc.ma |  |
+| dang_at | timestamp with time zone |  | now() |  |  |
+| go_at | timestamp with time zone | Y |  |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
 
 ## the_gioi_binh_luan
@@ -5765,6 +5777,7 @@ SELECT bl.hoc_sinh_id,
 | test_dau_vao_phan_cong | trg_log_test_dau_vao_phan_cong | BEFORE | INSERT/UPDATE | log_test_dau_vao_phan_cong |
 | thanh_toan | tg_thanh_toan_trang_thai | AFTER | INSERT/DELETE/UPDATE | fn_hoa_don_cap_nhat_trang_thai |
 | the_gioi_an_tin | the_gioi_an_tin_log | AFTER | INSERT/DELETE/UPDATE | _the_gioi_ghi_log |
+| the_gioi_bai_khoe | the_gioi_bai_khoe_log | AFTER | INSERT/DELETE/UPDATE | _the_gioi_ghi_log |
 | the_gioi_binh_luan | the_gioi_binh_luan_log | AFTER | INSERT/DELETE/UPDATE | _the_gioi_ghi_log |
 | the_gioi_cai_dat | the_gioi_cai_dat_log | AFTER | INSERT/DELETE/UPDATE | _the_gioi_ghi_log |
 | the_gioi_khen | the_gioi_khen_log | AFTER | INSERT/DELETE/UPDATE | _the_gioi_ghi_log |
@@ -5856,6 +5869,7 @@ SELECT bl.hoc_sinh_id,
 - `_sync_cau_menh_de(p_bang_con text, p_ban_do text, p_ma_cau text, p_menh_de jsonb)` → void
 - `_ta_cua_lop(p_lop uuid)` → uuid
 - `_the_gioi_bl_json(b the_gioi_binh_luan, p_me uuid, p_ban uuid[])` → jsonb
+- `_the_gioi_cho_khoe(p_me uuid)` → SETOF record
 - `_the_gioi_ghi_log()` → trigger
 - `_the_gioi_khen_json(p_khoa text, p_me uuid, p_ban uuid[])` → jsonb
 - `_the_gioi_lop(p_hs uuid, p_mon text)` → TABLE(lop_id uuid, ten_lop text)
@@ -6280,10 +6294,13 @@ SELECT bl.hoc_sinh_id,
 - `fn_the_gioi_binh_luan(p_khoa text, p_ma text)` → jsonb
 - `fn_the_gioi_cai_dat(p_hien text)` → void
 - `fn_the_gioi_chi_tiet(p_khoa text)` → jsonb
+- `fn_the_gioi_cho_khoe()` → jsonb
 - `fn_the_gioi_go_binh_luan(p_id uuid)` → jsonb
+- `fn_the_gioi_go_khoe(p_khoa text)` → void
 - `fn_the_gioi_home()` → jsonb
 - `fn_the_gioi_kenh(p_kenh text)` → jsonb
 - `fn_the_gioi_khen(p_khoa text, p_icon text, p_cau text)` → jsonb
+- `fn_the_gioi_khoe(p_khoa text, p_cau text)` → jsonb
 - `fn_the_gioi_tha(p_khoa text, p_icon text)` → jsonb
 - `fn_the_gioi_thay_co_khen(p_khoa text)` → void
 - `fn_theodoi_bang_lam_bai(p_tu date, p_den date, p_lop_ids uuid[] DEFAULT NULL::uuid[], p_hoc_sinh_ids uuid[] DEFAULT NULL::uuid[])` → TABLE(hoc_sinh_id uuid, ho_ten text, ma_hs text, khoi text, lop_id uuid, ten_lop text, ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
@@ -6591,6 +6608,7 @@ SELECT bl.hoc_sinh_id,
 | shop_vat_pham | shop_vat_pham_gia_diem_check | `CHECK ((gia_diem > 0))` |
 | sk_xu | sk_xu_so_xu_check | `CHECK ((so_xu <> 0))` |
 | sk_xu | sk_xu_van_chi_game | `CHECK (((van IS NULL) OR (nguon = 'game'::text)))` |
+| the_gioi_bai_khoe | the_gioi_bai_khoe_tin_khoa_check | `CHECK ((tin_khoa ~ '^[a-z_]+:'::text))` |
 | the_gioi_binh_luan | the_gioi_binh_luan_tin_khoa_check | `CHECK ((tin_khoa ~ '^[a-z_]+:'::text))` |
 | the_gioi_danh_muc | the_gioi_danh_muc_ma_check | `CHECK ((ma ~ '^[a-z0-9_]{1,40}$'::text))` |
 | the_gioi_danh_muc | the_gioi_danh_muc_nhan_check | `CHECK (((loai = 'icon'::text) = (nhan IS NOT NULL)))` |
