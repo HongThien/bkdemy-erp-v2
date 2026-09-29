@@ -2083,6 +2083,7 @@
 | file_url | text | Y |  |  |  |
 | ten_file | text | Y |  |  |  |
 | cap_nhat_at | timestamp with time zone |  | now() |  |  |
+| ma_dang | text | Y | ma_bai |  |  |
 
 ## hinh_hoc_cau_hoi
 

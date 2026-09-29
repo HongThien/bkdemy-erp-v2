@@ -31697,3 +31697,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   client (danhgia.ts napBanDo, kênh ① theo chuyên đề — Bài không có chuyên đề).
 - Đánh giá GV: chuông theo dạng tài liệu (loadDangTaiLieuBuoi → getDangTen registry) đã ra tên Bài Hình học từ 714b161; đánh giá per-dạng
   (buoi_danh_gia_dang, dạng lấy từ ô ingame) là luồng cũ, không có gì riêng hỏng cho Hình.
+
+### 29/09 — Mig 202609291136 ĐÃ ÁP (Thùy tự chạy `--only`, sổ _migrations 12:02)
+- Soi DB sống sau áp: `_kho_cau_tbl('Toán','hinh_hoc')`=hinh_hoc_cau_hoi · `_kho_nhanh_cua_dang('Toán','HH00061')`=hinh_hoc · `_kho_ten_dang`
+  ra "Hình bình hành" · alias `hinh_hoc_bai_ly_thuyet.ma_dang` có · tu_luyen_sinh/hs_dang_evals đúng bản mới · ACL giữ nguyên
+  (create or replace không đổi grant). `npm run schema` ⇒ schema.md +1 dòng (cột alias).
+- Bổ trợ YẾU cho Hình học vẫn CHƯA bật — chờ Thùy chọn (a) bật, TA dạy giấy · (b) sinh MCQ Hình cấp 2 trước.
