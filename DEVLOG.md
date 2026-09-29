@@ -32134,3 +32134,23 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Bài đang làm dở: đáp án lưu theo `bai_test_cau_id` nên không mất, em chỉ thấy thứ tự đổi 1 lần.
 - **Verify:** tsc sạch phần mình · `check:style-hs` ✔ · `build:hs` ✔ · trang xem-thử dữ liệu giả (`xem-thu-thutu.html` + `src/_xem_thutu.tsx`, KHÔNG commit):
   BTVN Câu 1 = phiếu câu 1, A/B/C/D gốc; giả đã làm 4 câu ⇒ mở đúng Câu 5 (Đ/S, a/b/c/d gốc); ET không mã đề 7/7 câu đúng thứ tự, đáp án gốc.
+
+## 2026-09-29 tối — Nông Trại: cảnh quan kiểu Hay Day (Thùy: "đường và cây hơi xấu" + "làm cấu trúc cảnh quan giống hayday luôn")
+
+- **Làm (repo riêng `E:\BK ACADEMY\Gaming\KayKit\NongTrai`, commit 5f0a1e0):**
+  - Đường là dải mềm bám đường cong. Texture vẽ bằng code (sỏi, cỏ lấn mép, mép mờ vào cỏ).
+  - Đường cái nằm ngoài mép trái. Xe tải đỗ ven đường, cạnh bảng đơn và sạp. Có cổng gỗ "NÔNG TRẠI BK" và hộp thư.
+  - Suối chảy sau dãy nhà, đổ vào hồ có vịt. Có 2 cầu gỗ vòm.
+  - Bỏ hàng rào bao trại, thay bằng bờ bụi và rừng "cây bông xù" (tán nhiều khối tròn, đổ bóng mịn). Ao sen dùng cùng kiểu nước.
+  - Chuồng đứng trên cỏ, riêng chuồng heo giữ bùn. Bỏ lối giữa 2 dãy xưởng để bớt cảm giác kẻ ô.
+- **Sai / sửa:**
+  - `Texture.userData` không có ở three r128 (gán vào là vỡ lúc dựng cảnh).
+  - Đĩa đất che chỗ nối đường ra quầng sáng. Thay bằng vẽ mỗi đường 2 lớp: lớp viền ở dưới, lớp lòng ở trên, nên lòng đường này che viền của đường kia và ngã ba liền.
+  - Mặt hồ `polygonOffset` quá mạnh nên che mất lá súng.
+  - **InstancedMesh r128 lấy khối bao của hình gốc ở gốc toạ độ.** Kéo camera xa gốc là mất cả rừng, và rừng KayKit cũ cũng dính lỗi này.
+    Sửa: rừng chia ô 16 m, mỗi ô có khối bao riêng dùng chung bộ đệm. `nhanBan` tắt cắt khung.
+- **Đo:**
+  - Khoảng 330–390k tam giác mỗi khung (có cả bóng), trước là khoảng 470k. Cây xa dùng ít đa giác hơn.
+  - `test-engine` pass (engine không đổi).
+  - Chụp cấp 1 và cấp 30 dựng giả qua `dongBo` (không đụng save), rồi nạp lại trang.
+- **Chưa làm:** chưa thử trên iPad gen 7 thật.
