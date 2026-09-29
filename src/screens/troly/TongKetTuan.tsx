@@ -15,6 +15,7 @@
 // kèm chữ ("Vấn đề", "Dưới thường đạt") — không bao giờ chỉ có màu.
 // ============================================================================
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { ddmm, homNayVN } from '../../lib/troly-baocao'
 import {
   getTongKetTuan, congNgay,
@@ -588,6 +589,7 @@ function TrinhChieu({ d, hienSo, doiHienSo, thoat }: { d: DuLieu; hienSo: boolea
       else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); sang(-1) }
       else if (e.key === 'Home') setI(0)
       else if (e.key === 'End') setI(n - 1)
+      else if (e.key === 'Escape') thoat()   // khi KHÔNG toàn màn hình thì trình duyệt không tự xử Esc
     }
     window.addEventListener('keydown', nghe)
     return () => window.removeEventListener('keydown', nghe)
@@ -657,15 +659,23 @@ export default function TongKetTuan() {
   }
   useEffect(() => { tai(tuan) }, []) // eslint-disable-line
 
-  // Trạng thái trình chiếu đi theo trình duyệt (người xem bấm Esc cũng phải về lại bình thường).
+  // ⭐ Trình chiếu = LỚP PHỦ KÍN CỬA SỔ do màn này tự dựng; toàn màn hình của trình duyệt chỉ là phần
+  // cộng thêm. Bản đầu dựa hẳn vào requestFullscreen ⇒ nơi nào trình duyệt từ chối (khung nhúng, vài
+  // máy tính bảng) thì bấm nút không thấy gì. Giờ bị từ chối vẫn chiếu được, chỉ còn thanh trình duyệt.
   useEffect(() => {
-    const nghe = () => setChieu(document.fullscreenElement === khung.current)
+    // Người xem bấm Esc lúc đang toàn màn hình: trình duyệt tự thoát ⇒ mình cũng về màn thường.
+    const nghe = () => { if (!document.fullscreenElement) setChieu(false) }
     document.addEventListener('fullscreenchange', nghe)
     return () => document.removeEventListener('fullscreenchange', nghe)
   }, [])
-  function trinhChieu() {
+  function moChieu() {
+    setChieu(true)
+    // Xin toàn màn hình SAU khi lớp phủ đã vẽ; bị từ chối thì thôi, không báo lỗi.
+    requestAnimationFrame(() => { khung.current?.requestFullscreen?.().catch(() => {}) })
+  }
+  function thoatChieu() {
     if (document.fullscreenElement) document.exitFullscreen().catch(() => {})
-    else khung.current?.requestFullscreen().catch(() => setLoi('Trình duyệt không cho phóng toàn màn hình.'))
+    setChieu(false)
   }
   const doiHienSo = () => { NHO.hienSo = !hienSo; setHienSo(!hienSo) }
 
@@ -679,9 +689,11 @@ export default function TongKetTuan() {
   const nut = 'rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-[12.5px] text-slate-600 hover:bg-slate-50 disabled:opacity-40'
 
   return (
-    <div ref={khung} className={chieu ? 'h-full w-full bg-slate-50' : ''}>
-      {chieu && d ? (
-        <TrinhChieu d={d} hienSo={hienSo} doiHienSo={doiHienSo} thoat={trinhChieu} />
+    <div>
+      {chieu && d ? createPortal(
+        <div ref={khung} className="fixed inset-0 z-[1000] bg-slate-50">
+          <TrinhChieu d={d} hienSo={hienSo} doiHienSo={doiHienSo} thoat={thoatChieu} />
+        </div>, document.body,
       ) : (
         <>
           <div className="mb-3 flex flex-wrap items-center gap-1.5">
@@ -693,7 +705,7 @@ export default function TongKetTuan() {
             <div className="ml-auto flex flex-wrap gap-1.5">
               <button onClick={doiHienSo} disabled={!d}
                 className={hienSo ? 'rounded-lg border border-indigo-500 bg-indigo-600 px-2.5 py-1 text-[12.5px] text-white' : nut}>Số từng tuần</button>
-              <button onClick={trinhChieu} disabled={!d} className={nut}>Trình chiếu</button>
+              <button onClick={moChieu} disabled={!d} className={nut}>Trình chiếu</button>
               <button onClick={() => d && tai(d.tu, true)} disabled={!d || dangTai} className={nut}>↻ Tính lại</button>
             </div>
           </div>

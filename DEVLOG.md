@@ -31924,3 +31924,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Chỉ khi Detail dài tới mức phải thu dưới 0,6 (chữ khó đọc) mới cho cuộn.
 - **Điều khiển:** nút ‹ Trước / Sau › + số trang · phím → ↓ PageDown Space / ← ↑ PageUp / Home / End (bút trình chiếu dùng được) ·
   hàng mục lục dưới đáy bấm thẳng tới bảng.
+- **SAI rồi SỬA (cùng mục 21):** bản trình chiếu đầu dựa HẲN vào `requestFullscreen` — bấm thử trong khung xem thử thì trình duyệt từ chối,
+  nút không có tác dụng gì và không báo gì. Sửa: trình chiếu là LỚP PHỦ `fixed inset-0` (portal ra `body`) do màn tự dựng; toàn màn hình chỉ là
+  phần cộng thêm, bị từ chối vẫn chiếu được. Esc thoát ở cả hai trường hợp. Bài học: tính năng cốt lõi không được treo vào một API mà
+  trình duyệt có quyền từ chối.
