@@ -43,7 +43,7 @@ function Avatar({ n, size = 40 }: { n: NguoiTG | null; size?: number }) {
 const TEN_GAME: Record<string, string> = { mo_ruong: 'Mở Rương', chiem_dat: 'Chiếm Đất', ban_qua: 'Bắn Quà' }
 const TEN_GIAI: Record<string, string> = { xuat_sac: 'Xuất sắc', tien_bo: 'Tiến bộ', cham_chi: 'Chăm chỉ' }
 const ddmm = (d: unknown) => { const s = String(d ?? ''); return s.length >= 10 ? `${s.slice(8, 10)}/${s.slice(5, 7)}` : '' }
-function moTaTin(t: TinTG): ReactNode {
+export function moTaTin(t: TinTG): ReactNode {
   const c = t.chi_tiet as Record<string, string | number>
   switch (t.kieu) {
     case 'nhat_buoi': return <><b>Nhất buổi</b> {t.mon} {ddmm(c.ngay)}</>
@@ -153,10 +153,10 @@ function NutThich({ t, p, nho, canh }: { t: TinTG; p: TuongTacProps; nho?: boole
   const giu = () => { daGiu.current = false; window.clearTimeout(hen.current); hen.current = window.setTimeout(() => { daGiu.current = true; p.onThanh(t.khoa) }, 400) }
   const tha = () => window.clearTimeout(hen.current)
   return (
-    <div className="relative">
+    <div className={nho ? "relative flex-none" : "relative"}>
       <button onPointerDown={giu} onPointerUp={tha} onPointerLeave={tha} onPointerCancel={tha} onContextMenu={(e) => e.preventDefault()}
         onClick={() => { if (!daGiu.current) p.onTha(t, k ? null : 'thich') }}
-        className={`flex w-full items-center justify-center gap-1.5 rounded-lg font-bold select-none active:scale-95 ${nho ? 'h-8 px-2 text-[12.5px]' : 'h-9 text-[13.5px]'}`}
+        className={`flex items-center justify-center gap-1.5 rounded-lg font-bold select-none active:scale-95 ${nho ? 'h-8 px-2 text-[12.5px] whitespace-nowrap' : 'h-9 w-full text-[13.5px]'}`}
         style={{ color: k ? MAU.acc : MAU.muted, WebkitTouchCallout: 'none', touchAction: 'manipulation' }} aria-pressed={!!k}>
         {k ? <Hinh src={anhTuongTac(k.icon_ma)} emoji={k.icon} size={nho ? 16 : 19} /> : <Hinh src={anhTuongTac('thich')} emoji="👍" size={nho ? 15 : 18} />}
         {k ? k.nhan : 'Thích'}
@@ -168,7 +168,7 @@ function NutThich({ t, p, nho, canh }: { t: TinTG; p: TuongTacProps; nho?: boole
 }
 function NutBinhLuan({ t, p, nho }: { t: TinTG; p: TuongTacProps; nho?: boolean }) {
   return (
-    <button onClick={() => p.onMoBl(t, 'bl')} className={`flex w-full items-center justify-center gap-1.5 rounded-lg font-bold active:scale-95 ${nho ? 'h-8 px-2 text-[12.5px]' : 'h-9 text-[13.5px]'}`}
+    <button onClick={() => p.onMoBl(t, 'bl')} className={`flex items-center justify-center gap-1.5 rounded-lg font-bold active:scale-95 ${nho ? 'h-8 flex-none px-2 text-[12.5px] whitespace-nowrap' : 'h-9 w-full text-[13.5px]'}`}
       style={{ color: MAU.muted }}>
       <span aria-hidden style={{ fontSize: nho ? 14 : 16 }}>💬</span>{nho ? (t.khen.so_bl > 0 ? t.khen.so_bl : '') : 'Bình luận'}
     </button>
@@ -329,7 +329,7 @@ export function TheGioiView(p: TheGioiViewProps) {
   const tinB = k?.tin.filter((t) => t.tang === 'B') ?? []
   const theTin = (t: TinTG) => <TheTin key={t.khoa} t={t} p={p} onAnTin={p.onAnTin} menuMo={p.menuKhoa === t.khoa} onMenu={p.onMenu} anNhanBan={p.tab === 'ban'} />
   return (
-    <ManHS>
+    <ManHS rong="hep"> {/* cột tin ~720px giữa màn như bảng tin FB trên máy tính — trải hết 1440px thì mỏi mắt */}
       <style>{KEYFRAMES}</style>
       {p.thanhKhoa && <div className="fixed inset-0 z-20" onClick={() => p.onThanh(null)} onContextMenu={(e) => e.preventDefault()} />}
       <DauTrangHS tieuDe="Thế giới BK" onBack={p.onBack} phai={

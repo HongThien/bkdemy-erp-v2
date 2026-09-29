@@ -77,7 +77,9 @@ function MauHome({ tt }: { tt: number }) {
     <HomeHS912 giaoDien={{ skin: 'rpg', che_do: 'toi', hinh_nen: 'lau_dai' }} onDaLuu={noop} data={{ elo: [{ mon: 'Toán', elo: 1240, hang: 3, so_hs: 18 }], thi: [] } as never}
       hoTen="Nguyễn Minh Khang" maHS="hs0412" lopMon="9A1 Toán" anhUrl={null} onAnhChanged={noop} chuaDoc={3}
       mons={[]} mon="Toán" onChonMon={noop} lich={tt === 1 ? [CA] : []} soRetest={tt === 2 ? 2 : 0} cards={tt === 3 ? O_HOME.map((c) => ({ ...c, badge: 0 })) : O_HOME}
-      onHopThu={noop} onDoiMK={noop} onThoat={noop} onLich={noop} onRetest={noop} onHoSo={noop} gioiTinh={tt === 2 ? 'nu' : 'nam'} />
+      onHopThu={noop} onDoiMK={noop} onThoat={noop} onLich={noop} onRetest={noop} onHoSo={noop} gioiTinh={tt === 2 ? 'nu' : 'nam'}
+      onTheGioi={noop} theGioi={tt === 3 ? { tuong_tac: { so: 0, so_nguoi: 0, nguoi: null }, loi_moi: 0, tin: TG.KENH_TG.tin.slice(0, 2) }
+        : { tuong_tac: { so: 5, so_nguoi: 3, nguoi: { an: false, ten: 'Nguyễn Thu Hà', lop: '9A1' } }, loi_moi: 2, tin: TG.KENH_TG.tin.slice(0, 1) }} />
   )
 }
 

@@ -4,7 +4,7 @@
 // hành vi tiếp theo → đóng case + (nếu cần) mở case MỚI, `case_truoc_id` tự nối (moHoacGopCaseBoTroYeu).
 import { useEffect, useMemo, useState } from 'react'
 import {
-  listCaseChoDanhGia, getDanhGiaCase, dongCase, moHoacGopCaseBoTroYeu,
+  listCaseChoDanhGia, getDanhGiaCase, dongCase, moHoacGopCaseBoTroYeu, RETEST_BAT,
   type CaseHoanThanh, type DangDanhGia,
 } from '../../lib/botro_yeu'
 import { duyetLevel } from '../../lib/danhgia'
@@ -36,7 +36,7 @@ export default function DanhGiaCaBoTroScreen() {
       <div className="mx-auto max-w-[900px]">
         <header className="mb-6">
           <h1 className="text-[22px] font-bold text-slate-800">Đánh giá ca bổ trợ</h1>
-          <p className="mt-1 text-[13px] text-slate-500">Case đã dạy + đóng hết dạng — quyết định hành vi tiếp theo dựa trên điểm trước/sau.</p>
+          <p className="mt-1 text-[13px] text-slate-500">{RETEST_BAT ? 'Case đã dạy + đóng hết dạng' : 'Case đã dạy hết dạng (retest đang tạm dừng)'} — quyết định hành vi tiếp theo dựa trên điểm trước/sau.</p>
         </header>
 
         {loading ? (

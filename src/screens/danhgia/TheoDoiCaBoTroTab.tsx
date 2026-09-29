@@ -7,6 +7,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { caTheoDoi, inSinhBaiGiay, inLayBaiGiay, boTroTrongNgay, type CaTheoDoi, type BaiInGiay, type BuoiNgay, type RetestNgay } from '../../lib/botro_yeu_ca'
 import { homNayVN, ddmmVN, thuCuaNgay } from '../../lib/tuan'
+import { RETEST_BAT } from '../../lib/botro_yeu' // hold retest 29/09 — ẩn nút lọc Retest (DB cũng trả rỗng)
 import { TrangIn, NhapKetQua } from '../ta/PhieuGiayYeuTA'
 
 const POLL_MS = 15000
@@ -84,7 +85,7 @@ export default function TheoDoiCaBoTroTab({ monF, khoiF, ngay: ngayNgoai, anBuoi
         {!ngayNgoai && <input type="date" value={ngay} onChange={(e) => e.target.value && setNgay(e.target.value)} className="rounded-lg border border-slate-300 px-2 py-1.5 text-[13px] outline-none focus:border-indigo-400" />}
         {!ngayNgoai && <span className="text-[13px] font-semibold text-slate-700">{thuCuaNgay(ngay)} {ddmmVN(ngay)}{ngay === homNayVN() ? ' · hôm nay' : ''}</span>}
         <div className="flex rounded-lg border border-slate-200 bg-white p-0.5 text-[11.5px] font-bold">
-          {([['yeu', `Yếu ${hien.length}`], ['bu', `Bù ${kh.bu.length}`], ['duoi', `Đuổi ${kh.duoi.length}`], ['retest', `Retest ${kh.retest.length}`]] as const).map(([k, ten]) => (
+          {([['yeu', `Yếu ${hien.length}`], ['bu', `Bù ${kh.bu.length}`], ['duoi', `Đuổi ${kh.duoi.length}`], ['retest', `Retest ${kh.retest.length}`]] as const).filter(([k]) => RETEST_BAT || k !== 'retest').map(([k, ten]) => (
             <button key={k} onClick={() => setLoc((p) => ({ ...p, [k]: !p[k] }))} className={`rounded-md px-2 py-0.5 ${loc[k] ? 'bg-slate-800 text-white' : 'text-slate-400'}`}>{ten}</button>
           ))}
         </div>

@@ -2,7 +2,7 @@
 // Filter toggle theo mức, số tổng mỗi mức ngay trên nút. Bấm card ⇒ popup đủ chi tiết ca (dạng · buổi · retest · lịch sử duyệt).
 // MỨC tính ở DB (fn_btyeu_trang_thai_ca, §2.0) — màn chỉ lọc + đếm số dòng đang có để hiện trên nút.
 import { useEffect, useMemo, useState } from 'react'
-import { listTrangThaiCa, chiTietCase, MUC_CA, type TrangThaiCa, type MucCa, type ChiTietCase } from '../../lib/botro_yeu'
+import { listTrangThaiCa, chiTietCase, MUC_CA, RETEST_BAT, type TrangThaiCa, type MucCa, type ChiTietCase } from '../../lib/botro_yeu'
 import { norm } from '../../components/SearchSelect'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 
@@ -22,6 +22,7 @@ const TT_DANG: Record<ChiTietCase['dang'][number]['tt'], { ten: string; cls: str
   chua_day: { ten: 'Chưa dạy', cls: 'bg-amber-50 text-amber-800' },
   day_lai: { ten: 'Retest trượt · dạy lại', cls: 'bg-rose-50 text-rose-700' },
   cho_retest: { ten: 'Đã dạy · chờ retest', cls: 'bg-violet-50 text-violet-700' },
+  da_day: { ten: 'Đã dạy', cls: 'bg-sky-50 text-sky-700' }, // hold retest 29/09 — DB trả thay cho cho_retest
   xong: { ten: 'Xong', cls: 'bg-emerald-50 text-emerald-700' },
 }
 const KET_QUA: Record<string, string> = { dat: 'Đạt', mot_phan: 'Một phần', chua_dat: 'Chưa đạt', bo: 'Bỏ' }
@@ -34,7 +35,7 @@ function chiTietMuc(c: TrangThaiCa): string {
     case 'can_xep': return `${c.so_dang_can_day}/${c.so_dang} dạng cần dạy`
     case 'da_xep': return c.buoi_cho_ngay ? `${thuCuaNgay(c.buoi_cho_ngay)} ${ddmmVN(c.buoi_cho_ngay)}${c.buoi_cho_gio ? ` ${hhmm(c.buoi_cho_gio)}` : ''}${c.buoi_cho_nguoi ? ` · ${c.buoi_cho_nguoi}` : ''}` : ''
     case 'cho_retest': return c.retest_ngay ? `retest ${ddmmVN(c.retest_ngay)}` : `${c.so_dang_cho_retest} dạng chờ retest`
-    case 'cho_danh_gia': return `${c.so_dang_xong}/${c.so_dang} dạng xong`
+    case 'cho_danh_gia': return RETEST_BAT ? `${c.so_dang_xong}/${c.so_dang} dạng xong` : `đã dạy hết ${c.so_dang} dạng`
     case 'hoan_thanh': return `${c.ket_qua ? KET_QUA[c.ket_qua] ?? c.ket_qua : ''}${c.hoan_thanh_at ? ` · ${ngayTs(c.hoan_thanh_at)}` : ''}`
   }
 }
@@ -72,7 +73,7 @@ export default function TrangThaiCaBoTroScreen() {
         <header className="mb-3 flex flex-wrap items-center gap-3">
           <div className="min-w-0 flex-1">
             <h1 className="text-[22px] font-bold text-slate-800">Trạng thái ca bổ trợ</h1>
-            <p className="mt-0.5 text-[12.5px] text-slate-500">Mỗi case 1 dòng · thanh mức: Chờ chọn dạng → Cần xếp → Đã xếp → Chờ retest → Chờ đánh giá → Hoàn thành (60 ngày). Bấm để xem chi tiết.</p>
+            <p className="mt-0.5 text-[12.5px] text-slate-500">Mỗi case 1 dòng · thanh mức: {MUC_CA.map((m) => m.ten).join(' → ')} (60 ngày).{RETEST_BAT ? '' : ' Retest đang tạm dừng.'} Bấm để xem chi tiết.</p>
           </div>
           <div className="relative w-60">
             <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="🔎 Tìm tên / mã HS / lớp…" className="h-9 w-full rounded-xl border border-slate-300 bg-white px-3 text-[13px] outline-none focus:border-indigo-400" />

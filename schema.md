@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-294 bảng · 19 view · 0 enum · 100 trigger · 656 function
+294 bảng · 19 view · 0 enum · 100 trigger · 657 function
 
 ## _app_secrets
 
@@ -5767,6 +5767,7 @@ SELECT bl.hoc_sinh_id,
 - `_btyeu_moc_2_cua_so()` → date
 - `_btyeu_mon_cua_bao_dong(p_hoc_sinh uuid, p_buoi uuid)` → text
 - `_btyeu_my_ns()` → uuid
+- `_btyeu_retest_bat()` → boolean
 - `_btyeu_tien_do(p_buoi uuid)` → TABLE(ma_dang text, ma_cum text, so_cau bigint, so_dung bigint, so_goi_y bigint, cau_cuoi_at timestamp with time zone)
 - `_btyeu_today()` → date
 - `_buoi_giai_log()` → trigger

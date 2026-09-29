@@ -4,6 +4,12 @@
 import { supabase } from './supabase'
 import type { BaiTestCuaHS, BaiLam } from './testonline'
 
+// ⏸ HOLD luồng RETEST tầng 2 (Thùy 29/09: "quy trình mới không chạy được retest — hold lại, ẩn đi, sau này làm").
+// false ⇒ ẩn mọi chỗ hiện retest trên ERP/app TA/app HS; case dạy hết dạng đi thẳng "Chờ đánh giá". Công tắc TWIN ở DB:
+// `public._btyeu_retest_bat()` (mig 202609291037) — bật lại phải lật CẢ HAI (DB = migration mới trả true). spec-bo-tro.md §HOLD.
+// Đặt ở file này (nhẹ, app TA/HS đều dùng); botro_yeu.ts re-export cho màn ERP.
+export const RETEST_BAT = false
+
 // ── App HỌC SINH ─────────────────────────────────────────────────────────────
 export type CumCaHS = {
   ma_cum: string; ten: string; thu_tu: number; tien_de: string[]

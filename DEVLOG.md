@@ -31350,6 +31350,83 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Soi 1440×900 · 1180×820 · 375×812 (điện thoại không đổi), 0 lỗi console. tsc sạch · check:style-hs ✔.
 - Chưa làm: bản DỌC có nhân vật như ảnh #11 hàng dưới (nhân vật giữa + bong bóng + lưới 4 cột nhỏ) — chờ Thùy xem bản PC trước.
 
+### 29/09 (14) — Bỏ Elo khỏi màn chính HS (Thùy)
+- HomeHS912 tomTat chỉ còn đếm ngược kỳ thi; fn_hs_home_912 vẫn trả elo (không đụng DB). Áp cả bố cục dọc lẫn ngang.
+- Soi iPad: ngang 1180×820 = bố cục PC, 4 cột ⇒ ô thứ 9 (Thế giới BK) rớt hàng 3 phải cuộn · dọc 820×1180 = bố cục điện thoại kéo rộng
+  3 cột, KHÔNG nhân vật, nửa dưới trống ⇒ xấu. Chờ Thùy chốt hướng làm bản dọc có nhân vật (#11 hàng dưới).
+
+### 29/09 — KHTN minh họa trực quan (kiểu Tinh Đồ Thái Dương): vòng hỏi 1, Thùy chốt hướng
+- Mẫu tham chiếu tinh-do-thai-duong.vercel.app: 1 engine 3D + 8 bài = 8 kịch bản; mỗi bài 4–5 chặng (camera tự bay tới cảnh + thẻ lời
+  dẫn + "Tiếp theo"), câu hỏi cuối bài, ngoài ra có "Tự do khám phá".
+- Thùy chốt: mục đích a) GV dạy trên lớp > b) HS tự học > c) marketing · đợt đầu KHÔNG đo, nhưng mỗi thế giới gắn sẵn mã chuyên đề/dạng
+  `khtn_ban_do` · khối 7–8–9, sách KNTT · hiện chiếu TV trên lớp, đích mỗi HS 1 iPad hoặc nhóm 2–3 em/iPad · kiểu TÀU = lộ trình cố định,
+  "tự do trong khuôn khổ": bay tự do trong vùng điểm 1→2, phải hoàn thành câu hỏi ở điểm 2 mới bay tiếp · kiểu (tàu / tương tác) là tính
+  chất TỪNG BÀI, không phải chế độ HS chọn · hình ảnh KHOA HỌC THẬT (học, không phải gami) · TỰ BUILD, PhET chỉ để tham khảo cách làm ·
+  duyệt đúng kiến thức: Thùy + Ngọc (GV KHTN).
+- CTO đề xuất (chưa chốt): tách THẾ GIỚI (không gian dựng 1 lần) khỏi BÀI (lộ trình + cổng + câu hỏi) như mẫu; gom ~40 chuyên đề K7–9
+  vào 8 thế giới (Tế bào · Nguyên tử–Phân tử · Cơ thể người · bàn Điện/Từ/Quang/Cơ/Âm); bài tính toán/ghi nhớ chưa làm thế giới.
+  Cổng: phải đúng mới qua, sai thì chỉ lại chỗ cần nhìn trong vùng vừa bay; câu cổng viết theo cảnh, câu cuối bài lấy từ kho theo dạng.
+- Phát hiện bản đồ KHTN: K9 đủ (183 dạng) nhưng K8 chỉ 3 chủ đề, K7 dừng ở Trao đổi chất; K9 nhảy K091102→K091104 (thiếu 1 chuyên đề).
+- Còn treo: chọn 2 bài pilot theo lịch dạy thật · bản đồ K7/K8 thiếu là cố ý hay chưa nhập · TV nối laptop hay trình duyệt TV · file SGK KNTT.
+
+### 29/09 (15) — Home DỌC có nhân vật (#11 hàng dưới) · iPad ngang 9 ô vừa 2 hàng · bỏ "Việc cần làm" → thẻ THẾ GIỚI BK
+- Thùy "ok" đề xuất (14). ManChinh (điện thoại + iPad dọc) viết lại: avatar + cụm nút → "Chào tên!" 34/50px → nhân vật (h 230/380, mờ chân) +
+  bong bóng thoại bên phải → banner → lưới 4 CỘT ô nhỏ icon giữa (iPad dọc ô to). Hết cảnh iPad dọc trống nửa dưới.
+- iPad ngang 1024–1279: >8 ô ⇒ 5 cột ô gọn (148px, icon 64) — 9 ô vừa 2 hàng không cuộn; ≥1280 ô to như cũ. Cột nhân vật 32%.
+- Thùy: bỏ thẻ "Việc cần làm" (HS ít việc, từng ô đã có chấm đỏ) — chỗ đó hiện thông báo Thế giới BK. Thẻ ca bổ trợ VẪN giữ (ảnh gốc có).
+  Mig 202609291006_the_gioi_home (áp --only, schema.md): fn_the_gioi_home() = tương tác mới 24h của bạn khác trên tin của em (thả + bình luận,
+  không đếm cái đã ẩn/gỡ) + người mới nhất · số lời mời chờ · ≤2 tin nổi bật (S Thế giới → bạn bè → lớp, bỏ tin của chính em, bỏ khối khen).
+  Thử ROLLBACK với HS thật: 228ms; Thăng thả + bình luận tin Vũ ⇒ Vũ thấy so 2 / so_nguoi 1. Client: lib theGioiHome · HocSinhApp tải mỗi lần
+  về Home · HomeHS912 TheTheGioi (icon ô the_gioi của style, 2–3 dòng, badge = tương tác mới + lời mời, bấm mở Thế giới BK); bố cục ngang
+  xếp [ca?] [Thế giới] [kiểm tra lại?] 2 cột (lẻ 3 ⇒ ô đầu trải 2 cột). Bẫy: grid-cols-2 mặc định minmax(auto,1fr) ⇒ dòng truncate đẩy thẻ
+  tràn/đè thẻ bên ⇒ phải minmax(0,1fr). Bong bóng thoại vẫn suy từ viecTiepTheo.
+- Soi 375×812 · 820×1180 · 1180×820 · 1440×900, 0 lỗi console. tsc sạch · check:style-hs ✔.
+
+### 29/09 (16) — Thế giới BK trên PC: dòng tin nhỏ bị bóp chữ (Thùy gửi ảnh sau deploy)
+- Nguyên nhân: NutThich/NutBinhLuan bản nhỏ (dòng tầng B + thẻ gộp mở) vẫn mang w-full ⇒ trong hàng flex giành hết bề ngang, cột chữ còn vài px
+  (điện thoại ít lộ vì hàng hẹp; PC rộng mà vẫn bị vì % tính theo cả hàng). Sửa: bản nhỏ flex-none + whitespace-nowrap, w-full chỉ ở thanh hành động thẻ lớn.
+- PC: bảng tin trải 1180px khó đọc ⇒ ManHS rong='hep' (720px giữa màn, như bảng tin FB trên máy tính).
+- Bài học: soi mẫu mới chụp tt 1/5/8–11 ở 375px — không có ảnh PC của tab Lớp (nơi dòng B nhiều nhất) ⇒ lọt. Màn có dòng nhỏ phải soi cả PC.
+
+### 29/09 — KHTN du hành: bản thử "Liên kết hoá học" (khtn-site/lien-ket-hoa-hoc.html)
+- Thùy chốt thêm: bài pilot kiểu du hành = Liên kết hoá học K7 (Hoá đang ở ion/cộng hoá trị). Hình dung: phân tử = vật khổng lồ,
+  HS lái tàu bay qua từng phân tử rồi trả lời câu về chính phân tử đó. Thứ tự trạm CỐ ĐỊNH. KHÔNG bám SGK — mục tiêu: hiểu, phân
+  biệt ion/cộng hoá trị, xác định chất nào ion/CHT; CTO tự đề các bậc. Nhiều story khác nhau để sau (Thùy tự làm kịch bản kỹ).
+- Dựng: 1 file HTML + three.js r128 (cdnjs), không đụng DB. 8 trạm: tập lái · Ne (vì sao liên kết) · Na gặp Cl (HS CHỞ electron
+  từ Na sang Cl → Na⁺/Cl⁻ hút nhau) · mạng tinh thể NaCl 5×5×5 (bay vào tâm, đếm 6 Cl⁻) · H₂ · H₂O (góc 104,5°) · Cl₂ (so với trạm
+  Na–Cl ⇒ luật kim loại+phi kim/phi kim+phi kim) · phân loại KCl/HCl/MgO/CH₄ trong quả cầu niêm phong (đoán đúng mới mở).
+  Cơ chế: vòng soi (bay xuyên mới hiện giải thích) → đủ vòng mới hiện câu hỏi → sai thì hiện gợi ý + vòng "xem lại" ở đúng chỗ cần
+  nhìn, bay qua mới được trả lời lại; khuôn khổ bay = ống trụ giữa trạm trước và trạm hiện tại (lưới hiện khi chạm vách).
+  Phân tử cộng hoá trị: 2 nguyên tử tự tiến lại, electron dời vào vùng chồng khi tàu tới gần. Nút "Qua trạm (GV)" cho chiếu TV.
+- Soi: chạy trọn 8 trạm tới màn về đích, nhánh sai → xem lại → đúng, 0 lỗi console, khổ 375 không tràn.
+  Sửa trong lúc soi: tàu to quá so với nguyên tử (thu 1/2) · trạm sau lộ ra giữa cảnh trạm hiện tại (ẩn tới khi mở) · mạng NaCl dày
+  quá không thấy khe (giãn 18→22) · vòng đánh dấu mục tiêu lệch vì `rotate` của animation cộng dồn với `transform` (tách ra ::before)
+  · thẻ giải thích tràn khổ hẹp (thiếu box-sizing) · thẻ trạm trước còn treo khi sang trạm mới.
+- Bẫy khi soi bằng Browser pane: tab chạy NỀN bị hoãn requestAnimationFrame ⇒ ảnh chụp là khung cũ, tween không chạy — đừng kết
+  luận "cảnh sai/không chạy" từ tab nền. Thùy bấm thử cùng lúc trên tab đang mở ⇒ kết quả đè nhau.
+- Chạy local: `node scripts/serve-games.mjs 5270 khtn-site` (serve-games nhận thêm tham số thư mục). Bản thử riêng tư:
+  https://claude.ai/artifact/Bx3nCocwpxRPLL15wtU2Ai
+
+### 29/09 — HOLD luồng RETEST tầng 2 của bổ trợ yếu (Thùy: "quy trình mới không chạy được retest — hold lại, ẩn đi, sau này làm")
+- Làm: 1 công tắc DB `_btyeu_retest_bat()` = false (mig 202609291037_hold_retest_bo_tro_yeu, áp --only) + hằng client `RETEST_BAT` ở
+  `botro_yeu_ca.ts` (nhẹ, app TA/HS dùng; `botro_yeu.ts` re-export). 13 hàm dựng lại từ pg_get_functiondef bản đang chạy, mỗi hàm chỉ chèn
+  điều kiện công tắc (script sinh bắt mỗi mẫu khớp ĐÚNG 1 lần): _btyeu_bu_retest · fn_btyeu_bu_retest_ton · fn_btyeu_dong_ca (không sinh retest,
+  test cuối ca giữ) · fn_btyeu_case_xep_lich · fn_btyeu_trang_thai_ca (+case_truoc_id) · fn_btyeu_chi_tiet_case (tt 'da_day') ·
+  fn_btyeu_lich_su_hs (chỉ retest đã nộp) · fn_btyeu_viec_cua_toi · fn_btyeu_dem · fn_btyeu_retest_cua_toi · fn_bo_tro_trong_ngay ·
+  _troly_bc_viec_yeu · _troly_bc_thong_so.
+- Quyết định (CTO, R2): bỏ bước ⑥ ⇒ dạy hết dạng = "Chờ đánh giá" (màn Đánh giá ca vốn chấm trước/sau bằng MỌI lần đo, không cần retest).
+  Pure-derive, KHÔNG ghi dữ liệu: 34 bài retest treo (13 quá hạn · 19 sắp tới) giữ nguyên, chỉ ẩn ⇒ bật lại là về đúng chỗ.
+- Đo trước/sau (ROLLBACK rồi áp thật, quyền admin): case "Chờ retest" 23 → 0 (sang cho_danh_gia 23) · retest_ngay 31 case → 0 · app TA
+  retest đến hạn 16 → 0, badge 38 → 22 · Bổ trợ trong ngày retest (hôm nay..+4) [2,0,13,3,1] → 0 · bu_retest_ton → 0.
+- Client: màn Xếp (tab Chờ retest → "Chờ đánh giá", ẩn 📝 Retest, bỏ gợi ý cửa sổ 3–7 ngày, không gọi bu_retest_ton) · Trạng thái ca (bỏ mức) ·
+  Đang diễn ra (bỏ nút lọc Retest) · Đánh giá ca: `listCaseChoDanhGia` đổi sang `fn_btyeu_trang_thai_ca` buoc='cho_danh_gia' (trước: client tự
+  đếm dong_at — vi phạm §2.0, và khi hold sẽ không bao giờ có case) · app TA bỏ dòng "⚠ Không sinh được retest — báo OPS". App HS KHÔNG sửa
+  code (DB trả rỗng ⇒ banner "Bài kiểm tra lại" tự ẩn) — tránh giẫm phiên HS đang chạy song song.
+- Phát hiện kèm: engine level (`gami/danhgia.js`) có luật "dạng kẹt >7 ngày chưa retest ⇒ đề xuất lên level" nhưng `danhgia.ts` không truyền
+  dayAt/retests ⇒ luật đang ngủ sẵn, hold không làm nó báo sai. Chưa có case nào từng đóng dạng qua retest (0 dong_at); 34 case hoàn thành đều `bo` (L0).
+- Phiên trợ lý (worktree troly-hoi-duoc) đang sửa 2 hàm _troly_bc_* ⇒ đã nhắn: sửa tiếp thì dựng từ bản đang chạy, đừng lấy file cũ (mất công tắc).
+- Chưa kiểm trên trình duyệt (ERP cần đăng nhập tài khoản thật) — DB kiểm bằng RPC dưới quyền admin, client bằng tsc.
+
 ## 2026-09-29 (11) — TRỢ LÝ AI: đo lại → CEO bẻ lái "BÁO CÁO là chính, hỏi là phụ" → báo cáo ngày theo mẫu (worktree troly-hoi-duoc)
 
 - **Yêu cầu:** "tiếp tục phát triển tính năng trợ lý AI, đọc code và handoff trước". Đọc HANDOFF (12/08, 29/08) + toàn bộ `troly*.ts`, `api/troly.mjs`,

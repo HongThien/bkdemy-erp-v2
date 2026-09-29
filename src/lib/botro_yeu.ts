@@ -17,6 +17,9 @@ import { homNayVN, congNgay } from './tuan'
 import { RESULT_VALUE } from '../gami/mastery.js'
 import { fetchAllRows } from './pgrest' // phân trang THẬT — PostgREST cap 1000 dòng/query, xem pgrest.ts
 
+import { RETEST_BAT } from './botro_yeu_ca' // ⏸ hold retest 29/09 — định nghĩa + lý do ở botro_yeu_ca.ts
+export { RETEST_BAT }
+
 const LIMIT = 10000
 
 export type NguonBoTroYeu = 'ai_de_xuat' | 'thu_cong' | 'chuong_do' | 'gv_tien_quyet'
@@ -450,22 +453,14 @@ export async function listBuoiCuaCase(boTroYeuId: string): Promise<BuoiBoTroYeuD
     .sort((a, b) => Date.parse(b.ngay) - Date.parse(a.ngay))
 }
 
-// ── ĐÁNH GIÁ CA BỔ TRỢ (PLAN §12) — chỉ case đã "hoàn thành" theo derive (mọi dạng đã dong_at) ────
-// ⚠ Không lọc theo `trang_thai='hoan_thanh'` — CHƯA có code nào set cột đó (chờ bước điểm danh/retest,
-// PLAN §6 mục 5 chưa build). Lọc bằng `layTienDoCa().giaiDoan==='hoan_thanh'` (derive), rồi mới đóng
-// case thật khi người duyệt bấm 1 trong 5 hành vi tiếp theo — xem `dongCase`.
+// ── ĐÁNH GIÁ CA BỔ TRỢ (PLAN §12) — case ở mức "Chờ đánh giá" (hết dạng cần dạy, hết chờ retest) ────
+// Mức tính ở DB (`fn_btyeu_trang_thai_ca`, buoc='cho_danh_gia') — cùng nguồn với màn Trạng thái ca. Hold retest (29/09)
+// ⇒ dạy hết dạng là vào đây luôn (trước đó phải retest đạt hết). Đóng case thật khi người duyệt bấm 1 trong 5 hành vi — `dongCase`.
 export type CaseHoanThanh = { id: string; hoc_sinh_id: string; ho_ten: string; mon: string; created_at: string; caseTruocId: string | null }
 export async function listCaseChoDanhGia(mon?: string): Promise<CaseHoanThanh[]> {
-  const tienDo = await layTienDoCa(mon)
-  const xong = tienDo.filter((c) => c.giaiDoan === 'hoan_thanh')
-  if (!xong.length) return []
-  const { data, error } = await supabase.from('bo_tro_yeu')
-    .select('id, hoc_sinh_id, mon, created_at, case_truoc_id, hoc_sinh:hoc_sinh_id(ho_ten)')
-    .in('id', xong.map((c) => c.id)).limit(LIMIT)
-  if (error) throw error
-  return ((data ?? []) as any[]).map((r) => ({
-    id: r.id, hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.hoc_sinh?.ho_ten ?? '?', mon: r.mon,
-    created_at: r.created_at, caseTruocId: r.case_truoc_id,
+  const ds = await listTrangThaiCa(1) // chỉ cần case đang mở — hoàn thành lấy ngắn nhất
+  return ds.filter((c) => c.buoc === 'cho_danh_gia' && (!mon || c.mon === mon)).map((c) => ({
+    id: c.id, hoc_sinh_id: c.hoc_sinh_id, ho_ten: c.ho_ten, mon: c.mon, created_at: c.created_at, caseTruocId: c.case_truoc_id,
   }))
 }
 
@@ -606,10 +601,10 @@ export type MucCa = 'cho_noi_dung' | 'can_xep' | 'da_xep' | 'cho_retest' | 'cho_
 export const MUC_CA: { k: MucCa; ten: string }[] = [
   { k: 'cho_noi_dung', ten: 'Chờ chọn dạng' }, { k: 'can_xep', ten: 'Cần xếp' }, { k: 'da_xep', ten: 'Đã xếp' },
   { k: 'cho_retest', ten: 'Chờ retest' }, { k: 'cho_danh_gia', ten: 'Chờ đánh giá' }, { k: 'hoan_thanh', ten: 'Hoàn thành' },
-]
+].filter((m) => RETEST_BAT || m.k !== 'cho_retest') as { k: MucCa; ten: string }[] // hold retest ⇒ DB không trả mức này nữa
 export type TrangThaiCa = {
   id: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; mon: string; lop: string | null
-  level: number; uu_tien: number; created_at: string; hoan_thanh_at: string | null; ket_qua: string | null
+  level: number; uu_tien: number; created_at: string; hoan_thanh_at: string | null; ket_qua: string | null; case_truoc_id: string | null
   so_dang: number; so_dang_can_day: number; so_dang_cho_retest: number; so_dang_xong: number
   buoi_cho_ngay: string | null; buoi_cho_gio: string | null; buoi_cho_nguoi: string | null; retest_ngay: string | null
   buoc: MucCa
@@ -624,7 +619,7 @@ export type ChiTietCase = {
     trang_thai: string; uu_tien: number; created_at: string; hoan_thanh_at: string | null; ket_qua: string | null; ghi_chu_dong: string | null
     level: number; vong: number; mo_boi: string | null }
   dang: { ma_dang: string; ten_dang: string; nguon: string; them_at: string; diem_luc_mo: number | null; so_lan_do_luc_mo: number | null
-    day_at: string | null; retest_diem: number | null; retest_at: string | null; dat: boolean | null; dong_at: string | null; tt: 'chua_day' | 'day_lai' | 'cho_retest' | 'xong' }[]
+    day_at: string | null; retest_diem: number | null; retest_at: string | null; dat: boolean | null; dong_at: string | null; tt: 'chua_day' | 'day_lai' | 'cho_retest' | 'da_day' | 'xong' }[] // da_day = hold retest
   buoi: { ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; nguoi: string | null; trang_thai: string
     ly_do_huy: string | null; diem_danh: string | null; danh_gia_xong_at: string | null; che_do: string | null; ca_truc: boolean }[]
   retest: { ngay: string; so_cau: number; da_nop: boolean; so_dung: number }[]

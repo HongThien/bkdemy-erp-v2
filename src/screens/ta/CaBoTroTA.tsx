@@ -4,7 +4,7 @@
 // → điểm test theo dạng → nhận xét (mẫu + gõ) + mức → "Hoàn tất ca" (khoá sau khi xong). Mọi số từ fn_btyeu_*.
 // KHÔNG import màn ERP desktop (luật app TA). Class màu literal (Tailwind JIT).
 import { useEffect, useState, type ReactNode } from 'react'
-import { caTA, boDiemDanhYeu, dongCa, hoanTatCa, cauTlnCuaCa, suaKetQuaTln, listPhieuGiayCuaCa, inSinhBaiGiay, inLayBaiGiay, layCheDoCa, datCheDoCa, inTestGiay, type CaTA, type ViecCaBoTro, type ViecRetest, type CauTlnTA, type BaiInGiay, type CheDoCa } from '../../lib/botro_yeu_ca'
+import { caTA, boDiemDanhYeu, dongCa, hoanTatCa, cauTlnCuaCa, suaKetQuaTln, listPhieuGiayCuaCa, inSinhBaiGiay, inLayBaiGiay, layCheDoCa, datCheDoCa, inTestGiay, type CaTA, type ViecCaBoTro, type ViecRetest, type CauTlnTA, type BaiInGiay, type CheDoCa, RETEST_BAT } from '../../lib/botro_yeu_ca'
 import { TrangIn, NhapKetQua } from './PhieuGiayYeuTA'
 import { MathText } from '../kho/ui'
 import { diemDanh, huyBuoi, MUC_CATALOG } from '../../lib/gami'
@@ -378,7 +378,8 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
                   })}
                 </div>
               )}
-              {ca.retest ? <p className="mt-1.5 text-[12px] text-violet-700">📝 Retest đã sinh: {ca.retest.so_cau} câu · làm sau ET {thuCuaNgay(ca.retest.ngay)} {ddmmVN(ca.retest.ngay)} (TA lớp đưa iPad){ca.retest.da_nop ? ' · ✓ đã nộp' : ''}</p>
+              {!RETEST_BAT ? null /* hold retest 29/09 — không sinh, không nhắc */
+                : ca.retest ? <p className="mt-1.5 text-[12px] text-violet-700">📝 Retest đã sinh: {ca.retest.so_cau} câu · làm sau ET {thuCuaNgay(ca.retest.ngay)} {ddmmVN(ca.retest.ngay)} (TA lớp đưa iPad){ca.retest.da_nop ? ' · ✓ đã nộp' : ''}</p>
                 : <p className="mt-1.5 text-[12px] text-amber-700">⚠ Không sinh được retest (lớp em không có buổi thường trong 28 ngày tới) — báo OPS.</p>}
             </div>
           )}
@@ -415,7 +416,7 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
               )}
               {dangMo.length > 0 && (
                 <div className="rounded-xl bg-indigo-50/60 px-3 py-2">
-                  <p className="mb-1 text-[12px] font-bold text-indigo-800">Dạng đã dạy buổi này <span className="font-normal text-indigo-600">— bỏ tick dạng chưa kịp dạy (dạng tick ⇒ chờ retest, bỏ tick ⇒ xếp buổi sau)</span></p>
+                  <p className="mb-1 text-[12px] font-bold text-indigo-800">Dạng đã dạy buổi này <span className="font-normal text-indigo-600">— bỏ tick dạng chưa kịp dạy (dạng tick ⇒ {RETEST_BAT ? 'chờ retest' : 'xong phần dạy'}, bỏ tick ⇒ xếp buổi sau)</span></p>
                   {dangMo.map((d) => (
                     <label key={d.ma_dang} className="flex items-start gap-2 py-0.5 text-[12.5px] text-slate-700">
                       <input type="checkbox" checked={tick.has(d.ma_dang)} onChange={() => doiTick(d.ma_dang)} className="mt-0.5" />

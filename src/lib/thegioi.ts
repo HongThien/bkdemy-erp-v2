@@ -66,3 +66,7 @@ export async function layDanhMuc(): Promise<DanhMucTG[]> {
   if (error) throw error
   return (data ?? []) as DanhMucTG[]
 }
+
+// Thẻ Thế giới BK trên MÀN CHÍNH (thay thẻ "Việc cần làm" — Thùy 29/09): tương tác mới 24h trên tin của em · lời mời · ≤2 tin nổi bật.
+export type TheGioiHome = { tuong_tac: { so: number; so_nguoi: number; nguoi: NguoiTG | null }; loi_moi: number; tin: TinTG[] }
+export const theGioiHome = () => rpc<TheGioiHome | null>('fn_the_gioi_home')
