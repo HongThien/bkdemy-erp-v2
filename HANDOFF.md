@@ -441,6 +441,12 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
 - **Mọi skin mở cho mọi em khối 6–12** (Thùy 28/09 tối: "lớp 6 vẫn thích anime"); nhóm tuổi chỉ là chuẩn thiết kế. Cấp 1 còn HomeCap1 (chờ Thùy).
 - **DB:** `hs_giao_dien` (1 dòng/HS, có dòng khi em chọn) + `hs_giao_dien_log` (trigger = phiếu bầu) · `lich_thi_lon` · RPC `fn_hs_giao_dien_cua_toi` /
   `fn_hs_luu_giao_dien` / `fn_hs_home_912`.
+- **Home khối 6–12 (`HomeHS912`) — dựng theo ảnh gốc #11 (`design/bk-ui-src/Nền app HS cấp 3_11.png`, 29/09):** 2 bố cục chọn theo khổ màn
+  (`useMedia('(min-width:1024px) and (orientation:landscape)')`): **NGANG** (PC/iPad ngang) = nhân vật nửa trái + bong bóng thoại · "Chào tên!" ·
+  banner · lưới icon to 4 cột (≥9 ô ⇒ 5 cột, iPad ngang vừa 2 hàng) · **DỌC** (điện thoại/iPad dọc) = "Chào tên!" → nhân vật + bong bóng → banner →
+  lưới 4 cột ô nhỏ. Nhân vật = hợp đồng Skin `nhanVat {nam, nu}` (RPG: `nv_nam.png` mèo · `nv_nu.png` cú, chọn theo `gioi_tinh`, KHÔNG đổi màu
+  theo giới tính). Nền NGANG phủ tối riêng (`nenNgang` trong rpg.ts — PC từng "chói"). **Bỏ Elo** khỏi Home · **bỏ thẻ "Việc cần làm"** (Thùy: HS ít
+  việc, ô đã có chấm đỏ) ⇒ chỗ đó = **thẻ Thế giới BK** (`fn_the_gioi_home`); thẻ ca bổ trợ VẪN giữ. Bong bóng thoại suy từ viecTiepTheo.
 - **⭐ ĐANG LÀM — Style 2 Thị trấn (Town)** (`spec-giao-dien-hs.md` §9): 27 hình ở `design/bk-ui-src/Style_Town/` đã kiểm 29/09 — ĐỦ 2 ảnh toàn
   cảnh, nền biển + nấm, 3 linh vật, 7 icon ô, banner; THIẾU 5 icon ô (bài trên lớp · BTVN · ET · ví xu heo đất · học từ đầu) + 2 nền kẹo ⇒ đơn bổ sung
   #28–#34 trong `DON-HANG-SKIN-HS.md` (Thùy dán vào đúng context đang vẽ). Code theo §9: ① `styles/town.ts` (SÁNG, Baloo 2) với hình đã có, ô thiếu
@@ -448,7 +454,33 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
   ④ lời chào + Cấp/XP/xu + bong bóng thoại — chặn bởi công thức cấp ở client `src/gami/level.js` phải xuống Postgres trước.
 - **Việc khác còn treo:** Đơn 3 v3 Lo-fi / Đơn 2 Khối vuông (chưa gửi) · cấp 1 có chuyển HomeHS912 không · tầng 2 (màu nhấn, widget).
 - **Nguồn hình RPG:** `design/bk-ui-src/Nền app HS cấp 3_*.png` (ảnh 37 = nền dọc Lâu đài) · ảnh chuẩn `design/handoff/hs-skin-rpg-v1/reference/`.
-- **Verify không có tài khoản HS:** Home: `xem-thu-912.html` (tạm, không commit) · gamification: `hs.html?xem=gami` (đã commit, dữ liệu giả).
+- **Verify không có tài khoản HS:** `hs.html?xem=gami` (đã commit, dữ liệu giả): `man=home&tt=1..3` (Home — mở ở 375 / 820×1180 / 1180×820 / 1440) ·
+  `man=the_gioi&tt=1..13` · `man=nhiem_vu` · `album` · `rank` · `ho_so`. Xem từ worktree: launch.json có `dev-hs-thegioi` (npm --prefix worktree, cổng 5191).
+
+### ⭐ THẾ GIỚI BK — mạng xã hội KHOE nội bộ của HS — ĐÃ BUILD 29/09: DB đã áp hết · app đã push `main` (Thùy deploy tay — đối chiếu bundle prod trước khi kết luận) — ĐỌC `spec-the-gioi-bk.md` §4b + §5
+- **Luật đang chạy (Thùy chốt 29/09):**
+  - **Tin CHÍNH = ĐĂNG BÀI KHOE:** HS có thành tích ⇒ mục "🎉 Thành tích chờ em khoe" (đầu kênh + dòng nhắc ở thẻ Home) ⇒ bấm Khoe ⇒ chọn câu dẫn
+    (không bắt buộc) ⇒ **lên Thế giới** (+ Lớp/Bạn bè) + màn "LÊN SÓNG THẾ GIỚI BK!". Khoe được mọi thành tích đủ chuẩn · hạn 3 ngày · **≤ 3 bài/em/ngày** ·
+    mỗi thành tích 1 lần · em tự gỡ (⋯). Thành tích = tin SUY từ sự kiện thật (`_the_gioi_tin`) ⇒ không bịa được.
+  - **Tin HỆ THỐNG tự đăng:** Thế giới = **chỉ S** (trà sữa · giải tháng · huy hiệu ★4–5) + thẻ gộp A theo loại · **Lớp + Bạn bè = S, A, B có HẠN MỨC**
+    (≤1 tin tự động/em/ngày, A trước B · ≤6 tin tự động/kênh/ngày; S + bài khoe ngoài hạn mức). Xếp: ghim S 24h → ngày lên kênh → S/khoe/A/B.
+  - **Chỉ thành tích tích cực CÓ SỐ:** ET 10đ (bài ≥5 câu) = A · ET 9–9,5đ = B · tự luyện ≥50 câu đúng/ngày = B · Nhất buổi / Nhất game / đội thắng = A ·
+    huy hiệu ★1–3 = A. ĐÃ BỎ "xong N bài". (Đo 28 ngày: ET 10đ 41% nhưng phần lớn bài 1–3 câu ⇒ ngưỡng ≥5 câu; Thử thách 0 lượt; BTVN % chưa ghi.)
+  - **Tương tác kiểu FACEBOOK:** bấm 👍 Thích ⇒ dải 6 cảm xúc + ＋ (22 cảm xúc có tên) · dòng "👍❤️🔥 Em, Hà [9A1] và 12 người khác · 5 bình luận" ⇒ bấm
+    ra danh sách ai thả gì · tấm bình luận (bong bóng, chạm câu/sticker là gửi, KHÔNG chữ tự do) · "Đọc N bình luận" · thẻ gộp "Đọc bình luận (N)" ·
+    ≤3 bình luận/em/tin · chủ tin ẩn bình luận, người viết gỡ. **104 câu** (69 khen · 30 dẫn khoe · 5 cảm ơn), KHÔNG lọc — chỉ xếp câu hợp lên đầu.
+    Sticker tạm = emoji to (Thùy mua bộ sticker ⇒ `the-gioi/sticker/<mã>.png` + `KIT.sticker_tg`).
+  - Tên LUÔN kèm lớp · em chọn hiện Tên/Mã HS · Bạn bè 2 chiều (lời mời → đồng ý) · 👑 Thầy cô khen (hàm có, nút ở app GV chưa làm).
+- **DB (mig áp bằng `--only`):** 202609290108 (lõi) · 0148 (thả cảm xúc + bình luận) · 1006 (`fn_the_gioi_home`) · 1226 (tin chất lượng + `_et_diem_buoi`)
+  · 1233 (bỏ B tự đăng — bị 1323 thay) · 1239 (**bài khoe** `the_gioi_bai_khoe`) · 1305 (thêm câu + bỏ lọc) · 1323 (hạn mức Lớp/Bạn bè).
+  Hàm chính: `fn_the_gioi_kenh(tg|lop|ban)` · `fn_the_gioi_home` · `fn_the_gioi_cho_khoe` / `_khoe` / `_go_khoe` · `fn_the_gioi_tha` · `_binh_luan` ·
+  `_chi_tiet` · `fn_ban_be_*`. Test ROLLBACK mẫu: scratchpad `thu_khoe.cjs` (HS thật qua `tai_khoan.id`).
+- **App:** `src/lib/thegioi.ts` · `screens/hocsinh/thegioi/TheGioiHS.tsx` (VIEW tách container, vá tại chỗ, cột 720px giữa màn trên PC) · mẫu `mauTheGioi.ts` ·
+  ô Home `the_gioi` (icon TẠM `o_pha_le`) + thẻ Thế giới ở Home. Hình Đơn 5 chưa có ⇒ emoji + khung RPG (Thùy: "chưa có hàng thì dùng tạm").
+- **TREO:** cột `the_gioi_khen.cau_ma` thôi dùng (0 dòng) — **chờ Thùy gật xoá cột** · nút khoe ngay ở màn kết quả (hết tự luyện, lớp phủ huy hiệu) ·
+  push HS ("bài khoe của em có 12 tim" — màn Lên sóng KHÔNG hứa push) · Hồ sơ "đã lên Thế giới N lần" · ghim "HOT TUẦN" · tin "lên bậc rank" (cần nhật ký
+  lên bậc) · nút 👑 app GV · cấp 1 chưa có Thế giới · đơn ChatGPT Đơn 5 phải sửa theo khoe + FB (MÀN 4 đã sửa, chưa có nút khoe/màn Lên sóng) ·
+  2 hạn mức (1/em, 6/kênh) + ngưỡng tự luyện 50 câu chờ số liệu thật để chỉnh.
 
 ### ⭐ GAMIFICATION HS — Rank · Thử thách · Nhiệm vụ · Vòng quay · Huy hiệu — ĐÃ BUILD 28/09 (DB đã áp, app CHƯA push/deploy) · phase 1 CHỈ TOÁN
 > Đọc: `spec-thanh-tuu-nhiem-vu.md` **§0** (luật đã chốt, số mới nhất) · `spec-huy-hieu-build.md` (đo 14 thành tựu, schema, RPC) ·
@@ -482,8 +514,12 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
   vào trong Hồ sơ) · mig **`202609290015`** (bảng `hs_huy_hieu_khoe` + `fn_hs_ho_so` + `fn_hs_khoe_dat`, ĐÃ ÁP) · **trang mẫu `hs.html?xem=gami`**
   (mọi màn × trạng thái, dữ liệu giả `gami/mauGami.ts`, `man=bo_hinh` soát hình). Chi tiết: spec §0.7b + §0.8 C11.
 - **Đơn design v3** `design/DON-HANG-GAMI-HS.md`: style Anime RPG · ảnh toàn cảnh duyệt trước → từng hình riêng (1 hình/lượt, #số + tên file, không zip)
-  · bảng đổi tên file giao → file code (bản 48/64/96px Claude tự thu nhỏ). Đơn 5 "Thế giới BK" (phiên khác) cũng nằm trong file này.
+  · bảng đổi tên file giao → file code (bản 48/64/96px Claude tự thu nhỏ). Đơn 5 "Thế giới BK" cũng nằm trong file này (xem mục THẾ GIỚI BK).
   **Hình về:** Claude nén + đổi tên vào `public/bk-ui/hs/gami/` → bật cờ `KIT.*` → soát `?xem=gami&man=bo_hinh` → sửa VIEW theo ảnh toàn cảnh.
+- **29/09 — kit Đơn 1 NHIỆM VỤ ĐÃ GHÉP (`KIT.nhiem_vu = true`):** `design/bk-ui-src/Mission/` #09–24 = 16 icon (N1…vong_quay) · #25–27 TRÙNG #22–24 ·
+  #28 = `fx/sao_moi_sang.png` ⇒ nén 160² vào `gami/nhiem-vu/`. `NhiemVuView` dựng lại theo ảnh toàn cảnh #01 (thẻ viền + tiêu đề ✦, icon to bên trái,
+  "+10 ✦" + vòng tick, Chặng thanh cả tháng mốc 10/20/30, hàng rương nối dây). Đơn 2 (huy hiệu), 3 (bậc), 4 (hồ sơ), 5 (Thế giới) CHƯA về.
+- **Điểm ET 1 buổi = `_et_diem_buoi(tu, den)`** (mig 202609291226) — nguồn công thức DUY NHẤT; nhiệm vụ T2 + tin Thế giới dùng chung (so khớp 100% T9).
 
 **VIỆC TIẾP (theo thứ tự):**
 1. **Thùy:** chốt huy hiệu tháng 7 rồi 8 ở màn Huy hiệu › Chốt tháng (**chỉ admin** — mig 202609282350: DB chặn bằng `co_quyen_ghi('huyhieu')`, hết timeout: chốt T7 ~2s, T8 ~4s) · cấp lá **`huyhieu_trao`** (chỉ tab Trao bản cứng) cho vai GV — **KHÔNG** cấp `huyhieu` cho GV (Thùy 28/09: *"chốt 1 tháng 1 lần bấm tay, không cần GV — GV chỉ được báo trao quà"*) ·
@@ -1732,6 +1768,19 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
 - MT/Đề thi/Bổ trợ yếu/Đánh giá còn đọc `banDoTbl` theo `ma_chuyen_de` — `hinh_hoc_bai` có cột compat (rỗng) nên không vỡ, nhưng logic theo chuyên đề vô nghĩa với Hình học; chưa bật nhánh này ở đó.
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
+
+- **⭐ Màn nhiều dòng nhỏ phải soi CẢ khổ PC, không chỉ 375px (29/09).** Nút bản nhỏ mang `w-full` trong hàng flex giành hết bề ngang ⇒ cột chữ còn
+  vài px, rụng từng chữ (Thế giới BK lọt lên prod). Nút phụ trong hàng = `flex-none`; `w-full` chỉ cho nút thanh hành động. Tương tự: `grid-cols-2`
+  mặc định `minmax(auto,1fr)` ⇒ dòng `truncate` đẩy thẻ tràn/đè thẻ bên ⇒ dùng `grid-cols-[minmax(0,1fr)_minmax(0,1fr)]`.
+- **Sửa hàm DB đang chạy: lấy `pg_get_functiondef` từ DB, KHÔNG từ file migration (29/09).** Hàm có thể đã bị migration sau đè. Thay đúng khúc bằng
+  mốc chữ, ghi migration mới. Tách công thức ra hàm chung ⇒ so kết quả cũ vs mới trên DỮ LIỆU THẬT với ĐÚNG điều kiện gốc (lần so đầu t lệch vì chính
+  câu so thiếu join lớp — không phải hàm sai). Hàm đang chưa có dữ liệu (nhiệm vụ mở 01/10) ⇒ so khúc con, đừng tin "0 = 0".
+- **Script vá file: `replace(/\r\n/g,'\n')` TRƯỚC khi tìm mốc nhiều dòng (29/09).** Repo có file CRLF; mốc `'\n}\n'` không khớp ⇒ `indexOf` = -1 ⇒ dán
+  lặp cả file. Lệnh `node -e "…"` trong bash: backtick trong chuỗi = chạy lệnh (mất chữ im lặng) ⇒ script dài viết ra file .cjs.
+- **Chữ trên màn không hứa tính năng chưa có (29/09).** Màn Lên sóng từng ghi "em nhận thông báo ngay" trong khi push HS chưa làm — soát câu chữ theo
+  những gì ĐANG chạy.
+- **Prod "vẫn lỗi" ⇒ soi bundle đang chạy trước (29/09).** `curl hs.bkacademy.edu.vn` → lấy `/assets/hs-*.js` → grep chuỗi của bản sửa: 2 lần Thùy báo lỗi
+  là do deploy bản trước bản sửa. Main checkout cũng hay chậm commit so với worktree ⇒ `git -C <main> merge --ff-only origin/main` sau mỗi push.
 
 - **⭐⭐ Đơn ChatGPT = ẢNH CHUNG trước + TỪNG HÌNH riêng, và kiểm hàng bằng MẮT (29/09).** Đơn chỉ có mô tả + "nhận zip" là thiếu (Thùy trả).
   Khuôn đúng: A ảnh toàn cảnh/bảng duyệt → DỪNG chờ duyệt → B, C… mỗi lượt 1 hình có "#số tên_file", hình cùng họ vẽ dựa trên hình đã duyệt,
