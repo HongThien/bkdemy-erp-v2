@@ -31368,3 +31368,16 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Cổng: phải đúng mới qua, sai thì chỉ lại chỗ cần nhìn trong vùng vừa bay; câu cổng viết theo cảnh, câu cuối bài lấy từ kho theo dạng.
 - Phát hiện bản đồ KHTN: K9 đủ (183 dạng) nhưng K8 chỉ 3 chủ đề, K7 dừng ở Trao đổi chất; K9 nhảy K091102→K091104 (thiếu 1 chuyên đề).
 - Còn treo: chọn 2 bài pilot theo lịch dạy thật · bản đồ K7/K8 thiếu là cố ý hay chưa nhập · TV nối laptop hay trình duyệt TV · file SGK KNTT.
+
+### 29/09 (15) — Home DỌC có nhân vật (#11 hàng dưới) · iPad ngang 9 ô vừa 2 hàng · bỏ "Việc cần làm" → thẻ THẾ GIỚI BK
+- Thùy "ok" đề xuất (14). ManChinh (điện thoại + iPad dọc) viết lại: avatar + cụm nút → "Chào tên!" 34/50px → nhân vật (h 230/380, mờ chân) +
+  bong bóng thoại bên phải → banner → lưới 4 CỘT ô nhỏ icon giữa (iPad dọc ô to). Hết cảnh iPad dọc trống nửa dưới.
+- iPad ngang 1024–1279: >8 ô ⇒ 5 cột ô gọn (148px, icon 64) — 9 ô vừa 2 hàng không cuộn; ≥1280 ô to như cũ. Cột nhân vật 32%.
+- Thùy: bỏ thẻ "Việc cần làm" (HS ít việc, từng ô đã có chấm đỏ) — chỗ đó hiện thông báo Thế giới BK. Thẻ ca bổ trợ VẪN giữ (ảnh gốc có).
+  Mig 202609291006_the_gioi_home (áp --only, schema.md): fn_the_gioi_home() = tương tác mới 24h của bạn khác trên tin của em (thả + bình luận,
+  không đếm cái đã ẩn/gỡ) + người mới nhất · số lời mời chờ · ≤2 tin nổi bật (S Thế giới → bạn bè → lớp, bỏ tin của chính em, bỏ khối khen).
+  Thử ROLLBACK với HS thật: 228ms; Thăng thả + bình luận tin Vũ ⇒ Vũ thấy so 2 / so_nguoi 1. Client: lib theGioiHome · HocSinhApp tải mỗi lần
+  về Home · HomeHS912 TheTheGioi (icon ô the_gioi của style, 2–3 dòng, badge = tương tác mới + lời mời, bấm mở Thế giới BK); bố cục ngang
+  xếp [ca?] [Thế giới] [kiểm tra lại?] 2 cột (lẻ 3 ⇒ ô đầu trải 2 cột). Bẫy: grid-cols-2 mặc định minmax(auto,1fr) ⇒ dòng truncate đẩy thẻ
+  tràn/đè thẻ bên ⇒ phải minmax(0,1fr). Bong bóng thoại vẫn suy từ viecTiepTheo.
+- Soi 375×812 · 820×1180 · 1180×820 · 1440×900, 0 lỗi console. tsc sạch · check:style-hs ✔.

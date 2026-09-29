@@ -43,7 +43,7 @@ function Avatar({ n, size = 40 }: { n: NguoiTG | null; size?: number }) {
 const TEN_GAME: Record<string, string> = { mo_ruong: 'Mở Rương', chiem_dat: 'Chiếm Đất', ban_qua: 'Bắn Quà' }
 const TEN_GIAI: Record<string, string> = { xuat_sac: 'Xuất sắc', tien_bo: 'Tiến bộ', cham_chi: 'Chăm chỉ' }
 const ddmm = (d: unknown) => { const s = String(d ?? ''); return s.length >= 10 ? `${s.slice(8, 10)}/${s.slice(5, 7)}` : '' }
-function moTaTin(t: TinTG): ReactNode {
+export function moTaTin(t: TinTG): ReactNode {
   const c = t.chi_tiet as Record<string, string | number>
   switch (t.kieu) {
     case 'nhat_buoi': return <><b>Nhất buổi</b> {t.mon} {ddmm(c.ngay)}</>

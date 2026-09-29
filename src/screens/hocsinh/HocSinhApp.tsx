@@ -43,6 +43,7 @@ import ThongTinHocTap from './ThongTinHocTap'
 import SoTayHS from './SoTayHS'
 import ViXuHS from './ViXuHS'
 import TheGioiHS from './thegioi/TheGioiHS'
+import { theGioiHome, type TheGioiHome } from '../../lib/thegioi'
 import RankHS from './RankHS'
 import NhiemVuHS from './NhiemVuHS'
 import AlbumHS from './AlbumHS'
@@ -360,6 +361,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     giaoDienCuaToi().then(setGiaoDien).catch(() => setGiaoDien(GD_MAC_DINH))
   }, [nhom912])
   useEffect(() => { if (nhom912 && !direct && !khu) home912().then(setDuLieu912).catch(() => {}) }, [nhom912, direct, khu])
+  // Thẻ Thế giới BK ở màn chính — tải lại mỗi lần về Home (quay từ Thế giới về là thấy số mới); lỗi thì thẻ vẫn hiện, không số.
+  const [tgHome, setTgHome] = useState<TheGioiHome | null>(null)
+  useEffect(() => { if (nhom912 && !direct && !khu) theGioiHome().then(setTgHome).catch(() => {}) }, [nhom912, direct, khu])
   // Style (skin) của em áp cho TOÀN app, không chỉ Home (Thùy 29/09): biến --sk-* gắn lên <html>, mọi màn đọc qua skin/KhungHS.
   // Cấp 1 chưa có skin riêng ⇒ tạm Soft Hàn sáng.
   useApSkinGoc(nhom912 ? (giaoDien ?? GD_MAC_DINH) : GD_CAP1)
@@ -556,7 +560,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
       mons={lopMons} mon={monChon} onChonMon={doiMon}
       lich={boTro.lich} soRetest={boTro.soRetest} cards={cards}
       onHopThu={() => setDirect('hop_thu')} onDoiMK={() => setDoiMK(true)} onThoat={() => supabase.auth.signOut()}
-      onLich={() => setDirect('lich_bo_tro')} onRetest={() => setDirect('retest')} onHoSo={() => setDirect('ho_so')} gioiTinh={gioiTinh} />
+      onLich={() => setDirect('lich_bo_tro')} onRetest={() => setDirect('retest')} onHoSo={() => setDirect('ho_so')} gioiTinh={gioiTinh}
+      theGioi={tgHome} onTheGioi={() => setDirect('the_gioi')} />
     return <HomeHS hoTen={hoTen} maHS={maHS} lopMon={lopMon} gioiTinh={gt} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
       mons={lopMons} mon={monChon} onChonMon={doiMon}
       lich={boTro.lich} soRetest={boTro.soRetest} cards={cards}
