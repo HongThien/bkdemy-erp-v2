@@ -13,7 +13,7 @@
 // và đếm phần tử đang hiển thị.
 // ============================================================================
 import { useEffect, useState } from 'react'
-import { getBaoCao, ddmm, type BaoCaoTroLy, type MucBaoCao, type CanhBao, type LoaiViec } from '../../lib/troly-baocao'
+import { getBaoCao, ddmm, type BaoCaoTroLy, type MucBaoCao, type CanhBao, type LoaiViec, type TiLeNopBtvn } from '../../lib/troly-baocao'
 
 // Rời tab rồi quay lại = đúng khoảng đang xem, không quét lại (CLAUDE.md §2 React). Sống tới F5.
 const NHO: { soNgay: number; bc: BaoCaoTroLy | null } = { soNgay: 14, bc: null }
@@ -143,14 +143,97 @@ function BangViec({ m }: { m: MucBaoCao }) {
   )
 }
 
+// ── BTVN phần "Trợ giảng chấm": tỉ lệ nộp ĐẠT CHUẨN theo lớp (CEO 29/09) ───────────
+// Bấm Detail là thấy HẾT thông tin của từng lớp: TA chấm, buổi ngày nào, em nào chưa nộp / thiếu
+// thông tin — không bắt bấm thêm lần nữa vào từng lớp. Mặc định chỉ bày lớp dưới ngưỡng.
+function TiLeNop({ r, moSan }: { r: TiLeNopBtvn; moSan?: boolean }) {
+  const [mo, setMo] = useState(!!moSan)
+  const [tatCa, setTatCa] = useState(false)
+  const hien = tatCa ? r.lop : r.lop.filter((l) => l.duoi_nguong)
+  return (
+    <>
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-2 px-3 pb-2.5">
+        <div className="w-[190px] shrink-0 text-[12.5px] text-slate-500">Tỉ lệ nộp đạt chuẩn</div>
+        <So n={r.so_lop_duoi_nguong} nhan={`/ ${r.so_lop} lớp dưới ${r.nguong_pct}%`} mau="do" />
+        <div className="text-[12.5px] text-slate-600">
+          toàn hệ <b className="font-semibold text-slate-900">{r.ti_le_pct ?? '—'}%</b> ({r.dat}/{r.can_co} lượt)
+          · chưa nộp {r.chua_nop} · thiếu thông tin {r.thieu_thong_tin}
+        </div>
+        <div className="ml-auto"><NutDetail mo={mo} onClick={() => setMo((x) => !x)} tat={r.so_lop === 0} /></div>
+      </div>
+      {mo && (
+        <div className="border-t border-slate-200 bg-slate-50/70 px-3 py-2.5">
+          <div className="mb-2 flex flex-wrap items-center gap-1.5">
+            <button onClick={() => setTatCa(false)}
+              className={`rounded-full border px-2.5 py-0.5 text-[12px] font-medium ${!tatCa ? MAU_LOAI.cham : 'border-slate-200 bg-white text-slate-400'}`}>
+              Dưới {r.nguong_pct}% · {r.so_lop_duoi_nguong}
+            </button>
+            <button onClick={() => setTatCa(true)}
+              className={`rounded-full border px-2.5 py-0.5 text-[12px] font-medium ${tatCa ? MAU_LOAI.xong_muon : 'border-slate-200 bg-white text-slate-400'}`}>
+              Tất cả lớp · {r.so_lop}
+            </button>
+          </div>
+          {hien.length === 0 && <div className="text-[12.5px] text-slate-400">Không có lớp nào dưới ngưỡng.</div>}
+          <div className="space-y-2">
+            {hien.map((l) => (
+              <div key={l.ten_lop} className="overflow-hidden rounded-lg border border-slate-200 bg-white">
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5 border-b border-slate-100 bg-slate-50 px-2.5 py-1.5">
+                  <span className="text-[13.5px] font-semibold text-slate-900">{l.ten_lop}</span>
+                  <span className={`text-[13.5px] font-semibold tabular-nums ${l.duoi_nguong ? 'text-rose-600' : 'text-emerald-700'}`}>{l.ti_le_pct ?? '—'}%</span>
+                  <span className="text-[12.5px] tabular-nums text-slate-600">{l.dat}/{l.can_co} lượt đạt · {l.so_buoi} buổi</span>
+                  <span className="text-[12.5px] text-slate-600">TA phụ trách: <b className="font-medium text-slate-800">{l.ta_phan_cong ?? <span className="text-rose-600">chưa phân công</span>}</b></span>
+                </div>
+                {l.buoi.map((b) => (
+                  <div key={b.ngay} className="border-b border-slate-100 px-2.5 py-1.5 last:border-0">
+                    <div className="flex flex-wrap items-baseline gap-x-3 text-[12.5px]">
+                      <span className="font-medium text-slate-800">Buổi {ddmm(b.ngay)}</span>
+                      <span className="tabular-nums text-slate-700">{b.dat}/{b.can_co} đạt ({b.ti_le_pct ?? '—'}%)</span>
+                      <span className="text-slate-500">hạn chấm {b.han ?? '—'}</span>
+                      <span className={b.da_dong ? 'text-slate-500' : 'font-medium text-rose-600'}>{b.da_dong ? `đóng ${b.dong_luc}` : 'CHƯA ĐÓNG'}</span>
+                      <span className="text-slate-500">người chấm: {b.nguoi_cham ?? 'chưa có dòng chấm'}</span>
+                    </div>
+                    {b.hs.length > 0 && (
+                      <div className="mt-0.5 space-y-0.5 pl-3">
+                        {b.hs.map((h) => (
+                          <div key={h.ho_ten} className="flex flex-wrap items-baseline gap-x-2 text-[12.5px]">
+                            <span className="font-medium text-slate-800">{h.ho_ten}</span>
+                            <span className={h.nhom === 'thieu' ? 'text-amber-700' : 'text-rose-600'}>{h.ly_do}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+          <ul className="mt-2 list-disc space-y-0.5 pl-4 text-[11.5px] leading-relaxed text-slate-400">
+            {r.cach_tinh.map((g, i) => <li key={i}>{g}</li>)}
+          </ul>
+        </div>
+      )}
+    </>
+  )
+}
+
+const TieuDePhan = ({ children }: { children: string }) => (
+  <div className="px-3 pb-1 pt-2 text-[11.5px] font-semibold uppercase tracking-wide text-slate-400">{children}</div>
+)
+
 // ── Một MỤC = đủ 3 luồng ─────────────────────────────────────────────────────
+// Mục nào có `ti_le_nop` (hiện là BTVN) thì chia HAI PHẦN theo người bị đo (CEO 29/09):
+// phần trợ giảng chấm (việc + tỉ lệ nộp) và phần học sinh làm bài (các cảnh báo về học sinh).
 function Muc({ m, moSan }: { m: MucBaoCao; moSan?: boolean }) {
   const [mo, setMo] = useState(!!moSan)
   const coViec = m.cham + m.miss + m.xong_muon + m.hs_khong_den > 0 || m.thong_so.length > 0
+  const haiPhan = !!m.ti_le_nop
   return (
     <div className="border-t border-slate-200 first:border-t-0">
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2 px-3 py-2.5">
-        <div className="w-[190px] shrink-0 text-[14px] font-semibold text-slate-800">{m.ten}</div>
+        <div className="w-[190px] shrink-0 text-[14px] font-semibold text-slate-800">
+          {m.ten}
+          {haiPhan && <div className="text-[11.5px] font-normal text-slate-500">trợ giảng chấm bài</div>}
+        </div>
         <So n={m.cham} nhan="đang chậm" mau="do" />
         <So n={m.miss} nhan="miss" mau="vang" />
         {m.hs_khong_den > 0 && <So n={m.hs_khong_den} nhan="học sinh không đến" mau="xanh" />}
@@ -158,10 +241,14 @@ function Muc({ m, moSan }: { m: MucBaoCao; moSan?: boolean }) {
         <div className="ml-auto"><NutDetail mo={mo} onClick={() => setMo((x) => !x)} tat={!coViec} /></div>
       </div>
       {mo && <BangViec m={m} />}
+      {m.ti_le_nop && <TiLeNop r={m.ti_le_nop} moSan={moSan} />}
       {m.canh_bao.length > 0 && (
-        <div className="space-y-1.5 px-3 pb-2.5">
-          {m.canh_bao.map((c) => <DongCanhBao key={c.ma} c={c} moSan={moSan} />)}
-        </div>
+        <>
+          {haiPhan && <div className="border-t border-dashed border-slate-200"><TieuDePhan>Học sinh làm BTVN</TieuDePhan></div>}
+          <div className="space-y-1.5 px-3 pb-2.5">
+            {m.canh_bao.map((c) => <DongCanhBao key={c.ma} c={c} moSan={moSan} />)}
+          </div>
+        </>
       )}
     </div>
   )

@@ -31447,3 +31447,25 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **⚠ Chưa đụng, cần biết:** `fn_viec_buoi_thuong` VẪN sinh task "chấm bài trên lớp" cho buổi trước 01/10 (màn Việc của tôi + hiệu suất/gậy vẫn tính) —
   báo cáo bỏ qua nhưng engine việc thì chưa; sửa engine là việc khác, phải hỏi.
 - **VIỆC TIẾP:** mẫu báo cáo Vận hành của Lộc · đưa nhánh lên main + 1 trong 3 người mở tab xác nhận · gửi báo cáo chủ động buổi sáng · nối khung hỏi.
+
+## 2026-09-29 (14) — TRỢ LÝ: mục BTVN tách 2 phần — thêm "TRỢ GIẢNG chấm BTVN": tỉ lệ nộp đạt chuẩn theo lớp (worktree troly-hoi-duoc)
+
+- **CEO:** *"Phần BTVN nó có 2 phần: 1. học sinh làm BTVN như nào — đã có rồi đấy. 2. Trợ giảng đang chấm BTVN như nào: chưa có. M cần thêm thông tin về
+  việc: các lớp nào đang có tỉ lệ nộp BTVN tệ, ví dụ 4/10 nộp là 40%. Click vào detail thì hiện toàn bộ thông tin của từng lớp: TA chấm bài, buổi học ngày
+  nào, học sinh nào chưa nộp/thiếu thông tin. Thiếu thông tin cũng tính là chưa đạt chuẩn dữ liệu nhé."*
+- **Kiểm dữ liệu trước khi định nghĩa "đạt chuẩn"** (btvn_ket_qua 30 ngày, buổi thường): mọi buổi có kết quả đều có câu chấm; `ti_le_dung` KHÔNG ai dùng
+  (0 dòng) ⇒ "có điểm" = có dòng `gami_grades` phase btvn. Đã nộp mà thiếu thái độ 13 dòng · đã nộp mà không có điểm 31 dòng · trạng thái nộp trống 1 dòng.
+  `gami_grades.graded_by` khớp `tai_khoan.id` 27.255/27.289 dòng (KHÔNG khớp `nhan_su.id`) ⇒ người chấm thực tế tra qua `tai_khoan`.
+- **Định nghĩa:** đạt = đã nộp (đúng hạn/muộn) + đã tick thái độ + có điểm chấm. Không đạt chia 2 nhóm: `chua_nop` (không làm · xin phép) và `thieu`
+  (chưa có dòng · chưa tick trạng thái nộp · đã nộp nhưng thiếu thái độ/điểm). Mẫu số = em có mặt buổi giao ∪ em có dòng BTVN. Chỉ buổi đã đóng BTVN hoặc
+  quá hạn chấm. Ngưỡng lớp "tệ" TẠM 70% — số chờ CEO chốt.
+- **DB — mig `202609291026_troly_btvn_ti_le_nop`** (đã áp `--only`): `_troly_bc_btvn_ti_le` (lớp → buổi → học sinh không đạt, kèm TA phân công + người chấm
+  thực tế) · `_troly_bc_them` (chỗ gom phần thêm của từng mục — lần sau bổ sung 1 mục chỉ thay hàm này, khỏi chép lại `fn_troly_bao_cao`) ·
+  `fn_troly_bao_cao` trộn `them` vào JSON mục. Chỉ thêm khoá, không đổi khoá cũ.
+- **SỐ THẬT 16–29/09:** 36 lớp / 65 buổi đã tới lượt chấm · 420/573 lượt đạt (73%) · chưa nộp 100 · thiếu thông tin 53 · **12/36 lớp dưới 70%**. Tệ nhất:
+  12A1 6% (1/16, toàn "không làm") · 7B1 32% (10 lượt thiếu thông tin) · 8A2 33% (6 thiếu thông tin) · 9A1 48% (11 thiếu thông tin) · 9B2 48% (11 chưa nộp).
+  ⇒ hai kiểu "tệ" khác hẳn nhau: lớp HS không làm (12A1, 9B2) và lớp TA nhập thiếu (7B1, 8A2, 9A1) — báo cáo tách được nhờ 2 nhóm lý do.
+- **App:** `BaoCao.tsx` — mục BTVN có nhãn phụ "trợ giảng chấm bài", thêm dòng "Tỉ lệ nộp đạt chuẩn" (số lớp dưới ngưỡng + tỉ lệ toàn hệ + nút Detail);
+  Detail bày thẳng từng lớp → từng buổi → từng em không đạt kèm lý do, chip "Dưới 70%" / "Tất cả lớp"; cảnh báo về học sinh nằm dưới tiêu đề "Học sinh làm
+  BTVN". `troly-baocao.ts` thêm kiểu `TiLeNopBtvn`. SPEC §6.3b.
+- **Kiểm:** áp thử + rollback → áp thật · tsc sạch · vite build qua · dựng SSR 2 bản bằng JSON thật, đọc lại phần chữ. Vẫn chưa kiểm trên app/RLS.

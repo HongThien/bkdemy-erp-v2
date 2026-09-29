@@ -157,6 +157,18 @@ Chỉ 3 người dùng trợ lý: Thùy · Thùy Trang · Bảo Lộc (`troly_du
 - Người phụ trách + hạn của việc sau buổi: lấy từ `fn_viec_buoi_thuong`, không định nghĩa lại.
 - "Không có đề" chỉ là miss với lớp thật sự chạy khâu đó (≥60% buổi/60 ngày) — luật §2 giữ nguyên.
 
+### 6.3b Mục BTVN có HAI phần — đo hai người khác nhau (CEO chốt 29/09)
+
+1. **Học sinh làm BTVN như nào** — cảnh báo về học sinh: không làm lặp lại · thái độ · điểm thấp hơn hẳn lớp.
+2. **Trợ giảng đang chấm BTVN như nào** — việc chậm/miss của TA **+ tỉ lệ nộp ĐẠT CHUẨN theo lớp**
+   (vd 4/10 = 40%). Detail hiện hết thông tin từng lớp: TA chấm bài · buổi học ngày nào · học sinh nào
+   chưa nộp / thiếu thông tin.
+
+**"Thiếu thông tin cũng tính là chưa đạt chuẩn dữ liệu."** Một em ĐẠT khi đủ cả ba: đã nộp (đúng hạn/
+muộn) · đã tick thái độ · có điểm chấm câu. Mẫu số = em có mặt buổi giao bài + em vắng mà vẫn có dòng
+BTVN. Chỉ tính buổi đã đóng BTVN hoặc đã quá hạn chấm.
+*Bàn sau (số, chưa chốt):* ngưỡng lớp "tệ" đang tạm 70% (`_troly_bc_gia_dinh().btvn_ti_le_nop_toi_thieu`).
+
 ### 6.4 Còn thiếu nguồn dữ liệu (báo cáo nói thẳng, không bịa — luật §3)
 
 "HS làm bài chậm hơn lớp" (ô tốc độ chưa ai nhập) · "không làm BTVN đã tác động đến đâu" (chưa có chỗ

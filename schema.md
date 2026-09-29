@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-294 bảng · 19 view · 0 enum · 100 trigger · 654 function
+294 bảng · 19 view · 0 enum · 100 trigger · 656 function
 
 ## _app_secrets
 
@@ -5861,9 +5861,11 @@ SELECT bl.hoc_sinh_id,
 - `_trg_ta_buoi_hoc_push()` → trigger
 - `_trg_ta_retest_push()` → trigger
 - `_trg_tai_lieu_duyet_log()` → trigger
+- `_troly_bc_btvn_ti_le(p_tu date, p_den date)` → jsonb
 - `_troly_bc_ca_yeu(p_tu date, p_den date)` → TABLE(ngay date, gio time without time zone, mon text, nguoi_day text, ho_ten text, ten_lop text, ket_qua text, ly_do_huy text, khoa_ca text)
 - `_troly_bc_canh_bao(p_tu date, p_den date)` → jsonb
 - `_troly_bc_gia_dinh()` → jsonb
+- `_troly_bc_them(p_tu date, p_den date)` → jsonb
 - `_troly_bc_thong_so(p_tu date, p_den date)` → jsonb
 - `_troly_bc_viec_bu(p_tu date, p_den date)` → TABLE(muc text, loai text, ngay date, doi_tuong text, viec text, phu_trach text, han timestamp with time zone, xong_luc timestamp with time zone, tinh_trang text)
 - `_troly_bc_viec_buoi(p_tu date, p_den date)` → TABLE(muc text, loai text, ngay date, doi_tuong text, viec text, phu_trach text, han timestamp with time zone, xong_luc timestamp with time zone, tinh_trang text)
@@ -6407,9 +6409,9 @@ SELECT bl.hoc_sinh_id,
 - `trg_thu_thach_nop()` → trigger
 - `troly_duoc_dung()` → boolean
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 

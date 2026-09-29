@@ -33,8 +33,28 @@ export type CanhBao = {
   chi_tiet: { chinh: string; phu: string | null; noi_dung: string }[]
 }
 
+// BTVN phần "trợ giảng chấm bài": tỉ lệ nộp ĐẠT CHUẨN theo lớp (CEO 29/09).
+// Một em đạt khi đủ cả ba: đã nộp · đã tick thái độ · có điểm chấm. Thiếu thông tin = không đạt.
+export type TiLeNopBtvn = {
+  nguong_pct: number; so_lop: number; so_lop_duoi_nguong: number; so_buoi: number
+  can_co: number; dat: number; chua_nop: number; thieu_thong_tin: number; ti_le_pct: number | null
+  lop: {
+    ten_lop: string; mon: string; ta_phan_cong: string | null
+    so_buoi: number; can_co: number; dat: number; chua_nop: number; thieu_thong_tin: number
+    ti_le_pct: number | null; duoi_nguong: boolean
+    buoi: {
+      ngay: string; han: string | null; da_dong: boolean; dong_luc: string | null
+      nguoi_cham: string | null   // người THỰC TẾ chấm — có thể khác TA được phân công
+      can_co: number; dat: number; chua_nop: number; thieu_thong_tin: number; ti_le_pct: number | null
+      hs: { ho_ten: string; ly_do: string; nhom: 'chua_nop' | 'thieu' }[]   // chỉ em KHÔNG đạt
+    }[]
+  }[]
+  cach_tinh: string[]
+}
+
 export type MucBaoCao = {
   ma: string; ten: string
+  ti_le_nop?: TiLeNopBtvn       // chỉ mục BTVN có
   cham: number; miss: number; xong_muon: number; hs_khong_den: number
   thong_so: { nhan: string; gia_tri: string | number }[]   // số riêng của mục, không phải chậm/miss
   viec: ViecBaoCao[]
