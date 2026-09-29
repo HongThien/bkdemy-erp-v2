@@ -488,7 +488,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const lopCuaMon = lopMons.find((l) => l.mon === monChon)
   const lopMon = lopCuaMon ? `${lopCuaMon.ten_lop} · ${lopCuaMon.mon}` : tests?.[0] ? `${tests[0].lop_ten} · ${tests[0].mon}` : null
 
-  const CHU_DUOI: Partial<Record<KhuId, string>> = { tu_luyen: 'Luyện theo dạng yếu', thong_tin: 'Dạng đang yếu', xep_hang: 'Thi đua tự luyện', so_tay: 'Tra lý thuyết & bài mẫu', the_gioi: 'Khoe thành tích · kết bạn' }
+  const CHU_DUOI: Partial<Record<KhuId, string>> = { tu_luyen: 'Luyện theo dạng yếu', thong_tin: 'Dạng đang yếu', xep_hang: 'Thi đua tự luyện', so_tay: 'Tra lý thuyết & bài mẫu', the_gioi: 'Xem HS BK đang khoe gì' }
 
   // ── MÀN CHÍNH: ô vuông (theo cấp/khối), 2 cột ─────────────────────────────
   if (!khu && (cap1 === null || cap2 === null || nhom912 === null || (nhom912 && giaoDien === undefined))) return <ManCho>Đang tải…</ManCho>
@@ -528,7 +528,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
             : k.id === 'thong_tin' ? ['Dạng đang yếu', 'xam']
             : k.id === 'so_tay' ? ['Tra lý thuyết & bài mẫu', 'xam']
             : k.id === 'vi_xu' ? ['Xem xu & lịch sử', 'xam']
-            : k.id === 'the_gioi' ? ['Khoe thành tích · kết bạn', 'xam']
+            : k.id === 'the_gioi' ? ['Xem HS BK đang khoe gì', 'xam']
             : ['', 'xam']
           const badge = k.id === 'may_man' && maymanCoLuot ? 1 : 0
           return {
