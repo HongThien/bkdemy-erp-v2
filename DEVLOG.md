@@ -31934,6 +31934,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   ở khổ ngang 1600×900 bảng 7 dòng (Kết quả học tập) phóng 1,44 lần, vừa khít, KHÔNG cuộn · Esc thoát về màn thường.
   CHƯA kiểm: toàn màn hình thật của trình duyệt (khung xem thử không giữ được) và bút trình chiếu.
 
+### 29/09 — Distill game lên HANDOFF (Thùy: "ghi vào md và tổng kết")
+- HANDOFF ① game: bỏ luật "quà 1–2 nhỏ", thêm chia ngẫu nhiên + số giả lập, tỉ lệ trà sữa 1/0,5/0,1%, tín hiệu `xong`, fix focus Cast.
+- HANDOFF ②: mở rộng bài "màn công khai không lộ kết quả" (list ERP cũng là màn công khai) + bài "thứ tự mở không được tiết lộ kết quả".
+
 ## 2026-09-29 (22) — TRỢ LÝ: distill lên HANDOFF + ghi spec (Thùy: "ghi vào md và tổng kết handoff đi")
 
 - **HANDOFF.md — CHỈ đụng phần trợ lý** (các mục khác thuộc phiên khác đang chạy song song, giữ nguyên):
