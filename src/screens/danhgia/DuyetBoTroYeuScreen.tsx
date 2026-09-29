@@ -8,6 +8,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import { listCandidatesLop, type Candidate } from '../../lib/danhgia'
 import { DuyetKhoi, CandidateDetailBody, CandidateHeader } from './DashboardHocTapScreen'
+import { laySucChua, type SucChua } from '../../lib/botro_yeu'
 
 type CandLop = Candidate & { ten_lop: string }
 
@@ -23,6 +24,10 @@ export default function DuyetBoTroYeuScreen() {
   const [khoi, setKhoi] = useState<string>(NHO.khoi)
   const [cands, setCands] = useState<CandLop[]>(NHO.cands ?? [])
   const [loading, setLoading] = useState(false)
+  // Thùy 29/09: trần 50 em đang bổ trợ · 20 em Cao (DB chặn cứng) — hiện bộ đếm để người duyệt biết còn bao nhiêu chỗ
+  const [sucChua, setSucChua] = useState<SucChua | null>(null)
+  const napSucChua = () => { laySucChua().then(setSucChua).catch(() => {}) }
+  useEffect(napSucChua, [])
   const secRef = useRef<HTMLElement>(null)
   const coCache = useRef(NHO.cands != null)
 
@@ -89,6 +94,16 @@ export default function DuyetBoTroYeuScreen() {
               <button onClick={reload} disabled={loading} title="Quét lại từ dữ liệu mới nhất"
                 className="rounded-lg border border-slate-200 bg-white px-2 py-0.5 text-[12px] text-slate-500 hover:bg-slate-100 disabled:opacity-50">↻</button>
             </div>
+            {sucChua && (
+              <div className="mt-1.5 flex flex-wrap items-center gap-1.5 text-[12px]">
+                <span className={`rounded-full px-2.5 py-0.5 font-bold ${sucChua.dang >= sucChua.tran ? 'bg-rose-600 text-white' : 'border border-slate-300 bg-white text-slate-700'}`}>
+                  Đang bổ trợ {sucChua.dang}/{sucChua.tran}</span>
+                <span className={`rounded-full px-2.5 py-0.5 font-bold ${sucChua.cao >= sucChua.tran_cao ? 'bg-rose-600 text-white' : 'border border-slate-300 bg-white text-slate-700'}`}>
+                  Ưu tiên Cao {sucChua.cao}/{sucChua.tran_cao}</span>
+                <span className="text-slate-500">
+                  {sucChua.dang >= sucChua.tran ? 'Đã đầy — muốn thêm em phải hạ L0 / huỷ 1 em cũ ở Xếp hoặc Trạng thái ca.' : `còn ${sucChua.tran - sucChua.dang} chỗ`}</span>
+              </div>
+            )}
             <p className="mt-0.5 text-[12px] text-slate-500">Hàng đợi xuyên lớp — chỉ candidate có tín hiệu kiến thức (dạng/so-lớp/báo động).</p>
           </div>
           <div className="flex items-center gap-2">
@@ -120,7 +135,7 @@ export default function DuyetBoTroYeuScreen() {
                       về đầu + HS vừa duyệt lại hiện vì tín hiệu chưa đổi). Card kế tiếp trượt lên đúng vị trí
                       đang đứng → duyệt tiếp luôn. Đổi môn/khối mới quét lại. (CLAUDE.md §2 React) */}
                   <DuyetKhoi c={c} loai="kien_thuc" ten="Level kiến thức" hienTai={c.sheet.levelKienThuc} deXuat={c.deXuatKienThuc}
-                    onXong={(kq) => setCands((prev) => prev.filter((x) => x.hoc_sinh_id !== kq.hocSinhId))} />
+                    onXong={(kq) => { setCands((prev) => prev.filter((x) => x.hoc_sinh_id !== kq.hocSinhId)); napSucChua() }} />
                 </CandidateDetailBody>
               </div>
             ))}

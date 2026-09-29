@@ -261,3 +261,20 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
 - **DB (mig 202609291219):** mọi `fn_btyeu_*` chọn bảng câu/lý thuyết/bản đồ/cụm theo `_kho_nhanh_cua_dang(mon, ma_dang)` của TỪNG dạng (mẫu `fn_duoi_*`);
   tên dạng qua `_kho_ten_dang`. Tạo `hinh_hoc_cum_tien_de` (rỗng, đúng shape) cho màn ca HS. Case chỉ có Đại: `fn_btyeu_ca_ta`/`ca_cua_toi`/`in_lay`
   cho ra JSON y hệt bản cũ (đo trên 60 ca + 30 bài thật).
+
+## 14. Cập nhật 29/09 — reset duyệt lại · trần 50/20 · sửa mức + ưu tiên ở mọi màn
+
+- **Reset (Thùy "OK reset", mig 202609291556_btyeu_reset_duyet_lai):** GIỮ 25 em đang có lịch (case mở có buổi chưa đóng ca). 72 em còn lại
+  về L0: đóng 55 case Cần xếp (`ket_qua 'bo'`, ghi chú "Reset 29/09 — chờ duyệt lại") + 17 em đã `day_xong` còn L1; xoá 71 dòng `hs_level`; ghi
+  72 log `hs_level_log` với `ly_do_may.nguon = 'reset_duyet_lai'`; đóng 8 retest mở của case bị đóng. Không xoá dạng/bài/buổi/retest.
+- **Hàng đợi Duyệt:** log kiến thức MỚI NHẤT của em (`fn_btyeu_log_kt_moi_nhat`) là `reset_duyet_lai` ⇒ em LUÔN vào hàng đợi (chip vàng
+  "↺ Reset — duyệt lại"), kể cả không còn tín hiệu, kể cả sang cửa sổ sau — tới khi người duyệt chốt (kể cả giữ L0). Log reset KHÔNG tính
+  "đã duyệt trong cửa sổ". Đo 29/09: 69/72 hiện (3 thiếu = 2 em đã nghỉ + 1 tài khoản TEST — đúng).
+- **Trần sức chứa (mig 202609291556_btyeu_suc_chua_50_20):** ≤ **50 em đang bổ trợ yếu cùng lúc** (case `dang_xu`, mọi môn), trong đó ≤ **20 ưu
+  tiên Cao**. Không cộng dồn theo tuần: tuần cũ còn 15 em thì chỉ duyệt thêm 35. Chặn CỨNG bằng trigger `trg_btyeu_suc_chua` (insert / mở lại
+  case / nâng ưu tiên lên Cao; advisory lock chống 2 người duyệt cùng lúc). Hằng số 1 chỗ: `_btyeu_tran_dang()` / `_btyeu_tran_cao()`.
+  Duyệt kiểm TRƯỚC bằng `fn_btyeu_kiem_suc_chua` (không ghi L1 mà không mở được case); màn Duyệt hiện "Đang bổ trợ x/50 · Ưu tiên Cao y/20".
+  Muốn thêm em khi đầy: hạ L0 / huỷ 1 em cũ, hoặc hạ ưu tiên 1 em Cao.
+- **Sửa ở mọi màn — 1 nguồn:** control chung `src/screens/botro/MucUuTienCase.tsx` (mức → `fn_btyeu_doi_level`, ưu tiên → `bo_tro_yeu.uu_tien`,
+  lỗi trần hiện ngay tại chỗ). Gắn ở: card Xếp · popup Trạng thái ca · hàng chờ Yếu trong popup "+ Xếp" của Lịch phòng. Giai đoạn (Cần xếp /
+  Đã xếp / Hoàn thành) là derive, không sửa tay. Chưa gắn: dòng em đã nằm trong ca ở Lịch phòng (RPC ca chưa trả case id).

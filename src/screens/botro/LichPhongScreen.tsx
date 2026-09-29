@@ -11,6 +11,7 @@ import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listPhong, type Phong } from '../../lib/phong'
 import SearchSelect from '../../components/SearchSelect'
 import TheoDoiCaBoTroTab, { TT, trangThai } from '../danhgia/TheoDoiCaBoTroTab'
+import MucUuTienCase, { type DoiMucUuTien } from './MucUuTienCase'
 
 const hhmm = (t: string | null | undefined) => (t ? String(t).slice(0, 5) : '')
 const KHUNG_GIO = Array.from({ length: (22 - 6) * 2 + 1 }, (_, i) => `${String(6 + Math.floor(i / 2)).padStart(2, '0')}:${i % 2 ? '30' : '00'}`)
@@ -211,6 +212,11 @@ function UngVienModal({ ca, onDong, onXep }: { ca: CaBoTro; onDong: () => void; 
   useEffect(() => { ungVienCa(ca.id).then((d) => { setData(d); if (!d.duoi.length) setTab(d.bu.length ? 'bu' : 'yeu') }).catch((e: any) => setLoi(e?.message ?? String(e))) }, [ca.id])
   const list = data ? data[tab].filter((u) => !daXep.has(`${u.loai}|${u.hoc_sinh_id}`)) : []
   const con = ca.don_vi - ca.don_vi_dung
+  // Thùy 29/09: sửa mức/ưu tiên em Yếu ngay trong hàng chờ (control chung) — hạ L0 ⇒ rời hàng chờ; đổi ưu tiên ⇒ sắp lại
+  function vaMuc(u: UngVien, kq: DoiMucUuTien) {
+    setData((d) => d && { ...d, yeu: kq.dongCase ? d.yeu.filter((x) => x.ref_id !== u.ref_id)
+      : d.yeu.map((x) => x.ref_id === u.ref_id ? { ...x, level: kq.level, uu_tien: kq.uuTien, don_vi: kq.level === 1 ? 1 : 4 } : x).sort((a, b) => (b.uu_tien ?? 2) - (a.uu_tien ?? 2)) })
+  }
   async function xep(u: UngVien) { setBusy(u.ref_id); const ok = await onXep(u); setBusy(null); if (!ok) setLoi('Không xếp được — xem lỗi ở màn chính.') }
   return (
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/50 p-4" onClick={onDong}>
@@ -237,6 +243,7 @@ function UngVienModal({ ca, onDong, onXep }: { ca: CaBoTro; onDong: () => void; 
                   </div>
                   <div className="text-[12px] text-slate-500">{u.chi_tiet}{u.ta_lop_ten ? ` · TA lớp: ${u.ta_lop_ten}${u.ta_dang_truc ? ' (đang trực ✓)' : ''}` : ''}{u.da_xep_ngay_khac ? ' · đã có buổi ngày khác' : ''}</div>
                 </div>
+                {u.loai === 'yeu' && <MucUuTienCase caseId={u.ref_id} hoTen={u.ho_ten} level={u.level ?? 1} uuTien={((u.uu_tien ?? 2) as 1 | 2 | 3)} onDoi={(kq) => vaMuc(u, kq)} />}
                 <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${LOAI_CLS[u.loai]}`}>{LOAI_TEN[u.loai]}{u.level ? ` L${u.level}` : ''} · {u.don_vi}</span>
                 {u.vua ? <button disabled={busy === u.ref_id} onClick={() => xep(u)} className="rounded-lg bg-indigo-600 px-3 py-1 text-[12px] font-bold text-white hover:bg-indigo-700 disabled:opacity-50">{busy === u.ref_id ? '…' : '+ Xếp'}</button>
                   : <span className="rounded-lg border border-slate-200 px-2 py-1 text-[11.5px] text-slate-400" title={u.ly_do_khong_vua ?? ''}>{u.ly_do_khong_vua ?? 'không vừa'}</span>}

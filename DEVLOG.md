@@ -31951,3 +31951,17 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **CLAUDE.md:** thêm dòng trỏ `SPEC-troly-nhansu.md` vào danh sách spec bắt buộc đọc.
 - **SPEC-troly-nhansu.md §7.1c:** thêm luật trình chiếu mỗi bảng một màn.
 - Bản cũ của mục 12/08 vẫn nằm trong lịch sử git của HANDOFF.md (commit trước commit này).
+
+## 2026-09-29 (chiều) — Bổ trợ yếu: reset duyệt lại · trần 50/20 · sửa mức + ưu tiên ở mọi màn (Thùy)
+
+- **Yêu cầu:** reset mọi trạng thái bổ trợ yếu về L0 cho Trang duyệt lại (giữ em đã xếp lịch); trần 50 em / 20 Cao, không duyệt quá; sửa ưu
+  tiên + trạng thái ở mọi chỗ, trạng thái derive.
+- **Làm:** mig `202609291556_btyeu_reset_duyet_lai` (chạy thử rollback trước: giữ 25 · log 72 · đóng 55 case · xoá 71 hs_level · đóng 8 retest;
+  migration tự raise nếu số lệch) + `202609291556_btyeu_suc_chua_50_20` (trigger + `fn_btyeu_suc_chua` + `fn_btyeu_kiem_suc_chua`). Chạy thử trần
+  Cao: nâng 19 em lên Cao ⇒ em thứ 20 bị chặn "Đã đủ 20/20" (rollback). Sau áp: còn 25 em có mức, 25 case mở, 1 Cao.
+- **Client:** `danhgia.ts` — `mapDaDuyetKienThucCuaSoNay` đọc log MỚI NHẤT qua RPC; log reset ⇒ `resetDuyetLai` (vào hàng đợi, +50 ưu tiên đọc)
+  thay vì "đã duyệt". Bẫy đã tránh: bản cũ lấy BẤT KỲ log nào trong cửa sổ ⇒ log reset sẽ làm 72 em biến khỏi hàng đợi; và em duyệt 20/09 rồi
+  reset 29/09 sẽ bị coi là "đã duyệt". `DuyetKhoi` kiểm trần trước khi ghi level + hiện lỗi (trước đây lỗi bị nuốt, chỉ `finally`).
+  Control chung `MucUuTienCase` thay select + chip ưu tiên cũ ở Xếp (lỗi đổi ưu tiên trước đây revert im lặng).
+- **Kiểm trên app (admin, local 5192):** Duyệt 75 ca, 69 chip reset, bộ đếm 25/50 · 1/20 · còn 25 chỗ; Xếp: Cần xếp 0 · Đã xếp 25 · Hoàn thành
+  106, 25 card có control; popup Trạng thái ca có control; console 0 lỗi. Chưa bấm thử đổi mức/ưu tiên trên dữ liệu thật.

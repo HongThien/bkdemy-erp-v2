@@ -12,7 +12,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
   listCaseChoXepLich, taoBuoiBoTroYeu, listBuoiCuaCase, goiYXepLichBoTroYeu,
-  listLichTruc, themLichTruc, ketThucLichTruc, lichTrucCuaHS, goiYTheoLichTruc, caSapToi, khoaCa, caTrucConCho, datUuTienCase, UU_TIEN_TEN, deXuatDangMoi, themDangMayVaoCase, donCaKhongDienRa, buRetestTon, doiLevelCase, GIAI_DOAN_TEN, RETEST_BAT, KET_QUA_CASE_TEN, type UuTienCase, type DangMayDeXuat,
+  listLichTruc, themLichTruc, ketThucLichTruc, lichTrucCuaHS, goiYTheoLichTruc, caSapToi, khoaCa, caTrucConCho, deXuatDangMoi, themDangMayVaoCase, donCaKhongDienRa, buRetestTon, GIAI_DOAN_TEN, RETEST_BAT, KET_QUA_CASE_TEN, type DangMayDeXuat,
   type CaseChoXep, type BuoiBoTroYeuDaXep, type BuoiChoHoc, type GoiYXepLich, type LichTruc, type CaTrucDeXuat, type CaSapToi,
 } from '../../lib/botro_yeu'
 import { supabase } from '../../lib/supabase'
@@ -22,10 +22,10 @@ import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listPhong, kiemTraTrungPhong, type Phong, type KhoiBanPhong } from '../../lib/phong'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import SearchSelect, { norm } from '../../components/SearchSelect'
+import MucUuTienCase, { MUC_TEN, MUC_CLS, type DoiMucUuTien } from '../botro/MucUuTienCase'
 import RetestTab from './RetestTab'
 
-const MUC_TEN: Record<number, string> = { 1: 'Mức 1 · trước/sau giờ', 2: 'Mức 2 · buổi riêng (TA)', 3: 'Mức 3 · buổi riêng (GV cao cấp)' }
-const MUC_CLS: Record<number, string> = { 1: 'bg-slate-100 text-slate-600', 2: 'bg-amber-50 text-amber-700', 3: 'bg-rose-50 text-rose-700' }
+// Mức + ưu tiên: control DÙNG CHUNG mọi màn (Thùy 29/09 "sửa ở bất kỳ chỗ nào", 1 nguồn) — src/screens/botro/MucUuTienCase.tsx
 const THOI_LUONG_MAC_DINH = 60 // phút — cùng mặc định với buổi bù (BoTroScreen `cong60`)
 
 const hhmm = (t: string | null | undefined) => (t ? String(t).slice(0, 5) : '')
@@ -106,25 +106,10 @@ export default function XepLichBoTroYeuScreen() {
   // Đổi ưu tiên = vá tại chỗ + sắp lại (ưu tiên cao trước, cùng ưu tiên thì case mở lâu hơn trước) — Thùy 20/09.
   const sapXep = (ds: CaseChoXep[]) => [...ds].sort((a, b) => b.uuTien - a.uuTien || a.created_at.localeCompare(b.created_at))
   // Thùy 28/09: đổi mức ngay trên card — em tự luyện hết yếu thì hạ L0 (đóng case, không phải xếp nữa); L1↔L2 đổi đơn vị buổi chờ.
-  async function doiLevel(c: CaseChoXep, lv: number) {
-    const cu = muc.get(c.hoc_sinh_id) ?? 0
-    if (lv === cu) return
-    let ly: string | null = null
-    if (lv === 0) { ly = prompt(`Hạ ${c.ho_ten} về L0 — HẾT YẾU, DỪNG BỔ TRỢ?
-Case sẽ đóng, buổi đã xếp chưa học bị huỷ${RETEST_BAT ? ', retest chưa làm bị đóng' : ''}.
-
-Lý do:`, 'Tự luyện thêm, hết yếu'); if (ly === null) return }
-    setLoiNap(null)
-    try {
-      const r = await doiLevelCase(c.id, lv, ly)
-      setMuc((m) => { const n = new Map(m); n.set(c.hoc_sinh_id, lv); return n })
-      setItems((prev) => prev.map((x) => x.id !== c.id ? x : r.dong_case ? { ...x, level: 0, trangThai: 'hoan_thanh', giaiDoan: 'hoan_thanh', ketQua: 'bo', hoanThanhAt: new Date().toISOString(), daXep: false, buoiChoHoc: null } : { ...x, level: lv }))
-    } catch (e: any) { setLoiNap(e?.message ?? String(e)) }
-  }
-  async function doiUuTien(c: CaseChoXep) {
-    const moi = (c.uuTien === 3 ? 1 : c.uuTien + 1) as UuTienCase // Thường → Cao → Thấp → Thường
-    setItems((prev) => sapXep(prev.map((x) => x.id === c.id ? { ...x, uuTien: moi } : x)))
-    try { await datUuTienCase(c.id, moi) } catch { setItems((prev) => sapXep(prev.map((x) => x.id === c.id ? { ...x, uuTien: c.uuTien } : x))) }
+  // Thùy 29/09: control dùng chung (MucUuTienCase) tự gọi DB + báo lỗi trần; ở đây chỉ VÁ tại chỗ + sắp lại theo ưu tiên.
+  function vaMuc(c: CaseChoXep, kq: DoiMucUuTien) {
+    setMuc((m) => { const n = new Map(m); n.set(c.hoc_sinh_id, kq.dongCase ? 0 : kq.level); return n })
+    setItems((prev) => sapXep(prev.map((x) => x.id !== c.id ? x : kq.dongCase ? { ...x, level: 0, trangThai: 'hoan_thanh', giaiDoan: 'hoan_thanh', ketQua: 'bo', hoanThanhAt: new Date().toISOString(), daXep: false, buoiChoHoc: null } : { ...x, level: kq.level, uuTien: kq.uuTien })))
   }
   // Xếp/sửa/huỷ trong modal: VÁ case tại chỗ NGAY (daXep + buoiChoHoc từ giá trị vừa lưu) ⇒ card nhảy tab tức thì, không phụ thuộc
   // lệnh nạp lại; rồi nạp lại để đồng bộ số liệu — lỗi nạp lại hiện banner đỏ (trước đây .catch(() => {}) nuốt im ⇒ "xếp xong vẫn ở Cần xếp").
@@ -180,13 +165,13 @@ Lý do:`, 'Tự luyện thêm, hết yếu'); if (ly === null) return }
             {vuaDon > 0 && <p className="mb-3 rounded-xl bg-amber-50 px-3 py-2 text-[12px] text-amber-800 ring-1 ring-amber-200">⚠ Vừa tự huỷ {vuaDon} buổi đã xếp mà không diễn ra (qua ngày, không điểm danh) — các case đó quay về Cần xếp với tag "không diễn ra".</p>}
             {tab === 'can_xep' && (
               <div className="space-y-3">
-                {choXep.map((c) => <CaseCard key={c.id} c={c} mucLv={muc.get(c.hoc_sinh_id) ?? 0} onMo={() => setMoId(c.id)} onUuTien={() => doiUuTien(c)} onDoiLevel={(lv) => doiLevel(c, lv)} deXuat={deXuat.get(c.id) ?? []} onThemMay={() => themDangMay(c)} />)}
+                {choXep.map((c) => <CaseCard key={c.id} c={c} mucLv={muc.get(c.hoc_sinh_id) ?? 0} onMo={() => setMoId(c.id)} onDoiMuc={(kq) => vaMuc(c, kq)} deXuat={deXuat.get(c.id) ?? []} onThemMay={() => themDangMay(c)} />)}
                 {choXep.length === 0 && <p className="text-[12px] text-slate-400">Không còn case nào cần xếp.</p>}
               </div>
             )}
             {tab === 'da_xep' && (
               <div className="space-y-3">
-                {daXep.map((c) => <CaseCard key={c.id} c={c} mucLv={muc.get(c.hoc_sinh_id) ?? 0} onMo={() => setMoId(c.id)} onUuTien={() => doiUuTien(c)} onDoiLevel={(lv) => doiLevel(c, lv)} deXuat={deXuat.get(c.id) ?? []} onThemMay={() => themDangMay(c)} daXep />)}
+                {daXep.map((c) => <CaseCard key={c.id} c={c} mucLv={muc.get(c.hoc_sinh_id) ?? 0} onMo={() => setMoId(c.id)} onDoiMuc={(kq) => vaMuc(c, kq)} deXuat={deXuat.get(c.id) ?? []} onThemMay={() => themDangMay(c)} daXep />)}
                 {daXep.length === 0 && <p className="text-[12px] text-slate-400">Chưa có case nào đã xếp.</p>}
               </div>
             )}
@@ -234,8 +219,7 @@ Lý do:`, 'Tự luyện thêm, hết yếu'); if (ly === null) return }
   )
 }
 
-const UU_CLS: Record<UuTienCase, string> = { 3: 'bg-rose-600 text-white', 2: 'bg-slate-100 text-slate-600', 1: 'bg-slate-50 text-slate-400' }
-function CaseCard({ c, mucLv, onMo, onUuTien, onDoiLevel, daXep, deXuat, onThemMay }: { c: CaseChoXep; mucLv: number; onMo: () => void; onUuTien: () => void; onDoiLevel: (lv: number) => void; daXep?: boolean; deXuat: DangMayDeXuat[]; onThemMay: () => void }) {
+function CaseCard({ c, mucLv, onMo, onDoiMuc, daXep, deXuat, onThemMay }: { c: CaseChoXep; mucLv: number; onMo: () => void; onDoiMuc: (kq: DoiMucUuTien) => void; daXep?: boolean; deXuat: DangMayDeXuat[]; onThemMay: () => void }) {
   const b = c.buoiChoHoc
   return (
     <div role="button" tabIndex={0} onClick={onMo} onKeyDown={(e) => { if (e.key === 'Enter') onMo() }}
@@ -247,12 +231,8 @@ function CaseCard({ c, mucLv, onMo, onUuTien, onDoiLevel, daXep, deXuat, onThemM
           </div>
           <div className="mt-1 flex items-center gap-1.5">
             <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-bold text-indigo-700">{GIAI_DOAN_TEN[c.giaiDoan]}{c.vong > 1 ? ` · vòng ${c.vong}` : ''}</span>
-            {/* Thùy 28/09: chọn mức ngay trên card — L0 = hết yếu, dừng bổ trợ */}
-            <select value={mucLv} onClick={(e) => e.stopPropagation()} onKeyDown={(e) => e.stopPropagation()} onChange={(e) => onDoiLevel(Number(e.target.value))} title="Đổi mức bổ trợ"
-              className={`cursor-pointer rounded-full border-0 px-2 py-0.5 text-[11px] font-semibold outline-none ${MUC_CLS[mucLv] ?? MUC_CLS[1]}`}>
-              <option value={0}>L0 · hết yếu — dừng bổ trợ</option>
-              <option value={1}>{MUC_TEN[1]}</option><option value={2}>{MUC_TEN[2]}</option><option value={3}>{MUC_TEN[3]}</option>
-            </select>
+            {/* Thùy 28/09: chọn mức ngay trên card — L0 = hết yếu, dừng bổ trợ · 29/09: control chung mức + ưu tiên */}
+            <MucUuTienCase caseId={c.id} hoTen={c.ho_ten} level={mucLv} uuTien={c.uuTien} dong={c.trangThai !== 'dang_xu'} onDoi={onDoiMuc} />
             <span className="text-[11px] text-slate-400">{c.soDangCanDay}/{c.soDang} dạng cần dạy{c.soDangXong ? ` · ${c.soDangXong} đã đạt` : ''}{c.soDangChoRetest ? ` · ${c.soDangChoRetest} ${RETEST_BAT ? 'chờ retest' : 'đã dạy'}` : ''}{c.soBuoiDaHoc > 0 ? ` · đã học ${c.soBuoiDaHoc} buổi` : ''}</span>
             {c.soDangBaoDong > 0 && <span className="rounded-full bg-red-50 px-2 py-0.5 text-[11px] font-bold text-red-700 ring-1 ring-red-300">🚨 {c.soDangBaoDong} dạng báo động (GV/TA thêm)</span>}
             {c.soDangMay > 0 && <span className="rounded-full bg-violet-50 px-2 py-0.5 text-[11px] font-bold text-violet-700 ring-1 ring-violet-200">🤖 {c.soDangMay} dạng máy thêm</span>}
@@ -260,8 +240,6 @@ function CaseCard({ c, mucLv, onMo, onUuTien, onDoiLevel, daXep, deXuat, onThemM
               <button onClick={(e) => { e.stopPropagation(); onThemMay() }} title={deXuat.map((d) => `${d.ten_dang} (${d.score.toFixed(2)})`).join(' · ')}
                 className="rounded-full bg-violet-600 px-2 py-0.5 text-[11px] font-bold text-white hover:bg-violet-700">🤖 +{deXuat.length} dạng yếu mới — Thêm?</button>
             )}
-            <button onClick={(e) => { e.stopPropagation(); onUuTien() }} title="Bấm để đổi mức ưu tiên (Thường → Cao → Thấp)"
-              className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${UU_CLS[c.uuTien]}`}>{c.uuTien === 3 ? '▲ ' : c.uuTien === 1 ? '▼ ' : ''}{UU_TIEN_TEN[c.uuTien]}</button>
           </div>
           {c.soBuoiKhongDienRa > 0 && !b && (
             <div className="mt-1.5 inline-block rounded-md bg-rose-50 px-2 py-0.5 text-[11.5px] font-semibold text-rose-700 ring-1 ring-rose-200">

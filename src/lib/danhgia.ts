@@ -491,6 +491,7 @@ export type Candidate = {
   duTinHieuKienThuc: boolean // ≥2/4 kênh dữ liệu HOẶC báo động HOẶC case kiến thức đang mở cần xử —
                               // dùng cái NÀY để lọc màn "Duyệt bổ trợ", đừng suy luận lại từ `kenh`
   daDuyetKienThucAt: string | null // lần chốt level kiến thức GẦN NHẤT trong cửa sổ hiện tại (null = chưa) — Duyệt bổ trợ loại ra
+  resetDuyetLai: boolean // Thùy 29/09: log kiến thức mới nhất là "reset chờ duyệt lại" ⇒ luôn vào hàng đợi Duyệt tới khi có lần duyệt mới
   deXuatKienThuc: any; deXuatThaiDo: any
   sheet: StatSheetHS
 }
@@ -498,23 +499,28 @@ export type Candidate = {
 // HS đã có quyết định kiến thức (bất kể chốt L0/L1/L2/L3) trong CỬA SỔ HIỆN TẠI: tín hiệu dữ liệu không
 // đổi trong nửa tháng nên engine cứ đề xuất lại mãi → người duyệt thấy "duyệt rồi mà vẫn hiện".
 // Sang cửa sổ mới (dữ liệu mới) thì xét lại bình thường. Nguồn = `hs_level_log` (log là bằng chứng).
-async function mapDaDuyetKienThucCuaSoNay(hsIds: string[], mon: string): Promise<Map<string, string>> {
-  const m = new Map<string, string>()
-  if (!hsIds.length) return m
+// Thùy 29/09: reset bổ trợ yếu ⇒ log mới nhất mang ly_do_may.nguon = 'reset_duyet_lai' — KHÔNG tính là "đã duyệt", mà
+// đánh dấu em phải hiện lại cho người duyệt (kể cả không còn tín hiệu, kể cả sang cửa sổ sau). Chỉ xét LOG MỚI NHẤT:
+// duyệt 20/09 rồi reset 29/09 ⇒ chưa duyệt; reset rồi duyệt lại ⇒ đã duyệt. Nguồn: fn_btyeu_log_kt_moi_nhat.
+async function mapDaDuyetKienThucCuaSoNay(hsIds: string[], mon: string): Promise<{ daDuyet: Map<string, string>; reset: Set<string> }> {
+  const daDuyet = new Map<string, string>(), reset = new Set<string>()
+  if (!hsIds.length) return { daDuyet, reset }
   const win = cuaSoHienTai()
   const y = +win.slice(0, 4), mo = +win.slice(5, 7), day = win.slice(8) === 'A' ? 1 : 16
-  const batDau = new Date(Date.UTC(y, mo - 1, day, -7, 0, 0)).toISOString() // 00:00 giờ VN của ngày đầu cửa sổ
-  const { data, error } = await supabase.from('hs_level_log').select('hoc_sinh_id, created_at')
-    .eq('mon', mon).eq('loai', 'kien_thuc').in('hoc_sinh_id', hsIds).gte('created_at', batDau)
-    .order('created_at', { ascending: false }).limit(LIMIT)
+  const batDau = new Date(Date.UTC(y, mo - 1, day, -7, 0, 0)).getTime() // 00:00 giờ VN của ngày đầu cửa sổ
+  const { data, error } = await supabase.rpc('fn_btyeu_log_kt_moi_nhat', { p_hs: hsIds, p_mon: mon })
   if (error) throw error
-  for (const r of (data ?? []) as any[]) if (!m.has(r.hoc_sinh_id)) m.set(r.hoc_sinh_id, r.created_at)
-  return m
+  for (const r of (data ?? []) as { hoc_sinh_id: string; created_at: string; nguon: string | null }[]) {
+    if (r.nguon === 'reset_duyet_lai') reset.add(r.hoc_sinh_id)
+    else if (new Date(r.created_at).getTime() >= batDau) daDuyet.set(r.hoc_sinh_id, r.created_at)
+  }
+  return { daDuyet, reset }
 }
 
 export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
   const sheets = await getStatSheetLop(lopId)
-  const daDuyet = sheets.length ? await mapDaDuyetKienThucCuaSoNay(sheets.map((s) => s.hoc_sinh_id), sheets[0].mon) : new Map<string, string>()
+  const { daDuyet, reset } = sheets.length ? await mapDaDuyetKienThucCuaSoNay(sheets.map((s) => s.hoc_sinh_id), sheets[0].mon)
+    : { daDuyet: new Map<string, string>(), reset: new Set<string>() }
   const out: Candidate[] = []
   for (const s of sheets) {
     const kenh: Candidate['kenh'] = []
@@ -601,7 +607,9 @@ export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
     // soát riêng nhóm đó mà KHÔNG cần thêm code/DB gì — dữ liệu để so sánh vốn có sẵn qua `kenh[]`.
     const soTinHieuKienThuc = [sig1, sig2, s.coSoLopET, s.coSoLopMT].filter(Boolean).length
     const caseDangMoCanXu = s.levelKienThuc > 0 && s.deXuatKienThuc.deXuat !== s.levelKienThuc
-    const duTinHieuKienThuc = soTinHieuKienThuc >= 1 || baoDong || caseDangMoCanXu
+    const resetDuyetLai = reset.has(s.hoc_sinh_id)
+    if (resetDuyetLai) { lyDo.unshift('↺ Reset 29/09 — duyệt lại'); uuTien += 50 }
+    const duTinHieuKienThuc = soTinHieuKienThuc >= 1 || baoDong || caseDangMoCanXu || resetDuyetLai
 
     // ② THÁI ĐỘ — ĐỘC LẬP HOÀN TOÀN với 4 kênh kiến thức trên (không cộng vào ≥2, không bị ≥2
     // chặn lại) — chuẩn TUYỆT ĐỐI (dưới Nghiêm túc là tín hiệu), tự đủ để vào danh sách đọc.
@@ -631,7 +639,7 @@ export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
       hoc_sinh_id: s.hoc_sinh_id, ho_ten: s.ho_ten, mon: s.mon,
       kenh, uuTien, trongDigest: uuTien >= DANHGIA_CONFIG.NGUONG_DIGEST, lyDo,
       duTinHieuKienThuc, // ⭐ dùng CÁI NÀY để lọc "Duyệt bổ trợ" — KHÔNG suy luận lại từ `kenh`
-      daDuyetKienThucAt: daDuyet.get(s.hoc_sinh_id) ?? null, // đã chốt trong cửa sổ này ⇒ rời hàng đợi duyệt (Dashboard vẫn hiện)
+      daDuyetKienThucAt: daDuyet.get(s.hoc_sinh_id) ?? null, resetDuyetLai, // đã chốt trong cửa sổ này ⇒ rời hàng đợi duyệt (Dashboard vẫn hiện)
       // (đọc "kenh có > 1 phần tử ngoài thai_do" từng ĐÚNG hồi mỗi kênh là 1 OR độc lập, giờ SAI vì
       // 1 kênh riêng lẻ vẫn được push vào `kenh` để hiện lý do dù chưa đủ ≥2/4 — bug thật đã bắt 08-23).
       deXuatKienThuc: s.deXuatKienThuc, deXuatThaiDo: s.deXuatThaiDo, sheet: s,

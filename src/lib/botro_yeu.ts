@@ -248,8 +248,23 @@ export async function themDangMayVaoCase(caseId: string): Promise<number> {
   return (data as any)?.them ?? 0
 }
 export async function datUuTienCase(boTroYeuId: string, uuTien: UuTienCase): Promise<void> {
-  const { error } = await supabase.from('bo_tro_yeu').update({ uu_tien: uuTien }).eq('id', boTroYeuId)
+  const { error } = await supabase.from('bo_tro_yeu').update({ uu_tien: uuTien }).eq('id', boTroYeuId) // trigger chặn quá trần Cao
   if (error) throw error
+}
+
+// ── SỨC CHỨA (Thùy 29/09): ≤ 50 em đang bổ trợ yếu cùng lúc, trong đó ≤ 20 ưu tiên Cao — chặn cứng bằng trigger
+// trg_btyeu_suc_chua (mig 202609291556). Muốn thêm em: hạ L0 / huỷ em cũ, hoặc hạ ưu tiên 1 em Cao.
+export type SucChua = { dang: number; cao: number; tran: number; tran_cao: number }
+export async function laySucChua(): Promise<SucChua> {
+  const { data, error } = await supabase.rpc('fn_btyeu_suc_chua')
+  if (error) throw error
+  return data as SucChua
+}
+// null = được mở case mới với ưu tiên này; text = lý do chặn (kiểm TRƯỚC khi Duyệt ghi level).
+export async function kiemSucChua(hocSinhId: string, mon: string, uuTien: UuTienCase): Promise<string | null> {
+  const { data, error } = await supabase.rpc('fn_btyeu_kiem_suc_chua', { p_hs: hocSinhId, p_mon: mon, p_uu_tien: uuTien })
+  if (error) throw error
+  return (data as string | null) ?? null
 }
 
 // Case đã có ≥1 dạng (đã qua bước 4) — CẦN xếp lịch. `daXep` = đã có buổi nào gắn case này chưa

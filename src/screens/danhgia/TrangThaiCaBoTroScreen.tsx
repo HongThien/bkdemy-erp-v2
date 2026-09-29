@@ -2,6 +2,7 @@
 // Filter toggle theo mức, số tổng mỗi mức ngay trên nút. Bấm card ⇒ popup đủ chi tiết ca (dạng · buổi · retest · lịch sử duyệt).
 // MỨC tính ở DB (fn_btyeu_trang_thai_ca, §2.0) — màn chỉ lọc + đếm số dòng đang có để hiện trên nút.
 import { useEffect, useMemo, useState } from 'react'
+import MucUuTienCase, { type DoiMucUuTien } from '../botro/MucUuTienCase'
 import { listTrangThaiCa, chiTietCase, MUC_CA, RETEST_BAT, KET_QUA_CASE_TEN, type TrangThaiCa, type MucCa, type ChiTietCase } from '../../lib/botro_yeu'
 import { norm } from '../../components/SearchSelect'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
@@ -114,15 +115,19 @@ export default function TrangThaiCaBoTroScreen() {
             </div>
           )}
       </div>
-      {moCa && <ChiTietModal c={moCa} onDong={() => setMoId(null)} />}
+      {moCa && <ChiTietModal c={moCa} onDong={() => setMoId(null)} onDoi={(kq) => {
+        // Thùy 29/09: sửa mức/ưu tiên ngay trong popup — vá tại chỗ, rồi nạp NỀN (giai đoạn là derive: hạ L0 ⇒ case đóng)
+        setItems((prev) => prev.map((x) => x.id === moCa.id ? { ...x, level: kq.dongCase ? 0 : kq.level, uu_tien: kq.uuTien } : x))
+        if (kq.dongCase) tai()
+      }} />}
     </section>
   )
 }
 
-function ChiTietModal({ c, onDong }: { c: TrangThaiCa; onDong: () => void }) {
+function ChiTietModal({ c, onDong, onDoi }: { c: TrangThaiCa; onDong: () => void; onDoi: (kq: DoiMucUuTien) => void }) {
   const [d, setD] = useState<ChiTietCase | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
-  useEffect(() => { chiTietCase(c.id).then(setD).catch((e: any) => setLoi(e?.message ?? String(e))) }, [c.id])
+  useEffect(() => { chiTietCase(c.id).then(setD).catch((e: any) => setLoi(e?.message ?? String(e))) }, [c.id, c.level, c.uu_tien]) // sửa mức/ưu tiên ⇒ nạp lại chi tiết
   const h = d?.case
   const Muc = ({ t, children }: { t: string; children: React.ReactNode }) => (
     <div className="mt-4"><h3 className="mb-1.5 text-[12px] font-bold uppercase tracking-wide text-slate-500">{t}</h3>{children}</div>
@@ -135,7 +140,8 @@ function ChiTietModal({ c, onDong }: { c: TrangThaiCa; onDong: () => void }) {
             <h2 className="text-[16px] font-bold text-slate-900">{c.ho_ten} <span className="text-[13px] font-normal text-slate-400">· {c.ma_hs} · {c.lop ?? `K${c.khoi}`} · {c.mon}</span></h2>
             <button onClick={onDong} className="ml-auto h-8 w-8 rounded-md text-slate-400 hover:bg-slate-100">✕</button>
           </div>
-          <div className="mt-2 flex items-center gap-3"><ThanhMuc buoc={c.buoc} /><span className={`rounded-full px-2 py-0.5 text-[11.5px] font-bold ${MUC_MAU[c.buoc].chip}`}>{MUC_CA.find((m) => m.k === c.buoc)?.ten}</span><span className="text-[12px] text-slate-500">{chiTietMuc(c)}</span></div>
+          <div className="mt-2 flex items-center gap-3"><ThanhMuc buoc={c.buoc} /><span className={`rounded-full px-2 py-0.5 text-[11.5px] font-bold ${MUC_MAU[c.buoc].chip}`}>{MUC_CA.find((m) => m.k === c.buoc)?.ten}</span><span className="text-[12px] text-slate-500">{chiTietMuc(c)}</span>
+            <span className="ml-auto"><MucUuTienCase caseId={c.id} hoTen={c.ho_ten} level={c.level} uuTien={(c.uu_tien as 1 | 2 | 3) ?? 2} dong={!!c.hoan_thanh_at} onDoi={onDoi} /></span></div>
         </div>
         <div className="overflow-auto px-5 pb-5 text-[13px]">
           {loi && <p className="mt-3 rounded-xl bg-rose-50 px-3 py-2 text-rose-700">{loi}</p>}
