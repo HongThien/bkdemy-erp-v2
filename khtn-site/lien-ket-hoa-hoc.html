@@ -1,3 +1,4 @@
+<!doctype html>
 <title>Du hành Liên kết Hoá học</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -392,7 +393,7 @@ function makeMolecule(spec){
     setForm(f){atoms.forEach(a=>{const p=a.sep.clone().lerp(a.final,f);a.g.position.set(p.x,p.y,0);});
       bondEls.forEach(b=>{const p=b.from.clone().lerp(b.to,f);b.e.position.set(p.x,p.y,0);});},
     solids(){return atoms.map(a=>({obj:a.g.userData.nuc,r:a.nucR||3.2}));},
-    perfectAll(){atoms.forEach(a=>{const r=a.rOut;perfectRing(a.outer,a.g,a.valence===1?'2e ✓':'8e ✓',V3(a.away.x*(r+5),a.away.y*(r+5)-2,0));});},
+    perfectAll(num=true){atoms.forEach(a=>{const r=a.rOut;perfectRing(a.outer,a.g,num?(a.valence===1?'2e ✓':'8e ✓'):'đầy ✓',V3(a.away.x*(r+5),a.away.y*(r+5)-2,0));});},
     goalPos(a){return a.central?V3(0,a.rOut+12,0):V3(a.away.x*(a.rOut+13),a.away.y*(a.rOut+13)-(Math.abs(a.away.x)>.5?2:0),0);}};
   mol.setForm(0);return mol;
 }
@@ -511,13 +512,13 @@ defStation(1,{name:'Khí hiếm: trạng thái hoàn hảo',zoneR:84,
   film:h=>[
     {cam:[0,8,78],look:[0,0,0],move:3,text:'Chào em, đây là thế giới bên trong vật chất. Trước mặt là nguyên tử Neon (Ne): hạt nhân ở giữa, các electron chạy trên những lớp vòng quanh nó.'},
     {cam:[10,5,44],look:[0,0,0],text:'Ne có 10 electron: lớp trong cùng 2 electron, lớp ngoài cùng 8 electron.',on(){pulseRing(h.ne.userData.shells[1].ring);}},
-    {text:'Lớp ngoài cùng có 8 electron là đã ĐẦY. Nguyên tử ở <b>trạng thái hoàn hảo</b>: rất bền, không cần cho hay nhận thêm electron nào. Vì thế khí hiếm gần như không liên kết với ai.',on(){perfect(h.ne,1,'8e ✓');}},
-    {cam:[-30,16,18],look:[-40,12,-12],text:'Helium (He) chỉ có một lớp. Lớp đầu tiên chứa tối đa 2 electron, nên He có 2 là đã đầy, cũng hoàn hảo.',on(){perfect(h.he,0,'2e ✓');}},
+    {text:'Lớp ngoài cùng có 8 electron là đã ĐẦY. Nguyên tử ở <b>trạng thái hoàn hảo</b>: rất bền, không cần cho hay nhận thêm electron nào. Vì thế khí hiếm gần như không liên kết với ai.',on(){perfect(h.ne,1,'đầy ✓');}},
+    {cam:[-30,16,18],look:[-40,12,-12],text:'Helium (He) chỉ có một lớp. Lớp đầu tiên chứa tối đa 2 electron, nên He có 2 là đã đầy, cũng hoàn hảo.',on(){perfect(h.he,0,'đầy ✓');}},
     {cam:[-6,14,98],look:[-10,4,0],text:'<b>Quy tắc bát tử:</b> mọi nguyên tử khác đều “muốn” lớp ngoài cùng có 8 electron (hoặc 2 nếu chỉ có một lớp) giống khí hiếm.'},
     {text:'Nhớ kỹ: mỗi nguyên tử luôn tìm cách đạt <b>trạng thái hoàn hảo CỦA CHÍNH NÓ</b>. Có nguyên tử thì bỏ bớt electron, có nguyên tử thì nhận thêm, có nguyên tử thì góp chung. Đó chính là lý do chúng LIÊN KẾT với nhau.'}],
   guide:'Giờ em hãy bay tự do quanh Ne và He. Quan sát các lớp của Ne xem nó có bao nhiêu electron, lớp ngoài cùng có mấy electron nhé.',
   points:[
-    {id:'out',pos:[12,12,4],title:'Lớp ngoài cùng của Ne',text:'Đếm electron trên vòng to: 8. Vòng đã chuyển vàng vì đã đầy, nên Ne bền và không liên kết.'},
+    {id:'out',pos:[12,12,4],title:'Lớp ngoài cùng của Ne',text:'Đây là vòng to nhất, lớp ngoài cùng. Em đếm các electron vàng trên vòng này nhé.'},
     {id:'in',pos:[0,-9,4],title:'Lớp trong cùng',text:'Lớp đầu tiên chứa tối đa 2 electron. Ne đã có đủ 2.'},
     {id:'he',pos:[-40,12,-2],title:'Helium: 2 là đủ',text:'He chỉ có một lớp với 2 electron, đã đầy. He cũng là khí hiếm.'}],
   tasks:[{t:'Lớp ngoài cùng của Ne có mấy electron?'},{t:'Lớp trong cùng chứa tối đa mấy electron?'},{t:'Vì sao Ne và He không cần liên kết với ai?'}],
@@ -537,7 +538,7 @@ defStation(2,{name:'Na gặp Cl: liên kết ion',zoneR:84,
     const naLab=labelHolder(na,'Na','sodium · kim loại · 2, 8, 1',31),clLab=labelHolder(cl,'Cl','chlorine · phi kim · 2, 8, 7',31);
     const slot=makeSlot(V3(-23,0,0));cl.add(slot);
     const fx=makeIonicFx(V3(-21.5,0,0),V3(21.5,0,0),16,23);g.add(fx.g);
-    const title=makeLabel('LIÊN KẾT ION','lực hút giữa ion dương và ion âm',6,'#ffc48a');title.position.set(0,40,0);title.material.opacity=0;g.add(title);
+    const title=makeLabel('LIÊN KẾT ION','',6,'#ffc48a');title.position.set(0,40,0);title.material.opacity=0;g.add(title);
     return {na,cl,naLab,clLab,slot,fx,title,naE:na.userData.shells[2].els[0],goals:{},solids:[{obj:na.userData.nuc,r:3.6},{obj:cl.userData.nuc,r:3.9}],update(dt,t){fx.update(t);}};
   },
   film:(h,st)=>[
@@ -549,26 +550,26 @@ defStation(2,{name:'Na gặp Cl: liên kết ion',zoneR:84,
     {cam:[0,8,54],look:[0,0,0],text:'Na <b>NHƯỜNG</b> electron lẻ loi của mình cho Cl.',on(){flyElectron(st,h.naE,h.cl,V3(-23,0,0),h.slot,2);}},
     {cam:[-24,6,40],look:[-30,0,0],text:'Mất electron đó, lớp 8 electron bên dưới trở thành lớp ngoài cùng: Na đủ 8, <b>hoàn hảo như Ne</b>! Nhưng Na vẫn có 11 proton mà chỉ còn 10 electron, nên dư điện dương: Na trở thành <b>ION DƯƠNG Na⁺</b>.',on(){
       const r3=h.na.userData.shells[2].ring;ftween(1,k=>{r3.material.opacity=.5*(1-k);},()=>{r3.visible=false;});hideGoal(h.goals.na);
-      perfect(h.na,1,'8e ✓');relabel(h.naLab,'Na⁺','ion dương · 2, 8');h.naLab.position.y=24;
+      perfect(h.na,1,'đầy ✓');relabel(h.naLab,'Na⁺','2, 8');h.naLab.position.y=24;
       const b=makeLabel('+','',9,'#ffb86b');b.position.set(-21,-7,0);h.na.add(b);}},
     {cam:[36,6,50],look:[30,0,0],text:'Cl nhận thêm 1 electron: đủ 8, <b>hoàn hảo như khí hiếm Argon</b>. Cl có 17 proton mà 18 electron, nên dư điện âm: Cl trở thành <b>ION ÂM Cl⁻</b>.',on(){
-      hideGoal(h.goals.cl);perfect(h.cl,2,'8e ✓');relabel(h.clLab,'Cl⁻','ion âm · 2, 8, 8');const b=makeLabel('−','',9,'#7cc4ff');b.position.set(27,-7,0);h.cl.add(b);}},
+      hideGoal(h.goals.cl);perfect(h.cl,2,'đầy ✓');relabel(h.clLab,'Cl⁻','2, 8, 8');const b=makeLabel('−','',9,'#7cc4ff');b.position.set(27,-7,0);h.cl.add(b);}},
     {cam:[0,14,76],look:[0,0,0],text:'Cả hai đều đã hoàn hảo. Nhưng một bên dương, một bên âm: chúng <b>HÚT NHAU</b> rất mạnh. Lực hút giữa ion dương và ion âm chính là <b>LIÊN KẾT ION</b>.',on(){
       ftween(2.2,k=>{h.na.position.x=-30+8.5*k;h.cl.position.x=30-8.5*k;},()=>{ftween(1.6,k=>{h.fx.setOpacity(k);h.title.material.opacity=k;});});}},
     {cam:[0,26,108],look:[0,6,0],text:'Nhớ: liên kết ion = một bên <b>NHƯỜNG</b>, một bên <b>NHẬN</b> electron, để cả hai cùng hoàn hảo, rồi hai ion trái dấu hút nhau. Các đường cam–xanh là lực hút; giữa hai ion không có electron nào dùng chung.'}],
   guide:'Giờ em hãy bay tự do quanh hai ion. Quan sát xem mỗi ion mang điện gì, vì sao Na chịu cho electron, và điều gì giữ hai ion lại với nhau nhé.',
   points:[
-    {id:'na',pos:[-21.5,21,8],title:'Ion dương Na⁺',text:'11 proton (+), 10 electron (−): dư 1 điện tích dương. Lớp ngoài cùng có 8 electron, hoàn hảo như Ne.'},
-    {id:'cl',pos:[21.5,28,8],title:'Ion âm Cl⁻',text:'17 proton (+), 18 electron (−): dư 1 điện tích âm. Electron màu xanh nhạt chính là electron nhận từ Na.'},
-    {id:'force',pos:[0,-5,10],title:'Lực hút tĩnh điện',text:'Các đường cam–xanh là lực hút giữa + và −. Hai ion không dùng chung electron nào: mỗi ion giữ electron của riêng mình.'}],
+    {id:'na',pos:[-21.5,21,8],title:'Hạt Na sau khi cho',text:'Hạt nhân vẫn có 11 proton (+). Em đếm xem giờ Na còn bao nhiêu electron (−). Bên nào nhiều hơn?'},
+    {id:'cl',pos:[21.5,28,8],title:'Hạt Cl sau khi nhận',text:'Hạt nhân có 17 proton (+). Giờ Cl có bao nhiêu electron? Electron màu xanh nhạt từ đâu tới?'},
+    {id:'force',pos:[0,-5,10],title:'Giữa hai hạt',text:'Các đường cam–xanh nối hai hạt với nhau. Hai hạt mang dấu gì? Có electron nào nằm giữa để dùng chung không?'}],
   tasks:[{t:'Vì sao Na chịu nhường electron cho Cl?'},{t:'Na⁺ và Cl⁻ mang điện gì? Vì sao?'},{t:'Điều gì giữ hai ion lại với nhau?'}],
   quiz:[
     {q:'Vì sao Na chịu nhường electron cho Cl?',opts:['Để chính Na đạt trạng thái hoàn hảo: lớp ngoài cùng còn 8','Vì Na muốn giúp Cl','Vì Cl giật mất electron của Na','Để Na biến thành khí hiếm Ne'],ans:0,
      explain:'Na và Cl đều chỉ lo cho trạng thái hoàn hảo của chính mình. Na muốn bỏ 1, Cl muốn nhận 1: vừa khít, nên cả hai cùng được lợi.',
      hint:'Trước khi nhường, lớp ngoài cùng của Na có mấy electron? Sau khi nhường, lớp ngoài cùng của Na là lớp nào, có mấy electron?'},
-    {q:'Sau khi nhường 1 electron cho Cl, Na trở thành hạt gì?',opts:['Ion dương Na⁺','Ion âm Na⁻','Nguyên tử Na trung hoà','Nguyên tử Ne'],ans:0,
-     explain:'Na⁺ vẫn có 11 proton mang điện dương nhưng chỉ còn 10 electron mang điện âm, nên dư 1 điện tích dương.',
-     hint:'Electron mang điện âm. Na mất bớt 1 electron thì phần còn lại dư điện gì?'},
+    {q:'Hạt nhân Na có 11 proton. Sau khi nhường electron cho Cl, Na còn bao nhiêu electron và mang điện gì?',opts:['10 electron, mang điện dương','12 electron, mang điện âm','11 electron, không mang điện','10 electron, mang điện âm'],ans:0,
+     explain:'Na còn 10 electron (2, 8) nhưng vẫn có 11 proton, nên dư 1 điện tích dương: đó là ion dương Na⁺.',
+     hint:'Cộng các lớp electron còn lại của Na. So với 11 proton thì dương nhiều hơn hay âm nhiều hơn?'},
     {q:'Vì sao Na⁺ và Cl⁻ kéo sát lại nhau?',opts:['Hai ion mang điện trái dấu hút nhau','Chúng góp chung một cặp electron','Cả hai đều là khí hiếm','Na nhận thêm electron từ Cl'],ans:0,
      explain:'Ion dương và ion âm hút nhau: đó là LIÊN KẾT ION.',
      hint:'Nhìn dấu + và − cùng các đường cam–xanh giữa hai ion.'}]});
@@ -593,14 +594,13 @@ defStation(3,{name:'Bên trong hạt muối',zoneR:90,filmDist:175,guideCam:[0,3
   guide:'Giờ em hãy bay tự do quanh khối muối, nhìn từ nhiều phía. Để ý ion Na⁺ nhấp nháy ở tâm có bao nhiêu ion Cl⁻ nằm sát nó, và các ion xếp theo quy luật nào nhé.',
   points:[
     {id:'center',pos:[11,11,11],r:20,title:'Ion Na⁺ ở tâm khối',text:'Nhìn quanh ion đang nhấp nháy theo 3 hướng: trái–phải, trên–dưới, trước–sau. Đếm các ion Cl⁻ nằm sát nó.'},
-    {id:'alt',pos:[0,0,62],title:'Xếp xen kẽ',text:'Na⁺ (tím) chỉ nằm sát Cl⁻ (xanh) và ngược lại. Hai hạt cùng loại không bao giờ nằm sát nhau.'},
+    {id:'alt',pos:[0,0,62],title:'Quy luật sắp xếp',text:'Nhìn hạt tím và hạt xanh: hạt nào nằm sát hạt nào? Có hai hạt cùng màu nào nằm sát nhau không?'},
     {id:'hard',pos:[0,64,18],title:'Vì sao muối cứng?',text:'Mỗi ion bị nhiều ion trái dấu níu từ mọi phía. Vì vậy muối ăn là chất rắn, tới 801 °C mới nóng chảy.'}],
   tasks:[{t:'Có bao nhiêu ion Cl⁻ nằm sát ion Na⁺ ở tâm?'},{t:'Các ion xếp theo quy luật nào?'},{t:'Vì sao muối ăn là chất rắn?'}],
   quiz:[
     {q:'Ion Na⁺ ở tâm khối có bao nhiêu ion Cl⁻ nằm sát nó nhất?',opts:['2','4','6','8'],ans:2,
      explain:'6 ion Cl⁻: trên, dưới, trái, phải, trước, sau. Mỗi ion bị nhiều ion trái dấu níu chặt, nên muối ăn là chất rắn.',
-     hint:'Đừng quên hướng trước và sau. Các ion Cl⁻ sát tâm vừa sáng lên để em đếm lại.',
-     onMiss(h){h.nb.forEach(o=>{o.m.material=ionMat(CPK.Cl,.75);});}},
+     hint:'Đếm theo 3 hướng: trái–phải, trên–dưới, và đừng quên hướng trước–sau (dọc theo đường em bay vào).'},
     {q:'Trong muối ăn, những hạt nào hút nhau?',opts:['Ion Na⁺ và ion Cl⁻','Các phân tử NaCl riêng lẻ','Nguyên tử Na và nguyên tử Cl góp chung electron','Các ion Na⁺ với nhau'],ans:0,
      explain:'Chất tạo bởi các ion dương và ion âm hút nhau gọi là CHẤT ION. Muối ăn là chất ion.',
      hint:'Nhìn màu: hạt tím và hạt xanh xếp xen kẽ, hai hạt cùng màu không nằm sát nhau.'}]});
@@ -610,7 +610,7 @@ function covalentMake(spec,lab,sub,labY,titleY,extra){
   return function(g){
     const mol=makeMolecule(spec);g.add(mol.g);const fx=makeCovalentFx(mol);fx.setOpacity(0);g.add(fx.g);
     const ml=makeLabel(lab,sub,4.6);ml.position.set(0,labY,0);g.add(ml);
-    const title=makeLabel('LIÊN KẾT CỘNG HOÁ TRỊ','cặp electron dùng chung',6,'#7ff5da');title.position.set(0,titleY,0);title.material.opacity=0;g.add(title);
+    const title=makeLabel('LIÊN KẾT CỘNG HOÁ TRỊ','',6,'#7ff5da');title.position.set(0,titleY,0);title.material.opacity=0;g.add(title);
     const h={mol,fx,title,goals:[],solids:mol.solids(),update(dt,t){fx.update(t);if(this.extra&&this.extra.update)this.extra.update(dt,t);}};
     if(extra)h.extra=extra(g,h);return h;
   };
@@ -626,14 +626,14 @@ defStation(4,{name:'Hai H góp chung: liên kết cộng hoá trị',zoneR:80,
     {text:'Cả hai đều <b>THIẾU</b>, đều muốn NHẬN. Nếu H này cho H kia thì chính nó lại mất hết, không hoàn hảo. Vậy làm sao để CẢ HAI cùng hoàn hảo?'},
     {cam:[0,4,42],look:[0,0,0],text:'Chúng tiến lại gần, hai vòng electron bắt đầu chồng lên nhau…',on(){ftween(2.6,k=>h.mol.setForm(k*.6));}},
     {text:'…và <b>GÓP CHUNG</b>: mỗi H góp 1 electron, tạo thành một <b>CẶP ELECTRON DÙNG CHUNG</b> nằm giữa hai hạt nhân. Tính cả cặp chung, mỗi H đều có 2 electron: <b>cả hai cùng hoàn hảo</b> như He!',
-     on(){hideGoals(h);ftween(2,k=>h.mol.setForm(.6+.4*k),()=>h.mol.perfectAll());}},
+     on(){hideGoals(h);ftween(2,k=>h.mol.setForm(.6+.4*k),()=>h.mol.perfectAll(false));}},
     {cam:[0,14,74],look:[0,10,0],text:'Cặp electron dùng chung giữ hai nguyên tử lại với nhau: đó là <b>LIÊN KẾT CỘNG HOÁ TRỊ</b>. Không ai mất, không ai được, không có ion + hay −.',on(){showCov(h);}},
     {cam:[0,16,92],look:[0,10,0],text:'Nhìn hiệu ứng là phân biệt được: cộng hoá trị có <b>sợi sáng xanh ngọc</b> nối hai hạt nhân và cặp electron xoay quanh nó; liên kết ion chỉ có các đường cam–xanh hút nhau.'}],
   guide:'Giờ em hãy bay tự do quanh phân tử H₂. Quan sát xem cặp electron dùng chung nằm ở đâu, mỗi H có mấy electron, và ở đây có ion + hay − không nhé.',
   points:[
-    {id:'pair',pos:[0,0,8],title:'Cặp electron dùng chung',text:'2 electron nằm ở vùng hai vòng chồng nhau, thuộc về cả hai nguyên tử. Chúng xoay quanh sợi liên kết xanh ngọc.'},
-    {id:'h',pos:[13,9,4],title:'Mỗi H đủ 2',text:'Đếm electron trên vòng của một H, tính cả cặp chung: 2. Đầy như He, nên vòng chuyển vàng.'},
-    {id:'noion',pos:[0,-15,5],title:'Không có ion',text:'Không electron nào rời đi, nên không có ion dương hay ion âm. Khác hẳn liên kết ion ở trạm 2.'}],
+    {id:'pair',pos:[0,0,8],title:'Vùng hai vòng chồng nhau',text:'Có mấy electron nằm ở vùng này? Chúng thuộc về nguyên tử H nào?'},
+    {id:'h',pos:[13,9,4],title:'Một nguyên tử H',text:'Đếm electron trên vòng của H này, tính cả các electron ở vùng chồng. So với lúc đầu thì sao?'},
+    {id:'noion',pos:[0,-15,5],title:'Có dấu + hay − không?',text:'Ở trạm 2 có hai hạt mang dấu + và −. Ở đây em có thấy hạt nào mang dấu không? Có electron nào bị cho hẳn đi không?'}],
   tasks:[{t:'Cặp electron dùng chung nằm ở đâu?'},{t:'Mỗi H có mấy electron (tính cả cặp chung)?'},{t:'Ở đây có ion + hay − không?'}],
   quiz:[
     {q:'Hai nguyên tử H trong phân tử H₂ liên kết với nhau bằng cách nào?',opts:['Góp chung 1 cặp electron','Một H nhường electron cho H kia','Hai ion trái dấu hút nhau','Chúng không liên kết'],ans:0,
@@ -649,13 +649,13 @@ defStation(5,{name:'Phân tử nước',zoneR:82,
     {cam:[0,10,80],look:[0,0,0],move:3,text:'Oxygen (O) là PHI KIM, có 8 electron xếp 2, 6: lớp ngoài cùng <b>thiếu 2</b>. Hai nguyên tử H, mỗi H <b>thiếu 1</b>.',
      on(){pulseRing(h.mol.atoms[0].outer,4);showGoals(h,[['Muốn: thêm 2 electron','để đủ 8'],['Muốn: thêm 1','để có 2'],['Muốn: thêm 1','để có 2']]);}},
     {text:'Ai cũng thiếu, ai cũng muốn nhận. O không thể nhường đi cả 6 electron, H cũng không có gì để cho. Cách duy nhất để tất cả cùng hoàn hảo: góp chung.',on(){ftween(2.6,k=>h.mol.setForm(k*.6));}},
-    {cam:[0,0,58],look:[0,0,0],text:'O góp chung 1 electron với mỗi H, tạo <b>2 cặp dùng chung</b>. Giờ O đủ 8, mỗi H đủ 2: tất cả đều hoàn hảo!',on(){hideGoals(h);ftween(2,k=>h.mol.setForm(.6+.4*k),()=>h.mol.perfectAll());}},
+    {cam:[0,0,58],look:[0,0,0],text:'O góp chung 1 electron với mỗi H, tạo <b>2 cặp dùng chung</b>. Giờ O đủ 8, mỗi H đủ 2: tất cả đều hoàn hảo!',on(){hideGoals(h);ftween(2,k=>h.mol.setForm(.6+.4*k),()=>h.mol.perfectAll(false));}},
     {cam:[0,6,74],look:[0,2,0],text:'Mỗi cặp dùng chung là một <b>liên kết cộng hoá trị</b>: phân tử nước có 2 liên kết O–H, tạo với nhau góc 104,5°. Hai cặp electron phía trên là của riêng O, không dùng chung.',on(){showCov(h);}}],
   guide:'Giờ em hãy bay tự do quanh phân tử nước. Đếm các cặp electron dùng chung, và tìm 2 cặp electron KHÔNG dùng chung của O nhé.',
   points:[
-    {id:'b1',pos:[-8,-4,7],r:16,title:'Liên kết O–H thứ nhất',text:'1 cặp dùng chung: O góp 1 electron, H góp 1 electron. Có sợi xanh ngọc nối O với H.'},
-    {id:'b2',pos:[8,-4,7],r:16,title:'Liên kết O–H thứ hai',text:'Thêm 1 cặp dùng chung với H còn lại. O thiếu 2 nên phải góp chung với 2 nguyên tử H.'},
-    {id:'lone',pos:[0,24,5],title:'Cặp riêng của O',text:'2 cặp electron phía trên là của riêng O, KHÔNG dùng chung với ai, nên không tính là liên kết.'}],
+    {id:'b1',pos:[-8,-4,7],r:16,title:'Vùng chồng O–H bên trái',text:'Đếm các electron nằm ở vùng chồng này. Cứ 2 electron dùng chung là 1 cặp.'},
+    {id:'b2',pos:[8,-4,7],r:16,title:'Vùng chồng O–H bên phải',text:'Đếm các electron nằm ở vùng chồng này. Cứ 2 electron dùng chung là 1 cặp.'},
+    {id:'lone',pos:[0,24,5],title:'Phía trên nguyên tử O',text:'Các electron này có nằm ở vùng chồng nào không? Có được tính là dùng chung không?'}],
   tasks:[{t:'Có mấy cặp electron dùng chung?'},{t:'Đâu là 2 cặp electron KHÔNG dùng chung của O?'}],
   quiz:[{q:'Phân tử nước H₂O có bao nhiêu cặp electron dùng chung?',opts:['1','2','3','4'],ans:1,
     explain:'2 cặp, mỗi liên kết O–H là 1 cặp. Hai cặp electron phía trên của O là của riêng O, không dùng chung.',
@@ -677,13 +677,13 @@ defStation(6,{name:'Cl gặp Cl: vì sao không phải ion?',zoneR:98,guideCam:[
     {cam:[0,8,82],look:[0,0,0],move:3,text:'Ở trạm 2, Cl <b>NHẬN</b> electron của Na. Nhưng nếu Cl gặp một Cl khác thì sao? Cả hai đều có 7 electron lớp ngoài, đều thiếu 1.',
      on(){h.mol.atoms.forEach(a=>pulseRing(a.outer,4));showGoals(h,[['Muốn: nhận thêm 1','để đủ 8'],['Muốn: nhận thêm 1','để đủ 8']]);}},
     {text:'Cả hai cùng muốn NHẬN, không nguyên tử nào chịu cho: cho đi thì chính nó lại thiếu thêm, càng xa trạng thái hoàn hảo.',on(){ftween(2.6,k=>h.mol.setForm(k*.6));}},
-    {cam:[0,4,62],look:[0,0,0],text:'Vậy chúng <b>GÓP CHUNG</b> 1 cặp electron: mỗi Cl đủ 8, cả hai cùng hoàn hảo. Đây là liên kết cộng hoá trị, tạo phân tử Cl₂.',on(){hideGoals(h);ftween(2,k=>h.mol.setForm(.6+.4*k),()=>{h.mol.perfectAll();showCov(h);});}},
+    {cam:[0,4,62],look:[0,0,0],text:'Vậy chúng <b>GÓP CHUNG</b> 1 cặp electron: mỗi Cl đủ 8, cả hai cùng hoàn hảo. Đây là liên kết cộng hoá trị, tạo phân tử Cl₂.',on(){hideGoals(h);ftween(2,k=>h.mol.setForm(.6+.4*k),()=>{h.mol.perfectAll(false);showCov(h);});}},
     {cam:[0,-30,126],look:[0,-44,0],move:3,text:'So sánh với cặp Na⁺Cl⁻ bên dưới. Na là <b>KIM LOẠI</b>, thừa electron, muốn cho; nên Na + Cl tạo <b>liên kết ion</b>. Cl là <b>PHI KIM</b>, thiếu electron, muốn nhận; nên Cl + Cl phải <b>góp chung</b>.',on(){h.extra.cmp.visible=true;ftween(1.4,k=>{h.extra.lab2.material.opacity=k;});}},
     {text:'<b>Cách phân tích:</b> một bên muốn cho, một bên muốn nhận → liên kết ion. Cả hai đều muốn nhận → góp chung, liên kết cộng hoá trị. (Thường gặp: kim loại + phi kim → ion; phi kim + phi kim → cộng hoá trị.)',on(){$('#rule').hidden=false;}}],
   guide:'Giờ em hãy bay tự do: xem phân tử Cl₂ rồi xuống xem cặp Na⁺Cl⁻ bên dưới. So sánh xem vì sao Cl gặp Na thì thành ion, còn Cl gặp Cl thì phải góp chung nhé.',
   points:[
-    {id:'pair',pos:[0,0,9],title:'Cặp chung Cl–Cl',text:'Mỗi Cl góp 1 electron thành 1 cặp dùng chung. Không ai nhường ai, vì nhường đi thì chính mình lại thiếu.'},
-    {id:'cmp',pos:[0,-48,10],title:'So với Na⁺Cl⁻',text:'Na là kim loại, thừa 1 nên muốn cho. Na + Cl: một cho, một nhận → hai ion hút nhau (đường cam–xanh).'}],
+    {id:'pair',pos:[0,0,9],title:'Giữa hai Cl',text:'Mỗi Cl có 7 electron lớp ngoài. Để hoàn hảo, mỗi Cl muốn cho hay muốn nhận? Nếu một Cl cho đi thì nó sẽ ra sao?'},
+    {id:'cmp',pos:[0,-48,10],title:'Cặp Na⁺Cl⁻ bên dưới',text:'Na thừa hay thiếu electron? Còn Cl? Vì sao cặp này lại thành hai hạt mang dấu + và −?'}],
   tasks:[{t:'Hai Cl nhường–nhận hay góp chung electron? Vì sao?'},{t:'Khác gì cặp Na⁺Cl⁻ bên dưới?'}],
   quiz:[{q:'Vì sao hai nguyên tử Cl không tạo liên kết ion với nhau?',opts:['Cả hai đều cần nhận thêm electron, không nguyên tử nào muốn cho','Vì Cl là khí hiếm','Vì Cl không có electron lớp ngoài','Vì hai nguyên tử Cl mang điện cùng dấu'],ans:0,
     explain:'Liên kết ion cần một bên muốn CHO và một bên muốn NHẬN. Hai Cl đều muốn nhận, nên chúng góp chung: liên kết cộng hoá trị.',
@@ -726,7 +726,7 @@ const PRACTICE=[
    q6:{q:'Mg cần cho đi 2 electron, nhưng mỗi Cl chỉ nhận 1. Cần mấy nguyên tử Cl?',opts:['2','1','3','4'],explain:'Mg cho mỗi Cl 1 electron, nên cần 2 nguyên tử Cl. Vì vậy công thức là MgCl₂.',hint:'Mg cho đi mấy electron? Mỗi Cl nhận được mấy?'}}];
 
 /* chừa chỗ cho viền đen trên + dải câu hỏi dưới: nguyên tử, nhãn tên (trên) và nhãn lý luận (dưới) đều nằm trong vùng nhìn thấy */
-const shotOn=(x,r)=>{const D=3*r+44;return {cam:[x,4,D],look:[x,-.168*D,0]};};
+const shotOn=(x,r)=>{const D=3.2*r+50;return {cam:[x,4,D],look:[x,-.168*D,0]};};
 const shotWide=(D,span=0)=>{D=Math.max(D,(span+10)/(Math.tan(31*Math.PI/180)*camera.aspect));return {cam:[0,6,D],look:[0,-.168*D,0]};};
 /* bộ 6 câu: A thừa/thiếu → A cho/nhận → B thừa/thiếu → B cho/nhận → liên kết bằng cách nào → cho mấy / góp mấy cặp */
 function practiceAsks(c,h,shA,shB,wide){
@@ -748,16 +748,16 @@ function ionicPractice(i,c){
     make(g){
       const Ax=two?0:-46;const Aang=two?[0,180]:Array.from({length:A.val},(_,k)=>(k-(A.val-1)/2)*26);
       const Ma=makeAtom(A.sym,[...A.inner,Aang],A.nucR);Ma.position.x=Ax;g.add(Ma);
-      const Alab=labelHolder(Ma,A.sym,`${A.name} · ${A.type} · ${A.cfg}`,rA+7,5.6);
+      const Alab=labelHolder(Ma,A.sym,`${A.name} · ${A.cfg}`,rA+7,5.6);
       const Arsn=new THREE.Group();Arsn.position.set(0,-(rA+12),0);Ma.add(Arsn);
       const Xs=(two?[-1,1]:[1]).map(side=>{
         const x=two?side*60:46;const dir=side>0?180:0;const need=8-B.val;const off=need%2===0?22.5:0;
         const slots=Array.from({length:8},(_,k)=>off+k*45);const dist=a=>Math.abs(((a-dir)%360+540)%360-180);
         const empty=[...slots].sort((p,q)=>dist(p)-dist(q)).slice(0,need);const filled=slots.filter(a=>!empty.includes(a));
         const X=makeAtom(B.sym,[...B.inner,filled],B.nucR);X.position.x=x;g.add(X);
-        const lab=labelHolder(X,B.sym,`${B.name} · ${B.type} · ${B.cfg}`,rB+7,5.6);
+        const lab=labelHolder(X,B.sym,`${B.name} · ${B.cfg}`,rB+7,5.6);
         const rsn=new THREE.Group();rsn.position.set(0,-(rB+12),0);X.add(rsn);
-        const sl=empty.map(a=>{const p=V3(Math.cos(a*Math.PI/180)*rB,Math.sin(a*Math.PI/180)*rB,0);const m=makeSlot(p);X.add(m);return {p,m};}).sort((p,q)=>p.p.y-q.p.y);
+        const sl=empty.map(a=>{const p=V3(Math.cos(a*Math.PI/180)*rB,Math.sin(a*Math.PI/180)*rB,0);const m=makeSlot(p);m.visible=false;X.add(m);return {p,m};}).sort((p,q)=>p.p.y-q.p.y);
         return {X,lab,rsn,sl,side};
       });
       const els=[...Ma.userData.shells[A.inner.length].els].sort((p,q)=>p.position.y-q.position.y);
@@ -768,9 +768,10 @@ function ionicPractice(i,c){
     film:(h,st)=>{
       const shA=shotOn(two?0:-46,rA),shB=shotOn(two?60:46,rB),wide=shotWide(two?140:128,two?60+rB:46+Math.max(rA,rB));
       return [
-        Object.assign({move:3,text:`Trạm luyện tập. Đây là ${A.sym} (${A.type}) và ${B.sym} (${B.type}). Em hãy nhìn các lớp electron của từng nguyên tử để tự phân tích: mỗi bên muốn gì để đạt trạng thái hoàn hảo của chính nó?`},wide),
+        Object.assign({move:3,text:`Trạm luyện tập. Đây là ${A.sym} và ${B.sym}. Em hãy nhìn các lớp electron của từng nguyên tử để tự phân tích: mỗi bên muốn gì để đạt trạng thái hoàn hảo của chính nó?`},wide),
         ...practiceAsks(c,h,shA,shB,wide),
-        Object.assign({text:`Đúng vậy: ${A.sym} cho, ${B.sym} nhận. Xem hoạt cảnh nhé…`,on(){
+        Object.assign({text:`Đúng vậy: ${A.sym} cho, ${B.sym} nhận. Vòng vàng nhỏ là chỗ trống ${B.sym} sẽ nhận electron. Xem hoạt cảnh nhé…`,on(){
+          h.Xs.forEach(x=>x.sl.forEach(s=>{s.m.visible=true;}));
           ftween(2.2,k=>{if(two)h.Xs.forEach(x=>{x.X.position.x=x.side*(60-6*k);});else{h.Ma.position.x=-46+6*k;h.Xs[0].X.position.x=46-6*k;}});}},wide),
         {text:`${A.sym} cho ${B.sym} ${A.val} electron.`,on(){
           h.els.forEach((e,k)=>{let x,s;if(two){x=h.Xs.find(q=>Math.sign(q.side)===Math.sign(e.position.x));s=x.sl[0];}else{x=h.Xs[0];s=x.sl[k];}
@@ -793,7 +794,7 @@ function covalentPractice(i,c){
     make(g){
       const mol=makeMolecule(c.spec);g.add(mol.g);const fx=makeCovalentFx(mol);fx.setOpacity(0);g.add(fx.g);
       const info=idx=>c.iA.includes(idx)?A:B;
-      const labs=mol.atoms.map((a,idx)=>labelHolder(a.g,a.sym,`${info(idx).name} · phi kim · ${info(idx).cfg}`,a.rOut+7,5));
+      const labs=mol.atoms.map((a,idx)=>labelHolder(a.g,a.sym,`${info(idx).name} · ${info(idx).cfg}`,a.rOut+7,5));
       const rsn=mol.atoms.map(a=>{const r=new THREE.Group();r.position.set(0,-(a.rOut+12),0);a.g.add(r);return r;});
       const maxR=Math.max(...mol.atoms.map(a=>a.rOut));
       const title=makeLabel('LIÊN KẾT CỘNG HOÁ TRỊ',`${c.formula} là chất cộng hoá trị`,6,'#7ff5da');title.position.set(0,maxR+18,0);title.material.opacity=0;g.add(title);
@@ -804,7 +805,7 @@ function covalentPractice(i,c){
       const shA=shotOn(aA.sep.x,aA.rOut),shB=shotOn(aB.sep.x,aB.rOut),span=Math.max(...h.mol.atoms.map(a=>Math.abs(a.sep.x)+a.rOut)),wide=shotWide(Math.max(100,span*1.9),span);
       const pairs=h.mol.bonds.reduce((s,b)=>s+b.k,0);
       return [
-        Object.assign({move:3,text:`Trạm luyện tập. Đây là ${A.sym} và ${B.sym}, đều là phi kim. Em hãy nhìn các lớp electron của từng nguyên tử để tự phân tích: mỗi bên muốn gì để đạt trạng thái hoàn hảo của chính nó?`},wide),
+        Object.assign({move:3,text:`Trạm luyện tập. Đây là ${A.sym} và ${B.sym}. Em hãy nhìn các lớp electron của từng nguyên tử để tự phân tích: mỗi bên muốn gì để đạt trạng thái hoàn hảo của chính nó?`},wide),
         ...practiceAsks(c,h,shA,shB,wide),
         Object.assign({text:`Đúng vậy: cả ${A.sym} và ${B.sym} đều muốn nhận, nên chúng góp chung. Xem hoạt cảnh nhé…`,on(){ftween(2.4,k=>h.mol.setForm(k*.6));}},wide),
         {text:`Mỗi bên góp electron vào vùng chồng nhau: có <b>${pairs} cặp dùng chung</b>. Tính cả electron dùng chung, ${A.sym} và ${B.sym} đều <b>hoàn hảo</b>!`,on(){
