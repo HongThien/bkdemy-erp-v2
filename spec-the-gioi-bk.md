@@ -56,6 +56,18 @@
   Chờ Thùy: giữ thẻ gộp A ở Thế giới (mockup) hay bỏ hẳn A, Thế giới chỉ còn S.
 - **Chỉ tin tốt** (luật A8 gamification: hạng thấp chỉ em đó thấy). Phải có loại tin **ai chăm cũng đạt** (tầng B) để bạn yếu cũng lên kênh.
 
+## 4b. ĐĂNG BÀI KHOE — tin CHÍNH của kênh (Thùy chốt 29/09)
+
+- HS không tự đăng bài ⇒ **đăng bài = "Đăng bài khoe"**. Làm được thành tích tốt ⇒ app mời "🎉 Khoe" (đầu kênh Thế giới · thẻ Thế giới ở Home);
+  bấm ⇒ chọn 1 câu dẫn soạn sẵn (không bắt buộc) ⇒ bài **lên Thế giới** (và Lớp/Bạn bè), kèm màn "LÊN SÓNG THẾ GIỚI BK!".
+- **HS khoe gì đủ chuẩn cũng lên Thế giới.** Tầng S/A/B CHỈ dùng cho tin **hệ thống tự đăng**: Thế giới = S · Lớp/Bạn bè = S + A · **B không tự đăng**.
+- Thành tích khoe được = tin SUY từ sự kiện thật (em không bịa được) · đạt trong **3 ngày** · không phải S (S đã tự lên) · mỗi thành tích khoe 1 lần.
+- **Tối đa 3 bài khoe / em / ngày** (giờ VN). Em tự gỡ bài được (menu ⋯). Tin chỉ là thành tích TÍCH CỰC có số (không "xong 1 bài").
+- Thành tích hiện có (29/09): ET 10đ / 9–9,5đ (bài ≥5 câu) · tự luyện ≥50 câu đúng/ngày · Nhất buổi · Nhất game · đội thắng · huy hiệu ★1–3.
+- Xếp kênh: tin S ghim 24h → theo ngày lên kênh → trong ngày S → bài khoe → A. Dữ liệu: bảng the_gioi_bai_khoe (mig 202609291239).
+- **Còn treo:** nút khoe ngay tại màn kết quả (hết buổi tự luyện, lớp phủ huy hiệu mới) · push HS "bài khoe của em có 12 tim" · Hồ sơ "đã lên Thế giới N lần" ·
+  ghim "HOT TUẦN" · đơn ChatGPT vẽ nút khoe + màn Lên sóng · Thùy duyệt 12 câu dẫn khoe (nháp CTO, nhóm khoe ở the_gioi_danh_muc).
+
 ## 5. Tương tác — Y HỆT FACEBOOK, chỉ khác: không chữ tự do
 
 - **Thùy 29/09: "UX quen thuộc giống FB, đừng bắt học cái mới"** (mig `202609290148`). Tách 2 việc như FB:

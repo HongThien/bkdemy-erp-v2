@@ -31821,6 +31821,32 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Màu trên dashboard:** 3 màu trạng thái chỉ nằm trên THANH + ô chú giải; chữ/số luôn màu mực (vàng cảnh báo tương phản 1,79:1,
   không làm chữ được). Độ dài đoạn thanh = `flex-grow` theo số đếm, màn hình không chia.
 
+### 29/09 — Buổi bù: em thêm vào buổi bù CÓ SẴN không có ô chấm ET (Thùy: Tuệ Anh / Tuệ Nhi bù 6A1 28/09)
+- Triệu chứng: 2 em cùng bù 6A1 24/09 trong buổi bù 28/09 — Tuệ Nhi có B1–B3 Đ/C/S, Tuệ Anh "Buổi mẹ chưa có ET" dù CÙNG buổi mẹ (ET 3 câu).
+- Gốc: `ensureBuoiBuETProblems` (botro.ts) idempotent theo BUỔI (`if (cur.length) return`). Tuệ Nhi xếp 27/09 10:51 ⇒ mở màn seed 3 ô (10:53);
+  Tuệ Anh thêm vào buổi đó 19:40 ⇒ buổi đã có ô ⇒ return ⇒ không bao giờ có ô. Không có trigger DB nào chép (đã soát pg_trigger). Cùng họ bug
+  lưới ET 07-21 (gami.ts): seed 1 lần theo khoá SAI CẤP — lần này khoá phải là (buổi × EM).
+- Đo toàn hệ: 11 lượt em dính (buổi đã có ô em khác, em 0 ô) từ 06/07; 10 lượt đã xác nhận ET (9 có mặt ⇒ mất điểm ET buổi bù, chỉ chấm lại được
+  nếu mở lại ET + còn bài giấy) — KHÔNG vá tự động. Lượt còn mở duy nhất = Tuệ Anh.
+- Sửa: client seed THEO EM (em nào chưa có ô mới seed, problem_no nối tiếp, kèm ma_cau), ET đã xác nhận thì không đụng cấu trúc ·
+  mig 202609291250_bu_seed_et_em_them_sau: vá buổi bù chưa xác nhận ET — chép lưới ET của chính buổi mẹ (ô không ẩn, thứ tự, ma_cau/ma_dang);
+  nhân chứng thứ hai: 3 ô mẹ khớp thứ tự dạng với 3 ô đã seed cho Tuệ Nhi. Đo sau: đúng 1 em (37→36). Tuệ Anh có B1–B3 ngay, không chờ deploy.
+- Nợ §2.0 còn lại: việc seed vẫn ở client (lookup ET qua tai_lieu lớp+ngày) — nên chuyển thành hàm/trigger DB khi trả nợ AUDIT-client-tinh-toan.
+### 29/09 (19) — ĐĂNG BÀI KHOE (tính năng chính Thế giới BK) + bấm Thích ra dải cảm xúc + "Đọc bình luận (N)" + đủ 39 câu khen
+- Thùy chốt: HS khoe là lên Thế giới (S/A/B chỉ cho tin hệ thống tự đăng) · khoe gì đủ chuẩn cũng lên · tối đa 3 bài/ngày (t đề 1 — Thùy: "1 quá ít").
+- Mig 202609291239_the_gioi_dang_bai_khoe (áp --only, schema.md): bảng the_gioi_bai_khoe (1 dòng khi em BẤM, unique em×thành tích, go_at gỡ, trigger log)
+  · 12 câu dẫn nhóm 'khoe' (nháp CTO) · _the_gioi_cho_khoe (của em, 3 ngày, không S, chưa khoe) · fn_the_gioi_cho_khoe · fn_the_gioi_khoe (khoá
+  advisory chống bấm đôi vượt giới hạn) · fn_the_gioi_go_khoe · fn_the_gioi_kenh (từ DB đang chạy): tg = S ∪ bài khoe · lop/ban = S,A ∪ bài khoe ·
+  xếp ghim → ngày lên kênh → S/khoe/A; json 'khoe' {dang_at, cau, la_em}; thẻ gộp có 'so_bl' · fn_the_gioi_binh_luan: người xem chọn MỌI câu khen
+  (trừ cam_on/khoe) · fn_the_gioi_home thêm 'cho_khoe'.
+  Thử ROLLBACK HS thật: khoe 3 thành tích tự luyện OK · khoe lại / câu dẫn sai loại / HS khác khoe hộ đều bị chặn · bài thứ 4 trong ngày bị chặn
+  (thử riêng: chèn sẵn 3 bài) · gỡ ⇒ biến khỏi Thế giới · bình luận câu khác loại tin giờ được.
+- App: MucChoKhoe đầu mọi tab (còn X/3 lượt) · TamKhoe (xem trước + 12 câu dẫn) · LenSong toàn màn · bài khoe = thẻ lớn "🌏 đã khoe lên Thế giới" +
+  câu dẫn · menu ⋯ "Gỡ bài khoe" · NutThich BẤM là mở dải cảm xúc (bỏ bấm-giữ — Thùy: "1 chỗ để click, click ra list") · thẻ gộp "Đọc bình luận (N)"
+  (0 ⇒ "Xem tất cả") · bài: "Đọc N bình luận" · cauHop hiện đủ câu (hợp loại lên đầu) · Home: dòng "🎉 Em có N thành tích chưa khoe". Mẫu tt 12–13.
+- Sai suýt lọt: màn Lên sóng ghi "em nhận thông báo ngay" — push HS CHƯA có ⇒ đổi thành "báo ở ô Thế giới BK ngoài màn chính".
+- Số câu khen thật = 39 (không phải 42 như t nói miệng) + 5 cảm ơn + 12 dẫn khoe.
+
 ## 2026-09-29 (19) — TRỢ LÝ · Tổng kết tuần vòng 2: THƯỜNG ĐẠT có lọc nhiễu + 3 mảng mới + dựng theo BẢNG + tự tính thứ Hai — mig 202609291251 ĐÃ ÁP
 
 - **CEO duyệt 6 đề xuất:** (1) "mỗi cái sẽ có 1 ngưỡng gọi là ngưỡng thường đạt — là trung bình toàn bộ các lần đã đo. Dưới thường đạt

@@ -33,8 +33,9 @@ export type TinTG = {
   la_ban: boolean
   da_an?: boolean
   khen: KhenTG
+  khoe?: { dang_at: string; cau: string | null; la_em: boolean } | null // có ⇒ tin này lên kênh vì HS BẤM KHOE (mig 202609291239)
 }
-export type GopTG = { kieu: string; so: number; ds: TinTG[] }
+export type GopTG = { kieu: string; so: number; so_bl?: number; ds: TinTG[] }
 export type KenhTG = { toi: { hien: 'ten' | 'ma'; so_ban: number; loi_moi: number }; tin: TinTG[]; gop: GopTG[] }
 export type LoiMoiTG = { id: string; nguoi: NguoiTG; ban_chung: number }
 export type BanBeTG = { ban: NguoiTG[]; loi_moi: LoiMoiTG[]; da_gui: string[] }
@@ -68,5 +69,12 @@ export async function layDanhMuc(): Promise<DanhMucTG[]> {
 }
 
 // Thẻ Thế giới BK trên MÀN CHÍNH (thay thẻ "Việc cần làm" — Thùy 29/09): tương tác mới 24h trên tin của em · lời mời · ≤2 tin nổi bật.
-export type TheGioiHome = { tuong_tac: { so: number; so_nguoi: number; nguoi: NguoiTG | null }; loi_moi: number; tin: TinTG[] }
+// ĐĂNG BÀI KHOE (Thùy 29/09 — tính năng chính): thành tích đạt trong 3 ngày, chưa khoe · tối đa 3 bài / em / ngày.
+export type ThanhTichKhoe = Pick<TinTG, 'khoa' | 'tang' | 'nhom' | 'kieu' | 'mon' | 'at' | 'chi_tiet' | 'lop'>
+export type ChoKhoe = { gioi_han: number; da_khoe_hom_nay: number; tin: ThanhTichKhoe[] }
+export const layChoKhoe = () => rpc<ChoKhoe | null>('fn_the_gioi_cho_khoe')
+export const dangKhoe = (khoa: string, cau: string | null) => rpc<{ gioi_han: number; da_khoe_hom_nay: number }>('fn_the_gioi_khoe', { p_khoa: khoa, p_cau: cau })
+export const goKhoe = (khoa: string) => rpc<void>('fn_the_gioi_go_khoe', { p_khoa: khoa })
+
+export type TheGioiHome = { tuong_tac: { so: number; so_nguoi: number; nguoi: NguoiTG | null }; loi_moi: number; tin: TinTG[]; cho_khoe?: ChoKhoe | null }
 export const theGioiHome = () => rpc<TheGioiHome | null>('fn_the_gioi_home')

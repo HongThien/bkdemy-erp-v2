@@ -14,7 +14,7 @@ import { HoSoView, ChonKhoe, TheTVHS } from '../HoSoHS'
 import { HinhHuyHieu, BieuTuongBac, SaoBac, AvatarKhung, IconNV } from './HinhGami'
 import { KIT, BAC, MAU_HH, ICON_NV } from './hinh'
 import * as M from './mauGami'
-import { TheGioiView, TamBinhLuan, TamCamXuc, TamKetBan, type BanPhim } from '../thegioi/TheGioiHS'
+import { TheGioiView, TamBinhLuan, TamCamXuc, TamKetBan, TamKhoe, LenSong, type BanPhim } from '../thegioi/TheGioiHS'
 import * as TG from '../thegioi/mauTheGioi'
 import HomeHS912 from '../HomeHS912'
 import type { HomeCard } from '../HomeHS'
@@ -29,7 +29,7 @@ const MAN: { id: string; ten: string; tt: string[] }[] = [
   { id: 'the_tv', ten: 'Thẻ TV lớp', tt: ['3 mẫu'] },
   { id: 'bo_hinh', ten: 'Bộ hình', tt: ['Tất cả hình'] },
   { id: 'home', ten: 'Màn chính', tt: ['Có ca bổ trợ · nam', 'Kiểm tra lại · nữ', 'Không việc gấp'] },
-  { id: 'the_gioi', ten: 'Thế giới BK', tt: ['Thế giới', 'Thế giới (thẻ gộp mở)', 'Bạn bè', 'Kết bạn', 'Lớp + giữ nút Thích', 'Lớp + menu ⋯', 'Bình luận', 'Bình luận · chọn câu', 'Bình luận · sticker', 'Ai đã bày tỏ cảm xúc', 'Tất cả cảm xúc (＋)'] },
+  { id: 'the_gioi', ten: 'Thế giới BK', tt: ['Thế giới', 'Thế giới (thẻ gộp mở)', 'Bạn bè', 'Kết bạn', 'Lớp + giữ nút Thích', 'Lớp + menu ⋯', 'Bình luận', 'Bình luận · chọn câu', 'Bình luận · sticker', 'Ai đã bày tỏ cảm xúc', 'Tất cả cảm xúc (＋)', 'Tấm đăng bài khoe', 'Lên sóng!'] },
 ]
 
 function Dau({ tieuDe, phu }: { tieuDe: string; phu: string }) {
@@ -51,14 +51,17 @@ function MauTheGioi({ tt }: { tt: number }) {
   const [banPhim, setBanPhim] = useState<BanPhim>(tt === 8 ? 'cau' : tt === 9 ? 'sticker' : 'dong')
   const [xem, setXem] = useState<'bl' | 'tha'>(tt === 10 ? 'tha' : 'bl')
   const [loc, setLoc] = useState<string | null>(null)
+  const [cauKhoe, setCauKhoe] = useState<string | null>('k01')
   return (
     <TheGioiView tab={tab} onTab={noop} kenh={kenh} loi={null} banBe={TG.BAN_BE} hien="ten" onHien={noop}
       moGop={tt === 2 ? { nhat_buoi: true } : {}} onMoGop={noop} menuKhoa={tt === 6 ? 'no_luc:em' : null} onMenu={noop}
       danhMuc={TG.DANH_MUC} thanhKhoa={thanh} onThanh={setThanh} onTha={noop} onThemCamXuc={noop} onMoBl={noop}
-      onAnTin={noop} onDongY={noop} onDeSau={noop} onMoKetBan={noop} onBack={noop}>
+      onAnTin={noop} onDongY={noop} onDeSau={noop} onMoKetBan={noop} onBack={noop} choKhoe={TG.CHO_KHOE} onKhoe={noop} onGoKhoe={noop}>
       {tt === 4 && <TamKetBan tim="" onTim={noop} ds={TG.GOI_Y} onGui={noop} onDong={noop} />}
       {tt >= 7 && tt <= 10 && <TamBinhLuan tin={TG.TIN_MO} ct={TG.CHI_TIET} xem={xem} onXem={setXem} loc={loc} onLoc={setLoc} banPhim={banPhim} onBanPhim={setBanPhim}
         danhMuc={TG.DANH_MUC} onGui={noop} dangGui={false} loi={null} onGo={noop} onAn={noop} onDong={noop} />}
+      {tt === 12 && <TamKhoe tt={TG.CHO_KHOE.tin[0]} danhMuc={TG.DANH_MUC} cau={cauKhoe} onCau={setCauKhoe} onDang={noop} dangDang={false} loi={null} onDong={noop} />}
+      {tt === 13 && <LenSong tt={TG.CHO_KHOE.tin[0]} onXem={noop} />}
       {tt === 11 && <TamCamXuc tin={TG.TIN_MO} danhMuc={TG.DANH_MUC} onChon={noop} onDong={noop} />}
     </TheGioiView>
   )
@@ -79,7 +82,7 @@ function MauHome({ tt }: { tt: number }) {
       mons={[]} mon="Toán" onChonMon={noop} lich={tt === 1 ? [CA] : []} soRetest={tt === 2 ? 2 : 0} cards={tt === 3 ? O_HOME.map((c) => ({ ...c, badge: 0 })) : O_HOME}
       onHopThu={noop} onDoiMK={noop} onThoat={noop} onLich={noop} onRetest={noop} onHoSo={noop} gioiTinh={tt === 2 ? 'nu' : 'nam'}
       onTheGioi={noop} theGioi={tt === 3 ? { tuong_tac: { so: 0, so_nguoi: 0, nguoi: null }, loi_moi: 0, tin: TG.KENH_TG.tin.slice(0, 2) }
-        : { tuong_tac: { so: 5, so_nguoi: 3, nguoi: { an: false, ten: 'Nguyễn Thu Hà', lop: '9A1' } }, loi_moi: 2, tin: TG.KENH_TG.tin.slice(0, 1) }} />
+        : { tuong_tac: { so: 5, so_nguoi: 3, nguoi: { an: false, ten: 'Nguyễn Thu Hà', lop: '9A1' } }, loi_moi: 2, tin: TG.KENH_TG.tin.slice(0, 1), cho_khoe: TG.CHO_KHOE }} />
   )
 }
 
