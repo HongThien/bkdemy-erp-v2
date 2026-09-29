@@ -60,7 +60,9 @@
 
 - HS không tự đăng bài ⇒ **đăng bài = "Đăng bài khoe"**. Làm được thành tích tốt ⇒ app mời "🎉 Khoe" (đầu kênh Thế giới · thẻ Thế giới ở Home);
   bấm ⇒ chọn 1 câu dẫn soạn sẵn (không bắt buộc) ⇒ bài **lên Thế giới** (và Lớp/Bạn bè), kèm màn "LÊN SÓNG THẾ GIỚI BK!".
-- **HS khoe gì đủ chuẩn cũng lên Thế giới.** Tầng S/A/B CHỈ dùng cho tin **hệ thống tự đăng**: Thế giới = S · Lớp/Bạn bè = S + A · **B không tự đăng**.
+- **HS khoe gì đủ chuẩn cũng lên Thế giới.** Tầng S/A/B CHỈ dùng cho tin **hệ thống tự đăng** (Thùy chốt 29/09): **Thế giới = chỉ S** ·
+  **Lớp + Bạn bè = S, A, B nhưng có HẠN MỨC** để bài HS khoe không trôi: mỗi em ≤ 1 tin tự động/ngày/kênh (A trước B) · mỗi kênh ≤ 6 tin tự động/ngày ·
+  tin S + bài khoe không tính hạn mức; trong ngày bài khoe xếp trên tin tự động, tin B ở mục nhỏ cuối kênh (mig 202609291323).
 - Thành tích khoe được = tin SUY từ sự kiện thật (em không bịa được) · đạt trong **3 ngày** · không phải S (S đã tự lên) · mỗi thành tích khoe 1 lần.
 - **Tối đa 3 bài khoe / em / ngày** (giờ VN). Em tự gỡ bài được (menu ⋯). Tin chỉ là thành tích TÍCH CỰC có số (không "xong 1 bài").
 - Thành tích hiện có (29/09): ET 10đ / 9–9,5đ (bài ≥5 câu) · tự luyện ≥50 câu đúng/ngày · Nhất buổi · Nhất game · đội thắng · huy hiệu ★1–3.
