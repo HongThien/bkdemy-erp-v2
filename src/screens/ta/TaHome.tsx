@@ -21,9 +21,10 @@ import ChamBuoi from './ChamBuoi'
 import DashTa from './DashTa'
 import GopY from './GopY'
 import CaBoTroTA, { demNoBoTro } from './CaBoTroTA'
-import { viecBoTroCuaToi, caBuCuaToi, type ViecCaBoTro, type ViecRetest, type CaBu } from '../../lib/botro_yeu_ca'
+import { viecBoTroCuaToi, caBuCuaToi, btvnBuCuaToi, type ViecCaBoTro, type ViecRetest, type CaBu, type BtvnBu } from '../../lib/botro_yeu_ca'
 import { BuoiBuDetail } from '../botro/BoTroScreen'
 import DuoiCaTA from './DuoiCaTA'
+import ChamBtvnBu from './ChamBtvnBu'
 import TripCountdownBanner, { type CountdownRect } from '../../components/TripCountdownBanner'
 
 // Banner đếm ngược đi chơi Ba Vì (CEO 07/09, đã lắp cho OPS — "làm cái này cho ta app luôn") — ảnh + rect
@@ -82,7 +83,10 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
   const [dashTom, setDashTom] = useState<TaDash | null>(null)
   const [boTro, setBoTro] = useState<ViecBoTro>({ ca: [], retest: [] })
   const [caBu, setCaBu] = useState<CaBu[]>([])
-  const taiBoTro = () => { viecBoTroCuaToi().then(setBoTro).catch(() => {}); caBuCuaToi().then(setCaBu).catch(() => {}) }
+  // BTVN BÙ (Thùy 29/09): em học bù xong làm BTVN buổi đã nghỉ — TA LỚP chấm, nằm trong "Chấm BTVN" (mục riêng đầu danh sách).
+  const [btvnBu, setBtvnBu] = useState<BtvnBu[]>([])
+  const [moBtvnBu, setMoBtvnBu] = useState<BtvnBu | null>(null)
+  const taiBoTro = () => { viecBoTroCuaToi().then(setBoTro).catch(() => {}); caBuCuaToi().then(setCaBu).catch(() => {}); btvnBuCuaToi().then(setBtvnBu).catch(() => {}) }
   const coQuyen = quyen.laAdmin || quyen.chucNang.includes('buoihoc') // cùng leaf với tab chấm bên ERP
 
   async function reload(silent = false) {
@@ -110,14 +114,15 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
   }, [view]) // eslint-disable-line
 
   const canLam = tasks.filter((t) => !t.done)
-  const noCua = (k: NvKey) => canLam.filter((t) => belongsToNv(t, k)).length
+  const noBtvnBu = btvnBu.filter((x) => !x.xong).length
+  const noCua = (k: NvKey) => canLam.filter((t) => belongsToNv(t, k)).length + (k === 'btvn' ? noBtvnBu : 0)
   // Icon MH chính — số = 3 nghiệp vụ (bubble nav dưới) + bổ trợ (cùng số hiện ở tab Bổ trợ).
   // ⚠ PHẢI gọi TRƯỚC `if (view) return` ngay dưới — hook đứng sau 1 early-return bị bỏ qua đúng
   // lúc chuyển view (bấm vào 1 buổi), lệch số hook giữa 2 lần render ⇒ React crash trắng màn hình
   // TOÀN BỘ app (không có error boundary hứng). Bài học đau 11/09: tưởng lỗi cache/thiết bị, hỏi
   // qua lại rồi mới lộ ra là Rules of Hooks — lần sau thấy "trắng hoàn toàn không còn gì" thì nghi
   // hook-order trước, không nghi cache trước.
-  useEffect(() => { setAppBadgeCount(canLam.length + demNoBoTro(boTro)) }, [canLam.length, boTro])
+  useEffect(() => { setAppBadgeCount(canLam.length + demNoBoTro(boTro) + noBtvnBu) }, [canLam.length, boTro, noBtvnBu])
 
   // Buổi bù mở màn detail RIÊNG (điểm danh + ET seed từ buổi mẹ + đánh giá per-HS + 2 nút đóng — nằm
   // trong BuoiBuDetail, dùng `h-full` → phải BỌC trong 100dvh, không thì #root không cấp chiều cao và
@@ -125,6 +130,7 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
   // thường (bám đề theo lop×ngày), sẽ trắng dữ liệu với buổi bù (lop_id null, ET không có ở lop×ngày).
   // Buổi đuổi (Thùy 22/09: "UI m phải làm cho dt"): DuoiCaTA — trang cuộn bình thường như ChamBuoi/
   // DuoiGiayTA, KHÔNG bọc 100dvh (khác buổi bù, không phải flex h-full).
+  if (moBtvnBu) return <ChamBtvnBu v={moBtvnBu} onBack={() => { setMoBtvnBu(null); taiBoTro() }} />
   if (view) {
     const onBack = () => { setView(null); reload(true) }
     if (view.loai === 'bu') return <div className="h-[100dvh]"><BuoiBuDetail buoiId={view.buoiId} onClose={onBack} /></div>
@@ -135,10 +141,11 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
   return (
     <div className="flex h-[100dvh] flex-col" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif", background: BK_TROI }}>
       <div className="min-h-0 flex-1 overflow-auto">
-        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} onOpenBuoi={setView} dashTom={dashTom} boTro={boTro} caBu={caBu} onAvatarChanged={onAvatarChanged} />}
+        {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} onOpenBuoi={setView} dashTom={dashTom} boTro={boTro} caBu={caBu} btvnBu={btvnBu} onAvatarChanged={onAvatarChanged} />}
         {tab === 'dash' && <DashTa profile={profile} />}
         {tab === 'botro' && <CaBoTroTA viec={boTro} onDoi={taiBoTro} />}
-        {tab !== 'home' && tab !== 'dash' && tab !== 'botro' && <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => belongsToNv(t, tab))} nopCount={nopCount} now={now} homNay={homNay} onOpen={setView} />}
+        {tab !== 'home' && tab !== 'dash' && tab !== 'botro' && <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => belongsToNv(t, tab))} nopCount={nopCount} now={now} homNay={homNay} onOpen={setView}
+          dauDs={tab === 'btvn' ? <DsBtvnBu ds={btvnBu} homNay={homNay} onMo={setMoBtvnBu} /> : null} soThem={tab === 'btvn' ? noBtvnBu : 0} />}
       </div>
 
       {/* bottom tab — icon PNG bộ BK, active = pill xanh; mỗi nghiệp vụ có bubble nợ, chừa safe-area */}
@@ -169,8 +176,8 @@ function TabBtn({ active, icon, label, no, onClick }: { active: boolean; icon: s
 
 // ── TRANG CHỦ: 1 thẻ hồ sơ (avatar · Chào X · ngày · nợ · chuông/góp ý/thoát) + box tháng + box bổ trợ + 3 box
 //    nghiệp vụ (bubble nợ ở góc icon). CEO 07/09: gộp thanh trên + hero, bỏ dòng tên/"BK Trợ giảng" lặp. ──
-function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, onOpenBuoi, dashTom, boTro, caBu, onAvatarChanged }: {
-  caBu: CaBu[]
+function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, onOpenBuoi, dashTom, boTro, caBu, btvnBu, onAvatarChanged }: {
+  caBu: CaBu[]; btvnBu: BtvnBu[]
   profile: MyProfile; homNay: string; loading: boolean; coQuyen: boolean
   tasks: MyTask[]; canLam: MyTask[]; noCua: (k: NvKey) => number; now: number; onGo: (t: TabKey) => void; onOpenBuoi: (v: BuoiView) => void
   dashTom: TaDash | null; boTro: ViecBoTro; onAvatarChanged?: (url: string) => void
@@ -260,6 +267,7 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
         {!loading && coQuyen && NGHIEP_VU.map((n) => {
           const cua = canLam.filter((t) => belongsToNv(t, n.key))
           const xong = tasks.filter((t) => belongsToNv(t, n.key) && t.done).length
+          const buCho = n.key === 'btvn' ? btvnBu.filter((x) => !x.xong) : []
           const preview = cua.slice(0, 3)
           return (
             <button key={n.key} onClick={() => onGo(n.key)} className="rounded-[22px] p-3 text-left active:scale-[.99]" style={{ background: n.bg }}>
@@ -268,13 +276,21 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
                 <div className="min-w-0 flex-1 leading-tight">
                   <p className="font-bubble text-[17px] font-extrabold text-[#16224D]">{n.label}</p>
                   <p className="text-[12.5px] text-[#63709A]">
-                    {cua.length === 0 ? (xong > 0 ? `✓ Đã xong ${xong} buổi` : 'Không có việc') : `${cua.length} buổi chờ chấm${xong ? ` · ${xong} đã xong` : ''}`}
+                    {cua.length === 0 ? (xong > 0 ? `✓ Đã xong ${xong} buổi` : buCho.length ? '' : 'Không có việc') : `${cua.length} buổi chờ chấm${xong ? ` · ${xong} đã xong` : ''}`}
+                    {buCho.length > 0 && <b className="text-[#C27A00]">{cua.length || xong ? ' · ' : ''}{buCho.length} BTVN bù</b>}
                   </p>
                 </div>
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[15px] font-bold text-white" style={{ background: n.accent }}>›</span>
               </div>
-              {preview.length > 0 && (
+              {(preview.length > 0 || buCho.length > 0) && (
                 <div className="mt-2 flex flex-col gap-1">
+                  {buCho.slice(0, 3).map((x) => (
+                    <span key={x.bhh_id} className="flex items-center gap-2 rounded-xl bg-white/80 px-3 py-1.5">
+                      <span className="rounded-full bg-[#FFE9C7] px-1.5 py-px text-[10.5px] font-bold text-[#C27A00]">bù</span>
+                      <span className="min-w-0 flex-1 truncate text-[12.5px] font-bold text-[#16224D]">{x.ho_ten} · {x.ten_lop}</span>
+                      <span className="shrink-0 text-[10.5px] text-[#63709A]">bài {ddmmVN(x.ngay_me)}</span>
+                    </span>
+                  ))}
                   {preview.map((t) => <RowMini key={t.buoiId + t.tab} t={t} now={now} homNay={homNay} />)}
                   {cua.length > 3 && <p className="px-1 text-[10.5px] font-semibold text-[#63709A]">+ {cua.length - 3} buổi nữa…</p>}
                 </div>
@@ -356,6 +372,27 @@ function BoxBu({ ca, homNay, onOpen }: { ca: CaBu[]; homNay: string; onOpen: (v:
           {ca.length > 8 && <p className="px-1 text-[10.5px] font-semibold text-[#63709A]">+ {ca.length - 8} ca nữa…</p>}
         </div>
       )}
+    </div>
+  )
+}
+
+// Mục "BTVN bù" đầu tab Chấm BTVN (Thùy 29/09) — chưa xong lên trước (hạn gần trước), đã xong 14 ngày gần nhất mờ đi.
+function DsBtvnBu({ ds, homNay, onMo }: { ds: BtvnBu[]; homNay: string; onMo: (x: BtvnBu) => void }) {
+  if (!ds.length) return null
+  return (
+    <div className="mb-1 flex flex-col gap-1">
+      <p className="px-1 pt-1 text-[11px] font-bold uppercase tracking-wide text-[#C27A00]">BTVN bù — em học bù xong, chấm bài buổi đã nghỉ</p>
+      {ds.map((x) => (
+        <button key={x.bhh_id} onClick={() => onMo(x)}
+          className={`flex w-full items-center gap-2 rounded-2xl px-3 py-2 text-left active:scale-[.99] ${x.xong ? 'bg-white/60' : 'bg-white ring-1 ring-[#F5C77A]'}`}>
+          <span className="rounded-full bg-[#FFE9C7] px-1.5 py-px text-[10.5px] font-bold text-[#C27A00]">bù</span>
+          <span className="min-w-0 flex-1 leading-tight">
+            <span className="block truncate text-[13.5px] font-bold text-[#16224D]">{x.ho_ten} · {x.ten_lop}</span>
+            <span className="block truncate text-[11px] text-[#63709A]">bài {ddmmVN(x.ngay_me)} · học bù {ddmmVN(x.ngay_bu)}{x.nguoi_day_bu ? ` (${x.nguoi_day_bu})` : ''} · {x.so_cau} câu{x.da_cham ? ` · đã chấm ${x.da_cham}` : ''}</span>
+          </span>
+          <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-bold ${x.xong ? 'bg-[#E4F8EC] text-[#1E8A52]' : x.han < homNay ? 'bg-[#FFE4EA] text-[#C0355A]' : 'bg-[#FFF1D6] text-[#C27A00]'}`}>{x.xong ? 'xong' : x.han < homNay ? '⚠ quá hạn' : `hạn ${ddmmVN(x.han)}`}</span>
+        </button>
+      ))}
     </div>
   )
 }
@@ -445,9 +482,10 @@ function RowMini({ t, now, homNay }: { t: MyTask; now: number; homNay: string })
 }
 
 // ── TAB 1 NGHIỆP VỤ: thanh đầu BK + list card việc (nhóm theo ngày) + Đã xong collapse ──
-function ViecTab({ nv, tasks, nopCount, now, homNay, onOpen }: {
+function ViecTab({ nv, tasks, nopCount, now, homNay, onOpen, dauDs, soThem = 0 }: {
   nv: (typeof NGHIEP_VU)[number]; tasks: MyTask[]; nopCount: Record<string, number>
   now: number; homNay: string; onOpen: (v: BuoiView) => void
+  dauDs?: React.ReactNode; soThem?: number // mục riêng đầu danh sách (BTVN bù) + số việc của mục đó
 }) {
   const [xemXong, setXemXong] = useState(false)
   const canLam = tasks.filter((t) => !t.done).sort((a, b) => a.ngay.localeCompare(b.ngay) || a.lop.localeCompare(b.lop))
@@ -456,9 +494,10 @@ function ViecTab({ nv, tasks, nopCount, now, homNay, onOpen }: {
   const ngays = [...new Set(canLam.map((t) => t.ngay))]
   return (
     <div>
-      <BKTabHeader icon={nv.icon} title={nv.label} sub={canLam.length ? `${canLam.length} buổi chờ chấm` : 'Sạch nợ ✓ tuyệt vời!'} />
+      <BKTabHeader icon={nv.icon} title={nv.label} sub={canLam.length + soThem ? [canLam.length ? `${canLam.length} buổi chờ chấm` : '', soThem ? `${soThem} BTVN bù` : ''].filter(Boolean).join(' · ') : 'Sạch nợ ✓ tuyệt vời!'} />
       <div className="mx-auto flex max-w-[1000px] flex-col gap-1 px-2 pb-4">
-        {canLam.length === 0 && (
+        {dauDs}
+        {canLam.length === 0 && soThem === 0 && (
           <div className="flex items-center gap-2 rounded-[20px] bg-white/80 px-3 py-2">
             <img src={A('mascot_cheer')} alt="" className="h-12 w-12 object-contain" draggable={false} />
             <p className="text-[12.5px] text-[#63709A]">Không có buổi nào chờ chấm 🎉</p>

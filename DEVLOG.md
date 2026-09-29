@@ -31985,3 +31985,16 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   bấm ⇒ mở màn buổi bù (điểm danh · tài liệu buổi đã nghỉ · chấm ET · đánh giá). Giả lập JWT Cường: RPC trả 4 ca của Cường.
 - **Bài học:** "code nói nó hiện" ≠ "người dùng thấy". Báo lỗi hiển thị từ người dùng thật ⇒ tái hiện bằng PHIÊN THẬT trước khi trả lời;
   không có phiên thì nói rõ "chưa kiểm được", đừng khẳng định vị trí.
+
+## 2026-09-29 (18h30) — BTVN bù: dữ liệu ở ca bù, TA LỚP chấm (Thùy chốt phương án B chỉnh)
+
+- **Yêu cầu:** em học bù xong làm BTVN cần chỗ nhập để tính dữ liệu; người dạy bù ≠ người chấm BTVN.
+- **DB (mig 202609291823):** `fn_bu_btvn_seed(bhh)` chép lưới BTVN buổi mẹ (ô không ẩn, giữ thứ tự, ma_cau/ma_dang) sang ca bù, riêng em
+  (phase 'btvn', hoc_sinh_id) — idempotent theo em, khoá advisory. `fn_bu_btvn_viec_cua_toi()` — việc = em có mặt ca bù (từ 29/09) + buổi mẹ
+  có lưới BTVN; chủ = TA lớp (phan_cong_lop 'tg'), lớp không có TA ⇒ người đứng ca bù; admin thấy hết; XONG = btvn_ket_qua.trang_thai_nop;
+  em đã được chấm BTVN ngay ở buổi mẹ ⇒ không đòi. Hạn = buổi thường kế tiếp theo TKB (CN=8) + 1 ngày.
+  Chạy thử (rollback): admin 1 việc = Minh Trí 6A3, 17 câu, hạn 01/10 (6A3 học T4 30/09); TA lớp 6A3 Nguyễn Hà Giang thấy đúng việc đó.
+- **App TA:** mục "BTVN bù" đầu tab Chấm BTVN + dòng xem trước + số trên ô/tab/badge app; màn `ChamBtvnBu` (trạng thái nộp · thái độ · Đ/C/S
+  từng câu, chạm lại = bỏ, "Tất cả Đ/C/S") ghi gami_grades + btvn_ket_qua theo (em, ca bù). Không EXP (EXP BTVN chỉ khi đóng BTVN cả lớp).
+- Kiểm local ta.html (admin): ô Chấm BTVN "1 BTVN bù · Minh Trí 6A3 · bài 27/09"; mở ra 17 câu (T106020601 ×6 · T106020501 ×5 · T106020503 ×6).
+  Mở màn đã chép lưới thật cho Minh Trí (17 ô, dữ liệu cần có). CHƯA bấm chấm trên dữ liệu thật.
