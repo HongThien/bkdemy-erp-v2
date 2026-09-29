@@ -302,6 +302,9 @@
   cụ thể: "trắc nghiệm 1 phần" = triển khai **Phase 2 (Đại) của `spec-dien-o.md`** đã CEO chốt 09/09 nhưng
   CHƯA XÂY (`scripts/mcq-dien.mjs` + bảng `dai_cau_form_dien` chưa tồn tại) — không phải spec mới. Kèm hàng
   đợi cụ thể các dạng đã xác nhận không hợp khuôn "4 đáp án nguyên câu" (12/09).
+- **`spec-khtn-du-hanh.md` — ĐỌC trước khi sửa/làm bài KHTN dạng thế giới 3D** (thư mục `khtn-site/`, CEO chốt 29/09): 2 kiểu bài du hành / tương tác ·
+  nhịp trạm (phim lời dẫn → giao việc quan sát → bay tự do → trả lời lúc nào cũng được) · trạm luyện tập bộ 6 câu + hoạt cảnh theo đáp án ·
+  KHÔNG lộ đáp án trước khi trả lời · ngôn ngữ hình ion/cộng hoá trị · chưa đo, web riêng deploy tay. Bài đã có: Liên kết hoá học (KHTN 7).
 - `erp-v2-ui-spec.md` — Shell UI/UX **view-first**: React + Vite + Zustand + Tailwind, **mock data, CHƯA đụng Supabase**. Đơn vị = ROLE; derive nav/queue theo role; 2 loại việc (vận hành derive / phát triển giao tay) tách hẳn. Kho = 1 lá "Bản đồ kiến thức" trong cây Admin.
 - **`spec-luong-kho.md` — ĐỌC BẮT BUỘC trước khi đụng LUỒNG KHO** (tài liệu vào → bản đồ + câu đạt chuẩn; CEO chốt 28/09): 3 lớp
   Tri thức / Dây chuyền / Đo · luật phân tầng dạng–cụm–biến thể · cổng ghi "không biên bản kiểm thì không ghi" · luật lên cấp tự duyệt
