@@ -10,6 +10,10 @@ import type { BaiTestCuaHS, BaiLam } from './testonline'
 // Đặt ở file này (nhẹ, app TA/HS đều dùng); botro_yeu.ts re-export cho màn ERP.
 export const RETEST_BAT = false
 
+// Kết quả đóng case bổ trợ yếu (CHECK bo_tro_yeu_ket_qua_ck). day_xong = hết dạng yếu, TA đóng ca cuối (Thùy 29/09) — KHÔNG phải "đạt":
+// không đo thêm gì; đánh giá sau bổ trợ là việc học thuật (luồng khác). bo = hạ L0, dừng bổ trợ.
+export const KET_QUA_CASE_TEN: Record<string, string> = { day_xong: 'Hết dạng yếu', dat: 'Đạt', mot_phan: 'Một phần', chua_dat: 'Chưa đạt', bo: 'Bỏ' }
+
 // ── App HỌC SINH ─────────────────────────────────────────────────────────────
 export type CumCaHS = {
   ma_cum: string; ten: string; thu_tu: number; tien_de: string[]
@@ -85,6 +89,8 @@ export type CaTA = {
   test: { bai_test_id: string; so_cau: number; da_nop: boolean | null; nop_at: string | null; theo_dang: { ma_dang: string; so_cau: number; so_dung: number }[] } | null
   retest: { bai_test_id: string; ngay: string; so_cau: number; da_nop: boolean; nop_at: string | null } | null
   danh_gia: { nhan_xet: string | null; muc_ma: string | null } | null
+  // Thùy 29/09: bổ trợ yếu KẾT THÚC khi em hết dạng yếu + TA hoàn tất ca (mig 202609291055) — DB đóng case, app chỉ báo.
+  case_trang_thai: 'dang_xu' | 'hoan_thanh'; case_ket_qua: string | null; so_dang_con_day: number
   so_lan_huy: number
 }
 export async function caTA(buoiId: string): Promise<CaTA | null> {

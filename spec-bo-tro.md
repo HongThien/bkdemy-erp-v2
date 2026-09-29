@@ -10,16 +10,23 @@
 > là thiết kế **đang ngủ** — code vẫn còn, chỉ bị công tắc tắt. **Test cuối ca KHÔNG bị ảnh hưởng** (vẫn sinh, vẫn tính mastery).
 > - **Công tắc — 2 chỗ, lật CÙNG NHAU:** DB `public._btyeu_retest_bat()` (hiện `false`, mig `202609291037_hold_retest_bo_tro_yeu`) ·
 >   client `RETEST_BAT` ở `src/lib/botro_yeu_ca.ts` (re-export qua `botro_yeu.ts`). Bật lại = migration MỚI cho hàm trả `true` + đổi hằng.
-> - **Khi hold:** đóng ca / hoàn tất ca / mở màn Xếp **không sinh, không bổ sung** câu retest · dạng đã dạy **không còn "chờ retest"** ⇒ case dạy hết
->   dạng đi thẳng **Chờ đánh giá** (luồng thành ⑤ → ⑦; màn Đánh giá ca chấm trước/sau bằng MỌI lần đo, vốn không cần retest) · màn Xếp: tab
->   "Chờ retest" đổi tên **"Chờ đánh giá"**, tab 📝 Retest ẩn, bỏ gợi ý "cửa sổ retest 3–7 ngày" · Trạng thái ca bỏ mức "Chờ retest"; popup dạng
->   hiện "Đã dạy" · Đang diễn ra bỏ nút lọc Retest · app TA không còn "retest đến hạn" (badge không đếm) + bỏ dòng "⚠ Không sinh được retest —
->   báo OPS" · app HS không còn "Bài kiểm tra lại" (DB trả rỗng) · báo cáo trợ lý không báo "retest trễ", dòng thông số ghi "tạm dừng".
+> - **⭐ ĐIỂM KẾT THÚC (Thùy 29/09): bổ trợ yếu END khi em HẾT dạng yếu + TA ĐÓNG CA.** *"Chờ đánh giá là việc của học thuật — luồng khác."*
+>   TA bấm **Hoàn tất ca** mà sau khi chốt dạng đã dạy, case không còn dạng cần dạy (chưa dạy / retest trượt) ⇒ `fn_btyeu_hoan_tat` gọi
+>   `_btyeu_ket_thuc_case`: case `hoan_thanh`, **ket_qua `day_xong`** ("Hết dạng yếu" — KHÔNG phải "đạt", không đo thêm gì), `dong_boi` = người
+>   hoàn tất, dạng còn mở ⇒ `dong_at` (dat giữ NULL), huỷ buổi đã xếp chưa học. **Level không đổi** (học thuật quyết). Mig `202609291055`.
+>   Vòng case khi hold: **Chờ chọn dạng → Cần xếp → Đã xếp → Hoàn thành** — không còn Chờ retest / Chờ đánh giá ở màn Xếp và Trạng thái ca.
+>   Mặc định app TA tick HẾT dạng còn mở ⇒ TA không bỏ tick dạng nào = ca đó là ca CUỐI (app TA có dòng cảnh báo + báo "🎉 KẾT THÚC" sau hoàn tất).
+>   Màn "Đánh giá ca bổ trợ" (học thuật) giữ nguyên, không case nào tự rơi vào đó nữa.
+> - **Khi hold:** đóng ca / hoàn tất ca / mở màn Xếp **không sinh, không bổ sung** câu retest · màn Xếp ẩn tab Chờ retest + 📝 Retest, bỏ gợi ý
+>   "cửa sổ retest 3–7 ngày" · popup dạng hiện "Đã dạy" · Đang diễn ra bỏ nút lọc Retest · app TA không còn "retest đến hạn" (badge không đếm) +
+>   bỏ dòng "⚠ Không sinh được retest — báo OPS" · app HS không còn "Bài kiểm tra lại" · báo cáo trợ lý không báo "retest trễ", thông số ghi "tạm dừng".
 > - **Dữ liệu KHÔNG đụng:** 34 bài retest đã sinh (13 quá hạn, 19 ngày tới — số 29/09) giữ nguyên `trang_thai='mo'`, chỉ ẩn; `retest_diem/dat`
 >   của dạng giữ nguyên (1 dạng trượt thật vẫn hiện "retest trượt · dạy lại"). Lịch sử + popup ca vẫn hiện bài retest **đã nộp**.
->   Lúc hold: 23 case đang "Chờ retest" ⇒ sang "Chờ đánh giá".
-> - **Khi bật lại phải quyết:** 34 bài treo kia (ngày đã qua từ lâu) — dời ngày, đóng, hay sinh lại; case đã đóng ở Đánh giá ca trong thời
->   gian hold thì KHÔNG có retest (đúng — không truy sinh).
+>   Lúc hold: 23 case đang "Chờ retest" ⇒ **17 case đóng hồi tố** `day_xong` (TA đã đóng buổi cuối; mốc = lúc đóng buổi đó) · 6 case còn 1 buổi TA
+>   chưa hoàn tất ⇒ nằm ở Đã xếp, tự kết thúc khi TA bấm.
+> - **Khi bật lại phải quyết:** 34 bài treo kia (ngày đã qua từ lâu) — dời ngày, đóng, hay sinh lại · điểm kết thúc khi CÓ retest (hiện luật end
+>   chỉ chạy khi hold; nhánh retest-bật vẫn là thiết kế cũ Chờ retest → Chờ đánh giá, trái với ý Thùy 29/09) · case đã đóng `day_xong` trong thời
+>   gian hold KHÔNG truy sinh retest.
 
 ---
 
@@ -53,7 +60,8 @@ Dữ liệu đo (ET · MT · BTVN · báo động GV/TA)
    → ③ NỘI DUNG (chọn dạng của case)       → màn Nội dung bổ trợ yếu
    → ④ XẾP LỊCH (OPS, theo lịch trực khối+bậc, ca ≤3 em) → màn Xếp bổ trợ yếu
    → ⑤ CA DIỄN RA (TA đứng ca; 📱 app hoặc 📄 giấy)      → app TA + app HS + tab "Đang diễn ra"
-   → ⑥ RETEST tầng 2 (sau ET buổi thường) ⏸ HOLD 29/09 — bỏ qua → ⑦ ĐÁNH GIÁ CA (xong / theo dõi / bổ trợ tiếp / nâng mức)
+   → ⑥ RETEST tầng 2 (sau ET buổi thường) → ⑦ ĐÁNH GIÁ CA (xong / theo dõi / bổ trợ tiếp / nâng mức)
+   ⏸ HOLD 29/09: ⑥ ⑦ bỏ — hết dạng yếu + TA hoàn tất ca cuối ⇒ case KẾT THÚC (day_xong). Đánh giá sau bổ trợ = học thuật, luồng khác.
 ```
 Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt duyệt ghi `hs_level_log` (cả đề xuất máy lẫn chốt người).
 
