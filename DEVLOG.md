@@ -31751,3 +31751,15 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   claude_ro_select do migrate.mjs tự thêm) · ACL hàm giữ nguyên. Gọi thật (phiên chỉ-đọc, vai nhân sự): `fn_btyeu_dang_yeu_2_cua_so` em khối 11
   ra HH00087 "Đường thẳng và mặt phẳng trong không gian" (0,40 · n=44) xen dạng Đại · `fn_btyeu_ca_ta` 3 ca gần nhất chạy bình thường.
 - Client (danhgia.ts/botro_yeu.ts/mastery.ts) merge main cùng lúc — cần Thùy bấm deploy mới lên prod.
+
+### 29/09 — KHTN du hành "Liên kết hoá học" bản thử 4: không lộ đáp án trước khi HS trả lời (Thùy)
+- Thùy: "không hiện đáp án trước khi học sinh trả lời". Soát ra 4 chỗ lộ: (1) trạm luyện tập hiện sẵn vòng "chỗ trống" trên Cl/O
+  (nhìn là biết thiếu 1/thiếu 2) + nhãn/lời mở đầu ghi sẵn "kim loại/phi kim"; (2) chú thích điểm sáng ở trạm học nói thẳng kết luận
+  ("vòng to: 8", "liên kết O–H thứ nhất/thứ hai", "Không có ion"…); (3) nhãn "8e ✓/2e ✓", "ion dương/ion âm", tiêu đề phụ
+  "cặp electron dùng chung / lực hút giữa ion dương và ion âm" trùng đáp án câu hỏi trạm; (4) trạm muối: trả lời sai là 6 ion Cl⁻ sáng lên.
+- Sửa theo NGUYÊN TẮC: lúc HS bay quan sát, chú thích chỉ đưa DỮ KIỆN + câu hỏi gợi mở ("em đếm xem…"), KẾT LUẬN để dành cho phần
+  giải thích sau khi trả lời. Chỗ trống chỉ hiện khi bắt đầu hoạt cảnh; bỏ loại kim loại/phi kim khỏi nhãn trạm luyện tập; trạm học
+  badge "đầy ✓" (trạm luyện tập giữ "8e ✓" vì hiện SAU khi trả lời); bỏ tiêu đề phụ; bỏ đèn gợi ý 6 ion. Câu "Na trở thành hạt gì?"
+  (nhãn Na⁺ trên cảnh lộ luôn dấu +) đổi thành "Na còn bao nhiêu electron và mang điện gì?" — phải cộng lớp 2, 8 mới ra.
+  Phim lời dẫn vẫn DẠY nội dung (đó là bài giảng); câu hỏi kiểm tra sau.
+- Thêm `<!doctype html>` đầu file: phục vụ trực tiếp trên web chạy chế độ chuẩn (trước đó chế độ quirks); bản artifact bỏ qua dòng này.
