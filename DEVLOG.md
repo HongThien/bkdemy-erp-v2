@@ -32095,3 +32095,16 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   giả `visibilityState = visible` + bắn sự kiện ⇒ gọi `update()` 1 lần.
 - `design/STYLE-HS.md` §2: luật KHÔNG xoá/đổi tên ảnh `public/bk-ui/hs/` mà bản đang chạy còn gọi — thay ảnh = thêm tên mới, giữ file cũ ≥1 tuần
   (jpg không nằm trong precache SW) + ghi chú Login khoá colorScheme light.
+
+## 2026-09-29 (khuya) — NÔNG TRẠI BK: hướng dẫn tân thủ · sổ nhiệm vụ · thành tích (Thùy: "làm tutorial từ đầu, bảng nhiệm vụ, phần thưởng như hayday")
+
+- **Nguồn:** dump wiki — Achievements (50 loại × 3 bậc, XP + kim cương 1/2/3), Farm Pass (3 nhiệm vụ ngày × 3 điểm, nhiệm vụ mùa 50 điểm, 600 điểm/tháng), Derby tasks.
+- **Làm (`NongTrai/js/nhiemvu.js`, luật thuần):**
+  - Hướng dẫn 11 bước (Bác Hai — tên/hình TẠM, sau thay thầy cô BK): có "làm phép" cho lúa/trứng chín ngay, thưởng XP vừa đủ lên cấp 2, bù xu/lúa nếu thiếu; người chơi cũ bỏ qua.
+  - Mẹo lần đầu khi mở tính năng (cấp 3/4/6/7/15), mũi tên 👇 chỉ vật 3D hoặc nút DOM.
+  - Sổ nhiệm vụ (clone Farm Pass, mở cấp 3 — TỰ ĐẶT, HD 11): ngày/tuần/tháng theo giờ VN trên đồng hồ game; nhiệm vụ = bộ đếm hiện tại − bộ đếm lúc nhận; 20 mốc × 30 điểm.
+  - 14 thành tích (mốc + XP HD; kim cương → vật tư TỰ ĐẶT) gồm loại "thần tốc" (cửa sổ thời gian `s.cua`). Chạm nhà = xem thành tích.
+  - engine.js: bộ đếm `s.dem` + `s.cua` ghi ở mọi hành động.
+- **Sai → sửa:** mũi tên nằm dưới bảng (z-index) nên không thấy khi cửa hàng mở ⇒ nâng lên; bước xây lò chỉ nút Cửa hàng ⇒ chỉ tiếp vào nút xây khi bảng mở.
+- **Kiểm:** test 74 → + luồng hướng dẫn trọn 11 bước, nhiệm vụ đổi ngày, nhận điểm/mốc, thành tích bậc I + thần tốc. Trên trình duyệt: chơi trọn hướng dẫn bằng click thật
+  (Tiếp, Cửa hàng, nút xây 20 xu), chấm đỏ Nhiệm vụ 1 → nhận +3 điểm → tắt; con đường quà + thành tích hiển thị đúng. Đưa ván của Thùy về đầu (thấy hướng dẫn từ bước 1). Commit game 26a3155.
