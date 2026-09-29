@@ -31965,3 +31965,22 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Control chung `MucUuTienCase` thay select + chip ưu tiên cũ ở Xếp (lỗi đổi ưu tiên trước đây revert im lặng).
 - **Kiểm trên app (admin, local 5192):** Duyệt 75 ca, 69 chip reset, bộ đếm 25/50 · 1/20 · còn 25 chỗ; Xếp: Cần xếp 0 · Đã xếp 25 · Hoàn thành
   106, 25 card có control; popup Trạng thái ca có control; console 0 lỗi. Chưa bấm thử đổi mức/ưu tiên trên dữ liệu thật.
+
+## 2026-09-29 (tối) — NÔNG TRẠI BK: bản thử gameplay kiểu Hay Day (Thùy: "nội bộ BK, online, xu/học/giờ chơi tính sau, làm demo trước")
+
+- **Chốt với CEO:** chơi nội bộ BK nhưng online như game gốc · nối ví xu/việc học + giới hạn giờ chơi = LÀM SAU · số liệu lấy Hay Day rồi chỉnh thực tế sau.
+- **Tiền:** hạ tầng có sẵn (three.js + Vercel + Supabase + TK BK) ⇒ ~0đ; tiền chỉ nên vào HÌNH. Dùng KayKit CC0 Thùy đã tải sẵn ở
+  `E:\BK ACADEMY\Gaming\KayKit` (không mua gì). Tham khảo nếu cần đồng bộ đẹp hơn: Synty POLYGON Farm $49.99.
+- **Số liệu:** Fandom chặn bot (Cloudflare) — KHÔNG vượt. Thùy tải dump wiki (`Downloads\hayday_pages_full.xml`, 378MB, 30k trang) ⇒ bóc
+  bản sửa MỚI NHẤT: Goods List (409 món), bảng XP lên cấp 1–25, chuồng/con vật, máy (cấp/giá/giờ xây/số ô), luật đơn hàng + sạp.
+  Chỉ lấy SỐ, không lấy hình/tên/chữ Hay Day.
+- **Làm:** `E:\BK ACADEMY\Gaming\KayKit\NongTrai\` — web tĩnh (three r128), cấp 1–15: 7 cây · gà/bò/heo · 7 máy · 20 sản phẩm · kho lúa/kho hàng
+  + nâng cấp bằng vật tư rơi · bảng đơn + xe · sạp (khách ảo) · lên cấp + quà. Gieo/gặt = VUỐT qua nhiều ô. Luật ở `js/engine.js` thuần
+  (không đồ hoạ) để sau chuyển thành `fn_nt_*` Postgres dùng `now()` server (chống chỉnh đồng hồ). Chỗ wiki không có số ⇒ ghi "TỰ ĐẶT" trong `js/data.js`.
+  `.claude/launch.json` thêm mục `nong-trai` (port 5270, trỏ đường dẫn E:).
+- **Kiểm:** `node NongTrai/tools/test-engine.mjs` ✔ hết luật; giả lập người chơi chăm (ghé 2 phút/lần): cấp 7 ≈ 1,1h · cấp 10 ≈ 8h · cấp 15 ≈ 58h game.
+  Trên Browser pane: click thật mở bong bóng gieo, kéo thật gieo 6 ô/1 lần, vuốt gặt, xây máy qua cửa hàng, giao đơn, bày sạp, lên cấp liên tiếp, khổ 375px.
+- **Sai → sửa:** giả lập lộ kho hàng đầy 50/50 ở cấp 7 là KẸT ⇒ thêm sạp (HD cũng thoát kẹt bằng sạp) · màu tự dựng nhạt (thiếu sRGB→linear)
+  · hàng rào KayKit lệch gốc 1 ô + nằm trục z (đo geometry mới thấy) · bong bóng máy đặt theo hộp bao cối xay bay lơ lửng ⇒ đặt tay ·
+  nhảy 2 cấp chỉ hiện cấp cuối ⇒ xếp hàng · **"Chơi lại từ đầu" không có tác dụng vì beforeunload lưu đè ván cũ** ⇒ thay state trước khi reload.
+- **Bẫy verify:** pane ẩn ⇒ rAF đứng ⇒ camera/hoạt ảnh không chạy; chụp WebGL bằng `NT_SCENE.chup(ten, soKhung)` (chạy tay khung + POST `/_snap`).

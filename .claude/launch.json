@@ -162,6 +162,15 @@
       "port": 5260
     },
     {
+      "name": "nong-trai",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "E:/BK ACADEMY/Gaming/KayKit/NongTrai/serve.mjs",
+        "5270"
+      ],
+      "port": 5270
+    },
+    {
       "name": "dev-sukien",
       "runtimeExecutable": "npm",
       "runtimeArgs": [
