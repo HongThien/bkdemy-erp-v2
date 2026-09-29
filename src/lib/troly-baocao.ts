@@ -11,7 +11,8 @@
 import { supabase } from './supabase'
 
 // cham = quá hạn chưa đóng · miss = hỏng về nội dung · xong_muon = đã xong nhưng sau hạn (đếm riêng)
-export type LoaiViec = 'cham' | 'miss' | 'xong_muon'
+// hs_khong_den = ca bổ trợ huỷ vì học sinh vắng — thông số RIÊNG, không phải chậm/miss của nhân sự (CEO 29/09)
+export type LoaiViec = 'cham' | 'miss' | 'hs_khong_den' | 'xong_muon'
 
 export type ViecBaoCao = {
   loai: LoaiViec
@@ -25,7 +26,8 @@ export type ViecBaoCao = {
 }
 
 // thieu_nguon = dòng báo cáo CEO cần mà hệ CHƯA CÓ dữ liệu — nêu lý do, không bịa số.
-export type MucDoCanhBao = 'cao' | 'vua' | 'thieu_nguon'
+// ghi_chu = điều cần biết để đọc đúng con số (vd khâu chưa tới ngày bắt buộc), không phải cảnh báo.
+export type MucDoCanhBao = 'cao' | 'vua' | 'thieu_nguon' | 'ghi_chu'
 export type CanhBao = {
   ma: string; muc_do: MucDoCanhBao; tieu_de: string; mo_ta: string; so: number
   chi_tiet: { chinh: string; phu: string | null; noi_dung: string }[]
@@ -33,15 +35,19 @@ export type CanhBao = {
 
 export type MucBaoCao = {
   ma: string; ten: string
-  cham: number; miss: number; xong_muon: number
+  cham: number; miss: number; xong_muon: number; hs_khong_den: number
+  thong_so: { nhan: string; gia_tri: string | number }[]   // số riêng của mục, không phải chậm/miss
   viec: ViecBaoCao[]
   da_cat: boolean             // danh sách việc bị cắt (số đếm thì luôn đủ)
   canh_bao: CanhBao[]
 }
 
 export type BaoCaoTroLy = {
+  // Mỗi người quản một mảng thì có một BỘ báo cáo riêng (CEO 29/09: Trang = Sư phạm, Lộc = Vận hành).
+  // Hiện mới có bộ 'su_pham'.
+  bo: string; ten: string; ghi_chu_bo: string
   tu: string; den: string; so_ngay: number; tao_luc: string
-  tong: { cham: number; miss: number; xong_muon: number; canh_bao: number }
+  tong: { cham: number; miss: number; xong_muon: number; hs_khong_den: number; canh_bao: number }
   muc: MucBaoCao[]
   canh_bao_chung: CanhBao[]
   theo_nguoi: { phu_trach: string; cham: number; miss: number; xong_muon: number }[]

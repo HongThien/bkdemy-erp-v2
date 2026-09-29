@@ -31422,3 +31422,28 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Còn treo / cần CEO:** `fn_troly_bao_cao_ngay` (mục 11) còn trong DB nhưng không màn nào gọi — muốn drop phải hỏi (Luật xoá) · xếp bù + xếp lịch yếu
   không có người phụ trách trong dữ liệu ⇒ đang ghi chung "OPS" · 102 miss của khâu chấm bài trên lớp làm phồng tổng: cần chốt khâu này có bắt buộc không ·
   bổ trợ ĐUỔI chưa có trong báo cáo (mẫu không nêu).
+
+## 2026-09-29 (13) — TRỢ LÝ: CEO trả lời 5 câu treo → báo cáo định danh là BÁO CÁO SƯ PHẠM (Trang) (worktree troly-hoi-duoc)
+
+- **CEO trả lời (nguyên văn):** ① *"Chấm bài trên lớp trước đây ko bắt buộc, sắp tới tháng 10 mới bắt buộc."* · ② (ca huỷ vì HS không đến) *"Báo riêng
+  thông số này chứ"* · ③ (ai xếp bù/xếp lịch yếu) *"Lộc"* · ④ (bổ trợ đuổi) *"Đấy là báo cáo của Lộc, ảnh t gửi m là của Trang. Thực ra là đang xây cho
+  Trang, Trang quản Sư phạm nói chung của BK, mọi thứ liên quan sư phạm. Lộc quản Vận hành, mọi thứ ko liên quan sư phạm là Lộc quản"* · ⑤ *"KO dùng thì xóa"*.
+- **⭐ Điều mới hiểu ra:** báo cáo KHÔNG phải một bản chung — mỗi người quản một mảng có một BỘ báo cáo. Trang = Sư phạm (đang xây, mẫu 29/09 là của
+  Trang) · Lộc = Vận hành (chưa xây, chưa có mẫu). Đúng trục MẢNG của SPEC-troly-nhansu §0, t đã xây 2 lượt mà không hỏi "báo cáo này của ai".
+- **DB — mig `202609291010_troly_bao_cao_su_pham`** (đã áp `--only`):
+  - `_troly_bc_gia_dinh` thêm `ingame_bat_buoc_tu = 2026-10-01`; việc + cảnh báo của khâu chấm bài trên lớp chỉ tính buổi từ mốc. Trước mốc báo cáo
+    hiện 1 dòng ghi chú (`muc_do = ghi_chu`) thay vì im lặng.
+  - Loại việc mới `hs_khong_den`: có số riêng ở mục + ở tổng + trong Detail, KHÔNG cộng vào miss.
+  - `_troly_truong_van_hanh()`: tên người giữ ghế `vi_tri.cap='truong'` của team "Vận hành" (hiện Trần Bảo Lộc) — không gõ cứng tên.
+  - `_troly_bc_thong_so`: thông số riêng của bổ trợ yếu (lượt xếp/chạy/hợp lệ/HS không đến, retest đã nộp, tỉ lệ duyệt, độ trễ xếp lịch) và bổ trợ bù.
+  - `fn_troly_bao_cao` trả thêm `bo='su_pham'`, `ten`, `ghi_chu_bo`. Chữ ký GIỮ NGUYÊN (date, integer); báo cáo Vận hành sau này là hàm riêng.
+  - **DROP 9 hàm** báo cáo theo ngày (CEO gật): fn_troly_bao_cao_ngay · _troly_bc_khau · _et_bao_dong · _btvn · _danh_gia_bao_dong · _bu · _bo_tro_yeu ·
+    _bo_tro_tuan · _ca_yeu_gom. Trước khi drop đã kiểm `pg_proc.prosrc` (chỉ gọi lẫn nhau) + grep src (0 chỗ gọi). Không mất dữ liệu.
+- **SỐ SAU KHI SỬA (16–29/09):** 59 chậm · **48 miss** (trước 179) · 29 lượt HS không đến · 73 đóng muộn · 11 cảnh báo. Đánh giá trong buổi 0/0.
+  Bổ trợ yếu: 72 lượt xếp, 36 chạy, 7 hợp lệ, 29 HS không đến, retest nộp 1/17, duyệt chốt bổ trợ 20/190 lượt.
+- **App:** `BaoCao.tsx` thêm tiêu đề bộ báo cáo, ô tổng thứ 4 "lượt học sinh không đến", số + chip `HS không đến`, dải thông số riêng trong Detail.
+  `SPEC-troly-nhansu.md` thêm §6 (báo cáo là chính · 3 luồng · 2 bộ báo cáo · luật đếm).
+- **Kiểm:** áp thử + rollback → áp thật → chạy lại `check-troly-cong-cu.mjs` (23 ca công cụ + báo cáo) ✔ · tsc sạch · vite build qua · dựng SSR 2 bản.
+- **⚠ Chưa đụng, cần biết:** `fn_viec_buoi_thuong` VẪN sinh task "chấm bài trên lớp" cho buổi trước 01/10 (màn Việc của tôi + hiệu suất/gậy vẫn tính) —
+  báo cáo bỏ qua nhưng engine việc thì chưa; sửa engine là việc khác, phải hỏi.
+- **VIỆC TIẾP:** mẫu báo cáo Vận hành của Lộc · đưa nhánh lên main + 1 trong 3 người mở tab xác nhận · gửi báo cáo chủ động buổi sáng · nối khung hỏi.

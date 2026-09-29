@@ -19,15 +19,17 @@ import { getBaoCao, ddmm, type BaoCaoTroLy, type MucBaoCao, type CanhBao, type L
 const NHO: { soNgay: number; bc: BaoCaoTroLy | null } = { soNgay: 14, bc: null }
 const KHOANG = [7, 14, 30]
 
-const NHAN_LOAI: Record<LoaiViec, string> = { cham: 'Chậm', miss: 'Miss', xong_muon: 'Đóng muộn' }
+const NHAN_LOAI: Record<LoaiViec, string> = { cham: 'Chậm', miss: 'Miss', hs_khong_den: 'HS không đến', xong_muon: 'Đóng muộn' }
+const CAC_LOAI: LoaiViec[] = ['cham', 'miss', 'hs_khong_den', 'xong_muon']
 const MAU_LOAI: Record<LoaiViec, string> = {
   cham: 'border-rose-300 bg-rose-50 text-rose-700',
   miss: 'border-amber-300 bg-amber-50 text-amber-800',
+  hs_khong_den: 'border-sky-300 bg-sky-50 text-sky-800',
   xong_muon: 'border-slate-300 bg-slate-50 text-slate-600',
 }
 
-function So({ n, nhan, mau }: { n: number; nhan: string; mau: 'do' | 'vang' | 'xam' }) {
-  const c = n === 0 ? 'text-slate-300' : mau === 'do' ? 'text-rose-600' : mau === 'vang' ? 'text-amber-600' : 'text-slate-500'
+function So({ n, nhan, mau }: { n: number; nhan: string; mau: 'do' | 'vang' | 'xanh' | 'xam' }) {
+  const c = n === 0 ? 'text-slate-300' : mau === 'do' ? 'text-rose-600' : mau === 'vang' ? 'text-amber-600' : mau === 'xanh' ? 'text-sky-600' : 'text-slate-500'
   return (
     <div className="flex items-baseline gap-1">
       <span className={`text-[20px] font-semibold tabular-nums leading-none ${c}`}>{n}</span>
@@ -49,7 +51,7 @@ function NutDetail({ mo, onClick, tat }: { mo: boolean; onClick: () => void; tat
 // ── LUỒNG 3: một dòng cảnh báo, có Detail riêng khi có danh sách ───────────────
 function DongCanhBao({ c, moSan }: { c: CanhBao; moSan?: boolean }) {
   const [mo, setMo] = useState(!!moSan)
-  const thieu = c.muc_do === 'thieu_nguon'
+  const thieu = c.muc_do === 'thieu_nguon' || c.muc_do === 'ghi_chu'
   const mau = thieu ? 'border-slate-200 bg-slate-50' : c.muc_do === 'cao' ? 'border-rose-200 bg-rose-50/60' : 'border-amber-200 bg-amber-50/60'
   return (
     <div className={`rounded-lg border px-2.5 py-1.5 ${mau}`}>
@@ -79,13 +81,24 @@ function DongCanhBao({ c, moSan }: { c: CanhBao; moSan?: boolean }) {
 // ── LUỒNG 2: danh sách việc của một mục — ngày · đối tượng · việc · phụ trách · hạn · tình trạng ──
 function BangViec({ m }: { m: MucBaoCao }) {
   // Mặc định xem việc còn phải xử (chậm + miss); "đóng muộn" là việc đã xong, bấm chip mới hiện.
-  const [loc, setLoc] = useState<Record<LoaiViec, boolean>>({ cham: true, miss: true, xong_muon: false })
+  const [loc, setLoc] = useState<Record<LoaiViec, boolean>>({ cham: true, miss: true, hs_khong_den: true, xong_muon: false })
   const hien = m.viec.filter((v) => loc[v.loai])
-  const so: Record<LoaiViec, number> = { cham: m.cham, miss: m.miss, xong_muon: m.xong_muon }
+  const so: Record<LoaiViec, number> = { cham: m.cham, miss: m.miss, hs_khong_den: m.hs_khong_den, xong_muon: m.xong_muon }
   return (
     <div className="border-t border-slate-200 bg-slate-50/70 px-3 py-2.5">
+      {/* Thông số riêng của mục — không phải chậm/miss (CEO 29/09 "báo riêng thông số này") */}
+      {m.thong_so.length > 0 && (
+        <div className="mb-2.5 flex flex-wrap gap-1.5">
+          {m.thong_so.map((x) => (
+            <div key={x.nhan} className="rounded-lg border border-slate-200 bg-white px-2.5 py-1">
+              <div className="text-[11px] text-slate-500">{x.nhan}</div>
+              <div className="text-[13px] font-semibold tabular-nums text-slate-800">{x.gia_tri}</div>
+            </div>
+          ))}
+        </div>
+      )}
       <div className="mb-2 flex flex-wrap items-center gap-1.5">
-        {(['cham', 'miss', 'xong_muon'] as LoaiViec[]).map((k) => (
+        {CAC_LOAI.filter((k) => k !== 'hs_khong_den' || so[k] > 0).map((k) => (
           <button key={k} onClick={() => setLoc((x) => ({ ...x, [k]: !x[k] }))} disabled={so[k] === 0}
             className={`rounded-full border px-2.5 py-0.5 text-[12px] font-medium disabled:opacity-30 ${loc[k] ? MAU_LOAI[k] : 'border-slate-200 bg-white text-slate-400'}`}>
             {NHAN_LOAI[k]} {so[k]}
@@ -133,13 +146,14 @@ function BangViec({ m }: { m: MucBaoCao }) {
 // ── Một MỤC = đủ 3 luồng ─────────────────────────────────────────────────────
 function Muc({ m, moSan }: { m: MucBaoCao; moSan?: boolean }) {
   const [mo, setMo] = useState(!!moSan)
-  const coViec = m.cham + m.miss + m.xong_muon > 0
+  const coViec = m.cham + m.miss + m.xong_muon + m.hs_khong_den > 0 || m.thong_so.length > 0
   return (
     <div className="border-t border-slate-200 first:border-t-0">
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2 px-3 py-2.5">
         <div className="w-[190px] shrink-0 text-[14px] font-semibold text-slate-800">{m.ten}</div>
         <So n={m.cham} nhan="đang chậm" mau="do" />
         <So n={m.miss} nhan="miss" mau="vang" />
+        {m.hs_khong_den > 0 && <So n={m.hs_khong_den} nhan="học sinh không đến" mau="xanh" />}
         <So n={m.xong_muon} nhan="đóng muộn" mau="xam" />
         <div className="ml-auto"><NutDetail mo={mo} onClick={() => setMo((x) => !x)} tat={!coViec} /></div>
       </div>
@@ -160,8 +174,12 @@ export function BanBaoCao({ bc, mo, moSan }: { bc: BaoCaoTroLy; mo?: boolean; mo
   const [moNguoi, setMoNguoi] = useState(!!moSan)
   return (
     <div className={mo ? 'opacity-60' : ''}>
+      <div className="mb-2.5">
+        <div className="text-[16px] font-semibold text-slate-900">{bc.ten}</div>
+        <div className="text-[12px] leading-relaxed text-slate-500">{bc.ghi_chu_bo}</div>
+      </div>
       {/* LUỒNG 1 — con số tổng */}
-      <div className="mb-3 grid grid-cols-3 gap-2">
+      <div className="mb-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
         <div className="rounded-2xl border border-rose-200 bg-rose-50/70 px-3 py-2.5">
           <div className="text-[26px] font-semibold tabular-nums leading-none text-rose-600">{bc.tong.cham}</div>
           <div className="mt-1 text-[12.5px] text-slate-600">việc đang chậm</div>
@@ -169,6 +187,10 @@ export function BanBaoCao({ bc, mo, moSan }: { bc: BaoCaoTroLy; mo?: boolean; mo
         <div className="rounded-2xl border border-amber-200 bg-amber-50/70 px-3 py-2.5">
           <div className="text-[26px] font-semibold tabular-nums leading-none text-amber-600">{bc.tong.miss}</div>
           <div className="mt-1 text-[12.5px] text-slate-600">việc miss</div>
+        </div>
+        <div className="rounded-2xl border border-sky-200 bg-sky-50/70 px-3 py-2.5">
+          <div className="text-[26px] font-semibold tabular-nums leading-none text-sky-600">{bc.tong.hs_khong_den}</div>
+          <div className="mt-1 text-[12.5px] text-slate-600">lượt học sinh không đến</div>
         </div>
         <div className="rounded-2xl border border-slate-200 bg-white px-3 py-2.5">
           <div className="text-[26px] font-semibold tabular-nums leading-none text-slate-800">{bc.tong.canh_bao}</div>

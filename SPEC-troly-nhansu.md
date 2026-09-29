@@ -119,3 +119,45 @@ gán bừa cho ai.
 ⚠ Kèm chặn kỹ thuật đã biết: cấp 3 phân theo **nhánh lớp A/B/C** nhưng `ung_vien.khoi` chỉ ra
 `'11'`/`'12'`, và `lop_du_kien_id` null ở cả 4 ca ⇒ ca cấp 3 chưa định tuyến được cho tới khi có
 ô chọn lớp dự kiến lúc tạo ca test.
+
+---
+
+## 6. BÁO CÁO là chính, HỎI là phụ (CEO chốt 29/09) — ghi đè thứ tự ưu tiên ở trên
+
+> *"Hỏi là phụ, tính năng chính vẫn là báo cáo. Báo cáo đầy đủ dữ liệu cần thì gần như không cần hỏi lại nữa."*
+
+### 6.1 LOGIC báo cáo — 3 luồng, mục nào cũng phải đủ
+
+1. **Có bao nhiêu việc đang CHẬM / đang MISS.**
+2. **Nút "Detail"** — bấm mới hiện từng việc: **ngày nào, do ai phụ trách**. Bình thường chỉ là cái nút.
+3. **Cảnh báo rủi ro / bất thường** nếu có.
+
+Đơn vị của báo cáo = **VIỆC** (có ngày + người phụ trách + hạn), KHÔNG phải "lớp trong một ngày".
+Mỗi việc có ngày riêng ⇒ báo cáo gom việc còn treo của nhiều ngày (7/14/30 ngày, mặc định 14).
+
+### 6.2 Mỗi người quản một MẢNG thì có một BỘ báo cáo riêng
+
+| Người | Quản | Bộ báo cáo | Trạng thái |
+|---|---|---|---|
+| **Trang** (NS002) | **Sư phạm** — mọi thứ liên quan sư phạm | `su_pham`: BTVN · ET · đánh giá trong buổi · đánh giá sau buổi · bổ trợ bù · bổ trợ yếu | đã xây (`fn_troly_bao_cao`) |
+| **Lộc** (NS003) | **Vận hành** — mọi thứ KHÔNG thuộc sư phạm | `van_hanh`: gồm bổ trợ đuổi… | CHƯA xây, chờ mẫu của CEO |
+
+Mẫu CEO gửi 29/09 (ảnh bảng "Thứ 2 (Đã diễn ra)") là mẫu của **Trang**.
+Chỉ 3 người dùng trợ lý: Thùy · Thùy Trang · Bảo Lộc (`troly_duoc_dung()` = `hoi_dap_duoc_dung()`).
+
+### 6.3 Luật đếm (CEO chốt 29/09)
+
+- **Chậm** = quá hạn mà chưa đóng. **Miss** = hỏng về nội dung (không có đề / không gán bài · bấm đóng
+  mà trống dữ liệu · đã đóng nhưng còn em có mặt thiếu dữ liệu · ca bổ trợ hoàn tất mà không test).
+- **Đóng muộn** (xong, đủ dữ liệu, sau hạn) đếm riêng, không gộp vào chậm.
+- **Chấm bài trên lớp**: trước đây KHÔNG bắt buộc, **bắt buộc từ tháng 10/2026** ⇒ buổi trước 01/10
+  không tính chậm/miss. Mốc ở `_troly_bc_gia_dinh().ingame_bat_buoc_tu`.
+- **Học sinh không đến** (ca bổ trợ huỷ vì em vắng): **báo RIÊNG thành một thông số**, không phải miss.
+- **Xếp bù + xếp lịch bổ trợ yếu**: người phụ trách = **Lộc**, lấy theo GHẾ trưởng team Vận hành.
+- Người phụ trách + hạn của việc sau buổi: lấy từ `fn_viec_buoi_thuong`, không định nghĩa lại.
+- "Không có đề" chỉ là miss với lớp thật sự chạy khâu đó (≥60% buổi/60 ngày) — luật §2 giữ nguyên.
+
+### 6.4 Còn thiếu nguồn dữ liệu (báo cáo nói thẳng, không bịa — luật §3)
+
+"HS làm bài chậm hơn lớp" (ô tốc độ chưa ai nhập) · "không làm BTVN đã tác động đến đâu" (chưa có chỗ
+ghi tác động) · "danh sách chờ duyệt bổ trợ" (phần phát hiện còn tính ở client).
