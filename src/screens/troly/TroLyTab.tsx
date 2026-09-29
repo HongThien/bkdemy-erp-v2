@@ -29,6 +29,7 @@ import { baoCaoVanHanh, type BaoCaoVanHanh } from '../../lib/troly-vanhanh'
 import { chayCongCu, type KetQuaCongCu } from '../../lib/troly-tracuu'
 import { useStore } from '../../store/useStore'
 import BaoCao from './BaoCao'
+import TongKetTuan from './TongKetTuan'
 
 const tienVN2 = (n: number) => Math.round(n).toLocaleString('vi-VN') + 'đ'
 
@@ -268,6 +269,7 @@ function BaNut({ dangMoGac, onLam, onHuy, onGac, onMoGac, nho }: {
 // ⭐ 'baocao' đứng đầu và là tab MẶC ĐỊNH (CEO 29/09: "hỏi là phụ, tính năng chính vẫn là báo cáo").
 const TABS = [
   { key: 'baocao', ten: 'Báo cáo' },
+  { key: 'tuan', ten: 'Tổng kết tuần' },   // dashboard toàn cảnh (CEO 29/09)
   { key: 'nhandinh', ten: 'Trợ lý thấy gì' },
   { key: 'vanhanh', ten: 'Vận hành' },
   { key: 'bu', ten: 'Bổ trợ bù' },
@@ -341,6 +343,7 @@ export default function TroLyTab() {
   // đọc thẳng field trùng với dòng "tóm tắt" trong Khu tương ứng để 2 nơi không bao giờ lệch nhau).
   const badge: Record<TabKey, number> = {
     baocao: 0,
+    tuan: 0,
     nhandinh: nhanDinh?.length ?? 0,
     vanhanh: vh?.chuaDong.length ?? 0, // số lớp tồn đọng (④) — bao quát hơn "nợ tuần này" (③)
     bu: bu?.canXep.tong ?? 0,
@@ -360,6 +363,7 @@ export default function TroLyTab() {
           hệ thống chủ động nêu ra (khác 5 tab kia là số vận hành đo được), nên đứng đầu. */}
       <ThanhTab tab={tab} setTab={setTab} badge={badge} />
       {tab === 'baocao' && <BaoCao />}
+      {tab === 'tuan' && <TongKetTuan />}
       {tab === 'nhandinh' && (
         nhanDinh && nhanDinh.length > 0 ? (
           <div className="space-y-2.5">

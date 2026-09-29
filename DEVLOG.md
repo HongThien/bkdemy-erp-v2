@@ -31738,3 +31738,36 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   (nhãn Na⁺ trên cảnh lộ luôn dấu +) đổi thành "Na còn bao nhiêu electron và mang điện gì?" — phải cộng lớp 2, 8 mới ra.
   Phim lời dẫn vẫn DẠY nội dung (đó là bài giảng); câu hỏi kiểm tra sau.
 - Thêm `<!doctype html>` đầu file: phục vụ trực tiếp trên web chạy chế độ chuẩn (trước đó chế độ quirks); bản artifact bỏ qua dòng này.
+
+## 2026-09-29 (18) — TRỢ LÝ: thêm TỔNG KẾT TUẦN (dashboard toàn cảnh) — mig 202609291215 + 202609291225 ĐÃ ÁP
+
+- **CEO:** "thêm 1 tính năng của trợ lý là làm tổng kết tuần - tức là làm cái dashboard": BTVN · ET · đánh giá sau buổi → tỉ lệ
+  đúng chuẩn / chậm / thiếu, Detail = xếp hạng GV–TA ("ko tính Thùy và Trang Phạm"); bổ trợ → số ca cần, đã lên lịch, đã bổ trợ,
+  có sự cố (+ tỉ lệ); thời gian TB duyệt → xếp lịch, xếp lịch → diễn ra.
+- **Quyết định 1 — MỘT nguồn phân loại.** Luật "đúng chuẩn/chậm/thiếu" trước nằm trong `_troly_bc_viec_buoi`. KHÔNG viết bản thứ
+  hai: tách hàm GỐC `_troly_viec_buoi_goc` (trả MỌI việc + nhãn `kq`, thêm `dung_chuan` · `con_han` · `bo_qua`), `_troly_bc_viec_buoi`
+  thành lớp mỏng. Tương tự `_troly_ca_yeu_goc` (thêm case_id + lúc xếp). Thân lấy từ `pg_get_functiondef` bản ĐANG CHẠY.
+  **Kiểm: JSON báo cáo Sư phạm 14 ngày trước/sau khi tách = 0 chỗ khác** (98.610 ký tự).
+- **Quyết định 2 — mẫu số = việc ĐÃ TỚI HẠN hoặc đã đóng.** Việc còn trong hạn để riêng (`con_han`). Lý do: BTVN hạn = giờ vào ca kế − 2h
+  nên tuần vừa xong luôn còn ~nửa số việc BTVN chưa tới hạn (đo 21–27/09: 26/59) — tính vào mẫu số thì tỉ lệ tuần mới nhất luôn xấu giả.
+- **Quyết định 3 — chênh lệch với tuần trước + số gộp các khâu tính Ở DB** (mig 202609291225: `_troly_chenh`, `_troly_tuan_tong_khau`),
+  không để màn hình tự trừ (§2.0). Thiếu một bên ⇒ NULL, không coi là 0.
+- **Quyết định 4 — người loại khỏi xếp hạng khai MỘT chỗ:** `_troly_bc_gia_dinh().xep_hang_bo_qua = ['NS001','NS002']` (mã nhân sự).
+  Việc của 2 người này VẪN tính trong số của trung tâm; màn hình nói rõ điều đó.
+- **Lưu:** dùng lại bảng `troly_bao_cao_luu`, `bo = 'tuan'`, `ngay` = thứ Hai của tuần. Cửa gọi `fn_troly_tuan_lay(p_tuan, p_tinh_lai)`
+  SECURITY DEFINER (cùng lý do `fn_troly_bao_cao_lay`: invoker + RLS vượt 8s). Bản lưu dùng lại khi tính trong HÔM NAY, hoặc tuần đã
+  qua >7 ngày và bản lưu tính sau mốc đó. Mặc định mở = tuần vừa rồi; bấm ‹ › đổi tuần; xem được tuần đang chạy (có dòng báo "chưa kết thúc").
+- **SAI rồi SỬA trong lúc làm (đều bắt được nhờ nhìn số thật, trước khi áp):**
+  - Bổ trợ bù "đã học bù" ra 2 trong khi buổi bù có mặt 15 → điều kiện đòi buổi bù `hoan_tat`, mà buổi bù đã học thường vẫn `mo`.
+    Sửa: có mặt ở buổi bù không bị huỷ = đã học. "Chưa xếp"/"trượt" giữ Y HỆT `_troly_bc_viec_bu`.
+  - Sự cố bổ trợ yếu gộp "qua ngày không điểm danh (hệ tự huỷ)" vào "HS không đến" (15) → sai nghĩa: không ai điểm danh thì KHÔNG
+    biết em có đến không. Tách: HS không đến 6 · không ai điểm danh 9 · OPS gỡ khỏi lịch 4.
+- **GIỚI HẠN nói thẳng trên màn:** "chuyển lịch" CHƯA đo được — hệ không ghi vết đổi ngày/giờ buổi bổ trợ; số gần nhất = lượt bị
+  "OPS gỡ ở Lịch phòng". Muốn đo thật phải thêm trigger ghi lịch sử đổi lịch (chưa làm, chờ CEO quyết).
+- **Số tuần 21–27/09 (để đối chiếu về sau):** đúng chuẩn cả trung tâm 63,1% (101/160; tuần trước 52,6%) · ET 86,2% · đánh giá 56,5% ·
+  BTVN 36,4% · HS nộp BTVN đạt chuẩn 67% (tuần trước 80%) · chuyên cần 91,4% · bổ trợ yếu: cần 120 case, lên lịch 25 (20,8%), đã bổ trợ
+  13 (10,8%), sự cố 19/32 lượt (59,4%) · duyệt→xếp TB 12,5 ngày · xếp→diễn ra TB 1,4 ngày. Tính 0,7s; mở lại từ bản lưu 0,07s.
+- **File:** `src/lib/troly-tuan.ts` · `src/screens/troly/TongKetTuan.tsx` (tab "Tổng kết tuần" trong `TroLyTab.tsx`) ·
+  `scripts/check-troly-cong-cu.mjs --tuan [ngày]` (cổng + mở/mở lại/tính lại, JSON ra stdout).
+- **Màu trên dashboard:** 3 màu trạng thái chỉ nằm trên THANH + ô chú giải; chữ/số luôn màu mực (vàng cảnh báo tương phản 1,79:1,
+  không làm chữ được). Độ dài đoạn thanh = `flex-grow` theo số đếm, màn hình không chia.

@@ -183,3 +183,39 @@ BTVN. Chỉ tính buổi đã đóng BTVN hoặc đã quá hạn chấm.
 
 "HS làm bài chậm hơn lớp" (ô tốc độ chưa ai nhập) · "không làm BTVN đã tác động đến đâu" (chưa có chỗ
 ghi tác động) · "danh sách chờ duyệt bổ trợ" (phần phát hiện còn tính ở client).
+
+## 7. TỔNG KẾT TUẦN — dashboard toàn cảnh (CEO chốt 29/09)
+
+Tính năng thứ hai của trợ lý, đứng cạnh Báo cáo. Hai thứ trả lời hai câu khác nhau — đừng gộp:
+
+| | Báo cáo (§6) | Tổng kết tuần (§7) |
+|---|---|---|
+| Câu hỏi | việc NÀO đang hỏng, của AI | cả hệ chạy TỐT TỚI ĐÂU |
+| Đơn vị | từng việc | tỉ lệ + xếp hạng |
+| Dùng để | đi nhắc người | nhìn xu hướng, so tuần trước |
+
+### 7.1 Logic
+
+- **Việc sau buổi học** (BTVN · ET · đánh giá sau buổi; chấm bài trên lớp từ 01/10): mỗi khâu 3 tỉ lệ
+  **đúng chuẩn / chậm / thiếu**. Detail = **xếp hạng giáo viên – TA** của khâu đó.
+  - đúng chuẩn = đóng đúng hạn + đủ dữ liệu · chậm = đóng sau hạn HOẶC quá hạn chưa đóng ·
+    thiếu = không có đề / đóng mà trống / đóng mà thiếu dữ liệu học sinh.
+  - **Mẫu số = việc đã tới hạn hoặc đã đóng.** Việc còn trong hạn để riêng.
+  - **Xếp hạng bỏ qua Thùy và Trang Phạm** (CEO). Việc của hai người vẫn tính trong số trung tâm.
+- **Bổ trợ yếu:** cần bổ trợ → đã lên lịch (+%) → đã bổ trợ (+%) đếm theo CASE; sự cố (+%) đếm theo LƯỢT xếp.
+- **Thời gian từng giai đoạn:** duyệt → xếp lịch · xếp lịch → diễn ra (trung bình, trung vị, lâu nhất, số mẫu).
+- **Toàn cảnh thêm:** số buổi / lớp · chuyên cần · học sinh nộp BTVN đạt chuẩn · bổ trợ bù · **chênh lệch với tuần trước** cho mọi tỉ lệ.
+- Không realtime, cùng luật §6: lưu bản tính vào DB, "↻ Tính lại" thì ghi đè.
+
+### 7.2 Luật kỹ thuật
+
+- Luật phân loại việc có **MỘT nguồn**: `_troly_viec_buoi_goc`. Báo cáo và tổng kết tuần đều đọc từ đó —
+  sửa luật thì sửa ở hàm gốc, hai nơi tự khớp.
+- Chênh lệch và số gộp tính ở DB, màn hình không trừ / không cộng.
+
+### 7.3 Bàn sau (chưa chốt — danh sách, không phải quyết định)
+
+- "Chuyển lịch" bổ trợ: hệ chưa ghi vết đổi ngày/giờ ⇒ chưa đo được. Cần trigger ghi lịch sử nếu CEO muốn số thật.
+- Thêm mảng nào vào toàn cảnh: học phí · tuyển sinh · kết quả học tập · bổ trợ đuổi · việc phát triển.
+- Ngưỡng tô đỏ cho từng tỉ lệ (hiện chưa có ngưỡng, chỉ bày số + chiều tăng giảm).
+- Tự tính sẵn sáng thứ Hai và gửi thông báo.

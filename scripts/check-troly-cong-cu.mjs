@@ -11,6 +11,8 @@
 //   node scripts/check-troly-cong-cu.mjs --bao-cao [YYYY-MM-DD] [--so-ngay 14]
 //                                                              → in báo cáo 3 luồng tính tới ngày đó (bỏ trống = hôm nay)
 //   node scripts/check-troly-cong-cu.mjs --lay [--so-ngay 14]  → thử cửa màn hình gọi: mở màn / mở lại / tính lại
+//   node scripts/check-troly-cong-cu.mjs --tuan [YYYY-MM-DD]   → TỔNG KẾT TUẦN chứa ngày đó (bỏ trống = tuần vừa rồi):
+//                                                                JSON ra stdout; kiểm cổng + bản lưu ra stderr
 //
 // ⚠ Kết nối bằng role của `.env` (chủ bảng ⇒ RLS KHÔNG áp). Script này kiểm LOGIC + CỔNG 3 người,
 //   KHÔNG kiểm RLS. RLS chỉ kiểm được bằng đăng nhập thật trên app.
@@ -33,6 +35,8 @@ const iBc = args.indexOf('--bao-cao')
 const baoCaoNgay = iBc >= 0 ? (args[iBc + 1] && !args[iBc + 1].startsWith('--') ? args[iBc + 1] : null) : undefined
 const iSn = args.indexOf('--so-ngay')
 const soNgay = iSn >= 0 ? Number(args[iSn + 1]) : 14
+const iTuan = args.indexOf('--tuan')
+const tuanNgay = iTuan >= 0 ? (args[iTuan + 1] && !args[iTuan + 1].startsWith('--') ? args[iTuan + 1] : null) : undefined
 const iGoi = args.indexOf('--goi')
 const goiTen = iGoi >= 0 ? args[iGoi + 1] : null
 const goiThamSo = iGoi >= 0 ? JSON.parse(args[iGoi + 2] ?? '{}') : null
@@ -67,7 +71,7 @@ try {
     } catch (e) { console.log(`✔ cổng chặn ${nhan}: ${e.message}`) }
     await c.query('rollback to savepoint g')
   }
-  if (!goiTen && baoCaoNgay === undefined && !args.includes('--lay')) {
+  if (!goiTen && baoCaoNgay === undefined && tuanNgay === undefined && !args.includes('--lay')) {
     await biChan('người ngoài danh sách', nguoiLa.id)
     await biChan('không đăng nhập (anon)', null)
   }
@@ -79,6 +83,29 @@ try {
     return { kq: r.kq, ms: Date.now() - t0 }
   }
 
+  // ── TỔNG KẾT TUẦN: cổng + mở màn / mở lại / tính lại, in JSON lượt đầu ─────────
+  if (tuanNgay !== undefined) {
+    await c.query('savepoint g')
+    await dongVai(nguoiLa.id)
+    try { await c.query(`select public.fn_troly_tuan_lay($1::date, false)`, [tuanNgay]); console.error('❌ CỔNG HỞ ở fn_troly_tuan_lay'); hong++ }
+    catch (e) { console.error(`✔ cổng chặn người ngoài danh sách: ${e.message}`) }
+    await c.query('rollback to savepoint g')
+    await dongVai(ceo.id)
+    const lay = async (nhan, tinhLai) => {
+      const t0 = Date.now()
+      const { rows: [r] } = await c.query(`select public.fn_troly_tuan_lay($1::date, $2) as bc`, [tuanNgay, tinhLai])
+      console.error(`${nhan}: ${Date.now() - t0} ms · luu = ${JSON.stringify(r.bc.luu)}`)
+      return r.bc
+    }
+    const a = await lay('lượt 1 (mở màn)      ', true)   // ép tính: DB có thể đã có bản lưu của tuần này
+    const b = await lay('lượt 2 (mở lại)      ', false)
+    const d = await lay('lượt 3 (bấm tính lại)', true)
+    if (b.luu.vua_tinh) { console.error('❌ lượt 2 phải lấy từ bản lưu, không được tính lại'); hong++ }
+    if (!d.luu.vua_tinh || d.luu.so_lan_tinh !== b.luu.so_lan_tinh + 1) { console.error('❌ bấm tính lại phải tính + tăng so_lan_tinh'); hong++ }
+    if (JSON.stringify(a.so) !== JSON.stringify(b.so)) { console.error('❌ bản lưu khác bản vừa tính'); hong++ }
+    console.log(JSON.stringify(a, null, 1))
+    console.error(`— ${JSON.stringify(a).length} ký tự`)
+  } else
   // ── CỬA MÀN HÌNH GỌI: lấy bản lưu / tính rồi lưu (mọi thứ vẫn rollback) ───────
   if (args.includes('--lay')) {
     await c.query('savepoint g')
