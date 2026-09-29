@@ -31985,3 +31985,20 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   nhảy 2 cấp chỉ hiện cấp cuối ⇒ xếp hàng · **"Chơi lại từ đầu" không có tác dụng vì beforeunload lưu đè ván cũ** ⇒ thay state trước khi reload.
 - **Bẫy verify:** pane ẩn ⇒ rAF đứng ⇒ camera/hoạt ảnh không chạy; chụp WebGL bằng `NT_SCENE.chup(ten, soKhung)` (chạy tay khung + POST `/_snap`).
 - **Bổ sung (tối 29/09):** giả lập nhịp lên cấp là NGẪU NHIÊN (đơn hàng random) — chạy lại ra cấp 15 ≈ 31,5h (lần trước 58h) ⇒ đọc là khoảng 30–60h game, không phải 1 con số.
+
+## 2026-09-29 (khuya) — NÔNG TRẠI BK: nâng đồ hoạ kiểu "ngộ nghĩnh như Hay Day" (Thùy: "Synty 3D người lớn quá, ngộ nghĩnh mới hay — làm bước 1 và 2")
+
+- **Chẩn đoán "trông tạm tạm":** trộn 2 phong cách (nhà KayKit mượt + gà/bò/ruộng khối vuông kiểu Minecraft) · trại trống (10 lô cọc trắng) · ánh sáng phẳng (ACES làm nhạt màu) · thiếu "juice".
+- **Bước 2 (Thùy gật tải):** Quaternius CC0 — Farm Animal Pack (poly.pizza, GLB từng con: Cow/Pig/Sheep/Horse/Pug) + Nature Crops Pack
+  (opengameart, 13,4MB, chỉ OBJ/FBX ⇒ đổi 60 mô hình sang GLB bằng Blender 4.5 có sẵn ở `KayKit\tools`, script `NongTrai/tools/obj2glb.py`).
+  Nhận xét thật: cây Quaternius màu úa + thân mảnh ⇒ chỉ lấy cà rốt, bí ngô, táo, nấm, bụi mọng, cỏ; lúa/ngô/mía/đậu/chàm giữ bản tự dựng làm lại tròn tươi.
+  Con vật tỉ lệ "thật" ⇒ **chibi bằng xương**: mỗi khung sau `mixer.update` đặt `Head` ×1.8, `*UpLeg` y ×0.6 rồi hạ thân theo độ cao hông. Gói không có gà ⇒ gà dựng tay (tròn, mắt to, má hồng).
+- **Bước 1:** bỏ ACES (NoToneMapping) + tăng độ tươi texture KayKit lúc nạp · vòm trời chuyển màu · ô đất bo tròn · hoa/nấm/cỏ/táo rải chỗ trống (tránh vùng đã có đồ) ·
+  ao sen · bướm · chó giữ trại · ẩn lô đất khoá lâu (chỉ hiện lô mở được/cấp kế) · hạt hiệu ứng (lúa/lá/đất/tim/sao/khói) · nảy lò xo khi chạm · máy chạy nhả khói ·
+  lúa chín lấp lánh · pháo giấy lên cấp · âm thanh WebAudio tổng hợp (`js/am.js`, nút 🔊). Không post-processing (iPad) — viền tối bằng CSS.
+- **Sai → sửa:** bộ đệm texture khoá theo kích thước ảnh ⇒ 2 gói KayKit trùng cỡ bị TRÁO atlas (cây rừng xanh dương) ⇒ khoá theo tên gói ·
+  lần đầu chibi ×1.55 không thấy khác (đầu bò gốc nhỏ) ⇒ ×1.8 + rút chân · heo đi bằng Jump lặp ⇒ dừng vẫn nhảy mãi ⇒ cờ `motLan` ·
+  chó bị kéo về gốc toạ độ (đặt vị trí nhầm hệ) · cỏ neon ⇒ ngả vàng ấm + giảm đèn.
+  **Bẫy shell:** `node -e "..."` chứa backtick ⇒ bash chạy `js/am.js`/`NGUON.md` như script (dừng dòng 1, không hại) và README mất tên file ⇒ sửa bằng Edit. Chuỗi có backtick: dùng Write/Edit, không nhét vào `"..."`.
+- **Kiểm:** `test-engine.mjs` ✔ · chụp canvas nhiều góc (ruộng đủ 7 cây 3 giai đoạn, chuồng gà/bò/heo, ao, cảnh xa) · gặt ra hạt vàng, nhặt ra sao · về ván mới qua ⚙.
+  Chưa thử iPad thật (≥10 con vật có xương + hạt + bóng đổ).
