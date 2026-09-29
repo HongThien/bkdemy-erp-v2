@@ -31387,3 +31387,22 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   (điện thoại ít lộ vì hàng hẹp; PC rộng mà vẫn bị vì % tính theo cả hàng). Sửa: bản nhỏ flex-none + whitespace-nowrap, w-full chỉ ở thanh hành động thẻ lớn.
 - PC: bảng tin trải 1180px khó đọc ⇒ ManHS rong='hep' (720px giữa màn, như bảng tin FB trên máy tính).
 - Bài học: soi mẫu mới chụp tt 1/5/8–11 ở 375px — không có ảnh PC của tab Lớp (nơi dòng B nhiều nhất) ⇒ lọt. Màn có dòng nhỏ phải soi cả PC.
+
+### 29/09 — KHTN du hành: bản thử "Liên kết hoá học" (khtn-site/lien-ket-hoa-hoc.html)
+- Thùy chốt thêm: bài pilot kiểu du hành = Liên kết hoá học K7 (Hoá đang ở ion/cộng hoá trị). Hình dung: phân tử = vật khổng lồ,
+  HS lái tàu bay qua từng phân tử rồi trả lời câu về chính phân tử đó. Thứ tự trạm CỐ ĐỊNH. KHÔNG bám SGK — mục tiêu: hiểu, phân
+  biệt ion/cộng hoá trị, xác định chất nào ion/CHT; CTO tự đề các bậc. Nhiều story khác nhau để sau (Thùy tự làm kịch bản kỹ).
+- Dựng: 1 file HTML + three.js r128 (cdnjs), không đụng DB. 8 trạm: tập lái · Ne (vì sao liên kết) · Na gặp Cl (HS CHỞ electron
+  từ Na sang Cl → Na⁺/Cl⁻ hút nhau) · mạng tinh thể NaCl 5×5×5 (bay vào tâm, đếm 6 Cl⁻) · H₂ · H₂O (góc 104,5°) · Cl₂ (so với trạm
+  Na–Cl ⇒ luật kim loại+phi kim/phi kim+phi kim) · phân loại KCl/HCl/MgO/CH₄ trong quả cầu niêm phong (đoán đúng mới mở).
+  Cơ chế: vòng soi (bay xuyên mới hiện giải thích) → đủ vòng mới hiện câu hỏi → sai thì hiện gợi ý + vòng "xem lại" ở đúng chỗ cần
+  nhìn, bay qua mới được trả lời lại; khuôn khổ bay = ống trụ giữa trạm trước và trạm hiện tại (lưới hiện khi chạm vách).
+  Phân tử cộng hoá trị: 2 nguyên tử tự tiến lại, electron dời vào vùng chồng khi tàu tới gần. Nút "Qua trạm (GV)" cho chiếu TV.
+- Soi: chạy trọn 8 trạm tới màn về đích, nhánh sai → xem lại → đúng, 0 lỗi console, khổ 375 không tràn.
+  Sửa trong lúc soi: tàu to quá so với nguyên tử (thu 1/2) · trạm sau lộ ra giữa cảnh trạm hiện tại (ẩn tới khi mở) · mạng NaCl dày
+  quá không thấy khe (giãn 18→22) · vòng đánh dấu mục tiêu lệch vì `rotate` của animation cộng dồn với `transform` (tách ra ::before)
+  · thẻ giải thích tràn khổ hẹp (thiếu box-sizing) · thẻ trạm trước còn treo khi sang trạm mới.
+- Bẫy khi soi bằng Browser pane: tab chạy NỀN bị hoãn requestAnimationFrame ⇒ ảnh chụp là khung cũ, tween không chạy — đừng kết
+  luận "cảnh sai/không chạy" từ tab nền. Thùy bấm thử cùng lúc trên tab đang mở ⇒ kết quả đè nhau.
+- Chạy local: `node scripts/serve-games.mjs 5270 khtn-site` (serve-games nhận thêm tham số thư mục). Bản thử riêng tư:
+  https://claude.ai/artifact/Bx3nCocwpxRPLL15wtU2Ai

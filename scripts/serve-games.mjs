@@ -1,10 +1,10 @@
 // Server tĩnh cho games-site (hub + các game) để xem local — production là project Vercel bkdemy-games.
-// Chạy: node scripts/serve-games.mjs [port]  (mặc định 5260)
+// Chạy: node scripts/serve-games.mjs [port] [thư-mục]  (mặc định 5260 games-site; khtn-site = trang minh hoạ KHTN)
 import { createServer } from 'node:http'
 import { readFile, stat, writeFile, mkdir } from 'node:fs/promises'
 import { join, extname, normalize } from 'node:path'
 
-const ROOT = join(process.cwd(), 'games-site')
+const ROOT = join(process.cwd(), process.argv[3] || 'games-site')
 const PORT = +(process.argv[2] || process.env.PORT || 5260)
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.glb': 'model/gltf-binary', '.mp3': 'audio/mpeg', '.wav': 'audio/wav' }
 
