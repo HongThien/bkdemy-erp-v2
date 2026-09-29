@@ -31354,3 +31354,17 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - HomeHS912 tomTat chỉ còn đếm ngược kỳ thi; fn_hs_home_912 vẫn trả elo (không đụng DB). Áp cả bố cục dọc lẫn ngang.
 - Soi iPad: ngang 1180×820 = bố cục PC, 4 cột ⇒ ô thứ 9 (Thế giới BK) rớt hàng 3 phải cuộn · dọc 820×1180 = bố cục điện thoại kéo rộng
   3 cột, KHÔNG nhân vật, nửa dưới trống ⇒ xấu. Chờ Thùy chốt hướng làm bản dọc có nhân vật (#11 hàng dưới).
+
+### 29/09 — KHTN minh họa trực quan (kiểu Tinh Đồ Thái Dương): vòng hỏi 1, Thùy chốt hướng
+- Mẫu tham chiếu tinh-do-thai-duong.vercel.app: 1 engine 3D + 8 bài = 8 kịch bản; mỗi bài 4–5 chặng (camera tự bay tới cảnh + thẻ lời
+  dẫn + "Tiếp theo"), câu hỏi cuối bài, ngoài ra có "Tự do khám phá".
+- Thùy chốt: mục đích a) GV dạy trên lớp > b) HS tự học > c) marketing · đợt đầu KHÔNG đo, nhưng mỗi thế giới gắn sẵn mã chuyên đề/dạng
+  `khtn_ban_do` · khối 7–8–9, sách KNTT · hiện chiếu TV trên lớp, đích mỗi HS 1 iPad hoặc nhóm 2–3 em/iPad · kiểu TÀU = lộ trình cố định,
+  "tự do trong khuôn khổ": bay tự do trong vùng điểm 1→2, phải hoàn thành câu hỏi ở điểm 2 mới bay tiếp · kiểu (tàu / tương tác) là tính
+  chất TỪNG BÀI, không phải chế độ HS chọn · hình ảnh KHOA HỌC THẬT (học, không phải gami) · TỰ BUILD, PhET chỉ để tham khảo cách làm ·
+  duyệt đúng kiến thức: Thùy + Ngọc (GV KHTN).
+- CTO đề xuất (chưa chốt): tách THẾ GIỚI (không gian dựng 1 lần) khỏi BÀI (lộ trình + cổng + câu hỏi) như mẫu; gom ~40 chuyên đề K7–9
+  vào 8 thế giới (Tế bào · Nguyên tử–Phân tử · Cơ thể người · bàn Điện/Từ/Quang/Cơ/Âm); bài tính toán/ghi nhớ chưa làm thế giới.
+  Cổng: phải đúng mới qua, sai thì chỉ lại chỗ cần nhìn trong vùng vừa bay; câu cổng viết theo cảnh, câu cuối bài lấy từ kho theo dạng.
+- Phát hiện bản đồ KHTN: K9 đủ (183 dạng) nhưng K8 chỉ 3 chủ đề, K7 dừng ở Trao đổi chất; K9 nhảy K091102→K091104 (thiếu 1 chuyên đề).
+- Còn treo: chọn 2 bài pilot theo lịch dạy thật · bản đồ K7/K8 thiếu là cố ý hay chưa nhập · TV nối laptop hay trình duyệt TV · file SGK KNTT.
