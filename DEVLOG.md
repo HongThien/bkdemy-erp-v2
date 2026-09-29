@@ -32085,3 +32085,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Cũng 29/09: Thùy thấy máy công ty "giao diện cũ, không có tranh nền" dù cùng tài khoản với máy Công Hải — DB đúng (HS0115 lưu rpg/bau_troi 14:45);
   do Chrome giữ bundle 28/09 gọi `bg_bau_troi.jpg`/`ill_*.png` đã bị đổi tên ⇒ 404 (jpg không nằm trong precache SW). Đề xuất (chờ gật): SW tự
   kiểm bản mới định kỳ + khi quay lại app; luật không xoá/đổi tên ảnh public mà bản đang chạy còn dùng.
+
+## 2026-09-29 — App HS tự kiểm bản mới (hết kẹt bản cũ) + luật không xoá/đổi tên ảnh public
+
+- Thùy gật đề xuất sau vụ máy công ty kẹt bundle 28/09 (mất tranh nền). `main-hs.tsx`: `registerSW({ onRegisteredSW })` gọi `reg.update()`
+  mỗi 30 phút + mỗi lần `visibilitychange → visible` (bỏ qua khi offline / đang cài) — mẫu "periodic SW updates" của vite-plugin-pwa.
+  Có bản mới ⇒ autoUpdate cài ⇒ virtual module tự reload như cũ.
+- Verify: `build:hs` qua (precache 251 mục) · launch mới `preview-hs` (5186) chạy dist-hs: SW đăng ký, scope `/`; tab ẩn ⇒ 0 lần kiểm;
+  giả `visibilityState = visible` + bắn sự kiện ⇒ gọi `update()` 1 lần.
+- `design/STYLE-HS.md` §2: luật KHÔNG xoá/đổi tên ảnh `public/bk-ui/hs/` mà bản đang chạy còn gọi — thay ảnh = thêm tên mới, giữ file cũ ≥1 tuần
+  (jpg không nằm trong precache SW) + ghi chú Login khoá colorScheme light.

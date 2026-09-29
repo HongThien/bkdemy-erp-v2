@@ -153,6 +153,19 @@
       "port": 5185
     },
     {
+      "name": "preview-hs",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "preview:hs",
+        "--",
+        "--port",
+        "5186",
+        "--strictPort"
+      ],
+      "port": 5186
+    },
+    {
       "name": "games",
       "runtimeExecutable": "node",
       "runtimeArgs": [

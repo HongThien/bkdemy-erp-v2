@@ -31,6 +31,13 @@ Style RPG hiện tại: `skin/styles/rpg.ts` + `public/bk-ui/hs/skin/rpg/` (3 n�
   THEME theo giới tính, `if (skin === '…')`. Màu CÓ NGHĨA (huy chương, bậc Rank, ô vòng quay, nền trắng sau ảnh đề) được giữ — đã nằm
   trong mốc của script.
 - Chữ đặt thẳng trên tranh nền (không trong thẻ) chỉ dùng cho tiêu đề — lỗi / đang tải / rỗng PHẢI trong thẻ (`TrongHS` hoặc `style={THE}`).
+- **⭐ KHÔNG xoá / đổi tên ảnh trong `public/bk-ui/hs/` mà bản đang chạy còn gọi** (Thùy 29/09). App HS là PWA: máy nào để app chạy nền
+  vẫn giữ JS cũ tới khi kịp nhận bản mới (tối đa ~30 phút sau khi mở lại, xem `main-hs.tsx`), JS cũ gọi tên file cũ. Đã dính: đổi
+  `bg_bau_troi.jpg`/`ill_*.png` ⇒ máy còn bản 28/09 mất tranh nền. Muốn thay ảnh ⇒ **thêm file TÊN MỚI**, sửa style trỏ sang, giữ file cũ
+  ≥ 1 tuần sau deploy rồi mới dọn (xoá vẫn theo Luật xoá — hỏi Thùy). Ảnh `.jpg` KHÔNG nằm trong bộ lưu sẵn của SW (chỉ png/svg/js/css) nên
+  mất file là mất ngay.
+- Màn đăng nhập (`src/auth/Login.tsx`, dùng chung mọi app) tự khoá `colorScheme: 'light'` — skin tối gắn lên `<html>` từ lúc khởi động
+  từng làm chữ ô nhập thành trắng trên nền trắng (29/09).
 
 ## 3. Thêm TÍNH NĂNG / MÀN mới (bắt buộc)
 
