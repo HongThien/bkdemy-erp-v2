@@ -31381,3 +31381,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   xếp [ca?] [Thế giới] [kiểm tra lại?] 2 cột (lẻ 3 ⇒ ô đầu trải 2 cột). Bẫy: grid-cols-2 mặc định minmax(auto,1fr) ⇒ dòng truncate đẩy thẻ
   tràn/đè thẻ bên ⇒ phải minmax(0,1fr). Bong bóng thoại vẫn suy từ viecTiepTheo.
 - Soi 375×812 · 820×1180 · 1180×820 · 1440×900, 0 lỗi console. tsc sạch · check:style-hs ✔.
+
+### 29/09 (16) — Thế giới BK trên PC: dòng tin nhỏ bị bóp chữ (Thùy gửi ảnh sau deploy)
+- Nguyên nhân: NutThich/NutBinhLuan bản nhỏ (dòng tầng B + thẻ gộp mở) vẫn mang w-full ⇒ trong hàng flex giành hết bề ngang, cột chữ còn vài px
+  (điện thoại ít lộ vì hàng hẹp; PC rộng mà vẫn bị vì % tính theo cả hàng). Sửa: bản nhỏ flex-none + whitespace-nowrap, w-full chỉ ở thanh hành động thẻ lớn.
+- PC: bảng tin trải 1180px khó đọc ⇒ ManHS rong='hep' (720px giữa màn, như bảng tin FB trên máy tính).
+- Bài học: soi mẫu mới chụp tt 1/5/8–11 ở 375px — không có ảnh PC của tab Lớp (nơi dòng B nhiều nhất) ⇒ lọt. Màn có dòng nhỏ phải soi cả PC.
