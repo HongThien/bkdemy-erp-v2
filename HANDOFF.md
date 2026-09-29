@@ -372,14 +372,20 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
 - 5 game iPad: tự lưu tên (`localStorage bk-games-pname`, dùng chung), TV "Trận mới" giữ tên · chống văng (TVID/FOLLOW) · chặn nảy/cuộn/zoom
   iPad (nền `html` tối, `touch-action:manipulation`, touchmove guard) · Đập Chuột nhận chạm cả lưới + ân hạn 220ms.
 - **Chiếm Đất / Mở Rương:** thua đậm 20–50% hoặc thắng đậm 150–300% (không hoà), Chuẩn 50/50, tỉ lệ chi ~110%, hiện "tối đa" trên màn.
-  Chiếm Đất: độc đắc 50 xu, ~50% bản đồ có, bỏ gõ tên. Mở Rương: hình quà theo giá trị (quà 1–2 nhỏ, quà bí ẩn quyết định), số hiện sau hình.
+  Chiếm Đất: độc đắc 50 xu, ~50% bản đồ có, bỏ gõ tên. Mở Rương: hình quà theo giá trị, số hiện sau hình; **chia 3 quà ngẫu nhiên nhiều kịch bản (29/09)** — nổ 1 món ở vị trí bất kỳ 45% ·
+  hai món to 25% · chia đều 30% (`chiaKichBan`); giả lập 20k rương: món to nhất ở quà 1/2/3 = 36/33/31%, đoán lãi/lỗ sau 2 món chỉ trúng 67%.
+  Luật cũ "quà 1–2 luôn nhỏ" ĐÃ BỎ. Áp cả bản sự kiện lẫn bản lớp (lớp chia bội 10). Tổng vẫn rút như cũ.
 - **Đoán Số:** vé 10 xu = 3 lượt, thưởng 100/35/20 xu (~108%), chỉ hiện xu thưởng; hàng chục dừng trước, hàng đơn vị bò chậm 7 số cuối.
 
 ### Đã build (27–28/09 — ⭐ GAME TRONG BUỔI HỌC: xếp hạng buổi + game bản lớp) — ĐỌC `spec-game-buoi-hoc.md` §5b–§6
 - **Mỗi game 2 bản luật, 1 bộ code** (không copy file): mặc định = sự kiện; `?che_do=lop&buoi=<id>` = buổi học. Luật bản lớp do **Thùy viết**
   (CTO chỉ hỏi output + nối ERP). Có luật: **Mở Rương** · **Chiếm Đất** (3 loại ô = 3 giải, EXP như Mở Rương, chọn ô bất kì) · **Bắn Quà**
   (`ca_lop`: cả lớp 1 ván cá nhân/đội, khung `BanQuaLop.tsx`, mig `202609281425`). Đoán Số: CHỜ LUẬT. Quà đặc biệt 🧋 trà sữa rút ở DB
-  (`game_lop_qua_dac_biet`), ERP có nút "Đã trao". (Chiếm Đất/Bắn Quà/trà sữa do phiên khác làm 28/09.)
+  (`game_lop_qua_dac_biet`, tỉ lệ **Nhất 1% · Nhì 0,5% · Giải 3 0,1%**, hiệu ứng nổ `lib/bk-tra-sua.js`), ERP có nút "Đã trao".
+- **ERP KHÔNG hiện kết quả trước khi TV diễn xong (29/09):** payload `'mo'` mang `hid`; TV gửi lại `{game,loai:'xong',hid}` (Mở Rương: sau
+  quà 3 · Chiếm Đất: khi đóng thẻ kết quả); `XepHangBuoi` giữ "🎁 đang mở…" (list + TrinhChieu) tới lúc đó, phòng hờ 25s nếu TV rớt; 🧋 báo
+  cũng hoãn theo. TV bỏ qua payload có `loai`. Đo trên trình duyệt: không có gì lọt sau quà 1–2. **Game mới nối ERP phải gửi `xong` y hệt.**
+- **Cast chung + Bắn Quà:** sau mỗi nút ERP (`BanQuaLop.traFocusGame`) trả focus về iframe game — trước đó Space nạp lực = bấm lại nút.
 - **🎯 Bắn Quà** (game pháo 2D kiểu Worms/GunBound — ĐỌC `spec-game-ban-qua.md` §1–§7 trước khi sửa): `games-site/ban-qua.html` (canvas 2D, sprite
   render từ KayKit Holiday ở `games-site/assets/ban-qua/`). **Cá nhân:** 1 phát/bạn, map **reset mỗi lượt**, tường đá không phá trước súng, hộp
   không máu (trúng là vỡ; gần 20 · vừa 40 · xa 70 · hộp trời 150 trôi ngang, chỉ vỡ khi chạm trực tiếp), trúng nơ "Chính xác 100%" +20% (1 lần/phát,
@@ -388,7 +394,7 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
   bằng giả lập chạy CHÍNH bộ máy của game (`?gia_lap=1` → `giaLap()` / `canBang()`; đổi luật đạn ⇒ chạy lại rồi chép `he`). **Nối ERP**
   (mig `202609281425_ban_qua_lop`): DB quay đạn theo giải + chia đội (🎲 ngẫu nhiên / GV tự xếp) + chốt (hạng, EXP Nhất 300→cuối 100, rương,
   trà sữa, sổ EXP 1 transaction); TV chỉ gửi ĐIỂM THÔ về, GV xem rồi Chốt. Đã verify trọn chuỗi trên buổi thật (ghi DB trong ROLLBACK);
-  **màn ERP `BanQuaLop` CHƯA bấm thật** (mới tsc). Thùy chốt 28/09: đội KHÔNG hộp quà · máu xe 150 · hoà đầu cùng Vàng — luật đã đủ, chỉ còn test lớp thật.
+  **màn ERP `BanQuaLop` CHƯA bấm thật trên lớp** (đã bấm thử focus Cast). Thùy chốt 28/09: đội KHÔNG hộp quà · máu xe 150 · hoà đầu cùng Vàng — luật đã đủ, chỉ còn test lớp thật.
 - **2 CHẾ ĐỘ HIỂN THỊ** (Thùy 28/09, sau chốt Nhất/Nhì): **📺 Chế độ 1 · TV riêng** — GV làm việc trên ERP, TV riêng mở trang game = game +
   **bảng lớp** (ERP gửi event `ds` qua kênh khi đổi + khi TV nối; `games-site/lib/bk-lop-bang.js`; số của bạn đang mở giấu tới khi diễn xong) ·
   **🖥 Chế độ 2 · Cast chung** — overlay toàn màn trong ERP = iframe game `&nhung=1` + danh sách cả lớp theo giải, bấm "Mở" trên tên.
@@ -2465,8 +2471,11 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
 - **Test UI có nút GHI trên ERP dev mà không ghi DB:** trong trang, `await import('/src/lib/supabase.ts')` rồi thay `supabase.rpc` (giả kết quả,
   chặn mọi `fn_*` ghi). **Vite dev tự reload khi phiên khác sửa file ⇒ override mất im lặng** — mỗi bước bấm phải kiểm override còn sống
   (vd `window.__GHI`) rồi mới bấm; xong kiểm lại DB bằng query.
-- **Màn công khai (TV) không được lộ kết quả trước hoạt ảnh:** dữ liệu tổng (bảng lớp) đến NHANH hơn hoạt ảnh ⇒ đánh dấu "đang mở" lúc NHẬN
-  lệnh, chỉ hiện số khi game diễn xong (`BKLopBang.cho/xong`).
+- **Màn công khai không được lộ kết quả trước hoạt ảnh — và mọi màn cả lớp nhìn thấy đều là màn công khai:** dữ liệu (DB/bảng lớp) đến NHANH
+  hơn hoạt ảnh ⇒ đánh dấu "đang mở" lúc NHẬN lệnh, chỉ hiện số khi game BÁO xong. Vá TV (`BKLopBang.cho/xong`) mà quên list ERP ⇒ Cast chung vẫn
+  lộ (29/09). Cách đúng: game gửi tín hiệu `xong` theo `hid`, mọi nơi hiển thị chờ tín hiệu đó (+ timeout phòng TV rớt).
+- **Game may rủi: đừng để thứ tự mở tiết lộ kết quả.** Luật "quà 1–2 nhỏ, quà cuối quyết định" = mở 2 món đầu vô nghĩa. Đo độ hồi hộp bằng giả lập:
+  vị trí món to phải gần đều, tương quan món đầu ↔ tổng thấp, đoán lãi/lỗ sau n-1 món không quá ~70%.
 - Liệt kê dữ liệu để xin xoá: t đọc `date` bằng `toISOString()` ⇒ lệch 1 ngày (27/09 thay vì 28/09) — đúng cái §2 CẤM; luôn format ngày theo VN.
 - **⭐ Cân game bằng GIẢ LẬP, và giả lập phải chạy CHÍNH bộ máy của game** (Bắn Quà 28/09): cảm giác "đạn không cân" của CEO đúng — đo ra
   Chùm 52 vs Bom to 27. Bản giả lập đầu chép lại vật lý ⇒ "công thức 2 nơi" (§2.0 cấm); làm đúng là tách vật lý + điểm thành bộ máy THUẦN
