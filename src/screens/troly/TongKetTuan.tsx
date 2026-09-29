@@ -5,7 +5,8 @@
 // phải trình chiếu" → mỗi mảng MỘT bảng, mọi bảng CÙNG một bộ cột:
 //     Chỉ số · Tuần này · Tuần trước · Thường đạt · So với thường đạt · Xu hướng
 // Bảng đầu tiên "Cần chú ý" gom các chỉ số đang dưới thường đạt — mở màn là thấy ngay chỗ phải bàn.
-// Nút "Trình chiếu" phóng toàn màn hình, chữ to. Nút "Số từng tuần" đổi cột xu hướng thành số.
+// Nút "Trình chiếu": toàn màn hình, MỖI BẢNG MỘT MÀN vừa khít, chuyển bằng Trước / Sau (không cuộn).
+// Nút "Số từng tuần" đổi cột xu hướng thành số.
 //
 // Màn này KHÔNG tính gì: giá trị, tuần trước, chênh lệch, thường đạt, lọc nhiễu, đánh giá đều đến
 // từ `fn_troly_tuan_lay`. Ở đây chỉ định dạng, lọc theo bảng đang vẽ, và đặt toạ độ nét vẽ.
@@ -13,7 +14,7 @@
 // Màu: màu trạng thái chỉ nằm trên DẤU (chấm, thanh); chữ và số luôn màu mực. Trạng thái luôn đi
 // kèm chữ ("Vấn đề", "Dưới thường đạt") — không bao giờ chỉ có màu.
 // ============================================================================
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { ddmm, homNayVN } from '../../lib/troly-baocao'
 import {
   getTongKetTuan, congNgay,
@@ -430,13 +431,96 @@ const PHU_BANG: Record<string, string> = {
   hoc_tap: 'điểm tính trên các lượt đã có điểm',
 }
 
-// Phần TRÌNH BÀY, tách khỏi phần tải để dựng thử được bằng JSON thật (check-troly-cong-cu.mjs --tuan).
-export function BanTongKetTuan({ d, mo, moSan, hienSo = false }: { d: DuLieu; mo?: boolean; moSan?: boolean; hienSo?: boolean }) {
+// ── Mỗi BẢNG là một "trang" ──────────────────────────────────────────────────────────
+// Màn thường xếp các trang nối nhau. Màn trình chiếu bày MỖI LẦN MỘT trang, vừa khít màn hình,
+// chuyển bằng Trước / Sau (CEO 29/09: "mỗi bảng full 1 màn, để dạng next - back … kéo lên kéo
+// xuống ko tiện"). Hai màn dùng CHUNG danh sách trang này nên không bao giờ lệch nội dung.
+type Trang = { ma: string; ten: string; noiDung: any }
+
+function dungTrang(d: DuLieu, hienSo: boolean, moSan?: boolean): Trang[] {
   const tra = (ma: string) => d.chi_so.find((c) => c.ma === ma)
   const tuan = d.chi_so[0]?.chuoi.map((x) => x.tuan) ?? []
   const tenBang = (ma: string) => d.bang.find((b) => b.ma === ma)?.ten ?? ma
   const canChuY = d.chi_so.filter((c) => c.danh_gia === 'van_de' || c.danh_gia === 'duoi')
   const soCotViec = 6 + (hienSo ? tuan.length : 1)
+  const trang: Trang[] = []
+
+  trang.push({
+    ma: 'chu_y', ten: 'Cần chú ý',
+    noiDung: (
+      <Khung ten="Cần chú ý" phu={`${canChuY.length} chỉ số đang dưới thường đạt của chính nó · thường đạt = trung bình ${d.thuong_dat.so_tuan} tuần gần nhất, đã lọc nhiễu`}>
+        {canChuY.length === 0
+          ? <div className="px-3 py-3 text-[13px] text-slate-500">Tuần này không có chỉ số nào dưới thường đạt.</div>
+          : <BangChiSo ds={canChuY} hienSo={hienSo} tuan={tuan} cotBang={(c) => tenBang(c.bang)} />}
+      </Khung>
+    ),
+  })
+
+  for (const b of d.bang) {
+    if (b.ma === 'viec') {
+      trang.push({
+        ma: b.ma, ten: b.ten,
+        noiDung: (
+          <Khung ten={b.ten} phu="tỉ lệ trên việc đã tới hạn · số trong ngoặc = số việc · Detail = xếp hạng giáo viên – TA"
+            chan={d.xep_hang_bo_qua.length > 0 && (
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-slate-200 bg-slate-50 px-3 py-1.5 text-[11.5px] text-slate-500">
+                <ChuGiai mau={MAU.dung} nhan="Đúng chuẩn" /><ChuGiai mau={MAU.cham} nhan="Chậm" /><ChuGiai mau={MAU.thieu} nhan="Thiếu" />
+                <span>Không đưa vào xếp hạng: {d.xep_hang_bo_qua.join(', ')} — việc của những người này vẫn tính trong số của trung tâm.</span>
+              </div>
+            )}>
+            <table className="w-full text-[13px]">
+              <thead>
+                <tr className="border-b border-slate-200 bg-slate-50">
+                  <th className={TH}>Khâu</th>
+                  <th className={`${TH} text-right`}>Việc tới hạn</th>
+                  <th className={TH}>Đúng chuẩn</th>
+                  <th className={TH}>Chậm</th>
+                  <th className={TH}>Thiếu</th>
+                  <DauXuHuong hienSo={hienSo} tuan={tuan} nhan="Xu hướng đúng chuẩn" />
+                  <th className={TH} />
+                </tr>
+              </thead>
+              <tbody>
+                {d.so.khau.map((k) => (
+                  <DongViec key={k.ma} ma={k.ma} ten={k.ten} k={k} d={d} tra={tra} hienSo={hienSo} tuan={tuan} soCot={soCotViec} moSan={moSan} />
+                ))}
+                <DongViec ma="tong" ten="Cả trung tâm" k={d.so.tong_khau} d={d} tra={tra} hienSo={hienSo} tuan={tuan} soCot={soCotViec} />
+              </tbody>
+            </table>
+          </Khung>
+        ),
+      })
+      continue
+    }
+    const ds = d.chi_so.filter((c) => c.bang === b.ma)
+    if (ds.length === 0) continue
+    trang.push({
+      ma: b.ma, ten: b.ten,
+      noiDung: (
+        <Khung ten={b.ten} phu={PHU_BANG[b.ma]} chan={<ChanBang ma={b.ma} d={d} moSan={moSan} />}>
+          <BangChiSo ds={ds} hienSo={hienSo} tuan={tuan} />
+        </Khung>
+      ),
+    })
+  }
+
+  trang.push({
+    ma: 'cach_tinh', ten: 'Cách tính',
+    noiDung: (
+      <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2.5">
+        <div className="text-[12px] font-semibold text-slate-600">Cách tính đang dùng</div>
+        <ul className="mt-0.5 list-disc space-y-0.5 pl-4 text-[11.5px] leading-relaxed text-slate-500">
+          {d.cach_tinh.map((g, i) => <li key={i}>{g}</li>)}
+          <li>Cột xu hướng: đường ngang xám là thường đạt; chấm rỗng (hoặc dấu * khi xem số) là lần đo bị coi là nhiễu.</li>
+        </ul>
+      </div>
+    ),
+  })
+  return trang
+}
+
+// Phần TRÌNH BÀY của màn thường, tách khỏi phần tải để dựng thử được bằng JSON thật (check-troly-cong-cu.mjs --tuan).
+export function BanTongKetTuan({ d, mo, moSan, hienSo = false }: { d: DuLieu; mo?: boolean; moSan?: boolean; hienSo?: boolean }) {
   return (
     <div className={mo ? 'opacity-60' : ''}>
       <div className="mb-2.5 text-[12px] leading-relaxed text-slate-500">
@@ -447,61 +531,103 @@ export function BanTongKetTuan({ d, mo, moSan, hienSo = false }: { d: DuLieu; mo
         {d.da_ket_thuc && !d.da_chin && <div>Tuần vừa kết thúc chưa quá 7 ngày — vài chỉ số ghi "Chưa chốt" vì số còn đổi (bù, trả kết quả test, điểm BTVN).</div>}
         {d.thuong_dat.so_tuan_chua_co_so > 0 && <div className="text-amber-800">Còn {d.thuong_dat.so_tuan_chua_co_so} tuần cũ chưa có số — thường đạt đang tính thiếu. Bấm "↻ Tính lại" để hệ dựng tiếp.</div>}
       </div>
+      {dungTrang(d, hienSo, moSan).map((t) => <div key={t.ma}>{t.noiDung}</div>)}
+    </div>
+  )
+}
 
-      {/* 0 — CẦN CHÚ Ý: chỉ số đang dưới thường đạt */}
-      <Khung ten="Cần chú ý" phu={`${canChuY.length} chỉ số đang dưới thường đạt của chính nó · thường đạt = trung bình ${d.thuong_dat.so_tuan} tuần gần nhất, đã lọc nhiễu`}>
-        {canChuY.length === 0
-          ? <div className="px-3 py-3 text-[13px] text-slate-500">Tuần này không có chỉ số nào dưới thường đạt.</div>
-          : <BangChiSo ds={canChuY} hienSo={hienSo} tuan={tuan} cotBang={(c) => tenBang(c.bang)} />}
-      </Khung>
+// ── TRÌNH CHIẾU ─────────────────────────────────────────────────────────────────────
+// Co giãn nội dung cho VỪA KHÍT vùng trống. Bề rộng gốc cố định để bảng giữ đúng tỉ lệ cột rồi mới
+// phóng cả khối — nên bảng 4 dòng và bảng 7 dòng đều đầy màn mà không phải cuộn.
+// Chỉ khi mở Detail dài tới mức phải thu nhỏ dưới TL_TOI_THIEU (chữ khó đọc) mới cho cuộn.
+const TL_TOI_DA = 2.4, TL_TOI_THIEU = 0.6
+const RONG_GOC = 1080, RONG_GOC_SO = 1500   // bật "Số từng tuần" thêm 8 cột ⇒ cần khổ rộng hơn
 
-      {d.bang.map((b) => {
-        if (b.ma === 'viec') {
-          return (
-            <Khung key={b.ma} ten={b.ten} phu="tỉ lệ trên việc đã tới hạn · số trong ngoặc = số việc · Detail = xếp hạng giáo viên – TA"
-              chan={d.xep_hang_bo_qua.length > 0 && (
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-slate-200 bg-slate-50 px-3 py-1.5 text-[11.5px] text-slate-500">
-                  <ChuGiai mau={MAU.dung} nhan="Đúng chuẩn" /><ChuGiai mau={MAU.cham} nhan="Chậm" /><ChuGiai mau={MAU.thieu} nhan="Thiếu" />
-                  <span>Không đưa vào xếp hạng: {d.xep_hang_bo_qua.join(', ')} — việc của những người này vẫn tính trong số của trung tâm.</span>
-                </div>
-              )}>
-              <table className="w-full text-[13px]">
-                <thead>
-                  <tr className="border-b border-slate-200 bg-slate-50">
-                    <th className={TH}>Khâu</th>
-                    <th className={`${TH} text-right`}>Việc tới hạn</th>
-                    <th className={TH}>Đúng chuẩn</th>
-                    <th className={TH}>Chậm</th>
-                    <th className={TH}>Thiếu</th>
-                    <DauXuHuong hienSo={hienSo} tuan={tuan} nhan="Xu hướng đúng chuẩn" />
-                    <th className={TH} />
-                  </tr>
-                </thead>
-                <tbody>
-                  {d.so.khau.map((k) => (
-                    <DongViec key={k.ma} ma={k.ma} ten={k.ten} k={k} d={d} tra={tra} hienSo={hienSo} tuan={tuan} soCot={soCotViec} moSan={moSan} />
-                  ))}
-                  <DongViec ma="tong" ten="Cả trung tâm" k={d.so.tong_khau} d={d} tra={tra} hienSo={hienSo} tuan={tuan} soCot={soCotViec} />
-                </tbody>
-              </table>
-            </Khung>
-          )
-        }
-        const ds = d.chi_so.filter((c) => c.bang === b.ma)
-        if (ds.length === 0) return null
-        return (
-          <Khung key={b.ma} ten={b.ten} phu={PHU_BANG[b.ma]} chan={<ChanBang ma={b.ma} d={d} moSan={moSan} />}>
-            <BangChiSo ds={ds} hienSo={hienSo} tuan={tuan} />
-          </Khung>
-        )
-      })}
+function VuaMan({ rong, children }: { rong: number; children: any }) {
+  const ngoai = useRef<HTMLDivElement>(null)
+  const trong = useRef<HTMLDivElement>(null)
+  const [tl, setTl] = useState(1)
+  useLayoutEffect(() => {
+    const a = ngoai.current, b = trong.current
+    if (!a || !b) return
+    const tinh = () => {
+      if (!a.clientWidth || !b.scrollHeight) return
+      setTl(Math.max(TL_TOI_THIEU, Math.min(a.clientWidth / rong, a.clientHeight / b.scrollHeight, TL_TOI_DA)))
+    }
+    tinh()
+    // Đo lại khi đổi cỡ màn HOẶC khi nội dung đổi chiều cao (bấm Detail). `transform` không đổi kích
+    // thước bố cục của khối trong nên việc đo không tự kích hoạt lại chính nó.
+    const ro = new ResizeObserver(tinh)
+    ro.observe(a); ro.observe(b)
+    return () => ro.disconnect()
+  }, [rong])
+  return (
+    <div ref={ngoai} className="relative min-h-0 flex-1 overflow-y-auto overflow-x-hidden">
+      <div ref={trong} style={{
+        position: 'absolute', top: 0, left: '50%', width: rong, marginLeft: -rong / 2,
+        transform: `scale(${tl})`, transformOrigin: 'top center',
+      }}>
+        {children}
+      </div>
+    </div>
+  )
+}
 
-      <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2.5">
-        <div className="text-[12px] font-semibold text-slate-600">Cách tính đang dùng</div>
-        <ul className="mt-0.5 list-disc space-y-0.5 pl-4 text-[11.5px] leading-relaxed text-slate-500">
-          {d.cach_tinh.map((g, i) => <li key={i}>{g}</li>)}
-          <li>Cột xu hướng: đường ngang xám là thường đạt; chấm rỗng (hoặc dấu * khi xem số) là lần đo bị coi là nhiễu.</li>
-        </ul>
+function TrinhChieu({ d, hienSo, doiHienSo, thoat }: { d: DuLieu; hienSo: boolean; doiHienSo: () => void; thoat: () => void }) {
+  const trang = dungTrang(d, hienSo)
+  const [i, setI] = useState(0)
+  const n = trang.length
+  const vt = Math.min(i, n - 1)
+  const t = trang[vt]
+  const sang = (k: number) => setI((x) => Math.max(0, Math.min(n - 1, Math.min(x, n - 1) + k)))
+
+  // Bàn phím / bút trình chiếu: → ↓ PageDown Space = sau · ← ↑ PageUp = trước · Home / End.
+  useEffect(() => {
+    const nghe = (e: KeyboardEvent) => {
+      if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); sang(1) }
+      else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); sang(-1) }
+      else if (e.key === 'Home') setI(0)
+      else if (e.key === 'End') setI(n - 1)
+    }
+    window.addEventListener('keydown', nghe)
+    return () => window.removeEventListener('keydown', nghe)
+  }, [n]) // eslint-disable-line
+
+  const nut = 'rounded-xl border border-slate-300 bg-white px-4 py-2 text-[16px] font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-30'
+  return (
+    <div className="flex h-full flex-col bg-slate-50">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-slate-200 bg-white px-6 py-3">
+        <div className="min-w-0">
+          <div className="text-[14px] text-slate-500">
+            Tổng kết tuần {ddmm(d.tu)} – {ddmm(d.den)} · số liệu tính lúc {d.luu.tinh_luc}
+            {d.da_ket_thuc && !d.da_chin && <> · vài chỉ số còn "Chưa chốt"</>}
+            {!d.da_ket_thuc && <> · tuần chưa kết thúc</>}
+          </div>
+          <div className="text-[26px] font-semibold leading-tight text-slate-900">{t.ten}</div>
+        </div>
+        <div className="ml-auto flex items-center gap-2">
+          <button onClick={doiHienSo}
+            className={hienSo ? 'rounded-xl border border-indigo-500 bg-indigo-600 px-4 py-2 text-[16px] font-medium text-white' : nut}>Số từng tuần</button>
+          <button onClick={() => sang(-1)} disabled={vt === 0} className={nut}>‹ Trước</button>
+          <span className="min-w-[64px] text-center text-[16px] tabular-nums text-slate-600">{vt + 1} / {n}</span>
+          <button onClick={() => sang(1)} disabled={vt === n - 1} className={nut}>Sau ›</button>
+          <button onClick={thoat} className={nut}>Thoát</button>
+        </div>
+      </div>
+
+      <div className="flex min-h-0 flex-1 flex-col px-6 pt-4">
+        <VuaMan key={t.ma} rong={hienSo ? RONG_GOC_SO : RONG_GOC}>{t.noiDung}</VuaMan>
+      </div>
+
+      {/* Mục lục: bấm thẳng tới bảng cần bàn, không phải bấm Sau nhiều lần */}
+      <div className="flex flex-wrap justify-center gap-1.5 border-t border-slate-200 bg-white px-6 py-2.5">
+        {trang.map((x, j) => (
+          <button key={x.ma} onClick={() => setI(j)}
+            className={`rounded-full border px-3 py-1 text-[13px] font-medium ${
+              j === vt ? 'border-indigo-500 bg-indigo-600 text-white' : 'border-slate-300 bg-white text-slate-600 hover:bg-slate-50'}`}>
+            {j + 1}. {x.ten}
+          </button>
+        ))}
       </div>
     </div>
   )
@@ -541,6 +667,7 @@ export default function TongKetTuan() {
     if (document.fullscreenElement) document.exitFullscreen().catch(() => {})
     else khung.current?.requestFullscreen().catch(() => setLoi('Trình duyệt không cho phóng toàn màn hình.'))
   }
+  const doiHienSo = () => { NHO.hienSo = !hienSo; setHienSo(!hienSo) }
 
   // Đổi TUẦN = đổi ngữ cảnh ⇒ bỏ số tuần cũ rồi tải, để số tuần trước không đứng dưới nhãn tuần mới.
   function doi(n: number) {
@@ -552,27 +679,30 @@ export default function TongKetTuan() {
   const nut = 'rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-[12.5px] text-slate-600 hover:bg-slate-50 disabled:opacity-40'
 
   return (
-    <div ref={khung} className={chieu ? 'h-full overflow-y-auto bg-slate-50 p-6' : ''}>
-      <div style={chieu ? { zoom: 1.3 } : undefined}>
-        <div className="mb-3 flex flex-wrap items-center gap-1.5">
-          <button onClick={() => doi(-7)} disabled={!d || dangTai} aria-label="Tuần trước" className={nut}>‹</button>
-          <div className="min-w-[190px] text-center text-[15px] font-semibold text-slate-900">
-            {chieu && 'Tổng kết '}
-            {d ? <>tuần {ddmm(d.tu)} – {ddmm(d.den)}</> : tuan ? <>tuần {ddmm(tuan)} – {ddmm(congNgay(tuan, 6))}</> : 'tuần vừa rồi'}
+    <div ref={khung} className={chieu ? 'h-full w-full bg-slate-50' : ''}>
+      {chieu && d ? (
+        <TrinhChieu d={d} hienSo={hienSo} doiHienSo={doiHienSo} thoat={trinhChieu} />
+      ) : (
+        <>
+          <div className="mb-3 flex flex-wrap items-center gap-1.5">
+            <button onClick={() => doi(-7)} disabled={!d || dangTai} aria-label="Tuần trước" className={nut}>‹</button>
+            <div className="min-w-[190px] text-center text-[15px] font-semibold text-slate-900">
+              {d ? <>tuần {ddmm(d.tu)} – {ddmm(d.den)}</> : tuan ? <>tuần {ddmm(tuan)} – {ddmm(congNgay(tuan, 6))}</> : 'tuần vừa rồi'}
+            </div>
+            <button onClick={() => doi(7)} disabled={!coTuanSau || dangTai} aria-label="Tuần sau" className={nut}>›</button>
+            <div className="ml-auto flex flex-wrap gap-1.5">
+              <button onClick={doiHienSo} disabled={!d}
+                className={hienSo ? 'rounded-lg border border-indigo-500 bg-indigo-600 px-2.5 py-1 text-[12.5px] text-white' : nut}>Số từng tuần</button>
+              <button onClick={trinhChieu} disabled={!d} className={nut}>Trình chiếu</button>
+              <button onClick={() => d && tai(d.tu, true)} disabled={!d || dangTai} className={nut}>↻ Tính lại</button>
+            </div>
           </div>
-          <button onClick={() => doi(7)} disabled={!coTuanSau || dangTai} aria-label="Tuần sau" className={nut}>›</button>
-          <div className="ml-auto flex flex-wrap gap-1.5">
-            <button onClick={() => { NHO.hienSo = !hienSo; setHienSo(!hienSo) }} disabled={!d}
-              className={hienSo ? 'rounded-lg border border-indigo-500 bg-indigo-600 px-2.5 py-1 text-[12.5px] text-white' : nut}>Số từng tuần</button>
-            <button onClick={trinhChieu} disabled={!d} className={nut}>{chieu ? 'Thoát trình chiếu' : 'Trình chiếu'}</button>
-            <button onClick={() => d && tai(d.tu, true)} disabled={!d || dangTai} className={nut}>↻ Tính lại</button>
-          </div>
-        </div>
 
-        {loi && <div className="mb-3 rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">Lỗi: {loi}</div>}
-        {!d && dangTai && <div className="rounded-2xl border border-slate-200 bg-white p-4 text-[13px] text-slate-400">Đang tính tổng kết tuần…</div>}
-        {d && <BanTongKetTuan d={d} mo={dangTai} hienSo={hienSo} />}
-      </div>
+          {loi && <div className="mb-3 rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">Lỗi: {loi}</div>}
+          {!d && dangTai && <div className="rounded-2xl border border-slate-200 bg-white p-4 text-[13px] text-slate-400">Đang tính tổng kết tuần…</div>}
+          {d && <BanTongKetTuan d={d} mo={dangTai} hienSo={hienSo} />}
+        </>
+      )}
     </div>
   )
 }

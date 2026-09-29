@@ -31907,3 +31907,16 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   **Điểm ET trung bình 78,2% chuyển từ "dưới thường đạt" thành "VẤN ĐỀ"** (thường đạt 82,2; 8 tuần gần đây rất ổn định nên lệch 4 điểm đã là ≥2σ).
   Vấn đề khác giữ nguyên: HS nộp BTVN đạt chuẩn 67% (84) · 11 lớp nộp dưới ngưỡng (3,9) · 13 HS bị GV báo động (4,7).
 - **Còn lại chưa đổi được bằng cửa sổ:** BTVN/ET/đánh giá đúng chuẩn vẫn "trên thường đạt" vì 8 tuần qua vẫn đang đi lên — đúng thực tế, không phải lỗi.
+
+## 2026-09-29 (21) — TRỢ LÝ · Tổng kết tuần: TRÌNH CHIẾU mỗi bảng một màn, chuyển Trước / Sau
+
+- **CEO:** "Khi phóng to ra, mỗi bảng full 1 màn, để dạng next - back đi chứ ko nên để kéo lên kéo xuống ko tiện đâu."
+- **Bản trước SAI ở đâu:** trình chiếu chỉ là màn thường phóng `zoom 1.3` trong khung cuộn — vẫn là một trang dài, đứng chiếu phải kéo.
+- **Làm lại:** `dungTrang()` trả danh sách TRANG (Cần chú ý · 7 bảng · Cách tính). Màn thường xếp các trang nối nhau; màn trình chiếu bày
+  một trang/lần. Hai màn dùng CHUNG danh sách nên không lệch nội dung.
+- **Vừa khít màn không cuộn:** `VuaMan` đặt khối ở bề rộng gốc cố định (1080px; 1500px khi bật "Số từng tuần") rồi `transform: scale()` theo
+  min(rộng màn / rộng gốc, cao màn / cao nội dung), trần 2,4. Đo lại bằng ResizeObserver khi đổi cỡ màn hoặc bấm Detail.
+  Dùng `transform` chứ không `zoom`: transform không đổi kích thước bố cục nên phép đo không tự kích lại chính nó.
+  Chỉ khi Detail dài tới mức phải thu dưới 0,6 (chữ khó đọc) mới cho cuộn.
+- **Điều khiển:** nút ‹ Trước / Sau › + số trang · phím → ↓ PageDown Space / ← ↑ PageUp / Home / End (bút trình chiếu dùng được) ·
+  hàng mục lục dưới đáy bấm thẳng tới bảng.
