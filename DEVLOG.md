@@ -31633,3 +31633,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **App:** `getBaoCao(soNgay, tinhLai)` gọi `fn_troly_bao_cao_lay`; đầu báo cáo ghi "Số liệu tính lúc … bởi … · đang xem bản đã lưu / vừa tính xong"; nút ↻ truyền
   `tinhLai=true`; bộ nhớ của màn chỉ dùng trong cùng ngày (mở qua đêm thì hỏi lại DB).
 - **CHƯA CÓ:** tự tính sẵn buổi sáng (cron) — hiện "lượt đầu" là người đầu tiên mở trong ngày chịu ~1s tính.
+
+### 29/09 — Hoàn tất ca bổ trợ yếu: dạng đã học lấy từ DỮ LIỆU app HS, TA chỉ tick khi ca 📄 giấy (Thùy)
+- Thùy: "rõ là phải để mặc định chưa tích chứ. Nhưng mà học dạng nào là lấy từ dữ liệu app học sinh mà? Chỉ có luồng in giấy ko ipad thì TA
+  mới phải điền chứ?" — lỗ: app TA tick sẵn HẾT dạng còn mở (luật 24/09) + luật kết thúc 202609291055 ⇒ TA bấm Hoàn tất là case đóng sai.
+- Mig 202609291122_btyeu_hoan_tat_dang_tu_du_lieu (áp --only): fn_btyeu_hoan_tat — buoi_hoc_hs.btyeu_che_do ≠ 'giay' ⇒ p_dang_day := dạng có
+  ≥1 câu em đã trả lời trong ca (_btyeu_tien_do, cùng định nghĩa fn_btyeu_dong_ca); DB bỏ qua tick gửi lên ⇒ chặn luôn app TA PWA bản cũ.
+  'giay' ⇒ dùng tick TA. Hiện trạng ca có mặt: 16 app · 2 giấy · 18 chưa chọn chế độ (coi như app).
+- Đo (ROLLBACK, rồi áp thật): ca 📱 5 dạng mở, em làm 2, gửi tick 5 ⇒ chỉ 2 dạng ghi đã dạy, case còn mở, còn 3 · ca 📄 giấy tick 1 ⇒ đúng 1.
+- App TA: 📱 thay ô tick bằng danh sách "Dạng em đã học buổi này" (chỉ đọc) + "còn N dạng" / "⚠ học hết ⇒ Hoàn tất là KẾT THÚC" (so_dang_con_day
+  từ DB) + gợi ý chọn 📄 nếu học giấy; 📄 ô tick mặc định trống, chỉ tick sẵn dạng có kết quả phiếu đã nhập. Gửi tick chỉ khi 📄. tsc sạch.

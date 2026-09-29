@@ -172,9 +172,10 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
     try { await f(); await tai(); if (xong) setOk(xong) } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(null) }
   }
 
-  // Mặc định tick: dạng còn mở (chưa đóng) mà chưa dạy · retest trượt cần dạy lại · đã đánh dấu ở chính buổi này (em luyện app).
+  // Thùy 29/09: dạng đã học LẤY TỪ DỮ LIỆU — ca 📱 app: DB tự lấy dạng em có làm câu trong ca (không tick, DB bỏ qua tick gửi lên);
+  // chỉ ca 📄 giấy TA mới tick, mặc định KHÔNG tick — tick sẵn duy nhất dạng máy đã đánh dấu ở buổi này (có kết quả phiếu đã nhập).
   const dangMo = ca ? ca.dangs.filter((d) => !d.dong_at) : []
-  const tickMacDinh = () => new Set(dangMo.filter((d) => !d.day_at || d.dat === false || d.day_buoi_id === ca?.buoi_id).map((d) => d.ma_dang))
+  const tickMacDinh = () => new Set(dangMo.filter((d) => d.day_buoi_id === ca?.buoi_id).map((d) => d.ma_dang))
   const tick = tickDay ?? (ca ? tickMacDinh() : new Set<string>())
   const doiTick = (ma: string) => { const n = new Set(tick); if (n.has(ma)) n.delete(ma); else n.add(ma); setTickDay(n) }
 
@@ -418,10 +419,24 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
                   </span>
                 </label>
               )}
-              {dangMo.length > 0 && (
+              {dangMo.length > 0 && cheDo !== 'giay' && (
+                // 📱 app (hoặc chưa chọn): KHÔNG tick — dạng đã học = dạng em có làm câu trên app buổi này (DB tính, app chỉ hiện).
+                <div className="rounded-xl bg-indigo-50/60 px-3 py-2 text-[12.5px]">
+                  <p className="mb-1 text-[12px] font-bold text-indigo-800">Dạng em đã học buổi này <span className="font-normal text-indigo-600">— máy lấy từ bài em làm trên app, TA không cần tick</span></p>
+                  {dangMo.filter((d) => d.day_buoi_id === ca.buoi_id).map((d) => (
+                    <p key={d.ma_dang} className="py-0.5 text-slate-700">✓ {d.ten_dang}<span className="text-slate-400"> · luyện {d.so_dung}/{d.so_cau}</span></p>
+                  ))}
+                  {!dangMo.some((d) => d.day_buoi_id === ca.buoi_id) && <p className="py-0.5 text-slate-500">Em chưa làm dạng nào trên app buổi này.</p>}
+                  {!RETEST_BAT && (ca.so_dang_con_day === 0
+                    ? <p className="mt-1 font-semibold text-amber-700">⚠ Em đã học hết dạng yếu ⇒ bấm Hoàn tất là bổ trợ yếu {ca.mon} KẾT THÚC.</p>
+                    : <p className="mt-1 text-slate-500">Còn {ca.so_dang_con_day} dạng chưa học ⇒ OPS xếp buổi sau.</p>)}
+                  {!daDong && <p className="mt-1 text-[11.5px] text-slate-400">Em học trên giấy? Chọn “📄 In giấy” ở trên để tick dạng tay.</p>}
+                </div>
+              )}
+              {dangMo.length > 0 && cheDo === 'giay' && (
                 <div className="rounded-xl bg-indigo-50/60 px-3 py-2">
-                  <p className="mb-1 text-[12px] font-bold text-indigo-800">Dạng đã dạy buổi này <span className="font-normal text-indigo-600">— bỏ tick dạng chưa kịp dạy (dạng tick ⇒ {RETEST_BAT ? 'chờ retest' : 'đã dạy xong'}, bỏ tick ⇒ xếp buổi sau)</span></p>
-                  {!RETEST_BAT && <p className="mb-1 text-[11.5px] font-semibold text-amber-700">⚠ Không bỏ tick dạng nào ⇒ em HẾT dạng yếu: bấm Hoàn tất là bổ trợ yếu {ca.mon} của em KẾT THÚC.</p>}
+                  <p className="mb-1 text-[12px] font-bold text-indigo-800">Dạng đã dạy buổi này <span className="font-normal text-indigo-600">— 📄 ca giấy: tick dạng em ĐÃ HỌC (dạng tick ⇒ {RETEST_BAT ? 'chờ retest' : 'đã dạy xong'}, không tick ⇒ xếp buổi sau). Dạng có kết quả phiếu đã nhập được tick sẵn.</span></p>
+                  {!RETEST_BAT && <p className="mb-1 text-[11.5px] font-semibold text-amber-700">⚠ Tick đủ mọi dạng còn phải học ⇒ em HẾT dạng yếu: bấm Hoàn tất là bổ trợ yếu {ca.mon} của em KẾT THÚC.</p>}
                   {dangMo.map((d) => (
                     <label key={d.ma_dang} className="flex items-start gap-2 py-0.5 text-[12.5px] text-slate-700">
                       <input type="checkbox" checked={tick.has(d.ma_dang)} onChange={() => doiTick(d.ma_dang)} className="mt-0.5" />
@@ -431,7 +446,7 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
                 </div>
               )}
               <button disabled={!!busy || !coMat || (!daDong && tongCau > 0) || (daDong && !testDaNop && !(khongTest && lyDo.trim()))}
-                onClick={() => chay('ht', () => hoanTatCa(ca.buoi_id, nx, mucMa, khongTest ? lyDo.trim() : null, [...tick]), 'Đã hoàn tất ca.')}
+                onClick={() => chay('ht', () => hoanTatCa(ca.buoi_id, nx, mucMa, khongTest ? lyDo.trim() : null, cheDo === 'giay' ? [...tick] : undefined), 'Đã hoàn tất ca.')}
                 className="w-full rounded-xl bg-emerald-600 py-2.5 text-[14px] font-bold text-white disabled:opacity-40">
                 {busy === 'ht' ? 'Đang lưu…' : 'Hoàn tất ca'}
               </button>

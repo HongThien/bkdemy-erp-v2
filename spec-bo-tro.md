@@ -15,7 +15,9 @@
 >   `_btyeu_ket_thuc_case`: case `hoan_thanh`, **ket_qua `day_xong`** ("Hết dạng yếu" — KHÔNG phải "đạt", không đo thêm gì), `dong_boi` = người
 >   hoàn tất, dạng còn mở ⇒ `dong_at` (dat giữ NULL), huỷ buổi đã xếp chưa học. **Level không đổi** (học thuật quyết). Mig `202609291055`.
 >   Vòng case khi hold: **Chờ chọn dạng → Cần xếp → Đã xếp → Hoàn thành** — không còn Chờ retest / Chờ đánh giá ở màn Xếp và Trạng thái ca.
->   Mặc định app TA tick HẾT dạng còn mở ⇒ TA không bỏ tick dạng nào = ca đó là ca CUỐI (app TA có dòng cảnh báo + báo "🎉 KẾT THÚC" sau hoàn tất).
+>   **Dạng đã học lấy từ DỮ LIỆU (Thùy 29/09, mig `202609291122`):** ca 📱 app (hoặc chưa chọn chế độ) = dạng em có làm ≥1 câu trong ca —
+>   TA KHÔNG tick, DB bỏ qua mọi tick gửi lên (kể cả app TA bản cũ). Chỉ ca **📄 in giấy** TA mới tick, **mặc định không tick** (tick sẵn duy
+>   nhất dạng có kết quả phiếu đã nhập). App TA hiện dạng em đã học + "còn N dạng" / "⚠ học hết ⇒ Hoàn tất là KẾT THÚC", sau hoàn tất báo "🎉 KẾT THÚC".
 >   Màn "Đánh giá ca bổ trợ" (học thuật) giữ nguyên, không case nào tự rơi vào đó nữa.
 > - **Khi hold:** đóng ca / hoàn tất ca / mở màn Xếp **không sinh, không bổ sung** câu retest · màn Xếp ẩn tab Chờ retest + 📝 Retest, bỏ gợi ý
 >   "cửa sổ retest 3–7 ngày" · popup dạng hiện "Đã dạy" · Đang diễn ra bỏ nút lọc Retest · app TA không còn "retest đến hạn" (badge không đếm) +
