@@ -31780,3 +31780,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ### 29/09 (18) — Hệ thống thôi tự đăng tin B (Thùy: đa số tin phải là HS khoe; tự sinh chỉ S, chí ít A)
 - Mig 202609291233_the_gioi_bo_tin_b: fn_the_gioi_kenh (lấy nguyên từ DB) thêm t.tang <> 'B'. Tin B vẫn SUY ở _the_gioi_tin ⇒ làm kho
   'thành tích được quyền khoe' cho Đăng bài khoe. Thử HS Vũ: tg 0 tin + 1 thẻ gộp · lop 0 · ban 0 — kênh sống hay chết là nhờ Đăng bài khoe.
+
+### 29/09 — KHTN lên web: Vercel báo 404 ở link gốc
+- Thùy tạo project Vercel (Root Directory `khtn-site`) → mở link gốc báo 404 NOT_FOUND: thư mục chưa có `index.html`, bài học chỉ ở
+  `/lien-ket-hoa-hoc.html`. Thêm `khtn-site/index.html` (mục lục "Du hành KHTN", hiện 1 bài) + `khtn-site/vercel.json` tắt git
+  auto-deploy (repo ERP push liên tục, để bật thì mỗi push = 1 build, dính trần 100 build/ngày) ⇒ cập nhật web = Thùy bấm Redeploy/
+  Create Deployment như các project khác.
