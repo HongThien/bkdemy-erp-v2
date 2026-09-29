@@ -1,7 +1,7 @@
 // ============================================================================
 // HomeHS912 — MÀN CHÍNH app HS LỚP 9–12 (có điện thoại riêng) · spec-giao-dien-hs.md (Thùy chốt 28/09/2026).
 // Thay Home v4 (pastel + nhân vật + khẩu hiệu + màu gán theo giới tính — HS chê "trẻ con"). Bố cục 1 cho mọi skin:
-//   đầu trang (avatar · tên · nút HÌNH NỀN · hòm thư · ⋯) → VIỆC TIẾP THEO → ≤2 widget (đếm ngược kỳ thi · Elo môn)
+//   đầu trang (avatar · tên · nút HÌNH NỀN · hòm thư · ⋯) → VIỆC TIẾP THEO → widget đếm ngược kỳ thi (Elo bỏ khỏi Home — Thùy 29/09)
 //   → banner kiểm tra lại → lưới ô chức năng (danh sách ô do HocSinhApp truyền, giữ nguyên chức năng từng khối).
 // Skin: CHỈ đọc biến CSS `--sk-*` từ skin/registry.ts — không `if (skin === …)` ở đây.
 // Nút "Hình nền" mở tấm chọn (skin · sáng/tối · hình nền), Home phía sau đổi ngay để em nhìn thật.
@@ -207,7 +207,7 @@ function NutRetest({ p, skin, to }: { p: HomeProps; skin: Skin; to?: boolean }) 
 
 const tomTat = (p: HomeProps) => [
   ...(p.data?.thi ?? []).slice(0, 1).map((t) => ({ nhan: t.ten, so: String(t.con_ngay), phu: t.con_ngay === 0 ? 'Hôm nay thi!' : `ngày nữa · ${ddmmVN(t.ngay)}` })),
-  ...(p.data?.elo ?? []).map((e) => ({ nhan: `Elo ${e.mon}`, so: String(e.elo), phu: e.hang && e.so_hs ? `Hạng ${e.hang}/${e.so_hs} lớp` : 'Chưa xếp hạng lớp' })),
+  // Thùy 29/09: KHÔNG hiện Elo ở màn chính (fn_hs_home_912 vẫn trả elo — chỗ khác dùng được).
 ].slice(0, 2)
 
 // Lời nhân vật nói (bong bóng thoại) — suy từ đúng "việc tiếp theo" đang hiện, không bịa số.

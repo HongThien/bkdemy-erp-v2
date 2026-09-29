@@ -31349,3 +31349,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Nhân vật chọn theo `gioi_tinh` (hoSoCuaToi — tải cho mọi HS). Xem mẫu: hs.html?xem=gami&man=home&tt=1..3.
 - Soi 1440×900 · 1180×820 · 375×812 (điện thoại không đổi), 0 lỗi console. tsc sạch · check:style-hs ✔.
 - Chưa làm: bản DỌC có nhân vật như ảnh #11 hàng dưới (nhân vật giữa + bong bóng + lưới 4 cột nhỏ) — chờ Thùy xem bản PC trước.
+
+### 29/09 (14) — Bỏ Elo khỏi màn chính HS (Thùy)
+- HomeHS912 tomTat chỉ còn đếm ngược kỳ thi; fn_hs_home_912 vẫn trả elo (không đụng DB). Áp cả bố cục dọc lẫn ngang.
+- Soi iPad: ngang 1180×820 = bố cục PC, 4 cột ⇒ ô thứ 9 (Thế giới BK) rớt hàng 3 phải cuộn · dọc 820×1180 = bố cục điện thoại kéo rộng
+  3 cột, KHÔNG nhân vật, nửa dưới trống ⇒ xấu. Chờ Thùy chốt hướng làm bản dọc có nhân vật (#11 hàng dưới).
