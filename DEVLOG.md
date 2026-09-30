@@ -32374,3 +32374,22 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Phát hiện phụ:** thư mục `NongTrai` chính đang đứng ở nhánh `nhip-ngay` (bố cục gọn kiểu Nông trại vui vẻ), không phải `main`.
   - Khi gộp đồ hoạ nên gộp vào `nhip-ngay`, không phải `main`.
   - `dohoa.js` là file riêng; phần móc vào `scene.js`/`models.js` chỉ vài chục dòng. Nhưng `scene.js` bên `nhip-ngay` đã viết lại nhiều ⇒ phải chuyển tay, không merge thẳng.
+
+## 2026-09-30 — Nghiên cứu MÔN TIẾNG ANH (chưa build) → `nghien-cuu-mon-anh.md`
+
+- **Việc:** Thùy muốn xây bản đồ + kho + app cho Anh như Toán; GV Anh gửi zip bài tập Global Success 9 (12 unit, bản HS+GV, 32 file nghe) + PDF "Collo Check T1". Làm 3 luồng research web (đề vào 10 HN · khung chuẩn VN/quốc tế · hiện trạng code) + đọc toàn bộ tài liệu.
+- **Sự thật chính:**
+  - Đề Anh vào 10 HN = 40 câu trắc nghiệm / 60 phút, **không nghe, không tự luận**, 12 dạng cố định; 2026 giữ nguyên 2025; **2027 chưa công bố môn thứ 3**.
+  - SGK thống nhất toàn quốc từ 2026–27 = Kết nối tri thức (QĐ 3588/QĐ-BGDĐT 26/12/2025); dòng Anh = Global Success, đúng bộ GV gửi.
+- **Tài liệu GV:** khoảng 1.800 câu trắc nghiệm (đếm thô), 472 từ + 127 cụm, khớp 11/12 dạng đề HN.
+  - Đáp án nằm trong **định dạng Word** (tô màu vàng/xanh ngọc tuỳ unit; câu phát âm thì phần gạch chân là đề) ⇒ phải đọc thẳng .docx, không qua PDF.
+  - PDF Collo Check chỉ có ảnh, không có lớp chữ.
+  - Lướt Unit 1 thấy **4 câu hỏng**: A=B=C trùng nhau; 2 phương án cùng "to build"; 2 câu có nhiều đáp án đúng.
+- **Code:** môn Anh = 0. Dispatch "không phải KHTN thì là Toán" ở ~15 hàm SQL + registry TS ⇒ thêm Anh sẽ lặng lẽ rơi vào bảng `dai_*`. Nhãn môn lệch `'Tiếng Anh'`/`'Anh'` ở 6 file.
+- **Đề xuất CTO (chờ CEO):**
+  - KP Anh = điểm ngôn ngữ/kỹ năng (6 nhánh), **dạng đề = thuộc tính câu**, không phải KP.
+  - Mỗi câu 1 KP chính ⇒ giữ nguyên engine (HS × KP).
+  - Ngữ liệu chung (testlet) là thực thể mới; từ vựng từng từ + ôn giãn cách để sau.
+  - Trạm quan trọng nhất = kiểm "tìm đáp án đúng thứ 2".
+  - P0 = gom registry môn trước.
+- **Chờ CEO (§8):** đích đợt 1 (khối 9 thường?), GV Anh nào làm chủ học thuật, chốt nguyên tắc KP, nghe để sau?
