@@ -32842,3 +32842,25 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Nguyên liệu Nông Trại dùng để chế đồ bắt quái / đánh boss.
 
 **Còn treo:** 4 câu ở spec §9 — nhịp chơi · quái sang giúp Nông Trại · nhân vật chung BK Hero hay riêng · tên.
+
+## 2026-09-30 (tối, tiếp) — Game bắt quái: CEO chốt "bán luôn hay đầu tư" ngang giá trị, khác rủi ro (Thùy: "nếu là cả 2 thì giá trị phải như nhau… bán luôn được 3 xu, làm bóng bắt quái thì phần thưởng 4–5 xu, nhưng có xác suất hụt nên phải cân nhắc… giống ngoài đời đầu tư thì có thể ăn có thể xịt")
+
+**Sai / sửa:**
+- T đề xuất 2 điều, CEO bác cả hai:
+  - "đồ cơ bản từ vùng hoang, nông sản chỉ cho đồ xịn", để HS khỏi phải chọn giữa bán và bắt quái;
+  - "game bắt quái không trả xu, xu chỉ ra ở chợ Nông Trại".
+- CEO: **cái lựa chọn đó chính là bài học.**
+- Sửa `spec-game-bat-quai.md`:
+  - §1 thêm chốt #5, #6.
+  - §5.1: xu ra ở 2 cửa, **đề xuất chung 1 trần tháng**.
+  - §5.2 viết lại:
+    - EV = p × R ngang V với HS bình thường; p phụ thuộc chủ yếu kỹ năng; hiện rõ tỉ lệ; trần ném/ngày;
+    - cầu chỉ làm từ nông sản, không có cầu miễn phí (có cầu miễn phí thì thành vòi xu);
+    - ranh giới với loot box (tỉ lệ ẩn + may rủi thuần).
+  - §6: ném cầu = 1 RPC `fn_bq_nem`, p trần 0,9 nên gian lận có giới hạn.
+  - §9 thêm câu 5: trần chung hay riêng.
+
+**Nông Trại (luồng nền):** NongTrai `6958b9b` (nhánh `nhip-ngay`) — PWA + thanh "Việc hôm nay".
+- Test engine: "Tất cả luật đúng", có 12 test mới cho `viecHom`.
+- Ảnh chụp cho thấy thanh "Xong" trong khi dòng gợi ý còn mời "3 lượt hái" ⇒ t cho máy chơi thử 60 ngày, so 2 chỗ đếm: **0 lần lệch** trên 216 lần có ô hái được. Nhiều khả năng ảnh chụp lúc vòng vẽ đứng (Browser pane ẩn), không phải lỗi luật.
+- Bản lưu localStorage của Thùy đã được cất và khôi phục đúng.

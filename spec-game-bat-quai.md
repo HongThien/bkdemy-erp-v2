@@ -14,6 +14,8 @@
 | 2 | Quan hệ với Nông Trại | **2 game ĐỘC LẬP, CÙNG VŨ TRỤ**, dùng chung tài nguyên, game này nuôi game kia |
 | 3 | Cách nối | Ví dụ CEO: **nguyên liệu Nông Trại → chế đồ để bắt quái / đánh boss**. "Không thiếu cách để liên kết" |
 | 4 | Nông Trại lấy gì từ Zoo Pet | CTO tự chọn và tự làm (§8) |
+| 5 | Bán hay đem đi bắt quái | **Hai đường phải ngang giá trị, khác rủi ro.** Ví dụ CEO: nông sản bán luôn được 3 xu; làm cầu đi bắt quái thì bắt được thưởng 4–5 xu, nhưng có thể hụt ⇒ HS phải cân nhắc. *"Giống ngoài đời đầu tư thì có thể ăn có thể xịt."* (§5.2) |
+| 6 | Game bắt quái có trả xu không | **Có** — thưởng khi bắt được (hệ quả của #5). Bỏ đề xuất cũ "xu chỉ ra ở chợ Nông Trại" |
 
 ## 2. Đứng trên vai ai (R7)
 
@@ -59,7 +61,8 @@ HS 10–15 tuổi, chơi ở nhà, trên iPhone/iPad.
 
 - Đánh cho yếu → ném cầu → cầu lắc 1–3 lần → **bắt được** hoặc **sổng**.
 - Tỉ lệ bắt phụ thuộc: máu còn lại · loại cầu · cấp quái so với cấp HS · đánh từ sau lưng · quái đang choáng.
-  - Máu càng thấp càng dễ bắt. Không bao giờ chắc 100% (trừ cầu hiếm) để giữ hồi hộp.
+  - Máu càng thấp càng dễ bắt. Tối đa 90%, không bao giờ chắc ăn — vừa giữ hồi hộp, vừa là trần chặn gian lận (§6).
+  - Tỉ lệ hiện rõ trên màn hình trước khi ném (§5.2).
 - **Quái bị hạ (hết máu) thì không bắt được, chỉ rơi đồ** ⇒ HS phải canh sức đánh. Đây là kỹ năng thật, có tính toán.
 - **Sổ quái:** ghi loài đã thấy / đã bắt.
   - Bắt được 1 loài lần đầu: thưởng lớn.
@@ -105,24 +108,41 @@ HS 10–15 tuổi, chơi ở nhà, trên iPhone/iPad.
    - Mỗi món có mã ổn định và ghi game gốc.
    - Cả hai game chỉ đọc/ghi kho qua hàm `fn_*`. Không game nào giữ một bản kho riêng.
    - Đây là dữ liệu không-học-tập nên không mang nhãn môn (CLAUDE.md §1.6), giống Nông Trại.
-2. **Xu BK chỉ ra ở MỘT cửa là chợ Nông Trại** (có trần 30 xu/tháng, mùa đầu 45).
-   - Game bắt quái **không trả xu, không có chợ đổi đồ ra xu** ⇒ không mở vòi tiền mới.
-   - Nhờ vậy trần tháng của Nông Trại vẫn chặn được tổng xu BK phải chi, dù 2 game đổi đồ qua lại thế nào.
+2. **Xu ra ở 2 cửa (chợ Nông Trại + thưởng bắt quái) nhưng chung MỘT trần tháng** (đề xuất: giữ trần hiện hành 30 xu/tháng, mùa đầu 45 — chờ §9 câu 5).
+   - Trần chung thì game bắt quái chỉ **đổi cách** HS kiếm xu (an toàn hay mạo hiểm), không làm BK tốn gấp đôi.
+   - Tách 2 trần riêng thì tổng chi của BK cộng dồn — đó là quyết định ngân sách của CEO, không phải chuyện kỹ thuật.
 3. **Mỗi luồng đổi chéo có trần mỗi ngày** và có ghi vết.
 
-### 5.2 Nông Trại → game bắt quái
+### 5.2 Nông Trại → game bắt quái: BÁN LUÔN hay ĐẦU TƯ (CEO chốt 30/09)
 
-Nông sản đem dùng bên này thì không bán ra xu nữa ⇒ đây là **cống** (sink) của Nông Trại, BK đỡ tốn.
+**Lựa chọn "bán hay đem đi bắt quái" chính là bài học, không phải vấn đề cần né.** Hai đường ngang giá trị, khác rủi ro:
+
+| Đường | Được gì | Rủi ro |
+|---|---|---|
+| **Bán luôn** ở chợ Nông Trại | V (vd 3 xu) — chắc chắn | Không |
+| **Làm cầu đi bắt quái** | Bắt được: R (vd 4–5 xu, là 1,3–1,7 lần V) + con quái. Hụt: mất cầu | Có — **"có thể ăn có thể xịt"** |
+
+- Tên lý thuyết (R7): **giá trị kỳ vọng** (EV = p × R) và **đánh đổi rủi ro – lợi nhuận** (*risk–return tradeoff*). HS lớp 6–9 tính được: "tỉ lệ 70%, thưởng 4,5 xu ⇒ trung bình 3,15 xu, nhỉnh hơn bán 3 xu một chút nhưng có thể trắng tay".
+- **Cân số (TỰ ĐẶT):** HS chơi bình thường có p ≈ 0,6–0,75 ⇒ EV ≈ V (ngang, đúng ý CEO).
+- **p phụ thuộc chủ yếu vào KỸ NĂNG** (§4.2): đánh cho quái còn ít máu, lẻn sau lưng, quái đang choáng.
+  - Canh giỏi: p ≈ 0,9 ⇒ lời hơn bán khoảng ⅓.
+  - Ném liều lúc quái còn đầy máu: p ≈ 0,2 ⇒ lỗ.
+  - Đầu tư có hiểu biết thì lời, liều thì lỗ — đúng bài học CEO muốn.
+- **Quái hiếm = lời lớn, rủi ro lớn.** Cần cầu xịn (nhiều nông sản), p thấp, R rất cao. HS tự chọn: nhiều lần ăn chắc, hay một lần đánh lớn.
+- **Hiện rõ tỉ lệ bắt (%) trước khi ném** — Palworld cũng hiện. HS có đủ số để tự tính, giống Nông Trại hiện rõ sản lượng.
+- **Ranh giới với cờ bạc:**
+  - Tỉ lệ ẩn + may rủi thuần + thứ đổi được ra tiền thật = cơ chế hộp quà may mắn (*loot box*), mà Bỉ và Hà Lan đã cấm.
+  - Ở đây khác: **tỉ lệ công khai, kỹ năng quyết định phần lớn**, và có trần số lần ném mỗi ngày (TỰ ĐẶT) để HS không "tất tay".
+- **Cầu chỉ làm từ nông sản, không có cầu miễn phí.** Có cầu miễn phí mà bắt được vẫn có thưởng xu thì thành vòi xu không tốn gì.
+- Thưởng R nên mang hình thức **bảng truy nã** (Zoo Pet có sẵn ý này): làng treo thưởng bắt con X, đổi mỗi ngày. Thưởng trả bằng EXP (100 EXP = 1 xu) như chợ Nông Trại.
+
+Nông sản còn dùng vào việc khác (thưởng không ra xu, chỉ để chơi):
 
 | Nông sản | Dùng ở game bắt quái |
 |---|---|
 | Lúa mì, ngô | Thức ăn cho quái ở trại (quái no mới làm việc) |
 | Trứng, sữa | Thuốc hồi máu, bánh tăng sức trước khi đánh boss |
 | Bí ngô, dâu tây, hướng dương | Mồi dụ quái hiếm / boss, mỗi loài thích 1 món |
-| Cà rốt, khoai tây, cà chua | Nguyên liệu cầu bắt bậc cao (cầu cơ bản làm từ đồ vùng hoang) |
-
-- **Canh chừng:** nếu cái gì cũng cần nông sản thì game bắt quái bị Nông Trại chặn đường, và HS luôn phải chọn giữa "bán lấy xu" với "đem đi bắt quái".
-  ⇒ **Đồ cơ bản làm từ nguyên liệu vùng hoang. Nông sản chỉ dùng cho đồ XỊN** (cầu tốt, mồi quái hiếm, bánh đánh boss).
 
 ### 5.3 Game bắt quái → Nông Trại
 
@@ -136,7 +156,8 @@ Nông sản đem dùng bên này thì không bán ra xu nữa ⇒ đây là **c�
 ### 5.4 Học nằm ở đâu
 
 - Nông Trại đã nối với việc học qua điểm chăm chỉ. Game bắt quái nhận phần học **gián tiếp**:
-  học → điểm chăm chỉ → bịch hạt → nông sản → cầu xịn / mồi / thức ăn. Pha đầu không cần luật học riêng.
+  học → điểm chăm chỉ → bịch hạt → nông sản → cầu / mồi / thức ăn. Pha đầu không cần luật học riêng.
+- Bản thân game dạy thêm một bài toán kinh tế: **giá trị kỳ vọng và rủi ro** (§5.2). Nó nối tiếp bài "lãi/ngày, tích luỹ" của Nông Trại.
 - Nếu CEO muốn nối trực tiếp: **lượt ra vùng hoang hoặc lượt đánh boss lớp mỗi ngày** lấy từ điểm chăm chỉ (§9 câu 1).
 
 ## 6. Kỹ thuật (CTO tự quyết — R2)
@@ -151,6 +172,12 @@ Nông sản đem dùng bên này thì không bán ra xu nữa ⇒ đây là **c�
   - máy chủ quyết kết quả bắt, đồ rơi, cấp, kho chung;
   - có trần mỗi ngày + kiểm hợp lý (vd boss 2.600 máu không thể chết trong 3 giây).
   - Mẫu này có tên là *server-authoritative economy*. **Zoo Pet làm ngược lại** (máy HS gửi nguyên cục save lên) ⇒ HS mở console sửa số là giàu. Không chép.
+  - **Ném cầu = 1 lệnh gọi máy chủ** (`fn_bq_nem`, 1 transaction):
+    1. trừ cầu;
+    2. tính p từ thông số máy HS báo lên (máu quái còn lại, sau lưng, choáng), có kiểm hợp lý;
+    3. gieo kết quả;
+    4. ghi quái vào sổ + ghi thưởng vào ví.
+  - Máy HS có nói dối thì p cũng chỉ lên tới trần 0,9 ⇒ gian lận tối đa lời thêm khoảng ⅓, và vẫn bị trần tháng chặn. **Thiết kế để cái giá của gian lận có giới hạn**, không đi đuổi bắt từng kiểu hack.
 - **Ngẫu nhiên suy từ hàm băm cố định** (như Nông Trại) để máy chủ tính lại được y hệt. Không đẻ dòng "chờ xử lý".
 - **Online thời gian thực** (thấy nhau, đánh chung) để pha sau. Pha đầu: chơi một mình + boss lớp không đồng bộ.
 
@@ -165,7 +192,7 @@ Nông sản đem dùng bên này thì không bán ra xu nữa ⇒ đây là **c�
 
 Mốc tham chiếu khối lượng: Zoo Pet có 59 quái, 150 món đồ, 9 hành tinh. Đó là tầm của P3, không phải P0.
 
-## 8. Nông Trại lấy gì từ Zoo Pet (CTO tự chọn — làm 30/09)
+## 8. Nông Trại lấy gì từ Zoo Pet (CTO tự chọn — đã làm 30/09, NongTrai `6958b9b` nhánh `nhip-ngay`)
 
 - **Lấy:**
   - **Cài như app (PWA):** có icon trên màn hình chính, mở toàn màn hình. Với nhịp "vào mỗi ngày", icon chính là **lời nhắc** — theo mô hình hành vi của BJ Fogg, không có lời nhắc thì không có hành vi.
@@ -193,3 +220,6 @@ Mốc tham chiếu khối lượng: Zoo Pet có 59 quái, 150 món đồ, 9 hàn
 3. **Nhân vật:** dùng chung nhân vật BK Hero (01/09, style KayKit) hay nhân vật chibi riêng cùng style Nông Trại?
    - T đề xuất 1 vũ trụ, 1 nhân vật. Muốn vậy thì phải chọn 1 style cho cả vũ trụ.
 4. **Tên thế giới / tên game** — không gấp.
+5. **Trần xu (câu mới 30/09, sau khi CEO chốt game bắt quái trả xu):** thưởng bắt quái có tính chung vào trần tháng hiện hành của Nông Trại (30 xu, mùa đầu 45) không?
+   - T đề xuất **chung 1 trần**: chơi giỏi thì tới trần nhanh hơn, còn BK không tốn gấp đôi.
+   - Nếu CEO muốn game bắt quái có ngân sách riêng thì cho t con số trần riêng.
