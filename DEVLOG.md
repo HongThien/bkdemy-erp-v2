@@ -32406,3 +32406,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - `test-engine` 3/3 lần in "Tất cả luật đúng" (đã đọc dòng cuối — test vẫn có thể chập chờn vì rơi cưa, xem mục đính chính).
   - Ảnh: `NongTrai-dohoa/.snap/ga_bo_suu_tap.jpg`, `bo_bo_suu_tap.jpg`, `bo_chuong.jpg`.
 - **Chưa hỏi lại:** CEO chưa trả lời HS có chó bằng cách nào (chọn 1 / sưu tầm / mua). Heo, cừu vẫn 1 giống.
+
+## 2026-09-30 (15h) — App TA: ô "Bổ trợ đuổi" đọc CA từ DB (Khánh Chi 10B1, TA Ngô Ngọc Huyền)
+
+- **Sự cố:** ca đuổi 30/09 15:00 Khánh Chi (case can_duoi, 7 dạng Đại) — Thùy mở app TA của Huyền: KHÔNG có dòng 30/09 trong ô Bổ trợ đuổi.
+  Giả lập SQL phiên Huyền: fn_viec_buoi_thuong 74 việc 56ms, la_thanh_vien true, dữ liệu đuổi đúng; bundle prod = bản mới nhất (có fn_bu_ca_cua_toi).
+  ⇒ cùng bệnh ca bù Cường 29/09: đường getMyTasks (query thẳng buoi_hoc qua PostgREST) rơi ca trên máy thật, SQL không tái hiện. App HS (giả lập
+  hs0450): lịch đuổi hôm nay có, "Học từ đầu" mở, "Vào ca" chờ TA điểm danh có mặt (đúng thiết kế).
+- **Sửa:** mig 202609301503 `fn_duoi_ca_cua_toi` (khuôn fn_bu_ca_cua_toi); ô Đuổi dùng chung `BoxBu` (loai='bo_tro_duoi' ⇒ mở DuoiCaTA). Giả lập
+  Huyền: 4 ca (30/09 08:30 rỗng · 30/09 15:00 Khánh Chi · 01/10 15:00 Khánh Chi · 03/10 09:00 Vũ Trung Hiếu). getMyTasks lỗi ⇒ BANNER đỏ
+  "Lỗi tải: …" thay vì `.catch(() => [])` nuốt im — lần sau có lỗi thật sẽ thấy nguyên văn để tìm gốc.
+- **Chưa biết gốc** vì sao getMyTasks rơi ca bù/đuổi trên máy TA. Banner mới là để bắt nó.

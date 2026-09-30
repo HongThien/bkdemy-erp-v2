@@ -247,6 +247,13 @@ export async function caBuCuaToi(): Promise<CaBu[]> {
   return (data as CaBu[]) ?? []
 }
 
+// CA ĐUỔI của tôi (Thùy 30/09, mig 202609301503) — ô "Bổ trợ đuổi" app TA, cùng khuôn CA BÙ (et_dong_at không có).
+export async function caDuoiCuaToi(): Promise<CaBu[]> {
+  const { data, error } = await supabase.rpc('fn_duoi_ca_cua_toi')
+  if (error) throw error
+  return (data as CaBu[]) ?? []
+}
+
 // ── BTVN BÙ (Thùy 29/09, mig 202609291823): dữ liệu ở CA BÙ, người chấm = TA LỚP của em. Việc = em có mặt ca bù + buổi mẹ có BTVN.
 export type BtvnBu = {
   bhh_id: string; buoi_bu_id: string; ngay_bu: string; buoi_me_id: string; ngay_me: string; lop_id: string; ten_lop: string; mon: string
