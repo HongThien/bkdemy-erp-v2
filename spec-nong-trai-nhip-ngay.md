@@ -97,7 +97,9 @@ xu ví ──(mua hạt/đồ, trần 3 xu/tuần)──┐
 
 ### 5.1 Ô ruộng
 
-- **Bắt đầu 3 ô**, mở dần tới 12 ô. Mỗi ô cần **đủ cấp + trả điểm chăm chỉ** (CEO: phải dùng điểm để mở dần).
+- **(CEO 30/09) Bắt đầu 4 ô.** HS chăm đủ 12 ô sau khoảng 1 tháng. Mở ô 5–12 ở cấp **2, 3, 4, 5, 6, 7, 9, 11** (điểm 10 → 60). Bảng cũ bên dưới đã bỏ.
+- **(CEO 30/09) 1 ô = 1 hạt. Mỗi ngày mua tối đa số hạt bằng số ô**, tính cả trả xu lẫn trả điểm. Đây là cái chặn thay cho trần 3 xu/tuần (đã bỏ).
+- ~~Bắt đầu 3 ô~~, mở dần tới 12 ô. Mỗi ô cần **đủ cấp + trả điểm chăm chỉ** (CEO: phải dùng điểm để mở dần).
 
 | Ô thứ | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
 |---|---|---|---|---|---|---|---|---|---|

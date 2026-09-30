@@ -32555,3 +32555,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - trại cấp 30 (48 ô): 1,47 triệu tam giác/khung so với 1,34 triệu trước (+10%); nhịp ngày chỉ 12 ô;
   - `test-engine` 3/3 lần "Tất cả luật đúng"; không lỗi console ở cả bản mới và `?dohoa=cu`.
   - Ảnh: `NongTrai-dohoa/.snap/cay_moi_1..4.jpg`, `cay_trang_thai.jpg`, `cay_game_ruong.jpg`.
+- **30/09 (tiếp 2) — ô ruộng và giới hạn mua hạt:**
+  - Thùy: "mỗi lần trồng 1 hạt thôi"; bắt đầu **4 ô**, khoảng **1 tháng** mới đủ 12 ô; ban đầu mỗi ngày chỉ mua được 2–4 hạt, đủ trồng ở đấy ("ít thì trân trọng, hiểu sâu hơn").
+  - Làm:
+    - `oDau` 4; mở ô 5–12 ở cấp 2, 3, 4, 5, 6, 7, 9, 11 (bot chăm đủ 12 ô ngày 29).
+    - **Mỗi ngày mua tối đa số hạt = số ô**, tính cả trả xu lẫn trả điểm.
+    - Bỏ trần 3 xu/tuần (cờ `tranXuTuan: null`).
+  - Bot: chăm học 44–45 rồi 30 xu/tháng · không học (4 ô) 21–26 rồi 10 · lười 4–8.
