@@ -32562,3 +32562,19 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
     - **Mỗi ngày mua tối đa số hạt = số ô**, tính cả trả xu lẫn trả điểm.
     - Bỏ trần 3 xu/tuần (cờ `tranXuTuan: null`).
   - Bot: chăm học 44–45 rồi 30 xu/tháng · không học (4 ô) 21–26 rồi 10 · lười 4–8.
+- **30/09 (tiếp 3) — bịch hạt giống + bảng giá lần 3 + 10 kịch bản HS** (NongTrai `nhip-ngay` 4a5eb25):
+  - Thùy:
+    - 1 ô = 1 **bịch** hạt giống, đừng tính theo hạt;
+    - bịch đắt thì cho nhiều, nhưng lãi chia theo ngày gần như nhau;
+    - đường xu "bỏ ~5 xu, thu ~10 xu";
+    - đường điểm ">100 lượt trồng ⇒ 20–30 xu";
+    - cần ~10 kịch bản HS để duyệt, rồi mới giả lập hàng nghìn ca.
+  - Làm:
+    - Bịch 1 / 2 / 3 ngày = 10 / 20 / 30 EXP hoặc 5 / 10 / 15 điểm. Tưới đủ thu ~21 / 40 / 60 EXP ⇒ lãi ~10 EXP/ô/ngày, cây nào cũng gần bằng nhau.
+    - Phân 10 EXP. Gà 30, bò 80.
+    - **Trần chi 5 xu/tháng tính MỌI khoản mua.** Bản đầu chỉ đếm xu chẵn đổi ra ⇒ tiền lẻ bán hàng quay vòng mua mãi, bot "không học" lên 20–33 xu/tháng.
+  - `tools/kich-ban.mjs`: 10 kiểu HS × 90 ngày.
+    - Chăm mẫu mực / tính toán giỏi: chạm trần 45 / 30.
+    - Chỉ chơi không học: +16 / 13 / 11 (gồm hái trộm + gà).
+    - Học vừa: 20 / 23 / 17 · cuối tuần: 9 / 13 / 8.
+    - Ước ~1–2 phút/ngày chơi. Mục tiêu 10–15 phút ⇒ cần thêm việc.
