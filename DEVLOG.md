@@ -32763,3 +32763,38 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Nếu muốn em chỉ 1 lượt/ngày cũng được 30 thì phải tăng giá trị mỗi điểm thêm ~30%. Khi đó em 2 lượt chạm trần 45 và BK chi tăng thêm.
 - Em học 2–3 lượt chạm trần 45 ở tháng 1–2 rồi 30. Có muốn trần tháng 2 thấp hơn (vd 40) cho "giảm dần" đều hơn không?
 - Thời gian chơi ước khoảng 1,4 phút/ngày, vẫn xa mốc 10–15 phút.
+
+## 2026-09-30 (đêm, tiếp) — Nông Trại đồ hoạ: CHÓ = vật nuôi chính — khung xương riêng + 16 động tác + tự chơi + vuốt ve (Thùy: "làm animation con chó, vật nuôi chính thức và quan trọng nhất")
+
+- **Vì sao phải làm khung riêng:** chó cũ dùng chung khung với bò/heo/cừu (thân · đầu · 4 chân · đuôi xoay tại chỗ), chỉ có 3 kiểu đi / đứng / cúi ăn. Không ngồi, nằm, lăn, sủa hay chớp mắt được.
+- **Làm** (`dohoa.js` mục 4j, commit a32c550 nhánh `do-hoa-thu`):
+  - Khung: gốc → thân (tâm quay = khớp hông ⇒ ngồi/nằm/lăn quanh hông) → 4 chân · đuôi · đầu (→ 2 tai · mắt · hàm).
+    - Tai, mắt, hàm tách khỏi đầu: `dungCho().dauVe(b, {rieng})` + `taiVe/taiGoc/matVe/hamVe`. Mõm có lòng miệng tối, lộ ra khi há.
+    - Bản cũ `vatMoi` (icon, trang so sánh) vẫn dựng đủ như trước.
+  - **16 động tác** (`DT_CHO`): đứng chơi · đi dạo · chạy · ngồi · nằm dài · ngủ (Zzz) · nhảy mừng · đuổi đuôi (xong thì lảo đảo) · sủa (chữ "Gâu!") · gãi ngứa · đánh hơi · ăn (hiện bát) · đào đất (bụi bay + hố) · lăn ngửa bụng · bắt tay · nghiêng đầu.
+    - Mỗi động tác = hàm tư thế theo thời gian.
+    - Đổi động tác thì **trộn 2 tư thế trong 0,35 s**, cả 2 vẫn chạy nhịp riêng ⇒ không giật. Làm mượt từng tham số thì sẽ làm tắt nhịp vẫy đuôi/bước chân.
+  - **Góc ngồi giải theo dáng từng giống** (`gocNgoi`): ngả thân tới khi mông chạm đất mà vai vẫn vừa tầm chân trước. Shiba 35°, Corgi chân ngắn chỉ ~12° (đúng dáng corgi ngồi).
+  - Tự nhiên: chớp mắt ngẫu nhiên 2–5,5 s, thở, liếc quanh. Bắt tay / gãi ngứa chọn bên ngẫu nhiên.
+  - **Não tự chơi**: chọn động tác theo trọng số; đi/chạy/đánh hơi tới điểm ngẫu nhiên trong vùng.
+  - **Vuốt ve** (`c.vuot`): quay mặt ra người chơi → nghiêng đầu → nhảy mừng (♥) → 1 trò, lần sau trò khác (bắt tay → lăn → đuổi đuôi → sủa).
+  - Chữ nổi (Gâu! · Zzz · ♥) là Sprite vẽ canvas, không cần DOM ⇒ dùng được cả trong game lẫn trang riêng.
+  - Game:
+    - Chó giữ trại dùng khung mới (`?cho=<giống>`), chạm vào chó = vuốt ve.
+    - Tiếng sủa tổng hợp `NT_AM.on('gau')` **chỉ kêu khi đang được vuốt ve** (8 s), để chó tự sủa không làm ồn lớp học.
+  - **Trang xem thử** `cho-demo.html`, 2 chế độ:
+    - Bộ động tác: 16 con, mỗi con lặp 1 động tác, đổi được 14 giống.
+    - Tự chơi: 3 con tự chơi, chạm để vuốt ve, có nút ra lệnh từng động tác.
+- **Sai rồi sửa:**
+  1. Ngồi lúc đầu dùng công thức đơn giản ⇒ chỉ ngả 21°, nhìn như đứng khom ⇒ giải theo hình elip thân.
+  2. Ngủ cúi đầu ⇒ từ camera game chỉ thấy gáy ⇒ đổi thành má kê lên chân, mặt nghiêng lên.
+  3. "Ăn" không có gì để hiểu là ăn ⇒ hiện bát cơm đỏ.
+  4. Bắt tay / gãi luôn dùng chân phía xa ⇒ chọn bên ngẫu nhiên.
+- **Kiểm:**
+  - 14 giống × 16 động tác + 30 s tự chơi mỗi giống: không lỗi.
+  - Chuỗi vuốt ve 4 lần ra đúng 4 trò.
+  - Chạm chó trong game: quay mặt ra + ♥.
+  - Không lỗi console.
+  - `test-engine`: 2/3 "Tất cả luật đúng"; 1 lần "2 lỗi" là bài chập chờn đã biết, `engine`/`data` không đổi.
+  - Ảnh: `NongTrai-dohoa/.snap/cho_dt_shiba.jpg`, `cho_dt_giong.jpg`.
+- **Lưu ý đo:** Browser pane bị ẩn thì `requestAnimationFrame` dừng ⇒ muốn kiểm chuỗi động tác phải tự gọi `capNhat` theo bước; chụp liên tiếp bằng setTimeout sẽ thấy "đứng im".
