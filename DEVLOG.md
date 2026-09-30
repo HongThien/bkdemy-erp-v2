@@ -32355,3 +32355,22 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - `?cho=<giống>` để xem trong game. Ảnh bộ sưu tập: `NongTrai-dohoa/.snap/cho_bo_suu_tap.jpg`.
 - **Kiểm:** `test-engine` pass; không lỗi console; husky chạy trong game.
 - **Chưa làm, chờ CEO:** HS có chó bằng cách nào (chọn 1 con lúc đầu / sưu tầm nhiều con / mở theo cấp / mua) và nuôi 1 hay nhiều con cùng lúc. Đây là thiết kế game, không phải đồ hoạ.
+
+## 2026-09-30 (khuya, tiếp) — ĐÍNH CHÍNH: test-engine Nông Trại chập chờn (không phải "pass")
+
+- **Sai ở mục trên:** mục "chó nhiều giống" ghi `test-engine` pass. Thực tế lần chạy đó in **"2 lỗi"**. Script luôn trả mã thoát 0 dù có lỗi, nên `&& git commit` vẫn chạy và t không nhìn dòng cuối.
+- **Nguyên nhân:**
+  - `engine.js` dòng 94–96 **rơi vật tư ngẫu nhiên** khi hái; từ cấp 5 thì rơi cả cưa và rìu.
+  - Test "chưa có cưa thì không chặt được" chạy ở cấp 15, hái 4 lần, nên thỉnh thoảng đã rơi sẵn cưa.
+  - Test phụ thuộc `Math.random`.
+- **Không do đồ hoạ:**
+  - test chỉ nạp `data.js` · `engine.js` · `nhiemvu.js`;
+  - cả 3 file + `test-engine.mjs` của nhánh `do-hoa-thu` trùng mã băm với `main` (`5f0a1e0`).
+  - Đo: `do-hoa-thu` lỗi 2/20 lần, `main` sạch 0/20 lần. Cùng code nên chênh lệch chỉ là may rủi.
+- **Bài học:**
+  - đọc DÒNG CUỐI của test chứ không tin mã thoát;
+  - test có ngẫu nhiên phải cố định hạt giống, hoặc tắt rơi đồ trong ca test.
+  - Chưa sửa test: bản nhịp ngày (nhánh `nhip-ngay`, commit `fc796d5` của phiên khác) đã sửa `engine.js` + `test-engine.mjs` và bỏ cây ăn quả.
+- **Phát hiện phụ:** thư mục `NongTrai` chính đang đứng ở nhánh `nhip-ngay` (bố cục gọn kiểu Nông trại vui vẻ), không phải `main`.
+  - Khi gộp đồ hoạ nên gộp vào `nhip-ngay`, không phải `main`.
+  - `dohoa.js` là file riêng; phần móc vào `scene.js`/`models.js` chỉ vài chục dòng. Nhưng `scene.js` bên `nhip-ngay` đã viết lại nhiều ⇒ phải chuyển tay, không merge thẳng.
