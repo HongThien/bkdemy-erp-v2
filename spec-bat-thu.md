@@ -62,6 +62,32 @@
   - Có nút đổi tay.
 - Đo ở Browser pane: Đẹp ~75 FPS · ~100 lệnh vẽ · ~320k tam giác; Nhẹ 75 FPS · ~70 lệnh vẽ · ~190k. **Chưa đo trên iPad gen 7 thật.**
 
+### 3.0 Khu đấu boss (01/10)
+
+- **Vị trí:** góc tây bắc bản đồ, sàn đá tròn bán kính 13 m.
+  - Có vòng ký tự phát sáng, 8 cột (4 lửa, 4 pha lê) và hàng rào ma thuật.
+  - Bước vào thì: rào dựng lên, trời chuyển hoàng hôn đỏ tím, nhạc trống trận, boss gầm, hiện bảng tên lớn.
+- **Boss:** Bạo Chúa Lửa, cấp 12, máu ×4 (mô hình TẠM, chờ §4.1). Số liệu ở `BOSS` trong `du-lieu.ts`.
+- **4 đòn, luôn có vùng đỏ lan dần báo trước.** Sát thương cố định: né được là không mất máu.
+
+  | Đòn | Vùng báo | Sát thương |
+  |---|---|---|
+  | Cắn | Hình quạt | 26 |
+  | Dậm đất | Vòng tròn 7,5 m | 22 |
+  | Mưa thiên thạch | Rơi vào từng người + vài chỗ ngẫu nhiên | 18 |
+  | Phun lửa quét | Quạt rộng | 6/nhịp |
+
+- **Mốc máu:**
+  - Còn 50%: **nổi giận** (nhanh hơn, gấp đôi thiên thạch, nhạc dồn).
+  - Còn 15%: **kiệt sức 8 giây** = cửa sổ ném bóng. Tỉ lệ bắt khoảng 18% với thú cấp 6.
+- **Người chơi:** có máu 100; nút né lăn (💨 / Shift), bất tử 0,45 giây.
+- **Kết thúc:**
+  - Thua: hồi sinh ngoài rào, boss hồi đầy máu.
+  - Thắng: EXP ×5.
+  - Thu phục: boss vào đội, thu nhỏ còn ~2,4 m.
+  - Boss sinh lại sau 45 giây.
+- **Sẵn cho party (MMO):** thiên thạch đã nhắm từng người; máu boss nhân theo số người khi có máy chủ.
+
 ### 3.1 Đo đám đông (01/10, `?nguoi=100`, máy bàn ở nhà — CHƯA phải iPad)
 
 - 100 người chơi giả (mỗi người 1 thú đồng hành), mỗi máy thấy 10.

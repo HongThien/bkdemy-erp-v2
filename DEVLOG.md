@@ -32570,3 +32570,25 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Cách đo: `resize_window` giả kích thước, rồi tự gọi `GAME.vong(t)` 300 lần, mỗi lần `gl.finish()` và bấm giờ.
   - Lệnh chờ của pane tối đa 10 giây/lần; tải 100 mô hình cần ~20 giây.
 - Commit: BatThu `b461779`; spec §1 #14 + §3.1.
+
+## 2026-10-01 (trưa, máy nhà) — BẮT THÚ: khu đấu boss (Thùy: "làm khu đấu boss nào")
+
+- **Làm** (BatThu `9a54b05`; spec §3.0):
+  - Khu đấu sàn đá có ký tự phát sáng, cột lửa/pha lê, hàng rào ma thuật; trời đổi hoàng hôn, nhạc trống trận.
+  - Boss Bạo Chúa Lửa, mô hình TẠM Quaternius Dino chờ CEO chọn bộ boss, với 4 đòn đều có vùng đỏ báo trước:
+    cắn quạt · dậm đất · thiên thạch · phun lửa quét.
+  - Nổi giận ở 50%, kiệt sức 8 giây ở 15% để ném bóng.
+  - Người chơi có máu + né lăn bất tử. Đủ các nhánh thắng / thua / thu phục.
+- **Sai / sửa:**
+  1. Bộ phát nón three.quarks phun theo **+z**, không phải +y như t giả định từ đầu. Chiêu phun lửa / vòi rồng / gió tuyết cũ phun lệch; giấy màu bắn ngang.
+     Sửa: bỏ `rotateX`; giấy màu xoay bộ phát −90°.
+  2. Hàm PowerShell đặt tên `R` trùng alias `Invoke-History` ⇒ không thay được gì (file vẫn nguyên, may). Đổi tên `Thay`.
+  3. Ở bản Đẹp, quầng thiên thạch + loé + vòng xung kích chồng nhau ⇒ chói trắng cả màn; lửa phun thành trắng.
+     Sửa: giảm HDR/độ đục khi hệ số to.
+  4. Camera trận boss: cây ngoài rìa che; boss 4 m mất đầu.
+     Sửa: chúc cao thêm 0,2 rad, khung nhìn kéo 42% về phía boss.
+- **Kiểm:**
+  - Browser pane ẩn/bị che ⇒ trình duyệt không vẽ, `screenshot` quá giờ.
+    Cách mới: `vite.config.ts` thêm cổng `/_snap` + `window.chup(ten)` tự chụp canvas ra `.snap/`; tua bằng `GAME.vong(t)` theo lô 0,1 giây có nhường lượt (tua đồng bộ một mạch thì các `await` không chạy tiếp).
+  - Đã xem: vào trận, cắn, dậm, thiên thạch, phun, nổi giận, kiệt sức → bắt 18% (ép qua) → vào đội, thua → hồi sinh.
+  - `tsc` sạch, không lỗi console. Chưa chơi bằng tay ở tốc độ thật (pane bị che).
