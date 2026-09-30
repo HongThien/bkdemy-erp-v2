@@ -32527,3 +32527,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   7. 5 điểm HS hay sai nhất.
   8. Tài liệu có đáp án gửi thêm.
 - Kèm đề nghị GV: giữ file Word, tô đáp án 1 màu, giữ gạch chân câu phát âm.
+- **30/09 (tiếp) — bảng giá mới:**
+  - Thùy: "cây bằng xu phải có lãi, cái chặn là giới hạn số lần mua"; "phân bón tác dụng cao mà bán rẻ"; tỉ giá điểm "trông vẫn ổn".
+  - Đặt lại: gốc ≈ tiền hạt (hoà vốn), tưới đủ ×1,5 (lãi ~50%), 1 điểm ≈ 4,5 EXP; phân 3 → 8 EXP, bán lại 4.
+  - Bot: chăm học chạm trần 45/30 · không học (3 ô) 9–20 xu/tháng · lười 3–5. NongTrai `nhip-ngay` commit mới nhất.

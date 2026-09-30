@@ -116,7 +116,12 @@ xu ví ──(mua hạt/đồ, trần 3 xu/tuần)──┐
   - **Sâu:** mỗi ngày cây đang lớn có khoảng 25% bị sâu. Bắt thì hết. Sâu còn lại lúc thu thì **−20% mỗi con**.
   - **Cây không héo, không chết.**
 - **Sản lượng hiện rõ cho HS tính:** "Dự kiến 7 củ = gốc 4 · tưới +50% · bón +25%". Phần lẻ được làm tròn theo xác suất, cố định theo ô.
-- **Mục tiêu giá** (tự đặt; bảng đầy đủ nằm trong `data.js`, bot kiểm):
+- **LUẬT GIÁ (CEO 30/09, thay bảng mục tiêu bên dưới):** *"cây bằng xu phải có lãi — cái chặn là giới hạn số lần mua"*.
+  - Không chăm thì hoà vốn. Tưới đủ thì **lãi khoảng 50%** (sau mùa đầu 3–5,5 EXP/ô/ngày; mùa đầu 7,5–12).
+  - Giá hạt bằng điểm giữ **1 điểm ≈ 4,5 EXP**.
+  - **Phân bón 8 EXP** (bán lại 4): chỉ đáng bón cho cây đắt / lâu ngày, bón cây 1 ngày thì lỗ.
+  - Bảng đầy đủ: `data.js` (nhánh `nhip-ngay`).
+- ~~Mục tiêu giá cũ~~ (bỏ 30/09):
 
 | Loại | Hạt (EXP hoặc điểm) | Thu, chăm đủ | Lãi/ngày | Không chăm |
 |---|---|---|---|---|
