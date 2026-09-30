@@ -32466,3 +32466,30 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Xem: `hs.html?xem=tutorial` (`&chang=N` vào thẳng chặng N) — không đăng nhập, không gọi DB, chưa lưu tiến độ. Chưa gắn vào luồng thật (lần đầu vào app / nút mở lại).
 - Verify dev-hs 390×844 + 1280×800: mở đầu → bản đồ; chặng 1 soi đúng `phan_bo`; chặng 4 tự cuộn `chang` vào giữa; Mở khoá kỹ năng; màn ngang nhân vật trái.
   Sửa trong lúc verify: nền `background-attachment: fixed` → lớp `fixed inset-0` riêng. tsc sạch · check:style-hs ✔.
+
+## 2026-09-30 (khuya, máy nhà) — Nông Trại → BẮT THÚ kiểu Palworld: CEO chốt hướng + research nền móng kỹ thuật (CHƯA code)
+
+- **Mang code sang máy nhà:** pull ERP (stash/pop `launch.json` local). Code game chép từ ổ Drive `G:\Other computers\My Computer\BK ACADEMY\Gaming\KayKit\NongTrai`
+  (bản Drive đồng bộ từ máy công ty) về `C:\Users\Admin\Desktop\BKERP\NongTrai` bằng robocopy, bỏ `desktop.ini`. Nhánh `nhip-ngay` @ `9556216`, sạch, fsck không lỗi.
+  Launch `nong-trai-nha` cổng 5275 (chỉ máy nhà, không commit `launch.json`).
+  - ⚠ Drive chèn `desktop.ini` vào cả `.git/refs/heads` ⇒ git trên ổ G: báo `bad object refs/heads/desktop.ini`, mỗi lệnh 1–2 phút. **Đừng chạy git trực tiếp trên G:.**
+  - Repo NongTrai có 6 commit sau các mục DEVLOG ERP, chưa được ghi ở đây: lần 5 mở khoá theo tuần · giả lập 5.000 HS · chó 16 động tác + `cho-demo.html` ·
+    gộp `do-hoa-thu` vào `nhip-ngay` · PWA + thanh "Việc hôm nay" (lấy từ Zoo Pet) · bố cục gọn kiểu Nông trại vui vẻ + chơi màn ngang.
+- **CEO chốt (hỏi 4 câu):**
+  - Thú bắt được: cả vật nuôi lẫn thú rừng, "bắt cả pet về nuôi". **Làm TÁCH RIÊNG khỏi nông trại trước.**
+  - Kiểu Palworld: đánh cho yếu máu rồi ném bóng. Thú có chiêu thức tấn công để đánh boss.
+  - **Game phải là MMO:** người chơi thấy nhau; ổn thì party đi đánh boss.
+  - Trọng tâm đợt đầu: hoạt cảnh ném bóng bắt + tấn công bằng chiêu thức.
+  - Xu, lượt bắt: tính sau, "làm game đã".
+- **CEO: "thư viện dohoa không đủ, research cái sâu hơn xịn hơn"** ⇒ dừng, chưa viết dòng code nào. Research 5 mảng song song (engine · nhân vật/thú có xương ·
+  VFX + ném bóng · netcode MMO · game web 3D thật trên mobile). Báo cáo: `design/nghien-cuu-nen-mong-game-bat-thu.md`; ghi chú nguồn: `research_notes/Nền móng game bắt thú MMO/`.
+  - Khuyến nghị: three.js r186 `WebGLRenderer` (dự phòng Babylon 9) · người chơi KayKit Adventurers + KayKit Character Animations (CC0) ·
+    thú = 4–6 **khuôn xương dùng chung** (cách Game Freak làm >1.000 Pokémon, CEDEC 2022), thân thú mua Omabuarts Quirky (299 USD, giấy phép CHƯA rõ) hoặc AI trả phí ·
+    VFX three.quarks + shader tự viết · Colyseus 0.18 trên VPS Singapore (~30 USD/tháng ở 500 người online) · mọi kết quả có thưởng ở `fn_game_*`.
+  - Loại: Unity/Godot bản web (vùng nhớ WASM làm sập tab iOS) · Supabase Realtime cho di chuyển (trần 2.500 tin/giây gói Team) · Hathora (đóng 5/5/2026) ·
+    SpacetimeDB/Nakama (kéo theo DB thứ hai).
+  - **T tự kiểm lại 4 sự thật quyết định hướng** (bài học subagent sai 28/09): iPad gen 7 không lên iPadOS 26 ⇒ tối đa Safari 18 ⇒ chỉ WebGL2 ✓ ·
+    Supabase Realtime gói Team 2.500 tin/giây ✓ · Colyseus 0.18.x ra bản 29–30/09 ✓ · three.quarks MIT, chưa hỗ trợ WebGPU ✓.
+  - Bài học: `dohoa.js` hợp nông trại (vật đứng trong chuồng) nhưng không có khung xương dùng chung, hệ VFX, va chạm, netcode ⇒ game hành động nhiều người chơi phải đổi nền móng.
+- **Chờ CEO:** (1) kiểu đánh — quyết công thức sát thương nằm ở Postgres hay game server; (2) iPad gen 7 phải mượt hay bản nhẹ; (3) có gắn việc học không;
+  (4) nguồn hình thú; (5) chat tự do (đề xuất: không). Sau đó làm bản thử 1–2 tuần, đo trên iPad gen 7 thật.
