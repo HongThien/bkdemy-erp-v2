@@ -32393,3 +32393,16 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Trạm quan trọng nhất = kiểm "tìm đáp án đúng thứ 2".
   - P0 = gom registry môn trước.
 - **Chờ CEO (§8):** đích đợt 1 (khối 9 thường?), GV Anh nào làm chủ học thuật, chốt nguyên tắc KP, nghe để sau?
+
+## 2026-09-30 (khuya) — Nông Trại đồ hoạ: gà 5 giống + bò 5 giống (Thùy: "gà bò cũng làm 4–5 loại cho sinh động")
+
+- **Làm** (nhánh `do-hoa-thu`, commit 2943756). Cùng cách với chó: máy dựng + bảng thông số.
+  - **Gà** (`GIONG_GA`, `dungGa`): trắng · ri (nâu vàng) · trống (bờm cam, yếm đen, 5 lông đuôi cong, mào to) · Đông Tảo (chân đỏ to gấp 2,6) · lông xù (silkie: cụm bông, mặt sẫm, chỏm lông).
+  - **Bò** (`GIONG_BO`, `dungBo`): bò sữa đen trắng · bò vàng Việt Nam (có u vai) · bò sữa nâu (viền mắt sẫm, viền mõm kem) · bò lông dài (lông bù xù, mái che mắt, sừng dài) · bò đốm đỏ.
+  - **Con thứ i trong chuồng lấy giống thứ i** (`vatMoi(k, i)`, `gaMoi(i)`) nên chuồng tự trộn đủ giống. Biểu tượng cửa hàng dùng giống đầu (gà trắng, bò sữa).
+- **Sửa sau ảnh đầu:** bò vàng và bò sữa nâu giống màu nhau → bò vàng sáng hơn, bò nâu đậm hơn.
+- **Kiểm:**
+  - không lỗi console;
+  - `test-engine` 3/3 lần in "Tất cả luật đúng" (đã đọc dòng cuối — test vẫn có thể chập chờn vì rơi cưa, xem mục đính chính).
+  - Ảnh: `NongTrai-dohoa/.snap/ga_bo_suu_tap.jpg`, `bo_bo_suu_tap.jpg`, `bo_chuong.jpg`.
+- **Chưa hỏi lại:** CEO chưa trả lời HS có chó bằng cách nào (chọn 1 / sưu tầm / mua). Heo, cừu vẫn 1 giống.
