@@ -32510,3 +32510,20 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - quả/củ lúc chín to, lộ rõ;
   - thêm trạng thái tưới/sâu/bón;
   - viết thành builder trong `dohoa.js` để chuyển sang `nhip-ngay` dễ.
+
+## 2026-09-30 (tiếp) — Xuất PDF bản đồ KP Tiếng Anh 9 cho GV góp ý
+
+- Thùy: GV không quen file md → xuất PDF gồm những gì đã làm + câu hỏi cần GV trả lời.
+- **Bản cho GV** (13 trang A4, in từ HTML bằng Edge headless) nằm ở `Downloads/BKdemy_BanDo_DiemKienThuc_TiengAnh9_GopY_GV.pdf`, không commit vào repo.
+  - Bỏ hết phần nội bộ (CEO, hệ thống, so với Toán); "KP" đổi thành "điểm kiến thức".
+  - Bảng 100 điểm lấy **thẳng từ `spec-anh-ban-do-k9.md` §3** bằng script, không chép tay; mỗi bảng thêm cột "Ý kiến ✓/✗/sửa".
+- **Phiếu 8 câu cho GV:**
+  1. Duyệt 100 điểm (hỏi riêng NP-40, NP-16/17, VT-04).
+  2. Từ vựng lớp 6–8 chia thế nào.
+  3. Cụm động từ chia thế nào.
+  4. Phần ngoài chương trình THCS.
+  5. Tên điểm hiện cho HS/PH.
+  6. Xác nhận/sửa 4 câu nghi lỗi ở Unit 1.
+  7. 5 điểm HS hay sai nhất.
+  8. Tài liệu có đáp án gửi thêm.
+- Kèm đề nghị GV: giữ file Word, tô đáp án 1 màu, giữ gạch chân câu phát âm.
