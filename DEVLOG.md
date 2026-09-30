@@ -32864,3 +32864,38 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Test engine: "Tất cả luật đúng", có 12 test mới cho `viecHom`.
 - Ảnh chụp cho thấy thanh "Xong" trong khi dòng gợi ý còn mời "3 lượt hái" ⇒ t cho máy chơi thử 60 ngày, so 2 chỗ đếm: **0 lần lệch** trên 216 lần có ô hái được. Nhiều khả năng ảnh chụp lúc vòng vẽ đứng (Browser pane ẩn), không phải lỗi luật.
 - Bản lưu localStorage của Thùy đã được cất và khôi phục đúng.
+
+## 2026-09-30 (khuya) — Nông Trại: bố cục gọn kiểu Nông trại vui vẻ + chơi màn ngang (Thùy: "sao ko làm góc nhìn giống nông trại vui vẻ… ô đất to ra" · "chơi màn hình ngang, đt hay ipad cũng xoay ngang" · kèm ảnh NTVV Zing Me: "bố cục như này thôi ko cần quá rộng, mình đâu có làm giống hayday")
+
+**Làm (NongTrai `9556216`, nhánh `nhip-ngay`):**
+- Bỏ thế giới rộng kiểu Hay Day: đường cái, suối, cầu, hồ lớn, cổng, xe tải, silo.
+- Dựng lại bố cục theo ảnh:
+  - ruộng 12 ô liền nhau, ô to 2,2 m; ô chưa mở là ô cỏ;
+  - sân đất có rào góc trên phải: nhà, kho, chuồng gà, chuồng bò;
+  - chó + nhà chó trước cổng sân;
+  - ao có vịt góc dưới phải;
+  - chợ và bảng tin lớp bên trái.
+- Khung nhìn tính từ toạ độ thật của bố cục:
+  - điện thoại ngang ôm ruộng + sân;
+  - iPad ngang ôm thêm chợ + ao;
+  - ống kính 32° → 24°.
+- Màn ngang:
+  - HUD 1 hàng; nút thử xuống góc dưới trái;
+  - điện thoại ngang thì thanh "Việc hôm nay" mặc định thu gọn;
+  - cầm dọc thì hiện màn "Xoay ngang máy để chơi";
+  - manifest `landscape`; Android thử khoá hướng ở lần chạm đầu.
+- Sửa `spec-nong-trai-nhip-ngay.md` §2.1.
+
+**Sai / sửa:**
+- Lần đầu t hiểu "góc nhìn Nông trại vui vẻ" là xoay camera 45° (lưới ô thoi) và xếp lại cả thế giới. Thùy: "không, giống ảnh t gửi" (ảnh gửi sau đó).
+- Nhìn ảnh mới thấy:
+  - góc camera cũ (lệch ~30°, ngẩng ~44°) chính là góc của ảnh ⇒ trả camera về như cũ;
+  - cái sai thật là **thế giới quá rộng** và ô nhỏ.
+- iPad: mép trái ruộng bị cắt vì phối cảnh làm phần gần camera phình ra ⇒ ống kính hẹp lại + nới lề khung.
+
+**Kiểm:**
+- Trại thử cấp 20 dựng trong bộ nhớ, đã chặn `setItem`: 12 ô có cây, gà, bò. Xem ở 844×390 (điện thoại ngang), 1180×820 (iPad ngang), 375×812 (màn nhắc xoay).
+- Không lỗi console. `test-engine`: "Tất cả luật đúng".
+- Bản lưu localStorage của Thùy: SHA-256 khớp bản sao trước khi thử.
+- Ảnh: `NongTrai/.snap/bocuc_ngang_dt.jpg`, `bocuc_ngang_ipad.jpg`.
+- **Chưa thử trên máy thật.**

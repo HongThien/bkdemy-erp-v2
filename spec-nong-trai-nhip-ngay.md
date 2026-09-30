@@ -34,8 +34,24 @@
 ### 2.1 Bố cục, giao diện, phạm vi pha 1 (CEO 30/09, kèm ảnh mẫu Nông trại vui vẻ)
 
 - **Bố cục gọn:** 1 khung nhìn thấy trọn nông trại, không cần bản đồ rộng. Đồ hoạ giữ kiểu 3D hiện đại. *"Mục tiêu chính vẫn là xu"* (CEO).
-  - Xếp dọc cho hợp điện thoại dọc: nhà + kho ở trên · 12 ô ruộng (4×3) ở giữa · nhà chó bên trái · chuồng gà rồi bãi bò bên dưới.
-  - Khung tự vừa màn dọc lẫn ngang (iPad ngang: khung ôm phần lõi, kéo xuống thấy bãi bò). Chỉ kéo và phóng trong khung.
+- **(CEO 30/09 tối, kèm ảnh Nông trại vui vẻ bản Zing Me) CHƠI MÀN NGANG + bố cục y như ảnh.** CEO: *"bố cục như này thôi, không cần quá rộng đâu, mình đâu có làm giống Hay Day"* · *"điện thoại hay iPad cũng xoay ngang ra mà chơi"*.
+  - **Bỏ thế giới rộng kiểu Hay Day:** đường cái, suối, cầu, hồ lớn, cổng, xe tải, silo.
+  - **Bố cục:**
+    - ruộng lớn bên trái: 12 ô (4×3) **liền nhau, ô to**; ô chưa mở là **ô cỏ**;
+    - sân đất có rào ở góc trên phải: nhà, kho, chuồng gà, chuồng bò;
+    - chó + nhà chó ngay trước cổng sân;
+    - ao có vịt ở góc dưới phải;
+    - chợ và bảng tin lớp bên trái.
+  - **Góc nhìn** như ảnh: hàng ô chạy chéo xuống phải thoai thoải, cột ô chạy chéo xuống trái dốc. Ống kính hẹp cho gần kiểu nhìn phẳng.
+    - Điện thoại ngang: khung ôm ruộng + sân.
+    - iPad ngang: khung ôm thêm chợ + ao.
+    - Kéo và phóng trong khung.
+  - **Cầm dọc thì hiện màn "Xoay ngang máy để chơi".** Lý do: iPhone/iPad không cho web tự khoá hướng; Android khi cài như app thì khoá được, manifest ghi `landscape`.
+  - **HUD màn ngang:**
+    - 1 hàng: cấp · mùa · lượt · ví · điểm;
+    - nút thử (Ngày mới, +điểm) xuống góc dưới trái;
+    - điện thoại ngang thì thanh "Việc hôm nay" mặc định thu gọn để không che ruộng.
+  - Bố cục cũ (xếp dọc cho điện thoại dọc) còn trong lịch sử git NongTrai trước commit này.
 - **Thanh dụng cụ ở đáy** như Nông trại vui vẻ:
   - 👆 tay · 🌱 gieo (bảng chọn hạt ghi giá, số quả thu, lãi/ngày) · 💧 tưới · 🐛 bắt sâu · bón phân · 🧺 thu.
   - Chạm hoặc vuốt qua các ô. Cầm nhầm dụng cụ thì làm như tay, trẻ không bị kẹt.
