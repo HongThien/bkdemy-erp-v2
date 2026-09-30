@@ -39,8 +39,21 @@
     - lò, mèo, chim, trang trí tắt bằng cờ `PHA`.
     Thiết kế + số bot: spec §2.1 và §9.
   - **Việc kế tiếp:** Thùy chơi thử, chỉnh số → nhiệm vụ ngày → online. `main` vẫn là bản Hay Day.
-  - **⚠ Code game KHÔNG nằm trong repo ERP:** ở `E:\BK ACADEMY\Gaming\KayKit\NongTrai`, git riêng, **chưa có remote ⇒ chỉ có trên máy công ty**. Commit cuối `5f0a1e0` là bản nhịp Hay Day cấp 1–30 + cảnh quan kiểu Hay Day.
-    Làm ở máy khác thì phải mang code sang trước.
+  - **⚠ Code game KHÔNG nằm trong repo ERP.** Từ 01/10 có remote GitHub riêng tư **`HongThien/bk-nong-trai`** (đủ nhánh `main`/`nhip-ngay`/`do-hoa-thu`, đẩy từ bản chép ở máy nhà `C:\Users\Admin\Desktop\BKERP\NongTrai`).
+    Máy công ty (`E:\BK ACADEMY\Gaming\KayKit\NongTrai`) **chưa nối remote** — lần đầu: `git remote add origin https://github.com/HongThien/bk-nong-trai.git` + `git fetch`.
+    Đừng chạy git trên bản Drive `G:\Other computers\...` (Drive nhét `desktop.ini` vào `.git/refs` ⇒ hỏng ref, mỗi lệnh 1–2 phút).
+
+- **⭐ GAME BẮT THÚ (kiểu Palworld) — CEO chốt 30/09–01/10. Đọc `spec-bat-thu.md` trước khi làm.**
+  - Đánh thú cho yếu máu rồi ném bóng.
+  - Đánh thời gian thực, thú có chiêu.
+  - Sau này MMO + party đánh boss.
+  - 2 bản đồ hoạ Đẹp/Nhẹ, không làm bản cùi.
+  - Boss phải là thú NGẦU, quái phải ĐẸP.
+  - Làm tách khỏi Nông Trại.
+  - **Code:** repo riêng `HongThien/bk-bat-thu` (máy nhà `C:\Users\Admin\Desktop\BKERP\BatThu`). Launch `bat-thu` cổng 5280.
+    - Nền: three r186 + three.quarks; luật thuần `src/luat/` để sau chuyển lên Colyseus.
+  - **Đã có bản thử chơi trọn:** chọn thú, 7 kiểu chiêu, hoạt cảnh bắt 3 lần lắc, đội 5, sổ thú. Chưa đo iPad gen 7 thật.
+  - **Chờ CEO:** chọn nguồn mô hình boss/pet (`design/nguon-mo-hinh-boss-bat-thu.md`, đề xuất ~465 USD, nên mua thử 1 món mỗi bên trước).
   - **Chạy:** launch `nong-trai` (port 5270) · kiểm luật `node NongTrai/tools/test-engine.mjs`.
   - **Bẫy three r128:** `Texture` không có `userData` · `InstancedMesh` cắt khung theo gốc toạ độ ⇒ chia ô có khối bao riêng hoặc `frustumCulled = false`.
 ### Kiến trúc & file chính

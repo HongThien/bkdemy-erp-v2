@@ -1,0 +1,80 @@
+# BK Bắt Thú — game bắt thú kiểu Palworld
+
+> **Nguồn thiết kế** cho game bắt thú. CEO chốt 30/09 (khuya) – 01/10/2026. Diễn biến ở DEVLOG cùng ngày.
+> Code: repo riêng **`HongThien/bk-bat-thu`** (GitHub, riêng tư) — máy nhà ở `C:\Users\Admin\Desktop\BKERP\BatThu`.
+> Research nền móng: `design/nghien-cuu-nen-mong-game-bat-thu.md` · nguồn mô hình boss: `design/nguon-mo-hinh-boss-bat-thu.md`.
+> Số liệu trong code ghi **TỰ ĐẶT** = số chạy thử, chỉnh sau khi chơi thật.
+
+---
+
+## 1. Đã chốt (CEO)
+
+| # | Quyết định | Ghi chú |
+|---|---|---|
+| 1 | **Kiểu Palworld:** đánh thú cho **yếu máu** rồi **ném bóng** bắt | Không phải quăng dây, không phải dụ ăn |
+| 2 | Thú bắt được: **cả vật nuôi lẫn thú rừng**, bắt cả pet về nuôi | |
+| 3 | **Làm TÁCH RIÊNG khỏi Nông Trại** trước, gộp sau | Repo riêng |
+| 4 | Thú có **chiêu thức tấn công** để đánh boss | |
+| 5 | **Game phải là MMO:** người chơi thấy nhau; ổn thì **party đánh boss** | Làm sau bản thử một người |
+| 6 | Trọng tâm đợt đầu: **hoạt cảnh ném bóng bắt** + **tấn công bằng chiêu** | |
+| 7 | Đánh nhau **thời gian thực**: máu liên tục, chạy tự do, cast chiêu | CEO: "Palworld vẫn có máu liên tục" |
+| 8 | **2 bản đồ hoạ:** bản **Đẹp** cho máy xịn + bản **Nhẹ** cho iPad gen 7 — **"đừng làm bản cùi"** | Mốc thấp nhất vẫn là iPad gen 7 |
+| 9 | **Chưa gắn với việc học** | |
+| 10 | Pet chỉ cần **đẹp** — không bám phong cách Hay Day | |
+| 11 | **Không chat gõ tự do** (tạm thời) | Chỉ câu soạn sẵn / biểu cảm |
+| 12 | **Boss phải là thú ngầu:** rồng, khủng long, hổ, cá voi, đại bàng… **Quái cũng phải đẹp.** | CEO nhấn "quan trọng" |
+| 13 | Xu, lượt bắt: **tính sau** — "làm game đã" | |
+
+- **Hệ quả của #7 với luật §2.0 CLAUDE.md:** sát thương tính 20 lần/giây trên **máy chủ game** (Colyseus), không qua Postgres từng đòn.
+  Postgres (`fn_game_*`) giữ những gì **có giá trị lâu dài**: kết quả bắt, exp/cấp, bộ sưu tập, (sau này) xu có trần ngày.
+  Luật trận viết **thuần** trong `src/luat/` (có hạt giống ngẫu nhiên) để chạy nguyên trên máy chủ, máy khách chỉ diễn lại.
+
+## 2. Nền kỹ thuật (research 30/09, đã tự kiểm 4 sự thật quyết định)
+
+- **three.js r186 `WebGLRenderer`** (dự phòng Babylon.js 9). iPad gen 7 kẹt iPadOS 18 ⇒ Safari 18 ⇒ **chỉ WebGL2**, không WebGPU.
+- **Hạt hiệu ứng:** three.quarks 0.17 (MIT) + shader tự viết.
+- **Nhân vật người:** KayKit (CC0) + bộ 161 động tác KayKit (có sẵn *Throw*).
+- **Thú:** khung xương dùng chung theo **khuôn dáng** (cách Game Freak làm >1.000 Pokémon). Bản thử đang dùng Quaternius Ultimate Monsters (CC0).
+- **MMO (sau):** Colyseus 0.18 tự chạy trên VPS Singapore (~30 USD/tháng @500 người online); Supabase Realtime **không** gánh được di chuyển (trần 2.500 tin/giây).
+
+## 3. Đã có ở bản thử (01/10)
+
+- Đồng cỏ đồi thấp: cỏ lay theo gió, hoa, cây, đá, hồ; trời chuyển màu.
+- Chọn 1 trong 3 thú khởi đầu: Rồng Lửa · Cá Mập Nhí · Xương Rồng.
+- 23 loài, 6 hệ (Thường, Lửa, Nước, Cỏ, Điện, Băng) có khắc chế.
+- 13 chiêu hiện theo 7 kiểu: cắn · húc · đạn · sét · gai mọc từ đất · phun hình nón · sóng âm.
+  - Mỗi đòn có báo trước, dừng hình khi trúng, rung màn, số sát thương, "Hiệu quả!".
+- Thú hoang đánh trả (bằng 60% sức); thú dữ tự lao vào; thú nhát bỏ chạy khi yếu.
+  - Dưới 25% máu thì thú **choáng 1 lần** ("Ném bóng ngay!").
+  - Thú của mình tự đánh thường nhưng **dừng khi mục tiêu đã yếu**, để HS chủ động ném.
+- **Hoạt cảnh bắt:**
+  1. Ngắm: đường cong + **tỉ lệ bắt thật** (một hàm duy nhất tính ra).
+  2. Ném, chạm thì dừng hình; bóng bật lên mở nắp.
+  3. Tia hút; thú hoá ánh sáng, co vào bóng.
+  4. Bóng rơi nảy, camera áp sát dần.
+  5. **Lắc 3 lần = 3 lần kiểm** (P^4/9 · P^3/9 · P^2/9, nhân lại đúng bằng tỉ lệ hiển thị), 3 đèn vàng sáng dần.
+  6. Kết quả: bắt được (sao, vòng sáng, giấy màu, tiếng tách, bóng bay về tay, thẻ "Bắt được!") hoặc bóng bung, thú thoát kèm câu "Suýt nữa!".
+- Đội 5 con, đổi thú có hoạt cảnh thả/thu; hộp thú; sổ thú; exp + lên cấp; lưu trên máy (localStorage).
+- 2 bản đồ hoạ:
+  - Tự đoán theo máy: iPhone/iPad chưa có WebGPU thì dùng bản Nhẹ.
+  - Bản Đẹp mà FPS < 35 thì tự hạ xuống Nhẹ.
+  - Có nút đổi tay.
+- Đo ở Browser pane: Đẹp ~75 FPS · ~100 lệnh vẽ · ~320k tam giác; Nhẹ 75 FPS · ~70 lệnh vẽ · ~190k. **Chưa đo trên iPad gen 7 thật.**
+
+## 4. Chờ CEO
+
+1. **Nguồn mô hình boss + pet** (`design/nguon-mo-hinh-boss-bat-thu.md`). Không nhà bán nào có đủ cả boss ngầu lẫn pet đẹp cùng một phong cách.
+   - **Đề xuất** (~465 USD, 68 mẫu): Meshtint Cute Series (pet 3 bậc tiến hoá + boss biển) + N-hance Stylized Fantasy Creatures/Dragons (hổ, đại bàng, sói, gấu, rồng Whelp → Elder) + FSaur (T-rex).
+     - Đã kiểm: [N-hance bundle](https://assetstore.unity.com/packages/3d/characters/animals/stylized-fantasy-creatures-bundle-184409) 21 con, có hổ và đại bàng, 149,99 USD, nặng 580 MB, phải nén cho web.
+     - Đã kiểm: [Meshtint Pack 02](https://assetstore.unity.com/packages/3d/characters/creatures/monsters-ultimate-pack-02-cute-series-179083) 24 con × 3 bậc tiến hoá, 159,90 USD, file FBX.
+   - **Nên mua thử 1 món mỗi bên**, đặt cạnh nhau xem trước khi mua cả bộ.
+   - **Cá voi:** chưa có bản stylized nào kèm động tác tấn công ⇒ tự làm, hoặc đổi boss biển thành Vua Bạch Tuộc / Cá Mập.
+   - Giấy phép: file GLB gửi xuống trình duyệt thì tải được ⇒ đóng gói + nén, và hỏi nhà bán xác nhận bằng văn bản là dùng được với web three.js.
+2. Chơi thử bản này, chỉnh cảm giác đánh + bắt.
+
+## 5. Việc kế tiếp (CTO)
+
+1. Đo trên iPad gen 7 thật (FPS, bộ nhớ tab, 20 phút liên tục không tự tải lại).
+2. Boss: khu đấu riêng + thanh máu lớn + chiêu diện rộng có báo trước; party 2–4.
+3. MMO: Colyseus (vùng + kênh, 10 lần/giây) + đăng nhập tài khoản BK + `fn_game_*`.
+4. Làm mờ cây/đá khi che người chơi.

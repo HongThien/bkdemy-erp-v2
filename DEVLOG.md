@@ -32493,3 +32493,51 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Bài học: `dohoa.js` hợp nông trại (vật đứng trong chuồng) nhưng không có khung xương dùng chung, hệ VFX, va chạm, netcode ⇒ game hành động nhiều người chơi phải đổi nền móng.
 - **Chờ CEO:** (1) kiểu đánh — quyết công thức sát thương nằm ở Postgres hay game server; (2) iPad gen 7 phải mượt hay bản nhẹ; (3) có gắn việc học không;
   (4) nguồn hình thú; (5) chat tự do (đề xuất: không). Sau đó làm bản thử 1–2 tuần, đo trên iPad gen 7 thật.
+
+## 2026-10-01 (rạng sáng, máy nhà) — BẮT THÚ: CEO chốt 5 câu + build bản thử (repo mới `HongThien/bk-bat-thu`)
+
+- **CEO trả lời 5 câu:**
+  - đánh thời gian thực kiểu Palworld (máu liên tục, chạy tự do, cast chiêu);
+  - base iPad gen 7 + bản nhẹ;
+  - chưa gắn học;
+  - pet đẹp là được, không theo Hay Day;
+  - không chat tự do;
+  - "những cái khác thì làm thôi".
+- **Giữa lúc build, CEO thêm 2 ý:**
+  - "1 bản ĐẸP cho máy xịn và 1 bản NHẸ cho iPad 7, đừng làm bản cùi";
+  - "boss phải là thú ngầu: rồng, khủng long, hổ, cá voi, đại bàng… quái cũng phải đẹp — quan trọng".
+- **Ghi:** `spec-bat-thu.md` (13 quyết định + chờ CEO).
+- **Build** (repo riêng `C:\Users\Admin\Desktop\BKERP\BatThu`, commit `03fa79b`):
+  - Nền: Vite + TS + three r186 + three.quarks 0.17.
+  - Asset CC0:
+    - Quaternius Ultimate Monsters, 33 GLB, tải từ Drive bằng `tools/tai-drive.mjs`;
+    - KayKit Survivalist + 21 động tác, lấy từ zip trong `G:\...\KayKit` (động tác tách riêng, bỏ lưới).
+  - Luật thuần `src/luat/`: sát thương theo hệ; tỉ lệ bắt; 3 lần kiểm P^4/9·P^3/9·P^2/9 như Palworld; exp.
+  - 7 kiểu hiện chiêu. Hoạt cảnh bắt / thả / thu. 2 bản đồ hoạ.
+  - Chi tiết: spec §3.
+- **Sai / sửa:**
+  1. Sửa file bằng PowerShell 5.1 `Get-Content`/`Set-Content` làm hỏng dấu tiếng Việt, vì đọc UTF-8 như ANSI ⇒ ghi lại cả file.
+     **Bài học: đừng sửa file tiếng Việt bằng Get/Set-Content của PS 5.1; dùng Edit hoặc `[IO.File]` kèm UTF8.**
+  2. Shader nước: `#include <fog_vertex> }` cùng dòng ⇒ lỗi biên dịch. Sửa: xuống dòng sau mọi `#include`.
+  3. three r186 đã bỏ `PCFSoftShadowMap` (tự lùi về `PCFShadowMap`).
+  4. Màn tải che mất màn chọn thú.
+  5. Quầng sáng quả bóng là Sprite thiếu `map` ⇒ vẽ ra **hình vuông**. Lúc đầu t tưởng lỗi three.quarks, soi mã quarks mới ra.
+  6. Cỏ 2 mặt: mặt sau bị lật pháp tuyến ⇒ lá đen như gai ⇒ bỏ lật trong `normal_fragment_begin`.
+  7. Thú quá nhỏ so với cảnh ⇒ phóng ×1,45.
+  8. Rồng đồng hành che mục tiêu ⇒ đứng chếch ngang, camera chúc 0,7 rad.
+  9. Thú hoang hạ rồng trong ~3 giây ⇒ thú hoang đánh bằng 60% sức.
+  10. Đang bắt thì mục tiêu tự nhảy sang con khác, vì thú trong bóng không "còn sống" ⇒ không tự chọn lại khi đang ném.
+  11. Vite trên Windows 2 lần phục vụ **bản biên dịch cũ** sau 2 lần sửa liền nhau ("CHAM is not defined" dù file đúng) ⇒ khởi động lại máy chủ thử.
+- **Kiểm** trong Browser pane:
+  - Chơi trọn: chọn thú → cầu lửa/phun lửa trúng → thú đánh trả → choáng → giữ Space ngắm (hiện 20%) → ném tuột → bắt được (ép kết quả bằng JS) → thẻ + lên cấp.
+  - Đẹp 1280×760: ~75 FPS, ~100 lệnh vẽ, ~320k tam giác.
+  - Nhẹ 1024×768 và 390×844: 75 FPS, ~70 lệnh vẽ, ~190k tam giác.
+  - `tsc` sạch.
+  - **Chưa đo iPad gen 7 thật.**
+- **Nguồn boss** (subagent research, t kiểm lại 2 sản phẩm chủ chốt trên Unity Asset Store — khớp): `design/nguon-mo-hinh-boss-bat-thu.md`.
+  - Đề xuất Meshtint (pet) + N-hance (boss thú), ~465 USD.
+  - Cá voi là lỗ hổng.
+  - AI 3D chỉ tự có động tác "đi" cho thú 4 chân.
+  - **Chờ CEO chọn, chưa mua.**
+- **GitHub riêng tư** (CEO "làm thôi"): `HongThien/bk-bat-thu` + `HongThien/bk-nong-trai` (đẩy đủ 3 nhánh `main`/`nhip-ngay`/`do-hoa-thu` từ bản chép máy nhà).
+  - **Máy công ty phải `git remote add origin https://github.com/HongThien/bk-nong-trai.git` rồi `git fetch`**, không làm việc song song trên 2 máy mà không kéo trước.
