@@ -32428,3 +32428,27 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   (tính cả 29/09) ra 13 "lỗi" = ca hôm qua đã xong / app HS không hiện lịch cũ ⇒ đúng thiết kế ⇒ kẹp phạm vi từ hôm nay. Thử phá (rollback):
   đuổi trả rỗng + 1 ca bù gán NS không tài khoản ⇒ báo 6 + 1, đúng.
 - Kiểm local: ERP banner "✓ 33 ca…"; app TA admin: ô Bù/Đuổi dòng đầu là ca hôm nay.
+
+## 2026-09-30 (đêm) — Nông Trại đồ hoạ: bò nặn liền (SDF) → bò CHIBI đúng hình khối (Thùy: "bò thật hơi thô, đầu không giống… chỉ cần đúng form, làm chibi như heo gà")
+
+- **Nghiên cứu đầu bò:** tra tài liệu vẽ bò (Envato Tuts+ bị 403; wedrawanimals, howtodrawforkids…) + giải phẫu t nắm. Chốt 5 điểm:
+  - đầu cúi (cổ gần ngang, mặt chúc);
+  - trán rộng, sừng ở 2 góc đỉnh đầu;
+  - tai ngang ngay dưới sừng;
+  - mắt 2 bên có gờ;
+  - mõm to gần vuông, lỗ mũi lớn.
+  - Mặt bò sữa: vệt trắng dọc mặt, mõm hồng.
+  - Lỗi chính bản trước: đầu ngóc cao như ngựa.
+- **"Thô" do ghép khối cầu lộ đường gấp → NẶN LIỀN:**
+  - hàm khoảng cách SDF + smooth-min (Inigo Quilez), lưới bằng Surface Nets tự viết (`luoiSDF`), pháp tuyến từ gradient, tự lật chiều tam giác;
+  - thân, cổ, đầu, chân, đuôi mỗi phần một khối liền.
+- **Bản giải phẫu thật** (commit 4058490) ra đúng dáng. Nhưng CEO nói chỉ cần đúng FORM, style phải chibi như heo/gà.
+  → **Bò chibi** (commit trên nhánh `do-hoa-thu`): giữ hình khối (trán rộng, sừng góc đầu, tai ngang, yếm, mông vuông, chân sau gập, đuôi từ đỉnh mông); đầu to, mắt to nhìn trước + đốm sáng + má hồng, mõm tròn to, thân ngắn tròn, chân ngắn mập.
+- **Sửa dọc đường:**
+  1. đốm sáng mắt lệch ra ngoài làm lòi khỏi mép đầu → lệch vào trong (`matTo` thêm tham số `noi`);
+  2. mép đốm răng cưa do lưới thưa → chuyển màu ±0.07;
+  3. 59k → 22k → 16k tam giác/con (cỡ ô lưới từng phần).
+- **Kiểm:**
+  - chuồng bò 40 lần đo: đè 0, thò rào 0; `?dohoa=cu` không lỗi;
+  - `test-engine` 2/3 lần đúng, 1 lần dính lỗi rơi-cưa chập chờn đã biết (`engine.js`/test không đổi so `main`).
+- **Máy chủ thử:** CEO tắt cổng 5271 (tự chạy cho iPad). T thêm launch `nong-trai-dohoa-kiem` cổng 5272 cho việc chụp, không giành 5271.
