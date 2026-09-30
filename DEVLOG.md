@@ -32635,3 +32635,61 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - **Hoạt động/tháng:** trồng 18,5 bằng điểm + 21,8 bằng xu · chi 4,3 xu · hái trộm 0,5 xu · ~1,5 phút/ngày vào.
   - **Ô cuối T10:** TB 6,5, chưa ai đủ 12 ô, 24% vẫn 4 ô.
   - Bot sửa sang chốt theo **tháng lịch**. Các lần trước chốt theo lát 30 ngày nên tháng đầu hụt 1 ngày.
+
+## 2026-09-30 (đêm, tiếp) — Nông Trại đồ hoạ: thêm 3 kiểu nhà theo nền văn hoá (Việt · Nhật · Hy Lạp), mỗi kiểu 10 mức
+
+- **CEO chốt:**
+  - Đồ rơi ra **chỉ để nâng cấp nhà** theo thứ tự mức.
+  - Để HS **tự trang trí** (đặt món tuỳ ý) thì **để phase sau**.
+- **Yêu cầu:** thêm 3 kiểu nhà của các nền văn hoá khác nhau, phải có 1 kiểu Việt Nam. 2 kiểu còn lại CTO chọn: Nhật và Hy Lạp. Lý do: bảng màu tách hẳn nhau và với nhà gỗ đồng quê (Việt: vàng vôi + ngói đỏ nâu · Nhật: gỗ tối + ngói xám + giấy trắng · Hy Lạp: trắng + xanh dương), trẻ liếc là nhận ra nước nào.
+- **Làm** (`dohoa.js` mục 4i, commit 4ec8b76 nhánh `do-hoa-thu`). Mỗi kiểu 10 mức, món cùng ô thay món cũ, cùng khung toạ độ với nhà gỗ:
+  - **Nhà Việt — ba gian Bắc Bộ:**
+    1. nhà tranh vách đất (cặp tranh bắt chéo trên nóc, rơm lẫn vách, cửa phên tre đan, cửa sổ song tre)
+    2. hiên cột tre · chõng tre
+    3. chum nước + gáo dừa · đống rơm
+    4. mái ngói ta (vảy nhỏ, lác đác rêu) · bờ nóc đầu kìm
+    5. tường vôi vàng · cửa bức bàn 4 cánh · cửa sổ song tiện
+    6. cột gỗ chân tảng · bậc thềm gạch
+    7. sân gạch đỏ · chậu cảnh men lam
+    8. giàn mướp (che chõng) · cây cau
+    9. rào dâm bụt · cổng mái ngói
+    10. đèn lồng đỏ · câu đối · chậu mai vàng
+  - **Nhà Nhật — nhà gỗ:**
+    1. sàn kê đá tảng, vách ván dọc, mái ván đè đá, cửa lùa gỗ, cửa sổ mắt cáo
+    2. hiên engawa · đá bậc + guốc gỗ
+    3. rèm noren · chậu đá rửa tay (tsukubai)
+    4. mái ngói xám · ngói nóc onigawara
+    5. tường trắng khung gỗ · cửa shoji · cửa sổ tròn
+    6. đèn đá · lối đá bước
+    7. vườn sỏi cào · thông cắt tỉa
+    8. rào tre · hồ cá koi (cá bơi)
+    9. anh đào · chuông gió (đung đưa)
+    10. đèn lồng giấy · cờ cá chép (bay theo gió)
+  - **Nhà Hy Lạp — nhà trắng đảo Cyclades:**
+    1. nhà đá thô mái bằng xà gỗ, cửa gỗ cũ, ô cửa nhỏ
+    2. cầu thang lên mái · cửa sổ gỗ
+    3. quét vôi trắng · chum gốm amphora
+    4. mái vòm xanh · lan can sân thượng
+    5. cửa vòm xanh dương · cửa sổ chớp xanh
+    6. giàn nho · bàn ghế xanh
+    7. hoa giấy · chậu phong lữ trên bậc thang
+    8. sân sỏi khảm · cây ô liu
+    9. tường rào trắng · cổng vòm
+    10. đèn đồng · cờ dây · mèo ngủ
+  - Công cụ dựng chung mới:
+    - `ong` (trụ nối 2 điểm), `tre` (ống tre có đốt), `tien` (khối tiện: chum, chậu, amphora)
+    - `doc2` (đặt vật theo dốc mái có dời z), `maiHai`, `hangVay` (lợp ngói vảy theo hàng)
+  - Game: `?kieu=go|viet|nhat|hylap` + `?nha=1..10`. Giếng KayKit lùi sang trái vì nhà Việt/Nhật rộng hơn.
+- **Sai rồi sửa (sau ảnh đầu):**
+  1. Rêu trên ngói Việt thành chấm bi xanh ⇒ 7% → 2,5%, màu ngả nâu olive.
+  2. Đống rơm và mái tranh vàng cam như quả bí ⇒ hạ độ tươi; thêm thớ rơm chạy dọc dốc cho mái tranh.
+  3. Sân gạch đỏ chói ⇒ hạ màu.
+  4. Đá đè mái ván Nhật trắng như hạt ⇒ xám đậm.
+  5. Cá chép cờ quay ngược (miệng ở đuôi) ⇒ đảo bán kính.
+  6. Nhà Việt/Nhật chạm giếng KayKit ⇒ lùi giếng.
+- **Kiểm:**
+  - Cả 3 kiểu × 10 mức dựng không lỗi, không lỗi console.
+  - Đặt thử mức 10 từng kiểu vào đúng chỗ nhà trong game, không đè đường và công trình khác.
+  - `test-engine` 3/3 "Tất cả luật đúng".
+  - Tam giác: Việt 9k → 49k · Nhật 24k → 35k · Hy Lạp 6k → 37k (mức 1 → 10).
+  - Ảnh: `NongTrai-dohoa/.snap/nha_{viet,nhat,hylap}_{1_5,6_10}.jpg`, `nha_game_{viet,nhat,hylap}_10.jpg`, `nha_gan_*.jpg`.
