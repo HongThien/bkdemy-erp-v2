@@ -32263,3 +32263,31 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Ảnh so sánh ở `NongTrai-dohoa/.snap/`: `SS_1_toan_canh.jpg`, `SS_2_chuong_ga.jpg`, `dh_moi_phong.jpg`.
   - **Chưa thử trên iPad gen 7 thật:** hậu kỳ + chụp chiều cao 2 lần/giây là chi phí mới.
 - **Mâu thuẫn cần CEO chốt:** trước đây CEO chốt "màu phải TƯƠI"; bản mặc định của mẫu dịu hơn. Có bản `?bh=1.22` giữ độ tươi.
+
+## 2026-09-30 (tối) — Nông Trại đồ hoạ: bò · heo · cừu mới + gió + tự hạ chất lượng (Thùy: "làm tiếp bò heo")
+
+- **Thùy gửi nhầm** 2 ảnh Nông trại vui vẻ kèm ý "bố cục gọn, chỉ trồng cây", rồi rút lại. **Không đổi bố cục.** Ý đó thuộc bản nhịp ngày, để phiên đó quyết.
+- **Làm** (nhánh `do-hoa-thu`, commit 882a0f2):
+  1. **Bò, heo, cừu dựng mịn bằng code** (`vatMoi` trong `dohoa.js`). Tách khớp thân/đầu/4 chân/đuôi, tự viết cử động:
+     - `di`: chân chéo đánh nhịp, thân nảy;
+     - `dung`: thở, thỉnh thoảng ngó quanh;
+     - `an`: cúi gặm cỏ, nhai;
+     - đuôi vẫy.
+     - Bản mới không nạp mô hình Quaternius bò/heo/cừu nữa, chỉ giữ chó.
+     - Biểu tượng cửa hàng cũng dùng mẫu mới.
+     - Mỗi con 2–6 nghìn tam giác.
+  2. **Gió:** `ganGio(MAT_MIN)` lắc tán cây và bụi theo chiều cao, lệch pha theo vị trí.
+  3. **Tươi thành mặc định** (bão hoà 1.22); `?bh=1.04` là bản dịu.
+  4. **Tự hạ chất lượng khi FPS thật < 45 (đo mỗi 2 giây):** DPR 1.25 → MSAA 2 → DPR 1 → tắt tilt-shift.
+     - `?fps=1` hiện đồng hồ FPS.
+     - `?thu=30` dựng trại cấp 30, GHI ĐÈ save của trình duyệt đó.
+- **Đo** (trại cấp 30, 1500×760): 1.215 lượt vẽ và 1,34 triệu tam giác mỗi khung, so với bản cũ 999 và 1,12 triệu. Tức +20%, chưa kể phần hậu kỳ tốn sức vẽ điểm ảnh.
+- **Kiểm:**
+  - `test-engine` pass; không lỗi console.
+  - 15/15 con cử động (đo xoay khớp trước/sau).
+  - Chạy thử chế độ hạ thấp nhất không vỡ hình.
+  - Máy chủ thử vào được qua LAN `192.168.1.53:5271`.
+- **Chưa làm:**
+  - chưa đo trên iPad gen 7 thật;
+  - con vật chưa tránh nhau (đè lên nhau như bản cũ);
+  - chó vẫn là Quaternius.
