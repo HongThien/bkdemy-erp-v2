@@ -32822,3 +32822,23 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Bản sao để trong `window` nên mất khi tải lại.
   - Bản lưu gốc chỉ ở cấp 2, 4 ô trống, 20 xu, 4 điểm ⇒ đã dựng lại đúng các trường đó rồi lưu.
   - Bài học ghi vào memory: thử thì dùng state riêng, hoặc trả lại trước khi rời trang.
+
+## 2026-09-30 (tối) — Mổ Zoo Pet → CEO chốt làm game BẮT QUÁI kiểu Palworld, cùng vũ trụ với Nông Trại (Thùy: "t muốn làm kiểu palworld… đi bắt quái, đánh boss… 2 game độc lập… dùng tài nguyên game 1 nuôi game 2… nguyên liệu nông trại chế tạo vật phẩm để bắt quái hay đánh boss")
+
+**Làm:**
+- Mổ zoo-pet.store trong Browser pane (chế độ khách). Chi tiết ở memory `zoo-pet-mo-build`.
+  - Kỹ thuật: three r186 + Vite, ~250 `.glb` xuất từ Blender, 0 texture, 0 xương, cử động bằng code.
+  - Nội dung: 59 quái, 150 món, 9 hành tinh.
+  - Online: REST chỉ có `me` / `save` / `logout` + WebSocket chuyển tiếp; save cả cục từ máy HS, không chống gian lận.
+- **Phát hiện: Zoo Pet KHÔNG phải clone Palworld.** Không có bắt quái; "thú cưng" chỉ là 1 ô trang bị. Thực chất là cozy action-RPG.
+- Viết `spec-game-bat-quai.md` (NHÁP), gồm:
+  - vòng Palworld đã bỏ súng, ngược đãi quái, sinh tồn;
+  - nối Nông Trại theo 3 nguyên tắc: kho đồ chung ở Postgres · xu chỉ ra ở 1 cửa là chợ Nông Trại · trần mỗi ngày cho mỗi luồng đổi chéo;
+  - lộ trình P0–P3; 4 câu hỏi đích cho CEO.
+- Nông Trại lấy từ Zoo Pet (CTO tự chọn theo lời CEO "cái gì hay thì m làm"): cài như app (PWA) + thanh "Việc hôm nay" suy từ state, không thưởng, tắt được bằng cờ. Giao cho 1 luồng chạy nền trên nhánh `nhip-ngay`.
+
+**Quyết định (CEO):**
+- 2 game độc lập, cùng vũ trụ, chung tài nguyên.
+- Nguyên liệu Nông Trại dùng để chế đồ bắt quái / đánh boss.
+
+**Còn treo:** 4 câu ở spec §9 — nhịp chơi · quái sang giúp Nông Trại · nhân vật chung BK Hero hay riêng · tên.
