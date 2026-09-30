@@ -32417,3 +32417,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Huyền: 4 ca (30/09 08:30 rỗng · 30/09 15:00 Khánh Chi · 01/10 15:00 Khánh Chi · 03/10 09:00 Vũ Trung Hiếu). getMyTasks lỗi ⇒ BANNER đỏ
   "Lỗi tải: …" thay vì `.catch(() => [])` nuốt im — lần sau có lỗi thật sẽ thấy nguyên văn để tìm gốc.
 - **Chưa biết gốc** vì sao getMyTasks rơi ca bù/đuổi trên máy TA. Banner mới là để bắt nó.
+
+## 2026-09-30 (15h30) — Rà toàn luồng bổ trợ: gốc "TA không thấy ca" + tự kiểm hiển thị (Thùy)
+
+- **Gốc (đo được):** ô Đuổi cũ `tasks.slice(0,5)` trên TOÀN BỘ buổi đuổi của TA, không sắp, cả buổi đã xong; Huyền có 9 buổi (5 xong, 2 hôm nay) ⇒ ca
+  15:00 Khánh Chi bị đẩy vào "+4 buổi nữa…" (không bấm được). Cùng họ với bù 29/09 (lẫn trong Chấm ET). DB không sai — t đã mất 2 vòng đi tìm lỗi
+  ở dữ liệu/quyền. **Bài học:** "code nói có, người thật nói không" ⇒ soi TẦNG CẮT/SẮP của giao diện (slice, preview, +N) trước khi nghi DB.
+- **Sửa:** BoxBu (bù+đuổi) sắp hôm nay → nợ cũ → sắp tới, ca hôm nay không cắt, "+N ca nữa — bấm xem hết"; ô Yếu bỏ `slice(0,3)` ca hôm nay.
+- **Tự kiểm** `fn_bo_tro_tu_kiem` (mig 202609301510) + banner ERP Lịch phòng. Chạy thật 30/09: 33 ca (hôm nay → +7) · 0 lỗi, 216ms. Lần chạy đầu
+  (tính cả 29/09) ra 13 "lỗi" = ca hôm qua đã xong / app HS không hiện lịch cũ ⇒ đúng thiết kế ⇒ kẹp phạm vi từ hôm nay. Thử phá (rollback):
+  đuổi trả rỗng + 1 ca bù gán NS không tài khoản ⇒ báo 6 + 1, đúng.
+- Kiểm local: ERP banner "✓ 33 ca…"; app TA admin: ô Bù/Đuổi dòng đầu là ca hôm nay.

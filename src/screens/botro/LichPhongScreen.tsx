@@ -4,6 +4,7 @@
 // Màu theo loại (nền nhạt): Yếu đỏ · Đuổi xanh da trời · Bù cam. Ngày: 3 ô (qua · nay · mai quanh ngày chọn) + mũi tên + chọn thẳng.
 // Máy chỉ CHẶN (đơn vị, 3 em/TA, Đuổi ≥60', phòng ≤2 ca) — không tự xếp. Mọi mutation vá tại chỗ (CLAUDE.md §2), không reload list.
 import { useEffect, useMemo, useState } from 'react'
+import { tuKiemBoTro, type LoiHienThi } from '../../lib/ca_bo_tro'
 import { caCuaNgay, tomTatNgay, ungVienCa, xepVaoCa, goKhoiCa, huyCa, taoCaTay, LOAI_TEN, type CaBoTro, type HsTrongCa, type NgayTomTat, type UngVien, type UngVienCa, type LoaiBoTro } from '../../lib/ca_bo_tro'
 import { caTheoDoi, type CaTheoDoi } from '../../lib/botro_yeu_ca'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../lib/tuan'
@@ -131,6 +132,7 @@ export default function LichPhongScreen() {
           <button onClick={() => { taiNgay(ngay); taiTomTat(ngay); taiLive(ngay) }} title="Tải lại" className="rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-[12px] text-slate-500 hover:bg-slate-100">↻</button>
         </div>
         {loi && <p className="mb-3 rounded-xl bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</p>}
+        <TuKiemHienThi />
 
         {/* ── Khu 1: Lịch trực bổ trợ khối ── */}
         {khu === 'truc' && <>
@@ -285,6 +287,33 @@ function TaoCaForm({ ngay, nss, phongs, mons, onXong, onDong }: { ngay: string; 
       </div>
       {loi && <p className="mt-2 text-[12px] text-rose-600">{loi}</p>}
       <div className="mt-3 flex gap-2"><button onClick={luu} disabled={busy} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white disabled:opacity-60">{busy ? 'Đang lưu…' : 'Tạo ca'}</button><button onClick={onDong} className="rounded-lg border border-slate-200 px-3 py-1.5 text-[13px] text-slate-600">Thôi</button></div>
+    </div>
+  )
+}
+
+// ── TỰ KIỂM HIỂN THỊ (Thùy 30/09) — hôm nay → +7 ngày: hệ đóng vai TA đứng ca + từng HS, gọi đúng hàm app đang gọi (fn_bo_tro_tu_kiem).
+// Xanh = mọi ca đều hiện đúng người. Đỏ = liệt kê ca + lý do để OPS sửa TRƯỚC giờ ca (gán TA, cấp tài khoản/quyền…). Tự chạy khi mở màn.
+function TuKiemHienThi() {
+  const [kq, setKq] = useState<{ so_ca: number; loi: LoiHienThi[] } | null>(null)
+  const [loi, setLoi] = useState<string | null>(null)
+  const [dang, setDang] = useState(false)
+  const chay = () => { setDang(true); setLoi(null); tuKiemBoTro(congNgay(homNayVN(), 7)).then(setKq).catch((e: any) => setLoi(e?.message ?? String(e))).finally(() => setDang(false)) }
+  useEffect(chay, [])
+  if (loi) return <p className="mb-3 rounded-xl bg-rose-50 px-3 py-2 text-[12.5px] font-semibold text-rose-700 ring-1 ring-rose-200">⚠ Tự kiểm hiển thị lỗi: {loi}</p>
+  if (!kq) return <p className="mb-3 text-[12px] text-slate-400">Đang tự kiểm: ca bổ trợ có hiện trên app TA/HS không…</p>
+  const TEN: Record<LoiHienThi['loai'], string> = { bo_tro_yeu: 'Yếu', bu: 'Bù', bo_tro_duoi: 'Đuổi' }
+  return (
+    <div className={`mb-3 rounded-xl px-3 py-2 text-[12.5px] ring-1 ${kq.loi.length ? 'bg-rose-50 text-rose-800 ring-rose-300' : 'bg-emerald-50 text-emerald-800 ring-emerald-200'}`}>
+      <div className="flex items-center gap-2">
+        <b>{kq.loi.length ? `⚠ ${kq.loi.length}/${kq.so_ca} ca KHÔNG hiện đúng trên app` : `✓ ${kq.so_ca} ca bổ trợ (hôm nay → 7 ngày tới) đều hiện đúng trên app TA + app HS`}</b>
+        <button onClick={chay} disabled={dang} className="ml-auto rounded-lg border border-current/20 bg-white/70 px-2 py-0.5 text-[11.5px] disabled:opacity-50">{dang ? 'Đang kiểm…' : 'Kiểm lại'}</button>
+      </div>
+      {kq.loi.map((x) => (
+        <div key={x.buoi_id} className="mt-1.5 rounded-lg bg-white px-2.5 py-1.5 text-slate-700 ring-1 ring-rose-200">
+          <b>{TEN[x.loai]} · {ddmmVN(x.ngay)} {x.gio ?? ''}</b> · TA {x.ta ?? '—'} · {x.hs.join(', ')}
+          <ul className="ml-4 list-disc text-rose-700">{x.loi.map((l, i) => <li key={i}>{l}</li>)}</ul>
+        </div>
+      ))}
     </div>
   )
 }

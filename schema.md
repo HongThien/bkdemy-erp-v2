@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-298 bảng · 19 view · 0 enum · 102 trigger · 703 function
+298 bảng · 19 view · 0 enum · 102 trigger · 704 function
 
 ## _app_secrets
 
@@ -1369,6 +1369,7 @@
 | loi | jsonb |  | '[]'::jsonb |  |  |
 | muc | smallint | Y |  |  |  |
 | bai_lam_cau_id | uuid | Y |  | FK→bai_lam_cau.id |  |
+| nhan_xet | text | Y |  |  |  |
 
 ## gami_mua
 
@@ -5998,6 +5999,7 @@ SELECT bl.hoc_sinh_id,
 - `fn_ban_qua_tinh_hinh(p_buoi uuid)` → jsonb
 - `fn_bo_dau(p text)` → text
 - `fn_bo_tro_trong_ngay(p_ngay date DEFAULT NULL::date)` → jsonb
+- `fn_bo_tro_tu_kiem(p_tu date DEFAULT NULL::date, p_den date DEFAULT NULL::date)` → jsonb
 - `fn_botro_cham_tay(p_bai_test_cau uuid, p_verdict text)` → jsonb
 - `fn_botro_giay_nop(p_bai_test uuid)` → jsonb
 - `fn_bt_dong_cau(p_bt uuid, p_cau uuid[])` → jsonb
@@ -6502,8 +6504,8 @@ SELECT bl.hoc_sinh_id,
 - `troly_duoc_dung()` → boolean
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 

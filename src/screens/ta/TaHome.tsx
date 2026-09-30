@@ -327,7 +327,7 @@ function BoxBoTro({ v, homNay, onGo }: { v: ViecBoTro; homNay: string; onGo: () 
       </div>
       {homNayCa.length > 0 && (
         <div className="mt-2 flex flex-col gap-1">
-          {homNayCa.slice(0, 3).map((c) => (
+          {homNayCa.map((c) => ( /* ca hôm nay KHÔNG cắt (luật 30/09) */
             <div key={c.buoi_id} className="flex items-center gap-2 rounded-xl bg-white/80 px-3 py-2">
               <span className="text-[13.5px] font-bold text-[#16224D]">{c.ho_ten}</span>
               <span className="min-w-0 truncate text-[11.5px] text-[#63709A]">{c.mon}{c.gio_bat_dau ? ` · ${String(c.gio_bat_dau).slice(0, 5)}` : ''}{c.phong ? ` · ${c.phong}` : ''}</span>
@@ -351,6 +351,12 @@ function BoxBu({ ca, homNay, onOpen, loai = 'bu' }: { ca: CaBu[]; homNay: string
   const hn = ca.filter((c) => c.ngay === homNay)
   const no = ca.filter((c) => c.ngay < homNay).length
   const hhmm = (g: string | null) => (g ? g.slice(0, 5) : '?')
+  // ⭐ LUẬT CHỐNG "TA KHÔNG THẤY CA" (Thùy 30/09 — ca đuổi Khánh Chi bị ô cũ cắt còn 5 dòng đầu, không sắp, "+N buổi nữa" không bấm được):
+  // (1) sắp HÔM NAY trước (theo giờ) → nợ cũ → sắp tới · (2) ca hôm nay KHÔNG BAO GIỜ bị cắt · (3) phần bị ẩn luôn có nút bấm xem hết.
+  const [moHet, setMoHet] = useState(false)
+  const hang = (c: CaBu) => (c.ngay === homNay ? 0 : c.ngay < homNay ? 1 : 2)
+  const ds = [...ca].sort((a, b) => hang(a) - hang(b) || a.ngay.localeCompare(b.ngay) || (a.gio_bat_dau ?? '').localeCompare(b.gio_bat_dau ?? ''))
+  const hien = moHet ? ds : ds.slice(0, Math.max(hn.length, 6))
   return (
     <div className="rounded-[22px] p-3" style={{ background: duoi ? '#FFE3D1' : '#FFE9C7' }}>
       <div className="flex items-center gap-2.5">
@@ -362,7 +368,7 @@ function BoxBu({ ca, homNay, onOpen, loai = 'bu' }: { ca: CaBu[]; homNay: string
       </div>
       {ca.length > 0 && (
         <div className="mt-2 flex flex-col gap-1">
-          {ca.slice(0, 8).map((c) => (
+          {hien.map((c) => (
             <button key={c.buoi_id} onClick={() => onOpen({ buoiId: c.buoi_id, tab: 'et', lop: duoi ? 'Buổi đuổi' : 'Buổi bù', ngay: c.ngay, loai })}
               className={`flex w-full flex-col gap-0.5 rounded-xl px-3 py-2 text-left active:scale-[.99] ${c.ngay === homNay && !c.danh_gia_xong_at ? 'bg-white ring-2 ring-[#F59E0B]' : 'bg-white/80'}`}>
               <span className="flex w-full items-center gap-2">
@@ -372,7 +378,8 @@ function BoxBu({ ca, homNay, onOpen, loai = 'bu' }: { ca: CaBu[]; homNay: string
               <span className="truncate text-[11.5px] text-[#63709A]">{(c.hs ?? []).map((h) => `${h.ho_ten}${h.lop ? ` (${h.lop})` : ''}`).join(', ') || 'chưa có em'}{c.cua_toi ? '' : ` · TA: ${c.nguoi_day_ten ?? '?'}`}</span>
             </button>
           ))}
-          {ca.length > 8 && <p className="px-1 text-[10.5px] font-semibold text-[#63709A]">+ {ca.length - 8} ca nữa…</p>}
+          {ds.length > hien.length && <button onClick={() => setMoHet(true)} className="rounded-xl bg-white/60 px-3 py-1.5 text-left text-[12px] font-bold text-[#2F73F6]">+ {ds.length - hien.length} ca nữa — bấm xem hết</button>}
+          {moHet && ds.length > Math.max(hn.length, 6) && <button onClick={() => setMoHet(false)} className="px-1 text-left text-[11px] font-semibold text-[#63709A]">Thu gọn</button>}
         </div>
       )}
     </div>
