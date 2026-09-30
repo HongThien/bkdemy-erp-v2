@@ -32490,3 +32490,23 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Sai mình tự bắt:** bản nháp đầu ghi "58/100 KP", "khoảng 1/4 câu ngữ pháp là điểm lớp 9" và liệt kê nhầm "trật tự từ" vào nhóm ngoài SGK. Chạy lại máy đếm → sửa thành 59, 9/44, âm câm.
 - **Tài liệu GV có câu ngoài phạm vi CT THCS** (bị động U1, quá khứ hoàn thành U5) ⇒ đề xuất gắn nhãn "ngoài phạm vi K9", không vào kho.
 - **Chờ CEO + GV Anh (§7 spec):** duyệt 100 KP; từ vựng lớp 6–8 chia thế nào; cụm động từ theo động từ gốc hay theo unit; phần ngoài phạm vi; tên KP hiện cho HS/PH.
+
+## 2026-09-30 (đêm, tiếp) — Nông Trại: rà cây trồng (Thùy: "cây đã ổn chưa, có bao nhiêu loại")
+
+- **Đếm:**
+  - Bản Hay Day cũ / nhánh đồ hoạ: 15 cây ruộng + 7 cây ăn quả.
+  - Nhánh `nhip-ngay` (hướng đang làm, `data.js` bảng `RUONG` + `MUA`): **13 cây ruộng theo 3 mùa**, không có cây ăn quả.
+    - Thu Đông: cà rốt, bí ngô, khoai tây, cà chua, dâu tây.
+    - Tết: dưa hấu, hướng dương, ớt.
+    - Xuân: lúa nước, đậu nành, mía.
+    - Quanh năm: lúa mì, ngô.
+- **Chụp cả 15 cây trên luống, dưới ánh sáng mới** (`.snap/cay_ruong_chin.jpg`, `cay_ruong_giai_doan.jpg`). CHƯA ổn:
+  1. Cây chỉ chiếm ~25% ô, ô trống gần hết. Hay Day thì cây phủ kín ô.
+  2. Nhiều cây chín không nhận ra: cà rốt chín y như đang lớn (củ vùi dưới đất); dưa hấu chín không thấy quả; khoai tây, ớt, đậu nành thành cục xanh; lúa nước là dải xanh lơ lạ.
+  3. Khối góc cạnh (flat-shading), lệch style với con vật mịn chibi.
+  4. Chưa có hình cho trạng thái nhịp ngày cần: đất đã tưới, có sâu, đã bón.
+- **Đề xuất (chờ CEO):** làm lại 13 cây của nhịp ngày theo style mới:
+  - phủ kín ô theo luống;
+  - quả/củ lúc chín to, lộ rõ;
+  - thêm trạng thái tưới/sâu/bón;
+  - viết thành builder trong `dohoa.js` để chuyển sang `nhip-ngay` dễ.
