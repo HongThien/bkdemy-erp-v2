@@ -32624,3 +32624,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Hái trộm 1 quả/lượt, mỗi ô mất tối đa 20%.
   - HS không học: 12 / 11 / 7 xu ròng/tháng. Tách nguồn (tháng TB): trồng 8,6 · con vật 2,6 · hái trộm 1,7 · chi −5.
   - HS chăm vẫn chạm trần 45 / 30.
+- **30/09 (tiếp 5) — GIẢ LẬP 5.000 HS × 92 ngày** (từ 01/10; T10 + T11 = mùa đầu; NongTrai `tools/gia-lap.mjs`, ~2 phút, 11 luồng):
+  - **Quần thể giả định:**
+    - lượt bài 0/1/2/3 = 25/35/25/15%;
+    - vào vườn: hằng ngày 40% · thường 25% · thưa 20% · cuối tuần 10% · hiếm 5%;
+    - 30% bỏ game (TB sau ~28 ngày).
+  - **Xu ròng TB/HS/tháng** (trung vị · 10% cao): T10 10,2 (8 · 23) · T11 10,2 (7 · 25) · T12 6,7 (4 · 18). Chạm trần 1–3%.
+  - **BK chi / 100 HS / tháng:** ~1.020 xu (mùa đầu), ~665 xu (mùa thường).
+  - **Theo mức học** (HS không bỏ game), T10/T11/T12: 0 lượt 5,7 / 6 / 3,7 · 1 lượt 9,8 / 11,5 / 7,8 · 2 lượt 14,9 / 17,8 / 12,7 · 3 lượt 19,8 / 23,1 / 16,4.
+  - **Hoạt động/tháng:** trồng 18,5 bằng điểm + 21,8 bằng xu · chi 4,3 xu · hái trộm 0,5 xu · ~1,5 phút/ngày vào.
+  - **Ô cuối T10:** TB 6,5, chưa ai đủ 12 ô, 24% vẫn 4 ô.
+  - Bot sửa sang chốt theo **tháng lịch**. Các lần trước chốt theo lát 30 ngày nên tháng đầu hụt 1 ngày.
