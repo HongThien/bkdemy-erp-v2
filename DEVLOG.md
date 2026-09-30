@@ -32578,3 +32578,44 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
     - Chỉ chơi không học: +16 / 13 / 11 (gồm hái trộm + gà).
     - Học vừa: 20 / 23 / 17 · cuối tuần: 9 / 13 / 8.
     - Ước ~1–2 phút/ngày chơi. Mục tiêu 10–15 phút ⇒ cần thêm việc.
+
+## 2026-09-30 (đêm, tiếp) — Nông Trại đồ hoạ: NHÀ TRANG TRÍ, kiểu "Nhà gỗ đồng quê" × 10 mức đẹp (Thùy: "làm thử 1 style nhà với 10 mức, mỗi mức chênh vài đồ vật")
+
+- **Ý Thùy:** nhà là đồ trang trí (khung Nông trại vui vẻ). Lúc đầu xấu, rồi rơi dần vật phẩm để nhà đẹp lên. Sau này làm nhiều kiểu nhà.
+- **Làm** (`dohoa.js` mục 4h, commit ffa87af nhánh `do-hoa-thu`):
+  - 1 kiểu nhà = 1 bộ **vật phẩm**. Mức k = cộng dồn món của mức 1..k.
+  - Món cùng "ô" thì món sau thay món trước: mái tôn → mái ngói · vách mộc → tường sơn · cửa ván → cửa vòm · ô chấn song → cửa sổ kính · nền ván → chân đá.
+  - `nhaMoi(kieu, muc)` hoặc `nhaMoi(kieu, [id món])` ⇒ món rơi không theo thứ tự vẫn dựng được.
+  - Thêm kiểu nhà = thêm 1 mục vào `KIEU_NHA`, dùng chung khung toạ độ `NG`.
+  - 10 mức (27 món):
+    1. chòi ván: vách mộc có ván vá đóng đinh, mái tôn có tấm gỉ + miếng vá, cửa ván chữ Z, ô cửa chấn song
+    2. bậc thềm gỗ · cửa sổ kính (4 ô)
+    3. ống khói gạch (khói bay) · chân tường đá
+    4. mái ngói vảy cá · diềm mái trắng
+    5. tường sơn kem + nẹp góc · cửa vòm xanh (ô kính tròn, núm đồng)
+    6. hiên có mái 2 dốc + cột · cột đèn
+    7. cánh cửa chớp · hộp hoa cửa sổ · 2 chậu cây
+    8. lối đi đá · hàng rào trắng · cổng vòm hoa
+    9. cửa sổ mái · chong chóng gà trống (xoay theo gió) · hoa hồng leo cột hiên
+    10. dây đèn màu · ghế băng · luống hoa
+  - Công cụ dựng mới: `hopTron` (hộp bo góc, pháp tuyến mịn) · `tamGiac` (lăng trụ tam giác cho đầu hồi) · `trenMai` (đặt vật theo dốc mái) · `khungMat` (khung toạ độ từng mặt tường).
+  - Game: `?nha=1..10` (mặc định 1 = chòi ván).
+    - Nhà lùi về z = -15, cỡ 1.2, để sân trước chạm mép đường đất.
+    - Bỏ đèn KayKit trùng với cột đèn của nhà.
+    - Khói và chong chóng chạy theo `userData.hd(tg)` trong `khung()`.
+- **Sai rồi sửa:**
+  1. Ảnh mẫu đầu nhìn thẳng từ trên xuống ⇒ mái che hết mặt tiền. Camera game thật chéo (`HUONG` 0.55, 1.05, 0.95; ngẩng ~44°) ⇒ dựng ảnh theo đúng góc đó. Hạ dốc mái (R 0.78 → 0.66), nâng tường (1.12 → 1.18).
+  2. Màu ngói, gỉ, gỗ bậc thềm quá gắt dưới lớp chỉnh màu TƯƠI (bão hoà 1.22) ⇒ hạ độ tươi màu gốc.
+  3. Ngói vòm 8 cạnh trông như bát giác ⇒ 11 cạnh.
+  4. Cửa sổ mái cụt đuôi lơ lửng trên mái ⇒ kéo dài về sau cho chui vào mái chính.
+  5. Đèn tường nằm dưới mái hiên, camera không thấy ⇒ đổi thành cột đèn ngoài sân.
+  6. "Hòm thư" trùng hòm thư thật ở cổng trại, dễ lẫn ⇒ đổi thành "Cổng vòm hoa".
+- **Kiểm:**
+  - Không lỗi console ở cả bản mới và `?dohoa=cu`; bản cũ vẫn dùng nhà KayKit.
+  - `test-engine`: 2/3 lần "Tất cả luật đúng"; 1 lần "2 lỗi" là bài chập chờn đã biết. `engine`/`data` không đổi.
+  - Tam giác: mức 1 = 14k, mức 10 = 79k (1 nhà/trại).
+  - Ảnh: `NongTrai-dohoa/.snap/nha_1_5.jpg`, `nha_6_10.jpg`, `nha_game_{1,4,7,10}.jpg`.
+- **Treo (chờ CEO):**
+  - Món rơi từ đâu, rơi theo thứ tự mức hay ngẫu nhiên (máy dựng đã đỡ cả 2).
+  - Kiểu nhà thứ 2 trở đi.
+  - Chuyển sang nhánh `nhip-ngay`.
