@@ -32531,3 +32531,27 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Thùy: "cây bằng xu phải có lãi, cái chặn là giới hạn số lần mua"; "phân bón tác dụng cao mà bán rẻ"; tỉ giá điểm "trông vẫn ổn".
   - Đặt lại: gốc ≈ tiền hạt (hoà vốn), tưới đủ ×1,5 (lãi ~50%), 1 điểm ≈ 4,5 EXP; phân 3 → 8 EXP, bán lại 4.
   - Bot: chăm học chạm trần 45/30 · không học (3 ô) 9–20 xu/tháng · lười 3–5. NongTrai `nhip-ngay` commit mới nhất.
+
+## 2026-09-30 (đêm, tiếp) — Nông Trại đồ hoạ: 13 cây nhịp ngày làm lại × 4 giai đoạn (Thùy: "làm đi, hiện đủ các phase, code lại như gà bò")
+
+- **Đính chính lần rà trước:** t nói "cây chỉ chiếm 1/4 ô" là SAI. Hiệu ứng bật lên trong `khung()` đặt lại scale ≈ 1 sau 1 giây, còn ảnh rà cũ t dựng ở 0.4. Thực tế trong game cây phủ khoảng nửa ô. Các lỗi còn lại (khó nhận khi chín, lệch style, thiếu trạng thái) vẫn đúng.
+- **Làm** (`dohoa.js` mục 4g, commit 6bb84c5 nhánh `do-hoa-thu`):
+  - `CAY_MOI` + `cayMoi(id, pha, bien)`: 13 cây của nhịp ngày × **4 giai đoạn**: 0 mầm · 1 cây non · 2 ra hoa (lúa: trổ bông · ngô: trổ cờ · mía: vươn lóng · cà rốt: ra củ · hướng dương: ra nụ) · 3 chín. Tên giai đoạn: `tenPha(id, p)`.
+  - Cây mọc theo luống, phủ kín ô; quả/củ chín to, lộ rõ.
+    - Lúa mì vàng; lúa nước ngập nước tới lúc chín thì tháo cạn, bông trĩu.
+    - Ngô trổ cờ + bắp vàng ló vỏ; mía tím có đốt; cà rốt ló vai củ cam; khoai tây lộ củ.
+    - Đậu nành hoa tím → vàng có quả; cà chua có cọc, hoa vàng → đỏ; ớt hoa trắng → đỏ thõng; dâu hoa trắng → đỏ có hạt.
+    - Dưa hấu dây lá xẻ thuỳ → quả sọc; bí ngô lá to nằm bẹt → quả cam 8 múi; hướng dương nụ → nở quay về người xem.
+  - `trangThaiO({tuoi, sau, bon})` cho nhịp ngày: đất tưới = bản sẫm + bóng ướt của đúng ô (giữ luống); sâu xanh có mắt, râu; phân bón hạt trắng.
+  - `boMin` nhận `q` (quaternion) để lá quay đúng hướng.
+  - Game: cây có bản mới chạy 4 giai đoạn theo tiến độ (<30% · <65% · còn lại · chín); `gd` giữ nghĩa cũ (2 = chín). Chàm, bông (chỉ có ở bản Hay Day) vẫn hình cũ.
+- **Sai rồi sửa:**
+  1. nước ruộng lúa là đĩa bầu dục bị luống xuyên → hình vuông bo góc phủ ô, cao hơn luống;
+  2. bí ngô lá như kẹo mút → lá to nằm bẹt;
+  3. dây dưa như chuỗi hạt → lá to, ít đoạn;
+  4. đất tưới là đĩa tối như cái hố → phủ bản sẫm của chính ô;
+  5. 27k → ≤11k tam giác/ô (lá, cánh, quả nhỏ dùng khối ít mặt).
+- **Kiểm:**
+  - trại cấp 30 (48 ô): 1,47 triệu tam giác/khung so với 1,34 triệu trước (+10%); nhịp ngày chỉ 12 ô;
+  - `test-engine` 3/3 lần "Tất cả luật đúng"; không lỗi console ở cả bản mới và `?dohoa=cu`.
+  - Ảnh: `NongTrai-dohoa/.snap/cay_moi_1..4.jpg`, `cay_trang_thai.jpg`, `cay_game_ruong.jpg`.
