@@ -32406,3 +32406,26 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - `test-engine` 3/3 lần in "Tất cả luật đúng" (đã đọc dòng cuối — test vẫn có thể chập chờn vì rơi cưa, xem mục đính chính).
   - Ảnh: `NongTrai-dohoa/.snap/ga_bo_suu_tap.jpg`, `bo_bo_suu_tap.jpg`, `bo_chuong.jpg`.
 - **Chưa hỏi lại:** CEO chưa trả lời HS có chó bằng cách nào (chọn 1 / sưu tầm / mua). Heo, cừu vẫn 1 giống.
+
+## 2026-09-30 (khuya, tiếp) — Nông Trại đồ hoạ: bò dáng thật + hết đè nhau (Thùy: "bò vẫn đè nhau · chân thô · thân quá đơn giản, làm theo bò thật")
+
+- **Bò dáng thật** (`dungBo` viết lại):
+  - **Thân:** thân dài liền (lưng thẳng), bụng xệ, ngực sâu, mông vuông.
+  - **Đầu, cổ:** cổ dài dẹt vươn lên, yếm da; sọ + mặt dài dốc xuống mõm bè; tai chĩa ngang; mắt hai bên.
+  - **Chân:** chân trước là khối tiện `LatheGeometry` (bắp tay → gối → cổ chân thon); chân sau là khối tiện liền rồi UỐN đỉnh theo độ cao (gối ra trước, khoeo ra sau); móng guốc tròn có khe chẻ.
+  - **Khác:** bầu vú 4 núm; đuôi mọc từ gốc đuôi rủ tới khoeo, có chùm.
+  - **Đốm:** tô từng đỉnh bằng nhiễu 3D theo toạ độ thật (`lopLong`, `boMin` nhận `mauHam`) nên loang liền qua đầu/cổ/chân, mép chuyển mềm ±0.03; cẳng chân để trắng.
+  - **Sai rồi sửa:**
+    1. lượt đầu ghép nhiều khối nên lổn nhổn, u xương hông/ngồi thành hòn bi đen → gộp thân, bỏ u;
+    2. cổ thành quả bóng → cổ dẹt dài;
+    3. vòng cổ thành cái đĩa → bỏ, giữ chuông;
+    4. chân sau ghép khúc có bi ở khoeo → tiện liền + uốn.
+- **Hết đè nhau:**
+  - mỗi con 2 vòng tròn trước/sau theo hướng quay, dời tâm về phía đầu (bò `[0.42, 0.4, 0.3]`, heo `[0.26, 0.3, 0.1]`, cừu `[0.2, 0.32, 0.1]`);
+  - CHẶN bước tới nếu làm đè sâu hơn (`sauChong`); chọn điểm đến tránh chỗ có con khác;
+  - giữ cả đầu lẫn đuôi trong rào; tách 2 lượt mỗi khung.
+  - Cách "đè rồi mới đẩy" không đủ: bò 3/30, cừu 8/30 lần đè hơn 5 cm.
+- **Đo sau sửa:**
+  - 2 lượt tổng 220 lần đo trên 3 chuồng (~110 giây game): đè sâu nhất 0, không con nào thò qua rào;
+  - con vật vẫn đi lại (19 m tổng trong 50 giây);
+  - `test-engine` 3/3 lần "Tất cả luật đúng"; `?dohoa=cu` không lỗi.
