@@ -80,6 +80,45 @@ Mọi vật trong game đều đi qua đúng 3 phần này. Vì vậy dù hình 
 
 **Áp chung cho các game 3D khác** (KHTN du hành `khtn-site/`, BK Catan 3D): bước A dùng lại gần như nguyên xi, vì bảng màu, grade và ánh sáng là một module tách riêng.
 
+---
+
+## 5. Game thứ ba: Poseidia (poseidia.vercel.app, bổ sung 30/09)
+
+Thành phố Atlantis có lời dẫn (narration). three r186, **không có model hay texture nào**: toàn bộ là 1,4 MB JS. Cách làm giống Little Habitats, nhưng hậu kỳ nặng kiểu điện ảnh hơn:
+- **N8AO**: bóng khuất tính theo màn hình (thư viện mở của N8python). Nó tạo **bóng tiếp đất** ở chân mọi vật, nên vật không bị "dán" lên nền. Đây chính là lỗi đang thấy ở Nông Trại.
+- **DoF** (mờ tiền/hậu cảnh) + bloom + vignette + god rays.
+- Địa hình được **nướng sẵn 3 bản đồ trên GPU** (`LandHeight` / `LandSun` / `LandAO`), rồi shader đọc lại để tô bóng và khe tối.
+- Hàng nghìn vật (nhà, cây, người, thuyền, chim, cá heo) vẽ bằng `InstancedMesh`. Có tầng bóng riêng cho cảnh xa (`FarShadowCascade`).
+
+→ **Cả 3 game 3D đã phát hành của Danny đều 0 model.** Làm hình bằng code là cách anh ấy thật sự dùng cho 3D, không phải ngoại lệ.
+
+---
+
+## 6. Luồng Grok Bot tạo asset (tweet 12/08 và 28/08/2026) và hướng C: model 3D bằng AI
+
+**Grok Bot** là "đồng đội AI" của xAI (beta từ 12/08/2026): tự đăng nhập công cụ và làm việc trên máy riêng của nó. Danny dùng nó như sau:
+- **2D (dùng thật):** bot đọc code game → viết prompt riêng cho từng asset → gọi trang tạo ảnh riêng của Danny → cắt, xoá nền thành PNG → gắn lại vào game. Kết quả: **74 hình lá bài trong ~2 giờ**, cho game thẻ bài 2D.
+- **Template "Game Art Director":**
+  - từ ý tưởng game ra style guide, bảng màu và bộ prompt;
+  - cắt sprite sheet;
+  - **kiểm lệch bảng màu / lệch lưới** giữa các hình (chống mỗi hình một kiểu).
+- **3D (anh ấy chỉ nhắc là "có thể"):** vẽ concept art → nhờ bot đăng nhập **Tripo/Meshy** để đổi ảnh thành model 3D. Nhưng không game 3D nào anh ấy phát hành dùng đường này (xem mục 5).
+
+**Đánh giá cho BK:**
+- **Không cần Grok Bot.** Claude Code đã chạy được đúng vòng đó: đọc code → viết prompt → gọi công cụ → xử lý → gắn vào game. Cái BK thiếu là **công cụ tạo ảnh** và (nếu đi hướng C) **dịch vụ ảnh→3D**.
+- **Tripo/Meshy (giá tra 30/09/2026):**
+  - Meshy: gói Free 100 credit/tháng, **không có API**, hình ra là CC BY 4.0 (phải ghi nguồn). Gói Pro $20/tháng mới có API.
+  - Tripo: gói Free ~200–300 credit/tháng, model công khai, CC BY 4.0, **không dùng thương mại**. Gói Pro ~$20/tháng thì model riêng tư. API trả trước $1/100 credit.
+- **Điểm mạnh:** con vật hoặc nhà chi tiết, dễ thương khi nhìn gần. Làm nhanh.
+- **Điểm yếu cần lường:**
+  1. Mỗi model sinh riêng nên dễ **lệch style**. Phải có style guide và concept art cùng một bộ, đúng lý do Danny làm template kiểm lệch.
+  2. Lưới nặng, cấu trúc lưới rối → phải giảm đa giác.
+  3. Texture **dính sẵn ánh sáng/bóng**, đánh nhau với ánh sáng của cảnh.
+  4. Muốn con vật cử động thì phải gắn xương. Chưa kiểm Tripo/Meshy tự gắn xương cho 4 chân tốt tới đâu.
+- **Hướng lai hợp lý nếu thử C:** model AI chỉ dùng cho **vật chính nhìn gần** (gà, bò, heo, nhà chính). Code dùng cho **vật số đông** (cỏ, cây, bụi, đá, hàng rào, đường). Cả hai đều phải qua **lớp hoàn thiện chung (bước A)**.
+
+---
+
 **Tên gọi / đứng trên vai ai (R7):**
 - Look development và color grading với split toning: kỹ thuật chuẩn của điện ảnh.
 - Tilt-shift miniature: nhiếp ảnh.

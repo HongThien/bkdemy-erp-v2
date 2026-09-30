@@ -32219,3 +32219,22 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - con vật đổi thành bạn đồng hành (không sản xuất) hay giữ gà đẻ trứng;
   - giờ đổi ngày 5 giờ sáng.
   - Sau đó mới cập nhật `spec-nong-trai-nhip-ngay.md` và build demo.
+
+## 2026-09-30 (tiếp) — Nghiên cứu đồ hoạ: Poseidia + luồng Grok Bot / Tripo / Meshy
+
+- **Thùy gửi thêm:**
+  - game Poseidia (poseidia.vercel.app);
+  - tweet 28/08 của Danny về template Grok Bot tạo asset (2D + concept → Tripo/Meshy).
+- **Poseidia:**
+  - Cũng **0 model, 0 texture** (three r186, 1,4 MB JS).
+  - Hậu kỳ kiểu điện ảnh: N8AO bóng khuất theo màn hình, DoF, god rays.
+  - Địa hình nướng sẵn 3 bản đồ height/sun/AO trên GPU.
+  - ⇒ cả 3 game 3D đã phát hành của Danny đều làm hình bằng code.
+  - Chưa chụp được cảnh: pane ẩn, rAF đứng.
+- **Grok Bot:**
+  - Việc 74 asset trong 2 giờ là **hình lá bài 2D**.
+  - Tripo/Meshy chỉ được nhắc là "có thể", không game 3D nào của anh ấy dùng.
+  - BK không cần Grok Bot: Claude Code chạy được đúng vòng đó. Chỉ thiếu công cụ tạo ảnh và (nếu cần) dịch vụ ảnh→3D.
+  - Giá/bản quyền Meshy/Tripo tra ngày 30/09 → ghi vào mục 6 của `design/nghien-cuu-do-hoa-little-habitats.md`.
+- **Đề xuất thêm hướng C (lai):** model AI cho vật chính nhìn gần, code cho vật số đông, cả hai qua lớp hoàn thiện A.
+- **Chưa code.** Chờ CEO.
