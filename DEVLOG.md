@@ -32340,3 +32340,18 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - online (máy chủ, tài khoản BK, lớp thật, điểm chăm chỉ thật);
   - pha 2 (lò, mèo, chim, trang trí);
   - thử trên máy thật.
+
+## 2026-09-30 (khuya) — Nông Trại đồ hoạ: chó nhiều giống (Thùy: "chó thêm nhiều loại — quan trọng; husky, alaska…")
+
+- **Làm** (nhánh `do-hoa-thu`, `dohoa.js` mục 4f): **1 máy dựng chó `dungCho()` + bảng `GIONG_CHO`.** Thêm giống = thêm 1 dòng thông số:
+  - cỡ, chân, thân dài/béo, đầu to;
+  - tai (dựng/cụp/dơi/gập/bông), mõm (vừa/dài/tịt/nhỏ), đuôi (cuộn/cuộn bông/vểnh/rủ/cụt/pom);
+  - hoa văn: mặt nạ husky, yên đen, đốm dán theo pháp tuyến, xoáy lưng, mõm màu riêng, bờm bông, lông xoăn;
+  - màu mắt.
+- **14 giống** (t chọn theo độ phổ biến ở VN): Shiba · Husky (mắt xanh) · Alaska · Corgi · Poodle · Pug · Golden · Samoyed · Phốc sóc · Chihuahua · Bull Pháp · Becgie · Đốm · Phú Quốc.
+- **Sửa sau ảnh đầu:**
+  - mõm đen của Becgie/Pug/Bull Pháp trông như miệng há → nâu sẫm;
+  - quá nhiều chó cam → Golden vàng nhạt, Phú Quốc lông đen mõm nâu nhạt.
+- `?cho=<giống>` để xem trong game. Ảnh bộ sưu tập: `NongTrai-dohoa/.snap/cho_bo_suu_tap.jpg`.
+- **Kiểm:** `test-engine` pass; không lỗi console; husky chạy trong game.
+- **Chưa làm, chờ CEO:** HS có chó bằng cách nào (chọn 1 con lúc đầu / sưu tầm nhiều con / mở theo cấp / mua) và nuôi 1 hay nhiều con cùng lúc. Đây là thiết kế game, không phải đồ hoạ.
