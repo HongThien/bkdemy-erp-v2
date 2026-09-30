@@ -32452,3 +32452,17 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - chuồng bò 40 lần đo: đè 0, thò rào 0; `?dohoa=cu` không lỗi;
   - `test-engine` 2/3 lần đúng, 1 lần dính lỗi rơi-cưa chập chờn đã biết (`engine.js`/test không đổi so `main`).
 - **Máy chủ thử:** CEO tắt cổng 5271 (tự chạy cho iPad). T thêm launch `nong-trai-dohoa-kiem` cổng 5272 cho việc chụp, không giành 5271.
+
+## 2026-09-30 — App HS: TUTORIAL "Hành trình tân thủ" (bản demo để Thùy test/chỉnh)
+
+- Thùy: tutorial giới thiệu 6 tính năng (Tự luyện · Tự luyện chủ đề · Thử thách · Nhiệm vụ · Rank & bảng xếp hạng · Thế giới BK), "như style game".
+- Dựng `src/screens/hocsinh/tutorial/`: `noiDungTutorial.ts` (TOÀN BỘ lời thoại + chặng + icon — Thùy sửa chữ ở đây) · `MoPhongTutorial.tsx`
+  (6 màn mô phỏng thu nhỏ, dữ liệu giả; `<Soi id>` sáng phần đang nói, phần khác mờ; `giu` giữ khung cha sáng khi con được soi) ·
+  `TutorialHS.tsx` (bản đồ 6 chặng mở khoá tuần tự · người dẫn đường = `nhanVat.nam` của style · hộp thoại chữ chạy, chạm = hiện hết/câu sau ·
+  tự cuộn tới phần đang soi · màn "Mở khoá kỹ năng" với fx sao_moi_sang · màn hoàn thành · "Bỏ qua").
+- Số liệu lấy theo luật đang chạy (subagent đọc code/spec): lượt 10 câu, 60% dạng yếu/40% ôn; Thử thách ≥8/10, 10/20/30 điểm, trần 30/ngày 600/tháng;
+  Nhiệm vụ mở 01/10, ngày +10 / tuần +40 / tháng +150, treo 3 ngày, 2 việc ngày = 1 lượt quay, rương tuần 12 việc +75 EXP, chặng 50 điểm/cấp +25 EXP;
+  Rank 10 bậc Novice→Supreme God, mùa 1/7–30/6, ET 100 · BTVN 100/50 · MT ≤1.000; Thế giới BK 3 kênh, khoe ≤3/ngày trong 3 ngày, bình luận chọn sẵn ≤3/tin.
+- Xem: `hs.html?xem=tutorial` (`&chang=N` vào thẳng chặng N) — không đăng nhập, không gọi DB, chưa lưu tiến độ. Chưa gắn vào luồng thật (lần đầu vào app / nút mở lại).
+- Verify dev-hs 390×844 + 1280×800: mở đầu → bản đồ; chặng 1 soi đúng `phan_bo`; chặng 4 tự cuộn `chang` vào giữa; Mở khoá kỹ năng; màn ngang nhân vật trái.
+  Sửa trong lúc verify: nền `background-attachment: fixed` → lớp `fixed inset-0` riêng. tsc sạch · check:style-hs ✔.

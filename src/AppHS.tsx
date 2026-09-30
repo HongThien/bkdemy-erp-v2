@@ -159,9 +159,13 @@ function DemoHome() {
 // bản build để chụp ảnh gửi design + soát kit sau khi đổi vỏ. Tách chunk riêng (lazy) — không nặng bundle chính.
 const XemMauGami = lazy(() => import('./screens/hocsinh/gami/XemMauGami'))
 const XEM_GAMI = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'gami'
+// TUTORIAL "Hành trình tân thủ" bản demo (hs.html?xem=tutorial · &chang=N): dữ liệu giả, không cần đăng nhập (Thùy 30/09).
+const TutorialHS = lazy(() => import('./screens/hocsinh/tutorial/TutorialHS'))
+const XEM_TUTORIAL = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'tutorial'
 
 export default function AppHS() {
   if (XEM_GAMI) return <Suspense fallback={null}><XemMauGami /></Suspense>
+  if (XEM_TUTORIAL) return <Suspense fallback={null}><TutorialHS /></Suspense>
   const [session, setSession] = useState<Session | null | undefined>(undefined)
   const [hsId, setHsId] = useState<string | null | undefined>(undefined)
   if (import.meta.env.DEV && new URLSearchParams(location.search).has('demo')) return <DemoHome />
