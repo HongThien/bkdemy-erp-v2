@@ -37,7 +37,7 @@ export type Problem = {
   id: string; buoi_hoc_id: string; phase: Phase; problem_no: number; hidden: boolean; ma_dang: string | null; ma_cau?: string | null; hoc_sinh_id?: string | null
   hinh_baitoan_id?: string | null; hinh_bien_the_id?: string | null; hinh_y_id?: string | null; hinh_nhan?: string | null
 }
-export type Grade = { id: string; problem_id: string; hoc_sinh_id: string; result: string; presentation: string; speed: string; points: number; loi?: string[]; muc?: number | null }
+export type Grade = { id: string; problem_id: string; hoc_sinh_id: string; result: string; presentation: string; speed: string; points: number; loi?: string[]; muc?: number | null; nhan_xet?: string | null; diem_dat?: number | null }
 export type ETResult = 'correct' | 'partial' | 'wrong'
 
 // ── helpers ngày/mã (giờ VN) ──────────────────────────────────────
@@ -657,6 +657,28 @@ export async function gradeET(p: { buoiId: string; problemId: string; hocSinhId:
   const { error } = await supabase.from('gami_grades').upsert(
     { buoi_hoc_id: p.buoiId, problem_id: p.problemId, hoc_sinh_id: p.hocSinhId, result: p.result, presentation: 'clean', speed: 'normal', points, loi: p.loi, graded_by: user?.id ?? null },
     { onConflict: 'problem_id,hoc_sinh_id' })
+  if (error) throw error
+}
+
+// ⭐ 30/09 (Thùy) — CHẤM MT CHI TIẾT per-HS-per-câu (Kết quả học tập › Điểm thi › Chấm chi tiết).
+// Kết hợp DCS + điểm HS đạt được + nhận xét trong 1 upsert; Elo `points` vẫn tính theo Đ/C/S (chuẩn ET)
+// để nhất quán với mastery/EXP. `diem_dat` = điểm HS được cho (0.25 → điểm tối đa câu; auto suggest theo
+// DCS ở UI: Đ=full, C=½, S=0, user chỉnh). `nhan_xet` = lời văn per câu (loi chỉ mã, không diễn giải).
+// Field optional — không truyền = giữ nguyên giá trị cũ (undefined không lọt vào row).
+export async function gradeMTChiTiet(p: {
+  buoiId: string; problemId: string; hocSinhId: string
+  result?: ETResult | null; diemDat?: number | null; nhanXet?: string | null; loi?: string[]
+}): Promise<void> {
+  const { data: { user } } = await supabase.auth.getUser()
+  const row: Record<string, any> = { buoi_hoc_id: p.buoiId, problem_id: p.problemId, hoc_sinh_id: p.hocSinhId, presentation: 'clean', speed: 'normal', graded_by: user?.id ?? null }
+  if (p.result !== undefined) {
+    row.result = p.result
+    row.points = p.result ? problemPoints({ result: p.result, presentation: 'clean', speed: 'normal' }) : 0
+  }
+  if (p.diemDat !== undefined) row.diem_dat = p.diemDat
+  if (p.nhanXet !== undefined) row.nhan_xet = p.nhanXet
+  if (p.loi !== undefined) row.loi = p.loi
+  const { error } = await supabase.from('gami_grades').upsert(row, { onConflict: 'problem_id,hoc_sinh_id' })
   if (error) throw error
 }
 
