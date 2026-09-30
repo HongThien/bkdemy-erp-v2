@@ -31,6 +31,18 @@
 - Mọi thứ trong game đều **chậm**: chín, đẻ, nướng xong đều tính **theo ngày**.
 - **Mở khoá dần theo cấp.** Không có chuỗi chế biến dài.
 
+### 2.1 Bố cục, giao diện, phạm vi pha 1 (CEO 30/09, kèm ảnh mẫu Nông trại vui vẻ)
+
+- **Bố cục gọn:** 1 khung nhìn thấy trọn nông trại, không cần bản đồ rộng. Đồ hoạ giữ kiểu 3D hiện đại. *"Mục tiêu chính vẫn là xu"* (CEO).
+  - Xếp dọc cho hợp điện thoại dọc: nhà + kho ở trên · 12 ô ruộng (4×3) ở giữa · nhà chó bên trái · chuồng gà rồi bãi bò bên dưới.
+  - Khung tự vừa màn dọc lẫn ngang (iPad ngang: khung ôm phần lõi, kéo xuống thấy bãi bò). Chỉ kéo và phóng trong khung.
+- **Thanh dụng cụ ở đáy** như Nông trại vui vẻ:
+  - 👆 tay · 🌱 gieo (bảng chọn hạt ghi giá, số quả thu, lãi/ngày) · 💧 tưới · 🐛 bắt sâu · bón phân · 🧺 thu.
+  - Chạm hoặc vuốt qua các ô. Cầm nhầm dụng cụ thì làm như tay, trẻ không bị kẹt.
+  - Ở vườn bạn: chạm tay thì **giúp trước, hái sau**. Cầm 🧺 mới hái ngay.
+- **Nút:** Chợ · Kho · Bạn bè · Thư ở góc trên phải. HUD gọn 1 hàng: cấp · ví (xu + EXP lẻ) · điểm chăm chỉ, dưới là mùa + lượt giúp/hái.
+- **Pha 1 = trồng cây + cùng lắm gà, bò** (CEO). Lò bánh, mèo, chim, đồ trang trí **tắt bằng cờ `PHA`** trong `data.js`, không xoá. Quà trang trí đổi thành phân bón.
+
 ## 3. Tiền tệ và kinh tế
 
 ### 3.1 Ba thứ "tiền"
@@ -159,6 +171,7 @@ xu ví ──(mua hạt/đồ, trần 3 xu/tuần)──┐
 - **Hái trộm: 3 lượt/ngày.**
   - Chỉ hái được ô **đã chín từ hôm trước mà chủ chưa hái**. Cả ngày cây chín là giờ vàng của chủ.
   - Mỗi lượt lấy 1–2 quả. Mỗi ô mất tối đa 30% sản lượng. Mỗi người trộm mỗi ô 1 lần.
+  - Ô từ 3 quả trở lên luôn hái được ít nhất 1 quả. Ô dưới 3 quả thì không ai hái được. (30/09: trước đó ô 3 quả làm tròn xuống 0, không hái được.)
 - **Chó giữ vườn:** thiện cảm càng cao thì càng dễ đuổi trộm. Trộm hụt vẫn mất lượt.
 - **Hộp thư** ghi ai giúp gì, ai hái gì. Mặc định hiện tên, như game ngày xưa.
 
@@ -253,7 +266,18 @@ Làm trên **nhánh `nhip-ngay`** của repo NongTrai. Cảnh 3D, đồ hoạ, t
 
 - **Repo:** `E:\BK ACADEMY\Gaming\KayKit\NongTrai`, git riêng.
   - `main` là bản nhịp Hay Day cấp 1–30 + cảnh quan kiểu Hay Day (commit `5f0a1e0`).
+  - **`nhip-ngay` là bản NHỊP NGÀY pha 1** (30/09):
+    - `8805502`: lõi luật + test + bot;
+    - `fc796d5`: bố cục gọn + thanh dụng cụ + giao diện mới.
+  - Hướng dẫn chạy trọn từ đầu tới cuối bằng thao tác thật.
   - **⚠ Chưa có remote: code chỉ nằm trên máy công ty.**
+- **Bot 90 ngày (pha 1)** — "xu ròng" = xu nông trại trả ra trừ xu đã tiêu:
+
+| Kiểu HS | Xu ròng/tháng | Lên cấp 5 / 10 / 15 | Số ô |
+|---|---|---|---|
+| Chăm học + chăm vườn | chạm trần: ~37 trong tháng mùa đầu, 30 tháng sau | ngày 5 / 24 / 70 | đủ 12 ô ở ngày 58 |
+| Không học, chăm vườn | ~6–15 | cấp 5 ngày 6, cấp 10 ngày 43 | giữ 3 ô (không có điểm để mở) |
+| Học ít, 2 ngày vào 1 lần, không tưới | ~2–4 | — | 4 ô, bị trộm 43 quả |
 - **Chạy:** launch `nong-trai` (port 5270). Kiểm luật: `node NongTrai/tools/test-engine.mjs`.
 - **Bẫy three r128:**
   - `Texture` không có `userData`.

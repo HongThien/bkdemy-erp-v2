@@ -32306,3 +32306,37 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Còn treo:**
   - đo iPad gen 7 thật;
   - chưa gộp nhánh `do-hoa-thu` vào `main` của NongTrai, chờ CEO.
+
+## 2026-09-30 — Nông Trại nhịp ngày: build pha 1 (repo NongTrai, nhánh `nhip-ngay`: 8805502 → fc796d5)
+
+- **Thùy chốt thêm:**
+  - bắt đầu vài ô, mở dần bằng cấp + điểm chăm chỉ;
+  - mọi cây đều tưới / bón được;
+  - trộm 3 · giúp 5;
+  - giữ gà, bò; chó, mèo, chim để tương tác;
+  - giờ đổi ngày tuỳ (t chọn 5 giờ);
+  - chế biến chậm, mở dần.
+- **Giữa lúc build, Thùy gửi ảnh Nông trại vui vẻ:**
+  - bố cục gọn 1 màn, pha 1 chỉ trồng cây + cùng lắm gà bò;
+  - đồ hoạ giữ kiểu hiện đại;
+  - "mục tiêu chính vẫn là xu".
+- **Làm:**
+  - Lõi luật mới: ngày nông trại, cây 1–2–3 ngày, tưới +50% · bón +25% · sâu −20%, 3 tiền tệ, trần tuần/tháng/ngày, vườn bạn ảo suy từ lịch, bạn ảo ghé vườn mình, thú cưng thiện cảm.
+  - Test + bot 3 kiểu HS × 90 ngày.
+  - Khung nhìn gọn tự vừa màn, dùng setViewOffset để canh giữa khoảng trống giữa HUD và thanh dụng cụ.
+  - Thanh dụng cụ, bảng chọn hạt có lãi/ngày, chợ 3 tab (bán · mua · bảng tính lãi), bạn bè, hộp thư, hướng dẫn 11 bước.
+  - Cờ `PHA` tắt lò, mèo, chim, trang trí.
+- **Sai / sửa:**
+  - Trường `ban` bị trùng nghĩa: là sổ việc mình làm ở vườn bạn, đồng thời là cờ "đây là vườn bạn". Kết quả cảnh coi vườn mình là vườn bạn (không hiện biển mở ô). Đổi cờ thành `laBan`.
+  - `datNhan` với vị trí null làm vỡ lúc dựng cảnh.
+  - Ô 3 quả làm tròn xuống thành 0, không hái được. Sửa: ô ≥ 3 quả luôn hái được ≥ 1.
+  - Chó và nhà chó nằm ngoài khung dọc. Mũi tên hướng dẫn chỉ ra ngoài màn.
+- **Kiểm:**
+  - Chơi hết hướng dẫn bằng click / vuốt thật trong Browser pane: gieo bằng dụng cụ → tưới → vuốt thu 15 cà rốt → bán +30 EXP → sang vườn Bảo → giúp bắt sâu → hái 1 lúa mì → về nhà → xoa đầu chó → lên cấp 2.
+  - Chụp 390×844 và 1024×768.
+- **Bẫy verify:** pane ẩn thì kích thước 0×0 ⇒ `resize_window` emulate trước khi chụp. Ảnh `computer screenshot` hay trễ 1 nhịp ⇒ đọc DOM để khẳng định.
+- **Chưa làm:**
+  - nhiệm vụ ngày + thành tích cho nhịp ngày;
+  - online (máy chủ, tài khoản BK, lớp thật, điểm chăm chỉ thật);
+  - pha 2 (lò, mèo, chim, trang trí);
+  - thử trên máy thật.

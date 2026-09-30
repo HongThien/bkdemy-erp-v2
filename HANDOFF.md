@@ -32,7 +32,13 @@
   - **Hướng mới:** kiểu Nông trại vui vẻ / Khu vườn trên mây. HS vào 1 lần/ngày để thu hoạch, mua hạt, gieo, và thăm vườn bạn cùng lớp để hái trộm/giúp.
   - **Rào đã chốt:** giờ vàng chỉ chủ hái · mỗi ô chỉ trộm 1–2 quả · chỉ thăm trong lớp · có việc giúp (tưới, bắt sâu, nhổ cỏ) · cây không héo chết · **có trần trộm VÀ trần giúp mỗi ngày**.
   - **Chưa chốt, đang tạm:** chuyển hẳn (tắt máy/đơn/sạp, không xoá code) · 3–5 phút/ngày · hiện tên người trộm.
-  - **Việc kế tiếp:** build demo offline có "vườn bạn ảo", trên nhánh git `nhip-ngay` của repo NongTrai. Kế hoạch từng file ở spec §6. Chưa có dòng code nhịp ngày nào.
+  - **30/09 đã build PHA 1** trên nhánh `nhip-ngay` (`fc796d5`):
+    - bố cục gọn kiểu Nông trại vui vẻ (Thùy gửi ảnh mẫu) + thanh dụng cụ;
+    - trồng cây + gà, bò + vườn bạn ảo (giúp / hái) + chó;
+    - ví xu + EXP + điểm chăm chỉ, hướng dẫn 11 bước chạy trọn;
+    - lò, mèo, chim, trang trí tắt bằng cờ `PHA`.
+    Thiết kế + số bot: spec §2.1 và §9.
+  - **Việc kế tiếp:** Thùy chơi thử, chỉnh số → nhiệm vụ ngày → online. `main` vẫn là bản Hay Day.
   - **⚠ Code game KHÔNG nằm trong repo ERP:** ở `E:\BK ACADEMY\Gaming\KayKit\NongTrai`, git riêng, **chưa có remote ⇒ chỉ có trên máy công ty**. Commit cuối `5f0a1e0` là bản nhịp Hay Day cấp 1–30 + cảnh quan kiểu Hay Day.
     Làm ở máy khác thì phải mang code sang trước.
   - **Chạy:** launch `nong-trai` (port 5270) · kiểm luật `node NongTrai/tools/test-engine.mjs`.
