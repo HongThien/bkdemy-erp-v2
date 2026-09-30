@@ -17,7 +17,6 @@ import type { TabKey, Problem, Grade, ETResult } from '../../lib/gami'
 import { loadMTForBuoi, listProblems, listGrades, gradeMTChiTiet, deleteGrade } from '../../lib/gami'
 import { tenHienThiDs } from '../../lib/hoten'
 import { supabase } from '../../lib/supabase'
-import { MathText } from '../kho/ui'
 import type { CauHoi } from '../../lib/kho/api'
 import type { MTPhanCaus } from '../../lib/mt'
 import { DEFAULT_DIEM_MT } from '../../lib/tailieu'
@@ -1899,54 +1898,38 @@ function ChamMTChiTietView() {
                             const maxDiem = diemByCau[c.ma_cau] ?? DEFAULT_DIEM_MT
                             const opts: number[] = []
                             for (let d = 0.25; d <= maxDiem + 1e-9; d += 0.25) opts.push(Math.round(d * 100) / 100)
+                            const daGhi = grade?.diem_dat != null
+                            const goiY = daGhi ? null : suggestDiem(grade?.result, maxDiem)
+                            const val = daGhi ? String(grade!.diem_dat) : (goiY != null ? String(goiY) : '')
+                            // ⭐ 30/09 (Thùy) — MỘT DÒNG / câu: [Câu N | Đ|C|S | dropdown điểm | nhận xét].
+                            // Bỏ mã câu / mã dạng / đề bài / Max — GV chấm theo phiếu giấy đã có số câu,
+                            // chỉ cần điền kết quả. Preview đề chi tiết đi qua Buổi học nếu cần.
                             return (
-                              <div key={c.ma_cau} className="rounded-lg border border-slate-100 bg-slate-50/60 p-2.5">
-                                <div className="flex items-start gap-2">
-                                  <span className="mt-1 w-8 shrink-0 text-center text-[12px] font-bold text-violet-600">{ci + 1}</span>
-                                  <div className="min-w-0 flex-1">
-                                    <div className="mb-1 flex flex-wrap items-center gap-2 text-[10.5px] text-slate-400">
-                                      <span className="rounded bg-slate-200/60 px-1.5 py-0.5 font-mono text-slate-500">{c.ma_cau}</span>
-                                      <span>Max <b className="text-slate-600">{fmtDiem(maxDiem)} đ</b></span>
-                                      {!prob && <span className="rounded bg-rose-100 px-1.5 py-0.5 font-medium text-rose-600">⚠ chưa sync problems — mở tab MT buổi 1 lần</span>}
-                                    </div>
-                                    <div className="text-[13.5px] leading-relaxed text-slate-700"><MathText>{c.noi_dung}</MathText></div>
-                                  </div>
+                              <div key={c.ma_cau} className="flex items-center gap-2 rounded-lg border border-slate-100 bg-slate-50/60 px-2 py-1">
+                                <span className="w-10 shrink-0 text-center text-[12.5px] font-bold text-violet-600" title={`${c.ma_cau} · Max ${fmtDiem(maxDiem)} đ`}>Câu {ci + 1}</span>
+                                <div className="flex shrink-0 overflow-hidden rounded border border-slate-300">
+                                  {(['correct', 'partial', 'wrong'] as ETResult[]).map((r) => {
+                                    const on = grade?.result === r
+                                    const lbl = r === 'correct' ? 'Đ' : r === 'partial' ? 'C' : 'S'
+                                    const tone = r === 'correct'
+                                      ? (on ? 'bg-emerald-600 text-white' : 'text-emerald-600 hover:bg-emerald-50')
+                                      : r === 'partial'
+                                        ? (on ? 'bg-amber-500 text-white' : 'text-amber-600 hover:bg-amber-50')
+                                        : (on ? 'bg-rose-600 text-white' : 'text-rose-600 hover:bg-rose-50')
+                                    return <button key={r} onClick={() => setResult(c, r)} disabled={!prob} className={`h-7 w-9 border-r border-slate-200 text-[12.5px] font-bold last:border-r-0 disabled:opacity-40 ${tone}`}>{lbl}</button>
+                                  })}
                                 </div>
-                                <div className="mt-2 ml-10 flex flex-wrap items-center gap-2">
-                                  <div className="flex overflow-hidden rounded border border-slate-300">
-                                    {(['correct', 'partial', 'wrong'] as ETResult[]).map((r) => {
-                                      const on = grade?.result === r
-                                      const lbl = r === 'correct' ? 'Đ' : r === 'partial' ? 'C' : 'S'
-                                      const tone = r === 'correct'
-                                        ? (on ? 'bg-emerald-600 text-white' : 'text-emerald-600 hover:bg-emerald-50')
-                                        : r === 'partial'
-                                          ? (on ? 'bg-amber-500 text-white' : 'text-amber-600 hover:bg-amber-50')
-                                          : (on ? 'bg-rose-600 text-white' : 'text-rose-600 hover:bg-rose-50')
-                                      return <button key={r} onClick={() => setResult(c, r)} disabled={!prob} className={`h-7 w-9 border-r border-slate-200 text-[12.5px] font-bold last:border-r-0 disabled:opacity-40 ${tone}`}>{lbl}</button>
-                                    })}
-                                  </div>
-                                  {/* Dropdown value: ưu tiên diem_dat đã ghi; nếu null nhưng có result thì hiện đề xuất
-                                      (in nhạt để phân biệt). User chọn tường minh ⇒ lưu diem_dat thật. */}
-                                  {(() => {
-                                    const daGhi = grade?.diem_dat != null
-                                    const goiY = daGhi ? null : suggestDiem(grade?.result, maxDiem)
-                                    const val = daGhi ? String(grade!.diem_dat) : (goiY != null ? String(goiY) : '')
-                                    return (
-                                      <label className="flex items-center gap-1 text-[11.5px] text-slate-500">Điểm:
-                                        <select value={val} onChange={(e) => setDiem(c, +e.target.value)} disabled={!prob}
-                                          className={`h-7 rounded border border-slate-300 bg-white px-1 text-[12.5px] font-medium ${daGhi ? 'text-slate-700' : 'text-slate-400 italic'}`}
-                                          title={daGhi ? '' : 'Đề xuất từ Đ/C/S — chọn 1 mức để ghi chính thức'}>
-                                          <option value="">—</option>
-                                          <option value="0">0 đ</option>
-                                          {opts.map((v) => <option key={v} value={v}>{fmtDiem(v)} đ</option>)}
-                                        </select>
-                                      </label>
-                                    )
-                                  })()}
-                                  <input type="text" defaultValue={grade?.nhan_xet ?? ''} placeholder="Nhận xét (tuỳ chọn)" disabled={!prob}
-                                    onBlur={(e) => { if (e.target.value.trim() !== (grade?.nhan_xet ?? '')) setNhanXet(c, e.target.value) }}
-                                    className="h-7 min-w-[220px] flex-1 rounded border border-slate-300 bg-white px-2 text-[12.5px] text-slate-700 disabled:bg-slate-100" />
-                                </div>
+                                <select value={val} onChange={(e) => setDiem(c, +e.target.value)} disabled={!prob}
+                                  className={`h-7 shrink-0 rounded border border-slate-300 bg-white px-1 text-[12.5px] font-medium ${daGhi ? 'text-slate-700' : 'text-slate-400 italic'}`}
+                                  title={daGhi ? `Điểm HS đạt (Max ${fmtDiem(maxDiem)} đ)` : 'Đề xuất từ Đ/C/S — chọn 1 mức để ghi chính thức'}>
+                                  <option value="">—</option>
+                                  <option value="0">0 đ</option>
+                                  {opts.map((v) => <option key={v} value={v}>{fmtDiem(v)} đ</option>)}
+                                </select>
+                                <input type="text" defaultValue={grade?.nhan_xet ?? ''} placeholder="Nhận xét (tuỳ chọn)" disabled={!prob}
+                                  onBlur={(e) => { if (e.target.value.trim() !== (grade?.nhan_xet ?? '')) setNhanXet(c, e.target.value) }}
+                                  className="h-7 min-w-0 flex-1 rounded border border-slate-300 bg-white px-2 text-[12.5px] text-slate-700 disabled:bg-slate-100" />
+                                {!prob && <span className="shrink-0 rounded bg-rose-100 px-1.5 text-[10px] font-medium text-rose-600" title="Chưa sync problems — mở tab MT trong buổi học 1 lần">⚠</span>}
                               </div>
                             )
                           })}
