@@ -64,20 +64,23 @@
 ### 3.2 Trần và vòi/cống (faucet & sink)
 
 ```
-xu ví ──(mua hạt/đồ, trần 3 xu/tuần)──┐
-                                          ├─► hạt ─► chăm ─► nông sản ─► (bán luôn | cho gà bò ăn | nướng bánh) ─► EXP ─► xu ví
-điểm chăm chỉ ─(học, trần 30 câu/ngày)──┘                                                         (trần 30 xu/tháng · mùa đầu 45)
+xu ví ──(mua bịch/đồ, trần chi 5 xu/tháng)──┐
+                                               ├─► bịch hạt ─► chăm ─► nông sản ─► (bán luôn | cho gà bò ăn) ─► EXP ─► xu ví
+điểm chăm chỉ ─(học, trần 30 câu/ngày)───────┘      (mỗi ngày mua tối đa số bịch = số ô)          (trần 30 xu/tháng · mùa đầu 45)
 ```
 
 - **Trần xu nông trại trả ra: 30 xu/tháng/HS. Mùa đầu (2 tháng): 45 xu/tháng.** CEO chốt 30/09.
   - Chạm trần thì bán vẫn được EXP. EXP chỉ dồn lại, sang tháng sau mới đổi ra xu.
-- **Trần tiêu xu cho mua hàng: 3 xu/tuần** (tự đặt). Không thể dùng xu mua mãi, muốn làm vườn to hơn phải học.
+- **Trần chi: 5 xu/tháng (500 EXP), tính MỌI khoản mua** — cả EXP lẻ lẫn xu chẵn. CEO 30/09: *"chỉ nên cho HS dùng 5 xu và kiếm về tầm 10 xu"*.
+  - Phải tính cả EXP lẻ: nếu không, tiền bán hàng quay vòng mua bịch mãi, HS không học vẫn kiếm 20–33 xu/tháng (bot bắt được 30/09).
+  - Không thể dùng xu mua mãi — muốn thêm bịch thì trả bằng điểm, tức là phải học.
 - **Trộm là chuyển đồ giữa các HS, không đẻ thêm xu ⇒ không làm BK tốn thêm.**
   - Thưởng giúp bạn là điểm nhà nông và cơ hội rơi đồ, **không phải xu**. Nếu là xu thì thành một vòi tiền mới.
-- **Mục tiêu cân bằng** (bot giả lập kiểm, mục 8):
-  - HS **chăm học + chăm vườn**, vườn đủ ô: chạm trần khoảng cuối tháng.
-  - HS **không học, chỉ mua bằng xu**: lãi ròng vài xu/tháng, vườn trống một phần.
-  - HS **bỏ chăm**: hoà hoặc lỗ nhẹ.
+- **Mục tiêu cân bằng (CEO 30/09, lần 5)** — kiểm bằng `tools/kich-ban.mjs` + `tools/gia-lap.mjs`, số đo ở mục 9:
+  - **HS chơi chăm chỉ** (vào vườn mỗi ngày, chăm đủ, học đều): **tháng đầu khoảng 30 xu, các tháng sau giảm dần**.
+  - Học càng nhiều càng được nhiều, tới trần 45/30.
+  - **HS không học, chỉ trả bằng xu:** "bỏ ~5 xu, thu về ~10 xu"/tháng.
+  - **HS bỏ chăm:** được ít hơn hẳn. Tưới đủ +80% nên không tưới là mất gần nửa sản lượng.
 
 ### 3.3 Điểm chăm chỉ
 
@@ -97,50 +100,62 @@ xu ví ──(mua hạt/đồ, trần 3 xu/tuần)──┐
 
 ### 5.1 Ô ruộng
 
-- **(CEO 30/09) Bắt đầu 4 ô.** HS chăm đủ 12 ô sau khoảng 1 tháng. Mở ô 5–12 ở cấp **2, 3, 4, 5, 6, 7, 9, 11** (điểm 10 → 60). Bảng cũ bên dưới đã bỏ.
-- **(CEO 30/09) 1 ô = 1 hạt. Mỗi ngày mua tối đa số hạt bằng số ô**, tính cả trả xu lẫn trả điểm. Đây là cái chặn thay cho trần 3 xu/tuần (đã bỏ).
-- ~~Bắt đầu 3 ô~~, mở dần tới 12 ô. Mỗi ô cần **đủ cấp + trả điểm chăm chỉ** (CEO: phải dùng điểm để mở dần).
+- **(CEO 30/09) Bắt đầu 4 ô. Tuần đầu chỉ 4 ô. Hết tháng đầu đủ 8 ô là được.** Ô 9–12 mở dần trong tháng 2–3.
+  - CEO: *"trồng 4 ô và 12 ô về cơ bản không khác gì nhau, nhưng ít thì m sẽ trân trọng và hiểu nó sâu hơn"*.
+- Mỗi ô cần **đủ cấp + trả điểm chăm chỉ** (CEO: phải dùng điểm để mở dần).
+- **(CEO 30/09) Mua theo BỊCH HẠT GIỐNG: 1 bịch = 1 ô**, trong bịch bao nhiêu hạt không quan trọng. **Mỗi ngày mua tối đa số bịch bằng số ô**, tính cả trả xu lẫn trả điểm.
 
-| Ô thứ | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
-|---|---|---|---|---|---|---|---|---|---|
-| Cấp | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 14 |
-| Điểm chăm chỉ | 10 | 15 | 20 | 25 | 30 | 40 | 50 | 60 | 80 |
+| Ô thứ | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+|---|---|---|---|---|---|---|---|---|
+| Cấp | 3 | 5 | 7 | 9 | 12 | 14 | 16 | 18 |
+| Ngày (HS vào mỗi ngày) | ~8 | ~15 | ~22 | ~27 | ~43 | ~56 | ~70 | ~85 |
+| Điểm chăm chỉ | 10 | 15 | 20 | 20 | 30 | 40 | 50 | 60 |
 
-- Tự đặt. Tổng 330 điểm, khoảng 15–20 ngày học đều.
-- Đầu game vườn nhỏ nên tốn ít hạt: điểm dư dồn vào mở ô. Về sau vườn to thì điểm dồn vào hạt.
+- Điểm mở ô là tự đặt. Em học 1 lượt/ngày phải để dành vài ngày mới mở được ô, nên ô 8 thường tới muộn hơn cấp vài ngày.
 
 ### 5.2 Cây và chăm sóc
 
-- Cây **1, 2 hoặc 3 ngày**. Mỗi hạt có 2 giá: EXP hoặc điểm chăm chỉ.
+- Cây **1, 2 hoặc 3 ngày**. Mỗi bịch có 2 giá: EXP hoặc điểm chăm chỉ.
 - **Mọi cây đều tưới và bón được** (CEO):
-  - **Tưới:** mỗi ngày nông trại cây đang lớn tưới được 1 lần. Tưới đủ mọi ngày thì **+50% sản lượng**, tưới thiếu thì cộng theo tỉ lệ số ngày.
-  - **Bón phân:** tốn 1 phân bón, mỗi vụ 1 lần. **+25% sản lượng và ×3 tỉ lệ rơi vật phẩm bất ngờ.**
+  - **Tưới:** mỗi ngày nông trại cây đang lớn tưới được 1 lần. Tưới đủ mọi ngày thì **+80% sản lượng**, tưới thiếu thì cộng theo tỉ lệ số ngày.
+    - Lần 5 nâng từ +50% lên +80%. Đây là cách tăng nguồn thu từ trồng cây qua việc CHĂM mỗi ngày, không qua đường xu.
+  - **Bón phân:** tốn 1 phân bón, mỗi vụ 1 lần. **+25% sản lượng và ×3 tỉ lệ rơi vật phẩm bất ngờ.** Phân mua 10 EXP (bán lại 5).
+    - CEO: tác dụng mạnh thì phải đắt. Chỉ đáng bón cho cây đắt hoặc cây lâu ngày.
   - **Sâu:** mỗi ngày cây đang lớn có khoảng 25% bị sâu. Bắt thì hết. Sâu còn lại lúc thu thì **−20% mỗi con**.
   - **Cây không héo, không chết.**
-- **Sản lượng hiện rõ cho HS tính:** "Dự kiến 7 củ = gốc 4 · tưới +50% · bón +25%". Phần lẻ được làm tròn theo xác suất, cố định theo ô.
-- **LUẬT GIÁ (CEO 30/09, thay bảng mục tiêu bên dưới):** *"cây bằng xu phải có lãi — cái chặn là giới hạn số lần mua"*.
-  - Không chăm thì hoà vốn. Tưới đủ thì **lãi khoảng 50%** (sau mùa đầu 3–5,5 EXP/ô/ngày; mùa đầu 7,5–12).
-  - Giá hạt bằng điểm giữ **1 điểm ≈ 4,5 EXP**.
-  - **Phân bón 8 EXP** (bán lại 4): chỉ đáng bón cho cây đắt / lâu ngày, bón cây 1 ngày thì lỗ.
-  - Bảng đầy đủ: `data.js` (nhánh `nhip-ngay`).
-- ~~Mục tiêu giá cũ~~ (bỏ 30/09):
+- **Sản lượng hiện rõ cho HS tính:** "Dự kiến 18 củ = gốc 5 · tưới +80% · bón +25% · mùa +60%". Phần lẻ được làm tròn theo xác suất, cố định theo ô.
+- **LUẬT GIÁ hiện hành (CEO 30/09, lần 5) — MỞ KHOÁ DẦN:**
+  - **Tuần đầu 2 loại cây. Khoảng mỗi tuần mở thêm 1 loại. 8 tuần (mùa đầu) đủ 8 loại.** CEO: *"8 tuần 2 tháng cũng chỉ cần 8 loại cây thôi"*.
+  - **Cây mở sau lãi/ngày nhỉnh hơn cây trước một chút (~6%/bậc), nhưng bịch đắt hơn (cả EXP lẫn điểm)** ⇒ HS phải cân nhắc tích luỹ.
+  - **Bịch trả bằng xu = giá trị thu khi tưới đủ ÷ 1,6** (lần 4: giảm xu kiếm từ đường xu). Lãi đường xu chỉ có khi chăm; không tưới thì lỗ nhẹ.
+  - **Bịch trả bằng điểm:** 1 điểm đổi được 5,0 EXP nông sản ở bậc 1, lên 6,4 ở bậc 8.
+  - Để dành điểm mua bịch xịn thì lời hơn. Đây là bài toán tích luỹ CEO muốn dạy.
 
-| Loại | Hạt (EXP hoặc điểm) | Thu, chăm đủ | Lãi/ngày | Không chăm |
-|---|---|---|---|---|
-| 1 ngày | 5 hoặc 2 | khoảng 8 | 3 | lỗ nhẹ |
-| 2 ngày | 10 hoặc 3 | khoảng 17 | 3,5 | hoà |
-| 3 ngày | 14 hoặc 4 | khoảng 26 | 4 | hoà |
+| Bậc | Cây | Ngày chín | Mở ở cấp (≈ tuần) | Bịch: EXP · điểm | Thu khi tưới đủ, chưa bonus (EXP) | Thu/ô/ngày | Lãi/ô/ngày (trả xu) | EXP / 1 điểm |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Lúa mì | 1 | 1 (tuần 1) | 16 · 5 | 25 | 25 | 9 | 5,0 |
+| 2 | Cà rốt | 1 | 1 (tuần 1) | 17 · 5 | 27 | 27 | 10 | 5,4 |
+| 3 | Ngô | 2 | 3 (tuần 2) | 36 · 10 | 58 | 29 | 11 | 5,8 |
+| 4 | Khoai tây | 2 | 5 (tuần 3) | 37 · 10 | 59 | 30 | 11 | 5,9 |
+| 5 | Cà chua | 2 | 7 (tuần 4) | 39 · 10 | 63 | 32 | 12 | 6,3 |
+| 6 | Bí ngô | 3 | 9 (tuần 4–5) | 63 · 16 | 101 | 34 | 13 | 6,3 |
+| 7 | Hoa hướng dương | 3 | 11 (tuần 6) | 68 · 17 | 108 | 36 | 13 | 6,4 |
+| 8 | Dâu tây | 3 | 13 (tuần 7–8) | 72 · 18 | 115 | 38 | 14 | 6,4 |
 
-- Cây dài lãi/ngày cao hơn một chút, đổi lại phải chăm nhiều ngày hơn.
-- **Mùa đầu +50% sản lượng.**
+- Lúa mì và ngô trồng quanh năm (làm thức ăn cho gà bò). Hướng dương xếp vào Thu Đông vì hướng dương Nghệ An nở tháng 11–12.
+- Cây mùa sau đặt ngang bậc 7–8 vì tới lúc đó HS đã qua mùa đầu:
+  - Tết: ớt, dưa hấu.
+  - Xuân: đậu nành, lúa nước, mía.
+- Bảng đầy đủ (số quả gốc, giá 1 quả): `data.js` nhánh `nhip-ngay`.
+- **Bonus mùa đầu giảm dần:** tháng 1 **+60%**, tháng 2 **+30%**, sau đó hết (bonus chỉ còn ở sự kiện). Bonus tính theo ngày gieo.
 - **Vật phẩm bất ngờ khi thu hoạch:**
   - Gốc 5%/ô, bón phân thì 15%.
-  - Rơi ra: 60% đồ trang trí · 30% phân bón · 10% "đồ quý" bán được 50 EXP.
+  - Pha 1 rơi ra: 80% phân bón · 20% "đồ quý" bán được 50 EXP. Pha 2 có thêm đồ trang trí.
 
 ### 5.3 Mùa
 
 - **Mỗi mùa có bộ cây và quả riêng.** Có vài cây quanh năm (lúa mì, ngô) vì còn làm thức ăn và làm bánh.
-- **Mùa đầu dài 2 tháng** và có bonus sản lượng.
+- **Mùa đầu dài 2 tháng** và có bonus sản lượng **giảm dần: tháng 1 +60%, tháng 2 +30%** (CEO lần 5: tháng đầu cao nhất, các tháng sau giảm dần).
   - Lý do 2 tháng (CEO đồng ý): theo Lally và cộng sự (2010), trung bình 66 ngày mới thành thói quen.
 - **Sau đó mỗi mùa 1 tháng**, khớp nhịp chốt xu tháng của BK. Bonus chỉ còn ở sự kiện.
 - **Hết mùa:** hạt của mùa cũ không bán nữa. Cây đã gieo vẫn lớn và thu bình thường.
@@ -148,8 +163,8 @@ xu ví ──(mua hạt/đồ, trần 3 xu/tuần)──┐
 
 ### 5.4 Con vật nuôi: gà, bò
 
-- **Gà:** mở ở cấp 3. Mỗi ngày cho ăn 1 lúa mì hoặc 1 ngô ⇒ sáng hôm sau đẻ 1 trứng. Có 30% ra thêm **phân gà** (dùng làm phân bón).
-- **Bò:** mở ở cấp 6. Mỗi ngày ăn 2 ngô hoặc bí ⇒ 1 sữa, 50% ra **phân bò**.
+- **Gà:** mở ở cấp 4 (~tuần 2). Mỗi ngày cho ăn 1 lúa mì hoặc 1 ngô ⇒ sáng hôm sau đẻ 1 trứng. Có 30% ra thêm **phân gà** (dùng làm phân bón).
+- **Bò:** mở ở cấp 10 (~tuần 5). Mỗi ngày ăn 2 ngô hoặc bí ⇒ 1 sữa, 50% ra **phân bò**.
 - Mua con bằng EXP/xu. Số con mở dần theo cấp.
 - Phân bón đến từ chính con vật nuôi (phân chuồng). Đây là vòng tuần hoàn thật và dạy được một kiến thức nông nghiệp.
 
@@ -199,18 +214,32 @@ xu ví ──(mua hạt/đồ, trần 3 xu/tuần)──┐
 ### 5.10 Cấp nông trại
 
 - **Không gọi là EXP/XP** để khỏi lẫn với EXP ra xu. Tạm gọi là **điểm nhà nông**:
-  - +1 mỗi ô thu hoạch, mỗi lượt giúp, mỗi sản phẩm con vật;
-  - +2 mỗi mẻ bánh.
-- Mục tiêu nhịp lên cấp với người vào 1 lần/ngày (tự đặt, bot kiểm):
+  - thu 1 ô: **+3 × số ngày cây lớn**, nên trồng cây dài không thiệt;
+  - tưới 1 ô: **+2**;
+  - +1 mỗi lượt giúp, mỗi sản phẩm con vật;
+  - +2 mỗi mẻ bánh (pha 2).
+- **Trần 8 điểm nhà nông/ngày** (lần 5), giống trần điểm chăm chỉ.
+  - Thu 1 ô + tưới vài ô là đủ trần ⇒ **cấp đi theo SỐ NGÀY CHĂM VƯỜN**.
+  - Học nhiều hay giúp nhiều không mở khoá sớm hơn. Học nhiều được thưởng bằng thu nhập.
+  - Lý do: không có trần thì em học 3 lượt đủ 8 loại cây từ tuần 5, em 1 lượt tới tuần 10. CEO muốn nhịp theo tuần.
+  - Quà hướng dẫn tân thủ không tính trần.
+- **Lịch mở khoá của HS vào mỗi ngày** (bảng mốc `NN_MOC` trong `data.js`, đo bằng bot):
 
-| Cấp | Mốc |
-|---|---|
-| 2 | ngay ngày đầu (có hướng dẫn) |
-| 5 | khoảng ngày 4–5 |
-| 10 | khoảng 3 tuần |
-| 15 | khoảng 2 tháng |
+| Cấp | Ngày ≈ | Mở |
+|---|---|---|
+| 1 | 1 | 4 ô · lúa mì · cà rốt |
+| 3 | 8 | ô 5 · ngô |
+| 4 | 11 | gà |
+| 5 | 15 | ô 6 · khoai tây |
+| 7 | 22 | ô 7 · cà chua |
+| 9 | 27 | ô 8 · bí ngô ⇒ **hết tháng đầu đủ 8 ô** |
+| 10 | 33 | bò |
+| 11 | 37 | hoa hướng dương |
+| 12 | 43 | ô 9 |
+| 13 | 49 | dâu tây ⇒ **8 tuần đủ 8 loại cây** |
+| 14 / 16 / 18 | 56 / 70 / 85 | ô 10 / 11 / 12 |
 
-- **Mở khoá theo cấp:** ô ruộng (kèm điểm), giống cây, gà (3), lò bánh (4), bò (6), chỗ trang trí, công thức bánh mới.
+- Cấp không mở gì thì quà là phân bón. Pha 2 thêm lò bánh, mèo, chim, chỗ trang trí; cấp của chúng đặt lúc làm pha 2.
 
 ### 5.11 Hướng dẫn tân thủ
 
@@ -275,16 +304,39 @@ Làm trên **nhánh `nhip-ngay`** của repo NongTrai. Cảnh 3D, đồ hoạ, t
   - `main` là bản nhịp Hay Day cấp 1–30 + cảnh quan kiểu Hay Day (commit `5f0a1e0`).
   - **`nhip-ngay` là bản NHỊP NGÀY pha 1** (30/09):
     - `8805502`: lõi luật + test + bot;
-    - `fc796d5`: bố cục gọn + thanh dụng cụ + giao diện mới.
+    - `fc796d5`: bố cục gọn + thanh dụng cụ + giao diện mới;
+    - `4a5eb25` / `912019b`: mua theo bịch, trần chi 5 xu/tháng, giảm đường xu, giảm trộm;
+    - `55f1b03`: bot dùng chung + giả lập nghìn HS;
+    - `89d754b`: **lần 5** — mở khoá dần theo tuần, tưới +80%, bonus giảm dần, trần điểm nhà nông/ngày.
   - Hướng dẫn chạy trọn từ đầu tới cuối bằng thao tác thật.
   - **⚠ Chưa có remote: code chỉ nằm trên máy công ty.**
-- **Bot 90 ngày (pha 1)** — "xu ròng" = xu nông trại trả ra trừ xu đã tiêu:
+- **Giả lập kinh tế (lần 5, 30/09)**:
+  - Chạy từ 01/10, 92 ngày.
+  - "Xu ròng" = xu nông trại trả ra trừ xu HS đã tiêu.
+  - T10 = tháng đầu (+60%), T11 = tháng 2 (+30%), T12 = mùa Tết (không bonus).
+  - **HS chăm** (`gia-lap.mjs`): vào vườn hằng ngày, tưới ≥ 70%, làm bài ≥ 7 câu đúng, không bỏ game.
 
-| Kiểu HS | Xu ròng/tháng | Lên cấp 5 / 10 / 15 | Số ô |
+| HS chăm, số lượt bài/ngày | Xu ròng T10 / T11 / T12 | Có ô 8 (trung vị) | Đủ 8 loại cây (trung vị) |
 |---|---|---|---|
-| Chăm học + chăm vườn | chạm trần: ~37 trong tháng mùa đầu, 30 tháng sau | ngày 5 / 24 / 70 | đủ 12 ô ở ngày 58 |
-| Không học, chăm vườn | ~6–15 | cấp 5 ngày 6, cấp 10 ngày 43 | giữ 3 ô (không có điểm để mở) |
-| Học ít, 2 ngày vào 1 lần, không tưới | ~2–4 | — | 4 ô, bị trộm 43 quả |
+| 0 lượt (không học) | 8 / 6 / 4 | chưa (không có điểm mở ô) | — |
+| 1 lượt | 23 / 19 / 16 | ngày 36 | ngày 54 |
+| 2 lượt | 36 / 33 / 26 | ngày 28 | ngày 50 |
+| 3 lượt | 42 / 41 / 28 (chạm trần 45/30) | ngày 27 | ngày 49 |
+
+  - **Toàn bộ 5.000 HS** (quần thể tự giả định, kể cả em bỏ game): TB 13,1 / 9,8 / 7,2 xu/HS/tháng ⇒ **BK chi ~1.300 / 980 / 720 xu mỗi 100 HS**.
+    - Trước lần 5: 1.020 / 1.020 / 665.
+  - Nguồn thu gần hết là trồng cây: 14,5 xu. Con vật 0,7, hái trộm 0,5.
+  - Mỗi ngày vào vườn chơi khoảng 1,4 phút (ước lượng thô), còn xa mốc 10–15 phút.
+  - **10 kịch bản** (`kich-ban.mjs`):
+    - Chăm mẫu mực (3 lượt): 45/45/30, ô 8 ngày 26, 8 loại cây ngày 46.
+    - Học vừa phải (1 lượt): 24/24/15, ô 8 ngày 29, 8 loại ngày 52.
+    - Chỉ chơi không học: 11/12/8.
+    - Quên chăm (2 lượt, không tưới): 22/18/17.
+  - Số đầy đủ: `tools/ket-qua-gia-lap.json`.
+- **Chạy:**
+  - `node tools/test-engine.mjs` (luật);
+  - `node tools/kich-ban.mjs` (10 kịch bản);
+  - `node tools/gia-lap.mjs 5000` (khoảng 2 phút).
 - **Chạy:** launch `nong-trai` (port 5270). Kiểm luật: `node NongTrai/tools/test-engine.mjs`.
 - **Bẫy three r128:**
   - `Texture` không có `userData`.

@@ -32693,3 +32693,73 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - `test-engine` 3/3 "Tất cả luật đúng".
   - Tam giác: Việt 9k → 49k · Nhật 24k → 35k · Hy Lạp 6k → 37k (mức 1 → 10).
   - Ảnh: `NongTrai-dohoa/.snap/nha_{viet,nhat,hylap}_{1_5,6_10}.jpg`, `nha_game_{viet,nhat,hylap}_10.jpg`, `nha_gan_*.jpg`.
+
+
+## 2026-09-30 (tiếp 6) — Nông Trại kinh tế lần 5: mở khoá dần theo tuần + tăng thu từ trồng cây (Thùy: "hết 1 tháng đủ 8 ô là được… tăng nguồn thu từ trồng cây… tháng đầu chơi chăm chỉ phải được tầm 30… tuần đầu 4 ô chỉ cần 2 loại cây… 8 tuần chỉ cần 8 loại… cây sau nhiều xu hơn 1 tý nhưng mua đắt hơn, phải cân nhắc tích luỹ")
+
+**Làm:**
+- **8 loại cây mùa đầu, mở theo cấp** (tuần 1: lúa mì + cà rốt · cấp 3 ngô · 5 khoai tây · 7 cà chua · 9 bí ngô · 11 hướng dương · 13 dâu tây).
+  - Cây sau có thu/ô/ngày cao hơn cây trước ~6%: W 25 → 38 EXP khi tưới đủ, chưa bonus.
+  - 1 điểm đổi được 5,0 → 6,4 EXP nông sản.
+  - Bịch đắt dần: 16 → 72 EXP, 5 → 18 điểm.
+  - Hướng dương chuyển từ mùa Tết sang Thu Đông (hướng dương Nghệ An nở tháng 11–12). Cây mùa Tết/Xuân đặt giá ngang bậc 7–8.
+- **Ô:** 4 ô suốt tuần 1. Ô 5–8 mở ở cấp 3/5/7/9, ô 9–12 ở cấp 12/14/16/18. Điểm mở ô 10/15/20/20/30/40/50/60.
+- **Cấp theo số ngày chăm vườn:**
+  - Điểm nhà nông: thu 1 ô +3 × số ngày cây lớn · tưới 1 ô +2 · giúp/con vật +1.
+  - **Trần 8/ngày.** Gà cấp 4, bò cấp 10.
+  - Bảng mốc `NN_MOC` đo lại bằng bot: HS vào mỗi ngày có ô 8 khoảng ngày 27, dâu tây khoảng ngày 49.
+- **Tăng thu từ trồng cây:**
+  - Tưới đủ +80% (trước +50%).
+  - Giá bịch trả xu tính lại (thu tưới đủ ÷ 1,6), nên đường xu giữ nguyên.
+- **Bonus mùa đầu giảm dần:** tháng 1 +60%, tháng 2 +30%, sau đó hết. `MUA.bonus` giờ là mảng theo từng 30 ngày; engine trả thêm `muaCua().bonus`.
+- Mẹo mở tính năng (nhiemvu) đọc cấp từ data. Trước đây gõ cứng: mẹo lò bánh/mèo/chim vẫn hiện ở pha 1 dù tính năng đã tắt.
+- **File lưu cũ:** nâng số ô lên tối thiểu 4; điểm nhà nông kéo lên đầu cấp đang có.
+  - Browser pane đang giữ bản lưu từ thời 3 ô: `oMo = 3` ⇒ `scene.js` đọc `LUAT.oMo[-1]` ⇒ lỗi `reading 'cap'`.
+- **Công cụ đo:**
+  - Bot ghi ngày lên từng cấp / có từng số ô.
+  - `kich-ban.mjs` thêm cột "ngày có ô 8 · ngày đủ 8 loại cây".
+  - `gia-lap.mjs` thêm mục 3b (HS chăm theo số lượt bài) và 3c (nhịp mở khoá theo kiểu vào vườn).
+- Commit NongTrai `89d754b` (nhánh `nhip-ngay`). Spec cập nhật: §3.2, §5.1, §5.2, §5.3, §5.4, §5.10, §9.
+
+**Số đo luật cũ (lần 4) trước khi sửa — HS vào mỗi ngày, chăm đủ, xu ròng T10/T11/T12:**
+
+| Mức học | Xu ròng |
+|---|---|
+| Không học | 12 / 12 / 8 |
+| 1 lượt | 19 / 28 / 18 |
+| 2 lượt | 37 / 43 / 30 |
+| 3 lượt | 45 / 45 / 30 |
+
+- Nhóm "3 lượt ≈ 20" trong báo cáo giả lập lần trước bị kéo xuống vì lẫn em vào thưa và em làm bài dưới 7 câu.
+- Tháng 11 cao hơn tháng 10 vì có thêm ô mà vẫn còn bonus. Ngược với ý "các tháng sau giảm dần".
+
+**Kết quả lần 5 (5.000 HS × 92 ngày, 108 giây):**
+- **HS chăm** (vào vườn hằng ngày, tưới ≥ 70%, ≥ 7 câu đúng, không bỏ game), xu ròng T10/T11/T12:
+
+| Mức học | Xu ròng |
+|---|---|
+| Không học | 8 / 6 / 4 |
+| 1 lượt | 23 / 19 / 16 |
+| 2 lượt | 36 / 33 / 26 |
+| 3 lượt | 42 / 41 / 28 |
+
+- **Toàn bộ:** TB 13,1 / 9,8 / 7,2 xu/HS/tháng ⇒ BK chi ~1.300 / 980 / 720 xu mỗi 100 HS (lần 4: 1.020 / 1.020 / 665).
+- **Nhịp mở khoá của HS chăm:**
+  - Ô 8 ở ngày 27–28 (2–3 lượt), ngày 36 (1 lượt).
+  - 8 loại cây ở ngày 49–54.
+- **HS vào vườn hằng ngày nhưng ít tưới, ít học:** trung vị ô 8 ngày 49, 8 loại cây ngày 62.
+
+**Sai / sửa:**
+- Lượt đầu không có trần điểm nhà nông: cấp chạy theo khối lượng, em học 3 lượt đủ 8 loại cây từ tuần 5, em 1 lượt tới tuần 10.
+  - Sửa: đặt trần theo ngày. Trần 12 vẫn chênh nhiều, hạ 8 thì đều.
+  - Thêm điểm cho tưới để ngày không có ô chín vẫn đủ trần.
+- Lượt 1 bảng giá: cây mở sau đổi điểm ra EXP tốt hơn ⇒ thu tháng 2 không giảm. Sửa bằng bonus mùa giảm dần theo tháng.
+- `node -e` / heredoc dài lại cắn:
+  - lệnh bash hơn 90 dòng báo lỗi EOF ⇒ viết file bằng Write rồi chạy;
+  - `'\\n'` trong chuỗi Python đi vào file thành xuống dòng thật ⇒ sửa bằng Edit.
+
+**Quyết định cần CEO:**
+- "Chơi chăm chỉ ≈ 30 xu tháng đầu" ứng với khoảng **1,5 lượt bài/ngày**: 1 lượt ≈ 23–29, 2 lượt ≈ 36.
+  - Nếu muốn em chỉ 1 lượt/ngày cũng được 30 thì phải tăng giá trị mỗi điểm thêm ~30%. Khi đó em 2 lượt chạm trần 45 và BK chi tăng thêm.
+- Em học 2–3 lượt chạm trần 45 ở tháng 1–2 rồi 30. Có muốn trần tháng 2 thấp hơn (vd 40) cho "giảm dần" đều hơn không?
+- Thời gian chơi ước khoảng 1,4 phút/ngày, vẫn xa mốc 10–15 phút.
