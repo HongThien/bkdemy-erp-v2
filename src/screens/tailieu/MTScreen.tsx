@@ -13,8 +13,9 @@ import {
 import { homNayVN } from '../../lib/tuan'
 import {
   getTaiLieuFull, deletePhan, setCauOfPhan, suggestCauForDang, khoCuaMon, updateTaiLieu, nhanhCuaMon, tenNhanh, nhanhCuaCau, fetchCausCuaTaiLieu, coKhoHinh, laMaHinh, HINH_PREFIX,
-  ET_FORMS, etFormOf, type PhanResolved, type CauHinh, type ETForm as ETFormKind, type HinhRowInfo,
+  ET_FORMS, etFormOf, coFormTn, MT_DIEM_OPTS, DEFAULT_DIEM_MT, type PhanResolved, type CauHinh, type ETForm as ETFormKind, type HinhRowInfo,
 } from '../../lib/tailieu'
+import { supabase } from '../../lib/supabase'
 // Hình (mô hình) trong MT = 1 HÀNG câu như Đại (Thùy 02/09: "pick câu hình phải như ET, có dòng, là câu đấy, in
 // cùng"). Tái dùng engine của ET Hình: goiYChuoi/ChonChuoiPopup chọn bài, banInTheoMoHinh dựng đề (preview + in),
 // goiYMaDeChoBai sinh mã đề 2/3 (bản KHÁC có sẵn cùng node, không AI sinh mới).
@@ -200,6 +201,11 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   const [phans, setPhans] = useState<PhanResolved[]>([])
   const [rowsByPhan, setRowsByPhan] = useState<Record<string, Row[]>>({})
   const [cau, setCau] = useState<Record<string, CauHoi>>({}) // cache để preview
+  // ⭐ 30/09 (Thùy: "hệ thống đã sinh ra nhiều câu MCQ, tính vào") — cache CÂU CÓ FORM_TN (bảng
+  // dai_cau_form_tn / hgt_cau_form_tn, `da_duyet=true AND xoa_at IS NULL`). Không attach vào CauHoi
+  // (kho không có cột này); giữ map riêng, tra khi build formOpts. Fetch batch theo nhánh mỗi lần
+  // `cau` cache đổi (add key mới).
+  const [formTnByMa, setFormTnByMa] = useState<Record<string, boolean>>({})
   // dangOpts = HỢP mọi bản đồ của môn (Toán: Đại + Hình giải tích), mỗi dòng gắn `nhanh` — tra tên/bậc theo (nhanh, ma_dang).
   const [dangOpts, setDangOpts] = useState<{ ma_dang: string; ten_dang: string; ten_chuyen_de: string; bac: string; nhanh: string | null }[]>([])
   const [lopBacs, setLopBacs] = useState<LopBac[]>([]) // S>A>B>C (thu_tu desc) — suy hệ nào thấy được 1 phần, xem ganMTVaoBuoi
@@ -225,6 +231,35 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   const [hinhPicker, setHinhPicker] = useState<{ phanId: string; idx: number } | null>(null)
   const [hinhMuc, setHinhMuc] = useState<Record<string, MucIn>>({}) // preview đề bài từng hàng Hình (banInTheoMoHinh)
   const chRef = useRef<CauHinh>(ch); chRef.current = ch // cau_hinh MỚI NHẤT cho các hàm async (tránh đè bằng closure cũ)
+  const formTnRef = useRef<Record<string, boolean>>(formTnByMa); formTnRef.current = formTnByMa
+
+  // ⭐ 30/09 — Fetch form_tn presence cho câu MỚI THÊM vào cache. Group theo nhánh (bảng form_tn khác
+  // nhau: dai_cau_form_tn / hgt_cau_form_tn); nhánh chưa có bảng (KHTN/etc.) → mark false luôn. Fetch
+  // chỉ với `da_duyet=true AND xoa_at IS NULL` — câu MCQ nháp/từ chối KHÔNG in ra được, không tính.
+  useEffect(() => {
+    if (!d) return
+    const byNhanh = new Map<string | null, string[]>()
+    for (const ma of Object.keys(cau)) {
+      if (ma in formTnRef.current) continue
+      if (laMaHinh(ma)) continue
+      const nh = chRef.current.nhanhByCau?.[ma] ?? d.nhanh ?? null
+      const arr = byNhanh.get(nh) ?? []; arr.push(ma); byNhanh.set(nh, arr)
+    }
+    if (byNhanh.size === 0) return
+    let alive = true
+    ;(async () => {
+      const patch: Record<string, boolean> = {}
+      for (const [nh, mas] of byNhanh) {
+        const { formTnTbl } = khoCuaMon(d.mon, nh)
+        if (!coFormTn(formTnTbl)) { for (const m of mas) patch[m] = false; continue }
+        const { data } = await supabase.from(formTnTbl).select('ma_cau').in('ma_cau', mas).eq('da_duyet', true).is('xoa_at', null).limit(1000)
+        const have = new Set(((data ?? []) as { ma_cau: string }[]).map((r) => r.ma_cau))
+        for (const m of mas) patch[m] = have.has(m)
+      }
+      if (alive) setFormTnByMa((p) => ({ ...p, ...patch }))
+    })().catch(() => {})
+    return () => { alive = false }
+  }, [cau, d, ch.nhanhByCau])
 
   async function reload() {
     setLoading(true)
@@ -396,6 +431,14 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
     const next: CauHinh = { ...ch, etFormByCau: { ...(ch.etFormByCau ?? {}), [maCau]: f } }
     setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved()
   }
+  // ⭐ 30/09 (Thùy) — điểm per câu (áp mọi mã: câu kho + HÌNH). Default DEFAULT_DIEM_MT. Không lưu key
+  // nếu chọn = default (giữ cau_hinh sạch, xoá được đè); có thể xoá key sau nếu quay lại default.
+  async function setDiem(maCau: string, n: number) {
+    const cur = { ...(ch.diemByCau ?? {}) }
+    if (n === DEFAULT_DIEM_MT) delete cur[maCau]; else cur[maCau] = n
+    const next: CauHinh = { ...ch, diemByCau: cur }
+    setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved()
+  }
   // Số cột khi in — RIÊNG TỪNG CÂU (cau_hinh.colByCau, autosave). Câu tag cột liền nhau tự xếp cạnh nhau.
   const setColCau = (maCau: string, n: number) => saveCh({ ...ch, colByCau: { ...(ch.colByCau ?? {}), [maCau]: n } })
 
@@ -472,6 +515,10 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
 
   if (loading || !d) return <div className="p-8 text-sm text-slate-400">Đang tải…</div>
   const soCau = Object.values(rowsByPhan).reduce((s, rows) => s + rows.filter((r) => r.maCau).length, 0)
+  // ⭐ 30/09 (Thùy) — TỔNG ĐIỂM MT: cộng diemByCau[maCau] cho MỌI hàng có maCau (thiếu key = DEFAULT_DIEM_MT).
+  // Câu Hình bằng mã 'HINH:<uuid>' cũng dùng chung diemByCau (setDiem áp cho mọi mã). Format bỏ trailing 0.
+  const tongDiem = Object.values(rowsByPhan).flat().reduce((s, r) => s + (r.maCau ? (ch.diemByCau?.[r.maCau] ?? DEFAULT_DIEM_MT) : 0), 0)
+  const fmtDiem = (n: number) => (n % 1 === 0 ? String(n) : n.toFixed(2).replace(/0+$/, '').replace(/\.$/, ''))
   // Số câu HIỆN TRÊN PHIẾU cho từng hàng (Thùy 02/09: đếm theo thứ tự builder, bài Hình = 1 số/ý): "17" hoặc "17–19".
   const nhanSo: Record<string, string> = {}
   { let n = 0
@@ -500,7 +547,7 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
         <input type="month" value={mMeta.thang ?? ''} onChange={(e) => setMtField({ thang: e.target.value || null })}
           title="Tháng" className="h-7 rounded-md border border-slate-200 bg-white px-1.5 text-[11.5px] font-medium text-slate-500 hover:border-violet-300" />
         {saved && <span className="text-[12px] text-emerald-600">✓ Đã lưu</span>}
-        <span className="text-[12px] text-slate-400">{soCau} câu · {phans.length} phần{ganList.length ? ` · đã gán ${ganList.length} lớp` : ''}</span>
+        <span className="text-[12px] text-slate-400">{soCau} câu · <b className="text-violet-700">tổng {fmtDiem(tongDiem)} đ</b> · {phans.length} phần{ganList.length ? ` · đã gán ${ganList.length} lớp` : ''}</span>
         <button onClick={() => setPrinting(true)} disabled={!soCau} className="ml-auto rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400 disabled:opacity-40">🖨 Xem / In</button>
         <button onClick={() => setGanModal(true)} disabled={!soCau} className="rounded-md border border-emerald-300 bg-emerald-50 px-3 py-1.5 text-[13px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40">🎯 Gán vào buổi</button>
         <button onClick={xoaMT} title="Xoá MT" className="rounded-md border border-rose-200 px-3 py-1.5 text-[13px] font-medium text-rose-600 hover:bg-rose-50">🗑 Xoá</button>
@@ -581,6 +628,10 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                               <label className="ml-auto flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ cho HS viết (bản in) — trống = mặc định như ET">dòng
                                 <input type="number" min={0} max={50} value={h?.soDong ?? DONG_BTVN} onChange={(e) => setHinhInfo(ma, { soDong: e.target.value === '' ? null : Math.max(0, Math.min(50, +e.target.value || 0)) })} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
                               </label>
+                              <select value={ch.diemByCau?.[ma] ?? DEFAULT_DIEM_MT} onChange={(e) => setDiem(ma, +e.target.value)}
+                                title="Điểm bài Hình này" className="h-7 shrink-0 rounded border border-slate-300 bg-white px-1 text-[12px] font-medium text-slate-700">
+                                {MT_DIEM_OPTS.map((n) => <option key={n} value={n}>{n} đ</option>)}
+                              </select>
                               <button onClick={() => doiHinh(ma)} title="Đổi bản khác (cùng node, ít dùng nhất)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
                               <button onClick={() => setHinhPicker({ phanId: p.id, idx: i })} className="rounded-md border border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">✎ Chọn</button>
                               <button onClick={() => xoaRow(p.id, i)} title="Xoá hàng" className="shrink-0 px-1 text-[13px] text-slate-300 hover:text-rose-600">✕</button>
@@ -602,7 +653,9 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                       }
                       const c = r.maCau ? cau[r.maCau] : null
                       const form = c ? etFormOf(c, ch) : null
-                      const formOpts = ET_FORMS.filter((f) => f.v !== 'trac_nghiem' || !!(c?.lua_chon && c.lua_chon.length))
+                      // ⭐ 30/09 — TN option MỞ cho câu có form_tn đã duyệt (bảng <kho>_cau_form_tn),
+                      // không chỉ câu có lua_chon sẵn trên bảng gốc — CEO: "hệ đã sinh nhiều MCQ, tính vào".
+                      const formOpts = ET_FORMS.filter((f) => f.v !== 'trac_nghiem' || !!(c?.lua_chon && c.lua_chon.length) || (c ? !!formTnByMa[c.ma_cau] : false))
                       return (
                         <div key={i} className="rounded-xl border border-slate-200 bg-slate-50/60 p-2.5">
                           <div className="flex items-start gap-2">
@@ -648,6 +701,12 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                               <input type="checkbox" checked={(ch.colByCau?.[c.ma_cau] ?? 1) === 2} onChange={(e) => setColCau(c.ma_cau, e.target.checked ? 2 : 1)} className="h-3.5 w-3.5 accent-sky-600" />
                               2 cột
                             </label>
+                          )}
+                          {c && (
+                            <select value={ch.diemByCau?.[c.ma_cau] ?? DEFAULT_DIEM_MT} onChange={(e) => setDiem(c.ma_cau, +e.target.value)}
+                              title="Điểm câu này" className="h-7 shrink-0 self-start rounded border border-slate-300 bg-white px-1 text-[12px] font-medium text-slate-700">
+                              {MT_DIEM_OPTS.map((n) => <option key={n} value={n}>{n} đ</option>)}
+                            </select>
                           )}
                           <button onClick={() => xoaRow(p.id, i)} title="Xoá hàng" className="shrink-0 px-1 pt-1 text-[13px] text-slate-300 hover:text-rose-600">✕</button>
                           </div>
