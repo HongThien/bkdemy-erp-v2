@@ -32466,3 +32466,27 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Xem: `hs.html?xem=tutorial` (`&chang=N` vào thẳng chặng N) — không đăng nhập, không gọi DB, chưa lưu tiến độ. Chưa gắn vào luồng thật (lần đầu vào app / nút mở lại).
 - Verify dev-hs 390×844 + 1280×800: mở đầu → bản đồ; chặng 1 soi đúng `phan_bo`; chặng 4 tự cuộn `chang` vào giữa; Mở khoá kỹ năng; màn ngang nhân vật trái.
   Sửa trong lúc verify: nền `background-attachment: fixed` → lớp `fixed inset-0` riêng. tsc sạch · check:style-hs ✔.
+
+## 2026-09-30 (tiếp) — Bản đồ KP Tiếng Anh khối 9 (bản nháp) → `spec-anh-ban-do-k9.md`
+
+- **CEO trả lời:** khối 9 trước · tài liệu GV là đồ sưu tầm · "KP phải viết rõ ra đã" · nghe để sau.
+- **CEO sửa hướng:** **"Tiếng Anh không giống Toán, đừng tham chiếu từ Toán sang"** — học cách GV/trung tâm lớn chia.
+  - Bản đề xuất trước (luật dạng/cụm của Toán, "giữ engine Toán") **bị thay**; §5 `nghien-cuu-mon-anh.md` đã đánh dấu.
+  - Đã ghi memory feedback.
+- **Research thêm (3 luồng):**
+  - danh mục ngữ pháp + ngữ âm từng unit Global Success 6–9 (≥2 nguồn/unit) + chép nguyên văn CT GDPT 2018;
+  - toàn văn 3 đề HN (minh hoạ 2025, 2025 mã 011, 2026 mã 019), đáp án khớp đáp án Sở 40/40;
+  - cách chia của GV/sách luyện thi VN (VietJack 51, ZIM 30, VnDoc, cô Trang Anh), Murphy, Destination B1, Cambridge 0876, Core Inventory, EGP, trung tâm VUS/ILA/Apollo/WSE.
+- **Khung chốt nháp:** 6 mảng (Ngữ âm · Ngữ pháp · Từ vựng · Đọc · Viết-tổ chức văn bản · Giao tiếp) → 25 chuyên đề → **100 KP**.
+  - Unit SGK / chủ đề / dạng đề là **nhãn**, không phải KP.
+  - Từ vựng = chủ đề × loại (cụm động từ, giới từ đi kèm, cấu tạo từ, collocation) theo Destination B1.
+  - Ngữ âm theo quy tắc chữ → âm (đề hỏi vậy), không theo cặp âm của SGK.
+- **Kiểm bằng 120 câu đề thật:** 120/120 gắn được 1 KP; 59/100 KP có mặt.
+  - Theo mảng: NP 44 · Đọc 24 · Viết 19 · TV 18 · NA 12 · GT 3.
+  - **Chỉ 9/44 câu ngữ pháp là điểm lớp 9** ⇒ bản đồ K9 phải có KP gốc lớp 6–8.
+  - **19/120 câu hỏi thứ SGK không dạy thành bài riêng** (mẫu động từ, V-ing, collocation, giới từ đi kèm…).
+  - KP nặng nhất = điền câu vào đoạn (4 câu/đề).
+  - Số đếm từng KP trong file đã đối chiếu bằng máy, lệch 0.
+- **Sai mình tự bắt:** bản nháp đầu ghi "58/100 KP", "khoảng 1/4 câu ngữ pháp là điểm lớp 9" và liệt kê nhầm "trật tự từ" vào nhóm ngoài SGK. Chạy lại máy đếm → sửa thành 59, 9/44, âm câm.
+- **Tài liệu GV có câu ngoài phạm vi CT THCS** (bị động U1, quá khứ hoàn thành U5) ⇒ đề xuất gắn nhãn "ngoài phạm vi K9", không vào kho.
+- **Chờ CEO + GV Anh (§7 spec):** duyệt 100 KP; từ vựng lớp 6–8 chia thế nào; cụm động từ theo động từ gốc hay theo unit; phần ngoài phạm vi; tên KP hiện cho HS/PH.

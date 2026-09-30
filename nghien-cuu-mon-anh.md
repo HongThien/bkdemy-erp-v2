@@ -1,6 +1,15 @@
 # Nghiên cứu MÔN TIẾNG ANH — cần thêm gì để xây như môn Toán
 
-> **Trạng thái: NGHIÊN CỨU (Sparring/Planning) 30/09/2026. Chưa build gì.** Chờ CEO trả lời §8 rồi mới vào P0.
+> **Trạng thái: NGHIÊN CỨU (Sparring/Planning) 30/09/2026. Chưa build gì.**
+>
+> **CEO đã trả lời §8 (30/09):**
+> - Khối 9 trước.
+> - Tài liệu GV là đồ sưu tầm.
+> - KP phải viết rõ ra trước.
+> - Nghe để sau.
+> - **Tiếng Anh không giống Toán, không bê khuôn Toán sang.**
+>
+> ⇒ **§5 bên dưới ĐÃ BỊ THAY** bởi `spec-anh-ban-do-k9.md` (bản đồ 100 KP, dựng theo cách GV, trung tâm và giáo trình tiếng Anh chia; đã kiểm bằng 3 đề thật).
 > Nguồn: 3 luồng research web (đề thi, khung chuẩn, SGK) + đọc toàn bộ tài liệu GV gửi (zip 12 unit lớp 9 + PDF Collo Check)
 > + dò hiện trạng code/DB. Chỗ nào chưa xác minh thì ghi rõ.
 
@@ -181,7 +190,7 @@ Ngoài ra:
 
 ---
 
-## 5. Mô hình bản đồ đề xuất (CEO + GV Anh cần chốt)
+## 5. ~~Mô hình bản đồ đề xuất~~ — ĐÃ THAY bằng `spec-anh-ban-do-k9.md` (CEO 30/09: không bê khuôn Toán)
 
 ### 5.1 KP = điểm ngôn ngữ / kỹ năng, KHÔNG phải dạng đề
 
