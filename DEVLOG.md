@@ -32238,3 +32238,28 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Giá/bản quyền Meshy/Tripo tra ngày 30/09 → ghi vào mục 6 của `design/nghien-cuu-do-hoa-little-habitats.md`.
 - **Đề xuất thêm hướng C (lai):** model AI cho vật chính nhìn gần, code cho vật số đông, cả hai qua lớp hoàn thiện A.
 - **Chưa code.** Chờ CEO.
+
+## 2026-09-30 (chiều) — Nông Trại: MẪU THỬ đồ hoạ theo cách Little Habitats (Thùy: "ok làm thử mẫu đi")
+
+- **Nơi làm:** worktree `E:\BK ACADEMY\Gaming\KayKit\NongTrai-dohoa`, nhánh `do-hoa-thu` của repo NongTrai, commit 28a7254.
+  - Không đụng thư mục chính hay nhánh `main`.
+  - Chạy bằng launch `nong-trai-dohoa`, cổng 5271. Save của cổng này tách riêng, đang chứa trại cấp 30 giả để chụp.
+- **Làm:** thêm `js/dohoa.js` (lớp hoàn thiện, giữ three r128). Mặc định bật; `?dohoa=cu` xem bản cũ; `?bh=1.22` xem bản tươi hơn.
+  - Hậu kỳ: tilt-shift (giảm khi phóng gần) → chỉnh màu (Khronos Neutral, bóng tím-xanh/sáng ấm, nâng đen, vignette, hạt).
+  - Ánh sáng: nắng `#fff1d6` 1.3 + hemisphere trời `#d4e6f8` / đất be `#c4b48e` 0.62 (bỏ đất hắt xanh chuối).
+  - Bóng tiếp đất: chụp chiều cao từ trên xuống 1024² (MeshDepthMaterial) → làm mờ → tấm MultiplyBlending ở y=0.035. Chụp lại 2 lần/giây và mỗi lần `dongBo`.
+  - Viền sáng: vá `MeshStandardMaterial.prototype.onBeforeCompile`.
+  - `gop()` nướng bóng khuất theo độ cao từng khối.
+  - Bỏ bước tăng độ tươi (`tuoiTexture`/`tuoiMau`); cỏ/nước dịu lại.
+  - Gà mới dựng mịn bằng `boMin()`.
+- **Sai rồi sửa:**
+  1. Lần chỉnh màu đầu quá tay: cỏ tối và xỉn → nâng lại.
+  2. Bóng tiếp đất lần đầu loang 2 m, gần như không thấy → siết còn ~0,5 m, đậm hơn.
+  3. Tilt-shift che nửa màn khi phóng gần → cho giảm theo độ phóng.
+  4. Đuôi gà 3 lông dựng đứng nhìn như tai thỏ → ngả ra sau.
+  5. **Chú thích `//` chèn giữa dòng object nuốt mất `tuongPhan`/`am` ⇒ uniform undefined ⇒ khung hình XÁM.** Đã sửa. Bài học: đừng chèn chú thích vào giữa dòng khi sửa bằng script.
+- **Kiểm:**
+  - `test-engine` pass; không có lỗi console.
+  - Ảnh so sánh ở `NongTrai-dohoa/.snap/`: `SS_1_toan_canh.jpg`, `SS_2_chuong_ga.jpg`, `dh_moi_phong.jpg`.
+  - **Chưa thử trên iPad gen 7 thật:** hậu kỳ + chụp chiều cao 2 lần/giây là chi phí mới.
+- **Mâu thuẫn cần CEO chốt:** trước đây CEO chốt "màu phải TƯƠI"; bản mặc định của mẫu dịu hơn. Có bản `?bh=1.22` giữ độ tươi.

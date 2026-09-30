@@ -184,6 +184,15 @@
       "port": 5270
     },
     {
+      "name": "nong-trai-dohoa",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "E:/BK ACADEMY/Gaming/KayKit/NongTrai-dohoa/serve.mjs",
+        "5271"
+      ],
+      "port": 5271
+    },
+    {
       "name": "dev-sukien",
       "runtimeExecutable": "npm",
       "runtimeArgs": [
