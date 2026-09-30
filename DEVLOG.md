@@ -32291,3 +32291,18 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - chưa đo trên iPad gen 7 thật;
   - con vật chưa tránh nhau (đè lên nhau như bản cũ);
   - chó vẫn là Quaternius.
+
+## 2026-09-30 (tối, tiếp) — Nông Trại đồ hoạ: làm nốt chó + con vật không đè nhau (Thùy: "làm nốt đi")
+
+- **Chó Shiba dựng bằng code** (`LOAI_VAT.cho`):
+  - lông cam, bụng và mõm kem, tai dựng, lưỡi hồng, đuôi cuộn;
+  - lần đầu chân quá dài nhìn như "chó chân cao" → rút chân, hạ thân.
+- **Bản mới không nạp mô hình Quaternius nào nữa** (`taiQA({})`).
+- **Con vật cùng chuồng không đi đè lên nhau:** `tachNhau()` đẩy tách theo bán kính (gà 0.22 · bò 0.5 · heo 0.36 · cừu 0.4), giữ trong chuồng. Áp cho cả bản cũ.
+  - Đo sau 200 khung: khoảng cách nhỏ nhất bò 0.98 · heo 0.71 · cừu 0.78, xấp xỉ tổng bán kính.
+- **Kiểm:**
+  - `test-engine` pass; không lỗi console ở cả bản mới và `?dohoa=cu`.
+  - Bản cũ vẫn dùng Quaternius (37 lưới có xương).
+- **Còn treo:**
+  - đo iPad gen 7 thật;
+  - chưa gộp nhánh `do-hoa-thu` vào `main` của NongTrai, chờ CEO.
