@@ -32168,3 +32168,18 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Chưa trả lời:** chuyển hẳn hay lai; 3–5 phút/ngày. t tạm: chuyển hẳn bằng cờ (không xoá code Hay Day), 3–5 phút.
 - **Ghi:** thiết kế + kế hoạch code ở `spec-nong-trai-nhip-ngay.md`; mục ① HANDOFF.
 - **Chưa code.** Phiên dừng khi đang đọc engine/ui/nhiemvu để lên kế hoạch (Thùy về nhà, mai làm tiếp).
+
+## 2026-09-30 — Nghiên cứu đồ hoạ: Little Habitats (Danny Limanseta) → hướng xử lý đồ hoạ game BK
+
+- **Thùy:** BK đang gặp vấn đề đồ hoạ game. Đọc Danny Limanseta (X), mổ game Little Habitats (wavedash) để tìm cách làm tương tự.
+- **Mổ build thật:**
+  - Game **không tải model hay texture nào**, chỉ 1,4 MB JS + three r186. Danny tự xác nhận "Opus generated all these assets in code!".
+  - Game thứ hai Wildbrush (kiểu Zelda, làm trong 1 ngày) cũng 0 GLB, 0 texture.
+  - Cái đẹp đến từ 1 bảng màu (~60 màu pastel) + 1 bộ dựng hình từ khối cơ bản (nướng AO vào màu đỉnh) + 1 bộ vá vật liệu chung (gió/tuyết/mùa/ngày đêm) + hậu kỳ (bloom ngưỡng 1.05 → tilt-shift → grade: Khronos Neutral, split toning, vignette, grain) + 9 khung giờ nội suy mọi thông số.
+- **So Nông Trại BK (r128):**
+  - Trộn 2 gói asset khác style (KayKit + Quaternius).
+  - Cố ý tăng độ tươi và bỏ tone map, không có hậu kỳ.
+  - Hemisphere đất màu xanh chuối `0x8fcf5a` (`scene.js:60`) làm mọi vật bị hắt xanh.
+  - Mặt trời chỉ 1.05.
+- **Ghi:** thông số + đề xuất 2 bước (A: lớp hoàn thiện, giữ asset · B: asset bằng code) ở `design/nghien-cuu-do-hoa-little-habitats.md`.
+- **Chưa code.** Chờ CEO chọn hướng.
