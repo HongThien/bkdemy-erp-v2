@@ -32183,3 +32183,39 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Mặt trời chỉ 1.05.
 - **Ghi:** thông số + đề xuất 2 bước (A: lớp hoàn thiện, giữ asset · B: asset bằng code) ở `design/nghien-cuu-do-hoa-little-habitats.md`.
 - **Chưa code.** Chờ CEO chọn hướng.
+
+## 2026-09-30 — Nông Trại nhịp ngày: Thùy chốt kinh tế + vòng chơi (sparring, chưa code)
+
+- **Lõi = trồng cây:** mua hạt → tưới → bón phân → bắt sâu → thu hoạch → bán.
+  - Hạt mua bằng **xu ví BK thật** hoặc **điểm chăm chỉ**. Điểm chăm chỉ có được khi làm bài.
+  - Đồ rơi ngẫu nhiên dùng để trang trí, hoặc đổi ra xu.
+- **Xu = xu BK thật.** Chấp nhận mất tiền để tăng thời gian trong app và tạo thói quen, cân đối sau.
+  - Chốt **trần xu nông trại trả ra 30/tháng/HS, mùa đầu 45**.
+- **Mùa:**
+  - Mỗi mùa có cây và quả khác nhau.
+  - **Mùa đầu dài 2 tháng**, có bonus sản lượng. t đề xuất 2 tháng theo Lally 2010: trung bình 66 ngày mới thành thói quen.
+  - Sau đó **mỗi mùa 1 tháng**. Bonus chỉ còn ở sự kiện.
+- **Chống "vòng xu tự nuôi":** giới hạn số lần mua hạt + trần xu tiêu cho hạt theo tuần/tháng. Muốn kiếm thêm phải học.
+  - Thùy muốn HS học kinh tế/toán qua việc tự tính lãi lỗ.
+- **Điểm chăm chỉ:**
+  - Tính theo số câu đúng. Lượt 10 câu **≥ 70%** mới được, làm bao nhiêu lượt cũng được, có trần/ngày.
+  - Thùy: trần **20–30 câu/ngày**. 50 là nhiều quá, dễ nản.
+  - Gian lận (tra mạng) xử lý từng ca riêng, không đổi luật vì vài trường hợp.
+- **Bán nông sản ra EXP** (100 EXP = 1 xu). t đề xuất đổi tức thì, phần lẻ giữ lại, để không có 0,1 xu.
+  - ⚠ `fn_xu_tu_exp` hiện làm tròn LÊN. Nông trại phải làm tròn xuống, giữ phần lẻ.
+  - Nông trại không phải dữ liệu học tập ⇒ không có nhãn môn, trần xu riêng, không ăn vào trần 30/tháng/môn.
+- **Cây tròn ngày 1 – 2 – 3.** HS đi học ban ngày, không vào được.
+  - t đề xuất "ngày nông trại" đổi lúc 5 giờ sáng VN: gieo hôm nay thì sáng mai chín.
+  - Giờ vàng = cả ngày cây chín.
+- **Phiên chơi 10–15 phút** (Thùy sửa từ 3–5 phút). Hành vi mong muốn mỗi ngày:
+  - thu hoạch;
+  - sang vườn bạn giúp đỡ, hái trộm nếu được (trần lượt, còn cân nhắc);
+  - cây dài thì tưới, bón phân;
+  - bán đồ, mua hạt, gieo;
+  - đồ rơi thì trang trí;
+  - chơi với con vật (cho chim ăn, xoa đầu chó ⇒ điểm thiện cảm).
+- **Đang chờ Thùy chốt:**
+  - trộm 3 / giúp 5 lượt mỗi ngày;
+  - con vật đổi thành bạn đồng hành (không sản xuất) hay giữ gà đẻ trứng;
+  - giờ đổi ngày 5 giờ sáng.
+  - Sau đó mới cập nhật `spec-nong-trai-nhip-ngay.md` và build demo.
