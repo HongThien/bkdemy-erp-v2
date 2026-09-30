@@ -62,7 +62,6 @@
     - 10 kịch bản HS: `node tools/kich-ban.mjs`.
     - Giả lập nghìn HS: `node tools/gia-lap.mjs 5000` (khoảng 2 phút).
   - **Treo:**
-    - Xin CEO xoá 3 file tạm chưa commit `tools/_dbg4.mjs`, `_do_cham.mjs`, `_thu_bien.mjs`.
     - 4 file cầu KayKit chưa theo dõi trong `assets/kaykit/medieval/`.
     - Ref hỏng `desktop.ini` trong `.git` của repo game.
   - **Bẫy:**
