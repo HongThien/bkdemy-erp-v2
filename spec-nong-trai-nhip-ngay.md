@@ -24,8 +24,16 @@
 | Tưới, bón phân, bắt sâu cho cây của mình | 1–2 phút | mỗi ô tưới 1 lần/ngày |
 | Sang vườn bạn: **giúp** (tưới hộ, bắt sâu hộ) | 3–5 phút (gộp với trộm) | **5 lượt** |
 | Sang vườn bạn: **hái trộm** | tính chung dòng trên | **3 lượt** |
-| Ra chợ bán nông sản, mua hạt, gieo, cho gà bò ăn, nướng bánh | 2–3 phút | tiêu tối đa 3 xu/tuần cho mua hàng |
-| Trang trí bằng đồ rơi · xoa đầu chó, vuốt mèo, cho chim ăn | 2–3 phút | mỗi con 1 lần |
+| Ra chợ bán nông sản, mua bịch hạt, gieo, cho gà bò ăn | 2–3 phút | chi tối đa 5 xu/tháng · mỗi ngày mua ≤ số ô |
+| Xem **sổ thu chi** (thu, chi, lãi hôm nay / tháng này) | ~1 phút | — |
+| Nhiệm vụ ngày · nâng cấp nhà · xoa đầu chó (pha 2: vuốt mèo, cho chim ăn) | 1–2 phút | mỗi con 1 lần |
+
+- **Thời gian chơi (CEO 30/09):** thu hoạch, bán, mua hạt, xem tổng kết chi tiêu, sang thăm nhà bạn là **đã ~10 phút** khi có bạn cùng lớp thật.
+  - Con số "~1,4 phút/ngày" của bot (mục 9) chỉ đếm số lần chạm, không đếm lúc HS nhìn, đọc, tính; bot cũng chỉ có 6 bạn ảo. Không dùng số đó để kết luận.
+  - Ước theo người thật: mở game 0,5 · ruộng 2 · chợ 1–2 · sổ thu chi 1 · 5–10 vườn bạn 3–5 · con vật 1 ⇒ **~9–12 phút**.
+  - Đo thật khi cho 5–10 HS chơi thử.
+- **Thêm thời gian bằng việc có quyết định, không kéo dài thao tác.** Bắt chờ, làm hoạt ảnh chậm, thêm bước lặp thì tăng phút nhưng HS chán rồi bỏ.
+  - Theo kiểu "việc thường ngày" của Animal Crossing: mỗi ngày nhiều việc nhỏ, việc nào cũng có lý do.
 
 **Luật chung:**
 - Mọi thứ trong game đều **chậm**: chín, đẻ, nướng xong đều tính **theo ngày**.
@@ -221,11 +229,27 @@ xu ví ──(mua bịch/đồ, trần chi 5 xu/tháng)──┐
   - **Chim:** từ mốc 50, mỗi ngày tự bắt 1 con sâu trong vườn.
   - **Mèo:** mỗi ngày có tỉ lệ tha về 1 món nhỏ (phân bón, đồ trang trí), tăng theo thiện cảm.
 - Kiểu Nintendogs / Animal Crossing: gắn bó dần với con vật, không phải kiểu nuôi Tamagotchi dễ chết.
+- **Chó dựng bằng code** (nhánh đồ hoạ, `js/dohoa.js`): 14 giống, 16 động tác (ngồi, bắt tay, lăn ngửa, nhảy mừng, đuổi đuôi, sủa…).
+  - Chạm = xoa đầu (luật như trên); hiệu ứng là động tác được vuốt ve.
+  - Chỉ sủa thành tiếng lúc đang được xoa đầu, cho khỏi ồn lớp học.
+- **ĐỀ XUẤT, chưa chốt, không gấp — DẠY CHÓ:** mỗi mốc thiện cảm chó học được 1 trò (vd 10 ngồi · 20 bắt tay · 35 lăn ngửa…).
+  - Trò đã học thì HS bấm "Ngồi!", "Bắt tay!" là chó làm, giống Nintendogs.
+  - Chỉ để đáng yêu, không dính xu. CEO 30/09 "chưa hiểu ý" ⇒ đã giải thích, chờ CEO trả lời.
 
-### 5.9 Trang trí
+### 5.9 Nhà nâng cấp 10 mức (CEO 30/09 — thay cho trang trí lẻ)
 
-- Đồ rơi được đặt vào các **chỗ trang trí cố định** quanh nhà và dọc đường. **Chỉ để đẹp, không cộng tiền.**
-- Bạn ghé thăm sẽ thấy. Sau này khoe được lên Thế giới BK.
+- **CEO:** *"t cũng tính quả trang trí mà hơi khó. nên 10 mức nhà là kiểu nâng cấp nhà đẹp hơn ấy"*
+  - ⇒ **bỏ việc đặt đồ trang trí lẻ vào chỗ cố định.** Code chỗ trang trí vẫn giữ, tắt bằng cờ `PHA`.
+  - ⇒ **nhà là thứ HS nâng cấp dần, mức 1 → 10**, đẹp dần lên.
+- **Hình đã có** (nhánh đồ hoạ, `DH.nhaMoi(kieu, muc)`): 4 kiểu (gỗ đồng quê · nhà Việt ba gian Bắc Bộ · nhà Nhật · nhà Hy Lạp) × 10 mức.
+  - Mỗi mức thêm vài món: mái tôn → mái ngói, vách mộc → tường sơn, hoa, đèn, ống khói…
+  - Hiện chỉ xem được bằng link `?kieu=viet&nha=6`.
+- **ĐỀ XUẤT, chờ CEO chốt — nâng cấp bằng VẬT LIỆU kiếm từ NHIỆM VỤ NGÀY:**
+  - Vật liệu: gỗ, gạch, ngói, sơn.
+  - Mỗi mức cần đủ cấp nông trại + đủ vật liệu. Em vào mỗi ngày lên hết mức 10 trong khoảng 3 tháng.
+  - Kiểu nhà HS tự chọn; đổi kiểu vẫn giữ mức.
+  - Cách khác là nâng cấp bằng xu. BK đỡ tốn hơn, nhưng xu là thứ HS muốn giữ để đổi quà, dễ gây tiếc. CTO nghiêng về vật liệu.
+- **Chỉ để đẹp, không cộng tiền.** Bạn ghé thăm sẽ thấy. Sau này khoe được lên Thế giới BK.
 
 ### 5.10 Cấp nông trại
 
@@ -271,7 +295,35 @@ xu ví ──(mua bịch/đồ, trần chi 5 xu/tháng)──┐
 10. Nhận quà.
 
 - Người dẫn tạm là Bác Hai, sau này thay bằng thầy cô BK.
-- **Nhiệm vụ ngày và thành tích:** làm sau khi vòng chơi chính đã đúng cảm giác (ví dụ thu 10 nông sản, giúp bạn 3 lần, cho gà ăn).
+- **Thanh "Việc hôm nay"** (đã build 30/09, `E.viecHom`):
+  - Việc suy thẳng từ state: thu · gieo · tưới · bắt sâu · cho gà/bò ăn · xoa đầu chó · giúp x/5 · hái x/3.
+  - Chỉ để chỉ đường, **không thưởng**. Tắt bằng `LUAT.viecHom = false`.
+
+### 5.12 Nhiệm vụ ngày (CEO 30/09: OK làm) — chi tiết là ĐỀ XUẤT, chờ chốt cùng mục 5.9
+
+- **Khác "Việc hôm nay":** "Việc hôm nay" là danh sách việc thường ngày để chỉ đường. Nhiệm vụ ngày là **3 việc có thưởng**, đổi mỗi ngày lúc 5 giờ sáng.
+  - Hiện chung trong khung "Việc hôm nay", có dấu ⭐.
+  - Rút cố định theo hash (HS, ngày) từ cây và tính năng đã mở ⇒ bản online suy ra được, không đẻ dòng chờ.
+
+| Loại | Ví dụ | Dạy gì |
+|---|---|---|
+| Giao hàng | "Giao 6 cà rốt cho Bác Hai" | phải tính hôm qua trồng gì |
+| Chăm vườn | "Tưới 5 ô", "Bắt 2 con sâu", "Giúp 3 bạn" | thói quen chăm |
+| Học | "Làm 1 lượt bài đạt" | nối với việc học |
+
+- **Thưởng:**
+  - Mỗi việc cho vật liệu nâng cấp nhà (mục 5.9); đủ 3 việc được thêm 1 phần phân bón.
+  - **Không thưởng xu/EXP** để khỏi mở vòi tiền mới.
+  - Việc giao hàng phải cho vật liệu đáng giá hơn số quả đem giao, không thì HS thấy lỗ.
+
+### 5.13 Sổ thu chi (ĐỀ XUẤT, chờ CEO gật)
+
+- CEO tính "xem tổng kết chi tiêu" là một phần của vòng chơi mỗi ngày. Màn này **chưa có**: hiện chỉ có ví (xu + EXP lẻ, trần tháng) và bảng tính lãi trong chợ.
+- **Nội dung:**
+  - Hôm nay / tuần này / tháng này: đã bán bao nhiêu (theo loại), mua bịch bao nhiêu (xu và điểm), lãi bao nhiêu.
+  - Cây nào lời nhất; so với hôm qua; đã chi bao nhiêu / 5 xu của tháng.
+  - Đúng phần kinh tế CEO muốn dạy.
+- **Tính từ bộ đếm và nhật ký có sẵn** (`s.dem`, tiền vào ra theo tháng). Bản online là hàm `fn_nt_*` đọc dòng giao dịch thật; không để client cộng rồi ghi lại.
 
 ## 6. Không làm ở bản này
 
@@ -308,8 +360,8 @@ Làm trên **nhánh `nhip-ngay`** của repo NongTrai. Cảnh 3D, đồ hoạ, t
   - Sang vườn bạn = vẽ lại cùng cảnh bằng state của bạn.
 - **Test luật** (`tools/test-engine.mjs`):
   - đổi ngày lúc 5 giờ;
-  - trần 30 điểm, 3 trộm, 5 giúp, 3 xu/tuần;
-  - trộm tối đa 30%, chỉ trộm được sau ngày chín;
+  - trần 30 điểm, 3 trộm, 5 giúp, chi 5 xu/tháng, mua ≤ số ô/ngày, 8 điểm nhà nông/ngày;
+  - trộm tối đa 20%, chỉ trộm được sau ngày chín;
   - sản lượng theo chăm sóc;
   - trần xu tháng.
 - **Bot giả lập 60 ngày** cho 3 kiểu HS ở mục 3.2, đo xu/tháng và nhịp lên cấp so với mục 5.10.
@@ -323,9 +375,16 @@ Làm trên **nhánh `nhip-ngay`** của repo NongTrai. Cảnh 3D, đồ hoạ, t
     - `fc796d5`: bố cục gọn + thanh dụng cụ + giao diện mới;
     - `4a5eb25` / `912019b`: mua theo bịch, trần chi 5 xu/tháng, giảm đường xu, giảm trộm;
     - `55f1b03`: bot dùng chung + giả lập nghìn HS;
-    - `89d754b`: **lần 5** — mở khoá dần theo tuần, tưới +80%, bonus giảm dần, trần điểm nhà nông/ngày.
+    - `89d754b`: **lần 5** — mở khoá dần theo tuần, tưới +80%, bonus giảm dần, trần điểm nhà nông/ngày;
+    - `8b3c25e`: **gộp nhánh đồ hoạ** — cây 4 giai đoạn, gà/bò nhiều giống, chó mới, nhà 10 mức, ánh sáng / chỉnh màu;
+    - `6958b9b`: cài như app (PWA) + thanh "Việc hôm nay";
+    - `9556216`: bố cục như ảnh Nông trại vui vẻ, **chơi màn ngang** (mục 2.1).
+  - Nhánh **`do-hoa-thu`**: đồ hoạ do một phiên riêng làm. Worktree `E:\BK ACADEMY\Gaming\KayKit\NongTrai-dohoa`, port 5271, xem thử chó ở `cho-demo.html`.
+    - Hình mới đều nằm trong `js/dohoa.js` (API `NT_DOHOA`); tắt để so bản cũ bằng `?dohoa=cu`.
+    - Nhánh đó có commit mới thì `git merge do-hoa-thu` vào `nhip-ngay`. Chỗ hay vướng là phần móc vào `scene.js`, vì bố cục nhịp ngày khác cảnh Hay Day.
+  - **Nhiều phiên Claude cùng làm `nhip-ngay` trên một checkout** (kinh tế, đồ hoạ, bố cục). Commit ngay sau khi xong từng việc, kéo trạng thái mới trước khi sửa `scene.js` / `ui.js`.
   - Hướng dẫn chạy trọn từ đầu tới cuối bằng thao tác thật.
-  - **⚠ Chưa có remote: code chỉ nằm trên máy công ty.**
+  - **⚠ Chưa có remote: code chỉ nằm trên máy công ty** (ổ E: là ổ cứng thật, không phải ổ Google Drive).
 - **Giả lập kinh tế (lần 5, 30/09)**:
   - Chạy từ 01/10, 92 ngày.
   - "Xu ròng" = xu nông trại trả ra trừ xu HS đã tiêu.
@@ -342,7 +401,7 @@ Làm trên **nhánh `nhip-ngay`** của repo NongTrai. Cảnh 3D, đồ hoạ, t
   - **Toàn bộ 5.000 HS** (quần thể tự giả định, kể cả em bỏ game): TB 13,1 / 9,8 / 7,2 xu/HS/tháng ⇒ **BK chi ~1.300 / 980 / 720 xu mỗi 100 HS**.
     - Trước lần 5: 1.020 / 1.020 / 665.
   - Nguồn thu gần hết là trồng cây: 14,5 xu. Con vật 0,7, hái trộm 0,5.
-  - Mỗi ngày vào vườn chơi khoảng 1,4 phút (ước lượng thô), còn xa mốc 10–15 phút.
+  - Bot ước khoảng 1,4 phút/ngày, nhưng chỉ đếm số lần chạm. Thời gian thật của người chơi xem mục 2.
   - **10 kịch bản** (`kich-ban.mjs`):
     - Chăm mẫu mực (3 lượt): 45/45/30, ô 8 ngày 26, 8 loại cây ngày 46.
     - Học vừa phải (1 lượt): 24/24/15, ô 8 ngày 29, 8 loại ngày 52.

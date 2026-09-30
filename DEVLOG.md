@@ -32899,3 +32899,40 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Bản lưu localStorage của Thùy: SHA-256 khớp bản sao trước khi thử.
 - Ảnh: `NongTrai/.snap/bocuc_ngang_dt.jpg`, `bocuc_ngang_ipad.jpg`.
 - **Chưa thử trên máy thật.**
+
+## 2026-09-30 (tiếp 8) — Nông Trại: tăng thời gian chơi · nhà nâng cấp 10 mức · nhiệm vụ ngày (Thùy: "Làm sao tăng thời gian chơi lên 1 tý nhỉ")
+
+**CTO đề xuất:** thêm việc CÓ QUYẾT ĐỊNH, không kéo dài thao tác (kiểu "việc thường ngày" của Animal Crossing). Theo thứ tự:
+1. nhiệm vụ ngày;
+2. bật trang trí + nhà đẹp dần;
+3. chó học trò (16 động tác có sẵn);
+4. vườn bạn (tăng lượt giúp, bảng tin lớp);
+5. giá chợ đổi theo ngày.
+
+**CEO trả lời:**
+1. Nhiệm vụ ngày: **OK**.
+2. *"trang trí t cũng tính quả mà hơi khó. nên 10 mức nhà là kiểu nâng cấp nhà đẹp hơn ấy"* ⇒ **bỏ trang trí lẻ, nhà nâng cấp mức 1 → 10**.
+3. Chó học trò: *"chưa hiểu ý"*.
+4. *"vào chơi thu hoạch bán mua hạt giống các thứ, xem tổng kết chi tiêu, sang thăm nhà bạn là phải 10 phút rồi còn gì"*.
+
+**Sai của CTO:**
+- Lấy số "~1,4 phút/ngày" của bot làm thời gian chơi. Bot chỉ đếm lần chạm (20 giây mở + 1,5 giây/thao tác + 15 giây/vườn bạn…), không đếm lúc HS nhìn, đọc, tính; bot cũng chỉ có 6 bạn ảo.
+- Ước lại theo người thật ≈ 9–12 phút khi có bạn cùng lớp thật ⇒ CEO đúng.
+- Lỗ hổng thật: **màn "tổng kết chi tiêu" chưa có** (chỉ có ví + bảng tính lãi).
+
+**CTO đề xuất tiếp, chờ CEO gật:**
+- (a) Nâng cấp nhà bằng **vật liệu** (gỗ, gạch, ngói, sơn) kiếm từ nhiệm vụ ngày, không bằng xu. Nhiệm vụ có lý do để làm, nhà có đường lên, không đụng xu.
+- (b) **Sổ thu chi**: hôm nay / tuần / tháng; bán, mua bịch (xu và điểm), lãi; cây lời nhất.
+- (c) Dạy chó: đã giải thích ví dụ Nintendogs, không gấp.
+- Nhiệm vụ ngày cụ thể: 3 việc/ngày (giao hàng · chăm vườn · học); thưởng vật liệu + phân bón, **không thưởng xu**; hiện chung khung "Việc hôm nay".
+
+**Thấy khi tổng kết:**
+- Một phiên khác đã commit lên `nhip-ngay` sau bản gộp đồ hoạ:
+  - `6958b9b`: cài như app (PWA) + thanh "Việc hôm nay" suy từ state, không thưởng;
+  - `9556216`: bố cục y như ảnh Nông trại vui vẻ, chơi màn ngang.
+- ⇒ 3 phiên cùng đụng `nhip-ngay` (kinh tế, đồ hoạ, bố cục). Ghi cảnh báo vào HANDOFF.
+- Kiểm ổ E: là ổ cứng NTFS thật (nhãn "Windows"), không phải ổ Google Drive ⇒ repo game **không theo Thùy về nhà**.
+
+**Ghi:**
+- Spec: §2 (bảng vòng chơi + thời gian chơi thật) · §5.8 (chó mới + đề xuất dạy chó) · §5.9 viết lại thành "Nhà nâng cấp 10 mức" · §5.11 ("Việc hôm nay") · §5.12 Nhiệm vụ ngày (mới) · §5.13 Sổ thu chi (mới) · §8 · §9.
+- HANDOFF ① mục Nông Trại viết lại.
