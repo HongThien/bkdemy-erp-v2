@@ -32407,25 +32407,24 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Ảnh: `NongTrai-dohoa/.snap/ga_bo_suu_tap.jpg`, `bo_bo_suu_tap.jpg`, `bo_chuong.jpg`.
 - **Chưa hỏi lại:** CEO chưa trả lời HS có chó bằng cách nào (chọn 1 / sưu tầm / mua). Heo, cừu vẫn 1 giống.
 
-## 2026-09-30 (khuya, tiếp) — Nông Trại đồ hoạ: bò dáng thật + hết đè nhau (Thùy: "bò vẫn đè nhau · chân thô · thân quá đơn giản, làm theo bò thật")
+## 2026-09-30 (15h) — App TA: ô "Bổ trợ đuổi" đọc CA từ DB (Khánh Chi 10B1, TA Ngô Ngọc Huyền)
 
-- **Bò dáng thật** (`dungBo` viết lại):
-  - **Thân:** thân dài liền (lưng thẳng), bụng xệ, ngực sâu, mông vuông.
-  - **Đầu, cổ:** cổ dài dẹt vươn lên, yếm da; sọ + mặt dài dốc xuống mõm bè; tai chĩa ngang; mắt hai bên.
-  - **Chân:** chân trước là khối tiện `LatheGeometry` (bắp tay → gối → cổ chân thon); chân sau là khối tiện liền rồi UỐN đỉnh theo độ cao (gối ra trước, khoeo ra sau); móng guốc tròn có khe chẻ.
-  - **Khác:** bầu vú 4 núm; đuôi mọc từ gốc đuôi rủ tới khoeo, có chùm.
-  - **Đốm:** tô từng đỉnh bằng nhiễu 3D theo toạ độ thật (`lopLong`, `boMin` nhận `mauHam`) nên loang liền qua đầu/cổ/chân, mép chuyển mềm ±0.03; cẳng chân để trắng.
-  - **Sai rồi sửa:**
-    1. lượt đầu ghép nhiều khối nên lổn nhổn, u xương hông/ngồi thành hòn bi đen → gộp thân, bỏ u;
-    2. cổ thành quả bóng → cổ dẹt dài;
-    3. vòng cổ thành cái đĩa → bỏ, giữ chuông;
-    4. chân sau ghép khúc có bi ở khoeo → tiện liền + uốn.
-- **Hết đè nhau:**
-  - mỗi con 2 vòng tròn trước/sau theo hướng quay, dời tâm về phía đầu (bò `[0.42, 0.4, 0.3]`, heo `[0.26, 0.3, 0.1]`, cừu `[0.2, 0.32, 0.1]`);
-  - CHẶN bước tới nếu làm đè sâu hơn (`sauChong`); chọn điểm đến tránh chỗ có con khác;
-  - giữ cả đầu lẫn đuôi trong rào; tách 2 lượt mỗi khung.
-  - Cách "đè rồi mới đẩy" không đủ: bò 3/30, cừu 8/30 lần đè hơn 5 cm.
-- **Đo sau sửa:**
-  - 2 lượt tổng 220 lần đo trên 3 chuồng (~110 giây game): đè sâu nhất 0, không con nào thò qua rào;
-  - con vật vẫn đi lại (19 m tổng trong 50 giây);
-  - `test-engine` 3/3 lần "Tất cả luật đúng"; `?dohoa=cu` không lỗi.
+- **Sự cố:** ca đuổi 30/09 15:00 Khánh Chi (case can_duoi, 7 dạng Đại) — Thùy mở app TA của Huyền: KHÔNG có dòng 30/09 trong ô Bổ trợ đuổi.
+  Giả lập SQL phiên Huyền: fn_viec_buoi_thuong 74 việc 56ms, la_thanh_vien true, dữ liệu đuổi đúng; bundle prod = bản mới nhất (có fn_bu_ca_cua_toi).
+  ⇒ cùng bệnh ca bù Cường 29/09: đường getMyTasks (query thẳng buoi_hoc qua PostgREST) rơi ca trên máy thật, SQL không tái hiện. App HS (giả lập
+  hs0450): lịch đuổi hôm nay có, "Học từ đầu" mở, "Vào ca" chờ TA điểm danh có mặt (đúng thiết kế).
+- **Sửa:** mig 202609301503 `fn_duoi_ca_cua_toi` (khuôn fn_bu_ca_cua_toi); ô Đuổi dùng chung `BoxBu` (loai='bo_tro_duoi' ⇒ mở DuoiCaTA). Giả lập
+  Huyền: 4 ca (30/09 08:30 rỗng · 30/09 15:00 Khánh Chi · 01/10 15:00 Khánh Chi · 03/10 09:00 Vũ Trung Hiếu). getMyTasks lỗi ⇒ BANNER đỏ
+  "Lỗi tải: …" thay vì `.catch(() => [])` nuốt im — lần sau có lỗi thật sẽ thấy nguyên văn để tìm gốc.
+- **Chưa biết gốc** vì sao getMyTasks rơi ca bù/đuổi trên máy TA. Banner mới là để bắt nó.
+
+## 2026-09-30 (15h30) — Rà toàn luồng bổ trợ: gốc "TA không thấy ca" + tự kiểm hiển thị (Thùy)
+
+- **Gốc (đo được):** ô Đuổi cũ `tasks.slice(0,5)` trên TOÀN BỘ buổi đuổi của TA, không sắp, cả buổi đã xong; Huyền có 9 buổi (5 xong, 2 hôm nay) ⇒ ca
+  15:00 Khánh Chi bị đẩy vào "+4 buổi nữa…" (không bấm được). Cùng họ với bù 29/09 (lẫn trong Chấm ET). DB không sai — t đã mất 2 vòng đi tìm lỗi
+  ở dữ liệu/quyền. **Bài học:** "code nói có, người thật nói không" ⇒ soi TẦNG CẮT/SẮP của giao diện (slice, preview, +N) trước khi nghi DB.
+- **Sửa:** BoxBu (bù+đuổi) sắp hôm nay → nợ cũ → sắp tới, ca hôm nay không cắt, "+N ca nữa — bấm xem hết"; ô Yếu bỏ `slice(0,3)` ca hôm nay.
+- **Tự kiểm** `fn_bo_tro_tu_kiem` (mig 202609301510) + banner ERP Lịch phòng. Chạy thật 30/09: 33 ca (hôm nay → +7) · 0 lỗi, 216ms. Lần chạy đầu
+  (tính cả 29/09) ra 13 "lỗi" = ca hôm qua đã xong / app HS không hiện lịch cũ ⇒ đúng thiết kế ⇒ kẹp phạm vi từ hôm nay. Thử phá (rollback):
+  đuổi trả rỗng + 1 ca bù gán NS không tài khoản ⇒ báo 6 + 1, đúng.
+- Kiểm local: ERP banner "✓ 33 ca…"; app TA admin: ô Bù/Đuổi dòng đầu là ca hôm nay.

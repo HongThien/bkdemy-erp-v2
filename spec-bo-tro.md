@@ -278,3 +278,18 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
 - **Sửa ở mọi màn — 1 nguồn:** control chung `src/screens/botro/MucUuTienCase.tsx` (mức → `fn_btyeu_doi_level`, ưu tiên → `bo_tro_yeu.uu_tien`,
   lỗi trần hiện ngay tại chỗ). Gắn ở: card Xếp · popup Trạng thái ca · hàng chờ Yếu trong popup "+ Xếp" của Lịch phòng. Giai đoạn (Cần xếp /
   Đã xếp / Hoàn thành) là derive, không sửa tay. Chưa gắn: dòng em đã nằm trong ca ở Lịch phòng (RPC ca chưa trả case id).
+
+## 15. Chống "TA không thấy ca" (Thùy 30/09 — 29/09 bù Minh Trí/Cường, 30/09 đuổi Khánh Chi/Huyền)
+
+- **Gốc đã tìm ra:** ô Đuổi cũ (app TA) hiện `slice(0,5)` của TOÀN BỘ buổi đuổi của TA (cả đã xong), KHÔNG sắp ⇒ Huyền 9 buổi, ca hôm nay rơi vào
+  "+4 buổi nữa…" (chữ, không bấm được). Buổi bù cũ nằm lẫn trong ô "Chấm ET" (cuối danh sách chấm). DB luôn đúng — lỗi ở TẦNG GIAO DIỆN.
+- **Chặn 3 lớp:**
+  1. **1 nguồn DB cho mỗi ô ca:** yếu `fn_btyeu_viec_cua_toi` · bù `fn_bu_ca_cua_toi` · đuổi `fn_duoi_ca_cua_toi` (TA thấy ca mình, admin thấy mọi ca,
+     kể cả ngoài lịch trực). Ô bù/đuổi dùng chung `BoxBu`.
+  2. **Luật UI (bắt buộc cho mọi ô ca):** sắp HÔM NAY trước (theo giờ) → nợ cũ → sắp tới · ca hôm nay KHÔNG BAO GIỜ bị cắt · phần ẩn luôn có nút
+     "bấm xem hết". Lỗi tải danh sách việc hiện banner đỏ "⚠ Lỗi tải: …", không `.catch(() => [])` nuốt im.
+  3. **Tự kiểm hiển thị** `fn_bo_tro_tu_kiem(tu, den)` (mig 202609301510): với mọi ca yếu/bù/đuổi còn mở từ hôm nay, hệ ĐÓNG VAI đúng TA đứng ca
+     + từng HS (set jwt claims trong transaction, trả lại cuối hàm) rồi gọi ĐÚNG hàm app đang gọi; báo: chưa gán TA · TA không còn đang làm ·
+     TA/HS chưa có tài khoản · TA thiếu quyền "Buổi học" · app TA/HS không hiện ca · lỗi khi tải. Hiện ở ERP › Bổ trợ › **Lịch phòng** (hôm nay → 7
+     ngày; xanh = ổn, đỏ = liệt kê để OPS sửa trước giờ ca). Thử phá có chủ đích (rollback): bắt đủ 6 ca đuổi bị ẩn + 1 TA không tài khoản.
+  **Không kiểm được bằng DB:** cache app cũ trên máy, ô vẽ sai — lớp 2 lo.

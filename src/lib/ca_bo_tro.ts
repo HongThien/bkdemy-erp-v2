@@ -75,3 +75,12 @@ export async function taoCaTay(input: { ngay: string; gio_bat_dau: string; gio_k
   if (error) throw error
   return data as string
 }
+
+// ── TỰ KIỂM HIỂN THỊ (Thùy 30/09: "đừng để trợ giảng lại chạy vào báo không có ca") — mig 202609301510. Hệ đóng vai TA đứng ca + từng HS,
+// gọi đúng hàm app đang gọi, báo ca nào không hiện (kèm lý do: chưa gán TA · TA nghỉ · chưa có tài khoản · thiếu quyền · app không hiện).
+export type LoiHienThi = { buoi_id: string; loai: 'bo_tro_yeu' | 'bu' | 'bo_tro_duoi'; ngay: string; gio: string | null; ta: string | null; hs: string[]; loi: string[] }
+export async function tuKiemBoTro(den?: string): Promise<{ tu: string; den: string; so_ca: number; loi: LoiHienThi[] }> {
+  const { data, error } = await supabase.rpc('fn_bo_tro_tu_kiem', { p_tu: null, p_den: den ?? null })
+  if (error) throw error
+  return data as { tu: string; den: string; so_ca: number; loi: LoiHienThi[] }
+}
