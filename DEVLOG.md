@@ -32541,3 +32541,32 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - **Chờ CEO chọn, chưa mua.**
 - **GitHub riêng tư** (CEO "làm thôi"): `HongThien/bk-bat-thu` + `HongThien/bk-nong-trai` (đẩy đủ 3 nhánh `main`/`nhip-ngay`/`do-hoa-thu` từ bản chép máy nhà).
   - **Máy công ty phải `git remote add origin https://github.com/HongThien/bk-nong-trai.git` rồi `git fetch`**, không làm việc song song trên 2 máy mà không kéo trước.
+
+## 2026-10-01 (sáng, máy nhà) — BẮT THÚ: "100 người cùng lúc có tải được không?" — đo + tối ưu + CEO chốt thấy tối đa 10 người
+
+- **Thùy hỏi:** 100 người chơi cùng lúc có tải được không.
+- **T tách 2 phần:**
+  - máy chủ: chưa dựng, theo research Colyseus nhẹ ở mức này, phải test tải;
+  - máy HS phải vẽ đám đông: đo được ngay.
+- **Làm:** `nguoi-khac.ts`, tức bản chiếu người chơi khác (dùng lại cho MMO). `?nguoi=N` sinh N người giả, mỗi người 1 thú.
+- **Đo lần đầu** (máy bàn, 100 người, vẽ hết):
+  - 1.768 lệnh vẽ, 1,73 triệu tam giác, ~20 ms/khung;
+  - máy bàn vẫn 70 FPS; iPad gen 7 ước chỉ còn 6–10 FPS.
+  - Gốc:
+    - nhân vật KayKit 6 mảnh, cộng lượt bóng thành ~12 lệnh vẽ/người;
+    - t đã tắt frustum culling cho lưới có xương;
+    - người xa vẫn tính xương 60 lần/giây.
+- **Giữa lúc sửa, CEO chốt:** "tối đa chỉ nên thấy 10 người khác, ưu tiên người đã kết bạn".
+  - Làm: tầm 35 m, bạn bè trước, rồi người lạ gần nhất; còn lại ẩn, không tính xương.
+  - Bảng tên trên đầu, bạn bè có tim xanh.
+- **Tối ưu:**
+  - gộp mảnh lưới có xương cùng khung xương + vật liệu (`gopLuoiXuong`);
+  - bật lại culling (khối cầu bao nới ×1,8);
+  - chỉ 10 người gần nhất đổ bóng ở bản Đẹp, 5 ở bản Nhẹ;
+  - người xa cập nhật động tác 15 lần/giây (`DongTac.nhip`).
+- **Đo lại:** Đẹp 71 lệnh vẽ · 377k tam giác · 4,9 ms/khung; Nhẹ 45 · 208k · 4,2 ms.
+  - Ước iPad gen 7 ở bản Nhẹ khoảng 30–50 FPS. **Chưa đo máy thật.**
+- **Bẫy đo:** Browser pane ẩn ⇒ trình duyệt ngừng vòng vẽ, bảng FPS trống.
+  - Cách đo: `resize_window` giả kích thước, rồi tự gọi `GAME.vong(t)` 300 lần, mỗi lần `gl.finish()` và bấm giờ.
+  - Lệnh chờ của pane tối đa 10 giây/lần; tải 100 mô hình cần ~20 giây.
+- Commit: BatThu `b461779`; spec §1 #14 + §3.1.

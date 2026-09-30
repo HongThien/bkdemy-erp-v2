@@ -24,6 +24,7 @@
 | 11 | **Không chat gõ tự do** (tạm thời) | Chỉ câu soạn sẵn / biểu cảm |
 | 12 | **Boss phải là thú ngầu:** rồng, khủng long, hổ, cá voi, đại bàng… **Quái cũng phải đẹp.** | CEO nhấn "quan trọng" |
 | 13 | Xu, lượt bắt: **tính sau** — "làm game đã" | |
+| 14 | Mỗi người **chỉ thấy tối đa 10 người khác**, **ưu tiên bạn bè** (01/10) | Trong tầm 35 m: bạn bè trước, chỗ còn lại là người lạ gần nhất. Máy chủ cũng chỉ gửi 10 người này (vùng quan tâm) |
 
 - **Hệ quả của #7 với luật §2.0 CLAUDE.md:** sát thương tính 20 lần/giây trên **máy chủ game** (Colyseus), không qua Postgres từng đòn.
   Postgres (`fn_game_*`) giữ những gì **có giá trị lâu dài**: kết quả bắt, exp/cấp, bộ sưu tập, (sau này) xu có trần ngày.
@@ -60,6 +61,20 @@
   - Bản Đẹp mà FPS < 35 thì tự hạ xuống Nhẹ.
   - Có nút đổi tay.
 - Đo ở Browser pane: Đẹp ~75 FPS · ~100 lệnh vẽ · ~320k tam giác; Nhẹ 75 FPS · ~70 lệnh vẽ · ~190k. **Chưa đo trên iPad gen 7 thật.**
+
+### 3.1 Đo đám đông (01/10, `?nguoi=100`, máy bàn ở nhà — CHƯA phải iPad)
+
+- 100 người chơi giả (mỗi người 1 thú đồng hành), mỗi máy thấy 10.
+  - Bản Đẹp: 71 lệnh vẽ · 377k tam giác · **4,9 ms/khung** (95%: 7,7).
+  - Bản Nhẹ: 45 lệnh vẽ · 208k tam giác · **4,2 ms/khung** (95%: 6,8).
+- Trước khi tối ưu (vẽ cả 100): 1.768 lệnh vẽ · 1,73 triệu tam giác · ~20 ms.
+- 4 việc tối ưu đã làm:
+  1. gộp 6 mảnh nhân vật KayKit thành 1;
+  2. bật lại bỏ-qua-ngoài-khung cho lưới có xương;
+  3. chỉ người gần mới đổ bóng;
+  4. người ở xa cập nhật động tác 15 lần/giây.
+- **Ước iPad gen 7** (chậm hơn máy bàn khoảng 5–8 lần): khoảng 20–35 ms/khung ⇒ **30–50 FPS ở bản Nhẹ**. Phải đo máy thật.
+- **Máy chủ 100 người** (chưa dựng): mỗi máy chỉ nhận vị trí của 10 người, 10 lần/giây. Theo research, Colyseus trên 1 VPS nhỏ thừa sức. **Phải test tải** khi dựng.
 
 ## 4. Chờ CEO
 
