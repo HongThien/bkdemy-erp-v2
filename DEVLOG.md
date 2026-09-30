@@ -32798,3 +32798,27 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - `test-engine`: 2/3 "Tất cả luật đúng"; 1 lần "2 lỗi" là bài chập chờn đã biết, `engine`/`data` không đổi.
   - Ảnh: `NongTrai-dohoa/.snap/cho_dt_shiba.jpg`, `cho_dt_giong.jpg`.
 - **Lưu ý đo:** Browser pane bị ẩn thì `requestAnimationFrame` dừng ⇒ muốn kiểm chuỗi động tác phải tự gọi `capNhat` theo bước; chụp liên tiếp bằng setTimeout sẽ thấy "đứng im".
+
+## 2026-09-30 (tiếp 7) — Nông Trại: gộp nhánh đồ hoạ `do-hoa-thu` vào `nhip-ngay` (Thùy: "check nhánh còn lại đi. có rất nhiều hình ảnh mới của động vật và cây cối, nhà cửa")
+
+**Làm:**
+- Merge `do-hoa-thu` (tới `a32c550`) vào `nhip-ngay` ⇒ commit NongTrai `8b3c25e`.
+- Nhánh đồ hoạ để toàn bộ hình mới trong 1 lớp riêng `js/dohoa.js`, gồm:
+  - ánh sáng, chỉnh màu, bóng tiếp đất, tilt-shift;
+  - 13 cây × 4 giai đoạn;
+  - gà 5 giống, bò 5 giống;
+  - chó 14 giống / 16 động tác;
+  - nhà trang trí 4 kiểu × 10 mức.
+- Xung đột chỉ ở `scene.js`, vì nhánh đó dựng trên cảnh Hay Day. Giải theo cảnh nhịp ngày:
+  - giai đoạn cây theo số ngày đã lớn; tưới hôm nay nhích nửa ngày, nên cây 1 ngày tưới xong thì mầm lên cây non;
+  - con sâu / hạt phân hiện trên ô;
+  - chó mới vẫn là thú cưng của luật: chạm = xoa đầu, hiệu ứng là động tác được vuốt ve;
+  - nhà đặt đúng chỗ của bố cục gọn;
+  - giữ lò bánh / khung camera / lề HUD của nhịp ngày.
+- Kiểm trên Browser pane (390×844): không lỗi mới. Nhìn thấy cây các giai đoạn, bong bóng sâu/tưới, gà nhiều giống, bò sữa + bò vàng, chó Shiba, nhà gỗ mức 1.
+
+**Sai / sửa:**
+- Lúc thử, t sửa thẳng `NT_UI.s` (cấp 13, 8 ô có cây, gà bò) rồi tải lại trang. Game tự lưu khi rời trang ⇒ đè bản lưu demo của Thùy.
+  - Bản sao để trong `window` nên mất khi tải lại.
+  - Bản lưu gốc chỉ ở cấp 2, 4 ô trống, 20 xu, 4 điểm ⇒ đã dựng lại đúng các trường đó rồi lưu.
+  - Bài học ghi vào memory: thử thì dùng state riêng, hoặc trả lại trước khi rời trang.
