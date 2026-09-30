@@ -32619,3 +32619,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Món rơi từ đâu, rơi theo thứ tự mức hay ngẫu nhiên (máy dựng đã đỡ cả 2).
   - Kiểu nhà thứ 2 trở đi.
   - Chuyển sang nhánh `nhip-ngay`.
+- **30/09 (tiếp 4) — giảm đường xu + giảm trộm** (Thùy: "giảm xu kiếm được từ xu xuống, giảm trộm đi cũng được"):
+  - Bịch trả xu = giá trị thu ÷ 1,6 (lúa mì 13, ngô 25, bí 38…). Giá trả điểm giữ nguyên.
+  - Hái trộm 1 quả/lượt, mỗi ô mất tối đa 20%.
+  - HS không học: 12 / 11 / 7 xu ròng/tháng. Tách nguồn (tháng TB): trồng 8,6 · con vật 2,6 · hái trộm 1,7 · chi −5.
+  - HS chăm vẫn chạm trần 45 / 30.
