@@ -23,7 +23,7 @@
 |---|---|---|---|
 | 1 | Tên style trong app | **"Khối vuông"** (id `khoi`), dòng phụ "giống: Minecraft · Roblox" | Minecraft là thương hiệu của Mojang/Microsoft. App chỉ nêu tên để so sánh, như RPG ghi "Genshin · Star Rail" |
 | 2 | Mức "giống Minecraft" | **Giống CHẤT (thế giới khối vuông, voxel), KHÔNG giống ĐỒ** | Không Steve/Alex, Creeper, Zombie, Enderman, slime khối xanh, không texture cỏ-đất-đá, logo, font, vật phẩm (bàn chế tạo, cuốc kim cương…) của Minecraft. HS nhận ra là nói trung tâm copy (luật chung của mọi đơn) |
-| 3 | Sáng hay tối | **Style SÁNG** (chỉ chế độ sáng) — Thùy 01/10: chưa cần bản tối | RPG chỉ có nền tối ⇒ 2 style phủ 2 nhu cầu. Ảnh mẫu Thùy gửi là ban ngày. Bản đêm (hang mỏ) để sau |
+| 3 | Sáng hay tối | **Style SÁNG** (chỉ chế độ sáng) — Thùy 01/10: chưa cần bản tối · **nền mặc định = thung lũng hoa anh đào lúc hoàng hôn** (ảnh Thùy chọn) | RPG chỉ có nền tối ⇒ 2 style phủ 2 nhu cầu. Ảnh mẫu Thùy gửi là ban ngày. Bản đêm (hang mỏ) để sau |
 | 4 | Font | Tiêu đề **Handjet** đậm (chữ pixel) · chữ thường **Baloo 2** | Đơn 2 cũ ghi "font pixel mất dấu tiếng Việt". Thử thật 01/10: Press Start 2P, Pixelify Sans, Silkscreen mất dấu; **Handjet, VT323, Bungee đủ dấu**. Handjet ra chất pixel mà vẫn dễ đọc |
 | 5 | Dáng thẻ / nút | **"Khối"**: góc vuông, viền tối 3px, vát sáng trên-trái + tối dưới-phải như viên gạch nổi. Nền thẻ = tấm ván/giấy da sáng, hơi trong | Ngôn ngữ khối. Thẻ phải tự đọc được trên nền ảnh |
 | 6 | Nhân vật | 2 nhà thám hiểm khối vuông TỰ THIẾT KẾ + bạn đồng hành (cáo / cú) | Hợp đồng style có chỗ `nhanVat {nam, nu}` — Home ngang đứng nửa trái như RPG |
@@ -35,7 +35,9 @@
 
 1. Dán nguyên `design/CHATGPT-UI-KIT.md` → dán khối **PHONG CÁCH CHUNG — KHỐI VUÔNG** (ngay dưới) → dán nguyên khối **ĐƠN ĐẶT HÀNG**.
 2. Đính kèm (tất cả ở `design/handoff/hs-skin-khoi-v1/reference/`, riêng ảnh RPG ở `design/bk-ui-src/`):
-   - `khong_khi_ho_rung.jpg` — lấy **KHÔNG KHÍ + ÁNH SÁNG** (hồ trong, rừng khối, nắng). Không chép cảnh.
+   - `khong_khi_anh_dao.jpg` — **TRANH NỀN CHÍNH** Thùy chọn 01/10 (thung lũng hoa anh đào lúc hoàng hôn): lấy không khí, màu, ánh sáng,
+     bố cục cảnh. Không chép nguyên cảnh, **không vẽ con vật khối trong ảnh** (đó là sinh vật Sniffer của Minecraft).
+   - `khong_khi_ho_rung.jpg` — không khí cho nền thứ 2 (hồ trong, rừng khối, nắng ban ngày). Không chép cảnh.
    - `bo_cuc_home_ipad.jpg` · `bo_cuc_home_dt.jpg` · `bo_cuc_nhiem_vu_ipad.jpg` — chụp màn code hiện tại (style RPG), lấy **BỐ CỤC + NỘI DUNG**.
    - `design/bk-ui-src/Nền app HS cấp 3_11.png` — ảnh toàn cảnh style RPG Thùy đã duyệt, để ChatGPT thấy **mức hoàn thiện** cần đạt.
 3. ChatGPT vẽ **#01** rồi DỪNG ⇒ Thùy duyệt phong cách. Chưa ưng thì sửa #01; ưng rồi mới gõ "tiếp".
@@ -51,13 +53,16 @@
 
 ```
 PHONG CÁCH CHUNG — style "Khối vuông" của app học sinh BK Academy (trung tâm dạy thêm Toán, học sinh lớp 3–12)
-Không khí:   thế giới KHỐI VUÔNG (voxel) BAN NGÀY, đẹp như game khối vuông chạy shader: nắng mềm từ trái-trên, trời xanh mây trắng,
-             nước hồ trong vắt phản chiếu, cây cối khối xanh mướt, bóng đổ mềm, ánh sáng ấm. Tươi, sáng, phiêu lưu, thân thiện.
-             Ảnh đính kèm khong_khi_ho_rung.jpg CHỈ để lấy không khí + ánh sáng — KHÔNG chép cảnh.
+Không khí:   thế giới KHỐI VUÔNG (voxel) đẹp như game khối vuông chạy shader, cảnh CHÍNH = THUNG LŨNG HOA ANH ĐÀO LÚC HOÀNG HÔN
+             (ảnh khong_khi_anh_dao.jpg): cây anh đào khối tán hồng, cánh hoa hồng bay lả tả, trời pastel hồng-cam-tím, nắng chiều
+             vàng hồng, dòng sông xanh uốn qua thung lũng, đồi cỏ khối xanh tươi rải hoa hồng. Bóng đổ mềm, ánh sáng ấm. Tươi, mơ mộng,
+             phiêu lưu, thân thiện. Ảnh đính kèm CHỈ để lấy không khí, màu, ánh sáng — KHÔNG chép nguyên cảnh, KHÔNG vẽ con vật khối
+             xanh-đỏ trong ảnh (sinh vật Sniffer của Minecraft).
 THIẾT KẾ GỐC (bắt buộc): KHÔNG vẽ Steve, Alex, Creeper, Zombie, Skeleton, Enderman, slime khối xanh hay bất kỳ nhân vật / quái /
              vật phẩm / texture / logo / font nhận ra được của Minecraft hay Roblox. Khối có texture TỰ THIẾT KẾ, đơn giản.
              Học sinh nhìn ra là đồ của game khác thì coi như hỏng.
-Bảng màu:    trời #8ecbf1 → #cfe9fb · cỏ #5fa83a / #3f7d26 · đất #8b5a2b · gỗ ván #c8a46b / #9b7440 · đá #8e8e8e / #5f5f5f
+Bảng màu:    hồng anh đào #f5a9c8 / #e57fa8 · trời hoàng hôn #f7c6a3 → #c9a7e8 · nắng #ffe9c7 · cỏ #6dbb45 / #3f7d26 · đất #a8693a
+             · trời ngày #8ecbf1 → #cfe9fb · gỗ ván #c8a46b / #9b7440 · đá #8e8e8e / #5f5f5f
              · nước #2c8fd6 → #47c1c9 · quặng ngọc #3fd4b8 · vàng #f2c94c · đỏ #e04b3c · viền khối #1e1e1e
              · chữ tối #1f2328 · chữ phụ #4b5563.
 Thẻ:         "KHỐI": góc VUÔNG (không bo), viền tối #1e1e1e dày 3px, mặt có VÁT sáng 3px ở cạnh trên-trái và tối 3px ở cạnh dưới-phải
@@ -119,8 +124,8 @@ MÀN CON 2 — Làm bài (iPad ngang): đầu trang "Câu 3/10" + thanh tiến �
 
 Biến thể:
   3 TRANH NỀN em tự chọn (ban ngày, phải khác nhau rõ từ xa):
-    ho_rung : hồ nước trong ven rừng khối (đúng không khí ảnh mẫu) — mặc định
-    dong_co : đồng cỏ hoa khối, làng nhỏ mái đỏ ở xa, cối xay gió khối
+    anh_dao : thung lũng hoa anh đào lúc hoàng hôn — đúng không khí ảnh khong_khi_anh_dao.jpg (Thùy chọn 01/10) — MẶC ĐỊNH
+    ho_rung : hồ nước trong ven rừng khối ban ngày — không khí ảnh khong_khi_ho_rung.jpg
     tuyet   : vùng tuyết ban ngày — cây thông khối phủ tuyết, hồ băng, trời xanh nhạt
   2 NHÂN VẬT em tự chọn (KHÔNG gán theo giới tính), cùng phong cách, cùng tư thế đứng:
     nam : nhà thám hiểm khối vuông — áo khoác xanh rêu, khăn quàng cam, ba lô da, tay cầm đèn lồng; bạn đồng hành = CÁO CON cam khối
@@ -137,20 +142,22 @@ Phiên bản kit:  v3 (giao từng hình — xem CÁCH GIAO HÀNG trong PHONG C�
   không chữ/số/badge, không khung ô phía sau. Cả bộ cùng góc nhìn 3/4 từ trên, nắng trái-trên, cùng độ chi tiết.
 - NHÂN VẬT: dọc 1122×1402, nền TRONG SUỐT, TOÀN THÂN đứng thẳng nghiêng 3/4 về phía người xem, chân chạm mép dưới khung, bạn đồng hành
   nằm TRONG cùng hình.
-- NỀN NGANG: 1672×941, nền đặc, KHÔNG nhân vật, KHÔNG chữ. Cảnh chính (cây to, nhà, núi) dồn sang TRÁI; 65% bên PHẢI là trời / mặt
+- NỀN NGANG: 1672×941, nền đặc, KHÔNG nhân vật, KHÔNG chữ. Cảnh chính (cây to, nhà, núi) dồn sang TRÁI (anh_dao: cây anh đào lớn bên trái,
+  sông uốn từ giữa ra xa); 65% bên PHẢI là trời / mặt
   hồ / đồng cỏ SÁNG, ÍT chi tiết (để đặt thẻ lên, chữ tối phải đọc được).
-- NỀN DỌC: 940×1672 (đúng 9:16), nền đặc, KHÔNG nhân vật. Cảnh chính ở 40% TRÊN; 60% DƯỚI phẳng, sáng dịu, ít chi tiết.
+- NỀN DỌC: 940×1672 (đúng 9:16), nền đặc, KHÔNG nhân vật. Cảnh chính ở 40% TRÊN; 60% DƯỚI phẳng, sáng dịu, ít chi tiết
+  (anh_dao: tán anh đào + mặt trời hoàng hôn + sông ở trên; dưới là đồi cỏ xanh nhạt rải ít cánh hoa).
 - TRANG TRÍ: góc 1254×1254 trong suốt (dây leo lá khối chạy theo 2 cạnh vuông góc, góc trên-trái); gạch phân cách 1672×200 trong suốt
   (1 dải khối mảnh nằm ngang).
 
 ══ DANH SÁCH GIAO (đúng thứ tự) ══
 A. Ảnh toàn cảnh để duyệt (có chữ + số mẫu, CHỈ để xem bố cục và phong cách — không cắt ra dùng):
-   #01 khoi_man_chinh_ipad — màn chính khổ NGANG, nền ho_rung, nhân vật nam + cáo   → DỪNG, chờ Thùy duyệt phong cách rồi mới làm tiếp
-   #02 khoi_man_chinh_dt   — màn chính khổ DỌC, nền ho_rung, nhân vật nu + cú
+   #01 khoi_man_chinh_ipad — màn chính khổ NGANG, nền anh_dao, nhân vật nam + cáo   → DỪNG, chờ Thùy duyệt phong cách rồi mới làm tiếp
+   #02 khoi_man_chinh_dt   — màn chính khổ DỌC, nền anh_dao, nhân vật nu + cú
    #03 khoi_nhiem_vu_ipad  — màn Nhiệm vụ khổ ngang
    #04 khoi_lam_bai_ipad   — màn Làm bài khổ ngang
 B. Nền:
-   #05 khoi_bg_ho_rung_ngang · #06 khoi_bg_ho_rung_doc · #07 khoi_bg_dong_co_ngang · #08 khoi_bg_dong_co_doc
+   #05 khoi_bg_anh_dao_ngang · #06 khoi_bg_anh_dao_doc · #07 khoi_bg_ho_rung_ngang · #08 khoi_bg_ho_rung_doc
    #09 khoi_bg_tuyet_ngang · #10 khoi_bg_tuyet_doc
 C. Nhân vật (vẽ đúng như trong #01 / #02 đã duyệt):
    #11 khoi_nv_nam · #12 khoi_nv_nu

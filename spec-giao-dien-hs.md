@@ -137,7 +137,8 @@ và dùng **LINH VẬT** thay nhân vật người.
 ## 10. Style 3 — Khối vuông (cảm hứng Minecraft) · kế hoạch build (01/10)
 
 **Nguồn:** Thùy 01/10 — *"dựa vào chủ đề game anime làm một chủ đề thứ 2 tương tự, là chủ đề về minecraft"* + ảnh mẫu không khí (hồ + rừng khối
-ban ngày) `design/handoff/hs-skin-khoi-v1/reference/khong_khi_ho_rung.jpg`. **Đơn ChatGPT:** `design/DON-HANG-STYLE-KHOI.md` — K1 (màn chính +
+ban ngày) `design/handoff/hs-skin-khoi-v1/reference/khong_khi_ho_rung.jpg` + **nền mặc định Thùy chọn** (thung lũng hoa anh đào hoàng hôn)
+`khong_khi_anh_dao.jpg`. **Đơn ChatGPT:** `design/DON-HANG-STYLE-KHOI.md` — K1 (màn chính +
 bộ hình style, 31 lượt) · K2 (bản đồ phiêu lưu + quái, cùng tên với Đơn 6). Thay Đơn 2 cũ trong `DON-HANG-SKIN-HS.md`.
 Quyết định thiết kế (tên "Khối vuông" không dùng chữ Minecraft · thiết kế gốc · style SÁNG · font Handjet + Baloo 2 · thẻ khối vát) — bảng §0 của
 file đơn. **Thùy chốt 01/10:** V1.0 vẫn là RPG + Thị trấn ⇒ Khối vuông dựng **SAU V1** (sau Thị trấn) · hình gamification **giữ bộ chung** ·
@@ -153,7 +154,7 @@ file đơn. **Thùy chốt 01/10:** V1.0 vẫn là RPG + Thị trấn ⇒ Khối
 | `headCase` · `headTrack` | `none` · `0.02em` | |
 | `radius` · `cardClip` · `cardAccentLeft` | `0px` · `none` · `none` | |
 | `blur` | `blur(2px)` | thẻ gần đục, chỉ nhoè nhẹ nền |
-| `sang.bg` | `#cfe9fb` | màu trời — cũng là nền dự phòng |
+| `sang.bg` | `#f7dbe6` | hồng trời hoàng hôn nhạt (khớp nền mặc định) — cũng là nền dự phòng |
 | `sang.surface` · `surface2` | `rgba(246,239,223,0.92)` · `rgba(155,116,64,0.14)` | giấy da / ván gỗ · ô con pha gỗ |
 | `sang.ink` · `muted` · `line` | `#1f2328` · `#4b5563` · `rgba(30,30,30,0.35)` | |
 | `sang.acc` · `accInk` | `#5fa83a` · `#ffffff` | khối cỏ; chữ trắng cần bóng — xem "lỗ hợp đồng" ② |
@@ -162,7 +163,7 @@ file đơn. **Thùy chốt 01/10:** V1.0 vẫn là RPG + Thị trấn ⇒ Khối
 | `sang.cardShadow` | `inset 3px 3px 0 rgba(255,255,255,0.55), inset -3px -3px 0 rgba(0,0,0,0.22), 0 4px 0 rgba(0,0,0,0.25)` | vát viên gạch + bóng cứng dưới |
 | `theTiep` | ván gỗ `#9b7440`→`#c8a46b`, chữ trắng, viền `3px solid #1e1e1e` | thẻ "Việc tiếp theo" / ca bổ trợ |
 | `nenTen` | không khai | style sáng không cần tấm mờ sau tên (khai thì bật bóng chữ TỐI toàn trang — sai cho nền sáng) |
-| `hinhNen` | `ho_rung` (mặc định) · `dong_co` · `tuyet` — mỗi cái `sang` + `sangDoc` | phủ nhẹ trắng→trong ở 35% đáy để chữ tối trên thẻ đọc được |
+| `hinhNen` | `anh_dao` (mặc định, Thùy chọn 01/10) · `ho_rung` · `tuyet` — mỗi cái `sang` + `sangDoc` | phủ nhẹ trắng→trong ở 35% đáy để chữ tối trên thẻ đọc được |
 | `anhO` | 15 ảnh cho 16 ô: `giao_trinh→o_tren_lop` · `thanh_tuu`,`xep_hang→o_cup` · còn lại cùng tên | `check:style-hs` đòi đủ |
 | `anhBanner` · `trangTri` · `nhanVat` | `b_lich` · `b_kiem_tra_lai` · `corner`/`divider` · `nv_nam`/`nv_nu` | |
 | `dauThayIcon` | `■` | ô thiếu icon tạm hiện ô vuông màu nhấn |
@@ -183,5 +184,5 @@ file đơn. **Thùy chốt 01/10:** V1.0 vẫn là RPG + Thị trấn ⇒ Khối
       soi lại Album / Hồ sơ / Rank khi ghép — chỗ nào chữ `MAU_GAMI.chu` (trắng) rơi thẳng lên nền trang thì bọc thẻ.
    ④ Thẻ Thế giới BK, bong bóng thoại (`--sk-ink` nền / `--sk-bg` chữ) tự đảo đúng — chỉ cần soi.
 5. Soi bằng mắt (khổ NGANG trước — `spec-v1-app-hs.md` §0): Home 1180×820 + 1440×900 × 3 nền · Home dọc 390×844 không vỡ · Nhiệm vụ · Album ·
-   Rank · Hồ sơ · Thế giới BK · 1 màn làm bài · 1 màn rỗng. Trang mẫu `hs.html?xem=gami` cần thêm công tắc chọn style để soi không cần đăng nhập.
+   Rank · Hồ sơ · Thế giới BK · 1 màn làm bài · 1 màn rỗng. Nền anh đào nhiều hồng ⇒ soi kỹ badge đỏ + nút xanh còn nổi không. Trang mẫu `hs.html?xem=gami` cần thêm công tắc chọn style để soi không cần đăng nhập.
 6. K2 (bản đồ + quái): dựng sau khi luồng Giao diện có màn bản đồ cho RPG — cùng tên file, chỉ thêm thư mục `khoi`.

@@ -33802,3 +33802,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   biến `--sk-radius-pill` (ghi ở §10 bước 4).
 - (01/10 tiếp) Thùy trả lời 3 câu: ① style 2 của V1.0 vẫn **Thị trấn** ⇒ Khối vuông = style 3, dựng code SAU V1 (đơn gửi ChatGPT lúc nào cũng được)
   · ② hình gamification **giữ bộ chung** · ③ **chưa cần bản tối**. Đã ghi vào đơn, `spec-giao-dien-hs.md` §10, `STYLE-HS.md`, `spec-v1-app-hs.md` §5.
+- (01/10 tiếp) Thùy gửi ảnh nền muốn dùng: thung lũng hoa anh đào khối lúc hoàng hôn ⇒ **nền mặc định `anh_dao`** (lưu `khong_khi_anh_dao.jpg`),
+  giữ `ho_rung`, bỏ `dong_co` (gần giống anh đào), giữ `tuyet` cho 3 nền khác màu rõ. Bảng màu thêm hồng anh đào / trời hoàng hôn. Ảnh mẫu có
+  Sniffer (sinh vật Minecraft) ⇒ đơn ghi rõ KHÔNG vẽ con vật đó, chỉ lấy không khí.
