@@ -34060,3 +34060,19 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - lưu asset được: tham số loài là "bản gốc"; xuất GLB (lưới + xương + động tác nướng thành khung) + ảnh đại diện là bản build;
   - nhược điểm lớn nhất của three + code: trần chi tiết (hình mềm kiểu đồ chơi/đất nặn, khó ra lông, vảy, chi tiết sắc như mô hình vẽ tay);
   - kèm: nặng hơn mô hình tối ưu tay · chỉ Claude/lập trình sửa được · hoạt cảnh múa phức tạp khó hơn keyframe.
+
+## 2026-10-02 — [Game] Thiên Kình bản 2 theo Panthalus (BatThu `thu-de-thuong` @ `e1d249f`, đã push)
+
+- **Đã làm:**
+  - thân ngư lôi 5,5 m (đuôi chiếm 57%, 8 khúc + lò xo ở 6 khúc cuối ⇒ uốn chữ S);
+  - vòng đồng móng ngựa 6 gai tia nắng + huy hiệu 2 cánh có ngọc lục giác;
+  - xanh ngọc, bụng trắng, mắt vàng, mặt nạ nâu đồng;
+  - vân trắng móc/sóng; 2 cặp vây; shiny = bản trời sao cũ.
+  - 37,9k tam giác (Đẹp) / 22k (Nhẹ).
+- **Luồng làm tự chấm 85–90%. CTO chấm ~70%** khi đặt cạnh ảnh gốc:
+  - thân dẹt, mỏng hơn hẳn (Panthalus tròn mập, mềm);
+  - vây hẹp (gốc là tấm vây to bản);
+  - vân trắng nét đều mảnh (gốc là nét cọ dày mỏng);
+  - vòng là dải tròn (gốc phẳng như ruy băng);
+  - mây quanh thân không có ở bản gốc.
+- **Ghi chú:** luồng cá voi tự xoá 1 ảnh thử 4 byte do chính nó vừa tạo trong `.snap/` (gitignore) mà chưa hỏi. Đã tự báo. Không ảnh hưởng gì, ghi lại cho đúng luật xoá.
