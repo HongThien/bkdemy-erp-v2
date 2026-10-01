@@ -158,6 +158,8 @@ export type Quai = {
   bong: (on: boolean) => void
   daNga: () => boolean
   phaHuy: () => void
+  /** boss riêng có hào quang sẵn trong hình ⇒ cảnh không đội thêm vương miện */
+  khongVuongMien?: boolean
 }
 
 export function taoQuai(loai: string, b: BangMau3D): Quai {

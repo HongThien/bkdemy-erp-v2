@@ -202,11 +202,15 @@ const XEM_TUTORIAL = typeof location !== 'undefined' && new URLSearchParams(loca
 // BẢN ĐỒ PHIÊU LƯU 3D bản thử (hs.html?xem=phieu_luu): dữ liệu giả cùng hình dạng hợp đồng, soi cảnh trước khi nối dữ liệu thật (01/10).
 const XemPhieuLuu = lazy(() => import('./screens/hocsinh/phieuluu/XemPhieuLuu'))
 const XEM_PHIEU_LUU = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'phieu_luu'
+// BOSS RIÊNG của giáo viên (hs.html?xem=boss · &ma=boss_thuy · &tt=chieu · &tran=1): 6 tư thế + hội thoại + trận 3D thử, dữ liệu giả (01/10).
+const XemBoss = lazy(() => import('./screens/hocsinh/boss/XemBoss'))
+const XEM_BOSS = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'boss'
 
 export default function AppHS() {
   if (XEM_GAMI) return <Suspense fallback={null}><XemMauGami /></Suspense>
   if (XEM_TUTORIAL) return <Suspense fallback={null}><TutorialHS /></Suspense>
   if (XEM_PHIEU_LUU) return <Suspense fallback={null}><XemPhieuLuu /></Suspense>
+  if (XEM_BOSS) return <Suspense fallback={null}><XemBoss /></Suspense>
   const [session, setSession] = useState<Session | null | undefined>(undefined)
   const [hsId, setHsId] = useState<string | null | undefined>(undefined)
   if (import.meta.env.DEV && new URLSearchParams(location.search).has('demo')) return <DemoHome />

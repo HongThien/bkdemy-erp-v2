@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { DauTrangHS, HEAD, NhanHS, NutHS, THE, THE_TRON, useMedia } from '../skin/KhungHS'
 import type { BangMau3D } from '../skin/the3d/kieuMau'
-import { TEN_LOAI } from '../skin/the3d/loai'
+import { tenQuai } from '../skin/the3d/nguonQuai'
 import type { ChangV, LucDiaV, VungV } from './kieu'
 import { nap3D, useCanh } from './Canh3D'
 
@@ -62,7 +62,7 @@ export function ChangView({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: V
           <div className="flex flex-col gap-1">
             {c.quai.map((q, i) => (
               <div key={i} className="flex items-center justify-between px-2.5 py-1 text-[12.5px]" style={{ ...THE_TRON, borderRadius: 8, opacity: c.trang_thai === 'chua_do' ? 0.65 : 1 }}>
-                <span><b style={{ ...HEAD, color: 'var(--sk-ink)' }}>{TEN_LOAI[q.loai] ?? q.loai}</b> <span style={{ color: 'var(--sk-muted)' }}>· {q.boss ? 'Boss cuối' : `Elite ${i + 1}`}</span></span>
+                <span><b style={{ ...HEAD, color: 'var(--sk-ink)' }}>{tenQuai(q.loai)}</b> <span style={{ color: 'var(--sk-muted)' }}>· {q.boss ? 'Boss cuối' : `Elite ${i + 1}`}</span></span>
               </div>
             ))}
           </div>

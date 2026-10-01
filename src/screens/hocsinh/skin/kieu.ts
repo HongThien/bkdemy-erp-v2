@@ -19,6 +19,16 @@ export type Mau = {
 // sangDoc/toiDoc: bản cho màn DỌC (điện thoại) — tranh vẽ riêng khổ 9:16, không có thì dùng bản thường.
 export type HinhNen = { id: string; ten: string; sang?: string; toi?: string; sangDoc?: string; toiDoc?: string }
 
+// BOSS RIÊNG (mỗi GV 1 boss — design/FLOW-NPC-BOSS-CUOI.md): 6 tư thế + chân dung, PNG trong suốt cùng khung vuông, chân chạm đáy.
+// Khoá của `Skin.boss` = mã boss (`boss_<ma_gv>`) — cũng là `loai_quai` DB trả về. Thiếu boss ở style nào ⇒ rơi về quái thường.
+export type BossAnh = {
+  ten: string
+  /** chiều cao nhân vật trong cảnh 3D (đơn vị thế giới; quái thường ~1.3–1.6) */
+  cao: number
+  dung: string; noi: string; chieu: string; trung: string; gian: string; ha: string
+  chandung: string
+}
+
 export type Skin = {
   id: SkinId
   ten: string
@@ -52,4 +62,6 @@ export type Skin = {
   nhanVat?: { nam: string; nu: string }
   // Bảng màu 3D của bản đồ phiêu lưu (thế giới · lục địa · chặng đường · màn đấu) — 1 bảng duy nhất cho cả cảnh (skin/the3d/kieuMau.ts).
   the3d?: BangMau3D
+  // Boss riêng của từng giáo viên (ảnh 2D chibi, hoạt ảnh bằng code). Khoá = mã boss.
+  boss?: Record<string, BossAnh>
 }

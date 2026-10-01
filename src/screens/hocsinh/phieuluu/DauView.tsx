@@ -4,7 +4,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { DauTrangHS, HEAD, MAU, NhanHS, THE } from '../skin/KhungHS'
 import type { BangMau3D } from '../skin/the3d/kieuMau'
-import { TEN_LOAI } from '../skin/the3d/loai'
+import { tenQuai } from '../skin/the3d/nguonQuai'
 import type { ChangV, LucDiaV } from './kieu'
 import { nap3D, useCanh } from './Canh3D'
 
@@ -81,7 +81,7 @@ export function DauView({ luc, chang, b, gioi = 'nam', tong, onRut, children }: 
 
   const q = doi[ei], hpMax = hp0[ei] + 2
   const steps = Array.from({ length: tong }, (_, i) => tienDo[i] ?? null)
-  const tenQ = TEN_LOAI[q.loai] ?? q.loai
+  const tenQ = tenQuai(q.loai)
 
   return (
     <div className="absolute inset-0 flex flex-col" style={{ background: 'var(--sk-bg)' }}>
@@ -96,7 +96,7 @@ export function DauView({ luc, chang, b, gioi = 'nam', tong, onRut, children }: 
         <div className="absolute left-0 right-0 top-0 p-3"><DauTrangHS tieuDe={chang.ten} phu={`${luc.ten}`} onBack={onRut} /></div>
         {/* đội hình + máu quái đang đấu */}
         <div className="absolute left-3 top-[70px] flex items-end gap-1.5 px-2.5 py-1.5" style={{ ...THE, borderRadius: 10 }}>
-          {doi.map((d, i) => <span key={i} className="flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-bold" title={TEN_LOAI[d.loai] ?? d.loai}
+          {doi.map((d, i) => <span key={i} className="flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-bold" title={tenQuai(d.loai)}
             style={{ background: hp[i] === 0 ? 'var(--sk-surface2)' : i === ei ? 'var(--sk-acc)' : 'transparent', color: i === ei && hp[i] > 0 ? 'var(--sk-acc-ink)' : 'var(--sk-muted)', border: '1.5px solid var(--sk-line)', textDecoration: hp[i] === 0 ? 'line-through' : 'none' }}>{d.boss ? '♛' : i + 1}</span>)}
         </div>
         <div className="absolute right-3 top-[70px] w-[min(340px,56vw)] p-2.5" style={{ ...THE, borderRadius: 10 }}>

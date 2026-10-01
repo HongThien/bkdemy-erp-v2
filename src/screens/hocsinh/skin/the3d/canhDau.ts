@@ -69,7 +69,7 @@ export function dungDau(host: HTMLElement, b: BangMau3D, op: { biome: string; gi
     const q = sinhQuai(d.loai, b)
     q.goc.rotation.y = -0.85; scene.add(q.goc)
     const be: Be = { q, boss: d.boss, x: CHO[i % CHO.length][0], z: CHO[i % CHO.length][1], s: 0.55, ts: 0.55, tx: 0, tz: 0, an: 0 }
-    if (d.boss) {
+    if (d.boss && !q.khongVuongMien) {
       const cr = taoVuongMien(b, 0.36); cr.position.y = q.cao + 0.04; q.goc.add(cr); be.cr = cr
       const vong = new THREE.Mesh(aura, new THREE.MeshBasicMaterial({ color: new THREE.Color(b.vang), transparent: true, opacity: 0.55, toneMapped: false })); vong.position.y = 0.06; q.goc.add(vong); be.vong = vong
     }

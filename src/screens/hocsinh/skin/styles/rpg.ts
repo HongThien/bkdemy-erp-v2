@@ -50,4 +50,12 @@ export const RPG: Skin = {
   the3d: RPG_3D,
   // Ảnh gốc #3 (nam + mèo đen) · #4 (nữ + cú trắng), 1122×1402 PNG trong suốt ⇒ nén 640×800.
   nhanVat: { nam: `${A}/nv_nam.png`, nu: `${A}/nv_nu.png` },
+  // Boss mẫu (01/10): chân dung Thùy vẽ chibi — ChatGPT, ảnh gốc design/bk-ui-src/boss/thuy/ (02..08), nén 1024px (chân dung 512px).
+  boss: {
+    boss_thuy: {
+      ten: 'Thùy', cao: 2.9,
+      dung: `${A}/boss_thuy_dung.png`, noi: `${A}/boss_thuy_noi.png`, chieu: `${A}/boss_thuy_chieu.png`,
+      trung: `${A}/boss_thuy_trung.png`, gian: `${A}/boss_thuy_gian.png`, ha: `${A}/boss_thuy_ha.png`, chandung: `${A}/boss_thuy_chandung.png`,
+    },
+  },
 }

@@ -4,9 +4,18 @@
 // rồi gọi `datNguonQuai(hamMoi)` một lần lúc khởi động — không phải sửa cảnh nào.
 import { taoQuai, type Quai } from './quai'
 import type { BangMau3D } from './kieuMau'
+import { taoQuaiAnh } from './quaiAnh'
+import { TEN_LOAI } from './loai'
+import { laySkin } from '../registry'
 
 export type { Quai }
 type NhaMay = (loai: string, b: BangMau3D) => Quai
 let nha: NhaMay = taoQuai
 export const datNguonQuai = (f: NhaMay) => { nha = f }
-export const sinhQuai: NhaMay = (loai, b) => nha(loai, b)
+// Boss RIÊNG của giáo viên (`Skin.boss[loai]`, mã `boss_<ma_gv>`): dựng từ ảnh 2D của style đang dùng; không có ⇒ nguồn mặc định.
+export const sinhQuai: NhaMay = (loai, b) => {
+  const anh = laySkin(null).boss?.[loai]
+  return anh ? taoQuaiAnh(loai, anh) : nha(loai, b)
+}
+/** Tên hiển thị của quái/boss: boss riêng lấy theo style, còn lại bảng TEN_LOAI. */
+export const tenQuai = (loai: string): string => laySkin(null).boss?.[loai]?.ten ?? TEN_LOAI[loai] ?? loai

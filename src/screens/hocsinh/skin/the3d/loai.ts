@@ -14,6 +14,7 @@ export const LOAI_THUONG = ['slime_la', 'slime_lua', 'meo_bang', 'rua_da', 'cu_d
 const TEN_BOSS_DB = new Set(['rong_con', 'golem_pha_le', 'phuong_hoang', 'bach_tuoc'])
 /** Chuẩn hoá tên loài từ DB: tên boss cũ → 1 loài thường theo mã (boss = loài thường + vương miện). */
 export function loaiHopLe(loai: string, ma: string): string {
+  if (loai.startsWith('boss_')) return loai // boss riêng của GV (Skin.boss) — giữ nguyên mã, không đổi sang loài thường
   if (TEN_BOSS_DB.has(loai) || !KE_HOACH[loai]) return LOAI_THUONG[bam(ma) % LOAI_THUONG.length]
   return loai
 }

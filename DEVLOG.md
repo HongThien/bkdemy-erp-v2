@@ -34076,3 +34076,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - vòng là dải tròn (gốc phẳng như ruy băng);
   - mây quanh thân không có ở bản gốc.
 - **Ghi chú:** luồng cá voi tự xoá 1 ảnh thử 4 byte do chính nó vừa tạo trong `.snap/` (gitignore) mà chưa hỏi. Đã tự báo. Không ảnh hưởng gì, ghi lại cho đúng luật xoá.
+
+## 2026-10-01 — [Boss] Boss mẫu "Thùy" (chibi từ ảnh chân dung) — ảnh → asset → hoạt ảnh → thoại → cắm vào trận 3D
+
+- **Làm:** flow `design/FLOW-NPC-BOSS-CUOI.md` + đơn ChatGPT `design/DON-HANG-BOSS-THUY.md`; Thùy có 8 ảnh (01 concept, 02–08 pose), Claude nén 02–08 bằng sharp (1024px; chân dung 512px, palette PNG ~320 KB/ảnh) → `public/bk-ui/hs/skin/rpg/boss_thuy_{dung,noi,chieu,trung,gian,ha,chandung}.png`.
+  - `Skin.boss` (kieu.ts + rpg.ts): khoá = mã boss `boss_<ma_gv>`; `skin/the3d/quaiAnh.ts` dựng boss thành sprite quay mặt camera, chạy đúng giao diện `Quai`; `nguonQuai.sinhQuai` tra `Skin.boss` trước (không if theo boss/môn); `tenQuai()` thay tra TEN_LOAI trực tiếp ở DauView/ChangView; `loaiHopLe` giữ nguyên mã `boss_*`; canhDau không đội vương miện nếu `Quai.khongVuongMien`.
+  - `src/screens/hocsinh/boss/`: `noiDungBoss.ts` (14 câu thoại + 3 chiêu, Thùy sửa chữ), `BossSan.tsx` (BossAnhHS 6 tư thế CSS + HoiThoaiBoss chữ chạy), `XemBoss.tsx` → `hs.html?xem=boss` (&tran=1 vào trận 3D thử).
+- **Sai / sửa:** `so={{...}}` inline vào HoiThoaiBoss ⇒ useMemo dựng lại mỗi render ⇒ effect gọi setState cha ⇒ vòng lặp "Maximum update depth". Sửa: hằng ổn định + effect phụ thuộc chuỗi/mat chứ không phụ thuộc object.
+- **Quyết định:** V1 chỉ đường 2D (ảnh + code); 3D (Tripo/Mixamo) để sau. Boss thoát trận 3D bằng tan dần (opacity), không ngã. Chưa nối dữ liệu thật: `fn_boss_cuoi_cua_toi` chưa có (cần luồng Số liệu), trận/hội thoại đang chạy trên dữ liệu giả.
+- **Ghi chú ảnh:** pose 02 tóc mái hơi lệch so ảnh gốc (đường chân tóc thưa hơn, tròng kính trắng đặc) — Thùy duyệt mức nhận ra mặt. Thư mục `design/bk-ui-src/boss/thuy/` có thêm 1 file `exec-*.png` trùng 02 (không xoá, không commit).
