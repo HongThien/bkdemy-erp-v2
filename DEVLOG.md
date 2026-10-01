@@ -33229,3 +33229,24 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - ⚠ Tự phát hiện: chương V "PP toạ độ trong không gian" (T11210, 4 chuyên đề, 19 dạng, 0 câu) t tạo trong bản đồ ĐẠI ở mig 202609281833 TRÙNG với nhánh
   HÌNH GIẢI TÍCH (`hgt_ban_do` K12 đã có 9 chuyên đề, 36 dạng, ~1.600 câu: mặt phẳng · đường thẳng · mặt cầu · góc · khoảng cách · vị trí tương đối…).
   spec-luong-kho V3-2 đã ghi "không gồm nhánh Hình" mà t vẫn tạo. Chưa xoá (Luật xoá) — báo Thùy quyết.
+
+### 01/10 chiều — Đề thi LÁT A xong: `DE SO 3` (NBV 12-CD23) đã lên ERP
+- Thùy chốt thêm (spec-de-thi §10.5): màn riêng **Kho đề thi** (Chờ duyệt / Sẵn sàng / Đã giao) · 1 đề 3 cách giao (kiểm tra / luyện tập trên lớp / BTVN,
+  map sang `bai_test.loai` sẵn có) · chỉ giao cả đề · **TLN giữ form đề gốc 4 ô theo luật thi THPT** (thay quyết định #2 20/09 cho đề thi) ·
+  **K6: đề luôn dùng được dù chưa gán đủ dạng, chỉ cảnh báo; gán dạng sau thì mastery cập nhật theo**.
+- `scripts/kho/de-thi/boc-word.mjs` (0 AI): Word → `de.json`. Tách PHẦN I/II/III + câu; ghép bộ ĐỀ ↔ bộ LỜI GIẢI theo (phần, số câu) và so nội dung làm
+  nhân chứng; TN: tách 4 phương án, đáp án = gạch chân, đối chiếu "Chọn X"; Đ/S: mệnh đề + "a) Đúng/Sai" trong lời giải; TLN: dòng "Đáp án/Trả lời:";
+  hình PNG chép ra, WMF/EMF cảnh báo. DE SO 3: 12+4+6 đúng khuôn, 572/572 công thức, ĐỀ ↔ LỜI GIẢI khớp 22/22, 5 câu có cảnh báo.
+- Phần Claude phán đoán (`quyet.mjs` trong thư mục làm việc): câu 11 có 3 mẩu công thức là ẢNH WMF (Oxyz · (P) · C(1;1;3)) — đọc từ lớp chữ PDF;
+  câu 6 gạch chân B / "Chọn C" — giữ B (2i − 3k = (2;0;−3)), ghi cảnh báo; 3 câu TLN không có dòng đáp án — rút từ dòng kết luận lời giải;
+  kho + dạng 22 câu + 16 mệnh đề (2 câu + 4 mệnh đề để dạng chờ vì không khớp rõ). Phiếu trả lời trong file là phiếu TRẮNG (xác nhận form TLN: 4 ô,
+  "−" chỉ ô đầu, "," chỉ ô 2–3, số 0–9).
+- `scripts/kho/de-thi/ghi.mjs`: chạy thử = transaction + ROLLBACK + bảng tóm tắt; `--ghi` = ghi thật. Dùng lại `insertCauBatch` (lọc trùng, dạng chờ).
+  Đề → đường A (`tai_lieu` + phần + câu, `nhanhByCau` cho câu HGT), PDF gốc → `kho-tailieu` (`file_url` + `pdfGocUrl`), ảnh → `kho-anh`,
+  cảnh báo từng câu → `cau_hinh.deThi.canhBaoCau[ma_cau]`, `nhap_kho_log` (`de_thi:<id>`). Chặn nhập lần hai theo sha256.
+- **Đã ghi thật:** tai_lieu `deb38df1-a421-4211-8552-172364c3ea8a` · 22 câu (19 hgt + 3 dai) · tổng 10 điểm · 16 mệnh đề · 5 ảnh + PDF gốc tải được (HTTP 200).
+  **Xem trên ERP (preview, đăng nhập admin):** Kho tài liệu › Đề thi › tìm thấy đề › ✎ Sửa (22 câu · 3 phần · 📎 Xem đề gốc) › ✅ Duyệt đề mở được,
+  391 công thức KaTeX 0 lỗi, 3 hình hiện, đáp án tô đúng. Màn báo "Còn 10/22 câu thiếu" — do luật CŨ còn chặn dạng chờ + TLN chưa có MCQ (K5/K6 sẽ gỡ ở lát B/C).
+- `.claude/commands/nhap-de-thi.md` viết lại v2 (v1 ghi `toan_de_thi` đã ngừng).
+- Bẫy lại dính: vá `quyet.mjs` bằng heredoc ⇒ `\left`/`\right` thành `left`/CR+`ight`, và guard cũng bị méo CÙNG KIỂU nên không bắt được
+  (nhân chứng không độc lập). Sửa bằng Edit tool + guard `String.raw`. `ghi.mjs` chặn nội dung còn `[[…]]` nhưng KHÔNG bắt được LaTeX mất `\` — cần thêm kiểm KaTeX render ở bước chạy thử.
