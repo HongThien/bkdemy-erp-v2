@@ -144,7 +144,9 @@ Quyết định thiết kế (tên "Khối vuông" không dùng chữ Minecraft 
 file đơn. **Thùy chốt 01/10:** V1.0 vẫn là RPG + Thị trấn ⇒ Khối vuông dựng **SAU V1** (sau Thị trấn) · hình gamification **giữ bộ chung** ·
 **chưa cần bản tối**.
 
-**Khác RPG:** style **SÁNG** (`cheDo: ['sang']`), chữ tối trên thẻ sáng, góc VUÔNG, viền tối 3px + vát (bóng inset), font tiêu đề pixel.
+**Khác RPG:** style **SÁNG** (`cheDo: ['sang']`), giao diện **TÚI ĐỒ** (tấm xám đá vát, ô lõm), góc VUÔNG, font tiêu đề pixel; vật phẩm = sprite
+pixel 16×16. **Thùy 01/10: giống Minecraft NHẤT CÓ THỂ (khung cảnh → vật phẩm) mà không vi phạm bản quyền** — luật ĐƯỢC / CẤM ở PHONG CÁCH CHUNG của đơn.
+**Ô lõm** (`surface2`) cần vát NGƯỢC (tối trên-trái) — hợp đồng chưa có biến cho bóng ô con ⇒ thêm `--sk-o-shadow` khi dựng (lỗ ⑤).
 
 **Token đề xuất** (`skin/styles/khoi.ts` — chỉnh lại theo ảnh #01 được duyệt):
 
@@ -155,12 +157,12 @@ file đơn. **Thùy chốt 01/10:** V1.0 vẫn là RPG + Thị trấn ⇒ Khối
 | `radius` · `cardClip` · `cardAccentLeft` | `0px` · `none` · `none` | |
 | `blur` | `blur(2px)` | thẻ gần đục, chỉ nhoè nhẹ nền |
 | `sang.bg` | `#f7dbe6` | hồng trời hoàng hôn nhạt (khớp nền mặc định) — cũng là nền dự phòng |
-| `sang.surface` · `surface2` | `rgba(246,239,223,0.92)` · `rgba(155,116,64,0.14)` | giấy da / ván gỗ · ô con pha gỗ |
-| `sang.ink` · `muted` · `line` | `#1f2328` · `#4b5563` · `rgba(30,30,30,0.35)` | |
+| `sang.surface` · `surface2` | `rgba(198,198,198,0.95)` · `rgba(139,139,139,0.55)` | tấm TÚI ĐỒ xám đá · ô lõm xám đậm (Thùy 01/10: giống Minecraft nhất có thể) |
+| `sang.ink` · `muted` · `line` | `#2b2b2b` · `#555555` · `rgba(0,0,0,0.35)` | chữ tối trên tấm xám |
 | `sang.acc` · `accInk` | `#5fa83a` · `#ffffff` | khối cỏ; chữ trắng cần bóng — xem "lỗ hợp đồng" ② |
 | `sang.badge` · `badgeInk` | `#e04b3c` · `#ffffff` | badge ô VUÔNG (hiện code vẽ tròn — lỗ ①) |
-| `sang.cardBorder` | `3px solid #1e1e1e` | |
-| `sang.cardShadow` | `inset 3px 3px 0 rgba(255,255,255,0.55), inset -3px -3px 0 rgba(0,0,0,0.22), 0 4px 0 rgba(0,0,0,0.25)` | vát viên gạch + bóng cứng dưới |
+| `sang.cardBorder` | `2px solid #1e1e1e` | |
+| `sang.cardShadow` | `inset 2px 2px 0 #ffffff, inset -2px -2px 0 #555555, 0 3px 0 rgba(0,0,0,0.3)` | vát túi đồ (sáng trên-trái, tối dưới-phải) + bóng cứng |
 | `theTiep` | ván gỗ `#9b7440`→`#c8a46b`, chữ trắng, viền `3px solid #1e1e1e` | thẻ "Việc tiếp theo" / ca bổ trợ |
 | `nenTen` | không khai | style sáng không cần tấm mờ sau tên (khai thì bật bóng chữ TỐI toàn trang — sai cho nền sáng) |
 | `hinhNen` | `anh_dao` (mặc định, Thùy chọn 01/10) · `ho_rung` · `tuyet` — mỗi cái `sang` + `sangDoc` | phủ nhẹ trắng→trong ở 35% đáy để chữ tối trên thẻ đọc được |
@@ -183,6 +185,8 @@ file đơn. **Thùy chốt 01/10:** V1.0 vẫn là RPG + Thị trấn ⇒ Khối
    ③ **Màu GAME vẽ cho nền tối** (`gami/hinh.ts` `MAU_GAMI`): thẻ huy hiệu, lớp phủ chúc mừng tự có nền riêng ⇒ vẫn đọc được trên trang sáng;
       soi lại Album / Hồ sơ / Rank khi ghép — chỗ nào chữ `MAU_GAMI.chu` (trắng) rơi thẳng lên nền trang thì bọc thẻ.
    ④ Thẻ Thế giới BK, bong bóng thoại (`--sk-ink` nền / `--sk-bg` chữ) tự đảo đúng — chỉ cần soi.
+   ⑤ **Ô lõm của túi đồ:** ô con (`surface2`) cần vát NGƯỢC (tối trên-trái, sáng dưới-phải) — hợp đồng chưa có biến bóng cho ô con ⇒ thêm
+      `--sk-o-shadow` (RPG `none`) vào `kieu.ts` + `bienCss()`, dùng ở các ô con (O_CON của Nhiệm vụ, ô lưới màn chính…).
 5. Soi bằng mắt (khổ NGANG trước — `spec-v1-app-hs.md` §0): Home 1180×820 + 1440×900 × 3 nền · Home dọc 390×844 không vỡ · Nhiệm vụ · Album ·
    Rank · Hồ sơ · Thế giới BK · 1 màn làm bài · 1 màn rỗng. Nền anh đào nhiều hồng ⇒ soi kỹ badge đỏ + nút xanh còn nổi không. Trang mẫu `hs.html?xem=gami` cần thêm công tắc chọn style để soi không cần đăng nhập.
 6. K2 (bản đồ + quái): dựng sau khi luồng Giao diện có màn bản đồ cho RPG — cùng tên file, chỉ thêm thư mục `khoi`.

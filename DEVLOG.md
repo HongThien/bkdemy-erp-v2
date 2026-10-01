@@ -33884,3 +33884,11 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - (3) gãi ngứa bị đầu che;
   - (4) bỏ chạy / ăn mừng tự quay cả con ⇒ khi nối vào game phải chọn một bên quay;
   - (5) chưa đo iPad.
+
+- (01/10 tiếp) Thùy: *"vật phẩm có dựa theo Minecraft không — tao muốn thật giống như trong game"* ⇒ t giải thích đã cố ý tránh (bản quyền
+  Mojang/Microsoft, app dùng thương mại + luật "thiết kế gốc" của mọi đơn) và đề xuất giống tối đa về CÁCH VẼ. Thùy chốt: *"giống minecraft nhất
+  có thể, từ khung cảnh đến vật phẩm (sách, đèn…), không vi phạm bản quyền"* ⇒ viết lại đơn: khối lập phương texture pixel 16×16 · vật phẩm =
+  sprite pixel 16×16 (đồ cầm tay) / khối 3/4 (rương, giường, cửa) · giao diện TÚI ĐỒ (tấm xám đá vát, ô lõm, thanh kinh nghiệm) · nhân vật tỉ lệ
+  người khối, skin tự vẽ khác Steve/Alex · danh sách ĐƯỢC / CẤM cụ thể (mob, đồ chỉ Minecraft có, UI y nguyên, logo/font). 15 vật phẩm mới:
+  cuốc · sách + bút lông · khiên · bản đồ · sách · cửa sắt · cuộn giấy · cúp · rương · ngọc lục · la bàn · ba lô · đồng hồ · giường · thang;
+  góc trang trí có đèn lồng. Token §10 đổi sang túi đồ xám + lỗ hợp đồng ⑤ (bóng ô lõm).
