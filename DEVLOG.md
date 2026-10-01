@@ -34328,3 +34328,25 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   đỉnh dò trên mặt đầu (viền cắm vào da ⇒ đáy chìm, không khe) + viên pha lê nhọn giữa trán + 2 mỏm nhỏ; shader thêm cờ PHA LÊ (aBong > 1):
   nhám 0,06 + phản chiếu trời giả + loé nắng (cảnh không có env map nên vật liệu bóng tự nó chỉ có 1 điểm sáng). BatThu `thu-de-thuong`.
   Bài học: muốn MẶT PHẲNG giác cạnh thì dựng đa diện thật; nặn SDF rồi cắt thưa chỉ ra mặt lăn tăn méo, không bao giờ phẳng.
+
+## 2026-10-01 (khuya, máy nhà) — [Game] Thiên Kình bản 6: đầu thuôn, mang to nhất, mắt gần + tròng xoáy, bỏ dải đen trên đầu (BatThu `thu-de-thuong` @ `b65bb98`)
+- Research lại theo tham chiếu Thùy gửi: 2 video YouTube (VM5hmMsiUJs giây 0–3; JGijpXb9VYI giây 3–8 + cận đầu 15,5–17,2) + 3 ảnh bìa video có Panthalus
+  rõ (3/4 trước). Lấy khung 1080p bằng canvas phủ trang trong Browser pane; lưu `BatThu/.snap/tham-khao/thien_kinh/`. Mô hình MakerWorld chưa mở (ô
+  Cloudflare cần Thùy bấm) — chưa cần vì ảnh video đủ đo.
+- Bắt đầu theo việc treo của spec ("đầu nhìn trên rộng hơn ngực 1,15–1,25×") — đã đạt 1,22× thì Thùy góp ý NGƯỢC: "đầu đang bè ra; đầu thuôn hơi
+  dẹt 1 tẹo, góc tròn; đầu é hơn, to ra ở phần mang rồi thu nhỏ đến tận đuôi; mắt xa nhau quá nên không ra thần thái; bỏ vạch đen trên đầu".
+  ⇒ BỎ đích cũ. Nhìn trên (nửa rộng, đo bằng `DEMO.doRong`): mõm 0,35 → đầu 0,58–0,59 → MANG 0,71 (z 1,2–1,3) → 0,59 (z 0,6) → 0,39 (z 0) → đuôi.
+  Mặt cắt đầu rộng/cao ~1,2 (bản 4–5: 1,55), bỏ đỉnh đầu phẳng.
+- Mắt: dò chếch lên 8° + ra trước 46° (bản 5: 6° + 34°) ⇒ nằm trên mặt, gần nhau; con ngươi khe → XOÁY ỐC sẫm trên tròng vàng (đúng khung cận 16,4 s);
+  hốc mắt xanh đậm. Gờ mày hạ thấp (mắt dời lên thì gờ cũ nhô như 2 cái tai).
+- Bỏ dải mặt nạ vắt qua đỉnh đầu + mảng nâu quanh mắt (mẫu không có) — chỉ còn quầng xanh đậm ôm sát mắt.
+- Theo khung hình: thân aqua nhạt + viền phát sáng mạnh hơn; hàm dưới + họng trắng tới đường miệng; vân lưng từ sọc vắt ngang thành cặp ")(" hở
+  ở sống (nhìn trên hết thành sọc thẳng); viền sáng cả mép trước vây; vòng = đai đồng-cam (bản rộng theo trục, 2 gờ) + 9 tia PHIẾN DẸT dài đầu
+  bo tròn (bỏ ngọc trên tia); huy hiệu to hơn, ngọc lục giác xanh nhạt to; thêm dải mũ đồng chạy dọc sống đầu.
+- Tự kiểm: `thien_kinh-mau` · `-so-tham-khao` (đặt cạnh 3 khung video/ảnh bìa) · `-tren` · `-truoc` · `-dau` · `-dong-tac` · chuỗi `-dt-lon_vong`,
+  `-dt-hat`, `-dt-quay_duoi` — vòng không cắm vào thân khi lộn vòng / há miệng. Bản Đẹp 49,4k tam giác, Nhẹ 34,8k; tsc sạch. Trang thử thêm
+  `DEMO.chupBo` (bộ ảnh góc cố định cạnh ảnh tham chiếu).
+- Sai: làm theo việc treo trong spec ("đầu rộng hơn ngực") mà chưa hỏi lại — đích đó viết lúc đầu còn dẹt bè; Thùy xem ảnh là thấy ngược ý.
+  Bài học: việc treo trong spec cũng là 1 cách HIỂU góp ý — trước khi làm phải đặt cạnh ảnh mẫu kiểm lại xem còn đúng không.
+- Còn / chờ Thùy: (1) "gờ/mũ xanh đậm trên đầu" — khung hình cận cho thấy tấm huy hiệu + dải trên đầu cùng màu ĐỒNG với vòng, nên để đồng; Thùy
+  muốn xanh đậm thì đổi 1 màu. (2) Mi mắt (nét viền đuôi mắt) trông hơi "điệu". (3) Dải mũ mảnh, nhìn xa ít thấy.
