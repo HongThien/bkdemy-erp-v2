@@ -1017,14 +1017,17 @@ const CONTENT_CSS = `
 /* Trả lời ngắn dạng BẢNG (TLNTable, xem PrintView.tsx) — cột 1 đề, cột 2 chỗ điền đáp án. Mỗi hàng
    break-inside:avoid (không xé đôi 1 câu) nhưng cả khối vẫn CHẢY được giữa các hàng qua trang. */
 .pv-tlnt{margin:4px 0}
-.pv-tlnt-row{display:flex;align-items:stretch;border-bottom:1px solid #e2e8f0;break-inside:avoid;min-height:11mm}
-.pv-tlnt-row:first-child{border-top:1px solid #e2e8f0}
+/* ⭐ 01/10 (Thùy: "dòng kẻ quá mờ, cần in đậm lên") — border bảng Trả lời ngắn từ #e2e8f0 (slate-200,
+   quá mờ khi in giấy, HS khó thấy ranh ô) → #475569 (slate-600) + 1.4px. Rõ ràng trên giấy nhưng không
+   quá đậm phá khuôn SaaS. Áp cả 3 cạnh (top row đầu, bottom mỗi row, left cột đáp án). */
+.pv-tlnt-row{display:flex;align-items:stretch;border-bottom:1.4px solid #475569;break-inside:avoid;min-height:11mm}
+.pv-tlnt-row:first-child{border-top:1.4px solid #475569}
 /* flex-direction:column (KHÔNG phải row mặc định): questionOnlyContent trả về NHIỀU con (đề + <img> nếu
    câu có anh_de, vd câu trắc nghiệm bị ép hiển thị "trả lời ngắn" mà vẫn còn hình minh hoạ). row sẽ xếp
    đề/ảnh CẠNH NHAU → đề bị bóp còn 1 cột chữ hẹp dính từng từ (Thùy báo ảnh chụp, MT câu 7). column xếp
    đề rồi ảnh CHỒNG DỌC như cauItemParts vẫn làm, justify-content:center giữ nguyên ý "canh giữa" ban đầu. */
 .pv-tlnt-q{flex:1;min-width:0;padding:7px 10px 7px 0;display:flex;flex-direction:column;justify-content:center}
-.pv-tlnt-a{width:42mm;flex-shrink:0;border-left:1px solid #e2e8f0}
+.pv-tlnt-a{width:42mm;flex-shrink:0;border-left:1.4px solid #475569}
 .pv-img{display:block;margin:7px auto;max-height:60mm;max-width:100%}
 /* ⭐ 21/09 (CEO): ô "Vẽ hình" — chế độ o_trong (bản HS) chừa khung cho HS tự vẽ; bản GV vẫn dùng .pv-img
    để hiện ảnh đối chiếu. Soi khung tương đương .pv-img (max-height 60mm) để layout không nhảy.
