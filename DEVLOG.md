@@ -34366,3 +34366,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   thế giới liền khối không khớp mọi khối ⇒ ghép mảnh rời; bố cục làm 1–10 (data có 1–2).
 - Đơn 7 (design/DON-HANG-SKIN-HS.md): 3 ảnh toàn cảnh duyệt → nền thế giới + 8 lục địa → nền vùng/chặng 4 biome → mốc + vật → nền đấu → lục địa đợt 2–3 → 4 biome còn lại.
   spec-v1-app-hs §4.5 ghi đổi hướng.
+- (01/10 khuya) **CEO CHỐT TẠM Băng Thần Mã** bản Paldeck — BatThu tag `bang-than-ma-chot-tam-0110` (@ `2e1588b`, nhánh `thu-de-thuong`).
+  Việc để sau khi mở lại: mặt cánh nhìn chính diện (đang thấy cạnh mỏng) · giảm ~127k tam giác/con + đo bản Nhẹ · cánh lúc ngủ/trúng đòn còn cứng.
+  Bước lưu asset (xuất GLB + ảnh đại diện) chưa làm được — chưa có công cụ xuất.
