@@ -28,55 +28,46 @@
   đã lọc nhiễu**, xếp hạng GV–TA, trình chiếu mỗi bảng một màn). **Treo:** báo cáo Vận hành của Lộc chưa có mẫu · thông báo thứ Hai chờ khai
   `TROLY_PUSH_APP` + deploy · khung hỏi chưa nối 13 công cụ DB. Chi tiết: mục "⭐⭐ TRỢ LÝ" bên dưới.
 
-- **🚨 PHÁP LÝ GAME (01/10) — đọc `design/danh-gia-game-bat-thu-cho-bk.md` trước khi làm tiếp CẢ Nông Trại lẫn Bắt Thú.**
-  - **Nghị định 147/2024 Điều 57:** vật phẩm và điểm trong game KHÔNG được quy đổi ra tiền, thẻ hay hiện vật có giá trị; người chơi không được mua bán với nhau.
-    T đã tự kiểm qua báo Chính phủ và Nhân Dân.
-    ⇒ Thiết kế "bán nông sản → EXP → xu ví đổi quà" của Nông Trại có thể trái luật.
-  - **Giờ chơi:** dưới 18 tuổi tối đa 60 phút/game/ngày, tổng 180 phút; cảnh báo mỗi 30 phút. Dự thảo 23/7/2026 đề xuất HS dưới 16 tổng 60 phút cho mọi game của một doanh nghiệp.
-  - **Giấy phép:** game nhiều người tương tác qua máy chủ = G1, cần giấy phép Bộ VHTTDL.
-  - Game miễn phí trong app trung tâm có thuộc phạm vi không: **chưa rõ, cần luật sư**.
-  - **CEO ĐÃ QUYẾT (01/10): KHÔNG LO pháp lý** — "luật VN và thực tế xa nhau; game làm local, không có xu trực tiếp, không giao dịch tiền". Đừng nêu lại như rào chặn. Thiết kế giữ nguyên tắc: game không trả xu trực tiếp.
-  - **CEO chốt thêm 01/10:**
-    - **Gộp Nông Trại + Bắt Thú thành 1 game** với 3 chế độ: trồng trọt · khám phá (bắt thú) · ấp trứng nuôi pet (đơn giản kiểu Dragon City).
-    - **Định vị:** HS chơi vì có bạn bè + để kiếm thêm xu, KHÔNG đi đường làm game thật hay.
-    - **Mô hình BK** (lớp học thật + app) được coi là gần như duy nhất.
-  - **Tính năng giữ chân kiểu Duolingo cho app HS:** `design/giu-chan-hoc-sinh-kieu-duolingo.md`. 7 việc làm trước:
-    1. tin báo phụ huynh;
-    2. chuỗi ngày dễ giữ;
-    3. thẻ buổi học;
-    4. GV khen một chạm;
-    5. nhiệm vụ cả lớp;
-    6. pet kiểu Finch;
-    7. giải đấu tuần nhóm nhỏ.
-
-- **⭐ GAME NÔNG TRẠI BK — 29/09 CEO đổi hướng sang NHỊP NGÀY. Đọc `spec-nong-trai-nhip-ngay.md` trước khi làm.**
-  - **Hướng mới:** kiểu Nông trại vui vẻ / Khu vườn trên mây. HS vào 1 lần/ngày để thu hoạch, mua hạt, gieo, và thăm vườn bạn cùng lớp để hái trộm/giúp.
-  - **Rào đã chốt:** giờ vàng chỉ chủ hái · mỗi ô chỉ trộm 1–2 quả · chỉ thăm trong lớp · có việc giúp (tưới, bắt sâu, nhổ cỏ) · cây không héo chết · **có trần trộm VÀ trần giúp mỗi ngày**.
-  - **Chưa chốt, đang tạm:** chuyển hẳn (tắt máy/đơn/sạp, không xoá code) · 3–5 phút/ngày · hiện tên người trộm.
-  - **30/09 đã build PHA 1** trên nhánh `nhip-ngay` (`fc796d5`):
-    - bố cục gọn kiểu Nông trại vui vẻ (Thùy gửi ảnh mẫu) + thanh dụng cụ;
-    - trồng cây + gà, bò + vườn bạn ảo (giúp / hái) + chó;
-    - ví xu + EXP + điểm chăm chỉ, hướng dẫn 11 bước chạy trọn;
-    - lò, mèo, chim, trang trí tắt bằng cờ `PHA`.
-    Thiết kế + số bot: spec §2.1 và §9.
-  - **Việc kế tiếp:** Thùy chơi thử, chỉnh số → nhiệm vụ ngày → online. `main` vẫn là bản Hay Day.
-  - **⚠ Code game KHÔNG nằm trong repo ERP.** Từ 01/10 có remote GitHub riêng tư **`HongThien/bk-nong-trai`** (đủ nhánh `main`/`nhip-ngay`/`do-hoa-thu`, đẩy từ bản chép ở máy nhà `C:\Users\Admin\Desktop\BKERP\NongTrai`).
-    Máy công ty (`E:\BK ACADEMY\Gaming\KayKit\NongTrai`) **chưa nối remote** — lần đầu: `git remote add origin https://github.com/HongThien/bk-nong-trai.git` + `git fetch`.
-    Đừng chạy git trên bản Drive `G:\Other computers\...` (Drive nhét `desktop.ini` vào `.git/refs` ⇒ hỏng ref, mỗi lệnh 1–2 phút).
-
-- **⭐ GAME BẮT THÚ (kiểu Palworld) — CEO chốt 30/09–01/10. Đọc `spec-bat-thu.md` trước khi làm.**
-  - Đánh thú cho yếu máu rồi ném bóng.
-  - Đánh thời gian thực, thú có chiêu.
-  - Sau này MMO + party đánh boss.
-  - 2 bản đồ hoạ Đẹp/Nhẹ, không làm bản cùi.
-  - Boss phải là thú NGẦU, quái phải ĐẸP.
-  - Làm tách khỏi Nông Trại.
-  - **Code:** repo riêng `HongThien/bk-bat-thu` (máy nhà `C:\Users\Admin\Desktop\BKERP\BatThu`). Launch `bat-thu` cổng 5280.
-    - Nền: three r186 + three.quarks; luật thuần `src/luat/` để sau chuyển lên Colyseus.
-  - **Đã có bản thử chơi trọn:** chọn thú, 7 kiểu chiêu, hoạt cảnh bắt 3 lần lắc, đội 5, sổ thú. Chưa đo iPad gen 7 thật.
-  - **Chờ CEO:** chọn nguồn mô hình boss/pet (`design/nguon-mo-hinh-boss-bat-thu.md`, đề xuất ~465 USD, nên mua thử 1 món mỗi bên trước).
-  - **Chạy:** launch `nong-trai` (port 5270) · kiểm luật `node NongTrai/tools/test-engine.mjs`.
-  - **Bẫy three r128:** `Texture` không có `userData` · `InstancedMesh` cắt khung theo gốc toạ độ ⇒ chia ô có khối bao riêng hoặc `frustumCulled = false`.
+- **⭐⭐ GAME BK — trạng thái cuối 01/10 (máy nhà). ĐỌC `spec-bat-thu.md` §0 + §1 TRƯỚC KHI LÀM.**
+  - **Chiến lược CEO (spec §0):** áp lực chỉ ép HS vào app, không ép được cố gắng ⇒ game phải đủ thú vị để HS "trả giá" ~30 phút học nghiêm túc.
+    - **Muốn chơi thì phải học** (vd đúng 30 câu thì game mở khoá).
+    - Kết quả học thành tài sản trong game + khoe với bạn ⇒ học nhiều hơn.
+    - Superapp tạo gắn bó: chuyển trung tâm là mất "chơi".
+    - "Tốt cho số đông là đủ."
+  - **Định vị:** HS chơi vì có bạn bè + để có thêm xu; KHÔNG làm game thật hay. Mô hình BK (lớp thật + app) gần như duy nhất.
+  - **Gộp Nông Trại + Bắt Thú thành 1 game**, 3 chế độ: trồng trọt · khám phá (bắt thú kiểu Palworld) · ấp trứng nuôi pet (đơn giản kiểu Dragon City). Chưa bắt đầu gộp code.
+  - **Pháp lý (NĐ 147/2024): CEO KHÔNG lo** — "làm local, không xu trực tiếp, không giao dịch tiền". Đừng nêu lại như rào chặn. Đánh giá đầy đủ: `design/danh-gia-game-bat-thu-cho-bk.md`.
+  - **Chờ CEO (2 câu trước khi viết spec vòng chơi game gộp):**
+    1. Cổng mở game đếm **số câu đúng** (CTO đề xuất) hay **tỉ lệ đúng**?
+    2. Câu tính từ Tự luyện thôi, hay cả BTVN/ET?
+    - Sau đó: viết spec vòng chơi gộp quanh cổng học (logic trước, số bàn sau).
+  - **Chờ CEO khác:**
+    - duyệt Sổ Trùm 8 trùm (https://claude.ai/artifact/2zWHd4mF6NAhX2UnVVzaDV, spec §3.0b);
+    - chọn nguồn mô hình boss/pet (`design/nguon-mo-hinh-boss-bat-thu.md`, đề xuất mua thử 1 món mỗi bên).
+  - **Giữ chân app HS** (`design/giu-chan-hoc-sinh-kieu-duolingo.md`). App BK có 2 tầng:
+    - bắt buộc (BTVN/ET — không cần dụ; vấn đề là làm qua loa);
+    - tự nguyện (góc Duolingo vẫn đúng).
+    - Tin báo phụ huynh **ĐÃ CÓ** ở app PH (Web Push: đến lớp · kết quả buổi · tóm tắt việc cần làm · thông báo TT). Còn: đo % PH bật thông báo + gợi ý "hỏi con về dạng X".
+    - Thứ tự đề xuất: học trước chơi sau → GV khen một chạm → nhiệm vụ cả lớp → pet kiểu Finch → giải đấu tuần nhóm nhỏ → chuỗi ngày (chỉ đếm phần làm thêm).
+  - **CODE — 2 repo GitHub riêng tư** (không nằm trong repo ERP):
+    - **`HongThien/bk-bat-thu`** (bắt thú). Vite + TS + three r186 + three.quarks; asset CC0 nằm sẵn trong `public/asset` (Quaternius Ultimate Monsters + KayKit).
+      - Đã có: chọn 3 thú khởi đầu · 23 loài · 13 chiêu/7 kiểu hiện · hoạt cảnh bắt 3 lần lắc · đội 5 + sổ thú · 2 bản đồ hoạ Đẹp/Nhẹ (`src/chat-luong.ts`).
+      - Đám đông: thấy tối đa 10 người, ưu tiên bạn (`?nguoi=100`).
+      - **Khu đấu boss** Bạo Chúa Lửa (`src/boss.ts`, mô hình tạm): 4 đòn có vùng đỏ báo trước · nổi giận 50% · kiệt sức 15% để thu phục · né lăn (Shift) · thắng/thua/thu phục.
+      - Chưa có máy chủ (Colyseus để sau). Chưa đo iPad gen 7 thật.
+      - **Máy công ty:** `git clone https://github.com/HongThien/bk-bat-thu.git` (vd `E:\BK ACADEMY\Gaming\BatThu`) → `npm install` → `npm run dev` (cổng 5280). Thêm launch `bat-thu` trỏ đúng đường dẫn máy đó (launch.json máy nhà trỏ `C:/Users/Admin/...`, không commit).
+      - Tham số: `?cl=dep|nhe` · `?cham=0.25` (quay chậm) · `?nguoi=N`. Vào khu đấu: góc tây bắc bản đồ (x −28, z 26).
+    - **`HongThien/bk-nong-trai`** (nông trại; đủ nhánh `main`/`nhip-ngay`/`do-hoa-thu`). Bản mới nhất = `nhip-ngay` @ `9556216` (bố cục gọn kiểu Nông trại vui vẻ + màn ngang + PWA + "Việc hôm nay").
+      - **Máy công ty `E:\BK ACADEMY\Gaming\KayKit\NongTrai` CHƯA nối remote** — lần đầu: `git remote add origin https://github.com/HongThien/bk-nong-trai.git` + `git fetch`. Máy nhà không sửa gì thêm nên 2 bên đang trùng nhau.
+      - Thiết kế nhịp ngày: `spec-nong-trai-nhip-ngay.md`. Chạy: launch `nong-trai` (5270) · kiểm luật `node tools/test-engine.mjs` (đọc DÒNG CUỐI — test chập chờn vì rơi cưa ngẫu nhiên).
+    - Đừng chạy git trên bản Drive `G:\Other computers\...` (Drive nhét `desktop.ini` vào `.git/refs`).
+  - **Bẫy kỹ thuật đã gặp:**
+    - three r186 bỏ `PCFSoftShadowMap`.
+    - Bộ phát nón three.quarks phun theo **+z**.
+    - Sprite thiếu `map` ⇒ vẽ hình vuông.
+    - Vite trên Windows có lúc phục vụ bản biên dịch cũ ⇒ khởi động lại dev server.
+    - Browser pane ẩn ⇒ không vẽ: dùng `window.chup(ten)` (lưu `.snap/`) + tua `GAME.vong(t)` theo lô có nhường lượt.
+    - three r128 (Nông Trại): `Texture` không có `userData`; `InstancedMesh` cắt khung theo gốc ⇒ `frustumCulled = false`.
 ### Kiến trúc & file chính
 - Kho = lá `bdkt` trong cây Admin → `src/screens/kho/KhoScreen.tsx`. Build **THẬT, wire Supabase DB v2** (ngoại lệ so với mock-first của shell — vì schema Kho đã đông cứng).
 - **Seam:** UI KHÔNG gọi `supabase` trực tiếp, chỉ qua `src/lib/kho/api.ts`.

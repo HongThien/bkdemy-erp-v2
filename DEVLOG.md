@@ -32692,3 +32692,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Kinh doanh: superapp khiến HS gắn bó, chuyển trung tâm là mất "chơi".
   - T gắn tên lý thuyết (Premack · temptation bundling · gắn nội tại một phần · chi phí chuyển đổi + hiệu ứng mạng lưới).
   - T đề xuất (chờ CEO): cổng đếm **số câu đúng**, không đếm tỉ lệ.
+- **Chốt phiên máy nhà 01/10 (Thùy lên công ty làm tiếp):**
+  - HANDOFF: gom mục game thành 1 mục "⭐⭐ GAME BK" (chiến lược · gộp 2 game · chờ CEO · 2 repo + cách kéo ở máy công ty · bẫy kỹ thuật); bỏ các dòng đã cũ.
+  - BatThu `9a54b05` đã push. NongTrai máy nhà không sửa gì.
+  - `.claude/launch.json` máy nhà có thêm `bat-thu` / `nong-trai-nha` trỏ `C:/Users/Admin/...` — KHÔNG commit (đường dẫn riêng máy).
