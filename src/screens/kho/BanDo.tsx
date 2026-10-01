@@ -364,7 +364,7 @@ function toggle<T>(set: Set<T>, v: T): Set<T> {
 }
 
 // 5 thang màu % : <20 đỏ · 20 cam · 40 nõn chuối · 60 xanh · 80 xanh đậm.
-function pctColor(pct: number | null): string {
+export function pctColor(pct: number | null): string {
   if (pct == null) return '#94a3b8'
   if (pct < 20) return '#f43f5e'   // rose-500 — đỏ
   if (pct < 40) return '#f97316'   // orange-500 — cam

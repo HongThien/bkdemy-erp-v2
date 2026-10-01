@@ -1568,6 +1568,22 @@ export async function countCauByDang(): Promise<Record<string, number>> {
   return (data ?? {}) as Record<string, number>
 }
 
+// Phủ MCQ theo khối/dạng (tab "Phủ MCQ" trong Bản đồ kiến thức, CEO 01/10) — RPC fn_mcq_coverage_dang (mig
+// 202610011506) tổng hợp SẴN cả rollup-khối lẫn chi tiết-dạng, client KHÔNG group/cộng gì thêm (§2.0).
+export type McqKhoiRow = { khoi: string; tong_tln: number; co_mcq: number }
+export type McqDangRow = { khoi: string; ma_dang: string; ten_dang: string; tong_tln: number; co_mcq: number }
+export async function fetchMcqCoverage(nhanh: 'dai' | 'hgt'): Promise<{ khoi: McqKhoiRow[]; dang: McqDangRow[] }> {
+  const { data, error } = await supabase.rpc('fn_mcq_coverage_dang', { p_nhanh: nhanh })
+  if (error) throw error
+  return (data ?? { khoi: [], dang: [] }) as { khoi: McqKhoiRow[]; dang: McqDangRow[] }
+}
+export type McqCauThieu = { ma_cau: string; dap_an: string | null; noi_dung: string | null }
+export async function fetchMcqCauThieu(nhanh: 'dai' | 'hgt', maDang: string): Promise<McqCauThieu[]> {
+  const { data, error } = await supabase.rpc('fn_mcq_cau_thieu', { p_nhanh: nhanh, p_ma_dang: maDang })
+  if (error) throw error
+  return (data ?? []) as McqCauThieu[]
+}
+
 // ── CRUD dạng ────────────────────────────────────────────────────
 export async function createDaiDang(row: DaiDangRow): Promise<DaiDang> {
   const { data, error } = await supabase.from('dai_ban_do').insert(row).select().single()

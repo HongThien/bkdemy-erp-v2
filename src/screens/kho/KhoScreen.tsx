@@ -5,10 +5,11 @@ import { useMonScope } from '../../hooks/useMonScope'
 import BanDo from './BanDo'
 import SearchCau from './SearchCau'
 import KhoRac from './KhoRac'
+import McqCoverage from './McqCoverage'
 import { daiBranch, hinhBranch, hinhGiaiTichBranch, khtnBranch } from './branches'
 import KhoHinhScreen from './hinh/KhoHinhScreen'
 
-type Tab = 'dai' | 'hinh' | 'hinhgt'
+type Tab = 'dai' | 'hinh' | 'hinhgt' | 'mcq'
 type Mon = 'toan' | 'khtn'
 // Map môn-kho ↔ nhãn MON_LIST (nhan_su_mon lưu nhãn 'Toán'/'KHTN'). Kho mới hỗ trợ 2 môn này.
 const MON_TABS: { key: Mon; label: string }[] = [{ key: 'toan', label: 'Toán' }, { key: 'khtn', label: 'KHTN' }]
@@ -20,7 +21,7 @@ const readKhoi = () => {
 }
 const readTab = () => {
   const v = localStorage.getItem('kho.tab')
-  return (v === 'hinh' || v === 'hinhgt' ? v : 'dai') as Tab
+  return (v === 'hinh' || v === 'hinhgt' || v === 'mcq' ? v : 'dai') as Tab
 }
 const readMon = () => (localStorage.getItem('kho.mon') === 'khtn' ? 'khtn' : 'toan') as Mon
 
@@ -66,9 +67,10 @@ export default function KhoScreen() {
             <TabBtn active={tab === 'dai'} onClick={() => setTab('dai')}>Đại số</TabBtn>
             <TabBtn active={tab === 'hinh'} onClick={() => setTab('hinh')}>Hình học</TabBtn>
             <TabBtn active={tab === 'hinhgt'} onClick={() => setTab('hinhgt')}>Hình giải tích</TabBtn>
+            <TabBtn active={tab === 'mcq'} onClick={() => setTab('mcq')}>Phủ MCQ</TabBtn>
           </div>
         )}
-        {allowed.length > 0 && !profileLoading && <>
+        {allowed.length > 0 && !profileLoading && tab !== 'mcq' && <>
         {/* Tìm câu (chỉ nhánh có câu: Đại/KHTN) */}
         {config.cauTbl && (
           <button onClick={() => setTimCau(true)}
@@ -120,6 +122,10 @@ export default function KhoScreen() {
             // lưới bài toán nhỏ → kho bài. KHÔNG dùng chung component bản đồ 3-tầng của Đại/KHTN.
             // Đi THEO KHỐI như Đại — `key={khoi}` để remount, reset state sạch khi đổi khối.
             ? <KhoHinhScreen key={`hinh-${khoi}`} khoi={khoi} />
+            : mon === 'toan' && tab === 'mcq'
+            // Phủ MCQ (CEO 01/10) — xuyên TẤT CẢ khối cùng lúc (không theo `khoi` đang chọn ở header,
+            // đúng mục đích so sánh toàn cảnh), chỉ Đại/HGT vì 2 nhánh đó mới có pipeline sinh MCQ.
+            ? <McqCoverage />
             : <BanDo key={`${config.key}-${khoi}`} config={config} khoi={khoi} />}
       </div>
 

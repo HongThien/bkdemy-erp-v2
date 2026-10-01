@@ -12925,3 +12925,38 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
 - npm run schema refresh. **Commit luôn** (Thùy đảo chính sách 21/09: cứ commit sau khi verify xong,
   không cần hỏi) — gộp cùng commit batch khối-9-residual/toàn-kho/HGT-khối-12/cấp-3-mặc-định-MCQ từ
   phiên trước (f65fb9a) đã nằm sẵn trên nhánh worktree-form-tn.
+
+## 2026-10-01 (tiếp) — CEO: "1 lá riêng trên ERP visual số liệu có MCQ, subtab trong Bản đồ kiến thức"
+- Tính năng mới, không phải script tay — dùng EnterPlanMode trước khi code (2 Explore agent song song +
+  1 Plan agent). Khảo sát: KhoScreen.tsx (Bản đồ kiến thức) đã có cấu trúc tab y hệt cần — manual TabBtn +
+  ternary render, KHÔNG phải config array. Không có thư viện chart (không recharts/d3/chart.js) — mọi bar
+  trong app đều là CSS thuần (div width:pct% trong track bo tròn, BanDo.tsx). RPC mẫu để nhái convention:
+  count_cau_by_dang (mig 0062) — security definer + allow-list bảng + jsonb trả về tránh PostgREST cap
+  ~1000 dòng.
+- **Postgres — migration 202610011506_fn_mcq_coverage.sql, 2 hàm:**
+  - fn_mcq_coverage_dang(p_nhanh) — trả 1 object jsonb 2 khoá: "khoi" (rollup theo khối) + "dang" (chi
+    tiết theo dạng) — CẢ HAI tổng hợp sẵn trong SQL, client không group/cộng gì thêm (CLAUDE.md §2.0).
+    language plpgsql security INVOKER (không definer — kiểm RLS trực tiếp qua pg_policies: cả 6 bảng
+    dai_/hgt_ × cau_hoi/ban_do/cau_form_tn đều đã có policy "to authenticated using (la_thanh_vien())",
+    không cần bypass). Chọn bảng theo p_nhanh qua if/elsif với TÊN BẢNG LITERAL trong code (không
+    format(%I) động như count_cau_by_dang — an toàn hơn vì không có identifier nào đến từ tham số).
+  - fn_mcq_cau_thieu(p_nhanh, p_ma_dang) — danh sách câu CÒN THIẾU MCQ của 1 dạng (ma_cau/dap_an/noi_dung)
+    cho panel chi tiết khi click.
+  - Verify bằng kỹ thuật đã có trong memory (verify-rpc-va-man-hs-khong-login-that): BEGIN, set_config
+    request.jwt.claims giả 1 tai_khoan.id thật (role nhan_su), gọi hàm, ROLLBACK — vì claude_build không
+    phải authenticated nên la_thanh_vien() chặn khi gọi trực tiếp (đúng, không phải bug). Kết quả KHỚP
+    CHÍNH XÁC số đã tính tay sáng nay: Đại khối 9 = 1799/1947, HGT khối 9 = 123/191.
+- **Client — src/lib/kho/api.ts**: fetchMcqCoverage/fetchMcqCauThieu, y hệt khuôn countCauByDang (rpc +
+  throw error + cast, không query bảng trực tiếp).
+- **Component mới — src/screens/kho/McqCoverage.tsx**: 3 tầng — bar theo khối (toàn bộ khối 1 lúc, KHÔNG
+  theo bộ lọc khối ở header vì mục đích là so sánh toàn cảnh) → click 1 khối xổ bar theo dạng (sắp % thấp
+  nhất lên đầu — dạng thiếu nhiều nhất hiện trước) → click 1 dạng mở modal liệt kê câu còn thiếu (tái dùng
+  MathText render LaTeX). Màu bar tái dùng `pctColor` export từ BanDo.tsx (export thêm 1 từ khoá, không
+  viết lại thang màu).
+- **KhoScreen.tsx**: thêm `Tab` value 'mcq', 1 TabBtn "Phủ MCQ" trong nhóm Toán, ẩn nút Tìm câu/Kho rác/bộ
+  lọc Khối header khi tab này (không áp dụng — màn tự quản lý khối riêng).
+- **Verify**: gọi RPC thật qua transaction+rollback (số khớp chính xác) — tsc --noEmit sạch (chỉ 1 lỗi CÓ
+  SẴN pdfRender.ts không liên quan) — dev server boot 0 lỗi, McqCoverage.tsx/KhoScreen.tsx/api.ts load 200
+  OK qua Vite (module graph không vỡ). **KHÔNG click-through UI thật được** (cần login staff, không có
+  credential trong phiên) — nói rõ giới hạn, không nhận là đã test UI đầy đủ.
+- Refresh schema.md. Commit luôn (chính sách mới — verify xong là commit, không cần hỏi).
