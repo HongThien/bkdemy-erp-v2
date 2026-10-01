@@ -34085,3 +34085,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Sai / sửa:** `so={{...}}` inline vào HoiThoaiBoss ⇒ useMemo dựng lại mỗi render ⇒ effect gọi setState cha ⇒ vòng lặp "Maximum update depth". Sửa: hằng ổn định + effect phụ thuộc chuỗi/mat chứ không phụ thuộc object.
 - **Quyết định:** V1 chỉ đường 2D (ảnh + code); 3D (Tripo/Mixamo) để sau. Boss thoát trận 3D bằng tan dần (opacity), không ngã. Chưa nối dữ liệu thật: `fn_boss_cuoi_cua_toi` chưa có (cần luồng Số liệu), trận/hội thoại đang chạy trên dữ liệu giả.
 - **Ghi chú ảnh:** pose 02 tóc mái hơi lệch so ảnh gốc (đường chân tóc thưa hơn, tròng kính trắng đặc) — Thùy duyệt mức nhận ra mặt. Thư mục `design/bk-ui-src/boss/thuy/` có thêm 1 file `exec-*.png` trùng 02 (không xoá, không commit).
+
+## 2026-10-02 — [Game] CEO: Thiên Kình bản 2 còn thô — đầu to, đuôi phải thon NHANH
+
+- **CEO:** "vẫn thô quá — nó bé dần chậm quá nên thô; chuẩn là đầu to nhưng đoạn cuối đuôi nhỏ đi nhanh; đây nhỏ dần trông lù đù; fix theo đúng tỉ lệ Panthalus".
+- **CTO đo profile độ dày thân** trên ảnh tham chiếu đang bay, tính từ mũi:
+  - 4% → 0,82 · 11% → 1,00 · 21% → 0,92 · 30% → 0,73 · 40% → 0,53 · 52% → 0,35 · 64% → 0,24 · 76% → 0,16 · 88% → 0,12;
+  - ⇒ dáng nòng nọc, thắt nhanh sau cặp vây trước.
+- Giao bản 3: profile theo số đo + đầu ngực tròn mập + vây trước to bản + vân nét cọ + vòng dải phẳng + bỏ mây bản thường.
+  - Bắt buộc ảnh chồng đường bao lên ảnh gốc để chấm tỉ lệ bằng số, không bằng cảm giác.
+- **Bài học cho quy trình `lam-thu`:** bước 1 phải đo **profile độ dày theo chiều dài** từ ảnh nhìn ngang, không chỉ tỉ lệ đầu : thân : đuôi. Dáng thoải đều trông "lù đù"; nét đặc trưng nằm ở chỗ thắt.
