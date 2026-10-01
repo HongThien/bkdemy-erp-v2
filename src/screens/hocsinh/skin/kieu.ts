@@ -31,8 +31,9 @@ export type MoHinhChibi = {
   hao: string; haoGian: string
 }
 export type BossAnh = {
-  /** true ⇒ boss trong cảnh 3D là PHÙ ĐIÊU dựng từ chính 6 ảnh (quaiRelief.ts): giữ đúng nét vẽ + có khối. Ưu tiên cao nhất. */
-  relief?: boolean
+  /** Cách dựng boss trong cảnh trận 3D. 'anh' = tấm ảnh 2D quay mặt camera + hoạt ảnh code (quaiAnh.ts) — MẶC ĐỊNH, nhẹ, giống bản vẽ 100%.
+   *  'relief' = phù điêu từ chính ảnh (quaiRelief.ts, có khối nhẹ) · 'chibi' = dựng khối bằng code (bossChibi3D.ts, cần mo3d; thô — chỉ để thử). */
+  dang?: 'anh' | 'relief' | 'chibi'
   /** có ⇒ MÔ HÌNH dựng bằng khối cơ bản theo thông số này (bossChibi3D.ts); không có cả hai ⇒ tấm ảnh 2D (quaiAnh.ts) */
   mo3d?: MoHinhChibi
   ten: string

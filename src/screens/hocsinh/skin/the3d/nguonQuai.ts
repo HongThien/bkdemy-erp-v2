@@ -18,8 +18,10 @@ export const datNguonQuai = (f: NhaMay) => { nha = f }
 export const sinhQuai: NhaMay = (loai, b) => {
   const anh = laySkin(null).boss?.[loai]
   if (!anh) return nha(loai, b)
-  if (anh.relief) return taoQuaiRelief(loai, anh)
-  return anh.mo3d ? taoBossChibi3D(loai, anh.mo3d, anh.cao) : taoQuaiAnh(loai, anh)
+  const dang = anh.dang ?? 'anh'
+  if (dang === 'relief') return taoQuaiRelief(loai, anh)
+  if (dang === 'chibi' && anh.mo3d) return taoBossChibi3D(loai, anh.mo3d, anh.cao)
+  return taoQuaiAnh(loai, anh)
 }
 /** Tên hiển thị của quái/boss: boss riêng lấy theo style, còn lại bảng TEN_LOAI. */
 export const tenQuai = (loai: string): string => laySkin(null).boss?.[loai]?.ten ?? TEN_LOAI[loai] ?? loai

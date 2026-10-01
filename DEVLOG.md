@@ -34167,3 +34167,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Giao: sải 2,1× → ~3×, bản cánh ×1,4, xoè hết cỡ quay mặt cánh ra camera; lông vai + lông phủ kín từ vai tới cổ tay, không lộ xương mép trước; chân sau co khi bay.
 - **Bài học cho `lam-thu`:** đo cả MẶT CẮT NGANG (rộng/cao) + ảnh nhìn TỪ TRÊN và CHÍNH DIỆN, không chỉ profile nhìn ngang. Thân thú thật hiếm khi tròn đều.
 - ⚠ Lịch V1: CEO chưa trả lời câu "mở luồng hệ thống song song" (hỏi 02/10).
+
+## 2026-10-01 (đêm, sau) — [Boss] Quyết định: boss dùng 2D (tấm ảnh + hoạt ảnh code) cho V1
+
+- Thùy hỏi "đưa boss về 2D cho dễ đúng không" ⇒ đúng. `BossAnh.dang` ('anh' mặc định | 'relief' | 'chibi') thay cờ `relief`; style RPG đặt `dang: 'anh'`. Lý do: giống bản vẽ 100%, nhẹ (không xử lý ảnh lúc tải), ít rủi ro trên iPad đời thấp, kịp 06/10. Phù điêu (`quaiRelief.ts`) và khối code (`bossChibi3D.ts`) giữ lại, không dùng; 3D thật = Tripo/Meshy sau.

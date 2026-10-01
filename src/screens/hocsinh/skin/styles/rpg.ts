@@ -53,7 +53,7 @@ export const RPG: Skin = {
   // Boss mẫu (01/10): chân dung Thùy vẽ chibi — ChatGPT, ảnh gốc design/bk-ui-src/boss/thuy/ (02..08), nén 1024px (chân dung 512px).
   boss: {
     boss_thuy: {
-      ten: 'Thùy', cao: 2.9, relief: true,
+      ten: 'Thùy', cao: 2.9, dang: 'anh',
       mo3d: { da: '#efc197', toc: '#17141c', kinh: true, ao: '#2a2143', aoLot: '#b88f4a', vien: '#e9c77b', ngoc: '#7a4dff', hao: '#9b6bff', haoGian: '#ffc94d' },
       dung: `${A}/boss_thuy_dung.png`, noi: `${A}/boss_thuy_noi.png`, chieu: `${A}/boss_thuy_chieu.png`,
       trung: `${A}/boss_thuy_trung.png`, gian: `${A}/boss_thuy_gian.png`, ha: `${A}/boss_thuy_ha.png`, chandung: `${A}/boss_thuy_chandung.png`,

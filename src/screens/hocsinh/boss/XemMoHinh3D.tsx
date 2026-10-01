@@ -25,8 +25,8 @@ export default function XemMoHinh3D() {
     const sc = new THREE.Scene(); const pal = laySkin(null).the3d!; sc.background = new THREE.Color(pal.troi) // màu cảnh/đèn lấy từ bảng màu 3D của style
     const cam = new THREE.PerspectiveCamera(30, 1, 0.1, 100)
     sc.add(new THREE.HemisphereLight(pal.hemiTroi, pal.hemiDat, pal.hemiCuong)); const sun = new THREE.DirectionalLight(pal.matTroi, pal.matTroiCuong); sun.position.set(3, 6, 6); sc.add(sun)
-    const kieu = q.get('kieu') ?? 'relief' // relief | chibi | anh — so 3 cách dựng
-    const b = kieu === 'chibi' && a.mo3d ? taoBossChibi3D(ma, a.mo3d, a.cao) : kieu === 'anh' ? taoQuaiAnh(ma, a) : taoQuaiRelief(ma, a); boss.current = b; sc.add(b.goc)
+    const kieu = q.get('kieu') ?? a.dang ?? 'anh' // anh | relief | chibi — so 3 cách dựng
+    const b = kieu === 'chibi' && a.mo3d ? taoBossChibi3D(ma, a.mo3d, a.cao) : kieu === 'relief' ? taoQuaiRelief(ma, a) : taoQuaiAnh(ma, a); boss.current = b; sc.add(b.goc)
     const fit = () => { const w = el.clientWidth, h = el.clientHeight; r.setSize(w, h); cam.aspect = w / h; cam.updateProjectionMatrix() }
     fit(); const ro = new ResizeObserver(fit); ro.observe(el)
     let raf = 0, last = performance.now()
