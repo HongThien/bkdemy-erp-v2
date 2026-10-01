@@ -53,6 +53,9 @@ export function bienCss(skin: Skin, cd: 'sang' | 'toi', hinhNenId: string | null
     '--sk-name-plate': skin.nenTen ?? 'transparent',
     // Bóng chữ kế thừa cho MỌI chữ trong khung trang: skin nền ẢNH (có nenTen) cần — chữ đè đèn/lâu đài không đọc được (Thùy 29/09).
     '--sk-chu-bong': skin.nenTen ? '0 1px 6px rgba(8,10,24,0.9)' : 'none',
+    '--sk-tran-font': skin.tran?.font ?? skin.font, '--sk-tran-nen': skin.tran?.nen ?? m.surface,
+    '--sk-tran-vien': skin.tran?.vien ?? `0 0 0 1px ${m.line}`, '--sk-tran-phien': skin.tran?.phien ?? m.surface2, '--sk-tran-phien-day': skin.tran?.phienDay ?? m.line,
+    '--sk-goc': skin.trangTri?.goc ? `url(${skin.trangTri.goc})` : 'none',
     '--sk-font': skin.font, '--sk-font-head': skin.fontHead, '--sk-head-case': skin.headCase, '--sk-head-track': skin.headTrack,
     colorScheme: cd === 'toi' ? 'dark' : 'light',
   }

@@ -23,6 +23,7 @@ import {
 import ThanhChonMon from './ThanhChonMon'
 import { ChonLoaiTuLuyen, ChonDangChuDe } from './TuLuyenChuDe'
 import { NhungHet, type NhungDau } from './phieuluu/nhungDau'
+import { TheTran, PHIEN, CLS_PHIEN, NgocChu, NUT_TRAN, HOP_LOI_GIAI, FONT_TRAN } from './skin/KhungTran'
 import { phieuLuuBat } from './phieuluu/coBat'
 const PhieuLuuHS = lazy(() => import('./phieuluu/PhieuLuuHS'))
 import { laCap2HS, mayManHSCuaToi } from '../../lib/maymai_hs'
@@ -744,6 +745,11 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 // điện thoại nữa") truyền desktop=true qua LamTuLuyen. CHỈ đổi KHUNG NGOÀI (bề rộng/nền/bo góc/cỡ nút)
 // — toàn bộ logic chọn/chấm/hiển thị câu (TN/ĐS/TLN) dùng CHUNG 1 JSX (`trongTam`), không tách 2 bản
 // để tránh lệch hành vi giữa desktop/mobile theo thời gian.
+// Thẻ câu hỏi: thẻ thường của style, hoặc "bảng phép" khi nhúng trong màn đấu (skin/KhungTran.tsx).
+function KhungCau({ nhung, cls, children }: { nhung: boolean; cls: string; children: ReactNode }) {
+  return nhung ? <TheTran className={cls}>{children}</TheTran> : <div className={cls} style={THE}>{children}</div>
+}
+
 function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop, nhung }: {
   baiTestId: string; hocSinhId: string; onXong: () => void
   doneCaption?: string; doneExtra?: React.ReactNode; desktop?: boolean
@@ -757,6 +763,9 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop,
   const [busy, setBusy] = useState(false)
   const [nopped, setNopped] = useState(false)
   const [goiY, setGoiY] = useState(false)
+  // Trong trận (nhung): khung câu hỏi chỉ còn nửa dưới màn ⇒ chấm xong tự cuộn tới ô kết quả + lời giải (Thùy 02/10: "chưa hiện đáp án chi tiết"
+  // — lời giải có nhưng nằm dưới mép khung). Nhớ câu đã cuộn để không giật lại mỗi lần vẽ lại.
+  const daCuon = useRef<string | null>(null)
 
   useEffect(() => {
     (async () => {
@@ -885,9 +894,11 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop,
 
       {/* Thùy 13/09: content SCROLL riêng, footer luôn nằm trong viewport (không phải kéo trang xuống mới bấm Xác nhận). */}
       <div className={desktop ? 'flex-1 min-h-0 overflow-y-auto' : 'flex-1 overflow-y-auto px-4 pb-4'}>
-        <div className={desktop ? 'p-8 lg:p-10' : 'p-4'} style={THE}>
+        <KhungCau nhung={!!nhung} cls={desktop ? 'p-8 lg:p-10' : 'p-4'}>
           <div className="mb-2 flex items-center justify-between">
-            <p className="text-[16px] font-semibold" style={{ color: MAU.muted }}>Câu {idx + 1}</p>
+            {nhung
+              ? <span className="flex items-center gap-2 text-[16px] font-bold" style={{ fontFamily: 'var(--sk-font-head)', color: MAU.acc }}><span aria-hidden className="inline-block h-2.5 w-2.5 rotate-45" style={{ background: MAU.acc }} />Câu {idx + 1}/{total} · chọn đúng để tung phép</span>
+              : <p className="text-[16px] font-semibold" style={{ color: MAU.muted }}>Câu {idx + 1}</p>}
             {cau.ly_thuyet && (
               <button onClick={() => setGoiY((v) => {
                 const nv = !v
@@ -906,7 +917,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop,
               <div className="text-[18px] leading-relaxed" style={{ color: MAU.ink }}><MathText>{cau.ly_thuyet}</MathText></div>
             </div>
           )}
-          {cau.noi_dung && <div className="mb-3 text-[19px] leading-relaxed" style={{ color: MAU.ink }}><MathText>{cau.noi_dung}</MathText></div>}
+          {cau.noi_dung && <div className={nhung ? 'mb-4 text-[21px] font-semibold leading-relaxed' : 'mb-3 text-[19px] leading-relaxed'} style={{ color: MAU.ink }}><MathText>{cau.noi_dung}</MathText></div>}
           {/* Hình đề: nền trắng cố định — hình vẽ/ảnh chụp đề là nét đen trên trắng, đặt thẳng lên thẻ tối là mất nét. */}
           {cau.anh_de && <img src={cau.anh_de} alt="đề" className="mb-3 max-h-80 rounded-lg bg-white" style={{ border: `1px solid ${MAU.line}` }} />}
 
@@ -919,8 +930,9 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop,
                 const tt: TtO = laDapAn ? 'dung' : chonSai ? 'sai' : chon ? 'chon' : 'thuong'
                 return (
                   <button key={orig} onClick={() => setChon(orig)} disabled={daCham}
-                    className="flex items-start gap-3 p-3 text-left text-[19px] transition" style={O_DAP_AN(tt)}>
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[16px] font-semibold" style={TRON_CHU(tt)}>{chuCaiChon(dispI)}</span>
+                    className={nhung ? `flex items-center gap-3 px-3 py-2.5 text-left text-[20px] ${CLS_PHIEN(tt)}` : 'flex items-start gap-3 p-3 text-left text-[19px] transition'} style={nhung ? PHIEN(tt) : O_DAP_AN(tt)}>
+                    {nhung ? <NgocChu t={tt} chu={chuCaiChon(dispI)} />
+                      : <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[16px] font-semibold" style={TRON_CHU(tt)}>{chuCaiChon(dispI)}</span>}
                     <span className="flex-1 pt-0.5"><MathText>{stripLabel(opt)}</MathText></span>
                   </button>
                 )
@@ -965,15 +977,18 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop,
           )}
 
           {daCham && (
-            <div className="mt-4 p-3" style={{ background: boxNen, borderRadius: R_TRONG }}>
+            <div className="mt-4 p-3" style={nhung ? HOP_LOI_GIAI(vd === 'correct' ? true : vd === 'partial' ? null : false) : { background: boxNen, borderRadius: R_TRONG }}
+              ref={(el) => { if (el && nhung && daCuon.current !== cau.id) { daCuon.current = cau.id; requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' })) } }}>
               <p className="text-[19px] font-semibold" style={{ color: txtMau }}>
-                {vd === 'correct' ? '🎉 Đúng hết!' : vd === 'partial' ? '👍 Đúng một phần' : '😔 Chưa đúng'}
+                {nhung
+                  ? (vd === 'correct' ? '✦ Trúng đòn! Em làm đúng rồi' : vd === 'partial' ? '✦ Trúng một phần' : '💥 Trượt đòn — xem lời giải nhé')
+                  : vd === 'correct' ? '🎉 Đúng hết!' : vd === 'partial' ? '👍 Đúng một phần' : '😔 Chưa đúng'}
                 {laDS && <span className="ml-1 text-[16px] font-normal">· {dsDung}/{menhDe.length} ý đúng</span>}
               </p>
               {cau.loai_cau === 'tra_loi_ngan' && vd !== 'correct' && <p className="mt-1 text-[16px]" style={{ color: MAU.muted }}>Đáp án đúng: <b style={{ color: MAU.dung }}>{String(cau.dap_an_key)}</b></p>}
               {cau.loi_giai && (
                 <div className="mt-2 pt-2 text-[18px] leading-relaxed" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.ink }}>
-                  <p className="mb-1 text-[15px] font-semibold uppercase" style={{ color: MAU.muted }}>Lời giải</p>
+                  <p className="mb-1 text-[15px] font-semibold uppercase" style={{ color: nhung ? MAU.acc : MAU.muted }}>{nhung ? '📜 Lời giải chi tiết' : 'Lời giải'}</p>
                   <MathText>{cau.loi_giai}</MathText>
                 </div>
               )}
@@ -987,7 +1002,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop,
               )}
             </div>
           )}
-        </div>
+        </KhungCau>
       </div>
 
       <div className={desktop ? 'mt-4 flex shrink-0 items-center gap-3' : 'flex shrink-0 items-center gap-2 p-3'}
@@ -1000,13 +1015,13 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop,
         )}
         {!daCham ? (
           <button onClick={xacNhan} disabled={busy || !daDu}
-            className={`flex-1 font-semibold disabled:opacity-40 ${desktop ? 'py-3.5 text-[19px]' : 'py-3 text-[18px]'}`} style={NUT_CHINH}>
-            {busy ? 'Đang chấm…' : 'Xác nhận'}
+            className={`flex-1 font-semibold disabled:opacity-40 ${nhung ? 'tran-phien ' : ''}${desktop ? 'py-3.5 text-[19px]' : 'py-3 text-[18px]'}`} style={nhung ? NUT_TRAN : NUT_CHINH}>
+            {busy ? (nhung ? 'Đang niệm phép…' : 'Đang chấm…') : nhung ? '⚔ Tung phép' : 'Xác nhận'}
           </button>
         ) : (
           <button onClick={() => setIdx((i) => i + 1)} disabled={!!nhung?.ban}
-            className={`flex-1 font-semibold ${desktop ? 'py-3.5 text-[19px]' : 'py-3 text-[18px]'}`} style={NUT_CHINH}>
-            {idx + 1 < total ? 'Câu tiếp →' : (daXongHet ? 'Xem kết quả →' : 'Câu tiếp →')}
+            className={`flex-1 font-semibold ${nhung ? 'tran-phien ' : ''}${desktop ? 'py-3.5 text-[19px]' : 'py-3 text-[18px]'}`} style={nhung ? NUT_TRAN : NUT_CHINH}>
+            {idx + 1 < total ? (nhung ? 'Đòn kế tiếp ➜' : 'Câu tiếp →') : (daXongHet ? 'Xem kết quả →' : 'Câu tiếp →')}
           </button>
         )}
       </div>
@@ -1016,7 +1031,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop,
   // Thùy 13/09: MÀN LÀM BÀI phải gọn 1 viewport (Xác nhận đáp án luôn thấy). h-[100dvh]+flex col
   // → header/content/footer chia vùng; content overflow riêng, không phải cuộn cả trang.
   // Nhúng trong khung đấu 3D: chỉ phần trong tâm, vừa khít ô dưới cảnh (không tự chiếm 100dvh).
-  if (nhung) return <div className="flex h-full min-h-0 flex-col px-3 py-2 md:px-6" style={{ fontFamily: 'var(--sk-font)', color: MAU.ink }}><div className="mx-auto flex min-h-0 w-full max-w-4xl flex-1 flex-col">{trongTam}</div></div>
+  if (nhung) return <div className="flex h-full min-h-0 flex-col px-3 py-2 md:px-6" style={{ fontFamily: FONT_TRAN, color: MAU.ink }}><div className="mx-auto flex min-h-0 w-full max-w-4xl flex-1 flex-col">{trongTam}</div></div>
   return desktop ? (
     <div className="flex h-[100dvh] flex-col px-8 py-4" style={NEN_MAN}>
       <div className="mx-auto flex min-h-0 w-full max-w-3xl flex-1 flex-col lg:max-w-4xl">{trongTam}</div>

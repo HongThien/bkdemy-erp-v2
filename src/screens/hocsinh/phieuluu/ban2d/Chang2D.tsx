@@ -65,7 +65,7 @@ export function Chang2D({ luc, vung, b, onVe, onVao, gioi = 'nam' }: { luc: LucD
                   <Hero gioi={gioi} cao={coBe * 0.85} mau={b.troi} />
                 </span>}
                 <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center text-center"
-                  style={{ ...THE_TRON, top: '100%', marginTop: 4, borderRadius: dai ? 10 : 999, width: dai ? 'max-content' : 26, height: dai ? undefined : 26, maxWidth: 150, justifyContent: 'center', padding: dai ? '2px 8px' : 0, background: 'var(--sk-surface)', borderColor: chon ? 'var(--sk-acc)' : undefined }}>
+                  style={{ ...THE_TRON, top: '100%', marginTop: 4, borderRadius: dai ? 10 : 999, width: dai ? 'max-content' : 26, height: dai ? undefined : 26, maxWidth: 150, justifyContent: 'center', padding: dai ? '2px 8px' : 0, background: 'var(--sk-surface)', borderColor: chon || hov === x.ma ? 'var(--sk-acc)' : undefined }}>
                   {dai ? <>
                     <span className="line-clamp-2 text-[11.5px] font-bold leading-tight" style={{ ...HEAD, color: 'var(--sk-ink)' }}>{x.ten}</span>
                     <span className="text-[10.5px]" style={{ color: 'var(--sk-muted)' }}>{x.quai.length} quái · {moTa(x)}</span>

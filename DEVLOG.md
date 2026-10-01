@@ -34397,3 +34397,15 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Bài học: ảnh mô hình 3D nhiều góc > khung hình video — video dễ bắt nhầm trạng thái (mắt xoáy lúc choáng) và góc nghiêng làm sai hình phụ kiện
   (vòm chữ U nhìn thành vòng kín). Có mô hình thì xin ảnh 3D trước.
 - Còn: thiếu cặp vây nhỏ sát đầu như mẫu (khuôn mới có 2 cặp xương vây) · vân trắng trên thân chưa dày/nhiều bằng mẫu · đỉnh huy hiệu mẫu có chóp nhọn.
+### 02/10 — [Giao diện] Màn đấu: lời giải chi tiết hiện ngay + thẻ câu hỏi kiểu "bảng phép" (Thùy: "chưa hiện đáp án chi tiết · viền card + font chưa vibe game")
+- Chẩn đoán lời giải: DB có đủ (tự luyện 20391/20584 câu TN có `loi_giai`, 14 ngày gần nhất); LamBai vẫn vẽ ô "Lời giải" nhưng trong trận khung câu hỏi chỉ còn
+  nửa dưới màn ⇒ ô nằm dưới mép, em không thấy. Trang xem thử (XemDau) thì KHÔNG có lời giải.
+- Sửa: chấm xong tự cuộn tới ô kết quả + lời giải (chỉ khi nhúng trong trận; nhớ câu đã cuộn để không giật). XemDau thêm lời giải chi tiết (phương pháp cộng,
+  sinh từ hệ số, số âm có ngoặc).
+- Tra cứu: khung thoại/thẻ kỹ năng Genshin · Star Rail (nền đặc, viền kép, góc hoa văn) + nút trả lời Prodigy (phiến to, bấm lún). Font: Be Vietnam Pro là chữ
+  app văn phòng ⇒ đổi Baloo 2 (tròn đậm, có dấu tiếng Việt, đã nạp sẵn ở hs.html).
+- Làm: `Skin.tran` (font · nền · viền kép · phiến · gờ) → biến `--sk-tran-*` + `--sk-goc`; `skin/KhungTran.tsx` (TheTran có 4 góc hoa văn của style, phiến đáp án
+  có gờ bấm lún, ngọc thoi A/B/C/D, sai thì rung, đúng thì loé, nút "⚔ Tung phép"/"Đòn kế tiếp ➜", hộp "📜 Lời giải chi tiết"). LamBai chỉ đổi khi `nhung`
+  — mọi màn làm bài khác giữ nguyên. Style chưa khai `tran` ⇒ rơi về màu thẻ thường.
+- Kiểm: trận xem thử 1180×820 — chọn sai: phiến rung đỏ, đáp án đúng sáng xanh, tự cuộn tới lời giải; 0 lỗi console; tsc (trừ pdfRender cũ) + build:hs + check:style-hs ✔.
+  CHƯA kiểm trận THẬT trên app (cần tài khoản HS, trả lời là ghi bài làm vào DB thật) — cùng component nên kỳ vọng giống, cần Thùy/1 tài khoản thử xác nhận.

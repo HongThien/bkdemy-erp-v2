@@ -44,6 +44,16 @@ export const RPG: Skin = {
   },
   dauThayIcon: '✦',
   trangTri: { goc: `${A}/corner.png`, gach: `${A}/divider.png` },
+  // Thẻ câu hỏi màn đấu = "bảng phép" kiểu Genshin/Star Rail: nền đêm đặc, viền vàng KÉP (vàng ngoài · rãnh tối · chỉ vàng mờ trong),
+  // góc hoa văn; chữ Baloo 2 (tròn, đậm, có dấu tiếng Việt — gần font chữ tròn của Genshin) thay Be Vietnam Pro (chữ app văn phòng);
+  // đáp án = phiến đá có gờ dưới, bấm lún xuống (cảm giác nút game kiểu Prodigy/Brawl).
+  tran: {
+    font: "'Baloo 2', 'Be Vietnam Pro', system-ui, sans-serif",
+    nen: 'radial-gradient(120% 80% at 50% 0%, rgba(44,58,112,0.97) 0%, rgba(22,28,60,0.98) 60%, rgba(14,18,40,0.98) 100%)',
+    vien: '0 0 0 1.5px rgba(233,199,123,0.85), inset 0 0 0 5px rgba(14,18,40,0.9), inset 0 0 0 6px rgba(233,199,123,0.35), 0 10px 28px rgba(0,0,0,0.5)',
+    phien: 'linear-gradient(180deg, rgba(64,78,140,0.95) 0%, rgba(40,50,100,0.95) 100%)',
+    phienDay: 'rgba(10,12,32,0.95)',
+  },
   anhBanner: { lich: `${A}/b_lich.png`, kiemTraLai: `${A}/b_kiem_tra_lai.png` },
   theTiep: { bg: 'linear-gradient(100deg, rgba(233,199,123,0.26) 0%, rgba(20,26,51,0.78) 70%)', ink: '#f3ead0', border: '1px solid rgba(233,199,123,0.7)' },
   nenTen: 'rgba(20,26,51,0.6)',
