@@ -33846,3 +33846,15 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - làm theo 12 nguyên tắc hoạt hình Disney;
   - khuôn cần thêm (chim, cánh, nhiều đầu, chân ngựa, mai rùa).
 - Giao luồng nền làm 25 động tác trên nhánh `thu-de-thuong`.
+
+## 2026-10-01 — [Số liệu] MÀN NGÀY NGHỈ CỦA CHUỖI (mig 202610011641, ĐÃ ÁP) · làm rõ "chuỗi" = chuỗi LÀM BÀI
+
+- Thùy hỏi "chuỗi đăng nhập xong chưa" → làm rõ: đã làm chuỗi LÀM BÀI (chỉ lượt học thật của Tự luyện/Thử thách — Thùy xác nhận "phải làm bài mới được tính"), KHÔNG có chuỗi
+  đăng nhập (mở app không tính). DB + `src/lib/chuoi.ts` xong; app CHƯA hiện ngọn lửa (Giao diện chưa gọi `chuoiCuaToi`, đã ghi hộp thư §13.6).
+- Thùy nhắc: "huy hiệu thiết kế riêng 1 luồng khác, t bảo m làm tính năng app" ⇒ chỉ làm trong phạm vi Số liệu (chuỗi/nhiệm vụ/rank/Thế giới/góp ý/bản đồ). Dòng huy hiệu thêm vào Ví xu
+  (15b44b4) là lấn sang luồng kia — để Thùy quyết giữ/gỡ.
+- Màn quản trị `src/screens/gami/NgayNghiChuoiScreen.tsx`: nhập khoảng ngày + lý do + "Mọi khối"/chọn khối (`KHOI_OPTIONS`), danh sách đang/sắp tới + đã qua, gỡ có xác nhận. Lá mới
+  `chuoi_nghi` (fixtures + `NhanSuHome`). Mig 1641: ghi/gỡ đổi từ `co_quyen_ghi('huyhieu')` sang `co_quyen_ghi('chuoi_nghi')` (tách khỏi luồng huy hiệu) + kiểm đầu vào
+  (đến ≥ từ · ≤61 ngày · không nhập quá 30 ngày trước · bắt buộc lý do · chặn trùng cùng khoảng/khối).
+- Thử ROLLBACK: nhân sự không quyền + học sinh bị chặn · admin ghi ✔ · trùng/đảo ngày/quá 60 ngày/quá khứ >30 ngày/thiếu lý do đều chặn đúng · gỡ ⇒ đánh dấu xoá.
+  Màn: tsc ✔; CHƯA soi trình duyệt (cần đăng nhập quản trị thật).

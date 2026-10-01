@@ -51,7 +51,7 @@ export function loiLuotKhongTinh(k: KetQuaLuot): string | null {
   }
 }
 
-// ── Ngày nghỉ của chuỗi (trung tâm nhập: lễ/Tết = mọi khối; tuần thi = theo khối). Ghi cần quyền 'huyhieu'. ──
+// ── Ngày nghỉ của chuỗi (trung tâm nhập: lễ/Tết = mọi khối; tuần thi = theo khối). Ghi cần quyền ghi lá 'chuoi_nghi' (mig 202610011641). ──
 export type NgayNghiChuoi = { id: string; tu: string; den: string; khoi: string[]; ly_do: string; tao_at: string }
 export async function dsNgayNghiChuoi(): Promise<NgayNghiChuoi[]> {
   const { data, error } = await supabase.from('chuoi_ngay_nghi').select('id, tu, den, khoi, ly_do, tao_at')
