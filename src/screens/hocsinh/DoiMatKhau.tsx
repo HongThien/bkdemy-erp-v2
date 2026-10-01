@@ -17,6 +17,20 @@ import { supabase } from '../../lib/supabase'
 
 const TOI_THIEU = 6
 
+// Thùy 29/09: theo skin (biến --sk-* như KhungHS). Màn này còn hiện TRƯỚC khi vào HocSinhApp (App/AppHS, lúc
+// bắt buộc đổi) ⇒ lúc đó chưa ai gắn biến skin lên <html> ⇒ mọi biến đều kèm giá trị lùi (Tối giản sáng).
+const V = {
+  page: 'var(--sk-page, #f4f4f6)', ink: 'var(--sk-ink, #16181d)', muted: 'var(--sk-muted, #6b7080)',
+  line: 'var(--sk-line, #d9dbe3)', acc: 'var(--sk-acc, #4f46e5)', accInk: 'var(--sk-acc-ink, #ffffff)',
+  surface: 'var(--sk-surface, #ffffff)', surface2: 'var(--sk-surface2, #f1f2f6)', radius: 'var(--sk-radius, 16px)',
+  font: 'var(--sk-font, inherit)', head: 'var(--sk-font-head, inherit)',
+}
+const THE_MK: React.CSSProperties = {
+  background: V.surface, border: 'var(--sk-card-border, 1px solid #e3e5ec)', borderRadius: V.radius,
+  boxShadow: 'var(--sk-card-shadow, 0 1px 2px rgba(0,0,0,.05))', backdropFilter: 'var(--sk-blur, none)', WebkitBackdropFilter: 'var(--sk-blur, none)', color: V.ink,
+}
+const SAI = '#e5484d', CANH_BAO = '#e0901e' // = MAU.sai / MAU.canhBao (KhungHS)
+
 export default function DoiMatKhau({ maHS, batBuoc, onXong }: { maHS: string; batBuoc: boolean; onXong: () => void }) {
   const [mk1, setMk1] = useState('')
   const [mk2, setMk2] = useState('')
@@ -38,41 +52,45 @@ export default function DoiMatKhau({ maHS, batBuoc, onXong }: { maHS: string; ba
     onXong()
   }
 
-  const inp = 'w-full rounded-xl border border-slate-300 px-3.5 py-3 text-[15px] outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20'
+  const inp = 'w-full rounded-xl px-3.5 py-3 text-[15px] outline-none transition focus:ring-2 focus:ring-[var(--sk-acc,#4f46e5)]'
+  const inpStyle: React.CSSProperties = { background: V.surface2, color: V.ink, border: `1px solid ${V.line}` }
+  const nhan = 'mb-1.5 block text-[12px] font-semibold uppercase tracking-wide'
   return (
-    <div className="mx-auto min-h-screen max-w-md bg-slate-50 px-4 pb-10">
+    <div className="min-h-[100dvh]" style={{ background: V.page, backgroundAttachment: 'fixed', color: V.ink, fontFamily: V.font }}>
+    <div className="mx-auto max-w-md px-4 pb-10 md:max-w-xl">
       <div className="py-6">
-        <p className="text-lg font-semibold text-slate-900">{batBuoc ? 'Đặt mật khẩu riêng' : 'Đổi mật khẩu'}</p>
+        <p className="text-lg font-semibold" style={{ color: V.ink, fontFamily: V.head, textShadow: '0 1px 8px var(--sk-bg, transparent)' }}>{batBuoc ? 'Đặt mật khẩu riêng' : 'Đổi mật khẩu'}</p>
         {batBuoc && (
-          <p className="mt-1.5 text-[13.5px] leading-relaxed text-slate-500">
+          <p className="mt-1.5 text-[13.5px] leading-relaxed" style={{ color: V.muted, textShadow: '0 1px 8px var(--sk-bg, transparent)' }}>
             Mật khẩu hiện tại của em đang trùng mã học sinh nên bạn khác đoán được.
             Đặt một mật khẩu riêng để không ai làm bài thay em.
           </p>
         )}
       </div>
 
-      <form onSubmit={submit} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <label className="mb-1.5 block text-[12px] font-semibold uppercase tracking-wide text-slate-500">Mật khẩu mới</label>
+      <form onSubmit={submit} className="p-5" style={THE_MK}>
+        <label className={nhan} style={{ color: V.muted }}>Mật khẩu mới</label>
         <input type="password" value={mk1} onChange={(e) => setMk1(e.target.value)} autoFocus
-          autoComplete="new-password" placeholder={`Ít nhất ${TOI_THIEU} ký tự`} className={`${inp} mb-1`} />
-        {quaNgan && <p className="mb-2 text-[12.5px] text-amber-600">Cần ít nhất {TOI_THIEU} ký tự.</p>}
-        {trungMaHS && <p className="mb-2 text-[12.5px] text-rose-600">Không đặt trùng mã học sinh — đó chính là mật khẩu ai cũng đoán được.</p>}
+          autoComplete="new-password" placeholder={`Ít nhất ${TOI_THIEU} ký tự`} className={`${inp} mb-1`} style={inpStyle} />
+        {quaNgan && <p className="mb-2 text-[12.5px]" style={{ color: CANH_BAO }}>Cần ít nhất {TOI_THIEU} ký tự.</p>}
+        {trungMaHS && <p className="mb-2 text-[12.5px]" style={{ color: SAI }}>Không đặt trùng mã học sinh — đó chính là mật khẩu ai cũng đoán được.</p>}
 
-        <label className="mb-1.5 mt-3.5 block text-[12px] font-semibold uppercase tracking-wide text-slate-500">Nhập lại</label>
+        <label className={`${nhan} mt-3.5`} style={{ color: V.muted }}>Nhập lại</label>
         <input type="password" value={mk2} onChange={(e) => setMk2(e.target.value)}
-          autoComplete="new-password" className={`${inp} mb-1`} />
-        {lechNhau && <p className="mb-2 text-[12.5px] text-amber-600">Hai ô chưa giống nhau.</p>}
+          autoComplete="new-password" className={`${inp} mb-1`} style={inpStyle} />
+        {lechNhau && <p className="mb-2 text-[12.5px]" style={{ color: CANH_BAO }}>Hai ô chưa giống nhau.</p>}
 
-        {err && <p className="mt-2 text-[12.5px] text-rose-600">{err}</p>}
+        {err && <p className="mt-2 text-[12.5px]" style={{ color: SAI }}>{err}</p>}
 
         <button type="submit" disabled={busy || !hopLe}
-          className="mt-4 w-full rounded-xl bg-indigo-600 py-3 text-[15px] font-medium text-white shadow-sm transition hover:bg-indigo-500 disabled:opacity-40">
+          className="mt-4 w-full py-3 text-[15px] font-bold transition disabled:opacity-40"
+          style={{ background: V.acc, color: V.accInk, borderRadius: V.radius, fontFamily: V.head }}>
           {busy ? 'Đang lưu…' : 'Lưu mật khẩu'}
         </button>
 
         {!batBuoc && (
           <button type="button" onClick={onXong} disabled={busy}
-            className="mt-2 w-full rounded-xl py-2.5 text-[14px] text-slate-500 transition hover:text-slate-700">
+            className="mt-2 w-full rounded-xl py-2.5 text-[14px] transition" style={{ color: V.muted }}>
             Quay lại
           </button>
         )}
@@ -80,10 +98,11 @@ export default function DoiMatKhau({ maHS, batBuoc, onXong }: { maHS: string; ba
 
       {batBuoc && (
         <button type="button" onClick={() => supabase.auth.signOut()}
-          className="mt-5 w-full text-center text-[13px] text-slate-400">
+          className="mt-5 w-full text-center text-[13px]" style={{ color: V.muted, textShadow: '0 1px 8px var(--sk-bg, transparent)' }}>
           Thoát
         </button>
       )}
+    </div>
     </div>
   )
 }

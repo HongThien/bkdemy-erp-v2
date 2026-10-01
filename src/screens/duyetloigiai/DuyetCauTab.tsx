@@ -22,6 +22,7 @@ import { myNhanSuId } from '../../lib/giaoviec'
 type Row = CauHangDuyet & { mon: KhoMon }
 const LOAI_LABEL = Object.fromEntries(LOAI_CAU.map((x) => [x.value, x.label])) as Record<string, string>
 const NHANH_HGT = 'hinh_gt' // nhánh của DangPickerOne/khoCuaMon cho kho hgt (registry tailieu.ts NHANH_CUA_MON)
+const NHANH_HINH_HOC = 'hinh_hoc' // nhánh của DangPickerOne/khoCuaMon cho kho hinh_hoc_cau_hoi (registry tailieu.ts NHANH_CUA_MON)
 const fmtTs = (s: string) => new Date(s).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' })
 const BATCH_SIZE = 20
 
@@ -134,11 +135,13 @@ function The({ r, mon, busyAll, onXong, onSua }: { r: Row; mon: string; busyAll:
   const [de, setDe] = useState(r.noi_dung)
   const [dapAn, setDapAn] = useState(r.dap_an ?? '')
   const [loiGiai, setLoiGiai] = useState(r.loi_giai ?? '')
+  const [opts, setOpts] = useState<string[]>(r.lua_chon ?? [])
   const [dang, setDang] = useState({ ma: r.dang_chinh, ten: r.ten_dang, cd: r.ten_chuyen_de })
   const [cum, setCum] = useState<string | null>(r.ma_cum)
   const [cums, setCums] = useState<CumBai[] | null>(null)   // null = chưa tải
   const [suaDe, setSuaDe] = useState(false)
   const [suaLg, setSuaLg] = useState(false)
+  const [suaOpts, setSuaOpts] = useState(false)
   const [pickDang, setPickDang] = useState(false)
   const [tuChoi, setTuChoi] = useState<string | null>(null) // null = ô từ chối đóng
   const [busy, setBusy] = useState(false)
@@ -151,9 +154,10 @@ function The({ r, mon, busyAll, onXong, onSua }: { r: Row; mon: string; busyAll:
   const doiDe = de.trim() !== r.noi_dung.trim()
   const doiDap = dapAn.trim() !== (r.dap_an ?? '').trim()
   const doiLg = loiGiai.trim() !== (r.loi_giai ?? '').trim()
+  const doiOpts = hasOpts && opts.some((o, i) => o.trim() !== (r.lua_chon![i] ?? '').trim())
   const doiDang = dang.ma !== r.dang_chinh
   const doiCum = (cum ?? null) !== (r.ma_cum ?? null)
-  const coSua = doiDe || doiDap || doiLg || doiDang || doiCum
+  const coSua = doiDe || doiDap || doiLg || doiOpts || doiDang || doiCum
 
   function chonDang(maDang: string) {
     // DangPickerOne chỉ trả mã — tên hiện tạm là mã, DB trả tên thật khi tải lại; cụm reset vì cụm thuộc dạng.
@@ -166,11 +170,12 @@ function The({ r, mon, busyAll, onXong, onSua }: { r: Row; mon: string; busyAll:
     if (doiDe) sua.noi_dung = de.trim()
     if (doiDap) sua.dap_an = dapAn.trim()
     if (doiLg) sua.loi_giai = loiGiai.trim()
+    if (doiOpts) sua.lua_chon = opts.map((o) => o.trim())
     if (doiDang) sua.dang_chinh = dang.ma
     if (doiCum || doiDang) sua.ma_cum = cum
     return sua
   }
-  useEffect(() => { onSua(coSua ? tinhSua() : null) }, [de, dapAn, loiGiai, dang.ma, cum, coSua]) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { onSua(coSua ? tinhSua() : null) }, [de, dapAn, loiGiai, opts, dang.ma, cum, coSua]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => () => onSua(null), []) // eslint-disable-line react-hooks/exhaustive-deps
   async function onDuyet() {
     setBusy(true); setErr(null)
@@ -247,9 +252,27 @@ function The({ r, mon, busyAll, onXong, onSua }: { r: Row; mon: string; busyAll:
           {suaDe ? <textarea value={de} onChange={(e) => setDe(e.target.value)} className={`${inp} min-h-[90px] font-mono text-[13px]`} />
             : <div className={box}><MathText>{de}</MathText></div>}
           {hasOpts && (
-            <ul className="mt-1.5 space-y-0.5 text-[13px] text-slate-600">
-              {r.lua_chon!.map((o, i) => <li key={i} className={String.fromCharCode(65 + i) === (r.dap_an ?? '').trim().toUpperCase() ? 'font-medium text-emerald-700' : ''}>{String.fromCharCode(65 + i)}. <MathText>{o}</MathText></li>)}
-            </ul>
+            <div className="mt-1.5">
+              <div className="flex items-center justify-between">
+                <span className={lbl}>Phương án{doiOpts ? ' · đã sửa' : ''}</span>
+                <button onClick={() => setSuaOpts((v) => !v)} className="text-[11px] font-medium text-slate-400 hover:text-indigo-600">{suaOpts ? '✓ Xong' : '✎ Sửa'}</button>
+              </div>
+              {suaOpts ? (
+                <ul className="space-y-1">
+                  {opts.map((o, i) => (
+                    <li key={i} className="flex items-center gap-1.5">
+                      <span className="w-4 shrink-0 text-[13px] font-medium text-slate-500">{String.fromCharCode(65 + i)}.</span>
+                      <input value={o} onChange={(e) => setOpts((a) => a.map((x, j) => (j === i ? e.target.value : x)))}
+                        className={`${inp} font-mono text-[13px] ${o.trim() !== (r.lua_chon![i] ?? '').trim() ? 'border-indigo-400 bg-indigo-50/40' : ''}`} />
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <ul className="space-y-0.5 text-[13px] text-slate-600">
+                  {opts.map((o, i) => <li key={i} className={String.fromCharCode(65 + i) === (r.dap_an ?? '').trim().toUpperCase() ? 'font-medium text-emerald-700' : ''}>{String.fromCharCode(65 + i)}. <MathText>{o}</MathText></li>)}
+                </ul>
+              )}
+            </div>
           )}
           {r.menh_de && (
             <ul className="mt-1.5 space-y-0.5 text-[13px] text-slate-600">
@@ -287,7 +310,7 @@ function The({ r, mon, busyAll, onXong, onSua }: { r: Row; mon: string; busyAll:
       )}
       {err && <p className="mt-2 text-xs text-rose-600">{err}</p>}
       {pickDang && (
-        <DangPickerOne khoi={r.khoi} mon={mon} nhanh={r.mon === 'hgt' ? NHANH_HGT : null}
+        <DangPickerOne khoi={r.khoi} mon={mon} nhanh={r.mon === 'hgt' ? NHANH_HGT : r.mon === 'hinh_hoc' ? NHANH_HINH_HOC : null}
           onClose={() => setPickDang(false)} onPick={(maDang) => chonDang(maDang)} />
       )}
     </li>

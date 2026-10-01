@@ -68,6 +68,15 @@ Gửi bảng để duyệt danh sách asset **trước khi sinh** bất kỳ ả
 
 ---
 
+**MỌI KIT ĐỀU ĐỦ 3 PHẦN — KHÔNG CÓ "ĐƠN CHỈ SINH ASSET"** (Thùy chốt 28/09). Kit giao về LUÔN có:
+① `reference/` ảnh toàn cảnh đã duyệt (mọi khổ màn trong đơn) · ② DESIGN.md có cột **Vị trí & cỡ** cho từng phần tử ·
+③ `assets/` có **đủ** mọi minh hoạ / nhân vật / trang trí / tranh nền **thấy trong ảnh toàn cảnh**.
+Vì sao: 28/09 kit `hs-skin-rpg-v1` giao 7 mảnh rời không kèm ảnh toàn cảnh; ảnh toàn cảnh ChatGPT vẽ cùng lúc (có nhân vật
+anime + 8 icon khác) lại KHÔNG nằm trong zip và các mảnh của nó KHÔNG được sinh ⇒ lập trình viên dựng ra màn khác hẳn ảnh
+Thùy đã xem. Ảnh toàn cảnh nào bạn vẽ ra cũng phải vào `reference/`, và mọi thứ trong ảnh đó phải có file.
+
+---
+
 ## 3. LOGIC PHÂN LOẠI PHẦN TỬ (cốt lõi — áp cho mọi màn)
 
 Với **từng phần tử nhìn thấy** trong mockup, hỏi lần lượt, dừng ở câu đầu tiên đúng:
@@ -79,7 +88,7 @@ Với **từng phần tử nhìn thấy** trong mockup, hỏi lần lượt, d�
 | 3 | Là **glyph** 1–2 màu, nét đơn, vẽ được bằng ≤10 đường? (mũi tên, chuông, chìa khoá, tick, sao, tim, vương miện, dấu ›) | `GLYPH` | **SVG gõ tay**: `viewBox`, chỉ `<path>/<circle>/<rect>/<polygon>`, KHÔNG `<image>`, KHÔNG `<text>`. |
 | 4 | Là **minh hoạ** có khối, bóng, nhiều màu, chi tiết? (icon 3D của ô chức năng, đồ vật, mascot) | `ILLUST` | **PNG cutout sinh bằng công cụ tạo ảnh**, nền trong suốt, ≥512px. |
 | 5 | Là **nhân vật** (người/thú đại diện)? | `CHAR` | **PNG cutout**, nền trong suốt, cao ≥800px. Mỗi biến thể 1 file. |
-| 6 | Là **nhóm trang trí** không tương tác (sách, cốc, cây, hoa, sticker hình)? | `DECOR` | **PNG cutout**, nền trong suốt, ≥600px cạnh dài. |
+| 6 | Là **nhóm trang trí** không tương tác (sách, cốc, cây, hoa, sticker hình)? | `DECOR` | **PNG cutout**, nền trong suốt, ≥512px cạnh dài. |
 | 7 | Là **không khí nền** (mây, mảng màu, ánh sáng, chấm lấp lánh mờ)? | `BACKDROP` | **PNG full màn**, ≥1080×1920, **chỉ chứa không khí**: không chữ, không thẻ, không nhân vật, không icon. Mỗi biến thể 1 file. |
 
 Nguyên tắc khi phân vân:
@@ -112,8 +121,14 @@ Mỗi phần tử nhìn thấy trong mockup = **đúng 1 dòng**. Thiếu dòng 
 | 10 | footer | Sách + cốc | DECOR | — | nam/nữ | decor/decor_books_male.png, _female.png | góc phải dưới |
 | 11 | nền | Tranh nền | BACKDROP | — | nam/nữ | backdrop/backdrop_male.png, _female.png | trời mây pastel, không chữ |
 
-`Vùng` = top / hero / banner / body / footer / nền (mô tả bằng lời, KHÔNG cần toạ độ — lập trình viên đo từ
-ảnh reference). Thứ tự dòng = thứ tự từ trên xuống, trái sang phải.
+`Vùng` = top / hero / banner / body / footer / nền. Thứ tự dòng = thứ tự từ trên xuống, trái sang phải.
+
+**Cột bắt buộc thêm từ 28/09 — `Vị trí & cỡ`** (đặt ngay sau cột `Phần tử`): mô tả BẰNG LỜI, theo TỪNG khổ màn trong đơn,
+3 ý: **neo** vào đâu (mép trái / giữa / góc trên phải / ngay dưới phần tử 05…) · **chiếm bao nhiêu** (≈% bề ngang và bề
+cao màn, hoặc so với phần tử khác: "cao bằng 2 hàng ô") · **đè / nằm sau** cái gì (nhân vật đè lên tranh nền, bong bóng thoại
+đè lên vai nhân vật…). Không cần toạ độ pixel. Ví dụ:
+`iPad ngang: cột trái, rộng ≈35% màn, đáy chạm mép dưới, đầu cao ≈75% màn; nằm SAU bong bóng thoại · Điện thoại dọc: ẩn`.
+Phần tử nào đổi chỗ giữa 2 khổ màn (vd điện thoại dọc gập 4 ô thành 2 cột) PHẢI ghi rõ từng khổ.
 
 ---
 
@@ -124,7 +139,7 @@ Mỗi phần tử nhìn thấy trong mockup = **đúng 1 dòng**. Thiếu dòng 
   khoá màu. Tuyệt đối không tự xoá nền bằng xoá màu trắng (áo, giấy, cốc trắng sẽ thủng lỗ; icon xám, chữ
   nhạt sẽ bị xoá sạch thành ảnh rỗng).
 - Chủ thể căn giữa, lề ~5%, không đổ bóng ra ngoài chủ thể, không cảnh nền.
-- Kích thước tối thiểu: `BACKDROP` 1080×1920 · `CHAR` cao 800 · `ILLUST` 512 · `DECOR` 600 cạnh dài.
+- Kích thước tối thiểu: `BACKDROP` 1080×1920 · `CHAR` cao 800 · `ILLUST` 512 · `DECOR` 512 cạnh dài.
 - Định dạng: **PNG có alpha** (trừ backdrop: PNG thường). Không WebP, không JPG.
 - Đặt tên: `snake_case`, không dấu, tiền tố theo loại: `backdrop_`, `character_`, `ill_`, `decor_`;
   hậu tố biến thể `_male` / `_female` / `_default`. Glyph SVG: tên ngắn (`bell.svg`, `arrow_pink.svg`).
@@ -202,6 +217,10 @@ base64, no <text>) for: [a rounded yellow key icon].
 6. Backdrop **không** có chữ, thẻ, nhân vật, icon? Mỗi biến thể là ảnh khác nhau thật?
 7. Tên file đúng tiền tố/hậu tố, đúng thư mục, khớp cột "File asset" trong bảng kiểm kê?
 8. DESIGN.md đủ 6 mục? Zip không có thư mục thừa?
+9. **Đếm đối chiếu ảnh toàn cảnh ↔ assets/:** mở từng ảnh `reference/`, đếm mọi hình minh hoạ / nhân vật / trang trí /
+   tranh nền nhìn thấy — số đó có BẰNG số file tương ứng trong `assets/` không? Thiếu 1 cái = chưa đóng zip.
+10. Mọi ảnh toàn cảnh bạn đã vẽ trong context này (kể cả khi đơn không đòi) đều nằm trong `reference/`?
+11. Bảng kiểm kê có cột `Vị trí & cỡ` điền cho MỌI dòng, đủ từng khổ màn trong đơn?
 
 Sai câu nào → sửa rồi mới đóng zip. Không viết "PASS" thay cho việc nhìn ảnh.
 

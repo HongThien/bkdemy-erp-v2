@@ -1,0 +1,1111 @@
+<!doctype html>
+<title>Du hành Liên kết Hoá học</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Roboto+Mono:wght@500;600&display=swap">
+<style>
+/* Bố cục: 1 canvas WebGL toàn màn (thế giới nguyên tử). Trạm học = CẢNH PHIM (viền đen + phụ đề lời dẫn)
+   → BAY TỰ DO quan sát (chú thích hiện cạnh điểm sáng) → CÂU HỎI bấm lúc nào cũng được.
+   Trạm luyện tập = câu hỏi ngay trên mô hình 2 nguyên tử (dải dưới), xong bộ thì chiếu hoạt cảnh theo đáp án.
+   Cố ý chỉ 1 giao diện tối — đây là không gian bên trong vật chất. */
+:root{
+  --void:#040914;
+  --ink:#e8f1ff;
+  --ink-2:#c3d2ec;
+  --muted:#8fa3c4;
+  --panel:rgba(9,18,38,.86);
+  --card:#0b1630;
+  --opt:#12213f;
+  --line:rgba(125,170,255,.24);
+  --scan:#5ce1ff;
+  --ok:#4ade80;
+  --bad:#ff7a7a;
+  --gold:#ffd166;
+  --electron:#ffe45c;
+  --f-ui:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-data:"Roboto Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{height:100%;margin:0;background:var(--void);color:var(--ink);font-family:var(--f-ui);overflow:hidden;overscroll-behavior:none;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+#gl{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none;outline:none}
+
+.hud{position:fixed;inset:0;pointer-events:none;z-index:2}
+.top{position:absolute;inset:0 0 auto 0;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:calc(env(safe-area-inset-top,0px) + 14px) 16px 0}
+.lesson{min-width:0;max-width:430px}
+.eyebrow{font:600 11px/1.3 var(--f-data);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.station{font:700 clamp(17px,2.4vw,22px)/1.25 var(--f-ui);margin-top:4px;text-shadow:0 2px 12px rgba(0,0,0,.7)}
+.dots{display:flex;gap:4px;margin-top:9px}
+.dot{width:16px;height:4px;border-radius:2px;background:rgba(143,163,196,.28)}
+.dot.done{background:var(--ok)}
+.dot.cur{background:var(--scan);box-shadow:0 0 8px var(--scan)}
+.tools{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.btn{pointer-events:auto;appearance:none;font:600 13px/1 var(--f-ui);color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.btn:hover{border-color:rgba(92,225,255,.6)}
+.btn.strong{background:var(--scan);color:#03101d;border-color:var(--scan)}
+.btn:focus-visible,.opt:focus-visible,.primary:focus-visible{outline:2px solid var(--scan);outline-offset:2px}
+
+.tasks{margin-top:12px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 14px 10px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.tasks .guide{margin:0 0 10px;font:500 14px/1.5 var(--f-ui);color:var(--ink);padding-bottom:10px;border-bottom:1px solid var(--line)}
+.tasks .guide::before{content:"Lời dẫn · ";font:600 11px/1 var(--f-data);letter-spacing:.1em;text-transform:uppercase;color:var(--scan)}
+.tasks h4{margin:0 0 6px;display:flex;justify-content:space-between;font:600 11px/1.3 var(--f-data);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tasks ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.tasks li{display:flex;gap:9px;align-items:flex-start;font:500 13.5px/1.45 var(--f-ui);color:var(--ink-2)}
+.tasks li .ck{flex:none;width:18px;height:18px;margin-top:1px;border-radius:50%;border:1.5px solid rgba(92,225,255,.7);display:grid;place-items:center;font:700 11px/1 var(--f-ui);color:#03101d}
+.tasks li.done{color:var(--muted)}
+.tasks li.done .ck{background:var(--ok);border-color:var(--ok)}
+.tasks ul.plain li .ck{width:6px;height:6px;margin-top:8px;border:none;background:var(--scan)}
+.chip{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font:500 12.5px/1.45 var(--f-ui);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:7px 12px;max-width:100%;color:var(--ink-2)}
+.chip b{color:var(--ink)}
+
+.toast{position:absolute;left:50%;top:30%;transform:translateX(-50%);max-width:calc(100% - 32px);font:600 14px/1.4 var(--f-ui);background:rgba(92,225,255,.14);border:1px solid rgba(92,225,255,.5);color:var(--ink);border-radius:999px;padding:9px 16px;opacity:0;transition:opacity .35s;text-align:center}
+.toast.on{opacity:1}
+.toast.warn{background:rgba(255,122,122,.12);border-color:rgba(255,122,122,.55)}
+.marker{position:absolute;left:0;top:0;width:48px;height:48px;margin:-24px 0 0 -24px}
+.marker::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px dashed rgba(92,225,255,.85);animation:spin 6s linear infinite}
+@keyframes spin{to{rotate:360deg}}
+.arrow{position:absolute;left:0;top:0;width:0;height:0;margin:-12px 0 0 -12px;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:24px solid var(--scan);filter:drop-shadow(0 0 6px rgba(92,225,255,.8))}
+.joy{position:absolute;left:0;top:0;width:124px;height:124px;margin:-62px 0 0 -62px;border-radius:50%;border:1.5px solid rgba(92,225,255,.45);background:rgba(92,225,255,.06)}
+.joy .knob{position:absolute;left:50%;top:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:rgba(92,225,255,.3);border:1.5px solid rgba(92,225,255,.85)}
+.callout{position:absolute;left:0;top:0;width:min(340px,calc(100vw - 32px));background:var(--panel);border:1px solid rgba(92,225,255,.7);border-radius:14px;padding:12px 14px 13px;box-shadow:0 12px 40px rgba(0,0,0,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.callout h3{margin:0 0 5px;font:700 16px/1.3 var(--f-ui);color:var(--scan)}
+.callout p{margin:0;font:400 14.5px/1.5 var(--f-ui);color:var(--ink)}
+.answer{position:absolute;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);transform:translateX(-50%);pointer-events:auto;animation:beat 1.8s ease-in-out infinite}
+@keyframes beat{50%{box-shadow:0 0 0 8px rgba(92,225,255,.18)}}
+.foot{position:absolute;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);font:500 11px/1.4 var(--f-data);color:var(--muted);letter-spacing:.04em;text-align:right;max-width:220px}
+@media (max-width:1100px){.foot{display:none}}
+
+.film{position:fixed;inset:0;z-index:4;pointer-events:none}
+.film .bar{position:absolute;left:0;right:0;height:7vh;background:#000}
+.film .bar.t{top:0}
+.film .bar.b{bottom:0}
+.sub{position:absolute;left:50%;bottom:calc(7vh + 12px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:min(820px,calc(100% - 32px));max-height:calc(100% - 14vh - 60px);overflow:auto;background:rgba(4,9,20,.88);border:1px solid var(--line);border-radius:16px;padding:14px 18px;pointer-events:auto}
+.sub-meta{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.sub-meta .n{font:600 12px/1 var(--f-data);color:var(--muted);font-variant-numeric:tabular-nums}
+.sub p{margin:8px 0 12px;font:500 clamp(16px,2.1vw,21px)/1.55 var(--f-ui);color:var(--ink);text-wrap:pretty}
+.sub p b{color:var(--gold);font-weight:700}
+.sub .opts{margin:2px 0 4px}
+.sub .opt{min-height:48px}
+.sub .fb{margin:10px 0 0}
+.sub-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:10px}
+
+.modal{position:fixed;inset:0;z-index:5;display:grid;place-items:center;padding:16px;background:rgba(2,6,16,.6);overflow:auto}
+.card{width:min(620px,100%);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 22px 20px;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.q{font:700 clamp(18px,2.6vw,22px)/1.4 var(--f-ui);margin:8px 0 16px;text-wrap:balance}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:520px){.opts{grid-template-columns:1fr}}
+.opt{min-height:56px;text-align:left;font:600 15px/1.35 var(--f-ui);color:var(--ink);background:var(--opt);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;pointer-events:auto}
+.opt:hover:not(:disabled){border-color:rgba(92,225,255,.7)}
+.opt:disabled{cursor:default;opacity:.75}
+.opt.ok{border-color:var(--ok);background:rgba(74,222,128,.14);opacity:1}
+.opt.bad{border-color:var(--bad);background:rgba(255,122,122,.12)}
+.fb{margin-top:14px;font:400 14.5px/1.6 var(--f-ui);padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.04);color:var(--ink-2)}
+.fb b{color:var(--ink)}
+.fb.good b{color:var(--ok)}
+.fb.miss b{color:var(--bad)}
+.actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:14px}
+.primary{appearance:none;border:none;border-radius:12px;background:var(--scan);color:#03101d;font:700 15px/1 var(--f-ui);padding:14px 20px;cursor:pointer;min-height:48px}
+.actions .btn{min-height:48px;font-size:14px}
+
+.intro .card{width:min(800px,100%)}
+.intro h1{font:800 clamp(28px,4.6vw,42px)/1.08 var(--f-ui);letter-spacing:-.015em;margin:10px 0 12px;text-wrap:balance}
+.intro h1 em{font-style:normal;color:var(--electron)}
+.lead{font:400 15.5px/1.6 var(--f-ui);color:var(--ink-2);max-width:64ch;margin:0}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+@media (max-width:620px){.grid2{grid-template-columns:1fr}}
+.box{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:rgba(255,255,255,.02);min-width:0}
+.box h4{margin:0 0 8px;font:600 11px/1.3 var(--f-data);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.box ul,.box ol{margin:0;padding-left:18px;font:400 14px/1.65 var(--f-ui);color:var(--ink-2)}
+.route{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(6,auto);grid-auto-flow:column;gap:4px 16px;padding:0!important;margin:0}
+@media (max-width:420px){.route{grid-template-columns:1fr;grid-template-rows:none;grid-auto-flow:row}}
+.route li{font:500 13.5px/1.55 var(--f-ui);color:var(--ink-2)}
+.route li span{font:600 12px/1 var(--f-data);color:var(--scan);margin-right:6px;font-variant-numeric:tabular-nums}
+kbd{font:600 12px/1 var(--f-data);border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:2px 6px;background:rgba(255,255,255,.04);color:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:4px;font:500 13px/1.5 var(--f-ui);color:var(--ink-2)}
+.legend i{display:inline-block;width:26px;height:6px;border-radius:3px;margin-right:6px;vertical-align:middle}
+.legend .ion{background:linear-gradient(90deg,#ff9a4a,#4aa8ff)}
+.legend .cov{background:#3cf0c8;box-shadow:0 0 8px #3cf0c8}
+.legend .gold{background:var(--gold)}
+.note{font:500 12px/1.5 var(--f-data);color:var(--muted);margin:14px 0 0}
+.end ol{margin:6px 0 0;padding-left:20px;font:400 15px/1.65 var(--f-ui);color:var(--ink-2)}
+.end ol li{margin-bottom:6px}
+.end ol b{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.marker::before,.answer{animation:none}.toast{transition:none}}
+</style>
+
+<canvas id="gl" tabindex="0" aria-label="Thế giới 3D: lái tàu bay qua các nguyên tử và phân tử"></canvas>
+
+<div class="hud" id="hud">
+  <header class="top">
+    <div class="lesson">
+      <div class="eyebrow">KHTN 7 · Liên kết hoá học</div>
+      <div class="station" id="stationName">Tập lái</div>
+      <div class="dots" id="dots"></div>
+      <section class="tasks" id="tasks" hidden aria-live="polite">
+        <p class="guide" id="guide"></p>
+        <h4><span id="taskHead">Nhiệm vụ</span><span id="taskCount"></span></h4>
+        <ul id="taskList"></ul>
+      </section>
+      <div class="chip" id="rule" hidden><span><b>Luật:</b> kim loại + phi kim → liên kết ion · phi kim + phi kim → liên kết cộng hoá trị</span></div>
+    </div>
+    <div class="tools">
+      <button class="btn" id="btnReplay" type="button" hidden>▶ Xem lại phim</button>
+      <button class="btn" id="btnReset" type="button">↺ Đầu chặng</button>
+      <button class="btn" id="btnSkip" type="button">Qua trạm (GV)</button>
+      <button class="btn" id="btnHelp" type="button" aria-label="Cách chơi">?</button>
+    </div>
+  </header>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="marker" id="marker" hidden></div>
+  <div class="arrow" id="arrow" hidden></div>
+  <section class="callout" id="callout" hidden aria-live="polite"><h3 id="coTitle"></h3><p id="coText"></p></section>
+  <div class="joy" id="joy" hidden><div class="knob" id="knob"></div></div>
+  <button class="primary answer" id="btnAnswer" type="button" hidden>Trả lời câu hỏi của trạm ›</button>
+  <div class="foot">Mô hình Bohr · lớp electron vẽ phóng to để dễ nhìn</div>
+</div>
+
+<div class="film" id="film" hidden>
+  <div class="bar t"></div><div class="bar b"></div>
+  <div class="sub" role="region" aria-label="Lời dẫn">
+    <div class="sub-meta"><span class="eyebrow" id="filmTitle">Lời dẫn</span><span class="n" id="filmStep"></span></div>
+    <p id="filmText" aria-live="polite"></p>
+    <div class="opts" id="filmOpts" hidden></div>
+    <div class="fb" id="filmFb" hidden></div>
+    <div class="sub-actions">
+      <button class="btn" id="filmSkip" type="button">Bỏ qua phim</button>
+      <button class="btn" id="filmPause" type="button">⏸ Dừng</button>
+      <button class="btn strong" id="filmNext" type="button">Tiếp ›</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="quiz" hidden role="dialog" aria-modal="true" aria-labelledby="qText">
+  <div class="card">
+    <div class="eyebrow" id="qEyebrow">Câu hỏi</div>
+    <div class="q" id="qText"></div>
+    <div class="opts" id="qOpts"></div>
+    <div class="fb" id="qFb" hidden></div>
+    <div class="actions">
+      <button class="btn" id="qClose" type="button">Đóng, bay xem tiếp</button>
+      <button class="primary" id="qNext" type="button" hidden>Bay tiếp →</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introTitle">
+  <div class="card">
+    <div class="eyebrow">KHTN 7 · Liên kết hoá học · Bản thử 3</div>
+    <h1 id="introTitle">Du hành <em>Liên kết Hoá học</em></h1>
+    <p class="lead">Em lái một con tàu còn nhỏ hơn nguyên tử, bay qua những nguyên tử và phân tử khổng lồ. Hết chuyến, em sẽ hiểu vì sao các nguyên tử liên kết với nhau, phân biệt được liên kết ion với liên kết cộng hoá trị, và tự phân tích được một chất là chất ion hay chất cộng hoá trị.</p>
+    <div class="grid2">
+      <div class="box">
+        <h4>Trạm học (1–6)</h4>
+        <ol>
+          <li><b>Xem phim:</b> sự kiện xảy ra, có lời dẫn.</li>
+          <li><b>Bay tự do quan sát.</b> Lại gần điểm sáng để đọc chú thích.</li>
+          <li><b>Trả lời câu hỏi</b> lúc nào em sẵn sàng, đúng thì mở đường.</li>
+        </ol>
+      </div>
+      <div class="box">
+        <h4>Trạm luyện tập (7–11)</h4>
+        <ul>
+          <li>Nhìn mô hình hai nguyên tử, tự trả lời: thừa hay thiếu electron, nên cho hay nhận, liên kết bằng cách nào.</li>
+          <li>Trả lời xong cả bộ thì xem hoạt cảnh đúng như đáp án.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="box">
+        <h4>Cách lái</h4>
+        <ul>
+          <li>Máy tính: <kbd>W</kbd>/<kbd>↑</kbd> tiến, <kbd>S</kbd> lùi, <kbd>A</kbd><kbd>D</kbd> rẽ, <kbd>Space</kbd>/<kbd>Shift</kbd> lên xuống, kéo chuột để đổi hướng.</li>
+          <li>iPad: ngón trái chạm giữ rồi gạt để bay, ngón phải kéo để đổi hướng.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h4>Nhìn hiệu ứng là biết</h4>
+        <div class="legend">
+          <span><i class="gold"></i>Vòng vàng: đủ 8 (hoặc 2), hoàn hảo</span>
+          <span><i class="ion"></i>Đường cam–xanh: liên kết ion</span>
+          <span><i class="cov"></i>Sợi xanh ngọc: liên kết cộng hoá trị</span>
+        </div>
+      </div>
+    </div>
+    <div class="box" style="margin-top:12px">
+      <h4>Lộ trình</h4>
+      <ol class="route" id="route"></ol>
+    </div>
+    <p class="note">Nguyên tử vẽ theo mô hình Bohr như sách lớp 7. Lớp electron được phóng to để dễ nhìn; màu nguyên tố theo quy ước quốc tế CPK.</p>
+    <div class="actions"><button class="primary" id="btnStart" type="button">Xuất phát</button></div>
+  </div>
+</div>
+
+<div class="modal end" id="end" hidden role="dialog" aria-modal="true" aria-labelledby="endTitle">
+  <div class="card">
+    <div class="eyebrow">Hoàn thành chuyến du hành</div>
+    <div class="q" id="endTitle">Về đích! Em mang về 4 điều</div>
+    <ol>
+      <li>Mỗi nguyên tử luôn tìm cách đạt <b>trạng thái hoàn hảo của chính nó</b>: lớp electron ngoài cùng đủ 8, riêng lớp đầu tiên là 2 (quy tắc bát tử).</li>
+      <li><b>Liên kết ion:</b> một bên thừa thì <b>cho</b>, một bên thiếu thì <b>nhận</b>, tạo ion dương và ion âm hút nhau (KCl, MgO, MgCl₂, muối ăn).</li>
+      <li><b>Liên kết cộng hoá trị:</b> cả hai bên đều thiếu nên <b>góp chung</b> cặp electron (H₂, H₂O, Cl₂, HCl, CO₂).</li>
+      <li><b>Cách phân tích:</b> xem mỗi nguyên tử thừa hay thiếu → nên cho hay nhận → một cho một nhận là ion, cả hai cùng nhận là góp chung.</li>
+    </ol>
+    <div class="actions"><button class="primary" id="btnAgain" type="button">Bay lại từ đầu</button></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+'use strict';
+const $=s=>document.querySelector(s);
+const V3=(x=0,y=0,z=0)=>new THREE.Vector3(x,y,z);
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+const ease=k=>k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
+const COL={scan:0x5ce1ff,ok:0x4ade80,gold:0xffd166,pos:0xff9a4a,neg:0x4aa8ff,cov:0x3cf0c8,eMoved:0x9ff6ff};
+
+/* ================= renderer ================= */
+const canvas=$('#gl');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x040914);
+scene.fog=new THREE.FogExp2(0x040914,0.0026);
+const camera=new THREE.PerspectiveCamera(62,1,0.1,3500);
+function resize(){const w=innerWidth,h=innerHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+addEventListener('resize',resize);resize();
+scene.add(new THREE.HemisphereLight(0xa9c8ff,0x1a1030,0.95));
+const sun=new THREE.DirectionalLight(0xffffff,0.85);sun.position.set(0.4,1,0.7);scene.add(sun);
+
+/* ================= tweens ================= */
+const tweens=[];
+function tween(dur,fn,done,film=false){const w={t:0,dur,fn,done,film};tweens.push(w);return w;}
+const ftween=(d,f,dn)=>tween(d,f,dn,true);
+const fdelay=(d,dn)=>ftween(d,()=>{},dn);
+function stepTweens(dt){for(let i=tweens.length-1;i>=0;i--){const w=tweens[i];if(!w)continue;w.t+=dt;const k=Math.min(1,w.t/w.dur);w.fn(ease(k));if(k>=1){const j=tweens.indexOf(w);if(j>=0)tweens.splice(j,1);if(w.done)w.done();}}}
+function finishFilmTweens(){for(let g=0;g<80;g++){const fw=tweens.filter(w=>w.film);if(!fw.length)return;fw.forEach(w=>{const j=tweens.indexOf(w);if(j<0)return;tweens.splice(j,1);w.fn(1);if(w.done)w.done();});}}
+
+/* ================= visuals ================= */
+function glowTex(){const c=document.createElement('canvas');c.width=c.height=128;const g=c.getContext('2d');const r=g.createRadialGradient(64,64,0,64,64,64);r.addColorStop(0,'rgba(255,255,255,1)');r.addColorStop(.22,'rgba(255,255,255,.5)');r.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=r;g.fillRect(0,0,128,128);return new THREE.CanvasTexture(c);}
+const GLOW=glowTex();
+function glowSprite(color,size,opacity=1){const m=new THREE.SpriteMaterial({map:GLOW,color,transparent:true,opacity,blending:THREE.AdditiveBlending,depthWrite:false});const s=new THREE.Sprite(m);s.scale.set(size,size,1);return s;}
+function makeLabel(text,sub,h=4.2,color='#e8f1ff'){
+  const pad=28,fs=72,fs2=40;const c=document.createElement('canvas');const g=c.getContext('2d');
+  const f1=`800 ${fs}px "Be Vietnam Pro", system-ui, sans-serif`,f2=`500 ${fs2}px "Roboto Mono", ui-monospace, monospace`;
+  g.font=f1;const w1=g.measureText(text).width;let w2=0;if(sub){g.font=f2;w2=g.measureText(sub).width;}
+  const W=Math.ceil(Math.max(w1,w2)+pad*2),H=Math.ceil(fs*1.2+(sub?fs2*1.45:0)+pad);
+  c.width=W;c.height=H;g.textAlign='center';g.textBaseline='top';g.shadowColor='rgba(0,0,0,.85)';g.shadowBlur=14;
+  g.font=f1;g.fillStyle=color;g.fillText(text,W/2,pad/2);
+  if(sub){g.font=f2;g.fillStyle='#a9bddf';g.fillText(sub,W/2,pad/2+fs*1.18);}
+  const t=new THREE.CanvasTexture(c);t.minFilter=THREE.LinearFilter;
+  const s=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true,depthWrite:false}));
+  const hh=h*(H/(fs*1.2+pad));s.scale.set(hh*W/H,hh,1);s.center.set(.5,0);return s;
+}
+function labelHolder(parent,text,sub,y,h){const g=new THREE.Group();g.position.set(0,y,0);parent.add(g);relabel(g,text,sub,h);return g;}
+function relabel(holder,text,sub,h,color){while(holder.children.length){const o=holder.children.pop();o.material.map.dispose();o.material.dispose();}holder.add(makeLabel(text,sub,h,color));}
+/* nhãn MỤC TIÊU (vàng): nguyên tử muốn gì để đạt trạng thái hoàn hảo của chính nó */
+function goalLabel(parent,text,sub,pos){const g=new THREE.Group();g.position.copy(pos);parent.add(g);const l=makeLabel(text,sub,4.4,'#ffd166');l.material.opacity=0;g.add(l);ftween(.8,k=>{l.material.opacity=k;});return g;}
+function hideGoal(g){if(!g||!g.children[0])return;const l=g.children[0];ftween(.6,k=>{l.material.opacity=1-k;},()=>{g.visible=false;});}
+
+const CPK={H:0xf4f6fb,He:0xd9ffff,C:0x7a7f89,O:0xff3b30,Ne:0xb3e3f5,Na:0xab5cf2,Mg:0x8aff00,Cl:0x1ff01f,K:0x8f40d4};
+const SHELL_R=[9,16,23,30];
+const geoE=new THREE.SphereGeometry(0.85,16,12);
+const matE=new THREE.MeshBasicMaterial({color:0xffe45c});
+function makeElectron(){const g=new THREE.Group();g.add(new THREE.Mesh(geoE,matE));g.add(glowSprite(0xffc93a,5,.85));return g;}
+function tintElectron(e,color){const m=e.children[0];m.material=matE.clone();m.material.color.set(color);e.children[1].material.color.set(color);}
+function makeNucleus(sym,r){return new THREE.Mesh(new THREE.SphereGeometry(r,32,24),new THREE.MeshStandardMaterial({color:CPK[sym],roughness:.45,metalness:.05,emissive:CPK[sym],emissiveIntensity:.2}));}
+function makeShellRing(r){const m=new THREE.Mesh(new THREE.TorusGeometry(r,0.14,8,128),new THREE.MeshBasicMaterial({color:0x7fb2ff,transparent:true,opacity:.5}));m.userData.r=r;return m;}
+function makeSlot(pos){const m=new THREE.Mesh(new THREE.TorusGeometry(1.3,0.14,8,28),new THREE.MeshBasicMaterial({color:0xffe45c,transparent:true,opacity:.75}));m.position.copy(pos);return m;}
+let COLLECT=null;
+/* shells: mỗi phần tử là số electron (xếp đều, quay) hoặc mảng góc độ (đứng yên) */
+function makeAtom(sym,shells,nucR=3.2){
+  const g=new THREE.Group();const nuc=makeNucleus(sym,nucR);g.add(nuc);const list=[];
+  shells.forEach((spec,i)=>{
+    const r=SHELL_R[i];const ring=makeShellRing(r);g.add(ring);const pivot=new THREE.Group();g.add(pivot);
+    const fixed=Array.isArray(spec);const angles=fixed?spec:Array.from({length:spec},(_,k)=>k/spec*360+i*25);
+    const els=angles.map(a=>{const e=makeElectron();const rad=a*Math.PI/180;e.position.set(Math.cos(rad)*r,Math.sin(rad)*r,0);pivot.add(e);return e;});
+    list.push({ring,pivot,els,r,spin:fixed?0:0.32/(i+1)*(i%2?-1:1)});
+  });
+  g.userData={nuc,shells:list,nucR};if(COLLECT)COLLECT.push(g);return g;
+}
+/* trạng thái hoàn hảo: vòng ngoài chuyển vàng, loé sáng, gắn nhãn 8e ✓ */
+function perfectRing(ring,parent,badge,bpos){
+  ring.material.color.set(COL.gold);ring.material.opacity=.95;
+  const glow=new THREE.Mesh(new THREE.TorusGeometry(ring.userData.r,0.7,8,96),new THREE.MeshBasicMaterial({color:COL.gold,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}));
+  glow.position.copy(ring.position);parent.add(glow);
+  const burst=glowSprite(COL.gold,1,.9);parent.add(burst);
+  ftween(1.3,k=>{burst.scale.setScalar(8+ring.userData.r*3*k);burst.material.opacity=.9*(1-k);glow.material.opacity=.28*k;},()=>{parent.remove(burst);});
+  if(badge){const b=makeLabel(badge,'',4.4,'#ffd166');b.position.copy(bpos);parent.add(b);}
+}
+function perfect(atom,idx,badge,bpos){const r=atom.userData.shells[idx].ring;perfectRing(r,atom,badge,bpos||V3(r.userData.r*.72,r.userData.r*.72+1,0));}
+function blink(e,dur=3.2){const s=e.children[1];ftween(dur,k=>{s.scale.setScalar(5+7*Math.abs(Math.sin(k*Math.PI*5)));},()=>s.scale.setScalar(5));}
+function pulseRing(ring,dur=3){ftween(dur,k=>{ring.material.opacity=.5+.5*Math.abs(Math.sin(k*Math.PI*4));},()=>{ring.material.opacity=.5;});}
+/* electron bay từ vị trí hiện tại tới chỗ trống của nguyên tử nhận (có vệt sáng) */
+function flyElectron(st,e,toParent,toLocal,slot,dur=1.8){
+  st.g.updateMatrixWorld(true);st.g.attach(e);const p0=e.position.clone();
+  const p1=toLocal.clone();toParent.localToWorld(p1);st.g.worldToLocal(p1);let lastK=0;
+  ftween(dur,k=>{const p=p0.clone().lerp(p1,k);p.y+=Math.sin(Math.PI*k)*9;p.z+=Math.sin(Math.PI*k)*4;e.position.copy(p);
+    if(k-lastK>.04&&k<1){lastK=k;const tr=glowSprite(0xffe45c,3.2,.7);tr.position.copy(p);st.g.add(tr);ftween(.7,q=>{tr.material.opacity=.7*(1-q);},()=>st.g.remove(tr));}},
+    ()=>{toParent.attach(e);e.position.copy(toLocal);if(slot)slot.visible=false;tintElectron(e,COL.eMoved);});
+}
+
+/* phân tử cộng hoá trị theo mô hình Bohr: vòng ngoài chồng nhau, các cặp dùng chung ở vùng chồng.
+   bonds: [i, j, bậc] — bậc 2 = liên kết đôi (2 cặp) */
+function makeMolecule(spec){
+  const g=new THREE.Group();const atoms=spec.atoms.map(a=>Object.assign({},a));
+  const central=atoms.find(a=>a.central);
+  const ctr=central?new THREE.Vector2(central.pos[0],central.pos[1]):atoms.reduce((s,a)=>s.add(new THREE.Vector2(a.pos[0],a.pos[1])),new THREE.Vector2()).divideScalar(atoms.length);
+  atoms.forEach(a=>{
+    a.final=new THREE.Vector2(a.pos[0],a.pos[1]);const away=a.final.clone().sub(ctr);const L=away.length();
+    a.away=L<0.01?new THREE.Vector2(0,1):away.clone().divideScalar(L);
+    a.sep=L<0.01?a.final.clone():a.final.clone().add(a.away.clone().multiplyScalar(14));
+    a.g=makeAtom(a.sym,a.inner,a.nucR||3.2);a.rOut=SHELL_R[a.inner.length];a.outer=makeShellRing(a.rOut);a.g.add(a.outer);
+    g.add(a.g);a.bondAngles=[];a.bondE=0;
+  });
+  const bondEls=[],bonds=[];
+  spec.bonds.forEach(([i,j,k=1])=>{
+    const A=atoms[i],B=atoms[j];const d=B.final.clone().sub(A.final);const dist=d.length();const u=d.clone().divideScalar(dist);
+    const s=((dist-B.rOut)+A.rOut)/2;const P=A.final.clone().add(u.clone().multiplyScalar(s));const n=new THREE.Vector2(-u.y,u.x);
+    const els=[];const m=2*k;
+    for(let e=0;e<m;e++){
+      const who=e%2===0?A:B;const el=makeElectron();who.g.add(el);
+      const W=P.clone().add(n.clone().multiplyScalar((e-(m-1)/2)*2.4));
+      const dir=who===A?u.clone():u.clone().negate();const ang=(Math.floor(e/2)-(k-1)/2)*.3;
+      const from=new THREE.Vector2(dir.x*Math.cos(ang)-dir.y*Math.sin(ang),dir.x*Math.sin(ang)+dir.y*Math.cos(ang)).multiplyScalar(who.rOut);
+      const b={e:el,atom:who,from,to:W.clone().sub(who.final)};bondEls.push(b);els.push(b);
+    }
+    A.bondAngles.push(Math.atan2(u.y,u.x));B.bondAngles.push(Math.atan2(-u.y,-u.x));A.bondE+=k;B.bondE+=k;
+    bonds.push({A,B,P:V3(P.x,P.y,0),n,k,els});
+  });
+  atoms.forEach(a=>{
+    const nLone=a.valence-a.bondE;if(nLone<=0)return;
+    const nPairs=Math.floor(nLone/2),k=nPairs+nLone%2;
+    const s=a.bondAngles.map(x=>(x+2*Math.PI)%(2*Math.PI)).sort((x,y)=>x-y);let best=-1,start=0;
+    for(let i=0;i<s.length;i++){const nx=i===s.length-1?s[0]+2*Math.PI:s[i+1];if(nx-s[i]>best){best=nx-s[i];start=s[i];}}
+    if(!s.length){best=2*Math.PI;start=Math.PI/2;}
+    const off=1.4/a.rOut;
+    for(let t=1;t<=k;t++){const ang=start+best*t/(k+1);const offs=t<=nPairs?[-off,off]:[0];
+      offs.forEach(o=>{const e=makeElectron();e.position.set(Math.cos(ang+o)*a.rOut,Math.sin(ang+o)*a.rOut,0);a.g.add(e);});}
+  });
+  const mol={g,atoms,bonds,bondEls,
+    setForm(f){atoms.forEach(a=>{const p=a.sep.clone().lerp(a.final,f);a.g.position.set(p.x,p.y,0);});
+      bondEls.forEach(b=>{const p=b.from.clone().lerp(b.to,f);b.e.position.set(p.x,p.y,0);});},
+    solids(){return atoms.map(a=>({obj:a.g.userData.nuc,r:a.nucR||3.2}));},
+    perfectAll(num=true){atoms.forEach(a=>{const r=a.rOut;perfectRing(a.outer,a.g,num?(a.valence===1?'2e ✓':'8e ✓'):'đầy ✓',V3(a.away.x*(r+5),a.away.y*(r+5)-2,0));});},
+    goalPos(a){return a.central?V3(0,a.rOut+12,0):V3(a.away.x*(a.rOut+13),a.away.y*(a.rOut+13)-(Math.abs(a.away.x)>.5?2:0),0);}};
+  mol.setForm(0);return mol;
+}
+/* HIỆU ỨNG CỘNG HOÁ TRỊ: vùng chồng sáng xanh ngọc + sợi nối 2 hạt nhân (bậc 2 = 2 sợi, như "=") + cặp electron xoay quanh */
+function makeCovalentFx(mol){
+  const g=new THREE.Group();const parts=mol.bonds.map((b,i)=>{
+    const pa=V3(b.A.final.x,b.A.final.y,0),pb=V3(b.B.final.x,b.B.final.y,0);const len=pa.distanceTo(pb);
+    const lens=glowSprite(COL.cov,12+4*b.k,0);lens.position.copy(b.P);g.add(lens);
+    const sticks=[];for(let s=0;s<b.k;s++){const off=(s-(b.k-1)/2)*1.9;
+      const st=new THREE.Mesh(new THREE.CylinderGeometry(.45,.45,len,14,1,true),new THREE.MeshBasicMaterial({color:COL.cov,transparent:true,opacity:0,depthWrite:false}));
+      st.position.copy(pa).add(pb).multiplyScalar(.5).add(V3(b.n.x*off,b.n.y*off,0));st.quaternion.setFromUnitVectors(V3(0,1,0),pb.clone().sub(pa).normalize());g.add(st);sticks.push(st);}
+    const pulse=glowSprite(0xc8fff2,3.6,0);g.add(pulse);return {b,pa,pb,lens,sticks,pulse,i};
+  });
+  return {g,o:0,
+    setOpacity(o){this.o=o;parts.forEach(p=>{p.lens.material.opacity=.6*o;p.sticks.forEach(s=>s.material.opacity=.6*o);p.pulse.material.opacity=.95*o;});},
+    update(t){if(this.o<=0)return;parts.forEach(p=>{const k=(Math.sin(t*2.2+p.i)+1)/2;p.pulse.position.lerpVectors(p.pa,p.pb,k);p.lens.scale.setScalar((12+4*p.b.k)*(1+.18*Math.sin(t*3+p.i)));
+      if(p.b.k!==1)return;const a=t*1.8+p.i*1.3,ox=Math.cos(a)*1.4,oy=Math.sin(a)*1.4;const [x,y]=p.b.els;
+      x.e.position.set(p.b.P.x+ox-x.atom.final.x,p.b.P.y+oy-x.atom.final.y,0);y.e.position.set(p.b.P.x-ox-y.atom.final.x,p.b.P.y-oy-y.atom.final.y,0);});}};
+}
+/* HIỆU ỨNG ION: quầng cam (+) và xanh (−), đường lực cam→xanh có hạt chạy từ + sang −; không có gì nối 2 hạt nhân.
+   pa = ion dương, pb = ion âm (hướng bất kỳ) */
+function makeIonicFx(pa,pb,ra,rb){
+  const root=new THREE.Group();const dv=pb.clone().sub(pa);const L=dv.length();root.position.copy(pa).add(pb).multiplyScalar(.5);root.rotation.z=Math.atan2(dv.y,dv.x);
+  const A=V3(-L/2,0,0),B=V3(L/2,0,0);
+  const haloA=glowSprite(COL.pos,ra*3.4,0),haloB=glowSprite(COL.neg,rb*3.2,0);haloA.position.copy(A);haloB.position.copy(B);root.add(haloA,haloB);
+  const cA=new THREE.Color(COL.pos),cB=new THREE.Color(COL.neg);const lines=[];const N=7;
+  for(let k=0;k<N;k++){
+    const a=(k-(N-1)/2)*.36,zt=((k%3)-1)*.45;
+    const s=V3(Math.cos(a)*ra,Math.sin(a)*ra,zt*ra*.6).add(A),e=V3(-Math.cos(a)*rb,Math.sin(a)*rb,zt*rb*.6).add(B);
+    const bulge=Math.sin(a)*(ra+rb)*.5;
+    const c1=V3(s.x+L*.22,s.y+bulge,s.z*1.3),c2=V3(e.x-L*.22,e.y+bulge,e.z*1.3);
+    const curve=new THREE.CubicBezierCurve3(s,c1,c2,e);
+    const TS=48,RS=6;const geo=new THREE.TubeGeometry(curve,TS,.32,RS,false);const cnt=geo.attributes.position.count;const col=new Float32Array(cnt*3);
+    for(let v=0;v<cnt;v++){const i=Math.floor(v/(RS+1));const c=cA.clone().lerp(cB,i/TS);col.set([c.r,c.g,c.b],v*3);}
+    geo.setAttribute('color',new THREE.BufferAttribute(col,3));
+    const tube=new THREE.Mesh(geo,new THREE.MeshBasicMaterial({vertexColors:true,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}));root.add(tube);
+    const dots=[0,.5].map(o=>{const d=glowSprite(0xffffff,2.6,0);root.add(d);return {d,o};});
+    lines.push({curve,tube,dots,k});
+  }
+  return {g:root,o:0,
+    setOpacity(o){this.o=o;haloA.material.opacity=.33*o;haloB.material.opacity=.33*o;lines.forEach(l=>{l.tube.material.opacity=.7*o;l.dots.forEach(x=>x.d.material.opacity=.95*o);});},
+    update(t){if(this.o<=0)return;const p=1+.08*Math.sin(t*3);haloA.scale.setScalar(ra*3.4*p);haloB.scale.setScalar(rb*3.2*p);
+      lines.forEach(l=>l.dots.forEach(x=>{const u=(t*.42+x.o+l.k*.13)%1;x.d.position.copy(l.curve.getPoint(u));x.d.material.color.copy(cA).lerp(cB,u);}));}};
+}
+function ionMat(color,ei=.14){return new THREE.MeshStandardMaterial({color,roughness:.4,metalness:.05,emissive:color,emissiveIntensity:ei});}
+/* mạng tinh thể ion: cation A ở vị trí chẵn; cạnh tô cam→xanh (cùng ngôn ngữ hình với liên kết ion) */
+function makeLattice(n,sp,A,B){
+  const g=new THREE.Group();const c=(n-1)/2;const ions=[];const map={};
+  const gA=new THREE.SphereGeometry(A.r,28,20),gB=new THREE.SphereGeometry(B.r,28,20),mA=ionMat(A.color),mB=ionMat(B.color);
+  for(let i=0;i<n;i++)for(let j=0;j<n;j++)for(let k=0;k<n;k++){
+    const isA=(i+j+k)%2===0;const m=new THREE.Mesh(isA?gA:gB,isA?mA:mB);m.position.set((i-c)*sp,(j-c)*sp,(k-c)*sp);g.add(m);
+    const o={m,i,j,k,isA,r:isA?A.r:B.r,target:m.position.clone()};ions.push(o);map[i+','+j+','+k]=o;
+  }
+  const pts=[],cols=[];const cA=new THREE.Color(COL.pos),cB=new THREE.Color(COL.neg);
+  ions.forEach(o=>[[1,0,0],[0,1,0],[0,0,1]].forEach(([a,b,d])=>{const q=map[(o.i+a)+','+(o.j+b)+','+(o.k+d)];if(!q)return;pts.push(o.target,q.target);[o,q].forEach(x=>{const cc=x.isA?cA:cB;cols.push(cc.r,cc.g,cc.b);});}));
+  const geo=new THREE.BufferGeometry().setFromPoints(pts);geo.setAttribute('color',new THREE.Float32BufferAttribute(cols,3));
+  const lines=new THREE.LineSegments(geo,new THREE.LineBasicMaterial({vertexColors:true,transparent:true,opacity:.6}));g.add(lines);
+  return {g,ions,lines,at:(i,j,k)=>map[i+','+j+','+k]};
+}
+
+/* ================= world props ================= */
+(function stars(){const N=3200,p=new Float32Array(N*3);for(let i=0;i<N;i++){p[i*3]=(Math.random()-.5)*600;p[i*3+1]=(Math.random()-.5)*340;p[i*3+2]=200-Math.random()*3300;}
+  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(p,3));
+  scene.add(new THREE.Points(g,new THREE.PointsMaterial({color:0x9fb8ff,size:.9,transparent:true,opacity:.55})));})();
+function makeShip(){
+  const g=new THREE.Group();
+  const body=new THREE.Mesh(new THREE.ConeGeometry(0.34,1.6,18),new THREE.MeshStandardMaterial({color:0xe9eef7,roughness:.35,metalness:.45}));body.rotation.x=-Math.PI/2;g.add(body);
+  const cab=new THREE.Mesh(new THREE.SphereGeometry(0.2,16,12),new THREE.MeshBasicMaterial({color:0x7df9ff}));cab.position.set(0,0.16,-0.05);g.add(cab);
+  const wing=new THREE.Mesh(new THREE.BoxGeometry(1.5,0.05,0.42),new THREE.MeshStandardMaterial({color:0x9fb4d6,roughness:.5,metalness:.3}));wing.position.set(0,-0.02,0.38);g.add(wing);
+  const eng=glowSprite(COL.scan,1.5,.95);eng.position.set(0,0,0.9);g.add(eng);
+  const lamp=new THREE.PointLight(0xbfe6ff,0.9,45);lamp.position.set(0,1,-1);g.add(lamp);
+  g.userData.eng=eng;g.scale.setScalar(.5);return g;
+}
+const shipMesh=makeShip();scene.add(shipMesh);
+
+/* ================= stations ================= */
+const START=V3(0,0,40);
+const T=[V3(0,0,-40),V3(16,8,-290),V3(-20,-6,-540),V3(10,12,-820),V3(30,0,-1080),V3(0,-8,-1330),V3(-26,6,-1590),
+         V3(0,0,-1860),V3(24,8,-2120),V3(-18,-4,-2380),V3(10,10,-2640),V3(-10,0,-2900)];
+const stations=[];let cur=0;
+const BEACON_GEO=new THREE.OctahedronGeometry(.9,0);
+function build(st){
+  if(st.content)st.g.remove(st.content);
+  st.content=new THREE.Group();st.g.add(st.content);
+  COLLECT=st.spin=[];st.h=st.make?st.make(st.content,st):{};COLLECT=null;st.solids=st.h.solids||[];
+}
+function defStation(i,o){
+  const st=Object.assign({i,g:new THREE.Group(),spin:[],points:[],qi:0,phase:'locked',zoneR:82,filmDone:false,quiz:[],tasks:[],filmDist:150},o);
+  st.g.position.copy(T[i]);scene.add(st.g);build(st);
+  const rDef=st.quiz.length?28:15;
+  st.points=(o.points||[]).map(d=>{
+    const p=Object.assign({r:rDef,seen:false},d);
+    const grp=new THREE.Group();grp.position.set(...d.pos);st.g.add(grp);grp.visible=false;
+    p.beacon=new THREE.Mesh(BEACON_GEO,new THREE.MeshBasicMaterial({color:COL.scan}));p.glow=glowSprite(COL.scan,9,.55);grp.add(p.beacon,p.glow);
+    p.grp=grp;return p;
+  });
+  stations.push(st);return st;
+}
+function setSeen(p,v){p.seen=v;p.beacon.material.color.set(v?COL.ok:COL.scan);p.glow.material.color.set(v?COL.ok:COL.scan);p.glow.material.opacity=v?.25:.55;}
+const taskDone=(st,tk)=>tk.pts.every(id=>{const p=st.points.find(q=>q.id===id);return p&&p.seen;});
+
+/* ---------- Trạm 0: tập lái ---------- */
+defStation(0,{name:'Tập lái',zoneR:72,
+  guide:'Em hãy lái tàu tới 3 điểm sáng phía trước. Tới gần điểm nào, chú thích hiện ra ngay cạnh điểm đó.',
+  points:[
+    {id:'a',pos:[0,0,10],title:'Điểm sáng',text:'Tới gần điểm sáng là chú thích bài học hiện ra ở đây. Điểm đã xem chuyển sang màu xanh lá.'},
+    {id:'b',pos:[14,6,-25],title:'Đổi hướng',text:'Kéo chuột (hoặc kéo ngón phải trên iPad) để ngóc lên, chúc xuống, rẽ trái, rẽ phải.'},
+    {id:'c',pos:[-8,-3,-60],title:'Khung lời dẫn',text:'Ở mỗi trạm, góc trái có lời dẫn và những điều cần quan sát. Sẵn sàng lúc nào thì bấm “Trả lời câu hỏi” lúc đó.'}],
+  tasks:[{t:'Bay tới 3 điểm sáng',pts:['a','b','c']}]});
+
+/* ---------- Trạm 1: khí hiếm, trạng thái hoàn hảo ---------- */
+defStation(1,{name:'Khí hiếm: trạng thái hoàn hảo',zoneR:84,
+  make(g){const ne=makeAtom('Ne',[2,8],3.4);g.add(ne);labelHolder(ne,'Ne','neon · khí hiếm · 2, 8',24);
+    const he=makeAtom('He',[2],2.6);he.position.set(-40,12,-12);g.add(he);labelHolder(he,'He','helium · 2',14);
+    return {ne,he,solids:[{obj:ne.userData.nuc,r:3.4},{obj:he.userData.nuc,r:2.6}]};},
+  film:h=>[
+    {cam:[0,8,78],look:[0,0,0],move:3,text:'Chào em, đây là thế giới bên trong vật chất. Trước mặt là nguyên tử Neon (Ne): hạt nhân ở giữa, các electron chạy trên những lớp vòng quanh nó.'},
+    {cam:[10,5,44],look:[0,0,0],text:'Ne có 10 electron: lớp trong cùng 2 electron, lớp ngoài cùng 8 electron.',on(){pulseRing(h.ne.userData.shells[1].ring);}},
+    {text:'Lớp ngoài cùng có 8 electron là đã ĐẦY. Nguyên tử ở <b>trạng thái hoàn hảo</b>: rất bền, không cần cho hay nhận thêm electron nào. Vì thế khí hiếm gần như không liên kết với ai.',on(){perfect(h.ne,1,'đầy ✓');}},
+    {cam:[-30,16,18],look:[-40,12,-12],text:'Helium (He) chỉ có một lớp. Lớp đầu tiên chứa tối đa 2 electron, nên He có 2 là đã đầy, cũng hoàn hảo.',on(){perfect(h.he,0,'đầy ✓');}},
+    {cam:[-6,14,98],look:[-10,4,0],text:'<b>Quy tắc bát tử:</b> mọi nguyên tử khác đều “muốn” lớp ngoài cùng có 8 electron (hoặc 2 nếu chỉ có một lớp) giống khí hiếm.'},
+    {text:'Nhớ kỹ: mỗi nguyên tử luôn tìm cách đạt <b>trạng thái hoàn hảo CỦA CHÍNH NÓ</b>. Có nguyên tử thì bỏ bớt electron, có nguyên tử thì nhận thêm, có nguyên tử thì góp chung. Đó chính là lý do chúng LIÊN KẾT với nhau.'}],
+  guide:'Giờ em hãy bay tự do quanh Ne và He. Quan sát các lớp của Ne xem nó có bao nhiêu electron, lớp ngoài cùng có mấy electron nhé.',
+  points:[
+    {id:'out',pos:[12,12,4],title:'Lớp ngoài cùng của Ne',text:'Đây là vòng to nhất, lớp ngoài cùng. Em đếm các electron vàng trên vòng này nhé.'},
+    {id:'in',pos:[0,-9,4],title:'Lớp trong cùng',text:'Lớp đầu tiên chứa tối đa 2 electron. Ne đã có đủ 2.'},
+    {id:'he',pos:[-40,12,-2],title:'Helium: 2 là đủ',text:'He chỉ có một lớp với 2 electron, đã đầy. He cũng là khí hiếm.'}],
+  tasks:[{t:'Lớp ngoài cùng của Ne có mấy electron?'},{t:'Lớp trong cùng chứa tối đa mấy electron?'},{t:'Vì sao Ne và He không cần liên kết với ai?'}],
+  quiz:[
+    {q:'Lớp electron ngoài cùng của nguyên tử Ne có bao nhiêu electron?',opts:['2','6','8','10'],ans:2,
+     explain:'Lớp ngoài cùng của Ne có 8 electron, đã đầy nên Ne rất bền.',
+     hint:'Chỉ đếm electron trên vòng NGOÀI CÙNG (vòng to, màu vàng). Số 10 là tổng electron của Ne.'},
+    {q:'Vì sao các nguyên tử (trừ khí hiếm) lại liên kết với nhau?',opts:['Để lớp electron ngoài cùng của chính nó đạt trạng thái hoàn hảo: đủ 8 (hoặc 2)','Để có càng nhiều electron càng tốt','Để biến thành nguyên tử khí hiếm','Vì nguyên tử nào cũng mang điện'],ans:0,
+     explain:'Mỗi nguyên tử chỉ “lo” cho lớp ngoài cùng của chính nó được đầy như khí hiếm. Nó vẫn là nguyên tố cũ, chỉ có lớp electron giống khí hiếm thôi.',
+     hint:'Nhớ lại: vì sao Ne và He không cần liên kết với ai? Các nguyên tử khác thiếu điều gì mà Ne có?'}]});
+
+/* ---------- Trạm 2: liên kết ion ---------- */
+defStation(2,{name:'Na gặp Cl: liên kết ion',zoneR:84,
+  make(g){
+    const na=makeAtom('Na',[2,8,[0]],3.6);na.position.set(-40,0,0);g.add(na);
+    const cl=makeAtom('Cl',[2,8,[0,45,90,135,225,270,315]],3.9);cl.position.set(40,0,0);g.add(cl);
+    const naLab=labelHolder(na,'Na','sodium · kim loại · 2, 8, 1',31),clLab=labelHolder(cl,'Cl','chlorine · phi kim · 2, 8, 7',31);
+    const slot=makeSlot(V3(-23,0,0));cl.add(slot);
+    const fx=makeIonicFx(V3(-21.5,0,0),V3(21.5,0,0),16,23);g.add(fx.g);
+    const title=makeLabel('LIÊN KẾT ION','',6,'#ffc48a');title.position.set(0,40,0);title.material.opacity=0;g.add(title);
+    return {na,cl,naLab,clLab,slot,fx,title,naE:na.userData.shells[2].els[0],goals:{},solids:[{obj:na.userData.nuc,r:3.6},{obj:cl.userData.nuc,r:3.9}],update(dt,t){fx.update(t);}};
+  },
+  film:(h,st)=>[
+    {cam:[-40,2,50],look:[-40,-6,0],move:3,text:'Đây là Sodium (Na), một KIM LOẠI. Na có 11 electron xếp 2, 8, 1: lớp ngoài cùng chỉ có <b>1 electron lẻ loi</b>. Cách nhanh nhất để Na hoàn hảo: <b>BỎ</b> electron đó đi, lớp 8 bên dưới sẽ thành lớp ngoài cùng.',
+     on(){blink(h.naE,4);h.goals.na=goalLabel(h.na,'Muốn: bỏ 1 electron','để còn 8, hoàn hảo như Ne',V3(0,-35,0));}},
+    {cam:[40,2,56],look:[40,-6,0],text:'Còn đây là Chlorine (Cl), một PHI KIM. Cl có 17 electron xếp 2, 8, 7: lớp ngoài có 7. Cách nhanh nhất để Cl hoàn hảo: <b>NHẬN</b> thêm đúng 1 electron.',
+     on(){ftween(4,k=>{h.slot.material.opacity=.3+.7*Math.abs(Math.sin(k*Math.PI*5));},()=>{h.slot.material.opacity=.8;});h.goals.cl=goalLabel(h.cl,'Muốn: nhận thêm 1 electron','để đủ 8, hoàn hảo như Ar',V3(0,-35,0));}},
+    {cam:[0,18,108],look:[0,-4,0],text:'Mỗi nguyên tử chỉ lo cho <b>trạng thái hoàn hảo của chính nó</b>. Thật khéo: Na muốn cho đi đúng 1, Cl muốn nhận đúng 1. Chúng tiến lại gần nhau…',on(){ftween(2.6,k=>{h.na.position.x=-40+10*k;h.cl.position.x=40-10*k;});}},
+    {cam:[0,8,54],look:[0,0,0],text:'Na <b>NHƯỜNG</b> electron lẻ loi của mình cho Cl.',on(){flyElectron(st,h.naE,h.cl,V3(-23,0,0),h.slot,2);}},
+    {cam:[-24,6,40],look:[-30,0,0],text:'Mất electron đó, lớp 8 electron bên dưới trở thành lớp ngoài cùng: Na đủ 8, <b>hoàn hảo như Ne</b>! Nhưng Na vẫn có 11 proton mà chỉ còn 10 electron, nên dư điện dương: Na trở thành <b>ION DƯƠNG Na⁺</b>.',on(){
+      const r3=h.na.userData.shells[2].ring;ftween(1,k=>{r3.material.opacity=.5*(1-k);},()=>{r3.visible=false;});hideGoal(h.goals.na);
+      perfect(h.na,1,'đầy ✓');relabel(h.naLab,'Na⁺','2, 8');h.naLab.position.y=24;
+      const b=makeLabel('+','',9,'#ffb86b');b.position.set(-21,-7,0);h.na.add(b);}},
+    {cam:[36,6,50],look:[30,0,0],text:'Cl nhận thêm 1 electron: đủ 8, <b>hoàn hảo như khí hiếm Argon</b>. Cl có 17 proton mà 18 electron, nên dư điện âm: Cl trở thành <b>ION ÂM Cl⁻</b>.',on(){
+      hideGoal(h.goals.cl);perfect(h.cl,2,'đầy ✓');relabel(h.clLab,'Cl⁻','2, 8, 8');const b=makeLabel('−','',9,'#7cc4ff');b.position.set(27,-7,0);h.cl.add(b);}},
+    {cam:[0,14,76],look:[0,0,0],text:'Cả hai đều đã hoàn hảo. Nhưng một bên dương, một bên âm: chúng <b>HÚT NHAU</b> rất mạnh. Lực hút giữa ion dương và ion âm chính là <b>LIÊN KẾT ION</b>.',on(){
+      ftween(2.2,k=>{h.na.position.x=-30+8.5*k;h.cl.position.x=30-8.5*k;},()=>{ftween(1.6,k=>{h.fx.setOpacity(k);h.title.material.opacity=k;});});}},
+    {cam:[0,26,108],look:[0,6,0],text:'Nhớ: liên kết ion = một bên <b>NHƯỜNG</b>, một bên <b>NHẬN</b> electron, để cả hai cùng hoàn hảo, rồi hai ion trái dấu hút nhau. Các đường cam–xanh là lực hút; giữa hai ion không có electron nào dùng chung.'}],
+  guide:'Giờ em hãy bay tự do quanh hai ion. Quan sát xem mỗi ion mang điện gì, vì sao Na chịu cho electron, và điều gì giữ hai ion lại với nhau nhé.',
+  points:[
+    {id:'na',pos:[-21.5,21,8],title:'Hạt Na sau khi cho',text:'Hạt nhân vẫn có 11 proton (+). Em đếm xem giờ Na còn bao nhiêu electron (−). Bên nào nhiều hơn?'},
+    {id:'cl',pos:[21.5,28,8],title:'Hạt Cl sau khi nhận',text:'Hạt nhân có 17 proton (+). Giờ Cl có bao nhiêu electron? Electron màu xanh nhạt từ đâu tới?'},
+    {id:'force',pos:[0,-5,10],title:'Giữa hai hạt',text:'Các đường cam–xanh nối hai hạt với nhau. Hai hạt mang dấu gì? Có electron nào nằm giữa để dùng chung không?'}],
+  tasks:[{t:'Vì sao Na chịu nhường electron cho Cl?'},{t:'Na⁺ và Cl⁻ mang điện gì? Vì sao?'},{t:'Điều gì giữ hai ion lại với nhau?'}],
+  quiz:[
+    {q:'Vì sao Na chịu nhường electron cho Cl?',opts:['Để chính Na đạt trạng thái hoàn hảo: lớp ngoài cùng còn 8','Vì Na muốn giúp Cl','Vì Cl giật mất electron của Na','Để Na biến thành khí hiếm Ne'],ans:0,
+     explain:'Na và Cl đều chỉ lo cho trạng thái hoàn hảo của chính mình. Na muốn bỏ 1, Cl muốn nhận 1: vừa khít, nên cả hai cùng được lợi.',
+     hint:'Trước khi nhường, lớp ngoài cùng của Na có mấy electron? Sau khi nhường, lớp ngoài cùng của Na là lớp nào, có mấy electron?'},
+    {q:'Hạt nhân Na có 11 proton. Sau khi nhường electron cho Cl, Na còn bao nhiêu electron và mang điện gì?',opts:['10 electron, mang điện dương','12 electron, mang điện âm','11 electron, không mang điện','10 electron, mang điện âm'],ans:0,
+     explain:'Na còn 10 electron (2, 8) nhưng vẫn có 11 proton, nên dư 1 điện tích dương: đó là ion dương Na⁺.',
+     hint:'Cộng các lớp electron còn lại của Na. So với 11 proton thì dương nhiều hơn hay âm nhiều hơn?'},
+    {q:'Vì sao Na⁺ và Cl⁻ kéo sát lại nhau?',opts:['Hai ion mang điện trái dấu hút nhau','Chúng góp chung một cặp electron','Cả hai đều là khí hiếm','Na nhận thêm electron từ Cl'],ans:0,
+     explain:'Ion dương và ion âm hút nhau: đó là LIÊN KẾT ION.',
+     hint:'Nhìn dấu + và − cùng các đường cam–xanh giữa hai ion.'}]});
+
+/* ---------- Trạm 3: mạng tinh thể muối ---------- */
+defStation(3,{name:'Bên trong hạt muối',zoneR:90,filmDist:175,guideCam:[0,30,150],
+  make(g){
+    const L=makeLattice(5,22,{r:3.4,color:CPK.Na},{r:6,color:CPK.Cl});g.add(L.g);
+    L.ions.forEach(o=>{o.start=o.target.clone().multiplyScalar(1.6).add(V3((Math.random()-.5)*36,(Math.random()-.5)*36,(Math.random()-.5)*36));o.m.position.copy(o.start);});
+    L.lines.material.opacity=0;
+    const lab=makeLabel('Muối ăn · NaCl','mạng tinh thể ion',4.6);lab.position.set(0,58,0);lab.material.opacity=0;g.add(lab);
+    const center=L.at(2,2,2);center.m.material=ionMat(CPK.Na);
+    const nb=[[1,2,2],[3,2,2],[2,1,2],[2,3,2],[2,2,1],[2,2,3]].map(p=>L.at(...p));
+    return {L,lab,center,nb,lineO:0,pulse:false,solids:L.ions.map(o=>({obj:o.m,r:o.r})),
+      update(dt,t){L.lines.material.opacity=this.lineO*(.5+.25*Math.sin(t*2.5));if(this.pulse)center.m.material.emissiveIntensity=.2+.6*(.5+.5*Math.sin(t*4));}};
+  },
+  film:h=>[
+    {cam:[0,40,175],look:[0,0,0],move:3,text:'Trong một hạt muối ăn nhỏ xíu có hàng tỉ tỉ ion Na⁺ (tím, nhỏ) và Cl⁻ (xanh lá, to). Xem chuyện gì xảy ra khi rất nhiều ion gặp nhau…'},
+    {text:'Mỗi ion Na⁺ hút các ion Cl⁻ quanh nó, mỗi ion Cl⁻ lại hút các ion Na⁺ quanh nó. Chúng tự xếp xen kẽ thành một khối đều đặn.',on(){ftween(4.5,k=>h.L.ions.forEach(o=>o.m.position.lerpVectors(o.start,o.target,k)));}},
+    {cam:[100,55,100],look:[0,0,0],move:4,text:'Đây là <b>MẠNG TINH THỂ ION</b>, chính là hạt muối ăn. Các đường cam–xanh là lực hút ion giữ cả khối lại. Không có cặp Na–Cl nào đứng riêng.',on(){ftween(1.6,k=>{h.lineO=k;h.lab.material.opacity=k;});}},
+    {cam:[11,11,104],look:[11,11,0],move:3,text:'Ion Na⁺ ở chính giữa khối đang nhấp nháy.',on(){h.pulse=true;}}],
+  guide:'Giờ em hãy bay tự do quanh khối muối, nhìn từ nhiều phía. Để ý ion Na⁺ nhấp nháy ở tâm có bao nhiêu ion Cl⁻ nằm sát nó, và các ion xếp theo quy luật nào nhé.',
+  points:[
+    {id:'center',pos:[11,11,11],r:20,title:'Ion Na⁺ ở tâm khối',text:'Nhìn quanh ion đang nhấp nháy theo 3 hướng: trái–phải, trên–dưới, trước–sau. Đếm các ion Cl⁻ nằm sát nó.'},
+    {id:'alt',pos:[0,0,62],title:'Quy luật sắp xếp',text:'Nhìn hạt tím và hạt xanh: hạt nào nằm sát hạt nào? Có hai hạt cùng màu nào nằm sát nhau không?'},
+    {id:'hard',pos:[0,64,18],title:'Vì sao muối cứng?',text:'Mỗi ion bị nhiều ion trái dấu níu từ mọi phía. Vì vậy muối ăn là chất rắn, tới 801 °C mới nóng chảy.'}],
+  tasks:[{t:'Có bao nhiêu ion Cl⁻ nằm sát ion Na⁺ ở tâm?'},{t:'Các ion xếp theo quy luật nào?'},{t:'Vì sao muối ăn là chất rắn?'}],
+  quiz:[
+    {q:'Ion Na⁺ ở tâm khối có bao nhiêu ion Cl⁻ nằm sát nó nhất?',opts:['2','4','6','8'],ans:2,
+     explain:'6 ion Cl⁻: trên, dưới, trái, phải, trước, sau. Mỗi ion bị nhiều ion trái dấu níu chặt, nên muối ăn là chất rắn.',
+     hint:'Đếm theo 3 hướng: trái–phải, trên–dưới, và đừng quên hướng trước–sau (dọc theo đường em bay vào).'},
+    {q:'Trong muối ăn, những hạt nào hút nhau?',opts:['Ion Na⁺ và ion Cl⁻','Các phân tử NaCl riêng lẻ','Nguyên tử Na và nguyên tử Cl góp chung electron','Các ion Na⁺ với nhau'],ans:0,
+     explain:'Chất tạo bởi các ion dương và ion âm hút nhau gọi là CHẤT ION. Muối ăn là chất ion.',
+     hint:'Nhìn màu: hạt tím và hạt xanh xếp xen kẽ, hai hạt cùng màu không nằm sát nhau.'}]});
+
+/* ---------- Trạm 4–6: liên kết cộng hoá trị ---------- */
+function covalentMake(spec,lab,sub,labY,titleY,extra){
+  return function(g){
+    const mol=makeMolecule(spec);g.add(mol.g);const fx=makeCovalentFx(mol);fx.setOpacity(0);g.add(fx.g);
+    const ml=makeLabel(lab,sub,4.6);ml.position.set(0,labY,0);g.add(ml);
+    const title=makeLabel('LIÊN KẾT CỘNG HOÁ TRỊ','',6,'#7ff5da');title.position.set(0,titleY,0);title.material.opacity=0;g.add(title);
+    const h={mol,fx,title,goals:[],solids:mol.solids(),update(dt,t){fx.update(t);if(this.extra&&this.extra.update)this.extra.update(dt,t);}};
+    if(extra)h.extra=extra(g,h);return h;
+  };
+}
+const showCov=h=>ftween(1.8,k=>{h.fx.setOpacity(k);h.title.material.opacity=k;});
+const showGoals=(h,texts)=>{h.goals=h.mol.atoms.map((a,i)=>goalLabel(a.g,texts[i][0],texts[i][1],h.mol.goalPos(a)));};
+const hideGoals=h=>h.goals.forEach(hideGoal);
+defStation(4,{name:'Hai H góp chung: liên kết cộng hoá trị',zoneR:80,
+  make:covalentMake({atoms:[{sym:'H',inner:[],valence:1,pos:[-5.5,0],nucR:2.2},{sym:'H',inner:[],valence:1,pos:[5.5,0],nucR:2.2}],bonds:[[0,1]]},'H₂','hydrogen · phi kim',16,30),
+  film:h=>[
+    {cam:[0,6,62],look:[0,0,0],move:3,text:'Đây là hai nguyên tử Hydrogen (H), đều là PHI KIM. Mỗi H chỉ có 1 electron, mà lớp đầu tiên cần 2 mới đầy như He.',
+     on(){h.mol.bondEls.forEach(b=>blink(b.e,4));showGoals(h,[['Muốn: thêm 1 electron','để có 2 như He'],['Muốn: thêm 1 electron','để có 2 như He']]);}},
+    {text:'Cả hai đều <b>THIẾU</b>, đều muốn NHẬN. Nếu H này cho H kia thì chính nó lại mất hết, không hoàn hảo. Vậy làm sao để CẢ HAI cùng hoàn hảo?'},
+    {cam:[0,4,42],look:[0,0,0],text:'Chúng tiến lại gần, hai vòng electron bắt đầu chồng lên nhau…',on(){ftween(2.6,k=>h.mol.setForm(k*.6));}},
+    {text:'…và <b>GÓP CHUNG</b>: mỗi H góp 1 electron, tạo thành một <b>CẶP ELECTRON DÙNG CHUNG</b> nằm giữa hai hạt nhân. Tính cả cặp chung, mỗi H đều có 2 electron: <b>cả hai cùng hoàn hảo</b> như He!',
+     on(){hideGoals(h);ftween(2,k=>h.mol.setForm(.6+.4*k),()=>h.mol.perfectAll(false));}},
+    {cam:[0,14,74],look:[0,10,0],text:'Cặp electron dùng chung giữ hai nguyên tử lại với nhau: đó là <b>LIÊN KẾT CỘNG HOÁ TRỊ</b>. Không ai mất, không ai được, không có ion + hay −.',on(){showCov(h);}},
+    {cam:[0,16,92],look:[0,10,0],text:'Nhìn hiệu ứng là phân biệt được: cộng hoá trị có <b>sợi sáng xanh ngọc</b> nối hai hạt nhân và cặp electron xoay quanh nó; liên kết ion chỉ có các đường cam–xanh hút nhau.'}],
+  guide:'Giờ em hãy bay tự do quanh phân tử H₂. Quan sát xem cặp electron dùng chung nằm ở đâu, mỗi H có mấy electron, và ở đây có ion + hay − không nhé.',
+  points:[
+    {id:'pair',pos:[0,0,8],title:'Vùng hai vòng chồng nhau',text:'Có mấy electron nằm ở vùng này? Chúng thuộc về nguyên tử H nào?'},
+    {id:'h',pos:[13,9,4],title:'Một nguyên tử H',text:'Đếm electron trên vòng của H này, tính cả các electron ở vùng chồng. So với lúc đầu thì sao?'},
+    {id:'noion',pos:[0,-15,5],title:'Có dấu + hay − không?',text:'Ở trạm 2 có hai hạt mang dấu + và −. Ở đây em có thấy hạt nào mang dấu không? Có electron nào bị cho hẳn đi không?'}],
+  tasks:[{t:'Cặp electron dùng chung nằm ở đâu?'},{t:'Mỗi H có mấy electron (tính cả cặp chung)?'},{t:'Ở đây có ion + hay − không?'}],
+  quiz:[
+    {q:'Hai nguyên tử H trong phân tử H₂ liên kết với nhau bằng cách nào?',opts:['Góp chung 1 cặp electron','Một H nhường electron cho H kia','Hai ion trái dấu hút nhau','Chúng không liên kết'],ans:0,
+     explain:'Liên kết bằng cặp electron dùng chung gọi là LIÊN KẾT CỘNG HOÁ TRỊ.',hint:'Ở đây có hạt nào mang dấu + hay − không?'},
+    {q:'Vì sao hai H phải góp chung mà không cho nhau?',opts:['Cả hai đều thiếu 1; góp chung thì mỗi H đều có 2, cùng hoàn hảo','Vì H là kim loại','Vì H có quá nhiều electron','Vì góp chung thì thành ion'],ans:0,
+     explain:'Cho nhau thì bên cho lại mất hết. Góp chung là cách duy nhất để CẢ HAI cùng đạt trạng thái hoàn hảo của chính mình.',hint:'Mỗi H thiếu mấy electron? Nếu một H cho đi electron duy nhất của nó thì nó còn lại gì?'}]});
+
+const A1=217.75*Math.PI/180,A2=322.25*Math.PI/180;
+defStation(5,{name:'Phân tử nước',zoneR:82,
+  make:covalentMake({atoms:[{sym:'O',inner:[2],valence:6,pos:[0,4],nucR:3.3,central:true},{sym:'H',inner:[],valence:1,pos:[18*Math.cos(A1),4+18*Math.sin(A1)],nucR:2.2},{sym:'H',inner:[],valence:1,pos:[18*Math.cos(A2),4+18*Math.sin(A2)],nucR:2.2}],bonds:[[0,1],[0,2]]},
+    'H₂O','nước · góc liên kết 104,5°',-38,44),
+  film:h=>[
+    {cam:[0,10,80],look:[0,0,0],move:3,text:'Oxygen (O) là PHI KIM, có 8 electron xếp 2, 6: lớp ngoài cùng <b>thiếu 2</b>. Hai nguyên tử H, mỗi H <b>thiếu 1</b>.',
+     on(){pulseRing(h.mol.atoms[0].outer,4);showGoals(h,[['Muốn: thêm 2 electron','để đủ 8'],['Muốn: thêm 1','để có 2'],['Muốn: thêm 1','để có 2']]);}},
+    {text:'Ai cũng thiếu, ai cũng muốn nhận. O không thể nhường đi cả 6 electron, H cũng không có gì để cho. Cách duy nhất để tất cả cùng hoàn hảo: góp chung.',on(){ftween(2.6,k=>h.mol.setForm(k*.6));}},
+    {cam:[0,0,58],look:[0,0,0],text:'O góp chung 1 electron với mỗi H, tạo <b>2 cặp dùng chung</b>. Giờ O đủ 8, mỗi H đủ 2: tất cả đều hoàn hảo!',on(){hideGoals(h);ftween(2,k=>h.mol.setForm(.6+.4*k),()=>h.mol.perfectAll(false));}},
+    {cam:[0,6,74],look:[0,2,0],text:'Mỗi cặp dùng chung là một <b>liên kết cộng hoá trị</b>: phân tử nước có 2 liên kết O–H, tạo với nhau góc 104,5°. Hai cặp electron phía trên là của riêng O, không dùng chung.',on(){showCov(h);}}],
+  guide:'Giờ em hãy bay tự do quanh phân tử nước. Đếm các cặp electron dùng chung, và tìm 2 cặp electron KHÔNG dùng chung của O nhé.',
+  points:[
+    {id:'b1',pos:[-8,-4,7],r:16,title:'Vùng chồng O–H bên trái',text:'Đếm các electron nằm ở vùng chồng này. Cứ 2 electron dùng chung là 1 cặp.'},
+    {id:'b2',pos:[8,-4,7],r:16,title:'Vùng chồng O–H bên phải',text:'Đếm các electron nằm ở vùng chồng này. Cứ 2 electron dùng chung là 1 cặp.'},
+    {id:'lone',pos:[0,24,5],title:'Phía trên nguyên tử O',text:'Các electron này có nằm ở vùng chồng nào không? Có được tính là dùng chung không?'}],
+  tasks:[{t:'Có mấy cặp electron dùng chung?'},{t:'Đâu là 2 cặp electron KHÔNG dùng chung của O?'}],
+  quiz:[{q:'Phân tử nước H₂O có bao nhiêu cặp electron dùng chung?',opts:['1','2','3','4'],ans:1,
+    explain:'2 cặp, mỗi liên kết O–H là 1 cặp. Hai cặp electron phía trên của O là của riêng O, không dùng chung.',
+    hint:'Chỉ đếm những cặp nằm ở chỗ hai vòng chồng nhau và có sợi xanh ngọc. Cặp phía trên O không tính.'}]});
+
+defStation(6,{name:'Cl gặp Cl: vì sao không phải ion?',zoneR:98,guideCam:[0,-8,128],guideLook:[0,-24,0],
+  make:covalentMake({atoms:[{sym:'Cl',inner:[2,8],valence:7,pos:[-19.5,0],nucR:3.9},{sym:'Cl',inner:[2,8],valence:7,pos:[19.5,0],nucR:3.9}],bonds:[[0,1]]},'Cl₂','chlorine · phi kim',30,40,
+    (g,h)=>{ // cặp Na⁺Cl⁻ để so sánh
+      const cmp=new THREE.Group();cmp.position.set(0,-66,0);cmp.scale.setScalar(.55);g.add(cmp);cmp.visible=false;
+      const na=makeAtom('Na',[2,8],3.6);na.position.x=-21.5;const cl=makeAtom('Cl',[2,8,8],3.9);cl.position.x=21.5;cmp.add(na,cl);
+      na.userData.shells[1].ring.material.color.set(COL.gold);cl.userData.shells[2].ring.material.color.set(COL.gold);
+      const fx=makeIonicFx(V3(-21.5,0,0),V3(21.5,0,0),16,23);fx.setOpacity(1);cmp.add(fx.g);
+      const lab=makeLabel('Na⁺ Cl⁻ · liên kết ion','kim loại + phi kim',7.5,'#ffc48a');lab.position.set(0,30,0);cmp.add(lab);
+      const lab2=makeLabel('Cl–Cl · liên kết cộng hoá trị','phi kim + phi kim',4.2,'#7ff5da');lab2.position.set(0,-34,0);lab2.material.opacity=0;g.add(lab2);
+      h.solids.push({obj:na.userData.nuc,r:3.6},{obj:cl.userData.nuc,r:3.9});
+      return {cmp,lab2,update(dt,t){fx.update(t);}};
+    }),
+  film:h=>[
+    {cam:[0,8,82],look:[0,0,0],move:3,text:'Ở trạm 2, Cl <b>NHẬN</b> electron của Na. Nhưng nếu Cl gặp một Cl khác thì sao? Cả hai đều có 7 electron lớp ngoài, đều thiếu 1.',
+     on(){h.mol.atoms.forEach(a=>pulseRing(a.outer,4));showGoals(h,[['Muốn: nhận thêm 1','để đủ 8'],['Muốn: nhận thêm 1','để đủ 8']]);}},
+    {text:'Cả hai cùng muốn NHẬN, không nguyên tử nào chịu cho: cho đi thì chính nó lại thiếu thêm, càng xa trạng thái hoàn hảo.',on(){ftween(2.6,k=>h.mol.setForm(k*.6));}},
+    {cam:[0,4,62],look:[0,0,0],text:'Vậy chúng <b>GÓP CHUNG</b> 1 cặp electron: mỗi Cl đủ 8, cả hai cùng hoàn hảo. Đây là liên kết cộng hoá trị, tạo phân tử Cl₂.',on(){hideGoals(h);ftween(2,k=>h.mol.setForm(.6+.4*k),()=>{h.mol.perfectAll(false);showCov(h);});}},
+    {cam:[0,-30,126],look:[0,-44,0],move:3,text:'So sánh với cặp Na⁺Cl⁻ bên dưới. Na là <b>KIM LOẠI</b>, thừa electron, muốn cho; nên Na + Cl tạo <b>liên kết ion</b>. Cl là <b>PHI KIM</b>, thiếu electron, muốn nhận; nên Cl + Cl phải <b>góp chung</b>.',on(){h.extra.cmp.visible=true;ftween(1.4,k=>{h.extra.lab2.material.opacity=k;});}},
+    {text:'<b>Cách phân tích:</b> một bên muốn cho, một bên muốn nhận → liên kết ion. Cả hai đều muốn nhận → góp chung, liên kết cộng hoá trị. (Thường gặp: kim loại + phi kim → ion; phi kim + phi kim → cộng hoá trị.)',on(){$('#rule').hidden=false;}}],
+  guide:'Giờ em hãy bay tự do: xem phân tử Cl₂ rồi xuống xem cặp Na⁺Cl⁻ bên dưới. So sánh xem vì sao Cl gặp Na thì thành ion, còn Cl gặp Cl thì phải góp chung nhé.',
+  points:[
+    {id:'pair',pos:[0,0,9],title:'Giữa hai Cl',text:'Mỗi Cl có 7 electron lớp ngoài. Để hoàn hảo, mỗi Cl muốn cho hay muốn nhận? Nếu một Cl cho đi thì nó sẽ ra sao?'},
+    {id:'cmp',pos:[0,-48,10],title:'Cặp Na⁺Cl⁻ bên dưới',text:'Na thừa hay thiếu electron? Còn Cl? Vì sao cặp này lại thành hai hạt mang dấu + và −?'}],
+  tasks:[{t:'Hai Cl nhường–nhận hay góp chung electron? Vì sao?'},{t:'Khác gì cặp Na⁺Cl⁻ bên dưới?'}],
+  quiz:[{q:'Vì sao hai nguyên tử Cl không tạo liên kết ion với nhau?',opts:['Cả hai đều cần nhận thêm electron, không nguyên tử nào muốn cho','Vì Cl là khí hiếm','Vì Cl không có electron lớp ngoài','Vì hai nguyên tử Cl mang điện cùng dấu'],ans:0,
+    explain:'Liên kết ion cần một bên muốn CHO và một bên muốn NHẬN. Hai Cl đều muốn nhận, nên chúng góp chung: liên kết cộng hoá trị.',
+    hint:'Mỗi Cl có 7 electron lớp ngoài. Để hoàn hảo, Cl muốn cho hay muốn nhận? Bên kia thì sao?'}]});
+
+/* ---------- Trạm 7–11: LUYỆN TẬP — tự phân tích 2 nguyên tử rồi xem hoạt cảnh ---------- */
+const CL={sym:'Cl',name:'chlorine',type:'phi kim',inner:[2,8],val:7,nucR:3.9,cfg:'2, 8, 7',ion:'Cl⁻',ionCfg:'2, 8, 8',give:false,
+  q1:{opts:['Thiếu 1','Thừa 7','Thiếu 2','Thừa 1'],explain:'Cl có 7 electron lớp ngoài, thêm 1 là đủ 8.',hint:'Đếm electron trên vòng ngoài cùng của Cl. Còn cách 8 bao nhiêu?'},
+  why2:'Cl là phi kim, gần đủ 8 nên muốn NHẬN thêm để chính nó hoàn hảo.'};
+const MG={sym:'Mg',name:'magnesium',type:'kim loại',inner:[2,8],val:2,nucR:3.8,cfg:'2, 8, 2',ion:'Mg²⁺',ionCfg:'2, 8',give:true,
+  q1:{opts:['Thừa 2','Thiếu 6','Thừa 1','Thiếu 2'],explain:'Mg có 2 electron lớp ngoài. Bỏ cả 2 thì lớp 8 bên dưới lộ ra: hoàn hảo như Ne. Nhận thêm 6 thì quá nhiều.',hint:'Đếm electron trên vòng ngoài cùng của Mg. Bỏ bớt hay nhận thêm thì nhanh tới trạng thái hoàn hảo hơn?'},
+  why2:'Mg là kim loại, lớp ngoài có ít electron nên dễ CHO đi để chính nó hoàn hảo.'};
+const O6={sym:'O',name:'oxygen',type:'phi kim',inner:[2],val:6,nucR:3.3,cfg:'2, 6',ion:'O²⁻',ionCfg:'2, 8',give:false,
+  q1:{opts:['Thiếu 2','Thừa 6','Thiếu 1','Thừa 2'],explain:'O có 6 electron lớp ngoài, thêm 2 là đủ 8 như Ne.',hint:'Đếm electron trên vòng ngoài cùng của O. Còn cách 8 bao nhiêu?'},
+  why2:'O là phi kim, thiếu 2 nên muốn NHẬN thêm để chính nó hoàn hảo.'};
+const PRACTICE=[
+  {name:'Luyện tập 1: K và Cl',formula:'KCl',kind:'ion',nX:1,
+   A:{sym:'K',name:'potassium',type:'kim loại',inner:[2,8,8],val:1,nucR:4.2,cfg:'2, 8, 8, 1',ion:'K⁺',ionCfg:'2, 8, 8',give:true,
+      q1:{opts:['Thừa 1','Thiếu 7','Thừa 2','Thiếu 1'],explain:'K có 1 electron ở lớp ngoài cùng. Bỏ nó đi thì lớp 8 electron bên dưới thành lớp ngoài cùng: hoàn hảo. Nhận thêm 7 thì quá nhiều, bỏ 1 dễ hơn nhiều.',hint:'Đếm electron trên vòng ngoài cùng của K. Bỏ bớt hay nhận thêm thì nhanh tới trạng thái hoàn hảo hơn?'},
+      why2:'K là kim loại, lớp ngoài có ít electron nên dễ CHO đi để chính nó hoàn hảo.'},
+   B:CL,
+   q6:{q:'K cho Cl mấy electron?',opts:['1','2','7','8'],explain:'K thừa đúng 1, Cl thiếu đúng 1: cho 1 là vừa khít, cả hai cùng hoàn hảo.',hint:'K thừa mấy? Cl thiếu mấy?'}},
+  {name:'Luyện tập 2: H và Cl',formula:'HCl',kind:'cov',
+   spec:{atoms:[{sym:'H',inner:[],valence:1,pos:[-12.5,0],nucR:2.2},{sym:'Cl',inner:[2,8],valence:7,pos:[12.5,0],nucR:3.9}],bonds:[[0,1]]},iA:[0],iB:[1],
+   A:{sym:'H',name:'hydrogen',type:'phi kim',cfg:'1',give:false,
+      q1:{opts:['Thiếu 1','Thừa 1','Thiếu 7','Đã hoàn hảo rồi'],explain:'H chỉ có 1 lớp; lớp đầu tiên đầy khi có 2 electron (như He). H có 1 nên thiếu 1.',hint:'Lớp đầu tiên chỉ cần 2 là đầy, không phải 8.'},
+      why2:'H thiếu 1 nên muốn NHẬN thêm.'},
+   B:CL,
+   q6:{q:'H và Cl góp chung mấy cặp electron?',opts:['1 cặp','2 cặp','7 cặp','Không cặp nào'],explain:'Mỗi bên chỉ thiếu 1, nên mỗi bên góp 1 electron thành 1 cặp dùng chung. Tính cả cặp chung, H có 2, Cl có 8.',hint:'H thiếu mấy? Cl thiếu mấy? Mỗi cặp dùng chung bù cho mỗi bên 1 electron.'}},
+  {name:'Luyện tập 3: Mg và O',formula:'MgO',kind:'ion',nX:1,A:MG,B:O6,
+   q6:{q:'Mg cho O mấy electron?',opts:['2','1','6','8'],explain:'Mg thừa 2, O thiếu 2: cho 2 là vừa khít. Mg thành Mg²⁺, O thành O²⁻.',hint:'Mg thừa mấy? O thiếu mấy?'}},
+  {name:'Luyện tập 4: C và O',formula:'CO₂',kind:'cov',
+   spec:{atoms:[{sym:'C',inner:[2],valence:4,pos:[0,0],nucR:3.3,central:true},{sym:'O',inner:[2],valence:6,pos:[-23,0],nucR:3.3},{sym:'O',inner:[2],valence:6,pos:[23,0],nucR:3.3}],bonds:[[0,1,2],[0,2,2]]},iA:[0],iB:[1,2],
+   A:{sym:'C',name:'carbon',type:'phi kim',cfg:'2, 4',give:false,
+      q1:{opts:['Thiếu 4','Thiếu 2','Thừa 2','Đã hoàn hảo rồi'],explain:'C có 4 electron lớp ngoài, cần thêm 4 mới đủ 8.',hint:'Đếm electron trên vòng ngoài cùng của C. Còn cách 8 bao nhiêu?'},
+      why2:'C thiếu 4 nên cần thêm electron. Nhận hẳn 4 là quá nhiều, nên lát nữa C sẽ góp chung.'},
+   B:Object.assign({},O6,{why2:'O thiếu 2 nên muốn NHẬN thêm.'}),
+   q6:{q:'C góp chung với MỖI nguyên tử O mấy cặp electron?',opts:['2 cặp','1 cặp','3 cặp','4 cặp'],explain:'Mỗi O thiếu 2, nên cần 2 cặp dùng chung với C. C thiếu 4 = 2 cặp với O bên trái + 2 cặp với O bên phải. Hai cặp giữa 2 nguyên tử gọi là liên kết đôi: O=C=O.',hint:'Mỗi O thiếu mấy? Mỗi cặp dùng chung bù cho O được 1 electron.'}},
+  {name:'Luyện tập 5: Mg và Cl',formula:'MgCl₂',kind:'ion',nX:2,A:MG,B:CL,
+   q6:{q:'Mg cần cho đi 2 electron, nhưng mỗi Cl chỉ nhận 1. Cần mấy nguyên tử Cl?',opts:['2','1','3','4'],explain:'Mg cho mỗi Cl 1 electron, nên cần 2 nguyên tử Cl. Vì vậy công thức là MgCl₂.',hint:'Mg cho đi mấy electron? Mỗi Cl nhận được mấy?'}}];
+
+/* chừa chỗ cho viền đen trên + dải câu hỏi dưới: nguyên tử, nhãn tên (trên) và nhãn lý luận (dưới) đều nằm trong vùng nhìn thấy */
+const shotOn=(x,r)=>{const D=3.2*r+50;return {cam:[x,4,D],look:[x,-.168*D,0]};};
+const shotWide=(D,span=0)=>{D=Math.max(D,(span+10)/(Math.tan(31*Math.PI/180)*camera.aspect));return {cam:[0,6,D],look:[0,-.168*D,0]};};
+/* bộ 6 câu: A thừa/thiếu → A cho/nhận → B thừa/thiếu → B cho/nhận → liên kết bằng cách nào → cho mấy / góp mấy cặp */
+function practiceAsks(c,h,shA,shB,wide){
+  const A=c.A,B=c.B,ion=c.kind==='ion';
+  const badge=(side,txt)=>h.reason[side].forEach(g=>relabel(g,txt,'',4.6,'#ffd166'));
+  return [
+    Object.assign({ask:{q:`${A.sym} (${A.cfg}) thừa hay thiếu bao nhiêu electron để đạt trạng thái hoàn hảo?`,opts:A.q1.opts,ans:0,explain:A.q1.explain,hint:A.q1.hint},onRight(){badge('A',A.q1.opts[0]);}},shA),
+    {ask:{q:`Vậy ${A.sym} nên cho đi hay nhận thêm electron?`,opts:['Cho đi electron','Nhận thêm electron'],ans:A.give?0:1,fixed:true,explain:A.why2,hint:'Thừa thì nên bỏ bớt (cho đi); thiếu thì nên nhận thêm.'},onRight(){badge('A',`${A.q1.opts[0]} → ${A.give?'cho đi':'nhận thêm'}`);}},
+    Object.assign({ask:{q:`${B.sym} (${B.cfg}) thừa hay thiếu bao nhiêu electron để đạt trạng thái hoàn hảo?`,opts:B.q1.opts,ans:0,explain:B.q1.explain,hint:B.q1.hint},onRight(){badge('B',B.q1.opts[0]);}},shB),
+    {ask:{q:`Vậy ${B.sym} nên cho đi hay nhận thêm electron?`,opts:['Cho đi electron','Nhận thêm electron'],ans:B.give?0:1,fixed:true,explain:B.why2,hint:'Thừa thì nên bỏ bớt (cho đi); thiếu thì nên nhận thêm.'},onRight(){badge('B',`${B.q1.opts[0]} → ${B.give?'cho đi':'nhận thêm'}`);}},
+    Object.assign({ask:{q:`Vậy ${A.sym} và ${B.sym} liên kết với nhau bằng cách nào?`,opts:[`${A.sym} cho, ${B.sym} nhận → liên kết ion`,`${B.sym} cho, ${A.sym} nhận → liên kết ion`,'Góp chung electron → liên kết cộng hoá trị'],ans:ion?0:2,fixed:true,
+      explain:ion?`${A.sym} muốn cho, ${B.sym} muốn nhận: ${A.sym} cho ${B.sym} electron, cả hai cùng hoàn hảo. Một cho – một nhận là LIÊN KẾT ION.`:`Cả ${A.sym} và ${B.sym} đều muốn NHẬN, không ai chịu cho. Cách duy nhất để cả hai cùng hoàn hảo là GÓP CHUNG: LIÊN KẾT CỘNG HOÁ TRỊ.`,
+      hint:`Xem lại nhãn vàng dưới mỗi nguyên tử: ${A.sym} muốn gì? ${B.sym} muốn gì? Một cho – một nhận → ion; cả hai đều muốn nhận → góp chung.`}},wide),
+    {ask:Object.assign({ans:0},c.q6)}];
+}
+function ionicPractice(i,c){
+  const A=c.A,B=c.B,two=c.nX===2;const rA=SHELL_R[A.inner.length],rA2=SHELL_R[A.inner.length-1],rB=SHELL_R[B.inner.length];
+  defStation(i,{name:c.name,practice:true,noReplay:true,zoneR:96,filmDist:160,
+    make(g){
+      const Ax=two?0:-46;const Aang=two?[0,180]:Array.from({length:A.val},(_,k)=>(k-(A.val-1)/2)*26);
+      const Ma=makeAtom(A.sym,[...A.inner,Aang],A.nucR);Ma.position.x=Ax;g.add(Ma);
+      const Alab=labelHolder(Ma,A.sym,`${A.name} · ${A.cfg}`,rA+7,5.6);
+      const Arsn=new THREE.Group();Arsn.position.set(0,-(rA+12),0);Ma.add(Arsn);
+      const Xs=(two?[-1,1]:[1]).map(side=>{
+        const x=two?side*60:46;const dir=side>0?180:0;const need=8-B.val;const off=need%2===0?22.5:0;
+        const slots=Array.from({length:8},(_,k)=>off+k*45);const dist=a=>Math.abs(((a-dir)%360+540)%360-180);
+        const empty=[...slots].sort((p,q)=>dist(p)-dist(q)).slice(0,need);const filled=slots.filter(a=>!empty.includes(a));
+        const X=makeAtom(B.sym,[...B.inner,filled],B.nucR);X.position.x=x;g.add(X);
+        const lab=labelHolder(X,B.sym,`${B.name} · ${B.cfg}`,rB+7,5.6);
+        const rsn=new THREE.Group();rsn.position.set(0,-(rB+12),0);X.add(rsn);
+        const sl=empty.map(a=>{const p=V3(Math.cos(a*Math.PI/180)*rB,Math.sin(a*Math.PI/180)*rB,0);const m=makeSlot(p);m.visible=false;X.add(m);return {p,m};}).sort((p,q)=>p.p.y-q.p.y);
+        return {X,lab,rsn,sl,side};
+      });
+      const els=[...Ma.userData.shells[A.inner.length].els].sort((p,q)=>p.position.y-q.position.y);
+      const maxR=Math.max(rA,rB);const title=makeLabel('LIÊN KẾT ION',`${c.formula} là chất ion`,6,'#ffc48a');title.position.set(0,maxR+16,0);title.material.opacity=0;g.add(title);
+      return {Ma,Alab,Xs,els,title,fx:[],reason:{A:[Arsn],B:Xs.map(x=>x.rsn)},
+        solids:[{obj:Ma.userData.nuc,r:A.nucR},...Xs.map(x=>({obj:x.X.userData.nuc,r:B.nucR}))],update(dt,t){this.fx.forEach(f=>f.update(t));}};
+    },
+    film:(h,st)=>{
+      const shA=shotOn(two?0:-46,rA),shB=shotOn(two?60:46,rB),wide=shotWide(two?140:128,two?60+rB:46+Math.max(rA,rB));
+      return [
+        Object.assign({move:3,text:`Trạm luyện tập. Đây là ${A.sym} và ${B.sym}. Em hãy nhìn các lớp electron của từng nguyên tử để tự phân tích: mỗi bên muốn gì để đạt trạng thái hoàn hảo của chính nó?`},wide),
+        ...practiceAsks(c,h,shA,shB,wide),
+        Object.assign({text:`Đúng vậy: ${A.sym} cho, ${B.sym} nhận. Vòng vàng nhỏ là chỗ trống ${B.sym} sẽ nhận electron. Xem hoạt cảnh nhé…`,on(){
+          h.Xs.forEach(x=>x.sl.forEach(s=>{s.m.visible=true;}));
+          ftween(2.2,k=>{if(two)h.Xs.forEach(x=>{x.X.position.x=x.side*(60-6*k);});else{h.Ma.position.x=-46+6*k;h.Xs[0].X.position.x=46-6*k;}});}},wide),
+        {text:`${A.sym} cho ${B.sym} ${A.val} electron.`,on(){
+          h.els.forEach((e,k)=>{let x,s;if(two){x=h.Xs.find(q=>Math.sign(q.side)===Math.sign(e.position.x));s=x.sl[0];}else{x=h.Xs[0];s=x.sl[k];}
+            fdelay(.45*k,()=>flyElectron(st,e,x.X,s.p,s.m,1.8));});}},
+        {text:`${A.sym} mất lớp ngoài cùng, lớp 8 bên dưới lộ ra: <b>hoàn hảo</b>, thành ion <b>${A.ion}</b>. ${B.sym} nhận đủ, lớp ngoài có 8: <b>hoàn hảo</b>, thành ion <b>${B.ion}</b>.`,on(){
+          const rOld=h.Ma.userData.shells[A.inner.length].ring;ftween(1,k=>{rOld.material.opacity=.5*(1-k);},()=>{rOld.visible=false;});
+          perfect(h.Ma,A.inner.length-1,'8e ✓');relabel(h.Alab,A.ion,`ion dương · ${A.ionCfg}`,5.6);h.Alab.position.y=rA2+7;
+          h.reason.A.concat(h.reason.B).forEach(r=>{r.visible=false;});
+          h.Xs.forEach(x=>{perfect(x.X,B.inner.length,'8e ✓');relabel(x.lab,B.ion,`ion âm · ${B.ionCfg}`,5.6);});}},
+        Object.assign({hold:true,next:'Bay tiếp ›',text:`Ion dương và ion âm trái dấu hút nhau: <b>LIÊN KẾT ION</b>. ${c.formula} là <b>chất ion</b>.`,on(){
+          const gap=rA2+rB+4;
+          ftween(2,k=>{if(two)h.Xs.forEach(x=>{x.X.position.x=x.side*(54+(gap-54)*k);});else{h.Ma.position.x=-40+(40-gap/2)*k;h.Xs[0].X.position.x=40-(40-gap/2)*k;}},()=>{
+            const pa=V3(h.Ma.position.x,0,0);h.Xs.forEach(x=>{const f=makeIonicFx(pa,V3(x.X.position.x,0,0),rA2,rB);f.setOpacity(0);h.Ma.parent.add(f.g);h.fx.push(f);});
+            ftween(1.6,k=>{h.fx.forEach(f=>f.setOpacity(k));h.title.material.opacity=k;});});}},shotWide(Math.max(160,wide.cam[2]*1.2)))];
+    }});
+}
+function covalentPractice(i,c){
+  const A=c.A,B=c.B;
+  defStation(i,{name:c.name,practice:true,noReplay:true,zoneR:96,filmDist:160,
+    make(g){
+      const mol=makeMolecule(c.spec);g.add(mol.g);const fx=makeCovalentFx(mol);fx.setOpacity(0);g.add(fx.g);
+      const info=idx=>c.iA.includes(idx)?A:B;
+      const labs=mol.atoms.map((a,idx)=>labelHolder(a.g,a.sym,`${info(idx).name} · ${info(idx).cfg}`,a.rOut+7,5));
+      const rsn=mol.atoms.map(a=>{const r=new THREE.Group();r.position.set(0,-(a.rOut+12),0);a.g.add(r);return r;});
+      const maxR=Math.max(...mol.atoms.map(a=>a.rOut));
+      const title=makeLabel('LIÊN KẾT CỘNG HOÁ TRỊ',`${c.formula} là chất cộng hoá trị`,6,'#7ff5da');title.position.set(0,maxR+18,0);title.material.opacity=0;g.add(title);
+      return {mol,fx,title,labs,reason:{A:c.iA.map(k=>rsn[k]),B:c.iB.map(k=>rsn[k])},solids:mol.solids(),update(dt,t){fx.update(t);}};
+    },
+    film:(h)=>{
+      const aA=h.mol.atoms[c.iA[0]],aB=h.mol.atoms[c.iB[c.iB.length-1]];
+      const shA=shotOn(aA.sep.x,aA.rOut),shB=shotOn(aB.sep.x,aB.rOut),span=Math.max(...h.mol.atoms.map(a=>Math.abs(a.sep.x)+a.rOut)),wide=shotWide(Math.max(100,span*1.9),span);
+      const pairs=h.mol.bonds.reduce((s,b)=>s+b.k,0);
+      return [
+        Object.assign({move:3,text:`Trạm luyện tập. Đây là ${A.sym} và ${B.sym}. Em hãy nhìn các lớp electron của từng nguyên tử để tự phân tích: mỗi bên muốn gì để đạt trạng thái hoàn hảo của chính nó?`},wide),
+        ...practiceAsks(c,h,shA,shB,wide),
+        Object.assign({text:`Đúng vậy: cả ${A.sym} và ${B.sym} đều muốn nhận, nên chúng góp chung. Xem hoạt cảnh nhé…`,on(){ftween(2.4,k=>h.mol.setForm(k*.6));}},wide),
+        {text:`Mỗi bên góp electron vào vùng chồng nhau: có <b>${pairs} cặp dùng chung</b>. Tính cả electron dùng chung, ${A.sym} và ${B.sym} đều <b>hoàn hảo</b>!`,on(){
+          h.reason.A.concat(h.reason.B).forEach(r=>{r.visible=false;});h.labs.forEach((l,k)=>relabel(l,h.mol.atoms[k].sym,'',5));ftween(2,k=>h.mol.setForm(.6+.4*k),()=>h.mol.perfectAll());}},
+        Object.assign({hold:true,next:'Bay tiếp ›',text:`Mỗi cặp dùng chung là một liên kết cộng hoá trị (sợi xanh ngọc). ${c.formula} là <b>chất cộng hoá trị</b>.`,on(){ftween(1.8,k=>{h.fx.setOpacity(k);h.title.material.opacity=k;});}},shotWide(Math.max(160,wide.cam[2]*1.2)))];
+    }});
+}
+PRACTICE.forEach((c,k)=>(c.kind==='ion'?ionicPractice:covalentPractice)(7+k,c));
+
+/* ================= zone (khuôn khổ bay tự do) ================= */
+let zoneA=START.clone(),zoneB=T[0].clone(),zoneR=72,zoneMesh=null;
+const zoneMat=new THREE.MeshBasicMaterial({color:COL.scan,wireframe:true,transparent:true,opacity:0,depthWrite:false});
+function setZone(){
+  zoneA=cur===0?START.clone():T[cur-1].clone();zoneB=T[cur].clone();zoneR=stations[cur].zoneR;
+  if(zoneMesh){scene.remove(zoneMesh);zoneMesh.children.forEach(c=>c.geometry.dispose());}
+  zoneMesh=new THREE.Group();const ab=zoneB.clone().sub(zoneA);const L=ab.length();
+  const cyl=new THREE.Mesh(new THREE.CylinderGeometry(zoneR,zoneR,L,40,Math.max(2,Math.round(L/40)),true),zoneMat);
+  cyl.position.copy(zoneA).addScaledVector(ab,.5);cyl.quaternion.setFromUnitVectors(V3(0,1,0),ab.clone().normalize());
+  const c1=new THREE.Mesh(new THREE.SphereGeometry(zoneR,40,20),zoneMat);c1.position.copy(zoneA);
+  const c2=new THREE.Mesh(new THREE.SphereGeometry(zoneR,40,20),zoneMat);c2.position.copy(zoneB);
+  zoneMesh.add(cyl,c1,c2);scene.add(zoneMesh);
+}
+let wallAt=0;
+function enforceZone(now){
+  const ab=zoneB.clone().sub(zoneA);const L2=ab.lengthSq();const t=clamp(L2?ship.pos.clone().sub(zoneA).dot(ab)/L2:0,0,1);
+  const C=zoneA.clone().addScaledVector(ab,t);const off=ship.pos.clone().sub(C);const d=off.length();
+  zoneMat.opacity=.2*clamp((d-(zoneR-24))/24,0,1);
+  if(d>zoneR){off.divideScalar(d);ship.pos.copy(C).addScaledVector(off,zoneR);const vn=ship.vel.dot(off);if(vn>0)ship.vel.addScaledVector(off,-vn*1.2);
+    if(now-wallAt>4){wallAt=now;toast(cur===0?'Bay tới 3 điểm sáng trước đã':'Chưa mở đường: trả lời câu hỏi của trạm này để bay tiếp',true);}}
+}
+
+/* ================= ship & input ================= */
+const ship={pos:START.clone(),vel:V3(),yaw:0,pitch:0,bank:0};
+function shipFwd(){return V3(-Math.sin(ship.yaw)*Math.cos(ship.pitch),Math.sin(ship.pitch),-Math.cos(ship.yaw)*Math.cos(ship.pitch));}
+let mode='intro';
+const isPaused=()=>mode!=='fly';
+const keys=new Set();
+addEventListener('keydown',e=>{if(film&&e.code==='Enter'){e.preventDefault();if(!$('#filmNext').hidden)nextStep();return;}if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code)&&!isPaused())e.preventDefault();keys.add(e.code);});
+addEventListener('keyup',e=>keys.delete(e.code));
+addEventListener('blur',()=>keys.clear());
+const joy={id:null,x0:0,y0:0,x:0,y:0};const drags=new Map();let lookDX=0,lookDY=0;
+const joyEl=$('#joy'),knob=$('#knob');
+canvas.addEventListener('pointerdown',e=>{
+  if(isPaused())return;try{canvas.setPointerCapture(e.pointerId);}catch(_){}
+  if(e.pointerType!=='mouse'&&e.clientX<innerWidth*.45&&joy.id===null){joy.id=e.pointerId;joy.x0=e.clientX;joy.y0=e.clientY;joy.x=joy.y=0;joyEl.hidden=false;joyEl.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;knob.style.transform='';}
+  else drags.set(e.pointerId,{x:e.clientX,y:e.clientY});
+});
+canvas.addEventListener('pointermove',e=>{
+  if(e.pointerId===joy.id){const dx=e.clientX-joy.x0,dy=e.clientY-joy.y0,L=Math.hypot(dx,dy),m=56,s=L>m?m/L:1;joy.x=dx*s/m;joy.y=-dy*s/m;knob.style.transform=`translate(${dx*s}px,${dy*s}px)`;return;}
+  const d=drags.get(e.pointerId);if(!d)return;lookDX+=e.clientX-d.x;lookDY+=e.clientY-d.y;d.x=e.clientX;d.y=e.clientY;
+});
+function endPtr(e){if(e.pointerId===joy.id){joy.id=null;joy.x=joy.y=0;joyEl.hidden=true;}drags.delete(e.pointerId);}
+canvas.addEventListener('pointerup',endPtr);canvas.addEventListener('pointercancel',endPtr);
+
+const MAXV=27;
+function steer(dt){
+  let thr=0,yawIn=0,vert=0;const p=isPaused();
+  if(!p){
+    if(keys.has('KeyW')||keys.has('ArrowUp'))thr+=1;if(keys.has('KeyS')||keys.has('ArrowDown'))thr-=1;
+    if(keys.has('KeyA')||keys.has('ArrowLeft'))yawIn+=1;if(keys.has('KeyD')||keys.has('ArrowRight'))yawIn-=1;
+    if(keys.has('Space')||keys.has('KeyE'))vert+=1;if(keys.has('ShiftLeft')||keys.has('ShiftRight')||keys.has('KeyQ'))vert-=1;
+    thr+=joy.y;yawIn-=joy.x*.9;
+    ship.yaw-=lookDX*.0042;ship.pitch-=lookDY*.0042;
+  }
+  lookDX=lookDY=0;thr=clamp(thr,-.5,1);yawIn=clamp(yawIn,-1,1);
+  ship.yaw+=yawIn*1.35*dt;ship.pitch=clamp(ship.pitch,-1.2,1.2);
+  const fwd=shipFwd();const want=fwd.clone().multiplyScalar(thr*MAXV).add(V3(0,vert*MAXV*.6,0));
+  ship.vel.lerp(want,1-Math.exp(-dt*(p?4:2.2)));ship.pos.addScaledVector(ship.vel,dt);
+  ship.bank+=(yawIn*.5-ship.bank)*(1-Math.exp(-dt*5));
+  return fwd;
+}
+const tmpV=V3(),tmpS=V3();
+function collide(){
+  for(const st of [stations[cur-1],stations[cur]]){if(!st)continue;
+    for(const s of st.solids){if(!s.obj.visible)continue;tmpV.setFromMatrixPosition(s.obj.matrixWorld);tmpS.setFromMatrixScale(s.obj.matrixWorld);
+      const R=s.r*tmpS.x+.9;const d=ship.pos.distanceTo(tmpV);
+      if(d<R){const n=ship.pos.clone().sub(tmpV).divideScalar(d||1);ship.pos.copy(tmpV).addScaledVector(n,R);const vn=ship.vel.dot(n);if(vn<0)ship.vel.addScaledVector(n,-vn*1.3);}}}
+}
+const camPos=V3(0,4,52),camLook=V3(0,0,20);
+function follow(dt,fwd){
+  const want=ship.pos.clone().addScaledVector(fwd,-6).add(V3(0,1.7,0));camPos.lerp(want,1-Math.exp(-dt*3.5));
+  camLook.lerp(ship.pos.clone().addScaledVector(fwd,9),1-Math.exp(-dt*6));camera.position.copy(camPos);camera.lookAt(camLook);
+}
+
+/* ================= film: cảnh phim có lời dẫn + câu hỏi ngay trên mô hình ================= */
+let film=null;
+function playFilm(st,replay){
+  if(replay){film={prevPhase:st.phase};build(st);}else film={};
+  let steps=st.film(st.h,st);
+  if(st.guide)steps=steps.concat([{text:st.guide,guide:true,cam:st.guideCam||[0,16,108],look:st.guideLook||[0,0,0],move:2.6}]);
+  Object.assign(film,{st,steps,i:-1,t:0,paused:false,replay:!!replay,camTo:null,lookTo:null});
+  mode='film';if(!replay)st.phase='film';ship.vel.set(0,0,0);keys.clear();joy.id=null;joyEl.hidden=true;
+  $('#hud').hidden=true;$('#film').hidden=false;$('#filmTitle').textContent=st.practice?`Luyện tập · Trạm ${st.i}`:`Lời dẫn · Trạm ${st.i}`;
+  nextStep();
+}
+function setSub(html){const p=$('#filmText');p.replaceChildren();html.split(/(<b>.*?<\/b>)/).forEach(part=>{if(!part)return;const m=part.match(/^<b>(.*)<\/b>$/);if(m){const b=document.createElement('b');b.textContent=m[1];p.append(b);}else p.append(part);});}
+function nextStep(){
+  finishFilmTweens();
+  film.i++;
+  if(film.i>=film.steps.length){endFilm();return;}
+  const s=film.steps[film.i];const ask=s.ask;const hold=!!(s.guide||s.hold||ask);
+  const plain=(ask?ask.q:s.text).replace(/<\/?b>/g,'');
+  film.t=0;film.dur=hold?Infinity:Math.max(5.5,plain.length/12+1.5);film.paused=false;$('#filmPause').textContent='⏸ Dừng';
+  const prevCam=film.camTo||camera.position.clone(),prevLook=film.lookTo||camLook.clone();
+  film.camFrom=camera.position.clone();film.lookFrom=camLook.clone();
+  const base=film.st.g.position;
+  film.camTo=s.cam?V3(...s.cam).add(base):prevCam.clone();film.lookTo=s.look?V3(...s.look).add(base):prevLook.clone();
+  film.move=s.move??2.4;
+  setSub(ask?ask.q:s.text);
+  const nAsk=film.steps.filter(x=>x.ask).length,kAsk=film.steps.slice(0,film.i+1).filter(x=>x.ask).length,nPlain=film.steps.filter(x=>!x.guide).length;
+  $('#filmStep').textContent=s.guide?'Nhiệm vụ':ask?`Câu ${kAsk}/${nAsk}`:`${film.i+1}/${nPlain}`;
+  const box=$('#filmOpts');$('#filmFb').hidden=true;
+  if(ask){
+    const opts=ask.opts.map((t,i)=>({t,ok:i===ask.ans}));if(!ask.fixed&&opts.length>2)for(let i=opts.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[opts[i],opts[j]]=[opts[j],opts[i]];}
+    box.replaceChildren(...opts.map(o=>{const b=document.createElement('button');b.type='button';b.className='opt';b.textContent=o.t;b.onclick=()=>chooseFilm(b,o,s);return b;}));box.hidden=false;
+  }else{box.hidden=true;box.replaceChildren();}
+  $('#filmNext').hidden=!!ask;$('#filmNext').textContent=s.guide?'Bắt đầu quan sát ›':s.hold?(s.next||'Tiếp ›'):'Tiếp ›';
+  $('#filmPause').hidden=hold;$('#filmSkip').hidden=hold||!!film.st.practice;
+  if(s.on)s.on();
+}
+function chooseFilm(btn,o,s){
+  const fb=$('#filmFb'),b=document.createElement('b');
+  if(o.ok){[...$('#filmOpts').children].forEach(x=>x.disabled=true);btn.classList.add('ok');b.textContent='Đúng. ';fb.className='fb good';fb.replaceChildren(b,s.ask.explain);
+    if(s.onRight)s.onRight();$('#filmNext').hidden=false;$('#filmNext').textContent='Tiếp ›';$('#filmNext').focus();}
+  else{btn.disabled=true;btn.classList.add('bad');b.textContent='Chưa đúng. ';fb.className='fb miss';fb.replaceChildren(b,s.ask.hint+' Em chọn lại nhé.');}
+  fb.hidden=false;
+}
+function updateFilm(dt){
+  if(!film.paused)film.t+=dt;const k=ease(clamp(film.t/film.move,0,1));
+  camera.position.lerpVectors(film.camFrom,film.camTo,k);camLook.lerpVectors(film.lookFrom,film.lookTo,k);camera.lookAt(camLook);
+  if(film.t>=film.dur)nextStep();
+}
+function skipToGuide(){while(film&&!film.steps[film.i].guide&&!film.steps[film.i].ask&&!film.steps[film.i].hold)nextStep();}
+function endFilm(){
+  finishFilmTweens();const st=film.st,rp=film.replay,prev=film.prevPhase;film=null;
+  $('#film').hidden=true;$('#hud').hidden=false;mode='fly';camPos.copy(camera.position);st.filmDone=true;
+  if(rp)st.phase=prev;else if(st.practice)complete(st);else startExplore(st);
+  renderTasks();canvas.focus();
+}
+/* chạy phim "câm" tới cuối — dùng khi GV bấm qua trạm */
+function fastForwardFilm(st){if(st.filmDone||!st.film)return;st.film(st.h,st).forEach(s=>{finishFilmTweens();if(s.on)s.on();if(s.onRight)s.onRight();});finishFilmTweens();st.filmDone=true;}
+$('#filmNext').onclick=()=>{if(film)nextStep();};
+$('#filmSkip').onclick=()=>{if(film)skipToGuide();};
+$('#filmPause').onclick=()=>{if(!film)return;film.paused=!film.paused;$('#filmPause').textContent=film.paused?'▶ Chạy tiếp':'⏸ Dừng';};
+
+/* ================= station flow ================= */
+function unlock(st){
+  st.phase=st.film?'approach':'explore';
+  if(st.phase==='explore')startExplore(st);
+  toast(st.film?`Trạm ${st.i}: ${st.name}. Bay tới đó nhé`:st.guide);
+}
+function startExplore(st){
+  st.phase='explore';st.points.forEach(p=>{p.grp.visible=true;});
+  $('#guide').textContent=st.guide;renderTasks();
+  if(st.quiz.length)toast('Bay tự do để quan sát. Sẵn sàng lúc nào thì bấm “Trả lời câu hỏi”');
+  checkTasks(st);
+}
+/* chỉ trạm tập lái mới bắt đi đủ điểm; trạm học thì trả lời lúc nào cũng được */
+function checkTasks(st){if(st.phase!=='explore'||st.quiz.length)return;if(st.tasks.every(tk=>taskDone(st,tk)))complete(st);}
+function startQuiz(st){st.phase='quiz';askQ(st);}
+function askQ(st){
+  const q=st.quiz[st.qi];const last=st.qi===st.quiz.length-1;
+  openQuiz(q,{eyebrow:`Câu hỏi ${st.qi+1}/${st.quiz.length} · ${st.name}`,next:last?'Mở đường bay tiếp →':'Câu tiếp →',
+    onRight(){st.qi++;if(st.qi<st.quiz.length)setTimeout(()=>askQ(st),250);else complete(st);},
+    onMiss(){if(q.onMiss)q.onMiss(st.h);},
+    onClose(){st.phase='explore';renderTasks();}});
+}
+function complete(st){
+  if(st.phase==='done')return;fastForwardFilm(st);st.phase='done';
+  st.points.forEach(p=>{p.grp.visible=false;});
+  if(st.i===stations.length-1){renderHeader();renderTasks();setTimeout(showEnd,600);return;}
+  cur=st.i+1;const nx=stations[cur];unlock(nx);setZone();addPath(T[st.i],T[cur]);renderHeader();renderTasks();
+}
+function addPath(a,b){const l=new THREE.Line(new THREE.BufferGeometry().setFromPoints([a,b]),new THREE.LineDashedMaterial({color:COL.scan,dashSize:3,gapSize:5,transparent:true,opacity:.4}));l.computeLineDistances();scene.add(l);}
+
+let coPick=null,coShown=null;
+const coEl=$('#callout');
+/* chú thích tại chỗ: thẻ bám theo vị trí điểm sáng trên màn, luôn nằm gọn trong màn hình */
+function renderCallout(){
+  const pk=coPick;coPick=null;
+  if(!pk||isPaused()){if(coShown){coEl.hidden=true;coShown=null;}return;}
+  if(coShown!==pk.p){coShown=pk.p;$('#coTitle').textContent=pk.p.title;$('#coText').textContent=pk.p.text;coEl.hidden=false;}
+  const v=pk.pos.project(camera);const W=innerWidth,H=innerHeight;const sx=(v.x*.5+.5)*W,sy=(-v.y*.5+.5)*H;
+  const cw=coEl.offsetWidth,ch=coEl.offsetHeight;let x=sx+28;if(x+cw>W-16)x=sx-28-cw;x=clamp(x,16,W-16-cw);
+  const y=clamp(sy-ch/2,110,H-ch-90);coEl.style.transform=`translate(${Math.round(x)}px,${Math.round(y)}px)`;
+}
+function updatePoints(st,dt,t){
+  const active=['explore','quiz'].includes(st.phase);
+  for(const p of st.points){
+    if(!p.grp.visible)continue;
+    p.grp.getWorldPosition(tmpV);const d=tmpV.distanceTo(ship.pos);const near=active&&mode==='fly'&&d<p.r;
+    if(near&&(!coPick||d<coPick.d))coPick={p,d,pos:tmpV.clone()};
+    const shrink=clamp(d/10,.35,1);const pulse=(p.seen?1:1+.25*Math.sin(t*4))*shrink;p.beacon.scale.setScalar(pulse);p.glow.scale.setScalar(9*shrink);p.beacon.rotation.y+=dt*1.5;
+    if(near&&!p.seen){setSeen(p,true);renderTasks();checkTasks(st);}
+  }
+}
+
+/* ================= HUD ================= */
+let toastT=null;
+function toast(msg,warn){const el=$('#toast');el.textContent=msg;el.classList.toggle('warn',!!warn);el.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('on'),3800);}
+function renderHeader(){
+  const st=stations[cur];$('#stationName').textContent=cur===0?'Tập lái':`Trạm ${cur} · ${st.name}`;
+  $('#dots').replaceChildren(...stations.map(s=>{const d=document.createElement('div');d.className='dot'+(s.phase==='done'?' done':s.i===cur?' cur':'');return d;}));
+}
+function renderTasks(){
+  const st=stations[cur];const box=$('#tasks');const show=st&&['explore','quiz'].includes(st.phase);
+  $('#btnReplay').hidden=!(st&&st.film&&st.filmDone&&!st.noReplay&&show);
+  $('#btnAnswer').hidden=!(st&&st.quiz.length&&st.phase==='explore'&&mode==='fly');
+  $('#btnAnswer').textContent=st&&st.qi>0?`Trả lời tiếp (câu ${st.qi+1}/${st.quiz.length}) ›`:'Trả lời câu hỏi của trạm ›';
+  if(!show){box.hidden=true;return;}
+  box.hidden=false;$('#guide').textContent=st.guide;
+  const gated=!st.quiz.length;$('#taskHead').textContent=gated?'Nhiệm vụ':'Điều cần quan sát';
+  const n=st.tasks.filter(tk=>tk.pts&&taskDone(st,tk)).length;$('#taskCount').textContent=gated?`${n}/${st.tasks.length}`:'';
+  const ul=$('#taskList');ul.className=gated?'':'plain';
+  ul.replaceChildren(...st.tasks.map(tk=>{const li=document.createElement('li');const done=gated&&taskDone(st,tk);li.className=done?'done':'';const ck=document.createElement('span');ck.className='ck';ck.textContent=done?'✓':'';li.append(ck,tk.t);return li;}));
+}
+$('#route').replaceChildren(...stations.map(s=>{const li=document.createElement('li');const sp=document.createElement('span');sp.textContent=String(s.i).padStart(2,'0');li.append(sp,s.i===0?'Tập lái':s.name);return li;}));
+function currentTarget(){
+  const st=stations[cur];if(!st)return null;
+  if(st.phase==='approach')return st.g.position.clone();
+  if(st.phase==='explore'&&!st.quiz.length){const p=st.points.find(p=>!p.seen);if(p)return p.grp.getWorldPosition(V3());}
+  return null;
+}
+const markerEl=$('#marker'),arrowEl=$('#arrow');
+function renderMarker(){
+  const tgt=isPaused()?null:currentTarget();if(!tgt){markerEl.hidden=arrowEl.hidden=true;return;}
+  const p=tgt.project(camera);let x=p.x,y=p.y;const behind=p.z>1;if(behind){x=-x;y=-y;if(Math.hypot(x,y)<.2){x=0;y=-1;}}
+  const W=innerWidth,H=innerHeight;
+  if(!behind&&Math.abs(x)<.92&&Math.abs(y)<.86){markerEl.hidden=false;arrowEl.hidden=true;markerEl.style.transform=`translate(${(x*.5+.5)*W}px,${(-y*.5+.5)*H}px)`;}
+  else{markerEl.hidden=true;arrowEl.hidden=false;const a=Math.atan2(y,x);const m=Math.max(Math.abs(x),Math.abs(y))||1;const ex=x/m*.9,ey=y/m*.8;
+    arrowEl.style.transform=`translate(${(ex*.5+.5)*W}px,${(-ey*.5+.5)*H}px) rotate(${Math.PI/2-a}rad)`;}
+}
+
+/* ================= quiz (trạm học) ================= */
+let quizCtx=null;
+function openQuiz(q,ctx){
+  mode='quiz';quizCtx={q,ctx};keys.clear();renderTasks();
+  $('#qEyebrow').textContent=ctx.eyebrow||'Câu hỏi';$('#qText').textContent=q.q;
+  const opts=q.opts.map((t,i)=>({t,ok:i===q.ans}));if(opts.length>2)for(let i=opts.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[opts[i],opts[j]]=[opts[j],opts[i]];}
+  $('#qOpts').replaceChildren(...opts.map(o=>{const b=document.createElement('button');b.type='button';b.className='opt';b.textContent=o.t;b.onclick=()=>choose(b,o);return b;}));
+  $('#qFb').hidden=true;$('#qNext').hidden=true;$('#qClose').hidden=false;$('#quiz').hidden=false;
+}
+function choose(btn,o){
+  const {q,ctx}=quizCtx;const fb=$('#qFb'),nx=$('#qNext'),b=document.createElement('b');
+  if(o.ok){[...$('#qOpts').children].forEach(x=>x.disabled=true);btn.classList.add('ok');b.textContent='Đúng. ';fb.className='fb good';fb.replaceChildren(b,q.explain);
+    nx.textContent=ctx.next||'Bay tiếp →';nx.onclick=()=>{closeQuiz();ctx.onRight();};nx.hidden=false;$('#qClose').hidden=true;nx.focus();}
+  else{btn.disabled=true;btn.classList.add('bad');b.textContent='Chưa đúng. ';fb.className='fb miss';fb.replaceChildren(b,q.hint+' Em chọn lại, hoặc đóng lại để bay xem tiếp.');if(ctx.onMiss)ctx.onMiss();}
+  fb.hidden=false;
+}
+function closeQuiz(){$('#quiz').hidden=true;quizCtx=null;mode='fly';renderTasks();canvas.focus();}
+$('#qClose').onclick=()=>{const ctx=quizCtx&&quizCtx.ctx;closeQuiz();if(ctx&&ctx.onClose)ctx.onClose();};
+
+/* ================= buttons ================= */
+function placeAtZoneStart(){
+  const a=zoneA.clone(),b=zoneB.clone();const dir=b.clone().sub(a);const L=dir.length();dir.normalize();
+  ship.pos.copy(a).addScaledVector(dir,cur===0?0:Math.min(70,L*.3));ship.vel.set(0,0,0);
+  const d=b.clone().sub(ship.pos);ship.yaw=Math.atan2(-d.x,-d.z);ship.pitch=Math.asin(clamp(d.y/d.length(),-1,1));
+}
+$('#btnReset').onclick=()=>{if(mode==='fly')placeAtZoneStart();};
+$('#btnSkip').onclick=()=>{if(mode!=='fly')return;complete(stations[cur]);};
+$('#btnReplay').onclick=()=>{const st=stations[cur];if(mode==='fly'&&st.film&&st.filmDone)playFilm(st,true);};
+$('#btnAnswer').onclick=()=>{const st=stations[cur];if(mode==='fly'&&st.phase==='explore'&&st.quiz.length)startQuiz(st);};
+$('#btnHelp').onclick=()=>{if(mode!=='fly')return;mode='intro';$('#btnStart').textContent='Tiếp tục bay';$('#intro').hidden=false;};
+$('#btnStart').onclick=()=>{const first=stations[0].phase==='locked';$('#intro').hidden=true;mode='fly';canvas.focus();
+  if(first){setZone();unlock(stations[0]);renderHeader();}renderTasks();};
+function showEnd(){mode='end';$('#end').hidden=false;}
+$('#btnAgain').onclick=()=>location.reload();
+
+/* ================= loop ================= */
+let last=performance.now(),simT=0;
+function frame(nowMs){
+  const dt=Math.min(.05,(nowMs-last)/1000);last=nowMs;simT+=dt;tick(dt,simT);
+  renderer.render(scene,camera);requestAnimationFrame(frame);
+}
+function tick(dt,t){
+  stepTweens(dt);
+  const fwd=steer(dt);collide();if(mode==='fly')enforceZone(t);
+  if(film)updateFilm(dt);else follow(dt,fwd);
+  shipMesh.visible=!film;shipMesh.position.copy(ship.pos);shipMesh.rotation.set(ship.pitch,ship.yaw,ship.bank,'YXZ');
+  shipMesh.userData.eng.scale.setScalar(1.2+ship.vel.length()/MAXV*1.6);
+  stations.forEach(st=>{st.g.visible=st.i>=cur-1&&st.i<=cur;if(!st.g.visible)return;
+    st.spin.forEach(a=>a.userData.shells.forEach(s=>{if(s.spin)s.pivot.rotation.z+=s.spin*dt;}));
+    if(st.h&&st.h.update)st.h.update(dt,t);updatePoints(st,dt,t);});
+  const st=stations[cur];
+  if(st&&st.phase==='approach'&&mode==='fly'&&ship.pos.distanceTo(st.g.position)<st.filmDist)playFilm(st);
+  renderMarker();renderCallout();
+}
+renderHeader();
+requestAnimationFrame(frame);
+
+/* hook kiểm thử: nhảy trạm, bay tới điểm, chạy mô phỏng đồng bộ, xem trạng thái */
+window.__dbg={
+  go(i){$('#intro').hidden=true;if(mode==='intro')mode='fly';if(stations[0].phase==='locked'){setZone();unlock(stations[0]);}
+    while(cur<i){if(film){const pr=film.st.practice;endFilm();if(pr)continue;}complete(stations[cur]);}placeAtZoneStart();renderHeader();renderTasks();},
+  fly(x,y,z,yaw=0,pitch=0){ship.pos.set(x,y,z);ship.vel.set(0,0,0);ship.yaw=yaw;ship.pitch=pitch;camPos.copy(ship.pos).add(V3(0,2.2,7));},
+  toPoint(id){const p=stations[cur].points.find(p=>p.id===id);p.grp.getWorldPosition(tmpV);this.fly(tmpV.x,tmpV.y+1,tmpV.z+4,0,0);},
+  skipFilm(){if(film){skipToGuide();if(film)nextStep();}},
+  answer(){if(!film)return false;const s=film.steps[film.i];if(!s.ask)return false;const b=[...$('#filmOpts').children].find(x=>x.textContent===s.ask.opts[s.ask.ans]);b.click();return b.textContent;},
+  run(sec){const n=Math.ceil(sec*30);for(let i=0;i<n;i++){simT+=1/30;tick(1/30,simT);}renderer.render(scene,camera);return this.state();},
+  state(){const s=stations[cur];return {cur,mode,phase:s.phase,qi:s.qi,film:film?film.i:null,pts:s.points.map(p=>p.id+(p.seen?'✓':'')),pos:ship.pos.toArray().map(v=>+v.toFixed(1))};}
+};
+})();
+</script>

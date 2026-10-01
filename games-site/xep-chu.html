@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Xếp Chữ BK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<style id="bk-ipad">
+html{background:#5b3fd9;overscroll-behavior:none;touch-action:manipulation}
+body{overscroll-behavior:none}
+*{-webkit-touch-callout:none}
+img,svg,image{-webkit-user-drag:none}
+</style>
+<script>
+(function(){ // chặn cuộn/nảy/pinch/nhấn-giữ; chỉ cho cuộn trong khung cuộn được (giống sảnh BK Games)
+  function cuonDuoc(el){for(;el&&el.nodeType===1&&el!==document.body&&el!==document.documentElement;el=el.parentElement){var s=getComputedStyle(el);
+    if(/(auto|scroll)/.test(s.overflowY+' '+s.overflowX)&&(el.scrollHeight>el.clientHeight+1||el.scrollWidth>el.clientWidth+1))return true}return false}
+  document.addEventListener('touchmove',function(e){if(e.touches.length>1||!cuonDuoc(e.target))e.preventDefault()},{passive:false});
+  ['gesturestart','gesturechange','gestureend'].forEach(function(t){document.addEventListener(t,function(e){e.preventDefault()},{passive:false})});
+  document.addEventListener('dblclick',function(e){e.preventDefault()},{passive:false});
+  document.addEventListener('contextmenu',function(e){if(!(e.target.closest&&e.target.closest('input')))e.preventDefault()});
+})();
+</script>
+<style>
+  /* Style GAME tươi (HS-facing): nền tím-hồng, khối trắng bo lớn, nút nổi khối, chữ Fredoka. Không sci-fi. */
+  :root{--ink:#2b2466;--ink2:#6b64a8;--line:#e6e1ff;--gold:#ffc83d;--s:56px;
+    --g1:#3ee08a;--g2:#14a85c;--o1:#ffb43d;--o2:#f07a12;--p1:#b67bff;--p2:#7a3cf0;--b1:#5cc8ff;--b2:#2b86e8;--r1:#ff7a8a;--r2:#e0364f}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;height:100%;overflow:hidden}
+  body{font-family:Fredoka,"Segoe UI",system-ui,-apple-system,Arial,sans-serif;color:#fff;-webkit-user-select:none;user-select:none;
+    background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.18) 0 2px,transparent 3px) 0 0/34px 34px,
+      linear-gradient(165deg,#4f7bff 0%,#6a4dff 40%,#a24dff 70%,#ff6fb5 100%)}
+  button{font:inherit;cursor:pointer;touch-action:manipulation;border:0}
+  img{display:block}
+  .screen{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;padding:12px 14px calc(14px + env(safe-area-inset-bottom));gap:12px;overflow:auto}
+  .screen.show{display:flex}
+  .wrap{width:min(100%,760px);display:flex;flex-direction:column;gap:12px}
+
+  /* nút nổi khối */
+  .btn{border-radius:18px;padding:12px 18px;font-weight:700;font-size:18px;color:#fff;position:relative;
+    background:linear-gradient(180deg,var(--c1),var(--c2));box-shadow:0 5px 0 rgba(0,0,0,.22),inset 0 2px 0 rgba(255,255,255,.35);
+    text-shadow:0 1px 0 rgba(0,0,0,.2);transition:transform .06s}
+  .btn:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.22),inset 0 2px 0 rgba(255,255,255,.35)}
+  .btn:disabled{filter:grayscale(.75) brightness(.95);opacity:.55;transform:none;box-shadow:0 5px 0 rgba(0,0,0,.15)}
+  .b-g{--c1:var(--g1);--c2:var(--g2)} .b-o{--c1:var(--o1);--c2:var(--o2)} .b-p{--c1:var(--p1);--c2:var(--p2)}
+  .b-b{--c1:var(--b1);--c2:var(--b2)} .b-r{--c1:var(--r1);--c2:var(--r2)} .b-w{--c1:#ffffff;--c2:#ece8ff;color:var(--ink);text-shadow:none}
+  .round{width:44px;height:44px;padding:0;border-radius:14px;font-size:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+  /* thẻ kiểu 1: header màu + thân trắng */
+  .card{background:#fff;border-radius:22px;color:var(--ink);overflow:hidden;box-shadow:0 8px 0 rgba(40,20,120,.22),0 16px 30px rgba(40,20,120,.25)}
+  .card>.hd{display:flex;align-items:center;gap:10px;padding:10px 14px;color:#fff;font-weight:700;font-size:19px;background:linear-gradient(180deg,var(--c1),var(--c2));text-shadow:0 1px 0 rgba(0,0,0,.2)}
+  .card>.hd img{width:34px;height:34px}
+  .card>.bd{padding:12px 14px}
+
+  /* ===== sảnh ===== */
+  .topline{display:flex;justify-content:space-between;align-items:center}
+  a.back{color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.2)}
+  .hero{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:2px}
+  .hero img{width:74px;height:74px;filter:drop-shadow(0 6px 8px rgba(0,0,0,.25));animation:bob 2.6s ease-in-out infinite}
+  .hero h1{margin:0;font-size:clamp(40px,11vw,62px);line-height:1;font-weight:700;letter-spacing:1px;
+    color:#fff;-webkit-text-stroke:2px #3a1f9a;paint-order:stroke fill;text-shadow:0 5px 0 #3a1f9a}
+  .hero .tag{font-size:15px;opacity:.9;font-weight:500;margin-top:6px;text-align:center}
+  .ded{display:flex;justify-content:center;margin-top:8px}
+  .ded span{font-size:14px;font-weight:600;color:#5a3a00;background:linear-gradient(180deg,#ffe58a,#ffc83d);padding:5px 14px;border-radius:999px;
+    box-shadow:0 3px 0 #d99a16;transform:rotate(-2deg);animation:wig 3s ease-in-out infinite}
+  .ded b{font-weight:700}
+  @keyframes wig{50%{transform:rotate(2deg) scale(1.03)}}
+  @keyframes bob{50%{transform:translateY(-6px) rotate(-4deg)}}
+  .name{display:flex;gap:8px;align-items:center;background:#fff;border-radius:20px;padding:6px 6px 6px 14px;box-shadow:0 6px 0 rgba(40,20,120,.22)}
+  .name span{font-size:22px}
+  .name input{flex:1;min-width:0;font:600 20px Fredoka,Arial,sans-serif;color:var(--ink);border:0;outline:0;background:transparent;padding:8px 4px;-webkit-user-select:text;user-select:text}
+  .name input::placeholder{color:#b3acd9}
+  .name.need{animation:shake .45s;box-shadow:0 0 0 4px var(--r1),0 6px 0 rgba(40,20,120,.22)}
+  .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .chips button{padding:5px 12px;font-size:14px;font-weight:600;border-radius:999px;background:rgba(255,255,255,.22);color:#fff}
+  .chips button.on{background:#fff;color:var(--p2)}
+  .seg{display:flex;gap:4px;background:rgba(30,10,90,.28);border-radius:18px;padding:5px}
+  .seg button{flex:1;padding:10px 6px;border-radius:14px;font-weight:700;font-size:16px;color:rgba(255,255,255,.85);background:transparent}
+  .seg button.on{background:#fff;color:var(--p2);box-shadow:0 3px 0 rgba(0,0,0,.18)}
+  .seg.ink{background:#f1eeff}.seg.ink button{color:var(--ink2);font-size:14px;padding:7px 6px}.seg.ink button.on{background:linear-gradient(180deg,var(--p1),var(--p2));color:#fff}
+  .lvls{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .lv{cursor:pointer;display:flex;flex-direction:column;transition:transform .08s}
+  .lv:active{transform:scale(.96)}
+  .lv>.hd{flex-direction:column;gap:2px;padding:10px 6px 8px;font-size:22px}
+  .lv>.hd img{width:46px;height:46px;filter:drop-shadow(0 3px 3px rgba(0,0,0,.2))}
+  .lv>.bd{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;font-size:12.5px;line-height:1.45;color:var(--ink2);padding:8px 6px 10px}
+  .lv>.bd b{color:var(--ink)}
+  .lv>.bd>div{overflow-wrap:anywhere}
+  .lv .sn>div:last-child{margin-bottom:8px}
+  .lv .play{margin-top:auto;display:inline-block;font-weight:700;color:#fff;border-radius:999px;padding:3px 12px;background:linear-gradient(180deg,var(--c1),var(--c2))}
+  .lb .hd{justify-content:space-between}
+  .lbnote{font-size:12.5px;color:var(--ink2);margin:8px 0 4px}
+  table.bxh{width:100%;border-collapse:separate;border-spacing:0 5px;font-size:16px}
+  table.bxh td{padding:7px 8px;background:#f6f4ff}
+  table.bxh td:first-child{border-radius:12px 0 0 12px;width:40px;text-align:center;font-weight:700;color:var(--ink2)}
+  table.bxh td:last-child{border-radius:0 12px 12px 0;text-align:right;white-space:nowrap}
+  table.bxh td.nm{font-weight:600;overflow-wrap:anywhere}
+  table.bxh .pt{font-weight:700;color:var(--p2)}
+  table.bxh .sub{display:block;font-size:12px;color:var(--ink2);font-weight:500}
+  table.bxh tr.me td{background:#fff3c4}
+  table.bxh tr.m1 td{background:#fff0b3} table.bxh tr.m1 td:first-child,table.bxh tr.m2 td:first-child,table.bxh tr.m3 td:first-child{font-size:22px}
+  table.bxh tr.gap td{background:none;text-align:center!important;color:var(--ink2);padding:0}
+  .empty{text-align:center;color:var(--ink2);padding:14px 0}
+  .rules{font-size:14.5px;line-height:1.55;color:var(--ink)}
+  .rules b{color:var(--p2)}
+
+  /* ===== chơi ===== */
+  #play{gap:8px}
+  #hud{width:min(100%,900px);display:flex;align-items:center;gap:6px}
+  .pill{background:rgba(255,255,255,.95);color:var(--ink);border-radius:14px;padding:0 10px;height:44px;display:flex;align-items:center;gap:5px;font-weight:700;font-size:17px;white-space:nowrap;box-shadow:0 4px 0 rgba(40,20,120,.25)}
+  .pill img{width:24px;height:24px}
+  #lvName{flex:1;min-width:0;flex-direction:column;align-items:flex-start;justify-content:center;gap:0;line-height:1.1}
+  #lvName small{font-size:11.5px;color:var(--ink2);font-weight:600;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+  #clock{font-variant-numeric:tabular-nums;min-width:66px;justify-content:center}
+  #prog{width:min(100%,900px);display:flex;gap:4px}
+  #prog i{flex:1;height:8px;border-radius:99px;background:rgba(255,255,255,.28)}
+  #prog i.ok{background:var(--g1)} #prog i.bad{background:var(--r1)} #prog i.cur{background:#fff}
+  #meta{width:min(100%,900px);display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px}
+  .tagc{background:rgba(30,10,90,.3);border-radius:999px;padding:4px 12px;font-weight:600}
+  .tagc.first{background:var(--gold);color:#5a3a00}
+  .tagc.prac{background:rgba(255,255,255,.2)}
+  #checks{margin-left:auto;display:flex;align-items:center;gap:3px;font-weight:600}
+  #checks img{width:22px;height:22px;transition:.2s}
+  #checks img.used{filter:grayscale(1) brightness(1.6);opacity:.35;transform:scale(.8)}
+
+  #board{flex:1 0 auto;width:min(100%,900px);display:flex;flex-direction:column;align-items:center;gap:18px}
+  #board::before,#board::after{content:"";margin:auto}
+  #board>*{flex-shrink:0}
+  #slots{display:flex;flex-wrap:wrap;justify-content:center;column-gap:calc(var(--s)*.5);row-gap:24px}
+  .w{display:flex;gap:6px}
+  .slot,.tile,.hole{width:var(--s);height:var(--s);border-radius:calc(var(--s)*.24);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:calc(var(--s)*.56);line-height:1;position:relative;touch-action:none}
+  .slot{background:rgba(30,10,90,.28);box-shadow:inset 0 3px 0 rgba(0,0,0,.18);border:2px dashed rgba(255,255,255,.45)}
+  .tile,.slot.full{background:linear-gradient(180deg,#fffdf6,#ffe9b8);color:var(--ink);border:0;box-shadow:0 5px 0 #e0a431,0 7px 10px rgba(40,20,120,.25)}
+  .tile{cursor:grab}
+  .slot.sel{box-shadow:0 0 0 4px #fff,0 0 18px 6px rgba(255,220,90,.9)}
+  .slot.full.sel{box-shadow:0 5px 0 #e0a431,0 0 0 4px #fff,0 0 18px 6px rgba(255,220,90,.9)}
+  .slot.lock{background:linear-gradient(180deg,#7ef0ad,#24c46f);color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.2);box-shadow:0 5px 0 #138a4c;border:0}
+  .slot.miss{background:linear-gradient(180deg,#ff9aa6,#ec4a60);color:#fff;box-shadow:0 5px 0 #a8203a;border:0}
+  .slot.over{background:rgba(255,255,255,.4);border-style:solid}
+  .slot .ex{position:absolute;top:calc(100% + 7px);left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;color:#fff;background:var(--r2);border-radius:6px;padding:1px 5px;white-space:nowrap;letter-spacing:1px}
+  .slot.fl-ok{animation:pop .45s} .slot.fl-bad{animation:shake .45s}
+  @keyframes pop{40%{transform:scale(1.2) rotate(-4deg)}}
+  @keyframes shake{20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
+  #tray{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:14px 12px 16px;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.35);border-radius:24px;width:100%}
+  .tile.lift{opacity:.25}
+  .hole{background:rgba(30,10,90,.18);border-radius:calc(var(--s)*.24)}
+  .ghost{position:fixed;z-index:50;pointer-events:none;transform:scale(1.15) rotate(-5deg);box-shadow:0 14px 26px rgba(20,0,80,.45)}
+  #acts{display:flex;gap:8px;width:100%;justify-content:center}
+  #acts .btn{font-size:17px;padding:13px 14px;white-space:nowrap}
+  #bDone.warn{--c1:var(--r1);--c2:var(--r2)}
+
+  #res{display:none;width:min(100%,520px)}
+  #res.show{display:block}
+  #res .hd{justify-content:center;font-size:24px}
+  #res .bd{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center}
+  #resSub{color:var(--ink2);font-size:15px;line-height:1.5}
+  #resSub b{color:var(--ink)}
+  #resRank{font-weight:700;color:var(--p2)}
+  #res .row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+
+  /* ===== tổng kết ===== */
+  #end .card .hd{justify-content:center;font-size:22px}
+  .bigscore{text-align:center;font-size:64px;font-weight:700;color:var(--p2);line-height:1.05}
+  .endinfo{text-align:center;color:var(--ink2);font-size:15px}
+  .msg{text-align:center;font-weight:700;color:#c07800;font-size:17px}
+  table.log{width:100%;border-collapse:collapse;font-size:14.5px}
+  table.log td{padding:6px 4px;border-bottom:1px solid var(--line)}
+  table.log td:nth-child(n+2){text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink2)}
+  table.log .x{color:var(--r2);font-weight:700} table.log .v{color:var(--g2);font-weight:700}
+  .row2{display:flex;gap:10px}.row2 .btn{flex:1}
+
+  /* ===== hộp bảng xếp hạng ===== */
+  #modal{position:fixed;inset:0;z-index:40;background:rgba(25,5,70,.55);display:none;align-items:center;justify-content:center;padding:16px}
+  #modal.show{display:flex}
+  #modal .card{width:min(100%,520px);max-height:calc(100% - 20px);display:flex;flex-direction:column}
+  #modal .bd{overflow:auto}
+  #modal .hd{justify-content:space-between}
+  #modal .x{background:rgba(255,255,255,.25);color:#fff;width:34px;height:34px;border-radius:10px;font-size:18px}
+</style>
+</head>
+<body>
+
+<!-- ===== sảnh ===== -->
+<div class="screen show" id="home">
+  <div class="wrap">
+    <div class="topline"><a class="back" href="index.html">← BK Games</a></div>
+    <div>
+      <div class="hero"><img src="assets/scene/obj/owl.webp" alt=""><h1>Xếp Chữ</h1></div>
+      <div class="hero tag">Sắp lại các chữ cái bị xáo thành cụm từ đúng!</div>
+      <div class="ded"><span>✨ This game was made for <b>Trần Bảo Lộc</b> 💛</span></div>
+    </div>
+    <div class="name" id="nameBox"><span>👤</span><input id="ten" maxlength="20" placeholder="Nhập tên của bạn…" autocomplete="off"></div>
+    <div class="chips" id="tenGan"></div>
+    <div class="seg" id="bos"></div>
+    <div class="lvls" id="lvls"></div>
+    <div class="card lb" style="--c1:var(--p1);--c2:var(--p2)">
+      <div class="hd"><span style="display:flex;align-items:center;gap:8px"><img src="assets/scene/obj/crown.webp" alt="">Bảng xếp hạng</span></div>
+      <div class="bd">
+        <div class="seg ink" id="lbLv"></div>
+        <div class="lbnote" id="lbNote"></div>
+        <div id="lbTbl"></div>
+      </div>
+    </div>
+    <div class="card" style="--c1:var(--b1);--c2:var(--b2)">
+      <div class="hd"><img src="assets/scene/obj/light-bulb.webp" alt="">Luật chơi</div>
+      <div class="bd rules">
+        • Kéo chữ vào ô, hoặc chạm chữ để đặt vào ô trống. Kéo ô sang ô để đổi chỗ, kéo ra ngoài để trả về khay.<br>
+        • <b>Check</b> kiểm tra <u>1 ô đang chọn</u> — đúng hay sai đều mất 1 lượt. Đúng: ô khoá xanh. Sai: chữ về khay, ô ghi nhớ chữ đã loại.<br>
+        • <b>Hoàn thành</b> khi đã điền đủ ô — chỉ nộp <u>1 lần</u>, sai là thua câu.<br>
+        • Điểm câu đúng = số chữ × 10 + mỗi lượt Check còn dư × 25.<br>
+        • <b>Bảng xếp hạng chỉ tính LẦN ĐẦU</b> bạn chơi mỗi câu / mỗi màn — chơi lại là luyện tập.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== chơi ===== -->
+<div class="screen" id="play">
+  <div id="hud">
+    <button class="btn b-w round" id="bQuit">✕</button>
+    <div class="pill" id="lvName"></div>
+    <div class="pill"><img src="assets/scene/obj/star.webp" alt=""><span id="score">0</span></div>
+    <div class="pill" id="clock">0:00</div>
+    <button class="btn b-o round" id="bLb" title="Bảng xếp hạng"><img src="assets/scene/obj/crown.webp" alt="" style="width:28px;height:28px"></button>
+  </div>
+  <div id="prog"></div>
+  <div id="meta">
+    <span class="tagc" id="cat"></span>
+    <span class="tagc" id="firstTag"></span>
+    <span id="checks"></span>
+  </div>
+  <div id="board">
+    <div id="slots"></div>
+    <div id="tray"></div>
+    <div id="acts">
+      <button class="btn b-p round" id="bShuffle" title="Xáo khay" style="width:52px;height:50px">🔀</button>
+      <button class="btn b-b" id="bCheck">🔍 Check</button>
+      <button class="btn b-g" id="bDone">✔ Hoàn thành</button>
+    </div>
+    <div id="res" class="card">
+      <div class="hd" id="resHd"></div>
+      <div class="bd">
+        <div id="resSub"></div>
+        <div id="resRank"></div>
+        <div class="row">
+          <button class="btn b-w" id="bResLb">👑 Xếp hạng câu</button>
+          <button class="btn b-o" id="bNext">Câu tiếp →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== tổng kết ===== -->
+<div class="screen" id="end">
+  <div class="wrap">
+    <div class="card" style="--c1:var(--o1);--c2:var(--o2)">
+      <div class="hd"><img src="assets/scene/obj/party-popper.webp" alt="">Kết quả</div>
+      <div class="bd" style="display:flex;flex-direction:column;gap:8px">
+        <div class="endinfo" id="endLv"></div>
+        <div class="bigscore" id="endScore"></div>
+        <div id="endMsg"></div>
+        <table class="log" id="endTbl"></table>
+      </div>
+    </div>
+    <div class="card" style="--c1:var(--p1);--c2:var(--p2)">
+      <div class="hd"><img src="assets/scene/obj/crown.webp" alt="">Bảng xếp hạng màn</div>
+      <div class="bd"><div class="lbnote" id="endLbNote" style="margin-top:0"></div><div id="endLb"></div></div>
+    </div>
+    <div class="row2"><button class="btn b-w" id="bHome">← Chọn mức</button><button class="btn b-o" id="bAgain">Chơi lại</button></div>
+  </div>
+</div>
+
+<!-- ===== hộp bảng xếp hạng (trong lúc chơi) ===== -->
+<div id="modal">
+  <div class="card" style="--c1:var(--p1);--c2:var(--p2)">
+    <div class="hd"><span style="display:flex;align-items:center;gap:8px"><img src="assets/scene/obj/crown.webp" alt="">Bảng xếp hạng</span><button class="x" id="mClose">✕</button></div>
+    <div class="bd">
+      <div class="seg ink" id="mTabs"><button data-t="cau">Câu này</button><button data-t="man">Cả màn</button></div>
+      <div class="lbnote" id="mNote"></div>
+      <div id="mTbl"></div>
+    </div>
+  </div>
+</div>
+
+<script src="lib/supabase.js"></script>
+<script>
+// ================= BỘ CÂU =================
+// Mỗi mức đúng 10 câu (1 màn = cả 10, thứ tự xáo) ⇒ bảng xếp hạng màn so sánh được.
+// c = chủ đề (hiện trên đầu câu — tắt bằng HIEN_CHU_DE=false nếu muốn khó hơn).
+const HIEN_CHU_DE=true;
+const LVSTYLE={de:{img:'seedling',c:'g'},vua:{img:'rocket',c:'o'},kho:{img:'gem-stone',c:'p'}};
+const LV_VN={
+  de:{n:'Dễ',d:'1–2 từ · 5–7 chữ',q:[
+    {c:'Địa danh',a:'HÀ NỘI'},{c:'Địa danh',a:'ĐÀ NẴNG'},{c:'Con vật',a:'CON MÈO'},{c:'Con vật',a:'CÁ HEO'},
+    {c:'Đồ dùng học tập',a:'BÚT CHÌ'},{c:'Đồ dùng học tập',a:'THƯỚC KẺ'},{c:'Thiên nhiên',a:'MẶT TRỜI'},{c:'Loài hoa',a:'HOA SEN'},
+    {c:'Thể thao',a:'BÓNG ĐÁ'},{c:'Món ăn',a:'PHỞ BÒ'}]},
+  vua:{n:'Vừa',d:'2–3 từ · 7–10 chữ',q:[
+    {c:'Lễ hội',a:'TRUNG THU'},{c:'Lễ hội',a:'ĐÈN ÔNG SAO'},{c:'Món ăn',a:'BÁNH CHƯNG'},{c:'Địa danh',a:'VỊNH HẠ LONG'},
+    {c:'Địa danh',a:'PHÚ QUỐC'},{c:'Địa danh',a:'SÔNG HỒNG'},{c:'Trường học',a:'THƯ VIỆN'},{c:'Công nghệ',a:'MÁY TÍNH'},
+    {c:'Phương tiện',a:'XE ĐẠP ĐIỆN'},{c:'Thiên nhiên',a:'CẦU VỒNG'}]},
+  kho:{n:'Khó',d:'thành ngữ · 12–20 chữ',q:[
+    {c:'Thành ngữ',a:'NƯỚC CHẢY ĐÁ MÒN'},{c:'Thành ngữ',a:'UỐNG NƯỚC NHỚ NGUỒN'},{c:'Thành ngữ',a:'GẦN MỰC THÌ ĐEN'},
+    {c:'Thành ngữ',a:'LÁ LÀNH ĐÙM LÁ RÁCH'},{c:'Thành ngữ',a:'CHÍN BỎ LÀM MƯỜI'},{c:'Thành ngữ',a:'TỐT GỖ HƠN TỐT NƯỚC SƠN'},
+    {c:'Thành ngữ',a:'ĂN QUẢ NHỚ KẺ TRỒNG CÂY'},{c:'Thành ngữ',a:'MỘT CÂY LÀM CHẲNG NÊN NON'},{c:'Thành ngữ',a:'CÓ CHÍ THÌ NÊN'},
+    {c:'Thành ngữ',a:'THẤT BẠI LÀ MẸ THÀNH CÔNG'}]},
+};
+// Không dấu = cùng bộ câu tiếng Việt, bỏ hết dấu (Đ→D). Ít chữ phân biệt hơn ⇒ khó hơn bản có dấu.
+const boDau=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/Đ/g,'D').replace(/đ/g,'d');
+const LV_KD=Object.fromEntries(Object.entries(LV_VN).map(([k,L])=>[k,{...L,q:L.q.map(x=>({...x,a:boDau(x.a)}))}]));
+// English: chủ đề vẫn ghi tiếng Việt. Từ dài nhất ≤ 8 chữ để ô chữ không quá nhỏ trên điện thoại.
+const LV_EN={
+  de:{n:'Dễ',d:'1 từ · 5–6 chữ',q:[
+    {c:'Hoa quả',a:'APPLE'},{c:'Hoa quả',a:'BANANA'},{c:'Hoa quả',a:'ORANGE'},{c:'Con vật',a:'TIGER'},{c:'Con vật',a:'RABBIT'},
+    {c:'Nhà cửa',a:'HOUSE'},{c:'Nhà cửa',a:'GARDEN'},{c:'Thiên nhiên',a:'WATER'},{c:'Trường học',a:'PENCIL'},{c:'Trường học',a:'SCHOOL'}]},
+  vua:{n:'Vừa',d:'1–2 từ · 7–9 chữ',q:[
+    {c:'Thiên nhiên',a:'RAINBOW'},{c:'Thiên nhiên',a:'MOUNTAIN'},{c:'Trường học',a:'HOMEWORK'},{c:'Món ăn',a:'ICE CREAM'},
+    {c:'Món ăn',a:'POPCORN'},{c:'Con vật',a:'ELEPHANT'},{c:'Con vật',a:'DINOSAUR'},{c:'Thể thao',a:'FOOTBALL'},
+    {c:'Đồ chơi',a:'TEDDY BEAR'},{c:'Sự kiện',a:'BIRTHDAY'}]},
+  kho:{n:'Khó',d:'thành ngữ · 11–20 chữ',q:[
+    {c:'Thành ngữ',a:'PRACTICE MAKES PERFECT'},{c:'Thành ngữ',a:'BETTER LATE THAN NEVER'},{c:'Thành ngữ',a:'LOOK BEFORE YOU LEAP'},
+    {c:'Thành ngữ',a:'ONCE IN A BLUE MOON'},{c:'Thành ngữ',a:'NO PAIN NO GAIN'},{c:'Thành ngữ',a:'SLOW AND STEADY'},
+    {c:'Thành ngữ',a:'HOME SWEET HOME'},{c:'Thành ngữ',a:'TIME IS MONEY'},{c:'Thành ngữ',a:'PIECE OF CAKE'},{c:'Thành ngữ',a:'NEVER GIVE UP'}]},
+};
+const BO={vn:{n:'Tiếng Việt',lv:LV_VN},kd:{n:'Không dấu',lv:LV_KD},en:{n:'English',lv:LV_EN}};
+const PT_CHU=10,PT_CHECK=25,TOP=10;
+const soCheck=n=>Math.ceil(n/3);
+
+// ================= BẢNG XẾP HẠNG CHUNG (Supabase — mọi máy) =================
+// Luật (Thùy 28/09): mỗi người góp mặt 1 lần = LẦN ĐẦU TIÊN chơi (chơi lại đã biết đáp án ⇒ chỉ là luyện tập).
+// DB tự giữ luật "lần đầu" + xếp hạng (mig 202609281307_xep_chu_bxh_chung): máy chỉ gửi kết quả từng câu và hỏi bảng.
+//  fn_xep_chu_ghi   — ghi 1 câu vừa xong + tổng màn của lượt này (DB bỏ qua nếu không phải lần đầu / không phải lượt đầu).
+//  fn_xep_chu_da_choi — lúc vào màn: màn này + các câu này người này đã có lần đầu chưa (chỉ để hiện nhãn).
+//  fn_xep_chu_bxh   — top 10 câu/màn + dòng của mình · fn_xep_chu_sanh — người đứng đầu + phá đảo nhanh nhất từng mức.
+// Trên máy (localStorage) chỉ còn: tên gần đây + bộ đang chọn.
+const SB_URL='https://osrvycilwshkzhljuxef.supabase.co',SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcnZ5Y2lsd3Noa3pobGp1eGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTYxMTksImV4cCI6MjA5NjIzMjExOX0.C6Ty5eF_Z-6SshfW9qyiXIvuZIExKXjeZWiP93RYxA4';
+let SB=null;try{SB=supabase.createClient(SB_URL,SB_KEY,{auth:{persistSession:false}})}catch(e){}
+async function rpc(fn,args){if(!SB)throw new Error('thiếu thư viện');const {data,error}=await SB.rpc(fn,args);if(error)throw error;return data}
+const RK='bk-xep-chu-v4';
+let REC={names:[],bo:'vn',ten:''};
+try{Object.assign(REC,JSON.parse(localStorage.getItem(RK)||'{}'))}catch(e){}
+function saveRec(){try{localStorage.setItem(RK,JSON.stringify({names:REC.names,bo:REC.bo,ten:REC.ten}))}catch(e){}}
+const tenKey=t=>t.toLocaleLowerCase('vi');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const uuid=()=>crypto.randomUUID?crypto.randomUUID():'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0;return(c==='x'?r:(r&3|8)).toString(16)});
+const LOI='<div class="empty">⚠ Không kết nối được bảng xếp hạng — kiểm tra mạng.</div>',TAI='<div class="empty">Đang tải…</div>';
+function bxhHtml(B,kieu){ // B = kết quả fn_xep_chu_bxh
+  if(!B||!B.top.length)return `<div class="empty">Chưa có ai ${kieu==='cau'?'giải đúng câu này':'chơi mức này'} — bạn là người đầu tiên? 🚀</div>`;
+  const me=B.toi,la=x=>me&&x.hang===me.hang;
+  const row=x=>`<tr class="${x.hang<=3?'m'+x.hang:''} ${la(x)?'me':''}"><td>${x.hang<=3?['🥇','🥈','🥉'][x.hang-1]:x.hang}</td><td class="nm">${esc(x.ten)}</td>
+    <td><span class="pt">${x.diem} điểm</span><span class="sub">${kieu==='man'?(x.giai+'/10 câu · '+fmt(x.ms)):fmt1(x.ms)}</span></td></tr>`;
+  let h=B.top.map(row).join('');
+  if(me&&me.hang>B.top.length)h+=`<tr class="gap"><td colspan="3">⋯</td></tr>`+row(me);
+  return `<table class="bxh">${h}</table><div class="lbnote" style="text-align:right">${B.tong} người trên bảng</div>`;
+}
+
+// ================= tiện ích =================
+const $=id=>document.getElementById(id);
+const fmt=ms=>{const s=Math.floor(ms/1000);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
+const fmt1=ms=>(ms/1000).toFixed(1)+'s';
+const IMG=n=>`assets/scene/obj/${n}.webp`;
+function shuf(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+let AC;
+function beep(f,d,v,t){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.type=t||'triangle';o.frequency.value=f;g.gain.value=v||.07;o.connect(g);g.connect(AC.destination);o.start();g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+(d||.12));o.stop(AC.currentTime+(d||.12))}catch(e){}}
+function show(id){['home','play','end'].forEach(s=>$(s).classList.toggle('show',s===id));$(id).scrollTop=0}
+const boHT=()=>REC.bo in BO?REC.bo:'vn';
+
+// ================= sảnh =================
+let lbK='de';
+const tenNhap=()=>$('ten').value.replace(/\s+/g,' ').trim();
+function renderHome(){
+  const bo=boHT(),LV=BO[bo].lv,ten=tenNhap()||REC.ten;
+  $('ten').value=ten;
+  $('tenGan').innerHTML=REC.names.map(n=>`<button class="${tenKey(n)===tenKey(ten)?'on':''}">${esc(n)}</button>`).join('');
+  $('tenGan').querySelectorAll('button').forEach((b,i)=>b.onclick=()=>{$('ten').value=REC.names[i];$('nameBox').classList.remove('need');renderHome()});
+  $('bos').innerHTML=Object.entries(BO).map(([k,B])=>`<button data-k="${k}" class="${k===bo?'on':''}">${B.n}</button>`).join('');
+  $('bos').querySelectorAll('button').forEach(b=>b.onclick=()=>{REC.bo=b.dataset.k;saveRec();renderHome()});
+  const the=(k,S)=>{const top=S&&S.top1,c=S&&S.pha_dao,cho=S===undefined?'…':'—';
+    return `<div>🥇 ${top?`<b>${esc(top.ten)}</b> ${top.diem}`:cho}</div><div>⚡ ${c?`<b>${fmt(c.ms)}</b> ${esc(c.ten)}`:cho}</div>`};
+  $('lvls').innerHTML=Object.entries(LV).map(([k,L])=>{const st=LVSTYLE[k];
+    return `<div class="card lv b-${st.c}" data-k="${k}"><div class="hd"><img src="${IMG(st.img)}" alt="">${L.n}</div>
+      <div class="bd"><div>${L.d}</div><div class="sn" style="display:contents">${the(k)}</div><span class="play">Chơi ▶</span></div></div>`}).join('');
+  $('lvls').querySelectorAll('.lv').forEach(el=>el.onclick=()=>startMan(el.dataset.k));
+  $('lbLv').innerHTML=Object.entries(LV).map(([k,L])=>`<button data-k="${k}" class="${k===lbK?'on':''}">${L.n}</button>`).join('');
+  $('lbLv').querySelectorAll('button').forEach(b=>b.onclick=()=>{lbK=b.dataset.k;renderHome()});
+  $('lbNote').textContent=BO[bo].n+' · mức '+LV[lbK].n+' · top 10 · chung mọi máy · chỉ tính lần chơi đầu tiên';
+  $('lbTbl').innerHTML=TAI;
+  show('home');
+  // dữ liệu chung: tải nền, bỏ kết quả cũ nếu người dùng đã đổi bộ/mức trong lúc chờ
+  const tok=++homeTok;
+  rpc('fn_xep_chu_sanh',{p_bo:bo}).then(S=>{if(tok!==homeTok)return;
+    $('lvls').querySelectorAll('.lv').forEach(el=>el.querySelector('.sn').innerHTML=the(el.dataset.k,S[el.dataset.k]||null))}).catch(()=>{});
+  rpc('fn_xep_chu_bxh',{p_loai:'man',p_bo:bo,p_ma:lbK,p_ten:ten,p_top:TOP}).then(B=>{if(tok===homeTok)$('lbTbl').innerHTML=bxhHtml(B,'man')})
+    .catch(()=>{if(tok===homeTok)$('lbTbl').innerHTML=LOI});
+}
+let homeTok=0;
+$('ten').addEventListener('input',()=>$('nameBox').classList.remove('need'));
+$('ten').addEventListener('keydown',e=>{if(e.key==='Enter')$('ten').blur()});
+
+// ================= màn & câu =================
+let G=null,Q=null,tick=null;
+let dangVao=false;
+async function startMan(k){
+  const ten=tenNhap();
+  if(!ten){const el=$('nameBox');el.classList.remove('need');void el.offsetWidth;el.classList.add('need');$('ten').focus();el.scrollIntoView({block:'center'});return}
+  if(dangVao)return;dangVao=true;
+  const bo=boHT(),L=BO[bo].lv[k];
+  REC.ten=ten;REC.names=[ten,...REC.names.filter(n=>tenKey(n)!==tenKey(ten))].slice(0,8);saveRec();
+  // hỏi DB: màn này + các câu này người này đã có lần đầu chưa (chỉ để hiện nhãn — DB tự giữ luật khi ghi)
+  let dc=null;
+  try{dc=await rpc('fn_xep_chu_da_choi',{p_bo:bo,p_muc:k,p_ten:ten,p_caus:L.q.map(x=>x.a.normalize('NFC'))})}catch(e){}
+  dangVao=false;
+  G={bo,k,ten,luot:uuid(),online:!!dc,first:dc?!dc.man_luot:null,daChoi:new Set(dc?dc.cau_da_choi:[]),
+     list:shuf(L.q),i:0,diem:0,ms:0,giai:0,log:[],ghi:Promise.resolve(),loiGhi:0};
+  $('lvName').innerHTML=`<small>${BO[bo].n}</small>${L.n}`;
+  show('play');startCau();
+}
+function tron(ans){ // xáo: không trùng đáp án, ít chữ đứng yên đúng chỗ
+  const A=Array.from(ans.replace(/ /g,'')),idx=A.map((_,i)=>i),lim=Math.floor(A.length/4);
+  let best=null,bf=1e9;
+  for(let t=0;t<400;t++){const o=shuf(idx),s=o.map(i=>A[i]).join('');if(s===A.join(''))continue;
+    const f=o.reduce((n,i,p)=>n+(A[i]===A[p]?1:0),0);if(f<bf){bf=f;best=o}if(f<=lim)break}
+  return best||idx;
+}
+function startCau(){
+  const item=G.list[G.i],ans=item.a.normalize('NFC');
+  const words=ans.split(' ').map(w=>Array.from(w));
+  const letters=words.flat();
+  Q={item,ans,words,n:letters.length,checks:soCheck(letters.length),used:0,first:G.online?!G.daChoi.has(ans):null,
+     slots:letters.map(ch=>({ans:ch,t:null,lock:false,ex:[]})),
+     tiles:letters.map(ch=>({ch,at:-1})),tray:tron(ans),sel:null,over:false,t0:performance.now(),ms:0,flash:null};
+  $('prog').innerHTML=G.list.map((_,i)=>`<i class="${i<G.log.length?(G.log[i].dung?'ok':'bad'):i===G.i?'cur':''}"></i>`).join('');
+  $('cat').textContent=HIEN_CHU_DE?item.c:'';$('cat').style.display=HIEN_CHU_DE?'':'none';
+  $('firstTag').className='tagc '+(Q.first===null?'':Q.first?'first':'prac');
+  $('firstTag').textContent=Q.first===null?'⚠ Mất mạng · chưa rõ lần đầu':Q.first?'⭐ Lần đầu · tính BXH':'Luyện tập';
+  $('res').classList.remove('show');['tray','acts'].forEach(id=>$(id).style.display='');
+  size();render();
+  clearInterval(tick);tick=setInterval(()=>{if(!Q.over)$('clock').textContent=fmt(G.ms+performance.now()-Q.t0)},250);
+}
+function size(){ // cỡ ô lớn nhất mà cả hàng ô + khay vừa 1 màn (không cuộn), từ không bị bẻ giữa chừng
+  if(!Q)return;const W=Math.min(window.innerWidth,900)-32,H=window.innerHeight-300;let s=66;
+  for(;s>30;s-=2){
+    const gw=s*.5,wl=Q.words.map(w=>w.length*(s+6)-6);if(Math.max(...wl)>W)continue;
+    let rows=1,x=0;wl.forEach(ww=>{if(!x)x=ww;else if(x+gw+ww<=W)x+=gw+ww;else{rows++;x=ww}});
+    const per=Math.max(1,Math.floor((W-20)/(s+8))),tr=Math.ceil(Q.n/per);
+    if(rows*(s+24)+tr*(s+13)+34<=H)break;
+  }
+  document.documentElement.style.setProperty('--s',s+'px');
+}
+window.addEventListener('resize',()=>{size()});
+
+// ---- di chuyển chữ ----
+function put(tid,j){
+  const s=Q.slots[j],from=Q.tiles[tid].at;if(from===j||s.lock)return;
+  const cur=s.t;
+  if(cur!=null){if(from>=0){Q.slots[from].t=cur;Q.tiles[cur].at=from}else Q.tiles[cur].at=-1}
+  else if(from>=0)Q.slots[from].t=null;
+  s.t=tid;Q.tiles[tid].at=j;beep(520,.05,.05);
+}
+function back(tid){const f=Q.tiles[tid].at;if(f>=0&&!Q.slots[f].lock){Q.slots[f].t=null;Q.tiles[tid].at=-1;beep(330,.05,.04)}}
+function firstEmpty(){const i=Q.slots.findIndex(s=>s.t==null);return i<0?null:i}
+
+// ---- vẽ ----
+function render(){
+  let k=0;
+  $('slots').innerHTML=Q.words.map(w=>'<div class="w">'+w.map(()=>{const j=k++,s=Q.slots[j];
+    const cls=['slot'];if(s.t!=null)cls.push('full');if(s.lock)cls.push('lock');if(Q.sel===j&&!Q.over)cls.push('sel');if(s.miss)cls.push('miss');
+    const txt=Q.over&&s.miss?s.ans:(s.t!=null?Q.tiles[s.t].ch:'');
+    const ex=s.ex.length&&!s.lock&&!Q.over?`<span class="ex">≠${s.ex.join(' ')}</span>`:'';
+    return `<div class="${cls.join(' ')}" data-j="${j}">${txt}${ex}</div>`}).join('')+'</div>').join('');
+  $('tray').innerHTML=Q.tray.map(tid=>Q.tiles[tid].at===-1?`<div class="tile" data-t="${tid}">${Q.tiles[tid].ch}</div>`:'<div class="hole"></div>').join('');
+  $('checks').innerHTML=Array.from({length:Q.checks},(_,i)=>`<img src="${IMG('light-bulb')}" class="${i<Q.used?'used':''}" alt="">`).join('');
+  $('score').textContent=G.diem;
+  const s=Q.sel!=null?Q.slots[Q.sel]:null;
+  $('bCheck').disabled=Q.over||!s||s.t==null||s.lock||Q.used>=Q.checks;
+  $('bCheck').textContent='🔍 Check ('+(Q.checks-Q.used)+')';
+  $('bDone').disabled=Q.over||Q.slots.some(x=>x.t==null);
+  if(Q.flash){const el=$('slots').querySelector(`[data-j="${Q.flash.j}"]`);if(el)el.classList.add(Q.flash.c);Q.flash=null}
+  if(!Q.over){
+    $('slots').querySelectorAll('.slot').forEach(el=>el.addEventListener('pointerdown',e=>{const j=+el.dataset.j,s=Q.slots[j];down(e,el,s.t!=null&&!s.lock?s.t:null,j)}));
+    $('tray').querySelectorAll('.tile').forEach(el=>el.addEventListener('pointerdown',e=>down(e,el,+el.dataset.t,-1)));
+  }
+}
+
+// ---- chạm / kéo thả (Pointer Events: chuột + cảm ứng chung 1 đường) ----
+let D=null;
+function down(e,el,tid,from){if(Q.over||D)return;e.preventDefault();D={el,tid,from,sx:e.clientX,sy:e.clientY,go:false,g:null,over:null,pid:e.pointerId}}
+function slotAt(x,y){const el=document.elementFromPoint(x,y);const s=el&&el.closest('.slot');return s?+s.dataset.j:null}
+window.addEventListener('pointermove',e=>{
+  if(!D||e.pointerId!==D.pid)return;
+  if(!D.go){if(D.tid==null||Math.hypot(e.clientX-D.sx,e.clientY-D.sy)<7)return;
+    D.go=true;const r=D.el.getBoundingClientRect();D.g=document.createElement('div');D.g.className='tile ghost';D.g.textContent=Q.tiles[D.tid].ch;
+    D.g.style.left=r.left+'px';D.g.style.top=r.top+'px';D.ox=D.sx-r.left;D.oy=D.sy-r.top;document.body.appendChild(D.g);D.el.classList.add('lift')}
+  D.g.style.left=(e.clientX-D.ox)+'px';D.g.style.top=(e.clientY-D.oy)+'px';
+  const j=slotAt(e.clientX,e.clientY);
+  if(D.over!==j){$('slots').querySelectorAll('.over').forEach(x=>x.classList.remove('over'));
+    if(j!=null&&!Q.slots[j].lock)$('slots').querySelector(`[data-j="${j}"]`).classList.add('over');D.over=j}
+});
+function up(e,cancel){
+  if(!D||e.pointerId!==D.pid)return;const d=D;D=null;
+  if(d.g)d.g.remove();
+  if(cancel){render();return}
+  if(!d.go){tap(d);render();return}
+  const j=slotAt(e.clientX,e.clientY);
+  if(j!=null){if(!Q.slots[j].lock){put(d.tid,j);Q.sel=j}}
+  else if(d.from>=0)back(d.tid);
+  render();
+}
+window.addEventListener('pointerup',e=>up(e,false));
+window.addEventListener('pointercancel',e=>up(e,true));
+function tap(d){
+  if(d.from===-1){ // chạm chữ ở khay ⇒ vào ô đang chọn nếu trống, không thì ô trống đầu tiên
+    const s=Q.sel!=null?Q.slots[Q.sel]:null,j=s&&s.t==null&&!s.lock?Q.sel:firstEmpty();
+    if(j!=null){put(d.tid,j);Q.sel=j}
+  }else{ // chạm ô: chọn ô; chạm lại ô đang chọn (có chữ) ⇒ trả chữ về khay
+    const s=Q.slots[d.from];if(s.lock)return;
+    if(Q.sel===d.from&&s.t!=null)back(s.t);else Q.sel=d.from;
+  }
+}
+
+// ---- Check 1 ô: đúng/sai đều tốn 1 lượt ----
+$('bCheck').onclick=()=>{
+  const j=Q.sel,s=j!=null?Q.slots[j]:null;if(Q.over||!s||s.t==null||s.lock||Q.used>=Q.checks)return;
+  Q.used++;const ch=Q.tiles[s.t].ch;
+  if(ch===s.ans){s.lock=true;Q.flash={j,c:'fl-ok'};beep(880,.12,.07);beep(1320,.15,.05)}
+  else{if(!s.ex.includes(ch))s.ex.push(ch);Q.tiles[s.t].at=-1;s.t=null;Q.flash={j,c:'fl-bad'};beep(160,.25,.07,'sawtooth')}
+  render();
+};
+
+// ---- Hoàn thành: 1 lần duy nhất, bấm 2 nhịp để khỏi lỡ tay ----
+let doneArm=null;
+function resetDone(){clearTimeout(doneArm);doneArm=null;$('bDone').classList.remove('warn');$('bDone').textContent='✔ Hoàn thành'}
+$('bDone').onclick=()=>{
+  if(Q.over||Q.slots.some(x=>x.t==null))return;
+  if(!doneArm){$('bDone').classList.add('warn');$('bDone').textContent='Chắc chưa? Bấm lại';doneArm=setTimeout(resetDone,2500);return}
+  resetDone();ketThucCau();
+};
+$('bShuffle').onclick=()=>{if(Q.over)return;
+  const ids=Q.tray.filter(t=>Q.tiles[t].at===-1),sh=shuf(ids);let k=0;Q.tray=Q.tray.map(t=>Q.tiles[t].at===-1?sh[k++]:t);render()};
+
+function ketThucCau(){
+  Q.over=true;Q.ms=performance.now()-Q.t0;G.ms+=Q.ms;clearInterval(tick);$('clock').textContent=fmt(G.ms);
+  const dung=Q.slots.every(s=>Q.tiles[s.t].ch===s.ans);
+  let diem=0;
+  if(dung){diem=Q.n*PT_CHU+(Q.checks-Q.used)*PT_CHECK;G.diem+=diem;G.giai++;
+    Q.slots.forEach(s=>s.lock=true);beep(660,.1,.07);setTimeout(()=>beep(880,.1,.07),110);setTimeout(()=>beep(1320,.2,.07),220);
+  }else{Q.slots.forEach(s=>{if(Q.tiles[s.t].ch!==s.ans)s.miss=true;else s.lock=true});beep(200,.4,.08,'sawtooth')}
+  G.log.push({a:Q.ans,dung,diem,ms:Q.ms});
+  // gửi DB (xếp hàng theo thứ tự, thử lại tối đa 3 lần). DB tự quyết có tính "lần đầu" hay không.
+  const cau=Q.ans,args={p_bo:G.bo,p_muc:G.k,p_cau:cau,p_ten:G.ten,p_luot:G.luot,p_diem:diem,p_ms:Math.round(Q.ms),p_dung:dung,
+    p_man_diem:G.diem,p_man_ms:Math.round(G.ms),p_man_giai:G.giai,p_man_xong:G.log.length};
+  const g=G,q=Q;
+  const lan=async()=>{for(let t=0;;t++){try{return await rpc('fn_xep_chu_ghi',args)}catch(e){if(t>=2)throw e;await new Promise(r=>setTimeout(r,800*(t+1)))}}};
+  const p=g.ghi.then(lan);g.ghi=p.catch(()=>{});
+  $('resRank').textContent='Đang lưu…';
+  p.then(async r=>{
+    g.daChoi.add(cau);if(r.man_tinh&&g.first===null)g.first=true;
+    if(q!==Q)return;
+    if(!r.cau_tinh){$('resRank').textContent='Luyện tập — không tính bảng xếp hạng.';return}
+    if(!dung){$('resRank').textContent='Lần đầu của bạn ở câu này đã được ghi.';return}
+    const B=await rpc('fn_xep_chu_bxh',{p_loai:'cau',p_bo:g.bo,p_ma:cau,p_ten:g.ten,p_top:TOP});
+    if(q===Q&&B.toi)$('resRank').textContent=`🏅 Hạng ${B.toi.hang} / ${B.tong} người giải đúng câu này`;
+  }).catch(()=>{g.loiGhi++;if(q===Q)$('resRank').textContent='⚠ Chưa lưu được kết quả (mất mạng).'});
+  $('prog').querySelectorAll('i')[G.i].className=dung?'ok':'bad';
+  Q.sel=null;render();
+  ['tray','acts'].forEach(id=>$(id).style.display='none');
+  $('res').style.setProperty('--c1',dung?'var(--g1)':'var(--r1)');$('res').style.setProperty('--c2',dung?'var(--g2)':'var(--r2)');
+  $('resHd').innerHTML=dung?`<img src="${IMG('party-popper')}" alt="">Chính xác! +${diem}`:'😵 Sai rồi — thua câu này';
+  $('resSub').innerHTML=dung
+    ?`${Q.n} chữ × ${PT_CHU} + ${Q.checks-Q.used} lượt Check dư × ${PT_CHECK} · ⏱ <b>${fmt1(Q.ms)}</b>`
+    :`Đáp án: <b>${Q.ans}</b>`;
+  $('bNext').textContent=G.i+1<G.list.length?'Câu tiếp →':'Xem kết quả →';
+  $('res').classList.add('show');
+}
+$('bNext').onclick=()=>{G.i++;if(G.i<G.list.length)startCau();else ketThucMan()};
+
+async function ketThucMan(){
+  clearInterval(tick);
+  const g=G,L=BO[g.bo].lv[g.k];
+  $('endLv').textContent=g.ten+' · '+BO[g.bo].n+' · '+L.n+' · '+g.giai+'/'+g.list.length+' câu đúng · ⏱ '+fmt(g.ms);
+  $('endScore').textContent=g.diem;
+  $('endMsg').innerHTML='';
+  $('endTbl').innerHTML=g.log.map(l=>`<tr><td><span class="${l.dung?'v':'x'}">${l.dung?'✓':'✗'}</span> ${l.a}</td><td>${fmt1(l.ms)}</td><td>${l.dung?'+'+l.diem:'0'}</td></tr>`).join('');
+  $('endLbNote').textContent=BO[g.bo].n+' · '+L.n+' · top 10 · chung mọi máy · chỉ tính lần đầu';
+  $('endLb').innerHTML=TAI;
+  show('end');
+  await g.ghi; // chờ các câu cuối lưu xong rồi mới hỏi bảng
+  try{
+    const B=await rpc('fn_xep_chu_bxh',{p_loai:'man',p_bo:g.bo,p_ma:g.k,p_ten:g.ten,p_top:TOP});
+    if(G!==g)return;
+    const h=B.toi&&B.toi.hang,msg=[];
+    if(g.loiGhi)msg.push(`⚠ ${g.loiGhi} câu chưa lưu được (mất mạng) — bảng có thể thiếu.`);
+    if(g.first){if(h)msg.push(h===1?'🥇 Bạn đứng đầu bảng xếp hạng!':h<=TOP?`🏅 Bạn vào top ${TOP} — hạng ${h}`:`Bạn đang hạng ${h} / ${B.tong}`);
+      if(g.giai===10&&B.pha_dao&&tenKey(B.pha_dao.ten)===tenKey(g.ten)&&B.pha_dao.ms===Math.round(g.ms))msg.push('⚡ Phá đảo nhanh nhất: '+fmt(g.ms))}
+    else msg.push('Lượt luyện tập — bảng xếp hạng giữ lần đầu của bạn'+(h?` (hạng ${h})`:''));
+    $('endMsg').innerHTML=msg.map(x=>`<div class="msg">${x}</div>`).join('');
+    $('endLb').innerHTML=bxhHtml(B,'man');
+  }catch(e){if(G===g)$('endLb').innerHTML=LOI}
+}
+
+// ---- hộp bảng xếp hạng ----
+let mTab='cau';
+let mTok=0;
+async function openLb(t){mTab=t||mTab;
+  $('mTabs').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.t===mTab));
+  const L=BO[G.bo].lv[G.k],tok=++mTok,cau=mTab==='cau';
+  $('mNote').textContent=cau?`Câu ${G.i+1} · ${Q.item.c} · top 10 người giải đúng · chỉ tính lần đầu`:`${BO[G.bo].n} · ${L.n} · top 10 · chỉ tính lần đầu`;
+  $('mTbl').innerHTML=TAI;$('modal').classList.add('show');
+  try{await G.ghi;
+    const B=await rpc('fn_xep_chu_bxh',{p_loai:mTab,p_bo:G.bo,p_ma:cau?Q.ans:G.k,p_ten:G.ten,p_top:TOP});
+    if(tok===mTok)$('mTbl').innerHTML=bxhHtml(B,mTab)}
+  catch(e){if(tok===mTok)$('mTbl').innerHTML=LOI}
+}
+$('mTabs').querySelectorAll('button').forEach(b=>b.onclick=()=>openLb(b.dataset.t));
+$('mClose').onclick=()=>$('modal').classList.remove('show');
+$('modal').addEventListener('pointerdown',e=>{if(e.target.id==='modal')$('modal').classList.remove('show')});
+$('bLb').onclick=()=>openLb('cau');
+$('bResLb').onclick=()=>openLb('cau');
+
+$('bAgain').onclick=()=>startMan(G.k);
+$('bHome').onclick=renderHome;
+$('bQuit').onclick=()=>{if(confirm(G.first?'Thoát màn? Lượt đầu của bạn vẫn được ghi với các câu đã làm.':'Thoát lượt luyện tập?')){clearInterval(tick);renderHome()}};
+
+renderHome();
+</script>
+</body>
+</html>

@@ -2,9 +2,10 @@
 // UI chỉ gọi qua đây. Engine thuần ở src/gami/*.js (đã test). Buổi pure-derive: đẻ dòng khi MỞ.
 import { supabase } from './supabase'
 import { getMyProfile } from './nhansu'
-import { getETByBuoi, getETCaus, getBTVNByBuoi, getBTVNCaus, getGiaoTrinhBuoiDoc, getTaiLieuFull, khoCuaMon, nhanhCuaMon, laMaHinh } from './tailieu'
+import { getETByBuoi, getETCaus, getBTVNByBuoi, getBTVNCaus, getGiaoTrinhBuoiDoc, getTaiLieuFull, khoCuaMon, nhanhCuaMon, coKhoHinh, laMaHinh } from './tailieu'
 import { getMTInstanceByBuoi, getMTPhanCaus, type MTPhanCaus } from './mt'
 import { loadHinhForBuoi, type HinhDapAn } from './kho/hinhGiaoTrinh'
+import { listDang as listDangHinh } from './kho/hinh'
 import { getBaiTestByDoc, getBaiTestCaus, type BaiTest, type BaiTestCau } from './testonline'
 import type { CauHoi } from './kho/api'
 // Engine Elo/EXP đã XUỐNG DB (fn_dong_phase/fn_recompute_exp_thang — mig 202608300240, §2.0).
@@ -36,7 +37,7 @@ export type Problem = {
   id: string; buoi_hoc_id: string; phase: Phase; problem_no: number; hidden: boolean; ma_dang: string | null; ma_cau?: string | null; hoc_sinh_id?: string | null
   hinh_baitoan_id?: string | null; hinh_bien_the_id?: string | null; hinh_y_id?: string | null; hinh_nhan?: string | null
 }
-export type Grade = { id: string; problem_id: string; hoc_sinh_id: string; result: string; presentation: string; speed: string; points: number; loi?: string[]; muc?: number | null }
+export type Grade = { id: string; problem_id: string; hoc_sinh_id: string; result: string; presentation: string; speed: string; points: number; loi?: string[]; muc?: number | null; nhan_xet?: string | null; diem_dat?: number | null }
 export type ETResult = 'correct' | 'partial' | 'wrong'
 
 // ── helpers ngày/mã (giờ VN) ──────────────────────────────────────
@@ -140,6 +141,12 @@ export async function getDangTen(maDangs: string[], mon?: string): Promise<Recor
   for (const tbl of tbls) {
     const { data } = await supabase.from(tbl).select('ma_dang, ten_dang').in('ma_dang', uniq).limit(LIMIT)
     for (const r of (data ?? []) as any[]) out[r.ma_dang] = r.ten_dang
+  }
+  // Kho HÌNH HỌC (mô hình, v3): dạng = `hinh_dang.ma` ('DH.001') — chuông báo động ghi mã này vào canh_bao_yeu.ma_dang
+  // (CEO 16/09: báo động phải được cả Đại · Hình GT · Hình học). Registry coKhoHinh, không if mon==='Toán'.
+  if (!mon || coKhoHinh(mon)) {
+    const { data } = await supabase.from('hinh_dang').select('ma, ten').in('ma', uniq).limit(LIMIT)
+    for (const r of (data ?? []) as any[]) out[r.ma] = r.ten
   }
   return out
 }
@@ -653,6 +660,28 @@ export async function gradeET(p: { buoiId: string; problemId: string; hocSinhId:
   if (error) throw error
 }
 
+// ⭐ 30/09 (Thùy) — CHẤM MT CHI TIẾT per-HS-per-câu (Kết quả học tập › Điểm thi › Chấm chi tiết).
+// Kết hợp DCS + điểm HS đạt được + nhận xét trong 1 upsert; Elo `points` vẫn tính theo Đ/C/S (chuẩn ET)
+// để nhất quán với mastery/EXP. `diem_dat` = điểm HS được cho (0.25 → điểm tối đa câu; auto suggest theo
+// DCS ở UI: Đ=full, C=½, S=0, user chỉnh). `nhan_xet` = lời văn per câu (loi chỉ mã, không diễn giải).
+// Field optional — không truyền = giữ nguyên giá trị cũ (undefined không lọt vào row).
+export async function gradeMTChiTiet(p: {
+  buoiId: string; problemId: string; hocSinhId: string
+  result?: ETResult | null; diemDat?: number | null; nhanXet?: string | null; loi?: string[]
+}): Promise<void> {
+  const { data: { user } } = await supabase.auth.getUser()
+  const row: Record<string, any> = { buoi_hoc_id: p.buoiId, problem_id: p.problemId, hoc_sinh_id: p.hocSinhId, presentation: 'clean', speed: 'normal', graded_by: user?.id ?? null }
+  if (p.result !== undefined) {
+    row.result = p.result
+    row.points = p.result ? problemPoints({ result: p.result, presentation: 'clean', speed: 'normal' }) : 0
+  }
+  if (p.diemDat !== undefined) row.diem_dat = p.diemDat
+  if (p.nhanXet !== undefined) row.nhan_xet = p.nhanXet
+  if (p.loi !== undefined) row.loi = p.loi
+  const { error } = await supabase.from('gami_grades').upsert(row, { onConflict: 'problem_id,hoc_sinh_id' })
+  if (error) throw error
+}
+
 // Tích hàng loạt: 1 HS × TOÀN BỘ câu = cùng 1 verdict, MỘT lần upsert (thay vì N lần gọi gradeET).
 // Ca dùng (CEO 16/08): đề 60 câu, HS đúng 59 — tích "Tất cả Đ" 1 phát, xong sửa riêng câu sai. Không
 // suy đoán mã lỗi (loi=[]) cho mọi ô: GV mở ô cần sửa gắn lỗi sau, đúng luật §1.5 "thà bỏ trống hơn
@@ -766,10 +795,40 @@ export async function loadDangTaiLieuBuoi(buoiId: string, nguon: NguonCanhBao, m
   } else if (nguon === 'et') mds = (await loadETForBuoi(buoiId)).caus.map((c) => c.dang_chinh)
   else if (nguon === 'mt') mds = (await loadMTForBuoi(buoiId)).caus.map((c) => c.dang_chinh)
   else mds = (await loadBTVNForBuoi(buoiId)).caus.map((c) => c.dang_chinh)
+  // + dạng HÌNH HỌC (mô hình) của các bài Hình trong tài liệu: bài → hinh_cach_giai.dang_id → hinh_dang (cap='dang').
+  if (coKhoHinh(mon)) {
+    try {
+      const { dapAn } = nguon === 'danhgia' ? await loadHinhForBuoi(buoiId, 'lop') : await loadHinhForBuoiPhase(buoiId, nguon)
+      mds.push(...(await dangHinhCuaBaiToan([...new Set(dapAn.map((d) => d.hinhBaitoanId))])).map((d) => d.ma_dang))
+    } catch { /* buổi không có giáo trình Hình ⇒ bỏ qua, không làm hỏng list Đại */ }
+  }
   const uniq = [...new Set(mds.filter(Boolean))] as string[]
   if (!uniq.length) return []
   const ten = await getDangTen(uniq, mon ?? undefined)
   return uniq.map((ma_dang) => ({ ma_dang, ten: ten[ma_dang] ?? ma_dang }))
+}
+/** Dạng Hình học của một tập bài Hình — qua cách giải đã gắn `hinh_dang` (cây loại-câu-hỏi › dạng; DB 16/09 mới có tầng
+ *  loai_ch và cách giải gắn thẳng vào đó ⇒ nhận MỌI cap, không lọc cap='dang'). Thứ tự = thứ tự bài. */
+export async function dangHinhCuaBaiToan(baitoanIds: string[]): Promise<DangTaiLieu[]> {
+  if (!baitoanIds.length) return []
+  const { data, error } = await supabase.from('hinh_cach_giai').select('baitoan_id, dang:hinh_dang(ma, ten, cap)').in('baitoan_id', baitoanIds).limit(LIMIT)
+  if (error) throw error
+  const out: DangTaiLieu[] = []
+  for (const id of baitoanIds) for (const r of (data ?? []) as any[]) {
+    const d = r.dang
+    if (r.baitoan_id === id && d && !out.some((x) => x.ma_dang === d.ma)) out.push({ ma_dang: d.ma, ten: d.ten })
+  }
+  return out
+}
+/** Danh sách dạng Hình học cho picker chuông = NÚT LÁ của cây hinh_dang (tầng sâu nhất đang có — 16/09 cây mới có
+ *  tầng loại-câu-hỏi nên lá = loại câu hỏi; khi có tầng dạng thì lá tự thành dạng, không sửa code). Theo khối; dạng
+ *  không gắn khối vẫn hiện. Nhóm = tên cha (hoặc "Loại câu hỏi" khi là gốc). */
+export async function listDangHinhChoChuong(khoi?: string | null): Promise<{ ma_dang: string; ten: string; nhom: string }[]> {
+  const all = await listDangHinh()
+  const coCon = new Set(all.map((d) => d.cha_id).filter(Boolean))
+  const tenCua = new Map(all.map((d) => [d.id, d.ten]))
+  return all.filter((d) => !coCon.has(d.id) && (!khoi || !d.khoi || d.khoi === khoi))
+    .map((d) => ({ ma_dang: d.ma, ten: d.ten, nhom: (d.cha_id && tenCua.get(d.cha_id)) || 'Loại câu hỏi' }))
 }
 
 // ════ EXP THÁNG (redesign 07-28, Thùy chốt) — EXP = CHĂM CHỈ, TÍNH LẠI theo (lớp × tháng) ════
@@ -790,7 +849,8 @@ export async function loadDangTaiLieuBuoi(buoiId: string, nguon: NguonCanhBao, m
 
 // Nguồn EXP hợp lệ khi CỘNG TỔNG: nhóm key theo note=ym (chi tiết mới + exp_thang gộp legacy) và
 // attend_floor (bù/bổ trợ, không note → lọc created_at). Reader nào cộng EXP đều dùng 2 hằng này.
-export const EXP_NOTE_SOURCES = ['exp_thang', 'exp_et', 'exp_btvn', 'exp_btvn_thang']
+// 'exp_tren_lop' (27/09) = EXP game trong buổi học (fn_buoi_game_choi, spec-game-buoi-hoc §5b) — cũng có note=tháng buổi.
+export const EXP_NOTE_SOURCES = ['exp_thang', 'exp_et', 'exp_btvn', 'exp_btvn_thang', 'exp_tren_lop']
 export const EXP_SOURCES = [...EXP_NOTE_SOURCES, 'attend_floor']
 
 // ⚠ PostgREST cắt cứng 1000 dòng/response — `.limit(10000)` KHÔNG vượt được (đã ghi ở fetchBtvnAcc).

@@ -196,7 +196,10 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   const [printing, setPrinting] = useState(false)
   const [dangModal, setDangModal] = useState(false)
   const [picker, setPicker] = useState<{ phanId: string; maDang: string } | null>(null)
-  const cauTbl = bt ? khoCuaMon(bt.mon).cauTbl : 'dai_cau_hoi'
+  // ⭐ 18/09 (CEO: "chọn dạng Tổng 3 góc của 1 tam giác nhưng builder ko load được") — cauTbl PHẢI theo
+  // NHÁNH tài liệu (Đại/HGT/Hình học Học), không mặc định Đại. Nếu chỉ truyền mon → dạng Hình bên nhánh
+  // 'hinh_gt'/'hinh_hoc' rơi vào query dai_cau_hoi ⇒ tree rỗng, không load được. Fix: dispatch qua bt.nhanh.
+  const cauTbl = bt ? khoCuaMon(bt.mon, bt.nhanh).cauTbl : 'dai_cau_hoi'
   const markSaved = () => { setSaved(true); setTimeout(() => setSaved(false), 2000) }
 
   // Load ĐẦU (toggle loading, cho phép hiện "Đang tải…"). Refresh SAU mỗi thao tác dùng refreshPhans
@@ -235,7 +238,15 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
     const next: CauHinh = { ...ch, etFormByCau: { ...(ch.etFormByCau ?? {}), [maCau]: f } }
     setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved()
   }
-  async function themDang(maDang: string) { await addDangBT(id, maDang); await refreshPhans(); markSaved() }
+  // ⭐ 18/09 — thêm dạng KÈM NHÁNH (nếu user chọn nhánh khác Đại trong DangPickerOne). Nhánh cố định
+  // theo lần đầu (dạng đầu tiên set bt.nhanh — mọi dạng sau phải cùng nhánh vì cauTbl dispatch chung).
+  async function themDang(maDang: string, nhanh?: string | null) {
+    if (nhanh !== undefined && nhanh !== bt?.nhanh && phans.length === 0) {
+      await updateTaiLieu(id, { nhanh })
+      setBt((prev) => prev ? { ...prev, nhanh } : prev)
+    }
+    await addDangBT(id, maDang); await refreshPhans(); markSaved()
+  }
   async function xoaDang(phanId: string) {
     if (!confirm('Xoá cả dạng này khỏi BT (câu vẫn còn trong kho)?')) return
     await deletePhan(phanId); await refreshPhans(); markSaved()
@@ -251,7 +262,10 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   if (loading || !bt) return <div className="p-8 text-sm text-slate-400">Đang tải…</div>
   const soCau = phans.reduce((s, p) => s + p.caus.length, 0)
   const dangDaCo = new Set(phans.map((p) => p.ref_ma).filter(Boolean))
-  const goiYCanChu = goiY.filter((d) => d.mastery?.muc === 'yeu' || d.mastery?.muc === 'can_luyen')
+  // Gợi ý có dạng MỌI nhánh (getMasteryHS 29/09). BT dùng 1 bảng câu theo bt.nhanh ⇒ đã có dạng thì chỉ gợi ý
+  // CÙNG nhánh; chưa có dạng thì bấm gợi ý nào cũng được — themDang set nhánh theo dạng đầu tiên.
+  const goiYCanChu = goiY.filter((d) => (d.mastery?.muc === 'yeu' || d.mastery?.muc === 'can_luyen')
+    && (phans.length === 0 || d.nhanh === (bt.nhanh ?? null)))
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
@@ -275,7 +289,7 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                 {goiYCanChu.map((d) => {
                   const daCo = dangDaCo.has(d.ma_dang)
                   return (
-                    <button key={d.ma_dang} onClick={() => !daCo && themDang(d.ma_dang)} disabled={daCo}
+                    <button key={d.ma_dang} onClick={() => !daCo && themDang(d.ma_dang, d.nhanh)} disabled={daCo}
                       className={`rounded-full border px-2.5 py-1 text-[12px] font-medium ${daCo ? 'border-slate-200 bg-slate-50 text-slate-400' : MUC_CLASS[d.mastery!.muc]}`}>
                       {d.ten_dang} <span className="opacity-70">· {MUC_LABEL[d.mastery!.muc]}</span>{daCo ? ' ✓' : ' +'}
                     </button>
@@ -300,8 +314,9 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
         </div>
       </div>
 
-      {dangModal && <DangPickerOne khoi={bt.khoi} mon={bt.mon} onClose={() => setDangModal(false)}
-        onPick={(ma) => { setDangModal(false); themDang(ma) }} />}
+      {/* chonNhanh CHỈ khi CHƯA có dạng nào — sau đó nhánh cố định theo bt.nhanh (mọi dạng cùng cauTbl). */}
+      {dangModal && <DangPickerOne khoi={bt.khoi} mon={bt.mon} nhanh={bt.nhanh ?? null} chonNhanh={phans.length === 0} onClose={() => setDangModal(false)}
+        onPick={(ma, nh) => { setDangModal(false); themDang(ma, nh) }} />}
       {picker && <KhoPicker maDangs={[picker.maDang]} cauTbl={cauTbl} selected={phans.find((p) => p.id === picker.phanId)?.caus.map((c) => c.ma_cau) ?? []} onClose={() => setPicker(null)}
         onConfirm={async (m) => { await applyCaus(picker.phanId, m); setPicker(null) }} />}
       {printing && <BTPrintView id={id} onClose={() => setPrinting(false)} />}
@@ -357,7 +372,7 @@ function DangBlockUI({ no, p, ch, cauTbl, usedExcept, grades, onApply, onLine, o
                   </div>
                   {form === 'tu_luan' && (
                     <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết bài này">dòng
-                      <input type="number" min={0} max={30} value={ch.btvnLinesByCau?.[c.ma_cau] ?? DEFAULT_BTVN_LINES} onChange={(e) => onLine(c.ma_cau, Math.max(0, Math.min(30, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
+                      <input type="number" min={0} max={50} value={ch.btvnLinesByCau?.[c.ma_cau] ?? DEFAULT_BTVN_LINES} onChange={(e) => onLine(c.ma_cau, Math.max(0, Math.min(50, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
                     </label>
                   )}
                   <div className="flex shrink-0 gap-1" title="Chấm bài (sau khi HS làm xong)">

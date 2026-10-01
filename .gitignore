@@ -71,3 +71,14 @@ dist-khaosat
 # token OAuth/clone (24KB, nằm ở repo root) — không bao giờ commit
 token.txt
 dist-verify/
+.env*
+.snap/
+# build output app Sự kiện (như dist-khaosat)
+dist-sukien/
+
+# Ảnh GỐC ChatGPT bộ gamification (1254px, ~140 MB) — KHÔNG lên git, cất Google Drive (Thùy chốt 01/10).
+# Repo chỉ giữ bản app dùng (public/bk-ui/hs/gami/) + ảnh toàn cảnh tham chiếu bản JPG (design/handoff/gami-v1/reference/).
+design/bk-ui-src/gami/
+
+# Đệm của `tsc -b` — tự sinh lại mỗi lần kiểm kiểu
+*.tsbuildinfo

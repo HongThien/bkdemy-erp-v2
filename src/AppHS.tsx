@@ -4,19 +4,101 @@
 // — mục tiêu: bundle build riêng (vite.config.hs.ts) không kéo theo code nội bộ, khỏi lộ ra domain
 // công khai + nhẹ hơn nhiều so với app đầy đủ. KHÔNG có nhánh `hsId === null` (staff) — build này
 // chỉ phục vụ HS, nhân sự vẫn dùng domain ERP nội bộ như cũ.
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import type { Session } from '@supabase/supabase-js'
 import { supabase } from './lib/supabase'
 import Login from './auth/Login'
 import HocSinhApp, { HomeCap1 } from './screens/hocsinh/HocSinhApp'
 import DoiMatKhau from './screens/hocsinh/DoiMatKhau'
 import HomeHS, { type HomeCard } from './screens/hocsinh/HomeHS'
+import HomeHS912 from './screens/hocsinh/HomeHS912'
+import { chonMonHS } from './lib/tuluyen'
+import type { LichBoTro } from './lib/botro_yeu_ca'
 import DanhSachHS, { type DsRow } from './screens/hocsinh/DanhSachHS'
 import MayManHS from './screens/hocsinh/MayManHS'
 import ThanhTuuHS from './screens/hocsinh/ThanhTuuHS'
 import BaiTapGiaoHS from './screens/hocsinh/BaiTapGiaoHS'
 import ThongTinHocTap, { _THEME_TTHT, BXHList } from './screens/hocsinh/ThongTinHocTap'
+import SoTayHS, { type SoTayApi } from './screens/hocsinh/SoTayHS'
+import type { SoTayCay, SoTayNoiDung } from './lib/sotay'
 import { getMyHocSinhId } from './lib/testonline'
+
+// Mock SỔ TAY cho `?demo=sotay` — RPC thật cần HS đăng nhập (và migration đã áp), không xem được
+// layout lúc đang build. Data giả cố ý có: 2 chủ đề, dạng đủ 3 mức độ khó, và lời giải mẫu CÓ
+// LaTeX (kiểm MathText render $…$ đúng trong khung đọc).
+const MOCK_CAY: SoTayCay = {
+  mon: 'Toán', nhanh: null, khoi: '9', khoi_hs: '9', khoi_list: ['7', '8', '9'],
+  so_dang: 5, thieu_ly_thuyet: 12,
+  cay: [
+    { ma: 'T109', ten: 'Phương trình và hệ phương trình', so_dang: 3, con: [
+      { ma: 'T10901', ten: 'Phương trình bậc hai một ẩn', so_dang: 2, dangs: [
+        { ma_dang: 'T1090101', ten_dang: 'Giải phương trình bậc hai bằng công thức nghiệm', muc_do: 2, nhom: 'co_ban', mo_ta_ngan: 'Áp dụng thẳng công thức nghiệm và biệt thức delta.' },
+        { ma_dang: 'T1090102', ten_dang: 'Biện luận số nghiệm theo tham số m', muc_do: 4, nhom: 'nang_cao', mo_ta_ngan: 'Xét dấu biệt thức theo tham số.' },
+      ] },
+      { ma: 'T10902', ten: 'Hệ hai phương trình bậc nhất hai ẩn', so_dang: 1, dangs: [
+        { ma_dang: 'T1090201', ten_dang: 'Giải hệ bằng phương pháp thế', muc_do: 3, nhom: 'trung_binh', mo_ta_ngan: null },
+      ] },
+    ] },
+    { ma: 'T110', ten: 'Hàm số và đồ thị', so_dang: 2, con: [
+      { ma: 'T11001', ten: 'Hàm số bậc nhất', so_dang: 2, dangs: [
+        { ma_dang: 'T1100101', ten_dang: 'Vẽ đồ thị hàm số bậc nhất', muc_do: 1, nhom: 'co_ban', mo_ta_ngan: 'Xác định hai điểm rồi nối.' },
+        { ma_dang: 'T1100102', ten_dang: 'Tìm điều kiện để hai đường thẳng song song', muc_do: 3, nhom: 'trung_binh', mo_ta_ngan: null },
+      ] },
+    ] },
+  ],
+}
+const MOCK_API: SoTayApi = {
+  mon: async () => MOCK_CAY.mon,
+  cay: async () => MOCK_CAY,
+  tim: async (q) => {
+    const bd = (s: string) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd')
+    const tu = bd(q)
+    return MOCK_CAY.cay.flatMap((cd) => cd.con.flatMap((cde) => cde.dangs
+      .filter((d) => bd(d.ten_dang).includes(tu) || bd(cde.ten).includes(tu))
+      .map((d) => ({ ...d, khoi: '9', ten_chu_de: cd.ten, ten_chuyen_de: cde.ten }))))
+  },
+  dang: async (ma): Promise<SoTayNoiDung | null> => {
+    const hit = MOCK_CAY.cay.flatMap((cd) => cd.con.flatMap((cde) => cde.dangs.map((d) => ({ d, cd, cde })))).find((x) => x.d.ma_dang === ma)
+    if (!hit) return null
+    return {
+      ...hit.d, khoi: '9', ma_chu_de: hit.cd.ma, ten_chu_de: hit.cd.ten,
+      ma_chuyen_de: hit.cde.ma, ten_chuyen_de: hit.cde.ten, cap_nhat_at: '2026-09-18T10:00:00Z',
+      noi_dung: 'Phương pháp\nPhương trình bậc hai một ẩn có dạng $ax^2+bx+c=0$ với $a\\neq 0$.\nTính biệt thức $\\Delta = b^2-4ac$ rồi kết luận:\nNếu $\\Delta > 0$ thì phương trình có hai nghiệm phân biệt $x_{1,2}=\\frac{-b\\pm\\sqrt{\\Delta}}{2a}$.\nNếu $\\Delta = 0$ thì phương trình có nghiệm kép $x=\\frac{-b}{2a}$.\nNếu $\\Delta < 0$ thì phương trình vô nghiệm.\n\nBài mẫu 1\nGiải phương trình $x^2-5x+6=0$.\nLời giải: Ta có $\\Delta = 25-24 = 1 > 0$ nên phương trình có hai nghiệm phân biệt $x_1 = 3$ và $x_2 = 2$.\n\nBài mẫu 2\nGiải phương trình $4x^2-4x+1=0$.\nLời giải: $\\Delta = 16-16 = 0$ nên phương trình có nghiệm kép $x=\\frac{1}{2}$.',
+    }
+  },
+}
+
+// DEMO Home 6–12 (`hs.html?demo=912` · `&mot` em 1 môn · `&khoi=10` lưới cấp 3) — kiểm GÓC HỌC TẬP THEO MÔN (Thùy 01/10): đổi môn ⇒
+// lớp ở đầu trang, ô học tập (số bài, khoá ô cần kho của môn chưa có kho), việc bổ trợ đổi theo; khối Giải trí đứng yên.
+// Dữ liệu giả, không gọi Supabase (cờ `nhom`/khoá kho y luật ở HocSinhApp: KHU_CHOI · KHU_CAN_KHO).
+function Demo912() {
+  const q = new URLSearchParams(location.search)
+  const cap3 = q.get('khoi') === '10'
+  const mons = q.has('mot') ? [{ mon: 'Toán', ten_lop: '9B1', co_kho: true }]
+    : [{ mon: 'Toán', ten_lop: '9B1', co_kho: true }, { mon: 'KHTN', ten_lop: '9K3', co_kho: true }, { mon: 'Tiếng Anh', ten_lop: '9E1', co_kho: false }]
+  const [mon, setMon] = useState(mons[0].mon)
+  const coKho = mons.find((m) => m.mon === mon)?.co_kho ?? true
+  const BAI: Record<string, { et: number; btvn: number }> = { 'Toán': { et: 1, btvn: 2 }, 'KHTN': { et: 0, btvn: 1 }, 'Tiếng Anh': { et: 0, btvn: 0 } }
+  const LICH: LichBoTro[] = [{ buoi_id: 'x', loai: 'bo_tro_yeu', ngay: '2026-10-01', gio_bat_dau: '17:30:00', gio_ket_thuc: '18:30:00', phong: 'P102', mon: 'KHTN', nguoi: 'Cô Lan', diem_danh: null, hom_nay: true, vao_ca: false }]
+  const khoa = (id: string): Partial<HomeCard> => ['tu_luyen', 'thong_tin', 'so_tay'].includes(id) && !coKho ? { sub: `${mon} chưa mở`, subMau: 'xam', disabled: true, onClick: undefined } : {}
+  const o = (id: string, ten: string, sub: string, extra: Partial<HomeCard> = {}): HomeCard => ({ id, ten, sub, subMau: 'xam', doodle: '', ill: 'self_practice_target', tone: 'blue', onClick: () => {}, nhom: ['the_gioi', 'may_man', 'thanh_tuu', 'vi_xu'].includes(id) ? 'choi' : 'hoc', ...extra, ...khoa(id) })
+  const b = BAI[mon] ?? { et: 0, btvn: 0 }
+  const cards: HomeCard[] = cap3
+    ? [o('giao_trinh', 'Bài tập trên lớp', 'Chưa có bài'), o('et', 'ET', b.et ? `${b.et} bài chưa làm` : 'Chưa có bài', { badge: b.et, subMau: b.et ? 'ton' : 'xam' }),
+       o('btvn', 'BTVN', b.btvn ? `${b.btvn} bài chưa làm` : 'Chưa có bài', { badge: b.btvn, subMau: b.btvn ? 'ton' : 'xam' }),
+       o('tu_luyen', 'Tự luyện', 'Luyện theo dạng yếu'), o('thong_tin', 'Thông tin học tập', 'Dạng đang yếu'), o('so_tay', 'Sổ tay kiến thức', 'Tra lý thuyết & bài mẫu'),
+       o('de_thi_thu', 'Làm đề thi thử', 'Chưa có bài'), o('the_gioi', 'Thế giới BK', 'Xem HS BK đang khoe gì')]
+    : [o('tu_luyen', 'Tự luyện', 'Luyện theo dạng yếu'), o('thong_tin', 'Thông tin học tập', 'Dạng đang yếu'), o('so_tay', 'Sổ tay kiến thức', 'Tra lý thuyết & bài mẫu'),
+       o('the_gioi', 'Thế giới BK', 'Xem HS BK đang khoe gì'), o('de_thi_thu', 'Làm đề thi thử', 'Sắp có', { disabled: true }), o('bai_tap_giao', 'Bài tập được giao', 'Đang phát triển'),
+       o('thanh_tuu', 'Thành tựu', 'Xem giải thưởng của em'), o('may_man', 'May mắn', 'Có 1 lượt quay!', { badge: 1, subMau: 'ton' }), o('vi_xu', 'Ví xu', 'Xem xu & lịch sử')]
+  const dem = Object.fromEntries(mons.map((m) => [m.mon, (cap3 ? (BAI[m.mon]?.et ?? 0) + (BAI[m.mon]?.btvn ?? 0) : 0) + LICH.filter((l) => l.mon === m.mon).length]))
+  return <HomeHS912 giaoDien={{ skin: 'rpg', che_do: 'toi', hinh_nen: 'mac_dinh' }} onDaLuu={() => {}} data={{ elo: [], thi: [{ ten: 'Thi vào 10', ngay: '2027-06-02', con_ngay: 244 }] }}
+    hoTen="Phí Vinh Gia Khiêm" maHS="hs0557" lopMon={`${mons.find((m) => m.mon === mon)?.ten_lop} · ${mon}`} anhUrl={null} onAnhChanged={() => {}} chuaDoc={1}
+    mons={mons} mon={mon} onChonMon={(m) => { chonMonHS(m); setMon(m) }} demMon={dem}
+    lich={LICH.filter((l) => l.mon === mon || l.vao_ca)} soRetest={0} cards={cards}
+    onHopThu={() => {}} onDoiMK={() => {}} onThoat={() => {}} onLich={() => {}} onRetest={() => {}} onHoSo={() => {}} gioiTinh="nam"
+    theGioi={null} onTheGioi={() => {}} />
+}
 
 // DEMO màn chính (CHỈ bản dev, không vào build): `hs.html?demo` · `?demo=nu` (nữ) · thêm `&ca` (banner bổ trợ)
 // · `&khong` (không có bài). Để kiểm UI theo kit hs-home-v4 mà không cần mã+PIN của HS thật (Claude không
@@ -25,9 +107,14 @@ function DemoHome() {
   const q = new URLSearchParams(location.search)
   const nu = q.get('demo') === 'nu' || q.get('nu') !== null
   const khong = q.has('khong')
+  // `&mon` — em học 3 môn: hiện thanh chọn môn, bấm đổi môn thì dòng lớp ở hero đổi theo (28/09).
+  const DEMO_MONS = q.has('mon') ? [{ mon: 'Toán', ten_lop: '9B1', co_kho: true }, { mon: 'KHTN', ten_lop: '9K3', co_kho: true }, { mon: 'Tiếng Anh', ten_lop: '9E1', co_kho: false }] : []
+  const [demoMon, setDemoMon] = useState<string | null>(DEMO_MONS[0]?.mon ?? null)
   const noopBack = () => history.back()
   // ?demo=thanhtuu / ?demo=baitapgiao — verify UI static (Thùy 11/09).
   // ?demo=maymai KHÔNG hoạt động vì screen thật gọi supabase.rpc — cần HS thật, không hack ở đây.
+  if (q.get('demo') === '912') return <Demo912 />
+  if (q.get('demo') === 'sotay') return <SoTayHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} api={MOCK_API} />
   if (q.get('demo') === 'thanhtuu') return <ThanhTuuHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
   if (q.get('demo') === 'baitapgiao') return <BaiTapGiaoHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
   if (q.get('demo') === 'maymai') return <MayManHS gioiTinh={nu ? 'nu' : 'nam'} onXong={noopBack} />
@@ -98,12 +185,24 @@ function DemoHome() {
     { id: 'thong_tin', ten: 'Thông tin học tập', sub: 'Dạng đang yếu', subMau: 'xam', doodle: 'Hiểu mình để tiến bộ hơn!', ill: 'study_progress_chart', tone: 'blue', onClick: noop },
     { id: 'de_thi_thu', ten: 'Làm đề thi thử', sub: 'Sắp có', subMau: 'xam', doodle: 'Sắp ra mắt! Hãy chờ nhé!', ill: 'mock_exam_locked', tone: 'gray', disabled: true },
   ]
-  return <HomeHS hoTen={nu ? 'Trần Mai Anh' : 'Nguyễn Văn Đức Huy'} maHS={nu ? 'hs0088' : 'hs0059'} lopMon={nu ? '11A2 - Toán' : '11A1 - Toán'} gioiTinh={nu ? 'nu' : 'nam'}
+  return <HomeHS hoTen={nu ? 'Trần Mai Anh' : 'Nguyễn Văn Đức Huy'} maHS={nu ? 'hs0088' : 'hs0059'} gioiTinh={nu ? 'nu' : 'nam'}
+    lopMon={demoMon ? `${DEMO_MONS.find((m) => m.mon === demoMon)?.ten_lop} · ${demoMon}` : nu ? '11A2 - Toán' : '11A1 - Toán'}
+    mons={DEMO_MONS} mon={demoMon} onChonMon={setDemoMon}
     anhUrl={null} onAnhChanged={noop} chuaDoc={3} lich={q.has('ca') ? [{ buoi_id: 'x', loai: 'bo_tro_yeu', ngay: '2026-09-10', gio_bat_dau: '16:00:00', gio_ket_thuc: '17:00:00', phong: 'P102', mon: 'Toán', nguoi: 'Cô Thùy', diem_danh: null, hom_nay: true, vao_ca: false }] : []} soRetest={q.has('ca') ? 1 : 0} cards={cards}
     onHopThu={noop} onDoiMK={noop} onThoat={noop} onLich={noop} onRetest={noop} />
 }
 
+// TRANG XEM MẪU gamification (hs.html?xem=gami — gami/XemMauGami.tsx): dữ liệu giả, không gọi DB, không cần đăng nhập ⇒ mở cả
+// bản build để chụp ảnh gửi design + soát kit sau khi đổi vỏ. Tách chunk riêng (lazy) — không nặng bundle chính.
+const XemMauGami = lazy(() => import('./screens/hocsinh/gami/XemMauGami'))
+const XEM_GAMI = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'gami'
+// TUTORIAL "Hành trình tân thủ" bản demo (hs.html?xem=tutorial · &chang=N): dữ liệu giả, không cần đăng nhập (Thùy 30/09).
+const TutorialHS = lazy(() => import('./screens/hocsinh/tutorial/TutorialHS'))
+const XEM_TUTORIAL = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'tutorial'
+
 export default function AppHS() {
+  if (XEM_GAMI) return <Suspense fallback={null}><XemMauGami /></Suspense>
+  if (XEM_TUTORIAL) return <Suspense fallback={null}><TutorialHS /></Suspense>
   const [session, setSession] = useState<Session | null | undefined>(undefined)
   const [hsId, setHsId] = useState<string | null | undefined>(undefined)
   if (import.meta.env.DEV && new URLSearchParams(location.search).has('demo')) return <DemoHome />

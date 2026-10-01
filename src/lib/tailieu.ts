@@ -1,6 +1,7 @@
 // Data-layer "Làm tài liệu" (giáo trình…). Tài liệu = THAM CHIẾU vào kho; resolver kéo nội dung sống khi render.
 import { supabase } from './supabase'
 import { cumKey, listCauByDang, listDaiMap, listKhtnMap, listHgtMap, type CauHoi, type MapRow } from './kho/api'
+import { listHinhHocMap } from './kho/hinhhoc'
 
 const LIMIT = 10000
 
@@ -14,15 +15,31 @@ export function khoCuaMon(mon?: string | null, nhanh?: string | null): { cauTbl:
     ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', ltDangTbl: 'khtn_dang_ly_thuyet', ltCdTbl: 'khtn_chuyen_de_ly_thuyet', formTnTbl: 'khtn_cau_form_tn', listMap: listKhtnMap }
     : nhanh === 'hinh_gt'
     ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', ltDangTbl: 'hgt_dang_ly_thuyet', ltCdTbl: 'hgt_chuyen_de_ly_thuyet', formTnTbl: 'hgt_cau_form_tn', listMap: listHgtMap }
+    : nhanh === 'hinh_hoc'
+    // Hình học · phase HỌC (CEO 16/09): Bài phẳng, KHÔNG có cây chuyên đề/chuyên đề-lý-thuyết/formTN.
+    // ltCdTbl/formTnTbl dùng lại tên bảng của Bài — botro_yeu/danhgia/detest chỉ được gọi khi tài liệu
+    // Đại/KHTN/HGT (spec-mcq-form.md), chưa dùng cho phase Học ⇒ chưa cần bảng thật, tránh nợ schema.
+    ? { cauTbl: 'hinh_hoc_cau_hoi', banDoTbl: 'hinh_hoc_bai', ltDangTbl: 'hinh_hoc_bai_ly_thuyet', ltCdTbl: 'hinh_hoc_bai_ly_thuyet', formTnTbl: 'hinh_hoc_bai_ly_thuyet', listMap: listHinhHocMap }
     : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', ltDangTbl: 'dai_dang_ly_thuyet', ltCdTbl: 'dai_chuyen_de_ly_thuyet', formTnTbl: 'dai_cau_form_tn', listMap: listDaiMap }
 }
 // REGISTRY nhánh dạng-based TRONG 1 môn (UI toggle "chọn bản đồ"). Môn không có trong registry = 1 nhánh
 // duy nhất (nhanh=null), không hiện toggle. Thêm nhánh mới = thêm dòng ở đây + nhánh trong khoCuaMon —
 // KHÔNG `if (mon === 'Toán')` rải rác ở component (symmetry test §1.6).
-const NHANH_CUA_MON: Record<string, { ma: string | null; ten: string }[]> = {
-  'Toán': [{ ma: null, ten: 'Đại số' }, { ma: 'hinh_gt', ten: 'Hình giải tích' }],
+// `nhomBC` = cột báo cáo (Kết quả học tập / Report PH): Thùy 29/09 — Hình học và Hình giải tích là 2 nhánh
+// RIÊNG nhưng báo cáo gộp chung nhãn "Hình". Thiếu = 'dai' (cột mặc định; môn 1 nhánh như KHTN rơi vào đây).
+// `mucDoThieu` = độ khó dùng để CHIA cơ bản/nâng cao khi dạng chưa gán muc_do (Thùy 29/09: Bài Hình học
+// chưa bấm độ khó ⇒ tạm tính Cơ bản). Chỉ dùng để chia cột, KHÔNG hiển thị như độ khó thật.
+export type NhanhMon = { ma: string | null; ten: string; nhomBC?: 'dai' | 'hinh'; mucDoThieu?: number }
+const NHANH_CUA_MON: Record<string, NhanhMon[]> = {
+  'Toán': [
+    { ma: null, ten: 'Đại số' },
+    { ma: 'hinh_gt', ten: 'Hình giải tích', nhomBC: 'hinh' },
+    // Phase HỌC — Bài phẳng. Phase Luyện (Mô hình/Bổ đề cũ) đi luồng RIÊNG qua GiaoTrinhHinhEntry,
+    // KHÔNG chung tab nhánh với Đại (CEO 16/09: "giáo trình chỉ học - giáo trình chỉ luyện độc lập").
+    { ma: 'hinh_hoc', ten: 'Hình học', nhomBC: 'hinh', mucDoThieu: 1 },
+  ],
 }
-export function nhanhCuaMon(mon?: string | null): { ma: string | null; ten: string }[] { return NHANH_CUA_MON[mon ?? ''] ?? [] }
+export function nhanhCuaMon(mon?: string | null): NhanhMon[] { return NHANH_CUA_MON[mon ?? ''] ?? [] }
 export function tenNhanh(mon: string | null | undefined, nhanh: string | null | undefined): string | null {
   return nhanhCuaMon(mon).find((n) => n.ma === (nhanh ?? null))?.ten ?? null
 }
@@ -83,7 +100,16 @@ export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'ontap' | 'cu
 // kiểu cột theo-phần (tai_lieu_phan.kieu) / theo-nhóm-form (etColByGroup) cũ.
 // nhanhByCau = NHÁNH KHO của TỪNG CÂU khi tài liệu trộn nhánh (MT: câu Đại + câu Hình giải tích trong cùng
 // đề). Chỉ có key cho câu KHÁC `tai_lieu.nhanh`; resolve qua `nhanhCuaCau` (kế thừa cho câu mã đề 2/3).
-export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number>; etColByGroup?: Record<number, string>; colByCau?: Record<string, number>; nhanhByCau?: Record<string, string>; hinhBuoiId?: string; hinhByMa?: Record<string, HinhRowInfo>; hinhMaDe?: Record<string, [HinhBanRefLite | null, HinhBanRefLite | null]>; mtMeta?: { loaiDe?: string | null; thang?: string | null } }
+// ⭐ 21/09 (CEO): áp cho GIÁO TRÌNH nhánh 'hinh_hoc' — mỗi câu có ảnh 3 chế độ in
+//   hien (in ảnh) · o_trong (chừa ô Vẽ hình, GV vẫn thấy ảnh đối chiếu) · khong (không ảnh, không ô).
+//   Kế thừa enum + xoay vòng từ builder Hình Luyện cũ (lib/kho/hinhGiaoTrinh.ts).
+// diemByCau (MT — Thùy 30/09) = điểm CHO TỪNG CÂU (per ma_cau, bao gồm mã Hình `HINH:<uuid>`).
+// Dropdown 8 mức 0.25→2.0 (bước 0.25). Thiếu key → DEFAULT_DIEM_MT = 1.0. Tổng in trên đầu đề MT
+// (Tổng: N điểm) = sum diemByCau ?? default cho MỌI câu đang có trong phần. Chỉ MT dùng — ET/BTVN
+// không có ràng buộc điểm số (ET chỉ ngưỡng làm được, BTVN không chấm điểm).
+export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number>; etColByGroup?: Record<number, string>; colByCau?: Record<string, number>; nhanhByCau?: Record<string, string>; hinhCheDoByCau?: Record<string, 'hien' | 'o_trong' | 'khong'>; hinhBuoiId?: string; hinhByMa?: Record<string, HinhRowInfo>; hinhMaDe?: Record<string, [HinhBanRefLite | null, HinhBanRefLite | null]>; mtMeta?: { loaiDe?: string | null; thang?: string | null }; diemByCau?: Record<string, number> }
+export const DEFAULT_DIEM_MT = 1
+export const MT_DIEM_OPTS: number[] = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
 // hinhByMa (MT) = nội dung bài HÌNH của hàng `HINH:<uuid>` (xem laMaHinh). hinhMaDe = mã đề 2/3 của bài Hình, khoá =
 // chuoiSig(nodeIds) (khuôn ET Hình). hinhBuoiId = DI SẢN (buổi Hình mẫu, bản 02/09 sáng) — chỉ còn để deleteMT dọn.
 // mtMeta (MT) = phân loại đề (loaiDe: xem MTLoaiDe/mt.ts) + tháng dự kiến dùng ('YYYY-MM', gắn tay, KHÔNG
@@ -124,7 +150,7 @@ export function canBeETForm(c: { lua_chon?: string[] | null; menh_de?: unknown[]
 }
 // Kho nào ĐÃ CÓ bảng form trắc nghiệm AI (<kho>_cau_form_tn). khoCuaMon().formTnTbl là TÊN theo quy ước cho mọi kho;
 // bảng chưa tạo thì PostgREST 404 → chỗ gọi kiểm qua đây trước. Tạo bảng cho kho mới = thêm tên vào đây (registry, §1.6).
-const KHO_CO_FORM_TN = new Set(['dai_cau_form_tn', 'hgt_cau_form_tn'])
+const KHO_CO_FORM_TN = new Set(['dai_cau_form_tn', 'hgt_cau_form_tn']) // hgt: bảng có từ mig 202609080230
 export const coFormTn = (formTnTbl: string): boolean => KHO_CO_FORM_TN.has(formTnTbl)
 // ⭐ THỨ TỰ CHUẨN CỦA ET (Thùy chốt 07-20) — gom theo NHÓM IN: trắc nghiệm → trả lời ngắn → tự luận,
 // GIỮ NGUYÊN thứ tự chọn bên trong mỗi nhóm. Gom TẠI LÚC LƯU (ETScreen.luu) → ghi thẳng vào `thu_tu`.
@@ -233,7 +259,7 @@ export async function createTaiLieu(input: { loai?: string; ten: string; khoi: s
   if (error) throw error
   return data as TaiLieu
 }
-export async function updateTaiLieu(id: string, patch: Partial<Pick<TaiLieu, 'ten' | 'theme' | 'ma_chuyen_de' | 'cau_hinh'>>): Promise<void> {
+export async function updateTaiLieu(id: string, patch: Partial<Pick<TaiLieu, 'ten' | 'theme' | 'ma_chuyen_de' | 'cau_hinh' | 'nhanh'>>): Promise<void> {
   const { error } = await supabase.from('tai_lieu').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id)
   if (error) throw error
 }

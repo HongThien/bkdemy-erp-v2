@@ -18,7 +18,8 @@ import {
   trungBinhTruot3, docAmLienTiep, dangDoiBucketXau, deXuatLevelKienThuc, deXuatLevelThaiDo,
   bucketOfScore, BUCKET_RANK,
 } from '../gami/danhgia.js'
-import { khoCuaMon } from './tailieu'
+import { khoCuaMon, nhanhCuaMon } from './tailieu'
+import { dangInfoCuaMon } from './mastery'
 import { fetchAllRows } from './pgrest' // phân trang THẬT — PostgREST cap 1000 dòng/query, xem pgrest.ts
 
 const LIMIT = 10000
@@ -51,6 +52,7 @@ export type DangStat = {
   mucTruoc: 'dat' | 'can_luyen' | 'yeu' | null
   daMo: boolean          // đang có trong đợt bổ trợ yếu (bo_tro_yeu_dang chưa dong_at)
   trongDien: boolean     // sau khi áp 2 mốc trễ — nguồn sự thật cho HÀNH ĐỘNG
+  ganDay: boolean        // có lần đo trong 2 cửa sổ gần nhất (hiện tại + liền trước) — Thùy 23/09: dạng yếu chỉ vào diện khi ĐO GẦN ĐÂY
   cuoiCungAt: string     // lần đo gần nhất → cờ "cũ" nếu > 30 ngày (spec §1)
 }
 export type ChuyenDeStat = {
@@ -113,15 +115,20 @@ async function napLanDo(hsIds: string[], mon: string): Promise<DoRow[]> {
     .order('id', { ascending: true })
     .range(from, to))
 
-  // Môn của buổi: 1 query cho mọi buổi liên quan.
+  // Môn + NGÀY của buổi: 1 query cho mọi buổi liên quan.
+  // `ngay` để neo `t` timeline theo NGÀY BUỔI (không ngày chấm) — chấm trễ 2 tuần (buổi 10/08 chấm 23/08)
+  // KHÔNG được đẩy phép đo sang cửa sổ 23/08. Dùng ma_dang × HS × timestamp lần đo → sort/window/mastery
+  // đều đúng khi t = ngày buổi.
   const buoiIds = [...new Set(rows.map((r) => r.buoi_hoc_id).filter(Boolean))]
   const monCuaBuoi = new Map<string, string | null>()
+  const ngayCuaBuoi = new Map<string, string | null>()
   const buoiThieuMon: string[] = []
   if (buoiIds.length) {
-    const { data: buois } = await supabase.from('buoi_hoc').select('id, lop:lop_id(mon)').in('id', buoiIds).limit(LIMIT)
+    const { data: buois } = await supabase.from('buoi_hoc').select('id, ngay, lop:lop_id(mon)').in('id', buoiIds).limit(LIMIT)
     for (const b of (buois ?? []) as any[]) {
       const m = b.lop?.mon ?? null
       monCuaBuoi.set(b.id, m)
+      ngayCuaBuoi.set(b.id, b.ngay ?? null)
       if (!m) buoiThieuMon.push(b.id) // buổi bù — xử ở dưới
     }
   }
@@ -148,21 +155,21 @@ async function napLanDo(hsIds: string[], mon: string): Promise<DoRow[]> {
     if (value === undefined) continue
     const m = monCuaBuoi.get(r.buoi_hoc_id) ?? monBuTheoHs.get(`${r.buoi_hoc_id}|${r.hoc_sinh_id}`) ?? null
     if (m !== mon) continue // scope MÔN (§1.6) — buổi bù đã lùi về lớp gốc ở trên
-    out.push({ hoc_sinh_id: r.hoc_sinh_id, ma_dang: p.ma_dang, value, t: r.graded_at, src: p.phase, buoi_hoc_id: r.buoi_hoc_id ?? null })
+    // Timeline neo NGÀY BUỔI (ngayCuaBuoi), fallback graded_at chỉ khi buoi_hoc_id null (không xảy ra
+     // theo schema; phòng thủ) hoặc buổi lookup không có ngày (không xảy ra — buoi_hoc.ngay NOT NULL).
+    const tBuoi = r.buoi_hoc_id ? ngayCuaBuoi.get(r.buoi_hoc_id) ?? null : null
+    out.push({ hoc_sinh_id: r.hoc_sinh_id, ma_dang: p.ma_dang, value, t: tBuoi ?? r.graded_at, src: p.phase, buoi_hoc_id: r.buoi_hoc_id ?? null })
   }
   return out
 }
 
-// Bản đồ dạng → chuyên đề + tên + độ khó, tra ĐÚNG 1 bảng theo môn (bẫy #1).
+// Bản đồ dạng → chuyên đề + tên + độ khó, tra đúng bảng theo MÔN (bẫy #1) — MỌI nhánh của môn qua registry
+// (dangInfoCuaMon). 29/09 (Thùy chốt bật bổ trợ yếu cho Hình): trước chỉ tra bảng gốc ⇒ Bài Hình học + dạng Hình
+// giải tích rơi khỏi kênh ② và khỏi bước đổ dạng vào case. Bài Hình học có ma_chuyen_de = null (không có tầng chuyên đề).
 async function napBanDo(mon: string, maDangs: string[]) {
-  const K = khoCuaMon(mon)
-  const info = new Map<string, { ten_dang: string; ma_chuyen_de: string; ten_chuyen_de: string; muc_do: number | null }>()
-  if (!maDangs.length) return info
-  const { data } = await supabase.from(K.banDoTbl)
-    .select('ma_dang, ten_dang, ma_chuyen_de, ten_chuyen_de, muc_do')
-    .in('ma_dang', maDangs).limit(LIMIT)
-  for (const d of (data ?? []) as any[]) {
-    info.set(d.ma_dang, { ten_dang: d.ten_dang, ma_chuyen_de: d.ma_chuyen_de, ten_chuyen_de: d.ten_chuyen_de, muc_do: d.muc_do ?? null })
+  const info = new Map<string, { ten_dang: string; ma_chuyen_de: string | null; ten_chuyen_de: string; muc_do: number | null }>()
+  for (const [ma, d] of await dangInfoCuaMon(mon, maDangs)) {
+    info.set(ma, { ten_dang: d.ten_dang, ma_chuyen_de: d.ma_chuyen_de, ten_chuyen_de: d.ten_chuyen_de, muc_do: d.muc_do })
   }
   return info
 }
@@ -192,7 +199,7 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
   ])
   const banDo = await napBanDo(mon, [...new Set(doRows.map((r) => r.ma_dang))])
   const cdTen = new Map<string, string>()
-  for (const info of banDo.values()) cdTen.set(info.ma_chuyen_de, info.ten_chuyen_de)
+  for (const info of banDo.values()) if (info.ma_chuyen_de) cdTen.set(info.ma_chuyen_de, info.ten_chuyen_de)
 
   // Gom: HS → dạng → lần đo (2 bản: GỘP và chỉ-GIÁM-SÁT, để bắt cờ "BTVN che").
   const byHS = new Map<string, { dang: Map<string, DoEval[]>; dangEtMt: Map<string, DoEval[]>; cd: Map<string, DoEval[]> }>()
@@ -204,7 +211,9 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
     const ev: DoEval = { value: r.value, t: r.t, src: r.src }
     push(h.dang, r.ma_dang, ev)
     if (r.src !== 'btvn') push(h.dangEtMt, r.ma_dang, ev)
-    push(h.cd, info.ma_chuyen_de, ev) // tầng chuyên đề: THẲNG CÂU, mọi dạng con
+    // tầng chuyên đề: THẲNG CÂU, mọi dạng con. Dạng KHÔNG có chuyên đề (Bài Hình học) đứng ngoài kênh ① — gom
+    // chúng vào 1 khoá null là bịa ra 1 "chuyên đề" gộp mọi Bài; vẫn vào kênh ② (dạng) + ③④ (buổi) như thường.
+    if (info.ma_chuyen_de) push(h.cd, info.ma_chuyen_de, ev)
   }
 
   // Điểm chuyên đề của CẢ LỚP theo cửa sổ → nền cho pha 1 (so lớp) + đường B (vượt TB lớp).
@@ -312,6 +321,10 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
         // mốc chưa có lần đo nào (dạng mới xuất hiện cửa sổ này) ⇒ UI hiện "mới", không so delta.
         const evTruoc = evs.filter((e) => Date.parse(e.t) <= cutTruoc)
         const mTruoc = evTruoc.length ? masteryOfDang(evTruoc, MASTERY_CONFIG) : null
+        // Thùy 23/09: "tất cả dạng bị Yếu trong 2 cửa sổ 15 ngày gần nhất" — cùng phạm vi recency với kênh ②. Dạng yếu
+        // từ lâu không đo lại KHÔNG tự vào diện/case (người vẫn thêm tay được ở Nội dung).
+        const wCuoi = cuaSoCua(moiNhat.t)
+        const ganDay = wCuoi === cuaSoHienTaiVal || wCuoi === cuaSoTruoc(cuaSoHienTaiVal)
         dangs.push({
           ma_dang: ma, ten_dang: info.ten_dang, ten_chuyen_de: info.ten_chuyen_de, muc_do: info.muc_do,
           score, scoreEtMt: (mEtMt as any)?.score ?? null, n,
@@ -319,7 +332,8 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
           scoreTruoc: (mTruoc as any)?.score ?? null, mucTruoc: (mTruoc as any)?.muc ?? null,
           daMo,
           // 2 mốc trễ: đã mở thì ở lại tới khi > 0.5 · chưa mở thì phải < 0.5 + đủ độ tin.
-          trongDien: daMo ? score <= DANHGIA_CONFIG.MOC : score < DANHGIA_CONFIG.MOC && n >= DANHGIA_CONFIG.GATE_N,
+          trongDien: daMo ? score <= DANHGIA_CONFIG.MOC : score < DANHGIA_CONFIG.MOC && n >= DANHGIA_CONFIG.GATE_N && ganDay,
+          ganDay,
           cuoiCungAt: moiNhat.t,
         })
       }
@@ -477,6 +491,7 @@ export type Candidate = {
   duTinHieuKienThuc: boolean // ≥2/4 kênh dữ liệu HOẶC báo động HOẶC case kiến thức đang mở cần xử —
                               // dùng cái NÀY để lọc màn "Duyệt bổ trợ", đừng suy luận lại từ `kenh`
   daDuyetKienThucAt: string | null // lần chốt level kiến thức GẦN NHẤT trong cửa sổ hiện tại (null = chưa) — Duyệt bổ trợ loại ra
+  resetDuyetLai: boolean // Thùy 29/09: log kiến thức mới nhất là "reset chờ duyệt lại" ⇒ luôn vào hàng đợi Duyệt tới khi có lần duyệt mới
   deXuatKienThuc: any; deXuatThaiDo: any
   sheet: StatSheetHS
 }
@@ -484,23 +499,28 @@ export type Candidate = {
 // HS đã có quyết định kiến thức (bất kể chốt L0/L1/L2/L3) trong CỬA SỔ HIỆN TẠI: tín hiệu dữ liệu không
 // đổi trong nửa tháng nên engine cứ đề xuất lại mãi → người duyệt thấy "duyệt rồi mà vẫn hiện".
 // Sang cửa sổ mới (dữ liệu mới) thì xét lại bình thường. Nguồn = `hs_level_log` (log là bằng chứng).
-async function mapDaDuyetKienThucCuaSoNay(hsIds: string[], mon: string): Promise<Map<string, string>> {
-  const m = new Map<string, string>()
-  if (!hsIds.length) return m
+// Thùy 29/09: reset bổ trợ yếu ⇒ log mới nhất mang ly_do_may.nguon = 'reset_duyet_lai' — KHÔNG tính là "đã duyệt", mà
+// đánh dấu em phải hiện lại cho người duyệt (kể cả không còn tín hiệu, kể cả sang cửa sổ sau). Chỉ xét LOG MỚI NHẤT:
+// duyệt 20/09 rồi reset 29/09 ⇒ chưa duyệt; reset rồi duyệt lại ⇒ đã duyệt. Nguồn: fn_btyeu_log_kt_moi_nhat.
+async function mapDaDuyetKienThucCuaSoNay(hsIds: string[], mon: string): Promise<{ daDuyet: Map<string, string>; reset: Set<string> }> {
+  const daDuyet = new Map<string, string>(), reset = new Set<string>()
+  if (!hsIds.length) return { daDuyet, reset }
   const win = cuaSoHienTai()
   const y = +win.slice(0, 4), mo = +win.slice(5, 7), day = win.slice(8) === 'A' ? 1 : 16
-  const batDau = new Date(Date.UTC(y, mo - 1, day, -7, 0, 0)).toISOString() // 00:00 giờ VN của ngày đầu cửa sổ
-  const { data, error } = await supabase.from('hs_level_log').select('hoc_sinh_id, created_at')
-    .eq('mon', mon).eq('loai', 'kien_thuc').in('hoc_sinh_id', hsIds).gte('created_at', batDau)
-    .order('created_at', { ascending: false }).limit(LIMIT)
+  const batDau = new Date(Date.UTC(y, mo - 1, day, -7, 0, 0)).getTime() // 00:00 giờ VN của ngày đầu cửa sổ
+  const { data, error } = await supabase.rpc('fn_btyeu_log_kt_moi_nhat', { p_hs: hsIds, p_mon: mon })
   if (error) throw error
-  for (const r of (data ?? []) as any[]) if (!m.has(r.hoc_sinh_id)) m.set(r.hoc_sinh_id, r.created_at)
-  return m
+  for (const r of (data ?? []) as { hoc_sinh_id: string; created_at: string; nguon: string | null }[]) {
+    if (r.nguon === 'reset_duyet_lai') reset.add(r.hoc_sinh_id)
+    else if (new Date(r.created_at).getTime() >= batDau) daDuyet.set(r.hoc_sinh_id, r.created_at)
+  }
+  return { daDuyet, reset }
 }
 
 export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
   const sheets = await getStatSheetLop(lopId)
-  const daDuyet = sheets.length ? await mapDaDuyetKienThucCuaSoNay(sheets.map((s) => s.hoc_sinh_id), sheets[0].mon) : new Map<string, string>()
+  const { daDuyet, reset } = sheets.length ? await mapDaDuyetKienThucCuaSoNay(sheets.map((s) => s.hoc_sinh_id), sheets[0].mon)
+    : { daDuyet: new Map<string, string>(), reset: new Set<string>() }
   const out: Candidate[] = []
   for (const s of sheets) {
     const kenh: Candidate['kenh'] = []
@@ -587,7 +607,9 @@ export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
     // soát riêng nhóm đó mà KHÔNG cần thêm code/DB gì — dữ liệu để so sánh vốn có sẵn qua `kenh[]`.
     const soTinHieuKienThuc = [sig1, sig2, s.coSoLopET, s.coSoLopMT].filter(Boolean).length
     const caseDangMoCanXu = s.levelKienThuc > 0 && s.deXuatKienThuc.deXuat !== s.levelKienThuc
-    const duTinHieuKienThuc = soTinHieuKienThuc >= 1 || baoDong || caseDangMoCanXu
+    const resetDuyetLai = reset.has(s.hoc_sinh_id)
+    if (resetDuyetLai) { lyDo.unshift('↺ Reset 29/09 — duyệt lại'); uuTien += 50 }
+    const duTinHieuKienThuc = soTinHieuKienThuc >= 1 || baoDong || caseDangMoCanXu || resetDuyetLai
 
     // ② THÁI ĐỘ — ĐỘC LẬP HOÀN TOÀN với 4 kênh kiến thức trên (không cộng vào ≥2, không bị ≥2
     // chặn lại) — chuẩn TUYỆT ĐỐI (dưới Nghiêm túc là tín hiệu), tự đủ để vào danh sách đọc.
@@ -617,7 +639,7 @@ export async function listCandidatesLop(lopId: string): Promise<Candidate[]> {
       hoc_sinh_id: s.hoc_sinh_id, ho_ten: s.ho_ten, mon: s.mon,
       kenh, uuTien, trongDigest: uuTien >= DANHGIA_CONFIG.NGUONG_DIGEST, lyDo,
       duTinHieuKienThuc, // ⭐ dùng CÁI NÀY để lọc "Duyệt bổ trợ" — KHÔNG suy luận lại từ `kenh`
-      daDuyetKienThucAt: daDuyet.get(s.hoc_sinh_id) ?? null, // đã chốt trong cửa sổ này ⇒ rời hàng đợi duyệt (Dashboard vẫn hiện)
+      daDuyetKienThucAt: daDuyet.get(s.hoc_sinh_id) ?? null, resetDuyetLai, // đã chốt trong cửa sổ này ⇒ rời hàng đợi duyệt (Dashboard vẫn hiện)
       // (đọc "kenh có > 1 phần tử ngoài thai_do" từng ĐÚNG hồi mỗi kênh là 1 OR độc lập, giờ SAI vì
       // 1 kênh riêng lẻ vẫn được push vào `kenh` để hiện lý do dù chưa đủ ≥2/4 — bug thật đã bắt 08-23).
       deXuatKienThuc: s.deXuatKienThuc, deXuatThaiDo: s.deXuatThaiDo, sheet: s,
@@ -896,22 +918,28 @@ export async function listAiJobs(lopId: string, limit = 8): Promise<AiJob[]> {
 // làm — hàm này nạp riêng, gọi LƯỜI lúc người bấm mở detail (không load sẵn cho mọi chuyên đề).
 export type LanLamChuyenDe = { ma_dang: string; ten_dang: string; nguon: string; ngay: string; result: string }
 export async function getLichSuChuyenDe(hocSinhId: string, maChuyenDe: string, mon: string): Promise<LanLamChuyenDe[]> {
-  const K = khoCuaMon(mon)
-  const { data: dangs, error: eD } = await supabase.from(K.banDoTbl).select('ma_dang, ten_dang').eq('ma_chuyen_de', maChuyenDe).limit(LIMIT)
-  if (eD) throw eD
-  const rows = (dangs ?? []) as { ma_dang: string; ten_dang: string }[]
+  // Chuyên đề có thể thuộc nhánh khác của môn (vd Hình giải tích) — tra MỌI bảng bản đồ của môn theo registry.
+  const tbls = [...new Set([khoCuaMon(mon).banDoTbl, ...nhanhCuaMon(mon).map((n) => khoCuaMon(mon, n.ma).banDoTbl)])]
+  const rows: { ma_dang: string; ten_dang: string }[] = []
+  for (const tbl of tbls) {
+    const { data: dangs, error: eD } = await supabase.from(tbl).select('ma_dang, ten_dang').eq('ma_chuyen_de', maChuyenDe).limit(LIMIT)
+    if (eD) throw eD
+    rows.push(...((dangs ?? []) as { ma_dang: string; ten_dang: string }[]))
+  }
   if (!rows.length) return []
   const tenMap = new Map(rows.map((d) => [d.ma_dang, d.ten_dang]))
   const maDangSet = new Set(rows.map((d) => d.ma_dang))
 
   // Per-HS: chưa HS nào vượt 1000 dòng (max 770 ngày 09-09) nhưng đang tiến sát (~giữa tháng 10 sẽ
   // vượt) — phân trang sẵn cùng bẫy cap-1000 với `napLanDo`, kẻo "lịch sử gần nhất" mất đúng dòng mới.
+  // Embed buoi:buoi_hoc_id(ngay) để "ngày" trong lịch sử = NGÀY BUỔI (không graded_at) — chấm trễ 2
+  // tuần không được đẩy dòng "lần làm gần nhất" sang sau, xáo trộn thứ tự với các bài buổi kế tiếp.
   const grades = await fetchAllRows<any>((from, to) => supabase.from('gami_grades')
-    .select('result, graded_at, prob:problem_id(ma_dang, phase)').eq('hoc_sinh_id', hocSinhId)
+    .select('result, graded_at, prob:problem_id(ma_dang, phase, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId)
     .order('graded_at', { ascending: true }).order('id', { ascending: true }).range(from, to))
   return (grades as any[])
     .filter((g) => g.prob?.ma_dang && maDangSet.has(g.prob.ma_dang))
-    .map((g) => ({ ma_dang: g.prob.ma_dang, ten_dang: tenMap.get(g.prob.ma_dang) ?? g.prob.ma_dang, nguon: g.prob.phase, ngay: g.graded_at, result: g.result }))
+    .map((g) => ({ ma_dang: g.prob.ma_dang, ten_dang: tenMap.get(g.prob.ma_dang) ?? g.prob.ma_dang, nguon: g.prob.phase, ngay: g.prob?.buoi?.ngay ?? g.graded_at, result: g.result }))
     .sort((a, b) => Date.parse(b.ngay) - Date.parse(a.ngay))
     .slice(0, 10)
 }

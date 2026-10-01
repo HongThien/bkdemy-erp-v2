@@ -11,9 +11,11 @@
 // colorful `logobk.png` (CEO gửi) chữ xám — trên navy không đọc được ⇒ đặt trong ô trắng bo góc.
 // Toàn bộ style INLINE hex (Tailwind v4 oklch bể ở html2canvas). SVG inline id RIÊNG (trùng id = sai màu).
 // Xuất ảnh: outerHTML → popup html2canvas (pattern V1 EtAnhGuiPH), logo fetch → data URL.
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { coNhom, mucKyNang, paragraphNhanXet, type PhieuKetQua } from '../../lib/detest'
+import html2canvas from 'html2canvas'
+import { toSvg as htmlToSvg } from 'html-to-image'
+import { coNhom, mucKyNang, paragraphNhanXet, type PhieuKetQua, type NguoiPhieu } from '../../lib/detest'
 
 // ═══ TOKENS (kit v2 §2) ═══════════════════════════════════════════════════════════════════════════
 export const NAVY = '#102B55'
@@ -222,23 +224,55 @@ function KhoiNhanXet({ para }: { para: string }) {
 }
 
 // ═══ KHỐI 5 — ĐỀ XUẤT LỚP (badge navy trung tính + watermark sách) ════════════════════════════════
-function KhoiLopDeXuat({ tenLop }: { tenLop: string | null }) {
+// ⭐ CEO 15/09: kèm 2 ảnh GV chính + TG chính của lớp (avatar tài khoản nhân sự), nhãn "Giáo viên" / "Giáo viên
+// bổ trợ". Không có ảnh ⇒ vòng tròn chữ cái đầu; lớp chưa phân công người đó ⇒ bỏ ô (không đẻ ô rỗng).
+function chuCaiDau(hoTen: string): string {
+  const w = hoTen.trim().split(/\s+/)
+  return ((w[0]?.[0] ?? '') + (w.length > 1 ? w[w.length - 1][0] : '')).toUpperCase()
+}
+// CEO 15/09 lần 2: "ảnh to lên, chia 2 phần: trái badge + chữ, phải 2 ảnh + tên" ⇒ grid 2 cột bằng nhau, ảnh 86px.
+function AvatarNhanSu({ nguoi, nhan }: { nguoi: NguoiPhieu; nhan: string }) {
+  const D = 86
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 132, flexShrink: 0 }}>
+      <div style={{ width: D, height: D, borderRadius: '50%', border: `3px solid ${GOLD}`, boxShadow: '0 4px 12px rgba(16,43,85,0.2)', overflow: 'hidden', background: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        {nguoi.anhUrl
+          ? <img src={nguoi.anhUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          : <span style={{ color: '#fff', fontSize: 30, fontWeight: 800, lineHeight: 1 }}>{chuCaiDau(nguoi.hoTen) || '?'}</span>}
+      </div>
+      <div style={{ marginTop: 7, fontSize: 12.5, fontWeight: 700, color: NAVY, lineHeight: 1.2, textAlign: 'center', maxWidth: 132, minHeight: 30, display: 'flex', alignItems: 'center' }}>{nguoi.hoTen}</div>
+      <div style={{ marginTop: 2, fontSize: 10.5, fontWeight: 600, color: CHU_PHU, lineHeight: 1.2, textAlign: 'center', whiteSpace: 'nowrap' }}>{nhan}</div>
+    </div>
+  )
+}
+function KhoiLopDeXuat({ tenLop, gvChinh = null, tgChinh = null }: { tenLop: string | null; gvChinh?: NguoiPhieu | null; tgChinh?: NguoiPhieu | null }) {
+  const coNguoi = !!(gvChinh || tgChinh)
   return (
     <div style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(135deg, #FFF8EA 0%, #FDF1D6 100%)', borderRadius: 16, padding: '14px 18px', boxShadow: BONG, border: '1px solid #F1DFB5' }}>
       <div style={{ position: 'absolute', right: 18, bottom: -6, opacity: 0.16, lineHeight: 0, pointerEvents: 'none' }} dangerouslySetInnerHTML={{ __html: I.book(GOLD, 96) }} />
       <TieuDe icon={I.cap()} text="5. Đề xuất lớp phù hợp" />
-      <div style={{ display: 'flex', alignItems: 'center', gap: 20, position: 'relative' }}>
-        {/* Badge = ảnh (nguyệt quế + vương miện + ruy băng, kit 13/09); khung xanh chiếm ~y 17%→68% của ảnh ⇒ chữ đè vào đó. */}
-        <div style={{ position: 'relative', width: 134, height: 128, flexShrink: 0 }}>
-          <img src={IMG_BADGE} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
-          <div style={{ position: 'absolute', left: 0, right: 0, top: '20%', height: '46%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 2, pointerEvents: 'none' }}>
-            <div style={{ fontSize: 10, fontWeight: 700, color: GOLD_SANG, letterSpacing: '2px' }}>LỚP</div>
-            <div style={{ fontSize: tenLop && tenLop.length > 4 ? 22 : 30, fontWeight: 800, color: '#fff', lineHeight: 1, textShadow: '0 2px 4px rgba(0,0,0,0.35)' }}>{tenLop ?? '—'}</div>
+      <div style={{ display: 'grid', gridTemplateColumns: coNguoi ? '1fr 1fr' : '1fr', alignItems: 'center', position: 'relative' }}>
+        {/* NỬA TRÁI: badge + câu dẫn */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0, paddingRight: coNguoi ? 12 : 0 }}>
+          {/* Badge = ảnh (nguyệt quế + vương miện + ruy băng, kit 13/09); khung xanh chiếm ~y 17%→68% của ảnh ⇒ chữ đè vào đó. */}
+          <div style={{ position: 'relative', width: 134, height: 128, flexShrink: 0 }}>
+            <img src={IMG_BADGE} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
+            <div style={{ position: 'absolute', left: 0, right: 0, top: '20%', height: '46%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 2, pointerEvents: 'none' }}>
+              <div style={{ fontSize: 10, fontWeight: 700, color: GOLD_SANG, letterSpacing: '2px' }}>LỚP</div>
+              <div style={{ fontSize: tenLop && tenLop.length > 4 ? 22 : 30, fontWeight: 800, color: '#fff', lineHeight: 1, textShadow: '0 2px 4px rgba(0,0,0,0.35)' }}>{tenLop ?? '—'}</div>
+            </div>
           </div>
+          {tenLop
+            ? <div style={{ fontSize: 12.5, color: CHU, lineHeight: 1.55, flex: 1, minWidth: 0 }}>Phù hợp với năng lực hiện tại của con, giúp con phát huy điểm mạnh và tiếp tục tiến bộ.</div>
+            : <div style={{ fontSize: 12.5, color: CHU_PHU, fontStyle: 'italic', flex: 1 }}>Đang được trung tâm rà soát.</div>}
         </div>
-        {tenLop
-          ? <div style={{ fontSize: 13.5, color: CHU, lineHeight: 1.6 }}>Phù hợp với năng lực hiện tại của con,<br />giúp con phát huy điểm mạnh và tiếp tục tiến bộ.</div>
-          : <div style={{ fontSize: 13, color: CHU_PHU, fontStyle: 'italic' }}>Đang được trung tâm rà soát.</div>}
+        {/* NỬA PHẢI: 2 ảnh GV chính + TG chính (avatar tài khoản nhân sự) */}
+        {coNguoi && (
+          <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'flex-start', paddingLeft: 12, borderLeft: '1px solid #F1DFB5', minWidth: 0 }}>
+            {gvChinh && <AvatarNhanSu nguoi={gvChinh} nhan="Giáo viên" />}
+            {tgChinh && <AvatarNhanSu nguoi={tgChinh} nhan="Giáo viên bổ trợ" />}
+          </div>
+        )}
       </div>
     </div>
   )
@@ -306,7 +340,7 @@ export function PhieuCard({ p, logoSrc = LOGO_URL }: { p: PhieuKetQua; logoSrc?:
         </div>
         <KhoiKyNang tb={mucKyNang(p.nhanXet?.trinhBay)} tt={mucKyNang(p.nhanXet?.tinhToan)} />
         <KhoiNhanXet para={para} />
-        <KhoiLopDeXuat tenLop={p.lopDeXuat?.tenLop ?? null} />
+        <KhoiLopDeXuat tenLop={p.lopDeXuat?.tenLop ?? null} gvChinh={p.lopDeXuat?.gvChinh ?? null} tgChinh={p.lopDeXuat?.tgChinh ?? null} />
       </div>
 
       {/* ─── FOOTER navy + dải gold ─── */}
@@ -332,7 +366,9 @@ export async function moPopupXuatAnh(el: HTMLElement, p: PhieuKetQua): Promise<v
   let cardHTML = el.outerHTML
   // Mọi asset → data URL (popup about:blank không resolve URL tương đối). Thiếu file (404) ⇒ bỏ url đó
   // (nền ảnh về trong suốt, ruy băng vector bên dưới lộ ra); riêng logo thiếu thì báo.
-  for (const u of ASSETS) {
+  // + avatar nhân sự (Supabase Storage public, khác origin — html2canvas không vẽ được nếu để URL) ⇒ cũng đổi sang data URL.
+  const anhNhanSu = [p.lopDeXuat?.gvChinh?.anhUrl, p.lopDeXuat?.tgChinh?.anhUrl].filter((u): u is string => !!u)
+  for (const u of [...ASSETS, ...anhNhanSu]) {
     try {
       const r = await fetch(u); if (!r.ok) throw new Error(String(r.status))
       cardHTML = cardHTML.split(u).join(await blobToDataUrl(await r.blob()))
@@ -381,15 +417,101 @@ async function copyImg(){
   popup.document.write(html); popup.document.close()
 }
 
+// ═══ COPY ẢNH THẲNG TRONG APP (CEO 22/09 "nút copy không nhạy, không cần tải về, chỉ cần copy") ══════════
+// Bản popup cũ (moPopupXuatAnh) trượt ở 2 chỗ: (1) `await flush()` + fetch 8 asset → data URL RỒI MỚI window.open ⇒
+// popup mở ngoài cử chỉ bấm chuột, trình duyệt chặn/đẩy ra sau; (2) trong popup, clipboard.write chạy trong callback
+// toBlob SAU html2canvas vài giây ⇒ hết "transient activation" ⇒ NotAllowedError ⇒ rơi xuống nhánh tải file.
+// Cách đúng: gọi navigator.clipboard.write NGAY trong handler click với ClipboardItem nhận PROMISE<Blob> — trình duyệt
+// giữ quyền ghi clipboard trong lúc mình dựng ảnh (Chrome/Edge/Safari đều hỗ trợ promise trong ClipboardItem).
+// Dựng ảnh từ CLONE phiếu đang hiện (scale 1, đặt ngoài màn) — asset cùng origin, avatar Storage qua useCORS.
+// Font Google cho foreignObject: html-to-image KHÔNG đọc được cssRules của stylesheet khác origin (SecurityError) ⇒ tự
+// fetch CSS Google Fonts (CORS *), tải từng file woff2 → data URL, đưa vào `fontEmbedCSS`. Làm 1 lần/phiên (cache).
+let FONT_CSS_NHUNG: Promise<string> | null = null
+async function fontCssNhung(): Promise<string> {
+  if (FONT_CSS_NHUNG) return FONT_CSS_NHUNG
+  FONT_CSS_NHUNG = (async () => {
+    const css = await (await fetch(FONTS_HREF)).text()
+    const urls = [...new Set([...css.matchAll(/url\((https:\/\/fonts\.gstatic\.com[^)]+)\)/g)].map((m) => m[1]))]
+    const map = new Map<string, string>()
+    await Promise.all(urls.map(async (u) => {
+      try { const b = await (await fetch(u)).blob(); map.set(u, await blobToDataUrl(b)) } catch { /* thiếu 1 file ⇒ giữ url gốc */ }
+    }))
+    return css.replace(/url\((https:\/\/fonts\.gstatic\.com[^)]+)\)/g, (_m, u: string) => `url(${map.get(u) ?? u})`)
+  })()
+  FONT_CSS_NHUNG.catch(() => { FONT_CSS_NHUNG = null })
+  return FONT_CSS_NHUNG
+}
+export async function dungAnhPhieu(el: HTMLElement): Promise<Blob> {
+  ensureFonts()
+  try { await (document as Document & { fonts?: { ready?: Promise<unknown> } }).fonts?.ready } catch { /* */ }
+  const host = document.createElement('div')
+  host.style.cssText = `position:fixed;left:-20000px;top:0;width:${PHIEU_W}px;pointer-events:none;`
+  const clone = el.cloneNode(true) as HTMLElement
+  clone.style.transform = 'none'; clone.style.width = `${PHIEU_W}px`
+  host.appendChild(clone); document.body.appendChild(host)
+  try {
+    await Promise.all([...host.querySelectorAll('img')].map((img) => img.complete ? Promise.resolve() : new Promise<void>((r) => { img.onload = () => r(); img.onerror = () => r() })))
+    // ⭐ CEO 23/09 "chụp bằng canvas bị lệch nhiều lần rồi (icon tiêu đề khối lệch chữ), không được thì render HTML":
+    // html2canvas TỰ VẼ LẠI layout bằng engine riêng (text baseline / inline SVG khác trình duyệt ⇒ lệch). html-to-image
+    // nhúng DOM vào SVG <foreignObject> rồi để TRÌNH DUYỆT vẽ ⇒ ảnh = đúng cái đang thấy trên màn (font Google nhúng
+    // data URL, ảnh nền/avatar nhúng data URL). html2canvas chỉ còn là DỰ PHÒNG khi foreignObject lỗi.
+    try {
+      const fontEmbedCSS = await fontCssNhung().catch(() => '')
+      // Chỉ lấy SVG từ thư viện rồi TỰ rasterize bằng Image.onload + canvas: `toBlob/toPng` của html-to-image gọi
+      // `img.decode()`, mà decode() KHÔNG bao giờ resolve khi tab đang ẩn (người dùng bấm Copy rồi chuyển ngay sang
+      // Zalo ⇒ treo "Đang chụp…" mãi). Image.onload thì vẫn chạy khi tab ẩn.
+      const h = clone.scrollHeight
+      const svg = await htmlToSvg(clone, { width: PHIEU_W, height: h, cacheBust: false, fontEmbedCSS })
+      const im = new Image()
+      await new Promise<void>((res, rej) => { im.onload = () => res(); im.onerror = () => rej(new Error('SVG không nạp được')); im.src = svg })
+      const cv = document.createElement('canvas'); cv.width = PHIEU_W * 2; cv.height = h * 2
+      const ctx = cv.getContext('2d'); if (!ctx) throw new Error('Không có canvas 2d')
+      ctx.drawImage(im, 0, 0, cv.width, cv.height)
+      const b = await new Promise<Blob | null>((r) => cv.toBlob(r, 'image/png'))
+      if (b && b.size > 0) return b
+      throw new Error('html-to-image trả blob rỗng')
+    } catch (e) {
+      console.warn('[phieu] html-to-image lỗi, dùng html2canvas:', e)
+      const canvas = await html2canvas(clone, { scale: 2, backgroundColor: null, useCORS: true, logging: false, scrollX: 0, scrollY: 0, width: clone.scrollWidth, height: clone.scrollHeight, windowWidth: clone.scrollWidth, windowHeight: clone.scrollHeight })
+      return await new Promise<Blob>((res, rej) => canvas.toBlob((bb) => (bb ? res(bb) : rej(new Error('Không tạo được ảnh'))), 'image/png'))
+    }
+  } finally { host.remove() }
+}
+// GỌI ĐỒNG BỘ trong onClick (không await gì trước). `truoc` = việc cần xong trước khi chụp (vd flush nháp) — chạy BÊN
+// TRONG promise của blob nên vẫn nằm trong cử chỉ. Ném lỗi có câu tiếng Việt để UI hiện cạnh nút (không alert).
+export async function copyAnhPhieu(el: HTMLElement, truoc?: () => Promise<void>): Promise<void> {
+  if (!navigator.clipboard?.write || typeof ClipboardItem === 'undefined') throw new Error('Trình duyệt không hỗ trợ copy ảnh — dùng Chrome / Edge.')
+  const blobP = (async () => { await truoc?.(); return dungAnhPhieu(el) })()
+  try {
+    await navigator.clipboard.write([new ClipboardItem({ 'image/png': blobP })])
+  } catch (e: any) {
+    // Trình duyệt cũ không nhận Promise trong ClipboardItem ⇒ chờ blob rồi ghi (có thể đã hết cử chỉ ⇒ báo bấm lại).
+    const blob = await blobP
+    try { await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]) }
+    catch (e2: any) {
+      const ten = e2?.name ?? e?.name
+      if (ten === 'NotAllowedError') throw new Error('Trình duyệt chưa cho ghi clipboard — bấm lại nút Copy (giữ tab này đang mở).')
+      throw new Error(e2?.message ?? e?.message ?? 'Không copy được ảnh')
+    }
+  }
+}
+
 // Modal xem/copy bản in — dùng khi xem lại phiếu của ca đã trả.
 export function PhieuTestModal({ p, onClose }: { p: PhieuKetQua; onClose: () => void }) {
   const cardRef = useRef<HTMLDivElement>(null)
+  const [tt, setTt] = useState<string | null>(null)
+  const copy = () => {
+    if (!cardRef.current) return
+    setTt('⏳ Đang chụp…')
+    copyAnhPhieu(cardRef.current).then(() => setTt('✅ Đã copy — Ctrl+V vào Zalo')).catch((e) => setTt('⚠ ' + (e.message ?? String(e))))
+  }
   return createPortal(
     <div className="fixed inset-0 z-[90] flex flex-col bg-slate-900/70" onClick={onClose}>
       <div className="flex items-center gap-3 border-b border-slate-700 bg-slate-800 px-4 py-2.5 text-white" onClick={(e) => e.stopPropagation()}>
         <span className="text-sm font-semibold">Phiếu kết quả — {p.hoTenHs}</span>
         {p.baiDaChamUrl && <a href={p.baiDaChamUrl} target="_blank" rel="noreferrer" className="ml-auto rounded-md border border-slate-500 px-3 py-1 text-sm hover:bg-slate-700">📄 Bài đã chấm</a>}
-        <button onClick={() => cardRef.current && moPopupXuatAnh(cardRef.current, p)} className={p.baiDaChamUrl ? 'rounded-md bg-indigo-600 px-3 py-1 text-sm font-medium hover:bg-indigo-500' : 'ml-auto rounded-md bg-indigo-600 px-3 py-1 text-sm font-medium hover:bg-indigo-500'}>📋 Copy ảnh</button>
+        {tt && <span className={`text-[12px] ${tt.startsWith('⚠') ? 'text-rose-300' : 'text-emerald-300'}`}>{tt}</span>}
+        <button onClick={copy} className={p.baiDaChamUrl ? 'rounded-md bg-indigo-600 px-3 py-1 text-sm font-medium hover:bg-indigo-500' : 'ml-auto rounded-md bg-indigo-600 px-3 py-1 text-sm font-medium hover:bg-indigo-500'}>📋 Copy ảnh</button>
         <button onClick={onClose} className="rounded-md border border-slate-500 px-3 py-1 text-sm hover:bg-slate-700">Đóng</button>
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-4" onClick={(e) => e.stopPropagation()}>

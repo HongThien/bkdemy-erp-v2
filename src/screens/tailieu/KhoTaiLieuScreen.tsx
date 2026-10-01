@@ -34,7 +34,9 @@ import { saveOnTapConfig, rebuildOnTapInDoc, btvnDaDong, type OnTapConfig } from
 
 // Loại tài liệu có thể mở builder để sửa từ Kho. (mt_buoi = INSTANCE đã gán buổi — sửa nội dung
 // phải qua master rồi gán lại, không sửa trực tiếp instance để tránh lệch với các lớp khác đã gán.)
-const EDITABLE = new Set(['et', 'giao_trinh', 'giao_trinh_buoi', 'btvn', 'de_thi', 'mt'])
+// Đề thi KHÔNG sửa / nhân bản / xoá ở đây nữa (CEO 01/10): chỗ lưu + sửa đề là Kho đề thi (Nhập kho › Đề thi); Kho tài liệu chỉ để IN đề.
+const EDITABLE = new Set(['et', 'giao_trinh', 'giao_trinh_buoi', 'btvn', 'mt'])
+const CHI_IN = new Set(['de_thi'])
 
 type DaiRow = TaiLieu & { nguon: 'dai'; lop_id?: string | null; ngay?: string | null; nguon_id?: string | null; nguon_buoi?: string | null }
 type Row = DaiRow | (HinhKhoRow & { nguon: 'hinh' })
@@ -448,10 +450,10 @@ export default function KhoTaiLieuScreen() {
                               thì hiện ở lượt xem sau, ĐÚNG tinh thần "không chờ đợi gì cả" của Thùy. */}
                           <button onClick={() => useStore.getState().enqueueLinkGen(r.id, r.loai)} title="Tạo lại link (dùng khi mãi không thấy link, hoặc nội dung vừa đổi ở nơi khác)"
                             className="shrink-0 rounded-md border border-slate-200 px-2 py-1 text-[12px] text-slate-400 hover:border-sky-300 hover:text-sky-600">↻</button>
-                          <button onClick={() => nhanBan(r)} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Nhân bản</button>
+                          {!CHI_IN.has(r.loai) && <button onClick={() => nhanBan(r)} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Nhân bản</button>}
                           {/* Xoá 1 buổi GIỮA lịch của lớp ⇒ các buổi sau dồn số (deleteTaiLieu tự đánh
                               số lại cả lớp) → doc nào đổi tiêu đề buổi thì phải làm mới link PDF. */}
-                          <button onClick={async () => { if (confirm(`Xoá “${r.ten}”?`)) { for (const d of await deleteTaiLieu(r.id)) useStore.getState().enqueueLinkGen(d.id, d.loai); reload() } }} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">Xoá</button>
+                          {!CHI_IN.has(r.loai) && <button onClick={async () => { if (confirm(`Xoá “${r.ten}”?`)) { for (const d of await deleteTaiLieu(r.id)) useStore.getState().enqueueLinkGen(d.id, d.loai); reload() } }} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">Xoá</button>}
                         </div>
                         )}
                       </td>

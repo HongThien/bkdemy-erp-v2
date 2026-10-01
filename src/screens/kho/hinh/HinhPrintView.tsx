@@ -13,7 +13,8 @@
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
-import { MathText } from '../ui'
+import { MathText, LT_CORE_CSS, LyThuyetBlockView, BaiTapHeader } from '../ui'
+import { parseLyThuyetBlocks, laDauNhomBaiTap } from '../../../lib/lythuyetBlocks'
 import { type CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 import { CHROME_CSS, buildPagedCss, gtPageCss, printWithFilename, safeFileName, GT_BK_CSS } from '../../tailieu/PrintView'
 import { BK_CSS, BK_PAGE_CSS, ETHeaderBK, BtvnBkHead } from '../../tailieu/bkPrint'
@@ -114,7 +115,7 @@ export default function HinhPrintView({ ban, onClose, perHS, headless, onReady, 
     // trước. Dùng thẳng gtPageCss (đã export) thay vì chép lại CSS — cùng 1 nguồn, Hình tự động khớp
     // Đại nếu sau này đổi màu/kiểu dải, không phải sửa 2 nơi.
     const css = buildPagedCss({ ten: ban.tieuDe, khoi: '' }, { header: 'none', footer: 'none' }, '#0f766e')
-      + gtPageCss('') + HINH_CSS + (perHS ? BK_CSS + BK_PAGE_CSS : '') + (ban.laBtvn ? BK_CSS + GT_BK_CSS : '')
+      + gtPageCss('') + HINH_CSS + LT_CORE_CSS + (perHS ? BK_CSS + BK_PAGE_CSS : '') + (ban.laBtvn ? BK_CSS + GT_BK_CSS : '')
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = src.innerHTML
     // Cùng cách chống race của PrintView: mỗi run một container riêng, resolve xong mới ẨN container
@@ -336,12 +337,15 @@ export function MucsBlock({ mucs, gv, moHinhLyThuyet, batDau = 1, cauTu }: { muc
         if (hienLt) moHinhLtDaHien = m.moHinhId!
         return (
           <Fragment key={i}>
-            {hienLt && (
-              <div className="hp-box-lt">
-                <div className="hp-box-lt-t">Lý thuyết · {ltMh!.ten}</div>
-                <MathText>{ltMh!.noiDung}</MathText>
-              </div>
-            )}
+            {hienLt && (() => {
+              const blocks = parseLyThuyetBlocks(ltMh!.noiDung)
+              return <>{blocks.map((b, j) => (
+                <Fragment key={j}>
+                  {laDauNhomBaiTap(blocks, j) && <BaiTapHeader />}
+                  {b.loai === 'text' ? <MathText>{b.noiDung}</MathText> : <LyThuyetBlockView b={b} />}
+                </Fragment>
+              ))}</>
+            })()}
           <div className="hp-de">
             {/* ⭐ 16/08 (Thùy): ĐỀ và ĐÁP ÁN là HAI KHU RIÊNG — hình của đề ngang với đề, hình của lời
                 giải ngang với lời giải. Trước đây cả bài là MỘT dòng chảy: hình đề `float:right` còn

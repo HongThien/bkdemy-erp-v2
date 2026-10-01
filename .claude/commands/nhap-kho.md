@@ -89,7 +89,11 @@ Format 1 câu (theo memory `nhap-cau-hgt-tu-pdf.md`):
   "loai_cau": "trac_nghiem",       // trac_nghiem | dung_sai | tra_loi_ngan
   "noi_dung": "Cho ... $\\vec{a}=(1,2,3)$ ...",
   "lua_chon": ["$A. ...$.", "$B. ...$.", "$C. ...$.", "$D. ...$."],   // trac_nghiem
-  "dap_an": "A",                    // trac_nghiem: 'A'/'B'/'C'/'D'; tra_loi_ngan: '12,5'
+  "dap_an": "A",                    // trac_nghiem: 'A'/'B'/'C'/'D' (KHÔNG bọc $); tra_loi_ngan số đơn giản: '12,5' (KHÔNG bọc $)
+  // tra_loi_ngan mà đáp án là BIỂU THỨC LaTeX (phân số/căn/…) ⇒ BẮT BUỘC bọc "$…$" — vd "$\\dfrac{\\sqrt{x}}{\\sqrt{x}-2}$".
+  // Lý do (CEO 14/09, phát hiện 55 câu K9 hiện vỡ): MathText chỉ auto-katex chữ TRẦN khi lệnh có ngoặc KHÔNG LỒNG
+  // ("\dfrac{23}{3}" ok trần) — "\dfrac{\sqrt{x}}{\sqrt{x}-2}" có \sqrt{x} LỒNG trong đối số ⇒ regex fallback đứt giữa
+  // chừng, hiện vỡ/thiếu nếu để trần. Bọc $ luôn cho chắc, không phải đoán khi nào cần.
   "loi_giai": "Ta có $\\vec{a} \\cdot \\vec{b} = ...$ ...",
   "anh_de": null,
   "anh_dap_an": null,

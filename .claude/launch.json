@@ -119,20 +119,119 @@
     {
       "name": "dev-ph",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["--prefix", "C:/Users/Admin/Desktop/2/PH-App/bkdemy-ph-app", "run", "dev", "--", "--port", "3010"],
+      "runtimeArgs": [
+        "--prefix",
+        "C:/Users/Admin/Desktop/2/PH-App/bkdemy-ph-app",
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "3010"
+      ],
       "port": 3010
     },
     {
       "name": "dev-khaosat",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev:khaosat"],
+      "runtimeArgs": [
+        "run",
+        "dev:khaosat"
+      ],
       "port": 5184
     },
     {
       "name": "preview-khaosat",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "preview:khaosat", "--", "--port", "5185", "--strictPort"],
+      "runtimeArgs": [
+        "run",
+        "preview:khaosat",
+        "--",
+        "--port",
+        "5185",
+        "--strictPort"
+      ],
       "port": 5185
+    },
+    {
+      "name": "preview-hs",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "preview:hs",
+        "--",
+        "--port",
+        "5186",
+        "--strictPort"
+      ],
+      "port": 5186
+    },
+    {
+      "name": "games",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "scripts/serve-games.mjs",
+        "5260"
+      ],
+      "port": 5260
+    },
+    {
+      "name": "nong-trai",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/WBPC/Desktop/BKERP/BKGame/NongTrai/serve.mjs",
+        "5270"
+      ],
+      "port": 5270
+    },
+    {
+      "name": "nong-trai-dohoa",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/WBPC/Desktop/BKERP/BKGame/NongTrai-dohoa/serve.mjs",
+        "5271"
+      ],
+      "port": 5271
+    },
+    {
+      "name": "nong-trai-dohoa-kiem",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/WBPC/Desktop/BKERP/BKGame/NongTrai-dohoa/serve.mjs",
+        "5272"
+      ],
+      "port": 5272
+    },
+    {
+      "name": "bat-thu",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "C:/Users/WBPC/Desktop/BKERP/BKGame/BatThu",
+        "run",
+        "dev"
+      ],
+      "port": 5280
+    },
+    {
+      "name": "dev-sukien",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:sukien"
+      ],
+      "port": 5186
+    },
+    {
+      "name": "dev-alt2",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "5203"
+      ],
+      "port": 5203
     }
   ]
 }

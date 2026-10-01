@@ -176,3 +176,24 @@ không lệch bố cục · không chữ nào bị raster hoá · tsc + build s�
   (script chưa bắt được). Dựng xong DanhSachHS.tsx dùng chung 3 khu.
 - Kết luận chung: càng bảo ChatGPT viết spec/code, càng nhiều thứ phải bỏ. Bảo nó vẽ đúng, sinh asset riêng
   từng cái bằng công cụ tạo ảnh, còn lại Claude làm từ ảnh đích.
+- **hs-skin-rpg-v1 (28/09, đơn CHỈ-ASSET đầu tiên — Đơn 4 `design/DON-HANG-SKIN-HS.md`):** ChatGPT giao đủ 7 file đúng tên/cỡ,
+  alpha thật, không viền trắng trên nền tối, không chữ — **đạt ngay v1, không trả lại**. Nhưng `design-check` báo 4 RỚT, cả 4 là
+  chấm nhầm do script viết cho đơn nguyên màn: thiếu reference (đơn dặn bỏ) · tranh nền "có chữ" (đảo nổi chi tiết ở 1/4 trên theo
+  đơn) · decor 512 < 600 (đơn ghi 512) · đường phân cách "rỗng" 98% (decor mảnh). → sửa script: cờ `--chi-asset`, đo cạnh sắc
+  backdrop trên 75% DƯỚI, decor cạnh dài ≥ 512, decor >95% trong suốt chỉ CHÚ Ý (RỖNG khi >99.5%); kit §2 thêm "ĐƠN CHỈ-ASSET",
+  §5 decor 512. Chạy lại hs-home-v4: kết quả không đổi. Bài học: **script RỚT ≠ hàng hỏng** — mở ảnh trước khi trả.
+  → **SAI, BỎ cùng ngày (xem dòng dưới):** "đạt v1" chỉ đúng với 7 mảnh đơn ghi; cả kiểu đơn chỉ-asset là sai từ gốc.
+- **hs-skin-rpg-v1 — bài học thật (28/09 chiều):** ChatGPT vẽ CẢ ảnh toàn cảnh (nhân vật pháp sư + mèo, lâu đài ngang, 8 icon
+  khác, banner tím/hồng) cùng lúc với 7 mảnh, nhưng ảnh đó KHÔNG vào zip và các mảnh của nó KHÔNG được sinh. Claude dựng từ
+  7 mảnh + mockup tự vẽ ⇒ Thùy mở app thấy "méo giống ảnh thiết kế gốc". Lỗi do ĐƠN (Claude soạn): đơn chỉ-asset bỏ Pha B/C
+  ⇒ không có gì buộc ảnh toàn cảnh đi kèm, không có gì buộc mảnh khớp ảnh. Kèm theo: hs-skin-lofi-v1 là khối hình ghép bằng
+  code (không phải tranh), 2 biến thể lệch 0,4/255, DESIGN.md thiếu 4/6 mục. → Thùy chốt **mọi kit đủ 3 phần**: ảnh toàn cảnh
+  mọi khổ màn trong `reference/` · cột **Vị trí & cỡ** trong bảng kiểm kê · đủ asset thấy trong ảnh. Kit §2 thay mục CHỈ-ASSET,
+  §4 thêm cột, §8 thêm câu 9–11 (đếm đối chiếu ảnh ↔ assets); `design-check` bỏ `--chi-asset`, rớt khi thiếu cột Vị trí & cỡ.
+  Đơn 3 v2 + 4 v2 viết lại theo ảnh gốc (`design/DON-HANG-SKIN-HS.md`). Luật phụ: Thùy thả ảnh vào `public/` thì bị đóng vào
+  bản build — đơn ghi rõ chỉ bỏ vào `design/handoff/`.
+- **Đơn 1 Nhiệm vụ về 29/09 (`design/bk-ui-src/Mission/Mission_01..28.png`, giao từng hình, không zip):** #01–08 ảnh toàn cảnh ·
+  #09–24 đúng 16 icon theo DANH SÁCH GIAO · **#25–27 là bản TRÙNG của #22–24** (cùng byte) · vầng sáng `fx_sao_moi_sang` rơi xuống **#28**
+  ⇒ **không đổi tên theo số thứ tự mù**: soi từng hình (md5 lọc trùng + xem) rồi mới map. Icon 1254² PNG alpha, quầng sáng có viền đỏ/vàng
+  lởm chởm khi xem trên nền đen — ở cỡ thật (≤90px) không thấy. Nén PowerShell System.Drawing: icon 160² (~45KB), fx 384². Icon trong ảnh
+  toàn cảnh KHÁC icon giao riêng (vd #01 N1 là cuộn giấy, #09 là kiếm) — dựng theo BỐ CỤC ảnh toàn cảnh, hình lấy bản giao riêng.

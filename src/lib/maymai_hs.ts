@@ -1,19 +1,20 @@
 // Seam MAY MẮN — vòng quay HS (Thùy 11/09). Kiến trúc mirror maymai.ts (nhân sự) nhưng:
-//   · Điều kiện quay = ≥1 batch 10 câu tự luyện hôm nay đúng ≥ngưỡng (config, default 70%).
-//   · Thưởng EXP (50/100/150/200 · 40/40/15/5%) — lưu bảng RIÊNG (may_man_hs_luot), CHƯA
-//     cộng vào EXP tháng lương (§2.0: đổi ý thì thêm source vào fn_gami_exp_xu_thang, 1 mig nhỏ).
+//   · 2 chế độ do SERVER quyết (che_do), đổi ở nhiem_vu_cau_hinh.bat_dau (Toán 01/10/2026 — mig 202609281810):
+//     'tu_luyen' (cũ): 1 lượt tự luyện 10 câu đúng ≥70% · 50/100/150/200 EXP · EXP KHÔNG thành xu.
+//     'nhiem_vu' (mới): xong ≥2 nhiệm vụ ngày của môn · 20/30/50/100/200 EXP · EXP ĐỔI RA XU (trần app 30/tháng/môn).
 //   · RNG + quyết định giải ở SERVER (fn_may_man_hs_quay), client chỉ chạy animation tới ô server trả.
 import { supabase } from './supabase'
 
 export type MayManHSLichSu = { ngay: string; exp: number; mon: string | null; created_at: string }
-export type MayManHSDuDieuKien = { du: boolean; nguong_pct?: number; bai_lam_id?: string; mon?: string | null; so_dung?: number; so_cau?: number }
+export type MayManHSDuDieuKien = { du: boolean; che_do?: 'nhiem_vu'; nguong_pct?: number; bai_lam_id?: string; mon?: string | null; so_dung?: number; so_cau?: number; so_nv?: number; can?: number }
 export type MayManHSCuaToi = {
   ngay: string
   active: boolean
   hom_nay: { exp: number; mon: string | null; created_at: string } | null   // null = hôm nay chưa quay
   exp_thang: number                                                          // tổng EXP May Mắn tháng này (ước lượng)
   du_dieu_kien: MayManHSDuDieuKien
-  ti_le: { ti_le_50: number; ti_le_100: number; ti_le_150: number; ti_le_200: number }
+  che_do: 'tu_luyen' | 'nhiem_vu'
+  ti_le: Record<string, number>   // khoá 'ti_le_<exp>' — tập giải theo che_do
   lich_su: MayManHSLichSu[]
 }
 export type MayManHSKetQua = { id: string; ngay: string; exp: number; mon: string | null }

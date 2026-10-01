@@ -1,0 +1,13 @@
+{
+  "src/screens/hocsinh/AvatarHS.tsx": 3,
+  "src/screens/hocsinh/CaBoTroHS.tsx": 2,
+  "src/screens/hocsinh/DienOCau.tsx": 3,
+  "src/screens/hocsinh/DoiMatKhau.tsx": 12,
+  "src/screens/hocsinh/HocSinhApp.tsx": 69,
+  "src/screens/hocsinh/HocTuDau.tsx": 5,
+  "src/screens/hocsinh/HomeHS912.tsx": 1,
+  "src/screens/hocsinh/MayManHS.tsx": 21,
+  "src/screens/hocsinh/SoTayHS.tsx": 1,
+  "src/screens/hocsinh/ThongTinHocTap.tsx": 7,
+  "src/screens/hocsinh/TuLuyenChuDe.tsx": 3
+}

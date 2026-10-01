@@ -6,15 +6,20 @@ import { createPortal } from 'react-dom'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listHSDangHoc } from '../../lib/tuyensinh'
 import { listLop, listHSCuaLop, listLopCuaHS, type Lop, type HSTrongLop } from '../../lib/nhansu'
-import { getMasteryHS, getHinhMasteryHS, listBuoiHoatDong, getMasteryRollup, getMasteryByDang, getMasteryByChuyenDe, getTongQuanHS, getClassMatrix, getAllClassesCompletion, bucketMucDo, SRC_LABEL, type DangMastery, type HinhMastery, type DangEval, type BuoiActivity, type HSRollup, type TongQuanHS, type ClassMatrix, type MatrixPhase, type MatrixCell, type ClassCompletion, type ActPct, type BucketPct, type HoanThanhCard as HoanThanhCardT, type MucDoFilter } from '../../lib/mastery'
+import { getMasteryHS, listBuoiHoatDong, getMasteryRollup, getMasteryByDang, getMasteryByChuyenDe, getTongQuanHS, getClassMatrix, getAllClassesCompletion, bucketMucDo, SRC_LABEL, type DangMastery, type DangEval, type BuoiActivity, type HSRollup, type TongQuanHS, type ClassMatrix, type MatrixPhase, type MatrixCell, type ClassCompletion, type ActPct, type BucketPct, type HoanThanhCard as HoanThanhCardT, type MucDoFilter } from '../../lib/mastery'
 import {
   listKyThi, createKyThi, listDiemThiByKyThi, upsertDiemThi, currentMua, getDiemThiTruong, getBXHDiemMTKhoi,
-  listKyThiMTCuaLop, setKhungMT, tinhDiemMT,
+  listKyThiMTChoLop, bulkSetKhungMT, tinhDiemMT,
   LOAI_KY_THI, HE_SO_KY_THI, DOT_LABEL, DOT_ORDER, type KyThi, type KyThiMTLop, type DiemThi, type Verdict, type TruongDiemRow, type BXHDiemMTRow,
 } from '../../lib/thanhtich'
 import { BuoiDetail } from '../gami/BuoiHocScreen'
-import type { TabKey } from '../../lib/gami'
+import type { TabKey, Problem, Grade, ETResult } from '../../lib/gami'
+import { loadMTForBuoi, listProblems, listGrades, gradeMTChiTiet, deleteGrade } from '../../lib/gami'
 import { tenHienThiDs } from '../../lib/hoten'
+import { supabase } from '../../lib/supabase'
+import type { CauHoi } from '../../lib/kho/api'
+import type { MTPhanCaus } from '../../lib/mt'
+import { DEFAULT_DIEM_MT } from '../../lib/tailieu'
 
 // Chỉ môn CÓ KHO mới suy được mastery (khoCuaMon dispatch dai_/khtn_). Anh/Văn chưa có kho.
 const MON_CO_KHO = ['Toán', 'KHTN']
@@ -183,8 +188,8 @@ function TongQuanTab({ hsId, mon }: { hsId: string; mon: string }) {
             <>
               <HoanThanhCard label="Đại số — Cơ bản (1-3)" card={d.hoanThanh.daiCoBan} />
               <HoanThanhCard label="Đại số — Nâng cao (4-5)" card={d.hoanThanh.daiNangCao} />
-              <HoanThanhCard label="Hình học — Cơ bản" card={d.hoanThanh.hinhCoBan} />
-              <HoanThanhCard label="Hình học — Nâng cao" card={d.hoanThanh.hinhNangCao} />
+              <HoanThanhCard label="Hình — Cơ bản" card={d.hoanThanh.hinhCoBan} />
+              <HoanThanhCard label="Hình — Nâng cao" card={d.hoanThanh.hinhNangCao} />
             </>
           )}
         </div>
@@ -274,40 +279,28 @@ function ActCard({ label, cls, a, trend, sub }: { label: string; cls: string; a:
   )
 }
 
-// Hình (mô hình) → hình chiếu DangMastery-shape để TÁI DÙNG NGUYÊN DangSection/DangRow (KHÔNG bịa UI
-// riêng). `ma_dang`=hinh_baitoan_id (khoá key) · `ten_dang`=mã node (vd "BT.08.047") · `ten_chuyen_de`=
-// tên mô hình chứa node. `muc_do` = `cap` node CLIP về 1-5 — XẤP XỈ `mucDoTuCap` (bucket cơ bản/nâng cao
-// thật cần biết cách giải có bổ đề, chưa join ở đây; đủ dùng cho việc TÁCH 2 bảng, sai số nhỏ ở biên).
-function hinhToDangShape(rows: HinhMastery[]): DangMastery[] {
-  return rows.map((r) => ({ ma_dang: r.hinh_baitoan_id, ten_dang: r.ma, ten_chuyen_de: r.ten_mo_hinh, muc_do: Math.min(5, Math.max(1, r.cap)), mastery: r.mastery, evals: r.evals }))
-}
-
 // SUB-TAB DẠNG BÀI: bảng mastery per-dạng (cửa sổ ngày + toggle BTVN). Mặc định "Tất cả" để khớp % ở Tổng quan.
 // 1 khu riêng (Thùy 07-14): bảng chính (mọi dạng, như cũ) + 4 bảng phụ Đại/Hình × cơ bản/nâng cao (cùng
 // scope filter Cửa sổ/Gộp BTVN, tính 1 lần rồi bucket theo muc_do client-side — không thêm query).
-// Hình (mô hình, Thùy 21/08): KP = hinh_baitoan_id, đo qua `getHinhMasteryHS` (nguồn CHỈ et/mt/btvn TRONG
-// buổi — Hình mô hình chưa có kênh test-online). Chỉ tách nhánh Đại/Hình cho môn Toán.
+// Hình (Thùy 29/09): cột Hình = dạng nhánh Hình học (Bài) + Hình giải tích — lấy CÙNG getMasteryHS như Đại,
+// tách theo nhomBC của nhánh (registry), không còn đọc Hình Luyện (mô hình). Bài chưa gán độ khó tính Cơ bản
+// (mucDoBC). Chỉ tách nhánh Đại/Hình cho môn Toán.
 function DangBaiTab({ hsId, mon }: { hsId: string; mon: string }) {
   const [days, setDays] = useState<number | null>(null) // null = tất cả (khớp Tổng quan all-time)
   const [btvn, setBtvn] = useState(false)
   const [rows, setRows] = useState<DangMastery[] | null>(null)
-  const [hinhRows, setHinhRows] = useState<HinhMastery[] | null>(null)
   const [loading, setLoading] = useState(false)
   const laToan = mon === 'Toán'
   useEffect(() => {
     setLoading(true)
-    Promise.all([
-      getMasteryHS(hsId, mon, { includeBTVN: btvn, days: days ?? undefined }),
-      laToan ? getHinhMasteryHS(hsId, { includeBTVN: btvn, days: days ?? undefined }) : Promise.resolve([]),
-    ]).then(([r, h]) => { setRows(r); setHinhRows(h) }).catch(() => { setRows([]); setHinhRows([]) }).finally(() => setLoading(false))
-  }, [hsId, mon, days, btvn, laToan])
-  const coBan = useMemo(() => (rows ?? []).filter((r) => bucketMucDo(r.muc_do) === 'co_ban'), [rows])
-  const nangCao = useMemo(() => (rows ?? []).filter((r) => bucketMucDo(r.muc_do) === 'nang_cao'), [rows])
-  const hinhShaped = useMemo(() => hinhToDangShape(hinhRows ?? []), [hinhRows])
-  const hinhCoBan = useMemo(() => hinhShaped.filter((r) => bucketMucDo(r.muc_do) === 'co_ban'), [hinhShaped])
-  const hinhNangCao = useMemo(() => hinhShaped.filter((r) => bucketMucDo(r.muc_do) === 'nang_cao'), [hinhShaped])
+    getMasteryHS(hsId, mon, { includeBTVN: btvn, days: days ?? undefined })
+      .then(setRows).catch(() => setRows([])).finally(() => setLoading(false))
+  }, [hsId, mon, days, btvn])
+  const loc = (nhom: 'dai' | 'hinh', muc: 'co_ban' | 'nang_cao') => (rows ?? []).filter((r) => r.nhomBC === nhom && bucketMucDo(r.mucDoBC) === muc)
+  const coBan = loc('dai', 'co_ban'), nangCao = loc('dai', 'nang_cao')
+  const hinhCoBan = loc('hinh', 'co_ban'), hinhNangCao = loc('hinh', 'nang_cao')
   const dayBtn = (on: boolean) => `h-7 rounded-md px-2.5 text-[12px] font-semibold transition ${on ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`
-  const hinhEmptyMsg = 'Chưa có lần đánh giá Hình (mô hình) nào — chấm ET/BTVN có gán giáo trình Hình cho buổi này.'
+  const hinhEmptyMsg = 'Chưa có lần đánh giá Hình nào (Hình học / Hình giải tích).'
   return (
     <>
       <div className="mb-3 flex flex-wrap items-center gap-2">
@@ -331,8 +324,8 @@ function DangBaiTab({ hsId, mon }: { hsId: string; mon: string }) {
               <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
                 <DangSection title="Đại số — Cơ bản (độ khó 1-3)" rows={coBan} compact />
                 <DangSection title="Đại số — Nâng cao (độ khó 4-5)" rows={nangCao} compact />
-                <DangSection title="Hình học — Cơ bản" rows={hinhCoBan} compact emptyMsg={hinhEmptyMsg} />
-                <DangSection title="Hình học — Nâng cao" rows={hinhNangCao} compact emptyMsg={hinhEmptyMsg} />
+                <DangSection title="Hình — Cơ bản (Hình học + Hình giải tích)" rows={hinhCoBan} compact emptyMsg={hinhEmptyMsg} />
+                <DangSection title="Hình — Nâng cao (Hình học + Hình giải tích)" rows={hinhNangCao} compact emptyMsg={hinhEmptyMsg} />
               </div>
             </div>
           )}
@@ -993,7 +986,7 @@ function PivotRow({ it }: { it: PivotItem }) {
 // 2 sub-tab: Điểm thi trên trường (view+filter+sort, đúng cột Thùy yêu cầu) · Nhập điểm (port nguyên khối
 // UI cũ của Quản lý Level: chọn lớp → kì thi → nhập Điểm/Verdict/Vượt-band từng HS).
 function DiemThiTab() {
-  const [sub, setSub] = useState<'truong' | 'bxh_mt' | 'nhap' | 'nhap_mt'>('truong')
+  const [sub, setSub] = useState<'truong' | 'bxh_mt' | 'nhap' | 'nhap_mt' | 'cham_mt'>('truong')
   const subBtn = (on: boolean) => `-mb-px border-b-2 px-3 py-2 text-[13px] font-medium transition ${on ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`
   return (
     <>
@@ -1001,9 +994,10 @@ function DiemThiTab() {
         <button onClick={() => setSub('truong')} className={subBtn(sub === 'truong')}>Điểm thi trên trường</button>
         <button onClick={() => setSub('bxh_mt')} className={subBtn(sub === 'bxh_mt')}>Xếp hạng MT trung tâm</button>
         <button onClick={() => setSub('nhap')} className={subBtn(sub === 'nhap')}>Nhập điểm (Thi trường)</button>
-        <button onClick={() => setSub('nhap_mt')} className={subBtn(sub === 'nhap_mt')}>Nhập điểm MT</button>
+        <button onClick={() => setSub('nhap_mt')} className={subBtn(sub === 'nhap_mt')}>Nhập điểm MT (theo tháng)</button>
+        <button onClick={() => setSub('cham_mt')} className={subBtn(sub === 'cham_mt')}>Chấm MT chi tiết</button>
       </div>
-      {sub === 'truong' ? <DiemThiTruongView /> : sub === 'bxh_mt' ? <BXHDiemMTView /> : sub === 'nhap' ? <NhapDiemView /> : <NhapDiemMTView />}
+      {sub === 'truong' ? <DiemThiTruongView /> : sub === 'bxh_mt' ? <BXHDiemMTView /> : sub === 'nhap' ? <NhapDiemView /> : sub === 'nhap_mt' ? <NhapDiemMTView /> : <ChamMTChiTietView />}
     </>
   )
 }
@@ -1405,10 +1399,11 @@ function TaoKyThiModal({ lop, mua, onClose, onCreated }: { lop: Lop; mua: string
   )
 }
 
-// ── NHẬP ĐIỂM MT theo LỚP (Thùy 14/09) — tab thứ 4 của Điểm thi. Bên trái: list lớp; bên phải: LƯỚI
-// HS × các buổi MT của lớp (chỉ hiện buổi ĐÃ có ky_thi mt_sat_hach — GV mở tab MT trong buổi lần đầu để
-// tạo). Click ô mở modal nhập chi tiết CB/NC/Full + Thi lại (giống DiemMTPanel bên buổi học, reuse công
-// thức và upsertDiemThi — trigger DB tự tính điểm+verdict).
+// ── NHẬP ĐIỂM MT theo HS (Thùy 14/09) — ⭐ điểm MT ĐI THEO HỌC SINH, không đi theo lớp. Lớp CHỈ là filter
+// chọn roster HS. Cột = THÁNG (gộp mọi buổi MT trong tháng đó, dù thi ở lớp nào — HS chuyển lớp giữa
+// mùa ⇒ vẫn hiện điểm MT của cả 2 lớp trong cùng 1 cột tháng). Ô = điểm của HS trong tháng đó; nếu HS
+// có nhiều buổi cùng tháng (hiếm) → trung bình + badge; click ô mở modal chọn buổi + nhập.
+type MTThang = { ym: string; kts: KyThiMTLop[] }
 function NhapDiemMTView() {
   const [mon, setMon] = useState('Toán')
   const mua = currentMua()
@@ -1418,7 +1413,7 @@ function NhapDiemMTView() {
   const [kts, setKts] = useState<KyThiMTLop[]>([])
   const [diems, setDiems] = useState<DiemThi[]>([])
   const [loading, setLoading] = useState(false)
-  const [edit, setEdit] = useState<{ ky: KyThiMTLop; hsId: string; hoTen: string } | null>(null)
+  const [edit, setEdit] = useState<{ thang: MTThang; hsId: string; hoTen: string } | null>(null)
 
   useEffect(() => {
     listLop().then((l) => setLops(l.filter((x) => x.trang_thai === 'dang_hoc' && x.mon === mon))).catch(() => setLops([]))
@@ -1428,7 +1423,9 @@ function NhapDiemMTView() {
   async function reload(l: Lop) {
     setLoading(true)
     try {
-      const [r, k] = await Promise.all([listHSCuaLop(l.id), listKyThiMTCuaLop(l.id, mua)])
+      const r = await listHSCuaLop(l.id)
+      const hsIds = r.map((x) => x.hoc_sinh_id)
+      const k = await listKyThiMTChoLop(l.id, l.mon, hsIds, mua)
       setRoster(r); setKts(k)
       setDiems(k.length ? await listDiemThiByKyThi(k.map((x) => x.id)) : [])
     } finally { setLoading(false) }
@@ -1440,17 +1437,29 @@ function NhapDiemMTView() {
   }, [lopId]) // eslint-disable-line
 
   const lop = lops.find((l) => l.id === lopId) ?? null
-  const diemOf = (kyId: string, hsId: string) => diems.find((d) => d.ky_thi_id === kyId && d.hoc_sinh_id === hsId) ?? null
+
+  // Group ky_thi theo THÁNG LỊCH của ngày buổi ('YYYY-MM'). Buổi thiếu ngày (rất hiếm) → bỏ, đúng §1.5.
+  const thangs = useMemo<MTThang[]>(() => {
+    const map = new Map<string, KyThiMTLop[]>()
+    for (const k of kts) {
+      if (!k.buoi_ngay) continue
+      const ym = k.buoi_ngay.slice(0, 7)
+      const arr = map.get(ym); if (arr) arr.push(k); else map.set(ym, [k])
+    }
+    return [...map.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([ym, kts]) => ({ ym, kts }))
+  }, [kts])
+
+  const diemsCua = (thang: MTThang, hsId: string): DiemThi[] =>
+    thang.kts.map((k) => diems.find((d) => d.ky_thi_id === k.id && d.hoc_sinh_id === hsId)).filter((d): d is DiemThi => !!d)
   const tenHT = tenHienThiDs(roster.map((hs) => hs.hoc_sinh?.ho_ten))
   const monBtn = (on: boolean) => `h-7 rounded-md px-3 text-[13px] font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
-  const fmtNg = (iso: string | null) => iso ? new Date(iso + 'T00:00:00').toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' }) : '—'
+  const labelThang = (ym: string) => `Tháng ${Number(ym.slice(5, 7))}`
   const onSaved = (saved: DiemThi) => setDiems((prev) => [...prev.filter((d) => !(d.ky_thi_id === saved.ky_thi_id && d.hoc_sinh_id === saved.hoc_sinh_id)), saved])
-  const onKhungSaved = (kyId: string, p: { khung_co_ban?: number | null; khung_nang_cao?: number | null }) => setKts((prev) => prev.map((k) => (k.id === kyId ? { ...k, ...p } : k)))
   const sortedLops = [...lops].sort((a, b) => (a.khoi ?? '').localeCompare(b.khoi ?? '', 'vi', { numeric: true }) || a.ten_lop.localeCompare(b.ten_lop, 'vi', { numeric: true }))
 
   return (
     <div className="flex gap-3">
-      {/* CỘT TRÁI: chọn Môn + list lớp */}
+      {/* CỘT TRÁI: chọn Môn + list lớp (lớp = FILTER roster HS) */}
       <div className="w-60 shrink-0 space-y-2">
         <div className="flex items-center gap-1">
           {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
@@ -1468,37 +1477,34 @@ function NhapDiemMTView() {
         </div>
       </div>
 
-      {/* PANEL PHẢI: lưới HS × buổi MT */}
+      {/* PANEL PHẢI: lưới HS × THÁNG MT */}
       <div className="min-w-0 flex-1">
         {!lop ? (
           <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn 1 lớp bên trái để nhập điểm MT.</div>
         ) : loading ? (
           <p className="text-sm text-slate-500">Đang tải…</p>
-        ) : kts.length === 0 ? (
+        ) : thangs.length === 0 ? (
           <div className="rounded-xl border border-dashed border-slate-200 py-10 text-center text-sm text-slate-500">
             <div className="mb-1"><b>{lop.ten_lop}</b> chưa có buổi MT nào trong mùa {mua}.</div>
-            <div className="text-[12px] text-slate-400">GV mở tab MT trong 1 buổi cụ thể để tạo kỳ MT lần đầu — sau đó buổi đó sẽ hiện ở đây để nhập theo lớp.</div>
+            <div className="text-[12px] text-slate-400">GV mở tab MT trong 1 buổi cụ thể để tạo kỳ MT lần đầu — sau đó tháng đó sẽ hiện cột ở đây.</div>
           </div>
         ) : (
           <div className="space-y-3">
             <div className="flex flex-wrap items-baseline gap-3">
               <h3 className="text-[15px] font-semibold text-slate-800">{lop.ten_lop} <span className="text-slate-400">· K{lop.khoi} · {mon}</span></h3>
-              <span className="text-[12px] text-slate-500">{roster.length} HS · {kts.length} buổi MT · Mùa {mua}</span>
-              <span className="text-[11px] text-slate-400">Click vào ô để nhập / sửa</span>
+              <span className="text-[12px] text-slate-500">{roster.length} HS · {thangs.length} tháng có MT · Mùa {mua}</span>
+              <span className="text-[11px] text-slate-400">Click ô để nhập / sửa · điểm MT đi theo HS (chuyển lớp không mất)</span>
             </div>
+            <KhungMTChoLopPanel kts={kts} onBulkSaved={(cbK, ncK) => setKts((prev) => prev.map((k) => ({ ...k, khung_co_ban: cbK, khung_nang_cao: ncK })))} />
             <div className="overflow-auto rounded-xl border border-slate-200 bg-white">
               <table className="min-w-full text-[13px]">
                 <thead>
                   <tr className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-500">
                     <th className="sticky left-0 z-10 bg-slate-50 px-3 py-2">Học sinh</th>
-                    {kts.map((k) => (
-                      <th key={k.id} className="min-w-[110px] px-2 py-2 text-center">
-                        <div className="font-semibold text-slate-700">{fmtNg(k.buoi_ngay)}</div>
-                        <div className="text-[10px] font-normal text-slate-400">
-                          {k.khung_co_ban != null || k.khung_nang_cao != null
-                            ? `CB /${k.khung_co_ban ?? '?'} · NC /${k.khung_nang_cao ?? '?'}`
-                            : 'chưa có khung'}
-                        </div>
+                    {thangs.map((t) => (
+                      <th key={t.ym} className="min-w-[110px] px-2 py-2 text-center">
+                        <div className="font-semibold text-slate-700">{labelThang(t.ym)}</div>
+                        <div className="text-[10px] font-normal text-slate-400">{t.kts.length === 1 ? '1 buổi' : `${t.kts.length} buổi`}</div>
                       </th>
                     ))}
                   </tr>
@@ -1507,10 +1513,9 @@ function NhapDiemMTView() {
                   {roster.map((hs, i) => (
                     <tr key={hs.hoc_sinh_id} className="border-t border-slate-100">
                       <td className="sticky left-0 z-10 bg-white px-3 py-1.5 font-medium text-slate-700">{tenHT[i]}</td>
-                      {kts.map((k) => {
-                        const d = diemOf(k.id, hs.hoc_sinh_id)
-                        return <DiemMTCell key={k.id} d={d} onClick={() => setEdit({ ky: k, hsId: hs.hoc_sinh_id, hoTen: tenHT[i] })} />
-                      })}
+                      {thangs.map((t) => (
+                        <DiemMTThangCell key={t.ym} diems={diemsCua(t, hs.hoc_sinh_id)} onClick={() => setEdit({ thang: t, hsId: hs.hoc_sinh_id, hoTen: tenHT[i] })} />
+                      ))}
                     </tr>
                   ))}
                 </tbody>
@@ -1520,37 +1525,97 @@ function NhapDiemMTView() {
         )}
       </div>
 
-      {edit && <DiemMTEditModal ky={edit.ky} hsId={edit.hsId} hoTen={edit.hoTen} init={diemOf(edit.ky.id, edit.hsId)}
-        onClose={() => setEdit(null)} onSaved={onSaved} onKhungSaved={onKhungSaved} />}
+      {edit && <DiemMTEditModal thang={edit.thang} hsId={edit.hsId} hoTen={edit.hoTen}
+        getDiem={(kyId) => diems.find((d) => d.ky_thi_id === kyId && d.hoc_sinh_id === edit.hsId) ?? null}
+        onClose={() => setEdit(null)} onSaved={onSaved} />}
     </div>
   )
 }
 
-function DiemMTCell({ d, onClick }: { d: DiemThi | null; onClick: () => void }) {
-  const chinh = d?.diem
-  const tl = d?.diem_thi_lai
+// Panel BULK khung điểm cho cả lớp (Thùy 15/09: "khung có thể set cho cả lớp luôn"). Prefill = giá trị
+// chung của tất cả buổi nếu đồng bộ, empty nếu buổi có khung khác nhau; bấm "Áp cho cả lớp" ⇒ ghi đè
+// TOÀN BỘ ky_thi MT của lớp trong mùa. Sinh warning khi buổi hiện có khung khác nhau (ghi đè sẽ mất).
+function KhungMTChoLopPanel({ kts, onBulkSaved }: { kts: KyThiMTLop[]; onBulkSaved: (cbK: number | null, ncK: number | null) => void }) {
+  const uniqCB = new Set(kts.map((k) => k.khung_co_ban ?? null))
+  const uniqNC = new Set(kts.map((k) => k.khung_nang_cao ?? null))
+  const dongBoCB = uniqCB.size === 1, dongBoNC = uniqNC.size === 1
+  const cbHienTai = dongBoCB ? [...uniqCB][0] : null
+  const ncHienTai = dongBoNC ? [...uniqNC][0] : null
+  const [cb, setCb] = useState('')
+  const [nc, setNc] = useState('')
+  const [busy, setBusy] = useState(false)
+
+  // Sync khi kts đổi (đổi lớp / bulk saved xong): prefill lại prefill từ dữ liệu hiện tại.
+  useEffect(() => {
+    setCb(cbHienTai != null ? String(cbHienTai) : '')
+    setNc(ncHienTai != null ? String(ncHienTai) : '')
+  }, [cbHienTai, ncHienTai])
+
+  const num = (s: string) => (s.trim() === '' ? null : Number(s))
+  const cbNum = num(cb), ncNum = num(nc)
+  const thieu = cbNum == null || ncNum == null
+  const dirty = cbNum !== cbHienTai || ncNum !== ncHienTai
+  async function luu() {
+    setBusy(true)
+    try { await bulkSetKhungMT(kts.map((k) => k.id), cbNum, ncNum); onBulkSaved(cbNum, ncNum) }
+    catch (e: any) { alert('Lưu khung điểm lỗi: ' + (e?.message ?? String(e))) }
+    finally { setBusy(false) }
+  }
+  const inp = (t: boolean) => `h-8 w-20 rounded border px-2 text-[13px] ${t ? 'border-rose-400 bg-rose-50' : 'border-slate-300'}`
+  return (
+    <div className={`rounded-xl border p-3 ${thieu ? 'border-rose-300 bg-rose-50/40' : 'border-slate-200 bg-white'}`}>
+      <div className="flex flex-wrap items-center gap-3">
+        <span className="text-[12px] font-semibold text-slate-700">Mức điểm tối đa của đề — <b>áp cho cả {kts.length} buổi MT của lớp</b>{thieu && <span className="ml-1 text-rose-700">(bắt buộc — Report PH cần để tính %CB/%NC)</span>}</span>
+        <label className="flex items-center gap-1.5 text-[12px] text-slate-600">Cơ bản
+          <input value={cb} onChange={(e) => setCb(e.target.value)} inputMode="decimal" placeholder="—" className={inp(cbNum == null)} />
+        </label>
+        <label className="flex items-center gap-1.5 text-[12px] text-slate-600">Nâng cao
+          <input value={nc} onChange={(e) => setNc(e.target.value)} inputMode="decimal" placeholder="—" className={inp(ncNum == null)} />
+        </label>
+        <button onClick={luu} disabled={busy || !dirty} className="h-8 rounded-lg bg-indigo-600 px-3 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">
+          {busy ? 'Đang lưu…' : 'Áp cho cả lớp'}
+        </button>
+        {(!dongBoCB || !dongBoNC) && <span className="text-[11px] font-medium text-amber-700">⚠ Buổi hiện có khung khác nhau — Áp sẽ ghi đè hết.</span>}
+      </div>
+    </div>
+  )
+}
+
+// Ô = điểm MT của HS TRONG THÁNG. 0 buổi có điểm ⇒ "—"; 1 ⇒ điểm; 2+ ⇒ TB + badge số buổi (khớp luật BXH
+// tính TB điểm MT). Thi lại: hiện tương tự bên dưới (badge "TL {điểm/TB}").
+function DiemMTThangCell({ diems, onClick }: { diems: DiemThi[]; onClick: () => void }) {
+  const cDiems = diems.filter((d) => d.diem != null).map((d) => Number(d.diem))
+  const tDiems = diems.filter((d) => d.diem_thi_lai != null).map((d) => Number(d.diem_thi_lai))
+  const avg = (a: number[]) => a.length ? +(a.reduce((s, x) => s + x, 0) / a.length).toFixed(2) : null
+  const chinh = avg(cDiems)
+  const tl = avg(tDiems)
   return (
     <td className="border-l border-slate-100 px-2 py-1 text-center">
       <button onClick={onClick} className="mx-auto flex min-w-[80px] flex-col items-center rounded-md px-2 py-1 transition hover:bg-indigo-50">
         <span className={`font-bold tabular-nums ${chinh == null ? 'text-slate-300' : chinh >= 8 ? 'text-emerald-700' : chinh >= 5 ? 'text-slate-800' : 'text-rose-700'}`}>
           {chinh == null ? '—' : chinh}
         </span>
-        {tl != null && <span className="mt-0.5 rounded bg-amber-100 px-1.5 text-[10px] font-semibold text-amber-800">TL {tl}</span>}
+        {cDiems.length > 1 && <span className="mt-0.5 rounded bg-indigo-100 px-1.5 text-[9px] font-semibold text-indigo-700">TB {cDiems.length} buổi</span>}
+        {tl != null && <span className="mt-0.5 rounded bg-amber-100 px-1.5 text-[10px] font-semibold text-amber-800">TL {tl}{tDiems.length > 1 ? ` (TB ${tDiems.length})` : ''}</span>}
       </button>
     </td>
   )
 }
 
-// Modal nhập chi tiết 1 ô (HS × buổi MT) — reuse công thức tinhDiemMT + upsertDiemThi (trigger DB tự tính
-// `diem`/`verdict`/`diem_thi_lai`). Nhập kèm khung điểm đề (chung cả buổi — cột `ky_thi.khung_*`) để mọi
-// GV nhập đúng "/khung" thấy trong lưới ngay.
-function DiemMTEditModal({ ky, hsId, hoTen, init, onClose, onSaved, onKhungSaved }: {
-  ky: KyThiMTLop; hsId: string; hoTen: string; init: DiemThi | null
+// Modal nhập chi tiết 1 ô (HS × THÁNG) — thang có thể có 1 hoặc nhiều buổi MT (khi HS chuyển lớp giữa
+// tháng và có điểm ở nhiều lớp). Có dropdown chọn buổi nếu >1; đổi buổi ⇒ reset form về giá trị của
+// diem_thi buổi đó (không ghi đè khi chưa Lưu). Reuse tinhDiemMT + upsertDiemThi.
+function DiemMTEditModal({ thang, hsId, hoTen, getDiem, onClose, onSaved }: {
+  thang: MTThang; hsId: string; hoTen: string
+  getDiem: (kyId: string) => DiemThi | null
   onClose: () => void; onSaved: (d: DiemThi) => void
-  onKhungSaved: (kyId: string, patch: { khung_co_ban?: number | null; khung_nang_cao?: number | null }) => void
 }) {
-  const [khungCB, setKhungCB] = useState(ky.khung_co_ban != null ? String(ky.khung_co_ban) : '')
-  const [khungNC, setKhungNC] = useState(ky.khung_nang_cao != null ? String(ky.khung_nang_cao) : '')
+  const [kyId, setKyId] = useState<string>(() => {
+    const coDiem = thang.kts.find((k) => getDiem(k.id))
+    return (coDiem ?? thang.kts[0]).id
+  })
+  const ky = thang.kts.find((k) => k.id === kyId) ?? thang.kts[0]
+  const init = getDiem(ky.id)
   const [coBan, setCoBan] = useState(init?.diem_co_ban != null ? String(init.diem_co_ban) : '')
   const [nangCao, setNangCao] = useState(init?.diem_nang_cao != null ? String(init.diem_nang_cao) : '')
   const [full, setFull] = useState(!!init?.full_diem)
@@ -1560,6 +1625,20 @@ function DiemMTEditModal({ ky, hsId, hoTen, init, onClose, onSaved, onKhungSaved
   const [busy, setBusy] = useState(false)
   const num = (s: string) => (s.trim() === '' ? null : Number(s))
 
+  // Đổi buổi (dropdown) ⇒ reset form theo diem_thi buổi mới. KHUNG điểm đề nay set ở panel cấp LỚP (bulk
+  // KhungMTChoLopPanel — Thùy 15/09), không nhập lẻ trong modal nữa.
+  useEffect(() => {
+    const cur = thang.kts.find((k) => k.id === kyId)
+    if (!cur) return
+    const d = getDiem(cur.id)
+    setCoBan(d?.diem_co_ban != null ? String(d.diem_co_ban) : '')
+    setNangCao(d?.diem_nang_cao != null ? String(d.diem_nang_cao) : '')
+    setFull(!!d?.full_diem)
+    setCoBanTL(d?.diem_thi_lai_co_ban != null ? String(d.diem_thi_lai_co_ban) : '')
+    setNangCaoTL(d?.diem_thi_lai_nang_cao != null ? String(d.diem_thi_lai_nang_cao) : '')
+    setFullTL(!!d?.full_thi_lai)
+  }, [kyId]) // eslint-disable-line
+
   const diem = tinhDiemMT(num(coBan), num(nangCao), full)
   const diemTL = tinhDiemMT(num(coBanTL), num(nangCaoTL), fullTL)
   const trong = coBan.trim() === '' && nangCao.trim() === '' && !full
@@ -1568,12 +1647,6 @@ function DiemMTEditModal({ ky, hsId, hoTen, init, onClose, onSaved, onKhungSaved
   async function saveAndClose() {
     setBusy(true)
     try {
-      // Khung điểm đề: chỉ ghi nếu khác giá trị cũ, tránh gọi update thừa (ky.khung_* dùng chung mọi HS trong buổi).
-      const cbK = num(khungCB), ncK = num(khungNC)
-      if (cbK !== (ky.khung_co_ban ?? null) || ncK !== (ky.khung_nang_cao ?? null)) {
-        await setKhungMT(ky.id, cbK, ncK)
-        onKhungSaved(ky.id, { khung_co_ban: cbK, khung_nang_cao: ncK })
-      }
       const saved = await upsertDiemThi({
         kyThiId: ky.id, hocSinhId: hsId, diem: null, bandLucThi: null, verdict: 'khong_dat', vuotBand: false,
         coBan: num(coBan), nangCao: num(nangCao), full,
@@ -1587,25 +1660,32 @@ function DiemMTEditModal({ ky, hsId, hoTen, init, onClose, onSaved, onKhungSaved
 
   const inp = 'h-8 w-20 rounded border border-slate-300 px-2 text-[13px]'
   const inpTL = 'h-8 w-20 rounded border border-amber-300 bg-amber-50/40 px-2 text-[13px]'
-  const fmtNgay = ky.buoi_ngay ? new Date(ky.buoi_ngay + 'T00:00:00').toLocaleDateString('vi-VN') : '—'
+  const fmtDate = (iso: string | null) => iso ? new Date(iso + 'T00:00:00').toLocaleDateString('vi-VN') : '—'
+  const labelKy = (k: KyThiMTLop) => `${fmtDate(k.buoi_ngay)}${k.buoi_ten_lop ? ` · ${k.buoi_ten_lop}` : ''}`
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/30 p-4 backdrop-blur-sm" onClick={onClose}>
       <div className="w-[560px] max-w-[95vw] rounded-2xl bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="mb-1 text-[15px] font-semibold text-slate-900">{hoTen}</div>
-        <div className="mb-3 text-[12px] text-slate-500">Buổi MT ngày <b className="text-slate-700">{fmtNgay}</b></div>
-
-        <fieldset className="mb-3 rounded-lg border border-slate-200 p-3">
-          <legend className="px-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Khung điểm đề (chung cả buổi)</legend>
-          <div className="flex flex-wrap items-center gap-3">
-            <label className="flex items-center gap-1.5 text-[12px] text-slate-600">Cơ bản
-              <input value={khungCB} onChange={(e) => setKhungCB(e.target.value)} inputMode="decimal" placeholder="—" className={inp} />
-            </label>
-            <label className="flex items-center gap-1.5 text-[12px] text-slate-600">Nâng cao
-              <input value={khungNC} onChange={(e) => setKhungNC(e.target.value)} inputMode="decimal" placeholder="—" className={inp} />
-            </label>
+        {thang.kts.length === 1 ? (
+          <div className="mb-3 text-[12px] text-slate-500">Buổi MT: <b className="text-slate-700">{labelKy(ky)}</b></div>
+        ) : (
+          <div className="mb-3 flex items-center gap-2 text-[12px] text-slate-500">
+            <span>HS thi <b className="text-slate-700">{thang.kts.length} buổi</b> trong tháng — chọn buổi để nhập:</span>
+            <select value={kyId} onChange={(e) => setKyId(e.target.value)} className="h-8 rounded border border-slate-300 bg-white px-2 text-[13px] text-slate-700">
+              {thang.kts.map((k) => <option key={k.id} value={k.id}>{labelKy(k)}{getDiem(k.id)?.diem != null ? ` · đã có điểm ${getDiem(k.id)!.diem}` : ''}</option>)}
+            </select>
           </div>
-        </fieldset>
+        )}
+
+        {/* Khung điểm CB/NC set 1 lần cho cả lớp ở panel bên ngoài (KhungMTChoLopPanel) — modal chỉ hiển thị
+            khung để GV biết đang nhập trên thang nào. Thiếu khung: dẫn GV ra ngoài panel để nhập. */}
+        <div className="mb-3 flex flex-wrap items-center gap-3 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-[12px] text-slate-600">
+          <span>Mức điểm tối đa của đề:</span>
+          <span>Cơ bản <b className="text-slate-800">{ky.khung_co_ban ?? '—'}</b></span>
+          <span>Nâng cao <b className="text-slate-800">{ky.khung_nang_cao ?? '—'}</b></span>
+          {(ky.khung_co_ban == null || ky.khung_nang_cao == null) && <span className="text-[11px] font-medium text-rose-700">⚠ Thiếu khung — set ở khối "Mức điểm tối đa của đề" phía trên bảng.</span>}
+        </div>
 
         <fieldset className="mb-3 rounded-lg border border-violet-200 bg-violet-50/30 p-3">
           <legend className="px-1 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Điểm chính</legend>
@@ -1643,6 +1723,223 @@ function DiemMTEditModal({ ky, hsId, hoTen, init, onClose, onSaved, onKhungSaved
           <button onClick={onClose} className="rounded-lg px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Đóng</button>
           <button onClick={saveAndClose} disabled={busy} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang lưu…' : 'Lưu'}</button>
         </div>
+      </div>
+    </div>
+  )
+}
+
+// ⭐ 30/09 (Thùy) — CHẤM MT CHI TIẾT per-HS-per-câu (khác NhapDiemMTView bulk-per-tháng). Filter Môn +
+// Lớp + HS → chọn buổi MT của lớp → hiện cấu trúc MT gán buổi đó (phần → câu kho). Mỗi câu: 3 nút DCS,
+// dropdown điểm (0.25 → điểm tối đa câu — từ tai_lieu(mt_buoi).cau_hinh.diemByCau), nhận xét text.
+// Đ = auto full điểm; C = auto ½; S = 0. User chỉnh sau. Autosave từng ô qua gradeMTChiTiet. Hình
+// (HINH:<uuid>) KHÔNG hiện — phan.caus chỉ có câu kho; chấm Hình tiếp tục qua MTTab matrix ở buổi học.
+type BuoiMTOption = { buoiId: string; ngay: string; tenMT: string; taiLieuId: string }
+
+function ChamMTChiTietView() {
+  const [mon, setMon] = useState('Toán')
+  const [lops, setLops] = useState<Lop[]>([])
+  const [lopId, setLopId] = useState<string | null>(null)
+  const [roster, setRoster] = useState<HSTrongLop[]>([])
+  const [hsId, setHsId] = useState<string | null>(null)
+  const [buoiMTs, setBuoiMTs] = useState<BuoiMTOption[]>([])
+  const [buoiId, setBuoiId] = useState<string | null>(null)
+  const [loadingBuoi, setLoadingBuoi] = useState(false)
+  const [phans, setPhans] = useState<MTPhanCaus[]>([])
+  const [caus, setCaus] = useState<CauHoi[]>([])
+  const [diemByCau, setDiemByCau] = useState<Record<string, number>>({})
+  const [probs, setProbs] = useState<Problem[]>([])
+  const [grades, setGrades] = useState<Grade[]>([])
+  const [loadingMT, setLoadingMT] = useState(false)
+
+  useEffect(() => {
+    listLop().then((l) => setLops((l as Lop[]).filter((x) => x.trang_thai === 'dang_hoc' && x.mon === mon))).catch(() => setLops([]))
+    setLopId(null); setHsId(null); setBuoiId(null); setRoster([]); setBuoiMTs([])
+  }, [mon])
+
+  useEffect(() => {
+    if (!lopId) { setRoster([]); setBuoiMTs([]); return }
+    listHSCuaLop(lopId).then(setRoster).catch(() => setRoster([]))
+    setLoadingBuoi(true); setBuoiId(null); setHsId(null)
+    ;(async () => {
+      const { data } = await supabase.from('tai_lieu').select('id, ten, ngay, nguon_id').eq('loai', 'mt_buoi').eq('lop_id', lopId).order('ngay', { ascending: false }).limit(200)
+      const rows = (data ?? []) as { id: string; ten: string; ngay: string; nguon_id: string }[]
+      if (!rows.length) { setBuoiMTs([]); return }
+      const { data: buois } = await supabase.from('buoi_hoc').select('id, ngay').eq('lop_id', lopId).eq('loai', 'thuong').in('ngay', rows.map((r) => r.ngay)).limit(200)
+      const buoiByNgay = new Map(((buois ?? []) as { id: string; ngay: string }[]).map((b) => [b.ngay, b.id]))
+      setBuoiMTs(rows.map((r) => ({ buoiId: buoiByNgay.get(r.ngay) ?? '', ngay: r.ngay, tenMT: r.ten, taiLieuId: r.id })).filter((r) => r.buoiId))
+    })().finally(() => setLoadingBuoi(false))
+  }, [lopId])
+
+  useEffect(() => {
+    if (!buoiId) { setPhans([]); setCaus([]); setDiemByCau({}); setProbs([]); setGrades([]); return }
+    setLoadingMT(true)
+    ;(async () => {
+      const { phans: ps, caus: cs, mtId } = await loadMTForBuoi(buoiId)
+      setPhans(ps); setCaus(cs)
+      if (mtId) {
+        const { data: tl } = await supabase.from('tai_lieu').select('cau_hinh').eq('id', mtId).maybeSingle()
+        setDiemByCau(((tl as { cau_hinh?: { diemByCau?: Record<string, number> } })?.cau_hinh?.diemByCau) ?? {})
+      } else setDiemByCau({})
+      setProbs(await listProblems(buoiId, 'mt'))
+    })().catch(() => { setPhans([]); setCaus([]); setDiemByCau({}); setProbs([]) }).finally(() => setLoadingMT(false))
+  }, [buoiId])
+
+  useEffect(() => {
+    if (!buoiId || !hsId) { setGrades([]); return }
+    listGrades(buoiId).then((gs) => setGrades(gs.filter((g) => g.hoc_sinh_id === hsId))).catch(() => setGrades([]))
+  }, [buoiId, hsId])
+
+  const tenHT = tenHienThiDs(roster.map((r) => r.hoc_sinh?.ho_ten))
+  const probByMa = new Map(probs.filter((p) => p.ma_cau).map((p) => [p.ma_cau!, p]))
+  const gradeByProb = new Map(grades.map((g) => [g.problem_id, g]))
+  const fmtDiem = (n: number) => (n % 1 === 0 ? String(n) : Number(n.toFixed(2)).toString())
+
+  // Optimistic patch: merge partial grade upsert vào state grades
+  const patchGrade = (probId: string, patch: Partial<Grade>) => setGrades((gs) => {
+    const cur = gs.find((g) => g.problem_id === probId)
+    const others = gs.filter((g) => g.problem_id !== probId)
+    const base: Grade = cur ?? { id: '', problem_id: probId, hoc_sinh_id: hsId!, result: '', presentation: 'clean', speed: 'normal', points: 0, loi: [] }
+    return [...others, { ...base, ...patch }]
+  })
+
+  async function setResult(cau: CauHoi, result: ETResult) {
+    const prob = probByMa.get(cau.ma_cau); if (!prob || !hsId || !buoiId) return
+    const grade = gradeByProb.get(prob.id)
+    if (grade?.result === result) {
+      await deleteGrade(prob.id, hsId)
+      setGrades((gs) => gs.filter((g) => g.problem_id !== prob.id))
+      return
+    }
+    const maxDiem = diemByCau[cau.ma_cau] ?? DEFAULT_DIEM_MT
+    const suggest = result === 'correct' ? maxDiem : result === 'partial' ? Math.round(maxDiem * 50) / 100 : 0
+    const diemDat = grade?.diem_dat == null ? suggest : grade.diem_dat
+    await gradeMTChiTiet({ buoiId, problemId: prob.id, hocSinhId: hsId, result, diemDat, loi: [] })
+    patchGrade(prob.id, { result, diem_dat: diemDat, loi: [] })
+  }
+  async function setDiem(cau: CauHoi, diem: number) {
+    const prob = probByMa.get(cau.ma_cau); if (!prob || !hsId || !buoiId) return
+    await gradeMTChiTiet({ buoiId, problemId: prob.id, hocSinhId: hsId, diemDat: diem })
+    patchGrade(prob.id, { diem_dat: diem })
+  }
+  async function setNhanXet(cau: CauHoi, text: string) {
+    const prob = probByMa.get(cau.ma_cau); if (!prob || !hsId || !buoiId) return
+    const v = text.trim() || null
+    await gradeMTChiTiet({ buoiId, problemId: prob.id, hocSinhId: hsId, nhanXet: v })
+    patchGrade(prob.id, { nhan_xet: v })
+  }
+
+  // ⭐ Grade cũ (chấm qua MTTab matrix trước khi có diem_dat) có result='correct/partial/wrong' nhưng
+  // diem_dat = null. Suy điểm đề xuất theo cùng luật (Đ = full · C = ½ · S = 0) để Tổng đạt + dropdown
+  // reflect ĐÚNG kết quả đã chấm. User chỉnh dropdown ⇒ ghi diem_dat thật, đè suy này về sau.
+  const suggestDiem = (result: string | null | undefined, maxDiem: number): number | null => {
+    if (result === 'correct') return maxDiem
+    if (result === 'partial') return Math.round(maxDiem * 50) / 100
+    if (result === 'wrong') return 0
+    return null
+  }
+  const diemThuc = (c: CauHoi): number | null => {
+    const prob = probByMa.get(c.ma_cau); const g = prob ? gradeByProb.get(prob.id) : null
+    if (g?.diem_dat != null) return g.diem_dat
+    return suggestDiem(g?.result, diemByCau[c.ma_cau] ?? DEFAULT_DIEM_MT)
+  }
+  const tongDiem = caus.reduce((s, c) => s + (diemThuc(c) ?? 0), 0)
+  const tongMax = caus.reduce((s, c) => s + (diemByCau[c.ma_cau] ?? DEFAULT_DIEM_MT), 0)
+  const hsIdx = hsId ? roster.findIndex((r) => r.hoc_sinh_id === hsId) : -1
+  const sortedLops = [...lops].sort((a, b) => (a.khoi ?? '').localeCompare(b.khoi ?? '', 'vi', { numeric: true }) || a.ten_lop.localeCompare(b.ten_lop, 'vi', { numeric: true }))
+
+  return (
+    <div className="flex gap-3">
+      <div className="w-64 shrink-0 space-y-2">
+        <div className="flex items-center gap-1">
+          {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={`h-7 rounded-md px-3 text-[13px] font-semibold ${mon === m ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`}>{m}</button>)}
+        </div>
+        <select value={lopId ?? ''} onChange={(e) => setLopId(e.target.value || null)} className="h-8 w-full rounded border border-slate-300 px-2 text-[13px]">
+          <option value="">— chọn lớp —</option>
+          {sortedLops.map((l) => <option key={l.id} value={l.id}>{l.ten_lop}{l.khoi ? ` · K${l.khoi}` : ''}</option>)}
+        </select>
+        {lopId && (
+          <div className="max-h-[calc(100vh-320px)] overflow-y-auto rounded-lg border border-slate-200 bg-white p-1">
+            <div className="px-2 py-1 text-[11px] font-semibold uppercase text-slate-400">Học sinh ({roster.length})</div>
+            {roster.length === 0 ? <div className="px-2 py-3 text-[12px] italic text-slate-400">Không có HS.</div>
+              : roster.map((hs, i) => (
+                <button key={hs.hoc_sinh_id} onClick={() => setHsId(hs.hoc_sinh_id)}
+                  className={`flex w-full items-center justify-between rounded px-2 py-1.5 text-left text-[13px] transition ${hsId === hs.hoc_sinh_id ? 'bg-indigo-600 font-semibold text-white' : 'text-slate-700 hover:bg-slate-100'}`}>
+                  <span className="truncate">{tenHT[i]}</span>
+                </button>
+              ))}
+          </div>
+        )}
+      </div>
+      <div className="min-w-0 flex-1">
+        {!lopId ? <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn lớp bên trái.</div>
+          : !hsId ? <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn 1 học sinh trong danh sách bên trái.</div>
+          : (
+            <div className="space-y-3">
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="text-[15px] font-semibold text-slate-800">{hsIdx >= 0 ? tenHT[hsIdx] : '?'}</div>
+                <select value={buoiId ?? ''} onChange={(e) => setBuoiId(e.target.value || null)} className="h-8 min-w-[300px] rounded border border-slate-300 px-2 text-[13px]">
+                  <option value="">{loadingBuoi ? 'Đang tải…' : '— chọn buổi MT —'}</option>
+                  {buoiMTs.map((b) => <option key={b.buoiId} value={b.buoiId}>{b.tenMT} · {b.ngay.split('-').reverse().join('/')}</option>)}
+                </select>
+                {buoiId && caus.length > 0 && <span className="ml-auto text-[13px] text-slate-600">Tổng đạt: <b className="text-violet-700">{fmtDiem(tongDiem)}</b> / {fmtDiem(tongMax)} đ</span>}
+              </div>
+              {!buoiId ? <div className="rounded-xl border border-dashed border-slate-200 py-12 text-center text-[13px] text-slate-500">{buoiMTs.length === 0 ? 'Lớp này chưa có buổi MT nào được gán.' : 'Chọn buổi MT ở trên.'}</div>
+                : loadingMT ? <p className="text-sm text-slate-500">Đang tải cấu trúc MT…</p>
+                : caus.length === 0 ? <div className="rounded-xl border border-dashed border-rose-200 bg-rose-50/40 py-12 text-center text-[13px] text-rose-700">Không tìm thấy câu KHO trong MT này (có thể chỉ có bài Hình). Chấm Hình tiếp tục qua tab MT trong buổi học.</div>
+                : (
+                  <div className="space-y-4">
+                    {phans.map((p, pi) => (
+                      <div key={pi} className="rounded-xl border border-slate-200 bg-white p-3">
+                        <div className="mb-2 text-[13px] font-semibold text-slate-700">{p.tieuDe} <span className="ml-2 text-[11px] font-normal text-slate-400">{p.caus.length} câu</span></div>
+                        <div className="space-y-2">
+                          {p.caus.map((c, ci) => {
+                            const prob = probByMa.get(c.ma_cau)
+                            const grade = prob ? gradeByProb.get(prob.id) : null
+                            const maxDiem = diemByCau[c.ma_cau] ?? DEFAULT_DIEM_MT
+                            const opts: number[] = []
+                            for (let d = 0.25; d <= maxDiem + 1e-9; d += 0.25) opts.push(Math.round(d * 100) / 100)
+                            const daGhi = grade?.diem_dat != null
+                            const goiY = daGhi ? null : suggestDiem(grade?.result, maxDiem)
+                            const val = daGhi ? String(grade!.diem_dat) : (goiY != null ? String(goiY) : '')
+                            // ⭐ 30/09 (Thùy) — MỘT DÒNG / câu: [Câu N | Đ|C|S | dropdown điểm | nhận xét].
+                            // Bỏ mã câu / mã dạng / đề bài / Max — GV chấm theo phiếu giấy đã có số câu,
+                            // chỉ cần điền kết quả. Preview đề chi tiết đi qua Buổi học nếu cần.
+                            return (
+                              <div key={c.ma_cau} className="flex items-center gap-2 rounded-lg border border-slate-100 bg-slate-50/60 px-2 py-1">
+                                <span className="w-10 shrink-0 text-center text-[12.5px] font-bold text-violet-600" title={`${c.ma_cau} · Max ${fmtDiem(maxDiem)} đ`}>Câu {ci + 1}</span>
+                                <div className="flex shrink-0 overflow-hidden rounded border border-slate-300">
+                                  {(['correct', 'partial', 'wrong'] as ETResult[]).map((r) => {
+                                    const on = grade?.result === r
+                                    const lbl = r === 'correct' ? 'Đ' : r === 'partial' ? 'C' : 'S'
+                                    const tone = r === 'correct'
+                                      ? (on ? 'bg-emerald-600 text-white' : 'text-emerald-600 hover:bg-emerald-50')
+                                      : r === 'partial'
+                                        ? (on ? 'bg-amber-500 text-white' : 'text-amber-600 hover:bg-amber-50')
+                                        : (on ? 'bg-rose-600 text-white' : 'text-rose-600 hover:bg-rose-50')
+                                    return <button key={r} onClick={() => setResult(c, r)} disabled={!prob} className={`h-7 w-9 border-r border-slate-200 text-[12.5px] font-bold last:border-r-0 disabled:opacity-40 ${tone}`}>{lbl}</button>
+                                  })}
+                                </div>
+                                <select value={val} onChange={(e) => setDiem(c, +e.target.value)} disabled={!prob}
+                                  className={`h-7 shrink-0 rounded border border-slate-300 bg-white px-1 text-[12.5px] font-medium ${daGhi ? 'text-slate-700' : 'text-slate-400 italic'}`}
+                                  title={daGhi ? `Điểm HS đạt (Max ${fmtDiem(maxDiem)} đ)` : 'Đề xuất từ Đ/C/S — chọn 1 mức để ghi chính thức'}>
+                                  <option value="">—</option>
+                                  <option value="0">0 đ</option>
+                                  {opts.map((v) => <option key={v} value={v}>{fmtDiem(v)} đ</option>)}
+                                </select>
+                                <input type="text" defaultValue={grade?.nhan_xet ?? ''} placeholder="Nhận xét (tuỳ chọn)" disabled={!prob}
+                                  onBlur={(e) => { if (e.target.value.trim() !== (grade?.nhan_xet ?? '')) setNhanXet(c, e.target.value) }}
+                                  className="h-7 min-w-0 flex-1 rounded border border-slate-300 bg-white px-2 text-[12.5px] text-slate-700 disabled:bg-slate-100" />
+                                {!prob && <span className="shrink-0 rounded bg-rose-100 px-1.5 text-[10px] font-medium text-rose-600" title="Chưa sync problems — mở tab MT trong buổi học 1 lần">⚠</span>}
+                              </div>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+            </div>
+          )}
       </div>
     </div>
   )

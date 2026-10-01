@@ -87,14 +87,20 @@ export function KhoPicker({ maDangs, selected, disabled = [], cauTbl = 'dai_cau_
                 const n = usage.get(c.ma_cau) ?? 0
                 return (
                   <label key={c.ma_cau} title={isBlocked ? 'Câu này đã dùng trong buổi này / buổi trước — không chọn lại' : undefined}
-                    className={`flex items-start gap-2 rounded-md border px-2.5 py-1.5 ${isBlocked ? 'cursor-not-allowed border-slate-100 bg-slate-50 opacity-55' : sel.has(c.ma_cau) ? 'cursor-pointer border-indigo-300 bg-indigo-50/40' : 'cursor-pointer border-slate-100 hover:bg-slate-50'}`}>
-                    <input type="checkbox" checked={sel.has(c.ma_cau)} disabled={isBlocked} onChange={() => toggle(c.ma_cau)} className="mt-1" />
-                    <MaCau ma={c.ma_cau} />
-                    <span className="min-w-0 flex-1 text-[14px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
-                    {isBlocked
-                      ? <span className="shrink-0 rounded bg-rose-100 px-1.5 text-[10px] font-semibold text-rose-600">đã dùng</span>
-                      : <span className={`shrink-0 rounded px-1.5 text-[10px] font-medium ${n > 0 ? 'bg-amber-50 text-amber-600' : 'bg-emerald-50 text-emerald-600'}`} title="Số lượt câu này đã dùng trong các tài liệu ở Kho">{n > 0 ? `dùng ${n}×` : 'chưa dùng'}</span>}
-                    <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
+                    className={`flex flex-col gap-1.5 rounded-md border px-2.5 py-1.5 ${isBlocked ? 'cursor-not-allowed border-slate-100 bg-slate-50 opacity-55' : sel.has(c.ma_cau) ? 'cursor-pointer border-indigo-300 bg-indigo-50/40' : 'cursor-pointer border-slate-100 hover:bg-slate-50'}`}>
+                    <div className="flex items-start gap-2">
+                      <input type="checkbox" checked={sel.has(c.ma_cau)} disabled={isBlocked} onChange={() => toggle(c.ma_cau)} className="mt-1" />
+                      <MaCau ma={c.ma_cau} />
+                      <span className="min-w-0 flex-1 text-[14px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
+                      {isBlocked
+                        ? <span className="shrink-0 rounded bg-rose-100 px-1.5 text-[10px] font-semibold text-rose-600">đã dùng</span>
+                        : <span className={`shrink-0 rounded px-1.5 text-[10px] font-medium ${n > 0 ? 'bg-amber-50 text-amber-600' : 'bg-emerald-50 text-emerald-600'}`} title="Số lượt câu này đã dùng trong các tài liệu ở Kho">{n > 0 ? `dùng ${n}×` : 'chưa dùng'}</span>}
+                      <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
+                    </div>
+                    {/* ⭐ 16/09 (CEO): "Lúc chọn câu phải có hình mới chọn được" — câu có ảnh đề phải hiện
+                        ĐẦY ĐỦ ở KhoPicker (chứ không chỉ text) để chọn câu đúng bằng hình. Áp cho mọi nhánh
+                        có `anh_de` (Đại/KHTN/HGT/Hình học). Ảnh block, giới hạn max-h để không lấn scroll. */}
+                    {c.anh_de && <img src={c.anh_de} alt="" className="mx-auto block max-h-56 w-auto max-w-full rounded-lg border border-slate-200" />}
                   </label>
                 )
               }

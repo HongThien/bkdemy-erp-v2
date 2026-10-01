@@ -12,6 +12,7 @@ import { khoCuaMon, nhanhCuaMon, nhanhCuaCau, laMaHinh, getTaiLieuFull, listPhan
 import { pickCuaHinhRow } from './mt'
 import { loadLuoi } from './kho/hinh'
 import { updateUngVien, toggleViec } from './tuyensinh'
+import { homNayVN } from './tuan'
 import type { MenhDe } from './kho/api'
 
 const LIMIT = 10000
@@ -43,16 +44,21 @@ export type DeTestRow = {
   id: string; ten: string; khoi: string; mon: string
   nguonId: string | null; nguonTen: string | null; nguonLoai: string | null
   createdAt: string; laHienTai: boolean
+  soCa: number              // số ca test đã dùng đề (PostgREST đếm ở DB) — >0 thì DB chặn xoá
+  dangDungAt: string | null // mốc "đặt tay làm đang dùng" (mig 202609211000), null = theo ngày sinh
 }
-// Danh sách đề test đầu vào ĐÃ SINH (desc thời gian). laHienTai = bản mới nhất của mỗi (khoi,mon) = đang
-// dùng; các bản còn lại = lịch sử. Lọc mon nếu truyền.
+// Danh sách đề test đầu vào ĐÃ SINH. laHienTai = bản có mốc coalesce(test_dang_dung_at, created_at) MỚI NHẤT của mỗi
+// (khoi,mon) = đang dùng; còn lại = lịch sử. ⭐ 21/09: trước đây "đang dùng" = created_at mới nhất, không chọn lại được
+// (đề K7 32 câu 14/09 đè bản 34 câu đang phát cho HS). Lọc mon nếu truyền.
+const mocDeTest = (r: { test_dang_dung_at: string | null; created_at: string }) => new Date(r.test_dang_dung_at ?? r.created_at).getTime()
 export async function listDeTestDauVao(mon?: string): Promise<DeTestRow[]> {
-  let q = supabase.from('tai_lieu').select('id, ten, khoi, mon, nguon_id, created_at')
+  let q = supabase.from('tai_lieu').select('id, ten, khoi, mon, nguon_id, created_at, test_dang_dung_at, ca_test(count)')
     .eq('loai', 'de_test_dau_vao').order('created_at', { ascending: false }).limit(LIMIT)
   if (mon) q = q.eq('mon', mon)
   const { data, error } = await q
   if (error) throw error
-  const rows = (data ?? []) as { id: string; ten: string; khoi: string; mon: string; nguon_id: string | null; created_at: string }[]
+  const rows = ((data ?? []) as any[] as { id: string; ten: string; khoi: string; mon: string; nguon_id: string | null; created_at: string; test_dang_dung_at: string | null; ca_test: { count: number }[] }[])
+    .sort((a, b) => mocDeTest(b) - mocDeTest(a)) // thứ tự HIỂN THỊ + chọn bản đứng đầu mỗi (khối × môn)
   const nguonIds = [...new Set(rows.map((r) => r.nguon_id).filter(Boolean) as string[])]
   const nguonMap = new Map<string, { ten: string; loai: string }>()
   if (nguonIds.length) {
@@ -64,8 +70,23 @@ export async function listDeTestDauVao(mon?: string): Promise<DeTestRow[]> {
     const key = `${r.khoi}|${r.mon}`
     const laHienTai = !seen.has(key); if (laHienTai) seen.add(key)
     const n = r.nguon_id ? nguonMap.get(r.nguon_id) : null
-    return { id: r.id, ten: r.ten, khoi: r.khoi, mon: r.mon, nguonId: r.nguon_id, nguonTen: n?.ten ?? null, nguonLoai: n?.loai ?? null, createdAt: r.created_at, laHienTai }
+    return { id: r.id, ten: r.ten, khoi: r.khoi, mon: r.mon, nguonId: r.nguon_id, nguonTen: n?.ten ?? null, nguonLoai: n?.loai ?? null, createdAt: r.created_at, laHienTai,
+      soCa: r.ca_test?.[0]?.count ?? 0, dangDungAt: r.test_dang_dung_at ?? null }
   })
+}
+// SỬA / XOÁ / ĐẶT ĐANG DÙNG đề test (CEO 21/09 "mọi màn phải sửa xoá được card"). Xoá: DB chặn khi đề đã có ca dùng.
+export async function doiTenDeTest(id: string, ten: string): Promise<void> {
+  if (!ten.trim()) throw new Error('Tên đề không được trống')
+  const { error } = await supabase.from('tai_lieu').update({ ten: ten.trim(), updated_at: new Date().toISOString() }).eq('id', id).eq('loai', 'de_test_dau_vao')
+  if (error) throw error
+}
+export async function xoaDeTest(id: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_de_test_xoa', { p_tai_lieu_id: id })
+  if (error) throw error
+}
+export async function datDangDungDeTest(id: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_de_test_dat_dang_dung', { p_tai_lieu_id: id })
+  if (error) throw error
 }
 
 // SINH 1 đề test đầu vào cho khối×môn từ nguồn (MT/Đề thi): tạo tai_lieu loai='de_test_dau_vao' + copy
@@ -190,18 +211,13 @@ export async function ganDeCaTest(caTestId: string, taiLieuId: string): Promise<
       nhanh: b.nhanh, muc_do: info?.muc_do ?? null, ten_chuyen_de: info?.ten_chuyen_de ?? null,
     }
   })
-  // 4) Ghi: xoá kết quả + câu của đề CŨ (FK con trước) rồi snapshot đề mới — HS lỡ được chấm 1 phần trước khi
-  // đổi đề thì kết quả đó không còn ý nghĩa (câu đã đổi hẳn sang đề khác).
-  const { data: cauCu } = await supabase.from('ca_test_cau').select('id').eq('ca_test_id', caTestId).limit(LIMIT)
-  const idCu = ((cauCu ?? []) as any[]).map((c) => c.id)
-  if (idCu.length) {
-    await supabase.from('ca_test_cau_kq').delete().in('ca_test_cau_id', idCu)
-    await supabase.from('ca_test_cau').delete().in('id', idCu)
-  }
-  const { error: e1 } = await supabase.from('ca_test').update({ tai_lieu_id: taiLieuId }).eq('id', caTestId)
-  if (e1) throw e1
-  const { error: e2 } = await supabase.from('ca_test_cau').insert(rows)
-  if (e2) throw e2
+  // 4) Ghi NGUYÊN TỬ qua RPC `fn_ca_test_gan_de` (mig 202609150910): xoá kết quả + câu của đề CŨ, ghi tai_lieu_id,
+  // chèn câu mới trong CÙNG transaction + advisory lock theo ca. ⭐ 14/09: bản cũ làm 3 bước rời không khoá —
+  // StrictMode chạy effect tự-gán 2 lần cách 60ms ⇒ 2 ca bị GẤP ĐÔI câu (34→68), Bảo Châu chấm trên list 68 dòng
+  // ⇒ kết quả lệch ghép. HS lỡ được chấm 1 phần trước khi đổi đề thì kết quả đó không còn ý nghĩa (câu đã đổi hẳn).
+  const { data: n, error } = await supabase.rpc('fn_ca_test_gan_de', { p_ca_test_id: caTestId, p_tai_lieu_id: taiLieuId, p_rows: rows })
+  if (error) throw error
+  if (Number(n) !== rows.length) throw new Error(`Gán đề ghi ${n}/${rows.length} câu — dữ liệu lệch, báo kỹ thuật.`)
 }
 // ⭐ CEO ① 09/09: gán đề = MẶC ĐỊNH đề ĐANG DÙNG của (khối × môn) — Ops không phải chọn/bấm; chỉ đổi khi cần.
 // Trả về đề đã gán, hoặc null nếu (khối × môn) chưa có đề nào (học thuật phải sinh ở tab "Đề test").
@@ -230,17 +246,23 @@ export type CaTestChoCham = {
   trangThai: 'dang_test' | 'hoan_thanh'  // "Việc của tôi" hiện cả ca ĐANG test (CEO 13/09: có ca mới là thấy)
   diemNhap: number | null // CEO ④ 09/09: điểm NHẬP TAY, độc lập Đ/C/S (ca_test.diem_nhap)
   thieuDe: boolean        // ca đã hoàn thành mà chưa có đề → hiện trong hàng đợi kèm nút "Gán đề đang dùng", KHÔNG lọc mất
+  // ⭐ 15/09 (Tuệ Nhi): Ops tạo ứng viên khối 8 → tự gán đề K8 (39 câu) → sửa khối thành 7 → ca vẫn giữ đề K8, TA chấm
+  // bài giấy 34 câu vào 39 dòng của đề sai. Đổi khối KHÔNG tự đổi đề ⇒ màn chấm/điểm danh phải nêu cờ lệch + nút gán lại.
+  deKhoi: string | null; deTen: string | null
+  lechKhoi: boolean       // khối ứng viên ≠ khối đề đã gán (cả hai đều có)
 }
 // Hàng đợi CHUNG (team học thuật) — đã điểm danh xong + chưa chấm xong. ⭐ 09/09: KHÔNG còn lọc
 // `tai_lieu_id not null` — 5 ca thiếu đề từng biến mất im lặng khỏi mọi màn (HANDOFF bài học 09/09).
 // `nguoi_cham` = người được gán (CEO ② 09/09: vào "Việc của tôi"); pool chung vẫn mở cho người khác.
-const CHO_CHAM_SELECT = 'id, ung_vien_id, mon, ngay, bai_url, tai_lieu_id, cham_xong_at, trang_thai, diem_nhap, nguoi_cham_id, nguoi_tra_bai_id, ung_vien:ung_vien_id(ho_ten_hs, khoi, lop_du_kien_id), nguoi_cham:nguoi_cham_id(ho_ten)'
+const CHO_CHAM_SELECT = 'id, ung_vien_id, mon, ngay, bai_url, tai_lieu_id, cham_xong_at, trang_thai, diem_nhap, nguoi_cham_id, nguoi_tra_bai_id, ung_vien:ung_vien_id(ho_ten_hs, khoi, lop_du_kien_id), nguoi_cham:nguoi_cham_id(ho_ten), tai_lieu:tai_lieu_id(khoi, ten)'
 function mapChoCham(r: any): CaTestChoCham {
+  const khoi = r.ung_vien?.khoi ?? null, deKhoi = r.tai_lieu?.khoi ?? null
   return {
     id: r.id, ungVienId: r.ung_vien_id, mon: r.mon, ngay: r.ngay, baiUrl: r.bai_url, taiLieuId: r.tai_lieu_id,
-    hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi: r.ung_vien?.khoi ?? null, nguoiChamTen: r.nguoi_cham?.ho_ten ?? null,
+    hoTenHs: r.ung_vien?.ho_ten_hs ?? '?', khoi, nguoiChamTen: r.nguoi_cham?.ho_ten ?? null,
     nguoiChamId: r.nguoi_cham_id ?? null, nguoiTraBaiId: r.nguoi_tra_bai_id ?? null, trangThai: r.trang_thai,
     diemNhap: r.diem_nhap == null ? null : Number(r.diem_nhap), thieuDe: !r.tai_lieu_id,
+    deKhoi, deTen: r.tai_lieu?.ten ?? null, lechKhoi: !!khoi && !!deKhoi && khoi !== deKhoi,
   }
 }
 export async function listCanCham(): Promise<CaTestChoCham[]> {
@@ -268,11 +290,44 @@ export async function listCanTraBaiCuaToi(nhanSuId: string): Promise<CaTestChoCh
   return (data ?? []).map(mapChoCham)
 }
 export async function listDaCham(ngay?: string): Promise<CaTestChoCham[]> {
-  let q = supabase.from('ca_test').select(CHO_CHAM_SELECT).not('cham_xong_at', 'is', null)
+  let q = supabase.from('ca_test').select(CHO_CHAM_SELECT).not('cham_xong_at', 'is', null).neq('trang_thai', 'huy') // ca huỷ (mig 202609201730) không hiện ở "Đã chấm"
   if (ngay) q = q.eq('ngay', ngay)
   const { data, error } = await q.order('cham_xong_at', { ascending: false }).limit(LIMIT)
   if (error) throw error
   return (data ?? []).map(mapChoCham)
+}
+// ⭐ CEO 15/09 "nhập sai không sửa lại được": subtab "Đã chấm" theo THÁNG (không chỉ hôm nay) — mở lại ca bất kỳ
+// để sửa Đ/C/S / điểm. `thang` = 'YYYY-MM' (ngày VN của ca), null = mọi tháng (limit).
+// 12 tháng gần nhất (giờ VN) dạng 'YYYY-MM', mới nhất trước — cho select tháng ở các subtab/thống kê.
+export function dsThangGanDay(n = 12): string[] {
+  const [y0, m0] = homNayVN().split('-').map(Number)
+  const out: string[] = []
+  for (let i = 0; i < n; i++) { const t = y0 * 12 + (m0 - 1) - i; out.push(`${Math.floor(t / 12)}-${String((t % 12) + 1).padStart(2, '0')}`) }
+  return out
+}
+export const nhanThang = (t: string) => `${t.slice(5)}/${t.slice(0, 4)}`
+export function khoangThang(thang: string): { tu: string; den: string } {
+  const [y, m] = thang.split('-').map(Number)
+  const tu = `${y}-${String(m).padStart(2, '0')}-01`
+  const y2 = m === 12 ? y + 1 : y, m2 = m === 12 ? 1 : m + 1
+  return { tu, den: `${y2}-${String(m2).padStart(2, '0')}-01` }
+}
+export async function listDaChamTheoThang(thang: string | null): Promise<CaTestChoCham[]> {
+  let q = supabase.from('ca_test').select(CHO_CHAM_SELECT).not('cham_xong_at', 'is', null).neq('trang_thai', 'huy') // ca huỷ (mig 202609201730) không hiện ở "Đã chấm"
+  if (thang) { const k = khoangThang(thang); q = q.gte('ngay', k.tu).lt('ngay', k.den) }
+  const { data, error } = await q.order('cham_xong_at', { ascending: false }).limit(LIMIT)
+  if (error) throw error
+  return (data ?? []).map(mapChoCham)
+}
+// Thống kê số ca (tab "Thống kê", CEO 15/09) — đếm ở Postgres (fn_test_dau_vao_thong_ke, §2.0).
+export type ThongKeTestRow = { nhom: string; tong: number; dangTest: number; hoanThanh: number; choCham: number; daCham: number; choTra: number; daTra: number; daVaoLop: number }
+export async function getThongKeTestDauVao(mon: string, thang: string | null, khoi: string | null): Promise<ThongKeTestRow[]> {
+  const { data, error } = await supabase.rpc('fn_test_dau_vao_thong_ke', { p_mon: mon, p_thang: thang, p_khoi: khoi })
+  if (error) throw error
+  return ((data ?? []) as any[]).map((r) => ({
+    nhom: r.nhom, tong: r.tong, dangTest: r.dang_test, hoanThanh: r.hoan_thanh, choCham: r.cho_cham, daCham: r.da_cham,
+    choTra: r.cho_tra, daTra: r.da_tra, daVaoLop: r.da_vao_lop,
+  }))
 }
 export async function getCaTestCauKq(caTestId: string): Promise<CaTestCau[]> {
   const { data: cau, error } = await supabase.from('ca_test_cau').select('*').eq('ca_test_id', caTestId).order('thu_tu').limit(LIMIT)
@@ -400,13 +455,14 @@ export type CaTestChoTraBai = CaTestChoCham & {
   choChamXong: boolean; choScanDaCham: boolean; choLopDeXuat: boolean
   baiDaChamUrl: string | null; lopDeXuatId: string | null; nhanXet: NhanXet | null
   nguoiTraBaiTen: string | null
+  traBaiXongAt: string | null   // đã đóng trả bài lúc nào (null = chưa) — subtab "Đã trả" mở lại để sửa (CEO 15/09)
 }
 function mapTraBai(r: any): CaTestChoTraBai {
   return {
     ...mapChoCham(r),
     choChamXong: !r.cham_xong_at, choScanDaCham: !r.bai_da_cham_url, choLopDeXuat: !r.ung_vien?.lop_du_kien_id,
     baiDaChamUrl: r.bai_da_cham_url ?? null, lopDeXuatId: r.ung_vien?.lop_du_kien_id ?? null, nhanXet: r.nhan_xet ?? null,
-    nguoiTraBaiTen: r.nguoi_tra_bai?.ho_ten ?? null,
+    nguoiTraBaiTen: r.nguoi_tra_bai?.ho_ten ?? null, traBaiXongAt: r.tra_bai_xong_at ?? null,
   }
 }
 const TRA_BAI_SELECT = CHO_CHAM_SELECT + ', tra_bai_xong_at, bai_da_cham_url, nhan_xet, nguoi_tra_bai:nguoi_tra_bai_id(ho_ten)'
@@ -422,6 +478,19 @@ export async function listDaTraBai(): Promise<CaTestChoTraBai[]> {
   if (error) throw error
   return (data ?? []).map(mapTraBai)
 }
+// Subtab "Đã trả" theo tháng (CEO 15/09) — mở lại ca đã trả để sửa nhận xét/lớp, copy lại ảnh.
+export async function listDaTraBaiTheoThang(thang: string | null): Promise<CaTestChoTraBai[]> {
+  let q = supabase.from('ca_test').select(TRA_BAI_SELECT).not('tra_bai_xong_at', 'is', null)
+  if (thang) { const k = khoangThang(thang); q = q.gte('ngay', k.tu).lt('ngay', k.den) }
+  const { data, error } = await q.order('tra_bai_xong_at', { ascending: false }).limit(LIMIT)
+  if (error) throw error
+  return (data ?? []).map(mapTraBai)
+}
+// Mở lại trả bài (đã đóng nhầm / cần gửi lại): về hàng đợi "Cần trả". Log trigger ca_test ghi vết.
+export async function moLaiTraBai(caTestId: string): Promise<void> {
+  const { error } = await supabase.from('ca_test').update({ tra_bai_xong_at: null, danh_gia_xong_at: null }).eq('id', caTestId)
+  if (error) throw error
+}
 // Đóng trả bài — validate ĐỦ 3 nguồn trước khi đóng (evidence-trước-khi-đóng). lopDeXuatId bắt buộc
 // (ghi ung_vien.lop_du_kien_id, REUSE, cùng field cũ dongNhanXet từng ghi).
 export async function dongTraBai(caTestId: string, ungVienId: string, lopDeXuatId: string | null): Promise<void> {
@@ -429,7 +498,8 @@ export async function dongTraBai(caTestId: string, ungVienId: string, lopDeXuatI
   if (e0) throw e0
   const r: any = ct
   if (!r.cham_xong_at) throw new Error('Chưa chấm xong.')
-  if (!r.bai_da_cham_url) throw new Error('Chưa có bài scan đã chấm.')
+  // ⭐ 15/09 (CEO "nút đã trả bài không sáng"): BỎ điều kiện scan bài đã chấm — luồng 10/09 chấm trên giấy rồi nhập
+  // Đ/C/S, không màn nào upload scan (dongScanDaCham không còn ai gọi) ⇒ gate này khoá nút vĩnh viễn.
   if (!lopDeXuatId) throw new Error('Chưa chọn lớp đề xuất.')
   await updateUngVien(ungVienId, { lop_du_kien_id: lopDeXuatId })
   const { error } = await supabase.from('ca_test').update({ danh_gia_xong_at: new Date().toISOString(), tra_bai_xong_at: new Date().toISOString() }).eq('id', caTestId).is('tra_bai_xong_at', null)
@@ -440,6 +510,7 @@ export async function dongTraBai(caTestId: string, ungVienId: string, lopDeXuatI
 // Client chỉ gọi + hiển thị. Tỉ lệ = Σdiem/Σdiem_toi_da trên câu ĐÃ CHẤM (chưa chấm không vào mẫu số — §5 chưa-đo ≠ sai).
 // Nhóm (cơ bản/nâng cao · Đại/Hình) không có câu nào → `soCau === 0` ⇒ màn ẨN khối đó (CEO ⑦: "không có thì bỏ qua"). ──
 export type NhomTiLe = { diem: number | null; toiDa: number | null; soCau: number; pct: number | null }
+export type NguoiPhieu = { hoTen: string; anhUrl: string | null }   // nhân sự in trên phiếu (avatar tài khoản BK)
 export type PhieuKetQua = {
   hoTenHs: string; khoi: string | null; mon: string; ngay: string
   gioiTinh?: 'nam' | 'nu' | null   // ung_vien.gioi_tinh — chọn avatar cartoon nam/nữ trên phiếu (mig 202609131618)
@@ -451,7 +522,12 @@ export type PhieuKetQua = {
   theoNhanh: { dai: NhomTiLe | null; hinh: NhomTiLe | null }        // pick từ bản đồ nào → tính từ đấy (CEO ⑦)
   nhanXet: NhanXet | null; baiDaChamUrl: string | null
   // GV + lịch CHỈ in trên ẢNH gửi PH (CEO ⑧), UI trả bài không hiện.
-  lopDeXuat: { id: string; tenLop: string; gv: string[]; lich: { thu: number; gioBatDau: string; gioKetThuc: string; phong: string | null }[] } | null
+  // gvChinh/tgChinh (mig 202609151030): người `la_chinh` của lớp + avatar tài khoản nhân sự — phiếu in "Giáo viên" / "Giáo viên bổ trợ".
+  lopDeXuat: {
+    id: string; tenLop: string; gv: string[]
+    gvChinh: NguoiPhieu | null; tgChinh: NguoiPhieu | null
+    lich: { thu: number; gioBatDau: string; gioKetThuc: string; phong: string | null }[]
+  } | null
 }
 export const coNhom = (n: NhomTiLe | null | undefined): n is NhomTiLe => !!n && n.soCau > 0 && n.pct != null
 export async function getPhieuKetQua(caTestId: string): Promise<PhieuKetQua> {

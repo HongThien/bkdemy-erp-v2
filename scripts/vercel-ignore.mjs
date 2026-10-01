@@ -1,3 +1,6 @@
+// ⚠ 24/09: KHÔNG còn được gọi — đã gỡ `ignoreCommand` khỏi vercel.json. Lý do: auto-deploy tắt từ 07/09 ⇒ mọi deployment là Thùy bấm tay cho ĐÚNG 1 project,
+// bước lọc không còn tiết kiệm gì; ngược lại Vercel lấy PREVIOUS_SHA = deployment vừa bị cancel ⇒ diff chỉ còn scripts/DEVLOG ⇒ cancel tiếp, vòng lặp
+// "đang build thì biến mất" (Thùy 24/09). Giữ file để bật lại khi nào mở lại auto-deploy (thêm lại "ignoreCommand": "node scripts/vercel-ignore.mjs").
 // Vercel "Ignored Build Step" cho repo 8 project (ERP · ta · gv · ops · hs · pt · chi · giaibai) — CEO 07/09:
 // "hôm trước đã nói tách ra, không build cả 8 cái". Mỗi push chỉ project nào có file LIÊN QUAN thay đổi mới build.
 // Cách Vercel gọi: `ignoreCommand` trong vercel.json → exit 0 = BỎ QUA build (không tốn quota), exit 1 = BUILD.
@@ -13,9 +16,9 @@ import { execSync } from 'node:child_process'
 const URL_APP = [
   ['bkdemy-erp-v2-ta-v2', 'ta'], ['bkdemy-erp-v2-ta', 'ta'], ['bkdemy-erp-v2-gv', 'gv'], ['bkdemy-erp-v2-ops', 'ops'],
   ['bkdemy-erp-v2-hs', 'hs'], ['bkdemy-erp-v2-pt', 'pt'], ['bkdemy-erp-v2-chi', 'chi'], ['bkdemy-erp-v2-gb', 'giaibai'],
-  ['bkdemy-erp-v2-giaibai', 'giaibai'], ['bkdemy-erp-v2-soan', 'soan'], ['bkdemy-erp-v2-khaosat', 'khaosat'], ['bkdemy-erp-v2.vercel.app', 'erp'],
+  ['bkdemy-erp-v2-giaibai', 'giaibai'], ['bkdemy-erp-v2-soan', 'soan'], ['bkdemy-erp-v2-khaosat', 'khaosat'], ['bkdemy-erp-v2-sukien', 'sukien'], ['bkdemy-erp-v2.vercel.app', 'erp'],
 ]
-const APPS = ['erp', 'ta', 'gv', 'ops', 'hs', 'pt', 'chi', 'giaibai', 'soan', 'khaosat']
+const APPS = ['erp', 'ta', 'gv', 'ops', 'hs', 'pt', 'chi', 'giaibai', 'soan', 'khaosat', 'sukien']
 
 // Đường dẫn RIÊNG → chủ sở hữu. Prefix khớp đầu chuỗi; thư mục kết thúc bằng '/'.
 const RIENG = [
@@ -29,6 +32,8 @@ const RIENG = [
   { p: ['giaibai.html', 'vite.config.giaibai.ts', 'src/main-giaibai.tsx', 'src/AppGiaiBai.tsx', 'src/screens/giaibai/'], chu: ['giaibai'] },
   { p: ['soan.html', 'vite.config.soan.ts', 'src/main-soan.tsx', 'src/AppSoan.tsx'], chu: ['soan'] },
   { p: ['khaosat.html', 'vite.config.khaosat.ts', 'src/main-khaosat.tsx', 'src/AppKhaoSat.tsx', 'src/screens/khaosat/'], chu: ['khaosat'] },
+  { p: ['sukien.html', 'vite.config.sukien.ts', 'src/main-sukien.tsx', 'src/AppSuKien.tsx'], chu: ['sukien'] },
+  { p: ['src/screens/sukien/', 'src/lib/sukien.ts'], chu: ['sukien', 'erp'] }, // ERP cũng có lá Sự kiện + TV qua hash
   { p: ['index.html', 'vite.config.ts', 'src/main.tsx', 'src/App.tsx'], chu: ['erp'] },
   // khu "Của tôi" (TA đã lắp; OPS/GV sắp lắp cùng khuôn) — 3 app cùng sở hữu để không bỏ lỡ
   { p: ['src/components/bk/', 'public/bk-ui/'], chu: ['ta', 'ops', 'gv'] },
@@ -47,6 +52,8 @@ const RIENG = [
 ]
 // Đường dẫn KHÔNG ảnh hưởng bundle nào
 const BO_QUA = [
+  'public/games/', // game Trung Thu — project Vercel riêng (Root Directory=public/games), không app nào build
+  'games-site/',   // thư mục game hiện tại (hub + Cờ Tỷ Phú + BK Catan…) — project Vercel game riêng; thiếu dòng này thì sửa game là build oan cả 8 app ERP
   'design/', 'docs/', 'supabase/', 'scripts/', 'worker/', '.claude/', '.github/', 'dist', 'schema.md', 'DEVLOG.md', 'HANDOFF.md',
   'CLAUDE.md', 'README', '_v1_ref/', '.gitignore', '.env.example',
 ]
@@ -73,7 +80,11 @@ function daDoi() {
     if (r) return { files: r, duong: `so với PREVIOUS_SHA thật (${truoc.slice(0, 8)} → ${sau.slice(0, 8)})` }
     console.log(`[vercel-ignore] có PREVIOUS_SHA=${truoc} nhưng git diff LỖI (SHA không có trong lịch sử clone?) → rơi về so HEAD^`)
   } else {
-    console.log('[vercel-ignore] VERCEL_GIT_PREVIOUS_SHA RỖNG (Vercel không cấp — có thể lần đầu deploy dự án này với ignoreCommand, hoặc không phải push GitHub thường) → rơi về so HEAD^')
+    // ⭐ 24/09 — Thùy deploy TAY (auto-deploy tắt từ 07/09) thì Vercel KHÔNG cấp PREVIOUS_SHA; so HEAD^ chỉ nhìn 1 commit cuối ⇒ commit cuối là
+    // games-site/BK Catan thì ERP bị BỎ QUA build dù 3 commit trước đó đổi src/ (đã dính: gom lá Bổ trợ ac3c808 không lên prod). Không biết
+    // lần build trước ở đâu = KHÔNG CHẮC ⇒ BUILD (đúng luật ghi ở đầu file). Deploy tay = người chủ động bấm, build là đúng ý.
+    console.log('[vercel-ignore] VERCEL_GIT_PREVIOUS_SHA RỖNG (deploy tay / không phải push GitHub) → KHÔNG so HEAD^ (chỉ 1 commit, dễ bỏ sót) → BUILD (an toàn)')
+    process.exit(1)
   }
   const r = thu(`git diff --name-only HEAD^ HEAD`)   // clone nông / thiếu previous SHA: ít nhất so với commit liền trước
   return r ? { files: r, duong: 'so với HEAD^ (KHÔNG phải lần build gần nhất thật của project — chỉ 1 commit gần nhất)' } : { files: null, duong: null }

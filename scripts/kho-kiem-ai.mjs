@@ -2,7 +2,7 @@
 // subscription, KHÔNG API) đọc lô → tự giải trong chat → ghi file kết quả → script ghi DB trong 1 transaction.
 //   1) node scripts/kho-kiem-ai.mjs --list [--n 150] [--kho dai] [--khoi 6,7,8,10] [--out lo.json]
 //        → câu CHƯA kiểm (kiem_may null), có đáp số, chưa vào rác. ƯU TIÊN: câu HS ĐÃ LÀM (có trong bai_test_cau) trước, rồi
-//          khối theo thứ tự truyền vào (mặc định 6,7,8,9,10,11,12 rồi cấp 1), rồi created_at. Mỗi câu: đề + đáp số kho + lời giải kho
+//          khối theo thứ tự truyền vào (mặc định 6,7,8,8T,9,10,11,12 rồi cấp 1), rồi created_at. Mỗi câu: đề + đáp số kho + lời giải kho
 //          + phương án/mệnh đề. Claude ĐỌC, GIẢI ĐỘC LẬP (không tin lời giải kho), so đáp số.
 //   2) Claude viết kq.json: { lo: 'B-01 …', ghi_chu?, kq: [ { ma_cau, dap_an_ai, khop: true|false|null, ghi? } ] }
 //        · khop=true  ⇒ kiem_may='khop'  (+ da_duyet=true, duyet_nguon='ai' nếu lô KÝ)
@@ -27,7 +27,7 @@ const c = new pg.Client({ connectionString: url, connectionTimeoutMillis: 20000 
 try {
   if (flag('--list')) {
     const n = Number(opt('--n', 150))
-    const khoi = opt('--khoi', '6,7,8,9,10,11,12,5,5T,4,4T,3').split(',').map((s) => s.trim())
+    const khoi = opt('--khoi', '6,7,8,8T,9,10,11,12,5,5T,4,4T,3').split(',').map((s) => s.trim())
     const { rows } = await c.query(`
       select q.ma_cau, b.khoi, q.dang_chinh, b.ten_dang, q.loai_cau, q.noi_dung, q.lua_chon, q.menh_de, q.dap_an, q.loi_giai, q.anh_de, q.nguon,
              exists (select 1 from bai_test_cau t where t.ma_cau = q.ma_cau) hs_da_lam

@@ -17,6 +17,7 @@ import type { MTPhanCaus } from '../../lib/mt'
 import { getOrCreateKyThiMTChoBuoi, listDiemThiByKyThi, upsertDiemThi, setKhungMT, tinhDiemMT, currentMua, type KyThi, type DiemThi } from '../../lib/thanhtich'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import TruocBuoiTab from './TruocBuoiTab'
+import XepHangBuoi from './XepHangBuoi'
 import { listDaiDang, type CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
@@ -421,7 +422,11 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
               ? <EloExpTab roster={roster} mon={(buoi as any).lop?.mon ?? ''} tenLop={(buoi as any).lop?.ten_lop ?? ''} />
               : tab === 'truocbuoi'
               ? <TruocBuoiTab lopId={buoi.lop_id ?? ''} ngayBuoi={buoi.ngay} mon={(buoi as any).lop?.mon ?? ''} />
-              : <ChamTab buoiId={id} phase="ingame" roster={roster} buoi={buoi} dangOpts={dangOpts} onChange={reload} />}
+              : <>
+                  {/* 🏆 Xếp hạng buổi + game trong buổi (spec-game-buoi-hoc §5b) — chỉ buổi thường */}
+                  {buoi.loai === 'thuong' && <XepHangBuoi buoiId={id} soCoMat={soCoMat} />}
+                  <ChamTab buoiId={id} phase="ingame" roster={roster} buoi={buoi} dangOpts={dangOpts} onChange={reload} />
+                </>}
           </div>
         </>
       )}
@@ -1868,6 +1873,7 @@ function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: Buo
     setDiems((prev) => [...prev.filter((d) => d.hoc_sinh_id !== hsId), saved])
   }
 
+  const khungThieu = !!ky && (ky.khung_co_ban == null || ky.khung_nang_cao == null)
   return (
     <div className="mb-3 rounded-xl border border-violet-200 bg-violet-50/40 p-3">
       <div className="mb-2 flex flex-wrap items-center gap-2">
@@ -1876,8 +1882,14 @@ function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: Buo
       </div>
       {loading || !ky ? <p className="text-[12px] text-slate-400">Đang tải…</p> : (
         <>
-          {/* Khung điểm của ĐỀ (1 lần cho cả buổi) — để trống nếu chưa cần "1.5/2". */}
-          <KhungMTInput ky={ky} onSave={saveKhung} />
+          {khungThieu && (
+            <div className="mb-2 flex items-center gap-2 rounded-lg border border-rose-300 bg-rose-50 px-3 py-1.5 text-[12px] text-rose-800">
+              <span className="font-bold">⚠</span>
+              <span>Chưa nhập <b>mức điểm tối đa</b> của phần <b>Cơ bản{ky.khung_co_ban != null ? '' : ' ✗'}</b> · <b>Nâng cao{ky.khung_nang_cao != null ? '' : ' ✗'}</b> → Report PH <b>sẽ không tính được %</b> cơ bản / nâng cao.</span>
+            </div>
+          )}
+          {/* Khung điểm của ĐỀ (1 lần cho cả buổi) — BẮT BUỘC nhập để Report PH tính được %CB/%NC (Thùy 15/09). */}
+          <KhungMTInput ky={ky} onSave={saveKhung} khungThieu={khungThieu} />
           <table className="w-full text-[13px]">
             <thead>
               <tr className="text-left text-[10px] uppercase tracking-wide text-slate-400">
@@ -1901,19 +1913,19 @@ function DiemMTPanel({ buoiId, buoi, coMat, tenHT }: { buoiId: string; buoi: Buo
 }
 
 // Khung điểm (tối đa) của cả đề — 1 khung/buổi, nhập 1 lần, KHÔNG lặp lại theo từng HS.
-function KhungMTInput({ ky, onSave }: { ky: KyThi; onSave: (p: { coBan?: number | null; nangCao?: number | null }) => void }) {
+function KhungMTInput({ ky, onSave, khungThieu }: { ky: KyThi; onSave: (p: { coBan?: number | null; nangCao?: number | null }) => void; khungThieu?: boolean }) {
   const [coBan, setCoBan] = useState(ky.khung_co_ban != null ? String(ky.khung_co_ban) : '')
   const [nangCao, setNangCao] = useState(ky.khung_nang_cao != null ? String(ky.khung_nang_cao) : '')
   const num = (s: string) => (s.trim() === '' ? null : Number(s))
-  const inp = 'h-7 w-16 rounded border border-slate-300 px-2 text-[13px]'
+  const inp = (thieu: boolean) => `h-7 w-16 rounded border px-2 text-[13px] ${thieu ? 'border-rose-400 bg-rose-50' : 'border-slate-300'}`
   return (
-    <div className="mb-2 flex items-center gap-3 rounded-lg border border-violet-100 bg-white px-3 py-1.5">
-      <span className="text-[11px] font-medium text-slate-500">Khung điểm đề (tối đa mỗi phần — để hiện dạng "1.5/2"):</span>
+    <div className={`mb-2 flex items-center gap-3 rounded-lg border px-3 py-1.5 ${khungThieu ? 'border-rose-200 bg-rose-50/30' : 'border-violet-100 bg-white'}`}>
+      <span className="text-[11px] font-medium text-slate-500">Mức điểm tối đa của đề {khungThieu ? <b className="text-rose-700">(bắt buộc)</b> : '(để hiện dạng "1.5/2")'}:</span>
       <label className="flex items-center gap-1.5 text-[12px] text-slate-600">Cơ bản
-        <input value={coBan} onChange={(e) => setCoBan(e.target.value)} onBlur={() => onSave({ coBan: num(coBan) })} inputMode="decimal" placeholder="—" className={inp} />
+        <input value={coBan} onChange={(e) => setCoBan(e.target.value)} onBlur={() => onSave({ coBan: num(coBan) })} inputMode="decimal" placeholder="—" className={inp(!!khungThieu && ky.khung_co_ban == null)} />
       </label>
       <label className="flex items-center gap-1.5 text-[12px] text-slate-600">Nâng cao
-        <input value={nangCao} onChange={(e) => setNangCao(e.target.value)} onBlur={() => onSave({ nangCao: num(nangCao) })} inputMode="decimal" placeholder="—" className={inp} />
+        <input value={nangCao} onChange={(e) => setNangCao(e.target.value)} onBlur={() => onSave({ nangCao: num(nangCao) })} inputMode="decimal" placeholder="—" className={inp(!!khungThieu && ky.khung_nang_cao == null)} />
       </label>
     </div>
   )
@@ -1975,6 +1987,7 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
   const mon = (buoi as any).lop?.mon as string | undefined
   const dangTL = useDangTaiLieu(buoiId, 'btvn', mon) // 🚨 dạng có trong PHIẾU BTVN (luật chung chuông, CEO 09/09)
   const [onl, setOnl] = useState<BTVNOnlineDongBo | null>(null) // kết quả đổ BTVN online vào lưới (xem dongBoBTVNOnline)
+  const [sync, setSync] = useState<LuoiSync | null>(null) // lưới ↔ phiếu BTVN có khớp không (banner như ET)
   const [onlBusy, setOnlBusy] = useState(false)
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
@@ -1984,21 +1997,30 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
 
   async function reloadP() { const [p, g] = await Promise.all([listProblems(buoiId, 'btvn'), listGrades(buoiId)]); setProbs(p); setGrades(g) }
   async function reloadKq() { setKq(await getBtvnKetQua(buoiId)); setCb(await listCanhBao(buoiId)); setNop(await listNopTheoBuoi(buoiId).catch(() => ({}))) }
-  useEffect(() => { (async () => {
+  // Nạp lưới = sync bám PHIẾU BTVN (lớp+ngày) rồi đọc ô/điểm. `dongHienTai` truyền tường minh vì được gọi
+  // lại NGAY sau "Mở lại" (effect chỉ chạy theo buoiId). Bài học 7S1 20/09 (23/09): gán nhầm phiếu → chấm →
+  // đóng BTVN → gán lại phiếu đúng ⇒ sync từ chối đổi cấu trúc (đúng luật, phase đã đóng) NHƯNG kết quả bị
+  // nuốt, không một dòng báo ⇒ nhìn như "chỗ nhập ĐCS chưa cập nhật". Im lặng là thứ duy nhất không được phép.
+  async function napLuoi(dongHienTai: boolean) {
     setLoading(true)
     try {
       const { btvnId, caus } = await loadBTVNForBuoi(buoiId)
       // TUẦN TỰ (không Promise.all) — Đại + Hình chia sẻ slot problem_no của cùng (buổi,'btvn').
-      if (btvnId) await syncBTVNProblems(buoiId, caus, !!buoi.btvn_dong_at)
+      const s = btvnId ? await syncBTVNProblems(buoiId, caus, dongHienTai) : null
       const { dapAn: hinhDapAn } = await loadHinhForBuoiPhase(buoiId, 'btvn')
-      if (hinhDapAn.length) await syncHinhProblems(buoiId, 'btvn', hinhDapAn, !!buoi.btvn_dong_at)
+      const sh = hinhDapAn.length ? await syncHinhProblems(buoiId, 'btvn', hinhDapAn, dongHienTai) : null
       setMissing(!btvnId && !hinhDapAn.length)
+      setSync(s || sh ? {
+        probs: [...(s?.probs ?? []), ...(sh?.probs ?? [])], moCoi: [...(s?.moCoi ?? []), ...(sh?.moCoi ?? [])],
+        khongRoRang: s?.khongRoRang ?? sh?.khongRoRang ?? null, doiCauTruc: !!(s?.doiCauTruc || sh?.doiCauTruc),
+      } : null)
       // BTVN ONLINE → lưới + trạng thái nộp (Thùy 07/09). Sau sync để ô đã có; BTVN đã đóng thì RPC tự bỏ qua.
       // Lỗi ở đây KHÔNG làm hỏng tab (lưới chấm tay vẫn dùng được) — chỉ ghi kết quả để hiện dòng báo.
       if (btvnId) { try { setOnl(await dongBoBTVNOnline(buoiId)) } catch (e: any) { setOnl({ khongCoTest: true }); console.error('dongBoBTVNOnline', e) } }
       await reloadP(); await reloadKq()
     } catch { setMissing(true) } finally { setLoading(false) }
-  })() }, [buoiId]) // eslint-disable-line
+  }
+  useEffect(() => { napLuoi(!!buoi.btvn_dong_at) }, [buoiId]) // eslint-disable-line
 
   const gradeOf = (pid: string, hsid: string) => grades.find((g) => g.problem_id === pid && g.hoc_sinh_id === hsid)
   async function pickKQ(pid: string, hsId: string, result: ETResult) {
@@ -2039,6 +2061,7 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
   if (coMat.length === 0) return <p className="text-[12px] text-slate-400">Chưa có HS nào điểm danh “có mặt”.</p>
 
   const cbOf = (hsId: string) => cb.filter((x) => x.hoc_sinh_id === hsId)
+  const moCoiIds = new Set((sync?.moCoi ?? []).map((m) => m.problem.id))
   return (
     <div className="flex h-full flex-col">
       <div className="mb-3 flex items-center gap-2">
@@ -2046,7 +2069,8 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
         {dong ? (
           <div className="ml-auto flex items-center gap-2">
             <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[13px] font-medium text-emerald-700">✓ BTVN đã đóng — đã thưởng EXP hoàn thành.</span>
-            <button onClick={async () => { if (!confirm('Mở lại BTVN để sửa? EXP đã thưởng sẽ hoàn lại.')) return; await reopenBTVN(buoiId); onChange() }} className="rounded-md border border-amber-300 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-50">↩ Mở lại để sửa</button>
+            {/* Mở lại xong nạp lại lưới NGAY (daDong=false) — phiếu đã đổi thì ô mới hiện luôn, không phải rời tab rồi quay lại. */}
+            <button onClick={async () => { if (!confirm('Mở lại BTVN để sửa? EXP đã thưởng sẽ hoàn lại.')) return; await reopenBTVN(buoiId); onChange(); await napLuoi(false) }} className="rounded-md border border-amber-300 px-2.5 py-1 text-[12px] font-medium text-amber-700 hover:bg-amber-50">↩ Mở lại để sửa</button>
           </div>
         ) : (
           <button onClick={dong_} disabled={closing} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">{closing ? 'Đang đóng…' : 'Đóng BTVN'}</button>
@@ -2068,6 +2092,31 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
           </button>
         </div>
       )}
+      {/* Lưới KHÔNG khớp phiếu BTVN — nói rõ mất gì / phải làm gì, y như tab ET. Trước 23/09 tab này nuốt kết quả
+          sync ⇒ gán nhầm phiếu rồi gán lại sau khi đóng là lưới đứng im không lý do (7S1 20/09). */}
+      {sync?.doiCauTruc && (
+        <div className="mb-3 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-[12px] text-amber-800">
+          ⚠️ Phiếu BTVN của buổi (khớp lớp + ngày) <b>đã đổi sau khi BTVN được đóng</b> — lưới chấm giữ nguyên theo lúc chấm.
+          Muốn lưới bám phiếu mới thì bấm <b>↩ Mở lại để sửa</b>, hệ tự đồng bộ (ô cũ còn điểm được giữ lại, đánh dấu "Ngoài phiếu").
+        </div>
+      )}
+      {sync?.khongRoRang === 'lech_so' && (
+        <div className="mb-3 rounded-lg border border-rose-300 bg-rose-50 px-3 py-2 text-[12px] text-rose-800">
+          ⚠️ Lưới đời cũ: <b>số ô ({probs.length}) khác số câu trong phiếu</b> — hệ <b>không tự đoán</b> ô nào ứng câu nào. Cần người đối chiếu phiếu đã phát rồi quyết.
+        </div>
+      )}
+      {sync?.khongRoRang === 'lech_dang' && (
+        <div className="mb-3 rounded-lg border border-rose-300 bg-rose-50 px-3 py-2 text-[12px] text-rose-800">
+          ⚠️ Số ô bằng số câu nhưng <b>dạng của ô không khớp dạng của câu</b> (phiếu bị thay/bớt câu ở giữa sau khi chấm). Hệ không đoán, điểm giữ nguyên — cần người đối chiếu.
+        </div>
+      )}
+      {!!sync?.moCoi.length && (
+        <div className="mb-3 rounded-lg border border-rose-300 bg-rose-50 px-3 py-2 text-[12px] text-rose-800">
+          ⚠️ {sync.moCoi.length} ô có điểm nhưng câu tương ứng <b>không còn trong phiếu BTVN</b>
+          {' '}({sync.moCoi.map((m) => `câu ${m.problem.problem_no}: ${m.soDiem} điểm`).join(' · ')}).
+          {' '}Điểm được <b>giữ nguyên</b>, ô đánh dấu "Ngoài phiếu". Muốn bỏ hẳn: bấm lại mức đang chọn ở từng ô để xoá điểm; ô hết điểm tự biến mất lần mở sau.
+        </div>
+      )}
       <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
         <table className="border-collapse text-sm">
           <thead>
@@ -2076,8 +2125,8 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
               {probs.map((p) => {
                 const hinh = !!p.hinh_baitoan_id
                 return (
-                  <th key={p.id} className={`sticky top-0 z-10 min-w-[120px] border border-slate-200 px-2 py-1.5 text-center align-top ${hinh ? 'bg-violet-50' : 'bg-slate-100'}`}>
-                    <div className="text-[12px] font-bold text-slate-700">{hinh ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</div>
+                  <th key={p.id} className={`sticky top-0 z-10 min-w-[120px] border border-slate-200 px-2 py-1.5 text-center align-top ${moCoiIds.has(p.id) ? 'bg-rose-50' : hinh ? 'bg-violet-50' : 'bg-slate-100'}`}>
+                    <div className="text-[12px] font-bold text-slate-700">{moCoiIds.has(p.id) ? 'Ngoài phiếu' : hinh ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</div>
                     <div className="mx-auto max-w-[150px] truncate text-[11px] font-medium normal-case text-violet-600" title={hinh ? 'Hình (mô hình)' : tenDang(p.ma_dang)}>{hinh ? 'Hình (mô hình)' : tenDang(p.ma_dang)}</div>
                   </th>
                 )

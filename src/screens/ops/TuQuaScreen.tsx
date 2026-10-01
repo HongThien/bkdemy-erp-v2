@@ -1,11 +1,11 @@
 // TỦ QUÀ — màn app OPS (Thùy chốt 30/08): đổi quà tại tủ thanh toán bằng XU + đơn đặt quà theo yêu cầu
 // + kho (catalog/nhập). Touch-first, tông HỒNG (rose) theo khuôn màu-per-tab của app OPS.
 // Mọi số (số dư, tồn) từ DB (fn_tuqua_* / view) — client không tính (CLAUDE §2.0). Seam: lib/tuqua.ts.
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 import {
   listSoDuXu, getSoDuXu, listTonQua, listXuLedger, doiQua, giaoDoiQua, huyDoiQua,
-  listDoiQuaCuaHS, listDoiQuaChoGiao, taoOrder, duyetOrder, tuChoiOrder, orderVe, orderGiao, huyOrder,
+  listDoiQuaCuaHS, listDoiQuaChoGiao, listDoiQuaLichSu, taoOrder, duyetOrder, tuChoiOrder, orderVe, orderGiao, huyOrder,
   listOrderDangSong, listOrderGanDay, themQua, suaQua, setQuaDangBan, uploadQuaAnh,
   taoNhap, xacNhanNhap, huyNhap, listNhapChoXacNhan,
   type SoDuXu, type TonQua, type DoiQua, type QuaOrder, type QuaNhap, type XuLedgerRow,
@@ -13,7 +13,28 @@ import {
 import SearchSelect, { norm, type Opt } from '../../components/SearchSelect'
 import { OpsHero } from '../../components/ops/OpsUI'
 
-type Muc = 'doi' | 'don' | 'kho'
+type Muc = 'doi' | 'don' | 'kho' | 'ls'
+
+// ── Cache module-level 60s cho listSoDuXu + listTonQua ──────────────
+// Bài học Thùy 09-09 (§2 CLAUDE): chuyển tab qua lại không được fetch lại từ đầu (trắng màn, cuộn đầu).
+// Cả 2 list này ~vài trăm dòng, refetch mỗi lần vào TuQuaScreen là lãng phí; cache TTL 60s, invalidate
+// TAY sau mutation. KHÔNG cache lịch sử/xu ledger (đang cần data mới) — chỉ cache 2 list nền tĩnh.
+const CACHE_TTL = 60_000
+type Cache<T> = { data: T; ts: number } | null
+const cache: { soDu: Cache<SoDuXu[]>; ton: Cache<TonQua[]> } = { soDu: null, ton: null }
+const fresh = <T,>(c: Cache<T>) => c && Date.now() - c.ts < CACHE_TTL ? c.data : null
+async function getSoDuList(force = false): Promise<SoDuXu[]> {
+  const cached = force ? null : fresh(cache.soDu)
+  if (cached) return cached
+  const data = await listSoDuXu(); cache.soDu = { data, ts: Date.now() }; return data
+}
+async function getTonList(force = false): Promise<TonQua[]> {
+  const cached = force ? null : fresh(cache.ton)
+  if (cached) return cached
+  const data = await listTonQua(); cache.ton = { data, ts: Date.now() }; return data
+}
+const invalidateSoDu = () => { cache.soDu = null }
+const invalidateTon = () => { cache.ton = null }
 const ddmm = (iso: string) => new Date(iso).toLocaleDateString('vi', { day: '2-digit', month: '2-digit', timeZone: 'Asia/Ho_Chi_Minh' })
 const inputCls = 'w-full rounded-xl border border-slate-300 px-3 py-2.5 text-[14px] outline-none focus:border-rose-400'
 const Lbl = ({ children }: { children: React.ReactNode }) => <label className="mb-1 block text-[13px] font-medium text-slate-600">{children}</label>
@@ -33,13 +54,13 @@ const OD_TT: Record<QuaOrder['trang_thai'], [string, string]> = {
 }
 
 function AvaHS({ ten, img, size = 'h-9 w-9 text-[12px]' }: { ten: string; img: string | null | undefined; size?: string }) {
-  if (img) return <img src={img} alt="" className={`${size} shrink-0 rounded-full object-cover ring-1 ring-slate-200`} />
+  if (img) return <img src={img} alt="" loading="lazy" decoding="async" className={`${size} shrink-0 rounded-full object-cover ring-1 ring-slate-200`} />
   const ini = ten.trim().split(/\s+/).slice(-2).map((w) => w.charAt(0).toUpperCase()).join('')
   return <span className={`flex ${size} shrink-0 items-center justify-center rounded-full bg-rose-100 font-bold text-rose-700`}>{ini}</span>
 }
 function AnhQua({ url, cls }: { url: string | null; cls: string }) {
   return url
-    ? <img src={url} alt="" className={`${cls} rounded-xl object-cover`} />
+    ? <img src={url} alt="" loading="lazy" decoding="async" className={`${cls} rounded-xl object-cover`} />
     : <span className={`${cls} flex items-center justify-center rounded-xl bg-rose-50 text-[26px]`}>🎁</span>
 }
 
@@ -61,7 +82,7 @@ export default function TuQuaScreen() {
       {/* Thanh tab đặt HẲN dưới header (nền trắng đục) — CEO 07/09: đặt đè lên ảnh header bị trùng, khó nhìn */}
       <div className="mx-auto max-w-[760px] px-3 pt-3">
         <div className="relative mx-auto flex rounded-2xl bg-white p-1 shadow-sm">
-          {([['doi', '🎁 Đổi quà'], ['don', '📦 Đơn đặt'], ['kho', '🗃️ Kho']] as [Muc, string][]).map(([k, lbl]) => (
+          {([['doi', '🎁 Đổi'], ['don', '📦 Đơn'], ['kho', '🗃️ Kho'], ['ls', '🕘 Lịch sử']] as [Muc, string][]).map(([k, lbl]) => (
             <button key={k} onClick={() => setMuc(k)}
               className={`min-h-[40px] flex-1 rounded-xl text-[13.5px] font-bold transition ${muc === k ? 'bg-[#FFE9D2] text-[#9A3E10]' : 'text-[#9AA5C4] active:bg-[#F7F9FF]'}`}>
               {lbl}
@@ -74,6 +95,7 @@ export default function TuQuaScreen() {
         {muc === 'doi' && <DoiTab bao={bao} />}
         {muc === 'don' && <DonTab bao={bao} />}
         {muc === 'kho' && <KhoTab bao={bao} />}
+        {muc === 'ls' && <LichSuTab bao={bao} />}
       </div>
 
       {toast && createPortal(
@@ -90,28 +112,28 @@ function DoiTab({ bao }: { bao: (m: string) => void }) {
   const [hsId, setHsId] = useState<string | null>(null)
   const [soDu, setSoDu] = useState<number | null>(null)
   const [lichSu, setLichSu] = useState<DoiQua[]>([])
-  const [soXu, setSoXu] = useState<XuLedgerRow[]>([])
   const [chonQua, setChonQua] = useState<TonQua | null>(null)
   const [timQua, setTimQua] = useState('')
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
 
-  async function reload() {
+  async function reload(force = false) {
     setLoading(true)
     try {
-      const [h, t] = await Promise.all([listSoDuXu(), listTonQua()])
+      const [h, t] = await Promise.all([getSoDuList(force), getTonList(force)])
       setHsList(h); setTonList(t)
     } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [])
 
+  // Bỏ listXuLedger khỏi lần load đầu — nặng và ít khi cần; user mở <details> mới fetch (xem SoXuLazy).
   async function reloadHS(id: string) {
     try {
-      const [du, ls, sx] = await Promise.all([getSoDuXu(id), listDoiQuaCuaHS(id), listXuLedger(id)])
-      setSoDu(du); setLichSu(ls); setSoXu(sx)
+      const [du, ls] = await Promise.all([getSoDuXu(id), listDoiQuaCuaHS(id)])
+      setSoDu(du); setLichSu(ls)
     } catch (e: any) { setErr(e.message ?? String(e)) }
   }
-  useEffect(() => { setSoDu(null); setLichSu([]); setSoXu([]); if (hsId) reloadHS(hsId) }, [hsId]) // eslint-disable-line
+  useEffect(() => { setSoDu(null); setLichSu([]); if (hsId) reloadHS(hsId) }, [hsId]) // eslint-disable-line
 
   const hs = hsList.find((h) => h.hoc_sinh_id === hsId) ?? null
   const opts: Opt[] = hsList.map((h) => ({ id: h.hoc_sinh_id, label: h.ho_ten, sub: `${h.ma_hs ?? ''} · ${h.so_du} xu${h.khoi ? ` · K${h.khoi}` : ''}`, img: h.anh_url }))
@@ -122,8 +144,12 @@ function DoiTab({ bao }: { bao: (m: string) => void }) {
   async function huy(d: DoiQua) {
     const lyDo = prompt(`Hủy lượt đổi "${d.qlht_qua?.ten}" (hoàn ${d.xu_tru} xu)?\nNhập lý do:`)
     if (lyDo == null || !lyDo.trim()) return
-    try { const du = await huyDoiQua(d.id, lyDo.trim()); setSoDu(du); await reloadHS(d.hoc_sinh_id); reload(); bao(`✓ Đã hủy, hoàn ${d.xu_tru} xu`) }
-    catch (e: any) { alert(e.message ?? String(e)) }
+    try {
+      const du = await huyDoiQua(d.id, lyDo.trim()); setSoDu(du)
+      invalidateSoDu(); invalidateTon()  // số dư HS + tồn kho đổi → cache stale
+      await reloadHS(d.hoc_sinh_id); reload(true)
+      bao(`✓ Đã hủy, hoàn ${d.xu_tru} xu`)
+    } catch (e: any) { alert(e.message ?? String(e)) }
   }
   async function giao(d: DoiQua) {
     try { await giaoDoiQua(d.id); await reloadHS(d.hoc_sinh_id); bao('✓ Đã giao quà') }
@@ -208,25 +234,14 @@ function DoiTab({ bao }: { bao: (m: string) => void }) {
           </div>
         </section>
       )}
-      {hsId && soXu.length > 0 && (
-        <details className="text-[12px] text-slate-400">
-          <summary className="cursor-pointer select-none pl-1 font-semibold">Sổ xu gần đây ({soXu.length})</summary>
-          <div className="mt-1.5 flex flex-col gap-1">
-            {soXu.map((r) => (
-              <div key={r.id} className="flex items-center gap-2 rounded-lg bg-white px-2.5 py-1.5">
-                <span className="min-w-0 flex-1 truncate">{r.ly_do ?? r.loai} · {ddmm(r.created_at)}</span>
-                <span className={`shrink-0 font-bold ${r.amount >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>{r.amount >= 0 ? '+' : ''}{r.amount}</span>
-              </div>
-            ))}
-          </div>
-        </details>
-      )}
+      {hsId && <SoXuLazy hsId={hsId} />}
 
       {chonQua && hs && (
         <DoiModal hs={hs} soDu={soDu ?? hs.so_du} qua={chonQua} onClose={() => setChonQua(null)}
           onDone={async (duMoi, giaoNgay) => {
             setChonQua(null); setSoDu(duMoi)
-            await reloadHS(hs.hoc_sinh_id); reload()
+            invalidateSoDu(); invalidateTon()  // đổi → số dư + tồn quà đều lệch
+            await reloadHS(hs.hoc_sinh_id); reload(true)
             bao(giaoNgay ? `✓ Đã đổi & giao — số dư mới ${duMoi} xu` : `✓ Đã đổi (chờ giao) — số dư mới ${duMoi} xu`)
           }} />
       )}
@@ -441,7 +456,7 @@ function OrderModal({ onClose, onDone }: { onClose: () => void; onDone: () => vo
   const [link, setLink] = useState('')
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
-  useEffect(() => { listSoDuXu().then(setHsList).catch(() => {}) }, [])
+  useEffect(() => { getSoDuList().then(setHsList).catch(() => {}) }, [])
   const opts: Opt[] = hsList.map((h) => ({ id: h.hoc_sinh_id, label: h.ho_ten, sub: `${h.ma_hs ?? ''} · ${h.so_du} xu`, img: h.anh_url }))
 
   async function save() {
@@ -482,7 +497,7 @@ function KhoTab({ bao }: { bao: (m: string) => void }) {
 
   async function reload() {
     setLoading(true)
-    try { const [t, p] = await Promise.all([listTonQua(), listNhapChoXacNhan()]); setTonList(t); setPhieuCho(p) }
+    try { const [t, p] = await Promise.all([getTonList(true), listNhapChoXacNhan()]); setTonList(t); setPhieuCho(p) }
     catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [])
@@ -657,4 +672,181 @@ function NhapModal({ qua, onClose, onDone }: { qua: TonQua; onClose: () => void;
         </div>
       </div>
     </div>, document.body)
+}
+
+// ── Sổ xu HS: chỉ fetch khi user MỞ <details> — tách khỏi luồng load HS chính ──
+function SoXuLazy({ hsId }: { hsId: string }) {
+  const [rows, setRows] = useState<XuLedgerRow[] | null>(null)
+  const [busy, setBusy] = useState(false)
+  // hsId đổi → reset về "chưa mở" để lần expand kế tiếp fetch đúng HS mới.
+  useEffect(() => { setRows(null) }, [hsId])
+  async function mo(e: React.SyntheticEvent<HTMLDetailsElement>) {
+    if (!(e.currentTarget as HTMLDetailsElement).open || rows || busy) return
+    setBusy(true)
+    try { setRows(await listXuLedger(hsId)) } catch { setRows([]) } finally { setBusy(false) }
+  }
+  return (
+    <details onToggle={mo} className="text-[12px] text-slate-400">
+      <summary className="cursor-pointer select-none pl-1 font-semibold">Sổ xu gần đây{rows ? ` (${rows.length})` : ''}</summary>
+      {busy && <p className="mt-1.5 pl-1 text-[11.5px] text-slate-400">Đang tải…</p>}
+      {rows && rows.length === 0 && !busy && <p className="mt-1.5 pl-1 text-[11.5px] text-slate-400">Chưa có giao dịch xu nào.</p>}
+      {rows && rows.length > 0 && (
+        <div className="mt-1.5 flex flex-col gap-1">
+          {rows.map((r) => (
+            <div key={r.id} className="flex items-center gap-2 rounded-lg bg-white px-2.5 py-1.5">
+              <span className="min-w-0 flex-1 truncate">{r.ly_do ?? r.loai} · {ddmm(r.created_at)}</span>
+              <span className={`shrink-0 font-bold ${r.amount >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>{r.amount >= 0 ? '+' : ''}{r.amount}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </details>
+  )
+}
+
+// ── TAB LỊCH SỬ: mọi lượt đổi quà toàn hệ thống, filter HS/quà/ngày/trạng thái ──
+// Query trực tiếp qlht_doi_qua qua PostgREST — list thô để render, filter là điều kiện SELECT
+// (đúng §2.0: KHÔNG tổng hợp gì ở client, chỉ fetch dòng đã lọc + hiện).
+function LichSuTab({ bao }: { bao: (m: string) => void }) {
+  const [hsList, setHsList] = useState<SoDuXu[]>([])
+  const [tonList, setTonList] = useState<TonQua[]>([])
+  const [rows, setRows] = useState<DoiQua[]>([])
+  const [hsId, setHsId] = useState<string | null>(null)
+  const [quaId, setQuaId] = useState<string | null>(null)
+  const [trangThai, setTrangThai] = useState<DoiQua['trang_thai'] | ''>('')
+  // Mặc định 7 ngày gần nhất — đủ dùng cho "vừa xảy ra hôm nay/hôm qua", không kéo hàng nghìn dòng.
+  const today = useMemo(() => {
+    const d = new Date(); d.setHours(0, 0, 0, 0)
+    // giờ VN: dùng Date local rồi format YYYY-MM-DD (harness đã ở +07)
+    const p = (n: number) => String(n).padStart(2, '0')
+    return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`
+  }, [])
+  const weekAgo = useMemo(() => {
+    const d = new Date(); d.setDate(d.getDate() - 6); d.setHours(0, 0, 0, 0)
+    const p = (n: number) => String(n).padStart(2, '0')
+    return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`
+  }, [])
+  const [tuNgay, setTuNgay] = useState<string>(weekAgo)
+  const [denNgay, setDenNgay] = useState<string>(today)
+  const [loading, setLoading] = useState(true)
+  const [err, setErr] = useState<string | null>(null)
+
+  // Nạp danh mục HS + quà cho 2 SearchSelect (dùng chung cache module — vừa load ở tab Đổi thì miễn phí).
+  useEffect(() => {
+    (async () => {
+      try {
+        const [h, t] = await Promise.all([getSoDuList(), getTonList()])
+        setHsList(h); setTonList(t)
+      } catch (e: any) { setErr(e.message ?? String(e)) }
+    })()
+  }, [])
+
+  async function fetchRows() {
+    setLoading(true)
+    try {
+      const data = await listDoiQuaLichSu({
+        hocSinhId: hsId, quaId, trangThai: trangThai || null,
+        tuNgay: tuNgay || null, denNgay: denNgay || null, limit: 300,
+      })
+      setRows(data); setErr(null)
+    } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
+  }
+  // Auto refetch mỗi khi đổi filter.
+  useEffect(() => { fetchRows() }, [hsId, quaId, trangThai, tuNgay, denNgay]) // eslint-disable-line
+
+  async function huy(d: DoiQua) {
+    const lyDo = prompt(`Hủy lượt đổi "${d.qlht_qua?.ten}" (hoàn ${d.xu_tru} xu)?\nNhập lý do:`)
+    if (lyDo == null || !lyDo.trim()) return
+    try {
+      await huyDoiQua(d.id, lyDo.trim())
+      invalidateSoDu(); invalidateTon()
+      // Vá dòng vừa hủy tại chỗ (§2 CLAUDE — không refetch cả list, giữ vị trí user).
+      setRows((prev) => prev.map((r) => r.id === d.id ? { ...r, trang_thai: 'huy', ly_do_huy: lyDo.trim() } : r))
+      bao(`✓ Đã hủy, hoàn ${d.xu_tru} xu`)
+    } catch (e: any) { alert(e.message ?? String(e)) }
+  }
+  async function giao(d: DoiQua) {
+    try {
+      await giaoDoiQua(d.id)
+      setRows((prev) => prev.map((r) => r.id === d.id ? { ...r, trang_thai: 'da_giao', giao_luc: new Date().toISOString() } : r))
+      bao('✓ Đã giao quà')
+    } catch (e: any) { alert(e.message ?? String(e)) }
+  }
+
+  const hsOpts: Opt[] = hsList.map((h) => ({ id: h.hoc_sinh_id, label: h.ho_ten, sub: h.ma_hs ?? '', img: h.anh_url }))
+  const quaOpts: Opt[] = tonList.map((q) => ({ id: q.qua_id, label: q.ten, sub: `${q.gia_xu} xu`, img: q.anh_url }))
+  // Tổng xu đã trừ trong danh sách đang xem — chỉ đếm bản ghi ĐANG hiển thị (không phải "tổng nghiệp vụ"),
+  // đúng ngoại lệ §2.0 "đếm items đang render (badge)".
+  const tongTru = rows.filter((r) => r.trang_thai !== 'huy').reduce((s, r) => s + r.xu_tru, 0)
+  const soLuot = rows.length
+
+  return (
+    <div className="flex flex-col gap-3">
+      {err && <p className="rounded-xl bg-rose-50 px-3 py-2 text-[13px] text-rose-700">{err}</p>}
+
+      {/* Bộ lọc */}
+      <div className="grid grid-cols-2 gap-2 rounded-2xl border border-slate-200/70 bg-white p-3 shadow-sm">
+        <div className="col-span-2">
+          <Lbl>Học sinh</Lbl>
+          <SearchSelect value={hsId} onChange={setHsId} options={hsOpts} placeholder="🔎 Mọi HS…" avatars />
+        </div>
+        <div className="col-span-2">
+          <Lbl>Quà</Lbl>
+          <SearchSelect value={quaId} onChange={setQuaId} options={quaOpts} placeholder="🔎 Mọi quà…" avatars />
+        </div>
+        <div>
+          <Lbl>Từ ngày</Lbl>
+          <input type="date" className={inputCls} value={tuNgay} onChange={(e) => setTuNgay(e.target.value)} />
+        </div>
+        <div>
+          <Lbl>Đến ngày</Lbl>
+          <input type="date" className={inputCls} value={denNgay} onChange={(e) => setDenNgay(e.target.value)} />
+        </div>
+        <div className="col-span-2">
+          <Lbl>Trạng thái</Lbl>
+          <div className="flex gap-1.5">
+            {([['', 'Tất cả'], ['cho_giao', 'Chờ giao'], ['da_giao', 'Đã giao'], ['huy', 'Đã hủy']] as const).map(([k, lbl]) => (
+              <button key={k} onClick={() => setTrangThai(k as any)}
+                className={`min-h-[36px] flex-1 rounded-lg text-[12.5px] font-semibold ${trangThai === k ? 'bg-rose-100 text-rose-700' : 'bg-slate-100 text-slate-500 active:bg-slate-200'}`}>{lbl}</button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Tổng dòng đang xem — chỉ badge */}
+      <div className="flex items-center justify-between px-1 text-[12.5px] text-slate-500">
+        <span>{loading ? 'Đang tải…' : `${soLuot} lượt · trừ ${tongTru} xu (chưa tính hủy)`}</span>
+        <button onClick={fetchRows} className="rounded-lg px-2 py-1 text-[12.5px] font-semibold text-rose-700 active:bg-rose-50">↻ Làm mới</button>
+      </div>
+
+      {/* Danh sách */}
+      {!loading && rows.length === 0 && (
+        <div className="rounded-2xl border border-dashed border-slate-300 py-10 text-center text-[13px] text-slate-400">Không có giao dịch nào khớp bộ lọc.</div>
+      )}
+      <div className="flex flex-col gap-1.5">
+        {rows.map((d) => {
+          const [lbl, cls] = DQ_TT[d.trang_thai]
+          const hs = d.hoc_sinh
+          return (
+            <div key={d.id} className="flex items-center gap-2 rounded-2xl border border-slate-200/70 bg-white px-3 py-2.5 shadow-sm">
+              <AnhQua url={d.qlht_qua?.anh_url ?? null} cls="h-10 w-10" />
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-[13.5px] font-semibold text-slate-800">
+                  {d.qlht_qua?.ten ?? '?'}{d.so_luong > 1 ? ` ×${d.so_luong}` : ''}
+                  <span className="ml-1.5 font-normal text-rose-600">−{d.xu_tru} xu</span>
+                </p>
+                <p className="truncate text-[11.5px] text-slate-400">
+                  {hs?.ho_ten ?? '?'}{hs?.ma_hs ? ` · ${hs.ma_hs}` : ''} · {ddmm(d.created_at)}
+                  {d.ly_do_huy ? ` · ${d.ly_do_huy}` : ''}
+                </p>
+              </div>
+              <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-semibold ${cls}`}>{lbl}</span>
+              {d.trang_thai === 'cho_giao' && <button onClick={() => giao(d)} className="min-h-[36px] shrink-0 rounded-lg bg-emerald-600 px-2.5 text-[12px] font-bold text-white active:bg-emerald-500">Giao</button>}
+              {d.trang_thai !== 'huy' && <button onClick={() => huy(d)} className="min-h-[36px] shrink-0 rounded-lg px-2 text-[12px] text-slate-400 active:bg-rose-50 active:text-rose-600">Hủy</button>}
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
 }

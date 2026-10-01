@@ -102,6 +102,29 @@ export async function listDoiQuaChoGiao(): Promise<DoiQua[]> {
   if (error) throw error
   return (data ?? []) as unknown as DoiQua[]
 }
+// Lịch sử giao dịch — list thô để render, filter server-side theo ngày/HS/quà/trạng thái.
+// KHÔNG tổng hợp gì (đúng §2.0); mọi filter là điều kiện SELECT trực tiếp trên cột đã index (FK + created_at).
+export type LichSuFilter = {
+  tuNgay?: string | null    // 'YYYY-MM-DD' giờ VN
+  denNgay?: string | null   // 'YYYY-MM-DD' giờ VN
+  hocSinhId?: string | null
+  quaId?: string | null
+  trangThai?: DoiQua['trang_thai'] | null
+  limit?: number
+}
+export async function listDoiQuaLichSu(f: LichSuFilter = {}): Promise<DoiQua[]> {
+  let q = supabase.from('qlht_doi_qua').select(DOI_QUA_COLS)
+    .order('created_at', { ascending: false }).limit(f.limit ?? 200)
+  if (f.hocSinhId) q = q.eq('hoc_sinh_id', f.hocSinhId)
+  if (f.quaId) q = q.eq('qua_id', f.quaId)
+  if (f.trangThai) q = q.eq('trang_thai', f.trangThai)
+  // Ngày gõ ở UI là ngày giờ VN → mốc UTC = 'YYYY-MM-DDT00:00:00+07:00' / 'YYYY-MM-DDT23:59:59+07:00'.
+  if (f.tuNgay) q = q.gte('created_at', `${f.tuNgay}T00:00:00+07:00`)
+  if (f.denNgay) q = q.lte('created_at', `${f.denNgay}T23:59:59+07:00`)
+  const { data, error } = await q
+  if (error) throw error
+  return (data ?? []) as unknown as DoiQua[]
+}
 
 // ── Order quà theo yêu cầu ─────────────────────────────────────────
 export async function taoOrder(hocSinhId: string, moTa: string, link: string | null): Promise<string> {

@@ -27,6 +27,9 @@ export default function WeeklyPlanningTab() {
   const [huyModal, setHuyModal] = useState<ViecFull | null>(null)
   const [chuyenModal, setChuyenModal] = useState<ViecFull | null>(null)
   const [dongCumModal, setDongCumModal] = useState<ViecFull | null>(null)
+  // Filter theo người làm — pick trong danh sách người CÓ VIỆC trong tuần (derive từ rows,
+  // không xổ toàn bộ nhân sự để danh sách gọn và tránh mục "không có việc nào" khi chọn).
+  const [filterNguoiId, setFilterNguoiId] = useState<string>('')
 
   async function reload() {
     setLoading(true); setErr(null)
@@ -49,9 +52,34 @@ export default function WeeklyPlanningTab() {
   // cụm kể cả 0 con để "+ Tách task con" luôn có mặt) HOẶC root ĐÃ CÓ CON (story 08-18: task
   // to giao thẳng 1 người + deadline như task thường — CHÍNH người đó tự tách con từ "Việc của
   // tôi"; ngay khi có con đầu tiên nó tự thành cụm ở đây, kể cả vẫn còn nguoi_lam_id riêng).
-  const parents = rows.filter((v) => !v.task_me_id && (v.nguoi_lam_id === null || !!v.so_con))
+  const parentsAll = rows.filter((v) => !v.task_me_id && (v.nguoi_lam_id === null || !!v.so_con))
   // Root có người làm mà CHƯA tách con nào = task lẻ đơn giản, không cần cụm mẹ/con.
-  const standalone = rows.filter((v) => !v.task_me_id && v.nguoi_lam_id !== null && !v.so_con)
+  const standaloneAll = rows.filter((v) => !v.task_me_id && v.nguoi_lam_id !== null && !v.so_con)
+
+  // Danh sách người CÓ VIỆC trong tuần này (dedupe theo id, sort theo tên) — nguồn cho dropdown filter.
+  // Xổ từ rows chứ không gọi listNguoiDuocGiao: gọn hơn (chỉ ai có việc), khỏi có mục "0 việc".
+  const nguoiCoViec = (() => {
+    const m = new Map<string, string>()
+    for (const v of rows) if (v.nguoi_lam_id && v.nguoi_lam_ten) m.set(v.nguoi_lam_id, v.nguoi_lam_ten)
+    return [...m.entries()].map(([id, ten]) => ({ id, ten })).sort((a, b) => a.ten.localeCompare(b.ten, 'vi'))
+  })()
+
+  // Áp filter: task lẻ chỉ giữ dòng khớp; task mẹ giữ nếu chính mẹ khớp HOẶC có ≥1 con khớp
+  // (để nhìn cả context sếp lẫn task riêng của người đó). Bên trong mẹ, cons cũng lọc chỉ khớp.
+  const filterOn = !!filterNguoiId
+  const conKhopByMe = new Map<string, ViecFull[]>()
+  if (filterOn) {
+    for (const [meId, cs] of conByMe) {
+      const khop = cs.filter((c) => c.nguoi_lam_id === filterNguoiId)
+      if (khop.length) conKhopByMe.set(meId, khop)
+    }
+  }
+  const parents = filterOn
+    ? parentsAll.filter((me) => me.nguoi_lam_id === filterNguoiId || conKhopByMe.has(me.id))
+    : parentsAll
+  const standalone = filterOn ? standaloneAll.filter((v) => v.nguoi_lam_id === filterNguoiId) : standaloneAll
+  // Khi có filter, con hiển thị trong mẹ = chỉ con khớp; không filter thì hiện đủ như cũ.
+  const consForMe = (meId: string) => (filterOn ? (conKhopByMe.get(meId) ?? []) : (conByMe.get(meId) ?? []))
 
   function tachConPrefill(me: ViecFull): GiaoPrefill {
     return {
@@ -63,22 +91,37 @@ export default function WeeklyPlanningTab() {
   return (
     <div className="mx-auto max-w-[1080px] space-y-4">
       <ErrBar msg={err} />
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         <button onClick={() => dichTuan(-1)} className="rounded-md px-2 py-1 text-slate-500 hover:bg-slate-100">‹</button>
         <span className="text-sm font-semibold text-slate-800">{nhanKyTuan(ky)}</span>
         <button onClick={() => dichTuan(1)} className="rounded-md px-2 py-1 text-slate-500 hover:bg-slate-100">›</button>
         {ky !== kyTuanHienTai() && <button onClick={() => setKy(kyTuanHienTai())} className="text-[12px] text-indigo-600 hover:underline">tuần này</button>}
+        {/* FILTER người làm — xổ dropdown chỉ những ai CÓ VIỆC trong tuần (derive từ rows). */}
+        <div className="ml-2 flex items-center gap-1.5">
+          <span className="text-[12px] text-slate-500">Người:</span>
+          <select value={filterNguoiId} onChange={(e) => setFilterNguoiId(e.target.value)}
+            className="h-7 rounded-md border border-slate-200 bg-white px-2 text-[12px] text-slate-700 hover:border-slate-300 focus:border-indigo-400 focus:outline-none">
+            <option value="">Tất cả ({nguoiCoViec.length})</option>
+            {nguoiCoViec.map((n) => <option key={n.id} value={n.id}>{n.ten}</option>)}
+          </select>
+          {filterOn && <button onClick={() => setFilterNguoiId('')} className="text-[12px] text-indigo-600 hover:underline">xoá lọc</button>}
+        </div>
         <button onClick={() => setGiaoPrefill({ nguon: 'phat_sinh', title: 'Việc phát sinh (tạo tại chỗ)' })} className={`${CX_BTN} ml-auto`}>+ Việc phát sinh</button>
       </div>
 
       {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : (!rows.length ? (
         <Empty>Tuần này chưa có việc. Sang tab Backlog tick chọn + Xác nhận, hoặc bấm "+ Việc phát sinh".</Empty>
+      ) : filterOn && !parents.length && !standalone.length ? (
+        <Empty>Người này không có việc nào trong tuần {nhanKyTuan(ky).toLowerCase()}.</Empty>
       ) : (
         <div className="space-y-4">
           {/* TASK MẸ — cụm card, luôn tách thêm con được */}
           {parents.map((me) => {
-            const cons = conByMe.get(me.id) ?? []
-            const dat = cons.filter((c) => c.trang_thai === 'dat').length
+            // Badge "X/Y đạt" luôn phản ánh SỨC KHOẺ CẢ CỤM (không thu hẹp theo filter — filter
+            // chỉ ẩn con của người khác ở danh sách bên dưới, không đánh tráo thông tin cụm).
+            const consTong = conByMe.get(me.id) ?? []
+            const datTong = consTong.filter((c) => c.trang_thai === 'dat').length
+            const consHien = consForMe(me.id)
             return (
               <div key={me.id} className="rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
                 {/* 2 DÒNG (CEO 05/09, nhìn trên điện thoại): dòng 1 = tên ĐẦY ĐỦ (không truncate) + tỉ lệ đạt;
@@ -88,7 +131,7 @@ export default function WeeklyPlanningTab() {
                   <div className="flex items-start gap-2">
                     <span className="mt-0.5 shrink-0 rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold text-white">MẸ</span>
                     <span className="min-w-0 flex-1 text-[14px] font-semibold leading-snug text-slate-800">{me.tieu_de}</span>
-                    <span className="shrink-0 text-[12px] font-semibold text-slate-600">{cons.length ? `${dat}/${cons.length} đạt` : 'chưa có con'}</span>
+                    <span className="shrink-0 text-[12px] font-semibold text-slate-600">{consTong.length ? `${datTong}/${consTong.length} đạt` : 'chưa có con'}</span>
                   </div>
                   <div className="mt-1.5 flex flex-wrap items-center gap-1.5 pl-8">
                     {me.y_tuong_tieu_de && <span className="rounded bg-indigo-50 px-1.5 py-0.5 text-[10px] text-indigo-700">từ backlog</span>}
@@ -99,8 +142,11 @@ export default function WeeklyPlanningTab() {
                   </div>
                 </button>
                 <div className="mt-2 space-y-1.5 border-l-2 border-slate-100 pl-3">
-                  {!cons.length ? <div className="py-1.5 text-[12px] italic text-slate-400">Chưa tách con nào.</div>
-                    : cons.map((c) => <TaskCard key={c.id} v={c} onClick={() => setDetail(c)} />)}
+                  {!consHien.length
+                    ? <div className="py-1.5 text-[12px] italic text-slate-400">
+                        {filterOn ? 'Không có task con nào của người này trong cụm.' : 'Chưa tách con nào.'}
+                      </div>
+                    : consHien.map((c) => <TaskCard key={c.id} v={c} onClick={() => setDetail(c)} />)}
                   <button onClick={() => setGiaoPrefill(tachConPrefill(me))} className="rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">+ Tách task con</button>
                 </div>
               </div>

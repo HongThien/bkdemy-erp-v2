@@ -11,9 +11,10 @@ import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import DangPickerOne from './DangPickerOne'
 import {
-  themCanhBao, xoaCanhBao, loadDangTaiLieuBuoi, getDangTen, TEN_NGUON_CANH_BAO,
+  themCanhBao, xoaCanhBao, loadDangTaiLieuBuoi, getDangTen, listDangHinhChoChuong, TEN_NGUON_CANH_BAO,
   type CanhBao, type DangTaiLieu, type NguonCanhBao,
 } from '../lib/gami'
+import { coKhoHinh } from '../lib/tailieu'
 
 /** Nạp 1 lần / tab: dạng có trong tài liệu của (buổi, phase). Tab truyền xuống từng hàng HS, không fetch per-HS. */
 export function useDangTaiLieu(buoiId: string, nguon: NguonCanhBao, mon?: string | null): { dang: DangTaiLieu[]; loading: boolean } {
@@ -54,6 +55,7 @@ export function ChuongBaoDong({ buoiId, hsId, hsTen, nguon, khoi, mon, dangTaiLi
 }) {
   const [mo, setMo] = useState(false)
   const [pick, setPick] = useState(false)
+  const [pickHinh, setPickHinh] = useState(false) // picker dạng HÌNH HỌC (mô hình) — kho riêng, không phải nhánh dạng-based
   const [chon, setChon] = useState<string[]>([])
   const [themKho, setThemKho] = useState<DangTaiLieu[]>([]) // dạng chọn từ kho (ngoài tài liệu)
   const [ghiChu, setGhiChu] = useState('')
@@ -73,10 +75,12 @@ export function ChuongBaoDong({ buoiId, hsId, hsTen, nguon, khoi, mon, dangTaiLi
       setMo(false); onSaved()
     } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
   }
-  async function chonTuKho(md: string) {
-    setPick(false)
+  // Dạng chọn từ kho: Đại / Hình giải tích (DangPickerOne, toggle nhánh theo registry) hoặc Hình học (HinhDangPicker).
+  // Tên tra qua getDangTen (đã tra mọi nhánh + hinh_dang) — hoặc dùng tên picker trả sẵn.
+  async function chonTuKho(md: string, tenSan?: string) {
+    setPick(false); setPickHinh(false)
     if (!dsDang.some((d) => d.ma_dang === md)) {
-      const ten = await getDangTen([md], mon ?? undefined).catch(() => ({} as Record<string, string>))
+      const ten = tenSan ? { [md]: tenSan } : await getDangTen([md], mon ?? undefined).catch(() => ({} as Record<string, string>))
       setThemKho((t) => [...t, { ma_dang: md, ten: ten[md] ?? md }])
     }
     setChon((c) => (c.includes(md) ? c : [...c, md]))
@@ -132,8 +136,50 @@ export function ChuongBaoDong({ buoiId, hsId, hsTen, nguon, khoi, mon, dangTaiLi
             </div>
           </div>
         </div>, document.body)}
-      {pick && createPortal(<DangPickerOne khoi={khoi ?? ''} mon={mon ?? undefined} onClose={() => setPick(false)} onPick={(md) => { void chonTuKho(md) }} />, document.body)}
+      {/* CEO 16/09: chuông phải báo được cả 3 bản đồ — Đại · Hình giải tích (2 nhánh dạng-based, `chonNhanh`) · Hình học
+          (kho mô hình, pill thêm → picker riêng). Có kho Hình hay không do registry coKhoHinh quyết, không if môn. */}
+      {pick && createPortal(<DangPickerOne khoi={khoi ?? ''} mon={mon ?? undefined} chonNhanh
+        pillsThem={coKhoHinh(mon) ? [{ ten: 'Hình học', onClick: () => { setPick(false); setPickHinh(true) } }] : undefined}
+        onClose={() => setPick(false)} onPick={(md) => { void chonTuKho(md) }} />, document.body)}
+      {pickHinh && createPortal(<HinhDangPicker khoi={khoi} onClose={() => setPickHinh(false)} onPick={(md, ten) => { void chonTuKho(md, ten) }} />, document.body)}
     </>
+  )
+}
+
+/** Picker dạng HÌNH HỌC (hinh_dang cap='dang', nhóm theo loại câu hỏi) cho chuông — cùng khuôn DangPickerOne. */
+function HinhDangPicker({ khoi, onClose, onPick }: { khoi?: string | null; onClose: () => void; onPick: (maDang: string, ten: string) => void }) {
+  const [rows, setRows] = useState<{ ma_dang: string; ten: string; nhom: string }[] | null>(null)
+  const [q, setQ] = useState('')
+  useEffect(() => { let alive = true; listDangHinhChoChuong(khoi).then((r) => { if (alive) setRows(r) }).catch(() => { if (alive) setRows([]) }); return () => { alive = false } }, [khoi])
+  const qn = q.trim().toLowerCase()
+  const loc = (rows ?? []).filter((r) => !qn || r.ten.toLowerCase().includes(qn) || r.ma_dang.toLowerCase().includes(qn) || r.nhom.toLowerCase().includes(qn))
+  const nhoms = [...new Set(loc.map((r) => r.nhom))]
+  return (
+    <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
+      <div className="mx-auto mt-6 flex max-h-[88vh] w-[640px] max-w-[95vw] flex-col rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center gap-2 border-b border-slate-100 px-4 py-3">
+          <h3 className="text-base font-semibold text-slate-900">Chọn dạng · Hình học{khoi ? ` · Khối ${khoi}` : ''}</h3>
+          <button type="button" onClick={onClose} className="ml-auto text-slate-400 hover:text-slate-600">✕</button>
+        </div>
+        <div className="px-4 pt-3"><input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm dạng / loại câu hỏi…" className="h-9 w-full rounded-lg border border-slate-300 px-2.5 text-[13px]" /></div>
+        <div className="min-h-0 flex-1 overflow-auto px-4 py-3">
+          {rows === null ? <p className="text-sm text-slate-400">Đang tải kho Hình…</p>
+            : loc.length === 0 ? <p className="text-sm text-slate-400">Không có dạng Hình học nào{khoi ? ` cho khối ${khoi}` : ''}.</p>
+            : nhoms.map((nh) => (
+              <div key={nh} className="mb-3">
+                <p className="mb-1 text-[11px] font-bold uppercase tracking-wide text-slate-400">{nh}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {loc.filter((r) => r.nhom === nh).map((r) => (
+                    <button key={r.ma_dang} type="button" onClick={() => onPick(r.ma_dang, r.ten)} title={r.ma_dang}
+                      className="min-h-[36px] max-w-full rounded-lg border border-slate-200 px-2.5 text-left text-[12.5px] font-medium text-slate-700 hover:border-rose-300 hover:bg-rose-50">
+                      <span className="line-clamp-2">{r.ten}</span></button>
+                  ))}
+                </div>
+              </div>
+            ))}
+        </div>
+      </div>
+    </div>
   )
 }
 

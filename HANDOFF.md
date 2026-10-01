@@ -9,6 +9,132 @@
 
 ## ① TRẠNG THÁI HIỆN TẠI
 
+- **⭐⭐ RELEASE APP HS V1.0 — DEADLINE 06/10/2026 (Thùy chốt 01/10). ĐỌC `spec-v1-app-hs.md` TRƯỚC KHI LÀM BẤT KỲ VIỆC GÌ TRÊN APP HS.**
+  - 8 hạng mục: tutorial · chuỗi + nhiệm vụ · Thế giới BK · Rank hoàn chỉnh · UI 100% "Giải cứu thế giới — đánh quái vật" · ≥2 style · game tổ hợp ·
+    góp ý/báo lỗi HS. **Màn NGANG trước** (cấp 1–2 dùng iPad/PC); khổ dọc chỉ cần không vỡ. Giải đấu nhóm: đã thiết kế (§10), CHƯA làm.
+  - **Chia 3 luồng song song, mỗi luồng 1 context** (spec §13 — có câu lệnh mở đầu dán sẵn §13.5, vùng file riêng, hợp đồng dữ liệu §13.4,
+    hộp thư giữa luồng §13.6): **SỐ LIỆU** (chuỗi · nhiệm vụ · rank · huy hiệu · dữ liệu Thế giới · góp ý · hàm bản đồ) · **GAME** (repo BKGame,
+    Thùy điều phối) · **GIAO DIỆN** (bản đồ phiêu lưu · màn đấu · vẽ lại mọi màn · style 2 · tutorial). Commit theo đường dẫn, migration `--only`.
+  - **ĐÃ XONG 01/10 — lát A "lượt học thật"** (mig `202610011501`, ĐÃ ÁP): lượt luyện thêm tính khi ≥5 câu · đúng ≥50% · trung bình ≥6 giây/câu;
+    không ra lại câu em đã gặp ở BẤT KỲ bài nào khi kho còn câu mới. Nguồn duy nhất `public._luot_hoc_that()` + `fn_luot_hoc_that_ket_qua()` cho app.
+    Đo 30 ngày: 57% lượt được tính, 22% bị loại vì làm quá nhanh.
+  - Đơn ChatGPT bản đồ + quái = **Đơn 6** trong `design/DON-HANG-SKIN-HS.md` (Thùy gửi; hình về `design/bk-ui-src/Adventure/`).
+  - Tutorial demo: `hs.html?xem=tutorial` (`src/screens/hocsinh/tutorial/`, lời thoại ở `noiDungTutorial.ts`).
+  - ⚠ `.env` máy công ty: `DATABASE_URL` = `claude_build` (GHI được) dù chú thích ghi `claude_ro`.
+
+- **⭐ BỔ TRỢ (yếu · bù · đuổi) — trạng thái 28/09: đọc `spec-bo-tro.md` (luồng yếu) + `spec-xep-bo-tro-chung.md` (xếp chung).** Tóm:
+  **1 lá "Bổ trợ"** (Vận hành) → toggle Đuổi · Bù · **Yếu** · **Lịch phòng** · **Lịch trực**. Yếu = toggle 5 bước Duyệt → Nội dung → Xếp → Trạng thái ca
+  → Đánh giá ca (cả folder QLCL cũ chuyển vào; quyền `botro`). Xếp CHUNG theo **đơn vị** (30'×1 TA; Đuổi 4 · Bù 4 · Yếu L2/L3 4 · **Yếu L1 1**; ca
+  **đầy khi đủ 3 em/TA HOẶC đủ đơn vị**; phòng ≤2 ca/giờ) · **"+ Xếp" = đã chốt PH, trừ đơn vị ngay** (bỏ bước chờ PH). Lịch phòng = "đang diễn ra"
+  3 loại, 2 khu toggle Lịch trực khối / Lịch riêng; mở ngày ⇒ DB gắn buổi xếp bằng form riêng vào ca trực khớp người+giờ. Màn Xếp chỉ hiện **L1–L3**
+  (L0 ẩn); **đổi mức trên card**, hạ L0 = dừng bổ trợ (đóng case ket_qua `bo`). **Buổi xong ⇒ case tiến:** TA tick "dạng đã dạy" lúc hoàn tất
+  (mặc định tick hết) + mọi dạng vừa dạy được bổ sung câu retest (`_btyeu_bu_retest`, màn Xếp tự bù mỗi lần mở). Buổi đã đóng ca **không đổi được
+  ngày/giờ** (trigger). App TA: chạm lại nút điểm danh = bỏ (chỉ khi em chưa làm câu nào). Bài trên app **MCQ tuyệt đối — ngoại lệ duy nhất: dạng
+  mức độ 4–5 mà cả dạng 0 MCQ ⇒ trả lời ngắn** (28/09). App HS: card "Học từ đầu" (đuổi) kiểm lại mỗi lần về màn chính.
+  **Treo:** 3 dạng mức 2–3 chờ retest không có MCQ + 3 dạng mức 4 chỉ
+  có tự luận (phiên MCQ) · retest chỉ hiện trên app TA TỪ NGÀY làm (ERP hiện cả sắp tới — nếu muốn TA biết trước: thêm "Retest sắp tới") · bước 5 KPI
+  tải TA (Σ đơn vị có mặt) chưa làm · `migrate` dùng `--only` (4 migration Sổ tay treo).
+
+- **⭐ TRỢ LÝ (tab 🤖 trong Việc của tôi) — trạng thái 29/09: đọc `SPEC-troly-nhansu.md` §6–§7.** Tóm: **báo cáo là chính, hỏi là phụ**;
+  chỉ 3 tài khoản (Thùy · Thùy Trang · Bảo Lộc). Hai bản tính ở Postgres, KHÔNG realtime (lưu DB, "↻ Tính lại" ghi đè): **Báo cáo Sư phạm** (của Trang —
+  3 luồng: đếm chậm/miss → Detail → cảnh báo) và **Tổng kết tuần** (dashboard theo BẢNG, mỗi chỉ số so với **thường đạt = trung bình 8 tuần gần nhất
+  đã lọc nhiễu**, xếp hạng GV–TA, trình chiếu mỗi bảng một màn). **Treo:** báo cáo Vận hành của Lộc chưa có mẫu · thông báo thứ Hai chờ khai
+  `TROLY_PUSH_APP` + deploy · khung hỏi chưa nối 13 công cụ DB. Chi tiết: mục "⭐⭐ TRỢ LÝ" bên dưới.
+
+- **⭐⭐ GAME BK — trạng thái 01/10 (gộp máy nhà + máy công ty). ĐỌC `spec-bat-thu.md` §0 + §1 TRƯỚC KHI LÀM.**
+  - **Chiến lược CEO (spec §0):** áp lực chỉ ép HS vào app, không ép được cố gắng ⇒ game phải đủ thú vị để HS "trả giá" ~30 phút học nghiêm túc.
+    - **Muốn chơi thì phải học** (vd đúng 30 câu thì game mở khoá).
+    - Kết quả học thành tài sản trong game + khoe với bạn ⇒ học nhiều hơn.
+    - Superapp tạo gắn bó: chuyển trung tâm là mất "chơi".
+    - "Tốt cho số đông là đủ."
+  - **Định vị:** HS chơi vì có bạn bè + để có thêm xu; KHÔNG làm game thật hay. Mô hình BK (lớp thật + app) gần như duy nhất.
+  - **Gộp Nông Trại + Bắt Thú thành 1 game**, 3 chế độ: trồng trọt · khám phá (bắt thú kiểu Palworld) · ấp trứng nuôi pet (đơn giản kiểu Dragon City). Chưa bắt đầu gộp code.
+  - **Pháp lý (NĐ 147/2024): CEO KHÔNG lo** — "làm local, không xu trực tiếp, không giao dịch tiền". Đừng nêu lại như rào chặn. Đánh giá đầy đủ: `design/danh-gia-game-bat-thu-cho-bk.md`.
+  - **Chờ CEO (2 câu trước khi viết spec vòng chơi game gộp):**
+    1. Cổng mở game đếm **số câu đúng** (CTO đề xuất) hay **tỉ lệ đúng**?
+    2. Câu tính từ Tự luyện thôi, hay cả BTVN/ET?
+    - Sau đó: viết spec vòng chơi gộp quanh cổng học (logic trước, số bàn sau).
+  - **Chờ CEO khác:**
+    - duyệt Sổ Trùm 8 trùm (https://claude.ai/artifact/2zWHd4mF6NAhX2UnVVzaDV, spec §3.0b);
+    - chọn nguồn mô hình boss/pet (`design/nguon-mo-hinh-boss-bat-thu.md`, đề xuất mua thử 1 món mỗi bên);
+    - **⚠ 2 lời CEO về xu đang vênh nhau, cần CEO chọn:**
+      - 30/09 (máy công ty, `spec-game-bat-quai.md` §5.2): "bán nông sản luôn được 3 xu, làm bóng bắt thú thì bắt được thưởng 4–5 xu nhưng có thể hụt — như đầu tư, có thể ăn có thể xịt".
+        T đã ghi luật: hai đường ngang giá trị kỳ vọng, tỉ lệ bắt công khai, kỹ năng quyết định.
+      - 01/10 (spec-bat-thu #17): "không trả xu trực tiếp".
+      - `spec-game-bat-quai.md` là bản nháp 30/09 trước khi có spec-bat-thu ⇒ **đã bị spec-bat-thu thay**. Chỉ còn giữ để tra lời CEO 30/09.
+  - **Giữ chân app HS** (`design/giu-chan-hoc-sinh-kieu-duolingo.md`). App BK có 2 tầng:
+    - bắt buộc (BTVN/ET — không cần dụ; vấn đề là làm qua loa);
+    - tự nguyện (góc Duolingo vẫn đúng).
+    - Tin báo phụ huynh **ĐÃ CÓ** ở app PH (Web Push: đến lớp · kết quả buổi · tóm tắt việc cần làm · thông báo TT). Còn: đo % PH bật thông báo + gợi ý "hỏi con về dạng X".
+    - Thứ tự đề xuất: học trước chơi sau → GV khen một chạm → nhiệm vụ cả lớp → pet kiểu Finch → giải đấu tuần nhóm nhỏ → chuỗi ngày (chỉ đếm phần làm thêm).
+  - **CODE — 2 repo GitHub riêng tư** (không nằm trong repo ERP):
+    - **`HongThien/bk-bat-thu`** (bắt thú). Vite + TS + three r186 + three.quarks; asset CC0 nằm sẵn trong `public/asset` (Quaternius Ultimate Monsters + KayKit).
+      - Đã có: chọn 3 thú khởi đầu · 23 loài · 13 chiêu/7 kiểu hiện · hoạt cảnh bắt 3 lần lắc · đội 5 + sổ thú · 2 bản đồ hoạ Đẹp/Nhẹ (`src/chat-luong.ts`).
+      - Đám đông: thấy tối đa 10 người, ưu tiên bạn (`?nguoi=100`).
+      - **Khu đấu boss** Bạo Chúa Lửa (`src/boss.ts`, mô hình tạm): 4 đòn có vùng đỏ báo trước · nổi giận 50% · kiệt sức 15% để thu phục · né lăn (Shift) · thắng/thua/thu phục.
+      - Chưa có máy chủ (Colyseus để sau). Chưa đo iPad gen 7 thật.
+      - **Máy công ty:** `C:\Users\WBPC\Desktop\BKERP\BKGame\BatThu` @ `9a54b05`, đã `npm install`. Launch `bat-thu` (cổng 5280).
+      - Máy nhà: launch `bat-thu` trỏ `C:/Users/Admin/...` — sửa local, đừng commit đè đường dẫn máy công ty.
+      - Tham số: `?cl=dep|nhe` · `?cham=0.25` (quay chậm) · `?nguoi=N`. Vào khu đấu: góc tây bắc bản đồ (x −28, z 26).
+    - **`HongThien/bk-nong-trai`** (nông trại; đủ nhánh `main`/`nhip-ngay`/`do-hoa-thu`). Bản mới nhất = `nhip-ngay` @ `9556216`.
+      - **Máy công ty:** `C:\Users\WBPC\Desktop\BKERP\BKGame\NongTrai` + worktree `NongTrai-dohoa` (nhánh `do-hoa-thu`).
+        Đã nối remote, cả 3 nhánh trùng GitHub (01/10), đã đặt upstream.
+  - **⭐ CEO 01/10: code game là PROJECT RIÊNG, không gộp vào repo ERP.**
+    - Máy công ty để ở `C:\Users\WBPC\Desktop\BKERP\BKGame\` (cạnh repo ERP); máy nhà ở `C:\Users\Admin\Desktop\BKERP\`.
+    - Mở `BKGame` thành project Claude riêng để làm game. Máy công ty đã có `BKGameCLAUDE.md` + `BKGame.claudelaunch.json` (file cục bộ, không thuộc repo nào; máy nhà muốn dùng thì chép tương tự).
+    - Spec, DEVLOG, HANDOFF và (sau này) migration + hàm `fn_*` của game vẫn ở repo ERP, vì DB chỉ migrate từ đây.
+  - **⚠ Không đặt repo trong thư mục Google Drive sao lưu** (vd `E:\BK ACADEMY\…`, `G:\Other computers\…`).
+    - Drive thả `desktop.ini` vào mọi thư mục, kể cả `.git/refs` ⇒ git báo `bad object refs/desktop.ini`, fetch hỏng.
+    - Ngày 01/10 đã dời 2 repo khỏi `E:\BK ACADEMY\Gaming` vì lỗi này.
+    - Cây làm việc còn ít `desktop.ini` cũ (chưa theo dõi, vô hại).
+  - **Chế độ TRỒNG TRỌT = Nông Trại nhịp ngày. Đọc `spec-nong-trai-nhip-ngay.md` trước khi sửa** (nguồn thiết kế duy nhất; số liệu đầy đủ §3, §5, §9).
+    - **Hướng:** kiểu Nông trại vui vẻ / Khu vườn trên mây; HS vào 1 lần/ngày.
+      - Vòng chơi: thu hoạch → bán → mua bịch hạt → gieo → tưới, bắt sâu → sang vườn bạn cùng lớp giúp (5/ngày) và hái trộm (3/ngày).
+      - `main` của repo game vẫn là bản Hay Day.
+    - **Pha 1** (nhánh `nhip-ngay`): trồng cây + gà, bò + chó. Lò, mèo, chim, trang trí lẻ tắt bằng cờ `PHA`.
+    - **Bố cục (CEO 30/09 khuya, kèm ảnh Nông trại vui vẻ Zing Me): CHƠI MÀN NGANG, bố cục y ảnh** (spec §2.1):
+      - ruộng 12 ô liền nhau, ô to; ô chưa mở là ô cỏ;
+      - sân rào góc trên phải (nhà, kho, chuồng); ao góc dưới phải; chợ + bảng tin bên trái;
+      - đã bỏ thế giới rộng kiểu Hay Day;
+      - cầm dọc ⇒ màn "Xoay ngang máy để chơi".
+      - **Góc camera `HUONG (0.55, 1.05, 0.95)` chính là góc của ảnh — đừng đổi sang 45° kiểu ô thoi** (đã thử, CEO bác).
+    - Có thêm cài như app (PWA) + thanh "Việc hôm nay" chỉ đường, không thưởng, tắt bằng `LUAT.viecHom` (lấy từ Zoo Pet).
+    - **Kinh tế lần 5** (§3.2, §5.1, §5.2, §5.10):
+      - Mở khoá theo tuần: tuần 1 có 4 ô + 2 loại cây; hết tháng đầu 8 ô; 8 tuần đủ 8 loại cây.
+      - Cây sau lời hơn nhưng bịch đắt hơn; tưới đủ +80%.
+      - Bonus mùa đầu: tháng 1 +60%, tháng 2 +30%.
+      - Trần 8 điểm nhà nông/ngày ⇒ cấp đi theo số ngày chăm vườn.
+      - Trần chi 5 xu/tháng; mỗi ngày mua ≤ số ô.
+      - Giả lập 5.000 HS: HS chăm học 1/2/3 lượt/ngày được 23/36/42 xu tháng đầu. BK chi ~1.300 xu/100 HS tháng đầu, rồi giảm dần.
+    - **Đồ hoạ:** đã gộp `do-hoa-thu` (`8b3c25e`): cây 4 giai đoạn, gà/bò nhiều giống, chó 16 động tác, nhà 4 kiểu × 10 mức, ánh sáng / chỉnh màu.
+    - **Chờ CEO** (hỏi 30/09 tối; máy nhà chưa thấy nên chưa hỏi lại):
+      - (a) **Nhà nâng cấp 10 mức** — CEO đã chốt thay cho trang trí lẻ. Còn chờ: nâng cấp bằng **vật liệu từ nhiệm vụ ngày** (CTO đề xuất) hay bằng xu (§5.9).
+      - (b) **Sổ thu chi** — màn tổng kết chi tiêu CEO tưởng đã có, thật ra chưa có (§5.13).
+      - (c) **Dạy chó học trò** — CEO "chưa hiểu ý", đã giải thích (§5.8).
+      - (d) Chốt kinh tế: "chơi chăm chỉ ≈ 30 xu tháng đầu" ứng với học khoảng 1,5 lượt/ngày; có hạ trần tháng 2 xuống ~40 không.
+      - Nay còn phải xếp lại theo chiến lược 01/10: cổng học + gộp 2 game.
+    - **Việc kế tiếp** (sau khi chốt cổng học + vòng chơi gộp):
+      - nhiệm vụ ngày (CEO đã OK: 3 việc/ngày giao hàng · chăm vườn · học; thưởng vật liệu + phân bón, không thưởng xu — §5.12);
+      - sổ thu chi + nâng cấp nhà;
+      - cho 5–10 HS chơi thử, đo thời gian thật → bản online (`fn_nt_*`).
+    - **Chạy:** launch `nong-trai` (5270).
+      - Kiểm luật: `node tools/test-engine.mjs` — đọc DÒNG CUỐI, test chập chờn vì rơi cưa ngẫu nhiên.
+      - 10 kịch bản HS: `node tools/kich-ban.mjs`. Giả lập nghìn HS: `node tools/gia-lap.mjs 5000` (khoảng 2 phút).
+    - **Treo:** 4 file cầu KayKit chưa theo dõi trong `assets/kaykit/medieval/`.
+  - **Bẫy kỹ thuật đã gặp:**
+    - three r186 bỏ `PCFSoftShadowMap`.
+    - Bộ phát nón three.quarks phun theo **+z**.
+    - Sprite thiếu `map` ⇒ vẽ hình vuông.
+    - Vite trên Windows có lúc phục vụ bản biên dịch cũ ⇒ khởi động lại dev server.
+    - Browser pane ẩn ⇒ không vẽ.
+      - Bắt Thú: dùng `window.chup(ten)` (lưu `.snap/`) + tua `GAME.vong(t)` theo lô có nhường lượt.
+      - Nông Trại: dùng `NT_SCENE.chup(ten, soKhung)`. `computer screenshot` hay trễ một nhịp.
+    - three r128 (Nông Trại): `Texture` không có `userData`; `InstancedMesh` cắt khung theo gốc ⇒ `frustumCulled = false`.
+    - **Thử state Nông Trại trong Browser pane:** game tự lưu đè bản lưu thật (localStorage `nongtrai_ngay_v1`).
+      Chặn `Storage.prototype.setItem` TRƯỚC, rồi `Object.assign(NT_UI.s, trạiThử)`; tải lại trang là về bản thật.
+    - Bot Nông Trại đếm thời gian chơi theo số lần chạm ⇒ luôn thấp hơn thật nhiều lần; đừng kết luận thời gian chơi từ bot.
+    - Đừng sửa file tiếng Việt bằng `Get-Content`/`Set-Content` của PowerShell 5.1 (hỏng dấu).
+    - Nhiều phiên Claude cùng làm 1 checkout game ⇒ xem `git log`/`git status` trước khi sửa `scene.js`/`ui.js`/`engine.js`; xong việc nào commit ngay việc đó.
 ### Kiến trúc & file chính
 - Kho = lá `bdkt` trong cây Admin → `src/screens/kho/KhoScreen.tsx`. Build **THẬT, wire Supabase DB v2** (ngoại lệ so với mock-first của shell — vì schema Kho đã đông cứng).
 - **Seam:** UI KHÔNG gọi `supabase` trực tiếp, chỉ qua `src/lib/kho/api.ts`.
@@ -111,7 +237,7 @@
 - **⭐ 3 HỆ ĐIỂM (ADR Notion):** **Level** (Σ điểm sát hạch, max 21/mùa/môn, khó nhất, nổi nhất) · **Elo+Hạng** (phong độ) · **EXP→Xu** (LƯƠNG tháng, reset THÁNG, tra `luong_bac`). Mùa = niên khóa (1/7). Engine `src/gami/season.js`+`level.js` (đường cong dormant), service `src/lib/thanhtich.ts` (`getLevelXu`/`currentMua`/`verdictDiem`/exam CRUD).
 - **⭐ ENTITY ĐIỂM THI + ghi hạng:** mig 0042 `gami_elo_history`+`rank`/`rank_total` (closePhase LƯU hạng mỗi buổi → đếm Top-1). mig 0043 `ky_thi`(loai truong/mt_sat_hach/khao_sat_thang·he_so 2/2/1·dot·`buoi_hoc_id?` nối MT) + `diem_thi`(verdict đạt/gần/không·`band_luc_thi` snapshot·vuot_band) + `muc_nang_luc.diem_ky_vong`. **MT = 1 sự kiện 3 vai** (Elo+Level+vượt-band, KHÔNG tách "ST"). 4 kì trường = 4 INSTANCE cùng loai.
 - **⭐ TAB QUẢN LÝ LEVEL** (`QuanLyLevelScreen`, leaf `quanlylevel`, staff SaaS): chọn lớp→môn+roster+kì thi mùa · tạo kì thi · nhập điểm/verdict/vượt-band 1 kì thi · ma trận HS×kì thi + cột Level=Σ.
-- **Thành tích catalog:** `thanh_tich_loai` (seed 12 loại, pure-derive) + `hoc_sinh_thanh_tich_ghim` (HS chọn khoe / hệ gợi ý). `btvn_ket_qua` (chờ luồng nộp BTVN). **CÒN:** compute catalog còn lại + gợi ý/ghim + skin game + kì-vọng-band + số-xu-bậc (đang provisional) + art nhân vật.
+- **Thành tích catalog:** `thanh_tich_loai` (seed 12 loại, pure-derive) + `hoc_sinh_thanh_tich_ghim` (HS chọn khoe / hệ gợi ý). `btvn_ket_qua` (chờ luồng nộp BTVN). **CÒN → ⚠ SUPERSEDE 28/09 bởi hệ huy hiệu mới (mục ⭐ GAMIFICATION HS):** compute catalog còn lại + gợi ý/ghim + skin game + kì-vọng-band + số-xu-bậc (đang provisional) + art nhân vật.
 - **⭐ REPORT PHỤ HUYNH (tháng)** — leaf `report_ph` (nhóm Quản lý chất lượng), 1 report / (HS × môn × tháng). `src/lib/report.ts` + `src/screens/report/ReportPHScreen.tsx`. Chọn **Môn → Lớp → HS** + tháng ‹›. **Số liệu SUY ĐỘNG** (không lưu): bảng theo buổi `getReportBuoiHS` (ET% · BTVN% · thái độ; **vắng → "Vắng" ở cột ET** vì ET = điểm danh) + tổng quan `getTongQuanHS` (hoàn thành cơ bản/nâng cao, ET/BTVN/MT %). **Chỉ nhận xét GV được LƯU** ở bảng `bao_cao_ph(hoc_sinh_id, mon, thang)`: 4 ô `thai_do`·`kien_thuc_ky_nang`·`ket_luan` + `muc_tieu` (🎯 tháng tới) + `ket_luan_muc` (5 mức: vượt bậc/tiến bộ/ổn định/đi xuống/cần hỗ trợ). Layout 2 cột DỮ LIỆU trái · NHẬN XÉT phải; on-screen gộp **Bản đồ kiến thức + 3 card ET/BTVN/MT** (Tổng·Cơ bản·Nâng cao). **Ảnh gửi PH** (`PhAnhModal`) khớp mockup "BK Academy" (`bk_academy_monthly_report_mobile.html`): hero gradient + ring SVG %hoàn-thành + 2 skill bar (Kiến thức=độ đúng ET · Thái độ=TB thái độ BTVN) + status 3 ô + bảng đánh giá + goal card; copy clipboard = **pattern V1** (popup + html2canvas CDN + inline-hex né oklch → paste Zalo). Migrations lẻ: `202607281900_bao_cao_ph` · `202607282000_ketluanmuc` · `202607282100_muctieu` · `202607291500_muc_skill`(muc_kien_thuc/muc_thai_do smallint 1..5). **2 skill bar = THANG 5 GV TỰ CHỌN** (không suy động): GV bấm mức 1..5 ở NhanXet (`SKILL_MUC` Cần cố gắng→Xuất sắc) → bar 5 đoạn trên ảnh. Ảnh teacher-card giờ ghép **cả text** `kien_thuc_ky_nang`/`thai_do` (kèm tag) + bar. **GV chủ nhiệm** = `getGVChinhLop(lopId)` (phan_cong_lop vai_tro=gv la_chinh=true) → dòng "GV …" ở hero + subtitle. Còn nhỏ: trend pill trống ở tháng đầu môn (chưa có kỳ trước để so).
 
 ### Đã build (06-17 phiên 3 — mobile chấm bài, profile fit+ghim, fix tài liệu, clone Phase 0)
@@ -337,24 +463,190 @@ DashboardHocTapScreen.tsx` · `worker/danhgia.mjs`+`worker/danhgia_prompt.mjs` (
   1900 tok/em · trần tiền 25k/lượt · trần token theo cỡ lớp · KHÔNG thử lại lỗi tất định · Haiku loại
   khỏi adaptive thinking. Model picker Sonnet 5 / Opus 4.8 (Thùy tự so). Mặc định gửi CHỈ em có tín hiệu.
 
-### 🔜 PHA 4 — ĐƯỜNG ỐNG CA YẾU (bổ trợ) — THIẾT KẾ XONG, CHƯA BUILD (ưu tiên tiếp theo)
-Vòng: đề xuất → **team học thuật DUYỆT** → **OPS xếp lịch** → dạy + BT-ngay → buổi kế BT-xác-nhận → đóng.
-- **⭐ MỘT mastery + NHÃN trạng thái** (KHÔNG đẻ nhiều mastery — Thùy: "chia ra rối"). "Đã xử lý chưa"
-  = trạng thái CA (bo_tro_yeu), không phải số thứ hai. Dashboard mỗi dạng yếu = 1 điểm + 1 nhãn
-  (chưa xử lý·đang bổ trợ·đã bổ trợ chờ xác nhận·nghi BTVN che).
-- **⭐ 2 BÀI BT (vì ET=bài mới, MT=tháng/lần, không tự phủ lại dạng cũ ⇒ phải cố ý tạo tín hiệu):**
-  `bt_ngay` (tại buổi bổ trợ, nhiễm vì vừa dạy → **weight 0**, không gỡ diện) · `bt_xn` (buổi kế, HS
-  đến sớm/ở lại, giám sát, cold-check 2–3 câu tự bơm từ kho, **BẮT BUỘC** → **weight >0** = tín hiệu
-  gỡ diện). **Đóng ca (bt_xn đạt) ≠ ra khỏi diện (bt_xn vào mastery vượt mốc)** — 2 sự kiện, cùng do bt_xn.
-- **Hiệu quả BT** = mastery ĐỘC LẬP trước ca vs tại bt_xn, tính OFFLINE (đo immutable, dựng lại mốc).
-  Gap tại-chỗ (bt_ngay−trước) = tín hiệu QUẢN TRỊ, KHÔNG phải hiệu quả bền — đừng gộp (thổi phồng moat).
-- **Vận hành pure-derive:** task BT-xn tự bắn cho TA/OPS của ca (phan_cong_ca), buổi kế; xong tự tắt.
-  **Van xả:** quá hạn (Thùy CHƯA chốt: 2 buổi HS có mặt hay 4 tuần) ⇒ đóng `ket_qua='khong_do_duoc'`
-  (≠ chua_dat; anti-NULL) ⇒ chặn trần backlog.
-- **VIỆC CÒN:** (1) migration `202607241948` — BỎ ô `retest_*` đơn → **bảng con `bo_tro_yeu_retest`**
-  (`loai∈{ngay,xac_nhan}`, mỗi đo 1 dòng), thêm `khong_do_duoc` vào CHECK ket_qua; (2) config mastery
-  thêm nguồn `bt_xn` weight>0, `bt_ngay`=0, napLanDo đọc thêm; (3) đóng ca=có dòng xac_nhan; (4) Thùy
-  chốt ngưỡng quá hạn. Chi tiết raw: DEVLOG 2026-07-25 (3 mục).
+### Đã build (26/09 — ⭐ HỆ SỰ KIỆN: Trung thu 26/09 + các sự kiện sau) — ĐỌC `spec-su-kien.md` §9–§10 trước khi sửa
+- **App riêng "BK Sự kiện"** (`sukien.html`/`AppSuKien.tsx`, Vercel `bkdemy-erp-v2-sukien`) + lá `su_kien` trong ERP (cùng `src/screens/sukien/*`).
+  Dữ liệu vận hành, KHÔNG nhãn môn; xu sự kiện = sổ riêng `sk_xu`, KHÔNG đụng ví BK. Đổi quà KHÔNG thuộc hệ này (Thùy bỏ Quầy quà).
+- **DB `sk_*`** (8 bảng + `sk_phan_cong`), ghi CHỈ qua `fn_sk_*` security definer; luật chặn bằng unique partial (quay 1 lần · không
+  cộng đúp game · 1 chỗ chờ/HS · 1 lượt/phòng). **Giao việc theo vai** mỗi sự kiện (`checkin · dangky · quay · quantro · quanly`), DB
+  chặn theo vai qua `_sk_can`; admin hệ thống = quanly mọi sự kiện. Mỗi vai = 1 tab.
+- **Luồng:** laptop 1 Check-in (HS BK) + Đăng ký game (HS BK + khách cấp số) → laptop 2 Bàn quay (danh sách chờ quay + nút QUAY, random ở
+  Postgres) → điện thoại Quản trò (có mặt/bỏ qua 2 lần = loại, bắt đầu gán slot iPad, kết thúc cộng xu) · TV vòng quay / TV hàng chờ qua hash.
+- **Nối iPad (đã chạy thật tối 26/09, sự kiện đã XONG):** điện thoại quản trò join kênh game `bk-<game>:<ma_hub>`; BẮT ĐẦU lượt ⇒ gửi
+  `sk_open` bảo hub TV tự mở đúng game + `sk_names {names, luot, van, soVan}` ⇒ TV giữ tên, đếm ván, gắn `skLuot` vào state, đủ 3 ván chặn
+  BẮT ĐẦU. **Xu trả TỪNG VÁN** (`fn_sk_tra_xu_van`, cột `sk_xu.van` = matchId, unique theo ván; đủ `so_van` DB tự kết thúc lượt) · màn
+  **Tổng kết lượt** (Ván 1/2/3 + Tổng, `_sk_xu_luot.van`) giữ tới khi bấm "Lượt tiếp" · cảnh báo "không thấy TV" bằng presence.
+  Vòng quay check-in 70/20/10% (cấu hình DB), vòng chia ô ĐỀU — không lộ tỉ lệ.
+- Mig sự kiện áp bằng SQL Editor, **sổ `_migrations` không ghi** (vẫn hiện "treo" ở `--status` — ĐỪNG `npm run migrate` trơn). Đã áp tới
+  `202609261450`; `202609261541` (tổng kết theo ván) — Thùy chưa xác nhận đã chạy.
+- **Số liệu tối 26/09 18:30–21:30 (DB):** chi 3.277 xu = vòng quay 2.115 (124 lượt) + 4 game iPad 1.162 (Xếp Tháp 376 · Tìm Điểm 334 ·
+  Đập Chuột 262 · Mê Cung 190). Thu vào: 0 trong hệ (game đăng ký miễn phí). Trò TV (Đoán Số/Chiếm Đất/Mở Rương) lưu localStorage từng laptop.
+
+### Game `games-site/` — trạng thái sau Trung thu (26–27/09) — bản SỰ KIỆN (luật: `luat-choi-game.md`, tờ dán `luat-choi.html`)
+- 5 game iPad: tự lưu tên (`localStorage bk-games-pname`, dùng chung), TV "Trận mới" giữ tên · chống văng (TVID/FOLLOW) · chặn nảy/cuộn/zoom
+  iPad (nền `html` tối, `touch-action:manipulation`, touchmove guard) · Đập Chuột nhận chạm cả lưới + ân hạn 220ms.
+- **Chiếm Đất / Mở Rương:** thua đậm 20–50% hoặc thắng đậm 150–300% (không hoà), Chuẩn 50/50, tỉ lệ chi ~110%, hiện "tối đa" trên màn.
+  Chiếm Đất: độc đắc 50 xu, ~50% bản đồ có, bỏ gõ tên. Mở Rương: hình quà theo giá trị, số hiện sau hình; **chia 3 quà ngẫu nhiên nhiều kịch bản (29/09)** — nổ 1 món ở vị trí bất kỳ 45% ·
+  hai món to 25% · chia đều 30% (`chiaKichBan`); giả lập 20k rương: món to nhất ở quà 1/2/3 = 36/33/31%, đoán lãi/lỗ sau 2 món chỉ trúng 67%.
+  Luật cũ "quà 1–2 luôn nhỏ" ĐÃ BỎ. Áp cả bản sự kiện lẫn bản lớp (lớp chia bội 10). Tổng vẫn rút như cũ.
+- **Đoán Số:** vé 10 xu = 3 lượt, thưởng 100/35/20 xu (~108%), chỉ hiện xu thưởng; hàng chục dừng trước, hàng đơn vị bò chậm 7 số cuối.
+
+### Đã build (27–28/09 — ⭐ GAME TRONG BUỔI HỌC: xếp hạng buổi + game bản lớp) — ĐỌC `spec-game-buoi-hoc.md` §5b–§6
+- **Mỗi game 2 bản luật, 1 bộ code** (không copy file): mặc định = sự kiện; `?che_do=lop&buoi=<id>` = buổi học. Luật bản lớp do **Thùy viết**
+  (CTO chỉ hỏi output + nối ERP). Có luật: **Mở Rương** · **Chiếm Đất** (3 loại ô = 3 giải, EXP như Mở Rương, chọn ô bất kì) · **Bắn Quà**
+  (`ca_lop`: cả lớp 1 ván cá nhân/đội, khung `BanQuaLop.tsx`, mig `202609281425`). Đoán Số: CHỜ LUẬT. Quà đặc biệt 🧋 trà sữa rút ở DB
+  (`game_lop_qua_dac_biet`, tỉ lệ **Nhất 1% · Nhì 0,5% · Giải 3 0,1%**, hiệu ứng nổ `lib/bk-tra-sua.js`), ERP có nút "Đã trao".
+- **ERP KHÔNG hiện kết quả trước khi TV diễn xong (29/09):** payload `'mo'` mang `hid`; TV gửi lại `{game,loai:'xong',hid}` (Mở Rương: sau
+  quà 3 · Chiếm Đất: khi đóng thẻ kết quả); `XepHangBuoi` giữ "🎁 đang mở…" (list + TrinhChieu) tới lúc đó, phòng hờ 25s nếu TV rớt; 🧋 báo
+  cũng hoãn theo. TV bỏ qua payload có `loai`. Đo trên trình duyệt: không có gì lọt sau quà 1–2. **Game mới nối ERP phải gửi `xong` y hệt.**
+- **Cast chung + Bắn Quà:** sau mỗi nút ERP (`BanQuaLop.traFocusGame`) trả focus về iframe game — trước đó Space nạp lực = bấm lại nút.
+- **🎯 Bắn Quà** (game pháo 2D kiểu Worms/GunBound — ĐỌC `spec-game-ban-qua.md` §1–§7 trước khi sửa): `games-site/ban-qua.html` (canvas 2D, sprite
+  render từ KayKit Holiday ở `games-site/assets/ban-qua/`). **Cá nhân:** 1 phát/bạn, map **reset mỗi lượt**, tường đá không phá trước súng, hộp
+  không máu (trúng là vỡ; gần 20 · vừa 40 · xa 70 · hộp trời 150 trôi ngang, chỉ vỡ khi chạm trực tiếp), trúng nơ "Chính xác 100%" +20% (1 lần/phát,
+  chỉ vụ nổ đầu). **Đội:** 2–4 xe máu 150, ụ đá giữa các xe, bắn trúng mình không mất máu, GV đặt giờ, xếp theo sát thương gây ra → đội nhất
+  Vàng / còn lại Bạc (1 lần/đội). **10 loại đạn** (5 thường + Cừu nổ bấm Space · Chuối bom · Sao băng · Lửa lan · Sét) **cân đều 35–39 điểm/phát**
+  bằng giả lập chạy CHÍNH bộ máy của game (`?gia_lap=1` → `giaLap()` / `canBang()`; đổi luật đạn ⇒ chạy lại rồi chép `he`). **Nối ERP**
+  (mig `202609281425_ban_qua_lop`): DB quay đạn theo giải + chia đội (🎲 ngẫu nhiên / GV tự xếp) + chốt (hạng, EXP Nhất 300→cuối 100, rương,
+  trà sữa, sổ EXP 1 transaction); TV chỉ gửi ĐIỂM THÔ về, GV xem rồi Chốt. Đã verify trọn chuỗi trên buổi thật (ghi DB trong ROLLBACK);
+  **màn ERP `BanQuaLop` CHƯA bấm thật trên lớp** (đã bấm thử focus Cast). Thùy chốt 28/09: đội KHÔNG hộp quà · máu xe 150 · hoà đầu cùng Vàng — luật đã đủ, chỉ còn test lớp thật.
+- **2 CHẾ ĐỘ HIỂN THỊ** (Thùy 28/09, sau chốt Nhất/Nhì): **📺 Chế độ 1 · TV riêng** — GV làm việc trên ERP, TV riêng mở trang game = game +
+  **bảng lớp** (ERP gửi event `ds` qua kênh khi đổi + khi TV nối; `games-site/lib/bk-lop-bang.js`; số của bạn đang mở giấu tới khi diễn xong) ·
+  **🖥 Chế độ 2 · Cast chung** — overlay toàn màn trong ERP = iframe game `&nhung=1` + danh sách cả lớp theo giải, bấm "Mở" trên tên.
+  Trang game thật **`https://game.bkacademy.edu.vn`** (Vercel `bkdemy-erp-v2-2ogm`), không chặn iframe.
+- **Xếp hạng buổi** (khung 🏆 đầu tab "Chấm bài trên lớp", chỉ buổi thường, `src/screens/gami/XepHangBuoi.tsx`): gợi ý từ điểm `ingame`
+  của CHÍNH buổi (không ET), bằng điểm = cùng hạng; GV chọn 1 Nhất + Nhì (có mặt >10 ⇒ tối đa 2 Nhì), còn lại Giải 3 (suy động) → Chốt
+  (khoá, `buoi_hoc.giai_chot_at`, trigger log `buoi_giai_log`) · Mở lại chỉ khi chưa ai chơi · không đụng Elo.
+- **Lượt game:** 1 lượt/HS/buổi mang mức giải; `fn_buoi_game_choi` RÚT ở DB theo `game_lop_thuong` + ghi `buoi_game_luot` + `gami_exp_ledger`
+  source **`exp_tren_lop`** (note = tháng buổi, mon = lop.mon) trong 1 transaction; ERP gửi kết quả xuống TV (kênh `bk-lop:<buổi>`, presence
+  role=tv); TV chỉ diễn. Mở Rương lớp: Nhất 200–400 (TB300) · Nhì 200–300 (TB250) · Giải 3 100–200 (TB175), bước 20 ⇒ lớp 8 bạn TB 200 EXP/HS.
+- **Test thật:** Thùy chạy lớp 7S2 (28/09) → dữ liệu test ĐÃ XOÁ (Thùy gật; 2 dòng EXP 440 + 2 lượt + Nhất/Nhì + 2 log, buổi về chưa chốt).
+- **CHỜ THÙY:** (✓ 28/09 đo DB: `fn_gami_exp_xu_thang` ĐÃ có `exp_tren_lop` — file `202609272045_exp_tren_lop_vao_chot_xu_thang.sql` đã chạy) ·
+  **deploy ERP chính** (có sửa link game 404 + 2 chế độ) + **trang game** (`bkdemy-erp-v2-2ogm`) · test lại 7S2 cả 2 chế độ ·
+  quyết app GV/TA có cần khung game không (hiện CHỈ ERP chính `BuoiHocScreen`; app GV `ChamBuoiGv.tsx`, TA `ChamBuoi.tsx` chưa có).
+- Việc tách riêng, CHƯA làm: đích mới EXP ET 100 cố định / BTVN 200/bài (DB hiện ET 200–300, BTVN 189–300).
+
+### Đã build (24–27/09 — ⭐ FORMAT NỘI DUNG LÝ THUYẾT + khung "Bài tập tự luyện" trong PDF) — ĐỌC `spec-format-noidung.md`
+- **Kí hiệu khối đầu đoạn** (đoạn = tách bởi dòng trống): `##ĐN` Định nghĩa (vàng, vạch trái) · `##ĐL` Định lý (tím, khung) · `##TC`
+  "Kiến thức cần nhớ" (xanh dương, cả tính chất/hệ quả/công thức) · `##CY` Chú ý (cam, nét đứt) · `##PP` Phương pháp (mỗi dòng = 1 bước,
+  vòng tròn tự đánh số, tự bỏ "Bước N:"/"- " đầu dòng) · `##VD` (hồng; tag LUÔN "Ví dụ N" tự đánh số, chỉ ĐỀ trong khung, lời giải ngoài) ·
+  `##NX` Nhận xét (xanh ngọc) · `##BT` bài tập trong lý thuyết. Nhãn có sẵn viết cùng dòng kí hiệu ("##VD Ví dụ 1", "##CY Lưu ý").
+  Mọi "Giải"/"Lời giải"/"Bài giải" hiện "**Bài giải:**" căn giữa gạch chân (kể cả dòng đứng riêng trong lý thuyết cũ chưa gắn kí hiệu).
+- **Code:** parser `src/lib/lythuyetBlocks.ts` (dùng chung mọi môn) · render + CSS `LT_CORE_CSS`/`LyThuyetBlockView` ở `src/screens/kho/ui.tsx`
+  · **3 chỗ render phải đi cùng nhau:** preview `LyThuyetModal` (BanDo.tsx) · PDF `LyThuyetBody` trong `PrintView.tsx` (DangBlock + LtBlock) ·
+  `HinhPrintView.tsx` (MucsBlock, cả MTPrintView). Prompt Gemini (`buildLyThuyetPrompt`/`buildTheoryIngestPrompt`, `src/lib/kho/api.ts`) tự gắn
+  kí hiệu + chuẩn hoá "Giải"→"Bài giải" khi bóc ảnh. Bỏ nền xanh bọc ngoài + nhãn "Lý thuyết · Ví dụ" (CEO: "nền nếu có chỉ trong ô khoanh").
+- **Dữ liệu:** mig `202609261247_chuan_hoa_nhan_bai_giai` (146 dòng "Giải" → "Bài giải:", áp `--only`) · **Hình giải tích 19/19 bản ghi đã gắn
+  kí hiệu** (27/09, `scripts/data/hgt_lt_gan_tag_2609.mjs`, bản cũ `hgt_lt_truoc_tag_2609.json`). **Đại chỉ 3/365 dạng có kí hiệu, KHTN 0** — lý thuyết
+  cũ hiện như đoạn thường tới khi gắn (dùng lại script HGT làm mẫu: thay đoạn chính xác + so từ cũ/mới + 1 transaction có điều kiện).
+- **Khung "Bài tập tự luyện"** (câu hỏi THẬT do builder chọn, `DangBlock` → `CauFlow hop`): 1 khung liền bao CẢ cụm câu của dạng, tag nổi trên viền
+  (vai trò như tag Ví dụ), xanh BK `#4c6fff`/`#f5f7ff`. KHÔNG div bọc cả cụm: đỉnh+tag `.pv-bt-cap` nằm CHUNG khối `.pv-bt-dau` (break-inside:avoid)
+  với câu/hàng đầu · viền trái/phải trên từng `.pv-caulist-hop` · nhóm đầu `.hop-dau` bo góc trên · nhóm cuối `.hop-cuoi` đóng đáy · đệm 1px giữa các nhóm.
+  Sang trang giữa cụm thì khung hở ở mép trang (chấp nhận). BTVN KHÔNG có khung.
+- **Còn treo:** app HS (`HocTuDau.tsx`, `HocSinhApp.tsx`) hiện lý thuyết CHƯA qua parser · khung Bài tập tự luyện chưa có cho Hình học
+  (`HinhPrintView`) · chưa dựng lại 4A1/giáo trình HGT thật trong app sau 3 lần sửa khung (chỉ verify Chrome headless) · lỗi gõ gốc "Gợi" ở
+  HGT T312010205 · `hinh_bo_de`/`hinh_dang` đọc 0 dòng bằng `claude_build` (điểm mù RLS) · khu vẽ hình / bảng điền = bật-tắt theo bài tập (chưa làm).
+
+### ⭐ GIAO DIỆN APP HS — STYLE (cập nhật 29/09) — ĐỌC `design/STYLE-HS.md` + `spec-giao-dien-hs.md` (§ đầu + §9) trước khi sửa
+- **Hiện tại: 1 style dùng thật = Anime RPG**, áp cho TOÀN BỘ màn HS, mặc định mọi em. 4 skin code-dựng (Tối giản/Đấu trường/Y2K/Soft Hàn) ĐÃ XOÁ
+  29/09 (Thùy gật); 12 em còn lưu skin cũ ⇒ `laySkin()` tự ra RPG, CHECK `hs_giao_dien.skin` vẫn giữ 5 giá trị cũ.
+- **Cấu trúc:** hợp đồng `skin/kieu.ts` · gói style `skin/styles/rpg.ts` (màu, font, nền ngang+dọc, 13 icon ô `anhO`, banner, trang trí) ·
+  `registry.ts` = danh sách style · mọi màn chỉ dùng `skin/KhungHS.tsx` (ManHS/DauTrangHS/TheHS/NutHS…/MAU/THE/HEAD), cấm màu gõ tay + `if skin`.
+  **`npm run check:style-hs` trước mọi commit đụng app HS** (màu gõ tay kiểu chỉ-giảm theo mốc · mọi ô có icon ở mọi style · file hình tồn tại).
+- **Mọi skin mở cho mọi em khối 6–12** (Thùy 28/09 tối: "lớp 6 vẫn thích anime"); nhóm tuổi chỉ là chuẩn thiết kế. Cấp 1 còn HomeCap1 (chờ Thùy).
+- **DB:** `hs_giao_dien` (1 dòng/HS, có dòng khi em chọn) + `hs_giao_dien_log` (trigger = phiếu bầu) · `lich_thi_lon` · RPC `fn_hs_giao_dien_cua_toi` /
+  `fn_hs_luu_giao_dien` / `fn_hs_home_912`.
+- **Home khối 6–12 (`HomeHS912`) — dựng theo ảnh gốc #11 (`design/bk-ui-src/Nền app HS cấp 3_11.png`, 29/09):** 2 bố cục chọn theo khổ màn
+  (`useMedia('(min-width:1024px) and (orientation:landscape)')`): **NGANG** (PC/iPad ngang) = nhân vật nửa trái + bong bóng thoại · "Chào tên!" ·
+  banner · lưới icon to 4 cột (≥9 ô ⇒ 5 cột, iPad ngang vừa 2 hàng) · **DỌC** (điện thoại/iPad dọc) = "Chào tên!" → nhân vật + bong bóng → banner →
+  lưới 4 cột ô nhỏ. Nhân vật = hợp đồng Skin `nhanVat {nam, nu}` (RPG: `nv_nam.png` mèo · `nv_nu.png` cú, chọn theo `gioi_tinh`, KHÔNG đổi màu
+  theo giới tính). Nền NGANG phủ tối riêng (`nenNgang` trong rpg.ts — PC từng "chói"). **Bỏ Elo** khỏi Home · **bỏ thẻ "Việc cần làm"** (Thùy: HS ít
+  việc, ô đã có chấm đỏ) ⇒ chỗ đó = **thẻ Thế giới BK** (`fn_the_gioi_home`); thẻ ca bổ trợ VẪN giữ. Bong bóng thoại suy từ viecTiepTheo.
+- **⭐ ĐANG LÀM — Style 2 Thị trấn (Town)** (`spec-giao-dien-hs.md` §9): 27 hình ở `design/bk-ui-src/Style_Town/` đã kiểm 29/09 — ĐỦ 2 ảnh toàn
+  cảnh, nền biển + nấm, 3 linh vật, 7 icon ô, banner; THIẾU 5 icon ô (bài trên lớp · BTVN · ET · ví xu heo đất · học từ đầu) + 2 nền kẹo ⇒ đơn bổ sung
+  #28–#34 trong `DON-HANG-SKIN-HS.md` (Thùy dán vào đúng context đang vẽ). Code theo §9: ① `styles/town.ts` (SÁNG, Baloo 2) với hình đã có, ô thiếu
+  dùng tạm có ghi chú ② migration nới CHECK skin thêm `town` ③ nhân vật/linh vật lên Home (cột mới `hs_giao_dien.nhan_vat`, chung mọi style)
+  ④ lời chào + Cấp/XP/xu + bong bóng thoại — chặn bởi công thức cấp ở client `src/gami/level.js` phải xuống Postgres trước.
+- **Việc khác còn treo:** Đơn 3 v3 Lo-fi / Đơn 2 Khối vuông (chưa gửi) · cấp 1 có chuyển HomeHS912 không · tầng 2 (màu nhấn, widget).
+- **Nguồn hình RPG:** `design/bk-ui-src/Nền app HS cấp 3_*.png` (ảnh 37 = nền dọc Lâu đài) · ảnh chuẩn `design/handoff/hs-skin-rpg-v1/reference/`.
+- **Verify không có tài khoản HS:** `hs.html?xem=gami` (đã commit, dữ liệu giả): `man=home&tt=1..3` (Home — mở ở 375 / 820×1180 / 1180×820 / 1440) ·
+  `man=the_gioi&tt=1..13` · `man=nhiem_vu` · `album` · `rank` · `ho_so`. Xem từ worktree: launch.json có `dev-hs-thegioi` (npm --prefix worktree, cổng 5191).
+
+### ⭐ THẾ GIỚI BK — mạng xã hội KHOE nội bộ của HS — ĐÃ BUILD 29/09: DB đã áp hết · app đã push `main` (Thùy deploy tay — đối chiếu bundle prod trước khi kết luận) — ĐỌC `spec-the-gioi-bk.md` §4b + §5
+- **Luật đang chạy (Thùy chốt 29/09):**
+  - **Tin CHÍNH = ĐĂNG BÀI KHOE:** HS có thành tích ⇒ mục "🎉 Thành tích chờ em khoe" (đầu kênh + dòng nhắc ở thẻ Home) ⇒ bấm Khoe ⇒ chọn câu dẫn
+    (không bắt buộc) ⇒ **lên Thế giới** (+ Lớp/Bạn bè) + màn "LÊN SÓNG THẾ GIỚI BK!". Khoe được mọi thành tích đủ chuẩn · hạn 3 ngày · **≤ 3 bài/em/ngày** ·
+    mỗi thành tích 1 lần · em tự gỡ (⋯). Thành tích = tin SUY từ sự kiện thật (`_the_gioi_tin`) ⇒ không bịa được.
+  - **Tin HỆ THỐNG tự đăng:** Thế giới = **chỉ S** (trà sữa · giải tháng · huy hiệu ★4–5) + thẻ gộp A theo loại · **Lớp + Bạn bè = S, A, B có HẠN MỨC**
+    (≤1 tin tự động/em/ngày, A trước B · ≤6 tin tự động/kênh/ngày; S + bài khoe ngoài hạn mức). Xếp: ghim S 24h → ngày lên kênh → S/khoe/A/B.
+  - **Chỉ thành tích tích cực CÓ SỐ:** ET 10đ (bài ≥5 câu) = A · ET 9–9,5đ = B · tự luyện ≥50 câu đúng/ngày = B · Nhất buổi / Nhất game / đội thắng = A ·
+    huy hiệu ★1–3 = A. ĐÃ BỎ "xong N bài". (Đo 28 ngày: ET 10đ 41% nhưng phần lớn bài 1–3 câu ⇒ ngưỡng ≥5 câu; Thử thách 0 lượt; BTVN % chưa ghi.)
+  - **Tương tác kiểu FACEBOOK:** bấm 👍 Thích ⇒ dải 6 cảm xúc + ＋ (22 cảm xúc có tên) · dòng "👍❤️🔥 Em, Hà [9A1] và 12 người khác · 5 bình luận" ⇒ bấm
+    ra danh sách ai thả gì · tấm bình luận (bong bóng, chạm câu/sticker là gửi, KHÔNG chữ tự do) · "Đọc N bình luận" · thẻ gộp "Đọc bình luận (N)" ·
+    ≤3 bình luận/em/tin · chủ tin ẩn bình luận, người viết gỡ. **104 câu** (69 khen · 30 dẫn khoe · 5 cảm ơn), KHÔNG lọc — chỉ xếp câu hợp lên đầu.
+    Sticker tạm = emoji to (Thùy mua bộ sticker ⇒ `the-gioi/sticker/<mã>.png` + `KIT.sticker_tg`).
+  - Tên LUÔN kèm lớp · em chọn hiện Tên/Mã HS · Bạn bè 2 chiều (lời mời → đồng ý) · 👑 Thầy cô khen (hàm có, nút ở app GV chưa làm).
+- **DB (mig áp bằng `--only`):** 202609290108 (lõi) · 0148 (thả cảm xúc + bình luận) · 1006 (`fn_the_gioi_home`) · 1226 (tin chất lượng + `_et_diem_buoi`)
+  · 1233 (bỏ B tự đăng — bị 1323 thay) · 1239 (**bài khoe** `the_gioi_bai_khoe`) · 1305 (thêm câu + bỏ lọc) · 1323 (hạn mức Lớp/Bạn bè).
+  Hàm chính: `fn_the_gioi_kenh(tg|lop|ban)` · `fn_the_gioi_home` · `fn_the_gioi_cho_khoe` / `_khoe` / `_go_khoe` · `fn_the_gioi_tha` · `_binh_luan` ·
+  `_chi_tiet` · `fn_ban_be_*`. Test ROLLBACK mẫu: scratchpad `thu_khoe.cjs` (HS thật qua `tai_khoan.id`).
+- **App:** `src/lib/thegioi.ts` · `screens/hocsinh/thegioi/TheGioiHS.tsx` (VIEW tách container, vá tại chỗ, cột 720px giữa màn trên PC) · mẫu `mauTheGioi.ts` ·
+  ô Home `the_gioi` (icon TẠM `o_pha_le`) + thẻ Thế giới ở Home. Hình Đơn 5 chưa có ⇒ emoji + khung RPG (Thùy: "chưa có hàng thì dùng tạm").
+- **TREO:** cột `the_gioi_khen.cau_ma` thôi dùng (0 dòng) — **chờ Thùy gật xoá cột** · nút khoe ngay ở màn kết quả (hết tự luyện, lớp phủ huy hiệu) ·
+  push HS ("bài khoe của em có 12 tim" — màn Lên sóng KHÔNG hứa push) · Hồ sơ "đã lên Thế giới N lần" · ghim "HOT TUẦN" · tin "lên bậc rank" (cần nhật ký
+  lên bậc) · nút 👑 app GV · cấp 1 chưa có Thế giới · đơn ChatGPT Đơn 5 phải sửa theo khoe + FB (MÀN 4 đã sửa, chưa có nút khoe/màn Lên sóng) ·
+  2 hạn mức (1/em, 6/kênh) + ngưỡng tự luyện 50 câu chờ số liệu thật để chỉnh.
+
+### ⭐ GAMIFICATION HS — Rank · Thử thách · Nhiệm vụ · Vòng quay · Huy hiệu — ĐÃ BUILD 28/09 (DB đã áp, app CHƯA push/deploy) · phase 1 CHỈ TOÁN
+> Đọc: `spec-thanh-tuu-nhiem-vu.md` **§0** (luật đã chốt, số mới nhất) · `spec-huy-hieu-build.md` (đo 14 thành tựu, schema, RPC) ·
+> `design/DON-HANG-GAMI-HS.md` (đơn ChatGPT: Huy hiệu · Nhiệm vụ+Album · Hồ sơ). Test chạy lại được (transaction + ROLLBACK):
+> `scripts/_thu_mig_rank.mjs` · `_thu_mig_nhiem_vu.mjs` · `_thu_mig_huy_hieu.mjs`.
+
+**Luật đã chốt (số MỚI NHẤT — §0 spec là nguồn):**
+- **Điểm Rank ≠ EXP** (không đổi xu). 4 nguồn: ET 100/bài · BTVN 100 đúng hạn / 50 muộn · MT bảng hạng 1–50 (quy theo số em thi) ×10 (1.000→500) ·
+  Thử thách pass ≥80% ⇒ 10/20/30. Toán 1 tháng = 8 buổi = 1 MT + 7 ET + 7 BTVN ⇒ tối đa 3 nguồn 2.400 · trần Thử thách **600/tháng · 30/ngày** ·
+  **điểm tối đa tháng 3.000**. Tháng 8–9/2026 mất ET hình (lỗi) ⇒ bù ET theo lớp lên chuẩn 7 (`rank_thang_mat_et`).
+- **10 bậc THUẦN theo điểm tích luỹ mùa** (mùa 1/7→30/6, hết năm về 0), ngưỡng co ×0,875 theo năm học 10,5 tháng: Novice 0 · Soldier 1.575 · Captain 4.200 ·
+  General 7.875 · Hero 12.075 · Legend 18.375 · King 21.000 · Emperor 25.725 · **God of War 28.350 · Supreme God 30.240** (Thùy chốt; có năm không ai thành thần).
+  Bảng đua tháng: xếp điểm tháng, không đổi bậc.
+- **Nhiệm vụ** (mở **01/10/2026**): ngày N1 Thử thách · N2 Luyện 20 · N3 Sửa sai (treo tối đa 3 ngày; 1 lần làm lấp 1 nhiệm vụ cũ nhất) · tuần T1–T4
+  (4 khối 1–7/8–14/15–21/22–cuối, T2–T4 dồn tới hết tháng) + rương 12 nhiệm vụ/tuần · tháng M1 MT bứt phá · M2 Thử thách 15 ngày → Điểm Chặng → 30 cấp → EXP.
+  **Vòng quay** từ 01/10: xong 2 nhiệm vụ ngày, giải 20/30/50/100/200 EXP (40/35/18/6/1%), EXP đổi ra xu. Trước 01/10 chạy luật cũ.
+- **Trần xu app 30/tháng/môn** trong `fn_gami_exp_xu_thang` (SQL Editor đã chạy, đã ghi sổ; Thùy đã revoke PUBLIC ⇒ claude_build KHÔNG gọi được hàm này nữa, app vẫn chạy).
+- **Huy hiệu:** 8 Hy Lạp · sao 1/2/4/6/9 tháng (★1–3 tháng đạt chuẩn, ★4–5 tháng hoàn hảo) · năm huy hiệu tháng 7→4 · tính lùi từ 07/2026 ·
+  chốt tháng T từ 10/T+1, theo thứ tự · ★4–5 bản cứng GV trao · đạt lại năm sau = ×2 (bản cứng chỉ lần đầu).
+- **Hồ sơ khoe:** bấm avatar mở · tường của nhau = phase sau · danh hiệu = giải thưởng tháng. **Đừng lẫn bậc rank / huy hiệu / danh hiệu.**
+
+**Đã build (DB áp bằng `migrate --only`; 13 file treo trong sổ là của phiên khác — đừng `npm run migrate` trần):**
+- Mig 202609281711 · 1739 · 1749 · 1754 (rank + Thử thách) · 1809 (mastery `p_den`) · 1810 (nhiệm vụ + vòng quay) · 1817 (trần xu, SQL Editor) ·
+  1846 + 1857 (huy hiệu).
+- App HS: Tự luyện có thẻ ⚔️ Thử thách + link 📜 Nhiệm vụ / 🏆 Rank · `RankHS` · `NhiemVuHS` · `MayManHS` 2 chế độ · `AlbumHS` (mở từ Thành tựu).
+  Nhân sự: lá `huyhieu` (Trao bản cứng · Chốt tháng · Ma trận). Giao diện HS là BẢN THÔ, chờ design (đơn ChatGPT).
+- Verify giao diện bằng trang tạm `_xem_rank.html` + `src/_xem_rank.tsx` (mock RPC, KHÔNG commit — xoá khi Thùy gật).
+- **29/09 — DỌN ĐƯỜNG "ĐỔI VỎ" + HỒ SƠ (pushed, chưa deploy):** sổ hình `src/screens/hocsinh/gami/hinh.ts` (mọi PNG + màu game + cờ `KIT.*`; chưa
+  bật cờ ⇒ `gami/HinhGami.tsx` vẽ hình tạm) · tách VIEW (`NhiemVuView`/`AlbumView`/`RankView`/`HoSoView`) · lớp phủ đạt sao mới / lên bậc
+  (`gami/ChucMung.tsx`, "đã xem" ở localStorage) · **màn Hồ sơ** `HoSoHS.tsx` (7 khối, chọn 3 khoe, thẻ TV; Home 6–12 bấm avatar ⇒ Hồ sơ, đổi ảnh
+  vào trong Hồ sơ) · mig **`202609290015`** (bảng `hs_huy_hieu_khoe` + `fn_hs_ho_so` + `fn_hs_khoe_dat`, ĐÃ ÁP) · **trang mẫu `hs.html?xem=gami`**
+  (mọi màn × trạng thái, dữ liệu giả `gami/mauGami.ts`, `man=bo_hinh` soát hình). Chi tiết: spec §0.7b + §0.8 C11.
+- **Đơn design v3** `design/DON-HANG-GAMI-HS.md`: style Anime RPG · ảnh toàn cảnh duyệt trước → từng hình riêng (1 hình/lượt, #số + tên file, không zip)
+  · bảng đổi tên file giao → file code (bản 48/64/96px Claude tự thu nhỏ). Đơn 5 "Thế giới BK" cũng nằm trong file này (xem mục THẾ GIỚI BK).
+  **Hình về:** Claude nén + đổi tên vào `public/bk-ui/hs/gami/` → bật cờ `KIT.*` → soát `?xem=gami&man=bo_hinh` → sửa VIEW theo ảnh toàn cảnh.
+- **29/09 — kit Đơn 1 NHIỆM VỤ ĐÃ GHÉP (`KIT.nhiem_vu = true`):** `design/bk-ui-src/Mission/` #09–24 = 16 icon (N1…vong_quay) · #25–27 TRÙNG #22–24 ·
+  #28 = `fx/sao_moi_sang.png` ⇒ nén 160² vào `gami/nhiem-vu/`. `NhiemVuView` dựng lại theo ảnh toàn cảnh #01 (thẻ viền + tiêu đề ✦, icon to bên trái,
+  "+10 ✦" + vòng tick, Chặng thanh cả tháng mốc 10/20/30, hàng rương nối dây). Đơn 2 (huy hiệu), 3 (bậc), 4 (hồ sơ), 5 (Thế giới) CHƯA về.
+- **Điểm ET 1 buổi = `_et_diem_buoi(tu, den)`** (mig 202609291226) — nguồn công thức DUY NHẤT; nhiệm vụ T2 + tin Thế giới dùng chung (so khớp 100% T9).
+
+**VIỆC TIẾP (theo thứ tự):**
+1. **Thùy:** chốt huy hiệu tháng 7 rồi 8 ở màn Huy hiệu › Chốt tháng (**chỉ admin** — mig 202609282350: DB chặn bằng `co_quyen_ghi('huyhieu')`, hết timeout: chốt T7 ~2s, T8 ~4s) · cấp lá **`huyhieu_trao`** (chỉ tab Trao bản cứng) cho vai GV — **KHÔNG** cấp `huyhieu` cho GV (Thùy 28/09: *"chốt 1 tháng 1 lần bấm tay, không cần GV — GV chỉ được báo trao quà"*) ·
+   gửi đơn ChatGPT `design/DON-HANG-GAMI-HS.md` **v3** (Thùy đang gửi 29/09) — **Đơn 2 + 3 trước** (bộ hình), rồi 1, rồi 4 · deploy khi muốn HS thấy.
+2. Chốt tháng 9 từ 10/10. Theo dõi 01/10: nhiệm vụ + vòng quay luật mới tự bật.
+3. Còn làm: danh hiệu trên Hồ sơ (hàm trả giải tháng gần nhất — ô đang ẩn) · kỷ niệm mùa (chốt bậc cuối mùa, trước 30/06/2027) · catalog cũ
+   `thanh_tich_loai` / `hoc_sinh_thanh_tich_ghim` còn nguyên, chưa ai tắt (đụng bảng đang dùng — hỏi trước) · ô Home Rank/Nhiệm vụ · ví xu hiện dòng
+   EXP nhiệm vụ/huy hiệu · danh hiệu top dạng (C5) · quà đua lớp (C8) · soi 4 màn bằng tài khoản HS thật (mới soi bằng trang mẫu).
+4. Nợ cũ còn: chọn dạng Tự luyện/Thử thách đang chạy ở CLIENT (`chonDangTuLuyen`, JS) — §2.0 muốn đẩy xuống DB.
+
+### ✅ PHA 4 — ĐƯỜNG ỐNG CA YẾU (bổ trợ) — ĐÃ BUILD (09→28/09), khác thiết kế 25/07 ở vài chỗ
+Thay bằng luồng thật ở `spec-bo-tro.md`: retest 2 tầng = **test cuối ca** (`bo_tro_test`, tính mastery như ET) + **retest** (`bai_test.loai='retest'`,
+buổi thường kế tiếp, TA lớp đưa iPad; `fn_btyeu_retest_ghi` ghi dat/dong_at từng dạng) — KHÔNG làm bảng con `bo_tro_yeu_retest`/`bt_ngay`/`bt_xn`
+như phác 25/07. Vòng 4 trạng thái: Chờ duyệt → Đang bổ trợ → Chờ retest → Hoàn thành (`case_truoc_id` = vòng). Tóm tắt ở đầu ① (dòng ⭐ BỔ TRỢ).
 
 ### Chưa làm
 - ✅ **(XONG 07-03)** KB3 nhập-kho ingest-first — màn `nhapkho` (xem section trên). AI auto-tag dạng ĐÃ làm (không còn "điền tay 100%"). Còn: mo_ta_ngan + distiller.
@@ -367,7 +659,7 @@ Vòng: đề xuất → **team học thuật DUYỆT** → **OPS xếp lịch** 
 - **⭐ Chiều MÔN — MÔ HÌNH CHỐT 06-29 (xem `ADR-mon.md` + CLAUDE.md §1.6):** **mỗi MÔN = 1 TRUNG TÂM riêng** (4 môn đối xứng; chung HS + vận hành; content RIÊNG từng môn/nhánh, **KHÔNG gộp bảng**). **Luật: mọi dữ liệu HỌC TẬP có nhãn `mon`** (chỉ phi-học-tập mới chung). ĐÃ: lớp `mon` · Elo/EXP per-môn (0041) · kho KHTN (0050) · tuyển-sinh đa-môn + `mon.ts` · `nhan_su_mon` (0056)+gate kho · `vi_tri.mon` (0057)+sơ đồ mỗi-môn-1-cây · `tai_lieu.mon` (0058)+tài-liệu-theo-môn · Điểm số/Buổi học theo môn. CÒN (theo ADR mới): Đại/Hình→1 trung tâm Toán có nhánh · 1 registry dispatch · ref vận hành mang `mon` · Anh/Văn chưa có kho.
 - **Cấp quyền:** leaf "Làm tài liệu"/Kho cho role **Học thuật**; OPS muốn 1-màn-work-view thì trim role OPS bỏ màn admin (Phân quyền tab1). (Hiện seed roles có sẵn nhiều màn.)
 - **GAMI tiếp:** **TIVI** (xem mục NGAY trên) · **bù/bổ trợ** UI (schema sẵn) · MT/Đội/Boss (GĐ B) · Test e2e 1 buổi thật. **Tinh chỉnh Elo:** nếu vẫn "đụng trần ±40 nhiều" → hạ K_calibration tiếp (32→24) hoặc nới cap (`src/gami/config.js`).
-- **Thành tích còn lại (06-17):** compute catalog `thanh_tich_loai` còn thiếu (vượt-band/điểm-10/9+/chuỗi-BTVN/lên-band…) + hệ gợi-ý-top + ghim · **danh hiệu Mythwings = data thật** (cấp/% từ điều kiện — đang placeholder cấp1/0%; nối khi define) · **số liệu chờ define:** số xu mỗi `luong_bac` (provisional) · `muc_nang_luc.diem_ky_vong` từng band · trọng số "độ hiếm" · điều kiện/% 3 danh hiệu · luồng nộp BTVN · art nhân vật theo Level · "Player Level tổng" cross-môn. (Skin game ĐÃ áp.)
+- **Thành tích còn lại (06-17) — ⚠ SUPERSEDE 28/09 bởi mục ⭐ GAMIFICATION HS (8 huy hiệu Hy Lạp; Mythwings chỉ còn là art phượng hoàng cho Phoenix); dưới đây chỉ để tham khảo:** compute catalog `thanh_tich_loai` còn thiếu (vượt-band/điểm-10/9+/chuỗi-BTVN/lên-band…) + hệ gợi-ý-top + ghim · **danh hiệu Mythwings = data thật** (cấp/% từ điều kiện — đang placeholder cấp1/0%; nối khi define) · **số liệu chờ define:** số xu mỗi `luong_bac` (provisional) · `muc_nang_luc.diem_ky_vong` từng band · trọng số "độ hiếm" · điều kiện/% 3 danh hiệu · luồng nộp BTVN · art nhân vật theo Level · "Player Level tổng" cross-môn. (Skin game ĐÃ áp.)
 - **Data:** khối 6-10 vừa xóa ghi danh (Thùy xếp lại tay) → sĩ số 0, card báo thiếu band tới khi xếp.
 - **Nợ khối nhân sự (trước khi vận hành thật):** trigger ghi-log lịch sử §4 (đổi band/phân công/TKB/membership chưa có vết — timeline tiến bộ HS cần nó) · màn Phụ huynh riêng (list PH + các con) · hiện tên người tạo tài liệu (map `tai_khoan`→`nhan_su`) · import HS/NS từ V1 · siết RLS theo phạm vi (cách A).
 - **Làm tài liệu — còn lại**: **BLOCK P2** (1 dạng chia NHIỀU block khác kiểu + gom dưới 1 header — nền `tai_lieu_phan.kieu` sẵn) · **kiểu block mới**: `bang` (bảng) · `ve_hinh` (khu vẽ) · `nhieu_y` (bài có ý con — cần chỗ chứa stem) · reorder buổi (reorder DẠNG ✅) · header/footer nhiều mẫu (mới 1 dải sóng) · watermark · gu B/C · Hub tab Đề thi / Tài liệu bổ trợ = placeholder.
@@ -768,75 +1060,94 @@ Vòng: đề xuất → **team học thuật DUYỆT** → **OPS xếp lịch** 
 
 ---
 
-### Đã build (12/08 — ⭐⭐ TRỢ LÝ AI: hỏi–đáp chạy thật + hạ tầng migrate/introspect)
+### ⭐⭐ TRỢ LÝ (tab 🤖 trong *Việc của tôi*) — trạng thái 29/09 · ĐỌC `SPEC-troly-nhansu.md` §6–§7 trước khi sửa
 
-> Ngày này ĐỔI HƯỚNG 3 lần do CEO bẻ lái. Đọc phần "hướng đã chốt" trước, đừng đọc theo thứ tự thời gian.
+**HƯỚNG HIỆN HÀNH (CEO 29/09 — ghi đè hướng 12/08 "nhắc việc hàng ngày + hỏi được"):**
+*"hỏi là phụ, tính năng chính vẫn là báo cáo. Báo cáo đầy đủ dữ liệu cần thì gần như không cần hỏi lại nữa."*
+Trợ lý = **hai bản báo cáo tất định tính ở Postgres** (Báo cáo Sư phạm · Tổng kết tuần). Model KHÔNG tham gia tính số.
+**Chỉ 3 tài khoản dùng:** Đào Xuân Thùy · Phạm Thị Thùy Trang · Trần Bảo Lộc — danh sách ở MỘT chỗ `hoi_dap_ds_tai_khoan()`;
+cổng `troly_duoc_dung()` / `_troly_gac()` đứng đầu MỌI hàm `_troly_*`; tab bị ẩn với người khác ở `NhanSuHome` (cờ `hoi_dap_duoc_dung`).
 
-**HƯỚNG ĐÃ CHỐT (bản cuối, ghi đè mọi mô tả cũ):** trợ lý = **NHẮC VIỆC HÀNG NGÀY + HỎI ĐƯỢC**,
-KHÔNG phải công cụ kiểm toán dữ liệu, KHÔNG phải thêm một dashboard nữa.
-CEO: *"1 đứa trợ lý nhắc việc hàng ngày, và khi nó nhắc việc thì t sẽ nhận ra được cái gì cần phải làm,
-cái gì cần hủy, cái gì cần gác lại"* · *"t cần trao đổi với nó như đang trao đổi với m. chứ hệ thống
-đưa ra thì khác gì dashboard và việc của tôi nhỉ"*.
+**Màn hình** — `src/screens/troly/TroLyTab.tsx` (KHÔNG đẻ leaf: leaf kéo theo quyền per-leaf + hiện ở nav mọi role). Hàng nút:
+**Báo cáo** (mặc định) · **Tổng kết tuần** · Trợ lý thấy gì · Vận hành · Bổ trợ bù · Bổ trợ đuổi · Bổ trợ yếu · Kiểm tra đầu vào · Việc của bạn.
+Khung hỏi nằm CUỐI trang.
 
-**Màn hình:** tab **"🤖 Trợ lý"** trong *Việc của tôi* (`src/screens/troly/TroLyTab.tsx`) —
-KHÔNG đẻ leaf mới (leaf kéo theo quyền per-leaf + hiện ở nav MỌI role). Bốn khối, trên xuống:
-- **HÔM NAY** — đúng **HAI RỔ** CEO chốt: ① việc có **hạn rơi đúng hôm nay** ② việc **đang dở**
-  (đã bắt đầu, chưa đóng — *"để t nhận thức được nó đang diễn ra"*). Nợ cũ CHỈ là một con số.
-  CEO nhấn: *"ko phải là mấy cái nợ kia nhé"* và *"Hôm nay là những việc có deadline là hôm nay thôi"*.
-  "Đã bắt đầu" suy từ HIỆN VẬT: có dòng `buoi_danh_gia`/`gami_grades`/`btvn_ket_qua` mà cột đóng còn null.
-  ⚠ **Chấm ET CỐ Ý bỏ khỏi rổ ②** — không có bảng dấu vết theo buổi đủ tin; khai thẳng trong `khongBiet`.
-- **KHUNG CHAT** — chỗ AI vào. Client gói bảng sạch → `troly_hoi_dap` → `worker/troly.mjs` (quét 3s) → trả lời.
-- **NHẬN ĐỊNH CẤP HỆ** — 4 nhận định, số tính lại mỗi lần mở (`troly_nhan_dinh` chỉ lưu QUYẾT ĐỊNH, không lưu text).
-- **VIỆC LẺ** — mọi việc chưa xong, 3 nút.
+**① BÁO CÁO SƯ PHẠM** (`BaoCao.tsx` · `lib/troly-baocao.ts` · cửa gọi `fn_troly_bao_cao_lay(p_so_ngay, p_tinh_lai)`)
+- **Của ai:** mỗi người quản một MẢNG có một BỘ báo cáo. Bản này là của **Trang (Sư phạm)**. **Lộc (Vận hành — mọi thứ không thuộc sư phạm,
+  gồm bổ trợ đuổi, xếp bù, xếp lịch) CHƯA có bản, chưa có mẫu.**
+- **Logic 3 luồng, mục nào cũng đủ:** ① đếm việc **chậm / miss** → ② nút **Detail**, bấm mới hiện từng việc (ngày · đối tượng · việc · người phụ
+  trách · hạn · tình trạng) → ③ **cảnh báo** rủi ro/bất thường. Mặc định đóng hết. Đơn vị = **VIỆC có người phụ trách**, cửa sổ 7/14/30 ngày.
+- **Mục:** BTVN · ET · Đánh giá trong buổi · Đánh giá sau buổi · Bổ trợ bù · Bổ trợ yếu (+ "Theo người phụ trách" + cảnh báo chung).
+- **Luật đếm:** miss = không có đề/không gán bài · bấm đóng mà trống · đóng mà còn em có mặt thiếu dữ liệu · ca bổ trợ không test.
+  "Đóng muộn" đếm RIÊNG, không gộp vào chậm. **"Học sinh không đến" là thông số RIÊNG**, không tính miss. "Không có đề" chỉ là miss với lớp
+  THẬT SỰ chạy khâu đó (≥60% buổi/60 ngày). **Chấm bài trên lớp chỉ bắt buộc từ 01/10/2026** — trước mốc không sinh việc ở báo cáo.
+- **BTVN có 2 phần:** *trợ giảng chấm* (việc + **tỉ lệ nộp đạt chuẩn theo lớp**: đạt = đã nộp + có thái độ + có điểm chấm; thiếu thông tin = không
+  đạt; **"xin phép" vẫn là chưa nộp**; lớp dưới **70%** = tệ; Detail = lớp → buổi → em không đạt + TA phân công + người chấm thực tế) và
+  *học sinh làm bài* (các cảnh báo). **ET KHÔNG có phần tỉ lệ nộp** (đi học là có ET) — đừng đề xuất lại.
+- **Người phụ trách + hạn lấy từ `fn_viec_buoi_thuong`**, không định nghĩa lại. Trưởng vận hành tra theo ghế (`_troly_truong_van_hanh()`), không gõ tên.
 
-**BA NÚT `lam` / `huy` / `gac`** (bảng `troly_ra_soat`, khoá buổi×khâu) — ⭐ **gỡ đúng chỗ tưởng là bế tắc.**
-Trước đó kẹt ở *"hệ không biết lớp nào bắt buộc làm khâu nào (must-exist) nên không dám nhắc"* → đâm đi vá
-dữ liệu, sai hướng. **Nhắc sai thì người bấm HUỶ là xong; luật LỘ RA từ các lần bấm.** ⇒ mở HẾT mọi khâu.
-`gac` + `gac_den` biến nó thành công cụ HÀNG NGÀY: việc gác **quay lại** đúng hẹn (nút sẵn 3 ngày/1 tuần/1 tháng —
-bắt gõ ngày thì người ta bỏ qua thay vì gác).
+**② TỔNG KẾT TUẦN** (`TongKetTuan.tsx` · `lib/troly-tuan.ts` · cửa gọi `fn_troly_tuan_lay(p_tuan, p_tinh_lai)`)
+- Trả lời câu KHÁC báo cáo: báo cáo = "việc nào hỏng, của ai"; tổng kết = "cả hệ chạy tốt tới đâu". Không gộp.
+- **Dựng theo BẢNG, mỗi mảng một bảng, cùng bộ cột** (tuần này · tuần trước · thường đạt · so với thường đạt · xu hướng 8 tuần). Bảng đầu = **Cần chú ý**
+  (chỉ số đang dưới thường đạt). 7 mảng: việc sau buổi (đúng chuẩn/chậm/thiếu, Detail = **xếp hạng GV–TA, không tính Thùy và Trang Phạm**) · quy mô &
+  chuyên cần · kết quả học tập · bổ trợ yếu · bổ trợ bù · bổ trợ đuổi · tuyển sinh. **Học phí KHÔNG đưa vào.** Để thẳng trên ERP (không xuất HTML rời).
+- **THƯỜNG ĐẠT** = trung bình **8 tuần liền trước** tuần đang xem, **sau khi lọc nhiễu** (hàng rào Tukey 1,5×IQR). Xấu hơn ≥1 độ lệch chuẩn = "dưới
+  thường đạt", ≥2 = "vấn đề". <4 lần đo = chưa đánh giá. Tuần mà mảng chưa chạy trên hệ KHÔNG phải lần đo (số `neo`). Chỉ số còn đổi sau khi tuần kết
+  thúc (bù, trả kết quả test, điểm BTVN) ghi "chưa chốt" 7 ngày đầu. Mọi hệ số ở `_troly_bc_gia_dinh()`.
+- **Mẫu số việc sau buổi = việc đã tới hạn hoặc đã đóng**; việc còn trong hạn để riêng.
+- **Trình chiếu:** mỗi bảng MỘT màn vừa khít, chuyển ‹ Trước / Sau › + phím mũi tên + mục lục; là lớp phủ kín cửa sổ, toàn màn hình chỉ cộng thêm.
+  Nút "Số từng tuần" đổi nét vẽ thành số.
+- **Tự tính sáng thứ Hai 07:00** — `api/troly-tuan.mjs` + cron `0 0 * * 1` + `fn_troly_tuan_tu_dong(secret, app)`. **CHƯA chạy thật:** cần khai
+  `TROLY_PUSH_APP=pt` trên Vercel project pt rồi deploy. Máy nhận hiện có: Thùy, Trang (app pt); **Lộc chưa đăng ký nhận tin**.
 
-**RANH GIỚI MODEL (doc §4, KHÔNG mở lại):** CODE tính hết số → bảng sạch **đã gộp sẵn** theo lớp/theo khâu
-(để model không có lý do tự cộng); MODEL chỉ đọc rồi trò chuyện. Bảng có mục `khongBiet` liệt kê thẳng
-giới hạn. Ba khối không-chat vẫn chạy khi worker tắt.
+**KHÔNG REALTIME (CEO 29/09):** lượt mở đầu trong ngày thì tính, **lưu DB**, mở lại đọc bản lưu; "↻ Tính lại" ghi đè. Bảng `troly_bao_cao_luu`
+(bo = `su_pham` | `tuan`) giữ bản đã dựng; `troly_tuan_so_luu` giữ số TỪNG TUẦN (nguồn của thường đạt, đủ từ 15/06). Bản lưu tổng kết mang
+`phien_ban` cách tính — đổi luật thì tăng `_troly_tuan_phien_ban()`, bản cũ tự tính lại.
 
-**ĐO THẬT (12/08):** bảng sạch ~10.500 token · **14 giây/câu · ~790 đ** (`claude-sonnet-5`).
-Ước cả tháng 5 câu/ngày: Haiku ~44k · Sonnet ~89k · Opus ~222k đ. Bật cache còn ~1/4.
-⚠ Tiền nằm gần hết ở ĐẦU VÀO ⇒ cắt input mới là cắt thật, đổi model rẻ chỉ giảm phần đã nhỏ.
+**BẢN ĐỒ DB (đều `fn_`/`_troly_`, tìm trong `schema.md`):**
+- Nguồn phân loại việc DUY NHẤT: `_troly_viec_buoi_goc` (mọi việc + nhãn). `_troly_bc_viec_buoi` chỉ là lớp mỏng. Ca bổ trợ yếu: `_troly_ca_yeu_goc`.
+- Báo cáo: `fn_troly_bao_cao` ← `_troly_bc_viec_buoi/_bu/_yeu` · `_troly_bc_canh_bao` · `_troly_bc_thong_so` · `_troly_bc_btvn_ti_le` · `_troly_bc_them`.
+- Tổng kết tuần: `_troly_tuan_so` + `_troly_tuan_hoc_tap/_duoi/_tuyen_sinh` → `_troly_tuan_so_day_du` → `_troly_tuan_cap_nhat` (ghi số tuần) →
+  `_troly_tuan_doc` (dựng dashboard + thường đạt) · `_troly_tuan_xep_hang` · **danh mục chỉ số ở MỘT hàm `_troly_tuan_danh_muc()`** (thêm chỉ số = thêm 1 dòng).
+- Hai cửa `_lay` là `SECURITY DEFINER`; mọi hàm tính bên trong đã thu quyền của `authenticated`/`anon`.
+- 13 công cụ tra cứu `_troly_cc_*` + `fn_troly_goi` + `fn_troly_danh_muc` (mig 202609290143) — **đã có ở DB, CHƯA nối vào khung hỏi.**
 
-**KIỂM CHẤT LƯỢNG — model ĐẠT cả 2 phép thử:**
-- Số: 8S0=31 việc/cũ nhất 56 ngày · 12A1=16 · 9A2=13 · đánh giá 51 · chấm lớp 28 · cảnh báo yếu 20 — **khớp 100%** oracle SQL.
-- Không bịa: hỏi "em X yếu dạng nào" → *"bảng của tôi không có"*, trích đúng mục `khongBiet`, chỉ sang chỗ tra thật.
-- Tự khai giới hạn khi suy luận: *"Đây là góc nối, không phải nhân quả chắc chắn — bảng không cho biết vì sao 8S0 dồn nhiều."*
+**KIỂM:** `node scripts/check-troly-cong-cu.mjs` (mọi thứ trong 1 transaction rồi ROLLBACK, giả JWT): mặc định = cổng + 23 ca công cụ ·
+`--bao-cao [ngày]` · `--lay` · `--tuan [ngày]` · `--thu <file.sql>` áp THỬ migration trước khi gọi. ⚠ Script nối bằng role chủ bảng ⇒
+**không kiểm được RLS và trần 8 giây** — hai thứ đó chỉ kiểm được trên app với phiên đăng nhập thật.
 
-**WORKER KHÔNG KHOÁ NHÀ CUNG CẤP:** adapter mỏng chạy `anthropic` lẫn `moonshot` (Moonshot = Kimi, MỘT nhà)
-trên CÙNG bảng sạch, đổi bằng 1 dòng `.env.local`, log token+tiền mỗi lượt ⇒ **so bằng số**.
-Moonshot dùng giao thức tương thích OpenAI ⇒ `fetch` thẳng, không thêm SDK. Cố ý KHÔNG dùng tính năng
-riêng của từng nhà (thinking/cache) — dùng thì bản so mất công bằng. ⚠ Bảng giá phải TỰ KIỂM lại.
-⚠ `moonshot-v1-8k` KHÔNG dùng được (bảng đã ~13k token). Bản `-vision` thừa. `K2.7 Code` sai việc.
-⭐ Bảng sạch **KHÔNG có tên học sinh** ⇒ thử nhà mới ở đây rủi ro thấp hơn hẳn `danhgia` (vốn gửi `ho_ten`).
+**KHUNG HỎI + CÁC TAB CŨ (12–19/08) — còn chạy, gần như không ai dùng:**
+- Đo 29/09: tab Trợ lý 21 câu cả đời, 3 nút Làm/Huỷ/Gác không ai bấm từ 12/08. Trong 14 câu hỏi thật, ~11 câu không ra thứ người hỏi cần:
+  khung hỏi mù với các tab ngay dưới nó · danh mục thiếu ET · kết quả công cụ không quay về model · bảng sạch phình 10k → 42k token/câu.
+- Khung hỏi gọi thẳng `api/troly.mjs` (Vercel, đồng bộ). Nhà cung cấp đổi bằng biến môi trường (`anthropic` / `moonshot` / `deepseek`), log token + tiền mỗi lượt.
+  Ranh giới giữ nguyên: CODE tính số, MODEL chỉ đọc bảng sạch rồi trò chuyện. Đo 12/08: ~14 giây/câu, ~790 đ/câu (tiền nằm gần hết ở đầu vào).
+- Các tab Trợ lý thấy gì · Vận hành · Bổ trợ bù/đuổi/yếu · Kiểm tra đầu vào · Việc của bạn vẫn tính ở CLIENT (`lib/troly*.ts`). **Mảng Yếu và Test đầu vào
+  lỗi thời** (Yếu còn đếm cờ thô trong khi `bo_tro_yeu` đã là luồng thật) — chưa gỡ.
 
-**HẠ TẦNG (độc lập trợ lý):**
-- **`npm run migrate` SỐNG LẠI** — sổ `_migrations` (tên + vân tay sha256), ghi TRONG CÙNG transaction.
-  `--status` xem thuần · `--baseline <file>` dựng sổ cho DB cũ (đã chạy, không cần lại) · DB có bảng mà
-  chưa có sổ ⇒ **từ chối chạy** + in đúng lệnh. Sửa file đã áp ⇒ nêu cờ, KHÔNG áp lại.
+**⚠️ CÒN TREO:**
+1. **Báo cáo Vận hành của Lộc** — cần CEO đưa mẫu.
+2. **Deploy + khai `TROLY_PUSH_APP`** để thông báo thứ Hai chạy; Lộc đăng ký nhận tin.
+3. **`fn_viec_buoi_thuong` vẫn sinh việc** "chấm bài trên lớp" cho buổi trước 01/10 và việc BTVN cho buổi không được gán BTVN ⇒ màn Việc của tôi,
+   hiệu suất, gậy đang tính oan. Báo cáo đã bỏ qua, engine việc thì CHƯA — sửa engine phải hỏi CEO.
+4. **"Chuyển lịch" bổ trợ chưa đo được:** hệ không ghi vết đổi ngày/giờ buổi bổ trợ; số gần nhất là "OPS gỡ ở Lịch phòng". Cần trigger ghi lịch sử.
+5. **3 dòng của mẫu báo cáo chưa có nguồn dữ liệu** (báo cáo nói thẳng, không bịa): HS làm bài chậm hơn lớp (`gami_grades.speed` 100% mặc định) ·
+   "không làm BTVN đã tác động đến đâu" (không bảng nào ghi) · danh sách CHỜ duyệt bổ trợ (engine phát hiện còn ở client).
+6. **Các con số của thường đạt đang là số em tự đặt** (1,5×IQR · 1σ · 2σ · tối thiểu 4 lần đo · chưa chốt 7 ngày) — chờ CEO chỉnh. SPEC §7.3.
+7. Nối khung hỏi vào `fn_troly_goi` · gỡ mảng Yếu/Test lỗi thời · toàn màn hình thật + bút trình chiếu chưa kiểm được.
+8. Treo từ 12/08, CHƯA kiểm lại: Level thiếu 2/3 loại kỳ thi nên không chốt được.
+
+**SỐ MỐC để đối chiếu (tính 29/09):** báo cáo 14 ngày 16–29/09: 59 chậm · 48 miss · 29 lượt HS không đến · 73 đóng muộn; **87% buổi bấm đóng "chấm bài
+trên lớp" mà không có dòng chấm nào**; 7 lớp có buổi mà chưa phân công đủ GV/TA. Tuần 21–27/09: việc đúng chuẩn cả trung tâm 63,1% (ET 86,2 · đánh giá
+56,5 · BTVN 36,4); **vấn đề:** HS nộp BTVN đạt chuẩn 67% (thường đạt 84) · 11 lớp nộp dưới ngưỡng · 13 HS bị GV báo động · điểm ET TB 78,2% (82,2);
+bổ trợ yếu: cần 120 case, lên lịch 20,8%, đã bổ trợ 10,8%, sự cố 59,4% lượt, duyệt → xếp lịch TB 12,5 ngày.
+
+**HẠ TẦNG dựng từ 12/08 (độc lập trợ lý, còn dùng):**
+- **`npm run migrate`** — sổ `_migrations` (tên + vân tay sha256), ghi TRONG CÙNG transaction. `--status` xem thuần · `--only <tên file>` áp 1 file ·
+  `--baseline <file>` dựng sổ cho DB cũ · DB có bảng mà chưa có sổ ⇒ **từ chối chạy** + in đúng lệnh. Sửa file đã áp ⇒ nêu cờ, KHÔNG áp lại.
 - **`npm run schema` dump được VIEW** + **canary RLS** ghi cảnh báo thẳng vào đầu `schema.md`.
-- **`scripts/census-dulieu.mjs`** — bản đồ dữ liệu THẬT: 125 bảng · 78 sống · 22 nguội · 22 rỗng · 3 bị RLS che.
-- **`scripts/check-troly.mjs`** — oracle SQL độc lập, kiểm "sai đọc = 0%".
-- **`viec.nghiem_thu_nguon`** (`nguoi`/`tu_dong`) — đếm `tu_dong`/tuần = chỉ số đo trợ lý chặn được lỗ đen không.
-- **Quyền DB:** `.env` chỉ có `DATABASE_URL` → role `claude_build`, **GHI ĐƯỢC**, **SỞ HỮU 121/124 bảng**.
-  Rào "chỉ đọc" là **kỷ luật, không phải cơ chế**. Tách `DATABASE_URL_RO` chưa làm (phải kèm `bypassrls`).
-
-**⚠️ CÒN TREO — QUYẾT TRƯỚC KHI ĐI TIẾP:**
-1. **Hạn "đánh giá/chấm lớp" đang là 23:59 CÙNG NGÀY buổi** ⇒ buổi tối qua thành nợ ngay 0h sáng nay
-   ⇒ rổ "phải hoàn thành hôm nay" gần như LUÔN RỖNG (12/08: rỗng, trong khi 4 buổi 11/08 còn nguyên).
-   Đúng luật nhưng vô dụng. **Đề xuất: nới sang trưa hôm sau** (ET vốn đã 12h hôm sau — có tiền lệ).
-2. CEO hẹn bàn tiếp: **cần thông báo những gì** và **CEO hay miss những gì** → đây mới là nguồn thật
-   cho danh sách nhắc, thay cho phỏng đoán của Claude.
-3. Bổ trợ đuổi (lượt 2, `anhChupChuoiDuoi` đã viết sẵn): ngưỡng từ 34 đợt hoàn thành (p50=3·p75=7·p90=12·max=16)
-   ⇒ **4/8 đợt đáng nhắc**, cũ nhất 21 ngày (Phạm Kim Oanh 9C1). Lộc chỉ cần xác nhận 4 SỰ THẬT.
-4. Cụm bổ trợ+level, 3 kiểu hỏng khác nhau: `bo_tro_yeu` **không có đường ghi nào** (chưa xây xong) ·
-   `canh_bao_yeu` 20 dòng đang sống **chảy vào hư không** · Level thiếu **2/3 loại kỳ thi** nên không chốt được.
-5. Tách role RO/RW · ẩn danh (module này vốn đã không gửi tên HS).
+- **`scripts/census-dulieu.mjs`** — bản đồ dữ liệu thật (bảng sống / nguội / rỗng / bị RLS che).
+- **`scripts/check-troly.mjs`** — oracle SQL độc lập cho các tab cũ, kiểm "sai đọc = 0%".
+- **`viec.nghiem_thu_nguon`** (`nguoi`/`tu_dong`).
 
 ### Chuỗi đã dò xong #1 — TEST ĐẦU VÀO (12/08, chờ 1 câu để kích hoạt)
 
@@ -1316,12 +1627,13 @@ khối 6 đã xong, đang chờ duyệt. ĐÃ MERGE + PUSH `main` (96861b7, 11/0
   Tổng tập {x<K} T106010103 (R81-84). Dạng đáp số 1 giá trị đơn (Tìm ƯCLN/BCNN T106040102/202) vẫn đi
   `SPECIAL_DANG`/`parseHuuTi` như cũ.
 - **Tổng khối 6 đã ghi form: ~700 câu qua 12 dạng** (chi tiết từng dạng: DEVLOG 11-12/09). **Đã khảo sát HẾT
-  khối 6 — không còn dạng nào "dễ".** Phần còn lại (T106030401 139 câu "an+b⋮cn+d" · T106020601 44 câu dãy luỹ
-  thừa · T106030102+T106030403 93 câu đáp số "Có/Không" kiểu chứng minh · T106020304 Toán thực tế 39 câu) +
-  GTLN-GTNN/nâng cao khối 7 (deferred từ đầu) **Thùy chốt 12/09: TẤT CẢ thuộc nhóm "TRẮC NGHIỆM TỪNG PHẦN"** —
-  kiến trúc CHƯA THIẾT KẾ (không phải khuôn "1 câu → 4 đáp án nguyên câu" hiện tại), việc lớn cần bàn kỹ trước
-  khi code, KHÔNG tự quyết được. T106010102/T106020101/phần lớn T106010103 hoá ra **ĐÃ LÀ trắc nghiệm gốc**
-  trong kho (`lua_chon` có sẵn) — ngoài phạm vi pipeline này, không phải việc cần làm.
+  khối 6 — không còn dạng nào "dễ" theo khuôn "1 câu → 4 đáp án nguyên câu".** Phần còn lại (T106030401 "an+b⋮cn+d"
+  · T106020601 dãy luỹ thừa · T106030102+T106030403 đáp số "Có/Không" · T106020304 Toán thực tế) + GTLN-GTNN/nâng
+  cao khối 7 **Thùy chốt 12/09: thuộc nhóm "TRẮC NGHIỆM TỪNG PHẦN"** (= Phase 2 Đại của `spec-dien-o.md`, không
+  phải khuôn 4-đáp-án cũ). **⚠ Đính chính: kiến trúc ĐÃ XÂY 12-13/09** ở worktree riêng `mcq-tung-phan` (KHÔNG
+  còn "chưa thiết kế" như ghi lúc 12/09 sáng) — xem mục **"⭐ 12-13/09 — TRẮC NGHIỆM TỪNG PHẦN"** cuối phần ①.
+  T106010102/T106020101/phần lớn T106010103 hoá ra **ĐÃ LÀ trắc nghiệm gốc** trong kho (`lua_chon` có sẵn) —
+  ngoài phạm vi pipeline này, không phải việc cần làm.
 - **UI duyệt** (`TracNghiemAiTab.tsx`): duyệt theo lô 20 câu + nút "Duyệt tất cả trang này" (loại câu sai trước
   bằng checkbox, KHÔNG phải duyệt-từng-câu — CEO 09/09, RPC `fn_mcq_form_duyet_batch`); lời giải kho hiện SẴN
   dưới đề (11/09 tối, trước đó ẩn sau `<details>` phải click). ⚠ Lúc merge lên main gặp 1 bản "duyệt hàng loạt"
@@ -1366,45 +1678,51 @@ khối 6 đã xong, đang chờ duyệt. ĐÃ MERGE + PUSH `main` (96861b7, 11/0
 và `--baseline` đều đụng file người khác, đã dính 2 lần 08/09).
 
 
-### ⭐ 09/09 tối — TEST ĐẦU VÀO: audit đủ luồng + 8 quyết định CEO + DB ĐÃ SẴN, CODE MÀN CHƯA SỬA (làm tiếp ở nhà)
-**Sự thật hiện tại (đo DB 09/09):** 6/6 `ca_test` đều `tai_lieu_id` NULL ⇒ hàng đợi Chấm rỗng, không ai thấy ô Đ/C/S
-(ô này CÓ trong `ChamTestScreen`, chỉ hiện khi ca có đề). Ca Nguyễn Thắng Tùng (K7, 07/09): `ca_test_log` chứng
-minh đề chưa từng được lưu (UI 2 bước chọn→bấm "Gán đề", Hoàn tất không đòi đề). Ca hoàn thành thiếu đề **biến
-mất im lặng** khỏi mọi hàng đợi (Chấm lọc `tai_lieu_id not null`, Điểm danh chỉ liệt kê hôm nay). 1 dòng `ca_test_cau`
-mồ côi (ca Test QA 07/07). Chi tiết: DEVLOG 09/09 tối.
-
-**8 quyết định CEO (chốt, đừng hỏi lại):** ① gán đề = **mặc định đề đang dùng** của (khối×môn), Ops chỉ đổi khi
-cần · ② + ⑤ chấm test (TA được gán) và trả bài (GV được gán) **phải nằm trong "Việc của tôi"** · ③ màn chấm hiện
-tại (1 HS, Đ/C/S từng câu) là đủ, **không cần mã lỗi** · ④ **điểm test NHẬP RIÊNG**, độc lập Đ/C/S (`ca_test.diem_nhap`)
-· ⑥ ứng viên chưa là HS vẫn tính ở Postgres (khoá = `ca_test_id`) · ⑦ **Đại/Hình = pick từ bản đồ nào thì tính từ
-đấy** (Đại→'dai'; Hình + Hình giải tích→'hinh'); đề không có câu hình thì **bỏ qua khối đó**, không hiện 0% · ⑧ tên
-GV + lịch lớp đề xuất **chỉ trên ẢNH gửi PH**, không trên UI trả bài. Trả bài phải hiện: % theo CHUYÊN ĐỀ · % cơ
-bản (`muc_do` ≤3) / nâng cao (≥4) · % Đại/Hình · thang Trình bày–Tính toán · nhận xét thêm · lớp đề xuất (+GV+lịch
-trên ảnh) · **xuất ảnh** (đã có html2canvas popup, chỉ cần thêm khối).
-
-**ĐÃ ÁP DB (mig `202609092245_test_dau_vao_phieu_rpc.sql`, schema.md đã refresh):** `ca_test.diem_nhap` ·
-`ca_test_cau.nhanh/muc_do/ten_chuyen_de` = **SNAPSHOT lúc gán đề** (không join lại kho; NULL = không áp dụng) ·
-**`fn_test_dau_vao_phieu(uuid) → jsonb`** trả TOÀN BỘ số liệu phiếu (tong · theoChuyenDe · theoMucDo{coBan,nangCao}
-· theoNhanh{dai,hinh} · nhanXet · lopDeXuat{tenLop,gv[],lich[]}). % = Σdiem/Σtoi_da trên câu ĐÃ CHẤM. ⚠ Nhóm rỗng
-trả `{soCau:0,pct:null}` — client ẩn khi `soCau===0` (hoặc mig nhỏ `create or replace`, KHÔNG sửa file đã áp).
-
-**VIỆC TIẾP (thứ tự A→G, chi tiết từng hàm ở DEVLOG 09/09 tối):** (A) `detest.ts` — snapshot 3 cột khi gán
-(`getTaiLieuFull` + `nhanhCuaCau` + `khoCuaMon(..).banDoTbl`; **hàng HÌNH `HINH:<uuid>` đang bị bỏ rơi im lặng**,
-phải snapshot nhanh='hinh' qua `loadLuoi`+`pickCuaHinhRow`+`banInTheoMoHinh`) · `ganDeDangDung` · `listCanCham`
-gộp cả ca thiếu đề + nút "Gán đề đang dùng" (đường cứu Tùng + 4 ca cũ, KHÔNG sửa DB tay) · list "của tôi" theo
-`nguoi_cham_id`/`nguoi_tra_bai_id` · `setDiemNhap` · đóng chấm đòi `diem_nhap` · `getPhieuKetQua` → rpc, XOÁ
-`tongDiem`/`getBieuDoChuyenDe` (JS cộng điểm, vi phạm §2.0). (B) `DiemDanhTestScreen`: chọn = lưu ngay, tự gán
-đề đang dùng lúc tạo ca/mount card, Hoàn tất chặn khi chưa có đề. (C) `ChamTestScreen`: Đ/C/S inline trên hàng
-câu (khuôn `ET_KQ` ChamBuoi.tsx), ô Điểm, tổng/% từ rpc, toggle Của tôi/Tất cả. (D) `TraBaiTestScreen`: 3 khối %
-từ rpc, không GV. (E) `PhieuTestDauVao`: điểm nhập + 3 khối % + GV + lịch (`THU_LABEL` 2..8, 8=CN). (F) `NhanSuHome`:
-2 khối flat "cần chấm / cần trả bài (của tôi)" theo `me.nhanSu.id` → `setStaffLeaf('test_dau_vao')` + (G) setter
-tab module-level ở `TestDauVaoScreen`. Dữ liệu thô cần học thuật rà: đề K7 34/34 câu `muc_do`=3 (kể cả chuyên đề
-"Nâng cao") ⇒ phiếu sẽ ra 100% cơ bản; 8 câu "Hình học" đề K7 pick từ kho Đại ⇒ đếm là Đại theo ⑦.
-
-**Cảnh báo hạ tầng:** `migrate --status` thấy **11 migration có trong sổ DB nhưng không có file ở main** (nhánh/
-worktree chưa merge: 202608151600 · 202609041045 · 202609051251 · 202609081858 · 202609091354/1411/1416/1428/1750/
-1810/1959). Dựng lại DB từ repo sẽ thiếu — gom file về main trước khi tin `npm run migrate` trên máy mới.
-
+### ⭐ TEST ĐẦU VÀO — trạng thái 13/09 (đã push main `8e4aa83`; supersede mục 09/09)
+**Luồng đang chạy (ERP máy tính, `Vận hành › Tuyển sinh › Test đầu vào`, 5 tab):**
+1. **Phân công** (`PhanCongTestScreen.tsx`, bảng `test_dau_vao_phan_cong` PK (khối, môn) + log): toggle môn, hàng =
+   khối, 2 ô SearchSelect người chấm / người trả bài, chọn = upsert ngay. **Trigger DB `tg_ca_test_phan_cong`
+   (BEFORE INSERT ca_test)** điền `nguoi_cham_id`/`nguoi_tra_bai_id` còn NULL từ bảng này theo (ung_vien.khoi, ca.mon)
+   ⇒ mọi đường tạo ca đều được gán; đổi phân công chỉ áp ca tạo SAU. **Bảng hiện RỖNG** (chỉ 1 dòng K7 Toán 2 cột null
+   do tôi test) — CEO cần điền. Ops KHÔNG chọn người ở Điểm danh nữa (card chỉ hiện tên, thiếu ⇒ cam).
+2. **Điểm danh test** (`DiemDanhTestScreen`): tạo ca ⇒ `ganDeDangDung` tự gán **đề đang dùng** của (khối × môn)
+   (`tai_lieu.loai='de_test_dau_vao'`, bản mới nhất); dropdown chọn đề = lưu ngay; **Hoàn tất chặn khi thiếu bài
+   HOẶC thiếu đề**. Gán đề = `ganDeCaTest` snapshot câu vào `ca_test_cau` kèm `nhanh` ('dai'|'hinh') · `muc_do` ·
+   `ten_chuyen_de` (duyệt `maCaus` theo thứ tự đề; hàng HÌNH `HINH:<uuid>` snapshot 1 dòng/bài qua `banInTheoMoHinh`;
+   câu không còn trong kho ⇒ CHẶN gán + nêu mã). Chưa có đề cho khối × môn ⇒ card báo ⚠ (K6 Toán đang thế).
+3. **Chấm test** (`ChamTestScreen`): toggle Của tôi/Tất cả (`nguoi_cham_id`); ca hoàn thành mà thiếu đề VẪN hiện
+   (badge ⚠ + nút "Gán đề đang dùng" — đường cứu 5 ca cũ, Tùng K7 07/09 vẫn chưa ai bấm); bảng nhập liệu thuần
+   "▸ Câu N | Đ C S" (đề ẩn, bấm số câu mới xổ), ô **Điểm bài nhập tay** (`ca_test.diem_nhap`, thang 10), tổng/% từ
+   rpc; đóng chấm cần đủ câu + điểm. Điểm câu do trigger `tg_ca_test_kq_diem`.
+4. **Trả bài** (`TraBaiTestScreen`): danh sách card → bấm HS = **`DanhGiaGvModal` toàn màn hình**: TRÁI form
+   navy/gold (kỹ năng Trình bày/Tính toán **thang 5** = 5 nút, nhận xét 1 textarea + gợi ý `nhan_xet_mau` nhom
+   'khac', lớp đề xuất SearchSelect lưu ngay vào `ung_vien.lop_du_kien_id`), PHẢI = phiếu thật xem trước co theo
+   màn (`transform: scale`), autosave nháp 700ms (`ca_test.nhan_xet` jsonb `{trinhBay:1..5, tinhToan:1..5, khac}`;
+   dữ liệu cũ tot/on/kem → 5/3/1 qua `mucKyNang`), **📋 Copy ảnh gửi PH**, ✓ Đã gửi đóng (cần chấm xong + scan
+   bài đã chấm + lớp). "Đã trả bài" bấm = xem lại phiếu. **Đại/Hình vẫn tính ở DB, KHÔNG lên phiếu/form.**
+5. **Đề test**: sinh đề từ MT/Đề thi (giữ nguyên).
+**Phiếu gửi PH** (`PhieuTestDauVao.tsx`, read-only, 720px, kit `BK_KET_QUA_KIEM_TRA_DAU_VAO_UI_KIT_v1` 12/09):
+header/footer navy + **ảnh ruy băng gold thật** (`public/bk-ui/td_header.png`/`td_footer.png`, `background-size:
+cover`), logo colorful `logobk.png` trong ô trắng, profile (avatar cartoon `td_boy/td_girl` theo
+`ung_vien.gioi_tinh`, null ⇒ glyph) + card Điểm test `td_cup` "x/10", khối 1 % chuyên đề (thanh navy→gold), khối 2
+donut **tô đúng % đúng tổng** (navy = điểm cơ bản, gold = nâng cao, còn lại xám), khối 3 kỹ năng x/5, khối 4 nhận
+xét (hộp xanh + `td_quote`, minHeight 3 dòng), khối 5 "LỚP / tên" đè lên `td_badge` (nguyệt quế + vương miện), footer
+địa chỉ Geleximco + hotline 0963.209.309 + Pacifico "Học thật / Tiến bộ thật". Mọi số liệu từ
+**`fn_test_dau_vao_phieu(uuid) → jsonb`** (có `gioiTinh`, mig 202609131618). Xuất ảnh = outerHTML → popup
+html2canvas; 8 asset fetch → data URL, thiếu ⇒ pixel trong suốt (`ASSETS`, `PX_TRONG`). Ruy băng/icon SVG inline
+vẫn còn làm fallback. Icon nhỏ = SVG tự vẽ (sheet icon ChatGPT không cắt sạch).
+**Việc của tôi (ERP):** 2 khối flat "✍️ cần chấm" / "📨 cần trả bài" theo `nguoi_cham_id`/`nguoi_tra_bai_id`, gồm cả
+ca **đang test** (nhãn "đang test, chờ bài"), click ⇒ `moTabTestDauVao('cham'|'tra_bai')` + leaf `test_dau_vao`.
+App TA/GV điện thoại **KHÔNG** có test đầu vào (CEO 10/09: "làm trên máy tính thôi"; nhắc việc = context khác).
+**Còn treo / cần người:** CEO điền tab Phân công · học thuật sinh đề K6 Toán (và các khối × môn khác) · rà
+`muc_do` dạng (đề K7 34/34 câu mức 3 ⇒ phiếu luôn 100% cơ bản) · Ops điền `gioi_tinh` (95/192 ứng viên null) ·
+5 ca cũ thiếu đề (Tùng, Phúc, Thiện Minh, Gia Huy, Test QA) chờ bấm "Gán đề đang dùng" · chưa ai verify **ảnh
+Copy cuối** bằng tay sau lần lắp asset (Browser pane không mở popup thứ 2). File nguồn `*_testdauvao.png`,
+`asset_dauvao.png`, `header_bg/footer_bg.png`, 4 svg kit v1.1, `td_icon_*.png` còn trong `public/bk-ui/`
+chưa commit — dọn cần CEO gật.
+**Cảnh báo hạ tầng còn nguyên:** `migrate --status` thấy migration có trong sổ DB nhưng không có file ở main
+(nhánh/worktree chưa merge) — gom file về main trước khi tin `npm run migrate` ở máy mới. Repo chính từng
+**mất `.env.local`** (10/09) — chép lại từ worktree; port 5173 có thể do vite của worktree khác giữ.
 
 ### ⭐ 10/09 (tối) — NHẬP CÂU HGT QUA CLAUDE: 25 câu Phần A Toán Tứ Tâm PT mặt phẳng vào chờ-duyệt (worktree `nhap-bando`)
 **CEO chốt luồng nhập kho:** đưa file docx/pdf → Claude tách đề+giải+phương án + gán `dang_chinh` → INSERT `hgt_cau_hoi` với `da_duyet=false` + `dang_ai_de_xuat=dang_chinh` → CEO duyệt ở màn duyệt hợp nhất (`DuyetCauTab`). Precision AI đo được sau (count(dang_ai_de_xuat=dang_chinh)/count(dang_ai_de_xuat not null)).
@@ -1430,8 +1748,219 @@ worktree chưa merge: 202608151600 · 202609041045 · 202609051251 · 2026090818
 
 **Scope lô đầu = chỉ Phần A trắc nghiệm.** Phần B (Đúng-sai — có `menh_de` jsonb, `loai_cau='dung_sai'`), C (TLN, `loai_cau='tra_loi_ngan'`), D (Tự luận, `loai_cau='tu_luan'`) chưa xử — làm sau khi CEO thấy chất lượng lô đầu OK.
 
+
+### ⭐ 12-13/09 — TRẮC NGHIỆM TỪNG PHẦN (Điền Ô Phase 2 Đại) — kiến trúc ĐÃ XÂY, worktree `mcq-tung-phan`, 4/9 dạng ĐÃ GHI DB
+
+**Đây CHÍNH LÀ Phase 2 (Đại tính toán) của `spec-dien-o.md`** (CEO chốt 09/09, chưa xây lúc đó) — không phải khái
+niệm mới, xem cầu nối `spec-mcq-tung-phan.md`. Đính chính dòng cũ ở mục "08–09/09 (A)" phía trên: kiến trúc **KHÔNG
+còn** "chưa thiết kế" — đã build xong ở worktree riêng `.claude/worktrees/mcq-tung-phan` (nhánh `worktree-mcq-tung-phan`).
+
+**Quy trình CEO chốt 12/09 (khác quy trình pool TN mục A)**: với MỖI dạng tự luận, CTO đề xuất CHỖ CHIA (ô nào đục,
+phương án sai gì) → CEO duyệt mẫu 10 câu → mới chạy cả dạng → verify → ghi (`da_duyet=false`). KHÔNG sinh+ghi cả
+dạng rồi mới hỏi (nhóm Toán thực tế dưới đây lỡ làm ngược thứ tự — chấp nhận vì spec đã ghi "100% máy" từ trước;
+từ dạng GTLN/GTNN trở đi tuân đúng quy trình).
+
+**⭐ CEO chốt kiến trúc lưu ô (12/09 tối): LƯU HẾT mọi chỗ có thể điền, KHÔNG cố định 3-4 ô/câu.** Lý do Thùy nêu:
+"giết nhầm còn hơn bỏ sót... sau này còn biết học sinh hay sai ở đâu". Mỗi ô gắn nhãn `vi_tri` (tên vị trí trong
+khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 ô/câu (`202609122158_dien_o_luu_het_o_vi_tri.sql`).
+**Lúc GIAO BÀI mới chọn tổ hợp 3 ô/câu (mặc định), tối đa 4** — xoay vòng theo HS/lần làm để mọi vị trí đều được đo
+(việc chọn-lúc-giao CHƯA LÀM, xem "Còn treo" cuối mục).
+
+**Hạ tầng dùng chung 3 dạng dưới đây:**
+- Bảng `dai_cau_form_dien` (mig `202609121423`) — `buoc`/`o` giống `hinh_form_dien` nhưng khoá `ma_cau` (không phải
+  `cach_giai_id`), registry `_kho_form_dien_tbl`. Trigger kiểm cấu trúc + trigger thu hồi khi `dai_cau_hoi.loi_giai`/`dap_an` đổi.
+- `scripts/lib/dien-buoc.mjs` — bộ đọc CHUNG tách lời giải theo dấu `=` trong từng đoạn `$…$` (giữ offset tuyệt đối
+  để đục lỗ đúng chỗ), dùng khi dạng KHÔNG có khuôn riêng.
+- `scripts/mcq-dien.mjs` — CLI `--sinh/--verify/--xem/--ghi` (khuôn theo `scripts/mcq-auto.mjs` cũ). Dạng có khuôn
+  riêng (map `KHUON` trong file) override bộ đọc chung bằng hàm ở `scripts/lib/dien-khuon-<ten-dang>.mjs`.
+- **⭐ Mã rule Điền Ô dùng TIỀN TỐ RIÊNG `D01`, `D02`... — KHÔNG nối tiếp dãy `R` của form TN.** Lý do: 12/09 đụng
+  mã rule THẬT với luồng `form-tn` (khối 8-9) **2 lần trong 1 ngày** (đặt `R89-R99` rồi lại `R125-R129`) vì cả 2
+  luồng cùng `select max(ma)+1` song song. Tách hẳn không gian mã (`D%` cho `mcq-dien`, `R%` cho `mcq-auto`) là
+  cách duy nhất chắc chắn không đụng độ khi 2+ luồng chạy song song — xem bài học ②.
+
+**A. Toán thực tế (T106020304 39 câu + T107010205 66 câu) — ĐÃ GHI DB, `da_duyet=false`**
+- Ô = kết quả 1 phép tính con trong lời giải (theo `dien-buoc.mjs` chung). 5 rule mới `R100-R104` (quên chia %,
+  lấy nhầm % bù, nhầm cộng/trừ, lệch 1 số 0, quên nhân số lượng — seed TRƯỚC KHI chốt đổi sang tiền tố `D` nên vẫn
+  mang mã `R`, không đổi lại vì đã ghi DB dùng rồi).
+- Kết quả: 91/105 câu, 252 ô, verify 0 FAIL. 14 câu bỏ (lời giải kho viết toán ngoài `$…$`, hoặc giá trị ô trùng
+  số có sẵn trong đề).
+
+**B. GTLN/GTNN có căn/|…|/(…)² (`077022220401`, 87 câu) — 3 vòng duyệt mẫu, DB ĐANG GIỮ VÒNG 1 (83 câu, CŨ)**
+- Khuôn riêng `scripts/lib/dien-khuon-gtln.mjs`. Ô kiểu MỚI `quan_he` (HS chọn CHIỀU bất đẳng thức + vế phải,
+  không phải một số).
+- **Vòng 1** (CEO duyệt): ô ở dòng đảo chiều + dòng kết luận + x/y ở dấu bằng. 83 câu, 200 ô, **ĐÃ GHI DB**
+  (rule `D01-D06`).
+- **Vòng 2** (CEO góp ý thêm 2 lần: "dòng đầu tiên |2x-3|≥0 cần 1 câu chỗ này" + "cả mấy dòng biến đổi nữa … còn
+  A≥17 thì bỏ đi vì nó tư duy gì đâu"): thêm ô ở dòng đầu (tính chất không âm, rule `D07/D08`) + MỌI dòng biến đổi
+  ở giữa (rule `D09-D11`, tái dùng `D01/D03/D06`), **bỏ hẳn ô kết luận**. Kết quả 86/87 câu, 325 ô, verify 0 FAIL
+  nhưng **CHƯA GHI** — muốn thay 83 câu vòng 1 bằng 86 câu vòng 2 phải `xoa_at` (kho rác) 83 bản cũ rồi ghi lại,
+  **đang chờ CEO gật xoá** (Luật xoá CLAUDE.md).
+
+**C. "an+b ⋮ cn+d" (`T106030401`, 139 câu) — ĐÃ GHI DB (`da_duyet=false`)**
+- Khuôn riêng `scripts/lib/dien-khuon-ancnd.mjs` — **KHÔNG dùng AST của `mcq-auto.mjs`** (không biểu diễn đa
+  thức/biến), viết bộ giải SỐ HỌC riêng bằng BigInt. Đáp số mọi ô = MÁY TỰ TÍNH từ (a,b,c,d) đọc từ đề; lời giải
+  kho chỉ dùng để XÁC NHẬN vị trí đục đúng chỗ (nhân chứng thứ hai).
+- 4 vị trí/câu: `so_ben_ngoai` (hằng số dư sau tách — CEO chỉ đích danh "hay sai đặc biệt ở chỗ này") · `tap_uoc`
+  (Ư(r), tập SỐ `{...}`) · `menh_de_uoc` (mệnh đề "denomExpr ∈ U(r)" — biểu thức MẪU, tách riêng khỏi `tap_uoc`;
+  CEO chỉ thêm 13/09: "x-1 thuộc ước của 4") · `tap_n` (tập nghiệm cuối, sau "thử lại"). Rule `D12-D25` + `D38-D40`.
+- **Phát hiện toán học**: hệ số tử `a` CHIA HẾT hệ số mẫu `c` ⇒ tách chính xác (k=a/c), không nghiệm ngoại lai,
+  không cần thử lại; không chia hết ⇒ phải nhân 2 vế với `c`, có thể sinh nghiệm ngoại lai, kho làm "thử lại".
+  Máy tính CẢ HAI công thức rồi so với số thật trong lời giải để chọn đúng cách — không suy diễn theo cách kho làm.
+- Kết quả: **139/139 câu (100%)**, 512 ô, verify 0 FAIL, vị trí đúng đều 128. Câu biên r=1 (Ư(1)={1}, ban đầu bỏ
+  vì không đủ distractor cho `tap_uoc`) được VỚT LẠI nhờ thêm vị trí `menh_de_uoc` độc lập.
+
+**D. Dãy hiệu tích `T107010501` (50 câu) — ĐÃ GHI DB (`da_duyet=false`), 5 khuôn con A/B/C/D/E**
+- Khuôn riêng `scripts/lib/dien-khuon-hieutich.mjs`, kỹ thuật `1/(k(k+S)) = (1/S)(1/k − 1/(k+S))`. Dispatcher 1
+  hàm `timUngVienHieuTich` phân biệt theo cấu trúc đề (có ẩn x trong mẫu? có "..."? x là hệ số ngoài?):
+  **A** tính tổng mẫu cách đều S≥1 (2 ô `tach_day`/`rut_gon`, đại diện 1 dòng cho cả chuỗi dài) · **B** tìm x ở
+  mẫu hạng cuối "x(x+S)", chuỗi VÔ HẠN có "..." · **C** như A nhưng x là HỆ SỐ NHÂN NGOÀI cả tổng · **D** "liệt kê
+  từng cặp" nối bằng ";" (kho viết từng đẳng thức 3 vế RIÊNG cho mỗi cặp, đục 1 dòng đại diện) · **E** như D nhưng
+  ẩn x, chuỗi liệt kê HỮU HẠN không "..." — mỗi dòng liệt kê là 1 Ô RIÊNG (không đục đại diện), vì Thùy chỉ trực
+  tiếp trên ảnh chụp lời giải 049: "để 3 ô trống ở 3 biểu thức biến đổi đấy là được mà, đoạn tách ra thành 2 phân
+  số trừ đi nhau ấy". Rule `D41-D48` (khuôn E dùng lại nguyên D41/D46/D48, không cần rule mới).
+- Kết quả: **50/50 câu (100%)**, 101 ô, verify 0 FAIL, phân bố đúng đều {A:25,B:25,C:25,D:26}.
+- T107010502 (10 câu, mẫu KHÔNG cách đều đơn giản — cấu trúc khác hẳn) chưa đụng, ngoài phạm vi dạng này.
+
+**Còn treo / việc kế tiếp:**
+- CEO gật ghi: vòng 2 GTLN/GTNN (thay 83→86 câu, đang chờ gật XOÁ 83 câu vòng 1 theo Luật xoá).
+- D3 (chưa làm, cả 3 dạng): tab "Điền ô AI" cho Đại (RPC `fn_dien_form_cho_duyet` hiện chỉ đọc `hinh_form_dien`,
+  chưa nối `dai_cau_form_dien`) · component HS hiện bước LẦN LƯỢT (hiện cả bài thì dòng "Vậy... khi x=..." cuối
+  câu lộ đáp án các ô trước) · logic CHỌN TỔ HỢP ô lúc giao bài (3/tối đa 4, xoay vòng theo `vi_tri`) · snapshot
+  `bai_test_cau.form_dien_id` đang FK sang `hinh_form_dien`, cần cột riêng hoặc bỏ FK cho Đại.
+- 4 dạng còn lại trong hàng đợi `spec-mcq-tung-phan.md` chưa đụng: dãy luỹ thừa `T106020601` (44 câu, CEO chỉ
+  "sai dấu khi trừ 2 dãy cho nhau" — 33/44 câu đã làm ở lần trước "đục cả cụm", 11 câu "đan dấu + bước nhảy ≥2"
+  còn để dành, mẫu 33 câu đã gửi CEO nhưng CHƯA có "ghi đi") · dãy tích `T107010508` (6 câu, CEO chỉ "khó nhất ở
+  đoạn tách thành tích 2 số rồi tách 2 dãy" — ít câu, định viết tay như pilot Hình chứ không đáng viết máy) ·
+  T107010502 (10 câu, xem mục D trên) · "Có/Không" `T106030102+T106030403` (93 câu, CTO CHƯA BIẾT CHIA — đã báo
+  CEO, chờ CEO làm mẫu hoặc bỏ) · bất đẳng thức dãy `T107010504/505/506/507` (67 câu, lớp 7, CEO chưa chỉ chỗ sai
+  cụ thể).
+
+
+### Đã build (18/09 — Chuẩn hoá mã bản đồ Đại + UI chuyển/gộp/xoá)
+
+**Rule mã Đại (đã đúng chuẩn 100% sau bước 3):** `T1 + KK + CD + CE + DD` — chủ đề len 6, chuyên đề len 8, dạng len 10. Khối `KK` chấp nhận `\d{2}` (03-12) HOẶC `\dT` (4T/5T — khối riêng, KHÔNG phải lớp 4/5 tiểu học). 3 kho khác giữ mapping cũ: T2=Hình học · T3=HGT · K=KHTN (KHÔNG swap).
+
+**Function DB (§2.0 nguồn duy nhất) — mig `202609180046` + `202609180055`:**
+- `fn_dai_ma_hop_le(ma, tang)` · `fn_dai_ma_kho_cha(ma, tang)` · `fn_dai_kiem_ma()` (verify bất biến).
+- `fn_dai_sinh_ma_chuyen_de(chu_de, stt?)` · `fn_dai_sinh_ma_dang(chuyen_de, stt?)` — LUÔN max STT+1 trong parent, CHỈ đếm mã đúng chuẩn (bỏ qua rác).
+- `fn_dai_chuyen_dang_ma_moi(dang, cd_moi)` — thuần tính, LUÔN cấp STT mới.
+
+**RPC transactional (mig `202609181123` + `202609181233` + `202609181310` + `202609181342`):**
+- `fn_dai_chuyen_dang(ma_dang, ma_chuyen_de_moi) → new_ma_dang` — chuyển 1 dạng qua chuyên đề đích. FK cascade lo dai_cau_hoi/menh_de/cum_bai/ly_thuyet/thuoc_tinh/tien_de. Text-ref update tay: ca_test_cau (**+ sync `ten_chuyen_de` + `muc_do`** — snapshot phiếu test), gami_session_problems, bai_test_cau, tu_luyen_dang_lan, buoi_danh_gia_dang, bo_tro_duoi_dang, bo_tro_yeu_dang, canh_bao_yeu. Đích PHẢI có ≥1 dạng khác.
+- `fn_dai_chuyen_chuyen_de(ma_chuyen_de, ma_chu_de_moi) → new_ma_chuyen_de` — chuyển CẢ chuyên đề (kèm mọi dạng con). Cấp mã chuyên đề mới max+1 trong chủ đề đích, mọi dạng con bảo tồn 2 số STT cuối. Batch qua temp table `_cd_map`.
+- `fn_dai_gop_cau_dang(nguon, dich) → {so_cau, so_menh_de}` — CEO chốt scope hẹp: **chỉ chuyển `dai_cau_hoi.dang_chinh` + `dai_cau_menh_de.dang_chinh`**. KHÔNG đụng cụm/lý thuyết/thuộc tính/tiền đề/text-ref lịch sử. KHÔNG xoá dạng nguồn (CEO tự gộp lý thuyết + xoá tay sau).
+- Trigger `trg_log_doi_dang` GIỮ nguyên cho chuyển/gộp (log CHÍNH XÁC câu đổi dạng, feed `fn_kho_doi_dang_tk`). Chỉ disable trong migration RENAME MASS (bước 3).
+
+**Client + UI (`src/lib/kho/api.ts` + `src/screens/kho/BanDo.tsx` — chỉ Đại `config.key === 'dai'`):**
+- 3 wrapper: `chuyenDaiDang` · `chuyenDaiChuyenDe` · `gopDaiCauDang`.
+- Nút `→` (chuyển dạng qua chuyên đề khác) · `⇓` (gộp câu vào dạng khác) · `✕` (xoá) trong `LeafCard`, hover mới hiện.
+- Nút `→` (chuyển chuyên đề qua chủ đề khác) giữa `✎` và `✕` trong card chuyên đề (sidebar).
+- 3 modal SearchSelect cross-chủ đề/chuyên đề trong khối hiện tại.
+- **maxOrd → maxOrdCon** (line 1651) — chặn bug sinh mã lệch (parseInt nuốt phần vị trí dài). Filter codes = `startsWith(parent) && length === parent.length+2 && /^\d{2}$/.test(slice(-2))`. Áp cho **4 kho + legacy 4T/5T**.
+
+**Đề thi cũ (`toan_de_thi_cau.ma_cau_dai`) VẪN dùng được** — FK cứng tới `dai_cau_hoi.ma_cau`, mà `ma_cau` KHÔNG đổi khi chuyển dạng/gộp (chỉ `dang_chinh` đổi).
+
+**Chưa làm:**
+- Bước 1b: function chuẩn hoá cho HGT (T3) / KHTN (K) / Hình (T2). Hình học phức tạp (Học vs Luyện + mô hình + bài) — cần CEO chốt format mã `hinh_baitoan` (mã mô hình + STT bài) trước.
+- Bước 2b: chuyển `suggest*` client sang RPC sau khi bước 1b có function 4 kho.
+- CHECK constraint `dai_ban_do.ma_dang ~ '^T1(\d{2}|\dT)\d{6}$'` — chờ 3 kho khác cũng sạch để áp đồng thời.
+- Gộp CHUYÊN ĐỀ (khác chuyển 1-1) — hiện chưa cần, sẽ build khi CEO có ca thật.
+
+### Đã build (18–20/09 — SỔ TAY KIẾN THỨC cho app HS: kho tra cứu lý thuyết)
+
+- **Là gì:** HS mở app → ô "Sổ tay kiến thức" → tra lý thuyết + bài mẫu của 1 dạng. 2 đường vào: gõ tên (gợi ý theo ký tự, **bỏ dấu** bằng `fn_bo_dau` — DB này KHÔNG có extension `unaccent`) hoặc lọc dần **Chủ đề → Chuyên đề → Dạng** + lọc độ khó.
+- **⚠ Thứ tự tầng: `ma_chu_de` là CHA, `ma_chuyen_de` là CON** (`MapRow` — `lib/kho/api.ts:1746-1747`). CEO mô tả ngược ("chuyên đề → chủ đề"); theo DB.
+- **Phạm vi v1 (CEO chốt):** Toán, nhánh **Đại + Hình GT**. KHTN đối xứng sẵn nhưng chưa bật UI. **Hình học thuần (`hinh_hoc_bai`) ĐỨNG NGOÀI** — `ma_chuyen_de/ten_chuyen_de` (mig 202609181735) còn RỖNG nên không dựng được cây lọc. (`muc_do` từ 27/09 đã dùng = độ khó Bài 1–5 đánh tay — xem mục Kho Hình học · phase Học.)
+- **Lọc theo KHỐI, KHÔNG theo bậc** (CEO: "bậc nào cũng thấy dạng khó và dễ") ⇒ `bac_toi_thieu` KHÔNG dùng để cắt. Độ khó = `muc_do` 1–5 gộp 3 nhóm ở DB (`_sotay_nhom`): 1–2 cơ bản · 3 trung bình · 4–5 nâng cao.
+- **Phải là RPC `security definer`, không query thẳng:** bảng lý thuyết bật RLS member-gate ⇒ tài khoản HS SELECT thẳng trả **0 dòng im lặng**. Không snapshot được như `bai_test_cau.ly_thuyet` (mig 0067) vì sổ tay tra cứu tự do, không gắn bài.
+- **File:** mig `202609181946` (2 helper + 3 RPC: `hs_sotay_cay` / `hs_sotay_tim` / `hs_sotay_dang`) · mig `202609182334` (siết quyền `anon`) · `src/lib/sotay.ts` · `src/screens/hocsinh/SoTayHS.tsx` · ô vào ở cả 3 biến thể màn chính (`KHU` cấp 3 · `KHU_CAP2` cấp 2 · `BOX_CAP1` cấp 1). Render dùng lại `MathText` (KaTeX đã có sẵn trong bundle HS, không kéo thêm lib; chunk 784 kB, xa trần 2 MiB của Workbox). Demo UI: `hs.html?demo=sotay` (mock, DEV-only).
+- **§1.5:** dạng chưa có lý thuyết **KHÔNG hiện** (thà vắng còn hơn mở ra trang trắng). `noi_dung` default `''` nên lọc `btrim(...) <> ''`, không phải `is not null`. RPC trả kèm `thieu_ly_thuyet` để đo độ phủ. Dòng "Chưa phân dạng" (mã tận cùng `000000`) bị chặn bằng `_kho_la_dang_cho()`.
+- **⚠ ĐỘ PHỦ THẤT VỌNG — đo 20/09:** Đại **356/678 = 52.5%** có lý thuyết · Hình GT **14/45 = 31.1%**. Khối 6-9 có **103 dạng thiếu**, trong đó 63 dạng CÓ câu, **1.589 câu** nằm ở dạng không lý thuyết. Nặng nhất `T108030104` "Phân tích đa thức thành nhân tử bằng phương pháp tách hạng tử" (k8, **111 câu** — nhiều câu nhất khối 8) hiện KHÔNG có trong sổ tay. Cột "chỉ có `file_url`" = **0 ở mọi khối** ⇒ bộ lọc không giấu mất gì.
+- **⭐ SMOKE TEST — `npm run smoke:sotay`** (`scripts/smoke-sotay.mjs`). **GỌI THẬT** cả 3 RPC bằng phiên `authenticated`: tự đọc `VITE_SUPABASE_URL` / `VITE_SUPABASE_KEY` / `VITE_DEV_ACCOUNTS` từ `.env` rồi `signInWithPassword` (không in mật khẩu). Assert: cây có ≥1 chủ đề + ≥1 lá · tìm bằng 2 tiếng lấy TỪ CHÍNH tên lá đó phải ra ≥1 và phải chứa đúng `ma_dang` ấy · từ khoá vô nghĩa phải ra 0 (đối chứng âm, chống "hàm trả bừa mọi dòng") · mở lá đó phải có `noi_dung` khác rỗng. Exit 1 khi fail ⇒ cắm CI được. Mã dạng **không hardcode** — lấy sống từ cây nên đổi mã không làm hỏng test.
+  **Chạy script này sau MỌI migration đụng 3 RPC sổ tay.** Nó sinh ra vì `tsc`/`build`/test anon/đo bằng SQL đều KHÔNG bắt được lỗi 20/09 (`hs_sotay_tim` throw ở `format()`): không đường nào trong số đó GỌI HÀM.
+- **Verify end-to-end (20/09):** `hs_sotay_cay` ✅ chạy thật, trả cây. `hs_sotay_tim` ❌ throw `22023` cho tới khi áp mig `202609201056`. `hs_sotay_dang` — smoke test chưa chạy tới (dừng ở bước ②), verify lại sau khi áp.
+- **⚠ `khoi_list` sắp theo TEXT**, nên thứ tự là `["10","11","12","3","4","4T",…]`. Tài khoản KHÔNG phải HS (staff) gọi `hs_sotay_cay` với `p_khoi=null` sẽ rơi về `khoi_list[0]` = **khối 10**, không phải khối nhỏ nhất. Không ảnh hưởng HS thật (có `khoi` riêng), nhưng đọc kết quả smoke test thì đừng ngạc nhiên.
+
+### Đã build (16–27/09 — ⭐ KHO HÌNH HỌC · PHASE HỌC: đơn vị "Bài" phẳng, tái dùng NGUYÊN module Đại)
+
+- **Ý CEO (16/09):** học hình chia 2 phase **độc lập**. **HỌC** = đơn vị **"Bài"** ≈ 1 Dạng bên Đại (lý thuyết 1 block + cụm + câu phẳng; KHÔNG cây chủ đề/chuyên đề, KHÔNG biến thể/chuỗi ý/bổ đề — ý a/b/c gộp 1 câu 1 lời giải). **LUYỆN** = mô hình/dạng/bổ đề cũ (`hinh_*`), giữ nguyên. Câu Bài có thể gắn nhãn `mo_hinh_id` (optional, làm mastery signal sang Luyện — **chưa có UI**).
+- **Schema (5 mig, đều áp rồi):** `202609161521` (4 bảng `hinh_hoc_bai` · `_bai_ly_thuyet` · `_cum_bai` · `_cau_hoi` + RPC `count_cau_by_bai_hh`) · `202609161648` (compat `dai_cau_hoi`: câu `ma_bai→dang_chinh`, cụm `ma_bai→ma_dang`, +7 cột `loai_cau/lua_chon/menh_de/nguon/nguon_giai/parent_ma_cau/clone_method`) · `202609161841` (bỏ `khoi` khỏi câu) · `202609181735` (`hinh_hoc_bai` + `ma_dang`/`ten_dang` GENERATED alias của `ma_bai`/`ten_bai` + `muc_do`/`ma_chuyen_de`/`ten_chuyen_de` nullable) · `202609181852` (câu + `kho_chuan default true`).
+- **Code:** `lib/kho/hinhhoc.ts` CHỈ còn CRUD Bài + wrapper lý thuyết (shape `LyThuyetApi`) + adapter `listHinhHocMap` (2 tầng cha DUMMY "Khối X · Hình học" → "Danh sách Bài"). Câu/cụm/editor lý thuyết/nhập ảnh-PDF-clipboard = **module Đại nguyên xi** (`DangHub`, `CauModal`, `AiImportModal`, `CumBaiTab`, `LyThuyetModal`) qua `cauTbl='hinh_hoc_cau_hoi'` + 1 dòng `CUM_TBL`.
+- **UI kho:** tab Hình học có toggle **📖 Học | 🏋️ Luyện** (`KhoScreen`, nhớ `localStorage kho.hinh.phase`). Học → `KhoHinhHocScreen`: card Bài có chip **độ khó 1–5** (bấm xoay 1→5→bỏ, ghi `muc_do`), duyệt, nút lý thuyết; click card → `DangHub`.
+- **Tài liệu — nhánh `'hinh_hoc'`** trong `NHANH_CUA_MON['Toán']` + `khoCuaMon`: **Giáo trình** (tab thứ 3 ở `TaiLieuScreen`, toggle generic theo registry) · **ET** (nút "Hình học" đứng trước "Hình (Luyện)" — Luyện vẫn panel riêng, guard `nhanh==='hinh'`) · **BT bổ trợ** (cauTbl theo `bt.nhanh`; `DangPickerOne chonNhanh` khi chưa có dạng, dạng đầu set `tai_lieu.nhanh`).
+- **In giáo trình Hình học:** 3 chế độ hình/câu `CauHinh.hinhCheDoByCau` (`hien`/`o_trong`/`khong`, chỉ nhánh `hinh_hoc`; enum + `cheDoKe` dùng chung `lib/kho/hinhGiaoTrinh.ts`). Nút xoay 📷/✏️/🚫 trong builder; **preview builder luôn đủ ảnh** (chế độ chỉ áp lúc in). `o_trong` = **lưới caro 5mm, không chữ**; bản GV vẫn hiện ảnh.
+- **Chung mọi nhánh:** preview `anh_de` đủ ở `KhoPicker` + builder · `DangPicker` (export từ `TaiLieuBuilder`) có filter độ khó 1–5 (chỉ hiện khi có leaf có `mucDo`) · ET "Thêm nhanh theo dạng" dùng `DangPicker` MULTI, mặc định mở, mỗi dạng 1 ô số câu (per-hàng vẫn `DangPickerOne`) · số dòng kẻ tối đa **30→50** ở 7 chỗ.
+- **Data 27/09 — ghép Luyện lớp 7 → Học:** nguồn thật = `hinh_mo_hinh` (12) + `hinh_baitoan` (150) + `hinh_cach_giai` (154). ⚠ **`hinh_bai` RỖNG hoàn toàn (0 dòng mọi khối)** — tên giống nhưng không phải nguồn. Rule CEO "Ko có đề riêng thì mới dùng mô hình": `phat_bieu` chỉ là câu hỏi (`de_bai_chuan` 100% NULL) ⇒ `noi_dung = mh.gia_thiet + gia_thiet_them + bt.gia_thiet_rieng/phu + phat_bieu`; `anh_de = bt.anh_chuan ?? mh.anh_cau_hinh`; `loi_giai` = cách giải `la_mac_dinh`. Kết quả **3 Bài mới + 9 gộp theo tên, 150 câu `da_duyet=false`** ⇒ lớp 7 = **13 Bài / 267 câu**. Script 1 lần, **không idempotent** (chạy lại = nhân đôi), đã xoá.
+
+**Chưa làm / treo:**
+- **150 câu ghép lớp 7 chờ CEO duyệt** — vài câu có thể lặp bối cảnh (khi `phat_bieu` dài đã tự có giả thiết). Lớp 8 (26 mô hình) + 9 (3) **chưa ghép**.
+- `kho_chuan` đang `default true` ⇒ câu CHƯA duyệt vẫn chọn được vào tài liệu (khác Đại). Nếu siết: mig mới đổi thành generated theo `da_duyet`.
+- Giáo trình Hình **LUYỆN** vẫn ở entry riêng `lamtailieu:giao_trinh_hinh` — CEO: "tính sau".
+- UI gắn `mo_hinh_id` cho câu Bài · nút chỉnh cỡ ảnh S/M/L (CEO chưa chốt phương án).
+- MT/Đề thi/Bổ trợ yếu/Đánh giá còn đọc `banDoTbl` theo `ma_chuyen_de` — `hinh_hoc_bai` có cột compat (rỗng) nên không vỡ, nhưng logic theo chuyên đề vô nghĩa với Hình học; chưa bật nhánh này ở đó.
+
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
+- **⭐ Màn nhiều dòng nhỏ phải soi CẢ khổ PC, không chỉ 375px (29/09).** Nút bản nhỏ mang `w-full` trong hàng flex giành hết bề ngang ⇒ cột chữ còn
+  vài px, rụng từng chữ (Thế giới BK lọt lên prod). Nút phụ trong hàng = `flex-none`; `w-full` chỉ cho nút thanh hành động. Tương tự: `grid-cols-2`
+  mặc định `minmax(auto,1fr)` ⇒ dòng `truncate` đẩy thẻ tràn/đè thẻ bên ⇒ dùng `grid-cols-[minmax(0,1fr)_minmax(0,1fr)]`.
+- **Sửa hàm DB đang chạy: lấy `pg_get_functiondef` từ DB, KHÔNG từ file migration (29/09).** Hàm có thể đã bị migration sau đè. Thay đúng khúc bằng
+  mốc chữ, ghi migration mới. Tách công thức ra hàm chung ⇒ so kết quả cũ vs mới trên DỮ LIỆU THẬT với ĐÚNG điều kiện gốc (lần so đầu t lệch vì chính
+  câu so thiếu join lớp — không phải hàm sai). Hàm đang chưa có dữ liệu (nhiệm vụ mở 01/10) ⇒ so khúc con, đừng tin "0 = 0".
+- **Script vá file: `replace(/\r\n/g,'\n')` TRƯỚC khi tìm mốc nhiều dòng (29/09).** Repo có file CRLF; mốc `'\n}\n'` không khớp ⇒ `indexOf` = -1 ⇒ dán
+  lặp cả file. Lệnh `node -e "…"` trong bash: backtick trong chuỗi = chạy lệnh (mất chữ im lặng) ⇒ script dài viết ra file .cjs.
+- **Chữ trên màn không hứa tính năng chưa có (29/09).** Màn Lên sóng từng ghi "em nhận thông báo ngay" trong khi push HS chưa làm — soát câu chữ theo
+  những gì ĐANG chạy.
+- **Prod "vẫn lỗi" ⇒ soi bundle đang chạy trước (29/09).** `curl hs.bkacademy.edu.vn` → lấy `/assets/hs-*.js` → grep chuỗi của bản sửa: 2 lần Thùy báo lỗi
+  là do deploy bản trước bản sửa. Main checkout cũng hay chậm commit so với worktree ⇒ `git -C <main> merge --ff-only origin/main` sau mỗi push.
+
+- **⭐⭐ Đơn ChatGPT = ẢNH CHUNG trước + TỪNG HÌNH riêng, và kiểm hàng bằng MẮT (29/09).** Đơn chỉ có mô tả + "nhận zip" là thiếu (Thùy trả).
+  Khuôn đúng: A ảnh toàn cảnh/bảng duyệt → DỪNG chờ duyệt → B, C… mỗi lượt 1 hình có "#số tên_file", hình cùng họ vẽ dựa trên hình đã duyệt,
+  bản nhỏ Claude tự thu nhỏ. Kiểm hàng: số đo (cỡ, % trong suốt) KHÔNG đủ — Town 29/09: 19 hình đều nền trong chuẩn nhưng từ #19 ChatGPT vẽ
+  lệch danh sách (rương/bản đồ/cúp lặp). Luôn ghép tờ liên hoàn (nền hồng cánh sen lộ chỗ trong suốt) + xem từng hình đối chiếu đơn.
+- **⭐ Màu game trong màn HS phải nằm ở sổ riêng, không gõ trong màn (29/09).** `check:style-hs` đếm hex + `bg/text-white` trong `*.tsx` theo mốc
+  chỉ-giảm (file mới mốc 0). Màu có nghĩa (màu huy hiệu, chương rank, vàng sao) ⇒ khai 1 lần ở `gami/hinh.ts` (`MAU_GAMI`), màn chỉ tham chiếu.
+- **Worktree + xem app (29/09):** `preview_start` đọc `.claude/launch.json` của repo CHÍNH ⇒ `dev-hs` chạy code main, KHÔNG phải worktree (kiểm:
+  `fetch('/src/…')` có chuỗi mới không); phiên worktree không sửa được file đó ⇒ chạy vite nền từ worktree cổng riêng, xong nhớ tắt tiến trình
+  (TaskStop không giết con vite ⇒ tìm PID theo cổng). Worktree cần copy `.env.local` (VITE_SUPABASE_URL), không chỉ `.env`.
+- **Giả lập HS khi test RPC trong transaction:** `my_hoc_sinh_id()` đọc `jwt_uid()` = claim `sub` → `tai_khoan.id` (không phải email, không phải
+  `hoc_sinh.id`). `set_config('request.jwt.claims', {"sub": <tai_khoan.id>}, true)`.
+
+- **⭐⭐ Bổ trợ: "xếp mãi vẫn Cần xếp" có 2 gốc — đừng vá triệu chứng (24/09).** (1) Form xếp mở buổi 'mo' ĐÃ ĐÓNG CA ở chế độ SỬA ⇒ "xếp" chỉ dời
+  ngày buổi cũ (dữ liệu học bị đẩy sang tương lai) — giờ chặn cứng bằng trigger `trg_buoi_bo_tro_khoa_ngay`. (2) Đóng ca chỉ ghi "đã dạy" cho dạng em
+  luyện APP ⇒ em học giấy đóng xong 0 dạng tiến ⇒ case trông như chưa học ⇒ OPS đi sửa buổi cũ (10/14 buổi dính) — giờ TA tick dạng lúc hoàn tất.
+  **Áp dụng:** "trạng thái không chuyển" ⇒ tra DB từng buổi (danh_gia_xong_at, day_buoi_id, updated_at) trước khi sửa UI; trả ngày thật chỉ khi ≥2
+  nhân chứng độc lập trùng nhau (đóng ca · làm bài · nhận xét · sinh bài).
+- **⭐ Retest chỉ chấm dạng CÓ câu trong bài retest** (`fn_btyeu_retest_ghi`) ⇒ mọi đường làm dạng sang "chờ retest" PHẢI đảm bảo có câu retest cho
+  dạng đó, không thì kẹt vĩnh viễn (bài cũ chỉ lấy ≤3 dạng). Dạng 0 MCQ vẫn kẹt tới khi có câu — `fn_btyeu_bu_retest_ton` tự thông khi mở màn Xếp.
+- **⭐ Sửa hàm SQL mà phiên khác cũng sửa ⇒ dựng từ bản ĐANG CHẠY (`pg_get_functiondef`), không từ file migration cũ** — `fn_ca_bo_tro_ung_vien`
+  bị phiên khác thêm nhãn "cùng lớp" sau file gốc; dựng từ file cũ là đè mất. Hàm mình viết cũng có thể bị phiên khác sửa lỗi (vd `fn_btyeu_hoan_tat`
+  thiếu cột `buoi_danh_gia.muc` ⇒ CHECK nổ khi TA chọn mức) — pull main trước khi đụng lại.
+- **⭐ Vercel: auto-deploy TẮT, deploy TAY ⇒ `ignoreCommand` lọc theo diff là vô nghĩa và nguy hiểm** (không có PREVIOUS_SHA, hoặc PREVIOUS_SHA =
+  deployment vừa bị cancel ⇒ "đang build thì biến mất"). Đã gỡ khỏi vercel.json (24/09). "Push rồi mà prod không đổi" ⇒ kiểm bundle prod có chuỗi mới
+  không trước khi nghi code.
+- **Luật CEO đổi thì sửa CẢ spec + CLAUDE.md** (MCQ tuyệt đối 20/09 → ngoại lệ mức 4–5 ngày 28/09): 1 dòng "tuyệt đối" còn sót trong CLAUDE.md sẽ
+  khiến phiên sau "sửa lại cho đúng luật" và phá quyết định mới.
+
+- **⭐⭐ Kit ChatGPT PHẢI đủ 3 phần — không bao giờ đặt "đơn chỉ sinh asset" (28/09, skin RPG).** Đơn chỉ-asset (bỏ vẽ mockup) ⇒ ChatGPT vẫn vẽ
+  ảnh toàn cảnh (nhân vật + 8 icon khác) nhưng không đóng vào zip, và chỉ sinh 7 mảnh rời theo danh sách ⇒ Claude dựng ra màn khác hẳn ảnh Thùy
+  đã xem, còn tự ghi "đạt v1". **Áp dụng:** mọi kit = `reference/` ảnh toàn cảnh mọi khổ màn + bảng kiểm kê có cột **Vị trí & cỡ** + đủ asset thấy
+  trong ảnh (kit §2/§4/§8 câu 9–11, `design-check` tự rớt). "Đạt" = khớp ẢNH TOÀN CẢNH, không phải khớp danh sách file mình tự liệt kê.
+  Thùy thả file vào `public/` là bị đóng vào bản build ⇒ luôn chuyển sang `design/handoff/`. Kiểm kit cũng phải nhìn "được sinh bằng
+  công cụ tạo ảnh hay ghép khối bằng code" (Lo-fi v1 là khối hình phẳng — script đo cạnh sắc vẫn ĐẠT).
+
+- **⭐⭐ Snapshot text-ref phải sync khi RPC đổi mã cha (bug 18/09 Test đầu vào không load chuyên đề mới).** `ca_test_cau` lưu SNAPSHOT `ten_chuyen_de` + `muc_do` tại thời điểm tạo ca test (phiếu `fn_test_dau_vao_phieu` đọc thẳng, KHÔNG JOIN dai_ban_do runtime — có ý đồ giữ lịch sử "HS làm câu này khi câu thuộc chuyên đề X"). RPC `fn_dai_chuyen_dang` lượt đầu chỉ update `ma_dang`, quên sync 2 cột snapshot → sau khi CEO chuyển 1 đống dạng, phiếu hiện chuyên đề CŨ. Fix mig `202609181342`: sync retroactive + tách `ca_test_cau` ra update riêng trong RPC (không lẫn với 7 bảng text-ref khác chỉ có `ma_dang`). **Áp dụng:** viết RPC đổi mã nào (`fn_*_chuyen_*`, `fn_*_gop_*`) → grep `schema.md` cột `ten_chuyen_de|ten_chu_de|muc_do|ten_dang` để tìm mọi snapshot cần sync, KHÔNG chỉ update PK/FK. Snapshot là "ý đồ giữ lịch sử" ở CHỖ ĐÚNG (đo lường) nhưng "ý đồ giữ lịch sử" ở CHỖ SAI (đổi tên/rename) là bug.
+
+- **⭐⭐ Bug sinh mã "nối chuỗi" — `parseInt(soThuTuCua(c, from))` nuốt CẢ phần còn lại (18/09 fix `maxOrd → maxOrdCon`).** Bản cũ `parseInt(c.slice(from))` với `c = 'T10701012203'` (rác) và `from=6` → `parseInt('01012203') = 1012203`, `pad2` giữ nguyên (không cắt về 2 digit) → mã mới = `parent + 1012204` = len 15 vô nghĩa. Bug ÂM THẦM khi tồn tại mã anh em lệch chuẩn — mã hợp lệ khác vẫn có nhưng bị max che khuất. **Áp dụng:** khi tính max STT anh em, filter STRICT trước (cùng parent + đúng length + đúng 2 digit cuối), KHÔNG parseInt phần dài không cắt được. Cách chống bug tổng quát: "1 lần sinh mã sai → mọi lần sinh sau đều lây" — luôn có bước validate format anh em trước khi cấp mã mới.
+
+- **⭐ Rule mã bản đồ có ngoại lệ historic (K4T/K5T tồn tại thật trong `lop.khoi`, KHÔNG phải typo).** Regex khối phải là `(\d{2}|\dT)` chứ không phải `\d{2}` — nếu strict `\d{2}` sẽ báo 88 dòng K4+K5 legacy (1215 câu, 3170 rows tự luyện, 2 lớp đang dạy) là RÁC → không thể xoá. **Áp dụng:** luôn đo shape data thật trước khi viết CHECK constraint (`scripts/_check_shape_4kho.mjs`, `_check_khoi_dac_biet.mjs`); rule "đúng" trong tài liệu chưa chắc đúng với data lịch sử.
+
+- **⭐ UI chia cấp 1/2/3 mà cùng feature — refetch state phải mở cho MỌI cấp có feature đó (bug 18/09 vòng quay may mắn).**
+  `HocSinhApp.tsx` fetch `maymanCoLuot` với guard `if (!cap2) return` — nhưng ô "May mắn" hiện trong CẢ `HomeCap1`
+  (BOX_CAP1) LẪN `KHU_CAP2`. Kết quả: 14 HS cấp 1 đủ điều kiện quay ngày 17/09 nhưng badge tắt câm → không ai vào
+  bấm quay → qua đêm `bt.ngay < v_today` (đúng intent CEO "làm ngày nào quay ngày đấy") → mất lượt. RPC không cấm
+  cấp 1 — chỉ FE thiếu tín hiệu. **Áp dụng:** khi feature hiện ở nhiều cấp, list các cấp CÓ UI của nó rồi mở guard
+  cho tất cả (ở đây: `if (!cap1 && !cap2) return`), không dựa vào cấp mặc định.
 - **⭐⭐ QUY TRÌNH thiết kế RULE LỖI cho form trắc nghiệm (Thùy chốt 09/09, sau khi CTO code trước-hỏi-sau 1 lần) —
   áp cho MỌI dạng mới đưa vào MCQ (`scripts/mcq-auto.mjs`/`mcq-sinh.mjs`, spec-mcq-form.md), không riêng "tích bằng 0":**
   **(1) Đọc `loi_giai` (lời giải chi tiết) THẬT trong kho của vài câu mẫu dạng đó trước** — không suy luận rule lỗi từ
@@ -1457,6 +1986,27 @@ worktree chưa merge: 202608151600 · 202609041045 · 202609051251 · 2026090818
   kiểu chọn-tất-cả-trong-danh-sách — những ca này CẦN bàn TRƯỚC vì bản chất "câu hỏi trắc nghiệm 4 đáp án cho nó"
   còn chưa rõ, không phải vì thiếu rule lỗi). Không đổi (1)(2)(4) — vẫn đọc lời giải trước, vẫn liệt kê điểm rẽ,
   vẫn chỉ ghi sau khi tính đúng+verify sạch — chỉ đổi AI QUYẾT rule cho dạng RÕ RÀNG.
+- **⭐⭐ Quy trình cho ĐIỀN Ô/"trắc nghiệm từng phần" (Thùy chốt 12/09, khác quy trình rule-form-TN ở trên):** với
+  MỖI dạng tự luận mới, CTO đề xuất CHỖ CHIA (ô nào đục, đục theo cách nào) TRƯỚC → làm mẫu 10 câu → CEO duyệt →
+  MỚI chạy cả dạng → verify → ghi. Đã có 1 lần làm ngược (nhóm Toán thực tế, sinh+ghi 91 câu trước rồi mới hỏi) —
+  không sai kỹ thuật (spec đã ghi rõ "100% máy" nên không cần hỏi cách làm) nhưng đi trước quy trình; từ dạng sau
+  (GTLN/GTNN) làm đúng thứ tự thì CEO góp ý 2-3 vòng NHỎ trên MẪU (rẻ, sửa code rồi làm mẫu lại) thay vì phải xoá-ghi-
+  lại cả trăm câu đã vào DB (đắt, dính Luật xoá). **Mẫu 10 câu phải TRẢI ĐỦ các khuôn con** (khảo sát trước để biết
+  có mấy khuôn) — mẫu ngẫu nhiên 10 câu cùng 1 khuôn thì CEO không thấy được ca khó.
+- **⭐ Mã rule PHẢI TÁCH KHÔNG GIAN theo pipeline khi 2+ luồng chạy song song — đừng đua `select max(ma)+1`.**
+  12/09: luồng Điền Ô (`mcq-dien.mjs`) và luồng form-TN (`mcq-auto.mjs`, khối 8-9) CÙNG ghi vào 1 bảng
+  `dai_mcq_rule`, cùng ngày, đụng mã rule THẬT **2 LẦN TRONG 1 GIỜ** (đặt `R89-R93` lúc max là `R88` thì 25 phút
+  sau luồng kia đã chiếm tới `R99`; đặt tiếp `R125-R130` thì cũng bị chiếm gần hết trong giờ tiếp theo) — vì cả 2
+  luồng đều query `max(ma)` NGAY LÚC ĐỊNH ĐẶT, không có khoá/đồng bộ giữa 2 phiên. **Chỉ 1 cách chắc chắn: mỗi
+  pipeline độc lập dùng 1 TIỀN TỐ CHỮ CÁI riêng** (đã đổi Điền Ô sang `D%`, form-TN giữ `R%`) — không phải khoảng
+  số riêng (khoảng số vẫn đụng nếu 2 luồng cùng nhảy tới đó), không phải "hỏi nhau trước khi đặt" (chậm, dễ quên).
+  Tác dụng phụ: mã 3 chữ số (`R100+`) làm `select max(ma)` (so CHUỖI) trả sai — `order by length(ma) desc, ma desc`.
+- **⭐ Khoanh VỊ TRÍ đục ô trong lời giải phải lấy ĐÚNG TOKEN, không phải cả câu chứa token đó.** Bug thật (khuôn
+  `an+b⋮cn+d`, 12/09): quy tắc "tìm dòng chứa số r rồi đục" match theo REGEX TRÊN CẢ ĐOẠN (`"3 \vdots (x-1)"`) rồi
+  gán biến `seg` = TOÀN BỘ đoạn khớp thay vì tách riêng con số bên trong — HS sẽ thấy cả câu bị đục thay vì đúng 1
+  chữ số. Verify KHÔNG bắt được lỗi này (vì "ghép lại ra đúng nguyên văn" vẫn đúng — ghép cả câu vào chỗ trống thì
+  vẫn ra đúng câu gốc!) — chỉ lộ ra khi ĐỌC BẢN IN. Bài học: verify kiểm được "khớp lại đúng nguyên văn" nhưng
+  KHÔNG kiểm được "đục đúng CHỖ nên đục" — việc đó phải tự đọc lại bản `--xem` trước khi tin.
 - **⭐ Quy trình chạy pool MCQ mới (đúc kết 11-12/09, lặp lại ~10 lần): list → auto (debug 1 câu mẫu) → nếu tỉ lệ
   "chỉ tìm được N<3 distractor" cao (>20-30%) → debug câu bỏ cụ thể xem THIẾU RULE GÌ (không phải bug) → thêm 1-2
   rule "dự phòng" (luôn tính được, không phụ thuộc đặc điểm số cụ thể — vd R61/R71/R72/R84) qua MIGRATION MỚI
@@ -1583,6 +2133,19 @@ worktree chưa merge: 202608151600 · 202609041045 · 202609051251 · 2026090818
 - **Số thứ tự xuyên nhóm:** đếm liên tục qua nested map = counter ngoài (`let no=0` rồi `++no` trong map con), KHÔNG `index+1` (reset mỗi nhóm). BTVN/ET đều vướng.
 - **Gemini `CONSUMER_SUSPENDED` (403) = CHẠM spend cap, KHÔNG mặc định là leak key.** Đoán "key bị trảm vì lộ" là SAI (đã sai 1 lần). Check **Console → Spend cap + email Google** trước. Nâng cap có **~10 phút latency** (F5 vô ích, không phải lỗi client). Cache `accepted_answers` + (sau) proxy server-side để giảm gọi/né cap.
 - **Preview-phải-bằng-bản-in → dùng paged.js, ĐỪNG tự cuộn 1 mạch.** Tự phân trang HTML là vô vọng: **flex chặn page-break**; `@page` counter (số trang) **cần có margin** mới hiện. paged.js cho A4 thật + header/footer mỗi trang + đếm trang, **1 engine cho cả preview lẫn in** nên khớp.
+- **⭐ paged.js — đầu khung/tiêu đề KHÔNG được là phần tử riêng trông vào `break-after:avoid` (27/09).** paged.js 0.4.3 chỉ xét avoid khi
+  CHÍNH anh em liền sau tràn trang; nếu cái tràn là con BÊN TRONG nó (câu 1 trong `.pv-caulist`) thì avoid bị bỏ qua ⇒ đỉnh khung mồ côi cuối
+  trang. Luật: gộp đầu khung + nội dung ĐẦU TIÊN vào 1 khối `break-inside:avoid`. Đo: cũ 14/61 vị trí mồ côi, mới 0/61.
+- **⭐ Khung/CSS dùng chung phải thử CẢ 1 cột lẫn nhiều cột.** `.pv-caulist.pv-cols` đặt `line-height: --pitch` (7.5mm) ⇒ mọi thứ đặt trong nó
+  (tag, nhãn) kế thừa, phình cao gấp đôi, đè chữ (lỗi 4A1 27/09 — test 26/09 chỉ thử 1 cột). Phần tử trang trí trong câu ⇒ đặt `line-height` tường minh.
+- **⭐ Verify PDF khi Browser pane không vẽ được** (cửa sổ bị che ⇒ paged.js >30s, 0 trang, screenshot timeout — KHÔNG phải lỗi code; từng kết luận
+  sai "div bọc làm treo" vì thế): dựng HTML tối giản + CSS rút thẳng từ `PrintView.tsx` + `node_modules/pagedjs/dist/paged.polyfill.js` → Chrome
+  headless (`puppeteer-core` + Chrome máy), quét filler 0..N px để đo mọi vị trí sát đáy trang; so bản cũ (`git show HEAD:…`) vs mới. Component
+  thật: `renderToStaticMarkup` qua `npx vite-node` (file .ts, không JSX; tránh `'\\'` trong heredoc — dùng `String.fromCharCode(92)`).
+- **Sửa dữ liệu nội dung hàng loạt:** thay ĐOẠN CHÍNH XÁC (mỗi đoạn tìm đúng 1 lần, lệch là bỏ cả lượt) thay vì gõ lại; nhân chứng = so multiset
+  từ cũ/mới; `update … where noi_dung = <bản cũ>` trong 1 transaction; lưu bản cũ vào repo. Editor tự xoá dấu cách cuối dòng trong file script ⇒
+  chuẩn hoá `[ 	]+
+` của bản gốc trước khi tìm.
 - **⭐⭐ paged.js — LUẬT NGẮT TRANG ĐÚNG (bản 08-14, GỘP & SỬA bản cũ "cứ để `auto` là trang đầy"):** bản cũ nói *avoid trên khối TO làm nhảy cả khối → bỏ trống cuối trang, nên để `break-inside:auto`* — **đúng một nửa, và nửa sai đã gây bug thật**. Sự thật đo được (render thật + đo **% diện tích mỗi trang thực dùng**, không nhìn mắt):
   - **Ngắt GIỮA hai khối anh-em ruột (sibling) → paged.js chạy ĐÚNG.** **Ngắt VÀO TRONG lòng một khối, sâu ≥2 tầng** (vd giữa các `.mline` bên trong `.pv-blk` bên trong `.pv-box-lt`) → paged.js **bỏ phí nốt phần trang còn lại**: phần tử KẾ TIẾP không chịu nằm cùng trang mà nhảy hẳn trang mới (đo được: trang chỉ dùng **10%**). Nặng hơn: có ca nó dựng DỞ rồi để TRẮNG 1 trang rồi DỰNG LẠI TỪ ĐẦU → **lặp/mất nội dung THẬT**, không chỉ xấu.
   - **⇒ Công thức đúng: CẤM xé trong lòng khối (`break-inside:avoid`) + CHẺ khối dài thành nhiều khối NGẮN** để vẫn đủ chỗ ngắt HỢP LỆ (ở tầng sibling). Vừa không phí trang vừa không vỡ. (`LyThuyetBody` chẻ theo dòng khi khối > `LT_BLK_MAX`=3 dòng; dòng đầu giữ `.pv-blk-keep{break-after:avoid}` cho nhãn "Ví dụ N." không mồ côi.) Đo GT 8S1: **8 trang (99/10/97/95/85/72/82/34%) → 6 trang (96/91/96/85/96/85%)**.
@@ -1772,9 +2335,9 @@ worktree chưa merge: 202608151600 · 202609041045 · 202609051251 · 2026090818
 
 ### Bài học 12/08 (phần 2) — dựng sản phẩm & bẫy kỹ thuật
 
-- **⭐⭐ DANH SÁCH = DASHBOARD. Thứ biến nó thành TRỢ LÝ là HỎI ĐƯỢC.** CEO: *"trợ lý đưa ra 1 đống thứ thì
-  khác gì dashboard và việc của tôi nhỉ"*. Doc §1 nói *"ERP đã hiển thị đủ dữ liệu, người quá tải không tự
-  tổng hợp nổi"* — mà Claude lại đi dựng THÊM một màn hiển thị. **Đọc-hộ-và-kết-luận** mới là sản phẩm.
+- **⭐⭐ SẢN PHẨM LÀ "ĐỌC-HỘ-VÀ-KẾT-LUẬN", không phải thêm một màn hiển thị.** Doc §1: *"ERP đã hiển thị đủ dữ liệu, người quá tải
+  không tự tổng hợp nổi"*. 12/08 CEO nghĩ đường tới đó là HỎI ĐƯỢC; **29/09 CEO chốt lại: BÁO CÁO là chính, hỏi là phụ** — báo cáo đủ thì không cần hỏi.
+  Điểm chung của cả hai lần: một danh sách đổ ra là vô dụng; phải có **con số kết luận + của ai + so với mức thường đạt**, chi tiết để sau nút bấm.
 - **⭐ CHO NGƯỜI QUYẾT rẻ hơn nhiều so với CỐ HIỂU TRƯỚC.** Cả buổi kẹt ở "chưa biết must-exist nên không dám
   nhắc" → đâm đi kiểm toán 125 bảng. Ba nút Làm/Huỷ/Gác gỡ sạch: **nhắc sai thì bấm Huỷ, luật lộ ra từ các
   lần bấm.** Đúng vòng lặp doc §11 — nhắc trước, người quyết, dữ liệu tự đầy dần. Claude làm NGƯỢC.
@@ -1922,12 +2485,138 @@ worktree chưa merge: 202608151600 · 202609041045 · 202609051251 · 2026090818
 - **Snapshot thuộc tính phân loại lúc neo, đừng join live để tính báo cáo.** `nhanh`/`muc_do`/`ten_chuyen_de` ghi vào `ca_test_cau` lúc gán đề ⇒ hàm phiếu chỉ gom 2 bảng, không nhân đôi registry môn→bảng trong SQL, đề/dạng sửa sau không làm lệch phiếu cũ.
 - **Hàng "không ở kho câu" (`HINH:<uuid>`) bị `layCauTheoThuTu` bỏ rơi không báo** — cùng họ với `.filter(Boolean)` nuốt tham chiếu chết. Mọi chỗ "resolve mã → nội dung" phải nói ra số hàng KHÔNG resolve được.
 
+### Bài học 10–13/09 — test đầu vào: phiếu từ kit ChatGPT, form GV, phân công, asset
+- **"Kit UI" của ChatGPT thường CHỈ là ảnh reference + DESIGN.md;** mục `assets/svg` ghi trong DESIGN có thể không
+  tồn tại trong zip, và bản "gửi bù" có thể là 3 glyph 150 byte hoặc 1 **contact sheet** gộp mọi thứ trên nền tối
+  có nhãn tên file. Kiểm zip TRƯỚC khi hứa "làm giống"; nói thẳng thiếu gì (liệt kê từng file, kích thước, trong
+  suốt hay không) để CEO đòi tiếp — vector tự vẽ chỉ được "giống cấu trúc/màu", không giống raster.
+- **PNG "trong suốt" của ChatGPT hay là ô caro NƯỚNG vào ảnh** (alpha 100%). Đo bằng pngjs (alpha<250 %, màu 4
+  góc) trước khi dùng. Khử được nếu chủ thể có màu bão hoà (gold/xanh): gắn nhãn thành phần liên thông của pixel
+  trung tính sáng, xoá thành phần chạm mép HOẶC lớn (lỗ tay cầm) — flood-fill từ mép thôi thì sót lỗ kín. Chủ thể
+  có phần trắng (giấy, highlight) thì cắt hỏng ⇒ bỏ. PIL trên máy này hỏng ("unknown slot ID 85") — dùng `pngjs`.
+- **html2canvas 1.4.1:** `<img>` SVG với width % ⇒ bỏ qua; SVG inline thì browser rasterize nguyên khối (filter/
+  gradient OK) nhưng phải có `width/height` PX trên thẻ svg và **id gradient/filter RIÊNG** (2 svg cùng `id="navy"`
+  ⇒ svg sau lấy nhầm def svg trước); SVG `<text>` + `dominantBaseline` lệch ⇒ đè chữ bằng div. Popup `about:blank`
+  không resolve URL tương đối ⇒ fetch asset → data URL rồi split/join vào outerHTML; thiếu file ⇒ thay bằng pixel
+  trong suốt. Vite dev không set CORS nên `useCORS` không cứu được.
+- **Bash heredoc + python/regex có backslash = mất backslash 2 tầng.** Patch dài/ký tự đặc biệt: Write script ra
+  file rồi chạy, hoặc dùng Edit; kiểm `grep` dòng kết quả trước khi tin.
+- **Trước "làm giống y ảnh" phải chốt cái gì là DATA vs ĐỒ HOẠ.** Kit v2 hiện "4/5" nhưng CEO đã chốt 3 mức hôm
+  trước rồi lại chốt 5 mức — hỏi lại đúng 3 câu (thang, paragraph, điểm) trước khi code, đừng đoán từ ảnh.
+- **Donut/biểu đồ phải tô theo con số ở giữa.** Vẽ theo tỉ lệ số câu (như mockup) ⇒ ca toàn cơ bản ra vòng đầy
+  100% dù giữa ghi 48% — CEO bắt ngay. Trực quan phải khớp số đọc được.
+- **`new-migration` tạo file rỗng trước = mồi cho phiên khác áp nhầm** (đã ghi HANDOFF 08/09, vẫn cắn 13/09 sau
+  đúng 60 giây). Cách sống chung: viết SQL xong mới tạo file, áp NGAY bằng `node scripts/migrate.mjs --only <file>`
+  (đã có, tôi từng không biết); nếu bị áp rỗng ⇒ đổi tên timestamp mới + `--only`, dòng sổ mồ côi xoá khi CEO gật.
+  `npm run migrate` trần còn kẹt ở file lỗi của người khác (`must be owner of function`) — không phải việc mình.
+- **Gán mặc định = trigger BEFORE INSERT ở DB**, không phải client tra bảng rồi truyền — mọi đường tạo (ERP, app
+  Ops, script) đều đúng, đường truyền tay vẫn thắng vì chỉ điền cột NULL. Verify bằng transaction ROLLBACK (insert
+  giả → đọc → rollback), không cần tạo dữ liệu thật.
+- **Form nhập của GV ≠ phiếu có ô nhập.** CEO: "Trả bài LÀ cái phiếu; màn đánh giá chỉ GẦN GIỐNG" — gộp 2 thứ làm
+  phiếu xấu đi và form khó dùng. Tách: form riêng cùng phong cách + phiếu thật xem trước bên cạnh (scale theo màn).
+- **Browser pane:** app full-reload mỗi khi phiên khác sửa file ⇒ modal đang mở bay mất giữa chuỗi thao tác; luôn
+  guard `if(!document.querySelector('.z-\\[90\\]'))` rồi mở lại; click theo text dễ dính sidebar trùng tên ("Phân
+  công" CORE TEAM) — lọc thêm class của tab. Screenshot hay timeout khi cửa sổ bị che, text check thay thế được.
+
 ### Bài học 10/09 tối — Claude nhập câu vào kho (HGT PT mặt phẳng)
 - **⭐ Nguồn công thức MathType cũ = docx MÙ, phải dùng PDF vision.** DOCX Toán Tứ Tâm 2 MB có 758 `.wmf` (ảnh vector rời từ MathType 6/7 khi paste) + 0 OMML — pandoc chỉ trả text + `![](imageXX.wmf)`; Claude không đọc được nội dung công thức. Cùng file export PDF: Claude `Read pages=1-N` render vision đọc math sharp, extract LaTeX ổn định. Áp dụng cho MỌI tài liệu Toán VN trước ~2020 (thời MathType thống trị) — hỏi có PDF không, có thì dùng PDF; không thì export tay trước.
 - **⭐ Kiểm HÌNH VẼ TRƯỚC bulk INSERT, không phải sau.** Bỏ qua `anh_de` cho câu có hình lập phương/tứ diện = HS đọc câu vẫn tưởng tượng được, nhưng LỜI GIẢI gốc ghi "Dựa vào hình vẽ" thành đứt logic. Pass đầu tách câu cũng phải grep pandoc md `![](image...png)` (PNG = hình vẽ, WMF = công thức) → nhận diện câu có ảnh → upload cùng lượt, không tách pha. Đặt vào `anh_de` (không `anh_dap_an`) khi HS cần thấy khi ĐỌC ĐỀ để định vị tên đỉnh — không phải sau khi làm xong.
 - **⭐ `ma_cau` phải EXPLICIT theo convention `<dang><STT 3 số>` (`src/lib/kho/api.ts:447`), đừng để default `GC000001`.** Column default `('GC'||nextval)` là legacy — mọi câu thật đều dùng convention TS. STT = `MAX(ma_cau WHERE ma_cau LIKE '<dang>%')` + 1. FK `parent_ma_cau` + `hgt_cau_hoi_yeu_cau_giai.ma_cau` đều ON UPDATE CASCADE nên rename sau cũng an toàn (đã test) — nhưng vẫn nên đúng ngay từ đầu để CEO không phải sửa tay lúc duyệt.
 - **⭐ Verify script phải in `duyet_at` để phân biệt "trigger tự set" vs "người bấm".** Sau UPDATE nếu thấy `da_duyet=true` bất ngờ, đọc `duyet_at`: đồng loạt cùng timestamp = trigger; rải rác vài giây/câu = CEO đang bấm duyệt SONG SONG (Claude làm việc trong lúc CEO mở màn duyệt). Đã suýt gọi bug oan 1 lần. Trigger `_kho_cau_duyet_nguon` thực chất chỉ trigger `BEFORE INSERT OR UPDATE OF da_duyet, duyet_nguon` — không chạm khi rename `ma_cau` hay set `anh_de`.
 - **`dang_ai_de_xuat=dang_chinh` khi AI đề xuất, không NULL.** Spec `202609080938_kho_duyet_hop_nhat.sql` dùng cột này đo precision AI = count(ai=chính)/count(ai not null). Nếu bỏ NULL thì mất mọi câu AI nạp trong mẫu số ⇒ số precision không đo được. Người duyệt đổi `dang_chinh` khi sai; `dang_ai_de_xuat` giữ vết bản gốc.
+
+### Bài học 28/09 (đêm) — hàm Postgres chậm do CTE bị inline + trần timeout của app
+- **⭐⭐ plpgsql `return query with …` có CTE dùng trong subquery TƯƠNG QUAN (vd `(select … from dd where dd.hs = h.hs)` trong `case`) ⇒ planner có thể INLINE CTE vào subquery chạy cho TỪNG dòng ngoài.**
+  `fn_thanh_tuu_thang` gọi `fn_mastery_cells` trong CTE ⇒ bị gọi lại hàng trăm lần: cả tháng 70s (lúc khác đo 4–7s — planner đổi kế hoạch, nên nút lúc chạy lúc không).
+  Ép `as materialized (` cho mọi CTE ⇒ 2–4s, khối 9: 9,3s → 0,56s; kết quả cũ vs mới 0 dòng khác (EXCEPT 2 chiều). **Hàm đo lớn: mặc định `materialized`.**
+- **⭐ `SET statement_timeout` gắn vào hàm (`create function … set statement_timeout`) KHÔNG vượt được trần của phiên** (đo bằng hàm `pg_temp` với trần 1s).
+  Role `authenticated` = 8s, `anon` = 3s (`pg_roles.rolconfig`). Việc nặng gọi từ app ⇒ phải NHANH (hoặc chạy ngoài PostgREST), không nới trần được từ trong hàm.
+- **⭐ Hàm nặng chạy INVOKER bị RLS `la_thanh_vien()` gắn lên từng dòng mọi bảng nó đọc** ⇒ đo bằng `claude_build` (bỏ qua RLS) luôn LẠC QUAN hơn app.
+  Hàm batch của admin: `security definer` + cổng quyền ngay dòng đầu (`co_quyen_ghi('<leaf>')`) + `revoke … from public, anon`.
+- **`claude_build` không `set role authenticated` được** ⇒ muốn thử dưới danh tính người dùng: `set_config('request.jwt.claims', '{"email":…}', true)` rồi gọi hàm
+  (cổng `co_quyen_ghi` / `la_thanh_vien` đọc JWT) — thử cả người CÓ quyền lẫn KHÔNG quyền, trong transaction + ROLLBACK.
+
+### Bài học 28/09 — thiết kế gamification HS với CEO (spec `spec-thanh-tuu-nhiem-vu.md`)
+- **⭐⭐ Gami BK = GAME (cày cuốc, đua top), KHÔNG khung app học online** (Khan / Duolingo / nghiên cứu edu "chống leaderboard"). Thùy bác v1:
+  *"Khan vẫn là online, BK là offline"*. Lấy **cơ chế** game, **không lấy tên** game (Liên Quân…) — HS sẽ bảo trung tâm copy.
+- **⭐ Đừng tự thêm giá trị CEO không đặt:**
+  - "Chống cày ảo" là t tự thêm → Thùy: *"cày càng nhiều càng ok"*.
+  - "Trần theo chính em" để chặn bỏ lớp → Thùy: *"HS offline không được nghỉ"*.
+  - Chuẩn hoá để so chung giữa môn → Thùy: *"mỗi môn riêng hoàn toàn"*.
+- **⭐⭐ CEO thêm NGUYÊN TẮC ≠ đổi CẤU TRÚC đã chốt.** Thùy thêm "3 phương diện chăm chỉ / thành tích / tiến bộ" ⇒ t dựng lại thành 3 huy hiệu lớn
+  (trái luôn H1 "mỗi dòng 5★" t tự bẻ để giảm mẫu bản cứng) ⇒ sai 2 lần.
+  - Đúng: áp nguyên tắc **vào trong** cấu trúc cũ (10 loại, 5★/dòng). Phương diện là góc nhìn thiết kế, **không phải output**.
+  - Muốn đổi điều đã chốt vì lý do vận hành thì **nêu ra và hỏi**.
+- **⭐ Spec cho CEO: LOGIC trước, DETAIL sau, không trộn** (bảng số / catalog để danh sách "bàn sau").
+  - **Phase 1 phải vừa phải:** đưa ~100 cấp huy hiệu ngay ⇒ *"nhiều quá bị ngợp"* ⇒ 6–8 cái.
+  - Đưa quyết định dạng **bảng có đề xuất**, CEO trả lời theo mã (L1–L4, D1–D6, B-L…, H…).
+- **⭐ Đặt bộ tên "theo gốc X" phải kiểm gốc tích TỪNG tên:**
+  - Nữ Oa (thần thoại Trung Quốc) lọt vào bộ "Việt Nam".
+  - Phoenix là chim thần thoại, không phải thần — vẫn hợp vì tiêu chí có "biểu tượng".
+- **⭐⭐ Mô phỏng: ĐO phân bố thật THEO TỪNG HS trước, đừng giả định các lần đo độc lập.**
+  - "BTVN đủ đúng hạn trong tháng" thật ~47% và **bền theo người** (3 tháng: 23% đủ cả 3, 28% không tháng nào).
+  - Mô hình tung xu từng bài ra ~24% ⇒ ★4 gần 0 ⇒ kết luận sai.
+- **⭐ Ngưỡng bậc cộng dồn đặt theo CUỐI mùa ⇒ đầu mùa cả khối dồn 1 bậc** (mùa 3 tháng: hết tháng 1 có 99% cùng bậc 2).
+  - Luôn in phân bố theo **từng mốc thời gian**, không chỉ cuối mùa.
+  - ~~Ghế top theo phong độ~~ — SUPERSEDE 28/09: Thùy muốn thần là ĐÍCH theo điểm tích luỹ (không ghế top/hạng). T hiểu "ghế" thành luật vị trí suốt 1 ngày.
+- **⭐⭐ Hàm SQL làm "view có tham số": KHÔNG gắn `set search_path`, gọi bằng hằng/biến (không bằng cột CTE)** — mất inline ⇒ 13–35 s thay vì 0,15 s.
+- **⭐ Số đầu vào phải hỏi nhịp vận hành THẬT** (8 buổi/tháng = 1 MT + 7 ET) — t lấy 5 ET từ mô phỏng ⇒ phong độ > 100%.
+- **⭐ Cột "có vẻ đúng" có thể rỗng 100%** (`btvn_ket_qua.ti_le_dung`, `hoan_thanh`) — đo phân bố cột trước khi dùng làm nguồn.
+- **⭐ Tưởng bug phải đo theo THÁNG trước khi sửa** (A4 0% là thật: tự luyện chỉ bùng từ tháng 9).
+- **⭐ Chốt có ghi người chốt ⇒ để CEO bấm, không lấy jwt nhân sự bất kỳ chạy thay** (mạo danh vết).
+- **`.env` chỉ có `DATABASE_URL` role GHI** ⇒ script dò dữ liệu mở đầu `set default_transaction_read_only = on` + in `show transaction_read_only`
+  làm bằng chứng.
+- **Máy CEO:**
+  - Python chỉ gọi được qua `py` (`python` = alias Store).
+  - Không có LibreOffice ⇒ `recalc.py` của skill xlsx chết (AF_UNIX) ⇒ bật `fullCalcOnLoad` + tự kiểm công thức bằng Python.
+- **DEVLOG xung đột merge với phiên song song** (cả hai cùng append cuối file) ⇒ giữ CẢ HAI phía (xoá 3 dòng marker), commit merge.
+  Không rebase / đè.
+
+### Bài học 29/09 — trợ lý: báo cáo Sư phạm + tổng kết tuần
+
+**Hiểu yêu cầu**
+- **⭐⭐ HỎI "BÁO CÁO NÀY CỦA AI" TRƯỚC KHI XÂY.** Xây 2 lượt mới biết mẫu là của Trang (Sư phạm), còn Lộc (Vận hành) cần bản khác. Mỗi người quản một
+  mảng có một bộ báo cáo — không có "báo cáo chung".
+- **⭐⭐ BÁM MẪU TỪNG CHỮ ≠ HIỂU KHUNG.** Bản đầu chép đúng 7 mục của mẫu, đơn vị là "lớp trong một ngày", mở sẵn mọi danh sách ⇒ đọc xong vẫn không biết
+  việc nào của ai. CEO phải rút khung hộ (3 luồng). **Đơn vị của báo cáo vận hành là VIỆC có người phụ trách + hạn**, không phải lớp hay ngày.
+- **⭐ ĐO VIỆC DÙNG THẬT TRƯỚC KHI LÀM TIẾP MỘT TÍNH NĂNG.** Đếm câu hỏi đã lưu mới lộ: tab trợ lý 21 câu cả đời, 3 nút không ai bấm. Không đo thì đã đi
+  "sửa cho hỏi được" — đúng thứ CEO sau đó gọi là phụ.
+- **Cùng một chữ, hai trục:** "xin phép" hợp lệ về THÁI ĐỘ nhưng nghĩa vụ NỘP BÀI vẫn còn. "Học sinh không đến" là sự cố của học sinh, không phải miss của
+  nhân sự. Gặp trạng thái mơ hồ thì hỏi nó thuộc trục nào, đừng tự gộp.
+
+**Postgres / quyền**
+- **⭐⭐ TEST BẰNG ROLE CHỦ BẢNG KHÔNG THẤY RLS LẪN TRẦN 8 GIÂY.** Hàm báo cáo chạy 1 giây khi test, lên app thì "statement timeout" — vì người dùng thật
+  đi qua RLS của từng bảng. Hàm tổng hợp nặng ⇒ `SECURITY DEFINER` có cổng ở dòng đầu + thu quyền gọi thẳng các hàm bên trong. **Chỉ coi là xong khi đã
+  mở trên app bằng phiên đăng nhập thật.**
+- **⭐ Báo cáo nặng thì LƯU, đừng tính mỗi lần mở.** Và bản lưu phải mang **số phiên bản của cách tính**: nhận biết bằng "có khoá X" không phân biệt được
+  luật cũ/mới ⇒ đổi luật xong người dùng vẫn thấy số cũ tới hết ngày.
+- **⭐ Nhiều phiên cùng sửa một DB: tạo lại hàm có sẵn thì lấy thân từ `pg_get_functiondef`**, thay bằng script "mỗi phép thay phải khớp ĐÚNG 1 chỗ", rồi
+  **so JSON trước/sau**. File migration cũ của chính mình có thể không còn là bản đang chạy (phiên khác đã sửa 2 hàm báo cáo trong lúc làm).
+- **⭐ Công thức dùng ở 2 nơi ⇒ tách HÀM GỐC trả mọi dòng + nhãn, hai nơi đọc từ đó.** Kiểm việc tách bằng "kết quả cũ không đổi một ký tự" (0 chỗ khác).
+- **Cờ nội bộ đặt bằng `set_config(…, true)` sống tới HẾT transaction**, không phải hết hàm ⇒ dùng xong phải hạ ngay, rồi kiểm lại cổng sau khi áp.
+- **Muốn thêm tham số cho hàm đừng `drop` rồi tạo lại** (Luật xoá): `create or replace` đổi được `stable` → `volatile` mà giữ nguyên chữ ký.
+- **Đếm theo buổi bằng subquery tương quan trên `gami_grades`/`btvn_ket_qua` rất chậm** (không có index dẫn đầu bằng `buoi_hoc_id`): 17 giây → 0,14 giây
+  khi gom trước bằng CTE rồi join.
+- **`gami_grades.graded_by` là `tai_khoan.id`, KHÔNG phải `nhan_su.id`** — tra người chấm phải đi qua `tai_khoan`.
+
+**Thống kê trên chuỗi tuần**
+- **⭐⭐ "MẢNG CHƯA CHẠY" ≠ "ĐO RA 0"** (CLAUDE.md §1.5 áp cho cả chuỗi thời gian). Tính cả các tuần trước khi có ca test đầu vào ⇒ thường đạt = 0,1 và mọi
+  tuần có ca test thật bị coi là nhiễu. Mỗi chỉ số cần một số "neo" để biết từ tuần nào mới là lần đo.
+- **⭐ Chỉ số chưa "chín" không đem so với lịch sử đã chín** (bù đã học, test đã trả kết quả): tuần mới nhất luôn ra "vấn đề" giả.
+- **⭐ Mẫu số phải loại việc CHƯA TỚI HẠN**, nếu không tuần mới nhất luôn xấu giả (BTVN tuần vừa rồi: 26/59 việc chưa tới hạn chấm).
+- **Khâu đang đi lên thì trung bình toàn lịch sử vô nghĩa** (luôn "trên thường đạt", tuần tốt gần đây bị lọc như nhiễu) ⇒ cửa sổ trượt. Nêu hệ quả của
+  định nghĩa cho CEO thấy bằng số, để CEO chọn — đừng tự đổi định nghĩa.
+- **Ngưỡng theo độ lệch chuẩn của CHÍNH chỉ số**, không một con số cứng cho mọi chỉ số (chuyên cần dao động ~4 điểm, ET đúng chuẩn ~19 điểm).
+
+**Giao diện**
+- **⭐⭐ TÍNH NĂNG CỐT LÕI KHÔNG TREO VÀO API MÀ TRÌNH DUYỆT CÓ QUYỀN TỪ CHỐI.** Trình chiếu dựa hẳn vào `requestFullscreen` ⇒ nơi bị từ chối thì bấm nút
+  không thấy gì. Dựng lớp phủ của mình trước, toàn màn hình chỉ cộng thêm. Và `fullscreenchange` báo "đã thoát" ngay sau khi vào KHÔNG có nghĩa người
+  dùng muốn thoát.
+- **⭐ Trình chiếu ≠ màn thường phóng to.** Mỗi bảng một màn vừa khít, chuyển trang — đứng chiếu không ai kéo chuột. Co giãn bằng `transform: scale` trên
+  khối có bề rộng gốc cố định (đo bằng ResizeObserver); `zoom` làm đổi kích thước bố cục nên phép đo tự kích lại chính nó.
+- **⭐ Hai lần liền "viết xong, kiểu đúng, build qua" mà bấm thử mới lộ hỏng.** `tsc` sạch không nói gì về việc nút có chạy.
+- **Xem thử từ worktree:** công cụ preview phục vụ checkout CHÍNH. `fetch` file mới trả 200 có thể chỉ là trang index của SPA — phải nhìn nội dung, không
+  nhìn mã trạng thái. Muốn xem bản mới: đẩy lên `main` rồi kéo về checkout chính.
 
 ## ③ Nhật ký
 → Chuyển sang **`DEVLOG.md`** (log thô append-only, theo ngày, KHÔNG load khi làm). Là nguồn bất biến để truy lại / tổng hợp lại HANDOFF nếu bản này sai logic.
@@ -1949,3 +2638,116 @@ worktree chưa merge: 202608151600 · 202609041045 · 202609051251 · 2026090818
 - **⭐ Script replay phải phủ ĐỦ phase, kiểm trước khi chạy.** `_replay_elo.mjs` đời cũ chỉ có ingame+et; chạy nó sau khi MT ra đời sẽ **xoá sạch Elo của MT** mà không báo gì. Script sửa-dữ-liệu-hàng-loạt: luôn đối chiếu danh sách phase/loại HIỆN TẠI trước khi tin script cũ.
 - **Chốt sanity cho replay Elo: TB Elo toàn hệ phải KHÔNG ĐỔI** (Elo zero-sum trong mỗi phiên). Lệch TB = replay sai ở đâu đó.
 - **Verify dữ liệu ≠ verify đường code.** Replay chứng minh data đúng, KHÔNG chứng minh `closePhase` đã sửa. Phải test thật đường code (đóng phase rỗng → xem alert + DB), và chọn thao tác CÓ ĐƯỜNG LÙI (`reopenPhase` gỡ sạch) để test trên dữ liệu thật an toàn.
+
+### Bài học 18–20/09 — quyền EXECUTE của function trên Supabase (sổ tay kiến thức)
+
+- **⭐⭐ `grant … to authenticated` KHÔNG chặn `anon`, và `revoke … from public` CŨNG CHƯA CHẮC ĐỦ — phụ thuộc AI ÁP MIGRATION.** Postgres mặc định cấp EXECUTE cho `PUBLIC` khi `create function`, nên chỉ `grant` là cửa vẫn mở. Nhưng gỡ PUBLIC vẫn chưa xong: **Supabase có `alter default privileges … grant execute on functions to anon, authenticated, service_role`, và default privileges GẮN THEO ROLE TẠO HÀM.**
+  - Áp bằng **SQL Editor** ⇒ owner `postgres` ⇒ `anon` nhận grant **RIÊNG, TƯỜNG MINH** ⇒ `revoke … from public` gỡ được PUBLIC mà **không đụng `anon=X`** ⇒ phải thêm `revoke execute … from anon`.
+  - Áp bằng **`npm run migrate`** (owner `claude_build`) ⇒ không dính default privileges ⇒ ACL không hề có `anon` ⇒ `revoke from public` là đủ.
+  - Đó là lý do tiền lệ mig 0062/0063 (`count_cau_by_dang`, `my_hoc_sinh_id`) chạy đúng mà mig 202609181946 thì không — **cùng câu lệnh, khác người áp, khác kết quả**.
+- **⭐ Phân biệt "chặn ở GRANT" vs "chặn trong THÂN HÀM" bằng HTTP code — đừng thấy bị từ chối là yên tâm.** Anon gọi ra `400 / P0001 / <message tự viết>` nghĩa là **hàm ĐÃ CHẠY**, chỉ bị guard trong thân chặn ⇒ còn đúng 1 lớp. Ra `401 / 42501 / permission denied for function` mới là chặn ở tầng GRANT, hàm không chạy. Với `security definer` đọc kho thì phải là 401. (`404 / PGRST202` = hàm không tồn tại/sai chữ ký — PostgREST khớp hàm theo TÊN THAM SỐ, gọi `{}` thì hàm nào cũng 404, đừng vội kết luận "chưa áp".)
+- **⭐ Migration siết quyền phải SELF-VERIFY 2 CHIỀU trong cùng transaction.** Chiều xuôi: `anon` phải MẤT EXECUTE. Chiều ngược: `authenticated` phải CÒN — siết lố role là lỗi dễ mắc và **chỉ lộ khi người dùng bấm vào màn**, lúc đó đã muộn. Dùng `has_function_privilege(role, 'public.ten(argtypes)', 'EXECUTE')`, raise là rollback sạch. (Migration `revoke` phải do OWNER chạy — `claude_build` revoke hàm của `postgres` sẽ chết với "must be owner of function", fail rõ ràng nên không cần guard thêm.)
+- **⭐⭐ Comment khẳng định "đã an toàn" mà chưa đo = nợ nguy hiểm hơn không có comment.** Mig 181946 tự viết *"không để cửa mở"* dựa trên suy luận từ tiền lệ, chưa hề đo ACL. Đúng cái §2.1 đã cảnh báo về chính mục quyền DB — và vẫn đạp lại. **Viết xong câu "đã chặn/đã an toàn" thì việc kế tiếp là ĐO, không phải commit.** Sửa comment sai ở file đã áp là KHÔNG được (lịch sử bất biến) — ghi đính chính trong migration mới.
+- **⭐ SQL Editor cũng grant TOÀN QUYỀN BẢNG cho `anon`/`authenticated` (không chỉ EXECUTE hàm).** Đo 26/09: bảng `sk_*` tạo bằng SQL
+  Editor ⇒ `has_table_privilege('anon', …, 'INSERT') = true`. RLS không có policy ghi thì vẫn chặn, nhưng chỉ còn 1 lớp ⇒ bảng "ghi chỉ qua
+  RPC" phải `revoke all … from anon` + `revoke insert, update, delete … from authenticated` ngay trong migration. `information_schema.role_table_grants`
+  KHÔNG hiện grant của role mình không thuộc — đo bằng `has_table_privilege`.
+
+### Bài học 26/09 — hệ sự kiện (plpgsql · test theo vai · test UI qua ô trình duyệt ẩn)
+
+- **⭐⭐ plpgsql: alias bảng TRÙNG TÊN biến `record` trong hàm ⇒ Postgres bind vào BIẾN, không phải bảng.** `declare d record;` rồi
+  `(select … from sk_dang_ky d … where d.id = …)` ⇒ nổ `record "d" is not assigned yet` ở dòng đầu hàm (PostgREST trả 500). Không lỗi
+  lúc `create function` — chỉ lộ khi CHẠY. Cổng quyền/tra cứu phụ nên gói vào hàm riêng (`_sk_sk_cua_dang_ky`), không alias trong hàm có biến.
+- **⭐ Đổi cổng quyền ⇒ test MỌI RPC dưới MỌI vai, không chọn mẫu.** Lỗi trên lọt vì test persona chỉ chạy check-in/đăng ký, bỏ qua 3 hàm
+  quản trò. Script PGlite (stub `jwt_email/la_thanh_vien/hoc_sinh/nhan_su`) chạy đủ vai + người ngoài trong vài giây — rẻ hơn 1 vòng dán SQL.
+- **Ô trình duyệt của app Claude khi bị ẨN: ảnh chụp đứng hình + click toạ độ trượt vì layout dịch.** Kết luận "bấm không ăn" từ ảnh là sai
+  (bàn quay đã quay thật, xu tăng 38→63). Xác nhận bằng TEXT/dữ liệu (`get_page_text`, gọi RPC), click bằng ref/JS, không tin screenshot.
+  Nhưng chính việc đó lộ lỗi thật: khung `items-center overflow-hidden` cắt mất nút nằm dưới mép — màn làm việc phải có vùng tự cuộn.
+- **Máy "nhớ lựa chọn" (localStorage) phải kiểm lại khi dữ liệu đổi**: máy nhớ sự kiện TEST đã đóng ⇒ mở app vào nhầm TEST cùng ngày. Nhớ
+  thì được, nhưng mở lại phải ưu tiên trạng thái hợp lệ (sự kiện đang mở).
+
+### Bài học 26–27/09 — game chạy thật (sự kiện) + game trong buổi học
+- **⭐⭐ Thêm NGUỒN EXP mới: rà cả chỗ ĐỌC lẫn chỗ XOÁ.** Đọc: nguồn bị liệt kê cứng ở 4 chỗ (`fn_gami_exp_xu_thang` chốt xu ·
+  `fn_gami_exp_chi_tiet_thang` · `fn_hs_vi_xu_cua_toi` · `EXP_NOTE_SOURCES`), tháng xác định bằng `note='YYYY-MM'` (không created_at) —
+  sót 1 chỗ là EXP không bao giờ thành xu, im lặng. Xoá: `fn_recompute_exp_thang` (chạy mỗi lần đóng ET/BTVN) xoá theo `ref_buoi_hoc_id`
+  KHÔNG lọc nguồn ⇒ suýt xoá sạch EXP game (bắt trước khi mở cho GV, vá mig `202609272048`). Grep `delete from gami_exp_ledger` mỗi khi thêm nguồn.
+- **⭐ Sửa hàm mà phiên khác cũng đang sửa: ĐỪNG chép đè thân hàm.** Migration đọc `pg_get_functiondef` lúc áp, `replace` đúng chỗ cần,
+  ASSERT đúng 1 chỗ khớp rồi `execute` (mẫu: mig `202609272045_*`). Chép bản lấy lúc sáng = xoá sửa của người khác lúc trưa.
+- **⭐ Verify migration GHI trên DB thật: chạy cả file + gọi RPC trong 1 transaction rồi ROLLBACK** (claude_build, node qua stdin từ repo).
+  Thấy được kết quả trên buổi/HS thật, không để lại dòng nào; chạy 2 lần (trước/sau vá) để CHỨNG MINH bug thay vì suy luận.
+- **`scripts/migrate.mjs` KHÔNG có `--help` — gõ là nó ÁP THẬT mọi file treo** (27/09 lỡ gõ, may dừng ở file đầu do thiếu quyền). Chỉ dùng
+  `--status` (đọc) hoặc `--only <file>`. Trong repo luôn có file treo của sự kiện/Sổ tay (áp bằng SQL Editor, sổ không ghi).
+- **⭐ "Đã nối kênh" ≠ "có máy nghe".** Tối 26/09 app để hub BK01, TV thật ở BK09 ⇒ nhãn xanh "● nghe TV" mà tên gửi vào khoảng không.
+  Máy điều khiển phải đọc **presence** của máy nhận (`role:'tv'`) và cảnh báo khi vắng; nút "bắt đầu" phải kéo theo mọi bước TV (mở game)
+  thay vì trông người vận hành nhớ làm tay.
+- **Cú pháp hợp lệ ≠ chạy đúng**: patch làm rơi `;` ⇒ `P.fin=falseP.ready=false` — `new Function` qua, chạy thì ReferenceError, iPad kẹt
+  màn kết quả. Game nhiều ván phải chạy ≥2 ván liên tiếp khi verify.
+- **Hình phần thưởng theo GIÁ TRỊ TUYỆT ĐỐI, không theo vị trí trong khoảng của từng hạng** (Giải 3 200 EXP từng ra "núi vàng" to hơn Nhất
+  340). Loại rương/khung đã báo hạng; hình chỉ nói "được nhiều hay ít".
+- **Kinh tế game: tính TB theo SĨ SỐ THẬT trước khi nhận mục tiêu.** Lớp TB 8 bạn có mặt ⇒ Giải 3 chiếm ~3/4 ⇒ "TB 250" bất khả với Giải 3
+  ≤200 (max tất cả = 238). Đưa bảng TB theo sĩ số cho CEO chọn. Thêm độc đắc hiếm/nhỏ hơn ⇒ phải bù vào ô thường để giữ tỉ lệ chi.
+- **iPad Safari:** nền `html` mặc định TRẮNG — trang nảy là lộ "thanh trắng"; tô `html` cùng màu game + `overscroll-behavior:none`.
+  `touch-action` trên `html` áp cho mọi phần tử (lấy giao chuỗi tổ tiên) ⇒ tắt chạm-đúp-zoom toàn trang một chỗ.
+- **Commit CHỈ phần mình khi file có sửa đổi chưa commit của người khác:** dựng bản index = `git show HEAD:file` + đúng patch của mình
+  (script patch chạy được cho cả 2 bản) → `git hash-object -w` → `git update-index --cacheinfo`. Không `git add` cả file.
+- **CEO nói "đừng chốt — t đề xuất kịch bản, luật t viết"** ⇒ CTO chỉ hỏi OUTPUT + tìm đường nối hệ thống; không tự điền số rồi build (R3).
+  Số liệu luật CTO đưa ra phải dán nhãn "nháp, không dùng".
+- **⭐ URL/domain phải ĐO trước khi làm mặc định, không "tạm".** 27/09 t đặt `GAMES_URL='bkdemy-games.vercel.app'` theo tên project, không curl
+  ⇒ 404, nút mở TV hỏng tới khi CEO test thật ("chưa thấy game trên ERP"). Domain thật tìm bằng `vercel project ls` (CLI có sẵn, đã đăng nhập)
+  → `game.bkacademy.edu.vn`. Kèm: "chưa thấy tính năng" ⇒ đo bản ĐANG CHẠY (tải bundle prod, grep chuỗi) trước khi kết luận thiếu deploy/pull.
+- **Test UI có nút GHI trên ERP dev mà không ghi DB:** trong trang, `await import('/src/lib/supabase.ts')` rồi thay `supabase.rpc` (giả kết quả,
+  chặn mọi `fn_*` ghi). **Vite dev tự reload khi phiên khác sửa file ⇒ override mất im lặng** — mỗi bước bấm phải kiểm override còn sống
+  (vd `window.__GHI`) rồi mới bấm; xong kiểm lại DB bằng query.
+- **Màn công khai không được lộ kết quả trước hoạt ảnh — và mọi màn cả lớp nhìn thấy đều là màn công khai:** dữ liệu (DB/bảng lớp) đến NHANH
+  hơn hoạt ảnh ⇒ đánh dấu "đang mở" lúc NHẬN lệnh, chỉ hiện số khi game BÁO xong. Vá TV (`BKLopBang.cho/xong`) mà quên list ERP ⇒ Cast chung vẫn
+  lộ (29/09). Cách đúng: game gửi tín hiệu `xong` theo `hid`, mọi nơi hiển thị chờ tín hiệu đó (+ timeout phòng TV rớt).
+- **Game may rủi: đừng để thứ tự mở tiết lộ kết quả.** Luật "quà 1–2 nhỏ, quà cuối quyết định" = mở 2 món đầu vô nghĩa. Đo độ hồi hộp bằng giả lập:
+  vị trí món to phải gần đều, tương quan món đầu ↔ tổng thấp, đoán lãi/lỗ sau n-1 món không quá ~70%.
+- Liệt kê dữ liệu để xin xoá: t đọc `date` bằng `toISOString()` ⇒ lệch 1 ngày (27/09 thay vì 28/09) — đúng cái §2 CẤM; luôn format ngày theo VN.
+- **⭐ Cân game bằng GIẢ LẬP, và giả lập phải chạy CHÍNH bộ máy của game** (Bắn Quà 28/09): cảm giác "đạn không cân" của CEO đúng — đo ra
+  Chùm 52 vs Bom to 27. Bản giả lập đầu chép lại vật lý ⇒ "công thức 2 nơi" (§2.0 cấm); làm đúng là tách vật lý + điểm thành bộ máy THUẦN
+  (trả sự kiện, không vẽ/âm thanh), game "diễn" sự kiện, giả lập gọi cùng bộ máy. Có bộ máy chung thì thêm 5 đạn mới + tự cân (`canBang`) rẻ.
+- **Game kỹ năng nối ERP: TV tính điểm, DB tính mọi thứ còn lại.** Vật lý không chạy ở Postgres được ⇒ chỉ nhận ĐIỂM THÔ từ TV, kẹp trần, GV xem
+  rồi Chốt; vòng quay, chia đội, hạng, EXP, rương, trà sữa đều rút/tính ở DB (cùng họ `fn_sk_tra_xu_van` sự kiện). Bắt đầu lại ván GIỮ đạn đã quay.
+- **plpgsql: `create temp table … on commit drop` trong hàm = gọi 2 lần/transaction là trùng tên** — dùng CTE trong `for x in with … loop`.
+- **Đo phân bố ngẫu nhiên bằng SQL: `lateral (… order by random() limit 1)` KHÔNG tương quan với hàng ngoài ⇒ Postgres tính 1 lần** ⇒ ra "100% một
+  loại" dù hàm đúng. Đo bằng đúng câu của hàm, chạy trong vòng lặp plpgsql.
+- **Chèn mục vào spec bằng "replace mốc" làm MẤT mốc 2 lần liền** (chuỗi thay không kết thúc bằng chính mốc). Mục "còn hỏi" để CUỐI file; thêm
+  mục = cắt đuôi, ghi mục mới, dán lại đuôi.
+- Vặt: tab trình duyệt ẩn ⇒ `requestAnimationFrame` đứng (game 3D "kẹt" không phải bug — `?loop=timer`) · file game `games-site/*.html` là **CRLF**,
+  Edit tool chèn LF ⇒ chuẩn hoá lại · đường dẫn Windows nhúng vào heredoc Bash mất `\` ⇒ ghi file tạm trong repo rồi xoá · máy không có `python`.
+
+- **⭐ Query kiểm chứng phải KHÔNG ĐƯỢC tautology, và luôn có ĐỐI CHỨNG.** Viết `where not f(x) and f(x)` để "đếm cái lọt" thì kết quả 0 là do logic, không phải do dữ liệu — vô giá trị nhưng trông y hệt bằng chứng. Tương tự, "không thấy trong kết quả" chỉ có nghĩa khi có một mẫu ĐỐI CHỨNG chắc chắn PHẢI thấy và nó thật sự hiện ra; không thì "không thấy" có thể chỉ vì query nhân bản bị hỏng.
+- **Đọc dữ liệu bằng anon key để kết luận "bảng rỗng" là SAI** — RLS member-gate trả **HTTP 200 + `[]`**, không phải lỗi. Cùng họ với bẫy §2.1. Muốn số thật phải `DATABASE_URL_RO` (`claude_ro`), và `claude_ro` không gọi được RPC `grant to authenticated` nên **không thay thế được việc test end-to-end bằng tài khoản thật**.
+- **Bookkeeping `_migrations`:** `bam` = sha256(nội dung utf8 **đã bỏ hết `\r`**), hex, **cắt 16 ký tự** (`migrate.mjs:105-107`); `ten` = basename. Trước khi đưa số cho người dán, **tính lại bam cho toàn bộ file đã có trong sổ và đối chiếu** (477 khớp / 0 lệch) — rẻ, và nó chứng minh mình replicate đúng thuật toán thay vì đọc code rồi tin.
+
+### Bài học 20/09 — `format()` trong plpgsql, và lỗi bị UI nuốt
+
+- **⭐⭐ `format()` KHÔNG biết `--` là comment SQL — nó xử lý CHUỖI THÔ.** Mọi dấu `%` nằm trong `$q$…$q$`, **kể cả trong comment**, đều bị nuốt làm format specifier ⇒ `ERROR 22023 unrecognized format() type specifier`. Cắn thật: comment viết để *cảnh báo phải escape `%`* lại chính là chỗ quên escape, làm `hs_sotay_tim` throw MỌI lần gọi suốt 2 ngày.
+  **Luật rút ra (mạnh hơn "nhớ escape `%%`"): chuỗi truyền vào `format()` chỉ chứa SQL, KHÔNG comment, và KHÔNG dấu `%` nào ngoài `%1$I/%2$I`.** Mẫu LIKE dựng ở plpgsql rồi truyền qua `USING`; `limit` cũng truyền tham số thay vì `%3$s`. Escape `%%` chỉ chữa được lần này — người sửa sau viết thêm một dòng comment là đạp lại; luật "không có `%`" thì nhìn là thấy, và **kiểm được bằng máy** (tách `prosrc`, gỡ 2 specifier hợp lệ, còn `%` nào là raise trong chính migration).
+- **⭐⭐ `security definer` + guard trong thân hàm = lỗi runtime NÚP SAU guard.** Test bằng anon chỉ chứng minh guard chạy, KHÔNG chứng minh phần sau guard chạy — anon bị chặn TRƯỚC khi tới `format()`. Muốn biết hàm có chạy không thì phải gọi bằng role ĐI QUA được guard. Tương tự: `tsc`/`build` không chạm DB, demo dùng mock, đo bằng SQL viết tay không qua `format()`. **Bốn lớp "verify" mà không lớp nào GỌI HÀM ⇒ vẫn là 0 lớp.**
+- **⭐ Lỗi RPC và "không có dữ liệu" PHẢI là hai trạng thái tách hẳn ở UI.** `.catch(() => setRows([]))` biến mọi lỗi thành "không tìm thấy" — người dùng nhìn màn hình không thể phân biệt *kho rỗng* với *hàm nổ*, nên bug không được báo đúng bản chất và sống rất lâu. Lỗi ⇒ vẽ hộp lỗi + `console.error` **nguyên error object** (giữ `code`/`hint`/stack); rỗng ⇒ mới vẽ hộp rỗng.
+- **⭐ Lỗi Supabase KHÔNG phải `Error`.** `supabase.rpc` trả `PostgrestError` = object thường `{message, details, hint, code}`. `e instanceof Error ? e.message : '<mặc định>'` ⇒ **luôn** rơi vào fallback, vứt mất message thật của DB — đúng thứ cần đọc nhất. Đọc `.message` của mọi object thay vì hỏi nó có phải `Error` không.
+- **⭐ Test kiểm chuỗi/regex phải tự chặn "bắt nhầm mục tiêu".** Regex `\$q\$(.*?)\$q\$` để lấy chuỗi format đã vớ phải `$q$…$q$` trong **comment header** của chính file migration ⇒ test chạy trên chuỗi `"…"` và báo xanh cả 2 bước đầu. Lấy khối DÀI NHẤT + assert nội dung bắt buộc (`phải chứa jsonb_agg`) trước khi tin kết quả. Xanh giả nguy hơn đỏ.
+- **Chốt quy trình: `npm run smoke:sotay` sau MỌI migration đụng 3 RPC sổ tay.** Giá trị của nó được chứng minh ngay lúc viết — chạy trước khi áp fix thì FAIL đúng chỗ (`22023`, exit 1), chạy sau thì PASS cả 3. Test không bao giờ đỏ là test không chứng minh được gì.
+
+### Bài học 20/09 (phiên 3) — lọc vs xếp hạng, và "đã áp rồi"
+
+- **⭐⭐ Tham số nghe như bộ lọc mà thực ra chỉ CỘNG ĐIỂM — kiểm bằng cách so TẬP KẾT QUẢ, không so thứ tự.** `p_khoi` của `hs_sotay_tim` nằm trong biểu thức `diem`, không nằm trong `WHERE`: đứng khối 9 vẫn ra dạng khối 4/5, chỉ khác là khối 9 nổi lên đầu. Dấu hiệu nhận ra từ chính số đo: *cùng số dòng, cùng tập, chỉ khác điểm* = đang XẾP HẠNG chứ không LỌC. Ca tệ nhất: truyền khối **không tồn tại** vẫn trả về đủ kho — test phải có case đó.
+- **⭐⭐ Luật khớp chuỗi do người đề xuất (kể cả CEO) phải ĐO trên dữ liệu thật trước khi code.** "Đổi sang khớp đầu từ" nghe là chữa được "chu vi" ra "Công việc chung", nhưng KHÔNG: `chung` *bắt đầu bằng* `chu`, `viec` *bắt đầu bằng* `vi` — cả hai đều là đầu từ. Luật đúng là **tiếng cuối = tiền tố, các tiếng trước = trọn từ** (`\m<t>\M` … `\m<t>`): loại được ca sai mà vẫn cho gõ dở chữ. Cách kiểm rẻ: lấy 2 bản ghi ĐỐI LẬP (một cái phải khớp, một cái phải loại) rồi chạy từng phương án lên đúng 2 cái đó.
+- **⭐ Đổi LIKE → regex thì phải khử metachar của người dùng.** `(`, `[`, `*`, `\` làm nổ query hoặc khớp bậy. Lọc mỗi tiếng còn `[a-z0-9]` trước khi ghép. (Bản LIKE cũ cũng đã dính nhẹ: `%`, `_` trong input là wildcard — lỗ âm thầm, không ai báo.)
+- **⭐ `~ all('{}')` / `like all('{}')` với mảng RỖNG là TRUE-rỗng ⇒ trả về CẢ BẢNG.** Guard "không còn tiếng nào thì return rỗng" là thứ duy nhất chặn ca gõ toàn ký tự rác. Ai bỏ guard đó thì `"(((("` trả cả kho. Nhớ khi refactor.
+- **⭐⭐ "Đã áp rồi" KHÔNG phải bằng chứng — luôn đo lại trước khi ghi sổ.** CEO báo đã áp `201203` + smoke xanh + test app đúng; chạy lại thì smoke **exit 1**, migration chưa hề áp. App nhìn có vẻ đúng vì 2 dạng đúng được 40 điểm nổi lên đầu còn 2 dạng rác 4 điểm xếp bét — không kéo xuống thì không thấy. **Ghi `_migrations` cho migration chưa áp là hỏng sổ VĨNH VIỄN** (từ đó `--status` coi như xong, không ai phát hiện nữa) ⇒ gặp mâu thuẫn thì DỪNG, đừng ghi.
+  Cách đo rẻ và chắc: **dấu vân tay hành vi** — chọn một truy vấn mà bản cũ/bản mới ra số khác hẳn ("chu vi" không lọc khối: cũ 13 dòng + 2 dòng rác, mới 9 dòng + 0), hoặc đọc thẳng `pg_proc.prosrc` tìm chuỗi đặc trưng của từng bản.
+- **⭐ `DATABASE_URL_RO` phải là chuỗi POOLER, không phải host trực tiếp.** `db.<ref>.supabase.co` đã bỏ IPv4 ⇒ `ENOTFOUND` ⇒ `npm run schema` và mọi script `pg` chết, trong khi đường REST vẫn sống (nên smoke test vẫn chạy và dễ tưởng DB bình thường). Đúng chuỗi: `…@aws-0-<region>.pooler.supabase.com:5432` — xem `.env.example:22`.
+- **Self-verify trong migration nên kiểm THẲNG vào bug đang sửa, không kiểm chung chung.** `201150`: phải có `bd.khoi = $3`, không được còn `then 50`. `201203`: phải có `hay ~ all(`, không được còn `hay like all(`. Nhờ vậy migration áp nửa vời hoặc áp nhầm bản cũ là raise + rollback ngay, không cần đợi người phát hiện.
+
+### Bài học 16–27/09 — kho Hình học phase Học (cắm bảng mới vào module cũ)
+
+- **⭐⭐ Có module sẵn thì BÊ NGUYÊN, đừng viết lại.** 16/09 t tự viết modal câu + OCR + hub riêng; CEO: *"bê nguyên module nhập của bên đại, tự tạo module mới làm gì"* (nhập ảnh phải **dán clipboard**, PDF mới upload — module Đại có sẵn cả hai, bản tự viết thì thiếu). Trước khi viết UI nhập/sửa: grep component nhận `cauTbl`/`api` param (`DangHub`, `CauModal`, `AiImportModal`, `LyThuyetModal`, `KhoPicker`, `DangPicker`). Cách rẻ nhất: cho **bảng mới đúng SHAPE bảng cũ** (rename cột, thêm cột compat nullable/GENERATED) + **1 dòng registry** (`CUM_TBL`, `khoCuaMon`, `NHANH_CUA_MON`).
+- **⭐⭐ Cắm bảng mới vào module cũ ⇒ phải kê MỌI cột module đó select/filter/insert, không chỉ cột "chính".** Dính 3 lần liên tiếp, lần nào cũng **im lặng**: (1) insert của Đại không truyền `khoi` NOT NULL; (2) `getTaiLieuFull` select `ma_dang,ten_dang,muc_do,ma_chuyen_de,ten_chuyen_de` trên `banDoTbl` ⇒ fail ⇒ buổi rỗng; (3) `listCauByDang` mặc định `.eq('kho_chuan', true)` ⇒ `autoSuggestByLoai` throw ⇒ `setDangOfBuoi` dừng giữa chừng ⇒ buổi "0 dạng", UI đơ, không báo lỗi. **Cách làm đúng:** grep `.from(K.` / `.from(cauTbl` / `.from(tbl` toàn repo, gom tập cột, đối chiếu `information_schema.columns` TRƯỚC khi báo xong — không đợi CEO bấm từng màn mới lộ.
+- **⭐ UI "chọn xong mà đơ" ⇒ đếm dòng DB trước khi đọc code render.** Đếm `tai_lieu_phan` theo `loai_phan` của đúng tài liệu đó: có `buoi` mà 0 `dang` ⇒ lỗi nằm giữa đường GHI (hàm ghi throw), không phải render.
+- **⭐ Đếm nguồn trước khi viết script ghép data.** `hinh_bai` tên y như nguồn nhưng **0 dòng**; data thật ở `hinh_baitoan`. Và `phat_bieu` chỉ là câu hỏi (`de_bai_chuan` 100% NULL) — không ghép bối cảnh mô hình thì câu không đứng độc lập được. Chạy 1 query thống kê (null/rỗng từng cột ứng viên) rồi mới chốt mapping.
+- **Script ghép data 1 lần: 1 transaction + gộp theo khoá tự nhiên (tên Bài) + xoá script sau khi chạy.** Không idempotent thì đừng để lại trong repo — người sau chạy lại là nhân đôi 150 câu.
+- **Bộ lọc "chỉ hiện khi có dữ liệu" (`coMucDo`) cho component dùng chung.** Thêm filter độ khó vào `DangPicker` mà không làm rối nhánh chưa có `muc_do`: điều kiện hiện = tồn tại ≥1 leaf có giá trị, không `if (nhanh === 'hinh_hoc')` (§1.6 symmetry).
+- **git sau stash-pop/rebase: `git status` NGAY trước `git commit`, add theo tên.** 16/09 một `git commit` trần dính 6 file phiên khác đã staged sẵn (CEO cho push chung, nhưng lẽ ra không được xảy ra).

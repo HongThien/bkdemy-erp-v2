@@ -119,3 +119,135 @@ gán bừa cho ai.
 ⚠ Kèm chặn kỹ thuật đã biết: cấp 3 phân theo **nhánh lớp A/B/C** nhưng `ung_vien.khoi` chỉ ra
 `'11'`/`'12'`, và `lop_du_kien_id` null ở cả 4 ca ⇒ ca cấp 3 chưa định tuyến được cho tới khi có
 ô chọn lớp dự kiến lúc tạo ca test.
+
+---
+
+## 6. BÁO CÁO là chính, HỎI là phụ (CEO chốt 29/09) — ghi đè thứ tự ưu tiên ở trên
+
+> *"Hỏi là phụ, tính năng chính vẫn là báo cáo. Báo cáo đầy đủ dữ liệu cần thì gần như không cần hỏi lại nữa."*
+
+### 6.1 LOGIC báo cáo — 3 luồng, mục nào cũng phải đủ
+
+1. **Có bao nhiêu việc đang CHẬM / đang MISS.**
+2. **Nút "Detail"** — bấm mới hiện từng việc: **ngày nào, do ai phụ trách**. Bình thường chỉ là cái nút.
+3. **Cảnh báo rủi ro / bất thường** nếu có.
+
+**Báo cáo KHÔNG tính realtime (CEO chốt 29/09):** *"Lượt đầu mở máy tự tính, kết quả lưu vào DB để mở
+lại đỡ phải tính lại. Người dùng ấn tính lại thì kết quả mới đè kết quả cũ."* ⇒ bảng `troly_bao_cao_luu`,
+1 dòng / (bộ, ngày, khoảng); màn hình CHỈ gọi `fn_troly_bao_cao_lay` và luôn ghi rõ "số liệu tính lúc…".
+Ghi đè lên luật cũ của §4/HANDOFF 12/08 ("số tính lại mỗi lần mở, không lưu") — riêng cho báo cáo này.
+
+Đơn vị của báo cáo = **VIỆC** (có ngày + người phụ trách + hạn), KHÔNG phải "lớp trong một ngày".
+Mỗi việc có ngày riêng ⇒ báo cáo gom việc còn treo của nhiều ngày (7/14/30 ngày, mặc định 14).
+
+### 6.2 Mỗi người quản một MẢNG thì có một BỘ báo cáo riêng
+
+| Người | Quản | Bộ báo cáo | Trạng thái |
+|---|---|---|---|
+| **Trang** (NS002) | **Sư phạm** — mọi thứ liên quan sư phạm | `su_pham`: BTVN · ET · đánh giá trong buổi · đánh giá sau buổi · bổ trợ bù · bổ trợ yếu | đã xây (`fn_troly_bao_cao`) |
+| **Lộc** (NS003) | **Vận hành** — mọi thứ KHÔNG thuộc sư phạm | `van_hanh`: gồm bổ trợ đuổi… | CHƯA xây, chờ mẫu của CEO |
+
+Mẫu CEO gửi 29/09 (ảnh bảng "Thứ 2 (Đã diễn ra)") là mẫu của **Trang**.
+Chỉ 3 người dùng trợ lý: Thùy · Thùy Trang · Bảo Lộc (`troly_duoc_dung()` = `hoi_dap_duoc_dung()`).
+
+### 6.3 Luật đếm (CEO chốt 29/09)
+
+- **Chậm** = quá hạn mà chưa đóng. **Miss** = hỏng về nội dung (không có đề / không gán bài · bấm đóng
+  mà trống dữ liệu · đã đóng nhưng còn em có mặt thiếu dữ liệu · ca bổ trợ hoàn tất mà không test).
+- **Đóng muộn** (xong, đủ dữ liệu, sau hạn) đếm riêng, không gộp vào chậm.
+- **Chấm bài trên lớp**: trước đây KHÔNG bắt buộc, **bắt buộc từ tháng 10/2026** ⇒ buổi trước 01/10
+  không tính chậm/miss. Mốc ở `_troly_bc_gia_dinh().ingame_bat_buoc_tu`.
+- **Học sinh không đến** (ca bổ trợ huỷ vì em vắng): **báo RIÊNG thành một thông số**, không phải miss.
+- **Xếp bù + xếp lịch bổ trợ yếu**: người phụ trách = **Lộc**, lấy theo GHẾ trưởng team Vận hành.
+- Người phụ trách + hạn của việc sau buổi: lấy từ `fn_viec_buoi_thuong`, không định nghĩa lại.
+- "Không có đề" chỉ là miss với lớp thật sự chạy khâu đó (≥60% buổi/60 ngày) — luật §2 giữ nguyên.
+
+### 6.3b Mục BTVN có HAI phần — đo hai người khác nhau (CEO chốt 29/09)
+
+1. **Học sinh làm BTVN như nào** — cảnh báo về học sinh: không làm lặp lại · thái độ · điểm thấp hơn hẳn lớp.
+2. **Trợ giảng đang chấm BTVN như nào** — việc chậm/miss của TA **+ tỉ lệ nộp ĐẠT CHUẨN theo lớp**
+   (vd 4/10 = 40%). Detail hiện hết thông tin từng lớp: TA chấm bài · buổi học ngày nào · học sinh nào
+   chưa nộp / thiếu thông tin.
+
+**"Thiếu thông tin cũng tính là chưa đạt chuẩn dữ liệu."** Một em ĐẠT khi đủ cả ba: đã nộp (đúng hạn/
+muộn) · đã tick thái độ · có điểm chấm câu. Mẫu số = em có mặt buổi giao bài + em vắng mà vẫn có dòng
+BTVN. Chỉ tính buổi đã đóng BTVN hoặc đã quá hạn chấm.
+
+- **Ngưỡng lớp "tệ" = dưới 70%** — CEO chốt 29/09 (`_troly_bc_gia_dinh().btvn_ti_le_nop_toi_thieu`).
+- **Xin phép**: *"hợp lệ về thái độ thôi, còn vẫn phải nộp bài"* ⇒ vẫn tính là CHƯA NỘP trong tỉ lệ,
+  nhưng KHÔNG bị gắn cảnh báo thái độ.
+- **ET KHÔNG có phần tỉ lệ tương tự** — CEO: *"Học sinh đi học là có ET nhưng chưa chắc đã nộp BTVN."*
+  ET gắn với việc có mặt nên tỉ lệ nộp không phải thước đo của ET. Đừng đề xuất lại.
+
+### 6.4 Còn thiếu nguồn dữ liệu (báo cáo nói thẳng, không bịa — luật §3)
+
+"HS làm bài chậm hơn lớp" (ô tốc độ chưa ai nhập) · "không làm BTVN đã tác động đến đâu" (chưa có chỗ
+ghi tác động) · "danh sách chờ duyệt bổ trợ" (phần phát hiện còn tính ở client).
+
+## 7. TỔNG KẾT TUẦN — dashboard toàn cảnh (CEO chốt 29/09)
+
+Tính năng thứ hai của trợ lý, đứng cạnh Báo cáo. Hai thứ trả lời hai câu khác nhau — đừng gộp:
+
+| | Báo cáo (§6) | Tổng kết tuần (§7) |
+|---|---|---|
+| Câu hỏi | việc NÀO đang hỏng, của AI | cả hệ chạy TỐT TỚI ĐÂU |
+| Đơn vị | từng việc | tỉ lệ + xếp hạng |
+| Dùng để | đi nhắc người | nhìn xu hướng, so tuần trước |
+
+### 7.1 Logic
+
+- **Việc sau buổi học** (BTVN · ET · đánh giá sau buổi; chấm bài trên lớp từ 01/10): mỗi khâu 3 tỉ lệ
+  **đúng chuẩn / chậm / thiếu**. Detail = **xếp hạng giáo viên – TA** của khâu đó.
+  - đúng chuẩn = đóng đúng hạn + đủ dữ liệu · chậm = đóng sau hạn HOẶC quá hạn chưa đóng ·
+    thiếu = không có đề / đóng mà trống / đóng mà thiếu dữ liệu học sinh.
+  - **Mẫu số = việc đã tới hạn hoặc đã đóng.** Việc còn trong hạn để riêng.
+  - **Xếp hạng bỏ qua Thùy và Trang Phạm** (CEO). Việc của hai người vẫn tính trong số trung tâm.
+- **Bổ trợ yếu:** cần bổ trợ → đã lên lịch (+%) → đã bổ trợ (+%) đếm theo CASE; sự cố (+%) đếm theo LƯỢT xếp.
+- **Thời gian từng giai đoạn:** duyệt → xếp lịch · xếp lịch → diễn ra (trung bình, trung vị, lâu nhất, số mẫu).
+- **Toàn cảnh thêm:** số buổi / lớp · chuyên cần · học sinh nộp BTVN đạt chuẩn · bổ trợ bù · **chênh lệch với tuần trước** cho mọi tỉ lệ.
+- Không realtime, cùng luật §6: lưu bản tính vào DB, "↻ Tính lại" thì ghi đè.
+
+### 7.1b THƯỜNG ĐẠT — ngưỡng của từng chỉ số (CEO chốt 29/09)
+
+- CEO: *"Mỗi cái sẽ có 1 ngưỡng gọi là ngưỡng thường đạt — là trung bình toàn bộ các lần đã đo. Dưới thường
+  đạt quá nhiều là vấn đề."* và *"nhớ lọc nhiễu. những lần đo khác xa những lần khác là nhiễu."*
+- **Một lần đo = số của một tuần.** Thường đạt của tuần đang xem tính trên **8 tuần liền trước nó**
+  (CEO chốt 29/09: *"lấy 8 tuần gần nhất đi"* — bản đầu lấy toàn bộ lịch sử thì khâu đang cải thiện có
+  thường đạt rất thấp, tuần nào cũng "trên thường đạt"). Mảng chạy chưa đủ 8 tuần thì lấy các tuần đã có.
+- **Lọc nhiễu trước, lấy trung bình sau.** Lần đo bị coi là nhiễu thì không tính vào thường đạt, nhưng vẫn
+  hiện trên xu hướng (đánh dấu riêng) — không giấu.
+- **Tuần mà mảng chưa chạy trên hệ KHÔNG phải lần đo** (không phải "đo ra 0").
+- **Chỉ số còn đổi sau khi tuần kết thúc** (bù, trả kết quả test, điểm BTVN) thì 7 ngày đầu ghi "chưa chốt",
+  không đem so.
+- Bốn mức: **vấn đề** · **dưới thường đạt** · bình thường · trên thường đạt. Chỉ số không có chiều tốt/xấu
+  (số buổi, số case cần bổ trợ) thì không đánh giá.
+- Lý thuyết đứng sau: biểu đồ kiểm soát (Shewhart) + hàng rào Tukey.
+
+### 7.1c Mảng trong tổng kết & cách trình bày (CEO chốt 29/09)
+
+- Mảng: việc sau buổi · quy mô & chuyên cần · kết quả học tập · bổ trợ yếu · bổ trợ bù · bổ trợ đuổi ·
+  tuyển sinh. **Học phí KHÔNG đưa vào.**
+- **Dựng theo BẢNG, mỗi mảng một bảng**, cùng bộ cột: tuần này · tuần trước · thường đạt · so với thường đạt ·
+  xu hướng. Bảng đầu = "Cần chú ý" (chỉ số đang dưới thường đạt).
+- **Để thẳng trên ERP** (không xuất file HTML rời).
+- **Trình chiếu: mỗi bảng MỘT màn vừa khít, chuyển Trước / Sau** (CEO: *"mỗi bảng full 1 màn, để dạng next - back
+  đi chứ ko nên để kéo lên kéo xuống ko tiện"*). Không phải màn thường phóng to. Có mục lục để nhảy thẳng tới bảng
+  cần bàn; dùng được phím mũi tên / bút trình chiếu. Trình duyệt từ chối toàn màn hình thì vẫn phải chiếu được.
+- **Tự tính sáng thứ Hai** cho tuần vừa rồi + thông báo cho nhóm được dùng trợ lý.
+
+### 7.2 Luật kỹ thuật
+
+- Luật phân loại việc có **MỘT nguồn**: `_troly_viec_buoi_goc`. Báo cáo và tổng kết tuần đều đọc từ đó —
+  sửa luật thì sửa ở hàm gốc, hai nơi tự khớp.
+- Mọi phép tính (chênh lệch, số gộp, thường đạt, lọc nhiễu, đánh giá) ở DB; màn hình không trừ / không cộng.
+- **Danh mục chỉ số có MỘT nguồn**: `_troly_tuan_danh_muc()`. Thêm chỉ số = thêm một dòng ở đó.
+- Số từng tuần giữ ở `troly_tuan_so_luu` (dữ liệu suy ra, tính lại được). Hệ số ngưỡng ở `_troly_bc_gia_dinh()`.
+- Danh sách tài khoản được dùng trợ lý có MỘT nguồn: `hoi_dap_ds_tai_khoan()`.
+
+### 7.3 Bàn sau (chưa chốt — danh sách, không phải quyết định)
+
+- **Các con số của thường đạt** (đang dùng tạm): nhiễu = ngoài 1,5 × IQR · dưới thường đạt = xấu hơn 1 độ lệch
+  chuẩn · vấn đề = 2 độ lệch chuẩn · tối thiểu 4 lần đo · chưa chốt = 7 ngày · xu hướng bày 8 tuần.
+- "Chuyển lịch" bổ trợ: hệ chưa ghi vết đổi ngày/giờ ⇒ chưa đo được. Cần trigger ghi lịch sử nếu CEO muốn số thật.
+- Việc phát triển có đưa vào toàn cảnh không.
+- Thông báo thứ Hai gửi qua app nào; Lộc chưa đăng ký nhận tin ở app pt.

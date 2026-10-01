@@ -5,6 +5,7 @@ import { createRoot } from 'react-dom/client'
 import { registerSW } from 'virtual:pwa-register'
 import AppHS from './AppHS'
 import './index.css'
+import { ganSkinMacDinh } from './screens/hocsinh/skin/KhungHS'
 import 'katex/dist/katex.min.css'
 import { initErrorBuffer } from './lib/errorBuffer'
 
@@ -15,7 +16,19 @@ initErrorBuffer()
 // app" (PWA còn trong RAM, không re-navigate) thì kẹt bản cũ vô hạn (dính thật 29/08: deploy bỏ trần
 // tự luyện xong HS vẫn thấy UI 30 câu). Virtual module lắng nghe 'activated' (isUpdate) → tự
 // window.location.reload() — mở app là vài giây sau tự nhảy sang bản mới.
-registerSW({ immediate: true })
+// Trình duyệt chỉ tự hỏi "có bản mới không" khi TẢI TRANG. App để chạy nền trên điện thoại / tab mở suốt trên máy tính
+// thì không bao giờ tải lại ⇒ kẹt bản cũ nhiều ngày (dính thật 29/09: bundle 28/09 gọi tranh nền đã đổi tên ⇒ 404, mất nền).
+// ⇒ Tự hỏi mỗi 30 phút + mỗi lần em quay lại app. Có bản mới thì autoUpdate cài xong tự reload như trên.
+const KIEM_BAN_MOI_MS = 30 * 60 * 1000
+registerSW({
+  immediate: true,
+  onRegisteredSW(_url, reg) {
+    if (!reg) return
+    const kiem = () => { if (navigator.onLine && reg.installing == null) reg.update().catch(() => {}) }
+    setInterval(kiem, KIEM_BAN_MOI_MS)
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') kiem() })
+  },
+})
 
 // ⚠ BUG THẬT gây "trang chủ cuộn dọc" dù đã khoá h-screen (Thùy 21/08, verify trên production):
 // `index.css` có `:root { --app-z: 1.15 }` (mặc định — comment gốc ghi rõ "Fallback nếu JS chưa
@@ -29,6 +42,8 @@ registerSW({ immediate: true })
 // style) — bundle HS không cần "mật độ desktop" của staff, luôn net 1.0.
 document.documentElement.style.setProperty('--app-z', '1')
 
+// Skin mặc định (Anime RPG) gắn trước khi vẽ — HocSinhApp gắn lại theo lựa chọn của em (spec-giao-dien-hs.md).
+ganSkinMacDinh()
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <AppHS />

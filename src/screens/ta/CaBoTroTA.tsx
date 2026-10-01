@@ -4,7 +4,9 @@
 // → điểm test theo dạng → nhận xét (mẫu + gõ) + mức → "Hoàn tất ca" (khoá sau khi xong). Mọi số từ fn_btyeu_*.
 // KHÔNG import màn ERP desktop (luật app TA). Class màu literal (Tailwind JIT).
 import { useEffect, useState, type ReactNode } from 'react'
-import { caTA, dongCa, hoanTatCa, type CaTA, type ViecCaBoTro, type ViecRetest } from '../../lib/botro_yeu_ca'
+import { caTA, boDiemDanhYeu, dongCa, hoanTatCa, cauTlnCuaCa, suaKetQuaTln, listPhieuGiayCuaCa, inSinhBaiGiay, inLayBaiGiay, layCheDoCa, datCheDoCa, inTestGiay, type CaTA, type ViecCaBoTro, type ViecRetest, type CauTlnTA, type BaiInGiay, type CheDoCa, RETEST_BAT } from '../../lib/botro_yeu_ca'
+import { TrangIn, NhapKetQua } from './PhieuGiayYeuTA'
+import { MathText } from '../kho/ui'
 import { diemDanh, huyBuoi, MUC_CATALOG } from '../../lib/gami'
 import { timNhanXetMau, type NhanXetMau } from '../../lib/detest'
 import { homNayVN, ddmmVN, thuCuaNgay } from '../../lib/tuan'
@@ -108,19 +110,74 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
   const [nx, setNx] = useState('')
   const [mucMa, setMucMa] = useState<string | null>(null)
   const [khongTest, setKhongTest] = useState(false)
+  // Thùy 24/09: buổi xong ⇒ case phải tiến — TA tick dạng ĐÃ DẠY buổi này (mặc định tick hết dạng còn mở). null = chưa khởi tạo từ ca.
+  const [tickDay, setTickDay] = useState<Set<string> | null>(null)
   const [lyDo, setLyDo] = useState('')
   const [mau, setMau] = useState<NhanXetMau[]>([])
   const [now, setNow] = useState(Date.now())
 
-  const tai = async () => { try { const c = await caTA(buoiId); setCa(c); if (c?.danh_gia) { setNx(c.danh_gia.nhan_xet ?? ''); setMucMa(c.danh_gia.muc_ma) } } catch (e: any) { setLoi(e?.message ?? String(e)); setCa(null) } }
-  useEffect(() => { tai() }, [buoiId]) // eslint-disable-line
-  useEffect(() => { const id = setInterval(() => { tai(); setNow(Date.now()) }, POLL_MS); return () => clearInterval(id) }, [buoiId]) // eslint-disable-line
+  // Câu TRẢ LỜI NGẮN em đã trả lời trong ca — TA chỉnh Đúng/Sai (Thùy 19/09). Poll cùng nhịp; chỉnh xong vá tại chỗ.
+  const [tln, setTln] = useState<CauTlnTA[]>([])
+  const [tlnBusy, setTlnBusy] = useState<string | null>(null)
+  const [tlnMo, setTlnMo] = useState<boolean | null>(null) // null = theo mặc định: TỰ MỞ khi có câu máy chấm sai (Thùy 19/09: "ko thấy hiện chỗ nào")
+  const taiTln = () => cauTlnCuaCa(buoiId).then(setTln).catch(() => {})
+  // PHIẾU GIẤY (Thùy 21/09): thiếu iPad ⇒ in bài ra giấy; TA đứng ca là người NHẬP KẾT QUẢ (bấm đáp án em khoanh, máy chấm).
+  const [phieu, setPhieu] = useState<{ bai_test_id: string; so_cau: number; in_giay_at: string }[]>([])
+  const [phieuIn, setPhieuIn] = useState<BaiInGiay | null>(null)
+  const [phieuNhap, setPhieuNhap] = useState<BaiInGiay | null>(null)
+  const [soCauIn, setSoCauIn] = useState(5)
+  const taiPhieu = () => listPhieuGiayCuaCa(buoiId).then(setPhieu).catch(() => {})
+  // 2 CHẾ ĐỘ (Thùy 21/09): 📱 app = em làm 100% trên iPad · 📄 giấy = in phiếu, TA nhập đáp án em khoanh (cả test cuối ca). TA bấm chọn, lưu theo ca.
+  const [cheDo, setCheDo] = useState<CheDoCa | null>(null)
+  async function chonCheDo(v: CheDoCa) {
+    if (!ca) return
+    const cu = cheDo; setCheDo(v)
+    try { await datCheDoCa(ca.buoi_hoc_hs_id, v) } catch (e: any) { setCheDo(cu); setLoi(e?.message ?? String(e)) }
+  }
+  async function inTest() {
+    setBusy('intest'); setLoi(null)
+    try { const id = await inTestGiay(buoiId); setPhieuIn(await inLayBaiGiay(id)) } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(null) }
+  }
+  async function nhapTest() {
+    setBusy('nhaptest'); setLoi(null)
+    try { const id = await inTestGiay(buoiId); setPhieuNhap(await inLayBaiGiay(id)) } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(null) }
+  }
+  async function inPhieuMoi() {
+    setBusy('in'); setLoi(null); setOk(null)
+    try {
+      const r = await inSinhBaiGiay(buoiId, soCauIn)
+      if (r.dang_khong_co_cau.length) setOk(`Đã tạo phiếu ${r.so_cau} câu. ${r.dang_khong_co_cau.length} dạng chưa có câu trắc nghiệm nên không in được.`)
+      setPhieuIn(await inLayBaiGiay(r.bai_test_id)); taiPhieu()
+    } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(null) }
+  }
+  async function moPhieu(id: string, che: 'in' | 'nhap') {
+    setBusy(id); setLoi(null)
+    try { const b = await inLayBaiGiay(id); if (che === 'in') setPhieuIn(b); else setPhieuNhap(b) } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(null) }
+  }
+  async function chinhTln(x: CauTlnTA, dung: boolean) {
+    setTlnBusy(x.bai_lam_cau_id); setLoi(null)
+    try {
+      const r = await suaKetQuaTln(x.bai_lam_cau_id, dung)
+      setTln((prev) => prev.map((y) => y.bai_lam_cau_id === x.bai_lam_cau_id ? { ...y, verdict: r.verdict, cham_boi: r.doi ? 'manual' : y.cham_boi, da_sua: y.da_sua || r.doi } : y))
+      if (r.doi) tai() // tỉ lệ đúng theo dạng/cụm ở khối Luyện đổi theo
+    } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setTlnBusy(null) }
+  }
+  const tai = async () => { try { const c = await caTA(buoiId); setCa(c); if (c) layCheDoCa(c.buoi_hoc_hs_id).then((v) => setCheDo((cur) => cur ?? v)).catch(() => {}); if (c?.danh_gia) { setNx(c.danh_gia.nhan_xet ?? ''); setMucMa(c.danh_gia.muc_ma) } } catch (e: any) { setLoi(e?.message ?? String(e)); setCa(null) } }
+  useEffect(() => { tai(); taiTln(); taiPhieu() }, [buoiId]) // eslint-disable-line
+  useEffect(() => { const id = setInterval(() => { tai(); taiTln(); setNow(Date.now()) }, POLL_MS); return () => clearInterval(id) }, [buoiId]) // eslint-disable-line
   useEffect(() => { if (ca?.mon) timNhanXetMau(ca.mon, 'kien_thuc', '').then(setMau).catch(() => {}) }, [ca?.mon])
 
   async function chay(k: string, f: () => Promise<void>, xong?: string) {
     setBusy(k); setLoi(null); setOk(null)
     try { await f(); await tai(); if (xong) setOk(xong) } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(null) }
   }
+
+  // Thùy 29/09: dạng đã học LẤY TỪ DỮ LIỆU — ca 📱 app: DB tự lấy dạng em có làm câu trong ca (không tick, DB bỏ qua tick gửi lên);
+  // chỉ ca 📄 giấy TA mới tick, mặc định KHÔNG tick — tick sẵn duy nhất dạng máy đã đánh dấu ở buổi này (có kết quả phiếu đã nhập).
+  const dangMo = ca ? ca.dangs.filter((d) => !d.dong_at) : []
+  const tickMacDinh = () => new Set(dangMo.filter((d) => d.day_buoi_id === ca?.buoi_id).map((d) => d.ma_dang))
+  const tick = tickDay ?? (ca ? tickMacDinh() : new Set<string>())
+  const doiTick = (ma: string) => { const n = new Set(tick); if (n.has(ma)) n.delete(ma); else n.add(ma); setTickDay(n) }
 
   if (ca === undefined) return <div className="p-6 text-center text-[13px] text-slate-400">Đang tải ca…</div>
   if (!ca) return <div className="p-6"><button onClick={onBack} className="text-[13px] text-indigo-600">‹ Quay lại</button><p className="mt-3 text-[13px] text-rose-600">{loi ?? 'Không thấy ca.'}</p></div>
@@ -132,6 +189,7 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
   const hoanTat = !!ca.danh_gia_xong_at
   const tongCau = ca.dangs.reduce((s, d) => s + d.so_cau, 0)
   const cauCuoi = ca.dangs.map((d) => d.cau_cuoi_at).filter(Boolean).sort().pop()
+  const tlnDangMo = tlnMo ?? tln.some((x) => x.verdict !== 'correct')
   const imPhut = cauCuoi ? Math.floor((now - Date.parse(cauCuoi)) / 60000) : null
 
   return (
@@ -145,8 +203,18 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
 
         {/* 1. Điểm danh */}
         <Khoi so={1} ten="Điểm danh" trang={coMat ? 'xong' : vang ? 'xong' : 'dang'}>
-          {coMat ? <p className="text-[13px] text-emerald-700">✓ Em có mặt — iPad của em đã thấy ca.</p>
-            : vang ? <p className="text-[13px] text-rose-700">Em vắng — buổi đã huỷ (đếm số lần huỷ của ca).</p>
+          {/* Thùy 28/09: chạm 1 lần = điểm danh, chạm LẠI nút đang chọn = bỏ điểm danh (DB chặn nếu em đã làm bài / đã đóng ca). */}
+          {coMat || vang ? (
+            <div className="flex flex-col gap-1.5">
+              <div className="flex gap-2">
+                <button disabled={!!busy || hoanTat || daDong} onClick={() => coMat && chay('bo', () => boDiemDanhYeu(ca.buoi_hoc_hs_id), 'Đã bỏ điểm danh.')}
+                  className={`flex-1 rounded-xl py-2.5 text-[14px] font-bold disabled:opacity-60 ${coMat ? 'bg-emerald-600 text-white' : 'border border-slate-200 text-slate-400'}`}>{busy === 'bo' && coMat ? '…' : '✓ Em có mặt'}</button>
+                <button disabled={!!busy || hoanTat || daDong} onClick={() => vang && chay('bo', () => boDiemDanhYeu(ca.buoi_hoc_hs_id), 'Đã bỏ điểm danh vắng — buổi mở lại.')}
+                  className={`rounded-xl px-4 py-2.5 text-[14px] font-semibold disabled:opacity-60 ${vang ? 'bg-rose-600 text-white' : 'border border-slate-200 text-slate-400'}`}>{busy === 'bo' && vang ? '…' : 'Vắng'}</button>
+              </div>
+              <p className="text-[11.5px] text-slate-500">{hoanTat || daDong ? 'Ca đã đóng — không đổi điểm danh được.' : coMat ? 'Em có mặt — iPad của em đã thấy ca. Chạm lại “Em có mặt” để bỏ điểm danh (chỉ khi em chưa làm câu nào).' : 'Em vắng — buổi đã huỷ. Chạm lại “Vắng” nếu điểm danh nhầm (buổi mở lại).'}</p>
+            </div>
+          )
             : hoiVang ? (
               <div className="flex flex-wrap items-center gap-2 text-[13px]">
                 <span className="text-slate-600">Đánh vắng và HUỶ buổi này?</span>
@@ -163,9 +231,25 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
             )}
         </Khoi>
 
+        {/* 1b. CHỌN CHẾ ĐỘ — hiện khi em có mặt; khoá khi ca đã đóng */}
+        {coMat && (
+          <div className={`mb-3 rounded-2xl p-3 ring-1 ${cheDo ? 'bg-white ring-slate-200' : 'bg-amber-50 ring-amber-300'}`}>
+            <p className="mb-2 text-[13.5px] font-bold text-slate-800">Em làm bài bằng gì? {!cheDo && <span className="font-medium text-amber-700">— chọn 1 trong 2 để bắt đầu</span>}</p>
+            <div className="grid grid-cols-2 gap-2">
+              {([['app', '📱', 'Trên iPad', 'Em tự làm trên app — máy chấm, TA theo dõi tiến độ.'], ['giay', '📄', 'In giấy', 'Thiếu iPad: in phiếu cho em làm, TA nhập đáp án em khoanh.']] as const).map(([v, icon, ten, mo]) => (
+                <button key={v} disabled={daDong && cheDo !== v} onClick={() => chonCheDo(v)}
+                  className={`rounded-xl px-3 py-2.5 text-left transition disabled:opacity-40 ${cheDo === v ? (v === 'giay' ? 'bg-amber-500 text-white shadow' : 'bg-indigo-600 text-white shadow') : 'border border-slate-200 bg-white text-slate-700'}`}>
+                  <span className="block text-[15px] font-bold">{icon} {ten}{cheDo === v ? ' ✓' : ''}</span>
+                  <span className={`mt-0.5 block text-[11.5px] leading-snug ${cheDo === v ? 'text-white/90' : 'text-slate-500'}`}>{mo}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* 2. Tiến độ luyện */}
-        <Khoi so={2} ten="Luyện" trang={!coMat ? 'cho' : daDong ? 'xong' : 'dang'}
-          phu={coMat && !daDong ? (tongCau === 0 ? 'em chưa làm câu nào' : imPhut != null && imPhut >= 5 ? `⚠ im ${imPhut} phút` : 'đang làm · tự cập nhật 10s') : undefined}>
+        <Khoi so={2} ten={cheDo === 'giay' ? 'Luyện trên GIẤY' : 'Luyện'} trang={!coMat ? 'cho' : daDong ? 'xong' : 'dang'}
+          phu={coMat && !daDong ? (cheDo === 'giay' ? (phieu.length ? `${phieu.length} phiếu đã in · nhập kết quả để tính tiến độ` : 'in phiếu đầu tiên ở khối dưới') : tongCau === 0 ? 'em chưa làm câu nào' : imPhut != null && imPhut >= 5 ? `⚠ im ${imPhut} phút` : 'đang làm · tự cập nhật 10s') : undefined}>
           {ca.dangs.length === 0 ? <p className="text-[13px] text-slate-400">Ca chưa có dạng — chọn ở "Nội dung bổ trợ yếu".</p> : (
             <div className="flex flex-col gap-2">
               {ca.dangs.map((d) => (
@@ -192,6 +276,79 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
           )}
         </Khoi>
 
+        {/* 2a. PHIẾU GIẤY — in khi thiếu iPad + nhập kết quả (hiện khi em có mặt và ca chưa đóng, hoặc đã có phiếu) */}
+        {(phieu.length > 0 || (coMat && !daDong && cheDo === 'giay')) && (
+          <div className="mb-3 rounded-2xl bg-white p-3 ring-1 ring-slate-200">
+            <div className="flex flex-wrap items-center gap-2">
+              <p className="text-[13.5px] font-bold text-slate-800">📄 Phiếu giấy</p>
+              <span className="text-[11.5px] text-slate-500">thiếu iPad thì in — cùng bộ câu app sẽ đưa, né câu em đã gặp</span>
+              {coMat && !daDong && cheDo === 'giay' && (
+                <span className="ml-auto flex items-center gap-1.5">
+                  <select value={soCauIn} onChange={(e) => setSoCauIn(Number(e.target.value))} className="rounded-md border border-slate-300 px-1.5 py-1 text-[12px]">{[3, 5, 8, 10].map((n) => <option key={n} value={n}>{n} câu/dạng</option>)}</select>
+                  <button disabled={!!busy} onClick={inPhieuMoi} className="rounded-lg bg-slate-800 px-3 py-1.5 text-[12.5px] font-semibold text-white disabled:opacity-50">{busy === 'in' ? 'Đang chọn câu…' : '🖨 In phiếu mới'}</button>
+                </span>
+              )}
+            </div>
+            {phieu.length === 0 ? <p className="mt-1.5 text-[12.5px] text-slate-400">Chưa in phiếu nào cho ca này.</p> : (
+              <div className="mt-2 flex flex-col gap-1.5">
+                {phieu.map((g, i) => (
+                  <div key={g.bai_test_id} className="flex items-center gap-2 rounded-xl bg-slate-50 px-3 py-2 text-[13px]">
+                    <span className="font-semibold text-slate-700">Phiếu {i + 1}</span>
+                    <span className="text-slate-500">{g.so_cau} câu · in lúc {new Date(g.in_giay_at).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })}</span>
+                    <button disabled={busy === g.bai_test_id} onClick={() => moPhieu(g.bai_test_id, 'nhap')} className="ml-auto rounded-lg bg-amber-500 px-3 py-1.5 text-[12.5px] font-bold text-white disabled:opacity-50">✎ Nhập kết quả</button>
+                    <button disabled={busy === g.bai_test_id} onClick={() => moPhieu(g.bai_test_id, 'in')} className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[12.5px] text-slate-600">🖨 In lại</button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+        {phieuIn && <TrangIn bai={phieuIn} onDong={() => setPhieuIn(null)} />}
+        {phieuNhap && <NhapKetQua bai={phieuNhap} onDong={() => { setPhieuNhap(null); tai() }} />}
+
+        {/* 2b. Câu trả lời ngắn — TA chỉnh kết quả (chỉ hiện khi em đã trả lời ≥1 câu TLN) */}
+        {coMat && (
+          <div className="mb-3 rounded-2xl bg-white p-3 ring-1 ring-amber-200">
+            <button onClick={() => setTlnMo(!tlnDangMo)} className="flex w-full items-center justify-between gap-2 text-left">
+              <div className="min-w-0">
+                <p className="text-[13.5px] font-bold text-slate-800">✍ Câu trả lời ngắn — chỉnh kết quả</p>
+                <p className="text-[11.5px] text-slate-500">{tln.length} câu · máy chấm sai {tln.filter((x) => x.verdict !== 'correct').length}{tln.some((x) => x.da_sua) ? ` · đã chỉnh tay ${tln.filter((x) => x.da_sua).length}` : ''} — em làm đúng (nháp/nói miệng) mà máy chấm sai thì tích lại ở đây.</p>
+              </div>
+              <span className="shrink-0 text-slate-400">{tlnDangMo ? '▾' : '▸'}</span>
+            </button>
+            {tlnDangMo && tln.length === 0 && <p className="mt-2 text-[12.5px] text-slate-400">Em chưa trả lời câu trả lời ngắn nào trong ca này (câu trắc nghiệm máy chấm chắc chắn nên không cần chỉnh).</p>}
+            {tlnDangMo && tln.length > 0 && (
+              <div className="mt-2 flex flex-col gap-2">
+                {tln.map((x) => {
+                  const dung = x.verdict === 'correct'
+                  const hsTxt = x.dap_an_hs == null ? '—' : typeof x.dap_an_hs === 'string' ? x.dap_an_hs : JSON.stringify(x.dap_an_hs)
+                  const keyTxt = x.dap_an_key == null ? '—' : typeof x.dap_an_key === 'string' ? x.dap_an_key : JSON.stringify(x.dap_an_key)
+                  return (
+                    <div key={x.bai_lam_cau_id} className={`rounded-xl px-3 py-2 ring-1 ${dung ? 'bg-emerald-50/50 ring-emerald-200' : 'bg-rose-50/50 ring-rose-200'}`}>
+                      <div className="flex items-center gap-1.5 text-[10.5px] font-semibold text-slate-500">
+                        <span className="rounded bg-white px-1.5 py-px ring-1 ring-slate-200">{x.loai_bai === 'bo_tro' ? 'Luyện' : x.loai_bai === 'bo_tro_test' ? 'Test cuối ca' : 'Retest'}</span>
+                        {x.ma_cau && <span className="text-slate-400">{x.ma_cau}</span>}
+                        {x.da_sua && <span className="rounded bg-amber-100 px-1.5 py-px text-amber-800">đã chỉnh tay</span>}
+                      </div>
+                      {x.noi_dung && <div className="mt-1 text-[13px] leading-snug text-slate-800"><MathText>{x.noi_dung}</MathText></div>}
+                      <div className="mt-1 grid grid-cols-2 gap-2 text-[12.5px]">
+                        <div><span className="text-slate-400">Em trả lời: </span><b className={dung ? 'text-emerald-700' : 'text-rose-700'}><MathText>{hsTxt}</MathText></b></div>
+                        <div><span className="text-slate-400">Đáp án: </span><b className="text-slate-700"><MathText>{keyTxt}</MathText></b></div>
+                      </div>
+                      <div className="mt-2 flex items-center gap-2">
+                        <button disabled={tlnBusy === x.bai_lam_cau_id || dung} onClick={() => chinhTln(x, true)}
+                          className={`flex-1 rounded-lg py-1.5 text-[13px] font-bold ${dung ? 'bg-emerald-600 text-white' : 'border border-emerald-300 bg-white text-emerald-700'} disabled:opacity-100`}>{dung ? '✓ Đúng' : 'Tích ĐÚNG'}</button>
+                        <button disabled={tlnBusy === x.bai_lam_cau_id || !dung} onClick={() => chinhTln(x, false)}
+                          className={`flex-1 rounded-lg py-1.5 text-[13px] font-bold ${!dung ? 'bg-rose-600 text-white' : 'border border-rose-300 bg-white text-rose-700'} disabled:opacity-100`}>{!dung ? '✗ Sai' : 'Tích SAI'}</button>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+        )}
+
         {/* 3. Đóng ca & test */}
         <Khoi so={3} ten="Đóng ca · test cuối buổi" trang={!coMat ? 'cho' : !daDong ? 'dang' : testDaNop ? 'xong' : 'dang'}>
           {!daDong ? (
@@ -207,7 +364,13 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
             )
           ) : (
             <div className="text-[13px]">
-              <p className="text-slate-700">✓ Đã đóng ca · test {ca.test!.so_cau} câu {testDaNop ? <span className="font-semibold text-emerald-700">· em đã nộp</span> : <span className="font-semibold text-amber-700">· chờ em làm trên iPad</span>}</p>
+              <p className="text-slate-700">✓ Đã đóng ca · test {ca.test!.so_cau} câu {testDaNop ? <span className="font-semibold text-emerald-700">· {cheDo === 'giay' ? 'đã nhập & nộp' : 'em đã nộp'}</span> : <span className="font-semibold text-amber-700">· {cheDo === 'giay' ? 'in ra cho em làm, rồi nhập kết quả & nộp' : 'chờ em làm trên iPad'}</span>}</p>
+              {cheDo === 'giay' && !testDaNop && (
+                <div className="mt-2 flex gap-2">
+                  <button disabled={!!busy} onClick={inTest} className="flex-1 rounded-xl bg-slate-800 py-2.5 text-[13.5px] font-bold text-white disabled:opacity-50">{busy === 'intest' ? '…' : '🖨 In bài kiểm tra'}</button>
+                  <button disabled={!!busy} onClick={nhapTest} className="flex-1 rounded-xl bg-amber-500 py-2.5 text-[13.5px] font-bold text-white disabled:opacity-50">{busy === 'nhaptest' ? '…' : '✎ Nhập kết quả & nộp'}</button>
+                </div>
+              )}
               {testDaNop && ca.test!.theo_dang.length > 0 && (
                 <div className="mt-1.5 flex flex-wrap gap-1.5">
                   {ca.test!.theo_dang.map((t) => {
@@ -216,7 +379,8 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
                   })}
                 </div>
               )}
-              {ca.retest ? <p className="mt-1.5 text-[12px] text-violet-700">📝 Retest đã sinh: {ca.retest.so_cau} câu · làm sau ET {thuCuaNgay(ca.retest.ngay)} {ddmmVN(ca.retest.ngay)} (TA lớp đưa iPad){ca.retest.da_nop ? ' · ✓ đã nộp' : ''}</p>
+              {!RETEST_BAT ? null /* hold retest 29/09 — không sinh, không nhắc */
+                : ca.retest ? <p className="mt-1.5 text-[12px] text-violet-700">📝 Retest đã sinh: {ca.retest.so_cau} câu · làm sau ET {thuCuaNgay(ca.retest.ngay)} {ddmmVN(ca.retest.ngay)} (TA lớp đưa iPad){ca.retest.da_nop ? ' · ✓ đã nộp' : ''}</p>
                 : <p className="mt-1.5 text-[12px] text-amber-700">⚠ Không sinh được retest (lớp em không có buổi thường trong 28 ngày tới) — báo OPS.</p>}
             </div>
           )}
@@ -227,6 +391,10 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
           {hoanTat ? (
             <div className="text-[13px] text-slate-700">
               <p className="text-emerald-700">✓ Đã hoàn tất ca.</p>
+              {/* Thùy 29/09: hết dạng yếu + TA đóng ca ⇒ DB đóng case (day_xong). App chỉ báo kết quả DB trả. */}
+              {!RETEST_BAT && (ca.case_trang_thai === 'hoan_thanh'
+                ? <p className="mt-1.5 rounded-xl bg-emerald-50 px-3 py-2 font-semibold text-emerald-800">🎉 {ca.case_ket_qua === 'day_xong' ? `Em đã hết dạng yếu — bổ trợ yếu ${ca.mon} KẾT THÚC.` : `Bổ trợ yếu ${ca.mon} đã đóng.`}</p>
+                : ca.so_dang_con_day > 0 && <p className="mt-1.5 rounded-xl bg-indigo-50 px-3 py-2 text-indigo-800">Còn {ca.so_dang_con_day} dạng phải dạy — OPS xếp buổi sau.</p>)}
               {ca.danh_gia?.muc_ma && <p className="mt-1">Mức: <b>{MUC_CATALOG.find((m) => m.ma === ca.danh_gia!.muc_ma)?.nhan ?? ca.danh_gia.muc_ma}</b></p>}
               {ca.danh_gia?.nhan_xet && <p className="mt-1 whitespace-pre-wrap text-slate-600">{ca.danh_gia.nhan_xet}</p>}
             </div>
@@ -251,8 +419,34 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
                   </span>
                 </label>
               )}
+              {dangMo.length > 0 && cheDo !== 'giay' && (
+                // 📱 app (hoặc chưa chọn): KHÔNG tick — dạng đã học = dạng em có làm câu trên app buổi này (DB tính, app chỉ hiện).
+                <div className="rounded-xl bg-indigo-50/60 px-3 py-2 text-[12.5px]">
+                  <p className="mb-1 text-[12px] font-bold text-indigo-800">Dạng em đã học buổi này <span className="font-normal text-indigo-600">— máy lấy từ bài em làm trên app, TA không cần tick</span></p>
+                  {dangMo.filter((d) => d.day_buoi_id === ca.buoi_id).map((d) => (
+                    <p key={d.ma_dang} className="py-0.5 text-slate-700">✓ {d.ten_dang}<span className="text-slate-400"> · luyện {d.so_dung}/{d.so_cau}</span></p>
+                  ))}
+                  {!dangMo.some((d) => d.day_buoi_id === ca.buoi_id) && <p className="py-0.5 text-slate-500">Em chưa làm dạng nào trên app buổi này.</p>}
+                  {!RETEST_BAT && (ca.so_dang_con_day === 0
+                    ? <p className="mt-1 font-semibold text-amber-700">⚠ Em đã học hết dạng yếu ⇒ bấm Hoàn tất là bổ trợ yếu {ca.mon} KẾT THÚC.</p>
+                    : <p className="mt-1 text-slate-500">Còn {ca.so_dang_con_day} dạng chưa học ⇒ OPS xếp buổi sau.</p>)}
+                  {!daDong && <p className="mt-1 text-[11.5px] text-slate-400">Em học trên giấy? Chọn “📄 In giấy” ở trên để tick dạng tay.</p>}
+                </div>
+              )}
+              {dangMo.length > 0 && cheDo === 'giay' && (
+                <div className="rounded-xl bg-indigo-50/60 px-3 py-2">
+                  <p className="mb-1 text-[12px] font-bold text-indigo-800">Dạng đã dạy buổi này <span className="font-normal text-indigo-600">— 📄 ca giấy: tick dạng em ĐÃ HỌC (dạng tick ⇒ {RETEST_BAT ? 'chờ retest' : 'đã dạy xong'}, không tick ⇒ xếp buổi sau). Dạng có kết quả phiếu đã nhập được tick sẵn.</span></p>
+                  {!RETEST_BAT && <p className="mb-1 text-[11.5px] font-semibold text-amber-700">⚠ Tick đủ mọi dạng còn phải học ⇒ em HẾT dạng yếu: bấm Hoàn tất là bổ trợ yếu {ca.mon} của em KẾT THÚC.</p>}
+                  {dangMo.map((d) => (
+                    <label key={d.ma_dang} className="flex items-start gap-2 py-0.5 text-[12.5px] text-slate-700">
+                      <input type="checkbox" checked={tick.has(d.ma_dang)} onChange={() => doiTick(d.ma_dang)} className="mt-0.5" />
+                      <span className="flex-1">{d.ten_dang}{d.so_cau > 0 ? <span className="text-slate-400"> · luyện {d.so_dung}/{d.so_cau}</span> : null}{d.dat === false ? <span className="text-rose-600"> · retest trượt, dạy lại</span> : d.day_at && d.day_buoi_id !== ca.buoi_id ? <span className="text-slate-400"> · đã dạy buổi trước</span> : null}</span>
+                    </label>
+                  ))}
+                </div>
+              )}
               <button disabled={!!busy || !coMat || (!daDong && tongCau > 0) || (daDong && !testDaNop && !(khongTest && lyDo.trim()))}
-                onClick={() => chay('ht', () => hoanTatCa(ca.buoi_id, nx, mucMa, khongTest ? lyDo.trim() : null), 'Đã hoàn tất ca.')}
+                onClick={() => chay('ht', () => hoanTatCa(ca.buoi_id, nx, mucMa, khongTest ? lyDo.trim() : null, cheDo === 'giay' ? [...tick] : undefined), 'Đã hoàn tất ca.')}
                 className="w-full rounded-xl bg-emerald-600 py-2.5 text-[14px] font-bold text-white disabled:opacity-40">
                 {busy === 'ht' ? 'Đang lưu…' : 'Hoàn tất ca'}
               </button>

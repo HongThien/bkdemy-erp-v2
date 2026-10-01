@@ -1,0 +1,16 @@
+-- ============================================================================
+-- 202609281739 — rank_toan_8_buoi
+-- ----------------------------------------------------------------------------
+-- VÌ SAO (không phải "làm gì" — đọc SQL là biết làm gì):
+--   Thùy 28/09: "1 tháng học 8 buổi thì có 1 MT và 7 ET" (mô phỏng cũ giả định 5 ET + 5 BTVN ⇒ phong độ vượt 100% ở tháng 7).
+--   Tháng 8–9 ít ET là do lỗi ET hình, KHÔNG phải nhịp học thật. BTVN đi kèm buổi ET ⇒ 7 bài.
+--   Tính lại theo đúng luật đã chốt (không đổi luật, chỉ đổi số đầu vào):
+--     tối đa 3 nguồn = 7×100 ET + 7×100 BTVN + 1.000 MT = 2.400
+--     trần Thử thách tháng = ¼ × 2.400 = 600 · trần ngày = 600 ÷ 20 = 30
+--     điểm tối đa tháng = 2.400 + 600 = 3.000 ⇒ ngưỡng bậc = hệ số × 3.000 (hệ số giữ nguyên)
+--   KHTN chưa có số buổi thật ⇒ giữ nguyên (đang tắt).
+--
+-- MẤT GÌ (nếu có delete/drop/alter thu hẹp — liệt kê CHÍNH XÁC, Luật xoá):
+--   Không. Chỉ đổi 3 số cấu hình của Toán (500 → 600 · 25 → 30 · 2.500 → 3.000). thu_thach_luot đã ghi giữ nguyên.
+-- ============================================================================
+update rank_cau_hinh set tt_tran_thang = 600, tt_tran_ngay = 30, diem_toi_da_thang = 3000 where mon = 'Toán';

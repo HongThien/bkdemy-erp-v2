@@ -185,6 +185,7 @@
   - DB đã có bảng mà chưa có sổ ⇒ script **từ chối chạy** và in đúng lệnh cần gõ, thay vì đâm vào `0001`.
   - **Lịch sử migration bất biến:** sửa file đã áp thì DB và repo nói hai chuyện khác nhau — `--status`
     sẽ nêu cờ, nhưng script KHÔNG áp lại. Muốn đổi thì viết migration **MỚI** đè lên.
+  - **⭐ AI ÁP đổi cả posture quyền (đo thật 18/09):** áp bằng **SQL Editor** ⇒ hàm thuộc owner `postgres` ⇒ dính `alter default privileges` của Supabase ⇒ `anon` được **grant TƯỜNG MINH**, nên `revoke … from public` **KHÔNG đủ**, phải `revoke execute … from anon`; áp bằng **`npm run migrate`** (owner `claude_build`) thì không dính, ACL không hề có `anon`. *(Cắn thật: mig 202609181946 tưởng đã kín, anon vẫn gọi được — vá ở mig 202609182334.)*
 - **Sau mỗi migration:** `npm run schema`, commit `schema.md` cùng migration (git diff thấy schema đổi gì).
 - **Đặt tên migration = TIMESTAMP, không phải số tăng dần:** `npm run new-migration ten_viec_snake_case`
   → `YYYYMMDDHHMM_ten_viec.sql` (giờ VN). Số tăng dần cấp bằng "nhìn file cuối +1" nên hai luồng làm
@@ -240,6 +241,24 @@
 - **Delegation (Principle 3):** AI → TA → GV → manager → CEO — giao việc cho **cấp thấp nhất làm được tốt**.
 - UX: full CRUD; feedback ~2s sau lưu; không `alert()` cho success.
   Nút hành động chính chỉ disable khi **thiếu data**, không disable vì state UI (`!saved`).
+- **⭐ Quy ước card/box (CEO chốt 19/09, sau đợt sửa app HS "Học từ đầu"):** đúng 2 kiểu, không bịa kiểu
+  thứ 3, không trộn tuỳ hứng trong cùng 1 màn:
+  - **Kiểu 1 — HEADER màu + NỘI DUNG trắng:** dùng khi card có thêm dòng mô tả/trạng thái bên dưới
+    tiêu đề. Dải màu đặc nằm TRÊN (chữ trắng, thường kèm icon), thân TRẮNG bên dưới chứa nội dung.
+    **Khung phải GẦN VUÔNG — cấm làm "dẹt"** (thanh ngang thấp trải hết chiều rộng, đã bị chê xấu 1 lần).
+    Mẫu: `CardMau`/`CardBox` trong `src/screens/hocsinh/HocTuDau.tsx`.
+  - **Kiểu 2 — CHỈ HEADER, không có khối nội dung riêng:** dùng khi card chỉ cần icon + tiêu đề + tối đa
+    1 dòng phụ ngắn (không đủ nội dung để tách khối trắng riêng) — làm giống lưới 6 ô ngoài Home:
+    nền pastel nhạt (`tone.bg`), icon trong khối bo tròn riêng (`tone.ill`), chevron góc dưới phải,
+    badge số ở góc trên phải nếu có. Mẫu: lưới `cards` trong `src/screens/hocsinh/HomeHS.tsx`.
+  - Chọn kiểu theo **nội dung thật sự có bao nhiêu** (có dòng mô tả/trạng thái → kiểu 1; chỉ điều
+    hướng đơn giản → kiểu 2), không phải theo sở thích lúc code.
+- **⭐ APP HỌC SINH = THEO STYLE (CEO chốt 29/09) — ĐỌC `design/STYLE-HS.md` trước khi thêm/sửa BẤT KỲ màn/tính năng nào của app HS.**
+  Style (đang dùng: Anime RPG) = 1 gói trọn: `src/screens/hocsinh/skin/styles/<id>.ts` + tài nguyên `public/bk-ui/hs/skin/<id>/`.
+  Đổi style là đổi HẾT (Home + mọi màn con). Màn mới CHỈ dựng bằng `skin/KhungHS.tsx` (`ManHS`/`DauTrangHS`/`TheHS`/`NutHS`… + `MAU`/`THE`/`HEAD`)
+  — cấm mã màu gõ tay, token `ph-*`/`bg-ios`, màu theo giới tính, `if (skin === …)`. Thêm ô chức năng mới ⇒ mỗi style phải có icon cho ô đó.
+  **`npm run check:style-hs` phải ✔ trước khi commit đụng `src/screens/hocsinh/`.** (Quy ước card kiểu 1/kiểu 2 ở trên vẫn áp,
+  màu lấy từ style.)
 
 ---
 
@@ -255,6 +274,12 @@
 - [Pilot Điểm-danh → ET — 7 User Story](https://app.notion.com/p/375d4530bcdb8084b38bead35fdf0be7)
 
 ### Spec build (trong repo — nguồn cho đợt code hiện tại)
+- **`spec-v1-app-hs.md` — ĐỌC BẮT BUỘC trước khi làm BẤT KỲ việc gì trên app HS** (Thùy chốt 01/10): release V1.0 = 8 hạng mục (tutorial · chuỗi + nhiệm vụ ·
+  Thế giới BK · Rank · UI "Giải cứu thế giới — đánh quái vật" 100% · ≥2 style · game tổ hợp · góp ý/báo lỗi) · **màn NGANG trước** (cấp 1–2 dùng iPad/PC) ·
+  "lượt học thật" (≥5/10) là nền chung cho chuỗi/nhiệm vụ/game · bản đồ phiêu lưu: chủ đề = lục địa, chuyên đề = khu vực, dạng = màn, cụm = quái.
+- **`spec-bo-tro.md` — ĐỌC BẮT BUỘC trước khi sửa luồng BỔ TRỢ (yếu · bù · đuổi).** Bản tổng hợp quyết định CEO + hiện trạng build (21/09):
+  4 kênh phát hiện & ngưỡng · mức ưu tiên case · lịch trực khối+bậc, ca ≤3 em, không xếp lại · MCQ tuyệt đối · 2 chế độ ca 📱 app / 📄 giấy
+  (in phiếu, nhập kết quả, nộp test) · màn theo dõi · bản đồ code/DB · việc còn treo. Thiết kế gốc: `PLAN-botro-yeu.md`, `PLAN-botro-yeu-ca.md`.
 - `spec-kho-v2.md` — Kho Canonical Knowledge (Đại + Hình). Schema đã build vào DB v2.
 - **`spec-giai-bai-ai.md` — ĐỌC BẮT BUỘC trước khi chạy "quét/giải câu chưa có đáp án" bằng AI**
   (Đại/KHTN/HGT/Hình). Rule quan trọng nhất: bài nhiều ý phải dùng lại kết quả ý trước, không chứng
@@ -266,6 +291,11 @@
   đúng/sai từng ô; logic chọn form cho HS (yếu → ĐIỀN, ổn → TN; TLN/tự luận để sau).
 - `spec-mcq-form.md` — Phiên bản TRẮC NGHIỆM (distractor theo lỗi) của câu tính toán, pool 1 lớp 7 "Số hữu tỉ".
   CEO chốt 08/09: MCQ ưu tiên, là form THÊM (bảng `dai_cau_form_tn`), **không đổ `lua_chon` vào câu gốc**.
+  **CEO chốt 19/09: MỌI luồng bài làm trên app của BỔ TRỢ (yếu · bù · đuổi) chỉ dùng MCQ** — điều kiện chọn câu DUY NHẤT =
+  `_kho_dk_mcq_sql(cautbl)` (kho_chuan + trắc nghiệm gốc | form_tn đã duyệt; `_kho_snapshot_cau` tự hiện form thành 4 đáp án).
+  Bổ trợ yếu đã áp (`_btyeu_chon_cau`) — **TUYỆT ĐỐI, KHÔNG nhánh lùi** (NGOẠI LỆ DUY NHẤT CEO 28/09: dạng mức độ 4–5 mà cả dạng 0 MCQ ⇒ trả lời ngắn — xem spec-bo-tro.md §4) (20/09: t từng để "dạng 0 MCQ thì tạm ra TLN", CEO bác:
+  luật là luật — dạng chưa có MCQ thì app báo rõ, em học dạng đó trên giấy, việc là SINH MCQ chứ không nới luật). Bù/đuổi chưa có
+  bài trên app — khi build PHẢI dùng hàm này, không viết điều kiện riêng.
 - **`spec-mcq-quy-trinh-sinh.md` — ĐỌC BẮT BUỘC trước khi thêm 1 dạng mới vào pipeline MCQ** (mọi khối,
   không riêng Pool 1). QUY TRÌNH kỹ thuật (khác `spec-mcq-form.md` là quyết định phạm vi): tiêu chí dạng
   RÕ RÀNG (tự quyết) vs MƠ HỒ (phải hỏi CEO) · kiến trúc `SPECIAL_DANG`/`TEXT_DANG` · cách xử lý 1 `dang_chinh`
@@ -275,7 +305,20 @@
   cụ thể: "trắc nghiệm 1 phần" = triển khai **Phase 2 (Đại) của `spec-dien-o.md`** đã CEO chốt 09/09 nhưng
   CHƯA XÂY (`scripts/mcq-dien.mjs` + bảng `dai_cau_form_dien` chưa tồn tại) — không phải spec mới. Kèm hàng
   đợi cụ thể các dạng đã xác nhận không hợp khuôn "4 đáp án nguyên câu" (12/09).
+- **`spec-khtn-du-hanh.md` — ĐỌC trước khi sửa/làm bài KHTN dạng thế giới 3D** (thư mục `khtn-site/`, CEO chốt 29/09): 2 kiểu bài du hành / tương tác ·
+  nhịp trạm (phim lời dẫn → giao việc quan sát → bay tự do → trả lời lúc nào cũng được) · trạm luyện tập bộ 6 câu + hoạt cảnh theo đáp án ·
+  KHÔNG lộ đáp án trước khi trả lời · ngôn ngữ hình ion/cộng hoá trị · chưa đo, web riêng deploy tay. Bài đã có: Liên kết hoá học (KHTN 7).
 - `erp-v2-ui-spec.md` — Shell UI/UX **view-first**: React + Vite + Zustand + Tailwind, **mock data, CHƯA đụng Supabase**. Đơn vị = ROLE; derive nav/queue theo role; 2 loại việc (vận hành derive / phát triển giao tay) tách hẳn. Kho = 1 lá "Bản đồ kiến thức" trong cây Admin.
+- **`spec-luong-kho.md` — ĐỌC BẮT BUỘC trước khi đụng LUỒNG KHO** (tài liệu vào → bản đồ + câu đạt chuẩn; CEO chốt 28/09): 3 lớp
+  Tri thức / Dây chuyền / Đo · luật phân tầng dạng–cụm–biến thể · cổng ghi "không biên bản kiểm thì không ghi" · luật lên cấp tự duyệt
+  (đo tỉ lệ LỌT, câu bẫy, ngưỡng theo mức nặng) · hậu kiểm báo sai · phương pháp build 6 việc (dựng bài thi trước). Toán Đại, K12 trước.
+  **Luồng tự giải bài cũ (`auto-giai-scheduler.mjs`) ĐÃ NGỪNG 28/09** — đừng bật lại, đừng viết luồng mới theo kiểu một phiên tự làm tự kiểm tự ghi.
+  Pha đang làm: **`spec-luong-kho-p0.md`** (đã có gì · đã kiểm gì · việc kế tiếp · lệnh chạy ở máy công ty).
+- **`SPEC-troly-nhansu.md` — ĐỌC BẮT BUỘC (§6–§7) trước khi sửa tab 🤖 TRỢ LÝ** (CEO chốt 29/09): **báo cáo là chính, hỏi là phụ** · chỉ 3 tài khoản ·
+  Báo cáo Sư phạm = 3 luồng (đếm chậm/miss → Detail → cảnh báo), mỗi người quản một mảng có một bộ báo cáo riêng (Trang = Sư phạm, Lộc = Vận hành) ·
+  Tổng kết tuần = dashboard theo BẢNG, ngưỡng của mọi chỉ số là **thường đạt** (trung bình 8 tuần gần nhất đã lọc nhiễu), trình chiếu mỗi bảng một màn ·
+  cả hai KHÔNG realtime (lưu DB). Mọi con số tính ở `fn_troly_*`/`_troly_*`; thêm chỉ số = thêm 1 dòng vào `_troly_tuan_danh_muc()`.
+  Kiểm bằng `scripts/check-troly-cong-cu.mjs` rồi **mở trên app bằng phiên đăng nhập thật** (script không thấy RLS và trần 8 giây).
 ## Luật xoá (bắt buộc)
 Trước khi XOÁ bất cứ gì — xoá file, drop/alter/delete bảng/cột/dòng DB,
 hay lệnh git phá lịch sử (reset --hard, push -f, branch -D, clean) — DỪNG lại:

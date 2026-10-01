@@ -10,11 +10,13 @@ import HocSinhApp from './screens/hocsinh/HocSinhApp'
 import DoiMatKhau from './screens/hocsinh/DoiMatKhau'
 import { getMyHocSinhId } from './lib/testonline'
 import { useIsMobile } from './hooks/useIsMobile'
+import TvSuKien, { parseTvHash } from './screens/sukien/TvSuKien'
 
 export default function App() {
   const [session, setSession] = useState<Session | null | undefined>(undefined) // undefined = đang tải
   const [hsId, setHsId] = useState<string | null | undefined>(undefined) // undefined = chưa biết · null = KHÔNG phải HS (staff)
   const isMobile = useIsMobile()
+  const [tvSk] = useState(parseTvHash)
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => setSession(data.session))
     const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => setSession(s))
@@ -56,6 +58,8 @@ export default function App() {
     )
   }
   if (quyen === null) return <div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải quyền…</div>
+  // Màn TV sự kiện (#sk-tv=quay|hang&sk=<id>) — toàn màn hình, không shell (spec-su-kien.md §4).
+  if (tvSk) return <div style={{ zoom: 'var(--app-unz)' }}><TvSuKien man={tvSk.man} skId={tvSk.sk} /></div>
 
   const shell = (
     // ⭐ Fix 07-19 (Thùy: "phải freeze header, kéo xuống mới back lại được") — mobile Safari tính 100vh

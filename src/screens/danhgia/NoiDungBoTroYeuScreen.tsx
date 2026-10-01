@@ -55,8 +55,9 @@ export default function NoiDungBoTroYeuScreen() {
                       {NGUON_TEN[c.nguon] ?? c.nguon}{c.ly_do ? ` — ${c.ly_do}` : ''}
                     </div>
                   </div>
-                  <span className={`shrink-0 rounded-full px-2.5 py-1 text-[12px] font-semibold ${c.soDang > 0 ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700'}`}>
-                    {c.soDang > 0 ? `${c.soDang} dạng` : 'Chưa có dạng'}
+                  <span className={`shrink-0 rounded-full px-2.5 py-1 text-[12px] font-semibold ${c.soDang > 0 ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-600 text-white'}`}
+                    title={c.soDang > 0 ? undefined : 'Máy không tìm được dạng yếu đủ 3 lần đo trong 2 cửa sổ (case mở vì chuông đỏ/thái độ) — chọn tay'}>
+                    {c.soDang > 0 ? `${c.soDang} dạng` : 'Chưa có dạng — chọn tay'}
                   </span>
                 </div>
               </button>

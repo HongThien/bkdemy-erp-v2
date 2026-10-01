@@ -12,7 +12,8 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { supabase } from '../../lib/supabase'
 import { listCandidatesLop, duyetLevel, getLevelLog, cuaSoHienTai, taoAiJob, getAiJob, listAiJobs, tienCuaLuot, getLichSuChuyenDe, MODEL_CHON, MODEL_MAC_DINH, type Candidate, type LevelLogRow, type AiJob, type LanLamChuyenDe, type DangStat } from '../../lib/danhgia'
-import { moHoacGopCaseBoTroYeu, type NguonBoTroYeu } from '../../lib/botro_yeu'
+import { moHoacGopCaseBoTroYeu, kiemSucChua, UU_TIEN_TEN, type NguonBoTroYeu, type UuTienCase } from '../../lib/botro_yeu'
+import { LichSuBoTroNut } from './LichSuBoTroModal'
 
 // ⚠ HAI THANG LEVEL KHÁC NGHĨA — KHÔNG dùng chung nhãn (spec §4.1 vs §4.2).
 // Kiến thức: L0 = bình thường HOẶC "cần theo dõi" (Thùy 08-18: "cần để ý" gộp về L0 — "theo dõi"
@@ -51,9 +52,10 @@ export function KenhChips({ c }: { c: Candidate }) {
   const caseMo = c.sheet.levelKienThuc > 0 && c.deXuatKienThuc.deXuat !== c.sheet.levelKienThuc
   return (
     <>
+      {c.resetDuyetLai && <span className="whitespace-nowrap rounded-full bg-amber-500 px-2 py-0.5 text-[10.5px] font-bold text-white">↺ Reset — duyệt lại</span>}
       {c.kenh.map((k) => <span key={k} className={`whitespace-nowrap rounded-full border px-2 py-0.5 text-[10.5px] font-bold ${KENH_CHIP[k].cls}`}>{KENH_CHIP[k].ten}</span>)}
       {caseMo && <span className="whitespace-nowrap rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[10.5px] font-bold text-indigo-700">Case mở · máy đề xuất L{c.deXuatKienThuc.deXuat} ≠ L{c.sheet.levelKienThuc}</span>}
-      {c.kenh.length === 0 && !caseMo && <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10.5px] font-bold text-slate-500">không chạm kênh nào</span>}
+      {c.kenh.length === 0 && !caseMo && !c.resetDuyetLai && <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10.5px] font-bold text-slate-500">không chạm kênh nào</span>}
     </>
   )
 }
@@ -71,6 +73,7 @@ export function CandidateHeader({ c, phu, uuTien, onDong }: { c: Candidate; phu?
         <KenhChips c={c} />
       </div>
       <div className="flex flex-none items-center gap-2">
+        <LichSuBoTroNut hocSinhId={c.hoc_sinh_id} mon={c.mon} />
         {uuTien != null && <span className="whitespace-nowrap rounded-full border border-rose-200 bg-rose-50 px-2 py-1 text-[11px] font-extrabold text-rose-600">★ ưu tiên {uuTien}</span>}
         {onDong && <button onClick={onDong} className="rounded-lg border border-slate-200 px-2 py-1 text-slate-400 hover:bg-slate-100">✕</button>}
       </div>
@@ -711,10 +714,19 @@ export function DuyetKhoi({ c, loai, ten, hienTai, deXuat, onXong }: {
   const [chot, setChot] = useState<number>(deXuat.deXuat)
   const [lyDo, setLyDo] = useState('')
   const [busy, setBusy] = useState(false)
+  const [loi, setLoi] = useState<string | null>(null)
+  // Thùy 20/09: MỨC ƯU TIÊN của case (khác level) — cùng level vẫn cần trước/sau. Gợi ý máy: báo động hoặc ≥2 kênh kiến thức ⇒ Cao.
+  const soKenhKt = c.kenh.filter((k) => k !== 'thai_do').length
+  const [uuTien, setUuTien] = useState<UuTienCase>(c.kenh.includes('chuong_do') || c.kenh.includes('tien_quyet') || soKenhKt >= 2 ? 3 : 2)
   const lech = chot !== deXuat.deXuat
   const luu = async () => {
-    setBusy(true)
+    setBusy(true); setLoi(null)
     try {
+      // Thùy 29/09: trần 50 em đang bổ trợ · 20 em Cao — kiểm TRƯỚC khi ghi level (không để L1 mà không mở được case)
+      if (loai === 'kien_thuc' && chot >= 1) {
+        const chan = await kiemSucChua(c.hoc_sinh_id, c.mon, uuTien)
+        if (chan) { setLoi(chan); return }
+      }
       await duyetLevel({
         hocSinhId: c.hoc_sinh_id, mon: c.mon, loai, levelChot: chot,
         levelMayDeXuat: deXuat.deXuat,
@@ -730,11 +742,11 @@ export function DuyetKhoi({ c, loai, ten, hienTai, deXuat, onXong }: {
         await moHoacGopCaseBoTroYeu({
           hocSinhId: c.hoc_sinh_id, mon: c.mon,
           maDangs: (deXuat.bangChung?.dien as string[] | undefined) ?? [],
-          nguon, lyDo: lyDo.trim() || deXuat.lyDo.join('; ') || null,
+          nguon, lyDo: lyDo.trim() || deXuat.lyDo.join('; ') || null, uuTien,
         })
       }
       onXong({ hocSinhId: c.hoc_sinh_id, mon: c.mon, loai, level: chot })
-    } finally { setBusy(false) }
+    } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(false) }
   }
   return (
     <div className="rounded-xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-2.5">
@@ -759,12 +771,22 @@ export function DuyetKhoi({ c, loai, ten, hienTai, deXuat, onXong }: {
         ))}
       </div>
       {lech && <p className="mt-1 text-[10px] font-medium text-amber-600">Khác đề xuất máy (L{deXuat.deXuat}) — nên ghi lý do.</p>}
+      {loai === 'kien_thuc' && chot >= 1 && hienTai === 0 && (
+        <div className="mt-1.5 flex items-center gap-1.5">
+          <span className="text-[10.5px] text-slate-500">Ưu tiên xếp:</span>
+          {([3, 2, 1] as UuTienCase[]).map((u) => (
+            <button key={u} onClick={() => setUuTien(u)}
+              className={`h-6 flex-1 rounded-md text-[10.5px] font-bold ${uuTien === u ? (u === 3 ? 'bg-rose-600 text-white' : 'bg-slate-700 text-white') : 'border border-slate-200 bg-white text-slate-500'}`}>{UU_TIEN_TEN[u]}</button>
+          ))}
+        </div>
+      )}
       <input value={lyDo} onChange={(e) => setLyDo(e.target.value)} placeholder="Lý do (tuỳ chọn)…"
         className="mt-1.5 h-7 w-full rounded-lg border border-slate-200 px-2 text-[11.5px] outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-50" />
       <button disabled={busy} onClick={luu}
         className="mt-1.5 h-7 w-full rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 text-[11.5px] font-extrabold text-white shadow-md shadow-indigo-200 transition hover:brightness-105 disabled:opacity-50">
         {busy ? 'Đang lưu…' : chot === hienTai ? 'Giữ nguyên & ghi log' : `Duyệt → L${chot}`}
       </button>
+      {loi && <p className="mt-1.5 rounded-lg bg-rose-50 px-2 py-1 text-[11px] font-semibold text-rose-700 ring-1 ring-rose-200">⛔ {loi}</p>}
       <p className="mt-1.5 text-[10px] text-slate-400">★ = máy đề xuất. Mọi lượt duyệt đều được ghi lại.</p>
     </div>
   )

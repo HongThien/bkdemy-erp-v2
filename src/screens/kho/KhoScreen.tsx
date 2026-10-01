@@ -1,16 +1,22 @@
 import { Fragment, useEffect, useState } from 'react'
-import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
+import { KHOI_OPTIONS, DEFAULT_KHOI, listDaiDeXuat, LO_GAN_MAU } from '../../lib/kho/api'
 import { useStore } from '../../store/useStore'
 import { useMonScope } from '../../hooks/useMonScope'
 import BanDo from './BanDo'
 import SearchCau from './SearchCau'
 import KhoRac from './KhoRac'
 import McqCoverage from './McqCoverage'
+import DeXuatPanel from './DeXuatPanel'
+import GanMauPanel from './GanMauPanel'
 import { daiBranch, hinhBranch, hinhGiaiTichBranch, khtnBranch } from './branches'
 import KhoHinhScreen from './hinh/KhoHinhScreen'
+import KhoHinhHocScreen from './hinh/KhoHinhHocScreen'
 
 type Tab = 'dai' | 'hinh' | 'hinhgt' | 'mcq'
 type Mon = 'toan' | 'khtn'
+// ⭐ 16/09 (CEO): tab Hình học tách 2 phase — Học kiến thức (Bài) vs Luyện tập (Mô hình/Dạng/Bổ đề cũ).
+// Toggle chỉ hiện khi tab='hinh'. Nhớ preference/localStorage riêng.
+type HinhPhase = 'hoc' | 'luyen'
 // Map môn-kho ↔ nhãn MON_LIST (nhan_su_mon lưu nhãn 'Toán'/'KHTN'). Kho mới hỗ trợ 2 môn này.
 const MON_TABS: { key: Mon; label: string }[] = [{ key: 'toan', label: 'Toán' }, { key: 'khtn', label: 'KHTN' }]
 
@@ -24,18 +30,36 @@ const readTab = () => {
   return (v === 'hinh' || v === 'hinhgt' || v === 'mcq' ? v : 'dai') as Tab
 }
 const readMon = () => (localStorage.getItem('kho.mon') === 'khtn' ? 'khtn' : 'toan') as Mon
+const readHinhPhase = () => (localStorage.getItem('kho.hinh.phase') === 'luyen' ? 'luyen' : 'hoc') as HinhPhase
 
 export default function KhoScreen() {
   const [mon, setMon] = useState<Mon>(readMon)
   const [tab, setTab] = useState<Tab>(readTab)
   const [khoi, setKhoi] = useState<string>(readKhoi)
+  const [hinhPhase, setHinhPhase] = useState<HinhPhase>(readHinhPhase)
   useEffect(() => { localStorage.setItem('kho.khoi', khoi) }, [khoi])
   useEffect(() => { localStorage.setItem('kho.tab', tab) }, [tab])
   useEffect(() => { localStorage.setItem('kho.mon', mon) }, [mon])
+  useEffect(() => { localStorage.setItem('kho.hinh.phase', hinhPhase) }, [hinhPhase])
   // môn KHTN = 1 cây (không nhánh Đại/Hình); Toán = nhánh tab → branch.
   const config = mon === 'khtn' ? khtnBranch : tab === 'dai' ? daiBranch : tab === 'hinhgt' ? hinhGiaiTichBranch : hinhBranch
   const [timCau, setTimCau] = useState(false)
   const [rac, setRac] = useState(false)   // kho rác — câu đã xoá, vẫn resolve được cho tài liệu cũ
+  // Đề xuất của dây chuyền (làn 🟡 🔴) — hiện chỉ nhánh Đại có bảng (mig 202609282236). Badge = số đề xuất đang chờ.
+  const [deXuat, setDeXuat] = useState(false)
+  const [soDeXuat, setSoDeXuat] = useState<number | null>(null)
+  const [banDoVer, setBanDoVer] = useState(0) // nhận đề xuất ⇒ bản đồ có dạng mới ⇒ dựng lại cây khi đóng panel
+  const coDeXuat = config.key === 'dai'
+  // Gán mẫu: lô đang mở của khối này (registry LO_GAN_MAU) — học thuật gán tay mẫu để có bộ đề chấm cho skill gán dạng.
+  const [ganMau, setGanMau] = useState(false)
+  const loGanMau = coDeXuat ? LO_GAN_MAU.find((l) => l.khoi === khoi) ?? null : null
+  useEffect(() => {
+    if (!coDeXuat) { setSoDeXuat(null); return }
+    let song = true
+    setSoDeXuat(null)
+    listDaiDeXuat(khoi).then((r) => { if (song) setSoDeXuat(r.length) }).catch(() => { if (song) setSoDeXuat(null) })
+    return () => { song = false }
+  }, [coDeXuat, khoi, deXuat, ganMau])
 
   // Scope④ THEO MÔN (dùng chung useMonScope — xem lib/mon.ts): admin + Ops thấy tất; người khác chỉ thấy
   // môn được phân (nhan_su_mon). Chưa gán → không thấy môn nào.
@@ -70,12 +94,32 @@ export default function KhoScreen() {
             <TabBtn active={tab === 'mcq'} onClick={() => setTab('mcq')}>Phủ MCQ</TabBtn>
           </div>
         )}
+        {/* ⭐ Phase Hình học (CEO 16/09): chỉ hiện khi tab='hinh'. Học = Bài (mới); Luyện = Mô hình/Dạng cũ. */}
+        {mon === 'toan' && tab === 'hinh' && (
+          <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+            <TabBtn active={hinhPhase === 'hoc'} onClick={() => setHinhPhase('hoc')}>📖 Học</TabBtn>
+            <TabBtn active={hinhPhase === 'luyen'} onClick={() => setHinhPhase('luyen')}>🏋️ Luyện</TabBtn>
+          </div>
+        )}
         {allowed.length > 0 && !profileLoading && tab !== 'mcq' && <>
         {/* Tìm câu (chỉ nhánh có câu: Đại/KHTN) */}
         {config.cauTbl && (
           <button onClick={() => setTimCau(true)}
             className="ml-auto flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-300 hover:text-indigo-700">
             🔍 Tìm câu
+          </button>
+        )}
+        {loGanMau && (
+          <button onClick={() => setGanMau(true)} title={`Gán tay dạng cho ${loGanMau.soMau} câu mẫu — ${loGanMau.ten}`}
+            className="flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-emerald-300 hover:text-emerald-700">
+            🎯 Gán mẫu
+          </button>
+        )}
+        {coDeXuat && (
+          <button onClick={() => setDeXuat(true)} title="Đề xuất dạng/cụm mới và câu hỏi của dây chuyền nhập kho — chờ học thuật quyết"
+            className="flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-amber-300 hover:text-amber-700">
+            💡 Đề xuất
+            {!!soDeXuat && <span className="rounded-full bg-amber-500 px-1.5 text-[11px] font-bold leading-5 text-white">{soDeXuat}</span>}
           </button>
         )}
         {config.cauTbl && (
@@ -118,19 +162,24 @@ export default function KhoScreen() {
               </div>
             </div>
           ) : mon === 'toan' && tab === 'hinh'
-            // Nhánh HÌNH = model RIÊNG (spec-kho-hinh-v3): 4 tầng họ mô hình → lưới mô hình →
-            // lưới bài toán nhỏ → kho bài. KHÔNG dùng chung component bản đồ 3-tầng của Đại/KHTN.
-            // Đi THEO KHỐI như Đại — `key={khoi}` để remount, reset state sạch khi đổi khối.
-            ? <KhoHinhScreen key={`hinh-${khoi}`} khoi={khoi} />
+
+            // Nhánh HÌNH — 2 phase (CEO 16/09):
+            //   · HỌC  → KhoHinhHocScreen (mới): Bài phẳng theo khối, có Lý thuyết + Cụm + Câu (clone Đại).
+            //   · LUYỆN → KhoHinhScreen  (cũ): 4 tầng họ mô hình → lưới mô hình → lưới bài toán → kho bài.
+            // `key={hinhPhase}-${khoi}` remount khi đổi phase/khối → reset state sạch.
+            ? (hinhPhase === 'hoc'
+                ? <KhoHinhHocScreen key={`hh-${khoi}`} khoi={khoi} />
+                : <KhoHinhScreen key={`hinh-${khoi}`} khoi={khoi} />)
             : mon === 'toan' && tab === 'mcq'
-            // Phủ MCQ (CEO 01/10) — xuyên TẤT CẢ khối cùng lúc (không theo `khoi` đang chọn ở header,
-            // đúng mục đích so sánh toàn cảnh), chỉ Đại/HGT vì 2 nhánh đó mới có pipeline sinh MCQ.
+            // Phủ MCQ (CEO 01/10) — xuyên TẤT CẢ khối cùng lúc (không theo khoi ở header), chỉ Đại/HGT.
             ? <McqCoverage />
-            : <BanDo key={`${config.key}-${khoi}`} config={config} khoi={khoi} />}
+            : <BanDo key={`${config.key}-${khoi}-${banDoVer}`} config={config} khoi={khoi} />}
       </div>
 
       {timCau && config.cauTbl && allowed.length > 0 && <SearchCau cauTbl={config.cauTbl} onClose={() => setTimCau(false)} />}
       {rac && config.cauTbl && allowed.length > 0 && <KhoRac cauTbl={config.cauTbl} onClose={() => setRac(false)} />}
+      {ganMau && loGanMau && allowed.length > 0 && <GanMauPanel lo={loGanMau} onClose={() => setGanMau(false)} onDoiBanDo={() => setBanDoVer((v) => v + 1)} />}
+      {deXuat && coDeXuat && allowed.length > 0 && <DeXuatPanel khoi={khoi} onClose={() => setDeXuat(false)} onDoiBanDo={() => setBanDoVer((v) => v + 1)} />}
     </div>
   )
 }

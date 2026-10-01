@@ -5,6 +5,8 @@
 //   node scripts/migrate.mjs --status   → liệt kê đã áp / còn treo / file bị sửa sau khi áp
 //   node scripts/migrate.mjs --baseline [ten_file_cuoi.sql]
 //                                       → ĐÁNH DẤU đã-áp mà KHÔNG chạy SQL (dựng sổ cho DB cũ)
+//   node scripts/migrate.mjs --ghi-so <file.sql>
+//                                       → ghi sổ ĐÚNG 1 file đã áp tay qua SQL Editor, KHÔNG chạy SQL
 //
 // VÌ SAO PHẢI CÓ SỔ (bản cũ không có):
 //   Bản cũ chạy lại TOÀN BỘ file từ 0001 mỗi lần. File cũ (0001..0115) dùng `create table`
@@ -41,7 +43,12 @@ const files = readdirSync(dir).filter((f) => f.endsWith('.sql')).sort()
 const argv = process.argv.slice(2)
 const laBaseline = argv.includes('--baseline')
 const laStatus = argv.includes('--status')
-const denFile = argv.find((a, i) => !a.startsWith('--') && argv[i - 1] !== '--only') ?? null
+const denFile = argv.find((a, i) => !a.startsWith('--') && argv[i - 1] !== '--only' && argv[i - 1] !== '--ghi-so') ?? null
+// --ghi-so <file>: ghi sổ ĐÚNG 1 file mà KHÔNG chạy SQL — cho file đã áp tay qua SQL Editor.
+// Khác --baseline ở chỗ không đánh dấu "tới và gồm": 28/09 sổ đang có 14 file treo của phiên khác, --baseline
+// tới file mới nhất sẽ đánh dấu luôn cả 14 file đó là đã áp (và file đánh dấu nhầm thì không bao giờ chạy nữa).
+const ghiSoIdx = argv.indexOf('--ghi-so')
+const ghiSo = ghiSoIdx >= 0 ? (argv[ghiSoIdx + 1] ?? '') : null
 
 // --status chỉ ĐỌC ⇒ dùng được role chỉ-đọc. Hai đường kia GHI ⇒ bắt buộc role ghi.
 // Ưu tiên DATABASE_URL_RW truyền lúc gọi: giữ chuỗi kết nối GHI ra khỏi đĩa hoàn toàn,
@@ -170,6 +177,16 @@ try {
   const daAp = new Map((await c.query('select ten, bam from _migrations')).rows.map((r) => [r.ten, r.bam]))
   const conTreo = files.filter((f) => !daAp.has(f))
   const biSua = files.filter((f) => daAp.has(f) && daAp.get(f) !== bam(f))
+
+  // ── --ghi-so <file>: ghi sổ đúng 1 file, KHÔNG chạy SQL ─────────────────────
+  if (ghiSo !== null) {
+    if (!files.includes(ghiSo)) { console.error(`❌ --ghi-so: không có file "${ghiSo}" trong supabase/migrations.`); process.exit(1) }
+    if (daAp.has(ghiSo)) { console.log(`"${ghiSo}" đã có trong sổ — không ghi lại.`); process.exit(0) }
+    await c.query('insert into _migrations (ten, bam) values ($1,$2)', [ghiSo, bam(ghiSo)])
+    console.log(`Đã GHI SỔ (không chạy SQL) đúng 1 file: ${ghiSo}`)
+    console.log('⚠ Chỉ dùng khi SQL của file này ĐÃ chạy trên DB (áp tay). Ghi sổ nhầm thì file không bao giờ được áp.')
+    process.exit(0)
+  }
 
   // ── --baseline: ghi sổ, KHÔNG chạy SQL ──────────────────────────────────────
   if (laBaseline) {

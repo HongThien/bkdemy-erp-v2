@@ -40,10 +40,12 @@ import VietCuaToiTab from './giaoviec/VietCuaToiTab'
 import CongKhaiTab from './giaoviec/CongKhaiTab'
 import TroLyTab from './troly/TroLyTab'
 import HoiDapTab from './hoidap/HoiDapTab'
+import SuKienScreen from './sukien/SuKienScreen'
 import { hoiDapDuocDung } from '../lib/hoidap'
 import { listDotChoDuyetDuoi } from '../lib/botro_duoi'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
 import ChotXuScreen from './gami/ChotXuScreen'
+import HuyHieuScreen from './gami/HuyHieuScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 import BaoLoiScreen from './baoloi/BaoLoiScreen'
 import OpsReportScreen from './vanhanhops/OpsReportScreen'
@@ -54,17 +56,13 @@ import ScanDaChamScreen from './vanhanhops/ScanDaChamScreen'
 import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
 import TestDauVaoScreen, { moTabTestDauVao } from './tuyensinh/TestDauVaoScreen'
 import KhaoSatScreen from './khaosat/KhaoSatScreen'
-import BoTroScreen from './botro/BoTroScreen'
-import BoTroDuoiScreen from './botro/BoTroDuoiScreen'
+import BoTroHubScreen, { moBoTroTab } from './botro/BoTroHubScreen'
 import ChatLuongVanHanhScreen from './dashboard/ChatLuongVanHanhScreen'
 import PhDangNhapScreen from './dashboard/PhDangNhapScreen'
 import XemAppScreen from './dashboard/XemAppScreen'
+import ThongBaoPhScreen from './dashboard/ThongBaoPhScreen'
 import DashboardHocTapScreen from './danhgia/DashboardHocTapScreen'
-import DuyetBoTroYeuScreen from './danhgia/DuyetBoTroYeuScreen'
-import NoiDungBoTroYeuScreen from './danhgia/NoiDungBoTroYeuScreen'
-import TrangThaiCaBoTroScreen from './danhgia/TrangThaiCaBoTroScreen'
-import DanhGiaCaBoTroScreen from './danhgia/DanhGiaCaBoTroScreen'
-import XepLichBoTroYeuScreen from './danhgia/XepLichBoTroYeuScreen'
+import BangLamBaiScreen from './theodoi/BangLamBaiScreen'
 import GayScreen from './gay/GayScreen'
 import ThuChiScreen from './thuchi/ThuChiScreen'
 
@@ -233,6 +231,8 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   // screens/hoidap/HoiDapTab.tsx. Cùng lý do KHÔNG đẻ leaf như 'rasoat' ngay trên.
   // Pilot TẠM THỜI 3 người (CEO 29/08): tab chỉ hiện khi DB gật (hoi_dap_duoc_dung) —
   // ẩn UI là lịch sự, rào thật nằm ở RLS (migration 202608291205).
+  // CEO 29/09: tab 🤖 Trợ lý (báo cáo ngày) CŨNG chỉ mở cho đúng 3 người đó — dùng chung cờ này
+  // (`troly_duoc_dung()` ở DB gọi lại chính `hoi_dap_duoc_dung()`: một danh sách duy nhất).
   const [view, setView] = useState<'vanhanh' | 'phattrien' | 'rasoat' | 'hoidap'>('vanhanh')
   const [duocHoiDap, setDuocHoiDap] = useState(false)
   useEffect(() => { hoiDapDuocDung().then(setDuocHoiDap).catch(() => setDuocHoiDap(false)) }, [])
@@ -372,7 +372,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
         {/* TOGGLE Vận hành / Phát triển — thay cho filter loại việc (CEO chốt 07-31). Số task trực quan,
             không cần lọc; Phát triển tách hẳn sang view riêng cho rộng rãi. */}
         <div className="inline-flex rounded-full bg-slate-100 p-0.5">
-          {([['vanhanh', '🛠 Vận hành'], ['phattrien', '🚀 Phát triển'], ['rasoat', '🤖 Trợ lý'], ...(duocHoiDap ? [['hoidap', '💬 Hỏi hệ thống']] : [])] as ['vanhanh' | 'phattrien' | 'rasoat' | 'hoidap', string][]).map(([k, ten]) => (
+          {([['vanhanh', '🛠 Vận hành'], ['phattrien', '🚀 Phát triển'], ...(duocHoiDap ? [['rasoat', '🤖 Trợ lý'], ['hoidap', '💬 Hỏi hệ thống']] : [])] as ['vanhanh' | 'phattrien' | 'rasoat' | 'hoidap', string][]).map(([k, ten]) => (
             <button key={k} onClick={() => setView(k)}
               className={`rounded-full px-4 py-1.5 text-[13px] font-semibold transition ${view === k ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{ten}</button>
           ))}
@@ -529,7 +529,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
         <div>
           {/* Team học thuật: đợt bổ trợ đuổi chờ chốt dạng (derive theo hocThuatMons) — Thùy 07-15 */}
           {choDuyetDuoi > 0 && (
-            <button onClick={() => setStaffLeaf('botro_duoi')} className="mx-auto mb-3 block w-full max-w-[900px] rounded-2xl border border-amber-200 bg-amber-50 p-3.5 text-left shadow-sm hover:shadow-md">
+            <button onClick={() => { moBoTroTab('duoi'); setStaffLeaf('botro') }} className="mx-auto mb-3 block w-full max-w-[900px] rounded-2xl border border-amber-200 bg-amber-50 p-3.5 text-left shadow-sm hover:shadow-md">
               <div className="flex items-center gap-2 text-[14px] font-semibold text-amber-800">📚 {choDuyetDuoi} đợt bổ trợ đuổi chờ chốt dạng</div>
               <p className="mt-1 text-[12px] leading-relaxed text-amber-700">Ops đã tạo card đuổi — bạn (team học thuật) chốt dạng cần đuổi + số buổi để GV dạy bám theo.</p>
             </button>
@@ -574,7 +574,8 @@ export default function NhanSuHome({ user }: { user: User }) {
   // ⚠ bo_tro_yeu CHƯA có detail riêng (khác bù/đuổi) — rơi vào nhánh BuoiDetail chung tạm thời.
   // BuoiDetail vốn cho buổi lớp thường (lop_id có giá trị); bo_tro_yeu giống bù ở chỗ lop_id=null
   // (1 buổi = 1 HS, không gắn lớp) nên CHƯA CHẮC render đúng — cần 1 BuoiBoTroYeuDetail riêng
-  // (hiện tiến độ dạng + tick day_at, giống BuoiDuoiDetail) trước khi đưa vào vận hành thật.
+  // (hiện tiến độ dạng chỉ-xem, giống BuoiDuoiDetail sau Phase 2 19/09 — không tick tay nữa) trước khi
+  // đưa vào vận hành thật.
   if (openBuoi) return openBuoi.loai === 'bu'
     ? <BuoiBuDetail buoiId={openBuoi.id} onClose={() => setOpenBuoi(null)} />
     : openBuoi.loai === 'bo_tro_duoi'
@@ -655,12 +656,14 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'db_chatluong' ? <ChatLuongVanHanhScreen />
       : staffLeaf === 'db_phdangnhap' ? <PhDangNhapScreen />
       : staffLeaf === 'db_xemapp' ? <XemAppScreen />
+      : staffLeaf === 'db_thongbao' ? <ThongBaoPhScreen />
       : staffLeaf === 'db_hoctap' ? <DashboardHocTapScreen />
-      : (staffLeaf === 'botroyeu' || staffLeaf === 'botroyeu:duyet') ? <DuyetBoTroYeuScreen />
-      : staffLeaf === 'botroyeu:noidung' ? <NoiDungBoTroYeuScreen />
-      : staffLeaf === 'botroyeu:trangthai' ? <TrangThaiCaBoTroScreen />
-      : staffLeaf === 'botroyeu:danhgia' ? <DanhGiaCaBoTroScreen />
-      : staffLeaf === 'xep_by' ? <XepLichBoTroYeuScreen />
+      : staffLeaf === 'db_theodoi_app' ? <BangLamBaiScreen />
+      // Thùy 24/09: cả folder Bổ trợ yếu chuyển vào Bổ trợ › Yếu (toggle). Link cũ 'botroyeu:*' mở đúng toggle tương ứng.
+      : (staffLeaf === 'botroyeu' || staffLeaf === 'botroyeu:duyet') ? <BoTroHubScreen mo={{ tab: 'yeu', yeu: 'duyet' }} />
+      : staffLeaf === 'botroyeu:noidung' ? <BoTroHubScreen mo={{ tab: 'yeu', yeu: 'noidung' }} />
+      : staffLeaf === 'botroyeu:trangthai' ? <BoTroHubScreen mo={{ tab: 'yeu', yeu: 'trangthai' }} />
+      : staffLeaf === 'botroyeu:danhgia' ? <BoTroHubScreen mo={{ tab: 'yeu', yeu: 'danhgia' }} />
       : staffLeaf === 'ns' ? <NhanSuScreen />
       : staffLeaf === 'phancong' ? <PhanCongScreen />
       : staffLeaf === 'tkb' ? <TKBScreen />
@@ -670,8 +673,8 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'tuyensinh' ? <TuyenSinhScreen />
       : staffLeaf === 'test_dau_vao' ? <TestDauVaoScreen />
       : staffLeaf === 'khaosat' ? <KhaoSatScreen />
-      : staffLeaf === 'botro' ? <BoTroScreen />
-      : staffLeaf === 'botro_duoi' ? <BoTroDuoiScreen />
+      : staffLeaf === 'su_kien' ? <SuKienScreen />
+      : staffLeaf === 'botro' ? <BoTroHubScreen />
       : staffLeaf === 'buoihoc' ? <BuoiHocScreen />
       : staffLeaf === 'diemso' ? <GamiDiemScreen />
       : staffLeaf === 'thanhtich' ? <ThanhTichScreen />
@@ -682,6 +685,8 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'duyetloigiai' ? <DuyetLoiGiaiScreen />
       : staffLeaf === 'quanlylevel' ? <QuanLyLevelScreen />
       : staffLeaf === 'chotxu' ? <ChotXuScreen />
+      : staffLeaf === 'huyhieu' ? <HuyHieuScreen />
+      : staffLeaf === 'huyhieu_trao' ? <HuyHieuScreen chiTrao />
       : staffLeaf === 'phanquyen' ? <PhanQuyenScreen />
       : staffLeaf === 'baoloi' ? <BaoLoiScreen />
       : staffLeaf === 'ops_report' ? <OpsReportScreen />

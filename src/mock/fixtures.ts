@@ -80,10 +80,9 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'hs',          nhom: 'Vận hành',  ten: 'Học sinh',                     founderOnly: false },
   { id: 'lop',         nhom: 'Vận hành',  ten: 'Lớp',                          founderOnly: false },
   { id: 'tuyensinh',   nhom: 'Vận hành',  ten: 'Tuyển sinh',                   founderOnly: false }, // quản lý LEVEL học sinh L5-L8, KHÔNG chứa hoạt động test
-  // Bổ trợ = 5 loại bù/yếu/đuổi/định-kỳ/ôn-thi (giờ có Bù + Đuổi + Yếu).
-  { id: 'botro',       nhom: 'Vận hành',  ten: 'Bù',                           founderOnly: false },
-  { id: 'botro_duoi',  nhom: 'Vận hành',  ten: 'Đuổi',                         founderOnly: false },
-  { id: 'xep_by',      nhom: 'Vận hành',  ten: 'Xếp bổ trợ yếu',               founderOnly: false }, // OPS chốt giờ/phòng/người dạy case đã duyệt+chọn dạng (PLAN-botro-yeu.md bước 6)
+  // Bổ trợ (Thùy 24/09, spec-xep-bo-tro-chung.md §6): ĐÚNG 1 lá → BoTroHubScreen, thanh toggle 5 nút phía trên (Đuổi · Bù · Yếu ·
+  // Lịch phòng · Lịch trực) — "1 click là chuyển", KHÔNG phải folder 5 lá con. 1 quyền 'botro' cho cả màn (quyền cũ botro_duoi/xep_by hết dùng).
+  { id: 'botro',       nhom: 'Vận hành',  ten: 'Bổ trợ',                       founderOnly: false },
   // Vận hành Ops (BKDEMY_OPS_SPEC_DETAIL.md, 07-06): Report/Báo tan (Story 1+2) + Prep phòng (Story 3)
   // + Phân công ca trực (spine). ET (Story 4) GÁC LẠI, không có leaf ở đây.
   { id: 'ops_report',  nhom: 'Vận hành',  ten: 'Report & Báo tan',             founderOnly: false },
@@ -99,12 +98,16 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'tu_qua',      nhom: 'Vận hành',  ten: 'Tủ quà (đổi xu)',              founderOnly: false },
   // Khảo sát 'Bạn của con ở BK' (CEO 08/09, spec-khao-sat-hs.md): đồ thị quan hệ HS — làm trên iPad (PWA riêng) + khớp tên + kết quả ở đây.
   { id: 'khaosat',     nhom: 'Vận hành',  ten: 'Khảo sát Bạn của con',         founderOnly: false },
+  // Sự kiện (spec-su-kien.md, Trung thu 26/09): check-in · vòng quay · hàng chờ phòng iPad · quầy quà. Cấp cho nhân sự trực.
+  { id: 'su_kien',     nhom: 'Vận hành',  ten: 'Sự kiện',                      founderOnly: false },
 
   // ── GAMIFICATION: Elo/EXP, thành tích, level ──
   { id: 'diemso',      nhom: 'Gamification', ten: 'Điểm số (Elo/EXP)',        founderOnly: false },
   { id: 'thanhtich',   nhom: 'Gamification', ten: 'Thành tích',               founderOnly: false },
   { id: 'quanlylevel', nhom: 'Gamification', ten: 'Quản lý Level',            founderOnly: false },
   { id: 'chotxu',      nhom: 'Gamification', ten: 'Chốt xu tháng',            founderOnly: true }, // CEO chỉnh mốc + chốt (Thùy 08-29)
+  { id: 'huyhieu',     nhom: 'Gamification', ten: 'Huy hiệu',                 founderOnly: false }, // ADMIN: chốt tháng · ma trận · (xem trao) — DB chặn chốt bằng co_quyen_ghi('huyhieu') · spec-huy-hieu-build.md
+  { id: 'huyhieu_trao', nhom: 'Gamification', ten: 'Trao huy hiệu',           founderOnly: false }, // GV: CHỈ trao bản cứng lớp mình (Thùy 28/09: chốt không cần GV)
   { id: 'traogiai',    nhom: 'Gamification', ten: 'Trao giải',                founderOnly: false }, // thưởng tháng theo lớp (Xuất sắc/Tiến bộ/Chăm chỉ) — xem lib/traogiai.ts
 
   // ── HỌC THUẬT: kho + soạn tài liệu ──
@@ -116,9 +119,10 @@ export const adminLeaves: AdminLeaf[] = [
   // ── QUẢN LÝ CHẤT LƯỢNG: đo lường kết quả học tập (sẽ break ra nhiều nhánh ở đây) ──
   { id: 'ketqua',      nhom: 'Quản lý chất lượng', ten: 'Kết quả học tập',    founderOnly: false }, // mastery (HS × dạng) suy động
   { id: 'duyetcham',   nhom: 'Quản lý chất lượng', ten: 'Duyệt chấm online',  founderOnly: false }, // review trả-lời-ngắn: chấp nhận đáp án + backfill
-  { id: 'duyetloigiai', nhom: 'Quản lý chất lượng', ten: 'Duyệt lời giải AI', founderOnly: false }, // 27/08: gộp theo khối — Đại/KHTN/HGT/Hình có loi_giai do AI viết, chưa duyệt
+  { id: 'duyetloigiai', nhom: 'Quản lý chất lượng', ten: 'Duyệt kho',         founderOnly: false }, // 27/08: gộp theo khối — Đại/KHTN/HGT/Hình có loi_giai do AI viết, chưa duyệt. Đổi tên 22/09: không chỉ duyệt lời giải AI, còn duyệt câu mới nhập kho (mọi nhánh, gồm Hình học)
   { id: 'db_hoctap',   nhom: 'Quản lý chất lượng', ten: 'Dashboard học tập',  founderOnly: false }, // phát hiện → đề xuất → NGƯỜI duyệt (spec-danhgia-hoctap)
-  { id: 'botroyeu',    nhom: 'Quản lý chất lượng', ten: 'Bổ trợ yếu',        founderOnly: false }, // Thùy 08-18: lá riêng, 4 tab con (duyệt/nội dung/trạng thái/đánh giá) — xem BOTROYEU_CHILDREN
+  { id: 'db_theodoi_app', nhom: 'Quản lý chất lượng', ten: 'Theo dõi bài tập app', founderOnly: false }, // ma trận ngày×HS: tự luyện+bổ trợ+retest (CEO 17/09)
+  // 'botroyeu' (folder Bổ trợ yếu: Duyệt · Nội dung · Trạng thái ca · Đánh giá ca) — Thùy 24/09 chuyển TOÀN BỘ vào Vận hành › Bổ trợ › Yếu (toggle).
   { id: 'report_ph',   nhom: 'Quản lý chất lượng', ten: 'Report phụ huynh',   founderOnly: false }, // report tháng gửi PH: số liệu HS + nhận xét GV
 
   // ── CORE TEAM: nhân sự/tổ chức/vận hành nội bộ ──
@@ -141,4 +145,5 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'db_chatluong',nhom: 'Dashboard', ten: 'Chất lượng vận hành',         founderOnly: true },
   { id: 'db_phdangnhap',nhom: 'Dashboard', ten: 'Đăng nhập Phụ huynh',        founderOnly: true }, // bộ đo PH đã/chưa đăng nhập Cổng PH + reset MK (core team)
   { id: 'db_xemapp',   nhom: 'Dashboard', ten: 'Xem app phụ huynh',          founderOnly: true }, // chọn HS → nhúng app PH của em (chế độ xem admin) để kiểm tra
+  { id: 'db_thongbao', nhom: 'Dashboard', ten: 'Thông báo phụ huynh',        founderOnly: true }, // soạn/sửa thông báo TT gửi PH (thay Zalo, phòng miss)
 ]

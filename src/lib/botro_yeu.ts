@@ -11,11 +11,13 @@
 // ⭐ Thái độ THUẦN không qua đây (PLAN §0 mục 10) — chỉ `loai='kien_thuc'` mở case. Caller (UI)
 //   chịu trách nhiệm không gọi hàm này cho case thái độ.
 import { supabase } from './supabase'
-import { khoCuaMon } from './tailieu'
-import { getMasteryHS } from './mastery'
+import { getMasteryHS, dangInfoCuaMon } from './mastery'
 import { homNayVN, congNgay } from './tuan'
 import { RESULT_VALUE } from '../gami/mastery.js'
 import { fetchAllRows } from './pgrest' // phân trang THẬT — PostgREST cap 1000 dòng/query, xem pgrest.ts
+
+import { RETEST_BAT, KET_QUA_CASE_TEN } from './botro_yeu_ca' // ⏸ hold retest 29/09 — định nghĩa + lý do ở botro_yeu_ca.ts
+export { RETEST_BAT, KET_QUA_CASE_TEN }
 
 const LIMIT = 10000
 
@@ -43,6 +45,7 @@ export async function moHoacGopCaseBoTroYeu(input: {
   maDangs: string[]           // dạng cần bổ trợ — chọn ở bước "duyệt nội dung" (bước riêng, SAU bước này)
   nguon: NguonBoTroYeu
   lyDo?: string | null
+  uuTien?: UuTienCase // Thùy 20/09: mức ưu tiên của CASE (khác level) — chỉ ghi khi MỞ MỚI; case đang mở giữ ưu tiên cũ (sửa ở Xếp lịch)
 }): Promise<{ boTroYeuId: string; moMoi: boolean; caseTruocId: string | null }> {
   const { data: { user } } = await supabase.auth.getUser()
   const actor = user?.id ?? null
@@ -70,7 +73,7 @@ export async function moHoacGopCaseBoTroYeu(input: {
 
     const { data: created, error: eIns } = await supabase.from('bo_tro_yeu').insert({
       hoc_sinh_id: input.hocSinhId, mon: input.mon, nguon: input.nguon,
-      ly_do: input.lyDo ?? null, actor, case_truoc_id: caseTruocId,
+      ly_do: input.lyDo ?? null, actor, case_truoc_id: caseTruocId, uu_tien: input.uuTien ?? 2,
     }).select('id').single()
     if (eIns) throw eIns
     boTroYeuId = (created as any).id
@@ -126,11 +129,8 @@ export async function getDangCuaCase(boTroYeuId: string, mon: string): Promise<D
   if (error) throw error
   const rows = (data ?? []) as any[]
   if (!rows.length) return []
-  const K = khoCuaMon(mon)
-  const { data: banDo, error: eBanDo } = await supabase.from(K.banDoTbl)
-    .select('ma_dang, ten_dang, ten_chuyen_de').in('ma_dang', rows.map((r) => r.ma_dang)).limit(LIMIT)
-  if (eBanDo) throw eBanDo
-  const ten = new Map((banDo ?? []).map((d: any) => [d.ma_dang, d]))
+  // Bản đồ MỌI nhánh của môn (Đại · Hình giải tích · Hình học) — bổ trợ yếu bật cho Hình 29/09.
+  const ten = await dangInfoCuaMon(mon, rows.map((r) => r.ma_dang))
   return rows.map((r) => ({
     id: r.id, ma_dang: r.ma_dang,
     ten_dang: ten.get(r.ma_dang)?.ten_dang ?? r.ma_dang, // dạng đã xoá khỏi bản đồ → hiện mã, không mất dòng
@@ -149,7 +149,7 @@ export type DangGoiY = {
 }
 export async function getDangYeuGoiY(hocSinhId: string, mon: string): Promise<DangGoiY[]> {
   const all = await getMasteryHS(hocSinhId, mon, { includeBTVN: true })
-  return all
+  return all // mọi nhánh của môn — bổ trợ yếu bật cho Hình học + Hình giải tích (Thùy 29/09)
     .filter((d) => d.mastery && d.mastery.muc !== 'dat') // lọc theo NHÃN DB đã tính (fn_mastery_cells), không tính lại
     .map((d) => ({
       ma_dang: d.ma_dang, ten_dang: d.ten_dang, ten_chuyen_de: d.ten_chuyen_de,
@@ -180,18 +180,112 @@ export async function boDangKhoiCase(dangId: string): Promise<void> {
 // Phòng: mảng `ROOMS` cứng tạm (TKBScreen.tsx) — KHÔNG check trùng lịch (PLAN mục 9, chờ dự án
 // Quản lý phòng học riêng). `case_truoc_id`/mức đọc qua `hs_level`, KHÔNG lưu ở đây.
 
-export type CaseChoXep = CaseBoTroYeuItem & { daXep: boolean }
+// Thùy 20/09: `daXep` = ĐANG CÓ buổi đã xếp CHƯA HỌC (không còn là "đã từng có buổi") — case học xong 1 buổi mà còn dạng chưa dạy
+// quay lại cột "Chờ xếp". 1 case tối đa 1 buổi chờ học (trigger DB `trg_btyeu_mot_buoi_cho_hoc`).
+export type UuTienCase = 1 | 2 | 3
+export const UU_TIEN_TEN: Record<UuTienCase, string> = { 3: 'Ưu tiên cao', 2: 'Thường', 1: 'Thấp' }
+export type BuoiChoHoc = { buoi_id: string; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; nguoi_day_tg: string | null; nguoi_ten: string | null; diem_danh: string | null; qua_ngay: boolean }
+// Thùy 22/09 — 4 trạng thái VÒNG: Chờ duyệt (hàng đợi, chưa có case) → Đang bổ trợ → Chờ retest → Hoàn thành. `giaiDoan` từ DB.
+export type GiaiDoanVong = 'dang_bo_tro' | 'cho_retest' | 'hoan_thanh'
+export const GIAI_DOAN_TEN: Record<GiaiDoanVong, string> = { dang_bo_tro: 'Đang bổ trợ', cho_retest: 'Chờ retest', hoan_thanh: 'Hoàn thành' }
+export type CaseChoXep = CaseBoTroYeuItem & {
+  daXep: boolean; uuTien: UuTienCase; level: number; soDangChuaDay: number; soBuoiDaHoc: number
+  buoiChoHoc: BuoiChoHoc | null; soDangMoiSauXep: number // >0 = "đợt mới" gộp vào SAU khi buổi đã xếp
+  giaiDoan: GiaiDoanVong; vong: number
+  soDangCanDay: number; soDangChoRetest: number; soDangXong: number; soDangMay: number // dạng máy đề xuất (người bấm thêm), chưa dạy
+  soDangBaoDong: number // dạng do GV/TA bấm chuông báo động KHI em đang có case ⇒ add thẳng (trigger DB), chưa dạy
+  trangThai: 'dang_xu' | 'hoan_thanh'; hoanThanhAt: string | null; ketQua: string | null
+  soBuoiKhongDienRa: number; khongDienRaGanNhat: string | null // buổi huỷ (qua ngày không điểm danh / TA huỷ) — tag "không diễn ra"
+  retestNgay: string | null
+}
+// Dạng yếu MỚI của em đang bổ trợ (yếu + ≥3 lần đo + có lần đo SAU khi mở case) — máy ĐỀ XUẤT, người bấm "Thêm" mới vào case
+// (nguon='may'). Không tự gộp: lần đo 22/09 tự gộp sẽ nhét 116 dạng yếu-cũ vào 63 case, đè quyết định của người duyệt ở bước Nội dung.
+export type DangMayDeXuat = { case_id: string; hoc_sinh_id: string; ma_dang: string; ten_dang: string; score: number; n: number }
+export async function deXuatDangMoi(mon?: string): Promise<DangMayDeXuat[]> {
+  const { data, error } = await supabase.rpc('fn_btyeu_de_xuat_dang_moi', { p_mon: mon ?? null, p_case: null, p_thuc_hien: false })
+  if (error) throw error
+  return ((data as any)?.chi_tiet ?? []) as DangMayDeXuat[]
+}
+// Dọn ca ĐÃ XẾP mà KHÔNG DIỄN RA (qua ngày, không điểm danh có mặt) ⇒ tự huỷ (giữ dấu), case về Cần xếp. Gọi khi mở màn Xếp. Idempotent.
+export async function donCaKhongDienRa(): Promise<{ buoi_id: string; ngay: string }[]> {
+  const { data, error } = await supabase.rpc('fn_btyeu_don_ca_khong_dien_ra')
+  if (error) throw error
+  return (data as any[]) ?? []
+}
+// Tự bù retest (Thùy 24/09): dạng chờ retest mà chưa có câu retest nào đang mở ⇒ bổ sung (dạng chưa có MCQ tự thông khi có MCQ). Chạy khi mở màn Xếp.
+export async function buRetestTon(): Promise<number> {
+  const { data, error } = await supabase.rpc('fn_btyeu_bu_retest_ton')
+  if (error) throw error
+  return (data as number) ?? 0
+}
+// Lịch sử bổ trợ 1 em (1 môn) N ngày — mọi hoạt động (buổi yếu/bù/đuổi · retest · duyệt · báo động · case), sắp giảm dần theo thời gian.
+export type SuKienBoTro = { t: string; loai: 'buoi' | 'retest' | 'duyet' | 'bao_dong' | 'case_mo' | 'case_dong'; d: Record<string, unknown> }
+export async function lichSuBoTroHS(hocSinhId: string, mon: string, soNgay = 14): Promise<SuKienBoTro[]> {
+  const { data, error } = await supabase.rpc('fn_btyeu_lich_su_hs', { p_hoc_sinh: hocSinhId, p_mon: mon, p_so_ngay: soNgay })
+  if (error) throw error
+  return (data as SuKienBoTro[]) ?? []
+}
+// Tab Retest (Thùy 23/09): mọi bài retest tầng 2 — chờ làm · quá hạn · đã nộp (kết quả từng dạng). Dời ngày khi quá hạn/em nghỉ.
+export type RetestTheoDoi = {
+  bai_test_id: string; ngay: string; mon: string; so_cau: number; trang_thai_bai: string
+  hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; lop: string | null; lop_id: string | null; ta_lop: string | null
+  case_id: string | null; ca_ngay: string | null; ca_nguoi: string | null
+  da_nop: boolean; nop_at: string | null; so_dung: number; qua_han: boolean; tre_ngay: number
+  dang: { ma_dang: string; ten_dang: string; so_cau: number; so_dung: number; dat: boolean | null; diem: number | null }[]
+}
+export async function retestTheoDoi(mon?: string): Promise<RetestTheoDoi[]> {
+  const { data, error } = await supabase.rpc('fn_btyeu_retest_theo_doi', { p_mon: mon ?? null, p_so_ngay_nop: 14 })
+  if (error) throw error
+  return (data as RetestTheoDoi[]) ?? []
+}
+export async function retestDoiNgay(baiTestId: string, ngay: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_btyeu_retest_doi_ngay', { p_bai_test: baiTestId, p_ngay: ngay })
+  if (error) throw error
+}
+export async function themDangMayVaoCase(caseId: string): Promise<number> {
+  const { data, error } = await supabase.rpc('fn_btyeu_de_xuat_dang_moi', { p_mon: null, p_case: caseId, p_thuc_hien: true })
+  if (error) throw error
+  return (data as any)?.them ?? 0
+}
+export async function datUuTienCase(boTroYeuId: string, uuTien: UuTienCase): Promise<void> {
+  const { error } = await supabase.from('bo_tro_yeu').update({ uu_tien: uuTien }).eq('id', boTroYeuId) // trigger chặn quá trần Cao
+  if (error) throw error
+}
+
+// ── SỨC CHỨA (Thùy 29/09): ≤ 50 em đang bổ trợ yếu cùng lúc, trong đó ≤ 20 ưu tiên Cao — chặn cứng bằng trigger
+// trg_btyeu_suc_chua (mig 202609291556). Muốn thêm em: hạ L0 / huỷ em cũ, hoặc hạ ưu tiên 1 em Cao.
+export type SucChua = { dang: number; cao: number; tran: number; tran_cao: number }
+export async function laySucChua(): Promise<SucChua> {
+  const { data, error } = await supabase.rpc('fn_btyeu_suc_chua')
+  if (error) throw error
+  return data as SucChua
+}
+// null = được mở case mới với ưu tiên này; text = lý do chặn (kiểm TRƯỚC khi Duyệt ghi level).
+export async function kiemSucChua(hocSinhId: string, mon: string, uuTien: UuTienCase): Promise<string | null> {
+  const { data, error } = await supabase.rpc('fn_btyeu_kiem_suc_chua', { p_hs: hocSinhId, p_mon: mon, p_uu_tien: uuTien })
+  if (error) throw error
+  return (data as string | null) ?? null
+}
 
 // Case đã có ≥1 dạng (đã qua bước 4) — CẦN xếp lịch. `daXep` = đã có buổi nào gắn case này chưa
 // (kể cả buổi đã huỷ vẫn tính đã-từng-xếp, hiển thị để OPS xếp buổi MỚI, không lặp tay tìm lại).
 export async function listCaseChoXepLich(mon?: string): Promise<CaseChoXep[]> {
-  const items = (await listCaseDangMo(mon)).filter((c) => c.soDang > 0)
-  if (!items.length) return []
-  const { data: buoiHs, error } = await supabase.from('buoi_hoc_hs')
-    .select('bo_tro_yeu_id').in('bo_tro_yeu_id', items.map((c) => c.id)).limit(LIMIT)
+  // RPC `fn_btyeu_case_xep_lich` (migration 202609201300) — đã sắp: ưu tiên cao trước, cùng ưu tiên thì case mở lâu hơn trước.
+  const { data, error } = await supabase.rpc('fn_btyeu_case_xep_lich', { p_mon: mon ?? null })
   if (error) throw error
-  const daXepSet = new Set((buoiHs ?? []).map((r: any) => r.bo_tro_yeu_id))
-  return items.map((c) => ({ ...c, daXep: daXepSet.has(c.id) }))
+  return ((data ?? []) as any[])
+    .map((r) => ({
+      id: r.id, hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.ho_ten ?? '?', ma_hs: r.ma_hs ?? null, khoi: r.khoi ?? null, mon: r.mon,
+      nguon: r.nguon, ly_do: r.ly_do, created_at: r.created_at, soDang: r.so_dang,
+      daXep: !!r.buoi_cho_hoc, uuTien: r.uu_tien as UuTienCase, level: r.level ?? 0, soDangChuaDay: r.so_dang_chua_day, soBuoiDaHoc: r.so_buoi_da_hoc,
+      buoiChoHoc: r.buoi_cho_hoc ?? null, soDangMoiSauXep: r.so_dang_moi_sau_xep ?? 0,
+      giaiDoan: (r.giai_doan ?? 'dang_bo_tro') as GiaiDoanVong, vong: r.vong ?? 1,
+      soDangCanDay: r.so_dang_can_day ?? 0, soDangChoRetest: r.so_dang_cho_retest ?? 0, soDangXong: r.so_dang_xong ?? 0, soDangMay: r.so_dang_may ?? 0, soDangBaoDong: r.so_dang_bao_dong ?? 0,
+      trangThai: r.trang_thai ?? 'dang_xu', hoanThanhAt: r.hoan_thanh_at ?? null, ketQua: r.ket_qua ?? null,
+      soBuoiKhongDienRa: r.so_buoi_khong_dien_ra ?? 0, khongDienRaGanNhat: r.khong_dien_ra_gan_nhat ?? null,
+      retestNgay: r.retest_ngay ?? null,
+    }))
+    // Thùy 22/09: MỌI case đang mở hiện ở màn Xếp suốt vòng (kể cả chờ retest) — không lọc nữa; màn tự chia nhóm theo giaiDoan.
 }
 
 // ── GỢI Ý MẶC ĐỊNH KHI XẾP LỊCH (Thùy 09-02) ─────────────────────────────────────────
@@ -359,32 +453,26 @@ export async function layTienDoCa(mon?: string): Promise<TienDoCase[]> {
 export type BuoiBoTroYeuDaXep = {
   id: string; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null
   nguoi_day_tg: string | null; trang_thai: string
+  danh_gia_xong_at: string | null // buổi 'mo' nhưng ĐÃ HỌC + đóng ca ⇒ không phải "buổi chờ học" (Thùy 24/09: sửa buổi cũ rồi lưu ≠ xếp)
 }
 export async function listBuoiCuaCase(boTroYeuId: string): Promise<BuoiBoTroYeuDaXep[]> {
   const { data, error } = await supabase.from('buoi_hoc_hs')
-    .select('buoi:buoi_hoc_id(id, ngay, gio_bat_dau, gio_ket_thuc, phong, nguoi_day_tg, trang_thai)')
+    .select('buoi:buoi_hoc_id(id, ngay, gio_bat_dau, gio_ket_thuc, phong, nguoi_day_tg, trang_thai, danh_gia_xong_at)')
     .eq('bo_tro_yeu_id', boTroYeuId).limit(LIMIT)
   if (error) throw error
   return ((data ?? []) as any[]).map((r) => r.buoi).filter(Boolean)
     .sort((a, b) => Date.parse(b.ngay) - Date.parse(a.ngay))
 }
 
-// ── ĐÁNH GIÁ CA BỔ TRỢ (PLAN §12) — chỉ case đã "hoàn thành" theo derive (mọi dạng đã dong_at) ────
-// ⚠ Không lọc theo `trang_thai='hoan_thanh'` — CHƯA có code nào set cột đó (chờ bước điểm danh/retest,
-// PLAN §6 mục 5 chưa build). Lọc bằng `layTienDoCa().giaiDoan==='hoan_thanh'` (derive), rồi mới đóng
-// case thật khi người duyệt bấm 1 trong 5 hành vi tiếp theo — xem `dongCase`.
+// ── ĐÁNH GIÁ CA BỔ TRỢ (PLAN §12) — case ở mức "Chờ đánh giá" (hết dạng cần dạy, hết chờ retest) ────
+// Mức tính ở DB (`fn_btyeu_trang_thai_ca`, buoc='cho_danh_gia') — cùng nguồn với màn Trạng thái ca. Đóng case thật khi người duyệt
+// bấm 1 trong 5 hành vi — `dongCase`. ⚠ Hold retest (Thùy 29/09): bổ trợ yếu KẾT THÚC ngay khi hết dạng + TA đóng ca (DB đóng case,
+// ket_qua 'day_xong') ⇒ không case nào tới mức này; "đánh giá sau bổ trợ" là việc học thuật — luồng khác, chưa build.
 export type CaseHoanThanh = { id: string; hoc_sinh_id: string; ho_ten: string; mon: string; created_at: string; caseTruocId: string | null }
 export async function listCaseChoDanhGia(mon?: string): Promise<CaseHoanThanh[]> {
-  const tienDo = await layTienDoCa(mon)
-  const xong = tienDo.filter((c) => c.giaiDoan === 'hoan_thanh')
-  if (!xong.length) return []
-  const { data, error } = await supabase.from('bo_tro_yeu')
-    .select('id, hoc_sinh_id, mon, created_at, case_truoc_id, hoc_sinh:hoc_sinh_id(ho_ten)')
-    .in('id', xong.map((c) => c.id)).limit(LIMIT)
-  if (error) throw error
-  return ((data ?? []) as any[]).map((r) => ({
-    id: r.id, hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.hoc_sinh?.ho_ten ?? '?', mon: r.mon,
-    created_at: r.created_at, caseTruocId: r.case_truoc_id,
+  const ds = await listTrangThaiCa(1) // chỉ cần case đang mở — hoàn thành lấy ngắn nhất
+  return ds.filter((c) => c.buoc === 'cho_danh_gia' && (!mon || c.mon === mon)).map((c) => ({
+    id: c.id, hoc_sinh_id: c.hoc_sinh_id, ho_ten: c.ho_ten, mon: c.mon, created_at: c.created_at, caseTruocId: c.case_truoc_id,
   }))
 }
 
@@ -401,18 +489,19 @@ export async function getDanhGiaCase(boTroYeuId: string, hocSinhId: string, mon:
   // Per-HS, phân trang THẬT (PostgREST cap 1000/query, xem pgrest.ts) — hàm này chấm trước/sau của
   // case nên mất dòng MỚI NHẤT là kết luận sai "bổ trợ có work không". Chưa HS nào vượt 1000 (max 770
   // ngày 09-09) nhưng sẽ vượt ~giữa tháng 10, sửa sẵn cùng đợt với napLanDo.
+  // Embed buoi:buoi_hoc_id(ngay) để cutoff so theo NGÀY BUỔI, không graded_at. Bài buổi 10/08 chấm
+  // 23/08 phải xếp "TRƯỚC" case bổ trợ ngày 15/08 (vì buổi 10/08 xảy ra trước ngày case), không phải
+  // "SAU" do graded_at=23/08 > 15/08. Sai chỗ này = kết luận "bổ trợ có work không" ngược 180°.
   const grades = await fetchAllRows<any>((from, to) => supabase.from('gami_grades')
-    .select('result, graded_at, prob:problem_id(ma_dang)').eq('hoc_sinh_id', hocSinhId)
+    .select('result, graded_at, prob:problem_id(ma_dang, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId)
     .order('graded_at', { ascending: true }).order('id', { ascending: true }).range(from, to))
-  const K = khoCuaMon(mon)
-  const { data: banDo } = await supabase.from(K.banDoTbl).select('ma_dang, ten_dang').in('ma_dang', maDangs).limit(LIMIT)
-  const ten = new Map((banDo ?? []).map((d: any) => [d.ma_dang, d.ten_dang]))
+  const ten = new Map([...(await dangInfoCuaMon(mon, maDangs))].map(([ma, d]) => [ma, d.ten_dang])) // mọi nhánh của môn
   const avg = (arr: number[]) => arr.length ? arr.reduce((s, v) => s + v, 0) / arr.length : null
 
   return rows.map((r) => {
     const vals = ((grades ?? []) as any[])
       .filter((g) => g.prob?.ma_dang === r.ma_dang)
-      .map((g) => ({ value: (RESULT_VALUE as Record<string, number>)[g.result], t: g.graded_at }))
+      .map((g) => ({ value: (RESULT_VALUE as Record<string, number>)[g.result], t: g.prob?.buoi?.ngay ?? g.graded_at }))
       .filter((e) => e.value !== undefined)
     const cutoff = r.day_at ? Date.parse(r.day_at) : null
     const truoc = cutoff ? vals.filter((e) => Date.parse(e.t) < cutoff) : vals
@@ -427,6 +516,12 @@ export async function getDanhGiaCase(boTroYeuId: string, hocSinhId: string, mon:
 
 // Đóng case (kết thúc pipeline). KHÔNG tự "chốt level" — người duyệt vẫn gọi `duyetLevel` riêng nếu
 // hành vi tiếp theo cần đổi level (giữ nguyên nguyên tắc "máy/luồng derive, người quyết level").
+// Thùy 28/09: đổi mức bổ trợ của case. L0 = hết yếu, dừng bổ trợ ⇒ DB đóng case, huỷ buổi đã xếp chưa học, đóng retest chưa làm (fn_btyeu_doi_level).
+export async function doiLevelCase(caseId: string, level: number, lyDo?: string | null): Promise<{ level_cu: number; level: number; buoi_huy: number; retest_dong: number; dong_case: boolean }> {
+  const { data, error } = await supabase.rpc('fn_btyeu_doi_level', { p_case: caseId, p_level: level, p_ly_do: lyDo ?? null })
+  if (error) throw error
+  return data as any
+}
 export async function dongCase(boTroYeuId: string): Promise<void> {
   const { error } = await supabase.from('bo_tro_yeu')
     .update({ trang_thai: 'hoan_thanh', hoan_thanh_at: new Date().toISOString() }).eq('id', boTroYeuId)
@@ -436,34 +531,37 @@ export async function dongCase(boTroYeuId: string): Promise<void> {
 // ── LỊCH TRỰC BỔ TRỢ (Thùy 09-14) — slot lặp theo tuần cho môn × (khối | lớp); OPS nhập ở tab "Lịch trực" của màn
 // Xếp bổ trợ yếu; form xếp tự đề xuất ca trực (xem `goiYTheoLichTruc`). Bảng + RPC: migration 202609141708.
 export type LichTruc = {
-  id: string; mon: string; khoi: string | null; lop_id: string | null; thu: number
+  id: string; mon: string; khoi: string; bac: string; lop_id: string | null; thu: number // 09-16: phạm vi = khối + bậc (lop_id bỏ, giữ cột)
   gio_bat_dau: string; gio_ket_thuc: string; phong: string | null; nhan_su_id: string | null
   hieu_luc_tu: string; hieu_luc_den: string | null; ghi_chu: string | null
-  lop_ten?: string | null; nhan_su_ten?: string | null
+  suc_chua: number // mặc định 3 (Thùy 09-16: 1 ca tối đa 3 em — đầy là biến mất khỏi mọi chỗ chọn)
+  so_ta: number; nhan_su_2_id: string | null // Thùy 24/09: ca 2 TA = 1 dòng 2 người (spec-xep-bo-tro-chung.md §2, G3)
+  don_vi?: number // generated ở DB: 3 × (phút/30) × số TA
+  lop_ten?: string | null; nhan_su_ten?: string | null; nhan_su_2_ten?: string | null
 }
 export async function listLichTruc(mon?: string): Promise<LichTruc[]> {
   let q = supabase.from('lich_truc_bo_tro')
-    .select('*, lop:lop_id(ten_lop), ns:nhan_su_id(ho_ten)')
+    .select('*, lop:lop_id(ten_lop), ns:nhan_su_id(ho_ten), ns2:nhan_su_2_id(ho_ten)')
     .order('mon').order('khoi').order('thu').order('gio_bat_dau').limit(LIMIT)
   if (mon) q = q.eq('mon', mon)
   const { data, error } = await q
   if (error) throw error
-  return ((data ?? []) as any[]).map(({ lop, ns, ...r }) => ({ ...r, lop_ten: lop?.ten_lop ?? null, nhan_su_ten: ns?.ho_ten ?? null }))
+  return ((data ?? []) as any[]).map(({ lop, ns, ns2, ...r }) => ({ ...r, lop_ten: lop?.ten_lop ?? null, nhan_su_ten: ns?.ho_ten ?? null, nhan_su_2_ten: ns2?.ho_ten ?? null }))
 }
-export async function themLichTruc(input: Omit<LichTruc, 'id' | 'lop_ten' | 'nhan_su_ten' | 'hieu_luc_tu'> & { hieu_luc_tu?: string }): Promise<string> {
+export async function themLichTruc(input: Omit<LichTruc, 'id' | 'lop_ten' | 'nhan_su_ten' | 'nhan_su_2_ten' | 'don_vi' | 'hieu_luc_tu'> & { hieu_luc_tu?: string }): Promise<string> {
   const { data: { user } } = await supabase.auth.getUser()
   const { data, error } = await supabase.from('lich_truc_bo_tro').insert({ ...input, created_by: user?.id ?? null }).select('id').single()
   if (error) throw error
   return (data as any).id
 }
-export async function suaLichTruc(id: string, patch: Partial<Omit<LichTruc, 'id' | 'lop_ten' | 'nhan_su_ten'>>): Promise<void> {
+export async function suaLichTruc(id: string, patch: Partial<Omit<LichTruc, 'id' | 'lop_ten' | 'nhan_su_ten' | 'nhan_su_2_ten' | 'don_vi'>>): Promise<void> {
   const { error } = await supabase.from('lich_truc_bo_tro').update(patch).eq('id', id)
   if (error) throw error
 }
 // Kết thúc hiệu lực (không xoá cứng — giữ dấu để buổi đã xếp theo slot cũ vẫn giải thích được).
 export async function ketThucLichTruc(id: string, den: string): Promise<void> { await suaLichTruc(id, { hieu_luc_den: den }) }
 
-export type SlotTruc = { id: string; thu: number; gio_bat_dau: string; gio_ket_thuc: string; phong: string | null; nhan_su_id: string | null; nhan_su_ten: string | null; khoi: string | null; lop_id: string | null; ghi_chu: string | null }
+export type SlotTruc = { id: string; thu: number; gio_bat_dau: string; gio_ket_thuc: string; phong: string | null; nhan_su_id: string | null; nhan_su_ten: string | null; khoi: string; bac: string; lop_id: string | null; ghi_chu: string | null; suc_chua: number }
 export async function lichTrucCuaHS(hocSinhId: string, mon: string): Promise<SlotTruc[]> {
   const { data, error } = await supabase.rpc('fn_lich_truc_cua_hs', { p_hoc_sinh: hocSinhId, p_mon: mon })
   if (error) throw error
@@ -484,4 +582,62 @@ export function goiYTheoLichTruc(slots: SlotTruc[], ganNhat: GoiYXepLich['ganNha
     for (const s of slots) if (s.thu === thu) out.push({ ...s, ngay: d, khopCaTruoc: thuTruoc === thu && gioTruoc === String(s.gio_bat_dau).slice(0, 5) })
   }
   return out.sort((a, b) => Number(b.khopCaTruoc) - Number(a.khopCaTruoc) || a.ngay.localeCompare(b.ngay) || String(a.gio_bat_dau).localeCompare(String(b.gio_bat_dau)))
+}
+
+// ── CA BỔ TRỢ SẮP TỚI (Thùy 09-16): buổi bổ trợ yếu `mo` gộp theo (môn, ngày, giờ, phòng, người) + số HS + sức chứa (từ lịch trực
+// khớp). RPC `fn_btyeu_ca_sap_toi` (migration 202609161637) — tổng hợp ở DB.
+export type CaSapToi = {
+  mon: string; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null
+  nguoi_day_tg: string | null; nguoi_ten: string | null; so_hs: number
+  hs: { buoi_id: string; hoc_sinh_id: string; ho_ten: string; khoi: string | null; diem_danh: string | null; case_id: string }[]
+  lich_truc_id: string | null; suc_chua: number; lich_truc_pham_vi: string | null
+}
+export async function caSapToi(tu?: string, den?: string): Promise<CaSapToi[]> {
+  const { data, error } = await supabase.rpc('fn_btyeu_ca_sap_toi', { p_tu: tu ?? null, p_den: den ?? null })
+  if (error) throw error
+  return (data as CaSapToi[]) ?? []
+}
+// Khoá ca = môn|ngày|giờ bđ|người dạy (KHÔNG có phòng — sửa phòng sau không được tách ca; khớp group by của fn_btyeu_ca_sap_toi).
+export const khoaCa = (c: { mon: string; ngay: string; gio_bat_dau: string | null; nguoi_day_tg: string | null }) =>
+  `${c.mon}|${c.ngay}|${String(c.gio_bat_dau ?? '').slice(0, 5)}|${c.nguoi_day_tg ?? ''}`
+// Ca trực đề xuất CÒN CHỖ (Thùy 09-16: đầy = biến mất). `dem` = số HS hiện có theo khoá ca (từ caSapToi). Trả kèm soHs để hiện n/3.
+export function caTrucConCho(ct: CaTrucDeXuat[], mon: string, dem: Map<string, number>): (CaTrucDeXuat & { soHs: number })[] {
+  return ct.map((s) => ({ ...s, soHs: dem.get(khoaCa({ mon, ngay: s.ngay, gio_bat_dau: s.gio_bat_dau, nguoi_day_tg: s.nhan_su_id })) ?? 0 }))
+    .filter((s) => s.soHs < s.suc_chua)
+}
+
+// ── Trạng thái ca bổ trợ (Thùy 24/09 tối) — MỨC tính ở DB (fn_btyeu_trang_thai_ca), chi tiết popup (fn_btyeu_chi_tiet_case) ──
+export type MucCa = 'cho_noi_dung' | 'can_xep' | 'da_xep' | 'cho_retest' | 'cho_danh_gia' | 'hoan_thanh'
+export const MUC_CA: { k: MucCa; ten: string }[] = [
+  { k: 'cho_noi_dung', ten: 'Chờ chọn dạng' }, { k: 'can_xep', ten: 'Cần xếp' }, { k: 'da_xep', ten: 'Đã xếp' },
+  { k: 'cho_retest', ten: 'Chờ retest' }, { k: 'cho_danh_gia', ten: 'Chờ đánh giá' }, { k: 'hoan_thanh', ten: 'Hoàn thành' },
+].filter((m) => RETEST_BAT || (m.k !== 'cho_retest' && m.k !== 'cho_danh_gia')) as { k: MucCa; ten: string }[]
+// ↑ hold retest: bổ trợ yếu KẾT THÚC khi hết dạng + TA đóng ca (Thùy 29/09) — "Chờ đánh giá" là việc học thuật, DB không trả 2 mức này nữa
+export type TrangThaiCa = {
+  id: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; mon: string; lop: string | null
+  level: number; uu_tien: number; created_at: string; hoan_thanh_at: string | null; ket_qua: string | null; case_truoc_id: string | null
+  so_dang: number; so_dang_can_day: number; so_dang_cho_retest: number; so_dang_xong: number
+  buoi_cho_ngay: string | null; buoi_cho_gio: string | null; buoi_cho_nguoi: string | null; retest_ngay: string | null
+  buoc: MucCa
+}
+export async function listTrangThaiCa(soNgayHoanThanh = 60): Promise<TrangThaiCa[]> {
+  const { data, error } = await supabase.rpc('fn_btyeu_trang_thai_ca', { p_so_ngay_ht: soNgayHoanThanh })
+  if (error) throw error
+  return (data as TrangThaiCa[]) ?? []
+}
+export type ChiTietCase = {
+  case: { id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; mon: string; lop: string | null; nguon: string; ly_do: string | null
+    trang_thai: string; uu_tien: number; created_at: string; hoan_thanh_at: string | null; ket_qua: string | null; ghi_chu_dong: string | null
+    level: number; vong: number; mo_boi: string | null }
+  dang: { ma_dang: string; ten_dang: string; nguon: string; them_at: string; diem_luc_mo: number | null; so_lan_do_luc_mo: number | null
+    day_at: string | null; retest_diem: number | null; retest_at: string | null; dat: boolean | null; dong_at: string | null; tt: 'chua_day' | 'day_lai' | 'cho_retest' | 'da_day' | 'xong' }[] // da_day = hold retest
+  buoi: { ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; nguoi: string | null; trang_thai: string
+    ly_do_huy: string | null; diem_danh: string | null; danh_gia_xong_at: string | null; che_do: string | null; ca_truc: boolean }[]
+  retest: { ngay: string; so_cau: number; da_nop: boolean; so_dung: number }[]
+  duyet: { at: string; level_cu: number | null; level_may: number | null; level_chot: number; ly_do_may: string[] | null; kenh: string[] | null; ly_do_nguoi: string | null; nguoi: string | null }[]
+}
+export async function chiTietCase(caseId: string): Promise<ChiTietCase> {
+  const { data, error } = await supabase.rpc('fn_btyeu_chi_tiet_case', { p_case: caseId })
+  if (error) throw error
+  return data as ChiTietCase
 }

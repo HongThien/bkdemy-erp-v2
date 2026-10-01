@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>BK Escape</title>
+<style>
+  :root{--bg:#0b1230;--panel:#16204f;--panel2:#1d2a66;--line:#2c3a7a;--gold:#ffd166;--red:#ff5c5c;--green:#5ee08a;--blue:#7cc4ff;--text:#f3f4ff;--muted:#aab2e0}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;height:100%;overflow:hidden}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:radial-gradient(1400px 700px at 50% 0%,#2a3a8a 0%,#141d4a 45%,#080d24 100%);color:var(--text);-webkit-user-select:none;user-select:none}
+  button{font:inherit;cursor:pointer;border-radius:14px;padding:12px 18px;background:var(--panel2);color:var(--text);border:1px solid var(--line);touch-action:manipulation}
+  button:active{transform:scale(.97)}
+  button:disabled{opacity:.35;cursor:default;transform:none}
+  button.primary{background:linear-gradient(180deg,#ffd97a,#f4a300);color:#3a2400;font-weight:800;border:none;box-shadow:0 6px 24px rgba(244,163,0,.35)}
+  input{font:inherit;color:#fff;background:#0e1640;border:2px solid var(--line);border-radius:12px;padding:12px 16px;-webkit-user-select:text;user-select:text}
+  input:focus{outline:none;border-color:var(--gold)}
+  .muted{color:var(--muted)}
+  .screen{position:absolute;inset:0;display:none;flex-direction:column;padding:14px 18px;gap:12px;overflow:auto}
+  .screen.show{display:flex}
+  h1{margin:0;color:var(--gold);text-align:center;font-size:clamp(30px,5vw,52px);text-shadow:0 2px 16px rgba(255,209,102,.35)}
+
+  /* ===== setup ===== */
+  #setup{align-items:center;justify-content:flex-start;padding-top:4vh}
+  #setup .box{background:rgba(20,29,74,.9);border:1px solid var(--line);border-radius:22px;padding:22px 26px;width:min(94vw,720px);display:flex;flex-direction:column;gap:14px}
+  #team{font-size:24px;font-weight:800;text-align:center}
+  #btnStart{font-size:26px;padding:16px}
+  table{width:100%;border-collapse:collapse;font-size:16px}
+  th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left}
+  th{color:var(--muted);font-weight:600;font-size:13px}
+  td.xu{color:var(--gold);font-weight:800}
+  .links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .links a{color:var(--blue);text-decoration:none;font-size:15px;padding:6px 12px;border:1px solid var(--line);border-radius:10px}
+
+  /* ===== play ===== */
+  #top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  #teamLbl{font-weight:800;font-size:18px;color:var(--gold)}
+  .clock{font-variant-numeric:tabular-nums;font-weight:900}
+  #gClock{font-size:30px;margin-left:auto}
+  #gClock small{font-size:13px;color:var(--muted);font-weight:600;margin-right:6px}
+  #btnPause{padding:8px 14px}
+  #prog{display:flex;gap:8px}
+  .lt{width:48px;height:48px;border-radius:12px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900;background:var(--panel)}
+  .lt.cur{border-color:var(--gold);box-shadow:0 0 12px rgba(255,209,102,.5)}
+  .lt.ok{background:linear-gradient(180deg,#8dfab0,#2fbf65);color:#063;border-color:transparent}
+  .lt.bad{background:#5a1f2a;color:#ff9a9a;border-color:#8a2b3a}
+
+  #codeRow{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:rgba(20,29,74,.85);border:1px solid var(--line);border-radius:18px;padding:10px 16px}
+  #codeRow .lbl{font-size:18px;font-weight:700}
+  #code{display:flex;gap:8px}
+  .dg{width:58px;height:70px;border-radius:12px;border:2px dashed var(--line);display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--muted)}
+  .dg.cur{border:2px solid var(--gold);color:var(--gold)}
+  .dg.ok{border:2px solid var(--green);color:#fff;background:rgba(94,224,138,.15)}
+  .dg.bad{border:2px solid #8a2b3a;color:#ff9a9a;background:rgba(255,92,92,.08)}
+  .dg.rev{border:2px solid var(--blue);color:var(--blue)}
+  #lClock{margin-left:auto;text-align:right;font-size:14px;color:var(--muted)}
+  #lClock b{font-size:24px;color:var(--text)}
+
+  #main{flex:1;display:flex;gap:14px;min-height:0}
+  #qCard{flex:1;background:rgba(20,29,74,.92);border:1px solid var(--line);border-radius:22px;padding:18px 22px;display:flex;flex-direction:column;gap:12px;min-height:0;position:relative}
+  #qHead{display:flex;align-items:center;gap:10px}
+  .tag{font-size:13px;font-weight:800;letter-spacing:.5px;padding:4px 12px;border-radius:999px}
+  .tag.g1{background:#7a3a2c;color:#ffd0c0}.tag.g2{background:#2c4f7a;color:#cfe6ff}.tag.g3{background:#4a2c7a;color:#e6d0ff}
+  #qNo{font-weight:800;color:var(--muted)}
+  #qClock{margin-left:auto;font-size:34px}
+  #qBar{height:8px;border-radius:99px;background:#0e1640;overflow:hidden}
+  #qBar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#5ee08a,#ffd166);transform-origin:left;transition:transform .2s linear}
+  #qBar.warn i{background:linear-gradient(90deg,#ff5c5c,#ff9a5c)}
+  #qText{font-size:clamp(19px,2.5vw,27px);line-height:1.5;overflow:auto;flex:1;white-space:pre-line}
+  #qText .ask{display:block;margin-top:10px;color:var(--gold);font-weight:800}
+
+  #pad{width:min(34vw,330px);display:flex;flex-direction:column;gap:10px}
+  #keys{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  #keys button{font-size:34px;font-weight:900;padding:0;height:clamp(58px,9vh,78px)}
+  #keys button.sel{background:var(--gold);color:#3a2400;border-color:var(--gold)}
+  #keys button.k0{grid-column:2}
+  #btnSubmit{font-size:22px;padding:14px}
+  #padNote{font-size:13px;text-align:center}
+
+  #btnFound{font-size:22px;font-weight:800;padding:16px;background:linear-gradient(180deg,#3fb3ff,#1a6fd6);border:none;box-shadow:0 6px 24px rgba(40,140,255,.35)}
+
+  #findCard{flex:1;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(20,29,74,.92);border:1px solid var(--line);border-radius:22px;padding:18px;text-align:center}
+  #findCard .big{font-size:clamp(26px,4vw,40px);font-weight:900}
+  #findCard .code{font-size:clamp(70px,13vw,140px);font-weight:900;letter-spacing:14px;font-variant-numeric:tabular-nums;color:var(--gold);text-shadow:0 0 30px rgba(255,209,102,.5)}
+  #findCard .cd{font-size:clamp(40px,7vw,80px);font-weight:900;color:var(--red)}
+
+  /* ===== overlays ===== */
+  .ov{position:absolute;inset:0;background:rgba(5,8,25,.82);display:none;align-items:center;justify-content:center;z-index:20;padding:16px}
+  .ov.show{display:flex}
+  .ovBox{background:#141d4a;border:1px solid var(--line);border-radius:24px;padding:24px 28px;max-width:min(94vw,760px);text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center}
+  #flashBox .big{font-size:clamp(40px,7vw,72px);font-weight:900}
+  #letters{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+  #letters button{font-size:28px;font-weight:900;width:clamp(52px,8vw,72px);height:clamp(52px,8vw,72px);padding:0}
+  #letters button.sel{background:var(--gold);color:#3a2400;border-color:var(--gold)}
+
+  /* ===== hướng dẫn ===== */
+  #tut{align-items:center;justify-content:center}
+  .tBox{background:rgba(20,29,74,.95);border:1px solid var(--line);border-radius:26px;padding:24px 30px;width:min(96vw,900px);max-height:calc(100vh - 40px);overflow:auto;display:flex;flex-direction:column;gap:14px}
+  .tHead{display:flex;align-items:center;gap:12px}
+  .tStep{font-size:14px;font-weight:800;color:#3a2400;background:var(--gold);border-radius:999px;padding:4px 12px}
+  .tTitle{font-size:clamp(26px,3.6vw,38px);font-weight:900;color:var(--gold);margin:0}
+  .tBody{font-size:clamp(18px,2.3vw,23px);line-height:1.55}
+  .tBody ul{margin:6px 0;padding-left:26px}.tBody li{margin:6px 0}
+  .tBody b{color:#fff}.tBody .hl{color:var(--gold);font-weight:800}.tBody .warn{color:#ff9a9a;font-weight:800}
+  .tDemo{display:flex;gap:18px;align-items:center;justify-content:center;flex-wrap:wrap;margin:6px 0}
+  .slipMock{width:120px;height:130px;background:#fff;color:#111;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+  .slipMock .L{font-size:64px;font-weight:900;line-height:1;font-family:"Arial Black",Arial,sans-serif}
+  .slipMock .C{font-size:20px;font-weight:800;font-family:Consolas,monospace;letter-spacing:2px;border-bottom:3px solid #111}
+  .tDots{display:flex;gap:8px;justify-content:center}
+  .tDots i{width:12px;height:12px;border-radius:50%;background:var(--line)}.tDots i.on{background:var(--gold)}
+  .tNav{display:flex;gap:12px;justify-content:space-between;align-items:center}
+  .tNav button{font-size:20px;padding:14px 26px}
+  /* ===== review ===== */
+  .rvL{background:rgba(20,29,74,.9);border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:14px}
+  .rvL h3{margin:0 0 10px;font-size:20px}
+  .rvQ{border-top:1px solid var(--line);padding:10px 0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px}
+  .rvQ .st{font-size:26px;font-weight:900;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;grid-row:span 4}
+  .rvQ .st.ok{background:rgba(94,224,138,.2);color:var(--green)} .rvQ .st.bad{background:rgba(255,92,92,.15);color:#ff9a9a}
+  .rvQ .qt{white-space:pre-line;font-size:16px;line-height:1.45;color:#dfe3ff}
+  .rvQ .ans{font-size:16px} .rvQ .ans b{color:var(--gold);font-size:20px}
+  .rvQ .why{font-size:15px;color:#bfe3ff;background:rgba(60,140,255,.12);border-radius:10px;padding:8px 10px}
+  /* ===== end ===== */
+  #end{align-items:center;justify-content:center;text-align:center}
+  #end .res{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  #end .rl{background:rgba(20,29,74,.9);border:1px solid var(--line);border-radius:16px;padding:10px 16px;min-width:120px}
+  #end .rl .L{font-size:48px;font-weight:900}
+  #end .rl.ok .L{color:var(--green)} #end .rl.bad .L{color:#ff9a9a}
+
+  @media (max-width:820px){#main{flex-direction:column}#pad{width:100%}#keys{grid-template-columns:repeat(5,1fr)}#keys button.k0{grid-column:auto}}
+</style>
+</head>
+<body>
+
+<!-- ============ QUẢN TRÒ: CHUẨN BỊ ============ -->
+<div class="screen show" id="setup">
+  <h1>🚪 BK Escape</h1>
+  <div class="muted" style="text-align:center">4 chữ cái · mỗi chữ 4 câu hỏi · tối đa 21 phút</div>
+  <div style="text-align:center;font-size:15px">Bộ giấy: <b id="slipsId" style="color:var(--gold);font-size:20px"></b> <span class="muted">— phải trùng mã in ở góc mỗi trang giấy</span></div>
+  <div class="box">
+    <input id="team" maxlength="30" placeholder="Tên nhóm" autocomplete="off">
+    <button class="primary" id="btnStart">▶ Bắt đầu</button>
+    <div class="muted" id="setupNote" style="text-align:center;font-size:14px"></div>
+  </div>
+  <div class="box">
+    <div style="display:flex;align-items:center;gap:10px"><b style="font-size:18px">🏆 Bảng xếp hạng</b>
+      <button id="btnClear" style="margin-left:auto;padding:6px 12px;font-size:13px">Xoá bảng</button></div>
+    <table><thead><tr><th>#</th><th>Nhóm</th><th>Chữ đúng</th><th>Thời gian</th><th>Thưởng</th></tr></thead><tbody id="rankBody"></tbody></table>
+  </div>
+  <div class="links"><a href="index.html">← BK Games</a><a href="bk-escape-in.html" target="_blank">🖨 In mảnh giấy</a><a href="escape/LUAT.md" target="_blank">📜 Luật chơi</a></div>
+</div>
+
+<!-- ============ HƯỚNG DẪN (bắt buộc đọc trước khi chơi) ============ -->
+<div class="screen" id="tut">
+  <div class="tBox">
+    <div class="tHead"><span class="tStep" id="tStep"></span><h2 class="tTitle" id="tTitle"></h2></div>
+    <div class="tBody" id="tBody"></div>
+    <div class="tDots" id="tDots"></div>
+    <div class="tNav"><button id="tBack">← Quay lại</button><button class="primary" id="tNext"></button></div>
+  </div>
+</div>
+
+<!-- ============ ĐANG CHƠI ============ -->
+<div class="screen" id="play">
+  <div id="top">
+    <span id="teamLbl"></span>
+    <div id="prog"></div>
+    <span class="clock" id="gClock"><small>CÒN LẠI</small><span id="gTime">21:00</span></span>
+    <button id="btnPause">⏸</button>
+  </div>
+  <div id="codeRow">
+    <span class="lbl" id="letterLbl">Chữ cái 1/4 · Mã:</span>
+    <div id="code"></div>
+    <div id="lClock">Chữ này còn <b class="clock" id="lTime">5:15</b><br><span id="lNote">Mã đầy đủ hiện lúc 5:00</span></div>
+  </div>
+  <div id="main">
+    <div id="qCard">
+      <div id="qHead"><span class="tag" id="qTag"></span><span id="qNo"></span><span class="clock" id="qClock">0:30</span></div>
+      <div id="qBar"><i id="qBarI"></i></div>
+      <div id="qText"></div>
+    </div>
+    <div id="findCard"></div>
+    <div id="pad">
+      <div id="keys"></div>
+      <button class="primary" id="btnSubmit" disabled>Chốt đáp án</button>
+      <div class="muted" id="padNote">Mỗi câu chỉ được trả lời <b>1 lần</b></div>
+    </div>
+  </div>
+  <button id="btnFound">🔎 Đã tìm thấy mảnh giấy — nhập CHỮ CÁI</button>
+</div>
+
+<!-- ============ KẾT THÚC ============ -->
+<div class="screen" id="end">
+  <h1 id="endTitle"></h1>
+  <div id="endSub" style="font-size:22px"></div>
+  <div class="res" id="endRes"></div>
+  <div id="endRank" style="font-size:20px"></div>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><button id="btnReview" style="font-size:22px;padding:14px 30px;background:linear-gradient(180deg,#3fb3ff,#1a6fd6);border:none;font-weight:800">📖 Xem lại 16 câu + giải thích</button><button class="primary" id="btnBack" style="font-size:22px;padding:14px 40px">Về màn quản trò</button></div>
+</div>
+
+<!-- ============ XEM LẠI ============ -->
+<div class="screen" id="review">
+  <div style="display:flex;align-items:center;gap:12px"><h1 style="font-size:32px;text-align:left">📖 Xem lại</h1><button id="btnRevBack" style="margin-left:auto">← Kết quả</button></div>
+  <div id="revBody"></div>
+</div>
+
+<!-- overlays -->
+<div class="ov" id="flash"><div class="ovBox" id="flashBox"></div></div>
+<div class="ov" id="letterOv"><div class="ovBox">
+  <div style="font-size:24px;font-weight:800">Chữ cái trên mảnh giấy là gì?</div>
+  <div class="muted">Chỉ được nhập <b>1 lần</b> — sai là mất chữ này.</div>
+  <div id="letters"></div>
+  <div style="display:flex;gap:12px"><button id="btnLCancel">Huỷ</button><button class="primary" id="btnLOk" disabled>Chốt chữ cái</button></div>
+</div></div>
+<div class="ov" id="lrOv"><div class="ovBox" style="max-height:92vh;overflow:auto;text-align:left;align-items:stretch;width:min(94vw,860px)">
+  <div style="font-size:14px;color:var(--muted);text-align:center">⏸ Đồng hồ đang dừng — xem đáp án xong bấm nút dưới cùng</div>
+  <div id="lrBody"></div>
+  <button class="primary" id="btnLrNext" style="font-size:22px;padding:14px;align-self:center"></button>
+</div></div>
+<div class="ov" id="pauseOv"><div class="ovBox">
+  <div style="font-size:48px;font-weight:900">⏸ TẠM DỪNG</div>
+  <div class="muted">Đồng hồ đang đứng. Chỉ quản trò bấm.</div>
+  <div style="display:flex;gap:12px"><button class="primary" id="btnResume" style="font-size:22px">▶ Chơi tiếp</button><button id="btnAbort">Huỷ lượt</button></div>
+</div></div>
+
+<script src="escape/slips.js?v=G195"></script>
+<script src="escape/bank.js?v=3"></script>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const P=new URLSearchParams(location.search);
+const DEV=P.get('dev')==='1', SPEED=DEV?(+P.get('speed')||10):1; // dev: thời gian chạy nhanh x10, hiện đáp án
+const LIM={1:ESC_LIMIT[1]*1000/SPEED,2:ESC_LIMIT[2]*1000/SPEED,3:ESC_LIMIT[3]*1000/SPEED};
+const REVEAL=300000/SPEED, LETTER=315000/SPEED /* 5:00 hiện mã + 15s tìm (Thùy 26/09: 30s nhiều quá) */, TOTAL=4*LETTER;
+const KEY_RANK='bk-escape-rank', KEY_USED='bk-escape-used', KEY_HUB='bk-escape-hub';
+const ls={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const rnd=n=>Math.floor(Math.random()*n);
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=rnd(i+1);[a[i],a[j]]=[a[j],a[i]]}return a};
+const fmt=ms=>{ms=Math.max(0,ms);const s=Math.ceil(ms/1000);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
+const fmtT=ms=>{const s=Math.round(ms/1000);return Math.floor(s/60)+'p'+String(s%60).padStart(2,'0')+'s'};
+const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+// ---------- âm thanh ngắn ----------
+let AC=null;
+function beep(f,d,v){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.frequency.value=f;g.gain.value=v||.08;o.connect(g);g.connect(AC.destination);o.start();g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+(d||.12));o.stop(AC.currentTime+(d||.12))}catch(e){}}
+const sOk=()=>{beep(660,.12);setTimeout(()=>beep(990,.18),120)}, sBad=()=>beep(180,.35,.12), sTick=()=>beep(1200,.05,.05);
+
+// ---------- chọn đề: 4 mảnh giấy + 16 câu có đáp án khớp mã ----------
+// Mỗi chữ: câu 1 = Nhóm 1; câu 2–4 = Nhóm 2/3 (có cả 2 nhóm). Trong 1 lượt không lặp câu gốc; ưu tiên câu ít dùng.
+function buildRound(){
+  const used=ls.get(KEY_USED,{}),usedHub=ls.get(KEY_HUB,{});
+  const byG={1:[],2:[],3:[]};ESC_BANK.forEach(b=>byG[b.g].push(b));
+  const PAT=[[2,3,2],[3,2,3],[2,2,3],[3,3,2],[2,3,3],[3,2,2]];
+  for(let attempt=0;attempt<500;attempt++){
+    // Đích CHỈ là mảnh gốc (hub) — mảnh còn lại trong họ là nhiễu; ưu tiên gốc lâu chưa làm đích (chống nhóm trước mách)
+    const hubs=shuffle(ESC_SLIPS.filter(s=>s.hub)).sort((x,y)=>(usedHub[x.code]||0)-(usedHub[y.code]||0));
+    const slips=attempt<50?hubs.slice(0,4):shuffle(hubs.slice(0,8)).slice(0,4);
+    const taken=new Set(),plan=[];let ok=true;
+    const pick=(g,d,tk)=>{const c=byG[g].filter(b=>!taken.has(b.id)&&!tk.has(b.id)&&b.v.some(v=>v.a===d));
+      if(!c.length)return null;c.sort((x,y)=>(used[x.id]||0)-(used[y.id]||0)||Math.random()-.5);
+      const b=c[0],vs=b.v.filter(v=>v.a===d);return {b,v:vs[rnd(vs.length)]}};
+    for(const s of slips){
+      const d=[...s.code].map(Number),tk=new Set();
+      const q0=pick(1,d[0],tk);if(!q0){ok=false;break}tk.add(q0.b.id);
+      let rest=null;
+      for(const pat of shuffle([...PAT])){const t2=new Set(tk),r=[];
+        for(let i=0;i<3;i++){const x=pick(pat[i],d[i+1],t2);if(!x)break;t2.add(x.b.id);r.push(x)}
+        if(r.length===3){rest=r;r.forEach(x=>tk.add(x.b.id));break}}
+      if(!rest){ok=false;break}
+      tk.forEach(id=>taken.add(id));
+      plan.push({slip:s,qs:[q0,...rest].map((x,i)=>({id:x.b.id,g:x.b.g,name:x.b.name,q:x.v.q,a:x.v.a,w:x.v.w,st:'wait'}))});
+    }
+    if(ok){plan.forEach(l=>{usedHub[l.slip.code]=(usedHub[l.slip.code]||0)+1;l.qs.forEach(q=>used[q.id]=(used[q.id]||0)+1)});ls.set(KEY_USED,used);ls.set(KEY_HUB,usedHub);return plan}
+  }
+  return null;
+}
+
+// ---------- đồng hồ có tạm dừng ----------
+let pauseAcc=0,pausedAt=0;
+const now=()=>(pausedAt||Date.now())-pauseAcc;
+
+// ---------- trạng thái lượt ----------
+let LAST=null,G=null,timer=null,flashUntil=0,flashNext=null,selDigit=null,selLetter=null,lastTick=-1;
+// G={team,start,L:[{slip,qs,st:'play'|'ok'|'bad'|'miss',t0,qi,qT0,entered,end}],li,done}
+
+// ---------- hướng dẫn 4 màn: đọc hết mới được chơi; mỗi màn phải đứng ≥ TUT_WAIT giây mới bấm Tiếp ----------
+const TUT_WAIT=DEV?1:5;
+const TUT=[
+ {t:'Nhiệm vụ của nhóm',b:`<p>Cả nhóm đang bị nhốt. Muốn thoát ra phải tìm đủ <span class="hl">MẬT KHẨU gồm 4 CHỮ CÁI</span>.</p>
+  <div class="tDemo"><div class="slipMock"><div class="L">K</div><div class="C">3718</div></div><div class="slipMock"><div class="L">A</div><div class="C">3710</div></div><div class="slipMock"><div class="L">T</div><div class="C">3918</div></div></div>
+  <ul><li>Khắp phòng có <b>gần 200 mảnh giấy</b>. Mỗi mảnh có <b>1 chữ cái to</b> và <b>1 mã 4 chữ số</b>.</li>
+  <li>Mỗi chữ cái của mật khẩu nằm trên <b>đúng 1 mảnh</b>. Muốn biết mảnh nào đúng thì phải có <span class="hl">MÃ 4 SỐ</span> của nó.</li>
+  <li class="warn">Nhiều mảnh có mã gần giống nhau (như 3 mảnh ở trên) — nhìn thật kỹ!</li></ul>`},
+ {t:'Trả lời câu hỏi để lấy mã',b:`<p>Mỗi chữ cái có <span class="hl">4 câu hỏi</span>. Mỗi câu trả lời ĐÚNG sẽ mở ra <b>1 chữ số</b> của mã.</p>
+  <div class="tDemo"><div class="dg ok">3</div><div class="dg bad">?</div><div class="dg cur">…</div><div class="dg"></div></div>
+  <ul><li><b>Câu 1</b> — câu bẫy, làm nhanh: <span class="hl">30 giây</span>.</li>
+  <li><b>Câu 2, 3, 4</b> — câu suy luận: <span class="hl">1 phút 30 giây</span> mỗi câu.</li>
+  <li>Đáp án luôn là <b>1 chữ số từ 0 đến 9</b>: bấm số → bấm <b>Chốt đáp án</b>.</li>
+  <li class="warn">Mỗi câu chỉ được trả lời 1 LẦN. Sai hoặc hết giờ ⇒ mất chữ số đó (hiện dấu ?) và tự sang câu sau. Không quay lại được.</li></ul>`},
+ {t:'Đi tìm mảnh giấy & nhập chữ cái',b:`<ul><li>Có mã rồi thì <b>cử 1–2 bạn đi tìm</b> mảnh giấy, các bạn còn lại làm tiếp câu sau — không cần chờ làm hết 4 câu.</li>
+  <li>Thiếu 1–2 số vẫn có thể <b>đoán</b> — nhưng nhớ: có nhiều mảnh gần giống nhau.</li>
+  <li>Tìm thấy rồi thì bấm nút xanh <b>🔎 Đã tìm thấy mảnh giấy</b> → chọn chữ cái.</li>
+  <li class="warn">Chữ cái chỉ được nhập 1 LẦN: đúng ⇒ sang chữ tiếp theo ngay · sai ⇒ mất chữ đó.</li>
+  <li>Đến phút <span class="hl">5:00</span> của mỗi chữ, iPad tự <b>hiện đủ mã 4 số</b> — nhưng chỉ còn <span class="hl">15 giây</span> để tìm và nhập.</li></ul>`},
+ {t:'Thắng & luật phòng',b:`<ul><li>Mỗi chữ cái tối đa <span class="hl">5 phút 15 giây</span> · cả lượt tối đa <span class="hl">21 phút</span>. Xong sớm thì sang chữ tiếp luôn.</li>
+  <li>Tìm đúng <b>cả 4 chữ cái</b> = <span class="hl">🔓 THOÁT</span>.</li>
+  <li>Xếp hạng: <b>nhiều chữ đúng hơn</b> xếp trên; bằng nhau thì <b>nhanh hơn</b> xếp trên. Thưởng <b>Nhất 5 · Nhì 3 · còn lại 2 xu</b>.</li>
+  <li>Xong mỗi chữ cái, iPad cho xem <b>đáp án + giải thích</b> 4 câu vừa làm (lúc đó đồng hồ dừng).</li>
+  <li class="warn">KHÔNG bóc, KHÔNG di chuyển, KHÔNG làm rách mảnh giấy. Giữ iPad cẩn thận.</li></ul>
+  <p style="text-align:center;margin-top:10px">Bấm nút dưới đây là <b>đồng hồ bắt đầu chạy</b>. Chúc may mắn! 🍀</p>`},
+];
+let PEND=null,tutI=0,tutT=null;
+function renderTut(){
+  const x=TUT[tutI],last=tutI===TUT.length-1;
+  $('tStep').textContent=`Hướng dẫn ${tutI+1}/${TUT.length}`;$('tTitle').textContent=x.t;$('tBody').innerHTML=x.b;
+  $('tDots').innerHTML=TUT.map((_,i)=>`<i class="${i<=tutI?'on':''}"></i>`).join('');
+  $('tBack').style.visibility=tutI?'visible':'hidden';$('tut').querySelector('.tBox').scrollTop=0;
+  const label=last?'🚀 Bắt đầu — đồng hồ chạy!':'Tiếp →';
+  clearInterval(tutT);let w=TUT_WAIT;const b=$('tNext');b.disabled=true;b.textContent=`${label} (${w})`;
+  tutT=setInterval(()=>{w--;if(w>0){b.textContent=`${label} (${w})`;return}clearInterval(tutT);b.disabled=false;b.textContent=label},1000);
+}
+$('tBack').onclick=()=>{if(tutI>0){tutI--;renderTut()}};
+$('tNext').onclick=()=>{if($('tNext').disabled)return;if(tutI<TUT.length-1){tutI++;renderTut()}else{clearInterval(tutT);begin(PEND.team,PEND.plan)}};
+
+function start(){
+  const team=$('team').value.trim();if(!team){$('team').focus();$('setupNote').textContent='Nhập tên nhóm trước đã.';return}
+  const plan=buildRound();if(!plan){$('setupNote').textContent='Không ghép được đề — báo kỹ thuật.';return}
+  PEND={team,plan};tutI=0;show('tut');renderTut();
+}
+function begin(team,plan){
+  pauseAcc=0;pausedAt=0;
+  G={team,start:Date.now(),L:plan.map(p=>({...p,st:'wait',t0:0,qi:0,qT0:0,entered:null,end:0})),li:0};
+  $('teamLbl').textContent='👥 '+team;
+  show('play');startLetter(0);
+  clearInterval(timer);timer=setInterval(tick,200);tick();
+}
+function startLetter(i){
+  G.li=i;const L=G.L[i];L.st='play';L.t0=now();L.qi=0;L.qT0=now();selDigit=null;lastTick=-1;renderQ();
+}
+function cur(){return G&&G.L[G.li]}
+
+function answer(d){ // trả lời câu hiện tại (1 lần)
+  const L=cur();if(!L||L.qi>=4)return;const q=L.qs[L.qi];
+  q.st=(d===q.a)?'ok':'bad';q.given=d;
+  if(q.st==='ok'){sOk();flash(`<div class="big" style="color:var(--green)">✓ ĐÚNG</div><div style="font-size:26px">Chữ số thứ ${L.qi+1} là <b style="color:var(--gold);font-size:40px">${q.a}</b></div>`,1300)}
+  else{sBad();flash(`<div class="big" style="color:var(--red)">✗ SAI</div><div class="muted" style="font-size:20px">Mất chữ số thứ ${L.qi+1} — sang câu tiếp<br>(đáp án + giải thích xem ở cuối lượt)</div>`,1300)}
+  nextQ();
+}
+function nextQ(){const L=cur();L.qi++;L.qT0=now()+1300/SPEED; /* đồng hồ câu mới chạy sau khi tắt thông báo đúng/sai */ selDigit=null;lastTick=-1;renderQ()}
+
+function enterLetter(ch){ // nhập chữ cái (1 lần) — bất cứ lúc nào
+  const L=cur();if(!L||L.st!=='play')return;
+  L.entered=ch;L.end=now();
+  if(ch===L.slip.letter){L.st='ok';sOk();flash(`<div class="big" style="color:var(--green)">🎉 ĐÚNG CHỮ ${ch}!</div><div class="muted" style="font-size:20px">Sang chữ cái tiếp theo</div>`,2000,nextLetter)}
+  else{L.st='bad';sBad();flash(`<div class="big" style="color:var(--red)">✗ SAI CHỮ</div><div style="font-size:22px">Mất chữ cái này</div>`,2200,nextLetter)}
+}
+function missLetter(){const L=cur();L.st='miss';L.end=now();sBad();
+  flash(`<div class="big" style="color:var(--red)">⌛ HẾT GIỜ</div><div style="font-size:22px">Mất chữ cái này</div>`,2200,nextLetter)}
+function nextLetter(){ // xong 1 chữ ⇒ dừng đồng hồ, hiện đáp án + giải thích 4 câu của chữ đó (chữ đã khép nên không lộ gì)
+  if(G.li>=3){finish();return}
+  pausedAt=Date.now();
+  $('lrBody').innerHTML=letterHTML(G.L[G.li],G.li);
+  $('btnLrNext').textContent=`▶ Sang chữ cái ${G.li+2}/4`;
+  $('lrOv').classList.add('show');$('lrOv').querySelector('.ovBox').scrollTop=0;
+}
+$('btnLrNext').onclick=()=>{if(!pausedAt)return;pauseAcc+=Date.now()-pausedAt;pausedAt=0;$('lrOv').classList.remove('show');startLetter(G.li+1)};
+
+function finish(){
+  clearInterval(timer);timer=null;LAST=G;
+  const n=G.L.filter(l=>l.st==='ok').length, t=now()-G.start;
+  const rank=ls.get(KEY_RANK,[]);const rec={team:G.team,n,t:Math.round(t*SPEED),at:Date.now(),dev:DEV};
+  if(!DEV){rank.push(rec);ls.set(KEY_RANK,rank)}
+  const list=sortRank(DEV?[...rank,rec]:rank),pos=list.indexOf(rec)+1;
+  $('endTitle').textContent=n===4?'🔓 THOÁT THÀNH CÔNG!':'🔒 CHƯA THOÁT ĐƯỢC';
+  $('endSub').innerHTML=`<b>${esc(G.team)}</b> · đúng <b style="color:var(--gold)">${n}/4</b> chữ cái · thời gian <b>${fmtT(t*SPEED)}</b>`;
+  $('endRes').innerHTML=G.L.map(l=>`<div class="rl ${l.st==='ok'?'ok':'bad'}"><div class="L">${l.slip.letter}</div><div class="muted">mã ${l.slip.code}</div><div>${l.st==='ok'?'✓ tìm đúng':l.st==='bad'?'✗ nhập '+esc(l.entered):'⌛ hết giờ'}</div></div>`).join('');
+  $('endRank').innerHTML=`Đang xếp hạng <b style="color:var(--gold)">${pos}</b> / ${list.length} nhóm`;
+  show('end');renderRank();
+}
+function renderReview(){
+  if(!LAST)return;
+  $('revBody').innerHTML=LAST.L.map(letterHTML).join('');
+}
+function letterHTML(l,i){return `<div class="rvL"><h3>Chữ cái ${i+1}: mã <span style="color:var(--gold)">${l.slip.code}</span> → chữ <span style="color:var(--gold)">${l.slip.letter}</span> · ${l.st==='ok'?'<span style="color:var(--green)">✓ tìm đúng</span>':l.st==='bad'?'<span style="color:#ff9a9a">✗ nhập '+esc(l.entered)+'</span>':'<span style="color:#ff9a9a">⌛ hết giờ</span>'}</h3>`+
+    l.qs.map((q,j)=>`<div class="rvQ"><div class="st ${q.st==='ok'?'ok':q.st==='wait'?'':'bad'}">${q.st==='ok'?'✓':q.st==='wait'?'–':'✗'}</div><div class="muted" style="font-size:13px">Câu ${j+1} · ${ESC_GNAME[q.g]} · ${esc(q.name)}</div><div class="qt">${esc(q.q)}</div><div class="ans">Nhóm: ${q.st==='ok'?'<b style="color:var(--green)">'+q.given+' ✓</b>':q.st==='bad'?'<span style="color:#ff9a9a">'+q.given+' ✗</span>':q.st==='timeout'?'<span style="color:#ff9a9a">hết giờ / không trả lời</span>':'<span class="muted">chưa tới câu này</span>'} · Đáp án đúng: <b>${q.a}</b></div><div class="why">💡 ${esc(q.w||'')}</div></div>`).join('')+`</div>`}
+const sortRank=a=>[...a].sort((x,y)=>y.n-x.n||x.t-y.t);
+const xu=i=>i===0?5:i===1?3:2;
+function renderRank(){
+  const list=sortRank(ls.get(KEY_RANK,[]));
+  $('rankBody').innerHTML=list.length?list.map((r,i)=>`<tr><td>${i+1}</td><td>${esc(r.team)}</td><td>${r.n}/4${r.n===4?' 🔓':''}</td><td>${fmtT(r.t)}</td><td class="xu">${xu(i)} xu</td></tr>`).join(''):`<tr><td colspan="5" class="muted">Chưa có nhóm nào chơi.</td></tr>`;
+}
+
+// ---------- vòng lặp thời gian ----------
+function tick(){
+  if(!G||pausedAt)return;
+  const t=now();
+  if(flashUntil&&Date.now()>=flashUntil){$('flash').classList.remove('show');flashUntil=0;const f=flashNext;flashNext=null;if(f){f();return}}
+  if(flashUntil&&flashNext)return; // đang báo kết quả chữ cái
+  const L=cur();if(!L||L.st!=='play')return;
+  const lt=t-L.t0;
+  // hết thời gian của chữ cái
+  if(lt>=LETTER){missLetter();return}
+  // mốc 5:00: hiện mã — câu nào còn dở coi như hết giờ (luật: 5 phút hiện đáp án, 15s đi tìm)
+  if(lt>=REVEAL&&L.qi<4){for(let i=L.qi;i<4;i++)L.qs[i].st='timeout';L.qi=4;renderQ()}
+  // câu hỏi hết giờ
+  if(L.qi<4){const q=L.qs[L.qi],lim=LIM[q.g],left=Math.min(lim,lim-(t-L.qT0));
+    if(left<=0){q.st='timeout';sBad();flash(`<div class="big" style="color:var(--red)">⌛ HẾT GIỜ CÂU NÀY</div><div class="muted" style="font-size:20px">Mất chữ số thứ ${L.qi+1} — sang câu tiếp</div>`,1300);nextQ();return}
+    const sec=Math.ceil(left/1000*SPEED);if(sec<=5&&sec!==lastTick){lastTick=sec;sTick()}
+    $('qClock').textContent=fmt(left*SPEED);$('qBarI').style.transform=`scaleX(${Math.max(0,left/lim)})`;$('qBar').classList.toggle('warn',left/lim<.25);
+  }else renderFind(lt);
+  $('lTime').textContent=fmt((LETTER-lt)*SPEED);
+  $('lNote').textContent=lt<REVEAL?'Mã đầy đủ hiện lúc 5:00':'Đã hiện mã — nhập chữ cái ngay!';
+  $('gTime').textContent=fmt((TOTAL-(t-G.start))*SPEED);
+  renderCode(lt>=REVEAL);
+}
+
+// ---------- render ----------
+function show(id){['setup','tut','play','end','review'].forEach(s=>$(s).classList.toggle('show',s===id))}
+function renderProg(){$('prog').innerHTML=G.L.map((l,i)=>`<div class="lt ${l.st==='ok'?'ok':l.st==='bad'||l.st==='miss'?'bad':i===G.li?'cur':''}">${l.st==='ok'?l.slip.letter:l.st==='bad'||l.st==='miss'?'✗':i+1}</div>`).join('')}
+function renderCode(rev){
+  const L=cur();$('code').innerHTML=L.qs.map((q,i)=>{
+    if(q.st==='ok')return `<div class="dg ok">${q.a}</div>`;
+    if(rev)return `<div class="dg rev">${q.a}</div>`;
+    if(q.st==='bad'||q.st==='timeout')return `<div class="dg bad">?</div>`;
+    return `<div class="dg${i===L.qi?' cur':''}">${i===L.qi?'…':''}</div>`}).join('');
+}
+function renderQ(){
+  const L=cur();renderProg();$('letterLbl').textContent=`Chữ cái ${G.li+1}/4 · Mã:`;
+  renderCode(false);
+  const inQ=L.qi<4;
+  $('qCard').style.display=inQ?'flex':'none';$('findCard').style.display=inQ?'none':'flex';$('pad').style.display=inQ?'flex':'none';
+  if(inQ){const q=L.qs[L.qi];
+    $('qTag').className='tag g'+q.g;$('qTag').textContent=ESC_GNAME[q.g];
+    $('qNo').textContent=`Câu ${L.qi+1}/4 · ${q.name}`;
+    const parts=q.q.split('\n'),ask=parts.pop();
+    $('qText').innerHTML=esc(parts.join('\n'))+`<span class="ask">${esc(ask)}</span>`+(DEV?`<div class="muted" style="font-size:14px">[dev] đáp án ${q.a}</div>`:'');
+    $('qText').scrollTop=0;
+    [...$('keys').children].forEach(b=>b.classList.remove('sel'));$('btnSubmit').disabled=true;
+  }
+}
+function renderFind(lt){
+  const L=cur(),rev=lt>=REVEAL;
+  const partial=L.qs.map(q=>q.st==='ok'?q.a:'?').join('');
+  $('findCard').innerHTML=rev
+    ?`<div class="big">⏰ MÃ ĐẦY ĐỦ</div><div class="code">${L.slip.code}</div><div class="muted" style="font-size:20px">Tìm mảnh giấy có mã này — còn</div><div class="cd clock">${fmt((LETTER-lt)*SPEED)}</div>`
+    :`<div class="big">Hết câu hỏi của chữ này — đi tìm mảnh giấy!</div><div class="code" style="color:var(--text)">${partial}</div><div class="muted" style="font-size:20px">Mã đầy đủ sẽ hiện sau <b class="clock" style="color:var(--text)">${fmt((REVEAL-lt)*SPEED)}</b> (chỉ còn 15 giây để tìm)</div>`;
+}
+function flash(html,ms,after){$('flashBox').innerHTML=html;$('flash').classList.add('show');flashUntil=Date.now()+ms;flashNext=after||null;if(after){$('letterOv').classList.remove('show')}}
+
+// ---------- phím ----------
+$('keys').innerHTML=[1,2,3,4,5,6,7,8,9,0].map(d=>`<button data-d="${d}" class="${d===0?'k0':''}">${d}</button>`).join('');
+$('keys').onclick=e=>{const b=e.target.closest('button');if(!b)return;selDigit=+b.dataset.d;[...$('keys').children].forEach(x=>x.classList.toggle('sel',x===b));$('btnSubmit').disabled=false};
+$('btnSubmit').onclick=()=>{if(selDigit===null||flashUntil)return;answer(selDigit)};
+const AZ='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+$('letters').innerHTML=AZ.map(c=>`<button data-c="${c}">${c}</button>`).join('');
+$('letters').onclick=e=>{const b=e.target.closest('button');if(!b)return;selLetter=b.dataset.c;[...$('letters').children].forEach(x=>x.classList.toggle('sel',x===b));$('btnLOk').disabled=false;$('btnLOk').textContent='Chốt chữ '+selLetter};
+$('btnFound').onclick=()=>{if(!cur()||cur().st!=='play'||flashNext)return;selLetter=null;[...$('letters').children].forEach(x=>x.classList.remove('sel'));$('btnLOk').disabled=true;$('btnLOk').textContent='Chốt chữ cái';$('letterOv').classList.add('show')};
+$('btnLCancel').onclick=()=>$('letterOv').classList.remove('show');
+$('btnLOk').onclick=()=>{if(!selLetter)return;$('letterOv').classList.remove('show');enterLetter(selLetter)};
+$('btnPause').onclick=()=>{if(pausedAt)return;pausedAt=Date.now();$('pauseOv').classList.add('show')};
+$('btnResume').onclick=()=>{if(!pausedAt)return;const d=Date.now()-pausedAt;pauseAcc+=d;if(flashUntil)flashUntil+=d;pausedAt=0;$('pauseOv').classList.remove('show');tick()};
+$('btnAbort').onclick=()=>{if(!confirm('Huỷ lượt này? Kết quả không được lưu.'))return;clearInterval(timer);timer=null;G=null;pausedAt=0;$('pauseOv').classList.remove('show');$('flash').classList.remove('show');flashUntil=0;flashNext=null;show('setup');renderRank()};
+$('btnStart').onclick=start;
+$('team').onkeydown=e=>{if(e.key==='Enter')start()};
+$('btnReview').onclick=()=>{renderReview();show('review');$('review').scrollTop=0};
+$('btnRevBack').onclick=()=>show('end');
+$('btnBack').onclick=()=>{G=null;$('team').value='';$('setupNote').textContent='';show('setup');renderRank()};
+$('btnClear').onclick=()=>{if(confirm('Xoá toàn bộ bảng xếp hạng trên iPad này?')){ls.set(KEY_RANK,[]);renderRank()}};
+$('slipsId').textContent=window.ESC_SLIPS_ID||'(bộ giấy cũ — KHÔNG khớp giấy in mới)';
+if(!ESC_SLIPS.some(s=>s.hub)){$('btnStart').disabled=true;$('setupNote').innerHTML='<b style="color:var(--red)">⚠ iPad đang dùng bộ giấy cũ — tải lại trang (hoặc deploy bản mới) trước khi chơi.</b>'}
+renderRank();
+if(DEV)$('setupNote').textContent='[dev] thời gian chạy nhanh x'+SPEED+', hiện đáp án';
+window.__esc={get G(){return G},buildRound,answer,enterLetter};
+})();
+</script>
+</body>
+</html>

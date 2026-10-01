@@ -13,6 +13,7 @@
 // qua `loai='tu_luyen'` khi build — KHÔNG xử ở đây (xem DEVLOG "còn treo" ngày viết file này).
 // ============================================================================
 import { supabase } from './supabase'
+import { MON_APP_HS } from './mon'
 import { masteryOfDang, MASTERY_CONFIG } from '../gami/mastery.js'
 
 const SO_CAU_MOI_LUOT = 10
@@ -27,7 +28,7 @@ export async function luotTuLuyenHomNay(mon: string): Promise<LuotHomNay> {
   if (!hocSinhId) return { dangDo: null, tongCau: 0 }
   const homNay = ngayVN()
   const { data: bts, error } = await supabase.from('bai_test').select('id, so_cau')
-    .eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('loai', 'tu_luyen').eq('ngay', homNay)
+    .eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('loai', 'tu_luyen').eq('thu_thach', false).eq('ngay', homNay)
     .order('created_at', { ascending: false }).limit(100)
   if (error) throw error
   const rows = (bts ?? []) as { id: string; so_cau: number }[]
@@ -49,7 +50,6 @@ function ngayVN(): string {
 }
 
 type RawEval = { ma_dang: string; value: number; t: string; src: 'et' | 'mt' | 'btvn' | 'bt' | 'tu_luyen' }
-type RawEvalNamed = RawEval & { ten_dang: string | null; ten_chuyen_de: string | null; muc_do: number | null }
 
 // 40% NGẪU NHIÊN trong dạng ĐÃ HỌC (toàn bộ, không giới hạn thời gian) · 60% trong dạng đang
 // YẾU. Đọc "yếu" = NỬA DƯỚI khi xếp theo điểm mastery (không đòi dạng phải chính thức ở mức
@@ -89,14 +89,77 @@ export async function sinhTuLuyen(mon: string, soCau = SO_CAU_MOI_LUOT): Promise
 
 export const TU_LUYEN_SO_CAU_MOI_LUOT = SO_CAU_MOI_LUOT
 
+// ── TỰ LUYỆN THEO CHỦ ĐỀ (Thùy 19/09, sửa % 20/09) — HS chọn 1 dạng, luyện CHỈ dạng đó.
+// "%" = MASTERY thật (fn_mastery_cells, WINDOW=5 Đ/C/S — KHÔNG phải coverage kho). pct=null
+// khi dạng KHÔNG có lần đo nào trong cửa sổ hiện tại + cửa sổ trước (~1 tháng, xem
+// gami/danhgia.js cuaSoCua) — "chưa đánh giá được", tránh hiện điểm CŨ không chính xác.
+// Danh sách đã SẮP XẾP sẵn từ RPC: yếu nhất → mạnh nhất, "chưa đánh giá" xuống cuối.
+// RPC lo hết chọn câu + rải đều cụm (`ma_cum`) — xem migration 202609191417 + 202609200922.
+export type DangChuDe = {
+  ma_dang: string; ten_dang: string; ten_chuyen_de: string; tong_cau: number; da_luyen: number
+  pct: number | null; muc: 'dat' | 'can_luyen' | 'yeu' | null
+}
+export async function layDangChuDe(mon: string): Promise<DangChuDe[]> {
+  const { data, error } = await supabase.rpc('tu_luyen_chu_de_ds_dang', { p_mon: mon })
+  if (error) throw error
+  return (data ?? []) as DangChuDe[]
+}
+// chiCauMoi=true: CHỈ chọn câu chưa luyện trong 2 cửa sổ gần nhất (không lặp câu cũ, dừng sớm
+// + báo lỗi rõ nếu dạng đã hết câu mới — KHÔNG âm thầm lùi về cho lặp lại, phá nghĩa toggle).
+export async function sinhTuLuyenChuDe(mon: string, maDang: string, chiCauMoi = false): Promise<SinhTuLuyenKetQua> {
+  const { data, error } = await supabase.rpc('tu_luyen_chu_de_sinh', { p_mon: mon, p_ma_dang: maDang, p_chi_cau_moi: chiCauMoi })
+  if (error) throw error
+  return { baiTestId: data.bai_test_id, them: data.them, tong: data.tong }
+}
+
 // Môn HS đang học — cần đọc THẲNG qua RPC vì `lop`/`hoc_sinh_lop` staff-only (verify: HS SELECT
 // hoc_sinh_lop → 0 dòng, không lỗi). Trước giờ app chỉ suy mon GIÁN TIẾP từ bai_test HS đang có
 // (tests[0]?.mon) — HS cấp 1 (chỉ tự luyện, không ET/BTVN online) sẽ ra rỗng theo đường đó.
-// Hiện thực tế 100% dữ liệu là 1 môn (Toán) — lấy phần tử đầu; nhiều môn thật thì cần chọn môn ở UI.
-export async function monCuaHS(): Promise<string | null> {
-  const { data, error } = await supabase.rpc('hs_mon_cua_toi')
+// 28/09: em học NHIỀU môn là chuyện thật (57 HS) — bản cũ lấy phần tử đầu của mảng sắp theo chữ cái
+// ⇒ em học Toán + KHTN chỉ thấy KHTN (vụ Gia Khiêm). Giờ: danh sách (môn, lớp) từ DB theo thứ tự em
+// vào học (mig 202609281900) + môn em ĐANG CHỌN ở thanh chọn môn màn chính. Lựa chọn nhớ theo MÁY
+// (localStorage — sở thích hiển thị của riêng người xem, không phải dữ liệu nghiệp vụ); luôn đối chiếu
+// lại với danh sách thật nên máy dùng chung 2 anh em / em đã rời lớp môn đó thì tự về môn đầu.
+// 01/10 (Thùy: "phải chọn môn Toán, KHTN, Tiếng Anh; chuyển môn là chuyển tính năng học tập"): môn là TRỤC NGOÀI
+// CÙNG của app HS. Chỉ môn có góc học tập trên app (`MON_APP_HS`) mới hiện; `co_kho` = môn đã có kho câu chưa
+// (registry `_kho_co_mon` ở DB, mig 202610011120) — chưa có thì các ô cần kho (tự luyện, sổ tay…) báo "chưa mở",
+// KHÔNG gọi RPC (trước đó gọi là ra câu TOÁN gắn nhãn môn khác: 68 bài tự luyện 'Tiếng Anh' toàn câu Toán).
+export type LopMonHS = { mon: string; ten_lop: string; co_kho: boolean }
+export async function lopMonCuaHS(): Promise<LopMonHS[]> {
+  const { data, error } = await supabase.rpc('hs_mon_hoc_cua_toi')
   if (error) throw error
-  return (data as string[] | null)?.[0] ?? null
+  return ((data ?? []) as LopMonHS[])
+    .map((d) => ({ mon: String(d.mon), ten_lop: String(d.ten_lop ?? ''), co_kho: d.co_kho !== false }))
+    .filter((d) => (MON_APP_HS as readonly string[]).includes(d.mon))
+}
+
+// MÔN ĐANG CHỌN — 1 nguồn trong phiên (module-level, sống tới F5) + nhớ theo máy (localStorage — sở thích hiển thị,
+// không phải dữ liệu nghiệp vụ). HocSinhApp đặt; màn con đọc qua monCuaHS() (không gọi lại RPC) hoặc hook useMonHS()
+// (skin/KhungHS) để hiện nhãn môn ở đầu trang.
+const KHOA_MON_CHON = 'hs_mon_chon'
+let monHienTai: string | null = null
+const ngheMon = new Set<() => void>()
+export function layMonHienTai(): string | null { return monHienTai }
+export function ngheMonHienTai(f: () => void): () => void { ngheMon.add(f); return () => { ngheMon.delete(f) } }
+function datMonHienTai(mon: string | null) {
+  if (mon === monHienTai) return
+  monHienTai = mon
+  ngheMon.forEach((f) => f())
+}
+export function chonMonHS(mon: string): void {
+  try { localStorage.setItem(KHOA_MON_CHON, mon) } catch { /* chế độ riêng tư: mất nhớ, app vẫn chạy */ }
+  datMonHienTai(mon)
+}
+// Đối chiếu lựa chọn đã nhớ với danh sách THẬT (máy dùng chung 2 anh em / em đã rời lớp môn đó ⇒ về môn đầu).
+export function monDangChon(ds: LopMonHS[]): string | null {
+  let nho: string | null = null
+  try { nho = localStorage.getItem(KHOA_MON_CHON) } catch { /* như trên */ }
+  const m = ds.find((d) => d.mon === nho)?.mon ?? ds[0]?.mon ?? null
+  datMonHienTai(m)
+  return m
+}
+export async function monCuaHS(): Promise<string | null> {
+  return monHienTai ?? monDangChon(await lopMonCuaHS())
 }
 
 // Cấp 1 hay không — màn chính app HS cần ẨN 3 ô ET/BTVN/Bài tập trên lớp cho cấp 1 (Thùy: chỉ có
@@ -139,48 +202,36 @@ export async function doiAnhDaiDienHS(url: string): Promise<void> {
 
 export const SRC_LABEL: Record<RawEval['src'], string> = { et: 'ET', mt: 'MT', btvn: 'BTVN', bt: 'BT', tu_luyen: 'TL' }
 export type RecentEval = { value: number; t: string; src: RawEval['src'] }
+// muc=null ⇒ "chưa đánh giá được" — dạng KHÔNG có lần đo nào trong cửa sổ hiện tại + cửa sổ trước
+// (~1 tháng, xem `_tu_luyen_dau_cua_so_truoc` SQL + `cuaSoCua`/`cuaSoTruoc` gami/danhgia.js). Dữ liệu
+// cũ hơn VẪN còn (dạng đã từng đo) nhưng KHÔNG đủ mới để tin — không hiện mức cũ ra màn (CEO 20/09).
 export type DangHocTap = {
   ma_dang: string; ten_dang: string; ten_chuyen_de: string
-  score: number; muc: 'dat' | 'can_luyen' | 'yeu'; tin: 'cao' | 'tb' | 'thap'; n: number
-  recent: RecentEval[] // 5 lần GẦN NHẤT, mới→cũ (Thùy 21/08: "giống Kết quả học tập ở ERP")
+  score: number | null; muc: 'dat' | 'can_luyen' | 'yeu' | null; n: number | null
+  recent: RecentEval[] // 5 lần GẦN NHẤT (bất kể cũ/mới) — luôn hiện, kể cả khi muc=null
 }
-export type TongQuanHocTap = { dangs: DangHocTap[]; dat: number; canLuyen: number; yeu: number }
+export type TongQuanHocTap = { dangs: DangHocTap[]; dat: number; canLuyen: number; yeu: number; chuaDanhGia: number }
 
-const RECENT_N = 5
-
-// Màn "Thông tin học tập" (Thùy 21/08: "giống app phụ huynh — hiện dạng yếu" + "đánh giá từng câu
-// giống Kết quả học tập ERP, 5 lần gần nhất"). Dùng LẠI đúng masteryOfDang (KHÔNG bịa công thức
-// riêng) trên dữ liệu thô của hs_dang_evals (đã có sẵn cho Tự luyện) — RPC trả kèm ten_dang/
-// ten_chuyen_de nên không cần round-trip tra tên riêng.
+// Màn "Thông tin học tập" (Thùy 21/08, sửa "cửa sổ" 20/09). Mức Đạt/Cần luyện/Yếu/Chưa đánh giá được
+// = ĐÚNG `fn_mastery_cells` (RPC `hs_dang_hoc_tap`, KHÔNG bịa công thức riêng — §2.0), KHÔNG còn tính
+// `masteryOfDang` ở client. `recent` (5 dot lịch sử hiển thị) vẫn là list thô, gom sẵn trong SQL.
 export async function layDangHocTap(mon: string): Promise<TongQuanHocTap> {
-  const { data, error } = await supabase.rpc('hs_dang_evals', { p_mon: mon })
+  const { data, error } = await supabase.rpc('hs_dang_hoc_tap', { p_mon: mon })
   if (error) throw error
-  const rows = (data ?? []) as RawEvalNamed[]
-  const byDang = new Map<string, { evs: RecentEval[]; ten: string; chuyenDe: string }>()
-  for (const r of rows) {
-    const cur = byDang.get(r.ma_dang) ?? { evs: [], ten: r.ten_dang ?? r.ma_dang, chuyenDe: r.ten_chuyen_de ?? '' }
-    cur.evs.push({ value: r.value, t: r.t, src: r.src })
-    byDang.set(r.ma_dang, cur)
+  const dangs = (data ?? []) as DangHocTap[]
+  let dat = 0, canLuyen = 0, yeu = 0, chuaDanhGia = 0
+  for (const d of dangs) {
+    if (d.muc === 'dat') dat++; else if (d.muc === 'can_luyen') canLuyen++; else if (d.muc === 'yeu') yeu++; else chuaDanhGia++
   }
-  const dangs: DangHocTap[] = []
-  let dat = 0, canLuyen = 0, yeu = 0
-  for (const [ma, v] of byDang) {
-    const m = masteryOfDang(v.evs, MASTERY_CONFIG)
-    if (!m) continue
-    if (m.muc === 'dat') dat++; else if (m.muc === 'can_luyen') canLuyen++; else yeu++
-    const recent = [...v.evs].sort((a, b) => Date.parse(b.t) - Date.parse(a.t)).slice(0, RECENT_N) // mới → cũ
-    dangs.push({ ma_dang: ma, ten_dang: v.ten, ten_chuyen_de: v.chuyenDe, score: m.score, muc: m.muc as DangHocTap['muc'], tin: m.tin as DangHocTap['tin'], n: m.n, recent })
-  }
-  dangs.sort((a, b) => a.score - b.score) // yếu nhất trước — đúng thứ tự PH app "ưu tiên yếu→cần luyện"
-  return { dangs, dat, canLuyen, yeu }
+  return { dangs, dat, canLuyen, yeu, chuaDanhGia }
 }
 
 export type XepHangRow = { ma_hs: string; ho_ten: string; so_cau_dung: number; la_toi: boolean }
 
 // Bảng xếp hạng Tự luyện theo khối (Thùy 21/08: "xếp hạng các bạn 5T về thành tích làm tự luyện ở
 // nhà"). Chỉ số = số câu ĐÚNG cộng dồn — tính năng mới ra nên chưa cần lọc theo mùa.
-export async function xepHangTuLuyen(khoi: string): Promise<XepHangRow[]> {
-  const { data, error } = await supabase.rpc('hs_xep_hang_tu_luyen', { p_khoi: khoi })
+export async function xepHangTuLuyen(khoi: string, mon: string): Promise<XepHangRow[]> {
+  const { data, error } = await supabase.rpc('hs_xep_hang_tu_luyen', { p_khoi: khoi, p_mon: mon }) // 01/10: của môn đang chọn
   if (error) throw error
   return (data ?? []) as XepHangRow[]
 }
@@ -188,8 +239,8 @@ export async function xepHangTuLuyen(khoi: string): Promise<XepHangRow[]> {
 // ── LỊCH SỬ LÀM BÀI TRÊN APP (Thùy 12/09) — group theo ngày VN, mỗi ngày trả số câu/đúng/sai +
 // thời gian in-app đo bằng MAX-MIN cham_at trong bai_lam_cau. 30 ngày gần nhất. ──
 export type LichSuLamBaiRow = { ngay: string; so_cau: number; so_dung: number; so_sai: number; thoi_gian_giay: number }
-export async function layLichSuLamBai(soNgay = 30): Promise<LichSuLamBaiRow[]> {
-  const { data, error } = await supabase.rpc('fn_hs_lich_su_lam_bai', { p_so_ngay: soNgay })
+export async function layLichSuLamBai(mon: string, soNgay = 30): Promise<LichSuLamBaiRow[]> {
+  const { data, error } = await supabase.rpc('fn_hs_lich_su_lam_bai', { p_so_ngay: soNgay, p_mon: mon }) // 01/10: của môn đang chọn
   if (error) throw error
   return (data ?? []) as LichSuLamBaiRow[]
 }

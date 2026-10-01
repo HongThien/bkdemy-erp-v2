@@ -125,6 +125,48 @@ export async function listTaiKhoanMap(): Promise<Record<string, string>> {
   return map
 }
 
+// ── Cấp tài khoản HÀNG LOẠT cho HỌC SINH chưa có (nút chủ động trên ERP — CEO 19/09,
+// trước phải nhờ chạy tay `scripts/provision_hs_auth.mjs`). Y HỆT nguyên tắc `capTaiKhoan`
+// ở trên (client phụ không persist session, gọi `signUp` bằng anon key) — KHÔNG cần
+// service_role/serverless, vì "Confirm email" đã tắt sẵn trên Dashboard (dùng chung 1 cấu
+// hình Auth với nhân sự). Idempotent: tự bỏ qua HS đã có `tai_khoan`, gọi lại an toàn.
+// Email `<ma_hs>@hs.bkdemy.local`, PIN mặc định = CHÍNH mã HS (giữ nguyên quy ước cũ).
+export type ProvisionHsResult = { tao: number; boQua: number; loi: { ma_hs: string; loi: string }[] }
+export async function provisionTaiKhoanHS(): Promise<ProvisionHsResult> {
+  const DOMAIN = 'hs.bkdemy.local'
+  const { data: hs, error } = await supabase.from('hoc_sinh').select('id, ma_hs, ho_ten').eq('trang_thai', 'dang_hoc').limit(LIMIT)
+  if (error) throw error
+  const { data: existing, error: e2 } = await supabase.from('tai_khoan').select('hoc_sinh_id').not('hoc_sinh_id', 'is', null).limit(LIMIT)
+  if (e2) throw e2
+  const done = new Set((existing ?? []).map((r: any) => r.hoc_sinh_id as string))
+  const missing = ((hs ?? []) as { id: string; ma_hs: string | null; ho_ten: string }[]).filter((h) => h.ma_hs && !done.has(h.id))
+  if (!missing.length) return { tao: 0, boQua: hs?.length ?? 0, loi: [] }
+
+  const url = import.meta.env.VITE_SUPABASE_URL as string
+  const key = import.meta.env.VITE_SUPABASE_KEY as string
+  const tmp = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } })
+
+  let tao = 0
+  const loi: { ma_hs: string; loi: string }[] = []
+  for (const h of missing) {
+    const email = `${h.ma_hs!.toLowerCase()}@${DOMAIN}`
+    const { data, error: e1 } = await tmp.auth.signUp({
+      email, password: h.ma_hs!,
+      options: { data: { ho_ten: h.ho_ten, ma_hs: h.ma_hs, role: 'hoc_sinh' } },
+    })
+    if (e1) {
+      if (!/already registered/i.test(e1.message)) loi.push({ ma_hs: h.ma_hs!, loi: e1.message })
+      continue
+    }
+    const uid = data.user?.id
+    if (!uid) { loi.push({ ma_hs: h.ma_hs!, loi: 'Không lấy được id tài khoản mới.' }); continue }
+    const { error: e3 } = await supabase.from('tai_khoan').upsert({ id: uid, hoc_sinh_id: h.id, email }, { onConflict: 'id' })
+    if (e3) { loi.push({ ma_hs: h.ma_hs!, loi: e3.message }); continue }
+    tao++
+  }
+  return { tao, boQua: (hs?.length ?? 0) - missing.length, loi }
+}
+
 // ── Hồ sơ CỦA TÔI (tài khoản nhân sự — Thùy chốt 06-11) ──────────
 // Link tài khoản: admin tạo user Auth (Dashboard) TRÙNG email nhân sự → lần đăng nhập đầu app TỰ LINK
 // (ghi tai_khoan id=auth.uid → nhan_su). NS tự sửa được ảnh/SĐT/email; team/vị trí/phân công CHỈ XEM.

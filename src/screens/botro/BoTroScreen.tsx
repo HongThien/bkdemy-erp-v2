@@ -88,7 +88,8 @@ export default function BoTroScreen() {
           <p className="text-[13px] text-slate-500">HS nghỉ → xếp bù → mở buổi điểm danh → chấm ET + đánh giá → hoàn thành</p>
         </div>
 
-        <div className="mb-4 inline-flex flex-wrap gap-1.5 rounded-2xl border border-slate-200 bg-white p-1.5 shadow-sm">
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <div className="inline-flex flex-wrap gap-1.5 rounded-2xl border border-slate-200 bg-white p-1.5 shadow-sm">
           {TABS.map((t) => {
             const on = tab === t.k
             return (
@@ -101,7 +102,7 @@ export default function BoTroScreen() {
 
         {/* Filter khối + tìm tên (Thùy 07-16) — áp dụng 3 tab Cần bù/Đã xếp/Hoàn thành */}
         {showFilter && (
-          <div className="mb-4 flex flex-wrap items-center gap-2">
+          <div className="ml-auto flex flex-wrap items-center gap-2">
             <span className="text-[12px] font-semibold uppercase tracking-wide text-slate-500">Khối</span>
             <span className="inline-flex flex-wrap gap-1 rounded-xl border border-slate-200 bg-white p-1 shadow-sm">
               <button onClick={() => setKhoiFilter(null)} className={`rounded-lg px-2.5 py-1 text-[13px] font-medium transition ${khoiFilter === null ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-100'}`}>Tất cả</button>
@@ -115,6 +116,7 @@ export default function BoTroScreen() {
             </div>
           </div>
         )}
+        </div>
 
         {loading ? <div className="p-8 text-[14px] text-slate-400">Đang tải…</div>
           : tab === 'canbu' ? (

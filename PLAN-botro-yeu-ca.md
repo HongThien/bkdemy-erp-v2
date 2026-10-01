@@ -215,3 +215,9 @@ nay chưa hoàn tất; class màu literal riêng — bài học Tailwind JIT đ�
 
 Mỗi pha 1 commit, verify thật trên localhost với case Tùng trước khi sang pha sau. Pha A cần Thùy gật
 migration (Luật xoá/thêm CLAUDE.md — toàn ADD nhưng vẫn xin gật).
+
+---
+
+> **⭐ Cập nhật sau 03/09:** mọi thay đổi 09/09 → 21/09 (MCQ tuyệt đối · 2 chế độ ca app/giấy + in phiếu + test giấy · TA chỉnh câu trả lời ngắn ·
+> lịch trực khối+bậc, ca ≤3 em, không xếp lại · mức ưu tiên · màn theo dõi) được tổng hợp ở **`spec-bo-tro.md`** — đọc file đó trước; file
+> này giữ nguyên làm thiết kế gốc của 1 ca.

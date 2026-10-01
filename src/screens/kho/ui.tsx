@@ -1,8 +1,9 @@
 // Primitives UI gu SaaS — dùng chung cho mọi nhánh bản đồ (Đại / Hình).
-import type { ReactNode } from 'react'
+import { Fragment, type ReactNode } from 'react'
 import katex from 'katex'
 import { katexMacros } from '../../lib/math/macros'
 import { fixAccentScript, widenSingleHat } from '../../lib/math/latex-fix'
+import { parseLyThuyetBlocks, splitPhuongPhapBuoc, splitViDu, splitLoiGiaiLabel, laDauNhomBaiTap, type LyThuyetBlock } from '../../lib/lythuyetBlocks'
 
 // Render text có LaTeX ($…$ inline, $$…$$ block) thành công thức đẹp.
 const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -170,6 +171,131 @@ export function MathText({ children, className, prefix, editable }: { children: 
   // 1 dòng → inline (căn baseline đẹp); nhiều dòng → block từng dòng (phân số không đè), nhãn ghép vào dòng đầu.
   if (lines.length <= 1) return <span className={`katex-text ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: head + (lines[0] || '') }} />
   return <div className={`katex-text ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: lines.map((l, i) => `<div class="mline">${(i === 0 ? head : '') + (l || '&nbsp;')}</div>`).join('') }} />
+}
+
+// ── spec-format-noidung.md — 6 khung lý thuyết (định lý/định nghĩa/chú ý/phương pháp/ví dụ/nhận xét) ──
+// 1 NGUỒN CSS DÙNG CHUNG cho cả preview màn hình (LyThuyetModal, src/screens/kho/BanDo.tsx — tự inject
+// qua <style>) VÀ PDF (LyThuyetBody, src/screens/tailieu/PrintView.tsx — nối vào chuỗi CSS paged.js) —
+// để preview lúc soạn và bản in ra giống hệt nhau, đúng hướng CEO chốt 22/09. `break-inside:avoid` TUYỆT
+// ĐỐI trên mọi khung (khác .pv-blk lý thuyết thường — cái đó CHO PHÉP xé để né mồ côi cuối trang; khung
+// ở đây thà đẩy nguyên sang trang sau còn hơn vỡ giữa chừng, xem PrintView.tsx).
+export const LT_CORE_CSS = `
+.pv-lt-tag{font-size:12px;font-weight:800;letter-spacing:.04em}
+.pv-lt-dinhnghia{border-left:5px solid #c89b52;background:#fdf9f1;padding:8px 14px 8px 18px;margin:14px 0;break-inside:avoid}
+.pv-lt-dinhnghia .pv-lt-tag{color:#c89b52;display:block;margin-bottom:6px}
+.pv-lt-dinhly{position:relative;border:2px solid #7c5cbf;background:#f6f2fb;border-radius:14px;padding:22px 18px 18px;margin:26px 0 20px;font-size:15px;line-height:1.65;break-inside:avoid}
+.pv-lt-dinhly .pv-lt-tag{position:absolute;top:-14px;left:18px;background:#7c5cbf;color:#fff;padding:6px 16px;border-radius:8px;font-size:12px;box-shadow:0 3px 6px rgba(124,92,191,.28)}
+.pv-lt-tinhchat{position:relative;border:2px solid #2D9CDB;background:#eaf6fd;border-radius:14px;padding:22px 18px 18px;margin:26px 0 20px;font-size:15px;line-height:1.65;break-inside:avoid}
+.pv-lt-tinhchat .pv-lt-tag{position:absolute;top:-14px;left:18px;background:#2D9CDB;color:#fff;padding:6px 16px;border-radius:8px;font-size:12px;box-shadow:0 3px 6px rgba(45,156,219,.28)}
+.pv-lt-chuy{display:flex;gap:12px;align-items:flex-start;border:2px dashed #c2673f;border-radius:12px;padding:14px 16px;margin:14px 0;background:#fdf6f2;break-inside:avoid}
+.pv-lt-chuy .pv-lt-tag{color:#c2673f;display:block;margin-bottom:4px}
+.pv-lt-chuy .pv-lt-body{font-weight:700;color:#8a3b1c}
+.pv-lt-pp{margin:14px 0;break-inside:avoid}
+.pv-lt-pp .pv-lt-tag{color:#525a6e;display:block;margin-bottom:8px}
+.pv-lt-pp-row{display:flex;gap:10px}
+.pv-lt-pp-num{display:flex;flex-direction:column;align-items:center;flex:0 0 auto}
+.pv-lt-pp-circle{width:20px;height:20px;border-radius:50%;background:#525a6e;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.pv-lt-pp-line{width:2px;flex:1;background:#c9c9d6;margin:2px 0}
+.pv-lt-pp-txt{padding-bottom:10px;font-size:14px}
+.pv-lt-vd-wrap{margin:26px 0 18px;break-inside:avoid}
+.pv-lt-vd{position:relative;border:2px solid #b23a72;background:#fbf0f5;border-radius:14px;padding:22px 18px 18px;font-size:15px;line-height:1.65}
+.pv-lt-vd .pv-lt-tag{position:absolute;top:-14px;left:18px;background:#b23a72;color:#fff;padding:6px 16px;border-radius:8px;font-size:12px;box-shadow:0 3px 6px rgba(178,58,114,.28)}
+.pv-lt-vd-giai{margin-top:8px;padding-left:2px;font-size:14px;color:#3a4356}
+.pv-lt-vd-giai-nhan{text-align:center;font-weight:800;text-decoration:underline;text-underline-offset:3px;margin:8px 0 6px;color:#3a4356;break-after:avoid}
+.pv-lt-nx{display:flex;gap:12px;margin:14px 0;break-inside:avoid}
+.pv-lt-nx-quote{font-size:32px;line-height:.6;color:#2f9e6e;flex:0 0 auto;padding-top:6px}
+.pv-lt-nx-body{padding-top:2px}
+.pv-lt-nx .pv-lt-tag{color:#2f9e6e;display:block;margin-bottom:3px;font-size:11.5px}
+.pv-lt-nx-txt{font-style:italic;color:#2c4b3c}
+.pv-lt-bt-header{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#4c6fff;margin:20px 0 10px;break-after:avoid}
+.pv-lt-bt{position:relative;border:2px solid #4c6fff;background:#f5f7ff;border-radius:14px;padding:22px 18px 18px;margin:22px 0 18px;font-size:15px;line-height:1.65;break-inside:avoid}
+.pv-lt-bt .pv-lt-tag{position:absolute;top:-14px;left:18px;background:#4c6fff;color:#fff;padding:6px 16px;border-radius:8px;font-size:12px;box-shadow:0 3px 6px rgba(76,111,255,.28)}
+`
+
+const LT_TIEU_DE_MAC_DINH: Record<LyThuyetBlock['loai'], string> = {
+  text: '', dinh_ly: 'Định lý', dinh_nghia: 'Định nghĩa', tinh_chat: 'Kiến thức cần nhớ', chu_y: 'Chú ý',
+  phuong_phap: 'Phương pháp giải', vi_du: 'Ví dụ', nhan_xet: 'Nhận xét', bai_tap: 'Bài tập', nhan_giai: 'Bài giải:',
+}
+
+// Render 1 khối ĐÃ có kí hiệu (loai !== 'text'). Khối 'text' (đoạn thường, không kí hiệu) do nơi gọi tự
+// render — PDF cần chunk theo dòng để né bug paged.js (xem LyThuyetBody), preview thì không cần.
+export function LyThuyetBlockView({ b }: { b: LyThuyetBlock }) {
+  const tieuDe = b.tieuDe || LT_TIEU_DE_MAC_DINH[b.loai]
+  switch (b.loai) {
+    case 'dinh_nghia':
+      return <div className="pv-lt-dinhnghia"><span className="pv-lt-tag">{tieuDe}</span><MathText>{b.noiDung}</MathText></div>
+    case 'dinh_ly':
+      return <div className="pv-lt-dinhly"><span className="pv-lt-tag">{tieuDe}</span><MathText>{b.noiDung}</MathText></div>
+    case 'tinh_chat':
+      return <div className="pv-lt-tinhchat"><span className="pv-lt-tag">{tieuDe}</span><MathText>{b.noiDung}</MathText></div>
+    case 'chu_y':
+      return <div className="pv-lt-chuy"><div><span className="pv-lt-tag">{tieuDe}</span><div className="pv-lt-body"><MathText>{b.noiDung}</MathText></div></div></div>
+    case 'phuong_phap': {
+      const buoc = splitPhuongPhapBuoc(b.noiDung)
+      return (
+        <div className="pv-lt-pp">
+          <span className="pv-lt-tag">{tieuDe}</span>
+          {buoc.map((dong, i) => (
+            <div className="pv-lt-pp-row" key={i}>
+              <div className="pv-lt-pp-num">
+                <div className="pv-lt-pp-circle">{i + 1}</div>
+                {i < buoc.length - 1 && <div className="pv-lt-pp-line" />}
+              </div>
+              <div className="pv-lt-pp-txt"><MathText>{dong}</MathText></div>
+            </div>
+          ))}
+        </div>
+      )
+    }
+    case 'vi_du': {
+      const { de, loiGiai } = splitViDu(b.noiDung)
+      const { nhan, than } = loiGiai ? splitLoiGiaiLabel(loiGiai) : { nhan: '', than: '' }
+      return (
+        <div className="pv-lt-vd-wrap">
+          <div className="pv-lt-vd"><span className="pv-lt-tag">{tieuDe}</span><MathText>{de}</MathText></div>
+          {loiGiai && (
+            <div className="pv-lt-vd-giai">
+              {nhan && <div className="pv-lt-vd-giai-nhan">{nhan}</div>}
+              {than && <MathText>{than}</MathText>}
+            </div>
+          )}
+        </div>
+      )
+    }
+    case 'nhan_xet':
+      return (
+        <div className="pv-lt-nx">
+          <div className="pv-lt-nx-quote">&ldquo;</div>
+          <div className="pv-lt-nx-body"><span className="pv-lt-tag">{tieuDe}</span><div className="pv-lt-nx-txt"><MathText>{b.noiDung}</MathText></div></div>
+        </div>
+      )
+    case 'bai_tap':
+      return <div className="pv-lt-bt"><span className="pv-lt-tag">{tieuDe}</span><MathText>{b.noiDung}</MathText></div>
+    case 'nhan_giai':
+      return <div className="pv-lt-vd-giai-nhan">{tieuDe}</div>
+    default:
+      return null
+  }
+}
+
+// "BÀI TẬP TỰ LUYỆN" — tiêu đề DÙNG CHUNG, hiện 1 LẦN trước NHÓM các khối bai_tap liên tiếp (CEO chốt
+// 26/09: tách khỏi Ví dụ, không đóng khung màu riêng từng câu). Gọi ở cả 3 nơi render — xem lythuyetBlocks.ts.
+export function BaiTapHeader() {
+  return <div className="pv-lt-bt-header">Bài tập tự luyện</div>
+}
+
+// Preview MÀN HÌNH (LyThuyetModal) — không cần chunk theo dòng như bản PDF (không phân trang), nên đoạn
+// 'text' render thẳng luôn.
+export function LyThuyetBlocksPreview({ text }: { text: string }) {
+  const blocks = parseLyThuyetBlocks(text)
+  return <>{blocks.map((b, i) => (
+    <Fragment key={i}>
+      {laDauNhomBaiTap(blocks, i) && <BaiTapHeader />}
+      {b.loai === 'text'
+        ? <div className="mb-3 last:mb-0"><MathText>{b.noiDung}</MathText></div>
+        : <LyThuyetBlockView b={b} />}
+    </Fragment>
+  ))}</>
 }
 
 export const inp = 'w-full rounded-md border border-slate-300 px-2.5 py-1.5 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20'

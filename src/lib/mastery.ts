@@ -6,11 +6,56 @@
 // đo khách quan per-câu như et/mt/btvn/bt. Trọng số — xem MASTERY_CONFIG.WEIGHT (gami/mastery.js): mt=3
 // (chuẩn nhất) · et=2 · btvn/bt=1 (tự luyện).
 import { supabase } from './supabase'
-import { masteryOfDang, RESULT_VALUE, MASTERY_CONFIG, MASTERY_CONFIG_HINH } from '../gami/mastery.js'
+import { masteryOfDang, RESULT_VALUE, MASTERY_CONFIG } from '../gami/mastery.js'
 import { seasonOf, seasonStartUtc } from '../gami/season.js'
-import { khoCuaMon } from './tailieu'
+import { khoCuaMon, nhanhCuaMon, tenNhanh, type NhanhMon } from './tailieu'
 
 const LIMIT = 10000
+
+// ── DẠNG CỦA MÔN = MỌI NHÁNH (registry NHANH_CUA_MON), không chỉ bảng bản đồ gốc ──
+// ⚠ BUG THẬT (29/09, Thùy: "ET/BTVN Hình học không vào ERP"): mọi nơi ở file này từng tra tên/độ khó dạng
+// bằng `khoCuaMon(mon).banDoTbl` — với Toán là CHỈ `dai_ban_do` — rồi `if (!info) continue` coi dạng không
+// khớp là "dạng môn khác". Nên Bài Hình học (hinh_hoc_bai) và dạng Hình giải tích (hgt_ban_do) bị BỎ IM
+// LẶNG khỏi Kết quả học tập / Report PH / rollup lớp, dù buổi vẫn chấm đủ (đo 09/2026 khối 6–9: ~170 ô ET
+// Hình học + ~230 ô ET HGT rơi). Tra theo registry thì thêm nhánh mới là tự vào, không sửa ở đây nữa.
+// ma_dang không trùng giữa các nhánh CÙNG môn (kiểm DB 29/09: dai∩hgt∩hinh_hoc = 0) — lỡ trùng thì nhánh
+// đứng trước trong registry thắng.
+export type DangInfo = {
+  ten_dang: string
+  ma_chuyen_de: string | null // THẬT — Bài Hình học = null (không có tầng chuyên đề; đừng gom các Bài thành 1 "chuyên đề")
+  ten_chuyen_de: string    // Bài Hình học không có chuyên đề ⇒ nhãn nhánh ("Hình học") để nhóm/hiển thị được
+  muc_do: number | null    // độ khó THẬT (null = chưa gán) — chỉ để hiển thị
+  mucDoBC: number | null   // độ khó dùng để CHIA cơ bản/nâng cao (muc_do ?? mucDoThieu của nhánh)
+  nhanh: string | null
+  nhomBC: 'dai' | 'hinh'
+}
+export async function dangInfoCuaMon(mon: string, maList: string[]): Promise<Map<string, DangInfo>> {
+  const out = new Map<string, DangInfo>()
+  if (!maList.length) return out
+  const nhanhs = nhanhCuaMon(mon)
+  const ds: NhanhMon[] = nhanhs.length ? nhanhs : [{ ma: null, ten: '' }] // môn 1 nhánh (KHTN): chỉ bảng gốc
+  const daTra = new Set<string>()
+  for (const n of ds) {
+    const tbl = khoCuaMon(mon, n.ma).banDoTbl
+    if (daTra.has(tbl)) continue
+    daTra.add(tbl)
+    const { data, error } = await supabase.from(tbl).select('ma_dang, ten_dang, ma_chuyen_de, ten_chuyen_de, muc_do').in('ma_dang', maList).limit(LIMIT)
+    if (error) throw error
+    for (const r of (data ?? []) as { ma_dang: string; ten_dang: string; ma_chuyen_de: string | null; ten_chuyen_de: string | null; muc_do: number | null }[]) {
+      if (out.has(r.ma_dang)) continue
+      out.set(r.ma_dang, {
+        ten_dang: r.ten_dang,
+        ma_chuyen_de: r.ma_chuyen_de || null,
+        ten_chuyen_de: r.ten_chuyen_de || tenNhanh(mon, n.ma) || '',
+        muc_do: r.muc_do ?? null,
+        mucDoBC: r.muc_do ?? n.mucDoThieu ?? null,
+        nhanh: n.ma,
+        nhomBC: n.nhomBC ?? 'dai',
+      })
+    }
+  }
+  return out
+}
 
 export type EvalSrc = 'ingame' | 'et' | 'mt' | 'dg' | 'btvn' | 'bt' | 'tu_luyen'
 
@@ -26,6 +71,9 @@ export type DangMastery = {
   ten_dang: string
   ten_chuyen_de: string
   muc_do: number | null // độ khó 1-5 (banDoTbl.muc_do) — null nếu bảng bản đồ không có cột này (vd hinh_ban_do)
+  mucDoBC: number | null // độ khó để CHIA cơ bản/nâng cao — xem DangInfo
+  nhanh: string | null   // nhánh của dạng trong môn (null = nhánh gốc)
+  nhomBC: 'dai' | 'hinh' // cột báo cáo Đại / Hình
   mastery: Mastery | null // null = CHƯA ĐO (không có lần đo nào)
   evals: DangEval[] // MỚI → CŨ
 }
@@ -50,8 +98,10 @@ const THI_LOAI = new Set(['et', 'de_thi'])
 type OnlineEvalRow = { hoc_sinh_id: string; ma_dang: string | null; value: number; t: string; src: EvalSrc; mon: string }
 async function fetchOnlineEvals(hs: string | string[], sinceIso?: string | null): Promise<OnlineEvalRow[]> {
   // Embed 2 tầng FK ĐƠN (bai_lam_id → bai_test_id) + filter trên bảng nhúng qua !inner (pattern loadMasteryCells).
+  // Embed thêm buoi_hoc.ngay để neo timeline theo NGÀY BUỔI (bai_test gắn buổi) — GV/TA chấm trễ (buổi 10/08 chấm
+  // ngày 23/08) không được kéo phép đo về ngày chấm. Fallback cham_at cho test online không gắn buổi (tự luyện).
   let q = supabase.from('bai_lam_cau')
-    .select('verdict, cham_at, lam:bai_lam_id!inner(hoc_sinh_id, trang_thai, test:bai_test_id(loai, mon)), cau:bai_test_cau_id(ma_dang)')
+    .select('verdict, cham_at, lam:bai_lam_id!inner(hoc_sinh_id, trang_thai, test:bai_test_id(loai, mon, buoi:buoi_hoc_id(ngay))), cau:bai_test_cau_id(ma_dang)')
     .not('verdict', 'is', null).limit(LIMIT)
   q = Array.isArray(hs) ? q.in('lam.hoc_sinh_id', hs) : q.eq('lam.hoc_sinh_id', hs)
   if (sinceIso) q = q.gte('cham_at', sinceIso)
@@ -66,9 +116,10 @@ async function fetchOnlineEvals(hs: string | string[], sinceIso?: string | null)
     // Chế độ THI chỉ tính khi ĐÃ NỘP (verdict chỉ sinh lúc et_nop, nhưng belt-and-suspenders với backfill duyệt).
     if (laThi && r.lam.trang_thai !== 'da_nop') continue
     const src: EvalSrc = laThi ? 'et' : loai === 'tu_luyen' ? 'tu_luyen' : 'btvn'
+    const ngayBuoi = r.lam.test?.buoi?.ngay ?? null
     out.push({
       hoc_sinh_id: r.lam.hoc_sinh_id, ma_dang: r.cau?.ma_dang ?? null,
-      value: val, t: r.cham_at, src, mon: r.lam.test?.mon ?? '',
+      value: val, t: ngayBuoi ?? r.cham_at, src, mon: r.lam.test?.mon ?? '',
     })
   }
   return out
@@ -104,15 +155,15 @@ export async function getMasteryHS(
   mon: string,
   opts?: { includeBTVN?: boolean; days?: number },
 ): Promise<DangMastery[]> {
-  const K = khoCuaMon(mon) // banDoTbl theo môn → scope dạng đúng môn (bỏ dạng môn khác)
   const { data: hsRow } = await supabase.from('hoc_sinh').select('khoi').eq('id', hocSinhId).single()
   const phases: EvalSrc[] = opts?.includeBTVN ? ['et', 'mt', 'bt', 'btvn', 'tu_luyen']
     : laCap1(hsRow?.khoi) ? ['et', 'mt', 'tu_luyen'] : ['et', 'mt']
   const sinceIso = opts?.days ? new Date(Date.now() - opts.days * 86400_000).toISOString() : null // boundary INSTANT (được phép, §windowing)
 
-  // grades của HS, EMBED thẳng problem (phase, ma_dang) — FK problem_id→gami_session_problems ĐƠN, sạch
+  // grades của HS, EMBED thẳng problem (phase, ma_dang, ngày buổi) — FK problem_id→gami_session_problems ĐƠN, sạch
   // (khác buoi_hoc_hs 2-FK). 1 query thay 2 + bỏ IN(probIds) tránh URL dài.
-  let gq = supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
+  // Embed thêm buoi:buoi_hoc_id(ngay) để timeline neo NGÀY BUỔI, không ngày chấm (GV/TA chấm trễ 1-2 tuần).
+  let gq = supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
   if (sinceIso) gq = gq.gte('graded_at', sinceIso)
   const [{ data: grades }, online, bt] = await Promise.all([
     gq,
@@ -129,7 +180,9 @@ export async function getMasteryHS(
     if (!phases.includes(p.phase as EvalSrc)) continue // lọc phase (chỉ et/mt mặc định, +btvn/bt nếu bật toggle)
     const val = RESULT_VALUE[g.result as keyof typeof RESULT_VALUE]
     if (val === undefined) continue
-    push(p.ma_dang, { value: val, t: g.graded_at, src: p.phase as EvalSrc })
+    // Timeline neo NGÀY BUỔI (p.buoi.ngay), fallback graded_at nếu problem chưa gắn buổi (defensive — mọi
+    // gami_session_problems đều có buoi_hoc_id theo schema, chỉ dự phòng embed null).
+    push(p.ma_dang, { value: val, t: p.buoi?.ngay ?? g.graded_at, src: p.phase as EvalSrc })
   }
   for (const o of online) if (phases.includes(o.src)) push(o.ma_dang, { value: o.value, t: o.t, src: o.src })
   if (phases.includes('bt')) for (const b of bt) push(b.ma_dang, { value: b.value, t: b.t, src: 'bt' })
@@ -137,9 +190,8 @@ export async function getMasteryHS(
   const maList = Object.keys(byDang)
   if (maList.length === 0) return []
 
-  // Resolve tên dạng + chuyên đề + độ khó theo MÔN (scope: chỉ dạng thuộc bảng bản đồ của môn này).
-  const dangs = ((await supabase.from(K.banDoTbl).select('ma_dang, ten_dang, ten_chuyen_de, muc_do').in('ma_dang', maList).limit(LIMIT)).data ?? []) as { ma_dang: string; ten_dang: string; ten_chuyen_de: string; muc_do: number | null }[]
-  const dangMap = new Map(dangs.map((d) => [d.ma_dang, d]))
+  // Resolve tên dạng + chuyên đề + độ khó theo MÔN (scope: dạng thuộc MỌI nhánh của môn này — dangInfoCuaMon).
+  const dangMap = await dangInfoCuaMon(mon, maList)
 
   // §2.0 (30/08): SỐ mastery từ fn_mastery_cells (parity 391/391) — evals ở đây chỉ còn là
   // TIMELINE hiển thị (lịch sử lần đo), không phải nguồn tính.
@@ -158,7 +210,10 @@ export async function getMasteryHS(
       ma_dang: ma,
       ten_dang: info.ten_dang,
       ten_chuyen_de: info.ten_chuyen_de,
-      muc_do: info.muc_do ?? null,
+      muc_do: info.muc_do,
+      mucDoBC: info.mucDoBC,
+      nhanh: info.nhanh,
+      nhomBC: info.nhomBC,
       mastery: cellMap.get(ma) ?? null,
       evals,
     })
@@ -192,7 +247,8 @@ export type HinhMastery = {
 export async function getHinhMasteryHS(hocSinhId: string, opts?: { includeBTVN?: boolean; days?: number }): Promise<HinhMastery[]> {
   const phases: EvalSrc[] = opts?.includeBTVN ? ['et', 'mt', 'btvn'] : ['et', 'mt']
   const sinceIso = opts?.days ? new Date(Date.now() - opts.days * 86400_000).toISOString() : null
-  let gq = supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, hinh_baitoan_id)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
+  // Embed thêm buoi:buoi_hoc_id(ngay) để timeline neo NGÀY BUỔI, không ngày chấm (cùng lý do getMasteryHS).
+  let gq = supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, hinh_baitoan_id, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
   if (sinceIso) gq = gq.gte('graded_at', sinceIso)
   const { data: grades, error } = await gq
   if (error) throw error
@@ -205,7 +261,7 @@ export async function getHinhMasteryHS(hocSinhId: string, opts?: { includeBTVN?:
     if (!phases.includes(p.phase as EvalSrc)) continue
     const val = RESULT_VALUE[g.result as keyof typeof RESULT_VALUE]
     if (val === undefined) continue
-    push(p.hinh_baitoan_id, { value: val, t: g.graded_at, src: p.phase as EvalSrc })
+    push(p.hinh_baitoan_id, { value: val, t: p.buoi?.ngay ?? g.graded_at, src: p.phase as EvalSrc })
   }
   const nodeIds = Object.keys(byNode)
   if (!nodeIds.length) return []
@@ -251,8 +307,8 @@ export async function getHinhMasteryHS(hocSinhId: string, opts?: { includeBTVN?:
 //     giám sát) · "coBTVN" = etMt + BTVN + Bổ trợ (thêm nguồn tự luyện) — so 2 số cùng lúc để soi ĐỘ ĐÁNG
 //     TIN của BTVN (dạng chỉ có BTVN mà không có ET/MT → etMt trống, coBTVN có → lộ rõ dạng "chỉ tự báo").
 //     Dùng LẠI đúng engine masteryOfDang (weighted avg 5 lần GẦN NHẤT, MASTERY_CONFIG.WEIGHT: et=2·mt=3·
-//     btvn=1·bt=1 — xem gami/mastery.js) — KHÔNG bịa công thức mới. Toàn bộ + Đại cơ bản/nâng cao (Hình:
-//     UI tự render placeholder tĩnh, KHÔNG tính ở đây — xem lý do "chưa có dữ liệu" ở DangBaiTab).
+//     btvn=1·bt=1 — xem gami/mastery.js) — KHÔNG bịa công thức mới. Toàn bộ + (Đại | Hình) × cơ bản/nâng cao —
+//     cột Đại/Hình theo registry nhánh (NhanhMon.nhomBC), xem dangInfoCuaMon.
 //   ② hoatDong — %ET/%BTVN/%MT, MỖI nguồn tách CƠ BẢN/NÂNG CAO theo muc_do dạng của câu (bucketMucDo),
 //     KHÔNG phân biệt Đại/Hình trong 1 mức (gộp chung) — 3 nguồn × 2 mức = 6 số.
 //   ③ diem — ĐIỂM SỐ nhập tay qua ky_thi/diem_thi (khác %hoatDong ở trên — đó là %đúng câu, đây là điểm
@@ -261,8 +317,8 @@ export type BucketPct = { dat: number; can_luyen: number; yeu: number; total: nu
 export type HoanThanhCard = { etMt: BucketPct; coBTVN: BucketPct }
 export type ActPct = { pct: number | null; n: number }
 export type TongQuanHS = {
-  // hinhCoBan/hinhNangCao (Thùy 21/08: "giống đại, đo trên những mô hình đã có đánh giá" — CÙNG công
-  // thức compPct, không cần denominator canonical riêng) — bucket theo `cap` CLIP 1-5, xem getHinhMasteryHS.
+  // hinhCoBan/hinhNangCao (Thùy 29/09): dạng nhánh Hình học (Bài) + Hình giải tích, CÙNG công thức compPct như
+  // Đại. Bài chưa gán độ khó tính Cơ bản (NhanhMon.mucDoThieu). KHÔNG còn đọc Hình Luyện (mô hình).
   hoanThanh: { toanBo: HoanThanhCard; daiCoBan: HoanThanhCard; daiNangCao: HoanThanhCard; hinhCoBan: HoanThanhCard; hinhNangCao: HoanThanhCard }
   hoatDong: {
     etCoBan: ActPct; etNangCao: ActPct
@@ -291,9 +347,8 @@ export type TongQuanHS = {
   }
 }
 export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?: string }): Promise<TongQuanHS> {
-  const K = khoCuaMon(mon)
   const [{ data: grades }, { data: dt }, online, btGradeEvals, { data: hsRow }] = await Promise.all([
-    supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang, hinh_baitoan_id, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
+    supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     supabase.from('diem_thi').select('diem, diem_co_ban, diem_nang_cao, diem_thi_lai, diem_thi_lai_co_ban, diem_thi_lai_nang_cao, ky_thi:ky_thi_id(loai, mon, ngay, khung_co_ban, khung_nang_cao, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     fetchOnlineEvals(hocSinhId),
     fetchBTEvals(hocSinhId),
@@ -340,9 +395,13 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
     const p = g.prob; if (!p) continue
     const v = RESULT_VALUE[g.result as keyof typeof RESULT_VALUE]; if (v === undefined) continue
     const bd = p.buoi?.ngay ?? null
-    if (p.phase === 'et') etRows.push({ ma: p.ma_dang ?? null, value: v, t: g.graded_at, bd })
-    else if (p.phase === 'mt') mtRows.push({ ma: p.ma_dang ?? null, value: v, t: g.graded_at, bd })
-    else if (p.phase === 'btvn') btvnRows.push({ ma: p.ma_dang ?? null, value: v, t: g.graded_at, bd })
+    // t = NGÀY BUỔI khi có (mọi gami_session_problems đều gắn buổi theo schema) — không phải graded_at.
+    // Comment ở filter tháng bên dưới đã nói rõ: chấm trễ không được biến hoạt động khỏi report tháng
+    // buổi diễn ra. Áp cùng nguyên tắc cho timeline `t` (sort/hiển thị "lần đo gần nhất").
+    const t = bd ?? g.graded_at
+    if (p.phase === 'et') etRows.push({ ma: p.ma_dang ?? null, value: v, t, bd })
+    else if (p.phase === 'mt') mtRows.push({ ma: p.ma_dang ?? null, value: v, t, bd })
+    else if (p.phase === 'btvn') btvnRows.push({ ma: p.ma_dang ?? null, value: v, t, bd })
   }
   // Online: scope theo môn của TEST (có sẵn nhãn mon — §1.6).
   for (const o of online) {
@@ -390,22 +449,24 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
   }
 
   const maList = Object.keys(byDangBottom) // ⊇ byDangTop (bottom = top + btvn + bt) — all-time, xem comment trên
-  let valid = new Set<string>()
+  // Dạng hợp lệ = thuộc MỌI nhánh của môn (dangInfoCuaMon) — trước 29/09 chỉ bảng gốc ⇒ Hình rơi mất.
+  const dangInfo = await dangInfoCuaMon(mon, maList)
+  const valid = new Set(dangInfo.keys())
   const mucDoMap = new Map<string, number>()
-  if (maList.length) {
-    const dd = ((await supabase.from(K.banDoTbl).select('ma_dang, muc_do').in('ma_dang', maList).limit(LIMIT)).data ?? []) as { ma_dang: string; muc_do: number }[]
-    for (const x of dd) { valid.add(x.ma_dang); if (x.muc_do != null) mucDoMap.set(x.ma_dang, x.muc_do) }
-  }
+  for (const [ma, x] of dangInfo) if (x.mucDoBC != null) mucDoMap.set(ma, x.mucDoBC)
   const laCoBan = (md: number | null) => bucketMucDo(md) === 'co_ban'
   const laNangCao = (md: number | null) => bucketMucDo(md) === 'nang_cao'
+  // Lọc theo (cột Đại/Hình) × (cơ bản/nâng cao) — cột lấy từ registry nhánh (nhomBC), không if theo nhánh.
+  const locDang = (nhom: 'dai' | 'hinh', muc: (md: number | null) => boolean) => (ma: string) =>
+    dangInfo.get(ma)?.nhomBC === nhom && muc(mucDoMap.get(ma) ?? null)
 
-  // % hoàn thành bản đồ (đạt=1·cần=0.5·yếu=0)/ĐÃ-ĐO trên 1 trong 2 bản đồ dạng — predMuc lọc theo bucket
-  // muc_do của DẠNG (không phải câu); predTime chỉ dùng cho trend (30 ngày).
-  const compPct = (map: Record<string, DangEval[]>, predMuc?: (md: number | null) => boolean, predTime?: (t: number) => boolean): BucketPct & { pctRaw: number | null } => {
+  // % hoàn thành bản đồ (đạt=1·cần=0.5·yếu=0)/ĐÃ-ĐO trên 1 trong 2 bản đồ dạng — predMa lọc dạng (cột
+  // Đại/Hình × bucket muc_do của DẠNG, không phải câu); predTime chỉ dùng cho trend (30 ngày).
+  const compPct = (map: Record<string, DangEval[]>, predMa?: (ma: string) => boolean, predTime?: (t: number) => boolean): BucketPct & { pctRaw: number | null } => {
     let d = 0, c = 0, y = 0, t = 0
     for (const ma of Object.keys(map)) {
       if (!valid.has(ma)) continue
-      if (predMuc && !predMuc(mucDoMap.get(ma) ?? null)) continue
+      if (predMa && !predMa(ma)) continue
       const evs = predTime ? map[ma].filter((e) => predTime(Date.parse(e.t))) : map[ma]
       if (!evs.length) continue
       const r = masteryOfDang(evs, MASTERY_CONFIG); if (!r) continue
@@ -417,65 +478,14 @@ export async function getTongQuanHS(hocSinhId: string, mon: string, opts?: { ym?
   const toBucket = (b: ReturnType<typeof compPct>): BucketPct => ({ dat: b.dat, can_luyen: b.can_luyen, yeu: b.yeu, total: b.total, pct: b.pct })
   const htTop = compPct(byDangTopCur), htTopR = compPct(byDangTop, undefined, inRecent), htTopP = compPct(byDangTop, undefined, inPrior)
   const htBottom = compPct(byDangBottomCur)
-  const htTopDaiCB = compPct(byDangTopCur, laCoBan), htBottomDaiCB = compPct(byDangBottomCur, laCoBan)
-  const htTopDaiNC = compPct(byDangTopCur, laNangCao), htBottomDaiNC = compPct(byDangBottomCur, laNangCao)
+  const htTopDaiCB = compPct(byDangTopCur, locDang('dai', laCoBan)), htBottomDaiCB = compPct(byDangBottomCur, locDang('dai', laCoBan))
+  const htTopDaiNC = compPct(byDangTopCur, locDang('dai', laNangCao)), htBottomDaiNC = compPct(byDangBottomCur, locDang('dai', laNangCao))
 
-  // ①-Hình (Thùy 21/08: "giống đại, đo trên những mô hình đã có đánh giá" — CÙNG công thức compPct,
-  // KHÔNG cần denominator canonical). KP = hinh_baitoan_id, nguồn CHỈ et/mt/btvn (Hình mô hình chưa có
-  // tự luyện/bt online — xem getHinhMasteryHS). Bucket cơ bản/nâng cao theo `cap` CLIP 1-5 (xấp xỉ
-  // mucDoTuCap thật — như DangBaiTab, chưa join hinh_cach_giai/hinh_cach_bo_de).
-  type RawH = { id: string | null; value: number; t: string; bd?: string | null }
-  const hEtRows: RawH[] = [], hMtRows: RawH[] = [], hBtvnRows: RawH[] = []
-  for (const g of (grades ?? []) as any[]) {
-    const p = g.prob; if (!p || !p.hinh_baitoan_id) continue
-    const v = RESULT_VALUE[g.result as keyof typeof RESULT_VALUE]; if (v === undefined) continue
-    const bd = p.buoi?.ngay ?? null
-    if (p.phase === 'et') hEtRows.push({ id: p.hinh_baitoan_id, value: v, t: g.graded_at, bd })
-    else if (p.phase === 'mt') hMtRows.push({ id: p.hinh_baitoan_id, value: v, t: g.graded_at, bd })
-    else if (p.phase === 'btvn') hBtvnRows.push({ id: p.hinh_baitoan_id, value: v, t: g.graded_at, bd })
-  }
-  const hinhTop: Record<string, DangEval[]> = {}, hinhBottom: Record<string, DangEval[]> = {}
-  const pushHinh = (map: Record<string, DangEval[]>, id: string | null, ev: DangEval) => { if (id) (map[id] ??= []).push(ev) }
-  for (const e of hEtRows) { const ev: DangEval = { value: e.value, t: e.t, src: 'et' }; pushHinh(hinhTop, e.id, ev); pushHinh(hinhBottom, e.id, ev) }
-  for (const m of hMtRows) { const ev: DangEval = { value: m.value, t: m.t, src: 'mt' }; pushHinh(hinhTop, m.id, ev); pushHinh(hinhBottom, m.id, ev) }
-  for (const b of hBtvnRows) pushHinh(hinhBottom, b.id, { value: b.value, t: b.t, src: 'btvn' })
-
-  let hinhTopCur = hinhTop, hinhBottomCur = hinhBottom
-  if (monthFromMs != null) {
-    // Cùng luật "neo theo ngày buổi" như nhánh Đại/KHTN ở trên — xem comment ở đó.
-    const inMonthRow = (r: RawH) => r.bd ? (r.bd >= monthFromDate && r.bd < monthToDate) : inMonth(Date.parse(r.t))
-    const inMtWindowRow = (r: RawH) => r.bd ? (r.bd >= mtFromDate && r.bd < mtToDate) : inMtWindow(Date.parse(r.t))
-    const hEtCur = hEtRows.filter(inMonthRow), hMtCur = hMtRows.filter(inMtWindowRow), hBtvnCur = hBtvnRows.filter(inMonthRow)
-    hinhTopCur = {}; hinhBottomCur = {}
-    for (const e of hEtCur) { const ev: DangEval = { value: e.value, t: e.t, src: 'et' }; pushHinh(hinhTopCur, e.id, ev); pushHinh(hinhBottomCur, e.id, ev) }
-    for (const m of hMtCur) { const ev: DangEval = { value: m.value, t: m.t, src: 'mt' }; pushHinh(hinhTopCur, m.id, ev); pushHinh(hinhBottomCur, m.id, ev) }
-    for (const b of hBtvnCur) pushHinh(hinhBottomCur, b.id, { value: b.value, t: b.t, src: 'btvn' })
-  }
-
-  const hinhIdList = Object.keys(hinhBottom)
-  const hinhValid = new Set<string>()
-  const hinhCapMap = new Map<string, number>()
-  if (hinhIdList.length) {
-    const hb = ((await supabase.from('hinh_baitoan').select('id, cap').in('id', hinhIdList).limit(LIMIT)).data ?? []) as { id: string; cap: number }[]
-    for (const x of hb) { hinhValid.add(x.id); if (x.cap != null) hinhCapMap.set(x.id, Math.min(5, Math.max(1, x.cap))) }
-  }
-  const hinhLaCoBan = (cap: number | null) => bucketMucDo(cap) === 'co_ban'
-  const hinhLaNangCao = (cap: number | null) => bucketMucDo(cap) === 'nang_cao'
-  const compPctHinh = (map: Record<string, DangEval[]>, predMuc?: (cap: number | null) => boolean): BucketPct & { pctRaw: number | null } => {
-    let d = 0, c = 0, y = 0, t = 0
-    for (const id of Object.keys(map)) {
-      if (!hinhValid.has(id)) continue
-      if (predMuc && !predMuc(hinhCapMap.get(id) ?? null)) continue
-      const evs = map[id]
-      if (!evs.length) continue
-      const r = masteryOfDang(evs, MASTERY_CONFIG_HINH); if (!r) continue
-      t++; if (r.muc === 'dat') d++; else if (r.muc === 'can_luyen') c++; else y++
-    }
-    const pctRaw = t ? Math.round(((d + c * 0.5) / t) * 100) : null
-    return { dat: d, can_luyen: c, yeu: y, total: t, pct: pctRaw ?? 0, pctRaw }
-  }
-  const htTopHinhCB = compPctHinh(hinhTopCur, hinhLaCoBan), htBottomHinhCB = compPctHinh(hinhBottomCur, hinhLaCoBan)
-  const htTopHinhNC = compPctHinh(hinhTopCur, hinhLaNangCao), htBottomHinhNC = compPctHinh(hinhBottomCur, hinhLaNangCao)
+  // ①-Hình (Thùy 29/09): cột Hình = dạng thuộc nhánh có nhomBC='hinh' (Hình học = Bài · Hình giải tích),
+  // CÙNG công thức compPct như Đại vì Bài Hình học đã được quy định là 1 dạng. Bỏ hẳn Hình LUYỆN (mô hình,
+  // hinh_baitoan_id) khỏi báo cáo — Thùy chốt "chỉ Hình học (Bài)", Luyện không dùng nữa.
+  const htTopHinhCB = compPct(byDangTopCur, locDang('hinh', laCoBan)), htBottomHinhCB = compPct(byDangBottomCur, locDang('hinh', laCoBan))
+  const htTopHinhNC = compPct(byDangTopCur, locDang('hinh', laNangCao)), htBottomHinhNC = compPct(byDangBottomCur, locDang('hinh', laNangCao))
 
   // ② %ET/%BTVN/%MT cơ bản/nâng cao — bucket theo muc_do dạng của CÂU, gộp đại/hình (Thùy: "ko cần phân
   // biệt đại hình"). Câu không rõ muc_do (dạng không thuộc bản đồ môn này) → bỏ, đối xứng cả 3 nguồn.
@@ -610,14 +620,13 @@ export type CellBundle = {
   hsMap: Map<string, { ho_ten: string; ma_hs: string | null; lop: string | null }>
   hsIds: string[]
   byHS: Map<string, Map<string, Mastery>> // mastery ĐÃ tính (non-null), CHỈ dạng thuộc môn
-  dangInfo: Map<string, { ten_dang: string; ten_chuyen_de: string; muc_do: number | null }>
+  dangInfo: Map<string, DangInfo>          // dạng MỌI nhánh của môn (dangInfoCuaMon)
 }
 export type RollupScope = { mon: string; lopId?: string | null; khoi?: string | null; he?: string | null; includeBTVN?: boolean }
 // export: dùng trực tiếp khi cần cell (HS × dạng) thô — vd Trước buổi cần "dạng yếu mức S, n>=3" theo HS,
 // khác getMasteryRollup/getMasteryByDang vốn chỉ trả về số đã GỘP (đếm), không giữ lại từng ô.
 export async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
   const empty: CellBundle = { hsMap: new Map(), hsIds: [], byHS: new Map(), dangInfo: new Map() }
-  const K = khoCuaMon(opts.mon)
   // Gate nguồn (07-15 loại ingame/dg · 18-20/08 tu_luyen cấp 1) nằm TRONG fn_mastery_cells (§2.0).
 
   // 1) HS trong phạm vi (lớp / khối / HỆ-band × môn), đang học. +khoi để biết cấp 1 (tu_luyen trung tâm).
@@ -645,12 +654,8 @@ export async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
   if (eCells) throw eCells
   const allMa = new Set<string>(((cells ?? []) as any[]).map((c) => c.ma_dang as string))
 
-  // 3) tên dạng + độ khó + scope MÔN (banDo của môn → chỉ giữ dạng hợp lệ).
-  const dangInfo = new Map<string, { ten_dang: string; ten_chuyen_de: string; muc_do: number | null }>()
-  if (allMa.size) {
-    const dd = ((await supabase.from(K.banDoTbl).select('ma_dang, ten_dang, ten_chuyen_de, muc_do').in('ma_dang', [...allMa]).limit(LIMIT)).data ?? []) as any[]
-    for (const x of dd) dangInfo.set(x.ma_dang, { ten_dang: x.ten_dang, ten_chuyen_de: x.ten_chuyen_de, muc_do: x.muc_do ?? null })
-  }
+  // 3) tên dạng + độ khó + scope MÔN (bản đồ MỌI nhánh của môn → chỉ giữ dạng hợp lệ).
+  const dangInfo = await dangInfoCuaMon(opts.mon, [...allMa])
 
   const byHS = new Map<string, Map<string, Mastery>>()
   for (const c of (cells ?? []) as any[]) {
@@ -679,7 +684,7 @@ export type MucDoFilter = 'tat_ca' | 'co_ban' | 'nang_cao'
 const khopMucDo = (md: number | null, filter?: MucDoFilter) => !filter || filter === 'tat_ca' || bucketMucDo(md) === filter
 
 // PIVOT dạng (view#3): mỗi dạng — bao nhiêu HS đạt/cần-luyện/yếu → "dạng nào cả lớp yếu nhất".
-export type DangRollup = { ma_dang: string; ten_dang: string; ten_chuyen_de: string; muc_do: number | null; dat: number; can_luyen: number; yeu: number; tin_thap: number; total: number }
+export type DangRollup = { ma_dang: string; ten_dang: string; ten_chuyen_de: string; muc_do: number | null; nhanh: string | null; dat: number; can_luyen: number; yeu: number; tin_thap: number; total: number }
 export async function getMasteryByDang(opts: RollupScope, mucDo?: MucDoFilter): Promise<DangRollup[]> {
   const { byHS, dangInfo } = await loadMasteryCells(opts)
   const byDang = new Map<string, Mastery[]>()
@@ -687,10 +692,10 @@ export async function getMasteryByDang(opts: RollupScope, mucDo?: MucDoFilter): 
   const out: DangRollup[] = []
   for (const [ma, cells] of byDang) {
     const info = dangInfo.get(ma); if (!info) continue
-    if (!khopMucDo(info.muc_do, mucDo)) continue
+    if (!khopMucDo(info.mucDoBC, mucDo)) continue
     let dat = 0, can = 0, yeu = 0, tin_thap = 0
     for (const c of cells) { if (c.muc === 'dat') dat++; else if (c.muc === 'can_luyen') can++; else yeu++; if (c.tin === 'thap') tin_thap++ }
-    out.push({ ma_dang: ma, ten_dang: info.ten_dang, ten_chuyen_de: info.ten_chuyen_de, muc_do: info.muc_do, dat, can_luyen: can, yeu, tin_thap, total: dat + can + yeu })
+    out.push({ ma_dang: ma, ten_dang: info.ten_dang, ten_chuyen_de: info.ten_chuyen_de, muc_do: info.muc_do, nhanh: info.nhanh, dat, can_luyen: can, yeu, tin_thap, total: dat + can + yeu })
   }
   return out
 }
@@ -703,7 +708,7 @@ export async function getMasteryByChuyenDe(opts: RollupScope, mucDo?: MucDoFilte
   const byCd = new Map<string, Mastery[]>()
   for (const cm of byHS.values()) for (const [ma, r] of cm) {
     const info = dangInfo.get(ma)
-    if (!khopMucDo(info?.muc_do ?? null, mucDo)) continue
+    if (!khopMucDo(info?.mucDoBC ?? null, mucDo)) continue
     const cd = info?.ten_chuyen_de || '(không rõ)'
     const arr = byCd.get(cd) ?? []; arr.push(r); byCd.set(cd, arr)
   }

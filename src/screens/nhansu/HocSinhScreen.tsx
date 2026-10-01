@@ -6,7 +6,8 @@ import {
   listLopCuaHS, ghiDanh, roiLop, setBandGhiDanh, setNgayVao, chuyenLop,
   listLop, listMucNangLuc, countLopActiveByHS,
   listPhuHuynh, createPhuHuynh, updatePhuHuynh, listConByPH, suggestMaHS, suggestMaPH, uploadAvatar, todayVN,
-  type HocSinh, type GhiDanh, type Lop, type MucNangLuc, type PhuHuynh,
+  provisionTaiKhoanHS,
+  type HocSinh, type GhiDanh, type Lop, type MucNangLuc, type PhuHuynh, type ProvisionHsResult,
 } from '../../lib/nhansu'
 import { Field, inp, Seg } from '../kho/ui'
 import BangThanhTich from '../gami/BangThanhTich'
@@ -45,6 +46,15 @@ export default function HocSinhScreen() {
   const [edit, setEdit] = useState<HocSinh | null | 'new'>(null)
   const [tt, setTt] = useState<string>('dang_hoc') // toggle trạng thái — quản lý riêng Đang học / Nghỉ
   const [sort, setSort] = useState<{ key: SortKey; dir: 'asc' | 'desc' }>({ key: 'ho_ten', dir: 'asc' })
+  // Nút "Tạo tài khoản HS mới" (CEO 19/09 — chủ động bấm trên ERP, khỏi nhờ chạy script tay).
+  const [provBusy, setProvBusy] = useState(false)
+  const [provResult, setProvResult] = useState<ProvisionHsResult | null>(null)
+  async function onProvision() {
+    setProvBusy(true)
+    try { setProvResult(await provisionTaiKhoanHS()) }
+    catch (e: any) { setProvResult({ tao: 0, boQua: 0, loi: [{ ma_hs: '—', loi: e.message ?? String(e) }] }) }
+    finally { setProvBusy(false) }
+  }
 
   // loading=true CHE bảng bằng placeholder "Đang tải…" → co chiều cao khung cuộn về gần 0 → trình
   // duyệt tự CLAMP scrollTop về 0 (không tự phục hồi khi bảng đầy lại) → cảm giác "reset về đầu trang"
@@ -108,6 +118,10 @@ export default function HocSinhScreen() {
           {KHOI_OPTIONS.map((k) => (
             <button key={k} onClick={() => setKhoi(k)} className={`h-7 min-w-7 rounded-md px-1.5 text-xs font-semibold transition ${khoi === k ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`}>{k}</button>
           ))}
+          <button onClick={onProvision} disabled={provBusy} title="Quét toàn bộ HS đang học, tự tạo tài khoản app cho ai chưa có — an toàn bấm nhiều lần (tự bỏ qua HS đã có)"
+            className="ml-3 rounded-md border border-slate-200 px-3 py-1.5 text-[13px] font-medium text-slate-600 shadow-sm hover:border-indigo-300 hover:text-indigo-700 disabled:opacity-50">
+            {provBusy ? '⏳ Đang tạo…' : '🔑 Tạo tài khoản HS mới'}
+          </button>
           <button onClick={() => setEdit('new')} className="ml-3 rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Thêm học sinh</button>
         </div>
       </div>
@@ -160,6 +174,41 @@ export default function HocSinhScreen() {
       </div>
 
       {edit && <EditModal hocSinh={edit === 'new' ? null : edit} defaultKhoi={khoi} onClose={() => setEdit(null)} onSaved={() => { setEdit(null); reload() }} />}
+      {provResult && <ProvisionResultModal result={provResult} onClose={() => setProvResult(null)} />}
+    </div>
+  )
+}
+
+// Kết quả sau khi bấm "🔑 Tạo tài khoản HS mới" — không dùng alert() (CLAUDE.md §6).
+function ProvisionResultModal({ result, onClose }: { result: ProvisionHsResult; onClose: () => void }) {
+  return (
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/30 p-4 backdrop-blur-sm" onClick={onClose}>
+      <div className="w-full max-w-[480px] rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <h3 className="text-base font-semibold text-slate-900">Kết quả tạo tài khoản</h3>
+        <div className="mt-3 flex gap-2.5">
+          <div className="flex-1 rounded-xl bg-emerald-50 px-3.5 py-2.5">
+            <div className="text-[12px] font-medium uppercase tracking-wide text-emerald-600">Tạo mới</div>
+            <div className="text-[20px] font-bold text-emerald-700">{result.tao}</div>
+          </div>
+          <div className="flex-1 rounded-xl bg-slate-50 px-3.5 py-2.5">
+            <div className="text-[12px] font-medium uppercase tracking-wide text-slate-500">Đã có sẵn</div>
+            <div className="text-[20px] font-bold text-slate-700">{result.boQua}</div>
+          </div>
+          {result.loi.length > 0 && (
+            <div className="flex-1 rounded-xl bg-rose-50 px-3.5 py-2.5">
+              <div className="text-[12px] font-medium uppercase tracking-wide text-rose-600">Lỗi</div>
+              <div className="text-[20px] font-bold text-rose-700">{result.loi.length}</div>
+            </div>
+          )}
+        </div>
+        {result.loi.length > 0 && (
+          <div className="mt-3 max-h-40 space-y-1 overflow-auto rounded-lg bg-rose-50 p-2.5 text-[12px] text-rose-700">
+            {result.loi.map((l, i) => <div key={i}>{l.ma_hs}: {l.loi}</div>)}
+          </div>
+        )}
+        <p className="mt-3 text-[12px] text-slate-400">Email <code>&lt;mã HS&gt;@hs.bkdemy.local</code>, PIN mặc định = mã HS.</p>
+        <button onClick={onClose} className="mt-4 w-full rounded-lg bg-indigo-600 py-2 text-[14px] font-medium text-white hover:bg-indigo-500">Đóng</button>
+      </div>
     </div>
   )
 }

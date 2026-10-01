@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8"><title>Xem 52 cảnh</title>
+<!-- Trang nội bộ: xem trước 52 cảnh của lib/bk-scenes.js (Tìm Nhân Vật Ẩn + Tìm Điểm Khác Nhau). ?seed=123 đổi bộ xếp. -->
+<style>body{margin:0;background:#11173a;color:#fff;font-family:Segoe UI,Arial;padding:12px}.g{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+figure{margin:0;background:#1a2458;border-radius:10px;overflow:hidden}figure svg{display:block;width:100%;height:auto}figcaption{font-size:13px;padding:4px 8px}</style></head>
+<body><div class="g" id="g"></div>
+<script src="lib/bk-scenes-data.js"></script><script src="lib/bk-scenes.js"></script>
+<script>
+const S=BKScenes,seed=+(new URLSearchParams(location.search).get('seed')||7);let h='';
+S.CASES.forEach((c,i)=>{const sc=S.scene(seed+i*101,{caseIdx:i,n:26,dup:3});
+ h+=`<figure><svg viewBox="0 0 ${S.W} ${S.H}" xmlns="http://www.w3.org/2000/svg">${S.bgSvg(sc)}${sc.items.slice().sort((a,b)=>a.cy-b.cy).map(S.itemSvg).join('')}</svg><figcaption>${i+1}. ${c.vn} · ${c.bg} · ${c.tint} · ${c.layout} · ${sc.items.length} vật</figcaption></figure>`});
+document.getElementById('g').innerHTML=h;
+</script></body></html>

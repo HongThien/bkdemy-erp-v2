@@ -128,6 +128,15 @@ export async function setKhungMT(kyThiId: string, khungCoBan: number | null, khu
   if (error) throw error
 }
 
+// Bulk update khung điểm cho TẤT CẢ buổi MT của lớp trong mùa (Thùy 15/09) — "khung có thể set cho cả
+// lớp luôn". Áp cho tập ky_thi_id đã fetch (list buổi MT của lớp) — không tự query lại để tránh race với
+// UI: cho phép caller chọn tập buổi muốn bulk (thông thường mọi buổi MT của lớp × mùa).
+export async function bulkSetKhungMT(kyThiIds: string[], khungCoBan: number | null, khungNangCao: number | null): Promise<void> {
+  if (!kyThiIds.length) return
+  const { error } = await supabase.from('ky_thi').update({ khung_co_ban: khungCoBan, khung_nang_cao: khungNangCao }).in('id', kyThiIds)
+  if (error) throw error
+}
+
 // ── ĐIỂM MT trong buổi (Thùy 07-14): "Điểm MT" tách riêng khỏi chấm Đ/C/S từng câu — TÁI DÙNG hạ tầng
 // ky_thi/diem_thi (loai='mt_sat_hach') thay vì đẻ bảng mới. 1 ky_thi GẮN buoi_hoc_id (cột có sẵn cho đúng
 // việc này) → tìm-hoặc-tạo LẦN ĐẦU nhập điểm ở tab MT, các lần mở lại tái dùng (idempotent, không đẻ trùng
@@ -161,21 +170,61 @@ export async function getOrCreateKyThiMTChoBuoi(buoiId: string, ten: string, mon
 }
 
 // ── NHẬP ĐIỂM MT THEO LỚP (Thùy 14/09): tab "Nhập điểm MT" trong Kết quả học tập, thay vì phải mở buổi.
-// Trả về TỪNG buổi MT của lớp (đã có ky_thi mt_sat_hach) trong mùa; kèm `buoi_ngay` để hiển thị cột theo
-// ngày. Buổi CHƯA mở tab MT ⇒ chưa có ky_thi ⇒ không hiện ở đây (GV vào buổi mở tab MT lần đầu để tạo).
-// 2 query (không dùng nested filter — PostgREST không sort được theo cột nested): buổi_học của lớp trước,
-// rồi ky_thi trong tập buổi đó.
-export type KyThiMTLop = KyThi & { buoi_ngay: string | null }
-export async function listKyThiMTCuaLop(lopId: string, mua: string): Promise<KyThiMTLop[]> {
-  const { data: buois, error: e1 } = await supabase.from('buoi_hoc').select('id, ngay').eq('lop_id', lopId).order('ngay', { ascending: true }).limit(LIMIT)
+// ⭐ Điểm MT ĐI THEO HS, KHÔNG đi theo lớp (Thùy 14/09 khi audit chuyển lớp: "Vân Khánh tháng 7 ở 8A1,
+// tháng 8 ở 8S1 — vào 8S1 phải hiện đủ MT 2 tháng"). Bảng `diem_thi(hoc_sinh_id, ky_thi_id)` không mang
+// lop_id, chuyển lớp không mất điểm — nhưng lưới nhập phải PHỦ đủ mọi buổi MT roster đã thi (kể cả buổi
+// thuộc lớp cũ) chứ không chỉ buổi thuộc lopId hiện tại.
+//
+// Union 2 tập ky_thi mt_sat_hach (đúng mùa):
+//   A. Buổi thuộc lopId hiện tại — kể cả HS chưa thi (để nhập điểm cho buổi vừa tổ chức).
+//   B. Ky_thi mà ÍT NHẤT 1 HS trong roster đã có điểm (kéo về buổi thuộc lớp cũ của HS chuyển).
+// HS khác không có điểm ở cột nhóm B ⇒ ô trống (đúng thực tế: các em không thi buổi đó).
+// Header cột: 'DD/MM · TênLớp' để phân biệt buổi ở lớp cũ vs lớp hiện tại.
+export type KyThiMTLop = KyThi & { buoi_ngay: string | null; buoi_lop_id: string | null; buoi_ten_lop: string | null }
+export async function listKyThiMTChoLop(lopId: string, mon: string, hsIds: string[], mua: string): Promise<KyThiMTLop[]> {
+  const NULL_ID = '00000000-0000-0000-0000-000000000000'
+  // A. Buổi thuộc lớp hiện tại → tập ky_thi_A (scope thêm mon để chắc — buổi của lớp Toán không lôi ky_thi KHTN)
+  const { data: buoisA, error: e1 } = await supabase.from('buoi_hoc').select('id').eq('lop_id', lopId).limit(LIMIT)
   if (e1) throw e1
-  const buoiIds = ((buois ?? []) as { id: string; ngay: string }[]).map((b) => b.id)
-  if (!buoiIds.length) return []
-  const ngayCua = new Map(((buois ?? []) as { id: string; ngay: string }[]).map((b) => [b.id, b.ngay]))
-  const { data: kts, error: e2 } = await supabase.from('ky_thi').select('*').eq('loai', 'mt_sat_hach').eq('mua', mua).in('buoi_hoc_id', buoiIds).limit(LIMIT)
+  const buoiIdsA = ((buoisA ?? []) as { id: string }[]).map((b) => b.id)
+  const { data: ktsA, error: e2 } = await supabase.from('ky_thi').select('*')
+    .eq('loai', 'mt_sat_hach').eq('mon', mon).eq('mua', mua).in('buoi_hoc_id', buoiIdsA.length ? buoiIdsA : [NULL_ID]).limit(LIMIT)
   if (e2) throw e2
-  return ((kts ?? []) as KyThi[])
-    .map((k) => ({ ...k, buoi_ngay: k.buoi_hoc_id ? ngayCua.get(k.buoi_hoc_id) ?? null : null }))
+
+  // B. Ky_thi mt_sat_hach mà roster đã có điểm (dù buổi thuộc lớp khác) — SCOPE THEO MÔN của lớp hiện
+  // tại, tránh lôi điểm MT môn khác nếu HS học cả 2 môn (vd Toán + KHTN cùng roster HS chuyển).
+  let ktIdsB: string[] = []
+  if (hsIds.length) {
+    const { data: dts, error: e3 } = await supabase.from('diem_thi')
+      .select('ky_thi_id, ky_thi:ky_thi_id!inner(loai, mon, mua)')
+      .in('hoc_sinh_id', hsIds)
+      .eq('ky_thi.loai', 'mt_sat_hach').eq('ky_thi.mon', mon).eq('ky_thi.mua', mua)
+      .limit(LIMIT)
+    if (e3) throw e3
+    ktIdsB = [...new Set(((dts ?? []) as any[]).map((r) => r.ky_thi_id).filter(Boolean))]
+  }
+  const { data: ktsB, error: e4 } = await supabase.from('ky_thi').select('*').in('id', ktIdsB.length ? ktIdsB : [NULL_ID]).limit(LIMIT)
+  if (e4) throw e4
+
+  // Union + dedup theo ky_thi.id
+  const map = new Map<string, KyThi>()
+  for (const k of [...((ktsA ?? []) as KyThi[]), ...((ktsB ?? []) as KyThi[])]) map.set(k.id, k)
+  const ktsAll = [...map.values()]
+  if (!ktsAll.length) return []
+
+  // Fetch info buổi + lớp cho toàn bộ ky_thi trong lưới (để header cột hiển thị 'DD/MM · TênLớp').
+  const buoiIdsAll = [...new Set(ktsAll.map((k) => k.buoi_hoc_id).filter((x): x is string => !!x))]
+  const buoiInfo = new Map<string, { ngay: string | null; lop_id: string | null; ten_lop: string | null }>()
+  if (buoiIdsAll.length) {
+    const { data: bs, error: e5 } = await supabase.from('buoi_hoc').select('id, ngay, lop_id, lop:lop_id(ten_lop)').in('id', buoiIdsAll).limit(LIMIT)
+    if (e5) throw e5
+    for (const b of (bs ?? []) as any[]) buoiInfo.set(b.id, { ngay: b.ngay ?? null, lop_id: b.lop_id ?? null, ten_lop: b.lop?.ten_lop ?? null })
+  }
+  return ktsAll
+    .map((k) => {
+      const info = k.buoi_hoc_id ? buoiInfo.get(k.buoi_hoc_id) : null
+      return { ...k, buoi_ngay: info?.ngay ?? null, buoi_lop_id: info?.lop_id ?? null, buoi_ten_lop: info?.ten_lop ?? null }
+    })
     .sort((a, b) => (a.buoi_ngay ?? '').localeCompare(b.buoi_ngay ?? ''))
 }
 

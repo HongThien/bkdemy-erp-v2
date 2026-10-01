@@ -1,5 +1,4 @@
 {
-  "ignoreCommand": "node scripts/vercel-ignore.mjs",
   "git": {
     "deploymentEnabled": false
   },
@@ -11,6 +10,14 @@
     {
       "path": "/api/ta-nhac-viec",
       "schedule": "30 16 * * *"
+    },
+    {
+      "path": "/api/provision-hs-auth",
+      "schedule": "0 22 * * *"
+    },
+    {
+      "path": "/api/troly-tuan",
+      "schedule": "0 0 * * 1"
     }
   ]
 }

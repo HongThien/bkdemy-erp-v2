@@ -9,6 +9,8 @@
 // ============================================================================
 import type { ReactNode } from 'react'
 import AvatarHS from './AvatarHS'
+import ThanhChonMon from './ThanhChonMon'
+import type { LopMonHS } from '../../lib/tuluyen'
 import { LOAI_BO_TRO_TEN, type LichBoTro } from '../../lib/botro_yeu_ca'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 
@@ -31,10 +33,17 @@ export type HomeCard = {
   sub: string
   subMau: 'ton' | 'do' | 'xam' | 'xanh'
   badge?: number
+  /** 'hoc' = ô thuộc GÓC HỌC TẬP của môn đang chọn (đổi môn ⇒ đổi nội dung) · 'choi' = ô chung không theo môn (thế giới,
+   *  may mắn, thành tựu, ví xu — Thùy 01/10 "chơi thì không cần"). Không khai = 'hoc'. HomeHS912 tách 2 khối theo cờ này. */
+  nhom?: 'hoc' | 'choi'
   doodle: string
   /** Nếu có emoji thì render emoji trong khung 31% thay cho ảnh PNG (dùng cho ô cấp 2 mới chưa có cutout PNG:
    *  Thành tựu · May mắn · Bài tập được giao). ill vẫn giữ để backward-compat với cards cũ có PNG. */
   emoji?: string
+  /** Emoji chức năng của ô (lấy từ danh mục KHU) — HomeHS912 (lớp 9–12) dùng khi skin không có ảnh riêng cho ô. */
+  icon?: string
+  /** Ảnh RIÊNG của ô, đè ảnh ô của style (HomeHS912) — vd ô Rank hiện biểu tượng bậc của CHÍNH em (Thùy 01/10). */
+  anh?: string
   ill: string // tên file trong public/bk-ui/hs (không đuôi) — bỏ qua nếu có emoji
   tone: HomeTone
   disabled?: boolean
@@ -42,7 +51,7 @@ export type HomeCard = {
 }
 
 // Bảng màu 6 ô — lấy từ DESIGN.md kit (mũi tên) + nền pastel đo từ reference.
-const TONE: Record<HomeTone, { bg: string; c: string; ill: string }> = {
+export const TONE: Record<HomeTone, { bg: string; c: string; ill: string }> = {
   pink:   { bg: 'linear-gradient(135deg,#ffffff 0%,#fff0f4 100%)', c: '#FF6B8E', ill: '#ffe4ec' },
   purple: { bg: 'linear-gradient(135deg,#ffffff 0%,#f5f1ff 100%)', c: '#7B61E8', ill: '#ece6ff' },
   orange: { bg: 'linear-gradient(135deg,#ffffff 0%,#fff8e9 100%)', c: '#F3A43B', ill: '#fff0d2' },
@@ -86,8 +95,9 @@ function NutTron({ onClick, title, children }: { onClick: () => void; title: str
   )
 }
 
-export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, anhUrl, onAnhChanged, chuaDoc, lich, soRetest, cards, onHopThu, onDoiMK, onThoat, onLich, onRetest }: {
+export default function HomeHS({ hoTen, maHS, lopMon, mons, mon, onChonMon, gioiTinh, anhUrl, onAnhChanged, chuaDoc, lich, soRetest, cards, onHopThu, onDoiMK, onThoat, onLich, onRetest }: {
   hoTen: string; maHS: string; lopMon: string | null; gioiTinh: 'nam' | 'nu' | null
+  mons: LopMonHS[]; mon: string | null; onChonMon: (mon: string) => void
   anhUrl: string | null; onAnhChanged: (url: string) => void
   chuaDoc: number; lich: LichBoTro[]; soRetest: number; cards: HomeCard[]
   onHopThu: () => void; onDoiMK: () => void; onThoat: () => void; onLich: () => void; onRetest: () => void
@@ -102,14 +112,17 @@ export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, anhUrl, onAnhCha
   return (
     // Chữ viết tay app HS = Pacifico (Thùy chốt 08/09 sau khi so Itim/Sriracha/Mali/Dancing Script/Pacifico trên màn
     // thật). Ghi đè biến @theme --font-hand CHỈ trong cây này — app TA vẫn Itim (index.css dùng chung, không đụng).
-    // LUẬT (Thùy 08/09): màn Home KHÔNG cuộn (h-100dvh + overflow-hidden), NHƯNG KHÔNG kéo giãn phần tử cho đầy
-    // màn — "tỉ lệ phải như gốc mới đẹp, scale sai tỉ lệ xấu". Mọi khối lấy TỈ LỆ KHUNG từ reference (hero 870:280,
-    // ô 417:280) nên cao theo BỀ NGANG như mockup; màn cao thì để trống dưới cùng, chấp nhận.
-    <div className="font-bubble relative mx-auto h-[100dvh] max-w-[430px] overflow-hidden" style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
+    // 3 TẦNG THIẾT BỊ (Thùy 22/09, đảo lại luật 08/09 "Home không cuộn" + 18/09 "iPad/PC chung layout" —
+    // 2 luật đó gây đúng lỗi mất nội dung trên laptop, đã tái hiện thật): Home CUỘN tự nhiên (bỏ khoá
+    // h-100dvh/overflow-hidden + h-full) — màn nào cao hơn viewport (laptop ngang mà thấp) vẫn xem được
+    // hết, không cắt gì. Vẫn giữ TỈ LỆ KHUNG từ reference (hero 870:280, ô 417:280) ở mọi tầng — không
+    // scale méo. 3 tầng bề ngang: <768 điện thoại (mặc định) · 768-1023 iPad (md:) · ≥1024 PC (lg:, PC
+    // dùng thêm chỗ thật, không còn "thừa không sao" như luật cũ).
+    <div className="font-bubble relative mx-auto min-h-[100dvh] max-w-[430px] md:max-w-[820px] lg:max-w-[1180px]" style={{ background: '#eef4ff', color: NAVY, ['--font-hand' as string]: "'Pacifico', 'Itim', 'Be Vietnam Pro', system-ui, sans-serif" }}>
       {/* BACKDROP — trời mây thuần (kit), mọi thứ khác đè lên bằng code */}
       <img src={t.bg} alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover" />
 
-      <div className="relative flex h-full flex-col px-4 pb-[calc(8px+env(safe-area-inset-bottom))] pt-[calc(10px+env(safe-area-inset-top))]">
+      <div className="relative flex flex-col px-4 pb-[calc(8px+env(safe-area-inset-bottom))] pt-[calc(10px+env(safe-area-inset-top))]">
         {/* TOP — chào (Itim) trái · chuông / khoá / Thoát phải */}
         <div className="flex items-start justify-between gap-2">
           <div className="font-hand min-w-0 pt-1 leading-[1.05]" style={{ color: t.greet }}>
@@ -155,6 +168,12 @@ export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, anhUrl, onAnhCha
           <div className="font-hand pointer-events-none absolute bottom-1.5 left-2.5 -rotate-[8deg] text-[9px] leading-[1.05] text-white/80">Better Student<br />Brighter You!</div>
         </div>
 
+        {/* CHỌN MÔN — đổi môn là cả góc học tập (bài trên lớp, tự luyện, sổ tay, bổ trợ…) chạy theo môn đó */}
+        <ThanhChonMon mons={mons} mon={mon} onChon={onChonMon} className="mt-2.5" luonHien
+          nut={(chon) => chon
+            ? { background: t.hero, color: '#fff', boxShadow: SHADOW }
+            : { background: '#fff', color: SEC, boxShadow: '0 2px 6px rgba(67,92,160,.08)' }} />
+
         {/* 2 BOX (Thùy 09-09): "Bổ trợ" (lịch 3 loại yếu/bù/đuổi — trigger cái nào hiện cái đó) · "Bài tập được giao"
             (bàn sau — placeholder). LUÔN hiện 2 box, kể cả chưa có lịch, để em biết chỗ xem. */}
         <div className="mt-2.5 grid shrink-0 grid-cols-2 gap-2.5">
@@ -167,24 +186,24 @@ export default function HomeHS({ hoTen, maHS, lopMon, gioiTinh, anhUrl, onAnhCha
           </div>
         )}
 
-        {/* LƯỚI 6 Ô */}
-        <div className="mt-2.5 grid shrink-0 grid-cols-2 gap-2.5">
+        {/* LƯỚI 6 Ô — 3 cột trên iPad/máy tính (md:) để đỡ dồn dọc như điện thoại */}
+        <div className="mt-2.5 grid shrink-0 grid-cols-2 gap-2.5 md:grid-cols-3 lg:gap-4">
           {cards.map((c) => {
             const tone = TONE[c.tone]
             const subColor = c.subMau === 'ton' ? tone.c : c.subMau === 'do' ? '#e64040' : c.subMau === 'xanh' ? '#20A886' : SEC
             return (
               <button key={c.id} disabled={c.disabled} onClick={c.onClick}
-                className={`relative flex flex-col justify-between overflow-hidden rounded-[22px] p-3 text-left transition ${c.disabled ? 'opacity-75 saturate-50' : 'active:scale-[0.98]'}`}
+                className={`relative flex flex-col overflow-hidden rounded-[22px] p-3 text-left transition lg:p-5 ${c.disabled ? 'opacity-75 saturate-50' : 'active:scale-[0.98]'}`}
                 style={{ background: tone.bg, boxShadow: c.disabled ? 'none' : SHADOW, aspectRatio: '417 / 280' }}>
-                <span className="flex w-[31%] shrink-0 items-center justify-center rounded-[15px]" style={{ background: tone.ill, aspectRatio: '1 / 1' }}>
+                <span className="flex w-[31%] shrink-0 items-center justify-center rounded-[15px] lg:w-[26%]" style={{ background: tone.ill, aspectRatio: '1 / 1' }}>
                   {c.emoji
-                    ? <span className="text-[34px] leading-none" aria-hidden>{c.emoji}</span>
+                    ? <span className="text-[34px] leading-none lg:text-[44px]" aria-hidden>{c.emoji}</span>
                     : <img src={`${A}/ill_${c.ill}.png`} alt="" className="h-[76%] w-[76%] object-contain" />}
                 </span>
-                <span className={`font-hand pointer-events-none absolute right-3.5 max-w-[84px] rotate-[-7deg] text-right text-[10.5px] leading-[1.1] ${c.badge ? 'top-9' : 'top-3.5'}`} style={{ color: tone.c, opacity: 0.9 }}>{c.doodle}</span>
-                <span className="pr-8">
-                  <span className="block font-extrabold leading-tight" style={{ color: c.disabled ? '#59698f' : NAVY, fontSize: 'clamp(13px, 3.5vw, 15px)' }}>{c.ten}</span>
-                  <span className="mt-0.5 block leading-snug" style={{ color: subColor, fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500, fontSize: 'clamp(10px, 2.7vw, 11.5px)' }}>{c.sub}</span>
+                <span className={`font-hand pointer-events-none absolute right-3.5 max-w-[84px] rotate-[-7deg] text-right text-[10.5px] leading-[1.1] lg:text-[13px] ${c.badge ? 'top-9' : 'top-3.5'}`} style={{ color: tone.c, opacity: 0.9 }}>{c.doodle}</span>
+                <span className="mt-3 pr-8 lg:mt-5">
+                  <span className="block text-[13px] font-extrabold leading-tight md:text-[15px] lg:text-[20px]" style={{ color: c.disabled ? '#59698f' : NAVY }}>{c.ten}</span>
+                  <span className="mt-0.5 block text-[10.5px] leading-snug md:text-[11.5px] lg:text-[14px]" style={{ color: subColor, fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500 }}>{c.sub}</span>
                 </span>
                 <span className="absolute bottom-3 right-3 flex h-7 w-7 items-center justify-center rounded-full" style={{ background: `${tone.c}29` }}><Chevron color={tone.c} /></span>
                 {!!c.badge && c.badge > 0 && (

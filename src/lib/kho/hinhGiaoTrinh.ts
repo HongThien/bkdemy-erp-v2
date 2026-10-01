@@ -479,6 +479,8 @@ export async function listAllBuoiHinh(opts?: { before?: string; unbounded?: bool
     : { data: [] as { id: string; ten_lop: string; khoi: string | null; mon: string }[], error: null }
   if (e4) throw e4
   const lopMap = new Map(((lops ?? []) as { id: string; ten_lop: string; khoi: string | null; mon: string }[]).map((l) => [l.id, l]))
+  // 🔧 DEBUG TẠM 15/09 (Thùy: search 7B1 không ra BTVN/GT, chỉ ra ET) — sẽ gỡ sau khi xác định
+  console.log('[DEBUG listAllBuoiHinh] rows=', rows.length, 'gts=', (gts??[]).length, 'bais=', (bais??[]).length, 'masters bổ sung=', (masters??[]).length, 'unbounded=', !!opts?.unbounded)
   const out: HinhKhoRow[] = []
   for (const r of rows) {
     if (!r.lop_id) continue   // chỉ buổi ĐÃ GÁN LỚP mới lên Kho — master (chưa gán) xem/in tại màn Giáo trình
@@ -490,6 +492,18 @@ export async function listAllBuoiHinh(opts?: { before?: string; unbounded?: bool
     const tenLop = li?.ten_lop ?? '?'
     const ngayFmt = r.ngay ? r.ngay.split('-').reverse().join('/') : '?'
     const g = gtOfMasterBuoi(r.nguon_buoi_id)
+    // 🔧 DEBUG TẠM — chỉ log dòng 7B1
+    if (tenLop === '7B1') {
+      const masterGtId = r.nguon_buoi_id ? gtOfNguon.get(r.nguon_buoi_id) : null
+      console.log('[DEBUG 7B1]', {
+        buoiId: r.id, ngay: r.ngay, tenLop,
+        nguon_buoi_id: r.nguon_buoi_id,
+        giao_trinh_id_cua_master: masterGtId,
+        gtMap_co_gtId: masterGtId ? gtMap.has(masterGtId) : false,
+        g_null: !g,
+        phans: [...phans],
+      })
+    }
     if (g) {
       for (const phan of ['lop', 'nha'] as const) {
         if (!phans.has(phan)) continue

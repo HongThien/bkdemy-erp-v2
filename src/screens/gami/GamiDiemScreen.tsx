@@ -13,6 +13,7 @@ const HE_TONE: Record<string, string> = { S: 'bg-amber-100 text-amber-800', A: '
 const EXP_SRC: Record<string, string> = {
   exp_et: 'ET (hạng buổi)', exp_btvn: 'BTVN', exp_btvn_thang: 'BTVN tháng (thưởng/phạt)', exp_thang: 'EXP tháng (gộp cũ)',
   rank_ingame: 'Hạng chấm bài', rank_et: 'Hạng ET', rank_mt: 'Hạng MT', attend_floor: 'Đi học (sàn)',
+  exp_tren_lop: 'Trên lớp (game)',
 }
 const srcLbl = (s: string) => EXP_SRC[s] ?? s
 // EXP là LƯƠNG THÁNG (Thùy 11/09: "reset theo tháng, ko như elo thời gian dài") — danh sách tháng
