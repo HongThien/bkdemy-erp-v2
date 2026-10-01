@@ -223,6 +223,61 @@
     - thử state Nông Trại: chặn `Storage.prototype.setItem` TRƯỚC (bản lưu thật `nongtrai_ngay_v1`);
     - cmd Windows đổi ổ phải `cd /d`;
     - đừng sửa file tiếng Việt bằng `Get/Set-Content` PS 5.1.
+### ⭐⭐ LUỒNG KHO + ĐỀ THI — trạng thái hết 01/10 · ĐỌC `spec-de-thi.md` §10 (và `spec-luong-kho.md`) trước khi sửa
+
+**Thứ tự ưu tiên (Thùy 01/10):** làm theo LÁT, lát nào xong dùng được lát đó — không đòi một phát xong cả dây chuyền. ĐỀ THI làm trước;
+bản đồ kiến thức Thùy tự làm; gán mẫu / skill gán dạng / lô 673 câu K12 **ĐÃ GÁC** (không làm tới khi được gọi).
+
+**ĐỀ THI — 4 lát A–D đã build, đã push `main` (lát C `9c1a69e`, lát D `08407f9`). ⚠ Vercel CHƯA deploy (ERP + app HS) — Thùy bấm tay.**
+- **Phân vai:** Claude là máy xử lý (bóc, kiểm, gán dạng, ghi), ERP là nơi người sửa + duyệt + dùng. Đường "Gemini bóc PDF ngay trong ERP" ĐÃ GỠ.
+- **Dây chuyền:** file → `/nhap-de-thi <khối>` → `de.json` → `ghi.mjs` (chạy thử ROLLBACK → `--ghi`) → ERP **Nhập kho › 📝 Đề thi**
+  (Kho đề thi, 3 tab Chờ duyệt / Sẵn sàng / Đã giao) → mở đề = sửa + ✅ Duyệt một màn → 📱 Giao.
+  - Có Word: `scripts/kho/de-thi/boc-word.mjs` (0 AI, đọc thẳng MathType + gạch chân, ghép bộ ĐỀ ↔ bộ LỜI GIẢI làm nhân chứng).
+  - Chỉ có PDF: `scripts/kho/de-thi/boc-pdf.mjs` — Gemini 3 lượt (bóc · mục lục · soi từng trang: hình ở 150 dpi, chữ gạch chân ở 250 dpi) +
+    máy so chéo + **Claude BẮT BUỘC kiểm bằng mắt** (4 việc trong `.claude/commands/nhap-de-thi.md`). `--dung-lai` = chạy lại không gọi Gemini.
+  - Thư mục thả đề: `E:\BK ACADEMY\Tài liệu Claude nhập kho\DE_THI\L<khối>\` (đang TRỐNG). Thư mục làm việc: `<KHO_LAM_VIEC>/de-thi/<TÊN>/`
+    (máy công ty `C:\Users\WBPC\bk-kho-lam-viec` — bộ đệm theo máy, KHÔNG có ở máy nhà; dựng lại được từ file gốc).
+- **Code ERP:** `src/screens/tailieu/KhoDeThi.tsx` (danh sách + `DeThiSoan`) · `DuyetDeThi.tsx` (`GiaoDeModal`, `DaGanPanel`, `LuotThiPanel`) ·
+  `src/lib/dethi.ts` · app HS: `ONhap4O` trong `HocSinhApp.tsx`. Kho tài liệu chỉ còn IN đề; tài liệu gán từ đề không mở builder.
+- **DB (đã áp):** mig `202610011501` (K5/K6, `fn_de_thi_ds`/`_dem`) · `202610011759` (`fn_de_thi_gan`, `fn_de_thi_da_gan`,
+  `fn_de_thi_hoan_thien_bai_test`, cột `bai_test_cau.kieu_nhap`, trigger `trg_de_thi_dien_dang`, sửa `fn_de_thi_mo` / `et_de` / `_et_cham`).
+- **Luật CEO đã chốt (spec §10.5–10.7):** K1 Kho đề thi là chỗ lưu + sửa chính · K2 duyệt 1 cửa theo ĐỀ · K4 chỉ giao cả đề ·
+  **K5** trả lời ngắn giữ form đề gốc, ô 4 ký tự như phiếu thi (không đổi sang trắc nghiệm) · **K6** đề luôn dùng được dù chưa đủ dạng, chỉ cảnh báo;
+  câu chưa có dạng vẫn lưu kết quả, có dạng sau thì mastery tự cập nhật · **Giao = 3 cách:** 📘 Bài trên lớp / 📝 BTVN = GÁN đề vào buổi ⇒ thành
+  tài liệu `giao_trinh_buoi` / `btvn` của (lớp + ngày) đúng khuôn giáo trình trích xuất (bản CHÉP; buổi đã có thì từ chối, không tự thay) ·
+  ⏱ Kiểm tra = lượt thi tính giờ (`fn_de_thi_mo`).
+- **Dữ liệu thật đã chạy (01/10):** `Đề số 3 — Ôn tập chương PP toạ độ trong không gian (NBV 12-CD23)` = `tai_lieu deb38df1-a421-4211-8552-172364c3ea8a`,
+  22 câu (19 hgt + 3 dai), nhập từ Word. Thùy duyệt 20:01, gán làm **Giáo trình buổi 9 của 12A1** (`55f98c32-57bd-4824-9c86-b700f8e67b84`) và mở app
+  (`bai_test 41ef798e-1dda-4f3b-a55b-ee9ec7673f70`, loại `giao_trinh`). Đọc DB sau khi mở: 3 phần 12 / 4 / 6 câu · 22/22 câu lên app và mở sẵn ·
+  6 câu trả lời ngắn có `kieu_nhap='phieu_4o'` · 2 câu dạng chờ có `ma_dang` trống · tên phần đủ · 3 em đã bắt đầu làm.
+- **CHƯA kiểm bằng mắt / còn hở (xếp theo mức cần):**
+  1. Bản IN phiếu của tài liệu gán từ đề (PrintView với phần không có mã dạng) — mới sửa code, chưa ai mở xem.
+  2. HS làm thật trên app: ô 4 ký tự mới kiểm ở trang xem-thử; app HS trên Vercel chưa deploy nên tối 01/10 các em dùng ô nhập thường.
+  3. Lát D chưa đo trên **PDF scan** và đề của Sở chỉ có bảng đáp án (mới đo 1 đề PDF xuất từ Word: chữ 22/22, đáp án 21/22, hình 5/5).
+  4. **Trùng câu khác nguồn:** cùng một câu đến từ Word và từ PDF không được nhận là trùng (LaTeX viết khác) — chạy thử 1/22. Chưa sửa
+     (`scripts/_kho_insert.mjs` cần chuẩn hoá LaTeX trước khi so). Đừng nhập một đề từ hai nguồn.
+  5. `ghi.mjs` chặn đề có câu Đúng/Sai mà file không kèm đáp án ⇒ đề của Sở không đáp án chưa vào được để người điền sau.
+  6. Mastery theo TỪNG MỆNH ĐỀ Đúng/Sai chưa có (đang tính theo dạng của câu, đúng một phần = 0,5).
+  7. Kho đề thi chưa có nút xoá đề / đổi ngày bản gán (làm ở Kho tài liệu); chưa soạn câu MỚI bằng tay trong đề; màn hẹp mở đề gốc bị bóp cột.
+- **File tạm chưa commit (xoá hay giữ Thùy quyết):** `xem-thu-4o.html`, `xem-thu-giao-de.html`, `src/_xem_4o.tsx`, `src/_xem_giao_de.tsx`
+  (trang xem-thử dữ liệu giả cho ô 4 ký tự + hộp Giao). Thư mục thử `bk-kho-lam-viec/de-thi/_thu_pdf_DE_SO_3/` chỉ có ở máy công ty.
+
+**LUỒNG KHO (`spec-luong-kho.md`, pha đang làm `spec-luong-kho-p0.md`) — đang GÁC sau P1, trạng thái:**
+- **P0 xong:** luồng tự giải cũ đã ngừng (đừng bật lại) · bộ đọc Word MathType `scripts/kho/mathtype-thu/` đã vá 2 lỗ chặn (đánh số tự động của Word,
+  gạch chân / tô màu), bài thi 10 file đạt 10/10 · `scripts/kho/kho.test.mjs` 34/34.
+- **P1 bản đồ K12 (`spec-ban-do-k12.md`):** khung theo SGK 6 chủ đề / 19 chuyên đề / 112 dạng ĐÃ ÁP (mig `202609281833`, bảng `dai_chuyen_de_thu_tu`,
+  `fn_kho_pham_vi`) · màn **Đề xuất dạng/cụm** (`DeXuatPanel.tsx`, mig `202609282236`) · màn **Gán mẫu** (`GanMauPanel.tsx`, mig `202609292119`) —
+  Thùy đã gán 59/60 câu mẫu. Gán mẫu câu Đúng/Sai theo từng mệnh đề: code có (`GanMauDungSai.tsx`), nhưng mig `202610011330_dai_gan_mau_dung_sai.sql`
+  **⚠ SỔ GHI "đã áp" (01/10 16:46) MÀ DB CHƯA CÓ** — kiểm tối 01/10: `fn_dai_gan_mau_ds_dung_sai`, `fn_dai_gan_mau_menh_de` không tồn tại (file bị ghi sổ
+  lúc dọn các file treo, SQL chưa chạy) ⇒ công tắc "Đúng/Sai" ở màn Gán mẫu sẽ lỗi. Muốn dùng: chạy thử bằng `thu-migration.mjs`, rồi áp bằng một file
+  migration MỚI chép nội dung (script coi file cũ là đã áp nên không chạy lại).
+- **Chờ CEO quyết:** (a) 19 dạng chương V `T11210…` (PP toạ độ) tạo trong bản đồ ĐẠI trùng nhánh Hình giải tích, 0 câu — xoá hay giữ (Luật xoá);
+  (b) tên người học thuật duyệt bản đồ K12; (c) L1 "bỏ chuyên đề thực tế" đã bị bác — giữ nguyên.
+- **Công cụ dùng chung mới:** `node scripts/thu-migration.mjs <file.sql> --kiem <file.sql>` (chạy migration + các SELECT kiểm trong 1 transaction rồi
+  ROLLBACK; giả phiên nhân sự bằng `set_config('request.jwt.claims', …, true)`) · áp migration bằng **`node scripts/migrate.mjs --only <file>`**
+  (nhiều phiên cùng đẻ migration ⇒ chỉ áp file của mình. Tối 01/10 `--status` báo "không còn file treo", nhưng còn 2 file đã áp bị sửa sau đó và
+  vài file có trong sổ mà thiếu trong repo — đọc `--status` trước khi áp).
+
 ### Kiến trúc & file chính
 - Kho = lá `bdkt` trong cây Admin → `src/screens/kho/KhoScreen.tsx`. Build **THẬT, wire Supabase DB v2** (ngoại lệ so với mock-first của shell — vì schema Kho đã đông cứng).
 - **Seam:** UI KHÔNG gọi `supabase` trực tiếp, chỉ qua `src/lib/kho/api.ts`.

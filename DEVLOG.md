@@ -34232,3 +34232,22 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - làm tiếp ngựa (cánh Frostallion) + cá voi 4b theo HANDOFF mục GAME;
   - CEO quyết mở luồng hệ thống V1.
 - **Ghi chú:** HANDOFF đang có 2 khối "⭐⭐ RELEASE APP HS V1.0" trùng nhau (dòng ~12 và ~60, do phiên khác). Luồng Game không sửa vì không thuộc vùng của mình.
+
+## 2026-10-01 (20:00–21:45) — [Kho · Đề thi] Đề số 3 chạy THẬT cho 12A1 + chốt ngày (HANDOFF)
+
+- **Thùy:** "t cần phát hành đề số 3 đấy cho buổi học 12A1 hôm nay làm giáo trình. m test xem đúng chưa."
+- **Trước khi làm (đọc DB):** đề chưa duyệt (0 câu chặn, 5 câu / ý còn dạng chờ) · 12A1 có ca T5 20:00–22:00 · buổi 01/10 chưa có Giáo trình.
+  CTO KHÔNG tự duyệt (duyệt = người xác nhận nội dung + đáp án, dấu duyệt ghi tên người) và KHÔNG tự đăng nhập ⇒ hỏi; Thùy chọn "chị bấm, em làm tiếp"
+  + "mở trên app luôn". CTO mở sẵn màn đề trên preview.
+- **Thùy tự làm trên preview (localhost, code mới):** 20:01:22 ✅ Duyệt đề (Đào Xuân Thùy) → 20:01:40 Giao › Bài trên lớp › 12A1 › hôm nay → 20:01:49 mở app.
+- **Kiểm bằng DB sau đó (chỉ đọc):** tài liệu `55f98c32…` = "GT 12A1 01/10/2026 · Buổi 9 · Đề số 3 — …", `stt_lop` 9, mốc buổi + 3 phần `dang` 12 / 4 / 6 câu ·
+  `bai_test 41ef798e…` loại `giao_trinh`, 22 câu, không hạn · 6 câu trả lời ngắn `kieu_nhap='phieu_4o'` · 2 câu dạng chờ `ma_dang` trống · 22/22 câu có tên phần
+  và đã mở sẵn (`bai_test_cau_phat_hanh`) · 21:38: 3 em đã vào làm (câu 1: 3/3 đúng). ⇒ đường gán + mở app của lát C chạy đúng trên dữ liệu thật.
+- **Sai của CTO:** báo "19 câu lên app" trong câu hỏi cho Thùy (trừ nhầm 4 câu Đúng/Sai − thực ra trừ nhầm); thực tế 22/22. Số phải lấy từ query.
+- **Chưa kiểm:** bản in phiếu của tài liệu gán · ô 4 ký tự trên app HS thật (Vercel chưa deploy ⇒ tối nay các em dùng ô nhập thường; bài vẫn chấm bằng
+  `smartNormalize` nên 23,9 = 23.9).
+- **Phát hiện khi chốt ngày:** `node scripts/migrate.mjs --status` báo "không còn file treo", và sổ ghi `202610011330_dai_gan_mau_dung_sai.sql` đã áp lúc 16:46 —
+  nhưng 2 hàm của file đó KHÔNG có trong DB (`fn_dai_gan_mau_ds_dung_sai`, `fn_dai_gan_mau_menh_de`). Tức file bị GHI SỔ mà SQL chưa chạy (dọn file treo).
+  Không sửa tối nay (phần gán mẫu đang gác); ghi vào HANDOFF.
+- **HANDOFF:** thêm mục "LUỒNG KHO + ĐỀ THI — trạng thái hết 01/10" (①), viết lại 2 đoạn đề thi cũ (mô hình dữ liệu còn đúng · đường Gemini-trong-ERP đã gỡ),
+  thêm "Bài học 28/09–01/10 — luồng kho + đề thi" (②). Lần ghép đầu bị commit của phiên khác (`3b52aaf`) cuốn mất khối ① ⇒ chèn lại rồi commit ngay trong một lệnh.
