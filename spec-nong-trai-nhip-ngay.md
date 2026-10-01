@@ -368,7 +368,9 @@ Làm trên **nhánh `nhip-ngay`** của repo NongTrai. Cảnh 3D, đồ hoạ, t
 
 ## 9. Hiện trạng code
 
-- **Repo:** `E:\BK ACADEMY\Gaming\KayKit\NongTrai`, git riêng.
+- **Repo:** GitHub riêng tư `HongThien/bk-nong-trai`.
+  - Máy công ty để ở `C:\Users\WBPC\Desktop\BKERP\BKGame\NongTrai` (dời khỏi `E:\BK ACADEMY\…` ngày 01/10 vì Google Drive làm hỏng `.git`).
+  - Code game là project riêng, không nằm trong repo ERP.
   - `main` là bản nhịp Hay Day cấp 1–30 + cảnh quan kiểu Hay Day (commit `5f0a1e0`).
   - **`nhip-ngay` là bản NHỊP NGÀY pha 1** (30/09):
     - `8805502`: lõi luật + test + bot;
@@ -379,7 +381,7 @@ Làm trên **nhánh `nhip-ngay`** của repo NongTrai. Cảnh 3D, đồ hoạ, t
     - `8b3c25e`: **gộp nhánh đồ hoạ** — cây 4 giai đoạn, gà/bò nhiều giống, chó mới, nhà 10 mức, ánh sáng / chỉnh màu;
     - `6958b9b`: cài như app (PWA) + thanh "Việc hôm nay";
     - `9556216`: bố cục như ảnh Nông trại vui vẻ, **chơi màn ngang** (mục 2.1).
-  - Nhánh **`do-hoa-thu`**: đồ hoạ do một phiên riêng làm. Worktree `E:\BK ACADEMY\Gaming\KayKit\NongTrai-dohoa`, port 5271, xem thử chó ở `cho-demo.html`.
+  - Nhánh **`do-hoa-thu`**: đồ hoạ do một phiên riêng làm. Worktree `BKGame\NongTrai-dohoa`, port 5271, xem thử chó ở `cho-demo.html`.
     - Hình mới đều nằm trong `js/dohoa.js` (API `NT_DOHOA`); tắt để so bản cũ bằng `?dohoa=cu`.
     - Nhánh đó có commit mới thì `git merge do-hoa-thu` vào `nhip-ngay`. Chỗ hay vướng là phần móc vào `scene.js`, vì bố cục nhịp ngày khác cảnh Hay Day.
   - **Nhiều phiên Claude cùng làm `nhip-ngay` trên một checkout** (kinh tế, đồ hoạ, bố cục). Commit ngay sau khi xong từng việc, kéo trạng thái mới trước khi sửa `scene.js` / `ui.js`.

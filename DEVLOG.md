@@ -33196,3 +33196,27 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   DangPickerOne + danh sách vừa dùng). tsc sạch. Chưa xem trên màn thật.
 - **Thùy 01/10 đổi ưu tiên:** "m cần phân ra các bước để xây riêng chứ như này bị chồng lên nhau. Bản đồ kiến thức t vẫn tự làm được — sau này mới cần m.
   Hiện tại cần NGAY: 1 đề thi PDF → 1 đề thi trên ERP, câu bóc ra và gán vào kho." ⇒ dừng mở rộng nhánh gán mẫu/skill gán dạng; lên phương án tách bước.
+
+## 2026-10-01 (máy công ty, tiếp) — Repo game dời khỏi thư mục Google Drive → project riêng `BKERP\BKGame` (Thùy: "làm project riêng luôn đi")
+
+- **Lỗi:** `git fetch` Nông Trại báo `fatal: bad object refs/desktop.ini`.
+  - `E:\BK ACADEMY` được Google Drive for desktop sao lưu ⇒ Drive thả `desktop.ini` (thiết lập icon) vào MỌI thư mục, kể cả `.git/refs`, và tạo lại liên tục.
+  - Đếm được: Nông Trại 235 file trong `.git`; repo Bắt Thú vừa clone ~1 giờ đã có 16.
+  - Kiểm: các thư mục khác ở ổ E: và `C:\…\BKERP` không có `desktop.ini`.
+- **Thùy chọn:**
+  - (1) chuyển repo ra ngoài, không xoá tạm;
+  - (2) "làm project riêng luôn" ⇒ code game KHÔNG gộp vào repo ERP.
+- **Làm:**
+  - Xoá 235 + 16 `desktop.ini` trong `.git` (Thùy gật).
+  - Dời `NongTrai`, `NongTrai-dohoa` (worktree), `BatThu` về `C:\Users\WBPC\Desktop\BKERP\BKGame\`.
+    - Ổ E: còn 1 thư mục `NongTrai` RỖNG, xoá không được vì cmd của Thùy đang đứng trong đó.
+  - `git worktree repair`, rồi `git fetch` Nông Trại: cả 3 nhánh trùng GitHub (`main` 5f0a1e0 · `nhip-ngay` 9556216 · `do-hoa-thu` a32c550). Đã đặt upstream.
+  - Bắt Thú: Thùy đã `npm install` tay. Lần đầu chạy trong cmd bằng `cd "E:/…"` thì không đổi ổ — **cmd phải `cd /d`**.
+  - `launch.json` ERP đổi 4 đường dẫn sang `BKGame`.
+  - Tạo `BKGame\CLAUDE.md` + `BKGame\.claude\launch.json` (cục bộ máy này, không thuộc repo nào) để mở BKGame thành project Claude riêng.
+  - Sửa HANDOFF + spec Nông Trại §9 theo đường dẫn mới.
+- **Kiểm:**
+  - `bat-thu` (5280) lên màn chọn bạn đồng hành, không lỗi.
+  - `nong-trai` (5270) tải xong, `manifest.webmanifest` đúng định dạng.
+- **Phát hiện phụ:** localStorage Nông Trại của Browser pane bị TRỐNG. Tab cũ mất hết, nhiều khả năng khung xem đã được làm mới khi app mở lại; việc dời thư mục không liên quan vì origin vẫn `localhost:5270`.
+  - Đã ghi lại bản sao lưu 30/09 (cấp 2, 4 ô, 20 xu, 4 điểm) và chặn trang đang mở lưu đè.

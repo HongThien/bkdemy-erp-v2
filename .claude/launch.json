@@ -178,7 +178,7 @@
       "name": "nong-trai",
       "runtimeExecutable": "node",
       "runtimeArgs": [
-        "E:/BK ACADEMY/Gaming/KayKit/NongTrai/serve.mjs",
+        "C:/Users/WBPC/Desktop/BKERP/BKGame/NongTrai/serve.mjs",
         "5270"
       ],
       "port": 5270
@@ -187,7 +187,7 @@
       "name": "nong-trai-dohoa",
       "runtimeExecutable": "node",
       "runtimeArgs": [
-        "E:/BK ACADEMY/Gaming/KayKit/NongTrai-dohoa/serve.mjs",
+        "C:/Users/WBPC/Desktop/BKERP/BKGame/NongTrai-dohoa/serve.mjs",
         "5271"
       ],
       "port": 5271
@@ -196,7 +196,7 @@
       "name": "nong-trai-dohoa-kiem",
       "runtimeExecutable": "node",
       "runtimeArgs": [
-        "E:/BK ACADEMY/Gaming/KayKit/NongTrai-dohoa/serve.mjs",
+        "C:/Users/WBPC/Desktop/BKERP/BKGame/NongTrai-dohoa/serve.mjs",
         "5272"
       ],
       "port": 5272
@@ -206,7 +206,7 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": [
         "--prefix",
-        "E:/BK ACADEMY/Gaming/BatThu",
+        "C:/Users/WBPC/Desktop/BKERP/BKGame/BatThu",
         "run",
         "dev"
       ],

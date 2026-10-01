@@ -60,15 +60,20 @@
       - Đám đông: thấy tối đa 10 người, ưu tiên bạn (`?nguoi=100`).
       - **Khu đấu boss** Bạo Chúa Lửa (`src/boss.ts`, mô hình tạm): 4 đòn có vùng đỏ báo trước · nổi giận 50% · kiệt sức 15% để thu phục · né lăn (Shift) · thắng/thua/thu phục.
       - Chưa có máy chủ (Colyseus để sau). Chưa đo iPad gen 7 thật.
-      - **Máy công ty (01/10): đã clone về `E:\BK ACADEMY\Gaming\BatThu` @ `9a54b05`, launch `bat-thu` (cổng 5280) đã có trong `.claude/launch.json`.**
-        **CHƯA `npm install`** — Claude bị chặn tự chạy cài gói từ ngoài ⇒ Thùy chạy tay 1 lần trong thư mục đó.
-      - Máy nhà: launch `bat-thu` trỏ `C:/Users/Admin/...` — sửa local, đừng commit đè đường dẫn E:.
+      - **Máy công ty:** `C:\Users\WBPC\Desktop\BKERP\BKGame\BatThu` @ `9a54b05`, đã `npm install`. Launch `bat-thu` (cổng 5280).
+      - Máy nhà: launch `bat-thu` trỏ `C:/Users/Admin/...` — sửa local, đừng commit đè đường dẫn máy công ty.
       - Tham số: `?cl=dep|nhe` · `?cham=0.25` (quay chậm) · `?nguoi=N`. Vào khu đấu: góc tây bắc bản đồ (x −28, z 26).
     - **`HongThien/bk-nong-trai`** (nông trại; đủ nhánh `main`/`nhip-ngay`/`do-hoa-thu`). Bản mới nhất = `nhip-ngay` @ `9556216`.
-      - **Máy công ty `E:\BK ACADEMY\Gaming\KayKit\NongTrai` CHƯA nối remote** — Claude bị chặn tự đổi remote ⇒ Thùy chạy tay lần đầu: `git remote add origin https://github.com/HongThien/bk-nong-trai.git` + `git fetch`.
-        Hai bên đang trùng nhau (`9556216`), máy nhà không sửa gì thêm.
-      - `.git` của repo này có `desktop.ini` rải khắp (cả `refs/heads`) ⇒ nếu git báo `bad object refs/heads/desktop.ini` thì đó là nguyên nhân.
-    - Đừng chạy git trên bản Drive `G:\Other computers\...` (Drive nhét `desktop.ini` vào `.git/refs`).
+      - **Máy công ty:** `C:\Users\WBPC\Desktop\BKERP\BKGame\NongTrai` + worktree `NongTrai-dohoa` (nhánh `do-hoa-thu`).
+        Đã nối remote, cả 3 nhánh trùng GitHub (01/10), đã đặt upstream.
+  - **⭐ CEO 01/10: code game là PROJECT RIÊNG, không gộp vào repo ERP.**
+    - Máy công ty để ở `C:\Users\WBPC\Desktop\BKERP\BKGame\` (cạnh repo ERP); máy nhà ở `C:\Users\Admin\Desktop\BKERP\`.
+    - Mở `BKGame` thành project Claude riêng để làm game. Máy công ty đã có `BKGameCLAUDE.md` + `BKGame.claudelaunch.json` (file cục bộ, không thuộc repo nào; máy nhà muốn dùng thì chép tương tự).
+    - Spec, DEVLOG, HANDOFF và (sau này) migration + hàm `fn_*` của game vẫn ở repo ERP, vì DB chỉ migrate từ đây.
+  - **⚠ Không đặt repo trong thư mục Google Drive sao lưu** (vd `E:\BK ACADEMY\…`, `G:\Other computers\…`).
+    - Drive thả `desktop.ini` vào mọi thư mục, kể cả `.git/refs` ⇒ git báo `bad object refs/desktop.ini`, fetch hỏng.
+    - Ngày 01/10 đã dời 2 repo khỏi `E:\BK ACADEMY\Gaming` vì lỗi này.
+    - Cây làm việc còn ít `desktop.ini` cũ (chưa theo dõi, vô hại).
   - **Chế độ TRỒNG TRỌT = Nông Trại nhịp ngày. Đọc `spec-nong-trai-nhip-ngay.md` trước khi sửa** (nguồn thiết kế duy nhất; số liệu đầy đủ §3, §5, §9).
     - **Hướng:** kiểu Nông trại vui vẻ / Khu vườn trên mây; HS vào 1 lần/ngày.
       - Vòng chơi: thu hoạch → bán → mua bịch hạt → gieo → tưới, bắt sâu → sang vườn bạn cùng lớp giúp (5/ngày) và hái trộm (3/ngày).
