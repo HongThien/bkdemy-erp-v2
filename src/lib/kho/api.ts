@@ -2561,10 +2561,10 @@ export async function quyetDaiDeXuat(id: string, hanhDong: DeXuatHanhDong, opts:
 
 // ── GÁN MẪU của một lô (mig 202609292119) — dựng bộ đề chấm từ nhãn của NGƯỜI trước khi chạy skill gán dạng ──
 // Mẫu = N câu đầu theo md5(ma_cau) trong chuyên đề: cố định, suy động, không lưu danh sách. Nhãn = chính dang_chinh.
-export type LoGanMau = { lo: string; khoi: string; ten: string; maChuyenDe: string; dangCu: string[]; soMau: number }
+export type LoGanMau = { lo: string; khoi: string; ten: string; maChuyenDe: string; dangCu: string[]; soMau: number; soMauDungSai: number }
 // Registry các lô đang mở gán mẫu. Thêm lô = thêm 1 dòng (không rải điều kiện theo khối/chuyên đề ở màn hình).
 export const LO_GAN_MAU: LoGanMau[] = [
-  { lo: 'k12-thuc-te-01', khoi: '12', ten: 'Ứng dụng đạo hàm – thực tiễn (673 câu)', maChuyenDe: 'T1120106', dangCu: ['T112010601', 'T112010602'], soMau: 60 },
+  { lo: 'k12-thuc-te-01', khoi: '12', ten: 'Ứng dụng đạo hàm – thực tiễn (673 câu)', maChuyenDe: 'T1120106', dangCu: ['T112010601', 'T112010602'], soMau: 60, soMauDungSai: 15 },
 ]
 export type CauGanMau = {
   thu_tu: number; ma_cau: string; loai_cau: string; noi_dung: string
@@ -2582,6 +2582,26 @@ export async function ganDaiMau(maCau: string, maDang: string): Promise<{ ma_cau
   const { data, error } = await supabase.rpc('fn_dai_gan_mau_gan', { p_ma_cau: maCau, p_ma_dang: maDang })
   if (error) throw error
   return data as { ma_cau: string; dang_cu: string; dang_chinh: string; ten_dang: string }
+}
+// Mẫu ĐÚNG/SAI (mig 202610011330, CEO 01/10): Đ/S là kiểu câu RIÊNG — mỗi MỆNH ĐỀ một dạng, có thể khác chuyên đề câu cha.
+// Danh tính mệnh đề = (ma_cau, thu_tu) — khoá tự nhiên của bảng con dai_cau_menh_de.
+export type MenhDeGanMau = {
+  thu_tu: number; noi_dung: string; dap_an: 'D' | 'S' | null; loi_giai: string | null
+  ma_dang: string | null; ten_dang: string | null; ten_chuyen_de: string | null; da_duyet: boolean
+}
+export type CauDungSaiGanMau = {
+  thu_tu: number; ma_cau: string; noi_dung: string; anh_de: string | null; ten_de_goc: string | null; da_duyet: boolean
+  menh_de: MenhDeGanMau[]; de_xuat_cho: { id: string; ly_do: string }[] | null
+}
+export async function listDaiGanMauDungSai(maChuyenDe: string, so: number): Promise<CauDungSaiGanMau[]> {
+  const { data, error } = await supabase.rpc('fn_dai_gan_mau_ds_dung_sai', { p_ma_chuyen_de: maChuyenDe, p_so: so })
+  if (error) throw error
+  return (data ?? []) as CauDungSaiGanMau[]
+}
+export async function ganDaiMauMenhDe(maCau: string, thuTu: number, maDang: string): Promise<{ ma_cau: string; thu_tu: number; ma_dang: string; ten_dang: string; ten_chuyen_de: string }> {
+  const { data, error } = await supabase.rpc('fn_dai_gan_mau_menh_de', { p_ma_cau: maCau, p_thu_tu: thuTu, p_ma_dang: maDang })
+  if (error) throw error
+  return data as { ma_cau: string; thu_tu: number; ma_dang: string; ten_dang: string; ten_chuyen_de: string }
 }
 export async function taoDaiDeXuatTraoDoi(lo: LoGanMau, maCau: string, lyDo: string): Promise<string> {
   const { data, error } = await supabase.rpc('fn_dai_de_xuat_tao', {

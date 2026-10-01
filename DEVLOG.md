@@ -33185,3 +33185,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
     - (1) `npm install` trong `BatThu` — chặn vì "cài code từ ngoài";
     - (2) `git remote add origin https://github.com/HongThien/bk-nong-trai.git` + `git fetch` trong `NongTrai` — chặn vì "đổi remote".
   - NongTrai máy công ty `nhip-ngay` = `9556216`, trùng bản máy nhà đã đẩy.
+
+### 01/10 — Gán mẫu: tách ĐÚNG/SAI riêng (Thùy bắt lỗi) · Thùy ĐỔI ƯU TIÊN sang luồng đề thi PDF → ERP
+- Thùy đã gán xong mẫu 60 (59 gán + 1 "không khớp: đọc biểu đồ dễ, nhìn phát ra luôn"). Bắt lỗi: mẫu trộn câu Đúng/Sai với câu thường và bắt gán
+  1 dạng/câu — sai model kho (Đ/S: mỗi MỆNH ĐỀ 1 dạng, có thể khác chuyên đề). t đã VIẾT điều này trong spec §3b mà lúc làm màn lại gộp.
+- Sửa (mig `202610011330_dai_gan_mau_dung_sai.sql`, dry-run qua, CHƯA ÁP): `fn_dai_gan_mau_ds` bỏ Đ/S (44 nhãn câu thường của Thùy giữ nguyên, mẫu tự
+  lấy thêm 16 câu) · `fn_dai_gan_mau_ds_dung_sai` (15 câu = 60 mệnh đề) · `fn_dai_gan_mau_menh_de` ghi `menh_de[i].ma_dang` của câu cha → trigger
+  đồng bộ `dai_cau_menh_de` + log có actor; cho gán dạng khác chuyên đề. 16 câu Đ/S đã gán cấp câu: giữ `dang_chinh` (dạng nhà), không dùng để đo.
+  UI: `GanMauPanel` thêm công tắc Câu thường / Đúng/Sai; `GanMauDungSai.tsx` (chọn mệnh đề → bấm dạng; 8 dạng chuyên đề + dạng chuyên đề khác qua
+  DangPickerOne + danh sách vừa dùng). tsc sạch. Chưa xem trên màn thật.
+- **Thùy 01/10 đổi ưu tiên:** "m cần phân ra các bước để xây riêng chứ như này bị chồng lên nhau. Bản đồ kiến thức t vẫn tự làm được — sau này mới cần m.
+  Hiện tại cần NGAY: 1 đề thi PDF → 1 đề thi trên ERP, câu bóc ra và gán vào kho." ⇒ dừng mở rộng nhánh gán mẫu/skill gán dạng; lên phương án tách bước.

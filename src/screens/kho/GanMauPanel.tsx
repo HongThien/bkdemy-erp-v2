@@ -4,15 +4,33 @@
 // Nhãn = chính dang_chinh của câu (trigger DB ghi vết người gán) — không có bảng nhãn riêng.
 //
 // Hàng đợi ⇒ gán xong VÁ TẠI CHỖ, không quét lại; rời màn quay lại đúng câu đang dở (cache module-level).
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { listDaiDang, listDaiGanMau, ganDaiMau, taoDaiDeXuatTraoDoi, type CauGanMau, type DaiDang, type LoGanMau } from '../../lib/kho/api'
 import { MathText } from './ui'
+import GanMauDungSai from './GanMauDungSai'
 
 const NHO: { lo: string | null; rows: CauGanMau[]; dangs: DaiDang[]; vi: number } = { lo: null, rows: [], dangs: [], vi: 0 }
 
 const NHAN_LOAI: Record<string, string> = { tra_loi_ngan: 'Trả lời ngắn', trac_nghiem: 'Trắc nghiệm', dung_sai: 'Đúng/Sai', tu_luan: 'Tự luận' }
 
-export default function GanMauPanel({ lo, onClose, onDoiBanDo }: { lo: LoGanMau; onClose: () => void; onDoiBanDo?: () => void }) {
+// Hai mẫu TÁCH RIÊNG (CEO 01/10): câu thường gán 1 dạng/câu · câu Đúng/Sai gán 1 dạng/MỆNH ĐỀ.
+type CheDo = 'cau' | 'dung_sai'
+const NHO_CHE: { che: CheDo } = { che: 'cau' }
+export default function GanMauPanel(p: { lo: LoGanMau; onClose: () => void; onDoiBanDo?: () => void }) {
+  const [che, setChe] = useState<CheDo>(NHO_CHE.che)
+  const doi = (c: CheDo) => { NHO_CHE.che = c; setChe(c) }
+  const nutChe = (
+    <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+      {([['cau', 'Câu thường'], ['dung_sai', 'Đúng/Sai (từng mệnh đề)']] as [CheDo, string][]).map(([k, ten]) => (
+        <button key={k} onClick={() => doi(k)}
+          className={`rounded-md px-3 py-1 text-[13px] font-medium transition ${che === k ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{ten}</button>
+      ))}
+    </div>
+  )
+  return che === 'cau' ? <GanMauCau {...p} nutChe={nutChe} /> : <GanMauDungSai {...p} nutChe={nutChe} />
+}
+
+function GanMauCau({ lo, onClose, onDoiBanDo, nutChe }: { lo: LoGanMau; onClose: () => void; onDoiBanDo?: () => void; nutChe: ReactNode }) {
   const coCache = NHO.lo === lo.lo
   const [rows, setRows] = useState<CauGanMau[]>(coCache ? NHO.rows : [])
   const [dangs, setDangs] = useState<DaiDang[]>(coCache ? NHO.dangs : [])
@@ -99,6 +117,7 @@ export default function GanMauPanel({ lo, onClose, onDoiBanDo }: { lo: LoGanMau;
       <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-6 py-3">
         <button onClick={dong} className="text-[14px] text-slate-500 hover:text-indigo-600">← Bản đồ kiến thức</button>
         <span className="text-[15px] font-semibold text-slate-800">Gán mẫu · {lo.ten}</span>
+        {nutChe}
         {rows.length > 0 && <span className="text-[12.5px] text-slate-500">đã gán <b className="text-slate-700">{rows.filter(daGan).length}</b>/{rows.length} câu mẫu</span>}
         {thongBao && <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[12.5px] font-medium text-emerald-700">✓ {thongBao}</span>}
         <button onClick={quet} title="Quét lại" className="ml-auto rounded-md border border-slate-200 bg-white px-2.5 py-1 text-[13px] text-slate-600 hover:border-indigo-300 hover:text-indigo-700">↻</button>
