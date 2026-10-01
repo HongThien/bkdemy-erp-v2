@@ -263,6 +263,12 @@ Lọc theo bộ động tác chuẩn của 2 game: Pokémon (trận đấu · Le
 | Động tác riêng (ngoài bộ chung) | Chồm hí (đứng 2 chân sau) · phi nước đại 4 nhịp · dậm băng (vòng băng toả) · thở băng · lắc bờm | Lượn trôi · bơi tiến · lượn vòng · quẫy đuôi · phun cột nước · hát (vòng âm) · lộn vòng · lao xuống / ngoi lên · bị đánh · choáng · ngất |
 | Cưỡi | Có (điểm yên) | Có — cưỡi bay (sau V1) |
 
+- **CEO bổ sung (01/10 khuya):**
+  - **4 KHUÔN DÁNG**, khuôn nào cũng phải làm: **4 chân · bay · bơi · bò trườn** (rắn, sâu…).
+  - **Thiên Kình sống được cả dưới nước lẫn trên trời** ("huyền thoại mà"). Bay na ná bơi, nhưng **bắt buộc có 2 động tác chuyển**:
+    - **xuống nước:** lao từ trời đâm xuống mặt nước, toé + vòng sóng, lặn rồi nổi lưng;
+    - **lên không:** lặn lấy đà → phóng vọt khỏi mặt nước như cá voi nhảy, nước chảy ròng khỏi thân → xoè vây bay lên.
+  - Khuôn bơi viết chuỗi xương sống uốn sóng thành phần dùng lại được (uốn dọc cho cá voi, uốn ngang cho khuôn bò trườn sau này).
 - **Kỹ thuật:**
   - ngựa = **nâng khuôn 4 chân lên chân nhiều khúc** (khớp gối/khuỷu, uốn mềm) — mọi loài 4 chân cùng hưởng, sửa luôn lỗi "ngồi/nằm cứng" của bản 25 động tác;
   - cá voi = **khuôn mới "bơi/lượn"** (chuỗi xương sống uốn sóng).

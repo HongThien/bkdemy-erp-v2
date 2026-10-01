@@ -33910,3 +33910,15 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   `design/FLOW-NPC-BOSS-CUOI.md` (file của phiên khác, chưa theo dõi) cũng dựa mô hình boss-khu-vực ⇒ cần soát lại; tên "boss cuối" ở đó là boss cả hành trình, trùng chữ với boss cuối của chặng.
 - **Đơn hình:** viết `Đơn 6 v2` cuối `design/DON-HANG-SKIN-HS.md` (65 mục): texture mặt đất 8 vùng + biển + tờ sprite trang trí + quái ×2 hình (thường/trúng đòn) + hero chiến đấu + vương miện/hiệu ứng/bệ đá + nền màn đấu.
   Đơn 6 cũ ghi chú "đã thay", chỉ còn dùng #06–#13 (quái) và #39 (cờ).
+
+## 2026-10-01 (khuya, tiếp) — [Game] 2 thú huyền thoại đang làm + CEO chốt 4 khuôn dáng
+
+- **CEO:** "trông ổn rồi" (duyệt 25 động tác). Yêu cầu thiết kế huyền thoại: ngựa băng giá (ý Frostallion) + cá voi; "cho ngầu".
+  - Ghi spec-bat-thu §3.4: Băng Thần Mã + Thiên Kình (tên tạm).
+- Giao 2 luồng nền song song, cùng nhánh `thu-de-thuong` của BatThu:
+  - **ngựa:** nâng khuôn 4 chân lên chân 3 khúc + IK; 5 động tác riêng;
+  - **cá voi:** khuôn mới "bơi", CHỈ tạo file mới để không giẫm file của luồng ngựa.
+- **CEO bổ sung:**
+  - 4 khuôn dáng 4 chân · bay · bơi · bò trườn — khuôn nào cũng phải làm;
+  - cá voi bay được VÀ bơi được, bắt buộc có động tác "xuống nước" + "lên không".
+  - Đã báo luồng cá voi (thêm chế độ nước/trời + mặt nước trong trang thử).
