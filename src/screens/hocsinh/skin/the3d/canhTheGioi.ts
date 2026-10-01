@@ -11,6 +11,7 @@ import { raiTrangTri } from './trangTri'
 import { matVat, TOAN_CUC } from './vatLieu'
 import { sinhQuai, type Quai } from './nguonQuai'
 import { taoVuongMien } from './quai'
+import { taoHatFx } from './hero'
 import type { BangMau3D } from './kieuMau'
 
 export type LucDiaVao = {
@@ -29,26 +30,33 @@ export type CanhTheGioi = {
   /** bán kính lục địa (đơn vị cảnh) — React dùng để cỡ nhãn */
   ban: Map<string, number>
   hover: (ma: string | null) => void
+  /** nhãn có nên hiện không (nhiều lục địa mà đang thu nhỏ thì ẩn nhãn cho khỏi rối) */
+  hienNhan: () => boolean
   phaHuy: () => void
 }
 
-/** Bố trí tất định: lục địa to ở giữa, nhỏ ra rìa; đẩy nhau cho khỏi chồng; giữ trong elip. */
-export function boTri(rs: number[], seed: string, W = 38, H = 19): Diem[] {
-  const n = rs.length, R = rng(bam(seed)), ord = rs.map((r, i) => [r, i] as const).sort((a, b) => b[0] - a[0])
-  const p: Diem[] = new Array(n)
-  ord.forEach(([, i], k) => { const a = k * 2.399963 + R() * 0.3, d = Math.sqrt((k + 0.5) / n); p[i] = [Math.cos(a) * d * W * 0.42, Math.sin(a) * d * H * 0.42] })
-  for (let it = 0; it < 500; it++) {
-    for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
-      const dx = p[j][0] - p[i][0], dz = p[j][1] - p[i][1], d = Math.hypot(dx, dz) || 0.01, need = rs[i] * 1.3 + rs[j] * 1.3 + 1.2
-      if (d < need) { const f = (need - d) / d * 0.5; p[i][0] -= dx * f * 0.5; p[i][1] -= dz * f * 0.7; p[j][0] += dx * f * 0.5; p[j][1] += dz * f * 0.7 }
+/** Bố trí tất định: lục địa to ở giữa, nhỏ ra rìa; đẩy nhau cho khỏi chồng (tính theo elip vì blob rộng hơn cao); giữ trong elip.
+ *  Nếu vẫn chồng thì nới thế giới rộng ra 15% rồi giải lại — luôn tách hết, cỡ thế giới là kết quả (camera tự vừa khung). */
+export function boTri(rs: number[], seed: string, W0 = 38): { p: Diem[]; W: number; H: number } {
+  const n = rs.length, SX = 1.16, SZ = 0.92
+  for (let W = W0, lan = 0; ; W *= 1.15, lan++) {
+    const H = W / 2, R = rng(bam(seed)), ord = rs.map((r, i) => [r, i] as const).sort((a, b) => b[0] - a[0]), p: Diem[] = new Array(n)
+    ord.forEach(([, i], k) => { const a = k * 2.399963 + R() * 0.3, d = Math.sqrt((k + 0.5) / n); p[i] = [Math.cos(a) * d * W * 0.44, Math.sin(a) * d * H * 0.44] })
+    for (let it = 0; it < 900; it++) {
+      for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
+        const dx = (p[j][0] - p[i][0]) / SX, dz = (p[j][1] - p[i][1]) / SZ, d = Math.hypot(dx, dz) || 0.01, need = (rs[i] + rs[j]) * 1.22 + 0.5
+        if (d < need) { const f = (need - d) / 2 / d; p[i][0] -= dx * f * SX; p[i][1] -= dz * f * SZ; p[j][0] += dx * f * SX; p[j][1] += dz * f * SZ }
+      }
+      for (let i = 0; i < n; i++) {
+        const ex = W / 2 - rs[i] * SX * 1.25, ez = H / 2 - rs[i] * SZ * 1.25
+        const e = (p[i][0] / Math.max(1, ex)) ** 2 + (p[i][1] / Math.max(1, ez)) ** 2
+        if (e > 1) { const k = 1 / Math.sqrt(e); p[i][0] *= k; p[i][1] *= k }
+      }
     }
-    for (let i = 0; i < n; i++) {
-      const ex = W / 2 - rs[i] * 1.2, ez = H / 2 - rs[i] * 1.05
-      const e = (p[i][0] / ex) ** 2 + (p[i][1] / ez) ** 2
-      if (e > 1) { const s = 1 / Math.sqrt(e); p[i][0] *= s; p[i][1] *= s }
-    }
+    let chong = 0
+    for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) { const dx = (p[j][0] - p[i][0]) / SX, dz = (p[j][1] - p[i][1]) / SZ, need = (rs[i] + rs[j]) * 1.22 + 0.5; chong = Math.max(chong, need - Math.hypot(dx, dz)) }
+    if (chong < 0.25 || lan >= 8) return { p, W, H }
   }
-  return p
 }
 
 const GOC_NGANG = 52
@@ -61,7 +69,8 @@ export function dungTheGioi(host: HTMLElement, b: BangMau3D, ds: LucDiaVao[], cb
 
   // --- bố trí ---
   const rs = ds.map((d) => (1.7 + 0.54 * Math.sqrt(Math.max(1, d.soDang))) * (d.soDang <= 1 ? 0.88 : 1))
-  const pos = boTri(rs, ds.map((d) => d.ma).join('|'))
+  // cỡ thế giới co giãn theo tổng diện tích lục địa (3–24 chủ đề mỗi khối): ít thì 38×19, nhiều thì rộng ra, lục địa không dính nhau
+  const { p: pos, W, H } = boTri(rs, ds.map((d) => d.ma).join('|'))
   const C = ds.map((d, i) => {
     const poly = blob(pos[i][0], pos[i][1], rs[i], bam(d.ma), { n: 30, go: 0.32, sx: 1.16, sz: 0.92 })
     const bb = hopBao(poly), m = b.biome[d.biome] ?? b.biome.rung
@@ -81,7 +90,7 @@ export function dungTheGioi(host: HTMLElement, b: BangMau3D, ds: LucDiaVao[], cb
   }
 
   // --- lưới địa hình ---
-  const kh = { x0: -22, z0: -12.5, x1: 22, z1: 12.5 }
+  const kh = { x0: -(W / 2 + 3.5), z0: -(H / 2 + 3), x1: W / 2 + 3.5, z1: H / 2 + 3 }
   const tmp = new THREE.Color(), nuocTrong = new THREE.Color(b.nuocNong), suongC = new THREE.Color('#b4bddf')
   const luoi = xayLuoi(kh, 0.28, (x, z) => {
     const { s, id } = cungSong(x, z)
@@ -128,7 +137,10 @@ export function dungTheGioi(host: HTMLElement, b: BangMau3D, ds: LucDiaVao[], cb
   })
 
   // --- camera ---
-  sk.vuaKhung(40, 21, GOC_NGANG, 1.02)
+  sk.vuaKhung(W + 2, H + 2, GOC_NGANG, 1.02)
+  let zoom = 1, panX = 0, panZ = 0 // kéo để dịch · cuộn/chụm để phóng (thế giới nhiều lục địa rộng hơn màn hình)
+  const hat = taoHatFx(90); scene.add(hat.vat)
+  let tHat = 0
 
   // --- tương tác ---
   const dem = (e: PointerEvent): number => {
@@ -142,12 +154,44 @@ export function dungTheGioi(host: HTMLElement, b: BangMau3D, ds: LucDiaVao[], cb
     const i = dem(e)
     if (i !== hov) { hov = i; host.style.cursor = i >= 0 ? 'pointer' : 'default'; cb.hover(i >= 0 ? C[i].d.ma : null) }
   }
-  const onClick = (e: PointerEvent) => { const i = dem(e); if (i >= 0) cb.chon(C[i].d.ma) }
-  host.addEventListener('pointermove', onMove)
-  host.addEventListener('pointerdown', onClick)
+  // bấm = chọn (nhả chuột gần chỗ nhấn, không kéo); kéo = dịch bản đồ; cuộn/chụm 2 ngón = phóng to thu nhỏ
+  const ptr = new Map<number, { x: number; y: number }>(); let batDau = { x: 0, y: 0, t: 0 }, daKeo = false, khoangChum = 0
+  const gioiHan = () => { panX = Math.max(-W / 2 * (1 - zoom) - 2, Math.min(W / 2 * (1 - zoom) + 2, panX)); panZ = Math.max(-H / 2 * (1 - zoom) - 2, Math.min(H / 2 * (1 - zoom) + 2, panZ)) }
+  const theoPx = () => (2 * sk.khung.xa * zoom * Math.tan((sk.camera.fov * Math.PI) / 360)) / Math.max(1, host.clientHeight)
+  const datZoom = (z: number) => { zoom = Math.max(0.42, Math.min(1, z)); gioiHan() }
+  const onDown = (e: PointerEvent) => {
+    ptr.set(e.pointerId, { x: e.clientX, y: e.clientY }); batDau = { x: e.clientX, y: e.clientY, t: performance.now() }; daKeo = false
+    if (ptr.size === 2) { const [a, c] = [...ptr.values()]; khoangChum = Math.hypot(a.x - c.x, a.y - c.y) }
+  }
+  const onMove2 = (e: PointerEvent) => {
+    const p = ptr.get(e.pointerId)
+    if (!p) { onMove(e); return }
+    if (ptr.size === 2) {
+      ptr.set(e.pointerId, { x: e.clientX, y: e.clientY }); const [a, c] = [...ptr.values()], d = Math.hypot(a.x - c.x, a.y - c.y)
+      if (khoangChum > 0) datZoom(zoom * (khoangChum / Math.max(1, d))); khoangChum = d; daKeo = true; return
+    }
+    const dx = e.clientX - p.x, dy = e.clientY - p.y
+    if (!daKeo && Math.hypot(e.clientX - batDau.x, e.clientY - batDau.y) > 7) { daKeo = true; try { host.setPointerCapture(e.pointerId) } catch { /* trình duyệt cũ */ } }
+    if (daKeo) { const k = theoPx(); panX -= dx * k; panZ -= (dy * k) / Math.sin((GOC_NGANG * Math.PI) / 180); gioiHan() }
+    ptr.set(e.pointerId, { x: e.clientX, y: e.clientY })
+  }
+  const onUp = (e: PointerEvent) => {
+    const bam = !daKeo && ptr.size === 1 && performance.now() - batDau.t < 500
+    ptr.delete(e.pointerId); khoangChum = 0
+    if (bam) { const i = dem(e); if (i >= 0) cb.chon(C[i].d.ma) }
+  }
+  const onWheel = (e: WheelEvent) => { e.preventDefault(); datZoom(zoom * Math.exp(e.deltaY * 0.0012)) }
+  host.addEventListener('pointerdown', onDown); host.addEventListener('pointermove', onMove2); host.addEventListener('pointerup', onUp); host.addEventListener('pointercancel', onUp)
+  host.addEventListener('wheel', onWheel, { passive: false })
 
   const huyKhung = sk.moiKhung((dt, t) => {
     TOAN_CUC.uTime.value = t
+    // thế giới "sống": camera đung đưa rất nhẹ + đốm sáng ma thuật bay lên từ các lục địa
+    const kh = sk.khung, tam = new THREE.Vector3(kh.tam.x + panX, kh.tam.y, kh.tam.z + panZ)
+    sk.camera.position.set(tam.x + kh.huong.x * kh.xa * zoom + Math.sin(t * 0.21) * 0.7 * zoom, tam.y + kh.huong.y * kh.xa * zoom, tam.z + kh.huong.z * kh.xa * zoom + Math.cos(t * 0.17) * 0.35 * zoom); sk.camera.lookAt(tam)
+    tHat += dt
+    if (tHat > 0.35 && C.length) { tHat = 0; const c = C[Math.floor(Math.random() * C.length)], a = Math.random() * 6.28, r = c.r * (0.3 + Math.random() * 0.6); hat.bung(new THREE.Vector3(c.x + Math.cos(a) * r * 1.1, luoi.docCao(c.x + Math.cos(a) * r * 1.1, c.z + Math.sin(a) * r * 0.9) + 0.2, c.z + Math.sin(a) * r * 0.9), c.d.trangThai === 'fog' ? '#b4bddf' : b.vang, 1, { toc: 0.4, len: true, to: 0.8 }) }
+    hat.capNhat(dt)
     for (const l of luiAnim) {
       const dich = l.i === hov ? 0.2 : 0, cur = nang.get(l.i) ?? 0, nxt = cur + (dich - cur) * Math.min(1, dt * 10)
       nang.set(l.i, nxt); l.mesh.position.y = nxt
@@ -163,9 +207,10 @@ export function dungTheGioi(host: HTMLElement, b: BangMau3D, ds: LucDiaVao[], cb
   return {
     sk, neo, ban,
     hover: (ma) => { hov = ma ? C.findIndex((c) => c.d.ma === ma) : -1 },
+    hienNhan: () => C.length <= 12 || zoom < 0.8,
     phaHuy: () => {
-      host.removeEventListener('pointermove', onMove); host.removeEventListener('pointerdown', onClick)
-      huyKhung(); quais.forEach((q) => q.phaHuy()); nuoc.phaHuy(); sk.phaHuy()
+      host.removeEventListener('pointerdown', onDown); host.removeEventListener('pointermove', onMove2); host.removeEventListener('pointerup', onUp); host.removeEventListener('pointercancel', onUp); host.removeEventListener('wheel', onWheel)
+      huyKhung(); quais.forEach((q) => q.phaHuy()); hat.phaHuy(); nuoc.phaHuy(); sk.phaHuy()
     },
   }
 }

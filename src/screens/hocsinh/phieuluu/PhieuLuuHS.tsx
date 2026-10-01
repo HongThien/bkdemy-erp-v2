@@ -1,5 +1,6 @@
 // BẢN ĐỒ PHIÊU LƯU (tự luyện theo chủ đề) bản THẬT: dữ liệu từ `fn_ban_do_phieu_luu`, câu hỏi/chấm điểm từ luồng Tự luyện sẵn có (LamBai).
-// Thế giới → lục địa → chặng đường → màn đấu (DauView + LamBai nhúng) → kết quả lượt. Spec: spec-v1-app-hs.md §4.5.
+// Thế giới → lục địa → chặng đường → màn đấu (DauView + LamBai nhúng, kết quả hiện NGAY trong cảnh) . Spec: spec-v1-app-hs.md §4.5.
+// Thế giới còn là cửa vào các kiểu luyện khác (spec §4.2): "Săn quái lang thang" = Tự luyện tổng hợp · "Đấu trường" = Thử thách.
 import { useEffect, useMemo, useRef, useState, type ReactElement } from 'react'
 import { banDoPhieuLuu } from '../../../lib/phieuluu'
 import { sinhTuLuyenChuDe } from '../../../lib/tuluyen'
@@ -17,8 +18,14 @@ import type { NhungDau } from './nhungDau'
 export type LamBaiCmp = (p: { baiTestId: string; hocSinhId: string; onXong: () => void; desktop?: boolean; nhung?: NhungDau }) => ReactElement
 
 type Tang = { t: 'the_gioi' } | { t: 'luc_dia'; luc: string } | { t: 'chang'; luc: string; vung: string } | { t: 'dau'; luc: string; vung: string; chang: string }
+const KHOA = (t: Tang) => (t.t === 'the_gioi' ? 'tg' : t.t === 'luc_dia' ? `ld${t.luc}` : t.t === 'chang' ? `ch${t.vung}` : `dau${t.chang}`)
 
-export default function PhieuLuuHS({ hocSinhId, mon, gioiTinh, skin, onVe, LamBai }: { hocSinhId: string; mon: string; gioiTinh: 'nam' | 'nu' | null; skin: SkinId; onVe: () => void; LamBai: LamBaiCmp }) {
+export default function PhieuLuuHS({ hocSinhId, mon, gioiTinh, skin, onVe, onTongHop, onThuThach, LamBai }: {
+  hocSinhId: string; mon: string; gioiTinh: 'nam' | 'nu' | null; skin: SkinId; onVe: () => void
+  /** lối tắt từ thế giới: Tự luyện tổng hợp ("săn quái lang thang") và Thử thách ("đấu trường") */
+  onTongHop?: () => void; onThuThach?: () => void
+  LamBai: LamBaiCmp
+}) {
   const [banDo, setBanDo] = useState<BanDoV | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
   const [tang, setTang] = useState<Tang>({ t: 'the_gioi' })
@@ -41,26 +48,34 @@ export default function PhieuLuuHS({ hocSinhId, mon, gioiTinh, skin, onVe, LamBa
 
   return (
     <div className="fixed inset-0 z-10" style={{ background: 'var(--sk-page)', color: 'var(--sk-ink)', fontFamily: 'var(--sk-font)' }}>
-      {tang.t === 'the_gioi' && (
-        <>
-          <TheGioiView banDo={banDo} b={b} hienTai={hienTai} onChon={(ma) => setTang({ t: 'luc_dia', luc: ma })} />
-          <div className="pointer-events-none absolute left-0 right-0 top-0 p-3"><div className="pointer-events-auto"><DauTrangHS tieuDe={`Thế giới ${banDo.mon}`} phu="Bấm một lục địa để đi vào" onBack={onVe} /></div></div>
-        </>
-      )}
-      {tang.t === 'luc_dia' && luc && <LucDiaView luc={luc} b={b} onChon={(v) => setTang({ t: 'chang', luc: luc.ma, vung: v })} onVe={() => setTang({ t: 'the_gioi' })} />}
-      {tang.t === 'chang' && luc && vung && <ChangView luc={luc} vung={vung} b={b} onVe={() => setTang({ t: 'luc_dia', luc: luc.ma })} onVao={(c) => setTang({ t: 'dau', luc: luc.ma, vung: vung.ma, chang: c.ma })} />}
-      {tang.t === 'dau' && luc && vung && chang && (
-        <DauThat key={chang.ma} luc={luc} chang={chang} b={b} mon={mon} hocSinhId={hocSinhId} gioi={gioiTinh ?? 'nam'} LamBai={LamBai} onVe={() => { setTang({ t: 'chang', luc: luc.ma, vung: vung.ma }); tai() }} />
-      )}
+      {/* đổi tầng: hiện dần + phóng nhẹ (cảm giác "đi vào" bản đồ) */}
+      <div key={KHOA(tang)} className="absolute inset-0" style={{ animation: 'phieuluu-hien .5s ease-out both' }}>
+        {tang.t === 'the_gioi' && (
+          <>
+            <TheGioiView banDo={banDo} b={b} hienTai={hienTai} onChon={(ma) => setTang({ t: 'luc_dia', luc: ma })}
+              thanh={(onTongHop || onThuThach) ? <>
+                {onTongHop && <NutHS phu onClick={onTongHop}>Săn quái lang thang</NutHS>}
+                {onThuThach && <NutHS phu onClick={onThuThach}>Đấu trường</NutHS>}
+              </> : undefined} />
+            <div className="pointer-events-none absolute left-0 right-0 top-0 p-3"><div className="pointer-events-auto"><DauTrangHS tieuDe={`Thế giới ${banDo.mon}`} phu="Bấm một lục địa để đi vào" onBack={onVe} /></div></div>
+          </>
+        )}
+        {tang.t === 'luc_dia' && luc && <LucDiaView luc={luc} b={b} onChon={(v) => setTang({ t: 'chang', luc: luc.ma, vung: v })} onVe={() => setTang({ t: 'the_gioi' })} />}
+        {tang.t === 'chang' && luc && vung && <ChangView luc={luc} vung={vung} b={b} onVe={() => setTang({ t: 'luc_dia', luc: luc.ma })} onVao={(c) => setTang({ t: 'dau', luc: luc.ma, vung: vung.ma, chang: c.ma })} />}
+        {tang.t === 'dau' && luc && vung && chang && (
+          <DauThat luc={luc} chang={chang} b={b} mon={mon} hocSinhId={hocSinhId} gioi={gioiTinh ?? 'nam'} LamBai={LamBai} onVe={() => { setTang({ t: 'chang', luc: luc.ma, vung: vung.ma }); tai() }} />
+        )}
+      </div>
+      <style>{'@keyframes phieuluu-hien{0%{opacity:0;transform:scale(.97)}100%{opacity:1;transform:scale(1)}}'}</style>
     </div>
   )
 }
 
-// ── Màn đấu thật: sinh lượt (bài tự luyện đúng dạng) → DauView + LamBai nhúng → kết quả lượt ──────────────
+// ── Màn đấu thật: sinh lượt (bài tự luyện đúng dạng) → DauView + LamBai nhúng → thẻ kết quả NGAY trong cảnh ──────
 function DauThat({ luc, chang, b, mon, hocSinhId, gioi, LamBai, onVe }: {
   luc: LucDiaV; chang: ChangV; b: NonNullable<ReturnType<typeof laySkin>['the3d']>; mon: string; hocSinhId: string; gioi: 'nam' | 'nu'; LamBai: LamBaiCmp; onVe: () => void
 }) {
-  const [bai, setBai] = useState<{ id: string; lan: number } | null>(null)
+  const [bai, setBai] = useState<{ id: string } | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
   const [tong, setTong] = useState(chang.so_cau_luot ?? 10)
   const [kq, setKq] = useState<{ dung: number; tong: number; baiLamId: string | null } | null>(null)
@@ -72,37 +87,37 @@ function DauThat({ luc, chang, b, mon, hocSinhId, gioi, LamBai, onVe }: {
     if (daGoi.current === lan) return
     daGoi.current = lan
     setBai(null); setKq(null); setLoi(null)
-    sinhTuLuyenChuDe(mon, chang.ma, false).then((r) => setBai({ id: r.baiTestId, lan })).catch((e) => setLoi(e?.message ?? String(e)))
+    sinhTuLuyenChuDe(mon, chang.ma, false).then((r) => setBai({ id: r.baiTestId })).catch((e) => setLoi(e?.message ?? String(e)))
   }, [lan]) // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loi) return <ManHS><DauTrangHS tieuDe={chang.ten} onBack={onVe} /><TrongHS>Chưa mở được lượt luyện: {loi}</TrongHS><NutHS onClick={() => setLan((x) => x + 1)}>Thử lại</NutHS></ManHS>
   if (!bai) return <ManHS><DauTrangHS tieuDe={chang.ten} onBack={onVe} /><TrongHS>Đang gọi quái ra…</TrongHS></ManHS>
-  if (kq) return <KetQuaLuot luc={luc} chang={chang} kq={kq} onTiep={() => setLan((x) => x + 1)} onVe={onVe} />
   return (
     <DauView key={bai.id} luc={luc} chang={chang} b={b} gioi={gioi} tong={tong} onRut={onVe}>
-      {(api) => (
-        <LamBai baiTestId={bai.id} hocSinhId={hocSinhId} onXong={onVe} desktop
-          nhung={{ onTai: (t) => setTong(t), onCau: (e) => { void api.tra(e.verdict === 'correct') }, onHet: setKq, ban: api.ban }} />
-      )}
+      {(api) => kq
+        ? <KetQuaTrongDau chang={chang} kq={kq} heT={api.heT} onTiep={() => setLan((x) => x + 1)} onVe={onVe} />
+        : <LamBai baiTestId={bai.id} hocSinhId={hocSinhId} onXong={onVe} desktop
+            nhung={{ onTai: (t) => setTong(t), onCau: (e) => { void api.tra(e.verdict === 'correct') }, onHet: setKq, ban: api.ban }} />}
     </DauView>
   )
 }
 
-function KetQuaLuot({ luc, chang, kq, onTiep, onVe }: { luc: LucDiaV; chang: ChangV; kq: { dung: number; tong: number; baiLamId: string | null }; onTiep: () => void; onVe: () => void }) {
+function KetQuaTrongDau({ chang, kq, heT, onTiep, onVe }: { chang: ChangV; kq: { dung: number; tong: number; baiLamId: string | null }; heT: boolean; onTiep: () => void; onVe: () => void }) {
   const [r, setR] = useState<KetQuaLuot | null | undefined>(undefined)
   useEffect(() => { if (!kq.baiLamId) { setR(null); return } ketQuaLuotHocThat(kq.baiLamId).then(setR).catch(() => setR(null)) }, [kq.baiLamId])
   const khong = r ? loiLuotKhongTinh(r) : null
   return (
-    <ManHS>
-      <DauTrangHS tieuDe="Kết quả lượt" phu={`${chang.ten} · ${luc.ten}`} onBack={onVe} />
-      <TheHS className="flex flex-col items-center gap-2 p-6 text-center">
-        <p className="text-[40px] font-bold" style={{ ...HEAD, color: MAU.ink }}>{kq.dung}/{kq.tong} đúng</p>
-        {r === undefined ? <p className="text-[14px]" style={{ color: MAU.muted }}>Đang tính…</p>
-          : r?.tinh ? <p className="text-[15px] font-semibold" style={{ color: MAU.dung }}>Lượt này được tính: chuỗi, nhiệm vụ và quái đều ghi nhận.</p>
-          : <p className="text-[14.5px]" style={{ color: MAU.canhBao }}>{khong ?? 'Lượt này chưa được tính.'}</p>}
-        <p className="text-[12.5px]" style={{ color: MAU.muted }}>Máu quái và độ nắm dạng cập nhật theo kết quả thật khi em quay lại bản đồ.</p>
-        <div className="mt-2 flex flex-wrap justify-center gap-2"><NutHS onClick={onTiep}>Đánh tiếp</NutHS><NutHS phu onClick={onVe}>Về chặng đường</NutHS></div>
+    <div className="mx-auto flex max-w-xl flex-col items-center gap-2 p-5 text-center">
+      <p className="text-[13px]" style={{ color: MAU.muted }}>{chang.ten}</p>
+      <p className="text-[34px] font-bold leading-none" style={{ ...HEAD, color: MAU.ink }}>{heT ? 'Hạ hết đội hình!' : `${kq.dung}/${kq.tong} đúng`}</p>
+      {heT && <p className="text-[15px]" style={{ color: MAU.ink }}>{kq.dung}/{kq.tong} câu đúng</p>}
+      <TheHS className="w-full px-4 py-3 text-[14px]">
+        {r === undefined ? <span style={{ color: MAU.muted }}>Đang tính…</span>
+          : r?.tinh ? <span style={{ color: MAU.dung, fontWeight: 600 }}>Lượt này được tính: chuỗi, nhiệm vụ và quái đều ghi nhận.</span>
+          : <span style={{ color: MAU.canhBao }}>{khong ?? 'Lượt này chưa được tính.'}</span>}
       </TheHS>
-    </ManHS>
+      <p className="text-[12.5px]" style={{ color: MAU.muted }}>Máu quái và độ nắm dạng cập nhật theo kết quả thật khi em quay lại bản đồ.</p>
+      <div className="mt-1 flex flex-wrap justify-center gap-2"><NutHS onClick={onTiep}>Đánh tiếp</NutHS><NutHS phu onClick={onVe}>Về chặng đường</NutHS></div>
+    </div>
   )
 }

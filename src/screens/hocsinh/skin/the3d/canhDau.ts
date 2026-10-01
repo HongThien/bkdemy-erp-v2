@@ -27,6 +27,8 @@ export type CanhDau = {
   /** quái đang đấu ngã xuống */
   nga: () => void
   chao: () => void
+  /** hạ hết đội hình: hero reo + pháo sao vàng */
+  anMung: () => void
   phaHuy: () => void
 }
 
@@ -135,6 +137,12 @@ export function dungDau(host: HTMLElement, b: BangMau3D, op: { biome: string; gi
     }),
     nga: () => { bes[cur].q.nga() },
     chao: () => hero.chao(),
+    anMung: () => {
+      hero.chao()
+      ;[[-3.6, 2.6, 0.4, b.vang], [0.2, 3.6, 0, '#ffffff'], [3.8, 2.8, 0.2, b.vang], [-1.6, 3.2, 0.3, '#ffffff'], [2, 3.4, 0.2, b.vang]].forEach(([x, y, z, c], i) => {
+        setTimeout(() => hat.bung(new THREE.Vector3(x as number, y as number, z as number), c as string, 44, { toc: 5.5 }), i * 200)
+      })
+    },
     phaHuy: () => { huyKhung(); bes.forEach((be) => be.q.phaHuy()); hero.phaHuy(); hat.phaHuy(); aura.dispose(); sk.phaHuy() },
   }
 }

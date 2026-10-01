@@ -34038,3 +34038,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Chụp 4 ảnh tham chiếu vào `BatThu/.snap/tham-khao/` (gitignore).
   - Sketchfab không có bản Panthalus chính thức ⇒ lấy tỉ lệ từ ảnh, không dùng mô hình trích từ game.
 - Giao lại luồng cá voi; bản 1 (trời sao) giữ làm shiny. Ghi spec-bat-thu §3.4.
+
+## 2026-10-01 (khuya, tiếp 2) — [Giao diện] Hoàn thiện bản đồ: lối tắt từ Home, ăn mừng, kéo/phóng thế giới, thử tải, sửa lỗi cỡ ô = 0
+- **Làm:** (1) ô **Tự luyện** trên Home (6–12) mở thẳng bản đồ; thế giới có lối tắt "Săn quái lang thang" (Tự luyện tổng hợp) và "Đấu trường" (Thử thách) đúng spec §4.2. (2) Kết quả lượt hiện NGAY trong cảnh đấu (hero reo + pháo sao khi hạ hết đội hình), không nhảy sang trang khác. (3) Đổi tầng có hiệu ứng hiện dần/phóng nhẹ. (4) Thế giới "sống": camera đung đưa nhẹ, đốm sáng ma thuật bay lên từ lục địa. (5) Thế giới nhiều lục địa: bộ xếp chỗ viết lại (tính theo elip, luôn tách hết, tự nới thế giới), kéo để dịch + cuộn/chụm để phóng, nhãn tự ẩn khi thu nhỏ mà >12 lục địa. (6) Chặng >12: 3 hàng. (7) Trang thử tải `&thu=nhieu` (24 lục địa, vùng 9 chuyên đề, chặng 14 dạng) — đã soi, không vỡ.
+- **Lỗi thật đã sửa:** camera dựng khi ô chứa còn cỡ 0 ⇒ khoảng cách vô hạn, cảnh TRẮNG hoàn toàn (xảy ra ở lục địa; cảnh thế giới may chưa dính). Giờ khung camera dựng lại mỗi khi ô đổi cỡ/xoay máy (`sk.khung`), cảnh có chuyển động camera đọc khung mỗi khung hình. Bắt được nhờ expose tạm `window.__sk` rồi gỡ.
+- **Chưa kiểm được:** luồng làm bài THẬT trong khung đấu (cần tài khoản HS để đăng nhập, không dùng tài khoản học sinh thật vì sẽ sinh bài vào DB prod) · FPS/iPad thật · luật chất lượng đồ hoạ tự thích ứng chưa code (đã ghi spec).

@@ -4,7 +4,7 @@
 import { useState } from 'react'
 import { laySkin } from '../skin/registry'
 import { GD_MAC_DINH, DauTrangHS } from '../skin/KhungHS'
-import { MAU_BAN_DO as MAU } from './mau'
+import { MAU_BAN_DO as MAU, banDoNhieu } from './mau'
 import { tuBanDoPL, type BanDoV } from './kieu'
 import { TheGioiView } from './TheGioiView'
 import { LucDiaView } from './LucDiaView'
@@ -14,6 +14,7 @@ import type { ChangV } from './kieu'
 
 // Chỉ khi chạy dev: dán JSON thật của fn_ban_do_phieu_luu vào localStorage 'ban_do_pl' để soi dữ liệu thật qua bộ đổi tuBanDoPL.
 function layBanDo(): BanDoV {
+  if (new URLSearchParams(location.search).get('thu') === 'nhieu') return banDoNhieu()
   try { const j = import.meta.env.DEV ? localStorage.getItem('ban_do_pl') : null; if (j) return tuBanDoPL(JSON.parse(j)) } catch { /* dùng mẫu */ }
   return MAU
 }

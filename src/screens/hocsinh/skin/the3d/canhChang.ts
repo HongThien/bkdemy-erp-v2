@@ -33,11 +33,11 @@ export type CanhChang = {
 
 /** Vị trí các chặng trên đường: 1 hàng nếu ≤4 chặng, ngược lại 2 hàng rắn bò. Đơn vị cảnh. */
 export function viTriChang(n: number): Diem[] {
-  const hang = n <= 4 ? 1 : 2, moi = Math.ceil(n / hang), out: Diem[] = []
+  const hang = n <= 4 ? 1 : n <= 12 ? 2 : 3, moi = Math.ceil(n / hang), out: Diem[] = []
   for (let i = 0; i < n; i++) {
     const r = Math.floor(i / moi), j = i % moi, cot = r % 2 ? moi - 1 - j : j
     const x0 = -9.2, x1 = 7.6, x = moi === 1 ? -1 : x0 + (cot * (x1 - x0)) / (moi - 1)
-    const z = hang === 1 ? (i % 2 ? -0.9 : 0.9) : (r === 0 ? -3.6 : 3.6) + (j % 2 ? -0.8 : 0.8)
+    const z = hang === 1 ? (i % 2 ? -0.9 : 0.9) : hang === 2 ? (r === 0 ? -3.6 : 3.6) + (j % 2 ? -0.8 : 0.8) : (r - 1) * 5.4 + (j % 2 ? -0.7 : 0.7)
     out.push([x, z])
   }
   return out
@@ -135,7 +135,7 @@ export function dungChang(host: HTMLElement, b: BangMau3D, luc: { biome: string;
     neoHero = new THREE.Vector3(hx - 2.4, 1.55, hz + 0.9)
   }
 
-  sk.vuaKhung(28, 17, 50, 1.02, new THREE.Vector3(-1, 0, 0))
+  sk.vuaKhung(28, P.length > 12 ? 23 : 17, 50, 1.02, new THREE.Vector3(-1, 0, 0))
 
   const gan = (e: PointerEvent) => {
     const p = sk.chamDat(e, 0.4); if (!p) return -1

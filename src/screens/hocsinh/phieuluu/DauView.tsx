@@ -47,6 +47,8 @@ export function DauView({ luc, chang, b, gioi = 'nam', tong, onRut, children }: 
   }, [canh])
 
   const heT = hp.every((x) => x === 0)
+  const daAn = useRef(false)
+  useEffect(() => { if (heT && canh && !daAn.current) { daAn.current = true; canh.anMung() } }, [heT, canh])
   const tra = useCallback(async (dung: boolean) => {
     if (!canh || refs.current.ban) return
     setBan(true)

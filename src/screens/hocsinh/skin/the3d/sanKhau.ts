@@ -11,6 +11,8 @@ export type SanKhau = {
   scene: THREE.Scene
   camera: THREE.PerspectiveCamera
   host: HTMLElement
+  /** khung camera hiện hành (tâm nhìn, khoảng cách, hướng) — cập nhật khi đổi cỡ ô/xoay máy; cảnh có chuyển động camera phải đọc từ đây MỖI KHUNG */
+  khung: { tam: THREE.Vector3; xa: number; huong: THREE.Vector3 }
   /** đăng ký hàm chạy mỗi khung (dt giây, t giây tổng) — trả hàm huỷ */
   moiKhung: (fn: (dt: number, t: number) => void) => () => void
   /** gắn 1 phần tử HTML bám theo điểm 3D (cập nhật mỗi khung, không qua React) */
@@ -48,6 +50,8 @@ export function taoSanKhau(host: HTMLElement, op: { dpr?: number; antialias?: bo
   const nhans = new Set<NhanBam>()
   let padPhai = 0, rong = 1, cao = 1, song = true, t = 0, last = performance.now(), ema = 16, dem = 0
   let fogK: [number, number] | null = null
+  let apLai: (() => void) | null = null // dựng lại khung camera khi ô đổi cỡ (host có thể có cỡ 0 lúc tạo, hoặc em xoay máy)
+  const khung = { tam: new THREE.Vector3(), xa: 20, huong: new THREE.Vector3(0, 1, 1).normalize() }
 
   function doiCo() {
     rong = Math.max(1, host.clientWidth); cao = Math.max(1, host.clientHeight)
@@ -55,6 +59,7 @@ export function taoSanKhau(host: HTMLElement, op: { dpr?: number; antialias?: bo
     camera.aspect = rong / cao
     if (padPhai > 0) camera.setViewOffset(rong, cao, padPhai / 2, 0, rong, cao); else camera.clearViewOffset()
     camera.updateProjectionMatrix()
+    if (rong > 1 && cao > 1) apLai?.()
   }
   const ro = new ResizeObserver(doiCo)
   ro.observe(host)
@@ -95,7 +100,7 @@ export function taoSanKhau(host: HTMLElement, op: { dpr?: number; antialias?: bo
   }
 
   const sk: SanKhau = {
-    renderer, scene, camera, host,
+    renderer, scene, camera, host, khung,
     moiKhung: (fn) => { fns.add(fn); return () => fns.delete(fn) },
     gan: (n) => { nhans.add(n); return () => nhans.delete(n) },
     datCamera: (tam, ngang, xa, xoay = 0) => {
@@ -103,14 +108,18 @@ export function taoSanKhau(host: HTMLElement, op: { dpr?: number; antialias?: bo
       camera.position.set(tam.x + Math.sin(r) * Math.cos(a) * xa, tam.y + Math.sin(a) * xa, tam.z + Math.cos(r) * Math.cos(a) * xa)
       camera.lookAt(tam)
       camera.updateMatrixWorld()
+      khung.tam.copy(tam); khung.xa = xa; khung.huong.set(Math.sin(r) * Math.cos(a), Math.sin(a), Math.cos(r) * Math.cos(a))
       if (fogK && scene.fog instanceof THREE.Fog) { scene.fog.near = xa * fogK[0]; scene.fog.far = xa * fogK[1] }
     },
     vuaKhung: (rongC, sauC, ngang, le = 1.08, tam = new THREE.Vector3(0, 0, 0)) => {
+      apLai = () => {
       const tanH = Math.tan((camera.fov * Math.PI) / 360), sinA = Math.sin((ngang * Math.PI) / 180)
       const hienRong = rong - padPhai
       const xaNgang = (rongC / 2) / (tanH * (hienRong / cao))
       const xaDoc = (sauC * sinA / 2) / tanH
       sk.datCamera(tam, ngang, Math.max(xaNgang, xaDoc) * le + 2)
+      }
+      if (rong > 1 && cao > 1) apLai()
     },
     chuaPhai: (px) => { padPhai = px; doiCo() },
     chamDat: (e, y = 0) => { toNdc(e); mp.constant = -y; return ray.ray.intersectPlane(mp, hit) ? hit.clone() : null },

@@ -58,3 +58,16 @@ export const MAU_BAN_DO: BanDoV = {
     luc('G', 'Hình học không gian', 'thanh_co', [['Tính diện tích – thể tích hình khối không gian', [['Diện tích – Thể tích của hình hộp chữ nhật', 2, 'f']]]]),
   ],
 }
+
+/** Dữ liệu THỬ TẢI (hs.html?xem=phieu_luu&thu=nhieu): nhiều lục địa/vùng/chặng hơn mọi khối thật để soi bố cục không vỡ. */
+const BIOME = ['rung', 'bang', 'nui_lua', 'bien_dao', 'sa_mac', 'dam_lay', 'thanh_co', 'troi_sao']
+export function banDoNhieu(nLuc = 24, nVung = 9, nChang = 14): BanDoV {
+  const luc_dia = Array.from({ length: nLuc }, (_, i): LucDiaV => {
+    const nv = i === 0 ? nVung : 1 + (i % 4), v = Array.from({ length: nv }, (_, j): [string, Tho[]] => {
+      const nc = i === 0 && j === 0 ? nChang : 1 + ((i + j) % 6)
+      return [`Chuyên đề ${i + 1}.${j + 1}`, Array.from({ length: nc }, (_, k): Tho => [`Dạng ${i + 1}.${j + 1}.${k + 1}`, 1 + (k % 5), (i + j + k) % 3 === 0 ? 'd' : (i + j + k) % 3 === 1 ? 'y' : 'f', 3 + (k % 5), k % 7])]
+    })
+    return luc(`X${i}`, `Chủ đề thử ${i + 1}`, BIOME[i % BIOME.length], v)
+  })
+  return { mon: 'Thử tải', luc_dia }
+}

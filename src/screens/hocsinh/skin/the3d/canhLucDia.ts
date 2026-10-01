@@ -10,6 +10,7 @@ import { raiTrangTri } from './trangTri'
 import { matVat, TOAN_CUC } from './vatLieu'
 import { sinhQuai, type Quai } from './nguonQuai'
 import { taoVuongMien } from './quai'
+import { taoHatFx } from './hero'
 import type { BangMau3D } from './kieuMau'
 
 export type VungVao = { ma: string; ten: string; soDang: number; trangThai: 'dat' | 'yeu' | 'fog'; loai: string | null; khoi?: boolean }
@@ -90,7 +91,10 @@ export function dungLucDia(host: HTMLElement, b: BangMau3D, luc: { ma: string; b
     if (vg.khoi) { const v = taoVuongMien(b, 0.55); v.position.set(cx, cy + 2.2, cz); scene.add(v); mieng.push(v) }
   })
 
-  sk.vuaKhung(24.5, 17.5, 56, 1.0, new THREE.Vector3(0, 0, 0.6))
+  const tamNhin = new THREE.Vector3(0, 0, 0.6)
+  sk.vuaKhung(24.5, 17.5, 56, 1.0, tamNhin)
+  const hatFx = taoHatFx(70); scene.add(hatFx.vat)
+  let tHat = 0
 
   const dem = (e: PointerEvent) => { const p = sk.chamDat(e, 0.3); if (!p) return -1; const t = trongVung(p.x, p.z); return t.id >= 0 && t.s > -0.2 ? t.id : -1 }
   let hov = -1
@@ -100,6 +104,11 @@ export function dungLucDia(host: HTMLElement, b: BangMau3D, luc: { ma: string; b
   host.addEventListener('pointermove', onMove); host.addEventListener('pointerdown', onClick)
   const huyKhung = sk.moiKhung((dt, t) => {
     TOAN_CUC.uTime.value = t
+    const kh = sk.khung
+    sk.camera.position.set(kh.tam.x + kh.huong.x * kh.xa + Math.sin(t * 0.21) * 0.5, kh.tam.y + kh.huong.y * kh.xa, kh.tam.z + kh.huong.z * kh.xa + Math.cos(t * 0.17) * 0.25); sk.camera.lookAt(kh.tam)
+    tHat += dt
+    if (tHat > 0.3) { tHat = 0; const x = bb.x0 + Math.random() * (bb.x1 - bb.x0), z = bb.z0 + Math.random() * (bb.z1 - bb.z0); if (sdf(x, z, poly) > 1) hatFx.bung(new THREE.Vector3(x, luoi.docCao(x, z) + 0.2, z), b.vang, 1, { toc: 0.4, len: true, to: 0.8 }) }
+    hatFx.capNhat(dt)
     for (const l of luiVung) {
       const dich = l.i === hov ? 0.22 : 0, cur = nang.get(l.i) ?? 0, nxt = cur + (dich - cur) * Math.min(1, dt * 10)
       nang.set(l.i, nxt); l.mesh.position.y = nxt; l.g.position.y = nxt
@@ -113,6 +122,6 @@ export function dungLucDia(host: HTMLElement, b: BangMau3D, luc: { ma: string; b
   return {
     sk, neo,
     hover: (ma) => { hov = ma ? vungs.findIndex((v) => v.ma === ma) : -1 },
-    phaHuy: () => { host.removeEventListener('pointermove', onMove); host.removeEventListener('pointerdown', onClick); huyKhung(); quais.forEach((q) => q.phaHuy()); nuoc.phaHuy(); sk.phaHuy() },
+    phaHuy: () => { host.removeEventListener('pointermove', onMove); host.removeEventListener('pointerdown', onClick); huyKhung(); quais.forEach((q) => q.phaHuy()); hatFx.phaHuy(); nuoc.phaHuy(); sk.phaHuy() },
   }
 }
