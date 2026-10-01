@@ -34324,3 +34324,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   khung hình đã lưu ở `.snap/tham-khao/thien_kinh/` — mắt vàng tròng xoáy, gờ mũ xanh đậm trên đầu, hoa văn trắng phát sáng).
 - Còn: ~125k tam giác/con bản Đẹp (mây nặn mịn) — phải giảm + đo bản Nhẹ · cánh lúc ngủ/trúng đòn còn cứng · giáp ống chân thô (mẫu: chùm pha lê
   quanh cổ móng) · ngực chưa có chỏm lông trắng · màu mắt đỏ theo mẫu — chờ CEO xác nhận giữ đỏ hay xanh băng.
+- (tiếp, 01/10 khuya) CEO: "tinh thể trên đầu phải rất góc cạnh, phẳng và bóng sáng". Làm lại mặt nạ = KHỐI ĐA DIỆN LỒI (ConvexGeometry) từ
+  đỉnh dò trên mặt đầu (viền cắm vào da ⇒ đáy chìm, không khe) + viên pha lê nhọn giữa trán + 2 mỏm nhỏ; shader thêm cờ PHA LÊ (aBong > 1):
+  nhám 0,06 + phản chiếu trời giả + loé nắng (cảnh không có env map nên vật liệu bóng tự nó chỉ có 1 điểm sáng). BatThu `thu-de-thuong`.
+  Bài học: muốn MẶT PHẲNG giác cạnh thì dựng đa diện thật; nặn SDF rồi cắt thưa chỉ ra mặt lăn tăn méo, không bao giờ phẳng.
