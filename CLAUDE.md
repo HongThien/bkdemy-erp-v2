@@ -274,6 +274,9 @@
 - [Pilot Điểm-danh → ET — 7 User Story](https://app.notion.com/p/375d4530bcdb8084b38bead35fdf0be7)
 
 ### Spec build (trong repo — nguồn cho đợt code hiện tại)
+- **`spec-v1-app-hs.md` — ĐỌC BẮT BUỘC trước khi làm BẤT KỲ việc gì trên app HS** (Thùy chốt 01/10): release V1.0 = 8 hạng mục (tutorial · chuỗi + nhiệm vụ ·
+  Thế giới BK · Rank · UI "Giải cứu thế giới — đánh quái vật" 100% · ≥2 style · game tổ hợp · góp ý/báo lỗi) · **màn NGANG trước** (cấp 1–2 dùng iPad/PC) ·
+  "lượt học thật" (≥5/10) là nền chung cho chuỗi/nhiệm vụ/game · bản đồ phiêu lưu: chủ đề = lục địa, chuyên đề = khu vực, dạng = màn, cụm = quái.
 - **`spec-bo-tro.md` — ĐỌC BẮT BUỘC trước khi sửa luồng BỔ TRỢ (yếu · bù · đuổi).** Bản tổng hợp quyết định CEO + hiện trạng build (21/09):
   4 kênh phát hiện & ngưỡng · mức ưu tiên case · lịch trực khối+bậc, ca ≤3 em, không xếp lại · MCQ tuyệt đối · 2 chế độ ca 📱 app / 📄 giấy
   (in phiếu, nhập kết quả, nộp test) · màn theo dõi · bản đồ code/DB · việc còn treo. Thiết kế gốc: `PLAN-botro-yeu.md`, `PLAN-botro-yeu-ca.md`.

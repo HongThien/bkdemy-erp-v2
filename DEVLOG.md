@@ -33250,3 +33250,17 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - `.claude/commands/nhap-de-thi.md` viết lại v2 (v1 ghi `toan_de_thi` đã ngừng).
 - Bẫy lại dính: vá `quyet.mjs` bằng heredoc ⇒ `\left`/`\right` thành `left`/CR+`ight`, và guard cũng bị méo CÙNG KIỂU nên không bắt được
   (nhân chứng không độc lập). Sửa bằng Edit tool + guard `String.raw`. `ghi.mjs` chặn nội dung còn `[[…]]` nhưng KHÔNG bắt được LaTeX mất `\` — cần thêm kiểm KaTeX render ở bước chạy thử.
+
+## 2026-10-01 — Kế hoạch release App HS V1.0 (`spec-v1-app-hs.md`) + đo "học giả" trong tự luyện
+
+- Thùy chốt V1.0 = 8 hạng mục: tutorial mọi tính năng · chuỗi làm bài + nhiệm vụ ngày/tuần/tháng · Thế giới BK · Rank đo hoàn chỉnh · UI 100% theo
+  "Giải cứu thế giới — đánh quái vật" · ≥2 style · game tổ hợp Nông trại/Bắt thú/Ấp trứng · góp ý/báo lỗi của HS. **Màn ngang trước** (cấp 1–2 dùng
+  iPad/PC), khổ dọc (cấp 3) sau. Giải đấu nhóm: chỉ ghi spec, chưa làm. Cổng game = số câu đúng, lượt 10 câu, **đúng ≥5 mới tính**. Chuỗi ngày quan trọng,
+  phải nổi bật, mốc to lên Thế giới. Bản đồ kiến thức → phiêu lưu (chuyên đề/chủ đề = thế giới, dạng = màn đấu, cụm = quái).
+- Đo 30 ngày (claude_ro, script tạm `scripts/_q_adventure_tmp.mjs`): 1.869 lượt tự luyện 10 câu — 0–2 đúng: 3,4 s/câu (bấm bừa) · 5–8 đúng: 16–19 s/câu ·
+  9–10 đúng: 5,0 s/câu với **64% câu đã gặp** (nhớ đáp án) ⇒ đề xuất thêm 2 lớp chặn: chỉ đếm câu đúng mới (30 ngày) + bỏ lượt < 6 s/câu. MCQ 4 đáp án = 85%
+  câu ⇒ bấm bừa đạt 5/10 = 7,8%. `cham_at` của tự luyện ghi lúc trả lời từng câu (testonline.ts) ⇒ đo tốc độ được.
+- Cây Đại: cụm mới phủ ~20% dạng (vd khối 9: 12/86 dạng có cụm) ⇒ dạng chưa có cụm = 1 quái. HS có tự luyện 30 ngày ~90/470 (khối 10–12 ≈ 0) ⇒ giải đấu
+  không ghép theo khối được, ghép xuyên khối theo vị thế.
+- Viết `spec-v1-app-hs.md` (hiện trạng → thiếu → "xong" từng hạng mục · luật lượt học thật · chuỗi · bản đồ phiêu lưu · thứ tự lát A→J · điều kiện release ·
+  giải đấu §10 · 5 câu chờ chốt) + 1 dòng trỏ trong CLAUDE.md.
