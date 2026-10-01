@@ -34150,3 +34150,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - vài đỉnh lông chạm thân (ngáp 0,6 s);
   - lúc bay chân sau duỗi như đang phi;
   - kiểu màng dơi chưa xem ảnh.
+
+## 2026-10-01 (đêm) — [Boss] Mô hình khối cơ bản bị chê "thô, không giống" ⇒ làm PHÙ ĐIÊU 3D từ chính bản vẽ
+
+- **Thùy chê:** bản chibi dựng bằng khối cơ bản "không đủ chi tiết, thô quá, phải giống con trong ảnh". Đúng: dựng khối bằng code chạm trần chi tiết (đã ghi sẵn ở nghien-cuu-do-hoa §6), không bao giờ ra được áo choàng/hoa văn/khuôn mặt của bản vẽ ChatGPT.
+- **Làm:** `skin/the3d/quaiRelief.ts` — mỗi tư thế (PNG) tự tách thành THÂN + HÀO QUANG (mở hình thái xoá nét mảnh rồi lấy mảnh liền lớn nhất), thân "thổi phồng" theo khoảng cách tới mép (lưới 128², UV thẳng vào ảnh gốc, đổ bóng theo độ dốc), hào quang phẳng phía sau luôn quay mặt về camera ⇒ giữ NGUYÊN nét vẽ + có khối + thị sai. `BossAnh.relief` ưu tiên cao nhất trong `nguonQuai.sinhQuai` (relief → mo3d → ảnh phẳng). Trang soi `?xem=boss3d&kieu=relief|chibi|anh` để so 3 cách.
+- **Giới hạn nói thẳng:** đây là nổi khối 2.5D chứ KHÔNG phải mô hình thật — xoay ≤ ~40° còn đẹp, lệch hơn lộ. Cảnh trận bù ~78% góc xoay để giữ gần thẳng. Mô hình 3D thật (xoay 360°, đổi tư thế bằng xương) cần ảnh→3D (Tripo/Meshy gói trả phí) rồi Mixamo — làm ngoài phiên này, Thùy quyết.
+- **Kích thước:** cao 2.9 trong style RPG (3.3 thì đỉnh hào quang bị cắt ở khung trận).

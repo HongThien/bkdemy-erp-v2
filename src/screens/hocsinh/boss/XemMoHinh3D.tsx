@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { laySkin } from '../skin/registry'
 import { taoBossChibi3D } from '../skin/the3d/bossChibi3D'
+import { taoQuaiRelief } from '../skin/the3d/quaiRelief'
+import { taoQuaiAnh } from '../skin/the3d/quaiAnh'
 import type { QuaiBoss, TuThe } from '../skin/the3d/quaiAnh'
 import { NHAN_TU_THE } from './BossSan'
 
@@ -18,12 +20,13 @@ export default function XemMoHinh3D() {
   const gan = useRef(q.get('gan') === '1')
   useEffect(() => {
     const el = ref.current
-    if (!el || !a?.mo3d) return
+    if (!el || !a) return
     const r = new THREE.WebGLRenderer({ antialias: true, alpha: false }); r.setPixelRatio(Math.min(2, devicePixelRatio)); el.appendChild(r.domElement)
     const sc = new THREE.Scene(); const pal = laySkin(null).the3d!; sc.background = new THREE.Color(pal.troi) // màu cảnh/đèn lấy từ bảng màu 3D của style
     const cam = new THREE.PerspectiveCamera(30, 1, 0.1, 100)
     sc.add(new THREE.HemisphereLight(pal.hemiTroi, pal.hemiDat, pal.hemiCuong)); const sun = new THREE.DirectionalLight(pal.matTroi, pal.matTroiCuong); sun.position.set(3, 6, 6); sc.add(sun)
-    const b = taoBossChibi3D(ma, a.mo3d, a.cao); boss.current = b; sc.add(b.goc)
+    const kieu = q.get('kieu') ?? 'relief' // relief | chibi | anh — so 3 cách dựng
+    const b = kieu === 'chibi' && a.mo3d ? taoBossChibi3D(ma, a.mo3d, a.cao) : kieu === 'anh' ? taoQuaiAnh(ma, a) : taoQuaiRelief(ma, a); boss.current = b; sc.add(b.goc)
     const fit = () => { const w = el.clientWidth, h = el.clientHeight; r.setSize(w, h); cam.aspect = w / h; cam.updateProjectionMatrix() }
     fit(); const ro = new ResizeObserver(fit); ro.observe(el)
     let raf = 0, last = performance.now()
@@ -38,7 +41,7 @@ export default function XemMoHinh3D() {
     return () => { cancelAnimationFrame(raf); ro.disconnect(); b.phaHuy(); r.dispose(); el.removeChild(r.domElement) }
   }, [ma, a])
   useEffect(() => { boss.current?.datTuThe(tt === 'dung' ? null : tt) }, [tt])
-  if (!a?.mo3d) return <div className="p-6 text-sm">Boss “{ma}” chưa có mô hình 3D (mo3d).</div>
+  if (!a) return <div className="p-6 text-sm">Boss “{ma}” không tồn tại.</div>
   const nut = (t: string, f: () => void, on = false) => <button key={t} onClick={f} className="rounded-full px-3 py-1 text-[12.5px] font-bold" style={{ border: '1.5px solid var(--sk-line)', background: on ? 'var(--sk-acc)' : 'var(--sk-surface2)', color: on ? 'var(--sk-acc-ink)' : 'var(--sk-ink)' }}>{t}</button>
   return (
     <div className="fixed inset-0 flex flex-col" style={{ background: 'var(--sk-bg)', color: 'var(--sk-ink)', fontFamily: 'var(--sk-font)' }}>

@@ -31,7 +31,9 @@ export type MoHinhChibi = {
   hao: string; haoGian: string
 }
 export type BossAnh = {
-  /** có ⇒ boss trong cảnh 3D là MÔ HÌNH dựng bằng code theo thông số này; không có ⇒ dùng tấm ảnh 2D (quaiAnh.ts) */
+  /** true ⇒ boss trong cảnh 3D là PHÙ ĐIÊU dựng từ chính 6 ảnh (quaiRelief.ts): giữ đúng nét vẽ + có khối. Ưu tiên cao nhất. */
+  relief?: boolean
+  /** có ⇒ MÔ HÌNH dựng bằng khối cơ bản theo thông số này (bossChibi3D.ts); không có cả hai ⇒ tấm ảnh 2D (quaiAnh.ts) */
   mo3d?: MoHinhChibi
   ten: string
   /** chiều cao nhân vật trong cảnh 3D (đơn vị thế giới; quái thường ~1.3–1.6) */

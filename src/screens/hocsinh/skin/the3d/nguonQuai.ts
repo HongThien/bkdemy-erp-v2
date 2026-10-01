@@ -6,6 +6,7 @@ import { taoQuai, type Quai } from './quai'
 import type { BangMau3D } from './kieuMau'
 import { taoQuaiAnh } from './quaiAnh'
 import { taoBossChibi3D } from './bossChibi3D'
+import { taoQuaiRelief } from './quaiRelief'
 import { TEN_LOAI } from './loai'
 import { laySkin } from '../registry'
 
@@ -17,6 +18,7 @@ export const datNguonQuai = (f: NhaMay) => { nha = f }
 export const sinhQuai: NhaMay = (loai, b) => {
   const anh = laySkin(null).boss?.[loai]
   if (!anh) return nha(loai, b)
+  if (anh.relief) return taoQuaiRelief(loai, anh)
   return anh.mo3d ? taoBossChibi3D(loai, anh.mo3d, anh.cao) : taoQuaiAnh(loai, anh)
 }
 /** Tên hiển thị của quái/boss: boss riêng lấy theo style, còn lại bảng TEN_LOAI. */
