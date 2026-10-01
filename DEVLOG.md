@@ -33761,3 +33761,19 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
     - dự phòng: giảm số lượng, không cắt tính năng.
     - Đề xuất để V1.1: giúp/hái trộm vườn bạn, gà bò, cưỡi thú, thấy người chơi khác, boss.
   - §6 bốn tên đề xuất (Làng Bách Thú + thú gọi BKmon · BKmon · Thung Lũng BK · Đảo Mầm).
+
+## 2026-10-01 — [Số liệu] RANK: Điểm Rank chỉ tính lượt học thật · nhật ký LÊN BẬC · server chọn dạng (mig 202610011545 + 1546 + 1547, ĐÃ ÁP)
+
+- Thùy "OK" + "đã chạy" grant: `claude_build` giờ INSERT được `thong_bao_hs` ⇒ lời trả lời góp ý vào Hòm thư thật.
+- **1545** `trg_thu_thach_nop`: lượt Thử thách không phải lượt học thật ⇒ `v_goc = 0` (pass vẫn ghi theo tỉ lệ). Thử nộp lại 73 lượt Thử thách cũ trong ROLLBACK:
+  giữ điểm 72 · mất 1 · lệch 0 ⇒ bảng xếp hạng gần như không xáo. Chỉ áp lượt nộp từ nay (không tính lại lịch sử).
+- **1546** nhật ký lên bậc `rank_len_bac` (em × môn × mùa × bậc, ngày chạm suy từ chuỗi điểm cộng dồn của `fn_rank_su_kien` ⇒ đúng cả khi phát hiện muộn) + `rank_len_bac_quet`:
+  `_rank_len_bac_ghi` (idempotent) · trigger sau mỗi lượt Thử thách · `fn_hs_len_bac_moi(mon)` (mở Home/Rank: quét cả môn nếu >30 phút, trả bậc chưa xem) · `fn_hs_len_bac_da_xem` ·
+  bậc đạt >2 ngày trước ghi sẵn `xem_at` (không bật hoạt cảnh dữ liệu cũ) · tin Thế giới `len_bac` (bậc 3–4 = B · 5–6 = A · ≥7 = S) thêm vào `_the_gioi_tin` (thân = bản đang chạy).
+  ROLLBACK: 422 dòng cho Toán, **325/325** em khớp bậc `fn_rank_mua`, quét cả môn 0,24 s, 19 tin B trong 7 ngày, hoạt cảnh mở→xem→hết chạy đúng. Hiện mới có Soldier (269 em) + Captain (153 em).
+- **1547** SERVER chọn dạng: `_tu_luyen_chon_dang` (60% nửa yếu · 40% mọi dạng đã đo, từ `fn_mastery_cells`, chỉ dạng thuộc môn) + `fn_tu_luyen_sinh_tu_dong` / `fn_thu_thach_sinh_tu_dong`.
+  Lý do: trước đây JS chọn dạng rồi gửi `thu_thach_sinh(p_mon, p_dangs)` ⇒ HS tinh ý tự chọn dạng DỄ cho Thử thách để lấy Điểm Rank (lỗ hổng thật) + công thức mức nắm ở 2 nơi.
+  So JS vs SQL trên 12 em: nửa yếu trùng 83% (chênh ở các dạng điểm bằng nhau); phân bố 2000 lần rút ≈ 81–86% rơi nửa yếu (kỳ vọng 80%). Client: `sinhTuLuyen` / `sinhThuThach` gọi hàm mới,
+  xoá `chonDangTuLuyen` (JS). **2 bước an toàn:** hàm cũ `thu_thach_sinh(text,jsonb)` + `tu_luyen_sinh(text,jsonb,text)` GIỮ quyền tới khi deploy app — sau đó thu hồi (hộp thư spec §13.6).
+- `src/lib/rank.ts`: `lenBacMoi` / `daXemLenBac`. check:style-hs ✔.
+- Còn trong hạng mục 4: danh hiệu trên Hồ sơ (cần màn — Giao diện) · chốt tháng 9 từ 10/10 (Thùy) · soi bằng tài khoản thật (Thùy) · hình bậc Rank (Đơn 3 ChatGPT).

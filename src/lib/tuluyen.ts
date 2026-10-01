@@ -5,16 +5,14 @@
 // tiếp, hết dở thì sinh lượt mới. 40% ngẫu nhiên trong dạng ĐÃ HỌC · 60% trong dạng đang YẾU.
 //
 // KIẾN TRÚC: tái dùng NGUYÊN bai_test/bai_test_cau/bai_lam/bai_lam_cau (loai='tu_luyen',
-// bai_test.hoc_sinh_id set — bài CÁ NHÂN, khác ET/BTVN dùng chung cả lớp). Chọn CÂU + snapshot
-// chạy Ở SERVER (RPC `tu_luyen_sinh`, security definer — kho câu hỏi staff-only). Chọn DẠNG chạy
-// Ở CLIENT bằng ĐÚNG `masteryOfDang` (gami/mastery.js) — KHÔNG bịa công thức SQL riêng; RPC
-// `hs_dang_evals` chỉ trả dữ liệu thô (điểm đúng/sai CỦA CHÍNH HS, không nhạy cảm).
+// bai_test.hoc_sinh_id set — bài CÁ NHÂN, khác ET/BTVN dùng chung cả lớp). Chọn DẠNG + chọn CÂU + snapshot
+// đều chạy Ở SERVER (RPC `fn_tu_luyen_sinh_tu_dong` — mig 202610011547, 01/10: trước đây dạng do JS chọn rồi gửi lên,
+// HS tinh ý chọn được dạng dễ cho Thử thách; công thức mức nắm nay chỉ còn 1 nơi: fn_mastery_cells).
 // Mastery hệ số (cấp 1 = trung tâm hệ số 1, cấp 3 = chỉ gộp view HS) do mastery.ts tự phân biệt
 // qua `loai='tu_luyen'` khi build — KHÔNG xử ở đây (xem DEVLOG "còn treo" ngày viết file này).
 // ============================================================================
 import { supabase } from './supabase'
 import { MON_APP_HS } from './mon'
-import { masteryOfDang, MASTERY_CONFIG } from '../gami/mastery.js'
 
 const SO_CAU_MOI_LUOT = 10
 
@@ -51,39 +49,12 @@ function ngayVN(): string {
 
 type RawEval = { ma_dang: string; value: number; t: string; src: 'et' | 'mt' | 'btvn' | 'bt' | 'tu_luyen' }
 
-// 40% NGẪU NHIÊN trong dạng ĐÃ HỌC (toàn bộ, không giới hạn thời gian) · 60% trong dạng đang
-// YẾU. Đọc "yếu" = NỬA DƯỚI khi xếp theo điểm mastery (không đòi dạng phải chính thức ở mức
-// 'yeu' — nếu chưa dạng nào tệ tới mức đó thì vẫn cần 1 nhóm để rút, nửa dưới luôn có).
-// Mỗi CÂU trong 10 câu là 1 lượt rút ĐỘC LẬP (không phải "6 dạng cố định + 4 dạng cố định") —
-// nên 1 dạng có thể ra nhiều hơn 1 câu trong cùng đợt, đặc biệt khi HS mới học ít dạng.
-export function chonDangTuLuyen(evals: RawEval[], soCau = SO_CAU_MOI_LUOT): string[] {
-  const byDang = new Map<string, { value: number; t: string; src: RawEval['src'] }[]>()
-  for (const e of evals) { const arr = byDang.get(e.ma_dang) ?? []; arr.push({ value: e.value, t: e.t, src: e.src }); byDang.set(e.ma_dang, arr) }
-  const scored = [...byDang.entries()]
-    .map(([ma, evs]) => ({ ma, m: masteryOfDang(evs, MASTERY_CONFIG) }))
-    .filter((x): x is { ma: string; m: NonNullable<ReturnType<typeof masteryOfDang>> } => !!x.m)
-  if (!scored.length) return [] // chưa có dữ liệu học tập nào — không suy đoán được gì để luyện
-  scored.sort((a, b) => a.m.score - b.m.score) // yếu nhất trước
-  const toanBo = scored.map((x) => x.ma)
-  const yeu = toanBo.slice(0, Math.max(1, Math.ceil(toanBo.length / 2)))
-  const out: string[] = []
-  for (let i = 0; i < soCau; i++) {
-    const pool = Math.random() < 0.6 ? yeu : toanBo
-    out.push(pool[Math.floor(Math.random() * pool.length)])
-  }
-  return out
-}
-
 export type SinhTuLuyenKetQua = { baiTestId: string; them: number; tong: number }
 
 // Sinh 1 LƯỢT MỚI (bai_test riêng, mặc định 10 câu) — "làm thêm" gọi lại đúng hàm này, ra lượt mới.
-export async function sinhTuLuyen(mon: string, soCau = SO_CAU_MOI_LUOT): Promise<SinhTuLuyenKetQua> {
-  const { data: evals, error: e1 } = await supabase.rpc('hs_dang_evals', { p_mon: mon })
-  if (e1) throw e1
-  const dangs = chonDangTuLuyen((evals ?? []) as RawEval[], soCau)
-  if (!dangs.length) throw new Error('Chưa có dữ liệu học tập nào để tự luyện — học vài buổi đã rồi quay lại nhé.')
-  const { data, error: e2 } = await supabase.rpc('tu_luyen_sinh', { p_mon: mon, p_dangs: dangs })
-  if (e2) throw e2
+export async function sinhTuLuyen(mon: string): Promise<SinhTuLuyenKetQua> {
+  const { data, error } = await supabase.rpc('fn_tu_luyen_sinh_tu_dong', { p_mon: mon })   // server chọn dạng: 60% nửa yếu · 40% mọi dạng đã đo
+  if (error) throw error
   return { baiTestId: data.bai_test_id, them: data.them, tong: data.tong }
 }
 
