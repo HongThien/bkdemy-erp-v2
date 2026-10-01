@@ -243,6 +243,30 @@ Lọc theo bộ động tác chuẩn của 2 game: Pokémon (trận đấu · Le
   - phóng đại vừa phải.
 - Khuôn chim / có cánh sẽ có bộ riêng: cất cánh · bay · liệng · đáp · vỗ cánh · mổ.
 
+### 3.4 Hai thú HUYỀN THOẠI đầu tiên (CEO 01/10 khuya: "trông ổn rồi — giờ thiết kế con huyền thoại; ngựa băng giá giống Frostallion + cá voi; cho ngầu")
+
+- **25 động tác: CEO duyệt** ("trông ổn rồi").
+- **Cá voi:** CEO nhắc tên "Panthalius". CTO không chắc là con nào trong Palworld ⇒ tự thiết kế, chỉ giữ ý "cá voi huyền thoại".
+- **"Ngầu" cho tầng 4:**
+  - bớt chibi: đầu : thân ≈ 1 : 2,5; mắt hẹp, sắc, phát sáng;
+  - vẫn khối mềm cùng phong cách;
+  - to 2,5–5× thú thường;
+  - hào quang + hạt riêng theo hệ;
+  - chuyển động chậm, nặng, uy (mức `nang` trở lên).
+
+| | **Băng Thần Mã** (tên tạm) | **Thiên Kình** (tên tạm — "kình" = cá voi) |
+|---|---|---|
+| Ý từ | Frostallion (Palworld) | Cá voi huyền thoại |
+| Hệ | Băng | Nước / Trời |
+| Dáng | Ngựa thon cao, **chân 3 khúc** (đùi · ống · móng), cổ dài cong. Bờm + đuôi là **sợi băng tuyết bay theo gió** (chuỗi lò xo). Sừng/vương miện pha lê băng. Móng chạm đất để lại băng. Hơi thở ra sương | **Cá voi bơi trên không trung** — dungeon hiện là đồng cỏ, không cần nước; sau này thành thú cưỡi bay. Thân dài uốn mềm theo chuỗi 5 khúc, vây ngực lớn như cánh, đuôi 2 thuỳ. Hoa văn sao/sóng phát sáng dưới bụng; mây + bọt nước quanh thân |
+| Cỡ | ~2,5× | ~4–5× |
+| Động tác riêng (ngoài bộ chung) | Chồm hí (đứng 2 chân sau) · phi nước đại 4 nhịp · dậm băng (vòng băng toả) · thở băng · lắc bờm | Lượn trôi · bơi tiến · lượn vòng · quẫy đuôi · phun cột nước · hát (vòng âm) · lộn vòng · lao xuống / ngoi lên · bị đánh · choáng · ngất |
+| Cưỡi | Có (điểm yên) | Có — cưỡi bay (sau V1) |
+
+- **Kỹ thuật:**
+  - ngựa = **nâng khuôn 4 chân lên chân nhiều khúc** (khớp gối/khuỷu, uốn mềm) — mọi loài 4 chân cùng hưởng, sửa luôn lỗi "ngồi/nằm cứng" của bản 25 động tác;
+  - cá voi = **khuôn mới "bơi/lượn"** (chuỗi xương sống uốn sóng).
+
 ## 4. Chờ CEO
 
 0. **(01/10, ưu tiên) Nguồn THÚ DỄ THƯƠNG** — 3 cách A/B/C ở §3.2. Boss đã gác lại (#18) ⇒ mục 1 dưới đây giờ chỉ còn phần pet.
