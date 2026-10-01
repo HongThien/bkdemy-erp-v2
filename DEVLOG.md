@@ -34006,3 +34006,25 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 2026-10-01 (khuya, tiếp) — [Giao diện] Ghi luật CHẤT LƯỢNG ĐỒ HOẠ TỰ THÍCH ỨNG vào spec (Thùy)
 - Thùy: "đồ hoạ phải tự đổi theo máy — máy yếu thì cùi, máy khỏe thì max; tự xác nhận được thì tốt, không thì có 1 nút xác nhận cho người dùng chỉnh". Ghi vào `spec-v1-app-hs.md` §4.5 (3 mức Thấp/Vừa/Cao dùng CÙNG cảnh, bảng thông số ở 1 file; đoán nhanh + đo ~2 giây; chắc thì tự đặt, không chắc thì hỏi 1 nút; chỉnh tay trong menu ⋯/Hồ sơ + "Đo lại"; lưu theo máy, đổi máy thì đo lại; điều kiện xong).
 - **Hiện trạng code:** mới có cơ chế tự hạ độ phân giải khi tụt khung (`sanKhau.ts`). Bảng 3 mức, đo máy, nút xác nhận, mục chỉnh tay CHƯA làm.
+
+## 2026-10-01 (khuya) — [Kho · Đề thi] Lát D: đề CHỈ CÓ PDF — `boc-pdf.mjs` (Gemini gõ, Claude kiểm)
+
+- **CEO:** "đưa vào folder chỉ định và Claude chạy. Claude vẫn gọi Gemini để OCR nhưng Claude có kiểm tra lại, thay vì ở ERP lỗi là lỗi luôn."
+- **Làm:** `scripts/kho/de-thi/boc-pdf.mjs` — PDF → ảnh trang (poppler) + lớp chữ → Gemini 3 lượt (BÓC cả file · MỤC LỤC cả file · SOI từng
+  trang: 3a hình + vị trí nhãn câu ở 150 dpi, 3b chữ cái bị gạch chân ở 250 dpi) → máy so chéo → cắt hình thẳng từ PDF (`pdftoppm -x -y -W -H`,
+  không cần thư viện ảnh) → `de.json` cùng khuôn bản Word. `--dung-lai` = chạy lại không gọi Gemini (sửa khung hình bằng tay rồi cắt lại).
+  `/nhap-de-thi` thêm "Bước 2-PDF" + 4 việc Claude PHẢI kiểm bằng mắt. Spec §10.8.
+- **Đo (DE SO 3 bản PDF, có bản Word làm chuẩn):** chữ 22/22 câu khớp; đáp án 21/22 — câu sai là ca "B gạch chân, lời giải ghi Chọn C".
+- **Sai → sửa trong lúc làm (3 vòng, đều do ĐO mới lộ):**
+  1. Lấy khung hình từ lượt đọc cả file ⇒ Gemini BỊA (3 hình ở trang có 1; chép toạ độ đề sang lời giải), khung ăn chữ / cụt đáy.
+     ⇒ hình chỉ lấy từ lượt đọc ẢNH từng trang.
+  2. Hỏi Gemini "hình này của câu nào" ⇒ gán 2 hình đầu trang (của câu dở trang trước) cho câu phía dưới. ⇒ chỉ hỏi TOẠ ĐỘ nhãn "Câu N",
+     còn hình thuộc câu nào máy tính theo vị trí. 6 ô "phiếu trả lời" cuối đề bị gắn vào câu cuối ⇒ thêm luật không tự gắn sau câu cuối.
+  3. Dặn lượt mục lục tách "đáp án theo đánh dấu" khỏi "đáp án theo chữ lời giải" ⇒ vẫn chép "C" cho cả hai. Gộp việc "chữ gạch chân" vào
+     lượt soi trang chung ⇒ trang có 6 chữ gạch chân trả về rỗng. Thử riêng: một việc duy nhất + ảnh 250 dpi ⇒ đúng 6/6 (150 dpi: sai đúng
+     câu có "Chọn C"). Nhưng chạy cả đề vẫn sót (7/12) ⇒ là nhân chứng THÊM, không thay mắt Claude; script in câu chưa soi được.
+  4. Bẫy cũ lặp lại: vá file bằng `node - <<EOF` có regex ⇒ dấu `\` bị nuốt, vá trượt (script có throw nên không hỏng file). Chuỗi có `\` ⇒ Edit tool.
+- **Bài học:** với máy đọc, "dặn kỹ hơn trong prompt" không thay được "tách việc + đo". Thứ gì tính được bằng toạ độ thì đừng hỏi model.
+- **Còn hở (ghi ở spec §10.8):** nhận trùng câu giữa nguồn Word và PDF (chạy thử: 1/22) · chưa đo PDF scan / đề Sở chỉ có bảng đáp án ·
+  `ghi.mjs` chặn đề có câu Đúng/Sai chưa có đáp án · hình lời giải không cắt.
+- Thư mục thử `bk-kho-lam-viec/de-thi/_thu_pdf_DE_SO_3/` (ngoài repo, bộ đệm) còn nguyên; KHÔNG ghi gì vào DB từ bản thử này.

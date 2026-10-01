@@ -409,3 +409,37 @@ mà là **đề được gán thành tài liệu của buổi** — đúng hai l
 
 Chưa làm / biết trước: mastery theo TỪNG MỆNH ĐỀ của câu Đúng/Sai (hiện câu Đ/S tính cho dạng của câu, đúng một phần = 0,5) · đổi ngày / xoá bản
 gán ngay trong Kho đề thi (đang làm ở Kho tài liệu) · gán một PHẦN của đề (K4: bản đầu chỉ cả đề).
+
+### 10.8 Lát D — đề CHỈ CÓ PDF: Gemini gõ, Claude kiểm (CEO 01/10) · ĐÃ BUILD script, đã đo trên 1 đề
+
+CEO: *"Đưa vào folder chỉ định và Claude chạy. Claude vẫn gọi Gemini để OCR nhưng Claude có kiểm tra lại, thay vì ở ERP lỗi là lỗi luôn."*
+
+`node scripts/kho/de-thi/boc-pdf.mjs "<file.pdf>" --ra <work> --khoi 12` → `de.json` CÙNG KHUÔN bản Word ⇒ từ đó đi tiếp y hệt lát A
+(`quyet.mjs` → `ghi.mjs` chạy thử → `--ghi` → Kho đề thi tab Chờ duyệt). Thư mục thả đề: `…\Tài liệu Claude nhập kho\DE_THI\L<khối>\`.
+
+| Lượt | Đầu vào | Việc | Vì sao tách riêng |
+|---|---|---|---|
+| 1 BÓC | cả file PDF | chép từng câu: đề, phương án / mệnh đề, đáp án NẾU file thể hiện, lời giải | — |
+| 2 MỤC LỤC | cả file PDF | chỉ đếm: phần, số câu, trang, đáp án theo 2 nguồn (đánh dấu · chữ lời giải) | nhân chứng độc lập về SỐ CÂU + ĐÁP ÁN |
+| 3a HÌNH | ảnh từng trang 150 dpi | khung từng hình + toạ độ nhãn "Câu N" + toạ độ tiêu đề phần lời giải | đọc cả file thì BỊA vị trí hình; "hình của câu nào" máy TÍNH theo vị trí, không hỏi Gemini |
+| 3b ĐÁNH DẤU | ảnh từng trang 250 dpi | một việc duy nhất: chữ cái phương án nào bị gạch chân / khoanh / tô | đọc cả file không thấy nét gạch chân |
+| máy kiểm | — | số câu liên tục · đủ 4 phương án / 4 ý · `$` cân · đáp số tô được 4 ô · các lượt lệch nhau · chữ từng câu so với LỚP CHỮ PDF | nhân chứng không-AI (chỉ khi PDF có lớp chữ) |
+| **Claude kiểm** | ảnh trang | so từng câu bằng mắt, tự soi gạch chân từng câu trắc nghiệm, mở từng hình đã cắt; sửa bằng `quyet.mjs` | **bắt buộc** — xem số đo dưới |
+
+**Đo 01/10 trên `DE SO 3` (PDF xuất từ Word, 15 trang, có bản Word làm chuẩn so):** ~4 phút, ≈ 0,17 USD.
+- Chữ: 22/22 câu, đúng 12 + 4 + 6, tổng 10 điểm; nội dung khớp bản Word (khác nhau chỉ ở kiểu viết LaTeX: `(S)` ↔ `\left( S \right)`,
+  `\vec{i}` ↔ `\overrightarrow{i}`); 0 câu lệch lớp chữ.
+- Đáp án: 21/22 đúng ngay. Câu sai = P1 câu 6: chữ **B gạch chân**, lời giải ghi "Chọn C" (tác giả gõ nhầm) — lượt 1 và lượt 2 đều chép "C"
+  dù đã dặn tách 2 nguồn. Lượt 3b bắt được ("gạch chân B") ⇒ máy nêu cờ lệch nguồn; nhưng 3b **bắt sót** (thấy 7/12 câu, chạy khác lần
+  thì khác) ⇒ không thay được mắt Claude; script in danh sách câu máy CHƯA soi được để Claude soi nốt.
+- Hình: bản đầu (lấy khung từ lượt 1) sai nặng — báo 3 hình ở trang chỉ có 1, khung ăn 2 dòng chữ / cụt đáy. Sau khi chuyển sang 3a +
+  gắn câu theo vị trí: 5/5 hình của đề đúng câu, khung sát. 6 ô "phiếu trả lời" in cuối đề suýt bị gắn vào câu cuối ⇒ luật: trang sau câu
+  cuối mà hình không đứng dưới nhãn câu nào thì KHÔNG tự gắn.
+- `ghi.mjs` chạy thử (ROLLBACK) nhận `de.json` này bình thường: 22 câu, 10 điểm.
+
+**Chưa giải quyết (biết rõ):**
+1. **Trùng câu khác nguồn:** chạy thử ghi bản PDF của đề đã nhập từ Word ⇒ chỉ 1/22 câu được nhận là "trùng câu cũ" (LaTeX hai nguồn viết
+   khác) ⇒ nhập cùng một đề từ hai nguồn sẽ đẻ 21 bản sao. Việc cần làm: chuẩn hoá LaTeX trước khi so trùng trong `_kho_insert.mjs`.
+2. Chưa đo trên **PDF scan** (không lớp chữ) và trên đề của Sở chỉ có bảng đáp án cuối đề — hai loại đề lát này sinh ra để phục vụ.
+3. Đề có câu Đúng/Sai mà file KHÔNG có đáp án: `ghi.mjs` hiện chặn ("mệnh đề thiếu đáp án") ⇒ đề không vào được để người điền sau.
+4. Hình trong phần lời giải không cắt. Đề + lời giải quá dài làm lượt 1 bị cắt (script dừng, báo tách file).

@@ -10,7 +10,7 @@ argument-hint: <10|11|12>
 > v1 của lệnh này ghi vào `toan_de_thi` (đường B, ĐÃ NGỪNG — đề nhập kiểu đó không hiện trên ERP). `scripts/nhap_de_thi.mjs` là của v1, **không dùng nữa**.
 
 Kết quả của lệnh: câu nằm trong kho (`dai_cau_hoi` / `hgt_cau_hoi`, `da_duyet=false`, `nguon='de_thi'`) **và** đề nằm ở
-`tai_lieu(loai='de_thi')` + `tai_lieu_phan` + `tai_lieu_cau` ⇒ hiện ngay ở Kho tài liệu › Đề thi › ✎ Sửa › ✅ Duyệt đề.
+`tai_lieu(loai='de_thi')` + `tai_lieu_phan` + `tai_lieu_cau` ⇒ hiện ngay ở Nhập kho › 📝 Đề thi › tab Chờ duyệt (mở đề = sửa + duyệt một màn).
 
 ## Nguyên tắc bất di
 
@@ -31,7 +31,7 @@ Thư mục thả đề: `E:\BK ACADEMY\Tài liệu Claude nhập kho\DE_THI\L$AR
 ### Bước 1 — Chép file về thư mục làm việc
 
 `goc.docx` (nếu có bản Word) và `goc.pdf` (nếu có). **Có Word ⇒ Word là nguồn chữ** (bộ đọc thẳng: công thức MathType chính xác,
-đọc được gạch chân); PDF là bản đối chiếu + được đính kèm làm "đề gốc". Chỉ có PDF ⇒ chưa có script (lát D, spec §10.4) — đọc ảnh trang bằng mắt, tự dựng `de.json` theo đúng khuôn bên dưới.
+đọc được gạch chân); PDF là bản đối chiếu + được đính kèm làm "đề gốc". **Chỉ có PDF ⇒ đi Bước 2-PDF** (Gemini gõ, Claude kiểm).
 
 ### Bước 2 — Bóc (máy, 0 AI)
 
@@ -42,6 +42,32 @@ node scripts/kho/de-thi/boc-word.mjs "<work>/goc.docx" --ra "<work>" --khoi $ARG
 Ra `<work>/de.json` + `<work>/img/` và in tóm tắt: số câu / phần, bao nhiêu câu có đáp án, **danh sách cảnh báo**.
 Máy đã: tách phần + câu · tách 4 phương án / 4 mệnh đề · lấy đáp án · ghép phần ĐỀ ↔ phần LỜI GIẢI và so nội dung làm nhân chứng.
 Số câu không đúng khuôn (12 + 4 + 6 hoặc theo tiêu đề phần) ⇒ dừng, tìm nguyên nhân trước khi đi tiếp.
+
+### Bước 2-PDF — Đề CHỈ CÓ PDF (spec §10.8): Gemini là máy gõ, Claude là người kiểm
+
+```bash
+node scripts/kho/de-thi/boc-pdf.mjs "<file.pdf>" --ra "<work>" --khoi $ARGUMENTS
+```
+
+~3–5 phút / đề 15 trang, khoảng 4–5 nghìn đồng tiền Gemini (key `VITE_GEMINI_KEY` trong `.env.local`). Máy làm: ảnh từng trang (`trang/`, và
+`trang-dd/` 250 dpi) · lớp chữ PDF (`lop-chu.txt`) · **lượt 1 BÓC** (chép câu) · **lượt 2 MỤC LỤC** (đếm câu + đáp án, độc lập) ·
+**lượt 3a** hình + vị trí nhãn câu trên ảnh từng trang (hình thuộc câu nào do máy TÍNH theo vị trí) · **lượt 3b** chữ cái bị gạch chân /
+khoanh trên ảnh 250 dpi · so chéo các lượt + so chữ với lớp chữ PDF · cắt hình thẳng từ PDF. Ra `de.json` cùng khuôn bản Word, cảnh báo ghi
+vào từng câu, tóm tắt ở `boc-pdf.bao-cao.json`.
+
+**Sau đó Claude PHẢI kiểm bằng mắt — đây là lý do bỏ đường "Gemini trong ERP" (đọc sai là sai luôn):**
+
+1. Mở **từng** `trang/p-NN.png` (Read tool), so **từng câu** với `de.json`: chữ, công thức (dấu âm, mũ, chỉ số, phân số, hệ phương trình),
+   đủ 4 phương án / đủ ý a–d, không sót không thừa câu. PDF scan (không lớp chữ) thì đây là nhân chứng DUY NHẤT.
+2. **Đáp án** — mỗi câu trắc nghiệm tự nhìn chữ cái bị GẠCH CHÂN / khoanh (ảnh `trang-dd/`), kể cả câu máy không báo gì: lượt 3b bắt sót
+   (đo 01/10: thấy 7/12), và cả hai lượt đọc file đều chép "Chọn X" của lời giải. Gạch chân ≠ "Chọn X" ⇒ không tự chọn im lặng: soi được thì
+   ghi lý do, không thì để cảnh báo cho người duyệt. File không thể hiện đáp án ⇒ để trống (không tự giải).
+3. Mở từng ảnh trong `img/`: đúng hình của câu, không cụt, không dính chữ. Sai ⇒ sửa `box` (hoặc `nhan_cau`) trong `gemini-trang.json` rồi
+   chạy lại `boc-pdf.mjs … --dung-lai` (cắt lại, **không** gọi lại Gemini). Hình trong phần lời giải không cắt.
+4. Xử lý hết dòng `⚠` máy in ra. Mọi sửa ghi vào `quyet.mjs` như bước 3 (chạy lại được: `boc-pdf --dung-lai` → `quyet`).
+
+Giới hạn đã biết: PDF > 18 MB hoặc câu trả lời bị cắt (đề + lời giải quá dài) ⇒ tách file. Câu đã có trong kho từ nguồn khác (vd bản Word)
+thường KHÔNG được nhận là trùng vì LaTeX hai nguồn viết khác nhau (`(S)` ↔ `\left( S \right)`) ⇒ đừng nhập cùng một đề từ cả hai nguồn.
 
 ### Bước 3 — Claude xử lý phần cần phán đoán (viết thành `<work>/quyet.mjs`, mỗi sửa 1 dòng lý do)
 
@@ -77,7 +103,7 @@ node scripts/kho/de-thi/ghi.mjs "<work>" --ghi
 
 ### Bước 6 — Kiểm trên ERP rồi báo cáo
 
-Mở Kho tài liệu › Đề thi › tìm tên đề › ✎ Sửa › ✅ Duyệt đề: đủ câu, công thức render, hình hiện. Báo CEO: tên đề · số câu theo kho ·
+Mở Nhập kho › 📝 Đề thi › tab Chờ duyệt › tìm tên đề › mở: đủ câu, công thức render, hình hiện (KHÔNG tự bấm ✅ Duyệt đề — việc của người duyệt). Báo CEO: tên đề · số câu theo kho ·
 số câu / mệnh đề còn dạng chờ · các cảnh báo cần người duyệt xem · `tai_lieu.id`.
 
 ## Khuôn `de.json` (để tự dựng khi nguồn không phải Word)
@@ -92,4 +118,5 @@ số câu / mệnh đề còn dạng chờ · các cảnh báo cần người du
 
 ## Chưa có (spec §10.4)
 
-Lát B: màn **Kho đề thi** + hàng đợi Chờ duyệt · Lát C: Giao 3 chế độ, ô Trả lời ngắn 4 ô · Lát D: script cho đề chỉ có PDF.
+Đã có: lát B (Kho đề thi ở Nhập kho › Đề thi) · lát C (gán đề vào buổi thành Giáo trình / BTVN, kiểm tra, ô trả lời ngắn 4 ô) · lát D (`boc-pdf.mjs`).
+Chưa có: đề tự luận / đề không theo khuôn 3 phần · hình trong lời giải của đề PDF · nhận trùng câu giữa nguồn Word và nguồn PDF.
