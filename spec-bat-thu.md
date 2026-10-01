@@ -218,13 +218,22 @@ Trang xem: https://claude.ai/artifact/2zWHd4mF6NAhX2UnVVzaDV
   - chân dài kiểu ngựa + sừng (kỳ lân kiểu unicorn);
   - mai rùa (Kim Quy).
 
-**Bộ 25 động tác cho khuôn 4 chân** (CEO: "làm rất kĩ animation", 20–25 cái):
-- **Có sẵn (10):** đứng thở · đi · chạy · nhảy · vui · được vuốt ve · bị đánh · choáng · ngất · ngủ.
-- **Thêm (15):**
-  - sinh hoạt: ngồi · nằm nghỉ · ăn · gãi ngứa · ngáp + vươn vai · rũ lông · đánh hơi;
-  - tình cảm: chào (giơ chân) · làm nũng (lăn ngửa bụng) · buồn (tai cụp) · sợ (run, nép);
-  - chiến đấu: tấn công (vồ) · gầm · dùng chiêu · ăn mừng.
-- **Động tác vặt chạy ngầm** khi đứng/ngồi/nằm: giật tai, nghiêng đầu, nhìn quanh, chớp mắt — để thú "sống", không đứng như tượng.
+**Bộ 25 động tác cho khuôn 4 chân** (CEO: "làm rất kĩ animation", 20–25 cái; "tham khảo Pal và Pokémon có loại động tác nào").
+
+Lọc theo bộ động tác chuẩn của 2 game: Pokémon (trận đấu · Legends Arceus · cắm trại / vuốt ve) và Palworld (ngoài đồng · căn cứ · vuốt ve · bắt).
+
+| Nhóm | Động tác | Tham khảo |
+|---|---|---|
+| Di chuyển (4) | ① đứng thở · ② đi · ③ chạy · ④ nhảy | cả hai |
+| Chiến đấu (8) | ⑤ **thủ thế** (tư thế sẵn sàng) · ⑥ tấn công cận chiến (vồ/cắn) · ⑦ dùng chiêu (phun/tung theo hệ) · ⑧ **gầm** (doạ, lúc xuất hiện) · ⑨ né · ⑩ bị đánh · ⑪ choáng · ⑫ ngất | Pokémon trận đấu · Palworld |
+| Gặp và bắt (4) | ⑬ **giật mình phát hiện người** (dấu "!") · ⑭ **bỏ chạy** · ⑮ **ra khỏi bóng** (xuất hiện + nhún chào) · ⑯ **phá bóng thoát ra** (bật ra, lắc đầu, giận) | Legends Arceus · Palworld |
+| Sinh hoạt (5) | ⑰ ngồi · ⑱ nằm nghỉ · ⑲ ngủ · ⑳ ăn · ㉑ ngáp + vươn vai | Pokémon cắm trại · căn cứ Palworld |
+| Tình cảm (4) | ㉒ vui · ㉓ được vuốt ve · ㉔ làm nũng (lăn ngửa bụng) · ㉕ ăn mừng (thắng, nở xong) | Pokémon Amie/Refresh · vuốt ve Palworld |
+
+- 10 động tác của bản mẫu đều nằm trong bảng (①②③④⑩⑪⑫⑲㉒㉓). Thêm 15.
+- **Động tác vặt chạy ngầm** khi đứng/ngồi/nằm: giật tai, nghiêng đầu tò mò, nhìn quanh, chớp mắt, đánh hơi, gãi ngứa, rũ lông. Mục đích để thú "sống", không đứng như tượng.
+- **Bị hút vào bóng** là hiệu ứng của game (thu nhỏ + xoáy), không phải động tác xương.
+- Nhóm **làm việc** của Palworld (tưới, trồng, khuân, đào…) để khi có "thú giúp việc" (sau V1).
 - **Làm kĩ theo 12 nguyên tắc hoạt hình của Disney** (Thomas & Johnston, 1981):
   - lấy đà trước khi nhảy/vồ;
   - nén – giãn khi bật và đáp;
