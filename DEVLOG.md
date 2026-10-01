@@ -32680,3 +32680,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
     - thêm "học trước, chơi sau" (nộp BTVN thì mở game);
     - thước đo chính đổi sang chất lượng phần bắt buộc + tỉ lệ làm thêm tự nguyện.
   - Đã ghi thêm 1 mục cuối `design/giu-chan-hoc-sinh-kieu-duolingo.md`.
+- **CEO đính chính:** "báo PH: có app rồi mà."
+  - T soi `bkdemy-ph-app`: đã có Web Push (đến lớp · kết quả buổi · tóm tắt việc cần làm mỗi ngày · thông báo trung tâm).
+  - Bỏ "tin báo phụ huynh" khỏi việc cần làm. Còn lại: đo % PH bật thông báo (iPhone cần cài PWA) + thêm gợi ý "hỏi con về dạng X".
+  - Thứ tự mới: học trước chơi sau → GV khen → nhiệm vụ lớp → pet Finch → giải đấu tuần → chuỗi tự nguyện.
+  - **Bài học:** đề xuất tính năng cho app BK thì soi repo liên quan (`bkdemy-ph-app`, app HS) TRƯỚC khi ghi "chưa có" — báo cáo research dựa vào danh sách "probably not present" t đưa, sai một mục.

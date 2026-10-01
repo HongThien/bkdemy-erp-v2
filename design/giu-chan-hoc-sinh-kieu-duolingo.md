@@ -193,3 +193,25 @@ CEO chỉ ra rằng BK tác động liên tục được việc HS vào app: gia
   - 10–40% HS trên phần mềm luyện tập có lúc "lách hệ thống" (Baker và cộng sự).
   - Động lực bị kiểm soát cho chất lượng thấp hơn động lực tự chọn (SDT, Howard 2021).
   - Tầng tự nguyện (game, bạn bè, xu) là chỗ biến "phải vào app" thành "muốn ở lại app".
+
+### Đính chính (01/10): tin báo phụ huynh ĐÃ CÓ
+
+App PH (`bkdemy-ph-app`) đã có Web Push:
+- "con đã đến lớp" (`api/cron/checkin`);
+- "có kết quả buổi mới" (`api/cron/push`, mig 0020);
+- tóm tắt "Việc cần làm" của các con mỗi ngày, tối đa 1 tin/ngày (`api/cron/digest`);
+- thông báo của trung tâm (mig 0032).
+
+⇒ Bỏ việc #1 khỏi danh sách cần làm. Chỉ còn hai việc:
+1. Đo **% phụ huynh có ≥1 đăng ký nhận thông báo**. Trên iPhone, Web Push chỉ chạy khi đã "Thêm vào màn hình chính"; thí nghiệm Bergman thì gửi SMS tới mọi phụ huynh.
+2. Thêm 1 dòng gợi ý "hỏi con về dạng X" vào tin "có kết quả buổi mới" (Hill & Tyson 2009).
+
+**Thứ tự làm sau 2 lần CEO chỉnh** (đề xuất):
+1. **Học trước, chơi sau**: nộp BTVN thì mở game hoặc có năng lượng pet.
+2. GV khen một chạm.
+3. Nhiệm vụ chung cả lớp.
+4. Pet kiểu Finch trong game gộp.
+5. Giải đấu tuần nhóm nhỏ theo môn.
+6. Chuỗi ngày, chỉ đếm phần làm thêm tự nguyện.
+
+Ngoài ra: thẻ buổi học phía HS — cần kiểm app HS đã hiện kết quả ET sau buổi hay chưa.
