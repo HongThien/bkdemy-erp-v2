@@ -28,6 +28,15 @@
   đã lọc nhiễu**, xếp hạng GV–TA, trình chiếu mỗi bảng một màn). **Treo:** báo cáo Vận hành của Lộc chưa có mẫu · thông báo thứ Hai chờ khai
   `TROLY_PUSH_APP` + deploy · khung hỏi chưa nối 13 công cụ DB. Chi tiết: mục "⭐⭐ TRỢ LÝ" bên dưới.
 
+- **🚨 PHÁP LÝ GAME (01/10) — đọc `design/danh-gia-game-bat-thu-cho-bk.md` trước khi làm tiếp CẢ Nông Trại lẫn Bắt Thú.**
+  - **Nghị định 147/2024 Điều 57:** vật phẩm và điểm trong game KHÔNG được quy đổi ra tiền, thẻ hay hiện vật có giá trị; người chơi không được mua bán với nhau.
+    T đã tự kiểm qua báo Chính phủ và Nhân Dân.
+    ⇒ Thiết kế "bán nông sản → EXP → xu ví đổi quà" của Nông Trại có thể trái luật.
+  - **Giờ chơi:** dưới 18 tuổi tối đa 60 phút/game/ngày, tổng 180 phút; cảnh báo mỗi 30 phút. Dự thảo 23/7/2026 đề xuất HS dưới 16 tổng 60 phút cho mọi game của một doanh nghiệp.
+  - **Giấy phép:** game nhiều người tương tác qua máy chủ = G1, cần giấy phép Bộ VHTTDL.
+  - Game miễn phí trong app trung tâm có thuộc phạm vi không: **chưa rõ, cần luật sư**.
+  - **CTO đề xuất (chờ CEO):** dừng mọi đường "game trả xu ví"; tách xu ví (chỉ từ việc học) khỏi tiền trong game.
+
 - **⭐ GAME NÔNG TRẠI BK — 29/09 CEO đổi hướng sang NHỊP NGÀY. Đọc `spec-nong-trai-nhip-ngay.md` trước khi làm.**
   - **Hướng mới:** kiểu Nông trại vui vẻ / Khu vườn trên mây. HS vào 1 lần/ngày để thu hoạch, mua hạt, gieo, và thăm vườn bạn cùng lớp để hái trộm/giúp.
   - **Rào đã chốt:** giờ vàng chỉ chủ hái · mỗi ô chỉ trộm 1–2 quả · chỉ thăm trong lớp · có việc giúp (tưới, bắt sâu, nhổ cỏ) · cây không héo chết · **có trần trộm VÀ trần giúp mỗi ngày**.
