@@ -18,6 +18,56 @@
   - **ĐÃ XONG 01/10 — lát A "lượt học thật"** (mig `202610011501`, ĐÃ ÁP): lượt luyện thêm tính khi ≥5 câu · đúng ≥50% · trung bình ≥6 giây/câu;
     không ra lại câu em đã gặp ở BẤT KỲ bài nào khi kho còn câu mới. Nguồn duy nhất `public._luot_hoc_that()` + `fn_luot_hoc_that_ket_qua()` cho app.
     Đo 30 ngày: 57% lượt được tính, 22% bị loại vì làm quá nhanh.
+  - **⭐⭐ [SỐ LIỆU] CHỐT NGÀY 01/10 — chuỗi · nhiệm vụ · Rank · góp ý · bản đồ (dữ liệu). TẤT CẢ DB ĐÃ ÁP + PUSH `main`; app chưa deploy.** Chi tiết + hợp đồng: `spec-v1-app-hs.md` §13.4 + §14.
+    - **Luật chung "lượt học thật" (mig `202610011501`, thay bằng `_luot_tinh` ở `…1525`)**: lượt LUYỆN THÊM (`bai_test.loai='tu_luyen'`: Tổng hợp · Chủ đề · Thử thách) tính khi ≥5 câu · đúng ≥50% ·
+      trung bình ≥6 giây/câu (ngưỡng ở `_luot_hoc_that_nguong()`, 1 chỗ). ET/BTVN KHÔNG tính. **Không ra lại câu em đã gặp ở bất kỳ bài nào khi kho dạng đó còn câu mới** (`_hs_cau_lan_gap`);
+      hết thì ra câu gặp lâu nhất. Nguồn DUY NHẤT: `_luot_tinh(hs[], từ, đến)` (+ `_luot_hoc_that(hs,…)` thêm `dung_moi`) — chuỗi/nhiệm vụ/Điểm Rank/cổng game đều đọc đây.
+    - **Chuỗi làm bài (`…1512` + `…1515`)**: CHUNG mọi môn, suy động (không lưu ô chuỗi). Lỡ ngày ⇒ 48 giờ sửa bằng lượt THỪA; hết hạn ⇒ tự dùng thẻ đóng băng (2/tháng, không dồn); hết thẻ ⇒ đứt.
+      Ngày nghỉ (bảng `chuoi_ngay_nghi`, khối rỗng = mọi khối) không đứt không cộng. Mốc 7 (A: Lớp+Bạn bè) · 30/100/200/365 (S: Thế giới) ghi SỰ KIỆN `chuoi_moc_dat` bằng trigger sau khi nộp
+      lượt tu_luyen ⇒ tin `kieu='chuoi'` trong `_the_gioi_tin`. `fn_chuoi_cua_toi()` · TS `src/lib/chuoi.ts`. **Màn quản trị "Ngày nghỉ của chuỗi"** `screens/gami/NgayNghiChuoiScreen.tsx` (lá `chuoi_nghi`,
+      quyền `co_quyen_ghi('chuoi_nghi')` — `…1641`); bảng ngày nghỉ HIỆN RỖNG (Tết/tuần thi chưa nhập).
+    - **Nhiệm vụ (`…1525`)**: `fn_nhiem_vu_hoan_thanh` chỉ tính lượt học thật — N2 "Luyện 20 câu" chỉ câu đúng MỚI (lần đúng đầu tiên của em) · N3 trong lượt tính · N1/T3/M2 (Thử thách) chỉ lượt được tính.
+      (Thử Toán tháng 10: N2 42→36, N3 33→27.) Nhiệm vụ mở 01/10 nên CHƯA có dữ liệu thật để đối soát.
+    - **Rank (`…1545` `…1546` `…1547`)**: Điểm Rank Thử thách chỉ khi lượt học thật (trigger; nộp lại 73 lượt cũ: giữ 72, mất 1). **Nhật ký lên bậc** `rank_len_bac` (ngày chạm bậc suy từ chuỗi điểm cộng dồn của
+      `fn_rank_su_kien`; khớp 325/325 em với `fn_rank_mua`; trigger sau Thử thách + `fn_hs_len_bac_moi(mon)` quét cả môn nếu >30 phút; bậc đạt >2 ngày trước coi như đã xem) ⇒ tin `kieu='len_bac'`
+      (bậc 3–4 B · 5–6 A · ≥7 S). **Server chọn dạng** (`fn_tu_luyen_sinh_tu_dong` / `fn_thu_thach_sinh_tu_dong`, 60% nửa yếu · 40% mọi dạng đã đo): vá lỗ HS tự chọn dạng DỄ cho Thử thách; JS `chonDangTuLuyen` đã xoá.
+    - **Bản đồ phiêu lưu — DỮ LIỆU (`…1520`)**: `fn_ban_do_phieu_luu(mon)` lục địa→khu vực→màn→quái, trạng thái từ `fn_mastery_cells`, `da_day` (phủ sương nhưng vẫn vào được), mỗi khu 1 màn boss, registry nhánh
+      `_kho_ds_nhanh`/`_kho_ban_do_dong` (không `if môn`). Gán quái/biome cố định theo băm mã cụm / thứ tự chủ đề. TS `src/lib/phieuluu.ts`.
+    - **Góp ý / báo lỗi HS (`…1539`)**: dùng lại `bao_loi` (`loai` bug|yeu_cau, `hoc_sinh_id` ≠ null = của HS). HS chỉ qua RPC: `fn_hs_gui_gop_y` (≥10/≤1500 chữ, 5/ngày, ảnh chỉ kho-anh/report) · `fn_hs_gop_y_cua_toi`
+      (trạng thái dễ hiểu da_nhan/dang_xem/da_xu_ly/chua_lam_duoc + `tra_loi_moi`) · `fn_hs_gop_y_da_doc/chua_doc` · nhân sự `fn_bao_loi_tra_loi` (vào Hòm thư — Thùy đã grant `thong_bao_hs` cho `claude_build`). TS `src/lib/gopy_hs.ts`.
+      Màn nhân sự `BaoLoiScreen`: nhãn HS, lọc nguồn, ô trả lời.
+    - **Ví xu (`…1601`)**: danh sách Hoạt động thêm dòng `exp_nhiem_vu` (1/môn/tháng, kèm cấp + rương) và `exp_huy_hieu` — vốn đã đổi ra xu cuối tháng nhưng không có dòng. ⚠ dòng HUY HIỆU lấn sang luồng huy hiệu
+      (Thùy: "huy hiệu thiết kế riêng 1 luồng khác") — chờ Thùy quyết giữ/gỡ.
+    - **⏳ VIỆC SAU KHI DEPLOY app HS (Thùy):** báo Claude thêm migration `revoke execute on function public.thu_thach_sinh(text,jsonb) / public.tu_luyen_sinh(text,jsonb,text) from authenticated` — hàm cũ vẫn mở vì bản app
+      chạy nền còn gọi (HS tự chọn dạng được tới lúc đó). Deploy ERP (nhân sự) để thấy màn "Ngày nghỉ của chuỗi" + ô trả lời góp ý.
+    - **⏳ CÒN LẠI của luồng Số liệu:** nút 👑 Thầy cô khen ở app GV (hàm DB có sẵn) · đối soát tay chuỗi/nhiệm vụ/Rank ở ~3 em khi có dữ liệu thật · chốt tháng 9 từ 10/10 (luồng huy hiệu) · giải đấu tuần (spec §10, chưa làm).
+    - **⏳ Luồng Giao diện cần nối (hộp thư spec §13.6):** ngọn lửa chuỗi trên Home + hoạt cảnh mốc (`chuoiCuaToi`) · báo "lượt chưa tính" ở màn kết quả (`ketQuaLuotHocThat`+`loiLuotKhongTinh`) · hoạt cảnh lên bậc (`lenBacMoi`/`daXemLenBac` thay
+      localStorage) · chữ tin Thế giới cho `kieu='chuoi'` và `'len_bac'` ở `moTaTin()` · form Báo lỗi/Góp ý + màn "Góp ý của em" + chấm đỏ (`gopy_hs.ts`).
+    - **Cách thử mỗi migration (mẫu, chạy lại được):** `scripts/_thu_mig_*.mjs` (luot_hoc_that · chuoi · chuoi_moc · ban_do · nv_luot · gop_y · rank_tt · rank_len_bac · chon_dang · vi_xu · chuoi_nghi) — mỗi script chạy cả migration +
+      gọi hàm trong 1 transaction rồi ROLLBACK, đóng vai HS/nhân sự qua `set_config('request.jwt.claims', …)`, dùng savepoint cho phép thử "phải lỗi".
+    - **Bài học luồng Số liệu (còn hiệu lực):** ① sửa hàm đang chạy: ĐỌC `pg_get_functiondef` rồi thay đúng 1 chỗ + assert (`do $` hoặc script) — đừng chép đè thân hàm bản cũ · ② trong JS `String.replace(a, b)` đổi `$` của `b`
+      thành `# HANDOFF — Kho (Bản đồ kiến thức) · BKdemy ERP v2
+
+> Bản chuẩn để tiếp tục ở máy khác / session mới (không còn context chat). **Đọc nguyên file trước khi code.**
+> 2 mục: **① Trạng thái hiện tại** (sự thật current) · **② Bài học còn hiệu lực** (đừng đạp lại).
+> Nhật ký THÔ từng ngày ở **`DEVLOG.md`** — KHÔNG cần đọc khi làm, chỉ để truy lại / tổng hợp lại nếu bản này sai.
+> *Quy tắc (CLAUDE.md §0): trong ngày chỉ APPEND `DEVLOG.md`; **CUỐI NGÀY** mới distill durable lên ①②, prune stale. Không append-chồng "STALE".*
+
+---
+
+## ① TRẠNG THÁI HIỆN TẠI
+
+- **⭐⭐ RELEASE APP HS V1.0 — DEADLINE 06/10/2026 (Thùy chốt 01/10). ĐỌC `spec-v1-app-hs.md` TRƯỚC KHI LÀM BẤT KỲ VIỆC GÌ TRÊN APP HS.**
+  - 8 hạng mục: tutorial · chuỗi + nhiệm vụ · Thế giới BK · Rank hoàn chỉnh · UI 100% "Giải cứu thế giới — đánh quái vật" · ≥2 style · game tổ hợp ·
+    góp ý/báo lỗi HS. **Màn NGANG trước** (cấp 1–2 dùng iPad/PC); khổ dọc chỉ cần không vỡ. Giải đấu nhóm: đã thiết kế (§10), CHƯA làm.
+  - **Chia 3 luồng song song, mỗi luồng 1 context** (spec §13 — có câu lệnh mở đầu dán sẵn §13.5, vùng file riêng, hợp đồng dữ liệu §13.4,
+    hộp thư giữa luồng §13.6): **SỐ LIỆU** (chuỗi · nhiệm vụ · rank · huy hiệu · dữ liệu Thế giới · góp ý · hàm bản đồ) · **GAME** (repo BKGame,
+    Thùy điều phối) · **GIAO DIỆN** (bản đồ phiêu lưu · màn đấu · vẽ lại mọi màn · style 2 · tutorial). Commit theo đường dẫn, migration `--only`.
+  - **ĐÃ XONG 01/10 — lát A "lượt học thật"** (mig `202610011501`, ĐÃ ÁP): lượt luyện thêm tính khi ≥5 câu · đúng ≥50% · trung bình ≥6 giây/câu;
+    không ra lại câu em đã gặp ở BẤT KỲ bài nào khi kho còn câu mới. Nguồn duy nhất `public._luot_hoc_that()` + `fn_luot_hoc_that_ket_qua()` cho app.
+ ⇒ làm hỏng dollar-quote; dùng `split(a).join(b)` · ③ `auth.uid()` làm default cột bị chặn với role migrate ⇒ dùng `public.jwt_uid()` · ④ kiểm RLS bằng role chủ bảng không chặn gì — kiểm `la_thanh_vien()`/pg_policies,
+      không kết luận từ "insert được" · ⑤ suy chuỗi/bậc cả trung tâm mỗi lần mở feed quá chậm ⇒ ghi SỰ KIỆN bằng trigger (`chuoi_moc_dat`, `rank_len_bac`), feed đọc bảng sự kiện · ⑥ bảng tạo tay bởi `postgres` (vd `thong_bao_hs`) role migrate không ghi được ⇒
+      bọc `exception when insufficient_privilege` · ⑦ truy vấn quét cả trung tâm có thể quá giờ ⇒ thử theo từng em + `set local statement_timeout` · ⑧ `.env` máy công ty: `DATABASE_URL` = `claude_build` (GHI được) dù chú thích ghi claude_ro.
   - **⭐⭐ BẢN ĐỒ PHIÊU LƯU 2.5D/3D (three.js, hình viết bằng CODE) — ĐÃ BUILD + PUSH `main` 01/10 · CHƯA DEPLOY · CỜ MẶC ĐỊNH TẮT** (luồng Giao diện)
     - **Logic đã chốt (Thùy, qua mockup 5 vòng) — `spec-v1-app-hs.md` §4.5 là nguồn:** Thế giới (chủ đề = lục địa, to nhỏ theo số dạng) → Lục địa (vùng = chuyên đề giáp
       biên giới, to nhỏ theo số dạng) → Chặng đường (chặng = dạng, to nhỏ theo số quái) → Màn đấu. Cụm = elite theo `thu_tu`, cụm khó nhất = **boss cuối** (vương miện);

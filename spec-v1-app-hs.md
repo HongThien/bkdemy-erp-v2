@@ -271,7 +271,7 @@ Thói quen tăng mà sổ học giảm ⇒ không mở rộng. Đo ≥ 8 tuần 
 
 ## 12. Còn chờ Thùy
 
-- Chuỗi chung mọi môn (CTO đề xuất) hay mỗi môn 1 chuỗi?
+- ~~Chuỗi chung mọi môn hay mỗi môn?~~ ✔ Thùy chốt 01/10: CHUNG mọi môn.
 - Cấp 1 có nằm trong V1 không (vào UI phiêu lưu chung), hay giữ màn riêng tới V1.1?
 
 ## (cũ) Câu hỏi đã gửi 01/10
@@ -430,3 +430,31 @@ fn_ban_do_phieu_luu (trang hs.html?xem=phieu_luu) + ngọn lửa chuỗi trên H
 - 01/10 · Game → Giao diện · ô vào game trên Home (id ô, link, icon) · ⏳ chờ luồng Game gửi chi tiết
 - 01/10 · Giao diện → Số liệu · **ĐỔI hợp đồng `fn_ban_do_phieu_luu` theo §4.5** (Thùy chốt qua mockup): (1) mỗi MÀN (dạng) trả `quai[]` = cụm thật theo `thu_tu` + CON TẠM cho đủ ≥3, **tối đa 7**; quái CUỐI luôn `la_boss = true` (boss cuối của chặng). Bỏ `la_man_boss` kiểu "mỗi khu vực 1 boss". Loài quái: boss gán theo `ma_dang`, elite theo `ma_cum`/vị trí, elite khác loài boss. (2) thêm `so_cum` (cụm THẬT) và `so_cau_luot = least(10, greatest(5, 2 × so_cum))` cho mỗi màn. (3) `sinhTuLuyen` chọn câu theo `so_cau_luot` thay vì 10 cố định (khớp `_luot_hoc_that`: ≥5 câu, ≥50%, ≥6 giây). (4) vị trí/kích thước lục địa + vùng do CLIENT tính từ `thu_tu` và số dạng — KHÔNG cần DB · ⏳
 - 01/10 · Giao diện → Số liệu · ⏸ CHỜ Thùy chốt rồi mới làm: lượt không tính thì câu bị bỏ khỏi mastery của dạng (để quái không mất máu khi bấm bừa) — xem §4.5 · ⏸
+
+## 14. TRẠNG THÁI LUỒNG SỐ LIỆU — chốt cuối ngày 01/10 (Thùy về nhà làm tiếp)
+
+> Bảng §1 là hiện trạng lúc soạn (sáng 01/10) — cột "Đã có" của các hạng mục thuộc luồng Số liệu đã cũ; trạng thái hiện hành ở bảng dưới. Chi tiết kỹ thuật từng migration: HANDOFF mục
+> "[SỐ LIỆU] CHỐT NGÀY 01/10" + DEVLOG `[Số liệu]`. Mọi migration ĐÃ ÁP + push `main`; app HS/ERP chưa deploy.
+
+| Hạng mục V1 | Phần DB / lib | Phần màn | Còn lại |
+|---|---|---|---|
+| Lượt học thật + không lặp câu | ✔ `…1501` `…1525` (`_luot_tinh`) | báo "lượt chưa tính" ở màn kết quả (Giao diện) | — |
+| 2a Chuỗi làm bài | ✔ `…1512` `…1515` · `src/lib/chuoi.ts` · tin Thế giới `chuoi` | ✔ màn quản trị Ngày nghỉ (lá `chuoi_nghi`, `…1641`) · ngọn lửa trên Home (Giao diện) | **nhập ngày nghỉ Tết/tuần thi** (bảng đang rỗng) |
+| 2b Nhiệm vụ | ✔ chỉ tính lượt học thật (`…1525`) | màn có từ trước | đối soát khi có dữ liệu thật (mở 01/10) |
+| 3 Thế giới BK (dữ liệu) | ✔ tin `chuoi` + `len_bac` | chữ tin ở `moTaTin()` (Giao diện) | 👑 Thầy cô khen ở app GV · cấp 1 chưa có |
+| 4 Rank | ✔ Điểm Rank chỉ lượt học thật (`…1545`) · nhật ký lên bậc (`…1546`) · server chọn dạng (`…1547`) | hoạt cảnh lên bậc (Giao diện) | thu hồi quyền hàm cũ sau deploy · chốt tháng 9 từ 10/10 |
+| 8 Góp ý / báo lỗi HS | ✔ `…1539` · `src/lib/gopy_hs.ts` · Hòm thư thông qua grant `thong_bao_hs` | ✔ `BaoLoiScreen` (nhân sự) · form + "Góp ý của em" (Giao diện) | — |
+| Bản đồ phiêu lưu (dữ liệu) | ✔ `…1520` · `src/lib/phieuluu.ts` | luồng Giao diện đã dựng 3D (xem HANDOFF) | — |
+| Ví xu | ✔ dòng nhiệm vụ + huy hiệu (`…1601`) | nhãn ở `ViXuHS.tsx` | ⚠ dòng huy hiệu lấn luồng huy hiệu — Thùy quyết giữ/gỡ |
+
+**Quyết định Thùy 01/10 (luồng Số liệu):** chuỗi CHUNG mọi môn · chuỗi chỉ tính Tự luyện + Thử thách, ET/BTVN không · phải làm bài (đạt "lượt học thật") mới tính, mở app không tính ·
+không ra lại câu cũ khi kho chưa hết · lượt trung bình <6 giây/câu không tính · áp luật lượt học thật cho cả Điểm Rank Thử thách · vùng lớp chưa dạy = phủ sương vẫn vào được ·
+game mở dần (Thùy làm context khác) · giải đấu nhóm chỉ ghi spec (§10) · huy hiệu/đồ hoạ là luồng khác.
+
+**Việc cho phiên tiếp theo (thứ tự):**
+1. Deploy app HS + ERP ⇒ báo Claude thêm migration thu hồi quyền `thu_thach_sinh(text,jsonb)` + `tu_luyen_sinh(text,jsonb,text)` của `authenticated`.
+2. Nhập ngày nghỉ chuỗi sắp tới (màn mới, cần cấp lá `chuoi_nghi` cho ai ngoài admin).
+3. Nút 👑 Thầy cô khen ở app GV (hàm DB có sẵn).
+4. Đối soát tay chuỗi / nhiệm vụ / Rank ở ~3 em khi có dữ liệu thật.
+5. Giữ/gỡ dòng huy hiệu trong Ví xu; chốt cấp 1 có vào V1 không (§12).
+6. Giải đấu tuần (§10) — sau V1.

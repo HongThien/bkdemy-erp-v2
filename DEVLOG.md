@@ -34204,3 +34204,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Đã distill lên `HANDOFF.md` ① (khối "BẢN ĐỒ PHIÊU LƯU 2.5D/3D": logic chốt, hướng đồ hoạ, code ở đâu, cờ `phieuluu`, cách thử trên iPad, trạng thái kiểm, việc tiếp theo, nợ) và ② (6 bài học: camera dựng khi ô cỡ 0 ⇒ cảnh trắng · dấu Voronoi · sương mù theo khoảng cách camera · mergeGeometries index · tính năng chưa duyệt đi sau cờ khi deploy thủ công · thử iPad http/đúng thư mục/bản build · quái do Thùy thiết kế).
 - **Điểm dừng:** iPad CHƯA xác nhận bản đồ hiện (Thùy thử: Safari báo lỗi bảo mật = đi https; lần sau "không có bản đồ"). Đã thêm bảng Chẩn đoán trên trang xem thử + bản build giống production (`npm run build:hs` → `npm run preview:hs:lan`, cổng 5180). Việc đầu tiên khi tiếp tục: lấy ảnh chụp bảng Chẩn đoán từ iPad.
 - Mọi thứ đã push `main` (commit cuối phiên là cập nhật HANDOFF này). Chưa deploy. Cờ `phieuluu` tắt nên học sinh không thấy gì.
+
+## 2026-10-01 — [Số liệu] CHỐT NGÀY (Thùy về nhà làm tiếp)
+
+- Tổng kết luồng Số liệu vào HANDOFF (khối "[SỐ LIỆU] CHỐT NGÀY 01/10" dưới mục RELEASE V1.0) + `spec-v1-app-hs.md` §14 (bảng trạng thái từng hạng mục · quyết định Thùy · việc tiếp theo thứ tự) + §12 chuỗi chung ✔.
+- 11 migration trong ngày đều ĐÃ ÁP: 1501 · 1512 · 1515 · 1520 · 1525 · 1539 · 1545 · 1546 · 1547 · 1601 · 1641. Việc còn: deploy ⇒ thu hồi quyền `thu_thach_sinh`/`tu_luyen_sinh` cũ · nhập ngày nghỉ chuỗi · nút 👑 app GV ·
+  đối soát khi có dữ liệu thật · Thùy quyết dòng huy hiệu trong Ví xu · cấp 1 có vào V1 không.
