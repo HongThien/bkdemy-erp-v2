@@ -34350,3 +34350,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Bài học: việc treo trong spec cũng là 1 cách HIỂU góp ý — trước khi làm phải đặt cạnh ảnh mẫu kiểm lại xem còn đúng không.
 - Còn / chờ Thùy: (1) "gờ/mũ xanh đậm trên đầu" — khung hình cận cho thấy tấm huy hiệu + dải trên đầu cùng màu ĐỒNG với vòng, nên để đồng; Thùy
   muốn xanh đậm thì đổi 1 màu. (2) Mi mắt (nét viền đuôi mắt) trông hơi "điệu". (3) Dải mũ mảnh, nhìn xa ít thấy.
+- (tiếp, 01/10 khuya) CEO gửi 5 ảnh Frostallion tự chụp trong trình xem 3D của game (trước · ngang · sau · 3/4) ⇒ lộ 4 chỗ t làm sai mà ảnh
+  Bing không thấy: bờm/đuôi là DẢI GỢN SÓNG ngọn móc câu (không phải mây bông) · gai lông trắng ngực/vai/lưng · chùm pha lê cổ chân (không phải
+  giáp ống) · mặt nạ trắng-tím trong. Làm: `daiSong` + `gopKhoi` (bong-xoan.ts), tham số loài `toc`/`gaiLong`/`phaLeChan`/`giap`/`mong`,
+  gai cong `gaiCong`, mảnh pha lê `phaLeHuong`; cánh nghỉ xoè gần ngang; mõm ngắn ~20% (CEO). BatThu `2e1588b`, ảnh lưu `.snap/tham-khao/bang_than_ma/paldeck-*`.
+  Ghi vào skill lam-thu: nguồn ảnh tốt nhất = CEO chụp trong trình xem 3D của game; bộ góc nên xin (thêm TỪ TRÊN + cận mặt).
+  Sai nhỏ: bờm dải sóng lần đầu dựng đứng "như rắn", lọn sát vai như con sâu ⇒ hạ hướng ra sau ngang, bỏ 3 lọn sát vai; gai/pha lê lần đầu
+  mảnh như kim ⇒ ×2,4 bán kính. Còn: ~127k tam giác/con, cánh nhìn chính diện thấy cạnh mỏng, cánh ngủ/trúng đòn cứng.
