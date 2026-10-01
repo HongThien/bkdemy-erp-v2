@@ -132,7 +132,7 @@
   đã lọc nhiễu**, xếp hạng GV–TA, trình chiếu mỗi bảng một màn). **Treo:** báo cáo Vận hành của Lộc chưa có mẫu · thông báo thứ Hai chờ khai
   `TROLY_PUSH_APP` + deploy · khung hỏi chưa nối 13 công cụ DB. Chi tiết: mục "⭐⭐ TRỢ LÝ" bên dưới.
 
-- **⭐⭐ GAME BK ("BK World", tên tạm) — trạng thái cuối 02/10 (máy công ty). ĐỌC `spec-bk-world.md` (file TỔNG) → `spec-bat-thu.md` §0–§1 + §3.3–§3.5 TRƯỚC KHI LÀM.**
+- **⭐⭐ GAME BK ("BK World", tên tạm) — trạng thái cuối 02/10 tối (máy công ty). ĐỌC `spec-bk-world.md` (file TỔNG) → `spec-bat-thu.md` §0–§1 + §3.3–§3.5 TRƯỚC KHI LÀM.**
   - **Thiết kế tổng của CEO (01/10, `spec-bk-world.md`):**
     - học ⇒ **điểm học tập** (1 nguồn duy nhất = "lượt học thật", gộp luôn "điểm chăm chỉ" của Nông Trại);
     - điểm học tập mua hạt / vé dungeon;
@@ -165,7 +165,7 @@
       | Cáo Lửa (ý Foxparks) | ✅ |
       | Cừu Mây (ý Lamball) | ✅ |
       | **Băng Thần Mã** (ý Frostallion) | 🔧 có cánh pha lê 3 tầng lông (`2102906`), **nhưng CEO muốn cánh y Frostallion**: khối TRƠN LIỀN điêu khắc, gốc cánh KHÔNG lông, ngoài tách 4–5 phiến dài cong vút lên, cánh rất to. Kèm bờm/đuôi bông xoăn như mây, mặt nạ pha lê băng, túm lông ngực. Ảnh mẫu: `BatThu/.snap/tham-khao/frostallion/` |
-      | **Thiên Kình** (Panthalus 90%) | 🔧 bản 4 (`eddb531`): thân dẹt đúng số đo, đầu nóc phẳng. **Còn: nhìn từ trên đầu phải RỘNG HƠN NGỰC 1,15–1,25×**, eo nhẹ ở cổ. Ảnh mẫu: `BatThu/.snap/tham-khao/` |
+      | **Thiên Kình** (Panthalus 90%) | 🔧 **bản 5 (`b37ecaa`)**, CEO xem từng bước trong phiên, chưa chốt duyệt: thân dẹt bè · **vòng hào quang KÍN** quanh đầu (thân nằm hẳn trong, hở đều, gai xen dài–ngắn + ngọc) · mắt lên mặt (thấy từ chính diện) · **4 vây mặc định XÒE** · thân ống elip nội suy mượt (nhìn trên thon liền, hết gãy sau vai) · chuyển động mềm (lò xo mềm hơn, trộn 0,55 s, lọc τ 0,09 s). **Còn: nhìn từ trên đầu chưa RỘNG HƠN NGỰC 1,15–1,25×** (4b dở ở nhánh wip). Ảnh: `BatThu/.snap/voi-ban5.jpg` · mẫu `.snap/tham-khao/` |
 
     - **25 động tác khuôn 4 chân: CEO duyệt.** Mô-đun cánh `canh.ts` dùng lại (kiểu lông vũ / pha lê / màng dơi; CẦN THÊM kiểu "phiến trơn" như Frostallion). Khuôn bơi có `ChuoiUon` dùng lại cho bò trườn.
   - **Chờ CEO:**
@@ -180,7 +180,7 @@
     - thứ tự đề xuất: học trước chơi sau → GV khen → nhiệm vụ lớp → pet Finch → giải đấu tuần → chuỗi tự nguyện.
   - **CODE — project riêng `BKGame`, 2 repo GitHub riêng tư** (KHÔNG gộp vào repo ERP; spec/DEVLOG/HANDOFF/migration `fn_*` của game vẫn ở repo ERP):
     - **`HongThien/bk-bat-thu`:**
-      - **nhánh `thu-de-thuong` = bản TỐT mới nhất (`eddb531`)**: thú làm bằng code `src/thu/`, trang thử `thu-demo.html` (`?loai=bang_than_ma`, `?che=gan|trung`, `?dt=`) + `ca-voi-demo.html`, skill `lam-thu`;
+      - **nhánh `thu-de-thuong` = bản TỐT mới nhất (`b37ecaa`)**: thú làm bằng code `src/thu/`, trang thử `thu-demo.html` (`?loai=bang_than_ma`, `?che=gan|trung`, `?dt=`) + `ca-voi-demo.html`, skill `lam-thu`;
       - **nhánh `wip-0210-bi-ngat`** (`a9783e0`) = phần sửa DỞ khi 2 luồng bị ngắt do lỗi mạng: ngựa theo hướng "phủ lông kín" (**hướng SAI**, chỉ lấy lại phần "cánh to hơn" nếu dùng được) + cá voi 4b dở. **Đừng gộp thẳng.**
       - `main` (`9a54b05`) = bản thử bắt thú + khu đấu boss, chưa gộp nhánh thú.
       - Vite + TS + three r186 + three.quarks. Launch `bat-thu` (5280).
@@ -211,6 +211,8 @@
     - Dáng thoải đều trông "lù đù"; thân tròn đều trông "dày người" ⇒ đo profile + mặt cắt từ ảnh.
     - Luồng nền tự chấm luôn lạc quan (85–90% khi thật ~70%) ⇒ chấm bằng ảnh chồng đường bao, CTO tự xem ảnh trước khi gửi CEO.
     - Palworld cách điệu khối trơn, điêu khắc mượt (cánh = tay nhẵn + phiến; bờm = cụm bông), không làm lông rời.
+    - **Đường bao phải liền mượt** (spline đơn điệu, quét mặt cắt liên tục) — ghép nón thẳng giữa các mốc ⇒ gãy góc, CEO thấy ngay từ góc TRÊN ("tự dưng tụt hẳn vào"). Soát luôn ảnh từ trên thẳng xuống.
+    - Mắt dò ngang ở chỗ đầu rộng nhất ⇒ nằm đúng mép bao ("mắt ở viền"); phụ kiện bao quanh thân phải KÍN, hở đều, không chân cắm vào thân; dáng nghỉ (vây/cánh) giữ đúng ảnh mẫu, không ép sát cho gọn. Chi tiết: skill `lam-thu` Bước 2–3.
     - **Mạng công ty (proxy) có lúc cắt API giữa chừng** (`DEPTH_ZERO_SELF_SIGNED_CERT`) ⇒ luồng chạy lâu bị ngắt. Dặn luồng commit sau mỗi bước nhỏ.
     - Nhiều luồng cùng thư mục: mỗi luồng chỉ sửa file của mình, commit đúng đường dẫn. Mỗi luồng tự mở tab Browser pane riêng.
   - **Bẫy kỹ thuật:**
