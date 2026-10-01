@@ -9,9 +9,10 @@ import { DauTrangHS, HEAD, MAU, ManHS, NutHS, TheHS, TrongHS } from '../skin/Khu
 import { laySkin } from '../skin/registry'
 import type { SkinId } from '../skin/kieu'
 import { tuBanDoPL, type BanDoV, type ChangV, type LucDiaV, type VungV } from './kieu'
-import { TheGioiView } from './TheGioiView'
-import { LucDiaView } from './LucDiaView'
-import { ChangView } from './ChangView'
+// 01/10 khuya (Thùy): 3 tầng bản đồ chuyển sang 2D (ảnh tĩnh + hiệu ứng code, ban2d/). Màn đấu giữ 3D tới khi có bản 2.5D.
+import { TheGioi2D } from './ban2d/TheGioi2D'
+import { LucDia2D } from './ban2d/LucDia2D'
+import { Chang2D } from './ban2d/Chang2D'
 import { DauView } from './DauView'
 import type { NhungDau } from './nhungDau'
 import { BaoDoHoa, NutDoHoa } from './DoHoa'
@@ -53,7 +54,7 @@ export default function PhieuLuuHS({ hocSinhId, mon, gioiTinh, skin, onVe, onTon
       <div key={KHOA(tang)} className="absolute inset-0" style={{ animation: 'phieuluu-hien .5s ease-out both' }}>
         {tang.t === 'the_gioi' && (
           <>
-            <TheGioiView banDo={banDo} b={b} hienTai={hienTai} onChon={(ma) => setTang({ t: 'luc_dia', luc: ma })}
+            <TheGioi2D banDo={banDo} b={b} gioi={gioiTinh ?? 'nam'} hienTai={hienTai} onChon={(ma) => setTang({ t: 'luc_dia', luc: ma })}
               thanh={(onTongHop || onThuThach) ? <>
                 {onTongHop && <NutHS phu onClick={onTongHop}>Săn quái lang thang</NutHS>}
                 {onThuThach && <NutHS phu onClick={onThuThach}>Đấu trường</NutHS>}
@@ -61,8 +62,8 @@ export default function PhieuLuuHS({ hocSinhId, mon, gioiTinh, skin, onVe, onTon
             <div className="pointer-events-none absolute left-0 right-0 top-0 p-3"><div className="pointer-events-auto"><DauTrangHS tieuDe={`Thế giới ${banDo.mon}`} phu="Bấm một lục địa để đi vào" onBack={onVe} /></div></div>
           </>
         )}
-        {tang.t === 'luc_dia' && luc && <LucDiaView luc={luc} b={b} onChon={(v) => setTang({ t: 'chang', luc: luc.ma, vung: v })} onVe={() => setTang({ t: 'the_gioi' })} />}
-        {tang.t === 'chang' && luc && vung && <ChangView luc={luc} vung={vung} b={b} onVe={() => setTang({ t: 'luc_dia', luc: luc.ma })} onVao={(c) => setTang({ t: 'dau', luc: luc.ma, vung: vung.ma, chang: c.ma })} />}
+        {tang.t === 'luc_dia' && luc && <LucDia2D luc={luc} b={b} gioi={gioiTinh ?? 'nam'} onChon={(v) => setTang({ t: 'chang', luc: luc.ma, vung: v })} onVe={() => setTang({ t: 'the_gioi' })} />}
+        {tang.t === 'chang' && luc && vung && <Chang2D luc={luc} vung={vung} b={b} gioi={gioiTinh ?? 'nam'} onVe={() => setTang({ t: 'luc_dia', luc: luc.ma })} onVao={(c) => setTang({ t: 'dau', luc: luc.ma, vung: vung.ma, chang: c.ma })} />}
         {tang.t === 'dau' && luc && vung && chang && (
           <DauThat luc={luc} chang={chang} b={b} mon={mon} hocSinhId={hocSinhId} gioi={gioiTinh ?? 'nam'} LamBai={LamBai} onVe={() => { setTang({ t: 'chang', luc: luc.ma, vung: vung.ma }); tai() }} />
         )}

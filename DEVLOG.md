@@ -34369,3 +34369,15 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - (01/10 khuya) **CEO CHỐT TẠM Băng Thần Mã** bản Paldeck — BatThu tag `bang-than-ma-chot-tam-0110` (@ `2e1588b`, nhánh `thu-de-thuong`).
   Việc để sau khi mở lại: mặt cánh nhìn chính diện (đang thấy cạnh mỏng) · giảm ~127k tam giác/con + đo bản Nhẹ · cánh lúc ngủ/trúng đòn còn cứng.
   Bước lưu asset (xuất GLB + ảnh đại diện) chưa làm được — chưa có công cụ xuất.
+
+### 01/10 khuya — [Giao diện] Khung bản đồ phiêu lưu 2D (hình tạm, chờ Đơn 7)
+- Làm: `src/screens/hocsinh/phieuluu/ban2d/` — `boCuc.ts` (bố cục làm sẵn: thế giới 1–12 lục địa theo hàng so le + lệch tất định, cỡ đảo
+  0,72–1 theo số dạng; đường rắn cho 1–10+ mốc/chặng; Catmull-Rom → SVG) · `hinh2d.ts` (sổ tên file Đơn 7 + cờ `KIT2D`, hình về chỉ việc bật cờ) ·
+  `San2D.tsx` (khung 16:9 contain, màn dọc tự xoay bố cục x↔y; mây trôi, sao, ánh nước, sương, cờ, hero nv_nam/nv_nu, CSS hiệu ứng — mức Thấp /
+  giảm chuyển động tắt hết) · `HinhTam.tsx` (lục địa/vùng/nền chặng/bệ/quái tạm vẽ SVG từ `b.biome`/`b.quai`) · `TheGioi2D`/`LucDia2D`/`Chang2D`
+  cùng props bản 3D (+ `gioi`). PhieuLuuHS dùng bản 2D; màn đấu vẫn 3D. Trang xem: mặc định 2D, `&ban=3d` để so, `&gioi=nu`.
+- Không import three ở 3 tầng bản đồ (tên quái lấy qua `tenQuai2D` thay `nguonQuai` vì nguonQuai kéo three).
+- Kiểm: 1180×820 + 375×812 cả 3 tầng, bấm lục địa phóng vào rồi chuyển tầng; 0 lỗi console; build:hs ✔; check:style-hs ✔.
+- Sai/sửa: lần 1 nhãn đảo đè đảo hàng dưới + vân nước vòng tròn đồng tâm thô ⇒ nhãn đè lên chân đảo, đảo to hơn, ánh nước thành 5 vầng mờ;
+  bệ chặng cuối hàng lấn dưới panel phải ⇒ chừa 420px.
+- Còn: màn đọc dọc ở chặng hơi chật (số thứ tự bị bệ kế che); màn đấu 2.5D; ráp ảnh Đơn 7 khi về.
