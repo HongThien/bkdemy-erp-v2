@@ -55,17 +55,19 @@
 ⇒ Có 2 kiểu "học giả": **bấm bừa** (0–4 câu, 3–4 giây/câu) và **nhớ đáp án câu cũ** (9–10 câu nhưng 5 giây/câu, 64% câu cũ).
 Câu 4 đáp án chiếm 85% câu tự luyện ⇒ bấm bừa thuần có **7,8%** cơ hội đạt 5/10.
 
-**Luật (Thùy chốt mốc 5/10; 2 lớp chặn còn lại là đề xuất CTO, chờ gật):**
+**Luật (Thùy chốt 01/10):**
 1. Lượt 10 câu, **đúng ≥ 5** mới tính (Thùy 01/10).
-2. **Chỉ đếm câu đúng "mới"**: câu em chưa làm đúng trong 30 ngày. Câu cũ vẫn ra để ôn, không đếm.
-3. **Lượt quá nhanh không tính**: trung vị < ~6 giây/câu. App báo nhẹ "lượt này em làm nhanh quá, chưa tính", không phạt.
+2. **KHÔNG ra lại câu em đã gặp khi kho dạng đó chưa hết** (luật mặc định, mọi mode luyện — Thùy 01/10: "không dùng lại nếu chưa hết kho").
+   "Đã gặp" = ở BẤT KỲ bài nào (tự luyện, Thử thách, ET, BTVN, bài trên lớp). Hết câu mới thì ra câu gặp LÂU NHẤT trước. Số đếm cho nhiệm vụ /
+   giải đấu chỉ lấy câu đúng mà trước đó em chưa làm đúng.
+3. **Lượt quá nhanh không tính**: trung bình < 6 giây/câu (từ lúc mở lượt tới câu cuối ÷ số câu). App báo nhẹ "lượt này em làm nhanh quá, chưa tính", không phạt.
 
 Một hàm Postgres (`fn_luot_hoc_that` hoặc view) trả: lượt nào tính, số câu đúng mới. Chuỗi · nhiệm vụ N2 · cổng game · giải đấu (sau) đều đọc hàm này.
 Ngưỡng 5/10, 30 ngày, 6 giây nằm ở 1 chỗ cấu hình trong DB.
 
 ## 3. Chuỗi làm bài
 
-- **Ngày được tính:** có ≥ 1 lượt học thật (§2) — Tự luyện, Chủ đề hoặc Thử thách. *(Đề xuất. Chờ chốt: có tính cả BTVN/ET không.)*
+- **Ngày được tính:** có ≥ 1 lượt học thật (§2) ở phần **luyện thêm**: Tự luyện (Tổng hợp, Chủ đề) và Thử thách. **ET và BTVN KHÔNG tính** (Thùy 01/10).
 - **Một chuỗi chung mọi môn** *(đề xuất — chuỗi đo thói quen như ví xu; điểm học vẫn theo môn)*. Chuỗi SUY từ lượt học (mỗi lượt có nhãn môn),
   không lưu ô "chuỗi" riêng.
 - **Hiển thị:** ngọn lửa + số ngày ở đầu Home, luôn thấy. Hoạt cảnh mừng mốc **3 · 7 · 14 · 30 · 50 · 100**.
@@ -89,7 +91,7 @@ Ngưỡng 5/10, 30 ngày, 6 giây nằm ở 1 chỗ cấu hình trong DB.
 Đại khối 9 hiện có: 12 chủ đề · 30 chuyên đề · 86 dạng · 36 cụm.
 
 **Trạng thái màn = mức nắm dạng (HS × dạng), 3 trạng thái:** chưa đo ⇒ **sương mù** · yếu ⇒ **quái còn máu** · đạt ⇒ **chinh phục (cắm cờ)**.
-Vùng lớp chưa dạy: **thấy nhưng phủ sương**, không khoá cứng *(đề xuất — khoá cứng sẽ vênh lộ trình trên lớp; chờ chốt)*.
+Vùng lớp chưa dạy: **phủ sương nhưng vẫn vào luyện được** (khác "khoá cứng" ở chỗ em muốn học trước thì vẫn bấm vào được). Mặc định CTO 01/10.
 
 Bản đồ đọc cây của MỌI môn qua 1 registry (§1.6). Tiếng Anh: cây phải dựng từ giáo trình tiếng Anh, không bê khuôn Toán.
 
@@ -134,9 +136,25 @@ màn làm bài (BTVN/ET/giáo trình) · Home cấp 1 (nhập về UI chung).
 ## 7. Game tổ hợp
 
 Theo `spec-bat-thu.md` §0–§1 (project riêng `BKGame`, DB + `fn_*` vẫn ở repo này). Cổng học = "lượt học thật" (§2).
-Phạm vi trong V1: chờ chốt (§11).
+Phạm vi V1: **mở dần** (Thùy 01/10). Thùy làm ở context khác, xong thì cập nhật file này.
 
-## 8. Thứ tự làm (đề xuất)
+## 8. Thứ tự làm — **DEADLINE 06/10/2026** (Thùy 01/10)
+
+**Lịch 5 ngày (CTO đề xuất):**
+
+| Ngày | Làm | Cần Thùy |
+|---|---|---|
+| 01/10 | Lát A (lượt học thật + luật không lặp câu) · đơn ChatGPT bản đồ + quái | Áp migration A · gửi đơn ChatGPT ngay |
+| 02/10 | Lát B chuỗi làm bài · lát H góp ý/báo lỗi | Áp migration B |
+| 03/10 | Lát C bản đồ phiêu lưu khổ ngang + màn đấu | Tải hình ChatGPT về `design/bk-ui-src/` |
+| 04/10 | Lát E vẽ lại màn con (trả nợ 11 file) · ghép hình phiêu lưu | |
+| 05/10 | Lát F style 2 (nếu đủ hình) · G Rank/Thế giới phần còn thiếu · I tutorial bản thật | |
+| 06/10 | Soi toàn app khổ ngang bằng tài khoản thật · sửa lỗi · release | Duyệt trên iPad · deploy |
+
+**Rủi ro lớn nhất = hình.** Bản đồ, quái, style 2, hình bậc Rank/huy hiệu đều chờ ChatGPT. Hình chưa về thì màn vẫn chạy bằng hình tạm của style RPG,
+nhưng chưa đạt "100% vibe". Cấp 1 (HomeCap1) nhập UI chung là việc lớn — nếu trễ thì cấp 1 giữ màn riêng nhưng đổi màu theo style.
+
+**Thứ tự lát:**
 
 | Lát | Việc | Vì sao trước |
 |---|---|---|
@@ -173,7 +191,20 @@ Thói quen tăng mà sổ học giảm ⇒ không mở rộng. Đo ≥ 8 tuần 
 - Chỉ hiện phần đầu nhóm + vị trí của em. **Không hiện người đứng cuối.**
 - Giao diện = "giải đấu trường tuần" trong chất phiêu lưu.
 
-## 11. Cần Thùy chốt
+## 11. Đã chốt 01/10
+
+1. Lượt học thật: ≥5/10 · không ra lại câu đã gặp khi kho chưa hết · bỏ lượt trung bình < 6 giây/câu.
+2. Chuỗi: Tự luyện + Thử thách (luyện thêm); không tính ET, BTVN.
+3. Bản đồ: vùng chưa dạy phủ sương, vẫn vào được (mặc định CTO).
+4. Game: mở dần, Thùy làm ở context khác.
+5. Deadline 06/10.
+
+## 12. Còn chờ Thùy
+
+- Chuỗi chung mọi môn (CTO đề xuất) hay mỗi môn 1 chuỗi?
+- Cấp 1 có nằm trong V1 không (vào UI phiêu lưu chung), hay giữ màn riêng tới V1.1?
+
+## (cũ) Câu hỏi đã gửi 01/10
 
 1. §2: 2 lớp chặn (chỉ đếm câu đúng mới · bỏ lượt < 6 giây/câu)?
 2. §3: chuỗi chung mọi môn? Ngày tính có kể BTVN/ET không, hay chỉ phần tự luyện?

@@ -33264,3 +33264,19 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   không ghép theo khối được, ghép xuyên khối theo vị thế.
 - Viết `spec-v1-app-hs.md` (hiện trạng → thiếu → "xong" từng hạng mục · luật lượt học thật · chuỗi · bản đồ phiêu lưu · thứ tự lát A→J · điều kiện release ·
   giải đấu §10 · 5 câu chờ chốt) + 1 dòng trỏ trong CLAUDE.md.
+
+## 2026-10-01 — V1.0: Thùy chốt 5 câu · deadline 06/10 · LÁT A "lượt học thật" ĐÃ ÁP · Đơn 6 bản đồ + quái
+
+- Thùy chốt: không ra lại câu cũ khi kho chưa hết (luật mặc định) · lượt trung bình < 6 s/câu không tính · chuỗi = Tự luyện + Thử thách (ET/BTVN không) ·
+  vùng chưa dạy = sương mù vẫn vào được (CTO mặc định — Thùy hỏi "khác gì", đã giải thích: khoá = không bấm được) · game mở dần, Thùy làm context khác ·
+  **deadline 06/10**. Spec cập nhật §2/§3/§4.1/§7/§8 (lịch 5 ngày)/§11/§12.
+- Mig **202610011501_luot_hoc_that_khong_lap_cau** (áp `--only`): `_luot_hoc_that_nguong()` (5 câu · 50% · 6 s) · `_hs_cau_lan_gap(hs)` (câu đã gặp ở MỌI
+  bài: tu_luyen_dang_lan ∪ bai_lam_cau) · `_luot_hoc_that(hs, tu, den)` (tinh/ly_do/dung_moi/giay_tb — nguồn duy nhất cho chuỗi/nhiệm vụ/game) ·
+  `fn_luot_hoc_that_ket_qua(bai_lam_id)` cho app · thay đoạn loại trừ trong `tu_luyen_sinh` + 2 overload `tu_luyen_chu_de_sinh` (chi_cau_moi · p_loai/HTD):
+  bỏ "tránh 10 lượt gần nhất của dạng" ⇒ không ra câu đã gặp ở bất kỳ bài nào; hết câu mới ⇒ câu gặp lâu nhất trước. Overload 2 tham số cũ (không ai gọi) để nguyên.
+- Thử trong ROLLBACK (`scripts/_thu_mig_luot_hoc_that.mjs`): 30 ngày 92 em — TÍNH 1.073 · quá nhanh 404 · dưới ngưỡng 202 · ít câu 190. Sinh 1 lượt cho em
+  hoạt động nhất: 5 câu "đã gặp" đều ở dạng HẾT câu mới (đúng luật). Quyền live: 3 hàm `_` không ai gọi được; `fn_luot_hoc_that_ket_qua` chỉ authenticated.
+- Phát hiện: `.env` máy công ty `DATABASE_URL` = **claude_build** (ghi được) dù chú thích ghi claude_ro.
+- **Đơn 6** (`design/DON-HANG-SKIN-HS.md`): bản đồ phiêu lưu + quái RPG — biome xoay vòng (không vẽ từng chủ đề), quái dùng chung gắn cố định theo cụm,
+  41 hình xếp ưu tiên (#01 toàn cảnh duyệt → 4 nền vùng → 8 quái → 2 boss → bản đồ thế giới + 4 đảo → mở rộng → đồ vật).
+- App chưa đổi: báo "lượt chưa tính" ở màn kết quả làm cùng lát B (chuỗi).

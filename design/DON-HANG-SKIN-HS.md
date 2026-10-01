@@ -340,3 +340,70 @@ ASSETS TỐI THIỂU (thấy gì trong ảnh toàn cảnh phải có file — đ
                  + bai_tren_lop, et, btvn, hoc_tu_dau (MỚI, cùng phong cách)  + banner: lich (lịch tím), kiem_tra_lai (tờ tài liệu hồng)
                  + sao_cap (ngôi sao cấp), dong_xu (đồng xu)   (≥ 512, nền trong suốt)
 ```
+
+---
+
+## Đơn 6 — Bản đồ phiêu lưu + quái vật (style Anime RPG) — soạn 01/10 cho release V1.0 (`spec-v1-app-hs.md` §4)
+
+> App HS đổi thành "Giải cứu thế giới — đánh quái vật": chủ đề = lục địa · chuyên đề = khu vực · dạng = màn đấu · cụm = quái.
+> Số chủ đề mỗi khối khác nhau (3–24) ⇒ KHÔNG vẽ riêng từng chủ đề. Vẽ **bộ vùng đất (biome) dùng xoay vòng** + **bộ quái dùng chung**,
+> code gắn cố định vào chủ đề/cụm. Vị trí khu vực, màn, đường đi, sương mù, máu quái, cờ chinh phục đều do CODE vẽ lên hình.
+>
+> **Cách gửi:** context ChatGPT MỚI → dán `CHATGPT-UI-KIT.md` → dán khối đơn dưới → đính kèm 2 ảnh làm mẫu phong cách:
+> `design/bk-ui-src/Nền app HS cấp 3_2.png` (nền đảo trời) + `Nền app HS cấp 3_5.png` (icon sách phép). Mỗi hình xong: tải về
+> `design/bk-ui-src/Adventure/`, gõ "tiếp". **Làm theo đúng thứ tự — hết thời gian thì dừng ở đâu cũng dùng được phần đã có** (deadline 06/10).
+
+```
+ĐƠN ĐẶT HÀNG
+App:            hs
+Màn:            adventure-rpg (bản đồ phiêu lưu + quái vật)
+Mô tả:          App học Toán cho học sinh, chủ đề "Giải cứu thế giới — đánh quái vật". Mỗi chủ đề kiến thức là 1 vùng đất,
+                mỗi dạng bài là 1 màn đấu, mỗi nhóm bài là 1 con quái. Học sinh làm đúng câu hỏi = tung đòn đánh quái.
+                Thiết bị chính: iPad NGANG 1180×820 và máy tính.
+Phong cách:     đúng phong cách 2 ảnh đính kèm: anime fantasy, ánh vàng cổ, xanh tím, lấp lánh sao, vẽ tay tỉ mỉ.
+                Quái vật DỄ THƯƠNG – NGỘ NGHĨNH kiểu slime/thú nhỏ fantasy (học sinh lớp 3–12 đều chơi), KHÔNG ghê sợ, KHÔNG máu me.
+Phiên bản kit:  v1
+
+══ CÁCH GIAO HÀNG (bắt buộc — khác kit) ══
+- KHÔNG đóng zip. KHÔNG viết DESIGN.md. KHÔNG dựng hình bằng code / SVG / HTML / ghép khối.
+- MỖI LƯỢT TRẢ LỜI = ĐÚNG 1 HÌNH, vẽ bằng công cụ tạo ảnh. Dòng đầu ghi số + tên file, vd "#07 quai_slime_lua".
+  Vẽ xong dừng, chờ tôi gõ "tiếp". KHÔNG gộp nhiều hình vào 1 ảnh (trừ #01).
+- Ảnh vẽ ra trong chat LÀ file giao.
+
+══ CHUẨN ══
+- NỀN VÙNG ĐẤT: ngang 1672×941, nền đặc, KHÔNG nhân vật, KHÔNG quái, KHÔNG chữ, KHÔNG đường đi vẽ sẵn. Nhìn từ trên cao chéo
+  (như bản đồ game), địa hình trải đều cả khung, có nhiều khoảng trống bằng phẳng để đặt 6–10 điểm màn đấu lên. Hơi tối nhẹ ở viền.
+- ĐẢO/LỤC ĐỊA NHỎ (cho bản đồ thế giới): 1024×1024, nền TRONG SUỐT, 1 hòn đảo nổi nhìn chéo từ trên, đúng biome tương ứng.
+- QUÁI: 1024×1024, nền TRONG SUỐT, toàn thân, đứng giữa khung, chiếm ~75%, quay 3/4 về phía người xem, tư thế sẵn sàng chiến đấu
+  vui nhộn. Mỗi con 1 màu chủ đạo khác nhau, nhìn hình bóng là phân biệt được.
+- BOSS: như QUÁI nhưng to, oai hơn, có vương miện/giáp/hào quang, vẫn dễ thương.
+- KHÔNG chữ, số, logo, khung, nền phía sau quái.
+
+══ DANH SÁCH (đúng thứ tự ưu tiên) ══
+A. Duyệt phong cách
+   #01 Ảnh toàn cảnh iPad ngang: 1 màn bản đồ vùng đất rừng, có 8 điểm màn đấu nối bằng đường đi, 3 điểm đã cắm cờ, 1 điểm đang
+       sáng có 1 con quái đứng trên, phần cuối bản đồ phủ sương mù; góc trái là nhân vật pháp sư đồng hành (như ảnh mẫu).
+       → DỪNG, chờ Thùy duyệt.
+B. 4 vùng đất CẦN NHẤT (bản đồ khu vực)
+   #02 nen_vung_rung        — rừng phép thuật, cây khổng lồ, nấm phát sáng
+   #03 nen_vung_bang        — thung lũng băng tuyết, pha lê xanh
+   #04 nen_vung_nui_lua     — núi lửa, dung nham cam, đá đen (vẫn tươi sáng, không u ám)
+   #05 nen_vung_bien_dao    — quần đảo biển xanh ngọc, bãi cát, san hô
+C. 8 con quái đầu tiên (mỗi con 1 hệ)
+   #06 quai_slime_la   (xanh lá)   #07 quai_slime_lua (cam đỏ)   #08 quai_meo_bang (xanh băng)   #09 quai_rua_da (nâu đá)
+   #10 quai_cu_dem (tím)           #11 quai_ca_bong (xanh biển)  #12 quai_nam_ma (hồng tím)    #13 quai_chim_set (vàng)
+D. 2 boss
+   #14 boss_rong_con   (rồng con có vương miện)      #15 boss_golem_pha_le (người đá pha lê)
+E. Bản đồ thế giới
+   #16 nen_the_gioi    — biển mây ban đêm nhìn từ trên cao, trống để đặt các đảo (ngang 1672×941, nền đặc)
+   #17 dao_rung · #18 dao_bang · #19 dao_nui_lua · #20 dao_bien   (đảo nổi trong suốt, khớp 4 vùng ở B)
+F. Mở rộng (làm nếu còn thời gian)
+   #21 nen_vung_sa_mac · #22 nen_vung_dam_lay · #23 nen_vung_thanh_co · #24 nen_vung_troi_sao
+   #25–#32 thêm 8 quái: quai_tho_gio · quai_be_nham · quai_sao_bien · quai_ech_doc · quai_dom_dom · quai_soi_bang · quai_bo_giap · quai_ma_lua
+   #33 boss_phuong_hoang · #34 boss_bach_tuoc · #35 dao_sa_mac · #36 dao_dam_lay · #37 dao_thanh_co · #38 dao_troi_sao
+G. Đồ vật nhỏ (trong suốt, 512×512)
+   #39 co_chinh_phuc (lá cờ cắm đất) · #40 ruong_khu_vuc (rương thưởng) · #41 cong_khu_vuc (cổng đá vào khu)
+
+GHI ĐÈ KIT §1: KHÔNG chữ trong mọi hình. KHÔNG khẩu hiệu.
+Bắt đầu với #01.
+```
