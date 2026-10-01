@@ -1,5 +1,7 @@
 # BK Bắt Thú — game bắt thú kiểu Palworld
 
+> **⭐ 01/10 chiều: CEO đã đưa THIẾT KẾ TỔNG "BK World" → `spec-bk-world.md`** (điểm học tập · 3 hoạt động · 2 đường kiếm xu · lai + công thức · shiny/alpha · vé dungeon). File đó thắng khi mâu thuẫn; file này là luật chi tiết phần bắt thú.
+
 > **Nguồn thiết kế** cho game bắt thú. CEO chốt 30/09 (khuya) – 01/10/2026. Diễn biến ở DEVLOG cùng ngày.
 > Code: repo riêng **`HongThien/bk-bat-thu`** (GitHub, riêng tư) — máy nhà ở `C:\Users\Admin\Desktop\BKERP\BatThu`.
 > Research nền móng: `design/nghien-cuu-nen-mong-game-bat-thu.md` · nguồn mô hình boss: `design/nguon-mo-hinh-boss-bat-thu.md`.
@@ -195,7 +197,12 @@ Trang xem: https://claude.ai/artifact/2zWHd4mF6NAhX2UnVVzaDV
    - **Cá voi:** chưa có bản stylized nào kèm động tác tấn công ⇒ tự làm, hoặc đổi boss biển thành Vua Bạch Tuộc / Cá Mập.
    - Giấy phép: file GLB gửi xuống trình duyệt thì tải được ⇒ đóng gói + nén, và hỏi nhà bán xác nhận bằng văn bản là dùng được với web three.js.
 2. Chơi thử bản này, chỉnh cảm giác đánh + bắt.
-3. **Xu khi bắt thú — 2 lời CEO đang vênh nhau** (phát hiện lúc gộp máy nhà + máy công ty, 01/10):
+3. **Xu khi bắt thú — ĐÃ RÕ HƠN (01/10 chiều, `spec-bk-world.md` §1):**
+   - bắt thú KHÔNG trực tiếp ra xu;
+   - xu đến từ **nhiệm vụ NPC** liên quan bắt quái;
+   - bóng chế từ nông sản (nên vẫn giữ ý "bán luôn hay đầu tư" 30/09).
+   - Còn chờ CEO: xu nhiệm vụ tính chung trần tháng (spec-bk-world §4 câu 3). Ghi chép cũ bên dưới để tra.
+   - *(cũ)* 2 lời CEO từng vênh nhau (phát hiện lúc gộp máy nhà + máy công ty, 01/10):
    - 30/09, máy công ty (`spec-game-bat-quai.md` §5.2): *"nông sản bán luôn được 3 xu, làm bóng bắt quái thì phần thưởng 4–5 xu, nhưng bắt có xác suất hụt nên phải cân nhắc — giống ngoài đời đầu tư, có thể ăn có thể xịt"*.
      Luật đã ghi theo câu này:
      - hai đường "bán luôn" và "làm bóng" ngang giá trị kỳ vọng;
