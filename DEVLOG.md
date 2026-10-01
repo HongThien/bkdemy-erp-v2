@@ -34171,3 +34171,20 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 2026-10-01 (đêm, sau) — [Boss] Quyết định: boss dùng 2D (tấm ảnh + hoạt ảnh code) cho V1
 
 - Thùy hỏi "đưa boss về 2D cho dễ đúng không" ⇒ đúng. `BossAnh.dang` ('anh' mặc định | 'relief' | 'chibi') thay cờ `relief`; style RPG đặt `dang: 'anh'`. Lý do: giống bản vẽ 100%, nhẹ (không xử lý ảnh lúc tải), ít rủi ro trên iPad đời thấp, kịp 06/10. Phù điêu (`quaiRelief.ts`) và khối code (`bossChibi3D.ts`) giữ lại, không dùng; 3D thật = Tripo/Meshy sau.
+
+## 2026-10-02 — [Game] Sai/sửa: CTO hiểu ngược ý CEO về cánh Băng Thần Mã
+
+- **CEO:** "Đâu, m search model Frostallion đi, cánh như thế mới chuẩn".
+- **Sai:** t hiểu "đầu cánh sát thân không có lông vũ" là chê gốc cánh trơn ⇒ đã giao "phủ lông kín từ gốc". Thật ra CEO MÔ TẢ cánh Frostallion:
+  - khối trơn liền, điêu khắc mượt như sứ;
+  - gốc cánh là "cánh tay" nhẵn, KHÔNG lông;
+  - ngoài tách 4–5 phiến dài nhẵn cong vút lên.
+- **Gốc lỗi:** Băng Thần Mã làm từ 01/10 theo TÊN "Frostallion" mà chưa xem ảnh mẫu, tức chưa qua bước research. Quy trình `lam-thu` mới có sau đó.
+- **Sửa:**
+  - chụp ảnh wiki vào `BatThu/.snap/tham-khao/frostallion/`;
+  - báo luồng ngựa DỪNG hướng phủ lông, làm kiểu cánh mới "phiến trơn" trong `canh.ts`;
+  - bám Frostallion ~90%: bờm/đuôi bông xoăn như mây, mặt nạ pha lê băng, túm lông ngực, gai băng ở móng.
+- **Bài học:**
+  - mẫu gốc CEO nhắc tên ⇒ PHẢI xem ảnh trước khi dựng và trước khi diễn giải góp ý;
+  - góp ý nào hiểu được 2 chiều thì gửi kèm ảnh tham chiếu để CEO xác nhận trước khi giao làm, thay vì đoán.
+- Đã bỏ dòng "phủ lông kín từ gốc" khỏi skill `lam-thu` (bài học sai).
