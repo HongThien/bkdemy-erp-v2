@@ -23,6 +23,7 @@ import {
 import ThanhChonMon from './ThanhChonMon'
 import { ChonLoaiTuLuyen, ChonDangChuDe } from './TuLuyenChuDe'
 import { NhungHet, type NhungDau } from './phieuluu/nhungDau'
+import { phieuLuuBat } from './phieuluu/coBat'
 const PhieuLuuHS = lazy(() => import('./phieuluu/PhieuLuuHS'))
 import { laCap2HS, mayManHSCuaToi } from '../../lib/maymai_hs'
 import { htdCoMo, htdSinh, htdCauBaiTest, type CauHTD } from '../../lib/hoctudau'
@@ -490,7 +491,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 
   if (direct === 'tu_luyen_chon') return <ChonLoaiTuLuyen gioiTinh={gt}
     onTongHop={() => { setChuDeDang(null); setDirect('tu_luyen') }}
-    onChuDe={() => setDirect(giaoDien?.skin && monChon ? 'phieu_luu' : 'tu_luyen_chu_de_ds')}
+    onChuDe={() => setDirect(giaoDien?.skin && monChon && phieuLuuBat() ? 'phieu_luu' : 'tu_luyen_chu_de_ds')}
     onThuThach={() => setDirect('thu_thach')}
     onRank={() => { setTuHoSo(false); setTuHome(false); setDirect('rank') }}
     onNhiemVu={() => { setTuHome(false); setDirect('nhiem_vu') }}
@@ -651,7 +652,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
           return {
             id: k.id, ten: k.ten, icon: k.icon, sub, subMau, badge, disabled: !!k.sapCo, nhom: KHU_CHOI.has(k.id) ? 'choi' : 'hoc', ...KIT_O[k.id], ...(k.sapCo ? { ill: 'mock_exam_locked', emoji: undefined, doodle: 'Sắp ra mắt! Hãy chờ nhé!', tone: 'gray' as const } : {}),
             onClick: k.sapCo ? undefined : k.direct
-              ? () => setDirect(k.id === 'tu_luyen' ? (monChon ? 'phieu_luu' : 'tu_luyen_chon') : (k.id as 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi'))
+              ? () => setDirect(k.id === 'tu_luyen' ? (monChon && phieuLuuBat() ? 'phieu_luu' : 'tu_luyen_chon') : (k.id as 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi'))
               : () => { setKhu(k.id); setTab('chua') },
             ...khoaThieuKho(k.id),
             ...(oGami(k.id) ?? {}),
