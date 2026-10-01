@@ -34157,3 +34157,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Làm:** `skin/the3d/quaiRelief.ts` — mỗi tư thế (PNG) tự tách thành THÂN + HÀO QUANG (mở hình thái xoá nét mảnh rồi lấy mảnh liền lớn nhất), thân "thổi phồng" theo khoảng cách tới mép (lưới 128², UV thẳng vào ảnh gốc, đổ bóng theo độ dốc), hào quang phẳng phía sau luôn quay mặt về camera ⇒ giữ NGUYÊN nét vẽ + có khối + thị sai. `BossAnh.relief` ưu tiên cao nhất trong `nguonQuai.sinhQuai` (relief → mo3d → ảnh phẳng). Trang soi `?xem=boss3d&kieu=relief|chibi|anh` để so 3 cách.
 - **Giới hạn nói thẳng:** đây là nổi khối 2.5D chứ KHÔNG phải mô hình thật — xoay ≤ ~40° còn đẹp, lệch hơn lộ. Cảnh trận bù ~78% góc xoay để giữ gần thẳng. Mô hình 3D thật (xoay 360°, đổi tư thế bằng xương) cần ảnh→3D (Tripo/Meshy gói trả phí) rồi Mixamo — làm ngoài phiên này, Thùy quyết.
 - **Kích thước:** cao 2.9 trong style RPG (3.3 thì đỉnh hào quang bị cắt ở khung trận).
+
+## 2026-10-02 — [Game] CEO chỉ lỗi hình: cá voi dày người / đầu tròn; ngựa cánh nhỏ, gốc cánh trơ
+
+- **CEO, Thiên Kình:** "đầu bị tròn, trong khi model cá voi đầu dẹt, mở rộng sang 2 bên; tổng thể dẹt người, con hiện tại dày người quá".
+  - Giao bản 4: mặt cắt ngang là elip bè (rộng/cao ≈ 1,5–1,6 ở đầu, 1,35–1,4 ở ngực, 1,2 ở giữa đuôi, cuống đuôi dẹt ngang); đầu bè hình chữ U nhìn từ trên; giữ đường cong thon dọc của bản 3.
+- **CEO, Băng Thần Mã:** "cánh phải mở rộng hơn nhiều; đầu cánh sát thân không có lông vũ".
+  - CTO hiểu là gốc cánh đang trơ, phải phủ kín; đã nói rõ với CEO để CEO đính chính nếu hiểu ngược.
+  - Giao: sải 2,1× → ~3×, bản cánh ×1,4, xoè hết cỡ quay mặt cánh ra camera; lông vai + lông phủ kín từ vai tới cổ tay, không lộ xương mép trước; chân sau co khi bay.
+- **Bài học cho `lam-thu`:** đo cả MẶT CẮT NGANG (rộng/cao) + ảnh nhìn TỪ TRÊN và CHÍNH DIỆN, không chỉ profile nhìn ngang. Thân thú thật hiếm khi tròn đều.
+- ⚠ Lịch V1: CEO chưa trả lời câu "mở luồng hệ thống song song" (hỏi 02/10).
