@@ -191,6 +191,13 @@ Lý do: HS dùng đủ loại máy (iPad đời cũ, điện thoại tầm thấ
 
 5. **Điều kiện "xong":** (a) bảng 3 mức ở 1 file, mọi cảnh đọc từ đó · (b) cảnh dựng lại được khi đổi mức mà không tải lại trang · (c) có mục chỉnh tay + nút đo lại · (d) đo trên ≥ 3 máy thật khác nhau (1 iPad đời cũ, 1 điện thoại tầm thấp, 1 máy khỏe) và ghi kết quả vào DEVLOG · (e) máy không có WebGL vẫn dùng được (danh sách thường, đã có).
 
+   **TRẠNG THÁI 01/10 (luồng Giao diện):** (a) ✔ `skin/the3d/chatLuong.ts` (bảng · đoán máy · quyết định · lưu theo máy; không import three) · (b) ✔ 3 tầng bản đồ dựng lại khi đổi mức;
+   **màn đấu KHÔNG dựng lại giữa trận** (mất tiến độ) — chỉ áp ngay độ phân giải + gió + nước, phần còn lại ở trận sau · (c) ✔ `phieuluu/DoHoa.tsx`: nút ⚙ trên bản đồ + mục "Đồ hoạ"
+   trong menu ⋯ Home + nút ở Hồ sơ · (d) ⏳ chưa đo máy thật — mới đo máy bàn RX 5700 (đoán Cao, chắc) · (e) ✔ có sẵn.
+   Khác spec 1 chỗ: mức Thấp vẫn giữ 30% hạt của ĐÒN ĐÁNH (phản hồi trúng/trượt), chỉ tắt hạt trang trí nền.
+   Bẫy đã gặp: tab bị trình duyệt hãm (chạy nền / khung xem ẩn ~2 khung/giây) từng làm máy RX 5700 bị đo thành Thấp ⇒ khung cách nhau >250 ms
+   bị bỏ qua ở cả lượt đo lẫn phần tự hạ; lượt đo cần ≥20 khung thật, hãm 5 lần thì không kết luận (lần mở sau đo tiếp).
+
 ## 5. Hai style
 
 - **Anime RPG** (đang dùng) + **Thị trấn** (đang làm). Cả 2 phải đủ bộ hình phiêu lưu ở §4.4 thì mới tính là "xong".

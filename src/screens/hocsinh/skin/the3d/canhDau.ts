@@ -13,6 +13,7 @@ import { sinhQuai, type Quai } from './nguonQuai'
 import { taoVuongMien } from './quai'
 import { taoHero, taoHatFx } from './hero'
 import type { BangMau3D } from './kieuMau'
+import { thongSo } from './chatLuong'
 
 export type QuaiDau = { loai: string; boss: boolean }
 export type CanhDau = {
@@ -38,7 +39,7 @@ const GIUA: [number, number] = [3.7, 0.2]
 export function dungDau(host: HTMLElement, b: BangMau3D, op: { biome: string; gioi: 'nam' | 'nu'; maLuc: string }, doi: QuaiDau[]): CanhDau {
   const sk = taoSanKhau(host)
   const { scene, camera } = sk
-  sk.datNen(b, [28, 70]); sk.datDen(b, { bong: true, huong: new THREE.Vector3(-8, 14, 9) })
+  sk.datNen(b, [28, 70]); sk.datDen(b, { bong: thongSo().bongThat, huong: new THREE.Vector3(-8, 14, 9) })
   const seed = bam(op.maLuc) % 997, m = b.biome[op.biome] ?? b.biome.rung
   const dat = new THREE.Color(m.dat), dat2 = new THREE.Color(m.dat2), nui = new THREE.Color(m.nui), tmp = new THREE.Color(), san = new THREE.Color(m.dat).lerp(new THREE.Color(b.cat), 0.4)
 

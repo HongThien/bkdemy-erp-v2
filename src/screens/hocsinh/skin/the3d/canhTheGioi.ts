@@ -13,6 +13,7 @@ import { sinhQuai, type Quai } from './nguonQuai'
 import { taoVuongMien } from './quai'
 import { taoHatFx } from './hero'
 import type { BangMau3D } from './kieuMau'
+import { thongSo } from './chatLuong'
 
 export type LucDiaVao = {
   ma: string; ten: string; biome: string
@@ -62,7 +63,8 @@ export function boTri(rs: number[], seed: string, W0 = 38): { p: Diem[]; W: numb
 const GOC_NGANG = 52
 
 export function dungTheGioi(host: HTMLElement, b: BangMau3D, ds: LucDiaVao[], cb: { chon: (ma: string) => void; hover: (ma: string | null) => void }): CanhTheGioi {
-  const sk = taoSanKhau(host)
+  const sk = taoSanKhau(host, { do: true })
+  const hatNen = thongSo().hatNen // hạt lấp lánh trôi nền: tắt ở mức Thấp
   const { scene } = sk
   sk.datNen(b, [60, 140], [0.95, 2.6])
   sk.datDen(b)
@@ -190,7 +192,7 @@ export function dungTheGioi(host: HTMLElement, b: BangMau3D, ds: LucDiaVao[], cb
     const kh = sk.khung, tam = new THREE.Vector3(kh.tam.x + panX, kh.tam.y, kh.tam.z + panZ)
     sk.camera.position.set(tam.x + kh.huong.x * kh.xa * zoom + Math.sin(t * 0.21) * 0.7 * zoom, tam.y + kh.huong.y * kh.xa * zoom, tam.z + kh.huong.z * kh.xa * zoom + Math.cos(t * 0.17) * 0.35 * zoom); sk.camera.lookAt(tam)
     tHat += dt
-    if (tHat > 0.35 && C.length) { tHat = 0; const c = C[Math.floor(Math.random() * C.length)], a = Math.random() * 6.28, r = c.r * (0.3 + Math.random() * 0.6); hat.bung(new THREE.Vector3(c.x + Math.cos(a) * r * 1.1, luoi.docCao(c.x + Math.cos(a) * r * 1.1, c.z + Math.sin(a) * r * 0.9) + 0.2, c.z + Math.sin(a) * r * 0.9), c.d.trangThai === 'fog' ? '#b4bddf' : b.vang, 1, { toc: 0.4, len: true, to: 0.8 }) }
+    if (hatNen && tHat > 0.35 && C.length) { tHat = 0; const c = C[Math.floor(Math.random() * C.length)], a = Math.random() * 6.28, r = c.r * (0.3 + Math.random() * 0.6); hat.bung(new THREE.Vector3(c.x + Math.cos(a) * r * 1.1, luoi.docCao(c.x + Math.cos(a) * r * 1.1, c.z + Math.sin(a) * r * 0.9) + 0.2, c.z + Math.sin(a) * r * 0.9), c.d.trangThai === 'fog' ? '#b4bddf' : b.vang, 1, { toc: 0.4, len: true, to: 0.8 }) }
     hat.capNhat(dt)
     for (const l of luiAnim) {
       const dich = l.i === hov ? 0.2 : 0, cur = nang.get(l.i) ?? 0, nxt = cur + (dich - cur) * Math.min(1, dt * 10)

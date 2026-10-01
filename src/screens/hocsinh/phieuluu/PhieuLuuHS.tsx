@@ -14,6 +14,7 @@ import { LucDiaView } from './LucDiaView'
 import { ChangView } from './ChangView'
 import { DauView } from './DauView'
 import type { NhungDau } from './nhungDau'
+import { BaoDoHoa, NutDoHoa } from './DoHoa'
 
 export type LamBaiCmp = (p: { baiTestId: string; hocSinhId: string; onXong: () => void; desktop?: boolean; nhung?: NhungDau }) => ReactElement
 
@@ -66,6 +67,8 @@ export default function PhieuLuuHS({ hocSinhId, mon, gioiTinh, skin, onVe, onTon
           <DauThat luc={luc} chang={chang} b={b} mon={mon} hocSinhId={hocSinhId} gioi={gioiTinh ?? 'nam'} LamBai={LamBai} onVe={() => { setTang({ t: 'chang', luc: luc.ma, vung: vung.ma }); tai() }} />
         )}
       </div>
+      {tang.t !== 'dau' && <div className="pointer-events-none absolute bottom-3 right-3 z-20"><NutDoHoa /></div>}
+      <BaoDoHoa />
       <style>{'@keyframes phieuluu-hien{0%{opacity:0;transform:scale(.97)}100%{opacity:1;transform:scale(1)}}'}</style>
     </div>
   )

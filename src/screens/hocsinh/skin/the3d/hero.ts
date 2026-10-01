@@ -6,6 +6,7 @@ import * as THREE from 'three'
 import { Bo } from './dungHinh'
 import { matToon, bongTron } from './vatLieu'
 import type { BangMau3D } from './kieuMau'
+import { thongSo } from './chatLuong'
 
 export type Hero = {
   goc: THREE.Group
@@ -99,7 +100,8 @@ export type HatFx = {
   capNhat: (dt: number) => void
   phaHuy: () => void
 }
-export function taoHatFx(max = 160): HatFx {
+export function taoHatFx(maxGoc = 160): HatFx {
+  const max = Math.max(24, Math.round(maxGoc * thongSo().tiLeHat)) // theo mức đồ hoạ (chatLuong.ts)
   const pos = new Float32Array(max * 3), col = new Float32Array(max * 3), base = new Float32Array(max * 3), vel = new Float32Array(max * 3)
   const tuoi = new Float32Array(max).fill(99), song = new Float32Array(max), to = new Float32Array(max), roi = new Float32Array(max)
   const g = new THREE.BufferGeometry()

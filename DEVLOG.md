@@ -34287,3 +34287,24 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - mắt đặt theo tia ngang là lỗi khuôn, có từ bản 1.
 - **Skill `lam-thu`** +5 bài học: đường bao C1 · chỗ đặt mắt · phụ kiện bao quanh thân · dáng nghỉ theo mẫu · mềm mại.
 - **Còn:** đầu nhìn trên chưa rộng hơn ngực (4b dở ở nhánh `wip-0210-bi-ngat`) · chờ CEO xem bản 5.
+
+### 01/10 — [Giao diện] Chất lượng đồ hoạ TỰ THÍCH ỨNG cho bản đồ phiêu lưu 3D (spec-v1-app-hs §4.5 luật Thùy chốt 01/10 khuya)
+- `skin/the3d/chatLuong.ts` (KHÔNG import three): bảng 3 mức Thấp/Vừa/Cao ở 1 chỗ (DPR 1/1,5/2 · MSAA · hệ số bước lưới 1,9/1,3/1 · trang trí
+  35/70/100% · nước 0/1/2 · gió 0/0,6/1 · hạt nền · hạt đòn đánh 30/60/100% · bóng thật chỉ Cao · FPS đích 30/45/60) · đoán máy (WebGL2,
+  tên card qua WEBGL_debug_renderer_info, RAM, nhân, điện thoại/iPad; Safari "Apple GPU" ⇒ Vừa, không chắc) · quyết định: chậm >1,2×đích ⇒
+  hạ + đo lại · rảnh ≥40% đúng nhịp 60 ⇒ thử nâng 1 lần · đoán = đo & đoán chắc ⇒ tự đặt + 1 dòng "Đồ hoạ: X (tự chọn cho máy này)", không thì hỏi
+  "Em thấy hình có mượt không?" (Hơi giật ⇒ hạ, hỏi tối đa 2 lần) · đang chơi tụt khung kéo dài ⇒ chỉ hạ (không tự nâng) + báo · chọn tay ⇒ tôn
+  trọng · localStorage `bk_do_hoa_v1` + chữ ký máy (card|màn|DPR).
+- Nối động cơ: `sanKhau` (DPR/MSAA từ bảng · đo 2 giây khi `op.do` — chỉ 3 tầng bản đồ · nghe đổi mức áp ngay DPR/gió/nước · tự hạ DPR rồi báo
+  `baoCham`) · `xayLuoi` × hệ số · `raiTrangTri` giữ tỉ lệ (bộ ngẫu nhiên riêng ⇒ mức Cao y hệt trước) · `taoHatFx` × tỉ lệ · nước uniform
+  `uNuoc` (TOAN_CUC) · hạt nền tắt ở Thấp · `canhDau` bóng thật theo bảng. 3 màn bản đồ cho `muc` vào deps ⇒ đổi mức dựng lại ngay.
+  Màn đấu KHÔNG dựng lại giữa trận.
+- UI `phieuluu/DoHoa.tsx`: `useDoHoa` · `BaoDoHoa` (dòng báo + câu hỏi mượt) · `TamDoHoa` (Tự động/Thấp/Vừa/Cao + Đo lại; portal ra body — lần đầu
+  bị bảng Chẩn đoán đè vì nằm trong ô z-20) · `NutDoHoa` (⚙ góc dưới phải bản đồ, Hồ sơ). Home menu ⋯ thêm "Đồ hoạ".
+- SAI suýt lọt: khung xem bị hãm (~2 khung/giây) ⇒ máy RX 5700 bị đo thành THẤP. Sửa: khung cách nhau >250 ms = tab bị hãm, bỏ qua ở lượt đo và
+  phần tự hạ; lượt đo cần ≥20 khung thật, hãm 5 lần thì không kết luận. Thử lại: không lưu kết luận, giữ mức đoán Cao.
+- Thử: gọi thẳng module trong trang — 6 ca (khoẻ đúng nhịp · chậm hạ rồi hỏi · hơi giật · chọn tay không bị tự hạ · về tự động dùng kết quả nhớ ·
+  đo lại xoá kết quả) đúng spec · đổi Cao→Thấp cảnh dựng lại, còn 1 canvas (không rò) · màn đấu Thấp chạy · Home không nạp three · 0 lỗi console ·
+  build:hs qua · check:style-hs ✔ (41 file). `tsc` còn 1 lỗi CÓ SẴN ở `src/lib/pdfRender.ts` (pdfjs: thiếu `canvas` trong RenderParameters) —
+  lộ ra sau `npm install` máy nhà (node_modules về đúng package-lock); không thuộc vùng Giao diện, chưa sửa.
+- Chưa: đo ≥3 máy thật (iPad cũ, điện thoại yếu, máy khoẻ) — điều kiện (d).

@@ -1,9 +1,13 @@
 // ============================================================================
 // SÂN KHẤU 3D dùng chung: renderer + camera kiểu diorama + đèn "giờ vàng" + vòng lặp + nhãn HTML bám cảnh + chọn bằng chuột/chạm.
-// Chỉ nạp khi mở màn phiêu lưu (import động) — không làm nặng bundle chính của app HS. Tự hạ chất lượng khi FPS tụt (iPad đời cũ).
+// Chỉ nạp khi mở màn phiêu lưu (import động) — không làm nặng bundle chính của app HS.
+// Chất lượng theo `chatLuong.ts` (3 mức Thấp/Vừa/Cao): đọc bảng lúc dựng · đo máy ~2 giây khi được yêu cầu (`op.do`, chỉ 3 tầng bản đồ) ·
+// đổi mức thì độ phân giải + gió + nước áp NGAY (không dựng lại) · tụt khung kéo dài: hạ độ phân giải, hết đường hạ thì báo `baoCham()`.
 // ============================================================================
 import * as THREE from 'three'
 import type { BangMau3D } from './kieuMau'
+import { thongSo, canDo, baoKetQuaDo, baoCham, dangKy } from './chatLuong'
+import { TOAN_CUC } from './vatLieu'
 
 export type NhanBam = { el: HTMLElement; pos: THREE.Vector3; hien?: () => boolean; /** true = nhãn nằm DƯỚI điểm neo (mặc định nằm trên) */ duoi?: boolean }
 export type SanKhau = {
@@ -32,12 +36,15 @@ export type SanKhau = {
   phaHuy: () => void
 }
 
-export function taoSanKhau(host: HTMLElement, op: { dpr?: number; antialias?: boolean } = {}): SanKhau {
+export function taoSanKhau(host: HTMLElement, op: { dpr?: number; antialias?: boolean; /** đo máy ~2 giây nếu đang tự nhận mức (chỉ 3 tầng bản đồ — KHÔNG ở màn đấu) */ do?: boolean } = {}): SanKhau {
+  let ts = thongSo()
   const canvas = document.createElement('canvas')
   canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:manipulation;outline:none'
   host.appendChild(canvas)
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: op.antialias ?? true, powerPreference: 'high-performance', alpha: false })
-  let dpr = Math.min(window.devicePixelRatio || 1, op.dpr ?? 1.75)
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: op.antialias ?? ts.msaa, powerPreference: 'high-performance', alpha: false })
+  let dprMax = op.dpr ?? ts.dprToiDa
+  let dpr = Math.min(window.devicePixelRatio || 1, dprMax)
+  TOAN_CUC.uGio.value = ts.gio; TOAN_CUC.uNuoc.value = ts.nuoc
   renderer.setPixelRatio(dpr)
   renderer.outputColorSpace = THREE.SRGBColorSpace
   renderer.toneMapping = THREE.NeutralToneMapping // giữ nguyên sắc pastel (Khronos PBR Neutral)
@@ -48,7 +55,17 @@ export function taoSanKhau(host: HTMLElement, op: { dpr?: number; antialias?: bo
   const huy: Array<() => void> = []
   const fns = new Set<(dt: number, t: number) => void>()
   const nhans = new Set<NhanBam>()
-  let padPhai = 0, rong = 1, cao = 1, song = true, t = 0, last = performance.now(), ema = 16, dem = 0
+  let padPhai = 0, rong = 1, cao = 1, song = true, t = 0, last = performance.now(), ema = 16, dem = 0, demCham = 0
+  // lượt đo máy: bỏ 0,8 giây đầu (biên dịch shader, nạp hình) rồi đo 2 giây
+  const doMay = op.do && canDo() ? { bd: 0.8, kt: 2.8, khung: 0, viec: 0, n: 0, xong: false, lanLai: 0 } : null
+  // đổi mức (em chọn tay / tự hạ): áp ngay phần không cần dựng lại; phần còn lại (lưới, cây, khử răng cưa) màn tự dựng lại
+  const huyNghe = dangKy(() => {
+    ts = thongSo()
+    dprMax = op.dpr ?? ts.dprToiDa
+    const moi = Math.min(window.devicePixelRatio || 1, dprMax)
+    if (moi !== dpr) { dpr = moi; renderer.setPixelRatio(dpr); doiCo() }
+    TOAN_CUC.uGio.value = ts.gio; TOAN_CUC.uNuoc.value = ts.nuoc
+  })
   let fogK: [number, number] | null = null
   let apLai: (() => void) | null = null // dựng lại khung camera khi ô đổi cỡ (host có thể có cỡ 0 lúc tạo, hoặc em xoay máy)
   const khung = { tam: new THREE.Vector3(), xa: 20, huong: new THREE.Vector3(0, 1, 1).normalize() }
@@ -83,12 +100,27 @@ export function taoSanKhau(host: HTMLElement, op: { dpr?: number; antialias?: bo
     if (!song || document.hidden) { last = now; return }
     const dtMs = now - last; last = now
     const dt = Math.min(0.05, dtMs / 1000); t += dt
-    // tự hạ độ phân giải khi tụt khung (đời iPad cũ): 60 khung liên tiếp > 26ms thì giảm 1 bậc
-    ema = ema * 0.95 + dtMs * 0.05
-    if (++dem % 60 === 0 && ema > 26 && dpr > 1) { dpr = Math.max(1, dpr - 0.25); renderer.setPixelRatio(dpr); doiCo() }
+    // khung cách khung trước > 250ms = tab bị HÃM (chạy nền, chuyển app, tiết kiệm pin), KHÔNG phải máy chậm (thử 01/10: khung xem ẩn chỉ
+    // còn ~2 khung/giây ⇒ máy RX 5700 bị đo thành Thấp). Bỏ qua khung đó ở cả lượt đo lẫn phần tự hạ.
+    const biHam = dtMs > 250
+    if (!biHam) ema = ema * 0.95 + dtMs * 0.05
+    if (doMay && !doMay.xong) {
+      if (biHam) { // đo lại từ đầu; bị hãm mãi (5 lần) thì thôi không kết luận — lần mở bản đồ sau đo tiếp
+        if (++doMay.lanLai > 5) doMay.xong = true; else { doMay.bd = t + 0.3; doMay.kt = doMay.bd + 2; doMay.khung = doMay.viec = doMay.n = 0 }
+      } else if (t >= doMay.kt && doMay.n >= 20) { doMay.xong = true; baoKetQuaDo(doMay.khung / doMay.n, doMay.viec / doMay.n) }
+      else if (t >= doMay.kt) doMay.kt = t + 1 // chưa đủ 20 khung thật ⇒ đo thêm
+    } else if (!biHam && ++dem % 60 === 0) {
+      // tụt khung (chậm hơn đích của mức 25%): hạ độ phân giải từng bậc; đã về 1 mà vẫn chậm 3 lần liền ⇒ báo để hạ cả mức
+      if (ema > (1000 / ts.fps) * 1.25) {
+        if (dpr > 1) { dpr = Math.max(1, dpr - 0.25); renderer.setPixelRatio(dpr); doiCo() }
+        else if (++demCham >= 3) { demCham = 0; baoCham() }
+      } else demCham = 0
+    }
+    const bdViec = performance.now()
     for (const f of fns) f(dt, t)
     renderer.render(scene, camera)
     chieuNhan()
+    if (doMay && !doMay.xong && !biHam && t >= doMay.bd) { doMay.khung += dtMs; doMay.viec += performance.now() - bdViec; doMay.n++ }
   }
   raf = requestAnimationFrame(vong)
 
@@ -142,6 +174,7 @@ export function taoSanKhau(host: HTMLElement, op: { dpr?: number; antialias?: bo
     datNen: (b, [gan, xa], theoXa) => { fogK = theoXa ?? null; scene.background = new THREE.Color(b.troi); scene.fog = new THREE.Fog(new THREE.Color(b.suong), gan, xa) },
     phaHuy: () => {
       song = false
+      huyNghe()
       cancelAnimationFrame(raf)
       ro.disconnect()
       huy.forEach((f) => f())

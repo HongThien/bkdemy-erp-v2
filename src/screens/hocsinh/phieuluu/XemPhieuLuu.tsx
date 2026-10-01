@@ -11,6 +11,7 @@ import { LucDiaView } from './LucDiaView'
 import { ChangView } from './ChangView'
 import { XemDau } from './XemDau'
 import { ChanDoan } from './ChanDoan'
+import { BaoDoHoa, NutDoHoa } from './DoHoa'
 import type { ChangV } from './kieu'
 
 // Chỉ khi chạy dev: dán JSON thật của fn_ban_do_phieu_luu vào localStorage 'ban_do_pl' để soi dữ liệu thật qua bộ đổi tuBanDoPL.
@@ -47,6 +48,8 @@ export default function XemPhieuLuu() {
       {tang.t === 'luc_dia' && luc && <LucDiaView luc={luc} b={b} onChon={(v) => setTang({ t: 'chang', luc: luc.ma, vung: v })} onVe={() => setTang({ t: 'the_gioi' })} />}
       {tang.t === 'chang' && luc && vung && <ChangView luc={luc} vung={vung} b={b} onVe={() => setTang({ t: 'luc_dia', luc: luc.ma })} onVao={(c) => setTang({ t: 'dau', luc: luc.ma, vung: vung.ma, chang: c.ma })} />}
       <ChanDoan />
+      {tang.t !== 'dau' && <div className="pointer-events-none absolute bottom-3 right-3 z-20"><NutDoHoa /></div>}
+      <BaoDoHoa />
       {tang.t === 'dau' && luc && vung && chang && <XemDau luc={luc} chang={chang} b={b} onRut={() => setTang({ t: 'chang', luc: luc.ma, vung: vung.ma })} />}
     </div>
   )

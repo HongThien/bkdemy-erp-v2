@@ -4,8 +4,9 @@
 // ============================================================================
 import * as THREE from 'three'
 
-/** Uniform toàn cục (thời gian cho gió + nước). Sân khấu cập nhật .uTime mỗi khung. */
-export const TOAN_CUC = { uTime: { value: 0 }, uGio: { value: 1 } }
+/** Uniform toàn cục (thời gian cho gió + nước). Sân khấu cập nhật .uTime mỗi khung; .uGio (độ lắc gió) + .uNuoc (0/1/2 mức hiệu ứng nước)
+ *  theo bảng chất lượng (`chatLuong.ts`) — đổi được ngay không dựng lại cảnh. */
+export const TOAN_CUC = { uTime: { value: 0 }, uGio: { value: 1 }, uNuoc: { value: 2 } }
 
 /** Đất / cây / đá: Lambert tô theo màu đỉnh, có gió nếu hình có aFlex. */
 export function matVat(op: { gio?: boolean; phatSang?: THREE.ColorRepresentation } = {}) {

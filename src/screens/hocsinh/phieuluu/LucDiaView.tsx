@@ -5,6 +5,7 @@ import type { BangMau3D } from '../skin/the3d/kieuMau'
 import type { VungVao } from '../skin/the3d/canhLucDia'
 import { thongKeVung, type LucDiaV } from './kieu'
 import { nap3D, useCanh } from './Canh3D'
+import { useDoHoa } from './DoHoa'
 
 export function LucDiaView({ luc, b, onChon, onVe }: { luc: LucDiaV; b: BangMau3D; onChon: (ma: string) => void; onVe: () => void }) {
   const vungs = useMemo<(VungVao & { dat: number })[]>(() => luc.vung.map((v) => {
@@ -14,7 +15,8 @@ export function LucDiaView({ luc, b, onChon, onVe }: { luc: LucDiaV; b: BangMau3
   const [hov, setHov] = useState<string | null>(null)
   const chonRef = useRef(onChon); chonRef.current = onChon
   const nhan = useRef(new Map<string, HTMLElement>())
-  const { host, canh, loi } = useCanh(async (h) => (await nap3D.lucDia()).dungLucDia(h, b, { ma: luc.ma, biome: luc.biome }, vungs, { chon: (m) => chonRef.current(m), hover: setHov }), [vungs, b, luc.ma])
+  const muc = useDoHoa().muc // đổi mức đồ hoạ ⇒ dựng lại cảnh (chatLuong.ts)
+  const { host, canh, loi } = useCanh(async (h) => (await nap3D.lucDia()).dungLucDia(h, b, { ma: luc.ma, biome: luc.biome }, vungs, { chon: (m) => chonRef.current(m), hover: setHov }), [vungs, b, luc.ma, muc])
   useEffect(() => {
     if (!canh) return
     const huy: Array<() => void> = []

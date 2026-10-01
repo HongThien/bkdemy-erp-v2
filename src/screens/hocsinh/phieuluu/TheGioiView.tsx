@@ -5,6 +5,7 @@ import type { BangMau3D } from '../skin/the3d/kieuMau'
 import type { LucDiaVao } from '../skin/the3d/canhTheGioi'
 import { thongKe, type BanDoV } from './kieu'
 import { nap3D, useCanh } from './Canh3D'
+import { useDoHoa } from './DoHoa'
 
 export function TheGioiView({ banDo, b, onChon, hienTai, thanh }: { banDo: BanDoV; b: BangMau3D; onChon: (ma: string) => void; hienTai?: string | null; thanh?: ReactNode }) {
   const ds = useMemo<(LucDiaVao & { dat: number })[]>(() => banDo.luc_dia.map((l) => {
@@ -15,7 +16,8 @@ export function TheGioiView({ banDo, b, onChon, hienTai, thanh }: { banDo: BanDo
   const dai = useMedia('(min-width:768px)')
   const chonRef = useRef(onChon); chonRef.current = onChon
   const nhan = useRef(new Map<string, HTMLElement>())
-  const { host, canh, loi } = useCanh(async (h) => (await nap3D.theGioi()).dungTheGioi(h, b, ds, { chon: (m) => chonRef.current(m), hover: setHov }), [ds, b])
+  const muc = useDoHoa().muc // đổi mức đồ hoạ ⇒ dựng lại cảnh (chatLuong.ts)
+  const { host, canh, loi } = useCanh(async (h) => (await nap3D.theGioi()).dungTheGioi(h, b, ds, { chon: (m) => chonRef.current(m), hover: setHov }), [ds, b, muc])
 
   useEffect(() => {
     if (!canh) return

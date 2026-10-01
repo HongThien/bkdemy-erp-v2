@@ -44,7 +44,7 @@ export function viTriChang(n: number): Diem[] {
 }
 
 export function dungChang(host: HTMLElement, b: BangMau3D, luc: { biome: string; ma: string }, ds: ChangVao[], cb: { chon: (ma: string) => void; hover: (ma: string | null) => void }): CanhChang {
-  const sk = taoSanKhau(host)
+  const sk = taoSanKhau(host, { do: true })
   const { scene } = sk
   sk.datNen(b, [40, 100], [0.95, 2.7]); sk.datDen(b, { huong: new THREE.Vector3(-14, 20, 10) })
   const seed = bam(luc.ma) % 991, m = b.biome[luc.biome] ?? b.biome.rung

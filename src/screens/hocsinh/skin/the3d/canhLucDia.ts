@@ -12,6 +12,7 @@ import { sinhQuai, type Quai } from './nguonQuai'
 import { taoVuongMien } from './quai'
 import { taoHatFx } from './hero'
 import type { BangMau3D } from './kieuMau'
+import { thongSo } from './chatLuong'
 
 export type VungVao = { ma: string; ten: string; soDang: number; trangThai: 'dat' | 'yeu' | 'fog'; loai: string | null; khoi?: boolean }
 export type CanhLucDia = {
@@ -22,7 +23,8 @@ export type CanhLucDia = {
 }
 
 export function dungLucDia(host: HTMLElement, b: BangMau3D, luc: { ma: string; biome: string }, vungs: VungVao[], cb: { chon: (ma: string) => void; hover: (ma: string | null) => void }): CanhLucDia {
-  const sk = taoSanKhau(host)
+  const sk = taoSanKhau(host, { do: true })
+  const hatNen = thongSo().hatNen // hạt lấp lánh trôi nền: tắt ở mức Thấp
   const { scene } = sk
   sk.datNen(b, [58, 130], [0.95, 2.6]); sk.datDen(b)
   const seed = bam(luc.ma), m = b.biome[luc.biome] ?? b.biome.rung
@@ -107,7 +109,7 @@ export function dungLucDia(host: HTMLElement, b: BangMau3D, luc: { ma: string; b
     const kh = sk.khung
     sk.camera.position.set(kh.tam.x + kh.huong.x * kh.xa + Math.sin(t * 0.21) * 0.5, kh.tam.y + kh.huong.y * kh.xa, kh.tam.z + kh.huong.z * kh.xa + Math.cos(t * 0.17) * 0.25); sk.camera.lookAt(kh.tam)
     tHat += dt
-    if (tHat > 0.3) { tHat = 0; const x = bb.x0 + Math.random() * (bb.x1 - bb.x0), z = bb.z0 + Math.random() * (bb.z1 - bb.z0); if (sdf(x, z, poly) > 1) hatFx.bung(new THREE.Vector3(x, luoi.docCao(x, z) + 0.2, z), b.vang, 1, { toc: 0.4, len: true, to: 0.8 }) }
+    if (hatNen && tHat > 0.3) { tHat = 0; const x = bb.x0 + Math.random() * (bb.x1 - bb.x0), z = bb.z0 + Math.random() * (bb.z1 - bb.z0); if (sdf(x, z, poly) > 1) hatFx.bung(new THREE.Vector3(x, luoi.docCao(x, z) + 0.2, z), b.vang, 1, { toc: 0.4, len: true, to: 0.8 }) }
     hatFx.capNhat(dt)
     for (const l of luiVung) {
       const dich = l.i === hov ? 0.22 : 0, cur = nang.get(l.i) ?? 0, nxt = cur + (dich - cur) * Math.min(1, dt * 10)

@@ -20,6 +20,7 @@ import { LOAI_BO_TRO_TEN, type LichBoTro } from '../../lib/botro_yeu_ca'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { luuGiaoDien, type Home912 } from '../../lib/giaodien_hs'
 import { THE, HEAD, MAU, NhomHS, useHeThongToi, useManDoc, useMedia } from './skin/KhungHS'
+import { TamDoHoa } from './phieuluu/DoHoa'
 import type { TheGioiHome } from '../../lib/thegioi'
 import { TenLop, moTaTin } from './thegioi/TheGioiHS'
 import { SKINS, SKIN_MAC_DINH, laySkin, cheDoThat, bienCss, layHinhNen, nenCua, type GiaoDien, type CheDo, type Skin } from './skin/registry'
@@ -164,6 +165,7 @@ const NUT_TRON: CSSProperties = { ...THE, clipPath: 'none', borderLeft: 'var(--s
 // Cụm nút đầu trang (Hình nền · hòm thư · ⋯) — chung cho bố cục dọc và ngang.
 function CumNut({ p, onHinhNen, nutRef }: { p: HomeProps; onHinhNen: () => void; nutRef: RefObject<HTMLButtonElement> }) {
   const [menu, setMenu] = useState(false)
+  const [doHoa, setDoHoa] = useState(false) // chỉnh đồ hoạ bản đồ 3D (spec-v1-app-hs §4.5)
   return (
     <>
         <button ref={nutRef} onClick={onHinhNen} className="flex h-10 shrink-0 items-center gap-1.5 px-3 text-[13px] font-bold active:scale-95"
@@ -184,11 +186,13 @@ function CumNut({ p, onHinhNen, nutRef }: { p: HomeProps; onHinhNen: () => void;
           <button onClick={() => setMenu((m) => !m)} className="flex h-10 w-10 items-center justify-center text-[20px] font-bold leading-none active:scale-95" style={NUT_TRON} aria-label="Thêm">⋯</button>
           {menu && (
             <div className="absolute right-0 top-12 z-20 flex w-44 flex-col overflow-hidden rounded-2xl text-[14px] shadow-xl" style={{ background: 'var(--sk-bg)', border: '1px solid var(--sk-line)' }}>
-              <button className="px-4 py-3 text-left" onClick={() => { setMenu(false); p.onDoiMK() }}>Đổi mật khẩu</button>
+              <button className="px-4 py-3 text-left" onClick={() => { setMenu(false); setDoHoa(true) }}>Đồ hoạ</button>
+              <button className="px-4 py-3 text-left" style={{ borderTop: '1px solid var(--sk-line)' }} onClick={() => { setMenu(false); p.onDoiMK() }}>Đổi mật khẩu</button>
               <button className="px-4 py-3 text-left" style={{ borderTop: '1px solid var(--sk-line)' }} onClick={() => { setMenu(false); p.onThoat() }}>Thoát</button>
             </div>
           )}
         </div>
+        {doHoa && <TamDoHoa onDong={() => setDoHoa(false)} />}
     </>
   )
 }

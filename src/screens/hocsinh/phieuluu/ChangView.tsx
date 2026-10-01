@@ -5,6 +5,7 @@ import type { BangMau3D } from '../skin/the3d/kieuMau'
 import { tenQuai } from '../skin/the3d/nguonQuai'
 import type { ChangV, LucDiaV, VungV } from './kieu'
 import { nap3D, useCanh } from './Canh3D'
+import { useDoHoa } from './DoHoa'
 
 const sao = (n: number) => '★'.repeat(Math.min(5, n)) + '☆'.repeat(Math.max(0, 5 - n))
 const moTa = (c: ChangV) => (c.trang_thai === 'dat' ? 'đã hạ' : c.trang_thai === 'yeu' ? (c.hp != null ? `còn ${c.hp} đòn` : 'còn quái') : 'chưa gặp')
@@ -15,7 +16,8 @@ export function ChangView({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: V
   const [hov, setHov] = useState<string | null>(null)
   const ds = useMemo(() => vung.chang.map((c) => ({ ma: c.ma, trangThai: c.trang_thai, quai: c.quai })), [vung])
   const nhan = useRef(new Map<string, HTMLElement>()), nhanHero = useRef<HTMLElement | null>(null)
-  const { host, canh, loi } = useCanh(async (h) => (await nap3D.chang()).dungChang(h, b, { biome: luc.biome, ma: vung.ma }, ds, { chon: setSel, hover: setHov }), [ds, b, vung.ma])
+  const muc = useDoHoa().muc // đổi mức đồ hoạ ⇒ dựng lại cảnh (chatLuong.ts)
+  const { host, canh, loi } = useCanh(async (h) => (await nap3D.chang()).dungChang(h, b, { biome: luc.biome, ma: vung.ma }, ds, { chon: setSel, hover: setHov }), [ds, b, vung.ma, muc])
   useEffect(() => {
     if (!canh) return
     const huy: Array<() => void> = []

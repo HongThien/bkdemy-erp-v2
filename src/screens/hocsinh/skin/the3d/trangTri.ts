@@ -6,6 +6,7 @@ import * as THREE from 'three'
 import { Bo, lechMau } from './dungHinh'
 import { rng } from './hinhHoc'
 import type { MauBiome } from './kieuMau'
+import { thongSo } from './chatLuong'
 
 export type LoaiTT = 'cayTron' | 'cayThong' | 'nui' | 'nuiLua' | 'da' | 'nam' | 'cayDua' | 'xuongRong' | 'phaLe' | 'cot' | 'lau' | 'bui' | 'cayKho'
 
@@ -97,7 +98,9 @@ const _m = new THREE.Matrix4(), _q = new THREE.Quaternion(), _p = new THREE.Vect
 export function raiTrangTri(p: { biome: string; mau: MauBiome; diem: [number, number][]; cao: (x: number, z: number) => number; seed: number; tyLe?: number; mat: THREE.Material }): THREE.Group {
   const R = rng(p.seed), g = new THREE.Group(), tron = TRON_BIOME[p.biome] ?? TRON_BIOME.rung
   const theo = new Map<LoaiTT, [number, number][]>()
+  const giu = thongSo().tiLeTrangTri, Rg = rng(p.seed + 7919) // số cây/đá theo mức đồ hoạ (chatLuong.ts)
   for (const d of p.diem) {
+    if (giu < 1 && Rg() > giu) continue
     let r = R(), loai = tron[0][0]
     for (const [l, w] of tron) { if (r < w) { loai = l; break } r -= w }
     if (!theo.has(loai)) theo.set(loai, [])

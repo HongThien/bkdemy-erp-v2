@@ -4,7 +4,8 @@
 // ============================================================================
 import * as THREE from 'three'
 import { Bo } from './dungHinh'
-import { matToon, matVat } from './vatLieu'
+import { matToon, matVat, TOAN_CUC } from './vatLieu'
+import { thongSo } from './chatLuong'
 import { rng } from './hinhHoc'
 import type { BangMau3D } from './kieuMau'
 
@@ -18,7 +19,8 @@ export type Luoi = {
 }
 
 /** Dựng lưới độ cao: `f` cho độ cao + màu + id mỗi điểm. Pháp tuyến tính theo vi phân ⇒ bóng mượt, không vỡ mảnh. */
-export function xayLuoi(k: Khung, buoc: number, f: (x: number, z: number) => MauDiem, boQua = -0.45): Luoi {
+export function xayLuoi(k: Khung, buocGoc: number, f: (x: number, z: number) => MauDiem, boQua = -0.45): Luoi {
+  const buoc = buocGoc * thongSo().heSoLuoi // bước gốc = mức Cao; Vừa/Thấp thưa hơn (chatLuong.ts)
   const nx = Math.ceil((k.x1 - k.x0) / buoc) + 1, nz = Math.ceil((k.z1 - k.z0) / buoc) + 1
   const H = new Float32Array(nx * nz), C = new Float32Array(nx * nz * 3), ID = new Int16Array(nx * nz)
   for (let j = 0; j < nz; j++) for (let i = 0; i < nx; i++) {
@@ -85,25 +87,25 @@ export function taoNuoc(b: BangMau3D, kh: Khung, sdfF: (x: number, z: number) =>
   tex.magFilter = tex.minFilter = THREE.LinearFilter; tex.wrapS = tex.wrapT = THREE.ClampToEdgeWrapping; tex.needsUpdate = true
   const mat = new THREE.ShaderMaterial({
     uniforms: {
-      uSdf: { value: tex }, uBox: { value: new THREE.Vector4(kh.x0, kh.z0, w, d) }, uTime, uRange: { value: range },
+      uSdf: { value: tex }, uBox: { value: new THREE.Vector4(kh.x0, kh.z0, w, d) }, uTime, uRange: { value: range }, uNuoc: TOAN_CUC.uNuoc,
       uNong: { value: new THREE.Color(b.nuocNong) }, uSau: { value: new THREE.Color(b.nuocSau) }, uBot: { value: new THREE.Color(b.bot) }, uSuong: { value: new THREE.Color(b.suong) },
     },
     vertexShader: 'varying vec3 vW;\nvoid main(){ vec4 w = modelMatrix * vec4(position,1.0); vW = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }',
     fragmentShader: `
-      uniform sampler2D uSdf; uniform vec4 uBox; uniform float uTime; uniform float uRange;
+      uniform sampler2D uSdf; uniform vec4 uBox; uniform float uTime; uniform float uRange; uniform float uNuoc; // 0 phẳng + 1 dải bọt · 1 bọt sóng · 2 + lấp lánh
       uniform vec3 uNong; uniform vec3 uSau; uniform vec3 uBot; uniform vec3 uSuong;
       varying vec3 vW;
       void main(){
         vec2 uv = (vW.xz - uBox.xy) / uBox.zw;
         float inside = step(0.0,uv.x)*step(uv.x,1.0)*step(0.0,uv.y)*step(uv.y,1.0);
         float d = mix(uRange, texture2D(uSdf, clamp(uv,0.0,1.0)).r * uRange, inside);
-        float w1 = sin(vW.x*1.7 + uTime*0.9)*0.5 + sin(vW.z*2.3 - uTime*1.1)*0.5;
+        float w1 = (sin(vW.x*1.7 + uTime*0.9)*0.5 + sin(vW.z*2.3 - uTime*1.1)*0.5) * step(0.5, uNuoc);
         vec3 col = mix(uNong, uSau, smoothstep(0.0, uRange*0.75, d + w1*0.06));
         float f1 = 1.0 - smoothstep(0.0, 0.2, abs(d - 0.1 - 0.07*sin(uTime*1.2 + vW.x*0.8)));
         float band = fract(d*0.8 - uTime*0.1);
-        float f2 = smoothstep(0.0,0.05,band)*(1.0-smoothstep(0.05,0.12,band))*(1.0-smoothstep(0.5,2.0,d))*0.5;
+        float f2 = smoothstep(0.0,0.05,band)*(1.0-smoothstep(0.05,0.12,band))*(1.0-smoothstep(0.5,2.0,d))*0.5 * step(0.5, uNuoc);
         col = mix(col, uBot, clamp(f1*0.8 + f2, 0.0, 1.0));
-        vec2 cel = floor(vW.xz*2.2); float hh = fract(sin(dot(cel, vec2(12.9898,78.233)))*43758.5453); float tw = step(0.9, hh) * pow(max(0.0, sin(uTime*(1.2+hh*2.0)+hh*40.0)), 6.0);
+        vec2 cel = floor(vW.xz*2.2); float hh = fract(sin(dot(cel, vec2(12.9898,78.233)))*43758.5453); float tw = step(1.5, uNuoc) * step(0.9, hh) * pow(max(0.0, sin(uTime*(1.2+hh*2.0)+hh*40.0)), 6.0);
         vec2 fc = fract(vW.xz*2.2) - 0.5; col += vec3(tw * smoothstep(0.28, 0.0, length(fc)) * 0.5);
         float dist = length(vW.xz - uBox.xy - uBox.zw*0.5);
         col = mix(col, uSuong, smoothstep(uBox.z*0.5, uBox.z*0.95, dist));
