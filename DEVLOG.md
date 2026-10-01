@@ -34465,3 +34465,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Sai giữa chừng: vây nhỏ lần đầu dùng vân của vây ngực ⇒ thành "chân sọc" trắng; mẫu xanh đều ⇒ bỏ vân, tô xanh đều.
 - Tự kiểm: `thien_kinh-so-tham-khao` (ngang, chính diện, 3/4 cạnh ảnh 3D) · `-dt-hat` · `-dt-lon_vong`. Bản Đẹp 56,3k tam giác (+6k do vây nhỏ + má); tsc sạch.
 - Còn: vân mạch phát sáng trên vây/thân của mẫu dày đặc hơn · chân vòm của mẫu thả xuống thấp hơn hàm.
+
+## 2026-10-02 (chiều, máy nhà) — [Game] ✅ Thiên Kình CHỐT: CEO duyệt bản 9 (BatThu `thu-de-thuong` @ `7b231f9`)
+- Thùy: "ok chốt Thiên Kình bản này". Bước 7 quy trình (spec §3.5): khoá tham số loài = dòng `thien_kinh` trong `src/thu/loai-boi.ts` @ `7b231f9`
+  (vòm kiểu `mu`; kiểu vòng `kin` của bản 5–6 vẫn còn trong khuôn cho loài khác) · ảnh đại diện `BatThu/.snap/thien_kinh-dai-dien.jpg` (gitignore,
+  chỉ trên máy nhà) · xuất GLB: CHƯA làm — công cụ xuất chưa có (việc chung cho mọi loài). Bảng loài spec §3.5: ✅.
+- Hành trình 01–02/10: bản 1 (tự thiết kế) → 2–5 theo ảnh/video (vòng kín, dẹt bè, thân mượt) → 6 đầu thuôn, mang to nhất → 7 theo 9 ảnh mô hình 3D
+  (mắt, vòm chữ U) → 8/8b vây mái chèo cong, miệng cong xuống, xanh trùm mõm → 9 vây nhỏ dưới họng, má, chóp ngọc.
+- Bài học còn hiệu lực (để distill HANDOFF cuối ngày): ảnh mô hình 3D nhiều góc (Thùy chụp) là nguồn tốt nhất — có sớm thì tiết kiệm ~4 vòng sửa;
+  ranh màu ở mặt phải đi theo hình khối (rãnh miệng), sửa màu riêng không đủ; việc treo trong spec cũng phải đối chiếu lại ảnh mẫu trước khi làm.
+- Mô-đun mới dùng lại được cho loài bơi khác: vây trục cong (`uon`), vây nhỏ (`vayNho`), má (`dau.ma`), miệng dốc (`mieng.doc`), vòm ôm đầu (`vong.kieu='mu'`).
