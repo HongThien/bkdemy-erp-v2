@@ -79,6 +79,7 @@ dist-sukien/
 # Ảnh GỐC ChatGPT bộ gamification (1254px, ~140 MB) — KHÔNG lên git, cất Google Drive (Thùy chốt 01/10).
 # Repo chỉ giữ bản app dùng (public/bk-ui/hs/gami/) + ảnh toàn cảnh tham chiếu bản JPG (design/handoff/gami-v1/reference/).
 design/bk-ui-src/gami/
+design/bk-ui-src/khoi/          # ảnh gốc ChatGPT style Khối vuông (DON-HANG-STYLE-KHOI.md) — cùng luật, cất Drive
 
 # Đệm của `tsc -b` — tự sinh lại mỗi lần kiểm kiểu
 *.tsbuildinfo
