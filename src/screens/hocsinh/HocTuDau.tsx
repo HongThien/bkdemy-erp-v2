@@ -19,7 +19,7 @@
 import { useEffect, useState } from 'react'
 import { htdLoTrinh, htdLyThuyet, type DangHTD } from '../../lib/hoctudau'
 import { MathText } from '../kho/ui'
-import { ManHS, MAU, THE, THE_TRON, HEAD } from './skin/KhungHS'
+import { ManHS, MAU, THE, THE_TRON, HEAD, NhanHS, useMonHS } from './skin/KhungHS'
 
 // Thùy 29/09: mọi màn theo STYLE (skin) em đang chọn — bỏ nền mây + chồng sách + khẩu hiệu + màu theo giới tính.
 // THEME giữ đúng hình dạng cũ (type `Theme` còn được CaBoTroHS dùng cho CardBai) nhưng mọi giá trị là biến skin.
@@ -42,11 +42,17 @@ function Chevron({ color }: { color: string }) {
 function Khung({ children }: { gioiTinh?: 'nam' | 'nu' | null; children: React.ReactNode }) {
   return <ManHS className="!gap-0">{children}</ManHS>
 }
+// Nút quay lại + nhãn MÔN đang chọn (01/10 — Học từ đầu là việc của 1 môn).
 function NutBack({ onBack }: { onBack: () => void }) {
+  const mon = useMonHS()
   return (
-    <button onClick={onBack} className="mb-3 flex w-fit items-center gap-1.5 rounded-full px-3 py-1.5 text-[13px] font-semibold active:scale-95" style={THE_TRON}>
-      <span aria-hidden>‹</span> Quay lại
-    </button>
+    <div className="mb-3 flex items-center gap-2">
+      <button onClick={onBack} className="flex w-fit items-center gap-1.5 rounded-full px-3 py-1.5 text-[13px] font-semibold active:scale-95" style={THE_TRON}>
+        <span aria-hidden>‹</span> Quay lại
+      </button>
+      <span className="flex-1" />
+      {mon && <NhanHS dac>{mon}</NhanHS>}
+    </div>
   )
 }
 // Card khuôn "Bài tập trên lớp" (DanhSachHS.tsx) — icon box tint + tên/mô tả + chevron (Thùy 22/09:

@@ -3,6 +3,9 @@
 // Thay Home v4 (pastel + nhân vật + khẩu hiệu + màu gán theo giới tính — HS chê "trẻ con"). Bố cục 1 cho mọi skin:
 //   đầu trang (avatar · tên · nút HÌNH NỀN · hòm thư · ⋯) → VIỆC TIẾP THEO → widget đếm ngược kỳ thi (Elo bỏ khỏi Home — Thùy 29/09)
 //   → banner kiểm tra lại → lưới ô chức năng (danh sách ô do HocSinhApp truyền, giữ nguyên chức năng từng khối).
+// 01/10 (Thùy: "chọn môn Toán, KHTN, Tiếng Anh; chuyển môn là chuyển tính năng học tập, chơi thì không cần"): phần dưới
+//   tách 2 KHỐI — "Học tập" (thanh chọn môn → ca bổ trợ của môn → lưới ô `nhom='hoc'`) và "Giải trí" (thẻ Thế giới BK →
+//   lưới ô `nhom='choi'`, chung mọi môn).
 // Skin: CHỈ đọc biến CSS `--sk-*` từ skin/registry.ts — không `if (skin === …)` ở đây.
 // Nút "Hình nền" mở tấm chọn (skin · sáng/tối · hình nền), Home phía sau đổi ngay để em nhìn thật.
 // Lần đầu mở app (chưa có dòng hs_giao_dien): chào → chọn giao diện → khoanh nút "Hình nền" để em biết chỗ đổi → lưu.
@@ -16,7 +19,7 @@ import type { HomeCard } from './HomeHS'
 import { LOAI_BO_TRO_TEN, type LichBoTro } from '../../lib/botro_yeu_ca'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { luuGiaoDien, type Home912 } from '../../lib/giaodien_hs'
-import { THE, HEAD, MAU, useHeThongToi, useManDoc, useMedia } from './skin/KhungHS'
+import { THE, HEAD, MAU, NhomHS, useHeThongToi, useManDoc, useMedia } from './skin/KhungHS'
 import type { TheGioiHome } from '../../lib/thegioi'
 import { TenLop, moTaTin } from './thegioi/TheGioiHS'
 import { SKINS, SKIN_MAC_DINH, laySkin, cheDoThat, bienCss, layHinhNen, nenCua, type GiaoDien, type CheDo, type Skin } from './skin/registry'
@@ -44,14 +47,17 @@ function viecTiepTheo(lich: LichBoTro[], cards: HomeCard[], onLich: () => void):
   }
   const coViec = cards.find((k) => !k.disabled && (k.badge ?? 0) > 0)
   if (coViec) return { nhan: 'Việc cần làm', tieuDe: coViec.ten, phu: coViec.sub, onClick: coViec.onClick }
-  const tl = cards.find((k) => k.id === 'tu_luyen')
-  return { nhan: 'Không có việc gấp', tieuDe: 'Tự luyện 10 câu', phu: 'Luyện theo dạng còn yếu', onClick: tl?.onClick }
+  const tl = cards.find((k) => k.id === 'tu_luyen' && !k.disabled)
+  // Môn đang chọn chưa có kho (ô Tự luyện khoá) ⇒ không rủ luyện 10 câu.
+  if (!tl) return { nhan: 'Không có việc gấp', tieuDe: 'Chưa có việc', phu: 'Thầy cô giao bài sẽ hiện ở đây' }
+  return { nhan: 'Không có việc gấp', tieuDe: 'Tự luyện 10 câu', phu: 'Luyện theo dạng còn yếu', onClick: tl.onClick }
 }
 
 // ── MÀN CHÍNH (chỉ vẽ) ───────────────────────────────────────────────────────
 type HomeProps = {
   hoTen: string; maHS: string; lopMon: string | null; anhUrl: string | null; onAnhChanged: (url: string) => void
   mons: LopMonHS[]; mon: string | null; onChonMon: (mon: string) => void
+  demMon?: Record<string, number> // số việc đang chờ theo môn (HocSinhApp đếm) ⇒ chấm số trên nút môn khác
   chuaDoc: number; lich: LichBoTro[]; soRetest: number; cards: HomeCard[]; data: Home912 | null
   onHopThu: () => void; onDoiMK: () => void; onThoat: () => void; onLich: () => void; onRetest: () => void
   onHoSo?: () => void // có ⇒ bấm avatar mở HỒ SƠ (DON-HANG-GAMI-HS Đơn 4); đổi ảnh chuyển vào trong Hồ sơ
@@ -64,7 +70,8 @@ type HomeProps = {
 // Style không có nhân vật ⇒ bỏ khối nhân vật, còn lại giữ nguyên.
 function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; onHinhNen: () => void; nutRef: RefObject<HTMLButtonElement> }) {
   const tenNgan = p.hoTen.trim().split(/\s+/).slice(-2).join(' ')
-  const viec = viecTiepTheo(p.lich, p.cards, p.onLich)
+  const { hoc, choi } = tachO(p)
+  const viec = viecTiepTheo(p.lich, hoc, p.onLich)
   const widgets = tomTat(p)
   const nv = skin.nhanVat ? (p.gioiTinh === 'nu' ? skin.nhanVat.nu : skin.nhanVat.nam) : null
   const bong = '0 2px 12px var(--sk-bg), 0 0 3px var(--sk-bg)'
@@ -80,7 +87,7 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
         <h1 className="text-[34px] font-bold leading-[1.05] md:text-[50px]" style={{ ...HEAD, textShadow: bong }}>Chào<br />{tenNgan}!</h1>
         <p className="mt-1 text-[13px] md:text-[15px]" style={{ color: 'var(--sk-muted)', textShadow: bong }}>{p.maHS.toUpperCase()}{p.lopMon ? ` · ${p.lopMon}` : ''}</p>
       </div>
-      {(widgets.length > 0 || p.mons.length > 1) && (
+      {widgets.length > 0 && (
         <div className="flex flex-wrap items-center gap-2">
           {widgets.map((w) => (
             <span key={w.nhan} className="flex items-baseline gap-1.5 rounded-full px-3.5 py-1.5" style={{ ...THE, borderRadius: '999px', clipPath: 'none' }}>
@@ -89,7 +96,6 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
               <span className="text-[11.5px]" style={{ color: 'var(--sk-muted)' }}>{w.phu}</span>
             </span>
           ))}
-          <ChonMon p={p} />
         </div>
       )}
 
@@ -105,29 +111,48 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
         </div>
       )}
 
+      {/* ── GÓC HỌC TẬP của MÔN đang chọn (Thùy 01/10): thanh môn → việc bổ trợ của môn → lưới ô học tập ── */}
+      <NhomHS>Học tập</NhomHS>
+      <ChonMon p={p} />
       {viec.laCa && <NutViec viec={viec} skin={skin} />}
-      <TheTheGioi p={p} skin={skin} />
       {p.soRetest > 0 && <NutRetest p={p} skin={skin} />}
+      <LuoiDoc cards={hoc} skin={skin} />
 
-      {/* LƯỚI Ô — 4 cột ô nhỏ như ảnh gốc (điện thoại), iPad dọc cùng lưới nhưng ô to */}
-      <div className="grid grid-cols-4 gap-2 md:gap-3">
-        {p.cards.map((c) => {
-          const anh = skin.anhO?.[c.id]
-          return (
-            <button key={c.id} disabled={c.disabled} onClick={c.onClick}
-              className={`relative flex min-h-[104px] flex-col items-center justify-start gap-1 px-1 pb-2 pt-2.5 text-center transition md:min-h-[168px] md:gap-1.5 md:px-2 md:pt-4 ${c.disabled ? 'opacity-50' : 'active:scale-[0.97]'}`} style={THE}>
-              {anh
-                ? <img src={anh} alt="" className="h-11 w-11 object-contain md:h-[76px] md:w-[76px]" />
-                : <span className="text-[24px] leading-none md:text-[36px]" style={skin.dauThayIcon ? { color: 'var(--sk-acc)' } : undefined} aria-hidden>{skin.dauThayIcon ?? c.icon ?? c.emoji ?? '•'}</span>}
-              <span className="text-[12px] font-bold leading-tight md:text-[16px]" style={HEAD}>{c.ten}</span>
-              <span className="line-clamp-2 text-[10px] leading-snug md:text-[12.5px]" style={{ color: mauPhu(c), fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500 }}>{c.sub}</span>
-              {!!c.badge && c.badge > 0 && <span className="absolute right-1 top-1 md:right-2 md:top-2"><Badge n={c.badge} /></span>}
-            </button>
-          )
-        })}
-      </div>
+      {/* ── GIẢI TRÍ — chung mọi môn, đổi môn không đổi ── */}
+      {(p.onTheGioi || choi.length > 0) && <NhomHS>Giải trí</NhomHS>}
+      <TheTheGioi p={p} skin={skin} />
+      <LuoiDoc cards={choi} skin={skin} />
     </div>
   )
+}
+
+// LƯỚI Ô khổ dọc — 4 cột ô nhỏ như ảnh gốc (điện thoại), iPad dọc cùng lưới nhưng ô to
+function LuoiDoc({ cards, skin }: { cards: HomeCard[]; skin: Skin }) {
+  if (cards.length === 0) return null
+  return (
+    <div className="grid grid-cols-4 gap-2 md:gap-3">
+      {cards.map((c) => {
+        const anh = skin.anhO?.[c.id]
+        return (
+          <button key={c.id} disabled={c.disabled} onClick={c.onClick}
+            className={`relative flex min-h-[104px] flex-col items-center justify-start gap-1 px-1 pb-2 pt-2.5 text-center transition md:min-h-[168px] md:gap-1.5 md:px-2 md:pt-4 ${c.disabled ? 'opacity-50' : 'active:scale-[0.97]'}`} style={THE}>
+            {anh
+              ? <img src={anh} alt="" className="h-11 w-11 object-contain md:h-[76px] md:w-[76px]" />
+              : <span className="text-[24px] leading-none md:text-[36px]" style={skin.dauThayIcon ? { color: 'var(--sk-acc)' } : undefined} aria-hidden>{skin.dauThayIcon ?? c.icon ?? c.emoji ?? '•'}</span>}
+            <span className="text-[12px] font-bold leading-tight md:text-[16px]" style={HEAD}>{c.ten}</span>
+            <span className="line-clamp-2 text-[10px] leading-snug md:text-[12.5px]" style={{ color: mauPhu(c), fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500 }}>{c.sub}</span>
+            {!!c.badge && c.badge > 0 && <span className="absolute right-1 top-1 md:right-2 md:top-2"><Badge n={c.badge} /></span>}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
+// Tách ô theo nhóm. Ô Thế giới BK đã có THẺ riêng ở khối Giải trí ⇒ bỏ ô trùng (đứng sát nhau trong cùng khối).
+function tachO(p: HomeProps) {
+  const choi = p.cards.filter((c) => c.nhom === 'choi' && !(p.onTheGioi && c.id === 'the_gioi'))
+  return { hoc: p.cards.filter((c) => c.nhom !== 'choi'), choi }
 }
 
 const mauPhu = (c: HomeCard) => c.subMau === 'do' ? MAU.sai : c.subMau === 'xanh' ? MAU.dung : c.subMau === 'ton' ? 'var(--sk-ink)' : 'var(--sk-muted)'
@@ -179,13 +204,14 @@ function AnhDaiDien({ p, size }: { p: HomeProps; size: number }) {
   )
 }
 
-// CHỌN MÔN — chỉ hiện khi em học ≥2 môn; màu đọc biến skin, không if theo skin
+// CHỌN MÔN — bản to, LUÔN hiện (em 1 môn thấy đúng môn của mình = nhãn khối học tập); màu đọc biến skin, không if theo skin
 function ChonMon({ p }: { p: HomeProps }) {
   return (
-    <ThanhChonMon mons={p.mons} mon={p.mon} onChon={p.onChonMon}
+    <ThanhChonMon mons={p.mons} mon={p.mon} onChon={p.onChonMon} dem={p.demMon} to luonHien
+      khung={{ ...THE, clipPath: 'none', borderRadius: '999px' }}
       nut={(chon) => chon
-        ? { background: 'var(--sk-acc)', color: 'var(--sk-badge-ink)', border: '1px solid var(--sk-acc)' }
-        : { background: 'var(--sk-surface)', color: 'var(--sk-ink)', border: '1px solid var(--sk-line)', backdropFilter: 'var(--sk-blur)', WebkitBackdropFilter: 'var(--sk-blur)' }} />
+        ? { background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)' }
+        : { background: 'transparent', color: 'var(--sk-ink)' }} />
   )
 }
 
@@ -257,6 +283,7 @@ const tomTat = (p: HomeProps) => [
 function loiNhanVat(v: Viec): string {
   if (v.laCa) return v.gap ? `Đến giờ ${v.tieuDe} rồi! Vào ca ngay nhé!` : `${v.nhan} có ${v.tieuDe} đó, nhớ đến nhé!`
   if (v.nhan === 'Việc cần làm') return `${v.tieuDe} đang chờ em đó!`
+  if (!v.onClick) return 'Môn này chưa có việc gì, em nghỉ chút nhé!'
   return 'Hôm nay luyện 10 câu cùng tớ nhé!'
 }
 
@@ -265,7 +292,8 @@ function loiNhanVat(v: Viec): string {
 // → lưới ô 4 cột (icon to giữa ô). Style không có nhân vật ⇒ cột trái bỏ, nội dung trải hết bề ngang.
 function ManNgang({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; onHinhNen: () => void; nutRef: RefObject<HTMLButtonElement> }) {
   const tenNgan = p.hoTen.trim().split(/\s+/).slice(-2).join(' ')
-  const viec = viecTiepTheo(p.lich, p.cards, p.onLich)
+  const { hoc, choi } = tachO(p)
+  const viec = viecTiepTheo(p.lich, hoc, p.onLich)
   const widgets = tomTat(p)
   const nv = skin.nhanVat ? (p.gioiTinh === 'nu' ? skin.nhanVat.nu : skin.nhanVat.nam) : null
   const bong = '0 2px 14px var(--sk-bg), 0 0 3px var(--sk-bg)'
@@ -298,7 +326,7 @@ function ManNgang({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
 
         <div className="flex min-w-0 flex-col gap-4 pb-2 pt-4">
           <h1 className="text-[46px] font-bold leading-[1.05] xl:text-[54px]" style={{ ...HEAD, textShadow: bong }}>Chào<br />{tenNgan}!</h1>
-          {(widgets.length > 0 || p.mons.length > 1) && (
+          {widgets.length > 0 && (
             <div className="flex flex-wrap items-center gap-2.5">
               {widgets.map((w) => (
                 <span key={w.nhan} className="flex items-baseline gap-2 rounded-full px-4 py-2" style={{ ...THE, borderRadius: '999px', clipPath: 'none' }}>
@@ -307,36 +335,51 @@ function ManNgang({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
                   <span className="text-[12px]" style={{ color: 'var(--sk-muted)' }}>{w.phu}</span>
                 </span>
               ))}
-              <ChonMon p={p} />
             </div>
           )}
+
+          {/* ── GÓC HỌC TẬP của MÔN đang chọn (Thùy 01/10) ── */}
+          <NhomHS>Học tập</NhomHS>
+          <ChonMon p={p} />
           {(() => {
-            const khoi = [viec.laCa ? <NutViec viec={viec} skin={skin} to /> : null, p.onTheGioi ? <TheTheGioi p={p} skin={skin} to /> : null,
-              p.soRetest > 0 ? <NutRetest p={p} skin={skin} to /> : null].filter(Boolean)
+            const khoi = [viec.laCa ? <NutViec viec={viec} skin={skin} to /> : null, p.soRetest > 0 ? <NutRetest p={p} skin={skin} to /> : null].filter(Boolean)
             return khoi.length > 0 && (
               <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-3 xl:gap-4">
-                {khoi.map((k, i) => <div key={i} className={`flex min-w-0 ${khoi.length === 1 || (khoi.length === 3 && i === 0) ? 'col-span-2' : ''}`}>{k}</div>)}
+                {khoi.map((k, i) => <div key={i} className={`flex min-w-0 ${khoi.length === 1 ? 'col-span-2' : ''}`}>{k}</div>)}
               </div>
             )
           })()}
-          <div className={`grid gap-3 xl:gap-4 ${p.cards.length > 8 ? 'grid-cols-5' : 'grid-cols-4'}`}>
-            {p.cards.map((c) => {
-              const anh = skin.anhO?.[c.id]
-              return (
-                <button key={c.id} disabled={c.disabled} onClick={c.onClick}
-                  className={`relative flex min-h-[148px] flex-col items-center justify-center gap-1 px-2 py-3 text-center transition xl:min-h-[176px] xl:gap-1.5 xl:px-3 xl:py-4 ${c.disabled ? 'opacity-50' : 'hover:-translate-y-0.5 active:scale-[0.98]'}`} style={THE}>
-                  {anh
-                    ? <img src={anh} alt="" className="h-16 w-16 object-contain xl:h-[84px] xl:w-[84px]" />
-                    : <span className="text-[40px] leading-none" style={skin.dauThayIcon ? { color: 'var(--sk-acc)' } : undefined} aria-hidden>{skin.dauThayIcon ?? c.icon ?? c.emoji ?? '•'}</span>}
-                  <span className="text-[15px] font-bold leading-tight xl:text-[17px]" style={HEAD}>{c.ten}</span>
-                  <span className="text-[12px] leading-snug xl:text-[13px]" style={{ color: mauPhu(c), fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500 }}>{c.sub}</span>
-                  {!!c.badge && c.badge > 0 && <span className="absolute right-2.5 top-2.5"><Badge n={c.badge} /></span>}
-                </button>
-              )
-            })}
-          </div>
+          <LuoiNgang cards={hoc} skin={skin} />
+
+          {/* ── GIẢI TRÍ — chung mọi môn ── */}
+          {(p.onTheGioi || choi.length > 0) && <NhomHS>Giải trí</NhomHS>}
+          {p.onTheGioi && <div className="flex min-w-0"><TheTheGioi p={p} skin={skin} to /></div>}
+          <LuoiNgang cards={choi} skin={skin} />
         </div>
       </div>
+    </div>
+  )
+}
+
+// LƯỚI Ô khổ ngang — 4 cột (5 khi nhiều ô), icon to giữa ô
+function LuoiNgang({ cards, skin }: { cards: HomeCard[]; skin: Skin }) {
+  if (cards.length === 0) return null
+  return (
+    <div className={`grid gap-3 xl:gap-4 ${cards.length > 8 ? 'grid-cols-5' : 'grid-cols-4'}`}>
+      {cards.map((c) => {
+        const anh = skin.anhO?.[c.id]
+        return (
+          <button key={c.id} disabled={c.disabled} onClick={c.onClick}
+            className={`relative flex min-h-[148px] flex-col items-center justify-center gap-1 px-2 py-3 text-center transition xl:min-h-[176px] xl:gap-1.5 xl:px-3 xl:py-4 ${c.disabled ? 'opacity-50' : 'hover:-translate-y-0.5 active:scale-[0.98]'}`} style={THE}>
+            {anh
+              ? <img src={anh} alt="" className="h-16 w-16 object-contain xl:h-[84px] xl:w-[84px]" />
+              : <span className="text-[40px] leading-none" style={skin.dauThayIcon ? { color: 'var(--sk-acc)' } : undefined} aria-hidden>{skin.dauThayIcon ?? c.icon ?? c.emoji ?? '•'}</span>}
+            <span className="text-[15px] font-bold leading-tight xl:text-[17px]" style={HEAD}>{c.ten}</span>
+            <span className="text-[12px] leading-snug xl:text-[13px]" style={{ color: mauPhu(c), fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500 }}>{c.sub}</span>
+            {!!c.badge && c.badge > 0 && <span className="absolute right-2.5 top-2.5"><Badge n={c.badge} /></span>}
+          </button>
+        )
+      })}
     </div>
   )
 }

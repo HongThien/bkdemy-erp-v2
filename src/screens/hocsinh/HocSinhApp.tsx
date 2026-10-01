@@ -72,6 +72,12 @@ const THI_LOAI = new Set(['et', 'de_thi', 'bo_tro_test', 'retest'])
 // Bảng xếp hạng (Thùy 21/08: "ko phải chỉ 5T. Hiện cho các khối tiểu học") — mọi khối cấp 1, MỖI
 // EM xếp hạng với ĐÚNG khối của mình (BangXepHang tự đọc khoiCuaHS(), không hardcode '5T' nữa).
 const KHU_CHI_CAP1 = new Set<KhuId>(['xep_hang'])
+// MÔN LÀ TRỤC NGOÀI CÙNG (Thùy 01/10: "chuyển môn là phải chuyển các tính năng học tập tương ứng. Chơi thì không cần"):
+// ô CHƠI = chung mọi môn (khối "Giải trí" ở Home, đổi môn không đổi); mọi ô còn lại thuộc góc học tập của môn đang chọn.
+const KHU_CHOI = new Set<KhuId>(['the_gioi', 'may_man', 'thanh_tuu', 'vi_xu'])
+// Ô học tập rút câu từ KHO của môn — môn chưa có kho (co_kho=false, vd Tiếng Anh) thì khoá + báo, KHÔNG gọi RPC.
+// (Ô bài trên lớp/ET/BTVN/đề thi không cần kho: đọc bài thầy cô phát hành, môn nào cũng chạy.)
+const KHU_CAN_KHO = new Set<KhuId>(['tu_luyen', 'thong_tin', 'so_tay', 'xep_hang'])
 type KhuId = 'giao_trinh' | 'et' | 'btvn' | 'tu_luyen' | 'thong_tin' | 'de_thi_thu' | 'xep_hang' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi'
 // direct = ô này KHÔNG đi qua màn "danh sách nhiều bài" (setKhu+tab) — bấm vào thẳng 1 màn riêng.
 // Tự luyện là 1 PHIÊN đang-tiếp-diễn trong ngày (không phải danh sách bài đã phát hành theo ngày
@@ -343,8 +349,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     demBaiTraChuaXem().catch(() => 0),
   ]).then(([tb, btvn]) => setChuaDoc(tb + btvn))
 
-  // MÔN (28/09, vụ Gia Khiêm): em học nhiều môn thì chọn môn ở màn chính; mọi màn con đọc môn đang chọn qua
-  // monCuaHS(). Lỗi mạng ⇒ danh sách rỗng ⇒ không vẽ thanh chọn, màn con tự báo lỗi của nó như trước.
+  // MÔN (28/09 vụ Gia Khiêm; 01/10 thành trục ngoài cùng): chọn môn ở màn chính ⇒ cả góc học tập (bài trên lớp/ET/BTVN,
+  // bổ trợ, tự luyện, thông tin học tập, sổ tay, học từ đầu…) chạy theo môn đó; màn con đọc môn qua monCuaHS()/useMonHS().
+  // Lỗi mạng ⇒ danh sách rỗng ⇒ không vẽ thanh chọn, màn con tự báo lỗi của nó như trước.
   const [lopMons, setLopMons] = useState<LopMonHS[]>([])
   const [monChon, setMonChon] = useState<string | null>(null)
   useEffect(() => { lopMonCuaHS().then((ds) => { setLopMons(ds); setMonChon(monDangChon(ds)) }).catch(() => {}) }, [])
@@ -406,6 +413,11 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     return () => clearInterval(id)
   }, [direct, khu])
 
+  // Bổ trợ của MÔN đang chọn. Ca ĐANG TỚI GIỜ (vao_ca) của môn khác vẫn giữ — không để em lỡ ca chỉ vì đang đứng ở môn
+  // khác; buổi không gắn môn (mon null) hiện ở mọi môn.
+  const lichMon = boTro.lich.filter((l) => !monChon || !l.mon || l.mon === monChon || l.vao_ca)
+  const monCoKho = lopMons.find((l) => l.mon === monChon)?.co_kho ?? true
+
   // Lớp 9–12 bỏ màu gán theo giới tính ở các màn con (HS chê — spec-giao-dien-hs.md §3): null = bản trung tính.
   const gt = nhom912 ? null : gioiTinh
 
@@ -466,7 +478,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onPickDang={(d, cde) => { setHtdMon(duoiLoTrinhMon); setHtdChuyenDe(cde); setHtdDang({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, xong: d.xong }); setDirect('htd_dang') }}
     onBack={() => setDirect(null)} />
   if (direct === 'retest') return <RetestHS hocSinhId={hocSinhId} gioiTinh={gt} onXong={() => setDirect(null)} LamET={LamET} />
-  if (direct === 'lich_bo_tro') return <LichBoTroHS lich={boTro.lich} coCa={boTro.coCa} gioiTinh={gt} onXong={() => setDirect(null)} onVaoCa={onVaoCaBoTro} />
+  if (direct === 'lich_bo_tro') return <LichBoTroHS lich={lichMon} coCa={boTro.coCa} gioiTinh={gt} onXong={() => setDirect(null)} onVaoCa={onVaoCaBoTro} />
   if (direct === 'hop_thu') return <HopThuHS onXong={() => { setDirect(null); taiChuaDoc() }} />
   if (direct === 'may_man') return <MayManHS gioiTinh={gt} onXong={() => setDirect(null)} onNhiemVu={() => setDirect('nhiem_vu')} />
   if (direct === 'thanh_tuu') return <ThanhTuuHS gioiTinh={gt} onXong={() => setDirect(null)} onAlbum={() => { setTuHoSo(false); setDirect('album') }} />
@@ -484,10 +496,20 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   }
 
   const xongCua = (t: BaiTestCuaHS) => t.bai_lam?.trang_thai === 'da_nop'
+  // Bài trên lớp/ET/BTVN/đề thi của MÔN đang chọn (bai_test.mon) — trước 01/10 hiện lẫn mọi môn.
   const cuaKhu = (id: KhuId) => {
     const loai = KHU.find((k) => k.id === id)?.loai
-    return loai ? (tests ?? []).filter((t) => t.loai === loai) : []
+    return loai ? (tests ?? []).filter((t) => t.loai === loai && (!monChon || t.mon === monChon)) : []
   }
+  // Số việc đang chờ của TỪNG môn (chấm số trên nút môn ở thanh chọn môn) = bài còn làm được ở các ô danh sách ĐANG HIỆN
+  // (cấp 3; cấp 1–2 không có ô ET/BTVN) + buổi bổ trợ hôm nay. Đếm item hiển thị cho badge, không phải chỉ số nghiệp vụ.
+  const loaiHien = new Set(cap1 || cap2 ? [] : KHU.filter((k) => !KHU_CHI_CAP1.has(k.id) && k.loai).map((k) => k.loai!))
+  const demMon: Record<string, number> = Object.fromEntries(lopMons.map((m) => [m.mon,
+    (tests ?? []).filter((t) => t.mon === m.mon && loaiHien.has(t.loai) && !xongCua(t) && !daHetHan(t)).length
+    + boTro.lich.filter((l) => l.mon === m.mon && l.hom_nay).length]))
+  // Ô cần kho mà môn đang chọn chưa có kho ⇒ khoá + báo (đè sub/onClick của ô).
+  const khoaThieuKho = (id: KhuId): Partial<HomeCard> => KHU_CAN_KHO.has(id) && !monCoKho
+    ? { sub: `${monChon} chưa mở`, subMau: 'xam', disabled: true, onClick: undefined, badge: 0 } : {}
   // Danh tính hiển thị = lớp của MÔN ĐANG CHỌN (hs_lop_mon_cua_toi). Bản cũ lấy tests[0] — em nhiều môn thì
   // hiện lớp của bài test nào tình cờ đứng đầu; giữ làm đường lùi khi danh sách môn chưa tải được.
   const lopCuaMon = lopMons.find((l) => l.mon === monChon)
@@ -504,11 +526,11 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (!khu && cap1) return <HomeCap1 hoTen={hoTen} maHS={maHS} maymanCoLuot={maymanCoLuot}
     onOpen={(d) => setDirect(d === 'tu_luyen' ? 'tu_luyen_chon' : d)} chuaDoc={chuaDoc} onHopThu={() => setDirect('hop_thu')}
     extra={<>
-      <ThanhChonMon mons={lopMons} mon={monChon} onChon={doiMon} className="mt-5"
+      <ThanhChonMon mons={lopMons} mon={monChon} onChon={doiMon} className="mt-5" dem={demMon} luonHien
         nut={(chon) => chon
           ? { background: 'linear-gradient(135deg, #6549ea, #8368f7)', color: '#fff', boxShadow: '0 6px 16px rgba(101,73,234,.28)', fontSize: 15, padding: '9px 20px' }
           : { background: '#fff', color: '#576073', boxShadow: '0 6px 16px rgba(31,47,79,.06)', fontSize: 15, padding: '9px 20px' }} />
-      <BoTroBanner lich={boTro.lich} coCa={boTro.coCa} soRetest={boTro.soRetest} desktop onLich={() => setDirect('lich_bo_tro')} onCa={() => onVaoCaBoTro(boTro.lich.find((l) => l.vao_ca))} onRetest={() => setDirect('retest')} />
+      <BoTroBanner lich={lichMon} coCa={boTro.coCa} soRetest={boTro.soRetest} desktop onLich={() => setDirect('lich_bo_tro')} onCa={() => onVaoCaBoTro(boTro.lich.find((l) => l.vao_ca))} onRetest={() => setDirect('retest')} />
     </>} />
   // CẤP 2 (khối 6-9) — HomeHS mobile-first + KHU_CAP2 (đã build cho phone: em cấp 2 có thể dùng
   // điện thoại). CẤP 3 (khối 10-12): giữ KHU cũ (BTL/ET/BTVN), không đụng flow đang chạy.
@@ -537,11 +559,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
             : ['', 'xam']
           const badge = k.id === 'may_man' && maymanCoLuot ? 1 : 0
           return {
-            id: k.id, ten: k.ten, icon: k.icon, sub, subMau, badge, disabled: !!k.sapCo, ...KIT_O[k.id], ...(k.sapCo ? { ill: 'mock_exam_locked', emoji: undefined, doodle: 'Sắp ra mắt! Hãy chờ nhé!', tone: 'gray' as const } : {}),
+            id: k.id, ten: k.ten, icon: k.icon, sub, subMau, badge, disabled: !!k.sapCo, nhom: KHU_CHOI.has(k.id) ? 'choi' : 'hoc', ...KIT_O[k.id], ...(k.sapCo ? { ill: 'mock_exam_locked', emoji: undefined, doodle: 'Sắp ra mắt! Hãy chờ nhé!', tone: 'gray' as const } : {}),
             onClick: k.sapCo ? undefined : k.direct
               ? () => setDirect(k.id === 'tu_luyen' ? 'tu_luyen_chon' : (k.id as 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi'))
               : () => { setKhu(k.id); setTab('chua') },
-          }
+            ...khoaThieuKho(k.id),
+          } satisfies HomeCard
         }), ...theCardHTD]
       : [...KHU.filter((k) => !KHU_CHI_CAP1.has(k.id)).map((k) => {
           const sapCo = !k.loai && !k.direct
@@ -556,21 +579,22 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
             : nQuaHan > 0 ? [`${nQuaHan} bài quá hạn`, 'do']
             : ds.length ? ['Xong hết rồi', 'xanh'] : ['Chưa có bài', 'xam']
           return {
-            id: k.id, ten: k.ten, icon: k.icon, sub, subMau, badge: nChuaLam, disabled: sapCo, ...KIT_O[k.id],
+            id: k.id, ten: k.ten, icon: k.icon, sub, subMau, badge: nChuaLam, disabled: sapCo, nhom: KHU_CHOI.has(k.id) ? 'choi' : 'hoc', ...KIT_O[k.id],
             onClick: sapCo ? undefined : k.direct ? () => setDirect(k.id === 'tu_luyen' ? 'tu_luyen_chon' : (k.id as 'thong_tin' | 'xep_hang' | 'so_tay' | 'the_gioi')) : () => { setKhu(k.id); setTab('chua') },
-          }
+            ...khoaThieuKho(k.id),
+          } satisfies HomeCard
         }), ...theCardHTD]
     // Lớp 9–12: cùng danh sách ô (giữ nguyên chức năng từng khối), khác màn vẽ — HomeHS912 + skin tự chọn.
     if (nhom912 && giaoDien !== undefined) return <HomeHS912 giaoDien={giaoDien} onDaLuu={setGiaoDien} data={duLieu912}
       hoTen={hoTen} maHS={maHS} lopMon={lopMon} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
-      mons={lopMons} mon={monChon} onChonMon={doiMon}
-      lich={boTro.lich} soRetest={boTro.soRetest} cards={cards}
+      mons={lopMons} mon={monChon} onChonMon={doiMon} demMon={demMon}
+      lich={lichMon} soRetest={boTro.soRetest} cards={cards}
       onHopThu={() => setDirect('hop_thu')} onDoiMK={() => setDoiMK(true)} onThoat={() => supabase.auth.signOut()}
       onLich={() => setDirect('lich_bo_tro')} onRetest={() => setDirect('retest')} onHoSo={() => setDirect('ho_so')} gioiTinh={gioiTinh}
       theGioi={tgHome} onTheGioi={() => setDirect('the_gioi')} />
     return <HomeHS hoTen={hoTen} maHS={maHS} lopMon={lopMon} gioiTinh={gt} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
       mons={lopMons} mon={monChon} onChonMon={doiMon}
-      lich={boTro.lich} soRetest={boTro.soRetest} cards={cards}
+      lich={lichMon} soRetest={boTro.soRetest} cards={cards}
       onHopThu={() => setDirect('hop_thu')} onDoiMK={() => setDoiMK(true)} onThoat={() => supabase.auth.signOut()}
       onLich={() => setDirect('lich_bo_tro')} onRetest={() => setDirect('retest')} />
   }
@@ -1171,7 +1195,7 @@ function XemDeKhongMCQ({ dang, loai, caus, desktop, onVeChiTiet, onSangTest }: {
   const laTest = loai === 'htd_test'
   return (
     <ManHS rong="hep" className="!gap-0">
-      <DauTrangHS tieuDe={dang.ten_dang} onBack={onVeChiTiet} />
+      <DauTrangHS tieuDe={dang.ten_dang} onBack={onVeChiTiet} theoMon />
       {/* Dải báo 1 dòng: test = phủ cam cảnh báo (làm ra giấy), luyện = thẻ thường. */}
       <div className="mt-3 px-3.5 py-3 text-[13px] leading-relaxed" style={laTest
         ? { ...THE_TRON, background: `linear-gradient(${NEN_CB}, ${NEN_CB}), var(--sk-surface)`, color: MAU.ink }
@@ -1214,10 +1238,10 @@ function BangXepHang({ onXong }: { onXong: () => void }) {
     if (daGoi.current) return
     daGoi.current = true
     ;(async () => {
-      const k = await khoiCuaHS()
+      const [k, m] = await Promise.all([khoiCuaHS(), monCuaHS()])
       setKhoi(k)
-      if (!k) { setRows([]); return }
-      setRows(await xepHangTuLuyen(k))
+      if (!k || !m) { setRows([]); return }
+      setRows(await xepHangTuLuyen(k, m)) // 01/10: BXH của môn đang chọn
     })().catch(() => setRows([]))
   }, [])
 
@@ -1225,7 +1249,7 @@ function BangXepHang({ onXong }: { onXong: () => void }) {
 
   return (
     <ManHS rong="hep">
-      <DauTrangHS tieuDe="Bảng xếp hạng" phu={khoi ? `Số câu làm ĐÚNG tự luyện · các bạn khối ${khoi}` : undefined} onBack={onXong} />
+      <DauTrangHS tieuDe="Bảng xếp hạng" phu={khoi ? `Số câu làm ĐÚNG tự luyện · các bạn khối ${khoi}` : undefined} onBack={onXong} theoMon />
 
       {rows.length === 0 ? (
         <TheHS className="mt-2 p-8 text-center">

@@ -13,6 +13,7 @@
 // qua `loai='tu_luyen'` khi build — KHÔNG xử ở đây (xem DEVLOG "còn treo" ngày viết file này).
 // ============================================================================
 import { supabase } from './supabase'
+import { MON_APP_HS } from './mon'
 import { masteryOfDang, MASTERY_CONFIG } from '../gami/mastery.js'
 
 const SO_CAU_MOI_LUOT = 10
@@ -119,23 +120,46 @@ export async function sinhTuLuyenChuDe(mon: string, maDang: string, chiCauMoi = 
 // vào học (mig 202609281900) + môn em ĐANG CHỌN ở thanh chọn môn màn chính. Lựa chọn nhớ theo MÁY
 // (localStorage — sở thích hiển thị của riêng người xem, không phải dữ liệu nghiệp vụ); luôn đối chiếu
 // lại với danh sách thật nên máy dùng chung 2 anh em / em đã rời lớp môn đó thì tự về môn đầu.
-export type LopMonHS = { mon: string; ten_lop: string }
+// 01/10 (Thùy: "phải chọn môn Toán, KHTN, Tiếng Anh; chuyển môn là chuyển tính năng học tập"): môn là TRỤC NGOÀI
+// CÙNG của app HS. Chỉ môn có góc học tập trên app (`MON_APP_HS`) mới hiện; `co_kho` = môn đã có kho câu chưa
+// (registry `_kho_co_mon` ở DB, mig 202610011120) — chưa có thì các ô cần kho (tự luyện, sổ tay…) báo "chưa mở",
+// KHÔNG gọi RPC (trước đó gọi là ra câu TOÁN gắn nhãn môn khác: 68 bài tự luyện 'Tiếng Anh' toàn câu Toán).
+export type LopMonHS = { mon: string; ten_lop: string; co_kho: boolean }
 export async function lopMonCuaHS(): Promise<LopMonHS[]> {
-  const { data, error } = await supabase.rpc('hs_lop_mon_cua_toi')
+  const { data, error } = await supabase.rpc('hs_mon_hoc_cua_toi')
   if (error) throw error
-  return ((data ?? []) as LopMonHS[]).map((d) => ({ mon: String(d.mon), ten_lop: String(d.ten_lop ?? '') }))
+  return ((data ?? []) as LopMonHS[])
+    .map((d) => ({ mon: String(d.mon), ten_lop: String(d.ten_lop ?? ''), co_kho: d.co_kho !== false }))
+    .filter((d) => (MON_APP_HS as readonly string[]).includes(d.mon))
 }
+
+// MÔN ĐANG CHỌN — 1 nguồn trong phiên (module-level, sống tới F5) + nhớ theo máy (localStorage — sở thích hiển thị,
+// không phải dữ liệu nghiệp vụ). HocSinhApp đặt; màn con đọc qua monCuaHS() (không gọi lại RPC) hoặc hook useMonHS()
+// (skin/KhungHS) để hiện nhãn môn ở đầu trang.
 const KHOA_MON_CHON = 'hs_mon_chon'
+let monHienTai: string | null = null
+const ngheMon = new Set<() => void>()
+export function layMonHienTai(): string | null { return monHienTai }
+export function ngheMonHienTai(f: () => void): () => void { ngheMon.add(f); return () => { ngheMon.delete(f) } }
+function datMonHienTai(mon: string | null) {
+  if (mon === monHienTai) return
+  monHienTai = mon
+  ngheMon.forEach((f) => f())
+}
 export function chonMonHS(mon: string): void {
   try { localStorage.setItem(KHOA_MON_CHON, mon) } catch { /* chế độ riêng tư: mất nhớ, app vẫn chạy */ }
+  datMonHienTai(mon)
 }
+// Đối chiếu lựa chọn đã nhớ với danh sách THẬT (máy dùng chung 2 anh em / em đã rời lớp môn đó ⇒ về môn đầu).
 export function monDangChon(ds: LopMonHS[]): string | null {
   let nho: string | null = null
   try { nho = localStorage.getItem(KHOA_MON_CHON) } catch { /* như trên */ }
-  return ds.find((d) => d.mon === nho)?.mon ?? ds[0]?.mon ?? null
+  const m = ds.find((d) => d.mon === nho)?.mon ?? ds[0]?.mon ?? null
+  datMonHienTai(m)
+  return m
 }
 export async function monCuaHS(): Promise<string | null> {
-  return monDangChon(await lopMonCuaHS())
+  return monHienTai ?? monDangChon(await lopMonCuaHS())
 }
 
 // Cấp 1 hay không — màn chính app HS cần ẨN 3 ô ET/BTVN/Bài tập trên lớp cho cấp 1 (Thùy: chỉ có
@@ -206,8 +230,8 @@ export type XepHangRow = { ma_hs: string; ho_ten: string; so_cau_dung: number; l
 
 // Bảng xếp hạng Tự luyện theo khối (Thùy 21/08: "xếp hạng các bạn 5T về thành tích làm tự luyện ở
 // nhà"). Chỉ số = số câu ĐÚNG cộng dồn — tính năng mới ra nên chưa cần lọc theo mùa.
-export async function xepHangTuLuyen(khoi: string): Promise<XepHangRow[]> {
-  const { data, error } = await supabase.rpc('hs_xep_hang_tu_luyen', { p_khoi: khoi })
+export async function xepHangTuLuyen(khoi: string, mon: string): Promise<XepHangRow[]> {
+  const { data, error } = await supabase.rpc('hs_xep_hang_tu_luyen', { p_khoi: khoi, p_mon: mon }) // 01/10: của môn đang chọn
   if (error) throw error
   return (data ?? []) as XepHangRow[]
 }
@@ -215,8 +239,8 @@ export async function xepHangTuLuyen(khoi: string): Promise<XepHangRow[]> {
 // ── LỊCH SỬ LÀM BÀI TRÊN APP (Thùy 12/09) — group theo ngày VN, mỗi ngày trả số câu/đúng/sai +
 // thời gian in-app đo bằng MAX-MIN cham_at trong bai_lam_cau. 30 ngày gần nhất. ──
 export type LichSuLamBaiRow = { ngay: string; so_cau: number; so_dung: number; so_sai: number; thoi_gian_giay: number }
-export async function layLichSuLamBai(soNgay = 30): Promise<LichSuLamBaiRow[]> {
-  const { data, error } = await supabase.rpc('fn_hs_lich_su_lam_bai', { p_so_ngay: soNgay })
+export async function layLichSuLamBai(mon: string, soNgay = 30): Promise<LichSuLamBaiRow[]> {
+  const { data, error } = await supabase.rpc('fn_hs_lich_su_lam_bai', { p_so_ngay: soNgay, p_mon: mon }) // 01/10: của môn đang chọn
   if (error) throw error
   return (data ?? []) as LichSuLamBaiRow[]
 }

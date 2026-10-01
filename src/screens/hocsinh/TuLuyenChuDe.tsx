@@ -13,7 +13,7 @@
 // ============================================================================
 import { useEffect, useState } from 'react'
 import { layDangChuDe, monCuaHS, type DangChuDe } from '../../lib/tuluyen'
-import { ManHS, MAU, THE, THE_TRON, HEAD } from './skin/KhungHS'
+import { ManHS, MAU, THE, THE_TRON, HEAD, NhanHS, useMonHS } from './skin/KhungHS'
 
 // Thùy 29/09: mọi màn theo STYLE (skin) em đang chọn — khung/màu lấy từ skin/KhungHS, bỏ nền mây + chồng sách + khẩu hiệu
 // + màu theo giới tính. THEME giữ đúng hình dạng cũ để các màn còn import (Album/NhiemVu/Rank) vẫn chạy, nhưng mọi giá trị
@@ -28,11 +28,17 @@ export const THEME = { nam: T_SKIN, nu: T_SKIN }
 export function Khung({ children }: { gioiTinh?: 'nam' | 'nu' | null; children: React.ReactNode }) {
   return <ManHS className="!gap-0">{children}</ManHS>
 }
+// Nút quay lại + nhãn MÔN đang chọn (01/10: mọi màn tự luyện thuộc góc học tập của 1 môn — em biết đang ở môn nào).
 export function NutBack({ onBack }: { onBack: () => void }) {
+  const mon = useMonHS()
   return (
-    <button onClick={onBack} className="mb-3 flex w-fit items-center gap-1.5 rounded-full px-3 py-1.5 text-[13px] font-semibold active:scale-95" style={THE_TRON}>
-      <span aria-hidden>‹</span> Quay lại
-    </button>
+    <div className="mb-3 flex items-center gap-2">
+      <button onClick={onBack} className="flex w-fit items-center gap-1.5 rounded-full px-3 py-1.5 text-[13px] font-semibold active:scale-95" style={THE_TRON}>
+        <span aria-hidden>‹</span> Quay lại
+      </button>
+      <span className="flex-1" />
+      {mon && <NhanHS dac>{mon}</NhanHS>}
+    </div>
   )
 }
 

@@ -8,8 +8,9 @@
 // KHÔNG `if (skin === …)`, KHÔNG gõ mã màu cố định cho nền/chữ/viền (trừ màu NGỮ NGHĨA đúng/sai/cảnh báo trong MAU).
 // Thùy 29/09: chỉ Anime RPG dùng thật (4 skin kia là thử) ⇒ mặc định RPG cho mọi em, kể cả cấp 1 (các màn bên trong).
 // ============================================================================
-import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
+import { useEffect, useState, useSyncExternalStore, type CSSProperties, type ReactNode } from 'react'
 import { laySkin, cheDoThat, bienCss, type GiaoDien } from './registry'
+import { layMonHienTai, ngheMonHienTai } from '../../../lib/tuluyen'
 
 export const GD_MAC_DINH: GiaoDien = { skin: 'rpg', che_do: 'toi', hinh_nen: 'mac_dinh' } // Thùy 29/09: chỉ RPG dùng thật
 export const GD_CAP1: GiaoDien = GD_MAC_DINH
@@ -84,7 +85,13 @@ export function ManHS({ children, rong = 'thuong', className = '' }: { children:
 }
 
 // Đầu trang: nút quay lại tròn + tiêu đề (font đầu của skin) + dòng phụ + chỗ phải (nút/nhãn).
-export function DauTrangHS({ tieuDe, phu, onBack, phai }: { tieuDe: ReactNode; phu?: ReactNode; onBack?: () => void; phai?: ReactNode }) {
+// Môn đang chọn ở màn chính (Thùy 01/10: môn là trục ngoài cùng của app HS) — đọc từ 1 nguồn trong lib/tuluyen.
+export const useMonHS = () => useSyncExternalStore(ngheMonHienTai, layMonHienTai)
+
+// theoMon: màn thuộc GÓC HỌC TẬP của 1 môn ⇒ hiện nhãn môn đang chọn ở góc phải đầu trang (em biết đang ở môn nào).
+// Màn chung (ví xu, may mắn, thế giới…) không bật.
+export function DauTrangHS({ tieuDe, phu, onBack, phai, theoMon }: { tieuDe: ReactNode; phu?: ReactNode; onBack?: () => void; phai?: ReactNode; theoMon?: boolean }) {
+  const mon = useMonHS()
   return (
     <div className="flex items-center gap-3">
       {onBack && (
@@ -94,6 +101,7 @@ export function DauTrangHS({ tieuDe, phu, onBack, phai }: { tieuDe: ReactNode; p
         <h1 className="truncate text-[21px] font-bold" style={{ ...HEAD, color: 'var(--sk-ink)', textShadow: '0 1px 8px var(--sk-bg)' }}>{tieuDe}</h1>
         {phu && <p className="mt-0.5 truncate text-[12.5px]" style={{ color: 'var(--sk-muted)', textShadow: '0 1px 8px var(--sk-bg)' }}>{phu}</p>}
       </div>
+      {theoMon && mon && <NhanHS dac>{mon}</NhanHS>}
       {phai}
     </div>
   )

@@ -36,7 +36,7 @@ const NEN = { dung: 'rgba(34,160,107,0.16)', sai: 'rgba(229,72,77,0.16)', canhBa
 function Kung({ title, sub, onBack, children }: { t?: Theme; title: string; sub?: string; onBack: () => void; children: ReactNode }) {
   return (
     <ManHS>
-      <DauTrangHS tieuDe={<span className="whitespace-normal">{title}</span>} onBack={onBack} />
+      <DauTrangHS tieuDe={<span className="whitespace-normal">{title}</span>} onBack={onBack} theoMon />
       {sub && <p className="-mt-1 text-[12.5px] leading-snug" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>{sub}</p>}
       <div>{children}</div>
     </ManHS>
@@ -181,7 +181,8 @@ function DangYeuScreen({ t, onBack }: { t: Theme; onBack: () => void }) {
 function LichSuScreen({ t, onBack }: { t: Theme; onBack: () => void }) {
   const [rows, setRows] = useState<LichSuLamBaiRow[] | null>(null)
   useEffect(() => {
-    layLichSuLamBai(30).then(setRows).catch(() => setRows([]))
+    // 01/10: lịch sử của MÔN đang chọn (trước gộp mọi môn)
+    monCuaHS().then((m) => (m ? layLichSuLamBai(m, 30) : [])).then(setRows).catch(() => setRows([]))
   }, [])
   return (
     <Kung t={t} title="Lịch sử làm bài" sub="30 ngày gần nhất — thời gian in-app đo từ câu đầu tiên đến câu cuối trong ngày" onBack={onBack}>
@@ -226,7 +227,7 @@ function XepHangScreen({ t, hocSinhId, onBack }: { t: Theme; hocSinhId: string; 
       const [a, b, c] = await Promise.all([
         xepHangTiLeDat(mon, khoi).catch(() => [] as XepHangTiLeRow[]),
         getBXHDiemMTKhoi(mon, khoi, ymHomNay()).catch(() => [] as BXHDiemMTRow[]),
-        xepHangTuLuyen(khoi).catch(() => [] as XepHangRow[]),
+        xepHangTuLuyen(khoi, mon).catch(() => [] as XepHangRow[]),
       ])
       setTiLe(a); setMt(b); setTuLuyen(c)
     })().catch(() => { setTiLe([]); setMt([]); setTuLuyen([]) })

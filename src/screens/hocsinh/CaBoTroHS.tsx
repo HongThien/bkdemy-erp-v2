@@ -286,7 +286,7 @@ export function LichBoTroHS({ lich, coCa, onXong, onVaoCa }: { lich: LichBoTro[]
   return (
     <ManHS className="!gap-0">
       <div className="sticky top-0 z-10 -mx-4 px-4 pb-3 pt-1 backdrop-blur-sm" style={{ background: 'color-mix(in srgb, var(--sk-bg) 70%, transparent)' }}>
-        <DauTrangHS tieuDe="Bổ trợ" phu={lich.length ? `${lich.length} buổi sắp tới` : 'Chưa có lịch bổ trợ'} onBack={onXong} />
+        <DauTrangHS tieuDe="Bổ trợ" phu={lich.length ? `${lich.length} buổi sắp tới` : 'Chưa có lịch bổ trợ'} onBack={onXong} theoMon />
       </div>
       {lich.length === 0 && (
         <div className="p-6 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>

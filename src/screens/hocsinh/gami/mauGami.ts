@@ -115,4 +115,4 @@ function hoSo(moi: boolean, khoe: string[]): HoSoGami {
 export const HOSO_KHA = hoSo(false, ['hercules', 'athena'])
 export const HOSO_MOI = hoSo(true, [])
 export const HOSO_THAN = hoSo(false, ['hercules', 'athena', 'helios'])
-export const MONS_2 = [{ mon: 'Toán', ten_lop: '7S2' }, { mon: 'KHTN', ten_lop: '7K1' }]
+export const MONS_2 = [{ mon: 'Toán', ten_lop: '7S2', co_kho: true }, { mon: 'KHTN', ten_lop: '7K1', co_kho: true }]

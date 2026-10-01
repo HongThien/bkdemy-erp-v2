@@ -32592,3 +32592,33 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
     Cách mới: `vite.config.ts` thêm cổng `/_snap` + `window.chup(ten)` tự chụp canvas ra `.snap/`; tua bằng `GAME.vong(t)` theo lô 0,1 giây có nhường lượt (tua đồng bộ một mạch thì các `await` không chạy tiếp).
   - Đã xem: vào trận, cắn, dậm, thiên thạch, phun, nổi giận, kiệt sức → bắt 18% (ép qua) → vào đội, thua → hồi sinh.
   - `tsc` sạch, không lỗi console. Chưa chơi bằng tay ở tốc độ thật (pane bị che).
+
+## 2026-10-01 (chiều) — App HS: MÔN thành trục ngoài cùng (Toán · KHTN · Tiếng Anh) + chặn kho Toán rò sang môn khác · mig 202610011120 đã áp
+
+- **Hỏi (Thùy):** "HS học 2 môn KHTN và Toán vào app chỉ thấy KHTN. Sửa lại toàn bộ cấu trúc app — phải chọn môn Toán, KHTN, Tiếng Anh;
+  chuyển môn là chuyển tính năng học tập tương ứng. Chơi thì không cần."
+- **Kiểm:** xếp lớp ĐÚNG (25 em Toán+KHTN, 5 em Toán+KHTN+Anh…); `hs_lop_mon_cua_toi` (28/09) trả đủ môn; bundle prod `hs-CGHoHDlz.js` CÓ thanh chọn môn.
+  Vậy "chỉ thấy KHTN" = thanh chọn 28/09 là dải nút nhỏ lẫn cạnh widget + nửa app KHÔNG theo môn: danh sách ET/BTVN/bài trên lớp/đề thi hiện lẫn
+  mọi môn, lịch bổ trợ lẫn môn, lịch sử làm bài + BXH tự luyện gộp mọi môn.
+- **Lỗi thật đào ra:** registry `_kho_cau_tbl/_kho_ban_do_tbl/_kho_lt_tbl` + `hs_dang_evals` rẽ `KHTN` / `else` ⇒ môn nào không phải KHTN rơi về KHO TOÁN.
+  Chọn Tiếng Anh ⇒ Tự luyện/Thông tin học tập hiện dạng Toán. Dữ liệu đã nhiễm: **68 bài tự luyện `mon='Tiếng Anh'` (5 em, từ 21/08) + 2 bài `'Văn'`
+  (1 em), 851 dòng `tu_luyen_dang_lan`, toàn mã dạng T…** (bản cũ `hs_mon_cua_toi` sắp chữ cái: 'Tiếng Anh' < 'Toán'). CHƯA sửa dữ liệu — chờ Thùy.
+- **DB (mig 202610011120, `migrate.mjs --only`, owner claude_build):** `_kho_co_mon(mon)` = registry môn có kho (Toán, KHTN) · `hs_mon_hoc_cua_toi()` =
+  (mon, ten_lop, co_kho) · overload `hs_xep_hang_tu_luyen(khoi, mon)` + `fn_hs_lich_su_lam_bai(so_ngay, mon)` (bản cũ giữ cho PWA cũ) · chèn 1 dòng chặn
+  sau `begin` (thân lấy từ `pg_get_functiondef`, `scripts/_gen_mig_chan_ro_mon.mjs`): đọc (`hs_dang_evals`, `tu_luyen_chu_de_ds_dang`, `htd_lo_trinh`)
+  ⇒ rỗng; sinh bài (`tu_luyen_sinh`, 3 bản `tu_luyen_chu_de_sinh`, `tu_luyen_dien_sinh`, `thu_thach_sinh`) ⇒ "Môn % chưa có kho bài trên app.".
+  KHÔNG đụng `_kho_*_tbl` (22 hàm gọi, có luồng staff bổ trợ) — để việc riêng. `hs_sotay_*` owner postgres ⇒ không replace được, chặn ở app.
+- **Thử:** chạy mig trong transaction + ROLLBACK, giả JWT Gia Khiêm (`scripts/_thu_mig_chan_ro_mon.mjs`): Toán/KHTN không đổi (evals 348/177, ds dạng
+  57/66); Tiếng Anh/Văn rỗng / báo lỗi; ACL bản mới không có anon. Sau áp: kiểm lại trên DB thật, Tiếng Anh `tu_luyen_chu_de_ds_dang` = [].
+- **App:** `MON_APP_HS` (lib/mon.ts, Văn chưa vào) · môn đang chọn = 1 nguồn module-level trong tuluyen.ts (`layMonHienTai/ngheMonHienTai`, nhớ
+  localStorage) ⇒ `monCuaHS()` không gọi lại RPC, `useMonHS()` + `DauTrangHS theoMon` hiện nhãn môn ở đầu màn học tập (tự luyện, thông tin học tập,
+  sổ tay, danh sách ET/BTVN, học từ đầu, lịch bổ trợ, BXH). `ThanhChonMon` bản `to` (chia đều, tên lớp dưới tên môn, LUÔN hiện kể cả 1 môn, chấm số việc
+  của môn KHÁC). Home 6–12 tách 2 khối: **Học tập** (thanh môn → ca bổ trợ của môn → ô `nhom='hoc'`) / **Giải trí** (thẻ Thế giới → Thành tựu · May mắn
+  · Ví xu; ô Thế giới trùng thẻ thì bỏ). HocSinhApp: `KHU_CHOI` · `KHU_CAN_KHO` (môn co_kho=false ⇒ ô tự luyện/thông tin/sổ tay/BXH khoá "X chưa mở") ·
+  bài theo `bai_test.mon` · lịch bổ trợ theo môn (ca ĐANG TỚI GIỜ môn khác vẫn hiện — không để em lỡ ca) · bỏ 2 đường lùi cứng `'Toán'` (SoTay, DienO).
+- **Verify UI:** `hs.html?demo=912` (mới, dev-only; `&khoi=10` lưới cấp 3, `&mot` 1 môn) ở 375×812 và 1180×820: đổi Toán→KHTN đổi lớp 9B1→9K3 + hiện ca
+  bổ trợ KHTN; Tiếng Anh khoá 3 ô cần kho, nhân vật không rủ "luyện 10 câu"; Giải trí đứng yên. tsc sạch · check:style-hs ✔ · build:hs OK.
+  **CHƯA đăng nhập HS thật** (không có mật khẩu) — đường dữ liệu thật kiểm ở tầng DB bằng giả JWT.
+- **Còn treo:** (a) sửa 70 bài tự luyện + 851 dòng `tu_luyen_dang_lan` gắn nhầm 'Tiếng Anh'/'Văn' về 'Toán' (nhân chứng: mã dạng T…) — cần Thùy gật;
+  (b) `_kho_*_tbl` còn fallback về Toán cho môn lạ (luồng staff); (c) Hòm thư/Thành tựu vẫn chung mọi môn (có nhãn môn từng dòng) — đúng ý "chung";
+  (d) HomeCap1 (cấp 1) chỉ thêm thanh môn luôn hiện + lịch theo môn, chưa tách khối Học tập/Giải trí.
