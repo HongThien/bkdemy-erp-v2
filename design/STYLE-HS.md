@@ -16,6 +16,7 @@
 | Nhân vật Home NGANG (PC/iPad) — nam + nữ, PNG trong suốt | `nv_nam.png` · `nv_nu.png` → `nhanVat` | Home ngang đứng nửa trái + bong bóng thoại (bố cục theo ảnh gốc style). Chọn theo giới tính HS, KHÔNG đổi màu theo giới tính. Không có ⇒ Home ngang trải hết bề ngang |
 | Trang trí (hoa văn góc, gạch phân cách) | `corner.png`, `divider.png` → `trangTri` | |
 | Font | `hs.html` (Google Fonts, có tiếng Việt) | chỉ khai font style thật sự dùng |
+| Bảng màu 3D của bản đồ phiêu lưu (thế giới · lục địa · chặng · màn đấu) | `skin/the3d/bangMau<id>.ts` → khai `the3d` trong style (hợp đồng `skin/the3d/kieuMau.ts`) | Cảnh 3D viết bằng CODE, chỉ đọc màu qua bảng này (không gõ hex trong màn). Thiếu `the3d` ⇒ màn phiêu lưu báo "style chưa có bản đồ 3D". Quái/boss cắm qua `skin/the3d/nguonQuai.ts` (Thùy thiết kế riêng) |
 | Ảnh gốc từ ChatGPT (chưa nén) | `design/bk-ui-src/…` · ảnh toàn cảnh chuẩn trong `design/handoff/<kit>/reference/` | nguồn để nén lại khi cần |
 
 Style RPG hiện tại: `skin/styles/rpg.ts` + `public/bk-ui/hs/skin/rpg/` (3 nền: Lâu đài — ảnh 37 bản dọc · Đảo trời · Đêm sao; 13 icon ô;

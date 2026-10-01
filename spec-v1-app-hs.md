@@ -153,8 +153,14 @@ Hạ xong con nào thì con kế bước vào ngay trong lượt (boss cuối v�
 **⏳ CÒN CHỜ Thùy:** lượt KHÔNG được tính (bấm quá nhanh, đúng dưới 50%) thì quái có mất máu không? CTO đề xuất: KHÔNG, máu giữ nguyên (mockup đang làm vậy). Nghĩa là
 các câu của lượt bị bỏ không được tính vào mastery của dạng ⇒ luồng Số liệu phải làm thêm. Chưa chốt thì chưa làm.
 
-**Phần nào CODE vẽ, phần nào ChatGPT vẽ** (để đơn hình gọn): lục địa (blob có bờ biển), vùng và biên giới (Voronoi có trọng số + gợn sóng), con đường, thanh máu, sương, cờ,
-hiệu ứng trúng đòn/hồi máu **đều do code**. ChatGPT chỉ vẽ **chất liệu (texture) lấp vào hình do code vẽ + sprite**: xem Đơn 6 v2 trong `design/DON-HANG-SKIN-HS.md`.
+**⭐ HƯỚNG ĐỒ HOẠ (Thùy chốt 01/10 tối): 2.5D/3D bằng THREE.JS, hình viết bằng CODE** — không đặt ChatGPT vẽ bản đồ/nền/cây/địa hình. ChatGPT chỉ làm **icon**.
+**Quái vật và boss do Thùy thiết kế riêng** (không dựng ở đây): cảnh sinh quái qua 1 điểm cắm `skin/the3d/nguonQuai.ts` (`sinhQuai()` / `datNguonQuai()`); bộ dựng trong `quai.ts` chỉ là CHỖ GIỮ CHỖ để cảnh chạy được. Thay bằng hình/model của Thùy là viết 1 hàm cùng giao diện `Quai`, không sửa cảnh nào.
+Cách làm theo `design/nghien-cuu-do-hoa-little-habitats.md`: 1 bảng màu (`skin/the3d/bangMauRpg.ts`, khai trong `Skin.the3d`) · 1 bộ dựng khối cơ bản nướng màu đỉnh (`dungHinh.ts`) · 1 bộ vật liệu (gió, viền sáng) · ánh sáng giờ vàng · nước có bọt sóng theo khoảng cách tới bờ.
+- **Code ở:** `src/screens/hocsinh/skin/the3d/` (động cơ: `sanKhau`, `hinhHoc`, `diaHinh`, `trangTri`; 4 cảnh: `canhTheGioi` · `canhLucDia` · `canhChang` · `canhDau`) và `src/screens/hocsinh/phieuluu/` (màn React: `TheGioiView` · `LucDiaView` · `ChangView` · `DauView` · `PhieuLuuHS` container thật · `XemPhieuLuu` trang thử).
+- **Xem thử:** `hs.html?xem=phieu_luu` (dữ liệu mẫu) · `&tang=luc_dia&luc=C` · `&tang=chang&luc=C&vung=C2` · `&tang=dau&luc=C&vung=C1`. Bản thật: Tự luyện › Theo chủ đề.
+- **three chỉ nạp khi mở màn phiêu lưu** (import động, gói riêng ~550KB, khoảng 140KB gzip), không nằm trong bundle chính. Máy không có WebGL thì màn hiện danh sách thường.
+- **Đơn 6 v2 trong `design/DON-HANG-SKIN-HS.md` ĐÃ BỊ THAY** (không gửi ChatGPT nữa): chỉ còn icon, và quái/boss theo thiết kế của Thùy.
+- **Việc còn lại phần đồ hoạ:** thay quái giữ chỗ bằng quái của Thùy · style Thị trấn cần `the3d` riêng (bảng màu dễ thương hơn) · soi hiệu năng trên iPad thật (đã có tự hạ độ phân giải khi tụt khung) · khổ dọc mới ở mức "đọc và bấm được" (nhãn thu thành số) · chủ đề không phải kiến thức khối ("Đề thi đầu vào") đang hiện trên bản đồ, chờ Thùy chốt ẩn.
 
 ## 5. Hai style
 

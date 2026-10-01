@@ -5,6 +5,7 @@
 // Quy ước tên file: bg_<nền>_ngang|doc*.jpg · o_<ô>.png · b_<banner>.png · corner.png/divider.png. Xem design/STYLE-HS.md.
 // ============================================================================
 import type { Skin } from '../kieu'
+import { RPG_3D } from '../the3d/bangMauRpg'
 
 const A = '/bk-ui/hs/skin/rpg'
 const BVP = "'Be Vietnam Pro', system-ui, sans-serif"
@@ -46,6 +47,7 @@ export const RPG: Skin = {
   anhBanner: { lich: `${A}/b_lich.png`, kiemTraLai: `${A}/b_kiem_tra_lai.png` },
   theTiep: { bg: 'linear-gradient(100deg, rgba(233,199,123,0.26) 0%, rgba(20,26,51,0.78) 70%)', ink: '#f3ead0', border: '1px solid rgba(233,199,123,0.7)' },
   nenTen: 'rgba(20,26,51,0.6)',
+  the3d: RPG_3D,
   // Ảnh gốc #3 (nam + mèo đen) · #4 (nữ + cú trắng), 1122×1402 PNG trong suốt ⇒ nén 640×800.
   nhanVat: { nam: `${A}/nv_nam.png`, nu: `${A}/nv_nu.png` },
 }

@@ -4,7 +4,7 @@
 //   → hiện đáp án + lời giải chi tiết của câu → "Câu tiếp". BTVN reveal ngay, làm lại tới hạn.
 // Skin = plain-clean; game (Fredoka/mascot/gradient) làm phiên design sau.
 // ============================================================================
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { supabase } from '../../lib/supabase'
 import { MathText } from '../kho/ui'
 import { LamDienO } from './DienOCau'
@@ -22,6 +22,8 @@ import {
 } from '../../lib/tuluyen'
 import ThanhChonMon from './ThanhChonMon'
 import { ChonLoaiTuLuyen, ChonDangChuDe } from './TuLuyenChuDe'
+import { NhungHet, type NhungDau } from './phieuluu/nhungDau'
+const PhieuLuuHS = lazy(() => import('./phieuluu/PhieuLuuHS'))
 import { laCap2HS, mayManHSCuaToi } from '../../lib/maymai_hs'
 import { htdCoMo, htdSinh, htdCauBaiTest, type CauHTD } from '../../lib/hoctudau'
 import { ChonChuDeHTD, ChonChuyenDeHTD, ChiTietDangHTD, LyThuyetHTD, LoTrinhDuoiHS, dangDangHoc, type ChuDeNhom, type ChuyenDeNhom } from './HocTuDau'
@@ -361,7 +363,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
-  const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'rank' | 'nhiem_vu' | 'album' | 'ho_so' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
+  const [direct, setDirect] = useState<'phieu_luu' | 'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'rank' | 'nhiem_vu' | 'album' | 'ho_so' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
   const [tuHoSo, setTuHoSo] = useState(false) // Rank/Album mở từ Hồ sơ ⇒ "Quay lại" về Hồ sơ
   const [tuHome, setTuHome] = useState(false) // Rank/Nhiệm vụ mở từ MÀN CHÍNH (ô / huy hiệu bậc) ⇒ "Quay lại" về màn chính
   const [chuDeDang, setChuDeDang] = useState<{ ma_dang: string; ten_dang: string; chiCauMoi?: boolean } | null>(null) // dạng đã chọn cho "Tự luyện theo chủ đề" (null = luồng tổng hợp)
@@ -488,11 +490,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 
   if (direct === 'tu_luyen_chon') return <ChonLoaiTuLuyen gioiTinh={gt}
     onTongHop={() => { setChuDeDang(null); setDirect('tu_luyen') }}
-    onChuDe={() => setDirect('tu_luyen_chu_de_ds')}
+    onChuDe={() => setDirect(giaoDien?.skin && monChon ? 'phieu_luu' : 'tu_luyen_chu_de_ds')}
     onThuThach={() => setDirect('thu_thach')}
     onRank={() => { setTuHoSo(false); setTuHome(false); setDirect('rank') }}
     onNhiemVu={() => { setTuHome(false); setDirect('nhiem_vu') }}
     onBack={() => setDirect(null)} />
+  if (direct === 'phieu_luu' && monChon) return <Suspense fallback={null}><PhieuLuuHS hocSinhId={hocSinhId} mon={monChon} gioiTinh={gioiTinh} skin={(giaoDien ?? GD_MAC_DINH).skin} LamBai={LamBai} onVe={() => setDirect('tu_luyen_chon')} /></Suspense>
   if (direct === 'nhiem_vu') return <NhiemVuHS gioiTinh={gt} onBack={() => setDirect(tuHome ? null : 'tu_luyen_chon')}
     onThuThach={() => setDirect('thu_thach')} onTuLuyen={() => { setChuDeDang(null); setDirect('tu_luyen') }} onVongQuay={() => setDirect('may_man')} />
   if (direct === 'thu_thach') return <LamThuThach hocSinhId={hocSinhId} desktop={!!cap1}
@@ -739,9 +742,11 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 // điện thoại nữa") truyền desktop=true qua LamTuLuyen. CHỈ đổi KHUNG NGOÀI (bề rộng/nền/bo góc/cỡ nút)
 // — toàn bộ logic chọn/chấm/hiển thị câu (TN/ĐS/TLN) dùng CHUNG 1 JSX (`trongTam`), không tách 2 bản
 // để tránh lệch hành vi giữa desktop/mobile theo thời gian.
-function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop }: {
+function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop, nhung }: {
   baiTestId: string; hocSinhId: string; onXong: () => void
   doneCaption?: string; doneExtra?: React.ReactNode; desktop?: boolean
+  /** NHÚNG trong khung đấu 3D (phieuluu/DauView): ẩn thanh tiến độ + màn kết quả cũ, báo kết quả từng câu ra ngoài. */
+  nhung?: NhungDau
 }) {
   const [full, setFull] = useState<BaiTestFull | null>(null)
   const [baiLamId, setBaiLamId] = useState<string | null>(null)
@@ -764,6 +769,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
         init[cauId] = { chon: (r as BaiLamCau).dap_an_hs as number | string, kq: { verdict: (r as BaiLamCau).verdict ?? 'wrong', key: c?.dap_an_key, baiLamCauId: (r as BaiLamCau).id } }
       }
       setSt(init)
+      nhung?.onTai?.(f.caus.length, Object.keys(f.daLam).length)
       // TIẾN TRÌNH (Thùy 29/08: "vào toàn bắt bật lại từ câu 1"): mở lại bài dở → nhảy thẳng câu
       // CHƯA làm đầu tiên; xong hết → vào thẳng màn kết quả (tự luyện: nơi có nút "Làm thêm").
       // Vị trí KHÔNG cần lưu đâu cả — suy từ f.daLam (bai_lam_cau) theo ĐÚNG thứ tự hiển thị (= f.caus,
@@ -829,6 +835,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
     try {
       const kq = await traLoiCau(baiLamId, cau, cs.chon)
       setSt((s) => ({ ...s, [cau.id]: { chon: cs.chon, kq: { verdict: kq.verdict, key: kq.key, baiLamCauId: kq.baiLamCauId } } }))
+      nhung?.onCau({ verdict: kq.verdict as 'correct' | 'partial' | 'wrong', idx, tong: caus.length })
     } finally { setBusy(false) }
   }
 
@@ -848,6 +855,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   // Màn kết quả cuối
   if (idx >= total) {
     const dung = caus.filter((c) => st[c.id]?.kq?.verdict === 'correct').length
+    if (nhung) return <NhungHet dung={dung} tong={total} baiLamId={baiLamId} cb={nhung.onHet} />
     return (
       <ManGiua>
         <div className={`flex items-center justify-center rounded-full ${desktop ? 'h-24 w-24 text-5xl' : 'h-20 w-20 text-4xl'}`} style={{ ...THE_TRON, borderRadius: '999px', background: NEN_DUNG }}>🏆</div>
@@ -865,7 +873,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   const dsDung = laDS && daCham ? chonArr.filter((x, i) => x != null && String(x).toUpperCase() === String(keyDS[i]).toUpperCase()).length : 0
   const trongTam = (
     <>
-      <div className={desktop ? 'mb-4 flex shrink-0 items-center gap-4' : 'flex shrink-0 items-center gap-3 px-4 py-3'}>
+      <div className={nhung ? 'hidden' : desktop ? 'mb-4 flex shrink-0 items-center gap-4' : 'flex shrink-0 items-center gap-3 px-4 py-3'}>
         <button onClick={onXong} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full" style={{ ...THE_TRON, borderRadius: '999px', color: MAU.muted }}>✕</button>
         <div className={`flex-1 overflow-hidden rounded-full ${desktop ? 'h-2.5' : 'h-2'}`} style={{ background: MAU.line }}>
           <div className="h-full transition-all" style={{ width: `${((idx + 1) / total) * 100}%`, background: MAU.acc }} />
@@ -994,7 +1002,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
             {busy ? 'Đang chấm…' : 'Xác nhận'}
           </button>
         ) : (
-          <button onClick={() => setIdx((i) => i + 1)}
+          <button onClick={() => setIdx((i) => i + 1)} disabled={!!nhung?.ban}
             className={`flex-1 font-semibold ${desktop ? 'py-3.5 text-[19px]' : 'py-3 text-[18px]'}`} style={NUT_CHINH}>
             {idx + 1 < total ? 'Câu tiếp →' : (daXongHet ? 'Xem kết quả →' : 'Câu tiếp →')}
           </button>
@@ -1005,6 +1013,8 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
 
   // Thùy 13/09: MÀN LÀM BÀI phải gọn 1 viewport (Xác nhận đáp án luôn thấy). h-[100dvh]+flex col
   // → header/content/footer chia vùng; content overflow riêng, không phải cuộn cả trang.
+  // Nhúng trong khung đấu 3D: chỉ phần trong tâm, vừa khít ô dưới cảnh (không tự chiếm 100dvh).
+  if (nhung) return <div className="flex h-full min-h-0 flex-col px-3 py-2 md:px-6" style={{ fontFamily: 'var(--sk-font)', color: MAU.ink }}><div className="mx-auto flex min-h-0 w-full max-w-4xl flex-1 flex-col">{trongTam}</div></div>
   return desktop ? (
     <div className="flex h-[100dvh] flex-col px-8 py-4" style={NEN_MAN}>
       <div className="mx-auto flex min-h-0 w-full max-w-3xl flex-1 flex-col lg:max-w-4xl">{trongTam}</div>

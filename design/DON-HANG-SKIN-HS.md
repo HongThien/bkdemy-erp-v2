@@ -418,6 +418,9 @@ Bắt đầu với #01.
 
 ## Đơn 6 v2 — Chất liệu + sprite cho 3 tầng bản đồ phiêu lưu (style Anime RPG) — soạn 01/10 tối, THAY phần lớn Đơn 6
 
+> ⛔ **ĐÃ HỦY (01/10 khuya, Thùy chốt): bản đồ phiêu lưu dựng 2.5D/3D bằng three.js, hình viết bằng CODE — KHÔNG gửi đơn này cho ChatGPT.**
+> Còn lại cho ChatGPT: chỉ icon. Quái vật/boss do Thùy thiết kế riêng (điểm cắm `skin/the3d/nguonQuai.ts`). Xem `spec-v1-app-hs.md` §4.5. Nội dung dưới giữ để tra.
+
 > Lý do đổi: logic phiêu lưu đã chốt qua mockup (`spec-v1-app-hs.md` §4.5, mockup `design/mockup-phieu-luu.html`). **Lục địa, vùng, biên giới, con đường đều do CODE vẽ**
 > (số chủ đề/chuyên đề/dạng mỗi khối mỗi khác, thêm dạng là bản đồ tự co giãn) ⇒ ChatGPT **không vẽ hình dạng lục địa nữa**. ChatGPT chỉ vẽ:
 > **chất liệu mặt đất (texture)** lấp vào hình code vẽ · **sprite trang trí** · **quái** · **hero chiến đấu** · **nền màn đấu** · vài đồ vật.

@@ -199,10 +199,14 @@ const XEM_GAMI = typeof location !== 'undefined' && new URLSearchParams(location
 // TUTORIAL "Hành trình tân thủ" bản demo (hs.html?xem=tutorial · &chang=N): dữ liệu giả, không cần đăng nhập (Thùy 30/09).
 const TutorialHS = lazy(() => import('./screens/hocsinh/tutorial/TutorialHS'))
 const XEM_TUTORIAL = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'tutorial'
+// BẢN ĐỒ PHIÊU LƯU 3D bản thử (hs.html?xem=phieu_luu): dữ liệu giả cùng hình dạng hợp đồng, soi cảnh trước khi nối dữ liệu thật (01/10).
+const XemPhieuLuu = lazy(() => import('./screens/hocsinh/phieuluu/XemPhieuLuu'))
+const XEM_PHIEU_LUU = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'phieu_luu'
 
 export default function AppHS() {
   if (XEM_GAMI) return <Suspense fallback={null}><XemMauGami /></Suspense>
   if (XEM_TUTORIAL) return <Suspense fallback={null}><TutorialHS /></Suspense>
+  if (XEM_PHIEU_LUU) return <Suspense fallback={null}><XemPhieuLuu /></Suspense>
   const [session, setSession] = useState<Session | null | undefined>(undefined)
   const [hsId, setHsId] = useState<string | null | undefined>(undefined)
   if (import.meta.env.DEV && new URLSearchParams(location.search).has('demo')) return <DemoHome />

@@ -1,0 +1,151 @@
+// ============================================================================
+// SÂN KHẤU 3D dùng chung: renderer + camera kiểu diorama + đèn "giờ vàng" + vòng lặp + nhãn HTML bám cảnh + chọn bằng chuột/chạm.
+// Chỉ nạp khi mở màn phiêu lưu (import động) — không làm nặng bundle chính của app HS. Tự hạ chất lượng khi FPS tụt (iPad đời cũ).
+// ============================================================================
+import * as THREE from 'three'
+import type { BangMau3D } from './kieuMau'
+
+export type NhanBam = { el: HTMLElement; pos: THREE.Vector3; hien?: () => boolean; /** true = nhãn nằm DƯỚI điểm neo (mặc định nằm trên) */ duoi?: boolean }
+export type SanKhau = {
+  renderer: THREE.WebGLRenderer
+  scene: THREE.Scene
+  camera: THREE.PerspectiveCamera
+  host: HTMLElement
+  /** đăng ký hàm chạy mỗi khung (dt giây, t giây tổng) — trả hàm huỷ */
+  moiKhung: (fn: (dt: number, t: number) => void) => () => void
+  /** gắn 1 phần tử HTML bám theo điểm 3D (cập nhật mỗi khung, không qua React) */
+  gan: (nhan: NhanBam) => () => void
+  /** đặt camera nhìn xuống điểm `tam` từ góc `ngang` (độ so với mặt phẳng) cách `xa` đơn vị */
+  datCamera: (tam: THREE.Vector3, ngang: number, xa: number, xoay?: number) => void
+  /** chọn khoảng cách để KHUNG (rộng × sâu, đơn vị cảnh) vừa màn hình ở góc nhìn đã đặt */
+  vuaKhung: (rong: number, sau: number, ngang: number, le?: number, tam?: THREE.Vector3) => void
+  /** chừa bên phải `px` điểm ảnh (panel chi tiết đè lên) — cảnh dịch sang trái */
+  chuaPhai: (px: number) => void
+  /** tia từ con trỏ cắt mặt phẳng y = `y` ⇒ điểm trên đất, hoặc null */
+  chamDat: (e: { clientX: number; clientY: number }, y?: number) => THREE.Vector3 | null
+  chamVat: (e: { clientX: number; clientY: number }, vat: THREE.Object3D[]) => THREE.Intersection | null
+  datDen: (b: BangMau3D, op?: { bong?: boolean; huong?: THREE.Vector3 }) => { mat: THREE.DirectionalLight; hemi: THREE.HemisphereLight }
+  /** theoXa = [k0,k1]: sương mù co giãn theo khoảng cách camera (near = xa·k0, far = xa·k1) — cần khi màn dọc kéo camera ra xa */
+  datNen: (b: BangMau3D, xaSuong: [number, number], theoXa?: [number, number]) => void
+  phaHuy: () => void
+}
+
+export function taoSanKhau(host: HTMLElement, op: { dpr?: number; antialias?: boolean } = {}): SanKhau {
+  const canvas = document.createElement('canvas')
+  canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:manipulation;outline:none'
+  host.appendChild(canvas)
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: op.antialias ?? true, powerPreference: 'high-performance', alpha: false })
+  let dpr = Math.min(window.devicePixelRatio || 1, op.dpr ?? 1.75)
+  renderer.setPixelRatio(dpr)
+  renderer.outputColorSpace = THREE.SRGBColorSpace
+  renderer.toneMapping = THREE.NeutralToneMapping // giữ nguyên sắc pastel (Khronos PBR Neutral)
+  renderer.toneMappingExposure = 1.0
+  const scene = new THREE.Scene()
+  const camera = new THREE.PerspectiveCamera(30, 1, 0.5, 400)
+
+  const huy: Array<() => void> = []
+  const fns = new Set<(dt: number, t: number) => void>()
+  const nhans = new Set<NhanBam>()
+  let padPhai = 0, rong = 1, cao = 1, song = true, t = 0, last = performance.now(), ema = 16, dem = 0
+  let fogK: [number, number] | null = null
+
+  function doiCo() {
+    rong = Math.max(1, host.clientWidth); cao = Math.max(1, host.clientHeight)
+    renderer.setSize(rong, cao, false)
+    camera.aspect = rong / cao
+    if (padPhai > 0) camera.setViewOffset(rong, cao, padPhai / 2, 0, rong, cao); else camera.clearViewOffset()
+    camera.updateProjectionMatrix()
+  }
+  const ro = new ResizeObserver(doiCo)
+  ro.observe(host)
+  doiCo()
+
+  const v = new THREE.Vector3()
+  function chieuNhan() {
+    for (const n of nhans) {
+      const hien = n.hien ? n.hien() : true
+      v.copy(n.pos).project(camera)
+      const ra = v.z > 1 || !hien
+      n.el.style.visibility = ra ? 'hidden' : 'visible'
+      if (ra) continue
+      n.el.style.transform = `translate(${((v.x * 0.5 + 0.5) * rong).toFixed(1)}px,${((-v.y * 0.5 + 0.5) * cao).toFixed(1)}px) translate(-50%,${n.duoi ? "0%" : "-100%"})`
+    }
+  }
+
+  let raf = 0
+  function vong(now: number) {
+    raf = requestAnimationFrame(vong)
+    if (!song || document.hidden) { last = now; return }
+    const dtMs = now - last; last = now
+    const dt = Math.min(0.05, dtMs / 1000); t += dt
+    // tự hạ độ phân giải khi tụt khung (đời iPad cũ): 60 khung liên tiếp > 26ms thì giảm 1 bậc
+    ema = ema * 0.95 + dtMs * 0.05
+    if (++dem % 60 === 0 && ema > 26 && dpr > 1) { dpr = Math.max(1, dpr - 0.25); renderer.setPixelRatio(dpr); doiCo() }
+    for (const f of fns) f(dt, t)
+    renderer.render(scene, camera)
+    chieuNhan()
+  }
+  raf = requestAnimationFrame(vong)
+
+  const ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), mp = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), hit = new THREE.Vector3()
+  function toNdc(e: { clientX: number; clientY: number }) {
+    const r = canvas.getBoundingClientRect()
+    ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1)
+    ray.setFromCamera(ndc, camera)
+  }
+
+  const sk: SanKhau = {
+    renderer, scene, camera, host,
+    moiKhung: (fn) => { fns.add(fn); return () => fns.delete(fn) },
+    gan: (n) => { nhans.add(n); return () => nhans.delete(n) },
+    datCamera: (tam, ngang, xa, xoay = 0) => {
+      const a = (ngang * Math.PI) / 180, r = (xoay * Math.PI) / 180
+      camera.position.set(tam.x + Math.sin(r) * Math.cos(a) * xa, tam.y + Math.sin(a) * xa, tam.z + Math.cos(r) * Math.cos(a) * xa)
+      camera.lookAt(tam)
+      camera.updateMatrixWorld()
+      if (fogK && scene.fog instanceof THREE.Fog) { scene.fog.near = xa * fogK[0]; scene.fog.far = xa * fogK[1] }
+    },
+    vuaKhung: (rongC, sauC, ngang, le = 1.08, tam = new THREE.Vector3(0, 0, 0)) => {
+      const tanH = Math.tan((camera.fov * Math.PI) / 360), sinA = Math.sin((ngang * Math.PI) / 180)
+      const hienRong = rong - padPhai
+      const xaNgang = (rongC / 2) / (tanH * (hienRong / cao))
+      const xaDoc = (sauC * sinA / 2) / tanH
+      sk.datCamera(tam, ngang, Math.max(xaNgang, xaDoc) * le + 2)
+    },
+    chuaPhai: (px) => { padPhai = px; doiCo() },
+    chamDat: (e, y = 0) => { toNdc(e); mp.constant = -y; return ray.ray.intersectPlane(mp, hit) ? hit.clone() : null },
+    chamVat: (e, vat) => { toNdc(e); const r = ray.intersectObjects(vat, true); return r[0] ?? null },
+    datDen: (b, o = {}) => {
+      const hemi = new THREE.HemisphereLight(new THREE.Color(b.hemiTroi), new THREE.Color(b.hemiDat), b.hemiCuong)
+      const mat = new THREE.DirectionalLight(new THREE.Color(b.matTroi), b.matTroiCuong)
+      mat.position.copy(o.huong ?? new THREE.Vector3(-18, 22, 12))
+      if (o.bong) {
+        mat.castShadow = true
+        mat.shadow.mapSize.set(1024, 1024)
+        const c = mat.shadow.camera; c.left = -14; c.right = 14; c.top = 14; c.bottom = -14; c.near = 1; c.far = 80
+        mat.shadow.bias = -0.0006
+        renderer.shadowMap.enabled = true
+        renderer.shadowMap.type = THREE.PCFShadowMap
+      }
+      scene.add(hemi, mat, mat.target)
+      return { mat, hemi }
+    },
+    datNen: (b, [gan, xa], theoXa) => { fogK = theoXa ?? null; scene.background = new THREE.Color(b.troi); scene.fog = new THREE.Fog(new THREE.Color(b.suong), gan, xa) },
+    phaHuy: () => {
+      song = false
+      cancelAnimationFrame(raf)
+      ro.disconnect()
+      huy.forEach((f) => f())
+      scene.traverse((o) => {
+        const m = o as THREE.Mesh
+        if (m.geometry) m.geometry.dispose()
+        const mat = (m as THREE.Mesh).material as THREE.Material | THREE.Material[] | undefined
+        if (Array.isArray(mat)) mat.forEach((x) => x.dispose()); else mat?.dispose()
+      })
+      renderer.dispose()
+      renderer.forceContextLoss()
+      canvas.remove()
+    },
+  }
+  return sk
+}

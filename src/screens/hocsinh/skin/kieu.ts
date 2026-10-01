@@ -3,6 +3,9 @@
 // Đọc design/STYLE-HS.md trước khi thêm style hoặc thêm tính năng/màn mới.
 // ============================================================================
 
+import type { BangMau3D } from './the3d/kieuMau'
+
+
 // Thêm style mới: thêm id ở đây + file skin/styles/<id>.ts + đăng ký trong registry.ts + migration nới CHECK hs_giao_dien.skin.
 export type SkinId = 'rpg'
 export type CheDo = 'sang' | 'toi' | 'he_thong'
@@ -47,4 +50,6 @@ export type Skin = {
   // Nhân vật cắt nền (PNG trong suốt) đứng nửa trái Home khổ NGANG (PC/iPad) kèm bong bóng thoại — như ảnh gốc style
   // (RPG: design/bk-ui-src/Nền app HS cấp 3_11.png). Chọn theo giới tính HS; chưa biết ⇒ `nam`. Không có ⇒ Home ngang không vẽ nhân vật.
   nhanVat?: { nam: string; nu: string }
+  // Bảng màu 3D của bản đồ phiêu lưu (thế giới · lục địa · chặng đường · màn đấu) — 1 bảng duy nhất cho cả cảnh (skin/the3d/kieuMau.ts).
+  the3d?: BangMau3D
 }
