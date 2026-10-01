@@ -34409,3 +34409,11 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   — mọi màn làm bài khác giữ nguyên. Style chưa khai `tran` ⇒ rơi về màu thẻ thường.
 - Kiểm: trận xem thử 1180×820 — chọn sai: phiến rung đỏ, đáp án đúng sáng xanh, tự cuộn tới lời giải; 0 lỗi console; tsc (trừ pdfRender cũ) + build:hs + check:style-hs ✔.
   CHƯA kiểm trận THẬT trên app (cần tài khoản HS, trả lời là ghi bài làm vào DB thật) — cùng component nên kỳ vọng giống, cần Thùy/1 tài khoản thử xác nhận.
+
+## 2026-10-02 (trưa, máy nhà) — [Game] Thiên Kình bản 8: vây mái chèo cong vòng cung, ranh màu đầu vòng xuống (BatThu `thu-de-thuong` @ `ff1984c`)
+- Thùy xem bản 7: "gần được hết rồi". Còn 2 ý (kèm 2 ảnh cắt từ mô hình 3D, lưu `.snap/tham-khao/thien_kinh/3d-10.png`, `3d-11.png`):
+  (1) "vây cong cong vòng cung rất mềm mại" ⇒ khuôn bơi thêm tuỳ chọn `uon` cho vây: trục vây uốn cong (vuốt ngang ∝ u²) — nắn toạ độ ngang theo
+  đường cong rồi đo như nón thẳng, chia thêm cho độ dốc nắn để SDF an toàn; cả 2 cặp dày hơn (dẹt 4 → 2,3), bản đều, ngọn bo tròn, rủ nhiều hơn.
+  (2) "nửa xanh ở đầu không ngang phần trắng mà vòng xuống" ⇒ ranh màu ở đầu: trắng dâng lên dưới mắt phía sau rồi hạ dần ra mõm (xanh trùm mõm),
+  hàm dưới trắng trơn. Lần đầu chỉ hạ ở mõm thì vẫn thấy "ngang" vì đường miệng dốc xuống về sau — phải NÂNG phía sau lên mới thành vòng cung.
+- Tự kiểm: `thien_kinh-so-tham-khao` (đầu + vây đặt cạnh ảnh 3D) · chuỗi `-dt-boi`, `-dt-hat`. Bản Đẹp 49,8k tam giác; tsc sạch.
