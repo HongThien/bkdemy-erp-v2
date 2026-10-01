@@ -28,11 +28,59 @@
   đã lọc nhiễu**, xếp hạng GV–TA, trình chiếu mỗi bảng một màn). **Treo:** báo cáo Vận hành của Lộc chưa có mẫu · thông báo thứ Hai chờ khai
   `TROLY_PUSH_APP` + deploy · khung hỏi chưa nối 13 công cụ DB. Chi tiết: mục "⭐⭐ TRỢ LÝ" bên dưới.
 
-- **⭐ GAME NÔNG TRẠI BK — NHỊP NGÀY. Đọc `spec-nong-trai-nhip-ngay.md` trước khi làm** (nguồn thiết kế duy nhất; số liệu đầy đủ ở §3, §5, §9).
-  - **Hướng:** kiểu Nông trại vui vẻ / Khu vườn trên mây, HS vào 1 lần/ngày, 10–15 phút.
-    - Vòng chơi: thu hoạch → bán → mua bịch hạt → gieo → tưới, bắt sâu → sang vườn bạn cùng lớp giúp (5/ngày) và hái trộm (3/ngày).
-    - Xu là xu BK thật; điểm chăm chỉ kiếm từ làm bài. `main` của repo game vẫn là bản Hay Day.
-  - **Trạng thái 30/09 (nhánh `nhip-ngay`, commit cuối `9556216`) — pha 1: trồng cây + gà, bò + chó.** Lò, mèo, chim, trang trí lẻ tắt bằng cờ `PHA`.
+- **⭐⭐ GAME BK — trạng thái 01/10 (gộp máy nhà + máy công ty). ĐỌC `spec-bat-thu.md` §0 + §1 TRƯỚC KHI LÀM.**
+  - **Chiến lược CEO (spec §0):** áp lực chỉ ép HS vào app, không ép được cố gắng ⇒ game phải đủ thú vị để HS "trả giá" ~30 phút học nghiêm túc.
+    - **Muốn chơi thì phải học** (vd đúng 30 câu thì game mở khoá).
+    - Kết quả học thành tài sản trong game + khoe với bạn ⇒ học nhiều hơn.
+    - Superapp tạo gắn bó: chuyển trung tâm là mất "chơi".
+    - "Tốt cho số đông là đủ."
+  - **Định vị:** HS chơi vì có bạn bè + để có thêm xu; KHÔNG làm game thật hay. Mô hình BK (lớp thật + app) gần như duy nhất.
+  - **Gộp Nông Trại + Bắt Thú thành 1 game**, 3 chế độ: trồng trọt · khám phá (bắt thú kiểu Palworld) · ấp trứng nuôi pet (đơn giản kiểu Dragon City). Chưa bắt đầu gộp code.
+  - **Pháp lý (NĐ 147/2024): CEO KHÔNG lo** — "làm local, không xu trực tiếp, không giao dịch tiền". Đừng nêu lại như rào chặn. Đánh giá đầy đủ: `design/danh-gia-game-bat-thu-cho-bk.md`.
+  - **Chờ CEO (2 câu trước khi viết spec vòng chơi game gộp):**
+    1. Cổng mở game đếm **số câu đúng** (CTO đề xuất) hay **tỉ lệ đúng**?
+    2. Câu tính từ Tự luyện thôi, hay cả BTVN/ET?
+    - Sau đó: viết spec vòng chơi gộp quanh cổng học (logic trước, số bàn sau).
+  - **Chờ CEO khác:**
+    - duyệt Sổ Trùm 8 trùm (https://claude.ai/artifact/2zWHd4mF6NAhX2UnVVzaDV, spec §3.0b);
+    - chọn nguồn mô hình boss/pet (`design/nguon-mo-hinh-boss-bat-thu.md`, đề xuất mua thử 1 món mỗi bên);
+    - **⚠ 2 lời CEO về xu đang vênh nhau, cần CEO chọn:**
+      - 30/09 (máy công ty, `spec-game-bat-quai.md` §5.2): "bán nông sản luôn được 3 xu, làm bóng bắt thú thì bắt được thưởng 4–5 xu nhưng có thể hụt — như đầu tư, có thể ăn có thể xịt".
+        T đã ghi luật: hai đường ngang giá trị kỳ vọng, tỉ lệ bắt công khai, kỹ năng quyết định.
+      - 01/10 (spec-bat-thu #17): "không trả xu trực tiếp".
+      - `spec-game-bat-quai.md` là bản nháp 30/09 trước khi có spec-bat-thu ⇒ **đã bị spec-bat-thu thay**. Chỉ còn giữ để tra lời CEO 30/09.
+  - **Giữ chân app HS** (`design/giu-chan-hoc-sinh-kieu-duolingo.md`). App BK có 2 tầng:
+    - bắt buộc (BTVN/ET — không cần dụ; vấn đề là làm qua loa);
+    - tự nguyện (góc Duolingo vẫn đúng).
+    - Tin báo phụ huynh **ĐÃ CÓ** ở app PH (Web Push: đến lớp · kết quả buổi · tóm tắt việc cần làm · thông báo TT). Còn: đo % PH bật thông báo + gợi ý "hỏi con về dạng X".
+    - Thứ tự đề xuất: học trước chơi sau → GV khen một chạm → nhiệm vụ cả lớp → pet kiểu Finch → giải đấu tuần nhóm nhỏ → chuỗi ngày (chỉ đếm phần làm thêm).
+  - **CODE — 2 repo GitHub riêng tư** (không nằm trong repo ERP):
+    - **`HongThien/bk-bat-thu`** (bắt thú). Vite + TS + three r186 + three.quarks; asset CC0 nằm sẵn trong `public/asset` (Quaternius Ultimate Monsters + KayKit).
+      - Đã có: chọn 3 thú khởi đầu · 23 loài · 13 chiêu/7 kiểu hiện · hoạt cảnh bắt 3 lần lắc · đội 5 + sổ thú · 2 bản đồ hoạ Đẹp/Nhẹ (`src/chat-luong.ts`).
+      - Đám đông: thấy tối đa 10 người, ưu tiên bạn (`?nguoi=100`).
+      - **Khu đấu boss** Bạo Chúa Lửa (`src/boss.ts`, mô hình tạm): 4 đòn có vùng đỏ báo trước · nổi giận 50% · kiệt sức 15% để thu phục · né lăn (Shift) · thắng/thua/thu phục.
+      - Chưa có máy chủ (Colyseus để sau). Chưa đo iPad gen 7 thật.
+      - **Máy công ty (01/10): đã clone về `E:\BK ACADEMY\Gaming\BatThu` @ `9a54b05`, launch `bat-thu` (cổng 5280) đã có trong `.claude/launch.json`.**
+        **CHƯA `npm install`** — Claude bị chặn tự chạy cài gói từ ngoài ⇒ Thùy chạy tay 1 lần trong thư mục đó.
+      - Máy nhà: launch `bat-thu` trỏ `C:/Users/Admin/...` — sửa local, đừng commit đè đường dẫn E:.
+      - Tham số: `?cl=dep|nhe` · `?cham=0.25` (quay chậm) · `?nguoi=N`. Vào khu đấu: góc tây bắc bản đồ (x −28, z 26).
+    - **`HongThien/bk-nong-trai`** (nông trại; đủ nhánh `main`/`nhip-ngay`/`do-hoa-thu`). Bản mới nhất = `nhip-ngay` @ `9556216`.
+      - **Máy công ty `E:\BK ACADEMY\Gaming\KayKit\NongTrai` CHƯA nối remote** — Claude bị chặn tự đổi remote ⇒ Thùy chạy tay lần đầu: `git remote add origin https://github.com/HongThien/bk-nong-trai.git` + `git fetch`.
+        Hai bên đang trùng nhau (`9556216`), máy nhà không sửa gì thêm.
+      - `.git` của repo này có `desktop.ini` rải khắp (cả `refs/heads`) ⇒ nếu git báo `bad object refs/heads/desktop.ini` thì đó là nguyên nhân.
+    - Đừng chạy git trên bản Drive `G:\Other computers\...` (Drive nhét `desktop.ini` vào `.git/refs`).
+  - **Chế độ TRỒNG TRỌT = Nông Trại nhịp ngày. Đọc `spec-nong-trai-nhip-ngay.md` trước khi sửa** (nguồn thiết kế duy nhất; số liệu đầy đủ §3, §5, §9).
+    - **Hướng:** kiểu Nông trại vui vẻ / Khu vườn trên mây; HS vào 1 lần/ngày.
+      - Vòng chơi: thu hoạch → bán → mua bịch hạt → gieo → tưới, bắt sâu → sang vườn bạn cùng lớp giúp (5/ngày) và hái trộm (3/ngày).
+      - `main` của repo game vẫn là bản Hay Day.
+    - **Pha 1** (nhánh `nhip-ngay`): trồng cây + gà, bò + chó. Lò, mèo, chim, trang trí lẻ tắt bằng cờ `PHA`.
+    - **Bố cục (CEO 30/09 khuya, kèm ảnh Nông trại vui vẻ Zing Me): CHƠI MÀN NGANG, bố cục y ảnh** (spec §2.1):
+      - ruộng 12 ô liền nhau, ô to; ô chưa mở là ô cỏ;
+      - sân rào góc trên phải (nhà, kho, chuồng); ao góc dưới phải; chợ + bảng tin bên trái;
+      - đã bỏ thế giới rộng kiểu Hay Day;
+      - cầm dọc ⇒ màn "Xoay ngang máy để chơi".
+      - **Góc camera `HUONG (0.55, 1.05, 0.95)` chính là góc của ảnh — đừng đổi sang 45° kiểu ô thoi** (đã thử, CEO bác).
+    - Có thêm cài như app (PWA) + thanh "Việc hôm nay" chỉ đường, không thưởng, tắt bằng `LUAT.viecHom` (lấy từ Zoo Pet).
     - **Kinh tế lần 5** (§3.2, §5.1, §5.2, §5.10):
       - Mở khoá theo tuần: tuần 1 có 4 ô + 2 loại cây; hết tháng đầu 8 ô; 8 tuần đủ 8 loại cây.
       - Cây sau lời hơn nhưng bịch đắt hơn; tưới đủ +80%.
@@ -40,34 +88,35 @@
       - Trần 8 điểm nhà nông/ngày ⇒ cấp đi theo số ngày chăm vườn.
       - Trần chi 5 xu/tháng; mỗi ngày mua ≤ số ô.
       - Giả lập 5.000 HS: HS chăm học 1/2/3 lượt/ngày được 23/36/42 xu tháng đầu. BK chi ~1.300 xu/100 HS tháng đầu, rồi giảm dần.
-    - **Đồ hoạ:** đã gộp nhánh `do-hoa-thu` (`8b3c25e`): cây 4 giai đoạn, gà/bò nhiều giống, chó 16 động tác, nhà 4 kiểu × 10 mức, ánh sáng / chỉnh màu.
-    - Phiên khác làm thêm: **chơi màn ngang**, bố cục y như ảnh Nông trại vui vẻ (`9556216`); cài như app (PWA) + thanh "Việc hôm nay" chỉ đường, không thưởng (`6958b9b`).
-  - **Chờ CEO trả lời** (hỏi 30/09 tối):
-    - (a) **Nhà nâng cấp 10 mức** — CEO đã chốt thay cho trang trí lẻ. Còn chờ: nâng cấp bằng **vật liệu từ nhiệm vụ ngày** (CTO đề xuất) hay bằng xu (§5.9).
-    - (b) **Sổ thu chi** — màn tổng kết chi tiêu CEO tưởng đã có, thật ra chưa có (§5.13).
-    - (c) **Dạy chó học trò** — CEO "chưa hiểu ý", đã giải thích (§5.8).
-    - (d) Chốt kinh tế: "chơi chăm chỉ ≈ 30 xu tháng đầu" ứng với học khoảng 1,5 lượt/ngày; có hạ trần tháng 2 xuống ~40 không.
-  - **Việc kế tiếp:**
-    - **Nhiệm vụ ngày** — CEO đã OK. 3 việc/ngày: giao hàng · chăm vườn · học; thưởng vật liệu + phân bón, không thưởng xu (§5.12).
-    - **Sổ thu chi** + **nâng cấp nhà** — làm ngay khi CEO gật (a), (b).
-    - Sau đó cho 5–10 HS chơi thử, đo thời gian thật → bản online (`fn_nt_*`).
-  - **⚠ Code game KHÔNG nằm trong repo ERP:** ở `E:\BK ACADEMY\Gaming\KayKit\NongTrai`, git riêng, **chưa có remote**. Ổ E: là ổ cứng thật, không phải Google Drive ⇒ **chỉ có trên máy công ty**.
-    Làm ở máy khác thì phải mang code sang trước.
-  - **⚠ Nhiều phiên Claude cùng làm `nhip-ngay` trên một checkout:**
-    - Trước khi sửa `scene.js` / `ui.js` / `engine.js` thì xem `git log` / `git status`.
-    - Xong việc nào commit ngay việc đó.
-    - Nhánh đồ hoạ `do-hoa-thu` (worktree `NongTrai-dohoa`, port 5271) có commit mới thì `git merge do-hoa-thu` lại.
-  - **Chạy:** launch `nong-trai` (port 5270).
-    - Kiểm luật: `node tools/test-engine.mjs`.
-    - 10 kịch bản HS: `node tools/kich-ban.mjs`.
-    - Giả lập nghìn HS: `node tools/gia-lap.mjs 5000` (khoảng 2 phút).
-  - **Treo:**
-    - 4 file cầu KayKit chưa theo dõi trong `assets/kaykit/medieval/`.
-    - Ref hỏng `desktop.ini` trong `.git` của repo game.
-  - **Bẫy:**
-    - Bot đếm thời gian chơi chỉ theo số lần chạm ⇒ luôn thấp hơn thật nhiều lần; đừng kết luận thời gian chơi từ bot.
-    - Sửa `NT_UI.s` trong Browser pane rồi tải lại trang ⇒ game tự lưu đè bản lưu thật. Thử bằng state riêng `NT_ENGINE.moi()`.
-    - three r128: `Texture` không có `userData`; `InstancedMesh` cắt khung theo gốc toạ độ ⇒ chia ô có khối bao riêng hoặc đặt `frustumCulled = false`.
+    - **Đồ hoạ:** đã gộp `do-hoa-thu` (`8b3c25e`): cây 4 giai đoạn, gà/bò nhiều giống, chó 16 động tác, nhà 4 kiểu × 10 mức, ánh sáng / chỉnh màu.
+    - **Chờ CEO** (hỏi 30/09 tối; máy nhà chưa thấy nên chưa hỏi lại):
+      - (a) **Nhà nâng cấp 10 mức** — CEO đã chốt thay cho trang trí lẻ. Còn chờ: nâng cấp bằng **vật liệu từ nhiệm vụ ngày** (CTO đề xuất) hay bằng xu (§5.9).
+      - (b) **Sổ thu chi** — màn tổng kết chi tiêu CEO tưởng đã có, thật ra chưa có (§5.13).
+      - (c) **Dạy chó học trò** — CEO "chưa hiểu ý", đã giải thích (§5.8).
+      - (d) Chốt kinh tế: "chơi chăm chỉ ≈ 30 xu tháng đầu" ứng với học khoảng 1,5 lượt/ngày; có hạ trần tháng 2 xuống ~40 không.
+      - Nay còn phải xếp lại theo chiến lược 01/10: cổng học + gộp 2 game.
+    - **Việc kế tiếp** (sau khi chốt cổng học + vòng chơi gộp):
+      - nhiệm vụ ngày (CEO đã OK: 3 việc/ngày giao hàng · chăm vườn · học; thưởng vật liệu + phân bón, không thưởng xu — §5.12);
+      - sổ thu chi + nâng cấp nhà;
+      - cho 5–10 HS chơi thử, đo thời gian thật → bản online (`fn_nt_*`).
+    - **Chạy:** launch `nong-trai` (5270).
+      - Kiểm luật: `node tools/test-engine.mjs` — đọc DÒNG CUỐI, test chập chờn vì rơi cưa ngẫu nhiên.
+      - 10 kịch bản HS: `node tools/kich-ban.mjs`. Giả lập nghìn HS: `node tools/gia-lap.mjs 5000` (khoảng 2 phút).
+    - **Treo:** 4 file cầu KayKit chưa theo dõi trong `assets/kaykit/medieval/`.
+  - **Bẫy kỹ thuật đã gặp:**
+    - three r186 bỏ `PCFSoftShadowMap`.
+    - Bộ phát nón three.quarks phun theo **+z**.
+    - Sprite thiếu `map` ⇒ vẽ hình vuông.
+    - Vite trên Windows có lúc phục vụ bản biên dịch cũ ⇒ khởi động lại dev server.
+    - Browser pane ẩn ⇒ không vẽ.
+      - Bắt Thú: dùng `window.chup(ten)` (lưu `.snap/`) + tua `GAME.vong(t)` theo lô có nhường lượt.
+      - Nông Trại: dùng `NT_SCENE.chup(ten, soKhung)`. `computer screenshot` hay trễ một nhịp.
+    - three r128 (Nông Trại): `Texture` không có `userData`; `InstancedMesh` cắt khung theo gốc ⇒ `frustumCulled = false`.
+    - **Thử state Nông Trại trong Browser pane:** game tự lưu đè bản lưu thật (localStorage `nongtrai_ngay_v1`).
+      Chặn `Storage.prototype.setItem` TRƯỚC, rồi `Object.assign(NT_UI.s, trạiThử)`; tải lại trang là về bản thật.
+    - Bot Nông Trại đếm thời gian chơi theo số lần chạm ⇒ luôn thấp hơn thật nhiều lần; đừng kết luận thời gian chơi từ bot.
+    - Đừng sửa file tiếng Việt bằng `Get-Content`/`Set-Content` của PowerShell 5.1 (hỏng dấu).
+    - Nhiều phiên Claude cùng làm 1 checkout game ⇒ xem `git log`/`git status` trước khi sửa `scene.js`/`ui.js`/`engine.js`; xong việc nào commit ngay việc đó.
 ### Kiến trúc & file chính
 - Kho = lá `bdkt` trong cây Admin → `src/screens/kho/KhoScreen.tsx`. Build **THẬT, wire Supabase DB v2** (ngoại lệ so với mock-first của shell — vì schema Kho đã đông cứng).
 - **Seam:** UI KHÔNG gọi `supabase` trực tiếp, chỉ qua `src/lib/kho/api.ts`.

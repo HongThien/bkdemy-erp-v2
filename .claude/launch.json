@@ -202,6 +202,17 @@
       "port": 5272
     },
     {
+      "name": "bat-thu",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "E:/BK ACADEMY/Gaming/BatThu",
+        "run",
+        "dev"
+      ],
+      "port": 5280
+    },
+    {
       "name": "dev-sukien",
       "runtimeExecutable": "npm",
       "runtimeArgs": [

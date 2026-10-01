@@ -1,5 +1,9 @@
 # Game Bắt Quái BK (tên tạm) — kiểu Palworld, cùng vũ trụ với Nông Trại — spec (NHÁP, chờ CEO trả lời §9)
 
+> **⛔ ĐÃ BỊ THAY (01/10) bởi `spec-bat-thu.md`** (máy nhà, 13+ quyết định CEO, đã có code ở repo `HongThien/bk-bat-thu`). Đừng làm theo file này.
+> CEO 01/10 còn chốt **gộp Nông Trại + Bắt Thú thành 1 game** (khác §1 #2 bên dưới: "2 game độc lập").
+> Còn giữ để tra lời CEO 30/09 về **"bán luôn hay đầu tư"** (§1 #5–6, §5.2). Ý này đang vênh với spec-bat-thu §1 #17 "không trả xu trực tiếp" — chờ CEO chọn (spec-bat-thu §4 mục 3).
+
 > Thùy 30/09/2026, sau khi xem Zoo Pet (zoo-pet.store). Trạng thái: **NHÁP — CHƯA code.**
 > Kết quả mổ Zoo Pet: memory `zoo-pet-mo-build`. Thiết kế Nông Trại: `spec-nong-trai-nhip-ngay.md`.
 > Số liệu ghi **TỰ ĐẶT** là số khởi điểm để chạy thử, chỉnh sau khi chơi thật.

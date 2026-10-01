@@ -32936,3 +32936,252 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 **Ghi:**
 - Spec: §2 (bảng vòng chơi + thời gian chơi thật) · §5.8 (chó mới + đề xuất dạy chó) · §5.9 viết lại thành "Nhà nâng cấp 10 mức" · §5.11 ("Việc hôm nay") · §5.12 Nhiệm vụ ngày (mới) · §5.13 Sổ thu chi (mới) · §8 · §9.
 - HANDOFF ① mục Nông Trại viết lại.
+
+## 2026-09-30 (khuya, máy nhà) — Nông Trại → BẮT THÚ kiểu Palworld: CEO chốt hướng + research nền móng kỹ thuật (CHƯA code)
+
+- **Mang code sang máy nhà:** pull ERP (stash/pop `launch.json` local). Code game chép từ ổ Drive `G:\Other computers\My Computer\BK ACADEMY\Gaming\KayKit\NongTrai`
+  (bản Drive đồng bộ từ máy công ty) về `C:\Users\Admin\Desktop\BKERP\NongTrai` bằng robocopy, bỏ `desktop.ini`. Nhánh `nhip-ngay` @ `9556216`, sạch, fsck không lỗi.
+  Launch `nong-trai-nha` cổng 5275 (chỉ máy nhà, không commit `launch.json`).
+  - ⚠ Drive chèn `desktop.ini` vào cả `.git/refs/heads` ⇒ git trên ổ G: báo `bad object refs/heads/desktop.ini`, mỗi lệnh 1–2 phút. **Đừng chạy git trực tiếp trên G:.**
+  - Repo NongTrai có 6 commit sau các mục DEVLOG ERP, chưa được ghi ở đây: lần 5 mở khoá theo tuần · giả lập 5.000 HS · chó 16 động tác + `cho-demo.html` ·
+    gộp `do-hoa-thu` vào `nhip-ngay` · PWA + thanh "Việc hôm nay" (lấy từ Zoo Pet) · bố cục gọn kiểu Nông trại vui vẻ + chơi màn ngang.
+- **CEO chốt (hỏi 4 câu):**
+  - Thú bắt được: cả vật nuôi lẫn thú rừng, "bắt cả pet về nuôi". **Làm TÁCH RIÊNG khỏi nông trại trước.**
+  - Kiểu Palworld: đánh cho yếu máu rồi ném bóng. Thú có chiêu thức tấn công để đánh boss.
+  - **Game phải là MMO:** người chơi thấy nhau; ổn thì party đi đánh boss.
+  - Trọng tâm đợt đầu: hoạt cảnh ném bóng bắt + tấn công bằng chiêu thức.
+  - Xu, lượt bắt: tính sau, "làm game đã".
+- **CEO: "thư viện dohoa không đủ, research cái sâu hơn xịn hơn"** ⇒ dừng, chưa viết dòng code nào. Research 5 mảng song song (engine · nhân vật/thú có xương ·
+  VFX + ném bóng · netcode MMO · game web 3D thật trên mobile). Báo cáo: `design/nghien-cuu-nen-mong-game-bat-thu.md`; ghi chú nguồn: `research_notes/Nền móng game bắt thú MMO/`.
+  - Khuyến nghị: three.js r186 `WebGLRenderer` (dự phòng Babylon 9) · người chơi KayKit Adventurers + KayKit Character Animations (CC0) ·
+    thú = 4–6 **khuôn xương dùng chung** (cách Game Freak làm >1.000 Pokémon, CEDEC 2022), thân thú mua Omabuarts Quirky (299 USD, giấy phép CHƯA rõ) hoặc AI trả phí ·
+    VFX three.quarks + shader tự viết · Colyseus 0.18 trên VPS Singapore (~30 USD/tháng ở 500 người online) · mọi kết quả có thưởng ở `fn_game_*`.
+  - Loại: Unity/Godot bản web (vùng nhớ WASM làm sập tab iOS) · Supabase Realtime cho di chuyển (trần 2.500 tin/giây gói Team) · Hathora (đóng 5/5/2026) ·
+    SpacetimeDB/Nakama (kéo theo DB thứ hai).
+  - **T tự kiểm lại 4 sự thật quyết định hướng** (bài học subagent sai 28/09): iPad gen 7 không lên iPadOS 26 ⇒ tối đa Safari 18 ⇒ chỉ WebGL2 ✓ ·
+    Supabase Realtime gói Team 2.500 tin/giây ✓ · Colyseus 0.18.x ra bản 29–30/09 ✓ · three.quarks MIT, chưa hỗ trợ WebGPU ✓.
+  - Bài học: `dohoa.js` hợp nông trại (vật đứng trong chuồng) nhưng không có khung xương dùng chung, hệ VFX, va chạm, netcode ⇒ game hành động nhiều người chơi phải đổi nền móng.
+- **Chờ CEO:** (1) kiểu đánh — quyết công thức sát thương nằm ở Postgres hay game server; (2) iPad gen 7 phải mượt hay bản nhẹ; (3) có gắn việc học không;
+  (4) nguồn hình thú; (5) chat tự do (đề xuất: không). Sau đó làm bản thử 1–2 tuần, đo trên iPad gen 7 thật.
+
+## 2026-10-01 (rạng sáng, máy nhà) — BẮT THÚ: CEO chốt 5 câu + build bản thử (repo mới `HongThien/bk-bat-thu`)
+
+- **CEO trả lời 5 câu:**
+  - đánh thời gian thực kiểu Palworld (máu liên tục, chạy tự do, cast chiêu);
+  - base iPad gen 7 + bản nhẹ;
+  - chưa gắn học;
+  - pet đẹp là được, không theo Hay Day;
+  - không chat tự do;
+  - "những cái khác thì làm thôi".
+- **Giữa lúc build, CEO thêm 2 ý:**
+  - "1 bản ĐẸP cho máy xịn và 1 bản NHẸ cho iPad 7, đừng làm bản cùi";
+  - "boss phải là thú ngầu: rồng, khủng long, hổ, cá voi, đại bàng… quái cũng phải đẹp — quan trọng".
+- **Ghi:** `spec-bat-thu.md` (13 quyết định + chờ CEO).
+- **Build** (repo riêng `C:\Users\Admin\Desktop\BKERP\BatThu`, commit `03fa79b`):
+  - Nền: Vite + TS + three r186 + three.quarks 0.17.
+  - Asset CC0:
+    - Quaternius Ultimate Monsters, 33 GLB, tải từ Drive bằng `tools/tai-drive.mjs`;
+    - KayKit Survivalist + 21 động tác, lấy từ zip trong `G:\...\KayKit` (động tác tách riêng, bỏ lưới).
+  - Luật thuần `src/luat/`: sát thương theo hệ; tỉ lệ bắt; 3 lần kiểm P^4/9·P^3/9·P^2/9 như Palworld; exp.
+  - 7 kiểu hiện chiêu. Hoạt cảnh bắt / thả / thu. 2 bản đồ hoạ.
+  - Chi tiết: spec §3.
+- **Sai / sửa:**
+  1. Sửa file bằng PowerShell 5.1 `Get-Content`/`Set-Content` làm hỏng dấu tiếng Việt, vì đọc UTF-8 như ANSI ⇒ ghi lại cả file.
+     **Bài học: đừng sửa file tiếng Việt bằng Get/Set-Content của PS 5.1; dùng Edit hoặc `[IO.File]` kèm UTF8.**
+  2. Shader nước: `#include <fog_vertex> }` cùng dòng ⇒ lỗi biên dịch. Sửa: xuống dòng sau mọi `#include`.
+  3. three r186 đã bỏ `PCFSoftShadowMap` (tự lùi về `PCFShadowMap`).
+  4. Màn tải che mất màn chọn thú.
+  5. Quầng sáng quả bóng là Sprite thiếu `map` ⇒ vẽ ra **hình vuông**. Lúc đầu t tưởng lỗi three.quarks, soi mã quarks mới ra.
+  6. Cỏ 2 mặt: mặt sau bị lật pháp tuyến ⇒ lá đen như gai ⇒ bỏ lật trong `normal_fragment_begin`.
+  7. Thú quá nhỏ so với cảnh ⇒ phóng ×1,45.
+  8. Rồng đồng hành che mục tiêu ⇒ đứng chếch ngang, camera chúc 0,7 rad.
+  9. Thú hoang hạ rồng trong ~3 giây ⇒ thú hoang đánh bằng 60% sức.
+  10. Đang bắt thì mục tiêu tự nhảy sang con khác, vì thú trong bóng không "còn sống" ⇒ không tự chọn lại khi đang ném.
+  11. Vite trên Windows 2 lần phục vụ **bản biên dịch cũ** sau 2 lần sửa liền nhau ("CHAM is not defined" dù file đúng) ⇒ khởi động lại máy chủ thử.
+- **Kiểm** trong Browser pane:
+  - Chơi trọn: chọn thú → cầu lửa/phun lửa trúng → thú đánh trả → choáng → giữ Space ngắm (hiện 20%) → ném tuột → bắt được (ép kết quả bằng JS) → thẻ + lên cấp.
+  - Đẹp 1280×760: ~75 FPS, ~100 lệnh vẽ, ~320k tam giác.
+  - Nhẹ 1024×768 và 390×844: 75 FPS, ~70 lệnh vẽ, ~190k tam giác.
+  - `tsc` sạch.
+  - **Chưa đo iPad gen 7 thật.**
+- **Nguồn boss** (subagent research, t kiểm lại 2 sản phẩm chủ chốt trên Unity Asset Store — khớp): `design/nguon-mo-hinh-boss-bat-thu.md`.
+  - Đề xuất Meshtint (pet) + N-hance (boss thú), ~465 USD.
+  - Cá voi là lỗ hổng.
+  - AI 3D chỉ tự có động tác "đi" cho thú 4 chân.
+  - **Chờ CEO chọn, chưa mua.**
+- **GitHub riêng tư** (CEO "làm thôi"): `HongThien/bk-bat-thu` + `HongThien/bk-nong-trai` (đẩy đủ 3 nhánh `main`/`nhip-ngay`/`do-hoa-thu` từ bản chép máy nhà).
+  - **Máy công ty phải `git remote add origin https://github.com/HongThien/bk-nong-trai.git` rồi `git fetch`**, không làm việc song song trên 2 máy mà không kéo trước.
+
+## 2026-10-01 (sáng, máy nhà) — BẮT THÚ: "100 người cùng lúc có tải được không?" — đo + tối ưu + CEO chốt thấy tối đa 10 người
+
+- **Thùy hỏi:** 100 người chơi cùng lúc có tải được không.
+- **T tách 2 phần:**
+  - máy chủ: chưa dựng, theo research Colyseus nhẹ ở mức này, phải test tải;
+  - máy HS phải vẽ đám đông: đo được ngay.
+- **Làm:** `nguoi-khac.ts`, tức bản chiếu người chơi khác (dùng lại cho MMO). `?nguoi=N` sinh N người giả, mỗi người 1 thú.
+- **Đo lần đầu** (máy bàn, 100 người, vẽ hết):
+  - 1.768 lệnh vẽ, 1,73 triệu tam giác, ~20 ms/khung;
+  - máy bàn vẫn 70 FPS; iPad gen 7 ước chỉ còn 6–10 FPS.
+  - Gốc:
+    - nhân vật KayKit 6 mảnh, cộng lượt bóng thành ~12 lệnh vẽ/người;
+    - t đã tắt frustum culling cho lưới có xương;
+    - người xa vẫn tính xương 60 lần/giây.
+- **Giữa lúc sửa, CEO chốt:** "tối đa chỉ nên thấy 10 người khác, ưu tiên người đã kết bạn".
+  - Làm: tầm 35 m, bạn bè trước, rồi người lạ gần nhất; còn lại ẩn, không tính xương.
+  - Bảng tên trên đầu, bạn bè có tim xanh.
+- **Tối ưu:**
+  - gộp mảnh lưới có xương cùng khung xương + vật liệu (`gopLuoiXuong`);
+  - bật lại culling (khối cầu bao nới ×1,8);
+  - chỉ 10 người gần nhất đổ bóng ở bản Đẹp, 5 ở bản Nhẹ;
+  - người xa cập nhật động tác 15 lần/giây (`DongTac.nhip`).
+- **Đo lại:** Đẹp 71 lệnh vẽ · 377k tam giác · 4,9 ms/khung; Nhẹ 45 · 208k · 4,2 ms.
+  - Ước iPad gen 7 ở bản Nhẹ khoảng 30–50 FPS. **Chưa đo máy thật.**
+- **Bẫy đo:** Browser pane ẩn ⇒ trình duyệt ngừng vòng vẽ, bảng FPS trống.
+  - Cách đo: `resize_window` giả kích thước, rồi tự gọi `GAME.vong(t)` 300 lần, mỗi lần `gl.finish()` và bấm giờ.
+  - Lệnh chờ của pane tối đa 10 giây/lần; tải 100 mô hình cần ~20 giây.
+- Commit: BatThu `b461779`; spec §1 #14 + §3.1.
+
+## 2026-10-01 (trưa, máy nhà) — BẮT THÚ: khu đấu boss (Thùy: "làm khu đấu boss nào")
+
+- **Làm** (BatThu `9a54b05`; spec §3.0):
+  - Khu đấu sàn đá có ký tự phát sáng, cột lửa/pha lê, hàng rào ma thuật; trời đổi hoàng hôn, nhạc trống trận.
+  - Boss Bạo Chúa Lửa, mô hình TẠM Quaternius Dino chờ CEO chọn bộ boss, với 4 đòn đều có vùng đỏ báo trước:
+    cắn quạt · dậm đất · thiên thạch · phun lửa quét.
+  - Nổi giận ở 50%, kiệt sức 8 giây ở 15% để ném bóng.
+  - Người chơi có máu + né lăn bất tử. Đủ các nhánh thắng / thua / thu phục.
+- **Sai / sửa:**
+  1. Bộ phát nón three.quarks phun theo **+z**, không phải +y như t giả định từ đầu. Chiêu phun lửa / vòi rồng / gió tuyết cũ phun lệch; giấy màu bắn ngang.
+     Sửa: bỏ `rotateX`; giấy màu xoay bộ phát −90°.
+  2. Hàm PowerShell đặt tên `R` trùng alias `Invoke-History` ⇒ không thay được gì (file vẫn nguyên, may). Đổi tên `Thay`.
+  3. Ở bản Đẹp, quầng thiên thạch + loé + vòng xung kích chồng nhau ⇒ chói trắng cả màn; lửa phun thành trắng.
+     Sửa: giảm HDR/độ đục khi hệ số to.
+  4. Camera trận boss: cây ngoài rìa che; boss 4 m mất đầu.
+     Sửa: chúc cao thêm 0,2 rad, khung nhìn kéo 42% về phía boss.
+- **Kiểm:**
+  - Browser pane ẩn/bị che ⇒ trình duyệt không vẽ, `screenshot` quá giờ.
+    Cách mới: `vite.config.ts` thêm cổng `/_snap` + `window.chup(ten)` tự chụp canvas ra `.snap/`; tua bằng `GAME.vong(t)` theo lô 0,1 giây có nhường lượt (tua đồng bộ một mạch thì các `await` không chạy tiếp).
+  - Đã xem: vào trận, cắn, dậm, thiên thạch, phun, nổi giận, kiệt sức → bắt 18% (ép qua) → vào đội, thua → hồi sinh.
+  - `tsc` sạch, không lỗi console. Chưa chơi bằng tay ở tốc độ thật (pane bị che).
+
+## 2026-10-01 (chiều) — App HS: MÔN thành trục ngoài cùng (Toán · KHTN · Tiếng Anh) + chặn kho Toán rò sang môn khác · mig 202610011120 đã áp
+
+- **Hỏi (Thùy):** "HS học 2 môn KHTN và Toán vào app chỉ thấy KHTN. Sửa lại toàn bộ cấu trúc app — phải chọn môn Toán, KHTN, Tiếng Anh;
+  chuyển môn là chuyển tính năng học tập tương ứng. Chơi thì không cần."
+- **Kiểm:** xếp lớp ĐÚNG (25 em Toán+KHTN, 5 em Toán+KHTN+Anh…); `hs_lop_mon_cua_toi` (28/09) trả đủ môn; bundle prod `hs-CGHoHDlz.js` CÓ thanh chọn môn.
+  Vậy "chỉ thấy KHTN" = thanh chọn 28/09 là dải nút nhỏ lẫn cạnh widget + nửa app KHÔNG theo môn: danh sách ET/BTVN/bài trên lớp/đề thi hiện lẫn
+  mọi môn, lịch bổ trợ lẫn môn, lịch sử làm bài + BXH tự luyện gộp mọi môn.
+- **Lỗi thật đào ra:** registry `_kho_cau_tbl/_kho_ban_do_tbl/_kho_lt_tbl` + `hs_dang_evals` rẽ `KHTN` / `else` ⇒ môn nào không phải KHTN rơi về KHO TOÁN.
+  Chọn Tiếng Anh ⇒ Tự luyện/Thông tin học tập hiện dạng Toán. Dữ liệu đã nhiễm: **68 bài tự luyện `mon='Tiếng Anh'` (5 em, từ 21/08) + 2 bài `'Văn'`
+  (1 em), 851 dòng `tu_luyen_dang_lan`, toàn mã dạng T…** (bản cũ `hs_mon_cua_toi` sắp chữ cái: 'Tiếng Anh' < 'Toán'). CHƯA sửa dữ liệu — chờ Thùy.
+- **DB (mig 202610011120, `migrate.mjs --only`, owner claude_build):** `_kho_co_mon(mon)` = registry môn có kho (Toán, KHTN) · `hs_mon_hoc_cua_toi()` =
+  (mon, ten_lop, co_kho) · overload `hs_xep_hang_tu_luyen(khoi, mon)` + `fn_hs_lich_su_lam_bai(so_ngay, mon)` (bản cũ giữ cho PWA cũ) · chèn 1 dòng chặn
+  sau `begin` (thân lấy từ `pg_get_functiondef`, `scripts/_gen_mig_chan_ro_mon.mjs`): đọc (`hs_dang_evals`, `tu_luyen_chu_de_ds_dang`, `htd_lo_trinh`)
+  ⇒ rỗng; sinh bài (`tu_luyen_sinh`, 3 bản `tu_luyen_chu_de_sinh`, `tu_luyen_dien_sinh`, `thu_thach_sinh`) ⇒ "Môn % chưa có kho bài trên app.".
+  KHÔNG đụng `_kho_*_tbl` (22 hàm gọi, có luồng staff bổ trợ) — để việc riêng. `hs_sotay_*` owner postgres ⇒ không replace được, chặn ở app.
+- **Thử:** chạy mig trong transaction + ROLLBACK, giả JWT Gia Khiêm (`scripts/_thu_mig_chan_ro_mon.mjs`): Toán/KHTN không đổi (evals 348/177, ds dạng
+  57/66); Tiếng Anh/Văn rỗng / báo lỗi; ACL bản mới không có anon. Sau áp: kiểm lại trên DB thật, Tiếng Anh `tu_luyen_chu_de_ds_dang` = [].
+- **App:** `MON_APP_HS` (lib/mon.ts, Văn chưa vào) · môn đang chọn = 1 nguồn module-level trong tuluyen.ts (`layMonHienTai/ngheMonHienTai`, nhớ
+  localStorage) ⇒ `monCuaHS()` không gọi lại RPC, `useMonHS()` + `DauTrangHS theoMon` hiện nhãn môn ở đầu màn học tập (tự luyện, thông tin học tập,
+  sổ tay, danh sách ET/BTVN, học từ đầu, lịch bổ trợ, BXH). `ThanhChonMon` bản `to` (chia đều, tên lớp dưới tên môn, LUÔN hiện kể cả 1 môn, chấm số việc
+  của môn KHÁC). Home 6–12 tách 2 khối: **Học tập** (thanh môn → ca bổ trợ của môn → ô `nhom='hoc'`) / **Giải trí** (thẻ Thế giới → Thành tựu · May mắn
+  · Ví xu; ô Thế giới trùng thẻ thì bỏ). HocSinhApp: `KHU_CHOI` · `KHU_CAN_KHO` (môn co_kho=false ⇒ ô tự luyện/thông tin/sổ tay/BXH khoá "X chưa mở") ·
+  bài theo `bai_test.mon` · lịch bổ trợ theo môn (ca ĐANG TỚI GIỜ môn khác vẫn hiện — không để em lỡ ca) · bỏ 2 đường lùi cứng `'Toán'` (SoTay, DienO).
+- **Verify UI:** `hs.html?demo=912` (mới, dev-only; `&khoi=10` lưới cấp 3, `&mot` 1 môn) ở 375×812 và 1180×820: đổi Toán→KHTN đổi lớp 9B1→9K3 + hiện ca
+  bổ trợ KHTN; Tiếng Anh khoá 3 ô cần kho, nhân vật không rủ "luyện 10 câu"; Giải trí đứng yên. tsc sạch · check:style-hs ✔ · build:hs OK.
+  **CHƯA đăng nhập HS thật** (không có mật khẩu) — đường dữ liệu thật kiểm ở tầng DB bằng giả JWT.
+- **Còn treo:** (a) sửa 70 bài tự luyện + 851 dòng `tu_luyen_dang_lan` gắn nhầm 'Tiếng Anh'/'Văn' về 'Toán' (nhân chứng: mã dạng T…) — cần Thùy gật;
+  (b) `_kho_*_tbl` còn fallback về Toán cho môn lạ (luồng staff); (c) Hòm thư/Thành tựu vẫn chung mọi môn (có nhãn môn từng dòng) — đúng ý "chung";
+  (d) HomeCap1 (cấp 1) chỉ thêm thanh môn luôn hiện + lịch theo môn, chưa tách khối Học tập/Giải trí.
+
+## 2026-10-01 (chiều, máy nhà) — Đánh giá chiến lược: game bắt thú có hợp HS BK không (Thùy: "dừng lại đánh giá nghiêm túc")
+
+- **Research 4 mảng:** độ hợp với HS · pháp lý VN · tính năng của thể loại · cách gắn học + đo.
+  - Báo cáo: `design/danh-gia-game-bat-thu-cho-bk.md`; ghi chú nguồn: `research_notes/Đánh giá game bắt thú cho BK/`.
+- **Kết luận:** HỢP với vai trò giữ chân + tạo thói quen mở app mỗi ngày. Game tách rời việc học thì KHÔNG làm HS học hơn (Sailer & Homner 2020; Clark 2016).
+- **🚨 Phát hiện nặng nhất — NĐ 147/2024.** T tự kiểm 3 điểm qua Nhân Dân, Báo Chính phủ, LuatVietnam:
+  - giờ chơi dưới 18 tuổi: 60 phút/game, 180 phút/ngày;
+  - Điều 57 cấm đổi vật phẩm/điểm trong game ra tiền, thẻ, hiện vật; cấm người chơi mua bán với nhau;
+  - G1 (nhiều người qua máy chủ) phải có giấy phép.
+  - ⇒ Đường "bán nông sản → xu ví" của Nông Trại, và "(sau này) xu" của Bắt Thú, có thể trái luật.
+  - Phạm vi áp cho game miễn phí trong app trung tâm: chưa rõ ⇒ cần luật sư.
+- **Lộ trình đề xuất:**
+  - GĐ0: luật sư + tách 2 loại tiền + ngân sách giờ chơi chung + đồng ý phụ huynh.
+  - GĐ1: một người chơi, thử theo lớp ≥ 10 tuần, có nhóm lớp chưa mở để đối chứng.
+  - GĐ2: bạn cùng lớp, không đồng thời (có thể vẫn ở G2).
+  - GĐ3: thấy nhau + party (sau khi rõ G1).
+  - GĐ4: gắn học, tuỳ chọn.
+- **Ngoài lề:** cổng "≥70% đúng" của Nông Trại nên đổi thành thưởng theo nỗ lực/tiến bộ (thử nghiệm Fryer; HS lách hệ thống bằng cách đoán bừa).
+- **Chờ CEO:** 10 quyết định ở cuối báo cáo.
+
+## 2026-10-01 (chiều, tiếp) — Sửa nhãn môn 70 bài tự luyện câu Toán gắn 'Tiếng Anh'/'Văn' · mig 202610011207 đã áp
+
+- Thùy trả lời 2 việc treo ở mục trên: (1) "Có" — sửa dữ liệu; (2) "TG hiện chỉ có Toán, sau này cũng cố định từng môn" ⇒ fallback `_kho_*_tbl`
+  ở luồng staff CHƯA cần sửa (đã bỏ chip việc nền).
+- **Nhân chứng thứ hai** trước khi ghi: mọi câu có mã dạng trong 70 bài đều `T…` (851 câu T, 0 câu môn khác), em nào cũng có lớp Toán; migration tự
+  `raise` nếu lệch hoặc số đếm ≠ 70 / 851 / 6.
+- **Sửa:** `bai_test` mon → Toán + `lop_id` → lớp Toán em đang học vào ngày làm bài (HS0645: 31 bài 5T2 trước 16/09, 23 bài 5T1 sau) ·
+  `tu_luyen_dang_lan` mon → Toán rồi ĐÁNH SỐ LẠI `lan_thu` của 93 dòng (em × dạng bị gộp — trước đó 57 dòng trùng "lần thứ" với dòng Toán sẵn có) ·
+  6 lượt `may_man_hs_luot` (HS0645, mon chép từ bài) → Toán. Giá trị cũ lưu ở bảng mới `log_sua_nhan_mon_2026_10_01` (1.095 dòng) — hoàn tác được.
+- **Thử rollback** (`scripts/_thu_mig_sua_nhan_mon.mjs`) rồi áp: không còn bài tự luyện nào ngoài Toán/KHTN; 0 nhóm (em × dạng × lần) trùng bài;
+  đo luyện Toán của HS0645 125 → 693 dòng, HS0546 502 → 509.
+
+## 2026-10-01 (chiều muộn, máy nhà) — CEO trả lời bản đánh giá game + research "giữ chân kiểu Duolingo"
+
+- **CEO chốt (không bàn lại):**
+  1. **Pháp lý game:** không lo. "Luật VN và thực tế xa nhau; làm local, không xu trực tiếp, không giao dịch tiền."
+  2. **Gộp Nông Trại + Bắt Thú** thành 1 game, 3 chế độ: trồng trọt · khám phá · ấp trứng nuôi pet kiểu Dragon City.
+  3. **Định vị:** HS BK chơi vì quen nhau + để kiếm xu; không đi đường làm game thật hay.
+  4. **Mô hình BK** (lớp thật + app) gần như duy nhất.
+  - Đã ghi vào spec-bat-thu §1 (#15–17), HANDOFF, bộ nhớ.
+- **Research 4 mảng:** Duolingo · app khác (Finch, Khan, VioEdu, Locket, Snapchat, Habitica…) · mô hình online+offline · khung lý thuyết + đạo đức cho teen.
+  - Báo cáo: `design/giu-chan-hoc-sinh-kieu-duolingo.md`; ghi chú: `research_notes/Giữ chân học sinh kiểu Duolingo/`.
+- **T tự kiểm 3 số chủ chốt (khớp nguồn gốc):**
+  - giải đấu Duolingo +17% thời gian học (Lenny's/Mazal);
+  - chuỗi 7 ngày ×3,6 khả năng học xong khoá (Duolingo blog — chỉ là tương quan);
+  - tin nhắn phụ huynh giảm 39% môn trượt, +17% chuyên cần (Bergman & Chan, J-PAL).
+- **Kết luận:** BK đã có gần đủ bộ đồ chơi của Duolingo. Còn thiếu thứ nối lớp thật với app + chuỗi ngày dễ giữ.
+  - 7 việc làm trước: tin báo phụ huynh · chuỗi ngày có lưới đỡ · thẻ buổi học · GV khen một chạm · nhiệm vụ cả lớp · pet kiểu Finch · giải đấu tuần nhóm nhỏ.
+  - KHÔNG làm: chuỗi một-một · phạt pet · bảng hiện người cuối · thưởng chuyên cần · tiêu xu để quay.
+- **Chờ CEO** chọn thứ tự triển khai.
+- **CEO phản biện (01/10):** "BK tác động liên tục được việc vào app, giao bài bắt buộc trên app ⇒ góc nhìn game giải trí của Duolingo có thể không đúng với BK."
+  - T đồng ý ở gốc. Tách app thành 2 tầng: **bắt buộc** (không cần dụ; vấn đề là làm qua loa) và **tự nguyện** (góc Duolingo vẫn đúng).
+  - Điều chỉnh:
+    - hạ ưu tiên chuỗi ngày (chỉ đếm phần làm thêm);
+    - thêm "học trước, chơi sau" (nộp BTVN thì mở game);
+    - thước đo chính đổi sang chất lượng phần bắt buộc + tỉ lệ làm thêm tự nguyện.
+  - Đã ghi thêm 1 mục cuối `design/giu-chan-hoc-sinh-kieu-duolingo.md`.
+- **CEO đính chính:** "báo PH: có app rồi mà."
+  - T soi `bkdemy-ph-app`: đã có Web Push (đến lớp · kết quả buổi · tóm tắt việc cần làm mỗi ngày · thông báo trung tâm).
+  - Bỏ "tin báo phụ huynh" khỏi việc cần làm. Còn lại: đo % PH bật thông báo (iPhone cần cài PWA) + thêm gợi ý "hỏi con về dạng X".
+  - Thứ tự mới: học trước chơi sau → GV khen → nhiệm vụ lớp → pet Finch → giải đấu tuần → chuỗi tự nguyện.
+  - **Bài học:** đề xuất tính năng cho app BK thì soi repo liên quan (`bkdemy-ph-app`, app HS) TRƯỚC khi ghi "chưa có" — báo cáo research dựa vào danh sách "probably not present" t đưa, sai một mục.
+- **CEO nói rõ chiến lược gami/game (01/10)** — ghi vào `spec-bat-thu.md` §0:
+  - Áp lực chỉ ép HS vào app, không ép được cố gắng. Vì vậy app phải đủ thú vị để HS "trả giá" bằng 30 phút học nghiêm túc.
+  - Chuỗi: muốn chơi thì phải học (vd đúng 30 câu mở game) → kết quả học thành tài sản trong game + khoe với bạn → học nhiều hơn.
+  - "Tốt cho số đông là đủ."
+  - Kinh doanh: superapp khiến HS gắn bó, chuyển trung tâm là mất "chơi".
+  - T gắn tên lý thuyết (Premack · temptation bundling · gắn nội tại một phần · chi phí chuyển đổi + hiệu ứng mạng lưới).
+  - T đề xuất (chờ CEO): cổng đếm **số câu đúng**, không đếm tỉ lệ.
+- **Chốt phiên máy nhà 01/10 (Thùy lên công ty làm tiếp):**
+  - HANDOFF: gom mục game thành 1 mục "⭐⭐ GAME BK" (chiến lược · gộp 2 game · chờ CEO · 2 repo + cách kéo ở máy công ty · bẫy kỹ thuật); bỏ các dòng đã cũ.
+  - BatThu `9a54b05` đã push. NongTrai máy nhà không sửa gì.
+  - `.claude/launch.json` máy nhà có thêm `bat-thu` / `nong-trai-nha` trỏ `C:/Users/Admin/...` — KHÔNG commit (đường dẫn riêng máy).
+
+## 2026-10-01 (máy công ty) — Kéo code máy nhà về + gộp HANDOFF (Thùy: "cập nhật handoff và pull code mới về. t mới làm cả game bắt thú đấy")
+
+- **Gộp ERP:** máy công ty đi trước 19 commit (chưa đẩy lên), đi sau 14 commit của máy nhà ⇒ `git merge origin/main`, không rebase.
+  - **DEVLOG xung đột:** cả hai đều ghi thêm ⇒ giữ cả hai, các mục 30/09 của máy công ty đứng trước các mục 30/09 khuya → 01/10 của máy nhà.
+  - **HANDOFF xung đột:**
+    - máy công ty có mục Nông Trại viết cuối 30/09, máy nhà chưa thấy;
+    - máy nhà có mục "⭐⭐ GAME BK" (chiến lược 01/10, gộp 2 game).
+    - Gộp thành 1 mục GAME BK. Nông Trại thành tiểu mục "chế độ trồng trọt", giữ phần còn đúng (bố cục màn ngang, kinh tế lần 5, chờ CEO a–d, bẫy).
+- **Phát hiện vênh:**
+  - 30/09 CEO nói bắt thú được thưởng 4–5 xu, kiểu đầu tư có rủi ro (`spec-game-bat-quai.md`).
+  - 01/10 CEO nói "không trả xu trực tiếp" (spec-bat-thu #17).
+  - ⇒ Ghi vào spec-bat-thu §4 mục 3 chờ CEO chọn. `spec-game-bat-quai.md` đánh dấu ĐÃ BỊ THAY.
+- **Code game về máy công ty:**
+  - `bk-bat-thu` đã clone về `E:\BK ACADEMY\Gaming\BatThu` @ `9a54b05`. Thêm launch `bat-thu` (5280) vào `.claude/launch.json`, đường dẫn E:.
+  - **Bị chặn tự động, Thùy chạy tay:**
+    - (1) `npm install` trong `BatThu` — chặn vì "cài code từ ngoài";
+    - (2) `git remote add origin https://github.com/HongThien/bk-nong-trai.git` + `git fetch` trong `NongTrai` — chặn vì "đổi remote".
+  - NongTrai máy công ty `nhip-ngay` = `9556216`, trùng bản máy nhà đã đẩy.

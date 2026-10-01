@@ -112,7 +112,8 @@ export function LamDienO({ hocSinhId, onXong, desktop }: { hocSinhId: string; on
   async function sinh() {
     setState('tai'); setErr(null)
     try {
-      const mon = (await monCuaHS()) ?? 'Toán'
+      const mon = await monCuaHS() // 01/10: bỏ đường lùi cứng 'Toán'
+      if (!mon) throw new Error('Chưa xác định được môn học của em — báo thầy cô nhé.')
       const { baiTestId: id } = await sinhTuLuyenDienO(mon, 3)
       const f = await getBaiTestFull(id)
       const bl = await moBaiLam(id, hocSinhId)

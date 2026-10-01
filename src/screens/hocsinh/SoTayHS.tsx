@@ -48,7 +48,7 @@ function Kung({ title, sub, onBack, children }: {
 }) {
   return (
     <ManHS>
-      <DauTrangHS tieuDe={<span className="whitespace-normal">{title}</span>} onBack={onBack} />
+      <DauTrangHS tieuDe={<span className="whitespace-normal">{title}</span>} onBack={onBack} theoMon />
       {sub && <p className="-mt-1 text-[12.5px] leading-snug" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>{sub}</p>}
       <div>{children}</div>
     </ManHS>
@@ -105,8 +105,8 @@ function Trong({ icon, title, mo_ta }: { t?: Theme; icon: string; title: string;
 // Nguồn dữ liệu tách ra prop để `hs.html?demo=sotay` (DEV, AppHS.tsx) xem được màn bằng data giả
 // — Claude không có mã+PIN của HS thật nên không tự mở app thật để soi layout được. Mặc định là
 // 3 RPC thật; đường chạy production KHÔNG có thêm nhánh if nào.
-export type SoTayApi = { cay: typeof soTayCay; tim: typeof soTayTim; dang: typeof soTayDang }
-const API_THAT: SoTayApi = { cay: soTayCay, tim: soTayTim, dang: soTayDang }
+export type SoTayApi = { cay: typeof soTayCay; tim: typeof soTayTim; dang: typeof soTayDang; mon?: () => Promise<string | null> }
+const API_THAT: SoTayApi = { cay: soTayCay, tim: soTayTim, dang: soTayDang, mon: monCuaHS }
 
 // ⚠ `e instanceof Error` KHÔNG bắt được lỗi Supabase: `supabase.rpc` trả `{ error }` là
 // PostgrestError — OBJECT THƯỜNG `{message, details, hint, code}`, không phải subclass của Error.
@@ -138,7 +138,11 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
   const [ketQua, setKetQua] = useState<SoTayTimRow[] | null>(null)
   const [loiTim, setLoiTim] = useState<string | null>(null) // tách khỏi `ketQua` — xem effect tìm
 
-  useEffect(() => { monCuaHS().then((m) => setMon(m ?? 'Toán')).catch(() => setMon('Toán')) }, [])
+  // 01/10: bỏ đường lùi cứng 'Toán' — không xác định được môn thì báo, không tự mở sổ tay môn khác.
+  useEffect(() => {
+    ;(api.mon ?? monCuaHS)().then((m) => { if (m) setMon(m); else setLoi('Chưa xác định được môn học của em — báo thầy cô nhé.') })
+      .catch((e) => setLoi(e?.message ?? String(e)))
+  }, [])
 
   // Đổi NGỮ CẢNH (môn/nhánh/khối) ⇒ quét lại là đúng. Giữ `cay` cũ tới khi có cây mới thay vì
   // setCay(null) — không chớp trắng giữa hai lần đổi nhánh (CLAUDE.md §2).

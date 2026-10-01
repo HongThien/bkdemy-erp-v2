@@ -48,7 +48,7 @@ export default function DanhSachHS({ tieuDe, ill, tab, nChua, nXong, rows, dangT
 }) {
   return (
     <ManHS>
-      <DauTrangHS tieuDe={tieuDe} onBack={onBack} />
+      <DauTrangHS tieuDe={tieuDe} onBack={onBack} theoMon />
 
       {/* TABS — thanh pill, tab đang chọn tô màu nhấn */}
       <div className="mt-1 grid grid-cols-2 p-1" style={{ ...THE_TRON, borderRadius: '999px' }}>

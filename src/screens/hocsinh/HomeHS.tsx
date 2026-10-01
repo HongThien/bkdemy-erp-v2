@@ -33,6 +33,9 @@ export type HomeCard = {
   sub: string
   subMau: 'ton' | 'do' | 'xam' | 'xanh'
   badge?: number
+  /** 'hoc' = ô thuộc GÓC HỌC TẬP của môn đang chọn (đổi môn ⇒ đổi nội dung) · 'choi' = ô chung không theo môn (thế giới,
+   *  may mắn, thành tựu, ví xu — Thùy 01/10 "chơi thì không cần"). Không khai = 'hoc'. HomeHS912 tách 2 khối theo cờ này. */
+  nhom?: 'hoc' | 'choi'
   doodle: string
   /** Nếu có emoji thì render emoji trong khung 31% thay cho ảnh PNG (dùng cho ô cấp 2 mới chưa có cutout PNG:
    *  Thành tựu · May mắn · Bài tập được giao). ill vẫn giữ để backward-compat với cards cũ có PNG. */
@@ -163,8 +166,8 @@ export default function HomeHS({ hoTen, maHS, lopMon, mons, mon, onChonMon, gioi
           <div className="font-hand pointer-events-none absolute bottom-1.5 left-2.5 -rotate-[8deg] text-[9px] leading-[1.05] text-white/80">Better Student<br />Brighter You!</div>
         </div>
 
-        {/* CHỌN MÔN — chỉ hiện khi em học ≥2 môn; đổi môn là cả app (tự luyện, rank, sổ tay…) chạy theo môn đó */}
-        <ThanhChonMon mons={mons} mon={mon} onChon={onChonMon} className="mt-2.5"
+        {/* CHỌN MÔN — đổi môn là cả góc học tập (bài trên lớp, tự luyện, sổ tay, bổ trợ…) chạy theo môn đó */}
+        <ThanhChonMon mons={mons} mon={mon} onChon={onChonMon} className="mt-2.5" luonHien
           nut={(chon) => chon
             ? { background: t.hero, color: '#fff', boxShadow: SHADOW }
             : { background: '#fff', color: SEC, boxShadow: '0 2px 6px rgba(67,92,160,.08)' }} />
