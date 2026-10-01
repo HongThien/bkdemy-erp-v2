@@ -32642,3 +32642,15 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - GĐ4: gắn học, tuỳ chọn.
 - **Ngoài lề:** cổng "≥70% đúng" của Nông Trại nên đổi thành thưởng theo nỗ lực/tiến bộ (thử nghiệm Fryer; HS lách hệ thống bằng cách đoán bừa).
 - **Chờ CEO:** 10 quyết định ở cuối báo cáo.
+
+## 2026-10-01 (chiều, tiếp) — Sửa nhãn môn 70 bài tự luyện câu Toán gắn 'Tiếng Anh'/'Văn' · mig 202610011207 đã áp
+
+- Thùy trả lời 2 việc treo ở mục trên: (1) "Có" — sửa dữ liệu; (2) "TG hiện chỉ có Toán, sau này cũng cố định từng môn" ⇒ fallback `_kho_*_tbl`
+  ở luồng staff CHƯA cần sửa (đã bỏ chip việc nền).
+- **Nhân chứng thứ hai** trước khi ghi: mọi câu có mã dạng trong 70 bài đều `T…` (851 câu T, 0 câu môn khác), em nào cũng có lớp Toán; migration tự
+  `raise` nếu lệch hoặc số đếm ≠ 70 / 851 / 6.
+- **Sửa:** `bai_test` mon → Toán + `lop_id` → lớp Toán em đang học vào ngày làm bài (HS0645: 31 bài 5T2 trước 16/09, 23 bài 5T1 sau) ·
+  `tu_luyen_dang_lan` mon → Toán rồi ĐÁNH SỐ LẠI `lan_thu` của 93 dòng (em × dạng bị gộp — trước đó 57 dòng trùng "lần thứ" với dòng Toán sẵn có) ·
+  6 lượt `may_man_hs_luot` (HS0645, mon chép từ bài) → Toán. Giá trị cũ lưu ở bảng mới `log_sua_nhan_mon_2026_10_01` (1.095 dòng) — hoàn tác được.
+- **Thử rollback** (`scripts/_thu_mig_sua_nhan_mon.mjs`) rồi áp: không còn bài tự luyện nào ngoài Toán/KHTN; 0 nhóm (em × dạng × lần) trùng bài;
+  đo luyện Toán của HS0645 125 → 693 dòng, HS0546 502 → 509.

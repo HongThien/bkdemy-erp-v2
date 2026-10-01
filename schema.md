@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-298 bảng · 19 view · 0 enum · 102 trigger · 708 function
+299 bảng · 19 view · 0 enum · 102 trigger · 708 function
 
 ## _app_secrets
 
@@ -2950,6 +2950,17 @@
 | thang_kl | jsonb |  | '[]'::jsonb |  |  |
 | active | boolean |  | true |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+
+## log_sua_nhan_mon_2026_10_01
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| bang | text |  |  |  |  |
+| id | uuid |  |  |  |  |
+| cot | text |  |  |  |  |
+| gia_tri_cu | text | Y |  |  |  |
+| gia_tri_moi | text | Y |  |  |  |
+| sua_at | timestamp with time zone |  | now() |  |  |
 
 ## lop
 
