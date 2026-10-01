@@ -33858,3 +33858,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   (đến ≥ từ · ≤61 ngày · không nhập quá 30 ngày trước · bắt buộc lý do · chặn trùng cùng khoảng/khối).
 - Thử ROLLBACK: nhân sự không quyền + học sinh bị chặn · admin ghi ✔ · trùng/đảo ngày/quá 60 ngày/quá khứ >30 ngày/thiếu lý do đều chặn đúng · gỡ ⇒ đánh dấu xoá.
   Màn: tsc ✔; CHƯA soi trình duyệt (cần đăng nhập quản trị thật).
+
+## 01/10 — View `v_ph_hoc_online` cho app PH "Bài tập online"
+- Mig 202610011644: view (HS × ngày VN × môn × nhóm) trên `bai_lam_cau` đã chấm của tu_luyen/bo_tro(+test)/retest/htd; revoke anon/authenticated, grant `fdw_bkdemy_web`. Thời gian = Σ span mỗi lượt, cắt 45'. Phía app PH: `bkdemy-ph-app` mig 0034. CẦN ÁP TAY (ERP trước).
