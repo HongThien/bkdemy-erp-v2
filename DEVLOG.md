@@ -33310,3 +33310,22 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   (app thành thế giới quái vật). Viết `spec-v1-app-hs.md` §13: luật chung (pull, commit theo đường dẫn, vùng file riêng, migration --only, DEVLOG gắn tên
   luồng) · phạm vi + vùng file + việc theo ngày từng luồng · hợp đồng dữ liệu (`fn_chuoi_cua_toi`, `fn_ban_do_phieu_luu`, `fn_luot_hoc_that_ket_qua`) để
   Giao diện dựng bằng dữ liệu giả không chờ Số liệu · câu lệnh mở đầu dán sẵn cho 3 context · hộp thư giữa luồng. HANDOFF thêm mục ⭐⭐ RELEASE V1.0 đầu ①.
+
+### 01/10 chiều — Đề thi LÁT B: Kho đề thi + màn sửa gộp, thay đường Gemini-trong-ERP
+- Thùy: tính năng mới giống màn "Nhập kho (từ tài liệu)" 2 tab — so rồi tối ưu + thay thế; đề LƯU và SỬA ở tab Đề thi là chính, Kho tài liệu chỉ để in;
+  XOÁ luôn nút nhập PDF bằng Gemini trong ERP (đề đi qua folder → Claude; Claude gọi Gemini OCR nhưng có kiểm lại); gộp Sửa + Duyệt 1 màn; tab chuyên đề để sau.
+- Mig `202610011501_de_thi_kho_va_luat_k5_k6.sql` (dry-run qua → ĐÃ ÁP bằng `migrate.mjs --only`): `fn_de_thi_thieu` (dạng chờ = cảnh báo, bỏ `tln_chua_mcq`,
+  thêm `so_chua_dang`) · `fn_de_thi_duyet` (bỏ qua câu/ý dạng chờ thay vì vấp `trg_chan_duyet_dang_cho`; trả `so_cau_cho_dang`) · `fn_de_thi_dem` · `fn_de_thi_ds`
+  (trang 25 đề, số thiếu tính bằng chính `fn_de_thi_thieu`; đo 25 đề = 435 ms). Dry-run: DE SO 3 so_chan 0 / 5 chưa đủ dạng; duyệt = 17 câu + 12 mệnh đề vào kho chuẩn,
+  5 câu + 4 mệnh đề chờ dạng; đề sang tab Sẵn sàng. (Chưa bấm Duyệt thật — việc của người duyệt.)
+- `src/screens/tailieu/KhoDeThi.tsx` (mới): `KhoDeThiScreen` (3 tab + đếm, lọc khối, tìm, bảng tình trạng, tải thêm, cache module-level + làm mới NỀN khi đóng đề)
+  và `DeThiSoan` (màn sửa gộp). `dethi.ts`: `SuaCauPatch` (sửa mọi trường + bump `tai_lieu.updated_at`), `themCauVaoPhan` (ghi `nhanhByCau` khi câu khác nhánh),
+  `listKhoDeThi`/`demKhoDeThi`/`canhBaoNhap`. Đ/S: chọn dạng TỪNG mệnh đề (hết stamp 1 dạng cho 4 ý). TLN: ô đáp số + `hopLePhieu4O` (4 ô, "−" ô đầu, "," ô 2–3).
+- ĐÃ GỠ (Thùy gật "Xoá luôn đi"): trong `DeThiScreen.tsx` — NhapDeThiWizard, BocCauModal, bocDeTuFile, DungSaiBoc, DeThiEditor cũ, TaoDeThiModal (thay bằng TaoDeTrong)
+  ⇒ file 799 → 9 dòng (lối vào mỏng, giữ tên export `DeThiEditor`); trong `DuyetDeThi.tsx` — DuyetDeView, CauDuyet, TLNDuyet + helper (444 → 140 dòng, còn Giao + Lượt thi).
+  KHÔNG gỡ: prompt/schema bóc đề ở `lib/kho/api.ts`, `scripts/test-dethi-ingest.ts`, tab Nhập chuyên đề.
+- `KhoTaiLieuScreen`: đề thi chỉ còn In / In nhanh / Copy link (bỏ Sửa, Nhân bản, Xoá). Tab `📝 Nhập đề thi` → `📝 Đề thi`.
+- Kiểm trên preview (admin): Nhập kho › Đề thi hiện Chờ duyệt 346 · mở "Đề số 3": 22 thẻ câu, 16 dòng "Dạng của ý này", 7 ghi chú lúc nhập, 394 KaTeX 0 lỗi, 5 hình,
+  đáp số TLN 2 / −32 / 556 / 10 / 23,9 / 7 đều hợp lệ phiếu 4 ô; ✎ Sửa nội dung mở được cho TN và Đ/S; đề gốc PDF mở cạnh bên; bấm lại đáp án A câu 1 ⇒ `tai_lieu.updated_at`
+  bump 15:09:28 (ghi thật qua RLS OK). Kho tài liệu: dòng đề thi chỉ còn nút in. tsc sạch phần mình.
+- Chưa tốt: màn hẹp (<1100px) mà mở đề gốc thì cột đề bị bóp; chưa có nút xoá đề ở Kho đề thi; chưa soạn câu mới bằng tay trong đề.

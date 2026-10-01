@@ -347,3 +347,29 @@ Lát A–C không phụ thuộc bản đồ kiến thức, không phụ thuộc 
 
 Thứ tự lát sau khi chốt: **A** nhập `DE SO 3` → **B** màn Kho đề thi (tab Chờ duyệt + Duyệt đề) → **C** nút Giao 3 chế độ + ô TLN 4 ô + tab Đã giao → **D** đề chỉ có PDF.
 | K6 | **Đề LUÔN dùng được kể cả khi chưa gán đủ dạng — chỉ CẢNH BÁO, không chặn.** Câu chưa có dạng vẫn lưu kết quả làm bài; sau này gán dạng thì **mastery của HS cập nhật theo** (CEO 01/10) | (a) `fn_de_thi_thieu`: "dạng chờ" / "mệnh đề dạng chờ" chuyển từ CHẶN sang CẢNH BÁO; chỉ còn chặn thứ làm bài không chấm được (thiếu đáp án, câu đã vào kho rác). (b) Hiện DB **chặn `da_duyet` khi câu còn dạng chờ** (`trg_chan_duyet_dang_cho`) ⇒ "Duyệt đề" và "Giao" phải tách khỏi việc duyệt DẠNG: duyệt đề = xác nhận nội dung + đáp án; câu dạng chờ vẫn giao được, chưa vào `kho_chuan` cho tới khi có dạng. (c) Mastery phải lấy dạng theo **`ma_cau` → dạng HIỆN TẠI của câu trong kho**, không theo `ma_dang` chụp lúc phát hành ⇒ gán dạng sau là kết quả cũ tự rơi vào đúng ô (HS × dạng), không cần chạy lại. Thiết kế chi tiết ở lát C — phải đo `bai_test_cau.ma_dang` đang được dùng ở những hàm mastery nào trước khi sửa |
+
+### 10.6 Chốt 01/10 (vòng 3) — Kho đề thi nằm ở "Nhập kho › Đề thi", THAY đường cũ · ĐÃ BUILD lát B
+
+CEO: *"Tính năng này giống 'Nhập kho từ tài liệu — Chuyên đề và Đề thi'. Đọc 2 cái giống khác nhau thế nào để tối ưu rồi thay thế. Kết quả t muốn đề
+lưu ở đây và sửa ở đây là chính. Ra Kho tài liệu chỉ để in thôi."* · *"Xoá luôn [nút Nhập đề thi từ PDF]. T định bỏ luồng nhập thẳng PDF ở đấy mà đưa
+vào folder chỉ định và Claude chạy. Claude vẫn gọi Gemini để OCR nhưng Claude có kiểm tra lại, thay vì ở ERP lỗi là lỗi luôn."*
+
+| So sánh | Tab cũ "Nhập đề thi" (Gemini trong trình duyệt) | Luồng mới |
+|---|---|---|
+| Máy đọc | Gemini từng trang, trong tab; lỗi bịa câu khi lời giải tràn trang, cắt hình sai, mất đáp án | Claude ở máy công ty: Word đọc thẳng; PDF = Gemini OCR + Claude kiểm lại (lát D) |
+| Người rà | TRƯỚC khi lưu, trạng thái nằm trong tab (đóng là mất) | SAU khi lưu: đề đã ở ERP, chưa duyệt; bỏ dở quay lại được |
+| Câu chưa có dạng | bị BỎ khỏi đề | vào dạng chờ, đề đủ câu |
+| Đúng/Sai | 1 chuyên đề cho cả câu, đóng cùng 1 dạng vào 4 ý | mỗi mệnh đề 1 dạng |
+| Sửa đề | 3 nơi (danh sách thẻ · màn sửa 1 dòng/câu · màn Duyệt không sửa được nội dung) | 1 màn |
+
+| Quyết định | Đã làm (01/10) |
+|---|---|
+| **Kho đề thi = tab "Đề thi" của màn Nhập kho** — nơi lưu + sửa chính | `KhoDeThi.tsx`: 3 tab Chờ duyệt / Sẵn sàng / Đã giao (đếm + danh sách ở `fn_de_thi_dem` / `fn_de_thi_ds`), lọc khối, tìm tên, cột tình trạng (thiếu đáp án · chưa đủ dạng · ghi chú lúc nhập), nhớ vị trí khi quay lại |
+| **Gộp Sửa đề + Duyệt đề thành MỘT màn** | `DeThiSoan`: bố cục giấy; sửa tại chỗ nội dung / phương án / đáp án / lời giải / hình (dùng lại `CauEditor` của kho) · dạng của câu · **dạng từng mệnh đề Đ/S** · ghi chú của máy lúc nhập (`cau_hinh.deThi.canhBaoCau`) · đề gốc PDF cạnh bên · ↑ ↓ đổi thứ tự · ✕ bỏ câu · thêm câu có sẵn trong kho · thêm/xoá phần · thông tin đề · Duyệt · Giao · In · các lượt đã giao |
+| **Xoá đường nhập PDF bằng Gemini trong ERP** | Gỡ `NhapDeThiWizard`, `BocCauModal`, `bocDeTuFile`, `DungSaiBoc`, màn sửa cũ (DeThiScreen.tsx 799 → 9 dòng) và `DuyetDeView`/`TLNDuyet` (đã gộp). Giữ prompt/schema bóc đề ở `lib/kho/api.ts` (script test còn dùng; lát D có thể dùng lại) |
+| **Kho tài liệu chỉ để in đề** | Dòng đề thi chỉ còn In / In nhanh / Copy link; bỏ Sửa · Nhân bản · Xoá |
+| **K5 + K6 vào luật DB** (mig `202610011501`) | `fn_de_thi_thieu`: chưa có dạng = cảnh báo, bỏ điều kiện "TLN chưa có 4 phương án"; `fn_de_thi_duyet`: câu/ý còn dạng chờ không đóng dấu `da_duyet` nhưng không làm hỏng việc duyệt đề. TLN trên màn = ô đáp số + kiểm "tô được trên phiếu 4 ô" |
+| Tab Nhập chuyên đề | Để nguyên, thay theo cùng khuôn sau |
+
+Còn lại: **C** — Giao 3 chế độ (kiểm tra / luyện tập / BTVN), ô trả lời ngắn 4 ô trên app HS + luật so đáp số, mastery lấy dạng theo `ma_cau` (K6c) ·
+**D** — đề chỉ có PDF (Gemini OCR + Claude kiểm) · xoá đề trong Kho đề thi (chưa có nút; theo Luật xoá) · soạn câu MỚI bằng tay ngay trong đề.
