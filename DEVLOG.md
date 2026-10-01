@@ -34417,3 +34417,15 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   (2) "nửa xanh ở đầu không ngang phần trắng mà vòng xuống" ⇒ ranh màu ở đầu: trắng dâng lên dưới mắt phía sau rồi hạ dần ra mõm (xanh trùm mõm),
   hàm dưới trắng trơn. Lần đầu chỉ hạ ở mõm thì vẫn thấy "ngang" vì đường miệng dốc xuống về sau — phải NÂNG phía sau lên mới thành vòng cung.
 - Tự kiểm: `thien_kinh-so-tham-khao` (đầu + vây đặt cạnh ảnh 3D) · chuỗi `-dt-boi`, `-dt-hat`. Bản Đẹp 49,8k tam giác; tsc sạch.
+
+## 2026-10-02 — [Game] Thú mới KHỈ LÁ (mẫu Tanzee) — BatThu `thu-de-thuong` @ `29bfe9f`
+- Làm: theo 8 ảnh CEO chụp trong trình xem 3D của game (lưu `BatThu/.snap/tham-khao/khi_tanzee/`, gitignored). Đo trên ảnh: đầu nhìn chính diện
+  rộng ≈ 1,45 × thân, tai đĩa ≈ 0,5 R, đuôi ≈ 1,3 × thân. Dựng trên khuôn chibi; mô-đun mới dùng lại: tai 'dia', đuôi 'la', hoa văn 'kinh'/'ban',
+  `laCay` (lá có gân), chomLa · noNguc · tuaChan · khongMa · miengNghi · matTrang, trứng 'la'. Shiny = khỉ lá thu (vàng, lá đỏ). ~22k tam giác/con.
+- Ban đầu định mở phiên riêng (thẻ việc), CEO bảo "làm thôi nào" ⇒ rút thẻ, làm luôn phiên này.
+- Sai: lần đầu đầu to gấp ~2× thân (che hết thân, nơ ngực bị che), chùm lá đặt ở đỉnh đầu nên bị chính cái đầu che, mắt to sát nhau trông lồi ⇒
+  sửa theo ảnh so cạnh mẫu (đầu R 0,29 → 0,245, chùm lá dời lên trán + lá bản rộng, mắt nhỏ + xa nhau, tai xoay ra ngoài).
+- Làm song song: phiên SÓI cùng sửa `khuon-4chan.ts` + `loai.ts` chưa commit (import `./soi`, khối `soi_nguyet`) ⇒ commit của t chỉ chứa đoạn
+  của con khỉ: dựng bản lọc rồi `git hash-object -w` + `git update-index --cacheinfo` (không đụng file đang làm việc), kiểm bằng `git checkout-index`
+  ra thư mục tạm + `tsc` sạch. Cách này dùng lại được mỗi khi 2 phiên sửa chung 1 file.
+- Còn: dáng đứng thẳng như chó (mẫu khom, chống tay) · chưa có 3–5 động tác riêng kiểu khỉ · miệng chưa cười rộng bằng mẫu.
