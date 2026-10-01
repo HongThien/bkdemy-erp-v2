@@ -32,6 +32,16 @@
       "autoPort": false
     },
     {
+      "name": "preview-hs-lan",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "preview:hs:lan"
+      ],
+      "port": 5180,
+      "autoPort": false
+    },
+    {
       "name": "dev-hs-lan",
       "runtimeExecutable": "npm",
       "runtimeArgs": [

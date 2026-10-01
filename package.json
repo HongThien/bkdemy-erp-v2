@@ -8,6 +8,7 @@
     "preview": "vite preview",
     "dev:hs": "vite --config vite.config.hs.ts",
     "dev:hs:https": "vite --config vite.config.hs.lan.ts",
+    "preview:hs:lan": "vite preview --config vite.config.hs.ts --host --port 5180 --strictPort",
     "build:hs": "vite build --config vite.config.hs.ts",
     "preview:hs": "vite preview --config vite.config.hs.ts --outDir dist-hs",
     "dev:ops": "vite --config vite.config.ops.ts",
