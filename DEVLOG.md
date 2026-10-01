@@ -32685,3 +32685,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Bỏ "tin báo phụ huynh" khỏi việc cần làm. Còn lại: đo % PH bật thông báo (iPhone cần cài PWA) + thêm gợi ý "hỏi con về dạng X".
   - Thứ tự mới: học trước chơi sau → GV khen → nhiệm vụ lớp → pet Finch → giải đấu tuần → chuỗi tự nguyện.
   - **Bài học:** đề xuất tính năng cho app BK thì soi repo liên quan (`bkdemy-ph-app`, app HS) TRƯỚC khi ghi "chưa có" — báo cáo research dựa vào danh sách "probably not present" t đưa, sai một mục.
+- **CEO nói rõ chiến lược gami/game (01/10)** — ghi vào `spec-bat-thu.md` §0:
+  - Áp lực chỉ ép HS vào app, không ép được cố gắng. Vì vậy app phải đủ thú vị để HS "trả giá" bằng 30 phút học nghiêm túc.
+  - Chuỗi: muốn chơi thì phải học (vd đúng 30 câu mở game) → kết quả học thành tài sản trong game + khoe với bạn → học nhiều hơn.
+  - "Tốt cho số đông là đủ."
+  - Kinh doanh: superapp khiến HS gắn bó, chuyển trung tâm là mất "chơi".
+  - T gắn tên lý thuyết (Premack · temptation bundling · gắn nội tại một phần · chi phí chuyển đổi + hiệu ứng mạng lưới).
+  - T đề xuất (chờ CEO): cổng đếm **số câu đúng**, không đếm tỉ lệ.

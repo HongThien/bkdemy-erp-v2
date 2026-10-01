@@ -7,6 +7,18 @@
 
 ---
 
+## 0. CHIẾN LƯỢC (CEO 01/10/2026) — mọi tính năng game/gami phải phục vụ chuỗi này
+
+> **Hứng thú kéo HS vào app → muốn chơi thì phải học (vd làm đúng 30 câu thì game mở khoá) → kết quả học dùng để chơi và khoe với bạn → học nhiều hơn → gắn bó với trung tâm.**
+
+- **Vai trò của game:** áp lực (BTVN bắt buộc, GV, PH) chỉ ép được HS *vào app*, không ép được *cố gắng*. Game phải đủ thú vị để HS chịu "trả giá" bằng khoảng 30 phút học nghiêm túc.
+- **Kết quả học = tài sản trong game:** hạt giống, năng lượng, trứng pet, chiêu thức… Không chỉ là chìa khoá mở cổng.
+- **Khoe với bạn** qua Thế giới BK. HS chơi vì có bạn bè và để có thêm xu (§1 #16).
+- **Tốt cho số đông là đủ.** Không thiết kế cho 100%; ngoại lệ xử từng ca.
+- **Kinh doanh — superapp tạo gắn bó.** Chuyển trung tâm là mất vườn, pet, bộ sưu tập, bạn chơi cùng. Đây là chi phí chuyển đổi + hiệu ứng mạng lưới (Shapiro & Varian).
+- **Tên lý thuyết:** nguyên lý Premack · temptation bundling (Milkman 2014) · gắn nội tại một phần (Habgood & Ainsworth 2011) · SDT gắn kết.
+- **CTO đề xuất (chờ CEO):** cổng đếm **số câu đúng** (vd 30), không đếm tỉ lệ. Tự luyện đã ra câu vừa sức; em yếu mất thêm vài phút chứ không bị chặn; bớt lý do đoán bừa.
+
 ## 1. Đã chốt (CEO)
 
 | # | Quyết định | Ghi chú |
