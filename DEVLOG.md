@@ -33827,3 +33827,22 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - (01/10 tiếp) Thùy gửi ảnh nền muốn dùng: thung lũng hoa anh đào khối lúc hoàng hôn ⇒ **nền mặc định `anh_dao`** (lưu `khong_khi_anh_dao.jpg`),
   giữ `ho_rung`, bỏ `dong_co` (gần giống anh đào), giữ `tuyet` cho 3 nền khác màu rõ. Bảng màu thêm hồng anh đào / trời hoàng hôn. Ảnh mẫu có
   Sniffer (sinh vật Minecraft) ⇒ đơn ghi rõ KHÔNG vẽ con vật đó, chỉ lấy không khí.
+
+## 2026-10-01 (tối, tiếp) — [Game] CEO duyệt 2 thú mẫu; yêu cầu 25 động tác + 4 tầng thú
+
+- **CEO:**
+  - "2 con này khá ưng rồi. Cần làm rất kĩ animation — 20–25 động tác".
+  - Thú chia 4 tầng:
+    - thường (động vật thật);
+    - săn mồi đỉnh (đại bàng, sư tử, hổ, báo);
+    - thần thoại (rồng, phượng, kì lân);
+    - truyền thuyết có tên (Cerberus).
+  - Đính chính: tầng 1–2 nhiều, tầng 3–4 chỉ 1–2 con mỗi tầng.
+  - **"làm 25 động tác trước đã".**
+- **Ghi spec-bat-thu §3.3:**
+  - bảng 4 tầng + loài đề xuất + cách có được (tầng 3 chủ yếu do lai, tầng 4 qua công thức đặc biệt / nhiệm vụ);
+  - hỏi "kỳ lân" = con lân VN hay unicorn;
+  - 25 động tác (10 có sẵn + 15 mới) + động tác vặt chạy ngầm;
+  - làm theo 12 nguyên tắc hoạt hình Disney;
+  - khuôn cần thêm (chim, cánh, nhiều đầu, chân ngựa, mai rùa).
+- Giao luồng nền làm 25 động tác trên nhánh `thu-de-thuong`.

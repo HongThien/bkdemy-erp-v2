@@ -186,6 +186,54 @@ Trang xem: https://claude.ai/artifact/2zWHd4mF6NAhX2UnVVzaDV
   - A đẹp hơn ⇒ A làm gốc, B dùng cho vài thú đặc biệt của BK.
   - B đủ đẹp ⇒ đi B cho đồng bộ với Nông Trại.
 
+### 3.3 Thú làm bằng code — bản mẫu + 4 TẦNG THÚ + bộ 25 động tác (CEO 01/10 tối)
+
+**Bản mẫu** (BatThu nhánh `thu-de-thuong` @ `d460c3f`, trang `thu-demo.html`):
+- Cáo Lửa + Cừu Mây, mỗi loài có thường · shiny · alpha;
+- trứng nở 4 bước;
+- 10 động tác.
+- **CEO: "2 con này khá ưng rồi".**
+
+**CEO chốt — 4 tầng thú.** Số lượng (CEO đính chính cùng tối): **tầng 1–2 làm NHIỀU, tầng 3–4 ít — 1–2 con mỗi tầng.** CEO: làm **25 động tác TRƯỚC**, loài sau.
+
+| Tầng | CEO tả | Đề xuất loài V1 (chờ CEO duyệt) | Có được bằng cách (CTO đề xuất) |
+|---|---|---|---|
+| 1. **Thường** | Động vật như ngoài thực tế | Cáo Lửa · Cừu Mây · Gà Bông | Bắt ở dungeon (hay gặp) |
+| 2. **Săn mồi đỉnh** | Tầng trên chuỗi thức ăn, "bá đạo": đại bàng, sư tử, hổ, báo… | Sư Tử · Hổ · Đại Bàng | Bắt ở dungeon (hiếm, hay là alpha) |
+| 3. **Thần thoại** | Rồng, phượng, kì lân… | Rồng · Phượng Hoàng · Kỳ Lân | **Chủ yếu do LAI** (gặp hoang cực hiếm) |
+| 4. **Truyền thuyết có tên** | Vd Cerberus | Cerberus · Kim Quy (Rùa Thần Hồ Gươm) | Công thức đặc biệt / chuỗi nhiệm vụ NPC |
+
+- **Lai ra thần thoại = logic đoán được.** Trong thần thoại, nhiều sinh vật vốn là thú thật ghép lại (griffin = sư tử + đại bàng; phượng = chim quý). Vì vậy công thức "mò ra" có lý để HS suy luận, không chỉ thử bừa. Vd TỰ ĐẶT: Đại Bàng + Gà Bông ⇒ Phượng Hoàng.
+- **Rồng · Lân · Quy · Phụng = "Tứ linh"** của văn hoá Việt ⇒ tầng 3–4 có thể gắn văn hoá Việt.
+  ⚠ "Kỳ lân" ở VN thường là **con lân** (múa lân), khác **unicorn** phương Tây ⇒ hỏi CEO.
+- **Dáng từng tầng** (vẫn giữ nét dễ thương: đầu to, mắt có chấm sáng):
+  - tầng 1 tròn, nhún nhảy;
+  - tầng 2 thon, chắc, mắt sắc hơn, có bờm/vằn, bước nặng;
+  - tầng 3 uy nghi, có hào quang / hạt sáng, lướt nhẹ;
+  - tầng 4 hình bóng độc nhất (vd 3 đầu), có hào quang riêng.
+- **Khuôn cần thêm** (để mỗi loài vẫn chỉ là 1 dòng tham số):
+  - khuôn chim (gà, đại bàng, phượng);
+  - mô-đun cánh gắn lên khuôn 4 chân (rồng);
+  - tham số nhiều đầu (Cerberus);
+  - chân dài kiểu ngựa + sừng (kỳ lân kiểu unicorn);
+  - mai rùa (Kim Quy).
+
+**Bộ 25 động tác cho khuôn 4 chân** (CEO: "làm rất kĩ animation", 20–25 cái):
+- **Có sẵn (10):** đứng thở · đi · chạy · nhảy · vui · được vuốt ve · bị đánh · choáng · ngất · ngủ.
+- **Thêm (15):**
+  - sinh hoạt: ngồi · nằm nghỉ · ăn · gãi ngứa · ngáp + vươn vai · rũ lông · đánh hơi;
+  - tình cảm: chào (giơ chân) · làm nũng (lăn ngửa bụng) · buồn (tai cụp) · sợ (run, nép);
+  - chiến đấu: tấn công (vồ) · gầm · dùng chiêu · ăn mừng.
+- **Động tác vặt chạy ngầm** khi đứng/ngồi/nằm: giật tai, nghiêng đầu, nhìn quanh, chớp mắt — để thú "sống", không đứng như tượng.
+- **Làm kĩ theo 12 nguyên tắc hoạt hình của Disney** (Thomas & Johnston, 1981):
+  - lấy đà trước khi nhảy/vồ;
+  - nén – giãn khi bật và đáp;
+  - tai, đuôi, bờm chậm nhịp theo sau thân (lò xo);
+  - chuyển động theo đường cong;
+  - nhịp nhanh–chậm có nhấn;
+  - phóng đại vừa phải.
+- Khuôn chim / có cánh sẽ có bộ riêng: cất cánh · bay · liệng · đáp · vỗ cánh · mổ.
+
 ## 4. Chờ CEO
 
 0. **(01/10, ưu tiên) Nguồn THÚ DỄ THƯƠNG** — 3 cách A/B/C ở §3.2. Boss đã gác lại (#18) ⇒ mục 1 dưới đây giờ chỉ còn phần pet.
