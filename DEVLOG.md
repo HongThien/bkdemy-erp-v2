@@ -33777,3 +33777,15 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   xoá `chonDangTuLuyen` (JS). **2 bước an toàn:** hàm cũ `thu_thach_sinh(text,jsonb)` + `tu_luyen_sinh(text,jsonb,text)` GIỮ quyền tới khi deploy app — sau đó thu hồi (hộp thư spec §13.6).
 - `src/lib/rank.ts`: `lenBacMoi` / `daXemLenBac`. check:style-hs ✔.
 - Còn trong hạng mục 4: danh hiệu trên Hồ sơ (cần màn — Giao diện) · chốt tháng 9 từ 10/10 (Thùy) · soi bằng tài khoản thật (Thùy) · hình bậc Rank (Đơn 3 ChatGPT).
+
+## 2026-10-01 — [Số liệu] VÍ XU hiện EXP NHIỆM VỤ + HUY HIỆU (mig 202610011601, ĐÃ ÁP)
+
+- Thùy hỏi "EXP trong ví xu là sao, tưởng có rồi". Đo lại: danh sách "Hoạt động" của `fn_hs_vi_xu_cua_toi` ĐÃ có EXP ET/BTVN/điểm danh/trên lớp + vòng quay;
+  nhưng EXP **nhiệm vụ** (Chặng + mốc + rương) và **huy hiệu** — vốn ĐÃ được đổi ra xu cuối tháng qua `fn_exp_app_thang` — không hiện dòng nào ⇒ em thấy xu mà
+  không thấy xu từ đâu. (Mục "ví xu hiện dòng EXP nhiệm vụ/huy hiệu" trong HANDOFF chỉ đúng ở 2 nguồn này, không phải cả ví.)
+- Mig: ĐỌC định nghĩa đang chạy → thay đúng 1 chỗ (assert) → `execute` (không chép đè thân hàm); chạy lại vô hại. Thêm 2 nguồn: `exp_nhiem_vu` (1 dòng / môn / tháng, từ
+  `fn_nhiem_vu_chang_thang` = nguồn đang đổi xu; kèm `cap`, `so_ruong`) · `exp_huy_hieu` (1 dòng / huy hiệu đạt trong tháng, kèm `ten`, `sao`).
+- Thử ROLLBACK (chưa em nào có EXP nhiệm vụ/huy hiệu thật ⇒ dữ liệu thử: lùi ngày mở nhiệm vụ về 01/09 + huy hiệu Athena ★4 giả): nhiệm vụ khớp `fn_exp_app_thang` **6/6** em
+  (vd 450 EXP · cấp 11 · 1 rương); huy hiệu ★4 = +200 EXP khớp nguồn; tháng 02/2026 không bịa dòng. Bảng EXP theo sao: ★1–2 = 0, ★3 = 100, ★4 = 200, ★5 = 300.
+- App (đụng nhẹ vùng Giao diện, chỉ THÊM): `ViXuHS.tsx` nhãn + nhóm card "Nhiệm vụ" 📜 / "Huy hiệu" 🏅, dòng phụ "Cấp x · y rương" / "tên ★n" · `vixu_hs.ts` kiểu `cap/so_ruong/sao/ten`.
+  tsc + check:style-hs ✔; chưa soi bằng trình duyệt (màn cần phiên HS thật).
