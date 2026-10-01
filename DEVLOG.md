@@ -33718,3 +33718,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **spec-bat-thu:**
   - đầu file trỏ về spec-bk-world;
   - §4 mục 3: xu bắt thú đã rõ hơn (xu qua nhiệm vụ NPC, không trực tiếp khi bắt).
+
+## 2026-10-01 — [Số liệu] Nhiệm vụ chỉ tính LƯỢT HỌC THẬT (mig 202610011525, ĐÃ ÁP)
+
+- Mọi đường nhiệm vụ (`fn_hs_nhiem_vu_cua_toi`, vòng quay, Chặng) đi qua `fn_nhiem_vu_hoan_thanh` ⇒ sửa 1 chỗ. Gom luật về `_luot_tinh(hs[], từ, đến)`;
+  `_luot_hoc_that` (mig 1501) viết lại bằng nó (cùng chữ ký) ⇒ chuỗi/nhiệm vụ/cổng game 1 công thức duy nhất (§2.0).
+- N2 "Luyện 20 câu": chỉ câu đúng MỚI trong lượt tính (lần đúng đầu tiên của em với câu đó, mọi bài, mọi thời gian) · N3 "Sửa sai": trong lượt tính ·
+  N1 + T3 + M2 (Thử thách): chỉ khi lượt được tính · tiến độ trong ngày cùng luật.
+- Thử ROLLBACK so TRƯỚC/SAU (Toán, tháng 10, cả môn): N2 tiến độ 42 → 36 câu, N3 33 → 27 ⇒ lọc đúng phần lượt bấm nhanh; 30 ngày toàn trung tâm 1.073 lượt tính /
+  404 quá nhanh (khớp lát A); `_luot_hoc_that` vs `_luot_tinh` không lệch dòng ở 15 em. Hàm cả môn 2,3 s → 3,3 s (app chỉ gọi cho 1 em).
+- **ĐIỂM RANK của Thử thách (`trg_thu_thach_nop`) CHƯA đổi** — đụng bảng xếp hạng nên chờ Thùy quyết: lượt Thử thách đúng ≥80% nhưng TB <6 s/câu có được
+  Điểm Rank không? (đề xuất: không, cùng luật lượt học thật.)
