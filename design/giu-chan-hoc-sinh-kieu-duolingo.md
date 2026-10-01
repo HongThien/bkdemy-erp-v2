@@ -170,3 +170,26 @@ Có những lỗ hổng chưa lấp được. Chưa có thử nghiệm ngẫu nh
 Bài học sâu nhất từ Duolingo không nằm ở chuỗi ngày hay giải đấu. Nó nằm ở cách họ **chọn đúng một chỉ số** (giữ người đang học) rồi thử hàng trăm lần, và ở kỷ luật **tha thứ nhiều hơn, làm phiền ít hơn**. BK nên chép kỷ luật đó trước khi chép tính năng. Điều nghiên cứu làm rõ thêm là: những đòn bẩy có bằng chứng mạnh nhất về thay đổi hành vi học sinh (tin báo phụ huynh, lời khen cụ thể của GV, thi đấu nhanh trên lớp, mục tiêu chung cả lớp) đều cần **người thật trong phòng học**. Đó là thứ Duolingo không bao giờ có, và là thứ BK đang có sẵn mà app chưa dùng tới.
 
 Hệ quả cho game gộp cũng rõ hơn. Game không cần giỏi hơn Liên Quân. Game chỉ cần là **nơi phòng học và nhóm bạn gặp nhau ngoài giờ học**: năng lượng đến từ bài đã chấm, boss lớp ăn bằng BTVN, thú của lớp hiện lên TV ở đêm game. Nếu BK giữ được nguyên tắc "phòng học tạo dữ liệu, app giữ ký ức, game là chỗ bạn bè gặp nhau", thì mỗi tính năng mới sẽ làm lớp học mạnh thêm thay vì giành giật sự chú ý với nó. Và sau một mùa thử theo lớp có đối chứng, BK sẽ có thứ không đối thủ nào có: **số liệu của chính mình** về cái gì giữ chân học sinh học thêm ở Việt Nam.
+
+## Điều chỉnh theo CEO (01/10/2026): BK BẮT ĐƯỢC việc vào app
+
+CEO chỉ ra rằng BK tác động liên tục được việc HS vào app: giao BTVN bắt buộc trên app, GV nhắc, phụ huynh theo dõi. Duolingo phải dụ người dùng tự nguyện quay lại, BK thì không cần. Vì vậy góc nhìn "giữ chân" của Duolingo chỉ đúng cho **một nửa** app BK.
+
+| | Tầng bắt buộc | Tầng tự nguyện |
+|---|---|---|
+| Gồm | BTVN trên app, ET, bài GV giao | Tự luyện thêm, Thử thách, game, Thế giới BK |
+| Kéo HS bằng | Hạn nộp, GV nhắc, tin báo phụ huynh | Bạn bè, xu, pet, giải đấu |
+| Góc nhìn Duolingo | Không cần (không phải dụ) | Vẫn đúng |
+| Vấn đề thật | Có mặt nhưng làm qua loa (đoán bừa, bấm cho xong) | Làm xong phần bắt buộc rồi thoát |
+
+**Điều chỉnh đề xuất:**
+- **Giữ ưu tiên:** tin báo phụ huynh · thẻ buổi học · GV khen một chạm. Cả ba dùng đúng lợi thế của BK.
+- **Hạ ưu tiên chuỗi ngày.** Nếu làm thì chỉ đếm **ngày có làm thêm tự nguyện**, không đếm phần bắt buộc.
+- **Thêm: "học trước, chơi sau"** (Duolingo không dám làm vì sợ mất người dùng). Nộp BTVN thì mở vườn, có năng lượng pet, có lượt ấp trứng. Game đặt ngay sau nghĩa vụ, khớp hướng "chơi để có thêm xu".
+- **Đổi thước đo chính:** không đo "số HS mở app/ngày", vì con số này đã bị ép cao. Đo hai thứ:
+  1. **chất lượng phần bắt buộc:** đúng hạn · tỉ lệ đoán bừa · tiến bộ theo dạng;
+  2. **tỉ lệ và khối lượng làm thêm tự nguyện.**
+- **Giữ nguyên từ research:** bắt buộc mang lại *sự có mặt*, không mang lại *sự cố gắng*.
+  - 10–40% HS trên phần mềm luyện tập có lúc "lách hệ thống" (Baker và cộng sự).
+  - Động lực bị kiểm soát cho chất lượng thấp hơn động lực tự chọn (SDT, Howard 2021).
+  - Tầng tự nguyện (game, bạn bè, xu) là chỗ biến "phải vào app" thành "muốn ở lại app".

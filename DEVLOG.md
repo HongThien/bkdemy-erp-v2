@@ -32673,3 +32673,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - 7 việc làm trước: tin báo phụ huynh · chuỗi ngày có lưới đỡ · thẻ buổi học · GV khen một chạm · nhiệm vụ cả lớp · pet kiểu Finch · giải đấu tuần nhóm nhỏ.
   - KHÔNG làm: chuỗi một-một · phạt pet · bảng hiện người cuối · thưởng chuyên cần · tiêu xu để quay.
 - **Chờ CEO** chọn thứ tự triển khai.
+- **CEO phản biện (01/10):** "BK tác động liên tục được việc vào app, giao bài bắt buộc trên app ⇒ góc nhìn game giải trí của Duolingo có thể không đúng với BK."
+  - T đồng ý ở gốc. Tách app thành 2 tầng: **bắt buộc** (không cần dụ; vấn đề là làm qua loa) và **tự nguyện** (góc Duolingo vẫn đúng).
+  - Điều chỉnh:
+    - hạ ưu tiên chuỗi ngày (chỉ đếm phần làm thêm);
+    - thêm "học trước, chơi sau" (nộp BTVN thì mở game);
+    - thước đo chính đổi sang chất lượng phần bắt buộc + tỉ lệ làm thêm tự nguyện.
+  - Đã ghi thêm 1 mục cuối `design/giu-chan-hoc-sinh-kieu-duolingo.md`.
