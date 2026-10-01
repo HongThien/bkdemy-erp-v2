@@ -21,7 +21,7 @@ const SO_GIA = { so_dang: 12 } // ổn định giữa các lần render
 function duLieuTran(ma: string): { luc: LucDiaV; chang: ChangV } {
   const chang: ChangV = {
     ma: 'xem.boss', ten: 'Cổng Tháp Tri Thức', muc_do: 5, trang_thai: 'yeu', mastery: 0.4, da_day: true, so_cum: 2,
-    quai: [{ loai: 'slime_la', boss: false }, { loai: ma, boss: true }], hp: 6, so_cau_luot: 6,
+    quai: [{ loai: ma, boss: true }], hp: 6, so_cau_luot: 6,
   }
   return { luc: { ma: 'X', ten: 'Tháp Tri Thức', biome: 'thanh_co', vung: [{ ma: 'X0', ten: 'Cổng Tháp', chang: [chang] }] }, chang }
 }

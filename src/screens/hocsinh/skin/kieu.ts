@@ -21,7 +21,18 @@ export type HinhNen = { id: string; ten: string; sang?: string; toi?: string; sa
 
 // BOSS RIÊNG (mỗi GV 1 boss — design/FLOW-NPC-BOSS-CUOI.md): 6 tư thế + chân dung, PNG trong suốt cùng khung vuông, chân chạm đáy.
 // Khoá của `Skin.boss` = mã boss (`boss_<ma_gv>`) — cũng là `loai_quai` DB trả về. Thiếu boss ở style nào ⇒ rơi về quái thường.
+/** Thông số dựng boss CHIBI 3D bằng code (skin/the3d/bossChibi3D.ts) — mỗi GV 1 dòng. Màu lấy từ bảng màu của style. */
+export type MoHinhChibi = {
+  da: string; toc: string
+  /** kính gọng nửa */
+  kinh: boolean
+  ao: string; aoLot: string; vien: string; ngoc: string
+  /** hào quang thường · khi giận (pha 2) */
+  hao: string; haoGian: string
+}
 export type BossAnh = {
+  /** có ⇒ boss trong cảnh 3D là MÔ HÌNH dựng bằng code theo thông số này; không có ⇒ dùng tấm ảnh 2D (quaiAnh.ts) */
+  mo3d?: MoHinhChibi
   ten: string
   /** chiều cao nhân vật trong cảnh 3D (đơn vị thế giới; quái thường ~1.3–1.6) */
   cao: number

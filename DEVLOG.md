@@ -34095,3 +34095,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Giao bản 3: profile theo số đo + đầu ngực tròn mập + vây trước to bản + vân nét cọ + vòng dải phẳng + bỏ mây bản thường.
   - Bắt buộc ảnh chồng đường bao lên ảnh gốc để chấm tỉ lệ bằng số, không bằng cảm giác.
 - **Bài học cho quy trình `lam-thu`:** bước 1 phải đo **profile độ dày theo chiều dài** từ ảnh nhìn ngang, không chỉ tỉ lệ đầu : thân : đuôi. Dáng thoải đều trông "lù đù"; nét đặc trưng nằm ở chỗ thắt.
+
+## 2026-10-01 (tối) — [Boss] Boss Thùy thành MÔ HÌNH 3D chibi dựng bằng three.js; trận boss chỉ còn boss
+
+- **Thùy chê:** trận boss còn Slime chen vào, boss chỉ là tấm ảnh phẳng ⇒ "phải làm mô hình 3D trước, vẽ bằng three.js".
+- **Làm:** `skin/the3d/bossChibi3D.ts` — khuôn chibi dựng từ khối cơ bản (cùng `Bo`/`matToon` với hero + quái): đầu to mặt hơi vuông + gò má, kính gọng nửa, tóc đen mái dựng, miệng cười lộ răng, áo choàng navy-vàng, giáp vai, ủng, hào quang pha lê quay mặt về camera. Tay 2 khớp (vai+khuỷu), đổi tư thế mượt (dung/noi/chieu/trung/gian/ha), chớp mắt, mày đổi theo cảm xúc, quả cầu phép khi gồng, loé trắng khi trúng, tan dần khi hạ.
+  - Thông số theo GV nằm ở `Skin.boss[ma].mo3d` (`MoHinhChibi`: da · tóc · kính · bảng màu) ⇒ thêm GV = 1 dòng, không code mới. `nguonQuai.sinhQuai`: có `mo3d` ⇒ mô hình code, không ⇒ tấm ảnh (`quaiAnh.ts`, giữ làm đường rẻ).
+  - Trang soi `hs.html?xem=boss3d` (cận mặt, xoay, bấm từng tư thế/đòn); `XemBoss` trận thử chỉ còn 1 boss (bỏ elite Slime).
+- **Sai / sửa:** mày không hiện vì mày đặt sát mặt đầu (cách 0.012) bị lớp da trong suốt che (sắp xếp trong suốt) ⇒ đẩy ra +0.04 + renderOrder. Hào quang ban đầu có chữ thập mảnh trông như ống ngắm + vầng sáng đa giác cứng ⇒ bỏ chữ thập, vầng sáng dùng texture gradient. Tóc nhọn như gai ⇒ đổi thành các tuft tròn.
+- **Lưu ý kiểm thử:** Browser pane tạm dừng requestAnimationFrame khi không hiển thị ⇒ script đánh trận tự động chạy ngắt quãng; chụp màn hình giữa các bước mới tiến được.
