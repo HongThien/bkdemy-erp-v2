@@ -98,12 +98,16 @@ public/bk-ui/hs/skin/rpg/boss_<ma_gv>_{dung,noi,chieu,trung,gian,ha,chandung}.pn
 
 ---
 
-## 0.5 TRẠNG THÁI (cập nhật 01/10 tối)
+## 0.5 TRẠNG THÁI (cập nhật 01/10 đêm — CHỐT: V1 dùng boss 2D)
 
-✔ Trạm 0–3: hồ sơ, concept, 6 pose + chân dung (ChatGPT), nén + khai `Skin.boss` · ✔ Trạm 4: hoạt ảnh (2D CSS `boss/BossSan.tsx`, 3D `skin/the3d/quaiAnh.ts`) ·
-✔ Trạm 6: 14 câu thoại nháp `boss/noiDungBoss.ts` · ✔ Trạm 5 (bản dữ liệu): 3 chiêu trong `noiDungBoss.ts` · ✔ cắm vào trận 3D qua `nguonQuai`.
-Xem thử: `hs.html?xem=boss` (6 tư thế + hội thoại) · `&tran=1` (trận 3D, boss vào sau elite thứ nhất).
-⏳ Chưa làm: Trạm 7 dữ liệu thật (`fn_boss_cuoi_cua_toi`, điều kiện mở, 2 pha theo % máu, chiêu gọi câu theo loại) · pha 2/`giaiDoan(2)`, `baoHieu()` đã có trong `QuaiBoss` nhưng chưa có trận nào gọi · âm thanh · cutscene mở/kết ghép vào luồng thật · Trạm 8–9 (soi bằng tài khoản HS thật, deploy thủ công).
+✔ Trạm 0–3: hồ sơ, concept, 6 pose + chân dung (ChatGPT, ảnh gốc `design/bk-ui-src/boss/thuy/01–08.png`), nén → `public/bk-ui/hs/skin/rpg/boss_thuy_*.png`, khai `Skin.boss` ·
+✔ Trạm 4: hoạt ảnh — 2D CSS `boss/BossSan.tsx`, trận 3D `skin/the3d/quaiAnh.ts` (tấm ảnh quay mặt camera) · ✔ Trạm 6: 14 câu thoại nháp `boss/noiDungBoss.ts` ·
+✔ Trạm 5 (bản dữ liệu): 3 chiêu trong `noiDungBoss.ts` · ✔ cắm vào trận qua `nguonQuai.sinhQuai`.
+**Cách dựng boss** chọn bằng `BossAnh.dang`: `'anh'` (mặc định, V1) · `'relief'` (`quaiRelief.ts`, phù điêu từ ảnh) · `'chibi'` (`bossChibi3D.ts`, dựng khối — thô). Hai cách sau đã thử và BỎ, giữ trong repo.
+Xem thử: `hs.html?xem=boss` (6 tư thế + hội thoại) · `&tran=1` (trận, chỉ còn boss) · `hs.html?xem=boss3d&kieu=anh|relief|chibi` (soi cận cảnh).
+⏳ **Việc kế tiếp (về nhà làm):** Trạm 7 dữ liệu thật — `fn_boss_cuoi_cua_toi` (luồng Số liệu) + ghép trận/hội thoại vào `PhieuLuuHS`/`DauView` · pha 2 + báo hiệu chiêu (đã có `giaiDoan()`/`baoHieu()`,
+chưa ai gọi) · cutscene mở/kết · âm thanh · Trạm 8–9 (soi bằng tài khoản HS thật, khổ dọc 390×844, deploy thủ công) · script khuôn `boss-new.mjs` · 3D thật nếu Thùy quyết (Tripo/Meshy → Mixamo, §A.4).
+Chờ Thùy: duyệt mặt #02 (đường chân tóc + tròng kính) · giọng thoại · xoá `exec-*.png` thừa · có vẽ lại hero cùng nét RPG không.
 
 ---
 

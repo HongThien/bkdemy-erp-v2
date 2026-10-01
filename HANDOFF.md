@@ -22,6 +22,22 @@
   - Tutorial demo: `hs.html?xem=tutorial` (`src/screens/hocsinh/tutorial/`, lời thoại ở `noiDungTutorial.ts`).
   - ⚠ `.env` máy công ty: `DATABASE_URL` = `claude_build` (GHI được) dù chú thích ghi `claude_ro`.
 
+- **⭐ BOSS RIÊNG (NPC boss cuối, mỗi GV 1 boss) — trạng thái 01/10 đêm: đọc `design/FLOW-NPC-BOSS-CUOI.md` (§0.5 + §A) + `design/DON-HANG-BOSS-THUY.md`.**
+  - **Đã xong (boss mẫu = Thùy, chibi từ ảnh chân dung):** 6 tư thế + chân dung (ChatGPT, ảnh gốc `design/bk-ui-src/boss/thuy/01–08.png`; nén
+    `public/bk-ui/hs/skin/rpg/boss_thuy_*.png`) · khai `Skin.boss[ma]` (kieu.ts + rpg.ts; khoá = `boss_<ma_gv>` = `loai_quai`) · hoạt ảnh 2D CSS
+    (`boss/BossSan.tsx`) + trong trận 3D (`skin/the3d/quaiAnh.ts`, cắm qua `nguonQuai.sinhQuai`, cùng giao diện `Quai`) · 14 câu thoại + 3 chiêu nháp
+    (`boss/noiDungBoss.ts`, Thùy sửa chữ) · trang xem thử `hs.html?xem=boss` (6 tư thế + hội thoại) · `&tran=1` (trận 3D, chỉ còn boss) ·
+    `hs.html?xem=boss3d&kieu=anh|relief|chibi` (soi cận cảnh, so 3 cách dựng).
+  - **QUYẾT ĐỊNH: V1 dùng boss 2D** (`BossAnh.dang = 'anh'`): giống bản vẽ 100%, nhẹ, kịp 06/10. Đã thử 2 cách 3D rồi bỏ: `bossChibi3D.ts` (dựng khối bằng
+    code — Thùy chê "thô, không giống") và `quaiRelief.ts` (phù điêu từ chính ảnh, đẹp ≤ ~40° nhưng thêm xử lý ảnh lúc tải). Cả hai giữ trong repo, không dùng.
+    3D THẬT (xoay 360°) = ảnh→3D Tripo/Meshy gói trả phí (~$20) → Mixamo — **Thùy chưa quyết**, làm ngoài phiên.
+  - **CHƯA làm (việc kế tiếp):** (1) hàm DB `fn_boss_cuoi_cua_toi(p_mon)` (luồng SỐ LIỆU): máu = khoảng cách tới "đạt", pha theo % máu, điều kiện mở, chiêu gọi câu theo loại
+    (đạt/chưa đo/yếu), thắng = SUY từ mastery (không lưu) — hợp đồng đề xuất ở FLOW §7.2; (2) trận thật ghép vào `PhieuLuuHS`/`DauView` (hiện chạy dữ liệu giả); pha 2
+    (`giaiDoan(2)`), báo hiệu chiêu (`baoHieu()`) đã có sẵn trong `QuaiBoss` nhưng chưa trận nào gọi; (3) cutscene mở/kết ghép vào luồng; (4) âm thanh; (5) soi bằng tài khoản HS
+    thật + khổ dọc 390×844 (mới soi 1180×820); (6) khuôn "mỗi GV 1 boss": script `scripts/boss-new.mjs` làm SAU khi khuôn ổn; (7) xin xác nhận bằng chữ trước khi làm boss từ ảnh GV khác.
+  - **Hỏi Thùy:** ảnh #02 đường chân tóc thưa hơn ảnh gốc + tròng kính trắng đặc — duyệt "nhận ra mặt" hay vẽ lại · giọng thoại ("ta/em") · xoá file thừa
+    `design/bk-ui-src/boss/thuy/exec-*.png` (trùng 02) · hero 3D dựng khối đang lệch chất với boss ảnh — nếu lệch thì vẽ lại hero bằng ChatGPT cùng nét RPG.
+
 - **⭐ BỔ TRỢ (yếu · bù · đuổi) — trạng thái 28/09: đọc `spec-bo-tro.md` (luồng yếu) + `spec-xep-bo-tro-chung.md` (xếp chung).** Tóm:
   **1 lá "Bổ trợ"** (Vận hành) → toggle Đuổi · Bù · **Yếu** · **Lịch phòng** · **Lịch trực**. Yếu = toggle 5 bước Duyệt → Nội dung → Xếp → Trạng thái ca
   → Đánh giá ca (cả folder QLCL cũ chuyển vào; quyền `botro`). Xếp CHUNG theo **đơn vị** (30'×1 TA; Đuổi 4 · Bù 4 · Yếu L2/L3 4 · **Yếu L1 1**; ca
@@ -2617,6 +2633,13 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
 - **⭐ Hai lần liền "viết xong, kiểu đúng, build qua" mà bấm thử mới lộ hỏng.** `tsc` sạch không nói gì về việc nút có chạy.
 - **Xem thử từ worktree:** công cụ preview phục vụ checkout CHÍNH. `fetch` file mới trả 200 có thể chỉ là trang index của SPA — phải nhìn nội dung, không
   nhìn mã trạng thái. Muốn xem bản mới: đẩy lên `main` rồi kéo về checkout chính.
+
+- **⭐ Dựng nhân vật boss riêng (01/10 — bài học trả giá bằng 3 vòng làm lại).** (a) **Khối cơ bản bằng code CHẠM TRẦN chi tiết**: áo choàng/hoa văn/khuôn mặt của bản vẽ không bao giờ ra được
+  — muốn "giống đúng con đó" thì dùng CHÍNH bản vẽ làm bề mặt (tấm ảnh 2D + hoạt ảnh code), đừng dựng lại. (b) Chi tiết đặt sát mặt cong (mày, mắt) cách mặt <0.02 bị lớp da
+  `transparent` che vì sắp xếp vật trong suốt theo tâm đối tượng ⇒ đẩy ra ≥0.04 + `renderOrder`. (c) Truyền object tạo mới mỗi render (`so={{…}}`) làm `useMemo` dựng lại ⇒ effect gọi
+  `setState` của cha ⇒ vòng lặp "Maximum update depth": hằng ổn định + effect phụ thuộc giá trị gốc (chuỗi/số), không phụ thuộc object. (d) Browser pane TẠM DỪNG `requestAnimationFrame` khi
+  không hiển thị ⇒ script đánh trận tự động bị khựng; chụp màn hình xen kẽ để pane vẽ khung. (e) `check:style-hs` báo rớt vẫn commit được nếu nối lệnh bằng `;` — kiểm riêng, đừng tin chuỗi lệnh.
+  (f) ChatGPT/AI ảnh: giữ nhất quán nhiều pose bằng cách đính lại HÌNH GỐC + câu mô tả cố định mỗi lượt; kiểm máy (alpha, cao đầu, mốc chân) trước khi nhận.
 
 ## ③ Nhật ký
 → Chuyển sang **`DEVLOG.md`** (log thô append-only, theo ngày, KHÔNG load khi làm). Là nguồn bất biến để truy lại / tổng hợp lại HANDOFF nếu bản này sai logic.
