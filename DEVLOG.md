@@ -33742,3 +33742,22 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Màn nhân sự `BaoLoiScreen`: nhãn "HS · Lỗi/Ý tưởng" + tên/mã/khối em, bộ lọc nguồn (Học sinh/Nhân sự), ô trả lời. Chỉ kiểm typecheck — màn cần đăng nhập quản trị thật nên chưa soi trên trình duyệt.
 - `src/lib/gopy_hs.ts` + hộp thư §13.6 gửi Giao diện làm form + màn "Góp ý của em".
 - Bẫy tự gây khi sửa file migration bằng JS: `String.replace(a, b)` đổi `$$` trong `b` thành `$` (hỏng dollar-quote) ⇒ dùng `split(a).join(b)`.
+
+## 2026-10-01 (chiều, tiếp) — [Game] CEO trả lời 6 câu BK World + CTO lên kế hoạch V1 "đủ tính năng, số lượng ít"
+
+- **CEO:**
+  - 1 quái/trứng KHÔNG bán ra xu;
+  - 2 CHƯA cho đổi quái;
+  - 3 xu nhiệm vụ NPC tính CHUNG trần;
+  - 4 điểm học tập MỘT nguồn;
+  - 5 tên "nghĩ đi";
+  - 6 **V1 phải ĐỦ tính năng, chỉ ít số lượng** (bác đề xuất V1 = chỉ trồng cây).
+- **Ghi spec-bk-world:**
+  - §4 bảng đã chốt.
+  - §5 kế hoạch V1:
+    - số lượng: 4 cây · 3 bóng · 1 dungeon · 6 loài gốc + 4 lai · 6–8 công thức · 1 NPC × 5 nhiệm vụ · shiny/alpha mọi loài;
+    - kiến trúc: gốc `bk-bat-thu`; thú bằng code, chuyển khung chó `dohoa.js` sang TS r186; mọi thứ có giá trị ở `fn_game_*`;
+    - lịch 01–06/10;
+    - dự phòng: giảm số lượng, không cắt tính năng.
+    - Đề xuất để V1.1: giúp/hái trộm vườn bạn, gà bò, cưỡi thú, thấy người chơi khác, boss.
+  - §6 bốn tên đề xuất (Làng Bách Thú + thú gọi BKmon · BKmon · Thung Lũng BK · Đảo Mầm).

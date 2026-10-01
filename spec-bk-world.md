@@ -97,14 +97,86 @@ HỌC ─(lượt học thật)─► ĐIỂM HỌC TẬP ─► hạt giống �
 | Shiny / alpha | — | Biến thể màu + phóng 1,5× (dễ, nếu thú làm bằng code) |
 | Nhiệm vụ NPC | — | NPC + bảng nhiệm vụ + thưởng xu (chung trần) |
 
-## 4. Chờ CEO
+## 4. CEO đã chốt (01/10 chiều)
 
-1. **Quái/trứng có bán ra xu được không?** CTO đề xuất **không**: chỉ để nuôi, lai, khoe, làm nhiệm vụ.
-2. **HS có đổi/tặng quái cho nhau không?** CTO đề xuất **chưa** (tránh chợ đen, bắt nạt, bị ép đổi). Để sau V1.
-3. **Xu từ nhiệm vụ NPC tính chung trần tháng với bán nông sản?** CTO đề xuất **chung**.
-4. **Gộp "điểm chăm chỉ" của Nông Trại vào điểm học tập**, tính từ lượt học thật? CTO đề xuất **có**.
-5. **Tên game** khác "Thế giới BK".
-6. **V1 (06/10) ra phần nào?** CTO đề xuất:
-   - **V1 = điểm học tập + trồng cây bán xu** (đường đơn giản; gần xong nhất, chạy thật được).
-   - Song song bắt đầu **thú dễ thương bằng code** (loài mẫu) để mở **bắt thú + ấp trứng + lai ở V1.1**.
-   - Bắt thú + lai + công thức không kịp chạy thật trước 06/10.
+| # | Câu | CEO |
+|---|---|---|
+| 1 | Quái, trứng có bán ra xu? | **Không** — chỉ nuôi, lai, khoe, làm nhiệm vụ |
+| 2 | HS đổi/tặng quái cho nhau? | **Chưa** |
+| 3 | Xu nhiệm vụ NPC tính chung trần tháng với bán nông sản? | **Chung** (30 xu/tháng, mùa đầu 45) |
+| 4 | Điểm học tập | **Một nguồn duy nhất** = lượt học thật. "Điểm chăm chỉ" của Nông Trại gộp vào đây |
+| 5 | Tên game | CEO: "nghĩ đi" ⇒ CTO đề xuất ở §6 |
+| 6 | V1 (06/10) ra phần nào? | **ĐỦ TÍNH NĂNG, số lượng ít.** *"V1 thì phải có đủ tính năng rồi, chỉ là số lượng chưa nhiều thôi."* |
+
+## 5. KẾ HOẠCH V1 — đủ 10 tính năng, số lượng ít (deadline 06/10)
+
+### 5.1 Số lượng V1 (TỰ ĐẶT — chỉnh sau khi chơi thật)
+
+| Tính năng (§1) | V1 có |
+|---|---|
+| Điểm học tập (1, 4) | 1 nguồn = lượt học thật, có trần ngày; mua hạt + vé |
+| Trồng cây → bán xu (4) | 4 loại cây đầu của Nông Trại nhịp ngày; ô mở dần như spec Nông Trại |
+| Bóng bắt quái (5) | **3 loại** (thường · tốt · xịn), chế từ nông sản ở Xưởng; bóng xịn tỉ lệ cao hơn, tỉ lệ hiện công khai |
+| Vé dungeon (9) | Rơi khi thu hoạch (tỉ lệ) + mua bằng điểm học tập |
+| Dungeon + bắt quái (5, 6) | **1 dungeon** (đồng cỏ của bản thử), **6 loài gốc**; đánh yếu rồi ném bóng (đã có) |
+| Nuôi (6) | Trại thú: thú đi lại, chạm để vuốt ve, xem sổ thú |
+| Lai → trứng → ấp → loài mới (6, 7) | **4 loài lai, 6–8 công thức**; sổ công thức mở khi mò ra lần đầu; lò ấp 1 ô, nở sau 1 đêm |
+| Shiny + alpha (8) | Mọi loài có bản shiny (bảng màu riêng) + alpha (to 1,5×), tỉ lệ công khai |
+| Nhiệm vụ NPC → xu (6) | **1 NPC, 5 nhiệm vụ xoay vòng** (bắt loài X · ấp ra Y · giao nông sản); xu chung trần |
+| Khoe (10) | Thú hiếm/shiny/alpha khoe lên Thế giới BK (gửi luồng Số liệu + Giao diện) |
+
+**Ngoài 10 ý, đề xuất để V1.1** (chờ CEO gật):
+- giúp / hái trộm vườn bạn;
+- gà, bò, lò bánh;
+- cưỡi thú;
+- thấy người chơi khác;
+- boss.
+
+### 5.2 Kiến trúc (CTO quyết — R2)
+
+- **Một game, 3 khu + công trình chung:**
+  - khu: Nông trại · Dungeon · Trại thú;
+  - công trình: Xưởng (chế bóng) · Lò ấp · NPC;
+  - HUD chung: điểm học tập · xu · vé · kho đồ.
+- **Code gốc = repo `bk-bat-thu`** (Vite + TS + three r186).
+  - Nông Trại (three r128, JS thuần) vào làm khu riêng.
+  - V1 cho phép khu Nông trại chạy trang riêng trong cùng game, không viết lại trong 5 ngày; chuyển dần sau.
+- **Thú dễ thương làm bằng code:**
+  - Chuyển khung xương con chó + bộ nặn khối liền của `dohoa.js` sang module TS r186 làm **khuôn 4 chân**; thêm **khuôn tròn** và **khuôn chim**.
+  - 1 loài = 1 dòng tham số. Shiny = bảng màu thứ 2. Alpha = ×1,5.
+  - Nguyên tắc dễ thương: spec-bat-thu §3.2.
+- **Mọi thứ có giá trị do máy chủ quyết** (Postgres, repo ERP, CLAUDE §2.0):
+  - `fn_game_diem_cua_toi`: điểm = lượt học thật có trần − đã tiêu.
+  - Kho đồ = sổ giao dịch (chỉ ghi dòng khi có việc thật; số dư = tổng).
+  - Ruộng: gieo · tưới · thu theo luật Nông Trại, ngẫu nhiên theo hàm băm. Chỉ chuyển phần V1 dùng.
+  - `fn_game_vao_dungeon`: trừ vé, máy chủ gieo danh sách thú kèm shiny/alpha.
+  - `fn_game_nem_bong`: trừ bóng, máy chủ tính tỉ lệ + ghi thú.
+  - `fn_game_lai` · `fn_game_ap` · `fn_game_nhiem_vu_*`.
+  - Xu vào ví BK theo trần chung.
+- **Chạy chung tên miền app HS**, dùng chung phiên đăng nhập. Ô vào game trên Home ⇒ gửi luồng Giao diện qua hộp thư (spec-v1-app-hs §13.6).
+
+### 5.3 Lịch
+
+| Ngày | Việc | Cần CEO |
+|---|---|---|
+| 01/10 tối | Khuôn thú 4 chân bằng code + **2 loài mẫu** (con thường · shiny · alpha) + quả trứng | Duyệt hình |
+| 02/10 | DB lõi: điểm học tập · kho đồ · ruộng · xu chung trần · thêm 4 loài gốc | Duyệt hình |
+| 03/10 | Dungeon nối DB (vé · ném bóng · shiny/alpha) · Xưởng chế bóng | |
+| 04/10 | Trại thú · lai + công thức · lò ấp + hoạt cảnh nở · 4 loài lai | Duyệt hình |
+| 05/10 | NPC + nhiệm vụ · gắn vào app HS + đăng nhập · khoe Thế giới BK | Áp migration |
+| 06/10 | Soi trên iPad bằng tài khoản HS thật · sửa lỗi | Duyệt trên iPad |
+
+- **Rủi ro:**
+  - (1) số vòng duyệt hình thú;
+  - (2) chuyển luật Nông Trại sang SQL;
+  - (3) iPad gen 7.
+- **Dự phòng nếu 05/10 trễ:** giữ ĐỦ tính năng, giảm số lượng (6 → 4 loài gốc, 8 → 4 công thức), không cắt tính năng.
+
+## 6. Tên game — CTO đề xuất (CEO chọn)
+
+| Tên | Vì sao |
+|---|---|
+| **Làng Bách Thú** (thú trong game gọi là **BKmon**) | "Bách Thú" đọc gần "Bách Khoa"; "làng" bao được cả trồng trọt lẫn nuôi thú; "BKmon" dễ nhớ như Pokémon, dùng để gọi từng con |
+| **BKmon** | Ngắn, HS nhớ ngay; nhưng nhấn vào thú, lu mờ phần trồng cây |
+| **Thung Lũng BK** | Như Stardew Valley: nông trại + phiêu lưu; hơi "người lớn" |
+| **Đảo Mầm** | Mầm cây + trứng nở, rất dễ thương; không có chữ BK |
