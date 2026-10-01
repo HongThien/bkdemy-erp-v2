@@ -18,7 +18,32 @@
   - **ĐÃ XONG 01/10 — lát A "lượt học thật"** (mig `202610011501`, ĐÃ ÁP): lượt luyện thêm tính khi ≥5 câu · đúng ≥50% · trung bình ≥6 giây/câu;
     không ra lại câu em đã gặp ở BẤT KỲ bài nào khi kho còn câu mới. Nguồn duy nhất `public._luot_hoc_that()` + `fn_luot_hoc_that_ket_qua()` cho app.
     Đo 30 ngày: 57% lượt được tính, 22% bị loại vì làm quá nhanh.
-  - Đơn ChatGPT bản đồ + quái = **Đơn 6** trong `design/DON-HANG-SKIN-HS.md` (Thùy gửi; hình về `design/bk-ui-src/Adventure/`).
+  - **⭐⭐ BẢN ĐỒ PHIÊU LƯU 2.5D/3D (three.js, hình viết bằng CODE) — ĐÃ BUILD + PUSH `main` 01/10 · CHƯA DEPLOY · CỜ MẶC ĐỊNH TẮT** (luồng Giao diện)
+    - **Logic đã chốt (Thùy, qua mockup 5 vòng) — `spec-v1-app-hs.md` §4.5 là nguồn:** Thế giới (chủ đề = lục địa, to nhỏ theo số dạng) → Lục địa (vùng = chuyên đề giáp
+      biên giới, to nhỏ theo số dạng) → Chặng đường (chặng = dạng, to nhỏ theo số quái) → Màn đấu. Cụm = elite theo `thu_tu`, cụm khó nhất = **boss cuối** (vương miện);
+      **≥3 quái mỗi dạng** (thiếu thì con tạm), trần 7; **số câu một lượt = số cụm × 2 kẹp 5–10**; máu cả dạng chia đều đội hình (chưa đo riêng từng cụm); mỗi lượt đánh hết
+      cả đội; hết đội hình trước câu cuối vẫn làm hết lượt ("ôn cho chắc"); sai hồi tối đa +2; không hiện tên cụm. Mockup lưu: `design/mockup-phieu-luu.html`.
+    - **Hướng đồ hoạ:** code three.js theo `design/nghien-cuu-do-hoa-little-habitats.md`; **ChatGPT chỉ làm icon** (Đơn 6 + Đơn 6 v2 ĐÃ HUỶ); **quái/boss Thùy tự thiết kế** — cảnh sinh quái qua điểm cắm
+      `skin/the3d/nguonQuai.ts` (`datNguonQuai(hàm)`), `quai.ts` chỉ là chỗ giữ chỗ (đừng tốn công trau chuốt).
+    - **Code:** `src/screens/hocsinh/skin/the3d/` (động cơ `sanKhau` `hinhHoc` `diaHinh` `trangTri` `dungHinh` `vatLieu` `hero` `loai` · 4 cảnh `canhTheGioi` `canhLucDia` `canhChang` `canhDau` ·
+      bảng màu `bangMauRpg.ts` khai trong `Skin.the3d`) và `src/screens/hocsinh/phieuluu/` (`TheGioiView` `LucDiaView` `ChangView` `DauView` `PhieuLuuHS` container thật · `XemPhieuLuu` + `XemDau` + `mau.ts`
+      trang thử · `ChanDoan` bảng chẩn đoán · `coBat.ts` cờ). Tích hợp: `HocSinhApp` (LamBai thêm prop `nhung` — khung đấu nhận kết quả từng câu; route `phieu_luu`; ô Tự luyện mở bản đồ KHI cờ bật),
+      `AppHS` (+trang xem). three chỉ nạp khi mở màn (import động, gói ~550KB, không vào bundle chính). Màn đấu dùng nguyên `LamBai` ⇒ mọi loại câu/chấm điểm như cũ.
+    - **Cờ `phieuluu` (`phieuluu/coBat.ts`) — MẶC ĐỊNH TẮT** vì code đã nằm trên `main`: lần deploy thủ công kế tiếp KHÔNG đổi gì cho học sinh. Bật cho 1 máy: mở app HS với `?phieuluu=1` (máy nhớ),
+      tắt `?phieuluu=0`. Bật cho mọi HS: đổi `MAC_DINH = true` (1 dòng) rồi deploy. Chỉ khi bật + đăng nhập thì Tự luyện mới ra bản đồ.
+    - **Thử mà không đụng production (⚠ mở terminal trong `bkdemy-erp-v2`, KHÔNG phải `bkdemy-erp` = v1):** ① server dev LAN `npm run dev:hs -- --host` → iPad cùng Wi-Fi mở
+      `http://<IP máy>:5173/hs.html?xem=phieu_luu` (IP máy công ty lúc đó 192.168.1.61/.2; **gõ chữ `http://`**, Safari hay tự thêm https → "không thể thiết lập kết nối bảo mật") ·
+      ② bản build giống production (nhỏ/nhanh, đo FPS đúng hơn): `npm run build:hs` rồi `npm run preview:hs:lan` → `http://<IP>:5180/?xem=phieu_luu` ·
+      ③ HTTPS tự ký `npm run dev:hs:https` → `https://<IP>:5443/hs.html?xem=phieu_luu` (Safari: Hiện chi tiết → Truy cập). Trang xem thử dữ liệu mẫu, không cần đăng nhập; `&tang=luc_dia&luc=C` ·
+      `&tang=chang&luc=C&vung=C2` · `&tang=dau&luc=C&vung=C1` · `&thu=nhieu` (24 lục địa/vùng 9/chặng 14 để thử tải). Bảng "Chẩn đoán" góc dưới trái hiện WebGL/GPU/lỗi trên chính màn hình thử.
+      Cấu hình tương ứng trong `.claude/launch.json` (`dev-hs-lan` `dev-hs-https` `preview-hs-lan`).
+    - **TRẠNG THÁI KIỂM:** soi bằng trình duyệt desktop (800×454, 390×844) OK cả 3 tầng + đấu, kể cả dữ liệu THẬT của 1 HS khối 9 (gọi RPC trong ROLLBACK) và thử tải. **iPad CHƯA xác nhận:** Thùy thử lần đầu Safari báo
+      không mở được (lỗi bảo mật = đang đi https), lần sau "không có bản đồ" — chờ ảnh chụp bảng Chẩn đoán để biết WebGL/lỗi. **Luồng làm bài thật trong khung đấu CHƯA kiểm** (cần tài khoản HS thử; đừng dùng HS thật vì sinh bài vào DB prod).
+      Chưa đo FPS ở máy thật (pane trình duyệt ẩn thì rAF dừng).
+    - **VIỆC TIẾP (theo thứ tự):** ① iPad: đọc bảng Chẩn đoán, sửa lỗi (nghi: tải gói dev chậm / WebGL / shader) ② cắm quái của Thùy vào `nguonQuai` ③ code **luật chất lượng đồ hoạ tự thích ứng** (spec §4.5: 3 mức Thấp/Vừa/Cao, bảng thông số 1 file `skin/the3d/chatLuong.ts`,
+      đoán nhanh + đo ~2 giây, chắc thì tự đặt / không chắc thì 1 nút xác nhận, chỉnh tay trong menu ⋯/Hồ sơ + "Đo lại", lưu theo máy; hiện chỉ có tự hạ DPR khi tụt khung) ④ **DB:** luồng Số liệu đổi `fn_ban_do_phieu_luu` (đội hình ≥3/≤7, `so_cum`, `so_cau_luot`, `hp`; chọn câu theo `so_cau_luot`) — Hộp thư spec §13.6 —
+      rồi bỏ đoạn ghép đội hình ở client trong `tuBanDoPL` ⑤ Thùy chốt: ẩn "Đề thi đầu vào" khỏi bản đồ? · lượt KHÔNG tính thì quái có mất máu không (đề xuất: không ⇒ câu bị bỏ khỏi mastery, Số liệu làm thêm) ⑥ style Thị trấn cần `the3d` riêng ⑦ vẽ lại các màn con còn lại theo chất phiêu lưu + tutorial bản thật ⑧ xin tài khoản HS thử để kiểm luồng thật.
+    - **Nợ/rủi ro:** PWA precache thêm ~550KB · `package.json` thêm `three`, `@types/three`, `@vitejs/plugin-basic-ssl` (dev) · `HocSinhApp`/`AppHS` bị nhiều phiên sửa ⇒ commit theo đường dẫn · `design/FLOW-NPC-BOSS-CUOI.md` (phiên khác, chưa theo dõi) dựa mô hình boss-khu-vực cũ và "boss cuối" ở đó là boss cả hành trình — trùng chữ với boss cuối của chặng, cần soát lại · máy nhà/máy công ty: three đã cài vào `node_modules` máy này, máy kia chạy `npm install`.
   - Tutorial demo: `hs.html?xem=tutorial` (`src/screens/hocsinh/tutorial/`, lời thoại ở `noiDungTutorial.ts`).
   - ⚠ `.env` máy công ty: `DATABASE_URL` = `claude_build` (GHI được) dù chú thích ghi `claude_ro`.
 
@@ -1917,6 +1942,14 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
+- **⭐ Cảnh three.js phải dựng lại khung camera mỗi khi ô chứa đổi cỡ (01/10).** Ô chưa có kích thước lúc tạo (flex/grid chưa layout) ⇒ aspect = 0 ⇒ khoảng cách camera vô hạn ⇒ cảnh TRẮNG hoàn toàn, không báo lỗi. Cảnh thế giới may chưa dính, cảnh lục địa dính.
+  Sửa: `sanKhau.vuaKhung` lưu hàm dựng lại và gọi trong `doiCo`; cảnh có chuyển động camera đọc `sk.khung` MỖI KHUNG, không giữ bản chụp lúc tạo. Cách bắt: expose tạm `window.__sk`, đọc `camera.position` (10538 ⇒ lộ ngay) rồi gỡ.
+- **⭐ Voronoi/cắt nửa mặt phẳng: kiểm dấu bằng MÀU, không bằng mắt (01/10).** `a·x+b·y ≤ c` giữ nửa XA hạt hay nửa GẦN tùy dấu; sai dấu thì mỗi vùng chiếm phần của vùng khác nhưng nhãn vẫn nằm đúng hạt ⇒ chỉ lộ khi màu vùng ngược với danh sách bên cạnh. Đã dính 2 lần (mockup + 3D). Sau khi đổi trọng số nhớ lấy nhãn ở trọng tâm vùng thật, không ở hạt.
+- **⭐ Sương mù cố định nuốt cảnh khi camera ra xa (màn dọc) (01/10).** `Fog(near, far)` tuyệt đối + `vuaKhung` kéo camera ra theo bề ngang ⇒ màn dọc ra xa quá `far` ⇒ cả cảnh chỉ còn màu sương. Sương phải co giãn theo khoảng cách camera (`datNen(..., theoXa)`).
+- **`mergeGeometries` (three) fail im lặng khi trộn primitive có index và không index (01/10).** `PolyhedronGeometry` (Octahedron/Icosahedron) KHÔNG index, Sphere/Cylinder/Box có index ⇒ trả null. Chuyển hết về `toNonIndexed()` trước khi gộp.
+- **Code mới đã nằm trên `main` mà deploy là thủ công ⇒ cờ TẮT mặc định (01/10).** Push `main` KHÔNG có nghĩa học sinh chưa thấy: lần deploy kế tiếp (vì lý do khác) cuốn theo mọi thứ. Tính năng chưa duyệt phải đi sau cờ theo máy (`?cờ=1` → localStorage), mặc định tắt, bật cho mọi người là 1 dòng + 1 lần deploy có chủ đích.
+- **Thử app trên iPad cùng Wi-Fi: `http://` (không https), đúng thư mục, bản build cho độ mượt (01/10).** Safari "không thể thiết lập kết nối bảo mật" = nó đang đi https tới server http (mạng vẫn thông). `npm run` sai thư mục v1/v2 ⇒ "Missing script". Server dev (Vite) nạp three chưa nén nên chậm hàng chục giây trên iPad ⇒ muốn đo FPS dùng `vite preview` bản build. Windows: kiểm quy tắc tường lửa Node.js (Public) trước khi đổ lỗi cho mạng; KHÔNG tự sửa tường lửa. Pane trình duyệt ẩn ⇒ `requestAnimationFrame` dừng, chỉ vẽ khi chụp màn hình ⇒ không đo được FPS bằng pane.
+- **Quái/boss là phần Thùy tự thiết kế; ChatGPT chỉ làm icon (01/10).** Đừng soạn đơn ChatGPT cho bản đồ/địa hình, đừng trau chuốt quái dựng bằng code — chỉ giữ giao diện `Quai` + điểm cắm `nguonQuai.ts`.
 - **⭐ Màn nhiều dòng nhỏ phải soi CẢ khổ PC, không chỉ 375px (29/09).** Nút bản nhỏ mang `w-full` trong hàng flex giành hết bề ngang ⇒ cột chữ còn
   vài px, rụng từng chữ (Thế giới BK lọt lên prod). Nút phụ trong hàng = `flex-none`; `w-full` chỉ cho nút thanh hành động. Tương tự: `grid-cols-2`
   mặc định `minmax(auto,1fr)` ⇒ dòng `truncate` đẩy thẻ tràn/đè thẻ bên ⇒ dùng `grid-cols-[minmax(0,1fr)_minmax(0,1fr)]`.

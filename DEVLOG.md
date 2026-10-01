@@ -34199,3 +34199,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Chưa đạt:** nhìn từ trên, đầu chỉ rộng bằng ngực ⇒ chưa đúng ý CEO "mở rộng sang 2 bên".
   - Giao 4b: đầu rộng 1,15–1,25× ngực tại mép miệng, eo nhẹ ở cổ, không tăng chiều cao.
 - Luồng cá voi mất tab Browser pane giữa chừng (có thể do luồng ngựa), tự mở tab mới, không đụng tab của luồng kia.
+
+## 2026-10-01 (tối) — [Giao diện] CHỐT NGÀY: tổng kết + HANDOFF (Thùy về nhà làm tiếp)
+- Đã distill lên `HANDOFF.md` ① (khối "BẢN ĐỒ PHIÊU LƯU 2.5D/3D": logic chốt, hướng đồ hoạ, code ở đâu, cờ `phieuluu`, cách thử trên iPad, trạng thái kiểm, việc tiếp theo, nợ) và ② (6 bài học: camera dựng khi ô cỡ 0 ⇒ cảnh trắng · dấu Voronoi · sương mù theo khoảng cách camera · mergeGeometries index · tính năng chưa duyệt đi sau cờ khi deploy thủ công · thử iPad http/đúng thư mục/bản build · quái do Thùy thiết kế).
+- **Điểm dừng:** iPad CHƯA xác nhận bản đồ hiện (Thùy thử: Safari báo lỗi bảo mật = đi https; lần sau "không có bản đồ"). Đã thêm bảng Chẩn đoán trên trang xem thử + bản build giống production (`npm run build:hs` → `npm run preview:hs:lan`, cổng 5180). Việc đầu tiên khi tiếp tục: lấy ảnh chụp bảng Chẩn đoán từ iPad.
+- Mọi thứ đã push `main` (commit cuối phiên là cập nhật HANDOFF này). Chưa deploy. Cờ `phieuluu` tắt nên học sinh không thấy gì.
