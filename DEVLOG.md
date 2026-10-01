@@ -34104,3 +34104,26 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Trang soi `hs.html?xem=boss3d` (cận mặt, xoay, bấm từng tư thế/đòn); `XemBoss` trận thử chỉ còn 1 boss (bỏ elite Slime).
 - **Sai / sửa:** mày không hiện vì mày đặt sát mặt đầu (cách 0.012) bị lớp da trong suốt che (sắp xếp trong suốt) ⇒ đẩy ra +0.04 + renderOrder. Hào quang ban đầu có chữ thập mảnh trông như ống ngắm + vầng sáng đa giác cứng ⇒ bỏ chữ thập, vầng sáng dùng texture gradient. Tóc nhọn như gai ⇒ đổi thành các tuft tròn.
 - **Lưu ý kiểm thử:** Browser pane tạm dừng requestAnimationFrame khi không hiển thị ⇒ script đánh trận tự động chạy ngắt quãng; chụp màn hình giữa các bước mới tiến được.
+
+## 2026-10-02 — [Game] Thiên Kình bản 3 (BatThu `thu-de-thuong` @ `8f011d4`, đã push)
+
+- **Đo bằng đường bao chồng lên ảnh Panthalus** (`DEMO.chupKhop`): khớp tỉ lệ ~75%, IoU 41%.
+  - IoU bị kéo thấp vì bóng tham chiếu thiếu vòng + mặt nạ nâu, và vì pha sóng của đuôi.
+  - Luồng làm sửa số profile của CTO: quãng 30–60% số CTO mỏng hơn thật, vì bụng bị vây che. Đo lại bằng đường bao: 10% 1,00 · 21% 1,02 · 30% 0,92 · 40% 0,72 · 50% 0,50 · 60% 0,34 · 70% 0,24 · 80% 0,17 · 88% 0,13.
+- **Đã sửa:**
+  - đầu ngực tròn mập;
+  - vây trước 2 m, xoắn đúng trục (bản trước xoắn sai, ngọn vây chổng lên lưng);
+  - vân nét cọ;
+  - vòng dải phẳng 9 × 3,5 cm;
+  - bỏ mây ở bản thường.
+- **Số đo:** 41,9k tam giác (Đẹp) / 28k (Nhẹ) — nặng hơn vì chóp đuôi roi cần lưới mịn.
+- **Còn lệch:**
+  - vai gù thấp hơn 18 px;
+  - đuôi quãng 55–75% mảnh hơn;
+  - xanh phía tối đậm;
+  - vân ít mảng to;
+  - mặt nạ đơn giản.
+- **CTO nhận xét:**
+  - dáng thắt đã đúng hướng;
+  - phần còn lại là độ trau chuốt bề mặt (mượt, vân dài vắt qua thân) — đúng "trần chi tiết" của cách làm bằng code đã báo CEO;
+  - ⚠ cả ngày 01–02/10 dồn vào hình thú, phần hệ thống game V1 (DB, dungeon, lai, NPC) CHƯA bắt đầu ⇒ hỏi CEO cho chạy song song.

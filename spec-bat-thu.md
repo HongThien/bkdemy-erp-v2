@@ -334,7 +334,7 @@ Lọc theo bộ động tác chuẩn của 2 game: Pokémon (trận đấu · Le
 | Cáo Lửa | 1 | 4 chân | Foxparks | ✅ CEO duyệt (01/10) |
 | Cừu Mây | 1 | 4 chân | Lamball | ✅ CEO duyệt (01/10) |
 | Băng Thần Mã | 4 | 4 chân + cánh | Frostallion | 🔧 đang thêm cánh (CEO 02/10) |
-| Thiên Kình | 4 | bơi (+ bay) | Panthalus 90% | 🔧 bản 2 (`e1d249f`): có vòng + huy hiệu + đuôi dài; CTO chấm ~70% — vây hẹp, thân dẹt, vân mảnh. Chờ CEO xem |
+| Thiên Kình | 4 | bơi (+ bay) | Panthalus 90% | 🔧 bản 3 (`8f011d4`): thân thắt theo đường cong đo từ ảnh, vây trước to bản, vòng dải phẳng, bỏ mây · đường bao khớp ~75% (IoU 41%) · còn: vai gù thấp, đuôi giữa mảnh, vân ít mảng · chờ CEO |
 
 ## 4. Chờ CEO
 
