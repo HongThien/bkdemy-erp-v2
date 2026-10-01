@@ -34448,3 +34448,11 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - `canhDau.tungChieu(cap)` mới; `sanKhau.nghi()` mới. DauView bỏ import `nguonQuai` (kéo three vào gói chính) — tên quái qua `tenQuai2D`.
 - Bẫy gặp khi kiểm: khung trình duyệt ẩn ⇒ requestAnimationFrame đứng ⇒ hoạt ảnh không bao giờ xong ⇒ nút "Đòn kế tiếp" kẹt mãi. Chốt: chiêu tối đa 4 giây (Promise.race).
 - Kiểm (trận xem thử 1180×820): 3 câu đúng ⇒ TUYỆT KỸ −3, Rùa Đá ngã, Elite 2 vào, combo về trống; tsc + check:style-hs ✔. Trận thật chưa kiểm (cần tài khoản HS).
+
+### 02/10 — [Giao diện] Đơn 8 (combat) cho ChatGPT + cột công tắc hiệu ứng game
+- Thùy: "sao không làm đơn đặt hàng cho ChatGPT đã? combat là cái riêng" ⇒ Đơn 8 trong design/DON-HANG-SKIN-HS.md, độc lập Đơn 7: 1 ảnh toàn cảnh duyệt ·
+  khung câu hỏi/phiến đáp án/ngọc/nút/cuộn lời giải (vẽ để cắt 9 mảnh) · HUD · hiệu ứng chiêu (tia, nổ, nổ tuyệt kỹ, vòng tụ lực, xịt, hồi máu, sao, băng tên chiêu) ·
+  4 tư thế pháp sư. Nền trận đã ở Đơn 7 mục E. Code đang vẽ tạm bằng CSS (KhungTran.tsx) — bài học: phần HÌNH của tính năng mới phải ra đơn ChatGPT TRƯỚC, code dựng khung chờ.
+- Mig 202610020037: hs_giao_dien.hieu_ung_game (mặc định bật, 107/107 dòng bật) + fn_hs_luu_hieu_ung_game (chỉ đổi dòng đã có) + đọc/ghi log có trường mới.
+  Áp bằng migrate --only (owner claude_build, ACL chỉ authenticated). UI công tắc + style Tối giản: đang làm.
+- Phát hiện: 7 em đã chọn toi_gian từ style cũ (đã gỡ) — đang rơi về RPG; thêm lại Tối giản là các em tự về đúng lựa chọn.

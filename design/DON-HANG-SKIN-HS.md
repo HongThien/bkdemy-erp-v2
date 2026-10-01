@@ -603,3 +603,98 @@ Bắt đầu với #01.
 > **Khi hình về (Claude làm):** kiểm từng hình đối chiếu danh sách (ghép tờ liên hoàn, soi hình trùng/lệch — bài học Đơn 1 Nhiệm vụ) · nén vào
 > `public/bk-ui/hs/skin/rpg/phieuluu2d/` (lục địa 640², nền 1672×941 JPG q82, mốc 256²) · khai trong `skin/styles/rpg.ts` (`banDo2d`) · bỏ hình tạm.
 > Style 2 Thị trấn làm bộ y hệt (cùng danh sách, nét dễ thương) SAU KHI bộ RPG được duyệt.
+
+
+---
+
+## Đơn 8 — MÀN ĐẤU (combat): khung câu hỏi + nút đáp án + HUD + hiệu ứng chiêu + tư thế nhân vật (style Anime RPG) — soạn 02/10, ĐỘC LẬP với Đơn 7
+
+> **Thùy 02/10:** "combat là cái riêng" ⇒ đơn riêng, gửi ở **context ChatGPT riêng**, chạy song song Đơn 7 được. Nền trận (nen_dau_*) ĐÃ nằm ở Đơn 7 mục E
+> (#31–34, #59–62) — đơn này KHÔNG vẽ lại. Quái + boss: Thùy thiết kế riêng, KHÔNG nằm trong đơn này.
+> Bố cục màn đấu đã chốt trong code (02/10): thanh HUD mỏng trên cùng (chân dung quái · thanh máu · đội hình · 3 ô combo) — câu hỏi chiếm gần trọn màn
+> (để đủ chỗ lời giải chi tiết) — cảnh trận chỉ bung xuống lúc tung chiêu. Mỗi 3 câu tung 1 chiêu: 3/3 TUYỆT KỸ · 2/3 mạnh · 1/3 nhẹ · 0/3 xịt.
+> Hiện code đang vẽ tạm bằng CSS (`skin/KhungTran.tsx`); hình về thì thay hình tạm, bố cục giữ nguyên.
+>
+> **Cách gửi:** context ChatGPT MỚI → dán `CHATGPT-UI-KIT.md` → dán khối đơn dưới → đính kèm: 3 ảnh phong cách `design/bk-ui-src/Nền app HS cấp 3_1.png`
+> · `Nền app HS cấp 3_2.png` · `Nền app HS cấp 3_5.png` + 2 ảnh nhân vật `public/bk-ui/hs/skin/rpg/nv_nam.png` · `nv_nu.png` + hoa văn góc
+> `public/bk-ui/hs/skin/rpg/corner.png`. Mỗi hình xong: tải về `design/bk-ui-src/Combat/`, gõ "tiếp". Làm đúng thứ tự — dừng ở đâu cũng dùng được phần đã có.
+
+```
+ĐƠN ĐẶT HÀNG
+App:            hs
+Màn:            combat (màn đấu: trả lời câu hỏi Toán = tung phép đánh quái)
+Mô tả:          App học Toán cho học sinh, chủ đề "Giải cứu thế giới — đánh quái vật". Trong màn đấu, học sinh đọc câu hỏi trên một
+                BẢNG PHÉP lớn, chọn 1 trong 4 PHIẾN ĐÁP ÁN. Cứ 3 câu thì pháp sư (nhân vật của học sinh) tung 1 chiêu vào quái:
+                đúng cả 3 = TUYỆT KỸ rất hoành tráng, đúng 2 = chiêu mạnh, đúng 1 = chiêu nhẹ, sai cả 3 = chiêu xịt.
+                Lập trình viên GHÉP các hình bạn vẽ và ĐẶT CHỮ, SỐ, CÔNG THỨC TOÁN lên bằng code.
+                Thiết bị chính: iPad NGANG 1180×820 và máy tính. Học sinh đọc chữ trên bảng phép rất lâu ⇒ RUỘT bảng phải YÊN, tối đều, không hoa văn.
+Phong cách:     đúng phong cách các ảnh đính kèm: anime fantasy, ánh vàng cổ, xanh tím đêm, lấp lánh sao, vẽ tay tỉ mỉ.
+                Khung và nút giống giao diện game nhập vai anime (kiểu Genshin Impact / Honkai Star Rail): viền vàng kim mảnh 2 lớp, góc hoa văn,
+                đá quý. Nút bấm có độ dày (gờ dưới) như nút game.
+Phiên bản kit:  v1
+
+══ CÁCH GIAO HÀNG (bắt buộc — khác kit) ══
+- KHÔNG đóng zip. KHÔNG viết DESIGN.md. KHÔNG dựng hình bằng code / SVG / HTML / ghép khối.
+- MỖI LƯỢT TRẢ LỜI = ĐÚNG 1 HÌNH, vẽ bằng công cụ tạo ảnh. Dòng đầu ghi số + tên file, vd "#02 khung_cau_hoi".
+  Vẽ xong dừng, chờ tôi gõ "tiếp". KHÔNG gộp nhiều hình vào 1 ảnh (trừ #01 ảnh toàn cảnh).
+- Ảnh vẽ ra trong chat LÀ file giao.
+
+══ CHUẨN ══
+- KHÔNG chữ, số, chữ cái A/B/C/D, logo trong MỌI hình (trừ #01 được có vạch mờ thay chữ). Mọi chữ do code đặt.
+- Nền TRONG SUỐT cho mọi hình trừ #01.
+- KHUNG + NÚT (#02–#16): vẽ để CẮT 9 MẢNH được — trang trí chỉ nằm ở 4 GÓC (mỗi góc trong ô ~12% cạnh ngắn), 4 CẠNH là đường viền
+  TRƠN ĐỀU (kéo dài không vỡ), RUỘT màu ĐỀU (không chuyển màu mạnh, không hoa văn). Hình nằm sát mép khung ảnh, không chừa lề thừa.
+- HIỆU ỨNG (#21–#29): một khoảnh khắc đẹp nhất của hiệu ứng, nằm giữa khung, mép tan dần vào trong suốt (code tự phóng to/thu nhỏ/mờ dần).
+  Màu phép của pháp sư = xanh tím + vàng kim. KHÔNG nền tối phía sau hiệu ứng.
+- NHÂN VẬT (#30–#33): giữ ĐÚNG nhân vật trong 2 ảnh nv_nam / nv_nu đính kèm (mặt, tóc, áo, gậy), cùng tỉ lệ, đứng nghiêng 3/4 quay về
+  BÊN PHẢI (quái đứng bên phải), chân chạm đáy khung, 1024×1024.
+
+══ DANH SÁCH (đúng thứ tự ưu tiên) ══
+A. Duyệt phong cách — 1 ảnh toàn cảnh
+   #01 toan_canh_man_dau — iPad ngang 1672×941: trên cùng 1 THANH HUD MỎNG (chân dung quái nhỏ trong khung tròn, thanh máu đỏ, 3 viên ngọc
+                           combo hình thoi); giữa là BẢNG PHÉP lớn chiếm gần hết màn (chữ thay bằng vạch mờ), trong có 4 phiến đáp án xếp 2×2,
+                           mỗi phiến có 1 viên ngọc hình thoi bên trái; dưới cùng 1 nút vàng dài. Nền sau bảng: xanh đêm có sao mờ.
+                           → DỪNG, chờ Thùy duyệt.
+B. Bảng câu hỏi + đáp án (dùng nhiều nhất)
+   #02 khung_cau_hoi       — 1600×1000. Bảng phép: viền vàng kim 2 lớp + 4 góc hoa văn (giống corner.png đính kèm), ruột xanh đêm đặc đều.
+   #03 phien_dap_an        — 800×180. Phiến đá xanh tím bo góc, viền vàng mảnh, gờ dày phía dưới (nút game), ruột đều.
+   #04 phien_dap_an_chon   — như #03, viền vàng sáng rực + hào quang vàng nhẹ quanh mép.
+   #05 phien_dap_an_dung   — như #03, viền + hào quang XANH LỤC ngọc.
+   #06 phien_dap_an_sai    — như #03, viền + hào quang ĐỎ, vài vết nứt nhỏ ở góc.
+   #07 ngoc_thuong         — 256×256. Viên ngọc HÌNH THOI rỗng ruột (để code đặt chữ A/B/C/D), viền vàng, ruột xanh đêm.
+   #08 ngoc_chon           — như #07, ruột vàng kim sáng.
+   #09 ngoc_dung           — như #07, ruột xanh lục ngọc phát sáng.
+   #10 ngoc_sai            — như #07, ruột đỏ ruby.
+   #11 nut_tung_phep       — 900×170. Nút vàng kim dài, bo góc, gờ dày dưới, 2 đầu có hoa văn nhỏ, ruột vàng đều (code đặt chữ).
+   #12 cuon_loi_giai       — 1600×900. Khung CUỘN GIẤY DA mở ngang (2 đầu cuộn gỗ/vàng), ruột giấy màu kem SÁNG ĐỀU (code đặt chữ tối lên).
+C. HUD (thanh trên cùng)
+   #13 khung_hud           — 1672×120. Dải ngang mỏng xanh đêm viền vàng mảnh ở cạnh dưới, 2 đầu hoa văn nhỏ, ruột đều.
+   #14 khung_chan_dung     — 256×256. Khung TRÒN viền vàng kim có 2 cánh nhỏ 2 bên, ruột TRỐNG trong suốt (code đặt chân dung quái vào).
+   #15 thanh_mau_vo        — 1000×70. Vỏ thanh máu: khung vàng mảnh, ruột tối (code đổ máu đỏ vào trong).
+   #16 o_combo             — 128×128. Ô combo hình thoi nhỏ RỖNG, viền vàng (code tô xanh/đỏ khi đúng/sai).
+D. Hiệu ứng chiêu (code ghép thành chuyển động)
+   #21 tia_phep            — 1024×256. Một tia phép bay ngang trái → phải: đầu tia sáng chói, đuôi tan thành sao nhỏ, xanh tím + vàng.
+   #22 no_trung            — 768×768. Vụ nổ khi trúng đòn: chớp sáng trắng giữa, tia vàng toả ra, sao nhỏ bắn ra.
+   #23 no_tuyet_ky         — 1024×1024. Vụ nổ TUYỆT KỸ: cột sáng vàng–tím, vòng sóng xung kích, rất nhiều sao, hoành tráng nhất bộ.
+   #24 vong_tu_luc         — 1024×1024. Vòng tròn phép thuật vàng kim nhìn CHÉO từ trên (hình elip nằm trên mặt đất), có hoa văn rune trang trí
+                             (KHÔNG phải chữ thật), vài cột sáng mảnh bốc lên — pháp sư đứng giữa vòng này khi tụ lực tuyệt kỹ.
+   #25 chieu_xit           — 512×512. Chiêu xịt: làn khói xám mỏng + vài tia lửa tắt, buồn cười dễ thương (không đáng sợ).
+   #26 hoi_mau             — 512×512. Quái hồi máu: hạt sáng xanh lục + lá nhỏ bay lên thành cột.
+   #27 sao_hat             — 128×128. MỘT ngôi sao lấp lánh 4 cánh màu vàng trắng (code nhân bản thành mưa sao).
+   #28 bang_ten_chieu      — 1200×260. Dải ruy băng vàng kim ngang, RUỘT TRỐNG (code đặt tên chiêu), 2 đầu xoè đuôi én.
+   #29 bang_tuyet_ky       — 1400×420. Như #28 nhưng lớn và hoành tráng hơn: có cánh/tia sáng toả sau dải, viên đá quý giữa trên.
+E. Tư thế pháp sư (giữ đúng nhân vật đính kèm)
+   #30 nv_nam_niem_phep    — pháp sư nam giơ gậy, đầu gậy tụ quả cầu sáng xanh tím, áo choàng tung nhẹ.
+   #31 nv_nu_niem_phep     — như #30, pháp sư nữ.
+   #32 nv_nam_tung_chieu   — pháp sư nam vung gậy về phía trước (bên phải), tư thế dứt khoát, vệt sáng theo gậy.
+   #33 nv_nu_tung_chieu    — như #32, pháp sư nữ.
+
+GHI ĐÈ KIT §1: KHÔNG chữ trong mọi hình. KHÔNG khẩu hiệu.
+Bắt đầu với #01.
+```
+
+> **Khi hình về (Claude làm):** kiểm từng hình đối chiếu danh sách (soi hình trùng/lệch, nhân vật #30–33 có đúng người trong nv_nam/nv_nu không) ·
+> cắt 9 mảnh + nén vào `public/bk-ui/hs/skin/rpg/dau/` (khung/nút PNG, hiệu ứng PNG ≤512², nhân vật 512²) · khai vào `skin/styles/rpg.ts` mục `tran`
+> (thêm trường ảnh: `border-image` cho khung/phiến/nút, ảnh cho ngọc · HUD · hiệu ứng) · `KhungTran.tsx` đọc ảnh, thiếu ảnh nào thì giữ hình tạm CSS chỗ đó ·
+> hiệu ứng #21–#29 vào cảnh trận (sprite quay mặt camera — cùng cách quaiAnh.ts) · đo lại máy yếu (iPad gen 7). Style "Tối giản" KHÔNG cần bộ này
+> (tắt hiệu ứng game).
