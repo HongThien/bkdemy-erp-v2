@@ -334,3 +334,15 @@ Thả file vào  E:\BK ACADEMY\Tài liệu Claude nhập kho\DE_THI\L<khối>\  
 | Sau | Tự động hoá (chạy nền, kiểm độc lập, gợi ý dạng theo hồ sơ dạng — `spec-luong-kho.md`) · tải file ngay trên ERP · đề tự luận / lớp dưới | | |
 
 Lát A–C không phụ thuộc bản đồ kiến thức, không phụ thuộc skill gán dạng / gán mẫu (đã GÁC 01/10).
+
+### 10.5 Chốt thêm 01/10 (vòng 2) — nơi lưu + cách dùng đề
+
+| # | Quyết định CEO | Hệ quả |
+|---|---|---|
+| K1 | **Màn riêng "Kho đề thi"**, 3 tab: **Chờ duyệt** (đề vừa nhập, còn thiếu gì → mở Duyệt đề) · **Sẵn sàng** (đã duyệt: xem · in · Giao) · **Đã giao** (từng lượt: lớp · ngày · chế độ · số em nộp → kết quả · thu bài · mở đáp án) | Kho tài liệu vẫn liệt kê đề như cũ; Kho đề thi là chỗ làm việc chính |
+| K2 | Câu của đề **duyệt 1 cửa = Duyệt đề** (duyệt đề ⇒ mọi câu của đề `da_duyet`). Vẫn hiện ở màn Duyệt câu của kho cho ai duyệt lẻ | Hàng đợi theo ĐỀ, không theo câu (đang có 5.655 câu Đại + 719 câu HGT nguồn đề thi chưa duyệt) |
+| K3 | **1 đề, 3 cách giao** — chọn lúc bấm Giao: **Kiểm tra** (đồng hồ, khoá đáp án tới khi GV mở, ẩn gợi ý, mastery như ET, HS thấy ở "Làm đề thi thử") · **Luyện tập trên lớp** (không đồng hồ, đáp án hiện sau khi nộp, có gợi ý, mastery như bài trên lớp) · **BTVN** (hạn nộp, đáp án sau khi nộp, mastery như BTVN, HS thấy ở ô BTVN) | KHÔNG thêm loại bài: map sang `bai_test.loai` sẵn có `de_thi` / `giao_trinh` / `btvn` ⇒ app HS, chấm, mastery không viết lại. Kiểm tra đã build 27/09; 2 chế độ kia = thêm lựa chọn ở `fn_de_thi_mo` |
+| K4 | Bản đầu **chỉ giao CẢ ĐỀ**. Dùng câu lẻ ⇒ nhặt từ kho qua Làm tài liệu như mọi câu | |
+| K5 | **Trả lời ngắn GIỮ FORM ĐỀ GỐC: 4 ô, chỉ điền số / ký tự / dấu — đúng luật phiếu trả lời thi THPT** (CEO: "đọc kĩ luật thi thpt") | **Thay quyết định #2 (20/09) và §3.4 cho ĐỀ THI:** Phần III không đổi sang MCQ nữa ⇒ gỡ nút cổ chai §8.1 (đề không còn phải chờ sinh form MCQ); `fn_de_thi_thieu` bỏ điều kiện "TLN chưa có phương án MCQ". Phải đọc quy định phiếu TLTN của Bộ trước khi làm ô nhập + luật so đáp án (lát C). Luật "bổ trợ chỉ MCQ" (19/09) KHÔNG đổi — đó là luồng khác |
+
+Thứ tự lát sau khi chốt: **A** nhập `DE SO 3` → **B** màn Kho đề thi (tab Chờ duyệt + Duyệt đề) → **C** nút Giao 3 chế độ + ô TLN 4 ô + tab Đã giao → **D** đề chỉ có PDF.
