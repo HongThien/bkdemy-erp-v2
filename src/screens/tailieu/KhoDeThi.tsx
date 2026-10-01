@@ -23,7 +23,7 @@ import { MathTextarea } from '../../components/math/MathTextarea'
 import { CauEditor, type ReviewItem } from '../kho/DangHub'
 import DangPickerOne from '../../components/DangPickerOne'
 import DeThiPrintView from './DeThiPrintView'
-import { PhatHanhDeThiModal, LuotThiPanel } from './DuyetDeThi'
+import { GiaoDeModal, DaGanPanel, LuotThiPanel } from './DuyetDeThi'
 
 const MONS = ['Toán', 'KHTN']
 const TABS: { key: TabKhoDe; ten: string }[] = [{ key: 'cho_duyet', ten: 'Chờ duyệt' }, { key: 'san_sang', ten: 'Sẵn sàng' }, { key: 'da_giao', ten: 'Đã giao' }]
@@ -411,6 +411,7 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
               )
             })}
             {caus && <button onClick={themPhan} className="w-full rounded-xl border-2 border-dashed border-slate-300 bg-white py-2.5 text-[13px] font-medium text-slate-600 hover:border-indigo-300 hover:text-indigo-700">+ Thêm phần</button>}
+            <DaGanPanel deId={id} lamMoi={lamMoiLuot} />
             <LuotThiPanel deId={id} lamMoi={lamMoiLuot} />
           </div>
         </div>
@@ -427,7 +428,7 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
 
       {pick && <DangPickerOne khoi={d.khoi} mon={d.mon} nhanh={nhanhCuaKhoPicker(pick.c.kho)} onClose={() => setPick(null)} onPick={(ma) => chonDang(ma)} />}
       {printing && <DeThiPrintView id={id} onClose={() => setPrinting(false)} />}
-      {giao && <PhatHanhDeThiModal de={d} thoiGianMacDinh={meta.thoiGianPhut} onClose={() => setGiao(false)} onDone={() => setLamMoiLuot((n) => n + 1)} />}
+      {giao && <GiaoDeModal de={d} thoiGianMacDinh={meta.thoiGianPhut} onClose={() => setGiao(false)} onDone={() => setLamMoiLuot((n) => n + 1)} />}
     </div>
   )
 }

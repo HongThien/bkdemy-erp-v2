@@ -33939,3 +33939,33 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - vài động tác bọc từ bản chibi còn kiểu đồ chơi (giật mình, ra/phá bóng, ngáp);
   - nằm phục nhìn từ cao giống quỳ;
   - VFX thật chưa làm.
+
+## 2026-10-01 (tối) — [Kho · Đề thi] Lát C: GÁN đề vào buổi của lớp (thành Giáo trình / BTVN) + ô trả lời ngắn 4 ô
+
+- **CEO:** "Cả 2 đi [lát C, D]. Cần có chức năng gán giống tài liệu. Mỗi lớp có 3 loại tài liệu: Giáo trình, ET, BTVN. Khi gán đề thi kiểu này
+  thì nó sẽ là giáo trình hoặc BTVN. Phải khớp với hệ thống hiện tại." ⇒ K3 đổi cách hiện thực (spec-de-thi.md §10.7).
+- **Đọc trước khi viết (hệ thống hiện tại):** gán = đẻ tài liệu vận hành `giao_trinh_buoi` / `btvn` bám (lớp+ngày) (`trichXuatBuoi`,
+  `duplicateTaiLieu` + `renumberBuoiLop`, unique `uq_tai_lieu_van_hanh`); MỌI chỗ đọc lọc `loai_phan` 'dang' / 'btvn' (in, chấm BTVN, mở app,
+  chuông báo yếu); mastery đọc `bai_test_cau.ma_dang`; giáo trình online HS chỉ thấy câu thuộc dạng đã mở (RLS `_btc_trang_thai` + một lớp lọc
+  nữa ở client `getBaiTestFull`).
+- **Làm:** mig `202610011759_de_thi_gan_buoi` (ĐÃ ÁP bằng `migrate.mjs --only`, chạy thử trước bằng `thu-migration.mjs --kiem`):
+  `fn_de_thi_gan` · `fn_de_thi_da_gan` · `fn_de_thi_hoan_thien_bai_test` · cột `bai_test_cau.kieu_nhap` · `_de_thi_hop_le_4o` ·
+  `fn_de_thi_mo` (trả lời ngắn giữ form, thôi chặn) · `et_de` (+kieu_nhap) · `_et_cham` (so thêm `fn_tln_normalize`) ·
+  trigger `trg_de_thi_dien_dang` (câu rời dạng chờ ⇒ điền `ma_dang` vào bài đã phát hành từ đề) · tab Đã giao tính cả buổi đã gán.
+  Client: `GiaoDeModal` (📘 Bài trên lớp · 📝 BTVN · ⏱ Kiểm tra) + `DaGanPanel` trong `DuyetDeThi.tsx`; `ganDeThi`/`listDeDaGan` (dethi.ts);
+  `phatHanhTest` gọi hàm hoàn thiện cho tài liệu có `cau_hinh.deThi`; `getBaiTestFull` nhận cả câu mở lẻ; PrintView lấy tên phần khi phần
+  không trỏ dạng; chuông báo yếu lấy dạng theo câu; Kho tài liệu không mở builder cho tài liệu gán từ đề; app HS thêm `ONhap4O`.
+- **Quyết định kỹ thuật (CTO, ghi để truy):**
+  1. Phần của đề chép thành phần `dang`/`btvn` với `ref_ma` TRỐNG — chọn "đúng khuôn cũ + 3 chỗ dạy thêm" thay vì giữ phần `custom` rồi dạy
+     lại ~10 chỗ đọc (mỗi chỗ quên là một lỗi im lặng).
+  2. Câu còn dạng chờ ⇒ `ma_dang` của bản chụp để TRỐNG chứ không ghi mã dạng chờ: `fn_mastery_cells` chỉ loại `ma_dang is null`; ghi mã chờ
+     vào là đẻ ra một "dạng yếu" giả trên bản đồ + bổ trợ.
+  3. Buổi đã có Giáo trình/BTVN ⇒ hàm từ chối, KHÔNG tự thay (trichXuatBuoi thì thay im lặng — không bắt chước chỗ đó).
+- **Sai / vấp:** `auth.uid()` trong hàm security definer do `claude_build` sở hữu ⇒ "permission denied for schema auth" (bản thử bắt được) —
+  dùng `public.jwt_uid()`. · `grep -c $'\r'` trên Git Bash trả 0 với file CRLF ⇒ script node vá nhiều dòng trượt; file CRLF sửa bằng Edit tool.
+- **Kiểm:** bản thử (ROLLBACK) trên đề `DE SO 3`: chặn khi chưa duyệt · gán BTVN + Giáo trình cùng buổi 12A1 (3 phần 12/4/6 câu, `ref_ma` trống,
+  `etFormByCau` đủ 6 câu) · gán lần hai bị chặn nêu tên bản cũ · lượt thi: 6 câu trả lời ngắn giữ form + `phieu_4o`, 2 câu dạng chờ `ma_dang`
+  trống · gán dạng thật ⇒ bản chụp tự có dạng. Giao diện: trang xem-thử dữ liệu giả (`xem-thu-giao-de.html`, `xem-thu-4o.html` — không commit)
+  — hộp Giao lọc lớp theo môn, chọn buổi theo TKB, báo lỗi trùng buổi; ô 4 ký tự chặn đúng luật (− chỉ ô 1, phẩy chỉ ô 2–3).
+  **CHƯA kiểm trên dữ liệu thật:** gán thật + bản in phiếu của tài liệu gán + HS làm trên app — cần đề ĐÃ DUYỆT (duyệt là việc của người) và
+  phiên đăng nhập (preview đang ở màn đăng nhập).

@@ -373,3 +373,39 @@ vào folder chỉ định và Claude chạy. Claude vẫn gọi Gemini để OCR
 
 Còn lại: **C** — Giao 3 chế độ (kiểm tra / luyện tập / BTVN), ô trả lời ngắn 4 ô trên app HS + luật so đáp số, mastery lấy dạng theo `ma_cau` (K6c) ·
 **D** — đề chỉ có PDF (Gemini OCR + Claude kiểm) · xoá đề trong Kho đề thi (chưa có nút; theo Luật xoá) · soạn câu MỚI bằng tay ngay trong đề.
+
+### 10.7 Lát C — GÁN đề vào buổi của lớp (CEO 01/10, vòng 4) · ĐÃ BUILD
+
+CEO: *"Cần có chức năng gán giống tài liệu. Mỗi lớp có 3 loại tài liệu: Giáo trình, ET, BTVN. Khi gán đề thi kiểu này thì nó sẽ là giáo trình
+hoặc BTVN. Phải khớp với hệ thống hiện tại."* ⇒ K3 đổi cách hiện thực: "luyện tập trên lớp" và "BTVN" KHÔNG phải hai chế độ riêng của đề,
+mà là **đề được gán thành tài liệu của buổi** — đúng hai loại tài liệu lớp vốn có.
+
+| Bấm 📱 Giao, chọn | Chuyện gì xảy ra | Sau đó đi đường nào |
+|---|---|---|
+| **📘 Bài trên lớp** | `fn_de_thi_gan(đề, lớp, ngày, 'giao_trinh_buoi')` đẻ 1 tài liệu **Giáo trình buổi** bám (lớp + ngày) | Y như giáo trình trích xuất: Kho tài liệu · in phiếu (`PrintView`) · 📱 mở app (`phatHanhTest` → `bai_test.loai='giao_trinh'`) · xem live · chuông báo yếu |
+| **📝 BTVN** | như trên, loại `'btvn'` | Y như BTVN của buổi: in phiếu có tên HS · chấm BTVN buổi sau · hạn nộp `han_nop_bai_test` · mở app (`loai='btvn'`) |
+| **⏱ Kiểm tra** | `fn_de_thi_mo` — lượt thi tính giờ, giấu đáp án (không tạo tài liệu của buổi) | "Làm đề thi thử" trên app · bảng kết quả từng lượt |
+
+- **Khuôn tài liệu gán** (để mọi chỗ đang đọc Giáo trình/BTVN đọc được ngay, không dạy lại): mốc `buoi` (tiêu đề = tên đề, số buổi của lớp do
+  `renumberBuoiLop` đánh) + **mỗi PHẦN của đề = một phần** `dang` (bài trên lớp) / `btvn` (về nhà), `ref_ma` TRỐNG (phần của đề không trỏ một
+  dạng — dạng nằm ở từng câu), `nguon_id` = đề, `cau_hinh` chép từ đề (`nhanhByCau`, `deThi`) + `etFormByCau[câu trả lời ngắn]='tra_loi_ngan'`.
+  Chỗ phải dạy thêm chỉ có 3: đầu card bản in lấy tên phần khi không có mã dạng · chuông "báo yếu" lấy dạng theo câu · Kho tài liệu không mở
+  builder theo-dạng cho tài liệu gán từ đề (sửa ở Kho đề thi rồi gán lại).
+- **Bản gán là BẢN CHÉP** (như MT gán buổi, như trích xuất giáo trình): sửa đề sau đó không đổi bản đã gán. 1 buổi chỉ 1 Giáo trình + 1 BTVN
+  (`uq_tai_lieu_van_hanh`) ⇒ buổi đã có thì hàm TỪ CHỐI và nêu tên bản đang có — không tự thay.
+- **Điều kiện gán / mở kiểm tra:** đề đã duyệt + không còn câu thiếu đáp án. Lớp phải CÙNG MÔN với đề (§1.6). Câu chưa có dạng không cản (K6).
+- **K5 trên app:** cột `bai_test_cau.kieu_nhap='phieu_4o'` cho câu trả lời ngắn có đáp số tô được trên phiếu (`_de_thi_hop_le_4o`); app HS hiện
+  4 ô + bàn phím riêng (0–9, −, phẩy) ở cả chế độ làm-chấm-ngay lẫn chế độ thi. `fn_de_thi_mo` thôi đổi trả lời ngắn sang 4 phương án, thôi chặn.
+  Chấm chế độ thi so thêm theo `fn_tln_normalize` (23,9 = 23.9).
+- **K6 trên phép đo:** câu còn dạng chờ ⇒ `bai_test_cau.ma_dang` để TRỐNG (không áp dụng — không tính cho dạng nào, không phải điểm 0; dạng chờ
+  mà lọt vào mastery sẽ thành một "dạng yếu" giả, kéo cả bổ trợ). Gán dạng thật cho câu ⇒ trigger `trg_de_thi_dien_dang` điền vào mọi bài đã
+  phát hành từ đề ⇒ mastery (suy động) tự có thêm lần đo. Chỉ điền chỗ trống, không đổi dạng đã có.
+- **Bài trên lớp từ đề mở sẵn CẢ ĐỀ** trên app (giáo trình thường mở từng dạng theo nhịp dạy; đề luyện là làm cả đề) — GV vẫn đóng/mở lẻ từng câu
+  ở màn live như cũ.
+- **Kho đề thi:** tab "Đã giao" + cột "đã giao" tính cả buổi đã gán; màn đề có bảng **"Đã gán vào buổi của lớp"** (lớp · ngày · loại · đã mở app
+  chưa · mấy em đã làm · 🖨 In phiếu · 📱 Mở trên app).
+- Một hàm cho việc "hoàn thiện bài test phát hành từ đề": `fn_de_thi_hoan_thien_bai_test` (ô 4 ký tự · bỏ dạng chờ khỏi phép đo · tên phần ·
+  mở sẵn câu) — lượt thi gọi trong `fn_de_thi_mo`, tài liệu gán gọi sau `phatHanhTest`.
+
+Chưa làm / biết trước: mastery theo TỪNG MỆNH ĐỀ của câu Đúng/Sai (hiện câu Đ/S tính cho dạng của câu, đúng một phần = 0,5) · đổi ngày / xoá bản
+gán ngay trong Kho đề thi (đang làm ở Kho tài liệu) · gán một PHẦN của đề (K4: bản đầu chỉ cả đề).

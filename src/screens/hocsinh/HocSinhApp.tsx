@@ -168,6 +168,47 @@ const NUT_DS = (t: TtO): CSSProperties => ({
 // Ô trả lời ngắn — nền/viền skin, focus viền acc.
 const O_NHAP: CSSProperties = { background: MAU.surface2, color: MAU.ink, border: `1.5px solid ${MAU.line}`, borderRadius: R_TRONG }
 const O_NHAP_CLS = 'w-full px-4 py-3 outline-none placeholder:text-[color:var(--sk-muted)] focus:!border-[color:var(--sk-acc)] disabled:opacity-70'
+// ⭐ Ô TRẢ LỜI NGẮN KIỂU PHIẾU THI (bai_test_cau.kieu_nhap = 'phieu_4o', bài phát hành từ ĐỀ THI — spec-de-thi.md K5):
+// đúng 4 ô như phiếu trả lời của Bộ — chỉ chữ số, dấu "−" (chỉ ô 1), dấu "," (chỉ ô 2 hoặc 3). Bàn phím riêng trên
+// màn (bàn phím số của điện thoại không có dấu trừ) + gõ được bằng bàn phím thật. Giá trị = chuỗi như "-2,5".
+function them4O(v: string, k: string): string {
+  if (v.length >= 4) return v
+  if (k === '-') return v === '' ? '-' : v
+  if (k === ',') return (v.length === 1 || v.length === 2) && !v.includes(',') ? v + ',' : v
+  return /^[0-9]$/.test(k) ? v + k : v
+}
+export function ONhap4O({ value, onChange, disabled, co = 19 }: { value: string; onChange: (v: string) => void; disabled?: boolean; co?: number }) {
+  const v = (value ?? '').slice(0, 4)
+  const bam = (k: string) => { if (!disabled) { const n = k === 'xoa' ? v.slice(0, -1) : them4O(v, k); if (n !== v) onChange(n) } }
+  const phim = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '-', '0', ',']
+  return (
+    <div tabIndex={disabled ? -1 : 0} className="outline-none"
+      onKeyDown={(e) => {
+        const k = e.key === '.' ? ',' : e.key === '−' ? '-' : e.key
+        if (k === 'Backspace') { e.preventDefault(); bam('xoa') } else if (/^[0-9,-]$/.test(k)) { e.preventDefault(); bam(k) }
+      }}>
+      <div className="flex items-center gap-2">
+        {[0, 1, 2, 3].map((i) => (
+          <div key={i} className="flex h-14 w-12 items-center justify-center font-semibold"
+            style={{ ...O_NHAP, fontSize: co + 5, ...(i === v.length && !disabled ? { border: `2px solid ${MAU.acc}` } : {}), opacity: disabled ? 0.7 : 1 }}>
+            {v[i] === '-' ? '−' : v[i] ?? ''}
+          </div>
+        ))}
+        {!disabled && v && <button onClick={() => bam('xoa')} className="ml-1 px-3 py-2 text-[15px] font-medium active:scale-95" style={NUT_PHU}>⌫</button>}
+      </div>
+      {!disabled && (
+        <div className="mt-3 grid max-w-[260px] grid-cols-3 gap-2">
+          {phim.map((k) => (
+            <button key={k} onClick={() => bam(k)} className="py-2.5 font-semibold active:scale-95" style={{ ...O_DAP_AN('thuong'), fontSize: co }}>
+              {k === '-' ? '−' : k}
+            </button>
+          ))}
+        </div>
+      )}
+      {!disabled && <p className="mt-2 text-[12px]" style={{ color: MAU.muted }}>Điền như phiếu thi: tối đa 4 ô — dấu − ở ô đầu, dấu phẩy ở ô 2 hoặc 3.</p>}
+    </div>
+  )
+}
 // Nút/hộp "Gợi ý" (cảnh báo = cam ngữ nghĩa).
 const NUT_GOI_Y = (mo: boolean): CSSProperties => ({ border: `1px solid ${VIEN_CB}`, background: mo ? 'rgba(224,144,30,0.26)' : NEN_CB, color: MAU.canhBao })
 const HOP_GOI_Y: CSSProperties = { border: `1px solid ${VIEN_CB}`, background: NEN_CB, borderRadius: R_TRONG }
@@ -905,6 +946,8 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
                 )
               })}
             </div>
+          ) : cau.kieu_nhap === 'phieu_4o' ? (
+            <ONhap4O value={(cs?.chon as string) ?? ''} onChange={setChon} disabled={daCham} co={19} />
           ) : (
             <input value={(cs?.chon as string) ?? ''} onChange={(e) => setChon(e.target.value)} disabled={daCham}
               placeholder="Nhập đáp án…" inputMode="text"
@@ -1576,6 +1619,8 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
                 )
               })}
             </div>
+          ) : cau.kieu_nhap === 'phieu_4o' ? (
+            <ONhap4O value={(ans[cau.id] as string) ?? ''} onChange={(v) => luu(cau.id, v)} disabled={daNop} co={15} />
           ) : (
             <input value={(ans[cau.id] as string) ?? ''} onChange={(e) => setAns((s) => ({ ...s, [cau.id]: e.target.value }))} onBlur={(e) => luu(cau.id, e.target.value)} disabled={daNop}
               placeholder="Nhập đáp án…" className={`${O_NHAP_CLS} text-[15px]`} style={O_NHAP} />

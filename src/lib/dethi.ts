@@ -6,7 +6,7 @@
 // chỉ khác đề thi có NHIỀU phan 'custom' (mỗi phần 1 cái) thay vì 1. getTaiLieuFull đã generic, không cần đổi.
 // ============================================================================
 import { supabase } from './supabase'
-import { listPhan, addPhan, getTaiLieuFull, khoCuaMon, type TaiLieuPhan } from './tailieu'
+import { listPhan, addPhan, getTaiLieuFull, khoCuaMon, renumberBuoiLop, type TaiLieuPhan } from './tailieu'
 import type { CauHoi, MenhDe } from './kho/api'
 
 export type DeThiMeta = {
@@ -128,6 +128,25 @@ export async function moDeThi(deId: string, lopId: string, ngay: string, thoiGia
   const { data, error } = await supabase.rpc('fn_de_thi_mo', { p_de: deId, p_lop: lopId, p_ngay: ngay, p_thoi_gian_phut: thoiGianPhut, p_khoa_dap_an: khoaDapAn })
   if (error) throw error
   return data as string
+}
+
+// ── GÁN ĐỀ VÀO BUỔI CỦA LỚP (spec-de-thi.md §10.7, CEO 01/10) ──
+// Đề gán vào buổi thành đúng MỘT tài liệu vận hành của lớp: Giáo trình buổi (bài trên lớp) hoặc BTVN — cùng khuôn với
+// "trích xuất buổi" của giáo trình, nên in phiếu / chấm BTVN / mở trên app đi đúng đường sẵn có. Bản gán là BẢN CHÉP
+// (sửa đề sau đó không đổi bản đã gán — muốn đổi thì xoá bản gán ở Kho tài liệu rồi gán lại), y như MT gán buổi.
+export type LoaiGan = 'giao_trinh_buoi' | 'btvn'
+export const TEN_LOAI_GAN: Record<LoaiGan, string> = { giao_trinh_buoi: 'Giáo trình (bài trên lớp)', btvn: 'BTVN' }
+// Trả id tài liệu mới + các doc của lớp vừa ĐỔI SỐ BUỔI (gán chèn giữa lịch ⇒ buổi sau dồn số) để caller dựng lại link in.
+export async function ganDeThi(deId: string, lopId: string, ngay: string, loai: LoaiGan): Promise<{ taiLieuId: string; doiTen: { id: string; loai: string }[] }> {
+  const { data, error } = await supabase.rpc('fn_de_thi_gan', { p_de: deId, p_lop: lopId, p_ngay: ngay, p_loai: loai })
+  if (error) throw error
+  return { taiLieuId: data as string, doiTen: await renumberBuoiLop(lopId) }
+}
+export type DeDaGan = { tai_lieu_id: string; loai: LoaiGan; ten: string; lop_id: string; lop_ten: string; ngay: string; created_at: string; bai_test_id: string | null; so_da_lam: number }
+export async function listDeDaGan(deId: string): Promise<DeDaGan[]> {
+  const { data, error } = await supabase.rpc('fn_de_thi_da_gan', { p_de: deId })
+  if (error) throw error
+  return (data ?? []) as DeDaGan[]
 }
 
 // Người sửa 1 câu ngay trên màn đề (CRUD dòng đơn — staff RLS). Sửa được MỌI thứ của câu: nội dung, phương án, đáp án,

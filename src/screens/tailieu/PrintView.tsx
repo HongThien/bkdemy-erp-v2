@@ -494,7 +494,7 @@ function Doc({ full, gv, scope, lt = true, onlyBuoiId, perHS = false, roster = [
 // Tách "Buổi N" khỏi tên chủ đề để dựng hero BK: eyebrow "Buổi N" + huy hiệu số N + tiêu đề = chủ đề.
 // Không khớp mẫu "Buổi N" (tên tự do) → không eyebrow/huy hiệu, tiêu đề = cả tên.
 function parseBuoiTitle(title: string): { eyebrow: string; num: string; heading: string } {
-  const m = title.match(/^\s*Bu[ổôổ]i\s*0*(\d+)\s*[:：.\-–—]?\s*(.*)$/iu)
+  const m = title.match(/^\s*Bu[ổôổ]i\s*0*(\d+)\s*[:：.\-–—·]?\s*(.*)$/iu) // "·" = dấu tieuDeBuoiLop chèn cho tiêu đề tự do ("Buổi 3 · Đề số 3…")
   if (!m) return { eyebrow: '', num: '', heading: title }
   const rest = (m[2] ?? '').trim()
   return rest
@@ -639,8 +639,9 @@ function DangBlock({ p, gv, lt = true, colByCau, hinhCheDoByCau }: { p: PhanReso
   return (
     <section className="pv-sec gtbk-card">
       <div className="gtbk-card-head">
-        <span className="gtbk-code">{p.ref_ma}</span>
-        <div className="gtbk-card-title">{p.dang?.ten_dang ?? p.ref_ma}</div>
+        {/* ref_ma trống = phần của ĐỀ THI gán vào buổi (không trỏ 1 dạng) ⇒ đầu card là tên phần của đề */}
+        {p.ref_ma && <span className="gtbk-code">{p.ref_ma}</span>}
+        <div className="gtbk-card-title">{p.dang?.ten_dang ?? p.ref_ma ?? p.tieu_de}</div>
         <span className="gtbk-pill">Bài luyện</span>
       </div>
       <div className="gtbk-card-body">
@@ -674,8 +675,8 @@ function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, linesByCau, co
         const dangBlock = (b: PhanResolved) => (
           <div key={b.id} className="pv-sec gtbk-card">
             <div className="gtbk-card-head">
-              <span className="gtbk-code">{b.ref_ma}</span>
-              <div className="gtbk-card-title">{b.dang?.ten_dang ?? b.ref_ma}</div>
+              {b.ref_ma && <span className="gtbk-code">{b.ref_ma}</span>}
+              <div className="gtbk-card-title">{b.dang?.ten_dang ?? b.ref_ma ?? b.tieu_de}</div>
               <span className="gtbk-pill">BTVN</span>
             </div>
             {/* Số câu đếm LIÊN TỤC xuyên các dạng (dạng 1: 1,2 → dạng 2: 3,4,5…) — KHÔNG reset mỗi dạng,

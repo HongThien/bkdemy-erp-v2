@@ -416,7 +416,8 @@ export default function KhoTaiLieuScreen() {
                           </div>
                         ) : (
                         <div className="flex justify-end gap-1.5">
-                          {EDITABLE.has(r.loai) && <button onClick={() => sua(r)} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">✎ Sửa</button>}
+                          {/* Giáo trình / BTVN GÁN TỪ ĐỀ THI (cau_hinh.deThi) không mở builder theo-dạng: sửa ở Kho đề thi rồi gán lại */}
+                          {EDITABLE.has(r.loai) && !(r.cau_hinh as { deThi?: unknown } | undefined)?.deThi && <button onClick={() => sua(r)} className="shrink-0 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">✎ Sửa</button>}
                           {r.loai === 'btvn' && r.nguon_id && r.nguon_buoi && r.lop_id && (
                             <button onClick={() => setEditOnTap(r)} className="shrink-0 rounded-md border border-violet-300 px-2.5 py-1 text-[12px] font-medium text-violet-700 hover:bg-violet-50">✎ Ôn tập</button>
                           )}

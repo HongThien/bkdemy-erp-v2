@@ -31,6 +31,8 @@ export type BaiTestCau = {
   // Phiên bản TRẮC NGHIỆM AI (spec-mcq-form.md §8.2): snapshot từ <kho>_cau_form_tn khi GV chọn form trắc nghiệm cho câu
   // không có phương án sẵn. lua_chon_rule song song lua_chon (null = đúng, 'R19' = sai theo rule) — cùng INSERT.
   form_tn_id?: string | null; lua_chon_rule?: (string | null)[] | null
+  // Ô nhập của câu trả lời ngắn: 'phieu_4o' = phiếu 4 ô của Bộ (bài phát hành từ đề thi, mig 202610011759). Thiếu/null = ô tự do.
+  kieu_nhap?: string | null
 }
 export type BaiLam = { id: string; bai_test_id: string; hoc_sinh_id: string; trang_thai: 'dang_lam' | 'da_nop'; nop_at: string | null; bien_the: number; bat_dau_at?: string | null }
 export type BaiLamCau = { id: string; bai_lam_id: string; bai_test_cau_id: string; dap_an_hs: unknown; verdict: string | null; diem: number | null; cham_boi: string | null }
@@ -153,7 +155,8 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
   }
   for (const c of caus) {
     ++thu_tu
-    if (CAP3 && c.loai_cau === 'tra_loi_ngan' && !formMap.has(c.ma_cau) && !(c.lua_chon && c.lua_chon.length)) mcqGap++
+    // Form đã được CHỌN TƯỜNG MINH (etFormByCau — GV chọn tay, hoặc đề thi gán vào buổi giữ trả lời ngắn theo K5) ⇒ không phải "thiếu MCQ"
+    if (CAP3 && c.loai_cau === 'tra_loi_ngan' && !formMap.has(c.ma_cau) && !(c.lua_chon && c.lua_chon.length) && !chDoc.etFormByCau?.[c.ma_cau]) mcqGap++
     const { row, warn } = snap(c, thu_tu, 1)
     if (warn) skipped.push(warn)
     if (row) rows.push(row)
@@ -216,6 +219,12 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
   const baiTest = bt as BaiTest
   const { error: e2 } = await supabase.from('bai_test_cau').insert(rows.map((r) => ({ ...r, bai_test_id: baiTest.id })))
   if (e2) throw e2
+  // Tài liệu GÁN TỪ ĐỀ THI (Giáo trình / BTVN có cau_hinh.deThi): ô trả lời ngắn 4 ký tự · câu dạng chờ không tính cho
+  // dạng nào · tên phần · bài trên lớp mở sẵn cả đề — làm ở Postgres, cùng một hàm với lượt thi (fn_de_thi_mo).
+  if ((doc.cau_hinh as { deThi?: unknown } | null)?.deThi) {
+    const { error: e3 } = await supabase.rpc('fn_de_thi_hoan_thien_bai_test', { p_bt: baiTest.id })
+    if (e3) throw e3
+  }
   // Cảnh báo (không chặn): btvn không có hạn ⇒ bài mở vĩnh viễn, staff cần biết để xử tay.
   const hanBao = !deadline && map.testLoai === 'btvn'
     ? 'Không tính được hạn nộp: lớp chưa có thời khoá biểu hiệu lực nên không xác định được buổi kế tiếp. Bài sẽ KHÔNG tự hết hạn.'
@@ -276,7 +285,11 @@ export async function getBaiTestFull(baiTestId: string): Promise<BaiTestFull> {
   if (baiTest.loai === 'giao_trinh') {
     const { data: ph } = await supabase.from('bai_test_dang_phat_hanh').select('ma_dang').eq('bai_test_id', baiTestId).limit(LIMIT)
     const openDangs = new Set(((ph ?? []) as { ma_dang: string }[]).map((r) => r.ma_dang))
-    caus = caus.filter((c) => c.ma_dang != null && openDangs.has(c.ma_dang))
+    // + câu mở LẺ (bai_test_cau_phat_hanh): đề thi gán làm bài trên lớp mở sẵn cả đề theo câu, kể cả câu chưa có dạng
+    // (K6) — cùng luật với RLS `_btc_trang_thai` (mở theo câu HOẶC theo dạng).
+    const { data: pc } = await supabase.from('bai_test_cau_phat_hanh').select('bai_test_cau_id').eq('bai_test_id', baiTestId).limit(LIMIT)
+    const openCaus = new Set(((pc ?? []) as { bai_test_cau_id: string }[]).map((r) => r.bai_test_cau_id))
+    caus = caus.filter((c) => openCaus.has(c.id) || (c.ma_dang != null && openDangs.has(c.ma_dang)))
   }
   return { baiTest, caus, baiLam, daLam }
 }
@@ -388,7 +401,7 @@ export async function traLoiCau(baiLamId: string, cau: BaiTestCau, dapAnHs: unkn
 
 // ── ET chế độ THI (giấu key) ─────────────────────────────────────────────────
 // Đề ET đã LỌC key (rpc security-definer). Câu: id/thu_tu/loai_cau/noi_dung/lua_chon/menh_de(chỉ noi_dung)/ma_dang/ly_thuyet/diem.
-export type ETCauDe = { id: string; thu_tu: number; loai_cau: string; noi_dung: string | null; lua_chon: string[] | null; anh_de: string | null; menh_de: { noi_dung: string }[] | null; ma_dang: string | null; ly_thuyet: string | null; diem: number; phan?: string | null }
+export type ETCauDe = { id: string; thu_tu: number; loai_cau: string; noi_dung: string | null; lua_chon: string[] | null; anh_de: string | null; menh_de: { noi_dung: string }[] | null; ma_dang: string | null; ly_thuyet: string | null; diem: number; phan?: string | null; kieu_nhap?: string | null }
 export async function getETDe(baiTestId: string): Promise<ETCauDe[]> {
   const { data, error } = await supabase.rpc('et_de', { p_bai_test: baiTestId })
   if (error) throw error
