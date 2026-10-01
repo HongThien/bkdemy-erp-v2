@@ -4237,7 +4237,12 @@ function parseSoThucTe(s) {
 }
 function tachDapSoThucTe(rawClean0) { // → {vals: Rat[], sep} hoặc null — dùng chung cho canon lẫn sinh nhiễu
   const rawClean = rawClean0.replace(/\s*\([^()]*\)\s*$/, '').trim() || rawClean0 // bỏ ghi chú trong ngoặc Ở CUỐI, vd "x=-3 (khi đó B=1)" — chỉ khi bỏ xong vẫn còn nội dung
-  const setM = rawClean.match(/^.*?(?:∈|\\in)\s*\\?\{([^{}\\]+)\\?\}$/) // ký hiệu tập hợp "n ∈ {-4;-2;0;2}" hoặc LaTeX "n \in \{-4,-6\}" — SET nên khi so sánh phải SẮP XẾP (khác cặp có thứ tự). [^{}\\] loại luôn dấu \ để nó KHÔNG bị nuốt vào group (greedy [^{}]+ trước đây ăn cả \ đứng trước \} đóng)
+  // ký hiệu tập hợp "n ∈ {-4;-2;0;2}" hoặc LaTeX "n \in \{-4,-6\}" (có tiền tố, .*? quét tới ∈/\in) HOẶC
+  // trần "{4;36}" (khảo sát 01/10 khối 9 T109030302-304) — nhánh trần bắt buộc CẢ CHUỖI đúng = "{...}", không
+  // cho .*? quét tự do, vì nếu cho phép thì nó khớp NHẦM vào dấu } ĐUÔI của 1 \dfrac{a}{b} trong chuỗi nhiều
+  // giá trị nối "\dfrac{3}{4};-\dfrac{3}{4}" (coi "{4}" cuối là cả set — đã bắt được qua regression test, xem
+  // DEVLOG 01/10). SET nên khi so sánh phải SẮP XẾP (khác cặp có thứ tự).
+  const setM = rawClean.match(/^.*?(?:∈|\\in)\s*\\?\{([^{}\\]+)\\?\}$/) || rawClean.match(/^\{([^{}\\]+)\}$/)
   if (setM) {
     const parts = setM[1].split(/[;,]/).map((p) => p.trim()).filter(Boolean); if (parts.length < 1 || parts.length > 4) return null
     const vals = parts.map(parseSoThucTe); if (vals.some((v) => !v)) return null

@@ -12883,3 +12883,45 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
   (xác nhận module graph không vỡ). **KHÔNG verify được đường click-through phát-hành-thật** (cần login
   GV/staff thật, không có sẵn trong phiên này) — nói rõ giới hạn này, không nhận là đã test UI đầy đủ.
 - Refresh schema.md (238 bảng, 19 view, 79 trigger, 425 function, 237 check). Chưa commit (chờ yêu cầu).
+
+## 2026-10-01 — CEO: "Check lớp 9, làm nốt MCQ, nhớ check cả phần giải tích"
+- Khảo sát khối 9 CẢ 2 nhánh (Đại + HGT/Hình giải tích, theo đúng phạm vi CEO đã chốt 20/09). Đại: 280 câu
+  tra_loi_ngan còn thiếu MCQ; HGT: 190 câu.
+- **Bắt 1 bug thật khi mở rộng engine cho T109030302/303/304** (đáp số dạng "{4;36}" — set TRẦN, không có
+  tiền tố "x∈"/"\in" như các ca trước): lần đầu thử nới regex bằng cách cho tiền tố ∈/\in optional
+  (`.*?(?:(?:∈|\\in)\\s*)?\\{...\\}$`) — **regression test lộ ra NGAY**: chuỗi nhiều giá trị nối bằng ";" mà
+  TẬN CÙNG bằng 1 phân số `\dfrac{a}{b}` (vd "\dfrac{3}{4};-\dfrac{3}{4}") bị khớp NHẦM — `.*?` quét tự
+  do tìm được cặp ngoặc CUỐI ({4}, mẫu số phân số thứ 2) rồi coi cả câu là "tập hợp {4}", sai hoàn toàn so
+  với giá trị gốc. Sửa bằng cách TÁCH 2 nhánh rõ ràng thay vì gộp 1 regex: nhánh có tiền tố (∈/\in, `.*?`
+  chỉ quét tới đó) giữ nguyên, nhánh set TRẦN bắt buộc CẢ CHUỖI đúng khớp `^\{...\}$` (không cho ký tự
+  nào trước dấu { mở) — loại hẳn khả năng khớp nhầm vào đuôi 1 biểu thức khác.
+  - **Quy trình bắt bug: viết script regression test riêng, chạy qua TOÀN BỘ câu ĐÃ GHI (nguon='ai')
+    scoped đúng theo ANSWER_DANG_LIST (không phải mọi câu trong dai_cau_form_tn — lần đầu quên lọc, báo
+    3509 mismatch toàn FALSE POSITIVE vì test nhầm câu thuộc TEXT_DANG/SPECIAL_DANG khác hàm) TRƯỚC khi
+    chạy pipeline ghi mới — phát hiện bug ở bước test, không phải sau khi đã ghi sai vào DB.**
+  - Regression sau khi sửa: 0 mismatch mới (147 mismatch còn lại đều là **artifact CŨ có từ trước phiên
+    này** — T107020303/T107020102/T107020103/T105040204/T111040301, xác nhận bằng cách chạy lại bản code
+    TRƯỚC khi sửa regex thì mismatch y hệt — không đụng, ngoài phạm vi việc hôm nay, DB vẫn giữ giá trị
+    gốc chưa bị ghi đè).
+- **Đại khối 9**: 1 dạng MỚI hoàn toàn T109030305 "Tìm GTLN-GTNN của P" (61/61 khớp) + T109030302/303/304
+  đã wire từ 20/09 giờ khớp thêm nhiều câu nhờ fix set trần (49/80, 33/38, 65/95) + 9 dạng residual (câu
+  mới nhập kho từ các dạng đã wire trước: T109030204, T109020403, T109020102, T109080102, T109090201,
+  T109030203, T109020203, T109090301, T109090401). Loại hẳn (đúng §1.5, không đổi so với trước):
+  T109030306 (toàn căn thức), T109010204 (tập điểm (x;y) nhiều cặp), T109110101/201/301/401 (tổng hợp/
+  hình học, đáp số lẫn văn bản+đơn vị).
+- **HGT khối 9 — LẦN ĐẦU có MCQ** (trước đây 0%, chưa từng khảo sát): 6 dạng — T309010103 Giải tam giác
+  vuông biết Sin/Cos/Tan (100%), T309010105 biết 2 cạnh (100%), T309010402 bài toán thực tế tam giác
+  không vuông (86%), T309010301 rút gọn biểu thức lượng giác (73%), T309010401 bài toán thực tế tam giác
+  vuông (62%), T309010102 biết cạnh góc vuông+góc nhọn (24%, phần còn lại lẫn căn thức — chấp nhận wire
+  vì vẫn ra MCQ đúng cho phần khớp). Loại: T309010101 (7%, hầu hết căn thức/đáp số ghép nhiều phần — dưới
+  ngưỡng, không wire).
+- Migration 202610011452_mcq_rule_khoi9_dai_apdung (nối T109030305 vào dai_mcq_rule) +
+  202610011452_mcq_rule_khoi9_hgt_apdung (nối 6 dạng vào hgt_mcq_rule) — cả 2 chỉ UPDATE ap_dung, không
+  rule mới.
+- Pipeline thật: Đại --list 243 câu → sinh 149, bỏ 94 (3 "máy≠kho" — y hệt 3 câu đã biết từ đợt trước,
+  vẫn đúng không ép ghi) → verify 149 OK 0 FAIL → ghi 149 dòng. HGT --kho hgt --list 163 câu → sinh 123,
+  bỏ 40 → verify 123 OK 0 FAIL → ghi 123 dòng. **Tổng 272 câu mới.**
+- **Khối 9 sau đợt này: Đại 1799/1947 (92.4%), HGT 123/191 (64.4%).**
+- npm run schema refresh. **Commit luôn** (Thùy đảo chính sách 21/09: cứ commit sau khi verify xong,
+  không cần hỏi) — gộp cùng commit batch khối-9-residual/toàn-kho/HGT-khối-12/cấp-3-mặc-định-MCQ từ
+  phiên trước (f65fb9a) đã nằm sẵn trên nhánh worktree-form-tn.
