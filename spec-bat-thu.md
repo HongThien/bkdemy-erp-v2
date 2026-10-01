@@ -88,6 +88,32 @@
   - Boss sinh lại sau 45 giây.
 - **Sẵn cho party (MMO):** thiên thạch đã nhắm từng người; máu boss nhân theo số người khi có máy chủ.
 
+### 3.0b Sổ Trùm — bản thiết kế 8 trùm (01/10, CHỜ CEO DUYỆT)
+
+Trang xem: https://claude.ai/artifact/2zWHd4mF6NAhX2UnVVzaDV
+
+- **Mỗi trùm dạy 1 kỹ năng:** đọc vùng đỏ → phản xạ → canh thời điểm → giữ chỗ đứng → chia việc → núp sau vật chắn → chuyển giai đoạn → tổng hợp.
+- **Luật chung:** có điểm yếu hệ (lý do đi bắt thú nhiều hệ) · thu phục được khi kiệt sức · máu nhân theo số người trong party.
+
+| Bậc | Trùm | Hệ | Dạy | Cơ chế riêng |
+|---|---|---|---|---|
+| Đầu đàn (đánh một mình) | Bạo Chúa Lửa (khủng long) — **đã có** | Lửa | đọc vùng đỏ | nổi giận 50% |
+| | Lôi Hổ | Điện | phản xạ (vồ lao thẳng) | xích sét giữa người đứng gần ⇒ giãn đội hình |
+| | Thần Ưng Bão Tố (đại bàng) | Thường/gió | canh thời điểm | bay 12 giây (không đánh được) ↔ đáp 10 giây |
+| Trùm vùng (2–4 người) | Băng Long | Băng | giữ chỗ đứng | sàn băng trượt, pha bay thả bom |
+| | Rùa Cổ Thụ | Cỏ | chia việc | hoa hồi máu mọc ở mép sân, phải phá |
+| | Kình Ngư Biển Sâu (cá voi) | Nước | núp sau vật chắn | sóng thần cả sân, đá chắn vỡ dần |
+| Huyền thoại (bắt buộc party) | Phượng Hoàng | Lửa | chuyển giai đoạn | gục ⇒ trứng lửa, 20 giây phải phá |
+| | Long Vương | đổi hệ Lửa → Băng → Điện | tổng hợp | 3 pha, phải đổi thú theo hệ |
+
+- **Chờ CEO:**
+  1. Duyệt danh sách (dự trữ: Sư Tử Vàng · Voi Ma Mút · Mãng Xà · Khủng Long Ba Sừng).
+  2. Thứ tự làm. Đề xuất Lôi Hổ → Băng Long, vì cùng nhà mô hình N-hance.
+  3. Cá voi: tự làm hay đổi thành Vua Bạch Tuộc.
+  4. Mua thử mô hình.
+  5. Thêm hệ Đất? Hiện chưa hệ nào đánh mạnh vào Điện.
+- Số liệu (máu, sát thương, thưởng, giờ sinh lại) để bàn sau.
+
 ### 3.1 Đo đám đông (01/10, `?nguoi=100`, máy bàn ở nhà — CHƯA phải iPad)
 
 - 100 người chơi giả (mỗi người 1 thú đồng hành), mỗi máy thấy 10.
