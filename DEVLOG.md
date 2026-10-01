@@ -34188,3 +34188,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - mẫu gốc CEO nhắc tên ⇒ PHẢI xem ảnh trước khi dựng và trước khi diễn giải góp ý;
   - góp ý nào hiểu được 2 chiều thì gửi kèm ảnh tham chiếu để CEO xác nhận trước khi giao làm, thay vì đoán.
 - Đã bỏ dòng "phủ lông kín từ gốc" khỏi skill `lam-thu` (bài học sai).
+
+## 2026-10-02 — [Game] Thiên Kình bản 4 (BatThu `thu-de-thuong` @ `eddb531`) + giao sửa 4b
+
+- **Bản 4:**
+  - mặt cắt bè ngang đúng số yêu cầu: đầu 1,50–1,61 · ngực 1,34–1,39 · giữa đuôi 1,20 · cuống đuôi dẹt dần;
+  - cao bằng 93% bản 3; nóc đầu phẳng, mõm chữ U, mắt ra mép đầu, vây hạ xuống mép sườn.
+  - Số đo: 45,7k tam giác (Đẹp) / 30,6k (Nhẹ). 22 động tác × 2 chế độ chạy 215 s, không NaN, không xuyên khối.
+  - Tự chấm 65–70%, IoU nhìn ngang 40%.
+- **Chưa đạt:** nhìn từ trên, đầu chỉ rộng bằng ngực ⇒ chưa đúng ý CEO "mở rộng sang 2 bên".
+  - Giao 4b: đầu rộng 1,15–1,25× ngực tại mép miệng, eo nhẹ ở cổ, không tăng chiều cao.
+- Luồng cá voi mất tab Browser pane giữa chừng (có thể do luồng ngựa), tự mở tab mới, không đụng tab của luồng kia.
