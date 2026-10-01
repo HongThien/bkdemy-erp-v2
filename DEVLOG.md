@@ -34478,3 +34478,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ### 02/10 — [Giao diện] Đơn 7-0: chọn hướng bản đồ phiêu lưu (Thùy: màn đấu để sau, world map trước, cần đơn để chọn)
 - design/DON-HANG-SKIN-HS.md: 4 hướng (A đảo trời đêm sao · B bản đồ giấy da · C mô hình đồ chơi · D bàn cờ phiêu lưu) × 3 tầng (thế giới 8 lục địa ·
   lục địa 6 mốc · chặng 7 trạm, cùng nội dung + cùng trạng thái cờ/quái/sương để so công bằng) = 12 ảnh. Thay mục A Đơn 7. Màn đấu (Đơn 8 + UI công tắc/Tối giản) tạm dừng.
+
+### 02/10 — [Giao diện] Công tắc "Hiệu ứng game" + style Tối giản (Thùy: nhiều đối tượng ⇒ cần cơ chế tắt bật; Tối giản đơn sắc, không trang trí)
+- Tấm Giao diện (nút Hình nền ở Home) thêm mục Hiệu ứng game: Bật (bản đồ phiêu lưu, đánh quái) / Tắt (bài dạng thường). Lưu theo tài khoản: luuGiaoDien gọi
+  fn_hs_luu_giao_dien rồi fn_hs_luu_hieu_ung_game (mig 202610020037). Tự luyện chỉ mở bản đồ khi: cờ phieuluu bật · hieu_ung_game ≠ false · style có the3d (HocSinhApp banDoBat).
+- Style Tối giản (skin/styles/toiGian.ts): dựng lại từ bản thử 28/09 (commit 81fde9e2) nhưng gọn hơn — 1 nền trơn, nhấn = màu chữ, huy hiệu đơn sắc, không blur.
+  16 icon nét mảnh tự vẽ (public/bk-ui/hs/skin/toi_gian/o_*.svg) dùng làm MẶT NẠ tô màu chữ (Skin.anhOMask mới; HomeHS912 IconO) ⇒ đúng cả sáng/tối.
+  Không có bản đồ phiêu lưu. 7 em đã chọn toi_gian từ bản thử cũ tự về đúng style này.
+- Kiểm: hs.html?demo=912 (dev) 1180×820 — Tối giản sáng + tối, mục Hiệu ứng game hiện; 0 lỗi console; tsc + check:style-hs (16 ô đủ icon) + build:hs ✔.
+  CHƯA bấm Lưu thật (trang demo vẫn gọi DB thật, không có tài khoản HS thử).

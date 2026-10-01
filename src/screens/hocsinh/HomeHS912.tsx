@@ -130,6 +130,13 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
   )
 }
 
+// Icon ô: ảnh thường, hoặc MẶT NẠ tô màu chữ khi style đơn sắc (Skin.anhOMask — Tối giản). Ảnh riêng của ô (c.anh, vd bậc Rank) luôn là ảnh thường.
+function IconO({ src, mask, className }: { src: string; mask: boolean; className: string }) {
+  if (!mask) return <img src={src} alt="" className={`${className} object-contain`} />
+  const m = `url(${src}) center / contain no-repeat`
+  return <span aria-hidden className={`block ${className}`} style={{ background: 'var(--sk-ink)', WebkitMask: m, mask: m }} />
+}
+
 // LƯỚI Ô khổ dọc — 4 cột ô nhỏ như ảnh gốc (điện thoại), iPad dọc cùng lưới nhưng ô to
 function LuoiDoc({ cards, skin }: { cards: HomeCard[]; skin: Skin }) {
   if (cards.length === 0) return null
@@ -141,7 +148,7 @@ function LuoiDoc({ cards, skin }: { cards: HomeCard[]; skin: Skin }) {
           <button key={c.id} disabled={c.disabled} onClick={c.onClick}
             className={`relative flex min-h-[104px] flex-col items-center justify-start gap-1 px-1 pb-2 pt-2.5 text-center transition md:min-h-[168px] md:gap-1.5 md:px-2 md:pt-4 ${c.disabled ? 'opacity-50' : 'active:scale-[0.97]'}`} style={THE}>
             {anh
-              ? <img src={anh} alt="" className="h-11 w-11 object-contain md:h-[76px] md:w-[76px]" />
+              ? <IconO src={anh} mask={!c.anh && !!skin.anhOMask} className="h-11 w-11 md:h-[76px] md:w-[76px]" />
               : <span className="text-[24px] leading-none md:text-[36px]" style={skin.dauThayIcon ? { color: 'var(--sk-acc)' } : undefined} aria-hidden>{skin.dauThayIcon ?? c.icon ?? c.emoji ?? '•'}</span>}
             <span className="text-[12px] font-bold leading-tight md:text-[16px]" style={HEAD}>{c.ten}</span>
             <span className="line-clamp-2 text-[10px] leading-snug md:text-[12.5px]" style={{ color: mauPhu(c), fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500 }}>{c.sub}</span>
@@ -287,7 +294,7 @@ function TheTheGioi({ p, skin, to }: { p: HomeProps; skin: Skin; to?: boolean })
   const so = (tt?.so ?? 0) + (g?.loi_moi ?? 0) + choKhoe
   return (
     <button onClick={p.onTheGioi} className={`relative flex w-full items-center gap-3 text-left active:scale-[0.99] ${to ? 'min-h-[92px] px-5 py-3.5' : 'px-3.5 py-3'}`} style={THE}>
-      {anh ? <img src={anh} alt="" className={`${to ? 'h-14 w-14' : 'h-12 w-12'} shrink-0 object-contain`} /> : <span className="text-[30px] leading-none" aria-hidden>🌏</span>}
+      {anh ? <IconO src={anh} mask={!!skin.anhOMask} className={`${to ? 'h-14 w-14' : 'h-12 w-12'} shrink-0`} /> : <span className="text-[30px] leading-none" aria-hidden>🌏</span>}
       <span className="min-w-0 flex-1">
         <span className={`block font-bold ${to ? 'text-[19px]' : 'text-[16px]'}`} style={HEAD}>Thế giới BK</span>
         <span className="block truncate text-[12px] italic leading-snug" style={{ color: 'var(--sk-acc)' }}>Xem học sinh BK đang khoe gì nào!</span>
@@ -398,7 +405,7 @@ function LuoiNgang({ cards, skin }: { cards: HomeCard[]; skin: Skin }) {
           <button key={c.id} disabled={c.disabled} onClick={c.onClick}
             className={`relative flex min-h-[148px] flex-col items-center justify-center gap-1 px-2 py-3 text-center transition xl:min-h-[176px] xl:gap-1.5 xl:px-3 xl:py-4 ${c.disabled ? 'opacity-50' : 'hover:-translate-y-0.5 active:scale-[0.98]'}`} style={THE}>
             {anh
-              ? <img src={anh} alt="" className="h-16 w-16 object-contain xl:h-[84px] xl:w-[84px]" />
+              ? <IconO src={anh} mask={!c.anh && !!skin.anhOMask} className="h-16 w-16 xl:h-[84px] xl:w-[84px]" />
               : <span className="text-[40px] leading-none" style={skin.dauThayIcon ? { color: 'var(--sk-acc)' } : undefined} aria-hidden>{skin.dauThayIcon ?? c.icon ?? c.emoji ?? '•'}</span>}
             <span className="text-[15px] font-bold leading-tight xl:text-[17px]" style={HEAD}>{c.ten}</span>
             <span className="text-[12px] leading-snug xl:text-[13px]" style={{ color: mauPhu(c), fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500 }}>{c.sub}</span>
@@ -418,7 +425,7 @@ function ChonGiaoDien({ gd, setGd, heThongToi, nutChinh, onNutChinh, onDong, dan
   const skin = laySkin(gd.skin)
   const cd = cheDoThat(skin, gd.che_do, heThongToi)
   const khoaCheDo = skin.cheDo.length === 1
-  const chonSkin = (s: Skin) => setGd({ skin: s.id, che_do: gd.che_do, hinh_nen: s.hinhNen.some((h) => h.id === gd.hinh_nen) ? gd.hinh_nen : s.hinhNen[0].id })
+  const chonSkin = (s: Skin) => setGd({ ...gd, skin: s.id, hinh_nen: s.hinhNen.some((h) => h.id === gd.hinh_nen) ? gd.hinh_nen : s.hinhNen[0].id })
   const CHE_DO: { id: CheDo; ten: string }[] = [{ id: 'sang', ten: 'Sáng' }, { id: 'toi', ten: 'Tối' }, { id: 'he_thong', ten: 'Theo máy' }]
   const nut = (chon: boolean): CSSProperties => ({ border: `2px solid ${chon ? 'var(--sk-acc)' : 'var(--sk-line)'}`, background: chon ? 'var(--sk-surface2)' : 'transparent' })
 
@@ -464,6 +471,22 @@ function ChonGiaoDien({ gd, setGd, heThongToi, nutChinh, onNutChinh, onDong, dan
                   <button key={c.id} onClick={() => setGd({ ...gd, che_do: c.id })} className="flex-1 rounded-xl px-2 py-2 text-[13.5px] font-semibold" style={nut(gd.che_do === c.id)} aria-pressed={gd.che_do === c.id}>{c.ten}</button>
                 ))}
               </div>}
+        </section>
+
+        <section className="flex flex-col gap-2">
+          <p className="text-[12px] font-bold uppercase tracking-[0.08em]" style={{ color: 'var(--sk-muted)' }}>Hiệu ứng game</p>
+          <div className="flex gap-2">
+            {([[true, 'Bật', 'Bản đồ phiêu lưu, đánh quái'], [false, 'Tắt', 'Làm bài dạng thường, gọn']] as const).map(([b, ten, mo]) => {
+              const chon = (gd.hieu_ung_game ?? true) === b
+              return (
+                <button key={ten} onClick={() => setGd({ ...gd, hieu_ung_game: b })} className="flex-1 rounded-xl px-3 py-2 text-left" style={nut(chon)} aria-pressed={chon}>
+                  <span className="block text-[13.5px] font-semibold">{ten}</span>
+                  <span className="block text-[11.5px] leading-tight" style={{ color: 'var(--sk-muted)' }}>{mo}</span>
+                </button>
+              )
+            })}
+          </div>
+          {!skin.the3d && <p className="text-[12px]" style={{ color: 'var(--sk-muted)' }}>Phong cách {skin.ten} không có bản đồ phiêu lưu — Tự luyện luôn là bài dạng thường.</p>}
         </section>
 
         <section className="flex flex-col gap-2">

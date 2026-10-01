@@ -10,10 +10,14 @@ export async function giaoDienCuaToi(): Promise<GiaoDien | null> {
 }
 
 // Tạo/đổi — trigger ở DB tự ghi log (actor + ts + cũ/mới). Lần gọi đầu = xong hướng dẫn lần đầu.
+// Có hieu_ung_game ⇒ lưu thêm công tắc (hàm riêng, mig 202610020037 — chỉ đổi được khi dòng đã có, nên gọi SAU) và trả bản đầy đủ từ DB.
 export async function luuGiaoDien(g: GiaoDien): Promise<GiaoDien> {
   const { data, error } = await supabase.rpc('fn_hs_luu_giao_dien', { p_skin: g.skin, p_che_do: g.che_do, p_hinh_nen: g.hinh_nen })
   if (error) throw error
-  return data as GiaoDien
+  if (g.hieu_ung_game === undefined) return data as GiaoDien
+  const r = await supabase.rpc('fn_hs_luu_hieu_ung_game', { p_bat: g.hieu_ung_game })
+  if (r.error) throw r.error
+  return r.data as GiaoDien
 }
 
 export type EloMon = { mon: string; elo: number; hang?: number; so_hs?: number }

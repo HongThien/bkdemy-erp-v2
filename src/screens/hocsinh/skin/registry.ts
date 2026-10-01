@@ -6,6 +6,7 @@
 // ============================================================================
 import type { Skin, CheDo, HinhNen, SkinId } from './kieu'
 import { RPG } from './styles/rpg'
+import { TOI_GIAN } from './styles/toiGian'
 export type { Skin, SkinId, CheDo, GiaoDien, HinhNen, Mau } from './kieu'
 
 // Khối dùng Home mới + tự chọn skin. Thùy 28/09 tối: MỌI skin mở cho MỌI em, không giới hạn tuổi ("lớp 6 vẫn thích anime")
@@ -13,7 +14,8 @@ export type { Skin, SkinId, CheDo, GiaoDien, HinhNen, Mau } from './kieu'
 export const KHOI_CHON_SKIN = new Set(['6', '7', '8', '9', '10', '11', '12'])
 
 // Thùy 29/09: 4 skin thử (Tối giản · Đấu trường · Y2K · Soft Hàn) đã XOÁ — chỉ Anime RPG dùng thật; style mới thêm vào đây.
-export const SKINS: Skin[] = [RPG]
+// Thùy 02/10: dựng lại Tối giản (đơn sắc, nền trơn) cho em không thích rối mắt.
+export const SKINS: Skin[] = [RPG, TOI_GIAN]
 
 export const SKIN_MAC_DINH: SkinId = 'rpg' // Thùy 29/09: chỉ Anime RPG dùng thật — em chưa chọn cũng ra RPG
 

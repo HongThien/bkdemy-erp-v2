@@ -37,7 +37,7 @@ import { listBaiTraCuaToi, demBaiTraChuaXem, type BaiTraHS as BaiTraRow } from '
 import BaiTraHS, { ngayNgan } from './BaiTraHS'
 import HomeHS, { type HomeCard } from './HomeHS'
 import HomeHS912 from './HomeHS912'
-import { KHOI_CHON_SKIN, type GiaoDien } from './skin/registry'
+import { KHOI_CHON_SKIN, laySkin, type GiaoDien } from './skin/registry'
 import { useApSkinGoc, GD_MAC_DINH, GD_CAP1, ManHS, DauTrangHS, TheHS, TrongHS, MAU, THE, THE_TRON, HEAD } from './skin/KhungHS'
 import { giaoDienCuaToi, home912, type Home912 } from '../../lib/giaodien_hs'
 import DanhSachHS, { type DsRow } from './DanhSachHS'
@@ -445,6 +445,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Style (skin) của em áp cho TOÀN app, không chỉ Home (Thùy 29/09): biến --sk-* gắn lên <html>, mọi màn đọc qua skin/KhungHS.
   // Cấp 1 chưa có skin riêng ⇒ tạm Soft Hàn sáng.
   useApSkinGoc(nhom912 ? (giaoDien ?? GD_MAC_DINH) : GD_CAP1)
+  // Tự luyện mở BẢN ĐỒ PHIÊU LƯU chỉ khi: cờ bật · em BẬT hiệu ứng game (hs_giao_dien.hieu_ung_game, Thùy 02/10) · style có bản đồ (Tối giản không có).
+  // Còn lại ⇒ bài dạng thường. Hàm (không phải hằng) vì monChon khai sau; chỉ gọi trong xử lý bấm.
+  const banDoBat = () => { const g = giaoDien ?? GD_MAC_DINH; return phieuLuuBat() && g.hieu_ung_game !== false && !!laySkin(g.skin).the3d }
   // Thùy 24/09: TRƯỚC chỉ kiểm 1 lần lúc mở app ⇒ học thuật chốt dạng đuổi SAU lúc em mở app (vụ Mạnh Duy 24/09 18:17) thì card
   // 'Học từ đầu' không hiện tới khi mở lại app. Giờ kiểm lại MỖI LẦN về màn chính (direct/khu = null) + khi app quay lại từ nền.
   // Lỗi mạng giữ nguyên trạng thái cũ (không tắt card đang hiện vì 1 lần gọi hỏng).
@@ -492,7 +495,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 
   if (direct === 'tu_luyen_chon') return <ChonLoaiTuLuyen gioiTinh={gt}
     onTongHop={() => { setChuDeDang(null); setDirect('tu_luyen') }}
-    onChuDe={() => setDirect(giaoDien?.skin && monChon && phieuLuuBat() ? 'phieu_luu' : 'tu_luyen_chu_de_ds')}
+    onChuDe={() => setDirect(giaoDien?.skin && monChon && banDoBat() ? 'phieu_luu' : 'tu_luyen_chu_de_ds')}
     onThuThach={() => setDirect('thu_thach')}
     onRank={() => { setTuHoSo(false); setTuHome(false); setDirect('rank') }}
     onNhiemVu={() => { setTuHome(false); setDirect('nhiem_vu') }}
@@ -653,7 +656,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
           return {
             id: k.id, ten: k.ten, icon: k.icon, sub, subMau, badge, disabled: !!k.sapCo, nhom: KHU_CHOI.has(k.id) ? 'choi' : 'hoc', ...KIT_O[k.id], ...(k.sapCo ? { ill: 'mock_exam_locked', emoji: undefined, doodle: 'Sắp ra mắt! Hãy chờ nhé!', tone: 'gray' as const } : {}),
             onClick: k.sapCo ? undefined : k.direct
-              ? () => setDirect(k.id === 'tu_luyen' ? (monChon && phieuLuuBat() ? 'phieu_luu' : 'tu_luyen_chon') : (k.id as 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi'))
+              ? () => setDirect(k.id === 'tu_luyen' ? (monChon && banDoBat() ? 'phieu_luu' : 'tu_luyen_chon') : (k.id as 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi'))
               : () => { setKhu(k.id); setTab('chua') },
             ...khoaThieuKho(k.id),
             ...(oGami(k.id) ?? {}),

@@ -7,9 +7,10 @@ import type { BangMau3D } from './the3d/kieuMau'
 
 
 // Thêm style mới: thêm id ở đây + file skin/styles/<id>.ts + đăng ký trong registry.ts + migration nới CHECK hs_giao_dien.skin.
-export type SkinId = 'rpg'
+export type SkinId = 'rpg' | 'toi_gian'
 export type CheDo = 'sang' | 'toi' | 'he_thong'
-export type GiaoDien = { skin: SkinId; che_do: CheDo; hinh_nen: string }
+// hieu_ung_game: công tắc của em (mig 202610020037, mặc định bật) — tắt ⇒ không bản đồ phiêu lưu / màn đấu. Không có trường (bản cũ) = bật.
+export type GiaoDien = { skin: SkinId; che_do: CheDo; hinh_nen: string; hieu_ung_game?: boolean }
 
 export type Mau = {
   bg: string; surface: string; surface2: string; ink: string; muted: string; line: string
@@ -63,6 +64,8 @@ export type Skin = {
   // id Ô CHỨC NĂNG → icon vẽ riêng của style. MỌI ô trong KHU/KHU_CAP2 (HocSinhApp) phải có — ô mới thêm mà thiếu icon
   // thì `npm run check:style-hs` báo, và app tạm hiện dauThayIcon.
   anhO?: Record<string, string>
+  // true ⇒ icon ô là nét đơn sắc dùng làm MẶT NẠ, tô bằng màu chữ của style (style đơn sắc: 1 bộ icon đúng cả sáng lẫn tối)
+  anhOMask?: boolean
   // Ô thiếu icon ⇒ hiện DẤU này (màu nhấn) thay vì emoji — emoji lẫn icon vẽ tay trông lệch (Thùy 28/09).
   dauThayIcon?: string
   trangTri?: { goc?: string; gach?: string } // hoa văn góc thẻ "Tiếp theo" + gạch phân cách dưới đầu trang
