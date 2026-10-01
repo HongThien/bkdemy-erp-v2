@@ -124,7 +124,7 @@ màn làm bài (BTVN/ET/giáo trình) · Home cấp 1 (nhập về UI chung).
 ## 5. Hai style
 
 - **Anime RPG** (đang dùng) + **Thị trấn** (đang làm). Cả 2 phải đủ bộ hình phiêu lưu ở §4.4 thì mới tính là "xong".
-- Lo-fi, Khối vuông: sau V1.
+- Lo-fi, Khối vuông: sau V1. (Khối vuông — cảm hứng Minecraft: đơn ChatGPT đã soạn 01/10 `design/DON-HANG-STYLE-KHOI.md`, kế hoạch build `spec-giao-dien-hs.md` §10; Thùy 01/10 giữ Thị trấn là style 2 của V1.)
 
 ## 6. Góp ý / báo lỗi cho HS
 

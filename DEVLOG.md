@@ -33811,3 +33811,19 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - hệ của Cừu Mây TỰ ĐẶT là `nuoc`.
 - **Phát hiện phụ:** `npm run kiem` của BatThu hỏng vì `tools/kiem-luat.mjs` không có trong repo, kể cả trên `origin/main` (máy nhà quên commit?). `tsc` sạch.
 - ⚠ Thư mục BatThu máy công ty đang đứng ở nhánh `thu-de-thuong`.
+
+## 2026-10-01 [Giao diện] (máy `BK_v2`, tiếp) — Soạn style 2 "Khối vuông" (cảm hứng Minecraft): đơn ChatGPT + kế hoạch build
+- Thùy: *"dựa vào chủ đề game anime làm một chủ đề thứ 2 tương tự, là chủ đề về minecraft — tạo các file MD cần thiết"* + 1 ảnh mẫu (hồ + rừng khối ban ngày).
+- **Mới:** `design/DON-HANG-STYLE-KHOI.md` — §0 bảng 7 quyết định thiết kế (Claude đề xuất) · cách gửi · PHONG CÁCH CHUNG · **K1** (4 ảnh toàn cảnh
+  + 27 hình: 3 nền × 2 khổ · 2 nhân vật · 15 icon ô · 2 banner · 2 trang trí) · **K2** (bản đồ + quái, CÙNG tên Đơn 6) · bảng đổi tên · 3 câu chờ Thùy.
+  Ảnh tham chiếu `design/handoff/hs-skin-khoi-v1/reference/` (ảnh mẫu Thùy + chụp màn chính iPad/điện thoại + màn Nhiệm vụ từ `?xem=gami`).
+  `spec-giao-dien-hs.md` §10 = token + 6 bước build + 4 lỗ hợp đồng style. Đơn 2 cũ (`DON-HANG-SKIN-HS.md`) gắn nhãn ĐÃ THAY, không xoá.
+- **Phát hiện khi soạn:** ① Đơn 2 cũ ghi "font pixel mất dấu tiếng Việt" — đo Google Fonts CSS (subset `U+1EA0-1EF9`) + chụp thử: Press Start 2P,
+  Pixelify Sans, Silkscreen, Jersey 10, Tiny5 mất dấu; **Handjet, VT323, Bungee đủ dấu** ⇒ chọn Handjet cho tiêu đề. ② `spec-v1-app-hs.md` §5
+  đang ghi style 2 V1 = Thị trấn, Khối vuông "sau V1" ⇒ hỏi Thùy (câu ① cuối file đơn). ③ 189 chỗ bo tròn gõ cứng trong màn HS ⇒ style vuông cần
+  biến `--sk-radius-pill` (ghi ở §10 bước 4).
+- (01/10 tiếp) Thùy trả lời 3 câu: ① style 2 của V1.0 vẫn **Thị trấn** ⇒ Khối vuông = style 3, dựng code SAU V1 (đơn gửi ChatGPT lúc nào cũng được)
+  · ② hình gamification **giữ bộ chung** · ③ **chưa cần bản tối**. Đã ghi vào đơn, `spec-giao-dien-hs.md` §10, `STYLE-HS.md`, `spec-v1-app-hs.md` §5.
+- (01/10 tiếp) Thùy gửi ảnh nền muốn dùng: thung lũng hoa anh đào khối lúc hoàng hôn ⇒ **nền mặc định `anh_dao`** (lưu `khong_khi_anh_dao.jpg`),
+  giữ `ho_rung`, bỏ `dong_co` (gần giống anh đào), giữ `tuyet` cho 3 nền khác màu rõ. Bảng màu thêm hồng anh đào / trời hoàng hôn. Ảnh mẫu có
+  Sniffer (sinh vật Minecraft) ⇒ đơn ghi rõ KHÔNG vẽ con vật đó, chỉ lấy không khí.
