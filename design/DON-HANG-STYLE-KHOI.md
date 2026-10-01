@@ -22,11 +22,12 @@
 | # | Vấn đề | Chọn | Vì sao |
 |---|---|---|---|
 | 1 | Tên style trong app | **"Khối vuông"** (id `khoi`), dòng phụ "giống: Minecraft · Roblox" | Minecraft là thương hiệu của Mojang/Microsoft. App chỉ nêu tên để so sánh, như RPG ghi "Genshin · Star Rail" |
-| 2 | Mức "giống Minecraft" | **Giống CHẤT (thế giới khối vuông, voxel), KHÔNG giống ĐỒ** | Không Steve/Alex, Creeper, Zombie, Enderman, slime khối xanh, không texture cỏ-đất-đá, logo, font, vật phẩm (bàn chế tạo, cuốc kim cương…) của Minecraft. HS nhận ra là nói trung tâm copy (luật chung của mọi đơn) |
+| 2 | Mức "giống Minecraft" | **Thùy 01/10: giống Minecraft NHẤT CÓ THỂ, từ khung cảnh tới vật phẩm, mà không vi phạm bản quyền** ⇒ giống tối đa về **CÁCH VẼ** (khối lập phương phủ texture pixel 16×16, vật phẩm là sprite pixel như ô túi đồ, giao diện kiểu túi đồ xám vát), KHÔNG chép **TỪNG HÌNH** | Cách vẽ (pixel art, voxel, ô túi đồ) không ai giữ bản quyền — Terraria, Stardew và hàng trăm game khối vuông đều dùng. Cái bị bảo vệ là từng hình cụ thể: texture/sprite vẽ y nguyên, nhân vật & sinh vật riêng (Steve, Creeper, Sniffer…), logo, font, vài đồ chỉ Minecraft có (bàn chế tạo, TNT…). Danh sách ĐƯỢC / CẤM nằm trong PHONG CÁCH CHUNG |
 | 3 | Sáng hay tối | **Style SÁNG** (chỉ chế độ sáng) — Thùy 01/10: chưa cần bản tối · **nền mặc định = thung lũng hoa anh đào lúc hoàng hôn** (ảnh Thùy chọn) | RPG chỉ có nền tối ⇒ 2 style phủ 2 nhu cầu. Ảnh mẫu Thùy gửi là ban ngày. Bản đêm (hang mỏ) để sau |
 | 4 | Font | Tiêu đề **Handjet** đậm (chữ pixel) · chữ thường **Baloo 2** | Đơn 2 cũ ghi "font pixel mất dấu tiếng Việt". Thử thật 01/10: Press Start 2P, Pixelify Sans, Silkscreen mất dấu; **Handjet, VT323, Bungee đủ dấu**. Handjet ra chất pixel mà vẫn dễ đọc |
-| 5 | Dáng thẻ / nút | **"Khối"**: góc vuông, viền tối 3px, vát sáng trên-trái + tối dưới-phải như viên gạch nổi. Nền thẻ = tấm ván/giấy da sáng, hơi trong | Ngôn ngữ khối. Thẻ phải tự đọc được trên nền ảnh |
-| 6 | Nhân vật | 2 nhà thám hiểm khối vuông TỰ THIẾT KẾ + bạn đồng hành (cáo / cú) | Hợp đồng style có chỗ `nhanVat {nam, nu}` — Home ngang đứng nửa trái như RPG |
+| 5 | Dáng thẻ / nút | **Kiểu TÚI ĐỒ game khối**: tấm xám đá vát nổi (sáng trên-trái, tối dưới-phải), viền đen 2px, ô con lõm xám đậm, nút xanh cỏ chữ trắng bóng, thanh tiến độ = thanh kinh nghiệm xanh lá chia vạch | Giao diện túi đồ là dấu hiệu nhận ra "game khối" mạnh nhất sau khung cảnh. Hình chữ nhật vát + ô lõm là hình học cơ bản, không phải tài sản riêng |
+| 6 | Nhân vật | 2 nhà thám hiểm **tỉ lệ người khối** (đầu lập phương, thân + tay chân khối, mặt pixel) với **trang phục tự thiết kế** + bạn đồng hành (cáo / cú) | Hợp đồng style có chỗ `nhanVat {nam, nu}`. Tỉ lệ người khối là kiểu chung của thể loại; cái phải khác là "skin": không áo xanh ngọc + quần xanh dương + tóc nâu (Steve), không áo xanh lá + tóc cam (Alex) |
+| 8 | Vật phẩm (icon ô) | **Đồ cầm tay = sprite pixel 16×16 phóng to** (như vật phẩm trong ô túi đồ) · **đồ dạng khối = khối 3/4 phủ texture pixel** (rương, giường, cửa) · chọn đồ vật đời thường quen thuộc của thể loại: sách, sách + bút lông, đèn lồng, rương, cuốc, la bàn, đồng hồ, bản đồ, ngọc, khiên, thang, giường | Đúng cách Minecraft vẽ đồ ⇒ HS nhìn là thấy "Minecraft"; nhưng mỗi sprite tự vẽ, không vẽ lại điểm ảnh y hệt |
 | 7 | Bản đồ + quái (K2) | **CÙNG tên vùng đất + tên quái với Đơn 6 RPG**, chỉ khác hình | DB gán `biome` / `loai_quai` cố định cho từng chủ đề / cụm ⇒ đổi style chỉ đổi thư mục hình (`spec-v1-app-hs.md` §4.4) |
 
 ---
@@ -53,38 +54,52 @@
 
 ```
 PHONG CÁCH CHUNG — style "Khối vuông" của app học sinh BK Academy (trung tâm dạy thêm Toán, học sinh lớp 3–12)
-Không khí:   thế giới KHỐI VUÔNG (voxel) đẹp như game khối vuông chạy shader, cảnh CHÍNH = THUNG LŨNG HOA ANH ĐÀO LÚC HOÀNG HÔN
-             (ảnh khong_khi_anh_dao.jpg): cây anh đào khối tán hồng, cánh hoa hồng bay lả tả, trời pastel hồng-cam-tím, nắng chiều
-             vàng hồng, dòng sông xanh uốn qua thung lũng, đồi cỏ khối xanh tươi rải hoa hồng. Bóng đổ mềm, ánh sáng ấm. Tươi, mơ mộng,
-             phiêu lưu, thân thiện. Ảnh đính kèm CHỈ để lấy không khí, màu, ánh sáng — KHÔNG chép nguyên cảnh, KHÔNG vẽ con vật khối
-             xanh-đỏ trong ảnh (sinh vật Sniffer của Minecraft).
-THIẾT KẾ GỐC (bắt buộc): KHÔNG vẽ Steve, Alex, Creeper, Zombie, Skeleton, Enderman, slime khối xanh hay bất kỳ nhân vật / quái /
-             vật phẩm / texture / logo / font nhận ra được của Minecraft hay Roblox. Khối có texture TỰ THIẾT KẾ, đơn giản.
-             Học sinh nhìn ra là đồ của game khác thì coi như hỏng.
-Bảng màu:    hồng anh đào #f5a9c8 / #e57fa8 · trời hoàng hôn #f7c6a3 → #c9a7e8 · nắng #ffe9c7 · cỏ #6dbb45 / #3f7d26 · đất #a8693a
-             · trời ngày #8ecbf1 → #cfe9fb · gỗ ván #c8a46b / #9b7440 · đá #8e8e8e / #5f5f5f
-             · nước #2c8fd6 → #47c1c9 · quặng ngọc #3fd4b8 · vàng #f2c94c · đỏ #e04b3c · viền khối #1e1e1e
-             · chữ tối #1f2328 · chữ phụ #4b5563.
-Thẻ:         "KHỐI": góc VUÔNG (không bo), viền tối #1e1e1e dày 3px, mặt có VÁT sáng 3px ở cạnh trên-trái và tối 3px ở cạnh dưới-phải
-             như viên gạch nổi. Nền thẻ = tấm giấy da / ván gỗ SÁNG #f6efdf ~92% đục (nhìn xuyên nhẹ tranh nền). Khung gần VUÔNG —
-             KHÔNG thẻ dẹt trải ngang. Dải tiêu đề thẻ (khi có) = tấm ván gỗ #9b7440, chữ trắng có bóng đen 2px.
-Nút:         nút chính = khối cỏ xanh #5fa83a (mép trên có dải cỏ sẫm), chữ trắng bóng đen 2px; nút phụ = khối đá xám sáng. Bấm = lún 2px.
-             Thanh tiến độ = dãy Ô VUÔNG nhỏ liền nhau (đầy = xanh lá, chưa đầy = xám). Badge số = ô VUÔNG đỏ #e04b3c chữ trắng.
-Chữ:         tiêu đề + số to = font Handjet đậm (chữ pixel, đủ dấu tiếng Việt) · chữ thường = Baloo 2. KHÔNG chữ viết tay, KHÔNG Pacifico,
-             KHÔNG Press Start 2P / Pixelify / Silkscreen (mất dấu). Chữ chính ≥ 15px ở điện thoại, ≥ 16px ở iPad; tiếng Việt đúng dấu.
-             Ảnh toàn cảnh có chữ + số mẫu; HÌNH RỜI (icon, nhân vật, quái, nền) KHÔNG có chữ/số nào — code tự vẽ chữ.
-Hình / icon: đồ vật VOXEL 3D: cạnh khối rõ, mỗi mặt 2–3 sắc độ, viền tối mảnh, bóng đổ mềm, cùng nguồn nắng trái-trên, cùng góc nhìn
-             3/4 từ trên, cùng độ chi tiết cho cả bộ. Tươi, đọc được rõ ở cỡ 44px trên nền thẻ sáng.
+MỤC TIÊU:    nhìn vào là thấy NGAY "thế giới Minecraft" — từ khung cảnh, vật phẩm tới giao diện — nhưng MỌI HÌNH ĐỀU TỰ VẼ.
+             Giống ở CÁCH VẼ (khối lập phương, texture pixel, sprite pixel, giao diện túi đồ), không chép TỪNG HÌNH của game nào.
+Không khí:   game khối vuông chạy shader đẹp. Cảnh CHÍNH = THUNG LŨNG HOA ANH ĐÀO LÚC HOÀNG HÔN (ảnh khong_khi_anh_dao.jpg): cây anh đào
+             khối tán hồng, cánh hoa hồng pixel bay, trời pastel hồng-cam-tím, nắng chiều vàng hồng, sông xanh uốn qua thung lũng, đồi cỏ
+             khối xanh rải hoa hồng. Ánh sáng shader: nắng ấm, bóng đổ mềm, nước phản chiếu, sương nhẹ ở xa.
+KHỐI & CẢNH: MỌI thứ dựng từ KHỐI LẬP PHƯƠNG ĐỀU NHAU 1×1, mỗi mặt phủ TEXTURE PIXEL 16×16 (điểm ảnh to, rõ, không mịn) TỰ VẼ:
+             · khối cỏ: mặt trên xanh, mặt bên đất nâu, mép cỏ rủ xuống mặt bên · đất lấm chấm · đá xám lốm đốm · gỗ thân cây vân dọc
+             · ván gỗ sọc ngang · lá cây = khối thưa có lỗ thủng · khối lá anh đào hồng
+             · hoa, cỏ cao, cây con = sprite PHẲNG cắm đứng (2 tấm bắt chéo chữ X) · nước trong suốt xanh có gợn · mây = khối dẹt phẳng trôi
+             · mặt trời vuông · địa hình là BẬC THANG khối, không có dốc trơn, không bo cong.
+VẬT PHẨM:    ① đồ CẦM TAY (sách, bút lông, bản đồ, la bàn, đồng hồ, cuốc, khiên, ngọc, đèn lồng, giấy…) = SPRITE PIXEL 16×16 PHÓNG TO,
+               như vật phẩm nằm trong ô túi đồ: nhìn thẳng mặt; dụng cụ đặt CHÉO từ dưới-trái lên trên-phải; mỗi điểm ảnh là 1 ô vuông rõ;
+               viền tối 1 điểm ảnh; mỗi màu 3–4 sắc độ; KHÔNG khử răng cưa, KHÔNG gradient mịn, KHÔNG bóng mềm.
+             ② đồ DẠNG KHỐI (rương, giường, cửa, khối đèn) = khối 3D nhìn 3/4 từ trên (như khối hiện trong túi đồ), mặt phủ texture pixel 16×16.
+ĐƯỢC giống:  cách vẽ khối + pixel · bố cục túi đồ / ô vật phẩm · loại đồ vật ĐỜI THƯỜNG (sách, đèn lồng, rương, cuốc, la bàn, đồng hồ, bản đồ,
+             ngọc, khiên, thang, giường, cửa) · mặt trời vuông, mây khối, cây khối.
+CẤM (bản quyền — có 1 thứ là hỏng cả hình):
+             · chép Y NGUYÊN texture / sprite / điểm ảnh của Minecraft (mọi sprite PHẢI tự vẽ: hình dáng, màu, chi tiết khác)
+             · nhân vật & sinh vật riêng của Minecraft: Steve, Alex, Creeper, Zombie, Skeleton, Enderman, Villager, Sniffer, Allay, Warden,
+               Ghast, Iron Golem, slime khối xanh mặt đơn giản…
+             · đồ chỉ Minecraft có: bàn chế tạo, bàn phù phép, TNT, ngọc Ender / mắt Ender, táo vàng, cổng Nether
+             · logo / chữ "Minecraft", font Minecraft, giao diện y nguyên của game (thanh máu trái tim, thanh đói đùi gà, hotbar 9 ô ở đáy màn)
+             · Roblox: logo, nhân vật mặc định. Học sinh nhìn ra là ĐÚNG đồ của game thì coi như hỏng.
+Bảng màu:    hồng anh đào #f5a9c8 / #e57fa8 · trời hoàng hôn #f7c6a3 → #c9a7e8 · nắng #ffe9c7 · cỏ #6dbb45 / #3f7d26 · đất #8b5a2b
+             · đá #8e8e8e / #5f5f5f · gỗ ván #b8945f / #8a6a3f · nước #2c8fd6 → #47c1c9 · ngọc xanh lục #37c25a · vàng #f2c94c
+             · đỏ #e04b3c · GIAO DIỆN: xám túi đồ #c6c6c6 · vát sáng #ffffff · vát tối #555555 · ô lõm #8b8b8b · viền #1e1e1e
+             · chữ tối #2b2b2b · chữ phụ #555555.
+Thẻ (giao diện TÚI ĐỒ):
+             tấm XÁM ĐÁ #c6c6c6 (~95% đục), góc VUÔNG, viền đen #1e1e1e 2px, VÁT nổi: cạnh trên-trái trắng 2px, cạnh dưới-phải xám đậm 2px.
+             Ô con bên trong (ô vật phẩm, ô thông tin) = Ô LÕM xám đậm #8b8b8b, vát ngược (tối trên-trái, sáng dưới-phải), icon đặt giữa ô.
+             Dải tiêu đề thẻ (khi có) = tấm ván gỗ pixel, chữ trắng có bóng đen 2px. Khung gần VUÔNG — KHÔNG thẻ dẹt trải ngang.
+Nút:         nút chính = khối XANH CỎ #5fa83a vát nổi, chữ trắng có bóng đen 2px; nút phụ = khối xám #8e8e8e vát nổi, chữ trắng bóng. Bấm = lún.
+             Thanh tiến độ = THANH KINH NGHIỆM: dải xanh lá sáng chia vạch đều, nền tối. Badge số = ô VUÔNG đỏ #e04b3c chữ trắng.
+Chữ:         tiêu đề, tên ô, số, nút = font pixel Handjet đậm (đủ dấu tiếng Việt) · đề bài và đoạn văn dài = Baloo 2 (phải dễ đọc).
+             KHÔNG chữ viết tay, KHÔNG Pacifico, KHÔNG Press Start 2P / Pixelify / Silkscreen (mất dấu). Chữ chính ≥ 15px ở điện thoại,
+             ≥ 16px ở iPad; tiếng Việt đúng dấu. Ảnh toàn cảnh có chữ + số mẫu; HÌNH RỜI (vật phẩm, nhân vật, quái, nền) KHÔNG có chữ/số nào.
 Thiết bị:    iPad NGANG 1180×820 (ảnh chính — làm khổ ngang trước) + điện thoại DỌC 430px. Màn được cuộn.
-CẤM:         khẩu hiệu động viên · chữ tiếng Anh trang trí · trái tim / vương miện / doodle trang trí · máu me, đáng sợ.
+CẤM thêm:    khẩu hiệu động viên · chữ tiếng Anh trang trí · trái tim / vương miện / doodle trang trí · máu me, đáng sợ.
 
 ══ CÁCH GIAO HÀNG (bắt buộc — ghi đè Pha C/D của kit) ══
 - KHÔNG đóng zip. KHÔNG viết DESIGN.md. KHÔNG dựng hình bằng code / SVG / HTML / Python-PIL / ghép khối / cắt từ ảnh toàn cảnh.
 - MỖI LƯỢT TRẢ LỜI = ĐÚNG 1 HÌNH, vẽ bằng công cụ tạo ảnh. Dòng đầu câu trả lời ghi số thứ tự + tên file, vd "#13 khoi_o_tu_luyen".
   Vẽ xong dừng, chờ tôi gõ "tiếp". KHÔNG gộp nhiều hình vào 1 ảnh (trừ mục A là ảnh toàn cảnh).
 - Tôi tải chính ảnh bạn vẽ ra — ảnh đó LÀ file giao, nên phải đạt chuẩn ngay trong chat.
-- Hình cùng họ (15 icon ô, 2 nhân vật, các quái) PHẢI vẽ dựa trên hình đã duyệt trước đó trong context này: giữ góc nhìn, nguồn sáng,
-  độ chi tiết, chỉ đổi đồ vật.
+- Hình cùng họ (15 vật phẩm, 2 nhân vật, các quái) PHẢI vẽ dựa trên hình đã duyệt trước đó trong context này: giữ cỡ điểm ảnh, góc nhìn,
+  nguồn sáng, độ chi tiết, chỉ đổi đồ vật.
 ```
 
 ---
@@ -102,8 +117,8 @@ Mô tả:          App học sinh trung tâm dạy thêm BK Academy. Thêm style
                 RPG hiện tại) — CHỈ đổi phong cách sang khối vuông theo PHONG CÁCH CHUNG.
 
 MÀN CHÍNH khổ NGANG (iPad 1180×820) — đúng khối, đúng thứ tự như bo_cuc_home_ipad.jpg (chữ/số do code vẽ; ảnh toàn cảnh vẽ chữ mẫu đúng như dưới):
-  - Góc trên trái: TẤM TÊN = avatar vuông (2 chữ "MK") + "Nguyễn Minh Khang" + "HS0412 · 9A1 · Toán" + vạch ngăn + biểu tượng bậc rank
-    nhỏ (khiên) + "Captain" + 2 sao.
+  - Góc trên trái: TẤM TÊN (tấm túi đồ xám) = avatar VUÔNG trong ô lõm (2 chữ "MK") + "Nguyễn Minh Khang" + "HS0412 · 9A1 · Toán" + vạch
+    ngăn + biểu tượng bậc rank nhỏ (khiên) + "Captain" + 2 sao.
   - Góc trên phải: nút "Hình nền" (icon bảng màu + chữ) · nút Hòm thư (badge 3) · nút "⋯".
   - Cột TRÁI ≈ 32%: NHÂN VẬT đứng (cao ≈ 80% màn, chân chạm mép dưới) + bạn đồng hành + BONG BÓNG THOẠI: "Hôm nay còn 2 nhiệm vụ đó!".
   - Cột PHẢI: "Chào Minh Khang!" chữ to 2 dòng →
@@ -128,18 +143,19 @@ Biến thể:
     ho_rung : hồ nước trong ven rừng khối ban ngày — không khí ảnh khong_khi_ho_rung.jpg
     tuyet   : vùng tuyết ban ngày — cây thông khối phủ tuyết, hồ băng, trời xanh nhạt
   2 NHÂN VẬT em tự chọn (KHÔNG gán theo giới tính), cùng phong cách, cùng tư thế đứng:
-    nam : nhà thám hiểm khối vuông — áo khoác xanh rêu, khăn quàng cam, ba lô da, tay cầm đèn lồng; bạn đồng hành = CÁO CON cam khối
-          ngồi cạnh chân.
-    nu  : nhà thám hiểm khối vuông — áo len vàng nghệ dưới áo khoác nâu, mũ len xanh ngọc, tay ôm cuốn sổ bản đồ; bạn đồng hành =
-          CÚ MÈO trắng khối đậu trên vai.
-    Đầu khối tỉ lệ chibi (đầu ≈ 1/3 chiều cao), mặt vẽ kiểu anime đơn giản trên mặt khối (mắt to có ánh) — KHÁC hẳn mặt pixel 8×8 của
-    Steve/Alex; trang phục kín đáo (áo khoác + quần dài). Không vũ khí.
+    nam : nhà thám hiểm khối vuông — tóc đen, áo khoác xanh rêu, khăn quàng cam, ba lô da, quần nâu, tay cầm ĐÈN LỒNG sắt phát sáng;
+          bạn đồng hành = CÁO CON khối (khăn quàng nhỏ, đuôi cam-kem, tai to) ngồi cạnh chân.
+    nu  : nhà thám hiểm khối vuông — tóc đen dài buộc thấp, mũ len xanh ngọc, áo len vàng nghệ dưới áo khoác nâu, quần xanh rêu đậm,
+          tay ôm CUỐN SÁCH bản đồ; bạn đồng hành = CÚ MÈO trắng khối đậu trên vai.
+    TỈ LỆ NGƯỜI KHỐI: đầu lập phương, thân hộp chữ nhật, tay chân hộp dài; toàn thân phủ texture pixel ("skin" tự vẽ); mặt pixel đơn giản,
+    mắt có ánh sáng. "Skin" PHẢI khác Steve (áo xanh ngọc + quần xanh dương + tóc nâu) và Alex (áo xanh lá + tóc cam). Kín đáo, không vũ khí.
 
 Phiên bản kit:  v3 (giao từng hình — xem CÁCH GIAO HÀNG trong PHONG CÁCH CHUNG)
 
 ══ CHUẨN TỪNG LOẠI ══
-- ICON (ô, banner): vuông 1254×1254, nền TRONG SUỐT thật (không nền trắng, không ô caro giả), vật thể ở GIỮA chiếm ~80% khung,
-  không chữ/số/badge, không khung ô phía sau. Cả bộ cùng góc nhìn 3/4 từ trên, nắng trái-trên, cùng độ chi tiết.
+- VẬT PHẨM (icon ô, banner): vuông 1254×1254, nền TRONG SUỐT thật (không nền trắng, không ô caro giả), vật ở GIỮA chiếm ~80% khung,
+  không chữ/số/badge, KHÔNG vẽ ô túi đồ phía sau (code tự vẽ ô). Đồ cầm tay = sprite pixel 16×16 phóng to (mọi điểm ảnh cùng cỡ, cạnh sắc);
+  đồ dạng khối = khối 3/4 texture pixel. CẢ BỘ cùng cỡ điểm ảnh, cùng hướng sáng trái-trên, cùng độ chi tiết — đặt cạnh nhau như 1 túi đồ.
 - NHÂN VẬT: dọc 1122×1402, nền TRONG SUỐT, TOÀN THÂN đứng thẳng nghiêng 3/4 về phía người xem, chân chạm mép dưới khung, bạn đồng hành
   nằm TRONG cùng hình.
 - NỀN NGANG: 1672×941, nền đặc, KHÔNG nhân vật, KHÔNG chữ. Cảnh chính (cây to, nhà, núi) dồn sang TRÁI (anh_dao: cây anh đào lớn bên trái,
@@ -147,8 +163,8 @@ Phiên bản kit:  v3 (giao từng hình — xem CÁCH GIAO HÀNG trong PHONG C�
   hồ / đồng cỏ SÁNG, ÍT chi tiết (để đặt thẻ lên, chữ tối phải đọc được).
 - NỀN DỌC: 940×1672 (đúng 9:16), nền đặc, KHÔNG nhân vật. Cảnh chính ở 40% TRÊN; 60% DƯỚI phẳng, sáng dịu, ít chi tiết
   (anh_dao: tán anh đào + mặt trời hoàng hôn + sông ở trên; dưới là đồi cỏ xanh nhạt rải ít cánh hoa).
-- TRANG TRÍ: góc 1254×1254 trong suốt (dây leo lá khối chạy theo 2 cạnh vuông góc, góc trên-trái); gạch phân cách 1672×200 trong suốt
-  (1 dải khối mảnh nằm ngang).
+- TRANG TRÍ: góc 1254×1254 trong suốt (dây leo pixel chạy theo 2 cạnh vuông góc ở góc trên-trái, 1 ĐÈN LỒNG sắt pixel treo trên dây);
+  gạch phân cách 1672×200 trong suốt (1 hàng khối cỏ nhìn ngang — mặt bên khối cỏ lặp lại, mảnh).
 
 ══ DANH SÁCH GIAO (đúng thứ tự) ══
 A. Ảnh toàn cảnh để duyệt (có chữ + số mẫu, CHỈ để xem bố cục và phong cách — không cắt ra dùng):
@@ -161,33 +177,34 @@ B. Nền:
    #09 khoi_bg_tuyet_ngang · #10 khoi_bg_tuyet_doc
 C. Nhân vật (vẽ đúng như trong #01 / #02 đã duyệt):
    #11 khoi_nv_nam · #12 khoi_nv_nu
-D. Icon ô chức năng (mỗi ô 1 ĐỒ VẬT KHÁC NHAU, không trùng hình với nhau):
-   #13 khoi_o_tu_luyen      — cây cuốc gỗ cán quấn dây cắm vào tảng đá có mạch quặng xanh ngọc phát sáng
-   #14 khoi_o_nhiem_vu      — bảng nhiệm vụ bằng gỗ khối ghim 3 tờ giấy, 1 đèn lồng nhỏ treo góc
-   #15 khoi_o_rank          — tấm khiên khối viền sắt, giữa có ngôi sao vàng
-   #16 khoi_o_thong_tin     — cuộn bản đồ khối mở ra, đường chấm đỏ + 1 ghim cắm
-   #17 khoi_o_so_tay        — cuốn sách khối bìa xanh lá, dây đánh dấu đỏ, bút lông cắm bên cạnh
-   #18 khoi_o_thi_thu       — cánh cổng sắt khối có ổ khoá — tông XÁM, không nắng (ô đang khoá)
-   #19 khoi_o_bai_tap_giao  — phong thư khối có dấu sáp đỏ
-   #20 khoi_o_cup           — cúp vàng khối đặt trên bục đá (dùng cho Thành tựu + Bảng xếp hạng)
-   #21 khoi_o_may_man       — rương gỗ khối mở hé, ánh vàng + vài đồng xu VUÔNG bay lên
-   #22 khoi_o_vi_xu         — túi da khối buộc dây + chồng đồng xu vuông vàng
-   #23 khoi_o_the_gioi      — quả địa cầu khối (đất xanh lá + biển xanh dương) trên chân đế gỗ
-   #24 khoi_o_tren_lop      — ba lô khối màu xanh dương + 1 cuốn sách thò ra
-   #25 khoi_o_et            — đồng hồ cát khối đứng cạnh 1 tờ bài có dấu tích
-   #26 khoi_o_btvn          — ngôi nhà khối nhỏ mái đỏ, cuốn vở mở đặt trước cửa
-   #27 khoi_o_hoc_tu_dau    — bậc thang khối uốn lên 1 ngọn đồi nhỏ, lá cờ trên đỉnh
-E. Icon banner:
-   #28 khoi_b_lich          — tấm lịch gỗ khối có vài ô đánh dấu (thẻ ca bổ trợ)
-   #29 khoi_b_kiem_tra_lai  — tờ giấy khối có dấu tích, ánh HỒNG (banner bài kiểm tra lại)
+D. Vật phẩm cho ô chức năng (mỗi ô 1 ĐỒ VẬT KHÁC NHAU; [sprite] = sprite pixel 16×16 phóng to · [khối] = khối 3/4 texture pixel):
+   #13 khoi_o_tu_luyen      — [sprite] CUỐC CHIM đặt chéo: đầu sắt xám, cán gỗ nâu
+   #14 khoi_o_nhiem_vu      — [sprite] SÁCH VÀ BÚT LÔNG: cuốn sách mở trang giấy kem + 1 bút lông vũ trắng cắm lọ mực
+   #15 khoi_o_rank          — [sprite] KHIÊN gỗ viền sắt, giữa có ngôi sao vàng
+   #16 khoi_o_thong_tin     — [sprite] TẤM BẢN ĐỒ giấy: địa hình xanh lá / sông xanh dương, 1 chấm đỏ đánh dấu
+   #17 khoi_o_so_tay        — [sprite] CUỐN SÁCH bìa da nâu đóng, dây đánh dấu đỏ thò ra
+   #18 khoi_o_thi_thu       — [khối] CÁNH CỬA SẮT có ổ khoá — tông XÁM, không nắng (ô đang khoá)
+   #19 khoi_o_bai_tap_giao  — [sprite] CUỘN GIẤY buộc dây đỏ
+   #20 khoi_o_cup           — [sprite] CÚP VÀNG 2 quai (dùng cho Thành tựu + Bảng xếp hạng)
+   #21 khoi_o_may_man       — [khối] RƯƠNG GỖ mở hé, ánh vàng thoát ra (tự vẽ: ván gỗ + đai sắt + khoá tròn — không chép rương của game)
+   #22 khoi_o_vi_xu         — [sprite] VIÊN NGỌC XANH LỤC cắt giác + 2 đồng xu vàng nhỏ
+   #23 khoi_o_the_gioi      — [sprite] LA BÀN vỏ đồng, kim đỏ
+   #24 khoi_o_tren_lop      — [sprite] BA LÔ vải xanh dương, quai da
+   #25 khoi_o_et            — [sprite] ĐỒNG HỒ bỏ túi mặt vàng
+   #26 khoi_o_btvn          — [khối] CÁI GIƯỜNG gỗ, chăn xanh dương, gối trắng
+   #27 khoi_o_hoc_tu_dau    — [sprite] CÁI THANG gỗ
+E. Vật phẩm cho banner:
+   #28 khoi_b_lich          — [sprite] TỜ LỊCH giấy ghim trên tấm gỗ nhỏ, vài ô đánh dấu đỏ (thẻ ca bổ trợ)
+   #29 khoi_b_kiem_tra_lai  — [sprite] TỜ GIẤY có dấu tích + bút lông, viền ánh HỒNG (banner bài kiểm tra lại)
 F. Trang trí:
-   #30 khoi_tt_goc          — góc dây leo lá khối
-   #31 khoi_tt_gach         — dải gạch phân cách khối (cỏ trên đất, mảnh)
+   #30 khoi_tt_goc          — góc dây leo pixel + đèn lồng sắt treo
+   #31 khoi_tt_gach         — hàng khối cỏ nhìn ngang (gạch phân cách)
 
 LUẬT RIÊNG:
   - Giữ nguyên danh sách ô, tên, thứ tự, số như mô tả. Không thêm tính năng, không thêm chữ.
   - Câu duy nhất có "giọng" = bong bóng thoại của nhân vật, phải có số thật.
-  - Chữ trên nền ảnh / nền khối nhiều màu phải đọc được (chữ trắng có viền/bóng đen 2px, hoặc đặt trong thẻ sáng).
+  - Chữ trên nền ảnh / nền khối nhiều màu phải đọc được (chữ trắng có viền/bóng đen 2px, hoặc đặt trong tấm túi đồ xám).
+  - Mọi vật phẩm / khối / nhân vật TỰ VẼ theo danh sách ĐƯỢC / CẤM ở PHONG CÁCH CHUNG — không chép sprite hay texture của game nào.
 
 Bắt đầu với #01.
 ```
@@ -207,10 +224,11 @@ Màn:            adventure-khoi (bản đồ phiêu lưu + quái vật, style "K
 Mô tả:          App học Toán cho học sinh, chủ đề "Giải cứu thế giới — đánh quái vật". Mỗi chủ đề kiến thức là 1 vùng đất, mỗi dạng
                 bài là 1 màn đấu, mỗi nhóm bài là 1 con quái. Học sinh làm đúng câu hỏi = tung đòn đánh quái.
                 Thiết bị chính: iPad NGANG 1180×820 và máy tính.
-Phong cách:     theo PHONG CÁCH CHUNG — KHỐI VUÔNG + hình đã duyệt đính kèm. Quái DỄ THƯƠNG – NGỘ NGHĨNH (học sinh lớp 3–12),
-                KHÔNG ghê sợ, KHÔNG máu me. Quái là sinh vật khối TỰ THIẾT KẾ — KHÔNG giống Creeper, Zombie, Skeleton, Slime,
-                Enderman, Ghast… của Minecraft (vd slime ở đây là giọt thạch khối có tay nhỏ, đội lá, mắt to — không phải khối lập
-                phương xanh mặt đơn giản).
+Phong cách:     theo PHONG CÁCH CHUNG — KHỐI VUÔNG + hình đã duyệt đính kèm. Vùng đất dựng từ khối lập phương texture pixel 16×16
+                y như cảnh K1. Quái = SINH VẬT KHỐI tỉ lệ hộp (đầu/thân/chân là các hộp, phủ texture pixel, mắt pixel) — đúng kiểu
+                sinh vật game khối, nhưng LOÀI TỰ THIẾT KẾ, DỄ THƯƠNG – NGỘ NGHĨNH (học sinh lớp 3–12), KHÔNG ghê sợ, KHÔNG máu me.
+                KHÔNG giống Creeper, Zombie, Skeleton, Slime, Enderman, Ghast, Sniffer, Allay… của Minecraft (vd slime ở đây là giọt
+                thạch khối có tay nhỏ, đội lá, mắt to — không phải khối lập phương xanh mặt đơn giản).
 Phiên bản kit:  v1 (giao từng hình — xem CÁCH GIAO HÀNG trong PHONG CÁCH CHUNG)
 
 ══ CHUẨN ══
@@ -246,7 +264,7 @@ F. Mở rộng (làm nếu còn thời gian)
    #25–#32 thêm 8 quái: quai_tho_gio · quai_be_nham · quai_sao_bien · quai_ech_doc · quai_dom_dom · quai_soi_bang · quai_bo_giap · quai_ma_lua
    #33 boss_phuong_hoang · #34 boss_bach_tuoc · #35 dao_sa_mac · #36 dao_dam_lay · #37 dao_thanh_co · #38 dao_troi_sao
 G. Đồ vật nhỏ (trong suốt, 512×512)
-   #39 co_chinh_phuc (lá cờ khối cắm đất) · #40 ruong_khu_vuc (rương thưởng khối) · #41 cong_khu_vuc (cổng đá khối vào khu)
+   #39 co_chinh_phuc ([sprite] lá cờ cắm đất) · #40 ruong_khu_vuc ([khối] rương thưởng) · #41 cong_khu_vuc ([khối] cổng đá vào khu)
 
 GHI ĐÈ KIT §1: KHÔNG chữ trong mọi hình. KHÔNG khẩu hiệu.
 Bắt đầu với #01.
