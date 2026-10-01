@@ -33303,3 +33303,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - C. giữ Quaternius.
   - CTO đề xuất mua thử 1 gói A, đặt cạnh B để CEO nhìn.
 - spec §5 viết lại thứ tự việc: nguồn thú → ấp trứng → cưỡi → đo iPad; boss/MMO để sau.
+
+## 2026-10-01 — V1.0 chia 3 luồng song song (spec §13 + HANDOFF đầu ①)
+
+- Thùy: "viết lại vào handoff và spec để phân chia ra nhiều context cùng làm 1 lúc mới kịp" — 3 luồng: SỐ LIỆU (chuỗi, nhiệm vụ, huy hiệu…), GAME, GIAO DIỆN
+  (app thành thế giới quái vật). Viết `spec-v1-app-hs.md` §13: luật chung (pull, commit theo đường dẫn, vùng file riêng, migration --only, DEVLOG gắn tên
+  luồng) · phạm vi + vùng file + việc theo ngày từng luồng · hợp đồng dữ liệu (`fn_chuoi_cua_toi`, `fn_ban_do_phieu_luu`, `fn_luot_hoc_that_ket_qua`) để
+  Giao diện dựng bằng dữ liệu giả không chờ Số liệu · câu lệnh mở đầu dán sẵn cho 3 context · hộp thư giữa luồng. HANDOFF thêm mục ⭐⭐ RELEASE V1.0 đầu ①.
