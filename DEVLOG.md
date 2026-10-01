@@ -12755,3 +12755,131 @@ không có buổi giữ (thà thừa). UI tóm thái độ ghi rõ "(2 cửa s�
   `npm run schema` refresh (236 bảng, 19 view, 77 trigger, 416 function, 231 check).
 - **Tổng khối 7 Nâng cao: 6/10 dạng, 81/84 câu đủ điều kiện có MCQ (4 dạng loại hẳn vì bản chất chứng
   minh/so sánh, không phải đáp số 1 giá trị).** Chưa commit (chờ yêu cầu).
+
+## 2026-09-19 (tiếp) — CEO: "Kiểm tra lớp 9 xem còn bao nhiêu dạng chưa có MCQ làm nốt đi"
+- Khảo sát TOÀN BỘ khối 9: 59 dạng có câu `tra_loi_ngan` đã duyệt, **27 dạng còn thiếu** (so `dai_cau_form_tn`).
+  Trong 27 đó tách 2 loại nguyên nhân khác hẳn nhau:
+  - **18 dạng ĐÃ WIRE từ trước, thiếu vài câu lẻ** (1-11 câu/dạng) — test lại thì **hầu hết khớp ngay lập
+    tức** (vd T109080101 11/11, T109030204 10/10, T109090101 5/5…). Nguyên nhân: đây là CÂU MỚI được nhập
+    vào kho SAU LẦN chạy pipeline khối 9 gốc (e554f6c), không phải lỗi engine — kho vẫn tiếp tục được nạp
+    qua `nhap-kho` sau đó. 2 dạng dùng TEXT_DANG (`T109020203`, `T109030204` phân thức chứa căn) test SAI
+    bằng cách gọi thẳng `sinhNhieuDapSoThucTe` (không phải hàm thật được wire) — bài học: **phải test qua
+    đúng hàm đã đăng ký (`TEXT_DANG`/`SPECIAL_DANG`/`ANSWER_DANG`), không suy luận từ 1 hàm chung.**
+  - **9 dạng CHƯA TỪNG WIRE** (0/x): khảo sát bằng `sinhNhieuDapSoThucTe` trước khi xây gì mới —
+    T109010203 (13/13), T109020204 (41/41), T109080106 (27/27), T109080502 (11/11) khớp 100% ngay; wire
+    thêm 4 dạng này. T109110201 (3/8, phần còn lại là văn bản/word-problem đơn vị khác nhau — wire nhưng
+    chỉ 3 câu đủ điều kiện). **4 dạng bỏ hẳn** (T109010204 — nghiệm là TẬP HỢP ĐIỂM `(x;y)` nhiều cặp, cấu
+    trúc khác "danh sách giá trị" hiện có, 1/9 khớp không đáng xây thêm; T109110101/T109110301/T109110401
+    — "Hệ PT/Hình học/Nâng cao" tổng hợp, đáp số lẫn văn bản+đơn vị+nhiều ý, 0/6 mỗi dạng, khối lượng quá
+    nhỏ để xây riêng).
+- Migration `202609191940` — CHỈ UPDATE `ap_dung` nối 5 dạng mới (T109010203/020204/080106/080502/110201)
+  vào R343-346 có sẵn. Wire `ANSWER_DANG_LIST`/`UU_TIEN` (`mcq-auto.mjs`) + TEXT_DANG/TEXT_FN (`mcq-sinh.mjs`).
+- Pipeline thật CHO CẢ 23 DẠNG (5 mới + 18 thiếu câu lẻ) trong 1 lô: `--list` 156 câu → `mcq-auto.mjs` sinh
+  133, bỏ 23 (3 "máy≠kho" tự nêu cờ — vd `T109020203007` máy tính `x>-10` nhưng kho ghi `x>-11`, ĐÚNG theo
+  §1.5 không ép; 10 "không tính được"; 7 "không nhận dạng"; 2 "chỉ 2 distractor hợp lệ" + 1 "không parse")
+  → `--verify` 133 OK, 0 FAIL → `--ghi` → **133 dòng `dai_cau_form_tn`**. `npm run schema` refresh (236
+  bảng, 19 view, 77 trigger, 416 function, 231 check).
+- **Tổng khối 9 sau đợt này: 1540/1591 câu tra_loi_ngan đã duyệt có MCQ (96.8%).** Phần còn thiếu là residual
+  đã khảo sát kỹ và loại có chủ đích (không phải bỏ sót). Chưa commit (chờ yêu cầu).
+
+## 2026-09-20 — CEO: "Khối 12 thì sao"
+- Khảo sát khối 12 y hệt cách vừa làm khối 9: 103 câu tra_loi_ngan đã duyệt, 84 đã có form_tn, 19 "thiếu".
+  Đào sâu 19 câu này lộ ra **bài học quan trọng bị bỏ sót ở lần khảo sát khối 9**: câu "thiếu form_tn"
+  KHÔNG đồng nghĩa "chưa có MCQ" — 8/19 câu (7 của T112030102 + 1 của T112070307) hoá ra **đã có `lua_chon`
+  set sẵn ngay trên `dai_cau_hoi`** (MCQ tạo qua đường khác, không qua `dai_cau_form_tn`) — `mcq-sinh.mjs
+  --list` tự lọc đúng (`q.lua_chon is null`) nên KHÔNG bị ghi đè/trùng, nhưng khảo sát tay của tôi (chỉ join
+  `dai_cau_form_tn`) đếm nhầm chúng là "thiếu". **Bài học: khảo sát độ phủ MCQ phải kiểm CẢ `lua_chon`, không
+  chỉ `dai_cau_form_tn` — 2 đường MCQ khác nhau cùng tồn tại.** (Không ảnh hưởng dữ liệu đã ghi — pipeline
+  thật luôn tự lọc đúng, chỉ sai ở con số BÁO CÁO tay.)
+  - 11 câu còn lại genuinely ngoài phạm vi, ĐÃ xác nhận từ đợt 16/09 (không đổi): T112020305 đúng/sai (1),
+    T112040102 hàm số (2), T112030101 "≈" (1), T112070308+T112070311 căn thức vô tỉ (6), T112030102 1 câu
+    đáp số nhiều phần "a)/b)/c)" (1).
+- **Chạy thử `--list`→`mcq-auto.mjs` cho 5 dạng còn residual: 0 sinh, 8 bỏ — ĐÚNG, không có gì để ghi thêm.**
+  Không cần migration/wire mới. **Khối 12 đã ở trần tự nhiên của engine hiện tại: 84 form_tn + 8 lua_chon có
+  sẵn = 92/103 câu đã có MCQ dưới dạng nào đó; 11 câu còn lại cần engine mới (surd/đúng-sai/đa phần) mới
+  MCQ hoá được.**
+
+## 2026-09-20 (tiếp) — CEO: "Những câu trả lời ngắn còn lại cũng làm nốt MCQ đi"
+- Quét TOÀN BỘ kho Đại (không riêng khối nào): 5951 câu `tra_loi_ngan` đã duyệt CHƯA có MCQ dưới bất kỳ hình
+  thức nào (không `dai_cau_form_tn`, không `lua_chon` sẵn — bài học từ lần khảo sát khối 12 trước đó), trải
+  244 dạng, TẤT CẢ khối (3,4,5,6,7,8,9,10,11,12,4T,5T). Test thẳng `sinhNhieuDapSoThucTe` lên toàn bộ trước
+  khi tính xây gì mới (đúng quy trình đã lặp lại nhiều lần) → **4103/5951 (69%) khớp NGAY, không cần code
+  mới** — trải từ bảng cửu chương lớp 3 đến lượng giác/cấp số lớp 11, xác nhận lại nguyên lý ANSWER_DANG:
+  "sinh nhiễu từ đáp số kho" không phụ thuộc nội dung đề, chỉ cần đáp số là số/danh sách số thuần.
+  - **Bắt 1 bug thật khi chạy pipeline thật (không phải survey tay):** `--list` crash cứng ở câu
+    `T107030101` đáp số `$\dfrac{17}{0}$` (mẫu 0, lỗi nhập liệu kho) — `mini-dang.mjs` có bản COPY riêng của
+    `add/sub/mul/div` (file tự nhận "giữ ĐỘC LẬP, không import qua lại" với `mcq-auto.mjs`) nhưng bản copy
+    THIẾU guard null (`R(p,0n)` trả `null` đúng, nhưng `mul(coefAcc, null)` không kiểm tra trước khi
+    `null.p` ⇒ crash `TypeError`). `mcq-auto.mjs` ĐÃ có guard `(a && b) ? ... : null` từ trước — 2 file cùng
+    logic nhưng lệch nhau, chỉ lộ ra khi gặp input đủ lạ (denominator 0, chưa từng xuất hiện ở các đợt quét
+    hẹp trước). Sync guard từ `mcq-auto.mjs` sang `mini-dang.mjs` — không đổi hành vi câu hợp lệ nào (test
+    lại: vẫn đúng 4103/5951), chỉ khiến input hỏng trả `null` gọn thay vì crash cả tiến trình.
+  - **178 dạng khớp ≥30%** (ngưỡng đã dùng nhất quán từ trước) — nhưng lọc kỹ TRƯỚC khi wire, không cộng dồn
+    mù: **25/178 dạng ĐÃ có wiring riêng từ trước** (qua `SPECIAL_DANG`/`TEXT_DANG` với hàm chuyên biệt, vd
+    `T109030204`→`timXPtCanThucTuyenTinh`, `T108010102/103`→`bacDonThuc`/`heSoDonThuc`…) — suýt wire ĐÈ
+    (object literal JS: key trùng thì cái SAU thắng, cái ghi sau sẽ ÂM THẦM thay hàm/rule chuyên biệt bằng
+    R343-346 chung chung). Phát hiện qua kiểm tra "key trùng trong UU_TIEN" trước khi chạy pipeline — sửa
+    bằng cách CHỈ wire 153 dạng MỚI HOÀN TOÀN qua ANSWER_DANG, 25 dạng kia GIỮ NGUYÊN hàm cũ, chỉ đưa vào lô
+    `--list` để hàm sẵn có tự lấp câu còn thiếu (giống cách xử lý residual ở khối 9/12 trước đó).
+  - Migration `202609201850` — CHỈ UPDATE `ap_dung` nối 153 dạng mới vào R343-346, không đụng 25 dạng có
+    wiring riêng, không rule mới.
+- Pipeline thật CHO CẢ 178 DẠNG (153 mới + 25 residual) trong 1 lô: `--list` 5495 câu (10 bỏ không parse được,
+  vd "Không có giá trị của x", tập nghiệm trùng giá trị) → `mcq-auto.mjs` sinh **4352**, bỏ 1143 (913 không
+  nhận dạng + 133 không tính được + 49/13 thiếu distractor + 12 "máy≠kho" tự nêu cờ, không ép ghi + phần còn
+  lại lỗi parse cục bộ) → `--verify` **4352 OK, 0 FAIL** → soi tay mẫu qua nhiều khối khác hẳn nhau (lớp 3
+  bảng cửu chương, lớp 11 lượng giác, lớp 8 đại số, lớp 5 số thập phân) — chất lượng distractor nhất quán
+  với các đợt trước → `--ghi` (chạy nền, >120s) → **4352 dòng `dai_cau_form_tn`** (`da_duyet=false`).
+  `npm run schema` refresh (236 bảng, 19 view, 78 trigger, 424 function, 234 check).
+- **TỔNG TOÀN KHO sau đợt này: 9662/11829 câu tra_loi_ngan đã duyệt có MCQ (81.7%)** — theo khối:
+  [10] 160/160 · [11] 336/358 · [12] 93/103 · [3] 618/949 · [4] 606/829 · [4T] 864/911 · [5] 1139/1486 ·
+  [5T] 469/527 · [6] 832/1123 · [7] 864/1002 · [8] 2031/2522 · [9] 1650/1859. Phần còn thiếu (~2167 câu)
+  cần engine RIÊNG theo từng loại (chứng minh/so sánh không có đáp số rời rạc, biểu thức/hàm số làm đáp số,
+  surd, danh sách điểm (x;y) nhiều cặp, đơn vị đo/văn bản lẫn số…) — backlog cho đợt sau, KHÔNG cố ép đợt
+  này. Chưa commit (chờ yêu cầu).
+
+## 2026-09-20 (tiếp) — CEO: "Tất cả câu hỏi cấp 3 (ET/giáo trình/BTVN) chỉ dùng MCQ"
+- Yêu cầu chiến lược, không phải tiếp tục 1 batch nhỏ — dùng **EnterPlanMode** trước khi code, đúng CLAUDE.md
+  "CTO đề cách đi, lập plan" + R3 "không trượt strategy→execution giữa chừng". 3 agent Explore song song khảo
+  sát ET/giáo trình/BTVN hiện có trước khi viết dòng code nào.
+- **Phát hiện quan trọng (agent + query DB trực tiếp):**
+  - ET/giáo trình/BTVN online dùng CHUNG `phatHanhTest`/`bai_test`/`bai_test_cau` (chỉ khác cột `loai`).
+    Giáo trình/BTVN bị loại tay khỏi logic MCQ-snapshot từ trước (`testonline.ts`, comment cũ: "giấy và
+    online khớp nhau") — quyết định CŨ có chủ đích, giờ phá vỡ CHỦ ĐỘNG cho cấp 3 theo yêu cầu CEO.
+  - Giáo trình lấy nội dung TỪ ĐÚNG kho câu hỏi (`dai_cau_hoi` hoặc `hgt_cau_hoi`, dispatch qua `khoCuaMon`)
+    — không phải nội dung riêng, nên form_tn tái dùng thẳng được.
+  - **Tôi BAN ĐẦU nói sai quy mô Hình giải tích** ("735 câu, việc lớn ngang cả phiên") — CEO bác "giải tích
+    toàn MCQ mà", kiểm lại đúng: 492/735 đã trắc_nghiệm SẴN, chỉ 221 câu tra_loi_ngan thật sự cần MCQ hoá,
+    và 218/221 (99%) khớp NGAY engine `sinhNhieuDapSoThucTe` có sẵn — quy mô ngang 1 batch bình thường, không
+    phải dự án riêng. **Bài học: đừng suy diễn quy mô từ tổng số dòng bảng — phải tách theo `loai_cau` thật.**
+- **Việc 1 — HGT (Hình giải tích) có MCQ lần đầu:**
+  - Bảng RIÊNG `hgt_mcq_rule` + `hgt_cau_form_tn` (mirror NGUYÊN `dai_mcq_rule`/`dai_cau_form_tn`, đúng
+    CLAUDE.md §1.6 "mỗi nhánh bảng riêng, KHÔNG gộp") — phát hiện migration GỐC (`202609080230_mcq_form_tn.sql`)
+    đã dự trù sẵn tên bảng này qua registry `_kho_form_tn_tbl('Toán','hinh_gt')`, kèm comment "tạo bảng cùng
+    DDL khi môn đó cần" — đúng thời điểm đó bây giờ. Trigger kiểm y hệt bản Đại, chỉ đổi tên bảng tham chiếu.
+  - Tham số hoá `scripts/mcq-sinh.mjs` theo `--kho dai|hgt` (cauTbl/banDoTbl/formTbl/ruleTbl) — KHÔNG đụng
+    `scripts/mcq-auto.mjs` (thuần JSON transformer, không query DB trực tiếp, không cần sửa). Regression-check
+    `--kho dai` mặc định vẫn chạy y hệt cũ (test T109010203, 0 câu mới — đúng, đã phủ từ trước).
+  - Migration ap_dung nối 22 dạng HGT khớp vào R343-346 (bảng hgt_mcq_rule riêng, KHÔNG chung với dai_mcq_rule).
+  - Pipeline thật: `--list --kho hgt` 221 câu → `mcq-auto.mjs` sinh 219, bỏ 2 (không nhận dạng) → `--verify`
+    219 OK, 0 FAIL → `--ghi` → **219 dòng `hgt_cau_form_tn`**.
+  - Thêm `hgt_cau_form_tn` vào registry `KHO_CO_FORM_TN` (`src/lib/tailieu.ts`) — chỗ duy nhất cần sửa để
+    toàn bộ pipeline phát-hành-online TỰ NHẬN ra kho HGT đã có form (đúng đúng ý registry "thêm tên vào đây").
+- **Việc 2 — Cấp 3 mặc định MCQ, không cần GV bật tay mỗi câu:**
+  - ⚠️ **KHÔNG sửa `etFormOf`** (hàm dùng CHUNG cho in giấy ETPrintView/MTPrintView/BTPrintView VÀ online) —
+    đổi default ở đó sẽ khiến BẢN IN GIẤY cũng tự đổi sang MCQ, phá invariant "giấy dạy trên lớp giữ nguyên
+    format gốc" mà chính comment cũ đã cố tình bảo vệ. Thay vào đó viết hàm RIÊNG `onlineFormOf(c, ch, khoi)`
+    (tailieu.ts) — gọi `etFormOf` trước, chỉ ÉP thêm `'trac_nghiem'` khi: GV CHƯA set `etFormByCau` tay (tôn
+    trọng override nếu có) VÀ `khoi` tài liệu ∈ {10,11,12}. Chỉ dùng trong `testonline.ts`'s `snap()`
+    (đường phát hành online), KHÔNG đụng bất kỳ chỗ gọi `etFormOf` nào khác (7 chỗ, toàn print/edit UI).
+  - `phatHanhTest` (`testonline.ts`) — thêm `khoi` vào SELECT `tai_lieu` (cột có sẵn, không cần join lớp),
+    thay điều kiện `snap()` dùng `onlineFormOf` thay `etFormOf`. Áp dụng ĐỀU cho et/giao_trinh/btvn — KHÔNG
+    áp cho `de_thi` (ngoài phạm vi yêu cầu CEO, đề thi có cơ chế lớp/ngày khác hẳn — `onlineFormOf` tự
+    không kích hoạt vì chỉ gọi trong `snap()`, không đổi hành vi đề thi).
+  - Câu TLN cấp 3 CHƯA có form_tn (phần dư nhỏ) vẫn phát hành theo dạng gốc (không chặn, đúng §1.5 "thà bỏ
+    trống") — thêm đếm `mcqGap` + gộp vào `canhBao` trả về (`phatHanhTest`) để GV THẤY cảnh báo sau khi
+    phát hành, không phải lỗi âm thầm.
+- **Verify:** `npx tsc --noEmit` sạch (chỉ 1 lỗi CÓ SẴN từ trước ở `pdfRender.ts`, không liên quan). Dev
+  server (`preview_start`) boot 0 lỗi console/server, `tailieu.ts`/`testonline.ts` load 200 OK qua Vite
+  (xác nhận module graph không vỡ). **KHÔNG verify được đường click-through phát-hành-thật** (cần login
+  GV/staff thật, không có sẵn trong phiên này) — nói rõ giới hạn này, không nhận là đã test UI đầy đủ.
+- Refresh schema.md (238 bảng, 19 view, 79 trigger, 425 function, 237 check). Chưa commit (chờ yêu cầu).

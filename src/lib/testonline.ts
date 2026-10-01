@@ -4,7 +4,7 @@
 // 3 tầng: KHO → bai_test (snapshot đề+key) → bai_lam (HS-facing) → đo lường.
 // ============================================================================
 import { supabase } from './supabase'
-import { getBTVNCaus, getETCaus, getGiaoTrinhBuoiCaus, khoCuaMon, coFormTn, etFormOf, type CauHinh } from './tailieu'
+import { getBTVNCaus, getETCaus, getGiaoTrinhBuoiCaus, khoCuaMon, coFormTn, onlineFormOf, type CauHinh } from './tailieu'
 import { getDeThiCaus } from './dethi'
 import { fetchCausByMa } from './ontap'
 import { maDeReady, type BaseItem } from './made'
@@ -78,9 +78,9 @@ export const PHAT_HANH_DUOC = new Set(Object.keys(DOC_MAP))
 // Đề thi KHÔNG tự bám lớp+ngày (đề dùng lại cho nhiều lớp/lần) → `override` bắt buộc cho loại này;
 // các loại còn lại lấy lop_id/ngay sẵn có trên doc (như trước, override optional).
 export async function phatHanhTest(taiLieuId: string, override?: { lopId: string; ngay: string }): Promise<PhatHanhKetQua> {
-  const { data: tl, error: e0 } = await supabase.from('tai_lieu').select('id, lop_id, ngay, mon, nhanh, loai, cau_hinh').eq('id', taiLieuId).single()
+  const { data: tl, error: e0 } = await supabase.from('tai_lieu').select('id, lop_id, ngay, mon, nhanh, loai, cau_hinh, khoi').eq('id', taiLieuId).single()
   if (e0) throw e0
-  const doc = tl as { id: string; lop_id: string | null; ngay: string | null; mon: string; nhanh: string | null; loai: string; cau_hinh: any }
+  const doc = tl as { id: string; lop_id: string | null; ngay: string | null; mon: string; nhanh: string | null; loai: string; cau_hinh: any; khoi: string | null }
   const map = DOC_MAP[doc.loai]
   if (!map) throw new Error('Chỉ phát hành online được BTVN, ET, giáo trình buổi hoặc đề thi.')
   const lopId = override?.lopId ?? doc.lop_id
@@ -99,8 +99,11 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
     const { data: lt } = await supabase.from(ltTbl).select('ma_dang, noi_dung').in('ma_dang', dangs).limit(LIMIT)
     for (const r of (lt ?? []) as { ma_dang: string; noi_dung: string | null }[]) if (r.noi_dung) ltMap.set(r.ma_dang, r.noi_dung)
   }
-  // Form TRẮC NGHIỆM AI đã duyệt của các câu trong doc (spec-mcq-form.md §8.2) — chỉ dùng khi GV CHỌN form trắc nghiệm
-  // cho câu không có phương án sẵn (etFormByCau). BTVN/giáo trình không có toggle form → không đổi (giấy và online khớp nhau).
+  // Form TRẮC NGHIỆM AI đã duyệt của các câu trong doc (spec-mcq-form.md §8.2) — dùng khi GV CHỌN form trắc
+  // nghiệm cho câu không có phương án sẵn (etFormByCau), HOẶC (CEO chốt 20/09) tài liệu cấp 3 (khối 10-12)
+  // mà GV CHƯA chọn gì — mặc định ép MCQ luôn cho ET/giáo trình/BTVN (xem onlineFormOf, tailieu.ts). Bản
+  // IN GIẤY (ETPrintView/MTPrintView/BTPrintView) vẫn dùng etFormOf gốc, KHÔNG đổi — chỉ bản online lệch,
+  // có chủ đích.
   const chDoc = (doc.cau_hinh ?? {}) as CauHinh
   const formTbl = khoCuaMon(doc.mon, doc.nhanh).formTnTbl
   const formMap = new Map<string, { id: string; lua_chon: { text: string; dung: boolean; rule?: string }[]; dap_an: string }>()
@@ -112,13 +115,17 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
   const skipped: { ma_cau: string; warn: string }[] = []
   const rows: Omit<BaiTestCau, 'id'>[] = []
   let thu_tu = 0
+  // Đếm câu TLN cấp 3 (ET/giáo trình/BTVN) chưa có form MCQ đã duyệt — vẫn phát hành theo dạng gốc (không
+  // chặn), chỉ CẢNH BÁO để GV biết mà chủ động thay/loại câu nếu muốn tuyệt đối 100% MCQ (CEO chốt 20/09).
+  const CAP3 = doc.khoi === '10' || doc.khoi === '11' || doc.khoi === '12'
+  let mcqGap = 0
   // Snapshot 1 câu THẬT ở 1 vị trí+biến thể — dùng lại cho cả mã gốc lẫn mã đề 2/3 (câu khác nhau,
   // cùng cấu trúc). effLoai giữ chung cho mọi biến thể của 1 vị trí (đều cùng dạng câu hỏi khi được
   // sinh bởi buildMaDe — made.ts ép canBeETForm khớp form câu gốc).
   const snap = (c: CauHoi, tt: number, bienThe: number): { row: Omit<BaiTestCau, 'id'> | null; warn?: { ma_cau: string; warn: string } } => {
     // GV chọn form TRẮC NGHIỆM cho câu KHÔNG có phương án sẵn + kho có form AI đã duyệt ⇒ snapshot form (§8.2).
     const ft = formMap.get(c.ma_cau)
-    if (ft && !(c.lua_chon && c.lua_chon.length) && etFormOf(c, chDoc) === 'trac_nghiem') {
+    if (ft && !(c.lua_chon && c.lua_chon.length) && onlineFormOf(c, chDoc, doc.khoi) === 'trac_nghiem') {
       return {
         row: {
           bai_test_id: '', thu_tu: tt, bien_the: bienThe, ma_cau: c.ma_cau, loai_cau: 'trac_nghiem',
@@ -145,6 +152,7 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
   }
   for (const c of caus) {
     ++thu_tu
+    if (CAP3 && c.loai_cau === 'tra_loi_ngan' && !formMap.has(c.ma_cau) && !(c.lua_chon && c.lua_chon.length)) mcqGap++
     const { row, warn } = snap(c, thu_tu, 1)
     if (warn) skipped.push(warn)
     if (row) rows.push(row)
@@ -208,9 +216,11 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
   const { error: e2 } = await supabase.from('bai_test_cau').insert(rows.map((r) => ({ ...r, bai_test_id: baiTest.id })))
   if (e2) throw e2
   // Cảnh báo (không chặn): btvn không có hạn ⇒ bài mở vĩnh viễn, staff cần biết để xử tay.
-  const canhBao = !deadline && map.testLoai === 'btvn'
+  const hanBao = !deadline && map.testLoai === 'btvn'
     ? 'Không tính được hạn nộp: lớp chưa có thời khoá biểu hiệu lực nên không xác định được buổi kế tiếp. Bài sẽ KHÔNG tự hết hạn.'
     : null
+  const mcqBao = mcqGap > 0 ? `${mcqGap} câu trả lời ngắn chưa có MCQ đã duyệt — vẫn phát hành theo dạng gốc (không chặn).` : null
+  const canhBao = [hanBao, mcqBao].filter(Boolean).join(' ') || null
   return { baiTest, added: rows.length, skipped, canhBao }
 }
 /** @deprecated dùng phatHanhTest */

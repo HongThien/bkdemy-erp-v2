@@ -5,10 +5,10 @@
 
 const gcd = (a, b) => { a = a < 0n ? -a : a; b = b < 0n ? -b : b; while (b) { [a, b] = [b, a % b] } return a }
 export const R = (p, q = 1n) => { if (q === 0n) return null; if (q < 0n) { p = -p; q = -q } const g = gcd(p, q) || 1n; return { p: p / g, q: q / g } }
-const add = (a, b) => R(a.p * b.q + b.p * a.q, a.q * b.q)
-const sub = (a, b) => R(a.p * b.q - b.p * a.q, a.q * b.q)
-const mul = (a, b) => R(a.p * b.p, a.q * b.q)
-const div = (a, b) => (b.p === 0n ? null : R(a.p * b.q, a.q * b.p))
+const add = (a, b) => (a && b) ? R(a.p * b.q + b.p * a.q, a.q * b.q) : null
+const sub = (a, b) => (a && b) ? R(a.p * b.q - b.p * a.q, a.q * b.q) : null
+const mul = (a, b) => (a && b) ? R(a.p * b.p, a.q * b.q) : null
+const div = (a, b) => (a && b && b.p !== 0n) ? R(a.p * b.q, a.q * b.p) : null
 const cmp = (a, b) => { const l = a.p * b.q, r = b.p * a.q; return l < r ? -1 : l > r ? 1 : 0 }
 const floorDiv = (a, b) => { let q = a / b, r = a % b; if (r !== 0n && (r < 0n) !== (b < 0n)) q -= 1n; return q } // b > 0n
 const roundHalfUp = (v) => floorDiv(2n * v.p + v.q, 2n * v.q) // Rat v ⇒ BigInt gần nhất, ,5 làm tròn LÊN (quy ước VN)

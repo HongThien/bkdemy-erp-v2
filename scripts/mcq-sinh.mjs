@@ -42,7 +42,10 @@ const TEXT_DANG = new Set(['T106030302', 'T106030301', 'T106040104', 'T106040204
   'T14T040101', 'T14T060103', 'T14T070101', 'T14T010101', 'T14T220101', 'T14T040102', 'T14T040103', 'T14T040201', 'T14T060102', 'T14T060101', 'T14T060104', 'T14T010106', 'T14T020101', 'T14T010103', 'T14T010102', 'T14T010104', 'T14T010105', 'T14T020103', 'T14T070102', 'T14T020102',
   'T15T010101', 'T15T010403', 'T15T010103', 'T15T010402', 'T15T010102', 'T15T010301', 'T15T010201', 'T15T010302', 'T15T010404', 'T15T010203', 'T15T010303', 'T15T010401', 'T15T020101', 'T15T010202', 'T15T020102',
   'T112030103', 'T112070311', 'T112070308', 'T112030102', 'T112050203', 'T112030101', 'T112070307', 'T112010403', 'T112040201', 'T112040202', 'T112050106', 'T112010303',
-  'T107010501', 'T107010502', 'T107010508', 'T107010509', 'T107010511', 'T107030501'])
+  'T107010501', 'T107010502', 'T107010508', 'T107010509', 'T107010511', 'T107030501',
+  'T109010203', 'T109020204', 'T109080106', 'T109080502', 'T109110201',
+  'T105040203', 'T107020401', 'T103020306', 'T106040203', 'T105040207', 'T108030601', 'T104040103', 'T103020307', 'T105020201', 'T105040103', 'T103020304', 'T111040403', 'T105040205', 'T104020101', 'T104040105', 'T110020204', 'T105020402', 'T105030202', 'T105030101', 'T110010204', 'T105030201', 'T106040303', 'T103020103', 'T111030105', 'T105020301', 'T104010104', 'T105100203', 'T110010205', 'T105010202', 'T107020402', 'T111040301', 'T104010401', 'T105040206', 'T111040103', 'T104010103', 'T104050102', 'T104010102', 'T105020203', 'T15T020204', 'T104050201', 'T105020103', 'T104010101', 'T104010403', 'T111030204', 'T104020102', 'T111040204', 'T111060205', 'T104010402', 'T111040302', 'T104010301', 'T111030203', 'T15T020202', 'T107020102', 'T104010202', 'T110010206', 'T104010106', 'T110020104', 'T104010305', 'T15T020203', 'T111060204', 'T104050101', 'T104050103', 'T107020103', 'T111060102', 'T111040203', 'T110010203', 'T111010501', 'T105010103', 'T107020303', 'T111040102', 'T111030202', 'T111010608', 'T111010502', 'T107030301', 'T104010302', 'T106020701', 'T107030401', 'T111060302', 'T108050203', 'T111010606', 'T111010611', 'T111060306', 'T108050301', 'T111010605', 'T111060303', 'T110030104', 'T108050204', 'T104030103', 'T111050102', 'T111050302', 'T108050205', 'T108050501', 'T108050401', 'T111050201', 'T108050201', 'T111050402', 'T103020202', 'T105020401', 'T104040102', 'T14T100101', 'T105040208', 'T105030203', 'T105100101', 'T103020308', 'T111060305', 'T106030401', 'T104020103', 'T105020202', 'T104020104', 'T105030102', 'T14T100102', 'T105040202', 'T108040501', 'T105040201', 'T103020305', 'T104040201', 'T107030101', 'T108040101', 'T103020102', 'T107010205', 'T103020302', 'T105040105', 'T111010103', 'T111010602', 'T107030201', 'T15T020201', 'T105010102', 'T103020303', 'T105040204', 'T103020301', 'T107020101', 'T108050302', 'T103020201', 'T105020102', 'T105010101', 'T108050202', 'T106030403', 'T105010104', 'T109030302', 'T109030304', 'T105040108', 'T105100204', 'T104010304', 'T103020101', 'T105040107', 'T106040103', 'T14T100103', 'T104030105', 'T104010303', 'T111060304', 'T109030303', 'T108040201', 'T103010103',
+  'T312010803', 'T312010103', 'T312010702', 'T312010505', 'T312010401', 'T312010202', 'T312010201', 'T312010801', 'T312010504', 'T312010402', 'T312010102', 'T312010602', 'T312010802', 'T312010705', 'T312010603', 'T312010209', 'T312010210', 'T312010205', 'T312010301', 'T312010403', 'T312010107', 'T312010503'])
 const TEXT_FN = {
   T106030302: { canon: chuanHoaFactorText, val: evalFactorText },
   T106030301: { canon: chuanHoaTapText, val: evalTapText },
@@ -169,6 +172,187 @@ const TEXT_FN = {
   T107010509: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
   T107010511: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
   T107030501: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T109010203: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T109020204: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T109080106: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T109080502: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T109110201: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+    T105040203: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T107020401: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T103020306: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T106040203: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105040207: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T108030601: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104040103: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T103020307: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105020201: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105040103: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T103020304: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111040403: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105040205: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104020101: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104040105: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T110020204: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105020402: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105030202: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105030101: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T110010204: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105030201: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T106040303: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T103020103: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111030105: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105020301: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104010104: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105100203: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T110010205: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105010202: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T107020402: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111040301: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104010401: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105040206: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111040103: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104010103: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104050102: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104010102: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105020203: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T15T020204: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104050201: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105020103: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104010101: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104010403: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111030204: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104020102: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111040204: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111060205: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104010402: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111040302: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104010301: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111030203: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T15T020202: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T107020102: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104010202: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T110010206: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104010106: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T110020104: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104010305: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T15T020203: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111060204: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104050101: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104050103: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T107020103: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111060102: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111040203: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T110010203: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111010501: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105010103: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T107020303: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111040102: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111030202: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111010608: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111010502: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T107030301: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104010302: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T106020701: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T107030401: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111060302: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T108050203: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111010606: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111010611: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111060306: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T108050301: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111010605: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111060303: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T110030104: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T108050204: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104030103: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111050102: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111050302: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T108050205: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T108050501: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T108050401: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111050201: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T108050201: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111050402: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T103020202: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105020401: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104040102: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T14T100101: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105040208: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105030203: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105100101: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T103020308: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111060305: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T106030401: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104020103: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105020202: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104020104: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105030102: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T14T100102: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105040202: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T108040501: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105040201: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T103020305: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104040201: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T107030101: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T108040101: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T103020102: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T107010205: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T103020302: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105040105: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111010103: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111010602: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T107030201: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T15T020201: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105010102: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T103020303: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105040204: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T103020301: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T107020101: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T108050302: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T103020201: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105020102: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105010101: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T108050202: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T106030403: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105010104: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T109030302: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T109030304: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105040108: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105100204: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104010304: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T103020101: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105040107: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T106040103: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T14T100103: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104030105: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T104010303: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T111060304: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T109030303: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T108040201: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T103010103: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  // HGT (Hình giải tích) khối 12 — 22 dạng khớp ≥97% sinhNhieuDapSoThucTe (20/09, --kho hgt)
+  T312010803: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010103: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010702: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010505: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010401: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010202: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010201: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010801: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010504: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010402: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010102: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010602: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010802: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010705: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010603: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010209: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010210: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010205: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010301: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010403: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010107: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T312010503: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
   T109020203: { canon: chuanHoaBatDangThuc, val: evalBatDangThucKetQua },
   T109020103: { canon: chuanHoaPtPhanThucKetQua, val: evalPtPhanThucKetQua },
   T109020403: { canon: chuanHoaPtPhanThucKetQua, val: evalPtPhanThucKetQua },
@@ -185,7 +369,15 @@ function laHinhThucText(dang, dapAn) {
   if (dang === 'T108010103') return /[a-zA-Z]/.test(String(dapAn ?? ''))
   return TEXT_DANG.has(dang)
 }
-const TBL = 'dai_cau_form_tn'
+// Kho: --kho dai (mặc định) | hgt — chọn bộ bảng theo nhánh (CLAUDE.md §1.6, bảng RIÊNG không gộp).
+// Chỉ table NAME khác nhau — parser/rule sinh nhiễu (mini-dang.mjs) dùng CHUNG, dispatch theo mã dạng
+// (T1xx.. Đại vs T3xx.. HGT không đụng nhau nên TEXT_DANG/TEXT_FN gộp chung 1 dict vẫn an toàn).
+const KHO = {
+  dai: { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', formTbl: 'dai_cau_form_tn', ruleTbl: 'dai_mcq_rule' },
+  hgt: { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', formTbl: 'hgt_cau_form_tn', ruleTbl: 'hgt_mcq_rule' },
+}[opt('--kho', 'dai')]
+if (!KHO) throw new Error('--kho phải là dai hoặc hgt')
+const { cauTbl: CAU_TBL, banDoTbl: BANDO_TBL, formTbl: TBL, ruleTbl: RULE_TBL } = KHO
 const LETTERS = ['A', 'B', 'C', 'D']
 
 const c = new pg.Client({ connectionString: env.DATABASE_URL, connectionTimeoutMillis: 20000 })
@@ -197,14 +389,14 @@ try {
   else console.log('Dùng: --list [--dang X] [--n 40] [--out f.json] | --verify kq.json | --ghi kq.json [--model m]')
 } finally { await c.end() }
 
-async function rules() { return (await c.query('select ma, ten, mo_ta, vi_du, nhom, ap_dung, du_phong from dai_mcq_rule where active order by ma')).rows }
+async function rules() { return (await c.query(`select ma, ten, mo_ta, vi_du, nhom, ap_dung, du_phong from ${RULE_TBL} where active order by ma`)).rows }
 
 async function list() {
   const dang = opt('--dang'), n = Number(opt('--n', 40))
   const dangs = dang === '2a' ? POOL2A : dang === '3' ? POOL3 : dang ? dang.split(',') : POOL1
   const { rows } = await c.query(`
     select q.ma_cau, q.dang_chinh, b.ten_dang, q.noi_dung, q.dap_an, q.loi_giai
-    from dai_cau_hoi q join dai_ban_do b on b.ma_dang = q.dang_chinh
+    from ${CAU_TBL} q join ${BANDO_TBL} b on b.ma_dang = q.dang_chinh
     where q.xoa_at is null and q.dang_chinh = any($1)
       and q.da_duyet                                   -- CỬA 2 chỉ nhận câu đã qua CỬA 1 (spec-kho-chuan.md §4, từ 08/09)
       and q.dap_an is not null and q.dap_an <> '' and q.lua_chon is null and q.menh_de is null
@@ -226,7 +418,7 @@ async function list() {
   const phanBo = Object.fromEntries(LETTERS.map((l) => [l, 0]))
   for (const r of (await c.query(`select dap_an, count(*)::int n from ${TBL} where xoa_at is null group by 1`)).rows) phanBo[r.dap_an] = r.n
   const mau = (await c.query(`
-    select f.ma_cau, q.noi_dung, f.lua_chon, f.dap_an from ${TBL} f join dai_cau_hoi q on q.ma_cau = f.ma_cau
+    select f.ma_cau, q.noi_dung, f.lua_chon, f.dap_an from ${TBL} f join ${CAU_TBL} q on q.ma_cau = f.ma_cau
     where f.xoa_at is null and f.da_duyet and q.dang_chinh = any($1) order by f.duyet_at desc limit 2`, [dangs])).rows
   const out = { sinh_luc: new Date().toISOString(), dangs, rule: await rules(), phan_bo_dap_an_hien_co: phanBo, mau, cau }
   const f = opt('--out')
@@ -305,7 +497,7 @@ async function verify(file, quiet = false) {
   const ruleMap = new Map((await rules()).map((r) => [r.ma, r]))
   const mas = items.map((x) => x.ma_cau)
   const { rows } = await c.query(`
-    select q.ma_cau, q.dap_an, q.dang_chinh from dai_cau_hoi q
+    select q.ma_cau, q.dap_an, q.dang_chinh from ${CAU_TBL} q
     where q.ma_cau = any($1) and q.xoa_at is null and q.lua_chon is null and q.menh_de is null
       and not exists (select 1 from ${TBL} f where f.ma_cau = q.ma_cau and f.xoa_at is null)`, [mas])
   const db = new Map(rows.map((r) => [r.ma_cau, r]))
@@ -329,7 +521,7 @@ async function ghi(file) {
   if (fail) { console.error('\n✖ Có câu FAIL hoặc phân bố lệch — sửa file rồi chạy lại. KHÔNG ghi.'); process.exitCode = 1; return }
   let n = 0, skip = 0
   for (const it of pass) {
-    const { rows } = await c.query('select dap_an, dang_chinh from dai_cau_hoi where ma_cau = $1', [it.ma_cau])
+    const { rows } = await c.query(`select dap_an, dang_chinh from ${CAU_TBL} where ma_cau = $1`, [it.ma_cau])
     const keyCanon = laHinhThucText(rows[0]?.dang_chinh, rows[0]?.dap_an) ? TEXT_FN[rows[0]?.dang_chinh].canon(rows[0]?.dap_an ?? '') : parseHuuTi(rows[0]?.dap_an ?? '').canon
     await c.query('begin')
     try {

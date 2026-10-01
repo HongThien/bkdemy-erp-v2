@@ -99,6 +99,18 @@ export function etFormOf(c: { ma_cau: string; loai_cau: string; lua_chon?: strin
   if (c.lua_chon && c.lua_chon.length) return 'trac_nghiem'      // mặc định: có phương án → trắc nghiệm
   return c.loai_cau === 'tu_luan' ? 'tu_luan' : 'tra_loi_ngan'   // còn lại theo kho, default trả lời ngắn
 }
+// ⭐ CEO chốt 20/09: cấp 3 (khối 10-12) CHỈ dùng MCQ cho ET/giáo trình/BTVN phát hành ONLINE — nhưng KHÔNG
+// đụng `etFormOf` (dùng chung cho in giấy/ETScreen edit UI, đổi mặc định ở đó sẽ khiến BẢN IN GIẤY cũng
+// tự đổi form, phá invariant "giấy dạy trên lớp giữ nguyên format gốc"). Hàm RIÊNG chỉ dùng ở nơi phát
+// hành online (testonline.ts snap()) — GV đã CHỌN TAY qua etFormByCau thì tôn trọng, không ép; chỉ ép
+// mặc định 'trac_nghiem' khi GV CHƯA chọn gì (thiếu key) và có form AI đã duyệt cho câu đó (caller đảm
+// bảo `ft` tồn tại trước khi gọi).
+export function onlineFormOf(c: { ma_cau: string; loai_cau: string; lua_chon?: string[] | null }, ch: CauHinh, khoi: string | null | undefined): ETForm {
+  const base = etFormOf(c, ch)
+  if (base === 'trac_nghiem') return base
+  if (ch.etFormByCau?.[c.ma_cau]) return base // GV đã chọn tay → tôn trọng, không ép MCQ
+  return khoi === '10' || khoi === '11' || khoi === '12' ? 'trac_nghiem' : base
+}
 // Câu ứng viên có IN ĐƯỢC ở `form` không (cho sinh mã đề 2/3 — "phải cùng form"). Chỉ trắc nghiệm cần
 // phương án; trả-lời-ngắn/tự-luận thì câu nào cũng ép được (set etFormByCau khi sinh). Câu Đúng/Sai
 // (có menh_de) chỉ khớp trắc nghiệm — bảng TLN/TL không hiển thị nổi 4 mệnh đề.
@@ -112,7 +124,7 @@ export function canBeETForm(c: { lua_chon?: string[] | null; menh_de?: unknown[]
 }
 // Kho nào ĐÃ CÓ bảng form trắc nghiệm AI (<kho>_cau_form_tn). khoCuaMon().formTnTbl là TÊN theo quy ước cho mọi kho;
 // bảng chưa tạo thì PostgREST 404 → chỗ gọi kiểm qua đây trước. Tạo bảng cho kho mới = thêm tên vào đây (registry, §1.6).
-const KHO_CO_FORM_TN = new Set(['dai_cau_form_tn'])
+const KHO_CO_FORM_TN = new Set(['dai_cau_form_tn', 'hgt_cau_form_tn'])
 export const coFormTn = (formTnTbl: string): boolean => KHO_CO_FORM_TN.has(formTnTbl)
 // ⭐ THỨ TỰ CHUẨN CỦA ET (Thùy chốt 07-20) — gom theo NHÓM IN: trắc nghiệm → trả lời ngắn → tự luận,
 // GIỮ NGUYÊN thứ tự chọn bên trong mỗi nhóm. Gom TẠI LÚC LƯU (ETScreen.luu) → ghi thẳng vào `thu_tu`.
