@@ -284,14 +284,19 @@ HANDOFF mục GIAO DIỆN APP HS · tutorial demo `src/screens/hocsinh/tutorial/
 ### 13.4 HỢP ĐỒNG giữa các luồng (hình dạng dữ liệu — luồng Số liệu làm thật, Giao diện dựng giả theo đúng hình này)
 
 ```ts
-// fn_chuoi_cua_toi() → jsonb   (chuỗi CHUNG mọi môn — đề xuất CTO, Thùy chưa bác)
-{ so_ngay: number,                 // chuỗi hiện tại (0 nếu đứt)
+// fn_chuoi_cua_toi() → jsonb   ✔ ĐÃ CÓ (mig 202610011512 + 1515) · TS: src/lib/chuoi.ts chuoiCuaToi() · chuỗi CHUNG mọi môn (Thùy 01/10)
+{ so_ngay: number,                 // chuỗi hiện tại (0 = đứt / chưa có)
+  bat_dau: string | null,          // ngày đầu chuỗi hiện tại
   hom_nay_da_tinh: boolean,        // hôm nay đã có lượt học thật
+  luot_hom_nay: number,            // số lượt học thật hôm nay
   ky_luc: number,                  // chuỗi dài nhất
-  the_dong_bang: number,           // thẻ đóng băng còn trong tháng
-  sua_duoc_den: string | null,     // ISO — còn sửa chuỗi được tới lúc này (null = không có gì để sửa)
-  moc_tiep: number,                // mốc kế tiếp (3/7/14/30/50/100)
-  bay_ngay: { ngay: string, trang_thai: 'hoc' | 'dong_bang' | 'nghi' | 'trong' }[] }  // 7 ngày gần nhất cho dải lửa
+  the_dong_bang: number,           // thẻ đóng băng còn trong tháng (2/tháng, tự dùng khi hết hạn sửa)
+  ngay_cho_sua: string[],          // ngày lỡ còn sửa được
+  luot_can_bu: number,             // cần thêm bấy nhiêu lượt NGOÀI lượt giữ hôm nay để sửa hết
+  sua_duoc_den: string | null,     // ISO — hết hạn sửa ngày lỡ cũ nhất
+  moc_tiep: number | null,         // 3/7/14/30/50/100/200/365
+  bay_ngay: { ngay: string, trang_thai: 'hoc' | 'dong_bang' | 'nghi' | 'trong' | 'cho_sua' | 'dut' }[] }  // 7 ngày, cũ → mới
+// Mốc 7 (A) / 30·100·200·365 (S) tự thành tin Thế giới kieu='chuoi', chi_tiet { so_ngay } — khoe được như thành tích khác.
 
 // fn_ban_do_phieu_luu(p_mon text) → jsonb   (cây kiến thức của khối em + trạng thái HS × dạng)
 { mon: string, khoi: string,
@@ -339,5 +344,9 @@ fn_ban_do_phieu_luu (trang hs.html?xem=phieu_luu) + ngọn lửa chuỗi trên H
 
 *(Luồng nào cần luồng khác làm gì thì ghi 1 dòng: ngày · từ → tới · việc · trạng thái. Luồng nhận làm xong thì sửa trạng thái thành ✔.)*
 
-- 01/10 · Giao diện → Số liệu · `fn_chuoi_cua_toi` + `fn_ban_do_phieu_luu` đúng §13.4 · ⏳
+- 01/10 · Giao diện → Số liệu · `fn_chuoi_cua_toi` đúng §13.4 · ✔ 01/10 (`src/lib/chuoi.ts`)
+- 01/10 · Giao diện → Số liệu · `fn_ban_do_phieu_luu` đúng §13.4 · ⏳ (làm tiếp ngay sau chuỗi)
+- 01/10 · Số liệu → Giao diện · Thế giới BK: thêm chữ cho tin `kieu = 'chuoi'` ở `moTaTin()` (`TheGioiHS.tsx`), vd "giữ **chuỗi 7 ngày** 🔥" (`chi_tiet.so_ngay`) — hiện đang ra nguyên chữ "chuoi" · ⏳
+- 01/10 · Số liệu → Giao diện · màn kết quả Tự luyện/Thử thách: gọi `ketQuaLuotHocThat(baiLamId)` + `loiLuotKhongTinh()` (`src/lib/chuoi.ts`) báo lượt chưa tính · ⏳
+- 01/10 · Số liệu → Giao diện · (sau) ô nhập "Ngày nghỉ của chuỗi" cho quản trị: hàm có sẵn `dsNgayNghiChuoi / themNgayNghiChuoi / goNgayNghiChuoi` — Số liệu tự làm ở màn nhân sự Huy hiệu · ⏳ Số liệu
 - 01/10 · Game → Giao diện · ô vào game trên Home (id ô, link, icon) · ⏳ chờ luồng Game gửi chi tiết

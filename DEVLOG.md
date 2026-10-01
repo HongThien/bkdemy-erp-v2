@@ -33329,3 +33329,20 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   đáp số TLN 2 / −32 / 556 / 10 / 23,9 / 7 đều hợp lệ phiếu 4 ô; ✎ Sửa nội dung mở được cho TN và Đ/S; đề gốc PDF mở cạnh bên; bấm lại đáp án A câu 1 ⇒ `tai_lieu.updated_at`
   bump 15:09:28 (ghi thật qua RLS OK). Kho tài liệu: dòng đề thi chỉ còn nút in. tsc sạch phần mình.
 - Chưa tốt: màn hẹp (<1100px) mà mở đề gốc thì cột đề bị bóp; chưa có nút xoá đề ở Kho đề thi; chưa soạn câu mới bằng tay trong đề.
+
+## 2026-10-01 — [Số liệu] CHUỖI LÀM BÀI (mig 202610011512 + 202610011515, ĐÃ ÁP)
+
+- Thùy: chuỗi CHUNG mọi môn; context này = luồng Số liệu (đồ hoạ làm context khác).
+- Mig 1512: bảng `chuoi_ngay_nghi` (tu, den, khoi[] — rỗng = mọi khối, ly_do, xoa_at kho rác; ghi qua `fn_chuoi_ngay_nghi_ghi/_go`, quyền `huyhieu`) ·
+  `_chuoi_cua(hs)` SUY ĐỘNG từng ngày từ lượt học thật đầu tiên: hoc / nghi / chờ sửa 48 giờ (lượt THỪA 2 ngày sau bù ngày lỡ cũ nhất) / hết hạn ⇒
+  thẻ đóng băng (2/tháng, không dồn) / hết thẻ ⇒ đứt; hôm nay chưa học = trống. Trả hợp đồng §13.4 · `fn_chuoi_cua_toi()` cho app.
+  Không có dữ liệu ngày nghỉ/tuần thi sẵn (`ky_thi` chỉ có MT, không ngày) ⇒ phải có bảng riêng. `auth.uid()` làm default cột bị chặn (role migrate
+  không đọc schema auth) ⇒ dùng `public.jwt_uid()`.
+- Thử ROLLBACK 12 em hoạt động nhất (~80 ms/em): chuỗi 17 (Đào Minh Quân), em lỡ 30/09 vẫn giữ 5 ngày chờ sửa, có em ❄ rồi ✖; ngày nghỉ 11 ngày khối 4T
+  nối chuỗi 5 → 22.
+- Mig 1515: `_chuoi_cua` thêm `bat_dau` · bảng sự kiện `chuoi_moc_dat` (em, mốc 7/30/100/200/365, ngày đầu chuỗi, môn của lượt chạm mốc) · trigger
+  `trg_chuoi_moc` sau khi nộp lượt `tu_luyen` (chỉ ghi mốc VỪA chạm: so_ngay − mốc ≤ 2; lỗi chỉ cảnh báo, KHÔNG chặn nộp bài) · `_the_gioi_tin` thêm nhánh
+  `chuoi` (mốc 7 = A, ≥30 = S; mỗi chuỗi chỉ mốc cao nhất). Lý do ghi sự kiện: suy chuỗi cả trung tâm mỗi lần mở feed ~38 s. Thử ROLLBACK: em chuỗi 9 nộp
+  lại ⇒ 1 mốc 7 + 1 tin A; nộp lần 2 không trùng; feed 7 ngày 100 ms như cũ.
+- `src/lib/chuoi.ts`: `chuoiCuaToi` · `ketQuaLuotHocThat` + `loiLuotKhongTinh` · ngày nghỉ (ds/thêm/gỡ). Spec §13.4 cập nhật đúng hàm thật; hộp thư §13.6 gửi
+  Giao diện: chữ cho tin `chuoi` ở `moTaTin()`, báo lượt chưa tính ở màn kết quả.
