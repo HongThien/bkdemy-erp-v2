@@ -33280,3 +33280,26 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Đơn 6** (`design/DON-HANG-SKIN-HS.md`): bản đồ phiêu lưu + quái RPG — biome xoay vòng (không vẽ từng chủ đề), quái dùng chung gắn cố định theo cụm,
   41 hình xếp ưu tiên (#01 toàn cảnh duyệt → 4 nền vùng → 8 quái → 2 boss → bản đồ thế giới + 4 đảo → mở rộng → đồ vật).
 - App chưa đổi: báo "lượt chưa tính" ở màn kết quả làm cùng lát B (chuỗi).
+
+## 2026-10-01 (máy công ty, tiếp) — Bắt Thú: CEO đổi trọng tâm phase đầu — bắt thú + ấp trứng, thú DỄ THƯƠNG; hỏi cưỡi thú được không
+
+- **CEO:**
+  - "phase đầu chưa focus đánh boss, chỉ focus bắt thú và ấp trứng — tập trung design con thú cho dễ thương";
+  - "tính năng quan trọng: có làm được animation cưỡi thú không".
+  - Đã ghi spec-bat-thu §1 #18, #19.
+- **Kiểm trước khi trả lời** (đọc file, không đoán):
+  - Thú Quaternius trong repo: `blob_*` chỉ 4 xương (Idle/Walk/Jump/…) · `big_*` 43–49 xương, dáng đứng 2 chân, có Run · `flying_*` 13 xương, có Fast_Flying.
+    ⇒ không con nào hợp để cưỡi.
+  - Người chơi: repo chỉ có 19 động tác KayKit, không có tư thế ngồi.
+  - Zip gốc `KayKit_Character_Animations_1.1` (gói Simulation) CÓ `Sit_Chair_Down/Idle/StandUp`, `Sit_Floor_*`, `Lie_*`.
+- **Trả lời: cưỡi làm được** (spec §3.2):
+  - điểm yên theo khuôn xương; tư thế ngồi KayKit + dạng đùi bằng code;
+  - chỉ thú trưởng thành cưỡi được, nên nối ấp trứng → lớn → cưỡi;
+  - làm "chạy" trước, bay/bơi sau.
+- **Thú dễ thương:** nguyên tắc Kindchenschema (Lorenz 1943); dòng tiến hoá non → lớn; trứng có hoa văn riêng.
+- **Nguồn thú chờ CEO** (§3.2):
+  - A. mua Meshtint Cute Series (~160 USD, 24 × 3 bậc);
+  - B. tự dựng bằng code như bò/chó Nông Trại;
+  - C. giữ Quaternius.
+  - CTO đề xuất mua thử 1 gói A, đặt cạnh B để CEO nhìn.
+- spec §5 viết lại thứ tự việc: nguồn thú → ấp trứng → cưỡi → đo iPad; boss/MMO để sau.

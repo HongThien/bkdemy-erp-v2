@@ -41,6 +41,8 @@
 | 15 | **Gộp với Nông Trại thành 1 game**: trồng trọt · khám phá (bắt thú) · ấp trứng nuôi pet kiểu Dragon City (01/10) | Ý Palworld: pet bắt được giúp việc trong căn cứ/vườn |
 | 16 | **Định vị: HS chơi vì có bạn bè + để kiếm thêm xu**, KHÔNG đi đường làm game thật hay (01/10) | Lợi thế BK = bạn cùng lớp ngoài đời |
 | 17 | **Pháp lý (NĐ 147/2024): CEO không lo** — game chạy local, không trả xu trực tiếp, không có giao dịch tiền (01/10) | Đánh giá: `design/danh-gia-game-bat-thu-cho-bk.md` |
+| 18 | **Phase đầu CHƯA làm đánh boss** — chỉ **bắt thú + ấp trứng**; tập trung **thiết kế con thú cho DỄ THƯƠNG** (01/10) | Khu đấu boss đã có ở bản thử thì để nguyên, không làm tiếp. Sổ Trùm §3.0b gác lại |
+| 19 | **Cưỡi thú là tính năng quan trọng** (01/10) | Cách làm: §3.2 |
 
 - **Hệ quả của #7 với luật §2.0 CLAUDE.md:** sát thương tính 20 lần/giây trên **máy chủ game** (Colyseus), không qua Postgres từng đòn.
   Postgres (`fn_game_*`) giữ những gì **có giá trị lâu dài**: kết quả bắt, exp/cấp, bộ sưu tập, (sau này) xu có trần ngày.
@@ -144,8 +146,47 @@ Trang xem: https://claude.ai/artifact/2zWHd4mF6NAhX2UnVVzaDV
 - **Ước iPad gen 7** (chậm hơn máy bàn khoảng 5–8 lần): khoảng 20–35 ms/khung ⇒ **30–50 FPS ở bản Nhẹ**. Phải đo máy thật.
 - **Máy chủ 100 người** (chưa dựng): mỗi máy chỉ nhận vị trí của 10 người, 10 lần/giây. Theo research, Colyseus trên 1 VPS nhỏ thừa sức. **Phải test tải** khi dựng.
 
+### 3.2 Cưỡi thú + thú dễ thương (01/10 — thiết kế, CHƯA code)
+
+**Cưỡi thú: LÀM ĐƯỢC.** Cách làm giống Palworld / Pokémon Legends Arceus:
+- Mỗi **khuôn xương thú** (4 chân · 2 chân · bay · bơi) có 1 **điểm yên** gắn vào xương lưng.
+  - Khi cưỡi: người chơi gắn vào điểm yên, ở tư thế ngồi cưỡi; thú chạy/bay theo cần gạt; camera lùi xa hơn một chút.
+  - Thú mới cùng khuôn thì tự cưỡi được, không phải làm lại.
+- **Tư thế người cưỡi:** gói KayKit Character Animations (bản zip đã có ở ổ E:, gói Simulation) có sẵn `Sit_Chair_Down` / `Sit_Chair_Idle` / `Sit_Chair_StandUp`.
+  - Repo mới lấy 2/14 động tác của gói này ⇒ lấy thêm.
+  - Ngồi ghế → ngồi cưỡi: dạng hai đùi ra bằng code + nhún theo nhịp bước của thú.
+- **Lên / xuống:** đứng gần thú của mình ⇒ nút "Cưỡi" ⇒ nhảy lên (ngồi xuống) · nhảy xuống (đứng dậy).
+- **Chỉ thú TRƯỞNG THÀNH cưỡi được.** Con non mới nở không cưỡi được ⇒ có lý do để nuôi lớn: ấp trứng → lớn → cưỡi.
+- **Kiểu cưỡi:** chạy (nhanh gấp đôi đi bộ) → làm trước · bay (có trần độ cao) · bơi → sau.
+- **Vướng hiện tại:** thú Quaternius đang dùng không hợp để cưỡi.
+  - `blob_*`: chỉ 4 xương, tròn bé.
+  - `big_*`: thú đứng 2 chân.
+  - `flying_*`: bé.
+  - ⇒ Bản thử cưỡi làm được ngay với `flying_dragon` (phóng to khi cưỡi) hoặc `big_dino`, nhưng chưa đẹp cho tới khi có bộ thú mới.
+
+**Thú dễ thương — nguyên tắc thiết kế.** Tên lý thuyết (R7): *Kindchenschema*, "sơ đồ em bé" của Konrad Lorenz (1943) — những nét làm người ta thấy "muốn che chở".
+- Đầu to so với thân (gần 1:1); mắt to đặt thấp trên mặt; mũi, miệng nhỏ; má hồng.
+- Thân tròn, chân tay ngắn mập, không góc nhọn.
+- 2–3 màu chính dịu + 1 điểm nhấn riêng của loài.
+- Hình bóng nhận ra ngay ở cỡ nhỏ (thẻ, sổ thú).
+- **Dòng lớn: con non dễ thương nhất → trưởng thành ngầu hơn nhưng vẫn giữ nét đáng yêu** (kiểu Charmander → Charizard).
+- Mỗi loài 1 hoa văn trứng riêng ⇒ HS đoán được trứng nở ra con gì.
+
+**Nguồn thú — CHỜ CEO chọn:**
+
+| Cách | Được | Mất |
+|---|---|---|
+| **A. Mua Meshtint Cute Series** (Monsters Ultimate Pack 02, 24 loài × 3 bậc tiến hoá, ~160 USD, có động tác — đã kiểm ở `design/nguon-mo-hinh-boss-bat-thu.md`) | Khớp nhất: dễ thương, sẵn 3 bậc (con non → lớn), đủ động tác; nhanh | Phong cách người khác, lệch với Nông Trại (game sẽ gộp) · phải đổi FBX → GLB + nén · phải hỏi giấy phép dùng web · chưa chắc loài nào có lưng cưỡi được |
+| **B. Tự dựng bằng code** như con bò, con chó Nông Trại (nặn liền SDF + khuôn xương dùng chung + động tác bằng code) | Một phong cách với Nông Trại · sửa gì cũng được · không tốn tiền, không vướng giấy phép | Chậm: mỗi loài phải CEO duyệt hình (con bò mất 2 vòng) · mỗi khuôn xương phải viết động tác |
+| **C. Giữ Quaternius** đang có | Miễn phí, có sẵn | Ít loài dễ thương · không cưỡi được · khó ra 3 bậc |
+
+- **CTO đề xuất:** mua thử 1 gói Meshtint (A), đặt cạnh con bò/chó dựng bằng code (B) để CEO nhìn rồi chọn.
+  - A đẹp hơn ⇒ A làm gốc, B dùng cho vài thú đặc biệt của BK.
+  - B đủ đẹp ⇒ đi B cho đồng bộ với Nông Trại.
+
 ## 4. Chờ CEO
 
+0. **(01/10, ưu tiên) Nguồn THÚ DỄ THƯƠNG** — 3 cách A/B/C ở §3.2. Boss đã gác lại (#18) ⇒ mục 1 dưới đây giờ chỉ còn phần pet.
 1. **Nguồn mô hình boss + pet** (`design/nguon-mo-hinh-boss-bat-thu.md`). Không nhà bán nào có đủ cả boss ngầu lẫn pet đẹp cùng một phong cách.
    - **Đề xuất** (~465 USD, 68 mẫu): Meshtint Cute Series (pet 3 bậc tiến hoá + boss biển) + N-hance Stylized Fantasy Creatures/Dragons (hổ, đại bàng, sói, gấu, rồng Whelp → Elder) + FSaur (T-rex).
      - Đã kiểm: [N-hance bundle](https://assetstore.unity.com/packages/3d/characters/animals/stylized-fantasy-creatures-bundle-184409) 21 con, có hổ và đại bàng, 149,99 USD, nặng 580 MB, phải nén cho web.
@@ -163,9 +204,10 @@ Trang xem: https://claude.ai/artifact/2zWHd4mF6NAhX2UnVVzaDV
    - 01/10, máy nhà (§1 #17): *"không trả xu trực tiếp"*.
    - Cần CEO chọn. Nếu giữ ý 30/09 thì thưởng bắt thú là xu ⇒ phải tính chung trần tháng với Nông Trại. Nếu giữ ý 01/10 thì bài học "đầu tư có rủi ro" đổi sang đơn vị khác (vật liệu, trứng…).
 
-## 5. Việc kế tiếp (CTO)
+## 5. Việc kế tiếp (CTO) — theo #18–19 (01/10)
 
-1. Đo trên iPad gen 7 thật (FPS, bộ nhớ tab, 20 phút liên tục không tự tải lại).
-2. Boss: khu đấu riêng + thanh máu lớn + chiêu diện rộng có báo trước; party 2–4.
-3. MMO: Colyseus (vùng + kênh, 10 lần/giây) + đăng nhập tài khoản BK + `fn_game_*`.
-4. Làm mờ cây/đá khi che người chơi.
+1. **Chốt nguồn thú dễ thương** (§3.2, chờ CEO) → dựng 1 dòng thú mẫu: trứng → con non → trưởng thành, đủ động tác.
+2. **Ấp trứng:** lò ấp, trứng nở theo ngày (nhịp ngày như Nông Trại), hoạt cảnh nở trứng.
+3. **Cưỡi thú** (§3.2): bản thử với thú đang có, rồi áp cho thú trưởng thành của dòng mẫu.
+4. Đo trên iPad gen 7 thật (FPS, bộ nhớ tab, 20 phút liên tục không tự tải lại).
+5. Để sau: boss + party 2–4 · MMO Colyseus (vùng + kênh, 10 lần/giây) + đăng nhập tài khoản BK + `fn_game_*` · làm mờ cây/đá khi che người chơi.
