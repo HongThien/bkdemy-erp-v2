@@ -21,7 +21,7 @@
 ## ✅ KIỂM HÀNG 01/10 — 72 hình ChatGPT giao 30/09–01/10 (tên mặc định "ChatGPT Image …", Claude nhận diện bằng mắt + đổi tên)
 
 > ⚠ **Ảnh GỐC (`design/bk-ui-src/gami/`, ~140 MB) KHÔNG lên git** (`.gitignore`, Thùy chốt 01/10) — bản chính cất Google Drive, máy nào cũng
-> lấy được. Repo chỉ giữ hình app dùng (`public/bk-ui/hs/gami/`) + ảnh toàn cảnh JPG (`design/handoff/gami-v1/reference/`). Đường dẫn Drive: _(Thùy ghi)_.
+> lấy được. Repo chỉ giữ hình app dùng (`public/bk-ui/hs/gami/`) + ảnh toàn cảnh JPG (`design/handoff/gami-v1/reference/`). Drive (Thùy tải lên 01/10): https://drive.google.com/drive/folders/1SuezN0GRVndmnU25MaDfcR1r12ha3aYA
 > Hình về KHÔNG theo `#số + tên file` và nằm ở gốc `bk-ui-src/` ⇒ Claude nhận diện từng hình, đếm sao, rồi mới đổi tên. **Thứ tự giờ tải không
 > đáng tin:** 2 file Zeus bị đảo (file 10:37:44 có 3 sao, 10:37:48 có 2 sao) — gán theo số sao, không theo vị trí.
 
