@@ -250,6 +250,10 @@ bản đồ kiến thức Thùy tự làm; gán mẫu / skill gán dạng / lô 
   22 câu (19 hgt + 3 dai), nhập từ Word. Thùy duyệt 20:01, gán làm **Giáo trình buổi 9 của 12A1** (`55f98c32-57bd-4824-9c86-b700f8e67b84`) và mở app
   (`bai_test 41ef798e-1dda-4f3b-a55b-ee9ec7673f70`, loại `giao_trinh`). Đọc DB sau khi mở: 3 phần 12 / 4 / 6 câu · 22/22 câu lên app và mở sẵn ·
   6 câu trả lời ngắn có `kieu_nhap='phieu_4o'` · 2 câu dạng chờ có `ma_dang` trống · tên phần đủ · 3 em đã bắt đầu làm.
+- **Lỗi thật tối 01/10 — ĐÃ SỬA (mig `202610012158`, đã áp):** bài trên lớp từ đề chỉ hiện CÂU 1 cho học sinh. App HS đang chạy (bản cũ, chưa deploy) chỉ hiện
+  câu thuộc DẠNG đã mở, mà bài mới mở theo CÂU. Giờ mở sẵn cả đề bằng cả hai cách (`bai_test_cau_phat_hanh` + `bai_test_dang_phat_hanh`) và đã vá bài của 12A1:
+  bản app cũ thấy 20/22 câu. **2 câu chưa có dạng (câu 5 phần I, câu 1 phần III) chỉ hiện khi deploy app HS mới, hoặc khi gán dạng cho 2 câu đó**
+  (gán dạng ở màn đề ⇒ trigger tự điền + tự mở dạng trong bài đã phát).
 - **CHƯA kiểm bằng mắt / còn hở (xếp theo mức cần):**
   1. Bản IN phiếu của tài liệu gán từ đề (PrintView với phần không có mã dạng) — mới sửa code, chưa ai mở xem.
   2. HS làm thật trên app: ô 4 ký tự mới kiểm ở trang xem-thử; app HS trên Vercel chưa deploy nên tối 01/10 các em dùng ô nhập thường.
@@ -2057,6 +2061,9 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
   giả trên bản đồ và kéo cả bổ trợ. Để trống lúc chụp, trigger điền khi câu có dạng thật.
 - **App HS có HAI lớp lọc câu của giáo trình online:** RLS `_btc_trang_thai` (mở theo câu hoặc theo dạng) và một lớp lọc nữa ở client
   `getBaiTestFull` (trước 01/10 chỉ nhận mở theo dạng). Đổi luật mở câu phải sửa cả hai, không thì DB cho mà app vẫn giấu.
+- **⭐ Deploy tay ⇒ bản app đang chạy là bản CŨ; thay đổi phía DB phải đúng với CẢ client cũ.** 01/10: sửa lớp lọc client trong repo (nhận câu mở lẻ) rồi coi
+  như xong, trong khi học sinh dùng bản Vercel chưa deploy ⇒ lớp chỉ thấy câu 1. "Đọc DB thấy 22/22 câu đã mở" KHÔNG phải bằng chứng học sinh thấy 22 câu —
+  dấu hiệu có sẵn mà CTO bỏ qua: 3 em vào làm, cả 3 chỉ có đúng 1 câu trả lời. Kiểm đường của người dùng thật (bản đang chạy), không chỉ đường của code mới.
 - **Hàm `security definer` do `claude_build` sở hữu không gọi được `auth.uid()`** ("permission denied for schema auth") — dùng `public.jwt_uid()`.
   Bản chạy thử có giả phiên mới bắt được; `create function` thì trót lọt.
 - **⭐ Chạy thử migration trước khi áp:** `thu-migration.mjs --kiem` (transaction + SAVEPOINT từng câu + ROLLBACK) cho phép duyệt đề, gán, mở thi,

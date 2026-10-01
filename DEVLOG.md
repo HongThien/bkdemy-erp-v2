@@ -34251,3 +34251,18 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Không sửa tối nay (phần gán mẫu đang gác); ghi vào HANDOFF.
 - **HANDOFF:** thêm mục "LUỒNG KHO + ĐỀ THI — trạng thái hết 01/10" (①), viết lại 2 đoạn đề thi cũ (mô hình dữ liệu còn đúng · đường Gemini-trong-ERP đã gỡ),
   thêm "Bài học 28/09–01/10 — luồng kho + đề thi" (②). Lần ghép đầu bị commit của phiên khác (`3b52aaf`) cuốn mất khối ① ⇒ chèn lại rồi commit ngay trong một lệnh.
+
+## 2026-10-01 (22:00) — [Kho · Đề thi] LỖI THẬT: bài trên lớp từ đề chỉ hiện CÂU 1 cho học sinh — đã sửa
+
+- **Thùy báo:** "đang lỗi chỗ phát hành: phát hành được mỗi 1 câu đầu tiên."
+- **Nguyên nhân:** giáo trình online mở câu theo 2 cách — theo DẠNG (`bai_test_dang_phat_hanh`) và theo CÂU (`bai_test_cau_phat_hanh`). RLS nhận cả hai.
+  Nhưng app HS đang chạy trên Vercel là bản CŨ (deploy tay, chưa deploy), `getBaiTestFull` của nó lọc thêm ở client và chỉ nhận mở theo dạng.
+  `fn_de_thi_hoan_thien_bai_test` mới mở theo câu ⇒ chỉ dạng của câu 1 (trigger tự mở dạng đầu) lọt qua. CTO đã sửa lớp lọc trong repo từ chiều nhưng
+  bản đó chưa tới tay học sinh.
+- **Sai của CTO:** lúc 21:38 kết luận "chạy đúng" từ việc đọc DB thấy 22/22 câu đã mở — không kiểm đường của bản app ĐANG CHẠY. Dấu hiệu nằm ngay trong
+  số liệu chính CTO in ra (3 em vào làm, chỉ có 3 câu trả lời, đều là câu 1) mà đọc thành "các em mới bắt đầu".
+- **Sửa (mig `202610012158_de_thi_mo_ca_theo_dang`, chạy thử bằng thu-migration rồi áp `--only`):** hàm hoàn thiện mở cả đề bằng CẢ HAI cách ·
+  trigger điền dạng (câu rời dạng chờ) mở luôn dạng mới nếu câu đang mở lẻ · vá dữ liệu bài 12A1 01/10: 1 → 12 dạng mở, bản app cũ thấy 20/22 câu.
+  Bài giáo trình thường (10A1 cùng tối) không bị đụng (vẫn 1 dạng mở).
+- **Còn lại:** 2 câu chưa có dạng (câu 5 phần I, câu 1 phần III) chỉ hiện khi deploy app HS mới hoặc khi gán dạng cho câu ở màn đề. Sửa lúc 22:00 — buổi học
+  20:00–22:00 đã gần hết; bài không có hạn nên các em vẫn làm tiếp được.
