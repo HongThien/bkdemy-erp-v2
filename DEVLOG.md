@@ -33922,3 +33922,20 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - 4 khuôn dáng 4 chân · bay · bơi · bò trườn — khuôn nào cũng phải làm;
   - cá voi bay được VÀ bơi được, bắt buộc có động tác "xuống nước" + "lên không".
   - Đã báo luồng cá voi (thêm chế độ nước/trời + mặt nước trong trang thử).
+
+## 2026-10-02 (rạng sáng) — [Game] Băng Thần Mã xong (BatThu `thu-de-thuong` @ `764a120`, đã push)
+
+- **Nâng khuôn 4 chân:** chân 3 khúc + IK 2 khớp, xương cổ, 8 lọn bờm, đuôi 5 đốt; phần chung tách ra `src/thu/hinh-chung.ts`.
+  - Cáo/cừu giữ chân 1 khúc, đúng bản CEO duyệt. So lưới ở 5 tư thế trước–sau: lệch ≤ 5·10⁻⁶ (ảnh `so-truoc-sau.jpg`).
+  - Móng không trượt (đo khi chạy thật): đi 0,2 cm · kiệu 0,9 cm · phi 1,9 cm.
+- **Băng Thần Mã** (`src/thu/ngua.ts`, `dong-tac-ngua.ts`):
+  - 30 động tác: 25 chung, phiên bản ngựa + 5 riêng (chồm hí 5 pha · phi nước đại 4 nhịp · dậm băng · thở băng · lắc bờm);
+  - trứng pha lê băng.
+  - Ảnh: `ma-mau`, `ma-chom-hi`, `ma-phi`, `ma-dong-tac`, `ma-trung`.
+- **CTO tự nhận xét:** dáng và động tác đúng, nhưng thân trắng sứ trơn ⇒ chưa "ngầu" bằng Frostallion. Đề xuất thêm giáp/vân băng phát sáng, bờm tinh thể nhọn hơn, thân ngả xanh lạnh. Chờ CEO xem.
+- **Chưa ưng:**
+  - nặng (~36.600 tam giác/con, hiệu ứng vẽ rời);
+  - trứng băng còn đục;
+  - vài động tác bọc từ bản chibi còn kiểu đồ chơi (giật mình, ra/phá bóng, ngáp);
+  - nằm phục nhìn từ cao giống quỳ;
+  - VFX thật chưa làm.
