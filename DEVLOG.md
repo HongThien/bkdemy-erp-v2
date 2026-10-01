@@ -34439,3 +34439,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   đi theo hình khối (rãnh miệng), sửa màu riêng không đủ.
 - Tự kiểm: `thien_kinh-so-tham-khao` (đầu ngang, chính diện, vây cạnh ảnh 3D) · `-dt-hat` (há miệng vẫn đúng). tsc sạch.
 - Còn: chính diện dải trắng "nụ cười" mỏng hơn mẫu (má mẫu phình hơn nên thấy được 2 bên hàm từ trước).
+### 02/10 — [Giao diện] Màn đấu bản 2: cảnh thu gọn + COMBO 3 câu = 1 chiêu (Thùy: "cảnh đánh chiếm nửa màn, không đủ chỗ lời giải")
+- Bố cục: trên cùng chỉ còn 1 thanh HUD (quái đang đấu dạng ảnh 2D nhỏ · máu · đội hình · 3 ô combo · Câu x/n); câu hỏi + lời giải chiếm phần còn lại.
+  Cảnh 3D KHÔNG thường trực: bung xuống phủ ~2/3 trên khi mở màn (quái xuất hiện), khi tung chiêu, khi hạ hết đội; thu lại thì `sk.nghi(true)` ngừng vẽ.
+- Combo (Thùy chốt cơ chế, số do CTO đặt — đổi được 1 chỗ `CO_COMBO`/`TEN_CHIEU` trong DauView): mỗi 3 câu 1 chiêu · 3/3 TUYỆT KỸ (tụ lực + 3 tia + nổ lớn) ·
+  2/3 chiêu mạnh · 1/3 chiêu nhẹ · 0/3 chiêu xịt, quái hồi 1. Sát thương = số câu đúng (dư tràn sang con kế) ⇒ tổng vẫn = "mỗi câu đúng 1 đòn" của spec.
+  Câu cuối lượt mà combo dở ⇒ tung luôn theo tỉ lệ. Mở lại lượt dở: DauView nhận `daLam` để biết câu cuối.
+- `canhDau.tungChieu(cap)` mới; `sanKhau.nghi()` mới. DauView bỏ import `nguonQuai` (kéo three vào gói chính) — tên quái qua `tenQuai2D`.
+- Bẫy gặp khi kiểm: khung trình duyệt ẩn ⇒ requestAnimationFrame đứng ⇒ hoạt ảnh không bao giờ xong ⇒ nút "Đòn kế tiếp" kẹt mãi. Chốt: chiêu tối đa 4 giây (Promise.race).
+- Kiểm (trận xem thử 1180×820): 3 câu đúng ⇒ TUYỆT KỸ −3, Rùa Đá ngã, Elite 2 vào, combo về trống; tsc + check:style-hs ✔. Trận thật chưa kiểm (cần tài khoản HS).

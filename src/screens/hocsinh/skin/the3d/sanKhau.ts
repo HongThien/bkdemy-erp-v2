@@ -33,6 +33,8 @@ export type SanKhau = {
   datDen: (b: BangMau3D, op?: { bong?: boolean; huong?: THREE.Vector3 }) => { mat: THREE.DirectionalLight; hemi: THREE.HemisphereLight }
   /** theoXa = [k0,k1]: sương mù co giãn theo khoảng cách camera (near = xa·k0, far = xa·k1) — cần khi màn dọc kéo camera ra xa */
   datNen: (b: BangMau3D, xaSuong: [number, number], theoXa?: [number, number]) => void
+  /** tạm ngừng vẽ (cảnh đang bị che/thu gọn — màn đấu chỉ mở cảnh lúc tung chiêu); false = vẽ lại */
+  nghi: (v: boolean) => void
   phaHuy: () => void
 }
 
@@ -55,7 +57,7 @@ export function taoSanKhau(host: HTMLElement, op: { dpr?: number; antialias?: bo
   const huy: Array<() => void> = []
   const fns = new Set<(dt: number, t: number) => void>()
   const nhans = new Set<NhanBam>()
-  let padPhai = 0, rong = 1, cao = 1, song = true, t = 0, last = performance.now(), ema = 16, dem = 0, demCham = 0
+  let padPhai = 0, rong = 1, cao = 1, song = true, nghi = false, t = 0, last = performance.now(), ema = 16, dem = 0, demCham = 0
   // lượt đo máy: bỏ 0,8 giây đầu (biên dịch shader, nạp hình) rồi đo 2 giây
   const doMay = op.do && canDo() ? { bd: 0.8, kt: 2.8, khung: 0, viec: 0, n: 0, xong: false, lanLai: 0 } : null
   // đổi mức (em chọn tay / tự hạ): áp ngay phần không cần dựng lại; phần còn lại (lưới, cây, khử răng cưa) màn tự dựng lại
@@ -97,7 +99,7 @@ export function taoSanKhau(host: HTMLElement, op: { dpr?: number; antialias?: bo
   let raf = 0
   function vong(now: number) {
     raf = requestAnimationFrame(vong)
-    if (!song || document.hidden) { last = now; return }
+    if (!song || nghi || document.hidden) { last = now; return }
     const dtMs = now - last; last = now
     const dt = Math.min(0.05, dtMs / 1000); t += dt
     // khung cách khung trước > 250ms = tab bị HÃM (chạy nền, chuyển app, tiết kiệm pin), KHÔNG phải máy chậm (thử 01/10: khung xem ẩn chỉ
@@ -172,6 +174,7 @@ export function taoSanKhau(host: HTMLElement, op: { dpr?: number; antialias?: bo
       return { mat, hemi }
     },
     datNen: (b, [gan, xa], theoXa) => { fogK = theoXa ?? null; scene.background = new THREE.Color(b.troi); scene.fog = new THREE.Fog(new THREE.Color(b.suong), gan, xa) },
+    nghi: (v) => { nghi = v },
     phaHuy: () => {
       song = false
       huyNghe()

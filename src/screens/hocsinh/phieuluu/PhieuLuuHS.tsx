@@ -82,6 +82,7 @@ function DauThat({ luc, chang, b, mon, hocSinhId, gioi, LamBai, onVe }: {
   const [bai, setBai] = useState<{ id: string } | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
   const [tong, setTong] = useState(chang.so_cau_luot ?? 10)
+  const [daLam, setDaLam] = useState(0)
   const [kq, setKq] = useState<{ dung: number; tong: number; baiLamId: string | null } | null>(null)
   const [lan, setLan] = useState(0)
 
@@ -97,11 +98,11 @@ function DauThat({ luc, chang, b, mon, hocSinhId, gioi, LamBai, onVe }: {
   if (loi) return <ManHS><DauTrangHS tieuDe={chang.ten} onBack={onVe} /><TrongHS>Chưa mở được lượt luyện: {loi}</TrongHS><NutHS onClick={() => setLan((x) => x + 1)}>Thử lại</NutHS></ManHS>
   if (!bai) return <ManHS><DauTrangHS tieuDe={chang.ten} onBack={onVe} /><TrongHS>Đang gọi quái ra…</TrongHS></ManHS>
   return (
-    <DauView key={bai.id} luc={luc} chang={chang} b={b} gioi={gioi} tong={tong} onRut={onVe}>
+    <DauView key={bai.id} luc={luc} chang={chang} b={b} gioi={gioi} tong={tong} daLam={daLam} onRut={onVe}>
       {(api) => kq
         ? <KetQuaTrongDau chang={chang} kq={kq} heT={api.heT} onTiep={() => setLan((x) => x + 1)} onVe={onVe} />
         : <LamBai baiTestId={bai.id} hocSinhId={hocSinhId} onXong={onVe} desktop
-            nhung={{ onTai: (t) => setTong(t), onCau: (e) => { void api.tra(e.verdict === 'correct') }, onHet: setKq, ban: api.ban }} />}
+            nhung={{ onTai: (t, d) => { setTong(t); setDaLam(d) }, onCau: (e) => { void api.tra(e.verdict === 'correct') }, onHet: setKq, ban: api.ban }} />}
     </DauView>
   )
 }

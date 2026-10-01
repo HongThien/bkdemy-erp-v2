@@ -25,6 +25,8 @@ export type CanhDau = {
   vao: (i: number) => void
   /** hero tung phép; trung = đúng ⇒ quái trúng đòn, sai ⇒ quái hồi máu. Hoàn tất sau ~0.95s. */
   tungPhep: (trung: boolean) => Promise<void>
+  /** CHIÊU sau mỗi combo 3 câu (Thùy 02/10): cap = số câu đúng quy về 0–3. 0 = chiêu xịt, quái hồi · 1 nhẹ · 2 mạnh · 3 TUYỆT KỸ (tụ lực + 3 tia + nổ lớn). */
+  tungChieu: (cap: 0 | 1 | 2 | 3) => Promise<void>
   /** quái đang đấu ngã xuống */
   nga: () => void
   chao: () => void
@@ -135,6 +137,37 @@ export function dungDau(host: HTMLElement, b: BangMau3D, op: { biome: string; gi
           setTimeout(xong, 420)
         })
       }, 230)
+    }),
+    tungChieu: (cap) => new Promise((xong) => {
+      const be = bes[cur], goc0 = hero.goc.position.x, cho = (ms: number) => new Promise((r) => setTimeout(r, ms))
+      const dich = () => new THREE.Vector3(be.x, 0.1 + be.q.cao * be.s * 0.6, be.z)
+      // 1 tia từ gậy tới quái; trả về khi chạm
+      const tia = (mau: string, cong: number) => new Promise<void>((xongTia) => {
+        const a = hero.dauGay(), d = dich(), p = new THREE.Vector3()
+        tw(0.3, (k) => { p.lerpVectors(a, d, k); p.y += Math.sin(k * Math.PI) * cong; hat.bung(p, mau, 2, { toc: 0.5, to: 0.9 }) }, () => xongTia())
+      })
+      ;(async () => {
+        if (cap === 3) { // tụ lực: vòng sao vàng xoáy quanh hero
+          for (let i = 0; i < 6; i++) { const g = (i / 6) * Math.PI * 2; hat.bung(new THREE.Vector3(hero.goc.position.x + Math.cos(g) * 1.1, 1.2, hero.goc.position.z + Math.sin(g) * 1.1), b.vang, 10, { toc: 1.2, len: true }); await cho(70) }
+        }
+        hero.tungPhep()
+        tw(0.55, (k) => { hero.goc.position.x = goc0 + Math.sin(k * Math.PI) * (cap === 3 ? 1.1 : 0.7) })
+        await cho(230)
+        if (cap === 0) {
+          await tia('#9fe8b0', 0.4)
+          be.q.hoi(); hat.bung(dich(), '#9fe8b0', 18, { toc: 2, len: true })
+        } else {
+          const cong = [0, 0.9, 1.4, 1.9]
+          for (let i = 0; i < cap; i++) {
+            await tia(i === 2 ? b.vang : b.hero.phep, cong[i + 1] * (i % 2 ? -1 : 1))
+            be.q.trung(); hat.bung(dich(), b.vang, 14 + 12 * i, { toc: 3.5 + i }); rung = Math.max(rung, 0.5 + 0.25 * i)
+          }
+          if (cap >= 2) { hat.bung(dich(), '#ffffff', 16 * cap, { toc: 2.5 + cap }); rung = cap === 3 ? 1.8 : 1 }
+          if (cap === 3) { await cho(160); hat.bung(dich(), b.vang, 90, { toc: 7 }); hat.bung(dich(), b.hero.phep, 40, { toc: 5 }) }
+        }
+        await cho(cap === 3 ? 650 : 420)
+        xong()
+      })()
     }),
     nga: () => { bes[cur].q.nga() },
     chao: () => hero.chao(),

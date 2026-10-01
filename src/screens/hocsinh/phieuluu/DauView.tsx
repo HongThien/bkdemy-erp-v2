@@ -1,31 +1,43 @@
-// MÀN ĐẤU: cảnh 3D phía trên (hero chém, đội quái lần lượt vào trận), khu trả lời câu hỏi phía dưới (do màn cha đưa vào qua `children`).
-// Cha CHỈ việc gọi `tra(dung)` mỗi khi chấm xong 1 câu — cảnh lo hoạt ảnh, máu quái, chuyển quái, thanh tiến độ.
-// Máu hiển thị trong lượt là PHẢN HỒI TỨC THÌ (đúng −1, sai +1, hồi tối đa +2); máu thật của dạng do Postgres tính lại sau lượt (spec-v1-app-hs §4.5).
+// MÀN ĐẤU (Thùy 02/10 — bản 2): câu hỏi CHIẾM GẦN TRỌN MÀN (đủ chỗ lời giải chi tiết); trên cùng chỉ còn 1 thanh HUD gọn
+// (quái đang đấu + máu + đội hình + 3 ô COMBO + tiến độ). Cảnh 3D KHÔNG chiếm chỗ thường trực: nó bung xuống phủ nửa trên đúng lúc
+// TUNG CHIÊU rồi thu lại; lúc thu thì ngừng vẽ (đỡ tốn pin/máy).
+// COMBO: mỗi 3 câu tung 1 chiêu — 3/3 TUYỆT KỸ · 2/3 chiêu mạnh · 1/3 chiêu nhẹ · 0/3 chiêu xịt (quái hồi 1 máu). Sát thương = số câu đúng
+// trong combo (dư thì tràn sang con kế) ⇒ tổng sát thương vẫn = tổng câu đúng như luật "mỗi câu đúng 1 đòn" — chỉ gộp lại cho đẹp.
+// Câu cuối lượt mà combo chưa đủ 3 ⇒ tung luôn chiêu theo tỉ lệ đúng. Máu thật của dạng do Postgres tính lại sau lượt (spec-v1-app-hs §4.5).
+// Cha CHỈ gọi `tra(dung)` mỗi khi chấm xong 1 câu; `ban` = đang tung chiêu (cha chờ rồi mới cho sang câu kế).
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
-import { DauTrangHS, HEAD, MAU, NhanHS, THE } from '../skin/KhungHS'
+import { HEAD, MAU, NhanHS, THE } from '../skin/KhungHS'
 import type { BangMau3D } from '../skin/the3d/kieuMau'
-import { tenQuai } from '../skin/the3d/nguonQuai'
 import type { ChangV, LucDiaV } from './kieu'
 import { nap3D, useCanh } from './Canh3D'
+import { tenQuai2D } from './ban2d/San2D'
+import { QuaiTam } from './ban2d/HinhTam'
 
 export type TienDo = 'dung' | 'sai' | null
 export type ApiDau = {
-  /** cha gọi khi chấm xong 1 câu: đúng/sai ⇒ hoạt ảnh + cập nhật máu. Trả về khi hoạt ảnh xong. */
+  /** cha gọi khi chấm xong 1 câu. Đủ combo (hoặc câu cuối) ⇒ tung chiêu; trả về khi chiêu xong. */
   tra: (dung: boolean) => Promise<void>
   tienDo: TienDo[]
   /** tất cả quái đã ngã (chặng đạt trong lượt này) */
   heT: boolean
-  /** đang chạy hoạt ảnh — cha nên chờ trước khi cho sang câu kế */
+  /** đang tung chiêu — cha nên chờ trước khi cho sang câu kế */
   ban: boolean
 }
+
+export const CO_COMBO = 3
+const TEN_CHIEU = ['Chiêu xịt — quái hồi 1 máu', 'Chiêu nhẹ', 'Chiêu mạnh', 'TUYỆT KỸ!'] as const
 
 /** Chia đều máu cả dạng cho đội hình (chưa đo riêng từng cụm). Mỗi con ≥ 1. */
 function chiaMau(tong: number, n: number): number[] {
   return Array.from({ length: n }, (_, i) => Math.max(1, Math.floor(tong / n) + (i < tong % n ? 1 : 0)))
 }
+const cho = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
-export function DauView({ luc, chang, b, gioi = 'nam', tong, onRut, children }: {
-  luc: LucDiaV; chang: ChangV; b: BangMau3D; gioi?: 'nam' | 'nu'; tong: number; onRut: () => void
+export function DauView({ luc, chang, b, gioi = 'nam', tong, daLam = 0, onRut, children }: {
+  luc: LucDiaV; chang: ChangV; b: BangMau3D; gioi?: 'nam' | 'nu'; tong: number
+  /** số câu đã làm từ trước (mở lại lượt dở) — để biết câu nào là câu cuối */
+  daLam?: number
+  onRut: () => void
   children: (api: ApiDau) => ReactNode
 }) {
   const doi = chang.quai
@@ -33,84 +45,124 @@ export function DauView({ luc, chang, b, gioi = 'nam', tong, onRut, children }: 
   const [hp, setHp] = useState<number[]>(hp0)
   const [ei, setEi] = useState(0)
   const [tienDo, setTienDo] = useState<TienDo[]>([])
+  const [combo, setCombo] = useState<boolean[]>([])
   const [ban, setBan] = useState(false)
-  const [popup, setPopup] = useState<{ id: number; chu: string; hoi: boolean } | null>(null)
-  const [vao, setVao] = useState<{ id: number; chu: string } | null>(null)
-  const nhanPop = useRef<HTMLDivElement>(null)
-  const refs = useRef({ hp, ei, ban: false }); refs.current = { hp, ei, ban }
+  const [mo, setMo] = useState(false) // cảnh đang bung
+  const [chu, setChu] = useState<{ id: number; to: string; nho?: string; mau: string } | null>(null)
+  const refs = useRef({ hp, ei, ban: false, combo, n: 0 }); refs.current = { ...refs.current, hp, ei, ban, combo }
 
   const { host, canh, loi } = useCanh(async (h) => (await nap3D.dau()).dungDau(h, b, { biome: luc.biome, gioi, maLuc: luc.ma }, doi), [chang.ma, b])
-  const popVec = useRef<import('three').Vector3 | null>(null)
+
+  // mở màn: bung cảnh cho thấy quái xuất hiện ~1,6s rồi thu lại
+  const daChao = useRef(false)
   useEffect(() => {
-    if (!canh || !nhanPop.current) return
-    return canh.sk.gan({ el: nhanPop.current, pos: (popVec.current ??= canh.neoQuai().clone()) })
-  }, [canh])
+    if (!canh || daChao.current) return
+    daChao.current = true
+    setMo(true); setChu({ id: Date.now(), to: `${tenQuai2D(doi[0].loai)} xuất hiện!`, nho: `Mỗi ${CO_COMBO} câu tung 1 chiêu — đúng cả ${CO_COMBO} là TUYỆT KỸ`, mau: 'var(--sk-acc)' })
+    const t = setTimeout(() => { setMo(false); setChu(null) }, 2000)
+    return () => clearTimeout(t)
+  }, [canh, doi])
+  // cảnh thu lại thì ngừng vẽ (sau khi hiệu ứng thu xong)
+  useEffect(() => { if (!canh) return; if (mo) { canh.sk.nghi(false); return } const t = setTimeout(() => canh.sk.nghi(true), 320); return () => clearTimeout(t) }, [canh, mo])
 
   const heT = hp.every((x) => x === 0)
   const daAn = useRef(false)
-  useEffect(() => { if (heT && canh && !daAn.current) { daAn.current = true; canh.anMung() } }, [heT, canh])
-  const tra = useCallback(async (dung: boolean) => {
-    if (!canh || refs.current.ban) return
-    setBan(true)
-    const { hp: h, ei: e } = refs.current
-    const cap = hp0[e] + 2
-    let hpNew = h.slice(), eiNew = e
-    if (h.every((x) => x === 0)) { setTienDo((t) => [...t, dung ? 'dung' : 'sai']); setBan(false); return }
-    if (popVec.current) popVec.current.copy(canh.neoQuai())
-    await canh.tungPhep(dung)
-    if (dung) {
-      hpNew[e] = Math.max(0, h[e] - 1)
-      setPopup({ id: Date.now(), chu: '−1', hoi: false })
-      if (hpNew[e] === 0) {
-        canh.nga()
-        if (e < doi.length - 1) {
-          eiNew = e + 1
-          setHp(hpNew)
-          await new Promise((r) => setTimeout(r, 650))
-          canh.vao(eiNew); setEi(eiNew)
-          setVao({ id: Date.now(), chu: doi[eiNew].boss ? 'BOSS CUỐI xuất hiện!' : `Elite ${eiNew + 1} xuất hiện!` })
-          setTienDo((t) => [...t, 'dung']); setBan(false)
-          return
+  useEffect(() => {
+    if (!heT || daAn.current) return
+    daAn.current = true
+    setMo(true); setChu({ id: Date.now(), to: 'Hạ hết đội hình!', mau: 'var(--sk-acc)' }); canh?.anMung()
+    const t = setTimeout(() => { setMo(false); setChu(null) }, 2400)
+    return () => clearTimeout(t)
+  }, [heT, canh])
+
+  const tungChieu = useCallback(async (cb: boolean[]) => {
+    const soDung = cb.filter(Boolean).length // đếm ô combo đang vẽ (3 ô) — hiển thị, không phải số liệu nghiệp vụ
+    const cap = (soDung === 0 ? 0 : Math.max(1, Math.min(3, Math.round((soDung / cb.length) * 3)))) as 0 | 1 | 2 | 3
+    if (canh) { setMo(true); await cho(330) }
+    setChu({ id: Date.now(), to: TEN_CHIEU[cap], nho: soDung ? `${soDung}/${cb.length} câu đúng · −${soDung} máu` : `${soDung}/${cb.length} câu đúng`, mau: cap === 0 ? MAU.sai : cap === 3 ? 'var(--sk-acc)' : MAU.ink })
+    // hoạt ảnh chạy theo khung hình: máy hãm khung / app chạy nền thì có thể rất chậm ⇒ chốt 4 giây, không bao giờ kẹt nút "Đòn kế tiếp"
+    if (canh) await Promise.race([canh.tungChieu(cap), cho(4000)])
+    let h = refs.current.hp.slice(), e = refs.current.ei
+    if (soDung === 0) h[e] = Math.min(hp0[e] + 2, h[e] + 1)
+    else {
+      let con = soDung
+      while (con > 0 && e < doi.length) {
+        const an = Math.min(con, h[e]); h[e] -= an; con -= an
+        if (h[e] === 0) {
+          setHp(h.slice()); canh?.nga()
+          if (e < doi.length - 1) {
+            await cho(650); e += 1; canh?.vao(e); setEi(e)
+            setChu({ id: Date.now(), to: doi[e].boss ? 'BOSS CUỐI xuất hiện!' : `Elite ${e + 1} xuất hiện!`, mau: 'var(--sk-acc)' })
+            await cho(900)
+          } else break
         }
       }
-    } else { hpNew[e] = Math.min(cap, h[e] + 1); setPopup({ id: Date.now(), chu: '+1', hoi: true }) }
-    setHp(hpNew); setEi(eiNew); setTienDo((t) => [...t, dung ? 'dung' : 'sai']); setBan(false)
+    }
+    setHp(h); setEi(e)
+    await cho(canh ? 450 : 900)
+    setMo(false); setChu(null)
   }, [canh, doi, hp0])
 
-  useEffect(() => { if (!vao) return; const t = setTimeout(() => setVao(null), 1700); return () => clearTimeout(t) }, [vao])
+  const tra = useCallback(async (dung: boolean) => {
+    if (refs.current.ban) return
+    refs.current.n += 1
+    setTienDo((t) => [...t, dung ? 'dung' : 'sai'])
+    if (refs.current.hp.every((x) => x === 0)) return
+    const cb = [...refs.current.combo, dung], cuoi = daLam + refs.current.n >= tong
+    if (cb.length < CO_COMBO && !cuoi) { setCombo(cb); return }
+    setCombo(cb); setBan(true); refs.current.ban = true
+    try { await tungChieu(cb) } finally { setCombo([]); setBan(false); refs.current.ban = false }
+  }, [daLam, tong, tungChieu])
 
-  const q = doi[ei], hpMax = hp0[ei] + 2
-  const steps = Array.from({ length: tong }, (_, i) => tienDo[i] ?? null)
-  const tenQ = tenQuai(q.loai)
+  const q = doi[Math.min(ei, doi.length - 1)], hpMax = hp0[ei] + 2
+  const o = Array.from({ length: CO_COMBO }, (_, i) => combo[i])
 
   return (
     <div className="absolute inset-0 flex flex-col" style={{ background: 'var(--sk-bg)' }}>
-      <div className="relative shrink-0" style={{ height: 'min(46%, 420px)', minHeight: 250 }}>
-        <div ref={host} className="absolute inset-0" />
-        {loi && <div className="absolute inset-0 flex items-center justify-center p-4 text-center text-[14px]" style={{ color: 'var(--sk-muted)' }}>Máy này chưa vẽ được cảnh 3D — bạn vẫn làm bài bình thường bên dưới.</div>}
-        <div className="pointer-events-none absolute inset-0">
-          <div ref={nhanPop} className="absolute left-0 top-0" style={{ visibility: 'hidden' }}>
-            {popup && <span key={popup.id} className="block text-[34px] font-extrabold" style={{ ...HEAD, color: popup.hoi ? MAU.dung : 'var(--sk-acc)', textShadow: '0 2px 8px var(--sk-bg)', animation: 'phieuluu-bay 1s ease-out forwards' }}>{popup.chu}</span>}
+      {/* HUD gọn */}
+      <div className="relative z-40 flex shrink-0 flex-wrap items-center gap-x-3 gap-y-1.5 px-3 py-2" style={{ ...THE, borderRadius: 0, borderLeft: 'none', borderRight: 'none', borderTop: 'none' }}>
+        <button onClick={onRut} aria-label="Rút lui về chặng đường" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[18px]" style={{ border: '1.5px solid var(--sk-line)', color: MAU.ink }}>‹</button>
+        <span className="h-11 w-11 shrink-0"><QuaiTam b={b} loai={q.loai} boss={q.boss && doi.length > 1} co={44} /></span>
+        <div className="min-w-[160px] flex-1">
+          <div className="flex items-baseline gap-2">
+            <b className="truncate text-[15px]" style={{ ...HEAD, color: MAU.ink }}>{tenQuai2D(q.loai)}</b>
+            {q.boss ? <NhanHS mau="var(--sk-acc)" dac>BOSS</NhanHS> : <NhanHS>ELITE {ei + 1}/{Math.max(1, doi.length - 1)}</NhanHS>}
+            <span className="ml-auto whitespace-nowrap text-[12px]" style={{ color: MAU.muted }}>{hp[ei] === 0 ? 'Đã bị hạ' : `Còn ${hp[ei]} đòn`}</span>
           </div>
+          <div className="mt-1 flex gap-0.5">{Array.from({ length: hpMax }, (_, i) => <i key={i} className="h-2.5 flex-1 rounded-sm" style={{ background: i < hp[ei] ? MAU.sai : 'var(--sk-surface2)', border: i >= hp0[ei] && i >= hp[ei] ? '1px dashed var(--sk-line)' : 'none' }} />)}</div>
         </div>
-        <div className="absolute left-0 right-0 top-0 p-3"><DauTrangHS tieuDe={chang.ten} phu={`${luc.ten}`} onBack={onRut} /></div>
-        {/* đội hình + máu quái đang đấu */}
-        <div className="absolute left-3 top-[70px] flex items-end gap-1.5 px-2.5 py-1.5" style={{ ...THE, borderRadius: 10 }}>
-          {doi.map((d, i) => <span key={i} className="flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-bold" title={tenQuai(d.loai)}
+        <div className="flex items-center gap-1" aria-label="Đội hình">
+          {doi.map((d, i) => <span key={i} className="flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-bold" title={tenQuai2D(d.loai)}
             style={{ background: hp[i] === 0 ? 'var(--sk-surface2)' : i === ei ? 'var(--sk-acc)' : 'transparent', color: i === ei && hp[i] > 0 ? 'var(--sk-acc-ink)' : 'var(--sk-muted)', border: '1.5px solid var(--sk-line)', textDecoration: hp[i] === 0 ? 'line-through' : 'none' }}>{d.boss ? '♛' : i + 1}</span>)}
         </div>
-        <div className="absolute right-3 top-[70px] w-[min(340px,56vw)] p-2.5" style={{ ...THE, borderRadius: 10 }}>
-          <div className="flex items-baseline justify-between"><b className="text-[15px]" style={{ ...HEAD, color: 'var(--sk-ink)' }}>{tenQ}</b><span className="text-[11.5px]" style={{ color: 'var(--sk-muted)' }}>{hp[ei] === 0 ? 'Đã bị hạ' : `Còn ${hp[ei]} đòn`}</span></div>
-          <div className="mt-1 flex items-center gap-1.5">{q.boss ? <NhanHS mau="var(--sk-acc)" dac>BOSS CUỐI</NhanHS> : <NhanHS>ELITE {ei + 1}/{doi.length - 1}</NhanHS>}</div>
-          <div className="mt-1.5 flex gap-1">{Array.from({ length: hpMax }, (_, i) => <i key={i} className="h-3 flex-1 rounded-sm" style={{ background: i < hp[ei] ? MAU.sai : 'var(--sk-surface2)', border: i >= hp0[ei] && i >= hp[ei] ? '1px dashed var(--sk-line)' : 'none' }} />)}</div>
+        <div className="flex items-center gap-1.5" aria-label={`Combo ${combo.length}/${CO_COMBO}`}>
+          <span className="text-[12px] font-bold" style={{ ...HEAD, color: MAU.muted }}>Chiêu</span>
+          {o.map((v, i) => <span key={i} className="inline-block h-4 w-4 rotate-45 rounded-[3px]" style={{ background: v === true ? MAU.dung : v === false ? MAU.sai : 'transparent', border: `1.5px solid ${v === undefined ? 'var(--sk-acc)' : v ? MAU.dung : MAU.sai}`, boxShadow: v === true ? `0 0 8px ${MAU.dung}` : undefined }} />)}
         </div>
-        {vao && <div key={vao.id} className="pointer-events-none absolute inset-x-0 top-[34%] text-center text-[40px] font-extrabold" style={{ ...HEAD, color: 'var(--sk-acc)', textShadow: '0 3px 14px var(--sk-bg)', animation: 'phieuluu-vao 1.7s ease-out forwards' }}>{vao.chu}</div>}
-        <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-1">{steps.map((s, i) => <i key={i} className="h-2 w-6 rounded-full" style={{ background: s === 'dung' ? MAU.dung : s === 'sai' ? MAU.sai : i === tienDo.length ? 'var(--sk-acc)' : 'var(--sk-surface2)' }} />)}</div>
+        <span className="whitespace-nowrap text-[12.5px] font-semibold" style={{ color: MAU.muted }}>Câu {Math.min(tong, daLam + tienDo.length + 1)}/{tong}</span>
       </div>
-      <div className="relative min-h-0 flex-1 overflow-y-auto" style={{ borderTop: 'var(--sk-card-border)', background: 'var(--sk-surface)' }}>
+
+      {/* câu hỏi: gần trọn màn */}
+      <div className="relative min-h-0 flex-1 overflow-y-auto">
         {children({ tra, tienDo, heT, ban })}
       </div>
-      <style>{'@keyframes phieuluu-bay{0%{opacity:0;transform:translateY(10px)}15%{opacity:1}100%{opacity:0;transform:translateY(-60px)}} @keyframes phieuluu-vao{0%{opacity:0;transform:scale(.6)}15%{opacity:1;transform:scale(1.06)}80%{opacity:1}100%{opacity:0;transform:scale(1)}}'}</style>
+
+      {/* cảnh 3D: chỉ bung lúc tung chiêu / quái mới vào / hạ hết */}
+      {!loi && (
+        <div className="absolute inset-x-0 z-30 overflow-hidden transition-[opacity,transform] duration-300 ease-out"
+          style={{ top: 0, height: 'min(66%, 560px)', opacity: mo ? 1 : 0, transform: mo ? 'translateY(0)' : 'translateY(-24px)', pointerEvents: mo ? 'auto' : 'none', borderBottom: 'var(--sk-card-border)', boxShadow: '0 12px 30px var(--sk-bg)' }}
+          aria-hidden={!mo}>
+          <div ref={host} className="absolute inset-0" />
+          {chu && (
+            <div key={chu.id} className="pointer-events-none absolute inset-x-0 top-[38%] text-center" style={{ animation: 'dau-chu .5s ease-out both' }}>
+              <p className="text-[clamp(28px,5vw,46px)] font-extrabold leading-tight" style={{ ...HEAD, color: chu.mau, textShadow: '0 3px 14px var(--sk-bg), 0 0 2px var(--sk-bg)' }}>{chu.to}</p>
+              {chu.nho && <p className="mt-1 text-[16px] font-semibold" style={{ color: MAU.ink, textShadow: '0 2px 8px var(--sk-bg)' }}>{chu.nho}</p>}
+            </div>
+          )}
+        </div>
+      )}
+      {loi && chu && <div className="pointer-events-none absolute inset-x-0 top-24 z-30 text-center text-[24px] font-extrabold" style={{ ...HEAD, color: chu.mau }}>{chu.to}</div>}
+      <style>{'@keyframes dau-chu{0%{opacity:0;transform:scale(.7)}60%{opacity:1;transform:scale(1.06)}100%{opacity:1;transform:scale(1)}}'}</style>
     </div>
   )
 }
