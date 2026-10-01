@@ -275,6 +275,19 @@ Lọc theo bộ động tác chuẩn của 2 game: Pokémon (trận đấu · Le
   - **Cỡ lưới:** bản Đẹp 38,5k tam giác, bản Nhẹ 18,7k; thân 1 lệnh vẽ.
   - `ChuoiUon` = chuỗi xương sống dùng lại (uốn dọc/ngang) cho khuôn bò trườn sau này.
   - **Khi vào game:** vệt sáng/hạt phải đổi sang toạ độ thế giới; game điều khiển di chuyển gốc (lộn vòng, lượn vòng hiện tự quay về chỗ cũ).
+- **CEO xem Thiên Kình bản 1 (02/10): làm lại theo PANTHALUS** (cá voi huyền thoại Palworld 1.0, 07/2026) — *"không cần giống y nhưng ý tưởng 90%"*. Hai điểm CEO nhấn:
+  - **đuôi dài, uốn lượn**;
+  - **vòng + huy hiệu trên đầu**.
+
+  Đặc điểm lấy theo (wiki + ảnh tham chiếu ở `BatThu/.snap/tham-khao/`):
+  - thân thuôn dài xanh ngọc, bụng trắng, mắt vàng;
+  - vân trắng phát sáng hình sóng;
+  - 4 vây ngực (2 cặp);
+  - huy hiệu vàng đồng gắn ngọc xanh lục giác trên trán;
+  - vòng vàng đồng hình vòm choàng qua đầu, ~6 gai toả như tia mặt trời.
+
+  Bản 1 (trời sao) giữ làm bản **shiny**.
+  - Mô hình 3D có sẵn: không có bản Panthalus chính thức để tham chiếu. Lấy tỉ lệ từ ảnh chụp nhiều góc; không dùng file mô hình trích từ game.
 - **CEO xem Băng Thần Mã bản 1 (02/10): "ok fix thêm. QUAN TRỌNG NHẤT con ngựa cần có CÁNH — cái cánh mới làm con ngựa đẹp."**
   - Đang làm:
     - đôi cánh lông pha lê băng, sải ~2× thân;

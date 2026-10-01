@@ -34028,3 +34028,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Còn hở (ghi ở spec §10.8):** nhận trùng câu giữa nguồn Word và PDF (chạy thử: 1/22) · chưa đo PDF scan / đề Sở chỉ có bảng đáp án ·
   `ghi.mjs` chặn đề có câu Đúng/Sai chưa có đáp án · hình lời giải không cắt.
 - Thư mục thử `bk-kho-lam-viec/de-thi/_thu_pdf_DE_SO_3/` (ngoài repo, bộ đệm) còn nguyên; KHÔNG ghi gì vào DB từ bản thử này.
+
+## 2026-10-02 — [Game] CEO: Thiên Kình làm lại theo Panthalus (Palworld 1.0)
+
+- **CEO:** đuôi phải dài, uốn lượn; thiết kế giống Panthalus 90% (vòng + huy hiệu trên đầu); "mấy con đấy có sẵn tỉ lệ 3D, research cho nhanh".
+- **Tra:**
+  - Panthalus là cá voi huyền thoại hệ Nước của Palworld 1.0 (10/07/2026) — sau giới hạn kiến thức của t nên lần đầu không nhận ra tên.
+  - Wiki: thân xanh ngọc, bụng trắng, mắt vàng, 4 vây ngực, vân trắng phát sáng, huy hiệu vàng gắn ngọc xanh trên mặt, vòm vàng 6 gai gắn hai bên đầu, cưỡi bay được.
+  - Chụp 4 ảnh tham chiếu vào `BatThu/.snap/tham-khao/` (gitignore).
+  - Sketchfab không có bản Panthalus chính thức ⇒ lấy tỉ lệ từ ảnh, không dùng mô hình trích từ game.
+- Giao lại luồng cá voi; bản 1 (trời sao) giữ làm shiny. Ghi spec-bat-thu §3.4.
