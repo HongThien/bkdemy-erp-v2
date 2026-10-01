@@ -34456,3 +34456,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Mig 202610020037: hs_giao_dien.hieu_ung_game (mặc định bật, 107/107 dòng bật) + fn_hs_luu_hieu_ung_game (chỉ đổi dòng đã có) + đọc/ghi log có trường mới.
   Áp bằng migrate --only (owner claude_build, ACL chỉ authenticated). UI công tắc + style Tối giản: đang làm.
 - Phát hiện: 7 em đã chọn toi_gian từ style cũ (đã gỡ) — đang rơi về RPG; thêm lại Tối giản là các em tự về đúng lựa chọn.
+
+## 2026-10-02 (chiều, máy nhà) — [Game] Thiên Kình bản 9: làm nốt cho giống mô hình 3D (BatThu `thu-de-thuong` @ `7b231f9`)
+- Thùy: "làm nốt đi cho giống". Làm các chỗ còn lệch đã liệt kê ở bản 8b:
+  · cặp vây NHỎ tròn dưới họng (mô-đun mới `vayNho` của khuôn bơi; gán xương hàm vì họng thuộc mảnh hàm ⇒ há miệng vây đi theo);
+  · má phình 2 bên hàm dưới (tham số `dau.ma`) ⇒ chính diện thấy dải trắng 2 bên;
+  · vây ngực dày hơn · chóp đồng trên ngọc · vân trắng đậm hơn · vòm cao hơn.
+- Sai giữa chừng: vây nhỏ lần đầu dùng vân của vây ngực ⇒ thành "chân sọc" trắng; mẫu xanh đều ⇒ bỏ vân, tô xanh đều.
+- Tự kiểm: `thien_kinh-so-tham-khao` (ngang, chính diện, 3/4 cạnh ảnh 3D) · `-dt-hat` · `-dt-lon_vong`. Bản Đẹp 56,3k tam giác (+6k do vây nhỏ + má); tsc sạch.
+- Còn: vân mạch phát sáng trên vây/thân của mẫu dày đặc hơn · chân vòm của mẫu thả xuống thấp hơn hàm.
