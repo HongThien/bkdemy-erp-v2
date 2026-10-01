@@ -33789,3 +33789,25 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   (vd 450 EXP · cấp 11 · 1 rương); huy hiệu ★4 = +200 EXP khớp nguồn; tháng 02/2026 không bịa dòng. Bảng EXP theo sao: ★1–2 = 0, ★3 = 100, ★4 = 200, ★5 = 300.
 - App (đụng nhẹ vùng Giao diện, chỉ THÊM): `ViXuHS.tsx` nhãn + nhóm card "Nhiệm vụ" 📜 / "Huy hiệu" 🏅, dòng phụ "Cấp x · y rương" / "tên ★n" · `vixu_hs.ts` kiểu `cap/so_ruong/sao/ten`.
   tsc + check:style-hs ✔; chưa soi bằng trình duyệt (màn cần phiên HS thật).
+
+## 2026-10-01 (tối) — [Game] Thú dễ thương làm bằng code: 2 loài mẫu + trứng nở (BatThu nhánh `thu-de-thuong` @ `d460c3f`, đã push)
+
+- **Làm** (giao luồng nền, t xem lại ảnh):
+  - `src/thu/nan.ts`: SDF + Surface Nets + bộ dựng nướng màu, chuyển từ `dohoa.js` sang three r186.
+  - `src/thu/khuon-4chan.ts`:
+    - 1 lưới có xương / con ⇒ 1 lệnh vẽ;
+    - 10 động tác, chân tự chạm đất, 6 kiểu mắt;
+    - điểm yên `thu.yen` để cưỡi sau này;
+    - shiny = bảng màu 2 + viền cầu vồng; alpha = ×1,5 + vầng sáng.
+  - `src/thu/loai.ts`: 1 loài = 1 dòng tham số.
+  - `src/thu/trung.ts`: trứng mang hoa văn loài; nở 4 bước rung → nứt → bung → thú ra.
+  - Trang `thu-demo.html` (`?che=gan|trung`, `?loai=`, `?dt=`, `?cl=nhe`).
+- **Loài mẫu:** Cáo Lửa (ý từ Foxparks), Cừu Mây (ý từ Lamball).
+  - Bản Đẹp ~22k tam giác/con, bản Nhẹ ~11k.
+  - 6 con + trứng + nền = 72 lệnh vẽ. Chưa đo iPad.
+- **Chưa ổn:**
+  - mép mặt nạ cáo hơi răng cưa khi nhìn gần;
+  - thú chưa nối vào game (đi/chạy tại chỗ);
+  - hệ của Cừu Mây TỰ ĐẶT là `nuoc`.
+- **Phát hiện phụ:** `npm run kiem` của BatThu hỏng vì `tools/kiem-luat.mjs` không có trong repo, kể cả trên `origin/main` (máy nhà quên commit?). `tsc` sạch.
+- ⚠ Thư mục BatThu máy công ty đang đứng ở nhánh `thu-de-thuong`.
