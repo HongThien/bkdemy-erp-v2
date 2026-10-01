@@ -33892,3 +33892,21 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   người khối, skin tự vẽ khác Steve/Alex · danh sách ĐƯỢC / CẤM cụ thể (mob, đồ chỉ Minecraft có, UI y nguyên, logo/font). 15 vật phẩm mới:
   cuốc · sách + bút lông · khiên · bản đồ · sách · cửa sắt · cuộn giấy · cúp · rương · ngọc lục · la bàn · ba lô · đồng hồ · giường · thang;
   góc trang trí có đèn lồng. Token §10 đổi sang túi đồ xám + lỗ hợp đồng ⑤ (bóng ô lõm).
+
+## 2026-10-01 (tối) — [Giao diện] Chốt LOGIC phiêu lưu qua mockup (5 vòng với Thùy) + Đơn 6 v2
+- **Làm:** dựng mockup chạy được 5 màn (Thế giới · Lục địa · Chặng đường · Màn đấu · Kết quả lượt) bằng cây Đại khối 9 THẬT (86 dạng, 36 cụm) — lưu `design/mockup-phieu-luu.html`,
+  bản xem: https://claude.ai/artifact/RsoAjsU987L5moqFoMTWoX. Lục địa/vùng/đường do CODE vẽ (blob + Voronoi có trọng số + gợn sóng), không cần ChatGPT vẽ hình dạng.
+- **Sai (bản 1):** t hiểu "hành trình RPG" thành 1 lưới đảo + 1 danh sách màn. Thùy sửa: phải là 3 tầng (thế giới → lục địa → vùng giáp biên → đường chặng).
+  Rồi hiểu sai "cụm": t để 1 boss/dạng theo cụm; Thùy: cụm = elite, cụm khó nhất = boss cuối, mỗi dạng ≥3 quái.
+  Bug mockup đã sửa: SVG class `mon` đụng CSS màn đấu (quái bay lệch) · half-plane Voronoi ngược dấu (mỗi vùng chiếm phần xa seed) · `const` dùng trước khi khai báo (TDZ).
+- **Quyết định (Thùy chốt, chi tiết `spec-v1-app-hs.md` §4.5):**
+  1. Thế giới = 1 world map, chủ đề = lục địa (to nhỏ theo số dạng); bấm vào = vùng đất chia vùng giáp biên (vùng = chuyên đề, to nhỏ theo số dạng); bấm vùng = đường chặng (chặng = dạng).
+  2. Chặng = đội hình quái: cụm = elite theo `thu_tu`, cụm khó nhất = boss cuối (vương miện). Mặc định ≥3 quái mỗi dạng (thiếu thì con tạm), trần 7. Chặng to nhỏ theo số cụm.
+  3. Chưa có đánh giá theo cụm ⇒ máu cả dạng chia đều cho đội hình; mỗi lượt đánh hết cả đội. KHÔNG hiện tên cụm cho HS.
+  4. Số câu một lượt = số cụm × 2, kẹp 5–10 (quá 10 chọn ngẫu nhiên 10, dưới 5 thêm cho đủ 5). Khớp `_luot_hoc_that` (≥5 câu, ≥50%, ≥6 s).
+  5. Hạ hết đội hình trước câu cuối: vẫn làm hết lượt ("ôn cho chắc"). Sai thì quái hồi 1 máu, tối đa +2 so với ban đầu. Hero không có máu.
+  6. CHƯA chốt: lượt không tính có làm quái mất máu không (CTO đề xuất: không ⇒ câu bị bỏ khỏi mastery, Số liệu phải làm thêm).
+- **Hệ quả:** DB `fn_ban_do_phieu_luu` (mig 202610011520) đang theo mô hình cũ (boss mỗi khu vực + quái theo cụm) ⇒ đã ghi yêu cầu đổi vào Hộp thư §13.6 cho luồng Số liệu.
+  `design/FLOW-NPC-BOSS-CUOI.md` (file của phiên khác, chưa theo dõi) cũng dựa mô hình boss-khu-vực ⇒ cần soát lại; tên "boss cuối" ở đó là boss cả hành trình, trùng chữ với boss cuối của chặng.
+- **Đơn hình:** viết `Đơn 6 v2` cuối `design/DON-HANG-SKIN-HS.md` (65 mục): texture mặt đất 8 vùng + biển + tờ sprite trang trí + quái ×2 hình (thường/trúng đòn) + hero chiến đấu + vương miện/hiệu ứng/bệ đá + nền màn đấu.
+  Đơn 6 cũ ghi chú "đã thay", chỉ còn dùng #06–#13 (quái) và #39 (cờ).

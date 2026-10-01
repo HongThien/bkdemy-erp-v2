@@ -121,6 +121,41 @@ màn làm bài (BTVN/ET/giáo trình) · Home cấp 1 (nhập về UI chung).
   (luôn ra đúng con đó). Mỗi loài vài trạng thái: đứng · trúng đòn · bị hạ.
 - **Mỗi style 1 bộ** (RPG = quái fantasy; Thị trấn = phiên bản dễ thương). Đổi style là đổi cả bản đồ và quái.
 
+### 4.5 ⭐ Logic phiêu lưu ĐÃ CHỐT 01/10 tối (Thùy duyệt qua mockup) — THAY §4.1 chỗ nào mâu thuẫn
+
+> Mockup chạy được: https://claude.ai/artifact/RsoAjsU987L5moqFoMTWoX · bản lưu trong repo: `design/mockup-phieu-luu.html`
+> (5 tab: Thế giới · Lục địa · Chặng đường · Màn đấu · Kết quả lượt; tên chủ đề/dạng là cây Đại khối 9 thật, điểm số mẫu).
+
+**Ba tầng bản đồ:**
+1. **Thế giới** = 1 bản đồ thế giới lớn liền một khối. **Chủ đề = lục địa.** Lục địa to nhỏ theo SỐ DẠNG của chủ đề. Vị trí cố định, em nhớ đường.
+2. **Lục địa** (bấm vào) = một vùng đất chia thành nhiều **vùng giáp biên giới như các quốc gia. Vùng = chuyên đề.** Vùng to nhỏ theo số dạng của chuyên đề.
+3. **Chặng đường** (bấm một vùng) = một con đường uốn lượn. **Chặng = dạng.** Hero đứng trước chặng đầu tiên còn quái = "việc tiếp theo".
+   Không khoá cứng: em bấm chặng nào cũng vào được (chưa dạy thì phủ sương).
+
+**Chặng = đội hình quái (thay "mỗi khu vực 1 boss"):**
+- Các **cụm** của dạng là **elite**, xếp theo `dai_cum_bai.thu_tu`. **Cụm khó nhất (cuối thứ tự học) là BOSS CUỐI của chặng**, có vương miện, đứng giữa bệ.
+  Sau này bản đồ cập nhật thứ tự học của cụm thì thứ tự elite và boss tự đổi theo. **Mỗi chặng đều có 1 boss cuối** (bỏ khái niệm `la_man_boss` mỗi khu vực).
+- **Mặc định ít nhất 3 quái mỗi dạng:** cụm thật rồi thêm CON TẠM cho đủ 3 (hiện chỉ ~20% dạng đã chia cụm). Cụm thật chia thêm tới đâu, con tạm thay tới đó.
+  Dạng đúng 1 cụm = 1 boss. **Trần 7 quái mỗi chặng** (nhiều cụm hơn thì vẫn 7).
+- **Chặng to nhỏ theo số cụm:** nhiều cụm thì chặng + boss to, ít cụm thì nhỏ.
+- **KHÔNG hiện tên cụm** cho HS, chỉ thấy loài quái + nhãn Elite k / Boss cuối. Tên cụm trong DB còn xấu nên cũng khỏi phải dọn trước release.
+- **Máu:** hiện CHƯA có đánh giá theo cụm ⇒ máu cả dạng (số đòn còn cần tới "đạt", suy từ mastery của dạng) **chia đều cho cả đội hình**. Mỗi lượt **đánh hết cả
+  đội hình theo thứ tự**, không bỏ qua cụm nào. Khi có đánh giá theo cụm thì máu từng con đo riêng.
+
+**Số câu của một lượt = số cụm thật × 2, kẹp 5 đến 10:** quá 10 thì chọn ngẫu nhiên 10 câu, dưới 5 thì thêm cho đủ 5.
+(0–2 cụm → 5 câu · 3 cụm → 6 · 4 → 8 · ≥5 → 10.) Khớp luật "lượt học thật" đã có (`_luot_hoc_that`: ≥5 câu, đúng ≥50%, ≥6 giây/câu).
+**Cần sửa:** chỗ chọn câu cho lượt đang cố định 10 ⇒ đổi sang số câu theo dạng.
+
+**Trong trận:** đúng thì hero chém, quái mất 1 máu; sai thì quái hồi 1 máu (**tối đa hồi thêm 2 so với ban đầu** để em không nản). Hero KHÔNG có thanh máu, không "chết".
+Hạ xong con nào thì con kế bước vào ngay trong lượt (boss cuối vào có hiệu ứng riêng). Nếu hạ hết đội hình trước câu cuối: **vẫn làm hết lượt**, các câu còn lại là
+"ôn cho chắc", không có quái (lượt phải đủ số câu mới được tính).
+
+**⏳ CÒN CHỜ Thùy:** lượt KHÔNG được tính (bấm quá nhanh, đúng dưới 50%) thì quái có mất máu không? CTO đề xuất: KHÔNG, máu giữ nguyên (mockup đang làm vậy). Nghĩa là
+các câu của lượt bị bỏ không được tính vào mastery của dạng ⇒ luồng Số liệu phải làm thêm. Chưa chốt thì chưa làm.
+
+**Phần nào CODE vẽ, phần nào ChatGPT vẽ** (để đơn hình gọn): lục địa (blob có bờ biển), vùng và biên giới (Voronoi có trọng số + gợn sóng), con đường, thanh máu, sương, cờ,
+hiệu ứng trúng đòn/hồi máu **đều do code**. ChatGPT chỉ vẽ **chất liệu (texture) lấp vào hình do code vẽ + sprite**: xem Đơn 6 v2 trong `design/DON-HANG-SKIN-HS.md`.
+
 ## 5. Hai style
 
 - **Anime RPG** (đang dùng) + **Thị trấn** (đang làm). Cả 2 phải đủ bộ hình phiêu lưu ở §4.4 thì mới tính là "xong".
@@ -358,3 +393,5 @@ fn_ban_do_phieu_luu (trang hs.html?xem=phieu_luu) + ngọn lửa chuỗi trên H
 - 01/10 · Số liệu → Thùy · (tuỳ chọn) thư trả lời góp ý chỉ vào Hòm thư khi role migrate được ghi `thong_bao_hs` (bảng thuộc `postgres`): SQL Editor chạy `grant insert on public.thong_bao_hs to claude_build;` — chưa chạy thì em vẫn thấy lời trả lời ở "Góp ý của em" · ⏳
 - 01/10 · Số liệu · Ngày nghỉ của chuỗi: màn quản trị `NgayNghiChuoiScreen` (lá `chuoi_nghi`, nhóm Gamification — cấp quyền ở Phân quyền; admin hệ thống ghi được ngay) · ✔ 01/10
 - 01/10 · Game → Giao diện · ô vào game trên Home (id ô, link, icon) · ⏳ chờ luồng Game gửi chi tiết
+- 01/10 · Giao diện → Số liệu · **ĐỔI hợp đồng `fn_ban_do_phieu_luu` theo §4.5** (Thùy chốt qua mockup): (1) mỗi MÀN (dạng) trả `quai[]` = cụm thật theo `thu_tu` + CON TẠM cho đủ ≥3, **tối đa 7**; quái CUỐI luôn `la_boss = true` (boss cuối của chặng). Bỏ `la_man_boss` kiểu "mỗi khu vực 1 boss". Loài quái: boss gán theo `ma_dang`, elite theo `ma_cum`/vị trí, elite khác loài boss. (2) thêm `so_cum` (cụm THẬT) và `so_cau_luot = least(10, greatest(5, 2 × so_cum))` cho mỗi màn. (3) `sinhTuLuyen` chọn câu theo `so_cau_luot` thay vì 10 cố định (khớp `_luot_hoc_that`: ≥5 câu, ≥50%, ≥6 giây). (4) vị trí/kích thước lục địa + vùng do CLIENT tính từ `thu_tu` và số dạng — KHÔNG cần DB · ⏳
+- 01/10 · Giao diện → Số liệu · ⏸ CHỜ Thùy chốt rồi mới làm: lượt không tính thì câu bị bỏ khỏi mastery của dạng (để quái không mất máu khi bấm bừa) — xem §4.5 · ⏸

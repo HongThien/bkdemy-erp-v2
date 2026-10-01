@@ -348,6 +348,8 @@ ASSETS TỐI THIỂU (thấy gì trong ảnh toàn cảnh phải có file — đ
 
 ## Đơn 6 — Bản đồ phiêu lưu + quái vật (style Anime RPG) — soạn 01/10 cho release V1.0 (`spec-v1-app-hs.md` §4)
 
+> ⚠ **PHẦN LỚN ĐÃ THAY BỞI "Đơn 6 v2" ở cuối file này (01/10 tối)** — đừng gửi khối đơn dưới. Còn dùng được: #06–#13 (8 quái) và #39 (cờ).
+
 > App HS đổi thành "Giải cứu thế giới — đánh quái vật": chủ đề = lục địa · chuyên đề = khu vực · dạng = màn đấu · cụm = quái.
 > Số chủ đề mỗi khối khác nhau (3–24) ⇒ KHÔNG vẽ riêng từng chủ đề. Vẽ **bộ vùng đất (biome) dùng xoay vòng** + **bộ quái dùng chung**,
 > code gắn cố định vào chủ đề/cụm. Vị trí khu vực, màn, đường đi, sương mù, máu quái, cờ chinh phục đều do CODE vẽ lên hình.
@@ -410,3 +412,102 @@ G. Đồ vật nhỏ (trong suốt, 512×512)
 GHI ĐÈ KIT §1: KHÔNG chữ trong mọi hình. KHÔNG khẩu hiệu.
 Bắt đầu với #01.
 ```
+
+
+---
+
+## Đơn 6 v2 — Chất liệu + sprite cho 3 tầng bản đồ phiêu lưu (style Anime RPG) — soạn 01/10 tối, THAY phần lớn Đơn 6
+
+> Lý do đổi: logic phiêu lưu đã chốt qua mockup (`spec-v1-app-hs.md` §4.5, mockup `design/mockup-phieu-luu.html`). **Lục địa, vùng, biên giới, con đường đều do CODE vẽ**
+> (số chủ đề/chuyên đề/dạng mỗi khối mỗi khác, thêm dạng là bản đồ tự co giãn) ⇒ ChatGPT **không vẽ hình dạng lục địa nữa**. ChatGPT chỉ vẽ:
+> **chất liệu mặt đất (texture)** lấp vào hình code vẽ · **sprite trang trí** · **quái** · **hero chiến đấu** · **nền màn đấu** · vài đồ vật.
+>
+> **Đơn 6 cũ còn dùng được:** #06–#13 (8 quái, giữ nguyên tên file) · #39 cờ chinh phục. **Bỏ:** #02–#05 nền vùng, #16–#20 nền thế giới + đảo (code vẽ thay),
+> #14–#15 boss riêng (boss giờ là quái thường + vương miện; 2 boss đặc biệt để dành cho "boss cuối hành trình" nếu làm).
+>
+> **Cách gửi:** context ChatGPT MỚI → dán `CHATGPT-UI-KIT.md` → dán khối đơn dưới → đính kèm 4 ảnh: `Nền app HS cấp 3_2.png` + `Nền app HS cấp 3_5.png` (phong cách) +
+> 2 ảnh chụp mockup (mở link mockup, chụp tab **Thế giới** và tab **Chặng đường**) làm **bố cục tham khảo, KHÔNG chép hình tạm trong đó**. Mỗi hình xong: tải về
+> `design/bk-ui-src/Adventure/`, gõ "tiếp". **Làm đúng thứ tự — dừng ở đâu cũng dùng được phần đã có** (deadline 06/10, hình tải về hạn 03/10).
+
+```
+ĐƠN ĐẶT HÀNG
+App:            hs
+Màn:            adventure-rpg v2 (3 tầng bản đồ + màn đấu)
+Mô tả:          App học Toán cho học sinh, chủ đề "Giải cứu thế giới — đánh quái vật". Học sinh đi trên bản đồ thế giới → bấm một lục địa →
+                bấm một vùng → đi trên con đường các chặng; mỗi chặng có một đội quái, quái cuối (boss) đội vương miện. Làm đúng câu hỏi = tung đòn.
+                Thiết bị chính: iPad NGANG 1180×820 và máy tính. LỤC ĐỊA, VÙNG, ĐƯỜNG ĐI do lập trình viên vẽ bằng code,
+                bạn CHỈ vẽ chất liệu và sprite theo danh sách dưới.
+Phong cách:     đúng phong cách 2 ảnh mẫu: anime fantasy, ánh vàng cổ, xanh tím, lấp lánh sao, vẽ tay tỉ mỉ.
+                Quái DỄ THƯƠNG – NGỘ NGHĨNH kiểu slime/thú nhỏ fantasy (học sinh lớp 3–12 đều chơi), KHÔNG ghê sợ, KHÔNG máu me.
+Phiên bản kit:  v1
+
+══ CÁCH GIAO HÀNG (bắt buộc — khác kit) ══
+- KHÔNG đóng zip. KHÔNG viết DESIGN.md. KHÔNG dựng hình bằng code / SVG / HTML / ghép khối.
+- MỖI LƯỢT TRẢ LỜI = ĐÚNG 1 HÌNH, vẽ bằng công cụ tạo ảnh. Dòng đầu ghi số + tên file, vd "#07 dat_bang".
+  Vẽ xong dừng, chờ tôi gõ "tiếp". Chỉ #01–#03 và các "tờ sprite" được gộp nhiều thứ trong 1 ảnh.
+- Ảnh vẽ ra trong chat LÀ file giao.
+
+══ CHUẨN ══
+- TEXTURE MẶT ĐẤT (dat_*): vuông 1024×1024, nền đặc, NHÌN THẲNG TỪ TRÊN XUỐNG (không phối cảnh, không đường chân trời). Mặt đất đồng đều, họa tiết nhỏ rải đều,
+  KHÔNG có vật nổi bật ở giữa (sẽ được lặp lại nhiều lần), KHÔNG bóng đổ lớn, KHÔNG chữ. Sáng vừa phải để chữ trắng đặt lên vẫn đọc được.
+  (Không cần lặp liền mạch hoàn hảo: lập trình viên sẽ lật gương để nối.)
+- BIỂN (bien_*): vuông 1024×1024, nhìn từ trên xuống, nước xanh đậm có ánh sao/ánh trăng lấp lánh nhẹ, đồng đều.
+- TỜ SPRITE TRANG TRÍ (trangtri_*): ngang 1536×1024, nền TRONG SUỐT, đúng 6 vật nhỏ xếp lưới 3 cột × 2 hàng, mỗi vật nằm gọn trong ô của nó, cách nhau rộng,
+  KHÔNG chạm nhau, nhìn chéo từ trên cao như bản đồ game. Mỗi vật cao khoảng 60% ô.
+- QUÁI: 1024×1024, nền TRONG SUỐT, toàn thân, đứng giữa khung, chiếm ~75%, quay 3/4 về phía người xem, tư thế sẵn sàng chiến đấu vui nhộn.
+  Mỗi con 1 màu chủ đạo khác nhau, nhìn hình bóng là phân biệt được. MỖI LOÀI 2 HÌNH: bình thường `quai_x` và trúng đòn `quai_x_trung_don`
+  (cùng con đó, cùng tư thế, mắt nhắm tít, miệng há, hơi nghiêng về sau). Trạng thái "bị hạ" do code làm.
+- HERO: 1024×1536 dọc, nền TRONG SUỐT, nhìn nghiêng 3/4 sang PHẢI, toàn thân, đúng nhân vật + thú đồng hành trong 2 ảnh `nv_nam.png`, `nv_nu.png` (đính kèm).
+- NỀN MÀN ĐẤU (nen_dau_*): ngang 1672×941, nền đặc, nhìn NGANG (như sân khấu): trời + xa ở nửa trên, mặt đất bằng phẳng ở 1/3 dưới để đặt nhân vật (trái) và quái (phải).
+  KHÔNG nhân vật, KHÔNG quái, KHÔNG chữ. Nửa trên hơi tối nhẹ để thanh máu đặt lên vẫn rõ.
+- VẬT/HIỆU ỨNG: 512×512, nền TRONG SUỐT.
+- KHÔNG chữ, số, logo, khung trong MỌI hình (trừ chữ trong #01–#03 là không có).
+
+══ DANH SÁCH (đúng thứ tự ưu tiên) ══
+A. Duyệt phong cách — 3 ảnh toàn cảnh iPad ngang 1672×941 (mỗi ảnh 1 lượt)
+   #01 toan_canh_the_gioi   — bản đồ thế giới ban đêm: biển lớn, 5–6 lục địa hình dạng tự nhiên khác nhau (rừng, băng, núi lửa, sa mạc…), vài lục địa phủ sương mù,
+                              bờ biển có bọt sóng, la bàn góc phải dưới. Không chữ.
+   #02 toan_canh_chang      — màn chặng đường vùng RỪNG: con đường đất uốn lượn qua ngang màn, 4 bệ đá tròn dọc đường, mỗi bệ 1 đội 3 quái nhỏ đứng quanh 1 quái cuối TO có vương miện;
+                              pháp sư (nam) đứng đầu đường; 1 chặng đã cắm cờ, 1 chặng phủ sương. Không chữ.
+   #03 toan_canh_man_dau    — cảnh chiến đấu ngang: pháp sư bên trái đang tung phép, quái cuối đội vương miện bên phải, 2 quái nhỏ chờ phía sau, nền rừng phép thuật.
+                              → DỪNG, chờ Thùy duyệt cả 3 ảnh.
+B. Chất liệu mặt đất — 4 vùng CẦN NHẤT (rồi mới đến 4 vùng sau)
+   #04 dat_rung      — cỏ xanh đậm, rêu, lá rụng, nấm nhỏ phát sáng rải rác
+   #05 dat_bang      — tuyết xanh nhạt, băng nứt, pha lê nhỏ
+   #06 dat_nui_lua   — đá đen, vệt dung nham cam mảnh, tro
+   #07 dat_bien_dao  — cát vàng, san hô, vỏ sò, cỏ biển
+   #08 bien_dem      — biển ban đêm (dùng cho bản đồ thế giới và viền lục địa)
+C. Tờ sprite trang trí — 4 vùng đầu (6 vật/tờ, dùng rải trên lục địa và đường đi)
+   #09 trangtri_rung      — cây to, cây nhỏ, bụi cây, nấm phát sáng, khúc gỗ, cụm hoa
+   #10 trangtri_bang      — cây thông tuyết, tảng băng, người tuyết nhỏ, pha lê, đống tuyết, đá phủ tuyết
+   #11 trangtri_nui_lua   — núi lửa nhỏ, tảng đá đen, cột dung nham, cây khô, đá phát sáng cam, xương cá khô
+   #12 trangtri_bien_dao  — cây dừa, vỏ sò lớn, đá ngầm, thuyền buồm nhỏ, san hô, mỏm đá
+D. 8 quái đầu tiên (mỗi con 2 hình: thường + trúng đòn) — GIỮ tên file Đơn 6 (loài nào đã vẽ từ Đơn 6 thì chỉ vẽ thêm bản trúng đòn)
+   #13 quai_slime_la (xanh lá) · #14 quai_slime_lua (cam đỏ) · #15 quai_meo_bang (xanh băng) · #16 quai_rua_da (nâu đá)
+   #17 quai_cu_dem (tím) · #18 quai_ca_bong (xanh biển) · #19 quai_nam_ma (hồng tím) · #20 quai_chim_set (vàng)
+   (mỗi số trên là CẢ HAI hình, vẽ liền nhau; dòng đầu ghi "#13a quai_slime_la" rồi "#13b quai_slime_la_trung_don")
+E. Hero chiến đấu + hiệu ứng
+   #21 hero_nam_dung · #22 hero_nam_phep (tư thế tung phép, tay giơ về bên phải, có quầng sáng trên tay)
+   #23 hero_nu_dung  · #24 hero_nu_phep
+   #25 vuong_mien       — vương miện vàng nhỏ xinh, nhìn thẳng, gắn lên đầu BẤT KỲ quái nào (512×512 trong suốt)
+   #26 fx_chem          — vệt chém/tia phép vàng trắng cong (trong suốt)
+   #27 fx_trung_don     — vụ nổ sao lấp lánh vàng (trong suốt)
+   #28 fx_hoi_mau       — vòng sáng xanh lục + vài dấu cộng nhỏ bay lên (trong suốt; dấu cộng là hình, không phải chữ)
+   #29 be_da            — bệ đá tròn nhìn chéo từ trên cao, có vòng rune vàng mờ, quái đứng trên (trong suốt)
+   #30 co_chinh_phuc    — lá cờ đỏ cắm xuống đất (trong suốt) — bỏ qua nếu đã có từ Đơn 6
+   #31 may_suong        — 3 đám mây/sương mù trắng xanh, tơi xốp, mép mờ, xếp 3 đám trong 1 ảnh 1536×1024 trong suốt (phủ lên vùng chưa dạy)
+F. Nền màn đấu — 4 vùng đầu
+   #32 nen_dau_rung · #33 nen_dau_bang · #34 nen_dau_nui_lua · #35 nen_dau_bien_dao
+G. Mở rộng (làm nếu còn thời gian)
+   #36–#39 dat_sa_mac · dat_dam_lay · dat_thanh_co · dat_troi_sao        #40–#43 trangtri_ cho 4 vùng đó
+   #44–#47 nen_dau_ cho 4 vùng đó
+   #48–#63 thêm 8 quái × 2 hình: quai_tho_gio · quai_be_nham · quai_sao_bien · quai_ech_doc · quai_dom_dom · quai_soi_bang · quai_bo_giap · quai_ma_lua
+   #64 thuyen_buom_the_gioi (thuyền nhỏ trang trí trên biển, trong suốt) · #65 la_ban (la bàn góc bản đồ, trong suốt)
+
+GHI ĐÈ KIT §1: KHÔNG chữ trong mọi hình. KHÔNG khẩu hiệu.
+Bắt đầu với #01.
+```
+
+> **Khi hình về (Claude làm):** nén vào `public/bk-ui/hs/skin/rpg/phieuluu/` (đặt tên MỚI, không đè tên cũ — luật PWA ở `design/STYLE-HS.md`), khai trong `skin/styles/rpg.ts` (`phieuLuu: { dat, bien, trangTri, quai, hero, fx, nenDau }`),
+> thêm vào `check:style-hs` kiểm đủ file. Style 2 **Thị trấn** làm bộ y hệt (cùng danh sách, nét dễ thương hơn) SAU KHI bộ RPG được duyệt.
+> **Đổi từ Đơn 6 cũ:** mọi tên quái giữ nguyên nên `_phieu_luu_bo()` (DB) không đổi; biome DB (`rung, bang, nui_lua, bien_dao, sa_mac, dam_lay, thanh_co, troi_sao`) khớp `dat_*`/`trangtri_*`/`nen_dau_*`.

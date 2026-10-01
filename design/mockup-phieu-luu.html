@@ -1,0 +1,788 @@
+<title>Hành trình Toán BK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Philosopher:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* Bố cục: khung iPad ngang 1180×820 co theo bề ngang; 5 tab = 3 tầng bản đồ (thế giới → lục địa → chặng đường) + màn đấu + kết quả.
+   Giao diện RPG giữ bảng màu style hiện có (rpg.ts): đêm xanh + vàng cổ. Một giao diện tối duy nhất, chọn có chủ đích. */
+:root {
+  --night: #141a33; --night2: #1d2547; --night3: #2a3563;
+  --gold: #e9c77b; --gold-soft: rgba(233,199,123,.14); --gold-line: rgba(233,199,123,.34);
+  --parch: #f3ead0; --muted: #bfb08a;
+  --hp: #e5484d; --ok: #4cc38a; --fog: #8f97bd; --boss: #b76bff;
+  --page: #0d1126; --ink-dim: #9aa3c7;
+  --f-body: 'Be Vietnam Pro', system-ui, sans-serif; --f-head: 'Philosopher', 'Be Vietnam Pro', serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--page); color: var(--parch); font-family: var(--f-body); font-size: 15px; line-height: 1.55; padding-inline: 16px; padding-block: 20px 56px; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.page { max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+h1 { font-family: var(--f-head); font-size: clamp(24px, 4vw, 34px); margin: 0; letter-spacing: .01em; text-wrap: balance; }
+.lede { margin: 4px 0 0; color: var(--ink-dim); max-width: 80ch; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tab { background: transparent; border: 1px solid var(--gold-line); border-radius: 8px; padding: 8px 13px; color: var(--muted); display: flex; gap: 8px; align-items: baseline; }
+.tab b { font-family: var(--f-head); font-size: 16.5px; color: var(--parch); font-weight: 700; }
+.tab small { font-size: 12px; }
+.tab[aria-selected="true"] { background: var(--gold); border-color: var(--gold); color: var(--night); }
+.tab[aria-selected="true"] b { color: var(--night); }
+.hint { font-size: 13px; color: var(--ink-dim); margin: -6px 0 0; }
+
+/* ---------- khung thiết bị ---------- */
+.wrap { overflow-x: auto; border-radius: 14px; border: 1px solid var(--gold-line); background: #000; }
+.sizer { position: relative; }
+.stage { position: absolute; left: 0; top: 0; width: 1180px; height: 820px; transform-origin: top left; overflow: hidden; background: var(--night); font-size: 15px; }
+.stage * { min-width: 0; }
+.sky { position: absolute; inset: 0; background:
+  radial-gradient(1.6px 1.6px at 8% 12%, #fff 50%, transparent 52%), radial-gradient(1.2px 1.2px at 22% 30%, #fff 50%, transparent 52%),
+  radial-gradient(1.4px 1.4px at 41% 9%, var(--gold) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 63% 22%, #fff 50%, transparent 52%),
+  radial-gradient(1.6px 1.6px at 78% 8%, #fff 50%, transparent 52%), radial-gradient(1.2px 1.2px at 92% 28%, var(--gold) 50%, transparent 52%),
+  radial-gradient(120% 70% at 50% -10%, #34447f 0%, #1a2247 55%, #10152e 100%); }
+.hud { position: absolute; left: 0; right: 0; top: 0; height: 64px; display: flex; align-items: center; gap: 16px; padding: 0 22px; background: linear-gradient(180deg, rgba(10,13,30,.92), rgba(10,13,30,.5)); border-bottom: 1px solid var(--gold-line); z-index: 8; }
+.ava { width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--gold); background: var(--night3); display: grid; place-items: center; font-family: var(--f-head); font-size: 20px; color: var(--gold); flex: none; }
+.who { display: flex; flex-direction: column; line-height: 1.15; }
+.who b { font-family: var(--f-head); font-size: 17px; }
+.who span { font-size: 12px; color: var(--muted); }
+.rank { display: flex; align-items: center; gap: 8px; padding: 4px 10px; border: 1px solid var(--gold-line); border-radius: 999px; background: var(--gold-soft); font-size: 13px; }
+.rank b { font-family: var(--f-head); color: var(--gold); }
+.xp { width: 150px; height: 8px; border-radius: 99px; background: rgba(255,255,255,.12); overflow: hidden; }
+.xp i { display: block; height: 100%; width: 62%; background: linear-gradient(90deg, #c9a24f, var(--gold)); }
+.sp { flex: 1; }
+.chip { display: flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 999px; background: rgba(20,26,51,.7); border: 1px solid var(--gold-line); font-weight: 600; font-variant-numeric: tabular-nums; }
+.chip svg { width: 18px; height: 18px; }
+.chip.fire { color: #ffb36b; }
+.crumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+.crumb b { color: var(--parch); font-family: var(--f-head); font-size: 15px; font-weight: 700; }
+
+.dock { position: absolute; left: 0; right: 0; bottom: 0; height: 96px; display: flex; justify-content: center; align-items: center; gap: 14px; padding: 0 22px; background: linear-gradient(0deg, rgba(10,13,30,.94), rgba(10,13,30,.5)); border-top: 1px solid var(--gold-line); z-index: 8; }
+.dk { position: relative; width: 150px; height: 68px; border: 1px solid var(--gold-line); background: rgba(29,37,71,.85); border-radius: 10px; display: flex; align-items: center; gap: 10px; padding: 0 12px; text-align: left; }
+.dk svg { width: 30px; height: 30px; flex: none; color: var(--gold); }
+.dk b { display: block; font-family: var(--f-head); font-size: 16px; line-height: 1.1; }
+.dk small { display: block; color: var(--muted); font-size: 11.5px; line-height: 1.25; }
+.dk .bd { position: absolute; top: -7px; right: -7px; background: var(--hp); color: #fff; font-size: 12px; font-weight: 700; border-radius: 99px; min-width: 22px; height: 22px; display: grid; place-items: center; padding: 0 5px; }
+.dk.lock { opacity: .55; }
+.card { background: rgba(20,26,51,.8); border: 1px solid var(--gold-line); border-radius: 10px; backdrop-filter: blur(6px); }
+.btn { background: var(--gold); color: var(--night); border: 0; border-radius: 8px; padding: 11px 20px; font-family: var(--f-head); font-size: 18px; font-weight: 700; }
+.btn:hover { filter: brightness(1.07); }
+.btn.ghost { background: transparent; color: var(--gold); border: 1px solid var(--gold-line); }
+.btn[disabled] { opacity: .4; cursor: not-allowed; }
+.back { background: rgba(20,26,51,.75); border: 1px solid var(--gold-line); border-radius: 8px; padding: 7px 12px; color: var(--parch); display: flex; align-items: center; gap: 6px; font-size: 14px; }
+.pill { display: inline-flex; gap: 6px; align-items: center; font-size: 12px; padding: 2px 10px; border-radius: 99px; border: 1px solid var(--gold-line); background: var(--gold-soft); white-space: nowrap; }
+.pill.red { border-color: var(--hp); background: rgba(229,72,77,.15); color: #ffb3b5; }
+.pill.grey { border-color: var(--fog); background: rgba(143,151,189,.15); color: #cfd4ec; }
+.pill.ok { border-color: var(--ok); background: rgba(76,195,138,.14); color: #a7ecca; }
+.pill.purple { border-color: var(--boss); background: rgba(183,107,255,.15); color: #dcb9ff; }
+
+/* ---------- tầng 1: thế giới ---------- */
+.world { position: absolute; left: 0; right: 0; top: 64px; bottom: 96px; overflow: hidden; background: radial-gradient(90% 90% at 50% 45%, #1f5f86 0%, #17466f 55%, #102b4d 100%); }
+.world > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.land { cursor: pointer; }
+.land .shape { transition: transform .15s; transform-box: fill-box; transform-origin: center; }
+.land:hover .shape, .land:focus-visible .shape { transform: scale(1.03); }
+.land.fog .art { filter: grayscale(.75) brightness(.82); }
+.plate { position: absolute; transform: translate(-50%, -50%); text-align: center; width: 190px; pointer-events: none; }
+.plate .nm { font-family: var(--f-head); font-size: 15px; line-height: 1.15; text-wrap: balance; text-shadow: 0 1px 3px #000, 0 0 8px #000; }
+.plate .st { display: inline-flex; gap: 6px; align-items: center; margin-top: 4px; font-size: 12px; padding: 2px 9px; border-radius: 99px; background: rgba(10,13,30,.82); border: 1px solid var(--gold-line); font-variant-numeric: tabular-nums; }
+.mark { position: absolute; transform: translate(-50%, -50%); width: 46px; pointer-events: none; filter: drop-shadow(0 3px 4px rgba(0,0,0,.5)); }
+.mark svg { width: 100%; display: block; }
+.cloud { position: absolute; transform: translate(-50%, -50%); pointer-events: none; opacity: .93; }
+.here { position: absolute; transform: translate(-50%, -100%); pointer-events: none; display: flex; flex-direction: column; align-items: center; animation: bob 2s ease-in-out infinite; z-index: 3; }
+.here span { background: var(--gold); color: var(--night); font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 99px; white-space: nowrap; }
+.here i { width: 0; height: 0; border: 7px solid transparent; border-top-color: var(--gold); margin-top: -1px; }
+@keyframes bob { 50% { transform: translate(-50%, calc(-100% - 7px)); } }
+.hint-bar { position: absolute; top: 12px; left: 16px; padding: 8px 14px; display: flex; gap: 14px; align-items: center; font-size: 12.5px; z-index: 4; }
+.hint-bar span { display: flex; gap: 6px; align-items: center; }
+.hint-bar svg { width: 18px; height: 18px; }
+.nextbar { position: absolute; top: 12px; right: 16px; width: 480px; padding: 8px 12px; display: flex; gap: 12px; align-items: center; z-index: 4; }
+.nextbar .ic { width: 52px; flex: none; }
+.nextbar b { font-family: var(--f-head); font-size: 16px; display: block; line-height: 1.15; }
+.nextbar small { color: var(--muted); font-size: 12px; }
+.nextbar .btn { padding: 8px 16px; font-size: 16px; margin-left: auto; white-space: nowrap; }
+
+/* ---------- tầng 2: lục địa ---------- */
+.cont { position: absolute; left: 0; right: 0; top: 64px; bottom: 0; display: grid; grid-template-columns: 850px 330px; }
+.cmap { position: relative; margin: 12px 0 18px 18px; border-radius: 12px; border: 1px solid var(--gold-line); overflow: hidden; background: radial-gradient(90% 90% at 50% 45%, #1f5f86 0%, #17466f 55%, #102b4d 100%); }
+.cmap > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cell { cursor: pointer; stroke: rgba(40,28,12,.7); stroke-width: 3; stroke-linejoin: round; transition: stroke .1s; }
+.cell:hover, .cell:focus-visible { stroke: var(--gold); stroke-width: 5; }
+.alab { position: absolute; transform: translate(-50%, -50%); width: 190px; text-align: center; pointer-events: none; }
+.alab .t { font-family: var(--f-head); font-size: 16px; line-height: 1.15; text-wrap: balance; text-shadow: 0 1px 3px #000, 0 0 10px #000; }
+.alab .s { display: inline-flex; gap: 6px; align-items: center; margin-top: 4px; font-size: 12px; padding: 2px 9px; border-radius: 99px; background: rgba(10,13,30,.82); border: 1px solid var(--gold-line); }
+.alab .mk { width: 40px; margin: 0 auto 4px; filter: drop-shadow(0 3px 4px rgba(0,0,0,.5)); }
+.side { margin: 12px 18px 18px 14px; padding: 16px; display: flex; flex-direction: column; gap: 12px; overflow: hidden; }
+.side h3 { margin: 0; font-family: var(--f-head); font-size: 21px; line-height: 1.2; }
+.side .lead { font-size: 13px; color: var(--muted); margin: 0; }
+.arow { display: flex; gap: 10px; align-items: center; padding: 9px 10px; border-radius: 8px; background: rgba(255,255,255,.05); border: 1px solid transparent; text-align: left; width: 100%; }
+.arow:hover { border-color: var(--gold-line); }
+.arow .sw { width: 14px; height: 38px; border-radius: 4px; flex: none; }
+.arow b { font-family: var(--f-head); font-size: 15px; line-height: 1.15; display: block; }
+.arow small { color: var(--muted); font-size: 12px; }
+.kv { display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; font-size: 13px; }
+.kv dt { color: var(--muted); } .kv dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ---------- tầng 3: chặng đường ---------- */
+.road { position: absolute; left: 0; right: 0; top: 64px; bottom: 0; }
+.road > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.stg { position: absolute; transform: translate(-50%, -78%); width: 190px; background: none; border: 0; padding: 0; text-align: center; }
+.stg .plat { position: absolute; left: 50%; top: 84px; width: 130px; height: 34px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(90,70,40,.95), rgba(60,45,25,.95)); border: 3px solid rgba(233,199,123,.55); box-shadow: 0 6px 10px rgba(0,0,0,.4); }
+.stg .mw { position: relative; width: 112px; margin: 0 auto; height: 100px; display: flex; align-items: flex-end; transition: transform .15s; }
+.stg:hover .mw { transform: translateY(-5px) scale(1.05); }
+.stg.big .mw { width: 148px; height: 128px; margin-bottom: -22px; }
+.stg.big .plat { top: 106px; width: 164px; border-color: var(--boss); }
+.stg.fog .mw svg.mn { filter: brightness(0) opacity(.5); }
+.stg.dat .mw svg.mn { filter: grayscale(.7) opacity(.7); }
+.stg .flg { position: absolute; right: -2px; bottom: 6px; width: 42px; }
+.stg .crn { position: absolute; left: 50%; top: -20px; width: 38px; transform: translateX(-50%); }
+.stg .ques { position: absolute; left: 50%; top: 20px; transform: translateX(-50%); font-family: var(--f-head); font-size: 40px; color: #cfd4ec; text-shadow: 0 2px 6px #000; }
+.stg .pl { position: relative; margin: 8px auto 0; padding: 5px 9px 6px; border-radius: 8px; background: rgba(14,18,38,.88); border: 1px solid var(--gold-line); width: 178px; }
+.stg .pl b { display: block; font-family: var(--f-head); font-size: 13.5px; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.stg .pl span { font-size: 11.5px; color: var(--muted); }
+.stg .mini { width: 100px; height: 6px; border-radius: 9px; background: rgba(255,255,255,.18); margin: 5px auto 0; overflow: hidden; } .stg .mini i { display: block; height: 100%; background: var(--hp); }
+.stg.sel .pl { border-color: var(--gold); box-shadow: 0 0 12px rgba(233,199,123,.55); }
+.stg.sel .plat { border-color: var(--gold); }
+.herotag { position: absolute; transform: translate(-50%, -100%); width: 54px; z-index: 3; pointer-events: none; animation: bob 2s ease-in-out infinite; }
+.herotag svg { width: 100%; display: block; }
+.rside { position: absolute; right: 18px; top: 18px; bottom: 18px; width: 300px; padding: 16px; display: flex; flex-direction: column; gap: 12px; z-index: 4; }
+.rside h3 { margin: 0; font-family: var(--f-head); font-size: 20px; line-height: 1.2; }
+.bossbox { display: flex; gap: 12px; align-items: center; padding: 10px; border-radius: 10px; background: rgba(255,255,255,.05); }
+.bossbox .mw2 { width: 92px; flex: none; }
+.bossbox b { font-family: var(--f-head); font-size: 17px; display: block; line-height: 1.1; }
+.bossbox small { color: var(--muted); font-size: 12px; }
+.mins { display: flex; flex-direction: column; gap: 6px; }
+.mins .m { display: flex; gap: 8px; align-items: center; font-size: 13px; padding: 5px 8px; border-radius: 7px; background: rgba(255,255,255,.05); }
+.mins .m svg { width: 28px; flex: none; }
+
+/* ---------- màn đấu ---------- */
+.battle { position: absolute; inset: 0; }
+.bhud { position: absolute; left: 0; right: 0; top: 0; height: 58px; display: flex; align-items: center; gap: 14px; padding: 0 20px; z-index: 6; background: linear-gradient(180deg, rgba(10,13,30,.9), rgba(10,13,30,.3)); }
+.bhud .ti { font-family: var(--f-head); font-size: 19px; line-height: 1.1; }
+.bhud .ti small { display: block; font-family: var(--f-body); font-size: 12px; color: var(--muted); }
+.steps { display: flex; gap: 5px; }
+.steps i { width: 24px; height: 8px; border-radius: 9px; background: rgba(255,255,255,.16); }
+.steps i.ok { background: var(--ok); } .steps i.no { background: var(--hp); } .steps i.cur { background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+.scene { position: absolute; left: 0; right: 0; top: 58px; height: 300px; background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(15,30,32,.55) 100%); }
+.ground { position: absolute; left: 0; right: 0; bottom: 0; height: 70px; background: linear-gradient(180deg, #213a3c, #16262c); border-top: 2px solid rgba(233,199,123,.25); }
+.ground::before { content: ''; position: absolute; left: 0; right: 0; top: -34px; height: 36px; background: radial-gradient(80px 36px at 10% 100%, #1d3638 98%, transparent 100%), radial-gradient(120px 44px at 38% 100%, #1b3234 98%, transparent 100%), radial-gradient(90px 30px at 66% 100%, #1d3638 98%, transparent 100%), radial-gradient(140px 48px at 92% 100%, #1b3234 98%, transparent 100%); }
+.hero { position: absolute; left: 130px; bottom: 36px; width: 150px; transition: transform .18s ease-out; }
+.hero.atk { transform: translateX(150px); }
+.mon { position: absolute; right: 150px; bottom: 34px; width: 230px; }
+.mon .body { animation: idle 2.4s ease-in-out infinite; transform-origin: bottom center; }
+.mon.hit .body { animation: hit .45s; }
+.mon.heal .body { animation: heal .5s; }
+.mon.dead .body { animation: none; transform: scaleY(.28) translateY(62%); opacity: .55; filter: grayscale(.8); transition: all .6s; }
+@keyframes idle { 50% { transform: scale(1.03, .96); } }
+@keyframes hit { 0% { transform: translateX(0); filter: brightness(2.2); } 25% { transform: translateX(14px); } 50% { transform: translateX(-10px); } 100% { transform: none; filter: none; } }
+@keyframes heal { 0% { filter: hue-rotate(80deg) brightness(1.5); transform: scale(1.1); } 100% { transform: none; filter: none; } }
+.slash { position: absolute; right: 190px; bottom: 80px; width: 200px; opacity: 0; pointer-events: none; }
+.slash.go { animation: slash .4s ease-out; }
+@keyframes slash { 0% { opacity: 1; transform: scale(.6) rotate(-20deg); } 100% { opacity: 0; transform: scale(1.15) rotate(8deg); } }
+.float { position: absolute; font-family: var(--f-head); font-size: 34px; font-weight: 700; pointer-events: none; text-shadow: 0 2px 6px #000; animation: rise 1s ease-out forwards; z-index: 4; }
+.float.dmg { color: var(--gold); } .float.heal { color: #ff8a8d; }
+@keyframes rise { 0% { opacity: 0; transform: translateY(10px); } 15% { opacity: 1; } 100% { opacity: 0; transform: translateY(-60px); } }
+.mhp { position: absolute; left: 50%; transform: translateX(-50%); top: 14px; width: 400px; padding: 10px 14px; z-index: 4; }
+.mhp .t { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--f-head); font-size: 17px; }
+.mhp .t small { font-family: var(--f-body); font-size: 12px; color: var(--muted); }
+.pips { display: flex; gap: 4px; margin-top: 8px; }
+.pips i { flex: 1; height: 14px; border-radius: 3px; background: var(--hp); box-shadow: inset 0 -3px 0 rgba(0,0,0,.25); }
+.pips i.off { background: rgba(255,255,255,.1); box-shadow: none; }
+.pips i.ex { background: transparent; border: 1px dashed rgba(255,255,255,.2); box-shadow: none; }
+.mhp .sub { margin-top: 6px; font-size: 12px; color: var(--muted); }
+.qa { position: absolute; left: 0; right: 0; top: 358px; bottom: 0; padding: 14px 40px 20px; display: grid; grid-template-columns: 1fr 480px; gap: 22px; background: linear-gradient(180deg, rgba(14,20,40,.95), rgba(14,20,40,1)); border-top: 1px solid var(--gold-line); }
+.qcard { display: flex; flex-direction: column; gap: 10px; }
+.qcard .tag { display: flex; gap: 8px; flex-wrap: wrap; }
+.qcard .ask { font-size: 16px; color: var(--muted); }
+.sys { display: flex; align-items: center; gap: 14px; font-size: 30px; padding: 8px 6px; }
+.sys .br { font-size: 90px; line-height: .8; color: var(--gold); font-weight: 300; transform: scaleX(.7); }
+.sys .ln { display: flex; flex-direction: column; gap: 6px; font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+.fb { min-height: 76px; border-radius: 10px; padding: 10px 14px; display: flex; gap: 12px; align-items: center; border: 1px solid transparent; font-size: 14px; }
+.fb.ok { background: rgba(76,195,138,.14); border-color: var(--ok); }
+.fb.no { background: rgba(229,72,77,.14); border-color: var(--hp); }
+.fb.idle { color: var(--muted); border-color: var(--gold-line); border-style: dashed; }
+.fb b { font-family: var(--f-head); font-size: 18px; display: block; }
+.opts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-content: start; }
+.opt { min-height: 96px; border-radius: 10px; border: 1.5px solid var(--gold-line); background: rgba(29,37,71,.9); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 24px; font-variant-numeric: tabular-nums; position: relative; }
+.opt small { position: absolute; left: 10px; top: 7px; font-size: 13px; color: var(--gold); font-family: var(--f-head); font-weight: 700; }
+.opt:hover:not([disabled]) { background: var(--night3); border-color: var(--gold); }
+.opt.right { border-color: var(--ok); background: rgba(76,195,138,.2); }
+.opt.wrong { border-color: var(--hp); background: rgba(229,72,77,.2); }
+.opt[disabled] { cursor: default; }
+.nxt { grid-column: 1 / -1; justify-self: end; }
+
+/* ---------- kết quả ---------- */
+.res { position: absolute; inset: 0; display: grid; grid-template-columns: 430px 1fr; gap: 26px; padding: 34px 44px 30px; }
+.res .scn { position: relative; border-radius: 12px; border: 1px solid var(--gold-line); overflow: hidden; background: linear-gradient(180deg, rgba(20,40,44,.55), rgba(14,26,32,.9)); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: 18px; gap: 12px; }
+.res .scn .mm { width: 250px; }
+.res .scn .banner { position: absolute; left: 0; right: 0; top: 18px; text-align: center; font-family: var(--f-head); font-size: 26px; text-shadow: 0 2px 6px #000; }
+.big2 { font-family: var(--f-head); font-size: 40px; line-height: 1.05; margin: 0; }
+.right-col { display: flex; flex-direction: column; gap: 14px; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.stat { padding: 12px 14px; }
+.stat b { display: block; font-family: var(--f-head); font-size: 30px; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.stat span { font-size: 12.5px; color: var(--muted); }
+.verdict { padding: 14px 16px; display: flex; gap: 14px; align-items: center; border-left: 4px solid var(--gold); }
+.verdict.ok { border-left-color: var(--ok); } .verdict.no { border-left-color: var(--fog); }
+.loot { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.lt { padding: 11px 14px; display: flex; flex-direction: column; gap: 6px; }
+.lt .bar { height: 8px; border-radius: 9px; background: rgba(255,255,255,.14); overflow: hidden; } .lt .bar i { display: block; height: 100%; background: var(--gold); }
+.lt small { color: var(--muted); font-size: 12.5px; }
+.lt.off { opacity: .45; }
+.acts { display: flex; gap: 10px; margin-top: auto; flex-wrap: wrap; }
+.swt { display: flex; gap: 6px; align-items: center; font-size: 12.5px; color: var(--muted); }
+.swt button { background: transparent; border: 1px solid var(--gold-line); border-radius: 99px; padding: 3px 11px; color: var(--muted); font-size: 12.5px; }
+.swt button[aria-pressed="true"] { background: var(--gold-soft); color: var(--gold); border-color: var(--gold); }
+.toast { position: absolute; left: 50%; bottom: 120px; transform: translateX(-50%); background: var(--gold); color: var(--night); padding: 9px 18px; border-radius: 999px; font-weight: 600; z-index: 20; box-shadow: 0 6px 20px rgba(0,0,0,.5); white-space: nowrap; }
+
+.stg .mw svg.mn { width: 100%; }
+.stg .els { display: flex; justify-content: center; gap: 3px; margin-bottom: 4px; }
+.stg .els svg { width: 25px; display: block; }
+.stg .els .e { position: relative; line-height: 0; }
+.stg .els .e.dat svg { filter: grayscale(.8) opacity(.5); }
+.stg .els .e.fog svg { filter: brightness(0) opacity(.5); }
+.stg .els .e.yeu { outline: 1.5px solid var(--gold); border-radius: 6px; }
+.stg .crn { top: -18px; }
+.mon.boss { width: 300px; right: 110px; }
+.mon .cr { position: absolute; left: 50%; top: -26px; width: 56px; transform: translateX(-50%); z-index: 2; }
+.queue { position: absolute; left: 20px; top: 16px; padding: 10px 12px; display: flex; gap: 10px; align-items: flex-end; z-index: 4; }
+.queue::before { content: 'Đội hình'; position: absolute; left: 12px; top: -10px; background: var(--night2); border: 1px solid var(--gold-line); border-radius: 99px; padding: 0 9px; font-size: 11px; color: var(--muted); }
+.qi { position: relative; width: 46px; opacity: .6; padding: 2px; border-radius: 8px; }
+.qi svg { width: 100%; display: block; }
+.qi.bs { width: 62px; }
+.qi.on { opacity: 1; outline: 2px solid var(--gold); background: var(--gold-soft); }
+.qi.dn { opacity: .4; filter: grayscale(.8); }
+.qi .qc { position: absolute; top: -13px; left: 50%; width: 22px; transform: translateX(-50%); }
+.intro { position: absolute; left: 0; right: 0; top: 110px; text-align: center; font-family: var(--f-head); font-size: 54px; font-weight: 700; color: var(--gold); text-shadow: 0 3px 12px #000, 0 0 30px rgba(233,199,123,.6); z-index: 6; pointer-events: none; animation: introa 1.7s ease-out forwards; letter-spacing: .04em; }
+@keyframes introa { 0% { opacity: 0; transform: scale(.6); } 15% { opacity: 1; transform: scale(1.06); } 80% { opacity: 1; } 100% { opacity: 0; transform: scale(1); } }
+.mhp .tg { display: flex; gap: 8px; align-items: center; margin-top: 6px; }
+.mhp .tg small { color: var(--muted); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.roster { width: 100%; display: flex; flex-direction: column; gap: 6px; }
+.roster .rr { display: flex; gap: 10px; align-items: center; padding: 6px 10px; border-radius: 8px; background: rgba(255,255,255,.06); font-size: 13px; }
+.roster .rr svg { width: 34px; flex: none; }
+.roster .rr b { font-family: var(--f-head); font-size: 14px; display: block; line-height: 1.15; }
+.roster .rr small { color: var(--muted); font-size: 12px; }
+.roster .rr .tg2 { margin-left: auto; font-size: 12px; white-space: nowrap; }
+.roster .rr.win { border: 1px solid var(--gold); background: var(--gold-soft); }
+.ros-list { display: flex; flex-direction: column; gap: 6px; }
+.ros-list .m { display: flex; gap: 8px; align-items: center; font-size: 12.5px; padding: 5px 8px; border-radius: 7px; background: rgba(255,255,255,.05); }
+.ros-list .m svg { width: 30px; flex: none; }
+.ros-list .m b { display: block; font-family: var(--f-head); font-size: 13.5px; line-height: 1.15; }
+.ros-list .m small { color: var(--muted); font-size: 11.5px; }
+.ros-list .m .tg2 { margin-left: auto; font-size: 11.5px; white-space: nowrap; text-align: right; }
+.ros-list .m.cur { border: 1px solid var(--gold); background: var(--gold-soft); }
+.ros-list .m.dn svg { filter: grayscale(.8) opacity(.6); }
+.ros-list .m.fg svg { filter: brightness(0) opacity(.5); }
+
+.rside { overflow-y: auto; }
+.rside > div:last-child { position: sticky; bottom: 0; padding-top: 8px; background: rgba(20,26,51,.96); }
+/* ---------- ghi chú logic dưới khung ---------- */
+.notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.nbox { border: 1px solid var(--gold-line); border-radius: 12px; padding: 16px 18px; background: var(--night2); }
+.nbox h2 { font-family: var(--f-head); font-size: 20px; margin: 0 0 8px; }
+.nbox ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
+.nbox li::marker { color: var(--gold); }
+.nbox.q { border-color: var(--hp); }
+.nbox.q h2 { color: #ffb3b5; }
+.nbox code { background: rgba(255,255,255,.08); padding: 1px 6px; border-radius: 5px; font-size: .9em; }
+.map-tbl { overflow-x: auto; border: 1px solid var(--gold-line); border-radius: 12px; background: var(--night2); }
+.map-tbl h2 { font-family: var(--f-head); font-size: 20px; margin: 0; padding: 14px 18px 4px; }
+.map-tbl p { margin: 0; padding: 0 18px 8px; color: var(--ink-dim); font-size: 13.5px; }
+table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 14px; }
+th, td { text-align: left; padding: 9px 18px; border-top: 1px solid rgba(233,199,123,.18); vertical-align: top; }
+th { color: var(--muted); font-weight: 600; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+td:first-child { font-family: var(--f-head); font-size: 16px; color: var(--gold); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { .here, .herotag, .mon .body { animation: none !important; } }
+</style>
+
+<div class="page">
+  <header>
+    <h1>Hành trình Toán BK</h1>
+    <p class="lede">Mockup logic cho UI "Giải cứu thế giới – đánh quái vật". Ba tầng bản đồ: thế giới, lục địa, chặng đường. Tên chủ đề, chuyên đề, dạng là cây Đại khối 9 thật. Điểm số và máu quái là dữ liệu mẫu. Hình vẽ là hình tạm, chưa phải bản ChatGPT.</p>
+  </header>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <p class="hint" id="hint"></p>
+  <div class="wrap" id="wrap"><div class="sizer" id="sizer"><div class="stage" id="stage"></div></div></div>
+  <section class="notes" id="notes"></section>
+  <section class="map-tbl">
+    <h2>Bản dịch từ game sang dữ liệu thật</h2>
+    <p>Mỗi thứ trong game phải trỏ về một thứ có thật trong hệ thống.</p>
+    <table>
+      <thead><tr><th>Trong game</th><th>Trong ERP</th><th>Quy tắc</th></tr></thead>
+      <tbody>
+        <tr><td>Thế giới</td><td>Môn (Toán, Văn, Anh, KHTN)</td><td>Mỗi môn một thế giới riêng, cùng khung, chạy y hệt nhau.</td></tr>
+        <tr><td>Lục địa</td><td>Chủ đề (1 chương)</td><td>Kích thước theo số dạng. Vị trí và biome gán cố định ở DB để em nhớ đường.</td></tr>
+        <tr><td>Vùng (area)</td><td>Chuyên đề</td><td>Các vùng giáp biên giới nhau trên cùng lục địa. Nhiều dạng thì vùng to.</td></tr>
+        <tr><td>Chặng</td><td>Dạng (<code>ma_dang</code>)</td><td>Đơn vị chân lý HS × dạng. Nằm trên đường đi của vùng.</td></tr>
+        <tr><td>Elite · Boss cuối</td><td>Cụm bài (<code>dai_cum_bai</code>)</td><td>Theo <code>thu_tu</code> trong dạng, cụm cuối là boss cuối. Mỗi dạng ít nhất 3 quái, thiếu thì thêm con tạm. Tên cụm không hiện.</td></tr>
+        <tr><td>Máu quái</td><td>Khoảng cách tới "đạt" của cả dạng</td><td>Chia đều cho đội hình vì chưa đo riêng từng cụm. Không lưu máu riêng.</td></tr>
+        <tr><td>Kích thước</td><td>Số dạng · số cụm</td><td>Lục địa và vùng to theo số dạng. Chặng to theo số cụm.</td></tr>
+                <tr><td>Sương mù · quái còn máu · cờ</td><td>chưa đo · yếu · đạt</td><td>Ba trạng thái. Chưa đo không bao giờ bị gộp vào yếu.</td></tr>
+        <tr><td>Một trận</td><td>Một lượt 5 đến 10 câu</td><td>Số câu = số cụm × 2, kẹp 5–10 (quá 10 thì chọn ngẫu nhiên 10). Lượt được tính khi đúng từ 50%, trung bình từ 6 giây/câu, và tính câu chưa từng gặp.</td></tr>
+        <tr><td>Cấp bậc chiến binh</td><td>Rank 10 bậc</td><td>Đã có: Novice … Supreme God.</td></tr>
+        <tr><td>Ngọn lửa trại</td><td>Chuỗi làm bài</td><td>Tự luyện và Thử thách. ET và BTVN không tính.</td></tr>
+        <tr><td>Bảng nhiệm vụ hội</td><td>Nhiệm vụ ngày / tuần / tháng</td><td>Đã build, vẽ lại theo chất phiêu lưu.</td></tr>
+        <tr><td>Đấu trường · Quảng trường · Căn cứ</td><td>Thử thách · Thế giới BK · Game</td><td>Game mở khoá bằng lượt học thật.</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+
+<script>
+/* ============ tiện ích hình học ============ */
+function rng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const f1 = n => Math.round(n * 10) / 10;
+function smooth(p) {
+  const n = p.length; let d = `M${f1(p[0][0])} ${f1(p[0][1])}`;
+  for (let i = 0; i < n; i++) {
+    const p0 = p[(i - 1 + n) % n], p1 = p[i], p2 = p[(i + 1) % n], p3 = p[(i + 2) % n];
+    d += `C${f1(p1[0] + (p2[0] - p0[0]) / 6)} ${f1(p1[1] + (p2[1] - p0[1]) / 6)} ${f1(p2[0] - (p3[0] - p1[0]) / 6)} ${f1(p2[1] - (p3[1] - p1[1]) / 6)} ${f1(p2[0])} ${f1(p2[1])}`;
+  }
+  return d + 'Z';
+}
+function blob(cx, cy, r, seed, o) {
+  o = o || {}; const n = o.n || 40, rough = o.rough == null ? .3 : o.rough, sx = o.sx || 1, sy = o.sy || 1;
+  const R = rng(seed), p0 = R() * 6.28, p1 = R() * 6.28, p2 = R() * 6.28, pts = [];
+  for (let i = 0; i < n; i++) {
+    const a = i / n * Math.PI * 2, k = 1 + rough * (.5 * Math.sin(2 * a + p0) + .3 * Math.sin(3 * a + p1) + .2 * Math.sin(5 * a + p2)) + (R() - .5) * .1;
+    pts.push([cx + Math.cos(a) * r * k * sx, cy + Math.sin(a) * r * k * sy]);
+  }
+  return { pts, d: smooth(pts) };
+}
+function inPoly(x, y, poly) { let c = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const [xi, yi] = poly[i], [xj, yj] = poly[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; } return c; }
+function clipHalf(poly, a, b, c) { const out = []; for (let i = 0; i < poly.length; i++) { const P = poly[i], Q = poly[(i + 1) % poly.length], dp = a * P[0] + b * P[1] - c, dq = a * Q[0] + b * Q[1] - c; if (dp <= 0) out.push(P); if ((dp < 0 && dq > 0) || (dp > 0 && dq < 0)) { const t = dp / (dp - dq); out.push([P[0] + (Q[0] - P[0]) * t, P[1] + (Q[1] - P[1]) * t]); } } return out; }
+function voronoi(seeds, W, H, w) { w = w || seeds.map(() => 0); return seeds.map((s, i) => { let poly = [[-50, -50], [W + 50, -50], [W + 50, H + 50], [-50, H + 50]]; seeds.forEach((t, j) => { if (i !== j) poly = clipHalf(poly, t[0] - s[0], t[1] - s[1], (t[0] * t[0] + t[1] * t[1] - s[0] * s[0] - s[1] * s[1] + w[i] - w[j]) / 2); }); return poly; }); }
+const hash = s => { let h = 0; for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0; return h; };
+
+/* ============ dữ liệu: cây Đại khối 9 (thật) + trạng thái mẫu ============ */
+/* mỗi chặng: [tên dạng, mức độ, trạng thái d|y|f, số đòn còn cần (nếu yếu), cụm[]] */
+const CONT = {
+  C: { ten: 'Phương trình và hệ phương trình bậc nhất hai ẩn', x: 545, y: 335, c1: '#6bb7e8', c2: '#2f6aa3', seed: 21, cur: true, areas: [
+    ['Phương trình bậc nhất hai ẩn', [['Tìm nghiệm của phương trình bậc nhất hai ẩn', 1, 'd']]],
+    ['Hệ phương trình bậc nhất hai ẩn', [['Giải hệ phương trình bậc nhất hai ẩn cơ bản', 2, 'y', 7, ['Sử dụng phương pháp thế']], ['Giải hệ phương trình đưa về hệ bậc nhất hai ẩn', 3, 'f'], ['Giải hệ bằng PP đặt ẩn phụ – dạng phân thức', 3, 'f'], ['Giải hệ bằng PP đặt ẩn phụ – có chứa giá trị tuyệt đối', 4, 'f']]],
+    ['Giải toán bằng cách lập hệ phương trình', [['Bài toán Lãi suất', 3, 'd'], ['Bài toán Công việc chung – riêng', 3, 'd'], ['Bài toán Chuyển động thường', 3, 'y', 4], ['Bài toán Chuyển động trên dòng nước', 3, 'y', 6], ['Bài toán Cổ điển', 3, 'f'], ['Bài toán có nội dung Hình học', 3, 'f'], ['Các bài toán khác', 3, 'f'], ['Bài toán Chuyển động cùng chiều – ngược chiều', 3, 'f']]],
+    ['Hệ phương trình đối xứng', [['Hệ phương trình Tổng – Tích', 4, 'f'], ['Hệ phương trình đưa về hệ tổng – tích', 5, 'f']]],
+  ] },
+  B: { ten: 'Phương trình và bất phương trình bậc nhất một ẩn', x: 215, y: 215, c1: '#e6c565', c2: '#9a7a2c', seed: 5, areas: [
+    ['Phương trình bậc nhất một ẩn', [['Phương trình bậc nhất một ẩn dạng cơ bản', 1, 'd'], ['Phương trình quy về bậc nhất một ẩn – đa thức', 2, 'd'], ['Phương trình quy về bậc nhất một ẩn – phân thức', 3, 'd']]],
+    ['Bất phương trình bậc nhất một ẩn', [['Giải bất phương trình bậc nhất một ẩn dạng cơ bản', 1, 'd'], ['Bất phương trình quy về bậc nhất – đa thức', 2, 'd'], ['Bất phương trình quy về bậc nhất – phân thức', 3, 'd'], ['Giải toán bằng cách lập bất phương trình', 3, 'y', 3]]],
+    ['Giải toán bằng cách lập phương trình', [['Bài toán Năng suất', 3, 'd'], ['Bài toán Diện tích', 3, 'd'], ['Bài toán Chuyển động cùng chiều – ngược chiều', 3, 'd'], ['Bài toán Chuyển động cổ điển', 3, 'd'], ['Bài toán Chuyển động dòng nước', 3, 'd'], ['Bài toán Hai đại lượng', 3, 'y', 5], ['Bài toán Công việc chung – riêng', 3, 'd']]],
+    ['Phương trình tích', [['Phương trình tích dạng cơ bản', 2, 'd'], ['Phương trình quy về tích – đa thức', 3, 'd'], ['Phương trình quy về tích – phân thức', 3, 'd'], ['Phương trình quy về tích – đặt ẩn phụ', 4, 'y', 6], ['Phương trình quy về tích – biến đổi đặc biệt', 4, 'y', 8]]],
+  ] },
+  A: { ten: 'Căn bậc hai – Căn thức bậc hai', x: 225, y: 500, c1: '#7fc48a', c2: '#2f7048', seed: 9, areas: [
+    ['Rút gọn biểu thức chứa căn bậc hai của số', [['Rút gọn biểu thức chứa căn – dạng cơ bản', 2, 'd', 0, ['Biểu thức căn đơn giản', 'Chứa căn của bình phương', 'Mẫu chứa căn']], ['Rút gọn biểu thức chứa căn – ứng dụng hằng đẳng thức', 3, 'd', 0, ['Trong căn là bình phương', 'Cần nhân thêm hệ số', 'Bình phương của 2 căn']]]],
+    ['Rút gọn Căn thức', [['Tìm ĐKXĐ của Căn thức', 2, 'd'], ['Tính giá trị Căn thức khi biết giá trị của biến', 2, 'd', 0, ['Tính bình thường', 'Có giá trị tuyệt đối']], ['Rút gọn Căn thức', 3, 'y', 6, ['Rút gọn dùng hằng đẳng thức hiệu bình phương', 'Rút gọn 2', 'Rút gọn dùng hiệu bình phương đảo dấu', 'Rút gọn 5', 'Rút gọn 5', 'Rút gọn phương pháp tách']], ['Tìm x ứng dụng Rút gọn Căn thức', 3, 'y', 7]]],
+    ['Câu C rút gọn', [['Tìm x để P thoả mãn Đẳng thức', 3, 'y', 5], ['Tìm x để P thoả mãn Bất đẳng thức', 3, 'y', 6], ['Tìm x nguyên để P nguyên', 3, 'f'], ['Tìm x để P nguyên', 3, 'f'], ['Tìm GTLN – GTNN của P', 3, 'f'], ['Tìm GTLN – GTNN của P ứng dụng Côsi', 3, 'f'], ['Bài toán liên quan đến Giá trị tuyệt đối và Căn bậc hai', 3, 'f']]],
+  ] },
+  H: { ten: 'Các dạng bài Toán nâng cao', x: 850, y: 215, c1: '#a77ad6', c2: '#4b2a78', seed: 33, boss: true, areas: [
+    ['Bất đẳng thức một biến', [['GTLN – GTNN của biểu thức một biến bậc hai', 3, 'f'], ['GTLN – GTNN của biểu thức một biến có điều kiện', 4, 'f'], ['GTLN – GTNN biểu thức bậc 3 ứng dụng Cauchy chiều xuôi', 5, 'f'], ['GTLN – GTNN biểu thức bậc 3 ứng dụng Cauchy chiều ngược', 5, 'f'], ['GTLN – GTNN dạng phân thức ứng dụng Cauchy 2 số', 4, 'f'], ['GTLN – GTNN biểu thức bậc hai với x nguyên', 4, 'f'], ['GTLN – GTNN phân thức Cauchy 2 số với x nguyên', 4, 'f']]],
+    ['Bất đẳng thức hai biến đối xứng', [['Tìm GTLN – GTNN của biểu thức dạng tổng', 4, 'f'], ['Tìm GTLN – GTNN của biểu thức dạng tích', 4, 'f'], ['Tìm GTLN – GTNN dạng tổng bình phương', 4, 'f']]],
+    ['Ứng dụng phương pháp dồn biến', [['Dồn biến dạng tổng', 5, 'f'], ['Dồn biến dạng tích', 5, 'f']]],
+    ['Các bài toán về biểu thức bậc nhất hai biến', [['Ứng dụng phương trình nghiệm nguyên bậc nhất hai biến', 4, 'f'], ['Biểu diễn hệ thức bậc nhất hai biến qua hệ thức khác', 4, 'f'], ['GTLN – GTNN hai biến có nhiều điều kiện', 5, 'f']]],
+    ['Tính chất của bất đẳng thức', [['Chứng minh bất đẳng thức dạng đa thức', 3, 'f'], ['Chứng minh bất đẳng thức dạng phân thức', 3, 'f'], ['Chứng minh bất đẳng thức dạng căn thức', 3, 'f'], ['Chứng minh bất đẳng thức có giá trị tuyệt đối', 3, 'f']]],
+  ] },
+  I: { ten: 'Các mô hình toán thực tế nâng cao', x: 875, y: 495, c1: '#e0885c', c2: '#8a3f22', seed: 41, boss: true, areas: [
+    ['Bài toán về Doanh thu – Lợi nhuận', [['Bài toán tối ưu doanh thu – lợi nhuận', 4, 'f'], ['Tối ưu doanh thu – lợi nhuận với biến nguyên', 4, 'f']]],
+    ['Bài toán tối ưu chi phí', [['Tối ưu chi phí sản xuất – dạng 1 biến', 4, 'f'], ['Tối ưu chi phí sản xuất – dạng 1 biến nguyên', 4, 'f']]],
+    ['Bài toán thực tế hình học', [['Chu vi – diện tích: cho tổng – hỏi tích', 4, 'f'], ['Chu vi – diện tích: cho tích – hỏi tổng', 4, 'f'], ['Thể tích – diện tích: cho thể tích – hỏi diện tích', 4, 'f'], ['Thể tích – diện tích: cho diện tích – hỏi thể tích', 4, 'f'], ['Hình chữ nhật nội tiếp hình tam giác', 5, 'f']]],
+    ['Bài toán tối ưu doanh thu chi phí 2 biến', [['Tối ưu doanh thu chi phí có miền điều kiện', 4, 'f']]],
+  ] },
+  D: { ten: 'Hàm số bậc hai – Định lý Viète', x: 625, y: 100, c1: '#9aa3c7', c2: '#4b5380', seed: 3, areas: [['Hàm số bậc hai', [['Tính chất hàm số bậc hai', 3, 'f']]]] },
+  E: { ten: 'Tần số – Tần số tương đối', x: 1085, y: 330, c1: '#9aa3c7', c2: '#4b5380', seed: 14, areas: [['Bảng tần số – Biểu đồ tần số', [['Bảng tần số – Biểu đồ tần số', 3, 'f']]]] },
+  F: { ten: 'Xác suất', x: 715, y: 552, c1: '#9aa3c7', c2: '#4b5380', seed: 17, areas: [['Xác suất của biến cố liên quan tới phép thử', [['Xác suất của biến cố liên quan tới phép thử', 3, 'f']]]] },
+  G: { ten: 'Hình học không gian', x: 420, y: 560, c1: '#9aa3c7', c2: '#4b5380', seed: 29, areas: [['Tính diện tích – thể tích hình khối không gian', [['Diện tích – Thể tích của hình hộp chữ nhật', 2, 'f']]]] },
+};
+const SPECIES = ['la', 'lua', 'bang', 'nam', 'golem', 'doi'];
+const SP_NAME = { la: 'Slime Lá', lua: 'Slime Lửa', bang: 'Slime Băng', nam: 'Nấm Độc', golem: 'Golem Đá', doi: 'Dơi Đêm', boss: 'Rồng Tím' };
+for (const [cid, c] of Object.entries(CONT)) {
+  c.id = cid; let dat = 0, tong = 0;
+  c.areas = c.areas.map((a, ai) => {
+    const stages = a[1].map((s, si) => {
+      const st = { key: `${cid}-${ai}-${si}`, ten: s[0], lv: s[1], st: s[2] === 'd' ? 'dat' : s[2] === 'y' ? 'yeu' : 'fog', hp: s[3] || 5, cum: s[4] || [] };
+      st.playable = s[0] === 'Giải hệ phương trình bậc nhất hai ẩn cơ bản';
+      st.kind = st.playable ? 'la' : SPECIES[hash(s[0]) % SPECIES.length];
+      st.m = st.st === 'dat' ? .78 + (hash(s[0]) % 15) / 100 : st.st === 'yeu' ? Math.max(.2, .82 - st.hp * .055) : null;
+      st.en = buildEnemies(st);
+      st.nq = soCau(st.cum.length);
+      return st;
+    });
+    stages.forEach(s => { tong++; if (s.st === 'dat') dat++; });
+    return { ten: a[0], stages, idx: ai };
+  });
+  c.dat = dat; c.tong = tong;
+  const anyYeu = c.areas.some(a => a.stages.some(s => s.st === 'yeu'));
+  c.state = dat === tong ? 'dat' : anyYeu || dat > 0 ? 'yeu' : 'fog';
+  c.r = Math.round(34 + 21 * Math.sqrt(tong));
+  c.firstYeu = c.areas.flatMap(a => a.stages).find(s => s.st === 'yeu');
+}
+/* Đội hình của dạng: mỗi cụm thật là 1 elite theo thứ tự học, cụm cuối là boss cuối. Mặc định ít nhất 3 quái (thiếu thì thêm con tạm).
+   Chưa đo riêng từng cụm nên máu cả dạng (số đòn còn cần tới "đạt") được chia đều cho cả đội hình. */
+function buildEnemies(st) {
+  const n = Math.max(3, st.cum.length), T = st.st === 'yeu' ? st.hp : st.st === 'fog' ? 6 : 0, pool = SPECIES.filter(x => x !== st.kind), out = [];
+  for (let i = 0; i < n; i++) {
+    const boss = i === n - 1, hp = T === 0 ? 0 : Math.max(1, Math.floor(T / n) + (i < T % n ? 1 : 0));
+    out.push({ boss, kind: boss ? st.kind : pool[(hash(st.ten) + i) % pool.length], hp, hpStart: hp, real: i < st.cum.length });
+  }
+  return out;
+}
+/* Số câu một lượt = số cụm × 2. Quá 10 thì chọn ngẫu nhiên 10, chưa tới 5 thì thêm cho đủ 5. */
+function soCau(c) { return Math.min(10, Math.max(5, 2 * c)); }
+function giaiThichSoCau(c) { const raw = 2 * c; return c + ' cụm × 2 = ' + raw + (raw > 10 ? ' → giảm ngẫu nhiên còn 10' : raw < 5 ? ' → thêm cho đủ 5' : ''); }
+function areaState(a) { const n = a.stages.length, d = a.stages.filter(s => s.st === 'dat').length, y = a.stages.some(s => s.st === 'yeu'); return { dat: d, n, st: d === n ? 'dat' : (y || d > 0) ? 'yeu' : 'fog' }; }
+const HS = { ten: 'Minh Anh', lop: '9A1', cap: 14, rank: 'Captain', chuoi: 12, xu: 245 };
+const SCREENS = [
+  { id: 'world', n: 'Thế giới', s: 'chọn lục địa' }, { id: 'cont', n: 'Lục địa', s: 'chọn vùng' }, { id: 'road', n: 'Chặng đường', s: 'chọn boss' },
+  { id: 'battle', n: 'Màn đấu', s: 'bấm được' }, { id: 'result', n: 'Kết quả lượt', s: 'sau mỗi lượt' },
+];
+const HINTS = {
+  world: 'Bấm một lục địa. Lục địa "Phương trình và hệ phương trình bậc nhất hai ẩn" (xanh dương, giữa bản đồ) là nơi em đang học.',
+  cont: 'Mỗi vùng là một chuyên đề, giáp biên giới nhau. Bấm một vùng để thấy con đường các chặng.',
+  road: 'Mỗi chặng là một dạng. Boss cuối đứng giữa bệ, các icon nhỏ trên bảng tên là elite. Mỗi dạng có ít nhất 3 quái, nhiều cụm thì chặng to hơn. Chặng "Hệ phương trình cơ bản" vào đánh thử được.',
+  battle: 'Đánh thử một lượt (số câu theo dạng, chặng này 5 câu). Hạ hết elite thì boss cuối xuất hiện. Đúng thì mất máu, sai thì hồi máu. Thời gian trả lời được đo thật.',
+  result: 'Kết quả theo lượt em vừa đánh. Bấm "Xem trường hợp" để so sánh lượt tính và không tính.',
+};
+
+/* ============ hình tạm (SVG) ============ */
+const IC = {
+  flame: '<svg viewBox="0 0 24 24"><path d="M12 2c1 4 5 5.5 5 11a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-4-1-6 1-10z" fill="#ffb36b"/><path d="M12 13c1 1.4 2.3 2 2.3 3.4a2.3 2.3 0 0 1-4.6 0c0-1 .8-1.7 1.3-2.4z" fill="#fff0c2"/></svg>',
+  coin: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="#e9c77b"/><circle cx="12" cy="12" r="6.2" fill="none" stroke="#a8812f" stroke-width="1.6"/><path d="M12 8v8" stroke="#a8812f" stroke-width="1.6"/></svg>',
+  flag: '<svg viewBox="0 0 24 24"><path d="M6 21V3" stroke="#fff3cf" stroke-width="2" stroke-linecap="round"/><path d="M6 4h12l-3 4 3 4H6z" fill="#e5484d" stroke="#fff3cf" stroke-width="1"/></svg>',
+  scroll: '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M8 5h15a3 3 0 0 1 3 3v17a3 3 0 0 1-3 3H10a3 3 0 0 1-3-3V6"/><path d="M12 11h10M12 16h10M12 21h6"/></svg>',
+  swords: '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l14 14M26 6L12 20M5 27l5-5M27 27l-5-5M20 20l3 3M12 20l-3 3"/></svg>',
+  town: '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 28V14l6-4 6 4v14M16 28V9l6-5 6 5v19M3 28h26"/><path d="M20 28v-7h4v7"/></svg>',
+  home: '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 15L16 5l12 10M7 13v14h18V13"/><path d="M13 27v-7h6v7"/></svg>',
+  trophy: '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M9 5h14v8a7 7 0 0 1-14 0zM9 8H4c0 5 2 7 5 7M23 8h5c0 5-2 7-5 7M16 20v5M10 27h12"/></svg>',
+  user: '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="16" cy="11" r="5"/><path d="M5 28c1-6 6-9 11-9s10 3 11 9"/></svg>',
+  cloud: '<svg viewBox="0 0 160 80"><g fill="#d3d8ee"><ellipse cx="50" cy="48" rx="38" ry="22"/><ellipse cx="95" cy="40" rx="42" ry="28"/><ellipse cx="124" cy="52" rx="30" ry="18"/><ellipse cx="78" cy="56" rx="50" ry="16"/></g></svg>',
+  crown: '<svg viewBox="0 0 24 24"><path d="M3 18l-1-11 6 5 4-8 4 8 6-5-1 11z" fill="#e9c77b" stroke="#a8812f" stroke-width="1"/></svg>',
+};
+const EYE = (mood, lx, rx, y, rr) => mood === 'dead'
+  ? `<path d="M${lx - 8} ${y - 8}l16 16M${lx + 8} ${y - 8}l-16 16M${rx - 8} ${y - 8}l16 16M${rx + 8} ${y - 8}l-16 16" stroke="#1a1030" stroke-width="5" stroke-linecap="round"/>`
+  : `<ellipse cx="${lx}" cy="${y}" rx="${rr}" ry="${mood === 'hit' ? 4 : rr + 3}" fill="#fff"/><ellipse cx="${rx}" cy="${y}" rx="${rr}" ry="${mood === 'hit' ? 4 : rr + 3}" fill="#fff"/><circle cx="${lx + 2}" cy="${y + 2}" r="${rr / 2}" fill="#1a1030"/><circle cx="${rx - 2}" cy="${y + 2}" r="${rr / 2}" fill="#1a1030"/>`;
+const SHADOW = '<ellipse cx="100" cy="162" rx="72" ry="8" fill="rgba(0,0,0,.35)"/>';
+function slime(kind, mood) {
+  const pal = { la: ['#7ed68a', '#2f8a4c'], lua: ['#ff8a6a', '#b8321f'], bang: ['#a8e6ff', '#2f7fb8'], boss: ['#a366dd', '#3d1a6e'] }[kind] || ['#7ed68a', '#2f8a4c'];
+  const [c1, c2] = pal, id = 'g' + Math.random().toString(36).slice(2, 7);
+  const mouth = mood === 'hit' ? '<ellipse cx="100" cy="122" rx="10" ry="7" fill="#1a1030"/>' : '<path d="M82 118c8 9 28 9 36 0" stroke="#1a1030" stroke-width="4" fill="none" stroke-linecap="round"/>';
+  let top = '', back = '';
+  if (kind === 'la') top = '<path d="M100 36c-6-16 6-28 24-26-2 16-10 26-24 26z" fill="#3fae5e" stroke="#1f6b38" stroke-width="2"/>';
+  if (kind === 'lua') top = '<path d="M100 34c-12-8-10-22-2-32 2 8 10 10 8 20 4-2 8-6 8-12 10 10 6 24-14 24z" fill="#ffb347" stroke="#c4501a" stroke-width="2"/>';
+  if (kind === 'bang') top = '<path d="M86 38l6-26 8 22 8-24 6 28z" fill="#e6f8ff" stroke="#6bb4d9" stroke-width="2"/>';
+  if (kind === 'boss') { top = '<path d="M58 52L40 14l32 22zM142 52l18-38-32 22z" fill="#e9c77b" stroke="#8a6a2a" stroke-width="2"/>'; back = '<path d="M30 110C-6 80-4 40 24 22c4 26 20 40 40 50zM170 110c36-30 34-70 6-88-4 26-20 40-40 50z" fill="#5a2a8c" stroke="#2a1050" stroke-width="2"/>'; }
+  return `<svg viewBox="0 0 200 170" class="mn"><defs><radialGradient id="${id}" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></radialGradient></defs>${SHADOW}${back}
+  <path d="M20 142C10 92 50 34 100 34c50 0 90 58 80 108-2 14-20 20-80 20S22 156 20 142z" fill="url(#${id})" stroke="${c2}" stroke-width="3"/>
+  <ellipse cx="62" cy="64" rx="18" ry="10" fill="#fff" opacity=".35" transform="rotate(-30 62 64)"/>${top}${EYE(mood, 72, 128, 90, 10)}${mouth}</svg>`;
+}
+function nam(mood) {
+  return `<svg viewBox="0 0 200 170" class="mn">${SHADOW}<path d="M58 104h84c4 30-6 56-42 56S54 134 58 104z" fill="#f4e3c1" stroke="#a88a58" stroke-width="3"/>
+  <path d="M14 106C12 50 58 12 100 12s88 38 86 94c0 12-36 18-86 18S14 118 14 106z" fill="#d93a3a" stroke="#7a1a1a" stroke-width="3"/><g fill="#fff"><circle cx="54" cy="62" r="13"/><circle cx="108" cy="40" r="10"/><circle cx="150" cy="70" r="14"/><circle cx="96" cy="86" r="8"/></g>
+  ${EYE(mood, 82, 118, 130, 8)}<path d="M90 146c6 6 14 6 20 0" stroke="#5a3a1a" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>`;
+}
+function golem(mood) {
+  return `<svg viewBox="0 0 200 170" class="mn">${SHADOW}<rect x="14" y="70" width="34" height="70" rx="16" fill="#8d95a8" stroke="#3d4458" stroke-width="3"/><rect x="152" y="70" width="34" height="70" rx="16" fill="#8d95a8" stroke="#3d4458" stroke-width="3"/>
+  <rect x="38" y="26" width="124" height="130" rx="32" fill="#a3abbd" stroke="#3d4458" stroke-width="3"/><path d="M46 52c16-12 44-14 60-6" stroke="#6bbf6a" stroke-width="9" stroke-linecap="round" fill="none"/><path d="M120 150c14-6 26-4 36-12" stroke="#6bbf6a" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M96 30l-8 20 10 14-8 18" stroke="#6b7388" stroke-width="3" fill="none"/>${mood === 'dead' ? EYE(mood, 76, 124, 92, 10) : `<rect x="62" y="82" width="28" height="${mood === 'hit' ? 6 : 16}" rx="4" fill="#ffd34d"/><rect x="110" y="82" width="28" height="${mood === 'hit' ? 6 : 16}" rx="4" fill="#ffd34d"/>`}<path d="M76 124h48" stroke="#3d4458" stroke-width="5" stroke-linecap="round"/></svg>`;
+}
+function doi(mood) {
+  return `<svg viewBox="0 0 200 170" class="mn">${SHADOW}<path d="M14 54c24-8 44 2 56 26l-8 40c-20-6-34-18-48-66z" fill="#5a3a8c" stroke="#2a1850" stroke-width="3"/><path d="M186 54c-24-8-44 2-56 26l8 40c20-6 34-18 48-66z" fill="#5a3a8c" stroke="#2a1850" stroke-width="3"/>
+  <ellipse cx="100" cy="106" rx="48" ry="46" fill="#7a56b8" stroke="#2a1850" stroke-width="3"/><path d="M66 70L58 34l26 22zM134 70l8-36-26 22z" fill="#7a56b8" stroke="#2a1850" stroke-width="3"/>${EYE(mood, 80, 120, 98, 9)}<path d="M86 124l6 12 6-12zM102 124l6 12 6-12z" fill="#fff" stroke="#2a1850" stroke-width="2"/></svg>`;
+}
+function mon(kind, mood) { mood = mood || 'idle'; return ({ la: slime, lua: slime, bang: slime, boss: slime }[kind] ? slime(kind, mood) : ({ nam, golem, doi }[kind])(mood)); }
+function heroSvg() {
+  return `<svg viewBox="0 0 150 230"><ellipse cx="75" cy="222" rx="46" ry="7" fill="rgba(0,0,0,.35)"/>
+  <path d="M42 80c-14 40-12 100-6 128h78c6-28 8-88-6-128z" fill="#a8322f" opacity=".95"/><rect x="48" y="92" width="54" height="76" rx="10" fill="#3a56b4" stroke="#e9c77b" stroke-width="3"/><path d="M48 128h54" stroke="#e9c77b" stroke-width="3"/>
+  <rect x="52" y="168" width="18" height="48" rx="6" fill="#26346e"/><rect x="80" y="168" width="18" height="48" rx="6" fill="#26346e"/><circle cx="75" cy="62" r="28" fill="#f2cfa8" stroke="#8a6a4a" stroke-width="2"/>
+  <path d="M46 58c0-24 16-34 32-34 18 0 30 12 28 34-8-14-22-18-34-14-10 3-18 8-26 14z" fill="#2a1e3d"/><circle cx="66" cy="66" r="3.6" fill="#1a1030"/><circle cx="86" cy="66" r="3.6" fill="#1a1030"/><path d="M68 78c4 4 10 4 14 0" stroke="#8a4a3a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M100 112l36-70" stroke="#dfe6ff" stroke-width="7" stroke-linecap="round"/><path d="M94 116l14 8" stroke="#e9c77b" stroke-width="7" stroke-linecap="round"/><circle cx="98" cy="114" r="7" fill="#f2cfa8"/></svg>`;
+}
+
+/* ============ trạng thái ============ */
+const S = { screen: 'world', cont: 'C', area: 1, sel: 'C-1-0', toast: '', run: null, kq: null, cas: null };
+const $ = id => document.getElementById(id);
+const stageByKey = k => { const [c, a, i] = k.split('-'); return CONT[c].areas[+a].stages[+i]; };
+const stars = n => '★'.repeat(Math.min(n, 5));
+function hud(crumb) {
+  return `<div class="hud"><div class="ava">${HS.ten[0]}</div><div class="who"><b>${HS.ten}</b><span>Lớp ${HS.lop} · Cấp ${HS.cap}</span></div>
+  <div class="rank"><span>Bậc</span><b>${HS.rank}</b></div><div class="xp" title="EXP tới cấp kế"><i></i></div>${crumb ? `<div class="crumb">${crumb}</div>` : ''}<div class="sp"></div>
+  <div class="chip fire" title="Chuỗi làm bài">${IC.flame}${HS.chuoi} ngày</div><div class="chip" title="Ví xu">${IC.coin}${HS.xu}</div></div>`;
+}
+function dock() {
+  const it = [['scroll', 'Nhiệm vụ', 'Bảng của hội', 2], ['swords', 'Đấu trường', 'Thử thách', 0], ['town', 'Quảng trường', 'Thế giới BK', 5], ['trophy', 'Cấp bậc', 'Rank & huy hiệu', 0], ['home', 'Căn cứ', 'Cần 20 câu đúng hôm nay', 0, 1], ['user', 'Hồ sơ', 'Của em', 0]];
+  return `<div class="dock">${it.map(([i, a, b, n, lock]) => `<button class="dk${lock ? ' lock' : ''}" data-toast="${a}: chưa dựng trong mockup">${IC[i]}<span><b>${a}</b><small>${b}</small></span>${n ? `<span class="bd">${n}</span>` : ''}</button>`).join('')}</div>`;
+}
+function decor(poly, seed, n, kind, bb) {
+  const R = rng(seed); let out = '', tries = 0, k = 0;
+  while (k < n && tries < n * 30) { tries++; const x = bb[0] + R() * (bb[2] - bb[0]), y = bb[1] + R() * (bb[3] - bb[1]); if (!poly || inPoly(x, y, poly)) { k++; const s = 5 + R() * 6;
+    if (kind === 'mtn' || (kind === 'mix' && R() < .4)) out += `<path d="M${f1(x - s * 1.4)} ${f1(y + s)}L${f1(x)} ${f1(y - s * 1.2)}L${f1(x + s * 1.4)} ${f1(y + s)}z" fill="rgba(60,45,30,.45)"/><path d="M${f1(x - s * .4)} ${f1(y - s * .55)}L${f1(x)} ${f1(y - s * 1.2)}L${f1(x + s * .4)} ${f1(y - s * .55)}z" fill="rgba(255,255,255,.55)"/>`;
+    else out += `<circle cx="${f1(x)}" cy="${f1(y)}" r="${f1(s)}" fill="rgba(20,70,40,.5)"/><circle cx="${f1(x - s * .25)}" cy="${f1(y - s * .3)}" r="${f1(s * .55)}" fill="rgba(120,200,120,.35)"/>`; } }
+  return out;
+}
+function markFor(st, c) { return st === 'dat' ? IC.flag : st === 'yeu' ? mon(c && c.firstYeu ? c.firstYeu.kind : 'la') : c && c.boss ? IC.crown : ''; }
+
+/* ---------- tầng 1 ---------- */
+function rWorld() {
+  const list = Object.values(CONT); let svg = '', labels = '';
+  let grat = ''; for (let x = 60; x < 1180; x += 110) grat += `<path d="M${x} 0V660" /><path d="M0 ${(x - 60) * .6}H1180"/>`;
+  const R = rng(99); let waves = ''; for (let i = 0; i < 46; i++) { const x = R() * 1150 + 15, y = R() * 630 + 15; waves += `<path d="M${f1(x)} ${f1(y)}q6 -6 12 0t12 0" />`; }
+  list.forEach(c => {
+    const B = blob(c.x, c.y, c.r, c.seed, { n: 42, rough: .3, sx: 1.12, sy: .9 }), gid = 'cg' + c.id, bb = [c.x - c.r * 1.2, c.y - c.r, c.x + c.r * 1.2, c.y + c.r];
+    svg += `<g class="land ${c.state === 'fog' ? 'fog' : ''}" data-cont="${c.id}" tabindex="0" role="button" aria-label="${c.ten}"><g class="shape"><g class="art">
+      <defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c.c1}"/><stop offset="1" stop-color="${c.c2}"/></linearGradient><clipPath id="cp${c.id}"><path d="${B.d}"/></clipPath></defs>
+      <path d="${B.d}" fill="none" stroke="rgba(130,210,230,.35)" stroke-width="26" stroke-linejoin="round"/><path d="${B.d}" fill="none" stroke="rgba(190,235,245,.35)" stroke-width="12" stroke-linejoin="round"/>
+      <path d="${B.d}" fill="url(#${gid})" stroke="rgba(255,243,207,.75)" stroke-width="3" stroke-linejoin="round"/>
+      <g clip-path="url(#cp${c.id})">${decor(B.pts, c.seed + 3, Math.round(c.r / 7), c.boss ? 'mtn' : 'mix', bb)}</g></g></g></g>`;
+    const big = c.r >= 100, py = big ? c.y + c.r * .42 : c.y + c.r * .95;
+    const st = c.state === 'fog' ? `<span style="color:#cfd4ec">${c.id === 'H' || c.id === 'I' ? 'Chưa dạy · vùng Boss' : 'Lớp chưa dạy'}</span>` : `<span style="color:var(--gold)">${c.dat}/${c.tong} chặng đạt</span>`;
+    labels += `<div class="plate" style="left:${c.x}px;top:${py}px"><div class="nm">${c.ten}</div><div class="st">${st}</div></div>`;
+    const mk = markFor(c.state, c); if (mk) labels += `<div class="mark" style="left:${c.x}px;top:${big ? c.y - c.r * .22 : c.y - 4}px">${mk}</div>`;
+    if (c.state === 'fog') labels += `<div class="cloud" style="left:${c.x - c.r * .35}px;top:${c.y - c.r * .35}px;width:${c.r * 1.1}px">${IC.cloud}</div><div class="cloud" style="left:${c.x + c.r * .4}px;top:${c.y + c.r * .1}px;width:${c.r * 1.0}px;opacity:.85">${IC.cloud}</div>`;
+  });
+  const cc = CONT.C, fy = cc.firstYeu;
+  return `${hud('Thế giới Toán')}<div class="world"><svg viewBox="0 0 1180 660" preserveAspectRatio="none"><g stroke="rgba(255,255,255,.06)" fill="none">${grat}</g><g stroke="rgba(255,255,255,.12)" fill="none" stroke-width="2" stroke-linecap="round">${waves}</g>${svg}
+    <g transform="translate(1110 596)" opacity=".8"><circle r="30" fill="rgba(10,13,30,.6)" stroke="#e9c77b" stroke-width="2"/><path d="M0 -26L7 0L0 26L-7 0z" fill="#e9c77b"/><path d="M-26 0L0 -7L26 0L0 7z" fill="#bfb08a"/><text y="-34" text-anchor="middle" font-size="12" fill="#e9c77b" font-family="Philosopher">B</text></g></svg>
+    ${labels}
+    <div class="here" style="left:${cc.x}px;top:${cc.y - cc.r * .55}px"><span>Em đang ở đây</span><i></i></div>
+    <div class="card hint-bar"><span>${IC.flag}Đạt</span><span><span style="width:18px;display:inline-block">${mon('la')}</span>Còn quái</span><span><span style="width:20px;display:inline-block">${IC.cloud}</span>Sương mù</span></div>
+    <div class="card nextbar"><div class="ic">${mon(fy.kind)}</div><div><b>Việc tiếp theo: hạ ${SP_NAME[fy.kind]}</b><small>${fy.ten} · còn ${fy.hp} đòn</small></div><button class="btn" data-cont="C">Lên đường</button></div></div>${dock()}`;
+}
+
+/* ---------- tầng 2 ---------- */
+const AREA_TONE = [['#7cc78a', '#3f8a55'], ['#dcc577', '#9a8236'], ['#7db4de', '#3d6f9c'], ['#c398d0', '#7a4f8c'], ['#e29a78', '#a05a3a']];
+const SEEDS = { 1: [[0, 0]], 2: [[-.5, 0], [.5, 0]], 3: [[-.5, -.28], [.5, -.28], [0, .5]], 4: [[-.55, -.3], [.5, -.35], [-.38, .45], [.52, .42]], 5: [[-.58, -.32], [.5, -.4], [-.45, .45], [.55, .42], [0, .02]] };
+function rCont() {
+  const c = CONT[S.cont], W = 832, H = 726, cx = W / 2, cy = H / 2 + 6, Rr = 300, k = c.areas.length;
+  const land = blob(cx, cy, Rr, c.seed + 7, { n: 48, rough: .2, sx: 1.2, sy: .95 });
+  const seeds = SEEDS[k].map(([a, b]) => [cx + a * Rr * 1.1, cy + b * Rr * .85]);
+  const ns = c.areas.map(a => a.stages.length), nmax = Math.max(...ns), cells = voronoi(seeds, W, H, ns.map(n => 62000 * Math.sqrt(n / nmax)));
+  const lp = cells.map((cell, i) => { let sx = 0, sy = 0, cnt = 0; for (let x = cx - Rr * 1.25; x < cx + Rr * 1.25; x += 14) for (let y = cy - Rr; y < cy + Rr; y += 14) if (inPoly(x, y, land.pts) && inPoly(x, y, cell)) { sx += x; sy += y; cnt++; } return cnt ? [sx / cnt, sy / cnt] : seeds[i]; });
+  const bb = [cx - Rr * 1.2, cy - Rr, cx + Rr * 1.2, cy + Rr];
+  let poly = '', ov = '', lab = '';
+  c.areas.forEach((a, i) => {
+    const st = areaState(a), t = AREA_TONE[i % 5], pts = cells[i].map(p => p.map(f1).join(',')).join(' ');
+    poly += `<linearGradient id="at${i}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${t[0]}"/><stop offset="1" stop-color="${t[1]}"/></linearGradient>`;
+    ov += `<polygon class="cell" points="${pts}" fill="url(#at${i})" data-area="${i}" tabindex="0" role="button" aria-label="${a.ten}"/>`;
+    if (st.st === 'fog') ov += `<polygon points="${pts}" fill="#9aa3c7" opacity=".62" pointer-events="none"/>`;
+    if (st.st === 'dat') ov += `<polygon points="${pts}" fill="#ffe9a8" opacity=".28" pointer-events="none"/>`;
+    const fy = a.stages.find(s => s.st === 'yeu'), mk = st.st === 'dat' ? IC.flag : st.st === 'yeu' ? mon(fy ? fy.kind : 'la') : (a.stages.some(s => s.lv >= 4) ? IC.crown : IC.cloud);
+    const [sx, sy] = lp[i];
+    lab += `<div class="alab" style="left:${sx}px;top:${sy}px"><div class="mk">${mk}</div><div class="t">${a.ten}</div><div class="s">${st.st === 'fog' ? 'Chưa đo' : st.dat + '/' + st.n + ' chặng đạt'}</div></div>`;
+  });
+  const ar = c.areas.map((a, i) => { const st = areaState(a), t = AREA_TONE[i % 5]; return `<button class="arow" data-area="${i}"><span class="sw" style="background:linear-gradient(${t[0]},${t[1]})"></span><span><b>${a.ten}</b><small>${st.n} chặng · ${st.st === 'fog' ? 'chưa đo' : st.dat + ' đạt'}</small></span></button>`; }).join('');
+  return `${hud(`<button class="back" data-go="world">← Thế giới</button><span>›</span><b>${c.ten}</b>`)}<div class="cont"><div class="cmap">
+    <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none"><defs>${poly}<clipPath id="lc"><path d="${land.d}"/></clipPath>
+      <filter id="wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".02" numOctaves="2" seed="${c.seed}" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="30" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+      <path d="${land.d}" fill="none" stroke="rgba(130,210,230,.35)" stroke-width="34" stroke-linejoin="round"/><path d="${land.d}" fill="none" stroke="rgba(190,235,245,.35)" stroke-width="16" stroke-linejoin="round"/>
+      <path d="${land.d}" fill="${c.c2}"/>
+      <g clip-path="url(#lc)"><g filter="url(#wob)">${ov}</g><g pointer-events="none">${decor(land.pts, c.seed + 11, 70, c.boss ? 'mtn' : 'mix', bb)}</g></g>
+      <path d="${land.d}" fill="none" stroke="rgba(255,243,207,.8)" stroke-width="3.5" stroke-linejoin="round" pointer-events="none"/></svg>${lab}</div>
+  <aside class="card side"><div class="pill ${c.state === 'dat' ? 'ok' : c.state === 'fog' ? 'grey' : 'red'}">Lục địa · ${c.state === 'fog' ? 'chưa dạy' : c.dat + '/' + c.tong + ' chặng đạt'}</div><h3>${c.ten}</h3>
+    <p class="lead">${k} vùng (chuyên đề) giáp nhau. Chuyên đề nhiều dạng thì vùng to, ít dạng thì vùng nhỏ. Bấm vùng để vào.</p><div style="display:flex;flex-direction:column;gap:8px;overflow:auto">${ar}</div></aside></div>`;
+}
+
+/* ---------- tầng 3 ---------- */
+function layout(n) {
+  const rows = n <= 4 ? 1 : 2, per = Math.ceil(n / rows), pts = [];
+  for (let i = 0; i < n; i++) {
+    const r = Math.floor(i / per), j = i % per, cnt = r === rows - 1 ? n - per * (rows - 1) : per, col = r % 2 ? per - 1 - j : j;
+    const x0 = 150, x1 = 740, step = per > 1 ? (x1 - x0) / (per - 1) : 0, x = per === 1 ? 420 : x0 + col * step;
+    const y = rows === 1 ? 420 + (i % 2 ? -34 : 34) : (r === 0 ? 290 : 590) + (j % 2 ? -26 : 26);
+    pts.push([x, y]);
+  }
+  return pts;
+}
+function rRoad() {
+  const c = CONT[S.cont], a = c.areas[S.area], t = AREA_TONE[S.area % 5], n = a.stages.length, P = layout(n);
+  const sel = stageByKey(S.sel), ex = [[P[0][0] - 110, P[0][1] + 10]].concat(P).concat([[P[n - 1][0] + 90, P[n - 1][1] - 10]]);
+  const d = smooth(ex).replace(/Z$/, ''); const dd = (function () { let s = `M${f1(ex[0][0])} ${f1(ex[0][1])}`; for (let i = 0; i < ex.length - 1; i++) { const p0 = ex[Math.max(0, i - 1)], p1 = ex[i], p2 = ex[i + 1], p3 = ex[Math.min(ex.length - 1, i + 2)]; s += `C${f1(p1[0] + (p2[0] - p0[0]) / 6)} ${f1(p1[1] + (p2[1] - p0[1]) / 6)} ${f1(p2[0] - (p3[0] - p1[0]) / 6)} ${f1(p2[1] - (p3[1] - p1[1]) / 6)} ${f1(p2[0])} ${f1(p2[1])}`; } return s; })();
+  const fyi = a.stages.findIndex(s => s.st === 'yeu');
+  let nodes = '';
+  a.stages.forEach((s, i) => {
+    const [x, y] = P[i], n = s.en.length, w = 96 + 14 * Math.min(n - 3, 4), h = Math.round(w * .92), boss = s.en[n - 1], els = s.en.slice(0, -1);
+    const left = s.en.reduce((t, e) => t + e.hp, 0), es = s.st === 'yeu' ? '' : s.st;
+    nodes += `<button class="stg ${s.st} ${S.sel === s.key ? 'sel' : ''}" style="left:${x}px;top:${y}px" data-stage="${s.key}"><div class="plat" style="top:${h - 18}px;width:${w + 30}px"></div><div class="mw" style="width:${w}px;height:${h}px">${mon(boss.kind, s.st === 'dat' ? 'dead' : 'idle')}${s.st === 'dat' ? `<div class="flg">${IC.flag}</div>` : ''}${s.st === 'fog' ? '<div class="ques">?</div>' : ''}<div class="crn">${IC.crown}</div></div>
+      <div class="pl"><div class="els">${els.map(e => `<span class="e ${es}">${mon(e.kind)}</span>`).join('')}</div><b>${s.ten}</b><span>${stars(s.lv)} · ${n} quái · ${s.nq} câu · ${s.st === 'dat' ? 'đã hạ' : s.st === 'yeu' ? 'còn ' + left + ' đòn' : 'chưa gặp'}</span></div>${s.st === 'yeu' ? `<div class="mini"><i style="width:${Math.min(100, left / 9 * 100)}%"></i></div>` : ''}</button>`;
+  });
+  const R = rng(S.area * 13 + c.seed); let sc = '';
+  for (let i = 0; i < 70; i++) { const x = R() * 1180, y = R() * 740, s = 6 + R() * 9; if (x > 850) continue; sc += R() < .5 ? `<circle cx="${f1(x)}" cy="${f1(y)}" r="${f1(s)}" fill="rgba(10,50,30,.35)"/><circle cx="${f1(x - s * .3)}" cy="${f1(y - s * .3)}" r="${f1(s * .5)}" fill="rgba(140,220,140,.2)"/>` : `<path d="M${f1(x - s)} ${f1(y + s * .7)}L${f1(x)} ${f1(y - s)}L${f1(x + s)} ${f1(y + s * .7)}z" fill="rgba(40,30,20,.3)"/>`; }
+  const hero = fyi >= 0 ? `<div class="herotag" style="left:${P[fyi][0] - 108}px;top:${P[fyi][1] - 6}px">${heroSvg()}</div>` : '';
+  const pb = sel.st === 'dat' ? '<span class="pill ok">Đã chinh phục</span>' : sel.st === 'yeu' ? `<span class="pill red">Còn ${sel.hp} đòn để hạ cả chặng</span>` : '<span class="pill grey">Phủ sương · vào được</span>';
+  const can = sel.playable;
+  return `${hud(`<button class="back" data-go="cont">← ${c.ten.length > 26 ? 'Lục địa' : c.ten}</button><span>›</span><b>${a.ten}</b>`)}<div class="road">
+    <svg viewBox="0 0 1180 756" preserveAspectRatio="none"><defs><linearGradient id="rg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${t[1]}"/><stop offset="1" stop-color="#16263a"/></linearGradient></defs><rect width="1180" height="756" fill="url(#rg)"/><rect width="1180" height="756" fill="rgba(20,26,51,.35)"/>${sc}
+      <path d="${dd}" fill="none" stroke="rgba(30,20,10,.55)" stroke-width="64" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 6)"/><path d="${dd}" fill="none" stroke="#b9996a" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"/><path d="${dd}" fill="none" stroke="#d6bc8d" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/><path d="${dd}" fill="none" stroke="rgba(120,90,50,.6)" stroke-width="3" stroke-dasharray="4 14" stroke-linecap="round"/></svg>
+    ${nodes}${hero}
+    <aside class="card rside"><div style="display:flex;gap:6px;flex-wrap:wrap">${pb}<span class="pill purple">${sel.en.length > 1 ? sel.en.length + ' cụm' : 'Chưa chia cụm'}</span></div><h3>${sel.ten}</h3>
+      <div class="bossbox"><div class="mw2">${mon(sel.en[sel.en.length - 1].kind, sel.st === 'dat' ? 'dead' : 'idle')}</div><div><b>${SP_NAME[sel.en[sel.en.length - 1].kind]}</b><small>Boss cuối của chặng</small></div></div>
+      <dl class="kv"><dt>Mức độ</dt><dd>${stars(sel.lv)}${'☆'.repeat(5 - Math.min(5, sel.lv))}</dd><dt>Độ nắm dạng</dt><dd>${sel.m == null ? 'chưa đo' : Math.round(sel.m * 100) + '%'}</dd><dt>Độ tin</dt><dd>${sel.m == null ? '—' : sel.m > .75 ? 'cao' : 'thấp'}</dd></dl>
+      <div style="padding:8px 10px;border-radius:8px;background:var(--gold-soft);border:1px solid var(--gold-line);font-size:12.5px;margin-bottom:10px"><b style="font-family:var(--f-head);font-size:15px">Một lượt: ${sel.nq} câu</b><br><span style="color:var(--muted)">${giaiThichSoCau(sel.cum.length)}</span></div><div><div style="font-size:12px;color:var(--muted);margin-bottom:6px">Đội hình · đánh lần lượt, hạ hết cả đội</div><div class="ros-list">${sel.en.map((e, i) => `<div class="m ${sel.st === 'dat' ? 'dn' : sel.st === 'fog' ? 'fg' : ''}">${mon(e.kind)}<span><b>${SP_NAME[e.kind]}</b><small>${e.boss ? 'Boss cuối' : 'Elite ' + (i + 1)}</small></span><span class="tg2">${sel.st === 'dat' ? 'đã hạ' : sel.st === 'yeu' ? 'máu ' + e.hp : 'chưa gặp'}</span></div>`).join('')}</div><div style="font-size:11.5px;color:var(--muted);margin-top:6px">${sel.cum.length >= 3 ? sel.cum.length + ' cụm thật.' : (sel.cum.length ? sel.cum.length + ' cụm thật, thêm con tạm cho đủ 3.' : 'Chưa chia cụm, dùng 3 con tạm.')} Máu cả dạng chia đều cho đội hình, chưa đo riêng từng cụm.</div></div>
+      <div style="margin-top:auto;display:flex;flex-direction:column;gap:8px"><button class="btn" data-enter ${can ? '' : 'data-toast="Mockup chỉ dựng sẵn chặng Hệ phương trình cơ bản"'}>${sel.st === 'dat' ? 'Ôn lại chặng' : 'Vào màn đấu'}</button></div></aside></div>`;
+}
+
+/* ---------- màn đấu ---------- */
+const QDEF = [[1, 1, 1, -1, 3, 2], [2, 1, 1, -1, 2, 3], [1, 2, 3, -1, 1, 2], [2, -1, 1, 1, 4, 3], [3, 2, 1, -1, 2, 1], [1, -2, 2, 1, 3, -1], [2, 3, 1, -1, -1, 3], [4, 1, 2, -1, 1, -2], [1, 1, 2, -1, 4, 1], [3, -1, 1, 2, 2, 4]];
+const CORRECT_POS = [1, 0, 2, 3, 1, 0, 3, 2, 1, 2];
+function term(a, v, first) { const m = Math.abs(a), body = (m === 1 ? '' : m) + v; return first ? (a < 0 ? '−' : '') + body : ' ' + (a < 0 ? '−' : '+') + ' ' + body; }
+const eq = (a, b, c) => term(a, 'x', true) + term(b, 'y', false) + ' = ' + String(c).replace('-', '−');
+const pr = (x, y) => `(${String(x).replace('-', '−')}; ${String(y).replace('-', '−')})`;
+const QS = QDEF.map((d, i) => { const [a1, b1, a2, b2, x, y] = d, c1 = a1 * x + b1 * y, c2 = a2 * x + b2 * y;
+  const cand = [[y, x], [-x, y], [x, -y], [x + 1, y - 1], [-x, -y], [x - 1, y + 1]].map(p => pr(...p)).filter(t => t !== pr(x, y)), wrong = [...new Set(cand)].slice(0, 3), opts = wrong.slice(); opts.splice(CORRECT_POS[i], 0, pr(x, y));
+  return { l1: eq(a1, b1, c1), l2: eq(a2, b2, c2), opts, ci: CORRECT_POS[i], ans: pr(x, y) }; });
+const cur = r => r.en[r.ei];
+function pipsHtml(e) { const cap = e.hpStart + 2; let o = ''; for (let i = 0; i < cap; i++) o += `<i class="${i < e.hp ? '' : i >= e.hpStart ? 'ex' : 'off'}"></i>`; return o; }
+function rBattle() {
+  const r = S.run, q = r.qs[r.i], sg = r.stage, e = cur(r), nEl = r.en.length - 1;
+  const steps = r.log.map(x => `<i class="${x ? 'ok' : 'no'}"></i>`).join('') + (r.i < r.total ? '<i class="cur"></i>' : '') + Array(Math.max(0, r.total - 1 - r.log.length)).fill('<i></i>').join('');
+  const fb = r.fb ? `<div class="fb ${r.fb.ok ? 'ok' : 'no'}"><div><b>${r.fb.ok ? 'Trúng đòn!' : 'Trượt rồi'}</b>${r.fb.txt}</div></div>` : '<div class="fb idle">Chọn một đáp án để ra đòn.</div>';
+  const opts = q.opts.map((t, k) => { let c = ''; if (r.pick != null) { if (k === q.ci) c = 'right'; else if (k === r.pick) c = 'wrong'; } return `<button class="opt ${c}" data-opt="${k}" ${r.pick != null ? 'disabled' : ''}><small>${'ABCD'[k]}</small>${t}</button>`; }).join('');
+  const queue = r.en.map((x, i) => `<div class="qi ${x.dead ? 'dn' : i === r.ei ? 'on' : ''} ${x.boss ? 'bs' : ''}">${mon(x.kind, x.dead ? 'dead' : 'idle')}${x.boss ? `<span class="qc">${IC.crown}</span>` : ''}</div>`).join('');
+  const tag = e.boss ? '<span class="pill purple">BOSS CUỐI</span>' : `<span class="pill">ELITE ${r.ei + 1}/${nEl}</span>`;
+  return `<div class="battle"><div class="bhud"><button class="back" data-go="road">← Rút lui</button><div class="ti">${sg.ten}<small>Mức ${stars(sg.lv)} · đội hình ${r.en.length} quái</small></div><div class="sp"></div><div class="steps">${steps}</div><div class="chip" style="margin-left:6px">Câu ${Math.min(r.i + 1, r.total)}/${r.total}</div></div>
+  <div class="scene"><div class="card queue">${queue}</div>
+    <div class="mhp card"><div class="t"><span>${SP_NAME[e.kind]}</span><small>${e.dead ? 'Đã bị hạ' : 'Còn ' + e.hp + ' đòn để hạ'}</small></div><div class="tg">${tag}</div><div class="pips">${pipsHtml(e)}</div></div>
+    <div class="hero ${r.atk ? 'atk' : ''}">${heroSvg()}</div>
+    <div class="mon ${e.boss ? 'boss' : ''} ${r.mood === 'hit' ? 'hit' : ''} ${r.mood === 'heal' ? 'heal' : ''} ${e.dead ? 'dead' : ''}">${e.boss && !e.dead ? `<div class="cr">${IC.crown}</div>` : ''}<div class="body">${mon(e.kind, r.mood === 'hit' ? 'hit' : 'idle')}</div></div>
+    <svg class="slash ${r.slash ? 'go' : ''}" viewBox="0 0 200 120"><path d="M10 100C60 70 120 40 190 10" stroke="#fff3cf" stroke-width="10" stroke-linecap="round" fill="none"/><path d="M30 104C80 76 130 50 190 22" stroke="#e9c77b" stroke-width="5" stroke-linecap="round" fill="none"/></svg>
+    ${r.floatTxt ? `<div class="float ${r.floatTxt[0] === '−' ? 'dmg' : 'heal'}" style="right:${r.floatTxt[0] === '−' ? 230 : 250}px;top:90px">${r.floatTxt}</div>` : ''}${r.intro ? `<div class="intro">${r.intro}</div>` : ''}<div class="ground"></div></div>
+  <div class="qa"><div class="qcard"><div class="tag"><span class="pill">Dạng: ${sg.ten}</span></div>
+    <div class="ask">Cặp số (x; y) nào là nghiệm của hệ phương trình sau?</div><div class="sys"><span class="br">{</span><div class="ln"><span>${q.l1}</span><span>${q.l2}</span></div></div>${fb}</div>
+    <div class="opts">${opts}${r.pick != null ? `<button class="btn nxt" data-next>${r.i >= 9 ? 'Xem kết quả' : 'Câu tiếp'}</button>` : ''}</div></div></div>`;
+}
+function calcResult() { const r = S.run, dung = r.log.filter(Boolean).length, gTB = r.times.reduce((a, b) => a + b, 0) / Math.max(1, r.times.length); return { dung, gTB, cas: dung < Math.ceil(r.total / 2) ? 'duoi' : gTB < 6 ? 'nhanh' : 'tinh' }; }
+function rResult() {
+  const r = S.run, sg = r.stage, k = S.kq || (S.kq = calcResult()), cas = S.cas || k.cas, e = cur(r), boss = r.en[r.en.length - 1], on = cas === 'tinh';
+  const fell = on ? r.en.filter(x => x.dead).length : 0, bossDown = on && boss.dead;
+  const info = { tinh: ['ok', 'Lượt này được tính', 'Em làm đủ nhanh và đúng đủ. Chuỗi, nhiệm vụ, cổng game đều được cộng và quái mất máu thật.'], nhanh: ['no', 'Lượt này em làm nhanh quá, chưa tính', 'Trung bình dưới 6 giây mỗi câu. Không bị phạt, nhưng chuỗi, nhiệm vụ chưa được cộng và máu quái giữ nguyên.'], duoi: ['no', 'Lượt này đúng chưa tới một nửa, chưa tính', 'Cần đúng ít nhất một nửa số câu của lượt. Máu quái giữ nguyên. Đánh lại, lượt sau tính bình thường.'] }[cas];
+  const exp = Math.round(k.dung * 3 + fell * 6 + (bossDown ? 10 : 0)), ex = (c, t) => `<button data-cas="${c}" aria-pressed="${cas === c}">${t}</button>`;
+  const rows = r.en.map((x, i) => { const now = on && x.dead; const stt = now ? 'hạ trong lượt này' : !on ? 'máu giữ nguyên' : i === r.ei && !x.dead ? 'còn ' + x.hp + ' máu' : 'chưa gặp';
+    return `<div class="rr ${now ? 'win' : ''}">${mon(x.kind, now ? 'dead' : 'idle')}<span><b>${SP_NAME[x.kind]}</b><small>${x.boss ? 'Boss cuối' : 'Elite ' + (i + 1)}</small></span><span class="tg2">${stt}</span></div>`; }).join('');
+  const shown = on ? e : r.en[0];
+  return `<div class="res"><div class="scn"><div class="banner" style="color:${bossDown ? 'var(--gold)' : 'var(--parch)'}">${!on ? 'Quái chưa mất máu vì lượt chưa tính' : bossDown ? 'Boss cuối bị hạ! Chặng được chinh phục' : fell ? 'Đã hạ ' + fell + '/' + r.en.length + ' quái' : SP_NAME[e.kind] + ' còn ' + e.hp + ' máu'}</div><div class="mm" style="margin-top:40px;width:200px">${mon(shown.kind, on && shown.dead ? 'dead' : 'idle')}</div>
+    <div class="roster">${rows}</div></div>
+    <div class="right-col"><h2 class="big2">${!on ? 'Lượt chưa tính' : bossDown ? 'Chinh phục chặng!' : 'Đánh hay lắm!'}</h2>
+    <div class="stats"><div class="card stat"><b>${k.dung}/${r.total}</b><span>câu đúng</span></div><div class="card stat"><b>${k.gTB.toFixed(1).replace('.', ',')} s</b><span>trung bình mỗi câu</span></div><div class="card stat"><b>${on ? '45% → ' + Math.max(0, Math.min(99, 45 + k.dung * 2 - (10 - k.dung))) + '%' : '45%'}</b><span>độ nắm dạng (mẫu)</span></div></div>
+    <div class="card verdict ${info[0]}"><div><b style="font-family:var(--f-head);font-size:19px">${info[1]}</b><div style="font-size:13.5px;color:var(--muted)">${info[2]}</div></div></div>
+    <div class="loot"><div class="card lt ${on ? '' : 'off'}"><b>Chuỗi</b><div style="display:flex;gap:6px;align-items:center"><span style="width:22px">${IC.flame}</span>${on ? '12 → 13 ngày' : '12 ngày, chưa cộng'}</div><small>${on ? 'Hôm nay đã tính' : 'Cần một lượt được tính'}</small></div>
+      <div class="card lt ${on ? '' : 'off'}"><b>Nhiệm vụ N2 · Luyện 20 câu</b><div class="bar"><i style="width:${on ? (13 + k.dung) / 20 * 100 : 65}%"></i></div><small>${on ? Math.min(20, 13 + k.dung) : 13}/20 câu đúng mới</small></div>
+      <div class="card lt ${on ? '' : 'off'}"><b>Phần thưởng</b><div style="display:flex;gap:6px;align-items:center"><span style="width:22px">${IC.coin}</span>${on ? '+' + exp + ' EXP' : '0 EXP'}</div><small>${on ? 'Mastery đã ghi vào dạng' : 'Chưa cộng EXP'}</small></div></div>
+    <div class="swt"><span>Xem trường hợp:</span>${ex('tinh', 'Được tính')}${ex('nhanh', 'Quá nhanh')}${ex('duoi', 'Đúng dưới 50%')}</div>
+    <div class="acts"><button class="btn" data-again>Đánh tiếp</button><button class="btn ghost" data-go="road">Về chặng đường</button><button class="btn ghost" ${on ? 'data-toast="Khoe lên Thế giới BK: chưa dựng"' : 'disabled'}>Khoe lên Thế giới BK</button></div></div></div>`;
+}
+
+/* ============ ghi chú logic ============ */
+const NOTES = {
+  world: { ten: 'Tầng 1 · Thế giới', logic: [
+    'Một bản đồ thế giới lớn. Mỗi chủ đề là một lục địa. Lục địa to hay nhỏ theo số dạng của chủ đề (chủ đề 19 dạng to gấp nhiều lần chủ đề 1 dạng).',
+    'Vị trí và màu lục địa gán cố định ở DB để mỗi em nhớ đường và nhớ "mình ở đâu". Không đổi giữa các lần mở.',
+    'Trạng thái lục địa suy từ các chặng bên trong: cắm cờ khi đạt hết, có quái khi còn dạng yếu, phủ sương khi lớp chưa dạy tới. Sương vẫn bấm vào được.',
+    'Đọc từ <code>fn_ban_do_phieu_luu</code>, mỗi môn một thế giới riêng. Toán, Văn, Anh, KHTN dùng chung khung, chỉ khác cây kiến thức.',
+    'Thanh dưới giữ các tính năng cũ nhưng đổi vỏ: Nhiệm vụ, Đấu trường (Thử thách), Quảng trường (Thế giới BK), Cấp bậc (Rank), Căn cứ (game), Hồ sơ.',
+    '"Việc tiếp theo" chọn quái em yếu nhất ở vùng đang dạy, thay cho việc chọn dạng tự luyện đang chạy ở client.',
+  ], hoi: [
+    'Chủ đề "Ôn tập 8", "Đề thi đầu vào", "Chưa phân dạng" có trong DB nhưng không phải kiến thức khối 9. Em ẩn khỏi bản đồ. Anh đồng ý?',
+    'Có 4 chủ đề mới chỉ nhập 1 dạng (Hàm số bậc hai, Tần số, Xác suất, Hình học không gian) nên hiện là đảo nhỏ. Hiện vậy hay ẩn tới khi nhập đủ?',
+    'Vị trí lục địa nên do ai đặt? Em đề xuất kéo thả một lần ở màn quản trị, lưu vào DB.',
+  ] },
+  cont: { ten: 'Tầng 2 · Lục địa', logic: [
+    'Bấm lục địa thì zoom vào một vùng đất. Vùng đất chia thành nhiều vùng giáp biên giới như các quốc gia. Mỗi vùng là một chuyên đề.',
+    'Chuyên đề nhiều dạng thì vùng to, ít dạng thì vùng nhỏ (thuật toán chia vùng theo trọng số số dạng). Chuyên đề mới thêm dạng thì vùng tự lớn lên, không cần vẽ lại.',
+    'Màu và độ sáng thể hiện trạng thái: vàng sáng là đạt hết, màu bình thường là đang học, phủ sương là chưa đo. Mỗi vùng có nhãn "x/y chặng đạt".',
+    'Biên giới vẽ bằng thuật toán từ số vùng (1–5 vùng), nên chuyên đề mới thêm vào cây thì bản đồ tự chia lại, không cần ChatGPT vẽ lại.',
+    'Bên phải là danh sách vùng cho em bấm nhanh, tránh việc phải bấm trúng đúng vùng nhỏ trên bản đồ.',
+    'Hình ChatGPT cần ở tầng này: nền đại dương, bộ họa tiết địa hình theo biome (rừng, núi, tuyết, sa mạc), không phải vẽ từng lục địa.',
+  ], hoi: [], xong: ['Vùng = chuyên đề. Vùng to nhỏ theo số dạng.'] },
+  road: { ten: 'Tầng 3 · Chặng đường', logic: [
+    'Bấm một vùng thì thấy một con đường uốn lượn. Mỗi chặng là một dạng. Các cụm của dạng là elite, cụm khó nhất (cuối thứ tự học) là boss cuối, có vương miện, đứng giữa bệ. Elite hiện thành các icon nhỏ trên bảng tên chặng.',
+    'Em chỉ thấy loài quái, không thấy tên cụm. Mặc định mỗi dạng có ít nhất 3 quái: cụm thật rồi thêm con tạm cho đủ. Cụm thật được chia thêm tới đâu, con tạm được thay tới đó.',
+    'Dạng nhiều cụm thì chặng to, ít cụm thì chặng nhỏ. Dạng 1 cụm hoặc chưa chia cụm là chặng nhỏ nhất (3 quái).',
+    'Chặng chưa gặp hiện bóng đen với dấu "?". Chặng đã hạ hiện boss mờ nằm xuống và cờ cắm bên cạnh. Chặng còn máu hiện boss thật kèm thanh máu nhỏ.',
+    'Hero đứng trước chặng đầu tiên còn quái. Đây chính là "việc tiếp theo".',
+    'Bấm một chặng để xem bên phải: boss cuối, đội hình theo thứ tự học, máu từng con, độ nắm dạng, độ tin. Bấm "Vào màn đấu" mới vào trận.',
+    'Hiện chưa đo riêng từng cụm, nên máu cả dạng (số đòn còn cần tới "đạt") được chia đều cho cả đội hình. Khi có đánh giá theo cụm thì máu từng con đo riêng.',
+  ], hoi: [
+    'Dạng càng nhiều cụm thì chặng càng to. Có cần đặt trần (tối đa 7 quái một chặng) để bản đồ không vỡ không? Em đề xuất trần 7.',
+  ], xong: ['Mỗi lượt đánh hết cả đội hình, không bỏ qua cụm nào.', 'Dạng 1 cụm là 1 boss. Dạng chưa chia cụm có con tạm, tối thiểu 3 quái mỗi dạng.', 'Không hiện tên cụm.'] },
+  battle: { ten: 'Màn đấu', logic: [
+    'Một trận là một lượt 5 đến 10 câu, tuỳ dạng. Đúng thì hero chém, quái mất 1 máu. Sai thì quái hồi 1 máu. Hero không có thanh máu và không "chết", để không phạt em.',
+    'Mỗi lượt đánh hết cả đội hình theo thứ tự: elite đầu, elite kế, cuối cùng boss cuối xuất hiện. Hạ xong con nào thì con kế bước vào ngay trong lượt, câu hỏi không dừng. Cột "Đội hình" bên trái cho em thấy mình đang ở đâu.',
+    'Máu quái chia từ máu của cả dạng (khoảng cách tới "đạt"), tính ở DB. Máu không reset mỗi lượt vì mastery suy từ mọi lần đo. Dạng đạt khi hạ hết đội hình.',
+    'Không ra lại câu em đã gặp khi kho dạng còn câu mới. Đáp án A/B/C/D không bị xáo.',
+    'Số câu mỗi lượt theo dạng: số cụm × 2, nhưng không dưới 5 và không quá 10. Quá 10 thì chọn ngẫu nhiên 10 câu, dưới 5 thì thêm câu cho đủ 5. Vậy dạng 1–2 cụm hoặc chưa chia cụm làm 5 câu, 3 cụm làm 6 câu, 4 cụm làm 8 câu, từ 5 cụm trở lên làm 10 câu.',
+    'Thanh chấm trên cùng là tiến độ lượt (5 đến 10 chấm tuỳ dạng). Em thấy rõ đang ở câu mấy, đúng sai ra sao.',
+    'Luật "lượt học thật" đã có (<code>_luot_hoc_that</code>: từ 5 câu, đúng từ 50%, từ 6 giây/câu) nên khớp ngay với lượt 5–10 câu. Chỉ cần chỗ chọn câu của lượt đổi từ 10 cố định sang số câu theo dạng.',
+    'Màn này áp cho Tự luyện Chủ đề. Tự luyện Tổng hợp là "săn quái lang thang" (quái ngẫu nhiên ở vùng yếu). Thử thách là đấu trường, nhiều boss liên tiếp.',
+  ], xong: ['Số câu một lượt = số cụm × 2, kẹp từ 5 đến 10. Quá 10 thì giảm ngẫu nhiên còn 10, dưới 5 thì thêm cho đủ 5.'], hoi: [
+    'Nếu em hạ hết đội hình trước câu cuối thì các câu còn lại làm gì? Em đề xuất vẫn làm hết lượt, các câu cuối là "ôn cho chắc" không có quái, vì lượt phải đủ số câu mới được tính. Đồng ý?',
+    'Sai thì quái hồi 1 máu. Em đề xuất tối đa hồi thêm 2 so với ban đầu để em không nản. Đồng ý?',
+    'Có cần hiệu ứng combo (đúng liên tiếp) không? Combo chỉ để vui, không ảnh hưởng điểm.',
+  ] },
+  result: { ten: 'Kết quả lượt', logic: [
+    'Gọi <code>fn_luot_hoc_that_ket_qua</code> (đã có thật). Trả về lượt có được tính không và vì sao: <code>it_cau</code>, <code>duoi_nguong</code>, <code>qua_nhanh</code>.',
+    'Lượt không tính thì báo nhẹ nhàng, không phạt, máu quái giữ nguyên. Nút khoe lên Thế giới BK bị khoá.',
+    'Lượt tính thì cộng chuỗi, tiến độ nhiệm vụ N2, EXP và quái mất máu thật. Đây là cổng chung cho chuỗi, nhiệm vụ, game, giải đấu sau này.',
+    'Độ nắm dạng hiện phần trăm kèm "độ tin" để không nhầm "chưa đo" với "yếu".',
+    'Mockup đo thời gian bạn bấm thật. Bấm nhanh thì ra "Quá nhanh", đúng luật 6 giây.',
+  ], hoi: [
+    'Khi em bấm bừa quá nhanh nên lượt không tính: quái có mất máu không? Em đề xuất không mất, máu giữ nguyên (mockup đang làm vậy). Nghĩa là các câu trong lượt bị bỏ không được tính vào độ nắm dạng, luồng Số liệu cần làm thêm. Đồng ý?',
+    'Khi hạ boss cuối lần đầu cần màn ăn mừng riêng (cắm cờ lên bản đồ) không?',
+    'Nút "Khoe" nên nằm ngay tại đây (spec đang ghi là còn thiếu).',
+  ], xong: [] },
+};
+
+/* ============ điều khiển ============ */
+function newRun() {
+  const sg = stageByKey(S.sel), en = sg.en.map(x => ({ ...x, dead: false }));
+  if (en.every(x => x.hp === 0)) en.forEach(x => { x.hp = 2; x.hpStart = 2; });
+  const idx = QS.map((_, i) => i).sort(() => Math.random() - .5).slice(0, sg.nq);
+  S.run = { i: 0, en, ei: 0, total: sg.nq, qs: idx.map(i => QS[i]), log: [], times: [], pick: null, fb: null, mood: 'idle', atk: false, slash: false, floatTxt: '', intro: '', t0: Date.now(), stage: sg }; S.kq = null; S.cas = null;
+}
+function flash(t) { S.toast = t; draw(); clearTimeout(S._tt); S._tt = setTimeout(() => { S.toast = ''; const el = document.querySelector('.toast'); if (el) el.remove(); }, 1800); }
+function go(sc) { S.screen = sc; if (sc === 'battle' && (!S.run || S.run.done)) newRun(); draw(); }
+function answer(k) {
+  const r = S.run, q = r.qs[r.i]; if (r.pick != null) return;
+  r.times.push((Date.now() - r.t0) / 1000); r.pick = k; const ok = k === q.ci; r.log.push(ok); const e = cur(r), nm = SP_NAME[e.kind], last = r.ei === r.en.length - 1;
+  if (e.dead) { r.mood = 'idle'; r.fb = { ok, txt: ok ? 'Boss cuối đã ngã, câu này để ôn cho chắc.' : `Đáp án đúng là ${q.ans}. Boss đã ngã nên không hồi máu.` }; }
+  else if (ok) {
+    e.hp = Math.max(0, e.hp - 1); r.mood = 'hit'; r.atk = true; r.slash = true; r.floatTxt = '−1';
+    r.fb = { ok, txt: `${nm} mất 1 máu. Thế ${q.ans} vào cả hai phương trình đều thoả mãn.` };
+    if (e.hp === 0) { e.dead = true; const nx = r.en[r.ei + 1]; r.fb.txt = `${nm} bị hạ! ` + (last ? 'Boss cuối ngã xuống, chặng đã đạt. Làm nốt lượt để được tính.' : (nx.boss ? 'Boss cuối sẽ xuất hiện ở câu sau.' : 'Elite kế tiếp sẽ xuất hiện ở câu sau.')); }
+  } else { e.hp = Math.min(e.hpStart + 2, e.hp + 1); r.mood = 'heal'; r.floatTxt = '+1'; r.fb = { ok, txt: `Đáp án đúng là ${q.ans}. ${nm} hồi 1 máu, mình đánh câu sau.` }; }
+  draw(); setTimeout(() => { if (S.run === r) { r.atk = false; r.slash = false; r.mood = 'idle'; r.floatTxt = ''; const st = $('stage'); const hero = st.querySelector('.hero'), m = st.querySelector('.mon'), sl = st.querySelector('.slash'), fl = st.querySelector('.float'); if (hero) hero.classList.remove('atk'); if (m) m.classList.remove('hit', 'heal'); if (sl) sl.classList.remove('go'); if (fl) fl.remove(); } }, 700);
+}
+function next() {
+  const r = S.run; if (r.i >= r.total - 1) { r.done = true; r.i = r.total; S.kq = null; S.cas = null; go('result'); return; }
+  r.i++; r.pick = null; r.fb = null; r.mood = 'idle'; r.t0 = Date.now();
+  if (cur(r).dead && r.ei < r.en.length - 1) { r.ei++; r.intro = cur(r).boss ? 'BOSS CUỐI xuất hiện!' : 'ELITE xuất hiện!'; setTimeout(() => { if (S.run === r) { r.intro = ''; const el = document.querySelector('.intro'); if (el) el.remove(); } }, 1800); }
+  draw();
+}
+function draw() {
+  const st = $('stage');
+  st.innerHTML = '<div class="sky"></div>' + ({ world: rWorld, cont: rCont, road: rRoad, battle: rBattle, result: rResult }[S.screen])() + (S.toast ? `<div class="toast">${S.toast}</div>` : '');
+  $('tabs').innerHTML = SCREENS.map((s, i) => `<button class="tab" role="tab" aria-selected="${S.screen === s.id}" data-go="${s.id}"><b>${i + 1}. ${s.n}</b><small>${s.s}</small></button>`).join('');
+  $('hint').textContent = HINTS[S.screen];
+  const n = NOTES[S.screen];
+  $('notes').innerHTML = `<div class="nbox"><h2>${n.ten}: logic</h2><ul>${n.logic.map(t => `<li>${t}</li>`).join('')}</ul></div><div class="nbox ${n.hoi.length ? 'q' : ''}">${n.hoi.length ? `<h2>Cần anh chốt</h2><ul>${n.hoi.map(t => `<li>${t}</li>`).join('')}</ul>` : ''}${n.xong && n.xong.length ? `<h2 style="margin-top:${n.hoi.length ? 14 : 0}px">Đã chốt</h2><ul>${n.xong.map(t => `<li>${t}</li>`).join('')}</ul>` : ''}</div>`;
+}
+function openCont(id) { S.cont = id; S.area = null; go('cont'); }
+function openArea(i) { S.area = i; const a = CONT[S.cont].areas[i]; const f = a.stages.find(s => s.st === 'yeu') || a.stages[0]; S.sel = f.key; go('road'); }
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-go],[data-cont],[data-area],[data-stage],[data-enter],[data-opt],[data-next],[data-again],[data-cas],[data-toast]'); if (!t) return;
+  const D = t.dataset;
+  if (D.cont) return openCont(D.cont);
+  if (D.area != null) return openArea(+D.area);
+  if (D.stage) { S.sel = D.stage; return draw(); }
+  if (t.hasAttribute('data-enter')) { if (D.toast) return flash(D.toast); newRun(); return go('battle'); }
+  if (D.opt != null) return answer(+D.opt);
+  if (t.hasAttribute('data-next')) return next();
+  if (t.hasAttribute('data-again')) { newRun(); return go('battle'); }
+  if (D.cas) { S.cas = D.cas; return draw(); }
+  if (D.toast) return flash(D.toast);
+  if (D.go) {
+    if (D.go === 'cont' && S.screen === 'world') S.cont = S.cont || 'C';
+    if ((D.go === 'road') && (S.area == null)) { S.cont = 'C'; S.area = 1; S.sel = 'C-1-0'; }
+    if (D.go === 'cont' && S.area == null) { /* giữ lục địa hiện tại */ }
+    if (D.go === 'battle') { S.sel = S.sel || 'C-1-0'; if (!stageByKey(S.sel).playable) { S.cont = 'C'; S.area = 1; S.sel = 'C-1-0'; } newRun(); }
+    go(D.go);
+  }
+});
+document.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.closest && e.target.closest('[role="button"][tabindex]') && !e.target.matches('button')) { e.preventDefault(); const t = e.target.closest('[role="button"]'); if (t.dataset.cont) openCont(t.dataset.cont); else if (t.dataset.area != null) openArea(+t.dataset.area); } });
+function fit() { const w = $('wrap').clientWidth, s = Math.max(.62, Math.min(1.1, w / 1180)); $('stage').style.transform = `scale(${s})`; $('sizer').style.width = 1180 * s + 'px'; $('sizer').style.height = 820 * s + 'px'; }
+window.addEventListener('resize', fit);
+newRun(); draw(); fit();
+</script>
