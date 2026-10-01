@@ -34357,3 +34357,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Ghi vào skill lam-thu: nguồn ảnh tốt nhất = CEO chụp trong trình xem 3D của game; bộ góc nên xin (thêm TỪ TRÊN + cận mặt).
   Sai nhỏ: bờm dải sóng lần đầu dựng đứng "như rắn", lọn sát vai như con sâu ⇒ hạ hướng ra sau ngang, bỏ 3 lọn sát vai; gai/pha lê lần đầu
   mảnh như kim ⇒ ×2,4 bán kính. Còn: ~127k tam giác/con, cánh nhìn chính diện thấy cạnh mỏng, cánh ngủ/trúng đòn cứng.
+
+### 01/10 khuya — [Giao diện] ĐỔI HƯỚNG bản đồ phiêu lưu sang 2D ảnh tĩnh + hiệu ứng code (Thùy)
+- Thùy: thế giới + lục địa 3D "nặng máy không cần thiết và xấu, trong khi không cần tương tác" ⇒ ChatGPT vẽ ảnh tĩnh, code thêm hiệu ứng.
+  Chốt: 1 nền world map + vài chục lục địa rời (8 biome × 3 hình dáng) · bố cục làm sẵn 3–10 (vùng trong lục địa, chặng trong vùng) · chặng đường 2D ·
+  màn đấu 3D hoặc 2.5D (lo đồ hoạ không ổn) ⇒ CTO đề xuất 2.5D cùng hướng boss 2D.
+- Đo trên DB thật (1 HS/khối×môn, ROLLBACK): 2–10 lục địa/khối (K4T Toán 10, K9 Toán 8) · 1–8 vùng/lục địa (K12 tới 8) · 1–30 dạng/lục địa ⇒ 1 bức
+  thế giới liền khối không khớp mọi khối ⇒ ghép mảnh rời; bố cục làm 1–10 (data có 1–2).
+- Đơn 7 (design/DON-HANG-SKIN-HS.md): 3 ảnh toàn cảnh duyệt → nền thế giới + 8 lục địa → nền vùng/chặng 4 biome → mốc + vật → nền đấu → lục địa đợt 2–3 → 4 biome còn lại.
+  spec-v1-app-hs §4.5 ghi đổi hướng.

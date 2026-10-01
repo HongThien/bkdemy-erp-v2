@@ -153,7 +153,14 @@ Hạ xong con nào thì con kế bước vào ngay trong lượt (boss cuối v�
 **⏳ CÒN CHỜ Thùy:** lượt KHÔNG được tính (bấm quá nhanh, đúng dưới 50%) thì quái có mất máu không? CTO đề xuất: KHÔNG, máu giữ nguyên (mockup đang làm vậy). Nghĩa là
 các câu của lượt bị bỏ không được tính vào mastery của dạng ⇒ luồng Số liệu phải làm thêm. Chưa chốt thì chưa làm.
 
-**⭐ HƯỚNG ĐỒ HOẠ (Thùy chốt 01/10 tối): 2.5D/3D bằng THREE.JS, hình viết bằng CODE** — không đặt ChatGPT vẽ bản đồ/nền/cây/địa hình. ChatGPT chỉ làm **icon**.
+**⭐⭐ ĐỔI HƯỚNG (Thùy chốt 01/10 khuya) — THAY đoạn "HƯỚNG ĐỒ HOẠ" ngay dưới cho 3 tầng bản đồ:** thế giới + lục địa 3D "nặng máy không cần thiết và xấu,
+trong khi không cần tương tác" ⇒ **ChatGPT vẽ ẢNH TĨNH, code thêm hiệu ứng** (mây trôi, sương, phát sáng, cờ, nước lấp lánh, hạt, hero, phóng vào lục địa).
+- **Thế giới** = 1 nền world map + **vài chục lục địa rời** (8 vùng khí hậu × 3 hình dáng = 24) do code đặt + phóng to nhỏ theo số dạng.
+- **Lục địa** = nền vùng theo biome + mốc (thành/tháp/trại/đền/cổng/cầu) code đặt theo **bố cục làm sẵn 1–10** (đo 01/10: 2–10 chủ đề/khối, 1–8 chuyên đề/chủ đề).
+- **Chặng đường = 2D** (nền chặng theo biome + bệ đá có quái theo bố cục 1–10). **Màn đấu = 2.5D** (nền vẽ + quái/hero ảnh, code rung/chớp/máu/hạt/lớp trượt) — cùng hướng boss 2D.
+- Đơn hình: **Đơn 7** `design/DON-HANG-SKIN-HS.md`. Bản 3D + luật chất lượng tự thích ứng (`chatLuong.ts`) giữ trong repo; 2D không cần WebGL.
+
+**⭐ HƯỚNG ĐỒ HOẠ (Thùy chốt 01/10 tối): 2.5D/3D bằng THREE.JS, hình viết bằng CODE** — *(cũ, xem đổi hướng ngay trên)* — không đặt ChatGPT vẽ bản đồ/nền/cây/địa hình. ChatGPT chỉ làm **icon**.
 **Quái vật và boss do Thùy thiết kế riêng** (không dựng ở đây): cảnh sinh quái qua 1 điểm cắm `skin/the3d/nguonQuai.ts` (`sinhQuai()` / `datNguonQuai()`); bộ dựng trong `quai.ts` chỉ là CHỖ GIỮ CHỖ để cảnh chạy được. Thay bằng hình/model của Thùy là viết 1 hàm cùng giao diện `Quai`, không sửa cảnh nào.
 Cách làm theo `design/nghien-cuu-do-hoa-little-habitats.md`: 1 bảng màu (`skin/the3d/bangMauRpg.ts`, khai trong `Skin.the3d`) · 1 bộ dựng khối cơ bản nướng màu đỉnh (`dungHinh.ts`) · 1 bộ vật liệu (gió, viền sáng) · ánh sáng giờ vàng · nước có bọt sóng theo khoảng cách tới bờ.
 - **Code ở:** `src/screens/hocsinh/skin/the3d/` (động cơ: `sanKhau`, `hinhHoc`, `diaHinh`, `trangTri`; 4 cảnh: `canhTheGioi` · `canhLucDia` · `canhChang` · `canhDau`) và `src/screens/hocsinh/phieuluu/` (màn React: `TheGioiView` · `LucDiaView` · `ChangView` · `DauView` · `PhieuLuuHS` container thật · `XemPhieuLuu` trang thử).
