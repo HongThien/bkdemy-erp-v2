@@ -33861,3 +33861,26 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 ## 01/10 — View `v_ph_hoc_online` cho app PH "Bài tập online"
 - Mig 202610011644: view (HS × ngày VN × môn × nhóm) trên `bai_lam_cau` đã chấm của tu_luyen/bo_tro(+test)/retest/htd; revoke anon/authenticated, grant `fdw_bkdemy_web`. Thời gian = Σ span mỗi lượt, cắt 45'. Phía app PH: `bkdemy-ph-app` mig 0034. CẦN ÁP TAY (ERP trước).
+
+## 2026-10-01 (khuya) — [Game] Khuôn 4 chân đủ 25 động tác (BatThu `thu-de-thuong` @ `2e8e6f1`, đã push)
+
+- **Bộ 25 động tác** theo bảng spec-bat-thu §3.3 (lọc từ Pokémon + Palworld), file mới `src/thu/dong-tac-4chan.ts`:
+  - các động tác là hàm thuần theo thời gian;
+  - động tác 1 lần tự về động tác nền.
+- **Làm kĩ theo nguyên tắc Disney:**
+  - lấy đà;
+  - nén–giãn thân theo gia tốc;
+  - đầu, tai, đuôi (2 khúc), lửa đuôi chạy lò xo giảm chấn, chậm nhịp theo thân;
+  - nhịp có nhấn (hàm `ke()`).
+- **Động tác vặt ngẫu nhiên** (giật tai · nghiêng đầu · nhìn quanh · đánh hơi · gãi · rũ lông) chạy theo tư thế nền.
+- **Tham số:**
+  - tính cách chuyển động `nhun` (tầng 1) / `nang` (tầng 2, để sẵn);
+  - `thu.tocDo` (m/s), nhịp bước theo chiều dài chân, không trượt.
+- **Hook hiệu ứng** `onSuKien` + `diemMieng/huongMieng/diemDinh`; VFX thật chưa làm.
+- Tốn khoảng 0,67 ms/bước cho 6 con + trứng. `tsc` sạch.
+- **Chưa ưng:**
+  - (1) chân 1 khúc, không có gối ⇒ ngồi, nằm, vươn vai còn cứng; cừu nằm khó phân biệt với đứng;
+  - (2) đầu chibi che thân khi cúi (ăn, vươn vai) nhìn từ camera cao;
+  - (3) gãi ngứa bị đầu che;
+  - (4) bỏ chạy / ăn mừng tự quay cả con ⇒ khi nối vào game phải chọn một bên quay;
+  - (5) chưa đo iPad.
