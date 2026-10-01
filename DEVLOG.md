@@ -34429,3 +34429,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   của con khỉ: dựng bản lọc rồi `git hash-object -w` + `git update-index --cacheinfo` (không đụng file đang làm việc), kiểm bằng `git checkout-index`
   ra thư mục tạm + `tsc` sạch. Cách này dùng lại được mỗi khi 2 phiên sửa chung 1 file.
 - Còn: dáng đứng thẳng như chó (mẫu khom, chống tay) · chưa có 3–5 động tác riêng kiểu khỉ · miệng chưa cười rộng bằng mẫu.
+
+## 2026-10-02 (chiều, máy nhà) — [Game] Thiên Kình bản 8b: miệng cong xuống về mõm, xanh trùm mõm (BatThu `thu-de-thuong` @ `6c98c0d`)
+- Thùy: "chưa thấy màu xanh trùm hết mõm như Panthalus" + "miệng đang ngang, phải cong xuống dưới". Đọc lại ảnh 3D (ngang + chính diện):
+  ranh xanh–trắng ở đầu CHÍNH LÀ đường miệng; miệng từ khoé (dưới mắt) cong xuống tới mũi; chóp mõm xanh tận cằm; chính diện mảng trắng là dải "nụ cười".
+- Sửa HÌNH chứ không chỉ màu: đường miệng thật (khớp hàm) thêm tham số `doc` — khoé nâng lên +0,07, cụp xuống tới −0,27 ở mũi (∝ u^2,2).
+  Màu đầu: trắng = dưới đường miệng, mép trước mảng trắng vát chéo lên–ra sau ⇒ mõm xanh. Bỏ ép "hàm dưới trắng trơn" của bản 8.
+- Bài học: bản 8 chỉ tô màu vòng xuống mà đường miệng (rãnh hàm) vẫn ngang ⇒ mắt người đọc theo RÃNH miệng, vẫn thấy ngang. Ranh màu ở mặt phải
+  đi theo hình khối (rãnh miệng), sửa màu riêng không đủ.
+- Tự kiểm: `thien_kinh-so-tham-khao` (đầu ngang, chính diện, vây cạnh ảnh 3D) · `-dt-hat` (há miệng vẫn đúng). tsc sạch.
+- Còn: chính diện dải trắng "nụ cười" mỏng hơn mẫu (má mẫu phình hơn nên thấy được 2 bên hàm từ trước).
