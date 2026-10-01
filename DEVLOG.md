@@ -33969,3 +33969,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   — hộp Giao lọc lớp theo môn, chọn buổi theo TKB, báo lỗi trùng buổi; ô 4 ký tự chặn đúng luật (− chỉ ô 1, phẩy chỉ ô 2–3).
   **CHƯA kiểm trên dữ liệu thật:** gán thật + bản in phiếu của tài liệu gán + HS làm trên app — cần đề ĐÃ DUYỆT (duyệt là việc của người) và
   phiên đăng nhập (preview đang ở màn đăng nhập).
+
+## 2026-10-02 — [Game] CEO: Băng Thần Mã phải có CÁNH
+
+- **CEO:** "ok fix thêm. Quan trọng nhất con ngựa cần có cánh — cái cánh mới làm con ngựa đẹp."
+- Giao luồng ngựa (theo thứ tự):
+  - (1) mô-đun cánh dùng lại được (nền khuôn bay) + cánh lông pha lê băng tham gia mọi động tác + bộ bay 6 động tác;
+  - (2) làm ngầu hơn: thân xanh lạnh, vân băng phát sáng, bờm tinh thể;
+  - (3) bản ngựa riêng cho giật mình / ra–phá bóng / ngáp; sửa nằm phục;
+  - (4) gộp lệnh vẽ + lưới thưa cho bản Nhẹ.
+- Ghi spec-bat-thu §3.4.

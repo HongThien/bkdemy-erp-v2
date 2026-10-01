@@ -263,6 +263,13 @@ Lọc theo bộ động tác chuẩn của 2 game: Pokémon (trận đấu · Le
 | Động tác riêng (ngoài bộ chung) | Chồm hí (đứng 2 chân sau) · phi nước đại 4 nhịp · dậm băng (vòng băng toả) · thở băng · lắc bờm | Lượn trôi · bơi tiến · lượn vòng · quẫy đuôi · phun cột nước · hát (vòng âm) · lộn vòng · lao xuống / ngoi lên · bị đánh · choáng · ngất |
 | Cưỡi | Có (điểm yên) | Có — cưỡi bay (sau V1) |
 
+- **CEO xem Băng Thần Mã bản 1 (02/10): "ok fix thêm. QUAN TRỌNG NHẤT con ngựa cần có CÁNH — cái cánh mới làm con ngựa đẹp."**
+  - Đang làm:
+    - đôi cánh lông pha lê băng, sải ~2× thân;
+    - gấp gọn khi nghỉ, xoè rộng ở đỉnh chồm hí;
+    - bộ bay 6 động tác: cất cánh · vỗ cánh · liệng · lao xuống · đáp · khoe cánh.
+  - Thêm cho ngầu: thân ngả xanh lạnh, giáp/vân băng phát sáng, bờm tinh thể.
+  - **Cánh viết thành MÔ-ĐUN DÙNG LẠI = nền của khuôn BAY** (chim, phượng, rồng, griffin; kiểu lông vũ / pha lê / màng dơi).
 - **CEO bổ sung (01/10 khuya):**
   - **4 KHUÔN DÁNG**, khuôn nào cũng phải làm: **4 chân · bay · bơi · bò trườn** (rắn, sâu…).
   - **Thiên Kình sống được cả dưới nước lẫn trên trời** ("huyền thoại mà"). Bay na ná bơi, nhưng **bắt buộc có 2 động tác chuyển**:
