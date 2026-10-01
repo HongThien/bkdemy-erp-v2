@@ -305,6 +305,37 @@ Lọc theo bộ động tác chuẩn của 2 game: Pokémon (trận đấu · Le
   - ngựa = **nâng khuôn 4 chân lên chân nhiều khúc** (khớp gối/khuỷu, uốn mềm) — mọi loài 4 chân cùng hưởng, sửa luôn lỗi "ngồi/nằm cứng" của bản 25 động tác;
   - cá voi = **khuôn mới "bơi/lượn"** (chuỗi xương sống uốn sóng).
 
+### 3.5 QUY TRÌNH CHUẨN LÀM 1 CON THÚ (CEO chốt 02/10 — "thống nhất cách làm, vì còn làm nhiều lần")
+
+> CEO: **research tỉ lệ + mẫu 3D nếu có → thiết kế theo mô hình gốc → cần sửa thêm thì CEO nói.**
+> Bản thao tác cho Claude: skill **`lam-thu`** trong repo game (`BatThu/.claude/skills/lam-thu/SKILL.md`). Hai nơi lệch nhau ⇒ mục này thắng.
+
+| Bước | Ai | Làm gì | Ra cái gì |
+|---|---|---|---|
+| 0. Đề bài | CEO | Tên loài · tầng (1 thường · 2 săn mồi đỉnh · 3 thần thoại · 4 truyền thuyết) · **mẫu gốc** (Palworld / Pokémon / con vật thật) · mức giống (vd "90%") · điểm CEO nhấn | 1 dòng đề bài |
+| 1. Research | Claude | Wiki/mô tả của mẫu gốc + **ảnh nhiều góc** (ngang · trước · 3/4 · đang di chuyển) + **mô hình 3D tham chiếu nếu có** (Sketchfab… chỉ xem để đo; KHÔNG dùng file mô hình trích từ game). Lưu ảnh vào `.snap/tham-khao/<loai>/` | **Phiếu tỉ lệ:** đầu : thân : đuôi : chân · số vây/cánh/đuôi/đầu · màu (mã hex đo từ ảnh) · vân · phụ kiện đặc trưng · kiểu mắt · cỡ so thú thường |
+| 2. Dựng hình | Claude | Chọn **khuôn**: 4 chân · bay · bơi · bò trườn. Loài = **1 dòng tham số**. Chi tiết riêng viết thành **mô-đun dùng lại** (cánh, vòng, giáp, mai…), không code cứng cho 1 loài. Bảng màu thường + shiny; alpha tự có | Thú đứng được trong trang thử |
+| 3. Động tác | Claude | Bộ chung của khuôn (4 chân: 25 · bơi: 22 + chuyển nước/trời · bay: 6 · bò trườn: làm khi tới) + **3–5 động tác riêng** lấy từ nét đặc trưng của mẫu gốc. Nguyên tắc Disney; mức chuyển động theo tầng (`nhun` / `nang`) | Bảng động tác + thời lượng |
+| 4. Trứng | Claude | Hoa văn + màu theo loài; tầng 3–4 có hoạt cảnh nở riêng | Trứng + hoạt cảnh nở |
+| 5. Tự kiểm | Claude | **Bộ ảnh chuẩn:** `mau` (thường · shiny · alpha + Cáo Lửa so tỉ lệ) · **`so-tham-khao` (đặt cạnh ảnh gốc cùng góc)** · `dau` (cận mặt) · `dong-tac` (lưới) · chuỗi 5–6 khung của 2–3 động tác riêng · `trung`. Soát: chân chạm đất, không trượt, không xuyên khối, không lật lưới, lông/vây không gãy gập. Đo tam giác (Đẹp/Nhẹ) + lệnh vẽ | Ảnh + số đo |
+| 6. Duyệt | CEO | Xem 3 ảnh chính + trang thử, nói sửa gì ⇒ quay lại bước 2–3 | "Duyệt" hoặc danh sách sửa |
+| 7. Lưu asset | Claude | Khoá tham số loài · xuất **GLB + ảnh đại diện** (công cụ xuất: chưa làm, xem dưới) · cập nhật bảng loài dưới đây + DEVLOG | Asset dùng được trong game + app |
+
+**Luật kỹ thuật:**
+- làm trên nhánh;
+- nhiều luồng cùng thư mục thì mỗi luồng chỉ sửa file của mình;
+- commit đúng đường dẫn;
+- `.snap/` bị gitignore (ảnh không vào repo).
+
+**Bảng loài** (cập nhật mỗi khi đổi trạng thái):
+
+| Loài | Tầng | Khuôn | Mẫu gốc | Trạng thái |
+|---|---|---|---|---|
+| Cáo Lửa | 1 | 4 chân | Foxparks | ✅ CEO duyệt (01/10) |
+| Cừu Mây | 1 | 4 chân | Lamball | ✅ CEO duyệt (01/10) |
+| Băng Thần Mã | 4 | 4 chân + cánh | Frostallion | 🔧 đang thêm cánh (CEO 02/10) |
+| Thiên Kình | 4 | bơi (+ bay) | Panthalus 90% | 🔧 đang làm lại theo Panthalus (CEO 02/10) |
+
 ## 4. Chờ CEO
 
 0. **(01/10, ưu tiên) Nguồn THÚ DỄ THƯƠNG** — 3 cách A/B/C ở §3.2. Boss đã gác lại (#18) ⇒ mục 1 dưới đây giờ chỉ còn phần pet.

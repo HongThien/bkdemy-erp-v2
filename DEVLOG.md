@@ -34049,3 +34049,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Sửa:** `phieuluu/coBat.ts` — cờ theo máy (localStorage), mặc định TẮT. `?phieuluu=1` bật cho máy đó, `?phieuluu=0` tắt. HocSinhApp chỉ mở bản đồ khi cờ bật; tắt thì ô Tự luyện chạy y như cũ. Bật cho tất cả = đổi `MAC_DINH` thành true (1 dòng) rồi deploy.
 - **Cách thử trên iPad (3 đường):** ① server dev trên mạng LAN (`npm run dev:hs -- --host`, iPad cùng Wi-Fi mở http://<IP máy>:<cổng>/hs.html?xem=phieu_luu — dữ liệu mẫu, không cần đăng nhập, không đụng production) ② deploy thủ công lên Vercel với bản này (cờ tắt nên học sinh không thấy gì), rồi mở `?phieuluu=1` trên iPad ③ Vercel preview từ nhánh riêng (không đụng domain học sinh).
 - **Lưu ý:** đường ②③ chạy trên DB production ⇒ chỉ đăng nhập bằng TÀI KHOẢN THỬ, vì làm bài sẽ sinh bài/lượt thật.
+
+## 2026-10-02 — [Game] CEO chốt QUY TRÌNH CHUẨN làm thú + hỏi "lưu thành asset" và nhược điểm của cách làm bằng code
+
+- **CEO:** "thống nhất cách làm luôn vì còn làm nhiều lần: research tỉ lệ, mẫu 3D nếu có, thiết kế theo mô hình gốc; cần sửa thì t nói".
+- **Ghi:**
+  - spec-bat-thu §3.5: quy trình 8 bước (đề bài → research + phiếu tỉ lệ → dựng trên khuôn → động tác → trứng → bộ ảnh tự kiểm có ảnh so tham chiếu → CEO duyệt → lưu asset) + BẢNG LOÀI;
+  - skill `lam-thu` trong repo BatThu (`.claude/skills/lam-thu/SKILL.md`, nhánh `thu-de-thuong`) = bản thao tác cho Claude.
+- **Trả lời CEO:**
+  - lưu asset được: tham số loài là "bản gốc"; xuất GLB (lưới + xương + động tác nướng thành khung) + ảnh đại diện là bản build;
+  - nhược điểm lớn nhất của three + code: trần chi tiết (hình mềm kiểu đồ chơi/đất nặn, khó ra lông, vảy, chi tiết sắc như mô hình vẽ tay);
+  - kèm: nặng hơn mô hình tối ưu tay · chỉ Claude/lập trình sửa được · hoạt cảnh múa phức tạp khó hơn keyframe.
