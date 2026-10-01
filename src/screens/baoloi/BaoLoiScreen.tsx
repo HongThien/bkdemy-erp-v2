@@ -1,7 +1,7 @@
 // Màn "Báo lỗi" (auto-report Pha 1) — Thùy DUYỆT cổng 2: report nào cho AI fix / từ chối / để tự làm.
 // Queue + lọc trạng thái + xem context/ảnh + đổi trạng thái. (Bước 3-4 sẽ nối luồng fix sau.)
 import { useEffect, useMemo, useState } from 'react'
-import { listBaoLoi, setTrangThaiBaoLoi, deleteBaoLoi, type BaoLoi, type TrangThaiBaoLoi } from '../../lib/baoloi'
+import { listBaoLoi, setTrangThaiBaoLoi, deleteBaoLoi, traLoiBaoLoi, type BaoLoi, type TrangThaiBaoLoi } from '../../lib/baoloi'
 
 const TT: Record<TrangThaiBaoLoi, { l: string; cls: string }> = {
   moi: { l: 'Mới', cls: 'bg-amber-100 text-amber-700' },
@@ -23,12 +23,15 @@ export default function BaoLoiScreen() {
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
   const [filter, setFilter] = useState<'all' | TrangThaiBaoLoi>('all')
+  const [nguon, setNguon] = useState<'all' | 'hs' | 'ns'>('all')   // góp ý của học sinh / của nhân sự
+  const [traLoi, setTraLoi] = useState<Record<string, string>>({})
   const [openId, setOpenId] = useState<string | null>(null)
 
   async function reload() { setLoading(true); setErr(null); try { setRows(await listBaoLoi()) } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setLoading(false) } }
   useEffect(() => { reload() }, [])
 
-  const shown = useMemo(() => rows.filter((r) => filter === 'all' || r.trang_thai === filter), [rows, filter])
+  const shown = useMemo(() => rows.filter((r) => (filter === 'all' || r.trang_thai === filter)
+    && (nguon === 'all' || (nguon === 'hs') === !!r.hoc_sinh_id)), [rows, filter, nguon])
   const dem = (v: TrangThaiBaoLoi) => rows.filter((r) => r.trang_thai === v).length
 
   async function doiTT(id: string, tt: TrangThaiBaoLoi, ghiChu?: string) {
@@ -42,6 +45,8 @@ export default function BaoLoiScreen() {
       <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="mr-2 text-sm font-semibold text-slate-900">Quản lý báo lỗi</span>
         {FILTERS.map((f) => <button key={f.v} onClick={() => setFilter(f.v)} className={tab(filter === f.v)}>{f.l}{f.v !== 'all' && dem(f.v as TrangThaiBaoLoi) ? ` (${dem(f.v as TrangThaiBaoLoi)})` : ''}</button>)}
+        <span className="mx-1 h-4 w-px bg-slate-200" />
+        {([['all', 'Mọi nguồn'], ['hs', 'Học sinh'], ['ns', 'Nhân sự']] as const).map(([v, l]) => <button key={v} onClick={() => setNguon(v)} className={tab(nguon === v)}>{l}{v === 'hs' ? ` (${rows.filter((r) => r.hoc_sinh_id).length})` : ''}</button>)}
         <button onClick={reload} className="rounded-md border border-slate-300 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">↻ Tải lại</button>
         <span className="ml-auto text-[12px] text-slate-400">Tổng {rows.length} · Cổng 2: duyệt report nào cho AI fix tự động.</span>
       </div>
@@ -59,9 +64,10 @@ export default function BaoLoiScreen() {
                   <div key={r.id} className="rounded-xl border border-slate-200 bg-white">
                     <button onClick={() => setOpenId(expand ? null : r.id)} className="flex w-full items-start gap-3 px-4 py-3 text-left">
                       <span className={`mt-0.5 shrink-0 rounded-full px-2 py-0.5 text-[11px] font-semibold ${TT[r.trang_thai].cls}`}>{TT[r.trang_thai].l}</span>
+                      {r.hoc_sinh_id && <span className="mt-0.5 shrink-0 rounded-full bg-sky-100 px-2 py-0.5 text-[11px] font-semibold text-sky-700">HS · {r.loai === 'yeu_cau' ? 'Ý tưởng' : 'Lỗi'}</span>}
                       <div className="min-w-0 flex-1">
                         <div className="truncate text-[14px] font-medium text-slate-800">{r.mo_ta}</div>
-                        <div className="mt-0.5 text-[11px] text-slate-400">{ctx.nguoi ?? ctx.email ?? '?'} · màn <b className="font-mono text-slate-500">{r.route ?? '—'}</b> · {fmt(r.created_at)}</div>
+                        <div className="mt-0.5 text-[11px] text-slate-400">{ctx.nguoi ?? (ctx.ho_ten ? `${ctx.ho_ten} (${String(ctx.ma_hs ?? '').toUpperCase()} · khối ${ctx.khoi ?? '?'})` : ctx.email) ?? '?'} · màn <b className="font-mono text-slate-500">{r.route ?? '—'}</b> · {fmt(r.created_at)}</div>
                       </div>
                       <span className="shrink-0 text-slate-300">{expand ? '▲' : '▼'}</span>
                     </button>
@@ -82,6 +88,18 @@ export default function BaoLoiScreen() {
                             )}
                           </div>
                         </details>
+                        {r.hoc_sinh_id && (
+                          <div className="mt-3 rounded-lg border border-sky-200 bg-sky-50 p-3">
+                            {r.tra_loi && <div className="mb-2 text-[12.5px] text-slate-700"><b>Đã trả lời em:</b> {r.tra_loi}</div>}
+                            <div className="flex gap-2">
+                              <input value={traLoi[r.id] ?? ''} onChange={(e) => setTraLoi((m) => ({ ...m, [r.id]: e.target.value }))} placeholder="Trả lời học sinh (em sẽ thấy trong app)…"
+                                className="min-w-0 flex-1 rounded-md border border-slate-300 bg-white px-3 py-1.5 text-[13px] text-slate-900" />
+                              <button disabled={(traLoi[r.id] ?? '').trim().length < 2}
+                                onClick={async () => { try { await traLoiBaoLoi(r.id, (traLoi[r.id] ?? '').trim()); setTraLoi((m) => ({ ...m, [r.id]: '' })); reload() } catch (e) { alert((e as Error).message) } }}
+                                className="rounded-md bg-sky-600 px-3 py-1.5 text-[12px] font-medium text-white hover:bg-sky-500 disabled:opacity-40">Gửi</button>
+                            </div>
+                          </div>
+                        )}
                         {r.ghi_chu_duyet && <div className="mt-2 text-[12px] text-slate-500">Ghi chú duyệt: <i>{r.ghi_chu_duyet}</i></div>}
                         {r.fix_note && <div className="mt-1 text-[12px] text-violet-600">Fix: {r.fix_note}</div>}
                         {r.pr_url && <a href={r.pr_url} target="_blank" rel="noreferrer" className="mt-1 block text-[12px] text-indigo-600 underline">Xem PR</a>}

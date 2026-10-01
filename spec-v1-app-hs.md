@@ -351,5 +351,7 @@ fn_ban_do_phieu_luu (trang hs.html?xem=phieu_luu) + ngọn lửa chuỗi trên H
 - 01/10 · Giao diện → Số liệu · `fn_ban_do_phieu_luu` đúng §13.4 · ✔ 01/10 (`src/lib/phieuluu.ts`; loài quái/biome = tên file Đơn 6, xem `_phieu_luu_bo()`)
 - 01/10 · Số liệu → Giao diện · Thế giới BK: thêm chữ cho tin `kieu = 'chuoi'` ở `moTaTin()` (`TheGioiHS.tsx`), vd "giữ **chuỗi 7 ngày** 🔥" (`chi_tiet.so_ngay`) — hiện đang ra nguyên chữ "chuoi" · ⏳
 - 01/10 · Số liệu → Giao diện · màn kết quả Tự luyện/Thử thách: gọi `ketQuaLuotHocThat(baiLamId)` + `loiLuotKhongTinh()` (`src/lib/chuoi.ts`) báo lượt chưa tính · ⏳
+- 01/10 · Số liệu → Giao diện · **Góp ý / báo lỗi** (nút ở menu ⋯ + Hồ sơ): form Báo lỗi / Góp ý tưởng (≥10 chữ, tối đa 1.500, ảnh tuỳ chọn, 5 lần/ngày) gọi `guiGopY()` · màn "Góp ý của em" gọi `gopYCuaToi()` (trạng thái `da_nhan/dang_xem/da_xu_ly/chua_lam_duoc` + lời trả lời + dấu `tra_loi_moi`, mở ra thì `danhDauDaDocGopY()`) · chấm đỏ `soGopYChuaDoc()` — tất cả ở `src/lib/gopy_hs.ts` · ⏳
+- 01/10 · Số liệu → Thùy · (tuỳ chọn) thư trả lời góp ý chỉ vào Hòm thư khi role migrate được ghi `thong_bao_hs` (bảng thuộc `postgres`): SQL Editor chạy `grant insert on public.thong_bao_hs to claude_build;` — chưa chạy thì em vẫn thấy lời trả lời ở "Góp ý của em" · ⏳
 - 01/10 · Số liệu → Giao diện · (sau) ô nhập "Ngày nghỉ của chuỗi" cho quản trị: hàm có sẵn `dsNgayNghiChuoi / themNgayNghiChuoi / goNgayNghiChuoi` — Số liệu tự làm ở màn nhân sự Huy hiệu · ⏳ Số liệu
 - 01/10 · Game → Giao diện · ô vào game trên Home (id ô, link, icon) · ⏳ chờ luồng Game gửi chi tiết

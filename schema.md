@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-301 bảng · 19 view · 0 enum · 103 trigger · 726 function
+301 bảng · 19 view · 0 enum · 103 trigger · 731 function
 
 ## _app_secrets
 
@@ -290,6 +290,11 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
 | loai | text |  | 'bug'::text |  | `bug` · `yeu_cau` |
+| hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |  |
+| tra_loi | text | Y |  |  |  |
+| tra_loi_at | timestamp with time zone | Y |  |  |  |
+| tra_loi_boi | uuid | Y |  |  |  |
+| tra_loi_doc_at | timestamp with time zone | Y |  |  |  |
 
 ## bao_loi_log
 
@@ -6044,6 +6049,7 @@ SELECT bl.hoc_sinh_id,
 - `fn_ban_qua_chia_doi(p_buoi uuid, p_so_doi smallint)` → jsonb
 - `fn_ban_qua_chot(p_buoi uuid, p_kq jsonb)` → jsonb
 - `fn_ban_qua_tinh_hinh(p_buoi uuid)` → jsonb
+- `fn_bao_loi_tra_loi(p_id uuid, p_noi_dung text)` → void
 - `fn_bo_dau(p text)` → text
 - `fn_bo_tro_trong_ngay(p_ngay date DEFAULT NULL::date)` → jsonb
 - `fn_bo_tro_tu_kiem(p_tu date DEFAULT NULL::date, p_den date DEFAULT NULL::date)` → jsonb
@@ -6258,6 +6264,10 @@ SELECT bl.hoc_sinh_id,
 - `fn_hocphi_tong_hop_ky(p_ky date)` → TABLE(phu_huynh_id uuid, tien_chinh numeric, tien_duoi numeric)
 - `fn_hs_album(p_mon text)` → jsonb
 - `fn_hs_giao_dien_cua_toi()` → jsonb
+- `fn_hs_gop_y_chua_doc()` → integer
+- `fn_hs_gop_y_cua_toi()` → jsonb
+- `fn_hs_gop_y_da_doc()` → void
+- `fn_hs_gui_gop_y(p_loai text, p_mo_ta text, p_route text DEFAULT NULL::text, p_context jsonb DEFAULT NULL::jsonb, p_anh_url text DEFAULT NULL::text)` → jsonb
 - `fn_hs_ho_so(p_mon text)` → jsonb
 - `fn_hs_home_912()` → jsonb
 - `fn_hs_khoe_dat(p_mon text, p_keys text[])` → jsonb
@@ -6497,8 +6507,8 @@ SELECT bl.hoc_sinh_id,
 - `hs_sotay_dang(p_ma_dang text, p_mon text DEFAULT 'Toán'::text, p_nhanh text DEFAULT NULL::text)` → jsonb
 - `hs_sotay_tim(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_nhanh text DEFAULT NULL::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
@@ -6561,9 +6571,9 @@ SELECT bl.hoc_sinh_id,
 - `trg_thu_thach_nop()` → trigger
 - `troly_duoc_dung()` → boolean
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 

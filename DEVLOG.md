@@ -33729,3 +33729,16 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   404 quá nhanh (khớp lát A); `_luot_hoc_that` vs `_luot_tinh` không lệch dòng ở 15 em. Hàm cả môn 2,3 s → 3,3 s (app chỉ gọi cho 1 em).
 - **ĐIỂM RANK của Thử thách (`trg_thu_thach_nop`) CHƯA đổi** — đụng bảng xếp hạng nên chờ Thùy quyết: lượt Thử thách đúng ≥80% nhưng TB <6 s/câu có được
   Điểm Rank không? (đề xuất: không, cùng luật lượt học thật.)
+
+## 2026-10-01 — [Số liệu] GÓP Ý / BÁO LỖI CỦA HỌC SINH (mig 202610011539, ĐÃ ÁP)
+
+- Dùng lại `bao_loi` (loai bug = Báo lỗi · yeu_cau = Góp ý tưởng; cùng màn duyệt + trigger ghi vết). Thêm `hoc_sinh_id` (null = của nhân sự), `tra_loi`, `tra_loi_at`,
+  `tra_loi_boi`, `tra_loi_doc_at`. HS KHÔNG ghi thẳng bảng (RLS `la_thanh_vien()`; kiểm HS ⇒ false) — chỉ qua RPC: `fn_hs_gui_gop_y` (≥10 / ≤1500 chữ · ≤5 / em / ngày giờ VN ·
+  ảnh chỉ từ `kho-anh/report` · context ≤4000 ký tự + server thêm họ tên/mã/khối) · `fn_hs_gop_y_cua_toi` (30 gần nhất, trạng thái dịch dễ hiểu: moi→da_nhan ·
+  cho_fix/tu_lam/tra_lai→dang_xem · da_fix/xong→da_xu_ly · tu_choi→chua_lam_duoc, + `tra_loi_moi`) · `fn_hs_gop_y_da_doc` / `fn_hs_gop_y_chua_doc` · nhân sự `fn_bao_loi_tra_loi`.
+- Thử ROLLBACK: gửi ✔ · ngắn/loại lạ/ảnh ngoài ✖ chặn đúng · lần 6 trong ngày ✖ · HS tự trả lời ✖ · nhân sự trả lời ⇒ HS thấy + dấu mới + chưa đọc 1 → 0 sau khi đọc.
+- **Hòm thư:** `thong_bao_hs` thuộc `postgres`, `claude_build` chỉ SELECT ⇒ không đẩy thư được (đã bọc `exception when insufficient_privilege` nên không làm hỏng việc trả lời). Cần Thùy
+  `grant insert on public.thong_bao_hs to claude_build;` ở SQL Editor nếu muốn thư vào Hòm thư. Hiện em thấy lời trả lời ở "Góp ý của em".
+- Màn nhân sự `BaoLoiScreen`: nhãn "HS · Lỗi/Ý tưởng" + tên/mã/khối em, bộ lọc nguồn (Học sinh/Nhân sự), ô trả lời. Chỉ kiểm typecheck — màn cần đăng nhập quản trị thật nên chưa soi trên trình duyệt.
+- `src/lib/gopy_hs.ts` + hộp thư §13.6 gửi Giao diện làm form + màn "Góp ý của em".
+- Bẫy tự gây khi sửa file migration bằng JS: `String.replace(a, b)` đổi `$$` trong `b` thành `$` (hỏng dollar-quote) ⇒ dùng `split(a).join(b)`.

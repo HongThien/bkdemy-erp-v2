@@ -17,6 +17,10 @@ export type BaoLoi = {
   created_by: string | null
   created_at: string
   updated_at: string
+  loai: 'bug' | 'yeu_cau'          // bug = báo lỗi · yeu_cau = góp ý tưởng
+  hoc_sinh_id: string | null       // có = góp ý của HỌC SINH (mig 202610011539); null = của nhân sự
+  tra_loi: string | null
+  tra_loi_at: string | null
 }
 
 const LIMIT = 2000
@@ -42,6 +46,12 @@ export async function listBaoLoi(trangThai?: TrangThaiBaoLoi): Promise<BaoLoi[]>
 // Đổi trạng thái (cổng 2 của Thùy: cho_fix/tu_choi/tu_lam · và các bước sau). Trigger DB tự ghi state-log.
 export async function setTrangThaiBaoLoi(id: string, trang_thai: TrangThaiBaoLoi, patch?: { ghi_chu_duyet?: string; fix_note?: string; branch?: string; pr_url?: string; commit_sha?: string }): Promise<void> {
   const { error } = await supabase.from('bao_loi').update({ trang_thai, ...patch }).eq('id', id)
+  if (error) throw error
+}
+
+// Nhân sự trả lời góp ý của học sinh (em thấy ở "Góp ý của em"; có quyền ghi thong_bao_hs thì còn vào Hòm thư).
+export async function traLoiBaoLoi(id: string, noiDung: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_bao_loi_tra_loi', { p_id: id, p_noi_dung: noiDung })
   if (error) throw error
 }
 
