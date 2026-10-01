@@ -34487,3 +34487,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Không có bản đồ phiêu lưu. 7 em đã chọn toi_gian từ bản thử cũ tự về đúng style này.
 - Kiểm: hs.html?demo=912 (dev) 1180×820 — Tối giản sáng + tối, mục Hiệu ứng game hiện; 0 lỗi console; tsc + check:style-hs (16 ô đủ icon) + build:hs ✔.
   CHƯA bấm Lưu thật (trang demo vẫn gọi DB thật, không có tài khoản HS thử).
+
+### 02/10 — [Giao diện] Tối giản: chốt là STYLE nhưng KHÔNG tính vào 2 style V1
+- Thùy: "tối giản không phải style, chỉ là nền đơn sắc" ⇒ CTO làm thử thành hình nền (chưa commit) ⇒ Thùy sửa lại: "vẫn tính là style, nhưng không phải 2 style của V1".
+  Bỏ bản thử (git checkout 4 file chưa commit), giữ nguyên style Tối giản đã đẩy (7dacc39d). Ghi vào spec-v1-app-hs §mục 6: 2 style V1 = RPG + Thị trấn (style game có bộ hình phiêu lưu).

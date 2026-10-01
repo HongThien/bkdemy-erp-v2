@@ -12,7 +12,7 @@
 3. Mạng xã hội Thế giới BK.
 4. Hệ thống Rank đo hoàn chỉnh.
 5. Giao diện toàn app theo style **"Giải cứu thế giới — đánh quái vật"**: 100% UI theo style này.
-6. Ít nhất **2 style** để HS chọn.
+6. Ít nhất **2 style** để HS chọn. *(Thùy 02/10: **Tối giản** — đơn sắc, nền trơn, không bản đồ phiêu lưu — là 1 style cho em không thích rối mắt nhưng **KHÔNG tính** vào 2 style này; 2 style V1 là 2 style GAME có bộ hình phiêu lưu riêng: RPG + Thị trấn.)*
 7. Game tổ hợp Nông trại · Bắt thú · Ấp trứng.
 8. Góp ý / báo lỗi: HS báo lỗi hoặc gửi ý tưởng mới.
 
@@ -36,7 +36,7 @@
 | 3 | Thế giới BK | ĐÃ BUILD 29/09 (`spec-the-gioi-bk.md`) | Hình Đơn 5. Nút 👑 Thầy cô khen ở app GV. Tin chuỗi + lên bậc. Nút khoe ngay ở màn kết quả. Cấp 1 chưa có | Đủ 3 kênh với hình thật; GV khen được; tin chuỗi/bậc tự lên |
 | 4 | Rank | Luật + DB + màn `RankHS` ĐÃ BUILD 28/09 (`spec-thanh-tuu-nhiem-vu.md` §0) | Hình bậc + huy hiệu (Đơn 2, 3). Nhật ký lên bậc. Danh hiệu trên Hồ sơ. Ô Rank trên Home. Chọn dạng Tự luyện/Thử thách đang chạy ở client ⇒ xuống DB. Soi bằng tài khoản thật. Chốt tháng 9 (từ 10/10) | Điểm 4 nguồn khớp đối soát tay ở 3 em; lên bậc có hoạt cảnh + tin |
 | 5 | UI phiêu lưu | Style Anime RPG đã áp Home + một phần màn con. 11 file còn màu gõ tay (mốc `check-style-hs`) | **Bản đồ phiêu lưu** thay lưới thẻ (§4). Vẽ lại MỌI màn con theo chất phiêu lưu. Cấp 1 (HomeCap1) nhập về UI chung. Mốc màu gõ tay = 0 | Không còn màn nào ra giao diện cũ; check-style-hs mốc rỗng |
-| 6 | ≥ 2 style | Chỉ RPG đang dùng (3 hình nền). Style 2 **Thị trấn** đang làm: 27 hình, thiếu 5 icon + 2 nền (`spec-giao-dien-hs.md` §9) | Ghép Thị trấn (`styles/town.ts`, migration nới CHECK skin). Mỗi style phải có **bộ hình phiêu lưu riêng** (bản đồ, quái) — xem §4.4 | Em chọn được 2 style, đổi là đổi hết app |
+| 6 | ≥ 2 style | Chỉ RPG đang dùng (3 hình nền) + Tối giản (02/10, KHÔNG tính vào mục này). Style 2 **Thị trấn** đang làm: 27 hình, thiếu 5 icon + 2 nền (`spec-giao-dien-hs.md` §9) | Ghép Thị trấn (`styles/town.ts`, migration nới CHECK skin). Mỗi style phải có **bộ hình phiêu lưu riêng** (bản đồ, quái) — xem §4.4 | Em chọn được 2 style, đổi là đổi hết app |
 | 7 | Game tổ hợp | 2 repo riêng: `bk-nong-trai` (nhánh `nhip-ngay`), `bk-bat-thu`. CEO đã chốt gộp, chưa gộp code (`spec-bat-thu.md`) | Gộp 3 chế độ. Cổng học (§2). Bản online (`fn_nt_*`). Cho 5–10 em chơi thử. **Phạm vi game ở V1 cần chốt** (§11) | Theo phạm vi chốt ở §11 |
 | 8 | Góp ý / báo lỗi | Nhân sự đã có: bảng `bao_loi` + `ReportButton` + màn `BaoLoiScreen`; GV có `GopY`. HS chưa có | Nút trong app HS (§6) + tab trong màn nhân sự để duyệt | Em gửi được lỗi + ý tưởng kèm ảnh; nhân sự thấy và trả lời |
 
