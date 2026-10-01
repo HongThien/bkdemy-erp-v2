@@ -13,6 +13,7 @@
 > - **Luật style = `design/STYLE-HS.md`** (1 style gồm gì · màn mới dựng thế nào · thêm style thế nào) · hợp đồng `skin/kieu.ts` · gói `skin/styles/<id>.ts`
 >   · `npm run check:style-hs` chạy trước mọi commit đụng app HS (màu gõ tay chỉ được giảm · mọi ô có icon ở mọi style · mọi file hình tồn tại).
 > - **Style 2 = Thị trấn (Town)** — hình đã về 29/09, kiểm hàng + kế hoạch build ở **§9**.
+> - **Style 3 = Khối vuông** (cảm hứng Minecraft, style SÁNG) — Thùy yêu cầu 01/10, đơn `design/DON-HANG-STYLE-KHOI.md`, kế hoạch build **§10** — dựng SAU V1.0.
 > - Hình gamification (huy hiệu, bậc rank) là 1 bộ CHUNG mọi style — xem `spec-thanh-tuu-nhiem-vu.md` §0.8 C11.
 
 ---
@@ -132,3 +133,55 @@ và dùng **LINH VẬT** thay nhân vật người.
    là đủ 10 câu hôm nay!") — cũng là việc chung mọi style. Số phải từ DB: thêm vào `fn_hs_home_912` (cấp, XP trong cấp, xu, câu thoại).
    **Chặn trước:** công thức cấp/XP đang ở client `src/gami/level.js` ⇒ phải chuyển sang hàm Postgres trước (CLAUDE.md §2.0).
 5. Soi bằng mắt: Home 2 khổ × 2 nền · 1 màn danh sách · 1 màn làm bài · 1 màn rỗng · màn gamification (hình chung RPG trên nền sáng phải còn đọc được).
+
+## 10. Style 3 — Khối vuông (cảm hứng Minecraft) · kế hoạch build (01/10)
+
+**Nguồn:** Thùy 01/10 — *"dựa vào chủ đề game anime làm một chủ đề thứ 2 tương tự, là chủ đề về minecraft"* + ảnh mẫu không khí (hồ + rừng khối
+ban ngày) `design/handoff/hs-skin-khoi-v1/reference/khong_khi_ho_rung.jpg`. **Đơn ChatGPT:** `design/DON-HANG-STYLE-KHOI.md` — K1 (màn chính +
+bộ hình style, 31 lượt) · K2 (bản đồ phiêu lưu + quái, cùng tên với Đơn 6). Thay Đơn 2 cũ trong `DON-HANG-SKIN-HS.md`.
+Quyết định thiết kế (tên "Khối vuông" không dùng chữ Minecraft · thiết kế gốc · style SÁNG · font Handjet + Baloo 2 · thẻ khối vát) — bảng §0 của
+file đơn. **Thùy chốt 01/10:** V1.0 vẫn là RPG + Thị trấn ⇒ Khối vuông dựng **SAU V1** (sau Thị trấn) · hình gamification **giữ bộ chung** ·
+**chưa cần bản tối**.
+
+**Khác RPG:** style **SÁNG** (`cheDo: ['sang']`), chữ tối trên thẻ sáng, góc VUÔNG, viền tối 3px + vát (bóng inset), font tiêu đề pixel.
+
+**Token đề xuất** (`skin/styles/khoi.ts` — chỉnh lại theo ảnh #01 được duyệt):
+
+| Biến | Giá trị | Ghi chú |
+|---|---|---|
+| `font` · `fontHead` | `'Baloo 2'` · `'Handjet', 'Baloo 2'` (700) | Handjet + VT323 + Bungee có bộ tiếng Việt (đo 01/10 qua Google Fonts CSS + chụp thử); Press Start 2P / Pixelify / Silkscreen KHÔNG |
+| `headCase` · `headTrack` | `none` · `0.02em` | |
+| `radius` · `cardClip` · `cardAccentLeft` | `0px` · `none` · `none` | |
+| `blur` | `blur(2px)` | thẻ gần đục, chỉ nhoè nhẹ nền |
+| `sang.bg` | `#cfe9fb` | màu trời — cũng là nền dự phòng |
+| `sang.surface` · `surface2` | `rgba(246,239,223,0.92)` · `rgba(155,116,64,0.14)` | giấy da / ván gỗ · ô con pha gỗ |
+| `sang.ink` · `muted` · `line` | `#1f2328` · `#4b5563` · `rgba(30,30,30,0.35)` | |
+| `sang.acc` · `accInk` | `#5fa83a` · `#ffffff` | khối cỏ; chữ trắng cần bóng — xem "lỗ hợp đồng" ② |
+| `sang.badge` · `badgeInk` | `#e04b3c` · `#ffffff` | badge ô VUÔNG (hiện code vẽ tròn — lỗ ①) |
+| `sang.cardBorder` | `3px solid #1e1e1e` | |
+| `sang.cardShadow` | `inset 3px 3px 0 rgba(255,255,255,0.55), inset -3px -3px 0 rgba(0,0,0,0.22), 0 4px 0 rgba(0,0,0,0.25)` | vát viên gạch + bóng cứng dưới |
+| `theTiep` | ván gỗ `#9b7440`→`#c8a46b`, chữ trắng, viền `3px solid #1e1e1e` | thẻ "Việc tiếp theo" / ca bổ trợ |
+| `nenTen` | không khai | style sáng không cần tấm mờ sau tên (khai thì bật bóng chữ TỐI toàn trang — sai cho nền sáng) |
+| `hinhNen` | `ho_rung` (mặc định) · `dong_co` · `tuyet` — mỗi cái `sang` + `sangDoc` | phủ nhẹ trắng→trong ở 35% đáy để chữ tối trên thẻ đọc được |
+| `anhO` | 15 ảnh cho 16 ô: `giao_trinh→o_tren_lop` · `thanh_tuu`,`xep_hang→o_cup` · còn lại cùng tên | `check:style-hs` đòi đủ |
+| `anhBanner` · `trangTri` · `nhanVat` | `b_lich` · `b_kiem_tra_lai` · `corner`/`divider` · `nv_nam`/`nv_nu` | |
+| `dauThayIcon` | `■` | ô thiếu icon tạm hiện ô vuông màu nhấn |
+
+**Kế hoạch build (thứ tự):**
+1. `skin/kieu.ts`: `SkinId = 'rpg' | 'khoi'` · `skin/styles/khoi.ts` theo bảng trên · `registry.ts` thêm vào `SKINS` · `hs.html` thêm
+   `Handjet:wght@500;700` vào link Google Fonts.
+2. **Migration nới CHECK** `hs_giao_dien.skin` thêm `'khoi'` (hiện: `toi_gian · dau_truong · y2k · soft · rpg` — GIỮ 4 giá trị cũ vì còn em
+   lưu; thiếu bước này ⇒ DB chặn đúng lúc em bấm Lưu, CLAUDE.md §2.1). Áp `--only`, `npm run schema`, commit cùng schema.md.
+3. Ghép hình K1 theo bảng đổi tên cuối file đơn (`public/bk-ui/hs/skin/khoi/`), `npm run check:style-hs` ✔.
+4. **Lỗ hợp đồng style phải vá khi có style sáng + vuông** (đo 01/10 — RPG che được vì nền tối + bo nhẹ):
+   ① **Bo tròn gõ cứng:** 189 chỗ `rounded-full` / `rounded-xl` / `999px` trong `src/screens/hocsinh/**` (nút tròn đầu trang, viên thuốc,
+      badge, chip môn, avatar). Style vuông mà nút vẫn tròn ⇒ lệch. Vá: thêm biến `--sk-radius-pill` (RPG `999px`, Khối `0px`) vào hợp đồng
+      `kieu.ts` + `bienCss()`, thay dần ở KhungHS / HomeHS912 / ThanhChonMon trước (chỗ HS nhìn nhiều nhất), không cần sạch 189 chỗ một lượt.
+   ② **Chữ trắng trên nút xanh:** RPG `accInk` tối trên vàng; Khối là trắng trên xanh lá ⇒ cần bóng chữ đen 2px cho nút chính. Vá: biến
+      `--sk-acc-bong` (RPG `none`).
+   ③ **Màu GAME vẽ cho nền tối** (`gami/hinh.ts` `MAU_GAMI`): thẻ huy hiệu, lớp phủ chúc mừng tự có nền riêng ⇒ vẫn đọc được trên trang sáng;
+      soi lại Album / Hồ sơ / Rank khi ghép — chỗ nào chữ `MAU_GAMI.chu` (trắng) rơi thẳng lên nền trang thì bọc thẻ.
+   ④ Thẻ Thế giới BK, bong bóng thoại (`--sk-ink` nền / `--sk-bg` chữ) tự đảo đúng — chỉ cần soi.
+5. Soi bằng mắt (khổ NGANG trước — `spec-v1-app-hs.md` §0): Home 1180×820 + 1440×900 × 3 nền · Home dọc 390×844 không vỡ · Nhiệm vụ · Album ·
+   Rank · Hồ sơ · Thế giới BK · 1 màn làm bài · 1 màn rỗng. Trang mẫu `hs.html?xem=gami` cần thêm công tắc chọn style để soi không cần đăng nhập.
+6. K2 (bản đồ + quái): dựng sau khi luồng Giao diện có màn bản đồ cho RPG — cùng tên file, chỉ thêm thư mục `khoi`.

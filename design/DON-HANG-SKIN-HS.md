@@ -2,7 +2,7 @@
 
 > Soạn 28/09/2026. Thùy chốt: **mỗi nhóm khối có bộ skin riêng**.
 > - **Thị trấn** (chuẩn thiết kế lớp 3–5, mở cho mọi khối — Thùy 28/09 tối) → **Đơn 1 v2** (giao không qua zip, như Đơn 3 v3)
-> - **Lớp 6–8** · gốc **Khối vuông** · không có điện thoại riêng → **Đơn 2**
+> - **Lớp 6–8** · gốc **Khối vuông** · không có điện thoại riêng → **Đơn 2** — ⚠ THAY bởi `design/DON-HANG-STYLE-KHOI.md` (01/10)
 > - **Lớp 9–12** · nhiều skin để HS chọn · có điện thoại riêng. 4 skin (Tối giản, Đấu trường, Y2K, Soft Hàn) Claude dựng bằng code, không cần ChatGPT.
 >   2 skin cần hình → **Đơn 3 v3 (Lo-fi đêm)** và **Đơn 4 v2 (Anime RPG)** — cả 2 theo "BỐ CỤC CHUNG lớp 9–12" (ảnh gốc RPG Thùy đã xem).
 >
@@ -149,6 +149,9 @@ Town_19–24, 26 thừa — giữ trong `design/bk-ui-src/`, không đưa vào a
 ---
 
 ## Đơn 2 — Lớp 6–8 · Khối vuông
+
+> ⚠ **ĐÃ THAY (01/10) bởi `design/DON-HANG-STYLE-KHOI.md`** — khuôn mới (ảnh toàn cảnh → từng hình, không zip), bố cục màn chính hiện tại,
+> font pixel có dấu (Handjet). **ĐỪNG gửi bản dưới** — giữ lại chỉ để đối chiếu.
 
 ```
 ĐƠN ĐẶT HÀNG
