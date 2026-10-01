@@ -34127,3 +34127,26 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - dáng thắt đã đúng hướng;
   - phần còn lại là độ trau chuốt bề mặt (mượt, vân dài vắt qua thân) — đúng "trần chi tiết" của cách làm bằng code đã báo CEO;
   - ⚠ cả ngày 01–02/10 dồn vào hình thú, phần hệ thống game V1 (DB, dungeon, lai, NPC) CHƯA bắt đầu ⇒ hỏi CEO cho chạy song song.
+
+## 2026-10-02 — [Game] Băng Thần Mã có cánh (BatThu `thu-de-thuong` @ `2102906`, đã push)
+
+- **Mô-đun cánh `src/thu/canh.ts` dùng lại** (nền khuôn bay):
+  - tham số sải, số tầng lông, kiểu lông vũ / pha lê / màng dơi;
+  - xương vai–khuỷu–cổ tay gập chữ Z, mỗi lông 1 xương, lò xo;
+  - chung 1 lưới + 1 lệnh vẽ với thân;
+  - tư thế gập / mở do máy dò, số đỉnh cắm vào thân = 0.
+- **Ngựa:**
+  - cánh pha lê 3 tầng, sải 2,1× thân;
+  - cánh tham gia cả 30 động tác (bung đúng đỉnh chồm hí 1,0–1,1 s);
+  - 6 động tác bay (cất cánh · vỗ · liệng · lao xuống · đáp · khoe cánh);
+  - thân xanh băng, khiên ngực + giáp ống chân có vết nứt ngọc sáng, bờm lưỡi pha lê;
+  - làm lại bản ngựa cho giật mình / ra–phá bóng / ngáp, sửa nằm phục.
+- **Hiệu năng:**
+  - lệnh vẽ cảnh mẫu 97–135 → 45 (gộp hạt thành Points, vết băng thành 1 lưới);
+  - 1 ngựa 35,8k tam giác (Đẹp) / 17,3k (Nhẹ).
+- **Còn:**
+  - cánh gập hơi phẳng như dán lên hông;
+  - mép xương cánh lộ vạch trắng ở giữa nhịp vỗ;
+  - vài đỉnh lông chạm thân (ngáp 0,6 s);
+  - lúc bay chân sau duỗi như đang phi;
+  - kiểu màng dơi chưa xem ảnh.
