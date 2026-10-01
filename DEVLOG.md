@@ -34308,3 +34308,19 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   build:hs qua · check:style-hs ✔ (41 file). `tsc` còn 1 lỗi CÓ SẴN ở `src/lib/pdfRender.ts` (pdfjs: thiếu `canvas` trong RenderParameters) —
   lộ ra sau `npm install` máy nhà (node_modules về đúng package-lock); không thuộc vùng Giao diện, chưa sửa.
 - Chưa: đo ≥3 máy thật (iPad cũ, điện thoại yếu, máy khoẻ) — điều kiện (d).
+
+## 2026-10-01 (tối, máy nhà) — [Game] Băng Thần Mã kiểu Frostallion: cánh phiến trơn, bờm/đuôi bông xoăn, LÀM LẠI ĐẦU (BatThu `thu-de-thuong` @ `4120bf2`)
+- Làm: xem ảnh Frostallion TRƯỚC khi dựng (Bing + wiki fandom + ảnh trong game; lưu `BatThu/.snap/tham-khao/bang_than_ma/`, gitignored).
+  · `canh.ts` kiểu lông mới `phien_tron`: khối cánh SDF (mép trước ống tay tròn dày, lan mỏng ra sau, che kín gốc phiến) + 2 phiến cẳng tay + 4 phiến
+    bàn tay, mặt cắt thấu kính, bản song song rồi nhọn, chóp vểnh; tham số `nghi` = dáng nghỉ theo loài (cánh "gập" của động tác → xoè–nâng; ôm thân vẫn gập).
+  · `bong-xoan.ts` (mô-đun dùng lại): chuỗi quả bông + u bông nhỏ hoà mềm — bờm/đuôi tím oải hương; thân đổi trắng băng.
+  · ĐẦU làm lại (CEO: "đầu rất xấu, phải làm lại thật kĩ"): đầu nhỏ thuôn chúc 32°, má/hàm tròn, mõm ngắn chóp mũi phồng, cổ thon nhanh lên họng;
+    mặt nạ pha lê (`matNa`) = đầu phồng dày ∩ vùng trán–sống mũi, lưới thưa tô phẳng ⇒ giác cạnh, mỏm vút giữa trán; mắt đỏ hạnh nhân dưới mép mặt nạ.
+- Sai: (1) bờm/đuôi bông lần đầu thành "chuỗi hạt cườm" — quả cách nhau > bán kính. Sửa: số quả theo chiều dài/(0,9·r). (2) Đặt miệng bằng tia
+  thẳng từ phía trước ở độ cao cố định ⇒ mõm mới thon hơn, tia TRƯỢT, toạ độ 1e78 ⇒ cả con nổ (ảnh trắng trơn). Sửa: `bamTia` dò xiên vào đúng
+  vùng + trượt thì ném lỗi ngay. Bài học: hàm dò mặt KHÔNG được im lặng khi trượt. (3) Vite trên Windows giữ module cũ ("bamTia is not defined")
+  ⇒ khởi động lại máy chủ thử trước khi kết luận code sai.
+- Tách phiên theo đề xuất của Thùy: phiên này giữ Thần Mã; Thiên Kình có thẻ việc riêng (kèm 2 video YouTube + mô hình MakerWorld Thùy gửi;
+  khung hình đã lưu ở `.snap/tham-khao/thien_kinh/` — mắt vàng tròng xoáy, gờ mũ xanh đậm trên đầu, hoa văn trắng phát sáng).
+- Còn: ~125k tam giác/con bản Đẹp (mây nặn mịn) — phải giảm + đo bản Nhẹ · cánh lúc ngủ/trúng đòn còn cứng · giáp ống chân thô (mẫu: chùm pha lê
+  quanh cổ móng) · ngực chưa có chỏm lông trắng · màu mắt đỏ theo mẫu — chờ CEO xác nhận giữ đỏ hay xanh băng.
