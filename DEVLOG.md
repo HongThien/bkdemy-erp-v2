@@ -33397,3 +33397,27 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Hình học đứng đầu do sort chữ. Sửa: mỗi khu 1 màn boss (mức độ cao nhất) và chỉ quái cuối là boss · chỉ màn có câu HOẶC đã có số đo · lục địa xếp theo
   nhánh rồi mã. Sau sửa: Toán k9 8 lục địa · 21 khu · 69 màn (39 đạt/16 yếu/14 chưa đo) · 21 boss · 80–130 ms.
 - `src/lib/phieuluu.ts` (kiểu + `banDoPhieuLuu`) · spec §13.4 + hộp thư ✔.
+
+## 2026-10-01 (chiều) — [Game] CEO đưa THIẾT KẾ TỔNG "BK World" → `spec-bk-world.md`
+
+- **Bối cảnh:** t đọc HANDOFF "Release App HS V1.0" + `spec-v1-app-hs.md`, rồi đề xuất game V1 = "ấp trứng bằng việc học + vườn thú".
+- **Thùy:** "KO phải thế". Rồi đưa thiết kế tổng 10 ý:
+  - học ⇒ ĐIỂM HỌC TẬP;
+  - game BK World (RPG mini) gồm 3 hoạt động: trồng cây · bắt thú · ấp trứng;
+  - điểm học tập mua hạt; nông sản bán lấy xu;
+  - nông sản chế/đổi ra bóng (nhiều loại, giá khác nhau);
+  - quái bắt về nuôi + lai ⇒ trứng ⇒ ấp ra loài mới theo công thức;
+  - nhiệm vụ NPC ra xu;
+  - shiny + alpha (to 1,5×);
+  - vé dungeon rơi khi thu hoạch hoặc mua bằng điểm.
+  - Tóm lại 2 cách kiếm xu: trồng cây (đơn giản), hoặc phiêu lưu bắt thú + ấp trứng.
+- **Ghi** `spec-bk-world.md` — file tổng, thắng các spec con:
+  - §1 nguyên ý CEO;
+  - §2 sơ đồ vòng kinh tế (1 vòi = học; 2 cửa xu = bán nông sản + nhiệm vụ NPC);
+  - §3 CTO phân tích:
+    - R7: Premack · Bartle · Little Alchemy · shiny Pokémon / Lucky Pal · Raid Pass;
+    - chỗ phải cân: 1 trần xu chung · 2 đường ngang EV · quái không bán ra xu · shiny không mua được cơ hội · điểm học tập 1 nguồn = lượt học thật (gộp "điểm chăm chỉ" Nông Trại) · tên trùng "Thế giới BK" · lai cần bảng dữ liệu + bot giả lập;
+  - §4 sáu câu chờ CEO, gồm phạm vi V1: CTO đề xuất V1 = điểm học tập + trồng cây bán xu; bắt thú + lai ở V1.1.
+- **spec-bat-thu:**
+  - đầu file trỏ về spec-bk-world;
+  - §4 mục 3: xu bắt thú đã rõ hơn (xu qua nhiệm vụ NPC, không trực tiếp khi bắt).
