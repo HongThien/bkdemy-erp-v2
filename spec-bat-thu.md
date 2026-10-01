@@ -334,7 +334,7 @@ Lọc theo bộ động tác chuẩn của 2 game: Pokémon (trận đấu · Le
 | Cáo Lửa | 1 | 4 chân | Foxparks | ✅ CEO duyệt (01/10) |
 | Cừu Mây | 1 | 4 chân | Lamball | ✅ CEO duyệt (01/10) |
 | Băng Thần Mã | 4 | 4 chân + cánh | Frostallion | 🔧 bản có cánh (`2102906`): mô-đun cánh `canh.ts` dùng lại (lông vũ/pha lê/màng dơi) · 36 động tác (30 + 6 bay) · giáp + mạch băng · 45 lệnh vẽ/cảnh (từ 97–135) · bản Nhẹ 17,3k tam giác · còn: cánh gập hơi phẳng · chờ CEO |
-| Thiên Kình | 4 | bơi (+ bay) | Panthalus 90% | 🔧 bản 3 (`8f011d4`): thân thắt theo đường cong đo từ ảnh, vây trước to bản, vòng dải phẳng, bỏ mây · đường bao khớp ~75% (IoU 41%) · còn: vai gù thấp, đuôi giữa mảnh, vân ít mảng · chờ CEO |
+| Thiên Kình | 4 | bơi (+ bay) | Panthalus 90% | 🔧 bản 5 (`b37ecaa`): thân dẹt bè (bản 4) · **vòng hào quang KÍN**, thân nằm hẳn trong, hở đều, gai xen dài–ngắn + ngọc · mắt dời lên mặt (thấy từ chính diện) · 4 vây mặc định XÒE · thân ống elip nội suy mượt ⇒ nhìn trên thon liền, hết gãy sau vai · chuyển động mềm hơn (lò xo, trộn 0,55 s, lọc τ 0,09 s) · còn: đầu nhìn trên chưa rộng hơn ngực · chờ CEO |
 
 ## 4. Chờ CEO
 

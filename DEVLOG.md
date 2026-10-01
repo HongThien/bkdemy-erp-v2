@@ -34266,3 +34266,24 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Bài giáo trình thường (10A1 cùng tối) không bị đụng (vẫn 1 dạng mở).
 - **Còn lại:** 2 câu chưa có dạng (câu 5 phần I, câu 1 phần III) chỉ hiện khi deploy app HS mới hoặc khi gán dạng cho câu ở màn đề. Sửa lúc 22:00 — buổi học
   20:00–22:00 đã gần hết; bài không có hạn nên các em vẫn làm tiếp được.
+
+## 2026-10-02 (tối) — [Game] Thiên Kình bản 5: vòng hào quang kín, mắt, vây xòe, thân thon mượt, chuyển động mềm (BatThu `thu-de-thuong` @ `b37ecaa`)
+- **CEO góp ý (4 lần trong phiên):**
+  - "chuyển động gần ổn, cần mềm mại hơn 1 tý";
+  - "khung chật, kém sang; phải thấp hơn; con cá phải ở bên trong hẳn cái vòng — hiện vòng đâm vào con cá";
+  - "hai mắt ở viền quá nhiều";
+  - "vây cụp vào trong, gốc là 4 vây mặc định phải xòe ra";
+  - "nhìn từ trên các nét không mềm mại; từ to đến bé phải mềm, đây tụt hẳn vào".
+- **Làm:**
+  - **Vòng:** vòm móng ngựa có 2 chân cắm vào 2 bên đầu, tâm cao 0,54 → **vòng tròn KÍN**, tâm 0,03 (trục thân), R 1,0. Thân (±0,71 · −0,47..+0,5) nằm hẳn trong, hở ~0,3 hai bên, ~0,45 trên/dưới. Dải dẹt viền chỉ tròn 2 mép · 11 gai thanh xen dài–ngắn · ngọc thoi ở chân gai dài.
+  - **Mắt:** tia dò ngang ở chỗ đầu rộng nhất ⇒ mắt nằm đúng mép bao. Giờ dò chếch lên 6° + ra trước 37°, cỡ 0,095 → 0,112 ⇒ mắt lên mặt, thấy từ chính diện.
+  - **Vây:** tư thế nghỉ (lượn trời / nổi nước) từng là vuốt sau 0,8 rad + xoắn −1 rad ép sát sườn — t hiểu sai ảnh Panthalus. Giờ XÒE ngang, chèo khẽ; bơi tiến chỉ xuôi thêm chút.
+  - **Thân:** chuỗi nón thẳng giữa các mốc ⇒ đường bao là đoạn thẳng gãy ở mốc (rõ nhất sau vai). Thay bằng **ống mặt cắt elip quét dọc trục, nội suy Hermite đơn điệu (PCHIP)** cho cao/rộng/tâm; bề rộng thon sớm hơn (0,77: 0,66 → 0,62).
+  - **Mềm:** lò xo ω −20%, ζ nhỉnh · trộn mặc định 0,35 → 0,55 s · lọc thông thấp τ 0,09 s kênh thân/đầu/vây (động tác giật τ 0,035).
+  - **Phát hiện kèm:** trộn góc tuyến tính ⇒ lộn vòng xong (NG = −2π) về nền (0) quay ngược 1 vòng → trộn/lọc kênh góc theo đường ngắn nhất.
+- **Kiểm:** ảnh `.snap/voi-ban5.jpg` · `voi-tren-sosanh.jpg` · `voi-dt-4.jpg` (hát/ăn mừng/vuốt/bơi/nổi/ngất/lộn vòng/bị đánh: vòng không cắt thân) · `voi-lonvong-ket.jpg` · shiny. `tsc` sạch.
+- **Sai của t (ghi để nhớ):**
+  - bản 2–4 vây nghỉ ép sát sườn do đọc ảnh Panthalus đang lướt sát nước thành "dáng bay";
+  - mắt đặt theo tia ngang là lỗi khuôn, có từ bản 1.
+- **Skill `lam-thu`** +5 bài học: đường bao C1 · chỗ đặt mắt · phụ kiện bao quanh thân · dáng nghỉ theo mẫu · mềm mại.
+- **Còn:** đầu nhìn trên chưa rộng hơn ngực (4b dở ở nhánh `wip-0210-bi-ngat`) · chờ CEO xem bản 5.
