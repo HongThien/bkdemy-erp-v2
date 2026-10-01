@@ -32622,3 +32622,23 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Còn treo:** (a) sửa 70 bài tự luyện + 851 dòng `tu_luyen_dang_lan` gắn nhầm 'Tiếng Anh'/'Văn' về 'Toán' (nhân chứng: mã dạng T…) — cần Thùy gật;
   (b) `_kho_*_tbl` còn fallback về Toán cho môn lạ (luồng staff); (c) Hòm thư/Thành tựu vẫn chung mọi môn (có nhãn môn từng dòng) — đúng ý "chung";
   (d) HomeCap1 (cấp 1) chỉ thêm thanh môn luôn hiện + lịch theo môn, chưa tách khối Học tập/Giải trí.
+
+## 2026-10-01 (chiều, máy nhà) — Đánh giá chiến lược: game bắt thú có hợp HS BK không (Thùy: "dừng lại đánh giá nghiêm túc")
+
+- **Research 4 mảng:** độ hợp với HS · pháp lý VN · tính năng của thể loại · cách gắn học + đo.
+  - Báo cáo: `design/danh-gia-game-bat-thu-cho-bk.md`; ghi chú nguồn: `research_notes/Đánh giá game bắt thú cho BK/`.
+- **Kết luận:** HỢP với vai trò giữ chân + tạo thói quen mở app mỗi ngày. Game tách rời việc học thì KHÔNG làm HS học hơn (Sailer & Homner 2020; Clark 2016).
+- **🚨 Phát hiện nặng nhất — NĐ 147/2024.** T tự kiểm 3 điểm qua Nhân Dân, Báo Chính phủ, LuatVietnam:
+  - giờ chơi dưới 18 tuổi: 60 phút/game, 180 phút/ngày;
+  - Điều 57 cấm đổi vật phẩm/điểm trong game ra tiền, thẻ, hiện vật; cấm người chơi mua bán với nhau;
+  - G1 (nhiều người qua máy chủ) phải có giấy phép.
+  - ⇒ Đường "bán nông sản → xu ví" của Nông Trại, và "(sau này) xu" của Bắt Thú, có thể trái luật.
+  - Phạm vi áp cho game miễn phí trong app trung tâm: chưa rõ ⇒ cần luật sư.
+- **Lộ trình đề xuất:**
+  - GĐ0: luật sư + tách 2 loại tiền + ngân sách giờ chơi chung + đồng ý phụ huynh.
+  - GĐ1: một người chơi, thử theo lớp ≥ 10 tuần, có nhóm lớp chưa mở để đối chứng.
+  - GĐ2: bạn cùng lớp, không đồng thời (có thể vẫn ở G2).
+  - GĐ3: thấy nhau + party (sau khi rõ G1).
+  - GĐ4: gắn học, tuỳ chọn.
+- **Ngoài lề:** cổng "≥70% đúng" của Nông Trại nên đổi thành thưởng theo nỗ lực/tiến bộ (thử nghiệm Fryer; HS lách hệ thống bằng cách đoán bừa).
+- **Chờ CEO:** 10 quyết định ở cuối báo cáo.
