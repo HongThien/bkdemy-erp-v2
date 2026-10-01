@@ -32654,3 +32654,22 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   6 lượt `may_man_hs_luot` (HS0645, mon chép từ bài) → Toán. Giá trị cũ lưu ở bảng mới `log_sua_nhan_mon_2026_10_01` (1.095 dòng) — hoàn tác được.
 - **Thử rollback** (`scripts/_thu_mig_sua_nhan_mon.mjs`) rồi áp: không còn bài tự luyện nào ngoài Toán/KHTN; 0 nhóm (em × dạng × lần) trùng bài;
   đo luyện Toán của HS0645 125 → 693 dòng, HS0546 502 → 509.
+
+## 2026-10-01 (chiều muộn, máy nhà) — CEO trả lời bản đánh giá game + research "giữ chân kiểu Duolingo"
+
+- **CEO chốt (không bàn lại):**
+  1. **Pháp lý game:** không lo. "Luật VN và thực tế xa nhau; làm local, không xu trực tiếp, không giao dịch tiền."
+  2. **Gộp Nông Trại + Bắt Thú** thành 1 game, 3 chế độ: trồng trọt · khám phá · ấp trứng nuôi pet kiểu Dragon City.
+  3. **Định vị:** HS BK chơi vì quen nhau + để kiếm xu; không đi đường làm game thật hay.
+  4. **Mô hình BK** (lớp thật + app) gần như duy nhất.
+  - Đã ghi vào spec-bat-thu §1 (#15–17), HANDOFF, bộ nhớ.
+- **Research 4 mảng:** Duolingo · app khác (Finch, Khan, VioEdu, Locket, Snapchat, Habitica…) · mô hình online+offline · khung lý thuyết + đạo đức cho teen.
+  - Báo cáo: `design/giu-chan-hoc-sinh-kieu-duolingo.md`; ghi chú: `research_notes/Giữ chân học sinh kiểu Duolingo/`.
+- **T tự kiểm 3 số chủ chốt (khớp nguồn gốc):**
+  - giải đấu Duolingo +17% thời gian học (Lenny's/Mazal);
+  - chuỗi 7 ngày ×3,6 khả năng học xong khoá (Duolingo blog — chỉ là tương quan);
+  - tin nhắn phụ huynh giảm 39% môn trượt, +17% chuyên cần (Bergman & Chan, J-PAL).
+- **Kết luận:** BK đã có gần đủ bộ đồ chơi của Duolingo. Còn thiếu thứ nối lớp thật với app + chuỗi ngày dễ giữ.
+  - 7 việc làm trước: tin báo phụ huynh · chuỗi ngày có lưới đỡ · thẻ buổi học · GV khen một chạm · nhiệm vụ cả lớp · pet kiểu Finch · giải đấu tuần nhóm nhỏ.
+  - KHÔNG làm: chuỗi một-một · phạt pet · bảng hiện người cuối · thưởng chuyên cần · tiêu xu để quay.
+- **Chờ CEO** chọn thứ tự triển khai.

@@ -35,7 +35,19 @@
   - **Giờ chơi:** dưới 18 tuổi tối đa 60 phút/game/ngày, tổng 180 phút; cảnh báo mỗi 30 phút. Dự thảo 23/7/2026 đề xuất HS dưới 16 tổng 60 phút cho mọi game của một doanh nghiệp.
   - **Giấy phép:** game nhiều người tương tác qua máy chủ = G1, cần giấy phép Bộ VHTTDL.
   - Game miễn phí trong app trung tâm có thuộc phạm vi không: **chưa rõ, cần luật sư**.
-  - **CTO đề xuất (chờ CEO):** dừng mọi đường "game trả xu ví"; tách xu ví (chỉ từ việc học) khỏi tiền trong game.
+  - **CEO ĐÃ QUYẾT (01/10): KHÔNG LO pháp lý** — "luật VN và thực tế xa nhau; game làm local, không có xu trực tiếp, không giao dịch tiền". Đừng nêu lại như rào chặn. Thiết kế giữ nguyên tắc: game không trả xu trực tiếp.
+  - **CEO chốt thêm 01/10:**
+    - **Gộp Nông Trại + Bắt Thú thành 1 game** với 3 chế độ: trồng trọt · khám phá (bắt thú) · ấp trứng nuôi pet (đơn giản kiểu Dragon City).
+    - **Định vị:** HS chơi vì có bạn bè + để kiếm thêm xu, KHÔNG đi đường làm game thật hay.
+    - **Mô hình BK** (lớp học thật + app) được coi là gần như duy nhất.
+  - **Tính năng giữ chân kiểu Duolingo cho app HS:** `design/giu-chan-hoc-sinh-kieu-duolingo.md`. 7 việc làm trước:
+    1. tin báo phụ huynh;
+    2. chuỗi ngày dễ giữ;
+    3. thẻ buổi học;
+    4. GV khen một chạm;
+    5. nhiệm vụ cả lớp;
+    6. pet kiểu Finch;
+    7. giải đấu tuần nhóm nhỏ.
 
 - **⭐ GAME NÔNG TRẠI BK — 29/09 CEO đổi hướng sang NHỊP NGÀY. Đọc `spec-nong-trai-nhip-ngay.md` trước khi làm.**
   - **Hướng mới:** kiểu Nông trại vui vẻ / Khu vườn trên mây. HS vào 1 lần/ngày để thu hoạch, mua hạt, gieo, và thăm vườn bạn cùng lớp để hái trộm/giúp.

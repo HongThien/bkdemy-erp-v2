@@ -26,6 +26,10 @@
 | 13 | Xu, lượt bắt: **tính sau** — "làm game đã" | |
 | 14 | Mỗi người **chỉ thấy tối đa 10 người khác**, **ưu tiên bạn bè** (01/10) | Trong tầm 35 m: bạn bè trước, chỗ còn lại là người lạ gần nhất. Máy chủ cũng chỉ gửi 10 người này (vùng quan tâm) |
 
+| 15 | **Gộp với Nông Trại thành 1 game**: trồng trọt · khám phá (bắt thú) · ấp trứng nuôi pet kiểu Dragon City (01/10) | Ý Palworld: pet bắt được giúp việc trong căn cứ/vườn |
+| 16 | **Định vị: HS chơi vì có bạn bè + để kiếm thêm xu**, KHÔNG đi đường làm game thật hay (01/10) | Lợi thế BK = bạn cùng lớp ngoài đời |
+| 17 | **Pháp lý (NĐ 147/2024): CEO không lo** — game chạy local, không trả xu trực tiếp, không có giao dịch tiền (01/10) | Đánh giá: `design/danh-gia-game-bat-thu-cho-bk.md` |
+
 - **Hệ quả của #7 với luật §2.0 CLAUDE.md:** sát thương tính 20 lần/giây trên **máy chủ game** (Colyseus), không qua Postgres từng đòn.
   Postgres (`fn_game_*`) giữ những gì **có giá trị lâu dài**: kết quả bắt, exp/cấp, bộ sưu tập, (sau này) xu có trần ngày.
   Luật trận viết **thuần** trong `src/luat/` (có hạt giống ngẫu nhiên) để chạy nguyên trên máy chủ, máy khách chỉ diễn lại.
