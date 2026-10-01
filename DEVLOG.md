@@ -33220,3 +33220,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - `nong-trai` (5270) tải xong, `manifest.webmanifest` đúng định dạng.
 - **Phát hiện phụ:** localStorage Nông Trại của Browser pane bị TRỐNG. Tab cũ mất hết, nhiều khả năng khung xem đã được làm mới khi app mở lại; việc dời thư mục không liên quan vì origin vẫn `localhost:5270`.
   - Đã ghi lại bản sao lưu 30/09 (cấp 2, 4 ô, 20 xu, 4 điểm) và chặn trang đang mở lưu đè.
+- (01/10 tiếp) Thùy chốt qua 3 tin + AskUserQuestion: cần TÍNH NĂNG hoàn chỉnh có UI, tái sử dụng — "m là công cụ xử lý chính, nhưng phải có UI để duyệt
+  hàng loạt và sử dụng" · số lượng không lớn · ngoài bóc còn phân tích + gán dạng · bản đầu: đề khuôn Bộ 3 phần · người dùng: CEO + học thuật · dạng do
+  người chốt ở màn Duyệt đề. ⇒ t ĐỀ XUẤT SAI HƯỚNG ở câu hỏi 1 (Gemini trong trình duyệt): Thùy muốn Claude là máy xử lý (đúng quyết định #8 20/09), ERP là
+  nơi duyệt + dùng. Ghi `spec-de-thi.md` §10: phân vai · phạm vi · luồng · 4 lát A (nhập 1 đề) → B (hàng đợi + duyệt) → C (in/phát hành/thi) → D (đề chỉ PDF).
+- Hiện trạng đo 01/10: đường A có 345 đề (299 K12 · 46 K11, toàn Noctorium), 0 đề đã duyệt; `/nhap-de-thi` còn ghi `toan_de_thi` (đường B đã ngừng).
+  `DE SO 3.docx` (NBV 12-CD23) qua bộ đọc Word: 572/572 công thức, 22 hình, 14 đoạn gạch chân; cấu trúc ĐỀ (3 phần 12+4+6) rồi LỜI GIẢI lặp lại.
+- ⚠ Tự phát hiện: chương V "PP toạ độ trong không gian" (T11210, 4 chuyên đề, 19 dạng, 0 câu) t tạo trong bản đồ ĐẠI ở mig 202609281833 TRÙNG với nhánh
+  HÌNH GIẢI TÍCH (`hgt_ban_do` K12 đã có 9 chuyên đề, 36 dạng, ~1.600 câu: mặt phẳng · đường thẳng · mặt cầu · góc · khoảng cách · vị trí tương đối…).
+  spec-luong-kho V3-2 đã ghi "không gồm nhánh Hình" mà t vẫn tạo. Chưa xoá (Luật xoá) — báo Thùy quyết.

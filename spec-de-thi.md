@@ -278,3 +278,59 @@ Khác `phatHanhTest` hiện tại: **`diem` lấy từ phần/câu**, không ghi
 2. Phương án nhiễu cho TLN: máy gợi ý kiểu **số gần đúng**, không phải "theo lỗi" như `spec-mcq-form.md` — người duyệt là lớp chặn. Muốn nhiễu theo lỗi thì là việc riêng của pipeline MCQ.
 3. Ân hạn **2 phút** sau hết giờ cho lưu đáp án (mạng chậm), rồi server khoá.
 4. Thang điểm cố định 10 (đúng khuôn Bộ).
+
+---
+
+## 10. CHỐT 01/10 — tính năng NHẬP ĐỀ hoàn chỉnh: Claude xử lý, ERP duyệt hàng loạt + sử dụng
+
+> CEO 01/10: *"cần ngay nghiệp vụ chuyển 1 đề thi PDF thành 1 đề thi trên ERP, câu bóc ra và gán vào kho"* · *"cần 1 tính năng hoàn chỉnh chứ không
+> phải chỉ cần m đọc — 1 luồng đầy đủ với UI để sau này tái sử dụng"* · *"m là công cụ xử lý chính, nhưng phải có công cụ UI để duyệt hàng loạt
+> và sử dụng"* · *"không phải việc chạy số lượng quá lớn; ngoài bóc đề còn phải phân tích, gán dạng nữa"* · *"phân ra các bước để xây riêng,
+> không chồng lên nhau; bản đồ kiến thức t vẫn tự làm được, sau này mới cần m"*.
+
+### 10.1 Phân vai (giữ quyết định #8 ngày 20/09, làm rõ thêm)
+
+| Vai | Ai | Việc |
+|---|---|---|
+| **Xử lý** | **Claude** (Claude Code trên máy công ty, lệnh `/nhap-de-thi`) | Đọc file → bóc câu / phần / thứ tự / hình / đáp án → **phân tích + gán dạng** (chắc thì gán, không chắc ⇒ dạng chờ) → ghi vào ERP ở trạng thái **chưa duyệt** |
+| **Duyệt** | Người (CEO + học thuật) trên **ERP** | Hàng đợi đề chờ duyệt → rà từng đề đối chiếu bản gốc → sửa tại chỗ → **Duyệt đề** (1 nút duyệt cả đề) |
+| **Sử dụng** | Người trên ERP / HS trên app | In · phát hành cho lớp · thi · xem kết quả (đã build 27/09) |
+
+KHÔNG dùng Gemini-trong-trình-duyệt làm đường chính (màn `NhapDeThiWizard` cũ giữ nguyên, không phát triển tiếp; gỡ hay không hỏi sau — Luật xoá).
+Số lượng không lớn ⇒ chạy **có người ngồi cùng** là đủ; chưa cần hàng đợi tự động / cron.
+
+### 10.2 Phạm vi bản đầu (CEO 01/10)
+
+- Đề **khuôn Bộ 3 phần** (TN + Đúng/Sai + Trả lời ngắn), khối 10–12, có hoặc không có lời giải. Đề tự luận / lớp dưới: lát sau.
+- Người dùng màn duyệt: **CEO + học thuật** (vài người quen việc) ⇒ ưu tiên nhanh, đủ thông tin; không cần hướng dẫn từng bước.
+- **Dạng:** Claude đề xuất lúc nhập (ghi `dang_chinh` + `dang_ai_de_xuat`), **người chốt ở màn Duyệt đề**. Bản đồ do CEO tự xây; dạng chưa có ⇒ dạng chờ, đề vẫn vào.
+- **Đáp án:** lấy từ file (gạch chân / "Chọn X" / "a) Đúng." / bảng đáp án / file đáp án riêng). Hai dấu hiệu lệch nhau ⇒ nêu cờ cho người duyệt
+  (đo 28/09: 4/253 câu file gốc tự mâu thuẫn, gạch chân đúng — `scripts/kho/mathtype-thu/README.md`). File không có đáp án ⇒ để trống, người đánh. **Không tự giải.**
+- **Hình:** lấy ảnh từ file gốc (Word: ảnh nhúng; PDF: cắt trang). Vẽ lại để sau.
+
+### 10.3 Luồng
+
+```
+Thả file vào  E:\BK ACADEMY\Tài liệu Claude nhập kho\DE_THI\L<khối>\      (đề .pdf / .docx; có cả 2 thì Word là nguồn chữ, PDF là bản đối chiếu)
+   └─► /nhap-de-thi <khối>   (Claude)
+        1. Đọc: Word ⇒ bộ đọc thẳng `scripts/kho/mathtype-thu` (công thức chính xác, đáp án gạch chân) · chỉ có PDF ⇒ Claude đọc ảnh trang
+        2. Dựng cấu trúc: meta · phần · câu (ĐỀ và LỜI GIẢI lặp lại ⇒ ghép theo phần + số câu, so nội dung làm nhân chứng) · mệnh đề Đ/S · hình
+        3. Kiểm máy: đủ số câu theo khuôn · TN đủ 4 phương án · mỗi câu ≤1 đáp án · đáp án 2 nguồn có khớp · công thức render được
+        4. Gán dạng (kho Đại / Hình giải tích theo từng câu), không chắc ⇒ dạng chờ
+        5. In TÓM TẮT 1 trang cho người ngồi cùng (số câu/phần · câu trùng trỏ về đâu · câu nghi · câu dạng chờ) ⇒ gật thì ghi
+        6. Ghi 1 transaction: câu → kho (`da_duyet=false`, `nguon='de_thi'`) · `tai_lieu` + `tai_lieu_phan` + `tai_lieu_cau` · PDF gốc lên storage
+           (`tai_lieu.file_url`) · `nhap_kho_log` (sha256 ⇒ chạy lại không nhân đôi) · dời file sang `DaXuLy/`
+   └─► ERP · Hàng đợi "Đề chờ duyệt"  ─►  Duyệt đề (đối chiếu bản gốc, sửa, 1 nút duyệt)  ─►  In / Phát hành / Thi
+```
+
+### 10.4 Việc phải làm — tách LÁT, lát nào xong dùng được lát đó
+
+| Lát | Claude (xử lý) | ERP (UI) | Xong khi |
+|---|---|---|---|
+| **A. Nhập 1 đề** | `/nhap-de-thi` v2: ghi đường A (hiện còn ghi `toan_de_thi` đã ngừng); nguồn Word qua bộ đọc thẳng; ghép ĐỀ ↔ LỜI GIẢI; kiểm máy; tóm tắt; ghi + log | — (dùng màn có sẵn để xem) | `DE SO 3` (NBV, 12-CD23) hiện đủ 22 câu đúng bố cục trong Kho tài liệu, mở Duyệt đề được |
+| **B. Duyệt hàng loạt** | — | **Hàng đợi "Đề chờ duyệt"**: bảng đề (tên · khối · số câu · còn thiếu gì từ `fn_de_thi_thieu` · ngày nhập), lọc, mở đề, quay lại đúng chỗ. **Duyệt đề** bổ sung: bản gốc cạnh bên · dạng Claude đề xuất hiện sẵn · cờ "đáp án 2 nguồn lệch" | CEO duyệt xong 1 đề thật từ hàng đợi; 345 đề cũ cũng hiện trong hàng đợi |
+| **C. Sử dụng** | — | Bấm thử thật: in · phát hành cho 1 lớp · HS thi · kết quả (đã build 27/09, chưa ai dùng) — sửa lỗi lộ ra | 1 lớp thi 1 đề, điểm khớp chấm tay |
+| **D. Đề chỉ có PDF** | Đường đọc ảnh trang cho đề không có Word (2 lượt: lập mục lục câu ↔ trang, rồi đọc từng câu) + cắt hình | — | 1 đề PDF scan của Sở vào được như lát A |
+| Sau | Tự động hoá (chạy nền, kiểm độc lập, gợi ý dạng theo hồ sơ dạng — `spec-luong-kho.md`) · tải file ngay trên ERP · đề tự luận / lớp dưới | | |
+
+Lát A–C không phụ thuộc bản đồ kiến thức, không phụ thuộc skill gán dạng / gán mẫu (đã GÁC 01/10).
