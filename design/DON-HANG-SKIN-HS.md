@@ -569,7 +569,7 @@ Phiên bản kit:  v1
 - KHÔNG chữ, số, logo, khung trong MỌI hình.
 
 ══ DANH SÁCH (đúng thứ tự ưu tiên) ══
-A. Duyệt phong cách — 3 ảnh toàn cảnh iPad ngang 1672×941 (mỗi ảnh 1 lượt)
+A. Duyệt phong cách — 3 ảnh toàn cảnh iPad ngang 1672×941 (mỗi ảnh 1 lượt)  [02/10: THAY bằng Đơn 7-0 (4 hướng để chọn) — gửi Đơn 7 thì bỏ mục A, bắt đầu từ #04]
    #01 toan_canh_the_gioi   — bản đồ thế giới ban đêm: biển lớn, 8 lục địa RỜI NHAU hình dạng khác hẳn nhau (mỗi cái 1 vùng khí hậu ở trên),
                               to nhỏ khác nhau, cách nhau bằng biển; 2 lục địa phủ mây sương; 1 lục địa có lá cờ nhỏ; la bàn góc phải dưới.
    #02 toan_canh_luc_dia    — cận cảnh 1 lục địa RỪNG: 6 điểm mốc (thành nhỏ, tháp, trại, đền, cổng đá, cầu) nối bằng đường mòn đứt nét;
@@ -698,3 +698,69 @@ Bắt đầu với #01.
 > (thêm trường ảnh: `border-image` cho khung/phiến/nút, ảnh cho ngọc · HUD · hiệu ứng) · `KhungTran.tsx` đọc ảnh, thiếu ảnh nào thì giữ hình tạm CSS chỗ đó ·
 > hiệu ứng #21–#29 vào cảnh trận (sprite quay mặt camera — cùng cách quaiAnh.ts) · đo lại máy yếu (iPad gen 7). Style "Tối giản" KHÔNG cần bộ này
 > (tắt hiệu ứng game).
+
+
+---
+
+## Đơn 7-0 — CHỌN HƯỚNG bản đồ phiêu lưu (thế giới → lục địa → chặng): 4 hướng × 3 tầng = 12 ảnh để Thùy chọn — soạn 02/10, ĐỨNG TRƯỚC Đơn 7
+
+> **Thùy 02/10:** "màn đấu để sau, cần world map trước — chủ đề → chuyên đề → dạng bài; cần đơn prompt thiết kế để t chọn".
+> Đơn này THAY mục A của Đơn 7 (3 ảnh toàn cảnh 1 hướng). Chọn xong hướng nào ⇒ Đơn 7 từ mục B vẽ theo hướng đó (tao sửa mô tả phong cách
+> trong Đơn 7 cho khớp trước khi gửi). Có thể chọn LAI (vd khung tầng 1 của hướng B + tầng 3 của hướng C) — ghi rõ khi chọn.
+> **Cách gửi:** context ChatGPT MỚI → dán `CHATGPT-UI-KIT.md` → dán khối đơn dưới → đính kèm 3 ảnh phong cách `design/bk-ui-src/Nền app HS cấp 3_1.png` ·
+> `Nền app HS cấp 3_2.png` · `Nền app HS cấp 3_11.png` (chỉ để hiểu app đang trông thế nào — các hướng KHÔNG bắt buộc giống). Mỗi ảnh tải về
+> `design/bk-ui-src/Adventure2D/chon_huong/`, gõ "tiếp". Đặt ảnh 3 tầng của cùng 1 hướng cạnh nhau để so.
+
+```
+ĐƠN ĐẶT HÀNG
+App:            hs
+Màn:            adventure-map-concept (CHỌN HƯỚNG thiết kế bản đồ phiêu lưu — chưa phải hình giao thật)
+Mô tả:          App học Toán cho học sinh lớp 4–12, chủ đề "Giải cứu thế giới — đánh quái vật". Kiến thức chia 3 tầng, mỗi tầng 1 màn bản đồ:
+                  TẦNG 1 — BẢN ĐỒ THẾ GIỚI: mỗi CHỦ ĐỀ là 1 LỤC ĐỊA / hòn đảo lớn (mỗi khối lớp có 2–10 chủ đề).
+                  TẦNG 2 — BẢN ĐỒ LỤC ĐỊA: bấm 1 lục địa ⇒ thấy các VÙNG bên trong; mỗi CHUYÊN ĐỀ là 1 VÙNG có 1 điểm mốc (1–8 vùng/lục địa).
+                  TẦNG 3 — CHẶNG ĐƯỜNG: bấm 1 vùng ⇒ thấy con đường đi qua các TRẠM; mỗi DẠNG BÀI là 1 TRẠM có quái canh (3–10 trạm/vùng).
+                Trên bản đồ học sinh phải NHÌN RA NGAY: chỗ nào đã chinh phục (cắm cờ, sáng), chỗ nào đang đánh (có quái), chỗ nào chưa tới (sương mù).
+                Lập trình viên GHÉP hình và vẽ thêm nhãn tên, số tiến độ, đường đi, sương, cờ bằng code ⇒ trong ảnh KHÔNG có chữ.
+                Thiết bị: iPad NGANG 1180×820 và máy tính. Học sinh mở màn này mỗi ngày ⇒ phải đẹp lâu không chán, rõ ràng, không rối mắt.
+Phiên bản kit:  v1
+
+══ CÁCH GIAO HÀNG (bắt buộc) ══
+- KHÔNG zip, KHÔNG DESIGN.md, KHÔNG dựng bằng code/SVG/HTML. MỖI LƯỢT = ĐÚNG 1 ẢNH vẽ bằng công cụ tạo ảnh, ngang 1672×941.
+- Dòng đầu ghi số + tên, vd "#B2 huong_B_luc_dia". Vẽ xong dừng, chờ tôi gõ "tiếp".
+- KHÔNG chữ, số, logo trong ảnh (nhãn tên = khung trống nhỏ hoặc vạch mờ).
+
+══ MỖI HƯỚNG VẼ ĐỦ 3 TẦNG — cùng 1 nội dung để so cho công bằng ══
+- Tầng 1 (thế giới): ĐÚNG 8 lục địa rời nhau, to nhỏ khác nhau, mỗi cái 1 vùng khí hậu khác (rừng phép · băng tuyết · núi lửa tươi sáng ·
+  quần đảo biển · sa mạc ốc đảo · đầm lầy đom đóm · thành cổ đổ nát · đảo trời pha lê). 3 lục địa đã chinh phục (cắm cờ, sáng hơn),
+  1 lục địa đang đánh (phát sáng nhẹ + nhân vật pháp sư nhỏ đứng trên), 4 lục địa chưa tới (phủ mây sương). Có chỗ trống quanh mỗi lục địa
+  để đặt nhãn tên.
+- Tầng 2 (lục địa RỪNG PHÉP cận cảnh): 6 điểm mốc (thành nhỏ · tháp phép · trại lều · đền cổ · cổng đá · cây cầu) nối bằng 1 con đường;
+  2 mốc đầu đã cắm cờ, mốc 3 đang có quái, 3 mốc cuối phủ sương.
+- Tầng 3 (chặng đường trong vùng rừng): con đường đi qua 7 trạm, mỗi trạm 1 bệ đá có 1 quái nhỏ dễ thương; trạm cuối quái to đội vương miện;
+  3 trạm đầu đã hạ (cờ, không còn quái), pháp sư nhỏ đứng ở trạm 4, 3 trạm cuối mờ trong sương.
+
+══ 4 HƯỚNG (mỗi hướng 3 ảnh, vẽ lần lượt A1 A2 A3 → B1 B2 B3 → …) ══
+HƯỚNG A — "Đảo trời đêm sao" (anime RPG, giống app hiện tại)
+   Lục địa là các đảo NỔI giữa bầu trời đêm xanh tím, dưới đảo là rễ đá + thác nước rơi vào mây, sao lấp lánh, ánh vàng cổ.
+   Nhìn chéo từ trên cao. Tham khảo cảm giác: Genshin Impact, Honkai Star Rail. Huyền ảo, lung linh.
+   #A1 huong_A_the_gioi · #A2 huong_A_luc_dia · #A3 huong_A_chang
+HƯỚNG B — "Bản đồ kho báu giấy da" (vẽ tay màu nước)
+   Cả màn là 1 tấm bản đồ giấy da cũ: biển xanh nhạt, lục địa vẽ mực nâu + tô màu nước, núi/rừng vẽ ký hiệu nhỏ, la bàn, đường đi nét đứt đỏ,
+   mép giấy sờn. Sáng, sạch, rất dễ đọc. Tham khảo cảm giác: bản đồ trong sách phiêu lưu, Zelda Wind Waker sea chart.
+   #B1 huong_B_the_gioi · #B2 huong_B_luc_dia · #B3 huong_B_chang
+HƯỚNG C — "Mô hình đồ chơi" (diorama 3D nhìn chéo, màu kẹo)
+   Mỗi lục địa như 1 mô hình đồ chơi khối tròn trịa đặt trên mặt nước phẳng, màu pastel tươi, bóng đổ mềm, chi tiết nhỏ xinh (cây kẹo bông,
+   nhà nấm). Ánh sáng ban ngày. Tham khảo cảm giác: Monument Valley, Animal Crossing, Mario overworld.
+   #C1 huong_C_the_gioi · #C2 huong_C_luc_dia · #C3 huong_C_chang
+HƯỚNG D — "Bàn cờ phiêu lưu" (board game)
+   Thế giới như 1 bàn cờ: các lục địa là những miếng bản đồ ghép, đường đi là các Ô TRÒN nối nhau như bàn cờ (mỗi trạm 1 ô to có bệ),
+   màu tươi đậm, viền rõ, rất "game". Tham khảo cảm giác: Mario Party, Candy Crush saga map, Duolingo path.
+   #D1 huong_D_the_gioi · #D2 huong_D_luc_dia · #D3 huong_D_chang
+
+GHI ĐÈ KIT §1: KHÔNG chữ trong mọi hình. KHÔNG khẩu hiệu.
+Bắt đầu với #A1.
+```
+
+> **Thùy chọn xong (Claude làm):** ghi hướng đã chọn vào `spec-v1-app-hs.md` §4.5 · sửa mô tả phong cách + chuẩn ảnh của Đơn 7 mục B–G theo hướng đó
+> (hướng B/D có thể cần thêm: tấm giấy nền / ô bàn cờ thay cho bệ đá) · khung code 2D (`phieuluu/ban2d/`) giữ nguyên, chỉ đổi hình + hiệu ứng cho hợp
+> (vd hướng B: sương = vết mực mờ, cờ = ghim đỏ; hướng D: đường = chuỗi ô tròn).

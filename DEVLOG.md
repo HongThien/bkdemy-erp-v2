@@ -34475,3 +34475,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Bài học còn hiệu lực (để distill HANDOFF cuối ngày): ảnh mô hình 3D nhiều góc (Thùy chụp) là nguồn tốt nhất — có sớm thì tiết kiệm ~4 vòng sửa;
   ranh màu ở mặt phải đi theo hình khối (rãnh miệng), sửa màu riêng không đủ; việc treo trong spec cũng phải đối chiếu lại ảnh mẫu trước khi làm.
 - Mô-đun mới dùng lại được cho loài bơi khác: vây trục cong (`uon`), vây nhỏ (`vayNho`), má (`dau.ma`), miệng dốc (`mieng.doc`), vòm ôm đầu (`vong.kieu='mu'`).
+### 02/10 — [Giao diện] Đơn 7-0: chọn hướng bản đồ phiêu lưu (Thùy: màn đấu để sau, world map trước, cần đơn để chọn)
+- design/DON-HANG-SKIN-HS.md: 4 hướng (A đảo trời đêm sao · B bản đồ giấy da · C mô hình đồ chơi · D bàn cờ phiêu lưu) × 3 tầng (thế giới 8 lục địa ·
+  lục địa 6 mốc · chặng 7 trạm, cùng nội dung + cùng trạng thái cờ/quái/sương để so công bằng) = 12 ảnh. Thay mục A Đơn 7. Màn đấu (Đơn 8 + UI công tắc/Tối giản) tạm dừng.
