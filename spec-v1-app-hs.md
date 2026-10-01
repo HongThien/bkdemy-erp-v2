@@ -162,6 +162,35 @@ Cách làm theo `design/nghien-cuu-do-hoa-little-habitats.md`: 1 bảng màu (`s
 - **Đơn 6 v2 trong `design/DON-HANG-SKIN-HS.md` ĐÃ BỊ THAY** (không gửi ChatGPT nữa): chỉ còn icon, và quái/boss theo thiết kế của Thùy.
 - **Việc còn lại phần đồ hoạ:** thay quái giữ chỗ bằng quái của Thùy · style Thị trấn cần `the3d` riêng (bảng màu dễ thương hơn) · soi hiệu năng trên iPad thật (đã có tự hạ độ phân giải khi tụt khung) · khổ dọc mới ở mức "đọc và bấm được" (nhãn thu thành số) · chủ đề không phải kiến thức khối ("Đề thi đầu vào") đang hiện trên bản đồ, chờ Thùy chốt ẩn.
 
+**⭐ LUẬT CHẤT LƯỢNG ĐỒ HOẠ TỰ THÍCH ỨNG (Thùy chốt 01/10 khuya)** — đồ hoạ 3D phải tự đổi theo máy: máy yếu thì đồ hoạ đơn giản, máy khỏe thì đồ hoạ tối đa. Tự nhận ra được thì tự đặt; không chắc thì hỏi em bằng 1 nút xác nhận. Em luôn chỉnh tay được.
+Lý do: HS dùng đủ loại máy (iPad đời cũ, điện thoại tầm thấp, laptop văn phòng, PC có card rời). Một mức cố định thì hoặc giật trên máy yếu, hoặc phí trên máy khỏe.
+
+1. **3 mức:** Thấp · Vừa · Cao. Mọi mức dùng CÙNG cảnh, CÙNG bố cục, CÙNG bấm được; chỉ khác độ mịn và hiệu ứng, nên không màn nào "mất tính năng" ở mức thấp. Bảng thông số theo mức nằm ở **1 chỗ** trong code (`skin/the3d/chatLuong.ts`, chưa viết), cảnh chỉ đọc bảng, không tự `if` theo máy.
+
+   | Thông số | Thấp | Vừa | Cao |
+   |---|---|---|---|
+   | Độ phân giải (DPR tối đa) | 1.0 | 1.5 | 2.0 |
+   | Khử răng cưa (MSAA) | tắt | bật | bật |
+   | Độ mịn địa hình (bước lưới) | thô (0.5) | vừa (0.34) | mịn (0.26) |
+   | Số cây/đá trang trí | ~35% | ~70% | 100% |
+   | Nước | màu phẳng + 1 dải bọt | bọt sóng | bọt sóng + lấp lánh |
+   | Gió lắc cây, hạt hiệu ứng | tắt | gió nhẹ, ít hạt | đủ |
+   | Bóng đổ thật (màn đấu) | bóng tròn dưới chân | bóng tròn | bóng thật 1024 |
+   | Số khung/giây đích | 30 | 45 | 60 |
+
+2. **Tự nhận máy (chạy 1 lần khi mở màn phiêu lưu đầu tiên, rồi nhớ):**
+   - **Bước 1 — đoán nhanh (không tốn thời gian):** đọc tên card đồ hoạ qua `WEBGL_debug_renderer_info`, `navigator.deviceMemory`, `hardwareConcurrency`, kích thước màn × DPR, có WebGL2 không, có phải điện thoại/iPad không. Ra mức khởi điểm. Máy nằm trong danh sách đã biết (iPad đời cũ, card tích hợp yếu) ⇒ chắc chắn.
+   - **Bước 2 — đo thật:** vẽ thử ~2 giây ở mức khởi điểm, đo thời gian trung bình mỗi khung. Chậm hơn mục tiêu ⇒ hạ 1 mức và đo lại; nhanh hơn nhiều (dư ≥ 40%) ⇒ thử nâng 1 mức. Dừng khi giữ được số khung đích.
+   - **Chắc chắn** (đoán và đo trùng nhau) ⇒ **tự đặt, không hỏi**, chỉ hiện 1 dòng nhỏ "Đồ hoạ: Vừa (tự chọn cho máy này)".
+   - **Không chắc** (đoán và đo lệch nhau, không đọc được tên card vì trình duyệt giấu, hoặc đang ở sát ranh giới) ⇒ hiện **1 nút xác nhận**: "Em thấy hình có mượt không?" với 2 lựa chọn "Mượt, giữ mức này" / "Hơi giật, giảm bớt". Bấm "Hơi giật" ⇒ hạ 1 mức rồi hỏi lại tối đa 2 lần.
+   - **Trong lúc chơi:** giữ cơ chế tự hạ khi tụt khung (đã có: hạ DPR). Tụt kéo dài ⇒ hạ mức tiếp theo bảng trên và báo 1 dòng "Máy hơi chậm, em đã giảm đồ hoạ cho mượt", KHÔNG tự nâng lại giữa chừng (tránh nhấp nháy đổi qua đổi lại); nâng chỉ khi em bấm.
+
+3. **Em chỉnh tay luôn được:** mục **Đồ hoạ** trong menu ⋯ và trong Hồ sơ: ◉ Tự động (khuyên dùng) · ○ Thấp · ○ Vừa · ○ Cao, kèm 1 dòng mô tả từng mức ("Hình đơn giản, máy yếu chạy mượt" / "Cân bằng" / "Đẹp nhất, cần máy khỏe") và nút "Đo lại máy này". Em chọn tay thì **tôn trọng lựa chọn đó**, không tự đổi nữa (trừ khi em quay về Tự động). Đổi xong áp ngay, không cần tải lại app.
+
+4. **Lưu ở đâu:** lựa chọn + kết quả đo lưu **theo máy** (localStorage — đây là sở thích hiển thị của máy, không phải dữ liệu học tập, nên không đưa lên DB và không đồng bộ giữa các máy; cùng quy tắc với chọn môn). Có chữ ký máy (tên card + kích thước màn + DPR): đổi máy hoặc đổi màn ⇒ tự đo lại. Không đọc được localStorage ⇒ vẫn chạy, chỉ là đo lại mỗi lần.
+
+5. **Điều kiện "xong":** (a) bảng 3 mức ở 1 file, mọi cảnh đọc từ đó · (b) cảnh dựng lại được khi đổi mức mà không tải lại trang · (c) có mục chỉnh tay + nút đo lại · (d) đo trên ≥ 3 máy thật khác nhau (1 iPad đời cũ, 1 điện thoại tầm thấp, 1 máy khỏe) và ghi kết quả vào DEVLOG · (e) máy không có WebGL vẫn dùng được (danh sách thường, đã có).
+
 ## 5. Hai style
 
 - **Anime RPG** (đang dùng) + **Thị trấn** (đang làm). Cả 2 phải đủ bộ hình phiêu lưu ở §4.4 thì mới tính là "xong".

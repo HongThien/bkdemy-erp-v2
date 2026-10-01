@@ -34002,3 +34002,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - ngất lật một phía cố định;
   - chưa đo iPad.
 - Ghi spec-bat-thu §3.4.
+
+## 2026-10-01 (khuya, tiếp) — [Giao diện] Ghi luật CHẤT LƯỢNG ĐỒ HOẠ TỰ THÍCH ỨNG vào spec (Thùy)
+- Thùy: "đồ hoạ phải tự đổi theo máy — máy yếu thì cùi, máy khỏe thì max; tự xác nhận được thì tốt, không thì có 1 nút xác nhận cho người dùng chỉnh". Ghi vào `spec-v1-app-hs.md` §4.5 (3 mức Thấp/Vừa/Cao dùng CÙNG cảnh, bảng thông số ở 1 file; đoán nhanh + đo ~2 giây; chắc thì tự đặt, không chắc thì hỏi 1 nút; chỉnh tay trong menu ⋯/Hồ sơ + "Đo lại"; lưu theo máy, đổi máy thì đo lại; điều kiện xong).
+- **Hiện trạng code:** mới có cơ chế tự hạ độ phân giải khi tụt khung (`sanKhau.ts`). Bảng 3 mức, đo máy, nút xác nhận, mục chỉnh tay CHƯA làm.
