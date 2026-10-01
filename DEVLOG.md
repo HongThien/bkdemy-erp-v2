@@ -33989,3 +33989,16 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Sai/đã sửa trên đường:** ① lục địa dính nhau (bố trí chật) ② nước lấp lánh ra lưới chấm đều ③ Voronoi vùng bị gán nhầm màu (vùng chiếm phần xa seed — sai dấu nửa mặt phẳng, đã gặp 2 lần: mockup + 3D) ④ sương mù cố định nuốt cảnh ở màn dọc (camera ra xa) ⇒ sương co giãn theo khoảng cách camera ⑤ cây tiền cảnh che hero ⑥ `mergeGeometries` lỗi khi trộn primitive có/không index ⇒ chuyển hết về không-index ⑦ heredoc dài bị bash cắt (đã biết) ⇒ ghi file bằng Write.
 - **Còn treo:** thay quái giữ chỗ bằng quái của Thùy (cắm qua `datNguonQuai`) · DB `fn_ban_do_phieu_luu` chưa trả đội hình mới/`so_cau_luot`/`hp` (đã ghi Hộp thư §13.6; adapter `tuBanDoPL` đang tạm ghép ≥3/≤7 ở client) · "Đề thi đầu vào" còn hiện trên bản đồ (chờ Thùy chốt ẩn) · style Thị trấn cần `the3d` riêng · PWA precache thêm ~550KB.
 - **Ghi chú vùng file:** sửa `HocSinhApp.tsx` (LamBai thêm prop `nhung`, +1 route `phieu_luu`) và `AppHS.tsx` (+1 trang xem) — cả hai thuộc vùng Giao diện.
+
+## 2026-10-02 — [Game] Thiên Kình (cá voi huyền thoại) xong (BatThu `thu-de-thuong` @ `aabc75a`, đã push)
+
+- **File mới:** `khuon-boi.ts` (SDF + hàm dưới bản lề + shader trời sao/sóng sáng + hiệu ứng nước theo vật lý + `ChuoiUon` dùng lại) · `dong-tac-boi.ts` (22 động tác + 6 vặt) · `loai-boi.ts` · trang `ca-voi-demo.html` có mặt hồ.
+- **Chế độ:** trời / nước, 2 động tác chuyển xuống nước · lên không (đúng yêu cầu CEO).
+  - Chạy liền 22 động tác 160 s ở bản Nhẹ: không lỗi, không NaN.
+  - Bản Đẹp 38,5k tam giác · bản Nhẹ 18,7k.
+- **Chưa ưng:**
+  - di chuyển gốc tự quay về chỗ cũ (vào game phải đổi);
+  - mây quanh thân còn đục;
+  - ngất lật một phía cố định;
+  - chưa đo iPad.
+- Ghi spec-bat-thu §3.4.

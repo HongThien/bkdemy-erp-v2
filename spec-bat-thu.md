@@ -263,6 +263,18 @@ Lọc theo bộ động tác chuẩn của 2 game: Pokémon (trận đấu · Le
 | Động tác riêng (ngoài bộ chung) | Chồm hí (đứng 2 chân sau) · phi nước đại 4 nhịp · dậm băng (vòng băng toả) · thở băng · lắc bờm | Lượn trôi · bơi tiến · lượn vòng · quẫy đuôi · phun cột nước · hát (vòng âm) · lộn vòng · lao xuống / ngoi lên · bị đánh · choáng · ngất |
 | Cưỡi | Có (điểm yên) | Có — cưỡi bay (sau V1) |
 
+- **Thiên Kình bản 1 XONG (02/10, BatThu `thu-de-thuong` @ `aabc75a`, trang `ca-voi-demo.html`):**
+  - **2 chế độ:**
+    - trời: lượn · bơi tiến · lượn vòng · lộn vòng · lao xuống · vút lên;
+    - nước: bơi nổi · lặn rồi ngoi.
+  - **2 động tác chuyển:** xuống nước 4,9 s · lên không 5,2 s.
+  - **Riêng:** quẫy đuôi · phun cột nước · hát (vòng âm).
+  - **Chung:** bị đánh · choáng · ngất (tự rơi xuống cỏ hoặc nổi nghiêng trên hồ) · giật mình · ra/phá bóng · vui · được vuốt ve · ăn mừng · 6 động tác vặt.
+  - **Hình:** hàm dưới có bản lề (há miệng thật) · hoa văn trời sao + sóng phát sáng chạy về đuôi. Hiệu ứng nước tự sinh theo vật lý: toé, cột nước, vòng sóng, nước chảy ròng, bong bóng.
+  - **Bảng màu:** thường = đêm sâu → lam → ngọc; shiny = bình minh.
+  - **Cỡ lưới:** bản Đẹp 38,5k tam giác, bản Nhẹ 18,7k; thân 1 lệnh vẽ.
+  - `ChuoiUon` = chuỗi xương sống dùng lại (uốn dọc/ngang) cho khuôn bò trườn sau này.
+  - **Khi vào game:** vệt sáng/hạt phải đổi sang toạ độ thế giới; game điều khiển di chuyển gốc (lộn vòng, lượn vòng hiện tự quay về chỗ cũ).
 - **CEO xem Băng Thần Mã bản 1 (02/10): "ok fix thêm. QUAN TRỌNG NHẤT con ngựa cần có CÁNH — cái cánh mới làm con ngựa đẹp."**
   - Đang làm:
     - đôi cánh lông pha lê băng, sải ~2× thân;
