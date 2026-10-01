@@ -37,6 +37,9 @@ export const RPG: Skin = {
     bai_tap_giao: `${A}/o_bai_tap_giao.png`, thanh_tuu: `${A}/o_cup.png`, xep_hang: `${A}/o_cup.png`,
     may_man: `${A}/o_ruong.png`, vi_xu: `${A}/o_vi_xu.png`, hoc_tu_dau: `${A}/o_hoc_tu_dau.png`,
     the_gioi: `${A}/o_pha_le.png`, // TẠM (cầu pha lê) — thay bằng tg_o_the_gioi khi kit Đơn 5 về
+    // 01/10 — 2 ô mới trên màn chính, hình lấy từ kit gamification cùng nét RPG (chưa đặt vẽ riêng): sổ nhiệm vụ (nv_tuan) · khiên Hero.
+    // Ô Rank thường hiện BIỂU TƯỢNG BẬC của chính em (HomeCard.anh) — o_rank chỉ là hình dự phòng lúc chưa tải xong.
+    nhiem_vu: `${A}/o_nhiem_vu.png`, rank: `${A}/o_rank.png`,
   },
   dauThayIcon: '✦',
   trangTri: { goc: `${A}/corner.png`, gach: `${A}/divider.png` },

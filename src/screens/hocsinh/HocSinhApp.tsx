@@ -50,7 +50,9 @@ import NhiemVuHS from './NhiemVuHS'
 import AlbumHS from './AlbumHS'
 import HoSoHS from './HoSoHS'
 import AvatarHS from './AvatarHS'
-import { thuThachLuotDo, sinhThuThach, ketQuaThuThach, type KetQuaThuThach } from '../../lib/rank'
+import { thuThachLuotDo, sinhThuThach, ketQuaThuThach, rankCuaToi, type KetQuaThuThach, type RankCuaToi } from '../../lib/rank'
+import { nhiemVuCuaToi, type NhiemVuCuaToi } from '../../lib/nhiemvu'
+import { anhBac } from './gami/hinh'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
 type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
@@ -78,7 +80,7 @@ const KHU_CHOI = new Set<KhuId>(['the_gioi', 'may_man', 'thanh_tuu', 'vi_xu'])
 // Ô học tập rút câu từ KHO của môn — môn chưa có kho (co_kho=false, vd Tiếng Anh) thì khoá + báo, KHÔNG gọi RPC.
 // (Ô bài trên lớp/ET/BTVN/đề thi không cần kho: đọc bài thầy cô phát hành, môn nào cũng chạy.)
 const KHU_CAN_KHO = new Set<KhuId>(['tu_luyen', 'thong_tin', 'so_tay', 'xep_hang'])
-type KhuId = 'giao_trinh' | 'et' | 'btvn' | 'tu_luyen' | 'thong_tin' | 'de_thi_thu' | 'xep_hang' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi'
+type KhuId = 'giao_trinh' | 'et' | 'btvn' | 'tu_luyen' | 'thong_tin' | 'de_thi_thu' | 'xep_hang' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'nhiem_vu' | 'rank'
 // direct = ô này KHÔNG đi qua màn "danh sách nhiều bài" (setKhu+tab) — bấm vào thẳng 1 màn riêng.
 // Tự luyện là 1 PHIÊN đang-tiếp-diễn trong ngày (không phải danh sách bài đã phát hành theo ngày
 // như ET/BTVN), nên không hợp mô hình list+tab dùng chung — mỗi màn direct tự lo dữ liệu riêng.
@@ -89,6 +91,8 @@ const KHU: { id: KhuId; ten: string; icon: string; loai?: string; direct?: boole
   { id: 'et', ten: 'ET', icon: '📋', loai: 'et', mau: 'ph-purple' },
   { id: 'btvn', ten: 'BTVN', icon: '🏠', loai: 'btvn', mau: 'ph-orange' },
   { id: 'tu_luyen', ten: 'Tự luyện', icon: '🎯', direct: true, mau: 'ph-green' },
+  { id: 'nhiem_vu', ten: 'Nhiệm vụ', icon: '📜', direct: true, mau: 'ph-green' }, // Thùy 01/10: đưa ra màn chính (trước chỉ vào từ Tự luyện)
+  { id: 'rank', ten: 'Rank', icon: '🛡️', direct: true, mau: 'ph-orange' },
   { id: 'thong_tin', ten: 'Thông tin học tập', icon: '📈', direct: true, mau: 'brand' },
   { id: 'so_tay', ten: 'Sổ tay kiến thức', icon: '📖', direct: true, mau: 'ph-purple' },
   { id: 'the_gioi', ten: 'Thế giới BK', icon: '🌏', direct: true, mau: 'brand' }, // mạng xã hội khoe — spec-the-gioi-bk.md
@@ -101,6 +105,8 @@ const KHU: { id: KhuId; ten: string; icon: string; loai?: string; direct?: boole
 // Cấp 3 (khối 10-12) — Thùy CHƯA nói đổi, giữ KHU cũ. Cấp 1 dùng HomeCap1 riêng, không đụng.
 const KHU_CAP2: { id: KhuId; ten: string; icon: string; direct?: boolean; sapCo?: boolean }[] = [
   { id: 'tu_luyen',      ten: 'Tự luyện',           icon: '🎯', direct: true },
+  { id: 'nhiem_vu',      ten: 'Nhiệm vụ',           icon: '📜', direct: true },  // Thùy 01/10: đưa ra màn chính
+  { id: 'rank',          ten: 'Rank',               icon: '🛡️', direct: true },
   { id: 'thong_tin',     ten: 'Thông tin học tập',  icon: '📈', direct: true },
   { id: 'so_tay',        ten: 'Sổ tay kiến thức',   icon: '📖', direct: true },
   { id: 'the_gioi',      ten: 'Thế giới BK',        icon: '🌏', direct: true },
@@ -127,6 +133,8 @@ const KIT_O: Record<KhuId, Pick<HomeCard, 'ill' | 'emoji' | 'doodle' | 'tone'>> 
   thanh_tuu:    { ill: 'self_practice_target', emoji: '🏆', doodle: 'Đầy tự hào ♡', tone: 'orange' },
   may_man:      { ill: 'self_practice_target', emoji: '🎰', doodle: 'Luyện chăm là quay!', tone: 'pink' },
   vi_xu:        { ill: 'self_practice_target', emoji: '🪙', doodle: 'Tích xu đổi quà!', tone: 'orange' },
+  nhiem_vu:     { ill: 'self_practice_target', emoji: '📜', doodle: 'Xong là có EXP!', tone: 'green' },
+  rank:         { ill: 'self_practice_target', emoji: '🛡️', doodle: 'Lên bậc nào!', tone: 'orange' },
 }
 // ── Style màn con theo SKIN (Thùy 29/09: đổi style là đổi CẢ màn trong, không chỉ Home) ─────────────────
 // Mọi nền/chữ/viền đọc biến --sk-* (skin/KhungHS). Màu cố định CHỈ còn màu ngữ nghĩa đúng/sai/cảnh báo — nền
@@ -314,6 +322,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
   const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'rank' | 'nhiem_vu' | 'album' | 'ho_so' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
   const [tuHoSo, setTuHoSo] = useState(false) // Rank/Album mở từ Hồ sơ ⇒ "Quay lại" về Hồ sơ
+  const [tuHome, setTuHome] = useState(false) // Rank/Nhiệm vụ mở từ MÀN CHÍNH (ô / huy hiệu bậc) ⇒ "Quay lại" về màn chính
   const [chuDeDang, setChuDeDang] = useState<{ ma_dang: string; ten_dang: string; chiCauMoi?: boolean } | null>(null) // dạng đã chọn cho "Tự luyện theo chủ đề" (null = luồng tổng hợp)
   // "Học từ đầu" (Thùy 19/09) — ô CHỈ hiện khi HS có case bổ trợ đuổi ĐANG MỞ (tự suy
   // bo_tro_duoi.trang_thai='can_duoi', KHÔNG lưu cờ riêng — xem htd_co_mo). htdMon lưu
@@ -376,6 +385,18 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Thẻ Thế giới BK ở màn chính — tải lại mỗi lần về Home (quay từ Thế giới về là thấy số mới); lỗi thì thẻ vẫn hiện, không số.
   const [tgHome, setTgHome] = useState<TheGioiHome | null>(null)
   useEffect(() => { if (nhom912 && !direct && !khu) theGioiHome().then(setTgHome).catch(() => {}) }, [nhom912, direct, khu])
+  // RANK + NHIỆM VỤ của MÔN đang chọn trên màn chính (Thùy 01/10: ô Nhiệm vụ · ô Rank · huy hiệu bậc cạnh tên).
+  // undefined = đang tải (ô hiện "…") · null = môn chưa mở rank/nhiệm vụ ⇒ ẩn ô + huy hiệu (dữ liệu quyết định, không if theo môn).
+  // Tải lại mỗi lần về màn chính (vừa làm Thử thách/nhiệm vụ về là thấy số mới); lỗi mạng giữ số cũ, không xoá ô.
+  const [rankHome, setRankHome] = useState<RankCuaToi | null | undefined>(undefined)
+  const [nvHome, setNvHome] = useState<NhiemVuCuaToi | null | undefined>(undefined)
+  useEffect(() => {
+    if (!nhom912 || direct || khu || !monChon) return
+    let bo = false
+    rankCuaToi(monChon).then((r) => { if (!bo) setRankHome(r) }).catch(() => {})
+    nhiemVuCuaToi(monChon).then((r) => { if (!bo) setNvHome(r) }).catch(() => {})
+    return () => { bo = true }
+  }, [nhom912, direct, khu, monChon])
   // Style (skin) của em áp cho TOÀN app, không chỉ Home (Thùy 29/09): biến --sk-* gắn lên <html>, mọi màn đọc qua skin/KhungHS.
   // Cấp 1 chưa có skin riêng ⇒ tạm Soft Hàn sáng.
   useApSkinGoc(nhom912 ? (giaoDien ?? GD_MAC_DINH) : GD_CAP1)
@@ -387,6 +408,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   function doiMon(m: string) {
     if (m === monChon) return
     chonMonHS(m); setMonChon(m)
+    setRankHome(undefined); setNvHome(undefined) // rank/nhiệm vụ là của TỪNG môn — đổi môn thì xoá số môn cũ trước khi tải
     setHtdMo(false); kiemHTD() // card "Học từ đầu" là của TỪNG môn — tắt cái của môn cũ, hỏi lại cho môn mới
   }
   useEffect(() => {
@@ -427,19 +449,19 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onTongHop={() => { setChuDeDang(null); setDirect('tu_luyen') }}
     onChuDe={() => setDirect('tu_luyen_chu_de_ds')}
     onThuThach={() => setDirect('thu_thach')}
-    onRank={() => { setTuHoSo(false); setDirect('rank') }}
-    onNhiemVu={() => setDirect('nhiem_vu')}
+    onRank={() => { setTuHoSo(false); setTuHome(false); setDirect('rank') }}
+    onNhiemVu={() => { setTuHome(false); setDirect('nhiem_vu') }}
     onBack={() => setDirect(null)} />
-  if (direct === 'nhiem_vu') return <NhiemVuHS gioiTinh={gt} onBack={() => setDirect('tu_luyen_chon')}
+  if (direct === 'nhiem_vu') return <NhiemVuHS gioiTinh={gt} onBack={() => setDirect(tuHome ? null : 'tu_luyen_chon')}
     onThuThach={() => setDirect('thu_thach')} onTuLuyen={() => { setChuDeDang(null); setDirect('tu_luyen') }} onVongQuay={() => setDirect('may_man')} />
   if (direct === 'thu_thach') return <LamThuThach hocSinhId={hocSinhId} desktop={!!cap1}
     onXong={() => setDirect('tu_luyen_chon')} onRank={() => { setTuHoSo(false); setDirect('rank') }} />
-  if (direct === 'rank') return <RankHS gioiTinh={gt} onBack={() => setDirect(tuHoSo ? 'ho_so' : 'tu_luyen_chon')} onThuThach={() => setDirect('thu_thach')} />
+  if (direct === 'rank') return <RankHS gioiTinh={gt} onBack={() => setDirect(tuHoSo ? 'ho_so' : tuHome ? null : 'tu_luyen_chon')} onThuThach={() => setDirect('thu_thach')} />
   // HỒ SƠ (DON-HANG-GAMI-HS Đơn 4): bấm avatar ở màn chính. Đổi ảnh đại diện nằm trong Hồ sơ (bấm avatar trong khung).
   if (direct === 'ho_so') return <HoSoHS hoTen={hoTen} anhUrl={anhUrl} mons={lopMons} mon={monChon} onChonMon={doiMon}
     avatar={<AvatarHS anhUrl={anhUrl} initials={hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()} size={82} fill="var(--sk-surface2)" badge="var(--sk-acc)" onChanged={setAnhUrl} />}
     onBack={() => { setTuHoSo(false); setDirect(null) }}
-    onRank={() => { setTuHoSo(true); setDirect('rank') }} onAlbum={() => { setTuHoSo(true); setDirect('album') }} />
+    onRank={() => { setTuHoSo(true); setTuHome(false); setDirect('rank') }} onAlbum={() => { setTuHoSo(true); setDirect('album') }} />
   if (direct === 'tu_luyen_chu_de_ds') return <ChonDangChuDe gioiTinh={gt}
     onPick={(d) => { setChuDeDang(d); setDirect('tu_luyen') }}
     onBack={() => setDirect('tu_luyen_chon')} />
@@ -480,7 +502,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'retest') return <RetestHS hocSinhId={hocSinhId} gioiTinh={gt} onXong={() => setDirect(null)} LamET={LamET} />
   if (direct === 'lich_bo_tro') return <LichBoTroHS lich={lichMon} coCa={boTro.coCa} gioiTinh={gt} onXong={() => setDirect(null)} onVaoCa={onVaoCaBoTro} />
   if (direct === 'hop_thu') return <HopThuHS onXong={() => { setDirect(null); taiChuaDoc() }} />
-  if (direct === 'may_man') return <MayManHS gioiTinh={gt} onXong={() => setDirect(null)} onNhiemVu={() => setDirect('nhiem_vu')} />
+  if (direct === 'may_man') return <MayManHS gioiTinh={gt} onXong={() => setDirect(null)} onNhiemVu={() => { setTuHome(true); setDirect('nhiem_vu') }} />
   if (direct === 'thanh_tuu') return <ThanhTuuHS gioiTinh={gt} onXong={() => setDirect(null)} onAlbum={() => { setTuHoSo(false); setDirect('album') }} />
   if (direct === 'album') return <AlbumHS gioiTinh={gt} onBack={() => setDirect(tuHoSo ? 'ho_so' : 'thanh_tuu')} />
   if (direct === 'bai_tap_giao') return <BaiTapGiaoHS gioiTinh={gt} onXong={() => setDirect(null)} />
@@ -515,6 +537,29 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const lopCuaMon = lopMons.find((l) => l.mon === monChon)
   const lopMon = lopCuaMon ? `${lopCuaMon.ten_lop} · ${lopCuaMon.mon}` : tests?.[0] ? `${tests[0].lop_ten} · ${tests[0].mon}` : null
 
+  // Ô NHIỆM VỤ / RANK trên màn chính (Thùy 01/10) — số lấy nguyên từ RPC của MÔN đang chọn. null ⇒ ẩn ô (môn chưa mở / không phải
+  // màn chính 6–12). Badge = số nhiệm vụ ngày CHƯA xong (đếm dòng đang hiện ở màn Nhiệm vụ, không phải chỉ số nghiệp vụ).
+  // Ô Rank hiện BIỂU TƯỢNG BẬC của chính em thay icon chung của style.
+  const moTuHome = (d: 'nhiem_vu' | 'rank') => () => { setTuHome(true); setTuHoSo(false); setDirect(d) }
+  const oGami = (id: KhuId): Partial<HomeCard> | null | undefined => {
+    if (id === 'nhiem_vu') {
+      if (!nhom912 || nvHome === null) return null
+      if (nvHome === undefined) return { sub: '…', subMau: 'xam', onClick: moTuHome('nhiem_vu') }
+      if (!nvHome.mo) return { sub: `Mở từ ${nvHome.bat_dau.split('-').reverse().slice(0, 2).join('/')}`, subMau: 'xam', onClick: moTuHome('nhiem_vu') }
+      const ngay = Object.values(nvHome.ngay)
+      const conLai = ngay.filter((n) => n.xong_hom_nay === 0).length
+      return { sub: conLai ? `Hôm nay còn ${conLai} nhiệm vụ` : 'Xong hết hôm nay!', subMau: conLai ? 'ton' : 'xanh', badge: conLai, onClick: moTuHome('nhiem_vu') }
+    }
+    if (id === 'rank') {
+      if (!nhom912 || rankHome === null) return null
+      const t = rankHome?.toi
+      if (!t) return { sub: rankHome === undefined ? '…' : 'Chưa có điểm mùa này', subMau: 'xam', onClick: moTuHome('rank') }
+      return { sub: `${t.ten_bac}${t.sao ? ` ${'★'.repeat(t.sao)}` : ''} · hạng ${t.hang_khoi}/${t.so_em_khoi}`, subMau: 'ton', anh: anhBac(t.bac, 'bieu_tuong') ?? undefined, onClick: moTuHome('rank') }
+    }
+    return undefined
+  }
+  const anO = new Set((['nhiem_vu', 'rank'] as KhuId[]).filter((id) => oGami(id) === null))
+
   const CHU_DUOI: Partial<Record<KhuId, string>> = { tu_luyen: 'Luyện theo dạng yếu', thong_tin: 'Dạng đang yếu', xep_hang: 'Thi đua tự luyện', so_tay: 'Tra lý thuyết & bài mẫu', the_gioi: 'Xem HS BK đang khoe gì' }
 
   // ── MÀN CHÍNH: ô vuông (theo cấp/khối), 2 cột ─────────────────────────────
@@ -545,7 +590,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     : []
   if (!khu) {
     const cards: HomeCard[] = cap2
-      ? [...KHU_CAP2.map((k) => {
+      ? [...KHU_CAP2.filter((k) => !anO.has(k.id)).map((k) => {
           const [sub, subMau]: [string, HomeCard['subMau']] =
             k.sapCo ? ['Sắp có', 'xam']
             : k.id === 'thanh_tuu' ? ['Xem giải thưởng của em', 'xam']
@@ -564,9 +609,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
               ? () => setDirect(k.id === 'tu_luyen' ? 'tu_luyen_chon' : (k.id as 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi'))
               : () => { setKhu(k.id); setTab('chua') },
             ...khoaThieuKho(k.id),
+            ...(oGami(k.id) ?? {}),
           } satisfies HomeCard
         }), ...theCardHTD]
-      : [...KHU.filter((k) => !KHU_CHI_CAP1.has(k.id)).map((k) => {
+      : [...KHU.filter((k) => !KHU_CHI_CAP1.has(k.id) && !anO.has(k.id)).map((k) => {
           const sapCo = !k.loai && !k.direct
           const ds = k.loai ? cuaKhu(k.id) : []
           const nChuaLam = ds.filter((t) => !xongCua(t) && !daHetHan(t)).length
@@ -582,6 +628,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
             id: k.id, ten: k.ten, icon: k.icon, sub, subMau, badge: nChuaLam, disabled: sapCo, nhom: KHU_CHOI.has(k.id) ? 'choi' : 'hoc', ...KIT_O[k.id],
             onClick: sapCo ? undefined : k.direct ? () => setDirect(k.id === 'tu_luyen' ? 'tu_luyen_chon' : (k.id as 'thong_tin' | 'xep_hang' | 'so_tay' | 'the_gioi')) : () => { setKhu(k.id); setTab('chua') },
             ...khoaThieuKho(k.id),
+            ...(oGami(k.id) ?? {}),
           } satisfies HomeCard
         }), ...theCardHTD]
     // Lớp 9–12: cùng danh sách ô (giữ nguyên chức năng từng khối), khác màn vẽ — HomeHS912 + skin tự chọn.
@@ -591,7 +638,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
       lich={lichMon} soRetest={boTro.soRetest} cards={cards}
       onHopThu={() => setDirect('hop_thu')} onDoiMK={() => setDoiMK(true)} onThoat={() => supabase.auth.signOut()}
       onLich={() => setDirect('lich_bo_tro')} onRetest={() => setDirect('retest')} onHoSo={() => setDirect('ho_so')} gioiTinh={gioiTinh}
-      theGioi={tgHome} onTheGioi={() => setDirect('the_gioi')} />
+      theGioi={tgHome} onTheGioi={() => setDirect('the_gioi')}
+      rank={rankHome?.toi ? { bac: rankHome.toi.bac, ten: rankHome.toi.ten_bac, sao: rankHome.toi.sao } : null} onRank={moTuHome('rank')} />
     return <HomeHS hoTen={hoTen} maHS={maHS} lopMon={lopMon} gioiTinh={gt} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
       mons={lopMons} mon={monChon} onChonMon={doiMon}
       lich={lichMon} soRetest={boTro.soRetest} cards={cards}

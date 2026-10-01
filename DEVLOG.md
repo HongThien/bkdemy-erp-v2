@@ -33346,3 +33346,41 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   lại ⇒ 1 mốc 7 + 1 tin A; nộp lần 2 không trùng; feed 7 ngày 100 ms như cũ.
 - `src/lib/chuoi.ts`: `chuoiCuaToi` · `ketQuaLuotHocThat` + `loiLuotKhongTinh` · ngày nghỉ (ds/thêm/gỡ). Spec §13.4 cập nhật đúng hàm thật; hộp thư §13.6 gửi
   Giao diện: chữ cho tin `chuoi` ở `moTaTin()`, báo lượt chưa tính ở màn kết quả.
+
+## 2026-10-01 [Giao diện] (máy `BK_v2`) — Ghép kit gamification Đơn 1/2/3 (72 hình ChatGPT) + dựng lại màn Nhiệm vụ / Album theo ảnh toàn cảnh
+- **Nhận hàng:** 72 hình về gốc `design/bk-ui-src/` với tên mặc định "ChatGPT Image …" (KHÔNG theo `#số + tên file` của đơn) ⇒ nhận diện bằng mắt
+  (ghép tấm xem trên nền xanh đêm) + đếm sao từng huy hiệu rồi mới đổi tên. **Sai suýt dính:** thứ tự giờ tải đảo Zeus ★2/★3 (10:37:44 = 3 sao,
+  10:37:48 = 2 sao) — gán theo vị trí là gắn nhầm âm thầm (đúng bài "danh tính bám khoá tự nhiên"). 64 hình → `design/bk-ui-src/gami/`,
+  8 ảnh toàn cảnh → `design/handoff/gami-v1/reference/man_*`. Kiểm hàng chi tiết + phần còn thiếu: đầu `design/DON-HANG-GAMI-HS.md`.
+- **Quyết định mặc định (Thùy nói "làm đi" chưa chốt 3 câu, t chọn — sai thì đổi):** nhận dáng huy hiệu như ChatGPT vẽ · 8 hình KHOÁ t tự dựng
+  từ ★1 (bóng xanh đêm + viền bạc, ảnh gốc 1254 lưu `hh_<key>_khoa.png`) · icon nhiệm vụ GIỮ bộ 29/09 (bộ vẽ lại thiếu N1–N3, trộn 2 nét vẽ xấu).
+- **Vào app:** nén 116 PNG (quantize 256 màu) → `public/bk-ui/hs/gami/huy-hieu/<key>/{sao1..5,khoa}.png` 384px + `nho_*` 128px ·
+  `rank/<n>/bieu_tuong{,_64}.png`. Bản nhỏ đổi từ `nho_48` (luôn ★1) sang `nho_sao<n>`/`nho_khoa` ⇒ danh sách hiện ĐÚNG số sao em có.
+  `KIT`: `huy_hieu` bật · cờ `rank` TÁCH thành `rank_bieu_tuong` (bật) + `rank_khung` (tắt — khung chưa về, bật chung là ảnh khung vỡ).
+- **PWA:** HS precache mọi `png` trong `public/` ⇒ thêm `globIgnores` cho `gami/huy-hieu` + `gami/rank` (~4 MB) — không bắt mọi máy HS tải lại
+  4 MB mỗi lần app cập nhật. Build `build:hs` đạt; sw.js còn 17 hình gami (nhiệm vụ + fx). ⚠ Phát hiện phụ: precache app HS tổng **19,6 MB / 251 file**
+  vì kéo cả hình của app TA/OPS/… trong `public/` — chưa sửa (ngoài phạm vi).
+- **Dựng lại màn theo ảnh toàn cảnh** (chỉ sửa VIEW, số liệu vẫn từ RPC): `AlbumView` (thẻ tô màu men từng huy hiệu, cột phải tiến độ, nhãn
+  Hiếm/×2, "Sắp đạt" vàng bấm ⇒ mở + cuộn tới thẻ, mở rộng 2 ô Tháng này / Các tháng) · `ChucMungSao` (chữ to font tiêu đề, hình giữa vầng sáng,
+  nút "Tuyệt!" vàng — áp chung cho lớp phủ lên bậc) · `NhiemVuView` (đầu khối huy hiệu tròn + tiêu đề chữ hoa, cột trạng thái, 3 nút
+  Thử thách/Tự luyện/vòng quay, sổ to + hàng rương, 2 ô tháng; iPad 2 cột trái Chặng+Hôm nay / phải Tuần+Tháng). Chữ mô tả theo LUẬT (spec §0.4),
+  không chép chữ ảnh (ảnh vẽ sai M1/T1/Nike). Màu game mới gom vào `gami/hinh.ts` (`MAU_GAMI.*`, `nenTheHH`) — `check:style-hs` ✔.
+- **Kiểm:** `check:style-hs` ✔ · `tsc -b` chỉ còn 1 lỗi CÓ SẴN `src/lib/pdfRender.ts` (pdfjs, không đụng) · soi `hs.html?xem=gami` bằng Chrome
+  headless (puppeteer-core có sẵn — ô xem của app hay treo khi chụp): album 1/2/3 · nhiệm vụ 1/2/3 · iPad 1180×820 · bo_hinh 102 hình 0 vỡ ·
+  rank + hồ sơ tự nhận biểu tượng mới, không tràn ngang.
+- **Máy này:** `npm ci` FAIL vì `package-lock.json` lệch `package.json` (thiếu esbuild 0.28.2) ⇒ cài bằng `npm install --package-lock=false` (không
+  ghi lock). Chưa commit — chờ Thùy (ảnh gốc ~150 MB trong `design/bk-ui-src/gami/` có commit không).
+- (01/10 tiếp, máy `BK_v2`) Thùy (soi app thật bằng tài khoản HS0108): **"đưa phần nhiệm vụ và rank ra màn hình chính · huy hiệu rank nên ở cạnh
+  thông tin học sinh"** ⇒
+  - 2 ô mới `nhiem_vu` · `rank` trong `KHU` + `KHU_CAP2` (ngay sau Tự luyện, khối Học tập — theo MÔN đang chọn). Số từ `fn_hs_nhiem_vu_cua_toi` /
+    `fn_hs_rank_cua_toi` của môn đang chọn, tải lại mỗi lần về màn chính, đổi môn xoá số cũ trước. RPC trả null (môn chưa mở) ⇒ ẨN ô — dữ liệu quyết
+    định, không `if mon`. Ô Nhiệm vụ: "Hôm nay còn N nhiệm vụ" + badge N (đếm dòng nhiệm vụ ngày chưa xong). Ô Rank: hiện BIỂU TƯỢNG BẬC của chính em
+    (`HomeCard.anh` mới — đè icon chung của style) + "Captain ★★ · hạng 12/54".
+  - Huy hiệu bậc cạnh tên (`HuyHieuBac` trong HomeHS912): khổ dọc = viên cạnh avatar · khổ ngang = trong tấm tên, vạch ngăn. Bấm ⇒ màn Rank.
+  - "Quay lại" từ Rank/Nhiệm vụ mở ở màn chính về màn chính (cờ `tuHome`), mở từ Tự luyện vẫn về Tự luyện.
+  - Icon ô style RPG: `o_nhiem_vu.png` (sổ nhiệm vụ của kit gami) · `o_rank.png` (khiên Hero — chỉ là hình dự phòng). Chưa đặt ChatGPT vẽ riêng.
+  - Cấp 1 (HomeCap1) CHƯA thêm. `check:style-hs` ✔ 16 ô · tsc sạch (trừ lỗi cũ pdfRender) · soi `?xem=gami&man=home` PC/điện thoại/thần.
+- (01/10 tiếp) Thùy gật cách cất ảnh: **ảnh gốc gami ~140 MB KHÔNG lên git** (`.gitignore` `design/bk-ui-src/gami/` — bản chính Thùy cất Google
+  Drive) · 8 ảnh toàn cảnh tham chiếu đổi sang JPG q85 (18 MB → 3 MB) ở `design/handoff/gami-v1/reference/`, PNG gốc chuyển về `bk-ui-src/gami/`
+  (không xoá) · `*.tsbuildinfo` vào `.gitignore`. Lý do: repo nén đã 260 MB, `design/` đang theo git 183 MB; +142 MB = +55% cho mọi lần clone +
+  Vercel build. Ghi quy ước vào `design/README.md` + đầu `DON-HANG-GAMI-HS.md`.

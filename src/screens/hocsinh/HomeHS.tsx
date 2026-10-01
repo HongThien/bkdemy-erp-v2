@@ -42,6 +42,8 @@ export type HomeCard = {
   emoji?: string
   /** Emoji chức năng của ô (lấy từ danh mục KHU) — HomeHS912 (lớp 9–12) dùng khi skin không có ảnh riêng cho ô. */
   icon?: string
+  /** Ảnh RIÊNG của ô, đè ảnh ô của style (HomeHS912) — vd ô Rank hiện biểu tượng bậc của CHÍNH em (Thùy 01/10). */
+  anh?: string
   ill: string // tên file trong public/bk-ui/hs (không đuôi) — bỏ qua nếu có emoji
   tone: HomeTone
   disabled?: boolean

@@ -23,6 +23,7 @@ import { THE, HEAD, MAU, NhomHS, useHeThongToi, useManDoc, useMedia } from './sk
 import type { TheGioiHome } from '../../lib/thegioi'
 import { TenLop, moTaTin } from './thegioi/TheGioiHS'
 import { SKINS, SKIN_MAC_DINH, laySkin, cheDoThat, bienCss, layHinhNen, nenCua, type GiaoDien, type CheDo, type Skin } from './skin/registry'
+import { BieuTuongBac, SaoBac } from './gami/HinhGami'
 
 const MAC_DINH: GiaoDien = { skin: SKIN_MAC_DINH, che_do: 'he_thong', hinh_nen: 'mac_dinh' }
 
@@ -63,6 +64,7 @@ type HomeProps = {
   onHoSo?: () => void // có ⇒ bấm avatar mở HỒ SƠ (DON-HANG-GAMI-HS Đơn 4); đổi ảnh chuyển vào trong Hồ sơ
   gioiTinh?: 'nam' | 'nu' | null // chỉ để chọn NHÂN VẬT của style — không đổi màu theo giới tính
   theGioi?: TheGioiHome | null; onTheGioi?: () => void // thẻ Thế giới BK (thay thẻ "Việc cần làm" — Thùy 29/09)
+  rank?: { bac: number; ten: string; sao: number } | null; onRank?: () => void // bậc Rank của MÔN đang chọn — huy hiệu cạnh tên (Thùy 01/10)
 }
 
 // ── MÀN CHÍNH khổ DỌC (điện thoại · iPad dọc) — theo hàng dưới ảnh gốc style (RPG: Nền app HS cấp 3_11.png, Thùy 29/09):
@@ -79,6 +81,7 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
     <div className="relative mx-auto flex min-h-[100dvh] max-w-[430px] flex-col gap-3 px-4 pb-[calc(20px+env(safe-area-inset-bottom))] pt-[calc(12px+env(safe-area-inset-top))] md:max-w-[820px] md:gap-4 md:px-8">
       <div className="flex items-center gap-2.5">
         <AnhDaiDien p={p} size={44} />
+        <HuyHieuBac p={p} />
         <span className="flex-1" />
         <CumNut p={p} onHinhNen={onHinhNen} nutRef={nutRef} />
       </div>
@@ -132,7 +135,7 @@ function LuoiDoc({ cards, skin }: { cards: HomeCard[]; skin: Skin }) {
   return (
     <div className="grid grid-cols-4 gap-2 md:gap-3">
       {cards.map((c) => {
-        const anh = skin.anhO?.[c.id]
+        const anh = c.anh ?? skin.anhO?.[c.id]
         return (
           <button key={c.id} disabled={c.disabled} onClick={c.onClick}
             className={`relative flex min-h-[104px] flex-col items-center justify-start gap-1 px-1 pb-2 pt-2.5 text-center transition md:min-h-[168px] md:gap-1.5 md:px-2 md:pt-4 ${c.disabled ? 'opacity-50' : 'active:scale-[0.97]'}`} style={THE}>
@@ -201,6 +204,24 @@ function AnhDaiDien({ p, size }: { p: HomeProps; size: number }) {
           </button>
         : <AvatarHS anhUrl={p.anhUrl} initials={initials} size={size} fill="var(--sk-surface2)" badge="var(--sk-acc)" onChanged={p.onAnhChanged} />}
     </div>
+  )
+}
+
+// HUY HIỆU BẬC RANK cạnh thông tin em (Thùy 01/10) — biểu tượng bậc của MÔN đang chọn + tên bậc + sao; bấm ⇒ màn Rank.
+// Môn chưa mở rank / chưa tải xong ⇒ không vẽ (không giữ chỗ trống). trongTam = nằm trong tấm tên khổ ngang (vạch ngăn bên trái).
+function HuyHieuBac({ p, trongTam }: { p: HomeProps; trongTam?: boolean }) {
+  if (!p.rank) return null
+  const r = p.rank
+  return (
+    <button onClick={p.onRank} disabled={!p.onRank} aria-label={`Rank: ${r.ten}`}
+      className={`flex shrink-0 items-center gap-1.5 text-left active:scale-95 ${trongTam ? 'ml-1 border-l pl-3' : 'h-11 pl-1 pr-3'}`}
+      style={trongTam ? { borderColor: 'var(--sk-line)' } : NUT_TRON}>
+      <BieuTuongBac bac={r.bac} size={trongTam ? 44 : 38} nho />
+      <span className="leading-tight">
+        <span className="block whitespace-nowrap text-[13.5px] font-bold" style={HEAD}>{r.ten}</span>
+        {r.bac < 9 && <SaoBac n={r.sao} size={12} />}
+      </span>
+    </button>
   )
 }
 
@@ -306,6 +327,7 @@ function ManNgang({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
             <span className="block truncate text-[17px] font-bold" style={HEAD}>{p.hoTen}</span>
             <span className="block truncate text-[12.5px]" style={{ color: 'var(--sk-muted)' }}>{p.maHS.toUpperCase()}{p.lopMon ? ` · ${p.lopMon}` : ''}</span>
           </span>
+          <HuyHieuBac p={p} trongTam />
         </div>
         <span className="flex-1" />
         <CumNut p={p} onHinhNen={onHinhNen} nutRef={nutRef} />
@@ -367,7 +389,7 @@ function LuoiNgang({ cards, skin }: { cards: HomeCard[]; skin: Skin }) {
   return (
     <div className={`grid gap-3 xl:gap-4 ${cards.length > 8 ? 'grid-cols-5' : 'grid-cols-4'}`}>
       {cards.map((c) => {
-        const anh = skin.anhO?.[c.id]
+        const anh = c.anh ?? skin.anhO?.[c.id]
         return (
           <button key={c.id} disabled={c.disabled} onClick={c.onClick}
             className={`relative flex min-h-[148px] flex-col items-center justify-center gap-1 px-2 py-3 text-center transition xl:min-h-[176px] xl:gap-1.5 xl:px-3 xl:py-4 ${c.disabled ? 'opacity-50' : 'hover:-translate-y-0.5 active:scale-[0.98]'}`} style={THE}>
