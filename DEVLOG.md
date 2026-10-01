@@ -33384,3 +33384,16 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Drive) · 8 ảnh toàn cảnh tham chiếu đổi sang JPG q85 (18 MB → 3 MB) ở `design/handoff/gami-v1/reference/`, PNG gốc chuyển về `bk-ui-src/gami/`
   (không xoá) · `*.tsbuildinfo` vào `.gitignore`. Lý do: repo nén đã 260 MB, `design/` đang theo git 183 MB; +142 MB = +55% cho mọi lần clone +
   Vercel build. Ghi quy ước vào `design/README.md` + đầu `DON-HANG-GAMI-HS.md`.
+
+## 2026-10-01 — [Số liệu] DỮ LIỆU BẢN ĐỒ PHIÊU LƯU (mig 202610011520, ĐÃ ÁP) — giao luồng Giao diện
+
+- Registry nhánh: `_kho_ds_nhanh(mon)` (Toán: Đại · hinh_gt · hinh_hoc; KHTN: gốc; môn chưa có kho: rỗng) + `_kho_ban_do_dong(mon, khoi)` chuẩn hoá 4 bảng bản
+  đồ về 1 hình dạng (hinh_hoc_bai không có chủ đề ⇒ 1 lục địa "Hình học", màn = ma_bai). Hàm bản đồ KHÔNG có `if môn` (§1.6) — khác `tu_luyen_chu_de_ds_dang`
+  cũ đang `if p_mon = 'KHTN'` (nợ, chưa sửa).
+- `_phieu_luu_bo()`: 16 loài quái + 4 boss + 8 biome = tên file Đơn 6. Gán cố định: loài = băm mã cụm; biome = thứ tự chủ đề (nhánh → mã) xoay vòng.
+- `fn_ban_do_phieu_luu(mon)`: lục địa → khu vực → màn → quái; trạng thái từ `fn_mastery_cells` (dat ⇒ dat, có số đo khác ⇒ yeu, không có ⇒ chua_do);
+  da_day = dạng có trong bài trên lớp/ET/BTVN/đề thi của lớp HOẶC em đã có số đo; so_cau theo `_kho_dk_online_hs_sql`.
+- Thử ROLLBACK đóng vai 7 em (Toán 4T/6/7/9/12, KHTN 7/9). Bản đầu: boss theo mức độ ≥4 ⇒ KHTN k9 64 boss; màn 0 câu (cả "Hình học Test") lọt vào;
+  Hình học đứng đầu do sort chữ. Sửa: mỗi khu 1 màn boss (mức độ cao nhất) và chỉ quái cuối là boss · chỉ màn có câu HOẶC đã có số đo · lục địa xếp theo
+  nhánh rồi mã. Sau sửa: Toán k9 8 lục địa · 21 khu · 69 màn (39 đạt/16 yếu/14 chưa đo) · 21 boss · 80–130 ms.
+- `src/lib/phieuluu.ts` (kiểu + `banDoPhieuLuu`) · spec §13.4 + hộp thư ✔.

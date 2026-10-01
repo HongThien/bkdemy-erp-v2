@@ -298,16 +298,19 @@ HANDOFF mục GIAO DIỆN APP HS · tutorial demo `src/screens/hocsinh/tutorial/
   bay_ngay: { ngay: string, trang_thai: 'hoc' | 'dong_bang' | 'nghi' | 'trong' | 'cho_sua' | 'dut' }[] }  // 7 ngày, cũ → mới
 // Mốc 7 (A) / 30·100·200·365 (S) tự thành tin Thế giới kieu='chuoi', chi_tiet { so_ngay } — khoe được như thành tích khác.
 
-// fn_ban_do_phieu_luu(p_mon text) → jsonb   (cây kiến thức của khối em + trạng thái HS × dạng)
-{ mon: string, khoi: string,
-  luc_dia: { ma: string, ten: string, thu_tu: number, biome: string,            // biome do DB gán cố định (xoay vòng bộ nền)
+// fn_ban_do_phieu_luu(p_mon text) → jsonb   ✔ ĐÃ CÓ (mig 202610011520) · TS: src/lib/phieuluu.ts banDoPhieuLuu()
+{ mon: string, khoi: string | null,
+  luc_dia: { ma: string, ten: string, thu_tu: number, biome: string,          // biome cố định theo thứ tự chủ đề (xoay vòng 8 vùng Đơn 6)
     khu_vuc: { ma: string, ten: string, thu_tu: number,
-      man: { ma_dang: string, ten: string, thu_tu: number, muc_do: number,
+      man: { ma_dang: string, ten: string, thu_tu: number, muc_do: number | null, nhanh: string | null,
+        so_cau: number,                          // câu luyện được trên app (màn chỉ hiện khi so_cau > 0 HOẶC em đã có số đo)
         trang_thai: 'chua_do' | 'yeu' | 'dat',   // 3 trạng thái §5 CLAUDE.md
-        da_day: boolean,                         // lớp đã dạy tới (false ⇒ phủ sương nhưng vẫn vào được)
-        mastery: number | null,                  // 0..1, null khi chưa đo
-        quai: { ma: string, ten: string, loai_quai: string, la_boss: boolean }[]  // cụm ⇒ quái; dạng chưa có cụm ⇒ 1 quái
+        muc: string | null, mastery: number | null,
+        da_day: boolean,                         // false ⇒ phủ sương nhưng vẫn vào được
+        la_man_boss: boolean,                    // mỗi khu vực 1 màn boss (mức độ cao nhất)
+        quai: { ma: string, ten: string, loai_quai: string, la_boss: boolean }[]  // cụm ⇒ quái; boss = quái cuối của màn boss
       }[] }[] }[] }
+// Hình học không có tầng chủ đề ⇒ 1 lục địa "Hình học". Thứ tự lục địa: Đại → Hình GT → Hình học. ~80–130 ms/lần.
 
 // fn_luot_hoc_that_ket_qua(p_bai_lam_id uuid) → jsonb   — ĐÃ CÓ (mig 202610011501)
 { tinh: boolean, ly_do: 'it_cau' | 'duoi_nguong' | 'qua_nhanh' | 'khong_phai_luot_luyen' | null,
@@ -345,7 +348,7 @@ fn_ban_do_phieu_luu (trang hs.html?xem=phieu_luu) + ngọn lửa chuỗi trên H
 *(Luồng nào cần luồng khác làm gì thì ghi 1 dòng: ngày · từ → tới · việc · trạng thái. Luồng nhận làm xong thì sửa trạng thái thành ✔.)*
 
 - 01/10 · Giao diện → Số liệu · `fn_chuoi_cua_toi` đúng §13.4 · ✔ 01/10 (`src/lib/chuoi.ts`)
-- 01/10 · Giao diện → Số liệu · `fn_ban_do_phieu_luu` đúng §13.4 · ⏳ (làm tiếp ngay sau chuỗi)
+- 01/10 · Giao diện → Số liệu · `fn_ban_do_phieu_luu` đúng §13.4 · ✔ 01/10 (`src/lib/phieuluu.ts`; loài quái/biome = tên file Đơn 6, xem `_phieu_luu_bo()`)
 - 01/10 · Số liệu → Giao diện · Thế giới BK: thêm chữ cho tin `kieu = 'chuoi'` ở `moTaTin()` (`TheGioiHS.tsx`), vd "giữ **chuỗi 7 ngày** 🔥" (`chi_tiet.so_ngay`) — hiện đang ra nguyên chữ "chuoi" · ⏳
 - 01/10 · Số liệu → Giao diện · màn kết quả Tự luyện/Thử thách: gọi `ketQuaLuotHocThat(baiLamId)` + `loiLuotKhongTinh()` (`src/lib/chuoi.ts`) báo lượt chưa tính · ⏳
 - 01/10 · Số liệu → Giao diện · (sau) ô nhập "Ngày nghỉ của chuỗi" cho quản trị: hàm có sẵn `dsNgayNghiChuoi / themNgayNghiChuoi / goNgayNghiChuoi` — Số liệu tự làm ở màn nhân sự Huy hiệu · ⏳ Số liệu
