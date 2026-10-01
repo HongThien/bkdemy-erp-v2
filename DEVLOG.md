@@ -34210,3 +34210,25 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Tổng kết luồng Số liệu vào HANDOFF (khối "[SỐ LIỆU] CHỐT NGÀY 01/10" dưới mục RELEASE V1.0) + `spec-v1-app-hs.md` §14 (bảng trạng thái từng hạng mục · quyết định Thùy · việc tiếp theo thứ tự) + §12 chuỗi chung ✔.
 - 11 migration trong ngày đều ĐÃ ÁP: 1501 · 1512 · 1515 · 1520 · 1525 · 1539 · 1545 · 1546 · 1547 · 1601 · 1641. Việc còn: deploy ⇒ thu hồi quyền `thu_thach_sinh`/`tu_luyen_sinh` cũ · nhập ngày nghỉ chuỗi · nút 👑 app GV ·
   đối soát khi có dữ liệu thật · Thùy quyết dòng huy hiệu trong Ví xu · cấp 1 có vào V1 không.
+
+## 2026-10-02 (cuối phiên máy công ty) — [Game] Tổng kết + HANDOFF distill; 2 luồng làm thú bị ngắt vì lỗi mạng
+
+- **Lỗi:** 2 luồng nền (ngựa, cá voi) dừng giữa chừng: `API Error: Self-signed certificate detected (DEPTH_ZERO_SELF_SIGNED_CERT)`, tức proxy công ty cắt kết nối.
+  - Luồng ngựa lúc đó đang làm theo brief CŨ ("phủ lông kín"), CHƯA nhận tin đính chính theo Frostallion.
+  - Luồng cá voi đang làm bản 4b.
+- **Không xoá gì.** Phần sửa dở (9 file `src/thu/*`) commit sang nhánh mới `wip-0210-bi-ngat` (`a9783e0`) của BatThu, đã push.
+  - Thư mục làm việc trở về `thu-de-thuong` @ `eddb531` (bản tốt cuối).
+- **HANDOFF:** viết lại mục "⭐⭐ GAME BK" theo trạng thái cuối 02/10:
+  - BK World + V1 đủ tính năng;
+  - ⚠ hệ thống V1 chưa bắt đầu;
+  - thú làm bằng code + quy trình `lam-thu` + bảng loài;
+  - 2 nhánh code;
+  - chờ CEO 5 câu;
+  - bài học làm thú.
+  - Bỏ các dòng đã cũ: 2 câu cổng học (đã giải bằng "lượt học thật"), vênh xu 30/09–01/10 (đã giải bằng BK World), chọn nguồn mô hình (đã chọn làm bằng code), Sổ Trùm (gác).
+  - Sửa dòng đường dẫn `BKGame\CLAUDE.md` bị mất dấu `\`.
+- **Việc tiếp ở máy nhà:**
+  - `git pull` repo ERP + `git fetch` repo BatThu;
+  - làm tiếp ngựa (cánh Frostallion) + cá voi 4b theo HANDOFF mục GAME;
+  - CEO quyết mở luồng hệ thống V1.
+- **Ghi chú:** HANDOFF đang có 2 khối "⭐⭐ RELEASE APP HS V1.0" trùng nhau (dòng ~12 và ~60, do phiên khác). Luồng Game không sửa vì không thuộc vùng của mình.
