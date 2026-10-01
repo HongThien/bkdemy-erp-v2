@@ -34381,3 +34381,19 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Sai/sửa: lần 1 nhãn đảo đè đảo hàng dưới + vân nước vòng tròn đồng tâm thô ⇒ nhãn đè lên chân đảo, đảo to hơn, ánh nước thành 5 vầng mờ;
   bệ chặng cuối hàng lấn dưới panel phải ⇒ chừa 420px.
 - Còn: màn đọc dọc ở chặng hơi chật (số thứ tự bị bệ kế che); màn đấu 2.5D; ráp ảnh Đơn 7 khi về.
+
+## 2026-10-02 (sáng, máy nhà) — [Game] Thiên Kình bản 7 theo 9 ảnh mô hình 3D Panthalus: mắt, vòm chữ U ôm đầu, vây (BatThu `thu-de-thuong` @ `ef0e2a6`)
+- Thùy gửi 9 ảnh mô hình 3D Panthalus nhiều góc ("sửa đi, đặc biệt là đôi mắt" · "làm như ảnh vừa gửi"). Lưu `BatThu/.snap/tham-khao/thien_kinh/3d-1..9.png`.
+  Đây là nguồn tốt nhất tới giờ — rõ hơn hẳn khung hình video.
+- Đọc từ ảnh ⇒ bản 6 sai 4 chỗ: (1) MẮT mẫu là hạnh nhân viền đen dày, mí trên xiên mạnh (gắt), tròng vàng gần kín, con ngươi đen TRÒN — không
+  có xoáy (xoáy ở khung video cận đầu là lúc Panthalus đang choáng); (2) VÒNG mẫu không phải vòng kín mà là VÒM chữ U úp qua đầu, 2 chân là tấm
+  đồng ôm 2 bên đầu sau mắt, mép bậc tia chớp, xuống tận dưới hàm; (3) huy hiệu ở đỉnh MÕM, ngọc xanh dương, không có dải mũ đồng (chỉ vạch trắng);
+  (4) 2 cặp vây đều dài, xếp lớp, có vân mạch + chấm xanh lá; thân xanh ngọc đậm hơn bản 6.
+- Làm: mắt mới (hốc đen + tròng vàng hạnh nhân + con ngươi tròn + chấm sáng, bỏ nét mí rời vì nhìn gần thành "lông mày"); vòm kiểu `mu` dựng bằng
+  tấm có độ dày dò mặt đầu từng điểm (ôm sát, không hở/không cắm), phần dưới đường miệng gán xương hàm ⇒ há miệng tấm gập theo; 8 tia phiến nhọn;
+  vây sau 0,85 → 1,45 m; vây trước rủ chéo. Kiểu vòng KÍN của bản 5–6 vẫn giữ (CEO 02/10 từng chốt "cá nằm hẳn trong vòng") — đổi lại bằng 1 tham số.
+- Tự kiểm: `thien_kinh-so-tham-khao` (đặt cạnh 3 ảnh mẫu 3D cùng góc) · `-dau` · `-tren` · `-truoc` · `-mau` · `-dong-tac` · chuỗi `-dt-hat`
+  (há miệng, tấm theo hàm), `-dt-lon_vong`, `-dt-quay_duoi`. Bản Đẹp 49,7k tam giác; tsc sạch.
+- Bài học: ảnh mô hình 3D nhiều góc > khung hình video — video dễ bắt nhầm trạng thái (mắt xoáy lúc choáng) và góc nghiêng làm sai hình phụ kiện
+  (vòm chữ U nhìn thành vòng kín). Có mô hình thì xin ảnh 3D trước.
+- Còn: thiếu cặp vây nhỏ sát đầu như mẫu (khuôn mới có 2 cặp xương vây) · vân trắng trên thân chưa dày/nhiều bằng mẫu · đỉnh huy hiệu mẫu có chóp nhọn.
