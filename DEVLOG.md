@@ -34972,3 +34972,29 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   `DauTruongHS.tsx` sân 2D chibi + boss_thuy tạm + thanh máu 5 ô có vạch ngưỡng + hoạt cảnh sau mỗi trận / cuối lượt + Bỏ cuộc · `XemThuThach.tsx` cổng + lượt còn lại + khoá). Chốt thêm với Thùy: 2 lượt/ngày/MÔN, chưa đóng lượt 1 không mở lượt 2, trần TUẦN thay trần ngày, 30 phút ⇒ thua.
   Kiểm bằng Browser pane: thắng 3 trận (+30) · thua trận 1 (boss phóng to, chibi xám) · bỏ cuộc (hỏi xác nhận) · 390×844 và 1280×720. Vấp: mạng đổi giữa chừng (`ERR_NETWORK_CHANGED`) làm trang trắng ⇒ tải lại; thanh máu bị cắt trên điện thoại ⇒ sân cao theo boss + co theo bề ngang.
   Đã lệch spec §4 một chỗ: sai KHÔNG hồi máu quái (ghi ở spec §9). Điểm 10/20/30 trong demo là số giả — server tính thật.
+
+## 2026-10-02 (tối) — [Kho Anh] Nhập 24 đề vào 10 Hà Nội từ web (LoiGiaiHay) — kho 2.290/2.756 đã duyệt
+
+- **Thùy:** "Cái gì có sẵn hiện tại làm được luôn" · "M research một vòng tài liệu ôn tập khối 9…" (báo cáo `reports/Nguồn ôn thi Anh vào 10.md`)
+  · "dùng cá nhân, ko bán thương mại, ko cần lo [bản quyền]" · về tải file: "bỏ qua cái này đi" ⇒ KHÔNG tải file nào (ảnh, PDF).
+- **Nguồn:** LoiGiaiHay có bản CHỮ (có gạch chân `<u>`) của đề Sở HN 2026 · 2025 · minh họa 2025 · 2020–2023 (khuôn cũ) + 17 đề tham khảo
+  HN, kèm bảng đáp án "N.X" (trừ 2025/minh họa/2023/2022 — đáp án chỉ có trong PDF). VietJack: đề Sở là ẢNH, 12 đề trường chỉ bản xem thử
+  cắt câu 40 + không đáp án ⇒ bỏ.
+- **Trạm đọc mới `scripts/anh/doc_de_web.py`** (cùng khuôn đầu ra với trạm đọc file GV). Lỗi bắt được khi chạy 24 đề, mỗi lần vá chạy lại
+  cả 24 + so khác: "pronunciation" không chứa "pronounc" · bộ phương án DÙNG CHUNG (câu 37–40 HN 2026: in trước câu, cùng dòng hoặc
+  trong BẢNG) · câu tự mang lệnh ("Choose the correct sentence…", "Reorder…", "Put the sentences (a-c) in the correct order…") ·
+  số câu trần "29." (chỉ nhận khi đúng số kế tiếp) · khối đáp án cắt nhầm ở "Đánh giá" (chữ này nằm trong thuộc tính HTML) · phần TỰ LUẬN
+  đề cũ · lệnh CLOSEST/OPPOSITE chép vào đề câu đồng/trái nghĩa (bên A báo thiếu) · "the sentence that is closest in meaning" là câu gần
+  nghĩa · số câu trùng trong đề (TK14 hai "Question 26" ⇒ C026B + cờ, không lấy đáp án theo số) · phần "đọc hiểu" không đề + đoạn có "(n)"
+  là điền đoạn văn.
+- **Kiểm:** 902 câu (bỏ 37 câu biển báo vì không tải ảnh) qua A mù (3 lượt) + B (3 lượt) + cổng ⇒ 574 vào kho · 252 chờ · 70 không nhập
+  (38 trùng giữa các đề tham khảo + 32 ngoài phạm vi). Bên C phân xử 41 câu lệch nhãn ⇒ +21; **18 câu cả A–B–C cùng mã mà luật dạng chặn
+  ⇒ lộ bộ đọc xếp sai dạng** ⇒ sửa dạng 28 câu đã ghi ⇒ +16. Kiểm lại 14 câu đồng/trái nghĩa (đề đổi sau khi A chấm) ⇒ +7.
+  Soát tay 15 câu chắc chắn: 15/15 đúng (1 câu lạ "the word ones 2" là lỗi gõ của chính trang).
+- **Đáp án nguồn sai bên B bắt được:** ~14 câu (vd TK05-C001 phát âm, TK13-C012 "whom", TK15-C037/040 đảo đáp án) ⇒ chờ duyệt.
+- **Còn chờ:** 4 đề không có đáp án nguồn (2025, minh họa 2025, 2023, 2022 ≈ 130 câu). Ở 6 câu đã kiểm lại, A và B tự giải độc lập RA
+  CÙNG đáp án ⇒ có thể dùng "2 bên giải mù trùng nhau" làm đáp án nếu Thùy đồng ý (chưa làm — đổi luật).
+- **Kho Anh:** 2.756 câu · 2.290 đã duyệt (83,1%) · 466 chờ · 98/100 điểm có câu. Theo nguồn: bài tập GV 1.672/1.930 · đề Sở HN 104/240 ·
+  đề tham khảo 514/586.
+- **Bài học:** (1) luật "nhãn phải hợp dạng đề" là nhân chứng thứ ba bắt được lỗi của chính TRẠM ĐỌC (xếp sai dạng), không chỉ lỗi nhãn.
+  (2) Heredoc bash nuốt `\n` trong script Python vá file — vá file bằng Write (dính 4 lần hôm nay).

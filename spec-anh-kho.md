@@ -130,6 +130,13 @@ Khoảng 8–9 file + 1–2 migration, ~300–500 dòng. Rủi ro lớn nhất: 
 - `_kho_snapshot_cau` chưa mang ngữ liệu sang bài làm ⇒ phải chụp kèm đoạn văn/ảnh để app hiện cả cụm (không xáo — giấy = app).
 - Đọc `spec-v1-app-hs.md` + `design/STYLE-HS.md` trước khi đụng app HS.
 
+## 4b. Đề thi đã nhập từ web (02/10 tối)
+
+- `scripts/anh/doc_de_web.py` đọc trang đề LoiGiaiHay (bản chữ + bảng đáp án) → cùng quy trình A/B/cổng. 24 đề HN (7 đề Sở 2020–2026 +
+  17 đề tham khảo): 826 câu vào kho, 618 đã duyệt. Bỏ câu biển báo (cần ảnh — Thùy không cho tải file).
+- Tiếp theo (dạng chữ, có đáp án, không cần tải): đề vào 10 chính thức các tỉnh trên LoiGiaiHay (56 chuyên mục, ~200 đề) · trắc nghiệm
+  Global Success 6/7/8/9 theo điểm ngữ pháp (LoiGiaiHay, có lời giải; nhiều câu 3 phương án) — lấp nền lớp 6–8.
+
 ## 5. Nguồn tài liệu để nhập tiếp (research 02/10 — chi tiết: scratchpad `web/nguon_de_anh9.md`, chưa tải file nào)
 
 - **Quy mô ước:** khoảng 220–350 đề theo cấu trúc mới, gồm 70–100 đề thật của trường/phường (sau khi bỏ trùng) và 150–250 đề GV biên soạn.
