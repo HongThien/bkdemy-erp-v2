@@ -63,9 +63,9 @@ export function LucDia2D({ luc, b, onChon, onVe, gioi = 'nam' }: { luc: LucDiaV;
                       {t.trangThai === 'yeu' && t.loai && <span className="pointer-events-none absolute" style={{ right: -coMoc * 0.2, bottom: coMoc * 0.05, width: coMoc * 0.42, height: coMoc * 0.42 }}><QuaiTam b={b} loai={t.loai} co={coMoc * 0.42} /></span>}
                       {dangO && <span className="pointer-events-none absolute" style={{ left: -coMoc * 0.55, bottom: 0 }}><Hero gioi={gioi} cao={coMoc * 0.8} mau={b.troi} /></span>}
                       <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center px-2 py-0.5 text-center"
-                        style={{ ...THE_TRON, top: '100%', marginTop: 4, borderRadius: 10, width: 'max-content', maxWidth: lon ? 220 : 150, borderColor: hov === v.ma ? 'var(--sk-acc)' : undefined }}>
-                        <span className="block max-w-full truncate whitespace-nowrap text-[11.5px] font-bold leading-tight" title={v.ten} style={{ ...HEAD, color: 'var(--sk-ink)' }}>{v.ten}</span>
-                        <Sao5 ti={t.tong ? t.dat / t.tong : 0} co={lon ? 12 : 10} />
+                        style={{ ...THE_TRON, top: '100%', marginTop: 4, borderRadius: 10, width: 'max-content', maxWidth: lon ? 250 : 160, padding: lon ? '6px 12px' : undefined, borderColor: hov === v.ma ? 'var(--sk-acc)' : undefined }}>
+                        <span className={`block max-w-full font-bold leading-[1.15] ${lon ? 'text-[15px]' : 'text-[12.5px]'}`} style={{ ...HEAD, color: 'var(--sk-ink)' }}>{v.ten}</span>
+                        <Sao5 ti={t.tong ? t.dat / t.tong : 0} co={lon ? 21 : 15} />
                       </span>
                     </div>
                   )

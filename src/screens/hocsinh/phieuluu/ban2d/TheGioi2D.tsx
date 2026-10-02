@@ -32,8 +32,8 @@ function NhanLuc({ l, t, dangO, dai }: { l: LucDiaV; t: ReturnType<typeof thongK
   return (
     <>
       {dangO && <span className="rounded-full px-2 text-[10.5px] font-bold" style={{ background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)' }}>Em đang ở đây</span>}
-      <span className="block max-w-full truncate whitespace-nowrap font-bold leading-tight" title={l.ten} style={{ ...HEAD, color: 'var(--sk-ink)', fontSize: dai ? 12 : 10 }}>{l.ten}</span>
-      <Sao5 ti={t.tong ? t.dat / t.tong : 0} co={dai ? 13 : 10} />
+      <span className="block max-w-full font-bold leading-[1.15]" style={{ ...HEAD, color: 'var(--sk-ink)', fontSize: dai ? 15.5 : 12 }}>{l.ten}</span>
+      <Sao5 ti={t.tong ? t.dat / t.tong : 0} co={dai ? 22 : 15} />
     </>
   )
 }
@@ -76,7 +76,7 @@ function ToanCanh({ banDo, b, onChon, hienTai, thanh, gioi = 'nam' }: Props) {
                 {t.trangThai === 'yeu' && t.loai && !dangO && <span className="pointer-events-none absolute" style={{ left: '62%', top: '12%', width: d * 0.16, height: d * 0.16 }}><QuaiTam b={b} loai={t.loai} co={d * 0.16} /></span>}
                 {dangO && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ top: '-6%' }}><Hero gioi={gioi} cao={d * 0.32} mau={b.troi} /></span>}
                 <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center gap-0.5 px-2 py-1 text-center"
-                  style={{ ...THE_TRON, top: '62%', borderRadius: 12, maxWidth: dai ? 230 : 130, width: 'max-content' }}>
+                  style={{ ...THE_TRON, top: '62%', borderRadius: 12, maxWidth: dai ? 250 : 150, width: 'max-content', padding: dai ? '6px 12px' : undefined }}>
                   <NhanLuc l={l} t={t} dangO={dangO} dai={dai} />
                 </span>
               </div>
@@ -121,7 +121,7 @@ function GhepManh({ banDo, b, onChon, hienTai, thanh, gioi = 'nam' }: Props) {
                   {t.trangThai === 'yeu' && t.loai && !dangO && <span className="pointer-events-none absolute" style={{ right: '10%', top: '10%', width: size * 0.2, height: size * 0.2 }}><QuaiTam b={b} loai={t.loai} co={size * 0.2} /></span>}
                   {dangO && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ top: -size * 0.14 }}><Hero gioi={gioi} cao={size * 0.36} mau={b.troi} /></span>}
                   <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center gap-0.5 px-2 py-1 text-center"
-                    style={{ ...THE_TRON, top: '74%', borderRadius: 12, maxWidth: dai ? 230 : 130, width: 'max-content' }}>
+                    style={{ ...THE_TRON, top: '74%', borderRadius: 12, maxWidth: dai ? 250 : 150, width: 'max-content', padding: dai ? '6px 12px' : undefined }}>
                     <NhanLuc l={l} t={t} dangO={dangO} dai={dai} />
                   </span>
                 </div>

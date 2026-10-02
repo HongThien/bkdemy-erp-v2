@@ -34545,3 +34545,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - 3 tầng: tên nowrap + cắt … (title = tên đầy đủ), thẻ rộng hơn (thế giới 230 · lục địa 220 · chặng 210px). San2D.Sao5(ti): sao đầy = floor(ti×5).
 - Thế giới + lục địa: ti = dạng đạt / tổng dạng (thay "x/y chặng đạt" và "Chưa đo" — chưa đo = 0 sao). Chặng: dạng đạt = 5 sao, chưa đạt = độ nắm dạng (mastery DB);
   bỏ dòng "N quái · còn x đòn" trên thẻ (vẫn ở bảng chi tiết bên phải). Chỉ đổi hiển thị, số liệu vẫn từ DB.
+
+### 02/10 — [Giao diện] Nhãn bản đồ to hơn, hiện đủ tên (Thùy: "bảng tên to ra, chữ to, hiện đầy đủ — tên quá dài thì chấp nhận 2 dòng; star thật to, nổi bật")
+- Bỏ cắt … (bản trước) ⇒ tên đủ, xuống tối đa 2 dòng. Chữ: thế giới 15.5 · lục địa 15 · chặng 14px (iPad ngang). Thẻ rộng ≤250px, đệm 6×12.
+- Sao: 22/21/19px; sao đầy vàng + viền tối + quầng; sao chưa đạt RỖNG chỉ viền (bản đầu tô vàng nhạt ⇒ nhìn như đầy, không phân biệt được). Kiểm 3 tầng 1180×820, 0 lỗi.

@@ -65,10 +65,10 @@ export function Chang2D({ luc, vung, b, onVe, onVao, gioi = 'nam' }: { luc: LucD
                   <Hero gioi={gioi} cao={coBe * 0.85} mau={b.troi} />
                 </span>}
                 <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center text-center"
-                  style={{ ...THE_TRON, top: '100%', marginTop: 4, borderRadius: dai ? 10 : 999, width: dai ? 'max-content' : 26, height: dai ? undefined : 26, maxWidth: 210, justifyContent: 'center', padding: dai ? '2px 8px' : 0, background: 'var(--sk-surface)', borderColor: chon || hov === x.ma ? 'var(--sk-acc)' : undefined }}>
+                  style={{ ...THE_TRON, top: '100%', marginTop: 4, borderRadius: dai ? 10 : 999, width: dai ? 'max-content' : 26, height: dai ? undefined : 26, maxWidth: 230, justifyContent: 'center', padding: dai ? '5px 10px' : 0, background: 'var(--sk-surface)', borderColor: chon || hov === x.ma ? 'var(--sk-acc)' : undefined }}>
                   {dai ? <>
-                    <span className="block max-w-full truncate whitespace-nowrap text-[11.5px] font-bold leading-tight" title={x.ten} style={{ ...HEAD, color: 'var(--sk-ink)' }}>{x.ten}</span>
-                    <Sao5 ti={x.trang_thai === 'dat' ? 1 : x.mastery ?? 0} co={12} />
+                    <span className="block max-w-full text-[14px] font-bold leading-[1.15]" style={{ ...HEAD, color: 'var(--sk-ink)' }}>{x.ten}</span>
+                    <Sao5 ti={x.trang_thai === 'dat' ? 1 : x.mastery ?? 0} co={19} />
                   </> : <span className="text-[12px] font-extrabold" style={{ ...HEAD, color: 'var(--sk-ink)' }}>{i + 1}</span>}
                 </span>
               </div>

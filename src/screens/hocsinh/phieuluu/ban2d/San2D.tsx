@@ -158,7 +158,9 @@ export function Sao5({ ti, co = 13 }: { ti: number; co?: number }) {
   return (
     <span className="inline-flex items-center gap-[1px] leading-none" role="img" aria-label={`${n}/5 sao`}>
       {Array.from({ length: 5 }, (_, i) => (
-        <span key={i} style={{ fontSize: co, color: i < n ? 'var(--sk-acc)' : 'var(--sk-line)', textShadow: i < n ? '0 0 4px var(--sk-acc)' : undefined }}>★</span>
+        <span key={i} style={{ fontSize: co, lineHeight: 1, color: i < n ? 'var(--sk-acc)' : 'transparent', WebkitTextStroke: i < n ? undefined : `${Math.max(1, co / 14)}px var(--sk-muted)`,
+          // sao đầy: vàng + viền tối + quầng sáng · sao chưa đạt: RỖNG chỉ có viền (phân biệt rõ ở mọi cỡ)
+          textShadow: i < n ? '0 0 2px var(--sk-bg), 0 0 2px var(--sk-bg), 0 0 10px var(--sk-acc)' : undefined }}>★</span>
       ))}
     </span>
   )
