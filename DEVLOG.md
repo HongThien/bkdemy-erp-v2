@@ -34934,3 +34934,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Kiểm (Browser pane, tua khung bằng tay vì pane ẩn thì rAF đứng):** 6 loài đi dạo + vuốt ve · chọn thú khởi đầu (ảnh chân dung vẽ từ thú code) · ném bóng bắt Gà Lửa ⇒ sổ có 2 con, bóng 10→9 ·
   mở trại thấy đúng 2 con đó · đổi vé (10 📘 → +1 vé) · chế 1 bóng thường (kho trừ đúng). Lỗi gặp: ảnh chân dung cắt đầu (hộp bao đo theo xương chưa cập nhật ⇒ đo theo dáng nghỉ); ô bóng đè nút chiêu (dời lên trên cụm nút).
 - **Việc kế:** màn 3 Ấp trứng (lai 2 thú · công thức · lò ấp nở sau 1 đêm · hoạt cảnh nở có sẵn · shiny/alpha) · NPC 5 nhiệm vụ · soi iPad.
+
+- (02/10 tối) **BK World đủ 3 màn + NPC** (sớm hơn lịch 05/10): màn 3 Ấp trứng `ap.html` (`5f5cafb`: lai theo `src/bk/lai.ts` hàm thuần, 8 công thức ⇒ 4 loài lai, trứng nở theo ngày nông trại, dùng lại hoạt cảnh nở `Trung`) ·
+  NPC Bác Hai 5 nhiệm vụ (`7473f4d`, thưởng tạm vé/bóng — xu chờ CEO §4.3). Kiểm: lai Cáo Lửa × Gà Lửa ⇒ trứng ⇒ tua ngày ⇒ chạm nở ⇒ thẻ "Chào đời" ⇒ sổ có 3 con; chế 3 bóng ⇒ nhiệm vụ 1 xong ⇒ nhận vé (3→4) ⇒ sang nhiệm vụ 2.
+  Vấp: lần bấm đầu sau khi tải trang trượt (bẫy cũ Browser pane) ⇒ gọi click() bằng JS; chú thích `//` chèn giữa dòng nuốt `return` (lần 2) ⇒ dùng `/* */`.
+  Số tự đặt + danh sách công thức: spec-bk-world §7.4 (paste-ready cho CEO duyệt).

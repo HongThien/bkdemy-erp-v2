@@ -220,3 +220,25 @@ HỌC ─(lượt học thật)─► ĐIỂM HỌC TẬP ─► hạt giống �
 | 06/10 | Soi iPad · sửa lỗi · (CEO 02/10: V1 lưu trên máy — online làm ngay sau) |
 
 - **CEO 02/10:** V1 = đủ 3 màn LƯU TRÊN MÁY; online + gắn app HS làm ngay sau 06/10. Thú huyền thoại bắt được trong dungeon, cực hiếm.
+
+### 7.4 Đã build 02/10 tối (sớm hơn lịch 7.3) — bản chạy được, LƯU TRÊN MÁY
+
+Repo `bk-bat-thu`, nhánh `game-3-man`, three **r186** (0.186.1). Mở: `trai.html` (Trang trại) · `bat.html` (Bắt thú) · `ap.html` (Ấp trứng). Thú xem thử trên trại khi chưa bắt con nào: `trai.html?thu=6`.
+
+| Màn | Đã có |
+|---|---|
+| 1. Trang trại | Nông Trại nhịp ngày (r186) · thú đã có ĐI DẠO (lang thang, gặm cỏ, ngồi, nằm, ngáp, rủ nhau chơi, đêm ngủ; chạm = vuốt ve) · nút 📋 Nhiệm vụ · 🔨 Xưởng · 🥚 Ấp trứng · 🎯 Bắt thú (số vé) · vé rơi khi thu hoạch |
+| 2. Bắt thú | Đồng cỏ của bản thử, thú hoang = thú code · chọn thú khởi đầu (Cáo Lửa / Cừu Mây / Khỉ Lá) · đánh yếu rồi ném · 3 loại bóng · 1 vé/lượt · bắt được ⇒ về trại |
+| 3. Ấp trứng | Chọn 2 bé ⇒ lai ⇒ trứng vào 1 trong 2 lò ⇒ sáng hôm sau (5 giờ VN) chạm để nở ⇒ hoạt cảnh nở ⇒ thả ra trại · sổ công thức mở dần |
+| NPC | Bác Hai 5 nhiệm vụ nối tiếp: chế 3 bóng → bắt 1 bé → đủ 3 loài → lai 1 trứng → ấp nở 1 bé |
+
+**Số CTO TỰ ĐẶT để chơi thử — CEO xem, sửa thoải mái:**
+- Bóng (Xưởng): thường = 5 lúa mì + 2 cà rốt (×1) · tốt = 8 lúa mì + 6 cà rốt (×1,5) · xịn = 10 lúa mì + 8 cà rốt + 6 ngô (×2,2). Giá trị bán ≈ 16 · 34 · 68 EXP.
+- Vé: rơi 10% mỗi ô thu hoạch (12 ô ⇒ ~1,2 vé/ngày) · đổi 1 vé = 10 📘 điểm chăm chỉ · 1 vé = 1 lượt (tải lại trong 30 phút không tốn thêm).
+- Quà người mới: 3 vé + 10 bóng thường + 2 bóng tốt.
+- Đồng cỏ: 6 loài gốc + Gà Lửa, Bò Tuyết ít gặp · **Băng Thần Mã ≈ 0,2% mỗi lần sinh thú** (1 lượt ~4% được gặp), tỉ lệ bắt gốc 9% (đánh yếu + choáng + bóng xịn ≈ 20%) · shiny 2% · alpha 3% (to ×1,4, +3 cấp).
+- Lai: phí 6 lúa mì + 4 cà rốt · mỗi bé lai 1 lần/ngày · 2 lò · cùng loài ⇒ loài đó, khác loài không có công thức ⇒ loài bố hoặc mẹ · shiny 2% (+8% mỗi bố mẹ shiny) · alpha 3% (+10% mỗi bố mẹ alpha) · huyền thoại không lai được.
+- 8 công thức ⇒ 4 loài lai: Cáo Lửa + Sói Nguyệt / Gà Lửa + Sói Nguyệt ⇒ **Sư Tử Lửa** · Khỉ Lá + Sói Nguyệt / Bò Tuyết + Khỉ Lá ⇒ **Voi Rừng** · Cáo Lửa + Cánh Cụt Nước / Nhím Điện + Cáo Lửa ⇒ **Gà Lửa** · Cừu Mây + Cánh Cụt Nước / Nhím Điện + Cừu Mây ⇒ **Bò Tuyết**.
+- Thưởng 5 nhiệm vụ: 1 vé · 2 bóng tốt · 1 vé + 1 bóng xịn · 2 vé · 1 bóng xịn + 2 bóng tốt. **Chưa trả xu** — chờ CEO chốt câu §4.3 (xu nhiệm vụ có tính chung trần tháng không).
+
+**Còn lại cho 06/10:** soi iPad (FPS, cỡ chữ, chạm) · HS thật chơi thử 1 vòng · chỉnh số theo cảm giác.
