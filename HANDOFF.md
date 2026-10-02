@@ -210,12 +210,30 @@
     - thử state Nông Trại: chặn `Storage.prototype.setItem` TRƯỚC (bản lưu thật `nongtrai_ngay_v1`);
     - cmd Windows đổi ổ phải `cd /d`;
     - đừng sửa file tiếng Việt bằng `Get/Set-Content` PS 5.1.
-### ⭐⭐ LUỒNG KHO + ĐỀ THI — trạng thái hết 01/10 · ĐỌC `spec-de-thi.md` §10 (và `spec-luong-kho.md`) trước khi sửa
+### ⭐⭐ LUỒNG KHO + ĐỀ THI — trạng thái hết 02/10 · ĐỌC `spec-de-thi.md` §10 (và `spec-luong-kho.md`) trước khi sửa
 
 **Thứ tự ưu tiên (Thùy 01/10):** làm theo LÁT, lát nào xong dùng được lát đó — không đòi một phát xong cả dây chuyền. ĐỀ THI làm trước;
 bản đồ kiến thức Thùy tự làm; gán mẫu / skill gán dạng / lô 673 câu K12 **ĐÃ GÁC** (không làm tới khi được gọi).
 
-**ĐỀ THI — 4 lát A–D đã build, đã push `main` (lát C `9c1a69e`, lát D `08407f9`). ⚠ Vercel CHƯA deploy (ERP + app HS) — Thùy bấm tay.**
+**▶ VIỆC KẾ TIẾP (Thùy 02/10) — MỞ CONTEXT MỚI: nhập vài trăm file tài liệu + lập BẢN ĐỒ KIẾN THỨC MỚI cho một MÔN TOÁN KHÁC (không phải Toán đang có).**
+- **Đọc trước, theo thứ tự:** `CLAUDE.md` (§1.5, §1.6, §2.0, §2.1, Luật xoá) → mục này + "Bài học 28/09–01/10 — luồng kho + đề thi" ở phần ② →
+  `spec-luong-kho.md` (§1 quyết định · §2 luật phân tầng Dạng / Cụm / Biến thể · §5 kiến trúc trạm + cổng ghi · §9.6 phương pháp "dựng bài thi trước") →
+  `spec-luong-kho-p0.md` (§3 bản đồ code, §8 bẫy) → `spec-ban-do-k12.md` (một bản đồ đã lập thế nào: khung theo SGK → migration → màn Đề xuất → Gán mẫu).
+- **CHƯA BIẾT — hỏi Thùy trước khi viết dòng nào (đây là câu về ĐÍCH, không tự đoán):** (1) "môn Toán khác" là MÔN mới hay NHÁNH mới của Toán (§1.6:
+  môn = trung tâm riêng, bảng riêng; nhánh = bảng riêng dưới môn Toán như `dai_*` / `hgt_*` / `hinh_hoc_*`) · (2) khối nào, chương trình / bộ sách nào
+  làm khung bản đồ · (3) vài trăm file nằm ở đâu, định dạng gì (Word MathType / PDF chữ / PDF scan), có lời giải + đáp án không · (4) nhập để làm gì trước:
+  chỉ lập bản đồ, hay đổ câu vào kho luôn · (5) ai duyệt.
+- **Hạ tầng dùng lại được (đừng viết lại):** quét + ghép cặp + chép file `scripts/kho/t0-cua-vao.mjs` (cấu hình thư mục theo máy `scripts/kho/cau-hinh.mjs`:
+  `KHO_NGUON_GOC`, `KHO_LAM_VIEC`) · đọc Word MathType `scripts/kho/mathtype-thu/` (bài thi 10/10) · đọc PDF `scripts/kho/de-thi/boc-pdf.mjs` (Gemini gõ, Claude kiểm) ·
+  cổng ghi "không biên bản kiểm thì không ghi" `scripts/kho/cong-ghi.mjs` · chèn câu `scripts/_kho_insert.mjs` · màn Đề xuất dạng/cụm + Gán mẫu (hiện chỉ nối với kho Đại) ·
+  `scripts/thu-migration.mjs` (chạy thử migration rồi ROLLBACK) · lệnh `/nhap-kho`, `/nhap-de-thi`.
+- **Thêm một môn / nhánh mới phải đi qua REGISTRY, không rải `if`:** `khoCuaMon` + `NHANH_CUA_MON` (`src/lib/tailieu.ts`) · `_kho_co_mon` · `_de_thi_kho` ·
+  tiền tố mã theo môn (mig `202608141259`, `202608141452`: mã dạng = tiền tố + khối + chủ đề + chuyên đề + dạng; dạng chờ kết thúc `000000`) · `fn_kho_pham_vi`.
+  Symmetry test §1.6: thao tác trên kho mới phải chạy y hệt kho cũ. (Môn Anh là ngoại lệ đã chốt — không bê khuôn Toán; môn Toán khác thì CHƯA ai chốt.)
+- **Cách làm đã được Thùy chấp nhận:** theo lát; mỗi lô có số đo trước / sau; dựng "bài thi" (bộ file mẫu có đáp án đúng do người xác nhận) TRƯỚC khi chạy hàng loạt;
+  không một phiên tự làm tự kiểm tự ghi (luồng tự giải cũ đã ngừng vì thế); ghi DB sau khi chạy thử; DEVLOG append trong ngày.
+
+**ĐỀ THI — 4 lát A–D + phát hành 2 chế độ đã build, đã push `main` (mới nhất `dfe5000`). ⚠ Vercel CHƯA deploy (ERP + app HS) — Thùy bấm tay.**
 - **Phân vai:** Claude là máy xử lý (bóc, kiểm, gán dạng, ghi), ERP là nơi người sửa + duyệt + dùng. Đường "Gemini bóc PDF ngay trong ERP" ĐÃ GỠ.
 - **Dây chuyền:** file → `/nhap-de-thi <khối>` → `de.json` → `ghi.mjs` (chạy thử ROLLBACK → `--ghi`) → ERP **Nhập kho › 📝 Đề thi**
   (Kho đề thi, 3 tab Chờ duyệt / Sẵn sàng / Đã giao) → mở đề = sửa + ✅ Duyệt một màn → 📱 Giao.
@@ -225,37 +243,40 @@ bản đồ kiến thức Thùy tự làm; gán mẫu / skill gán dạng / lô 
   - Thư mục thả đề: `E:\BK ACADEMY\Tài liệu Claude nhập kho\DE_THI\L<khối>\` (đang TRỐNG). Thư mục làm việc: `<KHO_LAM_VIEC>/de-thi/<TÊN>/`
     (máy công ty `C:\Users\WBPC\bk-kho-lam-viec` — bộ đệm theo máy, KHÔNG có ở máy nhà; dựng lại được từ file gốc).
 - **Code ERP:** `src/screens/tailieu/KhoDeThi.tsx` (danh sách + `DeThiSoan`) · `DuyetDeThi.tsx` (`GiaoDeModal`, `DaGanPanel`, `LuotThiPanel`) ·
-  `src/lib/dethi.ts` · app HS: `ONhap4O` trong `HocSinhApp.tsx`. Kho tài liệu chỉ còn IN đề; tài liệu gán từ đề không mở builder.
-- **DB (đã áp):** mig `202610011501` (K5/K6, `fn_de_thi_ds`/`_dem`) · `202610011759` (`fn_de_thi_gan`, `fn_de_thi_da_gan`,
-  `fn_de_thi_hoan_thien_bai_test`, cột `bai_test_cau.kieu_nhap`, trigger `trg_de_thi_dien_dang`, sửa `fn_de_thi_mo` / `et_de` / `_et_cham`).
-- **Luật CEO đã chốt (spec §10.5–10.7):** K1 Kho đề thi là chỗ lưu + sửa chính · K2 duyệt 1 cửa theo ĐỀ · K4 chỉ giao cả đề ·
+  `src/lib/dethi.ts` · `KhoTaiLieuScreen.tsx` (hộp chọn chế độ phát hành) · tab Live `LiveTab` trong `BuoiHocScreen.tsx` · app HS: `ONhap4O` trong `HocSinhApp.tsx`.
+  Kho tài liệu chỉ còn IN đề; tài liệu gán từ đề không mở builder.
+- **DB (đã áp cả 4):** mig `202610011501` (K5/K6, `fn_de_thi_ds`/`_dem`) · `202610011759` (`fn_de_thi_gan`, `fn_de_thi_da_gan`, `fn_de_thi_hoan_thien_bai_test`,
+  cột `bai_test_cau.kieu_nhap`, trigger `trg_de_thi_dien_dang`, sửa `fn_de_thi_mo` / `et_de` / `_et_cham`) · `202610012158` (mở cả đề theo câu LẪN dạng) ·
+  `202610021201` (`fn_bt_mo_toan_bo`, `fn_bt_mo_phan_dau`, trigger mở dạng 1 bỏ qua bài từ đề).
+- **Luật CEO đã chốt (spec §10.5–10.9):** K1 Kho đề thi là chỗ lưu + sửa chính · K2 duyệt 1 cửa theo ĐỀ · K4 chỉ giao cả đề ·
   **K5** trả lời ngắn giữ form đề gốc, ô 4 ký tự như phiếu thi (không đổi sang trắc nghiệm) · **K6** đề luôn dùng được dù chưa đủ dạng, chỉ cảnh báo;
   câu chưa có dạng vẫn lưu kết quả, có dạng sau thì mastery tự cập nhật · **Giao = 3 cách:** 📘 Bài trên lớp / 📝 BTVN = GÁN đề vào buổi ⇒ thành
   tài liệu `giao_trinh_buoi` / `btvn` của (lớp + ngày) đúng khuôn giáo trình trích xuất (bản CHÉP; buổi đã có thì từ chối, không tự thay) ·
   ⏱ Kiểm tra = lượt thi tính giờ (`fn_de_thi_mo`).
+- **⭐ Phát hành 2 CHẾ ĐỘ cho bài trên lớp (CEO 02/10, spec §10.9):** **từng phần** (buổi học — chỉ phần đầu mở, GV bấm ▶ Phát hành từng phần ở tab Live của buổi,
+  bấm lại = thu hồi) · **toàn bộ** (luyện tập — mở sẵn mọi câu). "Phần" của bài từ đề = Phần I / II / III (mở theo CÂU, không theo dạng — một dạng rải nhiều phần);
+  của giáo trình thường = dạng (như từ 13/09). Kiểm tra / ET / BTVN luôn mở cả bài. **Chỗ chọn chính = nút 📱 ở Kho tài liệu** (Thùy: "chọn chế độ là phải chọn từ
+  kho tài liệu") — bấm 📱 trên dòng Giáo trình buổi ra hộp 2 lựa chọn; còn chọn được ở hộp Giao + bảng "Đã gán vào buổi" của Kho đề thi (cùng một hàm; Thùy chưa nói
+  giữ hay gỡ) và nút "▶▶ Mở toàn bộ" ở tab Live. Chế độ KHÔNG lưu thành cột (trạng thái thật = 2 bảng `bai_test_cau_phat_hanh` / `bai_test_dang_phat_hanh`).
+  Dùng chung bảng + `fn_bt_mo_cau` / `fn_bt_dong_cau` với luồng Học online (nhánh `worktree-hoc-online` CHƯA merge — khi merge phải ghép với `LiveTab` đã sửa).
 - **Dữ liệu thật đã chạy (01/10):** `Đề số 3 — Ôn tập chương PP toạ độ trong không gian (NBV 12-CD23)` = `tai_lieu deb38df1-a421-4211-8552-172364c3ea8a`,
   22 câu (19 hgt + 3 dai), nhập từ Word. Thùy duyệt 20:01, gán làm **Giáo trình buổi 9 của 12A1** (`55f98c32-57bd-4824-9c86-b700f8e67b84`) và mở app
-  (`bai_test 41ef798e-1dda-4f3b-a55b-ee9ec7673f70`, loại `giao_trinh`). Đọc DB sau khi mở: 3 phần 12 / 4 / 6 câu · 22/22 câu lên app và mở sẵn ·
-  6 câu trả lời ngắn có `kieu_nhap='phieu_4o'` · 2 câu dạng chờ có `ma_dang` trống · tên phần đủ · 3 em đã bắt đầu làm.
-- **Lỗi thật tối 01/10 — ĐÃ SỬA (mig `202610012158`, đã áp):** bài trên lớp từ đề chỉ hiện CÂU 1 cho học sinh. App HS đang chạy (bản cũ, chưa deploy) chỉ hiện
-  câu thuộc DẠNG đã mở, mà bài mới mở theo CÂU. Giờ mở sẵn cả đề bằng cả hai cách (`bai_test_cau_phat_hanh` + `bai_test_dang_phat_hanh`) và đã vá bài của 12A1:
-  bản app cũ thấy 20/22 câu. **2 câu chưa có dạng (câu 5 phần I, câu 1 phần III) chỉ hiện khi deploy app HS mới, hoặc khi gán dạng cho 2 câu đó**
-  (gán dạng ở màn đề ⇒ trigger tự điền + tự mở dạng trong bài đã phát).
-- **Phát hành 2 CHẾ ĐỘ cho bài trên lớp (CEO 02/10, spec §10.9, mig `202610021201` đã áp):** **từng phần** (mặc định, buổi học — chỉ phần đầu mở, GV mở phần kế ở
-  tab Live của buổi; bài từ đề: phần = Phần I/II/III, mở theo câu; giáo trình thường: phần = dạng) · **toàn bộ** (luyện tập — mở sẵn mọi câu). Kiểm tra / ET / BTVN
-  luôn mở cả bài. Chọn ở **nút 📱 của Kho tài liệu** (chỗ chính — hộp 2 lựa chọn cho mọi Giáo trình buổi), hộp Giao, bảng "Đã gán vào buổi", hoặc nút "▶▶ Mở toàn bộ" ở tab Live. Chế độ không lưu thành cột. **Chưa bấm thử bằng phiên thật; bắt buộc
-  deploy ERP + app HS** (bản HS cũ không thấy câu nào của bài từ đề mở từng phần). Dùng chung bảng + hàm mở câu với luồng Học online (nhánh `worktree-hoc-online` chưa merge).
+  (`bai_test 41ef798e-1dda-4f3b-a55b-ee9ec7673f70`, loại `giao_trinh`, mở toàn bộ). **Lỗi thật tối đó, đã sửa:** học sinh chỉ thấy câu 1 vì app HS đang chạy (bản cũ)
+  chỉ hiện câu thuộc DẠNG đã mở mà bài mới mở theo câu ⇒ giờ mở toàn bộ = mở cả câu lẫn dạng; bài 12A1 đã vá, bản app cũ thấy 20/22 câu. 2 câu chưa có dạng
+  (câu 5 phần I, câu 1 phần III) chỉ hiện khi deploy app HS mới hoặc khi gán dạng cho 2 câu đó ở màn đề (trigger tự điền + tự mở).
+- **⚠ CHƯA AI BẤM THỬ BẰNG PHIÊN ĐĂNG NHẬP THẬT** các thứ làm ngày 02/10 (hộp chọn chế độ ở Kho tài liệu, tab Live theo phần) — mới chạy thử DB (ROLLBACK) + trang
+  xem-thử dữ liệu giả. **Bắt buộc deploy ERP + app HS trước khi dùng chế độ từng phần cho bài từ đề** (bản app HS cũ sẽ không thấy câu nào).
 - **CHƯA kiểm bằng mắt / còn hở (xếp theo mức cần):**
   1. Bản IN phiếu của tài liệu gán từ đề (PrintView với phần không có mã dạng) — mới sửa code, chưa ai mở xem.
-  2. HS làm thật trên app: ô 4 ký tự mới kiểm ở trang xem-thử; app HS trên Vercel chưa deploy nên tối 01/10 các em dùng ô nhập thường.
+  2. HS làm thật trên app sau deploy: ô 4 ký tự (mới kiểm ở trang xem-thử) + bài mở từng phần.
   3. Lát D chưa đo trên **PDF scan** và đề của Sở chỉ có bảng đáp án (mới đo 1 đề PDF xuất từ Word: chữ 22/22, đáp án 21/22, hình 5/5).
   4. **Trùng câu khác nguồn:** cùng một câu đến từ Word và từ PDF không được nhận là trùng (LaTeX viết khác) — chạy thử 1/22. Chưa sửa
-     (`scripts/_kho_insert.mjs` cần chuẩn hoá LaTeX trước khi so). Đừng nhập một đề từ hai nguồn.
+     (`scripts/_kho_insert.mjs` cần chuẩn hoá LaTeX trước khi so). Đừng nhập một tài liệu từ hai nguồn. **Việc nhập vài trăm file sắp tới sẽ đụng đúng chỗ này.**
   5. `ghi.mjs` chặn đề có câu Đúng/Sai mà file không kèm đáp án ⇒ đề của Sở không đáp án chưa vào được để người điền sau.
   6. Mastery theo TỪNG MỆNH ĐỀ Đúng/Sai chưa có (đang tính theo dạng của câu, đúng một phần = 0,5).
   7. Kho đề thi chưa có nút xoá đề / đổi ngày bản gán (làm ở Kho tài liệu); chưa soạn câu MỚI bằng tay trong đề; màn hẹp mở đề gốc bị bóp cột.
-- **File tạm chưa commit (xoá hay giữ Thùy quyết):** `xem-thu-4o.html`, `xem-thu-giao-de.html`, `src/_xem_4o.tsx`, `src/_xem_giao_de.tsx`
-  (trang xem-thử dữ liệu giả cho ô 4 ký tự + hộp Giao). Thư mục thử `bk-kho-lam-viec/de-thi/_thu_pdf_DE_SO_3/` chỉ có ở máy công ty.
+- **File tạm chưa commit (xoá hay giữ Thùy quyết):** trang xem-thử dữ liệu giả `xem-thu-4o.html`, `xem-thu-giao-de.html`, `xem-thu-live-phan.html` +
+  `src/_xem_4o.tsx`, `src/_xem_giao_de.tsx`, `src/_xem_live_phan.tsx`. Thư mục thử `bk-kho-lam-viec/de-thi/_thu_pdf_DE_SO_3/` chỉ có ở máy công ty.
 
 **LUỒNG KHO (`spec-luong-kho.md`, pha đang làm `spec-luong-kho-p0.md`) — đang GÁC sau P1, trạng thái:**
 - **P0 xong:** luồng tự giải cũ đã ngừng (đừng bật lại) · bộ đọc Word MathType `scripts/kho/mathtype-thu/` đã vá 2 lỗ chặn (đánh số tự động của Word,
@@ -270,8 +291,8 @@ bản đồ kiến thức Thùy tự làm; gán mẫu / skill gán dạng / lô 
   (b) tên người học thuật duyệt bản đồ K12; (c) L1 "bỏ chuyên đề thực tế" đã bị bác — giữ nguyên.
 - **Công cụ dùng chung mới:** `node scripts/thu-migration.mjs <file.sql> --kiem <file.sql>` (chạy migration + các SELECT kiểm trong 1 transaction rồi
   ROLLBACK; giả phiên nhân sự bằng `set_config('request.jwt.claims', …, true)`) · áp migration bằng **`node scripts/migrate.mjs --only <file>`**
-  (nhiều phiên cùng đẻ migration ⇒ chỉ áp file của mình. Tối 01/10 `--status` báo "không còn file treo", nhưng còn 2 file đã áp bị sửa sau đó và
-  vài file có trong sổ mà thiếu trong repo — đọc `--status` trước khi áp).
+  (nhiều phiên cùng đẻ migration ⇒ chỉ áp file của mình. `--status` có thể báo "không còn file treo" trong khi còn file đã áp bị sửa sau đó và
+  file có trong sổ mà thiếu trong repo — đọc `--status` trước khi áp).
 
 ### Kiến trúc & file chính
 - Kho = lá `bdkt` trong cây Admin → `src/screens/kho/KhoScreen.tsx`. Build **THẬT, wire Supabase DB v2** (ngoại lệ so với mock-first của shell — vì schema Kho đã đông cứng).
@@ -2059,7 +2080,7 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
   - Windows không phân biệt hoa thường tên file: `DuongThree.tsx` đụng `duongThree.ts` (tsc TS1261, Vite lỗi export) ⇒ đặt tên khác hẳn.
   - Nhãn trên tranh: chữ KHÔNG khung + viền dày màu nền (`San2D.CHU_VIEN`) đọc rõ mọi nền; sao tiến độ chưa đạt phải RỖNG (tô nhạt nhìn như đầy).
 
-### Bài học 28/09–01/10 — luồng kho + đề thi (nhập, gán vào buổi, đọc PDF)
+### Bài học 28/09–02/10 — luồng kho + đề thi (nhập, gán vào buổi, đọc PDF)
 
 - **⭐ Làm theo LÁT dùng được ngay, không dựng cả dây chuyền rồi mới chạy.** Thùy chê thẳng khi bản đồ + gán mẫu + skill gán dạng chồng lên nhau mà thứ
   cần gấp (1 đề PDF → 1 đề trên ERP) chưa có. Mỗi lát phải có "xong khi" là một việc người dùng làm được.
@@ -2073,6 +2094,11 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
 - **⭐ Deploy tay ⇒ bản app đang chạy là bản CŨ; thay đổi phía DB phải đúng với CẢ client cũ.** 01/10: sửa lớp lọc client trong repo (nhận câu mở lẻ) rồi coi
   như xong, trong khi học sinh dùng bản Vercel chưa deploy ⇒ lớp chỉ thấy câu 1. "Đọc DB thấy 22/22 câu đã mở" KHÔNG phải bằng chứng học sinh thấy 22 câu —
   dấu hiệu có sẵn mà CTO bỏ qua: 3 em vào làm, cả 3 chỉ có đúng 1 câu trả lời. Kiểm đường của người dùng thật (bản đang chạy), không chỉ đường của code mới.
+- **⭐ Tính năng mới phải gắn vào CHỖ THAO TÁC ĐANG DIỄN RA, không phải chỗ CTO vừa dựng.** 02/10: làm 2 chế độ phát hành nhưng đặt chỗ chọn ở Kho đề thi + tab Live,
+  còn nút 📱 ở Kho tài liệu — nơi mọi người vẫn bấm phát hành — lại để mặc định im lặng. Thùy: "chọn chế độ phát hành là phải chọn từ kho tài liệu chứ."
+  Trước khi đặt một nút: hỏi "hôm nay người ta làm việc này ở màn nào?".
+- **Hạ tầng "mở dần" có sẵn 2 tầng (theo dạng 13/09 · theo câu 19/09 của luồng Học online, DB đã áp, màn ở nhánh chưa merge).** Trước khi thêm cơ chế, dò `pg_proc` +
+  `git branch -a` + sổ `_migrations` xem luồng khác đã dựng gì — 02/10 nhờ vậy chỉ thêm 2 hàm thay vì một bảng mới.
 - **Hàm `security definer` do `claude_build` sở hữu không gọi được `auth.uid()`** ("permission denied for schema auth") — dùng `public.jwt_uid()`.
   Bản chạy thử có giả phiên mới bắt được; `create function` thì trót lọt.
 - **⭐ Chạy thử migration trước khi áp:** `thu-migration.mjs --kiem` (transaction + SAVEPOINT từng câu + ROLLBACK) cho phép duyệt đề, gán, mở thi,

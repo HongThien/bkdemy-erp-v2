@@ -34755,3 +34755,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Kiểm:** `tsc` sạch. CHƯA bấm trên màn thật (preview không có phiên đăng nhập) — cần Thùy thử: Kho tài liệu › 📱 trên một Giáo trình buổi.
 
 - (02/10 chiều) **Miệng sửa lần 2** (BatThu theo commit sau `8b55fb5`): CEO "khuôn miệng rộng quá" + "hở cả phần dưới cằm" ⇒ miệng ngắn lại (khoé 0,85R), há nhỏ hơn; bỏ cách TÁCH 2 KHỐI (đường cắt chạy dọc má xuống cằm thành vết nứt răng cưa, há ra toác) ⇒ đầu 1 khối liền, chỉ rạch KHE MÔI + khoang, môi dưới theo xương miệng, má giãn như da. **Bài học:** cử động 1 phần của khối liền (hàm, mi mắt) ⇒ rạch khe ĐÚNG chỗ mở + trọng số xương mượt, đừng cắt rời khối (đường cắt kéo dài ra ngoài chỗ mở là thành vết nứt).
+
+## 2026-10-02 (chốt phiên) — [Kho · Đề thi] HANDOFF cập nhật + chuyển việc sang context mới
+
+- **Thùy:** "cập nhật handoff đi. chuẩn bị cập nhật mấy trăm file tài liệu và lập bản đồ kiến thức mới của 1 môn toán khác không phải toán này — nên ở context này hay
+  sang context mới đọc md. t định sang context mới."
+- **CTO trả lời: sang context mới.** Phiên này đã qua 3 lần nén context, phần lớn là chi tiết đề thi / phát hành không dùng cho việc mới; việc mới dài (vài trăm file) và
+  cần đọc lại spec luồng kho từ đầu. Điều kiện để chuyển an toàn = mọi thứ cần đã nằm trong md ⇒ viết lại mục "LUỒNG KHO + ĐỀ THI" của HANDOFF (trạng thái hết 02/10)
+  kèm khối "VIỆC KẾ TIẾP": đọc gì theo thứ tự · 5 câu phải hỏi Thùy trước (môn mới hay nhánh mới, khối + bộ sách, file ở đâu / định dạng, nhập để làm gì, ai duyệt) ·
+  hạ tầng dùng lại · các điểm registry khi thêm môn / nhánh · cách làm đã được chấp nhận. Thêm 2 bài học 02/10 vào phần ②.
+- **Chưa biết gì về "môn Toán khác"** ngoài câu trên — không đoán; context mới phải hỏi.
