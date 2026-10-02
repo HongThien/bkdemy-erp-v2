@@ -34885,3 +34885,27 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   `git diff --cached` trước khi commit. (2) Hai phiên cùng thay 1 hàm danh sách ⇒ migration "thêm phần tử" phải dựng từ định nghĩa đang chạy.
 
 - (02/10 chiều) Băng Thần Mã: CEO "vẫn thấy đầu và cổ có cái rãnh" — 1 lưới rồi nhưng rãnh do HÌNH: má bầu tròn gặp cổ hẹp, lượn smooth-min quá hẹp (0,03) ⇒ vòng lõm quanh má. Sửa: lượn 0,075 · cổ loe ra đoạn sát đầu · má nhỏ lại chút. **Bài học:** gộp lưới chỉ hết VẾT NỐI; còn RÃNH là do chênh bề ngang 2 khối + bán kính lượn — kiểm cả 4 góc (2 bên, gáy, họng).
+
+## 2026-10-02 (chiều) — [Kho · Đề thi] Nhập nốt 61 đề giữa kì lớp 11 Noctorium (hình không gian → kho Hình học, dạng chờ)
+
+- **Thùy:** 4 file zip `Lớp 11` / `Lớp 11_Theo dạng` / `Lớp 12_Dạng` / `Lớp 12_Đề` — "đề thi giữa kì, 1 phiên bản dạng bài, 1 phiên bản đề thi. Cái này t nhớ đã bảo m làm sẵn
+  rồi. Output: (1) làm thành đề thi, gán dạng những câu gán được, câu chưa gán để lại gán sau, sau này gán thì tự cập nhật mastery; (2) câu bóc nhỏ đưa vào kho, hàng đợi duyệt."
+- **CTO đi lạc 3 lần trước khi tới đúng chỗ** (Thùy phải dừng tool 2 lần): quét kho TSA (không phải việc của luồng này) → dò `Kho đề` khối 6–8 → thư mục Noctorium Toán 10.
+  Bài học: câu "đống đề X" mà chưa có đường dẫn ⇒ HỎI đường dẫn, đừng tự đi tìm trên ổ đĩa (đã ghi trong memory từ 22/09: "quét rộng phải hỏi").
+- **Đối chiếu trước khi làm (chỉ đọc):** vân tay sha256 của 224 file đề KHÔNG trùng file nào đã nhập (zip tải lại) nhưng so theo TÊN thì lớp 12: 117/117 đã có;
+  lớp 11: 46/107 đã có — 61 đề bị giữ lại từ 24/09 vì 344 câu hình không gian (chương IV 333, chương VII 11) "kho đích chưa chốt". ⇒ nếu chỉ tin sha256 sẽ nhập trùng 163 đề.
+- **Thùy chốt (hỏi 1 câu):** hình không gian 11 → KHO HÌNH HỌC, dạng chờ, gán dạng thật sau.
+- **Làm:** mig `202610021414_de_thi_kho_hinh_hoc_dang_cho` (sinh từ định nghĩa hàm ĐANG SỐNG, chạy thử, áp `--only`): `_kho_dang_cho` thêm `hinh_hoc` → `HH11000000`
+  (lúc đọc thấy hàm này vừa được phiên khác thêm `anh`, `tsa` — giữ nguyên) · bài chờ trong `hinh_hoc_bai` · trigger chặn duyệt dạng chờ trên `hinh_hoc_cau_hoi` ·
+  `_kho_lt_dang_tbl` + sửa `fn_de_thi_mo` (kho Hình học không có `hinh_hoc_dang_ly_thuyet` ⇒ mở kiểm tra đề có câu hình sẽ lỗi). Script: `_kho_insert.mjs` nhận `hinh_hoc`
+  (mã câu DB cấp `HHC…`, bảng thiếu vài cột của kho Đại), `noctorium_crosswalk.mjs` (IV / VII → hinh_hoc, CHUA), `noctorium_insert.mjs` (kho thứ ba + `nhanhByCau='hinh_hoc'`
+  + bỏ qua đề trùng TÊN + chế độ `--thu`).
+- **Sai / vấp:** (1) `hinh_hoc_bai.ma_dang`, `ten_dang` là cột SINH — chèn tay bị từ chối; bản thử bắt được. (2) vá `noctorium_insert.mjs` bằng `node - <<EOF`
+  ⇒ regex mất dấu `\` (`/[^p{L}p{N}]+/`) — lần thứ ba trong 2 ngày; soát lại bằng grep mới thấy, sửa bằng Edit tool. (3) lượt chạy thử đầu chạy hơn 20 phút không ra dòng nào:
+  truy vấn so trùng là subquery tương quan, quét + chuẩn hoá cả kho cho TỪNG câu ⇒ viết lại thành chuẩn hoá kho một lần rồi ghép khoá (cùng kết quả): ~3,6 giây / đề.
+  Script chạy lâu mà không in tiến độ là mù — đã thêm dòng tiến độ.
+- **Kiểm + kết quả:** `--thu` (rollback từng đề) 61 đề, 0 lỗi → ghi thật: **61 đề, 1.248 câu (1.232 mới + 16 trùng trỏ câu cũ), 526 ảnh, 0 lỗi**. Đọc lại DB: khối 11 có 107 đề;
+  344 câu ở kho Hình học (342 dòng mới ở `HH11000000`), 904 câu Đại; 686 câu có dạng, 560 dạng chờ; thiếu đáp án: 219 TN + 55 TLN (file gốc không đánh dấu — việc của người
+  duyệt, theo chốt 24/09); 131 tự luận. `fn_de_thi_thieu`: 1/61 đề duyệt được ngay, 274 câu chặn.
+- **Chưa làm:** mở thử một đề có câu hình trên màn ERP (chưa có phiên đăng nhập) · gán dạng cho 216 câu Đại còn chờ (bản đồ BK khối 11 thiếu dạng: tính / rút gọn GTLG, tổng ↔ tích,
+  chương III…) · lớp 12 không đụng (đã đủ từ 24/09; 1.707 câu còn dạng chờ).

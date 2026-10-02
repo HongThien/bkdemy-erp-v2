@@ -272,6 +272,14 @@ bản đồ kiến thức Thùy tự làm; gán mẫu / skill gán dạng / lô 
   kho tài liệu") — bấm 📱 trên dòng Giáo trình buổi ra hộp 2 lựa chọn; còn chọn được ở hộp Giao + bảng "Đã gán vào buổi" của Kho đề thi (cùng một hàm; Thùy chưa nói
   giữ hay gỡ) và nút "▶▶ Mở toàn bộ" ở tab Live. Chế độ KHÔNG lưu thành cột (trạng thái thật = 2 bảng `bai_test_cau_phat_hanh` / `bai_test_dang_phat_hanh`).
   Dùng chung bảng + `fn_bt_mo_cau` / `fn_bt_dong_cau` với luồng Học online (nhánh `worktree-hoc-online` CHƯA merge — khi merge phải ghép với `LiveTab` đã sửa).
+- **⭐ BỘ ĐỀ GIỮA KÌ NOCTORIUM lớp 11 + 12 — ĐÃ VÀO HẾT (02/10):** 107 đề khối 11 + 297 đề khối 12 (117 giữa kì + 180 đề khác) đều là `tai_lieu(loai='de_thi')`, tab Chờ duyệt;
+  câu ở kho, chưa duyệt. Lớp 12 + 46 đề lớp 11 nhập từ 24/09; **61 đề lớp 11 còn lại (1.248 câu) nhập 02/10** sau khi Thùy chốt: 344 câu HÌNH KHÔNG GIAN 11 vào
+  **kho Hình học** (`hinh_hoc_cau_hoi`) ở dạng chờ mới **`HH11000000` "Chưa phân dạng — Hình không gian 11"** (mig `202610021414`: `_kho_dang_cho` biết `hinh_hoc`,
+  trigger chặn duyệt dạng chờ trên kho Hình học, `_kho_lt_dang_tbl`, `fn_de_thi_mo` hết gọi nhầm bảng lý thuyết). Script: `scripts/noctorium_parse.mjs` → `noctorium_insert.mjs`
+  (`--thu` = chạy thật rồi rollback từng đề; chống nhập trùng theo TÊN đề vì zip tải lại có vân tay khác) · `_kho_insert.mjs` nhận kho `hinh_hoc`, so trùng nhanh hơn ~20 lần.
+  **Việc của NGƯỜI còn lại trên 61 đề mới:** 219 câu trắc nghiệm + 55 câu trả lời ngắn chưa có đáp án (file gốc không đánh dấu — điền ở màn đề), 560 câu còn dạng chờ
+  (344 hình không gian + 216 Đại: bản đồ BK khối 11 chưa có dạng tương ứng), 131 câu tự luận chỉ in. Mới 1/61 đề duyệt được ngay. Nguồn zip: `Downloads\Lớp 11.zip`,
+  `Lớp 11_Theo dạng.zip`, `Lớp 12_Dạng.zip` (thực ra là bản ĐỀ), `Lớp 12_Đề.zip` (52 file "Đề tổng hợp", không dùng); bản giải nén ở `bk-kho-lam-viec/de-thi/_nguon_GK/` (máy công ty).
 - **Dữ liệu thật đã chạy (01/10):** `Đề số 3 — Ôn tập chương PP toạ độ trong không gian (NBV 12-CD23)` = `tai_lieu deb38df1-a421-4211-8552-172364c3ea8a`,
   22 câu (19 hgt + 3 dai), nhập từ Word. Thùy duyệt 20:01, gán làm **Giáo trình buổi 9 của 12A1** (`55f98c32-57bd-4824-9c86-b700f8e67b84`) và mở app
   (`bai_test 41ef798e-1dda-4f3b-a55b-ee9ec7673f70`, loại `giao_trinh`, mở toàn bộ). **Lỗi thật tối đó, đã sửa:** học sinh chỉ thấy câu 1 vì app HS đang chạy (bản cũ)

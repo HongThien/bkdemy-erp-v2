@@ -14,9 +14,12 @@
 //       với da_duyet=false, hiện ở màn Duyệt › "Chưa phân dạng"; DB chặn duyệt khi còn dạng chờ.
 // ============================================================================
 
-export const SUBJECTS = ['hgt', 'dai', 'khtn']
+// 02/10 (CEO): thêm kho HÌNH HỌC ('hinh_hoc' — hình không gian 11 từ đề giữa kì). Khác 3 kho kia ở 3 chỗ:
+//   · dạng = BÀI (`hinh_hoc_bai`, đọc qua view `hinh_hoc_ban_do`) · mã câu do DB cấp (HHC + số chạy), không ghép từ mã dạng
+//   · bảng không có các cột ten_de_goc / ai_model / loi_giai_ai / dap_an_ai / ai_de_xuat_at · không có bảng mệnh đề riêng.
+export const SUBJECTS = ['hgt', 'dai', 'khtn', 'hinh_hoc']
 
-const PREFIX = { dai: 'T1', hgt: 'T3', khtn: 'K' }
+const PREFIX = { dai: 'T1', hgt: 'T3', khtn: 'K', hinh_hoc: 'HH' }
 /** Mã dạng chờ — PHẢI khớp public._kho_dang_cho(p_tbl, p_khoi) trong DB. */
 export function maDangCho(subject, khoi) {
   return PREFIX[subject] + String(khoi).padStart(2, '0') + '000000'
@@ -106,11 +109,14 @@ export async function insertCauBatch({ client, subject, cauList, choTrung = fals
                 ${SQL_CHUAN(`o.e->>'noi_dung' || coalesce(nullif((o.e->'lua_chon')::text, 'null'), '') || coalesce(nullif((o.e->'menh_de')::text, 'null'), '')`)} as k
            from jsonb_array_elements($1::jsonb) with ordinality as o(e, ord)
        )
-       select b.idx, b.k,
-              (select min(c.ma_cau) from ${table} c
-                where c.xoa_at is null
-                  and ${SQL_CHUAN(`c.noi_dung || coalesce(c.lua_chon::text, '') || coalesce(c.menh_de::text, '')`)} = b.k) as ma_cau_cu
-         from b order by b.idx`,
+       -- 02/10: trước là subquery tương quan ⇒ quét + chuẩn hoá CẢ KHO một lần cho MỖI câu của lô (đo: >13 giây / lô, 61 đề chạy hơn
+       -- 20 phút chưa xong). Giờ chuẩn hoá kho MỘT lần rồi ghép theo khoá — cùng kết quả (min(ma_cau) của câu trùng khoá).
+       , kho as (
+         select ${SQL_CHUAN(`c.noi_dung || coalesce(c.lua_chon::text, '') || coalesce(c.menh_de::text, '')`)} as k, min(c.ma_cau) as ma_cau_cu
+           from ${table} c where c.xoa_at is null group by 1
+       )
+       select b.idx, b.k, kho.ma_cau_cu
+         from b left join kho on kho.k = b.k order by b.idx`,
       [JSON.stringify(batch)]
     )
     const seen = new Map()   // khoá → idx đầu tiên trong lô
@@ -131,6 +137,28 @@ export async function insertCauBatch({ client, subject, cauList, choTrung = fals
   }
 
   const maCauByIdx = new Array(cauList.length).fill(null)
+
+  // Kho Hình học: mã câu do DB cấp (default HHC + hinh_hoc_cau_seq) ⇒ chèn rồi lấy mã về, không tự tính STT theo dạng.
+  if (subject === 'hinh_hoc') {
+    const jn = (v) => (v == null ? null : JSON.stringify(v))
+    for (let i = 0; i < cauList.length; i++) {
+      if (skip.has(i)) continue
+      const q = cauList[i]
+      const { rows: [r] } = await client.query(
+        `insert into hinh_hoc_cau_hoi (dang_chinh, loai_cau, noi_dung, lua_chon, menh_de, dap_an, loi_giai, anh_de, anh_dap_an,
+                                       nguon, nguon_giai, ma_cum, da_duyet, dang_ai_de_xuat)
+         values ($1, $2, $3, $4::jsonb, $5::jsonb, $6, $7, $8, $9, $10, $11, $12, false, $1) returning ma_cau`,
+        [q.dang_chinh, q.loai_cau, q.noi_dung, jn(q.lua_chon), jn(q.menh_de), q.dap_an ?? null, q.loi_giai ?? null,
+         q.anh_de ?? null, q.anh_dap_an ?? null, q.nguon || 'de_thi', q.nguon_giai || 'nguoi', q.ma_cum ?? null])
+      maCauByIdx[i] = r.ma_cau
+    }
+    for (const t of trung) {
+      if (t.ma_cau_cu) maCauByIdx[t.idx] = t.ma_cau_cu
+      else if (t.trong_lo) { maCauByIdx[t.idx] = maCauByIdx[t.idx_goc]; t.ma_cau_cu = maCauByIdx[t.idx_goc] }
+    }
+    return { maCauList: maCauByIdx, trung, chua_dang: chuaDang }
+  }
+
   for (const [dang, idxs] of groups) {
     await client.query(
       `select pg_advisory_xact_lock(hashtextextended($1, 0))`,

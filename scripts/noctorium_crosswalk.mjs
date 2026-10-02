@@ -203,7 +203,8 @@ export function ganDang(khoi, q) {
     return { subject, dang, ly_do: dang === CHUA ? `crosswalk CHUA: ${ten}` : 'crosswalk' }
   }
   if (String(khoi) === '11') {
-    if (ch === 'IV' || ch === 'VII') return { subject: null, dang: CHUA, ly_do: 'hình không gian 11 — kho đích chưa chốt' }
+    // CEO 02/10: hình không gian 11 → KHO HÌNH HỌC, nằm ở dạng chờ HH11000000 (mig 202610021414), gán dạng thật sau
+    if (ch === 'IV' || ch === 'VII') return { subject: 'hinh_hoc', dang: CHUA, ly_do: 'hình không gian 11 — kho Hình học, chưa phân dạng' }
     const subject = 'dai'
     if (!['I', 'II'].includes(ch)) return { subject, dang: CHUA, ly_do: `chương ${ch ?? '?'} chưa gán` }
     const rule = K11_THEO_BAI[`${bai}|${ten}`] ?? K11[ten]
