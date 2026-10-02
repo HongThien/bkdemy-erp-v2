@@ -750,7 +750,7 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
 
       {dangModal && d && (
         <DangPickerOne khoi={d.khoi} mon={d.mon} nhanh={dangModal.nhanh} chonNhanh onClose={() => setDangModal(null)}
-          pillsThem={laToanCoHinh ? [{ ten: 'Hình', onClick: () => { const { phanId, idx } = dangModal; setDangModal(null); setHinhPicker({ phanId, idx }) } }] : undefined}
+          pillsThem={laToanCoHinh ? [{ ten: 'Hình · Luyện', onClick: () => { const { phanId, idx } = dangModal; setDangModal(null); setHinhPicker({ phanId, idx }) } }] : undefined}
           onPick={(ma, nh) => { const { phanId, idx } = dangModal; setDangModal(null); pickDang(phanId, idx, ma, nh) }} />
       )}
       {picker && (

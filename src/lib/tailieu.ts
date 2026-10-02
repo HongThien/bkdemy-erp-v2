@@ -8,26 +8,27 @@ const LIMIT = 10000
 // ── DISPATCH KHO theo (MÔN, NHÁNH) của tài liệu (Toán→dai_, KHTN→khtn_, Toán+nhanh='hinh_gt'→hgt_).
 // `nhanh` chỉ có ý nghĩa TRONG mon='Toán' (Đại/Hình giải tích cùng mon để RBAC/billing/lop.mon sạch —
 // xem §1.6; phân biệt nhánh KHÔNG qua mon). Mặc định (mon≠KHTN, nhanh trống) → mã cũ KHÔNG đổi (Đại). ──
+// nguLieuTbl = bảng NGỮ LIỆU (đoạn văn / thông báo / biển báo dùng chung nhiều câu) — chỉ môn có ngữ liệu (Tiếng Anh); null = môn không có.
 // formTnTbl = phiên bản TRẮC NGHIỆM (distractor theo lỗi) của câu — spec-mcq-form.md. Mới có bảng dai_ (pool 1 lớp 7);
 // khtn_/hgt_ là TÊN theo quy ước, bảng tạo cùng DDL khi môn đó cần — gọi sớm thì PostgREST báo lỗi to, không im lặng.
-export function khoCuaMon(mon?: string | null, nhanh?: string | null): { cauTbl: string; banDoTbl: string; ltDangTbl: string; ltCdTbl: string; formTnTbl: string; listMap: (khoi: string) => Promise<MapRow[]> } {
+export function khoCuaMon(mon?: string | null, nhanh?: string | null): { cauTbl: string; banDoTbl: string; ltDangTbl: string; ltCdTbl: string; formTnTbl: string; nguLieuTbl: string | null; listMap: (khoi: string) => Promise<MapRow[]> } {
   return mon === 'KHTN'
-    ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', ltDangTbl: 'khtn_dang_ly_thuyet', ltCdTbl: 'khtn_chuyen_de_ly_thuyet', formTnTbl: 'khtn_cau_form_tn', listMap: listKhtnMap }
+    ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', ltDangTbl: 'khtn_dang_ly_thuyet', ltCdTbl: 'khtn_chuyen_de_ly_thuyet', formTnTbl: 'khtn_cau_form_tn', nguLieuTbl: null, listMap: listKhtnMap }
     // Tiếng Anh (kho từ 02/10): KHÔNG có lý thuyết cấp chuyên đề, KHÔNG có form TN (câu vốn là trắc nghiệm) ⇒ ltCdTbl/formTnTbl
     // trỏ tên theo quy ước (bảng chưa có — gọi tới thì PostgREST báo to, không im lặng rơi về Toán như trước).
     // TSA = Toán độc lập (02/10): cùng khuôn KHTN/Đại, bảng tsa_*. (Bảng form TN/điền chưa có — gọi tới thì PostgREST báo to.)
     : mon === 'TSA'
-    ? { cauTbl: 'tsa_cau_hoi', banDoTbl: 'tsa_ban_do', ltDangTbl: 'tsa_dang_ly_thuyet', ltCdTbl: 'tsa_chuyen_de_ly_thuyet', formTnTbl: 'tsa_cau_form_tn', listMap: listTsaMap }
+    ? { cauTbl: 'tsa_cau_hoi', banDoTbl: 'tsa_ban_do', ltDangTbl: 'tsa_dang_ly_thuyet', ltCdTbl: 'tsa_chuyen_de_ly_thuyet', formTnTbl: 'tsa_cau_form_tn', nguLieuTbl: null, listMap: listTsaMap }
     : mon === 'Tiếng Anh'
-    ? { cauTbl: 'anh_cau_hoi', banDoTbl: 'anh_ban_do', ltDangTbl: 'anh_dang_ly_thuyet', ltCdTbl: 'anh_chuyen_de_ly_thuyet', formTnTbl: 'anh_cau_form_tn', listMap: listAnhMap }
+    ? { cauTbl: 'anh_cau_hoi', banDoTbl: 'anh_ban_do', ltDangTbl: 'anh_dang_ly_thuyet', ltCdTbl: 'anh_chuyen_de_ly_thuyet', formTnTbl: 'anh_cau_form_tn', nguLieuTbl: 'anh_ngu_lieu', listMap: listAnhMap }
     : nhanh === 'hinh_gt'
-    ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', ltDangTbl: 'hgt_dang_ly_thuyet', ltCdTbl: 'hgt_chuyen_de_ly_thuyet', formTnTbl: 'hgt_cau_form_tn', listMap: listHgtMap }
+    ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', ltDangTbl: 'hgt_dang_ly_thuyet', ltCdTbl: 'hgt_chuyen_de_ly_thuyet', formTnTbl: 'hgt_cau_form_tn', nguLieuTbl: null, listMap: listHgtMap }
     : nhanh === 'hinh_hoc'
     // Hình học · phase HỌC (CEO 16/09): Bài phẳng, KHÔNG có cây chuyên đề/chuyên đề-lý-thuyết/formTN.
     // ltCdTbl/formTnTbl dùng lại tên bảng của Bài — botro_yeu/danhgia/detest chỉ được gọi khi tài liệu
     // Đại/KHTN/HGT (spec-mcq-form.md), chưa dùng cho phase Học ⇒ chưa cần bảng thật, tránh nợ schema.
-    ? { cauTbl: 'hinh_hoc_cau_hoi', banDoTbl: 'hinh_hoc_bai', ltDangTbl: 'hinh_hoc_bai_ly_thuyet', ltCdTbl: 'hinh_hoc_bai_ly_thuyet', formTnTbl: 'hinh_hoc_bai_ly_thuyet', listMap: listHinhHocMap }
-    : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', ltDangTbl: 'dai_dang_ly_thuyet', ltCdTbl: 'dai_chuyen_de_ly_thuyet', formTnTbl: 'dai_cau_form_tn', listMap: listDaiMap }
+    ? { cauTbl: 'hinh_hoc_cau_hoi', banDoTbl: 'hinh_hoc_bai', ltDangTbl: 'hinh_hoc_bai_ly_thuyet', ltCdTbl: 'hinh_hoc_bai_ly_thuyet', formTnTbl: 'hinh_hoc_bai_ly_thuyet', nguLieuTbl: null, listMap: listHinhHocMap }
+    : { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', ltDangTbl: 'dai_dang_ly_thuyet', ltCdTbl: 'dai_chuyen_de_ly_thuyet', formTnTbl: 'dai_cau_form_tn', nguLieuTbl: null, listMap: listDaiMap }
 }
 // REGISTRY nhánh dạng-based TRONG 1 môn (UI toggle "chọn bản đồ"). Môn không có trong registry = 1 nhánh
 // duy nhất (nhanh=null), không hiện toggle. Thêm nhánh mới = thêm dòng ở đây + nhánh trong khoCuaMon —
@@ -43,7 +44,10 @@ const NHANH_CUA_MON: Record<string, NhanhMon[]> = {
     { ma: 'hinh_gt', ten: 'Hình giải tích', nhomBC: 'hinh' },
     // Phase HỌC — Bài phẳng. Phase Luyện (Mô hình/Bổ đề cũ) đi luồng RIÊNG qua GiaoTrinhHinhEntry,
     // KHÔNG chung tab nhánh với Đại (CEO 16/09: "giáo trình chỉ học - giáo trình chỉ luyện độc lập").
-    { ma: 'hinh_hoc', ten: 'Hình học', nhomBC: 'hinh', mucDoThieu: 1 },
+    // ⭐ 02/10 (Thùy): rename ten → "Hình · Học" cho rõ cặp với pill mô hình "Hình · Luyện" ở MT —
+    //    trước đây label "Hình học" + "Hình" (mô hình) sát nhau trong DangPickerOne, CEO không
+    //    phân biệt được, tưởng MT chỉ chọn được ở "luyện".
+    { ma: 'hinh_hoc', ten: 'Hình · Học', nhomBC: 'hinh', mucDoThieu: 1 },
   ],
 }
 export function nhanhCuaMon(mon?: string | null): NhanhMon[] { return NHANH_CUA_MON[mon ?? ''] ?? [] }
