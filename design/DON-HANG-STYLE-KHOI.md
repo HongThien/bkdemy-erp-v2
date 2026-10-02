@@ -20,7 +20,7 @@
 ## ✅ KIỂM HÀNG 03/10 — 72 hình về 02–03/10 (tên "ChatGPT Image …", ở GỐC `bk-ui-src/`) ⇒ Claude nhận diện bằng mắt + đổi tên
 
 Đã chuyển vào `design/bk-ui-src/khoi/` (K1) · `design/bk-ui-src/khoi/phieu-luu/` (K2), nhật ký đổi tên `khoi/_doi_ten.log.txt`. Ảnh gốc ngoài git ⇒
-**Thùy cất lên Drive** như bộ gami.
+**bản gốc trên Drive (Thùy tải lên 03/10):** https://drive.google.com/drive/folders/1eZN5eRK8SxtcTjl6LXxSiuWhlp1qPjnE — #29 vẽ bù thì thả thêm vào cùng thư mục.
 
 | Đơn | Đã về | THIẾU | Ghi chú |
 |---|---|---|---|
@@ -79,7 +79,7 @@ cùng phong cách với #25–#30 đã vẽ.
    K1 → `design/bk-ui-src/khoi/` · K2 → `design/bk-ui-src/khoi/phieu-luu/`. Hình nào bắt vẽ lại thì ghi chú số # của hình đó.
    *(Bài học 01/10: 72 hình gamification về tên mặc định, 2 hình Zeus đảo thứ tự — gán theo vị trí là gắn nhầm.)*
 5. Xong nhóm nào (B, C, D…) báo Claude kiểm nhóm đó, đừng đợi đủ cả đơn.
-6. Ảnh gốc KHÔNG lên git (`design/README.md`): Thùy cất bản gốc lên Drive, Claude nén bản app dùng vào `public/bk-ui/hs/skin/khoi/`.
+6. Ảnh gốc KHÔNG lên git (`design/README.md`): bản gốc ở Drive https://drive.google.com/drive/folders/1eZN5eRK8SxtcTjl6LXxSiuWhlp1qPjnE · Claude nén bản app dùng vào `public/bk-ui/hs/skin/khoi/`.
 
 ---
 
