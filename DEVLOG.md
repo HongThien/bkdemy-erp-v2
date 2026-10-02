@@ -34909,3 +34909,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   duyệt, theo chốt 24/09); 131 tự luận. `fn_de_thi_thieu`: 1/61 đề duyệt được ngay, 274 câu chặn.
 - **Chưa làm:** mở thử một đề có câu hình trên màn ERP (chưa có phiên đăng nhập) · gán dạng cho 216 câu Đại còn chờ (bản đồ BK khối 11 thiếu dạng: tính / rút gọn GTLG, tổng ↔ tích,
   chương III…) · lớp 12 không đụng (đã đủ từ 24/09; 1.707 câu còn dạng chờ).
+
+- (02/10 chiều) Băng Thần Mã: CEO "cằm quá to, đầu không còn thuôn" — bản trước xoá rãnh bằng lượn rộng + cổ loe ⇒ đắp thịt dưới hàm. Sửa đúng gốc: má/cằm (khối cMa) NHỎ + cao hơn — chính khối bầu này tạo rãnh ⇒ bỏ bầu thì lượn vừa (0,045) đã liền. **Bài học:** xoá rãnh bằng cách BỚT khối gây rãnh, đừng đắp thêm lượn.
