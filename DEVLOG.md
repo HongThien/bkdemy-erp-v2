@@ -35021,3 +35021,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   (vòng rune, tinh thể, vũng nước/dung nham), vách = mặt đất dâng lên (1 lưới, đủ thấp cho camera), `chan()` giữ trong hang theo dốc khoảng cách, vào phòng ⇒ băng tên + boss gầm.
   Vấp: pane trình duyệt bị thu 0×0 sau khi trả khung về "desktop" ⇒ canvas rỗng, ảnh chụp trống — đặt lại khung 1280×800 trước khi chụp;
   ảnh toàn cảnh từ trên cao chỉ thấy sương (sương hang để gần) ⇒ tạm tắt sương khi chụp toàn cảnh.
+
+- (02/10 đêm, Giao diện) **Đơn 13 — nhân vật chính Đấu trường: bộ tư thế chiến đấu 2D** (nam trước, nữ sau): 15 tư thế/giới (đứng ×2 · suy nghĩ · tích năng ×2 · niệm lên trời ×2 · ném trước ×2 · phát nhỏ · bị đánh ×2 · gục · thắng ×2) + 5 tấm đạn/hiệu ứng + nền sân đấu,
+  kèm chuỗi tư thế theo từng đòn để code khớp. Viết ở `design/DON-HANG-SKIN-HS.md`. Bé gái chibi = người dẫn truyện (Thùy 02/10), không phải nhân vật chính. Chờ Thùy gửi ChatGPT.

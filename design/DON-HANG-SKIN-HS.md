@@ -1032,3 +1032,90 @@ YÊU CẦU RIÊNG (kịch bản chuẩn — ảnh to → thành phần → bố 
 > dựng lại `LucDia2D`: nền + 8 công trình đúng vị trí, N chuyên đề đầu tương tác (cờ/sương/mũi tên/5 sao do code), công trình thừa đứng yên; **nhân vật chibi chạy dọc đường** từ mốc này sang mốc kia
 > (đi theo điểm đường, tốc độ đều, luân phiên 2 ảnh chạy, thu phóng theo độ sâu, đổi hướng thì lật ngang) rồi mới vào chặng; >8 chuyên đề ⇒ kéo ngang sang màn kế = nền lật gương, đường nối ở mép ·
 > tắt đường three.js ở tầng lục địa · bỏ `CHO_MOC_VUNG`. So từng điểm với reference ở 1180×820.
+
+
+---
+
+## Đơn 13 — NHÂN VẬT CHÍNH ĐẤU TRƯỜNG: bộ TƯ THẾ CHIẾN ĐẤU 2D (nam + nữ) + đạn/hiệu ứng + nền sân đấu — theo ĐÚNG giao thức kit — soạn 02/10 đêm, cho màn Đấu trường (Thử thách 3 trận)
+
+> **Thùy 02/10:** "Nhân vật chính cần vẽ nhiều animation hơn. Style combat là 2D với nhiều animation khác nhau." Bé gái chibi (người cầm sách + cú trắng) chỉ là **NGƯỜI DẪN TRUYỆN** — KHÔNG phải nhân vật này.
+> Nhân vật chính = **cùng người với bộ chibi CHẠY của kit lục địa** (Đơn 12; Thùy đang làm lại bộ chạy). Đơn này là bộ **chiến đấu**: ĐỨNG · TÍCH NĂNG · NIỆM LÊN TRỜI · NÉM TRƯỚC · PHÁT NHỎ · BỊ ĐÁNH · GỤC · THẮNG · SUY NGHĨ.
+> **Cách chạy trên màn (để vẽ đúng ý):** học sinh làm xong 5 câu thì NHÂN VẬT tung đòn theo % đúng — 100% = sét đánh / thiên thạch (giơ 2 tay lên trời) · 80% = cầu lửa / cầu băng khổng lồ (ném cầu về phía trước) ·
+> 60% = cầu nhỏ / tia điện (phát nhẹ một tay). Thua thì boss ném ma thuật trúng nhân vật → bị đánh → gục. Thắng cả 3 trận → nhân vật nhảy mừng. **Chuyển động giữa các tư thế do CODE** (đổi ảnh + nhún + lao tới + lật + quầng sáng);
+> ảnh chỉ cần là các TƯ THẾ chốt hình, cùng một nhân vật, thay ảnh không giật.
+> **Cách gửi:** mỗi GIỚI = 1 kit = 1 context ChatGPT MỚI. **Làm NAM trước → Thùy duyệt → NỮ theo đúng bố cục đó.** Dán `CHATGPT-UI-KIT.md` → dán khối đơn dưới → đính kèm:
+> ① `design/bk-ui-src/AppHS/lục địa rừng/assets/characters/nam_dung.png` + `nam_chay_chan_trai.png` (làm NỮ: `nu_dung.png` + `nu_chay_chan_trai.png`) — **NHÂN VẬT PHẢI GIỐNG HỆT** (mặt, tóc, áo choàng, boots, tỉ lệ chibi) — hoặc bản mới Thùy đang làm nếu đã chốt;
+> ② `public/bk-ui/hs/skin/rpg/boss_thuy_dung.png` (đối thủ, chỉ để vẽ mockup cảnh đấu); ③ `public/bk-ui/hs/skin/rpg/bg_lau_dai_chibi_ngang.jpg` (không khí/ánh sáng của app — nền sân đấu cùng họ màu).
+> Kit về: `design/handoff/hs-chien-dau-nam-v1.zip` (+ `-nu-v1.zip`).
+
+```
+App:            hs
+Màn:            dau-truong-<GIỚI>   (kit v1 = NAM; kit kế = NỮ cùng bố cục)
+Mô tả màn:      Màn "Đấu trường" của Thử thách: học sinh làm 3 trận × 5 câu trắc nghiệm. Trên màn có SÂN ĐẤU (dải ngang phía trên) và khung câu hỏi (bên dưới, code dựng).
+                Sân đấu: NHÂN VẬT CHÍNH đứng bên TRÁI (hướng sang PHẢI), BOSS đứng bên PHẢI (hướng sang trái); giữa hai bên là khoảng trống để đạn bay.
+                Khi làm câu hỏi: nhân vật ĐỨNG / SUY NGHĨ (không đánh). Làm xong trận: nhân vật TÍCH NĂNG rồi TUNG ĐÒN (xem "Cách chạy trên màn"); thắng cả 3 trận thì NHẢY MỪNG;
+                thua thì bị boss đánh trúng → BỊ ĐÁNH → GỤC. iPad NGANG và điện thoại ngang là chính; dọc co nhỏ lại.
+                Nhân vật là chibi (đầu to thân nhỏ) CÙNG NGƯỜI với bộ chạy ở kit lục địa; phong cách anime fantasy chibi vẽ tay, ánh vàng, đúng ảnh đính kèm.
+Phần tử ĐỘNG:   chuyển động nhân vật (đổi tư thế, nhún, lao tới khi tung đòn, giật lùi khi bị đánh, nhảy) · quầng sáng quanh nhân vật theo loại đòn (lửa cam / băng xanh / điện trắng-xanh / ma thuật tím) ·
+                bóng đổ dưới chân · đạn bay + hiệu ứng nổ/cháy/đóng băng/điện (code vẽ bằng canvas — chỉ cần vài tấm đạn đẹp làm đầu đạn, xem assets/fx) · thanh máu boss, khung câu hỏi, nút đáp án (code).
+                KHÔNG vẽ vào ảnh nhân vật: bóng đổ, quầng sáng, tia điện, lửa, băng (code đè lên).
+Trạng thái:     ~15 TƯ THẾ nhân vật (mục "TƯ THẾ") + 5 tấm đạn/hiệu ứng + 1 nền sân đấu. Mỗi tư thế 1 ảnh riêng.
+Biến thể:       nam / nữ (2 kit, cùng danh sách tư thế, cùng bố cục, chỉ khác nhân vật).
+Phong cách:     đúng ảnh nhân vật đính kèm. Mỗi tư thế phải có DIỄN XUẤT rõ (thân nghiêng, tay, áo choàng và tóc bay theo hướng chuyển động, nét mặt đổi theo cảm xúc) — không phải cùng một dáng đứng đổi tay.
+Giữ nguyên:     nhân vật nhìn sang PHẢI ở mọi tư thế; cùng trang phục, tóc, màu, tỉ lệ đầu/thân trong cả bộ; KHÔNG chữ, KHÔNG nền, KHÔNG bóng đổ, KHÔNG vật thể thừa quanh nhân vật (đạn, quầng sáng do code).
+Phiên bản kit:  v1
+
+TƯ THẾ (mỗi tư thế = 1 PNG riêng sinh mới, nền TRONG SUỐT, cùng KHỔ 1024×1536, cùng tỉ lệ nhân vật, cùng ĐIỂM CHẠM ĐẤT; tên file: chinh_<nam|nu>_<tên>.png):
+  1  dung_1            đứng thủ thế nhẹ, thở ra (khung 1 của vòng thở) — tư thế mặc định lúc làm câu hỏi
+  2  dung_2            như dung_1 nhưng hít vào (vai/áo choàng nhích nhẹ) — code luân phiên 2 khung ~900ms
+  3  suy_nghi          tay chống cằm / ngón tay chạm má, mắt nhìn lên suy nghĩ, một dấu hỏi KHÔNG vẽ (code)
+  4  tich_nang_1       chụm tay trước ngực gom năng lượng, người hơi nhún xuống, mắt nhắm tập trung, áo choàng bắt đầu bay lên
+  5  tich_nang_2       gom mạnh hơn: người cong về trước, tay mở ra giữ một khoảng trống tròn (CHỖ NÀY ĐỂ TRỐNG — code vẽ quả cầu năng lượng), tóc và áo choàng bay ngược lên, mắt mở sáng
+  6  niem_troi_1       chuẩn bị: một tay giơ cao chỉ lên trời, người ngả nhẹ ra sau
+  7  niem_troi_2       NIỆM ĐÒN lên trời (cho SÉT ĐÁNH / THIÊN THẠCH): CẢ HAI TAY giơ thẳng lên cao, mặt ngẩng, miệng hô lớn, áo choàng tung mạnh
+  8  nem_truoc_1       chuẩn bị NÉM: thân xoay, tay đưa ra sau, trọng tâm dồn chân sau (như cầu thủ bóng chày lấy đà)
+  9  nem_truoc_2       NÉM/PHÓNG cầu lửa-băng KHỔNG LỒ về phía PHẢI: một tay duỗi thẳng về trước, bàn tay mở, thân lao tới, chân trước bước dài, áo choàng bay ra sau; ánh mắt dữ
+  10 phat_nho          PHÁT NHẸ (cho cầu nhỏ / tia điện nhỏ, mức 60%): một tay giơ ngang, ngón tay bật/búng, thân thẳng, vẻ mặt thoải mái
+  11 bi_danh_1         BỊ ĐÁNH TRÚNG: giật người ngả ra sau, hai mắt nhắm chặt/nhăn nhó, tay đưa lên che, áo choàng hất ngược về phía trước
+  12 bi_danh_2         bị hất bay: thân nghiêng mạnh ra sau gần ngã, một chân nhấc khỏi đất, mặt đau
+  13 guc               THUA: quỳ gối/ngồi phịch xuống đất, đầu gục, mắt xoáy hoặc nhắm, tay chống đất, sao quay quanh đầu KHÔNG vẽ (code)
+  14 thang_1           THẮNG — bật nhảy: hai chân rời đất, một nắm tay giơ lên trời, cười tươi, mắt cong
+  15 thang_2           THẮNG — đáp đất tạo dáng: giơ dấu chữ V (hoặc nắm tay), nháy mắt, cười toe, áo choàng phấp phới
+  (Code còn dùng ảnh ĐỨNG/CHẠY của kit lục địa ở màn khác — KHÔNG vẽ lại trong kit này.)
+
+ĐẠN / HIỆU ỨNG (assets/fx — nền TRONG SUỐT, KHÔNG nhân vật, đầu đạn nằm bên PHẢI ảnh, đuôi kéo sang TRÁI để code xoay/lật theo hướng bay):
+  fx_cau_lua.png      cầu lửa khổng lồ, lõi trắng vàng, ngọn lửa cam đỏ cuộn, đuôi lửa dài, 1024×512
+  fx_cau_bang.png     cầu băng khổng lồ, lõi trắng xanh, tinh thể băng nhọn xung quanh, hơi lạnh toả, đuôi băng/tuyết, 1024×512
+  fx_thien_thach.png  thiên thạch đang rơi chéo: tảng đá đen nứt phát sáng dung nham, đuôi lửa + khói, đầu ở phía DƯỚI-PHẢI, 1024×1024
+  fx_dan_ma.png       quả cầu ma thuật TÍM của boss (xoáy năng lượng tím đen, viền hồng tím, vài tia sét nhỏ), đuôi khói tím, 1024×512
+  fx_bang_boc.png     lớp tinh thể băng BỌC lên một nhân vật cao (các mảnh băng xanh nhạt chồng lên, trong suốt một phần, mép trắng sáng; KHÔNG có nhân vật bên trong), 1024×1280 — code căn theo hộp boss
+
+NỀN SÂN ĐẤU (assets/backdrop/backdrop_san_dau.png): 2400×860, góc nhìn ngang nhẹ từ trên cao, cùng họ màu/ánh sáng với nền app (đêm tím, lâu đài, đèn vàng — xem ảnh bg_lau_dai_chibi_ngang đính kèm).
+  Một ĐẤU TRƯỜNG đá cổ ngoài trời: mặt sân lát đá phẳng chiếm dải dưới (đường chân trời/mặt sân ở y≈62%), hai bên có cột đá + đuốc/đèn lồng, nền xa là cung điện mờ sương + trời sao.
+  Vùng GIỮA (x 25–75%) thoáng, không vật thể cao — đạn và đòn bay qua đây. KHÔNG nhân vật, KHÔNG chữ. Phía TRÁI mặt sân y≈78% là chỗ nhân vật chính đứng; phía PHẢI y≈78% là chỗ boss đứng.
+
+YÊU CẦU RIÊNG (kịch bản chuẩn — ảnh to → thành phần → bố cục):
+- reference/reference_chien_dau_<giới>.png: (a) BẢNG TƯ THẾ — 15 tư thế xếp lưới 5×3, mỗi ô ghi tên (chữ chỉ để đọc, KHÔNG nằm trong asset), nền xám trung tính; và (b) 1 ẢNH CẢNH 1672×941 mockup màn đấu: nền sân đấu, nhân vật (tư thế nem_truoc_2) bên trái,
+  boss (ảnh boss_thuy_dung đính kèm) bên phải, cầu lửa khổng lồ đang bay giữa hai bên, khung câu hỏi MỜ giữ chỗ phía dưới. Duyệt (a)+(b) TRƯỚC khi sinh asset (pha B).
+- assets/characters/chinh_<giới>_<tên>.png × 15: mỗi tư thế sinh MỚI riêng lẻ (KHÔNG cắt từ bảng, KHÔNG sprite sheet), alpha thật, khổ 1024×1536, nhân vật đứng/diễn cùng CỠ (chiều cao thân khi đứng ≈ 78% chiều cao ảnh; tư thế nhảy/ngã vẫn giữ tỉ lệ đó),
+  CHÂN CHẠM ĐẤT cùng một đường ngang ở ≈ 94% chiều cao ảnh (riêng thang_1 nhảy: vẫn ở cùng khổ, thân bay lên trên đường đó; guc: chạm đất đúng đường đó), TRỤC THÂN cùng một cột x (≈ 50% ngang) ở mọi tư thế để thay ảnh không giật.
+  Không để tay/áo choàng/tóc bị cắt ở mép ảnh.
+- assets/fx/ × 5, assets/backdrop/ × 1: như mô tả trên, sinh mới từng cái, alpha thật (fx) / ảnh đặc (backdrop).
+- DESIGN.md — bảng kiểm kê ĐỦ cột "Vị trí & cỡ" theo khổ ảnh từng asset (px) VÀ theo cảnh 1672×941:
+  · MỖI TƯ THẾ: tên file · khổ · điểm chạm đất (x%, y% trong CHÍNH ảnh) · trục thân x% · hộp bao thân (x, y, w, h px, bỏ quầng alpha mờ) · dùng cho đòn nào · lặp hay giữ khung cuối · thời gian gợi ý (ms) khi chạy trong chuỗi.
+  · CHUỖI TƯ THẾ cho từng ĐÒN (code đang chạy đúng thứ tự này — ghi lại để khớp):
+      làm câu hỏi: dung_1 ⇄ dung_2 (900ms) · có thể chèn suy_nghi
+      SÉT ĐÁNH / THIÊN THẠCH (100%): tich_nang_1 → tich_nang_2 (≈650ms, lặp) → niem_troi_1 (120ms) → niem_troi_2 (giữ tới hết đòn ≈1,6s) → dung_1
+      CẦU LỬA / BĂNG KHỔNG LỒ (80%): tich_nang_1 → tich_nang_2 (≈700ms, lặp) → nem_truoc_1 (150ms) → nem_truoc_2 (giữ ≈1,5s) → dung_1
+      CẦU NHỎ / TIA ĐIỆN NHỎ (60%): tich_nang_1 (≈330ms) → phat_nho (giữ ≈0,6s) → dung_1
+      BỊ ĐÁNH (thua trận): bi_danh_1 (250ms) → bi_danh_2 (500ms) → guc (giữ)
+      THẮNG CẢ LƯỢT: thang_1 ⇄ thang_2 luân phiên (≈550ms/khung, lặp)
+  · ĐIỂM TAY (để đạn bắt đầu bay): toạ độ (x%, y%) trong ảnh nem_truoc_2, phat_nho, tich_nang_2 (chỗ quả cầu năng lượng) và niem_troi_2 (hai bàn tay trên cao).
+  · ĐẠN: hướng đầu đạn, điểm đầu (x%, y%) trong ảnh, bề rộng gợi ý trên cảnh (% khung), điểm xoay.
+  · NỀN SÂN ĐẤU: y mặt sân, hai điểm đứng (x%, y%) của nhân vật và boss, vùng giữa thoáng (x–y), vùng cấm.
+  · Chiều cao nhân vật trên cảnh 1672×941: ≈ 34% chiều cao cảnh (từ chân tới đỉnh tóc), boss cao ≈ 38%.
+```
+
+> **Kit về (Claude làm):** kiểm mục 8 giao thức (đếm 15 tư thế + 5 fx + 1 nền ↔ reference; alpha thật; cùng khổ; **chồng 15 ảnh lên nhau xem chân + trục thân có trùng không** — lệch thì trả hàng theo mục 10) · nén WebP cắt chung 1 hộp như kit lục địa
+> (`scripts/anime-kit-lucdia.mjs` mẫu) vào `public/bk-ui/hs/skin/rpg/chiendau/` · khai vào `Skin.nhanVat` tách `nguoiDan` (bé gái + cú) và `chinh` {nam, nu, tư thế} · `hieuUng.ts`: `TtHero` đổi từ CSS-trên-1-ảnh sang chuỗi tư thế đúng bảng DESIGN.md ·
+> đạn canvas dùng fx_* làm đầu đạn (đuôi + nổ giữ code) · `fx_bang_boc` thay lớp băng vẽ code · nền sân đấu thay nền thẻ ở `DauTruongHS` · so với reference ở 1280×720 và 390×844.
