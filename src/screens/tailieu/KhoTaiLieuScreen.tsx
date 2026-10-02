@@ -2,7 +2,7 @@
 // Cột thông tin + nút IN (giáo trình→PrintView, ET→ETPrintView) + Nhân bản (tái sử dụng) + Xoá.
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { listAllTaiLieu, listTaiLieuFacets, deleteTaiLieu, duplicateTaiLieu, updateTaiLieu, renumberBuoiLop, type TaiLieu } from '../../lib/tailieu'
-import { phatHanhTest, PHAT_HANH_DUOC } from '../../lib/testonline'
+import { phatHanhTest, PHAT_HANH_DUOC, type CheDoPhatHanh } from '../../lib/testonline'
 import { listLinkGenJobs, type LinkGenJobRow } from '../../lib/linkgen'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { useStore } from '../../store/useStore'
@@ -99,16 +99,23 @@ export default function KhoTaiLieuScreen() {
   }
   const lopTen = (id?: string | null) => lops.find((l) => l.id === id)?.ten_lop ?? '?'
 
-  async function phatHanh(r: DaiRow) {
+  // ⭐ Bài trên lớp (giáo trình buổi) có 2 CHẾ ĐỘ phát hành — chọn NGAY TẠI ĐÂY lúc bấm 📱 (CEO 02/10): từng phần (buổi học) /
+  // toàn bộ (luyện tập). BTVN · ET không có khái niệm mở dần ⇒ bấm là phát hành cả bài như cũ.
+  const [phChon, setPhChon] = useState<DaiRow | null>(null)
+  async function phatHanh(r: DaiRow, cheDo?: CheDoPhatHanh) {
+    setPhChon(null)
     setPhBusy(r.id)
     try {
-      const kq = await phatHanhTest(r.id)
+      const kq = await phatHanhTest(r.id, null, { cheDo })
       // Hạn nộp tự tính theo loại (mig 202608171359). Không tính được thì PHẢI nói ra —
       // im lặng nghĩa là bài mở vĩnh viễn mà không ai biết (đúng bug 32 test cũ của tháng 7).
       const han = kq.baiTest.deadline
         ? ` Hạn nộp: ${new Date(kq.baiTest.deadline).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}.`
         : ''
-      setPhRes({ ok: true, msg: `Đã phát hành ${kq.added} câu cho học sinh làm online.${han}${kq.canhBao ? ` ⚠ ${kq.canhBao}` : ''}`, skipped: kq.skipped })
+      const cach = r.loai !== 'giao_trinh_buoi' ? `Đã phát hành ${kq.added} câu cho học sinh làm online.`
+        : cheDo === 'toan_bo' ? `Đã phát hành TOÀN BỘ ${kq.added} câu — học sinh thấy cả bài ngay.`
+        : `Đã phát hành TỪNG PHẦN (${kq.added} câu): phần đầu đang mở, mở phần kế ở tab Live của buổi.`
+      setPhRes({ ok: true, msg: `${cach}${han}${kq.canhBao ? ` ⚠ ${kq.canhBao}` : ''}`, skipped: kq.skipped })
     } catch (e: any) {
       setPhRes({ ok: false, msg: e?.message ?? String(e) })
     } finally { setPhBusy(null) }
@@ -422,7 +429,7 @@ export default function KhoTaiLieuScreen() {
                             <button onClick={() => setEditOnTap(r)} className="shrink-0 rounded-md border border-violet-300 px-2.5 py-1 text-[12px] font-medium text-violet-700 hover:bg-violet-50">✎ Ôn tập</button>
                           )}
                           {PHAT_HANH_DUOC.has(r.loai) && r.lop_id && r.ngay && (
-                            <button onClick={() => phatHanh(r)} disabled={phBusy === r.id} title="Phát hành online"
+                            <button onClick={() => (r.loai === 'giao_trinh_buoi' ? setPhChon(r) : phatHanh(r))} disabled={phBusy === r.id} title="Phát hành online"
                               className="shrink-0 rounded-md border border-emerald-300 bg-emerald-50 px-2 py-1 text-[12px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40">
                               {phBusy === r.id ? '…' : '📱'}
                             </button>
@@ -519,6 +526,32 @@ export default function KhoTaiLieuScreen() {
           </div>
         </div>
       )}
+
+      {phChon && (() => {
+        // Bài gán từ ĐỀ THI mở theo Phần I/II/III của đề; giáo trình thường mở theo dạng.
+        const tuDe = !!(phChon.cau_hinh as { deThi?: unknown } | undefined)?.deThi
+        const donVi = tuDe ? 'phần của đề (Phần I, II, III…)' : 'dạng'
+        const o = 'w-full rounded-xl border px-4 py-3 text-left transition hover:border-emerald-400 hover:bg-emerald-50'
+        return (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4" onClick={() => setPhChon(null)}>
+            <div className="w-[460px] max-w-full rounded-2xl bg-white p-5 shadow-xl" onClick={(e) => e.stopPropagation()}>
+              <p className="text-[15px] font-semibold text-slate-900">Phát hành bài trên lớp cho học sinh làm trên app</p>
+              <p className="mt-1 truncate text-[12px] text-slate-500">{phChon.ten}</p>
+              <div className="mt-3 space-y-2">
+                <button onClick={() => phatHanh(phChon, 'tung_phan')} className={`${o} border-emerald-300`}>
+                  <span className="block text-[14px] font-semibold text-slate-900">Phát hành từng phần <span className="ml-1 rounded bg-emerald-100 px-1.5 py-0.5 text-[11px] font-medium text-emerald-700">buổi học</span></span>
+                  <span className="mt-0.5 block text-[12px] text-slate-500">Chỉ {tuDe ? 'phần' : 'dạng'} đầu mở. Thầy cô mở từng {donVi} kế tiếp ở tab Live của buổi khi dạy tới.</span>
+                </button>
+                <button onClick={() => phatHanh(phChon, 'toan_bo')} className={`${o} border-slate-200`}>
+                  <span className="block text-[14px] font-semibold text-slate-900">Phát hành toàn bộ <span className="ml-1 rounded bg-sky-100 px-1.5 py-0.5 text-[11px] font-medium text-sky-700">luyện tập</span></span>
+                  <span className="mt-0.5 block text-[12px] text-slate-500">Mở sẵn mọi câu, học sinh làm theo nhịp của mình.</span>
+                </button>
+              </div>
+              <div className="mt-4 text-right"><button onClick={() => setPhChon(null)} className="rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-600">Huỷ</button></div>
+            </div>
+          </div>
+        )
+      })()}
 
       {phRes && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4" onClick={() => setPhRes(null)}>

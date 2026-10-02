@@ -243,7 +243,7 @@ bản đồ kiến thức Thùy tự làm; gán mẫu / skill gán dạng / lô 
   (gán dạng ở màn đề ⇒ trigger tự điền + tự mở dạng trong bài đã phát).
 - **Phát hành 2 CHẾ ĐỘ cho bài trên lớp (CEO 02/10, spec §10.9, mig `202610021201` đã áp):** **từng phần** (mặc định, buổi học — chỉ phần đầu mở, GV mở phần kế ở
   tab Live của buổi; bài từ đề: phần = Phần I/II/III, mở theo câu; giáo trình thường: phần = dạng) · **toàn bộ** (luyện tập — mở sẵn mọi câu). Kiểm tra / ET / BTVN
-  luôn mở cả bài. Chọn ở hộp Giao, bảng "Đã gán vào buổi", hoặc nút "▶▶ Mở toàn bộ" ở tab Live. Chế độ không lưu thành cột. **Chưa bấm thử bằng phiên thật; bắt buộc
+  luôn mở cả bài. Chọn ở **nút 📱 của Kho tài liệu** (chỗ chính — hộp 2 lựa chọn cho mọi Giáo trình buổi), hộp Giao, bảng "Đã gán vào buổi", hoặc nút "▶▶ Mở toàn bộ" ở tab Live. Chế độ không lưu thành cột. **Chưa bấm thử bằng phiên thật; bắt buộc
   deploy ERP + app HS** (bản HS cũ không thấy câu nào của bài từ đề mở từng phần). Dùng chung bảng + hàm mở câu với luồng Học online (nhánh `worktree-hoc-online` chưa merge).
 - **CHƯA kiểm bằng mắt / còn hở (xếp theo mức cần):**
   1. Bản IN phiếu của tài liệu gán từ đề (PrintView với phần không có mã dạng) — mới sửa code, chưa ai mở xem.

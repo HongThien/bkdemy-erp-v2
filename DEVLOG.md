@@ -34744,3 +34744,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   2. Bỏ câu trùng y hệt trong lô và với kho (U2-C020 ≡ C015).
 - **Biển báo thiếu đề** ⇒ đề mặc định "What does the sign or notice say?".
 - **Đang chạy:** A/B Unit 5–8 và 9–12.
+
+## 2026-10-02 (tiếp) — [Kho · Đề thi] Chọn chế độ phát hành NGAY Ở KHO TÀI LIỆU
+
+- **Thùy:** "cái chọn chế độ phát hành là phải chọn từ kho tài liệu chứ."
+- **Sai của CTO:** đặt chỗ chọn chế độ ở Kho đề thi (hộp Giao, bảng Đã gán) và tab Live, còn nút 📱 ở Kho tài liệu — đúng chỗ mọi người vẫn bấm phát hành — lại để
+  mặc định im lặng "từng phần". Tính năng mới phải gắn vào chỗ thao tác ĐANG diễn ra, không phải chỗ CTO vừa dựng.
+- **Sửa:** `KhoTaiLieuScreen.tsx` — bấm 📱 trên dòng Giáo trình buổi mở hộp 2 lựa chọn (Phát hành từng phần · buổi học / Phát hành toàn bộ · luyện tập), áp cho cả
+  giáo trình thường (phần = dạng) lẫn bài gán từ đề (phần = Phần I/II/III). BTVN · ET bấm là phát hành cả bài như cũ. Chỗ chọn ở Kho đề thi giữ lại (cùng một hàm).
+- **Kiểm:** `tsc` sạch. CHƯA bấm trên màn thật (preview không có phiên đăng nhập) — cần Thùy thử: Kho tài liệu › 📱 trên một Giáo trình buổi.

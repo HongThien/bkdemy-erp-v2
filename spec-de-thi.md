@@ -457,7 +457,9 @@ CEO: *"Phát hành nên có 2 chế độ: phát hành TOÀN BỘ — giống bu
 - **"Phần" là gì:** bài gán từ ĐỀ THI → Phần I / II / III của đề (mở theo CÂU; không mở theo dạng vì một dạng rải ở nhiều phần của đề, mở theo dạng là
   lộ câu phần sau). Giáo trình thường → DẠNG, y như từ 13/09 (thêm nút "Mở toàn bộ" ở tab Live).
 - **Chọn chế độ ở đâu:** hộp 📱 Giao › Bài trên lớp › tick "Mở cho học sinh làm trên app" (2 lựa chọn) · bảng "Đã gán vào buổi của lớp"
-  (📱 Mở từng phần / 📱 Mở toàn bộ; bài đã mở từng phần có ▶▶ Mở toàn bộ) · nút 📱 ở Kho tài liệu = từng phần (như cũ).
+  (📱 Mở từng phần / 📱 Mở toàn bộ; bài đã mở từng phần có ▶▶ Mở toàn bộ).
+  **Chỗ chọn CHÍNH = nút 📱 ở Kho tài liệu** (CEO 02/10: "chọn chế độ phát hành là phải chọn từ kho tài liệu"): bấm 📱 trên dòng Giáo trình buổi ⇒ hộp 2 lựa chọn
+  Từng phần / Toàn bộ, áp cho CẢ giáo trình thường lẫn bài gán từ đề. BTVN · ET bấm 📱 là phát hành cả bài như cũ.
 - **Không có cột "chế độ":** chế độ chỉ quyết định lúc phát hành mở những gì; trạng thái thật luôn là 2 bảng `bai_test_cau_phat_hanh` /
   `bai_test_dang_phat_hanh` (suy động). DB: mig `202610021201` — `fn_bt_mo_toan_bo`, `fn_bt_mo_phan_dau`; mở / thu hồi một phần dùng
   `fn_bt_mo_cau` / `fn_bt_dong_cau` có sẵn (của luồng Học online). Thu hồi = câu ẩn khỏi bài của HS và thôi nhận câu trả lời; bài đã làm giữ nguyên.
