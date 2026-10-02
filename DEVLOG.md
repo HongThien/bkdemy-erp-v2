@@ -34704,3 +34704,20 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
      Kiểm: chỉ 10 câu đó đổi, mã câu giữ nguyên.
 - **Ghi nhận:** mã câu bắt đầu `EC000331` vì sequence không rollback qua các lần chạy thử — mã là danh tính mờ, khoảng trống vô hại.
 - **Đang chạy:** bên A/B cho Unit 2–4. Còn Unit 5–12.
+
+## 2026-10-02 (tiếp) — Kho Anh lên màn Kho + Duyệt kho (giao diện)
+
+- **Màn Bản đồ kiến thức:** thêm tab "Tiếng Anh" (nhãn PHẢI đúng `'Tiếng Anh'` — `useMonScope` so chuỗi với `nhan_su_mon`).
+  - Cây Mảng → Chuyên đề → Điểm kiến thức. Tên lá hiện kèm mã đọc "NP-09 · …". Mở môn Anh thì tự nhảy khối 9.
+  - Ẩn Clone/Nhập AI/Đúng-Sai (viết cho Toán; chèn câu thiếu `dang_de` NOT NULL). Ô "Chỉ câu chưa duyệt" hiện riêng cho Anh (không có cụm).
+- **Màn Duyệt kho:** môn Anh chỉ 3 bộ lọc ("Máy nghi" · "Câu mới" · "Chưa phân điểm"); không có tab chưa giải / trắc nghiệm AI.
+  - Thẻ duyệt hiện khối ngữ liệu + dạng đề + unit; không có cụm.
+- **Chữ tiếng Anh:** `TextAnh` mới (escape hết, chỉ thả `<u>`, xuống dòng). **Không sửa `MathText`** — nó tự in đậm chữ VIẾT HOA, hiểu `$5` thành công thức, escape `<u>`, và dùng khắp app kể cả trang in.
+  - `NguLieuBlock` hiện đoạn văn/thông báo/ảnh biển báo/audio.
+- **Registry TS:** `khoTbls`, `khoCuaMon`, `KHO_TIEN_TO`/`RE_TIEN_TO` (E), `BAN_DO_OF`, `KHO_MON` (+ `NHANH_CHI_DUYET_CAU`) đã biết 'anh'.
+  - Trước đó 'Tiếng Anh' lặng lẽ rơi về bảng Đại — đã có chỗ dính thật: `DangPickerOne` mở bản đồ Toán.
+  - Vá luôn lỗi có sẵn ở `KhoScreen`: tab 'mcq' nhớ trong localStorage làm môn KHTN mất cả thanh công cụ.
+- **Kiểm:** tsc sạch (chỉ còn 2 lỗi có sẵn ở `_xem_912`/`pdfRender`).
+  - Trang xem thử `xem-thu-anh.html` (không commit) với 8 câu thật Unit 1: gạch chân phát âm, đoạn văn, ảnh biển báo, lý do "nghi" hiện đúng, console 0 lỗi.
+  - **CHƯA kiểm màn thật bằng phiên đăng nhập** (Claude không đăng nhập thay người: mật khẩu đi lên Supabase thật) ⇒ CEO/GV mở Kho → Tiếng Anh để kiểm.
+- **Chưa push.**
