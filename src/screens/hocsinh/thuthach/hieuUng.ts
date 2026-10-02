@@ -6,13 +6,17 @@
 //   Thua trận: boss tung ma thuật vào chibi.
 // Cách làm: 1 canvas phủ sân; bộ hạt (blob phát sáng cộng màu, mảnh băng, mảnh đá, vòng sóng) + "diễn viên" (đạn, tia sét, lớp băng) chạy theo đồng hồ riêng;
 // hiệu ứng lên nhân vật/boss (tư thế, bộ lọc ảnh, rung màn) đi qua `Hook` để lớp React chỉ việc áp class/style — không re-render theo khung hình.
+// Ảnh đạn/lớp băng = bộ FX Thùy vẽ (skin/heroDau.ts · fx_*.webp, nạp trước bằng `napFx`); chưa nạp xong thì vẽ quầng sáng như cũ. Sét: bóng đen + xương trắng hoạt hình lấy alpha ảnh boss
+// (port từ design/bk-ui-src/AppHS/Animation/chien_dau/hieu_ung_va_cham.js).
 // Màu hiệu ứng là màu NGỮ NGHĨA của đòn (lửa/băng/điện/ma thuật), cố định mọi style; chỉ có chỗ này gõ màu (file .ts, ngoài script check-style-hs).
 // ============================================================================
+
+import { anhFx, type FxDau } from '../skin/heroDau'
 
 export type Don = 'set' | 'thien_thach' | 'cau_lua_lon' | 'cau_bang_lon' | 'cau_lua_nho' | 'cau_bang_nho' | 'dien_nho' | 'boss_ma_thuat'
 /** Trạng thái boss do hiệu ứng điều khiển (lớp React áp bộ lọc ảnh theo `LOC_BOSS`). */
 export type TtBoss = 'dung' | 'trung' | 'xray' | 'chay' | 'bang'
-/** Tư thế nhân vật chính (CSS trên 1 ảnh — khi có bộ ảnh nhiều tư thế thì đổi nguồn, tên tư thế giữ). */
+/** Trạng thái nhân vật chính — lớp React đổi ra chuỗi ảnh tư thế (heroDau.ts) theo đòn đang diễn. */
 export type TtHero = 'nghi' | 'tich_nang' | 'tung_don' | 'bi_danh' | 'thang' | 'guc'
 
 export const TEN_DON: Record<Don, string> = {
@@ -27,7 +31,7 @@ export const AURA: Record<Don, string> = {
 export const LOC_BOSS: Record<TtBoss, string> = {
   dung: 'none',
   trung: 'brightness(1.9)',
-  xray: 'invert(1) hue-rotate(180deg) contrast(1.4) brightness(1.2)', // ảnh âm bản = "nhìn thấy xương" khi bị điện giật
+  xray: 'brightness(0)', // bị điện giật: thân thành bóng đen (sét lớn vẽ thêm bộ xương trắng đè lên — xem `xuong`)
   chay: 'sepia(.75) saturate(2.8) hue-rotate(-20deg) brightness(1.18)',
   bang: 'grayscale(.45) saturate(.9) hue-rotate(165deg) brightness(1.28) contrast(1.05)',
 }
@@ -40,7 +44,33 @@ export function chonDon(muc: number): Don {
 
 export interface Hop { x: number; y: number; w: number; h: number }
 /** Toạ độ (px, gốc = góc trên-trái canvas) của các mốc trong sân. */
-export interface Neo { W: number; H: number; tay: { x: number; y: number }; hero: Hop; boss: Hop }
+type Diem = { x: number; y: number }
+/** tay = tâm cầu lúc tích năng · phong = tay lúc tung đòn (đạn phát từ đây) · bossAnh = ảnh boss đang hiện (lấy bóng cho hiệu ứng điện giật). */
+export interface Neo { W: number; H: number; tay: Diem; phong?: Diem; hero: Hop; boss: Hop; bossAnh?: HTMLImageElement | null }
+
+// ───────────────────────── ảnh FX ─────────────────────────
+const fxKho = new Map<FxDau, HTMLImageElement>()
+/** Nạp trước 5 ảnh FX (gọi lúc vào Đấu trường) — lỗi thì bỏ qua, hiệu ứng tự lùi về quầng sáng. */
+export function napFx(): Promise<void> {
+  const ds: FxDau[] = ['fx_cau_lua', 'fx_cau_bang', 'fx_dan_ma', 'fx_thien_thach', 'fx_bang_boc']
+  return Promise.all(ds.map((f) => {
+    if (fxKho.has(f)) return Promise.resolve()
+    const im = new Image(); im.src = anhFx(f); fxKho.set(f, im)
+    return im.decode().catch(() => undefined)
+  })).then(() => undefined)
+}
+const fx = (f: FxDau) => { const im = fxKho.get(f); return im && im.complete && im.naturalWidth ? im : null }
+/** Đầu đạn trong ảnh (tỉ lệ) — DESIGN.md: cầu/đạn ma (82%,50%) hướng phải · thiên thạch (78%,78%) hướng dưới-phải. */
+const DAU: Record<FxDau, [number, number]> = { fx_cau_lua: [0.82, 0.5], fx_cau_bang: [0.82, 0.5], fx_dan_ma: [0.82, 0.5], fx_thien_thach: [0.78, 0.78], fx_bang_boc: [0.5, 0.5] }
+/** Vẽ ảnh đạn: đầu đạn đặt tại (x,y), xoay theo hướng bay (vx,vy); bay sang trái thì lật ngang (đuôi luôn phía sau). */
+function veDan(g: CanvasRenderingContext2D, f: FxDau, x: number, y: number, vx: number, vy: number, w: number, a = 1) {
+  const im = fx(f); if (!im) return false
+  const h = w * im.naturalHeight / im.naturalWidth, [hx, hy] = DAU[f], goc0 = Math.atan2((hy - 0.5) * h, (hx - 0.5) * w)
+  g.save(); g.globalAlpha = a; g.translate(x, y)
+  if (vx < 0) { g.scale(-1, 1); vx = -vx }
+  g.rotate(Math.atan2(vy, vx) - goc0); g.drawImage(im, -hx * w, -hy * h, w, h); g.restore()
+  return true
+}
 export interface Hook {
   rung: (bien: number, ms: number) => void
   boss: (t: TtBoss) => void
@@ -205,26 +235,28 @@ function veSet(g: CanvasRenderingContext2D, ds: number[][][], dam: number, a: nu
 }
 
 /** Đạn bay: phát sáng + đuôi hạt; tới nơi gọi `toi`. `r` có thể thay đổi theo thời gian (charge). */
-function dan(S: Man, p: { x0: number; y0: number; x1: number; y1: number; ms: number; r: number; m: Mau; khoi?: boolean; cong?: number; toi: () => void; vet?: number }) {
-  let t = 0
+function dan(S: Man, p: { x0: number; y0: number; x1: number; y1: number; ms: number; r: number; m: Mau; khoi?: boolean; cong?: number; toi: () => void; vet?: number; anh?: FxDau; rong?: number }) {
+  let t = 0, px = p.x0, py = p.y0, vx = p.x1 - p.x0, vy = p.y1 - p.y0
   S.act({
     update(dt) {
       t += dt * 1000
       const k = Math.min(1, t / p.ms), e = k * k // tăng tốc
       const x = lerp(p.x0, p.x1, e), y = lerp(p.y0, p.y1, e) - Math.sin(k * Math.PI) * (p.cong ?? 0)
       ;(this as unknown as { x: number; y: number }).x = x; (this as unknown as { x: number; y: number }).y = y
-      const n = Math.ceil(p.r / 7) + 1
-      for (let i = 0; i < n; i++) S.hat({ x: x + rnd(-p.r, p.r) * 0.4, y: y + rnd(-p.r, p.r) * 0.4, vx: -(p.x1 - p.x0) * 0.05 + rnd(-30, 30), vy: rnd(-30, 30) - 20, max: rnd(0.25, 0.6) * (p.vet ?? 1), r0: rnd(0.5, 1) * p.r * 0.9, r1: 1, c0: p.m.giua, c1: p.m.ngoai, a: 0.9 })
-      if (p.khoi) S.hat({ x, y, vx: rnd(-20, 20), vy: -rnd(10, 50), max: 0.8, r0: p.r * 0.7, r1: p.r * 1.6, c0: LUA.khoi, c1: LUA.khoi, a: 0.35, add: false })
+      if (Math.hypot(x - px, y - py) > 0.5) { vx = x - px; vy = y - py } px = x; py = y
+      const coAnh = !!(p.anh && p.rong), n = coAnh ? 2 : Math.ceil(p.r / 7) + 1 // có ảnh đạn (đã vẽ sẵn đuôi lửa) ⇒ chỉ rắc ít tàn lửa, không đè mất nét vẽ
+      for (let i = 0; i < n; i++) S.hat({ x: x + rnd(-p.r, p.r) * 0.4, y: y + rnd(-p.r, p.r) * 0.4, vx: -(p.x1 - p.x0) * 0.05 + rnd(-30, 30), vy: rnd(-30, 30) - 20, max: rnd(0.25, 0.6) * (p.vet ?? 1) * (coAnh ? 0.6 : 1), r0: rnd(0.5, 1) * p.r * (coAnh ? 0.35 : 0.9), r1: 1, c0: p.m.giua, c1: p.m.ngoai, a: 0.9 })
+      if (p.khoi && !coAnh) S.hat({ x, y, vx: rnd(-20, 20), vy: -rnd(10, 50), max: 0.8, r0: p.r * 0.7, r1: p.r * 1.6, c0: LUA.khoi, c1: LUA.khoi, a: 0.35, add: false })
       if (k >= 1) { this.xong = true; p.toi() }
     },
     draw(g) {
       const o = this as unknown as { x?: number; y?: number }
       if (o.x === undefined || o.y === undefined) return
       g.globalCompositeOperation = 'lighter'
-      g.drawImage(quang(p.m.giua), o.x - p.r * 2.4, o.y - p.r * 2.4, p.r * 4.8, p.r * 4.8)
+      const q = p.anh && p.rong ? 0.6 : 1; g.drawImage(quang(p.m.giua), o.x - p.r * 2.4 * q, o.y - p.r * 2.4 * q, p.r * 4.8 * q, p.r * 4.8 * q)
       g.drawImage(quang(p.m.loi), o.x - p.r * 1.2, o.y - p.r * 1.2, p.r * 2.4, p.r * 2.4)
       g.globalCompositeOperation = 'source-over'
+      if (p.anh && p.rong) veDan(g, p.anh, o.x, o.y, vx, vy, p.rong)
     },
   } as Act)
 }
@@ -271,8 +303,43 @@ function lopBang(S: Man, h: Hop, ms: number) {
       }
       g.globalCompositeOperation = 'lighter'
       g.drawImage(quang(BANG.giua), h.x - h.w * 0.15, h.y, h.w * 1.3, h.h); g.globalCompositeOperation = 'source-over'
+      const im = fx('fx_bang_boc')
+      if (im) { const w = h.w * 0.95, hh = w * im.naturalHeight / im.naturalWidth; g.globalAlpha = 0.92 * al; g.drawImage(im, h.x + (h.w - w) / 2, h.y + h.h - hh, w, hh); g.globalAlpha = 1 }
     },
   } as Act)
+}
+
+/** Điện giật kiểu hoạt hình: bóng ĐEN của chính boss (alpha ảnh) + bộ xương trắng phát sáng (sọ chibi, sống, sườn, chậu, tay chân) trong hộp boss.
+ *  Không có ảnh boss ⇒ bóng người chibi giữ chỗ. Bộ xương là mô hình người chung — boss giải phẫu lạ thì cần rig riêng. */
+const mask = typeof document !== 'undefined' ? document.createElement('canvas') : null
+function xuong(g: CanvasRenderingContext2D, b: Hop, anh: HTMLImageElement | null | undefined, age: number) {
+  const h = b.h * 0.92, w = h * 0.55, x = b.x + b.w / 2 + Math.sin(age * 0.09) * 6, day = b.y + b.h
+  const net = (pts: number[][], lw: number, c: string) => { g.strokeStyle = c; g.lineWidth = lw; g.lineCap = 'round'; g.lineJoin = 'round'; g.beginPath(); pts.forEach(([px, py], i) => (i ? g.lineTo(px, py) : g.moveTo(px, py))); g.stroke() }
+  g.save()
+  if (anh && anh.naturalWidth && mask) {
+    mask.width = Math.ceil(b.w); mask.height = Math.ceil(b.h)
+    const m = mask.getContext('2d')!; m.clearRect(0, 0, b.w, b.h); m.drawImage(anh, 0, 0, b.w, b.h)
+    m.globalCompositeOperation = 'source-in'; m.fillStyle = 'rgb(7,5,18)'; m.fillRect(0, 0, b.w, b.h); m.globalCompositeOperation = 'source-over'
+    g.drawImage(mask, b.x + Math.sin(age * 0.09) * 6, b.y)
+  } else {
+    const c = 'rgb(8,6,21)'; g.fillStyle = c; g.beginPath(); g.ellipse(x, day - h * 0.79, w * 0.31, h * 0.2, 0, 0, TAU); g.fill()
+    net([[x, day - h * 0.58], [x, day - h * 0.31]], w * 0.5, c)
+    for (const s of [-1, 1]) { net([[x + s * w * 0.16, day - h * 0.53], [x + s * w * 0.37, day - h * 0.38], [x + s * w * 0.45, day - h * 0.56]], w * 0.18, c); net([[x + s * w * 0.12, day - h * 0.29], [x + s * w * 0.19, day - h * 0.15], [x + s * w * 0.23, day - 5]], w * 0.22, c) }
+  }
+  const tr = 'rgb(255,255,255)', u = h / 360
+  g.shadowColor = 'rgb(189,237,255)'; g.shadowBlur = 9
+  g.fillStyle = tr; g.beginPath(); g.ellipse(x, day - h * 0.79, w * 0.22, h * 0.145, 0, 0, TAU); g.fill()
+  g.fillStyle = 'rgb(8,6,21)'; for (const s of [-1, 1]) { g.beginPath(); g.ellipse(x + s * w * 0.085, day - h * 0.8, w * 0.055, h * 0.04, 0, 0, TAU); g.fill() }
+  g.beginPath(); g.moveTo(x, day - h * 0.755); g.lineTo(x - w * 0.03, day - h * 0.72); g.lineTo(x + w * 0.03, day - h * 0.72); g.fill()
+  net([[x - w * 0.12, day - h * 0.68], [x + w * 0.12, day - h * 0.68]], 7 * u, tr)
+  net([[x, day - h * 0.62], [x, day - h * 0.31]], 9 * u, tr)
+  for (let i = 0; i < 4; i++) { g.strokeStyle = tr; g.lineWidth = 5 * u; g.beginPath(); g.ellipse(x, day - h * (0.57 - i * 0.052), w * (0.18 - i * 0.012), h * 0.037, 0, 0, Math.PI); g.stroke() }
+  net([[x - w * 0.14, day - h * 0.32], [x, day - h * 0.28], [x + w * 0.14, day - h * 0.32]], 9 * u, tr)
+  for (const s of [-1, 1]) {
+    net([[x + s * w * 0.06, day - h * 0.58], [x + s * w * 0.2, day - h * 0.55], [x + s * w * 0.34, day - h * 0.4], [x + s * w * 0.42, day - h * 0.55]], 8 * u, tr)
+    net([[x + s * w * 0.1, day - h * 0.3], [x + s * w * 0.18, day - h * 0.16], [x + s * w * 0.23, day - h * 0.025]], 9 * u, tr)
+  }
+  g.restore()
 }
 
 // ───────────────────────── từng đòn ─────────────────────────
@@ -280,7 +347,7 @@ export function phatDon(cv: HTMLCanvasElement, don: Don, n: Neo, hook: Hook): Pr
   return new Promise((xong) => {
     const S = new Man(cv, n.W, n.H)
     const bx = n.boss.x + n.boss.w / 2, by = n.boss.y + n.boss.h * 0.52
-    const T = n.tay
+    const T = n.tay, P = n.phong ?? n.tay
     const heroTrung = { x: n.hero.x + n.hero.w * 0.5, y: n.hero.y + n.hero.h * 0.5 }
     const bossTay = { x: n.boss.x + n.boss.w * 0.25, y: n.boss.y + n.boss.h * 0.42 }
     const ketThucSom = () => { hook.boss('dung'); hook.hero('nghi') }
@@ -306,13 +373,14 @@ export function phatDon(cv: HTMLCanvasElement, don: Don, n: Neo, hook: Hook): Pr
             for (let k = 0; k < 14; k++) S.hat({ x: cx, y: n.boss.y + n.boss.h * 0.35, vx: rnd(-1, 1) * 260, vy: rnd(-1, 0.3) * 260, g: 500, drag: 1.5, max: rnd(0.25, 0.6), r0: rnd(4, 9), r1: 1, c0: DIEN.loi, c1: DIEN.ngoai })
           })
         }
-        // boss bị giật: ảnh chớp âm bản/dương bản (⇒ thấy "xương") + tia điện bò khắp người ~1,2 giây
+        // boss bị giật ~1,3 giây: nhịp 145ms luân phiên BÓNG ĐEN + XƯƠNG TRẮNG (vẽ đè hộp boss) ↔ boss sáng chói; tia điện bò khắp người
         S.sau(780, () => {
           let a = 0, dem = 0
           S.act({
             update(dt) {
               a += dt * 1000; if (a > 1300) { this.xong = true; return }
-              if (Math.floor(a / 60) % 2 === 0) hook.boss('xray'); else hook.boss('trung')
+              hook.boss(Math.floor(a / 145) % 2 === 0 ? 'xray' : 'trung')
+              ;(this as unknown as { a: number }).a = a
               dem += dt * 1000
               if (dem > 45) {
                 dem = 0
@@ -321,7 +389,7 @@ export function phatDon(cv: HTMLCanvasElement, don: Don, n: Neo, hook: Hook): Pr
                 S.act({ update(d2) { t += d2 * 1000; if (t > 60) this.xong = true }, draw(g) { veSet(g, ds, 1.6, 0.9) } } as Act)
               }
             },
-            draw() { /* tia tự vẽ ở act con */ },
+            draw(g) { const a = (this as unknown as { a?: number }).a ?? 0; if (Math.floor(a / 145) % 2 === 0) xuong(g, n.boss, n.bossAnh, a) },
           } as Act)
         })
         S.sau(2100, () => { hook.boss('trung'); S.toi(0) })
@@ -342,8 +410,9 @@ export function phatDon(cv: HTMLCanvasElement, don: Don, n: Neo, hook: Hook): Pr
               const k = Math.min(1, t / 760), e = k * k * (3 - 2 * k) * 0.35 + k * k * 0.65
               const x = lerp(x0, bx, e), y = lerp(y0, by, e)
               ;(this as unknown as { x: number; y: number }).x = x; (this as unknown as { y: number }).y = y
-              for (let i = 0; i < 6; i++) S.hat({ x: x + rnd(-14, 14), y: y + rnd(-14, 14), vx: -(bx - x0) * 0.1 + rnd(-40, 40), vy: -(by - y0) * 0.1 + rnd(-40, 40), max: rnd(0.3, 0.8), r0: rnd(12, 28), r1: 2, c0: i % 2 ? LUA.giua : LUA.loi, c1: LUA.ngoai })
-              S.hat({ x, y, vx: rnd(-30, 30), vy: -rnd(0, 50), max: 1, r0: 24, r1: 58, c0: LUA.khoi, c1: LUA.khoi, a: 0.3, add: false })
+              const anh = !!fx('fx_thien_thach') // ảnh đã có đuôi lửa ⇒ chỉ rắc ít tàn
+              for (let i = 0; i < (anh ? 2 : 6); i++) S.hat({ x: x + rnd(-14, 14), y: y + rnd(-14, 14), vx: -(bx - x0) * 0.1 + rnd(-40, 40), vy: -(by - y0) * 0.1 + rnd(-40, 40), max: rnd(0.3, 0.8) * (anh ? 0.6 : 1), r0: rnd(12, 28) * (anh ? 0.5 : 1), r1: 2, c0: i % 2 ? LUA.giua : LUA.loi, c1: LUA.ngoai })
+              if (!anh) S.hat({ x, y, vx: rnd(-30, 30), vy: -rnd(0, 50), max: 1, r0: 24, r1: 58, c0: LUA.khoi, c1: LUA.khoi, a: 0.3, add: false })
               if (k >= 1) {
                 this.xong = true
                 S.chop(1); hook.rung(20, 800); hook.boss('trung'); S.toi(0.25)
@@ -360,6 +429,7 @@ export function phatDon(cv: HTMLCanvasElement, don: Don, n: Neo, hook: Hook): Pr
               g.globalCompositeOperation = 'lighter'
               g.drawImage(quang(LUA.giua), o.x - 90, o.y - 90, 180, 180); g.drawImage(quang(LUA.loi), o.x - 44, o.y - 44, 88, 88)
               g.globalCompositeOperation = 'source-over'
+              if (veDan(g, 'fx_thien_thach', o.x, o.y, bx - x0, by - y0, n.W * 0.2)) return
               g.save(); g.translate(o.x, o.y); g.rotate(o.rot ?? 0)
               g.beginPath(); for (let i = 0; i < 9; i++) { const a = (i / 9) * TAU, r = 30 + ((i * 7) % 5) * 3; g.lineTo(Math.cos(a) * r, Math.sin(a) * r) } g.closePath()
               g.fillStyle = 'rgb(58,40,40)'; g.fill(); g.strokeStyle = rgba(LUA.giua, 0.9); g.lineWidth = 2.5; g.stroke(); g.restore()
@@ -375,7 +445,7 @@ export function phatDon(cv: HTMLCanvasElement, don: Don, n: Neo, hook: Hook): Pr
         hook.hero('tich_nang'); tichNang(S, T.x, T.y, 700, 44, m)
         S.sau(700, () => {
           hook.hero('tung_don')
-          dan(S, { x0: T.x, y0: T.y, x1: bx, y1: by, ms: 520, r: 44, m, khoi: lua, cong: 30, vet: 1.2, toi: () => {
+          dan(S, { x0: P.x, y0: P.y, x1: bx, y1: by, ms: 520, r: 44, m, khoi: lua, cong: 30, vet: 1.2, anh: lua ? 'fx_cau_lua' : 'fx_cau_bang', rong: n.W * 0.24, toi: () => {
             S.chop(lua ? 0.85 : 0.9); hook.rung(12, 520); hook.boss('trung')
             if (lua) {
               bung(S, bx, by, 80, LUA, 520); vongSong(S, bx, by, 170, LUA.giua, 2)
@@ -405,7 +475,7 @@ export function phatDon(cv: HTMLCanvasElement, don: Don, n: Neo, hook: Hook): Pr
         hook.hero('tich_nang'); tichNang(S, T.x, T.y, 330, 15, m)
         S.sau(330, () => {
           hook.hero('tung_don')
-          dan(S, { x0: T.x, y0: T.y, x1: bx, y1: by, ms: 380, r: 15, m, cong: 14, vet: 0.8, toi: () => {
+          dan(S, { x0: P.x, y0: P.y, x1: bx, y1: by, ms: 380, r: 15, m, cong: 14, vet: 0.8, anh: lua ? 'fx_cau_lua' : 'fx_cau_bang', rong: n.W * 0.11, toi: () => {
             S.chop(0.3); hook.rung(4, 220); hook.boss('trung')
             if (lua) { bung(S, bx, by, 26, LUA, 300); vongSong(S, bx, by, 80, LUA.giua, 1) } else { manhBang(S, bx, by, 14, 260); vongSong(S, bx, by, 80, BANG.giua, 1) }
             S.sau(150, () => hook.boss(lua ? 'chay' : 'bang')); S.sau(650, () => hook.boss('dung'))
@@ -417,7 +487,7 @@ export function phatDon(cv: HTMLCanvasElement, don: Don, n: Neo, hook: Hook): Pr
         hook.hero('tich_nang'); tichNang(S, T.x, T.y, 300, 13, DIEN)
         S.sau(300, () => hook.hero('tung_don'))
         for (let i = 0; i < 3; i++) S.sau(330 + i * 110, () => {
-          let ds = duongSet(T.x, T.y, bx, by, 38), t = 0
+          let ds = duongSet(P.x, P.y, bx, by, 38), t = 0
           S.act({ update(dt) { t += dt * 1000; if (t > 90) this.xong = true }, draw(g) { veSet(g, ds, 2.4, 1 - t / 130) } } as Act)
           S.chop(0.3); hook.rung(3, 120); hook.boss(i % 2 ? 'trung' : 'xray')
           for (let k = 0; k < 8; k++) S.hat({ x: bx, y: by, vx: rnd(-1, 1) * 180, vy: rnd(-1, 0.4) * 180, g: 400, drag: 1.5, max: rnd(0.2, 0.45), r0: rnd(3, 6), r1: 1, c0: DIEN.loi, c1: DIEN.ngoai })
@@ -431,7 +501,7 @@ export function phatDon(cv: HTMLCanvasElement, don: Don, n: Neo, hook: Hook): Pr
         S.sau(0, () => S.toi(0.35))
         tichNang(S, bossTay.x, bossTay.y, 650, 34, MA)
         S.sau(650, () => dan(S, {
-          x0: bossTay.x, y0: bossTay.y, x1: heroTrung.x, y1: heroTrung.y, ms: 480, r: 34, m: MA, cong: 22, vet: 1.1, toi: () => {
+          x0: bossTay.x, y0: bossTay.y, x1: heroTrung.x, y1: heroTrung.y, ms: 480, r: 34, m: MA, cong: 22, vet: 1.1, anh: 'fx_dan_ma', rong: n.W * 0.16, toi: () => {
             S.chop(0.6); hook.rung(14, 600); hook.hero('bi_danh')
             bung(S, heroTrung.x, heroTrung.y, 70, MA, 480); vongSong(S, heroTrung.x, heroTrung.y, 150, MA.giua, 2)
             for (let i = 0; i < 24; i++) S.hat({ x: heroTrung.x, y: heroTrung.y, vx: rnd(-1, 1) * 300, vy: rnd(-1, 0.2) * 300, g: 300, drag: 1.4, max: rnd(0.5, 1.1), r0: rnd(6, 16), r1: 1, c0: MA.giua, c1: MA.ngoai })

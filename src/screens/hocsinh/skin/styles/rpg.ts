@@ -58,6 +58,8 @@ export const RPG: Skin = {
   theTiep: { bg: 'linear-gradient(100deg, rgba(233,199,123,0.26) 0%, rgba(20,26,51,0.78) 70%)', ink: '#f3ead0', border: '1px solid rgba(233,199,123,0.7)' },
   nenTen: 'rgba(20,26,51,0.6)',
   the3d: RPG_3D,
+  // Sân Đấu trường (Thùy 02/10, kit design/bk-ui-src/AppHS/Animation/chien_dau/ — nén bởi scripts/anime-chien-dau-2d.mjs)
+  sanDau: '/bk-ui/hs/skin/rpg/dau_truong/nen_san_dau.jpg',
   // 02/10 (Thùy): bản CHIBI dễ thương thay bản anime cũ — nam + mèo đen · nữ + cú trắng, PNG trong suốt cắt sát, cao 900px.
   // Ảnh gốc design/bk-ui-src/New_anime/. Bản cũ nv_nam.png / nv_nu.png GIỮ trên đĩa (PWA cũ còn gọi) — dọn sau ≥1 tuần, hỏi Thùy.
   // 02/10 (Thùy): đây là 2 NPC DẪN TRUYỆN (bé trai + mèo đen · bé gái + cú trắng) — Home nói chuyện, tutorial, người dẫn ở Đấu trường. NHÂN VẬT CHÍNH của học sinh là 2 nhà thám hiểm áo choàng xanh (bộ chạy 2D: skin/heroChay.ts).

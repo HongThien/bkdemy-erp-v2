@@ -1,5 +1,6 @@
 // ============================================================================
-// ĐẤU TRƯỜNG 3 TRẬN (Thử thách — spec-thu-thach-dau-truong.md). Đồ họa 2D: nhân vật chính (tạm: ảnh chibi nam) + boss ảnh (Skin.boss) + hiệu ứng đòn bằng canvas (hieuUng.ts).
+// ĐẤU TRƯỜNG 3 TRẬN (Thử thách — spec-thu-thach-dau-truong.md). Đồ họa 2D: sân (Skin.sanDau) + nhân vật chính 15 tư thế nam/nữ (skin/heroDau.ts — bộ chiến đấu Thùy vẽ 02/10)
+// + boss ảnh (Skin.boss) + hiệu ứng đòn bằng canvas (hieuUng.ts, đạn/lớp băng = ảnh FX của bộ chiến đấu).
 // Thùy 02/10: KHÔNG có hoạt ảnh theo từng câu — làm xong 5 câu mới phát ĐÒN, mạnh/yếu theo % đúng (60/80/100%): xem hieuUng.ts. Bé gái chibi = NGƯỜI DẪN TRUYỆN (khung lời thoại), không phải nhân vật chính.
 // Màn CHỈ hiển thị + nhận câu trả lời; thắng/thua thật do server (spec §7) — `NGUONG` chỉ để vẽ nhãn, thanh máu boss ở đây là hiển thị (server tính thật). Dựng bằng KhungHS (không gõ màu).
 // Luồng: trận t (5 câu) → [đòn] → trận kế … → trận 3 thắng = boss gục. Thua trận nào: boss tung ma thuật, dừng luôn. Nút "Bỏ cuộc" = thua.
@@ -7,48 +8,82 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react'
 import { DauTrangHS, HEAD, MAU, ManHS, NhanHS, NutHS, TheHS, THE } from '../skin/KhungHS'
 import { laySkin } from '../skin/registry'
-import { anhChay, hopVe } from '../skin/heroChay'
+import { anhDau, hopDau, HERO_DAU, TU_THE_DAU, type TuTheDau } from '../skin/heroDau'
 import { BossAnhHS } from '../boss/BossSan'
 import type { TuTheBoss } from '../boss/noiDungBoss'
 import { NGUONG, NHAN_DO_KHO, SO_CAU_TRAN, SO_TRAN, type CauTT, type KetThucLuot } from './kieu'
-import { AURA, LOC_BOSS, TEN_DON, chonDon, phatDon, type Don, type Hop, type TtBoss, type TtHero } from './hieuUng'
+import { AURA, LOC_BOSS, TEN_DON, chonDon, napFx, phatDon, type Don, type Hop, type TtBoss, type TtHero } from './hieuUng'
 
 const BOSS = 'boss_thuy' // DÙNG TẠM cho cả 3 trận (Thùy 02/10) — đủ quái thì thay qua sổ boss của style
 const CHU = ['A', 'B', 'C', 'D', 'E', 'F']
-/** Nhân vật chính = nhà thám hiểm áo choàng xanh (cùng người với bộ chạy ở bản đồ — skin/heroChay.ts, khung ĐỨNG YÊN; các tư thế đánh còn là CSS trên ảnh này cho tới khi có Đơn 13). Người dẫn truyện = bé gái chibi + cú trắng (Thùy 02/10). */
+/** Nhân vật chính = nhà thám hiểm áo choàng xanh (bộ chiến đấu 15 tư thế, skin/heroDau.ts). Người dẫn truyện = bé gái chibi + cú trắng (Thùy 02/10). */
 const DAN: 'nam' | 'nu' = 'nu'
 /** Máu boss mất sau mỗi trận thắng, theo % đúng (hiển thị; trận 3 luôn 100% ⇒ đòn kết liễu hạ nốt phần còn lại). */
 const MAT_MAU: Record<number, number> = { 60: 18, 80: 28, 100: 34 }
 
 const CSS = `
-@keyframes dt-tho { 0%,100% { transform: translateY(0) scale(1) } 50% { transform: translateY(-1.8%) scale(1.012) } }
-@keyframes dt-tich { 0% { transform: translateY(0) scale(1) } 100% { transform: translateY(-2%) scale(1.045) } }
-@keyframes dt-tung { 0% { transform: none } 30% { transform: translateX(-7%) rotate(-5deg) scale(.97) } 58% { transform: translateX(16%) rotate(6deg) scale(1.07) } 100% { transform: translateX(9%) rotate(3deg) scale(1.02) } }
-@keyframes dt-bi-danh { 0% { transform: none; filter: brightness(2.2) sepia(1) hue-rotate(-40deg) saturate(5) } 25% { transform: translateX(-16%) rotate(-9deg) } 60% { transform: translateX(-9%) rotate(-4deg); filter: brightness(1.4) sepia(.6) hue-rotate(-40deg) saturate(3) } 100% { transform: translateX(-7%) rotate(-3deg); filter: none } }
-@keyframes dt-nhay { 0%,100% { transform: translateY(0) rotate(0) } 22% { transform: translateY(-13%) rotate(-5deg) } 44% { transform: translateY(0) rotate(0) } 66% { transform: translateY(-9%) rotate(5deg) } }
-@keyframes dt-guc { to { opacity: .5; transform: translate(-8%, 6%) rotate(-12deg); filter: grayscale(.7) brightness(.8) } }
+@keyframes dt-tich { from { filter: drop-shadow(0 0 10px var(--dt-aura)) brightness(1.05) } to { filter: drop-shadow(0 0 22px var(--dt-aura)) drop-shadow(0 0 40px var(--dt-aura)) brightness(1.15) } }
+@keyframes dt-bi-danh { 0% { transform: none; filter: brightness(2.2) sepia(1) hue-rotate(-40deg) saturate(5) } 30% { transform: translateX(-9%) } 100% { transform: translateX(-6%); filter: none } }
+@keyframes dt-guc { to { filter: grayscale(.75) brightness(.75) } }
 @keyframes dt-phong { to { transform: scale(1.16) translateX(-4%) } }
 @keyframes dt-vang { 0% { opacity: 0; transform: translate(0,0) scale(.3) } 15% { opacity: 1 } 100% { opacity: 0; transform: translate(var(--dx),var(--dy)) scale(1) } }
 @keyframes dt-hien { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: none } }
 @keyframes dt-nen-toi { to { opacity: .72 } }
-.dt-hero { animation: dt-tho 2.8s ease-in-out infinite; transform-origin: 50% 100% }
-.dt-hero[data-h="tich_nang"] { animation: dt-tich .45s ease-in-out infinite alternate; filter: drop-shadow(0 0 16px var(--dt-aura)) drop-shadow(0 0 34px var(--dt-aura)) brightness(1.1) }
-.dt-hero[data-h="tung_don"] { animation: dt-tung .6s ease-out forwards; filter: drop-shadow(0 0 20px var(--dt-aura)) brightness(1.15) }
-.dt-hero[data-h="bi_danh"] { animation: dt-bi-danh .9s ease-out forwards }
-.dt-hero[data-h="thang"] { animation: dt-nhay 1.1s ease-in-out infinite }
+.dt-hero { transform-origin: 50% 100% }
+.dt-hero[data-h="tich_nang"] { animation: dt-tich .4s ease-in-out infinite alternate }
+.dt-hero[data-h="tung_don"] { filter: drop-shadow(0 0 18px var(--dt-aura)) brightness(1.12) }
+.dt-hero[data-h="bi_danh"] { animation: dt-bi-danh .8s ease-out forwards }
 .dt-hero[data-h="guc"] { animation: dt-guc 1.4s ease-in forwards }
 .dt-boss-to { animation: dt-phong 2.2s ease-in forwards; transform-origin: 50% 100% }
 .dt-hien { animation: dt-hien .3s ease-out }
 .dt-vang { animation: dt-vang 1.6s ease-out forwards }
-@media (prefers-reduced-motion: reduce) { .dt-hero, .dt-hero[data-h], .dt-boss-to, .dt-vang, .dt-hien { animation: none !important } .dt-vang { opacity: 0 } }
+@media (prefers-reduced-motion: reduce) { .dt-hero[data-h], .dt-boss-to, .dt-vang, .dt-hien { animation: none !important } .dt-vang { opacity: 0 } }
 `
 
-/** Chiều cao sân (px) theo khung nhìn; hẹp (điện thoại dọc) thì co theo bề ngang để nhân vật + boss không chồng nhau. */
+/** Chiều cao SÂN (px) theo khung nhìn — chừa ≥55% màn cho câu hỏi; hẹp (điện thoại dọc) thì co theo bề ngang để nhân vật + boss không chồng nhau. */
 function useCaoSan() {
-  const tinh = () => (typeof window === 'undefined' ? 240 : Math.round(Math.max(120, Math.min(340, window.innerHeight * 0.33, window.innerWidth * 0.42))))
+  const tinh = () => (typeof window === 'undefined' ? 360 : Math.round(Math.max(190, Math.min(420, window.innerHeight * 0.44, window.innerWidth * 0.5))))
   const [c, setC] = useState(tinh)
   useEffect(() => { const f = () => setC(tinh()); window.addEventListener('resize', f); return () => window.removeEventListener('resize', f) }, [])
   return c
+}
+/** Mặt đất của sân (tỉ lệ từ trên xuống) — chân nhân vật + boss đứng ở đây (nền kit: điểm đứng y≈78% của khung 1672×600, cắt bớt trời). */
+const DAT = 0.9
+
+type Buoc = { p: TuTheDau; ms?: number } // không ms = giữ tới khi đổi trạng thái
+/** Chuỗi tư thế theo trạng thái + đòn (bảng "Chuỗi động tác" của DESIGN.md bộ chiến đấu). `lap` = lặp cả chuỗi. */
+function chuoi(tt: TtHero, don: Don | null): { b: Buoc[]; lap?: boolean } {
+  switch (tt) {
+    case 'nghi': return { b: [{ p: 'dung_1', ms: 900 }, { p: 'dung_2', ms: 900 }], lap: true }
+    case 'tich_nang': return { b: [{ p: 'tich_nang_1', ms: 325 }, { p: 'tich_nang_2', ms: 325 }], lap: true }
+    case 'tung_don': return don === 'set' || don === 'thien_thach' ? { b: [{ p: 'niem_troi_1', ms: 120 }, { p: 'niem_troi_2' }] }
+      : don === 'cau_lua_lon' || don === 'cau_bang_lon' ? { b: [{ p: 'nem_truoc_1', ms: 150 }, { p: 'nem_truoc_2' }] } : { b: [{ p: 'phat_nho' }] }
+    case 'bi_danh': return { b: [{ p: 'bi_danh_1', ms: 250 }, { p: 'bi_danh_2' }] }
+    case 'guc': return { b: [{ p: 'guc' }] }
+    case 'thang': return { b: [{ p: 'thang_1', ms: 550 }, { p: 'thang_2', ms: 550 }], lap: true }
+  }
+}
+/** Tư thế đang hiện — chạy chuỗi bằng setTimeout (mỗi bước ≥120ms, không cần rAF). Giảm chuyển động ⇒ đứng ở bước cuối. */
+function useTuThe(tt: TtHero, don: Don | null): TuTheDau {
+  const { b, lap } = chuoi(tt, don)
+  const [i, setI] = useState(0)
+  const khoa = `${tt}|${don}`
+  useEffect(() => {
+    setI(0)
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { setI(lap ? 0 : b.length - 1); return }
+    let k = 0, h = 0
+    const buoc = () => { const ms = b[k].ms; if (ms === undefined) return; h = window.setTimeout(() => { k = k + 1 < b.length ? k + 1 : lap ? 0 : k; setI(k); buoc() }, ms) }
+    buoc()
+    return () => clearTimeout(h)
+  }, [khoa]) // eslint-disable-line react-hooks/exhaustive-deps
+  return b[Math.min(i, b.length - 1)].p
+}
+/** Nạp + giải mã trước 15 tư thế của giới này (đổi tư thế = đổi src, không nháy) + ảnh FX. */
+function useNapTruoc(gioi: 'nam' | 'nu') {
+  useEffect(() => {
+    for (const p of TU_THE_DAU) { const im = new Image(); im.src = anhDau(gioi, p); im.decode?.().catch(() => undefined) }
+    void napFx()
+  }, [gioi])
 }
 
 type Pha = 'dang_danh' | 'dien' | 'sau_tran' | 'cuoi'
@@ -86,7 +121,13 @@ export function DauTruongHS({ tran, gioi = 'nam', goiY, epDon, diem, luotConSau,
   const [mau, setMau] = useState(100)
   const [don, setDon] = useState<Don | null>(null)
   const [donCuoi, setDonCuoi] = useState<{ don: Don; muc: number } | null>(null)
-  const cao = useCaoSan()
+  const sanCao = useCaoSan()
+  const cao = Math.round(sanCao * 0.5) // cao THÂN nhân vật đứng (kit: 34% cảnh ≈ 53% vùng sân)
+  const pose = useTuThe(hero, don)
+  useNapTruoc(gioi)
+  const skin = laySkin(null)
+  const anhBoss = useRef<HTMLImageElement | null>(null)
+  useEffect(() => { const src = skin.boss?.[BOSS]?.trung; if (src) { const im = new Image(); im.src = src; anhBoss.current = im } }, [skin])
   const daBao = useRef(false)
   const dangDien = useRef(false)
   const sanRef = useRef<HTMLDivElement>(null)
@@ -100,7 +141,6 @@ export function DauTruongHS({ tran, gioi = 'nam', goiY, epDon, diem, luotConSau,
 
   const cau = tran[t]?.[c]
   const need = NGUONG[t]
-  const sanCao = cao + 56
 
   useEffect(() => () => cancelAnimationFrame(rungRaf.current), [])
 
@@ -134,7 +174,10 @@ export function DauTruongHS({ tran, gioi = 'nam', goiY, epDon, diem, luotConSau,
     if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return new Promise((r) => setTimeout(r, 500))
     const s = sanRef.current.getBoundingClientRect()
     const h = hop(heroRef.current), b = hop(bossRef.current)
-    return phatDon(cvRef.current, d, { W: s.width, H: s.height, hero: h, boss: b, tay: { x: h.x + h.w * 0.82, y: h.y + h.h * 0.42 } }, {
+    // điểm tay theo ảnh tư thế (combat-data.json): tích năng = tâm cầu giữa 2 tay · tung = tay đẩy ra của tư thế phóng của đòn này
+    const tayCua = (p: TuTheDau) => { const v = hopDau(gioi, p, cao, h.w / 2, h.h), [tx, ty] = HERO_DAU[gioi][p].tay[0]; return { x: h.x + v.left + tx * v.width, y: h.y + v.top + ty * v.height } }
+    const pPhong: TuTheDau = d === 'cau_lua_lon' || d === 'cau_bang_lon' ? 'nem_truoc_2' : 'phat_nho'
+    return phatDon(cvRef.current, d, { W: s.width, H: s.height, hero: h, boss: b, tay: tayCua('tich_nang_2'), phong: tayCua(pPhong), bossAnh: anhBoss.current }, {
       rung,
       hero: setHero,
       boss: (tt: TtBoss) => {
@@ -173,10 +216,12 @@ export function DauTruongHS({ tran, gioi = 'nam', goiY, epDon, diem, luotConSau,
     ketThuc({ thang, lyDo: 'bo_cuoc' })
   }
 
-  const hv = hopVe(gioi, 'dung', cao, cao * 0.275, cao) // THÂN cao đúng `cao`, trục thân nằm giữa hộp rộng cao×0,55
+  const heroW = Math.round(cao * 0.62)
+  const hv = hopDau(gioi, pose, cao, heroW / 2, cao) // THÂN đứng cao đúng `cao`, chân tư thế hiện tại chạm đáy hộp
   const kqCuoi: KetThucLuot = { thang, lyDo }
   const soThang = thang.filter(Boolean).length
-  const bossCao = Math.round(cao * 0.95)
+  const bossCao = Math.round(cao * 1.2)
+  const day = Math.round(sanCao * (1 - DAT))
   const vuot = pha === 'cuoi' && lyDo === 'vuot'
   const thua = pha === 'cuoi' && lyDo !== 'vuot'
 
@@ -198,17 +243,20 @@ export function DauTruongHS({ tran, gioi = 'nam', goiY, epDon, diem, luotConSau,
       {/* ── SÂN ĐẤU: nhân vật chính trái · boss phải + thanh máu · canvas hiệu ứng phủ lên ── */}
       <div ref={sanRef} className="relative overflow-hidden rounded-[18px]" style={{ ...THE, height: sanCao, padding: 0 }}>
         <div ref={chuyenRef} className="absolute inset-0">
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(70% 90% at 70% 100%, var(--sk-surface2) 0%, transparent 70%)' }} />
+          {skin.sanDau
+            ? <img src={skin.sanDau} alt="" draggable={false} className="absolute inset-0 h-full w-full select-none object-cover" style={{ objectPosition: '50% 72%' }} />
+            : <div className="absolute inset-0" style={{ background: 'radial-gradient(70% 90% at 70% 100%, var(--sk-surface2) 0%, transparent 70%)' }} />}
           {thua && <div className="pointer-events-none absolute inset-0 z-[5]" style={{ background: 'var(--sk-bg)', opacity: 0, animation: 'dt-nen-toi 1.6s ease-in .4s forwards' }} />}
-          <div ref={heroRef} className="absolute bottom-0 z-10" style={{
-            height: cao, width: cao * 0.55, left: vuot ? '50%' : '4%', transform: vuot ? 'translateX(-50%)' : undefined, transition: 'left .9s ease-in-out',
+          <div ref={heroRef} className="absolute z-10" style={{
+            bottom: day, height: cao, width: heroW, left: vuot ? '50%' : '9%', transform: vuot ? 'translateX(-50%)' : undefined, transition: 'left .9s ease-in-out',
             ['--dt-aura' as string]: don ? AURA[don] : 'transparent',
           } as CSSProperties}>
+            <span className="pointer-events-none absolute left-1/2 rounded-[50%]" style={{ bottom: -cao * 0.03, width: cao * 0.5, height: cao * 0.08, transform: 'translateX(-50%)', background: 'radial-gradient(closest-side, rgba(0,0,0,.45), transparent)' }} />
             <div className="dt-hero relative h-full w-full" data-h={hero} key={`h-${hero}`}>
-              <img src={anhChay(gioi, 'dung')} alt="" draggable={false} className="absolute max-w-none select-none" style={{ left: hv.left, top: hv.top, width: hv.width, height: hv.height, filter: 'drop-shadow(0 8px 14px var(--sk-bg))' }} />
+              <img src={anhDau(gioi, pose)} alt="" draggable={false} className="absolute max-w-none select-none" style={{ left: hv.left, top: hv.top, width: hv.width, height: hv.height }} />
             </div>
           </div>
-          <div className="absolute bottom-0 right-[3%] z-10 flex flex-col items-center" style={{ width: bossCao + 8 }}>
+          <div className="absolute right-[5%] z-10 flex flex-col items-center" style={{ bottom: day, width: bossCao + 8 }}>
             <ThanhMau pct={mau} />
             <div ref={bossRef} className={thua ? 'dt-boss-to' : ''} style={{ width: bossCao, height: bossCao }}>
               <div ref={loc} style={{ transition: 'filter .08s' }}><BossAnhHS ma={BOSS} tt={boss} cao={bossCao} /></div>

@@ -84,4 +84,6 @@ export type Skin = {
   // THẺ CÂU HỎI TRONG MÀN ĐẤU (Thùy 02/10: "viền card + font chưa mang vibe game") — không khai ⇒ dùng thẻ thường của style.
   // font: chữ đề + đáp án · nen/vien: nền + khung thẻ (box-shadow nhiều lớp = viền kép) · phien/phienDay: phiến đáp án + gờ dưới (bấm lún)
   tran?: { font: string; nen: string; vien: string; phien: string; phienDay: string }
+  // Nền SÂN ĐẤU TRƯỜNG (Thử thách — ảnh ngang ~2,8:1, mặt sân ở ~60–100% chiều dọc). Không khai ⇒ sân là mảng màu của style (Tối giản).
+  sanDau?: string
 }

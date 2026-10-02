@@ -36,7 +36,7 @@ Giữ thang cũ, đổi cách đo: **thắng 1 trận = 10 · thắng 2 trận =
   | 60% (3/5) | cầu lửa / cầu băng / tia điện **nhỏ** | cùng kiểu nhưng ngắn, nhỏ |
   | Thua trận | **Boss tung ma thuật** | quả cầu tím bay vào nhân vật, chibi bị hất lùi + xám đi, màn tối dần |
 - **Boss 1 con qua 3 trận, máu hiển thị tụt SAU mỗi đòn** (60%: −18 · 80%: −28 · 100%: −34; trận 3 luôn 100% ⇒ đòn kết liễu, boss gục + hạt vàng, nhân vật chạy ra giữa nhảy mừng). Thua/bỏ cuộc: boss phóng to, chibi xám. (Số máu chỉ để hiển thị — server tính thật.)
-- **Nhân vật chính ≠ người dẫn truyện.** Bé gái chibi = **NGƯỜI DẪN TRUYỆN** (khung lời thoại: mở trận, sau đòn, kết quả). **Nhân vật chính cần bộ tư thế/animation riêng** (đứng · tích năng · tung đòn · bị đánh · thắng · gục). Demo tạm dùng ảnh chibi nam + biến dạng bằng CSS; **việc còn lại = đặt vẽ nhân vật chính nhiều tư thế** (đơn hàng chưa viết).
+- **Nhân vật chính ≠ người dẫn truyện.** Bé gái chibi = **NGƯỜI DẪN TRUYỆN** (khung lời thoại: mở trận, sau đòn, kết quả). **Nhân vật chính cần bộ tư thế/animation riêng** (đứng · tích năng · tung đòn · bị đánh · thắng · gục). **ĐÃ CÓ (Thùy vẽ 02/10, `design/bk-ui-src/AppHS/Animation/chien_dau/`):** 15 tư thế × nam/nữ + 5 FX (cầu lửa · cầu băng · thiên thạch · đạn ma · lớp băng bọc) + nền sân — nén bằng `scripts/anime-chien-dau-2d.mjs` (512×768 WebP, ~1,2MB/giới), neo/điểm tay ở `skin/heroDau.ts`, nền sân = `Skin.sanDau`. Chuỗi tư thế theo DESIGN.md của kit; sét = bóng đen + xương trắng (port `hieu_ung_va_cham.js`).
 - Đồ họa 2D. Boss: **DÙNG TẠM** boss Thùy 6 tư thế cho cả 3 trận; đủ quái Thùy thiết kế thì thay.
 - **Màn kết quả:** 3 ô trận (✔ ✔ ✖) · Điểm Rank · số lượt còn hôm nay · nút "Thử lại" (xám khi hết lượt).
 
