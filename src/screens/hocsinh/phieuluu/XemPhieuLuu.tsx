@@ -16,14 +16,16 @@ import { Chang2D } from './ban2d/Chang2D'
 import { XemDau } from './XemDau'
 import { ChanDoan } from './ChanDoan'
 import { BaoDoHoa, NutDoHoa } from './DoHoa'
-import type { ChangV } from './kieu'
+import type { ChangV, LucDiaV } from './kieu'
 
 // Chỉ khi chạy dev: dán JSON thật của fn_ban_do_phieu_luu vào localStorage 'ban_do_pl' để soi dữ liệu thật qua bộ đổi tuBanDoPL.
 // &so=N: chỉ lấy N chủ đề đầu (thử bản đồ toàn cảnh với khối ít chủ đề)
 function layBanDo(): BanDoV {
   const q = new URLSearchParams(location.search), bd = layBanDoGoc(), so = Number(q.get('so'))
   const kq = ganBiomeTheoTranh(so > 0 ? { ...bd, luc_dia: bd.luc_dia.slice(0, so) } : bd), ep = q.get('biome') // &biome=rung|thanh_co|anh_dao…: ép mọi lục địa theo 1 biome (soi kit)
-  return ep ? { ...kq, luc_dia: kq.luc_dia.map((l) => ({ ...l, biome: ep })) } : kq
+  const nv = Number(q.get('nv')) // &nv=N: mỗi lục địa có đúng N chuyên đề (nhân bản) — soi kit với 6/8 mốc
+  const nhan = (l: LucDiaV) => (nv > 0 ? { ...l, vung: Array.from({ length: nv }, (_, i) => ({ ...l.vung[i % l.vung.length], ma: `${l.vung[i % l.vung.length].ma}_${i}`, ten: i < l.vung.length ? l.vung[i].ten : `${l.vung[i % l.vung.length].ten} (${i + 1})` })) } : l)
+  return { ...kq, luc_dia: kq.luc_dia.map((l) => nhan(ep ? { ...l, biome: ep } : l)) }
 }
 function layBanDoGoc(): BanDoV {
   if (new URLSearchParams(location.search).get('thu') === 'nhieu') return banDoNhieu()

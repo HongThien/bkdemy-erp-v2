@@ -1,7 +1,7 @@
 // TẦNG 2 — LỤC ĐỊA bản KIT (Đơn 12): nền vẽ sẵn đường + 8 công trình rời (mỗi công trình = 1 chuyên đề) + chibi chạy theo đường tới công trình em bấm.
 // Dữ liệu kit: kitLucDia.ts / kitLucDia.anh.ts. Cờ · sương · mũi tên · quái dùng bộ có sẵn của app (San2D / HinhTam). Chuyên đề < 8: công trình thừa vẫn đứng đó, không bấm được, không nhãn.
 // >8 chuyên đề hoặc biome chưa có kit ⇒ LucDia2D dùng bản vẽ chung cũ. Chỉ HÌNH HỌC + hiển thị: số sao/trạng thái lấy từ thongKeVung (DB tính).
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { DauTrangHS, HEAD } from '../../skin/KhungHS'
 import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import { thongKeVung, type LucDiaV } from '../kieu'
@@ -26,6 +26,35 @@ const RIA_SANG = 'drop-shadow(0 0 3px color-mix(in srgb, var(--sk-acc) 60%, tran
 const NHO_VI_TRI: Record<string, number> = {} // "rời màn rồi quay lại = đúng chỗ cũ" — sống tới F5
 
 const HERO_AX = HERO_CHAY.nam.ax
+type Hop = { x: number; y: number; w: number; h: number }
+const chong = (a: Hop, b: Hop, le = 0) => Math.max(0, Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x) - le) * Math.max(0, Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y) - le)
+/** LUẬT HIỂN THỊ (Thùy 02/10): các thứ hiển thị KHÔNG ĐƯỢC ĐÈ LÊN NHAU — nhãn (tên + 5 sao) không đè công trình nào (kể cả công trình khác), không đè nhãn khác, không ra khỏi khung / vùng thanh trên.
+ *  Quét lưới quanh chân, chọn chỗ đè ít nhất + gần chỗ lý tưởng nhất. `nhan[i]` = kích thước thật đã đo. */
+function xepNhan(moc: Hop[], chan: { x: number; y: number }[], nhan: ({ w: number; h: number } | null)[], W: number, H: number): ({ x: number; y: number } | null)[] {
+  const dat: Hop[] = [], kq: ({ x: number; y: number } | null)[] = []
+  const nha = moc.map((m) => ({ x: m.x + m.w * 0.04, y: m.y + m.h * 0.04, w: m.w * 0.92, h: m.h * 0.94 })) // hộp công trình co nhẹ (bỏ lề alpha)
+  // nhãn đặt trước = công trình ở GẦN (y lớn) vì nhãn của chúng dễ bị kẹt hơn; kết quả vẫn theo chỉ số
+  const thuTu = nhan.map((_, i) => i).sort((a, b) => chan[b].y - chan[a].y)
+  for (const i of thuTu) {
+    const n = nhan[i]; if (!n) { kq[i] = null; continue }
+    const m = moc[i], c = chan[i]
+    // Quét lưới vị trí quanh chân công trình; chi phí = diện tích đè (rất nặng) + khoảng cách tới chỗ lý tưởng (ngay dưới chân) ⇒ nhãn ở sát công trình của nó nhất có thể mà không đè gì.
+    const mx = c.x - n.w / 2, my = c.y + H * 0.004
+    let tot: { x: number; y: number } | null = null, ittNhat = Infinity
+    for (let dy = -H * 0.3; dy <= H * 0.24; dy += H * 0.015) for (let dx = -n.w * 1.8; dx <= n.w * 1.8; dx += n.w * 0.12) {
+      const r: Hop = { x: Math.max(2, Math.min(W - n.w - 2, mx + dx)), y: my + dy, w: n.w, h: n.h }
+      let phat = Math.hypot(r.x - mx, r.y - my) * 0.5
+      if (r.y < H * 0.1 || r.y + r.h > H * 0.95) phat += 1e7 // ra khỏi vùng an toàn (thanh trên / đáy)
+      if (chong(r, { x: m.x + m.w * 0.04, y: m.y + m.h * 0.04, w: m.w * 0.92, h: m.h * 0.94 }) > 0) phat += 4000 // đè chính công trình của nó
+      moc.forEach((_, j) => { if (j !== i) phat += chong(r, nha[j]) * 20 })
+      dat.forEach((d) => { phat += chong(r, d, 2) * 40 })
+      if (phat < ittNhat) { ittNhat = phat; tot = { x: r.x, y: r.y } }
+    }
+    kq[i] = tot; if (tot) dat.push({ x: tot.x, y: tot.y, w: n.w, h: n.h })
+  }
+  return kq
+}
+
 export const coKit = (biome: string, soVung: number) => !!KIT_LUC_DIA[biome] && soVung > 0 && soVung <= KIT_LUC_DIA[biome].moc.length
 
 /** Đường tâm → dãy điểm dày (Catmull-Rom) + độ dài tích luỹ. Toạ độ chuẩn hoá theo CHIỀU RỘNG (x∈0–1, y∈0–0,563) để cự ly đúng. */
@@ -68,6 +97,8 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
   const [khungChay, setKhungChay] = useState(0)
   const dong = useChuyenDong() // mức đồ hoạ Thấp ⇒ tắt đốm sáng bay
   const [hov, setHov] = useState<number | null>(null) // công trình đang trỏ vào ⇒ nổi lên
+  const nhanRef = useRef<(HTMLSpanElement | null)[]>([])
+  const [vtNhan, setVtNhan] = useState<({ x: number; y: number; pad: number } | null)[]>([]) // x,y = góc trái-trên của phần NHÌN THẤY (chữ + sao); pad = lề trống giữa hộp nhãn và phần nhìn thấy
   const raf = useRef(0)
   const sRef = useRef(s)
   sRef.current = s
@@ -103,6 +134,24 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
   const pts = (ds: [number, number][]) => ds.map(([x, y]) => `${(x / 100 * W).toFixed(1)},${(y / 100 * H).toFixed(1)}`).join(' ')
   const daDi = pts(kit.duong.slice(0, (toanDat ? kit.duong.length - 1 : kit.diemMoc[Math.min(toi, kit.diemMoc.length - 1)]) + 1))
   const hStr = Math.max(11, H * 0.03)
+  // đo nhãn thật rồi xếp lại cho KHÔNG đè (chạy mỗi khi đổi khung / dữ liệu; chỉ set state khi vị trí đổi)
+  useLayoutEffect(() => {
+    if (!W || !H) return
+    const moc: Hop[] = kit.moc.map((m, i) => { const a = anh.moc[i], w = m.w / 100 * W, h = w * a.h / a.w; return { x: m.x / 100 * W - a.ax * w, y: m.y / 100 * H - a.ay * h, w, h } })
+    const chan = kit.moc.map((m) => ({ x: m.x / 100 * W, y: m.y / 100 * H }))
+    const pads: number[] = []
+    const nhan = kit.moc.map((_, i) => {
+      const el = nhanRef.current[i]; if (!el) return null
+      // hộp nhãn rộng tới maxWidth dù chữ ngắn ⇒ đo phần NHÌN THẤY: dòng chữ dài nhất + huy hiệu số, hay hàng sao nếu rộng hơn
+      const ten = el.querySelector('[data-ten]') as HTMLElement | null, so = el.querySelector('[data-so]') as HTMLElement | null
+      let w = el.offsetWidth
+      if (ten) { const r = document.createRange(); r.selectNodeContents(ten); const lw = Math.max(0, ...[...r.getClientRects()].map((q) => q.width)); w = Math.min(w, Math.max(lw + (so ? so.offsetWidth + 4 : 0), (el.lastElementChild as HTMLElement | null)?.offsetWidth ?? 0)) }
+      pads[i] = (el.offsetWidth - w) / 2
+      return { w, h: el.offsetHeight }
+    })
+    const kq = xepNhan(moc, chan, nhan, W, H).map((v, i) => (v ? { ...v, pad: pads[i] ?? 0 } : null))
+    setVtNhan((cu) => (cu.length === kq.length && cu.every((v, i) => (!v && !kq[i]) || (v && kq[i] && Math.abs(v.x - kq[i]!.x) < 0.5 && Math.abs(v.y - kq[i]!.y) < 0.5 && Math.abs(v.pad - kq[i]!.pad) < 0.5)) ? cu : kq))
+  }, [W, H, kit, anh, vungs, hStr])
   const veDuong = import.meta.env.DEV && new URLSearchParams(location.search).has('duong')
 
   return (
@@ -143,10 +192,10 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
                         {co && i === toi && tt !== 'dat' && <span className="pointer-events-none absolute flex justify-center" style={{ left: px - w / 2, width: w, top: dinh - H * 0.05, zIndex: 210 }}><MuiTen co={Math.max(26, H * 0.045)} /></span>}
                         {co && i === toi && tt === 'yeu' && co.t.loai && <span className="pointer-events-none absolute" style={{ left: px + w * 0.35, top: py - H * 0.06, width: H * 0.06, height: H * 0.06, zIndex: 160 }}><QuaiTam b={b} loai={co.t.loai} co={H * 0.06} /></span>}
                         {co && (
-                          <span className="pointer-events-none absolute flex flex-col items-center text-center" style={{ left: px - W * 0.085, top: py + H * 0.008, width: W * 0.17, zIndex: 220 }}>
+                          <span ref={(el) => { nhanRef.current[i] = el }} className="pointer-events-none absolute flex flex-col items-center text-center" style={{ left: vtNhan[i] ? vtNhan[i]!.x - vtNhan[i]!.pad : px - W * 0.085, top: vtNhan[i]?.y ?? py + H * 0.008, width: 'max-content', maxWidth: W * 0.17, zIndex: 220, visibility: vtNhan[i] ? 'visible' : 'hidden' }}>
                             <span className="inline-flex items-start gap-1">
-                              <span className="flex shrink-0 items-center justify-center rounded-full font-extrabold" style={{ ...HEAD, width: hStr * 0.95, height: hStr * 0.95, fontSize: hStr * 0.62, background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)', border: `1.5px solid ${kit.chu.vien}` }}>{i + 1}</span>
-                              <span className="font-bold leading-[1.1]" style={{ fontFamily: "'Baloo 2', 'Be Vietnam Pro', sans-serif", fontSize: hStr, color: kit.chu.mau, WebkitTextStroke: `${Math.max(2.5, hStr * 0.22)}px ${kit.chu.vien}`, paintOrder: 'stroke fill', textShadow: `0 1px 4px ${kit.chu.vien}` }}>{co.v.ten}</span>
+                              <span data-so className="flex shrink-0 items-center justify-center rounded-full font-extrabold" style={{ ...HEAD, width: hStr * 0.95, height: hStr * 0.95, fontSize: hStr * 0.62, background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)', border: `1.5px solid ${kit.chu.vien}` }}>{i + 1}</span>
+                              <span data-ten className="font-bold leading-[1.1]" style={{ fontFamily: "'Baloo 2', 'Be Vietnam Pro', sans-serif", fontSize: hStr, color: kit.chu.mau, WebkitTextStroke: `${Math.max(2.5, hStr * 0.22)}px ${kit.chu.vien}`, paintOrder: 'stroke fill', textShadow: `0 1px 4px ${kit.chu.vien}` }}>{co.v.ten}</span>
                             </span>
                             <Sao5 vienToi ti={co.t.tong ? co.t.dat / co.t.tong : 0} co={Math.max(19, H * 0.046)} />
                           </span>

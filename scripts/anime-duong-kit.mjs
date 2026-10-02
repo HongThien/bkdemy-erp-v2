@@ -12,7 +12,7 @@ const KIT = {
 }
 // kit sa mạc: đường LÁT ĐÁ nhạt (hue 41–49, s .26–.39, v>.95) khác cát (s ≥ .43) · kit đầm lầy: đường đất cam (hue 27–38, s .5–.66)
 KIT.sa_mac = { nen: 'public/bk-ui/hs/skin/rpg/lucdia/sa_mac/nen.jpg', vao: [0, 88], ra: [100, 34], moc: [[14, 84], [19, 33], [41, 85], [55, 28], [82, 85], [88, 34]], mau: (h, s, v) => h > 40 && h < 50 && s > 0.26 && s < 0.39 && v > 0.95 }
-KIT.dam_lay = { nen: 'public/bk-ui/hs/skin/rpg/lucdia/dam_lay/nen.jpg', vao: [0, 38], ra: [100, 48], moc: [[11, 38], [21, 72], [35, 40], [48, 59], [69, 81], [58, 34], [83, 61], [90, 35]], mau: (h, s, v) => h > 26 && h < 39 && s > 0.5 && s < 0.67 && v > 0.85 }
+KIT.dam_lay = { nen: 'public/bk-ui/hs/skin/rpg/lucdia/dam_lay/nen.jpg', vao: [0, 38], ra: [100, 48], moc: [[11, 38], [21, 72], [35, 40], [48, 59], [69, 81], [58, 34], [83, 61], [90, 35]], mau: (h, s, v) => h > 24 && h < 38 && s > 0.38 && s < 0.62 && v > 0.82 }
 const W = 1672, H = 941
 
 function hsv(r, g, b) {
