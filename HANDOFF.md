@@ -138,6 +138,19 @@
   đã lọc nhiễu**, xếp hạng GV–TA, trình chiếu mỗi bảng một màn). **Treo:** báo cáo Vận hành của Lộc chưa có mẫu · thông báo thứ Hai chờ khai
   `TROLY_PUSH_APP` + deploy · khung hỏi chưa nối 13 công cụ DB. Chi tiết: mục "⭐⭐ TRỢ LÝ" bên dưới.
 
+- **⭐⭐ KHUNG CHẾ ĐỘ GAME HỌC — DÙNG CHUNG MỌI MÔN (Thùy chốt 03/10): "các chế độ cho mọi môn, chỉ thay content, chế độ game giữ nguyên".** Bản đầu = game **Đấu Từ** (từ vựng Anh, `src/dautu/`, spec `spec-dau-tu-vung.md`).
+  - **6 chế độ chuẩn** (môn nào làm game cũng có đủ 6, luật y hệt):
+    1. **Luyện tập** — đấu với bot (3 mức Dễ/Vừa/Khó; bot = Boss Thùy), tạm dừng được.
+    2. **PvP** — đấu online 1–1: ghép ngẫu nhiên (hàng chờ) · thách đấu bằng mã phòng 6 số / link / mời bạn đang online.
+    3. **Đấu đôi** — 2 người 1 máy (iPad/PC, 2 khu trả lời đối diện, phím A S Z X / J K N M).
+    4. **Tournament** — giải 8 người loại trực tiếp (Tứ kết → Bán kết → Chung kết), thắng xong chờ người thắng cặp bên cạnh rồi đấu ngay, thiếu người thì bot, xem trực tiếp trận khác, hoà ⇒ đúng nhiều hơn rồi nhanh hơn.
+    5. **Leo tháp — Sinh tồn**: tháp hôm nay (mọi người cùng chuỗi câu, seed theo ngày VN), 5 phút leo càng cao càng tốt, sai trừ 3s.
+    6. **Leo tháp — Vô tận**: 10s/câu, mỗi 10 tầng −1s (sàn 3s), sai/hết giờ là thua. Leo tháp có BXH Hôm nay / Kỷ lục.
+  - **Luật trận (chế độ 1–4):** câu 4 đáp án, 12s/câu, hai bên trả lời cùng lúc, ai đúng trước ăn câu (100/70/50 theo tốc độ, chuỗi 3 +30). Combat 2D = bộ chiến đấu Đấu trường (`screens/hocsinh/skin/heroDau.ts` + `thuthach/hieuUng.ts`, KHÔNG 3D): mỗi câu ăn được 1 đòn nhỏ, cuối trận đòn kết liễu.
+  - **Phần DÙNG CHUNG (không dính môn):** `lib/trongTai.ts` (trọng tài) · `bot.ts` · `phien.ts` · `mang.ts` (sảnh/phòng realtime) · `giai.ts` · `thap.ts` (luật tháp) · `ui/SanDau2D.tsx` · màn `ManDau`/`Giai`/`LeoThap`/`Online`. Câu trong trận = `Cau { id, opts[4], dao }`.
+  - **Phần THAY THEO MÔN (content):** hiện là kho từ vựng `data/kho.ts` + `lib/boDe.ts` (dựng câu + đáp án nhiễu). ⚠ **Chưa tách sạch:** màn đọc thẳng `TU_THEO_ID` ở ~10 file (ManDau, LeoThap, GocLuyen, thap.ts…) để hiện đề/đáp án. **Việc kế khi làm môn thứ 2:** gom thành 1 registry "nguồn câu" (`taoBoDe` · `taoThap` · `hienCau(id)` → đề + nhãn đáp án) — CLAUDE §1.6 "dispatch môn qua 1 registry"; thao tác Toán phải chạy y hệt Anh (symmetry test). Riêng **Nối từ** + **Góc luyện tập** là phần của môn Anh, không thuộc khung.
+  - **Trạng thái 03/10:** chạy được, test local (`npm run dev:dautu` → http://localhost:5293/dautu.html, iPad cùng Wi-Fi `http://<IP máy>:5293/dautu.html`, `?may=2` = hồ sơ thứ 2 cùng trình duyệt). **KHÔNG deploy riêng — game nằm TRONG app HS** (entry `dautu.html` chỉ để test). DB: `dtv_nguoi_choi` · `dtv_tran` · `dtv_thap_luot` · `dtv_gop_tu` · `dtv_gop_y` + `fn_dtv_*` (mig 202610022343 · 202610030037 · 202610030056, đã áp).
+  - **Nợ khi ghép vào app HS:** người chơi = thiết bị (uid ở máy) ⇒ đổi sang tài khoản HS; trọng tài = máy chủ phòng (tin client) ⇒ server chấm khi có thưởng; sổ nhớ từ ở localStorage ⇒ nhật ký DB; dựng lại UI bằng `skin/KhungHS` + `check:style-hs`; season/điểm season (spec-dau-tu-vung.md §4) chưa làm. Hồ sơ test "Claude Test"/"Claude Test 2" giữ lại (Thùy).
 - **⭐⭐ GAME BK ("BK World", tên tạm) — trạng thái cuối 02/10 tối (máy công ty). ĐỌC `spec-bk-world.md` (file TỔNG) → `spec-bat-thu.md` §0–§1 + §3.3–§3.5 TRƯỚC KHI LÀM.**
   - **Thiết kế tổng của CEO (01/10, `spec-bk-world.md`):**
     - học ⇒ **điểm học tập** (1 nguồn duy nhất = "lượt học thật", gộp luôn "điểm chăm chỉ" của Nông Trại);
