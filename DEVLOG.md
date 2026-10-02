@@ -35174,3 +35174,11 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 
 - (03/10, Thiết kế) **Khung 6 chế độ game áp mọi môn — rút logic tổng quát khi bàn áp vào Toán ⇒ `spec-che-do-game.md`** (Thùy chốt). Thùy sắp lại: Luyện tập = Tự luyện · Thử thách định ghép vào Leo tháp ⇒ CTO phản biện (cá nhân hoá vs đề chung cho BXH · độ chính xác vs tốc độ · "vượt" rõ ràng cho nhiệm vụ · cày Rank) ⇒ chốt **Thử thách = Tournament với bot** (giữ nguyên luật + Rank) · tháp tổng + tháp chủ đề, Vô tận Normal/Hard · Đấu đôi 1 máy HOLD với Toán (thay bằng nút "Đấu với bạn bên cạnh" = tạo phòng PvP). Thêm 4 luật chung CTO đề xuất, Thùy OK: sai = khoá CẢ câu (code Đấu Từ hiện chỉ khoá đáp án ⇒ bấm lần lượt 4 đáp án là ăn) · phạm vi = dạng đã học (≥3 lần đo) · câu nhanh/dài đo bằng thời gian làm thật · câu trả lời game ghi lại nhưng chưa tính mastery. Đo kho MCQ Toán: K6 ~1.150 câu (27/46 dạng) · K7 ~1.200 (32/47) · K8 ~2.000 (55/60) · K9 ~1.650 (57/86).
+
+- (03/10, Sổ tay) **SỔ TAY CÔNG THỨC Toán 12 — bóc nội dung + PDF hình cần vẽ** (Thùy: "HS quên công thức nào thì lên app gõ tên để tìm";
+  gộp vào ô Sổ tay; kết quả: công thức trước, nhãn "Công thức" — dạng bài nhãn "Lý thuyết"; đợt 1 chỉ Toán 12). Research: sổ tay tốt nhất
+  bản 2025 = Phạm Phú Thứ (8 chủ đề, đã mở file kiểm có Bayes/ghép nhóm); quyển Scribd thầy Đạt Thùy gửi là bản CŨ (~2023, có số phức).
+  Scribd chỉ có ẢNH trang ⇒ lấy 55 ảnh qua `pages/*.jsonp` + token trang 1, đọc từng trang. Ra `scripts/sotay-cong-thuc/toan12.mjs`:
+  77 thẻ / 6 chủ đề, 19 hình; `xuat-pdf.mjs` in 2 PDF vào `docs/so-tay-cong-thuc/` (Chrome headless — Edge headless thoát im lặng không
+  ra file). Sai trong nguồn bắt được khi chép: "cực trị ⇔ y'=0, y''≠0" (chỉ là điều kiện đủ, phản ví dụ x⁴) · dạng 10 mặt phẳng in z thành
+  y · J(…; y₂+a₂t₂ …) in a₂ thay b₂. 10 thẻ `nghi_van` CT 2018 chờ GV. Spec: `spec-so-tay-cong-thuc.md`. Chưa đụng DB/app.
