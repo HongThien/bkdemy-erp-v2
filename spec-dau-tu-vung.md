@@ -2,6 +2,7 @@
 
 > Khởi nguồn: Thùy 02/10 gửi https://bufopia.pages.dev ("làm lại game này cho HS BK"). CTO phân tích bản gốc (đọc mã nguồn) → Thùy chốt 5 điểm.
 > File này: **Phần A = logic** (chốt trước) · **Phần B = chi tiết bàn sau** (số, tên, quà) — theo luật "chốt logic trước, detail sau".
+> **03/10: 6 chế độ là KHUNG CHUNG mọi môn — luật chung (bản đồ chế độ, chọn câu, sai khoá cả câu, đo lường) ở `spec-che-do-game.md`.**
 > Đọc kèm: `spec-v1-app-hs.md` (hạng mục 9) · `design/STYLE-HS.md` · `spec-anh-ban-do-k9.md` §3.3 · `spec-luong-kho.md` (cổng ghi).
 
 ---

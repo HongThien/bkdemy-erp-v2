@@ -35171,3 +35171,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - (03/10 tiếp) Thùy áp mig `202610030147_hs_giao_dien_skin_khoi` qua SQL Editor (kèm dòng sổ `_migrations`, bam `f13d93311a089b28` — t soạn sẵn
   1 khối dán, kiểm trước `pg_has_role('postgres','claude_build')` = true nên ALTER TABLE chạy được). Soi lại (RO): CHECK có `khoi`, `--status` không
   còn treo file này. `npm run schema` ⇒ `schema.md` cột skin thêm `khoi`. Bước còn lại: Thùy deploy app HS.
+
+
+- (03/10, Thiết kế) **Khung 6 chế độ game áp mọi môn — rút logic tổng quát khi bàn áp vào Toán ⇒ `spec-che-do-game.md`** (Thùy chốt). Thùy sắp lại: Luyện tập = Tự luyện · Thử thách định ghép vào Leo tháp ⇒ CTO phản biện (cá nhân hoá vs đề chung cho BXH · độ chính xác vs tốc độ · "vượt" rõ ràng cho nhiệm vụ · cày Rank) ⇒ chốt **Thử thách = Tournament với bot** (giữ nguyên luật + Rank) · tháp tổng + tháp chủ đề, Vô tận Normal/Hard · Đấu đôi 1 máy HOLD với Toán (thay bằng nút "Đấu với bạn bên cạnh" = tạo phòng PvP). Thêm 4 luật chung CTO đề xuất, Thùy OK: sai = khoá CẢ câu (code Đấu Từ hiện chỉ khoá đáp án ⇒ bấm lần lượt 4 đáp án là ăn) · phạm vi = dạng đã học (≥3 lần đo) · câu nhanh/dài đo bằng thời gian làm thật · câu trả lời game ghi lại nhưng chưa tính mastery. Đo kho MCQ Toán: K6 ~1.150 câu (27/46 dạng) · K7 ~1.200 (32/47) · K8 ~2.000 (55/60) · K9 ~1.650 (57/86).

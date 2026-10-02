@@ -1,6 +1,7 @@
 # THỬ THÁCH = ĐẤU TRƯỜNG 3 TRẬN (Thùy chốt 02/10/2026)
 
 > Thay luật A2 cũ của `spec-thanh-tuu-nhiem-vu.md` (1 lượt 10 câu, pass ≥80%, lượt vô hạn). Làm trong luồng App HS V1.0 (`spec-v1-app-hs.md` §4 "Thử thách = Đấu trường").
+> **03/10 (Thùy chốt): Thử thách = TOURNAMENT khi không đủ người (3 vòng gặp bot Dễ → Vừa → Khó), luật dưới GIỮ NGUYÊN** — khung chung mọi môn: `spec-che-do-game.md`.
 > Trạng thái: **ĐÃ CHỐT LUẬT · CHƯA CODE.** Phần DB giao luồng Số liệu (§7), phần màn + hoạt cảnh thuộc luồng Giao diện.
 
 ## 1. Luật chơi
