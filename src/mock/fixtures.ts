@@ -113,6 +113,7 @@ export const adminLeaves: AdminLeaf[] = [
 
   // ── HỌC THUẬT: kho + soạn tài liệu ──
   { id: 'bdkt',        nhom: 'Học thuật', ten: 'Bản đồ kiến thức (Kho)',      founderOnly: false },
+  { id: 'sotay',       nhom: 'Học thuật', ten: 'Sổ tay công thức',            founderOnly: false }, // thẻ công thức app HS: sửa · duyệt · gắn hình (spec-so-tay-cong-thuc.md)
   { id: 'tl',          nhom: 'Học thuật', ten: 'Kho tài liệu',                founderOnly: false },
   { id: 'nhapkho',     nhom: 'Học thuật', ten: 'Nhập kho (từ tài liệu)',      founderOnly: false }, // ingest-first: bóc PDF → gán dạng → đẩy kho
   { id: 'lamtailieu',  nhom: 'Học thuật', ten: 'Làm tài liệu',                founderOnly: false }, // hub: giáo trình·ET·đề thi·bổ trợ

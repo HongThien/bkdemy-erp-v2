@@ -21,6 +21,7 @@ import BaiTapGiaoHS from './screens/hocsinh/BaiTapGiaoHS'
 import ThongTinHocTap, { _THEME_TTHT, BXHList } from './screens/hocsinh/ThongTinHocTap'
 import SoTayHS, { type SoTayApi } from './screens/hocsinh/SoTayHS'
 import type { SoTayCay, SoTayNoiDung } from './lib/sotay'
+import type { CtTimRow } from './lib/sotayCongThuc'
 import { getMyHocSinhId } from './lib/testonline'
 
 // Mock SỔ TAY cho `?demo=sotay` — RPC thật cần HS đăng nhập (và migration đã áp), không xem được
@@ -47,9 +48,21 @@ const MOCK_CAY: SoTayCay = {
     ] },
   ],
 }
+// Thẻ công thức giả (CEO 03/10) — gõ "bayes", "nghiem", "delta" để thấy nhãn Công thức xếp trước Lý thuyết.
+const MOCK_CT: CtTimRow[] = [
+  { ma: 'CT12-XS-04', ten: 'Công thức Bayes', khoi: '12', ten_chu_de: 'Xác suất có điều kiện', hinh_url: null, luu_y: null, cau_nho: null,
+    noi_dung: '$P(B\\mid A)=\\dfrac{P(B)\\cdot P(A\\mid B)}{P(B)\\cdot P(A\\mid B)+P(\\overline{B})\\cdot P(A\\mid\\overline{B})}$' },
+  { ma: 'CT9-PT-01', ten: 'Công thức nghiệm phương trình bậc hai (delta)', khoi: '9', ten_chu_de: 'Phương trình bậc hai', hinh_url: null,
+    luu_y: 'Nếu $b$ chẵn thì dùng $\\Delta\'$ cho gọn.', cau_nho: null,
+    noi_dung: '$\\Delta=b^2-4ac$\n$\\Delta>0$: $x_{1,2}=\\dfrac{-b\\pm\\sqrt{\\Delta}}{2a}$' },
+]
 const MOCK_API: SoTayApi = {
   mon: async () => MOCK_CAY.mon,
   cay: async () => MOCK_CAY,
+  timCt: async (q) => {
+    const bd = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd')
+    return MOCK_CT.filter((c) => bd(c.ten).includes(bd(q)))
+  },
   tim: async (q) => {
     const bd = (s: string) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd')
     const tu = bd(q)

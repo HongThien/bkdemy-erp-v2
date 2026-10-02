@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-325 bảng · 20 view · 0 enum · 127 trigger · 778 function
+325 bảng · 20 view · 0 enum · 127 trigger · 781 function
 
 ## _app_secrets
 
@@ -3892,6 +3892,14 @@
 | tao_at | timestamp with time zone |  | now() |  |  |
 | cap_nhat_at | timestamp with time zone |  | now() |  |  |
 | cap_nhat_boi | uuid | Y |  | FK→nhan_su.id |  |
+| loai | text |  | 'ct'::text |  | `kn` · `dl` · `ct` · `ht` · `cq` · `ch` · `tn` · `ud` · `ss` |
+| cong_thuc | text | Y |  |  |  |
+| y | jsonb | Y |  |  |  |
+| bang | jsonb | Y |  |  |  |
+| bien | jsonb | Y |  |  |  |
+| vd | jsonb | Y |  |  |  |
+| nham | jsonb | Y |  |  |  |
+| lq | text[] |  | '{}'::text[] |  |  |
 
 ## sotay_ct_chu_de
 
@@ -3902,6 +3910,7 @@
 | ma | text |  |  | PK |  |
 | ten | text |  |  |  |  |
 | thu_tu | smallint |  |  |  |  |
+| nhanh | text | Y |  |  |  |
 
 ## sotay_ct_hinh
 
@@ -6413,6 +6422,7 @@ WITH luot AS (
 - `_sotay_ct_hinh_truoc_sua()` → trigger
 - `_sotay_ct_truoc_ghi()` → trigger
 - `_sotay_duoc_doc()` → boolean
+- `_sotay_muc_json(p_ma text)` → jsonb
 - `_sotay_nhom(p_muc_do smallint)` → text
 - `_sync_cau_menh_de(p_bang_con text, p_ban_do text, p_ma_cau text, p_menh_de jsonb)` → void
 - `_ta_cua_lop(p_lop uuid)` → uuid
@@ -6780,8 +6790,8 @@ WITH luot AS (
 - `fn_hs_len_bac_da_xem(p_mon text)` → void
 - `fn_hs_len_bac_moi(p_mon text)` → jsonb
 - `fn_hs_lich_bo_tro()` → jsonb
-- `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
+- `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_luu_giao_dien(p_skin text, p_che_do text, p_hinh_nen text)` → jsonb
 - `fn_hs_luu_hieu_ung_game(p_bat boolean)` → jsonb
 - `fn_hs_nhiem_vu_cua_toi(p_mon text)` → jsonb
@@ -7017,6 +7027,8 @@ WITH luot AS (
 - `hs_o_lop(p_lop uuid)` → boolean
 - `hs_sotay_cay(p_mon text DEFAULT 'Toán'::text, p_nhanh text DEFAULT NULL::text, p_khoi text DEFAULT NULL::text)` → jsonb
 - `hs_sotay_dang(p_ma_dang text, p_mon text DEFAULT 'Toán'::text, p_nhanh text DEFAULT NULL::text)` → jsonb
+- `hs_sotay_muc(p_ma text)` → jsonb
+- `hs_sotay_muc_cay(p_mon text, p_khoi text DEFAULT NULL::text)` → jsonb
 - `hs_sotay_tim(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_nhanh text DEFAULT NULL::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_sotay_tim_ct(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
@@ -7086,9 +7098,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
@@ -7253,9 +7265,14 @@ WITH luot AS (
 | shop_vat_pham | shop_vat_pham_gia_diem_check | `CHECK ((gia_diem > 0))` |
 | sk_xu | sk_xu_so_xu_check | `CHECK ((so_xu <> 0))` |
 | sk_xu | sk_xu_van_chi_game | `CHECK (((van IS NULL) OR (nguon = 'game'::text)))` |
+| sotay_cong_thuc | sotay_cong_thuc_bang_check | `CHECK (((bang IS NULL) OR (jsonb_typeof(bang) = 'array'::text)))` |
+| sotay_cong_thuc | sotay_cong_thuc_bien_check | `CHECK (((bien IS NULL) OR (jsonb_typeof(bien) = 'array'::text)))` |
 | sotay_cong_thuc | sotay_cong_thuc_check | `CHECK (((trang_thai <> 'tra_ve'::text) OR (btrim(COALESCE(ly_do_tra_ve, ''::text)) <> ''::text)))` |
+| sotay_cong_thuc | sotay_cong_thuc_nham_check | `CHECK (((nham IS NULL) OR (jsonb_typeof(nham) = 'array'::text)))` |
 | sotay_cong_thuc | sotay_cong_thuc_noi_dung_check | `CHECK ((btrim(noi_dung) <> ''::text))` |
 | sotay_cong_thuc | sotay_cong_thuc_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
+| sotay_cong_thuc | sotay_cong_thuc_vd_check | `CHECK (((vd IS NULL) OR (jsonb_typeof(vd) = 'object'::text)))` |
+| sotay_cong_thuc | sotay_cong_thuc_y_check | `CHECK (((y IS NULL) OR (jsonb_typeof(y) = 'array'::text)))` |
 | sotay_ct_chu_de | sotay_ct_chu_de_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
 | sotay_ct_hinh | sotay_ct_hinh_mo_ta_check | `CHECK ((btrim(mo_ta) <> ''::text))` |
 | sotay_ct_hinh | sotay_ct_hinh_ten_check | `CHECK ((btrim(ten) <> ''::text))` |

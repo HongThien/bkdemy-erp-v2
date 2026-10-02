@@ -82,7 +82,7 @@ const body1 = `
 <h1>Sổ tay công thức Toán 12 — Hình cần vẽ lại</h1>
 <p class="phu">Đợt 1 · ${HINH.length} hình · ${coMau} hình có mẫu từ quyển nguồn, ${HINH.length - coMau} hình vẽ mới · xuất ${HOM_NAY}</p>
 <div class="vang"><b>Cách dùng:</b> mỗi ô là 1 hình. Vẽ theo dòng "Cần vẽ"; ảnh bên phải chỉ để tham khảo bố cục (đừng chép nguyên).
-Đặt tên file theo <b>mã hình</b> (vd <span class="ma">H05.png</span>) để ghép vào đúng thẻ. Nền trong suốt hoặc trắng, nét đủ đậm để xem trên điện thoại.</div>
+Đặt tên file theo <b>mã hình</b> (vd <span class="ma">H05.png</span>) để ghép vào đúng thẻ. Nền TRẮNG (không để trong suốt — app có giao diện tối), nét đủ đậm để xem trên điện thoại.</div>
 ${HINH.map((h) => {
   const dsThe = theTheoHinh(h.ma)
   return `<div class="hop">
