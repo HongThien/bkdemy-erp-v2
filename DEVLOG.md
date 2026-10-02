@@ -34680,3 +34680,27 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - `thu-demo`: `DEMO.luoi(...)` chụp lưới nhiều góc.
 - **Sai/bài học:** đề xuất bờm cụm mây theo ảnh wiki mà không hỏi lại ⇒ CEO bác ngay. Bờm là chi tiết CEO có gu riêng (mẫu CEO đưa: Suicune) — lần sau hỏi mẫu trước khi đổi kiểu.
 - **Còn:** túm ngực hơi cục · khối gốc cánh nhìn từ sau như tấm phẳng · chờ CEO xem bản mới.
+
+## 2026-10-02 (tiếp) — Kho Anh: cổng ghi + nhập Unit 1 + vá DB màn duyệt
+
+- **Mig `202610021217_anh_kho_man_duyet.sql` (đã áp):**
+  - `count_cau_by_dang` nhận thêm `anh_cau_hoi`.
+  - `fn_kho_hang_duyet` chỉ join bảng cụm khi bảng tồn tại (môn Anh không có).
+  - Đối chiếu Toán trước/sau, chạy bằng JWT giả trong ROLLBACK: y hệt (121/483 câu có tên cụm).
+  - `fn_kho_duyet_cau` bản đang chạy ĐÃ nhận `lua_chon` (repo cũ nói không) ⇒ không sửa.
+- **`scripts/anh/cong_ghi_anh.mjs`:** trạm đọc + bên A (giải mù, không thấy đáp án) + bên B (gán nhãn, thấy đáp án) ⇒ quyết định ⇒ ghi.
+  - Mặc định chạy thử rồi rollback; `--ghi` mới upload ảnh + commit. Lô trùng `ten_de_goc` thì từ chối.
+- **Unit 1:**
+  - Lần 1: 97/156 chắc. 33 câu "điểm chưa thống nhất", phần lớn là A=B cùng mã nhưng tự khai "chưa chắc".
+    ⇒ đổi luật: A=B độc lập + hợp dạng đề là đủ, cờ tự khai không dùng.
+  - Lần 2: **114 chắc chắn → kho · 39 chờ duyệt · 3 ngoài phạm vi (bị động ×2, quá khứ hoàn thành)**.
+  - Soát tay 18 câu chắc ngẫu nhiên: 18/18 đúng.
+  - Cổng bắt được: C138 và C153 nhiều khả năng GV sai đáp án; 13 câu 2 đáp án đúng; 2 câu phương án trùng.
+- **Sai rồi sửa:**
+  1. Cổng đẩy MỌI câu chờ duyệt về điểm chờ `E09000000`, kể cả câu đã thống nhất điểm (chỉ vướng "2 đáp án").
+     ⇒ sửa: điểm thống nhất thì nằm đúng điểm (lọc 'nghi'); chỉ lệch điểm mới về điểm chờ (lọc 'chua_dang').
+     ⇒ đã chuyển 32 câu Unit 1 bằng UPDATE trong transaction, kiểm 32/32. Trigger ghi 32 dòng `kho_doi_dang_log` mon='anh'.
+  2. Bộ đọc làm mất lời dẫn CLOSEST/OPPOSITE ở câu đồng/trái nghĩa (lời dẫn nằm ở tiêu đề bài) ⇒ chép vào đề từng câu.
+     Kiểm: chỉ 10 câu đó đổi, mã câu giữ nguyên.
+- **Ghi nhận:** mã câu bắt đầu `EC000331` vì sequence không rollback qua các lần chạy thử — mã là danh tính mờ, khoảng trống vô hại.
+- **Đang chạy:** bên A/B cho Unit 2–4. Còn Unit 5–12.
