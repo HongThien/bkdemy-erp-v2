@@ -5,12 +5,12 @@
 // · GHÉP MẢNH (khi khối nhiều chủ đề hơn số lục địa trong tranh, hoặc chưa có tranh): nền biển + lục địa rời theo bố cục làm sẵn (boCuc.ts).
 // Hiệu ứng chung: mây trôi, sao lấp lánh, bấm lục địa ⇒ phóng vào rồi mới chuyển tầng.
 import { useMemo, useState, type ReactNode } from 'react'
-import { HEAD, NhanHS, THE_TRON, useMedia } from '../../skin/KhungHS'
+import { HEAD, THE_TRON, useMedia } from '../../skin/KhungHS'
 import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import { thongKe, type BanDoV, type LucDiaV } from '../kieu'
 import { boCucTheGioi, heSoCo } from './boCuc'
 import { TOAN_CANH_THE_GIOI, anhLucDia, anhNenTheGioi, anhVat } from './hinh2d'
-import { Co, CssBan2D, Hero, NenBien, Suong, useKhung2D, viTri } from './San2D'
+import { Co, CssBan2D, Hero, NenBien, Sao5, Suong, useKhung2D, viTri } from './San2D'
 import { LucDiaTam, QuaiTam } from './HinhTam'
 
 type Props = { banDo: BanDoV; b: BangMau3D; onChon: (ma: string) => void; hienTai?: string | null; thanh?: ReactNode; gioi?: 'nam' | 'nu' }
@@ -32,10 +32,8 @@ function NhanLuc({ l, t, dangO, dai }: { l: LucDiaV; t: ReturnType<typeof thongK
   return (
     <>
       {dangO && <span className="rounded-full px-2 text-[10.5px] font-bold" style={{ background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)' }}>Em đang ở đây</span>}
-      <span className="line-clamp-2 font-bold leading-tight" style={{ ...HEAD, color: 'var(--sk-ink)', fontSize: dai ? 12 : 10 }}>{l.ten}</span>
-      {dai && (t.trangThai === 'fog'
-        ? <NhanHS mau="var(--sk-muted)">Chưa đo</NhanHS>
-        : <NhanHS mau={t.trangThai === 'dat' ? 'var(--sk-acc)' : 'var(--sk-muted)'}>{t.dat}/{t.tong} chặng đạt</NhanHS>)}
+      <span className="block max-w-full truncate whitespace-nowrap font-bold leading-tight" title={l.ten} style={{ ...HEAD, color: 'var(--sk-ink)', fontSize: dai ? 12 : 10 }}>{l.ten}</span>
+      <Sao5 ti={t.tong ? t.dat / t.tong : 0} co={dai ? 13 : 10} />
     </>
   )
 }
@@ -78,7 +76,7 @@ function ToanCanh({ banDo, b, onChon, hienTai, thanh, gioi = 'nam' }: Props) {
                 {t.trangThai === 'yeu' && t.loai && !dangO && <span className="pointer-events-none absolute" style={{ left: '62%', top: '12%', width: d * 0.16, height: d * 0.16 }}><QuaiTam b={b} loai={t.loai} co={d * 0.16} /></span>}
                 {dangO && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ top: '-6%' }}><Hero gioi={gioi} cao={d * 0.32} mau={b.troi} /></span>}
                 <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center gap-0.5 px-2 py-1 text-center"
-                  style={{ ...THE_TRON, top: '62%', borderRadius: 12, maxWidth: dai ? 170 : 110, width: 'max-content' }}>
+                  style={{ ...THE_TRON, top: '62%', borderRadius: 12, maxWidth: dai ? 230 : 130, width: 'max-content' }}>
                   <NhanLuc l={l} t={t} dangO={dangO} dai={dai} />
                 </span>
               </div>
@@ -123,7 +121,7 @@ function GhepManh({ banDo, b, onChon, hienTai, thanh, gioi = 'nam' }: Props) {
                   {t.trangThai === 'yeu' && t.loai && !dangO && <span className="pointer-events-none absolute" style={{ right: '10%', top: '10%', width: size * 0.2, height: size * 0.2 }}><QuaiTam b={b} loai={t.loai} co={size * 0.2} /></span>}
                   {dangO && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ top: -size * 0.14 }}><Hero gioi={gioi} cao={size * 0.36} mau={b.troi} /></span>}
                   <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center gap-0.5 px-2 py-1 text-center"
-                    style={{ ...THE_TRON, top: '74%', borderRadius: 12, maxWidth: dai ? 170 : 110, width: 'max-content' }}>
+                    style={{ ...THE_TRON, top: '74%', borderRadius: 12, maxWidth: dai ? 230 : 130, width: 'max-content' }}>
                     <NhanLuc l={l} t={t} dangO={dangO} dai={dai} />
                   </span>
                 </div>

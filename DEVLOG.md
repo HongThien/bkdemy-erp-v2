@@ -34540,3 +34540,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - 10 vùng đo trên ảnh ghép lưới 5%, thứ tự đường đi rừng → anh đào → thành cổ → đầm lầy → sa mạc → băng → núi lửa → quần đảo → đảo trời → đảo cối xay.
   ganBiomeTheoTranh(): chủ đề thứ i lấy biome của vùng i trong tranh ⇒ đi vào trong đúng cảnh vùng vừa bấm (chỉ phần vẽ, không đụng DB). Biome mới anh_dao, dong_gio chưa có nền vùng.
 - Nén: the_gioi_bien.jpg 179KB · the_gioi_dat.webp 493KB · cờ/mây/la bàn webp. CO_SAN.vat thành danh sách. Kiểm 1180×820 9 chủ đề, 0 lỗi.
+
+### 02/10 — [Giao diện] Nhãn bản đồ: tên 1 dòng + tiến độ 5 sao (Thùy: "tên 2 dòng không đẹp" · "5 star, mỗi star 20% hoàn thành")
+- 3 tầng: tên nowrap + cắt … (title = tên đầy đủ), thẻ rộng hơn (thế giới 230 · lục địa 220 · chặng 210px). San2D.Sao5(ti): sao đầy = floor(ti×5).
+- Thế giới + lục địa: ti = dạng đạt / tổng dạng (thay "x/y chặng đạt" và "Chưa đo" — chưa đo = 0 sao). Chặng: dạng đạt = 5 sao, chưa đạt = độ nắm dạng (mastery DB);
+  bỏ dòng "N quái · còn x đòn" trên thẻ (vẫn ở bảng chi tiết bên phải). Chỉ đổi hiển thị, số liệu vẫn từ DB.

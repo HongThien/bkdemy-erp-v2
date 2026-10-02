@@ -150,3 +150,16 @@ export function CssBan2D() {
 @keyframes ban2d-noi{from{translate:0 0}to{translate:0 -1.2%}}
 `}</style>
 }
+
+/** 5 SAO tiến độ (Thùy 02/10: "thay vì hiện đạt thì để dạng star cho dễ hiểu — 5 star, mỗi star 20% hoàn thành").
+ *  ti = tỉ lệ hoàn thành 0–1 (đã có sẵn: dạng đạt / tổng dạng, hoặc độ nắm dạng do DB trả) — chỉ đổi cách HIỂN THỊ. Sao đầy = mỗi 20% trọn. */
+export function Sao5({ ti, co = 13 }: { ti: number; co?: number }) {
+  const n = Math.max(0, Math.min(5, Math.floor(ti * 5 + 1e-9)))
+  return (
+    <span className="inline-flex items-center gap-[1px] leading-none" role="img" aria-label={`${n}/5 sao`}>
+      {Array.from({ length: 5 }, (_, i) => (
+        <span key={i} style={{ fontSize: co, color: i < n ? 'var(--sk-acc)' : 'var(--sk-line)', textShadow: i < n ? '0 0 4px var(--sk-acc)' : undefined }}>★</span>
+      ))}
+    </span>
+  )
+}

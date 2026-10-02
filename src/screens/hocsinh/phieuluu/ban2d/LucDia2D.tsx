@@ -2,12 +2,12 @@
 // đường rắn làm sẵn cho 1–10+ mốc (boCuc.ts), nối bằng đường mòn: đoạn đã đi sáng vàng, đoạn chưa đi đứt nét chạy. Phải: danh sách vùng
 // (chạm mốc nhỏ trên màn không dễ). Cùng props với LucDiaView (3D).
 import { useMemo, useState } from 'react'
-import { DauTrangHS, HEAD, NhanHS, THE, THE_TRON, useMedia } from '../../skin/KhungHS'
+import { DauTrangHS, HEAD, THE, THE_TRON, useMedia } from '../../skin/KhungHS'
 import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import { thongKeVung, type LucDiaV } from '../kieu'
 import { boCucDuong, duongCong } from './boCuc'
 import { CHO_MOC_VUNG, EMOJI_MOC, anhMoc, anhNenVung, anhVat } from './hinh2d'
-import { Co, CssBan2D, Hero, NenBien, Suong, useKhung2D, viTri, xoay } from './San2D'
+import { Co, CssBan2D, Hero, NenBien, Sao5, Suong, useKhung2D, viTri, xoay } from './San2D'
 import { QuaiTam, VungDatTam } from './HinhTam'
 
 export function LucDia2D({ luc, b, onChon, onVe, gioi = 'nam' }: { luc: LucDiaV; b: BangMau3D; onChon: (ma: string) => void; onVe: () => void; gioi?: 'nam' | 'nu' }) {
@@ -63,9 +63,9 @@ export function LucDia2D({ luc, b, onChon, onVe, gioi = 'nam' }: { luc: LucDiaV;
                       {t.trangThai === 'yeu' && t.loai && <span className="pointer-events-none absolute" style={{ right: -coMoc * 0.2, bottom: coMoc * 0.05, width: coMoc * 0.42, height: coMoc * 0.42 }}><QuaiTam b={b} loai={t.loai} co={coMoc * 0.42} /></span>}
                       {dangO && <span className="pointer-events-none absolute" style={{ left: -coMoc * 0.55, bottom: 0 }}><Hero gioi={gioi} cao={coMoc * 0.8} mau={b.troi} /></span>}
                       <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center px-2 py-0.5 text-center"
-                        style={{ ...THE_TRON, top: '100%', marginTop: 4, borderRadius: 10, width: 'max-content', maxWidth: lon ? 160 : 112, borderColor: hov === v.ma ? 'var(--sk-acc)' : undefined }}>
-                        <span className="line-clamp-2 text-[11.5px] font-bold leading-tight" style={{ ...HEAD, color: 'var(--sk-ink)' }}>{v.ten}</span>
-                        {lon && <span className="text-[10.5px]" style={{ color: 'var(--sk-muted)' }}>{trang({ v, t })}</span>}
+                        style={{ ...THE_TRON, top: '100%', marginTop: 4, borderRadius: 10, width: 'max-content', maxWidth: lon ? 220 : 150, borderColor: hov === v.ma ? 'var(--sk-acc)' : undefined }}>
+                        <span className="block max-w-full truncate whitespace-nowrap text-[11.5px] font-bold leading-tight" title={v.ten} style={{ ...HEAD, color: 'var(--sk-ink)' }}>{v.ten}</span>
+                        <Sao5 ti={t.tong ? t.dat / t.tong : 0} co={lon ? 12 : 10} />
                       </span>
                     </div>
                   )
@@ -80,7 +80,7 @@ export function LucDia2D({ luc, b, onChon, onVe, gioi = 'nam' }: { luc: LucDiaV;
             <button key={x.v.ma} onClick={() => onChon(x.v.ma)} onPointerEnter={() => setHov(x.v.ma)} onPointerLeave={() => setHov(null)}
               className="flex items-center justify-between gap-2 px-3 py-2 text-left" style={{ ...THE_TRON, background: hov === x.v.ma ? 'var(--sk-surface2)' : 'var(--sk-surface)' }}>
               <span className="min-w-0 text-[13.5px] font-semibold leading-tight" style={{ ...HEAD, color: 'var(--sk-ink)' }}>{i + 1}. {x.v.ten}</span>
-              <NhanHS mau={x.t.trangThai === 'dat' ? 'var(--sk-acc)' : 'var(--sk-muted)'}>{trang(x)}</NhanHS>
+              <Sao5 ti={x.t.tong ? x.t.dat / x.t.tong : 0} />
             </button>
           ))}
         </aside>
