@@ -1,6 +1,6 @@
 // TRANG XEM THỬ bản đồ phiêu lưu (hs.html?xem=phieu_luu): dữ liệu giả cùng hình dạng hợp đồng, không gọi DB, không cần đăng nhập.
 // Dùng để soi cảnh 3D ở 1180×820 / 1440×900 / 390×844 trước khi nối dữ liệu thật (spec-v1-app-hs.md §13.3 việc 1).
-// Mở thẳng một tầng: &tang=luc_dia&luc=C · &tang=chang&luc=C&vung=C1 · mặc định bản 2D; &ban=3d để so với bản 3D cũ · &gioi=nu
+// Mở thẳng một tầng: &tang=luc_dia&luc=C · &tang=chang&luc=C&vung=C1 (+ &nd=N số dạng, &biome=… vùng) · mặc định bản 2D; &ban=3d để so với bản 3D cũ · &gioi=nu
 import { useState } from 'react'
 import { laySkin } from '../skin/registry'
 import { GD_MAC_DINH, DauTrangHS } from '../skin/KhungHS'
@@ -25,7 +25,9 @@ function layBanDo(): BanDoV {
   const kq = ganBiomeTheoTranh(so > 0 ? { ...bd, luc_dia: bd.luc_dia.slice(0, so) } : bd), ep = q.get('biome') // &biome=rung|thanh_co|anh_dao…: ép mọi lục địa theo 1 biome (soi kit)
   const nv = Number(q.get('nv')) // &nv=N: mỗi lục địa có đúng N chuyên đề (nhân bản) — soi kit với 6/8 mốc
   const nhan = (l: LucDiaV) => (nv > 0 ? { ...l, vung: Array.from({ length: nv }, (_, i) => ({ ...l.vung[i % l.vung.length], ma: `${l.vung[i % l.vung.length].ma}_${i}`, ten: i < l.vung.length ? l.vung[i].ten : `${l.vung[i % l.vung.length].ten} (${i + 1})` })) } : l)
-  return { ...kq, luc_dia: kq.luc_dia.map((l) => nhan(ep ? { ...l, biome: ep } : l)) }
+  const nd = Number(q.get('nd')) // &nd=N: mỗi chuyên đề có đúng N dạng (nhân bản, trạng thái xoay vòng) — soi tầng dạng cuộn ngang
+  const nhanDang = (l: LucDiaV): LucDiaV => (nd > 0 ? { ...l, vung: l.vung.map((v) => ({ ...v, chang: Array.from({ length: nd }, (_, i) => ({ ...v.chang[i % v.chang.length], ma: `${v.chang[i % v.chang.length].ma}_${i}`, trang_thai: i < nd * 0.4 ? 'dat' as const : i < nd * 0.5 ? 'yeu' as const : 'chua_do' as const })) })) } : l)
+  return { ...kq, luc_dia: kq.luc_dia.map((l) => nhanDang(nhan(ep ? { ...l, biome: ep } : l))) }
 }
 function layBanDoGoc(): BanDoV {
   if (new URLSearchParams(location.search).get('thu') === 'nhieu') return banDoNhieu()
