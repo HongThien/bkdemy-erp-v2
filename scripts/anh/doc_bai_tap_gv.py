@@ -198,6 +198,7 @@ def doc(file_docx, unit, ra):
     ra = pathlib.Path(ra); ra.mkdir(parents=True, exist_ok=True)
 
     phan, ex, dang, che_do = None, None, None, None
+    loi_dan = None
     cau, ngu_lieu, bo_qua, dem_ex = [], [], {}, {}
     buf = []               # các dòng chờ (đề bài / đoạn văn) trước phương án
     nl_hien_tai = None     # ngữ liệu đang mở (cloze/đọc hiểu/chèn câu)
@@ -247,6 +248,9 @@ def doc(file_docx, unit, ra):
             stem = re.sub(r'^\s*\d+\s*[.)]\s*', '', stem)
             if dang == 'sap_xep_doan' and not stem:
                 stem = ''
+            if dang == 'dong_trai_nghia' and loi_dan:
+                # lời dẫn nằm ở TIÊU ĐỀ bài (đồng nghĩa hay trái nghĩa) — chép vào từng câu, không thì câu mất nghĩa
+                stem = loi_dan + '\n' + stem
             them(stem, pending_pa)
         pending_stem, pending_pa = [], []
 
@@ -261,6 +265,9 @@ def doc(file_docx, unit, ra):
                 chot_mcq()
                 ex = f'{phan}#{m.group(1)}'
                 dang, che_do = dang_de_cua(phan, m.group(2))
+                tl = m.group(2).lower()
+                loi_dan = ('Choose the word(s) CLOSEST in meaning to the underlined word(s).' if 'closest' in tl else
+                           'Choose the word(s) OPPOSITE in meaning to the underlined word(s).' if 'opposite' in tl else None)
                 dem_ex[ex] = {'tieu_de': m.group(2)[:120], 'dang_de': dang, 'che_do': che_do}
                 nl_hien_tai, chen_cau_ds = None, []
                 continue

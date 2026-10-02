@@ -33,7 +33,7 @@ file Word bản GV ─► ① TRẠM ĐỌC (máy, code)        ─► câu + ng
 | 1 | Cấu trúc sạch: đúng 4 phương án, khác nhau, không rỗng, đúng 1 đáp án GV | ① máy |
 | 2 | Bên A tự làm ra **đúng đáp án GV** | ② so ① |
 | 3 | Bên A khẳng định **không có phương án thứ 2** chấp nhận được, đề không lỗi | ② |
-| 4 | Bên A và B **cùng chọn 1 điểm kiến thức**, cả hai chắc, và điểm đó hợp với dạng đề (vd biển báo phải là ĐH-01) | ② + ③ + máy |
+| 4 | Bên A và B **độc lập chọn trùng 1 điểm kiến thức**, và điểm đó hợp với dạng đề (vd biển báo phải là ĐH-01). Cờ "chắc" tự khai của từng bên KHÔNG dùng (đo Unit 1: phần lớn ca lệch là A=B cùng mã nhưng tự khai "chưa chắc") | ② + ③ + máy |
 | 5 | **Trong phạm vi** THCS (cả A và B) và B không nghi đáp án GV | ② + ③ |
 
 - Đủ 5 ⇒ `da_duyet = true`, `duyet_nguon = 'ai'`, `kiem_may = 'khop'`, `kiem_may_boi = 'claude_code'`, `kiem_may_ghi` = tóm tắt.

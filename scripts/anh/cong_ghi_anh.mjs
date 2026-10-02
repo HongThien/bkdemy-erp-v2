@@ -77,7 +77,9 @@ function quyetDinh(c) {
   if (a.de_loi) lyDo.push('đề lỗi: ' + a.de_loi)
   if (b.nghi_dap_an) lyDo.push('bên B nghi đáp án GV: ' + (b.ly_do_nghi || ''))
   let kp = null
-  if (a.kp && a.kp === b.kp && a.kp_tin_chac && b.kp_tin_chac && hopDang(c.dang_de, a.kp)) kp = a.kp
+  // Hai lượt ĐỘC LẬP chọn trùng 1 điểm + máy thấy hợp dạng đề = 2 nhân chứng + 1 luật cứng. Cờ "chắc" tự khai của từng
+  // lượt KHÔNG dùng làm điều kiện (đo Unit 1 02/10: 33 câu lệch thì phần lớn là A=B cùng mã nhưng tự khai "chưa chắc").
+  if (a.kp && a.kp === b.kp && hopDang(c.dang_de, a.kp)) kp = a.kp
   else lyDo.push(`điểm kiến thức chưa thống nhất (A ${a.kp}${a.kp_tin_chac ? '' : '?'} · B ${b.kp}${b.kp_tin_chac ? '' : '?'})`)
   // đề xuất cho GV: ưu tiên điểm hai bên trùng, rồi điểm hợp dạng của B, rồi của A
   const deXuat = kp ?? [b.kp, a.kp].find((k) => k && hopDang(c.dang_de, k)) ?? b.kp ?? a.kp
@@ -128,7 +130,9 @@ try {
       ngu = maNL[c.ngu_lieu]
     }
     const chac = q.loai === 'chac'
-    const dang = chac ? MA[q.kp] : 'E09000000'
+    // Điểm kiến thức đã thống nhất (kể cả khi câu vướng lý do khác) ⇒ câu nằm ĐÚNG điểm, GV duyệt ngay dưới điểm đó (lọc 'nghi').
+    // Chỉ khi 2 bên không thống nhất điểm mới về điểm chờ E09000000 (lọc 'chua_dang') kèm đề xuất.
+    const dang = q.kp ? MA[q.kp] : 'E09000000'
     if (!dang) throw new Error(`Không thấy mã DB cho điểm ${q.kp} (${c.ref})`)
     const ghiChu = chac
       ? `Chắc chắn: A (không thấy đáp án) ra ${raA[c.ref].dap_an} = GV; không phương án thứ 2; A+B cùng ${q.kp}; trong phạm vi.`
