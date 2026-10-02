@@ -6,39 +6,45 @@ import { DauTrangHS, HEAD, NhanHS, THE, THE_TRON, useMedia } from '../../skin/Kh
 import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import { thongKeVung, type LucDiaV } from '../kieu'
 import { boCucDuong, duongCong } from './boCuc'
-import { EMOJI_MOC, anhMoc, anhNenVung, anhVat } from './hinh2d'
+import { CHO_MOC_VUNG, EMOJI_MOC, anhMoc, anhNenVung, anhVat } from './hinh2d'
 import { Co, CssBan2D, Hero, NenBien, Suong, useKhung2D, viTri, xoay } from './San2D'
 import { QuaiTam, VungDatTam } from './HinhTam'
 
 export function LucDia2D({ luc, b, onChon, onVe, gioi = 'nam' }: { luc: LucDiaV; b: BangMau3D; onChon: (ma: string) => void; onVe: () => void; gioi?: 'nam' | 'nu' }) {
-  const { ref, khung } = useKhung2D()
+  const anhNen = anhNenVung(luc.biome)
+  // có tranh nền ⇒ khung luôn 16:9 đúng tỉ lệ tranh (không xoay) để toạ độ chỗ đặt mốc trùng tranh
+  const { ref, khung } = useKhung2D(false, !!anhNen)
   const lon = useMedia('(min-width:1024px)')
   const [hov, setHov] = useState<string | null>(null)
   const vungs = useMemo(() => luc.vung.map((v) => ({ v, t: thongKeVung(v) })), [luc])
-  const diem = useMemo(() => boCucDuong(luc.vung.map((v) => v.ma), { x0: 0.13, x1: 0.87, y0: 0.27, y1: 0.76 }), [luc])
+  // mốc đặt đúng các khoảng đất trống vẽ trong tranh (CHO_MOC_VUNG); nhiều chuyên đề hơn số chỗ / chưa có tranh ⇒ bố cục chung
+  const diem = useMemo(() => {
+    const cho = anhNen ? CHO_MOC_VUNG[luc.biome] : undefined
+    if (cho && luc.vung.length <= cho.length) return cho.slice(0, luc.vung.length).map((c) => ({ x: c.x / 100, y: c.y / 100 }))
+    return boCucDuong(luc.vung.map((v) => v.ma), { x0: 0.13, x1: 0.87, y0: 0.27, y1: 0.76 })
+  }, [luc, anhNen])
   const toi = Math.max(0, vungs.findIndex((x) => x.t.trangThai !== 'dat')) // mốc em đang tới (đầu tiên chưa chinh phục hết)
   const canh = khung.doc ? khung.h : khung.w, coMoc = Math.max(52, canh * 0.1)
   const trang = (x: (typeof vungs)[number]) => (x.t.trangThai === 'fog' ? 'Chưa đo' : `${x.t.dat}/${x.t.tong} chặng đạt`)
   const m = b.biome[luc.biome] ?? Object.values(b.biome)[0]
-  const anhNen = anhNenVung(luc.biome)
   const dd = xoay(diem, khung)
 
   return (
     <div className="absolute inset-0 flex flex-col" style={{ background: 'var(--sk-bg)' }}>
       <CssBan2D />
       <div className="px-4 pt-3"><DauTrangHS tieuDe={luc.ten} phu={`${luc.vung.length} vùng · đi theo đường mòn, bấm một vùng để vào`} onBack={onVe} /></div>
-      <div className="grid min-h-0 flex-1 grid-cols-1 gap-3 p-3 pt-2 lg:grid-cols-[1fr_300px]">
+      <div className="grid min-h-0 flex-1 grid-cols-1 gap-3 p-3 pt-2 2xl:grid-cols-[1fr_300px]">
         <div className="relative min-h-[300px] overflow-hidden rounded-xl" style={{ border: 'var(--sk-card-border)' }}>
           <NenBien b={b} sao={false}>
-            {anhNen && <img src={anhNen} alt="" className="absolute inset-0 h-full w-full object-cover" draggable={false} />}
+            {anhNen && <img src={anhNen} alt="" aria-hidden className="absolute inset-0 h-full w-full scale-110 object-cover" style={{ filter: 'blur(14px) brightness(.6)' }} draggable={false} />}
             <div ref={ref} className="absolute inset-0 flex items-center justify-center">
               <div className="relative" style={{ width: khung.w, height: khung.h }}>
-                {!anhNen && <VungDatTam b={b} biome={luc.biome} khoa={luc.ma} />}
+                {anhNen ? <img src={anhNen} alt="" className="absolute inset-0 h-full w-full select-none" draggable={false} /> : <VungDatTam b={b} biome={luc.biome} khoa={luc.ma} />}
                 {khung.w > 0 && (
                   <svg className="pointer-events-none absolute inset-0 h-full w-full overflow-visible" viewBox={`0 0 ${khung.w} ${khung.h}`} aria-hidden>
-                    <path d={duongCong(dd, khung.w, khung.h)} fill="none" stroke={b.duongVien} strokeWidth={9} strokeLinecap="round" opacity={0.55} />
-                    <path className="ban2d-duong-toi" d={duongCong(dd, khung.w, khung.h)} fill="none" stroke={b.duong} strokeWidth={4.5} strokeLinecap="round" strokeDasharray="10 14" />
-                    {toi > 0 && <path d={duongCong(dd.slice(0, toi + 1), khung.w, khung.h)} fill="none" stroke={b.vang} strokeWidth={5} strokeLinecap="round" />}
+                    <path d={duongCong(dd, khung.w, khung.h)} fill="none" stroke={b.duongVien} strokeWidth={Math.max(12, khung.w * 0.012)} strokeLinecap="round" opacity={0.85} />
+                    <path className="ban2d-duong-toi" d={duongCong(dd, khung.w, khung.h)} fill="none" stroke={b.duong} strokeWidth={Math.max(6, khung.w * 0.006)} strokeLinecap="round" strokeDasharray="12 12" />
+                    {toi > 0 && <path d={duongCong(dd.slice(0, toi + 1), khung.w, khung.h)} fill="none" stroke={b.vang} strokeWidth={Math.max(7, khung.w * 0.007)} strokeLinecap="round" style={{ filter: `drop-shadow(0 0 6px ${b.vang})` }} />}
                   </svg>
                 )}
                 {khung.w > 0 && vungs.map(({ v, t }, i) => {
@@ -68,7 +74,7 @@ export function LucDia2D({ luc, b, onChon, onVe, gioi = 'nam' }: { luc: LucDiaV;
             </div>
           </NenBien>
         </div>
-        <aside className="hidden min-h-0 flex-col gap-2 overflow-y-auto p-3 lg:flex" style={THE}>
+        <aside className="hidden min-h-0 flex-col gap-2 overflow-y-auto p-3 2xl:flex" style={THE}>
           <p className="text-[12px] font-bold uppercase tracking-[0.08em]" style={{ color: 'var(--sk-muted)' }}>Các vùng</p>
           {vungs.map((x, i) => (
             <button key={x.v.ma} onClick={() => onChon(x.v.ma)} onPointerEnter={() => setHov(x.v.ma)} onPointerLeave={() => setHov(null)}

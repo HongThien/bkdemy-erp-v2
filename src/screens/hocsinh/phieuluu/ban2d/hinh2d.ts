@@ -44,6 +44,14 @@ export const anhLucDia = (biome: string, thuTu: number) => {
   if (!ds?.length) return null
   return `${G}/luc_dia_${biome}_${ds[Math.floor(thuTu / BIOME.length) % ds.length]}.webp`
 }
+/** CHỖ ĐẶT MỐC trên từng nền vùng: các KHOẢNG ĐẤT TRỐNG vẽ sẵn trong tranh, đo trên ảnh lưới 5% (02/10), xếp theo 1 vòng đường đi
+ *  (chuyên đề thứ i ⇒ chỗ i). Vùng có NHIỀU chuyên đề hơn số chỗ ⇒ rơi về bố cục chung (boCucDuong). Toạ độ = % khung 16:9 của nền. */
+export const CHO_MOC_VUNG: Record<string, { x: number; y: number }[]> = {
+  rung: [{ x: 45, y: 80 }, { x: 45, y: 57 }, { x: 22, y: 37 }, { x: 25, y: 13 }, { x: 55, y: 13 }, { x: 85, y: 11 }, { x: 85, y: 37 }, { x: 82, y: 61 }],
+  bang: [{ x: 20, y: 65 }, { x: 17, y: 18 }, { x: 52, y: 20 }, { x: 80, y: 11 }, { x: 78, y: 35 }, { x: 80, y: 70 }, { x: 60, y: 72 }],
+  nui_lua: [{ x: 45, y: 85 }, { x: 15, y: 58 }, { x: 20, y: 23 }, { x: 50, y: 43 }, { x: 82, y: 25 }, { x: 85, y: 58 }, { x: 80, y: 76 }, { x: 62, y: 63 }],
+  bien_dao: [{ x: 48, y: 77 }, { x: 28, y: 55 }, { x: 25, y: 30 }, { x: 58, y: 15 }, { x: 82, y: 30 }, { x: 80, y: 44 }, { x: 75, y: 75 }],
+}
 export const anhNenVung = (biome: string) => (CO_SAN.nenVung.includes(biome) ? `${G}/nen_vung_${biome}.jpg` : null)
 export const anhNenChang = (biome: string) => (CO_SAN.nenChang.includes(biome) ? `${G}/nen_chang_${biome}.jpg` : null)
 export const LOAI_MOC = ['thanh', 'thap', 'trai', 'den', 'cong', 'cau'] as const

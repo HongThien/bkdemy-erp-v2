@@ -34520,3 +34520,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Kiểm hs.html?xem=phieu_luu tầng lục địa (C) + chặng (C2) 1180×820, 0 lỗi. Nhận xét: mốc đặt theo bố cục chung chưa trùng khoảng đất trống vẽ trong nền vùng ⇒ cần đo vị trí
   khoảng trống từng nền (như đo 8 lục địa trên #01). Thiếu: mốc #22–26 · bệ đá/sương/la bàn/cờ #27–30 · nền vùng+chặng 4 biome còn lại · world map vẽ lại (Đơn 9 kit 1).
 - Các thư mục Hephastos/Hercules/Mission/Nike/Phoenix/Style_Town = huy hiệu rank, nhiệm vụ, style Thị trấn — không có mốc bản đồ.
+
+### 02/10 — [Giao diện] Tầng lục địa: mốc đặt đúng khoảng đất trống vẽ trong nền vùng
+- Đo bằng lưới 5% trên 4 nền vùng: rừng 8 · núi lửa 8 · băng 7 · biển đảo 7 chỗ, xếp theo 1 vòng đường đi ⇒ hinh2d.CHO_MOC_VUNG. Chuyên đề thứ i ⇒ chỗ i; nhiều hơn số chỗ ⇒ bố cục chung.
+- LỖI tìm ra: nền vùng vẽ object-cover theo Ô (cắt mép) còn mốc đặt theo KHUNG 16:9 ⇒ 2 hệ toạ độ lệch, đo đúng cũng không trúng. Sửa: tranh vẽ TRONG khung 16:9
+  (khongXoay), phần thừa = chính tranh phóng to mờ tối. Cột "Các vùng" chỉ hiện ≥1536px (iPad 1180: bản đồ chiếm hết ngang, tên vùng đã ghi trên bản đồ).
+  Đường mòn mảnh 4.5px cùng tông cỏ ⇒ chìm: to theo bề ngang khung (≥6/12px), đoạn đã đi vàng có quầng.
+- Kiểm 1180×820 lục địa C (rừng) + B (biển đảo), 0 lỗi.
