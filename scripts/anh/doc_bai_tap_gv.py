@@ -477,6 +477,12 @@ def doc(file_docx, unit, ra):
             continue
     chot_mcq()
 
+    # Dạng mà đề BẮT BUỘC có chữ — đề rỗng = câu bị dính sang câu trước (phương án tràn nuốt đề câu sau, U5-C054/U6-C053)
+    for c in cau:
+        if c['dang_de'] in ('hoan_thanh_cau', 'dong_trai_nghia', 'cau_gan_nghia', 'ket_hop_cau', 'doc_hieu', 'sap_xep_doan') \
+                and not tron(c['noi_dung']).strip():
+            c['loi_cau_truc'].append('de_rong')
+
     # Kiểm chéo điền từ: tập số chỗ trống "(n)" trong đoạn văn PHẢI trùng tập số câu gắn vào đoạn đó. Lệch (file thiếu/thừa
     # dòng phương án, đoạn không đánh số) ⇒ gắn cờ CẢ ĐOẠN — không đoán câu nào ứng chỗ nào (§1.5 thà bỏ trống còn hơn đánh sai).
     for nl in ngu_lieu:
