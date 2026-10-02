@@ -815,6 +815,8 @@ YÊU CẦU RIÊNG CHO KIT NÀY (thêm vào giao thức):
 
 ### Kit 2 — `hs-ban-do-luc-dia`
 
+> ⛔ **ĐÃ THAY BỞI Đơn 12.** Kit 1 (thế giới) và Kit 3 (chặng) của Đơn 9 giữ nguyên.
+
 ```
 App:            hs
 Màn:            ban-do-luc-dia
@@ -913,6 +915,8 @@ YÊU CẦU RIÊNG:
 
 ## Đơn 11 — TẦNG LỤC ĐỊA (chuyên đề) theo kịch bản chuẩn của world map: ẢNH TO → ẢNH THÀNH PHẦN → BỐ CỤC — soạn 02/10, THAY phần nền vùng của Đơn 7/10
 
+> ⛔ **ĐÃ THAY BỞI Đơn 12 (02/10, Thùy):** cố định 8 mốc + 8 loại công trình + nhân vật chibi chạy dọc đường + toạ độ đường theo điểm. Không gửi đơn này.
+
 > **Thùy 02/10:** tầng lục địa "độ nghiêng chưa đúng, đường đi xuyên địa hình, lâu đài trên nền không thật — vì làm riêng rẽ; làm lại theo kịch bản chuẩn của world map:
 > ảnh to – ảnh thành phần – bố cục thì mới tự nhiên". Bài học: nền trơn + code tự vẽ đường + dán công trình rời = 3 nguồn hình khác góc nhìn/ánh sáng ⇒ không bao giờ liền.
 > Tầng CHẶNG giữ cách hiện tại (Thùy: "chặng thì ổn hơn").
@@ -947,3 +951,84 @@ YÊU CẦU RIÊNG (kịch bản chuẩn — giống bộ bản đồ thế giớ
 
 > **Kit về (Claude làm):** kiểm mục 8 giao thức · đặt backdrop + 6 mốc theo DESIGN.md, ghép thử ra ảnh so với reference (lệch thì tự đo lại trên reference như bản thế giới) ·
 > tắt đường three.js ở tầng lục địa khi nền đã có đường vẽ sẵn (giữ ở tầng chặng) · thêm sổ `hinh2d` {biome, số mốc, ảnh nền, vị trí từng mốc} + chọn bản nhỏ nhất ≥ N.
+
+
+---
+
+## Đơn 12 — TẦNG LỤC ĐỊA (chuyên đề): 1 màn = 1 ĐƯỜNG XUYÊN SUỐT + 8 CÔNG TRÌNH + nhân vật chibi CHẠY theo đường — theo ĐÚNG giao thức kit — soạn 02/10, THAY Đơn 9 (Kit 2) + Đơn 11 + phần nền vùng của Đơn 10
+
+> **Thùy 02/10:** "màn lục địa — các chuyên đề: có background, có con đường xuyên suốt, trên đường có các địa điểm KHÁC LOẠI (nhà, lều, lâu đài, hầm ngục…), mỗi địa điểm = 1 chuyên đề;
+> bấm từ chuyên đề này sang chuyên đề khác thì nhân vật chạy theo đúng lộ trình đó. Cố định thiết kế **8 chuyên đề / 1 màn hình**; ít hơn 8 thì địa điểm thừa coi như CÓ SẴN
+> công trình, không cần tấn công. Quá 8 (số ít) thì con đường dẫn sang màn bên cạnh." Đơn phải theo giao thức đã thống nhất: **① ảnh toàn cảnh → ② ảnh từng thành phần vẽ lại từ chính ảnh đó → ③ file mô tả cấu trúc đặt.**
+> **Khác Đơn 11:** (a) cố định **8 mốc**, không còn bản 4/6/8 (b) 8 công trình là **8 LOẠI khác nhau theo thứ tự mạnh dần**, không phải 6 loại thay phiên (c) **thêm nhân vật chibi chạy** (đứng + 2 tư thế bước)
+> (d) DESIGN.md phải có **toạ độ ĐƯỜNG theo từng điểm** (để code cho nhân vật chạy dọc đường) và điểm vào/ra ở 2 mép (e) mép trái/phải khớp nhau để lật gương nối được màn kế.
+> **Chốt với Thùy (02/10):** màn thứ 9+ = kéo ngang sang màn kế, DÙNG LẠI ảnh màn 1 lật gương (không đặt ảnh riêng) · nhân vật = chibi nam/nữ của em · 8 công trình cùng 8 loại cho mọi vùng, chất liệu theo khí hậu.
+> **Cách gửi:** mỗi VÙNG KHÍ HẬU = 1 kit = 1 context ChatGPT MỚI (app máy tính). Làm **RỪNG trước** → Thùy duyệt → 9 vùng còn lại theo đúng bố cục đó. Dán `CHATGPT-UI-KIT.md` → dán khối đơn dưới (thay `<VÙNG>` + bảng chất liệu của vùng đó ở mục "8 CÔNG TRÌNH")
+> → đính kèm: ① `public/bk-ui/hs/skin/rpg/phieuluu2d/luc_dia_v2_<vùng>.webp` (lục địa của vùng đó trên bản đồ thế giới — giữ đúng dáng đất, màu, ánh sáng) ② `phieuluu2d/nen_vung_rung.jpg` (nền vùng cũ, chỉ lấy không khí)
+> ③ `phieuluu2d/moc_*.webp` (6 công trình cũ — chỉ tham khảo kiểu vẽ) ④ `public/bk-ui/hs/skin/rpg/boss_thuy_dung.png` (đúng PHONG CÁCH CHIBI cho nhân vật). Kit về: `design/handoff/hs-luc-dia-<vùng>-v1.zip`.
+> Vùng làm lần lượt (thứ tự trên bản đồ thế giới): rừng · anh đào · thành cổ · đầm lầy · sa mạc · băng · núi lửa · quần đảo (bien_dao) · đảo trời (troi_sao) · đảo cối xay (dong_gio).
+
+```
+App:            hs
+Màn:            luc-dia-<VÙNG>   (bên trong 1 lục địa, vùng khí hậu <VÙNG>; kit v1 = RỪNG PHÉP)
+Mô tả màn:      App học Toán "Giải cứu thế giới — đánh quái vật". Bấm 1 lục địa trên bản đồ thế giới ⇒ vào màn này: cận cảnh lục địa đó nhìn CHÉO từ trên cao
+                (cùng góc nhìn với ảnh lục địa đính kèm). Trên màn có MỘT CON ĐƯỜNG MÒN liền một mạch, uốn lượn theo địa hình, đi từ MÉP TRÁI vào, qua
+                8 CÔNG TRÌNH thứ tự 1→8 (mỗi công trình = 1 CHUYÊN ĐỀ), rồi đi ra MÉP PHẢI. Học sinh bấm 1 công trình ⇒ nhân vật chibi chạy dọc đường tới đó
+                rồi vào chặng đường. iPad NGANG ⇒ khổ 1672×941.
+                8 công trình là 8 LOẠI KHÁC NHAU, mạnh dần theo đường đi (xem mục "8 CÔNG TRÌNH") — nhìn vào là biết đi tới đâu thì "boss" to dần.
+                Màn luôn vẽ ĐỦ 8 công trình. Chủ đề có ít hơn 8 chuyên đề ⇒ code đặt chuyên đề vào N công trình đầu, các công trình còn lại vẫn đứng đó như
+                công trình có sẵn (KHÔNG tấn công được) ⇒ công trình nào cũng phải trông HOÀN CHỈNH, đẹp khi đứng một mình (không đổ nát dang dở, không "bãi đất chờ xây").
+                Chủ đề có hơn 8 chuyên đề (hiếm) ⇒ code kéo ngang sang màn kế, màn kế = CHÍNH ảnh này LẬT GƯƠNG NGANG ⇒ mép trái và mép phải của nền phải KHỚP
+                nhau (cùng cảnh, cùng độ cao và độ rộng đường, không có công trình hay cây to chạm mép) để lật gương vẫn liền.
+Phần tử ĐỘNG:   tên chuyên đề + 5 sao tiến độ dưới mỗi công trình · số thứ tự · cờ trên công trình đã xong · quái nhỏ ở công trình đang đánh · sương phủ
+                công trình chưa tới · mũi tên vàng nhấp nhô trên công trình đang học · đoạn đường ĐÃ ĐI sáng vàng / CHƯA ĐI mờ · nhân vật chibi chạy dọc đường
+                (tất cả do code đặt — KHÔNG vẽ vào ảnh toàn cảnh; chữ và số là TEXT; cờ, sương, mũi tên đã có bộ riêng, không vẽ lại).
+Trạng thái:     1 ảnh reference TOÀN CẢNH sạch (không cờ, không sương, không nhân vật, không quái, không mũi tên). Trạng thái do code thêm lên.
+Biến thể:       nhân vật: nam / nữ (chỉ 6 ảnh nhân vật, nền và công trình dùng chung). Vùng khí hậu khác = kit khác, CÙNG bố cục.
+Phong cách:     đúng ảnh lục địa đính kèm: anime fantasy vẽ tay chi tiết, ánh vàng ấm, nhìn chéo từ trên cao. Công trình đứng TRONG cảnh, cùng ánh sáng, cùng góc nhìn,
+                có bóng đổ xuống đất, công trình ở xa nhỏ hơn công trình ở gần (chiều sâu). Nhân vật chibi đầu to thân nhỏ, đúng nét ảnh boss_thuy_dung.png đính kèm.
+Giữ nguyên:     1672×941; không chữ trong tranh; phía DƯỚI chân mỗi công trình chừa khoảng trống rộng ≈ 12% khung để code đặt nhãn tên + 5 sao; phía TRÊN mỗi công trình
+                chừa chỗ cho mũi tên; vùng đầu trang (≈12% trên cùng) và đáy (≈8%) không đặt công trình (đè bởi thanh trên cùng); bên PHẢI không có bảng đè.
+Phiên bản kit:  v1
+
+8 CÔNG TRÌNH (thứ tự trên đường = thứ tự chuyên đề; mạnh dần; cùng 8 loại cho MỌI vùng, chất liệu theo khí hậu):
+  1 NHÀ làng (nhỏ, ấm) · 2 LỀU / trại · 3 THÁP CANH · 4 CẦU hoặc CỔNG đá · 5 ĐỀN · 6 HẦM NGỤC (cửa hang / cửa ngục) · 7 PHÁO ĐÀI · 8 LÂU ĐÀI LỚN (to nhất, hoành tráng nhất).
+  Cỡ trên màn (bề rộng ≈% khung): 1–2 nhỏ (8–10%), 3–5 vừa (10–13%), 6–7 lớn (13–15%), 8 to nhất (16–19%) — nhân với hệ số xa/gần theo vị trí trên màn.
+  Chất liệu theo vùng (v1 = RỪNG; vùng khác thay bảng này, GIỮ ĐÚNG 8 loại):
+  | vùng | 1 nhà | 2 lều | 3 tháp | 4 cầu/cổng | 5 đền | 6 hầm ngục | 7 pháo đài | 8 lâu đài |
+  | rừng | nhà gỗ rêu dưới tán cây | lều vải lá | tháp canh gỗ | cầu gỗ treo dây leo | đền cổ phủ rêu | cửa hang trong gốc cây khổng lồ | tường đá phủ dây leo | lâu đài phát sáng giữa cây khổng lồ |
+  | anh_dao | nhà mái cong hoa đào | lều vải hồng | tháp 3 tầng nhỏ | cầu vòm đỏ | đền cổng torii | hang dưới gốc đào | pháo đài đá trắng mái ngói | lâu đài nhiều tầng kiểu Á Đông |
+  | thanh_co | nhà đá cổ | lều lính | tháp canh tàn tích | cổng vòm đá | đền cột đá | hầm ngầm | tường thành | lâu đài cổ kính |
+  | dam_lay | nhà sàn | lều da | tháp gỗ mục nghiêng | cầu ván | đền phủ rêu đom đóm | hang bùn | pháo đài gỗ mục | lâu đài đen đom đóm |
+  | sa_mac | nhà gạch đất | lều du mục | tháp cát | cổng đá | đền kim tự tháp nhỏ | lăng mộ | pháo đài đất nung | cung điện lớn |
+  | bang | nhà tuyết / igloo | lều da thú | tháp băng | cầu băng | đền băng | hang băng | pháo đài băng | lâu đài băng pha lê |
+  | nui_lua | nhà đá đen | lều da | tháp dung nham | cầu đá qua dung nham | đền lửa | miệng núi lửa có cửa | pháo đài đá đen | lâu đài dung nham |
+  | bien_dao | nhà sàn trên biển | lều lá dừa | hải đăng | cầu gỗ | đền san hô | hang biển | pháo đài tàu đắm | lâu đài vỏ sò |
+  | troi_sao | nhà mây | lều lụa | tháp pha lê | cầu vồng | đền cổ trên mây | hang sao | pháo đài thiên thạch | lâu đài trời |
+  | dong_gio | nhà cối xay nhỏ | lều rơm | tháp gió | cầu đá | đền gió | hầm mỏ | pháo đài đá | lâu đài lớn có cối xay |
+
+YÊU CẦU RIÊNG (kịch bản chuẩn — ảnh to → thành phần → bố cục):
+- reference/reference_luc_dia_<vùng>.png: 1 ảnh TOÀN CẢNH đầy đủ 1672×941 (địa hình + con đường + 8 công trình). Duyệt TRƯỚC khi sinh bất kỳ asset nào (pha B).
+- assets/backdrop/backdrop_luc_dia_<vùng>.png: ĐÚNG cảnh reference, CÓ con đường mòn liền một mạch, nhưng KHÔNG có 8 công trình, KHÔNG nhân vật (vẽ lại như thể công trình chưa xây;
+  chỗ mỗi công trình là một bãi đất bằng gọn, đường đi xuyên qua hoặc rẽ vào sát bãi). Cùng khổ, cùng ánh sáng. Mép trái và mép phải khớp nhau (xem "Mô tả màn").
+  Con đường: rộng vừa phải (≈3–4% khung ở xa, 5–6% ở gần), mặt đất mòn rõ, không bị che bởi cây to, đi xuyên suốt không đứt đoạn.
+- assets/decor/moc_1.png … moc_8.png: vẽ lại TỪNG công trình đúng như trong reference (cùng dáng, cùng góc, cùng ánh sáng, cùng bóng đổ), nền TRONG SUỐT, chân công trình chạm đáy ảnh,
+  cạnh dài ≥1024px, mỗi công trình 1 file riêng sinh mới (KHÔNG cắt từ reference). Phải trông hoàn chỉnh khi đứng một mình.
+- assets/characters/: nhân vật CHIBI (đầu to thân nhỏ) nhìn nghiêng sang PHẢI, toàn thân, nền TRONG SUỐT, chân chạm đáy ảnh, cao ≥800px, đúng phong cách ảnh boss_thuy_dung.png:
+  · chibi_nam_dung.png · chibi_nam_chay_1.png (chân trái trước) · chibi_nam_chay_2.png (chân phải trước)
+  · chibi_nu_dung.png · chibi_nu_chay_1.png · chibi_nu_chay_2.png
+  Ba tư thế của MỖI giới phải cùng một nhân vật: cùng trang phục, cùng tỉ lệ, cùng chiều cao, cùng điểm chạm đất (code luân phiên 2 ảnh chạy + nhún để ra cảm giác chạy; chạy ngược thì lật ngang).
+- DESIGN.md — cột "Vị trí & cỡ" PHẢI có đủ, theo khung 1672×941 (toạ độ ≈% ngang, ≈% dọc, gốc ở góc trên trái):
+  · MỖI công trình 1→8: vị trí CHÂN (điểm chạm đất giữa chân công trình) + bề rộng (≈% khung) + loại + thứ tự trên đường.
+  · ĐƯỜNG: danh sách ≥ 24 điểm (x%, y%) theo thứ tự đi, từ điểm VÀO ở mép trái đến điểm RA ở mép phải, là TÂM đường, đi qua đúng chân 8 công trình theo thứ tự
+    (đánh dấu điểm nào là chân công trình số mấy). Điểm vào và điểm ra phải CÙNG độ cao y ± 1% (để lật gương nối liền) và ghi bề rộng đường tại vào/ra.
+  · NHÂN VẬT: chiều cao nhân vật tại 3 độ sâu (y≈30%, 55%, 80%) so với khung — để code thu phóng nhân vật theo xa/gần cho khớp công trình; điểm chạm đất = đáy ảnh nhân vật.
+  · Z-ORDER: công trình nào che công trình nào, cây/đá nào đứng TRƯỚC đường (nếu có) — để code biết lớp.
+  · Vùng cấm đặt chữ/nhãn (chỗ chừa dưới chân công trình), vùng cấm của thanh trên cùng.
+```
+
+> **Kit về (Claude làm):** kiểm mục 8 giao thức (đếm reference ↔ assets, alpha thật, backdrop sạch, mép trái/phải khớp khi lật gương) · đối chiếu từng mảnh với reference (dáng, màu, ánh sáng — lệch thì trả hàng theo mục 10) ·
+> nén WebP vào `public/bk-ui/hs/skin/rpg/phieuluu2d/` · khai vào sổ `ban2d/hinh2d.ts` {vùng, nền, 8 chân công trình, đường 24+ điểm, cỡ nhân vật theo độ sâu} ·
+> dựng lại `LucDia2D`: nền + 8 công trình đúng vị trí, N chuyên đề đầu tương tác (cờ/sương/mũi tên/5 sao do code), công trình thừa đứng yên; **nhân vật chibi chạy dọc đường** từ mốc này sang mốc kia
+> (đi theo điểm đường, tốc độ đều, luân phiên 2 ảnh chạy, thu phóng theo độ sâu, đổi hướng thì lật ngang) rồi mới vào chặng; >8 chuyên đề ⇒ kéo ngang sang màn kế = nền lật gương, đường nối ở mép ·
+> tắt đường three.js ở tầng lục địa · bỏ `CHO_MOC_VUNG`. So từng điểm với reference ở 1180×820.

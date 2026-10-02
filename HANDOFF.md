@@ -73,7 +73,7 @@
     - **Cờ `phieuluu` (`phieuluu/coBat.ts`) MẶC ĐỊNH TẮT:** máy thử `?phieuluu=1`. Bật mọi HS: `MAC_DINH = true` rồi deploy. Bản đồ chỉ mở khi cờ bật + hiệu ứng game bật + style có bản đồ.
     - **Đơn ChatGPT (design/DON-HANG-SKIN-HS.md):** Đơn 7 (gốc, đã nhận #01–#30: lục địa · nền vùng/chặng 4 biome · 6 mốc · bệ đá · mây · la bàn · cờ — ảnh ở
       `design/bk-ui-src/Adnventure2D/chon_huong/`) · 7-0 (bỏ) · 8 (màn đấu, chưa gửi) · 9 (kit 1 thế giới = xong bằng bộ V2) · 10 (nền có đường + bệ — phần VÙNG thay bằng Đơn 11) ·
-      **11 (tầng lục địa: ảnh to + backdrop có đường không công trình + công trình vẽ lại + DESIGN.md vị trí chân; 4·6·8 mốc; RỪNG 6 mốc trước — VIỆC KẾ TIẾP, Thùy tự gửi)**.
+      11 (bị Đơn 12 thay) · **12 (tầng lục địa, 02/10: 1 màn = đường xuyên suốt + 8 công trình KHÁC LOẠI (nhà · lều · tháp · cầu · đền · hầm ngục · pháo đài · lâu đài) + nhân vật chibi CHẠY dọc đường giữa các chuyên đề; ít hơn 8 ⇒ công trình thừa đứng sẵn không tấn công; >8 ⇒ kéo ngang, màn kế = nền lật gương; DESIGN.md có đường ≥24 điểm; RỪNG trước, rồi 9 vùng — VIỆC KẾ TIẾP, Thùy tự gửi)**.
     - **VIỆC TIẾP:** ① kit Đơn 11 về ⇒ ráp theo DESIGN.md (ghép thử so reference), tắt đường three.js ở tầng lục địa, sổ hinh2d {biome, số mốc, nền, vị trí} + chọn bản nhỏ nhất ≥ N,
       bỏ `CHO_MOC_VUNG` ② nền chặng 6 vùng còn lại ③ màn đấu 2.5D theo Đơn 8 ④ iPad thật + luồng làm bài thật (tài khoản HS THỬ) ⑤ bản dọc của thế giới ⑥ hộp thư Số liệu
       (`fn_ban_do_phieu_luu` trả đội hình/`so_cau_luot`/`hp`).
