@@ -34911,3 +34911,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   chương III…) · lớp 12 không đụng (đã đủ từ 24/09; 1.707 câu còn dạng chờ).
 
 - (02/10 chiều) Băng Thần Mã: CEO "cằm quá to, đầu không còn thuôn" — bản trước xoá rãnh bằng lượn rộng + cổ loe ⇒ đắp thịt dưới hàm. Sửa đúng gốc: má/cằm (khối cMa) NHỎ + cao hơn — chính khối bầu này tạo rãnh ⇒ bỏ bầu thì lượn vừa (0,045) đã liền. **Bài học:** xoá rãnh bằng cách BỚT khối gây rãnh, đừng đắp thêm lượn.
+
+- (02/10 chiều) Băng Thần Mã: CEO "gần ổn rồi, cằm nhỏ thêm 1 tý" ⇒ má/hàm nhỏ + cao thêm, chóp mõm mỏng mặt dưới. Bảng loài spec §3.5 cập nhật trạng thái.
