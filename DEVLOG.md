@@ -34591,3 +34591,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Sau xoá: trang thử tải mọi ảnh 200, 0 lỗi; build:hs + check:style-hs ✔. Ảnh gốc ở design/bk-ui-src giữ nguyên.
 - HANDOFF: viết lại khối bản đồ phiêu lưu (3D cũ → 2D hiện hành) + 9 bài học đồ hoạ/đơn ChatGPT vào ②. GỠ khối lặp 19 dòng (tiêu đề + đầu ①) chen giữa bài học Số liệu ②
   — trùng nguyên văn đầu file, do String.replace với chuỗi thay thế có `$\`` chèn lại phần đứng trước; nối lại câu bài học. Quét lại: 0 dòng dài trùng, 0 tiêu đề trùng.
+
+### 02/10 tối — [Giao diện] Tầng lục địa: mốc đúng bãi đất (dò tự động) + 6 loại công trình; ráp Đơn 7 #22–#30
+- Thùy: "công trình chưa đúng vị trí ô đất trống" · "phải đa dạng, không dùng cùng 1 toà lâu đài" · đã thêm ảnh 22–30 vào chon_huong.
+- Soi #22–30 (md5 không trùng): #22 tháp · #23 trại · #24 đền · #25 cổng đá · #26 cầu · #27 bệ đá · #28 mây · #29 la bàn · #30 cờ cắm đất. Cắt sát mép + WebP cạnh dài 384:
+  moc_{thanh,thap,trai,den,cong,cau}.webp · be_da.webp · co_chinh_phuc.webp (#30 THAY cờ V2 — có chân cắm đất, đứng trên bãi đẹp hơn). Mốc thứ i = loại i%6.
+- DÒ BÃI ĐẤT TỰ ĐỘNG thay đo mắt: ô 8px, cửa sổ 5×5 có chênh màu TB thấp + nhiễu trong ô thấp ⇒ vùng phẳng liên thông ≥60 ô ⇒ tâm. Ngưỡng (22,14);
+  rừng nới (40,26) vì cỏ nhiều vân + bỏ mảng sát mép + loại tay 5 vệt tối dưới tán cây. Mỗi nền 6 bãi, soi bằng ảnh đánh dấu (núi lửa trúng hoàn toàn 6 bãi đá phẳng).
+  Xếp vòng đường đi ⇒ hinh2d.CHO_MOC_VUNG. Công trình đặt CHÂN vào tâm bãi (ảnh cắt sát + object-bottom + translate(-50%,-90%)); cỡ 11% khung.
+- Chặng: bệ đá thật (#27) thay BeDaTam. Kiểm 1180×820 lục địa C (rừng, 4 mốc 4 loại) + chặng C2, 0 lỗi. Vùng >6 chuyên đề vẫn bố cục chung (chờ Đơn 10).

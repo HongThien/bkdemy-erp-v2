@@ -24,7 +24,7 @@ export function LucDia2D({ luc, b, onChon, onVe }: { luc: LucDiaV; b: BangMau3D;
     return boCucDuong(luc.vung.map((v) => v.ma), { x0: 0.13, x1: 0.87, y0: 0.27, y1: 0.76 })
   }, [luc, anhNen])
   const toi = Math.max(0, vungs.findIndex((x) => x.t.trangThai !== 'dat')) // mốc em đang tới (đầu tiên chưa chinh phục hết)
-  const canh = khung.doc ? khung.h : khung.w, coMoc = Math.max(52, canh * 0.1)
+  const canh = khung.doc ? khung.h : khung.w, coMoc = Math.max(56, canh * 0.11)
   const trang = (x: (typeof vungs)[number]) => (x.t.trangThai === 'fog' ? 'Chưa đo' : `${x.t.dat}/${x.t.tong} chặng đạt`)
   const m = b.biome[luc.biome] ?? Object.values(b.biome)[0]
   const dd = xoay(diem, khung)
@@ -50,12 +50,12 @@ export function LucDia2D({ luc, b, onChon, onVe }: { luc: LucDiaV; b: BangMau3D;
                 {khung.w > 0 && vungs.map(({ v, t }, i) => {
                   const p = viTri(diem[i], khung), anh = anhMoc(i), dangO = i === toi && t.trangThai !== 'dat'
                   return (
-                    <div key={v.ma} className="absolute" style={{ left: p.x, top: p.y, width: coMoc, height: coMoc, transform: 'translate(-50%,-62%)' }}>
+                    <div key={v.ma} className="absolute" style={{ left: p.x, top: p.y, width: coMoc, height: coMoc, transform: 'translate(-50%,-90%)' }}>
                       {dangO && <span className="ban2d-sang pointer-events-none absolute left-1/2 top-1/2 rounded-full" style={{ width: coMoc * 1.7, height: coMoc * 1.4, transform: 'translate(-50%,-50%)', background: `radial-gradient(closest-side, ${b.vang}aa, transparent)` }} />}
                       <button onClick={() => onChon(v.ma)} onPointerEnter={() => setHov(v.ma)} onPointerLeave={() => setHov(null)} aria-label={`${v.ten}: ${trang({ v, t })}`}
                         className="ban2d-o absolute left-1/2 top-1/2 flex h-full w-full items-center justify-center rounded-full"
                         style={{ transform: `translate(-50%,-50%)${hov === v.ma ? ' scale(1.05)' : ''}`, filter: t.trangThai === 'fog' ? 'saturate(.5) brightness(.8)' : undefined, background: anh ? undefined : `radial-gradient(circle at 50% 70%, ${m.dat2}, ${b.da} 70%)`, boxShadow: anh ? undefined : `0 4px 0 ${b.duongVien}` }}>
-                        {anh ? <img src={anh} alt="" className="h-full w-full object-contain" draggable={false} /> : <span style={{ fontSize: coMoc * 0.52, lineHeight: 1 }}>{EMOJI_MOC[i % EMOJI_MOC.length]}</span>}
+                        {anh ? <img src={anh} alt="" className="h-full w-full object-contain object-bottom" draggable={false} /> : <span style={{ fontSize: coMoc * 0.52, lineHeight: 1 }}>{EMOJI_MOC[i % EMOJI_MOC.length]}</span>}
                       </button>
                       <span className="pointer-events-none absolute -left-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full text-[12px] font-extrabold" style={{ ...HEAD, background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)' }}>{i + 1}</span>
                       {t.trangThai === 'fog' && <Suong mau={b.bot} anh={anhVat('may_suong')} style={{ left: '-10%', top: '5%', width: '120%', height: '80%' }} />}

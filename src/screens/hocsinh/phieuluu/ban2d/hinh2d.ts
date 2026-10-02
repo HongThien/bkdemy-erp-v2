@@ -8,9 +8,9 @@ const CO_SAN = {
   nenVung: ['rung', 'bang', 'nui_lua', 'bien_dao'] as string[],
   nenChang: ['rung', 'bang', 'nui_lua', 'bien_dao'] as string[],
   /** mốc công trình đã có (Đơn 7 #21–#26: thanh · thap · trai · den · cong · cau) — vòng lại trong số đã có */
-  moc: ['thanh'] as string[],
-  /** vật nhỏ đã có (bệ đá chưa có) */
-  vat: ['co_chinh_phuc', 'may_suong', 'la_ban'] as string[],
+  moc: ['thanh', 'thap', 'trai', 'den', 'cong', 'cau'] as string[],
+  /** vật nhỏ đã có (Đơn 7 #27 bệ đá · #30 cờ cắm đất; V2 mây sương · la bàn) */
+  vat: ['be_da', 'co_chinh_phuc', 'may_suong', 'la_ban'] as string[],
 }
 
 /** THẾ GIỚI (Thùy 02/10 chốt): nền biển V2 + 10 LỤC ĐỊA RỜI V2 (cắt sát mép, WebP cạnh dài 640, tỉ lệ ≈1,56) GHÉP ĐÚNG VỊ TRÍ ẢNH GỐC
@@ -43,13 +43,15 @@ export function ganBiomeTheoTranh<T extends { luc_dia: { biome: string }[] }>(bd
   return { ...bd, luc_dia: bd.luc_dia.map((l, i) => ({ ...l, biome: VI_TRI_LUC_DIA_V2[i].biome })) }
 }
 
-/** CHỖ ĐẶT MỐC trên từng nền vùng: các KHOẢNG ĐẤT TRỐNG vẽ sẵn trong tranh, đo trên ảnh lưới 5% (02/10), xếp theo 1 vòng đường đi
- *  (chuyên đề thứ i ⇒ chỗ i). Vùng có NHIỀU chuyên đề hơn số chỗ ⇒ rơi về bố cục chung (boCucDuong). Toạ độ = % khung 16:9 của nền. */
+/** CHỖ ĐẶT MỐC trên từng nền vùng = tâm các BÃI ĐẤT TRỐNG vẽ trong tranh, DÒ TỰ ĐỘNG (02/10): ô 8px, vùng màu phẳng liên thông đủ rộng
+ *  (rừng nới ngưỡng vì cỏ nhiều vân, loại vệt tối dưới tán cây), soi lại bằng ảnh đánh dấu. Bản đo bằng mắt trước đó lệch ⇒ Thùy chê "lâu đài không vào ô đất".
+ *  Xếp theo 1 vòng đường đi (chuyên đề thứ i ⇒ bãi i); mỗi nền 6 bãi — vùng >6 chuyên đề ⇒ bố cục chung (chờ Đơn 10: nền vẽ sẵn đường + bệ 4/6/8).
+ *  Toạ độ = % khung 16:9 của nền; công trình mốc đặt CHÂN vào điểm này. */
 export const CHO_MOC_VUNG: Record<string, { x: number; y: number }[]> = {
-  rung: [{ x: 45, y: 80 }, { x: 45, y: 57 }, { x: 22, y: 37 }, { x: 25, y: 13 }, { x: 55, y: 13 }, { x: 85, y: 11 }, { x: 85, y: 37 }, { x: 82, y: 61 }],
-  bang: [{ x: 20, y: 65 }, { x: 17, y: 18 }, { x: 52, y: 20 }, { x: 80, y: 11 }, { x: 78, y: 35 }, { x: 80, y: 70 }, { x: 60, y: 72 }],
-  nui_lua: [{ x: 45, y: 85 }, { x: 15, y: 58 }, { x: 20, y: 23 }, { x: 50, y: 43 }, { x: 82, y: 25 }, { x: 85, y: 58 }, { x: 80, y: 76 }, { x: 62, y: 63 }],
-  bien_dao: [{ x: 48, y: 77 }, { x: 28, y: 55 }, { x: 25, y: 30 }, { x: 58, y: 15 }, { x: 82, y: 30 }, { x: 80, y: 44 }, { x: 75, y: 75 }],
+  rung: [{ x: 48.4, y: 77 }, { x: 21.2, y: 36.7 }, { x: 25.7, y: 14.5 }, { x: 58.5, y: 16.9 }, { x: 85.4, y: 36.4 }, { x: 89.6, y: 60.8 }],
+  bang: [{ x: 19.5, y: 66.9 }, { x: 19.2, y: 17.5 }, { x: 50, y: 23.8 }, { x: 81.6, y: 16.4 }, { x: 81.2, y: 37.7 }, { x: 74, y: 72.7 }],
+  nui_lua: [{ x: 54.4, y: 83.3 }, { x: 17.7, y: 59.5 }, { x: 19.7, y: 23.9 }, { x: 47, y: 42.9 }, { x: 82.4, y: 26.1 }, { x: 81, y: 65.1 }],
+  bien_dao: [{ x: 49.4, y: 77.7 }, { x: 26.2, y: 55.8 }, { x: 23.6, y: 28.5 }, { x: 56.3, y: 13.5 }, { x: 86.3, y: 29.3 }, { x: 73.2, y: 74.3 }],
 }
 export const anhNenVung = (biome: string) => (CO_SAN.nenVung.includes(biome) ? `${G}/nen_vung_${biome}.jpg` : null)
 export const anhNenChang = (biome: string) => (CO_SAN.nenChang.includes(biome) ? `${G}/nen_chang_${biome}.jpg` : null)

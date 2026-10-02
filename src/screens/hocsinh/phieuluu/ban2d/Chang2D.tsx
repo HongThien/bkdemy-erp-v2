@@ -48,7 +48,7 @@ export function Chang2D({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: Vun
                 <button onClick={() => setSel(x.ma)} onPointerEnter={() => setHov(x.ma)} onPointerLeave={() => setHov(null)} aria-pressed={chon}
                   aria-label={`${x.ten}: ${moTa(x)}`} className="ban2d-o absolute left-1/2 top-1/2 h-full w-full" style={{ transform: 'translate(-50%,-50%)' }}>
                   {chon && <span className="ban2d-sang pointer-events-none absolute left-1/2 rounded-full" style={{ top: '88%', width: coBe * 1.3, height: coBe * 0.5, transform: 'translate(-50%,-50%)', background: `radial-gradient(closest-side, ${b.vang}cc, transparent)` }} />}
-                  <span className="absolute bottom-0 left-0 block w-full" style={{ height: coBe * 0.4 }}>
+                  <span className="absolute left-0 block w-full" style={{ height: coBe * 0.55, bottom: -coBe * 0.08 }}>
                     {anhVat('be_da') ? <img src={anhVat('be_da')!} alt="" className="h-full w-full object-contain" draggable={false} /> : <BeDaTam b={b} />}
                   </span>
                   {x.trang_thai !== 'dat' && cuoi && (
