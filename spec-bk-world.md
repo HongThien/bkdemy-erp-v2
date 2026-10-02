@@ -239,7 +239,7 @@ Repo `bk-bat-thu`, nhánh `game-3-man`, three **r186** (0.186.1). Mở: `trai.ht
 - Đồng cỏ: 6 loài gốc + Gà Lửa, Bò Tuyết ít gặp · **Băng Thần Mã ≈ 0,2% mỗi lần sinh thú** (1 lượt ~4% được gặp), tỉ lệ bắt gốc 9% (đánh yếu + choáng + bóng xịn ≈ 20%) · shiny 2% · alpha 3% (to ×1,4, +3 cấp).
 - Lai: phí 6 lúa mì + 4 cà rốt · mỗi bé lai 1 lần/ngày · 2 lò · cùng loài ⇒ loài đó, khác loài không có công thức ⇒ loài bố hoặc mẹ · shiny 2% (+8% mỗi bố mẹ shiny) · alpha 3% (+10% mỗi bố mẹ alpha) · huyền thoại không lai được.
 - 8 công thức ⇒ 4 loài lai: Cáo Lửa + Sói Nguyệt / Gà Lửa + Sói Nguyệt ⇒ **Sư Tử Lửa** · Khỉ Lá + Sói Nguyệt / Bò Tuyết + Khỉ Lá ⇒ **Voi Rừng** · Cáo Lửa + Cánh Cụt Nước / Nhím Điện + Cáo Lửa ⇒ **Gà Lửa** · Cừu Mây + Cánh Cụt Nước / Nhím Điện + Cừu Mây ⇒ **Bò Tuyết**.
-- Thưởng 5 nhiệm vụ: 1 vé · 2 bóng tốt · 1 vé + 1 bóng xịn · 2 vé · 1 bóng xịn + 2 bóng tốt. **Chưa trả xu** — chờ CEO chốt câu §4.3 (xu nhiệm vụ có tính chung trần tháng không).
+- Thưởng 5 nhiệm vụ: 1 vé · 2 bóng tốt · 1 vé + 1 bóng xịn · 2 vé · 1 bóng xịn + 2 bóng tốt, **cộng thêm 50 · 100 · 150 · 150 · 200 EXP** (03/10, tổng 6,5 xu). EXP vào ví Trang trại rồi đổi ra xu bằng đúng hàm đổi xu của Nông Trại ⇒ **chung trần xu tháng** với bán nông sản (CEO đã chốt câu §4.3 từ 01/10: "Chung"); chạm trần thì EXP để dành, sang tháng tự đổi tiếp.
 
 **Còn lại cho 06/10:** soi iPad (FPS, cỡ chữ, chạm) · HS thật chơi thử 1 vòng · chỉnh số theo cảm giác.
 
@@ -260,7 +260,7 @@ Repo `bk-bat-thu`, nhánh `game-3-man`, three **r186** (0.186.1). Mở: `trai.ht
 |---|---|---|
 | 1 | Cáo Lửa · Cừu Mây · Khỉ Lá · Nhím Điện · Cánh Cụt Nước · Gà Lửa · Bò Tuyết | 2–6 |
 | 2 | Sói Nguyệt · Sư Tử Lửa · Voi Rừng | 5–10 |
-| 3 | (Eidrolon · Ophydia — khuôn bay / rắn, CHƯA nối vào game ⇒ tầng 3 tạm trống) | 9–14 |
+| 3 | **Eidrolon** (khuôn bay — dungeon *Vực Lửa Tím*, cảnh đêm trăng) · **Ophydia** (khuôn rắn — dungeon *Hồ Sen Cổ*, cảnh nước) — nối vào game 03/10 (BatThu `game-3-man` @ `793eeb1`). Thần thoại **không lai được** (lò ấp hiện khoá kèm lý do) | 9–14 |
 | 4 | Băng Thần Mã · Thiên Kình | 12–18 |
 
 **Luật (số CTO tự đặt để chơi thử):**

@@ -35129,3 +35129,19 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 - (03/10 tiếp) Thùy bổ sung `quai_bo_giap` (giáp màu đồng, đơn ghi xanh lục — nhận) ⇒ **K2 đủ 41/41**. Thùy xin NỢ #29 `khoi_b_kiem_tra_lai`, vẽ bù 04/10
   (banner kiểm tra lại đang tắt ⇒ không chặn gì).
+
+## 2026-10-03 (máy nhà) — [Game] BK World: hoàn thiện V1 — xu nhiệm vụ, mở tầng 3 (Eidrolon + Ophydia), sửa ảnh Voi Rừng trống
+- Làm (BatThu nhánh `game-3-man`, worktree máy nhà `C:\Users\Admin\Desktop\BKERP\BatThu-game`, launch `bk-world-nha` cổng 5283):
+  · `f5d58c5` nhiệm vụ Bác Hai trả xu: thưởng thêm EXP (50·100·150·150·200) ⇒ ví trang trại ⇒ `doiXu` của engine ⇒ CHUNG trần xu tháng
+    (CEO đã chốt từ 01/10, spec §4 câu 3 — code còn ghi "chờ CEO" là lỗi thời). Thử thật: nhận nhiệm vụ 1 ⇒ +50 EXP, thanh tiền cập nhật.
+  · `793eeb1` tầng 3: cầu nối `thu-code.ts` nhận ThuBay/ThuRan · dungeon Vực Lửa Tím (Eidrolon) + Hồ Sen Cổ (Ophydia) có truyện ·
+    trang trại cho bay/rắn đi dạo · lò ấp hiện khoá "Thần thoại — không lai". Chơi thử trọn vòng: bản đồ → truyện → đánh → ném (trượt,
+    rồi bắt được Eidrolon) → về trại đi dạo; dungeon Ophydia dựng đúng.
+  · Lỗi có sẵn tìm thấy khi soát: ảnh chân dung **Voi Rừng TRỐNG** trên bản đồ. Gốc: lông mày dò bằng tia bắn thẳng từ phía trước, mắt voi
+    dời ra 2 bên đầu ⇒ tia trượt khỏi đầu (z = −1,9e73) ⇒ 112 đỉnh NaN. Sửa: dò lông mày dọc pháp tuyến con mắt (`bamTia`) — 10 loài 4 chân
+    0 đỉnh NaN. `20e2473` đổi khoá nhớ ảnh (`bk.anh.v2`) để máy đã lưu ảnh trống tự vẽ lại.
+    ⚠ Bản sửa lông mày đang nằm ở `game-3-man`; nhánh `thu-de-thuong` (các phiên làm thú) VẪN còn lỗi — khi gộp nhánh nhớ mang sang.
+- Mẹo soát khi Browser pane ẩn (document.hidden ⇒ không có khung hình): game bắt thú tua bằng `GAME.vong(t)`; truyện chuyển khung bằng
+  sự kiện `pointerdown` (không phải click); trang trại khởi động khối đi dạo chờ khung hình đầu ⇒ thay `requestAnimationFrame` bằng
+  setTimeout rồi `import('/src/trai/thu-trai.ts?x=1')` để nạp lại riêng mô-đun đó (chỉ để thử, không đổi code).
+- V1 lưu trên máy: điểm chăm chỉ vẫn GIẢ LẬP bằng nút "Đúng N/10" (đúng thiết kế — nối app học sau 06/10).
