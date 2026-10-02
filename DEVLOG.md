@@ -34913,3 +34913,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - (02/10 chiều) Băng Thần Mã: CEO "cằm quá to, đầu không còn thuôn" — bản trước xoá rãnh bằng lượn rộng + cổ loe ⇒ đắp thịt dưới hàm. Sửa đúng gốc: má/cằm (khối cMa) NHỎ + cao hơn — chính khối bầu này tạo rãnh ⇒ bỏ bầu thì lượn vừa (0,045) đã liền. **Bài học:** xoá rãnh bằng cách BỚT khối gây rãnh, đừng đắp thêm lượn.
 
 - (02/10 chiều) Băng Thần Mã: CEO "gần ổn rồi, cằm nhỏ thêm 1 tý" ⇒ má/hàm nhỏ + cao thêm, chóp mõm mỏng mặt dưới. Bảng loài spec §3.5 cập nhật trạng thái.
+
+- (02/10 chiều) **✅ CEO CHỐT Băng Thần Mã** — BatThu tag `bang-than-ma-chot-0210`. **Bản Nhẹ** (chiTiet 0,6): 70k → 32k tam giác — đo theo nhóm xương: thân 40k → 12,8k (lưới toàn thân 9,2 → 17 mm, bỏ khe môi: lưới thưa không ra khe ⇒ há miệng thành màng kéo giãn, nên Nhẹ đầu kín, hàm không há) · cánh 10,7k → 5,6k (khối gốc cánh thưa) · mắt 8,6k → 4,9k (lưới mắt theo độ chi tiết) · bờm/đuôi/móng giữ. Bản Đẹp giữ 173k. Kiểm Nhẹ: dáng giữ, không thủng, phi nước đại không vỡ, 0 NaN.
