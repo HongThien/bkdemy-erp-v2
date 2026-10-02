@@ -148,7 +148,7 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
                               <span className="flex shrink-0 items-center justify-center rounded-full font-extrabold" style={{ ...HEAD, width: hStr * 0.95, height: hStr * 0.95, fontSize: hStr * 0.62, background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)', border: `1.5px solid ${kit.chu.vien}` }}>{i + 1}</span>
                               <span className="font-bold leading-[1.1]" style={{ fontFamily: "'Baloo 2', 'Be Vietnam Pro', sans-serif", fontSize: hStr, color: kit.chu.mau, WebkitTextStroke: `${Math.max(2.5, hStr * 0.22)}px ${kit.chu.vien}`, paintOrder: 'stroke fill', textShadow: `0 1px 4px ${kit.chu.vien}` }}>{co.v.ten}</span>
                             </span>
-                            <Sao5 ti={co.t.tong ? co.t.dat / co.t.tong : 0} co={Math.max(12, H * 0.027)} />
+                            <Sao5 vienToi ti={co.t.tong ? co.t.dat / co.t.tong : 0} co={Math.max(19, H * 0.046)} />
                           </span>
                         )}
                       </div>

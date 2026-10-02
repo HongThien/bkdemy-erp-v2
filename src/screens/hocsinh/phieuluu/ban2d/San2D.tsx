@@ -155,11 +155,16 @@ export function CssBan2D() {
 
 /** 5 SAO tiến độ (Thùy 02/10: "thay vì hiện đạt thì để dạng star cho dễ hiểu — 5 star, mỗi star 20% hoàn thành").
  *  ti = tỉ lệ hoàn thành 0–1 (đã có sẵn: dạng đạt / tổng dạng, hoặc độ nắm dạng do DB trả) — chỉ đổi cách HIỂN THỊ. Sao đầy = mỗi 20% trọn. */
-export function Sao5({ ti, co = 13 }: { ti: number; co?: number }) {
+export function Sao5({ ti, co = 13, vienToi = false }: { ti: number; co?: number; vienToi?: boolean }) {
   const n = Math.max(0, Math.min(5, Math.floor(ti * 5 + 1e-9)))
   return (
     <span className="inline-flex items-center gap-[1px] leading-none" role="img" aria-label={`${n}/5 sao`}>
-      {Array.from({ length: 5 }, (_, i) => (
+      {Array.from({ length: 5 }, (_, i) => vienToi ? (
+        // VIỀN TỐI (Thùy 02/10: sao đè lên cảnh phải có viền tối để tách khỏi cảnh vật): viền màu nền style ôm ngoài + bóng tối; sao chưa đạt = ruột tối mờ + viền sáng mảnh ⇒ vẫn phân biệt rõ
+        <span key={i} style={{ fontSize: co, lineHeight: 1, color: i < n ? 'var(--sk-acc)' : 'color-mix(in srgb, var(--sk-muted) 60%, transparent)',
+          WebkitTextStroke: `${Math.max(2, co / 7)}px var(--sk-bg)`, paintOrder: 'stroke fill',
+          textShadow: i < n ? '0 2px 4px var(--sk-bg), 0 0 8px var(--sk-bg)' : '0 1px 3px var(--sk-bg)' }}>★</span>
+      ) : (
         <span key={i} style={{ fontSize: co, lineHeight: 1, color: i < n ? 'var(--sk-acc)' : 'transparent', WebkitTextStroke: i < n ? undefined : `${Math.max(1, co / 14)}px var(--sk-muted)`,
           // sao đầy: vàng + viền tối + quầng sáng · sao chưa đạt: RỖNG chỉ có viền (phân biệt rõ ở mọi cỡ)
           textShadow: i < n ? '0 0 2px var(--sk-bg), 0 0 2px var(--sk-bg), 0 0 10px var(--sk-acc)' : undefined }}>★</span>
