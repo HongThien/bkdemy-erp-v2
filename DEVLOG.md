@@ -34859,3 +34859,27 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - **Chưa làm:** màn ET/đề thi (`LamET`) chưa có kéo thả; tạo LỚP môn TSA + ghi danh học sinh (việc OPS: lớp `mon='TSA'`, khối 12); gán nhân sự môn TSA (`nhan_su_mon`) để thấy tab TSA ở màn Kho nếu không phải admin/Ops.
 
 - (02/10 chiều) **Băng Thần Mã — toàn thân 1 lưới + ngọc huyền bí** (CEO: "sửa đầu và cổ cho liền nhau cho mịn; viên lục giác huyền bí hơn; bỏ cái vòng đeo"): bỏ vòng cổ thì không còn gì che đường nối 2 lưới ⇒ gộp thân+cổ+4 chân+đầu thành 1 lưới 5,5 mm (khe môi nới 0,03R → 0,042R cho đủ ô lưới); da: đầu theo xương đầu/hàm, sát đầu trộn cổ↔đầu, nách/háng trộn thân↔đùi. Ngọc: lõi chàm sẫm → mép xanh băng, tự sáng theo nhịp thở (aCanh −1), ấn bông tuyết 6 cánh phát sáng, 6 đốm sáng bay vòng (hạt O_LAP theo xương thân), bỏ "gương" (bong 1,5 phản trời làm lõi bạc màu). Ấn ban đầu là 2 tam giác lồng = trông như sao David ⇒ đổi bông tuyết (tránh biểu tượng tôn giáo). **Giá:** ~173k tam giác/con bản Đẹp (lưới mịn toàn thân) — cần bản Nhẹ khi đưa vào game.
+
+## 2026-10-02 (chiều) — [Kho Anh] Mở luyện tập Tiếng Anh trên app HS — phần DB đã áp, CỔNG chờ deploy
+
+- **Thùy:** "Mở chức năng luyện tập tiếng anh trên app học sinh đi."
+- **Phát hiện khi dò luồng:** hàm chọn câu cho HS (`_kho_dk_online_hs_sql`) KHÔNG lọc kho chuẩn ⇒ đo: Toán Đại 2.814 câu ngoài kho chuẩn
+  (292 câu máy nghi) + HGT 256 đang ra cho HS; mở Anh ngay thì 247 câu nghi đáp án ra theo. **Thùy chọn: lọc kho chuẩn MỌI môn.**
+- **mig 202610021403 (ĐÃ ÁP):** HS = `_kho_dk_mcq_sql` (cùng điều kiện bổ trợ) · gỡ "không phải KHTN thì là Toán" ở `_kho_ds_nhanh`,
+  `tu_luyen_chu_de_ds_dang`, `hs_dang_evals`, `htd_lo_trinh`, `htd_co_mo` (+ chặn môn chưa có kho), `fn_ban_do_phieu_luu` (môn chưa có bảng
+  cụm), `tu_luyen_dien_sinh` (chỉ môn có nhánh hình học — KHTN trước đây ra bài hình Toán) · `bai_test_cau.ngu_lieu` + `_kho_snapshot_cau`
+  chụp đoạn văn / thông báo / ảnh biển báo kèm câu · buổi không gắn lớp chỉ nhận dạng của CHÍNH môn (KHTN trước đây lẫn 126 dòng mã Toán).
+  Dựng từ định nghĩa ĐANG CHẠY, chỉ thay đúng đoạn cần đổi. Thử trong ROLLBACK: KHTN 4 hàm y hệt + evals chỉ bớt dòng mã Toán; Toán
+  điểm/lộ trình y hệt, số câu luyện chỉ giảm phần ngoài kho chuẩn; Anh K9: 93 dạng / 1.672 câu, bản đồ 6 lục địa · 24 vùng.
+- **App HS (vào main qua commit e480f8b — phiên TSA commit nguyên index nên cuốn 6 file tôi stage):** `ChuMon` (registry `MON_CHU_THUONG`,
+  Anh giữ gạch chân / không công thức / không tự in đậm chữ hoa) · `NguLieuHS` trên đề · nút "Luyện chứng minh" chỉ môn trong
+  `MON_LUYEN_CHUNG_MINH`. Soi trang xem-thử bằng câu thật (khổ 1180×820 + 390×844): 6 kiểu câu đúng, ảnh biển báo hiện, không tràn ngang.
+- **Đề mặc định phát âm / trọng âm:** file GV để lệnh ở đầu bài tập ⇒ 236 câu trên app chỉ thấy 4 từ. Trạm đọc gắn đề mặc định
+  (`DE_MAC_DINH`), vá 236 câu trong kho (có vết `kho_sua_log`). Không kiểm lại A/B: bên A đã thấy dạng đề (= đúng lệnh này).
+- **CỔNG `_kho_co_mon('Tiếng Anh')` CHƯA MỞ** — app đang deploy hiện nguyên "<u>" và không có đoạn văn. Sau khi Thùy deploy app HS: dựng
+  migration từ định nghĩa ĐANG CHẠY (chỉ thêm 'Tiếng Anh'), áp `--only`. ⚠ `202610021415_tsa_mo_co_mon.sql` (phiên TSA, chưa áp) ghi cứng
+  `('Toán','KHTN','TSA')` ⇒ áp sau là ĐÓNG Anh — đã nhắn phiên TSA dựng lại từ định nghĩa đang chạy.
+- **Sự cố:** thư mục `ta9/` + `web/` trong scratchpad biến mất giữa phiên ⇒ giải nén lại từ zip ở Downloads; chạy lại trạm đọc khớp 100%
+  bản cũ (ngoài đúng phần sửa) ⇒ file nguồn y hệt.
+- **Bài học:** (1) commit trong checkout dùng chung: index có thể chứa file phiên khác — dựng commit từ index TẠM (HEAD + file của mình) hoặc
+  `git diff --cached` trước khi commit. (2) Hai phiên cùng thay 1 hàm danh sách ⇒ migration "thêm phần tử" phải dựng từ định nghĩa đang chạy.

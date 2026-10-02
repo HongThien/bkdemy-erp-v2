@@ -116,7 +116,14 @@ Khoảng 8–9 file + 1–2 migration, ~300–500 dòng. Rủi ro lớn nhất: 
 - Điểm chờ `E09000000` bị ẩn khỏi cây (bản đồ lọc mã `…000000`) ⇒ câu chờ điểm kiến thức chỉ thấy ở màn Duyệt kho.
 - Khối mặc định của màn Kho = 8 ⇒ Anh (chỉ K9) mở ra trống — mặc định theo môn.
 
-## 4. App học sinh (pha sau)
+## 4. App học sinh — ĐANG MỞ (02/10 chiều)
+
+> **Đã làm:** mig `202610021403` (lọc kho chuẩn mọi môn · gỡ 7 chỗ rơi về Toán trên đường luyện tập · `bai_test_cau.ngu_lieu`) + app
+> (`ChuMon`, `NguLieuHS`). **Còn:** mở cổng `_kho_co_mon('Tiếng Anh')` SAU khi deploy app HS (dựng từ định nghĩa đang chạy — xung đột với
+> mig TSA 202610021415). Chưa làm (không chặn luyện tập): `_de_thi_kho` · `fn_giaibai_mon` · `_troly_ten_dang` · Thử thách/Rank (không có dòng
+> `rank_cau_hinh` ⇒ "Thử thách chưa mở" như KHTN) · chip Đại/Hình ở Sổ tay · lớp Anh khối 5/7/8 thấy danh sách rỗng (kho mới có K9).
+
+### (ghi chú cũ)
 
 - 16 hàm DB còn "không phải KHTN thì là Toán" (tu_luyen, htd_*, hs_dang_evals, đề thi, trợ lý, giải bài…) ⇒ vá hết rồi mới mở
   `_kho_co_mon('Tiếng Anh')`. Mở sớm = app HS lớp Anh rơi vào kho Toán.
