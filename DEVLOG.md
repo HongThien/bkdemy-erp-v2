@@ -34721,3 +34721,26 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - Trang xem thử `xem-thu-anh.html` (không commit) với 8 câu thật Unit 1: gạch chân phát âm, đoạn văn, ảnh biển báo, lý do "nghi" hiện đúng, console 0 lỗi.
   - **CHƯA kiểm màn thật bằng phiên đăng nhập** (Claude không đăng nhập thay người: mật khẩu đi lên Supabase thật) ⇒ CEO/GV mở Kho → Tiếng Anh để kiểm.
 - **Chưa push.**
+
+## 2026-10-02 (tiếp) — Kho Anh: nhập Unit 2–4, vá trạm đọc lần 3, cổng chống trùng
+
+- **Unit 2–4 đã ghi:**
+  - U2 132 chắc / 34 chờ / 4 bỏ; U3 110 / 37 / 2; U4 109 / 35 / 3.
+  - Soát tay 15 câu chắc ngẫu nhiên: 15/15 đúng.
+  - **Tổng U1–4: 465 câu chắc chắn trong kho · 145 chờ duyệt (124 đúng điểm, 21 cần chọn điểm) · 66 ngữ liệu · 20 ảnh biển báo.**
+- **Sai rồi sửa (trạm đọc — 3 lỗi ÂM THẦM mất/lệch chữ, chỉ lộ nhờ bên A/B báo):**
+  1. **Điền từ đánh số theo VỊ TRÍ** (đếm dòng phương án) ⇒ file thiếu 1 dòng là lệch cả đoạn (U4-C101 nhận phương án của chỗ 5).
+     ⇒ lấy đúng số ghi trên dòng + kiểm chéo tập "(n)" của đoạn với tập câu, lệch ⇒ gắn cờ cả đoạn.
+     Chính là luật CLAUDE.md §2 "danh tính bám khoá, không bám vị trí".
+  2. **Đề không "?"** ("It can be inferred… that") bị tưởng là đoạn văn mới ⇒ câu tách khỏi bài đọc (U2-C137/C145).
+  3. **Bài đọc mất phần đầu**: đoạn mở có "?"/":" bị gom vào "đề chờ" rồi `chot_mcq` xả mất (U5-NL10 mất 4 đoạn); bài trong BẢNG bị bỏ qua; dòng ngắn của bài gạch đầu dòng bị bỏ (U10-NL10 mất 3 chỗ trống).
+     ⇒ không còn chỗ nào vứt chữ im lặng. Lệch chỗ trống: 54 → 24 câu.
+- **Bài học:**
+  - Mỗi lần sửa trạm đọc, so file trước/sau CẢ 12 unit (số câu, đề, đoạn văn) — mọi thay đổi phải giải thích được.
+  - Không chỗ nào được "xả" dữ liệu đang chờ mà không đếm.
+- **Cổng thêm 2 luật:**
+  1. Nội dung (đề + phương án + đoạn văn) khác với bản bên A đã kiểm ⇒ chờ duyệt.
+     Cần vì đợt U5–8 đang chạy trên đầu vào cũ, U5/U8 có đoạn văn vừa được vá.
+  2. Bỏ câu trùng y hệt trong lô và với kho (U2-C020 ≡ C015).
+- **Biển báo thiếu đề** ⇒ đề mặc định "What does the sign or notice say?".
+- **Đang chạy:** A/B Unit 5–8 và 9–12.
