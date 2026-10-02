@@ -34491,3 +34491,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ### 02/10 — [Giao diện] Tối giản: chốt là STYLE nhưng KHÔNG tính vào 2 style V1
 - Thùy: "tối giản không phải style, chỉ là nền đơn sắc" ⇒ CTO làm thử thành hình nền (chưa commit) ⇒ Thùy sửa lại: "vẫn tính là style, nhưng không phải 2 style của V1".
   Bỏ bản thử (git checkout 4 file chưa commit), giữ nguyên style Tối giản đã đẩy (7dacc39d). Ghi vào spec-v1-app-hs §mục 6: 2 style V1 = RPG + Thị trấn (style game có bộ hình phiêu lưu).
+
+### 02/10 — [Giao diện] Ráp ảnh Đơn 7 đợt 1 vào bản đồ thế giới 2D
+- Thùy gửi 12 ảnh (design/bk-ui-src/Adnventure2D/chon_huong/ — tên thư mục gõ dư n): đây là Đơn 7 gốc mục A+B (#01–03 toàn cảnh · #04 nền biển · #05–#12 lục địa), KHÔNG phải 4 hướng Đơn 7-0.
+- Soi: #10 #11 #12 TRÙNG HỆT (md5 2dc67d96…) — đều là đầm lầy ⇒ thiếu #11 thành cổ, #12 đảo trời; cần ChatGPT vẽ lại. #05–#10 nền trong suốt chuẩn, mỗi dáng khác nhau.
+- Nén bằng @napi-rs/canvas (máy không có Python/ImageMagick): nen_the_gioi.jpg 1672×941 q82 241KB · luc_dia_<biome>_1.webp 640² 89–155KB (≈1MB, gốc ≈16MB).
+- hinh2d.ts: cờ KIT2D (bật/tắt cả nhóm) → sổ CO_SAN theo TỪNG ảnh ⇒ biome thiếu ảnh vẫn hình tạm, ghép dần được. Lục địa chưa đo trên ảnh thật: sương trắng che bệt ⇒ đổi thành tối + nhạt màu + sương mờ 32%.
+- Kiểm: hs.html?xem=phieu_luu 1180×820, 0 lỗi console, check:style-hs ✔.

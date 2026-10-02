@@ -44,10 +44,10 @@ export function TheGioi2D({ banDo, b, onChon, hienTai, thanh, gioi = 'nam' }: {
                 <div key={l.ma} className="absolute" style={{ left: p.x, top: p.y, width: size, height: size, transform: 'translate(-50%,-50%)' }}>
                   {dangO && <span className="ban2d-sang pointer-events-none absolute left-1/2 top-1/2 rounded-full" style={{ width: size * 1.25, height: size * 1.05, transform: 'translate(-50%,-50%)', background: `radial-gradient(closest-side, ${b.vang}aa, ${b.vang}33 60%, transparent)` }} />}
                   <button onClick={() => chon(l.ma, p.x, p.y)} aria-label={`${l.ten}: ${t.trangThai === 'fog' ? 'chưa đo' : `${t.dat}/${t.tong} chặng đạt`}`}
-                    className="ban2d-o ban2d-dao absolute left-1/2 top-1/2 h-full w-full" style={{ transform: 'translate(-50%,-50%)', filter: t.trangThai === 'fog' ? 'saturate(.55) brightness(.85)' : undefined, animationDelay: `${-thuTu * 0.9}s` }}>
+                    className="ban2d-o ban2d-dao absolute left-1/2 top-1/2 h-full w-full" style={{ transform: 'translate(-50%,-50%)', filter: t.trangThai === 'fog' ? (anh ? 'saturate(.3) brightness(.6)' : 'saturate(.55) brightness(.85)') : undefined, animationDelay: `${-thuTu * 0.9}s` }}>
                     {anh ? <img src={anh} alt="" className="h-full w-full object-contain" draggable={false} /> : <LucDiaTam b={b} biome={l.biome} khoa={l.ma} />}
                   </button>
-                  {t.trangThai === 'fog' && <Suong mau={b.bot} anh={anhVat('may_suong')} style={{ left: '8%', top: '12%', width: '84%', height: '70%' }} />}
+                  {t.trangThai === 'fog' && <Suong mau={b.bot} anh={anhVat('may_suong')} style={{ left: '8%', top: '12%', width: '84%', height: '70%', opacity: anh ? 0.32 : 1 }} />}
                   {t.trangThai === 'dat' && <span className="pointer-events-none absolute" style={{ right: '14%', top: '4%' }}><Co mau={b.biome[l.biome]?.diem ?? b.vang} anh={anhVat('co_chinh_phuc')} cao={size * 0.26} /></span>}
                   {t.trangThai === 'yeu' && t.loai && !dangO && <span className="pointer-events-none absolute" style={{ right: '10%', top: '10%', width: size * 0.2, height: size * 0.2 }}><QuaiTam b={b} loai={t.loai} co={size * 0.2} /></span>}
                   {dangO && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ top: -size * 0.14 }}><Hero gioi={gioi} cao={size * 0.36} mau={b.troi} /></span>}
