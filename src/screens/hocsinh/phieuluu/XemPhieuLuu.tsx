@@ -21,8 +21,9 @@ import type { ChangV } from './kieu'
 // Chỉ khi chạy dev: dán JSON thật của fn_ban_do_phieu_luu vào localStorage 'ban_do_pl' để soi dữ liệu thật qua bộ đổi tuBanDoPL.
 // &so=N: chỉ lấy N chủ đề đầu (thử bản đồ toàn cảnh với khối ít chủ đề)
 function layBanDo(): BanDoV {
-  const bd = layBanDoGoc(), so = Number(new URLSearchParams(location.search).get('so'))
-  return ganBiomeTheoTranh(so > 0 ? { ...bd, luc_dia: bd.luc_dia.slice(0, so) } : bd)
+  const q = new URLSearchParams(location.search), bd = layBanDoGoc(), so = Number(q.get('so'))
+  const kq = ganBiomeTheoTranh(so > 0 ? { ...bd, luc_dia: bd.luc_dia.slice(0, so) } : bd), ep = q.get('biome') // &biome=rung|thanh_co|anh_dao…: ép mọi lục địa theo 1 biome (soi kit)
+  return ep ? { ...kq, luc_dia: kq.luc_dia.map((l) => ({ ...l, biome: ep })) } : kq
 }
 function layBanDoGoc(): BanDoV {
   if (new URLSearchParams(location.search).get('thu') === 'nhieu') return banDoNhieu()

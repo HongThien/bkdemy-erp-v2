@@ -25,15 +25,20 @@
 
 Giữ thang cũ, đổi cách đo: **thắng 1 trận = 10 · thắng 2 trận = 20 · vượt cả 3 = 30** (Điểm Rank/lượt; thua trận 1 = 0). **Trần TUẦN** thay trần ngày (Thùy chốt 02/10: hợp lý hơn vì ngày đã bị chặn bởi 2 lượt, tối đa 60 điểm/ngày/môn); trần tháng của D2 giữ làm chốt chặn. Số trần tuần: Số liệu đề xuất theo luật "Thử thách ≈ 20% Điểm Rank" của D2.
 
-## 4. Trải nghiệm (Giao diện)
+## 4. Trải nghiệm (Giao diện) — Thùy chỉnh 02/10 tối
 
-```
-Chọn môn → [Đấu trường: cổng + 3 ô trận (khoá/đang/đã thắng)] → Trận 1 (5 câu) → hoạt cảnh → Trận 2 → hoạt cảnh → Trận 3 → hoạt cảnh lớn → Kết quả
-```
-- Tận dụng màn làm bài nhúng (`LamBai` chế độ `nhung`) + khung đấu 2D như "Săn quái lang thang". Thanh máu quái có **vạch ngưỡng** ("cần 3/5"); đúng = quái mất máu, sai = quái hồi (luật cũ, hero không có máu).
-- **Hoạt cảnh sau MỖI trận (~2 giây):** thắng = quái ngã; thua = em bị đẩy lùi, boss cười. **Cuối lượt (dài hơn):** vượt = boss gục + hạt vàng + chibi giơ sách; thua = màn tối dần, boss tiến lên, chibi mờ đi.
-- **Đồ họa 2D** (ảnh tĩnh + hoạt ảnh bằng code: rung, lóe, hạt). Boss/quái: **DÙNG TẠM** boss Thùy 6 tư thế (`boss_thuy_*`) cho cả 3 trận; đủ quái Thùy thiết kế thì thay qua `nguonQuai`/sổ boss. Nền: nền đấu trường theo style. Nhân vật em: chibi theo giới tính.
-- **Màn kết quả:** 3 ô trận (✔ ✔ ✖) · Điểm Rank được · số lượt còn hôm nay · nút "Thử lại" (xám khi hết lượt).
+\- **Làm câu hỏi = tĩnh**: chỉ hiện đúng/sai ở đáp án. **Hoạt ảnh CHỈ phát sau khi xong 5 câu của trận** (không có đòn/hiệu ứng theo từng câu).
+- **ĐÒN theo % đúng của trận** (hiệu ứng canvas 2D, `thuthach/hieuUng.ts`; trong nhóm chọn NGẪU NHIÊN 1):
+  | % đúng | Đòn | Hiệu ứng |
+  |---|---|---|
+  | 100% (5/5) | **Sét đánh** · **Thiên thạch** | sét 5 nhát + chớp màn, boss chớp ÂM BẢN (nhìn thấy xương) + tia điện bò khắp người · thiên thạch rơi + nổ, sóng xung kích, mảnh đá, boss bốc cháy |
+  | 80% (4/5) | **Cầu lửa khổng lồ** · **Cầu băng khổng lồ** | tích năng ở tay → bay + đuôi lửa/băng → boss CHÁY (lửa bốc lên) · boss ĐÓNG BĂNG (tinh thể bọc người, rồi vỡ) |
+  | 60% (3/5) | cầu lửa / cầu băng / tia điện **nhỏ** | cùng kiểu nhưng ngắn, nhỏ |
+  | Thua trận | **Boss tung ma thuật** | quả cầu tím bay vào nhân vật, chibi bị hất lùi + xám đi, màn tối dần |
+- **Boss 1 con qua 3 trận, máu hiển thị tụt SAU mỗi đòn** (60%: −18 · 80%: −28 · 100%: −34; trận 3 luôn 100% ⇒ đòn kết liễu, boss gục + hạt vàng, nhân vật chạy ra giữa nhảy mừng). Thua/bỏ cuộc: boss phóng to, chibi xám. (Số máu chỉ để hiển thị — server tính thật.)
+- **Nhân vật chính ≠ người dẫn truyện.** Bé gái chibi = **NGƯỜI DẪN TRUYỆN** (khung lời thoại: mở trận, sau đòn, kết quả). **Nhân vật chính cần bộ tư thế/animation riêng** (đứng · tích năng · tung đòn · bị đánh · thắng · gục). Demo tạm dùng ảnh chibi nam + biến dạng bằng CSS; **việc còn lại = đặt vẽ nhân vật chính nhiều tư thế** (đơn hàng chưa viết).
+- Đồ họa 2D. Boss: **DÙNG TẠM** boss Thùy 6 tư thế cho cả 3 trận; đủ quái Thùy thiết kế thì thay.
+- **Màn kết quả:** 3 ô trận (✔ ✔ ✖) · Điểm Rank · số lượt còn hôm nay · nút "Thử lại" (xám khi hết lượt).
 
 ## 5. Ảnh hưởng tới các luật khác (cần sửa theo)
 
@@ -65,5 +70,4 @@ Màn Đấu trường (cổng + tiến độ 3 trận) · bọc `LamBai` nhung t
 
 ## 9. Demo (02/10)
 
-`hs.html?xem=thu_thach` — dữ liệu giả, không DB, không đăng nhập: cổng + 3 trận + hoạt cảnh 2D + bỏ cuộc + kết quả. `&goi_y=1` đánh dấu đáp án đúng · `&luot=0` hết lượt · `&dang=3` chưa đủ dạng · `&gioi=nu`. Code: `src/screens/hocsinh/thuthach/`.
-**Chỉnh nhỏ so với §4 khi dựng demo:** thanh máu quái 5 ô = 5 câu, đúng ⇒ mất 1 ô, **sai ⇒ KHÔNG hồi** (bỏ luật hồi cũ cho đơn giản); vạch "hạ gục" đặt tại ngưỡng — chạm vạch là chắc thắng trận.
+`hs.html?xem=thu_thach` — dữ liệu giả, không DB, không đăng nhập: cổng + 3 trận + hoạt cảnh 2D + bỏ cuộc + kết quả. `&don=set|thien_thach|cau_lua_lon|cau_bang_lon|cau_lua_nho|cau_bang_nho|dien_nho` ép đòn khi thắng · `&goi_y=1` đánh dấu đáp án đúng · `&luot=0` hết lượt · `&dang=3` chưa đủ dạng. Code: `src/screens/hocsinh/thuthach/`.

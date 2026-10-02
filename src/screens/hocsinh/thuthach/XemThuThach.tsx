@@ -1,5 +1,5 @@
 // TRANG XEM THỬ ĐẤU TRƯỜNG (hs.html?xem=thu_thach): dữ liệu giả, không gọi DB, không cần đăng nhập. Soi cổng + 3 trận + hoạt cảnh + bỏ cuộc + kết quả.
-//   &goi_y=1 đánh dấu đáp án đúng · &luot=0|1|2 số lượt còn hôm nay (mặc định 2) · &dang=3 chưa đủ dạng đã học (khoá) · &gioi=nu|nam
+//   &goi_y=1 đánh dấu đáp án đúng · &luot=0|1|2 số lượt còn hôm nay (mặc định 2) · &dang=3 chưa đủ dạng đã học (khoá) · &don=set|thien_thach|cau_lua_lon|cau_bang_lon|cau_lua_nho|cau_bang_nho|dien_nho ép đòn khi thắng
 // Luật + việc DB: spec-thu-thach-dau-truong.md. Khi Số liệu có RPC (bắt đầu lượt / nộp trận / bỏ cuộc) thì thay hàm giả ở đây bằng lời gọi thật.
 import { useState } from 'react'
 import { DauTrangHS, HEAD, MAU, ManHS, NutHS, TheHS } from '../skin/KhungHS'
@@ -7,13 +7,13 @@ import { BossAnhHS } from '../boss/BossSan'
 import { DauTruongHS } from './DauTruongHS'
 import { NGUONG, SO_CAU_TRAN, SO_TRAN, type CauTT } from './kieu'
 import { sinhBoCauGia } from './mau'
+import type { Don } from './hieuUng'
 
 const TOI_THIEU_DANG = 5 // mặc định spec §2, đổi bằng 1 hằng ở DB
 const LUOT_MOI_NGAY = 2
 
 export default function XemThuThach() {
   const q = new URLSearchParams(location.search)
-  const gioi = q.get('gioi') === 'nam' ? 'nam' : 'nu'
   const soDang = Number(q.get('dang') ?? 12)
   const [luotCon, setLuotCon] = useState(Math.min(LUOT_MOI_NGAY, Math.max(0, Number(q.get('luot') ?? LUOT_MOI_NGAY))))
   const [bo, setBo] = useState<CauTT[][] | null>(null)
@@ -23,7 +23,7 @@ export default function XemThuThach() {
   const vao = () => { setBo(sinhBoCauGia(lan + 1)); setLan((n) => n + 1); setLuotCon((n) => Math.max(0, n - 1)) }
 
   if (bo) {
-    return <DauTruongHS key={lan} gioi={gioi} tran={bo} goiY={q.get('goi_y') === '1'} luotConSau={luotCon}
+    return <DauTruongHS key={lan} tran={bo} goiY={q.get('goi_y') === '1'} epDon={(q.get('don') as Don | null) ?? undefined} luotConSau={luotCon}
       diem={(kq) => kq.thang.filter(Boolean).length * 10 /* DEMO: server tính thật (10/20/30 — spec §3) */}
       onKetThuc={() => {}} onThuLai={vao} onThoat={() => setBo(null)} />
   }
