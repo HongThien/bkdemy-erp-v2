@@ -324,15 +324,34 @@ def doc(file_docx, unit, ra):
 
         # ── đọc hiểu: đoạn văn → (đề + phương án)* ──
         if che_do == 'doc_hieu':
+            def mo_bai_moi(t):
+                # Bài đọc THỨ HAI trở đi trong cùng bài tập: các dòng ngắn ngay trước đoạn dài (tiêu đề, câu mở bài,
+                # "Here are some ways to do that:") bị luật "dòng ngắn sau khi đã có câu hỏi = đề" giữ làm ĐỀ CHỜ — chưa có
+                # phương án mà đã gặp đoạn dài ⇒ chúng là ĐẦU bài đọc mới. Trước đây chot_mcq() vứt im lặng
+                # (U1-NL15 mất tiêu đề "A trip to Bat Trang", U9-NL13 mất 4 dòng mở bài — bên A báo không làm được C130, 02/10).
+                nonlocal pending_stem
+                dau = []
+                if pending_stem and not pending_pa and stt_trong_nl > 0 and \
+                        not any(re.match(r'^[\s|]*\d+\s*[.)]', tron(x)) for x in pending_stem):
+                    dau, pending_stem = [x for x in pending_stem if tron(x).strip()], []
+                chot_mcq()
+                tieu = None
+                if dau and len(tron(dau[0]).strip()) < 60 and not re.search(r'[.?!:]\s*$', tron(dau[0])) \
+                        and not re.match(r'^\s*[*\-•]', tron(dau[0])):
+                    tieu, dau = hien(dau[0]).strip(), dau[1:]
+                mo_ngu_lieu('doan_van', '\n\n'.join([hien(x) for x in dau] + [t]))
+                if tieu:
+                    ngu_lieu[-1]['tieu_de'] = tieu
+
             # đoạn văn nằm trong BẢNG (GV hay đóng khung bài đọc) — trước đây bị bỏ qua ⇒ bài đọc mất phần đầu (U5-NL10 02/10)
             if loai == 'tr':
                 t = '\n\n'.join(x for x, _ in chu if tron(x).strip())
                 if len(tron(t)) > 150:
-                    chot_mcq()
                     if nl_hien_tai and stt_trong_nl == 0:
+                        chot_mcq()
                         ngu_lieu[-1]['noi_dung'] = (ngu_lieu[-1]['noi_dung'] + '\n\n' + hien(t)).strip()
                     else:
-                        mo_ngu_lieu('doan_van', hien(t))
+                        mo_bai_moi(hien(t))
                 continue
             pa = tach_phuong_an(chu) if loai == 'p' else []
             # Chưa mở bài đọc nào ⇒ đoạn dài là BÀI ĐỌC, kể cả khi có "?" hay ":" (câu mở bài hay hỏi tu từ) —
@@ -346,11 +365,11 @@ def doc(file_docx, unit, ra):
                 if pending_stem and not pending_pa and nl_hien_tai and stt_trong_nl == 0:
                     ngu_lieu[-1]['noi_dung'] += '\n\n' + '\n\n'.join(hien(x) for x in pending_stem)
                     pending_stem = []
-                chot_mcq()
                 if nl_hien_tai and stt_trong_nl == 0:
+                    chot_mcq()
                     ngu_lieu[-1]['noi_dung'] += '\n\n' + hien(chu)
                 else:
-                    mo_ngu_lieu('doan_van', hien(chu))
+                    mo_bai_moi(hien(chu))
                 continue
             if loai != 'p' or not tron(chu).strip():
                 continue
@@ -364,9 +383,19 @@ def doc(file_docx, unit, ra):
             else:
                 if pending_pa:   # phương án lẻ không đủ D → câu trước lỗi, chốt
                     chot_mcq()
+                gach_dau_dong = lambda x: bool(re.match(r'^[\s|]*[●•▪◦*–\-]\s*', tron(x)))
+                if gach_dau_dong(chu) and nl_hien_tai and stt_trong_nl == 0:
+                    # Gạch đầu dòng TRONG bài đọc ("● Will I enjoy doing the job every day?") có "?" nhưng KHÔNG phải đề;
+                    # "đề chờ" ngay trước nó ("Make a decision: … ask yourself the following questions:") cũng là bài đọc.
+                    # Trước đây dòng dẫn + 4 gạch đầu dòng bị luật "đề + 4 phương án không nhãn" bắt ⇒ đẻ câu GIẢ
+                    # U12-C125 và bài đọc bị cắt đôi (bên A báo 02/10).
+                    for x in pending_stem + [chu]:
+                        ngu_lieu[-1]['noi_dung'] += '\n\n' + hien(x)
+                    pending_stem = []
+                    continue
                 la_cau_hoi = bool(re.search(r'\?|_{2,}|:\s*$|\.{3}\s*$', tron(chu)))
                 # phương án KHÔNG nhãn (Word tự đánh A–D): đề + đúng 4 dòng ngắn rồi tới câu hỏi mới
-                if la_cau_hoi and len(pending_stem) == 5:
+                if la_cau_hoi and len(pending_stem) == 5 and not any(gach_dau_dong(x) for x in pending_stem):
                     stt_trong_nl += 1
                     them(re.sub(r'^\s*\d+\s*[.)]\s*', '', hien(pending_stem[0])),
                          [('ABCD'[i], 'ABCD'[i] + '. ' + x) for i, x in enumerate(pending_stem[1:])], nl_hien_tai, stt_trong_nl,

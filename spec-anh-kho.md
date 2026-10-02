@@ -1,7 +1,10 @@
 # spec-anh-kho.md — KHO TIẾNG ANH: nhập câu, luật vào kho, màn duyệt cho GV Anh
 
-> **Trạng thái 02/10/2026:** bảng + bản đồ ĐÃ ở DB (mig `202610021156`). Trạm đọc tài liệu GV ĐÃ CÓ (`scripts/anh/doc_bai_tap_gv.py`).
-> Đang chạy thử trạm kiểm trên Unit 1. Màn Kho cho GV Anh CHƯA làm. Bản đồ: `spec-anh-ban-do-k9.md`. Bối cảnh: `nghien-cuu-mon-anh.md`.
+> **Trạng thái 02/10/2026 (tối):** bảng + bản đồ ở DB (mig `202610021156`). **Đã nhập đủ 12 unit** bài tập bổ trợ GV (Form 2025) qua
+> trạm đọc → bên A → bên B → cổng — số liệu §2.3. Màn Kho + màn Duyệt kho cho GV Anh ĐÃ LÀM (chưa thử bằng phiên đăng nhập thật).
+> Bản đồ: `spec-anh-ban-do-k9.md`. Bối cảnh: `nghien-cuu-mon-anh.md`.
+> **Công cụ:** `scripts/anh/doc_bai_tap_gv.py` (trạm đọc) · `cong_ghi_anh.mjs` (cổng nhập lô) · `kiem_lai_anh.mjs` (kiểm lại câu đã có
+> khi trạm đọc sửa nội dung) · `luat_chac_chan.mjs` (luật §2.1 — MỘT nguồn cho cả hai).
 > ⚠ Môn Anh dựng theo cách giới dạy tiếng Anh chia, KHÔNG bê khuôn Toán (CEO 30/09). Chỉ dùng chung hạ tầng hệ thống (registry môn,
 > nhãn `mon`, hợp đồng cột kho, cổng ghi "người làm ≠ người kiểm").
 
@@ -41,6 +44,12 @@ file Word bản GV ─► ① TRẠM ĐỌC (máy, code)        ─► câu + ng
   Điểm kiến thức chưa thống nhất ⇒ câu nằm ở **điểm chờ `E09000000`** + `dang_ai_de_xuat` = đề xuất; trigger chặn duyệt tới khi GV chọn điểm thật.
 - Ngoài phạm vi (cả A và B cùng thấy) ⇒ **không nhập** (CEO/GV: phần này loại khỏi kho luyện thi vào 10), ghi vào báo cáo lô.
   Chỉ một bên thấy ⇒ nhập vào chờ duyệt để GV quyết.
+  **Ngoại lệ** — điểm "ngoài phạm vi" lại chính là điểm GV dạy trong unit (Unit 11: `suggest/recommend + S + V nguyên mẫu`, bỏ "should")
+  ⇒ cổng chạy với `--ngoai-pham-vi-cho-duyet`: vào CHỜ DUYỆT kèm lý do, GV quyết. **Câu hỏi treo cho GV** (§6).
+- **Bên A phải kiểm ĐÚNG nội dung đang ghi** (đề + phương án + đoạn văn, so vân tay). Trạm đọc sửa sau khi kiểm ⇒ câu về chờ duyệt;
+  câu đã ở kho thì chạy lượt A+B mới trên riêng các câu đó rồi `kiem_lai_anh.mjs` (lên kho / giữ / HẠ về chờ duyệt).
+  Lượt kiểm lại chỉ đụng dòng máy còn quản (chắc chắn do AI hoặc chờ duyệt do máy ghi) — người đã duyệt/sửa thì để nguyên.
+- Câu trùng y hệt (dạng đề + đề + phương án + đoạn văn) trong lô hoặc với kho ⇒ không nhập.
 - Hậu kiểm: câu "chắc chắn" vẫn có thể bị báo sai về sau ⇒ rút khỏi kho (cùng luật hậu kiểm `spec-luong-kho.md` §5.7).
 
 ### 2.2 Số đo trạm đọc (12 unit "BTBT Form 2025", 02/10)
