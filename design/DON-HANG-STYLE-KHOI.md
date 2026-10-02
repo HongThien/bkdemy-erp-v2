@@ -24,8 +24,8 @@
 
 | Đơn | Đã về | THIẾU | Ghi chú |
 |---|---|---|---|
-| **K1** | **30/31**: 4 ảnh toàn cảnh · 6 nền (anh đào · hồ rừng · tuyết × ngang/dọc) · 2 nhân vật · 15 vật phẩm ô · lịch · góc dây leo + đèn lồng · gạch khối cỏ | **#29 `khoi_b_kiem_tra_lai`** (banner bài kiểm tra lại) | Cuốc + sách-bút lông vẽ 2 lần (00:31 và 17:37) ⇒ dùng bản 17:37 (cùng lượt với cả bộ, cùng cỡ điểm ảnh), bản đầu cất `khoi/_thua/`. Banner kiểm tra lại đang TẮT trong app (`RETEST_BAT = false`) ⇒ thiếu #29 KHÔNG chặn dựng style, vẽ bù lúc nào cũng được |
-| **K2** | **40/41**: ảnh toàn cảnh bản đồ · 8 vùng đất · 8 đảo · nền thế giới · 15 quái · 4 boss · cờ · rương · cổng | **#31 `quai_bo_giap`** | ChatGPT nhảy từ #30 sói băng sang ma lửa (#32) — bỏ sót bọ giáp |
+| **K1** | **30/31** — ⏳ NỢ #29, Thùy vẽ bù 04/10: 4 ảnh toàn cảnh · 6 nền (anh đào · hồ rừng · tuyết × ngang/dọc) · 2 nhân vật · 15 vật phẩm ô · lịch · góc dây leo + đèn lồng · gạch khối cỏ | **#29 `khoi_b_kiem_tra_lai`** (banner bài kiểm tra lại) | Cuốc + sách-bút lông vẽ 2 lần (00:31 và 17:37) ⇒ dùng bản 17:37 (cùng lượt với cả bộ, cùng cỡ điểm ảnh), bản đầu cất `khoi/_thua/`. Banner kiểm tra lại đang TẮT trong app (`RETEST_BAT = false`) ⇒ thiếu #29 KHÔNG chặn dựng style, vẽ bù lúc nào cũng được |
+| **K2** | ✅ **41/41**: ảnh toàn cảnh bản đồ · 8 vùng đất · 8 đảo · nền thế giới · 16 quái · 4 boss · cờ · rương · cổng | — | Bọ giáp (#31) bổ sung 03/10 01:21: giáp màu ĐỒNG thay vì xanh lục như đơn — nhận, vì hình bóng khác hẳn các con khác |
 
 Chất lượng: đạt — nền đặc đúng khổ (ngang 1672×941, dọc 941×1672), vật phẩm / nhân vật / quái / đảo nền trong suốt thật, sprite pixel cùng cỡ,
 không thấy hình chép của Minecraft (nhân vật không giống Steve/Alex, không mob của game). Ảnh toàn cảnh #01 bám sát bố cục màn chính hiện tại.
