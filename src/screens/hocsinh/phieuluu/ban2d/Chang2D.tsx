@@ -9,6 +9,7 @@ import { boCucDuong, duongCong } from './boCuc'
 import { anhNenChang, anhVat } from './hinh2d'
 import { CHU_VIEN, Co, CssBan2D, MuiTen, Sao5, Suong, tenQuai2D, useChuyenDong, useKhung2D, viTri } from './San2D'
 import { BeDaTam, NenChangTam, QuaiTam } from './HinhTam'
+import { DuongThree } from './LopDuong'
 
 const sao = (n: number) => '★'.repeat(Math.min(5, n)) + '☆'.repeat(Math.max(0, 5 - n))
 const moTa = (c: ChangV) => (c.trang_thai === 'dat' ? 'đã hạ' : c.trang_thai === 'yeu' ? (c.hp != null ? `còn ${c.hp} đòn` : 'còn quái') : 'chưa gặp')
@@ -35,11 +36,14 @@ export function Chang2D({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: Vun
         {anhNen ? <img src={anhNen} alt="" className="absolute inset-0 h-full w-full object-cover" draggable={false} /> : <NenChangTam b={b} biome={luc.biome} />}
         <div ref={ref} className="absolute inset-0">
           {khung.w > 0 && (
+            // đường three.js (duongThree.ts); SVG bên trong chỉ hiện khi đang tải / máy không có WebGL
+            <DuongThree b={b} diem={diem} toi={toi < 0 ? diem.length - 1 : toi} w={khung.w} h={khung.h} nuaRong={coBe * 0.2}>
             <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox={`0 0 ${khung.w} ${khung.h}`} aria-hidden>
               <path d={duongCong(diem, khung.w, khung.h)} fill="none" stroke={b.duongVien} strokeWidth={coBe * 0.42} strokeLinecap="round" opacity={0.5} />
               <path d={duongCong(diem, khung.w, khung.h)} fill="none" stroke={b.duong} strokeWidth={coBe * 0.32} strokeLinecap="round" />
               {toi > 0 && <path d={duongCong(diem.slice(0, toi + 1), khung.w, khung.h)} fill="none" stroke={b.vang} strokeWidth={4} strokeLinecap="round" strokeDasharray="2 10" />}
             </svg>
+            </DuongThree>
           )}
           {khung.w > 0 && vung.chang.map((x, i) => {
             const p = viTri(diem[i], khung), cuoi = x.quai[x.quai.length - 1], chon = sel === x.ma

@@ -34600,3 +34600,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   rừng nới (40,26) vì cỏ nhiều vân + bỏ mảng sát mép + loại tay 5 vệt tối dưới tán cây. Mỗi nền 6 bãi, soi bằng ảnh đánh dấu (núi lửa trúng hoàn toàn 6 bãi đá phẳng).
   Xếp vòng đường đi ⇒ hinh2d.CHO_MOC_VUNG. Công trình đặt CHÂN vào tâm bãi (ảnh cắt sát + object-bottom + translate(-50%,-90%)); cỡ 11% khung.
 - Chặng: bệ đá thật (#27) thay BeDaTam. Kiểm 1180×820 lục địa C (rừng, 4 mốc 4 loại) + chặng C2, 0 lỗi. Vùng >6 chuyên đề vẫn bố cục chung (chờ Đơn 10).
+
+### 02/10 tối — [Giao diện] Con đường bản đồ vẽ bằng three.js (Thùy: "code threejs con đường đẹp hơn, tham khảo mẫu trên mạng")
+- Tham khảo: bản đồ màn chơi kiểu Candy Crush (đường uốn nối điểm dừng là trục nhìn chính) · Codrops "High-speed Light Trails in Three.js" (dải lưới phẳng theo đường cong + shader).
+- ban2d/duongThree.ts: 1 ribbon bám CatmullRom (centripetal) qua các mốc, camera trực giao trùng khung px; shader: đá cuội (voronoi) khe sẫm + hạt sạn + mép lượn sóng vẽ tay +
+  viền đá; ngoài mép: bóng đổ (đậm phía dưới màn hình, aNy) / quầng vàng nhấp nháy cho đoạn đã đi; đoạn ĐÃ ĐI vàng + luồng sáng chạy tới mốc kế + lấp lánh; CHƯA ĐI xám tối.
+  Màu: b.cat (mặt), b.duongVien (khe/viền), b.vang. ban2d/LopDuong.tsx bọc React: import động, đang tải / không WebGL ⇒ SVG cũ; mức Thấp/giảm chuyển động ⇒ vẽ 1 lần đứng yên.
+  Dùng ở LucDia2D (nửa rộng 1,6% khung) + Chang2D (0,2 bệ). Chunk riêng 5,5KB (three dùng chung màn đấu).
+- Sai/sửa: bản đầu đổi dấu mép theo hướng ⇒ vỡ dải chỗ quay đầu (sửa: mép trái luôn +, thêm aNy); bản đầu quá phẳng (cuội nhỏ, vàng 22%) ⇒ cuội to theo bề ngang, vàng 38% + quầng.
+  Windows không phân biệt hoa thường: DuongThree.tsx đụng duongThree.ts ⇒ đổi tên LopDuong.tsx. Kiểm 1180×820 lục địa C + chặng C2, build:hs + check:style-hs ✔.

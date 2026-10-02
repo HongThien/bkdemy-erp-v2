@@ -9,6 +9,7 @@ import { boCucDuong, duongCong } from './boCuc'
 import { CHO_MOC_VUNG, EMOJI_MOC, anhMoc, anhNenVung, anhVat } from './hinh2d'
 import { CHU_VIEN, Co, CssBan2D, MuiTen, NenBien, Sao5, Suong, useKhung2D, viTri, xoay } from './San2D'
 import { QuaiTam, VungDatTam } from './HinhTam'
+import { DuongThree } from './LopDuong'
 
 export function LucDia2D({ luc, b, onChon, onVe }: { luc: LucDiaV; b: BangMau3D; onChon: (ma: string) => void; onVe: () => void; gioi?: 'nam' | 'nu' }) {
   const anhNen = anhNenVung(luc.biome)
@@ -41,11 +42,14 @@ export function LucDia2D({ luc, b, onChon, onVe }: { luc: LucDiaV; b: BangMau3D;
               <div className="relative" style={{ width: khung.w, height: khung.h }}>
                 {anhNen ? <img src={anhNen} alt="" className="absolute inset-0 h-full w-full select-none" draggable={false} /> : <VungDatTam b={b} biome={luc.biome} khoa={luc.ma} />}
                 {khung.w > 0 && (
+                  // đường three.js (duongThree.ts); SVG bên trong chỉ hiện khi đang tải / máy không có WebGL
+                  <DuongThree b={b} diem={dd} toi={vungs.every((x) => x.t.trangThai === 'dat') ? dd.length - 1 : toi} w={khung.w} h={khung.h} nuaRong={Math.max(12, khung.w * 0.016)}>
                   <svg className="pointer-events-none absolute inset-0 h-full w-full overflow-visible" viewBox={`0 0 ${khung.w} ${khung.h}`} aria-hidden>
                     <path d={duongCong(dd, khung.w, khung.h)} fill="none" stroke={b.duongVien} strokeWidth={Math.max(12, khung.w * 0.012)} strokeLinecap="round" opacity={0.85} />
                     <path className="ban2d-duong-toi" d={duongCong(dd, khung.w, khung.h)} fill="none" stroke={b.duong} strokeWidth={Math.max(6, khung.w * 0.006)} strokeLinecap="round" strokeDasharray="12 12" />
                     {toi > 0 && <path d={duongCong(dd.slice(0, toi + 1), khung.w, khung.h)} fill="none" stroke={b.vang} strokeWidth={Math.max(7, khung.w * 0.007)} strokeLinecap="round" style={{ filter: `drop-shadow(0 0 6px ${b.vang})` }} />}
                   </svg>
+                  </DuongThree>
                 )}
                 {khung.w > 0 && vungs.map(({ v, t }, i) => {
                   const p = viTri(diem[i], khung), anh = anhMoc(i), dangO = i === toi && t.trangThai !== 'dat'
