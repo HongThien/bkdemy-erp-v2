@@ -7,10 +7,10 @@ import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import { thongKeVung, type LucDiaV } from '../kieu'
 import { boCucDuong, duongCong } from './boCuc'
 import { CHO_MOC_VUNG, EMOJI_MOC, anhMoc, anhNenVung, anhVat } from './hinh2d'
-import { CHU_VIEN, Co, CssBan2D, Hero, NenBien, Sao5, Suong, useKhung2D, viTri, xoay } from './San2D'
+import { CHU_VIEN, Co, CssBan2D, MuiTen, NenBien, Sao5, Suong, useKhung2D, viTri, xoay } from './San2D'
 import { QuaiTam, VungDatTam } from './HinhTam'
 
-export function LucDia2D({ luc, b, onChon, onVe, gioi = 'nam' }: { luc: LucDiaV; b: BangMau3D; onChon: (ma: string) => void; onVe: () => void; gioi?: 'nam' | 'nu' }) {
+export function LucDia2D({ luc, b, onChon, onVe }: { luc: LucDiaV; b: BangMau3D; onChon: (ma: string) => void; onVe: () => void; gioi?: 'nam' | 'nu' }) {
   const anhNen = anhNenVung(luc.biome)
   // có tranh nền ⇒ khung luôn 16:9 đúng tỉ lệ tranh (không xoay) để toạ độ chỗ đặt mốc trùng tranh
   const { ref, khung } = useKhung2D(false, !!anhNen)
@@ -61,7 +61,7 @@ export function LucDia2D({ luc, b, onChon, onVe, gioi = 'nam' }: { luc: LucDiaV;
                       {t.trangThai === 'fog' && <Suong mau={b.bot} anh={anhVat('may_suong')} style={{ left: '-10%', top: '5%', width: '120%', height: '80%' }} />}
                       {t.trangThai === 'dat' && <span className="pointer-events-none absolute" style={{ right: -coMoc * 0.12, top: -coMoc * 0.3 }}><Co mau={m.diem} anh={anhVat('co_chinh_phuc')} cao={coMoc * 0.55} /></span>}
                       {t.trangThai === 'yeu' && t.loai && <span className="pointer-events-none absolute" style={{ right: -coMoc * 0.2, bottom: coMoc * 0.05, width: coMoc * 0.42, height: coMoc * 0.42 }}><QuaiTam b={b} loai={t.loai} co={coMoc * 0.42} /></span>}
-                      {dangO && <span className="pointer-events-none absolute" style={{ left: -coMoc * 0.55, bottom: 0 }}><Hero gioi={gioi} cao={coMoc * 0.8} mau={b.troi} /></span>}
+                      {dangO && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ bottom: '100%', marginBottom: 2 }}><MuiTen co={Math.max(30, coMoc * 0.5)} /></span>}
                       <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center px-2 py-0.5 text-center"
                         style={{ ...CHU_VIEN, top: '100%', marginTop: 2, width: 'max-content', maxWidth: lon ? 260 : 160, transform: hov === v.ma ? 'scale(1.06)' : undefined }}>
                         <span className={`block max-w-full font-bold leading-[1.15] ${lon ? 'text-[15px]' : 'text-[12.5px]'}`} style={{ ...HEAD, color: 'var(--sk-ink)' }}>{v.ten}</span>

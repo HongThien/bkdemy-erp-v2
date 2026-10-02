@@ -7,13 +7,13 @@ import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import type { ChangV, LucDiaV, VungV } from '../kieu'
 import { boCucDuong, duongCong } from './boCuc'
 import { anhNenChang, anhVat } from './hinh2d'
-import { CHU_VIEN, Co, CssBan2D, Hero, Sao5, Suong, tenQuai2D, useChuyenDong, useKhung2D, viTri } from './San2D'
+import { CHU_VIEN, Co, CssBan2D, MuiTen, Sao5, Suong, tenQuai2D, useChuyenDong, useKhung2D, viTri } from './San2D'
 import { BeDaTam, NenChangTam, QuaiTam } from './HinhTam'
 
 const sao = (n: number) => '★'.repeat(Math.min(5, n)) + '☆'.repeat(Math.max(0, 5 - n))
 const moTa = (c: ChangV) => (c.trang_thai === 'dat' ? 'đã hạ' : c.trang_thai === 'yeu' ? (c.hp != null ? `còn ${c.hp} đòn` : 'còn quái') : 'chưa gặp')
 
-export function Chang2D({ luc, vung, b, onVe, onVao, gioi = 'nam' }: { luc: LucDiaV; vung: VungV; b: BangMau3D; onVe: () => void; onVao: (c: ChangV) => void; gioi?: 'nam' | 'nu' }) {
+export function Chang2D({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: VungV; b: BangMau3D; onVe: () => void; onVao: (c: ChangV) => void; gioi?: 'nam' | 'nu' }) {
   const dai = useMedia('(min-width:1024px)')
   const dong = useChuyenDong()
   const { ref, khung } = useKhung2D(true)
@@ -60,10 +60,7 @@ export function Chang2D({ luc, vung, b, onVe, onVao, gioi = 'nam' }: { luc: LucD
                 {x.trang_thai === 'dat' && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ bottom: coBe * 0.22 }}><Co mau={m.diem} anh={anhVat('co_chinh_phuc')} cao={coBe * 0.6} /></span>}
                 {x.trang_thai === 'chua_do' && <Suong mau={b.bot} anh={anhVat('may_suong')} style={{ left: '-15%', top: '10%', width: '130%', height: '70%' }} />}
                 {x.quai.length > 1 && x.trang_thai !== 'dat' && <span className="pointer-events-none absolute right-0 top-0 rounded-full px-1.5 text-[11px] font-extrabold" style={{ ...HEAD, background: 'var(--sk-surface)', color: 'var(--sk-ink)', border: 'var(--sk-card-border)' }}>×{x.quai.length}</span>}
-                {i === toi && <span className="pointer-events-none absolute flex flex-col items-center" style={{ right: '100%', bottom: coBe * 0.1 }}>
-                  <span className="mb-0.5 whitespace-nowrap rounded-full px-2 text-[11px] font-bold" style={{ background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)' }}>Em ở đây</span>
-                  <Hero gioi={gioi} cao={coBe * 0.85} mau={b.troi} />
-                </span>}
+                {i === toi && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ bottom: '100%', marginBottom: 2 }}><MuiTen co={Math.max(28, coBe * 0.4)} /></span>}
                 <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center text-center"
                   style={dai
                     ? { ...CHU_VIEN, top: '100%', marginTop: 2, width: 'max-content', maxWidth: 240, transform: chon || hov === x.ma ? 'scale(1.06)' : undefined }

@@ -172,3 +172,17 @@ const V = 'var(--sk-bg)'
 export const CHU_VIEN = {
   textShadow: [[-2, -2], [2, -2], [-2, 2], [2, 2], [0, -2.5], [0, 2.5], [-2.5, 0], [2.5, 0]].map(([x, y]) => `${x}px ${y}px 0 ${V}`).join(', ') + `, 0 3px 10px ${V}, 0 0 18px ${V}`,
 } as const
+
+/** MŨI TÊN "EM ĐANG Ở ĐÂY" (Thùy 02/10: bỏ chữ "Em đang ở đây" + ảnh nhân vật, thay "1 mũi tên vàng chỉ xuống, chuyển động lên xuống — các game đều làm thế").
+ *  Đặt ngay TRÊN chỗ em đang học, mũi chỉ xuống; nhấp nhô liên tục (cả mức đồ hoạ Thấp — đây là chỉ dẫn, không phải trang trí; chỉ đứng yên khi máy bật giảm chuyển động). */
+export function MuiTen({ co }: { co: number }) {
+  return (
+    <span className="ban2d-mui-ten pointer-events-none inline-block" style={{ width: co, height: co * 1.1 }} role="img" aria-label="Em đang ở đây">
+      <svg viewBox="0 0 40 44" className="h-full w-full overflow-visible" style={{ filter: 'drop-shadow(0 0 6px var(--sk-acc)) drop-shadow(0 3px 4px var(--sk-bg))' }}>
+        <path d="M13 2 H27 V20 H37 L20 41 L3 20 H13 Z" fill="var(--sk-acc)" stroke="var(--sk-bg)" strokeWidth="3" strokeLinejoin="round" />
+        <path d="M16 5 H21 V22 H14 Z" fill="var(--sk-ink)" opacity="0.45" />
+      </svg>
+      <style>{'@keyframes ban2d-nhap{0%,100%{transform:translateY(0)}50%{transform:translateY(-28%)}} @media (prefers-reduced-motion: no-preference){.ban2d-mui-ten{animation:ban2d-nhap .9s ease-in-out infinite}}'}</style>
+    </span>
+  )
+}

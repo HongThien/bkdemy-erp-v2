@@ -34554,3 +34554,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Kiểu nhãn bản đồ game: bỏ hộp nền, chữ màu chữ style + viền dày 8 hướng màu nền style + bóng mềm (San2D.CHU_VIEN, text-shadow kế thừa ⇒ đặt lên khối nhãn).
   3 tầng; chọn/rê chuột ⇒ phóng 1.06. Ngoại lệ: viên "Em đang ở đây" giữ nền (tắt viền kế thừa — dính viền thì chữ nhoè); chặng trên màn hẹp vẫn là ô số tròn.
 - Bẫy Tailwind v4: -translate-x-1/2 dùng thuộc tính translate riêng ⇒ style transform chỉ để scale (viết translateX(-50%) là lệch đôi).
+
+### 02/10 — [Giao diện] "Em đang ở đây" = mũi tên vàng nhấp nhô (Thùy: bỏ chữ + bỏ ảnh nhân vật AI, dùng mũi tên vàng chỉ xuống, chuyển động lên xuống như game)
+- San2D.MuiTen: SVG mũi tên màu nhấn style, viền nền style, quầng sáng; nhấp nhô 0,9s (chạy cả mức Thấp — là chỉ dẫn; chỉ đứng yên khi máy bật giảm chuyển động).
+- 3 tầng: đặt ngay trên chỗ đang học (vùng/mốc/bệ). Bỏ viên chữ "Em đang ở đây"/"Em ở đây" và Hero (ảnh nv_*) trên bản đồ; prop gioi giữ trong kiểu cho nơi gọi, không dùng.

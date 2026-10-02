@@ -10,7 +10,7 @@ import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import { thongKe, type BanDoV, type LucDiaV } from '../kieu'
 import { boCucTheGioi, heSoCo } from './boCuc'
 import { TOAN_CANH_THE_GIOI, anhLucDia, anhNenTheGioi, anhVat } from './hinh2d'
-import { CHU_VIEN, Co, CssBan2D, Hero, NenBien, Sao5, Suong, useKhung2D, viTri } from './San2D'
+import { CHU_VIEN, Co, CssBan2D, MuiTen, NenBien, Sao5, Suong, useKhung2D, viTri } from './San2D'
 import { LucDiaTam, QuaiTam } from './HinhTam'
 
 type Props = { banDo: BanDoV; b: BangMau3D; onChon: (ma: string) => void; hienTai?: string | null; thanh?: ReactNode; gioi?: 'nam' | 'nu' }
@@ -28,10 +28,9 @@ function usePhong(onChon: (ma: string) => void) {
   return { chon, style }
 }
 
-function NhanLuc({ l, t, dangO, dai }: { l: LucDiaV; t: ReturnType<typeof thongKe>; dangO: boolean; dai: boolean }) {
+function NhanLuc({ l, t, dai }: { l: LucDiaV; t: ReturnType<typeof thongKe>; dangO: boolean; dai: boolean }) {
   return (
     <>
-      {dangO && <span className="rounded-full px-2 text-[10.5px] font-bold" style={{ background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)', textShadow: 'none', boxShadow: '0 2px 8px var(--sk-bg)' }}>Em đang ở đây</span>}
       <span className="block max-w-full font-bold leading-[1.15]" style={{ ...HEAD, color: 'var(--sk-ink)', fontSize: dai ? 15.5 : 12 }}>{l.ten}</span>
       <Sao5 ti={t.tong ? t.dat / t.tong : 0} co={dai ? 22 : 15} />
     </>
@@ -39,7 +38,7 @@ function NhanLuc({ l, t, dangO, dai }: { l: LucDiaV; t: ReturnType<typeof thongK
 }
 
 // ── TOÀN CẢNH: 1 bức tranh liền ───────────────────────────────────────────────
-function ToanCanh({ banDo, b, onChon, hienTai, thanh, gioi = 'nam' }: Props) {
+function ToanCanh({ banDo, b, onChon, hienTai, thanh }: Props) {
   const tc = TOAN_CANH_THE_GIOI!
   const { ref, khung } = useKhung2D(false, true)
   const dai = useMedia('(min-width:768px)')
@@ -74,7 +73,7 @@ function ToanCanh({ banDo, b, onChon, hienTai, thanh, gioi = 'nam' }: Props) {
                   className="absolute inset-0 rounded-[50%] transition-shadow hover:shadow-[0_0_0_3px_var(--sk-acc)] focus-visible:shadow-[0_0_0_3px_var(--sk-acc)]" />
                 {t.trangThai === 'dat' && <span className="pointer-events-none absolute" style={{ left: '58%', top: '8%' }}><Co mau={b.biome[l.biome]?.diem ?? b.vang} anh={anhVat('co_chinh_phuc')} cao={d * 0.22} /></span>}
                 {t.trangThai === 'yeu' && t.loai && !dangO && <span className="pointer-events-none absolute" style={{ left: '62%', top: '12%', width: d * 0.16, height: d * 0.16 }}><QuaiTam b={b} loai={t.loai} co={d * 0.16} /></span>}
-                {dangO && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ top: '-6%' }}><Hero gioi={gioi} cao={d * 0.32} mau={b.troi} /></span>}
+                {dangO && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ top: '4%' }}><MuiTen co={Math.max(30, d * 0.16)} /></span>}
                 <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center gap-0.5 px-2 py-1 text-center"
                   style={{ ...CHU_VIEN, top: '62%', maxWidth: dai ? 260 : 150, width: 'max-content' }}>
                   <NhanLuc l={l} t={t} dangO={dangO} dai={dai} />
@@ -90,7 +89,7 @@ function ToanCanh({ banDo, b, onChon, hienTai, thanh, gioi = 'nam' }: Props) {
 }
 
 // ── GHÉP MẢNH: nền biển + lục địa rời ─────────────────────────────────────────
-function GhepManh({ banDo, b, onChon, hienTai, thanh, gioi = 'nam' }: Props) {
+function GhepManh({ banDo, b, onChon, hienTai, thanh }: Props) {
   const { ref, khung } = useKhung2D()
   const dai = useMedia('(min-width:768px)')
   const { chon, style } = usePhong(onChon)
@@ -119,7 +118,7 @@ function GhepManh({ banDo, b, onChon, hienTai, thanh, gioi = 'nam' }: Props) {
                   {t.trangThai === 'fog' && <Suong mau={b.bot} anh={anhVat('may_suong')} style={{ left: '8%', top: '12%', width: '84%', height: '70%', opacity: anh ? 0.32 : 1 }} />}
                   {t.trangThai === 'dat' && <span className="pointer-events-none absolute" style={{ right: '14%', top: '4%' }}><Co mau={b.biome[l.biome]?.diem ?? b.vang} anh={anhVat('co_chinh_phuc')} cao={size * 0.26} /></span>}
                   {t.trangThai === 'yeu' && t.loai && !dangO && <span className="pointer-events-none absolute" style={{ right: '10%', top: '10%', width: size * 0.2, height: size * 0.2 }}><QuaiTam b={b} loai={t.loai} co={size * 0.2} /></span>}
-                  {dangO && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ top: -size * 0.14 }}><Hero gioi={gioi} cao={size * 0.36} mau={b.troi} /></span>}
+                  {dangO && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ top: -size * 0.1 }}><MuiTen co={Math.max(30, size * 0.2)} /></span>}
                   <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center gap-0.5 px-2 py-1 text-center"
                     style={{ ...CHU_VIEN, top: '74%', maxWidth: dai ? 260 : 150, width: 'max-content' }}>
                     <NhanLuc l={l} t={t} dangO={dangO} dai={dai} />
