@@ -172,7 +172,7 @@ function Home({ onDi }: { onDi: (d: 'dau' | 'noi_tu' | 'goc' | 'giai' | 'thap') 
   const the = [
     { id: 'dau' as const, icon: '/bk-ui/hs/skin/rpg/o_tu_luyen.png', tieu: 'Đấu từ vựng', mo: 'Chọn chủ đề, đấu bot hoặc đấu online — ai đúng trước ăn từ!', nut: 'Chọn chủ đề', mau: 'xanh' },
     { id: 'giai' as const, icon: '/bk-ui/hs/skin/rpg/o_cup.png', tieu: 'Giải đấu 8 người', mo: 'Tứ kết → Bán kết → Chung kết, đấu trực tiếp chọn nhà vô địch.', nut: 'Vào giải', mau: 'vang' },
-    { id: 'thap' as const, icon: '/bk-ui/hs/skin/rpg/o_rank.png', tieu: 'Leo tháp', mo: 'Tháp hôm nay: Sinh tồn 5 phút hoặc Vô tận — cả trường đua bảng xếp hạng!', nut: 'Leo tháp', mau: 'do' },
+    { id: 'thap' as const, icon: '/bk-ui/hs/skin/rpg/phieuluu2d/moc_thap.webp', tieu: 'Leo tháp', mo: 'Tháp hôm nay: Sinh tồn 5 phút hoặc Vô tận — cả trường đua bảng xếp hạng!', nut: 'Leo tháp', mau: 'do' },
     { id: 'noi_tu' as const, icon: '/bk-ui/hs/skin/rpg/o_so_tay.png', tieu: 'Nối từ', mo: 'Nối từ tự do, nghe phát âm và học cách dùng từ trong ngữ cảnh!', nut: 'Chơi nối từ', mau: 'tim' },
     { id: 'goc' as const, icon: '/bk-ui/hs/skin/rpg/o_nhiem_vu.png', tieu: 'Góc luyện tập', mo: 'Ôn từ yếu, thẻ ghi nhớ, tiến độ học tập và góp từ mới.', nut: canOn ? `Ôn ${canOn} từ` : 'Vào luyện tập', mau: 'lam' },
   ]

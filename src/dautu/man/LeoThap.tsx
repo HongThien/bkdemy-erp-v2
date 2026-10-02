@@ -10,6 +10,8 @@ import { Avatar, DauMan, NHAN_VAT, Nut, nvChuan } from '../ui/Chung'
 import type { NguoiTran } from '../lib/trongTai'
 
 const PHIM = ['a', 's', 'z', 'x']
+/** Biểu tượng Leo tháp = ngọn tháp pháp sư của bộ bản đồ phiêu lưu (tranh ChatGPT, cùng tông tím–vàng của game). */
+export const ANH_THAP = '/bk-ui/hs/skin/rpg/phieuluu2d/moc_thap.webp'
 
 export function ManLeoThap({ toi, onLui }: { toi: NguoiTran; onLui: () => void }) {
   const [che, setChe] = useState<CheDoThap | null>(null)
@@ -17,7 +19,7 @@ export function ManLeoThap({ toi, onLui }: { toi: NguoiTran; onLui: () => void }
   if (che) return <VanThap key={che + lan} che={che} toi={toi} onLeoLai={() => setLan((x) => x + 1)} onLui={() => setChe(null)} />
   return (
     <div className="man">
-      <DauMan tieuDe="🗼 Leo tháp" phu={`Tháp hôm nay ${ngayVN().split('-').reverse().join('/')} — mọi người cùng một tháp, cùng câu hỏi. 0h tháp mới.`} onLui={onLui} />
+      <DauMan tieuDe={<span className="tieu-thap"><img src={ANH_THAP} alt="" />Leo tháp</span>} phu={`Tháp hôm nay ${ngayVN().split('-').reverse().join('/')} — mọi người cùng một tháp, cùng câu hỏi. 0h tháp mới.`} onLui={onLui} />
       <div className="luoi-2 thap-menu">
         {(Object.keys(THAP) as CheDoThap[]).map((c) => (
           <div key={c} className="giay o-phong the-thap">
@@ -203,7 +205,7 @@ function VanThap({ che, toi, onLeoLai, onLui }: { che: CheDoThap; toi: NguoiTran
           </div>
         </div>
       </div>
-      {pha === 'dem' && <div className="dem-nguoc"><div key={Math.ceil((3000 - (bay % 3000)) / 1000)}>🗼</div><p>{THAP[che].ten} — chuẩn bị leo!</p><p className="mo-trang">{THAP[che].luat.join(' · ')}</p></div>}
+      {pha === 'dem' && <div className="dem-nguoc"><img className="thap-dem" src={ANH_THAP} alt="" /><p>{THAP[che].ten} — chuẩn bị leo!</p><p className="mo-trang">{THAP[che].luat.join(' · ')}</p></div>}
       {pha === 'chet' && <div className="bang-tin thap-chet">💥 Rơi ở tầng {tang}! Đáp án: <b>{tu.en} = {tu.vi}</b></div>}
     </div>
   )

@@ -543,3 +543,8 @@ textarea.o-nhap { resize: vertical; }
   .thap-ten small { display: none; }
 }
 .luoi-home { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+
+/* biểu tượng Leo tháp (ảnh tháp thật, không emoji) */
+.tieu-thap { display: inline-flex; align-items: center; gap: 8px; }
+.tieu-thap img { height: 46px; filter: drop-shadow(0 3px 6px #0008); }
+.thap-dem { height: 150px; filter: drop-shadow(0 0 24px #ffc23d88); animation: phong .9s; }

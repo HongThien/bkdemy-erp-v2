@@ -35115,3 +35115,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Đã soi: Vô tận 15 tầng → hết giờ 9s → rơi → ghi #1; Sinh tồn sai 2 lần đồng hồ tụt đúng 3s/lần, dừng sớm ghi được. **Nợ:** công thức chuỗi ngày
   lặp ở `fn_dtv_ghi_tran` và `fn_dtv_thap_ghi` (gộp khi chuyển sang tài khoản HS); kết quả do máy gửi (chưa server chấm). **Bẫy:** sửa file màn đang mở ⇒
   Fast Refresh dựng lại màn tháp ⇒ một lượt mới tự chạy — test xong phải tải lại trang, đừng bấm dừng (sẽ ghi lượt rác).
+
+- (03/10, Đấu từ) Leo tháp: tên chỉ tiếng Việt "Leo tháp"; biểu tượng = ngọn tháp pháp sư `phieuluu2d/moc_thap.webp` (tranh ChatGPT bộ phiêu lưu) ở thẻ sảnh, tiêu đề, màn đếm ngược — bỏ emoji 🗼 (tháp Tokyo) và huy chương `o_rank.png` (Thùy: "biểu tượng phải là 1 cái tower mới chuẩn").
