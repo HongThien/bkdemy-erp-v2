@@ -392,4 +392,13 @@ const MT_CSS = `
    dính .pv-cau) nên không dính lỗi. .pv-wpair vẫn break-inside:avoid riêng (không mồ côi nửa cặp dòng kẻ). */
 .pv-mt .pv-cau{break-inside:auto}
 .pv-mt .pv-cau .pv-math:first-child{break-after:avoid}
+/* ⭐ 02/10 (Thùy: "điền 40 dòng mà hiện có hơn 10 dòng") — khối Hình trong MT quấn <div.pv-mt-hinh> → .hp-de →
+   .hp-khoi.hp-khoi-de → .hp-ke (chứa N <div.hp-wline>). Mặc định một số container (hp-khoi flow-root, hp-de)
+   KHÔNG đã cấu hình break-inside:auto rõ ràng, 1 vài trình duyệt / paged.js hiểu nhầm "khối to = giữ nguyên",
+   cắt dòng kẻ sau trang 1 thay vì chảy sang trang 2 → 40 dòng chỉ hiện ~1/3 = 10+. Ép TƯỜNG MINH chảy được. */
+.pv-mt .pv-mt-hinh,
+.pv-mt .pv-mt-hinh .hp-de,
+.pv-mt .pv-mt-hinh .hp-khoi-de,
+.pv-mt .pv-mt-hinh .hp-ke{break-inside:auto}
+.pv-mt .pv-mt-hinh .hp-wline{break-inside:avoid}
 `
