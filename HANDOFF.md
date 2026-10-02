@@ -60,19 +60,24 @@
       băng → núi lửa → quần đảo → đảo trời → đảo cối xay). Khối N chủ đề ⇒ đặt N mảnh đầu, biển vẫn liền; >10 ⇒ `GhepManh` (bố cục chung). `ganBiomeTheoTranh` gán biome theo mảnh ⇒ đi vào trong
       đúng cảnh vùng vừa bấm (chỉ phần vẽ). Rê chuột: mảnh nhích lên + viền vàng (nút dùng mask chính ảnh). Nhãn KHÔNG khung (chữ viền dày, 18px), tiến độ **5 sao** (mỗi sao 20% dạng đạt; chặng =
       độ nắm dạng, đạt = 5 sao), "em đang ở đây" = **mũi tên vàng nhấp nhô** (không chữ, không ảnh nhân vật). Ảnh gốc V2: `design/bk-ui-src/Adnventure2D/V2/` (tên exec-*, map trong DEVLOG 02/10).
-    - **LỤC ĐỊA + CHẶNG:** nền vùng/chặng thật cho rừng · băng · núi lửa · biển đảo (Đơn 7 #13–#20); 6 vùng còn lại (sa mạc, đầm lầy, thành cổ, đảo trời, anh đào, đảo cối xay) = nền tạm.
-      Mốc đặt theo khoảng đất đo tay `CHO_MOC_VUNG` — **Thùy chê lệch** ⇒ hướng thay: **Đơn 10** (nền VẼ SẴN đường + bệ, bố cục 4/6/8 bệ vùng · 4/6/8/10 bệ chặng, làm rừng trước) — CHỜ ChatGPT.
-      Chỉ có mốc thành (#21); mốc #22–26, bệ đá #27 chưa có. Bản đồ lục địa chiếm hết ngang iPad (cột "Các vùng" chỉ ≥1536px).
+    - **LỤC ĐỊA (Thùy: "chưa ổn" — SẼ LÀM LẠI theo kịch bản world map, ĐƠN 11; đừng chỉnh thêm code tầng này trước khi kit về):** hiện là nền vùng Đơn 7 (rừng · băng ·
+      núi lửa · biển đảo; 6 vùng khác = nền tạm) + 6 loại công trình mốc (`moc_{thanh,thap,trai,den,cong,cau}.webp`, mốc i = loại i%6) đặt CHÂN vào tâm bãi đất DÒ TỰ ĐỘNG
+      (`CHO_MOC_VUNG`, 6 bãi/nền; >6 chuyên đề ⇒ bố cục chung) + đường three.js. Thùy chê: độ nghiêng sai, đường xuyên địa hình, công trình không thật — do 3 nguồn hình riêng rẽ.
+    - **CHẶNG (Thùy: "ổn hơn"):** nền chặng Đơn 7 (4 biome) + bệ đá thật (#27) + quái tạm + **đường three.js** (`ban2d/duongThree.ts` + `LopDuong.tsx`): ribbon CatmullRom qua các bệ,
+      shader đá cuội/mép vẽ tay; dựng trên MẶT ĐẤT rồi chiếu theo góc nhìn chéo (`nghieng` 0,45 · `xaGan` 0,7 — xa nhỏ gần to) + thành đá phía gần; đoạn đã đi vàng + luồng sáng
+      chạy (đứng yên ở mức Thấp); không WebGL ⇒ đường SVG cũ. Chunk 5,5KB, dùng chung three với màn đấu.
     - **MÀN ĐẤU (để sau theo Thùy):** HUD gọn trên cùng, câu hỏi gần trọn màn, cảnh 3D chỉ bung khi tung chiêu; **combo 3 câu = 1 chiêu** (3/3 tuyệt kỹ … 0/3 xịt, sát thương = số đúng);
       thẻ câu hỏi "bảng phép" (`skin/KhungTran.tsx`, `Skin.tran`, font Baloo 2); lời giải tự cuộn tới. Hình cho màn đấu = **Đơn 8** (chưa gửi). Chiêu chốt 4 giây (rAF đứng khi tab ẩn).
     - **Tuỳ biến của em (đã có DB + UI):** công tắc **Hiệu ứng game** (`hs_giao_dien.hieu_ung_game`, mig `202610020037`; tắt ⇒ Tự luyện không vào bản đồ) trong tấm Giao diện · style **Tối giản**
       (`skin/styles/toiGian.ts`, đơn sắc, 16 icon SVG mặt nạ; LÀ style nhưng KHÔNG tính vào 2 style V1) · mức **đồ hoạ** Thấp/Vừa/Cao (`skin/the3d/chatLuong.ts`, áp cho màn đấu 3D).
     - **Cờ `phieuluu` (`phieuluu/coBat.ts`) MẶC ĐỊNH TẮT:** máy thử `?phieuluu=1`. Bật mọi HS: `MAC_DINH = true` rồi deploy. Bản đồ chỉ mở khi cờ bật + hiệu ứng game bật + style có bản đồ.
-    - **Đơn ChatGPT (design/DON-HANG-SKIN-HS.md):** Đơn 7 (gốc, đã nhận #01–#21) · 7-0 (4 hướng — bỏ, thế giới đã chốt) · 8 (màn đấu, chưa gửi) · 9 (3 kit theo giao thức — kit 1 thế giới
-      coi như xong bằng bộ V2; kit 2–3 thay bằng Đơn 10) · **10 (nền có đường + bệ, rừng trước — VIỆC KẾ TIẾP)**.
-    - **VIỆC TIẾP:** ① gửi Đơn 10 (rừng) → ráp, bỏ `CHO_MOC_VUNG` ② nền vùng/chặng 6 vùng còn lại + mốc #22–26 + bệ đá ③ màn đấu 2.5D theo Đơn 8 ④ kiểm trên iPad thật + luồng làm bài thật
-      (cần tài khoản HS thử — KHÔNG dùng HS thật) ⑤ bản dọc điện thoại của thế giới (tranh ngang chỉ còn dải nhỏ) ⑥ hộp thư Số liệu: `fn_ban_do_phieu_luu` trả đội hình/`so_cau_luot`/`hp`.
-    - **Nợ:** HANDOFF.md có 2 khối "① TRẠNG THÁI HIỆN TẠI" lồng nhau (dòng ~10 và ~58, do merge hỏng) — chờ Thùy cho sửa · lỗi tsc cũ `src/lib/pdfRender.ts` (không thuộc luồng này) ·
+    - **Đơn ChatGPT (design/DON-HANG-SKIN-HS.md):** Đơn 7 (gốc, đã nhận #01–#30: lục địa · nền vùng/chặng 4 biome · 6 mốc · bệ đá · mây · la bàn · cờ — ảnh ở
+      `design/bk-ui-src/Adnventure2D/chon_huong/`) · 7-0 (bỏ) · 8 (màn đấu, chưa gửi) · 9 (kit 1 thế giới = xong bằng bộ V2) · 10 (nền có đường + bệ — phần VÙNG thay bằng Đơn 11) ·
+      **11 (tầng lục địa: ảnh to + backdrop có đường không công trình + công trình vẽ lại + DESIGN.md vị trí chân; 4·6·8 mốc; RỪNG 6 mốc trước — VIỆC KẾ TIẾP, Thùy tự gửi)**.
+    - **VIỆC TIẾP:** ① kit Đơn 11 về ⇒ ráp theo DESIGN.md (ghép thử so reference), tắt đường three.js ở tầng lục địa, sổ hinh2d {biome, số mốc, nền, vị trí} + chọn bản nhỏ nhất ≥ N,
+      bỏ `CHO_MOC_VUNG` ② nền chặng 6 vùng còn lại ③ màn đấu 2.5D theo Đơn 8 ④ iPad thật + luồng làm bài thật (tài khoản HS THỬ) ⑤ bản dọc của thế giới ⑥ hộp thư Số liệu
+      (`fn_ban_do_phieu_luu` trả đội hình/`so_cau_luot`/`hp`).
+    - **Nợ:** lỗi tsc cũ `src/lib/pdfRender.ts` (không thuộc luồng này) ·
       DB còn 7 em `skin='toi_gian'` (giờ khớp style Tối giản).
   - Tutorial demo: `hs.html?xem=tutorial` (`src/screens/hocsinh/tutorial/`, lời thoại ở `noiDungTutorial.ts`).
   - ⚠ `.env` máy công ty: `DATABASE_URL` = `claude_build` (GHI được) dù chú thích ghi `claude_ro`.
@@ -2043,6 +2048,11 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
   - **Nén ảnh về cỡ hiển thị trước khi dùng:** ảnh gốc 1536×1024 giải nén ≈6MB/ảnh (10 ảnh ≈60MB ⇒ Safari iPad cũ giật/tự tải lại); WebP cạnh dài 640 ≈1MB giải nén. Công cụ: `@napi-rs/canvas` có sẵn trong node_modules.
   - **Hoạt ảnh chạy theo requestAnimationFrame dừng hẳn khi tab/khung ẩn** ⇒ thứ gì CHẶN nút (vd chiêu ở màn đấu) phải có chốt thời gian (`Promise.race` 4 giây).
   - **Tailwind v4: `-translate-x-1/2` dùng thuộc tính `translate` riêng** ⇒ thêm `style.transform` chỉ để scale; viết lại translateX(-50%) là lệch đôi.
+  - **Cảnh bản đồ phải do HOẠ SĨ vẽ liền 1 tranh rồi tách thành phần** (ảnh to → thành phần → bố cục). Nền trơn + đường code + công trình dán rời = 3 nguồn khác góc nhìn/ánh sáng
+    ⇒ "không thật" dù toạ độ đúng (Thùy chê tầng lục địa 02/10). Code chỉ vẽ thứ ĐỘNG (nhãn, sao, mũi tên, cờ, sương, đoạn đã đi).
+  - Dò vị trí trên tranh: vùng màu phẳng liên thông (ô 8px, chênh màu + nhiễu thấp) chính xác hơn đo mắt — nhưng cỏ/lá nhiều vân phải nới ngưỡng + loại tay vệt bóng; luôn soi ảnh đánh dấu.
+  - Đường vẽ bằng code trên tranh nhìn chéo phải dựng trên MẶT ĐẤT rồi chiếu (y × độ nghiêng, xa nhỏ gần to, thành phía gần) — dải đều bề ngang trông như nhìn thẳng từ trên trời.
+  - Windows không phân biệt hoa thường tên file: `DuongThree.tsx` đụng `duongThree.ts` (tsc TS1261, Vite lỗi export) ⇒ đặt tên khác hẳn.
   - Nhãn trên tranh: chữ KHÔNG khung + viền dày màu nền (`San2D.CHU_VIEN`) đọc rõ mọi nền; sao tiến độ chưa đạt phải RỖNG (tô nhạt nhìn như đầy).
 
 ### Bài học 28/09–01/10 — luồng kho + đề thi (nhập, gán vào buổi, đọc PDF)

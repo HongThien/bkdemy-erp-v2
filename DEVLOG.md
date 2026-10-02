@@ -34620,3 +34620,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Bài học: nền trơn (Đơn 7) + đường code (three.js) + công trình rời = 3 nguồn hình khác góc nhìn/ánh sáng ⇒ không liền; đúng là để HOẠ SĨ vẽ cả đường + công trình trong 1 tranh, rồi tách thành phần.
 - Đơn 11 (design/DON-HANG-SKIN-HS.md): mỗi vùng khí hậu 3 bản 4·6·8 mốc; kit = toàn cảnh + backdrop CÓ đường KHÔNG công trình + 6 công trình vẽ lại + DESIGN.md vị trí chân. Rừng 6 mốc trước.
   Thay phần nền vùng của Đơn 7/10. Code tầng lục địa GIỮ NGUYÊN tới khi kit về (không chỉnh thêm). Tầng chặng giữ đường three.js.
+
+### 02/10 cuối ngày (2) — [Giao diện] HANDOFF cập nhật: tầng lục địa chờ Đơn 11 · chặng dùng đường three.js · 4 bài học mới (tranh liền rồi tách · dò bãi đất · đường chiếu mặt đất · hoa thường tên file)
