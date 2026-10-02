@@ -34506,3 +34506,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Khối NHIỀU chủ đề hơn số ô ⇒ rơi về ghép mảnh cũ. Phần thừa ngoài khung 16:9 = chính tranh phóng to mờ tối (không viền đen). Không xoay khi màn dọc.
 - the_gioi_toan_canh.jpg 1672×941 q85 = 599KB. XemPhieuLuu thêm &so=N. Kiểm 1180×820 &so=6 ✔ 0 lỗi; 375×812: tranh ngang chỉ còn dải nhỏ ⇒ cần bản dọc riêng (để sau, màn ngang trước).
 - Cần đặt ChatGPT: tranh 10 lục địa (K4T Toán có 10 chủ đề > 8 ô).
+
+### 02/10 — [Giao diện] Đơn 9: bản đồ phiêu lưu theo ĐÚNG giao thức kit (thay Đơn 7 + 7-0)
+- Thùy: "đơn cho ChatGPT phải như lúc đầu thống nhất: 1 bức tranh chi tiết + vẽ lại các thành phần của chính bức đó + file mô tả bố cục".
+  SAI của CTO: Đơn 7 tự ghi "KHÔNG zip, KHÔNG DESIGN.md" — lệch CHATGPT-UI-KIT.md §0 (kit 3 phần, chốt 28/09) ⇒ mảnh rời vẽ độc lập không khớp nhau.
+  Bài học: KHÔNG viết đơn ngoài giao thức kit; đặc thù bản đồ = vẽ cho số TỐI ĐA, code đặt N mảnh đầu theo vị trí DESIGN.md, mảnh thừa bỏ (không phủ mây).
+- 3 kit: hs-ban-do-the-gioi (10 lục địa + backdrop biển trống + 10 mảnh lục địa vẽ lại từ reference) · hs-ban-do-luc-dia (rừng, 8 mốc, backdrop không mốc/đường)
+  · hs-ban-do-chang (rừng, 10 bệ, backdrop không bệ/quái/đường). DESIGN.md "Vị trí & cỡ" ghi tâm %/bề rộng từng mảnh + mô tả đường.

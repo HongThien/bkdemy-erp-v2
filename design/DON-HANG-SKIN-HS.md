@@ -764,3 +764,103 @@ Bắt đầu với #A1.
 > **Thùy chọn xong (Claude làm):** ghi hướng đã chọn vào `spec-v1-app-hs.md` §4.5 · sửa mô tả phong cách + chuẩn ảnh của Đơn 7 mục B–G theo hướng đó
 > (hướng B/D có thể cần thêm: tấm giấy nền / ô bàn cờ thay cho bệ đá) · khung code 2D (`phieuluu/ban2d/`) giữ nguyên, chỉ đổi hình + hiệu ứng cho hợp
 > (vd hướng B: sương = vết mực mờ, cờ = ghim đỏ; hướng D: đường = chuỗi ô tròn).
+
+
+---
+
+## Đơn 9 — BẢN ĐỒ PHIÊU LƯU theo ĐÚNG GIAO THỨC KIT: 3 kit (thế giới · lục địa · chặng), mỗi kit = ảnh toàn cảnh + thành phần vẽ lại từ chính ảnh đó + DESIGN.md bố cục — soạn 02/10, THAY Đơn 7 + Đơn 7-0
+
+> **Thùy 02/10:** "đơn đặt cho ChatGPT phải như lúc đầu thống nhất: ① vẽ 1 bức tranh chi tiết ② vẽ lại các thành phần bên trong bức ảnh đó ③ file mô tả bố cục.
+> Combo như này thì mới dựng lại đẹp được." — đúng `CHATGPT-UI-KIT.md` (§0 kit 3 phần, chốt 28/09). Đơn 7 đã LỆCH giao thức ("KHÔNG zip, KHÔNG DESIGN.md",
+> vẽ mảnh rời độc lập) ⇒ nền biển và lục địa rời không khớp nhau, ghép không ra ảnh toàn cảnh. Bài học: **không viết đơn ngoài giao thức kit.**
+> **Vì sao cần đủ 3 phần (đặc thù bản đồ):** số chủ đề/chuyên đề/dạng mỗi khối KHÁC nhau (đo 01/10: 2–10 chủ đề · 1–8 chuyên đề · 3–10 dạng). Tranh vẽ cho số
+> TỐI ĐA; code dựng nền + đặt N mảnh đầu theo đúng vị trí trong DESIGN.md, mảnh thừa thì KHÔNG đặt (biển/đường vẫn liền) — không phải phủ mây che như dùng ảnh phẳng.
+> **Cách gửi:** mỗi kit 1 context ChatGPT MỚI (bản app máy tính) → dán `CHATGPT-UI-KIT.md` → dán khối đơn của kit đó → đính kèm `design/bk-ui-src/Adnventure2D/chon_huong/01.png`
+> (Thùy ưng phong cách này) + `03.png` (cho kit 3). Làm đúng 4 pha của giao thức (duyệt toàn cảnh → kiểm kê → sinh asset → đóng zip). Zip về để
+> `design/handoff/hs-<man>-v1.zip`. Làm kit 1 trước; 2 và 3 song song được.
+> Đã có từ Đơn 7 (vẫn giữ, không bỏ): ảnh 01–10 trong `design/bk-ui-src/Adnventure2D/chon_huong/`; app đang tạm dùng #01 làm tranh thế giới (8 ô) tới khi kit 1 về.
+
+### Kit 1 — `hs-ban-do-the-gioi`
+
+```
+App:            hs
+Màn:            ban-do-the-gioi
+Mô tả màn:      Bản đồ THẾ GIỚI của app học Toán "Giải cứu thế giới — đánh quái vật". Mỗi CHỦ ĐỀ kiến thức là 1 LỤC ĐỊA nổi giữa biển đêm.
+                Học sinh bấm 1 lục địa để đi vào. Thiết bị: iPad NGANG 1180×820 và máy tính ⇒ vẽ khổ NGANG 1672×941.
+                Mockup vẽ ĐÚNG 10 lục địa (tối đa của 1 khối lớp); khối ít chủ đề hơn thì lập trình viên chỉ đặt N lục địa đầu.
+                ⇒ 10 lục địa phải TÁCH RỜI nhau bằng biển (không chạm, không đè), xếp thành 1 vòng đường đi đọc được 1→10,
+                  bỏ bớt lục địa cuối vẫn đẹp.
+Phần tử ĐỘNG:   tên chủ đề dưới mỗi lục địa · tiến độ "x/y chặng đạt" · nhãn "Em đang ở đây" · cờ trên lục địa đã chinh phục ·
+                quái nhỏ trên lục địa đang đánh · sương mù trên lục địa chưa tới · nhân vật pháp sư đứng ở lục địa đang học.
+                (Chữ và số = TEXT do code vẽ; cờ, sương, pháp sư, quái = asset riêng, KHÔNG vẽ dính vào lục địa.)
+Trạng thái:     1 ảnh reference: 3 lục địa đã chinh phục (cắm cờ) · 1 đang đánh (pháp sư đứng trên + quái nhỏ) · 6 chưa tới (phủ sương).
+Biến thể:       không.
+Phong cách:     đúng ảnh 01.png đính kèm: anime fantasy, biển đêm xanh tím lấp lánh sao, mây tím ở viền, lục địa vẽ tay chi tiết nhìn chéo
+                từ trên cao, ánh vàng cổ. 10 vùng khí hậu (mỗi lục địa 1): rừng phép cây khổng lồ · băng pha lê · núi lửa (tươi sáng) ·
+                quần đảo san hô · sa mạc ốc đảo · đầm lầy đom đóm · tàn tích thành cổ · đảo trời pha lê tím · hoa anh đào · cánh đồng gió núi đá.
+Giữ nguyên:     khổ ngang 1672×941; không có chữ trong tranh; mỗi lục địa có 1 khoảng trống ngay DƯỚI nó để code đặt nhãn tên.
+Phiên bản kit:  v1
+
+YÊU CẦU RIÊNG CHO KIT NÀY (thêm vào giao thức):
+- assets bắt buộc:
+  · backdrop/backdrop_bien.png — ĐÚNG biển + mây viền + sao của reference, KHÔNG có lục địa nào (vẽ lại cảnh đó như thể lục địa chưa từng có),
+    1672×941, cùng ánh sáng/màu nước với reference.
+  · decor/luc_dia_01.png … luc_dia_10.png — vẽ lại TỪNG lục địa đúng như trong reference (cùng hình dáng, cùng màu, cùng góc nhìn, cùng
+    ánh sáng), mỗi cái 1 file, nền TRONG SUỐT, kèm vòng bọt sóng sát bờ như trong reference, ≥1024px cạnh dài.
+  · decor/co_chinh_phuc.png · decor/may_suong.png (1 đám sương phủ vừa 1 lục địa) · decor/la_ban.png
+  · characters/character_phap_su.png — pháp sư nhỏ đứng trên lục địa trong reference.
+- DESIGN.md, cột "Vị trí & cỡ": với MỖI lục địa ghi tâm (≈% ngang, ≈% dọc của khung 1672×941), bề rộng (≈% khung) và số thứ tự trên đường đi.
+  Ví dụ: "luc_dia_03 — tâm ≈52% ngang, 16% dọc; rộng ≈24% khung; thứ 3 trên đường đi; nằm TRÊN backdrop".
+```
+
+### Kit 2 — `hs-ban-do-luc-dia`
+
+```
+App:            hs
+Màn:            ban-do-luc-dia
+Mô tả màn:      Bên trong 1 lục địa (vùng khí hậu RỪNG PHÉP — làm rừng trước, các vùng khác làm sau theo đúng bố cục này).
+                Mỗi CHUYÊN ĐỀ là 1 VÙNG có 1 CÔNG TRÌNH MỐC; các mốc nối nhau bằng 1 con đường. Học sinh bấm 1 mốc để vào chặng đường.
+                iPad NGANG ⇒ khổ 1672×941. Mockup vẽ ĐÚNG 8 mốc (tối đa); ít hơn thì code chỉ đặt N mốc đầu và đường dừng ở mốc N.
+Phần tử ĐỘNG:   tên chuyên đề dưới mốc · "x/y dạng đạt" · số thứ tự mốc · cờ ở mốc đã xong · quái nhỏ ở mốc đang đánh · sương ở mốc chưa tới ·
+                pháp sư đứng ở mốc đang học · đoạn đường đã đi (sáng vàng) / chưa đi (đứt nét).
+Trạng thái:     1 ảnh reference: 2 mốc đầu đã xong (cờ), mốc 3 đang đánh (pháp sư + quái nhỏ), 5 mốc cuối phủ sương.
+Biến thể:       không (vùng khí hậu khác = kit v-sau, cùng bố cục).
+Phong cách:     như ảnh 01.png đính kèm, cận cảnh lục địa rừng phép: cây khổng lồ phát sáng, nấm tím, thác nước, bờ đá nhìn chéo từ trên cao.
+Giữ nguyên:     khổ 1672×941; không chữ trong tranh; mỗi mốc có khoảng trống ngay dưới để đặt nhãn.
+Phiên bản kit:  v1
+
+YÊU CẦU RIÊNG:
+- assets bắt buộc: backdrop/backdrop_luc_dia_rung.png (ĐÚNG cảnh reference, KHÔNG có công trình mốc và KHÔNG có con đường — chỉ địa hình) ·
+  decor/moc_01.png … moc_08.png (8 công trình KHÁC nhau: thành nhỏ, tháp phép, trại lều, đền cổ, cổng đá, cầu, giếng phép, cây thần — vẽ lại đúng
+  như trong reference, nền trong suốt) · decor/be_moc.png (nền đất/đá dưới chân mốc nếu reference có) · decor/co_chinh_phuc.png · decor/may_suong.png ·
+  characters/character_phap_su.png.
+- DESIGN.md "Vị trí & cỡ": tâm (≈% ngang, % dọc) + bề rộng của TỪNG mốc, thứ tự 1→8, và mô tả đường đi qua các mốc (đi từ đâu, vòng qua đâu)
+  đủ để code vẽ lại đường bằng nét. Đường là SHAPE (code vẽ), KHÔNG xuất asset đường.
+```
+
+### Kit 3 — `hs-ban-do-chang`
+
+```
+App:            hs
+Màn:            ban-do-chang
+Mô tả màn:      Chặng đường trong 1 vùng (RỪNG PHÉP trước). Mỗi DẠNG BÀI là 1 TRẠM: 1 bệ đá tròn có quái canh. Đi lần lượt, trạm cuối có boss.
+                iPad NGANG ⇒ 1672×941; bên PHẢI có bảng chi tiết rộng ≈25% màn đè lên ⇒ các trạm nằm trong ≈72% bên trái.
+                Mockup vẽ ĐÚNG 10 trạm (tối đa); ít hơn thì code chỉ đặt N trạm đầu, trạm cuối cùng luôn là boss.
+Phần tử ĐỘNG:   tên dạng + "N quái · còn x đòn" dưới trạm · số thứ tự · cờ ở trạm đã hạ (quái biến mất) · quái thường / boss có vương miện ·
+                bóng đen + sương ở trạm chưa gặp · pháp sư đứng cạnh trạm đang tới · đường đã đi / chưa đi.
+Trạng thái:     1 ảnh reference: 3 trạm đầu đã hạ (cờ, không quái), pháp sư ở trạm 4 (có quái), trạm 5–9 quái bóng đen phủ sương, trạm 10 boss to.
+Biến thể:       không.
+Phong cách:     như ảnh 03.png đính kèm (thung lũng rừng, nấm tím, thác, bệ đá vòng rune vàng), nhìn chéo từ trên cao.
+Giữ nguyên:     khổ 1672×941; không chữ; quái chỉ là HÌNH GIỮ CHỖ (quái thật Thùy thiết kế riêng) — vẽ 2 con mẫu: 1 quái nhỏ dễ thương + 1 boss đội vương miện.
+Phiên bản kit:  v1
+
+YÊU CẦU RIÊNG:
+- assets bắt buộc: backdrop/backdrop_chang_rung.png (ĐÚNG cảnh reference, KHÔNG bệ, KHÔNG quái, KHÔNG người, KHÔNG con đường) · decor/be_da.png (bệ đá tròn
+  vòng rune như reference, nền trong suốt) · decor/co_chinh_phuc.png · decor/may_suong.png · characters/character_phap_su.png ·
+  characters/quai_mau.png · characters/boss_mau.png.
+- DESIGN.md "Vị trí & cỡ": tâm (≈% ngang, % dọc) + bề rộng của TỪNG bệ 1→10 (bệ xa nhỏ hơn bệ gần — ghi cỡ từng bệ) và mô tả con đường đi qua các bệ.
+```
+
+> **Kit về (Claude làm):** chạy mục 8 của giao thức như người kiểm (đếm ảnh toàn cảnh ↔ assets, alpha thật, backdrop sạch) · đối chiếu từng mảnh với reference
+> (dáng, màu, ánh sáng — lệch thì trả hàng theo mục 10) · nén vào `public/bk-ui/hs/skin/rpg/phieuluu2d/` · khai vị trí từ DESIGN.md vào `ban2d/hinh2d.ts`
+> (thế giới: thay `TOAN_CANH_THE_GIOI` bằng nền + 10 mảnh có toạ độ) · dựng lại so từng điểm với reference ở 1180×820.
