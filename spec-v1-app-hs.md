@@ -329,6 +329,7 @@ huy hiệu (dữ liệu) · Thế giới BK phần dữ liệu (tin chuỗi, tin
 4. (03/10) Góp ý / báo lỗi HS: bảng `bao_loi` thêm loại `hs_loi` / `hs_y_tuong`, RPC gửi + xem trạng thái, màn duyệt nhân sự, trả lời vào Hòm thư.
 5. (04–05/10) Rank: nhật ký lên bậc + tin Thế giới · danh hiệu Hồ sơ · `chonDangTuLuyen` (JS) xuống DB · 👑 khen ở app GV.
 6. (05/10) Đối soát tay Rank / nhiệm vụ / chuỗi ở 3 em thật.
+7. (02/10, Thùy chốt) **Thử thách = Đấu trường 3 trận** (60/80/100%, 5 MCQ/trận, 2 lượt/ngày, bỏ cuộc = thua) — RPC bắt đầu/nộp trận/bỏ cuộc + sửa nhiệm vụ N1/T3/M2 + Hercules: xem `spec-thu-thach-dau-truong.md` §7. Giao diện chờ RPC rồi dựng màn.
 
 **Đọc trước:** `spec-v1-app-hs.md` (§2, §3, §6, §13) · `spec-thanh-tuu-nhiem-vu.md` §0 · `spec-the-gioi-bk.md` §4b–§5 · HANDOFF mục GAMIFICATION + THẾ GIỚI BK ·
 mig `202610011501_luot_hoc_that_khong_lap_cau.sql` (nền đã có).

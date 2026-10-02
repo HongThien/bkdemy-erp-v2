@@ -34944,3 +34944,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   2 nhân vật chibi (nam+mèo đen, nữ+cú trắng; PNG đã trong suốt, cắt sát, cao 900px) → `nv_{nam,nu}_chibi.png`. `rpg.ts` trỏ sang tên MỚI (id nền `lau_dai`/`bau_troi` giữ ⇒ HS đã lưu tự đổi); lớp phủ tối của nền ngang giảm
   (0.38/0.55/0.86 → 0.12/0.3/0.72) vì ảnh mới đã tối sẵn. File cũ GIỮ (PWA cũ còn gọi). Script nén: `scripts/anime-nen-chibi.mjs`. `check:style-hs` ✔. Soi Home ngang 1400 + dọc 390: nền + nhân vật + bong bóng ổn.
   **Chưa chibi:** 13 icon ô · 2 banner · hoa văn góc · boss Thùy · cả bản đồ phiêu lưu (thế giới/lục địa/chặng — ảnh sáng kiểu khác) — cần ChatGPT vẽ lại cùng nét chibi (đơn hàng chưa viết).
+
+- (02/10 tối, Giao diện) **Thử thách → Đấu trường 3 trận**: Thùy chốt luật (3 trận × 5 MCQ, ngưỡng 60/80/100%, thua là dừng, 2 lượt/ngày, nút Bỏ cuộc = thua, hoạt cảnh sau mỗi trận, boss Thùy dùng tạm, 2D) ⇒ viết `spec-thu-thach-dau-truong.md`
+  (luật · chọn câu 2-2-1 theo độ khó DẠNG · điểm 10/20/30 · hoạt cảnh · ảnh hưởng nhiệm vụ/huy hiệu · việc Số liệu §7 · 4 câu mở §8) + dòng #7 vào hộp thư `spec-v1-app-hs.md` §13.6. Chưa code.
