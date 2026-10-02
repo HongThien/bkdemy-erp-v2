@@ -37,6 +37,9 @@ async function cat(a, b, k, ra) {
   fs.writeFileSync(ra, await c.encode('webp', 84)); return { w, h }
 }
 
+// Kit rừng v4 (Thùy 02/10): neo chân lấy từ kien_truc_chibi_v4.json của kit (ground_anchor theo canvas gốc) thay cho bảng cũ trong DESIGN.md
+try { const j = JSON.parse(fs.readFileSync(path.join(SRC, 'lục địa rừng/assets/decor/kien_truc_chibi_v4.json'), 'utf8')); const r = KITS.find((k) => k.biome === 'rung'); r.neoGoc = r.decor.map((d) => j[d + '.png'].ground_anchor) } catch (e) { console.warn('không đọc được kien_truc_chibi_v4.json — dùng neo cũ', e.message) }
+
 const meta = {}
 for (const kit of KITS) {
   const dir = path.join(SRC, kit.dir), out = path.join(OUT, kit.biome); fs.mkdirSync(out, { recursive: true })
