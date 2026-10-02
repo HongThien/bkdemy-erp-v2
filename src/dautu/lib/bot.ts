@@ -5,9 +5,9 @@ import { TU_THEO_ID } from '../data/kho'
 import { chon } from './tienich'
 
 export const BOT: Record<MucBot, { ten: string; nhan: string; mau: string; nv: string; min: number; max: number; sai1: number; sai2: number }> = {
-  de: { ten: 'Xương Tập Sự', nhan: 'Dễ', mau: '#22c55e', nv: 'Skeleton_Minion', min: 2400, max: 4200, sai1: 0.4, sai2: 0.24 },
-  vua: { ten: 'Xương Nhanh Trí', nhan: 'Vừa', mau: '#3b82f6', nv: 'Skeleton_Rogue', min: 1600, max: 2700, sai1: 0.24, sai2: 0.12 },
-  kho: { ten: 'Xương Thần Tốc', nhan: 'Khó', mau: '#ef4444', nv: 'Skeleton_Warrior', min: 900, max: 1650, sai1: 0.07, sai2: 0.03 },
+  de: { ten: 'Boss Thùy · Tập sự', nhan: 'Dễ', mau: '#22c55e', nv: 'boss_thuy', min: 2400, max: 4200, sai1: 0.4, sai2: 0.24 },
+  vua: { ten: 'Boss Thùy · Nhanh trí', nhan: 'Vừa', mau: '#3b82f6', nv: 'boss_thuy', min: 1600, max: 2700, sai1: 0.24, sai2: 0.12 },
+  kho: { ten: 'Boss Thùy · Thần tốc', nhan: 'Khó', mau: '#ef4444', nv: 'boss_thuy', min: 900, max: 1650, sai1: 0.07, sai2: 0.03 },
 }
 
 export function nguoiBot(muc: MucBot, ten?: string): NguoiTran {
@@ -15,10 +15,10 @@ export function nguoiBot(muc: MucBot, ten?: string): NguoiTran {
   return { ma: 'bot-' + muc + '-' + Math.random().toString(36).slice(2, 6), ten: ten ?? b.ten, nv: b.nv, bot: muc }
 }
 
-const TEN_BOT = ['Xương Lém Lỉnh', 'Pháp Sư Xương', 'Kỵ Sĩ Xương', 'Xương Tia Chớp', 'Xương Mọt Sách', 'Xương Siêu Tốc', 'Xương Bí Ẩn']
+const TEN_BOT = ['Bot Lém Lỉnh', 'Bot Mọt Sách', 'Bot Tia Chớp', 'Bot Siêu Tốc', 'Bot Bí Ẩn', 'Bot Chăm Chỉ', 'Bot Nhanh Nhảu']
 export function nguoiBotGiai(i: number): NguoiTran {
   const muc: MucBot = (['de', 'vua', 'vua', 'kho'] as const)[i % 4]
-  const nv = ['Skeleton_Minion', 'Skeleton_Mage', 'Skeleton_Rogue', 'Skeleton_Warrior'][i % 4]
+  const nv = ['tham_hiem_nam', 'tham_hiem_nu', 'hiep_si_dem', 'phap_su'][i % 4]
   return { ma: 'bot-g' + i + '-' + Math.random().toString(36).slice(2, 6), ten: TEN_BOT[i % TEN_BOT.length], nv, bot: muc }
 }
 

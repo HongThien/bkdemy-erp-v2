@@ -67,7 +67,7 @@ export default function App() {
     if (!toi) return
     const uuTien = [...tuYeu(h.nho), ...tuDenHan(h.nho)]
     if (c.loai === 'bot') setMan({ ten: 'tran', nhan: 'Luyện với bot', phien: phienBot({ toi, chuDe, capDo, soCau: c.soCau, muc: c.muc, uuTien }) })
-    else if (c.loai === 'doi') setMan({ ten: 'tran', nhan: '2 người 1 máy', phien: phienDoi({ toi, ban: { ma: 'p2', ten: 'Người chơi 2', nv: 'mage' }, chuDe, capDo, soCau: c.soCau }) })
+    else if (c.loai === 'doi') setMan({ ten: 'tran', nhan: '2 người 1 máy', phien: phienDoi({ toi, ban: { ma: 'p2', ten: 'Người chơi 2', nv: db?.nv === 'tham_hiem_nu' ? 'tham_hiem_nam' : 'tham_hiem_nu' }, chuDe, capDo, soCau: c.soCau }) })
     else if (c.loai === 'tim') setMan({ ten: 'tim', chuDe, soCau: c.soCau })
     else if (c.loai === 'phong') setMan({ ten: 'phong', chuDe, capDo, soCau: c.soCau })
     else setMan({ ten: 'giai', chuDe, capDo, soCau: c.soCau })
@@ -103,7 +103,7 @@ export default function App() {
   const trongTran = man.ten === 'tran' || man.ten === 'phong' || man.ten === 'giai'
 
   return (
-    <div className="app-dautu" style={{ backgroundImage: 'url(/img/bg_lau_dai_chibi_ngang.jpg)' }}>
+    <div className="app-dautu" style={{ backgroundImage: 'url(/bk-ui/hs/skin/rpg/bg_lau_dai_chibi_ngang.jpg)' }}>
       <div className="app-mo" />
       {!(trongTran && man.ten === 'tran') && <ThanhTren onHop={setHop} laNha={man.ten === 'home'} />}
       <main className="app-than">{noiDung}</main>
@@ -167,10 +167,10 @@ function Home({ onDi }: { onDi: (d: 'dau' | 'noi_tu' | 'goc' | 'giai') => void }
   const h = useHoSo()
   const canOn = useMemo(() => tuYeu(h.nho).length + tuDenHan(h.nho).length, [h.nho])
   const the = [
-    { id: 'dau' as const, icon: '/img/o_tu_luyen.png', tieu: 'Đấu từ vựng', mo: 'Chọn chủ đề, đấu bot hoặc đấu online — ai đúng trước ăn từ!', nut: 'Chọn chủ đề', mau: 'xanh' },
-    { id: 'giai' as const, icon: '/img/o_cup.png', tieu: 'Giải đấu 8 người', mo: 'Tứ kết → Bán kết → Chung kết, đấu trực tiếp chọn nhà vô địch.', nut: 'Vào giải', mau: 'vang' },
-    { id: 'noi_tu' as const, icon: '/img/o_so_tay.png', tieu: 'Nối từ', mo: 'Nối từ tự do, nghe phát âm và học cách dùng từ trong ngữ cảnh!', nut: 'Chơi nối từ', mau: 'tim' },
-    { id: 'goc' as const, icon: '/img/o_nhiem_vu.png', tieu: 'Góc luyện tập', mo: 'Ôn từ yếu, thẻ ghi nhớ, tiến độ học tập và góp từ mới.', nut: canOn ? `Ôn ${canOn} từ` : 'Vào luyện tập', mau: 'lam' },
+    { id: 'dau' as const, icon: '/bk-ui/hs/skin/rpg/o_tu_luyen.png', tieu: 'Đấu từ vựng', mo: 'Chọn chủ đề, đấu bot hoặc đấu online — ai đúng trước ăn từ!', nut: 'Chọn chủ đề', mau: 'xanh' },
+    { id: 'giai' as const, icon: '/bk-ui/hs/skin/rpg/o_cup.png', tieu: 'Giải đấu 8 người', mo: 'Tứ kết → Bán kết → Chung kết, đấu trực tiếp chọn nhà vô địch.', nut: 'Vào giải', mau: 'vang' },
+    { id: 'noi_tu' as const, icon: '/bk-ui/hs/skin/rpg/o_so_tay.png', tieu: 'Nối từ', mo: 'Nối từ tự do, nghe phát âm và học cách dùng từ trong ngữ cảnh!', nut: 'Chơi nối từ', mau: 'tim' },
+    { id: 'goc' as const, icon: '/bk-ui/hs/skin/rpg/o_nhiem_vu.png', tieu: 'Góc luyện tập', mo: 'Ôn từ yếu, thẻ ghi nhớ, tiến độ học tập và góp từ mới.', nut: canOn ? `Ôn ${canOn} từ` : 'Vào luyện tập', mau: 'lam' },
   ]
   return (
     <div className="home">
@@ -189,8 +189,8 @@ function Home({ onDi }: { onDi: (d: 'dau' | 'noi_tu' | 'goc' | 'giai') => void }
           </button>
         ))}
       </div>
-      <img src="/img/nv_nu_chibi.png" alt="" className="linh-vat trai" />
-      <img src="/img/nv_nam_chibi.png" alt="" className="linh-vat phai" />
+      <img src="/bk-ui/hs/skin/rpg/nv_nu_chibi.png" alt="" className="linh-vat trai" />
+      <img src="/bk-ui/hs/skin/rpg/nv_nam_chibi.png" alt="" className="linh-vat phai" />
     </div>
   )
 }

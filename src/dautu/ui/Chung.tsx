@@ -1,54 +1,30 @@
 // Khối giao diện dùng chung của game Đấu Từ.
 import { useEffect, useState, type ReactNode } from 'react'
-import { docLS, ghiLS, taoKho } from '../lib/tienich'
+import { taoKho } from '../lib/tienich'
 import { phat } from '../lib/amThanh'
 
-export const TEN_NV: Record<string, string> = {
-  knight: 'Hiệp sĩ', mage: 'Pháp sư', ranger: 'Cung thủ', rogue: 'Sát thủ', barbarian: 'Chiến binh', druid: 'Tiên rừng',
-  Skeleton_Warrior: 'Kỵ sĩ Xương', Skeleton_Rogue: 'Xương Lém Lỉnh', Skeleton_Minion: 'Lính Xương', Skeleton_Mage: 'Pháp sư Xương',
+// ── Nhân vật & ảnh đại diện: tranh ChatGPT có sẵn của app HS (KHÔNG dùng KayKit — Thùy 03/10 "xấu") ──
+// Ảnh đại diện = khung tròn cắt quanh mặt (background-size/position tính theo tâm mặt trong ảnh gốc).
+// Nhân vật chiến đấu = bộ 15 tư thế Đấu trường (nam/nữ, heroDau.ts); bot = Boss Thùy (6 tư thế).
+const R = '/bk-ui/hs/skin/rpg'
+export interface NhanVat { ten: string; anh: string; co: string; vt: string; mau: string; gioi: 'nam' | 'nu'; boss?: boolean }
+export const NHAN_VAT: Record<string, NhanVat> = {
+  tham_hiem_nam: { ten: 'Nhà thám hiểm', anh: R + '/dau_truong/nam/dung_1.webp', co: '200%', vt: '56% 8%', mau: '#7fb069', gioi: 'nam' },
+  tham_hiem_nu: { ten: 'Nữ thám hiểm', anh: R + '/dau_truong/nu/dung_1.webp', co: '200%', vt: '50% 12%', mau: '#e8a87c', gioi: 'nu' },
+  hiep_si_dem: { ten: 'Hiệp sĩ bóng đêm', anh: R + '/nv_nam_chibi.png', co: '230%', vt: '59% 20%', mau: '#7c6cf0', gioi: 'nam' },
+  phap_su: { ten: 'Pháp sư sao', anh: R + '/nv_nu_chibi.png', co: '240%', vt: '40% 20%', mau: '#b48cff', gioi: 'nu' },
+  boss_thuy: { ten: 'Boss Thùy', anh: R + '/boss_thuy_chandung.png', co: '160%', vt: '50% 10%', mau: '#ffc23d', gioi: 'nam', boss: true },
 }
-const EMOJI_NV: Record<string, string> = {
-  knight: '🛡️', mage: '🔮', ranger: '🏹', rogue: '🗡️', barbarian: '🪓', druid: '🌿',
-  Skeleton_Warrior: '💀', Skeleton_Rogue: '💀', Skeleton_Minion: '💀', Skeleton_Mage: '💀',
-}
-const MAU_NV: Record<string, string> = {
-  knight: '#f5c451', mage: '#b48cff', ranger: '#f2c56b', rogue: '#9ccc65', barbarian: '#ff8a50', druid: '#66e3a5',
-  Skeleton_Warrior: '#ff6b6b', Skeleton_Rogue: '#64b5f6', Skeleton_Minion: '#81c784', Skeleton_Mage: '#8fe8ff',
-}
-export const DS_NV = ['knight', 'mage', 'ranger', 'rogue', 'barbarian', 'druid'] as const
-
-// ── Chân dung 3D: chụp 1 lần bằng three.js, lưu ở máy ──
-const PB = 'dtv_cd_v2_'
-const khoAnh = taoKho<Record<string, string>>({})
-const dangChup = new Set<string>()
-function yeuCauAnh(nv: string) {
-  if (khoAnh.lay()[nv] || dangChup.has(nv)) return
-  const luu = docLS<string>(PB + nv, '')
-  if (luu) { khoAnh.dat((k) => ({ ...k, [nv]: luu })); return }
-  dangChup.add(nv)
-  // chụp tuần tự để không mở nhiều WebGL context cùng lúc
-  hangChup = hangChup.then(async () => {
-    try {
-      const { chupChanDung } = await import('../lib/the3d')
-      const url = await chupChanDung(nv)
-      ghiLS(PB + nv, url)
-      khoAnh.dat((k) => ({ ...k, [nv]: url }))
-    } catch { /* không WebGL ⇒ dùng emoji */ }
-  })
-}
-let hangChup: Promise<void> = Promise.resolve()
+export const DS_NV = ['tham_hiem_nam', 'tham_hiem_nu', 'hiep_si_dem', 'phap_su'] as const
+/** Hồ sơ cũ (bản 3D) còn id KayKit ⇒ quy về nhân vật mới. */
+export const nvChuan = (nv: string) => (NHAN_VAT[nv] ? nv : /mage|druid/.test(nv) ? 'phap_su' : nv.startsWith('Skeleton') ? 'boss_thuy' : 'tham_hiem_nam')
+export const TEN_NV: Record<string, string> = Object.fromEntries(Object.entries(NHAN_VAT).map(([k, v]) => [k, v.ten]))
 
 export function Avatar({ nv, co = 48, vien = true, className = '' }: { nv: string; co?: number; vien?: boolean; className?: string }) {
-  const [anh, setAnh] = useState(khoAnh.lay()[nv])
-  useEffect(() => {
-    yeuCauAnh(nv)
-    setAnh(khoAnh.lay()[nv])
-    return khoAnh.nghe((k) => setAnh(k[nv]))
-  }, [nv])
+  const n = NHAN_VAT[nvChuan(nv)]
   return (
-    <div className={'avatar ' + className} style={{ width: co, height: co, borderColor: vien ? MAU_NV[nv] ?? '#ffd36e' : 'transparent', background: `radial-gradient(circle at 50% 35%, ${MAU_NV[nv] ?? '#ffd36e'}55, #2a2156)` }}>
-      {anh ? <img src={anh} alt={TEN_NV[nv] ?? nv} draggable={false} /> : <span style={{ fontSize: co * 0.5 }}>{EMOJI_NV[nv] ?? '🙂'}</span>}
-    </div>
+    <div className={'avatar ' + className} title={n.ten}
+      style={{ width: co, height: co, borderColor: vien ? n.mau : 'transparent', backgroundColor: n.mau + '44', backgroundImage: `url(${n.anh})`, backgroundSize: n.co, backgroundPosition: n.vt, backgroundRepeat: 'no-repeat' }} />
   )
 }
 

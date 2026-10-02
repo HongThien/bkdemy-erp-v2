@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { CAP_DO, CHU_DE, TU_THEO_CD, type CapDo } from '../data/kho'
 import { DauMan, Nut } from '../ui/Chung'
 import { BOT } from '../lib/bot'
+import { HUONG_DO, khoHuong, useHuong } from '../lib/boDe'
 import type { MucBot } from '../lib/trongTai'
 
 export function ChonChuDe({ capDo, setCapDo, onChon, onLui }: { capDo: CapDo; setCapDo: (c: CapDo) => void; onChon: (cd: string) => void; onLui: () => void }) {
@@ -43,15 +44,22 @@ export type LuaChonCheDo =
 export function ChonCheDo({ tenChuDe, onChon, onLui }: { tenChuDe: string; onChon: (c: LuaChonCheDo) => void; onLui: () => void }) {
   const [soCau, setSoCau] = useState(15)
   const [muc, setMuc] = useState<MucBot>('vua')
+  const huong = useHuong()
   return (
     <div className="man">
       <DauMan tieuDe="Chọn chế độ chơi" phu={<>Chủ đề: <b>{tenChuDe}</b></>} onLui={onLui}
         phai={<div className="chip-hang nho">{[10, 15, 20].map((n) => <button key={n} className={'chip' + (soCau === n ? ' bat' : '')} onClick={() => setSoCau(n)}><b>{n} từ</b></button>)}</div>} />
+      <div className="kieu-do giay">
+        <b>Kiểu đố:</b>
+        <div className="chip-hang nho">
+          {HUONG_DO.map((h) => <button key={h.id} className={'chip' + (huong === h.id ? ' bat' : '')} onClick={() => khoHuong.dat(h.id)}><b>{h.ten}</b><small>{h.mo}</small></button>)}
+        </div>
+      </div>
       <div className="luoi-che-do">
         <div className="the-che-do giay">
           <div className="cd-icon">🤖</div>
           <h3>Luyện với Bot</h3>
-          <p>Đấu với đội Xương — chọn độ khó, tạm dừng được.</p>
+          <p>Đấu với Boss Thùy — chọn độ khó, tạm dừng được.</p>
           <div className="chip-hang nho">
             {(Object.keys(BOT) as MucBot[]).map((m) => (
               <button key={m} className={'chip' + (muc === m ? ' bat' : '')} style={{ ['--mau' as string]: BOT[m].mau }} onClick={() => setMuc(m)}><b>{BOT[m].nhan}</b></button>

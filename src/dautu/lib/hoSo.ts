@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react'
 import { chuoiNgauNhien, docLS, ghiLS, taoKho } from './tienich'
 
-export type NvId = 'knight' | 'mage' | 'ranger' | 'rogue' | 'barbarian' | 'druid'
+export type NvId = 'tham_hiem_nam' | 'tham_hiem_nu' | 'hiep_si_dem' | 'phap_su'
 
 export interface HoSoDB {
   ma: string

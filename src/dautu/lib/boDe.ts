@@ -1,6 +1,24 @@
 // Dựng bộ đề cho 1 trận. Đáp án nhiễu: CÙNG LOẠI TỪ, ưu tiên cùng chủ đề, nghĩa khác nhau (không ra "2 đáp án cùng đúng").
 import { CAP_DO, CHU_DE, TU, TU_THEO_CD, TU_THEO_ID, type CapDo, type Tu } from '../data/kho'
-import { chon, taoRng, tron } from './tienich'
+import { useEffect, useState } from 'react'
+import { chon, docLS, ghiLS, taoKho, taoRng, tron } from './tienich'
+
+/** KIỂU ĐỐ (Thùy 03/10): đố Anh → đáp án Việt · đố Việt → đáp án Anh · trộn. Lựa chọn lưu ở máy; trận online theo chủ phòng, giải theo chủ giải. */
+export type HuongDo = 'anh_viet' | 'viet_anh' | 'tron'
+export const HUONG_DO: { id: HuongDo; ten: string; mo: string }[] = [
+  { id: 'anh_viet', ten: 'Anh → Việt', mo: 'Hiện từ tiếng Anh, chọn nghĩa Việt' },
+  { id: 'viet_anh', ten: 'Việt → Anh', mo: 'Hiện nghĩa Việt, chọn từ tiếng Anh' },
+  { id: 'tron', ten: 'Trộn cả hai', mo: 'Đổi chiều ngẫu nhiên từng câu' },
+]
+export const TI_LE_DAO: Record<HuongDo, number> = { anh_viet: 0, viet_anh: 1, tron: 0.5 }
+export const khoHuong = taoKho<HuongDo>(docLS<HuongDo>('dtv_huong', 'anh_viet'))
+khoHuong.nghe((v) => ghiLS('dtv_huong', v))
+export function useHuong() {
+  const [h, setH] = useState(khoHuong.lay())
+  useEffect(() => khoHuong.nghe(setH), [])
+  return h
+}
+export const tenHuong = (h: HuongDo) => HUONG_DO.find((x) => x.id === h)?.ten ?? ''
 
 export interface Cau {
   id: string // id từ đúng
@@ -47,7 +65,7 @@ export function taoBoDe(o: { chuDe: string; capDo: CapDo; soCau: number; seed?: 
   for (const t of conLai) { if (chonDuoc.length >= o.soCau) break; if (daCo.has(t.en.toLowerCase())) continue; daCo.add(t.en.toLowerCase()); chonDuoc.push(t) }
   const ds = tron(chonDuoc, rng)
   ghiRecent(ds.map((t) => t.id))
-  const tiLe = o.tiLeDao ?? 0.25
+  const tiLe = o.tiLeDao ?? TI_LE_DAO[khoHuong.lay()]
   return ds.map((t) => {
     const dao = rng() < tiLe
     return { id: t.id, dao, opts: tron([t.id, ...nhieu(t, rng, dao)], rng) }

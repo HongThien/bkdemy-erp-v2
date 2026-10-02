@@ -5,6 +5,7 @@ import { GiaiDau, TEN_VONG, type TrangThaiGiai, type TranGiai, type TTGiaiCucBo 
 import { guiLoiMoi, datTrangThai } from '../lib/mang'
 import type { NguoiTran, Snap } from '../lib/trongTai'
 import { maSo } from '../lib/tienich'
+import { HUONG_DO, tenHuong } from '../lib/boDe'
 import { phat } from '../lib/amThanh'
 import { Avatar, DauMan, Nut, chepVao, toast } from '../ui/Chung'
 import { ManDau } from './ManDau'
@@ -99,7 +100,7 @@ function TrongGiai({ giai, onLui }: { giai: GiaiDau; onLui: () => void }) {
   return (
     <div className="man">
       <DauMan tieuDe={<>🏆 Giải đấu · <span className="ma-nho" onClick={() => chepVao(giai.code)}>{giai.code}</span></>}
-        phu={<>{tenChuDe(st.chuDe)} · {CAP_DO.find((c) => c.id === st.capDo)?.ten} · {st.soCau} từ/trận</>} onLui={onLui}
+        phu={<>{tenChuDe(st.chuDe)} · {CAP_DO.find((c) => c.id === st.capDo)?.ten} · {tenHuong(st.huong ?? 'tron')} · {st.soCau} từ/trận</>} onLui={onLui}
         phai={st.pha === 'sanh' ? <div className="hang-nut"><Nut mau="lam" onClick={() => chepVao(giai.code)}>Mã giải</Nut><Nut mau="lam" onClick={() => chepVao(link)}>Link</Nut></div> : null} />
 
       {st.pha === 'sanh' && (
@@ -126,6 +127,7 @@ function TrongGiai({ giai, onLui }: { giai: GiaiDau; onLui: () => void }) {
                 <div className="chip-hang nho">
                   
                   {CAP_DO.map((c) => <button key={c.id} className={'chip' + (st.capDo === c.id ? ' bat' : '')} onClick={() => giai.datCauHinh({ capDo: c.id })}><b>{c.ten}</b></button>)}
+                  {HUONG_DO.map((h) => <button key={h.id} className={'chip' + (st.huong === h.id ? ' bat' : '')} onClick={() => giai.datCauHinh({ huong: h.id })}><b>{h.ten}</b></button>)}
                   {[5, 10, 15].map((n) => <button key={n} className={'chip' + (st.soCau === n ? ' bat' : '')} onClick={() => giai.datCauHinh({ soCau: n })}><b>{n} từ</b></button>)}
                 </div>
                 <div className="hang-nut">

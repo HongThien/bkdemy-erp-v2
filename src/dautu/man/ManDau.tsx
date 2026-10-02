@@ -8,7 +8,7 @@ import { doc, phat, useCaiDat } from '../lib/amThanh'
 import { capNhatNho, khoHoSo } from '../lib/hoSo'
 import { ghiTran, type CheDo, type KetQuaGhi } from '../lib/api'
 import { Avatar, Nut } from '../ui/Chung'
-import { San3D, type SuKienSan } from '../ui/San3D'
+import { SanDau2D, type SuKienSan } from '../ui/SanDau2D'
 
 const PHIM: string[][] = [['a', 's', 'z', 'x'], ['j', 'k', 'n', 'm']]
 const PHIM_SO = ['1', '2', '3', '4']
@@ -21,6 +21,7 @@ export function ManDau({ phien, onThoat, onVeBang, nhanCheDo }: { phien: PhienDa
   const [tt, setTt] = useState(phien.tt.lay())
   const [ketQuaGhi, setKetQuaGhi] = useState<KetQuaGhi | null>(null)
   const [hoiThoat, setHoiThoat] = useState(false)
+  const [hienKQ, setHienKQ] = useState(false)
   const hanRef = useRef(0)
   const daXuLy = useRef({ ket: '', het: '', vong: '' })
   const tuMoi = useRef<Set<string>>(new Set())
@@ -75,6 +76,8 @@ export function ManDau({ phien, onThoat, onVeBang, nhanCheDo }: { phien: PhienDa
     if (s.pha === 'het' && s.ketQua && daXuLy.current.het !== s.mid) {
       daXuLy.current.het = s.mid
       const kq = s.ketQua
+      setHienKQ(false)
+      setTimeout(() => setHienKQ(true), kq.bo !== -1 || kq.thang === -1 ? 600 : 3400)
       setSuKien({ seq: Date.now(), loai: 'ket', ben: kq.thang === -1 ? -1 : laDoi ? kq.thang : kq.thang === toi ? 0 : 1 })
       if (!xemThoi) {
         const thang = laDoi ? true : kq.thang === toi
@@ -128,11 +131,11 @@ export function ManDau({ phien, onThoat, onVeBang, nhanCheDo }: { phien: PhienDa
   const phai = laDoi ? 1 : ban
 
   return (
-    <div className={'man man-dau' + (laDoi ? ' che-do-doi' : '')} style={{ backgroundImage: 'url(/img/bg_dao_troi_chibi_ngang.jpg)' }}>
+    <div className={'man man-dau' + (laDoi ? ' che-do-doi' : '')} style={{ backgroundImage: 'url(/bk-ui/hs/skin/rpg/bg_dao_troi_chibi_ngang.jpg)' }}>
       <div className="dau-hud">
         <TheNguoi s={s} g={trai as 0 | 1} ben="trai" />
         <div className="hud-giua">
-          <div className="hud-nho">{nhanCheDo} · {tenChuDe(phien.chuDe)}</div>
+          <div className="hud-nho">{nhanCheDo} · {tenChuDe(phien.chuDe)} · {s.ds.every((c) => !c.dao) ? 'Anh → Việt' : s.ds.every((c) => c.dao) ? 'Việt → Anh' : 'Trộn'}</div>
           <div className="hud-vong">Từ <b>{Math.min(s.i + 1, s.ds.length)}</b>/{s.ds.length}</div>
           <div className={'dong-ho' + (s.pha === 'vong' && giay <= 3 ? ' gap' : '')} style={{ ['--pct' as string]: s.pha === 'vong' ? pct : 0 }}>
             <span>{s.pha === 'vong' ? giay : s.pha === 'dem' ? '⏳' : '⏸'}</span>
@@ -148,13 +151,13 @@ export function ManDau({ phien, onThoat, onVeBang, nhanCheDo }: { phien: PhienDa
       {laDoi ? (
         <div className="dau-doi">
           <KhuTraLoi s={s} g={1} xoay onChon={(o) => traLoi(1, o)} phim={PHIM[1]} chon={null} />
-          <div className="dau-doi-giua"><San3D trai={s.nguoi[0].nv} phai={s.nguoi[1].nv} suKien={suKien} /></div>
+          <div className="dau-doi-giua"><SanDau2D trai={s.nguoi[0].nv} phai={s.nguoi[1].nv} suKien={suKien} /></div>
           <KhuTraLoi s={s} g={0} onChon={(o) => traLoi(0, o)} phim={PHIM[0]} chon={null} />
         </div>
       ) : (
         <div className="dau-than">
           <div className="dau-san">
-            <San3D trai={s.nguoi[trai].nv} phai={s.nguoi[phai].nv} suKien={suKien} />
+            <SanDau2D trai={s.nguoi[trai].nv} phai={s.nguoi[phai].nv} suKien={suKien} />
             {s.pha === 'ket' && s.thangVong !== null && (
               <div className={'bong-ket ' + (s.thangVong === toi ? 'tot' : s.thangVong === -1 ? 'trung' : 'xau')}>
                 {s.thangVong === -1 ? '⌛ Hết giờ!' : s.thangVong === toi ? `+${s.cong[toi]} ⚡ ${s.giayThang}s` : xemThoi ? `${s.nguoi[s.thangVong].ten} +${s.cong[s.thangVong]}` : 'Chậm hơn một chút!'}
@@ -169,9 +172,9 @@ export function ManDau({ phien, onThoat, onVeBang, nhanCheDo }: { phien: PhienDa
 
       {s.pha === 'dem' && <div className="dem-nguoc"><div key={giay}>{giay > 0 ? giay : 'GO!'}</div><p>Ai đúng trước ăn từ đó!</p></div>}
       {tamDung && <div className="dem-nguoc"><div>⏸</div><p>Đang tạm dừng</p><Nut mau="xanh" onClick={() => phien.tamDung?.(false)}>Chơi tiếp</Nut></div>}
-      {s.pha === 'het' && s.ketQua && (
+      {s.pha === 'het' && s.ketQua && hienKQ && (
         <KetQuaTran s={s} toi={toi} laDoi={laDoi} xemThoi={xemThoi} kq={ketQuaGhi} tuMoi={[...tuMoi.current]} tt={tt}
-          onChoiLai={phien.choiLai && !onVeBang ? () => { setKetQuaGhi(null); tuMoi.current = new Set(); phien.choiLai!() } : undefined}
+          onChoiLai={phien.choiLai && !onVeBang ? () => { setKetQuaGhi(null); setHienKQ(false); tuMoi.current = new Set(); phien.choiLai!() } : undefined}
           onVeBang={onVeBang} onThoat={onThoat} />
       )}
       {hoiThoat && (

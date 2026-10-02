@@ -3,7 +3,7 @@
 // Máy CHỦ GIẢI làm trọng tài cho MỌI trận (cả bot–bot); mọi người xem được trận đang diễn ra.
 // Kênh `dtv-g:<mã>`: 'gd' = trạng thái giải, 'st' = Snap từng trận, 'tl' = câu trả lời gửi lên chủ giải.
 import { kenhMoi, type KenhRT } from './sb'
-import { taoBoDe } from './boDe'
+import { taoBoDe, khoHuong, TI_LE_DAO, type HuongDo } from './boDe'
 import { ganBot, nguoiBotGiai } from './bot'
 import type { CapDo } from '../data/kho'
 import { TrongTai, type NguoiTran, type Snap } from './trongTai'
@@ -19,6 +19,7 @@ export interface TrangThaiGiai {
   chuDe: string
   capDo: CapDo
   soCau: number
+  huong: HuongDo
   ghe: GheGiai[]
   tran: TranGiai[]
   vd: number | null
@@ -48,7 +49,7 @@ export class GiaiDau {
     this.laChu = o.laChu
     this.toi = o.toi
     if (o.laChu) {
-      this.st.dat({ code: o.code, pha: 'sanh', chu: o.toi.ma, chuDe: o.chuDe ?? 'tron', capDo: o.capDo ?? 'tat_ca', soCau: o.soCau ?? 10, ghe: [o.toi], tran: [], vd: null, seq: 0 })
+      this.st.dat({ code: o.code, pha: 'sanh', chu: o.toi.ma, chuDe: o.chuDe ?? 'tron', capDo: o.capDo ?? 'tat_ca', soCau: o.soCau ?? 10, huong: khoHuong.lay(), ghe: [o.toi], tran: [], vd: null, seq: 0 })
     }
     const ch = kenhMoi('dtv-g:' + o.code, o.toi.ma)
     this.ch = ch
@@ -135,7 +136,7 @@ export class GiaiDau {
   boGhe(i: number) {
     this.sua((g) => { if (g.ghe[i]?.bot) g.ghe.splice(i, 1) })
   }
-  datCauHinh(c: Partial<Pick<TrangThaiGiai, 'chuDe' | 'capDo' | 'soCau'>>) {
+  datCauHinh(c: Partial<Pick<TrangThaiGiai, 'chuDe' | 'capDo' | 'soCau' | 'huong'>>) {
     this.sua((g) => Object.assign(g, c))
   }
 
@@ -161,7 +162,7 @@ export class GiaiDau {
     const t = s.tran.find((x) => x.mid === mid)!
     if (t.a === null || t.b === null) return
     const nguoi: [NguoiTran, NguoiTran] = [s.ghe[t.a], s.ghe[t.b]]
-    const tai = new TrongTai({ mid, nguoi, ds: taoBoDe({ chuDe: s.chuDe, capDo: s.capDo, soCau: s.soCau }) })
+    const tai = new TrongTai({ mid, nguoi, ds: taoBoDe({ chuDe: s.chuDe, capDo: s.capDo, soCau: s.soCau, tiLeDao: TI_LE_DAO[s.huong ?? 'tron'] }) })
     this.tai.set(mid, tai)
     nguoi.forEach((n, i) => { if (n.bot) this.huyBot.push(ganBot(tai, i as 0 | 1, n.bot)) })
     this.sua((g) => { g.tran.find((x) => x.mid === mid)!.dang = true })

@@ -1383,7 +1383,7 @@
 | uid | text |  |  | PK |  |
 | ma | text |  |  |  |  |
 | ten | text |  |  |  |  |
-| nv | text |  | 'knight'::text |  |  |
+| nv | text |  | 'tham_hiem_nam'::text |  |  |
 | xp | integer |  | 0 |  |  |
 | so_tran | integer |  | 0 |  |  |
 | so_thang | integer |  | 0 |  |  |

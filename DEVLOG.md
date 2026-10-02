@@ -35094,3 +35094,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   chỉ là bẫy dev, khởi động lại server. (4) `dictionaryapi.dev` không gọi được từ máy văn phòng (curl treo 10s) ⇒ Wiktionary làm nguồn chính.
   (5) Chuỗi lệnh `python … ; rm …` — máy không có python mà `rm` vẫn chạy, xoá 2 bản SAO ảnh chibi vừa chép (gốc còn) ⇒ chép lại; bài học: không
   nối lệnh xoá sau lệnh có thể fail. Hồ sơ test "Claude Test" / "Claude Test 2" đang nằm trong `dtv_nguoi_choi` (hiện trên BXH).
+
+- (03/10, Đấu từ) **Thùy góp ý demo ⇒ 3 sửa:** (1) **bỏ 3D, combat 2D lấy của Đấu trường**: `src/dautu/ui/SanDau2D.tsx` dùng `skin/heroDau.ts`
+  (15 tư thế nam/nữ) + engine `thuthach/hieuUng.ts` (KHÔNG sửa 2 file đó). Mỗi từ ăn được = 1 đòn nhỏ (cầu lửa/băng, tia điện ~1s);
+  cuối trận người thắng tung sét/thiên thạch, người thua gục; kết quả hiện sau ~3,4s. Người bên PHẢI đánh ⇒ lật gương canvas + đổi toạ độ sang
+  hệ lật (engine vốn chỉ vẽ trái→phải). Bot = **Boss Thùy** (6 tư thế, đòn `boss_ma_thuat`); bot trong giải = 4 nhân vật thám hiểm.
+  (2) **ảnh đại diện = cắt mặt tranh ChatGPT có sẵn** (nhà thám hiểm nam/nữ, hiệp sĩ bóng đêm, pháp sư sao; Boss Thùy cho bot) bằng
+  background-size/position — đo khung bằng cách dựng 4 phương án cạnh nhau trên trang (đoán theo mắt lệch 2 lần). Mig `202610030037` (ĐÃ ÁP):
+  `fn_dtv_ho_so_luu` nhận id mới + quy 4 hồ sơ id cũ sang id mới. (3) **Kiểu đố** Anh→Việt / Việt→Anh / Trộn (`khoHuong` ở `boDe.ts`, lưu máy;
+  online theo chủ phòng, giải theo chủ giải — đổi được ở sảnh giải). `vite.config.dautu.ts`: publicDir = `public` chung app HS (Thùy: game
+  nằm TRONG app HS, không deploy riêng; entry này chỉ test local). Đã soi: bot trọn trận (cầu lửa, kết liễu, boss gục), PvP 2 tab (đạn bay
+  phải→trái đúng chiều). Code 3D (`San3D.tsx`, `lib/the3d.ts`, `public-dautu/` ~9MB) không còn được import — CHỜ Thùy gật mới xoá.

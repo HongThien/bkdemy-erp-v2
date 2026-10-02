@@ -466,3 +466,31 @@ textarea.o-nhap { resize: vertical; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* ── SÀN ĐẤU 2D (bộ chiến đấu Đấu trường) — keyframes giống DauTruongHS ── */
+.san2d-dau { position: relative; width: 100%; max-width: 1100px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: var(--bong); border: 3px solid #ffffff33; }
+.san2d-chuyen { position: absolute; inset: 0; }
+.san2d-nen { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 72%; user-select: none; }
+.san2d-cv { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 30; }
+.nv-san { position: absolute; z-index: 10; }
+.bong-chan { position: absolute; left: 50%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.45), transparent); pointer-events: none; }
+.nhan-san { position: absolute; left: 50%; bottom: -4px; transform: translate(-50%, 100%); white-space: nowrap; font-size: 12px; font-weight: 900; color: #fff; text-shadow: 0 1px 3px #000; }
+@keyframes dt-tich { from { filter: drop-shadow(0 0 10px var(--dt-aura)) brightness(1.05) } to { filter: drop-shadow(0 0 22px var(--dt-aura)) drop-shadow(0 0 40px var(--dt-aura)) brightness(1.15) } }
+@keyframes dt-bi-danh { 0% { transform: none; filter: brightness(2.2) sepia(1) hue-rotate(-40deg) saturate(5) } 30% { transform: translateX(-9%) } 100% { transform: translateX(-6%); filter: none } }
+@keyframes dt-guc { to { filter: grayscale(.75) brightness(.75) } }
+.dt-hero { transform-origin: 50% 100% }
+.dt-hero[data-h="tich_nang"] { animation: dt-tich .4s ease-in-out infinite alternate }
+.dt-hero[data-h="tung_don"] { filter: drop-shadow(0 0 18px var(--dt-aura)) brightness(1.12) }
+.dt-hero[data-h="bi_danh"] { animation: dt-bi-danh .8s ease-out forwards }
+.dt-hero[data-h="guc"] { animation: dt-guc 1.4s ease-in forwards }
+@media (prefers-reduced-motion: reduce) { .dt-hero[data-h] { animation: none !important } }
+.dau-san { height: auto; }
+.dau-doi-giua { height: auto; }
+
+.kieu-do { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 10px 16px; margin-bottom: 14px; }
+.kieu-do .chip-hang { margin: 0; }
+
+/* chip nằm trong đầu màn (chữ trắng kế thừa) ⇒ trả lại màu mực */
+.dau-man .chip { color: var(--muc); }
+.dau-man .chip.bat { color: #fff; }
+.ho-so-dau > .avatar { flex: 0 0 auto; }

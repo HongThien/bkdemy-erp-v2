@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useHoSo, datDB, type NvId } from '../lib/hoSo'
 import { bangXepHang, gopY, luuHoSo, type DongBxh, type TieuChi } from '../lib/api'
 import { khoCaiDat, useCaiDat } from '../lib/amThanh'
-import { Avatar, DS_NV, Modal, Nut, TEN_NV, chepVao, toast } from '../ui/Chung'
+import { Avatar, DS_NV, Modal, Nut, TEN_NV, chepVao, nvChuan, toast } from '../ui/Chung'
 
 function ChonNv({ nv, setNv }: { nv: NvId; setNv: (n: NvId) => void }) {
   return (
@@ -19,7 +19,7 @@ function ChonNv({ nv, setNv }: { nv: NvId; setNv: (n: NvId) => void }) {
 
 export function TaoNhanVat() {
   const [ten, setTen] = useState('')
-  const [nv, setNv] = useState<NvId>('knight')
+  const [nv, setNv] = useState<NvId>('tham_hiem_nam')
   const [dang, setDang] = useState(false)
   const loi = ten.trim().length < 2 ? 'Tên cần ít nhất 2 ký tự' : ten.trim().length > 25 ? 'Tên tối đa 25 ký tự' : ''
   const tao = async () => {
@@ -31,7 +31,7 @@ export function TaoNhanVat() {
   }
   return (
     <Modal tieuDe="✨ Chào mừng chiến binh mới!" rong={640}>
-      <p className="mo">Chọn nhân vật và đặt tên để bắt đầu đấu từ vựng nhé!</p>
+      <p className="mo">Chọn nhân vật và đặt tên để bắt đầu đấu từ vựng nhé! Nhân vật sẽ xuất trận trên sàn đấu.</p>
       <ChonNv nv={nv} setNv={setNv} />
       <label className="nhan-o">Tên nhân vật / biệt danh của em
         <input className="o-nhap" autoFocus maxLength={25} value={ten} onChange={(e) => setTen(e.target.value)} placeholder="Nhập tên của em…" onKeyDown={(e) => { if (e.key === 'Enter' && !loi) tao() }} />
@@ -46,8 +46,8 @@ export function HoSoModal({ onDong }: { onDong: () => void }) {
   const h = useHoSo()
   const db = h.db!
   const [ten, setTen] = useState(db.ten)
-  const [nv, setNv] = useState<NvId>(db.nv)
-  const doi = ten.trim() !== db.ten || nv !== db.nv
+  const [nv, setNv] = useState<NvId>(nvChuan(db.nv) as NvId)
+  const doi = ten.trim() !== db.ten || nv !== nvChuan(db.nv)
   const luu = async () => {
     try { await luuHoSo(ten.trim(), nv); toast('Đã lưu hồ sơ', 'ok') } catch (e) { toast((e as Error).message, 'loi') }
   }
@@ -136,8 +136,6 @@ export function CaiDatModal({ onDong }: { onDong: () => void }) {
       <div className="dong-cai-dat"><div><b>Tự đọc từ</b><small>Phát âm từ tiếng Anh mỗi câu</small></div><button className={'cong-tac' + (c.tuDocTu ? ' bat' : '')} onClick={() => dat({ tuDocTu: !c.tuDocTu })} /></div>
       <div className="dong-cai-dat"><div><b>Giọng đọc</b><small>Chọn giọng nữ hoặc nam (tuỳ máy có)</small></div>
         <div className="chip-hang nho"><button className={'chip' + (c.giongNu ? ' bat' : '')} onClick={() => dat({ giongNu: true })}><b>Nữ</b></button><button className={'chip' + (!c.giongNu ? ' bat' : '')} onClick={() => dat({ giongNu: false })}><b>Nam</b></button></div></div>
-      <div className="dong-cai-dat"><div><b>Đồ hoạ</b><small>Đẹp = sàn đấu 3D · Nhẹ = 2D cho máy yếu (iPad cũ)</small></div>
-        <div className="chip-hang nho"><button className={'chip' + (c.doHoa === '3d' ? ' bat' : '')} onClick={() => dat({ doHoa: '3d' })}><b>Đẹp (3D)</b></button><button className={'chip' + (c.doHoa === '2d' ? ' bat' : '')} onClick={() => dat({ doHoa: '2d' })}><b>Nhẹ (2D)</b></button></div></div>
       <div className="dong-cai-dat cot"><b>Phím tắt (máy tính)</b>
         <small>Trả lời: <code>A</code> <code>S</code> <code>Z</code> <code>X</code> hoặc <code>1</code>–<code>4</code> · Nghe lại: <code>Space</code></small>
         <small>2 người 1 máy — Người 1: <code>A</code> <code>S</code> <code>Z</code> <code>X</code> · Người 2: <code>J</code> <code>K</code> <code>N</code> <code>M</code></small>
