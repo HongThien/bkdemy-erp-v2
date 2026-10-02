@@ -34513,3 +34513,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Bài học: KHÔNG viết đơn ngoài giao thức kit; đặc thù bản đồ = vẽ cho số TỐI ĐA, code đặt N mảnh đầu theo vị trí DESIGN.md, mảnh thừa bỏ (không phủ mây).
 - 3 kit: hs-ban-do-the-gioi (10 lục địa + backdrop biển trống + 10 mảnh lục địa vẽ lại từ reference) · hs-ban-do-luc-dia (rừng, 8 mốc, backdrop không mốc/đường)
   · hs-ban-do-chang (rừng, 10 bệ, backdrop không bệ/quái/đường). DESIGN.md "Vị trí & cỡ" ghi tâm %/bề rộng từng mảnh + mô tả đường.
+
+### 02/10 sáng — [Giao diện] Ráp ảnh Đơn 7 đợt 2 (#11–#21)
+- Soi 21 ảnh (md5 không trùng): #11 thành cổ + #12 đảo trời đã vẽ lại đúng · #13–16 nền vùng rừng/băng/núi lửa/biển đảo · #17–20 nền chặng 4 biome đó · #21 mốc thành.
+- Nén: lục địa WebP 640² · nền vùng/chặng JPG 1672×941 q80 (237–438KB) · moc_thanh.webp 512². hinh2d CO_SAN: moc thành danh sách (vòng lại trong số đã có), vật tách cờ riêng.
+- Kiểm hs.html?xem=phieu_luu tầng lục địa (C) + chặng (C2) 1180×820, 0 lỗi. Nhận xét: mốc đặt theo bố cục chung chưa trùng khoảng đất trống vẽ trong nền vùng ⇒ cần đo vị trí
+  khoảng trống từng nền (như đo 8 lục địa trên #01). Thiếu: mốc #22–26 · bệ đá/sương/la bàn/cờ #27–30 · nền vùng+chặng 4 biome còn lại · world map vẽ lại (Đơn 9 kit 1).
+- Các thư mục Hephastos/Hercules/Mission/Nike/Phoenix/Style_Town = huy hiệu rank, nhiệm vụ, style Thị trấn — không có mốc bản đồ.

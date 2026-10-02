@@ -6,14 +6,16 @@ const G = '/bk-ui/hs/skin/rpg/phieuluu2d'
 
 export const BIOME = ['rung', 'bang', 'nui_lua', 'bien_dao', 'sa_mac', 'dam_lay', 'thanh_co', 'troi_sao'] as const
 
-/** Ảnh ĐÃ CÓ (02/10: Thùy gửi #04–#10; #11 thành cổ, #12 đảo trời ChatGPT giao trùng ảnh đầm lầy ⇒ chưa có, chờ vẽ lại). */
+/** Ảnh ĐÃ CÓ (02/10 sáng: Thùy gửi đủ #01–#21 Đơn 7 — 8 lục địa · nền vùng + nền chặng 4 biome đầu · mốc thành). */
 const CO_SAN = {
   nenTheGioi: true,
   /** biome → các hình dáng đã có (Đơn 7: mỗi biome tối đa 3 dáng _1 _2 _3) */
-  lucDia: { rung: [1], bang: [1], nui_lua: [1], bien_dao: [1], sa_mac: [1], dam_lay: [1] } as Record<string, number[]>,
-  nenVung: [] as string[],
-  nenChang: [] as string[],
-  moc: false, // moc_<loai>.png · be_da.png · may_suong.png · la_ban.png · co_chinh_phuc.png
+  lucDia: { rung: [1], bang: [1], nui_lua: [1], bien_dao: [1], sa_mac: [1], dam_lay: [1], thanh_co: [1], troi_sao: [1] } as Record<string, number[]>,
+  nenVung: ['rung', 'bang', 'nui_lua', 'bien_dao'] as string[],
+  nenChang: ['rung', 'bang', 'nui_lua', 'bien_dao'] as string[],
+  /** mốc công trình đã có (Đơn 7 #21–#26: thanh · thap · trai · den · cong · cau) — vòng lại trong số đã có */
+  moc: ['thanh'] as string[],
+  vat: false, // be_da.png · may_suong.png · la_ban.png · co_chinh_phuc.png (Đơn 7 #27–#30)
 }
 
 /** THẾ GIỚI = 1 BỨC TRANH LIỀN (Thùy 02/10: ghép nền biển + lục địa rời thì "không khớp, không giống ảnh toàn cảnh").
@@ -45,7 +47,7 @@ export const anhLucDia = (biome: string, thuTu: number) => {
 export const anhNenVung = (biome: string) => (CO_SAN.nenVung.includes(biome) ? `${G}/nen_vung_${biome}.jpg` : null)
 export const anhNenChang = (biome: string) => (CO_SAN.nenChang.includes(biome) ? `${G}/nen_chang_${biome}.jpg` : null)
 export const LOAI_MOC = ['thanh', 'thap', 'trai', 'den', 'cong', 'cau'] as const
-export const anhMoc = (i: number) => (CO_SAN.moc ? `${G}/moc_${LOAI_MOC[i % LOAI_MOC.length]}.png` : null)
-export const anhVat = (ten: 'be_da' | 'may_suong' | 'la_ban' | 'co_chinh_phuc') => (CO_SAN.moc ? `${G}/${ten}.png` : null)
+export const anhMoc = (i: number) => (CO_SAN.moc.length ? `${G}/moc_${CO_SAN.moc[i % CO_SAN.moc.length]}.webp` : null)
+export const anhVat = (ten: 'be_da' | 'may_suong' | 'la_ban' | 'co_chinh_phuc') => (CO_SAN.vat ? `${G}/${ten}.png` : null)
 // hình tạm cho mốc (emoji) khi chưa có hình Đơn 7
 export const EMOJI_MOC = ['🏰', '🗼', '⛺', '🛕', '⛩️', '🌉']
