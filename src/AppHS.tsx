@@ -207,6 +207,9 @@ const XemBoss = lazy(() => import('./screens/hocsinh/boss/XemBoss'))
 const XEM_BOSS = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'boss'
 const XemMoHinh3D = lazy(() => import('./screens/hocsinh/boss/XemMoHinh3D')) // hs.html?xem=boss3d — soi mô hình 3D cận cảnh
 const XEM_BOSS3D = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'boss3d'
+// ĐẤU TRƯỜNG 3 TRẬN (Thử thách — hs.html?xem=thu_thach · &goi_y=1 · &luot=0 · &dang=3 · &gioi=nam): dữ liệu giả, spec-thu-thach-dau-truong.md (02/10).
+const XemThuThach = lazy(() => import('./screens/hocsinh/thuthach/XemThuThach'))
+const XEM_THU_THACH = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'thu_thach'
 
 export default function AppHS() {
   if (XEM_GAMI) return <Suspense fallback={null}><XemMauGami /></Suspense>
@@ -214,6 +217,7 @@ export default function AppHS() {
   if (XEM_PHIEU_LUU) return <Suspense fallback={null}><XemPhieuLuu /></Suspense>
   if (XEM_BOSS) return <Suspense fallback={null}><XemBoss /></Suspense>
   if (XEM_BOSS3D) return <Suspense fallback={null}><XemMoHinh3D /></Suspense>
+  if (XEM_THU_THACH) return <Suspense fallback={null}><XemThuThach /></Suspense>
   const [session, setSession] = useState<Session | null | undefined>(undefined)
   const [hsId, setHsId] = useState<string | null | undefined>(undefined)
   if (import.meta.env.DEV && new URLSearchParams(location.search).has('demo')) return <DemoHome />

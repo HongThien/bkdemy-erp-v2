@@ -34967,3 +34967,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Kết quả (đọc lại DB):** 53 đề · 1.182 câu (1.108 Đại + 74 Hình giải tích) · 710 có dạng · 472 dạng chờ · thiếu đáp án 121 TN + 42 TLN · 68 tự luận · 5/53 đề duyệt được ngay,
   163 câu chặn. Tab Chờ duyệt khối 10 = 53.
 - **Chưa làm:** mở thử trên màn ERP (chưa có phiên đăng nhập). Script chạy lâu nên chạy nền từ đầu thay vì để phiên giữ.
+
+- (02/10 tối, Giao diện) **Demo Đấu trường (Thử thách 3 trận)** `hs.html?xem=thu_thach` (`&goi_y=1` đánh dấu đáp án · `&luot=0` hết lượt · `&dang=3` chưa đủ dạng · `&gioi=nam`): `src/screens/hocsinh/thuthach/` (`kieu.ts` hợp đồng · `mau.ts` 15 câu giả 2-2-1 ·
+  `DauTruongHS.tsx` sân 2D chibi + boss_thuy tạm + thanh máu 5 ô có vạch ngưỡng + hoạt cảnh sau mỗi trận / cuối lượt + Bỏ cuộc · `XemThuThach.tsx` cổng + lượt còn lại + khoá). Chốt thêm với Thùy: 2 lượt/ngày/MÔN, chưa đóng lượt 1 không mở lượt 2, trần TUẦN thay trần ngày, 30 phút ⇒ thua.
+  Kiểm bằng Browser pane: thắng 3 trận (+30) · thua trận 1 (boss phóng to, chibi xám) · bỏ cuộc (hỏi xác nhận) · 390×844 và 1280×720. Vấp: mạng đổi giữa chừng (`ERR_NETWORK_CHANGED`) làm trang trắng ⇒ tải lại; thanh máu bị cắt trên điện thoại ⇒ sân cao theo boss + co theo bề ngang.
+  Đã lệch spec §4 một chỗ: sai KHÔNG hồi máu quái (ghi ở spec §9). Điểm 10/20/30 trong demo là số giả — server tính thật.

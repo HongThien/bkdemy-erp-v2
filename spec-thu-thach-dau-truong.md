@@ -9,8 +9,8 @@
 2. Mỗi trận **5 câu trắc nghiệm** (chỉ MCQ — luật MCQ tuyệt đối của `spec-mcq-form.md`, chọn câu qua `_kho_dk_mcq_sql`). Làm đủ 5 câu rồi mới tính thắng thua (không kết thúc sớm).
 3. **Ngưỡng thắng:** trận 1 ≥ 60% (3/5) · trận 2 ≥ 80% (4/5) · trận 3 = 100% (5/5).
 4. **Thua trận nào là DỪNG luôn** (boss thắng, kết thúc lượt). Muốn thử lại thì bắt đầu lại từ trận 1 bằng bộ câu mới.
-5. **Giới hạn: 2 lượt Thử thách / ngày** (ngày giờ VN, tính theo MÔN hay chung — xem §8 câu mở). Lượt tính từ lúc BẮT ĐẦU (kể cả bỏ cuộc/hết giờ). Hết lượt: nút xám "Mai làm tiếp".
-6. **Nút "Bỏ cuộc"** có trên mọi màn câu hỏi ⇒ tính thua, boss thắng, lượt vẫn bị trừ. Thoát app giữa chừng ⇒ lượt lưu ở DB, mở lại tiếp tục đúng trận/đúng câu; **quá 30 phút không làm ⇒ server tự tính thua** (đề xuất, chờ Thùy xác nhận số).
+5. **Giới hạn: 2 lượt Thử thách / ngày / MÔN** (ngày giờ VN; Thùy chốt 02/10). **Chưa đóng lượt 1 (vượt / thua / bỏ cuộc / hết giờ) thì KHÔNG mở được lượt 2** — mỗi môn chỉ có tối đa 1 lượt đang mở. Lượt tính từ lúc BẮT ĐẦU (kể cả bỏ cuộc/hết giờ). Hết lượt: nút xám "Mai làm tiếp".
+6. **Nút "Bỏ cuộc"** có trên mọi màn câu hỏi ⇒ tính thua, boss thắng, lượt vẫn bị trừ. Thoát app giữa chừng ⇒ lượt lưu ở DB, mở lại tiếp tục đúng trận/đúng câu; **quá 30 phút không làm ⇒ server tự tính thua** (Thùy OK 02/10).
 7. Mọi câu đã làm (thắng hay thua) vẫn tính mastery + Điểm Dạng như tự luyện thường. "Lượt học thật" (≥5/10 câu · TB ≥6 giây/câu) áp như cũ cho chuỗi/nhiệm vụ.
 
 ## 2. Chọn câu (15 câu / lượt, server chọn một lần)
@@ -23,7 +23,7 @@
 
 ## 3. Điểm Rank
 
-Giữ thang cũ, đổi cách đo: **thắng 1 trận = 10 · thắng 2 trận = 20 · vượt cả 3 = 30** (Điểm Rank/lượt; thua trận 1 = 0). Trần ngày/tháng của Thử thách (`spec-thanh-tuu-nhiem-vu.md` D2) giữ; với 2 lượt/ngày thì tối đa 60/ngày/… ⇒ xem §8.
+Giữ thang cũ, đổi cách đo: **thắng 1 trận = 10 · thắng 2 trận = 20 · vượt cả 3 = 30** (Điểm Rank/lượt; thua trận 1 = 0). **Trần TUẦN** thay trần ngày (Thùy chốt 02/10: hợp lý hơn vì ngày đã bị chặn bởi 2 lượt, tối đa 60 điểm/ngày/môn); trần tháng của D2 giữ làm chốt chặn. Số trần tuần: Số liệu đề xuất theo luật "Thử thách ≈ 20% Điểm Rank" của D2.
 
 ## 4. Trải nghiệm (Giao diện)
 
@@ -58,7 +58,12 @@ Màn Đấu trường (cổng + tiến độ 3 trận) · bọc `LamBai` nhung t
 
 ## 8. Câu còn mở
 
-1. **2 lượt/ngày tính CHUNG mọi môn hay MỖI môn?** (Đề xuất: mỗi môn 2 lượt — em học 2 môn thì 4.)
-2. **Trần Điểm Rank ngày** có còn cần không khi đã chặn 2 lượt (tối đa 60/ngày/môn)? (Đề xuất: bỏ trần ngày, giữ trần tháng.)
-3. **Thoát giữa chừng 30 phút ⇒ thua** — Thùy xác nhận con số.
-4. N tối thiểu số dạng đã học để mở Thử thách (đề xuất 5).
+1. ~~2 lượt chung/riêng môn~~ → **mỗi môn 2 lượt, đóng lượt 1 mới mở lượt 2** (chốt 02/10).
+2. ~~Trần ngày~~ → **trần tuần** (chốt 02/10). Còn lại: SỐ trần tuần + có giữ trần tháng không — Số liệu đề xuất.
+3. ~~30 phút~~ → OK (chốt 02/10).
+4. N tối thiểu số dạng đã học để mở Thử thách: mặc định 5 — chưa có phản hồi, coi như OK, đổi được bằng 1 hằng ở DB.
+
+## 9. Demo (02/10)
+
+`hs.html?xem=thu_thach` — dữ liệu giả, không DB, không đăng nhập: cổng + 3 trận + hoạt cảnh 2D + bỏ cuộc + kết quả. `&goi_y=1` đánh dấu đáp án đúng · `&luot=0` hết lượt · `&dang=3` chưa đủ dạng · `&gioi=nu`. Code: `src/screens/hocsinh/thuthach/`.
+**Chỉnh nhỏ so với §4 khi dựng demo:** thanh máu quái 5 ô = 5 câu, đúng ⇒ mất 1 ô, **sai ⇒ KHÔNG hồi** (bỏ luật hồi cũ cho đơn giản); vạch "hạ gục" đặt tại ngưỡng — chạm vạch là chắc thắng trận.
