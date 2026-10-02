@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-307 bảng · 20 view · 0 enum · 115 trigger · 747 function
+315 bảng · 20 view · 0 enum · 123 trigger · 747 function
 
 ## _app_secrets
 
@@ -2739,7 +2739,7 @@
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→thanh_tuu.mon |  |
+| mon | text |  |  | PK FK→huy_hieu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -2802,7 +2802,7 @@
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | id | uuid |  | gen_random_uuid() | PK |  |
-| mon | text |  |  |  | `dai` · `hgt` · `khtn` · `anh` |
+| mon | text |  |  |  | `dai` · `hgt` · `khtn` · `anh` · `tsa` |
 | loai | text |  |  |  | `cau` · `menh_de` |
 | ma_cau | text |  |  |  |  |
 | thu_tu | integer | Y |  |  |  |
@@ -2821,7 +2821,7 @@
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | id | uuid |  | gen_random_uuid() | PK |  |
-| kho | text |  |  |  | `dai` · `khtn` · `hgt` · `anh` |
+| kho | text |  |  |  | `dai` · `khtn` · `hgt` · `anh` · `tsa` |
 | boi | text |  |  |  | `mcq-auto` · `claude_code` |
 | ten | text |  |  |  |  |
 | ky | boolean |  | true |  |  |
@@ -2837,7 +2837,7 @@
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | id | uuid |  | gen_random_uuid() | PK |  |
-| mon | text |  |  |  | `dai` · `hgt` · `khtn` |
+| mon | text |  |  |  | `dai` · `hgt` · `khtn` · `anh` |
 | ma_cau | text |  |  |  |  |
 | khau | text |  |  |  | `doc` · `menh_de` · `dap_so` · `loi_giai` · `cum` · `hinh` |
 | truong | text |  |  |  |  |
@@ -4214,6 +4214,141 @@
 | so | jsonb |  |  |  |  |
 | tinh_luc | timestamp with time zone |  | now() |  |  |
 | tinh_mat_ms | integer |  |  |  |  |
+
+## tsa_ban_do
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_dang | text |  | ('TS'::text \|\| lpad((nextval('tsa_dang_seq'::regclass))::text, 8, '0'::text)) | PK |  |
+| khoi | text |  |  |  |  |
+| ma_chu_de | text |  |  |  |  |
+| ten_chu_de | text |  |  |  |  |
+| ma_chuyen_de | text |  |  |  |  |
+| ten_chuyen_de | text |  |  |  |  |
+| ten_dang | text |  |  |  |  |
+| muc_do | smallint |  |  |  |  |
+| bac_toi_thieu | text |  |  | FK→lop_bac.ma |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| mo_ta_ngan | text | Y |  |  |  |
+| file_goc | text | Y |  |  |  |
+| thu_tu | smallint | Y |  |  |  |
+
+## tsa_cau_hoi
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cau | text |  | ('TC'::text \|\| lpad((nextval('tsa_cau_seq'::regclass))::text, 6, '0'::text)) | PK |  |
+| dang_chinh | text |  |  | FK→tsa_ban_do.ma_dang |  |
+| loai_cau | text |  |  |  | `trac_nghiem` · `dung_sai` · `tra_loi_ngan` · `tu_luan` · `keo_tha` |
+| noi_dung | text |  |  |  |  |
+| lua_chon | jsonb | Y |  |  |  |
+| menh_de | jsonb | Y |  |  |  |
+| dap_an | text | Y |  |  |  |
+| loi_giai | text | Y |  |  |  |
+| anh_de | text | Y |  |  |  |
+| anh_dap_an | text | Y |  |  |  |
+| nguon | text |  | 'le'::text |  |  |
+| nguon_giai | text |  | 'nguoi'::text |  |  |
+| parent_ma_cau | text | Y |  | FK→tsa_cau_hoi.ma_cau |  |
+| clone_method | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+| ma_cum | text | Y |  | FK→tsa_cum_bai.ma_cum |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| giai_method | text | Y |  |  |  |
+| loi_giai_ai | text | Y |  |  |  |
+| dap_an_ai | text | Y |  |  |  |
+| ai_model | text | Y |  |  |  |
+| ai_de_xuat_at | timestamp with time zone | Y |  |  |  |
+| kiem_may | text | Y |  |  | `khop` · `nghi` · `khong_kiem_duoc` |
+| kiem_may_at | timestamp with time zone | Y |  |  |  |
+| kiem_may_boi | text | Y |  |  | `mcq-auto` · `claude_code` · `nguoi` |
+| kiem_may_ghi | text | Y |  |  |  |
+| duyet_nguon | text | Y |  |  | `nguoi` · `may` · `ai` |
+| dang_ai_de_xuat | text | Y |  |  |  |
+| kiem_may_lo | uuid | Y |  | FK→kho_kiem_lo.id |  |
+| kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at, giai_method) |  |  |
+| ten_de_goc | text | Y |  |  |  |
+| phan_tai_lieu | text | Y |  |  | `vi_du` · `ren_luyen` · `bai_tap` |
+| so_cau_goc | smallint | Y |  |  |  |
+
+## tsa_cau_hoi_yeu_cau_giai
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| ma_cau | text |  |  | FK→tsa_cau_hoi.ma_cau |  |
+| ghi_chu | text | Y |  |  |  |
+| nguoi_yeu_cau | uuid | Y |  | FK→nhan_su.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| xu_ly_at | timestamp with time zone | Y |  |  |  |
+| nguoi_giai | uuid | Y |  | FK→nhan_su.id |  |
+| trang_thai | text |  | 'cho_claude'::text |  | `cho_claude` · `da_xong` · `dang_giai` · `cho_duyet` · `can_sua` · `da_duyet` · `da_tra` · `qua_han` · `tu_choi_3` · `cho_claude` · `da_xong` |
+| han_at | timestamp with time zone | Y |  |  |  |
+| nop_at | timestamp with time zone | Y |  |  |  |
+| cap_nhat_at | timestamp with time zone | Y |  |  |  |
+| loi_giai_nhap | text | Y |  |  |  |
+| anh_nhap | text | Y |  |  |  |
+| dap_an_nhap | text | Y |  |  |  |
+| tu_choi_lan | integer |  | 0 |  |  |
+| ly_do_tu_choi | text | Y |  |  |  |
+| tu_choi_at | timestamp with time zone | Y |  |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| so_ky_tu | integer | Y |  |  |  |
+| so_cong_thuc | integer | Y |  |  |  |
+| loi_giai_ai | text | Y |  |  |  |
+| ai_model | text | Y |  |  |  |
+| che_do | text |  | 'giai'::text |  | `giai` · `hoan_thien` |
+| y_nhap | jsonb | Y |  |  |  |
+
+## tsa_chuyen_de_ly_thuyet
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_chuyen_de | text |  |  | PK |  |
+| noi_dung | text |  | ''::text |  |  |
+| file_url | text | Y |  |  |  |
+| ten_file | text | Y |  |  |  |
+| khong_can | boolean |  | false |  |  |
+| cap_nhat_at | timestamp with time zone |  | now() |  |  |
+
+## tsa_cum_bai
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cum | text |  | ('TCUM'::text \|\| lpad((nextval('tsa_cum_seq'::regclass))::text, 5, '0'::text)) | PK |  |
+| ma_dang | text |  |  | FK→tsa_ban_do.ma_dang |  |
+| ten | text | Y |  |  |  |
+| thu_tu | smallint |  | 1 |  |  |
+| ghi_chu | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## tsa_cum_tien_de
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cum | text |  |  | PK FK→tsa_cum_bai.ma_cum |  |
+| tien_de_ma_cum | text |  |  | PK FK→tsa_cum_bai.ma_cum |  |
+
+## tsa_dang_ly_thuyet
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_dang | text |  |  | PK FK→tsa_ban_do.ma_dang |  |
+| noi_dung | text |  | ''::text |  |  |
+| file_url | text | Y |  |  |  |
+| ten_file | text | Y |  |  |  |
+| cap_nhat_at | timestamp with time zone |  | now() |  |  |
+
+## tsa_dang_tien_de
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_dang | text |  |  | PK FK→tsa_ban_do.ma_dang |  |
+| tien_de_ma_dang | text |  |  | PK FK→tsa_ban_do.ma_dang |  |
 
 ## tu_luyen_dang_lan
 
@@ -6008,6 +6143,14 @@ WITH luot AS (
 | the_gioi_khen | the_gioi_khen_log | AFTER | INSERT/DELETE/UPDATE | _the_gioi_ghi_log |
 | thong_bao_ph | trg_tbph_updated_at | BEFORE | UPDATE | tbph_updated_at |
 | thu_thach_luot | trg_rank_len_bac | AFTER | INSERT | _trg_rank_len_bac |
+| tsa_ban_do | trg_tsa_ban_do_sync_ca_test_cau | AFTER | UPDATE | tg_ban_do_sync_ca_test_cau |
+| tsa_cau_hoi | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
+| tsa_cau_hoi | trg_de_thi_dien_dang | AFTER | UPDATE | _trg_de_thi_dien_dang |
+| tsa_cau_hoi | trg_kho_cau_duyet_nguon | BEFORE | INSERT/UPDATE | _kho_cau_duyet_nguon |
+| tsa_cau_hoi | trg_log_doi_dang | AFTER | UPDATE | _trg_log_doi_dang |
+| tsa_cau_hoi | trg_log_kho_cau_tsa | AFTER | DELETE/UPDATE | log_kho_cau |
+| tsa_cau_hoi | trg_log_kho_sua | AFTER | UPDATE | _trg_log_kho_sua |
+| tsa_cau_hoi_yeu_cau_giai | tsa_cau_hoi_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
 | ung_vien | trg_log_ung_vien | AFTER | INSERT/UPDATE | log_ung_vien |
 | ung_vien | trg_ung_vien_doi_khoi_phan_cong | AFTER | UPDATE | tg_ung_vien_doi_khoi_phan_cong |
 | viec | tg_viec_nghiem_thu_tinh | BEFORE | INSERT/UPDATE | fn_viec_nghiem_thu_tinh |
@@ -6935,6 +7078,8 @@ WITH luot AS (
 | toan_de_thi_cau | toan_de_thi_cau_1_of_2_check | `CHECK ((num_nonnulls(ma_cau_dai, ma_cau_hgt) = 1))` |
 | troly_nhan_dinh | troly_nhan_dinh_gac_ck | `CHECK (((quyet_dinh = 'gac'::text) = (gac_den IS NOT NULL)))` |
 | troly_ra_soat | troly_ra_soat_gac_ck | `CHECK (((ket_luan = 'gac'::text) = (gac_den IS NOT NULL)))` |
+| tsa_cum_tien_de | khtn_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
+| tsa_dang_tien_de | khtn_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
 | viec_cap_nhat | viec_cap_nhat_tien_do_bao_cao_check | `CHECK (((tien_do_bao_cao IS NULL) OR ((tien_do_bao_cao >= (0)::numeric) AND (tien_do_bao_cao <= (100)::numeric))))` |
 | y_tuong | y_tuong_co_check | `CHECK ((co = ANY (ARRAY[1, 2, 3, 5, 8])))` |
 | y_tuong | y_tuong_gia_tri_check | `CHECK ((gia_tri = ANY (ARRAY[1, 2, 3, 5, 8])))` |

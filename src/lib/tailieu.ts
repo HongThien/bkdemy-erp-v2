@@ -1,6 +1,6 @@
 // Data-layer "Làm tài liệu" (giáo trình…). Tài liệu = THAM CHIẾU vào kho; resolver kéo nội dung sống khi render.
 import { supabase } from './supabase'
-import { cumKey, listCauByDang, listDaiMap, listKhtnMap, listHgtMap, listAnhMap, type CauHoi, type MapRow } from './kho/api'
+import { cumKey, listCauByDang, listDaiMap, listKhtnMap, listHgtMap, listAnhMap, listTsaMap, type CauHoi, type MapRow } from './kho/api'
 import { listHinhHocMap } from './kho/hinhhoc'
 
 const LIMIT = 10000
@@ -15,6 +15,9 @@ export function khoCuaMon(mon?: string | null, nhanh?: string | null): { cauTbl:
     ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', ltDangTbl: 'khtn_dang_ly_thuyet', ltCdTbl: 'khtn_chuyen_de_ly_thuyet', formTnTbl: 'khtn_cau_form_tn', listMap: listKhtnMap }
     // Tiếng Anh (kho từ 02/10): KHÔNG có lý thuyết cấp chuyên đề, KHÔNG có form TN (câu vốn là trắc nghiệm) ⇒ ltCdTbl/formTnTbl
     // trỏ tên theo quy ước (bảng chưa có — gọi tới thì PostgREST báo to, không im lặng rơi về Toán như trước).
+    // TSA = Toán độc lập (02/10): cùng khuôn KHTN/Đại, bảng tsa_*. (Bảng form TN/điền chưa có — gọi tới thì PostgREST báo to.)
+    : mon === 'TSA'
+    ? { cauTbl: 'tsa_cau_hoi', banDoTbl: 'tsa_ban_do', ltDangTbl: 'tsa_dang_ly_thuyet', ltCdTbl: 'tsa_chuyen_de_ly_thuyet', formTnTbl: 'tsa_cau_form_tn', listMap: listTsaMap }
     : mon === 'Tiếng Anh'
     ? { cauTbl: 'anh_cau_hoi', banDoTbl: 'anh_ban_do', ltDangTbl: 'anh_dang_ly_thuyet', ltCdTbl: 'anh_chuyen_de_ly_thuyet', formTnTbl: 'anh_cau_form_tn', listMap: listAnhMap }
     : nhanh === 'hinh_gt'

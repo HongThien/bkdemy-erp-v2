@@ -230,17 +230,19 @@ export const tenCum = (c: CumBai) => c.ten?.trim() || `Cụm ${c.thu_tu}`   // c
 export const coCumBai = (cauTbl: string) => !!CUM_TBL[cauTbl]
 
 // Bảng cụm theo bảng câu. undefined = nhánh CHƯA có cụm (hgt/hình) → UI ẩn tab Cụm.
-export const CUM_TBL: Record<string, string> = { dai_cau_hoi: 'dai_cum_bai', khtn_cau_hoi: 'khtn_cum_bai', hgt_cau_hoi: 'hgt_cum_bai', hinh_hoc_cau_hoi: 'hinh_hoc_cum_bai' }
+export const CUM_TBL: Record<string, string> = { dai_cau_hoi: 'dai_cum_bai', khtn_cau_hoi: 'khtn_cum_bai', hgt_cau_hoi: 'hgt_cum_bai', hinh_hoc_cau_hoi: 'hinh_hoc_cum_bai', tsa_cau_hoi: 'tsa_cum_bai' }
 // Bảng cạnh tiền đề theo bảng câu: [dạng↔dạng, cụm↔cụm]
 export const TIEN_DE_TBL: Record<string, { dang: string; cum: string }> = {
   dai_cau_hoi: { dang: 'dai_dang_tien_de', cum: 'dai_cum_tien_de' },
   khtn_cau_hoi: { dang: 'khtn_dang_tien_de', cum: 'khtn_cum_tien_de' },
+  tsa_cau_hoi: { dang: 'tsa_dang_tien_de', cum: 'tsa_cum_tien_de' },
   hgt_cau_hoi: { dang: 'hgt_dang_tien_de', cum: 'hgt_cum_tien_de' },
 }
 // Hàm bao đóng ở Postgres theo bảng câu (dùng chặn chu trình + sắp topo)
 const RPC_HAU_DUE: Record<string, { dang: string; cum: string }> = {
   dai_cau_hoi: { dang: 'dai_dang_hau_due', cum: 'dai_cum_hau_due' },
   khtn_cau_hoi: { dang: 'khtn_dang_hau_due', cum: 'khtn_cum_hau_due' },
+  tsa_cau_hoi: { dang: 'tsa_dang_hau_due', cum: 'tsa_cum_hau_due' },
   hgt_cau_hoi: { dang: 'hgt_dang_hau_due', cum: 'hgt_cum_hau_due' },
 }
 
@@ -362,7 +364,7 @@ export async function xoaVinhVienCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promi
 }
 
 // ── TÌM CÂU (để sửa câu sai nhanh) — THEO KHO ĐANG XEM (per cauTbl), KHÔNG xuyên môn ──
-const BAN_DO_OF: Record<string, string> = { dai_cau_hoi: 'dai_ban_do', khtn_cau_hoi: 'khtn_ban_do', anh_cau_hoi: 'anh_ban_do' }
+const BAN_DO_OF: Record<string, string> = { dai_cau_hoi: 'dai_ban_do', khtn_cau_hoi: 'khtn_ban_do', anh_cau_hoi: 'anh_ban_do', tsa_cau_hoi: 'tsa_ban_do' }
 export type CauTimThay = CauHoi & { dangTen: string }
 // q khớp MÃ (prefix) HOẶC NỘI DUNG (chứa). Sanitize ,() vì là ký tự phân tách của PostgREST .or().
 export async function searchCau(q: string, tbl = 'dai_cau_hoi'): Promise<CauTimThay[]> {
@@ -883,11 +885,12 @@ export type DemChuaGiai = { khoi: string; so_cau: number; so_cho_giai: number }
 // MÔN (nhãn nhan_su_mon, khớp MON_LIST) → mỗi môn gồm các NHÁNH kho của nó. Toán = Đại + Hình giải tích + Hình;
 // KHTN = 1 cây. Registry 1 chỗ, mọi màn gộp-nhánh dùng cái này, KHÔNG tự liệt kê ['toan','khtn','hgt'] rồi trộn môn.
 export type KhoNhanh = KhoMon | 'hinh'
-export const NHANH_LABEL: Record<KhoNhanh, string> = { toan: 'Đại', khtn: 'KHTN', hgt: 'Hình giải tích', hinh: 'Hình', hinh_hoc: 'Hình học', anh: 'Tiếng Anh' }
+export const NHANH_LABEL: Record<KhoNhanh, string> = { toan: 'Đại', khtn: 'KHTN', hgt: 'Hình giải tích', hinh: 'Hình', hinh_hoc: 'Hình học', anh: 'Tiếng Anh', tsa: 'TSA' }
 export const KHO_MON: { mon: string; nhanh: KhoNhanh[] }[] = [
   { mon: 'Toán', nhanh: ['toan', 'hgt', 'hinh', 'hinh_hoc'] },
   { mon: 'KHTN', nhanh: ['khtn'] },
   { mon: 'Tiếng Anh', nhanh: ['anh'] },
+  { mon: 'TSA', nhanh: ['tsa'] },
 ]
 // Nhánh CHỈ có luồng duyệt câu (không giải bài AI, không đúng/sai, không form trắc nghiệm AI) — màn duyệt ẩn các tab đó.
 export const NHANH_CHI_DUYET_CAU: KhoNhanh[] = ['anh']
@@ -1304,12 +1307,14 @@ export function parseIngestJson(text: string): IngestCau[] {
 // LUỒNG NHẬP KHO (ingest-first, scope = CHỦ ĐỀ): 1 file → bóc MỌI loại → gán dạng → verify → đẩy kho.
 // Bóc/crop hình chạy ở SCREEN (DOM); ở đây = prompt + parse + phân loại grounded + verify + AI-giải + save + log.
 // ════════════════════════════════════════════════════════════════
-export type KhoMon = 'toan' | 'khtn' | 'hgt' | 'hinh_hoc' | 'anh'
+export type KhoMon = 'toan' | 'khtn' | 'hgt' | 'hinh_hoc' | 'anh' | 'tsa'
 export function khoTbls(mon: KhoMon): { cauTbl: string; banDoTbl: string; lyThuyetTbl: string; yeuCauGiaiTbl: string } {
   return mon === 'khtn'
     ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', lyThuyetTbl: 'khtn_dang_ly_thuyet', yeuCauGiaiTbl: 'khtn_cau_hoi_yeu_cau_giai' }
     // Tiếng Anh: KHÔNG có bảng yêu cầu giải (đáp án đến từ tài liệu GV + 2 bên kiểm, không có luồng giải bài) — màn
     // nào cần yeuCauGiaiTbl phải ẩn với 'anh' (DuyetLoiGiaiScreen chỉ mở tab Duyệt câu cho môn này).
+    : mon === 'tsa'
+    ? { cauTbl: 'tsa_cau_hoi', banDoTbl: 'tsa_ban_do', lyThuyetTbl: 'tsa_dang_ly_thuyet', yeuCauGiaiTbl: 'tsa_cau_hoi_yeu_cau_giai' }
     : mon === 'anh'
     ? { cauTbl: 'anh_cau_hoi', banDoTbl: 'anh_ban_do', lyThuyetTbl: 'anh_dang_ly_thuyet', yeuCauGiaiTbl: 'anh_cau_hoi_yeu_cau_giai' }
     : mon === 'hgt'
@@ -1756,8 +1761,8 @@ export function groupDai(rows: DaiDang[]): ChuDeNode[] {
 //
 // ⚠ Tiền tố DÀI KHÁC NHAU (K = 1 ký tự, T1/T2/T3 = 2) ⇒ CẤM cắt mã bằng chỉ số tuyệt
 // đối (`ma.slice(0,6)`). Mọi phép cắt theo vị trí phải đi qua `tachTienTo` bên dưới.
-export type KhoKey = 'dai' | 'hinh' | 'hinhgt' | 'khtn' | 'hinhhoc' | 'anh'
-export const KHO_TIEN_TO: Record<KhoKey, string> = { dai: 'T1', hinh: 'T2', hinhgt: 'T3', khtn: 'K', hinhhoc: 'HH', anh: 'E' }
+export type KhoKey = 'dai' | 'hinh' | 'hinhgt' | 'khtn' | 'hinhhoc' | 'anh' | 'tsa'
+export const KHO_TIEN_TO: Record<KhoKey, string> = { dai: 'T1', hinh: 'T2', hinhgt: 'T3', khtn: 'K', hinhhoc: 'HH', anh: 'E', tsa: 'TS' }
 // E = Tiếng Anh (kho có từ 02/10, mig 202610021156). V = Văn — để dành. 'A' cũ (dành cho Anh) giữ để không vỡ mã nào lỡ dùng.
 const RE_TIEN_TO = /^(T[123]|K|V|A|E)(?=[0-9])/
 /** Tách mã thành (tiền tố kho, phần vị trí). Mã cũ chưa có tiền tố → tienTo = ''. */
@@ -2312,6 +2317,69 @@ export async function deleteKhtnChuyenDeLyThuyet(ma_chuyen_de: string): Promise<
   const { error } = await supabase.from('khtn_chuyen_de_ly_thuyet').delete().eq('ma_chuyen_de', ma_chuyen_de); if (error) throw error
 }
 
+// ── TSA (Tư duy ĐH Bách khoa — Toán độc lập): bản đồ clone shape Đại/KHTN, bảng tsa_*, 1 cây Chủ-đề→Chuyên-đề→Dạng ──
+export async function listTsaMap(khoi: string): Promise<MapRow[]> {
+  const { data, error } = await supabase.from('tsa_ban_do').select('*')
+    .eq('khoi', khoi).not('ma_dang', 'like', '%000000').order('ma_chu_de').order('ma_chuyen_de').order('ma_dang').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []).map((r: any) => ({
+    leafMa: r.ma_dang, khoi: r.khoi, t1Ma: r.ma_chu_de, t1Ten: r.ten_chu_de,
+    t2Ma: r.ma_chuyen_de, t2Ten: r.ten_chuyen_de, leafTen: r.ten_dang, bac: r.bac_toi_thieu, mucDo: r.muc_do,
+  }))
+}
+export async function createTsaMap(row: MapRow): Promise<void> {
+  const { error } = await supabase.from('tsa_ban_do').insert({
+    ma_dang: row.leafMa, khoi: row.khoi, ma_chu_de: row.t1Ma, ten_chu_de: row.t1Ten,
+    ma_chuyen_de: row.t2Ma, ten_chuyen_de: row.t2Ten, ten_dang: row.leafTen, muc_do: row.mucDo ?? 3, bac_toi_thieu: row.bac,
+  })
+  if (error) throw error
+}
+export async function updateTsaLeaf(leafMa: string, patch: { leafTen: string; bac: string; mucDo: number | null }): Promise<void> {
+  const { error } = await supabase.from('tsa_ban_do').update({ ten_dang: patch.leafTen, bac_toi_thieu: patch.bac, muc_do: patch.mucDo ?? undefined }).eq('ma_dang', leafMa)
+  if (error) throw error
+}
+export const deleteTsaLeaf = async (leafMa: string) => { const { error } = await supabase.from('tsa_ban_do').delete().eq('ma_dang', leafMa); if (error) throw error }
+export async function deleteTsaLeaves(leafMas: string[]): Promise<void> {
+  if (!leafMas.length) return
+  const { error } = await supabase.from('tsa_ban_do').delete().in('ma_dang', leafMas); if (error) throw error
+}
+export async function deleteTsaCum(leafMas: string[]): Promise<void> {
+  if (!leafMas.length) return
+  const { error: e1 } = await supabase.from('tsa_cau_hoi').update({ xoa_at: new Date().toISOString() }).in('dang_chinh', leafMas).is('xoa_at', null); if (e1) throw e1
+  const { error: e2 } = await supabase.from('tsa_ban_do').delete().in('ma_dang', leafMas); if (e2) throw e2
+}
+export async function renameTsaChuDe(khoi: string, maChuDe: string, ten: string): Promise<void> {
+  const { error } = await supabase.from('tsa_ban_do').update({ ten_chu_de: ten }).eq('khoi', khoi).eq('ma_chu_de', maChuDe); if (error) throw error
+}
+export async function renameTsaChuyenDe(maChuyenDe: string, ten: string): Promise<void> {
+  const { error } = await supabase.from('tsa_ban_do').update({ ten_chuyen_de: ten }).eq('ma_chuyen_de', maChuyenDe); if (error) throw error
+}
+export async function countCauByDangTsa(): Promise<Record<string, number>> {
+  const { data, error } = await supabase.rpc('count_cau_by_dang', { p_tbl: 'tsa_cau_hoi' })
+  if (error) throw error
+  return (data ?? {}) as Record<string, number>
+}
+export async function listTsaLyThuyet(): Promise<Record<string, LyThuyet>> {
+  const { data, error } = await supabase.from('tsa_dang_ly_thuyet').select('*').limit(LIMIT); if (error) throw error
+  const m: Record<string, LyThuyet> = {}; for (const r of data ?? []) { const x = r as any; m[x.ma_dang] = { noi_dung: x.noi_dung ?? '', file_url: x.file_url, ten_file: x.ten_file, cap_nhat_at: x.cap_nhat_at } } return m
+}
+export async function upsertTsaLyThuyet(ma_dang: string, noi_dung: string, file_url: string | null, ten_file: string | null): Promise<void> {
+  const { error } = await supabase.from('tsa_dang_ly_thuyet').upsert({ ma_dang, noi_dung, file_url, ten_file }, { onConflict: 'ma_dang' }); if (error) throw error
+}
+export async function deleteTsaLyThuyet(ma_dang: string): Promise<void> {
+  const { error } = await supabase.from('tsa_dang_ly_thuyet').delete().eq('ma_dang', ma_dang); if (error) throw error
+}
+export async function listTsaChuyenDeLyThuyet(): Promise<Record<string, LyThuyet>> {
+  const { data, error } = await supabase.from('tsa_chuyen_de_ly_thuyet').select('*').limit(LIMIT); if (error) throw error
+  const m: Record<string, LyThuyet> = {}; for (const r of data ?? []) { const x = r as any; m[x.ma_chuyen_de] = { noi_dung: x.noi_dung ?? '', file_url: x.file_url, ten_file: x.ten_file, khong_can: x.khong_can ?? false, cap_nhat_at: x.cap_nhat_at } } return m
+}
+export async function upsertTsaChuyenDeLyThuyet(ma_chuyen_de: string, noi_dung: string, file_url: string | null, ten_file: string | null, khong_can = false): Promise<void> {
+  const { error } = await supabase.from('tsa_chuyen_de_ly_thuyet').upsert({ ma_chuyen_de, noi_dung, file_url, ten_file, khong_can }, { onConflict: 'ma_chuyen_de' }); if (error) throw error
+}
+export async function deleteTsaChuyenDeLyThuyet(ma_chuyen_de: string): Promise<void> {
+  const { error } = await supabase.from('tsa_chuyen_de_ly_thuyet').delete().eq('ma_chuyen_de', ma_chuyen_de); if (error) throw error
+}
+
 // ── TIẾNG ANH (anh_*): cây MẢNG → CHUYÊN ĐỀ → ĐIỂM KIẾN THỨC (spec-anh-ban-do-k9.md). Dùng chung hợp đồng cột
 // ma_chu_de/ma_chuyen_de/ma_dang của hạ tầng kho (ma_chu_de = mảng). Mã E09… mang luôn thứ tự bản đồ ⇒ order theo mã.
 // Không có lý thuyết cấp chuyên đề, không có cụm/tiền đề (chưa có bảng) — UI tự ẩn các tab đó.
@@ -2481,7 +2549,7 @@ export type McqMetric = {
   precision: number | null; ti_le_sua: number | null; ly_do_tu_choi: { ly_do: string; n: number }[]
   phan_bo: Record<string, number>; do_lua: { ma_cau: string; luot: number; chon: number[] }[]
 }
-export const khoPrefix = (mon: KhoMon): 'dai' | 'khtn' | 'hgt' => (mon === 'khtn' ? 'khtn' : mon === 'hgt' ? 'hgt' : 'dai')
+export const khoPrefix = (mon: KhoMon): 'dai' | 'khtn' | 'hgt' | 'tsa' => (mon === 'khtn' ? 'khtn' : mon === 'hgt' ? 'hgt' : mon === 'tsa' ? 'tsa' : 'dai')
 export async function listFormTnChoDuyet(mon: KhoMon, khoi?: string, daDuyet = false): Promise<FormTnChoDuyet[]> {
   const { data, error } = await supabase.rpc('fn_mcq_form_cho_duyet', { p_kho: khoPrefix(mon), p_khoi: khoi || null, p_da_duyet: daDuyet })
   if (error) throw error
