@@ -155,11 +155,17 @@ export function CssBan2D() {
 
 /** 5 SAO tiến độ (Thùy 02/10: "thay vì hiện đạt thì để dạng star cho dễ hiểu — 5 star, mỗi star 20% hoàn thành").
  *  ti = tỉ lệ hoàn thành 0–1 (đã có sẵn: dạng đạt / tổng dạng, hoặc độ nắm dạng do DB trả) — chỉ đổi cách HIỂN THỊ. Sao đầy = mỗi 20% trọn. */
-export function Sao5({ ti, co = 13, vienToi = false }: { ti: number; co?: number; vienToi?: boolean }) {
+/** Kiểu sao RIÊNG khi đè lên tranh (màu cố định, không theo style): sao đạt · sao chưa đạt · viền · nền viên thuốc tối phía sau hàng sao. */
+export interface KieuSao { dat: string; chua: string; vien: string; nen: string }
+export function Sao5({ ti, co = 13, vienToi = false, kieu }: { ti: number; co?: number; vienToi?: boolean; kieu?: KieuSao }) {
   const n = Math.max(0, Math.min(5, Math.floor(ti * 5 + 1e-9)))
   return (
-    <span className="inline-flex items-center gap-[1px] leading-none" role="img" aria-label={`${n}/5 sao`}>
-      {Array.from({ length: 5 }, (_, i) => vienToi ? (
+    <span className="inline-flex items-center gap-[1px] leading-none" role="img" aria-label={`${n}/5 sao`} style={kieu ? { background: kieu.nen, borderRadius: 999, padding: `${co * 0.06}px ${co * 0.3}px`, boxShadow: `0 0 0 1px ${kieu.vien}` } : undefined}>
+      {Array.from({ length: 5 }, (_, i) => kieu ? (
+        // KIỂU RIÊNG (Thùy 02/10: sao trùng màu nền ⇒ phải NỔI): vàng rực + viền nâu tím tối dày + bóng; sao chưa đạt xám sáng; cả hàng nằm trên viên thuốc tối mờ
+        <span key={i} style={{ fontSize: co, lineHeight: 1, color: i < n ? kieu.dat : kieu.chua, WebkitTextStroke: `${Math.max(2, co / 5)}px ${kieu.vien}`, paintOrder: 'stroke fill',
+          textShadow: i < n ? `0 2px 3px ${kieu.vien}, 0 0 10px ${kieu.dat}66` : `0 1px 2px ${kieu.vien}` }}>★</span>
+      ) : vienToi ? (
         // VIỀN TỐI (Thùy 02/10: sao đè lên cảnh phải có viền tối để tách khỏi cảnh vật): viền màu nền style ôm ngoài + bóng tối; sao chưa đạt = ruột tối mờ + viền sáng mảnh ⇒ vẫn phân biệt rõ
         <span key={i} style={{ fontSize: co, lineHeight: 1, color: i < n ? 'var(--sk-acc)' : 'color-mix(in srgb, var(--sk-muted) 60%, transparent)',
           WebkitTextStroke: `${Math.max(2, co / 7)}px var(--sk-bg)`, paintOrder: 'stroke fill',

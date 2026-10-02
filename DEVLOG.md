@@ -35064,3 +35064,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   lại nuốt `\u` trong regex Python ⇒ viết dòng đó bằng chr(92). **Bẫy commit:** phiên MT sửa cùng `src/lib/tailieu.ts` ⇒ commit `ef921a7`
   của họ cuốn luôn hunk `nguLieuTbl` của mình (nội dung đúng). Chưa soi được màn ERP bằng mắt: đăng nhập nhanh dùng tài khoản thật ⇒ Claude
   không tự đăng nhập.
+
+- (02/10 đêm, Giao diện) **Sao nổi bật hơn + chạy chậm lại** (Thùy): 5 sao ở lục địa — vàng rực `#FFC61A`, viền tối dày (cỡ/5), bóng, cả hàng nằm trên viên thuốc tối mờ (sao chưa đạt xám sáng) ⇒ tách khỏi nền xanh/vàng (`SAO_KIT` ở `kitLucDia.ts`, `KieuSao` ở `San2D`). Chạy: trước ~490px/s (≈6 người/s, "như gió") ⇒ nay `TOC_DO_NV = 2,2` chiều-cao-người/giây, tối đa 4,5s cho đường dài (trước 2,4s). Nhịp chân giữ 100ms/khung.

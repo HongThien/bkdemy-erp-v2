@@ -5,7 +5,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { DauTrangHS, HEAD } from '../../skin/KhungHS'
 import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import { thongKeVung, type LucDiaV } from '../kieu'
-import { KIT_LUC_DIA } from './kitLucDia'
+import { KIT_LUC_DIA, SAO_KIT } from './kitLucDia'
 import { ANH_KIT } from './kitLucDia.anh'
 import { HERO_CHAY, anhChay, hopVe, khungTheoMs } from '../../skin/heroChay'
 import { anhVat } from './hinh2d'
@@ -23,6 +23,7 @@ const CSS_SANG = `
 .kit-quang{animation:kit-tho 3.6s ease-in-out infinite}.kit-dom{animation:kit-bay 3.2s ease-out infinite}
 @media (prefers-reduced-motion:reduce){.kit-quang,.kit-dom{animation:none!important}.kit-dom{display:none}}`
 const RIA_SANG = 'drop-shadow(0 0 3px color-mix(in srgb, var(--sk-acc) 60%, transparent)) drop-shadow(0 0 9px color-mix(in srgb, var(--sk-acc) 28%, transparent))' // viền sáng mảnh ôm theo hình công trình
+const TOC_DO_NV = 2.2 // chiều cao người / giây
 const NHO_VI_TRI: Record<string, number> = {} // "rời màn rồi quay lại = đúng chỗ cũ" — sống tới F5
 
 const HERO_AX = HERO_CHAY.nam.ax
@@ -101,6 +102,7 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
   const [vtNhan, setVtNhan] = useState<({ x: number; y: number; pad: number } | null)[]>([]) // x,y = góc trái-trên của phần NHÌN THẤY (chữ + sao); pad = lề trống giữa hộp nhãn và phần nhìn thấy
   const raf = useRef(0)
   const sRef = useRef(s)
+  const caoRef = useRef(0) // cao thân nhân vật hiện tại (px) — tốc độ chạy tính theo cỡ người, không theo bề ngang màn
   sRef.current = s
   useEffect(() => () => cancelAnimationFrame(raf.current), [])
   useEffect(() => { for (const i of [0, 1, 2, 3, 4, 5, 'dung'] as const) new Image().src = anhChay(gioi, i) }, [gioi]) // nạp sẵn đủ khung chạy ⇒ không nháy lúc đổi khung
@@ -111,7 +113,8 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
     if (chay) return
     const dich = sCua[i], s0 = sRef.current, qd = Math.abs(dich - s0)
     if (qd < 0.004) { onChon(ma); return }
-    const ms = Math.min(2400, Math.max(500, qd * 2600)), t0 = performance.now()
+    // TỐC ĐỘ theo cỡ người (Thùy 02/10: "chạy quá nhanh như gió"): ≈ TOC_DO_NV chiều-cao-người mỗi giây (trước đó ~490px/s ≈ 6 người/s); đường dài thì tối đa 4,5 giây
+    const ms = Math.min(4500, Math.max(600, (qd * khung.w) / (TOC_DO_NV * (caoRef.current || 80)) * 1000)), t0 = performance.now()
     const f = (now: number) => {
       const k = Math.min(1, (now - t0) / ms), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2
       setS(s0 + (dich - s0) * e); setChay({ huongPhai: dich >= s0 }); setKhungChay(khungTheoMs(now - t0))
@@ -126,6 +129,7 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
   const nvPx = { x: nvP.x * W, y: (nvP.y / TL) * H }
   const yPhanTram = (nvP.y / TL) * 100
   const cao = (() => { const [a, c, d] = kit.nv; const t = yPhanTram; const v = t <= 55 ? a + (c - a) * ((t - 30) / 25) : c + (d - c) * ((t - 55) / 25); return Math.max(4, Math.min(10, v)) / 100 * H * HE_SO_NV })()
+  caoRef.current = cao
   // Bộ CHẠY 2D nhân vật chính (6 khung × 100ms theo thời gian, không đếm rAF) + khung đứng yên — skin/heroChay.ts, dùng chung MỌI kit
   const hv = hopVe(gioi, chay ? khungChay : 'dung', cao, nvPx.x, nvPx.y)
   const huongPhai = chay ? chay.huongPhai : true
@@ -197,7 +201,7 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
                               <span data-so className="flex shrink-0 items-center justify-center rounded-full font-extrabold" style={{ ...HEAD, width: hStr * 0.95, height: hStr * 0.95, fontSize: hStr * 0.62, background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)', border: `1.5px solid ${kit.chu.vien}` }}>{i + 1}</span>
                               <span data-ten className="font-bold leading-[1.1]" style={{ fontFamily: "'Baloo 2', 'Be Vietnam Pro', sans-serif", fontSize: hStr, color: kit.chu.mau, WebkitTextStroke: `${Math.max(2.5, hStr * 0.22)}px ${kit.chu.vien}`, paintOrder: 'stroke fill', textShadow: `0 1px 4px ${kit.chu.vien}` }}>{co.v.ten}</span>
                             </span>
-                            <Sao5 vienToi ti={co.t.tong ? co.t.dat / co.t.tong : 0} co={Math.max(19, H * 0.046)} />
+                            <Sao5 kieu={SAO_KIT} ti={co.t.tong ? co.t.dat / co.t.tong : 0} co={Math.max(19, H * 0.046)} />
                           </span>
                         )}
                       </div>

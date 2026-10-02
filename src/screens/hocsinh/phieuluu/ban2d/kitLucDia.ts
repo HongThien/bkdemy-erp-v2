@@ -63,3 +63,6 @@ export const KIT_LUC_DIA: Record<string, KitLucDia> = {
     chu: { mau: '#50372D', vien: '#FFF3D6' }, nv: [5, 7, 9],
   },
 }
+
+/** Màu 5 sao đè lên TRANH lục địa (chung mọi kit): vàng rực + viền tối + viên thuốc tối — tách khỏi nền xanh/vàng/cát. Đổi 1 chỗ. */
+export const SAO_KIT = { dat: '#FFC61A', chua: '#C9C4D6', vien: '#2A1740', nen: 'rgba(28,16,44,0.55)' }
