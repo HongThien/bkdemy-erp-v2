@@ -56,7 +56,8 @@ def dang_cua(lenh):
 def dang_theo_de(stem):
     """Câu tự mang lệnh riêng trong phần "correct answer to each of the following questions" (đề HN 2026 câu 25–26)."""
     t = stem.lower()
-    if re.match(r'^\s*(reorder|rearrange|choose the (best|correct) (arrangement|order))', t) or 'logical order' in t[:120]:
+    if re.match(r'^\s*(reorder|rearrange|choose the (best|correct) (arrangement|order))', t) or 'logical order' in t[:120] \
+            or re.match(r'^\s*put the (sentences|following sentences)[^.]*\bin the (correct|right|best) order', t):
         return 'sap_xep_doan'
     if re.match(r'^\s*choose the (correct|best|most suitable) (sentence|option)s? to complete', t):
         return 'dien_cau_doan'
@@ -270,6 +271,11 @@ def doc(html_path, ma, ra, thu_muc_anh=None):
     for x in cau:
         d2 = dang_theo_de(tron(' '.join(x['_stem'])))
         if d2: x['_dang'], x['_tu_du'] = d2, True
+        # phần "đọc hiểu" mà câu KHÔNG có đề riêng, đoạn văn có chỗ trống "(n)" ⇒ thực chất là ĐIỀN đoạn văn (đề HN 2021 câu 26–30)
+        if x['_dang'] == 'doc_hieu' and not tron(' '.join(x['_stem'])).strip() and x['_nl']:
+            nl = next((n for n in ngu_lieu if n['ref'] == x['_nl']), None)
+            if nl and f"({x['_n']})" in tron(nl['noi_dung']):
+                x['_dang'] = 'dien_doan_van'
 
     out = []
     bo = {}
