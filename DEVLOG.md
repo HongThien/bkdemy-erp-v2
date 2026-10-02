@@ -34641,3 +34641,29 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   (`xem-thu-live-phan.html` có `?thuong=1`, `xem-thu-giao-de.html`) — tab Live theo phần bấm mở / thu hồi / mở toàn bộ gọi đúng RPC; giáo trình thường vẫn theo dạng.
   **CHƯA bấm trên phiên đăng nhập thật + chưa thử phía học sinh** (cổng preview mới ⇒ chưa đăng nhập; app HS chưa deploy).
 - **Phải deploy cả ERP + app HS** trước khi dùng chế độ từng phần cho bài từ đề: bản app HS cũ chỉ hiểu mở theo dạng nên sẽ không thấy câu nào.
+
+## 2026-10-02 — Môn Anh: GV duyệt bản đồ → dựng kho Anh ở DB + trạm đọc tài liệu GV
+
+- **CEO:** GV Anh đã duyệt hệ thống (giữ các phương án mặc định của bản nháp) → "đi tiếp".
+  - Câu chắc chắn → thẳng kho; câu chưa chắc → chờ duyệt như Toán; GV môn nào chỉ thấy môn đó.
+  - Research thêm nguồn đề khảo sát/thi thử trường, phường.
+- **Đính chính:** bản đồ có **24 chuyên đề**, không phải 25 (spec + PDF gửi GV ghi 25 — đếm sai; danh sách không đổi). Đã sửa spec.
+- **DB — mig `202610021156_anh_kho_ban_do_k9.sql` (đã áp, dry-run trước bằng `thu-migration.mjs`):**
+  - Tạo `anh_ban_do` / `anh_cau_hoi` / `anh_ngu_lieu` / `anh_dang_ly_thuyet`.
+  - Nạp 100 KP + điểm chờ `E09000000`. Mã `E09`+mảng+chuyên đề+điểm; `ma_hien_thi` = NA-01…
+  - Gắn 7 trigger giống KHTN. RLS `la_thanh_vien`. Nới CHECK `kho_doi_dang_log`, `kho_kiem_lo`.
+  - Thêm nhánh `'Tiếng Anh'` cho `_kho_*_tbl`, `_kho_muc_do_dang`, `_kho_nhanh_cua_dang`, `_kho_dang_cho`, `fn_kho_tbl`.
+  - Kiểm lại: Toán/KHTN/Hình điều phối y cũ.
+- **Cố ý KHÔNG mở `_kho_co_mon('Tiếng Anh')`:** 16 hàm còn "không phải KHTN thì là Toán"; mở sớm ⇒ app HS lớp Anh rơi vào kho Toán.
+- **Sai rồi sửa:** lần chạy thử đầu chết vì `kho_sua_log` thuộc owner `postgres`.
+  - Tách CHECK đó sang `202610021200_anh_kho_sua_log_mon_check.sql`, **CEO phải dán SQL Editor**, rồi `migrate.mjs --ghi-so`.
+  - Chưa chạy thì SỬA nội dung câu Anh bị chặn (INSERT không sao).
+- **Trạm đọc `scripts/anh/doc_bai_tap_gv.py`** (Python, thư viện chuẩn): 12 unit Form 2025 ⇒ **1.969 câu trắc nghiệm**, 38 câu cờ lỗi cấu trúc (16 phương án trùng, 8 điền câu không ghi đáp án…).
+  - Bug tự bắt khi soát bằng mắt:
+    - nhãn dính dấu chấm (`are.C.`), nhãn không chấm (`\tB has`), xuống dòng mềm `w:br`, phương án tràn dòng;
+    - phương án không nhãn (Word tự đánh) làm lệch đáp án câu sau;
+    - cờ lỗi gắn nhầm sang câu khác.
+  - **Bản vá lookbehind làm dấu tô màu lọt sang phương án trước ⇒ 761 câu mất đáp án** — bắt được vì số cờ nhảy vọt; sửa bằng lùi điểm cắt qua dấu định dạng.
+  - **Bài học:** sau MỌI lần sửa bộ đọc phải chạy lại cả 12 unit và nhìn bảng số cờ, không chỉ unit đang sửa.
+- **Đang chạy:** thử Unit 1 với 2 bên kiểm độc lập (A không thấy đáp án; B thấy đáp án, chỉ gán điểm).
+- **Viết `spec-anh-kho.md`:** luật "chắc chắn" 5 điều kiện · luồng nhập · việc ở màn Kho (khảo sát: ~8–9 file + 1–2 migration; `count_cau_by_dang`, `fn_kho_hang_duyet` join bảng cụm, `MathText` escape `<u>`) · nguồn tài liệu (research: 220–350 đề, top nguồn, chi phí — chờ CEO duyệt mới tải/mua).
