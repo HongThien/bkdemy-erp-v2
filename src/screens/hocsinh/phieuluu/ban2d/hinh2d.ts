@@ -16,6 +16,25 @@ const CO_SAN = {
   moc: false, // moc_<loai>.png · be_da.png · may_suong.png · la_ban.png · co_chinh_phuc.png
 }
 
+/** THẾ GIỚI = 1 BỨC TRANH LIỀN (Thùy 02/10: ghép nền biển + lục địa rời thì "không khớp, không giống ảnh toàn cảnh").
+ *  Code chỉ phủ lớp giao diện (nhãn, cờ, sương, quầng sáng, nhân vật) lên đúng chỗ từng lục địa vẽ sẵn trong tranh.
+ *  o = các lục địa trong tranh theo THỨ TỰ ĐƯỜNG ĐI (chủ đề thứ i của khối ⇒ ô i): tâm x,y (% khung 16:9) + bán kính r (% bề rộng).
+ *  Khối có ÍT chủ đề hơn ⇒ ô thừa phủ tối "chưa khai phá"; NHIỀU hơn ⇒ rơi về cách ghép mảnh. Đo trên ảnh có lưới 10% (02/10). */
+export type OTranh = { x: number; y: number; r: number; biome: string }
+export const TOAN_CANH_THE_GIOI: { anh: string; o: OTranh[] } | null = {
+  anh: `${G}/the_gioi_toan_canh.jpg`, // Đơn 7 #01 (8 lục địa)
+  o: [
+    { x: 37, y: 42, r: 15, biome: 'rung' },
+    { x: 17, y: 72, r: 13, biome: 'sa_mac' },
+    { x: 49, y: 77, r: 13, biome: 'dam_lay' },
+    { x: 78, y: 75, r: 12, biome: 'thanh_co' },
+    { x: 79, y: 45, r: 13, biome: 'bien_dao' },
+    { x: 83, y: 17, r: 11, biome: 'troi_sao' },
+    { x: 52, y: 16, r: 11, biome: 'nui_lua' },
+    { x: 18, y: 14, r: 12, biome: 'bang' },
+  ],
+}
+
 export const anhNenTheGioi = () => (CO_SAN.nenTheGioi ? `${G}/nen_the_gioi.jpg` : null)
 // lục địa: thứ tự chủ đề quyết định dáng (vòng 2 của cùng biome lấy dáng kế) ⇒ 1 khối nhiều chủ đề ít lặp hình; biome chưa có ảnh ⇒ hình tạm
 export const anhLucDia = (biome: string, thuTu: number) => {

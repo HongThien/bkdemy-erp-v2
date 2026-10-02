@@ -18,7 +18,12 @@ import { BaoDoHoa, NutDoHoa } from './DoHoa'
 import type { ChangV } from './kieu'
 
 // Chỉ khi chạy dev: dán JSON thật của fn_ban_do_phieu_luu vào localStorage 'ban_do_pl' để soi dữ liệu thật qua bộ đổi tuBanDoPL.
+// &so=N: chỉ lấy N chủ đề đầu (thử bản đồ toàn cảnh với khối ít chủ đề)
 function layBanDo(): BanDoV {
+  const bd = layBanDoGoc(), so = Number(new URLSearchParams(location.search).get('so'))
+  return so > 0 ? { ...bd, luc_dia: bd.luc_dia.slice(0, so) } : bd
+}
+function layBanDoGoc(): BanDoV {
   if (new URLSearchParams(location.search).get('thu') === 'nhieu') return banDoNhieu()
   try { const j = import.meta.env.DEV ? localStorage.getItem('ban_do_pl') : null; if (j) return tuBanDoPL(JSON.parse(j)) } catch { /* dùng mẫu */ }
   return MAU

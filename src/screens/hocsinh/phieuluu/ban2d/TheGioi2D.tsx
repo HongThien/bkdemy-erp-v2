@@ -1,21 +1,101 @@
-// TẦNG 1 — THẾ GIỚI bản 2D (Thùy 01/10 khuya): 1 nền biển + lục địa rời đặt theo bố cục làm sẵn (boCuc.ts), to nhỏ theo số dạng.
-// Hiệu ứng code: mây trôi, sao lấp lánh, ánh nước, sương phủ lục địa chưa đo, cờ ở lục địa đã chinh phục, quầng sáng + nhân vật ở lục địa
-// em đang học, bấm lục địa ⇒ phóng vào rồi mới chuyển tầng. Cùng props với TheGioiView (3D) để PhieuLuuHS đổi qua lại được.
+// TẦNG 1 — THẾ GIỚI bản 2D. Cùng props với TheGioiView (3D) để PhieuLuuHS đổi qua lại được. 2 cách vẽ:
+// · TOÀN CẢNH (mặc định khi có tranh — Thùy 02/10): 1 bức tranh liền vẽ sẵn mọi lục địa (hinh2d.TOAN_CANH_THE_GIOI); chủ đề thứ i ⇒ lục địa thứ i
+//   trong tranh. Code chỉ phủ lớp giao diện: nhãn tên + tiến độ, cờ, quầng sáng + nhân vật chỗ em đang học, quái nhỏ chỗ đang đánh,
+//   tối + nhạt màu chỗ chưa đo, phủ tối hẳn lục địa thừa ("chưa khai phá"). Không xoay khi màn dọc (tranh vẽ ngang).
+// · GHÉP MẢNH (khi khối nhiều chủ đề hơn số lục địa trong tranh, hoặc chưa có tranh): nền biển + lục địa rời theo bố cục làm sẵn (boCuc.ts).
+// Hiệu ứng chung: mây trôi, sao lấp lánh, bấm lục địa ⇒ phóng vào rồi mới chuyển tầng.
 import { useMemo, useState, type ReactNode } from 'react'
 import { HEAD, NhanHS, THE_TRON, useMedia } from '../../skin/KhungHS'
 import type { BangMau3D } from '../../skin/the3d/kieuMau'
-import { thongKe, type BanDoV } from '../kieu'
+import { thongKe, type BanDoV, type LucDiaV } from '../kieu'
 import { boCucTheGioi, heSoCo } from './boCuc'
-import { anhLucDia, anhNenTheGioi, anhVat } from './hinh2d'
+import { TOAN_CANH_THE_GIOI, anhLucDia, anhNenTheGioi, anhVat } from './hinh2d'
 import { Co, CssBan2D, Hero, NenBien, Suong, useKhung2D, viTri } from './San2D'
 import { LucDiaTam, QuaiTam } from './HinhTam'
 
-export function TheGioi2D({ banDo, b, onChon, hienTai, thanh, gioi = 'nam' }: {
-  banDo: BanDoV; b: BangMau3D; onChon: (ma: string) => void; hienTai?: string | null; thanh?: ReactNode; gioi?: 'nam' | 'nu'
-}) {
+type Props = { banDo: BanDoV; b: BangMau3D; onChon: (ma: string) => void; hienTai?: string | null; thanh?: ReactNode; gioi?: 'nam' | 'nu' }
+
+export function TheGioi2D(p: Props) {
+  const tc = TOAN_CANH_THE_GIOI
+  return tc && p.banDo.luc_dia.length <= tc.o.length ? <ToanCanh {...p} /> : <GhepManh {...p} />
+}
+
+// phóng vào lục địa vừa bấm rồi mới chuyển tầng
+function usePhong(onChon: (ma: string) => void) {
+  const [zoom, setZoom] = useState<{ ma: string; x: number; y: number } | null>(null)
+  const chon = (ma: string, x: number, y: number) => { if (zoom) return; setZoom({ ma, x, y }); window.setTimeout(() => onChon(ma), 430) }
+  const style = { transformOrigin: zoom ? `${zoom.x}px ${zoom.y}px` : undefined, transform: zoom ? 'scale(2.4)' : undefined, opacity: zoom ? 0 : 1 }
+  return { chon, style }
+}
+
+function NhanLuc({ l, t, dangO, dai }: { l: LucDiaV; t: ReturnType<typeof thongKe>; dangO: boolean; dai: boolean }) {
+  return (
+    <>
+      {dangO && <span className="rounded-full px-2 text-[10.5px] font-bold" style={{ background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)' }}>Em đang ở đây</span>}
+      <span className="line-clamp-2 font-bold leading-tight" style={{ ...HEAD, color: 'var(--sk-ink)', fontSize: dai ? 12 : 10 }}>{l.ten}</span>
+      {dai && (t.trangThai === 'fog'
+        ? <NhanHS mau="var(--sk-muted)">Chưa đo</NhanHS>
+        : <NhanHS mau={t.trangThai === 'dat' ? 'var(--sk-acc)' : 'var(--sk-muted)'}>{t.dat}/{t.tong} chặng đạt</NhanHS>)}
+    </>
+  )
+}
+
+// ── TOÀN CẢNH: 1 bức tranh liền ───────────────────────────────────────────────
+function ToanCanh({ banDo, b, onChon, hienTai, thanh, gioi = 'nam' }: Props) {
+  const tc = TOAN_CANH_THE_GIOI!
+  const { ref, khung } = useKhung2D(false, true)
+  const dai = useMedia('(min-width:768px)')
+  const { chon, style } = usePhong(onChon)
+  const ds = useMemo(() => banDo.luc_dia.map((l) => ({ l, t: thongKe(l) })), [banDo])
+  const W = khung.w, H = khung.h
+
+  return (
+    <div className="ban2d absolute inset-0 overflow-hidden" data-dong="1" style={{ background: b.troi }}>
+      <CssBan2D />
+      {/* phần thừa ngoài khung 16:9: chính bức tranh phóng to + mờ + tối ⇒ không có viền đen */}
+      <img src={tc.anh} alt="" aria-hidden className="absolute inset-0 h-full w-full scale-110 object-cover" style={{ filter: 'blur(18px) brightness(.55)' }} draggable={false} />
+      <div ref={ref} className="absolute inset-0 flex items-center justify-center">
+        <div className="ban2d-zoom relative overflow-hidden" style={{ width: W, height: H, ...style }}>
+          {W > 0 && <img src={tc.anh} alt="" className="absolute inset-0 h-full w-full select-none" draggable={false} />}
+          {W > 0 && tc.o.map((o, i) => {
+            const x = (o.x / 100) * W, y = (o.y / 100) * H, d = (o.r / 100) * W * 2
+            const vong = { left: x, top: y, width: d, height: d * 0.82, transform: 'translate(-50%,-50%)' } as const
+            const m = ds[i]
+            // lục địa thừa (khối ít chủ đề): tối hẳn + mây, không bấm được
+            if (!m) return (
+              <span key={`thua${i}`} aria-hidden className="pointer-events-none absolute rounded-[50%]" style={{ ...vong, background: `radial-gradient(closest-side, ${b.troi}9e, ${b.troi}66 70%, transparent)`, backdropFilter: 'saturate(.2)', WebkitBackdropFilter: 'saturate(.2)' }}>
+                <Suong mau={b.bot} style={{ left: '10%', top: '15%', width: '80%', height: '70%', opacity: 0.55 }} />
+              </span>
+            )
+            const { l, t } = m, dangO = hienTai === l.ma
+            return (
+              <div key={l.ma} className="absolute" style={vong}>
+                {t.trangThai === 'fog' && <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[50%]" style={{ background: `radial-gradient(closest-side, ${b.troi}73, ${b.troi}40 70%, transparent)`, backdropFilter: 'saturate(.35)', WebkitBackdropFilter: 'saturate(.35)' }} />}
+                {dangO && <span className="ban2d-sang pointer-events-none absolute left-1/2 top-1/2 rounded-[50%]" style={{ width: '110%', height: '110%', transform: 'translate(-50%,-50%)', background: `radial-gradient(closest-side, transparent 55%, ${b.vang}66 80%, transparent)` }} />}
+                <button onClick={() => chon(l.ma, x, y)} aria-label={`${l.ten}: ${t.trangThai === 'fog' ? 'chưa đo' : `${t.dat}/${t.tong} chặng đạt`}`}
+                  className="absolute inset-0 rounded-[50%] transition-shadow hover:shadow-[0_0_0_3px_var(--sk-acc)] focus-visible:shadow-[0_0_0_3px_var(--sk-acc)]" />
+                {t.trangThai === 'dat' && <span className="pointer-events-none absolute" style={{ left: '58%', top: '8%' }}><Co mau={b.biome[l.biome]?.diem ?? b.vang} anh={anhVat('co_chinh_phuc')} cao={d * 0.22} /></span>}
+                {t.trangThai === 'yeu' && t.loai && !dangO && <span className="pointer-events-none absolute" style={{ left: '62%', top: '12%', width: d * 0.16, height: d * 0.16 }}><QuaiTam b={b} loai={t.loai} co={d * 0.16} /></span>}
+                {dangO && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ top: '-6%' }}><Hero gioi={gioi} cao={d * 0.32} mau={b.troi} /></span>}
+                <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center gap-0.5 px-2 py-1 text-center"
+                  style={{ ...THE_TRON, top: '62%', borderRadius: 12, maxWidth: dai ? 170 : 110, width: 'max-content' }}>
+                  <NhanLuc l={l} t={t} dangO={dangO} dai={dai} />
+                </span>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+      {thanh && <div className="absolute bottom-3 left-20 right-20 z-10 flex flex-wrap justify-center gap-2">{thanh}</div>}
+    </div>
+  )
+}
+
+// ── GHÉP MẢNH: nền biển + lục địa rời ─────────────────────────────────────────
+function GhepManh({ banDo, b, onChon, hienTai, thanh, gioi = 'nam' }: Props) {
   const { ref, khung } = useKhung2D()
   const dai = useMedia('(min-width:768px)')
-  const [zoom, setZoom] = useState<{ ma: string; x: number; y: number } | null>(null)
+  const { chon, style } = usePhong(onChon)
   const ds = useMemo(() => {
     const tk = banDo.luc_dia.map((l) => thongKe(l))
     const bc = boCucTheGioi(banDo.luc_dia.map((l) => l.ma)), tongDs = tk.map((t) => t.tong)
@@ -23,21 +103,12 @@ export function TheGioi2D({ banDo, b, onChon, hienTai, thanh, gioi = 'nam' }: {
   }, [banDo])
   const canh = khung.doc ? khung.h : khung.w
 
-  const chon = (ma: string, x: number, y: number) => {
-    if (zoom) return
-    setZoom({ ma, x, y })
-    window.setTimeout(() => onChon(ma), 430)
-  }
-
   return (
     <div className="absolute inset-0 overflow-hidden" style={{ background: b.troi }}>
       <CssBan2D />
       <NenBien b={b} anh={anhNenTheGioi()}>
         <div ref={ref} className="absolute inset-0 flex items-center justify-center">
-          <div className="ban2d-zoom relative" style={{
-            width: khung.w, height: khung.h,
-            transformOrigin: zoom ? `${zoom.x}px ${zoom.y}px` : undefined, transform: zoom ? 'scale(2.4)' : undefined, opacity: zoom ? 0 : 1,
-          }}>
+          <div className="ban2d-zoom relative" style={{ width: khung.w, height: khung.h, ...style }}>
             {khung.w > 0 && ds.map(({ l, t, diem, co, thuTu }) => {
               const p = viTri(diem, khung), size = co * canh, anh = anhLucDia(l.biome, thuTu), dangO = hienTai === l.ma
               return (
@@ -53,11 +124,7 @@ export function TheGioi2D({ banDo, b, onChon, hienTai, thanh, gioi = 'nam' }: {
                   {dangO && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ top: -size * 0.14 }}><Hero gioi={gioi} cao={size * 0.36} mau={b.troi} /></span>}
                   <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center gap-0.5 px-2 py-1 text-center"
                     style={{ ...THE_TRON, top: '74%', borderRadius: 12, maxWidth: dai ? 170 : 110, width: 'max-content' }}>
-                    {dangO && <span className="rounded-full px-2 text-[10.5px] font-bold" style={{ background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)' }}>Em đang ở đây</span>}
-                    <span className="line-clamp-2 font-bold leading-tight" style={{ ...HEAD, color: 'var(--sk-ink)', fontSize: dai ? 12 : 10 }}>{l.ten}</span>
-                    {dai && (t.trangThai === 'fog'
-                      ? <NhanHS mau="var(--sk-muted)">Chưa đo</NhanHS>
-                      : <NhanHS mau={t.trangThai === 'dat' ? 'var(--sk-acc)' : 'var(--sk-muted)'}>{t.dat}/{t.tong} chặng đạt</NhanHS>)}
+                    <NhanLuc l={l} t={t} dangO={dangO} dai={dai} />
                   </span>
                 </div>
               )

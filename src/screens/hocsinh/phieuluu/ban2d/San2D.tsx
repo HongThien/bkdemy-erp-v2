@@ -13,15 +13,16 @@ import type { Diem } from './boCuc'
 export type Khung = { w: number; h: number; doc: boolean }
 
 /** Đo ô chứa ⇒ kích thước khung 16:9 (hoặc 9:16 khi màn dọc) lớn nhất vừa trong ô.
- *  `tuDo`: khung = đúng cả ô (cảnh nhìn ngang như chặng đường — xoay 90° thì mặt đất thành dọc, vô nghĩa). */
-export function useKhung2D(tuDo = false): { ref: React.RefObject<HTMLDivElement>; khung: Khung } {
+ *  `tuDo`: khung = đúng cả ô (cảnh nhìn ngang như chặng đường — xoay 90° thì mặt đất thành dọc, vô nghĩa).
+ *  `khongXoay`: luôn 16:9 kể cả màn dọc (bức tranh vẽ sẵn toàn cảnh — không xoay được). */
+export function useKhung2D(tuDo = false, khongXoay = false): { ref: React.RefObject<HTMLDivElement>; khung: Khung } {
   const ref = useRef<HTMLDivElement>(null)
   const [khung, setKhung] = useState<Khung>({ w: 0, h: 0, doc: false })
   useLayoutEffect(() => {
     const el = ref.current
     if (!el) return
     const tinh = () => {
-      const W = el.clientWidth, H = el.clientHeight, doc = H > W * 1.15
+      const W = el.clientWidth, H = el.clientHeight, doc = !khongXoay && H > W * 1.15
       if (tuDo) { setKhung((k) => (k.w === W && k.h === H && !k.doc ? k : { w: W, h: H, doc: false })); return }
       const r = doc ? 941 / 1672 : 1672 / 941
       const w = Math.min(W, H * r), h = w / r
@@ -30,7 +31,7 @@ export function useKhung2D(tuDo = false): { ref: React.RefObject<HTMLDivElement>
     tinh()
     const ro = new ResizeObserver(tinh); ro.observe(el)
     return () => ro.disconnect()
-  }, [tuDo])
+  }, [tuDo, khongXoay])
   return { ref, khung }
 }
 

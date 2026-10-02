@@ -34498,3 +34498,11 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Nén bằng @napi-rs/canvas (máy không có Python/ImageMagick): nen_the_gioi.jpg 1672×941 q82 241KB · luc_dia_<biome>_1.webp 640² 89–155KB (≈1MB, gốc ≈16MB).
 - hinh2d.ts: cờ KIT2D (bật/tắt cả nhóm) → sổ CO_SAN theo TỪNG ảnh ⇒ biome thiếu ảnh vẫn hình tạm, ghép dần được. Lục địa chưa đo trên ảnh thật: sương trắng che bệt ⇒ đổi thành tối + nhạt màu + sương mờ 32%.
 - Kiểm: hs.html?xem=phieu_luu 1180×820, 0 lỗi console, check:style-hs ✔.
+
+### 02/10 — [Giao diện] Thế giới 2D = 1 BỨC TRANH TOÀN CẢNH (Thùy: nền biển + lục địa rời "không khớp, không giống ảnh toàn cảnh")
+- Đúng: vẽ rời từng mảnh thì ánh sáng/độ đậm/mép nước mỗi mảnh khác ⇒ không bao giờ liền. Đổi: tranh liền (Đơn 7 #01, 8 lục địa) + code chỉ phủ lớp giao diện.
+- hinh2d.TOAN_CANH_THE_GIOI: ảnh + 8 ô (tâm x,y %, bán kính r %) đo trên ảnh có lưới 10%, xếp theo thứ tự đường đi; chủ đề thứ i ⇒ ô i (biome trong tranh,
+  không theo biome DB). Ô thừa (khối ít chủ đề) phủ tối + mây "chưa khai phá"; chưa đo = tối + nhạt màu (backdrop-filter); đang học = viền sáng + nhân vật.
+  Khối NHIỀU chủ đề hơn số ô ⇒ rơi về ghép mảnh cũ. Phần thừa ngoài khung 16:9 = chính tranh phóng to mờ tối (không viền đen). Không xoay khi màn dọc.
+- the_gioi_toan_canh.jpg 1672×941 q85 = 599KB. XemPhieuLuu thêm &so=N. Kiểm 1180×820 &so=6 ✔ 0 lỗi; 375×812: tranh ngang chỉ còn dải nhỏ ⇒ cần bản dọc riêng (để sau, màn ngang trước).
+- Cần đặt ChatGPT: tranh 10 lục địa (K4T Toán có 10 chủ đề > 8 ô).
