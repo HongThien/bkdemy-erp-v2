@@ -28,6 +28,7 @@ export type BaiTestCau = {
   noi_dung: string | null; lua_chon: string[] | null; menh_de: unknown; dap_an_key: unknown
   loi_giai: string | null; anh_de: string | null; anh_dap_an: string | null
   ma_dang: string | null; ly_thuyet: string | null; diem: number
+  phan?: string | null // tên PHẦN của đề (Phần I / II / III) — chỉ bài phát hành từ đề thi; null = không áp dụng
   // Phiên bản TRẮC NGHIỆM AI (spec-mcq-form.md §8.2): snapshot từ <kho>_cau_form_tn khi GV chọn form trắc nghiệm cho câu
   // không có phương án sẵn. lua_chon_rule song song lua_chon (null = đúng, 'R19' = sai theo rule) — cùng INSERT.
   form_tn_id?: string | null; lua_chon_rule?: (string | null)[] | null
@@ -80,7 +81,8 @@ export const PHAT_HANH_DUOC = new Set(Object.keys(DOC_MAP))
 // Phát hành 1 doc (BTVN / ET / giáo trình buổi / đề thi) thành test online.
 // Đề thi KHÔNG tự bám lớp+ngày (đề dùng lại cho nhiều lớp/lần) → `override` bắt buộc cho loại này;
 // các loại còn lại lấy lop_id/ngay sẵn có trên doc (như trước, override optional).
-export async function phatHanhTest(taiLieuId: string, override?: { lopId: string; ngay: string }): Promise<PhatHanhKetQua> {
+export type CheDoPhatHanh = 'toan_bo' | 'tung_phan'
+export async function phatHanhTest(taiLieuId: string, override?: { lopId: string; ngay: string } | null, opts?: { cheDo?: CheDoPhatHanh }): Promise<PhatHanhKetQua> {
   const { data: tl, error: e0 } = await supabase.from('tai_lieu').select('id, lop_id, ngay, mon, nhanh, loai, cau_hinh, khoi').eq('id', taiLieuId).single()
   if (e0) throw e0
   const doc = tl as { id: string; lop_id: string | null; ngay: string | null; mon: string; nhanh: string | null; loai: string; cau_hinh: any; khoi: string | null }
@@ -220,10 +222,18 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
   const { error: e2 } = await supabase.from('bai_test_cau').insert(rows.map((r) => ({ ...r, bai_test_id: baiTest.id })))
   if (e2) throw e2
   // Tài liệu GÁN TỪ ĐỀ THI (Giáo trình / BTVN có cau_hinh.deThi): ô trả lời ngắn 4 ký tự · câu dạng chờ không tính cho
-  // dạng nào · tên phần · bài trên lớp mở sẵn cả đề — làm ở Postgres, cùng một hàm với lượt thi (fn_de_thi_mo).
+  // dạng nào · tên phần — làm ở Postgres, cùng một hàm với lượt thi (fn_de_thi_mo).
   if ((doc.cau_hinh as { deThi?: unknown } | null)?.deThi) {
     const { error: e3 } = await supabase.rpc('fn_de_thi_hoan_thien_bai_test', { p_bt: baiTest.id })
     if (e3) throw e3
+  }
+  // ⭐ 2 CHẾ ĐỘ PHÁT HÀNH của bài trên lớp (CEO 02/10, mig 202610021201) — chỉ `giao_trinh` có khái niệm mở dần:
+  //   toan_bo   = mở sẵn mọi câu (luyện tập)                      → fn_bt_mo_toan_bo
+  //   tung_phan = chỉ phần đầu mở, GV mở phần kế ở tab Live (buổi học, MẶC ĐỊNH) → fn_bt_mo_phan_dau
+  //     (bài từ đề: phần = Phần I/II/III của đề; giáo trình thường: phần = dạng, trigger DB đã mở dạng của câu 1).
+  if (map.testLoai === 'giao_trinh') {
+    const { error: e4 } = await supabase.rpc(opts?.cheDo === 'toan_bo' ? 'fn_bt_mo_toan_bo' : 'fn_bt_mo_phan_dau', { p_bt: baiTest.id })
+    if (e4) throw e4
   }
   // Cảnh báo (không chặn): btvn không có hạn ⇒ bài mở vĩnh viễn, staff cần biết để xử tay.
   const hanBao = !deadline && map.testLoai === 'btvn'
@@ -287,9 +297,11 @@ export async function getBaiTestFull(baiTestId: string): Promise<BaiTestFull> {
     const openDangs = new Set(((ph ?? []) as { ma_dang: string }[]).map((r) => r.ma_dang))
     // + câu mở LẺ (bai_test_cau_phat_hanh): đề thi gán làm bài trên lớp mở sẵn cả đề theo câu, kể cả câu chưa có dạng
     // (K6) — cùng luật với RLS `_btc_trang_thai` (mở theo câu HOẶC theo dạng).
-    const { data: pc } = await supabase.from('bai_test_cau_phat_hanh').select('bai_test_cau_id').eq('bai_test_id', baiTestId).limit(LIMIT)
-    const openCaus = new Set(((pc ?? []) as { bai_test_cau_id: string }[]).map((r) => r.bai_test_cau_id))
-    caus = caus.filter((c) => openCaus.has(c.id) || (c.ma_dang != null && openDangs.has(c.ma_dang)))
+    // Đúng thứ tự ưu tiên của `_btc_trang_thai`: câu có dòng mở lẻ thì theo dòng đó (đã ĐÓNG ⇒ ẩn, dù dạng đang mở);
+    // không có dòng lẻ thì theo dạng.
+    const { data: pc } = await supabase.from('bai_test_cau_phat_hanh').select('bai_test_cau_id, dong_at').eq('bai_test_id', baiTestId).limit(LIMIT)
+    const le = new Map(((pc ?? []) as { bai_test_cau_id: string; dong_at: string | null }[]).map((r) => [r.bai_test_cau_id, r.dong_at == null]))
+    caus = caus.filter((c) => (le.has(c.id) ? le.get(c.id) : c.ma_dang != null && openDangs.has(c.ma_dang)))
   }
   return { baiTest, caus, baiLam, daLam }
 }
@@ -312,6 +324,20 @@ export async function thuHoiDang(baiTestId: string, maDang: string): Promise<voi
   const { error } = await supabase.rpc('fn_bt_thu_hoi_dang', { p_bt: baiTestId, p_ma_dang: maDang })
   if (error) throw error
 }
+// Mở / đóng theo CÂU (bài gán từ đề thi mở theo PHẦN của đề = mở các câu của phần đó) và mở TOÀN BỘ bài (CEO 02/10).
+// Đóng = câu thôi nhận câu trả lời và ẩn khỏi bài của HS; bài làm đã có giữ nguyên, mở lại được.
+export async function moCau(baiTestId: string, cauIds: string[]): Promise<void> {
+  const { error } = await supabase.rpc('fn_bt_mo_cau', { p_bt: baiTestId, p_cau: cauIds })
+  if (error) throw error
+}
+export async function dongCau(baiTestId: string, cauIds: string[]): Promise<void> {
+  const { error } = await supabase.rpc('fn_bt_dong_cau', { p_bt: baiTestId, p_cau: cauIds })
+  if (error) throw error
+}
+export async function moToanBo(baiTestId: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_bt_mo_toan_bo', { p_bt: baiTestId })
+  if (error) throw error
+}
 
 export async function getBaiTestCaus(baiTestId: string): Promise<BaiTestCau[]> {
   const { data, error } = await supabase.from('bai_test_cau').select('*').eq('bai_test_id', baiTestId).order('thu_tu').limit(LIMIT)
@@ -324,20 +350,24 @@ export async function getBaiTestCaus(baiTestId: string): Promise<BaiTestCau[]> {
 // thôi", không cần realtime). ────────────────────────────────────────────────────────────────────
 export type LiveAnswer = { hocSinhId: string; baiTestCauId: string; verdict: string | null; xemGoiY: boolean }
 // dangDaMo: map ma_dang → phat_hanh_at (giáo trình theo dạng, Thùy 13/09). Rỗng = chưa mở dạng nào.
-export type LiveSnapshot = { baiLam: Record<string, BaiLam>; answers: LiveAnswer[]; dangDaMo: Record<string, string> }
+// cauLe: câu có dòng mở LẺ (bai_test_cau_phat_hanh) → true = đang mở · false = đã đóng. Câu không có key = theo dạng.
+export type LiveSnapshot = { baiLam: Record<string, BaiLam>; answers: LiveAnswer[]; dangDaMo: Record<string, string>; cauLe: Record<string, boolean> }
 
 export async function getLiveSnapshot(baiTestId: string): Promise<LiveSnapshot> {
-  const [{ data: lams, error }, { data: ph }] = await Promise.all([
+  const [{ data: lams, error }, { data: ph }, { data: pc }] = await Promise.all([
     supabase.from('bai_lam').select('*').eq('bai_test_id', baiTestId).limit(LIMIT),
     supabase.from('bai_test_dang_phat_hanh').select('ma_dang, phat_hanh_at').eq('bai_test_id', baiTestId).limit(LIMIT),
+    supabase.from('bai_test_cau_phat_hanh').select('bai_test_cau_id, dong_at').eq('bai_test_id', baiTestId).limit(LIMIT),
   ])
   if (error) throw error
   const baiLam: Record<string, BaiLam> = {}
   for (const l of (lams ?? []) as BaiLam[]) baiLam[l.hoc_sinh_id] = l
   const dangDaMo: Record<string, string> = {}
   for (const r of ((ph ?? []) as { ma_dang: string; phat_hanh_at: string }[])) dangDaMo[r.ma_dang] = r.phat_hanh_at
+  const cauLe: Record<string, boolean> = {}
+  for (const r of ((pc ?? []) as { bai_test_cau_id: string; dong_at: string | null }[])) cauLe[r.bai_test_cau_id] = r.dong_at == null
   const lamIds = (lams ?? []).map((l: any) => l.id)
-  if (!lamIds.length) return { baiLam, answers: [], dangDaMo }
+  if (!lamIds.length) return { baiLam, answers: [], dangDaMo, cauLe }
   const lamToHs = new Map((lams ?? []).map((l: any) => [l.id, l.hoc_sinh_id as string]))
   const [{ data: caus, error: e2 }, { data: goiY, error: e3 }] = await Promise.all([
     supabase.from('bai_lam_cau').select('bai_lam_id, bai_test_cau_id, verdict').in('bai_lam_id', lamIds).limit(LIMIT),
@@ -350,7 +380,7 @@ export async function getLiveSnapshot(baiTestId: string): Promise<LiveSnapshot> 
     hocSinhId: lamToHs.get(c.bai_lam_id)!, baiTestCauId: c.bai_test_cau_id, verdict: c.verdict,
     xemGoiY: goiYSet.has(`${c.bai_lam_id}:${c.bai_test_cau_id}`),
   }))
-  return { baiLam, answers, dangDaMo }
+  return { baiLam, answers, dangDaMo, cauLe }
 }
 
 // HS mở bài → tạo SLOT bai_lam (idempotent — StrictMode/đua). Cần hoc_sinh_id (RLS chặn HS khác).

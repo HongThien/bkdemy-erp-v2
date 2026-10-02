@@ -443,3 +443,26 @@ CEO: *"Đưa vào folder chỉ định và Claude chạy. Claude vẫn gọi Gem
 2. Chưa đo trên **PDF scan** (không lớp chữ) và trên đề của Sở chỉ có bảng đáp án cuối đề — hai loại đề lát này sinh ra để phục vụ.
 3. Đề có câu Đúng/Sai mà file KHÔNG có đáp án: `ghi.mjs` hiện chặn ("mệnh đề thiếu đáp án") ⇒ đề không vào được để người điền sau.
 4. Hình trong phần lời giải không cắt. Đề + lời giải quá dài làm lượt 1 bị cắt (script dừng, báo tách file).
+
+### 10.9 Phát hành 2 CHẾ ĐỘ cho bài trên lớp (CEO 02/10) · ĐÃ BUILD
+
+CEO: *"Phát hành nên có 2 chế độ: phát hành TOÀN BỘ — giống buổi hôm qua, thường là thi và luyện tập; và phát hành TỪNG PHẦN — dành cho buổi học."*
+
+| Chế độ | Dùng khi | Lúc phát hành | Sau đó |
+|---|---|---|---|
+| **Từng phần** (mặc định) | buổi học | chỉ PHẦN ĐẦU mở | GV bấm **▶ Phát hành** ở đầu từng phần trong tab **Live** của buổi; bấm lại = thu hồi; **▶▶ Mở toàn bộ** nếu muốn mở hết |
+| **Toàn bộ** | luyện tập | mở sẵn mọi câu | học sinh làm theo nhịp của mình |
+
+- Chỉ **bài trên lớp** (`bai_test.loai='giao_trinh'`) có khái niệm mở dần. **Kiểm tra, ET, BTVN luôn mở cả bài** — không đổi.
+- **"Phần" là gì:** bài gán từ ĐỀ THI → Phần I / II / III của đề (mở theo CÂU; không mở theo dạng vì một dạng rải ở nhiều phần của đề, mở theo dạng là
+  lộ câu phần sau). Giáo trình thường → DẠNG, y như từ 13/09 (thêm nút "Mở toàn bộ" ở tab Live).
+- **Chọn chế độ ở đâu:** hộp 📱 Giao › Bài trên lớp › tick "Mở cho học sinh làm trên app" (2 lựa chọn) · bảng "Đã gán vào buổi của lớp"
+  (📱 Mở từng phần / 📱 Mở toàn bộ; bài đã mở từng phần có ▶▶ Mở toàn bộ) · nút 📱 ở Kho tài liệu = từng phần (như cũ).
+- **Không có cột "chế độ":** chế độ chỉ quyết định lúc phát hành mở những gì; trạng thái thật luôn là 2 bảng `bai_test_cau_phat_hanh` /
+  `bai_test_dang_phat_hanh` (suy động). DB: mig `202610021201` — `fn_bt_mo_toan_bo`, `fn_bt_mo_phan_dau`; mở / thu hồi một phần dùng
+  `fn_bt_mo_cau` / `fn_bt_dong_cau` có sẵn (của luồng Học online). Thu hồi = câu ẩn khỏi bài của HS và thôi nhận câu trả lời; bài đã làm giữ nguyên.
+- **⚠ Cần deploy cả ERP lẫn app HS:** bản app HS cũ chỉ hiểu mở theo DẠNG ⇒ với bài từ đề mở từng phần nó KHÔNG thấy câu nào. (Bài mở toàn bộ thì bản cũ
+  vẫn thấy mọi câu đã có dạng.)
+- Đụng tới luồng **Học online** (nhánh `worktree-hoc-online`, chưa merge — có màn `CaOnlinePanel` phát hành từng câu): hai bên dùng chung 2 bảng phát hành
+  và `fn_bt_mo_cau` / `fn_bt_dong_cau`; trigger `fn_bt_tu_phat_hanh_dang1` của luồng đó được thêm một điều kiện bỏ qua bài từ đề. Khi merge nhánh đó phải
+  ghép với `LiveTab` đã sửa ở đây.

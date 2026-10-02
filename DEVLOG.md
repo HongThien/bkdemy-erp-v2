@@ -34622,3 +34622,22 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Thay phần nền vùng của Đơn 7/10. Code tầng lục địa GIỮ NGUYÊN tới khi kit về (không chỉnh thêm). Tầng chặng giữ đường three.js.
 
 ### 02/10 cuối ngày (2) — [Giao diện] HANDOFF cập nhật: tầng lục địa chờ Đơn 11 · chặng dùng đường three.js · 4 bài học mới (tranh liền rồi tách · dò bãi đất · đường chiếu mặt đất · hoa thường tên file)
+
+## 2026-10-02 — [Kho · Đề thi] Phát hành 2 CHẾ ĐỘ cho bài trên lớp: toàn bộ / từng phần
+
+- **Thùy:** "cái phát hành này tốt nhất nên có 2 chế độ: phát hành toàn bộ — giống buổi hôm qua, thường là thi và luyện tập; và phát hành từng phần — dành cho buổi học."
+- **Đọc trước:** hạ tầng mở dần đã có 2 tầng — theo DẠNG (13/09, `LiveTab`) và theo CÂU (`fn_bt_mo_cau` / `fn_bt_dong_cau`, luồng Học online 19/09: DB đã áp,
+  màn GV nằm ở nhánh `worktree-hoc-online` CHƯA merge). RLS + luật ghi câu trả lời (`bai_lam_cau_ghi_duoc`) đã hiểu cả hai. ⇒ không dựng cơ chế mới,
+  chỉ thêm "lúc phát hành mở gì" + nút theo PHẦN.
+- **Quyết định (CTO, ghi để truy):** (1) chế độ KHÔNG thành cột — trạng thái thật là 2 bảng phát hành; (2) với bài từ đề, "phần" = Phần I/II/III của đề và mở theo
+  CÂU, không theo dạng (đề số 3: dạng `T312010301` có ở cả phần 1 và phần 2 ⇒ mở theo dạng lộ câu phần sau); (3) từng phần là MẶC ĐỊNH (buổi học),
+  kiểm tra / ET / BTVN không đổi; (4) thu hồi phần = đóng câu (ẩn + thôi nhận trả lời, bài đã làm giữ nguyên).
+- **Làm:** mig `202610021201_bt_hai_che_do_phat_hanh` (đã áp `--only`): `fn_bt_mo_toan_bo`, `fn_bt_mo_phan_dau`; `fn_de_thi_hoan_thien_bai_test` thôi tự mở câu;
+  trigger tự mở dạng 1 bỏ qua bài từ đề; trigger điền dạng chỉ mở dạng khi mọi câu cùng dạng đang mở. Client: `phatHanhTest(…, { cheDo })`, `moCau` / `dongCau` /
+  `moToanBo`, `getLiveSnapshot` trả thêm câu mở lẻ, `getBaiTestFull` lọc đúng thứ tự ưu tiên của `_btc_trang_thai`; `LiveTab` nhóm theo PHẦN cho bài từ đề + nút
+  "▶▶ Mở toàn bộ"; hộp Giao + bảng Đã gán có 2 lựa chọn.
+- **Kiểm:** chạy thử DB (ROLLBACK): sau phát hành 0 câu mở → mở phần đầu 12/0/0 → gán dạng cho câu phần 1 (mở dạng) và câu phần 3 (KHÔNG mở dạng, không lộ) →
+  mở phần 2, thu hồi phần 1 (0 mở, 12 đóng) → mở toàn bộ 22/22 + 12/12 dạng; bài 12A1 tối 01/10 không đổi. Giao diện: 2 trang xem-thử dữ liệu giả
+  (`xem-thu-live-phan.html` có `?thuong=1`, `xem-thu-giao-de.html`) — tab Live theo phần bấm mở / thu hồi / mở toàn bộ gọi đúng RPC; giáo trình thường vẫn theo dạng.
+  **CHƯA bấm trên phiên đăng nhập thật + chưa thử phía học sinh** (cổng preview mới ⇒ chưa đăng nhập; app HS chưa deploy).
+- **Phải deploy cả ERP + app HS** trước khi dùng chế độ từng phần cho bài từ đề: bản app HS cũ chỉ hiểu mở theo dạng nên sẽ không thấy câu nào.

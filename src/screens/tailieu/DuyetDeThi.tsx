@@ -4,7 +4,7 @@
 // Snapshot + chấm + kết quả đều ở Postgres (fn_de_thi_*) — client chỉ gọi + hiển thị.
 import { useEffect, useState } from 'react'
 import { moDeThi, ganDeThi, listDeDaGan, listLuotThi, ketQuaLuot, thuBaiLuot, datKhoaDapAn, TEN_LOAI_GAN, type DeThi, type LuotThi, type KetQuaLuot, type LoaiGan, type DeDaGan } from '../../lib/dethi'
-import { phatHanhTest } from '../../lib/testonline'
+import { phatHanhTest, moToanBo, type CheDoPhatHanh } from '../../lib/testonline'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { useStore } from '../../store/useStore'
 import { inp } from '../kho/ui'
@@ -30,6 +30,8 @@ export function GiaoDeModal({ de, thoiGianMacDinh, onClose, onDone }: { de: DeTh
   const [phut, setPhut] = useState<string>(String(thoiGianMacDinh ?? 90))
   const [khoa, setKhoa] = useState(true)
   const [moApp, setMoApp] = useState(false)
+  // 2 chế độ phát hành của bài trên lớp (CEO 02/10): từng phần = buổi học (mặc định) · toàn bộ = luyện tập
+  const [cheDo, setCheDo] = useState<CheDoPhatHanh>('tung_phan')
   const [busy, setBusy] = useState(false)
   const [res, setRes] = useState<{ ok: boolean; msg: string; inId?: string } | null>(null)
   const [inId, setInId] = useState<string | null>(null)
@@ -55,9 +57,10 @@ export function GiaoDeModal({ de, thoiGianMacDinh, onClose, onDone }: { de: DeTh
         let msg = `Đã gán thành ${TEN_LOAI_GAN[cach]} buổi ${ngay.split('-').reverse().join('/')} của lớp ${lopTen}.`
         if (moApp) {
           try {
-            const ph = await phatHanhTest(kq.taiLieuId)
+            const tungPhan = cach === 'giao_trinh_buoi' && cheDo === 'tung_phan'
+            const ph = await phatHanhTest(kq.taiLieuId, null, { cheDo: cach === 'giao_trinh_buoi' ? cheDo : 'toan_bo' })
             const han = ph.baiTest.deadline ? ` Hạn nộp ${new Date(ph.baiTest.deadline).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}.` : ''
-            msg += ` Đã mở ${ph.added} câu trên app.${han}${ph.skipped.length ? ` ${ph.skipped.length} câu tự luận chỉ có trên phiếu in.` : ''}${ph.canhBao ? ` ⚠ ${ph.canhBao}` : ''}`
+            msg += (tungPhan ? ` Đã đưa ${ph.added} câu lên app theo TỪNG PHẦN: phần đầu đang mở, thầy cô mở phần kế ở tab Live của buổi.` : ` Đã mở toàn bộ ${ph.added} câu trên app.`) + `${han}${ph.skipped.length ? ` ${ph.skipped.length} câu tự luận chỉ có trên phiếu in.` : ''}${ph.canhBao ? ` ⚠ ${ph.canhBao}` : ''}`
           } catch (e: any) { msg += ` ⚠ Chưa mở được trên app: ${e.message ?? String(e)} — mở lại ở bảng "Đã gán vào buổi".` }
         }
         setRes({ ok: true, msg, inId: kq.taiLieuId })
@@ -112,6 +115,17 @@ export function GiaoDeModal({ de, thoiGianMacDinh, onClose, onDone }: { de: DeTh
                   <input type="checkbox" checked={moApp} onChange={(e) => setMoApp(e.target.checked)} /> Mở cho học sinh làm trên app ngay
                 </label>
                 <p className="ml-6 text-[12px] text-slate-400">Không tick = chỉ in phiếu; mở trên app sau cũng được, ở bảng "Đã gán vào buổi của lớp".</p>
+                {moApp && cach === 'giao_trinh_buoi' && (
+                  <div className="ml-6 mt-2 space-y-1.5 rounded-lg border border-slate-200 bg-slate-50 p-2.5">
+                    {([['tung_phan', 'Phát hành từng phần', 'Buổi học: chỉ Phần I mở. Thầy cô bấm mở Phần II, III… ở tab Live của buổi khi dạy tới.'],
+                       ['toan_bo', 'Phát hành toàn bộ', 'Luyện tập: mở sẵn cả đề, học sinh làm theo nhịp của mình.']] as [CheDoPhatHanh, string, string][]).map(([v, ten, moTa]) => (
+                      <label key={v} className="flex cursor-pointer items-start gap-2 text-[13px] text-slate-700">
+                        <input type="radio" name="che_do_phat_hanh" className="mt-0.5" checked={cheDo === v} onChange={() => setCheDo(v)} />
+                        <span><b className="font-medium">{ten}</b><span className="block text-[12px] text-slate-500">{moTa}</span></span>
+                      </label>
+                    ))}
+                  </div>
+                )}
               </>
             )}
             <p className="mt-3 text-[12px] text-slate-400">Trên app: trắc nghiệm, đúng/sai và trả lời ngắn (ô 4 ký tự như phiếu thi). Câu tự luận chỉ có trên phiếu in.</p>
@@ -137,15 +151,23 @@ export function DaGanPanel({ deId, lamMoi }: { deId: string; lamMoi: number }) {
   const [inId, setInId] = useState<string | null>(null)
   useEffect(() => { listDeDaGan(deId).then(setRows).catch(() => setRows([])) }, [deId, lamMoi])
   if (!rows || !rows.length) return null
-  async function moApp(r: DeDaGan) {
+  async function moApp(r: DeDaGan, cheDo: CheDoPhatHanh) {
     setBusy(r.tai_lieu_id); setMsg(null)
     try {
-      const ph = await phatHanhTest(r.tai_lieu_id)
+      const ph = await phatHanhTest(r.tai_lieu_id, null, { cheDo })
       // vá đúng dòng vừa mở — không tải lại cả bảng
       setRows((s) => s?.map((x) => (x.tai_lieu_id === r.tai_lieu_id ? { ...x, bai_test_id: ph.baiTest.id, so_da_lam: 0 } : x)) ?? s)
-      setMsg({ id: r.tai_lieu_id, ok: true, text: `Đã mở ${ph.added} câu trên app${ph.skipped.length ? ` · ${ph.skipped.length} câu tự luận chỉ có trên phiếu` : ''}.` })
+      setMsg({ id: r.tai_lieu_id, ok: true, text: (cheDo === 'tung_phan' ? `Đã đưa ${ph.added} câu lên app theo từng phần — phần đầu đang mở, mở phần kế ở tab Live của buổi` : `Đã mở toàn bộ ${ph.added} câu trên app`) + `${ph.skipped.length ? ` · ${ph.skipped.length} câu tự luận chỉ có trên phiếu` : ''}.` })
     } catch (e: any) { setMsg({ id: r.tai_lieu_id, ok: false, text: e.message ?? String(e) }) } finally { setBusy(null) }
   }
+  // Bài trên lớp đang mở từng phần → mở nốt cả đề (đã mở hết thì không đổi gì)
+  async function moHet(r: DeDaGan) {
+    if (!r.bai_test_id) return
+    setBusy(r.tai_lieu_id); setMsg(null)
+    try { await moToanBo(r.bai_test_id); setMsg({ id: r.tai_lieu_id, ok: true, text: 'Đã mở toàn bộ câu của bài cho học sinh.' }) }
+    catch (e: any) { setMsg({ id: r.tai_lieu_id, ok: false, text: e.message ?? String(e) }) } finally { setBusy(null) }
+  }
+  const nutMo = 'rounded border border-emerald-300 bg-emerald-50 px-2 py-0.5 text-[12px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40'
   return (
     <div className="mt-5 rounded-xl border border-slate-200 bg-white p-4">
       <p className="mb-2 font-semibold text-slate-800">Đã gán vào buổi của lớp</p>
@@ -160,7 +182,13 @@ export function DaGanPanel({ deId, lamMoi }: { deId: string; lamMoi: number }) {
                 ? <span className="rounded bg-emerald-50 px-1.5 py-0.5 text-[11px] text-emerald-700">đang mở trên app · {r.so_da_lam} em đã làm</span>
                 : <span className="text-[12px] text-slate-400">chưa mở trên app</span>}
               <span className="ml-auto flex gap-1.5">
-                {!r.bai_test_id && <button disabled={busy === r.tai_lieu_id} onClick={() => moApp(r)} className="rounded border border-emerald-300 bg-emerald-50 px-2 py-0.5 text-[12px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40">{busy === r.tai_lieu_id ? '…' : '📱 Mở trên app'}</button>}
+                {/* Bài trên lớp: 2 chế độ (từng phần cho buổi học · toàn bộ cho luyện tập). BTVN luôn mở cả bài. */}
+                {!r.bai_test_id && r.loai === 'btvn' && <button disabled={busy === r.tai_lieu_id} onClick={() => moApp(r, 'toan_bo')} className={nutMo}>{busy === r.tai_lieu_id ? '…' : '📱 Mở trên app'}</button>}
+                {!r.bai_test_id && r.loai !== 'btvn' && <>
+                  <button disabled={busy === r.tai_lieu_id} onClick={() => moApp(r, 'tung_phan')} title="Buổi học: chỉ phần đầu mở, mở phần kế ở tab Live của buổi" className={nutMo}>{busy === r.tai_lieu_id ? '…' : '📱 Mở từng phần'}</button>
+                  <button disabled={busy === r.tai_lieu_id} onClick={() => moApp(r, 'toan_bo')} title="Luyện tập: mở sẵn cả đề" className={nutMo}>📱 Mở toàn bộ</button>
+                </>}
+                {r.bai_test_id && r.loai !== 'btvn' && <button disabled={busy === r.tai_lieu_id} onClick={() => moHet(r)} title="Mở mọi câu của bài cho học sinh (bài đang mở từng phần)" className={nutMo}>{busy === r.tai_lieu_id ? '…' : '▶▶ Mở toàn bộ'}</button>}
                 <button onClick={() => setInId(r.tai_lieu_id)} className="rounded border border-slate-300 px-2 py-0.5 text-[12px] text-slate-700 hover:border-indigo-300">🖨 In phiếu</button>
               </span>
             </div>
