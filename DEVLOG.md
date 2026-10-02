@@ -34921,3 +34921,16 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Chốt với Thùy (hỏi 3 câu):** màn 9+ = kéo ngang, dùng lại nền màn 1 LẬT GƯƠNG (đo 01/10 tối đa 8 chuyên đề/chủ đề nên hiếm) · nhân vật = chibi (nam/nữ, 1 đứng + 2 bước, nhìn phải) · 8 công trình cùng 8 loại cho mọi vùng, chất liệu theo khí hậu (nhà · lều · tháp · cầu/cổng · đền · hầm ngục · pháo đài · lâu đài, mạnh dần).
 - **Làm:** viết `Đơn 12` cuối `design/DON-HANG-SKIN-HS.md` (1 kit/vùng, RỪNG trước; bảng chất liệu 8 loại × 10 vùng; DESIGN.md bắt buộc có đường ≥24 điểm vào/ra cùng độ cao để lật gương nối liền, cỡ nhân vật theo độ sâu, z-order, vùng cấm nhãn) · đánh dấu Đơn 11 và Kit 2 của Đơn 9 là ĐÃ THAY · HANDOFF cập nhật "việc kế tiếp".
 - **Khi kit về (Claude làm):** nén WebP vào `phieuluu2d/`, khai sổ `hinh2d.ts`, dựng lại `LucDia2D` (nền + 8 công trình, N đầu tương tác, thừa đứng yên; nhân vật chạy dọc đường theo điểm đường, luân phiên 2 ảnh chạy, thu phóng theo độ sâu; >8 ⇒ kéo ngang + nền lật gương), tắt đường three.js ở tầng lục địa, bỏ `CHO_MOC_VUNG`.
+
+## 2026-10-02 — [Game] BK World: 3 màn bắt đầu chạy chung 1 app (repo bk-bat-thu, nhánh `game-3-man`)
+- **CEO:** "update hết lên three186" ⇒ đã đúng: cả nhánh chạy three **0.186.1** (bản mới nhất đã cài) — thú, màn bắt thú, Trang trại vừa chuyển từ r128 (`159a0b7`, so điểm ảnh khớp bản cũ).
+- **Thú đi dạo trên trại** (`292e4e5`, `src/trai/thu-trai.ts`): lang thang tới chỗ trống (ưu tiên vùng camera thấy, chặn dải sau sân rào bị nhà che) · đứng/gặm cỏ/ngồi/nằm/ngáp ·
+  2 con gần nhau rủ nhau chơi · đêm thật 21h–6h chủ yếu ngủ · chạm = vuốt ve + tên. Bản Nhẹ, ≤ 8 con. `scene.js` mở sổ vật cản + `ganKhung`/`themChon`. Xem thử: `trai.html?thu=6`.
+- **Màn bắt thú dùng thú code** (`e291b4f`): `src/thu-code.ts` bọc Thu4 thành giao diện DongTac (game.ts/vfx không phải đổi) · 6 loài gốc + Gà Lửa/Bò Tuyết dự phòng +
+  Băng Thần Mã huyền thoại (hiem 4, gặp ≈ 0,2%/lần sinh, tỉ lệ gốc 9%) · khởi đầu = bộ ba Lửa/Nước/Cỏ (Cáo Lửa · Cừu Mây · Khỉ Lá) · shiny 2% / alpha 3% ·
+  1 vé = 1 lượt (tải lại trong 30 phút không tốn) · ném tốn bóng, tỉ lệ × hệ số bóng (1 · 1,5 · 2,2), chốt lúc ném · bắt được ⇒ sổ chung `bkworld.so.v1` ⇒ ra trại đi dạo.
+- **Nối trại ↔ bắt thú** (`aeab9dd`, `src/trai/bk-trai.ts`): nút 🎯 Bắt thú (số vé) · 🥚 Ấp trứng (sắp mở) · 🔨 Xưởng (chế 3 loại bóng từ kho nông sản + đổi vé 10 📘) · vé rơi 10%/ô khi thu hoạch.
+- **Số TỰ ĐẶT (chỉnh sau khi chơi thật):** công thức bóng 5+2 / 8+6 / 10+8+6 ngô (≈ 16 · 34 · 68 EXP) · vé 10%/ô, 10 📘/vé · quà đầu 3 vé + 10 bóng thường + 2 bóng tốt · shiny/alpha · chỉ số 9 loài.
+- **Kiểm (Browser pane, tua khung bằng tay vì pane ẩn thì rAF đứng):** 6 loài đi dạo + vuốt ve · chọn thú khởi đầu (ảnh chân dung vẽ từ thú code) · ném bóng bắt Gà Lửa ⇒ sổ có 2 con, bóng 10→9 ·
+  mở trại thấy đúng 2 con đó · đổi vé (10 📘 → +1 vé) · chế 1 bóng thường (kho trừ đúng). Lỗi gặp: ảnh chân dung cắt đầu (hộp bao đo theo xương chưa cập nhật ⇒ đo theo dáng nghỉ); ô bóng đè nút chiêu (dời lên trên cụm nút).
+- **Việc kế:** màn 3 Ấp trứng (lai 2 thú · công thức · lò ấp nở sau 1 đêm · hoạt cảnh nở có sẵn · shiny/alpha) · NPC 5 nhiệm vụ · soi iPad.
