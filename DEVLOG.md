@@ -34791,3 +34791,11 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Bài học:**
   - Bên giải MÙ là máy dò lỗi trạm đọc tốt nhất: câu "không làm được" gần như luôn là dữ liệu hỏng, không phải câu khó.
   - Luật nào thêm SAU khi đã ghi dữ liệu thì phải chạy lại trên dữ liệu đã ghi (luật vân tay ra đời sau Unit 1).
+
+## 2026-10-02 (chốt phiên, bổ sung) — môn Toán mới: 2 quyết định của Thùy
+
+- **Thùy:** "Nó là 1 loại toán khác — độc lập với chương trình toán hiện tại. Nên coi nó như là 1 môn luôn. Mọi thứ giống toán hiện tại. T có 1 kho tài liệu cũng chia các
+  level rồi. m coi tên các folder là các mức chủ đề – chuyên đề – dạng bài thôi."
+- **Ghi vào HANDOFF (khối VIỆC KẾ TIẾP):** MÔN MỚI theo §1.6, dựng đúng khuôn kho Đại qua registry · khung bản đồ = cây thư mục (tầng 1/2/3 = chủ đề / chuyên đề / dạng).
+  Còn phải hỏi: tên môn · đường dẫn kho · "level" ứng với khối hay cấp độ riêng · định dạng file · lô đầu làm gì · ai duyệt · đã có lớp / học sinh chưa.
+- CTO đề xuất 4 lát (quét cây → bảng nháp cho Thùy duyệt · dựng môn · ghi bản đồ · nhập câu theo chuyên đề, dạng lấy theo thư mục). CHƯA ai gật. Không làm trong phiên này.

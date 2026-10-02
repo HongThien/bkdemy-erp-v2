@@ -219,10 +219,18 @@ bản đồ kiến thức Thùy tự làm; gán mẫu / skill gán dạng / lô 
 - **Đọc trước, theo thứ tự:** `CLAUDE.md` (§1.5, §1.6, §2.0, §2.1, Luật xoá) → mục này + "Bài học 28/09–01/10 — luồng kho + đề thi" ở phần ② →
   `spec-luong-kho.md` (§1 quyết định · §2 luật phân tầng Dạng / Cụm / Biến thể · §5 kiến trúc trạm + cổng ghi · §9.6 phương pháp "dựng bài thi trước") →
   `spec-luong-kho-p0.md` (§3 bản đồ code, §8 bẫy) → `spec-ban-do-k12.md` (một bản đồ đã lập thế nào: khung theo SGK → migration → màn Đề xuất → Gán mẫu).
-- **CHƯA BIẾT — hỏi Thùy trước khi viết dòng nào (đây là câu về ĐÍCH, không tự đoán):** (1) "môn Toán khác" là MÔN mới hay NHÁNH mới của Toán (§1.6:
-  môn = trung tâm riêng, bảng riêng; nhánh = bảng riêng dưới môn Toán như `dai_*` / `hgt_*` / `hinh_hoc_*`) · (2) khối nào, chương trình / bộ sách nào
-  làm khung bản đồ · (3) vài trăm file nằm ở đâu, định dạng gì (Word MathType / PDF chữ / PDF scan), có lời giải + đáp án không · (4) nhập để làm gì trước:
-  chỉ lập bản đồ, hay đổ câu vào kho luôn · (5) ai duyệt.
+- **ĐÃ CHỐT (Thùy 02/10):** (1) *"Nó là 1 loại toán khác — độc lập với chương trình toán hiện tại. Nên coi nó như là 1 MÔN luôn. Mọi thứ giống toán hiện tại."*
+  ⇒ MÔN MỚI theo §1.6 (trung tâm riêng: nhãn `mon` riêng, bảng kho riêng, tiền tố mã riêng), dựng theo ĐÚNG khuôn kho Đại, đi qua registry — không `if (mon === …)`.
+  (2) *"T có 1 kho tài liệu cũng chia các level rồi. Coi tên các folder là các mức chủ đề – chuyên đề – dạng bài thôi."* ⇒ khung bản đồ = CÂY THƯ MỤC của kho tài liệu
+  (không lập từ SGK như K12): tên folder tầng 1 / 2 / 3 = chủ đề / chuyên đề / dạng.
+- **CÒN PHẢI HỎI Thùy trước khi viết dòng nào (câu về ĐÍCH, không tự đoán):** (a) TÊN môn (để đặt nhãn `mon`, tiền tố mã, tên bảng) · (b) ĐƯỜNG DẪN kho tài liệu đó
+  (02/10 CTO nhìn `E:\BK ACADEMY\` không tự nhận ra thư mục nào — đừng đoán) · (c) "level" trong kho ứng với gì ở ERP: khối? cấp độ riêng của môn? (mã dạng hiện =
+  tiền tố + KHỐI + chủ đề + chuyên đề + dạng) · (d) định dạng file (Word MathType / PDF chữ / PDF scan), có lời giải + đáp án không · (e) lô đầu làm gì: chỉ lập bản đồ,
+  hay đổ câu vào kho luôn · (f) ai duyệt bản đồ + câu · (g) môn này có lớp / học sinh trên ERP chưa (ảnh hưởng: lớp gắn `mon`, app HS, mastery).
+- **Cách đi CTO đề xuất (theo lát, chưa ai gật):** ① quét cây thư mục → BẢNG NHÁP 3 tầng + số file mỗi nút, 0 AI, không đụng DB; nút lệch độ sâu (file nằm sai tầng,
+  folder thừa tầng, tên trùng khác chỗ) thì NÊU RA chứ không đoán → Thùy duyệt bảng · ② dựng môn mới qua registry (migration bảng kho theo khuôn Đại + tiền tố mã),
+  chạy thử bằng `thu-migration.mjs` · ③ ghi bản đồ từ bảng đã duyệt · ④ nhập câu từ file theo từng chuyên đề: dựng bộ file mẫu có đáp án người xác nhận trước, đo, rồi
+  mới chạy hàng loạt; câu vào ở trạng thái chưa duyệt, dạng lấy theo THƯ MỤC chứa file (nhân chứng có sẵn — không cần AI gán dạng).
 - **Hạ tầng dùng lại được (đừng viết lại):** quét + ghép cặp + chép file `scripts/kho/t0-cua-vao.mjs` (cấu hình thư mục theo máy `scripts/kho/cau-hinh.mjs`:
   `KHO_NGUON_GOC`, `KHO_LAM_VIEC`) · đọc Word MathType `scripts/kho/mathtype-thu/` (bài thi 10/10) · đọc PDF `scripts/kho/de-thi/boc-pdf.mjs` (Gemini gõ, Claude kiểm) ·
   cổng ghi "không biên bản kiểm thì không ghi" `scripts/kho/cong-ghi.mjs` · chèn câu `scripts/_kho_insert.mjs` · màn Đề xuất dạng/cụm + Gán mẫu (hiện chỉ nối với kho Đại) ·
