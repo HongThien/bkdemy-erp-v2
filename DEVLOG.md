@@ -35034,3 +35034,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - (02/10 đêm, Giao diện) **Thêm 2 kit lục địa: ĐẦM LẦY (8 công trình) + SA MẠC (6 công trình)** → giờ có 5 kit (rừng · ảo đảo · thành cổ · đầm lầy · sa mạc). Script nén/dò đường nhận kit tuỳ số công trình + mặt nạ màu riêng (sa mạc: đường lát đá nhạt s .26–.39 khác cát s ≥ .43; đầm lầy: đất cam).
   **Đầm lầy: thứ tự theo ĐƯỜNG THẬT khác DESIGN.md** — đường đi cầu → hang bùn → đền rêu (kit ghi đền = 5, hang = 6) nên nhân vật phải băng qua nước/quay lại; đã đổi chỗ 5↔6 (chuyên đề 5 = hang bùn, 6 = đền rêu). Sa mạc: đường lát đá đứt quãng giữa các bãi — nhân vật băng ngắn qua cát; kit chỉ có 6 mốc ⇒ lục địa sa mạc >6 chuyên đề rơi về bản vẽ chung.
   `&biome=<rung|anh_dao|thanh_co|dam_lay|sa_mac>` trên `hs.html?xem=phieu_luu` ép biome để soi từng kit. Còn 5 biome chưa có kit (bang · nui_lua · bien_dao · troi_sao · dong_gio). Thư mục `Animation/chien_dau/` (Thùy đang vẽ bộ tư thế đánh: đứng ×2, suy nghĩ, tích năng ×2 + 5 fx + nền sân) — mới có một nửa, CHƯA tích hợp.
+
+- (02/10 khuya) **Thiên Kình to ×2,5 + vòng vàng kim phát sáng** (CEO: "to gấp 3 … hoặc 2,5 lần; vòng sắt làm kĩ cho sang trọng, hiệu ứng phát sáng thật ngầu"; BatThu `git log -1`):
+  giữ dáng vòm đã chốt, đổi chất (đồng xỉn → vàng kim bóng) + rãnh rune sáng, hạt vàng 2 mép, gân + lõi sáng tia, ngọc chân tia, tinh thể mũi tia;
+  lớp cộng sáng gắn xương đầu (quầng thở, dải năng lượng chạy, sao lấp lánh). Camera phòng boss ôm cả người + boss to.
+  Vấp: gọi `DEMO.viTri()` không tham số ⇒ cá voi bị đặt NaN, biến mất khỏi ảnh — hàm DEMO là setter, đọc chữ ký trước khi gọi.
