@@ -9,15 +9,20 @@ import { KIT_LUC_DIA } from './kitLucDia'
 import { ANH_KIT } from './kitLucDia.anh'
 import { HERO_CHAY, anhChay, hopVe, khungTheoMs } from '../../skin/heroChay'
 import { anhVat } from './hinh2d'
-import { Co, CssBan2D, MuiTen, Sao5, Suong, useKhung2D } from './San2D'
+import { Co, CssBan2D, MuiTen, Sao5, Suong, useChuyenDong, useKhung2D } from './San2D'
 import { QuaiTam } from './HinhTam'
 
 const G = '/bk-ui/hs/skin/rpg/lucdia'
 const TL = 941 / 1672 // cao / rộng của khung
 const HE_SO_NV = 2.2 // kit ghi cỡ chibi 4,5–9% chiều cao khung (chỉ ~35px trên iPad, khó thấy) ⇒ phóng 2,2 lần cho dễ thấy; đổi 1 chỗ này
 const DUNG_CACH = 0.014 // đứng cách cửa công trình một đoạn đường (đơn vị = chiều rộng khung) để không đè lên nhãn
-/** HẠ DỊU nền (Thùy 02/10: "quá chói, khó nhìn" rồi "mờ quá, nhà giả giả — chỉnh vừa thôi"): giảm bão hoà + sáng + tương phản NHẸ, phủ thêm màu nền style — CHỈ nền; công trình, chữ, nhân vật giữ nguyên rực để nổi lên. Chỉnh 1 chỗ này. */
-const NEN_DIU = { loc: 'saturate(.8) brightness(.93) contrast(.95)', phu: 0.1 } // KHÔNG làm mờ: nền mờ + nhà nét ⇒ nhà như dán lên (Thùy 02/10)
+// Nền giữ NGUYÊN BẢN, không lọc màu/làm mờ (đã thử hạ dịu 2 lần — nhà trông giả; Thùy 02/10 chọn để y như ảnh gốc, chỉ thêm ánh sáng cạnh công trình).
+const CSS_SANG = `
+@keyframes kit-tho{0%,100%{opacity:.28;transform:scale(.96)}50%{opacity:.62;transform:scale(1.04)}}
+@keyframes kit-bay{0%{opacity:0;transform:translate(0,6px) scale(.5)}25%{opacity:1}100%{opacity:0;transform:translate(var(--kx,0px),-26px) scale(1)}}
+.kit-quang{animation:kit-tho 3.6s ease-in-out infinite}.kit-dom{animation:kit-bay 3.2s ease-out infinite}
+@media (prefers-reduced-motion:reduce){.kit-quang,.kit-dom{animation:none!important}.kit-dom{display:none}}`
+const RIA_SANG = 'drop-shadow(0 0 3px color-mix(in srgb, var(--sk-acc) 60%, transparent)) drop-shadow(0 0 9px color-mix(in srgb, var(--sk-acc) 28%, transparent))' // viền sáng mảnh ôm theo hình công trình
 const NHO_VI_TRI: Record<string, number> = {} // "rời màn rồi quay lại = đúng chỗ cũ" — sống tới F5
 
 const HERO_AX = HERO_CHAY.nam.ax
@@ -61,6 +66,7 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
   const [s, setS] = useState(() => NHO_VI_TRI[luc.ma] ?? sCua[Math.min(toi, sCua.length - 1)])
   const [chay, setChay] = useState<{ huongPhai: boolean } | null>(null)
   const [khungChay, setKhungChay] = useState(0)
+  const dong = useChuyenDong() // mức đồ hoạ Thấp ⇒ tắt đốm sáng bay
   const [hov, setHov] = useState<number | null>(null) // công trình đang trỏ vào ⇒ nổi lên
   const raf = useRef(0)
   const sRef = useRef(s)
@@ -101,15 +107,14 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
 
   return (
     <div className="absolute inset-0 flex flex-col" style={{ background: 'var(--sk-bg)' }}>
-      <CssBan2D />
+      <CssBan2D /><style>{CSS_SANG}</style>
       <div className="px-4 pt-3"><DauTrangHS tieuDe={luc.ten} phu={`${luc.vung.length} chuyên đề · bấm một công trình để vào`} onBack={onVe} /></div>
       <div className="min-h-0 flex-1 p-3 pt-2">
         <div className="relative h-full min-h-[300px] overflow-hidden rounded-xl" style={{ border: 'var(--sk-card-border)', background: 'var(--sk-bg)' }}>
           <img src={`${G}/${luc.biome}/nen.jpg`} alt="" aria-hidden className="absolute inset-0 h-full w-full scale-110 object-cover" style={{ filter: 'blur(14px) brightness(.55)' }} draggable={false} />
           <div ref={ref} className="absolute inset-0 flex items-center justify-center">
             <div className="relative select-none" style={{ width: W, height: H }}>
-              <img src={`${G}/${luc.biome}/nen.jpg`} alt="" className="absolute inset-0 h-full w-full" draggable={false} style={{ filter: NEN_DIU.loc }} />
-              <div className="pointer-events-none absolute inset-0" style={{ background: `radial-gradient(120% 100% at 50% 45%, transparent 35%, color-mix(in srgb, var(--sk-bg) ${Math.round(NEN_DIU.phu * 160)}%, transparent) 100%), color-mix(in srgb, var(--sk-bg) ${Math.round(NEN_DIU.phu * 100)}%, transparent)` }} />
+              <img src={`${G}/${luc.biome}/nen.jpg`} alt="" className="absolute inset-0 h-full w-full" draggable={false} />
               {W > 0 && (
                 <>
                   {/* ánh sáng đoạn đường đã đi — dưới công trình/nhân vật, không che kiến trúc */}
@@ -125,11 +130,13 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
                     const px = m.x / 100 * W, py = m.y / 100 * H, dinh = py - h * a.ay
                     return (
                       <div key={i}>
+                        {co && tt !== 'fog' && <span className="kit-quang pointer-events-none absolute rounded-[50%]" style={{ left: px - w * 0.6, top: py - h * 0.62, width: w * 1.2, height: h * 0.75, zIndex: z(`m${i}`) - 1, background: 'radial-gradient(closest-side, color-mix(in srgb, var(--sk-acc) 55%, transparent), transparent)', filter: 'blur(8px)', animationDelay: `${(i % 4) * 0.7}s` }} />}
+                        {co && tt !== 'fog' && dong && [0, 1, 2].map((k) => <span key={k} className="kit-dom pointer-events-none absolute rounded-full" style={{ left: px + (k - 1) * w * 0.34 - 2, top: dinh + h * (0.18 + k * 0.1), width: 4, height: 4, zIndex: z(`m${i}`) + 2, background: 'var(--sk-acc)', boxShadow: '0 0 6px 1px var(--sk-acc)', animationDelay: `${k * 1.05 + (i % 3) * 0.4}s`, ['--kx' as string]: `${(k - 1) * 8}px` } as React.CSSProperties} />)}
                         {co && hov === i && !chay && <span className="pointer-events-none absolute rounded-[50%]" style={{ left: px - w * 0.55, top: py - h * 0.12, width: w * 1.1, height: h * 0.24, zIndex: z(`m${i}`), background: 'radial-gradient(closest-side, var(--sk-acc), transparent)', opacity: 0.55, filter: 'blur(6px)' }} />}
                         <button type="button" disabled={!co || !!chay} onClick={() => co && dien(i, co.v.ma)} onPointerEnter={() => co && setHov(i)} onPointerLeave={() => setHov((h0) => (h0 === i ? null : h0))} onFocus={() => co && setHov(i)} onBlur={() => setHov((h0) => (h0 === i ? null : h0))}
                           aria-label={co ? `${co.v.ten}: ${co.t.dat}/${co.t.tong} chặng đạt` : `Công trình ${i + 1}`}
                           className="absolute block" style={{ left: px - a.ax * w, top: dinh, width: w, height: h, zIndex: hov === i ? 300 : z(`m${i}`), cursor: co ? 'pointer' : 'default', transformOrigin: `${a.ax * 100}% ${a.ay * 100}%`, transform: hov === i && !chay ? 'scale(1.08) translateY(-1.5%)' : undefined, transition: 'transform .16s ease-out' }}>
-                          <img src={`${G}/${luc.biome}/moc_${i + 1}.webp`} alt="" className="h-full w-full" draggable={false} style={{ transition: 'filter .16s', filter: hov === i && !chay ? 'brightness(1.12) saturate(1.1) drop-shadow(0 0 6px var(--sk-acc)) drop-shadow(0 0 16px var(--sk-acc))' : !co ? 'saturate(.85) brightness(.92)' : tt === 'fog' ? 'saturate(.55) brightness(.85)' : undefined }} />
+                          <img src={`${G}/${luc.biome}/moc_${i + 1}.webp`} alt="" className="h-full w-full" draggable={false} style={{ transition: 'filter .16s', filter: hov === i && !chay ? 'brightness(1.12) saturate(1.1) drop-shadow(0 0 6px var(--sk-acc)) drop-shadow(0 0 16px var(--sk-acc))' : !co ? 'saturate(.85) brightness(.92)' : tt === 'fog' ? 'saturate(.55) brightness(.85)' : RIA_SANG }} />
                         </button>
                         {co && tt === 'fog' && <span className="pointer-events-none absolute" style={{ left: px - w * 0.6, top: dinh + h * 0.05, width: w * 1.2, height: h * 0.9, zIndex: z(`m${i}`) + 1 }}><Suong mau={b.bot} anh={anhVat('may_suong')} style={{ left: 0, top: 0, width: '100%', height: '100%' }} /></span>}
                         {co && tt === 'dat' && <span className="pointer-events-none absolute" style={{ left: px + w * 0.12, top: dinh - H * 0.02, zIndex: 210 }}><Co mau={b.vang} anh={anhVat('co_chinh_phuc')} cao={H * 0.05} /></span>}
