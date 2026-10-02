@@ -35016,3 +35016,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   `kitLucDia.ts` (chân/bề rộng 8 công trình theo DESIGN.md) · `LucDiaKit.tsx` (nền + công trình bấm được + tên/số/5 sao đè cảnh + cờ/sương/mũi tên/quái bộ có sẵn + chibi chạy theo đường tới cửa công trình, 2 khung chạy 120ms, lật khi đi trái, nhớ vị trí khi quay lại) · `LucDia2D` tự chọn kit (≤8 chuyên đề) hay bản vẽ chung cũ.
   **Đường tâm do KIT ghi là xấp xỉ, lệch hẳn đường thật** ⇒ `scripts/anime-duong-kit.mjs` dò đường đất thật bằng mặt nạ màu + A* giữa các mốc ⇒ `kitLucDia.duong.ts` (3 kit đều bám đúng lòng đường). Cỡ chibi theo DESIGN (4,5–9% khung cao) chỉ ~35px trên iPad ⇒ nhân 2,2 (`HE_SO_NV`).
   Chưa làm: >8 chuyên đề (kit rừng/thành cổ nói lật ngang nền, ảo đảo nói KHÔNG lật được — đang rơi về bản vẽ chung), 7 biome còn lại chưa có kit. Thư mục nguồn `design/bk-ui-src/AppHS/` 200MB (có zip) — KHÔNG commit.
+
+- (02/10 khuya) **Dungeon = HANG ĐÁ** (CEO: "đi bộ qua hang động rồi mới đến khu vực boss"; BatThu `080a2cb`): hành lang ~50 m sinh theo tên loài + phòng boss
+  (vòng rune, tinh thể, vũng nước/dung nham), vách = mặt đất dâng lên (1 lưới, đủ thấp cho camera), `chan()` giữ trong hang theo dốc khoảng cách, vào phòng ⇒ băng tên + boss gầm.
+  Vấp: pane trình duyệt bị thu 0×0 sau khi trả khung về "desktop" ⇒ canvas rỗng, ảnh chụp trống — đặt lại khung 1280×800 trước khi chụp;
+  ảnh toàn cảnh từ trên cao chỉ thấy sương (sương hang để gần) ⇒ tạm tắt sương khi chụp toàn cảnh.

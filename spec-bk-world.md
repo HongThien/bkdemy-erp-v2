@@ -269,3 +269,8 @@ Repo `bk-bat-thu`, nhánh `game-3-man`, three **r186** (0.186.1). Mở: `trai.ht
 - Vé rơi khi thu hoạch (mỗi ô): tầng 1 8% · tầng 2 2,5% · tầng 3 0,6% · tầng 4 0,15%. Shop (điểm chăm chỉ): 10 · 20 · 40 · 80 📘. Nhiệm vụ Bác Hai thưởng vé theo tầng.
 - Ngưỡng nhiệm vụ học tập ngày: ≥ 10 điểm chăm chỉ trong ngày nông trại (≈ 1 lượt bài đạt).
 - Loài lai (Sư Tử Lửa, Voi Rừng, Gà Lửa, Bò Tuyết) vẫn ra được từ trứng; có thêm dungeon riêng như mọi loài.
+
+**CEO 02/10 (sau khi xem bản cảnh mở):** *"Mỗi con nên có dungeon riêng — kiểu đi bộ qua hang động rồi mới đến khu vực boss chứ."* ⇒ dungeon = **HANG ĐÁ**:
+hành lang uốn lượn ~50 m giữa 2 vách (hình đường sinh theo tên loài — 12 dungeon 12 đường khác nhau), tinh thể phát sáng theo hệ dọc vách,
+đá tảng + măng đá ⇒ **phòng boss** tròn cuối hang (vòng rune, tinh thể lớn sau lưng boss, vũng nước/dung nham); bước vào phòng ⇒ băng tên boss + boss gầm.
+Trong hang V1 chưa có quái nhỏ / cửa ải / câu đố (để sau, nếu CEO muốn).
