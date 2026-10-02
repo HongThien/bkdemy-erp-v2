@@ -34575,3 +34575,11 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   TheGioi2D dùng GhepManh (bố cục làm sẵn theo số chủ đề), hộp lục địa đúng tỉ lệ ngang, to hơn 18%. Rê chuột: nhích lên + viền vàng (CSS .ban2d-o:hover).
   Chưa đo: saturate .45 brightness .74 + mây 20% (bản đầu xám đen). Thứ tự biome vẫn theo ganBiomeTheoTranh (rừng, anh đào, thành cổ, …).
 - Kiểm 1180×820 với 9 · 6 · 3 chủ đề + rê chuột, 0 lỗi. Chế độ tấm liền (ToanCanh + 10 mảnh Voronoi the_gioi_vung_*.webp) KHÔNG còn dùng — file vẫn để, chờ Thùy cho xoá.
+
+### 02/10 — [Giao diện] Thế giới: lục địa rời GHÉP ĐÚNG VỊ TRÍ ẢNH GỐC (Thùy: "9 lục địa vẫn phải ghép lại giống ảnh chính, vị trí y ảnh gốc, không rời thành 9 cái")
+- SAI của CTO lần trước: hiểu "ghép rời" thành xếp lưới. Đúng ý: mảnh rời + toạ độ ⇒ ra lại đại lục như ảnh gốc, khối ít chủ đề bỏ bớt mảnh.
+- Dò tự động (so màu SSD thô→mịn) THẤT BẠI: mảnh rời ChatGPT vẽ lại có DÁNG khác vùng trong ảnh gốc (rừng gốc là dải dài, mảnh là đảo tròn) ⇒ cỡ lệch (băng, thành cổ tí hon, đại lục hở).
+  Cách dùng: tâm vùng đo trên ảnh gốc + bề rộng tăng tới khi các mảnh đại lục gối nhau (ghép thử ra ảnh 2 vòng) ⇒ hinh2d.VI_TRI_LUC_DIA_V2 (thứ tự đường đi).
+- TheGioi2D.GhepTheoTranh (≤10 chủ đề): nền biển + N mảnh đúng toạ độ, vẽ y nhỏ trước; nút mảnh dùng mask = chính ảnh (góc trống không cướp chuột mảnh bên);
+  rê chuột: nhích lên + viền vàng (lớp viền riêng vì drop-shadow bị mask cắt); lớp giao diện (mũi tên, cờ, quái, nhãn) vẽ trên cùng. >10 ⇒ GhepManh. ToanCanh (tấm liền) bỏ khỏi code.
+- Kiểm 1180×820: 9 & 6 chủ đề + rê chuột, 0 lỗi. File không còn dùng (chờ Thùy cho xoá): the_gioi_dat.webp, the_gioi_vung_*.webp (10), the_gioi_toan_canh.jpg, nen_the_gioi.jpg, luc_dia_*_1.webp (Đơn 7).

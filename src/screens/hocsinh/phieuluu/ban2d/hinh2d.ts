@@ -59,6 +59,22 @@ const LUC_DIA_V2 = ['rung', 'bang', 'nui_lua', 'bien_dao', 'sa_mac', 'dam_lay', 
 /** lục địa rời V2 (null nếu biome chưa có) + tỉ lệ ngang/dọc để dựng hộp đúng dáng */
 export const anhLucDiaV2 = (biome: string) => (LUC_DIA_V2.includes(biome) ? `${G}/luc_dia_v2_${biome}.webp` : null)
 export const TI_LE_LUC_DIA_V2 = 1.56
+/** VỊ TRÍ GHÉP 10 lục địa rời V2 để thành ĐÚNG bố cục ảnh toàn cảnh (Thùy 02/10: "vẫn xếp liền nhau dựa trên hình gốc, vị trí giống y ảnh gốc").
+ *  Theo THỨ TỰ ĐƯỜNG ĐI (chủ đề thứ i ⇒ mảnh i). x,y = TÂM mảnh, w = bề rộng mảnh — đều % khung 16:9.
+ *  Cách ra số: tâm = tâm vùng đo trên ảnh gốc; bề rộng tăng tới khi các mảnh đại lục gối lên nhau thành 1 khối (ghép thử ra ảnh, 2 vòng).
+ *  (Dò tự động bằng so màu đã thử — sai: mảnh rời do ChatGPT vẽ lại có DÁNG khác vùng trong ảnh gốc, so màu ra cỡ lệch.) Vẽ mảnh y nhỏ trước, y lớn đè lên. */
+export const VI_TRI_LUC_DIA_V2: { biome: string; x: number; y: number; w: number }[] = [
+  { biome: 'rung', x: 20, y: 28, w: 41 },
+  { biome: 'anh_dao', x: 17, y: 65, w: 38 },
+  { biome: 'thanh_co', x: 39, y: 59, w: 33 },
+  { biome: 'dam_lay', x: 57, y: 79, w: 37 },
+  { biome: 'sa_mac', x: 60, y: 45, w: 37 },
+  { biome: 'bang', x: 41, y: 19, w: 31 },
+  { biome: 'nui_lua', x: 62, y: 19, w: 30 },
+  { biome: 'bien_dao', x: 87, y: 21, w: 23 },
+  { biome: 'troi_sao', x: 88, y: 52, w: 21 },
+  { biome: 'dong_gio', x: 87, y: 81, w: 23 },
+]
 
 export const anhNenTheGioi = () => (THE_GIOI_GHEP_ROI ? `${G}/the_gioi_bien.jpg` : CO_SAN.nenTheGioi ? `${G}/nen_the_gioi.jpg` : null)
 // lục địa: thứ tự chủ đề quyết định dáng (vòng 2 của cùng biome lấy dáng kế) ⇒ 1 khối nhiều chủ đề ít lặp hình; biome chưa có ảnh ⇒ hình tạm
