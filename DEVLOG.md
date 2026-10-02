@@ -34939,3 +34939,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   NPC Bác Hai 5 nhiệm vụ (`7473f4d`, thưởng tạm vé/bóng — xu chờ CEO §4.3). Kiểm: lai Cáo Lửa × Gà Lửa ⇒ trứng ⇒ tua ngày ⇒ chạm nở ⇒ thẻ "Chào đời" ⇒ sổ có 3 con; chế 3 bóng ⇒ nhiệm vụ 1 xong ⇒ nhận vé (3→4) ⇒ sang nhiệm vụ 2.
   Vấp: lần bấm đầu sau khi tải trang trượt (bẫy cũ Browser pane) ⇒ gọi click() bằng JS; chú thích `//` chèn giữa dòng nuốt `return` (lần 2) ⇒ dùng `/* */`.
   Số tự đặt + danh sách công thức: spec-bk-world §7.4 (paste-ready cho CEO duyệt).
+
+- (02/10 tối, Giao diện) **Style #1 đổi sang CHIBI dễ thương** (Thùy gửi 6 ảnh `design/bk-ui-src/New_anime/`): 4 nền (Lâu đài + Đảo trời × ngang 1672×941 / dọc 941×1672) → `bg_{lau_dai,dao_troi}_chibi_{ngang,doc}.jpg` q80 ·
+  2 nhân vật chibi (nam+mèo đen, nữ+cú trắng; PNG đã trong suốt, cắt sát, cao 900px) → `nv_{nam,nu}_chibi.png`. `rpg.ts` trỏ sang tên MỚI (id nền `lau_dai`/`bau_troi` giữ ⇒ HS đã lưu tự đổi); lớp phủ tối của nền ngang giảm
+  (0.38/0.55/0.86 → 0.12/0.3/0.72) vì ảnh mới đã tối sẵn. File cũ GIỮ (PWA cũ còn gọi). Script nén: `scripts/anime-nen-chibi.mjs`. `check:style-hs` ✔. Soi Home ngang 1400 + dọc 390: nền + nhân vật + bong bóng ổn.
+  **Chưa chibi:** 13 icon ô · 2 banner · hoa văn góc · boss Thùy · cả bản đồ phiêu lưu (thế giới/lục địa/chặng — ảnh sáng kiểu khác) — cần ChatGPT vẽ lại cùng nét chibi (đơn hàng chưa viết).

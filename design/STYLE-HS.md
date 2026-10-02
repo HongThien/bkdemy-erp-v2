@@ -19,7 +19,7 @@
 | Bảng màu 3D của bản đồ phiêu lưu (thế giới · lục địa · chặng · màn đấu) | `skin/the3d/bangMau<id>.ts` → khai `the3d` trong style (hợp đồng `skin/the3d/kieuMau.ts`) | Cảnh 3D viết bằng CODE, chỉ đọc màu qua bảng này (không gõ hex trong màn). Thiếu `the3d` ⇒ màn phiêu lưu báo "style chưa có bản đồ 3D". Quái/boss cắm qua `skin/the3d/nguonQuai.ts` (Thùy thiết kế riêng) |
 | Ảnh gốc từ ChatGPT (chưa nén) | `design/bk-ui-src/…` · ảnh toàn cảnh chuẩn trong `design/handoff/<kit>/reference/` | nguồn để nén lại khi cần |
 
-Style RPG hiện tại: `skin/styles/rpg.ts` + `public/bk-ui/hs/skin/rpg/` (3 nền: Lâu đài — ảnh 37 bản dọc · Đảo trời · Đêm sao; 13 icon ô;
+Style RPG hiện tại (02/10: nền + nhân vật đã CHIBI — `bg_*_chibi_*.jpg`, `nv_*_chibi.png`; icon/banner còn anime cũ): `skin/styles/rpg.ts` + `public/bk-ui/hs/skin/rpg/` (3 nền: Lâu đài — ảnh 37 bản dọc · Đảo trời · Đêm sao; 13 icon ô;
 2 icon banner; hoa văn góc + gạch). Ảnh toàn cảnh chuẩn: `design/handoff/hs-skin-rpg-v1/reference/reference_rpg_ipad.png`.
 
 ## 2. Cách style chạy (đừng phá)
