@@ -49,7 +49,7 @@
 
 - 4 đáp án, hai bên trả lời cùng lúc, **ai đúng trước ăn câu**, điểm theo tốc độ (ngưỡng co giãn theo giờ/câu của môn) + chuỗi.
 - **SAI = KHOÁ CẢ CÂU với em đó** (mỗi em chỉ 1 lần trả lời/câu); đối thủ vẫn làm tiếp tới hết giờ.
-  ⇒ đoán bừa = mất lượt, không còn là lợi thế. **ĐỔI so với code Đấu Từ hiện tại** (theo Bufopia: sai chỉ khoá ĐÁP ÁN đó, bấm tiếp được ⇒ bấm lần lượt 4 đáp án là ăn — với Toán là lỗ hổng lớn). Áp cho MỌI môn (symmetry).
+  ⇒ đoán bừa = mất lượt, không còn là lợi thế. **ĐÃ SỬA 03/10 trong code Đấu Từ** (`lib/trongTai.ts` + bot + màn đấu; trước đó theo Bufopia: sai chỉ khoá ĐÁP ÁN đó, bấm tiếp được ⇒ bấm lần lượt 4 đáp án là ăn — với Toán là lỗ hổng lớn). Áp cho MỌI môn (symmetry). Cả 2 cùng sai ⇒ hết câu ngay. Leo tháp vốn đã 1 lần/câu. Góc luyện từ (Anh, tự ôn không thi đấu) vẫn cho chọn lại tới khi đúng.
 - Bot (Tournament khi chơi một mình): mức Dễ/Vừa/Khó; luật thắng của Thử thách = **đạt ngưỡng đúng**, không phải đua bấm với bot.
 
 ## 5. Chọn câu — luật chung mọi chế độ

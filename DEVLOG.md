@@ -35182,3 +35182,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   77 thẻ / 6 chủ đề, 19 hình; `xuat-pdf.mjs` in 2 PDF vào `docs/so-tay-cong-thuc/` (Chrome headless — Edge headless thoát im lặng không
   ra file). Sai trong nguồn bắt được khi chép: "cực trị ⇔ y'=0, y''≠0" (chỉ là điều kiện đủ, phản ví dụ x⁴) · dạng 10 mặt phẳng in z thành
   y · J(…; y₂+a₂t₂ …) in a₂ thay b₂. 10 thẻ `nghi_van` CT 2018 chờ GV. Spec: `spec-so-tay-cong-thuc.md`. Chưa đụng DB/app.
+
+- (03/10, Đấu Từ · mọi môn) **Mỗi người chỉ bấm 1 lần/câu** (Thùy: "không là thành game nhanh tay"). `trongTai.traLoi`: đã có 1 lần sai ⇒ bỏ qua mọi lần bấm sau; cả 2 cùng sai ⇒ hết câu ngay (thắng vòng = -1) · bot bỏ "bấm lại sau khi sai" (sai2 không còn dùng) · ManDau khoá cả 4 nút sau khi sai. Kiểm bằng mô phỏng trọng tài (tsx): sai rồi bấm lại ⇒ bị bỏ; 2 bên sai ⇒ pha ket ngay; A sai B đúng ⇒ B ăn 100. Leo tháp vốn đã 1 lần/câu; Góc luyện từ (tự ôn) giữ cho chọn lại.

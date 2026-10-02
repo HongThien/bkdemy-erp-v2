@@ -1,4 +1,4 @@
-// BOT — chạy cạnh trọng tài. Thông số theo bản gốc: thời gian trả lời + tỉ lệ sai lần đầu/lần hai; từ dài bot chậm hơn,
+// BOT — chạy cạnh trọng tài. Thông số theo bản gốc: thời gian trả lời + tỉ lệ sai (sai1; sai2 không còn dùng — mỗi người chỉ bấm 1 lần/câu, Thùy 03/10); từ dài bot chậm hơn,
 // thỉnh thoảng "ngập ngừng". Bot nhìn snapshot như người chơi, không đọc đáp án trước khi tới giờ bấm.
 import type { MucBot, NguoiTran, Snap, TrongTai } from './trongTai'
 import { chon } from './tienich'
@@ -45,8 +45,7 @@ export function ganBot(tai: TrongTai, ghe: 0 | 1, muc: MucBot) {
       const conSai = cau.opts.map((o) => o.id).filter((o) => o !== cau.dung && !hienTai.sai[ghe].includes(o))
       const opt = Math.random() < xacSuatSai && conSai.length ? chon(conSai) : cau.dung
       lan++
-      tai.traLoi(ghe, opt)
-      if (opt !== cau.dung) thu(tai.snap)
+      tai.traLoi(ghe, opt) // 1 lần/câu: sai là thôi, không bấm lại
     }, tre)
   }
 

@@ -1,7 +1,9 @@
 // TRỌNG TÀI 1 trận — chạy ở 1 máy duy nhất (máy chủ phòng / máy chơi bot), máy khác chỉ nhận ảnh chụp (Snap).
 // Luật (theo bản gốc Bufopia, đọc từ mã nguồn 02/10):
-//  · 4 đáp án, mỗi từ 12 giây, hai bên cùng trả lời — AI ĐÚNG TRƯỚC ĂN TỪ ĐÓ. Sai thì đáp án đó khoá với mình, bấm tiếp được.
-//  · Điểm: đúng < 2s = 100 · < 4s = 70 · còn lại 50; mỗi chuỗi 3 câu đúng liền +30; sai ≥ 3 lần trong 1 từ chỉ còn 50.
+//  · 4 đáp án, mỗi từ 12 giây, hai bên cùng trả lời — AI ĐÚNG TRƯỚC ĂN TỪ ĐÓ. **MỖI NGƯỜI CHỈ BẤM 1 LẦN/CÂU** (Thùy 03/10, mọi môn —
+//    spec-che-do-game.md §4): sai ⇒ khoá CẢ câu với người đó, đối thủ làm tiếp tới hết giờ; cả 2 cùng sai ⇒ hết câu luôn.
+//    (Bufopia gốc cho bấm tiếp đáp án khác ⇒ bấm lần lượt 4 đáp án là ăn — thành game nhanh tay, đã bỏ.)
+//  · Điểm: đúng < 2s = 100 · < 4s = 70 · còn lại 50; mỗi chuỗi 3 câu đúng liền +30.
 //  · "Đúng trước" so theo thời gian phản xạ mỗi máy tự đo (rt), chờ thêm 220ms sau đáp án đúng đầu tiên để bù trễ mạng.
 // ⚠ DEMO: máy chủ phòng là trọng tài (tin máy chủ). Khi khớp HS BK + có thưởng season ⇒ chuyển trọng tài xuống server (spec §3).
 import type { Cau } from '../nguon/kieu'
@@ -119,13 +121,15 @@ export class TrongTai {
   /** rt = thời gian phản xạ (ms) do máy người chơi đo; bỏ trống = trọng tài tự đo (người chơi cùng máy, bot). */
   traLoi(ghe: 0 | 1, opt: string, rt?: number) {
     const s = this.s
-    if (s.ketQua || s.pha !== 'vong' || s.sai[ghe].includes(opt) || this.ungVien.some((u) => u.ghe === ghe)) return
+    if (s.ketQua || s.pha !== 'vong' || s.sai[ghe].length > 0 || this.ungVien.some((u) => u.ghe === ghe)) return // đã bấm câu này rồi
     const troiQua = performance.now() - this.batDauVong
     const r = Math.max(50, Math.min(rt ?? troiQua, troiQua + 400))
     const cau = s.ds[s.i]
     s.thu[ghe]++
     if (opt !== cau.dung) {
       s.sai[ghe].push(opt)
+      const khac = (1 - ghe) as 0 | 1
+      if (s.sai[khac].length > 0 && !this.ungVien.length && !this.henBu) { this.hetGio(); return } // cả 2 đã sai ⇒ hết câu, khỏi chờ đồng hồ
       this.phat()
       return
     }

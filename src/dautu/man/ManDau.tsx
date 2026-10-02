@@ -108,7 +108,7 @@ export function ManDau({ phien, onThoat, onVeBang, nhanCheDo }: { phien: PhienDa
   })
 
   const traLoi = (g: 0 | 1, opt: string) => {
-    if (!s || s.pha !== 'vong' || s.sai[g].includes(opt)) return
+    if (!s || s.pha !== 'vong' || s.sai[g].length > 0) return // 1 lần/câu
     if (!laDoi) setChon(opt)
     phat('click')
     phien.traLoi(g, opt)
@@ -238,7 +238,7 @@ function KhuTraLoi({ s, g, mon, onChon, phim, chon, xoay, khoa }: { s: Snap; g: 
           else if (sai) lop = 'sai'
           else if (chon === o && s.pha === 'vong') lop = 'dang-chon'
           return (
-            <button key={o} className={'dap-an ' + lop} disabled={khoa || s.pha !== 'vong' || sai} onClick={() => onChon(o)}>
+            <button key={o} className={'dap-an ' + lop} disabled={khoa || s.pha !== 'vong' || s.sai[g].length > 0} onClick={() => onChon(o)}>
               <span className="phim">{phim[k].toUpperCase()}</span>
               <span className="chu"><ChuMon mon={mon}>{text}</ChuMon></span>
             </button>
