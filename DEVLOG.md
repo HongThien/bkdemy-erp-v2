@@ -34883,3 +34883,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   bản cũ (ngoài đúng phần sửa) ⇒ file nguồn y hệt.
 - **Bài học:** (1) commit trong checkout dùng chung: index có thể chứa file phiên khác — dựng commit từ index TẠM (HEAD + file của mình) hoặc
   `git diff --cached` trước khi commit. (2) Hai phiên cùng thay 1 hàm danh sách ⇒ migration "thêm phần tử" phải dựng từ định nghĩa đang chạy.
+
+- (02/10 chiều) Băng Thần Mã: CEO "vẫn thấy đầu và cổ có cái rãnh" — 1 lưới rồi nhưng rãnh do HÌNH: má bầu tròn gặp cổ hẹp, lượn smooth-min quá hẹp (0,03) ⇒ vòng lõm quanh má. Sửa: lượn 0,075 · cổ loe ra đoạn sát đầu · má nhỏ lại chút. **Bài học:** gộp lưới chỉ hết VẾT NỐI; còn RÃNH là do chênh bề ngang 2 khối + bán kính lượn — kiểm cả 4 góc (2 bên, gáy, họng).
