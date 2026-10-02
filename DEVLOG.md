@@ -34667,3 +34667,16 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - **Bài học:** sau MỌI lần sửa bộ đọc phải chạy lại cả 12 unit và nhìn bảng số cờ, không chỉ unit đang sửa.
 - **Đang chạy:** thử Unit 1 với 2 bên kiểm độc lập (A không thấy đáp án; B thấy đáp án, chỉ gán điểm).
 - **Viết `spec-anh-kho.md`:** luật "chắc chắn" 5 điều kiện · luồng nhập · việc ở màn Kho (khảo sát: ~8–9 file + 1–2 migration; `count_cau_by_dang`, `fn_kho_hang_duyet` join bảng cụm, `MathText` escape `<u>`) · nguồn tài liệu (research: 220–350 đề, top nguồn, chi phí — chờ CEO duyệt mới tải/mua).
+
+## 2026-10-02 (trưa, máy công ty) — [Game] Băng Thần Mã sửa theo ảnh Frostallion (BatThu `thu-de-thuong` @ `8b55fb5`)
+- **CEO chọn sửa (so ảnh wiki Frostallion):** cánh to dựng chữ V · mặt nạ pha lê xanh · bờm + đuôi · ngực + chân pha lê xanh · "gai băng trên người làm giống ở chân" · "miệng mở như mở không gian — phải có khoang miệng LÕM vào, không lồi ra".
+- **Làm (mỗi bước 1 commit, đã push):**
+  - Màu: mặt nạ + pha lê xanh băng (tham số loài `phaLe`).
+  - Gai trắng trên thân → chùm pha lê như cổ chân (`chumPhaLe`); ngực = túm lông bông trắng (`tumNguc`).
+  - Cánh: dài 0,76 → 1,0, phiến rộng ×1,3 (`canh.rong`), nghỉ nâng 0,75 rad thành chữ V; bớt tự sáng + bớt sáng mặt dưới ở shader (0,24 → 0,08) cho cánh đặc như sứ.
+  - Miệng: **hàm dưới tách rời** (`Hinh.hamTach`): mặt cắt song song trục mõm từ khoé miệng, hàm quay quanh khoé, khoang elip khoét vào cả 2 nửa, tô lòng đỏ theo độ sâu trong khối đầu nguyên, lưỡi hồng; ngậm thì kín. Bỏ khối tối phồng ra.
+  - Bờm: thử **cụm mây** → CEO "xấu, để như cũ" → trả về dải sóng → CEO "bờm phải dọc theo thân, thành lụa mỏng mềm bay lượn như Suicune" → **8 dải lụa mỏng** (`daiLua`) mọc dọc mào cổ, bay ra sau dọc thân, gợn chạy gốc→ngọn ở shader (thuộc tính `aLua` mới) + lò xo theo gió.
+  - Đuôi: 5 dải sóng bồng xoè quạt, ngọn cuộn móc, ngang khoeo (`toc.duoi 'quat'`) — thay ống dày buông chạm đất.
+  - `thu-demo`: `DEMO.luoi(...)` chụp lưới nhiều góc.
+- **Sai/bài học:** đề xuất bờm cụm mây theo ảnh wiki mà không hỏi lại ⇒ CEO bác ngay. Bờm là chi tiết CEO có gu riêng (mẫu CEO đưa: Suicune) — lần sau hỏi mẫu trước khi đổi kiểu.
+- **Còn:** túm ngực hơi cục · khối gốc cánh nhìn từ sau như tấm phẳng · chờ CEO xem bản mới.
