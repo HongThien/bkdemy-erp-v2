@@ -136,7 +136,7 @@ export function CssBan2D() {
 .ban2d[data-dong="1"] .ban2d-dao{animation:ban2d-noi 6s ease-in-out infinite alternate}
 }
 .ban2d-o{transition:transform .2s ease,filter .2s ease}
-.ban2d-o:hover,.ban2d-o:focus-visible{transform:translate(-50%,-50%) scale(1.05)!important;filter:brightness(1.08)}
+.ban2d-o:hover,.ban2d-o:focus-visible{transform:translate(-50%,-56%) scale(1.04)!important;filter:brightness(1.1) drop-shadow(0 0 4px var(--sk-acc)) drop-shadow(0 0 12px var(--sk-acc))!important}
 .ban2d-zoom{transition:transform .45s cubic-bezier(.5,0,.75,0),opacity .45s ease}
 @keyframes ban2d-nhay{0%,100%{opacity:.25;transform:scale(.7)}50%{opacity:1;transform:scale(1.2)}}
 @keyframes ban2d-troi{from{transform:translateX(0)}to{transform:translateX(320%)}}

@@ -52,7 +52,15 @@ export function ganBiomeTheoTranh<T extends { luc_dia: { biome: string }[] }>(bd
   return { ...bd, luc_dia: bd.luc_dia.map((l, i) => ({ ...l, biome: tc.o[i].biome })) }
 }
 
-export const anhNenTheGioi = () => (CO_SAN.nenTheGioi ? `${G}/nen_the_gioi.jpg` : null)
+/** CÁCH VẼ THẾ GIỚI (Thùy 02/10 chốt: "ghép rời"): nền biển V2 + 10 LỤC ĐỊA RỜI V2 (#3–#12 bộ V2, cắt sát mép, WebP cạnh dài 640, tỉ lệ ≈1,55).
+ *  Khối ít chủ đề ⇒ chỉ đặt N lục địa, biển vẫn liền. TOAN_CANH_THE_GIOI (tấm đất liền) chỉ còn dùng để gán biome theo thứ tự đường đi. */
+export const THE_GIOI_GHEP_ROI = true
+const LUC_DIA_V2 = ['rung', 'bang', 'nui_lua', 'bien_dao', 'sa_mac', 'dam_lay', 'thanh_co', 'troi_sao', 'anh_dao', 'dong_gio']
+/** lục địa rời V2 (null nếu biome chưa có) + tỉ lệ ngang/dọc để dựng hộp đúng dáng */
+export const anhLucDiaV2 = (biome: string) => (LUC_DIA_V2.includes(biome) ? `${G}/luc_dia_v2_${biome}.webp` : null)
+export const TI_LE_LUC_DIA_V2 = 1.56
+
+export const anhNenTheGioi = () => (THE_GIOI_GHEP_ROI ? `${G}/the_gioi_bien.jpg` : CO_SAN.nenTheGioi ? `${G}/nen_the_gioi.jpg` : null)
 // lục địa: thứ tự chủ đề quyết định dáng (vòng 2 của cùng biome lấy dáng kế) ⇒ 1 khối nhiều chủ đề ít lặp hình; biome chưa có ảnh ⇒ hình tạm
 export const anhLucDia = (biome: string, thuTu: number) => {
   const ds = CO_SAN.lucDia[biome]

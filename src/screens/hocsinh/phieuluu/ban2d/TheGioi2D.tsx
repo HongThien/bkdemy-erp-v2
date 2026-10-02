@@ -9,7 +9,7 @@ import { HEAD, useMedia } from '../../skin/KhungHS'
 import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import { thongKe, type BanDoV, type LucDiaV } from '../kieu'
 import { boCucTheGioi, heSoCo } from './boCuc'
-import { TOAN_CANH_THE_GIOI, anhLucDia, anhManhVung, anhNenTheGioi, anhVat } from './hinh2d'
+import { THE_GIOI_GHEP_ROI, TI_LE_LUC_DIA_V2, TOAN_CANH_THE_GIOI, anhLucDia, anhLucDiaV2, anhManhVung, anhNenTheGioi, anhVat } from './hinh2d'
 import { CHU_VIEN, Co, CssBan2D, MuiTen, NenBien, Sao5, Suong, useKhung2D, viTri } from './San2D'
 import { LucDiaTam, QuaiTam } from './HinhTam'
 
@@ -17,7 +17,7 @@ type Props = { banDo: BanDoV; b: BangMau3D; onChon: (ma: string) => void; hienTa
 
 export function TheGioi2D(p: Props) {
   const tc = TOAN_CANH_THE_GIOI
-  return tc && p.banDo.luc_dia.length <= tc.o.length ? <ToanCanh {...p} /> : <GhepManh {...p} />
+  return !THE_GIOI_GHEP_ROI && tc && p.banDo.luc_dia.length <= tc.o.length ? <ToanCanh {...p} /> : <GhepManh {...p} />
 }
 
 // phóng vào lục địa vừa bấm rồi mới chuyển tầng
@@ -118,20 +118,20 @@ function GhepManh({ banDo, b, onChon, hienTai, thanh }: Props) {
         <div ref={ref} className="absolute inset-0 flex items-center justify-center">
           <div className="ban2d-zoom relative" style={{ width: khung.w, height: khung.h, ...style }}>
             {khung.w > 0 && ds.map(({ l, t, diem, co, thuTu }) => {
-              const p = viTri(diem, khung), size = co * canh, anh = anhLucDia(l.biome, thuTu), dangO = hienTai === l.ma
+              const v2 = anhLucDiaV2(l.biome), p = viTri(diem, khung), size = co * canh * (v2 ? 1.18 : 1), anh = v2 ?? anhLucDia(l.biome, thuTu), dangO = hienTai === l.ma, cao = v2 ? size / TI_LE_LUC_DIA_V2 : size
               return (
-                <div key={l.ma} className="absolute" style={{ left: p.x, top: p.y, width: size, height: size, transform: 'translate(-50%,-50%)' }}>
+                <div key={l.ma} className="absolute" style={{ left: p.x, top: p.y, width: size, height: cao, transform: 'translate(-50%,-50%)' }}>
                   {dangO && <span className="ban2d-sang pointer-events-none absolute left-1/2 top-1/2 rounded-full" style={{ width: size * 1.25, height: size * 1.05, transform: 'translate(-50%,-50%)', background: `radial-gradient(closest-side, ${b.vang}aa, ${b.vang}33 60%, transparent)` }} />}
                   <button onClick={() => chon(l.ma, p.x, p.y)} aria-label={`${l.ten}: ${t.trangThai === 'fog' ? 'chưa đo' : `${t.dat}/${t.tong} chặng đạt`}`}
-                    className="ban2d-o ban2d-dao absolute left-1/2 top-1/2 h-full w-full" style={{ transform: 'translate(-50%,-50%)', filter: t.trangThai === 'fog' ? (anh ? 'saturate(.3) brightness(.6)' : 'saturate(.55) brightness(.85)') : undefined, animationDelay: `${-thuTu * 0.9}s` }}>
+                    className="ban2d-o ban2d-dao absolute left-1/2 top-1/2 h-full w-full" style={{ transform: 'translate(-50%,-50%)', filter: t.trangThai === 'fog' ? (anh ? 'saturate(.45) brightness(.74)' : 'saturate(.55) brightness(.85)') : undefined, animationDelay: `${-thuTu * 0.9}s` }}>
                     {anh ? <img src={anh} alt="" className="h-full w-full object-contain" draggable={false} /> : <LucDiaTam b={b} biome={l.biome} khoa={l.ma} />}
                   </button>
-                  {t.trangThai === 'fog' && <Suong mau={b.bot} anh={anhVat('may_suong')} style={{ left: '8%', top: '12%', width: '84%', height: '70%', opacity: anh ? 0.32 : 1 }} />}
+                  {t.trangThai === 'fog' && <Suong mau={b.bot} anh={anhVat('may_suong')} style={{ left: '8%', top: '12%', width: '84%', height: '70%', opacity: anh ? 0.2 : 1 }} />}
                   {t.trangThai === 'dat' && <span className="pointer-events-none absolute" style={{ right: '14%', top: '4%' }}><Co mau={b.biome[l.biome]?.diem ?? b.vang} anh={anhVat('co_chinh_phuc')} cao={size * 0.26} /></span>}
                   {t.trangThai === 'yeu' && t.loai && !dangO && <span className="pointer-events-none absolute" style={{ right: '10%', top: '10%', width: size * 0.2, height: size * 0.2 }}><QuaiTam b={b} loai={t.loai} co={size * 0.2} /></span>}
-                  {dangO && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ top: -size * 0.1 }}><MuiTen co={Math.max(30, size * 0.2)} /></span>}
+                  {dangO && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ top: -cao * 0.28 }}><MuiTen co={Math.max(30, size * 0.16)} /></span>}
                   <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center gap-0.5 px-2 py-1 text-center"
-                    style={{ ...CHU_VIEN, top: '74%', maxWidth: dai ? 290 : 160, width: 'max-content' }}>
+                    style={{ ...CHU_VIEN, top: v2 ? '80%' : '74%', maxWidth: dai ? 290 : 160, width: 'max-content' }}>
                     <NhanLuc l={l} t={t} dangO={dangO} dai={dai} />
                   </span>
                 </div>

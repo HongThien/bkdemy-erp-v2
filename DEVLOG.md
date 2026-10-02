@@ -34565,3 +34565,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   hộp % khai trong hinh2d.o[].hop. Rê chuột: mảnh vùng hiện đè lên, nhích lên 1,4% cao khung, viền vàng + bóng; sương vùng đó tắt; nhãn nhích + phóng 1.06.
   Mảnh chỉ nạp khi chuột (pointerType mouse) vào bản đồ lần đầu — iPad cảm ứng không tải thêm.
 - Chữ: thế giới 18 · lục địa 17.5 · chặng 16px; sao thế giới 24. Mũi tên: bỏ stroke tối + bóng tối, giữ quầng vàng.
+
+### 02/10 — [Giao diện] Thế giới chuyển sang GHÉP RỜI: nền biển V2 + 10 lục địa rời V2 (Thùy chốt)
+- Thùy: "bản mới t cũng cấp từng lục địa rời để ghép mà, m lại dùng ảnh liền" + hỏi có phí công thiết kế từng thành phần không, 10 ảnh có nặng iPad không.
+  Phân tích: ghép rời đúng cho SẢN PHẨM (số chủ đề đổi theo khối ⇒ bỏ bớt lục địa, biển vẫn liền; nhích lên khi rê chuột tự nhiên; trạng thái gắn từng mảnh);
+  điểm trừ duy nhất: thành quần đảo, không phải 1 đại lục như ảnh toàn cảnh. CTO đã chọn tấm liền vì "giống ảnh mẫu" mà không hỏi — sai ưu tiên.
+  Hiệu suất: WebP cạnh dài 640 ≈80–100KB/ảnh, giải nén ≈1MB/ảnh ⇒ ~10MB + nền 6MB, ổn iPad gen 7; TRÁNH dùng ảnh gốc 1536×1024 (~6MB giải nén/ảnh).
+- Làm: cắt sát mép trong suốt + nén 10 ảnh → luc_dia_v2_<biome>.webp (tỉ lệ ≈1,55, tổng ≈900KB). hinh2d THE_GIOI_GHEP_ROI + anhLucDiaV2; nền = the_gioi_bien.jpg.
+  TheGioi2D dùng GhepManh (bố cục làm sẵn theo số chủ đề), hộp lục địa đúng tỉ lệ ngang, to hơn 18%. Rê chuột: nhích lên + viền vàng (CSS .ban2d-o:hover).
+  Chưa đo: saturate .45 brightness .74 + mây 20% (bản đầu xám đen). Thứ tự biome vẫn theo ganBiomeTheoTranh (rừng, anh đào, thành cổ, …).
+- Kiểm 1180×820 với 9 · 6 · 3 chủ đề + rê chuột, 0 lỗi. Chế độ tấm liền (ToanCanh + 10 mảnh Voronoi the_gioi_vung_*.webp) KHÔNG còn dùng — file vẫn để, chờ Thùy cho xoá.
