@@ -7,6 +7,7 @@ import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import { thongKeVung, type LucDiaV } from '../kieu'
 import { KIT_LUC_DIA } from './kitLucDia'
 import { ANH_KIT } from './kitLucDia.anh'
+import { HERO_CHAY, anhChay, hopVe, khungTheoMs } from '../../skin/heroChay'
 import { anhVat } from './hinh2d'
 import { Co, CssBan2D, MuiTen, Sao5, Suong, useKhung2D } from './San2D'
 import { QuaiTam } from './HinhTam'
@@ -17,6 +18,7 @@ const HE_SO_NV = 2.2 // kit ghi cỡ chibi 4,5–9% chiều cao khung (chỉ ~35
 const DUNG_CACH = 0.014 // đứng cách cửa công trình một đoạn đường (đơn vị = chiều rộng khung) để không đè lên nhãn
 const NHO_VI_TRI: Record<string, number> = {} // "rời màn rồi quay lại = đúng chỗ cũ" — sống tới F5
 
+const HERO_AX = HERO_CHAY.nam.ax
 export const coKit = (biome: string, soVung: number) => !!KIT_LUC_DIA[biome] && soVung > 0 && soVung <= 8
 
 /** Đường tâm → dãy điểm dày (Catmull-Rom) + độ dài tích luỹ. Toạ độ chuẩn hoá theo CHIỀU RỘNG (x∈0–1, y∈0–0,563) để cự ly đúng. */
@@ -57,11 +59,11 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
   const [s, setS] = useState(() => NHO_VI_TRI[luc.ma] ?? sCua[Math.min(toi, sCua.length - 1)])
   const [chay, setChay] = useState<{ huongPhai: boolean } | null>(null)
   const [khungChay, setKhungChay] = useState(0)
-  const [nhun, setNhun] = useState(0)
   const raf = useRef(0)
   const sRef = useRef(s)
   sRef.current = s
   useEffect(() => () => cancelAnimationFrame(raf.current), [])
+  useEffect(() => { for (const i of [0, 1, 2, 3, 4, 5, 'dung'] as const) new Image().src = anhChay(gioi, i) }, [gioi]) // nạp sẵn đủ khung chạy ⇒ không nháy lúc đổi khung
   useEffect(() => { NHO_VI_TRI[luc.ma] = s }, [s, luc.ma])
 
   /** Chạy theo đường tới cửa công trình i rồi mở màn chặng. Tốc độ co theo quãng, tối đa ~2,4 giây. */
@@ -72,9 +74,9 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
     const ms = Math.min(2400, Math.max(500, qd * 2600)), t0 = performance.now()
     const f = (now: number) => {
       const k = Math.min(1, (now - t0) / ms), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2
-      setS(s0 + (dich - s0) * e); setChay({ huongPhai: dich >= s0 }); setKhungChay(Math.floor((now - t0) / 120) % 2); setNhun(Math.sin(((now - t0) / 120) * Math.PI))
+      setS(s0 + (dich - s0) * e); setChay({ huongPhai: dich >= s0 }); setKhungChay(khungTheoMs(now - t0))
       if (k < 1) raf.current = requestAnimationFrame(f)
-      else { setChay(null); setNhun(0); onChon(ma) }
+      else { setChay(null); setKhungChay(0); onChon(ma) }
     }
     raf.current = requestAnimationFrame(f)
   }
@@ -84,10 +86,10 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
   const nvPx = { x: nvP.x * W, y: (nvP.y / TL) * H }
   const yPhanTram = (nvP.y / TL) * 100
   const cao = (() => { const [a, c, d] = kit.nv; const t = yPhanTram; const v = t <= 55 ? a + (c - a) * ((t - 30) / 25) : c + (d - c) * ((t - 55) / 25); return Math.max(4, Math.min(10, v)) / 100 * H * HE_SO_NV })()
-  const meta = anh.nv[gioi]
-  const nvAnh = chay ? `nv_${gioi}_c${khungChay + 1}` : `nv_${gioi}_dung`
+  // Bộ CHẠY 2D nhân vật chính (6 khung × 100ms theo thời gian, không đếm rAF) + khung đứng yên — skin/heroChay.ts, dùng chung MỌI kit
+  const hv = hopVe(gioi, chay ? khungChay : 'dung', cao, nvPx.x, nvPx.y)
   const huongPhai = chay ? chay.huongPhai : true
-  const sapXep = [...kit.moc.map((m, i) => ({ k: `m${i}`, y: m.y })), { k: 'nv', y: yPhanTram }].sort((a, c) => a.y - c.y)
+  const sapXep = [...kit.moc.map((m, i) => ({ k: `m${i}`, y: m.y })), { k: 'nv', y: yPhanTram + 3.5 }].sort((a, c) => a.y - c.y)
   const z = (k: string) => (sapXep.findIndex((x) => x.k === k) + 1) * 10 // ×10: chừa số lẻ cho sương (ngay trên công trình của nó, dưới nhân vật cùng/ngoài hàng)
   const pts = (ds: [number, number][]) => ds.map(([x, y]) => `${(x / 100 * W).toFixed(1)},${(y / 100 * H).toFixed(1)}`).join(' ')
   const daDi = pts(kit.duong.slice(0, (toanDat ? kit.duong.length - 1 : kit.diemMoc[Math.min(toi, kit.diemMoc.length - 1)]) + 1))
@@ -141,8 +143,8 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
                   })}
 
                   {/* nhân vật: chibi đứng / chạy 2 khung xen kẽ 120ms, lật ngang khi chạy về trái, đế chân neo vào tâm đường */}
-                  <img src={`${G}/${luc.biome}/${nvAnh}.webp`} alt="" draggable={false} className="pointer-events-none absolute"
-                    style={{ left: nvPx.x - meta.ax * (cao * meta.w / meta.h), top: nvPx.y - cao - nhun * H * 0.004, height: cao, width: cao * meta.w / meta.h, zIndex: z('nv'), transform: huongPhai ? undefined : 'scaleX(-1)', transformOrigin: `${meta.ax * 100}% 100%`, filter: 'drop-shadow(0 3px 3px rgba(0,0,0,.35))' }} />
+                  <img src={anhChay(gioi, chay ? khungChay : 'dung')} alt="" draggable={false} className="pointer-events-none absolute"
+                    style={{ left: hv.left, top: hv.top, width: hv.width, height: hv.height, zIndex: z('nv'), transform: huongPhai ? undefined : 'scaleX(-1)', transformOrigin: `${HERO_AX * 100}% 100%`, filter: 'drop-shadow(0 3px 3px rgba(0,0,0,.35))' }} />
                 </>
               )}
             </div>

@@ -1044,7 +1044,7 @@ YÊU CẦU RIÊNG (kịch bản chuẩn — ảnh to → thành phần → bố 
 > 60% = cầu nhỏ / tia điện (phát nhẹ một tay). Thua thì boss ném ma thuật trúng nhân vật → bị đánh → gục. Thắng cả 3 trận → nhân vật nhảy mừng. **Chuyển động giữa các tư thế do CODE** (đổi ảnh + nhún + lao tới + lật + quầng sáng);
 > ảnh chỉ cần là các TƯ THẾ chốt hình, cùng một nhân vật, thay ảnh không giật.
 > **Cách gửi:** mỗi GIỚI = 1 kit = 1 context ChatGPT MỚI. **Làm NAM trước → Thùy duyệt → NỮ theo đúng bố cục đó.** Dán `CHATGPT-UI-KIT.md` → dán khối đơn dưới → đính kèm:
-> ① `design/bk-ui-src/AppHS/lục địa rừng/assets/characters/nam_dung.png` + `nam_chay_chan_trai.png` (làm NỮ: `nu_dung.png` + `nu_chay_chan_trai.png`) — **NHÂN VẬT PHẢI GIỐNG HỆT** (mặt, tóc, áo choàng, boots, tỉ lệ chibi) — hoặc bản mới Thùy đang làm nếu đã chốt;
+> ① `design/bk-ui-src/AppHS/Animation/nam/nam_00_dung_yen.png` + `nam_01_chay_buoc_trai.png` (làm NỮ: `nu/nu_00_dung_yen.png` + `nu_01_chay_buoc_trai.png`) — NHÀ THÁM HIỂM áo choàng xanh, chốt 02/10 tối — **NHÂN VẬT PHẢI GIỐNG HỆT** (mặt, tóc, áo choàng, boots, tỉ lệ chibi) — hoặc bản mới Thùy đang làm nếu đã chốt;
 > ② `public/bk-ui/hs/skin/rpg/boss_thuy_dung.png` (đối thủ, chỉ để vẽ mockup cảnh đấu); ③ `public/bk-ui/hs/skin/rpg/bg_lau_dai_chibi_ngang.jpg` (không khí/ánh sáng của app — nền sân đấu cùng họ màu).
 > Kit về: `design/handoff/hs-chien-dau-nam-v1.zip` (+ `-nu-v1.zip`).
 

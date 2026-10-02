@@ -7,6 +7,7 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react'
 import { DauTrangHS, HEAD, MAU, ManHS, NhanHS, NutHS, TheHS, THE } from '../skin/KhungHS'
 import { laySkin } from '../skin/registry'
+import { anhChay, hopVe } from '../skin/heroChay'
 import { BossAnhHS } from '../boss/BossSan'
 import type { TuTheBoss } from '../boss/noiDungBoss'
 import { NGUONG, NHAN_DO_KHO, SO_CAU_TRAN, SO_TRAN, type CauTT, type KetThucLuot } from './kieu'
@@ -14,8 +15,7 @@ import { AURA, LOC_BOSS, TEN_DON, chonDon, phatDon, type Don, type Hop, type TtB
 
 const BOSS = 'boss_thuy' // DÙNG TẠM cho cả 3 trận (Thùy 02/10) — đủ quái thì thay qua sổ boss của style
 const CHU = ['A', 'B', 'C', 'D', 'E', 'F']
-/** Nhân vật chính + người dẫn truyện. Tạm: ảnh chibi nam làm nhân vật chính, bé gái chibi = người dẫn (Thùy 02/10). Khi có nhân vật chính riêng nhiều tư thế thì đổi nguồn ở Skin. */
-const HERO: 'nam' | 'nu' = 'nam'
+/** Nhân vật chính = nhà thám hiểm áo choàng xanh (cùng người với bộ chạy ở bản đồ — skin/heroChay.ts, khung ĐỨNG YÊN; các tư thế đánh còn là CSS trên ảnh này cho tới khi có Đơn 13). Người dẫn truyện = bé gái chibi + cú trắng (Thùy 02/10). */
 const DAN: 'nam' | 'nu' = 'nu'
 /** Máu boss mất sau mỗi trận thắng, theo % đúng (hiển thị; trận 3 luôn 100% ⇒ đòn kết liễu hạ nốt phần còn lại). */
 const MAT_MAU: Record<number, number> = { 60: 18, 80: 28, 100: 34 }
@@ -56,6 +56,8 @@ type Pha = 'dang_danh' | 'dien' | 'sau_tran' | 'cuoi'
 export interface DauTruongProps {
   /** 3 trận × 5 câu (server sinh một lần lúc bắt đầu lượt) */
   tran: CauTT[][]
+  /** giới của nhân vật chính (học sinh nam/nữ) */
+  gioi?: 'nam' | 'nu'
   /** hiện vòng gợi ý quanh đáp án đúng (chỉ trang xem thử) */
   goiY?: boolean
   /** ép đòn khi thắng (chỉ trang xem thử, để soi từng hiệu ứng) */
@@ -70,7 +72,7 @@ export interface DauTruongProps {
   onThoat: () => void
 }
 
-export function DauTruongHS({ tran, goiY, epDon, diem, luotConSau, onKetThuc, onThuLai, onThoat }: DauTruongProps) {
+export function DauTruongHS({ tran, gioi = 'nam', goiY, epDon, diem, luotConSau, onKetThuc, onThuLai, onThoat }: DauTruongProps) {
   const [t, setT] = useState(0)
   const [c, setC] = useState(0)
   const [chon, setChon] = useState<number | null>(null)
@@ -171,7 +173,7 @@ export function DauTruongHS({ tran, goiY, epDon, diem, luotConSau, onKetThuc, on
     ketThuc({ thang, lyDo: 'bo_cuoc' })
   }
 
-  const nv = laySkin(null).nhanVat?.[HERO]
+  const hv = hopVe(gioi, 'dung', cao, cao * 0.275, cao) // THÂN cao đúng `cao`, trục thân nằm giữa hộp rộng cao×0,55
   const kqCuoi: KetThucLuot = { thang, lyDo }
   const soThang = thang.filter(Boolean).length
   const bossCao = Math.round(cao * 0.95)
@@ -198,12 +200,12 @@ export function DauTruongHS({ tran, goiY, epDon, diem, luotConSau, onKetThuc, on
         <div ref={chuyenRef} className="absolute inset-0">
           <div className="absolute inset-0" style={{ background: 'radial-gradient(70% 90% at 70% 100%, var(--sk-surface2) 0%, transparent 70%)' }} />
           {thua && <div className="pointer-events-none absolute inset-0 z-[5]" style={{ background: 'var(--sk-bg)', opacity: 0, animation: 'dt-nen-toi 1.6s ease-in .4s forwards' }} />}
-          <div ref={heroRef} className="absolute bottom-0 z-10 flex items-end" style={{
-            height: cao, left: vuot ? '50%' : '4%', transform: vuot ? 'translateX(-50%)' : undefined, transition: 'left .9s ease-in-out',
+          <div ref={heroRef} className="absolute bottom-0 z-10" style={{
+            height: cao, width: cao * 0.55, left: vuot ? '50%' : '4%', transform: vuot ? 'translateX(-50%)' : undefined, transition: 'left .9s ease-in-out',
             ['--dt-aura' as string]: don ? AURA[don] : 'transparent',
           } as CSSProperties}>
-            <div className="dt-hero h-full" data-h={hero} key={`h-${hero}`}>
-              {nv ? <img src={nv} alt="" draggable={false} className="h-full w-auto select-none object-contain" style={{ filter: 'drop-shadow(0 8px 14px var(--sk-bg))' }} /> : <span className="text-[90px]">🧙</span>}
+            <div className="dt-hero relative h-full w-full" data-h={hero} key={`h-${hero}`}>
+              <img src={anhChay(gioi, 'dung')} alt="" draggable={false} className="absolute max-w-none select-none" style={{ left: hv.left, top: hv.top, width: hv.width, height: hv.height, filter: 'drop-shadow(0 8px 14px var(--sk-bg))' }} />
             </div>
           </div>
           <div className="absolute bottom-0 right-[3%] z-10 flex flex-col items-center" style={{ width: bossCao + 8 }}>

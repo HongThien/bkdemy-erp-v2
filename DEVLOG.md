@@ -35024,3 +35024,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 - (02/10 đêm, Giao diện) **Đơn 13 — nhân vật chính Đấu trường: bộ tư thế chiến đấu 2D** (nam trước, nữ sau): 15 tư thế/giới (đứng ×2 · suy nghĩ · tích năng ×2 · niệm lên trời ×2 · ném trước ×2 · phát nhỏ · bị đánh ×2 · gục · thắng ×2) + 5 tấm đạn/hiệu ứng + nền sân đấu,
   kèm chuỗi tư thế theo từng đòn để code khớp. Viết ở `design/DON-HANG-SKIN-HS.md`. Bé gái chibi = người dẫn truyện (Thùy 02/10), không phải nhân vật chính. Chờ Thùy gửi ChatGPT.
+
+- (02/10 đêm, Giao diện) **Nhân vật chính = nhà thám hiểm áo choàng xanh (nam / nữ), bộ CHẠY 2D 6 khung × 100ms** (Thùy giao `design/bk-ui-src/AppHS/Animation/`: `nam|nu/<g>_00_dung_yen` + `<g>_01…06_chay_*`): `scripts/anime-chay-2d.mjs` nén 360×540 WebP (giữ nguyên canvas, KHÔNG cắt) vào `public/bk-ui/hs/skin/rpg/chay/<g>/` và sinh `skin/heroChay.ts`
+  (neo trục thân x=0,55 · neo đất ĐO từng khung trên chính ảnh — bảng neo trong ANIMATION.md là của bản khung cũ, Thùy đã đổi tên/khung giữa chừng · cỡ thân theo CÙNG một tỉ lệ cho cả 6 khung để không giật · `khungTheoMs` dùng DELTA thời gian). `LucDiaKit` (bản đồ lục địa, mọi kit) + sân Đấu trường dùng bộ này; bộ chạy 2 khung của từng kit bị thay.
+  **Bẫy:** ANIMATION.md còn tên file cũ (`01_tiep_dat_trai`…) trong khi file thật đã đổi ⇒ script trỏ theo file thật; thứ tự z: nhân vật cộng 3,5% độ sâu để luôn đứng TRƯỚC cửa công trình đang tới (không bị tháp che). Các tư thế ĐÁNH vẫn là CSS trên khung đứng yên — chờ Đơn 13 (đã đổi ảnh tham chiếu sang nhà thám hiểm).
