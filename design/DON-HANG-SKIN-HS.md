@@ -1038,8 +1038,8 @@ YÊU CẦU RIÊNG (kịch bản chuẩn — ảnh to → thành phần → bố 
 
 ## Đơn 13 — NHÂN VẬT CHÍNH ĐẤU TRƯỜNG: bộ TƯ THẾ CHIẾN ĐẤU 2D (nam + nữ) + đạn/hiệu ứng + nền sân đấu — theo ĐÚNG giao thức kit — soạn 02/10 đêm, cho màn Đấu trường (Thử thách 3 trận)
 
-> **Thùy 02/10:** "Nhân vật chính cần vẽ nhiều animation hơn. Style combat là 2D với nhiều animation khác nhau." Bé gái chibi (người cầm sách + cú trắng) chỉ là **NGƯỜI DẪN TRUYỆN** — KHÔNG phải nhân vật này.
-> Nhân vật chính = **cùng người với bộ chibi CHẠY của kit lục địa** (Đơn 12; Thùy đang làm lại bộ chạy). Đơn này là bộ **chiến đấu**: ĐỨNG · TÍCH NĂNG · NIỆM LÊN TRỜI · NÉM TRƯỚC · PHÁT NHỎ · BỊ ĐÁNH · GỤC · THẮNG · SUY NGHĨ.
+> **Thùy 02/10:** "Nhân vật chính cần vẽ nhiều animation hơn. Style combat là 2D với nhiều animation khác nhau." Hai nhân vật cũ (bé trai + mèo đen · bé gái + cú trắng) chỉ là **NPC DẪN TRUYỆN** — KHÔNG phải nhân vật này.
+> Nhân vật chính = **2 nhà thám hiểm áo choàng xanh (nam / nữ) — cùng người với bộ CHẠY 2D đã chốt 02/10** (`design/bk-ui-src/AppHS/Animation/`). Đơn này là bộ **chiến đấu**: ĐỨNG · TÍCH NĂNG · NIỆM LÊN TRỜI · NÉM TRƯỚC · PHÁT NHỎ · BỊ ĐÁNH · GỤC · THẮNG · SUY NGHĨ.
 > **Cách chạy trên màn (để vẽ đúng ý):** học sinh làm xong 5 câu thì NHÂN VẬT tung đòn theo % đúng — 100% = sét đánh / thiên thạch (giơ 2 tay lên trời) · 80% = cầu lửa / cầu băng khổng lồ (ném cầu về phía trước) ·
 > 60% = cầu nhỏ / tia điện (phát nhẹ một tay). Thua thì boss ném ma thuật trúng nhân vật → bị đánh → gục. Thắng cả 3 trận → nhân vật nhảy mừng. **Chuyển động giữa các tư thế do CODE** (đổi ảnh + nhún + lao tới + lật + quầng sáng);
 > ảnh chỉ cần là các TƯ THẾ chốt hình, cùng một nhân vật, thay ảnh không giật.

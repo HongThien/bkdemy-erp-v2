@@ -7,6 +7,7 @@ import { useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode }
 import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import { TEN_LOAI } from '../../skin/the3d/loai'
 import { laySkin } from '../../skin/registry'
+import { anhChay } from '../../skin/heroChay'
 import { useDoHoa } from '../DoHoa'
 import type { Diem } from './boCuc'
 
@@ -48,7 +49,8 @@ export function useChuyenDong(): boolean {
 /** Tên quái không kéo three (nguonQuai.ts import three). Cùng luật: boss riêng của style trước, rồi bảng TEN_LOAI. */
 export const tenQuai2D = (loai: string): string => laySkin(null).boss?.[loai]?.ten ?? TEN_LOAI[loai] ?? loai
 export const anhBoss = (loai: string): string | null => laySkin(null).boss?.[loai]?.chandung ?? laySkin(null).boss?.[loai]?.dung ?? null
-export const anhHero = (gioi: 'nam' | 'nu'): string | null => laySkin(null).nhanVat?.[gioi] ?? null
+/** Ảnh đứng của NHÂN VẬT CHÍNH (nhà thám hiểm áo choàng xanh — skin/heroChay.ts). `nhanVat` của style là NPC dẫn truyện, KHÔNG dùng cho em. */
+export const anhHero = (gioi: 'nam' | 'nu'): string | null => anhChay(gioi, 'dung')
 
 /** Lớp nền chung: ảnh nền (nếu có) phủ kín, hoặc gradient biển đêm từ bảng màu; kèm sao lấp lánh + mây trôi + ánh nước. */
 export function NenBien({ b, anh, may = true, sao = true, children }: { b: BangMau3D; anh?: string | null; may?: boolean; sao?: boolean; children?: ReactNode }) {
@@ -109,7 +111,7 @@ export function Co({ mau, anh, cao }: { mau: string; anh?: string | null; cao: n
   )
 }
 
-/** Token nhân vật của em (ảnh nv_nam/nv_nu của style), nhấp nhô. */
+/** Token nhân vật chính của em (khung đứng của bộ chạy), nhấp nhô. */
 export function Hero({ gioi, cao, mau }: { gioi: 'nam' | 'nu'; cao: number; mau: string }) {
   const a = anhHero(gioi)
   return (

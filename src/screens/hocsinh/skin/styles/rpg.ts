@@ -60,6 +60,7 @@ export const RPG: Skin = {
   the3d: RPG_3D,
   // 02/10 (Thùy): bản CHIBI dễ thương thay bản anime cũ — nam + mèo đen · nữ + cú trắng, PNG trong suốt cắt sát, cao 900px.
   // Ảnh gốc design/bk-ui-src/New_anime/. Bản cũ nv_nam.png / nv_nu.png GIỮ trên đĩa (PWA cũ còn gọi) — dọn sau ≥1 tuần, hỏi Thùy.
+  // 02/10 (Thùy): đây là 2 NPC DẪN TRUYỆN (bé trai + mèo đen · bé gái + cú trắng) — Home nói chuyện, tutorial, người dẫn ở Đấu trường. NHÂN VẬT CHÍNH của học sinh là 2 nhà thám hiểm áo choàng xanh (bộ chạy 2D: skin/heroChay.ts).
   nhanVat: { nam: `${A}/nv_nam_chibi.png`, nu: `${A}/nv_nu_chibi.png` },
   // Boss mẫu (01/10): chân dung Thùy vẽ chibi — ChatGPT, ảnh gốc design/bk-ui-src/boss/thuy/ (02..08), nén 1024px (chân dung 512px).
   boss: {
