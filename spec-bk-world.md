@@ -108,6 +108,8 @@ HỌC ─(lượt học thật)─► ĐIỂM HỌC TẬP ─► hạt giống �
 | 5 | Tên game | CEO: "nghĩ đi" ⇒ CTO đề xuất ở §6 |
 | 6 | V1 (06/10) ra phần nào? | **ĐỦ TÍNH NĂNG, số lượng ít.** *"V1 thì phải có đủ tính năng rồi, chỉ là số lượng chưa nhiều thôi."* |
 | 7 | Cấu trúc game (02/10) | **3 MÀN CHÍNH: trồng cây · bắt thú · ấp trứng; thú bắt được ĐI DẠO ở trang trại** — xem §7 (thay Trại thú riêng của §5.2) |
+| 8 | V1 06/10 online thật hay lưu trên máy? (02/10) | **Đủ 3 màn, LƯU TRÊN MÁY** — online (điểm học tập thật, xu thật) làm ngay SAU 06/10 |
+| 9 | Thú huyền thoại trong V1 (02/10) | **Bắt được, CỰC HIẾM** trong dungeon (tỉ lệ công khai, cần bóng xịn) |
 
 ## 5. KẾ HOẠCH V1 — đủ 10 tính năng, số lượng ít (deadline 06/10)
 
@@ -215,6 +217,6 @@ HỌC ─(lượt học thật)─► ĐIỂM HỌC TẬP ─► hạt giống �
 | 03/10 | Khung 1 app 3 màn + HUD + chuyển màn · chuyển Trang trại sang r186 (ruộng, cây, thu, bán) · thú đi dạo trên trại |
 | 04/10 | Màn Bắt thú bằng thú code (6 loài gốc) · 3 loại bóng · Xưởng chế bóng · vé |
 | 05/10 | Màn Ấp trứng: lai · công thức · lò ấp · hoạt cảnh nở · shiny/alpha · NPC 5 nhiệm vụ |
-| 06/10 | Online (điểm học tập thật, kho đồ, xu chung trần) · gắn app HS · soi iPad |
+| 06/10 | Soi iPad · sửa lỗi · (CEO 02/10: V1 lưu trên máy — online làm ngay sau) |
 
-- **Rủi ro lớn nhất:** 06/10 dồn phần online + gắn app vào 1 ngày.
+- **CEO 02/10:** V1 = đủ 3 màn LƯU TRÊN MÁY; online + gắn app HS làm ngay sau 06/10. Thú huyền thoại bắt được trong dungeon, cực hiếm.
