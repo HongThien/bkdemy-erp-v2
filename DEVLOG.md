@@ -34532,3 +34532,11 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Thùy: "căn toạ độ không đúng, lâu đài không vào ô đất trống — sao không làm map có sẵn con đường?" ⇒ đúng: toạ độ đo bằng mắt trên lưới lệch vài % là trượt, mỗi ảnh lại đo.
   Đổi: tranh vẽ sẵn đường + bệ trống; code chỉ gắn công trình/quái/cờ/nhãn lên bệ. Số điểm dừng đổi theo khối ⇒ nền vùng 3 bản (4·6·8 bệ), nền chặng 4 bản (4·6·8·10), chọn bản nhỏ nhất ≥ N.
   Làm rừng trước (7 ảnh, kit hs-nen-duong-rung-v1) rồi nhân 7 vùng còn lại. CHO_MOC_VUNG (đo tay) giữ tạm tới khi kit về.
+
+### 02/10 sáng — [Giao diện] Thế giới V2: đại lục 7 vùng + 3 đảo (ảnh ChatGPT V2, 18 ảnh)
+- Soi bộ V2 (design/bk-ui-src/Adnventure2D/V2, tên exec-*): #1 toàn cảnh · #2 biển trống · #3–12 10 vùng vẽ lại · #13 cờ · #14 mây · #15 la bàn · #16 pháp sư · #17 quái mẫu ·
+  #18 = TOÀN BỘ đất liền nền trong suốt đúng khổ ⇒ #2+#18 ra lại tranh (lệch TB 21/255 so #1 — cùng bố cục, không trùng pixel). Không có DESIGN.md (ChatGPT hết lượt) ⇒ CTO tự đo.
+- Tách #18 theo vùng trong suốt: 7 vùng DÍNH LIỀN thành 1 khối (đại lục) + 3 đảo ⇒ không bỏ bớt vùng được; vùng thừa phủ ảnh mây #14.
+- 10 vùng đo trên ảnh ghép lưới 5%, thứ tự đường đi rừng → anh đào → thành cổ → đầm lầy → sa mạc → băng → núi lửa → quần đảo → đảo trời → đảo cối xay.
+  ganBiomeTheoTranh(): chủ đề thứ i lấy biome của vùng i trong tranh ⇒ đi vào trong đúng cảnh vùng vừa bấm (chỉ phần vẽ, không đụng DB). Biome mới anh_dao, dong_gio chưa có nền vùng.
+- Nén: the_gioi_bien.jpg 179KB · the_gioi_dat.webp 493KB · cờ/mây/la bàn webp. CO_SAN.vat thành danh sách. Kiểm 1180×820 9 chủ đề, 0 lỗi.

@@ -10,6 +10,7 @@ import { TheGioiView } from './TheGioiView'
 import { LucDiaView } from './LucDiaView'
 import { ChangView } from './ChangView'
 import { TheGioi2D } from './ban2d/TheGioi2D'
+import { ganBiomeTheoTranh } from './ban2d/hinh2d'
 import { LucDia2D } from './ban2d/LucDia2D'
 import { Chang2D } from './ban2d/Chang2D'
 import { XemDau } from './XemDau'
@@ -21,7 +22,7 @@ import type { ChangV } from './kieu'
 // &so=N: chỉ lấy N chủ đề đầu (thử bản đồ toàn cảnh với khối ít chủ đề)
 function layBanDo(): BanDoV {
   const bd = layBanDoGoc(), so = Number(new URLSearchParams(location.search).get('so'))
-  return so > 0 ? { ...bd, luc_dia: bd.luc_dia.slice(0, so) } : bd
+  return ganBiomeTheoTranh(so > 0 ? { ...bd, luc_dia: bd.luc_dia.slice(0, so) } : bd)
 }
 function layBanDoGoc(): BanDoV {
   if (new URLSearchParams(location.search).get('thu') === 'nhieu') return banDoNhieu()

@@ -15,26 +15,38 @@ const CO_SAN = {
   nenChang: ['rung', 'bang', 'nui_lua', 'bien_dao'] as string[],
   /** mốc công trình đã có (Đơn 7 #21–#26: thanh · thap · trai · den · cong · cau) — vòng lại trong số đã có */
   moc: ['thanh'] as string[],
-  vat: false, // be_da.png · may_suong.png · la_ban.png · co_chinh_phuc.png (Đơn 7 #27–#30)
+  /** vật nhỏ đã có (V2 02/10: cờ · mây sương · la bàn; bệ đá chưa có) */
+  vat: ['co_chinh_phuc', 'may_suong', 'la_ban'] as string[],
 }
 
 /** THẾ GIỚI = 1 BỨC TRANH LIỀN (Thùy 02/10: ghép nền biển + lục địa rời thì "không khớp, không giống ảnh toàn cảnh").
- *  Code chỉ phủ lớp giao diện (nhãn, cờ, sương, quầng sáng, nhân vật) lên đúng chỗ từng lục địa vẽ sẵn trong tranh.
- *  o = các lục địa trong tranh theo THỨ TỰ ĐƯỜNG ĐI (chủ đề thứ i của khối ⇒ ô i): tâm x,y (% khung 16:9) + bán kính r (% bề rộng).
- *  Khối có ÍT chủ đề hơn ⇒ ô thừa phủ tối "chưa khai phá"; NHIỀU hơn ⇒ rơi về cách ghép mảnh. Đo trên ảnh có lưới 10% (02/10). */
+ *  Bản V2 (02/10 sáng, design/bk-ui-src/Adnventure2D/V2): 1 ĐẠI LỤC chia 7 vùng + 3 đảo riêng; giao 2 lớp khớp tranh toàn cảnh:
+ *  `nen` = biển trống (ảnh exec-0542a1b4) · `dat` = toàn bộ đất liền nền trong suốt (exec-2c2c3568). Code chỉ phủ lớp giao diện.
+ *  o = 10 vùng theo THỨ TỰ ĐƯỜNG ĐI (chủ đề thứ i của khối ⇒ vùng i): tâm x,y (% khung 16:9) + bán kính r (% bề rộng) + biome của vùng trong tranh
+ *  (ĐI VÀO bên trong dùng biome này — khớp cảnh thế giới; không theo biome DB). Đo trên ảnh ghép có lưới 5% (02/10 — ChatGPT không giao DESIGN.md).
+ *  Khối ÍT chủ đề hơn ⇒ vùng thừa phủ sương "chưa khai phá" (vùng dính liền đại lục, không bỏ đi được); NHIỀU hơn ⇒ rơi về ghép mảnh. */
 export type OTranh = { x: number; y: number; r: number; biome: string }
-export const TOAN_CANH_THE_GIOI: { anh: string; o: OTranh[] } | null = {
-  anh: `${G}/the_gioi_toan_canh.jpg`, // Đơn 7 #01 (8 lục địa)
+export const TOAN_CANH_THE_GIOI: { nen: string; dat: string; o: OTranh[] } | null = {
+  nen: `${G}/the_gioi_bien.jpg`,
+  dat: `${G}/the_gioi_dat.webp`,
   o: [
-    { x: 37, y: 42, r: 15, biome: 'rung' },
-    { x: 17, y: 72, r: 13, biome: 'sa_mac' },
-    { x: 49, y: 77, r: 13, biome: 'dam_lay' },
-    { x: 78, y: 75, r: 12, biome: 'thanh_co' },
-    { x: 79, y: 45, r: 13, biome: 'bien_dao' },
-    { x: 83, y: 17, r: 11, biome: 'troi_sao' },
-    { x: 52, y: 16, r: 11, biome: 'nui_lua' },
-    { x: 18, y: 14, r: 12, biome: 'bang' },
+    { x: 17, y: 25, r: 11, biome: 'rung' },
+    { x: 14, y: 63, r: 10, biome: 'anh_dao' },
+    { x: 40, y: 63, r: 9, biome: 'thanh_co' },
+    { x: 57, y: 78, r: 9, biome: 'dam_lay' },
+    { x: 60, y: 45, r: 10, biome: 'sa_mac' },
+    { x: 42, y: 18, r: 9, biome: 'bang' },
+    { x: 62, y: 20, r: 8, biome: 'nui_lua' },
+    { x: 87, y: 21, r: 8, biome: 'bien_dao' },
+    { x: 88, y: 52, r: 7, biome: 'troi_sao' },
+    { x: 87, y: 80, r: 8, biome: 'dong_gio' },
   ],
+}
+/** Chế độ toàn cảnh áp dụng ⇒ gán biome theo VÙNG TRONG TRANH cho từng chủ đề (đi vào trong đúng cảnh vùng vừa bấm). Chỉ đổi phần VẼ, không đụng dữ liệu. */
+export function ganBiomeTheoTranh<T extends { luc_dia: { biome: string }[] }>(bd: T): T {
+  const tc = TOAN_CANH_THE_GIOI
+  if (!tc || bd.luc_dia.length > tc.o.length) return bd
+  return { ...bd, luc_dia: bd.luc_dia.map((l, i) => ({ ...l, biome: tc.o[i].biome })) }
 }
 
 export const anhNenTheGioi = () => (CO_SAN.nenTheGioi ? `${G}/nen_the_gioi.jpg` : null)
@@ -56,6 +68,6 @@ export const anhNenVung = (biome: string) => (CO_SAN.nenVung.includes(biome) ? `
 export const anhNenChang = (biome: string) => (CO_SAN.nenChang.includes(biome) ? `${G}/nen_chang_${biome}.jpg` : null)
 export const LOAI_MOC = ['thanh', 'thap', 'trai', 'den', 'cong', 'cau'] as const
 export const anhMoc = (i: number) => (CO_SAN.moc.length ? `${G}/moc_${CO_SAN.moc[i % CO_SAN.moc.length]}.webp` : null)
-export const anhVat = (ten: 'be_da' | 'may_suong' | 'la_ban' | 'co_chinh_phuc') => (CO_SAN.vat ? `${G}/${ten}.png` : null)
+export const anhVat = (ten: 'be_da' | 'may_suong' | 'la_ban' | 'co_chinh_phuc') => (CO_SAN.vat.includes(ten) ? `${G}/${ten}.webp` : null)
 // hình tạm cho mốc (emoji) khi chưa có hình Đơn 7
 export const EMOJI_MOC = ['🏰', '🗼', '⛺', '🛕', '⛩️', '🌉']

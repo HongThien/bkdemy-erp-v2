@@ -53,10 +53,10 @@ function ToanCanh({ banDo, b, onChon, hienTai, thanh, gioi = 'nam' }: Props) {
     <div className="ban2d absolute inset-0 overflow-hidden" data-dong="1" style={{ background: b.troi }}>
       <CssBan2D />
       {/* phần thừa ngoài khung 16:9: chính bức tranh phóng to + mờ + tối ⇒ không có viền đen */}
-      <img src={tc.anh} alt="" aria-hidden className="absolute inset-0 h-full w-full scale-110 object-cover" style={{ filter: 'blur(18px) brightness(.55)' }} draggable={false} />
+      <img src={tc.nen} alt="" aria-hidden className="absolute inset-0 h-full w-full scale-110 object-cover" style={{ filter: 'blur(18px) brightness(.55)' }} draggable={false} />
       <div ref={ref} className="absolute inset-0 flex items-center justify-center">
         <div className="ban2d-zoom relative overflow-hidden" style={{ width: W, height: H, ...style }}>
-          {W > 0 && <img src={tc.anh} alt="" className="absolute inset-0 h-full w-full select-none" draggable={false} />}
+          {W > 0 && <><img src={tc.nen} alt="" className="absolute inset-0 h-full w-full select-none" draggable={false} /><img src={tc.dat} alt="" className="absolute inset-0 h-full w-full select-none" draggable={false} /></>}
           {W > 0 && tc.o.map((o, i) => {
             const x = (o.x / 100) * W, y = (o.y / 100) * H, d = (o.r / 100) * W * 2
             const vong = { left: x, top: y, width: d, height: d * 0.82, transform: 'translate(-50%,-50%)' } as const
@@ -64,7 +64,7 @@ function ToanCanh({ banDo, b, onChon, hienTai, thanh, gioi = 'nam' }: Props) {
             // lục địa thừa (khối ít chủ đề): tối hẳn + mây, không bấm được
             if (!m) return (
               <span key={`thua${i}`} aria-hidden className="pointer-events-none absolute rounded-[50%]" style={{ ...vong, background: `radial-gradient(closest-side, ${b.troi}9e, ${b.troi}66 70%, transparent)`, backdropFilter: 'saturate(.2)', WebkitBackdropFilter: 'saturate(.2)' }}>
-                <Suong mau={b.bot} style={{ left: '10%', top: '15%', width: '80%', height: '70%', opacity: 0.55 }} />
+                <Suong mau={b.bot} anh={anhVat('may_suong')} style={{ left: '0%', top: '10%', width: '100%', height: '80%', opacity: 0.85 }} />
               </span>
             )
             const { l, t } = m, dangO = hienTai === l.ma

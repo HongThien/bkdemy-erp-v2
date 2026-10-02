@@ -9,6 +9,7 @@ import { DauTrangHS, HEAD, MAU, ManHS, NutHS, TheHS, TrongHS } from '../skin/Khu
 import { laySkin } from '../skin/registry'
 import type { SkinId } from '../skin/kieu'
 import { tuBanDoPL, type BanDoV, type ChangV, type LucDiaV, type VungV } from './kieu'
+import { ganBiomeTheoTranh } from './ban2d/hinh2d'
 // 01/10 khuya (Thùy): 3 tầng bản đồ chuyển sang 2D (ảnh tĩnh + hiệu ứng code, ban2d/). Màn đấu giữ 3D tới khi có bản 2.5D.
 import { TheGioi2D } from './ban2d/TheGioi2D'
 import { LucDia2D } from './ban2d/LucDia2D'
@@ -33,7 +34,7 @@ export default function PhieuLuuHS({ hocSinhId, mon, gioiTinh, skin, onVe, onTon
   const [tang, setTang] = useState<Tang>({ t: 'the_gioi' })
   const b = laySkin(skin).the3d
 
-  const tai = () => { setLoi(null); banDoPhieuLuu(mon).then((d) => setBanDo(tuBanDoPL(d))).catch((e) => setLoi(e?.message ?? String(e))) }
+  const tai = () => { setLoi(null); banDoPhieuLuu(mon).then((d) => setBanDo(ganBiomeTheoTranh(tuBanDoPL(d)))).catch((e) => setLoi(e?.message ?? String(e))) }
   useEffect(() => { setBanDo(null); tai() }, [mon]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // lục địa em đang học: lục địa đầu tiên có chặng còn quái
