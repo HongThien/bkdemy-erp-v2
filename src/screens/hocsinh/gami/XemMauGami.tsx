@@ -6,7 +6,8 @@
 // ============================================================================
 import { useState, type ReactNode } from 'react'
 import { Khung, NutBack } from '../TuLuyenChuDe'
-import { MAU, THE, THE_TRON, HEAD, ManHS, DauTrangHS } from '../skin/KhungHS'
+import { MAU, THE, THE_TRON, HEAD, ManHS, DauTrangHS, useApSkinGoc } from '../skin/KhungHS'
+import { laySkin, type GiaoDien } from '../skin/registry'
 import { NhiemVuView } from '../NhiemVuHS'
 import { AlbumView, tieuDeAlbum } from '../AlbumHS'
 import { RankView } from '../RankHS'
@@ -77,9 +78,12 @@ const O_HOME: HomeCard[] = [
   oHome('may_man', 'May mắn', 'Có 1 lượt quay!', 1, 'ton'), oHome('vi_xu', 'Ví xu', '1.240 xu'), oHome('the_gioi', 'Thế giới BK', 'Khoe thành tích · kết bạn'),
 ]
 const CA: LichBoTro = { buoi_id: 'b1', loai: 'bo_tro_yeu', ngay: '2026-10-01', gio_bat_dau: '17:30:00', gio_ket_thuc: null, phong: '204', mon: 'Toán', nguoi: 'Cô Lan', diem_danh: null, hom_nay: false, vao_ca: false }
+// &skin=<id>[&nen=<id>] ⇒ xem mọi màn bằng style khác (vd skin=khoi) — không cần đăng nhập, không lưu DB.
+const Q_XEM = typeof location !== 'undefined' ? new URLSearchParams(location.search) : new URLSearchParams()
+const GD_XEM: GiaoDien = { skin: laySkin(Q_XEM.get('skin')).id, che_do: 'he_thong', hinh_nen: Q_XEM.get('nen') ?? '' }
 function MauHome({ tt }: { tt: number }) {
   return (
-    <HomeHS912 giaoDien={{ skin: 'rpg', che_do: 'toi', hinh_nen: 'lau_dai' }} onDaLuu={noop} data={{ elo: [{ mon: 'Toán', elo: 1240, hang: 3, so_hs: 18 }], thi: [] } as never}
+    <HomeHS912 giaoDien={GD_XEM} onDaLuu={noop} data={{ elo: [{ mon: 'Toán', elo: 1240, hang: 3, so_hs: 18 }], thi: [] } as never}
       hoTen="Nguyễn Minh Khang" maHS="hs0412" lopMon="9A1 Toán" anhUrl={null} onAnhChanged={noop} chuaDoc={3}
       mons={[]} mon="Toán" onChonMon={noop} lich={tt === 1 ? [CA] : []} soRetest={tt === 2 ? 2 : 0} cards={tt === 3 ? O_HOME.map((c) => ({ ...c, badge: 0 })) : O_HOME}
       onHopThu={noop} onDoiMK={noop} onThoat={noop} onLich={noop} onRetest={noop} onHoSo={noop} gioiTinh={tt === 2 ? 'nu' : 'nam'}
@@ -180,6 +184,7 @@ function BoHinh() {
 
 export default function XemMauGami() {
   const q = new URLSearchParams(location.search)
+  useApSkinGoc(GD_XEM) // biến --sk-* của style đang xem cho MỌI màn trong trang mẫu
   const [man, setMan] = useState(q.get('man') ?? 'nhiem_vu')
   const [tt, setTt] = useState(Number(q.get('tt') ?? 1) || 1)
   const an = q.has('an')

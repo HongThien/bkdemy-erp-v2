@@ -95,7 +95,7 @@ export function DauTrangHS({ tieuDe, phu, onBack, phai, theoMon }: { tieuDe: Rea
   return (
     <div className="flex items-center gap-3">
       {onBack && (
-        <button onClick={onBack} aria-label="Quay lại" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[20px] active:scale-95" style={{ ...THE_TRON, borderRadius: '999px' }}>‹</button>
+        <button onClick={onBack} aria-label="Quay lại" className="flex h-10 w-10 shrink-0 items-center justify-center text-[20px] active:scale-95" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius-pill)' }}>‹</button>
       )}
       <div className="min-w-0 flex-1 leading-tight">
         <h1 className="truncate text-[21px] font-bold" style={{ ...HEAD, color: 'var(--sk-ink)', textShadow: '0 1px 8px var(--sk-bg)' }}>{tieuDe}</h1>
@@ -126,13 +126,13 @@ export function NutHS({ children, onClick, tat, phu, className = '', type = 'but
 // Nhãn nhỏ (pill). mau: màu chữ/viền (mặc định màu nhấn); dac = tô đặc.
 export function NhanHS({ children, mau = 'var(--sk-acc)', dac }: { children: ReactNode; mau?: string; dac?: boolean }) {
   return (
-    <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-0.5 text-[11.5px] font-bold"
-      style={dac ? { background: mau, color: 'var(--sk-acc-ink)' } : { border: `1px solid ${mau}`, color: mau }}>{children}</span>
+    <span className="inline-flex items-center gap-1 whitespace-nowrap px-2 py-0.5 text-[11.5px] font-bold"
+      style={{ borderRadius: 'var(--sk-radius-pill)', ...(dac ? { background: mau, color: 'var(--sk-acc-ink)' } : { border: `1px solid ${mau}`, color: mau }) }}>{children}</span>
   )
 }
 
 export function BadgeHS({ n }: { n: number }) {
-  return <span className="flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[11px] font-extrabold" style={{ background: 'var(--sk-badge)', color: 'var(--sk-badge-ink)' }}>{n}</span>
+  return <span className="flex h-5 min-w-5 items-center justify-center px-1.5 text-[11px] font-extrabold" style={{ borderRadius: 'var(--sk-radius-pill)', background: 'var(--sk-badge)', color: 'var(--sk-badge-ink)' }}>{n}</span>
 }
 
 // Tiêu đề nhóm trong trang (chữ hoa nhỏ, màu mờ).

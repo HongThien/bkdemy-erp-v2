@@ -7,7 +7,7 @@ import type { BangMau3D } from './the3d/kieuMau'
 
 
 // Thêm style mới: thêm id ở đây + file skin/styles/<id>.ts + đăng ký trong registry.ts + migration nới CHECK hs_giao_dien.skin.
-export type SkinId = 'rpg' | 'toi_gian'
+export type SkinId = 'rpg' | 'toi_gian' | 'khoi'
 export type CheDo = 'sang' | 'toi' | 'he_thong'
 // hieu_ung_game: công tắc của em (mig 202610020037, mặc định bật) — tắt ⇒ không bản đồ phiêu lưu / màn đấu. Không có trường (bản cũ) = bật.
 export type GiaoDien = { skin: SkinId; che_do: CheDo; hinh_nen: string; hieu_ung_game?: boolean }
@@ -54,6 +54,9 @@ export type Skin = {
   headCase: 'none' | 'uppercase'
   headTrack: string
   radius: string        // bo góc thẻ
+  // bo góc của thứ dáng VIÊN THUỐC / TRÒN (nút tròn đầu trang, nhãn, badge, chip môn, avatar). Không khai = '999px' (tròn).
+  // Style vuông (Khối vuông) khai '0px' — nếu không nút vẫn tròn giữa thẻ vuông (lỗ ① spec-giao-dien-hs §10).
+  radiusPill?: string
   cardClip: string      // clip-path thẻ ('none' nếu không cắt góc)
   cardAccentLeft: string // viền trái nhấn — 'none' nếu không
   blur: string          // backdrop-filter của thẻ (skin nền ảnh cần mờ sau thẻ)
@@ -72,7 +75,7 @@ export type Skin = {
   anhBanner?: { lich?: string; kiemTraLai?: string } // ảnh vẽ riêng cho thẻ ca bổ trợ + banner bài kiểm tra lại
   // Thẻ "Việc tiếp theo": mặc định tô đặc màu nhấn. Skin nền tối sang (RPG) tô đặc thì thành mảng vàng thô — dùng kiểu riêng.
   theTiep?: { bg: string; ink: string; border: string }
-  // Tấm mờ sau tên HS — skin nền ẢNH cần (tên đè lên tia sáng/lâu đài thì không đọc được). Có nenTen ⇒ bật luôn bóng chữ toàn trang.
+  // Tấm mờ sau tên HS — skin nền ẢNH cần (tên đè lên tia sáng/lâu đài thì không đọc được). Có nenTen + chế độ TỐI ⇒ bật luôn bóng chữ toàn trang.
   nenTen?: string
   // Nhân vật cắt nền (PNG trong suốt) đứng nửa trái Home khổ NGANG (PC/iPad) kèm bong bóng thoại — như ảnh gốc style
   // (RPG: design/bk-ui-src/Nền app HS cấp 3_11.png). Chọn theo giới tính HS; chưa biết ⇒ `nam`. Không có ⇒ Home ngang không vẽ nhân vật.

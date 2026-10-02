@@ -2,7 +2,8 @@
 
 > Thùy chốt 29/09/2026: *"lưu cái này thành 1 style, các file, icon phục vụ nó. Sau này có thêm nhiều tính năng mới cũng phải
 > tự cập nhật UI theo cái style này."* — Style đang dùng thật: **Anime RPG** (duy nhất). Đang làm: **Thị trấn** (`spec-giao-dien-hs.md` §9) ·
-> **Khối vuông** — cảm hứng Minecraft, style SÁNG, dựng sau V1.0 (`spec-giao-dien-hs.md` §10, đơn `design/DON-HANG-STYLE-KHOI.md`).
+> **Khối vuông** — cảm hứng Minecraft, style SÁNG, ĐÃ DỰNG 03/10 (`skin/styles/khoi.ts`, `spec-giao-dien-hs.md` §10, đơn `design/DON-HANG-STYLE-KHOI.md`).
+> Biến mới cho style vuông: `radiusPill` ⇒ `--sk-radius-pill` — thứ dáng tròn/viên thuốc trong màn MỚI dùng biến này, đừng gõ `rounded-full`/`999px`.
 > Đổi style = đổi **hết**: Home + mọi màn bên trong + popup + trạng thái rỗng/lỗi.
 
 ## 1. Một style gồm những gì (gói trọn, 1 chỗ)

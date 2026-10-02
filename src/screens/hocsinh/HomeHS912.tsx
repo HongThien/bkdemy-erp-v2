@@ -31,7 +31,7 @@ const MAC_DINH: GiaoDien = { skin: SKIN_MAC_DINH, che_do: 'he_thong', hinh_nen: 
 // Thẻ/tiêu đề/màu/hook màn hình lấy từ skin/KhungHS — 1 nguồn style cho Home và mọi màn (Thùy 29/09).
 
 function Badge({ n }: { n: number }) {
-  return <span className="flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[11px] font-extrabold" style={{ background: 'var(--sk-badge)', color: 'var(--sk-badge-ink)' }}>{n}</span>
+  return <span className="flex h-5 min-w-5 items-center justify-center px-1.5 text-[11px] font-extrabold" style={{ borderRadius: 'var(--sk-radius-pill)', background: 'var(--sk-badge)', color: 'var(--sk-badge-ink)' }}>{n}</span>
 }
 
 // ── Việc tiếp theo: ca bổ trợ gần nhất → ô đang có việc → Tự luyện ──────────
@@ -94,7 +94,7 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
       {widgets.length > 0 && (
         <div className="flex flex-wrap items-center gap-2">
           {widgets.map((w) => (
-            <span key={w.nhan} className="flex items-baseline gap-1.5 rounded-full px-3.5 py-1.5" style={{ ...THE, borderRadius: '999px', clipPath: 'none' }}>
+            <span key={w.nhan} className="flex items-baseline gap-1.5 rounded-full px-3.5 py-1.5" style={{ ...THE, borderRadius: 'var(--sk-radius-pill)', clipPath: 'none' }}>
               <span className="text-[12px] font-semibold" style={{ color: 'var(--sk-muted)' }}>{w.nhan}</span>
               <b className="text-[16px] tabular-nums" style={HEAD}>{w.so}</b>
               <span className="text-[11.5px]" style={{ color: 'var(--sk-muted)' }}>{w.phu}</span>
@@ -167,7 +167,7 @@ function tachO(p: HomeProps) {
 }
 
 const mauPhu = (c: HomeCard) => c.subMau === 'do' ? MAU.sai : c.subMau === 'xanh' ? MAU.dung : c.subMau === 'ton' ? 'var(--sk-ink)' : 'var(--sk-muted)'
-const NUT_TRON: CSSProperties = { ...THE, clipPath: 'none', borderLeft: 'var(--sk-card-border)', borderRadius: '999px' }
+const NUT_TRON: CSSProperties = { ...THE, clipPath: 'none', borderLeft: 'var(--sk-card-border)', borderRadius: 'var(--sk-radius-pill)' }
 
 // Cụm nút đầu trang (Hình nền · hòm thư · ⋯) — chung cho bố cục dọc và ngang.
 function CumNut({ p, onHinhNen, nutRef }: { p: HomeProps; onHinhNen: () => void; nutRef: RefObject<HTMLButtonElement> }) {
@@ -207,10 +207,10 @@ function CumNut({ p, onHinhNen, nutRef }: { p: HomeProps; onHinhNen: () => void;
 function AnhDaiDien({ p, size }: { p: HomeProps; size: number }) {
   const initials = p.hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()
   return (
-    <div className="shrink-0 rounded-full" style={{ boxShadow: '0 0 0 2px var(--sk-acc)' }}>
+    <div className="shrink-0" style={{ borderRadius: 'var(--sk-radius-pill)', boxShadow: '0 0 0 2px var(--sk-acc)' }}>
       {p.onHoSo
-        ? <button onClick={p.onHoSo} aria-label="Hồ sơ của em" className="flex items-center justify-center overflow-hidden rounded-full font-extrabold active:scale-95"
-            style={{ width: size, height: size, fontSize: size * 0.36, background: 'var(--sk-surface2)' }}>
+        ? <button onClick={p.onHoSo} aria-label="Hồ sơ của em" className="flex items-center justify-center overflow-hidden font-extrabold active:scale-95"
+            style={{ width: size, height: size, fontSize: size * 0.36, background: 'var(--sk-surface2)', borderRadius: 'var(--sk-radius-pill)' }}>
             {p.anhUrl ? <img src={p.anhUrl} alt="" className="h-full w-full object-cover" /> : initials}
           </button>
         : <AvatarHS anhUrl={p.anhUrl} initials={initials} size={size} fill="var(--sk-surface2)" badge="var(--sk-acc)" onChanged={p.onAnhChanged} />}
@@ -240,10 +240,10 @@ function HuyHieuBac({ p, trongTam }: { p: HomeProps; trongTam?: boolean }) {
 function ChonMon({ p }: { p: HomeProps }) {
   return (
     <ThanhChonMon mons={p.mons} mon={p.mon} onChon={p.onChonMon} dem={p.demMon} to luonHien
-      khung={{ ...THE, clipPath: 'none', borderRadius: '999px' }}
+      khung={{ ...THE, clipPath: 'none', borderRadius: 'var(--sk-radius-pill)' }}
       nut={(chon) => chon
-        ? { background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)' }
-        : { background: 'transparent', color: 'var(--sk-ink)' }} />
+        ? { background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)', borderRadius: 'var(--sk-radius-pill)' }
+        : { background: 'transparent', color: 'var(--sk-ink)', borderRadius: 'var(--sk-radius-pill)' }} />
   )
 }
 
@@ -332,7 +332,7 @@ function ManNgang({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
   return (
     <div className="relative mx-auto flex min-h-[100dvh] max-w-[1440px] flex-col px-8 pb-8 pt-5 xl:px-12">
       <div className="flex items-center gap-3">
-        <div className="flex min-w-0 items-center gap-3 rounded-full py-1 pl-1 pr-5" style={{ background: 'var(--sk-name-plate)' }}>
+        <div className="flex min-w-0 items-center gap-3 py-1 pl-1 pr-5" style={{ background: 'var(--sk-name-plate)', borderRadius: 'var(--sk-radius-pill)' }}>
           <AnhDaiDien p={p} size={52} />
           <span className="min-w-0 leading-tight">
             <span className="block truncate text-[17px] font-bold" style={HEAD}>{p.hoTen}</span>
@@ -362,7 +362,7 @@ function ManNgang({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
           {widgets.length > 0 && (
             <div className="flex flex-wrap items-center gap-2.5">
               {widgets.map((w) => (
-                <span key={w.nhan} className="flex items-baseline gap-2 rounded-full px-4 py-2" style={{ ...THE, borderRadius: '999px', clipPath: 'none' }}>
+                <span key={w.nhan} className="flex items-baseline gap-2 rounded-full px-4 py-2" style={{ ...THE, borderRadius: 'var(--sk-radius-pill)', clipPath: 'none' }}>
                   <span className="text-[12.5px] font-semibold" style={{ color: 'var(--sk-muted)' }}>{w.nhan}</span>
                   <b className="text-[18px] tabular-nums" style={HEAD}>{w.so}</b>
                   <span className="text-[12px]" style={{ color: 'var(--sk-muted)' }}>{w.phu}</span>

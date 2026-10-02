@@ -13,7 +13,7 @@
 > - **Luật style = `design/STYLE-HS.md`** (1 style gồm gì · màn mới dựng thế nào · thêm style thế nào) · hợp đồng `skin/kieu.ts` · gói `skin/styles/<id>.ts`
 >   · `npm run check:style-hs` chạy trước mọi commit đụng app HS (màu gõ tay chỉ được giảm · mọi ô có icon ở mọi style · mọi file hình tồn tại).
 > - **Style 2 = Thị trấn (Town)** — hình đã về 29/09, kiểm hàng + kế hoạch build ở **§9**.
-> - **Style 3 = Khối vuông** (cảm hứng Minecraft, style SÁNG) — Thùy yêu cầu 01/10, đơn `design/DON-HANG-STYLE-KHOI.md`, kế hoạch build **§10** — dựng SAU V1.0.
+> - **Style 3 = Khối vuông** (cảm hứng Minecraft, style SÁNG) — Thùy yêu cầu 01/10, đơn `design/DON-HANG-STYLE-KHOI.md`, **ĐÃ DỰNG 03/10** (§10, mục "Đã dựng").
 > - Hình gamification (huy hiệu, bậc rank) là 1 bộ CHUNG mọi style — xem `spec-thanh-tuu-nhiem-vu.md` §0.8 C11.
 
 ---
@@ -134,7 +134,21 @@ và dùng **LINH VẬT** thay nhân vật người.
    **Chặn trước:** công thức cấp/XP đang ở client `src/gami/level.js` ⇒ phải chuyển sang hàm Postgres trước (CLAUDE.md §2.0).
 5. Soi bằng mắt: Home 2 khổ × 2 nền · 1 màn danh sách · 1 màn làm bài · 1 màn rỗng · màn gamification (hình chung RPG trên nền sáng phải còn đọc được).
 
-## 10. Style 3 — Khối vuông (cảm hứng Minecraft) · kế hoạch build (01/10)
+## 10. Style 3 — Khối vuông (cảm hứng Minecraft) · kế hoạch build (01/10) · ĐÃ DỰNG 03/10
+
+**Đã dựng 03/10** (Thùy: "thêm làm lựa chọn, dựng ngay" — đè "sau V1" của 01/10; RPG vẫn mặc định):
+- `skin/styles/khoi.ts` (SÁNG, túi đồ xám, Handjet + Baloo 2, 3 nền anh đào · hồ rừng · tuyết, 15 icon pixel, nhân vật + cáo/cú, tấm tên xám,
+  sương sáng ở 1/4 trên tranh cho tiêu đề chữ tối) · `kieu.ts` SkinId `khoi` · `registry.ts` SKINS = RPG · Khối vuông · Tối giản · Handjet ở `hs.html` ·
+  26 file `public/bk-ui/hs/skin/khoi/` (2,7 MB).
+- **Vá lỗ ①**: biến mới `--sk-radius-pill` (`Skin.radiusPill`, mặc định 999px; Khối 0px) áp ở KhungHS (nút quay lại, NhanHS, BadgeHS) + HomeHS912
+  (Badge, nút tròn đầu trang, viên thuốc, avatar, tấm tên, chip môn). Còn ~170 chỗ bo tròn gõ cứng ở màn con — thay dần khi đụng.
+- **Sửa hợp đồng `nenTen`**: bóng chữ tối toàn trang chỉ bật ở chế độ TỐI (trước: có tấm tên là bật — làm nhoè chữ tối của style sáng). RPG không đổi.
+- Trang xem mẫu: `hs.html?xem=gami&skin=<id>[&nen=<id>]` áp style cho MỌI màn mẫu.
+- **Chưa có:** bản đồ phiêu lưu / Đấu trường / boss / thẻ câu đấu (không khai `the3d` · `sanDau` · `boss` · `tran` ⇒ chạy như Tối giản) — hình K2
+  đã có ở `design/bk-ui-src/khoi/phieu-luu/`. Lỗ ② (bóng chữ nút xanh) chưa cần: acc xanh cỏ ĐẬM `#357a20`, chữ trắng đủ tương phản. Lỗ ⑤ (ô lõm
+  vát ngược) chưa làm. Icon banner kiểm tra lại (#29) Thùy vẽ bù — banner đang tắt.
+- **Migration `202610030147_hs_giao_dien_skin_khoi.sql` (nới CHECK skin thêm `khoi`) — Thùy áp bằng chuỗi GHI** (máy Claude chỉ có quyền đọc).
+  CHƯA áp mà deploy ⇒ em chọn Khối vuông bấm Lưu là báo "Chưa lưu được". Thứ tự: áp migration → `npm run schema` → deploy.
 
 **Nguồn:** Thùy 01/10 — *"dựa vào chủ đề game anime làm một chủ đề thứ 2 tương tự, là chủ đề về minecraft"* + ảnh mẫu không khí (hồ + rừng khối
 ban ngày) `design/handoff/hs-skin-khoi-v1/reference/khong_khi_ho_rung.jpg` + **nền mặc định Thùy chọn** (thung lũng hoa anh đào hoàng hôn)

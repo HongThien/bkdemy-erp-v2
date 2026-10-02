@@ -35156,3 +35156,15 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   theo môn. Đã soi: Toán lớp 7 "Số hữu tỉ" đấu bot (phân số/luỹ thừa KaTeX đẹp, 45s); KHTN lớp 8 Vô tận 12 tầng (chuỗi tính lại độc lập khớp
   12/12 ⇒ tất định) → rơi → BXH riêng KHTN lớp 8 + câu cần xem lại; Anh không đổi (kiểu đố, loa, IPA); giải Toán toàn bot lấy câu kho. Bundle
   280KB gzip (KaTeX). Nợ: hàm đọc kho mở anon (trần 200 câu/lần) · Toán mới nhánh Đại · XP chung mọi môn.
+
+## 2026-10-03 [Giao diện] (máy `BK_v2`, tiếp) — DỰNG style Khối vuông vào app (Thùy: "thêm làm lựa chọn, dựng ngay")
+- Thùy chạy `dev:hs` không thấy Khối vuông ⇒ t giải thích mới có đơn + hình, code chưa dựng (chốt 01/10 "sau V1"). AskUserQuestion: THÊM làm lựa chọn
+  (không thay RPG) · dựng NGAY.
+- Làm: `skin/styles/khoi.ts` + đăng ký + Handjet + 26 ảnh nén (`public/bk-ui/hs/skin/khoi/`) · biến `--sk-radius-pill` (nút/nhãn/badge/avatar vuông) ·
+  `&skin=` cho trang xem mẫu · migration nới CHECK skin `khoi` (CHƯA áp — máy chỉ có `DATABASE_URL_RO`; soi live: 1 ràng buộc
+  `hs_giao_dien_skin_check`, đang dùng rpg 99 · toi_gian 14 · soft 3 · dau_truong 2 · y2k 1).
+- **Sai rồi sửa khi soi ảnh:** ① tấm tên trong suốt ⇒ tên đè cây anh đào không đọc được ⇒ khai `nenTen` xám, nhưng hợp đồng cũ "có nenTen là
+  bật bóng chữ TỐI toàn trang" — đúng cho RPG nền tối, sai cho style sáng ⇒ chỉ bật ở chế độ tối (RPG chụp lại không đổi). ② tiêu đề trang chữ
+  tối đè tán hồng ⇒ sương sáng 1/4 trên tranh. ③ acc xanh cỏ sáng #5fa83a làm chữ tiêu đề trên tấm xám chỉ ~2:1 ⇒ dùng xanh đậm #357a20.
+- Kiểm: tsc sạch (trừ pdfRender cũ) · check:style-hs ✔ 3 style × 16 ô · build:hs ✔ · chụp `?xem=gami&skin=khoi` Home PC/iPad/điện thoại, Nhiệm vụ,
+  Album, Hồ sơ: 0 ảnh vỡ, không tràn ngang. Chưa có bản đồ phiêu lưu/Đấu trường cho Khối vuông (không khai the3d) — chạy như Tối giản.

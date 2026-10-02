@@ -7,6 +7,7 @@
 import type { Skin, CheDo, HinhNen, SkinId } from './kieu'
 import { RPG } from './styles/rpg'
 import { TOI_GIAN } from './styles/toiGian'
+import { KHOI } from './styles/khoi'
 export type { Skin, SkinId, CheDo, GiaoDien, HinhNen, Mau } from './kieu'
 
 // Khối dùng Home mới + tự chọn skin. Thùy 28/09 tối: MỌI skin mở cho MỌI em, không giới hạn tuổi ("lớp 6 vẫn thích anime")
@@ -15,7 +16,8 @@ export const KHOI_CHON_SKIN = new Set(['6', '7', '8', '9', '10', '11', '12'])
 
 // Thùy 29/09: 4 skin thử (Tối giản · Đấu trường · Y2K · Soft Hàn) đã XOÁ — chỉ Anime RPG dùng thật; style mới thêm vào đây.
 // Thùy 02/10: dựng lại Tối giản (đơn sắc, nền trơn) cho em không thích rối mắt.
-export const SKINS: Skin[] = [RPG, TOI_GIAN]
+// Thùy 03/10: thêm Khối vuông (cảm hứng Minecraft) làm lựa chọn — RPG vẫn là mặc định.
+export const SKINS: Skin[] = [RPG, KHOI, TOI_GIAN]
 
 export const SKIN_MAC_DINH: SkinId = 'rpg' // Thùy 29/09: chỉ Anime RPG dùng thật — em chưa chọn cũng ra RPG
 
@@ -50,11 +52,12 @@ export function bienCss(skin: Skin, cd: 'sang' | 'toi', hinhNenId: string | null
     '--sk-line': m.line, '--sk-acc': m.acc, '--sk-acc-ink': m.accInk, '--sk-badge': m.badge, '--sk-badge-ink': m.badgeInk,
     '--sk-card-border': m.cardBorder, '--sk-card-shadow': m.cardShadow, '--sk-card-clip': skin.cardClip,
     '--sk-card-left': skin.cardAccentLeft === 'none' ? m.cardBorder : skin.cardAccentLeft,
-    '--sk-radius': skin.radius, '--sk-blur': skin.blur,
+    '--sk-radius': skin.radius, '--sk-radius-pill': skin.radiusPill ?? '999px', '--sk-blur': skin.blur,
     '--sk-next-bg': skin.theTiep?.bg ?? m.acc, '--sk-next-ink': skin.theTiep?.ink ?? m.accInk, '--sk-next-border': skin.theTiep?.border ?? 'none',
     '--sk-name-plate': skin.nenTen ?? 'transparent',
     // Bóng chữ kế thừa cho MỌI chữ trong khung trang: skin nền ẢNH (có nenTen) cần — chữ đè đèn/lâu đài không đọc được (Thùy 29/09).
-    '--sk-chu-bong': skin.nenTen ? '0 1px 6px rgba(8,10,24,0.9)' : 'none',
+    // Chỉ ở chế độ TỐI: style SÁNG có tấm tên (Khối vuông 03/10) chữ tối — bóng tối quanh chữ tối thì nhoè, càng khó đọc.
+    '--sk-chu-bong': skin.nenTen && cd === 'toi' ? '0 1px 6px rgba(8,10,24,0.9)' : 'none',
     '--sk-tran-font': skin.tran?.font ?? skin.font, '--sk-tran-nen': skin.tran?.nen ?? m.surface,
     '--sk-tran-vien': skin.tran?.vien ?? `0 0 0 1px ${m.line}`, '--sk-tran-phien': skin.tran?.phien ?? m.surface2, '--sk-tran-phien-day': skin.tran?.phienDay ?? m.line,
     '--sk-goc': skin.trangTri?.goc ? `url(${skin.trangTri.goc})` : 'none',

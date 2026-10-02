@@ -11,6 +11,10 @@
 > | **K1** | Màn chính + bộ hình của style: 3 nền × 2 khổ · 2 nhân vật · 15 icon ô · 2 icon banner · 2 trang trí | 4 ảnh toàn cảnh + 27 hình | Gửi được ngay (ChatGPT vẽ song song) |
 > | **K2** | Bản đồ phiêu lưu + quái vật (bản khối vuông của Đơn 6 RPG) | 1 ảnh toàn cảnh + 40 hình | Sau khi K1 #01 được duyệt |
 >
+> ✅ **ĐÃ DỰNG CODE 03/10** (Thùy: "thêm làm lựa chọn, dựng ngay" — đè mục ① bên dưới): `skin/styles/khoi.ts`, hiện trong "Phong cách" cạnh
+> Anime RPG + Tối giản. Chưa có bản đồ phiêu lưu / Đấu trường cho style này (hình K2 có, chờ luồng bản đồ). Chi tiết: `spec-giao-dien-hs.md` §10.
+> Xem không cần đăng nhập: `hs.html?xem=gami&skin=khoi&man=home` (đổi `man=` / thêm `&nen=ho_rung|tuyet`).
+>
 > **Thùy chốt 01/10:** ① V1.0 (06/10) style thứ 2 vẫn là **Thị trấn** ⇒ Khối vuông là **style thứ 3, DỰNG CODE SAU V1** (đơn gửi ChatGPT lúc nào
 > cũng được — hình về thì để đó) · ② hình gamification (huy hiệu · biểu tượng bậc · khung avatar · icon nhiệm vụ) **giữ 1 bộ chung** mọi style ⇒
 > không nằm trong đơn này · ③ **chưa cần bản tối** ⇒ style chỉ có chế độ sáng.
