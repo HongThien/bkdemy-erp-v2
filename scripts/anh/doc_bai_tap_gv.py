@@ -44,6 +44,12 @@ def chu_cua_run(r):
     return t
 
 
+# Đề mặc định cho dạng mà file GV chỉ ghi lệnh ở đầu bài tập (câu không có đề riêng)
+DE_MAC_DINH = {
+    'phat_am': 'Choose the word whose underlined part is pronounced differently from the other three.',
+    'trong_am': 'Choose the word that differs from the other three in the position of the main stress.',
+}
+
 def chu_cua_doan(p):
     s = ''.join(chu_cua_run(r) for r in p.iter(W + 'r'))
     for a, b in ((U1 + U0, ''), (H1 + H0, '')):
@@ -248,6 +254,10 @@ def doc(file_docx, unit, ra):
             stem = re.sub(r'^\s*\d+\s*[.)]\s*', '', stem)
             if dang == 'sap_xep_doan' and not stem:
                 stem = ''
+            if not stem and dang in DE_MAC_DINH:
+                # phát âm / trọng âm: file GV để lệnh ở ĐẦU bài tập, từng câu không có đề ⇒ trên app HS chỉ thấy 4 từ, không biết đang
+                # so cách đọc hay trọng âm (Thùy 02/10 mở luyện tập Anh). Đề mặc định = đúng lệnh của dạng đề đó.
+                stem = DE_MAC_DINH[dang]
             if dang == 'dong_trai_nghia' and loi_dan:
                 # lời dẫn nằm ở TIÊU ĐỀ bài (đồng nghĩa hay trái nghĩa) — chép vào từng câu, không thì câu mất nghĩa
                 stem = loi_dan + '\n' + stem

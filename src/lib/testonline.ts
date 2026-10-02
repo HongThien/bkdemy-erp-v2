@@ -34,6 +34,13 @@ export type BaiTestCau = {
   form_tn_id?: string | null; lua_chon_rule?: (string | null)[] | null
   // Ô nhập của câu trả lời ngắn: 'phieu_4o' = phiếu 4 ô của Bộ (bài phát hành từ đề thi, mig 202610011759). Thiếu/null = ô tự do.
   kieu_nhap?: string | null
+  // Ngữ liệu chụp kèm câu lúc sinh bài (đoạn văn / thông báo / biển báo — mig 202610021403). null = câu không có ngữ liệu.
+  ngu_lieu?: NguLieuSnap | null
+}
+export type NguLieuSnap = {
+  ma: string; loai: string; tieu_de: string | null; noi_dung: string | null
+  anh: string | null; am_thanh: string | null
+  thu_tu: number | null // số chỗ trống / số câu của câu này trong ngữ liệu
 }
 export type BaiLam = { id: string; bai_test_id: string; hoc_sinh_id: string; trang_thai: 'dang_lam' | 'da_nop'; nop_at: string | null; bien_the: number; bat_dau_at?: string | null }
 export type BaiLamCau = { id: string; bai_lam_id: string; bai_test_cau_id: string; dap_an_hs: unknown; verdict: string | null; diem: number | null; cham_boi: string | null }

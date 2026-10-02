@@ -6,7 +6,9 @@
 // ============================================================================
 import { lazy, Suspense, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { supabase } from '../../lib/supabase'
-import { MathText } from '../kho/ui'
+import { MathText, ChuMon } from '../kho/ui'
+import { NguLieuHS } from './NguLieuHS'
+import { MON_LUYEN_CHUNG_MINH } from '../../lib/mon'
 import { LamDienO } from './DienOCau'
 import {
   listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, baoSai, nopBai, chuCaiChon, chiSoCuaChu,
@@ -753,7 +755,7 @@ function KhungCau({ nhung, cls, children }: { nhung: boolean; cls: string; child
   return nhung ? <TheTran className={cls}>{children}</TheTran> : <div className={cls} style={THE}>{children}</div>
 }
 
-function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop, nhung }: {
+export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop, nhung }: {
   baiTestId: string; hocSinhId: string; onXong: () => void
   doneCaption?: string; doneExtra?: React.ReactNode; desktop?: boolean
   /** NHÚNG trong khung đấu 3D (phieuluu/DauView): ẩn thanh tiến độ + màn kết quả cũ, báo kết quả từng câu ra ngoài. */
@@ -809,6 +811,8 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop,
   // Trước đây xáo chống liếc bài (05/07 → 29/09), chỉ giáo trình được khoá (22/08). ĐỪNG bật lại xáo
   // ở tầng hiển thị: số câu/chữ cái trên app phải khớp phiếu giấy em đang cầm.
   const caus = full?.caus ?? []
+  // Chữ của câu hiện theo MÔN của bài (registry MON_CHU_THUONG — Tiếng Anh: giữ gạch chân, không công thức)
+  const monBai = full?.baiTest.mon
 
   if (!full) return <ManCho>Đang tải bài…</ManCho>
   const total = caus.length
@@ -917,10 +921,12 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop,
           {goiY && cau.ly_thuyet && (
             <div className="mb-3 p-3" style={HOP_GOI_Y}>
               <p className="mb-1 text-[15px] font-semibold uppercase tracking-wide" style={{ color: MAU.canhBao }}>Lý thuyết dạng bài</p>
-              <div className="text-[18px] leading-relaxed" style={{ color: MAU.ink }}><MathText>{cau.ly_thuyet}</MathText></div>
+              <div className="text-[18px] leading-relaxed" style={{ color: MAU.ink }}><ChuMon mon={monBai}>{cau.ly_thuyet}</ChuMon></div>
             </div>
           )}
-          {cau.noi_dung && <div className={nhung ? 'mb-4 text-[21px] font-semibold leading-relaxed' : 'mb-3 text-[19px] leading-relaxed'} style={{ color: MAU.ink }}><MathText>{cau.noi_dung}</MathText></div>}
+          {/* Ngữ liệu (đoạn văn / thông báo / biển báo) dùng chung nhiều câu — chụp kèm câu lúc sinh bài, hiện TRÊN đề */}
+          {cau.ngu_lieu && <NguLieuHS nl={cau.ngu_lieu} mon={monBai} gon={!!nhung} />}
+          {cau.noi_dung && <div className={nhung ? 'mb-4 text-[21px] font-semibold leading-relaxed' : 'mb-3 text-[19px] leading-relaxed'} style={{ color: MAU.ink }}><ChuMon mon={monBai}>{cau.noi_dung}</ChuMon></div>}
           {/* Hình đề: nền trắng cố định — hình vẽ/ảnh chụp đề là nét đen trên trắng, đặt thẳng lên thẻ tối là mất nét. */}
           {cau.anh_de && <img src={cau.anh_de} alt="đề" className="mb-3 max-h-80 rounded-lg bg-white" style={{ border: `1px solid ${MAU.line}` }} />}
 
@@ -936,7 +942,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop,
                     className={nhung ? `flex items-center gap-3 px-3 py-2.5 text-left text-[20px] ${CLS_PHIEN(tt)}` : 'flex items-start gap-3 p-3 text-left text-[19px] transition'} style={nhung ? PHIEN(tt) : O_DAP_AN(tt)}>
                     {nhung ? <NgocChu t={tt} chu={chuCaiChon(dispI)} />
                       : <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[16px] font-semibold" style={TRON_CHU(tt)}>{chuCaiChon(dispI)}</span>}
-                    <span className="flex-1 pt-0.5"><MathText>{stripLabel(opt)}</MathText></span>
+                    <span className="flex-1 pt-0.5"><ChuMon mon={monBai}>{stripLabel(opt)}</ChuMon></span>
                   </button>
                 )
               })}
@@ -950,7 +956,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop,
                   <div key={orig} className="p-3" style={{ border: `1px solid ${MAU.line}`, background: MAU.surface2, borderRadius: R_TRONG }}>
                     <div className="mb-2 flex gap-2 text-[19px]" style={{ color: MAU.ink }}>
                       <span className="font-semibold" style={{ color: MAU.muted }}>{'abcd'[dispI] ?? dispI + 1})</span>
-                      <span className="flex-1"><MathText>{m.noi_dung}</MathText></span>
+                      <span className="flex-1"><ChuMon mon={monBai}>{m.noi_dung}</ChuMon></span>
                     </div>
                     <div className="flex gap-2">
                       {(['D', 'S'] as const).map((v) => {
@@ -966,7 +972,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop,
                         )
                       })}
                     </div>
-                    {daCham && m.loi_giai && <div className="mt-2 pt-1.5 text-[16px]" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.muted }}><MathText>{m.loi_giai}</MathText></div>}
+                    {daCham && m.loi_giai && <div className="mt-2 pt-1.5 text-[16px]" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.muted }}><ChuMon mon={monBai}>{m.loi_giai}</ChuMon></div>}
                   </div>
                 )
               })}
@@ -992,7 +998,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop,
               {cau.loi_giai && (
                 <div className="mt-2 pt-2 text-[18px] leading-relaxed" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.ink }}>
                   <p className="mb-1 text-[15px] font-semibold uppercase" style={{ color: nhung ? MAU.acc : MAU.muted }}>{nhung ? '📜 Lời giải chi tiết' : 'Lời giải'}</p>
-                  <MathText>{cau.loi_giai}</MathText>
+                  <ChuMon mon={monBai}>{cau.loi_giai}</ChuMon>
                 </div>
               )}
               {cau.anh_dap_an && <img src={cau.anh_dap_an} alt="lời giải" className="mt-2 max-h-72 rounded-lg bg-white" style={{ border: `1px solid ${MAU.line}` }} />}
@@ -1127,7 +1133,7 @@ function LamTuLuyen({ hocSinhId, onXong, desktop, chuDe, onDoiDang }: { hocSinhI
               🔄 Đổi dạng khác
             </button>
           )}
-          {!chuDe && <button onClick={() => setDienO(true)}
+          {!chuDe && MON_LUYEN_CHUNG_MINH.includes(mon) && <button onClick={() => setDienO(true)}
             className={`mt-2 w-full font-medium ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`} style={NUT_PHU}>
             📐 Luyện chứng minh (điền vào lời giải)
           </button>}

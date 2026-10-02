@@ -67,6 +67,16 @@ export function gradeTraLoiNgan(hsText, keyText) {
     : { verdict: 'wrong', cham_boi: 'exact' }  // wrong → HS được REPORT (spec §5,§7)
 }
 
+// Câu KÉO THẢ (TSA): mỗi ô trống 1 thẻ; so từng ô đúng chữ thẻ (key và đáp án HS đều lấy từ NGÂN HÀNG thẻ nên khớp chính xác).
+// Điểm tỉ lệ số ô đúng (diemTho = đúng/tổng); đủ hết = correct, một phần = partial.
+export function gradeKeoTha(hs, key) {
+  const n = (key || []).length
+  const arr = Array.isArray(hs) ? hs : []
+  let dung = 0
+  for (let i = 0; i < n; i++) if (arr[i] != null && String(arr[i]).trim() === String(key[i]).trim()) dung++
+  return { verdict: n > 0 && dung === n ? 'correct' : dung > 0 ? 'partial' : 'wrong', cham_boi: 'exact', diemTho: n ? dung / n : 0 }
+}
+
 // Câu ĐÚNG/SAI: 4 mệnh đề, mỗi ý Đ/S. Thang điểm CHUẨN THPT 2025 (số ý đúng 0..4).
 export const DUNGSAI_DIEM_4Y = [0, 0.1, 0.25, 0.5, 1.0]
 const normDS = (v) => (String(v ?? '').trim().toUpperCase().startsWith('S') ? 'S' : 'D')

@@ -4,6 +4,7 @@ import katex from 'katex'
 import { katexMacros } from '../../lib/math/macros'
 import { fixAccentScript, widenSingleHat } from '../../lib/math/latex-fix'
 import { parseLyThuyetBlocks, splitPhuongPhapBuoc, splitViDu, splitLoiGiaiLabel, laDauNhomBaiTap, type LyThuyetBlock } from '../../lib/lythuyetBlocks'
+import { MON_CHU_THUONG } from '../../lib/mon'
 
 // Render text có LaTeX ($…$ inline, $$…$$ block) thành công thức đẹp.
 const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -181,6 +182,11 @@ export function TextAnh({ children, className }: { children: string | null | und
     .replace(/&lt;u&gt;/g, '<u class="decoration-2 underline-offset-2">').replace(/&lt;\/u&gt;/g, '</u>')
     .replace(/\r\n?|\n/g, '<br>')
   return <span className={className} dangerouslySetInnerHTML={{ __html: html }} />
+}
+// Chữ của 1 câu theo MÔN — chọn bộ hiển thị qua registry `MON_CHU_THUONG` (lib/mon.ts), KHÔNG `if (mon === …)` ở màn (CLAUDE §1.6).
+// Màn làm bài dùng chung mọi môn (app HS) gọi cái này thay MathText. mon chưa biết ⇒ MathText như cũ.
+export function ChuMon({ mon, children, className }: { mon: string | null | undefined; children: string | null | undefined; className?: string }) {
+  return mon && MON_CHU_THUONG.includes(mon) ? <TextAnh className={className}>{children}</TextAnh> : <MathText className={className}>{children}</MathText>
 }
 // Khối NGỮ LIỆU (đoạn văn / thông báo / biển báo / tin nhắn / bài nghe) dùng chung cho nhiều câu — hiện phía trên đề.
 const LOAI_NGU_LIEU: Record<string, string> = { doan_van: 'Đoạn văn', thong_bao: 'Thông báo', bien_bao: 'Biển báo', tin_nhan: 'Tin nhắn', hoi_thoai: 'Hội thoại', bai_nghe: 'Bài nghe' }
