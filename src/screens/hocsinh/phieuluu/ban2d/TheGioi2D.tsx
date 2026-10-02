@@ -8,7 +8,7 @@ import { HEAD, useMedia } from '../../skin/KhungHS'
 import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import { thongKe, type BanDoV, type LucDiaV } from '../kieu'
 import { boCucTheGioi, heSoCo } from './boCuc'
-import { TI_LE_LUC_DIA_V2, VI_TRI_LUC_DIA_V2, anhLucDia, anhLucDiaV2, anhNenTheGioi, anhVat } from './hinh2d'
+import { TI_LE_LUC_DIA_V2, VI_TRI_LUC_DIA_V2, anhLucDiaV2, anhNenTheGioi, anhVat } from './hinh2d'
 import { CHU_VIEN, Co, CssBan2D, MuiTen, NenBien, Sao5, Suong, useKhung2D, viTri } from './San2D'
 import { LucDiaTam, QuaiTam } from './HinhTam'
 
@@ -116,7 +116,7 @@ function GhepManh({ banDo, b, onChon, hienTai, thanh }: Props) {
         <div ref={ref} className="absolute inset-0 flex items-center justify-center">
           <div className="ban2d-zoom relative" style={{ width: khung.w, height: khung.h, ...style }}>
             {khung.w > 0 && ds.map(({ l, t, diem, co, thuTu }) => {
-              const v2 = anhLucDiaV2(l.biome), p = viTri(diem, khung), size = co * canh * (v2 ? 1.18 : 1), anh = v2 ?? anhLucDia(l.biome, thuTu), dangO = hienTai === l.ma, cao = v2 ? size / TI_LE_LUC_DIA_V2 : size
+              const v2 = anhLucDiaV2(l.biome), p = viTri(diem, khung), size = co * canh * (v2 ? 1.18 : 1), anh = v2, dangO = hienTai === l.ma, cao = v2 ? size / TI_LE_LUC_DIA_V2 : size
               return (
                 <div key={l.ma} className="absolute" style={{ left: p.x, top: p.y, width: size, height: cao, transform: 'translate(-50%,-50%)' }}>
                   {dangO && <span className="ban2d-sang pointer-events-none absolute left-1/2 top-1/2 rounded-full" style={{ width: size * 1.25, height: size * 1.05, transform: 'translate(-50%,-50%)', background: `radial-gradient(closest-side, ${b.vang}aa, ${b.vang}33 60%, transparent)` }} />}

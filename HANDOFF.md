@@ -46,54 +46,34 @@
     - **Cách thử mỗi migration (mẫu, chạy lại được):** `scripts/_thu_mig_*.mjs` (luot_hoc_that · chuoi · chuoi_moc · ban_do · nv_luot · gop_y · rank_tt · rank_len_bac · chon_dang · vi_xu · chuoi_nghi) — mỗi script chạy cả migration +
       gọi hàm trong 1 transaction rồi ROLLBACK, đóng vai HS/nhân sự qua `set_config('request.jwt.claims', …)`, dùng savepoint cho phép thử "phải lỗi".
     - **Bài học luồng Số liệu (còn hiệu lực):** ① sửa hàm đang chạy: ĐỌC `pg_get_functiondef` rồi thay đúng 1 chỗ + assert (`do $` hoặc script) — đừng chép đè thân hàm bản cũ · ② trong JS `String.replace(a, b)` đổi `$` của `b`
-      thành `# HANDOFF — Kho (Bản đồ kiến thức) · BKdemy ERP v2
-
-> Bản chuẩn để tiếp tục ở máy khác / session mới (không còn context chat). **Đọc nguyên file trước khi code.**
-> 2 mục: **① Trạng thái hiện tại** (sự thật current) · **② Bài học còn hiệu lực** (đừng đạp lại).
-> Nhật ký THÔ từng ngày ở **`DEVLOG.md`** — KHÔNG cần đọc khi làm, chỉ để truy lại / tổng hợp lại nếu bản này sai.
-> *Quy tắc (CLAUDE.md §0): trong ngày chỉ APPEND `DEVLOG.md`; **CUỐI NGÀY** mới distill durable lên ①②, prune stale. Không append-chồng "STALE".*
-
----
-
-## ① TRẠNG THÁI HIỆN TẠI
-
-- **⭐⭐ RELEASE APP HS V1.0 — DEADLINE 06/10/2026 (Thùy chốt 01/10). ĐỌC `spec-v1-app-hs.md` TRƯỚC KHI LÀM BẤT KỲ VIỆC GÌ TRÊN APP HS.**
-  - 8 hạng mục: tutorial · chuỗi + nhiệm vụ · Thế giới BK · Rank hoàn chỉnh · UI 100% "Giải cứu thế giới — đánh quái vật" · ≥2 style · game tổ hợp ·
-    góp ý/báo lỗi HS. **Màn NGANG trước** (cấp 1–2 dùng iPad/PC); khổ dọc chỉ cần không vỡ. Giải đấu nhóm: đã thiết kế (§10), CHƯA làm.
-  - **Chia 3 luồng song song, mỗi luồng 1 context** (spec §13 — có câu lệnh mở đầu dán sẵn §13.5, vùng file riêng, hợp đồng dữ liệu §13.4,
-    hộp thư giữa luồng §13.6): **SỐ LIỆU** (chuỗi · nhiệm vụ · rank · huy hiệu · dữ liệu Thế giới · góp ý · hàm bản đồ) · **GAME** (repo BKGame,
-    Thùy điều phối) · **GIAO DIỆN** (bản đồ phiêu lưu · màn đấu · vẽ lại mọi màn · style 2 · tutorial). Commit theo đường dẫn, migration `--only`.
-  - **ĐÃ XONG 01/10 — lát A "lượt học thật"** (mig `202610011501`, ĐÃ ÁP): lượt luyện thêm tính khi ≥5 câu · đúng ≥50% · trung bình ≥6 giây/câu;
-    không ra lại câu em đã gặp ở BẤT KỲ bài nào khi kho còn câu mới. Nguồn duy nhất `public._luot_hoc_that()` + `fn_luot_hoc_that_ket_qua()` cho app.
+      thành `$&` / `$`` (chèn lại đoạn khớp / phần đứng trước — chính lỗi này đã làm HANDOFF tự nhân đôi 19 dòng đầu, gỡ 02/10)`
  ⇒ làm hỏng dollar-quote; dùng `split(a).join(b)` · ③ `auth.uid()` làm default cột bị chặn với role migrate ⇒ dùng `public.jwt_uid()` · ④ kiểm RLS bằng role chủ bảng không chặn gì — kiểm `la_thanh_vien()`/pg_policies,
       không kết luận từ "insert được" · ⑤ suy chuỗi/bậc cả trung tâm mỗi lần mở feed quá chậm ⇒ ghi SỰ KIỆN bằng trigger (`chuoi_moc_dat`, `rank_len_bac`), feed đọc bảng sự kiện · ⑥ bảng tạo tay bởi `postgres` (vd `thong_bao_hs`) role migrate không ghi được ⇒
       bọc `exception when insufficient_privilege` · ⑦ truy vấn quét cả trung tâm có thể quá giờ ⇒ thử theo từng em + `set local statement_timeout` · ⑧ `.env` máy công ty: `DATABASE_URL` = `claude_build` (GHI được) dù chú thích ghi claude_ro.
-  - **⭐⭐ BẢN ĐỒ PHIÊU LƯU 2.5D/3D (three.js, hình viết bằng CODE) — ĐÃ BUILD + PUSH `main` 01/10 · CHƯA DEPLOY · CỜ MẶC ĐỊNH TẮT** (luồng Giao diện)
-    - **Logic đã chốt (Thùy, qua mockup 5 vòng) — `spec-v1-app-hs.md` §4.5 là nguồn:** Thế giới (chủ đề = lục địa, to nhỏ theo số dạng) → Lục địa (vùng = chuyên đề giáp
-      biên giới, to nhỏ theo số dạng) → Chặng đường (chặng = dạng, to nhỏ theo số quái) → Màn đấu. Cụm = elite theo `thu_tu`, cụm khó nhất = **boss cuối** (vương miện);
-      **≥3 quái mỗi dạng** (thiếu thì con tạm), trần 7; **số câu một lượt = số cụm × 2 kẹp 5–10**; máu cả dạng chia đều đội hình (chưa đo riêng từng cụm); mỗi lượt đánh hết
-      cả đội; hết đội hình trước câu cuối vẫn làm hết lượt ("ôn cho chắc"); sai hồi tối đa +2; không hiện tên cụm. Mockup lưu: `design/mockup-phieu-luu.html`.
-    - **Hướng đồ hoạ:** code three.js theo `design/nghien-cuu-do-hoa-little-habitats.md`; **ChatGPT chỉ làm icon** (Đơn 6 + Đơn 6 v2 ĐÃ HUỶ); **quái/boss Thùy tự thiết kế** — cảnh sinh quái qua điểm cắm
-      `skin/the3d/nguonQuai.ts` (`datNguonQuai(hàm)`), `quai.ts` chỉ là chỗ giữ chỗ (đừng tốn công trau chuốt).
-    - **Code:** `src/screens/hocsinh/skin/the3d/` (động cơ `sanKhau` `hinhHoc` `diaHinh` `trangTri` `dungHinh` `vatLieu` `hero` `loai` · 4 cảnh `canhTheGioi` `canhLucDia` `canhChang` `canhDau` ·
-      bảng màu `bangMauRpg.ts` khai trong `Skin.the3d`) và `src/screens/hocsinh/phieuluu/` (`TheGioiView` `LucDiaView` `ChangView` `DauView` `PhieuLuuHS` container thật · `XemPhieuLuu` + `XemDau` + `mau.ts`
-      trang thử · `ChanDoan` bảng chẩn đoán · `coBat.ts` cờ). Tích hợp: `HocSinhApp` (LamBai thêm prop `nhung` — khung đấu nhận kết quả từng câu; route `phieu_luu`; ô Tự luyện mở bản đồ KHI cờ bật),
-      `AppHS` (+trang xem). three chỉ nạp khi mở màn (import động, gói ~550KB, không vào bundle chính). Màn đấu dùng nguyên `LamBai` ⇒ mọi loại câu/chấm điểm như cũ.
-    - **Cờ `phieuluu` (`phieuluu/coBat.ts`) — MẶC ĐỊNH TẮT** vì code đã nằm trên `main`: lần deploy thủ công kế tiếp KHÔNG đổi gì cho học sinh. Bật cho 1 máy: mở app HS với `?phieuluu=1` (máy nhớ),
-      tắt `?phieuluu=0`. Bật cho mọi HS: đổi `MAC_DINH = true` (1 dòng) rồi deploy. Chỉ khi bật + đăng nhập thì Tự luyện mới ra bản đồ.
-    - **Thử mà không đụng production (⚠ mở terminal trong `bkdemy-erp-v2`, KHÔNG phải `bkdemy-erp` = v1):** ① server dev LAN `npm run dev:hs -- --host` → iPad cùng Wi-Fi mở
-      `http://<IP máy>:5173/hs.html?xem=phieu_luu` (IP máy công ty lúc đó 192.168.1.61/.2; **gõ chữ `http://`**, Safari hay tự thêm https → "không thể thiết lập kết nối bảo mật") ·
-      ② bản build giống production (nhỏ/nhanh, đo FPS đúng hơn): `npm run build:hs` rồi `npm run preview:hs:lan` → `http://<IP>:5180/?xem=phieu_luu` ·
-      ③ HTTPS tự ký `npm run dev:hs:https` → `https://<IP>:5443/hs.html?xem=phieu_luu` (Safari: Hiện chi tiết → Truy cập). Trang xem thử dữ liệu mẫu, không cần đăng nhập; `&tang=luc_dia&luc=C` ·
-      `&tang=chang&luc=C&vung=C2` · `&tang=dau&luc=C&vung=C1` · `&thu=nhieu` (24 lục địa/vùng 9/chặng 14 để thử tải). Bảng "Chẩn đoán" góc dưới trái hiện WebGL/GPU/lỗi trên chính màn hình thử.
-      Cấu hình tương ứng trong `.claude/launch.json` (`dev-hs-lan` `dev-hs-https` `preview-hs-lan`).
-    - **TRẠNG THÁI KIỂM:** soi bằng trình duyệt desktop (800×454, 390×844) OK cả 3 tầng + đấu, kể cả dữ liệu THẬT của 1 HS khối 9 (gọi RPC trong ROLLBACK) và thử tải. **iPad CHƯA xác nhận:** Thùy thử lần đầu Safari báo
-      không mở được (lỗi bảo mật = đang đi https), lần sau "không có bản đồ" — chờ ảnh chụp bảng Chẩn đoán để biết WebGL/lỗi. **Luồng làm bài thật trong khung đấu CHƯA kiểm** (cần tài khoản HS thử; đừng dùng HS thật vì sinh bài vào DB prod).
-      Chưa đo FPS ở máy thật (pane trình duyệt ẩn thì rAF dừng).
-    - **VIỆC TIẾP (theo thứ tự):** ① iPad: đọc bảng Chẩn đoán, sửa lỗi (nghi: tải gói dev chậm / WebGL / shader) ② cắm quái của Thùy vào `nguonQuai` ③ code **luật chất lượng đồ hoạ tự thích ứng** (spec §4.5: 3 mức Thấp/Vừa/Cao, bảng thông số 1 file `skin/the3d/chatLuong.ts`,
-      đoán nhanh + đo ~2 giây, chắc thì tự đặt / không chắc thì 1 nút xác nhận, chỉnh tay trong menu ⋯/Hồ sơ + "Đo lại", lưu theo máy; hiện chỉ có tự hạ DPR khi tụt khung) ④ **DB:** luồng Số liệu đổi `fn_ban_do_phieu_luu` (đội hình ≥3/≤7, `so_cum`, `so_cau_luot`, `hp`; chọn câu theo `so_cau_luot`) — Hộp thư spec §13.6 —
-      rồi bỏ đoạn ghép đội hình ở client trong `tuBanDoPL` ⑤ Thùy chốt: ẩn "Đề thi đầu vào" khỏi bản đồ? · lượt KHÔNG tính thì quái có mất máu không (đề xuất: không ⇒ câu bị bỏ khỏi mastery, Số liệu làm thêm) ⑥ style Thị trấn cần `the3d` riêng ⑦ vẽ lại các màn con còn lại theo chất phiêu lưu + tutorial bản thật ⑧ xin tài khoản HS thử để kiểm luồng thật.
-    - **Nợ/rủi ro:** PWA precache thêm ~550KB · `package.json` thêm `three`, `@types/three`, `@vitejs/plugin-basic-ssl` (dev) · `HocSinhApp`/`AppHS` bị nhiều phiên sửa ⇒ commit theo đường dẫn · `design/FLOW-NPC-BOSS-CUOI.md` (phiên khác, chưa theo dõi) dựa mô hình boss-khu-vực cũ và "boss cuối" ở đó là boss cả hành trình — trùng chữ với boss cuối của chặng, cần soát lại · máy nhà/máy công ty: three đã cài vào `node_modules` máy này, máy kia chạy `npm install`.
+  - **⭐⭐ BẢN ĐỒ PHIÊU LƯU — 2D ẢNH TĨNH + HIỆU ỨNG CODE (đổi từ 3D ngày 01/10 khuya) · TRÊN `main`, CHƯA DEPLOY · CỜ MẶC ĐỊNH TẮT** (luồng Giao diện; chốt hết ngày 02/10)
+    - **Logic (spec-v1-app-hs §4.5, không đổi):** Thế giới (chủ đề = lục địa) → Lục địa (chuyên đề = mốc) → Chặng đường (dạng = bệ có quái) → Màn đấu. Dữ liệu `fn_ban_do_phieu_luu` (Số liệu).
+    - **Code:** `src/screens/hocsinh/phieuluu/ban2d/` — `hinh2d.ts` (SỔ HÌNH: ảnh nào có thì khai, thiếu ⇒ hình tạm SVG theo `b.biome`; toạ độ ghép) · `TheGioi2D` · `LucDia2D` · `Chang2D` ·
+      `San2D.tsx` (khung 16:9, mây/sao/sương/cờ, `Sao5`, `MuiTen`, `CHU_VIEN`) · `boCuc.ts` · `HinhTam.tsx`. Ảnh nén ở `public/bk-ui/hs/skin/rpg/phieuluu2d/` (WebP lục địa, JPG nền).
+      Màn đấu vẫn 3D (`DauView` + `skin/the3d/`). Trang thử `hs.html?xem=phieu_luu` (`&so=N` số chủ đề · `&tang=luc_dia&luc=C` · `&tang=chang&luc=C&vung=C2` · `&tang=dau…`).
+    - **THẾ GIỚI (Thùy duyệt "đã rất ổn" 02/10):** nền biển V2 (`the_gioi_bien.jpg`) + **10 lục địa rời V2** (`luc_dia_v2_<biome>.webp`, cắt sát mép, cạnh dài 640) **ghép ĐÚNG vị trí ảnh gốc**
+      ⇒ đại lục 7 vùng + 3 đảo. Toạ độ `VI_TRI_LUC_DIA_V2` (tâm vùng đo trên ảnh gốc, bề rộng tăng tới khi mảnh gối nhau; thứ tự đường đi rừng → anh đào → thành cổ → đầm lầy → sa mạc →
+      băng → núi lửa → quần đảo → đảo trời → đảo cối xay). Khối N chủ đề ⇒ đặt N mảnh đầu, biển vẫn liền; >10 ⇒ `GhepManh` (bố cục chung). `ganBiomeTheoTranh` gán biome theo mảnh ⇒ đi vào trong
+      đúng cảnh vùng vừa bấm (chỉ phần vẽ). Rê chuột: mảnh nhích lên + viền vàng (nút dùng mask chính ảnh). Nhãn KHÔNG khung (chữ viền dày, 18px), tiến độ **5 sao** (mỗi sao 20% dạng đạt; chặng =
+      độ nắm dạng, đạt = 5 sao), "em đang ở đây" = **mũi tên vàng nhấp nhô** (không chữ, không ảnh nhân vật). Ảnh gốc V2: `design/bk-ui-src/Adnventure2D/V2/` (tên exec-*, map trong DEVLOG 02/10).
+    - **LỤC ĐỊA + CHẶNG:** nền vùng/chặng thật cho rừng · băng · núi lửa · biển đảo (Đơn 7 #13–#20); 6 vùng còn lại (sa mạc, đầm lầy, thành cổ, đảo trời, anh đào, đảo cối xay) = nền tạm.
+      Mốc đặt theo khoảng đất đo tay `CHO_MOC_VUNG` — **Thùy chê lệch** ⇒ hướng thay: **Đơn 10** (nền VẼ SẴN đường + bệ, bố cục 4/6/8 bệ vùng · 4/6/8/10 bệ chặng, làm rừng trước) — CHỜ ChatGPT.
+      Chỉ có mốc thành (#21); mốc #22–26, bệ đá #27 chưa có. Bản đồ lục địa chiếm hết ngang iPad (cột "Các vùng" chỉ ≥1536px).
+    - **MÀN ĐẤU (để sau theo Thùy):** HUD gọn trên cùng, câu hỏi gần trọn màn, cảnh 3D chỉ bung khi tung chiêu; **combo 3 câu = 1 chiêu** (3/3 tuyệt kỹ … 0/3 xịt, sát thương = số đúng);
+      thẻ câu hỏi "bảng phép" (`skin/KhungTran.tsx`, `Skin.tran`, font Baloo 2); lời giải tự cuộn tới. Hình cho màn đấu = **Đơn 8** (chưa gửi). Chiêu chốt 4 giây (rAF đứng khi tab ẩn).
+    - **Tuỳ biến của em (đã có DB + UI):** công tắc **Hiệu ứng game** (`hs_giao_dien.hieu_ung_game`, mig `202610020037`; tắt ⇒ Tự luyện không vào bản đồ) trong tấm Giao diện · style **Tối giản**
+      (`skin/styles/toiGian.ts`, đơn sắc, 16 icon SVG mặt nạ; LÀ style nhưng KHÔNG tính vào 2 style V1) · mức **đồ hoạ** Thấp/Vừa/Cao (`skin/the3d/chatLuong.ts`, áp cho màn đấu 3D).
+    - **Cờ `phieuluu` (`phieuluu/coBat.ts`) MẶC ĐỊNH TẮT:** máy thử `?phieuluu=1`. Bật mọi HS: `MAC_DINH = true` rồi deploy. Bản đồ chỉ mở khi cờ bật + hiệu ứng game bật + style có bản đồ.
+    - **Đơn ChatGPT (design/DON-HANG-SKIN-HS.md):** Đơn 7 (gốc, đã nhận #01–#21) · 7-0 (4 hướng — bỏ, thế giới đã chốt) · 8 (màn đấu, chưa gửi) · 9 (3 kit theo giao thức — kit 1 thế giới
+      coi như xong bằng bộ V2; kit 2–3 thay bằng Đơn 10) · **10 (nền có đường + bệ, rừng trước — VIỆC KẾ TIẾP)**.
+    - **VIỆC TIẾP:** ① gửi Đơn 10 (rừng) → ráp, bỏ `CHO_MOC_VUNG` ② nền vùng/chặng 6 vùng còn lại + mốc #22–26 + bệ đá ③ màn đấu 2.5D theo Đơn 8 ④ kiểm trên iPad thật + luồng làm bài thật
+      (cần tài khoản HS thử — KHÔNG dùng HS thật) ⑤ bản dọc điện thoại của thế giới (tranh ngang chỉ còn dải nhỏ) ⑥ hộp thư Số liệu: `fn_ban_do_phieu_luu` trả đội hình/`so_cau_luot`/`hp`.
+    - **Nợ:** HANDOFF.md có 2 khối "① TRẠNG THÁI HIỆN TẠI" lồng nhau (dòng ~10 và ~58, do merge hỏng) — chờ Thùy cho sửa · lỗi tsc cũ `src/lib/pdfRender.ts` (không thuộc luồng này) ·
+      DB còn 7 em `skin='toi_gian'` (giờ khớp style Tối giản).
   - Tutorial demo: `hs.html?xem=tutorial` (`src/screens/hocsinh/tutorial/`, lời thoại ở `noiDungTutorial.ts`).
   - ⚠ `.env` máy công ty: `DATABASE_URL` = `claude_build` (GHI được) dù chú thích ghi `claude_ro`.
 
@@ -2051,6 +2031,19 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
 - MT/Đề thi/Bổ trợ yếu/Đánh giá còn đọc `banDoTbl` theo `ma_chuyen_de` — `hinh_hoc_bai` có cột compat (rỗng) nên không vỡ, nhưng logic theo chuyên đề vô nghĩa với Hình học; chưa bật nhánh này ở đó.
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
+
+- **⭐ ĐỒ HOẠ APP HS / ĐƠN CHATGPT (chốt 02/10, luồng Giao diện — bản đồ phiêu lưu):**
+  - **Đơn ChatGPT LUÔN theo giao thức kit** (`design/CHATGPT-UI-KIT.md`): ① 1 ảnh toàn cảnh chi tiết ② vẽ lại TỪNG thành phần của chính ảnh đó ③ file mô tả vị trí. Đơn 7 tự ghi "không DESIGN.md, không zip"
+    ⇒ mảnh vẽ độc lập không khớp nhau, phải làm lại. ChatGPT hết lượt / không giao file vị trí ⇒ Claude tự đo (lưới % trên ảnh), nhưng phải ghép thử ra ảnh để soi trước khi đưa vào app.
+  - **Chọn giữa "giống ảnh mẫu" và "nhu cầu sản phẩm" thì HỎI Thùy** — CTO từng chọn tấm đất liền 1 lớp cho giống ảnh gốc, bỏ qua bộ mảnh rời Thùy đã đặt vẽ (để bỏ bớt lục địa theo số chủ đề).
+    Đúng: mảnh rời + toạ độ theo ảnh gốc. "Ghép rời" KHÔNG có nghĩa là xếp lưới.
+  - **Ảnh ChatGPT vẽ lại KHÔNG trùng dáng ảnh gốc** ⇒ dò toạ độ tự động bằng so màu ra sai cỡ. Dùng tâm vùng đo trên ảnh gốc + nới bề rộng tới khi khớp, ghép thử 1–2 vòng.
+  - **Đặt vật lên tranh: tranh và toạ độ phải cùng 1 khung.** Nền `object-cover` (cắt mép theo ô) + mốc đặt theo khung 16:9 ⇒ lệch dù đo đúng. Vẽ tranh TRONG khung 16:9, phần thừa = chính tranh phóng to mờ.
+  - **Toạ độ đo bằng mắt trên tranh trơn không đủ chính xác để đặt công trình vào bãi đất** ⇒ đặt vẽ SẴN đường + bệ trong tranh (Đơn 10), code chỉ gắn đồ lên bệ.
+  - **Nén ảnh về cỡ hiển thị trước khi dùng:** ảnh gốc 1536×1024 giải nén ≈6MB/ảnh (10 ảnh ≈60MB ⇒ Safari iPad cũ giật/tự tải lại); WebP cạnh dài 640 ≈1MB giải nén. Công cụ: `@napi-rs/canvas` có sẵn trong node_modules.
+  - **Hoạt ảnh chạy theo requestAnimationFrame dừng hẳn khi tab/khung ẩn** ⇒ thứ gì CHẶN nút (vd chiêu ở màn đấu) phải có chốt thời gian (`Promise.race` 4 giây).
+  - **Tailwind v4: `-translate-x-1/2` dùng thuộc tính `translate` riêng** ⇒ thêm `style.transform` chỉ để scale; viết lại translateX(-50%) là lệch đôi.
+  - Nhãn trên tranh: chữ KHÔNG khung + viền dày màu nền (`San2D.CHU_VIEN`) đọc rõ mọi nền; sao tiến độ chưa đạt phải RỖNG (tô nhạt nhìn như đầy).
 
 ### Bài học 28/09–01/10 — luồng kho + đề thi (nhập, gán vào buổi, đọc PDF)
 

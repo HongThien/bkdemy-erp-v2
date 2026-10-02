@@ -34583,3 +34583,11 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - TheGioi2D.GhepTheoTranh (≤10 chủ đề): nền biển + N mảnh đúng toạ độ, vẽ y nhỏ trước; nút mảnh dùng mask = chính ảnh (góc trống không cướp chuột mảnh bên);
   rê chuột: nhích lên + viền vàng (lớp viền riêng vì drop-shadow bị mask cắt); lớp giao diện (mũi tên, cờ, quái, nhãn) vẽ trên cùng. >10 ⇒ GhepManh. ToanCanh (tấm liền) bỏ khỏi code.
 - Kiểm 1180×820: 9 & 6 chủ đề + rê chuột, 0 lỗi. File không còn dùng (chờ Thùy cho xoá): the_gioi_dat.webp, the_gioi_vung_*.webp (10), the_gioi_toan_canh.jpg, nen_the_gioi.jpg, luc_dia_*_1.webp (Đơn 7).
+
+### 02/10 cuối ngày — [Giao diện] Dọn ảnh thừa + distill HANDOFF
+- Thùy: "world map đã rất ổn — cái nào không cần thì xoá; tổng kết, ghi md, handoff, push" + "lặp lại thì xoá".
+- XOÁ (Thùy cho phép) 21 file trong public/bk-ui/hs/skin/rpg/phieuluu2d: the_gioi_dat.webp · the_gioi_vung_*.webp (10) · the_gioi_toan_canh.jpg · nen_the_gioi.jpg · luc_dia_<biome>_1.webp (8, Đơn 7).
+  Trước khi xoá: grep code không còn tham chiếu; hinh2d.ts dọn TOAN_CANH_THE_GIOI/OTranh/anhManhVung/anhLucDia/THE_GIOI_GHEP_ROI, ganBiomeTheoTranh đọc VI_TRI_LUC_DIA_V2.
+  Sau xoá: trang thử tải mọi ảnh 200, 0 lỗi; build:hs + check:style-hs ✔. Ảnh gốc ở design/bk-ui-src giữ nguyên.
+- HANDOFF: viết lại khối bản đồ phiêu lưu (3D cũ → 2D hiện hành) + 9 bài học đồ hoạ/đơn ChatGPT vào ②. GỠ khối lặp 19 dòng (tiêu đề + đầu ①) chen giữa bài học Số liệu ②
+  — trùng nguyên văn đầu file, do String.replace với chuỗi thay thế có `$\`` chèn lại phần đứng trước; nối lại câu bài học. Quét lại: 0 dòng dài trùng, 0 tiêu đề trùng.
