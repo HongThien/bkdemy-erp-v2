@@ -362,7 +362,7 @@ export async function xoaVinhVienCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promi
 }
 
 // ── TÌM CÂU (để sửa câu sai nhanh) — THEO KHO ĐANG XEM (per cauTbl), KHÔNG xuyên môn ──
-const BAN_DO_OF: Record<string, string> = { dai_cau_hoi: 'dai_ban_do', khtn_cau_hoi: 'khtn_ban_do' }
+const BAN_DO_OF: Record<string, string> = { dai_cau_hoi: 'dai_ban_do', khtn_cau_hoi: 'khtn_ban_do', anh_cau_hoi: 'anh_ban_do' }
 export type CauTimThay = CauHoi & { dangTen: string }
 // q khớp MÃ (prefix) HOẶC NỘI DUNG (chứa). Sanitize ,() vì là ký tự phân tách của PostgREST .or().
 export async function searchCau(q: string, tbl = 'dai_cau_hoi'): Promise<CauTimThay[]> {
@@ -883,11 +883,14 @@ export type DemChuaGiai = { khoi: string; so_cau: number; so_cho_giai: number }
 // MÔN (nhãn nhan_su_mon, khớp MON_LIST) → mỗi môn gồm các NHÁNH kho của nó. Toán = Đại + Hình giải tích + Hình;
 // KHTN = 1 cây. Registry 1 chỗ, mọi màn gộp-nhánh dùng cái này, KHÔNG tự liệt kê ['toan','khtn','hgt'] rồi trộn môn.
 export type KhoNhanh = KhoMon | 'hinh'
-export const NHANH_LABEL: Record<KhoNhanh, string> = { toan: 'Đại', khtn: 'KHTN', hgt: 'Hình giải tích', hinh: 'Hình', hinh_hoc: 'Hình học' }
+export const NHANH_LABEL: Record<KhoNhanh, string> = { toan: 'Đại', khtn: 'KHTN', hgt: 'Hình giải tích', hinh: 'Hình', hinh_hoc: 'Hình học', anh: 'Tiếng Anh' }
 export const KHO_MON: { mon: string; nhanh: KhoNhanh[] }[] = [
   { mon: 'Toán', nhanh: ['toan', 'hgt', 'hinh', 'hinh_hoc'] },
   { mon: 'KHTN', nhanh: ['khtn'] },
+  { mon: 'Tiếng Anh', nhanh: ['anh'] },
 ]
+// Nhánh CHỈ có luồng duyệt câu (không giải bài AI, không đúng/sai, không form trắc nghiệm AI) — màn duyệt ẩn các tab đó.
+export const NHANH_CHI_DUYET_CAU: KhoNhanh[] = ['anh']
 export const nhanhCuaMon = (mon: string): KhoNhanh[] => KHO_MON.find((m) => m.mon === mon)?.nhanh ?? []
 // Đếm câu chưa có lời giải theo khối cho đúng TẬP NHÁNH của môn đang chọn (không cộng chéo môn).
 export async function demCauChuaGiai(nhanh: KhoNhanh[]): Promise<DemChuaGiai[]> {
@@ -1301,10 +1304,14 @@ export function parseIngestJson(text: string): IngestCau[] {
 // LUỒNG NHẬP KHO (ingest-first, scope = CHỦ ĐỀ): 1 file → bóc MỌI loại → gán dạng → verify → đẩy kho.
 // Bóc/crop hình chạy ở SCREEN (DOM); ở đây = prompt + parse + phân loại grounded + verify + AI-giải + save + log.
 // ════════════════════════════════════════════════════════════════
-export type KhoMon = 'toan' | 'khtn' | 'hgt' | 'hinh_hoc'
+export type KhoMon = 'toan' | 'khtn' | 'hgt' | 'hinh_hoc' | 'anh'
 export function khoTbls(mon: KhoMon): { cauTbl: string; banDoTbl: string; lyThuyetTbl: string; yeuCauGiaiTbl: string } {
   return mon === 'khtn'
     ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', lyThuyetTbl: 'khtn_dang_ly_thuyet', yeuCauGiaiTbl: 'khtn_cau_hoi_yeu_cau_giai' }
+    // Tiếng Anh: KHÔNG có bảng yêu cầu giải (đáp án đến từ tài liệu GV + 2 bên kiểm, không có luồng giải bài) — màn
+    // nào cần yeuCauGiaiTbl phải ẩn với 'anh' (DuyetLoiGiaiScreen chỉ mở tab Duyệt câu cho môn này).
+    : mon === 'anh'
+    ? { cauTbl: 'anh_cau_hoi', banDoTbl: 'anh_ban_do', lyThuyetTbl: 'anh_dang_ly_thuyet', yeuCauGiaiTbl: 'anh_cau_hoi_yeu_cau_giai' }
     : mon === 'hgt'
     ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', lyThuyetTbl: 'hgt_dang_ly_thuyet', yeuCauGiaiTbl: 'hgt_cau_hoi_yeu_cau_giai' }
     // 'hinh_hoc' dùng bảng thật hinh_hoc_bai (không phải "_ban_do") — fn_kho_tbl() và các RPC hàng-duyệt
@@ -1749,10 +1756,10 @@ export function groupDai(rows: DaiDang[]): ChuDeNode[] {
 //
 // ⚠ Tiền tố DÀI KHÁC NHAU (K = 1 ký tự, T1/T2/T3 = 2) ⇒ CẤM cắt mã bằng chỉ số tuyệt
 // đối (`ma.slice(0,6)`). Mọi phép cắt theo vị trí phải đi qua `tachTienTo` bên dưới.
-export type KhoKey = 'dai' | 'hinh' | 'hinhgt' | 'khtn' | 'hinhhoc'
-export const KHO_TIEN_TO: Record<KhoKey, string> = { dai: 'T1', hinh: 'T2', hinhgt: 'T3', khtn: 'K', hinhhoc: 'HH' }
-// V = Văn, A = Anh — để dành, chưa có kho.
-const RE_TIEN_TO = /^(T[123]|K|V|A)(?=[0-9])/
+export type KhoKey = 'dai' | 'hinh' | 'hinhgt' | 'khtn' | 'hinhhoc' | 'anh'
+export const KHO_TIEN_TO: Record<KhoKey, string> = { dai: 'T1', hinh: 'T2', hinhgt: 'T3', khtn: 'K', hinhhoc: 'HH', anh: 'E' }
+// E = Tiếng Anh (kho có từ 02/10, mig 202610021156). V = Văn — để dành. 'A' cũ (dành cho Anh) giữ để không vỡ mã nào lỡ dùng.
+const RE_TIEN_TO = /^(T[123]|K|V|A|E)(?=[0-9])/
 /** Tách mã thành (tiền tố kho, phần vị trí). Mã cũ chưa có tiền tố → tienTo = ''. */
 export function tachTienTo(ma: string): { tienTo: string; vt: string } {
   const m = RE_TIEN_TO.exec(ma)
@@ -2303,6 +2310,91 @@ export async function upsertKhtnChuyenDeLyThuyet(ma_chuyen_de: string, noi_dung:
 }
 export async function deleteKhtnChuyenDeLyThuyet(ma_chuyen_de: string): Promise<void> {
   const { error } = await supabase.from('khtn_chuyen_de_ly_thuyet').delete().eq('ma_chuyen_de', ma_chuyen_de); if (error) throw error
+}
+
+// ── TIẾNG ANH (anh_*): cây MẢNG → CHUYÊN ĐỀ → ĐIỂM KIẾN THỨC (spec-anh-ban-do-k9.md). Dùng chung hợp đồng cột
+// ma_chu_de/ma_chuyen_de/ma_dang của hạ tầng kho (ma_chu_de = mảng). Mã E09… mang luôn thứ tự bản đồ ⇒ order theo mã.
+// Không có lý thuyết cấp chuyên đề, không có cụm/tiền đề (chưa có bảng) — UI tự ẩn các tab đó.
+export async function listAnhMap(khoi: string): Promise<MapRow[]> {
+  const { data, error } = await supabase.from('anh_ban_do').select('*')
+    .eq('khoi', khoi).not('ma_dang', 'like', '%000000').order('ma_chu_de').order('ma_chuyen_de').order('ma_dang').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []).map((r: any) => ({
+    leafMa: r.ma_dang, khoi: r.khoi, t1Ma: r.ma_chu_de, t1Ten: r.ten_chu_de,
+    t2Ma: r.ma_chuyen_de, t2Ten: r.ten_chuyen_de,
+    // mã GV đọc (NP-09…) đứng trước tên — mã DB E09… chỉ là danh tính
+    leafTen: r.ma_hien_thi ? `${r.ma_hien_thi} · ${r.ten_dang}` : r.ten_dang, bac: r.bac_toi_thieu, mucDo: r.muc_do,
+  }))
+}
+export async function createAnhMap(row: MapRow): Promise<void> {
+  const { error } = await supabase.from('anh_ban_do').insert({
+    ma_dang: row.leafMa, khoi: row.khoi, ma_chu_de: row.t1Ma, ten_chu_de: row.t1Ten,
+    ma_chuyen_de: row.t2Ma, ten_chuyen_de: row.t2Ten, ten_dang: row.leafTen, muc_do: row.mucDo ?? 2, bac_toi_thieu: row.bac,
+  })
+  if (error) throw error
+}
+export async function updateAnhLeaf(leafMa: string, patch: { leafTen: string; bac: string; mucDo: number | null }): Promise<void> {
+  // leafTen hiển thị có kèm "NP-09 · " ⇒ bóc tiền tố mã đọc trước khi ghi tên
+  const ten = patch.leafTen.replace(/^[A-ZĐ]{2}-\d{2}\s*·\s*/, '')
+  const { error } = await supabase.from('anh_ban_do').update({ ten_dang: ten, bac_toi_thieu: patch.bac, muc_do: patch.mucDo ?? undefined }).eq('ma_dang', leafMa)
+  if (error) throw error
+}
+export const deleteAnhLeaf = async (leafMa: string) => { const { error } = await supabase.from('anh_ban_do').delete().eq('ma_dang', leafMa); if (error) throw error }
+export async function deleteAnhLeaves(leafMas: string[]): Promise<void> {
+  if (!leafMas.length) return
+  const { error } = await supabase.from('anh_ban_do').delete().in('ma_dang', leafMas); if (error) throw error
+}
+export async function deleteAnhCum(leafMas: string[]): Promise<void> {
+  if (!leafMas.length) return
+  const { error: e1 } = await supabase.from('anh_cau_hoi').update({ xoa_at: new Date().toISOString() }).in('dang_chinh', leafMas).is('xoa_at', null); if (e1) throw e1
+  const { error: e2 } = await supabase.from('anh_ban_do').delete().in('ma_dang', leafMas); if (e2) throw e2
+}
+export async function renameAnhChuDe(khoi: string, maChuDe: string, ten: string): Promise<void> {
+  const { error } = await supabase.from('anh_ban_do').update({ ten_chu_de: ten }).eq('khoi', khoi).eq('ma_chu_de', maChuDe); if (error) throw error
+}
+export async function renameAnhChuyenDe(maChuyenDe: string, ten: string): Promise<void> {
+  const { error } = await supabase.from('anh_ban_do').update({ ten_chuyen_de: ten }).eq('ma_chuyen_de', maChuyenDe); if (error) throw error
+}
+export async function countCauByDangAnh(): Promise<Record<string, number>> {
+  const { data, error } = await supabase.rpc('count_cau_by_dang', { p_tbl: 'anh_cau_hoi' })
+  if (error) throw error
+  return (data ?? {}) as Record<string, number>
+}
+export async function listAnhLyThuyet(): Promise<Record<string, LyThuyet>> {
+  const { data, error } = await supabase.from('anh_dang_ly_thuyet').select('*').limit(LIMIT); if (error) throw error
+  const m: Record<string, LyThuyet> = {}; for (const r of data ?? []) { const x = r as any; m[x.ma_dang] = { noi_dung: x.noi_dung ?? '', file_url: x.file_url, ten_file: x.ten_file, cap_nhat_at: x.cap_nhat_at } } return m
+}
+export async function upsertAnhLyThuyet(ma_dang: string, noi_dung: string, file_url: string | null, ten_file: string | null): Promise<void> {
+  const { error } = await supabase.from('anh_dang_ly_thuyet').upsert({ ma_dang, noi_dung, file_url, ten_file }, { onConflict: 'ma_dang' }); if (error) throw error
+}
+export async function deleteAnhLyThuyet(ma_dang: string): Promise<void> {
+  const { error } = await supabase.from('anh_dang_ly_thuyet').delete().eq('ma_dang', ma_dang); if (error) throw error
+}
+// NGỮ LIỆU (đoạn văn/thông báo/biển báo dùng chung cho nhiều câu) — chỉ môn Anh. Lấy theo danh sách câu đang hiện.
+export type NguLieu = { ma_ngu_lieu: string; loai: string; tieu_de: string | null; noi_dung: string; anh: string | null; am_thanh: string | null; transcript: string | null }
+export type CauAnhThem = { ma_cau: string; ngu_lieu: string | null; thu_tu_trong_ngu_lieu: number | null; dang_de: string; unit_sgk: string | null }
+export async function listNguLieuCuaCau(maCaus: string[]): Promise<{ cau: Record<string, CauAnhThem>; nguLieu: Record<string, NguLieu> }> {
+  if (!maCaus.length) return { cau: {}, nguLieu: {} }
+  const { data, error } = await supabase.from('anh_cau_hoi').select('ma_cau, ngu_lieu, thu_tu_trong_ngu_lieu, dang_de, unit_sgk').in('ma_cau', maCaus).limit(LIMIT)
+  if (error) throw error
+  const cau: Record<string, CauAnhThem> = {}
+  for (const r of (data ?? []) as CauAnhThem[]) cau[r.ma_cau] = r
+  const ids = [...new Set(Object.values(cau).map((c) => c.ngu_lieu).filter((x): x is string => !!x))]
+  const nguLieu: Record<string, NguLieu> = {}
+  if (ids.length) {
+    const { data: d2, error: e2 } = await supabase.from('anh_ngu_lieu').select('ma_ngu_lieu, loai, tieu_de, noi_dung, anh, am_thanh, transcript').in('ma_ngu_lieu', ids).limit(LIMIT)
+    if (e2) throw e2
+    for (const r of (d2 ?? []) as NguLieu[]) nguLieu[r.ma_ngu_lieu] = r
+  }
+  return { cau, nguLieu }
+}
+// Nhãn dạng đề (12 dạng đề Tiếng Anh vào 10 Hà Nội + dạng luyện tập) — chỉ để HIỂN THỊ
+export const DANG_DE_ANH: Record<string, string> = {
+  phat_am: 'Phát âm', trong_am: 'Trọng âm', hoan_thanh_cau: 'Hoàn thành câu', dien_thong_bao: 'Điền thông báo',
+  sap_xep_doan: 'Sắp xếp đoạn', cau_chu_de: 'Câu chủ đề', dien_doan_van: 'Điền đoạn văn', cau_gan_nghia: 'Câu gần nghĩa',
+  viet_cau_goi_y: 'Viết câu từ gợi ý', bien_bao: 'Biển báo', doc_hieu: 'Đọc hiểu', dien_cau_doan: 'Điền câu vào đoạn',
+  dong_trai_nghia: 'Đồng/trái nghĩa', ket_hop_cau: 'Nối câu', nghe: 'Nghe', dien_tu: 'Điền từ', chia_dong_tu: 'Chia động từ',
+  word_form: 'Word form', viet_lai_cau: 'Viết lại câu', sap_xep_tu: 'Sắp xếp từ', viet_cau: 'Viết câu',
 }
 
 // ── HÌNH GIẢI TÍCH (hgt_*): clone shape Đại, nhánh thứ 3 của Toán (Đại/Hình/Hình-giải-tích) — lượng

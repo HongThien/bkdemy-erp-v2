@@ -288,7 +288,8 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
                       className={`rounded-md border px-3 py-1.5 text-xs font-medium transition ${tone}`}>{label}</button>
                   )
                 })()}
-                {config.cauTbl && (
+                {/* Đúng/Sai: loại câu của Toán/KHTN (mỗi mệnh đề 1 dạng) — môn Anh không có (chèn câu thiếu dang_de) */}
+                {config.cauTbl && config.key !== 'anh' && (
                   <button onClick={() => setDungSaiT2({ t2Ma: t2.t2Ma, t2Ten: t2.t2Ten })} title="Kho câu Đúng/Sai (mỗi mệnh đề 1 dạng riêng) của chuyên đề"
                     className="rounded-md border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-xs font-medium text-indigo-700 transition hover:bg-indigo-100">📋 Đúng/Sai</button>
                 )}

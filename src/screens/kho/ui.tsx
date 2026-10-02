@@ -173,6 +173,34 @@ export function MathText({ children, className, prefix, editable }: { children: 
   return <div className={`katex-text ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: lines.map((l, i) => `<div class="mline">${(i === 0 ? head : '') + (l || '&nbsp;')}</div>`).join('') }} />
 }
 
+// ── TIẾNG ANH: chữ THƯỜNG, không công thức. KHÔNG dùng MathText cho câu Anh: MathText tự in đậm từ VIẾT HOA ("NOT", "TV"),
+// hiểu "$5 and $10" thành công thức và escape cả <u> (gạch chân là ĐỀ BÀI của câu phát âm). Ở đây: escape mọi thứ, chỉ
+// thả lại đúng <u>…</u>, xuống dòng → <br>. MathText giữ nguyên (dùng khắp app, kể cả trang in).
+export function TextAnh({ children, className }: { children: string | null | undefined; className?: string }) {
+  const html = esc((children ?? '').trim())
+    .replace(/&lt;u&gt;/g, '<u class="decoration-2 underline-offset-2">').replace(/&lt;\/u&gt;/g, '</u>')
+    .replace(/\r\n?|\n/g, '<br>')
+  return <span className={className} dangerouslySetInnerHTML={{ __html: html }} />
+}
+// Khối NGỮ LIỆU (đoạn văn / thông báo / biển báo / tin nhắn / bài nghe) dùng chung cho nhiều câu — hiện phía trên đề.
+const LOAI_NGU_LIEU: Record<string, string> = { doan_van: 'Đoạn văn', thong_bao: 'Thông báo', bien_bao: 'Biển báo', tin_nhan: 'Tin nhắn', hoi_thoai: 'Hội thoại', bai_nghe: 'Bài nghe' }
+export function NguLieuBlock({ nl, thuTu, gon }: { nl: { ma_ngu_lieu: string; loai: string; tieu_de: string | null; noi_dung: string; anh: string | null; am_thanh?: string | null; transcript?: string | null }; thuTu?: number | null; gon?: boolean }) {
+  return (
+    <div className="mb-2 rounded-lg border border-sky-200 bg-sky-50/40 p-3">
+      <div className="mb-1.5 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-sky-700">
+        {LOAI_NGU_LIEU[nl.loai] ?? nl.loai} <code className="font-normal normal-case text-sky-500">{nl.ma_ngu_lieu}</code>
+        {thuTu ? <span className="font-normal normal-case text-slate-500">· chỗ trống / câu số {thuTu}</span> : null}
+      </div>
+      {nl.tieu_de && <div className="mb-1 text-[14px] font-semibold text-slate-800"><TextAnh>{nl.tieu_de}</TextAnh></div>}
+      {nl.anh && <img src={nl.anh} alt={LOAI_NGU_LIEU[nl.loai] ?? 'ngữ liệu'} className="mb-2 max-h-48 w-auto rounded-md border border-slate-200 bg-white" />}
+      {nl.noi_dung && (
+        <div className={`text-[14px] leading-relaxed text-slate-700 ${gon ? 'max-h-48 overflow-auto' : ''}`}><TextAnh>{nl.noi_dung}</TextAnh></div>
+      )}
+      {nl.am_thanh && <audio controls src={nl.am_thanh} className="mt-2 h-8 w-full" />}
+    </div>
+  )
+}
+
 // ── spec-format-noidung.md — 6 khung lý thuyết (định lý/định nghĩa/chú ý/phương pháp/ví dụ/nhận xét) ──
 // 1 NGUỒN CSS DÙNG CHUNG cho cả preview màn hình (LyThuyetModal, src/screens/kho/BanDo.tsx — tự inject
 // qua <style>) VÀ PDF (LyThuyetBody, src/screens/tailieu/PrintView.tsx — nối vào chuỗi CSS paged.js) —

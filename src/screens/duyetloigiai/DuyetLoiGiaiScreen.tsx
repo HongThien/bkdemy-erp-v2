@@ -15,7 +15,7 @@
 //   đếm ở DB (fn_kho_dem_hang_duyet) — badge trên tab + nhãn khối trong dropdown. Phần HÌNH (biến thể/cách giải — không có
 //   dạng/cụm/kiem_may) của 2 tab lời giải vẫn render ở màn cha như cũ, chọn qua toggle "Câu kho / Hình" (chỉ môn có Hình).
 import { useEffect, useRef, useState } from 'react'
-import { KHOI_OPTIONS, KHO_MON, nhanhCuaMon, demCauChuaGiai, demHangDuyet, HANG_DUYET_LABEL, type DemChuaGiai, type DemHangDuyet, type HangDuyetLoc } from '../../lib/kho/api'
+import { KHOI_OPTIONS, KHO_MON, NHANH_CHI_DUYET_CAU, nhanhCuaMon, demCauChuaGiai, demHangDuyet, HANG_DUYET_LABEL, type DemChuaGiai, type DemHangDuyet, type HangDuyetLoc } from '../../lib/kho/api'
 import ChuaGiaiTab from './ChuaGiaiTab'
 import TracNghiemAiTab from './TracNghiemAiTab'
 import DuyetCauTab from './DuyetCauTab'
@@ -38,6 +38,9 @@ type Row = { key: string; nhanh: string; khoi: string; deBai: string; loiGiai: s
 type Tab = 'chua' | HangDuyetLoc | 'tn' | 'dien'
 // 'chua_dang' (CEO 13/09): câu nhập kho không xác định được dạng — nằm ở dạng chờ, DB chặn duyệt tới khi chọn dạng thật.
 const TAB_LOC: HangDuyetLoc[] = ['cau_moi', 'moi', 'nghi', 'khong_kiem', 'ton_dong', 'chua_dang', 'dung_sai']
+// Môn chỉ có luồng DUYỆT CÂU (Tiếng Anh — 02/10): đáp án đến từ tài liệu GV + 2 bên kiểm độc lập, không có giải bài AI,
+// đúng/sai, form trắc nghiệm AI ⇒ chỉ 3 bộ lọc. Mở môn đó mà tab đang là tab khác ⇒ về 'nghi'.
+const TAB_LOC_CHI_DUYET: HangDuyetLoc[] = ['nghi', 'cau_moi', 'chua_dang']
 const TAB_CO_HINH = new Set<Tab>(['moi', 'ton_dong']) // 2 tab lời giải có thêm phần Hình (biến thể / cách giải)
 const readMon = () => localStorage.getItem('duyetlg.mon') ?? ''
 
@@ -67,13 +70,20 @@ export default function DuyetLoiGiaiScreen() {
   const profileLoading = !isAll && me === null
   const nhanh = nhanhCuaMon(mon)
   const coHinh = nhanh.includes('hinh')
+  const chiDuyetCau = nhanh.length > 0 && nhanh.every((n) => NHANH_CHI_DUYET_CAU.includes(n))
+  const tabLoc = chiDuyetCau ? TAB_LOC_CHI_DUYET : TAB_LOC
+  useEffect(() => {
+    if (!chiDuyetCau) return
+    if (!TAB_LOC_CHI_DUYET.includes(tab as HangDuyetLoc)) setTab('nghi')
+    if (khoi !== '9') setKhoi('9')   // kho Anh hiện chỉ có bản đồ khối 9
+  }, [chiDuyetCau]) // eslint-disable-line
   const monOk = allowed.includes(mon)
   const laLoc = TAB_LOC.includes(tab as HangDuyetLoc)
   const hienHinh = coHinh && TAB_CO_HINH.has(tab) && nguon === 'hinh'
 
   async function reloadDem() {
     if (!monOk) { setDem([]); setDemHD([]); return }
-    try { const [a, b] = await Promise.all([demCauChuaGiai(nhanh), demHangDuyet(nhanh)]); setDem(a); setDemHD(b) }
+    try { const [a, b] = await Promise.all([chiDuyetCau ? Promise.resolve([]) : demCauChuaGiai(nhanh), demHangDuyet(nhanh)]); setDem(a); setDemHD(b) }
     catch { /* chỉ là nhãn — lỗi không chặn màn */ }
   }
   useEffect(() => { reloadDem() }, [mon, monOk]) // eslint-disable-line
@@ -144,9 +154,9 @@ export default function DuyetLoiGiaiScreen() {
           </div>
         )}
         <div className="flex flex-wrap items-center gap-1.5">
-          {tabBtn('chua', 'Chưa có lời giải')}
-          {TAB_LOC.map((l) => tabBtn(l, HANG_DUYET_LABEL[l], demLoc(l)))}
-          {tabBtn('tn', 'Trắc nghiệm AI')}
+          {!chiDuyetCau && tabBtn('chua', 'Chưa có lời giải')}
+          {tabLoc.map((l) => tabBtn(l, HANG_DUYET_LABEL[l], demLoc(l)))}
+          {!chiDuyetCau && tabBtn('tn', 'Trắc nghiệm AI')}
           {coKhoHinh(mon) && tabBtn('dien', 'Điền ô AI')}
         </div>
         <select value={khoi} onChange={(e) => setKhoi(e.target.value)} className="ml-3 rounded-md border border-slate-200 px-2 py-1 text-[13px]">
