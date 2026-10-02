@@ -21,9 +21,14 @@ import { xetGoi, bamNoiDung } from '../kho/cong-ghi.mjs'
 const GOC_REPO = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
 const args = process.argv.slice(2)
 const GHI = args.includes('--ghi')
-const [tsaJson, imgDir] = args.filter((a) => !a.startsWith('--'))
+const iHinh = args.indexOf('--hinh-pdf')
+const hinhPdfFile = iHinh >= 0 ? args[iHinh + 1] : null
+const [tsaJson, imgDir] = args.filter((a, i) => !a.startsWith('--') && args[i - 1] !== '--hinh-pdf')
 if (!tsaJson || !imgDir) { console.error('Dùng: node scripts/tsa/ghi-tsa.mjs <tsa.json> <thư mục img> [--ghi]'); process.exit(2) }
 const j = JSON.parse(readFileSync(tsaJson, 'utf8'))
+// Câu có công thức dạng ảnh WMF (bộ đọc không đổi được ⇒ chữ có chỗ thiếu): ảnh CẮT TỪ PDF là bản đúng — { "<chuyên đề>|<mục>|<số câu>": { de: <png>, giai: <png> } }
+const hinhPdf = hinhPdfFile ? JSON.parse(readFileSync(hinhPdfFile, 'utf8')) : {}
+const khoaHinh = (q) => `${q.chuyen_de}|${q.phan}|${q.so}`
 
 const docEnv = (f) => Object.fromEntries(readFileSync(f, 'utf8').split('\n').filter((l) => l.includes('=') && !l.trim().startsWith('#'))
   .map((l) => [l.slice(0, l.indexOf('=')).trim(), l.slice(l.indexOf('=') + 1).trim().replace(/^["']|["']$/g, '')]))
@@ -61,11 +66,12 @@ const giu = [], boQua = []
 for (const q of j.cau) {
   const cd = cdTheoKey.get(q.chuyen_de)
   const anhLa = [...q.anh, ...q.anh_giai, ...(q.menh_de ?? []).flatMap((m) => m.anh)].filter((f) => !laAnhDuoc(f))
-  if (anhLa.length) { boQua.push({ q, cd, ly_do: `hình không phải PNG/JPG (${anhLa.length} tệp WMF/…) — chưa đổi được` }); continue }
+  if (anhLa.length && !hinhPdf[khoaHinh(q)]) { boQua.push({ q, cd, ly_do: `hình không phải PNG/JPG (${anhLa.length} tệp WMF/…) — chưa đổi được` }); continue }
   giu.push({ q, cd })
 }
 
 const tuKiem = (q) => {
+  if (hinhPdf[khoaHinh(q)]) return 'nghi' // chữ trong DB có chỗ thiếu công thức — bản đúng là ảnh cắt từ PDF
   // mức tin của ĐÁP ÁN (không phải của việc đọc): trống / từ câu cuối lời giải / mâu thuẫn ⇒ hạ
   if (q.dap_an_nguon === 'mau_thuan' || (q.menh_de ?? []).some((m) => m.dap_an_nguon === 'mau_thuan')) return 'nghi'
   const thieu = q.loai_cau === 'dung_sai' ? q.menh_de.some((m) => !m.dap_an) : (!q.dap_an && q.loai_cau !== 'tu_luan')
@@ -119,9 +125,11 @@ try {
     const khoa = `${cd.file_goc}|${q.phan}|${q.so}`
     if (daCo.has(khoa)) { tk.da_co++; continue }
     const nhan = `${cd.so_chu_de}${cd.thu_tu}${q.phan[0]}${q.so}`
+    const hp = hinhPdf[khoaHinh(q)]
     const a = q.anh.find(laAnhDuoc), g = q.anh_giai.find(laAnhDuoc)
-    const anhDe = a ? await upAnh(cd, a, nhan) : null
-    const anhGiai = g ? await upAnh(cd, g, nhan + 'g') : null
+    const upFile = async (p, nh) => { const path = `tsa/${thang}/${randomUUID()}_${nh}.png`; if (!GHI) return `dry://kho-anh/${path}`; const { error } = await storage().storage.from('kho-anh').upload(path, readFileSync(p), { contentType: 'image/png', upsert: false }); if (error) throw new Error(`upload ${path}: ${error.message}`); return storage().storage.from('kho-anh').getPublicUrl(path).data.publicUrl }
+    const anhDe = hp ? await upFile(hp.de, nhan) : a ? await upAnh(cd, a, nhan) : null
+    const anhGiai = hp ? await upFile(hp.giai, nhan + 'g') : g ? await upAnh(cd, g, nhan + 'g') : null
     if (a) tk.anh++; if (g) tk.anh++
     const { cau, kiemMay, ghi } = await dungCau(cd, q, anhDe, anhGiai)
     await c.query(

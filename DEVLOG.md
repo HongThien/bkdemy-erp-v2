@@ -34838,3 +34838,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Thùy:** `C:\Users\WBPC\Downloads\TSA PNL - 2027\TSA PNL - 2027\` — "m đặt tên môn này là TSA". CTO định quét cây thư mục (chỉ đọc) thì Thùy dừng lại, giao việc khác:
   "giờ cần đọc đống đề thi giữa kì để nhập vào kho giống luồng hôm qua". Ghi tên môn + đường dẫn vào HANDOFF; chưa xem bên trong kho TSA.
 - Thư mục thả đề `…\Tài liệu Claude nhập kho\DE_THI\L10|L11|L12` đang trống ⇒ hỏi Thùy file đề giữa kì nằm ở đâu, khối nào.
+- (02/10 chiều) **TSA tiếp:** xoá file mẫu rỗng `…1339_tsa_kho_sua_log_mon_check.sql` (Thùy gật) · CHECK `kho_sua_log` đã nới + ghi sổ · 47 câu kéo thả sửa lại giữ dòng thẻ.
+  4 câu "WMF" thực ra là CÔNG THỨC dạng ảnh mà MathType không đổi được (chữ trong DB thiếu số: "Từ các chữ số , , , ," — KHÔNG phải hình vẽ) ⇒ cắt đề + lời giải từ PDF (`cat-hinh-pdf.mjs`, mốc theo toạ độ chữ `pdftotext -bbox`) làm `anh_de/anh_dap_an`, ghi với `kiem_may='nghi'`, KHÔNG auto duyệt (chữ có lỗ).
+  **Auto duyệt** (Thùy: luyện tập, không cần duyệt): `auto-duyet.mjs`, `duyet_nguon='may'`, chỉ câu đáp án ĐỦ và không 'nghi' ⇒ **386/514 duyệt** (= kho chuẩn 386); 128 chưa (đáp án trống 120 · nghi 8) để người xem. Python 3.15 alpha trên máy này hỏng PIL ⇒ cắt ảnh bằng pngjs.
