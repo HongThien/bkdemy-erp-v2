@@ -294,6 +294,8 @@ def doc(file_docx, unit, ra):
                 continue
             ref = mo_ngu_lieu('bien_bao', '', anh_bb[0] if anh_bb else None)
             noi = re.sub(r'^\s*\d+\s*[.)]\s*', '', hien(' '.join(stem)))
+            if not noi:   # file chỉ ghi số câu, không có đề ⇒ đề mặc định đúng như lệnh của dạng biển báo trong đề HN
+                noi = 'What does the sign or notice say?'
             them(noi, pa, ref, 1, ghi=None if anh_bb else 'bien_bao_khong_thay_anh')
             continue
 
@@ -312,17 +314,38 @@ def doc(file_docx, unit, ra):
                 stt_trong_nl = int(m_so.group(1)) if m_so else stt_trong_nl + 1
                 them(f'({stt_trong_nl}) ______', pa, nl_hien_tai, stt_trong_nl)
                 continue
-            if len(tron(chu)) > 150:
-                if nl_hien_tai and stt_trong_nl == 0:      # đoạn văn nhiều đoạn → nối vào ngữ liệu đang mở
-                    ngu_lieu[-1]['noi_dung'] += '\n\n' + hien(chu)
-                else:
-                    mo_ngu_lieu('thong_bao' if dang == 'dien_thong_bao' else 'doan_van', hien(chu))
+            if nl_hien_tai and stt_trong_nl == 0 and tron(chu).strip():
+                # bài đã mở, chưa tới phương án ⇒ MỌI dòng thuộc bài, kể cả dòng ngắn (bài gạch đầu dòng — U10-NL10 mất
+                # chỗ trống (2)(4)(5) vì dòng < 150 ký tự bị bỏ, 02/10)
+                ngu_lieu[-1]['noi_dung'] += '\n\n' + hien(chu)
+            elif len(tron(chu)) > 150:
+                mo_ngu_lieu('thong_bao' if dang == 'dien_thong_bao' else 'doan_van', hien(chu))
             continue
 
         # ── đọc hiểu: đoạn văn → (đề + phương án)* ──
         if che_do == 'doc_hieu':
+            # đoạn văn nằm trong BẢNG (GV hay đóng khung bài đọc) — trước đây bị bỏ qua ⇒ bài đọc mất phần đầu (U5-NL10 02/10)
+            if loai == 'tr':
+                t = '\n\n'.join(x for x, _ in chu if tron(x).strip())
+                if len(tron(t)) > 150:
+                    chot_mcq()
+                    if nl_hien_tai and stt_trong_nl == 0:
+                        ngu_lieu[-1]['noi_dung'] = (ngu_lieu[-1]['noi_dung'] + '\n\n' + hien(t)).strip()
+                    else:
+                        mo_ngu_lieu('doan_van', hien(t))
+                continue
             pa = tach_phuong_an(chu) if loai == 'p' else []
+            # Chưa mở bài đọc nào ⇒ đoạn dài là BÀI ĐỌC, kể cả khi có "?" hay ":" (câu mở bài hay hỏi tu từ) —
+            # để nhầm thành đề thì các đoạn đầu bị gom vào "đề chờ" rồi rơi mất (U5-NL10 mất 4 đoạn đầu, 02/10).
+            if loai == 'p' and not pa and nl_hien_tai is None and not pending_pa and len(tron(chu)) > 100:
+                mo_ngu_lieu('doan_van', '\n\n'.join([hien(x) for x in pending_stem] + [hien(chu)]))
+                pending_stem = []
+                continue
             if loai == 'p' and len(tron(chu)) > 220 and not pa:
+                # "đề chờ" chưa có phương án mà gặp đoạn dài ⇒ chúng là phần TRÊN của bài đọc, không phải đề — giữ lại, không vứt
+                if pending_stem and not pending_pa and nl_hien_tai and stt_trong_nl == 0:
+                    ngu_lieu[-1]['noi_dung'] += '\n\n' + '\n\n'.join(hien(x) for x in pending_stem)
+                    pending_stem = []
                 chot_mcq()
                 if nl_hien_tai and stt_trong_nl == 0:
                     ngu_lieu[-1]['noi_dung'] += '\n\n' + hien(chu)
@@ -355,6 +378,12 @@ def doc(file_docx, unit, ra):
                     continue
                 if nl_hien_tai and stt_trong_nl == 0 and ngu_lieu[-1]['noi_dung'] == '':
                     ngu_lieu[-1]['noi_dung'] = hien(chu); continue
+                # Đề không có "?"/ô trống ("5. It can be inferred from the passage that…" — phương án nối tiếp câu):
+                # khi đoạn đã có câu hỏi, dòng NGẮN hoặc mở đầu bằng số câu là ĐỀ, không phải đoạn văn mới
+                # (để nhầm ⇒ câu bị tách khỏi bài đọc, HS không thấy đoạn văn — U2-C137/C145 đo 02/10).
+                if not la_cau_hoi and not pending_stem and stt_trong_nl > 0 and (
+                        len(tron(chu)) < 200 or re.match(r'^[\s|]*\d+\s*[.)]', tron(chu))):
+                    la_cau_hoi = True
                 # dòng không phải câu hỏi khi chưa có đề đang chờ = phần tiếp của đoạn văn (không phải đề)
                 if not la_cau_hoi and not pending_stem:
                     if nl_hien_tai and stt_trong_nl == 0:
@@ -367,6 +396,14 @@ def doc(file_docx, unit, ra):
 
         # ── điền câu vào đoạn: đoạn văn có (1) ___D___ (bản GV ghi đáp án ngay chỗ trống) + danh sách A–D dùng chung ──
         if che_do == 'chen_cau':
+            if loai == 'tr':   # đoạn văn đóng khung trong bảng
+                t = '\n\n'.join(x for x, _ in chu if tron(x).strip())
+                if len(tron(t)) > 150 and not chen_cau_ds:
+                    if nl_hien_tai is None:
+                        mo_ngu_lieu('doan_van', hien(t))
+                    else:
+                        ngu_lieu[-1]['noi_dung'] += '\n\n' + hien(t)
+                continue
             if loai != 'p' or not tron(chu).strip():
                 continue
             t = tron(chu)
