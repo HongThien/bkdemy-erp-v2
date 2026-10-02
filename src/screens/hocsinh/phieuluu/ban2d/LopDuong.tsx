@@ -5,7 +5,7 @@ import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import type { Duong } from './duongThree'
 import { useChuyenDong } from './San2D'
 
-export function DuongThree({ b, diem, toi, w, h, nuaRong, children }: {
+export function DuongThree({ b, diem, toi, w, h, nuaRong, nghieng, xaGan, children }: {
   b: BangMau3D
   /** điểm qua các mốc, chuẩn hoá 0–1 theo khung đang vẽ */
   diem: { x: number; y: number }[]
@@ -14,6 +14,9 @@ export function DuongThree({ b, diem, toi, w, h, nuaRong, children }: {
   w: number; h: number
   /** nửa bề rộng mặt đường (px) */
   nuaRong: number
+  /** độ dẹt mặt đất theo góc nhìn chéo của tranh nền (xem duongThree.DuongVao) */
+  nghieng?: number
+  xaGan?: number
   children?: ReactNode
 }) {
   const host = useRef<HTMLDivElement>(null)
@@ -30,7 +33,7 @@ export function DuongThree({ b, diem, toi, w, h, nuaRong, children }: {
     return () => { huy = true; d?.phaHuy(); setDuong(null) }
   }, [b])
   const khoa = diem.map((p) => `${p.x.toFixed(4)},${p.y.toFixed(4)}`).join(';')
-  useEffect(() => { if (duong && w > 0) duong.capNhat({ diem, toi, w, h, nuaRong }) }, [duong, khoa, toi, w, h, nuaRong]) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (duong && w > 0) duong.capNhat({ diem, toi, w, h, nuaRong, nghieng, xaGan }) }, [duong, khoa, toi, w, h, nuaRong, nghieng, xaGan]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { duong?.datDong(dong) }, [duong, dong])
   return (
     <>

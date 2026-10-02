@@ -8,7 +8,9 @@ import * as THREE from 'three'
 import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import { thongSo } from '../../skin/the3d/chatLuong'
 
-export type DuongVao = { diem: { x: number; y: number }[]; toi: number; w: number; h: number; nuaRong: number }
+/** nghieng = độ "dẹt" của mặt đất theo góc nhìn chéo của tranh (1 = nhìn thẳng từ trên, ~0,55 = chéo như nền vùng, ~0,45 = thấp hơn như nền chặng).
+ *  xaGan = tỉ lệ bề rộng đường ở mép TRÊN (xa) so với mép DƯỚI (gần) khung — phối cảnh xa nhỏ gần to. */
+export type DuongVao = { diem: { x: number; y: number }[]; toi: number; w: number; h: number; nuaRong: number; nghieng?: number; xaGan?: number }
 export type Duong = { capNhat: (v: DuongVao) => void; datDong: (dong: boolean) => void; phaHuy: () => void }
 
 const VERT = /* glsl */ `
@@ -38,7 +40,10 @@ void main(){
   if (ben > mep) {
     float a = 1.0 - (ben - mep) / uLe; a = a * a;
     if (da > 0.5) { gl_FragColor = vec4(uVang, a * (0.55 + 0.25 * sin(uTime * 2.4 + vS / uNua * 0.4) * uDong)); return; } // quầng vàng đoạn đã đi
-    gl_FragColor = vec4(uVien * 0.25, a * (vBen * vNy > 0.0 ? 0.5 : 0.25)); return;                                   // bóng đổ, đậm phía dưới
+    if (vBen * vNy > 0.0 && ben < mep + 0.32) {                                                                        // thành đá phía GẦN (dưới màn hình): mặt đường đắp nổi
+      float k = (ben - mep) / 0.32; vec3 thanh = uVien * (0.62 - 0.28 * k) * (0.9 + 0.2 * nhieu(vec2(vS / uNua * 3.0, 1.0)));
+      gl_FragColor = vec4(thanh, 1.0); return; }
+    gl_FragColor = vec4(uVien * 0.2, a * (vBen * vNy > 0.0 ? 0.45 : 0.18)); return;                                  // bóng đổ mềm, đậm phía dưới
   }
   vec2 q = vec2(vS / uNua, vBen);
   // đá cuội: ô to vừa mặt đường (≈2 viên theo bề ngang), khe sẫm rõ, mỗi viên một sắc
@@ -93,7 +98,9 @@ export function taoDuong(host: HTMLElement, b: BangMau3D): Duong {
     camera.left = 0; camera.right = v.w; camera.top = 0; camera.bottom = v.h; camera.updateProjectionMatrix()
     if (mesh) { scene.remove(mesh); mesh.geometry.dispose(); mesh = null }
     if (v.diem.length < 2) { ve(); return }
-    const pts = v.diem.map((d) => new THREE.Vector3(d.x * v.w, d.y * v.h, 0))
+    // dựng đường TRÊN MẶT ĐẤT (y giãn theo 1/nghieng) rồi chiếu lại về màn hình (y × nghieng) ⇒ đoạn chạy ngang dẹt lại, đá cuội dẹt theo góc nhìn của tranh
+    const ng = v.nghieng ?? 1, xaGan = v.xaGan ?? 1
+    const pts = v.diem.map((d) => new THREE.Vector3(d.x * v.w, (d.y * v.h) / ng, 0))
     const cong = new THREE.CatmullRomCurve3(pts, false, 'centripetal')
     const tong = cong.getLength(), buoc = Math.max(2, v.nuaRong * 0.35), n = Math.max(8, Math.ceil(tong / buoc))
     const le = 0.7, ngoai = 1 + le + 0.25 // dải rộng hơn mặt đường để chứa mép lượn + bóng
@@ -106,8 +113,10 @@ export function taoDuong(host: HTMLElement, b: BangMau3D): Duong {
       if (i > 0) s += p.distanceTo(prev)
       if (v.toi > 0 && sToi === tong && u >= uToi) sToi = s
       prev = p
-      const nx = -tg.y, ny = tg.x, r = v.nuaRong * ngoai
-      pos.push(p.x + nx * r, p.y + ny * r, 0, p.x - nx * r, p.y - ny * r, 0)
+      const tl = Math.hypot(tg.x, tg.y) || 1, nx = -tg.y / tl, ny = tg.x / tl
+      const yMan = p.y * ng, pc = xaGan + (1 - xaGan) * Math.min(1, Math.max(0, yMan / v.h)) // phối cảnh: xa (trên) nhỏ, gần (dưới) to
+      const r = v.nuaRong * ngoai * pc
+      pos.push(p.x + nx * r, (p.y + ny * r) * ng, 0, p.x - nx * r, (p.y - ny * r) * ng, 0)
       // mép trái luôn +, mép phải luôn − (đổi dấu theo hướng sẽ vỡ dải ở chỗ quay đầu); aNy cho shader biết phía nào là "dưới màn hình"
       aBen.push(ngoai, -ngoai); aS.push(s, s); aNy.push(ny, ny)
       if (i < n) { const k = i * 2; idx.push(k, k + 1, k + 2, k + 1, k + 3, k + 2) }

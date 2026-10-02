@@ -43,7 +43,7 @@ export function LucDia2D({ luc, b, onChon, onVe }: { luc: LucDiaV; b: BangMau3D;
                 {anhNen ? <img src={anhNen} alt="" className="absolute inset-0 h-full w-full select-none" draggable={false} /> : <VungDatTam b={b} biome={luc.biome} khoa={luc.ma} />}
                 {khung.w > 0 && (
                   // đường three.js (duongThree.ts); SVG bên trong chỉ hiện khi đang tải / máy không có WebGL
-                  <DuongThree b={b} diem={dd} toi={vungs.every((x) => x.t.trangThai === 'dat') ? dd.length - 1 : toi} w={khung.w} h={khung.h} nuaRong={Math.max(12, khung.w * 0.016)}>
+                  <DuongThree b={b} diem={dd} toi={vungs.every((x) => x.t.trangThai === 'dat') ? dd.length - 1 : toi} w={khung.w} h={khung.h} nuaRong={Math.max(12, khung.w * 0.018)} nghieng={0.58} xaGan={0.72}>
                   <svg className="pointer-events-none absolute inset-0 h-full w-full overflow-visible" viewBox={`0 0 ${khung.w} ${khung.h}`} aria-hidden>
                     <path d={duongCong(dd, khung.w, khung.h)} fill="none" stroke={b.duongVien} strokeWidth={Math.max(12, khung.w * 0.012)} strokeLinecap="round" opacity={0.85} />
                     <path className="ban2d-duong-toi" d={duongCong(dd, khung.w, khung.h)} fill="none" stroke={b.duong} strokeWidth={Math.max(6, khung.w * 0.006)} strokeLinecap="round" strokeDasharray="12 12" />

@@ -37,7 +37,7 @@ export function Chang2D({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: Vun
         <div ref={ref} className="absolute inset-0">
           {khung.w > 0 && (
             // đường three.js (duongThree.ts); SVG bên trong chỉ hiện khi đang tải / máy không có WebGL
-            <DuongThree b={b} diem={diem} toi={toi < 0 ? diem.length - 1 : toi} w={khung.w} h={khung.h} nuaRong={coBe * 0.2}>
+            <DuongThree b={b} diem={diem} toi={toi < 0 ? diem.length - 1 : toi} w={khung.w} h={khung.h} nuaRong={coBe * 0.24} nghieng={0.45} xaGan={0.7}>
             <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox={`0 0 ${khung.w} ${khung.h}`} aria-hidden>
               <path d={duongCong(diem, khung.w, khung.h)} fill="none" stroke={b.duongVien} strokeWidth={coBe * 0.42} strokeLinecap="round" opacity={0.5} />
               <path d={duongCong(diem, khung.w, khung.h)} fill="none" stroke={b.duong} strokeWidth={coBe * 0.32} strokeLinecap="round" />

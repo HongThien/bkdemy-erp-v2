@@ -34609,3 +34609,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Dùng ở LucDia2D (nửa rộng 1,6% khung) + Chang2D (0,2 bệ). Chunk riêng 5,5KB (three dùng chung màn đấu).
 - Sai/sửa: bản đầu đổi dấu mép theo hướng ⇒ vỡ dải chỗ quay đầu (sửa: mép trái luôn +, thêm aNy); bản đầu quá phẳng (cuội nhỏ, vàng 22%) ⇒ cuội to theo bề ngang, vàng 38% + quầng.
   Windows không phân biệt hoa thường: DuongThree.tsx đụng duongThree.ts ⇒ đổi tên LopDuong.tsx. Kiểm 1180×820 lục địa C + chặng C2, build:hs + check:style-hs ✔.
+
+### 02/10 tối — [Giao diện] Con đường theo GÓC NHÌN CHÉO của tranh (Thùy: "camera nghiêng, đường cũng phải nghiêng, không nhìn thẳng từ trên trời")
+- duongThree: dựng ribbon trên MẶT ĐẤT (y ÷ nghieng) rồi chiếu về màn (y × nghieng) ⇒ đoạn chạy ngang dẹt theo chiều dọc, cuội dẹt theo; phối cảnh xaGan (mép trên/xa hẹp,
+  dưới/gần rộng); mép phía GẦN (dưới màn) có thành đá sẫm 0,32 bề ngang thay bóng phẳng ⇒ mặt đường đắp nổi. Lục địa nghieng 0,58 · xaGan 0,72; chặng 0,45 · 0,7 (nền chặng nhìn thấp hơn).
+  Số đặt bằng mắt so tranh; đổi được ở props LucDia2D/Chang2D. Kiểm 1180×820 lục địa C + chặng C2.
