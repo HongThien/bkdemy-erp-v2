@@ -35066,3 +35066,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   không tự đăng nhập.
 
 - (02/10 đêm, Giao diện) **Sao nổi bật hơn + chạy chậm lại** (Thùy): 5 sao ở lục địa — vàng rực `#FFC61A`, viền tối dày (cỡ/5), bóng, cả hàng nằm trên viên thuốc tối mờ (sao chưa đạt xám sáng) ⇒ tách khỏi nền xanh/vàng (`SAO_KIT` ở `kitLucDia.ts`, `KieuSao` ở `San2D`). Chạy: trước ~490px/s (≈6 người/s, "như gió") ⇒ nay `TOC_DO_NV = 2,2` chiều-cao-người/giây, tối đa 4,5s cho đường dài (trước 2,4s). Nhịp chân giữ 100ms/khung.
+
+- (02/10 đêm, Giao diện) **Ghi HANDOFF (distill hết ngày) + commit thư mục ảnh nguồn `design/bk-ui-src/AppHS/`** theo Thùy: 162 file (~376MB) — rừng · ảo đảo · thành cổ · đầm lầy · sa mạc · `Animation/` (chạy bộ + `chien_dau/` đang dở). **Loại `*.zip`** (1,2GB; trùng nội dung thư mục, 3 file >100MB GitHub sẽ từ chối cả lượt push).

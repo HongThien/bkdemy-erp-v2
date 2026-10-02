@@ -60,9 +60,21 @@
       băng → núi lửa → quần đảo → đảo trời → đảo cối xay). Khối N chủ đề ⇒ đặt N mảnh đầu, biển vẫn liền; >10 ⇒ `GhepManh` (bố cục chung). `ganBiomeTheoTranh` gán biome theo mảnh ⇒ đi vào trong
       đúng cảnh vùng vừa bấm (chỉ phần vẽ). Rê chuột: mảnh nhích lên + viền vàng (nút dùng mask chính ảnh). Nhãn KHÔNG khung (chữ viền dày, 18px), tiến độ **5 sao** (mỗi sao 20% dạng đạt; chặng =
       độ nắm dạng, đạt = 5 sao), "em đang ở đây" = **mũi tên vàng nhấp nhô** (không chữ, không ảnh nhân vật). Ảnh gốc V2: `design/bk-ui-src/Adnventure2D/V2/` (tên exec-*, map trong DEVLOG 02/10).
-    - **LỤC ĐỊA (Thùy: "chưa ổn" — SẼ LÀM LẠI theo kịch bản world map, ĐƠN 11; đừng chỉnh thêm code tầng này trước khi kit về):** hiện là nền vùng Đơn 7 (rừng · băng ·
-      núi lửa · biển đảo; 6 vùng khác = nền tạm) + 6 loại công trình mốc (`moc_{thanh,thap,trai,den,cong,cau}.webp`, mốc i = loại i%6) đặt CHÂN vào tâm bãi đất DÒ TỰ ĐỘNG
-      (`CHO_MOC_VUNG`, 6 bãi/nền; >6 chuyên đề ⇒ bố cục chung) + đường three.js. Thùy chê: độ nghiêng sai, đường xuyên địa hình, công trình không thật — do 3 nguồn hình riêng rẽ.
+    - **⭐ LỤC ĐỊA = 5 KIT ĐƠN 12 (02/10 đêm, Thùy duyệt dần) — `ban2d/LucDiaKit.tsx`** (rừng · ảo đảo · thành cổ · đầm lầy · sa mạc; `LucDia2D` tự chọn kit khi biome có kit VÀ số chuyên đề ≤ số công trình
+      của kit — rừng/thành cổ/ảo đảo/đầm lầy 8, **sa mạc chỉ 6**; còn lại (băng · núi lửa · quần đảo · đảo trời · đảo cối xay, hoặc >8) ⇒ bản vẽ chung cũ `LucDiaCu`).
+      Nền vẽ sẵn ĐƯỜNG + 8 công trình rời (alpha thật) + **chibi chạy theo đường** tới cửa công trình em bấm rồi mới mở màn chặng; chưa gán chuyên đề ⇒ công trình đứng đó, không bấm, không nhãn.
+      - **Nguồn + pipeline:** ảnh gốc `design/bk-ui-src/AppHS/<kit>/` (ĐÃ commit 02/10 theo Thùy: ~376MB không tính zip; các file `*.zip` KHÔNG commit — trùng nội dung thư mục + có file >100MB GitHub từ chối) → `scripts/anime-kit-lucdia.mjs` (nén WebP ≤640, cắt sát alpha, neo; rừng đọc `kien_truc_chibi_v4.json`) →
+        `public/bk-ui/hs/skin/rpg/lucdia/<biome>/` + `kitLucDia.anh.ts` (sinh) · `scripts/anime-duong-kit.mjs` (DÒ ĐƯỜNG THẬT từ nền: mặt nạ màu + A* giữa các mốc ⇒ `kitLucDia.duong.ts`, sinh) ·
+        `kitLucDia.ts` (chân/bề rộng công trình, màu chữ nhãn, `SAO_KIT`). **Tuyến đường ghi trong DESIGN.md của kit là XẤP XỈ và lệch hẳn đường vẽ ⇒ luôn dò lại bằng script.** Đổi nền/công trình ⇒ chạy 2 script (ghi log ra file, KHÔNG `| head`).
+      - **Nền v4 của Thùy (dịu, chibi):** rừng + đầm lầy đã thay nền + công trình chibi mới (khớp nhau); thành cổ · ảo đảo · sa mạc CHƯA có bản chibi. Nền giữ NGUYÊN BẢN (đã thử lọc màu/làm mờ 2 lần ⇒ "nhà giả giả").
+        **Đầm lầy: đường thật đi cầu → hang bùn → đền rêu nên đã ĐỔI CHỖ chuyên đề 5↔6** so với DESIGN.md (kit ghi ngược).
+      - **Hiển thị:** tên + số + **5 sao** đè cảnh, sao vàng rực viền tối trên viên thuốc tối (`KieuSao`); **LUẬT "KHÔNG ĐÈ NHAU"** (Thùy 02/10): `xepNhan()` đo nhãn thật (Range) rồi quét lưới chọn chỗ không đè công trình nào / nhãn khác / thanh trên-đáy;
+        hover/chạm ⇒ công trình NỔI LÊN (phóng 1,08 + quầng sáng + lên đầu z); thêm viền sáng + quầng thở + đốm sáng bay cạnh công trình (tắt ở đồ hoạ Thấp / giảm chuyển động).
+      - **Nhân vật chính = 2 nhà thám hiểm áo choàng xanh (nam/nữ)** — bộ chạy 2D 6 khung × 100ms (`design/bk-ui-src/AppHS/Animation/` → `scripts/anime-chay-2d.mjs` → `skin/heroChay.ts` + `public/bk-ui/hs/skin/rpg/chay/`; neo đất ĐO từng khung, cỡ thân cùng tỉ lệ,
+        `khungTheoMs` theo delta thời gian). Tốc độ chạy `TOC_DO_NV = 2,2` chiều-cao-người/giây, tối đa 4,5s (trước "như gió"). Cỡ nhân vật theo DESIGN chỉ ~35px ⇒ nhân `HE_SO_NV = 2,2`.
+        **2 nhân vật cũ (bé trai+mèo, bé gái+cú; `Skin.nhanVat`) = NPC DẪN TRUYỆN** (Home, tutorial, người dẫn ở Đấu trường) — KHÔNG phải nhân vật của em.
+      - **Xem thử:** `hs.html?xem=phieu_luu&tang=luc_dia&luc=C&biome=<rung|anh_dao|thanh_co|dam_lay|sa_mac>&gioi=nu|nam&nv=8` (`nv` = số chuyên đề giả để soi kit 6/8 mốc; `duong=1` vẽ đường dò; dev).
+      - **CHƯA:** >8 chuyên đề (rừng/thành cổ nói lật nền, ảo đảo nói KHÔNG lật được) · 5 biome chưa có kit · bản dọc · thế giới/chặng chưa có nhân vật chính · iPad thật · kiểm tay thành cổ/ảo đảo/sa mạc sau đổi nhãn.
     - **CHẶNG (Thùy: "ổn hơn"):** nền chặng Đơn 7 (4 biome) + bệ đá thật (#27) + quái tạm + **đường three.js** (`ban2d/duongThree.ts` + `LopDuong.tsx`): ribbon CatmullRom qua các bệ,
       shader đá cuội/mép vẽ tay; dựng trên MẶT ĐẤT rồi chiếu theo góc nhìn chéo (`nghieng` 0,45 · `xaGan` 0,7 — xa nhỏ gần to) + thành đá phía gần; đoạn đã đi vàng + luồng sáng
       chạy (đứng yên ở mức Thấp); không WebGL ⇒ đường SVG cũ. Chunk 5,5KB, dùng chung three với màn đấu.
@@ -74,11 +86,20 @@
     - **Đơn ChatGPT (design/DON-HANG-SKIN-HS.md):** Đơn 7 (gốc, đã nhận #01–#30: lục địa · nền vùng/chặng 4 biome · 6 mốc · bệ đá · mây · la bàn · cờ — ảnh ở
       `design/bk-ui-src/Adnventure2D/chon_huong/`) · 7-0 (bỏ) · 8 (màn đấu, chưa gửi) · 9 (kit 1 thế giới = xong bằng bộ V2) · 10 (nền có đường + bệ — phần VÙNG thay bằng Đơn 11) ·
       11 (bị Đơn 12 thay) · **12 (tầng lục địa, 02/10: 1 màn = đường xuyên suốt + 8 công trình KHÁC LOẠI (nhà · lều · tháp · cầu · đền · hầm ngục · pháo đài · lâu đài) + nhân vật chibi CHẠY dọc đường giữa các chuyên đề; ít hơn 8 ⇒ công trình thừa đứng sẵn không tấn công; >8 ⇒ kéo ngang, màn kế = nền lật gương; DESIGN.md có đường ≥24 điểm; RỪNG trước, rồi 9 vùng — VIỆC KẾ TIẾP, Thùy tự gửi)**.
-    - **VIỆC TIẾP:** ① kit Đơn 11 về ⇒ ráp theo DESIGN.md (ghép thử so reference), tắt đường three.js ở tầng lục địa, sổ hinh2d {biome, số mốc, nền, vị trí} + chọn bản nhỏ nhất ≥ N,
-      bỏ `CHO_MOC_VUNG` ② nền chặng 6 vùng còn lại ③ màn đấu 2.5D theo Đơn 8 ④ iPad thật + luồng làm bài thật (tài khoản HS THỬ) ⑤ bản dọc của thế giới ⑥ hộp thư Số liệu
-      (`fn_ban_do_phieu_luu` trả đội hình/`so_cau_luot`/`hp`).
+    - **Kit đã NHẬN:** Đơn 12 = 5 kit lục địa (xem trên) · Đơn 13 chưa gửi · nền + công trình chibi v4 (rừng, đầm lầy) do Thùy chỉnh trực tiếp.
+    - **VIỆC TIẾP:** ① **Đấu trường: chờ Số liệu làm RPC** rồi nối thật (xem khối dưới) ② bộ tư thế chiến đấu của Thùy (`Animation/chien_dau/`, đang vẽ dở: đứng ×2, suy nghĩ, tích năng ×2 + 5 fx + nền sân + `hieu_ung_va_cham.js`) ⇒ đọc DESIGN rồi tích hợp một lượt vào `DauTruongHS`/`hieuUng.ts`
+      ③ kit + nền chibi cho 3 kit còn lại và 5 biome chưa có kit ④ nền chặng 6 vùng còn lại + chặng dùng nhân vật chính ⑤ màn đấu của Tự luyện (3D) theo Đơn 8 ⑥ iPad thật + luồng làm bài thật (tài khoản HS THỬ) ⑦ bản dọc ⑧ hộp thư Số liệu (`fn_ban_do_phieu_luu` trả đội hình/`so_cau_luot`/`hp`).
     - **Nợ:** lỗi tsc cũ `src/lib/pdfRender.ts` (không thuộc luồng này) ·
       DB còn 7 em `skin='toi_gian'` (giờ khớp style Tối giản).
+  - **⭐ THỬ THÁCH = ĐẤU TRƯỜNG 3 TRẬN (Thùy chốt 02/10) — ĐÃ CÓ SPEC + DEMO, CHƯA NỐI DB · ĐỌC `spec-thu-thach-dau-truong.md`** (thay luật A2 cũ của `spec-thanh-tuu-nhiem-vu.md`)
+    - **Luật:** 3 trận × 5 MCQ (chọn qua `_kho_dk_mcq_sql`), thắng khi đúng ≥60% · ≥80% · 100%; thua trận nào dừng luôn; **2 lượt/ngày/MÔN, chưa đóng lượt 1 không mở lượt 2**; nút **Bỏ cuộc = thua** (vẫn mất lượt); bỏ >30 phút server tính thua;
+      Điểm Rank 10/20/30 (thắng 1/2/3 trận), **trần TUẦN** thay trần ngày (số trần: Số liệu đề xuất); câu lấy từ dạng đã học (≥3 lần đo; tối thiểu 5 dạng), 2 dễ · 2 vừa · 1 khó mỗi trận theo ĐỘ KHÓ CỦA DẠNG, không trùng câu, xoay vòng dạng; **sinh cả 15 câu một lần ở DB**.
+      Ảnh hưởng: nhiệm vụ N1/T3/M2 + huy hiệu Hercules ("lượt 10/10") đổi thành "vượt Thử thách". Việc DB đã gửi vào hộp thư `spec-v1-app-hs.md` §13.6 #7 (RPC bắt đầu lượt / nộp trận / bỏ cuộc + job hết giờ).
+    - **Demo (dữ liệu giả):** `hs.html?xem=thu_thach` (`&goi_y=1` đánh dấu đáp án · `&don=set|thien_thach|cau_lua_lon|cau_bang_lon|cau_lua_nho|cau_bang_nho|dien_nho` ép đòn · `&luot=0` · `&dang=3` · `&gioi=nu`). Code `screens/hocsinh/thuthach/`:
+      `DauTruongHS.tsx` (sân 2D + câu hỏi + bỏ cuộc + kết quả; nhận 3×5 câu qua props — nối thật chỉ đổi nguồn) · `hieuUng.ts` (engine canvas 2D) · `kieu.ts` · `mau.ts` · `XemThuThach.tsx`.
+    - **Trải nghiệm (Thùy chỉnh):** KHÔNG hoạt ảnh theo từng câu; làm xong 5 câu mới phát ĐÒN theo % đúng — 100% sét đánh (boss chớp âm bản "thấy xương" + tia điện) / thiên thạch (rơi + nổ + cháy) · 80% cầu lửa lớn (cháy) / cầu băng lớn (đóng băng rồi vỡ) · 60% cầu lửa-băng / tia điện NHỎ ·
+      thua: boss ném ma thuật. Chọn ngẫu nhiên trong nhóm. Boss 1 con (tạm boss_thuy) qua 3 trận, máu hiển thị tụt sau mỗi đòn, trận 3 = kết liễu. Người dẫn truyện = bé gái+cú. Tư thế đánh hiện là CSS trên khung đứng yên của nhà thám hiểm.
+  - **Đơn 13 (02/10 đêm, chưa cần gửi):** bộ tư thế chiến đấu nhân vật chính (15 tư thế/giới + 5 đạn + nền sân) — Thùy chọn "dùng 2 nhân vật + animation chạy là được" nhưng đang tự vẽ `Animation/chien_dau/`.
   - Tutorial demo: `hs.html?xem=tutorial` (`src/screens/hocsinh/tutorial/`, lời thoại ở `noiDungTutorial.ts`).
   - ⚠ `.env` máy công ty: `DATABASE_URL` = `claude_build` (GHI được) dù chú thích ghi `claude_ro`.
 
@@ -2104,6 +2125,14 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
   - Đường vẽ bằng code trên tranh nhìn chéo phải dựng trên MẶT ĐẤT rồi chiếu (y × độ nghiêng, xa nhỏ gần to, thành phía gần) — dải đều bề ngang trông như nhìn thẳng từ trên trời.
   - Windows không phân biệt hoa thường tên file: `DuongThree.tsx` đụng `duongThree.ts` (tsc TS1261, Vite lỗi export) ⇒ đặt tên khác hẳn.
   - Nhãn trên tranh: chữ KHÔNG khung + viền dày màu nền (`San2D.CHU_VIEN`) đọc rõ mọi nền; sao tiến độ chưa đạt phải RỖNG (tô nhạt nhìn như đầy).
+  - **Kit ghi tuyến đường "xấp xỉ" ⇒ luôn DÒ LẠI từ nền:** mặt nạ màu đường + A* (rẻ trên lòng đường, đắt khi băng rừng/nước) giữa các mốc. Mỗi nền một mặt nạ riêng (sa mạc: đường lát đá nhạt s .26–.39 khác cát s ≥ .43; đầm lầy đổi màu khi Thùy đổi nền ⇒ mặt nạ cũ chỉ bắt 0,5% — kiểm % mặt nạ + soi ảnh).
+    **Thứ tự công trình phải theo ĐƯỜNG THẬT** (đầm lầy kit ghi đền 5/hang 6, đường đi qua hang trước ⇒ đổi chỗ), nếu không nhân vật băng nước/quay lại.
+  - **Làm mờ/lọc màu nền ⇒ công trình nét trông "dán" (giả)** — Thùy chê 2 lần; để nền NGUYÊN BẢN, chỉ thêm ánh sáng cạnh công trình. Muốn nền dịu ⇒ nhờ hoạ sĩ vẽ nền mới (v4).
+  - **Chữ/sao đè tranh: LUẬT KHÔNG ĐÈ NHAU** — đừng đặt nhãn cố định dưới chân; đo nhãn thật (hộp nhãn rộng tới maxWidth dù chữ ngắn ⇒ đo bằng `Range`) rồi quét lưới tránh công trình/nhãn khác. Sao trùng màu nền ⇒ vàng rực + viền tối dày + viên thuốc tối phía sau.
+  - **Sprite chạy: neo ĐẤT đo từng khung (đáy hộp alpha), cỡ thân CÙNG một tỉ lệ cho cả chu kỳ** (neo riêng từng khung dùng để đặt chân, không đổi cỡ) + delta thời gian. Tài liệu kit hay lỗi thời (Thùy đổi tên file/khung giữa chừng) ⇒ bám file thật. Tốc độ chạy tính theo CHIỀU CAO NGƯỜI, không theo bề ngang màn (490px/s ≈ 6 người/s = "như gió").
+  - **Z-order nhân vật cộng ~3,5% độ sâu** để luôn đứng TRƯỚC cửa công trình đang tới (không thì tháp che mất người); sương phải z ngay trên công trình của nó, dưới nhân vật.
+  - **Soi hiệu ứng canvas/rAF trong pane Browser:** pane ẩn ⇒ `requestAnimationFrame` đứng (canvas im, tư thế kẹt) ⇒ thay rAF bằng `setTimeout` khi test, và đóng băng đúng khung bằng `window.__dtDung=<ms>` (dev, trong `hieuUng.ts`); canvas chỉ hiện trong ảnh chụp sau khi `getImageData` đọc lại. Script `| head` ⇒ EPIPE cắt ngang (kit nén dở, file sinh chưa ghi) — ghi log ra file.
+  - **Nhân vật chính ≠ NPC dẫn truyện** (Thùy 02/10): chính = nhà thám hiểm (`heroChay.ts`), NPC = bé trai+mèo / bé gái+cú (`Skin.nhanVat`). Đừng dùng NPC làm nhân vật của em.
 
 ### Bài học 28/09–02/10 — luồng kho + đề thi (nhập, gán vào buổi, đọc PDF)
 
