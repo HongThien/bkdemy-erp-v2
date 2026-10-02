@@ -15,6 +15,7 @@
 6. Ít nhất **2 style** để HS chọn. *(Thùy 02/10: **Tối giản** — đơn sắc, nền trơn, không bản đồ phiêu lưu — là 1 style cho em không thích rối mắt nhưng **KHÔNG tính** vào 2 style này; 2 style V1 là 2 style GAME có bộ hình phiêu lưu riêng: RPG + Thị trấn.)*
 7. Game tổ hợp Nông trại · Bắt thú · Ấp trứng.
 8. Góp ý / báo lỗi: HS báo lỗi hoặc gửi ý tưởng mới.
+9. **Đấu từ vựng** (Thùy thêm 02/10): PvP realtime lớp 3–9, điểm season, kho từ theo sách — `spec-dau-tu-vung.md` (phạm vi cắt cho 06/10: §8 ở đó).
 
 **Ngoài V1 (đã thiết kế, ghi lại, CHƯA làm):** giải đấu tuần nhóm nhỏ (§10).
 
@@ -39,6 +40,7 @@
 | 6 | ≥ 2 style | Chỉ RPG đang dùng (3 hình nền) + Tối giản (02/10, KHÔNG tính vào mục này). Style 2 **Thị trấn** đang làm: 27 hình, thiếu 5 icon + 2 nền (`spec-giao-dien-hs.md` §9) | Ghép Thị trấn (`styles/town.ts`, migration nới CHECK skin). Mỗi style phải có **bộ hình phiêu lưu riêng** (bản đồ, quái) — xem §4.4 | Em chọn được 2 style, đổi là đổi hết app |
 | 7 | Game tổ hợp | 2 repo riêng: `bk-nong-trai` (nhánh `nhip-ngay`), `bk-bat-thu`. CEO đã chốt gộp, chưa gộp code (`spec-bat-thu.md`) | Gộp 3 chế độ. Cổng học (§2). Bản online (`fn_nt_*`). Cho 5–10 em chơi thử. **Phạm vi game ở V1 cần chốt** (§11) | Theo phạm vi chốt ở §11 |
 | 8 | Góp ý / báo lỗi | Nhân sự đã có: bảng `bao_loi` + `ReportButton` + màn `BaoLoiScreen`; GV có `GopY`. HS chưa có | Nút trong app HS (§6) + tab trong màn nhân sự để duyệt | Em gửi được lỗi + ý tưởng kèm ảnh; nhân sự thấy và trả lời |
+| 9 | Đấu từ vựng | Chưa có (0 bảng từ vựng). Spec `spec-dau-tu-vung.md` 02/10 | Kho từ Global Success 3–9 · trận server chấm · thách đấu + hàng chờ + bóng ma + bot · điểm season | 2 em ở 2 máy đấu được 1 trận thật; bấm Tìm trận lúc vắng vẫn có trận (bóng ma/bot) |
 
 ## 2. Nền chung: "lượt học thật"
 

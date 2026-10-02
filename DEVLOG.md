@@ -35068,3 +35068,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - (02/10 đêm, Giao diện) **Sao nổi bật hơn + chạy chậm lại** (Thùy): 5 sao ở lục địa — vàng rực `#FFC61A`, viền tối dày (cỡ/5), bóng, cả hàng nằm trên viên thuốc tối mờ (sao chưa đạt xám sáng) ⇒ tách khỏi nền xanh/vàng (`SAO_KIT` ở `kitLucDia.ts`, `KieuSao` ở `San2D`). Chạy: trước ~490px/s (≈6 người/s, "như gió") ⇒ nay `TOC_DO_NV = 2,2` chiều-cao-người/giây, tối đa 4,5s cho đường dài (trước 2,4s). Nhịp chân giữ 100ms/khung.
 
 - (02/10 đêm, Giao diện) **Ghi HANDOFF (distill hết ngày) + commit thư mục ảnh nguồn `design/bk-ui-src/AppHS/`** theo Thùy: 162 file (~376MB) — rừng · ảo đảo · thành cổ · đầm lầy · sa mạc · `Animation/` (chạy bộ + `chien_dau/` đang dở). **Loại `*.zip`** (1,2GB; trùng nội dung thư mục, 3 file >100MB GitHub sẽ từ chối cả lượt push).
+
+- (02/10 khuya, Đấu từ) **Phân tích Bufopia + spec game đấu từ vựng** (Thùy gửi bufopia.pages.dev: "làm lại cho HS BK"). Đọc mã nguồn bản đang
+  chạy: trận 15 từ × 12s, 4 đáp án, đúng trước ăn từ, điểm 100/70/50 + 30 mỗi chuỗi 3, bot 3 mức, Leitner 1/3/7 ngày, chấm ở CLIENT + nhớ từ
+  ở localStorage (React/Vite + Cloudflare Worker/D1 + Firebase ẩn danh). Không tạo nhân vật trên site người ta ⇒ chưa nhìn màn trận bằng mắt.
+  Thùy chốt: ôn + học từ mới · PvP realtime · điểm season, quà cuối season (không xu theo trận) · lớp 3–9 · bot + online (online chính) ·
+  vào app HS V1.0 · kho từ v1 Claude tự làm. **Đo DB:** 30 ngày 179 HS dùng tự luyện; số em cùng lúc trong khung 15' thường 1–2, đỉnh 7
+  (3 lần/tháng); đông nhất 19–22h ⇒ online thuần sẽ hiếm ghép được ⇒ spec 4 lớp: thách đấu bạn · hàng chờ nới dần · bóng ma (bản ghi trận
+  thật, ghi rõ) · giờ vàng. Server chấm mọi chế độ (bot bốc trước giờ bấm ở server). Không tìm thấy file sách giáo khoa Anh trên máy/Drive
+  (chỉ có bài test scan) ⇒ kho lấy danh sách từ công khai + list Cambridge/CEFR-J, không nhập sách lậu. Viết `spec-dau-tu-vung.md`,
+  thêm hạng mục 9 vào `spec-v1-app-hs.md`. Chờ Thùy: sách tăng cường ở trường · cắt phạm vi 06/10 · ai được chơi.
