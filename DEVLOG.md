@@ -34998,3 +34998,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   đề tham khảo 514/586.
 - **Bài học:** (1) luật "nhãn phải hợp dạng đề" là nhân chứng thứ ba bắt được lỗi của chính TRẠM ĐỌC (xếp sai dạng), không chỉ lỗi nhãn.
   (2) Heredoc bash nuốt `\n` trong script Python vá file — vá file bằng Write (dính 4 lần hôm nay).
+
+- (02/10 tối) **Màn bắt thú = DUNGEON RIÊNG TỪNG LOÀI** (CEO chốt 5 ý + 4 câu làm rõ — spec-bk-world §8; BatThu `12e5ee6`):
+  bản đồ dungeon (`bat.html`) — 4 tầng = 4 loại vé, shop vé bằng 📘, lượt free ngày (≥10 📘/ngày ⇒ tầng 1–2) / tuần (5/7 ngày ⇒ tầng 3–4) ·
+  12 dungeon, mỗi cái 1 truyện 3 khung + cảnh theo hệ (6 cảnh: lửa/nước/cỏ/băng/điện/trăng — `the-gioi.ts datCanh`) · 1 con chờ cuối lối,
+  cấp/shiny/alpha gieo lúc mở lượt · đánh yếu (thú dungeon dừng ở 1 máu) rồi 3 lần ném · cấp cao khó bắt (`tiLeBat × heSoCap`).
+  Tầng: CTO đề xuất (bảng §8) — tầng 3 trống tới khi nối Eidrolon/Ophydia (khuôn bay/rắn). Thiên Kình đã vào khuôn bơi (`684ce60`).
+  Vấp: (1) ảnh chụp Browser pane cắt 1:1 một góc trang (lỗi vẽ của pane, đo bằng getBoundingClientRect mới chắc bố cục đúng);
+  (2) cảnh băng trắng xoá (nền + sương + thú cùng trắng) ⇒ hạ sáng nền, sương xanh đậm; dung nham loá ⇒ bỏ toneMapped:false, giảm phát sáng;
+  (3) chèn `//` giữa dòng lần 3 trong ngày ⇒ ghi vào memory: chỉ dùng `/* */` khi vá 1 dòng.
