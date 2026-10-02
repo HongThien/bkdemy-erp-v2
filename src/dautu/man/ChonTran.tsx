@@ -1,32 +1,35 @@
 // Chọn chủ đề → chọn chế độ (bot · 2 người 1 máy · tìm trận online · thách đấu · giải 8 người).
-import { useState } from 'react'
-import { CAP_DO, CHU_DE, TU_THEO_CD, type CapDo } from '../data/kho'
+import { useEffect, useState } from 'react'
+import type { CapNguon, ChuDeNguon, NguonCau } from '../nguon'
 import { DauMan, Nut } from '../ui/Chung'
 import { BOT } from '../lib/bot'
 import { HUONG_DO, khoHuong, useHuong } from '../lib/boDe'
 import type { MucBot } from '../lib/trongTai'
 
-export function ChonChuDe({ capDo, setCapDo, onChon, onLui }: { capDo: CapDo; setCapDo: (c: CapDo) => void; onChon: (cd: string) => void; onLui: () => void }) {
+export function ChonChuDe({ nguon, cap, setCap, onChon, onLui }: { nguon: NguonCau; cap: string; setCap: (c: string) => void; onChon: (cd: string, ten: string) => void; onLui: () => void }) {
+  const [dsCap, setDsCap] = useState<CapNguon[] | null>(null)
+  const [dsCd, setDsCd] = useState<ChuDeNguon[] | null>(null)
+  const [loi, setLoi] = useState('')
+  useEffect(() => { setLoi(''); nguon.dsCap().then(setDsCap).catch((e) => setLoi((e as Error).message)) }, [nguon])
+  useEffect(() => { setDsCd(null); nguon.dsChuDe(cap).then(setDsCd).catch((e) => setLoi((e as Error).message)) }, [nguon, cap])
   return (
     <div className="man">
-      <DauMan tieuDe="Chọn nội dung" phu="Chọn một chủ đề hoặc để hệ thống trộn ngẫu nhiên" onLui={onLui} />
-      <div className="chip-hang">
-        {CAP_DO.map((c) => (
-          <button key={c.id} className={'chip' + (capDo === c.id ? ' bat' : '')} onClick={() => setCapDo(c.id)}>
-            <b>{c.ten}</b><small>{c.mo}</small>
+      <DauMan tieuDe={<>{nguon.icon} {nguon.ten} — chọn nội dung</>} phu={nguon.coNhoTu ? 'Chọn một chủ đề hoặc để hệ thống trộn ngẫu nhiên' : 'Câu trắc nghiệm lấy từ kho câu đạt chuẩn của BK'} onLui={onLui} />
+      {loi && <p className="loi bang-tin">{loi}</p>}
+      <div className="chip-hang cuon">
+        <span className="nhan-hang">{nguon.tenCap}:</span>
+        {(dsCap ?? []).map((c) => (
+          <button key={c.id} className={'chip' + (cap === c.id ? ' bat' : '')} onClick={() => setCap(c.id)}>
+            <b>{c.ten}</b>{c.mo && <small>{c.mo}</small>}
           </button>
         ))}
+        {!dsCap && !loi && <span className="mo">Đang tải…</span>}
       </div>
       <div className="luoi-chu-de">
-        <button className="o-chu-de dac-biet" onClick={() => onChon('auto')}>
-          <span className="o-icon">✨</span><b>Đấu ngẫu nhiên</b><small>Hệ thống tự chọn chủ đề</small>
-        </button>
-        <button className="o-chu-de dac-biet" onClick={() => onChon('tron')}>
-          <span className="o-icon">🎲</span><b>Trộn tất cả</b><small>Mọi chủ đề</small>
-        </button>
-        {CHU_DE.map((c) => (
-          <button key={c.id} className="o-chu-de" style={{ ['--mau' as string]: c.mau }} onClick={() => onChon(c.id)}>
-            <span className="o-icon">{c.icon}</span><b>{c.ten}</b><small>{c.tenEn} · {TU_THEO_CD[c.id]?.length ?? 0} từ</small>
+        {!dsCd && !loi && <p className="mo">Đang tải chủ đề…</p>}
+        {(dsCd ?? []).map((c) => (
+          <button key={c.id} className={'o-chu-de' + (c.id === 'auto' || c.id === 'tron' ? ' dac-biet' : '')} style={{ ['--mau' as string]: c.mau ?? '#9b8cf0' }} onClick={() => onChon(c.id, c.ten)}>
+            <span className="o-icon">{c.icon}</span><b>{c.ten}</b>{c.phu && <small>{c.phu}</small>}
           </button>
         ))}
       </div>
@@ -41,20 +44,20 @@ export type LuaChonCheDo =
   | { loai: 'phong'; soCau: number }
   | { loai: 'giai'; soCau: number }
 
-export function ChonCheDo({ tenChuDe, onChon, onLui }: { tenChuDe: string; onChon: (c: LuaChonCheDo) => void; onLui: () => void }) {
+export function ChonCheDo({ nguon, tenChuDe, onChon, onLui }: { nguon: NguonCau; tenChuDe: string; onChon: (c: LuaChonCheDo) => void; onLui: () => void }) {
   const [soCau, setSoCau] = useState(15)
   const [muc, setMuc] = useState<MucBot>('vua')
   const huong = useHuong()
   return (
     <div className="man">
-      <DauMan tieuDe="Chọn chế độ chơi" phu={<>Chủ đề: <b>{tenChuDe}</b></>} onLui={onLui}
+      <DauMan tieuDe="Chọn chế độ chơi" phu={<>{nguon.icon} {nguon.ten} · <b>{tenChuDe}</b> · {nguon.giayMoiCau} giây/câu</>} onLui={onLui}
         phai={<div className="chip-hang nho">{[10, 15, 20].map((n) => <button key={n} className={'chip' + (soCau === n ? ' bat' : '')} onClick={() => setSoCau(n)}><b>{n} từ</b></button>)}</div>} />
-      <div className="kieu-do giay">
+      {nguon.coDaoChieu && <div className="kieu-do giay">
         <b>Kiểu đố:</b>
         <div className="chip-hang nho">
           {HUONG_DO.map((h) => <button key={h.id} className={'chip' + (huong === h.id ? ' bat' : '')} onClick={() => khoHuong.dat(h.id)}><b>{h.ten}</b><small>{h.mo}</small></button>)}
         </div>
-      </div>
+      </div>}
       <div className="luoi-che-do">
         <div className="the-che-do giay">
           <div className="cd-icon">🤖</div>
@@ -96,4 +99,3 @@ export function ChonCheDo({ tenChuDe, onChon, onLui }: { tenChuDe: string; onCho
   )
 }
 
-export function capDoTen(c: CapDo) { return CAP_DO.find((x) => x.id === c)?.ten ?? '' }

@@ -3,9 +3,9 @@
 // Máy CHỦ GIẢI làm trọng tài cho MỌI trận (cả bot–bot); mọi người xem được trận đang diễn ra.
 // Kênh `dtv-g:<mã>`: 'gd' = trạng thái giải, 'st' = Snap từng trận, 'tl' = câu trả lời gửi lên chủ giải.
 import { kenhMoi, type KenhRT } from './sb'
-import { taoBoDe, khoHuong, TI_LE_DAO, type HuongDo } from './boDe'
+import { khoHuong, TI_LE_DAO, type HuongDo } from './boDe'
 import { ganBot, nguoiBotGiai } from './bot'
-import type { CapDo } from '../data/kho'
+import { nguonCua } from '../nguon'
 import { TrongTai, type NguoiTran, type Snap } from './trongTai'
 import { taoKho, tron } from './tienich'
 import { ttMoi, type PhienDau } from './phien'
@@ -16,8 +16,10 @@ export interface TrangThaiGiai {
   code: string
   pha: 'sanh' | 'dau' | 'xong'
   chu: string
+  mon: string
+  cap: string
   chuDe: string
-  capDo: CapDo
+  tenChuDe: string
   soCau: number
   huong: HuongDo
   ghe: GheGiai[]
@@ -43,13 +45,15 @@ export class GiaiDau {
   private nhip: ReturnType<typeof setInterval> | null = null
   private vongNhan: Record<string, { i: number; luc: number }> = {}
   private chuDaThay = false
+  private daRoi = false
 
-  constructor(o: { code: string; laChu: boolean; toi: NguoiTran; chuDe?: string; capDo?: CapDo; soCau?: number }) {
+  constructor(o: { code: string; laChu: boolean; toi: NguoiTran; mon?: string; cap?: string; chuDe?: string; tenChuDe?: string; soCau?: number }) {
     this.code = o.code
     this.laChu = o.laChu
     this.toi = o.toi
     if (o.laChu) {
-      this.st.dat({ code: o.code, pha: 'sanh', chu: o.toi.ma, chuDe: o.chuDe ?? 'tron', capDo: o.capDo ?? 'tat_ca', soCau: o.soCau ?? 10, huong: khoHuong.lay(), ghe: [o.toi], tran: [], vd: null, seq: 0 })
+      const ng = nguonCua(o.mon)
+      this.st.dat({ code: o.code, pha: 'sanh', chu: o.toi.ma, mon: ng.mon, cap: o.cap ?? ng.capMacDinh, chuDe: o.chuDe ?? 'tron', tenChuDe: o.tenChuDe ?? 'Trộn tất cả', soCau: o.soCau ?? 10, huong: khoHuong.lay(), ghe: [o.toi], tran: [], vd: null, seq: 0 })
     }
     const ch = kenhMoi('dtv-g:' + o.code, o.toi.ma)
     this.ch = ch
@@ -136,7 +140,7 @@ export class GiaiDau {
   boGhe(i: number) {
     this.sua((g) => { if (g.ghe[i]?.bot) g.ghe.splice(i, 1) })
   }
-  datCauHinh(c: Partial<Pick<TrangThaiGiai, 'chuDe' | 'capDo' | 'soCau' | 'huong'>>) {
+  datCauHinh(c: Partial<Pick<TrangThaiGiai, 'cap' | 'chuDe' | 'tenChuDe' | 'soCau' | 'huong'>>) {
     this.sua((g) => Object.assign(g, c))
   }
 
@@ -154,15 +158,21 @@ export class GiaiDau {
       ]
       g.pha = 'dau'
     })
-    for (const k of [0, 1, 2, 3]) this.chayTran('q' + k)
+    for (const k of [0, 1, 2, 3]) void this.chayTran('q' + k)
   }
 
-  private chayTran(mid: string) {
+  private async chayTran(mid: string) {
     const s = this.st.lay()!
     const t = s.tran.find((x) => x.mid === mid)!
     if (t.a === null || t.b === null) return
     const nguoi: [NguoiTran, NguoiTran] = [s.ghe[t.a], s.ghe[t.b]]
-    const tai = new TrongTai({ mid, nguoi, ds: taoBoDe({ chuDe: s.chuDe, capDo: s.capDo, soCau: s.soCau, tiLeDao: TI_LE_DAO[s.huong ?? 'tron'] }) })
+    const ng = nguonCua(s.mon)
+    let ds: Awaited<ReturnType<typeof ng.taoBoDe>> = []
+    for (let lan = 0; lan < 3 && !ds.length; lan++) {
+      try { ds = await ng.taoBoDe({ cap: s.cap, chuDe: s.chuDe, soCau: s.soCau, tiLeDao: ng.coDaoChieu ? TI_LE_DAO[s.huong ?? 'tron'] : 0 }) } catch { await new Promise((r) => setTimeout(r, 1500)) }
+    }
+    if (!ds.length || this.daRoi) return
+    const tai = new TrongTai({ mid, nguoi, ds, giayVong: ng.giayMoiCau })
     this.tai.set(mid, tai)
     nguoi.forEach((n, i) => { if (n.bot) this.huyBot.push(ganBot(tai, i as 0 | 1, n.bot)) })
     this.sua((g) => { g.tran.find((x) => x.mid === mid)!.dang = true })
@@ -206,7 +216,7 @@ export class GiaiDau {
     for (const [cha, [l, r]] of Object.entries(CAY)) {
       if (l !== mid && r !== mid) continue
       const c = this.st.lay()!.tran.find((y) => y.mid === cha)!
-      if (c.a !== null && c.b !== null && !c.dang && c.thang === null) setTimeout(() => this.chayTran(cha), 4500)
+      if (c.a !== null && c.b !== null && !c.dang && c.thang === null) setTimeout(() => void this.chayTran(cha), 4500)
     }
   }
 
@@ -220,7 +230,7 @@ export class GiaiDau {
       return g < 0 ? [] : [g as 0 | 1]
     }
     return {
-      loai: 'giai', coTamDung: false, chuDe: this.st.lay()?.chuDe ?? 'tron', tt,
+      loai: 'giai', coTamDung: false, mon: this.st.lay()?.mon ?? 'Tiếng Anh', chuDe: this.st.lay()?.chuDe ?? 'tron', tenChuDe: this.st.lay()?.tenChuDe ?? '', tt,
       get gheToi() { return gheToi() },
       dangKy(f) {
         const cu = self.snaps.lay()[mid]
@@ -240,6 +250,7 @@ export class GiaiDau {
   }
 
   roi() {
+    this.daRoi = true
     if (this.nhip) clearInterval(this.nhip)
     this.huyBot.forEach((f) => f())
     this.tai.forEach((t) => t.huy())

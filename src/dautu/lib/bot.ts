@@ -1,7 +1,6 @@
 // BOT — chạy cạnh trọng tài. Thông số theo bản gốc: thời gian trả lời + tỉ lệ sai lần đầu/lần hai; từ dài bot chậm hơn,
 // thỉnh thoảng "ngập ngừng". Bot nhìn snapshot như người chơi, không đọc đáp án trước khi tới giờ bấm.
 import type { MucBot, NguoiTran, Snap, TrongTai } from './trongTai'
-import { TU_THEO_ID } from '../data/kho'
 import { chon } from './tienich'
 
 export const BOT: Record<MucBot, { ten: string; nhan: string; mau: string; nv: string; min: number; max: number; sai1: number; sai2: number }> = {
@@ -31,22 +30,23 @@ export function ganBot(tai: TrongTai, ghe: 0 | 1, muc: MucBot) {
 
   const thu = (s: Snap) => {
     const cau = s.ds[s.i]
-    const tu = TU_THEO_ID.get(cau.id)
-    const chu = (cau.dao ? tu?.en : tu?.vi) ?? ''
-    const min = lan > 1 ? 480 : lan === 1 ? 650 : p.min
-    const max = lan > 1 ? 950 : lan === 1 ? 1350 : p.max
-    const dai = Math.min(450, Math.max(0, chu.length - 7) * 28)
+    // câu càng dài bot càng chậm; môn có thời gian câu dài (Toán 45s) ⇒ bot chậm theo tỉ lệ (k = 1 với câu 12s)
+    const k = tai.msMoiVong / 12000
+    const chu = cau.de.replace(/$[^$]*$/g, 'xxxx')
+    const min = (lan > 1 ? 480 : lan === 1 ? 650 : p.min) * k
+    const max = (lan > 1 ? 950 : lan === 1 ? 1350 : p.max) * k
+    const dai = Math.min(450 * k, Math.max(0, chu.length - 7) * 28 * Math.min(k, 1.5))
     const ngapNgung = lan === 0 && Math.random() < 0.12 ? 500 + Math.random() * 900 : 0
     const tre = Math.floor(min + Math.random() * (max - min) + dai + ngapNgung)
     const xacSuatSai = lan === 0 ? p.sai1 : lan === 1 ? p.sai2 : 0
     hen = setTimeout(() => {
       const hienTai = tai.snap
       if (hienTai.pha !== 'vong' || hienTai.i !== s.i) return
-      const conSai = cau.opts.filter((o) => o !== cau.id && !hienTai.sai[ghe].includes(o))
-      const opt = Math.random() < xacSuatSai && conSai.length ? chon(conSai) : cau.id
+      const conSai = cau.opts.map((o) => o.id).filter((o) => o !== cau.dung && !hienTai.sai[ghe].includes(o))
+      const opt = Math.random() < xacSuatSai && conSai.length ? chon(conSai) : cau.dung
       lan++
       tai.traLoi(ghe, opt)
-      if (opt !== cau.id) thu(tai.snap)
+      if (opt !== cau.dung) thu(tai.snap)
     }, tre)
   }
 

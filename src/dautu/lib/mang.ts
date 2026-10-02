@@ -3,8 +3,7 @@
 //  · PHÒNG `dtv-p:<mã>`: 1 trận 1–1; máy CHỦ PHÒNG làm trọng tài, máy khách gửi câu trả lời + nhận Snap.
 import type { RealtimeChannel } from '@supabase/supabase-js'
 import { sb, coMang, kenhMoi } from './sb'
-import { taoBoDe } from './boDe'
-import type { CapDo } from '../data/kho'
+import { nguonCua } from '../nguon'
 import { TrongTai, type NguoiTran, type Snap } from './trongTai'
 import { maSo, taoKho } from './tienich'
 import { ttMoi, type PhienDau } from './phien'
@@ -12,15 +11,17 @@ import { phat } from './amThanh'
 
 // ─────────────────────────────── SẢNH ───────────────────────────────
 export type TrangThaiOnline = 'ranh' | 'tim' | 'dau'
-export interface ThanhVienSanh { ma: string; ten: string; nv: string; cap: number; tt: TrangThaiOnline; t: number; cd?: string }
-export interface LoiMoi { tu: ThanhVienSanh; phong: string; chuDe: string; capDo: CapDo; loai: 'tran' | 'giai'; han: number }
-export interface GhepTran { phong: string; laChu: boolean; chuDe: string; capDo: CapDo }
+export interface ThanhVienSanh { ma: string; ten: string; nv: string; cap: number; tt: TrangThaiOnline; t: number; cd?: string; mon?: string }
+/** Cấu hình 1 trận đi kèm lời mời / lệnh ghép — người nhận dùng y nguyên (chủ phòng quyết môn, khối, chủ đề). */
+export interface ThongTinTran { mon: string; cap: string; chuDe: string; tenChuDe: string; soCau: number }
+export interface LoiMoi extends ThongTinTran { tu: ThanhVienSanh; phong: string; loai: 'tran' | 'giai'; han: number }
+export interface GhepTran extends ThongTinTran { phong: string; laChu: boolean }
 
 export const khoSanh = taoKho<{ ketNoi: boolean; online: ThanhVienSanh[]; loiMoi: LoiMoi[]; tuChoi: string | null }>({ ketNoi: false, online: [], loiMoi: [], tuChoi: null })
 
 let kenhSanh: RealtimeChannel | null = null
 let toiSanh: ThanhVienSanh | null = null
-let dangTim: { chuDe: string; capDo: CapDo; onGhep: (g: GhepTran) => void } | null = null
+let dangTim: { tran: ThongTinTran; onGhep: (g: GhepTran) => void } | null = null
 
 let henTrack: ReturnType<typeof setTimeout> | null = null
 let daGui = ''
@@ -65,12 +66,12 @@ export function vaoSanh(t: Omit<ThanhVienSanh, 'tt' | 't'>) {
     khoSanh.dat((k) => ({ ...k, tuChoi: `${m.tuTen} đã từ chối lời mời` }))
   })
   ch.on('broadcast', { event: 'ghep' }, ({ payload }) => {
-    const g = payload as { den: string; phong: string; chuDe: string; capDo: CapDo }
+    const g = payload as ThongTinTran & { den: string; phong: string }
     if (g.den !== toiSanh?.ma || !dangTim) return
     const cb = dangTim.onGhep
     dangTim = null
     datTrangThai('dau')
-    cb({ phong: g.phong, laChu: false, chuDe: g.chuDe, capDo: g.capDo })
+    cb({ phong: g.phong, laChu: false, mon: g.mon, cap: g.cap, chuDe: g.chuDe, tenChuDe: g.tenChuDe, soCau: g.soCau })
   })
   ch.subscribe((status) => {
     if (status === 'SUBSCRIBED') { daVao = true; daGui = ''; guiTrack(true); khoSanh.dat((k) => ({ ...k, ketNoi: true })) }
@@ -94,28 +95,30 @@ export function capNhatToiSanh(t: Partial<ThanhVienSanh>) {
   guiTrack()
 }
 
-export function datTrangThai(tt: TrangThaiOnline, cd?: string) {
-  capNhatToiSanh({ tt, t: Date.now(), cd })
+export function datTrangThai(tt: TrangThaiOnline, cd?: string, mon?: string) {
+  capNhatToiSanh({ tt, t: Date.now(), cd, mon })
 }
 
 /** Ghép theo thứ tự vào hàng: (1,2), (3,4)…; người đứng trước làm chủ phòng, gửi mã phòng cho người sau. */
 function xetGhep(online: ThanhVienSanh[]) {
   if (!dangTim || !toiSanh) return
-  const hang = [...online.filter((x) => x.ma !== toiSanh!.ma), toiSanh].filter((x) => x.tt === 'tim').sort((a, b) => a.t - b.t || a.ma.localeCompare(b.ma))
+  // chỉ ghép người CÙNG MÔN
+  const mon = dangTim.tran.mon
+  const hang = [...online.filter((x) => x.ma !== toiSanh!.ma), toiSanh].filter((x) => x.tt === 'tim' && (x.mon ?? 'Tiếng Anh') === mon).sort((a, b) => a.t - b.t || a.ma.localeCompare(b.ma))
   const i = hang.findIndex((x) => x.ma === toiSanh!.ma)
   if (i < 0 || i % 2 === 1 || i + 1 >= hang.length) return
   const ban = hang[i + 1]
   const phong = maSo(6)
-  const { chuDe, capDo, onGhep } = dangTim
+  const { tran, onGhep } = dangTim
   dangTim = null
   datTrangThai('dau')
-  kenhSanh?.send({ type: 'broadcast', event: 'ghep', payload: { den: ban.ma, phong, chuDe, capDo } })
-  onGhep({ phong, laChu: true, chuDe, capDo })
+  kenhSanh?.send({ type: 'broadcast', event: 'ghep', payload: { den: ban.ma, phong, ...tran } })
+  onGhep({ phong, laChu: true, ...tran })
 }
 
-export function timTran(chuDe: string, capDo: CapDo, onGhep: (g: GhepTran) => void) {
-  dangTim = { chuDe, capDo, onGhep }
-  datTrangThai('tim', chuDe)
+export function timTran(tran: ThongTinTran, onGhep: (g: GhepTran) => void) {
+  dangTim = { tran, onGhep }
+  datTrangThai('tim', tran.chuDe, tran.mon)
 }
 
 export function huyTim() {
@@ -143,7 +146,9 @@ export interface PhienMang extends PhienDau {
   ttPhong: ReturnType<typeof taoKho<TTPhong>>
 }
 
-export function moPhong(o: { phong: string; laChu: boolean; toi: NguoiTran; chuDe: string; capDo: CapDo; soCau: number }): PhienMang {
+export function moPhong(o: { phong: string; laChu: boolean; toi: NguoiTran; tran: ThongTinTran }): PhienMang {
+  const nguon = nguonCua(o.tran.mon)
+  let lanTran = 0
   const ttPhong = taoKho<TTPhong>({ pha: 'ket_noi', doiThu: null, loi: '' })
   const tt = ttMoi()
   const nghe = new Set<(s: Snap) => void>()
@@ -154,6 +159,7 @@ export function moPhong(o: { phong: string; laChu: boolean; toi: NguoiTran; chuD
   let muonLai: [boolean, boolean] = [false, false]
   let chuDaThay = false
   let nhip: ReturnType<typeof setInterval> | null = null
+  let daRoi = false
   const meta: MetaPhong = { ma: o.toi.ma, ten: o.toi.ten, nv: o.toi.nv, cap: o.toi.cap, chu: o.laChu }
   const ch = kenhMoi('dtv-p:' + o.phong, o.toi.ma)
 
@@ -164,15 +170,23 @@ export function moPhong(o: { phong: string; laChu: boolean; toi: NguoiTran; chuD
   }
   const gui = (event: string, payload: unknown) => ch.send({ type: 'broadcast', event, payload })
 
-  const batTran = (doiThu: MetaPhong) => {
-    tai?.huy()
+  const batTran = async (doiThu: MetaPhong) => {
+    const lan = ++lanTran
+    tai?.huy(); tai = null
     muonLai = [false, false]
-    tt.dat((x) => ({ ...x, doiThuMuonLai: false, toiMuonLai: false, doiThuRoi: false }))
+    tt.dat((x) => ({ ...x, doiThuMuonLai: false, toiMuonLai: false, doiThuRoi: false, thongBao: '' }))
     const nguoi: [NguoiTran, NguoiTran] = [o.toi, { ma: doiThu.ma, ten: doiThu.ten, nv: doiThu.nv, cap: doiThu.cap }]
-    tai = new TrongTai({ mid: 'p' + o.phong + '-' + Date.now(), nguoi, ds: taoBoDe({ chuDe: o.chuDe, capDo: o.capDo, soCau: o.soCau }) })
-    tai.dangKy((s) => { phatSnap(s); gui('st', s) })
-    ttPhong.dat((x) => ({ ...x, pha: 'dau' }))
-    tai.bat()
+    try {
+      const ds = await nguon.taoBoDe({ cap: o.tran.cap, chuDe: o.tran.chuDe, soCau: o.tran.soCau })
+      if (lan !== lanTran || daRoi) return
+      const t = new TrongTai({ mid: 'p' + o.phong + '-' + Date.now(), nguoi, ds, giayVong: nguon.giayMoiCau })
+      tai = t
+      t.dangKy((s) => { phatSnap(s); gui('st', s) })
+      ttPhong.dat((x) => ({ ...x, pha: 'dau' }))
+      t.bat()
+    } catch (e) {
+      ttPhong.dat((x) => ({ ...x, pha: 'loi', loi: 'Không lấy được câu hỏi: ' + (e as Error).message }))
+    }
   }
 
   ch.on('presence', { event: 'sync' }, () => {
@@ -181,7 +195,7 @@ export function moPhong(o: { phong: string; laChu: boolean; toi: NguoiTran; chuD
     if (o.laChu) {
       const doiThu = khac[0] ?? null
       const cu = ttPhong.lay().doiThu
-      if (doiThu && !cu) { ttPhong.dat((x) => ({ ...x, doiThu })); batTran(doiThu) }
+      if (doiThu && !cu) { ttPhong.dat((x) => ({ ...x, doiThu })); void batTran(doiThu) }
       else if (!doiThu && cu) {
         ttPhong.dat((x) => ({ ...x, doiThu: null, pha: 'cho' }))
         tt.dat((x) => ({ ...x, doiThuRoi: true }))
@@ -216,7 +230,7 @@ export function moPhong(o: { phong: string; laChu: boolean; toi: NguoiTran; chuD
   })
   ch.on('broadcast', { event: 'lai' }, () => {
     tt.dat((x) => ({ ...x, doiThuMuonLai: true }))
-    if (o.laChu) { muonLai[1] = true; if (muonLai[0] && ttPhong.lay().doiThu) batTran(ttPhong.lay().doiThu!) }
+    if (o.laChu) { muonLai[1] = true; if (muonLai[0] && ttPhong.lay().doiThu) void batTran(ttPhong.lay().doiThu!) }
   })
   ch.subscribe((status) => {
     if (status === 'SUBSCRIBED') { ch.track(meta); ttPhong.dat((x) => ({ ...x, pha: 'cho' })) }
@@ -226,7 +240,7 @@ export function moPhong(o: { phong: string; laChu: boolean; toi: NguoiTran; chuD
   if (o.laChu) nhip = setInterval(() => { if (tai && !tai.snap.ketQua) gui('st', tai.snap) }, 1500)
 
   return {
-    loai: 'mang', phong: o.phong, laChu: o.laChu, ttPhong, tt, chuDe: o.chuDe, coTamDung: false,
+    loai: 'mang', phong: o.phong, laChu: o.laChu, ttPhong, tt, mon: o.tran.mon, chuDe: o.tran.chuDe, tenChuDe: o.tran.tenChuDe, coTamDung: false,
     get gheToi() { return [gheToi] as (0 | 1)[] },
     dangKy(f) { nghe.add(f); if (snap) f(snap); return () => { nghe.delete(f) } },
     traLoi(_g, opt) {
@@ -237,9 +251,10 @@ export function moPhong(o: { phong: string; laChu: boolean; toi: NguoiTran; chuD
     choiLai() {
       tt.dat((x) => ({ ...x, toiMuonLai: true }))
       gui('lai', {})
-      if (o.laChu) { muonLai[0] = true; if (muonLai[1] && ttPhong.lay().doiThu) batTran(ttPhong.lay().doiThu!) }
+      if (o.laChu) { muonLai[0] = true; if (muonLai[1] && ttPhong.lay().doiThu) void batTran(ttPhong.lay().doiThu!) }
     },
     roi() {
+      daRoi = true
       if (nhip) clearInterval(nhip)
       tai?.huy()
       nghe.clear()

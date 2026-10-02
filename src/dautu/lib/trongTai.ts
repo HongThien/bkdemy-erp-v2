@@ -4,7 +4,7 @@
 //  · Điểm: đúng < 2s = 100 · < 4s = 70 · còn lại 50; mỗi chuỗi 3 câu đúng liền +30; sai ≥ 3 lần trong 1 từ chỉ còn 50.
 //  · "Đúng trước" so theo thời gian phản xạ mỗi máy tự đo (rt), chờ thêm 220ms sau đáp án đúng đầu tiên để bù trễ mạng.
 // ⚠ DEMO: máy chủ phòng là trọng tài (tin máy chủ). Khi khớp HS BK + có thưởng season ⇒ chuyển trọng tài xuống server (spec §3).
-import type { Cau } from './boDe'
+import type { Cau } from '../nguon/kieu'
 
 export type MucBot = 'de' | 'vua' | 'kho'
 export interface NguoiTran { ma: string; ten: string; nv: string; cap?: number; bot?: MucBot }
@@ -38,9 +38,11 @@ const MS_DEM = 3000
 const MS_KET = 1900
 const MS_CHO_BU = 220
 
-export function diemVong(giay: number, chuoi: number, soSai: number) {
+/** Ngưỡng tốc độ CO GIÃN theo thời gian câu của môn: 12s ⇒ 2s/4s (như bản gốc); 45s (Toán) ⇒ 7,5s/15s. */
+export function diemVong(giay: number, chuoi: number, soSai: number, giayVong = GIAY_VONG) {
   if (soSai >= 3) return 50
-  return (giay < 2 ? 100 : giay < 4 ? 70 : 50) + (chuoi > 0 && chuoi % 3 === 0 ? 30 : 0)
+  const k = giayVong / GIAY_VONG
+  return (giay < 2 * k ? 100 : giay < 4 * k ? 70 : 50) + (chuoi > 0 && chuoi % 3 === 0 ? 30 : 0)
 }
 
 export class TrongTai {
@@ -72,6 +74,8 @@ export class TrongTai {
   }
 
   get snap() { return this.anh() }
+  /** thời gian 1 câu (ms) — bot co giãn tốc độ theo số này */
+  get msMoiVong() { return this.msVong }
 
   private anh(): Snap {
     return JSON.parse(JSON.stringify({ ...this.s, conLai: Math.max(0, Math.round(this.hanChot - performance.now())) }))
@@ -120,7 +124,7 @@ export class TrongTai {
     const r = Math.max(50, Math.min(rt ?? troiQua, troiQua + 400))
     const cau = s.ds[s.i]
     s.thu[ghe]++
-    if (opt !== cau.id) {
+    if (opt !== cau.dung) {
       s.sai[ghe].push(opt)
       this.phat()
       return
@@ -143,7 +147,7 @@ export class TrongTai {
     s.chuoiMax[w] = Math.max(s.chuoiMax[w], s.chuoi[w])
     s.dung[w]++
     s.tg[w].push(Math.round(giay * 100) / 100)
-    const d = diemVong(giay, s.chuoi[w], s.sai[w].length)
+    const d = diemVong(giay, s.chuoi[w], s.sai[w].length, this.msVong / 1000)
     s.diem[w] += d
     s.cong = w === 0 ? [d, 0] : [0, d]
     s.thangVong = w

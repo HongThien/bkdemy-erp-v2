@@ -548,3 +548,20 @@ textarea.o-nhap { resize: vertical; }
 .tieu-thap { display: inline-flex; align-items: center; gap: 8px; }
 .tieu-thap img { height: 46px; filter: drop-shadow(0 3px 6px #0008); }
 .thap-dem { height: 150px; filter: drop-shadow(0 0 24px #ffc23d88); animation: phong .9s; }
+
+/* chọn môn ở sảnh */
+.chon-mon { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: -10px 0 18px; position: relative; z-index: 2; }
+.chip.mon { padding: 8px 18px; font-size: 16px; }
+/* câu dài (Toán/KHTN): chữ nhỏ hơn, căn trái, cuộn khi dài */
+.the-tu.the-cau { text-align: left; }
+.the-tu-chu.de-dai { font-family: 'Nunito', sans-serif; font-size: clamp(17px, 2vw, 21px); font-weight: 800; color: var(--muc); justify-content: flex-start; line-height: 1.5; display: block; overflow-x: auto; overflow-y: hidden; padding: 2px 0; }
+.anh-de { display: block; max-width: 100%; max-height: 26vh; margin: 8px auto 0; border-radius: 10px; background: #fff; }
+.the-tu.the-cau .the-tu-phu { margin-top: 4px; }
+.the-tu.the-cau .the-tu-vd { max-height: 22vh; overflow-y: auto; text-align: left; }
+.dap-an .chu .katex { font-size: 1.05em; }
+.ds-cau-kq { display: flex; flex-direction: column; gap: 6px; max-height: 30vh; overflow-y: auto; }
+.dong-cau-kq { display: grid; grid-template-columns: 28px 1fr minmax(120px, 34%); gap: 8px; align-items: start; background: #fffdf6; border: 2px solid var(--vien); border-radius: 12px; padding: 6px 10px; font-size: 14px; }
+.dong-cau-kq .so { font-weight: 900; color: var(--muc-nhat); }
+.dong-cau-kq .de { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.dong-cau-kq .dap { color: var(--xanh-dam); font-weight: 900; }
+.nhan-hang { font-weight: 900; color: #fff; text-shadow: 0 1px 3px #0009; white-space: nowrap; }

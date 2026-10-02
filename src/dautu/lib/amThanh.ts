@@ -2,17 +2,9 @@
 import { useEffect, useState } from 'react'
 import { docLS, ghiLS, taoKho } from './tienich'
 
-export interface CaiDat { amThanh: boolean; tuDocTu: boolean; doHoa: '3d' | '2d'; giongNu: boolean }
+export interface CaiDat { amThanh: boolean; tuDocTu: boolean; giongNu: boolean }
 const K = 'dtv_cai_dat'
-function doHoaMacDinh(): '3d' | '2d' {
-  try {
-    const c = document.createElement('canvas')
-    const gl = c.getContext('webgl2') || c.getContext('webgl')
-    const it = (navigator as Navigator & { deviceMemory?: number }).deviceMemory
-    return gl && !(it && it < 3) ? '3d' : '2d'
-  } catch { return '2d' }
-}
-export const khoCaiDat = taoKho<CaiDat>({ amThanh: true, tuDocTu: true, giongNu: true, ...docLS<Partial<CaiDat>>(K, {}), doHoa: docLS<Partial<CaiDat>>(K, {}).doHoa ?? doHoaMacDinh() })
+export const khoCaiDat = taoKho<CaiDat>({ amThanh: true, tuDocTu: true, giongNu: true, ...docLS<Partial<CaiDat>>(K, {}) })
 khoCaiDat.nghe((v) => ghiLS(K, v))
 
 export function useCaiDat() {

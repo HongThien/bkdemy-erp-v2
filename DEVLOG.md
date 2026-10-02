@@ -35145,3 +35145,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   sự kiện `pointerdown` (không phải click); trang trại khởi động khối đi dạo chờ khung hình đầu ⇒ thay `requestAnimationFrame` bằng
   setTimeout rồi `import('/src/trai/thu-trai.ts?x=1')` để nạp lại riêng mô-đun đó (chỉ để thử, không đổi code).
 - V1 lưu trên máy: điểm chăm chỉ vẫn GIẢ LẬP bằng nút "Đúng N/10" (đúng thiết kế — nối app học sau 06/10).
+
+- (03/10, Đấu từ) **CHỖ CẮM CONTENT cho khung 6 chế độ + cắm thử Toán, KHTN** (Thùy: "mỗi môn có kho content riêng, đều MCQ — chỉ đổi chỗ
+  cắm"; "làm đi, cắm thử Toán và KHTN"). `src/dautu/nguon/` (kieu · index = registry môn · anh · kho). Câu `Cau` tự đủ (đề/ảnh/4 phương án/đáp án/
+  lời giải) ⇒ trọng tài so `cau.dung`, bot chậm theo thời gian câu của môn, ngưỡng điểm tốc độ co giãn (12s ⇒ 2/4s; 45s ⇒ 7,5/15s). Mig
+  `202610030132_dtv_nguon_cau_mon` (ĐÃ ÁP): `fn_dtv_kho_khoi/chu_de/bo_cau` dùng `_kho_dk_mcq_sql` + form TN đã duyệt; ghi trận/tháp có nhãn môn
+  (`*_mon`), `dtv_thap_luot.nhom` = khối, hàm cũ thành vỏ. Sửa đầu tiên: tháp sắp cứng theo mức độ ⇒ 200 tầng đầu toàn mức 1 (kho mức 1 quá
+  dày) ⇒ khoá = mức + thứ tự/25 (~25 tầng lên 1 bậc). App: chọn môn ở sảnh (Nối từ + Góc luyện tập chỉ hiện với Anh), khối/chủ đề đọc từ DB,
+  hiện đề bằng `ChuMon` (KaTeX), sân đấu thấp hơn với câu dài, hàng chờ chỉ ghép cùng môn, lời mời/link mang môn+khối, giải chỉnh khối/chủ đề
+  theo môn. Đã soi: Toán lớp 7 "Số hữu tỉ" đấu bot (phân số/luỹ thừa KaTeX đẹp, 45s); KHTN lớp 8 Vô tận 12 tầng (chuỗi tính lại độc lập khớp
+  12/12 ⇒ tất định) → rơi → BXH riêng KHTN lớp 8 + câu cần xem lại; Anh không đổi (kiểu đố, loa, IPA); giải Toán toàn bot lấy câu kho. Bundle
+  280KB gzip (KaTeX). Nợ: hàm đọc kho mở anon (trần 200 câu/lần) · Toán mới nhánh Đại · XP chung mọi môn.

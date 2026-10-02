@@ -27,12 +27,12 @@ export type CheDo = 'bot' | 'doi' | 'mang' | 'giai' | 'on_tap' | 'noi_tu'
 export interface KetQuaGhi { ho_so: HoSoDB; xp_nhan: number; len_cap: boolean }
 
 export async function ghiTran(a: {
-  cheDo: CheDo; chuDe: string; ketQua: 'thang' | 'thua' | 'hoa' | 'xong'; soDung: number; soCau: number; diem: number; doiThu?: string
+  mon: string; cheDo: CheDo; chuDe: string; ketQua: 'thang' | 'thua' | 'hoa' | 'xong'; soDung: number; soCau: number; diem: number; doiThu?: string
 }): Promise<KetQuaGhi | null> {
   if (!khoHoSo.lay().db) return null
   try {
-    const kq = await goi<KetQuaGhi>('fn_dtv_ghi_tran', {
-      p_uid: khoHoSo.lay().uid, p_che_do: a.cheDo, p_chu_de: a.chuDe, p_ket_qua: a.ketQua,
+    const kq = await goi<KetQuaGhi>('fn_dtv_ghi_tran_mon', {
+      p_uid: khoHoSo.lay().uid, p_mon: a.mon, p_che_do: a.cheDo, p_chu_de: a.chuDe, p_ket_qua: a.ketQua,
       p_so_dung: a.soDung, p_so_cau: a.soCau, p_diem: a.diem, p_doi_thu: a.doiThu ?? '',
     })
     if (kq?.ho_so) datDB(kq.ho_so)

@@ -46,8 +46,9 @@ const DON_LON: Don[] = ['set', 'thien_thach']
 const ngauNhien = <T,>(a: T[]) => a[Math.floor(Math.random() * a.length)]
 
 /** Chiều cao sân theo khung nhìn. */
-function useCaoSan() {
-  const tinh = () => Math.round(Math.max(170, Math.min(380, window.innerHeight * 0.36, window.innerWidth * 0.55)))
+/** Chiều cao sân theo khung nhìn; `thap` (câu dài — Toán/KHTN) ⇒ sân thấp hơn, nhường chỗ cho đề + 4 đáp án. */
+function useCaoSan(thap = false) {
+  const tinh = () => Math.round(Math.max(thap ? 140 : 170, Math.min(thap ? 260 : 380, window.innerHeight * (thap ? 0.25 : 0.36), window.innerWidth * 0.55)))
   const [c, setC] = useState(tinh)
   useEffect(() => { const f = () => setC(tinh()); window.addEventListener('resize', f); return () => window.removeEventListener('resize', f) }, [])
   return c
@@ -56,8 +57,8 @@ function useCaoSan() {
 interface Ben { tt: TtHero; don: Don | null; loc: string; boss: TtBossAnh }
 const BEN_DAU: Ben = { tt: 'nghi', don: null, loc: 'none', boss: 'dung' }
 
-export function SanDau2D({ trai, phai, suKien, nhanTrai, nhanPhai }: { trai: string; phai: string; suKien: SuKienSan | null; nhanTrai?: string; nhanPhai?: string }) {
-  const cao = useCaoSan()
+export function SanDau2D({ trai, phai, suKien, nhanTrai, nhanPhai, thap }: { trai: string; phai: string; suKien: SuKienSan | null; nhanTrai?: string; nhanPhai?: string; thap?: boolean }) {
+  const cao = useCaoSan(thap)
   const sanRef = useRef<HTMLDivElement>(null)
   const chuyenRef = useRef<HTMLDivElement>(null)
   const cvRef = useRef<HTMLCanvasElement>(null)

@@ -65,7 +65,7 @@ function OnTu({ onLui }: { onLui: () => void }) {
   useEffect(() => {
     if (batDau && i >= ds.length && ds.length) {
       phat('thang')
-      ghiTran({ cheDo: 'on_tap', chuDe: 'on_tap', ketQua: 'xong', soDung: dungLanDau.current, soCau: ds.length, diem: 0 })
+      ghiTran({ mon: 'Tiếng Anh', cheDo: 'on_tap', chuDe: 'on_tap', ketQua: 'xong', soDung: dungLanDau.current, soCau: ds.length, diem: 0 })
     }
   }, [i, batDau])
 

@@ -20,7 +20,8 @@ export function useHuong() {
 }
 export const tenHuong = (h: HuongDo) => HUONG_DO.find((x) => x.id === h)?.ten ?? ''
 
-export interface Cau {
+/** Câu từ vựng (dạng nội bộ của nguồn Anh) — nguon/anh.ts đổi sang `Cau` chung của khung game. */
+export interface CauTu {
   id: string // id từ đúng
   opts: string[] // 4 id (đã xáo)
   dao: boolean // true = hiện nghĩa Việt, chọn từ Anh
@@ -50,7 +51,7 @@ function nhieu(dung: Tu, rng: () => number, dao: boolean): string[] {
   return ra.map((t) => t.id)
 }
 
-export function taoBoDe(o: { chuDe: string; capDo: CapDo; soCau: number; seed?: number; uuTien?: string[]; tiLeDao?: number }): Cau[] {
+export function taoBoDe(o: { chuDe: string; capDo: CapDo; soCau: number; seed?: number; uuTien?: string[]; tiLeDao?: number }): CauTu[] {
   const rng = taoRng(o.seed ?? Math.floor(Math.random() * 1e9))
   const lv = CAP_DO.find((c) => c.id === o.capDo)?.lv ?? [1, 2, 3]
   let chuDe = o.chuDe
@@ -72,7 +73,7 @@ export function taoBoDe(o: { chuDe: string; capDo: CapDo; soCau: number; seed?: 
   })
 }
 
-export const chuDeCuaBo = (ds: Cau[]) => {
+export const chuDeCuaBo = (ds: CauTu[]) => {
   const cds = new Set(ds.map((c) => TU_THEO_ID.get(c.id)?.cd))
   return cds.size === 1 ? [...cds][0]! : 'tron'
 }
@@ -85,6 +86,6 @@ export function phuongAnOn(id: string): string[] {
 }
 
 /** 1 câu cho từ t với RNG cho trước (tạo bộ đề TẤT ĐỊNH — leo tháp: mọi máy ra cùng câu, cùng thứ tự đáp án). */
-export function cauTuTu(t: Tu, rng: () => number, dao: boolean): Cau {
+export function cauTuTu(t: Tu, rng: () => number, dao: boolean): CauTu {
   return { id: t.id, dao, opts: tron([t.id, ...nhieu(t, rng, dao)], rng) }
 }

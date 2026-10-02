@@ -1,8 +1,8 @@
 // GIẢI ĐẤU 8 NGƯỜI: sảnh chờ (8 ghế, thêm bot, mời bạn) → bảng nhánh trực tiếp → trận của em / xem trận khác → vô địch.
 import { useEffect, useRef, useState } from 'react'
-import { CAP_DO, CHU_DE, tenChuDe, type CapDo } from '../data/kho'
+import { nguonCua, type CapNguon, type ChuDeNguon } from '../nguon'
 import { GiaiDau, TEN_VONG, type TrangThaiGiai, type TranGiai, type TTGiaiCucBo } from '../lib/giai'
-import { guiLoiMoi, datTrangThai } from '../lib/mang'
+import { guiLoiMoi, datTrangThai, type ThongTinTran } from '../lib/mang'
 import type { NguoiTran, Snap } from '../lib/trongTai'
 import { maSo } from '../lib/tienich'
 import { HUONG_DO, tenHuong } from '../lib/boDe'
@@ -11,15 +11,15 @@ import { Avatar, DauMan, Nut, chepVao, toast } from '../ui/Chung'
 import { ManDau } from './ManDau'
 import { DanhSachOnline, useSanh } from './Online'
 
-export function ManGiai({ toi, chuDe, capDo, soCau, vaoSan, onLui }: {
-  toi: NguoiTran; chuDe: string; capDo: CapDo; soCau: number; vaoSan?: { code: string; laChu: boolean }; onLui: () => void
+export function ManGiai({ toi, tran, vaoSan, onLui }: {
+  toi: NguoiTran; tran: ThongTinTran; vaoSan?: { code: string; laChu: boolean }; onLui: () => void
 }) {
   const [giai, setGiai] = useState<GiaiDau | null>(null)
   const [ma, setMa] = useState('')
   const ref = useRef<GiaiDau | null>(null)
   const mo = (code: string, laChu: boolean) => {
     ref.current?.roi()
-    const g = new GiaiDau({ code, laChu, toi, chuDe, capDo, soCau })
+    const g = new GiaiDau({ code, laChu, toi, mon: tran.mon, cap: tran.cap, chuDe: tran.chuDe, tenChuDe: tran.tenChuDe, soCau: tran.soCau })
     ref.current = g
     setGiai(g)
     datTrangThai('dau')
@@ -39,7 +39,7 @@ export function ManGiai({ toi, chuDe, capDo, soCau, vaoSan, onLui }: {
         <div className="giay o-phong">
           <h3>Tạo giải mới</h3>
           <p>Em làm chủ giải (trọng tài). Mời bạn vào; ghế trống sẽ là bot.</p>
-          <p className="mo">Chủ đề: <b>{tenChuDe(chuDe)}</b> · {soCau} từ/trận</p>
+          <p className="mo">{tran.mon} · <b>{tran.tenChuDe}</b> · {tran.soCau} câu/trận</p>
           <Nut mau="vang" to onClick={() => mo(maSo(6), true)}>Tạo giải</Nut>
         </div>
         <div className="giay o-phong">
@@ -100,7 +100,7 @@ function TrongGiai({ giai, onLui }: { giai: GiaiDau; onLui: () => void }) {
   return (
     <div className="man">
       <DauMan tieuDe={<>🏆 Giải đấu · <span className="ma-nho" onClick={() => chepVao(giai.code)}>{giai.code}</span></>}
-        phu={<>{tenChuDe(st.chuDe)} · {CAP_DO.find((c) => c.id === st.capDo)?.ten} · {tenHuong(st.huong ?? 'tron')} · {st.soCau} từ/trận</>} onLui={onLui}
+        phu={<>{st.mon} · {st.tenChuDe} · {nguonCua(st.mon).coDaoChieu ? `${tenHuong(st.huong ?? 'tron')} · ` : ''}{st.soCau} câu/trận</>} onLui={onLui}
         phai={st.pha === 'sanh' ? <div className="hang-nut"><Nut mau="lam" onClick={() => chepVao(giai.code)}>Mã giải</Nut><Nut mau="lam" onClick={() => chepVao(link)}>Link</Nut></div> : null} />
 
       {st.pha === 'sanh' && (
@@ -121,15 +121,7 @@ function TrongGiai({ giai, onLui }: { giai: GiaiDau; onLui: () => void }) {
             </div>
             {giai.laChu ? (
               <>
-                <div className="chip-hang cuon">
-                  {[{ id: 'tron', icon: '🎲', ten: 'Trộn tất cả' }, ...CHU_DE].map((c) => <button key={c.id} className={'chip' + (st.chuDe === c.id ? ' bat' : '')} onClick={() => giai.datCauHinh({ chuDe: c.id })}><b>{c.icon} {c.ten}</b></button>)}
-                </div>
-                <div className="chip-hang nho">
-                  
-                  {CAP_DO.map((c) => <button key={c.id} className={'chip' + (st.capDo === c.id ? ' bat' : '')} onClick={() => giai.datCauHinh({ capDo: c.id })}><b>{c.ten}</b></button>)}
-                  {HUONG_DO.map((h) => <button key={h.id} className={'chip' + (st.huong === h.id ? ' bat' : '')} onClick={() => giai.datCauHinh({ huong: h.id })}><b>{h.ten}</b></button>)}
-                  {[5, 10, 15].map((n) => <button key={n} className={'chip' + (st.soCau === n ? ' bat' : '')} onClick={() => giai.datCauHinh({ soCau: n })}><b>{n} từ</b></button>)}
-                </div>
+                <CauHinhGiai giai={giai} st={st} />
                 <div className="hang-nut">
                   <Nut mau="xam" onClick={() => giai.themBot()} disabled={st.ghe.length >= 8}>+ Thêm bot</Nut>
                   <Nut mau="vang" to onClick={() => giai.batDau()}>Bắt đầu giải {st.ghe.length < 8 ? `(${8 - st.ghe.length} bot)` : ''}</Nut>
@@ -140,7 +132,7 @@ function TrongGiai({ giai, onLui }: { giai: GiaiDau; onLui: () => void }) {
           {giai.laChu && (
             <div className="giay o-phong">
               <h3>Mời bạn đang online</h3>
-              <DanhSachOnline sanh={sanh.online} toi={giai.toi.ma} nhan="Mời" onChon={(x) => { guiLoiMoi(x.ma, { phong: giai.code, chuDe: st.chuDe, capDo: st.capDo, loai: 'giai' }); toast(`Đã mời ${x.ten}`, 'ok') }} />
+              <DanhSachOnline sanh={sanh.online} toi={giai.toi.ma} nhan="Mời" onChon={(x) => { guiLoiMoi(x.ma, { mon: st.mon, cap: st.cap, chuDe: st.chuDe, tenChuDe: st.tenChuDe, soCau: st.soCau, phong: giai.code, loai: 'giai' }); toast(`Đã mời ${x.ten}`, 'ok') }} />
             </div>
           )}
         </div>
@@ -215,4 +207,28 @@ function VoDich({ st }: { st: TrangThaiGiai }) {
 
 function ThongBao({ chu, onLui }: { chu: string; onLui: () => void }) {
   return <div className="man man-giua"><div className="tim-tran giay"><h2>{chu}</h2><Nut mau="xam" onClick={onLui}>Về sảnh</Nut></div></div>
+}
+
+/** Chủ giải chỉnh khối/cấp · chủ đề · kiểu đố (môn có) · số câu — danh sách lấy từ nguồn của môn. */
+function CauHinhGiai({ giai, st }: { giai: GiaiDau; st: TrangThaiGiai }) {
+  const ng = nguonCua(st.mon)
+  const [dsCap, setDsCap] = useState<CapNguon[]>([])
+  const [dsCd, setDsCd] = useState<ChuDeNguon[]>([])
+  useEffect(() => { ng.dsCap().then(setDsCap).catch(() => {}) }, [ng])
+  useEffect(() => { ng.dsChuDe(st.cap).then(setDsCd).catch(() => {}) }, [ng, st.cap])
+  return (
+    <>
+      <div className="chip-hang cuon">
+        <span className="mo">{ng.tenCap}:</span>
+        {dsCap.map((c) => <button key={c.id} className={'chip' + (st.cap === c.id ? ' bat' : '')} onClick={() => giai.datCauHinh({ cap: c.id, chuDe: 'tron', tenChuDe: 'Trộn tất cả' })}><b>{c.ten}</b></button>)}
+      </div>
+      <div className="chip-hang cuon">
+        {dsCd.map((c) => <button key={c.id} className={'chip' + (st.chuDe === c.id ? ' bat' : '')} onClick={() => giai.datCauHinh({ chuDe: c.id, tenChuDe: c.ten })}><b>{c.icon} {c.ten}</b></button>)}
+      </div>
+      <div className="chip-hang nho">
+        {ng.coDaoChieu && HUONG_DO.map((h) => <button key={h.id} className={'chip' + (st.huong === h.id ? ' bat' : '')} onClick={() => giai.datCauHinh({ huong: h.id })}><b>{h.ten}</b></button>)}
+        {[5, 10, 15].map((n) => <button key={n} className={'chip' + (st.soCau === n ? ' bat' : '')} onClick={() => giai.datCauHinh({ soCau: n })}><b>{n} câu</b></button>)}
+      </div>
+    </>
+  )
 }

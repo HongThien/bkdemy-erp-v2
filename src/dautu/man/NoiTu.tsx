@@ -86,7 +86,7 @@ function VanNoiTu({ toi, cd, onLui }: { toi: NguoiTran; cd: CheDoNT; onLui: () =
     const ai = s.nguoi.findIndex((n) => n.ma === toi.ma)
     const thang = s.thang === ai
     phat(thang ? 'thang' : 'thua')
-    ghiTran({ cheDo: 'noi_tu', chuDe: 'noi_tu', ketQua: thang ? 'thang' : 'thua', soDung: s.tu.filter((t) => t.ai === ai).length, soCau: s.tu.filter((t) => t.ai === ai).length, diem: s.nguoi[ai]?.diem ?? 0, doiThu: s.nguoi.filter((_, i) => i !== ai).map((n) => n.ten).join(', ') })
+    ghiTran({ mon: 'Tiếng Anh', cheDo: 'noi_tu', chuDe: 'noi_tu', ketQua: thang ? 'thang' : 'thua', soDung: s.tu.filter((t) => t.ai === ai).length, soCau: s.tu.filter((t) => t.ai === ai).length, diem: s.nguoi[ai]?.diem ?? 0, doiThu: s.nguoi.filter((_, i) => i !== ai).map((n) => n.ten).join(', ') })
   }, [s?.pha])
 
   const ai = s ? s.nguoi.findIndex((n) => n.ma === toi.ma) : -1
@@ -103,7 +103,7 @@ function VanNoiTu({ toi, cd, onLui }: { toi: NguoiTran; cd: CheDoNT; onLui: () =
   const ketThucTuDo = () => {
     if (cd.loai === 'tu_do' && s && !daGhi.current && s.tu.length) {
       daGhi.current = true
-      ghiTran({ cheDo: 'noi_tu', chuDe: 'noi_tu', ketQua: 'xong', soDung: s.tu.length, soCau: s.tu.length, diem: s.nguoi[0].diem })
+      ghiTran({ mon: 'Tiếng Anh', cheDo: 'noi_tu', chuDe: 'noi_tu', ketQua: 'xong', soDung: s.tu.length, soCau: s.tu.length, diem: s.nguoi[0].diem })
     }
     onLui()
   }
