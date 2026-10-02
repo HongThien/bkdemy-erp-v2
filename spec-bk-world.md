@@ -242,3 +242,30 @@ Repo `bk-bat-thu`, nhánh `game-3-man`, three **r186** (0.186.1). Mở: `trai.ht
 - Thưởng 5 nhiệm vụ: 1 vé · 2 bóng tốt · 1 vé + 1 bóng xịn · 2 vé · 1 bóng xịn + 2 bóng tốt. **Chưa trả xu** — chờ CEO chốt câu §4.3 (xu nhiệm vụ có tính chung trần tháng không).
 
 **Còn lại cho 06/10:** soi iPad (FPS, cỡ chữ, chạm) · HS thật chơi thử 1 vòng · chỉnh số theo cảm giác.
+
+## 8. CEO CHỐT 02/10 tối: MÀN BẮT THÚ = DUNGEON RIÊNG TỪNG LOÀI (thay "1 đồng cỏ chung" của §7.1)
+
+> CEO 02/10: *"1. Mỗi con thú sẽ có 1 dungeon riêng. 2. Mỗi con thú sẽ có story riêng. 3. Khi chơi sẽ có cơ hội nhận được vé khi thu hoạch, hoặc làm nhiệm vụ, hoặc mua trong shop. 4 mức pet ứng với 4 loại vé.
+> 4. Mỗi lần vào dungeon có 3 cơ hội ném bóng. Pet level càng cao càng khó bắt. 5. Mỗi ngày, hoàn thành nhiệm vụ ngày về học tập được 1 lượt free vào dungeon cấp 1, 2. Mỗi tuần hoàn thành được 1 lượt vào 3, 4."*
+
+**CEO trả lời 4 câu hỏi làm rõ (02/10):**
+- Trong dungeon **vẫn đánh cho thú yếu rồi mới có 3 lần ném** (kiểu raid Pokémon GO) — đội thú của em vẫn có việc, vẫn lên cấp.
+- Dungeon V1 = **cảnh riêng theo hệ + truyện ngắn ở cửa vào** (3–5 khung), thú chờ ở cuối. Dungeon có màn chơi (đường đi, cửa ải, câu đố) để sau V1.
+- Vé mua trong shop bằng **điểm chăm chỉ** (đúng §1 #9: muốn đi bắt nhiều phải học).
+- Nhiệm vụ học tập ngày/tuần — V1 **tạm tính trên máy**: ngày = đủ ngưỡng điểm chăm chỉ trong ngày ⇒ 1 lượt free tầng 1–2; tuần = hoàn thành nhiệm vụ ngày 5/7 ngày ⇒ 1 lượt free tầng 3–4. Lên online đổi sang nhiệm vụ thật trên app HS.
+
+**4 tầng thú = 4 loại vé** (tầng theo spec-bat-thu §3.5: 1 thường · 2 săn mồi đỉnh · 3 thần thoại · 4 truyền thuyết). Xếp tầng — CTO đề xuất, CEO sửa thoải mái:
+
+| Tầng | Loài (đã nối vào game) | Cấp thú trong dungeon |
+|---|---|---|
+| 1 | Cáo Lửa · Cừu Mây · Khỉ Lá · Nhím Điện · Cánh Cụt Nước · Gà Lửa · Bò Tuyết | 2–6 |
+| 2 | Sói Nguyệt · Sư Tử Lửa · Voi Rừng | 5–10 |
+| 3 | (Eidrolon · Ophydia — khuôn bay / rắn, CHƯA nối vào game ⇒ tầng 3 tạm trống) | 9–14 |
+| 4 | Băng Thần Mã · Thiên Kình | 12–18 |
+
+**Luật (số CTO tự đặt để chơi thử):**
+- Mỗi lượt: 1 vé đúng tầng (hoặc 1 lượt free) ⇒ đọc truyện ⇒ vào cảnh ⇒ đánh cho yếu (thú dungeon không ngất, chỉ choáng ở 1 máu) ⇒ **3 lần ném** (trúng hay trượt đều tính) ⇒ hết 3 lần mà chưa bắt được thì thú bỏ chạy, hết lượt.
+- Cấp càng cao càng khó bắt: tỉ lệ × (1 − 2,5% mỗi cấp trên cấp 1, sàn 30%) — tỉ lệ thật vẫn hiện khi ngắm.
+- Vé rơi khi thu hoạch (mỗi ô): tầng 1 8% · tầng 2 2,5% · tầng 3 0,6% · tầng 4 0,15%. Shop (điểm chăm chỉ): 10 · 20 · 40 · 80 📘. Nhiệm vụ Bác Hai thưởng vé theo tầng.
+- Ngưỡng nhiệm vụ học tập ngày: ≥ 10 điểm chăm chỉ trong ngày nông trại (≈ 1 lượt bài đạt).
+- Loài lai (Sư Tử Lửa, Voi Rừng, Gà Lửa, Bò Tuyết) vẫn ra được từ trứng; có thêm dungeon riêng như mọi loài.
