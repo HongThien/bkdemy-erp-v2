@@ -16,8 +16,8 @@ const G = '/bk-ui/hs/skin/rpg/lucdia'
 const TL = 941 / 1672 // cao / rộng của khung
 const HE_SO_NV = 2.2 // kit ghi cỡ chibi 4,5–9% chiều cao khung (chỉ ~35px trên iPad, khó thấy) ⇒ phóng 2,2 lần cho dễ thấy; đổi 1 chỗ này
 const DUNG_CACH = 0.014 // đứng cách cửa công trình một đoạn đường (đơn vị = chiều rộng khung) để không đè lên nhãn
-/** HẠ DỊU nền (Thùy 02/10: "quá chói và nhiều chi tiết, khó nhìn"): giảm bão hoà + sáng + tương phản, làm mờ nhẹ chi tiết cây/đá, phủ thêm màu nền style — CHỈ nền; công trình, chữ, nhân vật giữ nguyên rực để nổi lên. Chỉnh 1 chỗ này. */
-const NEN_DIU = { loc: 'saturate(.66) brightness(.88) contrast(.9) blur(1.2px)', phu: 0.2 }
+/** HẠ DỊU nền (Thùy 02/10: "quá chói, khó nhìn" rồi "mờ quá, nhà giả giả — chỉnh vừa thôi"): giảm bão hoà + sáng + tương phản NHẸ, phủ thêm màu nền style — CHỈ nền; công trình, chữ, nhân vật giữ nguyên rực để nổi lên. Chỉnh 1 chỗ này. */
+const NEN_DIU = { loc: 'saturate(.8) brightness(.93) contrast(.95)', phu: 0.1 } // KHÔNG làm mờ: nền mờ + nhà nét ⇒ nhà như dán lên (Thùy 02/10)
 const NHO_VI_TRI: Record<string, number> = {} // "rời màn rồi quay lại = đúng chỗ cũ" — sống tới F5
 
 const HERO_AX = HERO_CHAY.nam.ax
@@ -61,6 +61,7 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
   const [s, setS] = useState(() => NHO_VI_TRI[luc.ma] ?? sCua[Math.min(toi, sCua.length - 1)])
   const [chay, setChay] = useState<{ huongPhai: boolean } | null>(null)
   const [khungChay, setKhungChay] = useState(0)
+  const [hov, setHov] = useState<number | null>(null) // công trình đang trỏ vào ⇒ nổi lên
   const raf = useRef(0)
   const sRef = useRef(s)
   sRef.current = s
@@ -124,9 +125,11 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
                     const px = m.x / 100 * W, py = m.y / 100 * H, dinh = py - h * a.ay
                     return (
                       <div key={i}>
-                        <button type="button" disabled={!co || !!chay} onClick={() => co && dien(i, co.v.ma)} aria-label={co ? `${co.v.ten}: ${co.t.dat}/${co.t.tong} chặng đạt` : `Công trình ${i + 1}`}
-                          className="absolute block active:scale-[0.98]" style={{ left: px - a.ax * w, top: dinh, width: w, height: h, zIndex: z(`m${i}`), cursor: co ? 'pointer' : 'default', transition: 'transform .12s' }}>
-                          <img src={`${G}/${luc.biome}/moc_${i + 1}.webp`} alt="" className="h-full w-full" draggable={false} style={{ filter: !co ? 'saturate(.85) brightness(.92)' : tt === 'fog' ? 'saturate(.55) brightness(.85)' : undefined }} />
+                        {co && hov === i && !chay && <span className="pointer-events-none absolute rounded-[50%]" style={{ left: px - w * 0.55, top: py - h * 0.12, width: w * 1.1, height: h * 0.24, zIndex: z(`m${i}`), background: 'radial-gradient(closest-side, var(--sk-acc), transparent)', opacity: 0.55, filter: 'blur(6px)' }} />}
+                        <button type="button" disabled={!co || !!chay} onClick={() => co && dien(i, co.v.ma)} onPointerEnter={() => co && setHov(i)} onPointerLeave={() => setHov((h0) => (h0 === i ? null : h0))} onFocus={() => co && setHov(i)} onBlur={() => setHov((h0) => (h0 === i ? null : h0))}
+                          aria-label={co ? `${co.v.ten}: ${co.t.dat}/${co.t.tong} chặng đạt` : `Công trình ${i + 1}`}
+                          className="absolute block" style={{ left: px - a.ax * w, top: dinh, width: w, height: h, zIndex: hov === i ? 300 : z(`m${i}`), cursor: co ? 'pointer' : 'default', transformOrigin: `${a.ax * 100}% ${a.ay * 100}%`, transform: hov === i && !chay ? 'scale(1.08) translateY(-1.5%)' : undefined, transition: 'transform .16s ease-out' }}>
+                          <img src={`${G}/${luc.biome}/moc_${i + 1}.webp`} alt="" className="h-full w-full" draggable={false} style={{ transition: 'filter .16s', filter: hov === i && !chay ? 'brightness(1.12) saturate(1.1) drop-shadow(0 0 6px var(--sk-acc)) drop-shadow(0 0 16px var(--sk-acc))' : !co ? 'saturate(.85) brightness(.92)' : tt === 'fog' ? 'saturate(.55) brightness(.85)' : undefined }} />
                         </button>
                         {co && tt === 'fog' && <span className="pointer-events-none absolute" style={{ left: px - w * 0.6, top: dinh + h * 0.05, width: w * 1.2, height: h * 0.9, zIndex: z(`m${i}`) + 1 }}><Suong mau={b.bot} anh={anhVat('may_suong')} style={{ left: 0, top: 0, width: '100%', height: '100%' }} /></span>}
                         {co && tt === 'dat' && <span className="pointer-events-none absolute" style={{ left: px + w * 0.12, top: dinh - H * 0.02, zIndex: 210 }}><Co mau={b.vang} anh={anhVat('co_chinh_phuc')} cao={H * 0.05} /></span>}
