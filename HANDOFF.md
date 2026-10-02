@@ -227,6 +227,7 @@ bản đồ kiến thức Thùy tự làm; gán mẫu / skill gán dạng / lô 
   nhìn tên folder thật rồi hỏi Thùy, 2 cách: (i) tầng 1 = chủ đề, tầng 2 = chuyên đề, câu vào DẠNG CHỜ của chuyên đề (`…000000`, cơ chế có sẵn) rồi tách dạng sau —
   nhưng câu dạng chờ không duyệt được vào kho chuẩn và không tính mastery; (ii) tầng 1 = chuyên đề, tầng 2 = dạng, gom dưới một chủ đề tạm — dùng được ngay (duyệt, đo),
   về sau chỉ thêm tầng chủ đề phía trên. CTO nghiêng về (ii) nếu folder tầng 2 đủ hẹp để coi là một dạng bài.
+- **ĐÃ CHỐT thêm (Thùy 02/10):** tên môn = **TSA**. Kho tài liệu của môn: `C:UsersWBPCDownloadsTSA PNL - 2027TSA PNL - 2027` (máy công ty). CTO CHƯA xem bên trong (Thùy dừng lượt quét để chuyển sang việc nhập đề giữa kì) ⇒ mục (a), (b) bên dưới coi như đã trả lời; các mục còn lại vẫn phải hỏi.
 - **CÒN PHẢI HỎI Thùy trước khi viết dòng nào (câu về ĐÍCH, không tự đoán):** (a) TÊN môn (để đặt nhãn `mon`, tiền tố mã, tên bảng) · (b) ĐƯỜNG DẪN kho tài liệu đó
   (02/10 CTO nhìn `E:\BK ACADEMY\` không tự nhận ra thư mục nào — đừng đoán) · (c) "level" trong kho ứng với gì ở ERP: khối? cấp độ riêng của môn? (mã dạng hiện =
   tiền tố + KHỐI + chủ đề + chuyên đề + dạng) · (d) định dạng file (Word MathType / PDF chữ / PDF scan), có lời giải + đáp án không · (e) lô đầu làm gì: chỉ lập bản đồ,

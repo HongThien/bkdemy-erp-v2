@@ -34832,3 +34832,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   - **Chưa mở `_kho_co_mon('TSA')`** (như môn Anh): app HS/tự luyện/đề thi còn nhánh "không phải KHTN thì là Toán". Kho TSA mới ở màn Kho (tab TSA, khối 12) + Duyệt kho. `MON_LIST` (lop/HS/nhân sự) CHƯA thêm 'TSA'.
   - **Bẫy đã dính:** `kho_sua_log` do `postgres` sở hữu ⇒ CHECK `mon` chưa nới ⇒ **mọi UPDATE nội dung câu TSA bị chặn** tới khi chạy `202610021340_tsa_kho_sua_log_mon_check.sql` trong SQL Editor (INSERT/duyệt không ảnh hưởng). Lúc đó cũng cần 47 câu kéo thả sửa lại `noi_dung` (giữ dòng thẻ) bằng script cập nhật theo khoá nguồn.
   - **Dò theo template sai lúc đầu:** lấy khuôn môn Anh (tối giản) làm gốc — Thùy: "đây là Toán". Đã bổ sung đủ bộ như KHTN. Bài học: môn mới thuộc họ nào thì lấy khuôn họ đó, không lấy "môn mới nhất".
+
+## 2026-10-02 (bổ sung 3) — môn mới tên TSA + đổi việc
+
+- **Thùy:** `C:\Users\WBPC\Downloads\TSA PNL - 2027\TSA PNL - 2027\` — "m đặt tên môn này là TSA". CTO định quét cây thư mục (chỉ đọc) thì Thùy dừng lại, giao việc khác:
+  "giờ cần đọc đống đề thi giữa kì để nhập vào kho giống luồng hôm qua". Ghi tên môn + đường dẫn vào HANDOFF; chưa xem bên trong kho TSA.
+- Thư mục thả đề `…\Tài liệu Claude nhập kho\DE_THI\L10|L11|L12` đang trống ⇒ hỏi Thùy file đề giữa kì nằm ở đâu, khối nào.
