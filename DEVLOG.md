@@ -34805,3 +34805,20 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Thùy:** "Hiện tại thì nó có 2 mức thôi. m cứ chia tạm 2 mức theo folder là được."
 - Ghi HANDOFF: lập bản đồ TẠM theo 2 tầng thư mục. CHƯA chốt hai tầng đó là (chủ đề + chuyên đề, câu vào dạng chờ) hay (chuyên đề + dạng, dưới một chủ đề tạm) —
   khác nhau ở chỗ câu dạng chờ không duyệt được vào kho chuẩn và không tính mastery. Context mới nhìn tên folder thật rồi hỏi.
+
+## 2026-10-02 (khuya) — [Kho Anh] CEO: "câu không nghi ngờ thì tự duyệt" ⇒ kho 1.672/1.930 (86,6%)
+
+- **Thùy:** "Các câu tiếng anh ko nghi ngờ m tự duyệt luôn. ko cần duyệt lại nữa."
+- **Làm rõ trước khi làm:** câu "chắc chắn" vốn KHÔNG nằm trong hàng duyệt (hàng chỉ có câu chưa duyệt: 334 nghi + 92 chưa điểm) ⇒ ý CEO là
+  trong 426 câu chờ, câu nào không nghi ĐÁP ÁN thì tự duyệt.
+- **Áp:**
+  - 98 câu đáp án chắc (A mù = GV, không phương án 2, B không nghi, cấu trúc sạch) chỉ vướng lỗi chính tả/diễn đạt NGOÀI đáp án, hoặc
+    phạm vi (8 câu U11 suggest + 3 câu một bên) ⇒ duyệt, giữ ghi chú cũ trong `kiem_may_ghi` để dọn chính tả sau.
+    Đọc tay 125 ghi chú "đề lỗi": giữ 39 câu lỗi chạm đáp án (đáp án viết sai, có thể không duy nhất, phát âm thiếu gạch chân, đề thiếu
+    chỗ trống, chú thích lộ nghĩa…); máy tự so chữ cái phương án bị nêu với đáp án GV.
+  - 86 câu đáp án chắc nhưng A/B lệch điểm ⇒ bên C gán nhãn độc lập: 69 câu đa số 2/3 ⇒ duyệt; 17 câu không đa số ⇒ GV chọn.
+  - U8-NL12: sửa đoạn + đề C124 (giờ ghi được vì CEO đã dán `202610021200`, sửa có vết `kho_sua_log`), kiểm lại 5 câu.
+- **Luật vĩnh viễn** (`luat_chac_chan.mjs`): đề lỗi chỉ chặn khi `de_loi_cham_dap_an !== false` · một bên ngoài phạm vi chỉ ghi chú ·
+  `ra_C.json` (nếu có) phân xử điểm 2/3. Đối chiếu lại toàn bộ quyết định cũ: chỉ khác đúng 2 nhóm cố ý đổi.
+- **Toàn vẹn:** mọi câu trong kho = đúng nội dung trạm đọc hiện tại (0 lệch).
+- **Còn cho GV:** 235 câu nghi đáp án + 23 câu chọn điểm — màn Duyệt kho, môn Tiếng Anh.

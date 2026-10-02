@@ -39,6 +39,14 @@ file Word bản GV ─► ① TRẠM ĐỌC (máy, code)        ─► câu + ng
 | 4 | Bên A và B **độc lập chọn trùng 1 điểm kiến thức**, và điểm đó hợp với dạng đề (vd biển báo phải là ĐH-01). Cờ "chắc" tự khai của từng bên KHÔNG dùng (đo Unit 1: phần lớn ca lệch là A=B cùng mã nhưng tự khai "chưa chắc") | ② + ③ + máy |
 | 5 | **Trong phạm vi** THCS (cả A và B) và B không nghi đáp án GV | ② + ③ |
 
+- **CEO 02/10 tối: "Các câu tiếng anh ko nghi ngờ m tự duyệt luôn. ko cần duyệt lại nữa."** ⇒ chỉ giữ cho GV khi có NGHI về ĐÁP ÁN:
+  - "Đề lỗi" bên A ghi chỉ chặn khi lỗi **chạm đáp án** (đáp án viết sai, có thể không duy nhất, HS không làm được như đang hiện:
+    phát âm thiếu gạch chân, đề thiếu chỗ trống, chú thích lộ nghĩa…). Lỗi chính tả/diễn đạt ở thân câu hay phương án nhiễu ⇒ duyệt, giữ
+    ghi chú trong `kiem_may_ghi` để dọn chính tả sau. Từ lượt sau, bên A khai thêm cờ `de_loi_cham_dap_an` (true/false); kết quả cũ
+    không có cờ ⇒ cổng vẫn chặn, người lọc tay (02/10: 125 ghi chú ⇒ 86 duyệt, 39 giữ).
+  - Chỉ MỘT bên thấy ngoài phạm vi ⇒ ghi chú, không chặn.
+  - A và B lệch điểm kiến thức ⇒ **bên C** gán nhãn thứ ba độc lập (thấy đáp án, không biết A/B chọn gì), đa số 2/3 ⇒ duyệt ở điểm đó;
+    ba bên ba mã ⇒ để GV chọn. File `ra_C.json` trong thư mục kiểm — cổng và `kiem_lai_anh.mjs` tự đọc.
 - Đủ 5 ⇒ `da_duyet = true`, `duyet_nguon = 'ai'`, `kiem_may = 'khop'`, `kiem_may_boi = 'claude_code'`, `kiem_may_ghi` = tóm tắt.
 - Thiếu bất kỳ điều nào ⇒ `da_duyet = false`, `kiem_may = 'nghi'`, `kiem_may_ghi` = LÝ DO cụ thể (vd "A thấy B cũng đúng").
   Điểm kiến thức chưa thống nhất ⇒ câu nằm ở **điểm chờ `E09000000`** + `dang_ai_de_xuat` = đề xuất; trigger chặn duyệt tới khi GV chọn điểm thật.
@@ -66,12 +74,16 @@ file Word bản GV ─► ① TRẠM ĐỌC (máy, code)        ─► câu + ng
   bài **U8-NL12** (5 câu, mã `EC002582..586`): trạm đọc vá sau cùng (câu kết "So why wait?…" + dòng nguồn dính vào đề C124). **Treo:** sau khi
   CEO dán `202610021200` ⇒ sửa đoạn + đề C124 trong DB, kiểm lại 5 câu (`kiem_lai_anh.mjs`). Sửa đề trước đó bị trigger `kho_sua_log` chặn.
 
-### 2.3 Kết quả nhập 12 unit (02/10 tối, sau kiểm lại)
+### 2.3 Kết quả nhập 12 unit (02/10 tối, sau kiểm lại + áp luật CEO "không nghi thì tự duyệt")
 
-| | Chắc chắn (vào kho) | Chờ duyệt | — trong đó chờ chọn điểm | Tổng |
+| | Đã duyệt (trong kho) | Chờ GV — nghi đáp án | Chờ GV — chọn điểm kiến thức | Tổng |
 |---|---|---|---|---|
-| 12 unit | **1.504 (77,9%)** | 426 | 92 | **1.930** |
+| 12 unit | **1.672 (86,6%)** | 235 | 23 | **1.930** |
 
+- Đường đi: cổng 1.430 → kiểm lại 131 câu chấm trên nội dung cũ (+76) → luật CEO "không nghi thì tự duyệt": 98 câu đáp án chắc chỉ vướng
+  lỗi ngoài đáp án / phạm vi (lọc tay 125 ghi chú "đề lỗi", giữ 39 câu lỗi chạm đáp án) + 69 câu lệch điểm kiến thức được bên C phân xử 2/3.
+- 23 câu chờ điểm: 17 câu ba bên ba mã (10 câu "câu gần nghĩa" U6 diễn đạt lại bằng từ vựng — A và C chọn ĐH-03 nhưng biến đổi câu
+  không thuộc mảng Đọc hiểu ⇒ GV chọn) + 6 câu vừa lệch điểm vừa nghi đáp án.
 - Không nhập: 34 câu A+B cùng thấy ngoài phạm vi (quá khứ hoàn thành, bị động… — trừ Unit 11, xem §2.1) · 4 câu trùng. (1.968 đọc = 1.930 + 38.)
 - 192 ngữ liệu (đoạn văn/thông báo/biển báo) · 56 ảnh biển báo (bucket `kho-anh`).
 - Soát tay ngẫu nhiên câu "chắc chắn": 18 + 15 (U1–4) · 12 (U5–6) · 14 (U7–8) · 16 (U9–12) — **75/75 đúng**.

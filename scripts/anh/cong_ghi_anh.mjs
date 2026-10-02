@@ -34,6 +34,8 @@ const cau = doc(join(dirNhap, `${unit}.cau.json`))
 const nguLieu = Object.fromEntries(doc(join(dirNhap, `${unit}.ngu_lieu.json`)).map((n) => [n.ref, n]))
 const raA = Object.fromEntries(doc(join(dirKiem, 'ra_A.json')).map((x) => [x.ref, x]))
 const raB = Object.fromEntries(doc(join(dirKiem, 'ra_B.json')).map((x) => [x.ref, x]))
+// bên C (tuỳ chọn): gán nhãn thứ ba phân xử khi A và B lệch điểm kiến thức (đa số 2/3)
+const raC = existsSync(join(dirKiem, 'ra_C.json')) ? Object.fromEntries(doc(join(dirKiem, 'ra_C.json')).map((x) => [x.ref, x])) : {}
 // Bên A đã thấy ĐÚNG nội dung nào — trạm đọc sửa sau khi kiểm thì kết quả kiểm không còn áp (luật ở luat_chac_chan.mjs)
 const daThayA = Object.fromEntries(doc(join(dirKiem, 'vao_A_khong_dap_an.json')).map((x) => [x.ref, vanTayDaThay(x)]))
 // Khoá trùng: cùng dạng đề + đề + phương án + đoạn văn (đã chuẩn hoá khoảng trắng/hoa thường)
@@ -42,7 +44,7 @@ const khoaTrung = (dang, noiDung, luaChon, doan) => [dang, chuan(noiDung), (luaC
 
 const E = env()
 
-const quyetDinh = taoQuyetDinh({ raA, raB, daThayA, nguLieu, ngoaiPhamViChoDuyet: NPV_CHO })
+const quyetDinh = taoQuyetDinh({ raA, raB, raC, daThayA, nguLieu, ngoaiPhamViChoDuyet: NPV_CHO })
 
 const c0 = new pg.Client({ connectionString: E.DATABASE_URL, statement_timeout: 60000 })
 await c0.connect()
@@ -102,7 +104,7 @@ try {
     // Chỉ khi 2 bên không thống nhất điểm mới về điểm chờ E09000000 (lọc 'chua_dang') kèm đề xuất.
     const dang = q.kp ? MA[q.kp] : 'E09000000'
     if (!dang) throw new Error(`Không thấy mã DB cho điểm ${q.kp} (${c.ref})`)
-    const ghiChu = chac ? ghiChuChac(raA[c.ref], q.kp) : q.lyDo.join(' · ')
+    const ghiChu = chac ? ghiChuChac(raA[c.ref], q.kp, q.ghiChu) : q.lyDo.join(' · ')
     const r = await c0.query(
       `insert into anh_cau_hoi (dang_chinh, loai_cau, noi_dung, lua_chon, dap_an, nguon, nguon_giai, ten_de_goc,
          ngu_lieu, thu_tu_trong_ngu_lieu, dang_de, unit_sgk, da_duyet, duyet_nguon,

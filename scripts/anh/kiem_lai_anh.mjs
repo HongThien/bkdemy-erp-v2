@@ -13,7 +13,7 @@
 // Không có --ghi: chạy trong transaction rồi ROLLBACK.
 // ============================================================================
 import pg from 'pg'
-import { readFileSync, writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { env, vanTayDaThay, taoQuyetDinh, ghiChuChac } from './luat_chac_chan.mjs'
 
@@ -28,6 +28,8 @@ const doc = (p) => JSON.parse(readFileSync(p, 'utf8'))
 const vaoA = doc(join(dirKL, 'vao_A_khong_dap_an.json'))
 const raA = Object.fromEntries(doc(join(dirKL, 'ra_A.json')).map((x) => [x.ref, x]))
 const raB = Object.fromEntries(doc(join(dirKL, 'ra_B.json')).map((x) => [x.ref, x]))
+// bên C (tuỳ chọn): gán nhãn thứ ba phân xử khi A và B lệch điểm kiến thức (đa số 2/3)
+const raC = existsSync(join(dirKL, 'ra_C.json')) ? Object.fromEntries(doc(join(dirKL, 'ra_C.json')).map((x) => [x.ref, x])) : {}
 const refMa = doc(join(dirKL, 'ref_ma_cau.json'))
 const daThayA = Object.fromEntries(vaoA.map((x) => [x.ref, vanTayDaThay(x)]))
 
@@ -37,7 +39,7 @@ for (const unit of new Set(vaoA.map((x) => x.ref.split('-')[0]))) {
   for (const c of doc(join(dirNhap, unit, `${unit}.cau.json`))) cau[c.ref] = c
   for (const n of doc(join(dirNhap, unit, `${unit}.ngu_lieu.json`))) nguLieu[n.ref] = n
 }
-const quyetDinh = taoQuyetDinh({ raA, raB, daThayA, nguLieu, ngoaiPhamViChoDuyet: true })
+const quyetDinh = taoQuyetDinh({ raA, raB, raC, daThayA, nguLieu, ngoaiPhamViChoDuyet: true })
 
 const chuan = (s) => (s ?? '').replace(/\s+/g, ' ').trim()
 const E = env()
@@ -70,7 +72,7 @@ try {
     const chac = q.loai === 'chac'
     const dang = q.kp ? MA[q.kp] : 'E09000000'
     if (!dang) throw new Error(`Không thấy mã DB cho điểm ${q.kp} (${ref})`)
-    const ghiChu = 'Kiểm lại 02/10 (trạm đọc đã bù phần bài bị mất): ' + (chac ? ghiChuChac(raA[ref], q.kp) : q.lyDo.join(' · '))
+    const ghiChu = 'Kiểm lại 02/10 (trạm đọc đã bù phần bài bị mất): ' + (chac ? ghiChuChac(raA[ref], q.kp, q.ghiChu) : q.lyDo.join(' · '))
     await c0.query(
       `update anh_cau_hoi set dang_chinh = $2, da_duyet = $3, duyet_nguon = $4, kiem_may = $5, kiem_may_at = now(),
               kiem_may_boi = 'claude_code', kiem_may_ghi = $6, dang_ai_de_xuat = $7
