@@ -34614,3 +34614,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - duongThree: dựng ribbon trên MẶT ĐẤT (y ÷ nghieng) rồi chiếu về màn (y × nghieng) ⇒ đoạn chạy ngang dẹt theo chiều dọc, cuội dẹt theo; phối cảnh xaGan (mép trên/xa hẹp,
   dưới/gần rộng); mép phía GẦN (dưới màn) có thành đá sẫm 0,32 bề ngang thay bóng phẳng ⇒ mặt đường đắp nổi. Lục địa nghieng 0,58 · xaGan 0,72; chặng 0,45 · 0,7 (nền chặng nhìn thấp hơn).
   Số đặt bằng mắt so tranh; đổi được ở props LucDia2D/Chang2D. Kiểm 1180×820 lục địa C + chặng C2.
+
+### 02/10 tối — [Giao diện] Tầng lục địa: Thùy sẽ làm lại theo kịch bản world map ⇒ Đơn 11
+- Thùy: chặng "ổn hơn"; lục địa "độ nghiêng chưa đúng, đường xuyên địa hình, lâu đài trên nền không thật — vì làm riêng rẽ; làm lại theo kịch bản chuẩn: ảnh to – ảnh thành phần – bố cục".
+  Bài học: nền trơn (Đơn 7) + đường code (three.js) + công trình rời = 3 nguồn hình khác góc nhìn/ánh sáng ⇒ không liền; đúng là để HOẠ SĨ vẽ cả đường + công trình trong 1 tranh, rồi tách thành phần.
+- Đơn 11 (design/DON-HANG-SKIN-HS.md): mỗi vùng khí hậu 3 bản 4·6·8 mốc; kit = toàn cảnh + backdrop CÓ đường KHÔNG công trình + 6 công trình vẽ lại + DESIGN.md vị trí chân. Rừng 6 mốc trước.
+  Thay phần nền vùng của Đơn 7/10. Code tầng lục địa GIỮ NGUYÊN tới khi kit về (không chỉnh thêm). Tầng chặng giữ đường three.js.

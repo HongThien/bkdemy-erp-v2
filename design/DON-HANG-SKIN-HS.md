@@ -907,3 +907,43 @@ YÊU CẦU RIÊNG:
 > **Kit về (Claude làm):** kiểm mục 8 giao thức · tự đo lại tâm từng bệ trên ảnh (lưới 2%) đối chiếu DESIGN.md, lệch thì lấy số đo · nén JPG ·
 > `hinh2d.ts`: thay `CHO_MOC_VUNG` bằng bảng {biome, số bệ, toạ độ bệ} + hàm chọn bản nhỏ nhất ≥ N · LucDia2D/Chang2D bỏ đường vẽ bằng code khi nền có đường sẵn
 > (giữ lớp "đoạn đã đi" vàng phủ mờ lên đường vẽ) · bệ thừa phủ sương.
+
+
+---
+
+## Đơn 11 — TẦNG LỤC ĐỊA (chuyên đề) theo kịch bản chuẩn của world map: ẢNH TO → ẢNH THÀNH PHẦN → BỐ CỤC — soạn 02/10, THAY phần nền vùng của Đơn 7/10
+
+> **Thùy 02/10:** tầng lục địa "độ nghiêng chưa đúng, đường đi xuyên địa hình, lâu đài trên nền không thật — vì làm riêng rẽ; làm lại theo kịch bản chuẩn của world map:
+> ảnh to – ảnh thành phần – bố cục thì mới tự nhiên". Bài học: nền trơn + code tự vẽ đường + dán công trình rời = 3 nguồn hình khác góc nhìn/ánh sáng ⇒ không bao giờ liền.
+> Tầng CHẶNG giữ cách hiện tại (Thùy: "chặng thì ổn hơn").
+> **Số mốc thay đổi** (1–8 chuyên đề/chủ đề, đo 01/10) ⇒ mỗi vùng khí hậu vẽ **3 bản bố cục: 4 · 6 · 8 mốc**; code chọn bản nhỏ nhất đủ chỗ, mốc thừa (≤2) phủ sương "chưa mở".
+> Làm **RỪNG trước** (bản 6 mốc) → Thùy duyệt → bản 4, 8 → 9 vùng còn lại (băng · núi lửa · quần đảo · sa mạc · đầm lầy · thành cổ · đảo trời · hoa anh đào · đảo cối xay).
+> **Cách gửi:** context ChatGPT MỚI (app máy tính) → dán `CHATGPT-UI-KIT.md` → dán khối dưới → đính kèm `Adnventure2D/V2/` ảnh lục địa rừng (exec-c6097c1c…, để giữ đúng
+> phong cách + dáng đất của lục địa đó) + `chon_huong/13.png` (nền vùng rừng cũ — chỉ tham khảo không khí) + `chon_huong/21–26.png` (6 công trình mốc). Kit về: `design/handoff/hs-luc-dia-rung-v1.zip`.
+
+```
+App:            hs
+Màn:            luc-dia-rung-6 (bên trong 1 lục địa RỪNG PHÉP, bố cục 6 mốc)
+Mô tả màn:      App học Toán "Giải cứu thế giới — đánh quái vật". Bấm 1 lục địa trên bản đồ thế giới ⇒ vào màn này: cận cảnh lục địa đó, nhìn CHÉO
+                từ trên cao (cùng góc nhìn với ảnh lục địa đính kèm). Mỗi CHUYÊN ĐỀ là 1 CÔNG TRÌNH MỐC đứng trên 1 bãi đất; 1 CON ĐƯỜNG MÒN đất
+                uốn lượn theo địa hình (vòng qua cây, men theo suối, có cầu/bậc đá khi qua vách) nối mốc 1 → mốc 6. iPad NGANG ⇒ 1672×941.
+Phần tử ĐỘNG:   tên chuyên đề + 5 sao dưới mỗi mốc · cờ trên mốc đã xong · quái nhỏ ở mốc đang đánh · sương phủ mốc chưa tới · mũi tên vàng ở mốc đang học
+                (tất cả do code đặt — KHÔNG vẽ vào ảnh).
+Trạng thái:     1 ảnh reference, mọi mốc ở trạng thái thường (không cờ, không sương, không quái).
+Biến thể:       không (bản 4 và 8 mốc làm sau, CÙNG cảnh — chỉ đổi số bãi/mốc và đường).
+Phong cách:     đúng ảnh lục địa rừng đính kèm: anime fantasy vẽ tay chi tiết, cây khổng lồ phát sáng, nấm tím, pha lê xanh, thác, ánh vàng ấm.
+                6 công trình mốc theo đúng kiểu các ảnh 21–26 đính kèm (thành nhỏ · tháp phép · trại lều · đền cổ · cổng đá · cầu đá) — vẽ chúng ĐỨNG
+                TRONG cảnh, cùng ánh sáng, cùng góc nhìn, có bóng đổ xuống đất.
+Giữ nguyên:     1672×941; không chữ; mỗi mốc có khoảng trống ngay dưới chân để code đặt nhãn tên; phía trên mỗi mốc chừa chỗ cho mũi tên.
+Phiên bản kit:  v1
+
+YÊU CẦU RIÊNG (kịch bản chuẩn — giống bộ bản đồ thế giới):
+- reference/: 1 ảnh TOÀN CẢNH đầy đủ (địa hình + đường mòn + 6 công trình).
+- assets/backdrop/backdrop_luc_dia_rung_6.png: ĐÚNG cảnh reference, CÓ con đường mòn, nhưng KHÔNG có 6 công trình (bãi đất trống ở chỗ công trình) — vẽ lại như thể
+  công trình chưa xây. Cùng khổ, cùng ánh sáng.
+- assets/decor/moc_1.png … moc_6.png: vẽ lại TỪNG công trình đúng như trong reference (cùng dáng, cùng góc, cùng ánh sáng), nền TRONG SUỐT, chân công trình chạm đáy ảnh.
+- DESIGN.md, cột "Vị trí & cỡ": với MỖI mốc ghi vị trí CHÂN công trình (≈% ngang, ≈% dọc của khung 1672×941) + bề rộng (≈% khung) + thứ tự trên đường đi.
+```
+
+> **Kit về (Claude làm):** kiểm mục 8 giao thức · đặt backdrop + 6 mốc theo DESIGN.md, ghép thử ra ảnh so với reference (lệch thì tự đo lại trên reference như bản thế giới) ·
+> tắt đường three.js ở tầng lục địa khi nền đã có đường vẽ sẵn (giữ ở tầng chặng) · thêm sổ `hinh2d` {biome, số mốc, ảnh nền, vị trí từng mốc} + chọn bản nhỏ nhất ≥ N.
