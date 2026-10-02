@@ -187,13 +187,31 @@ export default function BoTroScreen() {
             <>
               {cas.length === 0 ? <Empty t={tab === 'daxep' ? 'Chưa có ca bổ trợ nào đang chờ.' : 'Chưa có ca bổ trợ nào hoàn thành.'} />
                 : casShown.length === 0 ? <Empty t="Không có buổi nào khớp bộ lọc." /> : (
-                <div className="grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(320px,1fr))]">
-                  {casShown.map((ca) => (
+                (() => {
+                  // Tab "Đã xếp" TÁCH 2 nhóm theo điểm danh THẬT (không theo trạng thái đóng buổi): buổi chưa có em nào
+                  // đến = mới chỉ XẾP lịch; buổi đã có em có mặt = ĐÃ BÙ, đang chờ chấm ET/đánh giá. Trước đây lẫn một đống.
+                  const the = (ca: CaBoTro) => (
                     <CaCard key={ca.id} ca={ca} nsOpts={nsOpts} onOpen={() => setDetail({ ca, readOnly: tab === 'xong' })}
                       onSua={tab === 'xong' ? undefined : () => setSuaBuoi(ca)}
                       onDoiNguoi={tab === 'xong' ? undefined : (id) => onDoiNguoiBoTro(ca.id, id)} />
-                  ))}
-                </div>
+                  )
+                  const luoi = 'grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(320px,1fr))]'
+                  if (tab !== 'daxep') return <div className={luoi}>{casShown.map(the)}</div>
+                  const daBu = casShown.filter((ca) => ca.hs.some((h) => h.diem_danh === 'co_mat'))
+                  const chuaHoc = casShown.filter((ca) => !ca.hs.some((h) => h.diem_danh === 'co_mat'))
+                  return (
+                    <div className="space-y-5">
+                      <section>
+                        <h3 className="mb-2 text-[13px] font-semibold text-violet-700">📅 Đã xếp — chưa học <span className="font-normal text-slate-400">({chuaHoc.length} buổi)</span></h3>
+                        {chuaHoc.length ? <div className={luoi}>{chuaHoc.map(the)}</div> : <p className="text-[13px] text-slate-400">Không có buổi nào đang chờ học.</p>}
+                      </section>
+                      <section>
+                        <h3 className="mb-2 text-[13px] font-semibold text-emerald-700">✅ Đã bù — chờ chấm ET / đánh giá <span className="font-normal text-slate-400">({daBu.length} buổi)</span></h3>
+                        {daBu.length ? <div className={luoi}>{daBu.map(the)}</div> : <p className="text-[13px] text-slate-400">Chưa có buổi nào đã bù đang chờ chốt.</p>}
+                      </section>
+                    </div>
+                  )
+                })()
               )}
               {/* Buổi bù mà MỌI HS đã vắng: các em đã quay về "Cần bù" nên buổi không còn là việc ở
                   đây — nhưng nó cũng không tự đóng được (nút "Xác nhận ET" chỉ hiện khi có HS có mặt),
