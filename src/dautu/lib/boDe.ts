@@ -83,3 +83,8 @@ export function phuongAnOn(id: string): string[] {
   if (!t) return []
   return tron([id, ...nhieu(t, Math.random, false)])
 }
+
+/** 1 câu cho từ t với RNG cho trước (tạo bộ đề TẤT ĐỊNH — leo tháp: mọi máy ra cùng câu, cùng thứ tự đáp án). */
+export function cauTuTu(t: Tu, rng: () => number, dao: boolean): Cau {
+  return { id: t.id, dao, opts: tron([t.id, ...nhieu(t, rng, dao)], rng) }
+}

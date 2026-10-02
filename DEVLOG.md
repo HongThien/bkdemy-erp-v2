@@ -35105,3 +35105,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   online theo chủ phòng, giải theo chủ giải — đổi được ở sảnh giải). `vite.config.dautu.ts`: publicDir = `public` chung app HS (Thùy: game
   nằm TRONG app HS, không deploy riêng; entry này chỉ test local). Đã soi: bot trọn trận (cầu lửa, kết liễu, boss gục), PvP 2 tab (đạn bay
   phải→trái đúng chiều). Code 3D (`San3D.tsx`, `lib/the3d.ts`, `public-dautu/` ~9MB) không còn được import — CHỜ Thùy gật mới xoá.
+
+- (03/10, Đấu từ) **LEO THÁP** (Thùy: "chế độ mọi game phải có: cùng 1 thử thách, mọi người có leaderboard"; 2 chế độ). CTO tự chốt phần chưa nói:
+  "cùng thử thách" = **THÁP HÔM NAY** — chuỗi 400 câu TẤT ĐỊNH theo seed (ngày VN + chế độ), mọi máy cùng câu/thứ tự đáp án/kiểu đố (đã kiểm 2 hồ sơ ra y hệt);
+  khó dần theo tầng (1–20 lớp 3–5 · 21–60 thêm 6–7 · >60 nghiêng 8–9); chơi không giới hạn lượt, BXH lấy lượt tốt nhất mỗi người (Hôm nay / Kỷ lục).
+  **Sinh tồn** 5 phút: đúng lên tầng, sai không lên + trừ 3s (chống bấm bừa), bằng tầng ⇒ ít sai hơn. **Vô tận**: 10s/câu, mỗi 10 tầng −1s, sàn 3s,
+  sai/hết giờ = thua, bằng tầng ⇒ nhanh hơn. Mig `202610030056_dtv_leo_thap` (ĐÃ ÁP): `dtv_thap_luot` append-only + `fn_dtv_thap_ghi` (2 XP/tầng,
+  trần 100 tầng, chặn <0,4s/tầng) + `fn_dtv_thap_bxh`. Code `lib/thap.ts` + `man/LeoThap.tsx` (tháp vẽ CSS, nhân vật Đấu trường đứng ở tầng hiện tại).
+  Đã soi: Vô tận 15 tầng → hết giờ 9s → rơi → ghi #1; Sinh tồn sai 2 lần đồng hồ tụt đúng 3s/lần, dừng sớm ghi được. **Nợ:** công thức chuỗi ngày
+  lặp ở `fn_dtv_ghi_tran` và `fn_dtv_thap_ghi` (gộp khi chuyển sang tài khoản HS); kết quả do máy gửi (chưa server chấm). **Bẫy:** sửa file màn đang mở ⇒
+  Fast Refresh dựng lại màn tháp ⇒ một lượt mới tự chạy — test xong phải tải lại trang, đừng bấm dừng (sẽ ghi lượt rác).

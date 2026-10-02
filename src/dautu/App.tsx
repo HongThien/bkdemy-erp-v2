@@ -16,6 +16,7 @@ import { HopLoiMoi, ModalOnline, PhongThachDau, TimTran, useSanh } from './man/O
 import { ManGiai } from './man/Giai'
 import { ManNoiTu } from './man/NoiTu'
 import { GocLuyen } from './man/GocLuyen'
+import { ManLeoThap } from './man/LeoThap'
 import { BxhModal, CaiDatModal, HoSoModal, TaoNhanVat } from './man/HopThoai'
 import './dautu.css'
 
@@ -29,6 +30,7 @@ type Man =
   | { ten: 'giai'; chuDe: string; capDo: CapDo; soCau: number; vao?: { code: string; laChu: boolean } }
   | { ten: 'noi_tu'; phong?: string }
   | { ten: 'goc' }
+  | { ten: 'thap' }
 type HopThoai = null | 'ho_so' | 'bxh' | 'cai_dat' | 'online'
 
 function docLinkMoi(): Man | null {
@@ -88,7 +90,7 @@ export default function App() {
   let noiDung: React.ReactNode
   if (!toi) noiDung = <Home onDi={() => {}} />
   else switch (man.ten) {
-    case 'home': noiDung = <Home onDi={(d) => setMan(d === 'dau' ? { ten: 'chu_de' } : d === 'giai' ? { ten: 'giai', chuDe: 'tron', capDo, soCau: 10 } : d === 'noi_tu' ? { ten: 'noi_tu' } : { ten: 'goc' })} />; break
+    case 'home': noiDung = <Home onDi={(d) => setMan(d === 'dau' ? { ten: 'chu_de' } : d === 'giai' ? { ten: 'giai', chuDe: 'tron', capDo, soCau: 10 } : d === 'noi_tu' ? { ten: 'noi_tu' } : d === 'thap' ? { ten: 'thap' } : { ten: 'goc' })} />; break
     case 'chu_de': noiDung = <ChonChuDe capDo={capDo} setCapDo={setCapDo} onChon={(chuDe) => setMan({ ten: 'che_do', chuDe })} onLui={veNha} />; break
     case 'che_do': noiDung = <ChonCheDo tenChuDe={tenChuDe(man.chuDe)} onChon={(c) => chonCheDo(man.chuDe, c)} onLui={() => setMan({ ten: 'chu_de' })} />; break
     case 'tran': noiDung = <ManDau key={man.phien.chuDe + man.nhan} phien={man.phien} nhanCheDo={man.nhan} onThoat={() => { man.phien.roi(); veNha() }} />; break
@@ -99,6 +101,7 @@ export default function App() {
     case 'giai': noiDung = <ManGiai key={man.vao?.code ?? 'moi'} toi={toi} chuDe={man.chuDe} capDo={man.capDo} soCau={man.soCau} vaoSan={man.vao} onLui={veNha} />; break
     case 'noi_tu': noiDung = <ManNoiTu toi={toi} vaoPhong={man.phong} onLui={veNha} />; break
     case 'goc': noiDung = <GocLuyen onLui={veNha} />; break
+    case 'thap': noiDung = <ManLeoThap toi={toi} onLui={veNha} />; break
   }
   const trongTran = man.ten === 'tran' || man.ten === 'phong' || man.ten === 'giai'
 
@@ -163,12 +166,13 @@ function ThanhTren({ onHop, laNha }: { onHop: (h: HopThoai) => void; laNha: bool
   )
 }
 
-function Home({ onDi }: { onDi: (d: 'dau' | 'noi_tu' | 'goc' | 'giai') => void }) {
+function Home({ onDi }: { onDi: (d: 'dau' | 'noi_tu' | 'goc' | 'giai' | 'thap') => void }) {
   const h = useHoSo()
   const canOn = useMemo(() => tuYeu(h.nho).length + tuDenHan(h.nho).length, [h.nho])
   const the = [
     { id: 'dau' as const, icon: '/bk-ui/hs/skin/rpg/o_tu_luyen.png', tieu: 'Đấu từ vựng', mo: 'Chọn chủ đề, đấu bot hoặc đấu online — ai đúng trước ăn từ!', nut: 'Chọn chủ đề', mau: 'xanh' },
     { id: 'giai' as const, icon: '/bk-ui/hs/skin/rpg/o_cup.png', tieu: 'Giải đấu 8 người', mo: 'Tứ kết → Bán kết → Chung kết, đấu trực tiếp chọn nhà vô địch.', nut: 'Vào giải', mau: 'vang' },
+    { id: 'thap' as const, icon: '/bk-ui/hs/skin/rpg/o_rank.png', tieu: 'Leo tháp', mo: 'Tháp hôm nay: Sinh tồn 5 phút hoặc Vô tận — cả trường đua bảng xếp hạng!', nut: 'Leo tháp', mau: 'do' },
     { id: 'noi_tu' as const, icon: '/bk-ui/hs/skin/rpg/o_so_tay.png', tieu: 'Nối từ', mo: 'Nối từ tự do, nghe phát âm và học cách dùng từ trong ngữ cảnh!', nut: 'Chơi nối từ', mau: 'tim' },
     { id: 'goc' as const, icon: '/bk-ui/hs/skin/rpg/o_nhiem_vu.png', tieu: 'Góc luyện tập', mo: 'Ôn từ yếu, thẻ ghi nhớ, tiến độ học tập và góp từ mới.', nut: canOn ? `Ôn ${canOn} từ` : 'Vào luyện tập', mau: 'lam' },
   ]

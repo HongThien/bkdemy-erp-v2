@@ -494,3 +494,52 @@ textarea.o-nhap { resize: vertical; }
 .dau-man .chip { color: var(--muc); }
 .dau-man .chip.bat { color: #fff; }
 .ho-so-dau > .avatar { flex: 0 0 auto; }
+
+/* ── LEO THÁP ── */
+.thap-menu .the-thap { gap: 10px; }
+.thap-dau { display: flex; align-items: center; gap: 10px; }
+.thap-dau h3 { font-size: 24px; }
+.luat-thap { margin: 0; padding-left: 20px; color: var(--muc-nhat); display: grid; gap: 2px; }
+.bang-thap { border-top: 2px dashed var(--vien); padding-top: 8px; }
+.bang-thap .ds-bxh { max-height: 300px; }
+.dong-bxh.la-toi-nhe { background: #f1eaff; border-color: #b9a2ff; }
+.man-thap { max-width: none; min-height: 100dvh; background-size: cover; background-position: center; padding: 10px 16px 16px; display: flex; flex-direction: column; gap: 10px; }
+.man-thap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, #120a3a88, #120a3a44 40%, #120a3acc); pointer-events: none; }
+.man-thap > * { position: relative; }
+.app-dautu:has(.man-thap) > .thanh-tren, .app-dautu:has(.man-thap) > .bang-chay { display: none; }
+.thap-hud { display: flex; align-items: center; gap: 14px; max-width: 1100px; width: 100%; margin: 0 auto; }
+.thap-ten { flex: 1; display: flex; flex-direction: column; color: #fff; text-shadow: 0 1px 4px #0009; }
+.thap-ten b { font-family: 'Baloo 2'; font-size: 22px; }
+.thap-ten small { opacity: .8; }
+.thap-so, .thap-gio { background: var(--giay); border: 2px solid var(--vien); border-radius: 16px; padding: 4px 16px; display: flex; flex-direction: column; align-items: center; box-shadow: var(--bong); }
+.thap-so span, .thap-gio span { font-size: 11px; color: var(--muc-nhat); }
+.thap-so b, .thap-gio b { font-family: 'Baloo 2'; font-size: 30px; line-height: 1; color: var(--tim-dam); }
+.thap-gio small { font-size: 11px; color: var(--do-dam); }
+.thap-gio.gap b { color: var(--do); animation: rung-nhe .5s infinite; }
+.thap-than { flex: 1; display: grid; grid-template-columns: minmax(180px, 280px) 1fr; gap: 16px; max-width: 1100px; width: 100%; margin: 0 auto; align-items: start; }
+.thap-ve { position: relative; height: min(62vh, 520px); border-radius: 22px; overflow: hidden; background: linear-gradient(180deg, #2a1f5c99, #140f2ecc); border: 3px solid #ffffff33; box-shadow: var(--bong); }
+.thap-trong { position: absolute; left: 0; right: 0; bottom: 0; height: 0; transition: transform .45s cubic-bezier(.3, 1.3, .5, 1); }
+.tang { position: absolute; left: 14%; right: 14%; border-radius: 10px; background: linear-gradient(180deg, #b7a58a, #8a7559); border: 2px solid #5e4c36; box-shadow: inset 0 -6px 0 #0002, inset 0 3px 0 #fff3; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; }
+.tang.da-qua { filter: brightness(.75) saturate(.8); }
+.tang.hien-tai { background: linear-gradient(180deg, #ffe08a, #e0a52b); border-color: #9a6a0c; box-shadow: 0 0 18px #ffc23d99, inset 0 -6px 0 #0002; }
+.tang.moc { border-color: #ffd36e; }
+.so-tang { font-weight: 900; color: #fff; text-shadow: 0 1px 2px #0008; font-size: 15px; }
+.co-moc { position: absolute; left: 8px; font-size: 13px; color: #fff; font-weight: 900; text-shadow: 0 1px 2px #000; }
+.nv-thap { position: absolute; left: 22%; width: 80px; height: 84px; z-index: 2; transition: bottom .3s; }
+.thap-cau { display: flex; flex-direction: column; gap: 12px; }
+.thap-cau .the-tu { max-width: none; }
+.nhan-giay { background: var(--tim); color: #fff; border-radius: 8px; padding: 0 6px; margin-left: 6px; }
+.thap-chet { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 30; }
+.mo-trang { color: #ffffffcc; font-size: 15px !important; }
+.ket-thap { align-items: center; text-align: center; }
+.so-to { font-family: 'Baloo 2'; font-size: 96px; font-weight: 800; line-height: 1; color: var(--tim-dam); }
+.nhan-so-to { margin-top: -8px; font-weight: 900; color: var(--muc-nhat); }
+.hang-to { font-size: 20px; }
+.ket-thap .kq-tu { width: 100%; text-align: left; padding: 0; }
+@media (max-width: 700px) {
+  .thap-than { grid-template-columns: 1fr; }
+  .thap-ve { height: 30vh; }
+  .thap-hud { gap: 8px; }
+  .thap-ten small { display: none; }
+}
+.luoi-home { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }

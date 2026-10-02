@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-319 bảng · 20 view · 0 enum · 124 trigger · 762 function
+320 bảng · 20 view · 0 enum · 124 trigger · 764 function
 
 ## _app_secrets
 
@@ -1393,6 +1393,20 @@
 | ngay_hoc_cuoi | date | Y |  |  |  |
 | tao_at | timestamp with time zone |  | now() |  |  |
 | cap_nhat_at | timestamp with time zone |  | now() |  |  |
+
+## dtv_thap_luot
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| uid | text |  |  | FK→dtv_nguoi_choi.uid |  |
+| mon | text |  | 'Tiếng Anh'::text |  |  |
+| che_do | text |  |  |  | `song_con` · `vo_tan` |
+| ngay | date |  |  |  |  |
+| tang | integer |  |  |  |  |
+| sai | integer |  | 0 |  |  |
+| ms | integer |  |  |  |  |
+| tao_at | timestamp with time zone |  | now() |  |  |
 
 ## dtv_tran
 
@@ -2799,7 +2813,7 @@
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→thanh_tuu.mon |  |
+| mon | text |  |  | PK FK→huy_hieu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -6592,6 +6606,8 @@ WITH luot AS (
 - `fn_dtv_gop_y(p_uid text, p_noi_dung text)` → void
 - `fn_dtv_ho_so(p_uid text)` → jsonb
 - `fn_dtv_ho_so_luu(p_uid text, p_ten text, p_nv text)` → jsonb
+- `fn_dtv_thap_bxh(p_che_do text, p_hom_nay boolean, p_uid text DEFAULT NULL::text)` → jsonb
+- `fn_dtv_thap_ghi(p_uid text, p_che_do text, p_tang integer, p_sai integer, p_ms integer)` → jsonb
 - `fn_duoi_ca_cua_toi()` → jsonb
 - `fn_duoi_dang_trang_thai(p_buoi uuid)` → jsonb
 - `fn_duoi_giay_sinh(p_buoi uuid, p_hoc_sinh uuid, p_mon text, p_ma_dang text, p_loai text, p_so_cau integer DEFAULT 5)` → jsonb
@@ -6675,8 +6691,8 @@ WITH luot AS (
 - `fn_hs_len_bac_da_xem(p_mon text)` → void
 - `fn_hs_len_bac_moi(p_mon text)` → jsonb
 - `fn_hs_lich_bo_tro()` → jsonb
-- `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
+- `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_luu_giao_dien(p_skin text, p_che_do text, p_hinh_nen text)` → jsonb
 - `fn_hs_luu_hieu_ung_game(p_bat boolean)` → jsonb
 - `fn_hs_nhiem_vu_cua_toi(p_mon text)` → jsonb
@@ -6913,8 +6929,8 @@ WITH luot AS (
 - `hs_sotay_dang(p_ma_dang text, p_mon text DEFAULT 'Toán'::text, p_nhanh text DEFAULT NULL::text)` → jsonb
 - `hs_sotay_tim(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_nhanh text DEFAULT NULL::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
@@ -7052,6 +7068,9 @@ WITH luot AS (
 | dtv_gop_y | dtv_gop_y_noi_dung_check | `CHECK (((char_length(btrim(noi_dung)) >= 3) AND (char_length(btrim(noi_dung)) <= 2000)))` |
 | dtv_nguoi_choi | dtv_nguoi_choi_ten_check | `CHECK (((char_length(btrim(ten)) >= 2) AND (char_length(btrim(ten)) <= 25)))` |
 | dtv_nguoi_choi | dtv_nguoi_choi_uid_check | `CHECK ((uid ~ '^[A-Za-z0-9_-]{16,64}$'::text))` |
+| dtv_thap_luot | dtv_thap_luot_ms_check | `CHECK ((ms >= 0))` |
+| dtv_thap_luot | dtv_thap_luot_sai_check | `CHECK ((sai >= 0))` |
+| dtv_thap_luot | dtv_thap_luot_tang_check | `CHECK ((tang >= 0))` |
 | dtv_tran | dtv_tran_so_cau_check | `CHECK ((so_cau >= 0))` |
 | dtv_tran | dtv_tran_so_dung_check | `CHECK ((so_dung >= 0))` |
 | game_bxh_cau | game_bxh_cau_bo_check | `CHECK ((bo ~ '^[a-z]{2,4}$'::text))` |
