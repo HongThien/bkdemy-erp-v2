@@ -34753,3 +34753,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Sửa:** `KhoTaiLieuScreen.tsx` — bấm 📱 trên dòng Giáo trình buổi mở hộp 2 lựa chọn (Phát hành từng phần · buổi học / Phát hành toàn bộ · luyện tập), áp cho cả
   giáo trình thường (phần = dạng) lẫn bài gán từ đề (phần = Phần I/II/III). BTVN · ET bấm là phát hành cả bài như cũ. Chỗ chọn ở Kho đề thi giữ lại (cùng một hàm).
 - **Kiểm:** `tsc` sạch. CHƯA bấm trên màn thật (preview không có phiên đăng nhập) — cần Thùy thử: Kho tài liệu › 📱 trên một Giáo trình buổi.
+
+- (02/10 chiều) **Miệng sửa lần 2** (BatThu theo commit sau `8b55fb5`): CEO "khuôn miệng rộng quá" + "hở cả phần dưới cằm" ⇒ miệng ngắn lại (khoé 0,85R), há nhỏ hơn; bỏ cách TÁCH 2 KHỐI (đường cắt chạy dọc má xuống cằm thành vết nứt răng cưa, há ra toác) ⇒ đầu 1 khối liền, chỉ rạch KHE MÔI + khoang, môi dưới theo xương miệng, má giãn như da. **Bài học:** cử động 1 phần của khối liền (hàm, mi mắt) ⇒ rạch khe ĐÚNG chỗ mở + trọng số xương mượt, đừng cắt rời khối (đường cắt kéo dài ra ngoài chỗ mở là thành vết nứt).
