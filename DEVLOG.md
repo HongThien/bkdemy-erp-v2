@@ -34799,3 +34799,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Ghi vào HANDOFF (khối VIỆC KẾ TIẾP):** MÔN MỚI theo §1.6, dựng đúng khuôn kho Đại qua registry · khung bản đồ = cây thư mục (tầng 1/2/3 = chủ đề / chuyên đề / dạng).
   Còn phải hỏi: tên môn · đường dẫn kho · "level" ứng với khối hay cấp độ riêng · định dạng file · lô đầu làm gì · ai duyệt · đã có lớp / học sinh chưa.
 - CTO đề xuất 4 lát (quét cây → bảng nháp cho Thùy duyệt · dựng môn · ghi bản đồ · nhập câu theo chuyên đề, dạng lấy theo thư mục). CHƯA ai gật. Không làm trong phiên này.
+
+## 2026-10-02 (bổ sung 2) — môn Toán mới: kho tài liệu chỉ có 2 mức
+
+- **Thùy:** "Hiện tại thì nó có 2 mức thôi. m cứ chia tạm 2 mức theo folder là được."
+- Ghi HANDOFF: lập bản đồ TẠM theo 2 tầng thư mục. CHƯA chốt hai tầng đó là (chủ đề + chuyên đề, câu vào dạng chờ) hay (chuyên đề + dạng, dưới một chủ đề tạm) —
+  khác nhau ở chỗ câu dạng chờ không duyệt được vào kho chuẩn và không tính mastery. Context mới nhìn tên folder thật rồi hỏi.

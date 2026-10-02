@@ -222,12 +222,16 @@ bản đồ kiến thức Thùy tự làm; gán mẫu / skill gán dạng / lô 
 - **ĐÃ CHỐT (Thùy 02/10):** (1) *"Nó là 1 loại toán khác — độc lập với chương trình toán hiện tại. Nên coi nó như là 1 MÔN luôn. Mọi thứ giống toán hiện tại."*
   ⇒ MÔN MỚI theo §1.6 (trung tâm riêng: nhãn `mon` riêng, bảng kho riêng, tiền tố mã riêng), dựng theo ĐÚNG khuôn kho Đại, đi qua registry — không `if (mon === …)`.
   (2) *"T có 1 kho tài liệu cũng chia các level rồi. Coi tên các folder là các mức chủ đề – chuyên đề – dạng bài thôi."* ⇒ khung bản đồ = CÂY THƯ MỤC của kho tài liệu
-  (không lập từ SGK như K12): tên folder tầng 1 / 2 / 3 = chủ đề / chuyên đề / dạng.
+  (không lập từ SGK như K12): tên folder = các mức của bản đồ. (3) *"Hiện tại thì nó có 2 mức thôi. Cứ chia TẠM 2 mức theo folder là được."* ⇒ kho đang có 2 tầng
+  thư mục, bản đồ ERP có 3 tầng (chủ đề – chuyên đề – dạng) ⇒ lập TẠM theo 2 tầng, tầng còn thiếu để sau. **Hai tầng đó ứng với hai tầng nào của bản đồ thì CHƯA chốt** —
+  nhìn tên folder thật rồi hỏi Thùy, 2 cách: (i) tầng 1 = chủ đề, tầng 2 = chuyên đề, câu vào DẠNG CHỜ của chuyên đề (`…000000`, cơ chế có sẵn) rồi tách dạng sau —
+  nhưng câu dạng chờ không duyệt được vào kho chuẩn và không tính mastery; (ii) tầng 1 = chuyên đề, tầng 2 = dạng, gom dưới một chủ đề tạm — dùng được ngay (duyệt, đo),
+  về sau chỉ thêm tầng chủ đề phía trên. CTO nghiêng về (ii) nếu folder tầng 2 đủ hẹp để coi là một dạng bài.
 - **CÒN PHẢI HỎI Thùy trước khi viết dòng nào (câu về ĐÍCH, không tự đoán):** (a) TÊN môn (để đặt nhãn `mon`, tiền tố mã, tên bảng) · (b) ĐƯỜNG DẪN kho tài liệu đó
   (02/10 CTO nhìn `E:\BK ACADEMY\` không tự nhận ra thư mục nào — đừng đoán) · (c) "level" trong kho ứng với gì ở ERP: khối? cấp độ riêng của môn? (mã dạng hiện =
   tiền tố + KHỐI + chủ đề + chuyên đề + dạng) · (d) định dạng file (Word MathType / PDF chữ / PDF scan), có lời giải + đáp án không · (e) lô đầu làm gì: chỉ lập bản đồ,
   hay đổ câu vào kho luôn · (f) ai duyệt bản đồ + câu · (g) môn này có lớp / học sinh trên ERP chưa (ảnh hưởng: lớp gắn `mon`, app HS, mastery).
-- **Cách đi CTO đề xuất (theo lát, chưa ai gật):** ① quét cây thư mục → BẢNG NHÁP 3 tầng + số file mỗi nút, 0 AI, không đụng DB; nút lệch độ sâu (file nằm sai tầng,
+- **Cách đi CTO đề xuất (theo lát, chưa ai gật):** ① quét cây thư mục → BẢNG NHÁP 2 tầng (đúng như folder) + số file mỗi nút, 0 AI, không đụng DB; nút lệch độ sâu (file nằm sai tầng,
   folder thừa tầng, tên trùng khác chỗ) thì NÊU RA chứ không đoán → Thùy duyệt bảng · ② dựng môn mới qua registry (migration bảng kho theo khuôn Đại + tiền tố mã),
   chạy thử bằng `thu-migration.mjs` · ③ ghi bản đồ từ bảng đã duyệt · ④ nhập câu từ file theo từng chuyên đề: dựng bộ file mẫu có đáp án người xác nhận trước, đo, rồi
   mới chạy hàng loạt; câu vào ở trạng thái chưa duyệt, dạng lấy theo THƯ MỤC chứa file (nhân chứng có sẵn — không cần AI gán dạng).
