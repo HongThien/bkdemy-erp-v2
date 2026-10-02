@@ -306,7 +306,10 @@ def doc(file_docx, unit, ra):
                 continue
             pa = tach_phuong_an(chu)
             if pa and nl_hien_tai:
-                stt_trong_nl += 1
+                # Dòng phương án có ghi số chỗ trống ("4. A. at B. on…") ⇒ dùng ĐÚNG số đó (khoá tự nhiên). Chỉ khi không ghi
+                # số mới đếm — đếm theo vị trí lệch âm thầm ngay khi file thiếu/thừa 1 dòng (CLAUDE.md §2 "danh tính bám khoá").
+                m_so = re.match(r'^[\s|]*(\d+)\s*[.)]', tron(chu))
+                stt_trong_nl = int(m_so.group(1)) if m_so else stt_trong_nl + 1
                 them(f'({stt_trong_nl}) ______', pa, nl_hien_tai, stt_trong_nl)
                 continue
             if len(tron(chu)) > 150:
@@ -436,6 +439,20 @@ def doc(file_docx, unit, ra):
                 pending_stem.append(chu)
             continue
     chot_mcq()
+
+    # Kiểm chéo điền từ: tập số chỗ trống "(n)" trong đoạn văn PHẢI trùng tập số câu gắn vào đoạn đó. Lệch (file thiếu/thừa
+    # dòng phương án, đoạn không đánh số) ⇒ gắn cờ CẢ ĐOẠN — không đoán câu nào ứng chỗ nào (§1.5 thà bỏ trống còn hơn đánh sai).
+    for nl in ngu_lieu:
+        ds = [c for c in cau if c['ngu_lieu'] == nl['ref'] and c['dang_de'] in ('dien_thong_bao', 'dien_doan_van')]
+        if not ds:
+            continue
+        # "(n)" chỉ tính là chỗ trống khi LIỀN dấu gạch dưới — tránh số điện thoại "(555) 987-…" trong thông báo
+        tt = tron(nl['noi_dung'])
+        cho = sorted({int(a or b) for a, b in re.findall(r'\((\d{1,2})\)\s*_{2,}|_{2,}\s*\((\d{1,2})\)', tt)})
+        so_cau = sorted(c['thu_tu_trong_ngu_lieu'] for c in ds)
+        if cho != so_cau:
+            for c in ds:
+                c['loi_cau_truc'].append(f'cloze_lech_cho_trong(doan={cho},cau={so_cau})')
 
     # ảnh biển báo → file
     for nl in ngu_lieu:
