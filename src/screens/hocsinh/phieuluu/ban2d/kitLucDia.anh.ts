@@ -1,6 +1,6 @@
 // SINH TỰ ĐỘNG bởi scripts/anime-kit-lucdia.mjs — đừng sửa tay. Kích thước (px) + neo (0–1 trong hộp đã cắt) của ảnh công trình / nhân vật từng kit lục địa.
 export interface AnhKit { w: number; h: number; ax: number; ay: number }
-export const ANH_KIT: Record<string, { moc: AnhKit[]; nv: { nam: AnhKit; nu: AnhKit } }> = {
+export const ANH_KIT: Record<string, { moc: AnhKit[]; nv?: { nam: AnhKit; nu: AnhKit } }> = {
   "rung": {
     "moc": [
       {
@@ -132,6 +132,98 @@ export const ANH_KIT: Record<string, { moc: AnhKit[]; nv: { nam: AnhKit; nu: Anh
         "ay": 1
       }
     }
+  },
+  "dam_lay": {
+    "moc": [
+      {
+        "w": 640,
+        "h": 627,
+        "ax": 0.5,
+        "ay": 0.97
+      },
+      {
+        "w": 640,
+        "h": 371,
+        "ax": 0.5,
+        "ay": 0.97
+      },
+      {
+        "w": 640,
+        "h": 785,
+        "ax": 0.5,
+        "ay": 0.97
+      },
+      {
+        "w": 640,
+        "h": 432,
+        "ax": 0.5,
+        "ay": 0.5
+      },
+      {
+        "w": 640,
+        "h": 354,
+        "ax": 0.5,
+        "ay": 0.97
+      },
+      {
+        "w": 640,
+        "h": 484,
+        "ax": 0.5,
+        "ay": 0.97
+      },
+      {
+        "w": 640,
+        "h": 425,
+        "ax": 0.5,
+        "ay": 0.97
+      },
+      {
+        "w": 640,
+        "h": 638,
+        "ax": 0.5,
+        "ay": 0.97
+      }
+    ]
+  },
+  "sa_mac": {
+    "moc": [
+      {
+        "w": 640,
+        "h": 469,
+        "ax": 0.5,
+        "ay": 0.995
+      },
+      {
+        "w": 640,
+        "h": 616,
+        "ax": 0.5,
+        "ay": 0.995
+      },
+      {
+        "w": 640,
+        "h": 426,
+        "ax": 0.5,
+        "ay": 0.995
+      },
+      {
+        "w": 640,
+        "h": 464,
+        "ax": 0.5,
+        "ay": 0.995
+      },
+      {
+        "w": 640,
+        "h": 475,
+        "ax": 0.5,
+        "ay": 0.995
+      },
+      {
+        "w": 640,
+        "h": 352,
+        "ax": 0.5,
+        "ay": 0.995
+      }
+    ]
   },
   "anh_dao": {
     "moc": [

@@ -15,6 +15,9 @@ const KITS = [
     nam: ['nam_dung', 'nam_chay_chan_trai', 'nam_chay_chan_phai'], nu: ['nu_dung', 'nu_chay_chan_trai', 'nu_chay_chan_phai'] },
   { biome: 'thanh_co', dir: 'hs-luc-dia-thanh_co-v1', nen: 'assets/backdrop/backdrop_luc_dia_thanh_co.png', decor: M(8), neoCat: [0.5, 1],
     nam: ['chibi_nam_dung', 'chibi_nam_chay_1', 'chibi_nam_chay_2'], nu: ['chibi_nu_dung', 'chibi_nu_chay_1', 'chibi_nu_chay_2'] },
+  { biome: 'dam_lay', dir: 'hs-luc-dia-dam_lay-v1', nen: 'assets/backdrop/backdrop_luc_dia_dam_lay.png',
+    decor: ['decor_01_nha_san', 'decor_02_leu_da', 'decor_03_thap_canh', 'decor_04_cau_van', 'decor_06_hang_bun', 'decor_05_den_reu', /* ĐỔI chỗ 5↔6 theo ĐƯỜNG THẬT (cầu → hang bùn → đền rêu), xem DEVLOG 02/10 */ 'decor_07_phao_dai_go', 'decor_08_lau_dai_dom_dom'], neoCat: [0.5, 0.97], neoRieng: { 3: [0.5, 0.5] } /* cầu ván: neo ở TÂM mặt cầu */ },
+  { biome: 'sa_mac', dir: 'hs-luc-dia-sa-mac-6-v1', nen: 'assets/backdrop/backdrop_luc_dia_sa_mac_6.png', decor: M(6), neoCat: [0.5, 0.995] },
   { biome: 'anh_dao', dir: 'hs-luc-dia-and_dao-v4', nen: 'assets/backdrop/backdrop_luc_dia_and_dao.png', decor: M(8), neoCat: [0.5, 0.94],
     nam: ['chibi_nam_dung', 'chibi_nam_chay_1', 'chibi_nam_chay_2'], nu: ['chibi_nu_dung', 'chibi_nu_chay_1', 'chibi_nu_chay_2'] },
 ]
@@ -40,16 +43,16 @@ for (const kit of KITS) {
   const nen = await loadImage(path.join(dir, kit.nen)), cn = createCanvas(nen.width, nen.height); cn.getContext('2d').drawImage(nen, 0, 0)
   fs.writeFileSync(path.join(out, 'nen.jpg'), cn.toBuffer('image/jpeg', 80))
   const moc = []
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < kit.decor.length; i++) {
     const a = await doc(path.join(dir, 'assets/decor', kit.decor[i] + '.png')), b = hop(a), k = Math.min(1, 640 / b.w)
     const { w, h } = await cat(a, b, k, path.join(out, `moc_${i + 1}.webp`))
     // neo: kit rừng cho theo PNG gốc ⇒ đổi sang toạ độ trong hộp đã cắt; hai kit kia neo ở giữa đáy hộp (bỏ lề alpha)
-    const ax = kit.neoGoc ? (kit.neoGoc[i][0] * a.W - b.x) / b.w : kit.neoCat[0]
-    const ay = kit.neoGoc ? (kit.neoGoc[i][1] * a.H - b.y) / b.h : kit.neoCat[1]
+    const ax = kit.neoGoc ? (kit.neoGoc[i][0] * a.W - b.x) / b.w : (kit.neoRieng?.[i] ?? kit.neoCat)[0]
+    const ay = kit.neoGoc ? (kit.neoGoc[i][1] * a.H - b.y) / b.h : (kit.neoRieng?.[i] ?? kit.neoCat)[1]
     moc.push({ w, h, ax: +Math.min(1, Math.max(0, ax)).toFixed(3), ay: +Math.min(1, Math.max(0, ay)).toFixed(3) })
   }
   const nv = {}
-  for (const g of ['nam', 'nu']) {
+  for (const g of kit.nam ? ['nam', 'nu'] : []) { // nhân vật riêng của kit (kit cũ) — bản đồ giờ dùng nhân vật chính chung nên kit mới bỏ qua
     const fr = []; for (const f of kit[g]) fr.push(await doc(path.join(dir, 'assets/characters', f + '.png')))
     // hộp chung = hợp hộp alpha 3 tư thế (cùng đường chân); trục thân x≈0.55 của hộp gốc (DESIGN rừng §6) thay cho tâm bề rộng áo choàng
     const bs = fr.map((a) => hop(a)), x0 = Math.min(...bs.map((b) => b.x)), y0 = Math.min(...bs.map((b) => b.y))
@@ -58,8 +61,8 @@ for (const kit of KITS) {
     for (let i = 0; i < 3; i++) ({ w, h } = await cat(fr[i], B, k, path.join(out, `nv_${g}_${['dung', 'c1', 'c2'][i]}.webp`)))
     nv[g] = { w, h, ax: +Math.min(1, Math.max(0, (0.55 * fr[0].W - B.x) / B.w)).toFixed(3), ay: 1 }
   }
-  meta[kit.biome] = { moc, nv }
-  console.log(kit.biome, 'ok', moc.map((m) => `${m.w}x${m.h}`).join(' '), '| nv', nv.nam.w + 'x' + nv.nam.h)
+  meta[kit.biome] = nv.nam ? { moc, nv } : { moc }
+  console.log(kit.biome, 'ok', moc.map((m) => `${m.w}x${m.h}`).join(' '))
 }
 fs.writeFileSync('src/screens/hocsinh/phieuluu/ban2d/kitLucDia.anh.ts',
-  `// SINH TỰ ĐỘNG bởi scripts/anime-kit-lucdia.mjs — đừng sửa tay. Kích thước (px) + neo (0–1 trong hộp đã cắt) của ảnh công trình / nhân vật từng kit lục địa.\nexport interface AnhKit { w: number; h: number; ax: number; ay: number }\nexport const ANH_KIT: Record<string, { moc: AnhKit[]; nv: { nam: AnhKit; nu: AnhKit } }> = ${JSON.stringify(meta, null, 2)}\n`)
+  `// SINH TỰ ĐỘNG bởi scripts/anime-kit-lucdia.mjs — đừng sửa tay. Kích thước (px) + neo (0–1 trong hộp đã cắt) của ảnh công trình / nhân vật từng kit lục địa.\nexport interface AnhKit { w: number; h: number; ax: number; ay: number }\nexport const ANH_KIT: Record<string, { moc: AnhKit[]; nv?: { nam: AnhKit; nu: AnhKit } }> = ${JSON.stringify(meta, null, 2)}\n`)

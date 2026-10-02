@@ -19,7 +19,7 @@ const DUNG_CACH = 0.014 // đứng cách cửa công trình một đoạn đư�
 const NHO_VI_TRI: Record<string, number> = {} // "rời màn rồi quay lại = đúng chỗ cũ" — sống tới F5
 
 const HERO_AX = HERO_CHAY.nam.ax
-export const coKit = (biome: string, soVung: number) => !!KIT_LUC_DIA[biome] && soVung > 0 && soVung <= 8
+export const coKit = (biome: string, soVung: number) => !!KIT_LUC_DIA[biome] && soVung > 0 && soVung <= KIT_LUC_DIA[biome].moc.length
 
 /** Đường tâm → dãy điểm dày (Catmull-Rom) + độ dài tích luỹ. Toạ độ chuẩn hoá theo CHIỀU RỘNG (x∈0–1, y∈0–0,563) để cự ly đúng. */
 function dungDuong(duong: [number, number][]) {

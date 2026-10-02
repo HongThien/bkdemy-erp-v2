@@ -48,4 +48,18 @@ export const KIT_LUC_DIA: Record<string, KitLucDia> = {
     ...duongCua('anh_dao', '0,44 4,44 8.5,42* 13,42 16,45 18,51 18,57 21,62 26,64* 30,62 32,58 32,52 33,47* 36,43 40,44 43,45 47,44* 51,43 54,40 57,37 59,36* 61,39 62,43 60,49 59,54 61,60 65,64 69,67* 73,65 75,60 75,52 76,43 78,34 80,29* 82,29 83,33 83,41 81,50 81,56 84,61 89,64* 93,66 97,65 100,62'),
     chu: { mau: '#362A43', vien: '#FFF4DD' }, nv: [5, 7, 9],
   },
+  // ĐẦM LẦY (kit v1): thứ tự công trình theo ĐƯỜNG THẬT trên nền — cầu → hang bùn → đền rêu (kit ghi đền 5, hang 6 nhưng đường đi qua hang trước); mốc chuyên đề 5/6 đã đổi chỗ theo đó (DEVLOG 02/10).
+  dam_lay: {
+    biome: 'dam_lay',
+    moc: [{ x: 11, y: 38, w: 11 }, { x: 21, y: 72, w: 14 }, { x: 35, y: 40, w: 10 }, { x: 48, y: 59, w: 15 }, { x: 69, y: 81, w: 19 }, { x: 58, y: 34, w: 14 }, { x: 83, y: 61, w: 17 }, { x: 90, y: 35, w: 17 }],
+    ...duongCua('dam_lay', '0,38* 100,48*'),
+    chu: { mau: '#FFF2CE', vien: '#2B2140' }, nv: [5, 7, 9],
+  },
+  // SA MẠC 6 MỐC (kit v1 chỉ có 6 công trình, không có bản 8): lục địa sa mạc >6 chuyên đề ⇒ rơi về bản vẽ chung.
+  sa_mac: {
+    biome: 'sa_mac',
+    moc: [{ x: 14, y: 84, w: 23 }, { x: 19, y: 33, w: 19 }, { x: 41, y: 85, w: 21 }, { x: 55, y: 28, w: 19 }, { x: 82, y: 85, w: 22 }, { x: 88, y: 34, w: 20 }],
+    ...duongCua('sa_mac', '0,88* 100,34*'),
+    chu: { mau: '#50372D', vien: '#FFF3D6' }, nv: [5, 7, 9],
+  },
 }
