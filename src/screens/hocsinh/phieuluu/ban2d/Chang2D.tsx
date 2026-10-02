@@ -63,10 +63,10 @@ export function Chang2D({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: Vun
                 {i === toi && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ bottom: '100%', marginBottom: 2 }}><MuiTen co={Math.max(28, coBe * 0.4)} /></span>}
                 <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center text-center"
                   style={dai
-                    ? { ...CHU_VIEN, top: '100%', marginTop: 2, width: 'max-content', maxWidth: 240, transform: chon || hov === x.ma ? 'scale(1.06)' : undefined }
+                    ? { ...CHU_VIEN, top: '100%', marginTop: 2, width: 'max-content', maxWidth: 260, transform: chon || hov === x.ma ? 'scale(1.06)' : undefined }
                     : { ...THE_TRON, top: '100%', marginTop: 4, borderRadius: 999, width: 26, height: 26, justifyContent: 'center', padding: 0, background: 'var(--sk-surface)', borderColor: chon || hov === x.ma ? 'var(--sk-acc)' : undefined }}>
                   {dai ? <>
-                    <span className="block max-w-full text-[14px] font-bold leading-[1.15]" style={{ ...HEAD, color: 'var(--sk-ink)' }}>{x.ten}</span>
+                    <span className="block max-w-full text-[16px] font-bold leading-[1.15]" style={{ ...HEAD, color: 'var(--sk-ink)' }}>{x.ten}</span>
                     <Sao5 ti={x.trang_thai === 'dat' ? 1 : x.mastery ?? 0} co={19} />
                   </> : <span className="text-[12px] font-extrabold" style={{ ...HEAD, color: 'var(--sk-ink)' }}>{i + 1}</span>}
                 </span>

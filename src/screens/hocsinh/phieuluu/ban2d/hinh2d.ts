@@ -25,21 +25,24 @@ const CO_SAN = {
  *  o = 10 vùng theo THỨ TỰ ĐƯỜNG ĐI (chủ đề thứ i của khối ⇒ vùng i): tâm x,y (% khung 16:9) + bán kính r (% bề rộng) + biome của vùng trong tranh
  *  (ĐI VÀO bên trong dùng biome này — khớp cảnh thế giới; không theo biome DB). Đo trên ảnh ghép có lưới 5% (02/10 — ChatGPT không giao DESIGN.md).
  *  Khối ÍT chủ đề hơn ⇒ vùng thừa phủ sương "chưa khai phá" (vùng dính liền đại lục, không bỏ đi được); NHIỀU hơn ⇒ rơi về ghép mảnh. */
-export type OTranh = { x: number; y: number; r: number; biome: string }
+/** hop = hộp chứa MẢNH VÙNG (cắt từ lớp đất theo ô Voronoi quanh tâm vùng — pixel gốc, khớp tuyệt đối) dùng cho hiệu ứng rê chuột: nhích lên + sáng. % khung. */
+export type OTranh = { x: number; y: number; r: number; biome: string; hop?: { x: number; y: number; w: number; h: number } }
+/** ảnh mảnh vùng (the_gioi_vung_<biome>.webp) */
+export const anhManhVung = (biome: string) => `${G}/the_gioi_vung_${biome}.webp`
 export const TOAN_CANH_THE_GIOI: { nen: string; dat: string; o: OTranh[] } | null = {
   nen: `${G}/the_gioi_bien.jpg`,
   dat: `${G}/the_gioi_dat.webp`,
   o: [
-    { x: 17, y: 25, r: 11, biome: 'rung' },
-    { x: 14, y: 63, r: 10, biome: 'anh_dao' },
-    { x: 40, y: 63, r: 9, biome: 'thanh_co' },
-    { x: 57, y: 78, r: 9, biome: 'dam_lay' },
-    { x: 60, y: 45, r: 10, biome: 'sa_mac' },
-    { x: 42, y: 18, r: 9, biome: 'bang' },
-    { x: 62, y: 20, r: 8, biome: 'nui_lua' },
-    { x: 87, y: 21, r: 8, biome: 'bien_dao' },
-    { x: 88, y: 52, r: 7, biome: 'troi_sao' },
-    { x: 87, y: 80, r: 8, biome: 'dong_gio' },
+    { x: 17, y: 25, r: 11, biome: 'rung', hop: { x: 0, y: 2.98, w: 35.29, h: 44.63 } },
+    { x: 14, y: 63, r: 10, biome: 'anh_dao', hop: { x: 0, y: 43.78, w: 29.07, h: 46.97 } },
+    { x: 40, y: 63, r: 9, biome: 'thanh_co', hop: { x: 27.69, y: 40.06, w: 25, h: 51.22 } },
+    { x: 57, y: 78, r: 9, biome: 'dam_lay', hop: { x: 38.76, y: 61.64, w: 34.57, h: 35.07 } },
+    { x: 60, y: 45, r: 10, biome: 'sa_mac', hop: { x: 41.99, y: 28.48, w: 36.72, h: 37.83 } },
+    { x: 42, y: 18, r: 9, biome: 'bang', hop: { x: 29.67, y: 1.49, w: 23.68, h: 39.11 } },
+    { x: 62, y: 20, r: 8, biome: 'nui_lua', hop: { x: 52.39, y: 6.06, w: 22.13, h: 25.4 } },
+    { x: 87, y: 21, r: 8, biome: 'bien_dao', hop: { x: 74.34, y: 7.23, w: 25.12, h: 31.56 } },
+    { x: 88, y: 52, r: 7, biome: 'troi_sao', hop: { x: 75.9, y: 37.51, w: 22.73, h: 27.31 } },
+    { x: 87, y: 80, r: 8, biome: 'dong_gio', hop: { x: 72.79, y: 63.12, w: 26.38, h: 30.5 } },
   ],
 }
 /** Chế độ toàn cảnh áp dụng ⇒ gán biome theo VÙNG TRONG TRANH cho từng chủ đề (đi vào trong đúng cảnh vùng vừa bấm). Chỉ đổi phần VẼ, không đụng dữ liệu. */

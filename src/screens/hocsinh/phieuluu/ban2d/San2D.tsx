@@ -178,8 +178,8 @@ export const CHU_VIEN = {
 export function MuiTen({ co }: { co: number }) {
   return (
     <span className="ban2d-mui-ten pointer-events-none inline-block" style={{ width: co, height: co * 1.1 }} role="img" aria-label="Em đang ở đây">
-      <svg viewBox="0 0 40 44" className="h-full w-full overflow-visible" style={{ filter: 'drop-shadow(0 0 6px var(--sk-acc)) drop-shadow(0 3px 4px var(--sk-bg))' }}>
-        <path d="M13 2 H27 V20 H37 L20 41 L3 20 H13 Z" fill="var(--sk-acc)" stroke="var(--sk-bg)" strokeWidth="3" strokeLinejoin="round" />
+      <svg viewBox="0 0 40 44" className="h-full w-full overflow-visible" style={{ filter: 'drop-shadow(0 0 7px var(--sk-acc)) drop-shadow(0 0 2px var(--sk-acc))' }}>
+        <path d="M13 2 H27 V20 H37 L20 41 L3 20 H13 Z" fill="var(--sk-acc)" strokeLinejoin="round" />
         <path d="M16 5 H21 V22 H14 Z" fill="var(--sk-ink)" opacity="0.45" />
       </svg>
       <style>{'@keyframes ban2d-nhap{0%,100%{transform:translateY(0)}50%{transform:translateY(-28%)}} @media (prefers-reduced-motion: no-preference){.ban2d-mui-ten{animation:ban2d-nhap .9s ease-in-out infinite}}'}</style>

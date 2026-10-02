@@ -9,7 +9,7 @@ import { HEAD, useMedia } from '../../skin/KhungHS'
 import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import { thongKe, type BanDoV, type LucDiaV } from '../kieu'
 import { boCucTheGioi, heSoCo } from './boCuc'
-import { TOAN_CANH_THE_GIOI, anhLucDia, anhNenTheGioi, anhVat } from './hinh2d'
+import { TOAN_CANH_THE_GIOI, anhLucDia, anhManhVung, anhNenTheGioi, anhVat } from './hinh2d'
 import { CHU_VIEN, Co, CssBan2D, MuiTen, NenBien, Sao5, Suong, useKhung2D, viTri } from './San2D'
 import { LucDiaTam, QuaiTam } from './HinhTam'
 
@@ -31,8 +31,8 @@ function usePhong(onChon: (ma: string) => void) {
 function NhanLuc({ l, t, dai }: { l: LucDiaV; t: ReturnType<typeof thongKe>; dangO: boolean; dai: boolean }) {
   return (
     <>
-      <span className="block max-w-full font-bold leading-[1.15]" style={{ ...HEAD, color: 'var(--sk-ink)', fontSize: dai ? 15.5 : 12 }}>{l.ten}</span>
-      <Sao5 ti={t.tong ? t.dat / t.tong : 0} co={dai ? 22 : 15} />
+      <span className="block max-w-full font-bold leading-[1.15]" style={{ ...HEAD, color: 'var(--sk-ink)', fontSize: dai ? 18 : 13 }}>{l.ten}</span>
+      <Sao5 ti={t.tong ? t.dat / t.tong : 0} co={dai ? 24 : 16} />
     </>
   )
 }
@@ -45,6 +45,10 @@ function ToanCanh({ banDo, b, onChon, hienTai, thanh }: Props) {
   const { chon, style } = usePhong(onChon)
   const ds = useMemo(() => banDo.luc_dia.map((l) => ({ l, t: thongKe(l) })), [banDo])
   const W = khung.w, H = khung.h
+  // rê chuột vào vùng ⇒ MẢNH VÙNG (cắt đúng pixel từ lớp đất) nhích lên + sáng viền (Thùy 02/10 "bản trước có làm rồi").
+  // Mảnh chỉ nạp khi chuột vào bản đồ lần đầu — iPad cảm ứng không có rê chuột, không phải tải thêm.
+  const [hov, setHov] = useState<number | null>(null)
+  const [napManh, setNapManh] = useState(false)
 
   return (
     <div className="ban2d absolute inset-0 overflow-hidden" data-dong="1" style={{ background: b.troi }}>
@@ -52,8 +56,14 @@ function ToanCanh({ banDo, b, onChon, hienTai, thanh }: Props) {
       {/* phần thừa ngoài khung 16:9: chính bức tranh phóng to + mờ + tối ⇒ không có viền đen */}
       <img src={tc.nen} alt="" aria-hidden className="absolute inset-0 h-full w-full scale-110 object-cover" style={{ filter: 'blur(18px) brightness(.55)' }} draggable={false} />
       <div ref={ref} className="absolute inset-0 flex items-center justify-center">
-        <div className="ban2d-zoom relative overflow-hidden" style={{ width: W, height: H, ...style }}>
+        <div className="ban2d-zoom relative overflow-hidden" style={{ width: W, height: H, ...style }} onPointerEnter={(e) => { if (e.pointerType === 'mouse') setNapManh(true) }}>
           {W > 0 && <><img src={tc.nen} alt="" className="absolute inset-0 h-full w-full select-none" draggable={false} /><img src={tc.dat} alt="" className="absolute inset-0 h-full w-full select-none" draggable={false} /></>}
+          {W > 0 && napManh && tc.o.map((o, i) => o.hop && ds[i] && (
+            <img key={`manh${i}`} src={anhManhVung(o.biome)} alt="" aria-hidden draggable={false} className="pointer-events-none absolute z-[5] select-none"
+              style={{ left: `${o.hop.x}%`, top: `${o.hop.y}%`, width: `${o.hop.w}%`, height: `${o.hop.h}%`, opacity: hov === i ? 1 : 0,
+                transform: hov === i ? `translateY(${-H * 0.014}px)` : 'none', transition: 'opacity .18s ease, transform .22s ease',
+                filter: `drop-shadow(0 0 3px ${b.vang}) drop-shadow(0 0 10px ${b.vang}) drop-shadow(0 ${H * 0.018}px 8px ${b.troi}) brightness(1.08)` }} />
+          ))}
           {W > 0 && tc.o.map((o, i) => {
             const x = (o.x / 100) * W, y = (o.y / 100) * H, d = (o.r / 100) * W * 2
             const vong = { left: x, top: y, width: d, height: d * 0.82, transform: 'translate(-50%,-50%)' } as const
@@ -66,16 +76,17 @@ function ToanCanh({ banDo, b, onChon, hienTai, thanh }: Props) {
             )
             const { l, t } = m, dangO = hienTai === l.ma
             return (
-              <div key={l.ma} className="absolute" style={vong}>
-                {t.trangThai === 'fog' && <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[50%]" style={{ background: `radial-gradient(closest-side, ${b.troi}73, ${b.troi}40 70%, transparent)`, backdropFilter: 'saturate(.35)', WebkitBackdropFilter: 'saturate(.35)' }} />}
+              <div key={l.ma} className="absolute z-[6]" style={vong}>
+                {t.trangThai === 'fog' && <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[50%] transition-opacity" style={{ opacity: hov === i ? 0 : 1, background: `radial-gradient(closest-side, ${b.troi}73, ${b.troi}40 70%, transparent)`, backdropFilter: 'saturate(.35)', WebkitBackdropFilter: 'saturate(.35)' }} />}
                 {dangO && <span className="ban2d-sang pointer-events-none absolute left-1/2 top-1/2 rounded-[50%]" style={{ width: '110%', height: '110%', transform: 'translate(-50%,-50%)', background: `radial-gradient(closest-side, transparent 55%, ${b.vang}66 80%, transparent)` }} />}
                 <button onClick={() => chon(l.ma, x, y)} aria-label={`${l.ten}: ${t.trangThai === 'fog' ? 'chưa đo' : `${t.dat}/${t.tong} chặng đạt`}`}
-                  className="absolute inset-0 rounded-[50%] transition-shadow hover:shadow-[0_0_0_3px_var(--sk-acc)] focus-visible:shadow-[0_0_0_3px_var(--sk-acc)]" />
+                  onPointerEnter={() => setHov(i)} onPointerLeave={() => setHov((h) => (h === i ? null : h))} onFocus={() => setHov(i)} onBlur={() => setHov(null)}
+                  className="absolute inset-0 rounded-[50%] outline-none focus-visible:shadow-[0_0_0_3px_var(--sk-acc)]" />
                 {t.trangThai === 'dat' && <span className="pointer-events-none absolute" style={{ left: '58%', top: '8%' }}><Co mau={b.biome[l.biome]?.diem ?? b.vang} anh={anhVat('co_chinh_phuc')} cao={d * 0.22} /></span>}
                 {t.trangThai === 'yeu' && t.loai && !dangO && <span className="pointer-events-none absolute" style={{ left: '62%', top: '12%', width: d * 0.16, height: d * 0.16 }}><QuaiTam b={b} loai={t.loai} co={d * 0.16} /></span>}
                 {dangO && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ top: '4%' }}><MuiTen co={Math.max(30, d * 0.16)} /></span>}
                 <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center gap-0.5 px-2 py-1 text-center"
-                  style={{ ...CHU_VIEN, top: '62%', maxWidth: dai ? 260 : 150, width: 'max-content' }}>
+                  style={{ ...CHU_VIEN, top: '62%', maxWidth: dai ? 290 : 160, width: 'max-content', transform: hov === i ? `translateY(${-H * 0.014}px) scale(1.06)` : undefined, transition: 'transform .22s ease' }}>
                   <NhanLuc l={l} t={t} dangO={dangO} dai={dai} />
                 </span>
               </div>
@@ -120,7 +131,7 @@ function GhepManh({ banDo, b, onChon, hienTai, thanh }: Props) {
                   {t.trangThai === 'yeu' && t.loai && !dangO && <span className="pointer-events-none absolute" style={{ right: '10%', top: '10%', width: size * 0.2, height: size * 0.2 }}><QuaiTam b={b} loai={t.loai} co={size * 0.2} /></span>}
                   {dangO && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ top: -size * 0.1 }}><MuiTen co={Math.max(30, size * 0.2)} /></span>}
                   <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center gap-0.5 px-2 py-1 text-center"
-                    style={{ ...CHU_VIEN, top: '74%', maxWidth: dai ? 260 : 150, width: 'max-content' }}>
+                    style={{ ...CHU_VIEN, top: '74%', maxWidth: dai ? 290 : 160, width: 'max-content' }}>
                     <NhanLuc l={l} t={t} dangO={dangO} dai={dai} />
                   </span>
                 </div>

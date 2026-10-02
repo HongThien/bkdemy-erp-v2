@@ -34558,3 +34558,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ### 02/10 — [Giao diện] "Em đang ở đây" = mũi tên vàng nhấp nhô (Thùy: bỏ chữ + bỏ ảnh nhân vật AI, dùng mũi tên vàng chỉ xuống, chuyển động lên xuống như game)
 - San2D.MuiTen: SVG mũi tên màu nhấn style, viền nền style, quầng sáng; nhấp nhô 0,9s (chạy cả mức Thấp — là chỉ dẫn; chỉ đứng yên khi máy bật giảm chuyển động).
 - 3 tầng: đặt ngay trên chỗ đang học (vùng/mốc/bệ). Bỏ viên chữ "Em đang ở đây"/"Em ở đây" và Hero (ảnh nv_*) trên bản đồ; prop gioi giữ trong kiểu cho nơi gọi, không dùng.
+
+### 02/10 — [Giao diện] Thế giới: rê chuột vùng nhích lên + sáng · mũi tên bỏ viền · chữ to thêm
+- Thùy: "mũi tên không viền đen (nó không phải chữ)" · "chữ to hơn 1 tý" · "di chuột vào đại lục nào thì nhích lên + highlight — bản trước có rồi".
+- Đại lục V2 là 1 tấm liền ⇒ cắt lớp đất (#18) thành 10 MẢNH VÙNG theo ô Voronoi có trọng số bán kính quanh tâm vùng (pixel gốc, khớp tuyệt đối; script tạm, 25–56KB/mảnh),
+  hộp % khai trong hinh2d.o[].hop. Rê chuột: mảnh vùng hiện đè lên, nhích lên 1,4% cao khung, viền vàng + bóng; sương vùng đó tắt; nhãn nhích + phóng 1.06.
+  Mảnh chỉ nạp khi chuột (pointerType mouse) vào bản đồ lần đầu — iPad cảm ứng không tải thêm.
+- Chữ: thế giới 18 · lục địa 17.5 · chặng 16px; sao thế giới 24. Mũi tên: bỏ stroke tối + bóng tối, giữ quầng vàng.
