@@ -280,6 +280,10 @@ bản đồ kiến thức Thùy tự làm; gán mẫu / skill gán dạng / lô 
   **Việc của NGƯỜI còn lại trên 61 đề mới:** 219 câu trắc nghiệm + 55 câu trả lời ngắn chưa có đáp án (file gốc không đánh dấu — điền ở màn đề), 560 câu còn dạng chờ
   (344 hình không gian + 216 Đại: bản đồ BK khối 11 chưa có dạng tương ứng), 131 câu tự luận chỉ in. Mới 1/61 đề duyệt được ngay. Nguồn zip: `Downloads\Lớp 11.zip`,
   `Lớp 11_Theo dạng.zip`, `Lớp 12_Dạng.zip` (thực ra là bản ĐỀ), `Lớp 12_Đề.zip` (52 file "Đề tổng hợp", không dùng); bản giải nén ở `bk-kho-lam-viec/de-thi/_nguon_GK/` (máy công ty).
+- **⭐ BỘ ĐỀ GIỮA KÌ NOCTORIUM lớp 10 — ĐÃ VÀO (02/10 tối):** 53 đề, 1.182 câu (1.108 Đại + 74 véc tơ ở kho Hình giải tích), tab Chờ duyệt. Luật gán dạng khối 10 viết mới
+  trong `scripts/noctorium_crosswalk.mjs` (`K10`): 710 câu có dạng, **472 dạng chờ** (232 câu hệ thức lượng trong tam giác + hàm số + tích véc tơ chưa có dạng BK; câu Đúng/Sai trộn ý;
+  câu không có câu dẫn). Thêm dạng chờ `T310000000` cho kho Hình giải tích khối 10 (mig `202610021813`). Còn cho người: 121 trắc nghiệm + 42 trả lời ngắn chưa có đáp án,
+  68 tự luận chỉ in; 5/53 đề duyệt được ngay. **Tổng bộ Noctorium trong ERP: khối 10 = 53 · khối 11 = 107 · khối 12 = 297 đề. Chưa có bộ ĐỀ CUỐI KÌ nào.**
 - **Dữ liệu thật đã chạy (01/10):** `Đề số 3 — Ôn tập chương PP toạ độ trong không gian (NBV 12-CD23)` = `tai_lieu deb38df1-a421-4211-8552-172364c3ea8a`,
   22 câu (19 hgt + 3 dai), nhập từ Word. Thùy duyệt 20:01, gán làm **Giáo trình buổi 9 của 12A1** (`55f98c32-57bd-4824-9c86-b700f8e67b84`) và mở app
   (`bai_test 41ef798e-1dda-4f3b-a55b-ee9ec7673f70`, loại `giao_trinh`, mở toàn bộ). **Lỗi thật tối đó, đã sửa:** học sinh chỉ thấy câu 1 vì app HS đang chạy (bản cũ)

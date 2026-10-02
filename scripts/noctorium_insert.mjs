@@ -78,7 +78,12 @@ for (const f of files) {
   const de = JSON.parse(readFileSync(join(dir, f), 'utf8'))
   if (daCo.has(de.sha256) || daCoTen.has(chTen(de.ten)) || daCoTen.has(chTen(de.file))) { tk.de_bo_qua++; continue }
   // 1) gán dạng + kho
-  const items = de.cau.map((q) => ({ q, g: ganDang(de.khoi, q) }))
+  // "Câu MA": file gốc gõ lặp nhãn ("Câu 7.⇥Câu 5. Hệ bất phương trình…") ⇒ bộ bóc đẻ một câu RỖNG hoàn toàn đứng trước câu thật.
+  // Không nội dung, không ý, không phương án, không mệnh đề, không hình, không lời giải ⇒ không phải câu, bỏ (đếm lại để báo).
+  const laMa = (q) => !(q.noi_dung ?? '').trim() && !q.y?.length && !q.lua_chon?.length && !q.menh_de?.length && !q.anh?.length && !(q.loi_giai ?? '').trim()
+  const soMa = de.cau.filter(laMa).length
+  if (soMa) { tk.cau_ma_bo = (tk.cau_ma_bo ?? 0) + soMa; console.error(`  (bỏ ${soMa} câu rỗng do nhãn "Câu N." lặp trong file gốc: ${de.file.slice(0, 60)})`) }
+  const items = de.cau.filter((q) => !laMa(q)).map((q) => ({ q, g: ganDang(de.khoi, q) }))
   if (items.some((x) => x.g.subject === null)) { tk.de_skip_hinh11++; continue } // đề có câu chưa có kho đích ⇒ để nguyên cả đề
   for (const x of items) {
     if (x.g.dang === 'CHUA') { tk.cau_chua_dang++; tk.chua_ly_do[x.g.ly_do] = (tk.chua_ly_do[x.g.ly_do] ?? 0) + 1 }

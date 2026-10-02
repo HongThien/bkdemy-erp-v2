@@ -34947,3 +34947,23 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 - (02/10 tối, Giao diện) **Thử thách → Đấu trường 3 trận**: Thùy chốt luật (3 trận × 5 MCQ, ngưỡng 60/80/100%, thua là dừng, 2 lượt/ngày, nút Bỏ cuộc = thua, hoạt cảnh sau mỗi trận, boss Thùy dùng tạm, 2D) ⇒ viết `spec-thu-thach-dau-truong.md`
   (luật · chọn câu 2-2-1 theo độ khó DẠNG · điểm 10/20/30 · hoạt cảnh · ảnh hưởng nhiệm vụ/huy hiệu · việc Số liệu §7 · 4 câu mở §8) + dòng #7 vào hộp thư `spec-v1-app-hs.md` §13.6. Chưa code.
+
+## 2026-10-02 (tối) — [Kho · Đề thi] Nhập 53 đề giữa kì lớp 10 Noctorium
+
+- **Thùy:** hỏi "có đề cuối kì không" → đếm DB theo tên: 407 đề (giữa kì 11: 107 · 12: 117; thi thử TN 120; khảo sát 43; khác 20), KHÔNG có đề cuối kì. Rồi gửi 2 zip
+  `Noctorium - 1182 câu.zip` (bản dạng, 41 file) + `Noctorium - 1182 câu (1).zip` (bản đề, 53 file): "Còn cả lớp 10 này, làm nốt thôi. Output như 11, 12."
+- **Làm:** `noctorium_parse` (53 đề, 1.183 câu, 100% có nhãn) → viết luật gán dạng khối 10 (`K10` trong `noctorium_crosswalk.mjs`): chương I, II, bài 5 → Đại; chương IV véc tơ → kho
+  Hình giải tích (bản đồ BK đặt véc tơ 10 ở đó); bài 6, chương VI, bài 9/11 → dạng chờ (BK chưa có dạng). Dạng của họ thô hơn BK ⇒ tách bằng dấu hiệu trong đề, soi mẫu từng
+  dạng trước khi chạy; Đúng/Sai trộn ý ⇒ chờ. Mig `202610021813_hgt_dang_cho_khoi_10` (dạng chờ `T310000000`, chạy thử → áp `--only`).
+- **Hai lỗi bản thử bắt được (đều sửa trước khi ghi):**
+  1. **Câu không có câu dẫn nhận nhãn dạng SAI.** Bảng tra nhãn khoá theo câu dẫn ⇒ mọi câu dẫn rỗng (tự luận chỉ có ý a) b), Đ/S mệnh đề độc lập) dùng chung một nhãn bất kỳ:
+     8 câu khối 10 đều mang "Nhận biết mệnh đề…" ⇒ suýt gán `T110010101` cho 6 câu tự luận về tập hợp / tối ưu / hình. Giờ câu dẫn rỗng ⇒ luôn dạng chờ. (14 câu khối 11 cùng
+     tình trạng nhưng nhãn chung của chúng vốn đã map ra CHUA ⇒ dữ liệu đã nhập không sai dạng.)
+  2. **"Câu ma":** file gốc gõ lặp nhãn ("Câu 7.⇥Câu 5. Hệ bất phương trình…") ⇒ bộ bóc đẻ một câu rỗng hoàn toàn trước câu thật ⇒ cổng chèn từ chối cả đề. Giờ bỏ câu rỗng
+     hoàn toàn và in ra để biết (1 câu, đề THPT Bắc Yên Thành).
+- **Vấp khi ghi thật:** phiên bị ngắt 2 lần giữa lúc script đang chạy. Lần 1 ghi được 46/53 đề rồi đứt; lần 2 cả 3 đề thử đều "statement timeout" (2 phút) — nghi kết nối của
+  lượt bị ngắt còn giữ khoá; lần 3 chạy NỀN: 7 đề còn lại vào hết. Nhờ mỗi đề một transaction + bỏ qua theo tên nên không trùng, không dở dang (53 đề, 53 tên khác nhau).
+  Ảnh của 3 đề lượt 2 đã tải lên storage trước khi transaction hỏng ⇒ có ảnh mồ côi trong `kho-anh/nhap_kho/2026-10/` (script vốn chấp nhận; không xoá).
+- **Kết quả (đọc lại DB):** 53 đề · 1.182 câu (1.108 Đại + 74 Hình giải tích) · 710 có dạng · 472 dạng chờ · thiếu đáp án 121 TN + 42 TLN · 68 tự luận · 5/53 đề duyệt được ngay,
+  163 câu chặn. Tab Chờ duyệt khối 10 = 53.
+- **Chưa làm:** mở thử trên màn ERP (chưa có phiên đăng nhập). Script chạy lâu nên chạy nền từ đầu thay vì để phiên giữ.
