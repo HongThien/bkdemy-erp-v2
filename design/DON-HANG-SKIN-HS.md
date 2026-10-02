@@ -864,3 +864,46 @@ YÊU CẦU RIÊNG:
 > **Kit về (Claude làm):** chạy mục 8 của giao thức như người kiểm (đếm ảnh toàn cảnh ↔ assets, alpha thật, backdrop sạch) · đối chiếu từng mảnh với reference
 > (dáng, màu, ánh sáng — lệch thì trả hàng theo mục 10) · nén vào `public/bk-ui/hs/skin/rpg/phieuluu2d/` · khai vị trí từ DESIGN.md vào `ban2d/hinh2d.ts`
 > (thế giới: thay `TOAN_CANH_THE_GIOI` bằng nền + 10 mảnh có toạ độ) · dựng lại so từng điểm với reference ở 1180×820.
+
+
+---
+
+## Đơn 10 — NỀN VÙNG + NỀN CHẶNG VẼ SẴN CON ĐƯỜNG + BỆ (bố cục làm sẵn theo số điểm dừng) — soạn 02/10, THAY nen_vung/nen_chang của Đơn 7 & kit 2–3 Đơn 9
+
+> **Thùy 02/10:** "căn toạ độ không đúng, lâu đài không vào ô đất trống — sao không làm luôn map có sẵn con đường cho nhanh?" ⇒ đúng: nền trơn + code tự đặt mốc
+> phụ thuộc toạ độ đo bằng mắt, lệch vài % là trượt khỏi bãi đất, mỗi ảnh lại đo lại. Vẽ SẴN đường + bệ trong tranh ⇒ đường và chỗ đặt khớp tuyệt đối;
+> code chỉ gắn nhãn tên, số, cờ, sương, pháp sư, quái, công trình mốc lên ĐÚNG các bệ (vị trí bệ lấy từ DESIGN.md, Claude kiểm lại trên ảnh).
+> **Số điểm dừng thay đổi** (1–8 chuyên đề/chủ đề · 3–10 dạng/chuyên đề) ⇒ LÀM SẴN BỐ CỤC: nền vùng 3 bản (4 · 6 · 8 bệ), nền chặng 4 bản (4 · 6 · 8 · 10 bệ);
+> code chọn bản nhỏ nhất đủ chỗ, bệ thừa (≤2) để trống + sương "chưa mở". Làm RỪNG trước (7 ảnh) → Thùy duyệt → nhân ra 7 vùng khí hậu còn lại cùng bố cục.
+> **Cách gửi:** context ChatGPT MỚI (app máy tính) → dán `CHATGPT-UI-KIT.md` → dán khối đơn dưới → đính kèm `chon_huong/02.png` (toàn cảnh lục địa có đường đã duyệt
+> phong cách) + `13.png` (nền vùng rừng) + `17.png` (nền chặng rừng) + `21.png` (mốc thành). Kit về để `design/handoff/hs-nen-duong-rung-v1.zip`.
+
+```
+App:            hs
+Màn:            nen-duong-rung (nền bản đồ CÓ VẼ SẴN CON ĐƯỜNG + BỆ, vùng khí hậu RỪNG PHÉP)
+Mô tả màn:      App học Toán "Giải cứu thế giới — đánh quái vật", iPad NGANG ⇒ mọi ảnh 1672×941.
+                2 loại nền:
+                (A) NỀN VÙNG — cận cảnh 1 lục địa rừng nhìn chéo từ trên cao; 1 CON ĐƯỜNG MÒN đất uốn lượn nối các BỆ ĐẤT TRÒN phẳng
+                    (mỗi bệ đủ rộng để đặt 1 công trình như 21.png lên trên). Đường bắt đầu ở mép dưới, đi qua bệ 1 → bệ cuối.
+                (B) NỀN CHẶNG — thung lũng rừng nhìn chéo thấp hơn (như 17.png), 1 con đường đất uốn qua các BỆ ĐÁ TRÒN có vòng rune vàng mờ
+                    (mỗi bệ đủ cho 1 con quái đứng). Bệ gần to, bệ xa nhỏ dần. Bên PHẢI ≈25% màn sẽ bị bảng thông tin che ⇒ đường và bệ
+                    nằm trong ≈72% bên trái; phần bên phải chỉ là cảnh rừng.
+                Lập trình viên đặt công trình, quái, cờ, nhãn chữ lên đúng các bệ ⇒ trong ảnh KHÔNG có công trình, quái, người, cờ, chữ, số.
+Phần tử ĐỘNG:   không (mọi thứ động do code đặt lên bệ).
+Trạng thái:     không.
+Biến thể:       theo SỐ BỆ — nen_vung_rung_4 · nen_vung_rung_6 · nen_vung_rung_8 · nen_chang_rung_4 · nen_chang_rung_6 · nen_chang_rung_8 · nen_chang_rung_10.
+                Cùng 1 cảnh rừng, chỉ đổi đường + số bệ (bệ cách đều nhau dọc đường, không bệ nào sát mép hay chồng lên nhau).
+Phong cách:     đúng các ảnh đính kèm: anime fantasy vẽ tay chi tiết, rừng phép cây khổng lồ, nấm tím phát sáng, pha lê xanh, thác nước,
+                ánh vàng ấm. Con đường + bệ phải NỔI RÕ trên nền (đất vàng nhạt viền đá), nhìn là biết đường đi.
+Giữ nguyên:     1672×941; không chữ; bệ để TRỐNG (không vật gì trên bệ).
+Phiên bản kit:  v1
+
+YÊU CẦU RIÊNG:
+- Kit = reference/ (7 ảnh trên — cũng chính là ảnh dùng) + DESIGN.md. Không cần assets/ ngoài 7 ảnh đó.
+- DESIGN.md, cột "Vị trí & cỡ": với MỖI ảnh, liệt kê TỪNG BỆ theo thứ tự đường đi: tâm (≈% ngang, ≈% dọc của khung 1672×941) + bề rộng bệ (≈% khung).
+  Ví dụ: "nen_vung_rung_6 · bệ 1: tâm ≈48% ngang, 84% dọc, rộng ≈11% · bệ 2: …".
+```
+
+> **Kit về (Claude làm):** kiểm mục 8 giao thức · tự đo lại tâm từng bệ trên ảnh (lưới 2%) đối chiếu DESIGN.md, lệch thì lấy số đo · nén JPG ·
+> `hinh2d.ts`: thay `CHO_MOC_VUNG` bằng bảng {biome, số bệ, toạ độ bệ} + hàm chọn bản nhỏ nhất ≥ N · LucDia2D/Chang2D bỏ đường vẽ bằng code khi nền có đường sẵn
+> (giữ lớp "đoạn đã đi" vàng phủ mờ lên đường vẽ) · bệ thừa phủ sương.

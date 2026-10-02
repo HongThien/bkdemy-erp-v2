@@ -34527,3 +34527,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   (khongXoay), phần thừa = chính tranh phóng to mờ tối. Cột "Các vùng" chỉ hiện ≥1536px (iPad 1180: bản đồ chiếm hết ngang, tên vùng đã ghi trên bản đồ).
   Đường mòn mảnh 4.5px cùng tông cỏ ⇒ chìm: to theo bề ngang khung (≥6/12px), đoạn đã đi vàng có quầng.
 - Kiểm 1180×820 lục địa C (rừng) + B (biển đảo), 0 lỗi.
+
+### 02/10 — [Giao diện] Đơn 10: nền vùng/chặng VẼ SẴN đường + bệ, bố cục theo số điểm dừng
+- Thùy: "căn toạ độ không đúng, lâu đài không vào ô đất trống — sao không làm map có sẵn con đường?" ⇒ đúng: toạ độ đo bằng mắt trên lưới lệch vài % là trượt, mỗi ảnh lại đo.
+  Đổi: tranh vẽ sẵn đường + bệ trống; code chỉ gắn công trình/quái/cờ/nhãn lên bệ. Số điểm dừng đổi theo khối ⇒ nền vùng 3 bản (4·6·8 bệ), nền chặng 4 bản (4·6·8·10), chọn bản nhỏ nhất ≥ N.
+  Làm rừng trước (7 ảnh, kit hs-nen-duong-rung-v1) rồi nhân 7 vùng còn lại. CHO_MOC_VUNG (đo tay) giữ tạm tới khi kit về.
