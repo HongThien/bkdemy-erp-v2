@@ -107,6 +107,7 @@ HỌC ─(lượt học thật)─► ĐIỂM HỌC TẬP ─► hạt giống �
 | 4 | Điểm học tập | **Một nguồn duy nhất** = lượt học thật. "Điểm chăm chỉ" của Nông Trại gộp vào đây |
 | 5 | Tên game | CEO: "nghĩ đi" ⇒ CTO đề xuất ở §6 |
 | 6 | V1 (06/10) ra phần nào? | **ĐỦ TÍNH NĂNG, số lượng ít.** *"V1 thì phải có đủ tính năng rồi, chỉ là số lượng chưa nhiều thôi."* |
+| 7 | Cấu trúc game (02/10) | **3 MÀN CHÍNH: trồng cây · bắt thú · ấp trứng; thú bắt được ĐI DẠO ở trang trại** — xem §7 (thay Trại thú riêng của §5.2) |
 
 ## 5. KẾ HOẠCH V1 — đủ 10 tính năng, số lượng ít (deadline 06/10)
 
@@ -180,3 +181,40 @@ HỌC ─(lượt học thật)─► ĐIỂM HỌC TẬP ─► hạt giống �
 | **BKmon** | Ngắn, HS nhớ ngay; nhưng nhấn vào thú, lu mờ phần trồng cây |
 | **Thung Lũng BK** | Như Stardew Valley: nông trại + phiêu lưu; hơi "người lớn" |
 | **Đảo Mầm** | Mầm cây + trứng nở, rất dễ thương; không có chữ BK |
+
+## 7. CEO CHỐT 02/10 chiều: GAME = 3 MÀN CHÍNH — thú bắt được đi dạo ở trang trại
+
+> CEO 02/10: *"Giờ quay lại chốt game nông trại: 3 màn chính trồng cây – bắt thú – ấp trứng (thú bắt được sẽ đi dạo ở trang trại)."*
+> Thay §5.2 "3 khu + Trại thú riêng": **không còn Trại thú riêng** — trang trại CHÍNH LÀ nơi thú sống.
+
+### 7.1 Ba màn
+
+| Màn | Có gì | Nối sang |
+|---|---|---|
+| **1. TRANG TRẠI** (trồng cây) | Ruộng kiểu Nông trại vui vẻ (spec-nong-trai-nhip-ngay §2.1: 12 ô, màn ngang, góc camera giữ nguyên) · gieo · tưới · thu · bán nông sản lấy xu · **thú đã bắt ĐI DẠO quanh trại** (lang thang, ngủ, ăn, chơi với nhau — bộ 25 động tác có sẵn; thú bơi ở ao, thú bay lượn trên trại) · chạm thú ⇒ vuốt ve + thẻ thú · **Xưởng** (chế bóng từ nông sản) và **bảng nhiệm vụ NPC** đặt ngay trên trại | cổng ra màn 2 (cần vé) · chuồng ấp ⇒ màn 3 |
+| **2. BẮT THÚ** | Tốn 1 vé ⇒ vào dungeon đồng cỏ · thú hoang (làm bằng code) đi lại · ném bóng (3 loại, tỉ lệ công khai) · máy chủ gieo shiny/alpha · bắt được ⇒ về trại | về trang trại |
+| **3. ẤP TRỨNG** | Chọn 2 thú đang ở trại ⇒ **lai** ⇒ trứng (theo công thức) ⇒ đặt lò ấp ⇒ nở sau 1 đêm (giờ máy chủ) ⇒ hoạt cảnh nở (trứng từng loài đã có) ⇒ loài mới / shiny / alpha ⇒ thả ra trại · **sổ công thức** mở dần khi mò ra | về trang trại |
+
+- **HUD chung** cả 3 màn: điểm học tập · xu · vé · kho đồ + 3 nút chuyển màn.
+- **Số lượng V1** giữ như §5.1 (4 cây · 3 bóng · 1 dungeon · 6 loài gốc · 4 loài lai / 6–8 công thức · 1 NPC 5 nhiệm vụ).
+  Loài gốc lấy từ thú đã làm bằng code (spec-bat-thu §3.5): Cáo Lửa · Cừu Mây · Khỉ Lá · Sói Nguyệt · Nhím Điện · Cánh Cụt Nước (+ Gà Lửa · Bò Tuyết dự phòng).
+
+### 7.2 Kỹ thuật (CTO quyết — R2)
+
+- **Một app duy nhất = repo `bk-bat-thu`** (Vite + TS + three r186). **Trang trại phải chuyển sang r186**: thú làm bằng code chạy r186, muốn đi dạo trên trại thì phải chung 1 cảnh, 1 bộ vẽ — 2 bản three không vẽ chung cảnh được.
+  Phương án "Nông Trại chạy trang riêng" của §5.2 bỏ.
+  - Luật Nông Trại (`engine.js`, `data.js`, `nhiemvu.js` — JS thuần) chuyển nguyên sang TS, không đổi luật.
+  - Đồ hoạ (`dohoa.js`, `models.js`, `scene.js` ~3.800 dòng r128) chuyển API sang r186 (màu sRGB, cường độ đèn vật lý từ r155).
+- **Hiệu năng iPad:** thú trên trại dùng **bản Nhẹ**; tối đa ~8 con đi dạo cùng lúc, con khác nằm trong Sổ thú (chọn con nào ra trại). Thú huyền thoại bản Nhẹ ~32k tam giác — 1 con mỗi trại.
+- **Mọi thứ có giá trị do máy chủ quyết** như §5.2 (`fn_game_*`, xu chung trần, điểm học tập 1 nguồn).
+
+### 7.3 Lịch lại (thật): 01–02/10 dồn vào hình thú, hệ thống CHƯA bắt đầu
+
+| Ngày | Việc |
+|---|---|
+| 03/10 | Khung 1 app 3 màn + HUD + chuyển màn · chuyển Trang trại sang r186 (ruộng, cây, thu, bán) · thú đi dạo trên trại |
+| 04/10 | Màn Bắt thú bằng thú code (6 loài gốc) · 3 loại bóng · Xưởng chế bóng · vé |
+| 05/10 | Màn Ấp trứng: lai · công thức · lò ấp · hoạt cảnh nở · shiny/alpha · NPC 5 nhiệm vụ |
+| 06/10 | Online (điểm học tập thật, kho đồ, xu chung trần) · gắn app HS · soi iPad |
+
+- **Rủi ro lớn nhất:** 06/10 dồn phần online + gắn app vào 1 ngày.
