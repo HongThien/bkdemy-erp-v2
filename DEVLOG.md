@@ -35168,3 +35168,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   tối đè tán hồng ⇒ sương sáng 1/4 trên tranh. ③ acc xanh cỏ sáng #5fa83a làm chữ tiêu đề trên tấm xám chỉ ~2:1 ⇒ dùng xanh đậm #357a20.
 - Kiểm: tsc sạch (trừ pdfRender cũ) · check:style-hs ✔ 3 style × 16 ô · build:hs ✔ · chụp `?xem=gami&skin=khoi` Home PC/iPad/điện thoại, Nhiệm vụ,
   Album, Hồ sơ: 0 ảnh vỡ, không tràn ngang. Chưa có bản đồ phiêu lưu/Đấu trường cho Khối vuông (không khai the3d) — chạy như Tối giản.
+- (03/10 tiếp) Thùy áp mig `202610030147_hs_giao_dien_skin_khoi` qua SQL Editor (kèm dòng sổ `_migrations`, bam `f13d93311a089b28` — t soạn sẵn
+  1 khối dán, kiểm trước `pg_has_role('postgres','claude_build')` = true nên ALTER TABLE chạy được). Soi lại (RO): CHECK có `khoi`, `--status` không
+  còn treo file này. `npm run schema` ⇒ `schema.md` cột skin thêm `khoi`. Bước còn lại: Thùy deploy app HS.
