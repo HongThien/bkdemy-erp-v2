@@ -96,7 +96,15 @@ export async function getPhanCauList(phanId: string): Promise<string[]> {
 
 // ═══════════ DUYỆT ĐỀ + THI TRÊN LỚP (spec-de-thi.md §9, mig 202609272027) ═══════════
 // Mọi con số/invariant tính ở Postgres (fn_de_thi_*); client chỉ gọi + hiển thị + ghi dòng đơn khi người duyệt sửa câu.
-export type Kho = 'dai' | 'hgt' | 'khtn' | 'hinh_hoc'
+export type Kho = 'dai' | 'hgt' | 'khtn' | 'hinh_hoc' | 'anh'
+// REGISTRY môn → các kho câu của đề (§1.6): màn Kho đề thi lấy danh sách môn + chỗ "thêm câu có sẵn" từ đây,
+// KHÔNG `if (mon === …)` ở màn. Thêm môn có đề thi = thêm 1 dòng (kho phải khớp `_de_thi_kho` ở DB).
+export const KHO_DE_CUA_MON: Record<string, { kho: Kho; ten: string }[]> = {
+  'Toán': [{ kho: 'dai', ten: 'Đại số' }, { kho: 'hgt', ten: 'Hình giải tích' }],
+  'KHTN': [{ kho: 'khtn', ten: 'KHTN' }],
+  'Tiếng Anh': [{ kho: 'anh', ten: 'Tiếng Anh' }],
+}
+export const MON_DE_THI = Object.keys(KHO_DE_CUA_MON)
 // Kho → nhánh cho registry khoCuaMon (§1.6) — không rải tên bảng ở component.
 const nhanhCuaKho = (kho: Kho): string | null => (kho === 'hgt' ? 'hinh_gt' : kho === 'hinh_hoc' ? 'hinh_hoc' : null)
 export const bangCuaKho = (mon: string, kho: Kho) => khoCuaMon(mon, nhanhCuaKho(kho))

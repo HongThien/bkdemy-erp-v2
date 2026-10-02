@@ -1618,8 +1618,9 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
             <p className="text-[13px] font-semibold" style={{ color: MAU.muted }}>Câu {soTrongPhan}</p>
             {cau.ly_thuyet && <button onClick={() => setGoiY((v) => !v)} className="rounded-full px-3 py-1 text-[12px] font-medium" style={NUT_GOI_Y(goiY)}>💡 Gợi ý</button>}
           </div>
-          {goiY && cau.ly_thuyet && <div className="mb-3 p-3 text-[14px] leading-relaxed" style={{ ...HOP_GOI_Y, color: MAU.ink }}><MathText>{cau.ly_thuyet}</MathText></div>}
-          {cau.noi_dung && <div className="mb-3 text-[15px] leading-relaxed" style={{ color: MAU.ink }}><MathText>{cau.noi_dung}</MathText></div>}
+          {goiY && cau.ly_thuyet && <div className="mb-3 p-3 text-[14px] leading-relaxed" style={{ ...HOP_GOI_Y, color: MAU.ink }}><ChuMon mon={test.mon}>{cau.ly_thuyet}</ChuMon></div>}
+          {cau.ngu_lieu && <NguLieuHS nl={cau.ngu_lieu} mon={test.mon} />}
+          {cau.noi_dung && <div className="mb-3 text-[15px] leading-relaxed" style={{ color: MAU.ink }}><ChuMon mon={test.mon}>{cau.noi_dung}</ChuMon></div>}
           {/* Hình đề: nền trắng cố định — nét đen trên trắng, đặt thẳng lên thẻ tối là mất nét. */}
           {cau.anh_de && <img src={cau.anh_de} alt="đề" className="mb-3 max-h-80 rounded-lg bg-white" style={{ border: `1px solid ${MAU.line}` }} />}
 
@@ -1634,7 +1635,7 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
                   <button key={orig} onClick={() => luu(cau.id, orig)} disabled={daNop}
                     className="flex items-start gap-3 p-3 text-left text-[15px]" style={O_DAP_AN(tt)}>
                     <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold" style={TRON_CHU(tt)}>{chuCaiChon(dispI)}</span>
-                    <span className="flex-1 pt-0.5"><MathText>{stripLabel(opt)}</MathText></span>
+                    <span className="flex-1 pt-0.5"><ChuMon mon={test.mon}>{stripLabel(opt)}</ChuMon></span>
                   </button>
                 )
               })}
@@ -1646,7 +1647,7 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
                 const key = daNop ? String(keyDS[orig] ?? '').toUpperCase() : null
                 return (
                   <div key={orig} className="p-3" style={{ border: `1px solid ${MAU.line}`, background: MAU.surface2, borderRadius: R_TRONG }}>
-                    <div className="mb-2 flex gap-2 text-[15px]" style={{ color: MAU.ink }}><span className="font-semibold" style={{ color: MAU.muted }}>{'abcd'[dispI] ?? dispI + 1})</span><span className="flex-1"><MathText>{m.noi_dung}</MathText></span></div>
+                    <div className="mb-2 flex gap-2 text-[15px]" style={{ color: MAU.ink }}><span className="font-semibold" style={{ color: MAU.muted }}>{'abcd'[dispI] ?? dispI + 1})</span><span className="flex-1"><ChuMon mon={test.mon}>{m.noi_dung}</ChuMon></span></div>
                     <div className="flex gap-2">
                       {(['D', 'S'] as const).map((v) => {
                         const on = pick === v
@@ -1657,7 +1658,7 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
                           className="flex-1 py-1.5 text-[13px] font-medium" style={NUT_DS(tt)}>{v === 'D' ? 'Đúng' : 'Sai'}</button>
                       })}
                     </div>
-                    {daNop && menhDeReveal[orig]?.loi_giai && <div className="mt-2 pt-1.5 text-[13px]" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.muted }}><MathText>{menhDeReveal[orig].loi_giai as string}</MathText></div>}
+                    {daNop && menhDeReveal[orig]?.loi_giai && <div className="mt-2 pt-1.5 text-[13px]" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.muted }}><ChuMon mon={test.mon}>{menhDeReveal[orig].loi_giai as string}</ChuMon></div>}
                   </div>
                 )
               })}
@@ -1673,7 +1674,7 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
             <div className="mt-4 p-3" style={{ background: vd === 'correct' ? NEN_DUNG : vd === 'partial' ? NEN_CB : NEN_SAI, borderRadius: R_TRONG }}>
               <p className="text-[15px] font-semibold" style={{ color: vd === 'correct' ? MAU.dung : vd === 'partial' ? MAU.canhBao : MAU.sai }}>{vd === 'correct' ? '🎉 Đúng' : vd === 'partial' ? '👍 Đúng một phần' : '😔 Chưa đúng'}</p>
               {cau.loai_cau === 'tra_loi_ngan' && vd !== 'correct' && <p className="mt-1 text-[13px]" style={{ color: MAU.muted }}>Đáp án đúng: <b style={{ color: MAU.dung }}>{String(rv?.dap_an_key)}</b></p>}
-              {rv?.loi_giai && <div className="mt-2 pt-2 text-[14px] leading-relaxed" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.ink }}><p className="mb-1 text-[12px] font-semibold uppercase" style={{ color: MAU.muted }}>Lời giải</p><MathText>{rv.loi_giai}</MathText></div>}
+              {rv?.loi_giai && <div className="mt-2 pt-2 text-[14px] leading-relaxed" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.ink }}><p className="mb-1 text-[12px] font-semibold uppercase" style={{ color: MAU.muted }}>Lời giải</p><ChuMon mon={test.mon}>{rv.loi_giai}</ChuMon></div>}
               {rv?.anh_dap_an && <img src={rv.anh_dap_an} alt="lời giải" className="mt-2 max-h-72 rounded-lg bg-white" style={{ border: `1px solid ${MAU.line}` }} />}
             </div>
           )}

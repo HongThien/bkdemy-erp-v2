@@ -56,7 +56,7 @@ export function taoQuyetDinh({ raA, raB, raC = {}, daThayA, nguLieu, ngoaiPhamVi
     if (!a || !b) return { loai: 'cho', lyDo: ['thiếu kết quả bên ' + (!a ? 'A' : 'B')], kp: null, deXuat: b?.kp ?? a?.kp ?? null }
     if (a.ngoai_pham_vi && b.ngoai_pham_vi) {
       if (!ngoaiPhamViChoDuyet) return { loai: 'bo', lyDo: ['ngoài phạm vi (A+B): ' + (b.ly_do_pham_vi || a.ly_do_pham_vi || '')] }
-      lyDo.push('A+B thấy ngoài phạm vi nhưng GV soạn trong bài của unit — GV quyết: ' + (b.ly_do_pham_vi || a.ly_do_pham_vi || ''))
+      lyDo.push('A+B thấy ngoài phạm vi THCS — giữ câu (bài của unit / câu của đề thi), GV quyết: ' + (b.ly_do_pham_vi || a.ly_do_pham_vi || ''))
     }
     if (daThayA[c.ref] !== vanTayCau(c, nguLieu)) lyDo.push('nội dung đã sửa sau khi kiểm (bên A kiểm trên bản cũ)')
     if (!!a.ngoai_pham_vi !== !!b.ngoai_pham_vi) ghiChu.push('một bên thấy ngoài phạm vi: ' + ((a.ngoai_pham_vi ? a.ly_do_pham_vi : b.ly_do_pham_vi) || ''))

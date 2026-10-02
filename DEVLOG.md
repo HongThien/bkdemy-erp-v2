@@ -35053,3 +35053,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   **Bẫy:** chạy script có `| head` làm EPIPE cắt ngang script (kit chưa nén hết, file sinh chưa ghi) — luôn ghi log ra file rồi xem.
 
 - (02/10 đêm, Giao diện) **Bộ công trình CHIBI mới (rừng + đầm lầy)** Thùy thay cho khớp nền v4: 8 PNG rừng (`lục địa rừng/assets/decor/`, kèm `kien_truc_chibi_v4.json` = hộp bao + neo chân) + 8 PNG đầm lầy (`hs-luc-dia-dam_lay-v1/assets/decor/`). `scripts/anime-kit-lucdia.mjs` nén lại 16 ảnh; kit rừng giờ ĐỌC neo chân từ `kien_truc_chibi_v4.json` (thay bảng neo cũ trong DESIGN.md). Giữ nguyên tên file, vị trí, bề rộng, đường. Thành cổ · ảo đảo · sa mạc CHƯA có bản chibi mới (vẫn kiến trúc cũ) — các kit đó nền cũng chưa đổi.
+
+- (02/10 khuya, Kho Anh) **Đề thi Tiếng Anh chạy luồng đề Toán + nhập "50 đề thực chiến" + dựng đề cho 24 đề web** (Thùy: "đề thi phải lưu
+  lại đề để làm onl giống luồng của Toán"). Mig `202610022202`: `_de_thi_kho` qua registry `_kho_cau_tbl` (trước đây Anh rơi về `dai` ⇒ mọi
+  câu "đã xoá") + `et_de` trả `ngu_lieu`; Toán giữ nguyên (460 đề, 5 đề có câu xoá — trước = sau). Client: `nguLieuTbl` trong `khoCuaMon`,
+  `phatHanhTest` chụp ngữ liệu, Kho đề thi có môn Anh + đoạn văn + `ChuMon`, `LamET` có `NguLieuHS`. Cổng `--de-thi` (trùng ⇒ trỏ câu cũ;
+  ngoài phạm vi ⇒ chờ) + `--bo-sung-tu`. Kết quả: 74 đề Anh, 2.901 câu-trong-đề, 0 câu "đã xoá"; 50 đề mới: 1.700 tự vào kho · 286 chờ ·
+  13 trùng. **Sai rồi sửa:** ký hiệu "không mạo từ" là Wingdings F0FB ⇒ chép nguyên mã = phương án RỖNG (17 câu; 2 câu đã ghi ⇒ UPDATE
+  `lua_chon` EC006373/EC006400 sang "∅"); 15 câu còn lại ghi từ bản đọc lại ⇒ vân tay khác bản A đã thấy ⇒ tự CHỜ (đúng luật). Heredoc
+  lại nuốt `\u` trong regex Python ⇒ viết dòng đó bằng chr(92). **Bẫy commit:** phiên MT sửa cùng `src/lib/tailieu.ts` ⇒ commit `ef921a7`
+  của họ cuốn luôn hunk `nguLieuTbl` của mình (nội dung đúng). Chưa soi được màn ERP bằng mắt: đăng nhập nhanh dùng tài khoản thật ⇒ Claude
+  không tự đăng nhập.

@@ -114,6 +114,9 @@ export type CauHoi = {
   kiem_may_at?: string | null; kiem_may_boi?: 'mcq-auto' | 'claude_code' | 'nguoi' | null; kiem_may_ghi?: string | null
   duyet_nguon?: 'nguoi' | 'may' | 'ai' | null              // ai ký da_duyet — trigger DB tự điền 'nguoi' khi client duyệt
   created_at?: string
+  // Môn có NGỮ LIỆU (Tiếng Anh): mã đoạn văn/thông báo dùng chung + số chỗ trống/thứ tự câu trong đó. Môn khác không có cột.
+  ngu_lieu?: string | null
+  thu_tu_trong_ngu_lieu?: number | null
 }
 
 // ── CỤM BÀI (spec-cum-bai.md) ─────────────────────────────────────

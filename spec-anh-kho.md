@@ -137,6 +137,31 @@ Khoảng 8–9 file + 1–2 migration, ~300–500 dòng. Rủi ro lớn nhất: 
 - Tiếp theo (dạng chữ, có đáp án, không cần tải): đề vào 10 chính thức các tỉnh trên LoiGiaiHay (56 chuyên mục, ~200 đề) · trắc nghiệm
   Global Success 6/7/8/9 theo điểm ngữ pháp (LoiGiaiHay, có lời giải; nhiều câu 3 phương án) — lấp nền lớp 6–8.
 
+## 4c. ĐỀ THI TIẾNG ANH = luồng đề Toán (Thùy 02/10 đêm: "đề thi phải lưu lại đề để làm onl giống luồng của Toán")
+
+- **Đề lưu đúng khuôn đề Toán**: `tai_lieu(loai='de_thi', mon='Tiếng Anh', khoi='9')` + `tai_lieu_phan` (1 phần = 1 lệnh của đề, tên
+  "Câu a–b · <dạng>") + `tai_lieu_cau(ma_cau)` ⇒ duyệt / giao / mở thi bằng đúng `fn_de_thi_*` ở màn **Kho đề thi** (tab môn Tiếng Anh).
+- **Cổng ghi chế độ đề** `cong_ghi_anh.mjs --de-thi`: câu trùng câu đã có ⇒ đề TRỎ về câu cũ (không bỏ); A+B thấy ngoài phạm vi ⇒ vẫn ghi,
+  CHỜ DUYỆT (đề phải đủ như giấy). Lý do chờ từng câu chép vào `cau_hinh.deThi.canhBaoCau` (hiện trên màn sửa đề).
+  `--bo-sung-tu <bien_ban_ghi.json>` = dựng đề cho lô đã nhập trước đó (dùng lại mã câu cũ, biên bản riêng `bien_ban_de.json`).
+- **DB (mig 202610022202)**: `_de_thi_kho` đi qua registry `_kho_cau_tbl` (trước đây môn khác Toán/KHTN rơi về `dai` ⇒ mọi câu "đã xoá");
+  `et_de` trả `ngu_lieu`. **Client**: `khoCuaMon().nguLieuTbl` (registry bảng ngữ liệu) · `phatHanhTest` chụp ngữ liệu khi giao đề vào buổi ·
+  Kho đề thi có môn Tiếng Anh (registry `KHO_DE_CUA_MON`), hiện đoạn văn 1 lần ở câu đầu nhóm, chữ theo môn (`ChuMon`) · app HS `LamET`
+  hiện `NguLieuHS` + `ChuMon`.
+- **Bộ "50 đề thực chiến vào 10 – form HN"** (file Word, KEY riêng): trạm đọc `doc_de_docx.py` (+ `docx_khoi.py`: đánh số tự động,
+  hộp văn bản, ký hiệu font Wingdings/Symbol, ảnh biển báo trong file) dùng chung lõi `doc_de_web.phan_tich`. 1.999 câu (đề 1 rơi câu 24
+  ở bản gốc) → **1.700 tự vào kho · 286 chờ duyệt · 13 trùng (đề trỏ về câu cũ)**; 50 đề, đề nào cũng 11 phần. Biển báo: ảnh có sẵn trong
+  file ⇒ đủ; thông báo dạng chữ trong khung ⇒ ngữ liệu chữ. Lỗi gõ nhãn của file gốc (thiếu "A.", "A. A.", câu a–c gõ "A./B./C.") vá
+  máy nhưng câu vá mang cờ `sua_nhan_phuong_an` ⇒ chờ người. Đề 4 có 2 dòng "Question 19" ⇒ bỏ dòng thừa bằng quyết định tay ghi trong
+  `SUA_TAY` (KEY không phân xử được).
+- **24 đề web đã nhập** dựng đề bằng `--bo-sung-tu`: 826 câu dùng lại · 44 trỏ về câu trùng · 32 câu lần trước bị bỏ (ngoài phạm vi) nay
+  ghi CHỜ DUYỆT. Đề web THIẾU câu biển báo (không tải ảnh) ⇒ 38/40 câu; đề Sở 2022/2023/2025/minh hoạ 2025 không có đáp án nguồn ⇒
+  chưa duyệt được tới khi có đáp án (`fn_de_thi_thieu`).
+- **Cặp câu 17–18** ("sắp xếp câu" + "chọn câu kết đoạn ở câu 17"): đoạn văn thành NGỮ LIỆU CHUNG của 2 câu (từ bộ 50 đề). Đề web cũ
+  vẫn để đoạn trong đề câu 17 ⇒ câu 18 luyện riêng không thấy đoạn — việc treo.
+- **Còn treo**: ô "Làm đề thi thử" trên Home cấp 2 vẫn "sắp có" (vùng Giao diện + Thùy quyết) · bản IN đề (PrintView) chưa hiện đoạn văn,
+  còn dùng MathText.
+
 ## 5. Nguồn tài liệu để nhập tiếp (research 02/10 — chi tiết: scratchpad `web/nguon_de_anh9.md`, chưa tải file nào)
 
 - **Quy mô ước:** khoảng 220–350 đề theo cấu trúc mới, gồm 70–100 đề thật của trường/phường (sau khi bỏ trùng) và 150–250 đề GV biên soạn.

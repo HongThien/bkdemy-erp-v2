@@ -13,19 +13,19 @@ import { useMonScope } from '../../hooks/useMonScope'
 import {
   getDeThi, createDeThi, renameDeThi, deThiMeta, updateDeThiMeta, attachPdfGoc, addPhanDeThi, listPhanDeThi,
   deThiCau, deThiThieu, duyetDeThi, suaCauDeThi, themCauVaoPhan, bangCuaKho, nhanhCuaKhoPicker, canhBaoNhap,
-  demKhoDeThi, listKhoDeThi,
+  demKhoDeThi, listKhoDeThi, KHO_DE_CUA_MON, MON_DE_THI,
   type DeThi, type DeThiMeta, type DeThiCau, type DeThiThieu, type DeThiDong, type Kho, type LoiDeThi, type SuaCauPatch, type TabKhoDe,
 } from '../../lib/dethi'
 import { setCauOfPhan, deletePhan, type TaiLieuPhan } from '../../lib/tailieu'
 import { KHOI_OPTIONS, DEFAULT_KHOI, uploadKhoFile, searchCau, type CauTimThay, type MenhDe } from '../../lib/kho/api'
-import { MathText, inp } from '../kho/ui'
+import { MathText, ChuMon, NguLieuBlock, inp } from '../kho/ui'
 import { MathTextarea } from '../../components/math/MathTextarea'
 import { CauEditor, type ReviewItem } from '../kho/DangHub'
 import DangPickerOne from '../../components/DangPickerOne'
 import DeThiPrintView from './DeThiPrintView'
 import { GiaoDeModal, DaGanPanel, LuotThiPanel } from './DuyetDeThi'
 
-const MONS = ['Toán', 'KHTN']
+const MONS = MON_DE_THI
 const TABS: { key: TabKhoDe; ten: string }[] = [{ key: 'cho_duyet', ten: 'Chờ duyệt' }, { key: 'san_sang', ten: 'Sẵn sàng' }, { key: 'da_giao', ten: 'Đã giao' }]
 const LOAI_TEN: Record<string, string> = { trac_nghiem: 'Trắc nghiệm', dung_sai: 'Đúng / sai', tra_loi_ngan: 'Trả lời ngắn', tu_luan: 'Tự luận' }
 const LOI_TEN: Record<LoiDeThi, string> = {
@@ -205,17 +205,29 @@ function TaoDeTrong({ mon, onClose, onCreated }: { mon: string; onClose: () => v
 }
 
 // ═══════════ MÀN SỬA ĐỀ (gộp Sửa + Duyệt) ═══════════
-type NoiDungCau = { ma_cau: string; noi_dung: string | null; anh_de: string | null; loi_giai: string | null; anh_dap_an: string | null }
-async function taiNoiDung(mon: string, caus: DeThiCau[]): Promise<Record<string, NoiDungCau>> {
+type NoiDungCau = { ma_cau: string; noi_dung: string | null; anh_de: string | null; loi_giai: string | null; anh_dap_an: string | null; ngu_lieu?: string | null; thu_tu_trong_ngu_lieu?: number | null }
+type NguLieuDe = { ma_ngu_lieu: string; loai: string; tieu_de: string | null; noi_dung: string; anh: string | null; am_thanh: string | null }
+// Nội dung câu + NGỮ LIỆU (đoạn văn/thông báo/biển báo — chỉ kho có bảng ngữ liệu theo registry `nguLieuTbl`).
+async function taiNoiDung(mon: string, caus: DeThiCau[]): Promise<{ nd: Record<string, NoiDungCau>; nl: Record<string, NguLieuDe> }> {
   const out: Record<string, NoiDungCau> = {}
+  const nl: Record<string, NguLieuDe> = {}
   const theoKho = new Map<Kho, string[]>()
   for (const c of caus) theoKho.set(c.kho, [...(theoKho.get(c.kho) ?? []), c.ma_cau])
   for (const [kho, mas] of theoKho) {
-    const { data, error } = await supabase.from(bangCuaKho(mon, kho).cauTbl).select('ma_cau, noi_dung, anh_de, loi_giai, anh_dap_an').in('ma_cau', mas).limit(1000)
+    const bang = bangCuaKho(mon, kho)
+    const { data, error } = await supabase.from(bang.cauTbl)
+      .select('ma_cau, noi_dung, anh_de, loi_giai, anh_dap_an' + (bang.nguLieuTbl ? ', ngu_lieu, thu_tu_trong_ngu_lieu' : '')).in('ma_cau', mas).limit(1000)
     if (error) throw error
-    for (const r of (data ?? []) as NoiDungCau[]) out[r.ma_cau] = r
+    const rows = (data ?? []) as unknown as NoiDungCau[]
+    for (const r of rows) out[r.ma_cau] = r
+    const ids = [...new Set(rows.map((r) => r.ngu_lieu).filter((x): x is string => !!x))]
+    if (bang.nguLieuTbl && ids.length) {
+      const { data: d2, error: e2 } = await supabase.from(bang.nguLieuTbl).select('ma_ngu_lieu, loai, tieu_de, noi_dung, anh, am_thanh').in('ma_ngu_lieu', ids).limit(1000)
+      if (e2) throw e2
+      for (const r of (d2 ?? []) as NguLieuDe[]) nl[r.ma_ngu_lieu] = r
+    }
   }
-  return out
+  return { nd: out, nl }
 }
 async function taiTenDang(mon: string, caus: Pick<DeThiCau, 'kho' | 'dang_chinh' | 'menh_de'>[]): Promise<Record<string, string>> {
   const out: Record<string, string> = {}
@@ -241,6 +253,7 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
   const [phans, setPhans] = useState<TaiLieuPhan[]>([])
   const [caus, setCaus] = useState<DeThiCau[] | null>(null)
   const [nd, setNd] = useState<Record<string, NoiDungCau>>({})
+  const [nl, setNl] = useState<Record<string, NguLieuDe>>({})
   const [tenDang, setTenDang] = useState<Record<string, string>>({})
   const [thieu, setThieu] = useState<DeThiThieu | null>(null)
   const [chiCanXem, setChiCanXem] = useState(false)
@@ -259,7 +272,7 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
   async function taiCau(deMon: string) {
     const [ps, cs] = await Promise.all([listPhanDeThi(id), deThiCau(id)])
     const [n, td, th] = await Promise.all([taiNoiDung(deMon, cs), taiTenDang(deMon, cs), deThiThieu(id)])
-    setPhans(ps); setCaus(cs); setNd(n); setTenDang((s) => ({ ...s, ...td })); setThieu(th)
+    setPhans(ps); setCaus(cs); setNd(n.nd); setNl((s) => ({ ...s, ...n.nl })); setTenDang((s) => ({ ...s, ...td })); setThieu(th)
   }
   useEffect(() => {
     (async () => {
@@ -390,6 +403,8 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
 
             {!caus ? <p className="text-sm text-slate-400">Đang tải câu…</p> : phans.map((p) => {
               const cs = cauCuaPhan(p.id)
+              const hien = cs.filter((c) => !(chiCanXem && !canXem(c)))
+              const nlCua = (c: DeThiCau) => nd[c.ma_cau]?.ngu_lieu ?? null
               return (
                 <div key={p.id}>
                   <div className="mb-2 flex items-center gap-2">
@@ -400,12 +415,20 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
                   </div>
                   {themVao === p.id && <ThemCauCoSan mon={d.mon} onPick={(ma, kho) => themCau(p.id, ma, kho)} />}
                   <div className="space-y-3">
-                    {cs.map((c, i) => (chiCanXem && !canXem(c)) ? null : (
-                      <CauThe key={c.ma_cau} c={c} so={i + 1} nd={nd[c.ma_cau]} tenDang={tenDang} loi={loiCua.get(c.ma_cau) ?? []} ghiChu={ghiChu[c.ma_cau] ?? []}
-                        dau={i === 0} cuoi={i === cs.length - 1}
-                        onChonDang={(md) => setPick({ c, md })} onSua={(patch, localNd) => sua(c, patch, localNd)}
-                        onBo={() => boCau(c)} onDoiCho={(h) => doiCho(c, h)} />
-                    ))}
+                    {hien.map((c, k) => {
+                      const i = cs.indexOf(c)
+                      const maNl = nlCua(c)
+                      const moiNl = maNl && nl[maNl] && (k === 0 || nlCua(hien[k - 1]) !== maNl)
+                      return (
+                        <div key={c.ma_cau}>
+                          {moiNl && <NguLieuBlock nl={nl[maNl!]} />}
+                          <CauThe c={c} mon={d.mon} so={i + 1} nd={nd[c.ma_cau]} tenDang={tenDang} loi={loiCua.get(c.ma_cau) ?? []} ghiChu={ghiChu[c.ma_cau] ?? []}
+                            dau={i === 0} cuoi={i === cs.length - 1}
+                            onChonDang={(md) => setPick({ c, md })} onSua={(patch, localNd) => sua(c, patch, localNd)}
+                            onBo={() => boCau(c)} onDoiCho={(h) => doiCho(c, h)} />
+                        </div>
+                      )
+                    })}
                   </div>
                 </div>
               )
@@ -439,7 +462,7 @@ function O({ label, children }: { label: string; children: React.ReactNode }) {
 
 // Tìm câu ĐÃ CÓ trong kho để gắn vào đề (không tạo bản sao). Chọn kho trước vì đề Toán trộn Đại số + Hình giải tích.
 function ThemCauCoSan({ mon, onPick }: { mon: string; onPick: (maCau: string, kho: Kho) => void }) {
-  const KHOS: { kho: Kho; ten: string }[] = mon === 'KHTN' ? [{ kho: 'khtn', ten: 'KHTN' }] : [{ kho: 'dai', ten: 'Đại số' }, { kho: 'hgt', ten: 'Hình giải tích' }]
+  const KHOS: { kho: Kho; ten: string }[] = KHO_DE_CUA_MON[mon] ?? KHO_DE_CUA_MON['Toán']
   const [kho, setKho] = useState<Kho>(KHOS[0].kho)
   const [q, setQ] = useState('')
   const [rows, setRows] = useState<CauTimThay[]>([])
@@ -463,7 +486,7 @@ function ThemCauCoSan({ mon, onPick }: { mon: string; onPick: (maCau: string, kh
           {rows.map((c) => (
             <button key={c.ma_cau} onClick={() => onPick(c.ma_cau, kho)} className="block w-full rounded-lg border border-slate-200 bg-white p-2.5 text-left hover:border-sky-400">
               <div className="mb-0.5 flex items-center gap-2 text-[11px]"><span className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-slate-500">{c.ma_cau}</span><span className="text-slate-400">{c.dangTen}</span></div>
-              <div className="truncate text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></div>
+              <div className="truncate text-[13px] text-slate-700"><ChuMon mon={mon}>{c.noi_dung}</ChuMon></div>
             </button>
           ))}
         </div>
@@ -472,8 +495,8 @@ function ThemCauCoSan({ mon, onPick }: { mon: string; onPick: (maCau: string, kh
   )
 }
 
-function CauThe({ c, so, nd, tenDang, loi, ghiChu, dau, cuoi, onChonDang, onSua, onBo, onDoiCho }: {
-  c: DeThiCau; so: number; nd?: NoiDungCau; tenDang: Record<string, string>; loi: LoiDeThi[]; ghiChu: string[]; dau: boolean; cuoi: boolean
+function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, dau, cuoi, onChonDang, onSua, onBo, onDoiCho }: {
+  c: DeThiCau; mon: string; so: number; nd?: NoiDungCau; tenDang: Record<string, string>; loi: LoiDeThi[]; ghiChu: string[]; dau: boolean; cuoi: boolean
   onChonDang: (md: number | null) => void
   onSua: (patch: SuaCauPatch, localNd?: Partial<NoiDungCau>) => Promise<boolean>
   onBo: () => void; onDoiCho: (huong: -1 | 1) => void
@@ -518,7 +541,7 @@ function CauThe({ c, so, nd, tenDang, loi, ghiChu, dau, cuoi, onChonDang, onSua,
             ? <SoanDungSai c={c} nd={nd} onHuy={() => setSoan(false)} onLuu={async (patch, localNd) => { if (await onSua(patch, localNd)) setSoan(false) }} />
             : <SoanCau c={c} nd={nd} onHuy={() => setSoan(false)} onLuu={async (patch, localNd) => { if (await onSua(patch, localNd)) setSoan(false) }} />)
         : (<>
-          {nd?.noi_dung && <div className="mb-2 text-[14px] leading-relaxed text-slate-800"><MathText>{nd.noi_dung}</MathText></div>}
+          {nd?.noi_dung && <div className="mb-2 text-[14px] leading-relaxed text-slate-800"><ChuMon mon={mon}>{nd.noi_dung}</ChuMon></div>}
           {nd?.anh_de && <img src={nd.anh_de} alt="hình của đề" className="mb-2 max-h-72 rounded border border-slate-200" />}
 
           {c.loai_cau === 'trac_nghiem' && (
@@ -529,7 +552,7 @@ function CauThe({ c, so, nd, tenDang, loi, ghiChu, dau, cuoi, onChonDang, onSua,
                   <button key={i} onClick={() => onSua({ dap_an: chu })} title="Bấm để đặt làm đáp án đúng"
                     className={`flex items-start gap-2 rounded-lg border px-2.5 py-1.5 text-left text-[13px] ${dung ? 'border-emerald-400 bg-emerald-50' : 'border-slate-200 hover:border-indigo-300'}`}>
                     <span className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-bold ${dung ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-500'}`}>{chu}</span>
-                    <span className="min-w-0 flex-1"><MathText>{o}</MathText></span>
+                    <span className="min-w-0 flex-1"><ChuMon mon={mon}>{o}</ChuMon></span>
                   </button>
                 )
               })}
@@ -542,7 +565,7 @@ function CauThe({ c, so, nd, tenDang, loi, ghiChu, dau, cuoi, onChonDang, onSua,
                 <div key={i} className="rounded-lg border border-slate-200 px-2.5 py-1.5 text-[13px]">
                   <div className="flex items-start gap-2">
                     <span className="font-semibold text-slate-500">{'abcd'[i]})</span>
-                    <span className="min-w-0 flex-1"><MathText>{m.noi_dung}</MathText></span>
+                    <span className="min-w-0 flex-1"><ChuMon mon={mon}>{m.noi_dung}</ChuMon></span>
                     {(['D', 'S'] as const).map((v) => (
                       <button key={v} onClick={() => onSua({ menh_de: (c.menh_de ?? []).map((x, j) => (j === i ? { ...x, dap_an: v } : x)) })}
                         className={`w-14 shrink-0 rounded-md border py-0.5 text-[12px] font-medium ${m.dap_an === v ? (v === 'D' ? 'border-emerald-400 bg-emerald-50 text-emerald-700' : 'border-rose-300 bg-rose-50 text-rose-700') : 'border-slate-200 text-slate-400'}`}>
@@ -558,7 +581,7 @@ function CauThe({ c, so, nd, tenDang, loi, ghiChu, dau, cuoi, onChonDang, onSua,
                   {m.loi_giai && (
                     <details className="mt-1 pl-6 text-[12.5px] text-slate-600">
                       <summary className="cursor-pointer text-[12px] text-slate-400">Lời giải ý {'abcd'[i]}</summary>
-                      <div className="mt-1"><MathText>{m.loi_giai}</MathText></div>
+                      <div className="mt-1"><ChuMon mon={mon}>{m.loi_giai}</ChuMon></div>
                     </details>
                   )}
                 </div>
@@ -572,7 +595,7 @@ function CauThe({ c, so, nd, tenDang, loi, ghiChu, dau, cuoi, onChonDang, onSua,
           {(nd?.loi_giai || nd?.anh_dap_an) && (
             <details className="mt-2 rounded-lg bg-slate-50 px-3 py-1.5 text-[13px] text-slate-700">
               <summary className="cursor-pointer text-[12px] font-medium text-slate-500">Lời giải</summary>
-              {nd?.loi_giai && <div className="mt-1"><MathText>{nd.loi_giai}</MathText></div>}
+              {nd?.loi_giai && <div className="mt-1"><ChuMon mon={mon}>{nd.loi_giai}</ChuMon></div>}
               {nd?.anh_dap_an && <img src={nd.anh_dap_an} alt="hình lời giải" className="mt-2 max-h-72 rounded border border-slate-200" />}
             </details>
           )}

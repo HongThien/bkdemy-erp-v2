@@ -76,6 +76,22 @@ export function laNopMuon(baiLam: { nop_at: string | null } | null | undefined, 
   return new Date(baiLam.nop_at).getTime() > new Date(deadline).getTime()
 }
 
+// NGỮ LIỆU kèm câu (môn có đoạn văn/thông báo/biển báo — Tiếng Anh): HS không đọc được bảng ngữ liệu ⇒ chụp vào bài, CÙNG
+// khuôn `_kho_snapshot_cau` ở DB ({ma, loai, tieu_de, noi_dung, anh, am_thanh, thu_tu}). Môn không có ngữ liệu ⇒ map rỗng.
+async function nguLieuSnapCua(mon: string, nhanh: string | null, caus: CauHoi[], out: Map<string, NguLieuSnap>): Promise<void> {
+  const tbl = khoCuaMon(mon, nhanh).nguLieuTbl
+  const ids = [...new Set(caus.map((c) => c.ngu_lieu).filter((x): x is string => !!x))]
+  if (!tbl || !ids.length) return
+  const { data, error } = await supabase.from(tbl).select('ma_ngu_lieu, loai, tieu_de, noi_dung, anh, am_thanh').in('ma_ngu_lieu', ids).limit(LIMIT)
+  if (error) throw error
+  const theoMa = new Map(((data ?? []) as { ma_ngu_lieu: string; loai: string; tieu_de: string | null; noi_dung: string | null; anh: string | null; am_thanh: string | null }[])
+    .map((r) => [r.ma_ngu_lieu, r]))
+  for (const c of caus) {
+    const r = c.ngu_lieu ? theoMa.get(c.ngu_lieu) : undefined
+    if (r) out.set(c.ma_cau, { ma: r.ma_ngu_lieu, loai: r.loai, tieu_de: r.tieu_de, noi_dung: r.noi_dung, anh: r.anh, am_thanh: r.am_thanh, thu_tu: c.thu_tu_trong_ngu_lieu ?? null })
+  }
+}
+
 // Doc loai → (câu resolver · loai bai_test · nhãn). ET/đề-thi=THI (giấu key); BTVN/giáo trình=tham khảo reveal-ngay.
 const DOC_MAP: Record<string, { getCaus: (id: string) => Promise<CauHoi[]>; testLoai: TestLoai; ten: string }> = {
   btvn: { getCaus: getBTVNCaus, testLoai: 'btvn', ten: 'BTVN' },
@@ -124,6 +140,8 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
       .in('ma_cau', caus.map((c) => c.ma_cau)).eq('da_duyet', true).is('xoa_at', null).limit(LIMIT)
     for (const f of (fr ?? []) as { id: string; ma_cau: string; lua_chon: any; dap_an: string }[]) formMap.set(f.ma_cau, f)
   }
+  const nlMap = new Map<string, NguLieuSnap>()
+  await nguLieuSnapCua(doc.mon, doc.nhanh, caus, nlMap)
   const skipped: { ma_cau: string; warn: string }[] = []
   const rows: Omit<BaiTestCau, 'id'>[] = []
   let thu_tu = 0
@@ -145,6 +163,7 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
           loi_giai: c.loi_giai ?? null, anh_de: c.anh_de ?? null, anh_dap_an: c.anh_dap_an ?? null,
           ma_dang: c.dang_chinh ?? null, ly_thuyet: ltMap.get(c.dang_chinh) ?? null, diem: 1,
           form_tn_id: ft.id, lua_chon_rule: ft.lua_chon.map((o) => (o.dung ? null : o.rule ?? null)),
+          ngu_lieu: nlMap.get(c.ma_cau) ?? null,
         },
       }
     }
@@ -159,6 +178,7 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
         menh_de: c.menh_de ?? null, dap_an_key: k.key,
         loi_giai: c.loi_giai ?? null, anh_de: c.anh_de ?? null, anh_dap_an: c.anh_dap_an ?? null,
         ma_dang: c.dang_chinh ?? null, ly_thuyet: ltMap.get(c.dang_chinh) ?? null, diem: 1,
+        ngu_lieu: nlMap.get(c.ma_cau) ?? null,
       },
     }
   }
@@ -192,6 +212,7 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
       const needMa = new Set<string>()
       for (const arr of Object.values(ch.etMaDe ?? {}) as (string | null)[][]) for (const m of arr) if (m) needMa.add(m)
       const varCaus = await fetchCausByMa([...needMa], khoCuaMon(doc.mon, doc.nhanh).cauTbl)
+      await nguLieuSnapCua(doc.mon, doc.nhanh, varCaus, nlMap)
       const varByMa = new Map(varCaus.map((c) => [c.ma_cau, c]))
       for (let tt = 1; tt <= caus.length; tt++) {
         const baseMaCau = maCauByThuTu.get(tt)
@@ -440,7 +461,7 @@ export async function traLoiCau(baiLamId: string, cau: BaiTestCau, dapAnHs: unkn
 
 // ── ET chế độ THI (giấu key) ─────────────────────────────────────────────────
 // Đề ET đã LỌC key (rpc security-definer). Câu: id/thu_tu/loai_cau/noi_dung/lua_chon/menh_de(chỉ noi_dung)/ma_dang/ly_thuyet/diem.
-export type ETCauDe = { id: string; thu_tu: number; loai_cau: string; noi_dung: string | null; lua_chon: string[] | null; anh_de: string | null; menh_de: { noi_dung: string }[] | null; ma_dang: string | null; ly_thuyet: string | null; diem: number; phan?: string | null; kieu_nhap?: string | null }
+export type ETCauDe = { id: string; thu_tu: number; loai_cau: string; noi_dung: string | null; lua_chon: string[] | null; anh_de: string | null; menh_de: { noi_dung: string }[] | null; ma_dang: string | null; ly_thuyet: string | null; diem: number; phan?: string | null; kieu_nhap?: string | null; ngu_lieu?: NguLieuSnap | null }
 export async function getETDe(baiTestId: string): Promise<ETCauDe[]> {
   const { data, error } = await supabase.rpc('et_de', { p_bai_test: baiTestId })
   if (error) throw error
