@@ -35039,3 +35039,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   giữ dáng vòm đã chốt, đổi chất (đồng xỉn → vàng kim bóng) + rãnh rune sáng, hạt vàng 2 mép, gân + lõi sáng tia, ngọc chân tia, tinh thể mũi tia;
   lớp cộng sáng gắn xương đầu (quầng thở, dải năng lượng chạy, sao lấp lánh). Camera phòng boss ôm cả người + boss to.
   Vấp: gọi `DEMO.viTri()` không tham số ⇒ cá voi bị đặt NaN, biến mất khỏi ảnh — hàm DEMO là setter, đọc chữ ký trước khi gọi.
+
+- (02/10 đêm, Giao diện) **Hạ dịu nền lục địa** (Thùy: "quá chói, nhiều chi tiết, khó nhìn"): `LucDiaKit` — nền (chỉ nền) `saturate .66 · brightness .88 · contrast .9 · blur 1,2px` + phủ màu nền style 20% + tối viền; công trình/chữ/nhân vật giữ nguyên ⇒ nổi lên. Chỉnh 1 chỗ `NEN_DIU`. Chưa kiểm sa mạc/đầm lầy sau khi hạ (cùng bộ lọc).

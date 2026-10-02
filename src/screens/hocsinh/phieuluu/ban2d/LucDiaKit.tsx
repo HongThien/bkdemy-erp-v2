@@ -16,6 +16,8 @@ const G = '/bk-ui/hs/skin/rpg/lucdia'
 const TL = 941 / 1672 // cao / rộng của khung
 const HE_SO_NV = 2.2 // kit ghi cỡ chibi 4,5–9% chiều cao khung (chỉ ~35px trên iPad, khó thấy) ⇒ phóng 2,2 lần cho dễ thấy; đổi 1 chỗ này
 const DUNG_CACH = 0.014 // đứng cách cửa công trình một đoạn đường (đơn vị = chiều rộng khung) để không đè lên nhãn
+/** HẠ DỊU nền (Thùy 02/10: "quá chói và nhiều chi tiết, khó nhìn"): giảm bão hoà + sáng + tương phản, làm mờ nhẹ chi tiết cây/đá, phủ thêm màu nền style — CHỈ nền; công trình, chữ, nhân vật giữ nguyên rực để nổi lên. Chỉnh 1 chỗ này. */
+const NEN_DIU = { loc: 'saturate(.66) brightness(.88) contrast(.9) blur(1.2px)', phu: 0.2 }
 const NHO_VI_TRI: Record<string, number> = {} // "rời màn rồi quay lại = đúng chỗ cũ" — sống tới F5
 
 const HERO_AX = HERO_CHAY.nam.ax
@@ -105,7 +107,8 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
           <img src={`${G}/${luc.biome}/nen.jpg`} alt="" aria-hidden className="absolute inset-0 h-full w-full scale-110 object-cover" style={{ filter: 'blur(14px) brightness(.55)' }} draggable={false} />
           <div ref={ref} className="absolute inset-0 flex items-center justify-center">
             <div className="relative select-none" style={{ width: W, height: H }}>
-              <img src={`${G}/${luc.biome}/nen.jpg`} alt="" className="absolute inset-0 h-full w-full" draggable={false} />
+              <img src={`${G}/${luc.biome}/nen.jpg`} alt="" className="absolute inset-0 h-full w-full" draggable={false} style={{ filter: NEN_DIU.loc }} />
+              <div className="pointer-events-none absolute inset-0" style={{ background: `radial-gradient(120% 100% at 50% 45%, transparent 35%, color-mix(in srgb, var(--sk-bg) ${Math.round(NEN_DIU.phu * 160)}%, transparent) 100%), color-mix(in srgb, var(--sk-bg) ${Math.round(NEN_DIU.phu * 100)}%, transparent)` }} />
               {W > 0 && (
                 <>
                   {/* ánh sáng đoạn đường đã đi — dưới công trình/nhân vật, không che kiến trúc */}
