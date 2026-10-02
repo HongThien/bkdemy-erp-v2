@@ -90,7 +90,7 @@ def hien(t):
 
 
 def tron(t):
-    return t.replace('\x01', '').replace('\x02', '')
+    return t.replace('\x01', '').replace('\x02', '').replace('\x03', '').replace('\x04', '')   # \x03…\x04 = tô màu (bản GV)
 
 
 NHAN = re.compile(r'(?:(?<=^)|(?<=[\s\x02]))([A-D])\s*[.)]\s*')
@@ -148,7 +148,7 @@ def va_nhan(pa):
         lech = [i for i in range(4) if nhan[i] != 'ABCD'[i]]
         if len(lech) == 1 and nhan.count(nhan[lech[0]]) == 2:   # "A. … B. … C. … B. …" ⇒ nhãn cuối gõ nhầm
             pa = [('ABCD'[i], v) for i, (_, v) in enumerate(pa)]
-    return pa, pa != goc
+    return pa, sorted(pa) != sorted(goc)      # chỉ đổi thứ tự (bố cục 2 cột) ⇒ không tính là vá
 
 
 def khoi_cua(de_html):
@@ -186,7 +186,7 @@ def doc(html_path, ma, ra, thu_muc_anh=None):
     return phan_tich(khoi_cua(de_html), dap, ma, ra, thu_muc_anh)
 
 
-def phan_tich(khoi, dap, ma, ra, thu_muc_anh=None, nguon='web'):
+def phan_tich(khoi, dap, ma, ra, thu_muc_anh=None, nguon='web', ghi=True):
     """Lõi chung: danh sách khối (p/bang/anh/hop) + đáp án {số câu: X} → cau.json + ngu_lieu.json.
     nguon='docx': biển báo (ảnh HOẶC hộp chữ) gắn theo THỨ TỰ trong phần — số biển phải bằng số câu, lệch ⇒ để trống + cờ."""
     cau, ngu_lieu, dem_bo = [], [], {}
@@ -359,17 +359,23 @@ def phan_tich(khoi, dap, ma, ra, thu_muc_anh=None, nguon='web'):
         x['_pa'], da_sua = va_nhan(x['_pa'])
         if da_sua: x['_sua'] = True
     for x in cau:
-        m = re.search(r'end the (?:text|passage)\s*\(\s*in question\s*(\d+)\s*\)', tron(' '.join(x['_stem'])), re.I)
+        # phương án là THỨ TỰ câu ("c-a-b-d", "b - a - c") ⇒ sắp xếp câu, dù lệnh chung của phần không nói (test unit GS: "questions 17.")
+        if x['_dang'] != 'sap_xep_doan' and len(x['_pa']) == 4 and all(re.match(r'^[a-e](\s*[-–]\s*[a-e]){2,}\s*\.?\s*$', tron(v).strip()) for _, v in x['_pa']):
+            x['_dang'], x['_tu_du'] = 'sap_xep_doan', True
+    for x in cau:
+        m = re.search(r'ends?\s+the\s+(?:text|passage)\s*\(\s*in\s+question\s*(\d+)\s*\)', tron(' '.join(x['_stem'])), re.I)
         if not m: continue
         goc = next((y for y in cau if y['_n'] == int(m.group(1)) and y['_dang'] == 'sap_xep_doan' and y.get('_tu_du')), None)
         x['_dang'], x['_tu_du'] = 'hoan_thanh_cau', True
-        if goc is None or len(goc['_stem']) < 2 or not dang_theo_de(tron(goc['_stem'][0])):
+        co_lenh = goc is not None and goc['_stem'] and dang_theo_de(tron(goc['_stem'][0]))
+        doan = (goc['_stem'][1:] if co_lenh else goc['_stem']) if goc is not None else []
+        if not doan:
             x['_cap_loi'] = 'khong_tach_duoc_doan_cua_cau_' + m.group(1)
             continue
         ref = f'{ma}-NL{len(ngu_lieu) + 1:02d}'
-        ngu_lieu.append({'ref': ref, 'loai': 'doan_van', 'noi_dung': hien('\n'.join(goc['_stem'][1:])), 'anh': None,
+        ngu_lieu.append({'ref': ref, 'loai': 'doan_van', 'noi_dung': hien('\n'.join(doan)), 'anh': None,
                          'anh_file': None, 'ex': f"S{goc['_sec']}"})
-        goc['_stem'] = goc['_stem'][:1]
+        goc['_stem'] = goc['_stem'][:1] if co_lenh else []
         goc['_nl'], goc['_nl_cap'], x['_nl'], x['_nl_cap'] = ref, 1, ref, 2
 
     out = []
@@ -422,6 +428,8 @@ def phan_tich(khoi, dap, ma, ra, thu_muc_anh=None, nguon='web'):
             if not stem: stem = f'({n}) ______'
         else:
             nl_ref = None
+        if x['_dang'] == 'sap_xep_doan' and not stem:
+            stem = 'Choose the correct arrangement of the sentences to make a meaningful text.'   # lệnh nằm ở đầu phần, câu không có đề riêng
         if x['_dang'] in ('phat_am', 'trong_am') and not stem:
             stem = {'phat_am': 'Choose the word whose underlined part is pronounced differently from the other three.',
                     'trong_am': 'Choose the word that differs from the other three in the position of the main stress.'}[x['_dang']]
@@ -441,6 +449,8 @@ def phan_tich(khoi, dap, ma, ra, thu_muc_anh=None, nguon='web'):
         elif cs and so - so_cau:
             print(f"   ⚠ {nl['ref']}: đoạn có chỗ trống {sorted(so - so_cau)} nhưng đề KHÔNG có câu đó (đề gốc rơi câu)")
 
+    if not ghi:
+        return out, ngu_lieu        # người gọi xử tiếp (trạm đọc test unit: đáp án tô màu + lời giải) rồi tự ghi
     os.makedirs(ra, exist_ok=True)
     json.dump(out, open(os.path.join(ra, f'{ma}.cau.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     json.dump(ngu_lieu, open(os.path.join(ra, f'{ma}.ngu_lieu.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)

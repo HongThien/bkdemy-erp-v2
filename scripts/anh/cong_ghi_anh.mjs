@@ -28,7 +28,7 @@ import { createClient } from '@supabase/supabase-js'
 import { env, vanTayDaThay, taoQuyetDinh, ghiChuChac, AI_MODEL } from './luat_chac_chan.mjs'
 
 const argv = process.argv.slice(2)
-const CO_GIA_TRI = new Set(['--de-goc', '--khoi', '--nam', '--thoi-gian', '--nguon-de', '--file', '--bo-sung-tu'])
+const CO_GIA_TRI = new Set(['--de-goc', '--khoi', '--nam', '--thoi-gian', '--nguon-de', '--file', '--bo-sung-tu', '--cap'])
 const [dirNhap, dirKiem] = argv.filter((a, i) => !a.startsWith('--') && !CO_GIA_TRI.has(argv[i - 1]))
 const iDe = argv.indexOf('--de-goc')
 const deGoc = iDe >= 0 ? argv[iDe + 1] : null
@@ -40,7 +40,7 @@ const DE_THI = argv.includes('--de-thi') || !!BO_SUNG
 const NPV_CHO = argv.includes('--ngoai-pham-vi-cho-duyet') || DE_THI
 const thamSo = (k, mac) => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] : mac }
 const DE = { khoi: thamSo('--khoi', '9'), nam: thamSo('--nam', null), thoiGian: Number(thamSo('--thoi-gian', '60')),
-  nguonDe: thamSo('--nguon-de', ''), file: thamSo('--file', null) }
+  nguonDe: thamSo('--nguon-de', ''), file: thamSo('--file', null), cap: thamSo('--cap', 'vao_10') }
 if (!dirNhap || !dirKiem || !deGoc) {
   console.error('Dùng: node scripts/anh/cong_ghi_anh.mjs <thu_muc_nhap_unit> <thu_muc_kiem_unit> --de-goc "<tên tài liệu>" [--ngoai-pham-vi-cho-duyet] [--ghi]')
   process.exit(2)
@@ -143,7 +143,7 @@ async function dungDe(c) {
   for (const b of bienBan) if (b.ma_cau && b.quyet !== 'chac' && b.ly_do?.length) canhBaoCau[b.ma_cau] = [...(canhBaoCau[b.ma_cau] ?? []), ...b.ly_do]
   const so = cau.map((x) => soCua(x.ref)), thieu = []
   for (let k = 1; k <= Math.max(...so); k++) if (!so.includes(k)) thieu.push(k)
-  const cauHinh = { deThi: { nguon: DE.nguonDe, cap: 'vao_10', nam: DE.nam ? Number(DE.nam) : null, thoiGianPhut: DE.thoiGian, thangDiem: 10,
+  const cauHinh = { deThi: { nguon: DE.nguonDe, cap: DE.cap, nam: DE.nam ? Number(DE.nam) : null, thoiGianPhut: DE.thoiGian, thangDiem: 10,
     sha256: sha, file: DE.file ? basename(DE.file) : `${unit}.cau.json`, pdfGocUrl: null, phan: phan.map(({ thu_tu, ten }) => ({ thu_tu, ten })),
     ...(thieu.length ? { cauThieu: thieu } : {}), ...(Object.keys(canhBaoCau).length ? { canhBaoCau } : {}) } }
   const tl = (await c.query(`insert into tai_lieu (loai, ten, khoi, mon, cau_hinh) values ('de_thi', $1, $2, 'Tiếng Anh', $3::jsonb) returning id`,
@@ -198,12 +198,12 @@ try {
     const r = await c0.query(
       `insert into anh_cau_hoi (dang_chinh, loai_cau, noi_dung, lua_chon, dap_an, nguon, nguon_giai, ten_de_goc,
          ngu_lieu, thu_tu_trong_ngu_lieu, dang_de, unit_sgk, da_duyet, duyet_nguon,
-         kiem_may, kiem_may_at, kiem_may_boi, kiem_may_ghi, dang_ai_de_xuat, ai_model)
-       values ($1,'trac_nghiem',$2,$3::jsonb,$4,$16,'nguoi',$5,$6,$7,$8,$9,$10,$11,$12,now(),'claude_code',$13,$14,$15)
+         kiem_may, kiem_may_at, kiem_may_boi, kiem_may_ghi, dang_ai_de_xuat, ai_model, loi_giai)
+       values ($1,'trac_nghiem',$2,$3::jsonb,$4,$16,'nguoi',$5,$6,$7,$8,$9,$10,$11,$12,now(),'claude_code',$13,$14,$15,$17)
        returning ma_cau`,
       [dang, c.noi_dung, JSON.stringify(c.lua_chon), c.dap_an, deGoc, ngu, ngu ? c.thu_tu_trong_ngu_lieu : null,
        c.dang_de, c.unit_sgk, chac, chac ? 'ai' : null, chac ? 'khop' : 'nghi', ghiChu.slice(0, 1000),
-       q.deXuat ? (MA[q.deXuat] ?? null) : null, AI_MODEL, DE_THI ? 'de_thi' : 'le'])
+       q.deXuat ? (MA[q.deXuat] ?? null) : null, AI_MODEL, DE_THI ? 'de_thi' : 'le', c.loi_giai ?? null])   // lời giải của nguồn (bản GV) — trạm đọc đã lọc lời giải không khớp đáp án
     maCuaRef[c.ref] = r.rows[0].ma_cau
     bienBan.push({ ref: c.ref, ma_cau: r.rows[0].ma_cau, quyet: q.loai, kp: q.kp, de_xuat: q.deXuat, ly_do: q.lyDo })
   }
