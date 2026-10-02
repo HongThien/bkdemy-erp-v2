@@ -9,10 +9,10 @@ import { getDeThiCaus } from './dethi'
 import { fetchCausByMa } from './ontap'
 import { maDeReady, type BaseItem } from './made'
 import type { CauHoi } from './kho/api'
-import { extractKey, gradeTracNghiem, gradeTraLoiNgan, gradeDungSai, smartNormalize, LETTERS } from '../gami/testgrade'
+import { extractKey, gradeTracNghiem, gradeTraLoiNgan, gradeDungSai, gradeKeoTha, smartNormalize, LETTERS } from '../gami/testgrade'
 
 const LIMIT = 1000
-const SUPPORTED = new Set(['trac_nghiem', 'dung_sai', 'tra_loi_ngan']) // auto-chấm được
+const SUPPORTED = new Set(['trac_nghiem', 'dung_sai', 'tra_loi_ngan', 'keo_tha']) // auto-chấm được
 
 // bo_tro (lô luyện trong ca bổ trợ yếu) · bo_tro_test (test cuối ca) · retest (bài riêng sau ET buổi thường) —
 // migration 202609030307, PLAN-botro-yeu-ca.md. Thêm giá trị = PHẢI nới CHECK bai_test_loai_check (§2.1).
@@ -413,7 +413,9 @@ export async function traLoiCau(baiLamId: string, cau: BaiTestCau, dapAnHs: unkn
     ? gradeTracNghiem(dapAnHs as number, cau.dap_an_key as string)
     : cau.loai_cau === 'dung_sai'
       ? gradeDungSai(dapAnHs as string[], cau.dap_an_key as string[])
-      : gradeTraLoiNgan(dapAnHs as string, cau.dap_an_key as string)
+      : cau.loai_cau === 'keo_tha'
+        ? gradeKeoTha(dapAnHs as string[], cau.dap_an_key as string[])
+        : gradeTraLoiNgan(dapAnHs as string, cau.dap_an_key as string)
   if (cau.loai_cau === 'tra_loi_ngan' && g.verdict === 'wrong' && cau.ma_cau) {
     const { data: hit } = await supabase.rpc('tln_cache_check', { p_ma_cau: cau.ma_cau, p_norm: smartNormalize(dapAnHs as string) })
     if (hit === true) g = { verdict: 'correct', cham_boi: 'cache' }

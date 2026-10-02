@@ -10,6 +10,7 @@ import { MathText, ChuMon } from '../kho/ui'
 import { NguLieuHS } from './NguLieuHS'
 import { MON_LUYEN_CHUNG_MINH } from '../../lib/mon'
 import { LamDienO } from './DienOCau'
+import { KeoThaCau } from './KeoThaCau'
 import {
   listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, baoSai, nopBai, chuCaiChon, chiSoCuaChu,
   getETDe, luuDapAnET, nopET, getETDapAnDaLuu, xemGoiY, daHetHan, laNopMuon,
@@ -822,6 +823,9 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
   const daCham = !!cs?.kq
   const laTN = cau?.loai_cau === 'trac_nghiem'
   const laDS = cau?.loai_cau === 'dung_sai'
+  const laKT = cau?.loai_cau === 'keo_tha'   // KÉO THẢ (TSA) — KeoThaCau.tsx
+  const keyKT: string[] = laKT ? ((cau!.dap_an_key as string[]) ?? []) : []
+  const chonKT: (string | null)[] = laKT ? ((cs?.chon as (string | null)[]) ?? keyKT.map(() => null)) : []
   const menhDe: MenhDeSnap[] = laDS ? ((cau!.menh_de as MenhDeSnap[]) ?? []) : []
   const keyDS: string[] = laDS ? ((cau!.dap_an_key as string[]) ?? []) : []
   const chonArr: (string | null)[] = laDS ? ((cs?.chon as (string | null)[]) ?? menhDe.map(() => null)) : []
@@ -834,6 +838,7 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
   // Đã chọn đủ để Xác nhận? TN=đã chọn 1 · TLN=nhập khác rỗng · ĐS=đủ 4 ý.
   const daDu = laTN ? typeof cs?.chon === 'number'
     : laDS ? (chonArr.length === menhDe.length && menhDe.length > 0 && chonArr.every((x) => x != null))
+    : laKT ? (keyKT.length > 0 && chonKT.length === keyKT.length && chonKT.every((x) => x != null))
     : (typeof cs?.chon === 'string' && cs.chon.trim() !== '')
 
   function setChon(v: Chon) {
@@ -863,7 +868,7 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
   //   · TLN → "em nghĩ mình đúng" = có thể viết cách khác cũng đúng → accepted-answer (tab 🚩 Duyệt chấm)
   //   · TN/ĐS → không có chuyện viết khác, chỉ có KEY sai → tab ⚠ Nghi sai đáp án — chấm lại
   // Phân biệt bằng loai_cau của câu (staff-side), y_kien chỉ để người đọc hiểu.
-  const baoSaiDe = laTN || laDS
+  const baoSaiDe = laTN || laDS || laKT
   async function guiBaoSai() {
     if (!cau || !cs?.kq) return
     await baoSai(cs.kq.baiLamCauId, hocSinhId, baoSaiDe ? 'Em nghĩ đề hoặc đáp án sai.' : 'Em nghĩ mình đúng.')
@@ -926,11 +931,13 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
           )}
           {/* Ngữ liệu (đoạn văn / thông báo / biển báo) dùng chung nhiều câu — chụp kèm câu lúc sinh bài, hiện TRÊN đề */}
           {cau.ngu_lieu && <NguLieuHS nl={cau.ngu_lieu} mon={monBai} gon={!!nhung} />}
-          {cau.noi_dung && <div className={nhung ? 'mb-4 text-[21px] font-semibold leading-relaxed' : 'mb-3 text-[19px] leading-relaxed'} style={{ color: MAU.ink }}><ChuMon mon={monBai}>{cau.noi_dung}</ChuMon></div>}
+          {cau.noi_dung && !laKT && <div className={nhung ? 'mb-4 text-[21px] font-semibold leading-relaxed' : 'mb-3 text-[19px] leading-relaxed'} style={{ color: MAU.ink }}><ChuMon mon={monBai}>{cau.noi_dung}</ChuMon></div>}
           {/* Hình đề: nền trắng cố định — hình vẽ/ảnh chụp đề là nét đen trên trắng, đặt thẳng lên thẻ tối là mất nét. */}
           {cau.anh_de && <img src={cau.anh_de} alt="đề" className="mb-3 max-h-80 rounded-lg bg-white" style={{ border: `1px solid ${MAU.line}` }} />}
 
-          {laTN ? (
+          {laKT ? (
+            <KeoThaCau noiDung={cau.noi_dung ?? ''} nganHang={cau.lua_chon ?? []} value={chonKT} onChange={(v) => setChon(v)} key_={daCham ? keyKT : undefined} daCham={daCham} mon={monBai} />
+          ) : laTN ? (
             <div className="flex flex-col gap-2.5">
               {optsShown.map(({ item: opt, orig }, dispI) => {
                 const chon = cs?.chon === orig

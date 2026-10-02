@@ -1,10 +1,10 @@
 // Danh mục MÔN của hệ thống — 1 NGUỒN duy nhất. Thêm môn = sửa đúng ở đây.
 // Giá trị = chuỗi hiển thị, khớp lop.mon / ung_vien.mon trong DB.
-export const MON_LIST = ['Toán', 'KHTN', 'Tiếng Anh', 'Văn'] as const
+export const MON_LIST = ['Toán', 'KHTN', 'Tiếng Anh', 'Văn', 'TSA'] as const // TSA = Toán luyện thi ĐH Bách khoa (môn ĐỘC LẬP với Toán, 02/10)
 export type Mon = typeof MON_LIST[number]
 // Môn có GÓC HỌC TẬP trong app Học sinh (Thùy 01/10: "chọn môn Toán, KHTN, Tiếng Anh") — thứ tự = thứ tự nút ở thanh chọn môn.
 // Môn có lớp mà không nằm đây (Văn) thì app HS chưa hiện. Mở thêm môn = thêm vào đây (kho câu: `_kho_co_mon` ở DB).
-export const MON_APP_HS = ['Toán', 'KHTN', 'Tiếng Anh'] as const
+export const MON_APP_HS = ['Toán', 'KHTN', 'Tiếng Anh', 'TSA'] as const
 // Môn có nội dung là CHỮ THƯỜNG, không công thức (Thùy 02/10 mở luyện tập Anh): hiện bằng `TextAnh` thay `MathText` — MathText
 // tự in đậm từ VIẾT HOA, hiểu "$5" là công thức và hiện nguyên "<u>" (gạch chân là ĐỀ BÀI câu phát âm). Thêm môn = thêm vào đây.
 export const MON_CHU_THUONG: readonly string[] = ['Tiếng Anh']
