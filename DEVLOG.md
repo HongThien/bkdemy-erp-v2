@@ -35117,3 +35117,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Fast Refresh dựng lại màn tháp ⇒ một lượt mới tự chạy — test xong phải tải lại trang, đừng bấm dừng (sẽ ghi lượt rác).
 
 - (03/10, Đấu từ) Leo tháp: tên chỉ tiếng Việt "Leo tháp"; biểu tượng = ngọn tháp pháp sư `phieuluu2d/moc_thap.webp` (tranh ChatGPT bộ phiêu lưu) ở thẻ sảnh, tiêu đề, màn đếm ngược — bỏ emoji 🗼 (tháp Tokyo) và huy chương `o_rank.png` (Thùy: "biểu tượng phải là 1 cái tower mới chuẩn").
+
+## 2026-10-03 [Giao diện] (máy `BK_v2`) — Kiểm hàng style Khối vuông: 72 hình ChatGPT (K1 + K2)
+- Hình về GỐC `design/bk-ui-src/` tên "ChatGPT Image …" (đơn dặn `khoi/`) ⇒ nhận diện bằng mắt, đổi tên, chuyển vào `khoi/` + `khoi/phieu-luu/`,
+  nhật ký `khoi/_doi_ten.log.txt`. **K1 30/31** — thiếu #29 `khoi_b_kiem_tra_lai` (banner đang tắt, `RETEST_BAT=false` ⇒ không chặn); cuốc + sách-bút lông
+  vẽ 2 lần, dùng bản lượt 17:37, bản đầu cất `khoi/_thua/`. **K2 40/41** — thiếu #31 `quai_bo_giap` (ChatGPT nhảy sang ma lửa). Chất lượng đạt,
+  không thấy hình chép Minecraft. Đơn bổ sung 2 hình ghi ở đầu `DON-HANG-STYLE-KHOI.md`. Dựng code vẫn để SAU V1 (Thùy 01/10).

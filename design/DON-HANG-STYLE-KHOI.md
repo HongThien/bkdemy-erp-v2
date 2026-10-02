@@ -17,6 +17,39 @@
 
 ---
 
+## ✅ KIỂM HÀNG 03/10 — 72 hình về 02–03/10 (tên "ChatGPT Image …", ở GỐC `bk-ui-src/`) ⇒ Claude nhận diện bằng mắt + đổi tên
+
+Đã chuyển vào `design/bk-ui-src/khoi/` (K1) · `design/bk-ui-src/khoi/phieu-luu/` (K2), nhật ký đổi tên `khoi/_doi_ten.log.txt`. Ảnh gốc ngoài git ⇒
+**Thùy cất lên Drive** như bộ gami.
+
+| Đơn | Đã về | THIẾU | Ghi chú |
+|---|---|---|---|
+| **K1** | **30/31**: 4 ảnh toàn cảnh · 6 nền (anh đào · hồ rừng · tuyết × ngang/dọc) · 2 nhân vật · 15 vật phẩm ô · lịch · góc dây leo + đèn lồng · gạch khối cỏ | **#29 `khoi_b_kiem_tra_lai`** (banner bài kiểm tra lại) | Cuốc + sách-bút lông vẽ 2 lần (00:31 và 17:37) ⇒ dùng bản 17:37 (cùng lượt với cả bộ, cùng cỡ điểm ảnh), bản đầu cất `khoi/_thua/`. Banner kiểm tra lại đang TẮT trong app (`RETEST_BAT = false`) ⇒ thiếu #29 KHÔNG chặn dựng style, vẽ bù lúc nào cũng được |
+| **K2** | **40/41**: ảnh toàn cảnh bản đồ · 8 vùng đất · 8 đảo · nền thế giới · 15 quái · 4 boss · cờ · rương · cổng | **#31 `quai_bo_giap`** | ChatGPT nhảy từ #30 sói băng sang ma lửa (#32) — bỏ sót bọ giáp |
+
+Chất lượng: đạt — nền đặc đúng khổ (ngang 1672×941, dọc 941×1672), vật phẩm / nhân vật / quái / đảo nền trong suốt thật, sprite pixel cùng cỡ,
+không thấy hình chép của Minecraft (nhân vật không giống Steve/Alex, không mob của game). Ảnh toàn cảnh #01 bám sát bố cục màn chính hiện tại.
+
+**Đơn bổ sung — dán vào ĐÚNG context ChatGPT đã vẽ đơn đó (giữ phong cách đã duyệt):**
+
+K1 (context vẽ màn chính):
+```
+BỔ SUNG — bạn còn thiếu 1 hình trong danh sách. Vẽ đúng hình dưới, vẫn luật cũ: ĐÚNG 1 HÌNH, dòng đầu ghi số + tên file, cùng cỡ điểm ảnh,
+cùng hướng sáng trái-trên, cùng độ chi tiết với #13–#28 đã vẽ.
+   #29 khoi_b_kiem_tra_lai — [sprite pixel 16×16 phóng to] TỜ GIẤY có dấu tích + 1 bút lông, viền ánh HỒNG nhạt quanh tờ giấy.
+       Vuông 1254×1254, nền TRONG SUỐT thật, vật ở giữa ~80% khung, không chữ/số, không ô túi đồ phía sau.
+```
+
+K2 (context vẽ bản đồ + quái):
+```
+BỔ SUNG — bạn còn thiếu 1 con quái (vẽ ma lửa xong là bỏ qua con này). Vẽ đúng hình dưới, vẫn luật cũ: ĐÚNG 1 HÌNH, dòng đầu ghi số + tên file,
+cùng phong cách với #25–#30 đã vẽ.
+   #31 quai_bo_giap — bọ cánh cứng khối: giáp lưng xanh lục ánh kim, 1 sừng nhỏ, mắt to dễ thương, 6 chân khối ngắn. 1024×1024, nền TRONG SUỐT,
+       toàn thân, giữa khung ~75%, quay 3/4 về người xem, tư thế sẵn sàng chiến đấu vui nhộn. Màu chủ đạo khác các con đã có.
+```
+
+---
+
 ## 0. Quyết định thiết kế (Claude đề xuất 01/10 — Thùy bác chỗ nào thì sửa trước khi gửi)
 
 | # | Vấn đề | Chọn | Vì sao |
