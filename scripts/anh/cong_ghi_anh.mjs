@@ -35,6 +35,14 @@ const cau = doc(join(dirNhap, `${unit}.cau.json`))
 const nguLieu = Object.fromEntries(doc(join(dirNhap, `${unit}.ngu_lieu.json`)).map((n) => [n.ref, n]))
 const raA = Object.fromEntries(doc(join(dirKiem, 'ra_A.json')).map((x) => [x.ref, x]))
 const raB = Object.fromEntries(doc(join(dirKiem, 'ra_B.json')).map((x) => [x.ref, x]))
+// Bên A đã thấy ĐÚNG nội dung nào (đề + phương án + đoạn văn) — trạm đọc sửa sau khi kiểm thì kết quả kiểm không còn
+// áp cho câu đó nữa ⇒ câu phải về chờ duyệt (không tin kết quả kiểm trên nội dung khác).
+const daThayA = Object.fromEntries(doc(join(dirKiem, 'vao_A_khong_dap_an.json')).map((x) => [x.ref,
+  JSON.stringify([x.noi_dung, Object.values(x.lua_chon), x.ngu_lieu?.noi_dung ?? null])]))
+const vanTayHienTai = (c) => JSON.stringify([c.noi_dung, c.lua_chon, c.ngu_lieu ? (nguLieu[c.ngu_lieu]?.noi_dung ?? null) : null])
+// Khoá trùng: cùng dạng đề + đề + phương án + đoạn văn (đã chuẩn hoá khoảng trắng/hoa thường)
+const chuan = (s) => (s ?? '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim().toLowerCase()
+const khoaTrung = (dang, noiDung, luaChon, doan) => [dang, chuan(noiDung), (luaChon ?? []).map(chuan).join('|'), chuan(doan)].join('§')
 
 function env() {
   const e = {}
@@ -69,6 +77,7 @@ function quyetDinh(c) {
   const lyDo = []
   if (!a || !b) return { loai: 'cho', lyDo: ['thiếu kết quả bên ' + (!a ? 'A' : 'B')], kp: null, deXuat: b?.kp ?? a?.kp ?? null }
   if (a.ngoai_pham_vi && b.ngoai_pham_vi) return { loai: 'bo', lyDo: ['ngoài phạm vi (A+B): ' + (b.ly_do_pham_vi || a.ly_do_pham_vi || '')] }
+  if (daThayA[c.ref] !== vanTayHienTai(c)) lyDo.push('nội dung đã sửa sau khi kiểm (bên A kiểm trên bản cũ)')
   if (a.ngoai_pham_vi || b.ngoai_pham_vi) lyDo.push('một bên thấy ngoài phạm vi: ' + ((a.ngoai_pham_vi ? a.ly_do_pham_vi : b.ly_do_pham_vi) || ''))
   if (c.loi_cau_truc?.length) lyDo.push('cấu trúc: ' + c.loi_cau_truc.join(', '))
   if (!c.dap_an) lyDo.push('file GV không có đáp án')
@@ -93,7 +102,17 @@ const MA = Object.fromEntries(kpRows.map((r) => [r.ma_hien_thi, r.ma_dang]))
 const daCo = (await c0.query(`select count(*)::int n from anh_cau_hoi where ten_de_goc = $1`, [deGoc])).rows[0].n
 if (daCo) { console.error(`❌ Lô "${deGoc}" đã có ${daCo} câu trong kho — không nhập lần 2.`); process.exit(1) }
 
-const ketQua = cau.map((c) => ({ c, q: quyetDinh(c) }))
+// Câu đã có trong kho Anh (mọi lô) — bỏ câu trùng y hệt, kể cả trùng trong chính lô này (vd U2-C020 ≡ C015)
+const daCoKhoa = new Set((await c0.query(
+  `select c.dang_de, c.noi_dung, c.lua_chon, coalesce(n.noi_dung, '') doan
+     from anh_cau_hoi c left join anh_ngu_lieu n on n.ma_ngu_lieu = c.ngu_lieu where c.xoa_at is null`)).rows
+  .map((r) => khoaTrung(r.dang_de, r.noi_dung, r.lua_chon, r.doan)))
+const ketQua = cau.map((c) => {
+  const k = khoaTrung(c.dang_de, c.noi_dung, c.lua_chon, c.ngu_lieu ? nguLieu[c.ngu_lieu]?.noi_dung : '')
+  if (daCoKhoa.has(k)) return { c, q: { loai: 'bo', lyDo: ['trùng câu đã có (trong kho hoặc trong lô)'] } }
+  daCoKhoa.add(k)
+  return { c, q: quyetDinh(c) }
+})
 const dem = { chac: 0, cho: 0, bo: 0 }
 for (const { q } of ketQua) dem[q.loai]++
 
@@ -157,5 +176,5 @@ writeFileSync(join(dirKiem, GHI ? 'bien_ban_ghi.json' : 'bien_ban_thu.json'), JS
 const lyDoDem = {}
 for (const b of bienBan) for (const l of b.ly_do ?? []) { const k = l.split(':')[0].replace(/\(.*$/, '').trim(); lyDoDem[k] = (lyDoDem[k] ?? 0) + 1 }
 console.log(`${GHI ? 'ĐÃ GHI' : 'CHẠY THỬ (đã rollback)'} — ${deGoc}`)
-console.log(`  chắc chắn → kho: ${dem.chac} · chờ duyệt: ${dem.cho} · không nhập (ngoài phạm vi): ${dem.bo} · tổng ${cau.length}`)
+console.log(`  chắc chắn → kho: ${dem.chac} · chờ duyệt: ${dem.cho} · không nhập (ngoài phạm vi / trùng): ${dem.bo} · tổng ${cau.length}`)
 console.log('  lý do chờ/bỏ:', lyDoDem)
