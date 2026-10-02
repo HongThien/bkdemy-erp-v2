@@ -34822,3 +34822,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   `ra_C.json` (nếu có) phân xử điểm 2/3. Đối chiếu lại toàn bộ quyết định cũ: chỉ khác đúng 2 nhóm cố ý đổi.
 - **Toàn vẹn:** mọi câu trong kho = đúng nội dung trạm đọc hiện tại (0 lệch).
 - **Còn cho GV:** 235 câu nghi đáp án + 23 câu chọn điểm — màn Duyệt kho, môn Tiếng Anh.
+
+- (02/10 chiều) **Bờm lụa + túm ngực** (CEO: "bờm lụa dài hơn, mỏng hơn; bờm trắng phía trước nhỏ lại, sát người, mềm — đang gắn cứng không tương tác với cổ"): dải lụa dài +40%, mảnh hơn; túm ngực nhỏ, tâm quả chìm dưới da, mỗi đỉnh lấy trọng số xương của DA ngay dưới (chiếu theo gradient SDF) ⇒ đi theo cổ. **Phát hiện kèm:** cúi gặm cỏ thì dải lụa (lò xo theo khung cổ) dựng ngược lên trời ⇒ thêm RỦ THEO TRỌNG LỰC: đo góc ngẩng dải trong mặt phẳng dọc thân (atan2, không dùng asin — kẹt ở 90°) so với lúc nghỉ, ngẩng quá thì quay xuống.
