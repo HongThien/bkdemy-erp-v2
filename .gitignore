@@ -84,3 +84,6 @@ design/bk-ui-src/khoi/
 
 # Đệm của `tsc -b` — tự sinh lại mỗi lần kiểm kiểu
 *.tsbuildinfo
+
+# build output game ĐẤU TỪ (như dist-sukien)
+dist-dautu/

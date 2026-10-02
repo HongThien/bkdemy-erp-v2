@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-315 bảng · 20 view · 0 enum · 124 trigger · 752 function
+319 bảng · 20 view · 0 enum · 124 trigger · 762 function
 
 ## _app_secrets
 
@@ -1351,6 +1351,65 @@
 | diem_thi_lai_co_ban | numeric | Y |  |  |  |
 | diem_thi_lai_nang_cao | numeric | Y |  |  |  |
 | full_thi_lai | boolean |  | false |  |  |
+
+## dtv_gop_tu
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| uid | text |  |  | FK→dtv_nguoi_choi.uid |  |
+| mon | text |  | 'Tiếng Anh'::text |  |  |
+| en | text |  |  |  |  |
+| vi | text |  |  |  |  |
+| loai_tu | text |  | 'khong_ro'::text |  | `n` · `v` · `adj` · `adv` · `phr` · `khong_ro` |
+| vi_du | text |  | ''::text |  |  |
+| vi_du_vi | text |  | ''::text |  |  |
+| trang_thai | text |  | 'cho_duyet'::text |  | `cho_duyet` · `da_duyet` · `tu_choi` |
+| tao_at | timestamp with time zone |  | now() |  |  |
+
+## dtv_gop_y
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| uid | text |  |  | FK→dtv_nguoi_choi.uid |  |
+| noi_dung | text |  |  |  |  |
+| tao_at | timestamp with time zone |  | now() |  |  |
+
+## dtv_nguoi_choi
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| uid | text |  |  | PK |  |
+| ma | text |  |  |  |  |
+| ten | text |  |  |  |  |
+| nv | text |  | 'knight'::text |  |  |
+| xp | integer |  | 0 |  |  |
+| so_tran | integer |  | 0 |  |  |
+| so_thang | integer |  | 0 |  |  |
+| chuoi_thang | integer |  | 0 |  |  |
+| chuoi_thang_max | integer |  | 0 |  |  |
+| chuoi_ngay | integer |  | 0 |  |  |
+| ngay_hoc_cuoi | date | Y |  |  |  |
+| tao_at | timestamp with time zone |  | now() |  |  |
+| cap_nhat_at | timestamp with time zone |  | now() |  |  |
+
+## dtv_tran
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| uid | text |  |  | FK→dtv_nguoi_choi.uid |  |
+| mon | text |  | 'Tiếng Anh'::text |  |  |
+| che_do | text |  |  |  | `bot` · `doi` · `mang` · `giai` · `on_tap` · `noi_tu` |
+| chu_de | text |  | 'tron'::text |  |  |
+| ket_qua | text |  |  |  | `thang` · `thua` · `hoa` · `xong` |
+| so_dung | integer |  |  |  |  |
+| so_cau | integer |  |  |  |  |
+| diem | integer |  | 0 |  |  |
+| xp | integer |  | 0 |  |  |
+| doi_thu | text | Y |  |  |  |
+| tao_at | timestamp with time zone |  | now() |  |  |
 
 ## game_bxh_cau
 
@@ -2740,7 +2799,7 @@
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→huy_hieu.mon |  |
+| mon | text |  |  | PK FK→thanh_tuu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -6192,6 +6251,9 @@ WITH luot AS (
 - `_de_thi_kho(p_cau_hinh jsonb, p_nhanh text, p_mon text, p_ma_cau text)` → text
 - `_dien_buoc_hs(p_buoc jsonb, p_o jsonb)` → jsonb
 - `_dien_hs_view(p_o jsonb)` → jsonb
+- `_dtv_cap(p_xp integer)` → TABLE(cap integer, xp_trong_cap integer, can_cho_cap_sau integer)
+- `_dtv_ho_so_json(p_uid text)` → jsonb
+- `_dtv_hom_nay()` → date
 - `_et_cham(p_bai_lam uuid)` → void
 - `_et_diem_buoi(p_tu date, p_den date)` → TABLE(hoc_sinh_id uuid, buoi_hoc_id uuid, ngay date, mon text, lop_id uuid, so_cau integer, ti_le numeric, cham_at timestamp with time zone)
 - `_game_bxh_ten(p text)` → text
@@ -6523,6 +6585,13 @@ WITH luot AS (
 - `fn_dien_form_tu_choi(p_id uuid, p_nguoi uuid, p_ly_do text)` → void
 - `fn_dong_btvn(p_buoi_id uuid)` → jsonb
 - `fn_dong_phase(p_buoi_id uuid, p_phase text)` → jsonb
+- `fn_dtv_bxh(p_tieu_chi text, p_uid text DEFAULT NULL::text)` → jsonb
+- `fn_dtv_ghi_tran(p_uid text, p_che_do text, p_chu_de text, p_ket_qua text, p_so_dung integer, p_so_cau integer, p_diem integer, p_doi_thu text)` → jsonb
+- `fn_dtv_gop_tu(p_uid text, p_en text, p_vi text, p_loai text, p_vd text, p_vdvi text)` → jsonb
+- `fn_dtv_gop_tu_cua_toi(p_uid text)` → jsonb
+- `fn_dtv_gop_y(p_uid text, p_noi_dung text)` → void
+- `fn_dtv_ho_so(p_uid text)` → jsonb
+- `fn_dtv_ho_so_luu(p_uid text, p_ten text, p_nv text)` → jsonb
 - `fn_duoi_ca_cua_toi()` → jsonb
 - `fn_duoi_dang_trang_thai(p_buoi uuid)` → jsonb
 - `fn_duoi_giay_sinh(p_buoi uuid, p_hoc_sinh uuid, p_mon text, p_ma_dang text, p_loai text, p_so_cau integer DEFAULT 5)` → jsonb
@@ -6911,8 +6980,8 @@ WITH luot AS (
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
@@ -6978,6 +7047,13 @@ WITH luot AS (
 | dai_dang_tien_de | dai_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
 | dai_de_xuat | dai_de_xuat_hinh_dang | `CHECK ((((loai = 'dang_moi'::text) AND (ten IS NOT NULL) AND (mo_ta_ngan IS NOT NULL) AND (ma_dang IS NULL)) OR ((loai = 'cum_moi'::text) AND (ten IS NOT NULL) AND (ma_dang IS NOT NULL)) OR ((loai = 'trao_doi'::text) AND (ten IS NULL))))` |
 | dai_de_xuat_quyet_dinh | dai_de_xuat_qd_tra_loi | `CHECK (((hanh_dong <> ALL (ARRAY['bac'::text, 'tra_loi'::text])) OR (NULLIF(btrim(tra_loi), ''::text) IS NOT NULL)))` |
+| dtv_gop_tu | dtv_gop_tu_en_check | `CHECK (((char_length(btrim(en)) >= 1) AND (char_length(btrim(en)) <= 60)))` |
+| dtv_gop_tu | dtv_gop_tu_vi_check | `CHECK (((char_length(btrim(vi)) >= 1) AND (char_length(btrim(vi)) <= 120)))` |
+| dtv_gop_y | dtv_gop_y_noi_dung_check | `CHECK (((char_length(btrim(noi_dung)) >= 3) AND (char_length(btrim(noi_dung)) <= 2000)))` |
+| dtv_nguoi_choi | dtv_nguoi_choi_ten_check | `CHECK (((char_length(btrim(ten)) >= 2) AND (char_length(btrim(ten)) <= 25)))` |
+| dtv_nguoi_choi | dtv_nguoi_choi_uid_check | `CHECK ((uid ~ '^[A-Za-z0-9_-]{16,64}$'::text))` |
+| dtv_tran | dtv_tran_so_cau_check | `CHECK ((so_cau >= 0))` |
+| dtv_tran | dtv_tran_so_dung_check | `CHECK ((so_dung >= 0))` |
 | game_bxh_cau | game_bxh_cau_bo_check | `CHECK ((bo ~ '^[a-z]{2,4}$'::text))` |
 | game_bxh_cau | game_bxh_cau_cau_check | `CHECK (((length(cau) >= 1) AND (length(cau) <= 80)))` |
 | game_bxh_cau | game_bxh_cau_diem_check | `CHECK (((diem >= 0) AND (diem <= 2000)))` |

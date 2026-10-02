@@ -35080,3 +35080,17 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   thêm hạng mục 9 vào `spec-v1-app-hs.md`. Chờ Thùy: sách tăng cường ở trường · cắt phạm vi 06/10 · ai được chơi.
 
 - (02/10 khuya, Giao diện) **Đấu trường: ráp bộ chiến đấu thật thay CSS biến dạng ảnh đứng** (Thùy: "đi tiếp demo đấu trường cho xong"). Kit `Animation/chien_dau/`: 15 tư thế × nam/nữ (PNG 1024×1536 ~2MB) + 5 FX + nền sân (FX/nền 2 giới trùng md5). `scripts/anime-chien-dau-2d.mjs` nén GIỮ khổ canvas (512×768 — neo/điểm tay theo % canvas) ⇒ 2,9MB tổng, sinh `skin/heroDau.ts` (neo đất + điểm tay từ combat-data.json, cỡ chung theo thân đứng). `DauTruongHS`: `useTuThe` chạy chuỗi tư thế bằng setTimeout theo DESIGN.md (đứng ⇄ · tích năng ⇄ · niệm trời/ném trước/phát nhỏ theo đòn · bị đánh → gục · thắng ⇄), nạp+decode trước 15 ảnh; sân = `Skin.sanDau` (mới, RPG có, Tối giản không); đạn phát từ ĐIỂM TAY của tư thế phóng. `hieuUng.ts`: `veDan` vẽ ảnh đạn xoay theo hướng bay, bay trái thì lật ngang; có ảnh thì bớt hạt đuôi (đuôi hạt dày đè mất nét vẽ — thấy ngay ở lần soi đầu); lớp băng = ảnh `fx_bang_boc`; sét = bóng ĐEN của chính ảnh boss + xương trắng (port `hieu_ung_va_cham.js`), nhịp 145ms. Soi trên pane: cầu lửa lớn · sét/xương · thiên thạch · đóng băng · đạn ma (nữ). **Bẫy soi:** pane ẩn ⇒ rAF gần như đứng, hiệu ứng chỉ chạy khi chụp màn ⇒ dùng `__dtDung` + chụp nhỏ liên tiếp + ghép canvas+ảnh ra lớp phủ để xem. Không soi được hết luồng tới màn kết quả thua (logic không đổi). webp/jpg không vào precache PWA (glob chỉ png/svg).
+
+- (03/10 rạng sáng, Đấu từ) **DEMO game Đấu Từ chạy được** (Thùy: "làm demo ra thẳng game… pve bot + pvp + giải 8 người + đủ tính năng game kia").
+  App riêng `dautu.html`/`vite.config.dautu.ts` → `dist-dautu/`, `publicDir: public-dautu` (mô hình 3D ~9MB KHÔNG chui vào dist các app khác).
+  Code `src/dautu/` (lib: trongTai · bot · phien · mang · giai · noiTu · the3d; man: ManDau · ChonTran · Online · Giai · NoiTu · GocLuyen · HopThoai).
+  Mig `202610022343_dtv_dau_tu_demo` (ĐÃ ÁP, `migrate --only`): `dtv_nguoi_choi/tran/gop_tu/gop_y` RLS không policy + `fn_dtv_*` security definer
+  mở anon (XP/cấp/chuỗi/BXH tính ở DB); uid bí mật, `ma` công khai. Kho 960 từ do 2 subagent soạn (kiểm mẫu: ổn; 76 từ trùng 2 nửa — giữ, chặn
+  trùng trong 1 trận). Đã thử bằng 2 tab (`?may=2` = hồ sơ thứ 2 cùng trình duyệt): bot trọn trận + ghi XP; ghép ngẫu nhiên; trả lời khách →
+  chủ chấm; giải 8 người tứ kết→chung kết→vô địch; nối từ + tra từ; BXH; khổ điện thoại.
+  **Sai rồi sửa:** (1) StrictMode mount 2 lần ⇒ `sb.channel` trả kênh CŨ đã subscribe ⇒ `.on()` ném lỗi, trắng màn ⇒ lớp `KenhRT` chờ gỡ xong kênh
+  cùng tên rồi mới tạo + ErrorBoundary. (2) **Supabase server gửi `phx_close` khi `track()` dồn dập** (StrictMode bắn 4–6 lần/ms) ⇒ kênh sảnh chết im
+  lặng, ghép trận không bao giờ xảy ra ⇒ gộp track 400ms + bỏ trùng + tự nối lại 2s. (3) HMR sinh 2 bản module `mang.ts?t=` ⇒ 2 sảnh khác nhau —
+  chỉ là bẫy dev, khởi động lại server. (4) `dictionaryapi.dev` không gọi được từ máy văn phòng (curl treo 10s) ⇒ Wiktionary làm nguồn chính.
+  (5) Chuỗi lệnh `python … ; rm …` — máy không có python mà `rm` vẫn chạy, xoá 2 bản SAO ảnh chibi vừa chép (gốc còn) ⇒ chép lại; bài học: không
+  nối lệnh xoá sau lệnh có thể fail. Hồ sơ test "Claude Test" / "Claude Test 2" đang nằm trong `dtv_nguoi_choi` (hiện trên BXH).

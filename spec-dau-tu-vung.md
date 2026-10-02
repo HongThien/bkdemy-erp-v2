@@ -213,3 +213,20 @@ Luật:
 | B11 | Lớp 3: thêm chế độ hình → từ? | để V1.1 |
 | B12 | Trận đấu từ có tính vào chuỗi / nhiệm vụ / Rank chung không | V1 không |
 | B13 | Báo cho GV: em yếu từ nào (theo unit) | để sau, khi kho đã có GV duyệt |
+
+---
+
+## Phụ lục — BẢN DEMO 03/10 (Thùy 02/10 đêm: "làm demo ra thẳng game, deploy web + app test; khớp HS BK tính sau")
+
+**Đã có (chơi được, đã thử 2 tab thật):** app riêng `dautu.html` → `dist-dautu/` (PWA cài lên iPad/điện thoại).
+- Đấu từ vựng: 16 chủ đề × 60 từ (960 mục, 3 cấp lớp 3–5 / 6–7 / 8–9), luật y bản gốc (12s, ai đúng trước ăn, 100/70/50, chuỗi 3 +30), Anh→Việt + Việt→Anh.
+- 5 chế độ: luyện với bot (3 mức) · đấu online ghép ngẫu nhiên · thách đấu (mã 6 số / link / mời bạn đang online) · **giải 8 người** (loại trực tiếp, thắng chờ người thắng cặp bên cạnh, thiếu người thì bot, xem trực tiếp trận khác, hoà ⇒ ai đúng nhiều hơn rồi ai nhanh hơn) · 2 người 1 máy.
+- Nối từ: tự do · đấu bot · phòng online 2–6 người; kiểm từ bằng kho + Wiktionary.
+- Góc luyện tập: ôn từ yếu (Leitner), thẻ ghi nhớ, tiến độ, góp từ (≤ 10/ngày, chờ duyệt). Hồ sơ/nhân vật, XP/cấp, chuỗi ngày, chuỗi thắng, BXH 3 tiêu chí, cài đặt (âm thanh, giọng đọc, đồ hoạ Đẹp 3D / Nhẹ 2D), góp ý.
+- Hình: nhân vật + chuyển động KayKit (CC0) dựng 3D bằng three.js; nền + icon lấy từ skin RPG.
+
+**Nợ có chủ đích — PHẢI trả khi khớp HS BK (đi ngược Phần A ở chỗ nào):**
+1. Người chơi = THIẾT BỊ (uid ngẫu nhiên ở máy), không phải tài khoản HS.
+2. Trọng tài = máy chủ phòng/chủ giải (tin client). Phần A §3 yêu cầu server chấm — làm khi có điểm season + quà.
+3. Sổ nhớ từ nằm ở localStorage; XP/chuỗi/BXH đã ở DB (`fn_dtv_*`). Phần A §5 yêu cầu nhật ký trả lời ở DB.
+4. Chưa có season / điểm season / MMR / bóng ma / giờ vàng (Phần A §2, §4). Kho từ chưa theo sách (Phần A §6).
