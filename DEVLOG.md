@@ -34549,3 +34549,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ### 02/10 — [Giao diện] Nhãn bản đồ to hơn, hiện đủ tên (Thùy: "bảng tên to ra, chữ to, hiện đầy đủ — tên quá dài thì chấp nhận 2 dòng; star thật to, nổi bật")
 - Bỏ cắt … (bản trước) ⇒ tên đủ, xuống tối đa 2 dòng. Chữ: thế giới 15.5 · lục địa 15 · chặng 14px (iPad ngang). Thẻ rộng ≤250px, đệm 6×12.
 - Sao: 22/21/19px; sao đầy vàng + viền tối + quầng; sao chưa đạt RỖNG chỉ viền (bản đầu tô vàng nhạt ⇒ nhìn như đầy, không phân biệt được). Kiểm 3 tầng 1180×820, 0 lỗi.
+
+### 02/10 — [Giao diện] Nhãn bản đồ KHÔNG KHUNG (Thùy: "có phương án nào không khung đen mà chữ vẫn nổi bật?")
+- Kiểu nhãn bản đồ game: bỏ hộp nền, chữ màu chữ style + viền dày 8 hướng màu nền style + bóng mềm (San2D.CHU_VIEN, text-shadow kế thừa ⇒ đặt lên khối nhãn).
+  3 tầng; chọn/rê chuột ⇒ phóng 1.06. Ngoại lệ: viên "Em đang ở đây" giữ nền (tắt viền kế thừa — dính viền thì chữ nhoè); chặng trên màn hẹp vẫn là ô số tròn.
+- Bẫy Tailwind v4: -translate-x-1/2 dùng thuộc tính translate riêng ⇒ style transform chỉ để scale (viết translateX(-50%) là lệch đôi).

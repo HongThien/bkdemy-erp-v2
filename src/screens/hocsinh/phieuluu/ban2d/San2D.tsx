@@ -165,3 +165,10 @@ export function Sao5({ ti, co = 13 }: { ti: number; co?: number }) {
     </span>
   )
 }
+
+/** CHỮ NHÃN KHÔNG KHUNG (Thùy 02/10: "có phương án nào không có khung đen mà chữ vẫn nổi bật trên nền cảnh?") — kiểu nhãn bản đồ game:
+ *  viền dày màu nền style (8 hướng) + bóng mềm ⇒ đọc rõ trên mọi vùng tranh mà không che cảnh. text-shadow được KẾ THỪA ⇒ đặt lên khối nhãn là đủ. */
+const V = 'var(--sk-bg)'
+export const CHU_VIEN = {
+  textShadow: [[-2, -2], [2, -2], [-2, 2], [2, 2], [0, -2.5], [0, 2.5], [-2.5, 0], [2.5, 0]].map(([x, y]) => `${x}px ${y}px 0 ${V}`).join(', ') + `, 0 3px 10px ${V}, 0 0 18px ${V}`,
+} as const

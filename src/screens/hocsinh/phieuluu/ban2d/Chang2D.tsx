@@ -7,7 +7,7 @@ import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import type { ChangV, LucDiaV, VungV } from '../kieu'
 import { boCucDuong, duongCong } from './boCuc'
 import { anhNenChang, anhVat } from './hinh2d'
-import { Co, CssBan2D, Hero, Sao5, Suong, tenQuai2D, useChuyenDong, useKhung2D, viTri } from './San2D'
+import { CHU_VIEN, Co, CssBan2D, Hero, Sao5, Suong, tenQuai2D, useChuyenDong, useKhung2D, viTri } from './San2D'
 import { BeDaTam, NenChangTam, QuaiTam } from './HinhTam'
 
 const sao = (n: number) => '★'.repeat(Math.min(5, n)) + '☆'.repeat(Math.max(0, 5 - n))
@@ -65,7 +65,9 @@ export function Chang2D({ luc, vung, b, onVe, onVao, gioi = 'nam' }: { luc: LucD
                   <Hero gioi={gioi} cao={coBe * 0.85} mau={b.troi} />
                 </span>}
                 <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center text-center"
-                  style={{ ...THE_TRON, top: '100%', marginTop: 4, borderRadius: dai ? 10 : 999, width: dai ? 'max-content' : 26, height: dai ? undefined : 26, maxWidth: 230, justifyContent: 'center', padding: dai ? '5px 10px' : 0, background: 'var(--sk-surface)', borderColor: chon || hov === x.ma ? 'var(--sk-acc)' : undefined }}>
+                  style={dai
+                    ? { ...CHU_VIEN, top: '100%', marginTop: 2, width: 'max-content', maxWidth: 240, transform: chon || hov === x.ma ? 'scale(1.06)' : undefined }
+                    : { ...THE_TRON, top: '100%', marginTop: 4, borderRadius: 999, width: 26, height: 26, justifyContent: 'center', padding: 0, background: 'var(--sk-surface)', borderColor: chon || hov === x.ma ? 'var(--sk-acc)' : undefined }}>
                   {dai ? <>
                     <span className="block max-w-full text-[14px] font-bold leading-[1.15]" style={{ ...HEAD, color: 'var(--sk-ink)' }}>{x.ten}</span>
                     <Sao5 ti={x.trang_thai === 'dat' ? 1 : x.mastery ?? 0} co={19} />
