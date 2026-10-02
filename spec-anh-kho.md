@@ -54,13 +54,34 @@ file Word bản GV ─► ① TRẠM ĐỌC (máy, code)        ─► câu + ng
 
 ### 2.2 Số đo trạm đọc (12 unit "BTBT Form 2025", 02/10)
 
-- **1.969 câu trắc nghiệm** (phát âm 120 · trọng âm 118 · hoàn thành câu 778 · đồng/trái nghĩa 114 · biển báo 59 · điền thông báo 122 ·
-  điền đoạn văn 194 · đọc hiểu 191 · điền câu vào đoạn 96 · nối câu 28 · câu gần nghĩa 110 · sắp xếp đoạn 39).
-- **38 câu bị cờ lỗi cấu trúc** ⇒ chắc chắn vào chờ duyệt: 16 phương án trùng · 8 điền câu vào đoạn không ghi đáp án tại chỗ trống (Unit 7) ·
-  còn lại là nhãn gõ sai (A–C–B–D, 2 nhãn C) hoặc thiếu tô màu.
+- **1.968 câu trắc nghiệm** (phát âm 120 · trọng âm 118 · hoàn thành câu 778 · đồng/trái nghĩa 114 · biển báo 59 · điền thông báo 122 ·
+  điền đoạn văn 194 · đọc hiểu 190 · điền câu vào đoạn 96 · nối câu 28 · câu gần nghĩa 110 · sắp xếp đoạn 39).
+- **63 câu bị cờ lỗi cấu trúc** ⇒ chắc chắn vào chờ duyệt: 24 điền đoạn lệch chỗ trống (file gốc thiếu/thừa dòng) · 16 phương án trùng ·
+  10 không đủ 4 phương án (nhãn gõ sai A–C–B–D, 2 nhãn C) · 8 điền câu vào đoạn không ghi đáp án tại chỗ trống (Unit 7) · 6 đề rỗng ·
+  3 thiếu tô màu · 2 phương án rỗng.
+- Trạm đọc đã vá 02/10 (mỗi lần vá đều so trước/sau CẢ 12 unit): điền từ lấy đúng SỐ chỗ trống trên dòng (không đếm vị trí) · bài đọc
+  trong bảng · đoạn mở bài có "?"/":" · dòng ngắn của bài gạch đầu dòng · đề không "?" · **đầu bài đọc thứ 2 trong cùng bài tập**
+  (tiêu đề/câu mở bài) · **gạch đầu dòng có "?" trong bài không phải đề** (từng đẻ câu giả U12-C125).
+- Kiểm toàn vẹn sau ghi: mọi câu trong kho = đúng nội dung trạm đọc hiện tại (đề · phương án · đáp án · đoạn văn · tiêu đề) — chỉ lệch
+  bài **U8-NL12** (5 câu, mã `EC002582..586`): trạm đọc vá sau cùng (câu kết "So why wait?…" + dòng nguồn dính vào đề C124). **Treo:** sau khi
+  CEO dán `202610021200` ⇒ sửa đoạn + đề C124 trong DB, kiểm lại 5 câu (`kiem_lai_anh.mjs`). Sửa đề trước đó bị trigger `kho_sua_log` chặn.
+
+### 2.3 Kết quả nhập 12 unit (02/10 tối, sau kiểm lại)
+
+| | Chắc chắn (vào kho) | Chờ duyệt | — trong đó chờ chọn điểm | Tổng |
+|---|---|---|---|---|
+| 12 unit | **1.504 (77,9%)** | 426 | 92 | **1.930** |
+
+- Không nhập: 34 câu A+B cùng thấy ngoài phạm vi (quá khứ hoàn thành, bị động… — trừ Unit 11, xem §2.1) · 4 câu trùng. (1.968 đọc = 1.930 + 38.)
+- 192 ngữ liệu (đoạn văn/thông báo/biển báo) · 56 ảnh biển báo (bucket `kho-anh`).
+- Soát tay ngẫu nhiên câu "chắc chắn": 18 + 15 (U1–4) · 12 (U5–6) · 14 (U7–8) · 16 (U9–12) — **75/75 đúng**.
+- Lượt kiểm lại (131 câu bên A chấm trên nội dung cũ): 76 lên kho · 15 giữ · 2 hạ · 38 vẫn chờ.
+- **Độ phủ lệch:** 91/100 điểm có câu chắc chắn, nhưng điểm NỀN lớp 6–8 gần như trống (hiện tại đơn, -s/-es, so sánh trạng từ, câu mệnh lệnh,
+  V-ing làm chủ ngữ, từ vựng chủ đề lớp 6/7/8: 0–2 câu) — tài liệu GV bám 12 unit lớp 9, trong khi đề HN ~4/5 câu ngữ pháp rơi vào lớp 6–8
+  (`spec-anh-ban-do-k9.md`). ⇒ nguồn kế tiếp phải là ĐỀ THI (§5), không phải thêm bài theo unit.
 - Bỏ qua: phần nghe (khoảng 10 dòng phương án mỗi unit) và bài tự luận.
 
-## 3. Việc ở MÀN KHO để GV Anh duyệt (chưa làm — khảo sát 02/10)
+## 3. Việc ở MÀN KHO để GV Anh duyệt (khảo sát 02/10 — ĐÃ LÀM cùng ngày, trừ `fn_kho_duyet_cau` nhận `lua_chon` và SQL Editor `202610021200`)
 
 Khoảng 8–9 file + 1–2 migration, ~300–500 dòng. Rủi ro lớn nhất: **nhiều chỗ chọn bảng lặng lẽ rơi về Toán** (TypeScript không báo).
 
@@ -114,3 +135,14 @@ Khoảng 8–9 file + 1–2 migration, ~300–500 dòng. Rủi ro lớn nhất: 
   - Gạch chân và ảnh mất khi OCR.
   - File Word sách lan trên mạng là bản lậu ⇒ không nhập.
 - Mùa 2026–27 chưa có đề thi thử (thường ra tháng 1–5). Từ 7/2025 đề đứng tên PHƯỜNG thay quận.
+
+## 6. Câu hỏi treo cho GV Anh / CEO (02/10)
+
+1. **Unit 11 — `suggest/recommend/advise + S + V nguyên mẫu` (bỏ "should")**: 10 câu (C039…C073). A+B coi là "thức giả định" ⇒ ngoài phạm vi;
+   bản đồ ghi NP-18 = "that…should"; nhưng chính GV soạn vào bài Unit 11. Đang ở CHỜ DUYỆT dưới NP-18. GV chốt: trong phạm vi (⇒ duyệt
+   10 câu, và luật phạm vi bỏ ca này) hay ngoài (⇒ bỏ khỏi kho)?
+2. **Đáp án GV bị nghi sai** (cả bên A lẫn B, hoặc B nêu rõ lý do) — nằm ở chờ duyệt kèm lý do, GV sửa tại màn Duyệt kho. Ca rõ nhất:
+   U9-C010 (intention /e/ ⇒ A, không phải D) · U8-C098 (biển "Free parking for customers" ⇒ C) · U6-C088 (đáp án ghi "You shouldn't watch
+   your steps" — gõ nhầm) · U4-C100 (3 phương án, không có "most") · U11-C102/C103 (bộ phương án chỗ (1) và (2) bị tráo trong file gốc) ·
+   U1-C138 (địa điểm tặng móc khoá: bài suy ra chợ gốm, GV chọn cửa hàng).
+3. **92 câu chờ chọn điểm kiến thức** (điểm chờ `E09000000`, có đề xuất của máy) — chủ yếu ranh giới từ vựng unit ↔ collocation ↔ cụm động từ.

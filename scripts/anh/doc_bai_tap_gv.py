@@ -376,6 +376,13 @@ def doc(file_docx, unit, ra):
             if pa:
                 pending_pa += pa
                 if pending_pa and pending_pa[-1][0] == 'D':
+                    # Đề chờ có dòng ĐÁNH SỐ câu ("1. What is the best title…") mà trước nó còn dòng khác, bài chưa có câu nào
+                    # ⇒ các dòng trước là ĐUÔI bài đọc (câu kết có "?" — "So why wait? Start planning…" — kéo theo dòng nguồn
+                    # "(Adapted from…)") bị giữ làm đề chờ rồi dính vào đề câu 1 (U8-C124, bên A báo 02/10).
+                    so_cau = [i for i, x in enumerate(pending_stem) if re.match(r'^[\s|]*\d+\s*[.)]', tron(x))]
+                    if so_cau and so_cau[-1] > 0 and nl_hien_tai and stt_trong_nl == 0:
+                        ngu_lieu[-1]['noi_dung'] += '\n\n' + '\n\n'.join(hien(x) for x in pending_stem[:so_cau[-1]] if tron(x).strip())
+                        pending_stem = pending_stem[so_cau[-1]:]
                     stt_trong_nl += 1
                     stem = re.sub(r'^\s*\d+\s*[.)]\s*', '', '\n'.join(hien(x) for x in pending_stem))
                     them(stem, pending_pa, nl_hien_tai, stt_trong_nl)

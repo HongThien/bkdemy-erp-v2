@@ -34765,3 +34765,29 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   kèm khối "VIỆC KẾ TIẾP": đọc gì theo thứ tự · 5 câu phải hỏi Thùy trước (môn mới hay nhánh mới, khối + bộ sách, file ở đâu / định dạng, nhập để làm gì, ai duyệt) ·
   hạ tầng dùng lại · các điểm registry khi thêm môn / nhánh · cách làm đã được chấp nhận. Thêm 2 bài học 02/10 vào phần ②.
 - **Chưa biết gì về "môn Toán khác"** ngoài câu trên — không đoán; context mới phải hỏi.
+
+## 2026-10-02 (tối) — [Kho Anh] Nhập xong 12 unit · vá trạm đọc thêm 3 lỗi · kiểm lại 131 câu
+
+- **Kết quả:** 1.930 câu trong `anh_cau_hoi` — **1.504 chắc chắn (77,9%)** vào thẳng kho, 426 chờ duyệt (92 chờ chọn điểm kiến thức).
+  Không nhập 34 câu ngoài phạm vi (A+B) + 4 câu trùng. Soát tay ngẫu nhiên câu chắc chắn: 75/75 đúng.
+- **Trạm đọc — 3 lỗi mới, đều do bên A báo "không làm được / đề lạ"** (bên A làm mù nên thấy cái người đọc code không thấy):
+  1. Đầu bài đọc THỨ 2 trong cùng bài tập (tiêu đề, câu mở bài, "Here are some ways to do that:") bị luật "dòng ngắn sau khi đã có câu
+     hỏi = đề" giữ làm đề chờ rồi vứt khi gặp đoạn dài — 10 bài / 9 unit (U9-NL13 mất 4 dòng ⇒ C130 không trả lời được).
+  2. Gạch đầu dòng có "?" trong bài ("● Will I enjoy…?") + dòng dẫn ":" bị luật "đề + 4 phương án không nhãn" bắt ⇒ đẻ câu GIẢ U12-C125.
+     Bỏ câu giả ⇒ ref U12 sau đó lùi 1 ⇒ kết quả A/B gắn lại theo NỘI DUNG (161/161 khớp duy nhất), KHÔNG theo số thứ tự.
+  3. Câu kết bài có "?" ("So why wait?…") + dòng nguồn dính vào đề câu 1 (U8-C124).
+  Mỗi lần vá: chạy lại 12 unit, so từng câu/đoạn — mọi thay đổi khớp đúng chỗ vá.
+- **Sai của CTO:** Unit 1 ghi TRƯỚC khi cổng có luật vân tay ⇒ 10 câu đồng/trái nghĩa bên A chấm khi đề CHƯA có dòng lệnh
+  "CLOSEST/OPPOSITE" vẫn được gắn "chắc chắn". Lộ ra khi tách luật thành module chung rồi đối chiếu lại 1.964 quyết định cũ.
+  ⇒ kiểm lại 15 câu U1 (3 lên · 7 giữ · 2 hạ).
+- **Kiểm lại:** `kiem_lai_anh.mjs` — lượt A+B mới trên riêng câu có nội dung đổi sau khi kiểm (131 câu): 76 lên · 15 giữ · 2 hạ · 38 vẫn chờ.
+  Chỉ đụng dòng máy còn quản + nội dung DB = nội dung A vừa kiểm. Vá DB 7 bài đọc U1–U8 thiếu phần đầu (chỉ đè khi DB = đúng bản cũ).
+- **Luật "chắc chắn" giờ 1 nguồn:** `scripts/anh/luat_chac_chan.mjs` (cổng nhập + kiểm lại cùng gọi).
+- **Quyết định CTO (chờ GV):** Unit 11 `suggest + S + V nguyên mẫu` — A+B nói ngoài phạm vi, nhưng là điểm GV dạy trong unit ⇒ không tự
+  loại, đưa chờ duyệt (`--ngoai-pham-vi-cho-duyet`). Câu hỏi cho GV: `spec-anh-kho.md` §6.
+- **Treo:** U8-NL12 + đề C124 chưa sửa trong DB (sửa đề bị trigger `kho_sua_log` chặn tới khi CEO dán `202610021200`).
+- **Phát hiện cho chiến lược nguồn:** tài liệu GV bám 12 unit lớp 9 ⇒ điểm nền lớp 6–8 gần như 0 câu, trong khi đề HN ~4/5 câu ngữ pháp
+  ở lớp 6–8 ⇒ nguồn kế tiếp phải là ĐỀ THI thật.
+- **Bài học:**
+  - Bên giải MÙ là máy dò lỗi trạm đọc tốt nhất: câu "không làm được" gần như luôn là dữ liệu hỏng, không phải câu khó.
+  - Luật nào thêm SAU khi đã ghi dữ liệu thì phải chạy lại trên dữ liệu đã ghi (luật vân tay ra đời sau Unit 1).
