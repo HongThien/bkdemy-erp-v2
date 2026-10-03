@@ -35484,3 +35484,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   `TutorialHS` thêm prop `chuong` = CHẾ ĐỘ MỘT CHẶNG (mở thẳng chặng đó từ nút "Xem hướng dẫn tương tác" trong trang đọc, xong thì về lại Hướng dẫn chơi); nút cuối gallery "Xem hành trình tân thủ" mở cả 12 chặng. Lời mở đầu tự đếm số chặng (`{n}`).
   Soi: `hs.html?xem=huong_dan&tut=<id chặng>` (huy_hieu · chu_de · giao_dien đã mở, không lỗi console). **Chuỗi làm bài chưa có chặng** (màn ngọn lửa chưa có) — thêm khi màn có.
 - **Việc còn treo cho Thùy chốt:** (1) tutorial vẫn CHƯA gắn luồng đăng nhập thật: không tự mở lần đầu, tiến độ chưa lưu DB — muốn "tự mở cho HS mới" cần cột/RPC lưu `da_xem_tutorial` (quy tắc DB là chân lý, không dùng localStorage). (2) 5 chỗ lệch spec/DB đã ghi ở mục trên (vòng quay /ngày/HS, quy đổi xu, ngưỡng 2 bậc thần chưa chốt, 60/40, "chỉ câu mới").
+
+- **Cuối ngày 03/10:** distill luồng Giao diện lên HANDOFF.md (khối "GIAO DIỆN APP HS — CẬP NHẬT CUỐI NGÀY 03/10" + bài học ②; prune 5 câu lỗi thời: màn đấu 3D, kit chỉ 5 biome, tutorial demo).
