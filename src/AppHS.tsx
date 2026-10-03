@@ -21,6 +21,7 @@ import BaiTapGiaoHS from './screens/hocsinh/BaiTapGiaoHS'
 import ThongTinHocTap, { _THEME_TTHT, BXHList } from './screens/hocsinh/ThongTinHocTap'
 import SoTayHS, { type SoTayApi } from './screens/hocsinh/SoTayHS'
 import type { SoTayCay, SoTayNoiDung } from './lib/sotay'
+import type { CtTimRow } from './lib/sotayCongThuc'
 import { getMyHocSinhId } from './lib/testonline'
 
 // Mock SỔ TAY cho `?demo=sotay` — RPC thật cần HS đăng nhập (và migration đã áp), không xem được
@@ -47,9 +48,33 @@ const MOCK_CAY: SoTayCay = {
     ] },
   ],
 }
+// Thẻ công thức giả (CEO 03/10) — gõ "bayes", "nghiem", "delta" để thấy nhãn Công thức xếp trước Lý thuyết.
+const MOCK_CT: CtTimRow[] = [
+  { ma: 'CT12-XS-04', ten: 'Công thức Bayes', khoi: '12', ten_chu_de: 'Xác suất có điều kiện', hinh_url: null, luu_y: null, cau_nho: null,
+    noi_dung: '$P(B\\mid A)=\\dfrac{P(B)\\cdot P(A\\mid B)}{P(B)\\cdot P(A\\mid B)+P(\\overline{B})\\cdot P(A\\mid\\overline{B})}$' },
+  { ma: 'CT9-PT-01', ten: 'Công thức nghiệm phương trình bậc hai (delta)', khoi: '9', ten_chu_de: 'Phương trình bậc hai', hinh_url: null,
+    luu_y: 'Nếu $b$ chẵn thì dùng $\\Delta\'$ cho gọn.', cau_nho: null,
+    noi_dung: '$\\Delta=b^2-4ac$\n$\\Delta>0$: $x_{1,2}=\\dfrac{-b\\pm\\sqrt{\\Delta}}{2a}$' },
+  // Mục kiểu KHTN đủ mọi phần (gõ "ohm") — soi bố cục màn đọc: tóm tắt · công thức + kí hiệu · ý chính · ví dụ · hay nhầm · xem thêm.
+  { ma: 'l9-dinh-luat-ohm', mon: 'KHTN', nhanh: 'Lý', loai: 'ct', ten: 'Định luật Ohm', khoi: '9', ten_chu_de: 'Điện trở – mạch điện',
+    noi_dung: 'Cường độ dòng điện qua dây dẫn tỉ lệ thuận với hiệu điện thế và tỉ lệ nghịch với điện trở của dây.',
+    cong_thuc: 'I = U/R', bien: [['I', 'cường độ dòng điện', 'A'], ['U', 'hiệu điện thế', 'V'], ['R', 'điện trở', 'Ω']],
+    hinh_ve: '[dothi:0 0; 3 1; 6 2 | U (V) | I (A)]', // mã thật của H-l9-dinh-luat-ohm — app tự vẽ (HinhBangMa)
+    y: ['Đồ thị I theo U của một dây dẫn là <b>đường thẳng đi qua gốc tọa độ</b>.', 'Suy ra: U = I·R và R = U/I.'],
+    vd: { de: 'Một bóng đèn có điện trở 24 Ω mắc vào hiệu điện thế 12 V. Tính cường độ dòng điện qua đèn.', buoc: ['I = U/R = 12 : 24'], kq: 'I = 0,5 A' },
+    nham: ['Quên đổi mA sang A (1 mA = 0,001 A).'],
+    lq: [{ ma: 'l9-dien-tro', ten: 'Điện trở', loai: 'dl' }, { ma: 'l9-noi-tiep', ten: 'Đoạn mạch nối tiếp', loai: 'ct' }] },
+  // Hình vẽ bằng mã có TƯƠNG TÁC (chạm bộ phận ⇒ hiện tên + chức năng) — gõ "te bao".
+  { ma: 's6-te-bao-dong-vat', mon: 'KHTN', nhanh: 'Sinh', loai: 'cq', ten: 'Tế bào động vật', khoi: '6', ten_chu_de: 'Tế bào',
+    noi_dung: 'Tế bào động vật gồm màng tế bào, tế bào chất và nhân; không có thành tế bào, không có lục lạp.', hinh_ve: '[tebao:dv]' },
+]
 const MOCK_API: SoTayApi = {
   mon: async () => MOCK_CAY.mon,
   cay: async () => MOCK_CAY,
+  timCt: async (q) => {
+    const bd = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd')
+    return MOCK_CT.filter((c) => bd(c.ten).includes(bd(q)))
+  },
   tim: async (q) => {
     const bd = (s: string) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd')
     const tu = bd(q)
@@ -81,15 +106,18 @@ function Demo912() {
   const BAI: Record<string, { et: number; btvn: number }> = { 'Toán': { et: 1, btvn: 2 }, 'KHTN': { et: 0, btvn: 1 }, 'Tiếng Anh': { et: 0, btvn: 0 } }
   const LICH: LichBoTro[] = [{ buoi_id: 'x', loai: 'bo_tro_yeu', ngay: '2026-10-01', gio_bat_dau: '17:30:00', gio_ket_thuc: '18:30:00', phong: 'P102', mon: 'KHTN', nguoi: 'Cô Lan', diem_danh: null, hom_nay: true, vao_ca: false }]
   const khoa = (id: string): Partial<HomeCard> => ['tu_luyen', 'thong_tin', 'so_tay'].includes(id) && !coKho ? { sub: `${mon} chưa mở`, subMau: 'xam', disabled: true, onClick: undefined } : {}
-  const o = (id: string, ten: string, sub: string, extra: Partial<HomeCard> = {}): HomeCard => ({ id, ten, sub, subMau: 'xam', doodle: '', ill: 'self_practice_target', tone: 'blue', onClick: () => {}, nhom: ['the_gioi', 'may_man', 'thanh_tuu', 'vi_xu'].includes(id) ? 'choi' : 'hoc', ...extra, ...khoa(id) })
+  // 03/10: Nhiệm vụ + Thư viện BK ở Giải trí · bỏ "Bài tập được giao" · khối 12 (&khoi=10 dùng lưới cấp 3) có ô "Tự luyện TSA" ngay sau Tự luyện.
+  const o = (id: string, ten: string, sub: string, extra: Partial<HomeCard> = {}): HomeCard => ({ id, ten, sub, subMau: 'xam', doodle: '', ill: 'self_practice_target', tone: 'blue', onClick: () => {}, nhom: ['the_gioi', 'nhiem_vu', 'thu_vien', 'may_man', 'thanh_tuu', 'vi_xu'].includes(id) ? 'choi' : 'hoc', ...extra, ...khoa(id) })
   const b = BAI[mon] ?? { et: 0, btvn: 0 }
+  const nv = o('nhiem_vu', 'Nhiệm vụ', 'Hôm nay còn 2 nhiệm vụ', { badge: 2, subMau: 'ton' })
+  const tv = o('thu_vien', 'Thư viện BK', 'Tìm hiểu mọi thứ trên app')
   const cards: HomeCard[] = cap3
     ? [o('giao_trinh', 'Bài tập trên lớp', 'Chưa có bài'), o('et', 'ET', b.et ? `${b.et} bài chưa làm` : 'Chưa có bài', { badge: b.et, subMau: b.et ? 'ton' : 'xam' }),
        o('btvn', 'BTVN', b.btvn ? `${b.btvn} bài chưa làm` : 'Chưa có bài', { badge: b.btvn, subMau: b.btvn ? 'ton' : 'xam' }),
-       o('tu_luyen', 'Tự luyện', 'Luyện theo dạng yếu'), o('thong_tin', 'Thông tin học tập', 'Dạng đang yếu'), o('so_tay', 'Sổ tay kiến thức', 'Tra lý thuyết & bài mẫu'),
-       o('de_thi_thu', 'Làm đề thi thử', 'Chưa có bài'), o('the_gioi', 'Thế giới BK', 'Xem HS BK đang khoe gì')]
-    : [o('tu_luyen', 'Tự luyện', 'Luyện theo dạng yếu'), o('thong_tin', 'Thông tin học tập', 'Dạng đang yếu'), o('so_tay', 'Sổ tay kiến thức', 'Tra lý thuyết & bài mẫu'),
-       o('the_gioi', 'Thế giới BK', 'Xem HS BK đang khoe gì'), o('de_thi_thu', 'Làm đề thi thử', 'Sắp có', { disabled: true }), o('bai_tap_giao', 'Bài tập được giao', 'Đang phát triển'),
+       o('tu_luyen', 'Tự luyện', 'Luyện theo dạng yếu'), o('tu_luyen_rieng', 'Tự luyện TSA', 'Luyện theo từng dạng'), nv, o('thong_tin', 'Thông tin học tập', 'Dạng đang yếu'), o('so_tay', 'Sổ tay kiến thức', 'Tra lý thuyết & bài mẫu'),
+       o('the_gioi', 'Thế giới BK', 'Xem HS BK đang khoe gì'), o('de_thi_thu', 'Làm đề thi thử', 'Chưa có bài'), tv]
+    : [o('tu_luyen', 'Tự luyện', 'Luyện theo dạng yếu'), nv, o('thong_tin', 'Thông tin học tập', 'Dạng đang yếu'), o('so_tay', 'Sổ tay kiến thức', 'Tra lý thuyết & bài mẫu'),
+       o('the_gioi', 'Thế giới BK', 'Xem HS BK đang khoe gì'), o('de_thi_thu', 'Làm đề thi thử', 'Sắp có', { disabled: true }), tv,
        o('thanh_tuu', 'Thành tựu', 'Xem giải thưởng của em'), o('may_man', 'May mắn', 'Có 1 lượt quay!', { badge: 1, subMau: 'ton' }), o('vi_xu', 'Ví xu', 'Xem xu & lịch sử')]
   const dem = Object.fromEntries(mons.map((m) => [m.mon, (cap3 ? (BAI[m.mon]?.et ?? 0) + (BAI[m.mon]?.btvn ?? 0) : 0) + LICH.filter((l) => l.mon === m.mon).length]))
   return <HomeHS912 giaoDien={{ skin: 'rpg', che_do: 'toi', hinh_nen: 'mac_dinh' }} onDaLuu={() => {}} data={{ elo: [], thi: [{ ten: 'Thi vào 10', ngay: '2027-06-02', con_ngay: 244 }] }}
@@ -199,10 +227,30 @@ const XEM_GAMI = typeof location !== 'undefined' && new URLSearchParams(location
 // TUTORIAL "Hành trình tân thủ" bản demo (hs.html?xem=tutorial · &chang=N): dữ liệu giả, không cần đăng nhập (Thùy 30/09).
 const TutorialHS = lazy(() => import('./screens/hocsinh/tutorial/TutorialHS'))
 const XEM_TUTORIAL = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'tutorial'
+// BẢN ĐỒ PHIÊU LƯU 3D bản thử (hs.html?xem=phieu_luu): dữ liệu giả cùng hình dạng hợp đồng, soi cảnh trước khi nối dữ liệu thật (01/10).
+const XemPhieuLuu = lazy(() => import('./screens/hocsinh/phieuluu/XemPhieuLuu'))
+const XEM_PHIEU_LUU = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'phieu_luu'
+// BOSS RIÊNG của giáo viên (hs.html?xem=boss · &ma=boss_thuy · &tt=chieu · &tran=1): 6 tư thế + hội thoại + trận 3D thử, dữ liệu giả (01/10).
+const XemBoss = lazy(() => import('./screens/hocsinh/boss/XemBoss'))
+const XEM_BOSS = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'boss'
+const XemMoHinh3D = lazy(() => import('./screens/hocsinh/boss/XemMoHinh3D')) // hs.html?xem=boss3d — soi mô hình 3D cận cảnh
+const XEM_BOSS3D = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'boss3d'
+// ĐẤU TRƯỜNG 3 TRẬN (Thử thách — hs.html?xem=thu_thach · &goi_y=1 · &luot=0 · &dang=3 · &gioi=nam): dữ liệu giả, spec-thu-thach-dau-truong.md (02/10).
+const XemThuThach = lazy(() => import('./screens/hocsinh/thuthach/XemThuThach'))
+const XEM_THU_THACH = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'thu_thach'
+
+// KHU HỌC TẬP (hs.html?xem=hoc_tap · &mon=Toán|KHTN|Tiếng Anh): 5 ô + game nhúng + Giải Vô địch — spec-che-do-game.md §7 (03/10).
+const XemHocTap = lazy(() => import('./screens/hocsinh/hoctap/XemHocTap'))
+const XEM_HOC_TAP = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'hoc_tap'
 
 export default function AppHS() {
   if (XEM_GAMI) return <Suspense fallback={null}><XemMauGami /></Suspense>
   if (XEM_TUTORIAL) return <Suspense fallback={null}><TutorialHS /></Suspense>
+  if (XEM_PHIEU_LUU) return <Suspense fallback={null}><XemPhieuLuu /></Suspense>
+  if (XEM_BOSS) return <Suspense fallback={null}><XemBoss /></Suspense>
+  if (XEM_BOSS3D) return <Suspense fallback={null}><XemMoHinh3D /></Suspense>
+  if (XEM_THU_THACH) return <Suspense fallback={null}><XemThuThach /></Suspense>
+  if (XEM_HOC_TAP) return <Suspense fallback={null}><XemHocTap /></Suspense>
   const [session, setSession] = useState<Session | null | undefined>(undefined)
   const [hsId, setHsId] = useState<string | null | undefined>(undefined)
   if (import.meta.env.DEV && new URLSearchParams(location.search).has('demo')) return <DemoHome />

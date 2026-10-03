@@ -9,6 +9,7 @@ import {
   createYeuCauClone,
   type CauHoi, type MapRow,
 } from '../../lib/kho/api'
+import { listNguLieuCuaCau, DANG_DE_ANH, type NguLieu, type CauAnhThem } from '../../lib/kho/api'
 import CumBaiTab from './CumBaiTab'
 import TienDeBox from './TienDeBox'
 import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdfRender'
@@ -26,7 +27,7 @@ Câu 2.
 Đáp án: $\\frac{5}{6}$
 Lời giải chi tiết: Quy đồng: $\\frac{4}{6} + \\frac{1}{6} = \\frac{5}{6}$.`
 import type { BranchConfig } from './branches'
-import { BacChip, Code, inp, mucDoTone, MathText, readClipboardImageFile } from './ui'
+import { BacChip, Code, inp, mucDoTone, MathText, TextAnh, NguLieuBlock, readClipboardImageFile } from './ui'
 import { MathTextarea } from '../../components/math/MathTextarea'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
@@ -41,6 +42,11 @@ export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang
   const hasCau = !!config.cauTbl                 // nhánh có quản lý câu (Đại/KHTN); Hình chưa → placeholder
   const cauTbl = config.cauTbl ?? 'dai_cau_hoi'  // bảng câu theo môn
   const coCum = !!CUM_TBL[cauTbl]                // nhánh đã có CỤM BÀI (Đại/KHTN); hgt chưa → chỉ kho phẳng
+  // Tiếng Anh: câu nhập từ tài liệu GV qua cổng 2 bên kiểm — KHÔNG có Clone/Nhập AI (prompt viết cho Toán, chèn câu thiếu
+  // dang_de NOT NULL); chữ hiển thị bằng TextAnh (gạch chân, không công thức); câu thuộc ngữ liệu hiện kèm đoạn văn.
+  const laAnh = cauTbl === 'anh_cau_hoi'
+  const [anhThem, setAnhThem] = useState<{ cau: Record<string, CauAnhThem>; nguLieu: Record<string, NguLieu> }>({ cau: {}, nguLieu: {} })
+  const Chu = laAnh ? TextAnh : MathText
   const [caus, setCaus] = useState<CauHoi[]>([])
   const [loading, setLoading] = useState(hasCau)
   const [err, setErr] = useState<string | null>(null)
@@ -64,7 +70,18 @@ export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang
   async function reload() {
     if (!hasCau) return
     setLoading(true); setErr(null)
-    try { setCaus(await listCauByDang(d.leafMa, cauTbl, { tatCa: true })) } // màn KHO: xem cả câu chưa/không vào kho chuẩn
+    try {
+      const ds = await listCauByDang(d.leafMa, cauTbl, { tatCa: true }) // màn KHO: xem cả câu chưa/không vào kho chuẩn
+      if (laAnh) {   // ngữ liệu + dạng đề theo lô 100 mã (tránh URL .in() quá dài)
+        const them = { cau: {} as Record<string, CauAnhThem>, nguLieu: {} as Record<string, NguLieu> }
+        for (let i = 0; i < ds.length; i += 100) {
+          const x = await listNguLieuCuaCau(ds.slice(i, i + 100).map((c) => c.ma_cau))
+          Object.assign(them.cau, x.cau); Object.assign(them.nguLieu, x.nguLieu)
+        }
+        setAnhThem(them)
+      }
+      setCaus(ds)
+    }
     catch (e: any) { setErr(e.message ?? String(e)) }
     finally { setLoading(false) }
     onChanged()
@@ -122,10 +139,16 @@ export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang
                     {caus.length}{chuan ? `/${chuan}` : ''} câu{chuan && caus.length >= chuan ? ' ✓' : ''}
                   </span>
                 </div>
-                <div className="flex gap-2">
+                {!laAnh && <div className="flex gap-2">
                   <button onClick={() => setImportMode('clone')} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">✨ Clone biến thể</button>
                   <button onClick={() => setImportMode('batch')} className="rounded-md border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-[13px] font-medium text-indigo-700 hover:bg-indigo-100" title="Dán văn bản / JSON, HOẶC ảnh-PDF (tự tách câu + cắt hình)">📥 Nhập chuỗi câu</button>
-                </div>
+                </div>}
+                {laAnh && (
+                  <label className="flex cursor-pointer items-center gap-1.5 text-[12px] font-medium text-amber-700">
+                    <input type="checkbox" checked={chiChuaDuyet} onChange={(e) => setChiChuaDuyet(e.target.checked)} />
+                    Chỉ câu chưa duyệt <span className="opacity-70">({chuaDuyetCount})</span>
+                  </label>
+                )}
               </div>
 
               {chuan && (
@@ -167,7 +190,7 @@ export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang
                 : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
                 : caus.length === 0 ? (
                   <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">
-                    Chưa có câu nào. <b>Clone biến thể</b> (sinh từ 1 bài mẫu) hoặc <b>Nhập chuỗi câu</b> (cả file câu có sẵn).
+                    {laAnh ? <>Chưa có câu nào ở điểm kiến thức này.</> : <>Chưa có câu nào. <b>Clone biến thể</b> (sinh từ 1 bài mẫu) hoặc <b>Nhập chuỗi câu</b> (cả file câu có sẵn).</>}
                   </div>
                 ) : (
                   <ul className="grid grid-cols-1 gap-3 lg:grid-cols-2 2xl:grid-cols-3">
@@ -178,6 +201,7 @@ export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang
                             <span className="text-[13px] font-bold text-slate-400">#{i + 1}</span>
                             <Code>{c.ma_cau}</Code>
                             <span className="rounded bg-slate-100 px-2 py-0.5 text-[12px] font-medium text-slate-600">{loaiLabel(c.loai_cau)}</span>
+                            {laAnh && anhThem.cau[c.ma_cau] && <span className="rounded bg-sky-50 px-2 py-0.5 text-[12px] font-medium text-sky-700">{DANG_DE_ANH[anhThem.cau[c.ma_cau].dang_de] ?? anhThem.cau[c.ma_cau].dang_de}{anhThem.cau[c.ma_cau].unit_sgk ? ` · ${anhThem.cau[c.ma_cau].unit_sgk}` : ''}</span>}
                             <span className={`rounded px-2 py-0.5 text-[12px] font-medium ${c.nguon === 'clone' ? 'bg-violet-50 text-violet-600' : 'bg-emerald-50 text-emerald-600'}`}>{c.nguon === 'clone' ? 'clone' : 'gốc'}</span>
                             {c.nguon_giai === 'ai' && <span className="rounded bg-amber-50 px-2 py-0.5 text-[12px] font-medium text-amber-700" title="Lời giải do AI tạo — cần duyệt">🤖 AI giải</span>}
                             {/* ⭐ 20/08 (Thùy): nhãn chất lượng — bấm để duyệt/bỏ duyệt tại chỗ, không cần mở Sửa. */}
@@ -188,19 +212,22 @@ export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang
                             </button>
                           </div>
                           <div className="flex gap-3">
-                            <button onClick={() => setCloneTu(c)} className="text-[13px] font-medium text-slate-500 hover:text-violet-600" title="Sinh biến thể từ chính bài này (không cần ảnh)">✨ Clone</button>
+                            {!laAnh && <button onClick={() => setCloneTu(c)} className="text-[13px] font-medium text-slate-500 hover:text-violet-600" title="Sinh biến thể từ chính bài này (không cần ảnh)">✨ Clone</button>}
                             <button onClick={() => setCauModal({ editing: c })} className="text-[13px] font-medium text-slate-500 hover:text-indigo-600">Sửa</button>
                             <button onClick={() => onDelCau(c)} className="text-[13px] font-medium text-slate-500 hover:text-rose-600">Xoá</button>
                           </div>
                         </div>
-                        <div className="text-[16px] leading-loose text-slate-800"><MathText>{c.noi_dung}</MathText></div>
+                        {laAnh && anhThem.cau[c.ma_cau]?.ngu_lieu && anhThem.nguLieu[anhThem.cau[c.ma_cau].ngu_lieu!] && (
+                          <NguLieuBlock nl={anhThem.nguLieu[anhThem.cau[c.ma_cau].ngu_lieu!]} thuTu={anhThem.cau[c.ma_cau].thu_tu_trong_ngu_lieu} gon />
+                        )}
+                        <div className="text-[16px] leading-loose text-slate-800"><Chu>{c.noi_dung}</Chu></div>
                         {c.anh_de && <img src={c.anh_de} alt="" className="mx-auto mt-2 block max-h-44 w-auto max-w-full rounded-lg border border-slate-200" />}
                         {c.lua_chon && c.lua_chon.length ? (
                           <div className="mt-1.5 space-y-0.5 text-[14px]">
                             {c.lua_chon.map((o, oi) => {
                               const letter = String.fromCharCode(65 + oi)
                               const correct = (c.dap_an ?? '').trim().toUpperCase() === letter
-                              return <div key={oi} className={correct ? 'font-medium text-emerald-700' : 'text-slate-600'}><b>{letter}.</b> <MathText>{o}</MathText>{correct ? ' ✓' : ''}</div>
+                              return <div key={oi} className={correct ? 'font-medium text-emerald-700' : 'text-slate-600'}><b>{letter}.</b> <Chu>{o}</Chu>{correct ? ' ✓' : ''}</div>
                             })}
                           </div>
                         ) : c.dap_an ? <div className="mt-1.5 text-[13px] text-slate-500">Đáp án: <span className="font-medium text-slate-700"><MathText>{c.dap_an}</MathText></span></div> : null}

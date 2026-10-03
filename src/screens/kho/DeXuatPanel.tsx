@@ -6,11 +6,12 @@
 // Màn hàng đợi ⇒ sau mỗi quyết định VÁ TẠI CHỖ (bỏ đúng thẻ vừa quyết), không quét lại danh sách;
 // rời màn quay lại vẫn đúng chỗ cũ (cache module-level `NHO`), nút ↻ ép quét lại.
 import { useEffect, useRef, useState } from 'react'
-import { listDaiDeXuat, quyetDaiDeXuat, type DeXuat, type DeXuatKetQua } from '../../lib/kho/api'
+import { listDeXuat, quyetDeXuat, DE_XUAT_KHO, type KhoDeXuat, type DeXuat, type DeXuatKetQua } from '../../lib/kho/api'
 import DangPickerOne from '../../components/DangPickerOne'
 import { MathText } from './ui'
 
-const NHO: { khoi: string | null; rows: DeXuat[]; scrollTop: number } = { khoi: null, rows: [], scrollTop: 0 }
+// 03/10: dùng chung mọi kho có luồng đề xuất (registry DE_XUAT_KHO — Đại, KHTN). Cache theo (kho, khối).
+const NHO: { khoa: string | null; rows: DeXuat[]; scrollTop: number } = { khoa: null, rows: [], scrollTop: 0 }
 
 const NHAN_LOAI: Record<DeXuat['loai'], { icon: string; ten: string; cls: string }> = {
   dang_moi: { icon: '🟡', ten: 'Dạng mới', cls: 'bg-amber-50 text-amber-800 border-amber-200' },
@@ -18,8 +19,9 @@ const NHAN_LOAI: Record<DeXuat['loai'], { icon: string; ten: string; cls: string
   trao_doi: { icon: '🔴', ten: 'Cần trao đổi', cls: 'bg-rose-50 text-rose-800 border-rose-200' },
 }
 
-export default function DeXuatPanel({ khoi, onClose, onDoiBanDo }: { khoi: string; onClose: () => void; onDoiBanDo?: () => void }) {
-  const coCache = NHO.khoi === khoi
+export default function DeXuatPanel({ kho, khoi, onClose, onDoiBanDo }: { kho: KhoDeXuat; khoi: string; onClose: () => void; onDoiBanDo?: () => void }) {
+  const khoa = kho + '|' + khoi
+  const coCache = NHO.khoa === khoa
   const [rows, setRows] = useState<DeXuat[]>(coCache ? NHO.rows : [])
   const [loading, setLoading] = useState(!coCache)
   const [loi, setLoi] = useState<string | null>(null)
@@ -29,14 +31,14 @@ export default function DeXuatPanel({ khoi, onClose, onDoiBanDo }: { khoi: strin
 
   async function quet() {
     setLoading(true); setLoi(null)
-    try { const r = await listDaiDeXuat(khoi); NHO.khoi = khoi; NHO.rows = r; setRows(r) }
+    try { const r = await listDeXuat(kho, khoi); NHO.khoa = khoa; NHO.rows = r; setRows(r) }
     catch (e: any) { setLoi(e.message ?? String(e)) }
     finally { setLoading(false) }
   }
   useEffect(() => {
     if (!coCache) quet()
     else requestAnimationFrame(() => { if (cuon.current) cuon.current.scrollTop = NHO.scrollTop })
-  }, [khoi]) // eslint-disable-line
+  }, [khoa]) // eslint-disable-line
 
   function daQuyet(id: string, kq: DeXuatKetQua) {
     setRows((prev) => { const r = prev.filter((x) => x.id !== id); NHO.rows = r; return r })
@@ -61,7 +63,7 @@ export default function DeXuatPanel({ khoi, onClose, onDoiBanDo }: { khoi: strin
     <div className="fixed inset-0 z-[60] flex flex-col bg-[#fafafb]">
       <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-6 py-3">
         <button onClick={dong} className="text-[14px] text-slate-500 hover:text-indigo-600">← Bản đồ kiến thức</button>
-        <span className="text-[15px] font-semibold text-slate-800">Đề xuất của dây chuyền · Khối {khoi}</span>
+        <span className="text-[15px] font-semibold text-slate-800">Đề xuất của dây chuyền · {DE_XUAT_KHO[kho].mon} · Khối {khoi}</span>
         <span className="text-[12px] text-slate-400">{rows.length} đề xuất chờ quyết</span>
         {thongBao && <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[12.5px] font-medium text-emerald-700">✓ {thongBao}</span>}
         <button onClick={quet} title="Quét lại danh sách" className="ml-auto rounded-md border border-slate-200 bg-white px-2.5 py-1 text-[13px] text-slate-600 hover:border-indigo-300 hover:text-indigo-700">↻</button>
@@ -84,7 +86,7 @@ export default function DeXuatPanel({ khoi, onClose, onDoiBanDo }: { khoi: strin
                     <span className="text-[12px] text-slate-400">lô {g.lo} · {g.items.length} đề xuất</span>
                   </div>
                   <ul className="space-y-3">
-                    {g.items.map((r) => <TheDeXuat key={r.id} r={r} khoi={khoi} onXong={(kq) => daQuyet(r.id, kq)} />)}
+                    {g.items.map((r) => <TheDeXuat key={r.id} r={r} kho={kho} khoi={khoi} onXong={(kq) => daQuyet(r.id, kq)} />)}
                   </ul>
                 </section>
               ))}
@@ -95,7 +97,7 @@ export default function DeXuatPanel({ khoi, onClose, onDoiBanDo }: { khoi: strin
   )
 }
 
-function TheDeXuat({ r, khoi, onXong }: { r: DeXuat; khoi: string; onXong: (kq: DeXuatKetQua) => void }) {
+function TheDeXuat({ r, kho, khoi, onXong }: { r: DeXuat; kho: KhoDeXuat; khoi: string; onXong: (kq: DeXuatKetQua) => void }) {
   const nl = NHAN_LOAI[r.loai]
   const [ten, setTen] = useState(r.ten ?? '')
   const [moTa, setMoTa] = useState(r.mo_ta_ngan ?? '')
@@ -110,7 +112,7 @@ function TheDeXuat({ r, khoi, onXong }: { r: DeXuat; khoi: string; onXong: (kq: 
   async function quyet(hd: 'nhan' | 'gop' | 'bac' | 'tra_loi') {
     setBusy(true); setLoi(null)
     try {
-      onXong(await quyetDaiDeXuat(r.id, hd, {
+      onXong(await quyetDeXuat(kho, r.id, hd, {
         ten: hd === 'nhan' ? ten : null, moTaNgan: hd === 'nhan' ? moTa : null,
         maDangDich: hd === 'gop' || hd === 'tra_loi' ? dich : null,
         traLoi: hd === 'bac' || hd === 'tra_loi' ? traLoi : null,
@@ -225,7 +227,7 @@ function TheDeXuat({ r, khoi, onXong }: { r: DeXuat; khoi: string; onXong: (kq: 
         {busy && <span className="text-[12.5px] text-slate-400">Đang ghi…</span>}
       </div>
 
-      {picker && <DangPickerOne khoi={khoi} onClose={() => setPicker(false)} onPick={(ma) => { setDich(ma); setPicker(false) }} />}
+      {picker && <DangPickerOne khoi={khoi} mon={DE_XUAT_KHO[kho].mon} onClose={() => setPicker(false)} onPick={(ma) => { setDich(ma); setPicker(false) }} />}
     </li>
   )
 }

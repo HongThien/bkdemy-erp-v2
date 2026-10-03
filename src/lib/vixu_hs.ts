@@ -5,12 +5,14 @@ import { supabase } from './supabase'
 
 export type HoatDongViXu = {
   loai: 'exp' | 'xu' | 'may_man'
-  nguon: string // exp: 'exp_et'|'exp_btvn'|'exp_btvn_thang'|'attend_floor' · xu: loai của qlht_xu_ledger · may_man: 'may_man'
+  nguon: string // exp: 'exp_et'|'exp_btvn'|'exp_btvn_thang'|'attend_floor'|'exp_nhiem_vu'|'exp_huy_hieu' · xu: loai của qlht_xu_ledger · may_man: 'may_man'
   mon: string | null
   so: number
   created_at: string
   ngay: string | null
   lop: string | null
+  cap?: number; so_ruong?: number   // exp_nhiem_vu: cấp Chặng + số rương của THÁNG (dòng gộp theo tháng)
+  sao?: number; ten?: string        // exp_huy_hieu: sao + tên huy hiệu
 }
 export type TrangThaiMua = 'cho_giao' | 'da_giao' | 'huy'
 export type LichSuMua = {

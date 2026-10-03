@@ -1,0 +1,659 @@
+{
+  "khoi": "7",
+  "mon": "Hóa học",
+  "chuyen_de": [
+    {
+      "hm": "K070101",
+      "erp": "K070101",
+      "ly_do": "Cùng nội dung Bài 2 (cấu tạo nguyên tử, số hạt, xếp electron) — khớp theo câu; mã dạng bên trong lệch (HM 03/04 = ERP 05/03)."
+    },
+    {
+      "hm": "K070102",
+      "erp": "K070102",
+      "ly_do": "Cùng nội dung Bài 3 (nguyên tố, kí hiệu); HM có thêm 2 dạng \"vận dụng\" bổ sung."
+    },
+    {
+      "hm": "K070103",
+      "erp": "K070103",
+      "ly_do": "Cùng nội dung Bài 4 (bảng tuần hoàn); mã dạng 03/04 hai bên đảo nhau."
+    },
+    {
+      "hm": "K070201",
+      "erp": "K070201",
+      "ly_do": "Cùng nội dung Bài 5 (đơn chất, hợp chất, phân tử, KLPT)."
+    },
+    {
+      "hm": "K070202",
+      "erp": "K070202",
+      "ly_do": "Cùng nội dung Bài 6 (liên kết ion, cộng hoá trị); ERP tách theo loại liên kết, HM tách theo kĩ năng."
+    },
+    {
+      "hm": "K070203",
+      "erp": "K070203",
+      "ly_do": "Cùng nội dung Bài 7 (hoá trị, CTHH, % khối lượng); 3 dạng ERP chưa có câu."
+    }
+  ],
+  "dang": [
+    {
+      "hm": "K07010101",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H010101-01-001",
+            "K07H010101-01-002",
+            "K07H010101-01-003",
+            "K07H010101-01-005",
+            "K07H010101-01-006",
+            "K07H010101-02-001",
+            "K07H010101-02-002",
+            "K07H010101-02-003",
+            "K07H010101-02-004",
+            "K07H010101-02-005",
+            "K07H010101-02-006"
+          ],
+          "erp_dang": "K07010101",
+          "ly_do": "Nhận biết hạt (điện tích, vị trí) và đọc mô hình Rutherford – Bohr: áp thẳng cấu tạo nguyên tử, cùng kiểu câu mẫu ERP."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H010101-03-001",
+            "K07H010101-03-002",
+            "K07H010101-03-003",
+            "K07H010101-03-004",
+            "K07H010101-03-005",
+            "K07H010101-03-006"
+          ],
+          "erp_dang": "K07010102",
+          "ly_do": "Cụm lý thuyết khối lượng nguyên tử (tập trung ở hạt nhân, mp ≈ mn ≈ 1 amu, KLNT ≈ p + n) — trùng câu K07H010102-02-001 mà HM để ở dạng 2; theo ERP thuộc \"Số hạt và khối lượng nguyên tử\"."
+        }
+      ]
+    },
+    {
+      "hm": "K07010102",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K07010102",
+          "ly_do": "Cùng phương pháp câu mẫu: p = e, KLNT ≈ p + n, suy hạt còn thiếu."
+        }
+      ]
+    },
+    {
+      "hm": "K07010103",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K07010105",
+          "ly_do": "KHÁC MÃ: xếp electron theo lớp (2, 8, 8) rồi đọc số lớp / e ngoài cùng / chọn mô hình — ERP là K07010105; câu cho KLNT + neutron chỉ thêm bước p = A − n."
+        }
+      ]
+    },
+    {
+      "hm": "K07010104",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K07010103",
+          "ly_do": "KHÁC MÃ: lập hệ 2p + n = tổng với hiệu (hoặc số neutron) — y hệt câu mẫu K07010103. Không vào K07010104 vì câu nào cũng cho dữ kiện thứ hai, không phải biện luận chỉ từ tổng."
+        }
+      ]
+    },
+    {
+      "hm": "K07010201",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K07010201",
+          "ly_do": "Viết/đọc kí hiệu, cùng nguyên tố vì cùng số proton — đúng dạng khái niệm + kí hiệu của ERP."
+        }
+      ]
+    },
+    {
+      "hm": "K07010202",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H010202-01-001",
+            "K07H010202-01-002",
+            "K07H010202-01-003",
+            "K07H010202-01-004",
+            "K07H010202-02-003",
+            "K07H010202-02-004",
+            "K07H010202-02-005"
+          ],
+          "erp_dang": "K07010202",
+          "ly_do": "Từ số proton/electron (hoặc bảng p, n) xác định nguyên tố / cặp nguyên tử cùng nguyên tố — cùng câu mẫu ERP."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H010202-02-001",
+            "K07H010202-02-002"
+          ],
+          "erp_dang": "K07010201",
+          "ly_do": "Hỏi thẳng định nghĩa (cùng nguyên tố giống nhau ở số proton, khác ở số neutron) — 1 bước, không có số liệu; cùng kiểu K07H010201-01-005 ⇒ dạng khái niệm."
+        }
+      ]
+    },
+    {
+      "hm": "K07010203",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H010203-01-001",
+            "K07H010203-01-002",
+            "K07H010203-01-003",
+            "K07H010203-01-004",
+            "K07H010203-01-005",
+            "K07H010203-01-006"
+          ],
+          "erp_dang": "K07010202",
+          "ly_do": "Tính p = KLNT − n cho từng nguyên tử rồi ghép cùng p — đúng câu mẫu ERP \"cách ghép nào… cùng nguyên tố\" (đã kiểm đáp án 6/6 câu)."
+        },
+        {
+          "lan": "vang",
+          "cau": [
+            "K07H010203-02-001",
+            "K07H010203-02-002",
+            "K07H010203-02-005",
+            "K07H010203-02-006"
+          ],
+          "erp_chuyen_de": "K070102",
+          "ten": "Đọc và tính số liệu hàm lượng nguyên tố trong tự nhiên",
+          "mo_ta_ngan": "Cho bảng/số liệu % hàm lượng các nguyên tố (vỏ Trái Đất, cơ thể người, nước biển…), cộng/trừ/so sánh để trả lời hoặc đánh giá một kết luận.",
+          "gan_nhat": "K07010201",
+          "ly_do": "K07010201 chỉ là nhận biết khái niệm/kí hiệu nguyên tố; ở đây lời giải là đọc bảng số liệu rồi cộng/trừ %, không dùng phương pháp của dạng ERP nào trong chuyên đề."
+        },
+        {
+          "lan": "do",
+          "cau": [
+            "K07H010203-02-003"
+          ],
+          "erp_chuyen_de": "K070102",
+          "ly_do": "Câu này tính % thành phần KHÍ (N₂, O₂ trong không khí; CO₂ – hợp chất – trong khí quyển sao Hoả), tức hàm lượng CHẤT chứ không phải hàm lượng NGUYÊN TỐ: thầy/cô cho gộp vào dạng mới \"Đọc và tính số liệu hàm lượng nguyên tố trong tự nhiên\" (đề xuất vàng), hay loại khỏi chuyên đề Nguyên tố hoá học vì chỉ là cộng/trừ %?"
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H010203-03-001",
+            "K07H010203-03-002",
+            "K07H010203-03-003",
+            "K07H010203-03-004",
+            "K07H010203-03-005",
+            "K07H010203-03-006"
+          ],
+          "erp_dang": "K07010201",
+          "ly_do": "Phát hiện/sửa lỗi viết kí hiệu (Co, CO, CA, ag…) — câu mẫu ERP K07010201 có đúng kiểu \"viết HE thì sửa thế nào\"."
+        }
+      ]
+    },
+    {
+      "hm": "K07010204",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H010204-01-001",
+            "K07H010204-01-002",
+            "K07H010204-01-003",
+            "K07H010204-01-004",
+            "K07H010204-01-005",
+            "K07H010204-01-006",
+            "K07H010204-01-007",
+            "K07H010204-01-008",
+            "K07H010204-02-001",
+            "K07H010204-02-002",
+            "K07H010204-02-006"
+          ],
+          "erp_dang": "K07010202",
+          "ly_do": "Số electron ⇒ số proton ⇒ tên + KHHH, hoặc so số proton để kết luận cùng nguyên tố — phương pháp K07010202 (HM gắn mức 4 nhưng thực chất 2 bước)."
+        },
+        {
+          "lan": "vang",
+          "cau": [
+            "K07H010204-02-003",
+            "K07H010204-02-004"
+          ],
+          "erp_chuyen_de": "K070102",
+          "ten": "Đọc và tính số liệu hàm lượng nguyên tố trong tự nhiên",
+          "mo_ta_ngan": "Cho bảng/số liệu % hàm lượng các nguyên tố (vỏ Trái Đất, cơ thể người, nước biển…), cộng/trừ/so sánh để trả lời hoặc đánh giá một kết luận.",
+          "gan_nhat": "K07010201",
+          "ly_do": "K07010201 chỉ là nhận biết khái niệm/kí hiệu nguyên tố; ở đây lời giải là đọc bảng số liệu rồi cộng/trừ %, không dùng phương pháp của dạng ERP nào trong chuyên đề."
+        },
+        {
+          "lan": "do",
+          "cau": [
+            "K07H010204-02-005",
+            "K07H010204-02-007"
+          ],
+          "erp_chuyen_de": "K070102",
+          "ly_do": "Câu này tính % thành phần KHÍ (N₂, O₂ trong không khí; CO₂ – hợp chất – trong khí quyển sao Hoả), tức hàm lượng CHẤT chứ không phải hàm lượng NGUYÊN TỐ: thầy/cô cho gộp vào dạng mới \"Đọc và tính số liệu hàm lượng nguyên tố trong tự nhiên\" (đề xuất vàng), hay loại khỏi chuyên đề Nguyên tố hoá học vì chỉ là cộng/trừ %?"
+        }
+      ]
+    },
+    {
+      "hm": "K07010301",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K07010301",
+          "ly_do": "Đọc ô nguyên tố, khái niệm chu kì/nhóm, vùng kim loại–phi kim–khí hiếm — cùng câu mẫu ERP."
+        }
+      ]
+    },
+    {
+      "hm": "K07010302",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K07010302",
+          "ly_do": "Số lớp e ⇔ chu kì, e ngoài cùng ⇔ nhóm A (hai chiều) — cùng câu mẫu ERP."
+        }
+      ]
+    },
+    {
+      "hm": "K07010303",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K07010304",
+          "ly_do": "KHÁC MÃ (đảo 03↔04): từ Z/vị trí suy cùng nhóm ⇒ tính chất tương tự, xếp loại kim loại/phi kim/khí hiếm — đúng K07010304."
+        }
+      ]
+    },
+    {
+      "hm": "K07010304",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H010304-01-001",
+            "K07H010304-01-002",
+            "K07H010304-01-003",
+            "K07H010304-01-004",
+            "K07H010304-01-007"
+          ],
+          "erp_dang": "K07010304",
+          "ly_do": "Biết chu kì, nhóm ⇒ nguyên tố ⇒ loại (KL/PK/khí hiếm) hoặc nguyên tố tương tự — cùng kiểu câu mẫu K07010304. KHÔNG vào K07010303 dù trùng tên: dạng ERP đó là bài 2 nguyên tố lập hệ theo tổng số proton."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H010304-02-001",
+            "K07H010304-02-002",
+            "K07H010304-02-003",
+            "K07H010304-02-004",
+            "K07H010304-02-007"
+          ],
+          "erp_dang": "K07010302",
+          "ly_do": "Một nguyên tố, cho số lớp/e ngoài cùng (hoặc tổng hạt ⇒ p) ⇒ chu kì, nhóm — phương pháp K07010302. Tên cụm HM \"hai nguyên tố biết tổng số proton\" không khớp nội dung; không câu nào lập hệ 2 nguyên tố như K07010303."
+        }
+      ]
+    },
+    {
+      "hm": "K07020101",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H020101-01-001",
+            "K07H020101-01-002",
+            "K07H020101-01-003",
+            "K07H020101-01-004",
+            "K07H020101-01-005",
+            "K07H020101-01-006",
+            "K07H020101-02-003",
+            "K07H020101-02-004",
+            "K07H020101-02-005",
+            "K07H020101-02-006"
+          ],
+          "erp_dang": "K07020101",
+          "ly_do": "Phân loại đơn chất/hợp chất theo số nguyên tố — cùng câu mẫu ERP."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H020101-03-001",
+            "K07H020101-03-002",
+            "K07H020101-03-003",
+            "K07H020101-03-004",
+            "K07H020101-03-005",
+            "K07H020101-03-006",
+            "K07H020101-03-007"
+          ],
+          "erp_dang": "K07020103",
+          "ly_do": "Đọc công thức ⇒ số nguyên tử mỗi loại (kể cả nhóm trong ngoặc như Ca(OH)₂) — cùng kiến thức chỉ số với K07020103 (câu mẫu Mg(OH)₂), chỉ đổi chiều công thức ⇄ thành phần."
+        }
+      ]
+    },
+    {
+      "hm": "K07020102",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H020102-01-001",
+            "K07H020102-01-002",
+            "K07H020102-01-006",
+            "K07H020102-02-001",
+            "K07H020102-02-002",
+            "K07H020102-02-003",
+            "K07H020102-02-004",
+            "K07H020102-02-005",
+            "K07H020102-02-006",
+            "K07H020102-02-007",
+            "K07H020102-02-008",
+            "K07H020102-02-009",
+            "K07H020102-03-001",
+            "K07H020102-03-002",
+            "K07H020102-03-003",
+            "K07H020102-03-004",
+            "K07H020102-03-005",
+            "K07H020102-03-006",
+            "K07H020102-04-001",
+            "K07H020102-04-002",
+            "K07H020102-04-003",
+            "K07H020102-04-004",
+            "K07H020102-04-005",
+            "K07H020102-04-006",
+            "K07H020102-04-008"
+          ],
+          "erp_dang": "K07020102",
+          "ly_do": "Cộng khối lượng các nguyên tử theo chỉ số (kể cả nhóm trong ngoặc) — cùng câu mẫu ERP; 01-001/01-006 là nhớ KLNT nền cho dạng này."
+        },
+        {
+          "lan": "do",
+          "cau": [
+            "K07H020102-01-003",
+            "K07H020102-01-004",
+            "K07H020102-01-005"
+          ],
+          "erp_chuyen_de": "K070101",
+          "ly_do": "\"Nguyên tử Cu (64) nặng gấp mấy lần nguyên tử O (16)\" là so sánh khối lượng hai NGUYÊN TỬ (chia hai KLNT), đặt nhầm ở bài phân tử: thầy/cô xếp vào K07010102 \"Số hạt và khối lượng nguyên tử\" hay K07020104 \"So sánh và sắp xếp khối lượng phân tử\"?"
+        },
+        {
+          "lan": "vang",
+          "cau": [
+            "K07H020102-03-008",
+            "K07H020102-03-009"
+          ],
+          "erp_chuyen_de": "K070203",
+          "ten": "Tính phần trăm khối lượng nguyên tố trong hợp chất",
+          "mo_ta_ngan": "Cho công thức hoá học (và KLNT), tính % khối lượng hoặc tỉ lệ khối lượng của nguyên tố trong hợp chất.",
+          "gan_nhat": "K07020303",
+          "ly_do": "K07020303 là chiều NGƯỢC (biết % ⇒ tìm chỉ số nguyên tử, lập công thức); chiều thuận chỉ là tính KLPT rồi chia — dạng kinh điển riêng, gộp vào thì không đo tách được hai kĩ năng."
+        }
+      ]
+    },
+    {
+      "hm": "K07020103",
+      "nhom": [
+        {
+          "lan": "vang",
+          "cau": "*",
+          "erp_chuyen_de": "K070201",
+          "ten": "Xác định công thức phân tử từ tổng số hạt của các nguyên tử",
+          "mo_ta_ngan": "Phân tử dạng XY, XY₂… cho tổng số proton/hạt mang điện và hiệu giữa hai nguyên tử ⇒ lập hệ tìm Z của X, Y ⇒ công thức.",
+          "gan_nhat": "K07010303",
+          "ly_do": "Cùng kĩ thuật hệ 2 ẩn số proton như K07010303 nhưng quan hệ lấy từ CÔNG THỨC PHÂN TỬ (chỉ số, hạt mang điện = 2p) chứ không từ vị trí trong bảng; ERP K070201 không có dạng nào giải hệ số hạt (K07020103 là đọc mô hình, K07020106 là tìm KLNT từ KLPT). Đã kiểm đáp án 9/9 câu."
+        }
+      ]
+    },
+    {
+      "hm": "K07020201",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K07020201",
+          "ly_do": "Lớp vỏ bền khí hiếm + xu hướng nhường/nhận e để đạt octet = \"Quy tắc octet và xu hướng liên kết\", khác tên cùng nội dung."
+        }
+      ]
+    },
+    {
+      "hm": "K07020202",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H020202-01-002",
+            "K07H020202-01-003",
+            "K07H020202-01-004",
+            "K07H020202-01-005",
+            "K07H020202-02-002",
+            "K07H020202-02-003",
+            "K07H020202-02-004",
+            "K07H020202-02-005"
+          ],
+          "erp_dang": "K07020202",
+          "ly_do": "Xếp loại liên kết theo KL/PK, dãy toàn chất ion/CHT, so tính chất (nóng chảy, dẫn điện) — đúng dạng so sánh, phân biệt."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H020202-01-001",
+            "K07H020202-02-001",
+            "K07H020202-03-001",
+            "K07H020202-03-002",
+            "K07H020202-03-003",
+            "K07H020202-03-004",
+            "K07H020202-03-005"
+          ],
+          "erp_dang": "K07020203",
+          "ly_do": "Khái niệm liên kết ion, thể của chất ion, nguyên tử nhường/nhận e ⇒ kí hiệu ion (Na⁺, Mg²⁺, O²⁻) — nội dung riêng của liên kết ion; câu mẫu K07020203 \"Ion là phần tử hình thành khi…\"."
+        }
+      ]
+    },
+    {
+      "hm": "K07020203",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H020203-01-003",
+            "K07H020203-01-005"
+          ],
+          "erp_dang": "K07020203",
+          "ly_do": "Sơ đồ hình thành ion/hợp chất ion (K⁺, MgCl₂) — ERP tách theo loại liên kết."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H020203-02-004",
+            "K07H020203-02-005",
+            "K07H020203-02-006",
+            "K07H020203-03-001",
+            "K07H020203-03-002",
+            "K07H020203-03-003",
+            "K07H020203-03-004",
+            "K07H020203-03-005",
+            "K07H020203-03-006"
+          ],
+          "erp_dang": "K07020204",
+          "ly_do": "Góp chung e, đếm số cặp e dùng chung (O₂, N₂, CO₂, H₂O…) — câu mẫu K07020204 \"số cặp electron dùng chung\". Đã kiểm 6/6 đáp án."
+        }
+      ]
+    },
+    {
+      "hm": "K07020204",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H020204-01-001",
+            "K07H020204-01-002"
+          ],
+          "erp_dang": "K07020202",
+          "ly_do": "Z ⇒ kim loại/phi kim ⇒ ion hay cộng hoá trị — bước quyết định là phân biệt loại liên kết (câu mẫu NH₃ \"vì đều là phi kim\")."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H020204-02-001",
+            "K07H020204-02-002",
+            "K07H020204-03-001",
+            "K07H020204-03-005"
+          ],
+          "erp_dang": "K07020203",
+          "ly_do": "Z/vị trí ⇒ số e nhường–nhận ⇒ tỉ lệ ion ⇒ công thức chất ion (XY₂, X₂Y, NaF) — cùng phương pháp câu mẫu \"Ca nhường 2, Cl nhận 1 ⇒ công thức\". Tên cụm 2 HM \"hợp chất cộng hoá trị\" sai — cả 2 câu là chất ion."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H020204-03-002"
+          ],
+          "erp_dang": "K07020204",
+          "ly_do": "O (2,6) + H ⇒ góp chung e ⇒ Y₂X, liên kết cộng hoá trị — thuộc liên kết cộng hoá trị."
+        }
+      ]
+    },
+    {
+      "hm": "K07020301",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H020301-01-001",
+            "K07H020301-01-003",
+            "K07H020301-01-004",
+            "K07H020301-01-008",
+            "K07H020301-01-007"
+          ],
+          "erp_dang": "K07020103",
+          "ly_do": "Đếm số nguyên tử trong CTHH (Fe₂O₃, (NH₄)₂SO₄, Ca₃(PO₄)₂) — cùng kĩ năng chỉ số với K07020103 và cụm 3 HM K07020101; ERP K070203 không có dạng \"ý nghĩa CTHH\" nên không mở dạng trùng."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H020301-02-001",
+            "K07H020301-02-002",
+            "K07H020301-02-003",
+            "K07H020301-02-005",
+            "K07H020301-02-006",
+            "K07H020301-02-008"
+          ],
+          "erp_dang": "K07020301",
+          "ly_do": "Hoá trị quy ước (H = I, O = II, SO₄ = II, PO₄ = III) và suy hoá trị nhóm từ acid — xác định hoá trị."
+        }
+      ]
+    },
+    {
+      "hm": "K07020302",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H020302-01-001",
+            "K07H020302-01-002",
+            "K07H020302-01-011",
+            "K07H020302-01-012",
+            "K07H020302-01-013",
+            "K07H020302-01-003",
+            "K07H020302-01-014",
+            "K07H020302-01-005",
+            "K07H020302-01-007",
+            "K07H020302-01-010",
+            "K07H020302-02-001",
+            "K07H020302-02-006",
+            "K07H020302-02-003",
+            "K07H020302-02-005"
+          ],
+          "erp_dang": "K07020301",
+          "ly_do": "Viết/áp quy tắc a·x = b·y để TÌM hoá trị nguyên tố hoặc nhóm — ERP tách riêng dạng xác định hoá trị."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H020302-03-001",
+            "K07H020302-03-009",
+            "K07H020302-03-003",
+            "K07H020302-03-005",
+            "K07H020302-03-008",
+            "K07H020302-04-001",
+            "K07H020302-04-010",
+            "K07H020302-04-003",
+            "K07H020302-04-005",
+            "K07H020302-04-008"
+          ],
+          "erp_dang": "K07020302",
+          "ly_do": "Biết hoá trị ⇒ lập/sửa công thức (kể cả nhóm nguyên tử, hoặc tìm hoá trị trung gian rồi lập CT) — đích cuối là công thức ⇒ dạng lập CTHH."
+        }
+      ]
+    },
+    {
+      "hm": "K07020303",
+      "nhom": [
+        {
+          "lan": "vang",
+          "cau": "*",
+          "erp_chuyen_de": "K070203",
+          "ten": "Tính phần trăm khối lượng nguyên tố trong hợp chất",
+          "mo_ta_ngan": "Cho công thức hoá học (và KLNT), tính % khối lượng hoặc tỉ lệ khối lượng của nguyên tố trong hợp chất.",
+          "gan_nhat": "K07020303",
+          "ly_do": "K07020303 là chiều NGƯỢC (biết % ⇒ tìm chỉ số nguyên tử, lập công thức); chiều thuận chỉ là tính KLPT rồi chia — dạng kinh điển riêng, gộp vào thì không đo tách được hai kĩ năng."
+        }
+      ]
+    },
+    {
+      "hm": "K07020304",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K07020303",
+          "ly_do": "KHÁC MÃ: số nguyên tử = KLPT × % ÷ KLNT ⇒ công thức = \"Lập CTHH dựa vào phần trăm khối lượng\". Đã kiểm 4/4 đáp án."
+        }
+      ]
+    },
+    {
+      "hm": "K07020305",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H020305-01-005",
+            "K07H020305-01-001",
+            "K07H020305-01-003",
+            "K07H020305-01-004"
+          ],
+          "erp_dang": "K07020106",
+          "ly_do": "Biết dạng công thức (R₂O₅, XO₂, RSO₄, XCl₃) + KLPT ⇒ giải KLNT ⇒ tên nguyên tố — đúng phương pháp câu mẫu K07020106 \"XO₂ = 60 ⇒ X\"."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07H020305-02-005",
+            "K07H020305-02-001",
+            "K07H020305-02-004"
+          ],
+          "erp_dang": "K07020303",
+          "ly_do": "Tỉ lệ khối lượng (Al:O = 9:8, Cu:O = 4:1, C:H = 3:1) ⇒ chia KLNT ⇒ tỉ lệ số nguyên tử ⇒ công thức — cùng phương pháp lập CT từ thành phần khối lượng."
+        },
+        {
+          "lan": "vang",
+          "cau": [
+            "K07H020305-03-005",
+            "K07H020305-03-001",
+            "K07H020305-03-004"
+          ],
+          "erp_chuyen_de": "K070203",
+          "ten": "Xác định nguyên tố khi biết hoá trị và phần trăm khối lượng",
+          "mo_ta_ngan": "Biết hoá trị của M (⇒ dạng công thức MO, MCl₂…) và % khối lượng một nguyên tố ⇒ lập phương trình theo KLNT của M ⇒ tìm M.",
+          "gan_nhat": "K07020303",
+          "ly_do": "Ẩn là KLNT của nguyên tố (phương trình M/(M+16) = %), không phải chỉ số nguyên tử như K07020303; khác K07020106 vì không cho KLPT; phải kết hợp quy tắc hoá trị để có dạng công thức. Đã kiểm 3/3 đáp án."
+        }
+      ]
+    }
+  ]
+}

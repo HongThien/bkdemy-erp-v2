@@ -1,0 +1,940 @@
+{
+ "khoi": "7",
+ "mon": "Vật lí",
+ "_ghi_chu": "Đề xuất ánh xạ dạng Hạt Mầm → bản đồ ERP, Vật lí 7. Claude đề xuất 03/10 theo câu 2 bên. CHƯA DUYỆT.",
+ "chuyen_de": [
+  {
+   "hm": "K070301",
+   "erp": "K070301",
+   "ly_do": "tốc độ chuyển động; riêng cụm dụng cụ đo và xử lí số liệu đo sang K070302 (Đo tốc độ)"
+  },
+  {
+   "hm": "K070302",
+   "erp": "K070303",
+   "ly_do": "KHÁC MÃ: đồ thị s–t ở ERP là K070303 (K070302 ERP là Đo tốc độ)"
+  },
+  {
+   "hm": "K070303",
+   "erp": "K070302",
+   "ly_do": "TẠM: ERP không có chuyên đề Tốc độ và an toàn giao thông; gần nhất K070302 (có dạng Ứng dụng thực tế của đo tốc độ) — chờ GV trả lời làn đỏ"
+  },
+  {
+   "hm": "K070401",
+   "erp": "K070401",
+   "ly_do": "trùng nội dung sóng âm"
+  },
+  {
+   "hm": "K070402",
+   "erp": "K070402",
+   "ly_do": "trùng nội dung độ cao, độ to"
+  },
+  {
+   "hm": "K070403",
+   "erp": "K070403",
+   "ly_do": "trùng nội dung phản xạ âm, chống ồn"
+  },
+  {
+   "hm": "K070501",
+   "erp": "K070501",
+   "ly_do": "sự truyền ánh sáng, vùng tối"
+  },
+  {
+   "hm": "K070502",
+   "erp": "K070502",
+   "ly_do": "sự phản xạ ánh sáng"
+  },
+  {
+   "hm": "K070503",
+   "erp": "K070503",
+   "ly_do": "ảnh qua gương phẳng"
+  },
+  {
+   "hm": "K070601",
+   "erp": "K070601",
+   "ly_do": "HM gộp Bài 18 + 19: phần đường sức sang K070602, phần la bàn/từ trường Trái Đất sang K070603"
+  },
+  {
+   "hm": "K070602",
+   "erp": "K070603",
+   "ly_do": "KHÁC MÃ: nam châm điện ở ERP là K070603"
+  }
+ ],
+ "dang": [
+  {
+   "hm": "K07030101",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L030101-01-001",
+      "K07L030101-01-002",
+      "K07L030101-01-003",
+      "K07L030101-01-006",
+      "K07L030101-01-005",
+      "K07L030101-01-007",
+      "K07L030101-01-008",
+      "K07L030101-01-009",
+      "K07L030101-02-001",
+      "K07L030101-02-002",
+      "K07L030101-02-003",
+      "K07L030101-02-005"
+     ],
+     "erp_dang": "K07030101",
+     "ly_do": "ý nghĩa tốc độ, công thức v = s/t, đơn vị — trùng câu mẫu ERP"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L030101-03-001",
+      "K07L030101-03-002",
+      "K07L030101-03-003",
+      "K07L030101-03-006",
+      "K07L030101-03-005",
+      "K07L030101-03-007",
+      "K07L030101-03-008"
+     ],
+     "erp_dang": "K07030201",
+     "ly_do": "chọn dụng cụ đo tốc độ (đồng hồ bấm giây, cổng quang điện, súng bắn tốc độ, tốc kế) và nguồn sai số khi đo — thuộc chuyên đề Đo tốc độ"
+    }
+   ]
+  },
+  {
+   "hm": "K07030102",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L030102-01-001",
+      "K07L030102-01-002",
+      "K07L030102-01-004",
+      "K07L030102-02-001",
+      "K07L030102-02-002",
+      "K07L030102-02-004",
+      "K07L030102-03-001",
+      "K07L030102-03-003"
+     ],
+     "erp_dang": "K07030102",
+     "ly_do": "áp thẳng v = s/t tìm v, s, t — trùng câu mẫu ERP"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L030102-04-001",
+      "K07L030102-04-002",
+      "K07L030102-04-004"
+     ],
+     "erp_dang": "K07030101",
+     "ly_do": "đổi km/h ↔ m/s: ERP xếp đổi đơn vị tốc độ vào K07030101 (2/3 câu mẫu là đổi 36 km/h sang m/s)"
+    }
+   ]
+  },
+  {
+   "hm": "K07030103",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L030103-01-001",
+      "K07L030103-01-004"
+     ],
+     "erp_dang": "K07030101",
+     "ly_do": "lõi là đổi đơn vị tốc độ rồi so sánh — cùng phương pháp đổi đơn vị của K07030101"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L030103-02-001",
+      "K07L030103-02-002",
+      "K07L030103-02-004",
+      "K07L030103-02-005"
+     ],
+     "erp_dang": "K07030103",
+     "ly_do": "tốc độ trên cả quãng đường = tổng s / tổng t — trùng câu mẫu ERP"
+    },
+    {
+     "lan": "vang",
+     "cau": [
+      "K07L030103-03-001",
+      "K07L030103-03-002",
+      "K07L030103-03-004",
+      "K07L030103-03-005"
+     ],
+     "erp_chuyen_de": "K070302",
+     "ten": "Xử lí số liệu đo tốc độ",
+     "mo_ta_ngan": "Cho kết quả nhiều lần đo thời gian (có thể có số liệu bất thường), lấy giá trị trung bình rồi tính v = s/t̄.",
+     "gan_nhat": "K07030102",
+     "ly_do": "thêm kĩ năng thực hành: lấy trung bình nhiều lần đo, loại số liệu bấm sai, đổi cm→m; K07030102 chỉ áp công thức với số liệu cho sẵn, hai dạng K07030201/02 của chuyên đề Đo tốc độ không có phần xử lí số liệu"
+    }
+   ]
+  },
+  {
+   "hm": "K07030104",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": "*",
+     "erp_chuyen_de": "K070301",
+     "ten": "Bài toán hai vật gặp nhau, đuổi kịp (tính toán)",
+     "mo_ta_ngan": "Hai vật chuyển động ngược chiều gặp nhau hoặc cùng chiều đuổi kịp, không cho đồ thị; tìm thời điểm, vị trí gặp, khoảng cách ban đầu.",
+     "gan_nhat": "K07030302",
+     "ly_do": "K07030302 nằm ở chuyên đề Đồ thị, câu mẫu toàn đọc đồ thị hai xe; ở đây phải lập quan hệ s1 + s2 = AB hoặc s1 − s2 = d (tốc độ tương đối) — phương pháp đại số khác hẳn, mức 4 vượt SGK"
+    }
+   ]
+  },
+  {
+   "hm": "K07030201",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L030201-02-001",
+      "K07L030201-02-002",
+      "K07L030201-02-003",
+      "K07L030201-02-004",
+      "K07L030201-02-006",
+      "K07L030201-02-008",
+      "K07L030201-02-009"
+     ],
+     "erp_dang": "K07030301",
+     "ly_do": "nhận biết trục, ý nghĩa đoạn nằm ngang = đứng yên, chỉ ra khoảng đứng yên — trùng câu mẫu lý thuyết ERP"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L030201-01-001",
+      "K07L030201-01-002",
+      "K07L030201-01-003",
+      "K07L030201-01-004",
+      "K07L030201-01-008",
+      "K07L030201-01-009",
+      "K07L030201-01-006",
+      "K07L030201-01-007",
+      "K07L030201-02-007",
+      "K07L030201-02-010",
+      "K07L030201-03-001",
+      "K07L030201-03-002",
+      "K07L030201-03-003",
+      "K07L030201-03-004",
+      "K07L030201-03-005",
+      "K07L030201-03-006",
+      "K07L030201-03-007",
+      "K07L030201-03-008"
+     ],
+     "erp_dang": "K07030303",
+     "ly_do": "đọc s, t trên đồ thị, tính thời gian đứng yên, tính tốc độ từng đoạn — trùng câu mẫu \"tốc độ giai đoạn OA\", \"thời gian đứng yên\""
+    }
+   ]
+  },
+  {
+   "hm": "K07030202",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07030304",
+     "ly_do": "vẽ (chọn) đồ thị s–t từ bảng số liệu — trùng dạng ERP; KHÁC MÃ (HM 02 ↔ ERP 04)"
+    }
+   ]
+  },
+  {
+   "hm": "K07030203",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L030203-01-001",
+      "K07L030203-01-007",
+      "K07L030203-01-002",
+      "K07L030203-01-003",
+      "K07L030203-01-004",
+      "K07L030203-01-005"
+     ],
+     "erp_dang": "K07030302",
+     "ly_do": "so sánh tốc độ, khoảng cách, thời điểm đuổi kịp của 2–3 vật trên cùng đồ thị — trùng câu mẫu \"Bài toán hai xe\" ERP"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L030203-02-001",
+      "K07L030203-02-007",
+      "K07L030203-02-008"
+     ],
+     "erp_dang": "K07030301",
+     "ly_do": "mô tả định tính các đoạn đồ thị (đi, dừng, nhanh/chậm hơn) — lý thuyết đồ thị"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L030203-02-004",
+      "K07L030203-02-005"
+     ],
+     "erp_dang": "K07030303",
+     "ly_do": "phải tính tốc độ từng giai đoạn / tốc độ cả quãng có tính thời gian dừng từ đồ thị"
+    }
+   ]
+  },
+  {
+   "hm": "K07030204",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L030204-01-001",
+      "K07L030204-01-002",
+      "K07L030204-01-003",
+      "K07L030204-01-004",
+      "K07L030204-01-005",
+      "K07L030204-01-006",
+      "K07L030204-01-007",
+      "K07L030204-01-008"
+     ],
+     "erp_dang": "K07030303",
+     "ly_do": "tốc độ trung bình cả hành trình có đoạn dừng, đọc từ đồ thị — trùng câu mẫu \"tốc độ trung bình toàn bộ 5 giờ\""
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L030204-02-001",
+      "K07L030204-02-002",
+      "K07L030204-02-003",
+      "K07L030204-02-004",
+      "K07L030204-02-005",
+      "K07L030204-02-006",
+      "K07L030204-02-007"
+     ],
+     "erp_dang": "K07030103",
+     "ly_do": "KHÔNG có đồ thị: tính thời gian từng đoạn + thời gian dừng rồi so sánh — đúng phương pháp tốc độ nhiều đoạn (câu mẫu ERP có \"nghỉ 30 phút\")"
+    }
+   ]
+  },
+  {
+   "hm": "K07030301",
+   "nhom": [
+    {
+     "lan": "do",
+     "cau": "*",
+     "erp_chuyen_de": "K070302",
+     "ly_do": "ERP không có chuyên đề riêng cho Bài 11 (Tốc độ và an toàn giao thông). Câu hỏi cho GV: nội dung biển báo giới hạn tốc độ / khoảng cách an toàn có xếp vào K07030202 \"Ứng dụng thực tế của đo tốc độ\" (chuyên đề Đo tốc độ) không, hay mở chuyên đề mới \"Tốc độ và an toàn giao thông\" trong chủ đề Tốc độ?"
+    }
+   ]
+  },
+  {
+   "hm": "K07030302",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L030302-01-001",
+      "K07L030302-01-002",
+      "K07L030302-01-003",
+      "K07L030302-01-010",
+      "K07L030302-01-011",
+      "K07L030302-01-004",
+      "K07L030302-01-005",
+      "K07L030302-01-006",
+      "K07L030302-01-007",
+      "K07L030302-01-008",
+      "K07L030302-01-009",
+      "K07L030302-01-012",
+      "K07L030302-01-013",
+      "K07L030302-01-014"
+     ],
+     "erp_dang": "K07030102",
+     "ly_do": "quãng đường phản ứng = v·t (có đổi km/h → m/s) — đúng phương pháp tính s cơ bản, chỉ khác ngữ cảnh giao thông"
+    },
+    {
+     "lan": "do",
+     "cau": [
+      "K07L030302-02-001",
+      "K07L030302-02-002",
+      "K07L030302-02-003",
+      "K07L030302-02-010",
+      "K07L030302-02-011",
+      "K07L030302-02-014"
+     ],
+     "erp_chuyen_de": "K070302",
+     "ly_do": "ERP không có chuyên đề riêng cho Bài 11 (Tốc độ và an toàn giao thông). Câu hỏi cho GV: nội dung biển báo giới hạn tốc độ / khoảng cách an toàn có xếp vào K07030202 \"Ứng dụng thực tế của đo tốc độ\" (chuyên đề Đo tốc độ) không, hay mở chuyên đề mới \"Tốc độ và an toàn giao thông\" trong chủ đề Tốc độ? (nhóm này: giải thích quy định an toàn khi mưa, đêm, quá tải, tốc độ tối thiểu)"
+    }
+   ]
+  },
+  {
+   "hm": "K07030303",
+   "nhom": [
+    {
+     "lan": "do",
+     "cau": "*",
+     "erp_chuyen_de": "K070302",
+     "ly_do": "ERP không có chuyên đề riêng cho Bài 11 (Tốc độ và an toàn giao thông). Câu hỏi cho GV: nội dung biển báo giới hạn tốc độ / khoảng cách an toàn có xếp vào K07030202 \"Ứng dụng thực tế của đo tốc độ\" (chuyên đề Đo tốc độ) không, hay mở chuyên đề mới \"Tốc độ và an toàn giao thông\" trong chủ đề Tốc độ? (nhóm này là vận dụng cao: đối chiếu biển báo + bảng khoảng cách, cộng quãng đường phản ứng + phanh rồi so bảng — nếu mở chuyên đề mới thì nên là 1 dạng vận dụng riêng)"
+    }
+   ]
+  },
+  {
+   "hm": "K07040101",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07040101",
+     "ly_do": "nguồn âm, vật dao động, môi trường truyền âm — trùng tên + câu mẫu"
+    }
+   ]
+  },
+  {
+   "hm": "K07040102",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07040102",
+     "ly_do": "so sánh tốc độ âm theo môi trường, tính s/t truyền âm, chớp – sét — trùng câu mẫu ERP"
+    }
+   ]
+  },
+  {
+   "hm": "K07040103",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07040102",
+     "ly_do": "lõi vẫn là t = s/v cho từng nguồn rồi lấy hiệu (cụm 2 cộng thêm mốc thời gian phát) — cùng phương pháp \"sớm hơn bao lâu\" đã có trong K07040102"
+    }
+   ]
+  },
+  {
+   "hm": "K07040201",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07040201",
+     "ly_do": "tần số/biên độ ↔ độ cao/độ to, hạ âm – siêu âm – ngưỡng nghe: lý thuyết duy nhất của chuyên đề"
+    }
+   ]
+  },
+  {
+   "hm": "K07040202",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L040202-01-001",
+      "K07L040202-01-002",
+      "K07L040202-01-003",
+      "K07L040202-01-004",
+      "K07L040202-02-001",
+      "K07L040202-02-002",
+      "K07L040202-02-003",
+      "K07L040202-02-004",
+      "K07L040202-02-005",
+      "K07L040202-03-004",
+      "K07L040202-03-005",
+      "K07L040202-03-006",
+      "K07L040202-03-007",
+      "K07L040202-03-008"
+     ],
+     "erp_dang": "K07040202",
+     "ly_do": "tính f = số dao động / thời gian (có đổi phút → giây), rồi so sánh"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L040202-03-001",
+      "K07L040202-03-002",
+      "K07L040202-03-003",
+      "K07L040202-04-001",
+      "K07L040202-04-002"
+     ],
+     "erp_dang": "K07040201",
+     "ly_do": "tần số cho sẵn, chỉ áp quan hệ f ↔ độ cao hoặc ngưỡng 20–20 000 Hz, không tính"
+    }
+   ]
+  },
+  {
+   "hm": "K07040203",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07040201",
+     "ly_do": "so sánh số dao động (cùng khung thời gian) và độ lệch lớn nhất trên đồ thị ⇒ áp quan hệ tần số–độ cao, biên độ–độ to; ERP không tách dạng đọc đồ thị âm"
+    }
+   ]
+  },
+  {
+   "hm": "K07040204",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07040202",
+     "ly_do": "phải tính f = N/Δt từ đồ thị (khung thời gian khác nhau) rồi xét ngưỡng/so sánh — lõi là tính tần số"
+    }
+   ]
+  },
+  {
+   "hm": "K07040301",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07040301",
+     "ly_do": "vật phản xạ âm tốt/kém, điều kiện tiếng vang — lý thuyết phản xạ âm"
+    }
+   ]
+  },
+  {
+   "hm": "K07040302",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07040302",
+     "ly_do": "d = v·t/2 (đo độ sâu, vách núi) và khoảng cách tối thiểu nghe tiếng vang — cùng phương pháp âm đi – về"
+    }
+   ]
+  },
+  {
+   "hm": "K07040303",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07040301",
+     "ly_do": "nhận biết ô nhiễm tiếng ồn, chọn biện pháp chống ồn — K07040301 gồm cả biện pháp chống ồn"
+    }
+   ]
+  },
+  {
+   "hm": "K07040304",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L040304-01-001",
+      "K07L040304-01-002",
+      "K07L040304-01-003",
+      "K07L040304-01-004",
+      "K07L040304-01-005",
+      "K07L040304-01-006",
+      "K07L040304-01-007",
+      "K07L040304-01-008"
+     ],
+     "erp_dang": "K07040302",
+     "ly_do": "t = 2d/v cho từng vách rồi lấy hiệu — phương pháp âm đi – về"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L040304-02-001",
+      "K07L040304-02-002",
+      "K07L040304-02-003",
+      "K07L040304-02-004",
+      "K07L040304-02-005",
+      "K07L040304-02-006",
+      "K07L040304-02-007"
+     ],
+     "erp_dang": "K07040301",
+     "ly_do": "nhận ra biện pháp chống ồn sai do dùng vật liệu phản xạ âm tốt — lý thuyết phản xạ âm + chống ồn"
+    }
+   ]
+  },
+  {
+   "hm": "K07050101",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": "*",
+     "erp_chuyen_de": "K070501",
+     "ten": "Năng lượng ánh sáng; chùm sáng và tia sáng",
+     "mo_ta_ngan": "Nhận ra năng lượng ánh sáng chuyển hoá thành dạng nào; phân loại chùm sáng song song, hội tụ, phân kì.",
+     "gan_nhat": "K07050101",
+     "ly_do": "K07050101 chỉ về nguồn sáng, vật sáng, môi trường truyền sáng; không có chuyển hoá năng lượng ánh sáng và phân loại chùm sáng (nội dung chính Bài 15 KNTT). Nếu GV muốn K07050101 thành dạng lý thuyết chung thì đổi tên và gộp"
+    }
+   ]
+  },
+  {
+   "hm": "K07050102",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07050102",
+     "ly_do": "xác định vùng tối, nửa tối; vai trò vật cản/màn trong nhật – nguyệt thực"
+    }
+   ]
+  },
+  {
+   "hm": "K07050103",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07050102",
+     "ly_do": "biện luận vùng tối/nửa tối khi đổi bố trí, nhật – nguyệt thực toàn phần/một phần, bố trí đèn giảm bóng"
+    }
+   ]
+  },
+  {
+   "hm": "K07050104",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07050102",
+     "ly_do": "biện luận vùng tối/nửa tối (đổi kích thước nguồn, dời màn) và mức độ nhật – nguyệt thực — cùng phương pháp, mức cao hơn"
+    }
+   ]
+  },
+  {
+   "hm": "K07050201",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L050201-03-001",
+      "K07L050201-03-002",
+      "K07L050201-03-003",
+      "K07L050201-03-005",
+      "K07L050201-03-006",
+      "K07L050201-03-004",
+      "K07L050201-03-007",
+      "K07L050201-03-008",
+      "K07L050201-03-009"
+     ],
+     "erp_dang": "K07050201",
+     "ly_do": "phân biệt phản xạ gương / khuếch tán và giải thích hiện tượng — trùng tên dạng ERP"
+    },
+    {
+     "lan": "vang",
+     "cau": [
+      "K07L050201-01-001",
+      "K07L050201-01-002",
+      "K07L050201-01-003",
+      "K07L050201-01-004",
+      "K07L050201-01-005",
+      "K07L050201-02-001",
+      "K07L050201-02-002",
+      "K07L050201-02-003",
+      "K07L050201-02-005"
+     ],
+     "erp_chuyen_de": "K070502",
+     "ten": "Các khái niệm và nội dung định luật phản xạ ánh sáng",
+     "mo_ta_ngan": "Gọi tên tia tới, tia phản xạ, pháp tuyến, góc tới, góc phản xạ trên hình; phát biểu hai nội dung định luật phản xạ.",
+     "gan_nhat": "K07050201",
+     "ly_do": "K07050201 chỉ phân biệt hai kiểu phản xạ; K07050202 là tính góc (mức 3). Nhận biết thuật ngữ + phát biểu định luật là lý thuyết mức 1 chưa có chỗ"
+    }
+   ]
+  },
+  {
+   "hm": "K07050202",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07050202",
+     "ly_do": "i′ = i, góc với mặt gương = 90° − i, góc SIR = 2i — trùng tên dạng ERP"
+    }
+   ]
+  },
+  {
+   "hm": "K07050203",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07050202",
+     "ly_do": "bản trắc nghiệm \"hình nào vẽ đúng/sai\": lời giải chuẩn chỉ là tính góc phản xạ (đổi góc với gương sang góc với pháp tuyến) rồi đối chiếu — cùng phương pháp tính góc"
+    }
+   ]
+  },
+  {
+   "hm": "K07050204",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L050204-01-001",
+      "K07L050204-01-002",
+      "K07L050204-01-006",
+      "K07L050204-01-007"
+     ],
+     "erp_dang": "K07050202",
+     "ly_do": "đặt gương: pháp tuyến là phân giác góc SIR ⇒ i = SIR/2 ⇒ góc gương — cùng phương pháp tính góc"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L050204-02-001",
+      "K07L050204-02-002",
+      "K07L050204-02-003",
+      "K07L050204-02-007"
+     ],
+     "erp_dang": "K07050203",
+     "ly_do": "gương quay α thì tia phản xạ quay 2α — trùng tên dạng \"Bài toán quay gương phẳng\""
+    }
+   ]
+  },
+  {
+   "hm": "K07050301",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07050301",
+     "ly_do": "tính chất ảnh qua gương phẳng (ảnh ảo, lớn bằng vật, đối xứng)"
+    }
+   ]
+  },
+  {
+   "hm": "K07050302",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07050301",
+     "ly_do": "khoảng cách vật – ảnh – gương (kể cả vật dịch chuyển) — dạng ERP gộp \"đặc điểm ảnh và bài toán khoảng cách\""
+    }
+   ]
+  },
+  {
+   "hm": "K07050303",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L050303-01-001",
+      "K07L050303-01-002",
+      "K07L050303-01-006",
+      "K07L050303-01-007",
+      "K07L050303-01-008",
+      "K07L050303-03-001",
+      "K07L050303-03-002",
+      "K07L050303-03-003",
+      "K07L050303-03-004"
+     ],
+     "erp_dang": "K07050301",
+     "ly_do": "đọc khoảng cách/độ dài trên lưới ô và vận dụng tính đối xứng (đồng hồ trong gương, chữ AMBULANCE, kính tiềm vọng) — đặc điểm ảnh + khoảng cách"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L050303-01-003",
+      "K07L050303-01-004",
+      "K07L050303-01-005",
+      "K07L050303-01-009",
+      "K07L050303-01-010",
+      "K07L050303-02-001",
+      "K07L050303-02-002",
+      "K07L050303-02-004",
+      "K07L050303-02-005"
+     ],
+     "erp_dang": "K07050302",
+     "ly_do": "dựng ảnh đối xứng, vẽ đường tia từ vật qua gương tới mắt (nối A′M cắt gương) — dựng ảnh"
+    }
+   ]
+  },
+  {
+   "hm": "K07050304",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07050301",
+     "ly_do": "vật hoặc gương dịch chuyển (có tốc độ): s = v·t rồi áp ảnh cách gương bằng vật — vẫn là bài toán khoảng cách"
+    }
+   ]
+  },
+  {
+   "hm": "K07060101",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07060101",
+     "ly_do": "vật liệu từ, tương tác cùng/khác tên, các loại nam châm — lý thuyết nam châm vĩnh cửu"
+    }
+   ]
+  },
+  {
+   "hm": "K07060102",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L060102-01-001",
+      "K07L060102-01-002",
+      "K07L060102-01-004",
+      "K07L060102-01-005",
+      "K07L060102-01-008",
+      "K07L060102-01-009"
+     ],
+     "erp_dang": "K07060201",
+     "ly_do": "từ phổ, đặc điểm đường sức (dày ở cực, không cắt nhau, kim nằm dọc đường sức)"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L060102-01-007"
+     ],
+     "erp_dang": "K07060202",
+     "ly_do": "biết cực ⇒ suy chiều đường sức ⇒ hướng cực Bắc kim thử — cùng quy tắc với xác định cực qua kim thử"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L060102-02-001",
+      "K07L060102-02-002",
+      "K07L060102-02-003",
+      "K07L060102-02-005",
+      "K07L060102-02-006",
+      "K07L060102-02-007",
+      "K07L060102-02-008",
+      "K07L060102-02-009"
+     ],
+     "erp_dang": "K07060301",
+     "ly_do": "la bàn, từ trường Trái Đất, nhiễm từ làm la bàn — ERP để từ trường Trái Đất trong lý thuyết K07060301"
+    }
+   ]
+  },
+  {
+   "hm": "K07060103",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L060103-01-001",
+      "K07L060103-01-005",
+      "K07L060103-01-006",
+      "K07L060103-01-002",
+      "K07L060103-01-003",
+      "K07L060103-01-004",
+      "K07L060103-02-001",
+      "K07L060103-02-005",
+      "K07L060103-02-006",
+      "K07L060103-02-002",
+      "K07L060103-02-003",
+      "K07L060103-02-004"
+     ],
+     "erp_dang": "K07060202",
+     "ly_do": "suy tên cực từ kim nam châm thử / chiều đường sức (và ngược lại) — trùng tên dạng ERP"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L060103-03-001",
+      "K07L060103-03-002",
+      "K07L060103-03-003"
+     ],
+     "erp_dang": "K07060303",
+     "ly_do": "dùng la bàn suy hướng đứng/nhìn — bài toán định hướng la bàn"
+    }
+   ]
+  },
+  {
+   "hm": "K07060104",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L060104-01-001",
+      "K07L060104-01-002",
+      "K07L060104-01-003",
+      "K07L060104-01-004",
+      "K07L060104-01-005",
+      "K07L060104-01-006",
+      "K07L060104-01-007",
+      "K07L060104-01-008"
+     ],
+     "erp_dang": "K07060202",
+     "ly_do": "chuỗi suy cực: kim thử ⇒ cực P ⇒ cực Q ⇒ hút/đẩy ⇒ R, S — lặp lại quy tắc xác định cực"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L060104-02-001",
+      "K07L060104-02-002",
+      "K07L060104-02-003",
+      "K07L060104-02-004",
+      "K07L060104-02-005",
+      "K07L060104-02-006",
+      "K07L060104-02-007"
+     ],
+     "erp_dang": "K07060303",
+     "ly_do": "xác định hướng ban đầu bằng la bàn rồi quay nhiều lần — định hướng la bàn"
+    }
+   ]
+  },
+  {
+   "hm": "K07060201",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K07060301",
+     "ly_do": "cấu tạo, điều kiện có từ tính, từ tính tạm thời của nam châm điện — lý thuyết cơ bản"
+    }
+   ]
+  },
+  {
+   "hm": "K07060202",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K07L060202-02-002",
+      "K07L060202-02-003",
+      "K07L060202-02-004",
+      "K07L060202-02-005",
+      "K07L060202-02-006",
+      "K07L060202-02-008",
+      "K07L060202-02-009",
+      "K07L060202-02-010"
+     ],
+     "erp_dang": "K07060301",
+     "ly_do": "ứng dụng nam châm điện (chuông điện, rơ-le, cần cẩu, khoá điện từ) — giải thích bằng lý thuyết có/mất từ tính"
+    },
+    {
+     "lan": "vang",
+     "cau": [
+      "K07L060202-01-001",
+      "K07L060202-01-002",
+      "K07L060202-01-005",
+      "K07L060202-01-006",
+      "K07L060202-01-007",
+      "K07L060202-01-009",
+      "K07L060202-01-010",
+      "K07L060202-03-001",
+      "K07L060202-03-002",
+      "K07L060202-03-007",
+      "K07L060202-03-008",
+      "K07L060202-03-009",
+      "K07L060202-03-003",
+      "K07L060202-03-004",
+      "K07L060202-03-010",
+      "K07L060202-03-011"
+     ],
+     "erp_chuyen_de": "K070603",
+     "ten": "Yếu tố ảnh hưởng độ mạnh của nam châm điện",
+     "mo_ta_ngan": "So sánh/chọn cấu hình (số vòng dây, số pin, vật liệu lõi) hoặc phân tích bảng kết quả thí nghiệm để kết luận nam châm điện nào mạnh hơn, đề xuất nào không hợp lí.",
+     "gan_nhat": "K07060301",
+     "ly_do": "phương pháp \"xét từng yếu tố / biến kiểm soát\" trên bảng thí nghiệm, nhiều bước suy luận — vượt lý thuyết nhận biết K07060301; K07060302 là xác định cực, không liên quan"
+    }
+   ]
+  },
+  {
+   "hm": "K07060203",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": "*",
+     "erp_chuyen_de": "K070603",
+     "ten": "Yếu tố ảnh hưởng độ mạnh của nam châm điện",
+     "mo_ta_ngan": "So sánh/chọn cấu hình (số vòng dây, số pin, vật liệu lõi) hoặc phân tích bảng kết quả thí nghiệm để kết luận nam châm điện nào mạnh hơn, đề xuất nào không hợp lí.",
+     "gan_nhat": "K07060301",
+     "ly_do": "vận dụng cao của cùng dạng đề xuất ở K07060202 (yếu tố độ mạnh: lõi phi từ, mạch hở thì tăng vòng dây vô ích, chọn cấu hình mạnh nhất) — không có dạng ERP tương ứng"
+    }
+   ]
+  }
+ ]
+}

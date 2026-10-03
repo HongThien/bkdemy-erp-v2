@@ -75,3 +75,15 @@ dist-verify/
 .snap/
 # build output app Sự kiện (như dist-khaosat)
 dist-sukien/
+
+# Ảnh GỐC ChatGPT bộ gamification (1254px, ~140 MB) — KHÔNG lên git, cất Google Drive (Thùy chốt 01/10).
+# Repo chỉ giữ bản app dùng (public/bk-ui/hs/gami/) + ảnh toàn cảnh tham chiếu bản JPG (design/handoff/gami-v1/reference/).
+design/bk-ui-src/gami/
+# Ảnh gốc ChatGPT style Khối vuông (DON-HANG-STYLE-KHOI.md) — cùng luật bộ gami, cất Drive
+design/bk-ui-src/khoi/
+
+# Đệm của `tsc -b` — tự sinh lại mỗi lần kiểm kiểu
+*.tsbuildinfo
+
+# build output game ĐẤU TỪ (như dist-sukien)
+dist-dautu/

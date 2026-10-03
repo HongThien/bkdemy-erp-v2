@@ -1,6 +1,8 @@
 # spec-anh-ban-do-k9.md — BẢN ĐỒ ĐIỂM KIẾN THỨC (KP) MÔN TIẾNG ANH, KHỐI 9
 
-> **Trạng thái: BẢN NHÁP ĐỂ CEO + GV ANH DUYỆT (30/09/2026). Chưa build gì.**
+> **Trạng thái: ĐÃ DUYỆT — GV Anh duyệt (CEO báo 02/10/2026), giữ đúng các phương án mặc định của bản nháp ở §7.**
+> **Đã nạp DB 02/10:** mig `202610021156_anh_kho_ban_do_k9.sql` → bảng `anh_ban_do` (100 KP + điểm chờ `E09000000`).
+>   Mã DB = `E09` + mảng(2) + chuyên đề(2) + điểm(2), vd NP-09 = `E09020301`. Cột `ma_hien_thi` giữ mã đọc NA-01…
 >
 > **CEO đã chốt 30/09:**
 > - Làm **khối 9 trước**.
@@ -16,7 +18,7 @@
 
 ## 0. Đọc nhanh
 
-- **Cây 3 tầng:** **6 mảng → 25 chuyên đề → 100 KP.** Nghe và Nói để sau.
+- **Cây 3 tầng:** **6 mảng → 24 chuyên đề → 100 KP.** Nghe và Nói để sau.
 - **KP** = 1 điểm kiến thức hoặc kỹ năng **dạy trọn trong 1 bài ngắn**, luyện riêng được và kiểm riêng được.
   - Độ hạt ngang 1 unit của *Grammar in Use* hoặc 1 learning objective của Cambridge.
   - Nhóm KP lên thành **chuyên đề**, đúng cách GV luyện thi vào 10 vẫn gọi: "chuyên đề Mệnh đề quan hệ", "chuyên đề Cụm động từ"…
@@ -56,7 +58,7 @@
 ## 2. Khung
 
 ```
-MẢNG (6)          CHUYÊN ĐỀ (25)                                                       KP
+MẢNG (6)          CHUYÊN ĐỀ (24)                                                       KP
 Ngữ âm            Phát âm · Trọng âm                                                   10
 Ngữ pháp          Thì · Động từ khuyết thiếu · Điều kiện & câu ước · Câu tường thuật
                   · Câu hỏi · Danh động từ & to-V · Danh từ–mạo từ–lượng từ · Đại từ

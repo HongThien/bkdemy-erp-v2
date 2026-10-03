@@ -22,6 +22,38 @@
       "autoPort": true
     },
     {
+      "name": "dev-hs-https",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:hs:https"
+      ],
+      "port": 5443,
+      "autoPort": false
+    },
+    {
+      "name": "preview-hs-lan",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "preview:hs:lan"
+      ],
+      "port": 5180,
+      "autoPort": false
+    },
+    {
+      "name": "dev-hs-lan",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:hs",
+        "--",
+        "--host"
+      ],
+      "port": 5173,
+      "autoPort": true
+    },
+    {
       "name": "dev-ops",
       "runtimeExecutable": "npm",
       "runtimeArgs": [

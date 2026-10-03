@@ -1,116 +1,122 @@
 ---
-description: Nhập 1 đề thi TOÁN nguyên vẹn (BGD/Sở/Cụm/thi thử) — bóc câu + lưu cấu trúc đề
+description: Nhập 1 đề thi TOÁN khuôn Bộ 3 phần vào ERP — bóc câu vào kho + lưu cấu trúc đề (đường A), chờ duyệt ở màn Duyệt đề
 argument-hint: <10|11|12>
 ---
 
-# /nhap-de-thi — Nhập đề thi TOÁN (pha 1)
+# /nhap-de-thi — Nhập đề thi vào ERP (v2, 01/10/2026)
 
-`$ARGUMENTS` = khối `10` | `11` | `12`. Chỉ Toán đợt này (Đại + Hình cùng đề). KHTN/Văn/Anh hold.
+`$ARGUMENTS` = khối `10` | `11` | `12`. Spec: `spec-de-thi.md` §10 (ĐỌC TRƯỚC). Phân vai: **Claude xử lý, người duyệt trên ERP.**
 
-Khác `/nhap-kho co_giai` chỗ nào: ngoài bóc câu vào `<mon>_cau_hoi`, phải **lưu CẤU TRÚC đề** (thứ tự câu, phần I/II/III/IV, timing, mã đề, năm, nguồn) vào `toan_de_thi` + `toan_de_thi_cau`. Sau HS luyện tập trên app đúng cấu trúc đề thật (pha 2 tách riêng, chưa làm đợt này).
+> v1 của lệnh này ghi vào `toan_de_thi` (đường B, ĐÃ NGỪNG — đề nhập kiểu đó không hiện trên ERP). `scripts/nhap_de_thi.mjs` là của v1, **không dùng nữa**.
+
+Kết quả của lệnh: câu nằm trong kho (`dai_cau_hoi` / `hgt_cau_hoi`, `da_duyet=false`, `nguon='de_thi'`) **và** đề nằm ở
+`tai_lieu(loai='de_thi')` + `tai_lieu_phan` + `tai_lieu_cau` ⇒ hiện ngay ở Nhập kho › 📝 Đề thi › tab Chờ duyệt (mở đề = sửa + duyệt một màn).
 
 ## Nguyên tắc bất di
 
-1. **1 file PDF = 1 đề.** Đừng bóc gộp 2 đề trong 1 file.
-2. **Không tự giải.** Đề thi thật có đáp án (đôi khi có lời giải chi tiết) — trích nguyên văn.
-3. **Đọc CẤU TRÚC từ trang bìa/đề bài** (Claude tự parse — CEO đã chốt 12/09). CEO xác nhận 1 lần trước insert. Không tag tay 5-7 field.
-4. **`da_duyet = false`** — chờ CEO duyệt ở màn "Duyệt đề" (pha sau).
-5. **Không chắc `dang_chinh` câu nào ⇒ `fail` file với ghi chú.** Không insert từng phần rồi treo.
-6. **`cau_truc` là declarative** — thứ tự phần + số câu + điểm mặc định phần. Data thực (câu nào ở phần nào) ở `toan_de_thi_cau`.
+1. **1 file = 1 đề.** Bản đầu chỉ đề **khuôn Bộ 3 phần** (TN + Đúng/Sai + Trả lời ngắn). Đề khác ⇒ dừng, báo.
+2. **Không tự giải.** Đáp án lấy từ file: gạch chân / "Chọn X" / "a) Đúng." / dòng "Đáp án:" / dòng KẾT LUẬN của lời giải. File không có ⇒ để trống.
+3. **Hai nguồn đáp án lệch nhau ⇒ không tự chọn im lặng**: ghi cảnh báo vào câu (người duyệt thấy), nêu bằng chứng nếu soi được.
+   (Đo 28/09 + 01/10: gạch chân đúng, "Chọn X" của tác giả hay sai.)
+4. **Dạng: chắc thì gán, không chắc thì để trống** (⇒ dạng chờ). Đề VẪN vào — đề luôn dùng được, chỉ cảnh báo (K6).
+5. **Trùng câu đã có trong kho ⇒ trỏ về câu cũ** (script tự làm), không đẻ bản sao.
+6. **Chạy thử trước, ghi sau.** `ghi.mjs` không có `--ghi` = ghi trong transaction rồi ROLLBACK + in tóm tắt.
+7. Sửa chuỗi có LaTeX (`\left`, `\right`…) bằng **Write/Edit tool**, KHÔNG heredoc/`node -e` (shell nuốt dấu `\` ⇒ `$left( P ight)$`).
 
 ## Flow
 
-### Bước 1: `list`
+Thư mục thả đề: `E:\BK ACADEMY\Tài liệu Claude nhập kho\DE_THI\L$ARGUMENTS\` (hoặc CEO đưa đường dẫn). Thư mục làm việc:
+`<KHO_LAM_VIEC>/de-thi/<TEN_NGAN>/` (mặc định `C:\Users\<user>\bk-kho-lam-viec\de-thi\…`).
+
+### Bước 1 — Chép file về thư mục làm việc
+
+`goc.docx` (nếu có bản Word) và `goc.pdf` (nếu có). **Có Word ⇒ Word là nguồn chữ** (bộ đọc thẳng: công thức MathType chính xác,
+đọc được gạch chân); PDF là bản đối chiếu + được đính kèm làm "đề gốc". **Chỉ có PDF ⇒ đi Bước 2-PDF** (Gemini gõ, Claude kiểm).
+
+### Bước 2 — Bóc (máy, 0 AI)
 
 ```bash
-node scripts/nhap_de_thi.mjs list --khoi $ARGUMENTS
+node scripts/kho/de-thi/boc-word.mjs "<work>/goc.docx" --ra "<work>" --khoi $ARGUMENTS
 ```
 
-Script tự tạo folder `E:\BK ACADEMY\Tài liệu Claude nhập kho\DE_THI\L$ARGUMENTS\` nếu chưa có. Trả JSON `{ khoi, root, files: [...] }`. Skip file có `seen_before=true && prev_log.ghi_chu = "de_thi:TDxxxxx"`.
+Ra `<work>/de.json` + `<work>/img/` và in tóm tắt: số câu / phần, bao nhiêu câu có đáp án, **danh sách cảnh báo**.
+Máy đã: tách phần + câu · tách 4 phương án / 4 mệnh đề · lấy đáp án · ghép phần ĐỀ ↔ phần LỜI GIẢI và so nội dung làm nhân chứng.
+Số câu không đúng khuôn (12 + 4 + 6 hoặc theo tiêu đề phần) ⇒ dừng, tìm nguyên nhân trước khi đi tiếp.
 
-### Bước 2: mỗi file — đọc PDF, parse metadata
-
-Read PDF trang 1-2 (`pages="1-2"`) → parse:
-- **Tên đề**: tiêu đề trên trang bìa (VD "ĐỀ THAM KHẢO KỲ THI TỐT NGHIỆP THPT NĂM 2025 — MÔN TOÁN — MÃ ĐỀ 0104")
-- **Nguồn**: `bgd` (Bộ) | `so` (Sở) | `cum_chuyen_mon` | `thi_thu` (trường tự tổ chức) | `le` (không rõ)
-- **Mã đề**: nếu có (VD "0104")
-- **Năm**: 2025
-- **Khối**: `$ARGUMENTS`
-- **Thời gian làm bài**: (VD "90 phút")
-- **Cấu trúc phần**: từ đề bài, VD:
-  ```
-  PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn... (12 câu × 0.25 điểm)
-  PHẦN II. Câu trắc nghiệm đúng sai... (4 câu × 1.0 điểm)
-  PHẦN III. Câu trắc nghiệm trả lời ngắn... (6 câu × 0.5 điểm)
-  ```
-
-Ghi metadata ra `<scratchpad>/de_<sha8>_meta.json`. Nhắc CEO nhìn 1 lần trước insert.
-
-### Bước 3: đọc toàn bộ đề, bóc câu
-
-Read PDF full (pages theo trang). Với mỗi câu:
-- **`thu_tu`**: 1..N (theo thứ tự trong đề — KHÔNG reset theo phần).
-- **`phan`**: `I` | `II` | `III` | `IV`.
-- **`mon_con`**: `dai` (đại số/giải tích) | `hgt` (hình học không gian tọa độ). Xem câu: có `\vec{}`, mặt phẳng, mặt cầu, đường thẳng trong KG ⇒ `hgt`; hàm số, đạo hàm, tích phân, cực trị, tiệm cận, xác suất ⇒ `dai`.
-- **`diem`**: null nếu = `diem_moi_cau` của phần (mặc định). Chỉ set khác khi đề ghi khác.
-- **`cau`**: payload câu **y hệt format `nhap_kho.mjs insert`** — {dang_chinh, loai_cau, noi_dung, lua_chon, dap_an, loi_giai, ten_de_goc,...}. `nguon="de_thi"`, `nguon_giai="nguoi"` mặc định. `ten_de_goc` = basename file bỏ đuôi.
-
-Gán `dang_chinh` theo bản đồ (`dai_ban_do` hoặc `hgt_ban_do`, khối = `$ARGUMENTS`) — cùng quy trình chống đoán bừa như `/nhap-kho`. Không chắc câu nào ⇒ dừng, `fail` file, hỏi CEO.
-
-Ghi mảng câu ra `<scratchpad>/de_<sha8>_cau.json`.
-
-### Bước 4: `insert` (atomic 1 tx cho cả đề)
+### Bước 2-PDF — Đề CHỈ CÓ PDF (spec §10.8): Gemini là máy gõ, Claude là người kiểm
 
 ```bash
-node scripts/nhap_de_thi.mjs insert \
-  --meta <scratchpad>/de_<sha8>_meta.json \
-  --cau  <scratchpad>/de_<sha8>_cau.json
+node scripts/kho/de-thi/boc-pdf.mjs "<file.pdf>" --ra "<work>" --khoi $ARGUMENTS
 ```
 
-Script làm 3 việc trong 1 transaction:
-1. INSERT `toan_de_thi` → nhận `de_id` (VD `TD00042`).
-2. Group câu theo `mon_con` → INSERT từng nhóm vào `<mon_con>_cau_hoi` (reuse `_kho_insert.mjs`).
-3. INSERT `toan_de_thi_cau` (de_id, thu_tu, phan, ma_cau_dai/ma_cau_hgt, diem).
+~3–5 phút / đề 15 trang, khoảng 4–5 nghìn đồng tiền Gemini (key `VITE_GEMINI_KEY` trong `.env.local`). Máy làm: ảnh từng trang (`trang/`, và
+`trang-dd/` 250 dpi) · lớp chữ PDF (`lop-chu.txt`) · **lượt 1 BÓC** (chép câu) · **lượt 2 MỤC LỤC** (đếm câu + đáp án, độc lập) ·
+**lượt 3a** hình + vị trí nhãn câu trên ảnh từng trang (hình thuộc câu nào do máy TÍNH theo vị trí) · **lượt 3b** chữ cái bị gạch chân /
+khoanh trên ảnh 250 dpi · so chéo các lượt + so chữ với lớp chữ PDF · cắt hình thẳng từ PDF. Ra `de.json` cùng khuôn bản Word, cảnh báo ghi
+vào từng câu, tóm tắt ở `boc-pdf.bao-cao.json`.
 
-Trả `{ ok, de_id, so_cau, ma_cau_list }`. Fail giữa chừng ⇒ **ROLLBACK cả** (đề chưa tạo, câu chưa insert vào kho, không có rác nửa vời).
+**Sau đó Claude PHẢI kiểm bằng mắt — đây là lý do bỏ đường "Gemini trong ERP" (đọc sai là sai luôn):**
 
-Ghi `de_id` ra `<scratchpad>/de_<sha8>_id.txt`.
+1. Mở **từng** `trang/p-NN.png` (Read tool), so **từng câu** với `de.json`: chữ, công thức (dấu âm, mũ, chỉ số, phân số, hệ phương trình),
+   đủ 4 phương án / đủ ý a–d, không sót không thừa câu. PDF scan (không lớp chữ) thì đây là nhân chứng DUY NHẤT.
+2. **Đáp án** — mỗi câu trắc nghiệm tự nhìn chữ cái bị GẠCH CHÂN / khoanh (ảnh `trang-dd/`), kể cả câu máy không báo gì: lượt 3b bắt sót
+   (đo 01/10: thấy 7/12), và cả hai lượt đọc file đều chép "Chọn X" của lời giải. Gạch chân ≠ "Chọn X" ⇒ không tự chọn im lặng: soi được thì
+   ghi lý do, không thì để cảnh báo cho người duyệt. File không thể hiện đáp án ⇒ để trống (không tự giải).
+3. Mở từng ảnh trong `img/`: đúng hình của câu, không cụt, không dính chữ. Sai ⇒ sửa `box` (hoặc `nhan_cau`) trong `gemini-trang.json` rồi
+   chạy lại `boc-pdf.mjs … --dung-lai` (cắt lại, **không** gọi lại Gemini). Hình trong phần lời giải không cắt.
+4. Xử lý hết dòng `⚠` máy in ra. Mọi sửa ghi vào `quyet.mjs` như bước 3 (chạy lại được: `boc-pdf --dung-lai` → `quyet`).
 
-### Bước 5: `done`
+Giới hạn đã biết: PDF > 18 MB hoặc câu trả lời bị cắt (đề + lời giải quá dài) ⇒ tách file. Câu đã có trong kho từ nguồn khác (vd bản Word)
+thường KHÔNG được nhận là trùng vì LaTeX hai nguồn viết khác nhau (`(S)` ↔ `\left( S \right)`) ⇒ đừng nhập cùng một đề từ cả hai nguồn.
 
-```bash
-node scripts/nhap_de_thi.mjs done \
-  --file "<path>" \
-  --sha <sha256> \
-  --de-id <de_id>
-```
+### Bước 3 — Claude xử lý phần cần phán đoán (viết thành `<work>/quyet.mjs`, mỗi sửa 1 dòng lý do)
 
-Script:
-1. Verify sha256 file khớp.
-2. Đếm câu đã link (`toan_de_thi_cau` where `de_id`) → ghi `nhap_kho_log(so_cau_moi, ma_cau_list, ghi_chu="de_thi:TDxxxxx")`.
-3. Move file → `<root>/DE_THI/DaXuLy/<YYYY-MM-DD>/<name>`.
+Viết bằng **Write tool** một script nhỏ sửa `de.json` (mẫu: `bk-kho-lam-viec/de-thi/DE_SO_3/quyet.mjs`). Chạy lại được: `boc-word` → `quyet`.
 
-### Bước 6: báo cáo
-
-Sau khi quét hết:
-- N đề đã nhập — mỗi đề: `de_id`, tên, năm, khối, nguồn, số câu (X đại + Y hình).
-- Q file skip (đã có trong log).
-- F file fail — kèm lý do.
-- Nhắc CEO: pha sau sẽ có màn "Duyệt đề" (chưa làm đợt này). Đợt này chỉ nhập kho.
-
-## Xử lý lỗi
-
-| Lỗi | Xử |
+| Việc | Cách |
 |---|---|
-| `check constraint "toan_de_thi_khoi_check"` | `meta.khoi` phải là '10'/'11'/'12' (text, không phải số) |
-| `check constraint "toan_de_thi_nguon_check"` | `meta.nguon` phải ∈ bgd/so/cum_chuyen_mon/thi_thu/le |
-| `check "toan_de_thi_cau_1_of_2_check"` | Câu phải trỏ ĐÚNG 1 trong 2 (dai hoặc hgt). Xem lại `mon_con` |
-| `duplicate key "toan_de_thi_cau_thu_tu_uniq"` | 2 câu cùng `thu_tu` trong cùng đề — sửa JSON |
-| `insert or update ... violates foreign key "..._ma_cau_dai_fkey"` | Câu chưa insert vào `dai_cau_hoi` nhưng đã link — bug script, báo tôi |
+| `ten` đề | Đặt tên đủ ngữ cảnh để tìm trong Kho đề thi (nguồn · chương · số đề) |
+| Cảnh báo "hình WMF/EMF" | Mẩu công thức lưu dạng ảnh: đọc từ lớp chữ PDF (`pdftotext -layout`) hoặc ảnh trang, thay bằng LaTeX; ghi lại trong `canh_bao` là đã thay |
+| TLN chưa có đáp số | Rút từ dòng kết luận của lời giải (`dap_an_nguon='ket_luan_loi_giai'`, ghi trích dẫn vào `canh_bao`). Không có lời giải ⇒ để trống |
+| Đáp án 2 nguồn lệch | Giữ cảnh báo; soi được thì ghi lý do chọn |
+| `kho` từng câu | `hgt` = mặt phẳng / đường thẳng / mặt cầu / góc / khoảng cách trong Oxyz · `dai` = còn lại (kể cả vectơ + hệ trục toạ độ lớp 12) |
+| `dang` từng câu + từng mệnh đề Đ/S | Theo bản đồ khối đó (`<kho>_ban_do`); mệnh đề phải cùng kho với câu cha. Không khớp rõ ⇒ `null` |
 
-## Chưa làm trong pha này (nhắc CEO)
+Đọc bản đồ: query `select ma_dang, ten_chuyen_de, ten_dang from <kho>_ban_do where khoi='$ARGUMENTS' order by 1` (chỉ đọc).
 
-- **Màn "Duyệt đề"** (đối xứng "Duyệt câu"): CEO xem đề, đổi tag, publish. Pha 2.
-- **HS thi trên app**: `luot_thi`, `luot_thi_dap_an`, chấm auto, xếp hạng. Pha 2.
-- **Đề tự soạn của GV** (mini quiz từ kho câu): CEO đã chốt chưa làm đợt này.
-- **KHTN/Văn/Anh**: hold. Khi mở lại, template đối xứng — thêm `khtn_de_thi` / `van_de_thi` / `anh_de_thi` bằng migration mới.
+### Bước 4 — Chạy thử + cho người ngồi cùng xem tóm tắt
+
+```bash
+node scripts/kho/de-thi/ghi.mjs "<work>"
+```
+
+In bảng 1 dòng/câu: kho · mã câu sẽ cấp · dạng · đáp án · điểm · ghi chú (TRÙNG câu cũ / cảnh báo). Kiểm: tổng điểm = 10 với đề đúng khuôn;
+số câu trùng có hợp lý không. **Dừng ở đây cho CEO/học thuật xem khi có điều bất thường.**
+
+### Bước 5 — Ghi thật
+
+```bash
+node scripts/kho/de-thi/ghi.mjs "<work>" --ghi
+```
+
+1 transaction: câu → kho · đề + phần + câu · `nhap_kho_log` (sha256 ⇒ chạy lại báo "đã có", không nhân đôi). Ảnh → bucket `kho-anh`, PDF gốc → `kho-tailieu`.
+
+### Bước 6 — Kiểm trên ERP rồi báo cáo
+
+Mở Nhập kho › 📝 Đề thi › tab Chờ duyệt › tìm tên đề › mở: đủ câu, công thức render, hình hiện (KHÔNG tự bấm ✅ Duyệt đề — việc của người duyệt). Báo CEO: tên đề · số câu theo kho ·
+số câu / mệnh đề còn dạng chờ · các cảnh báo cần người duyệt xem · `tai_lieu.id`.
+
+## Khuôn `de.json` (để tự dựng khi nguồn không phải Word)
+
+```
+{ file, sha256, ten, khoi, mon:"Toán", nguon, nam, thoi_gian_phut:90, thang_diem:10,
+  phan: [{ thu_tu:1, ten, dang_thuc:"trac_nghiem"|"dung_sai"|"tra_loi_ngan", diem_moi_cau }],
+  cau:  [{ phan, so, loai_cau, noi_dung, lua_chon:[4 chuỗi]|null, dap_an, dap_an_nguon,
+           menh_de:[{chu, noi_dung, dap_an:"D"|"S", loi_giai, dang}]|null, loi_giai,
+           anh:[tên file trong img/], anh_giai:[…], kho:"dai"|"hgt", dang:"T3…"|null, canh_bao:[…] }] }
+```
+
+## Chưa có (spec §10.4)
+
+Đã có: lát B (Kho đề thi ở Nhập kho › Đề thi) · lát C (gán đề vào buổi thành Giáo trình / BTVN, kiểm tra, ô trả lời ngắn 4 ô) · lát D (`boc-pdf.mjs`).
+Chưa có: đề tự luận / đề không theo khuôn 3 phần · hình trong lời giải của đề PDF · nhận trùng câu giữa nguồn Word và nguồn PDF.

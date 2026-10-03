@@ -334,3 +334,137 @@ Thả file vào  E:\BK ACADEMY\Tài liệu Claude nhập kho\DE_THI\L<khối>\  
 | Sau | Tự động hoá (chạy nền, kiểm độc lập, gợi ý dạng theo hồ sơ dạng — `spec-luong-kho.md`) · tải file ngay trên ERP · đề tự luận / lớp dưới | | |
 
 Lát A–C không phụ thuộc bản đồ kiến thức, không phụ thuộc skill gán dạng / gán mẫu (đã GÁC 01/10).
+
+### 10.5 Chốt thêm 01/10 (vòng 2) — nơi lưu + cách dùng đề
+
+| # | Quyết định CEO | Hệ quả |
+|---|---|---|
+| K1 | **Màn riêng "Kho đề thi"**, 3 tab: **Chờ duyệt** (đề vừa nhập, còn thiếu gì → mở Duyệt đề) · **Sẵn sàng** (đã duyệt: xem · in · Giao) · **Đã giao** (từng lượt: lớp · ngày · chế độ · số em nộp → kết quả · thu bài · mở đáp án) | Kho tài liệu vẫn liệt kê đề như cũ; Kho đề thi là chỗ làm việc chính |
+| K2 | Câu của đề **duyệt 1 cửa = Duyệt đề** (duyệt đề ⇒ mọi câu của đề `da_duyet`). Vẫn hiện ở màn Duyệt câu của kho cho ai duyệt lẻ | Hàng đợi theo ĐỀ, không theo câu (đang có 5.655 câu Đại + 719 câu HGT nguồn đề thi chưa duyệt) |
+| K3 | **1 đề, 3 cách giao** — chọn lúc bấm Giao: **Kiểm tra** (đồng hồ, khoá đáp án tới khi GV mở, ẩn gợi ý, mastery như ET, HS thấy ở "Làm đề thi thử") · **Luyện tập trên lớp** (không đồng hồ, đáp án hiện sau khi nộp, có gợi ý, mastery như bài trên lớp) · **BTVN** (hạn nộp, đáp án sau khi nộp, mastery như BTVN, HS thấy ở ô BTVN) | KHÔNG thêm loại bài: map sang `bai_test.loai` sẵn có `de_thi` / `giao_trinh` / `btvn` ⇒ app HS, chấm, mastery không viết lại. Kiểm tra đã build 27/09; 2 chế độ kia = thêm lựa chọn ở `fn_de_thi_mo` |
+| K4 | Bản đầu **chỉ giao CẢ ĐỀ**. Dùng câu lẻ ⇒ nhặt từ kho qua Làm tài liệu như mọi câu | |
+| K5 | **Trả lời ngắn GIỮ FORM ĐỀ GỐC: 4 ô, chỉ điền số / ký tự / dấu — đúng luật phiếu trả lời thi THPT** (CEO: "đọc kĩ luật thi thpt") | **Thay quyết định #2 (20/09) và §3.4 cho ĐỀ THI:** Phần III không đổi sang MCQ nữa ⇒ gỡ nút cổ chai §8.1 (đề không còn phải chờ sinh form MCQ); `fn_de_thi_thieu` bỏ điều kiện "TLN chưa có phương án MCQ". Phải đọc quy định phiếu TLTN của Bộ trước khi làm ô nhập + luật so đáp án (lát C). Luật "bổ trợ chỉ MCQ" (19/09) KHÔNG đổi — đó là luồng khác |
+
+Thứ tự lát sau khi chốt: **A** nhập `DE SO 3` → **B** màn Kho đề thi (tab Chờ duyệt + Duyệt đề) → **C** nút Giao 3 chế độ + ô TLN 4 ô + tab Đã giao → **D** đề chỉ có PDF.
+| K6 | **Đề LUÔN dùng được kể cả khi chưa gán đủ dạng — chỉ CẢNH BÁO, không chặn.** Câu chưa có dạng vẫn lưu kết quả làm bài; sau này gán dạng thì **mastery của HS cập nhật theo** (CEO 01/10) | (a) `fn_de_thi_thieu`: "dạng chờ" / "mệnh đề dạng chờ" chuyển từ CHẶN sang CẢNH BÁO; chỉ còn chặn thứ làm bài không chấm được (thiếu đáp án, câu đã vào kho rác). (b) Hiện DB **chặn `da_duyet` khi câu còn dạng chờ** (`trg_chan_duyet_dang_cho`) ⇒ "Duyệt đề" và "Giao" phải tách khỏi việc duyệt DẠNG: duyệt đề = xác nhận nội dung + đáp án; câu dạng chờ vẫn giao được, chưa vào `kho_chuan` cho tới khi có dạng. (c) Mastery phải lấy dạng theo **`ma_cau` → dạng HIỆN TẠI của câu trong kho**, không theo `ma_dang` chụp lúc phát hành ⇒ gán dạng sau là kết quả cũ tự rơi vào đúng ô (HS × dạng), không cần chạy lại. Thiết kế chi tiết ở lát C — phải đo `bai_test_cau.ma_dang` đang được dùng ở những hàm mastery nào trước khi sửa |
+
+### 10.6 Chốt 01/10 (vòng 3) — Kho đề thi nằm ở "Nhập kho › Đề thi", THAY đường cũ · ĐÃ BUILD lát B
+
+CEO: *"Tính năng này giống 'Nhập kho từ tài liệu — Chuyên đề và Đề thi'. Đọc 2 cái giống khác nhau thế nào để tối ưu rồi thay thế. Kết quả t muốn đề
+lưu ở đây và sửa ở đây là chính. Ra Kho tài liệu chỉ để in thôi."* · *"Xoá luôn [nút Nhập đề thi từ PDF]. T định bỏ luồng nhập thẳng PDF ở đấy mà đưa
+vào folder chỉ định và Claude chạy. Claude vẫn gọi Gemini để OCR nhưng Claude có kiểm tra lại, thay vì ở ERP lỗi là lỗi luôn."*
+
+| So sánh | Tab cũ "Nhập đề thi" (Gemini trong trình duyệt) | Luồng mới |
+|---|---|---|
+| Máy đọc | Gemini từng trang, trong tab; lỗi bịa câu khi lời giải tràn trang, cắt hình sai, mất đáp án | Claude ở máy công ty: Word đọc thẳng; PDF = Gemini OCR + Claude kiểm lại (lát D) |
+| Người rà | TRƯỚC khi lưu, trạng thái nằm trong tab (đóng là mất) | SAU khi lưu: đề đã ở ERP, chưa duyệt; bỏ dở quay lại được |
+| Câu chưa có dạng | bị BỎ khỏi đề | vào dạng chờ, đề đủ câu |
+| Đúng/Sai | 1 chuyên đề cho cả câu, đóng cùng 1 dạng vào 4 ý | mỗi mệnh đề 1 dạng |
+| Sửa đề | 3 nơi (danh sách thẻ · màn sửa 1 dòng/câu · màn Duyệt không sửa được nội dung) | 1 màn |
+
+| Quyết định | Đã làm (01/10) |
+|---|---|
+| **Kho đề thi = tab "Đề thi" của màn Nhập kho** — nơi lưu + sửa chính | `KhoDeThi.tsx`: 3 tab Chờ duyệt / Sẵn sàng / Đã giao (đếm + danh sách ở `fn_de_thi_dem` / `fn_de_thi_ds`), lọc khối, tìm tên, cột tình trạng (thiếu đáp án · chưa đủ dạng · ghi chú lúc nhập), nhớ vị trí khi quay lại |
+| **Gộp Sửa đề + Duyệt đề thành MỘT màn** | `DeThiSoan`: bố cục giấy; sửa tại chỗ nội dung / phương án / đáp án / lời giải / hình (dùng lại `CauEditor` của kho) · dạng của câu · **dạng từng mệnh đề Đ/S** · ghi chú của máy lúc nhập (`cau_hinh.deThi.canhBaoCau`) · đề gốc PDF cạnh bên · ↑ ↓ đổi thứ tự · ✕ bỏ câu · thêm câu có sẵn trong kho · thêm/xoá phần · thông tin đề · Duyệt · Giao · In · các lượt đã giao |
+| **Xoá đường nhập PDF bằng Gemini trong ERP** | Gỡ `NhapDeThiWizard`, `BocCauModal`, `bocDeTuFile`, `DungSaiBoc`, màn sửa cũ (DeThiScreen.tsx 799 → 9 dòng) và `DuyetDeView`/`TLNDuyet` (đã gộp). Giữ prompt/schema bóc đề ở `lib/kho/api.ts` (script test còn dùng; lát D có thể dùng lại) |
+| **Kho tài liệu chỉ để in đề** | Dòng đề thi chỉ còn In / In nhanh / Copy link; bỏ Sửa · Nhân bản · Xoá |
+| **K5 + K6 vào luật DB** (mig `202610011501`) | `fn_de_thi_thieu`: chưa có dạng = cảnh báo, bỏ điều kiện "TLN chưa có 4 phương án"; `fn_de_thi_duyet`: câu/ý còn dạng chờ không đóng dấu `da_duyet` nhưng không làm hỏng việc duyệt đề. TLN trên màn = ô đáp số + kiểm "tô được trên phiếu 4 ô" |
+| Tab Nhập chuyên đề | Để nguyên, thay theo cùng khuôn sau |
+
+Còn lại: **C** — Giao 3 chế độ (kiểm tra / luyện tập / BTVN), ô trả lời ngắn 4 ô trên app HS + luật so đáp số, mastery lấy dạng theo `ma_cau` (K6c) ·
+**D** — đề chỉ có PDF (Gemini OCR + Claude kiểm) · xoá đề trong Kho đề thi (chưa có nút; theo Luật xoá) · soạn câu MỚI bằng tay ngay trong đề.
+
+### 10.7 Lát C — GÁN đề vào buổi của lớp (CEO 01/10, vòng 4) · ĐÃ BUILD
+
+CEO: *"Cần có chức năng gán giống tài liệu. Mỗi lớp có 3 loại tài liệu: Giáo trình, ET, BTVN. Khi gán đề thi kiểu này thì nó sẽ là giáo trình
+hoặc BTVN. Phải khớp với hệ thống hiện tại."* ⇒ K3 đổi cách hiện thực: "luyện tập trên lớp" và "BTVN" KHÔNG phải hai chế độ riêng của đề,
+mà là **đề được gán thành tài liệu của buổi** — đúng hai loại tài liệu lớp vốn có.
+
+| Bấm 📱 Giao, chọn | Chuyện gì xảy ra | Sau đó đi đường nào |
+|---|---|---|
+| **📘 Bài trên lớp** | `fn_de_thi_gan(đề, lớp, ngày, 'giao_trinh_buoi')` đẻ 1 tài liệu **Giáo trình buổi** bám (lớp + ngày) | Y như giáo trình trích xuất: Kho tài liệu · in phiếu (`PrintView`) · 📱 mở app (`phatHanhTest` → `bai_test.loai='giao_trinh'`) · xem live · chuông báo yếu |
+| **📝 BTVN** | như trên, loại `'btvn'` | Y như BTVN của buổi: in phiếu có tên HS · chấm BTVN buổi sau · hạn nộp `han_nop_bai_test` · mở app (`loai='btvn'`) |
+| **⏱ Kiểm tra** | `fn_de_thi_mo` — lượt thi tính giờ, giấu đáp án (không tạo tài liệu của buổi) | "Làm đề thi thử" trên app · bảng kết quả từng lượt |
+
+- **Khuôn tài liệu gán** (để mọi chỗ đang đọc Giáo trình/BTVN đọc được ngay, không dạy lại): mốc `buoi` (tiêu đề = tên đề, số buổi của lớp do
+  `renumberBuoiLop` đánh) + **mỗi PHẦN của đề = một phần** `dang` (bài trên lớp) / `btvn` (về nhà), `ref_ma` TRỐNG (phần của đề không trỏ một
+  dạng — dạng nằm ở từng câu), `nguon_id` = đề, `cau_hinh` chép từ đề (`nhanhByCau`, `deThi`) + `etFormByCau[câu trả lời ngắn]='tra_loi_ngan'`.
+  Chỗ phải dạy thêm chỉ có 3: đầu card bản in lấy tên phần khi không có mã dạng · chuông "báo yếu" lấy dạng theo câu · Kho tài liệu không mở
+  builder theo-dạng cho tài liệu gán từ đề (sửa ở Kho đề thi rồi gán lại).
+- **Bản gán là BẢN CHÉP** (như MT gán buổi, như trích xuất giáo trình): sửa đề sau đó không đổi bản đã gán. 1 buổi chỉ 1 Giáo trình + 1 BTVN
+  (`uq_tai_lieu_van_hanh`) ⇒ buổi đã có thì hàm TỪ CHỐI và nêu tên bản đang có — không tự thay.
+- **Điều kiện gán / mở kiểm tra:** đề đã duyệt + không còn câu thiếu đáp án. Lớp phải CÙNG MÔN với đề (§1.6). Câu chưa có dạng không cản (K6).
+- **K5 trên app:** cột `bai_test_cau.kieu_nhap='phieu_4o'` cho câu trả lời ngắn có đáp số tô được trên phiếu (`_de_thi_hop_le_4o`); app HS hiện
+  4 ô + bàn phím riêng (0–9, −, phẩy) ở cả chế độ làm-chấm-ngay lẫn chế độ thi. `fn_de_thi_mo` thôi đổi trả lời ngắn sang 4 phương án, thôi chặn.
+  Chấm chế độ thi so thêm theo `fn_tln_normalize` (23,9 = 23.9).
+- **K6 trên phép đo:** câu còn dạng chờ ⇒ `bai_test_cau.ma_dang` để TRỐNG (không áp dụng — không tính cho dạng nào, không phải điểm 0; dạng chờ
+  mà lọt vào mastery sẽ thành một "dạng yếu" giả, kéo cả bổ trợ). Gán dạng thật cho câu ⇒ trigger `trg_de_thi_dien_dang` điền vào mọi bài đã
+  phát hành từ đề ⇒ mastery (suy động) tự có thêm lần đo. Chỉ điền chỗ trống, không đổi dạng đã có.
+- **Bài trên lớp từ đề mở sẵn CẢ ĐỀ** trên app (giáo trình thường mở từng dạng theo nhịp dạy; đề luyện là làm cả đề) — GV vẫn đóng/mở lẻ từng câu
+  ở màn live như cũ.
+- **Kho đề thi:** tab "Đã giao" + cột "đã giao" tính cả buổi đã gán; màn đề có bảng **"Đã gán vào buổi của lớp"** (lớp · ngày · loại · đã mở app
+  chưa · mấy em đã làm · 🖨 In phiếu · 📱 Mở trên app).
+- Một hàm cho việc "hoàn thiện bài test phát hành từ đề": `fn_de_thi_hoan_thien_bai_test` (ô 4 ký tự · bỏ dạng chờ khỏi phép đo · tên phần ·
+  mở sẵn câu) — lượt thi gọi trong `fn_de_thi_mo`, tài liệu gán gọi sau `phatHanhTest`.
+
+Chưa làm / biết trước: mastery theo TỪNG MỆNH ĐỀ của câu Đúng/Sai (hiện câu Đ/S tính cho dạng của câu, đúng một phần = 0,5) · đổi ngày / xoá bản
+gán ngay trong Kho đề thi (đang làm ở Kho tài liệu) · gán một PHẦN của đề (K4: bản đầu chỉ cả đề).
+
+### 10.8 Lát D — đề CHỈ CÓ PDF: Gemini gõ, Claude kiểm (CEO 01/10) · ĐÃ BUILD script, đã đo trên 1 đề
+
+CEO: *"Đưa vào folder chỉ định và Claude chạy. Claude vẫn gọi Gemini để OCR nhưng Claude có kiểm tra lại, thay vì ở ERP lỗi là lỗi luôn."*
+
+`node scripts/kho/de-thi/boc-pdf.mjs "<file.pdf>" --ra <work> --khoi 12` → `de.json` CÙNG KHUÔN bản Word ⇒ từ đó đi tiếp y hệt lát A
+(`quyet.mjs` → `ghi.mjs` chạy thử → `--ghi` → Kho đề thi tab Chờ duyệt). Thư mục thả đề: `…\Tài liệu Claude nhập kho\DE_THI\L<khối>\`.
+
+| Lượt | Đầu vào | Việc | Vì sao tách riêng |
+|---|---|---|---|
+| 1 BÓC | cả file PDF | chép từng câu: đề, phương án / mệnh đề, đáp án NẾU file thể hiện, lời giải | — |
+| 2 MỤC LỤC | cả file PDF | chỉ đếm: phần, số câu, trang, đáp án theo 2 nguồn (đánh dấu · chữ lời giải) | nhân chứng độc lập về SỐ CÂU + ĐÁP ÁN |
+| 3a HÌNH | ảnh từng trang 150 dpi | khung từng hình + toạ độ nhãn "Câu N" + toạ độ tiêu đề phần lời giải | đọc cả file thì BỊA vị trí hình; "hình của câu nào" máy TÍNH theo vị trí, không hỏi Gemini |
+| 3b ĐÁNH DẤU | ảnh từng trang 250 dpi | một việc duy nhất: chữ cái phương án nào bị gạch chân / khoanh / tô | đọc cả file không thấy nét gạch chân |
+| máy kiểm | — | số câu liên tục · đủ 4 phương án / 4 ý · `$` cân · đáp số tô được 4 ô · các lượt lệch nhau · chữ từng câu so với LỚP CHỮ PDF | nhân chứng không-AI (chỉ khi PDF có lớp chữ) |
+| **Claude kiểm** | ảnh trang | so từng câu bằng mắt, tự soi gạch chân từng câu trắc nghiệm, mở từng hình đã cắt; sửa bằng `quyet.mjs` | **bắt buộc** — xem số đo dưới |
+
+**Đo 01/10 trên `DE SO 3` (PDF xuất từ Word, 15 trang, có bản Word làm chuẩn so):** ~4 phút, ≈ 0,17 USD.
+- Chữ: 22/22 câu, đúng 12 + 4 + 6, tổng 10 điểm; nội dung khớp bản Word (khác nhau chỉ ở kiểu viết LaTeX: `(S)` ↔ `\left( S \right)`,
+  `\vec{i}` ↔ `\overrightarrow{i}`); 0 câu lệch lớp chữ.
+- Đáp án: 21/22 đúng ngay. Câu sai = P1 câu 6: chữ **B gạch chân**, lời giải ghi "Chọn C" (tác giả gõ nhầm) — lượt 1 và lượt 2 đều chép "C"
+  dù đã dặn tách 2 nguồn. Lượt 3b bắt được ("gạch chân B") ⇒ máy nêu cờ lệch nguồn; nhưng 3b **bắt sót** (thấy 7/12 câu, chạy khác lần
+  thì khác) ⇒ không thay được mắt Claude; script in danh sách câu máy CHƯA soi được để Claude soi nốt.
+- Hình: bản đầu (lấy khung từ lượt 1) sai nặng — báo 3 hình ở trang chỉ có 1, khung ăn 2 dòng chữ / cụt đáy. Sau khi chuyển sang 3a +
+  gắn câu theo vị trí: 5/5 hình của đề đúng câu, khung sát. 6 ô "phiếu trả lời" in cuối đề suýt bị gắn vào câu cuối ⇒ luật: trang sau câu
+  cuối mà hình không đứng dưới nhãn câu nào thì KHÔNG tự gắn.
+- `ghi.mjs` chạy thử (ROLLBACK) nhận `de.json` này bình thường: 22 câu, 10 điểm.
+
+**Chưa giải quyết (biết rõ):**
+1. **Trùng câu khác nguồn:** chạy thử ghi bản PDF của đề đã nhập từ Word ⇒ chỉ 1/22 câu được nhận là "trùng câu cũ" (LaTeX hai nguồn viết
+   khác) ⇒ nhập cùng một đề từ hai nguồn sẽ đẻ 21 bản sao. Việc cần làm: chuẩn hoá LaTeX trước khi so trùng trong `_kho_insert.mjs`.
+2. Chưa đo trên **PDF scan** (không lớp chữ) và trên đề của Sở chỉ có bảng đáp án cuối đề — hai loại đề lát này sinh ra để phục vụ.
+3. Đề có câu Đúng/Sai mà file KHÔNG có đáp án: `ghi.mjs` hiện chặn ("mệnh đề thiếu đáp án") ⇒ đề không vào được để người điền sau.
+4. Hình trong phần lời giải không cắt. Đề + lời giải quá dài làm lượt 1 bị cắt (script dừng, báo tách file).
+
+### 10.9 Phát hành 2 CHẾ ĐỘ cho bài trên lớp (CEO 02/10) · ĐÃ BUILD
+
+CEO: *"Phát hành nên có 2 chế độ: phát hành TOÀN BỘ — giống buổi hôm qua, thường là thi và luyện tập; và phát hành TỪNG PHẦN — dành cho buổi học."*
+
+| Chế độ | Dùng khi | Lúc phát hành | Sau đó |
+|---|---|---|---|
+| **Từng phần** (mặc định) | buổi học | chỉ PHẦN ĐẦU mở | GV bấm **▶ Phát hành** ở đầu từng phần trong tab **Live** của buổi; bấm lại = thu hồi; **▶▶ Mở toàn bộ** nếu muốn mở hết |
+| **Toàn bộ** | luyện tập | mở sẵn mọi câu | học sinh làm theo nhịp của mình |
+
+- Chỉ **bài trên lớp** (`bai_test.loai='giao_trinh'`) có khái niệm mở dần. **Kiểm tra, ET, BTVN luôn mở cả bài** — không đổi.
+- **"Phần" là gì:** bài gán từ ĐỀ THI → Phần I / II / III của đề (mở theo CÂU; không mở theo dạng vì một dạng rải ở nhiều phần của đề, mở theo dạng là
+  lộ câu phần sau). Giáo trình thường → DẠNG, y như từ 13/09 (thêm nút "Mở toàn bộ" ở tab Live).
+- **Chọn chế độ ở đâu:** hộp 📱 Giao › Bài trên lớp › tick "Mở cho học sinh làm trên app" (2 lựa chọn) · bảng "Đã gán vào buổi của lớp"
+  (📱 Mở từng phần / 📱 Mở toàn bộ; bài đã mở từng phần có ▶▶ Mở toàn bộ).
+  **Chỗ chọn CHÍNH = nút 📱 ở Kho tài liệu** (CEO 02/10: "chọn chế độ phát hành là phải chọn từ kho tài liệu"): bấm 📱 trên dòng Giáo trình buổi ⇒ hộp 2 lựa chọn
+  Từng phần / Toàn bộ, áp cho CẢ giáo trình thường lẫn bài gán từ đề. BTVN · ET bấm 📱 là phát hành cả bài như cũ.
+- **Không có cột "chế độ":** chế độ chỉ quyết định lúc phát hành mở những gì; trạng thái thật luôn là 2 bảng `bai_test_cau_phat_hanh` /
+  `bai_test_dang_phat_hanh` (suy động). DB: mig `202610021201` — `fn_bt_mo_toan_bo`, `fn_bt_mo_phan_dau`; mở / thu hồi một phần dùng
+  `fn_bt_mo_cau` / `fn_bt_dong_cau` có sẵn (của luồng Học online). Thu hồi = câu ẩn khỏi bài của HS và thôi nhận câu trả lời; bài đã làm giữ nguyên.
+- **⚠ Cần deploy cả ERP lẫn app HS:** bản app HS cũ chỉ hiểu mở theo DẠNG ⇒ với bài từ đề mở từng phần nó KHÔNG thấy câu nào. (Bài mở toàn bộ thì bản cũ
+  vẫn thấy mọi câu đã có dạng.)
+- Đụng tới luồng **Học online** (nhánh `worktree-hoc-online`, chưa merge — có màn `CaOnlinePanel` phát hành từng câu): hai bên dùng chung 2 bảng phát hành
+  và `fn_bt_mo_cau` / `fn_bt_dong_cau`; trigger `fn_bt_tu_phat_hanh_dang1` của luồng đó được thêm một điều kiện bỏ qua bài từ đề. Khi merge nhánh đó phải
+  ghép với `LiveTab` đã sửa ở đây.

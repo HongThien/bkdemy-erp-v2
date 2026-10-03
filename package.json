@@ -7,6 +7,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "dev:hs": "vite --config vite.config.hs.ts",
+    "dev:hs:https": "vite --config vite.config.hs.lan.ts",
+    "preview:hs:lan": "vite preview --config vite.config.hs.ts --host --port 5180 --strictPort",
     "build:hs": "vite build --config vite.config.hs.ts",
     "preview:hs": "vite preview --config vite.config.hs.ts --outDir dist-hs",
     "dev:ops": "vite --config vite.config.ops.ts",
@@ -50,7 +52,9 @@
     "build:khaosat": "vite build --config vite.config.khaosat.ts",
     "preview:khaosat": "vite preview --config vite.config.khaosat.ts --outDir dist-khaosat",
     "dev:sukien": "vite --config vite.config.sukien.ts",
-    "build:sukien": "vite build --config vite.config.sukien.ts"
+    "build:sukien": "vite build --config vite.config.sukien.ts",
+    "dev:dautu": "vite --config vite.config.dautu.ts",
+    "build:dautu": "vite build --config vite.config.dautu.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.113.0",
@@ -68,6 +72,7 @@
     "qrcode": "^1.5.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "three": "^0.186.1",
     "web-push": "^3.6.7",
     "zustand": "^5.0.14"
   },
@@ -79,6 +84,8 @@
     "@types/qrcode": "^1.5.6",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
+    "@types/three": "^0.186.0",
+    "@vitejs/plugin-basic-ssl": "^2.3.0",
     "@vitejs/plugin-react": "^4.3.4",
     "pdf-parse": "^2.4.5",
     "pdfjs-dist": "^6.3.289",

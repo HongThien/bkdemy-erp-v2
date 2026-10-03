@@ -12,6 +12,7 @@ import { nhiemVuCuaToi, type NhiemVuCuaToi } from '../../lib/nhiemvu'
 import { hoSoGamiCuaToi, datKhoe, type HoSoGami, type Khoe } from '../../lib/hosoGami'
 import type { LopMonHS } from '../../lib/tuluyen'
 import { MAU, THE, THE_TRON, HEAD, ManHS, DauTrangHS, NutHS } from './skin/KhungHS'
+import { NutDoHoa } from './phieuluu/DoHoa'
 import ThanhChonMon from './ThanhChonMon'
 import { chuongCua, laThan, mauHH, VANG, MAU_GAMI } from './gami/hinh'
 import { AvatarKhung, BieuTuongBac, SaoBac, HinhHuyHieu } from './gami/HinhGami'
@@ -222,7 +223,7 @@ export default function HoSoHS({ hoTen, anhUrl, avatar, mons, mon, onChonMon, on
 
   return (
     <ManHS>
-      <DauTrangHS tieuDe="Hồ sơ" phu={mon ?? undefined} onBack={onBack} />
+      <DauTrangHS tieuDe="Hồ sơ" phu={mon ?? undefined} onBack={onBack} phai={<NutDoHoa />} />
       {loi && <p className="px-4 py-3 text-[13px]" style={{ ...THE, color: MAU.sai }}>{loi}</p>}
       {rank === undefined && !loi
         ? <p className="px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>

@@ -1,0 +1,868 @@
+{
+ "khoi": "8",
+ "mon": "Sinh học",
+ "_ghi_chu": "Đề xuất ánh xạ dạng Hạt Mầm → bản đồ ERP, khối 8 Sinh. Claude đề xuất 03/10 từ câu HM + câu mẫu ERP. CHƯA DUYỆT. Chỉ 2 chuyên đề HM (7.1, 7.2) có chuyên đề ERP tương ứng; còn lại thieu_cd.",
+ "chuyen_de": [
+  {
+   "hm": "K080701",
+   "erp": "K080301",
+   "ly_do": "Bài 30–31: khái quát cơ thể người + hệ vận động — trùng phạm vi chuyên đề ERP"
+  },
+  {
+   "hm": "K080702",
+   "erp": "K080302",
+   "ly_do": "Bài 32: dinh dưỡng và tiêu hoá — trùng phạm vi chuyên đề ERP"
+  },
+  {
+   "hm": "K080703",
+   "erp": null,
+   "ly_do": "Máu và hệ tuần hoàn (Bài 33) — ERP chưa có; nên là chuyên đề mới trong chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới"
+  },
+  {
+   "hm": "K080704",
+   "erp": null,
+   "ly_do": "Hệ hô hấp (Bài 34) — ERP chưa có; nên là chuyên đề mới trong chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới"
+  },
+  {
+   "hm": "K080705",
+   "erp": null,
+   "ly_do": "Hệ bài tiết, môi trường trong (Bài 35–36) — ERP chưa có; nên là chuyên đề mới trong chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới"
+  },
+  {
+   "hm": "K080706",
+   "erp": null,
+   "ly_do": "Hệ thần kinh và giác quan (Bài 37) — ERP chưa có; nên là chuyên đề mới trong chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới"
+  },
+  {
+   "hm": "K080707",
+   "erp": null,
+   "ly_do": "Hệ nội tiết, da, điều hoà thân nhiệt (Bài 38–39) — ERP chưa có; nên là chuyên đề mới trong chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới"
+  },
+  {
+   "hm": "K080708",
+   "erp": null,
+   "ly_do": "Sinh sản ở người (Bài 40) — ERP chưa có; nên là chuyên đề mới trong chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới"
+  },
+  {
+   "hm": "K080801",
+   "erp": null,
+   "ly_do": "Môi trường và nhân tố sinh thái (Bài 41) — chưa có chủ đề ERP nào ở khối 8 — cần thêm chủ đề mới \"Sinh vật và môi trường\" (sinh thái học)"
+  },
+  {
+   "hm": "K080802",
+   "erp": null,
+   "ly_do": "Quần thể sinh vật (Bài 42) — chưa có chủ đề ERP nào ở khối 8 — cần thêm chủ đề mới \"Sinh vật và môi trường\" (sinh thái học)"
+  },
+  {
+   "hm": "K080803",
+   "erp": null,
+   "ly_do": "Quần xã sinh vật (Bài 43) — chưa có chủ đề ERP nào ở khối 8 — cần thêm chủ đề mới \"Sinh vật và môi trường\" (sinh thái học)"
+  },
+  {
+   "hm": "K080804",
+   "erp": null,
+   "ly_do": "Hệ sinh thái và sinh quyển (Bài 44–45) — chưa có chủ đề ERP nào ở khối 8 — cần thêm chủ đề mới \"Sinh vật và môi trường\" (sinh thái học)"
+  },
+  {
+   "hm": "K080805",
+   "erp": null,
+   "ly_do": "Cân bằng tự nhiên và bảo vệ môi trường (Bài 46–47) — chưa có chủ đề ERP nào ở khối 8 — cần thêm chủ đề mới \"Sinh vật và môi trường\" (sinh thái học)"
+  }
+ ],
+ "dang": [
+  {
+   "hm": "K08070101",
+   "ten": "Dạng 1. Các cơ quan và hệ cơ quan trong cơ thể người",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K08030101",
+     "ly_do": "gọi tên cơ quan theo mô tả, chức năng từng hệ, xếp cơ quan vào hệ — cùng kiểu nhận biết như câu mẫu ERP (\"bộ xương và hệ cơ tạo nên hệ nào\")"
+    }
+   ]
+  },
+  {
+   "hm": "K08070102",
+   "ten": "Dạng 2. Cấu tạo và chức năng hệ vận động",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08S070102-01-001",
+      "K08S070102-01-003",
+      "K08S070102-02-001",
+      "K08S070102-02-002",
+      "K08S070102-02-003"
+     ],
+     "erp_dang": "K08030102",
+     "ly_do": "xương (hình dạng ↔ chức năng) và các loại khớp — cùng kiến thức câu mẫu ERP về xương dài, khớp xương"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08S070102-03-001",
+      "K08S070102-03-002",
+      "K08S070102-03-003"
+     ],
+     "erp_dang": "K08030103",
+     "ly_do": "cơ co, cặp cơ đối kháng hai đầu/ba đầu, năng lượng co cơ — ERP tách hệ cơ & phối hợp cơ–xương thành dạng riêng"
+    }
+   ]
+  },
+  {
+   "hm": "K08070103",
+   "ten": "Dạng 3. Bảo vệ hệ vận động và phòng bệnh",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K08030104",
+     "ly_do": "cong vẹo cột sống, loãng xương, sơ cứu gãy xương — trùng câu mẫu ERP (phòng loãng xương, điều KHÔNG được làm khi sơ cứu)"
+    }
+   ]
+  },
+  {
+   "hm": "K08070104",
+   "ten": "Dạng 4. Vận dụng: tư thế, luyện tập và an toàn vận động",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K08030104",
+     "ly_do": "tình huống tư thế, luyện tập, chấn thương: dùng đúng kiến thức bảo vệ hệ vận động áp vào tình huống; ERP không có dạng \"vận dụng\" riêng cho hệ vận động"
+    }
+   ]
+  },
+  {
+   "hm": "K08070105",
+   "ten": "Dạng 5. Vận dụng cao: Cơ chế co cơ, khởi động và xử lí tình huống chấn thương xương khớp",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08S070105-01-001",
+      "K08S070105-01-002",
+      "K08S070105-01-006",
+      "K08S070105-01-007"
+     ],
+     "erp_dang": "K08030103",
+     "ly_do": "đọc hình khớp khuỷu → cơ nào co/dãn: cùng kiến thức phối hợp cơ–xương (cặp cơ đối kháng), chỉ thêm hình"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08S070105-01-003",
+      "K08S070105-01-004",
+      "K08S070105-02-001",
+      "K08S070105-02-002",
+      "K08S070105-02-003",
+      "K08S070105-02-004",
+      "K08S070105-02-006"
+     ],
+     "erp_dang": "K08030104",
+     "ly_do": "khởi động chống chấn thương, cong vẹo do tư thế, nguyên tắc nẹp, xử lí sai khi sơ cứu, kế hoạch tập luyện + calcium — đều là bảo vệ hệ vận động"
+    }
+   ]
+  },
+  {
+   "hm": "K08070201",
+   "ten": "Dạng 1. Cấu tạo và chức năng hệ tiêu hoá",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08S070201-01-005",
+      "K08S070201-02-005",
+      "K08S070201-03-007"
+     ],
+     "erp_dang": "K08030203",
+     "ly_do": "phân biệt ống/tuyến tiêu hoá, tuyến tiết mật, nơi chất bã đi tới — nhận biết cấu tạo như câu mẫu ERP (\"dịch tuỵ đổ vào cơ quan nào\")"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08S070201-03-004",
+      "K08S070201-03-005",
+      "K08S070201-03-006"
+     ],
+     "erp_dang": "K08030204",
+     "ly_do": "hỏi biến đổi cơ học/hoá học ở dạ dày, nhu động thực quản — là kiến thức quá trình tiêu hoá, không phải cấu tạo; dù cụm HM tên \"đường đi của thức ăn\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070202",
+   "ten": "Dạng 2. Biến đổi thức ăn và hấp thụ chất dinh dưỡng",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K08030204",
+     "ly_do": "biến đổi thức ăn từng đoạn, enzyme, hấp thụ ở ruột non — trùng câu mẫu ERP (pepsin ở dạ dày, vì sao phải biến đổi thành đơn phân)"
+    }
+   ]
+  },
+  {
+   "hm": "K08070203",
+   "ten": "Dạng 3. Chế độ dinh dưỡng và khẩu phần ăn",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08S070203-02-003",
+      "K08S070203-02-005"
+     ],
+     "erp_dang": "K08030202",
+     "ly_do": "tính tổng năng lượng khẩu phần từ số gam × hệ số kcal — y hệt câu mẫu ERP"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08S070203-01-003",
+      "K08S070203-01-004"
+     ],
+     "erp_dang": "K08030201",
+     "ly_do": "≤2 bước, nhận biết: chất nào cho nhiều năng lượng nhất (so 4/4/9 kcal, không tính), hậu quả thiếu vitamin–khoáng — dạng cơ bản về chất dinh dưỡng"
+    },
+    {
+     "lan": "vang",
+     "cau": [
+      "K08S070203-03-003",
+      "K08S070203-03-004",
+      "K08S070203-03-005"
+     ],
+     "erp_chuyen_de": "K080302",
+     "ten": "Đánh giá và xây dựng khẩu phần ăn cân đối",
+     "mo_ta_ngan": "Cho thực đơn/nhu cầu năng lượng của một người (tuổi, mức vận động), nhận xét khẩu phần đủ–thiếu–cân đối hay chưa và đề xuất điều chỉnh, không cần tính kcal.",
+     "gan_nhat": "K08030201",
+     "ly_do": "K08030201 chỉ là nhận biết chất dinh dưỡng và nguồn thực phẩm; K08030202 là tính kcal. Đây là kĩ năng khác: đối chiếu thực đơn với nhu cầu + nguyên tắc cân đối nhóm chất để phán đoán (bẫy điển hình \"đủ kcal vẫn thiếu cân đối\")."
+    }
+   ]
+  },
+  {
+   "hm": "K08070204",
+   "ten": "Dạng 4. An toàn thực phẩm và bệnh về tiêu hoá",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K08030205",
+     "ly_do": "ngộ độc thực phẩm, bệnh dạ dày/sâu răng/giun sán, phòng bệnh tiêu hoá — trùng câu mẫu ERP (thực phẩm có dấu hiệu nào không nên dùng, hạn chế rượu bia)"
+    }
+   ]
+  },
+  {
+   "hm": "K08070301",
+   "ten": "Dạng 1. Thành phần và chức năng của máu",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Thành phần máu (hồng cầu, bạch cầu, tiểu cầu, huyết tương) và chức năng — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Máu và hệ tuần hoàn\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070302",
+   "ten": "Dạng 2. Nhóm máu và nguyên tắc truyền máu",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Nhóm máu ABO, sơ đồ cho–nhận, nguyên tắc truyền máu — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Máu và hệ tuần hoàn\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070303",
+   "ten": "Dạng 3. Cấu tạo và hoạt động của hệ tuần hoàn",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Cấu tạo tim, mạch máu, vòng tuần hoàn lớn/nhỏ — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Máu và hệ tuần hoàn\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070304",
+   "ten": "Dạng 4. Bảo vệ hệ tuần hoàn và sơ cứu chảy máu",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Bệnh tim mạch, huyết áp, sơ cứu cầm máu (băng ép, garô) — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Máu và hệ tuần hoàn\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070305",
+   "ten": "Dạng 5. Vận dụng cao: Nguyên tắc truyền máu và đọc chỉ số, sơ đồ hệ tuần hoàn",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng cao: truyền máu theo nhóm máu, đọc chỉ số huyết áp/nhịp tim, sơ đồ tuần hoàn — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Máu và hệ tuần hoàn\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070401",
+   "ten": "Dạng 1. Cấu tạo và chức năng hệ hô hấp",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Cơ quan đường dẫn khí và phổi, chức năng — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Hệ hô hấp\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070402",
+   "ten": "Dạng 2. Quá trình hô hấp và trao đổi khí",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Thông khí ở phổi (hít vào/thở ra), trao đổi khí ở phổi và tế bào — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Hệ hô hấp\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070403",
+   "ten": "Dạng 3. Bảo vệ hệ hô hấp và sơ cứu",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Bệnh hô hấp, tác hại thuốc lá/khói bụi, sơ cứu hô hấp nhân tạo — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Hệ hô hấp\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070404",
+   "ten": "Dạng 4. Vận dụng cao: Đọc số liệu hô hấp và xử lí tình huống bảo vệ hệ hô hấp",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng cao: cơ chế hô hấp qua cử động lồng ngực, đọc số liệu dung tích phổi, tình huống bảo vệ hô hấp — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Hệ hô hấp\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070501",
+   "ten": "Dạng 1. Cấu tạo và chức năng hệ bài tiết nước tiểu",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Cơ quan bài tiết nước tiểu (thận, ống dẫn, bóng đái), cấu tạo nephron — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Bài tiết và cân bằng môi trường trong\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070502",
+   "ten": "Dạng 2. Quá trình tạo thành nước tiểu",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Các giai đoạn lọc máu, tạo nước tiểu đầu/chính thức — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Bài tiết và cân bằng môi trường trong\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070503",
+   "ten": "Dạng 3. Môi trường trong và cân bằng nội môi",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Môi trường trong cơ thể, cân bằng nội môi — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Bài tiết và cân bằng môi trường trong\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070504",
+   "ten": "Dạng 4. Bảo vệ hệ bài tiết và vận dụng chỉ số sức khoẻ",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Bệnh sỏi thận/suy thận, thói quen bảo vệ thận, chỉ số sức khoẻ (đường huyết, ure…) — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Bài tiết và cân bằng môi trường trong\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070505",
+   "ten": "Dạng 5. Vận dụng cao: Đọc sơ đồ thận, kết quả xét nghiệm nước tiểu và bảo vệ hệ bài tiết",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng cao: đọc sơ đồ thận, kết quả xét nghiệm nước tiểu — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Bài tiết và cân bằng môi trường trong\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070601",
+   "ten": "Dạng 1. Cấu tạo và chức năng hệ thần kinh",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Cấu tạo, chức năng thần kinh trung ương/ngoại biên, phản xạ — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Hệ thần kinh và giác quan\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070602",
+   "ten": "Dạng 2. Cơ quan thị giác và thính giác",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Cấu tạo mắt, tai; cơ chế nhìn, nghe — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Hệ thần kinh và giác quan\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070603",
+   "ten": "Dạng 3. Bảo vệ hệ thần kinh và các giác quan",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Bệnh/tật mắt, tai, thần kinh và biện pháp bảo vệ — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Hệ thần kinh và giác quan\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070604",
+   "ten": "Dạng 4. Vận dụng: thói quen học tập, nghỉ ngơi và an toàn",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng: thói quen học tập, ngủ, chất gây nghiện với hệ thần kinh — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Hệ thần kinh và giác quan\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070605",
+   "ten": "Dạng 5. Vận dụng cao: Đọc hình mắt, tai và thói quen bảo vệ hệ thần kinh, giác quan",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng cao: đọc hình mắt, tai, tình huống bảo vệ thần kinh – giác quan — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Hệ thần kinh và giác quan\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070701",
+   "ten": "Dạng 1. Tuyến nội tiết và vai trò của hormone",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Các tuyến nội tiết, hormone và vai trò — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Hệ nội tiết, da và điều hoà thân nhiệt\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070702",
+   "ten": "Dạng 2. Cấu tạo và chức năng của da",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Cấu tạo, chức năng của da — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Hệ nội tiết, da và điều hoà thân nhiệt\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070703",
+   "ten": "Dạng 3. Điều hoà thân nhiệt",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Cơ chế điều hoà thân nhiệt — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Hệ nội tiết, da và điều hoà thân nhiệt\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070704",
+   "ten": "Dạng 4. Vận dụng: rối loạn nội tiết, say nắng và chống nóng, chống rét",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Rối loạn nội tiết (bướu cổ, tiểu đường), say nắng, chống nóng/rét — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Hệ nội tiết, da và điều hoà thân nhiệt\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070705",
+   "ten": "Dạng 5. Vận dụng cao: Rối loạn hormone và điều hoà thân nhiệt trong tình huống thực tế",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng cao: tình huống rối loạn hormone và điều hoà thân nhiệt — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Hệ nội tiết, da và điều hoà thân nhiệt\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070801",
+   "ten": "Dạng 1. Cấu tạo và chức năng hệ sinh dục",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Cơ quan sinh dục nam/nữ và chức năng — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Sinh sản ở người\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070802",
+   "ten": "Dạng 2. Thụ tinh, thụ thai và các biện pháp tránh thai",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Thụ tinh, thụ thai, chu kì kinh nguyệt, biện pháp tránh thai — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Sinh sản ở người\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070803",
+   "ten": "Dạng 3. Bảo vệ sức khoẻ sinh sản vị thành niên",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Sức khoẻ sinh sản vị thành niên, bệnh lây truyền qua đường tình dục — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Sinh sản ở người\""
+    }
+   ]
+  },
+  {
+   "hm": "K08070804",
+   "ten": "Dạng 4. Vận dụng cao: Sinh sản, dậy thì và bảo vệ sức khỏe sinh sản",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng cao: dậy thì, sinh sản, tình huống bảo vệ sức khoẻ sinh sản — ERP khối 8 chưa có; nên vào chủ đề ERP \"Sinh học ở cơ thể người\" (K0803) — cần thêm chuyên đề mới \"Sinh sản ở người\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080101",
+   "ten": "Dạng 1. Môi trường sống và các loại môi trường",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Các loại môi trường sống của sinh vật — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080102",
+   "ten": "Dạng 2. Nhân tố sinh thái và giới hạn sinh thái",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Nhân tố sinh thái vô sinh/hữu sinh, giới hạn sinh thái — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080103",
+   "ten": "Dạng 3. Vận dụng nhân tố sinh thái trong trồng trọt, chăn nuôi",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng nhân tố sinh thái vào trồng trọt, chăn nuôi — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080104",
+   "ten": "Dạng 4. Vận dụng cao: Đọc đồ thị giới hạn sinh thái và vận dụng vào trồng trọt, chăn nuôi",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng cao: đọc đồ thị giới hạn sinh thái (khoảng thuận lợi, điểm gây chết) — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080201",
+   "ten": "Dạng 1. Khái niệm và nhận diện quần thể",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Khái niệm quần thể, nhận diện tập hợp có phải quần thể — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080202",
+   "ten": "Dạng 2. Các đặc trưng cơ bản của quần thể",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Đặc trưng quần thể: mật độ, tỉ lệ giới tính, nhóm tuổi, phân bố — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080203",
+   "ten": "Dạng 3. Tính toán về mật độ và kích thước quần thể",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Tính mật độ/kích thước quần thể (số cá thể ÷ diện tích/thể tích) — dạng tính toán — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080204",
+   "ten": "Dạng 4. Vận dụng: bảo vệ và khai thác hợp lí quần thể",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Bảo vệ và khai thác hợp lí quần thể — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080205",
+   "ten": "Dạng 5. Vận dụng cao: Tính toán, đọc tháp tuổi và khai thác quần thể hợp lí",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng cao: tính mật độ, đọc tháp tuổi, khai thác hợp lí — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080301",
+   "ten": "Dạng 1. Khái niệm và đặc trưng của quần xã",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Khái niệm quần xã, độ đa dạng, loài ưu thế/đặc trưng — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080302",
+   "ten": "Dạng 2. Quan hệ giữa các loài trong quần xã",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Quan hệ cùng loài/khác loài (cộng sinh, hội sinh, kí sinh, cạnh tranh, sinh vật ăn sinh vật) — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080303",
+   "ten": "Dạng 3. Vận dụng: bảo vệ đa dạng của quần xã",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Bảo vệ đa dạng sinh học quần xã — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080304",
+   "ten": "Dạng 4. Vận dụng cao: Phân tích quan hệ giữa các loài và bảo vệ đa dạng quần xã",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng cao: phân tích quan hệ các loài trong tình huống — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080401",
+   "ten": "Dạng 1. Thành phần cấu trúc của hệ sinh thái",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Thành phần hệ sinh thái (vô sinh, sản xuất, tiêu thụ, phân giải) — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080402",
+   "ten": "Dạng 2. Chuỗi thức ăn và lưới thức ăn",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Chuỗi và lưới thức ăn, bậc dinh dưỡng — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080403",
+   "ten": "Dạng 3. Trao đổi chất và chuyển hoá năng lượng trong hệ sinh thái",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Dòng năng lượng, hiệu suất 10%, tháp năng lượng — có tính toán — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080404",
+   "ten": "Dạng 4. Sinh quyển và các khu sinh học",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Sinh quyển và các khu sinh học — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080405",
+   "ten": "Dạng 5. Vận dụng: phân tích lưới thức ăn và bảo vệ hệ sinh thái",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng: phân tích lưới thức ăn, xác định bậc dinh dưỡng, bảo vệ hệ sinh thái — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080501",
+   "ten": "Dạng 1. Cân bằng tự nhiên và cơ chế duy trì",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Cân bằng tự nhiên và cơ chế duy trì (khống chế sinh học) — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080502",
+   "ten": "Dạng 2. Ô nhiễm môi trường: nguyên nhân và hậu quả",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Ô nhiễm môi trường: nguyên nhân, hậu quả — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080503",
+   "ten": "Dạng 3. Biến đổi khí hậu và tác động",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Biến đổi khí hậu và tác động — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080504",
+   "ten": "Dạng 4. Biện pháp bảo vệ môi trường và phát triển bền vững",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Biện pháp bảo vệ môi trường, phát triển bền vững — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  },
+  {
+   "hm": "K08080505",
+   "ten": "Dạng 5. Vận dụng cao: Đọc số liệu khí hậu và đề xuất biện pháp bảo vệ môi trường",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng cao: đọc số liệu khí hậu, đề xuất biện pháp bảo vệ môi trường — ERP khối 8 chưa có; nên vào chủ đề mới \"Sinh vật và môi trường\""
+    }
+   ]
+  }
+ ]
+}

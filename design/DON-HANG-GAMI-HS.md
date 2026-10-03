@@ -18,6 +18,23 @@
 >
 > **Nguồn logic** (đã chốt + đã build): `spec-thanh-tuu-nhiem-vu.md` §0 · `spec-huy-hieu-build.md`.
 
+## ✅ KIỂM HÀNG 01/10 — 72 hình ChatGPT giao 30/09–01/10 (tên mặc định "ChatGPT Image …", Claude nhận diện bằng mắt + đổi tên)
+
+> ⚠ **Ảnh GỐC (`design/bk-ui-src/gami/`, ~140 MB) KHÔNG lên git** (`.gitignore`, Thùy chốt 01/10) — bản chính cất Google Drive, máy nào cũng
+> lấy được. Repo chỉ giữ hình app dùng (`public/bk-ui/hs/gami/`) + ảnh toàn cảnh JPG (`design/handoff/gami-v1/reference/`). Drive (Thùy tải lên 01/10): https://drive.google.com/drive/folders/1SuezN0GRVndmnU25MaDfcR1r12ha3aYA
+> Hình về KHÔNG theo `#số + tên file` và nằm ở gốc `bk-ui-src/` ⇒ Claude nhận diện từng hình, đếm sao, rồi mới đổi tên. **Thứ tự giờ tải không
+> đáng tin:** 2 file Zeus bị đảo (file 10:37:44 có 3 sao, 10:37:48 có 2 sao) — gán theo số sao, không theo vị trí.
+
+| Đơn | Đã về (đã đổi tên, nằm ở `design/bk-ui-src/gami/`) | CÒN THIẾU (đặt ChatGPT tiếp) | Trong app |
+|---|---|---|---|
+| **2** Huy hiệu | 40/57: `hh_<key>_sao1..5` × 8 — số sao đúng cả 40 · `hh_<key>_khoa` × 8 do **Claude dựng từ ★1** (bóng xanh đêm + viền bạc, đúng mô tả §KHOÁ — đỡ 8 lượt vẽ) | #50 `hh_an` (bí ẩn — code chưa dùng) · #51–58 `phoi_*` (xưởng, không chặn app) | `KIT.huy_hieu = true` (01/10) |
+| **3** Rank | 10/29: `rank_1_novice … rank_10_supreme_god` | #01–06 ảnh toàn cảnh (bảng duyệt + 5 màn Rank) · **#17–26 khung avatar × 10** · #27 `rank_sao` · #28 `rank_hao_quang_than` · #29 `rank_len_bac` | `KIT.rank_bieu_tuong = true`; `rank_khung`/`rank_chung` = false (khung + hào quang vẫn vẽ tạm bằng code) |
+| **1** Nhiệm vụ + Album | 8/8 ảnh toàn cảnh → `design/handoff/gami-v1/reference/man_*.jpg` (bản JPG để dựng màn; PNG gốc ở `bk-ui-src/gami/`) · 14 icon vẽ lại `nv_T1..T4 · nv_M1 · nv_M2 · nv_chang · nv_ngay · nv_tuan · nv_thang · nv_ruong_dong · nv_ruong_mo · nv_vong_quay · fx_sao_moi_sang` | bộ mới THIẾU `nv_N1..N3` | Màn Nhiệm vụ + Album + lớp phủ "Huy hiệu mới" dựng lại theo 8 ảnh toàn cảnh (01/10). **Icon vẫn dùng bộ 29/09** — bộ vẽ lại chưa đưa vào vì thiếu N1–N3 (trộn 2 nét vẽ). Muốn thay ⇒ vẽ N1–N3 cùng nét bộ mới rồi báo Claude. |
+
+**Lệch đơn, Claude nhận như ChatGPT vẽ (Thùy chưa bác):** huy hiệu không tròn hết (Helios nửa mặt trời · Phoenix dáng chim · Hercules tấm da sư tử ·
+Hephaestus đáy nhọn giống khiên) · vành không theo đồng → vàng → bạc · Hephaestus ★4 ngả cam lửa. Chữ trong ảnh toàn cảnh Nhiệm vụ lệch luật vài chỗ
+(M1 "300 câu đúng", T1 "làm bài mỗi ngày", Nike "Leo Rank") — màn dựng dùng chữ đúng luật (spec §0.4), chỉ lấy bố cục.
+
 ## Cách gửi (mỗi đơn = 1 context ChatGPT MỚI)
 
 1. Dán nguyên `design/CHATGPT-UI-KIT.md`.
@@ -501,9 +518,9 @@ LUẬT RIÊNG:
 
 | ChatGPT giao (`design/bk-ui-src/gami/`) | Code dùng (`public/bk-ui/hs/gami/`) |
 |---|---|
-| `hh_<key>_sao1..5` · `hh_<key>_khoa` · `hh_an` | `huy-hieu/<key>/sao1..5.png` · `khoa.png` · `huy-hieu/an.png` · **Claude thu nhỏ** `sao1` → `nho_48.png` |
+| `hh_<key>_sao1..5` · `hh_<key>_khoa` · `hh_an` | `huy-hieu/<key>/sao1..5.png` · `khoa.png` (384px) · `huy-hieu/an.png` · **Claude thu nhỏ MỌI mức** → `nho_sao1..5.png` · `nho_khoa.png` (128px, cho chỗ vẽ ≤ 64px — đúng số sao em đang có, không phải luôn ★1; đổi 01/10, thay `nho_48`) |
 | `phoi_<key>` | không vào app — gửi xưởng |
-| `rank_<n>_<ten>` · `khung_<n>_<ten>` | `rank/<n>/bieu_tuong.png` · `khung_avatar.png` · **Claude thu nhỏ** → `bieu_tuong_64.png` · `khung_avatar_96.png` |
+| `rank_<n>_<ten>` · `khung_<n>_<ten>` | `rank/<n>/bieu_tuong.png` (384px) · `khung_avatar.png` · **Claude thu nhỏ** → `bieu_tuong_64.png` · `khung_avatar_96.png` (128px) |
 | `rank_sao` · `rank_hao_quang_than` · `rank_len_bac` | `rank/sao.png` · `hao_quang_than.png` · `len_bac.png` |
 | `nv_<mã>` · `fx_sao_moi_sang` | `nhiem-vu/<mã>.png` · `fx/sao_moi_sang.png` |
 | `bang_duyet_*` · `man_*` · `the_tv_lop` | `design/handoff/gami-v1/reference/` (ảnh chuẩn để dựng màn, không vào app) |

@@ -4,10 +4,13 @@
 //   → hiện đáp án + lời giải chi tiết của câu → "Câu tiếp". BTVN reveal ngay, làm lại tới hạn.
 // Skin = plain-clean; game (Fredoka/mascot/gradient) làm phiên design sau.
 // ============================================================================
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { supabase } from '../../lib/supabase'
-import { MathText } from '../kho/ui'
+import { MathText, ChuMon } from '../kho/ui'
+import { NguLieuHS } from './NguLieuHS'
+import { MON_LUYEN_CHUNG_MINH } from '../../lib/mon'
 import { LamDienO } from './DienOCau'
+import { KeoThaCau } from './KeoThaCau'
 import {
   listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, baoSai, nopBai, chuCaiChon, chiSoCuaChu,
   getETDe, luuDapAnET, nopET, getETDapAnDaLuu, xemGoiY, daHetHan, laNopMuon,
@@ -17,11 +20,22 @@ import { diemDeThiCuaToi, type DiemCuaToi } from '../../lib/dethi'
 import { mucDeadline, nhanConLai } from '../../lib/tuan'
 import {
   luotTuLuyenHomNay, sinhTuLuyen, sinhTuLuyenChuDe, monCuaHS, laCap1HS, khoiCuaHS, hoSoCuaToi, xepHangTuLuyen,
-  lopMonCuaHS, chonMonHS, monDangChon,
+  lopMonCuaHS, chonMonHS, monDangChon, monRiengCuaHS, datMonTam, layMonTam, type MonRiengHS,
   TU_LUYEN_SO_CAU_MOI_LUOT, type XepHangRow, type LopMonHS,
 } from '../../lib/tuluyen'
 import ThanhChonMon from './ThanhChonMon'
-import { ChonLoaiTuLuyen, ChonDangChuDe } from './TuLuyenChuDe'
+import { ChonDangChuDe, ChonLoaiTuLuyen } from './TuLuyenChuDe'
+import { GameNhungHS, GiaiVoDichHS, HocTapHS } from './hoctap/HocTapHS'
+import { ChinhPhucHS } from './hoctap/ChinhPhucHS'
+import { ChonNhanVatHS } from './hoctap/ChonNhanVatHS'
+import { laNvChon, type NvId } from './skin/nhanVat'
+import { chonNhanVat, nhanVatCuaToi } from '../../lib/giaodien_hs'
+import { NhungHet, type NhungDau } from './phieuluu/nhungDau'
+import { TheTran, PHIEN, CLS_PHIEN, NgocChu, NUT_TRAN, HOP_LOI_GIAI, FONT_TRAN } from './skin/KhungTran'
+import { hocTapBat, phieuLuuBat } from './phieuluu/coBat'
+// Khu HỌC TẬP (5 đảo) — sau CỜ, mặc định TẮT ở bản thật (bật ở bản thử nghiệm / ?hoctap=1). Tắt ⇒ ô Tự luyện + màn chọn cũ như trước 03/10.
+const HOC_TAP = hocTapBat()
+const PhieuLuuHS = lazy(() => import('./phieuluu/PhieuLuuHS'))
 import { laCap2HS, mayManHSCuaToi } from '../../lib/maymai_hs'
 import { htdCoMo, htdSinh, htdCauBaiTest, type CauHTD } from '../../lib/hoctudau'
 import { ChonChuDeHTD, ChonChuyenDeHTD, ChiTietDangHTD, LyThuyetHTD, LoTrinhDuoiHS, dangDangHoc, type ChuDeNhom, type ChuyenDeNhom } from './HocTuDau'
@@ -33,7 +47,7 @@ import { listBaiTraCuaToi, demBaiTraChuaXem, type BaiTraHS as BaiTraRow } from '
 import BaiTraHS, { ngayNgan } from './BaiTraHS'
 import HomeHS, { type HomeCard } from './HomeHS'
 import HomeHS912 from './HomeHS912'
-import { KHOI_CHON_SKIN, type GiaoDien } from './skin/registry'
+import { KHOI_CHON_SKIN, laySkin, type GiaoDien } from './skin/registry'
 import { useApSkinGoc, GD_MAC_DINH, GD_CAP1, ManHS, DauTrangHS, TheHS, TrongHS, MAU, THE, THE_TRON, HEAD } from './skin/KhungHS'
 import { giaoDienCuaToi, home912, type Home912 } from '../../lib/giaodien_hs'
 import DanhSachHS, { type DsRow } from './DanhSachHS'
@@ -47,10 +61,13 @@ import TheGioiHS from './thegioi/TheGioiHS'
 import { theGioiHome, type TheGioiHome } from '../../lib/thegioi'
 import RankHS from './RankHS'
 import NhiemVuHS from './NhiemVuHS'
+import ThuVienHS from './ThuVienHS'
 import AlbumHS from './AlbumHS'
 import HoSoHS from './HoSoHS'
 import AvatarHS from './AvatarHS'
-import { thuThachLuotDo, sinhThuThach, ketQuaThuThach, type KetQuaThuThach } from '../../lib/rank'
+import { thuThachLuotDo, sinhThuThach, ketQuaThuThach, rankCuaToi, type KetQuaThuThach, type RankCuaToi } from '../../lib/rank'
+import { nhiemVuCuaToi, type NhiemVuCuaToi } from '../../lib/nhiemvu'
+import { anhBac } from './gami/hinh'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
 type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean }
@@ -74,11 +91,12 @@ const THI_LOAI = new Set(['et', 'de_thi', 'bo_tro_test', 'retest'])
 const KHU_CHI_CAP1 = new Set<KhuId>(['xep_hang'])
 // MÔN LÀ TRỤC NGOÀI CÙNG (Thùy 01/10: "chuyển môn là phải chuyển các tính năng học tập tương ứng. Chơi thì không cần"):
 // ô CHƠI = chung mọi môn (khối "Giải trí" ở Home, đổi môn không đổi); mọi ô còn lại thuộc góc học tập của môn đang chọn.
-const KHU_CHOI = new Set<KhuId>(['the_gioi', 'may_man', 'thanh_tuu', 'vi_xu'])
+// 03/10 (Thùy): Nhiệm vụ xuống Giải trí · thêm Thư viện BK (Rank là thẻ con trong đó).
+const KHU_CHOI = new Set<KhuId>(['the_gioi', 'nhiem_vu', 'thu_vien', 'may_man', 'thanh_tuu', 'vi_xu'])
 // Ô học tập rút câu từ KHO của môn — môn chưa có kho (co_kho=false, vd Tiếng Anh) thì khoá + báo, KHÔNG gọi RPC.
 // (Ô bài trên lớp/ET/BTVN/đề thi không cần kho: đọc bài thầy cô phát hành, môn nào cũng chạy.)
 const KHU_CAN_KHO = new Set<KhuId>(['tu_luyen', 'thong_tin', 'so_tay', 'xep_hang'])
-type KhuId = 'giao_trinh' | 'et' | 'btvn' | 'tu_luyen' | 'thong_tin' | 'de_thi_thu' | 'xep_hang' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi'
+type KhuId = 'giao_trinh' | 'et' | 'btvn' | 'tu_luyen' | 'thong_tin' | 'de_thi_thu' | 'xep_hang' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'nhiem_vu' | 'rank' | 'thu_vien'
 // direct = ô này KHÔNG đi qua màn "danh sách nhiều bài" (setKhu+tab) — bấm vào thẳng 1 màn riêng.
 // Tự luyện là 1 PHIÊN đang-tiếp-diễn trong ngày (không phải danh sách bài đã phát hành theo ngày
 // như ET/BTVN), nên không hợp mô hình list+tab dùng chung — mỗi màn direct tự lo dữ liệu riêng.
@@ -88,24 +106,28 @@ const KHU: { id: KhuId; ten: string; icon: string; loai?: string; direct?: boole
   { id: 'giao_trinh', ten: 'Bài tập trên lớp', icon: '📓', loai: 'giao_trinh', mau: 'brand' },
   { id: 'et', ten: 'ET', icon: '📋', loai: 'et', mau: 'ph-purple' },
   { id: 'btvn', ten: 'BTVN', icon: '🏠', loai: 'btvn', mau: 'ph-orange' },
-  { id: 'tu_luyen', ten: 'Tự luyện', icon: '🎯', direct: true, mau: 'ph-green' },
+  { id: 'tu_luyen', ten: HOC_TAP ? 'Học tập' : 'Tự luyện', icon: '🎯', direct: true, mau: 'ph-green' }, // Thùy 03/10: Tự luyện ⇒ khu HỌC TẬP 5 ô (spec-che-do-game §7)
+  { id: 'nhiem_vu', ten: 'Nhiệm vụ', icon: '📜', direct: true, mau: 'ph-green' }, // Thùy 01/10: ra màn chính · 03/10: xuống khối Giải trí
   { id: 'thong_tin', ten: 'Thông tin học tập', icon: '📈', direct: true, mau: 'brand' },
   { id: 'so_tay', ten: 'Sổ tay kiến thức', icon: '📖', direct: true, mau: 'ph-purple' },
   { id: 'the_gioi', ten: 'Thế giới BK', icon: '🌏', direct: true, mau: 'brand' }, // mạng xã hội khoe — spec-the-gioi-bk.md
   { id: 'xep_hang', ten: 'Bảng xếp hạng', icon: '🏆', direct: true, mau: 'ph-orange' },
   { id: 'de_thi_thu', ten: 'Làm đề thi thử', icon: '📄', loai: 'de_thi', mau: 'ph-purple' }, // 27/09: đề thi thầy/cô phát hành cho lớp (fn_de_thi_mo)
+  { id: 'thu_vien', ten: 'Thư viện BK', icon: '📚', direct: true, mau: 'brand' }, // 03/10: nơi tìm hiểu mọi thông tin trên app (Rank ở trong)
 ]
 // ── KHU cấp 2 (lớp 6-9) — Thùy 11/09: ẨN Bài tập trên lớp/ET/BTVN, thêm 3 ô mới ─────────────────
 // (Bài tập được giao "sắp có" — sau này nối bổ trợ; Thành tựu = giai_thuong đã công bố; May mắn =
 //  vòng quay 4 EXP có điều kiện 10 câu tự luyện đúng ≥70% + tối đa 1 lượt/ngày.)
 // Cấp 3 (khối 10-12) — Thùy CHƯA nói đổi, giữ KHU cũ. Cấp 1 dùng HomeCap1 riêng, không đụng.
 const KHU_CAP2: { id: KhuId; ten: string; icon: string; direct?: boolean; sapCo?: boolean }[] = [
-  { id: 'tu_luyen',      ten: 'Tự luyện',           icon: '🎯', direct: true },
+  { id: 'tu_luyen',      ten: HOC_TAP ? 'Học tập' : 'Tự luyện', icon: '🎯', direct: true },
+  { id: 'nhiem_vu',      ten: 'Nhiệm vụ',           icon: '📜', direct: true },  // Thùy 01/10: ra màn chính · 03/10: khối Giải trí
   { id: 'thong_tin',     ten: 'Thông tin học tập',  icon: '📈', direct: true },
   { id: 'so_tay',        ten: 'Sổ tay kiến thức',   icon: '📖', direct: true },
   { id: 'the_gioi',      ten: 'Thế giới BK',        icon: '🌏', direct: true },
   { id: 'de_thi_thu',    ten: 'Làm đề thi thử',     icon: '📄', sapCo: true },
-  { id: 'bai_tap_giao',  ten: 'Bài tập được giao',  icon: '📚', direct: true },  // placeholder — vào màn "đang phát triển"
+  // 'Bài tập được giao' BỎ (Thùy 03/10): sau này là ô DERIVE — chỉ hiện khi thầy cô thật sự giao, không giữ chỗ.
+  { id: 'thu_vien',      ten: 'Thư viện BK',        icon: '📚', direct: true },  // 03/10: Rank thành thẻ con trong đây
   { id: 'thanh_tuu',     ten: 'Thành tựu',          icon: '🏆', direct: true },
   { id: 'may_man',       ten: 'May mắn',            icon: '🎰', direct: true },
   { id: 'vi_xu',         ten: 'Ví xu',              icon: '🪙', direct: true },
@@ -127,6 +149,9 @@ const KIT_O: Record<KhuId, Pick<HomeCard, 'ill' | 'emoji' | 'doodle' | 'tone'>> 
   thanh_tuu:    { ill: 'self_practice_target', emoji: '🏆', doodle: 'Đầy tự hào ♡', tone: 'orange' },
   may_man:      { ill: 'self_practice_target', emoji: '🎰', doodle: 'Luyện chăm là quay!', tone: 'pink' },
   vi_xu:        { ill: 'self_practice_target', emoji: '🪙', doodle: 'Tích xu đổi quà!', tone: 'orange' },
+  nhiem_vu:     { ill: 'self_practice_target', emoji: '📜', doodle: 'Xong là có EXP!', tone: 'green' },
+  rank:         { ill: 'self_practice_target', emoji: '🛡️', doodle: 'Lên bậc nào!', tone: 'orange' },
+  thu_vien:     { ill: 'purple_bookmark_book', emoji: '📚', doodle: 'Tìm hiểu app nào!', tone: 'blue' },
 }
 // ── Style màn con theo SKIN (Thùy 29/09: đổi style là đổi CẢ màn trong, không chỉ Home) ─────────────────
 // Mọi nền/chữ/viền đọc biến --sk-* (skin/KhungHS). Màu cố định CHỈ còn màu ngữ nghĩa đúng/sai/cảnh báo — nền
@@ -160,6 +185,47 @@ const NUT_DS = (t: TtO): CSSProperties => ({
 // Ô trả lời ngắn — nền/viền skin, focus viền acc.
 const O_NHAP: CSSProperties = { background: MAU.surface2, color: MAU.ink, border: `1.5px solid ${MAU.line}`, borderRadius: R_TRONG }
 const O_NHAP_CLS = 'w-full px-4 py-3 outline-none placeholder:text-[color:var(--sk-muted)] focus:!border-[color:var(--sk-acc)] disabled:opacity-70'
+// ⭐ Ô TRẢ LỜI NGẮN KIỂU PHIẾU THI (bai_test_cau.kieu_nhap = 'phieu_4o', bài phát hành từ ĐỀ THI — spec-de-thi.md K5):
+// đúng 4 ô như phiếu trả lời của Bộ — chỉ chữ số, dấu "−" (chỉ ô 1), dấu "," (chỉ ô 2 hoặc 3). Bàn phím riêng trên
+// màn (bàn phím số của điện thoại không có dấu trừ) + gõ được bằng bàn phím thật. Giá trị = chuỗi như "-2,5".
+function them4O(v: string, k: string): string {
+  if (v.length >= 4) return v
+  if (k === '-') return v === '' ? '-' : v
+  if (k === ',') return (v.length === 1 || v.length === 2) && !v.includes(',') ? v + ',' : v
+  return /^[0-9]$/.test(k) ? v + k : v
+}
+export function ONhap4O({ value, onChange, disabled, co = 19 }: { value: string; onChange: (v: string) => void; disabled?: boolean; co?: number }) {
+  const v = (value ?? '').slice(0, 4)
+  const bam = (k: string) => { if (!disabled) { const n = k === 'xoa' ? v.slice(0, -1) : them4O(v, k); if (n !== v) onChange(n) } }
+  const phim = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '-', '0', ',']
+  return (
+    <div tabIndex={disabled ? -1 : 0} className="outline-none"
+      onKeyDown={(e) => {
+        const k = e.key === '.' ? ',' : e.key === '−' ? '-' : e.key
+        if (k === 'Backspace') { e.preventDefault(); bam('xoa') } else if (/^[0-9,-]$/.test(k)) { e.preventDefault(); bam(k) }
+      }}>
+      <div className="flex items-center gap-2">
+        {[0, 1, 2, 3].map((i) => (
+          <div key={i} className="flex h-14 w-12 items-center justify-center font-semibold"
+            style={{ ...O_NHAP, fontSize: co + 5, ...(i === v.length && !disabled ? { border: `2px solid ${MAU.acc}` } : {}), opacity: disabled ? 0.7 : 1 }}>
+            {v[i] === '-' ? '−' : v[i] ?? ''}
+          </div>
+        ))}
+        {!disabled && v && <button onClick={() => bam('xoa')} className="ml-1 px-3 py-2 text-[15px] font-medium active:scale-95" style={NUT_PHU}>⌫</button>}
+      </div>
+      {!disabled && (
+        <div className="mt-3 grid max-w-[260px] grid-cols-3 gap-2">
+          {phim.map((k) => (
+            <button key={k} onClick={() => bam(k)} className="py-2.5 font-semibold active:scale-95" style={{ ...O_DAP_AN('thuong'), fontSize: co }}>
+              {k === '-' ? '−' : k}
+            </button>
+          ))}
+        </div>
+      )}
+      {!disabled && <p className="mt-2 text-[12px]" style={{ color: MAU.muted }}>Điền như phiếu thi: tối đa 4 ô — dấu − ở ô đầu, dấu phẩy ở ô 2 hoặc 3.</p>}
+    </div>
+  )
+}
 // Nút/hộp "Gợi ý" (cảnh báo = cam ngữ nghĩa).
 const NUT_GOI_Y = (mo: boolean): CSSProperties => ({ border: `1px solid ${VIEN_CB}`, background: mo ? 'rgba(224,144,30,0.26)' : NEN_CB, color: MAU.canhBao })
 const HOP_GOI_Y: CSSProperties = { border: `1px solid ${VIEN_CB}`, background: NEN_CB, borderRadius: R_TRONG }
@@ -194,11 +260,10 @@ function Head({ title, sub, onBack }: { title: string; sub?: string; onBack: () 
 type BoxCap1DirectId = 'tu_luyen' | 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu'
 type BoxCap1 = { id: BoxCap1DirectId; ten: string; mo_ta: string; icon: string; grad: string } | { id: string; ten: string; mo_ta: string; icon: string; grad: string; sapCo: true }
 const BOX_CAP1: BoxCap1[] = [
-  { id: 'tu_luyen',     ten: 'Tự luyện',           mo_ta: 'Luyện theo dạng bài còn yếu hoặc chủ động chọn nội dung muốn ôn tập.', icon: '🎯', grad: 'from-[#f0e9ff] to-[#faf8ff]' },
+  { id: 'tu_luyen',     ten: HOC_TAP ? 'Học tập' : 'Tự luyện', mo_ta: HOC_TAP ? 'Cùng BK chinh phục thế giới.' : 'Luyện theo dạng bài còn yếu hoặc chủ động chọn nội dung muốn ôn tập.', icon: '🎯', grad: 'from-[#f0e9ff] to-[#faf8ff]' },
   { id: 'thong_tin',    ten: 'Thông tin học tập',  mo_ta: 'Xem kết quả gần nhất, dạng đang yếu, nhận xét và gợi ý ôn tập.',      icon: '📘', grad: 'from-[#e9f9ff] to-[#f6fdff]' },
   { id: 'so_tay',       ten: 'Sổ tay kiến thức',   mo_ta: 'Tra lý thuyết và bài mẫu của từng dạng bài — tìm theo tên hoặc lọc dần.', icon: '📖', grad: 'from-[#f3ecff] to-[#fbf8ff]' },
   { id: 'de_thi_thu',   ten: 'Làm đề thi thử',     mo_ta: 'Đề trường/sở để em luyện làm bài thi thật — sắp mở.',                 icon: '📄', grad: 'from-[#eef2ff] to-[#f7f9ff]', sapCo: true },
-  { id: 'bai_tap_giao', ten: 'Bài tập được giao',  mo_ta: 'Làm các bài tập giáo viên giao thêm cho cá nhân hoặc cả lớp.',        icon: '📚', grad: 'from-[#e8f4ff] to-[#f7fbff]' },
   { id: 'thanh_tuu',    ten: 'Thành tựu',          mo_ta: 'Xem giải thưởng cuối tháng, huy hiệu và mốc học tập đã đạt được.',    icon: '🏆', grad: 'from-[#fff8de] to-[#fffbef]' },
   { id: 'may_man',      ten: 'May mắn',            mo_ta: 'Mỗi ngày đủ điều kiện → mở 1 lượt quay may mắn nhận EXP.', icon: '🎰', grad: 'from-[#ffedf5] to-[#fff8fb]' },
   { id: 'vi_xu',        ten: 'Ví xu',              mo_ta: 'Xem số xu hiện có, lịch sử đổi quà và các hoạt động kiếm điểm của em.', icon: '🪙', grad: 'from-[#fff8de] to-[#fffbef]' },
@@ -312,8 +377,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
-  const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'rank' | 'nhiem_vu' | 'album' | 'ho_so' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'bu_ca' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
+  const [direct, setDirect] = useState<'phieu_luu' | 'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'doi_nhan_vat' | 'dau_truong_bk' | 'chinh_phuc_bk' | 'giai_vo_dich' | 'rank' | 'nhiem_vu' | 'album' | 'ho_so' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'bu_ca' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'thu_vien' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
   const [tuHoSo, setTuHoSo] = useState(false) // Rank/Album mở từ Hồ sơ ⇒ "Quay lại" về Hồ sơ
+  const [tuThuVien, setTuThuVien] = useState(false) // Rank mở từ Thư viện BK ⇒ "Quay lại" về Thư viện (03/10)
+  const [tuHome, setTuHome] = useState(false) // Rank/Nhiệm vụ mở từ MÀN CHÍNH (ô / huy hiệu bậc) ⇒ "Quay lại" về màn chính
   const [chuDeDang, setChuDeDang] = useState<{ ma_dang: string; ten_dang: string; chiCauMoi?: boolean } | null>(null) // dạng đã chọn cho "Tự luyện theo chủ đề" (null = luồng tổng hợp)
   // "Học từ đầu" (Thùy 19/09) — ô CHỈ hiện khi HS có case bổ trợ đuổi ĐANG MỞ (tự suy
   // bo_tro_duoi.trang_thai='can_duoi', KHÔNG lưu cờ riêng — xem htd_co_mo). htdMon lưu
@@ -357,6 +424,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [lopMons, setLopMons] = useState<LopMonHS[]>([])
   const [monChon, setMonChon] = useState<string | null>(null)
   useEffect(() => { lopMonCuaHS().then((ds) => { setLopMons(ds); setMonChon(monDangChon(ds)) }).catch(() => {}) }, [])
+  // Môn mở cho CẢ KHỐI (TSA khối 12, Thùy 03/10: "tự luyện TSA thành 1 mục riêng") — mỗi môn 1 ô riêng ở khối Học tập.
+  // Bấm ô ⇒ đặt MÔN TẠM (màn con chạy theo môn đó, thanh chọn môn giữ nguyên); về màn chính ⇒ bỏ môn tạm.
+  const [monRieng, setMonRieng] = useState<MonRiengHS[]>([])
+  useEffect(() => { monRiengCuaHS().then(setMonRieng).catch(() => {}) }, [])
 
   useEffect(() => { listBaiTestCuaHS().then(setTests).catch(() => setTests([])) }, [])
   useEffect(() => { laCap1HS().then(setCap1).catch(() => setCap1(false)) }, [])
@@ -367,6 +438,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // giaoDien: undefined = đang tải · null = chưa có dòng hs_giao_dien ⇒ HomeHS912 mở hướng dẫn lần đầu.
   const [nhom912, setNhom912] = useState<boolean | null>(null)
   const [giaoDien, setGiaoDien] = useState<GiaoDien | null | undefined>(undefined)
+  // NHÂN VẬT CHÍNH (Thùy 03/10): undefined = đang tải · null = chưa chọn ⇒ bấm Học tập hiện màn chọn · mã = dùng cho bản đồ/đấu trường
+  const [nhanVat, setNhanVat] = useState<NvId | null | undefined>(undefined)
+  useEffect(() => { if (HOC_TAP) nhanVatCuaToi().then((v) => setNhanVat(laNvChon(v) ? v : null)).catch(() => setNhanVat(null)) }, [])
   const [duLieu912, setDuLieu912] = useState<Home912 | null>(null)
   useEffect(() => { khoiCuaHS().then((k) => setNhom912(!!k && KHOI_CHON_SKIN.has(k))).catch(() => setNhom912(false)) }, [])
   useEffect(() => {
@@ -378,17 +452,34 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Thẻ Thế giới BK ở màn chính — tải lại mỗi lần về Home (quay từ Thế giới về là thấy số mới); lỗi thì thẻ vẫn hiện, không số.
   const [tgHome, setTgHome] = useState<TheGioiHome | null>(null)
   useEffect(() => { if (nhom912 && !direct && !khu) theGioiHome().then(setTgHome).catch(() => {}) }, [nhom912, direct, khu])
+  // RANK + NHIỆM VỤ của MÔN đang chọn trên màn chính (Thùy 01/10: ô Nhiệm vụ · ô Rank · huy hiệu bậc cạnh tên).
+  // undefined = đang tải (ô hiện "…") · null = môn chưa mở rank/nhiệm vụ ⇒ ẩn ô + huy hiệu (dữ liệu quyết định, không if theo môn).
+  // Tải lại mỗi lần về màn chính (vừa làm Thử thách/nhiệm vụ về là thấy số mới); lỗi mạng giữ số cũ, không xoá ô.
+  const [rankHome, setRankHome] = useState<RankCuaToi | null | undefined>(undefined)
+  const [nvHome, setNvHome] = useState<NhiemVuCuaToi | null | undefined>(undefined)
+  useEffect(() => {
+    if (!nhom912 || direct || khu || !monChon) return
+    let bo = false
+    rankCuaToi(monChon).then((r) => { if (!bo) setRankHome(r) }).catch(() => {})
+    nhiemVuCuaToi(monChon).then((r) => { if (!bo) setNvHome(r) }).catch(() => {})
+    return () => { bo = true }
+  }, [nhom912, direct, khu, monChon])
   // Style (skin) của em áp cho TOÀN app, không chỉ Home (Thùy 29/09): biến --sk-* gắn lên <html>, mọi màn đọc qua skin/KhungHS.
   // Cấp 1 chưa có skin riêng ⇒ tạm Soft Hàn sáng.
   useApSkinGoc(nhom912 ? (giaoDien ?? GD_MAC_DINH) : GD_CAP1)
+  // Tự luyện mở BẢN ĐỒ PHIÊU LƯU chỉ khi: cờ bật · em BẬT hiệu ứng game (hs_giao_dien.hieu_ung_game, Thùy 02/10) · style có bản đồ (Tối giản không có).
+  // Còn lại ⇒ bài dạng thường. Hàm (không phải hằng) vì monChon khai sau; chỉ gọi trong xử lý bấm.
+  const banDoBat = () => { const g = giaoDien ?? GD_MAC_DINH; return phieuLuuBat() && g.hieu_ung_game !== false && !!laySkin(g.skin).the3d }
   // Thùy 24/09: TRƯỚC chỉ kiểm 1 lần lúc mở app ⇒ học thuật chốt dạng đuổi SAU lúc em mở app (vụ Mạnh Duy 24/09 18:17) thì card
   // 'Học từ đầu' không hiện tới khi mở lại app. Giờ kiểm lại MỖI LẦN về màn chính (direct/khu = null) + khi app quay lại từ nền.
   // Lỗi mạng giữ nguyên trạng thái cũ (không tắt card đang hiện vì 1 lần gọi hỏng).
   const kiemHTD = () => monCuaHS().then((m) => { if (!m) return; setHtdMon(m); return htdCoMo(m) }).then((mo) => { if (mo !== undefined) setHtdMo(!!mo) }).catch(() => {})
+  useEffect(() => { if (!direct && !khu) datMonTam(null) }, [direct, khu]) // TRƯỚC kiemHTD: về màn chính là về môn đã chọn
   useEffect(() => { if (!direct && !khu) kiemHTD() }, [direct, khu])
   function doiMon(m: string) {
     if (m === monChon) return
     chonMonHS(m); setMonChon(m)
+    setRankHome(undefined); setNvHome(undefined) // rank/nhiệm vụ là của TỪNG môn — đổi môn thì xoá số môn cũ trước khi tải
     setHtdMo(false); kiemHTD() // card "Học từ đầu" là của TỪNG môn — tắt cái của môn cũ, hỏi lại cho môn mới
   }
   useEffect(() => {
@@ -425,26 +516,55 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 
   if (doiMK) return <DoiMatKhau maHS={maHS} batBuoc={false} onXong={() => setDoiMK(false)} />
 
-  if (direct === 'tu_luyen_chon') return <ChonLoaiTuLuyen gioiTinh={gt}
+  // KHU HỌC TẬP (Thùy 03/10, spec-che-do-game §7): 5 ô — giữ tên trạng thái 'tu_luyen_chon' để mọi nút "lùi" cũ về đúng khu này.
+  if (direct === 'tu_luyen_chon' && !HOC_TAP) return <ChonLoaiTuLuyen gioiTinh={gt}
     onTongHop={() => { setChuDeDang(null); setDirect('tu_luyen') }}
-    onChuDe={() => setDirect('tu_luyen_chu_de_ds')}
+    onChuDe={() => setDirect(giaoDien?.skin && monChon && banDoBat() ? 'phieu_luu' : 'tu_luyen_chu_de_ds')}
     onThuThach={() => setDirect('thu_thach')}
-    onRank={() => { setTuHoSo(false); setDirect('rank') }}
-    onNhiemVu={() => setDirect('nhiem_vu')}
+    onRank={() => { setTuHoSo(false); setTuHome(false); setDirect('rank') }}
+    onNhiemVu={() => { setTuHome(false); setDirect('nhiem_vu') }}
     onBack={() => setDirect(null)} />
-  if (direct === 'nhiem_vu') return <NhiemVuHS gioiTinh={gt} onBack={() => setDirect('tu_luyen_chon')}
+  // lần đầu vào khu Học tập (chưa có nhân vật) ⇒ chọn nhân vật trước · 'doi_nhan_vat' = đổi từ nút ở đầu khu Học tập
+  if ((direct === 'tu_luyen_chon' && nhanVat === null) || direct === 'doi_nhan_vat') return <ChonNhanVatHS dangCo={nhanVat ?? null} luu={chonNhanVat}
+    onXong={(id) => { setNhanVat(id); setDirect('tu_luyen_chon') }} onBack={() => setDirect(direct === 'doi_nhan_vat' ? 'tu_luyen_chon' : null)} />
+  if (direct === 'tu_luyen_chon') return <HocTapHS nhanVat={nhanVat ?? null} onDoiNhanVat={() => setDirect('doi_nhan_vat')}
+    // trong khu Học tập, đảo 'Học theo chủ đề' LUÔN là bản đồ (không cần cờ phieuluu riêng); chỉ lùi về danh sách dạng khi chưa có môn / style không có bản đồ
+    onChuDe={() => { const g = giaoDien ?? GD_MAC_DINH; setDirect(monChon && laySkin(g.skin).the3d ? 'phieu_luu' : 'tu_luyen_chu_de_ds') }}
+    onYeu={() => { setChuDeDang(null); setDirect('tu_luyen') }}
+    onDauTruong={() => setDirect('dau_truong_bk')}
+    onChinhPhuc={() => setDirect('chinh_phuc_bk')}
+    onGiai={() => setDirect('giai_vo_dich')}
+    onRank={() => { setTuHoSo(false); setTuHome(false); setDirect('rank') }}
+    onNhiemVu={() => { setTuHome(false); setDirect('nhiem_vu') }}
+    onBack={() => setDirect(null)} />
+  if (direct === 'dau_truong_bk') return <GameNhungHS vao="chu_de" tieuDe="Đấu trường BK" onBack={() => setDirect('tu_luyen_chon')} />
+  if (direct === 'chinh_phuc_bk') return <ChinhPhucHS onBack={() => setDirect('tu_luyen_chon')} />
+  if (direct === 'giai_vo_dich') return <GiaiVoDichHS onBack={() => setDirect('tu_luyen_chon')} onDauMay={() => setDirect('thu_thach')} />
+  if (direct === 'phieu_luu' && monChon) return <Suspense fallback={null}><PhieuLuuHS hocSinhId={hocSinhId} mon={monChon} gioiTinh={gioiTinh} nhanVat={nhanVat} skin={(giaoDien ?? GD_MAC_DINH).skin} LamBai={LamBai} onVe={() => setDirect(HOC_TAP ? 'tu_luyen_chon' : null)}
+    onTongHop={() => { setChuDeDang(null); setDirect('tu_luyen') }} onThuThach={() => setDirect('thu_thach')} /></Suspense>
+  if (direct === 'nhiem_vu') return <NhiemVuHS gioiTinh={gt} onBack={() => setDirect(tuHome ? null : 'tu_luyen_chon')}
     onThuThach={() => setDirect('thu_thach')} onTuLuyen={() => { setChuDeDang(null); setDirect('tu_luyen') }} onVongQuay={() => setDirect('may_man')} />
   if (direct === 'thu_thach') return <LamThuThach hocSinhId={hocSinhId} desktop={!!cap1}
     onXong={() => setDirect('tu_luyen_chon')} onRank={() => { setTuHoSo(false); setDirect('rank') }} />
-  if (direct === 'rank') return <RankHS gioiTinh={gt} onBack={() => setDirect(tuHoSo ? 'ho_so' : 'tu_luyen_chon')} onThuThach={() => setDirect('thu_thach')} />
+  if (direct === 'rank') return <RankHS gioiTinh={gt} onBack={() => setDirect(tuHoSo ? 'ho_so' : tuThuVien ? 'thu_vien' : tuHome ? null : 'tu_luyen_chon')} onThuThach={() => setDirect('thu_thach')} />
+  // THƯ VIỆN BK (Thùy 03/10): "nơi tìm hiểu mọi thông tin trên app" — thẻ con: Rank (của môn đang chọn).
+  if (direct === 'thu_vien') {
+    const r = rankHome?.toi
+    return <ThuVienHS onBack={() => { setTuThuVien(false); setDirect(null) }} the={[{
+      id: 'rank', ten: 'Rank', icon: '🛡️', moTa: 'Cấp bậc chiến binh của em theo từng môn — làm Thử thách để leo bậc.',
+      anh: (r ? anhBac(r.bac, 'bieu_tuong') : null) ?? laySkin((giaoDien ?? GD_MAC_DINH).skin).anhO?.rank ?? null,
+      trangThai: rankHome === undefined ? undefined : r ? `${monChon ?? ''} · ${r.ten_bac}${r.sao ? ` ${'★'.repeat(r.sao)}` : ''} · hạng ${r.hang_khoi}/${r.so_em_khoi}` : 'Chưa có điểm mùa này',
+      onClick: () => { setTuThuVien(true); setTuHoSo(false); setTuHome(false); setDirect('rank') },
+    }]} />
+  }
   // HỒ SƠ (DON-HANG-GAMI-HS Đơn 4): bấm avatar ở màn chính. Đổi ảnh đại diện nằm trong Hồ sơ (bấm avatar trong khung).
   if (direct === 'ho_so') return <HoSoHS hoTen={hoTen} anhUrl={anhUrl} mons={lopMons} mon={monChon} onChonMon={doiMon}
     avatar={<AvatarHS anhUrl={anhUrl} initials={hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()} size={82} fill="var(--sk-surface2)" badge="var(--sk-acc)" onChanged={setAnhUrl} />}
     onBack={() => { setTuHoSo(false); setDirect(null) }}
-    onRank={() => { setTuHoSo(true); setDirect('rank') }} onAlbum={() => { setTuHoSo(true); setDirect('album') }} />
+    onRank={() => { setTuHoSo(true); setTuHome(false); setDirect('rank') }} onAlbum={() => { setTuHoSo(true); setDirect('album') }} />
   if (direct === 'tu_luyen_chu_de_ds') return <ChonDangChuDe gioiTinh={gt}
     onPick={(d) => { setChuDeDang(d); setDirect('tu_luyen') }}
-    onBack={() => setDirect('tu_luyen_chon')} />
+    onBack={() => setDirect(layMonTam() ? null : 'tu_luyen_chon')} />
   if (direct === 'tu_luyen') return <LamTuLuyen hocSinhId={hocSinhId} chuDe={chuDeDang}
     onXong={() => { setDirect(null); setChuDeDang(null) }}
     onDoiDang={() => setDirect('tu_luyen_chu_de_ds')}
@@ -484,7 +604,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'retest') return <RetestHS hocSinhId={hocSinhId} gioiTinh={gt} onXong={() => setDirect(null)} LamET={LamET} />
   if (direct === 'lich_bo_tro') return <LichBoTroHS lich={lichMon} coCa={boTro.coCa} gioiTinh={gt} onXong={() => setDirect(null)} onVaoCa={onVaoCaBoTro} />
   if (direct === 'hop_thu') return <HopThuHS onXong={() => { setDirect(null); taiChuaDoc() }} />
-  if (direct === 'may_man') return <MayManHS gioiTinh={gt} onXong={() => setDirect(null)} onNhiemVu={() => setDirect('nhiem_vu')} />
+  if (direct === 'may_man') return <MayManHS gioiTinh={gt} onXong={() => setDirect(null)} onNhiemVu={() => { setTuHome(true); setDirect('nhiem_vu') }} />
   if (direct === 'thanh_tuu') return <ThanhTuuHS gioiTinh={gt} onXong={() => setDirect(null)} onAlbum={() => { setTuHoSo(false); setDirect('album') }} />
   if (direct === 'album') return <AlbumHS gioiTinh={gt} onBack={() => setDirect(tuHoSo ? 'ho_so' : 'thanh_tuu')} />
   if (direct === 'bai_tap_giao') return <BaiTapGiaoHS gioiTinh={gt} onXong={() => setDirect(null)} />
@@ -519,7 +639,30 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const lopCuaMon = lopMons.find((l) => l.mon === monChon)
   const lopMon = lopCuaMon ? `${lopCuaMon.ten_lop} · ${lopCuaMon.mon}` : tests?.[0] ? `${tests[0].lop_ten} · ${tests[0].mon}` : null
 
-  const CHU_DUOI: Partial<Record<KhuId, string>> = { tu_luyen: 'Luyện theo dạng yếu', thong_tin: 'Dạng đang yếu', xep_hang: 'Thi đua tự luyện', so_tay: 'Tra lý thuyết & bài mẫu', the_gioi: 'Xem HS BK đang khoe gì' }
+  // Ô NHIỆM VỤ / RANK trên màn chính (Thùy 01/10) — số lấy nguyên từ RPC của MÔN đang chọn. null ⇒ ẩn ô (môn chưa mở / không phải
+  // màn chính 6–12). Badge = số nhiệm vụ ngày CHƯA xong (đếm dòng đang hiện ở màn Nhiệm vụ, không phải chỉ số nghiệp vụ).
+  // Ô Rank hiện BIỂU TƯỢNG BẬC của chính em thay icon chung của style.
+  const moTuHome = (d: 'nhiem_vu' | 'rank') => () => { setTuHome(true); setTuHoSo(false); setDirect(d) }
+  const oGami = (id: KhuId): Partial<HomeCard> | null | undefined => {
+    if (id === 'nhiem_vu') {
+      if (!nhom912 || nvHome === null) return null
+      if (nvHome === undefined) return { sub: '…', subMau: 'xam', onClick: moTuHome('nhiem_vu') }
+      if (!nvHome.mo) return { sub: `Mở từ ${nvHome.bat_dau.split('-').reverse().slice(0, 2).join('/')}`, subMau: 'xam', onClick: moTuHome('nhiem_vu') }
+      const ngay = Object.values(nvHome.ngay)
+      const conLai = ngay.filter((n) => n.xong_hom_nay === 0).length
+      return { sub: conLai ? `Hôm nay còn ${conLai} nhiệm vụ` : 'Xong hết hôm nay!', subMau: conLai ? 'ton' : 'xanh', badge: conLai, onClick: moTuHome('nhiem_vu') }
+    }
+    if (id === 'rank') {
+      if (!nhom912 || rankHome === null) return null
+      const t = rankHome?.toi
+      if (!t) return { sub: rankHome === undefined ? '…' : 'Chưa có điểm mùa này', subMau: 'xam', onClick: moTuHome('rank') }
+      return { sub: `${t.ten_bac}${t.sao ? ` ${'★'.repeat(t.sao)}` : ''} · hạng ${t.hang_khoi}/${t.so_em_khoi}`, subMau: 'ton', anh: anhBac(t.bac, 'bieu_tuong') ?? undefined, onClick: moTuHome('rank') }
+    }
+    return undefined
+  }
+  const anO = new Set((['nhiem_vu', 'rank'] as KhuId[]).filter((id) => oGami(id) === null))
+
+  const CHU_DUOI: Partial<Record<KhuId, string>> = { tu_luyen: HOC_TAP ? 'Cùng BK chinh phục thế giới' : 'Luyện theo dạng yếu', thong_tin: 'Dạng đang yếu', xep_hang: 'Thi đua tự luyện', so_tay: 'Tra lý thuyết & bài mẫu', the_gioi: 'Xem HS BK đang khoe gì', thu_vien: 'Tìm hiểu mọi thứ trên app' }
 
   // ── MÀN CHÍNH: ô vuông (theo cấp/khối), 2 cột ─────────────────────────────
   if (!khu && (cap1 === null || cap2 === null || nhom912 === null || (nhom912 && giaoDien === undefined))) return <ManCho>Đang tải…</ManCho>
@@ -542,35 +685,45 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // "Học từ đầu" (Thùy 19/09) — card RỜI, không qua KHU/KHU_CAP2/KIT_O (id không nằm trong
   // KhuId — chỉ hiện khi có case bổ trợ đuổi đang mở, không đáng thêm hẳn vào 2 danh mục
   // tĩnh kia). Cùng style HomeCard/BoxCap1 nhưng build tay 1 chỗ, dùng chung cho cả cấp 2/3.
+  // Ô RIÊNG của môn mở cả khối (TSA khối 12) — đứng ngay sau ô Tự luyện, không theo thanh chọn môn.
+  const theCardRieng: HomeCard[] = monRieng.map((m) => ({
+    id: 'tu_luyen_rieng', ten: `Tự luyện ${m.mon}`, nhom: 'hoc' as const,
+    sub: m.co_kho ? 'Luyện theo từng dạng' : `${m.mon} chưa mở`, subMau: 'xam' as const, disabled: !m.co_kho,
+    ill: 'self_practice_target', emoji: '🎯', icon: '🎯', doodle: '', tone: 'green' as const,
+    onClick: m.co_kho ? () => { datMonTam(m.mon); setChuDeDang(null); setDirect('tu_luyen_chu_de_ds') } : undefined,
+  }))
+  const chenRieng = (ds: HomeCard[]) => { const i = ds.findIndex((c) => c.id === 'tu_luyen'); return i < 0 ? [...theCardRieng, ...ds] : [...ds.slice(0, i + 1), ...theCardRieng, ...ds.slice(i + 1)] }
   const theCardHTD: HomeCard[] = htdMo
     ? [{ id: 'hoc_tu_dau', ten: 'Học từ đầu', sub: 'Bổ trợ đuổi — học tuần tự từng dạng', subMau: 'ton',
         ill: 'self_practice_target', emoji: '🚀', icon: '🚀', doodle: 'Từng bước một!', tone: 'purple',
         onClick: () => setDirect('htd_chu_de') }]
     : []
   if (!khu) {
-    const cards: HomeCard[] = cap2
-      ? [...KHU_CAP2.map((k) => {
+    const cards: HomeCard[] = chenRieng(cap2
+      ? [...KHU_CAP2.filter((k) => !anO.has(k.id)).map((k) => {
           const [sub, subMau]: [string, HomeCard['subMau']] =
             k.sapCo ? ['Sắp có', 'xam']
             : k.id === 'thanh_tuu' ? ['Xem giải thưởng của em', 'xam']
             : k.id === 'may_man' ? (maymanCoLuot ? ['Có 1 lượt quay!', 'ton'] : ['Chưa có lượt hôm nay', 'xam'])
             : k.id === 'bai_tap_giao' ? ['Đang phát triển', 'xam']
-            : k.id === 'tu_luyen' ? ['Luyện theo dạng yếu', 'xam']
+            : k.id === 'tu_luyen' ? [HOC_TAP ? 'Cùng BK chinh phục thế giới' : 'Luyện theo dạng yếu', 'xam']
             : k.id === 'thong_tin' ? ['Dạng đang yếu', 'xam']
             : k.id === 'so_tay' ? ['Tra lý thuyết & bài mẫu', 'xam']
             : k.id === 'vi_xu' ? ['Xem xu & lịch sử', 'xam']
             : k.id === 'the_gioi' ? ['Xem HS BK đang khoe gì', 'xam']
+            : k.id === 'thu_vien' ? ['Tìm hiểu mọi thứ trên app', 'xam']
             : ['', 'xam']
           const badge = k.id === 'may_man' && maymanCoLuot ? 1 : 0
           return {
             id: k.id, ten: k.ten, icon: k.icon, sub, subMau, badge, disabled: !!k.sapCo, nhom: KHU_CHOI.has(k.id) ? 'choi' : 'hoc', ...KIT_O[k.id], ...(k.sapCo ? { ill: 'mock_exam_locked', emoji: undefined, doodle: 'Sắp ra mắt! Hãy chờ nhé!', tone: 'gray' as const } : {}),
             onClick: k.sapCo ? undefined : k.direct
-              ? () => setDirect(k.id === 'tu_luyen' ? 'tu_luyen_chon' : (k.id as 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi'))
+              ? () => setDirect(k.id === 'tu_luyen' ? (HOC_TAP || !(monChon && banDoBat()) ? 'tu_luyen_chon' : 'phieu_luu') : (k.id as 'thong_tin' | 'may_man' | 'thanh_tuu' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'thu_vien'))
               : () => { setKhu(k.id); setTab('chua') },
             ...khoaThieuKho(k.id),
+            ...(oGami(k.id) ?? {}),
           } satisfies HomeCard
         }), ...theCardHTD]
-      : [...KHU.filter((k) => !KHU_CHI_CAP1.has(k.id)).map((k) => {
+      : [...KHU.filter((k) => !KHU_CHI_CAP1.has(k.id) && !anO.has(k.id)).map((k) => {
           const sapCo = !k.loai && !k.direct
           const ds = k.loai ? cuaKhu(k.id) : []
           const nChuaLam = ds.filter((t) => !xongCua(t) && !daHetHan(t)).length
@@ -584,10 +737,11 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
             : ds.length ? ['Xong hết rồi', 'xanh'] : ['Chưa có bài', 'xam']
           return {
             id: k.id, ten: k.ten, icon: k.icon, sub, subMau, badge: nChuaLam, disabled: sapCo, nhom: KHU_CHOI.has(k.id) ? 'choi' : 'hoc', ...KIT_O[k.id],
-            onClick: sapCo ? undefined : k.direct ? () => setDirect(k.id === 'tu_luyen' ? 'tu_luyen_chon' : (k.id as 'thong_tin' | 'xep_hang' | 'so_tay' | 'the_gioi')) : () => { setKhu(k.id); setTab('chua') },
+            onClick: sapCo ? undefined : k.direct ? () => setDirect(k.id === 'tu_luyen' ? 'tu_luyen_chon' : (k.id as 'thong_tin' | 'xep_hang' | 'so_tay' | 'the_gioi' | 'thu_vien')) : () => { setKhu(k.id); setTab('chua') },
             ...khoaThieuKho(k.id),
+            ...(oGami(k.id) ?? {}),
           } satisfies HomeCard
-        }), ...theCardHTD]
+        }), ...theCardHTD])
     // Lớp 9–12: cùng danh sách ô (giữ nguyên chức năng từng khối), khác màn vẽ — HomeHS912 + skin tự chọn.
     if (nhom912 && giaoDien !== undefined) return <HomeHS912 giaoDien={giaoDien} onDaLuu={setGiaoDien} data={duLieu912}
       hoTen={hoTen} maHS={maHS} lopMon={lopMon} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
@@ -595,7 +749,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
       lich={lichMon} soRetest={boTro.soRetest} cards={cards}
       onHopThu={() => setDirect('hop_thu')} onDoiMK={() => setDoiMK(true)} onThoat={() => supabase.auth.signOut()}
       onLich={() => setDirect('lich_bo_tro')} onRetest={() => setDirect('retest')} onHoSo={() => setDirect('ho_so')} gioiTinh={gioiTinh}
-      theGioi={tgHome} onTheGioi={() => setDirect('the_gioi')} />
+      theGioi={tgHome} onTheGioi={() => setDirect('the_gioi')}
+      rank={rankHome?.toi ? { bac: rankHome.toi.bac, ten: rankHome.toi.ten_bac, sao: rankHome.toi.sao } : null} onRank={moTuHome('rank')} />
     return <HomeHS hoTen={hoTen} maHS={maHS} lopMon={lopMon} gioiTinh={gt} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
       mons={lopMons} mon={monChon} onChonMon={doiMon}
       lich={lichMon} soRetest={boTro.soRetest} cards={cards}
@@ -654,9 +809,16 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
 // điện thoại nữa") truyền desktop=true qua LamTuLuyen. CHỈ đổi KHUNG NGOÀI (bề rộng/nền/bo góc/cỡ nút)
 // — toàn bộ logic chọn/chấm/hiển thị câu (TN/ĐS/TLN) dùng CHUNG 1 JSX (`trongTam`), không tách 2 bản
 // để tránh lệch hành vi giữa desktop/mobile theo thời gian.
-function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop }: {
+// Thẻ câu hỏi: thẻ thường của style, hoặc "bảng phép" khi nhúng trong màn đấu (skin/KhungTran.tsx).
+function KhungCau({ nhung, cls, children }: { nhung: boolean; cls: string; children: ReactNode }) {
+  return nhung ? <TheTran className={cls}>{children}</TheTran> : <div className={cls} style={THE}>{children}</div>
+}
+
+export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop, nhung }: {
   baiTestId: string; hocSinhId: string; onXong: () => void
   doneCaption?: string; doneExtra?: React.ReactNode; desktop?: boolean
+  /** NHÚNG trong khung đấu 3D (phieuluu/DauView): ẩn thanh tiến độ + màn kết quả cũ, báo kết quả từng câu ra ngoài. */
+  nhung?: NhungDau
 }) {
   const [full, setFull] = useState<BaiTestFull | null>(null)
   const [baiLamId, setBaiLamId] = useState<string | null>(null)
@@ -665,6 +827,9 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   const [busy, setBusy] = useState(false)
   const [nopped, setNopped] = useState(false)
   const [goiY, setGoiY] = useState(false)
+  // Trong trận (nhung): khung câu hỏi chỉ còn nửa dưới màn ⇒ chấm xong tự cuộn tới ô kết quả + lời giải (Thùy 02/10: "chưa hiện đáp án chi tiết"
+  // — lời giải có nhưng nằm dưới mép khung). Nhớ câu đã cuộn để không giật lại mỗi lần vẽ lại.
+  const daCuon = useRef<string | null>(null)
 
   useEffect(() => {
     (async () => {
@@ -679,6 +844,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
         init[cauId] = { chon: (r as BaiLamCau).dap_an_hs as number | string, kq: { verdict: (r as BaiLamCau).verdict ?? 'wrong', key: c?.dap_an_key, baiLamCauId: (r as BaiLamCau).id } }
       }
       setSt(init)
+      nhung?.onTai?.(f.caus.length, Object.keys(f.daLam).length)
       // TIẾN TRÌNH (Thùy 29/08: "vào toàn bắt bật lại từ câu 1"): mở lại bài dở → nhảy thẳng câu
       // CHƯA làm đầu tiên; xong hết → vào thẳng màn kết quả (tự luyện: nơi có nút "Làm thêm").
       // Vị trí KHÔNG cần lưu đâu cả — suy từ f.daLam (bai_lam_cau) theo ĐÚNG thứ tự hiển thị (= f.caus,
@@ -704,6 +870,8 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   // Trước đây xáo chống liếc bài (05/07 → 29/09), chỉ giáo trình được khoá (22/08). ĐỪNG bật lại xáo
   // ở tầng hiển thị: số câu/chữ cái trên app phải khớp phiếu giấy em đang cầm.
   const caus = full?.caus ?? []
+  // Chữ của câu hiện theo MÔN của bài (registry MON_CHU_THUONG — Tiếng Anh: giữ gạch chân, không công thức)
+  const monBai = full?.baiTest.mon
 
   if (!full) return <ManCho>Đang tải bài…</ManCho>
   const total = caus.length
@@ -713,6 +881,9 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   const daCham = !!cs?.kq
   const laTN = cau?.loai_cau === 'trac_nghiem'
   const laDS = cau?.loai_cau === 'dung_sai'
+  const laKT = cau?.loai_cau === 'keo_tha'   // KÉO THẢ (TSA) — KeoThaCau.tsx
+  const keyKT: string[] = laKT ? ((cau!.dap_an_key as string[]) ?? []) : []
+  const chonKT: (string | null)[] = laKT ? ((cs?.chon as (string | null)[]) ?? keyKT.map(() => null)) : []
   const menhDe: MenhDeSnap[] = laDS ? ((cau!.menh_de as MenhDeSnap[]) ?? []) : []
   const keyDS: string[] = laDS ? ((cau!.dap_an_key as string[]) ?? []) : []
   const chonArr: (string | null)[] = laDS ? ((cs?.chon as (string | null)[]) ?? menhDe.map(() => null)) : []
@@ -725,6 +896,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   // Đã chọn đủ để Xác nhận? TN=đã chọn 1 · TLN=nhập khác rỗng · ĐS=đủ 4 ý.
   const daDu = laTN ? typeof cs?.chon === 'number'
     : laDS ? (chonArr.length === menhDe.length && menhDe.length > 0 && chonArr.every((x) => x != null))
+    : laKT ? (keyKT.length > 0 && chonKT.length === keyKT.length && chonKT.every((x) => x != null))
     : (typeof cs?.chon === 'string' && cs.chon.trim() !== '')
 
   function setChon(v: Chon) {
@@ -744,6 +916,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
     try {
       const kq = await traLoiCau(baiLamId, cau, cs.chon)
       setSt((s) => ({ ...s, [cau.id]: { chon: cs.chon, kq: { verdict: kq.verdict, key: kq.key, baiLamCauId: kq.baiLamCauId } } }))
+      nhung?.onCau({ verdict: kq.verdict as 'correct' | 'partial' | 'wrong', idx, tong: caus.length })
     } finally { setBusy(false) }
   }
 
@@ -753,7 +926,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   //   · TLN → "em nghĩ mình đúng" = có thể viết cách khác cũng đúng → accepted-answer (tab 🚩 Duyệt chấm)
   //   · TN/ĐS → không có chuyện viết khác, chỉ có KEY sai → tab ⚠ Nghi sai đáp án — chấm lại
   // Phân biệt bằng loai_cau của câu (staff-side), y_kien chỉ để người đọc hiểu.
-  const baoSaiDe = laTN || laDS
+  const baoSaiDe = laTN || laDS || laKT
   async function guiBaoSai() {
     if (!cau || !cs?.kq) return
     await baoSai(cs.kq.baiLamCauId, hocSinhId, baoSaiDe ? 'Em nghĩ đề hoặc đáp án sai.' : 'Em nghĩ mình đúng.')
@@ -763,6 +936,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   // Màn kết quả cuối
   if (idx >= total) {
     const dung = caus.filter((c) => st[c.id]?.kq?.verdict === 'correct').length
+    if (nhung) return <NhungHet dung={dung} tong={total} baiLamId={baiLamId} cb={nhung.onHet} />
     return (
       <ManGiua>
         <div className={`flex items-center justify-center rounded-full ${desktop ? 'h-24 w-24 text-5xl' : 'h-20 w-20 text-4xl'}`} style={{ ...THE_TRON, borderRadius: '999px', background: NEN_DUNG }}>🏆</div>
@@ -780,7 +954,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
   const dsDung = laDS && daCham ? chonArr.filter((x, i) => x != null && String(x).toUpperCase() === String(keyDS[i]).toUpperCase()).length : 0
   const trongTam = (
     <>
-      <div className={desktop ? 'mb-4 flex shrink-0 items-center gap-4' : 'flex shrink-0 items-center gap-3 px-4 py-3'}>
+      <div className={nhung ? 'hidden' : desktop ? 'mb-4 flex shrink-0 items-center gap-4' : 'flex shrink-0 items-center gap-3 px-4 py-3'}>
         <button onClick={onXong} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full" style={{ ...THE_TRON, borderRadius: '999px', color: MAU.muted }}>✕</button>
         <div className={`flex-1 overflow-hidden rounded-full ${desktop ? 'h-2.5' : 'h-2'}`} style={{ background: MAU.line }}>
           <div className="h-full transition-all" style={{ width: `${((idx + 1) / total) * 100}%`, background: MAU.acc }} />
@@ -790,9 +964,11 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
 
       {/* Thùy 13/09: content SCROLL riêng, footer luôn nằm trong viewport (không phải kéo trang xuống mới bấm Xác nhận). */}
       <div className={desktop ? 'flex-1 min-h-0 overflow-y-auto' : 'flex-1 overflow-y-auto px-4 pb-4'}>
-        <div className={desktop ? 'p-8 lg:p-10' : 'p-4'} style={THE}>
+        <KhungCau nhung={!!nhung} cls={desktop ? 'p-8 lg:p-10' : 'p-4'}>
           <div className="mb-2 flex items-center justify-between">
-            <p className="text-[16px] font-semibold" style={{ color: MAU.muted }}>Câu {idx + 1}</p>
+            {nhung
+              ? <span className="flex items-center gap-2 text-[16px] font-bold" style={{ fontFamily: 'var(--sk-font-head)', color: MAU.acc }}><span aria-hidden className="inline-block h-2.5 w-2.5 rotate-45" style={{ background: MAU.acc }} />Câu {idx + 1}/{total} · chọn đúng để tung phép</span>
+              : <p className="text-[16px] font-semibold" style={{ color: MAU.muted }}>Câu {idx + 1}</p>}
             {cau.ly_thuyet && (
               <button onClick={() => setGoiY((v) => {
                 const nv = !v
@@ -808,14 +984,18 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
           {goiY && cau.ly_thuyet && (
             <div className="mb-3 p-3" style={HOP_GOI_Y}>
               <p className="mb-1 text-[15px] font-semibold uppercase tracking-wide" style={{ color: MAU.canhBao }}>Lý thuyết dạng bài</p>
-              <div className="text-[18px] leading-relaxed" style={{ color: MAU.ink }}><MathText>{cau.ly_thuyet}</MathText></div>
+              <div className="text-[18px] leading-relaxed" style={{ color: MAU.ink }}><ChuMon mon={monBai}>{cau.ly_thuyet}</ChuMon></div>
             </div>
           )}
-          {cau.noi_dung && <div className="mb-3 text-[19px] leading-relaxed" style={{ color: MAU.ink }}><MathText>{cau.noi_dung}</MathText></div>}
+          {/* Ngữ liệu (đoạn văn / thông báo / biển báo) dùng chung nhiều câu — chụp kèm câu lúc sinh bài, hiện TRÊN đề */}
+          {cau.ngu_lieu && <NguLieuHS nl={cau.ngu_lieu} mon={monBai} gon={!!nhung} />}
+          {cau.noi_dung && !laKT && <div className={nhung ? 'mb-4 text-[21px] font-semibold leading-relaxed' : 'mb-3 text-[19px] leading-relaxed'} style={{ color: MAU.ink }}><ChuMon mon={monBai}>{cau.noi_dung}</ChuMon></div>}
           {/* Hình đề: nền trắng cố định — hình vẽ/ảnh chụp đề là nét đen trên trắng, đặt thẳng lên thẻ tối là mất nét. */}
           {cau.anh_de && <img src={cau.anh_de} alt="đề" className="mb-3 max-h-80 rounded-lg bg-white" style={{ border: `1px solid ${MAU.line}` }} />}
 
-          {laTN ? (
+          {laKT ? (
+            <KeoThaCau noiDung={cau.noi_dung ?? ''} nganHang={cau.lua_chon ?? []} value={chonKT} onChange={(v) => setChon(v)} key_={daCham ? keyKT : undefined} daCham={daCham} mon={monBai} />
+          ) : laTN ? (
             <div className="flex flex-col gap-2.5">
               {optsShown.map(({ item: opt, orig }, dispI) => {
                 const chon = cs?.chon === orig
@@ -824,9 +1004,10 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
                 const tt: TtO = laDapAn ? 'dung' : chonSai ? 'sai' : chon ? 'chon' : 'thuong'
                 return (
                   <button key={orig} onClick={() => setChon(orig)} disabled={daCham}
-                    className="flex items-start gap-3 p-3 text-left text-[19px] transition" style={O_DAP_AN(tt)}>
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[16px] font-semibold" style={TRON_CHU(tt)}>{chuCaiChon(dispI)}</span>
-                    <span className="flex-1 pt-0.5"><MathText>{stripLabel(opt)}</MathText></span>
+                    className={nhung ? `flex items-center gap-3 px-3 py-2.5 text-left text-[20px] ${CLS_PHIEN(tt)}` : 'flex items-start gap-3 p-3 text-left text-[19px] transition'} style={nhung ? PHIEN(tt) : O_DAP_AN(tt)}>
+                    {nhung ? <NgocChu t={tt} chu={chuCaiChon(dispI)} />
+                      : <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[16px] font-semibold" style={TRON_CHU(tt)}>{chuCaiChon(dispI)}</span>}
+                    <span className="flex-1 pt-0.5"><ChuMon mon={monBai}>{stripLabel(opt)}</ChuMon></span>
                   </button>
                 )
               })}
@@ -840,7 +1021,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
                   <div key={orig} className="p-3" style={{ border: `1px solid ${MAU.line}`, background: MAU.surface2, borderRadius: R_TRONG }}>
                     <div className="mb-2 flex gap-2 text-[19px]" style={{ color: MAU.ink }}>
                       <span className="font-semibold" style={{ color: MAU.muted }}>{'abcd'[dispI] ?? dispI + 1})</span>
-                      <span className="flex-1"><MathText>{m.noi_dung}</MathText></span>
+                      <span className="flex-1"><ChuMon mon={monBai}>{m.noi_dung}</ChuMon></span>
                     </div>
                     <div className="flex gap-2">
                       {(['D', 'S'] as const).map((v) => {
@@ -856,11 +1037,13 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
                         )
                       })}
                     </div>
-                    {daCham && m.loi_giai && <div className="mt-2 pt-1.5 text-[16px]" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.muted }}><MathText>{m.loi_giai}</MathText></div>}
+                    {daCham && m.loi_giai && <div className="mt-2 pt-1.5 text-[16px]" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.muted }}><ChuMon mon={monBai}>{m.loi_giai}</ChuMon></div>}
                   </div>
                 )
               })}
             </div>
+          ) : cau.kieu_nhap === 'phieu_4o' ? (
+            <ONhap4O value={(cs?.chon as string) ?? ''} onChange={setChon} disabled={daCham} co={19} />
           ) : (
             <input value={(cs?.chon as string) ?? ''} onChange={(e) => setChon(e.target.value)} disabled={daCham}
               placeholder="Nhập đáp án…" inputMode="text"
@@ -868,16 +1051,19 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
           )}
 
           {daCham && (
-            <div className="mt-4 p-3" style={{ background: boxNen, borderRadius: R_TRONG }}>
+            <div className="mt-4 p-3" style={nhung ? HOP_LOI_GIAI(vd === 'correct' ? true : vd === 'partial' ? null : false) : { background: boxNen, borderRadius: R_TRONG }}
+              ref={(el) => { if (el && nhung && daCuon.current !== cau.id) { daCuon.current = cau.id; requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' })) } }}>
               <p className="text-[19px] font-semibold" style={{ color: txtMau }}>
-                {vd === 'correct' ? '🎉 Đúng hết!' : vd === 'partial' ? '👍 Đúng một phần' : '😔 Chưa đúng'}
+                {nhung
+                  ? (vd === 'correct' ? '✦ Trúng đòn! Em làm đúng rồi' : vd === 'partial' ? '✦ Trúng một phần' : '💥 Trượt đòn — xem lời giải nhé')
+                  : vd === 'correct' ? '🎉 Đúng hết!' : vd === 'partial' ? '👍 Đúng một phần' : '😔 Chưa đúng'}
                 {laDS && <span className="ml-1 text-[16px] font-normal">· {dsDung}/{menhDe.length} ý đúng</span>}
               </p>
               {cau.loai_cau === 'tra_loi_ngan' && vd !== 'correct' && <p className="mt-1 text-[16px]" style={{ color: MAU.muted }}>Đáp án đúng: <b style={{ color: MAU.dung }}>{String(cau.dap_an_key)}</b></p>}
               {cau.loi_giai && (
                 <div className="mt-2 pt-2 text-[18px] leading-relaxed" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.ink }}>
-                  <p className="mb-1 text-[15px] font-semibold uppercase" style={{ color: MAU.muted }}>Lời giải</p>
-                  <MathText>{cau.loi_giai}</MathText>
+                  <p className="mb-1 text-[15px] font-semibold uppercase" style={{ color: nhung ? MAU.acc : MAU.muted }}>{nhung ? '📜 Lời giải chi tiết' : 'Lời giải'}</p>
+                  <ChuMon mon={monBai}>{cau.loi_giai}</ChuMon>
                 </div>
               )}
               {cau.anh_dap_an && <img src={cau.anh_dap_an} alt="lời giải" className="mt-2 max-h-72 rounded-lg bg-white" style={{ border: `1px solid ${MAU.line}` }} />}
@@ -890,7 +1076,7 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
               )}
             </div>
           )}
-        </div>
+        </KhungCau>
       </div>
 
       <div className={desktop ? 'mt-4 flex shrink-0 items-center gap-3' : 'flex shrink-0 items-center gap-2 p-3'}
@@ -903,13 +1089,13 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
         )}
         {!daCham ? (
           <button onClick={xacNhan} disabled={busy || !daDu}
-            className={`flex-1 font-semibold disabled:opacity-40 ${desktop ? 'py-3.5 text-[19px]' : 'py-3 text-[18px]'}`} style={NUT_CHINH}>
-            {busy ? 'Đang chấm…' : 'Xác nhận'}
+            className={`flex-1 font-semibold disabled:opacity-40 ${nhung ? 'tran-phien ' : ''}${desktop ? 'py-3.5 text-[19px]' : 'py-3 text-[18px]'}`} style={nhung ? NUT_TRAN : NUT_CHINH}>
+            {busy ? (nhung ? 'Đang niệm phép…' : 'Đang chấm…') : nhung ? '⚔ Tung phép' : 'Xác nhận'}
           </button>
         ) : (
-          <button onClick={() => setIdx((i) => i + 1)}
-            className={`flex-1 font-semibold ${desktop ? 'py-3.5 text-[19px]' : 'py-3 text-[18px]'}`} style={NUT_CHINH}>
-            {idx + 1 < total ? 'Câu tiếp →' : (daXongHet ? 'Xem kết quả →' : 'Câu tiếp →')}
+          <button onClick={() => setIdx((i) => i + 1)} disabled={!!nhung?.ban}
+            className={`flex-1 font-semibold ${nhung ? 'tran-phien ' : ''}${desktop ? 'py-3.5 text-[19px]' : 'py-3 text-[18px]'}`} style={nhung ? NUT_TRAN : NUT_CHINH}>
+            {idx + 1 < total ? (nhung ? 'Đòn kế tiếp ➜' : 'Câu tiếp →') : (daXongHet ? 'Xem kết quả →' : 'Câu tiếp →')}
           </button>
         )}
       </div>
@@ -918,6 +1104,8 @@ function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, desktop 
 
   // Thùy 13/09: MÀN LÀM BÀI phải gọn 1 viewport (Xác nhận đáp án luôn thấy). h-[100dvh]+flex col
   // → header/content/footer chia vùng; content overflow riêng, không phải cuộn cả trang.
+  // Nhúng trong khung đấu 3D: chỉ phần trong tâm, vừa khít ô dưới cảnh (không tự chiếm 100dvh).
+  if (nhung) return <div className="flex h-full min-h-0 flex-col px-3 py-2 md:px-6" style={{ fontFamily: FONT_TRAN, color: MAU.ink }}><div className="mx-auto flex min-h-0 w-full max-w-4xl flex-1 flex-col">{trongTam}</div></div>
   return desktop ? (
     <div className="flex h-[100dvh] flex-col px-8 py-4" style={NEN_MAN}>
       <div className="mx-auto flex min-h-0 w-full max-w-3xl flex-1 flex-col lg:max-w-4xl">{trongTam}</div>
@@ -1010,7 +1198,7 @@ function LamTuLuyen({ hocSinhId, onXong, desktop, chuDe, onDoiDang }: { hocSinhI
               🔄 Đổi dạng khác
             </button>
           )}
-          {!chuDe && <button onClick={() => setDienO(true)}
+          {!chuDe && MON_LUYEN_CHUNG_MINH.includes(mon) && <button onClick={() => setDienO(true)}
             className={`mt-2 w-full font-medium ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`} style={NUT_PHU}>
             📐 Luyện chứng minh (điền vào lời giải)
           </button>}
@@ -1488,8 +1676,9 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
             <p className="text-[13px] font-semibold" style={{ color: MAU.muted }}>Câu {soTrongPhan}</p>
             {cau.ly_thuyet && <button onClick={() => setGoiY((v) => !v)} className="rounded-full px-3 py-1 text-[12px] font-medium" style={NUT_GOI_Y(goiY)}>💡 Gợi ý</button>}
           </div>
-          {goiY && cau.ly_thuyet && <div className="mb-3 p-3 text-[14px] leading-relaxed" style={{ ...HOP_GOI_Y, color: MAU.ink }}><MathText>{cau.ly_thuyet}</MathText></div>}
-          {cau.noi_dung && <div className="mb-3 text-[15px] leading-relaxed" style={{ color: MAU.ink }}><MathText>{cau.noi_dung}</MathText></div>}
+          {goiY && cau.ly_thuyet && <div className="mb-3 p-3 text-[14px] leading-relaxed" style={{ ...HOP_GOI_Y, color: MAU.ink }}><ChuMon mon={test.mon}>{cau.ly_thuyet}</ChuMon></div>}
+          {cau.ngu_lieu && <NguLieuHS nl={cau.ngu_lieu} mon={test.mon} />}
+          {cau.noi_dung && <div className="mb-3 text-[15px] leading-relaxed" style={{ color: MAU.ink }}><ChuMon mon={test.mon}>{cau.noi_dung}</ChuMon></div>}
           {/* Hình đề: nền trắng cố định — nét đen trên trắng, đặt thẳng lên thẻ tối là mất nét. */}
           {cau.anh_de && <img src={cau.anh_de} alt="đề" className="mb-3 max-h-80 rounded-lg bg-white" style={{ border: `1px solid ${MAU.line}` }} />}
 
@@ -1504,7 +1693,7 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
                   <button key={orig} onClick={() => luu(cau.id, orig)} disabled={daNop}
                     className="flex items-start gap-3 p-3 text-left text-[15px]" style={O_DAP_AN(tt)}>
                     <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold" style={TRON_CHU(tt)}>{chuCaiChon(dispI)}</span>
-                    <span className="flex-1 pt-0.5"><MathText>{stripLabel(opt)}</MathText></span>
+                    <span className="flex-1 pt-0.5"><ChuMon mon={test.mon}>{stripLabel(opt)}</ChuMon></span>
                   </button>
                 )
               })}
@@ -1516,7 +1705,7 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
                 const key = daNop ? String(keyDS[orig] ?? '').toUpperCase() : null
                 return (
                   <div key={orig} className="p-3" style={{ border: `1px solid ${MAU.line}`, background: MAU.surface2, borderRadius: R_TRONG }}>
-                    <div className="mb-2 flex gap-2 text-[15px]" style={{ color: MAU.ink }}><span className="font-semibold" style={{ color: MAU.muted }}>{'abcd'[dispI] ?? dispI + 1})</span><span className="flex-1"><MathText>{m.noi_dung}</MathText></span></div>
+                    <div className="mb-2 flex gap-2 text-[15px]" style={{ color: MAU.ink }}><span className="font-semibold" style={{ color: MAU.muted }}>{'abcd'[dispI] ?? dispI + 1})</span><span className="flex-1"><ChuMon mon={test.mon}>{m.noi_dung}</ChuMon></span></div>
                     <div className="flex gap-2">
                       {(['D', 'S'] as const).map((v) => {
                         const on = pick === v
@@ -1527,11 +1716,13 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
                           className="flex-1 py-1.5 text-[13px] font-medium" style={NUT_DS(tt)}>{v === 'D' ? 'Đúng' : 'Sai'}</button>
                       })}
                     </div>
-                    {daNop && menhDeReveal[orig]?.loi_giai && <div className="mt-2 pt-1.5 text-[13px]" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.muted }}><MathText>{menhDeReveal[orig].loi_giai as string}</MathText></div>}
+                    {daNop && menhDeReveal[orig]?.loi_giai && <div className="mt-2 pt-1.5 text-[13px]" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.muted }}><ChuMon mon={test.mon}>{menhDeReveal[orig].loi_giai as string}</ChuMon></div>}
                   </div>
                 )
               })}
             </div>
+          ) : cau.kieu_nhap === 'phieu_4o' ? (
+            <ONhap4O value={(ans[cau.id] as string) ?? ''} onChange={(v) => luu(cau.id, v)} disabled={daNop} co={15} />
           ) : (
             <input value={(ans[cau.id] as string) ?? ''} onChange={(e) => setAns((s) => ({ ...s, [cau.id]: e.target.value }))} onBlur={(e) => luu(cau.id, e.target.value)} disabled={daNop}
               placeholder="Nhập đáp án…" className={`${O_NHAP_CLS} text-[15px]`} style={O_NHAP} />
@@ -1541,7 +1732,7 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
             <div className="mt-4 p-3" style={{ background: vd === 'correct' ? NEN_DUNG : vd === 'partial' ? NEN_CB : NEN_SAI, borderRadius: R_TRONG }}>
               <p className="text-[15px] font-semibold" style={{ color: vd === 'correct' ? MAU.dung : vd === 'partial' ? MAU.canhBao : MAU.sai }}>{vd === 'correct' ? '🎉 Đúng' : vd === 'partial' ? '👍 Đúng một phần' : '😔 Chưa đúng'}</p>
               {cau.loai_cau === 'tra_loi_ngan' && vd !== 'correct' && <p className="mt-1 text-[13px]" style={{ color: MAU.muted }}>Đáp án đúng: <b style={{ color: MAU.dung }}>{String(rv?.dap_an_key)}</b></p>}
-              {rv?.loi_giai && <div className="mt-2 pt-2 text-[14px] leading-relaxed" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.ink }}><p className="mb-1 text-[12px] font-semibold uppercase" style={{ color: MAU.muted }}>Lời giải</p><MathText>{rv.loi_giai}</MathText></div>}
+              {rv?.loi_giai && <div className="mt-2 pt-2 text-[14px] leading-relaxed" style={{ borderTop: `1px solid ${MAU.line}`, color: MAU.ink }}><p className="mb-1 text-[12px] font-semibold uppercase" style={{ color: MAU.muted }}>Lời giải</p><ChuMon mon={test.mon}>{rv.loi_giai}</ChuMon></div>}
               {rv?.anh_dap_an && <img src={rv.anh_dap_an} alt="lời giải" className="mt-2 max-h-72 rounded-lg bg-white" style={{ border: `1px solid ${MAU.line}` }} />}
             </div>
           )}

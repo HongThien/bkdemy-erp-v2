@@ -95,7 +95,7 @@ export function DauTrangHS({ tieuDe, phu, onBack, phai, theoMon }: { tieuDe: Rea
   return (
     <div className="flex items-center gap-3">
       {onBack && (
-        <button onClick={onBack} aria-label="Quay lại" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[20px] active:scale-95" style={{ ...THE_TRON, borderRadius: '999px' }}>‹</button>
+        <button onClick={onBack} aria-label="Quay lại" className="flex h-10 w-10 shrink-0 items-center justify-center text-[20px] active:scale-95" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius-pill)' }}>‹</button>
       )}
       <div className="min-w-0 flex-1 leading-tight">
         <h1 className="truncate text-[21px] font-bold" style={{ ...HEAD, color: 'var(--sk-ink)', textShadow: '0 1px 8px var(--sk-bg)' }}>{tieuDe}</h1>
@@ -126,13 +126,13 @@ export function NutHS({ children, onClick, tat, phu, className = '', type = 'but
 // Nhãn nhỏ (pill). mau: màu chữ/viền (mặc định màu nhấn); dac = tô đặc.
 export function NhanHS({ children, mau = 'var(--sk-acc)', dac }: { children: ReactNode; mau?: string; dac?: boolean }) {
   return (
-    <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-0.5 text-[11.5px] font-bold"
-      style={dac ? { background: mau, color: 'var(--sk-acc-ink)' } : { border: `1px solid ${mau}`, color: mau }}>{children}</span>
+    <span className="inline-flex items-center gap-1 whitespace-nowrap px-2 py-0.5 text-[11.5px] font-bold"
+      style={{ borderRadius: 'var(--sk-radius-pill)', ...(dac ? { background: mau, color: 'var(--sk-acc-ink)' } : { border: `1px solid ${mau}`, color: mau }) }}>{children}</span>
   )
 }
 
 export function BadgeHS({ n }: { n: number }) {
-  return <span className="flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[11px] font-extrabold" style={{ background: 'var(--sk-badge)', color: 'var(--sk-badge-ink)' }}>{n}</span>
+  return <span className="flex h-5 min-w-5 items-center justify-center px-1.5 text-[11px] font-extrabold" style={{ borderRadius: 'var(--sk-radius-pill)', background: 'var(--sk-badge)', color: 'var(--sk-badge-ink)' }}>{n}</span>
 }
 
 // Tiêu đề nhóm trong trang (chữ hoa nhỏ, màu mờ).
@@ -143,4 +143,83 @@ export function NhomHS({ children }: { children: ReactNode }) {
 // Trạng thái rỗng / đang tải / lỗi — 1 kiểu cho mọi màn.
 export function TrongHS({ children }: { children: ReactNode }) {
   return <TheHS className="px-4 py-6 text-center text-[14px]"><span style={{ color: 'var(--sk-muted)' }}>{children}</span></TheHS>
+}
+
+// ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+// MÀN ĐỌC — tầng CUỐI của luồng tra cứu (Thùy 03/10): menu/danh sách vẫn nằm trên tranh nền (ManHS), nhưng bấm vào
+// 1 KIẾN THỨC (mục sổ tay, lý thuyết 1 dạng…) ⇒ sang màn riêng nền SÁNG trơn, thẻ trắng, chữ tối — mẫu file gốc KHTN Pocket.
+// (Song song: bấm vào 1 CÂU HỎI ⇒ màn làm bài riêng `LamBai`.) Màu lấy từ biến `--sk-doc-*` (registry: DOC_MAC_DINH / Skin.doc);
+// màu nhấn theo môn/phân môn truyền vào `mau` (registry `mauDocMon`) — component không tự chọn màu theo môn.
+// Luật dùng: design/STYLE-HS.md §"Menu vs màn riêng".
+// ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+export type MauNhanDoc = { acc: string; nhat: string }
+
+export function ManDocHS({ onBack, duong, mau, children }: { onBack: () => void; duong?: ReactNode; mau: MauNhanDoc; children: ReactNode }) {
+  const bien = { '--doc-acc': mau.acc, '--doc-nhat': mau.nhat } as CSSProperties
+  return (
+    <div className="min-h-[100dvh]" style={{ ...bien, background: 'var(--sk-doc-nen)', color: 'var(--sk-doc-ink)', fontFamily: 'var(--sk-doc-font)', textShadow: 'none' }}>
+      <div className="sticky top-0 z-10" style={{ background: 'var(--sk-doc-nen)', boxShadow: '0 1px 0 var(--sk-doc-line)' }}>
+        <div className="mx-auto flex max-w-[760px] items-center gap-3 px-4 pb-2.5 pt-[calc(10px+env(safe-area-inset-top))]">
+          <button onClick={onBack} aria-label="Quay lại"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[22px] leading-none active:scale-95"
+            style={{ background: 'var(--sk-doc-giay)', color: 'var(--sk-doc-ink)', boxShadow: '0 0 0 1px var(--sk-doc-line)' }}>‹</button>
+          {duong && <p className="min-w-0 flex-1 truncate text-[12.5px] font-semibold" style={{ color: 'var(--sk-doc-muted)' }}>{duong}</p>}
+        </div>
+      </div>
+      <div className="mx-auto flex max-w-[760px] flex-col gap-3 px-4 pb-[calc(28px+env(safe-area-inset-bottom))] pt-3">{children}</div>
+    </div>
+  )
+}
+
+// Thẻ chính của 1 kiến thức: chip (loại · lớp · chủ đề) → tiêu đề → tóm tắt → các khối. Viền trên = màu nhấn của môn.
+export function TheDocHS({ chip, tieuDe, tomTat, children }: { chip?: ReactNode; tieuDe: ReactNode; tomTat?: ReactNode; children?: ReactNode }) {
+  return (
+    <article className="flex flex-col gap-3.5 rounded-[18px] px-5 pb-5 pt-4"
+      style={{ background: 'var(--sk-doc-giay)', boxShadow: 'var(--sk-doc-bong)', borderTop: '4px solid var(--doc-acc)' }}>
+      {chip && <div className="flex flex-wrap items-center gap-1.5">{chip}</div>}
+      <h1 className="text-[22px] font-extrabold leading-tight" style={{ color: 'var(--sk-doc-ink)' }}>{tieuDe}</h1>
+      {tomTat && <div className="-mt-1 text-[15px] leading-[1.7]" style={{ color: 'var(--sk-doc-ink)' }}>{tomTat}</div>}
+      {children}
+    </article>
+  )
+}
+
+// Chip trong màn đọc: dac = tô màu nhấn (loại kiến thức), thường = nền nhạt (lớp, chủ đề).
+export function ChipDocHS({ children, dac }: { children: ReactNode; dac?: boolean }) {
+  return (
+    <span className="inline-flex items-center whitespace-nowrap rounded-full px-2.5 py-0.5 text-[12px] font-bold"
+      style={dac ? { background: 'var(--doc-acc)', color: 'var(--sk-doc-giay)' } : { background: 'var(--doc-nhat)', color: 'var(--doc-acc)' }}>{children}</span>
+  )
+}
+
+// Khối nội dung trong thẻ. kieu: cong_thuc (nền nhạt + vạch nhấn trái) · vi_du (nền xám nhạt) · nham (viền đứt đỏ nhạt) ·
+// luu_y (nền vàng nhạt) · hinh (khung nhạt, căn giữa) · thuong (chỉ nhãn + nội dung).
+export type KieuKhoiDoc = 'cong_thuc' | 'vi_du' | 'nham' | 'luu_y' | 'hinh' | 'thuong'
+export function KhoiDocHS({ nhan, kieu = 'thuong', children }: { nhan?: ReactNode; kieu?: KieuKhoiDoc; children: ReactNode }) {
+  const nen: Record<KieuKhoiDoc, CSSProperties> = {
+    cong_thuc: { background: 'var(--doc-nhat)', borderLeft: '4px solid var(--doc-acc)', borderRadius: '14px' },
+    vi_du: { background: 'var(--sk-doc-vd)', borderRadius: '14px' },
+    nham: { background: 'var(--sk-doc-nham-nen)', border: '1.5px dashed var(--sk-doc-nham-vien)', borderRadius: '14px' },
+    luu_y: { background: 'var(--sk-doc-luuy-nen)', borderRadius: '14px' },
+    hinh: { background: 'var(--sk-doc-vd)', borderRadius: '14px' },
+    thuong: {},
+  }
+  const mauNhan = kieu === 'nham' ? 'var(--sk-doc-nham-chu)' : kieu === 'luu_y' ? 'var(--sk-doc-luuy-chu)' : kieu === 'thuong' ? 'var(--sk-doc-muted)' : 'var(--doc-acc)'
+  return (
+    <section className={kieu === 'thuong' ? '' : kieu === 'hinh' ? 'flex justify-center p-3' : 'px-4 py-3'} style={nen[kieu]}>
+      {nhan && <p className="mb-1.5 text-[11.5px] font-extrabold uppercase tracking-[0.08em]" style={{ color: mauNhan }}>{nhan}</p>}
+      <div className="text-[14.5px] leading-[1.75]" style={{ color: 'var(--sk-doc-ink)' }}>{children}</div>
+    </section>
+  )
+}
+
+// Trạng thái đang tải / rỗng / lỗi trong màn đọc.
+export function TrongDocHS({ icon, tieuDe, moTa }: { icon: string; tieuDe: string; moTa?: string }) {
+  return (
+    <div className="rounded-[18px] px-5 py-8 text-center" style={{ background: 'var(--sk-doc-giay)', boxShadow: 'var(--sk-doc-bong)' }}>
+      <div className="text-[34px]">{icon}</div>
+      <p className="mt-2 text-[16px] font-extrabold" style={{ color: 'var(--sk-doc-ink)' }}>{tieuDe}</p>
+      {moTa && <p className="mt-1 text-[13.5px] leading-snug" style={{ color: 'var(--sk-doc-muted)' }}>{moTa}</p>}
+    </div>
+  )
 }

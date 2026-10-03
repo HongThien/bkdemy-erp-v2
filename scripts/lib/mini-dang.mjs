@@ -5,10 +5,10 @@
 
 const gcd = (a, b) => { a = a < 0n ? -a : a; b = b < 0n ? -b : b; while (b) { [a, b] = [b, a % b] } return a }
 export const R = (p, q = 1n) => { if (q === 0n) return null; if (q < 0n) { p = -p; q = -q } const g = gcd(p, q) || 1n; return { p: p / g, q: q / g } }
-const add = (a, b) => R(a.p * b.q + b.p * a.q, a.q * b.q)
-const sub = (a, b) => R(a.p * b.q - b.p * a.q, a.q * b.q)
-const mul = (a, b) => R(a.p * b.p, a.q * b.q)
-const div = (a, b) => (b.p === 0n ? null : R(a.p * b.q, a.q * b.p))
+const add = (a, b) => (a && b) ? R(a.p * b.q + b.p * a.q, a.q * b.q) : null
+const sub = (a, b) => (a && b) ? R(a.p * b.q - b.p * a.q, a.q * b.q) : null
+const mul = (a, b) => (a && b) ? R(a.p * b.p, a.q * b.q) : null
+const div = (a, b) => (a && b && b.p !== 0n) ? R(a.p * b.q, a.q * b.p) : null
 const cmp = (a, b) => { const l = a.p * b.q, r = b.p * a.q; return l < r ? -1 : l > r ? 1 : 0 }
 const floorDiv = (a, b) => { let q = a / b, r = a % b; if (r !== 0n && (r < 0n) !== (b < 0n)) q -= 1n; return q } // b > 0n
 const roundHalfUp = (v) => floorDiv(2n * v.p + v.q, 2n * v.q) // Rat v ⇒ BigInt gần nhất, ,5 làm tròn LÊN (quy ước VN)
@@ -4229,44 +4229,62 @@ export function timXPhanThucCanBac2(noiDung, rule) {
 // khi không tách được 1 công thức sai riêng. Khảo sát xác nhận đáp số toàn cụm ~98% (459/469) là "1 số",
 // "2 số cách nhau ; hoặc ,", hoặc "N hoặc M" — KHÁC MỌI dạng khác trong file này: hàm nhận ĐÁP SỐ (không phải
 // noi_dung) làm đầu vào — mcq-auto.mjs phải gọi khác đi (dispatch riêng, xem ANSWER_DANG).
-function parseSoThucTe(s) { const c = parseDonThucCore(String(s).trim().replace(',', '.')); return (c && c.vars.size === 0 && !c.hasIrrational) ? c.coef : null }
+function parseSoThucTe(s) {
+  let t = String(s).trim()
+  const labelM = t.match(/^[A-Za-zĐđ]\w*\s*=\s*(.+)$/) // nhãn biến đứng trước 1 giá trị, vd "x=1", "a=25"
+  if (labelM) t = labelM[1].trim()
+  const c = parseDonThucCore(t.replace(',', '.')); return (c && c.vars.size === 0 && !c.hasIrrational) ? c.coef : null
+}
+function tachDapSoThucTe(rawClean0) { // → {vals: Rat[], sep} hoặc null — dùng chung cho canon lẫn sinh nhiễu
+  const rawClean = rawClean0.replace(/\s*\([^()]*\)\s*$/, '').trim() || rawClean0 // bỏ ghi chú trong ngoặc Ở CUỐI, vd "x=-3 (khi đó B=1)" — chỉ khi bỏ xong vẫn còn nội dung
+  // ký hiệu tập hợp "n ∈ {-4;-2;0;2}" hoặc LaTeX "n \in \{-4,-6\}" (có tiền tố, .*? quét tới ∈/\in) HOẶC
+  // trần "{4;36}" (khảo sát 01/10 khối 9 T109030302-304) — nhánh trần bắt buộc CẢ CHUỖI đúng = "{...}", không
+  // cho .*? quét tự do, vì nếu cho phép thì nó khớp NHẦM vào dấu } ĐUÔI của 1 \dfrac{a}{b} trong chuỗi nhiều
+  // giá trị nối "\dfrac{3}{4};-\dfrac{3}{4}" (coi "{4}" cuối là cả set — đã bắt được qua regression test, xem
+  // DEVLOG 01/10). SET nên khi so sánh phải SẮP XẾP (khác cặp có thứ tự).
+  const setM = rawClean.match(/^.*?(?:∈|\\in)\s*\\?\{([^{}\\]+)\\?\}$/) || rawClean.match(/^\{([^{}\\]+)\}$/)
+  if (setM) {
+    const parts = setM[1].split(/[;,]/).map((p) => p.trim()).filter(Boolean); if (parts.length < 1 || parts.length > 4) return null
+    const vals = parts.map(parseSoThucTe); if (vals.some((v) => !v)) return null
+    return { vals, sep: ' ∈ {} ' }
+  }
+  const clean = rawClean.startsWith('(') && rawClean.endsWith(')') ? rawClean.slice(1, -1).trim() : rawClean // "(3; 8/3; -8/3)" — bóc ngoặc bọc ngoài cả bộ
+  const hoacM = clean.match(/^(.+?)\s*hoặc\s*(.+)$/)
+  if (hoacM) { const a = parseSoThucTe(hoacM[1]), b = parseSoThucTe(hoacM[2]); return (a && b) ? { vals: [a, b], sep: ' hoặc ' } : null }
+  const duM = clean.match(/^(.+?)\s*dư\s*(.+)$/) // phép chia có dư, vd "27 dư 14" — thứ tự CÓ Ý NGHĨA (thương rồi số dư)
+  if (duM) { const a = parseSoThucTe(duM[1]), b = parseSoThucTe(duM[2]); return (a && b) ? { vals: [a, b], sep: ' dư ' } : null }
+  const parts = clean.split(/[;,]/).map((p) => p.trim()).filter(Boolean); if (parts.length < 1 || parts.length > 4) return null
+  const vals = parts.map(parseSoThucTe); if (vals.some((v) => !v)) return null
+  return { vals, sep: ';' }
+}
+function renderDapSoThucTe(vals, sep) {
+  if (sep === ' hoặc ') { const arr = [...vals].sort(cmp); return `${texR(arr[0])} hoặc ${texR(arr[1])}` }
+  if (sep === ' dư ') return `${texR(vals[0])} dư ${texR(vals[1])}` // KHÔNG sort — thương/dư có thứ tự cố định
+  if (sep === ' ∈ {} ') { const arr = [...vals].sort(cmp); return `∈ {${arr.map(texR).join(';')}}` } // SET — sắp xếp để so sánh ổn định
+  return vals.map(texR).join(';')
+}
 export function chuanHoaDapSoThucTe(s) {
   const clean = String(s ?? '').replace(/\$/g, '').trim()
-  const hoacM = clean.match(/^(.+?)\s*hoặc\s*(.+)$/)
-  if (hoacM) {
-    const a = parseSoThucTe(hoacM[1]), b = parseSoThucTe(hoacM[2]); if (!a || !b) return clean
-    const arr = [a, b].sort(cmp)
-    return `${texR(arr[0])} hoặc ${texR(arr[1])}`
-  }
-  const parts = clean.split(/[;,]/).map((p) => p.trim()).filter(Boolean); if (parts.length < 1 || parts.length > 2) return clean
-  const nums = parts.map(parseSoThucTe); if (nums.some((n) => !n)) return clean
-  return nums.map(texR).join(';')
+  const t = tachDapSoThucTe(clean); if (!t) return clean
+  return renderDapSoThucTe(t.vals, t.sep)
 }
 export function evalDapSoThucTeKetQua(s) { const t = chuanHoaDapSoThucTe(s); return t || null }
 export function sinhNhieuDapSoThucTe(dapAn, rule) {
   const clean = String(dapAn ?? '').replace(/\$/g, '').trim()
-  let vals, sep
-  const hoacM = clean.match(/^(.+?)\s*hoặc\s*(.+)$/)
-  if (hoacM) {
-    const a = parseSoThucTe(hoacM[1]), b = parseSoThucTe(hoacM[2]); if (!a || !b) return null
-    vals = [a, b]; sep = ' hoặc '
-  } else {
-    const parts = clean.split(/[;,]/).map((p) => p.trim()).filter(Boolean); if (parts.length < 1 || parts.length > 2) return null
-    vals = parts.map(parseSoThucTe); if (vals.some((v) => !v)) return null
-    sep = ';'
-  }
-  const render = (arr) => arr.map(texR).join(sep)
+  const parsed = tachDapSoThucTe(clean); if (!parsed) return null
+  const { vals, sep } = parsed
+  const render = (arr) => renderDapSoThucTe(arr, sep)
   const dungText = render(vals)
   if (!rule) return { text: dungText }
   if (rule === 'R343') {
-    if (vals.length === 2) { const t = render([vals[1], vals[0]]); if (t === dungText) return null; return { text: t, ds: 'hoán đổi nhầm 2 giá trị' } }
+    if (vals.length >= 2) { const cp = [vals[1], vals[0], ...vals.slice(2)]; const t = render(cp); if (t === dungText) return null; return { text: t, ds: sep === ' dư ' ? 'hoán đổi nhầm thương và số dư' : 'hoán đổi nhầm 2 giá trị' } }
     const t = render([mul(vals[0], R(2n))]); if (t === dungText) return null
     return { text: t, ds: 'tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)' }
   }
   if (rule === 'R344') { const cp = [...vals]; cp[0] = add(cp[0], R(1n)); const t = render(cp); if (t === dungText) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở giá trị thứ nhất' } }
   if (rule === 'R345') { const cp = [...vals]; cp[0] = sub(cp[0], R(1n)); const t = render(cp); if (t === dungText) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)' } }
   if (rule === 'R346') {
-    const idx = vals.length >= 2 ? 1 : 0, delta = vals.length >= 2 ? R(1n) : R(-2n)
+    const idx = vals.length >= 2 ? vals.length - 1 : 0, delta = vals.length >= 2 ? R(1n) : R(-2n)
     const cp = [...vals]; cp[idx] = add(cp[idx], delta); const t = render(cp); if (t === dungText) return null
     return { text: t, ds: vals.length >= 2 ? 'tính lệch 1 đơn vị ở giá trị thứ hai' : 'tính lệch giá trị (cứu ca trùng công thức)' }
   }

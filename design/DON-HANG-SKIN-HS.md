@@ -2,7 +2,7 @@
 
 > Soạn 28/09/2026. Thùy chốt: **mỗi nhóm khối có bộ skin riêng**.
 > - **Thị trấn** (chuẩn thiết kế lớp 3–5, mở cho mọi khối — Thùy 28/09 tối) → **Đơn 1 v2** (giao không qua zip, như Đơn 3 v3)
-> - **Lớp 6–8** · gốc **Khối vuông** · không có điện thoại riêng → **Đơn 2**
+> - **Lớp 6–8** · gốc **Khối vuông** · không có điện thoại riêng → **Đơn 2** — ⚠ THAY bởi `design/DON-HANG-STYLE-KHOI.md` (01/10)
 > - **Lớp 9–12** · nhiều skin để HS chọn · có điện thoại riêng. 4 skin (Tối giản, Đấu trường, Y2K, Soft Hàn) Claude dựng bằng code, không cần ChatGPT.
 >   2 skin cần hình → **Đơn 3 v3 (Lo-fi đêm)** và **Đơn 4 v2 (Anime RPG)** — cả 2 theo "BỐ CỤC CHUNG lớp 9–12" (ảnh gốc RPG Thùy đã xem).
 >
@@ -149,6 +149,9 @@ Town_19–24, 26 thừa — giữ trong `design/bk-ui-src/`, không đưa vào a
 ---
 
 ## Đơn 2 — Lớp 6–8 · Khối vuông
+
+> ⚠ **ĐÃ THAY (01/10) bởi `design/DON-HANG-STYLE-KHOI.md`** — khuôn mới (ảnh toàn cảnh → từng hình, không zip), bố cục màn chính hiện tại,
+> font pixel có dấu (Handjet). **ĐỪNG gửi bản dưới** — giữ lại chỉ để đối chiếu.
 
 ```
 ĐƠN ĐẶT HÀNG
@@ -340,3 +343,862 @@ ASSETS TỐI THIỂU (thấy gì trong ảnh toàn cảnh phải có file — đ
                  + bai_tren_lop, et, btvn, hoc_tu_dau (MỚI, cùng phong cách)  + banner: lich (lịch tím), kiem_tra_lai (tờ tài liệu hồng)
                  + sao_cap (ngôi sao cấp), dong_xu (đồng xu)   (≥ 512, nền trong suốt)
 ```
+
+---
+
+## Đơn 6 — Bản đồ phiêu lưu + quái vật (style Anime RPG) — soạn 01/10 cho release V1.0 (`spec-v1-app-hs.md` §4)
+
+> ⚠ **PHẦN LỚN ĐÃ THAY BỞI "Đơn 6 v2" ở cuối file này (01/10 tối)** — đừng gửi khối đơn dưới. Còn dùng được: #06–#13 (8 quái) và #39 (cờ).
+
+> App HS đổi thành "Giải cứu thế giới — đánh quái vật": chủ đề = lục địa · chuyên đề = khu vực · dạng = màn đấu · cụm = quái.
+> Số chủ đề mỗi khối khác nhau (3–24) ⇒ KHÔNG vẽ riêng từng chủ đề. Vẽ **bộ vùng đất (biome) dùng xoay vòng** + **bộ quái dùng chung**,
+> code gắn cố định vào chủ đề/cụm. Vị trí khu vực, màn, đường đi, sương mù, máu quái, cờ chinh phục đều do CODE vẽ lên hình.
+>
+> **Cách gửi:** context ChatGPT MỚI → dán `CHATGPT-UI-KIT.md` → dán khối đơn dưới → đính kèm 2 ảnh làm mẫu phong cách:
+> `design/bk-ui-src/Nền app HS cấp 3_2.png` (nền đảo trời) + `Nền app HS cấp 3_5.png` (icon sách phép). Mỗi hình xong: tải về
+> `design/bk-ui-src/Adventure/`, gõ "tiếp". **Làm theo đúng thứ tự — hết thời gian thì dừng ở đâu cũng dùng được phần đã có** (deadline 06/10).
+
+```
+ĐƠN ĐẶT HÀNG
+App:            hs
+Màn:            adventure-rpg (bản đồ phiêu lưu + quái vật)
+Mô tả:          App học Toán cho học sinh, chủ đề "Giải cứu thế giới — đánh quái vật". Mỗi chủ đề kiến thức là 1 vùng đất,
+                mỗi dạng bài là 1 màn đấu, mỗi nhóm bài là 1 con quái. Học sinh làm đúng câu hỏi = tung đòn đánh quái.
+                Thiết bị chính: iPad NGANG 1180×820 và máy tính.
+Phong cách:     đúng phong cách 2 ảnh đính kèm: anime fantasy, ánh vàng cổ, xanh tím, lấp lánh sao, vẽ tay tỉ mỉ.
+                Quái vật DỄ THƯƠNG – NGỘ NGHĨNH kiểu slime/thú nhỏ fantasy (học sinh lớp 3–12 đều chơi), KHÔNG ghê sợ, KHÔNG máu me.
+Phiên bản kit:  v1
+
+══ CÁCH GIAO HÀNG (bắt buộc — khác kit) ══
+- KHÔNG đóng zip. KHÔNG viết DESIGN.md. KHÔNG dựng hình bằng code / SVG / HTML / ghép khối.
+- MỖI LƯỢT TRẢ LỜI = ĐÚNG 1 HÌNH, vẽ bằng công cụ tạo ảnh. Dòng đầu ghi số + tên file, vd "#07 quai_slime_lua".
+  Vẽ xong dừng, chờ tôi gõ "tiếp". KHÔNG gộp nhiều hình vào 1 ảnh (trừ #01).
+- Ảnh vẽ ra trong chat LÀ file giao.
+
+══ CHUẨN ══
+- NỀN VÙNG ĐẤT: ngang 1672×941, nền đặc, KHÔNG nhân vật, KHÔNG quái, KHÔNG chữ, KHÔNG đường đi vẽ sẵn. Nhìn từ trên cao chéo
+  (như bản đồ game), địa hình trải đều cả khung, có nhiều khoảng trống bằng phẳng để đặt 6–10 điểm màn đấu lên. Hơi tối nhẹ ở viền.
+- ĐẢO/LỤC ĐỊA NHỎ (cho bản đồ thế giới): 1024×1024, nền TRONG SUỐT, 1 hòn đảo nổi nhìn chéo từ trên, đúng biome tương ứng.
+- QUÁI: 1024×1024, nền TRONG SUỐT, toàn thân, đứng giữa khung, chiếm ~75%, quay 3/4 về phía người xem, tư thế sẵn sàng chiến đấu
+  vui nhộn. Mỗi con 1 màu chủ đạo khác nhau, nhìn hình bóng là phân biệt được.
+- BOSS: như QUÁI nhưng to, oai hơn, có vương miện/giáp/hào quang, vẫn dễ thương.
+- KHÔNG chữ, số, logo, khung, nền phía sau quái.
+
+══ DANH SÁCH (đúng thứ tự ưu tiên) ══
+A. Duyệt phong cách
+   #01 Ảnh toàn cảnh iPad ngang: 1 màn bản đồ vùng đất rừng, có 8 điểm màn đấu nối bằng đường đi, 3 điểm đã cắm cờ, 1 điểm đang
+       sáng có 1 con quái đứng trên, phần cuối bản đồ phủ sương mù; góc trái là nhân vật pháp sư đồng hành (như ảnh mẫu).
+       → DỪNG, chờ Thùy duyệt.
+B. 4 vùng đất CẦN NHẤT (bản đồ khu vực)
+   #02 nen_vung_rung        — rừng phép thuật, cây khổng lồ, nấm phát sáng
+   #03 nen_vung_bang        — thung lũng băng tuyết, pha lê xanh
+   #04 nen_vung_nui_lua     — núi lửa, dung nham cam, đá đen (vẫn tươi sáng, không u ám)
+   #05 nen_vung_bien_dao    — quần đảo biển xanh ngọc, bãi cát, san hô
+C. 8 con quái đầu tiên (mỗi con 1 hệ)
+   #06 quai_slime_la   (xanh lá)   #07 quai_slime_lua (cam đỏ)   #08 quai_meo_bang (xanh băng)   #09 quai_rua_da (nâu đá)
+   #10 quai_cu_dem (tím)           #11 quai_ca_bong (xanh biển)  #12 quai_nam_ma (hồng tím)    #13 quai_chim_set (vàng)
+D. 2 boss
+   #14 boss_rong_con   (rồng con có vương miện)      #15 boss_golem_pha_le (người đá pha lê)
+E. Bản đồ thế giới
+   #16 nen_the_gioi    — biển mây ban đêm nhìn từ trên cao, trống để đặt các đảo (ngang 1672×941, nền đặc)
+   #17 dao_rung · #18 dao_bang · #19 dao_nui_lua · #20 dao_bien   (đảo nổi trong suốt, khớp 4 vùng ở B)
+F. Mở rộng (làm nếu còn thời gian)
+   #21 nen_vung_sa_mac · #22 nen_vung_dam_lay · #23 nen_vung_thanh_co · #24 nen_vung_troi_sao
+   #25–#32 thêm 8 quái: quai_tho_gio · quai_be_nham · quai_sao_bien · quai_ech_doc · quai_dom_dom · quai_soi_bang · quai_bo_giap · quai_ma_lua
+   #33 boss_phuong_hoang · #34 boss_bach_tuoc · #35 dao_sa_mac · #36 dao_dam_lay · #37 dao_thanh_co · #38 dao_troi_sao
+G. Đồ vật nhỏ (trong suốt, 512×512)
+   #39 co_chinh_phuc (lá cờ cắm đất) · #40 ruong_khu_vuc (rương thưởng) · #41 cong_khu_vuc (cổng đá vào khu)
+
+GHI ĐÈ KIT §1: KHÔNG chữ trong mọi hình. KHÔNG khẩu hiệu.
+Bắt đầu với #01.
+```
+
+
+---
+
+## Đơn 6 v2 — Chất liệu + sprite cho 3 tầng bản đồ phiêu lưu (style Anime RPG) — soạn 01/10 tối, THAY phần lớn Đơn 6
+
+> ⛔ **ĐÃ HỦY (01/10 khuya, Thùy chốt): bản đồ phiêu lưu dựng 2.5D/3D bằng three.js, hình viết bằng CODE — KHÔNG gửi đơn này cho ChatGPT.**
+> Còn lại cho ChatGPT: chỉ icon. Quái vật/boss do Thùy thiết kế riêng (điểm cắm `skin/the3d/nguonQuai.ts`). Xem `spec-v1-app-hs.md` §4.5. Nội dung dưới giữ để tra.
+
+> Lý do đổi: logic phiêu lưu đã chốt qua mockup (`spec-v1-app-hs.md` §4.5, mockup `design/mockup-phieu-luu.html`). **Lục địa, vùng, biên giới, con đường đều do CODE vẽ**
+> (số chủ đề/chuyên đề/dạng mỗi khối mỗi khác, thêm dạng là bản đồ tự co giãn) ⇒ ChatGPT **không vẽ hình dạng lục địa nữa**. ChatGPT chỉ vẽ:
+> **chất liệu mặt đất (texture)** lấp vào hình code vẽ · **sprite trang trí** · **quái** · **hero chiến đấu** · **nền màn đấu** · vài đồ vật.
+>
+> **Đơn 6 cũ còn dùng được:** #06–#13 (8 quái, giữ nguyên tên file) · #39 cờ chinh phục. **Bỏ:** #02–#05 nền vùng, #16–#20 nền thế giới + đảo (code vẽ thay),
+> #14–#15 boss riêng (boss giờ là quái thường + vương miện; 2 boss đặc biệt để dành cho "boss cuối hành trình" nếu làm).
+>
+> **Cách gửi:** context ChatGPT MỚI → dán `CHATGPT-UI-KIT.md` → dán khối đơn dưới → đính kèm 4 ảnh: `Nền app HS cấp 3_2.png` + `Nền app HS cấp 3_5.png` (phong cách) +
+> 2 ảnh chụp mockup (mở link mockup, chụp tab **Thế giới** và tab **Chặng đường**) làm **bố cục tham khảo, KHÔNG chép hình tạm trong đó**. Mỗi hình xong: tải về
+> `design/bk-ui-src/Adventure/`, gõ "tiếp". **Làm đúng thứ tự — dừng ở đâu cũng dùng được phần đã có** (deadline 06/10, hình tải về hạn 03/10).
+
+```
+ĐƠN ĐẶT HÀNG
+App:            hs
+Màn:            adventure-rpg v2 (3 tầng bản đồ + màn đấu)
+Mô tả:          App học Toán cho học sinh, chủ đề "Giải cứu thế giới — đánh quái vật". Học sinh đi trên bản đồ thế giới → bấm một lục địa →
+                bấm một vùng → đi trên con đường các chặng; mỗi chặng có một đội quái, quái cuối (boss) đội vương miện. Làm đúng câu hỏi = tung đòn.
+                Thiết bị chính: iPad NGANG 1180×820 và máy tính. LỤC ĐỊA, VÙNG, ĐƯỜNG ĐI do lập trình viên vẽ bằng code,
+                bạn CHỈ vẽ chất liệu và sprite theo danh sách dưới.
+Phong cách:     đúng phong cách 2 ảnh mẫu: anime fantasy, ánh vàng cổ, xanh tím, lấp lánh sao, vẽ tay tỉ mỉ.
+                Quái DỄ THƯƠNG – NGỘ NGHĨNH kiểu slime/thú nhỏ fantasy (học sinh lớp 3–12 đều chơi), KHÔNG ghê sợ, KHÔNG máu me.
+Phiên bản kit:  v1
+
+══ CÁCH GIAO HÀNG (bắt buộc — khác kit) ══
+- KHÔNG đóng zip. KHÔNG viết DESIGN.md. KHÔNG dựng hình bằng code / SVG / HTML / ghép khối.
+- MỖI LƯỢT TRẢ LỜI = ĐÚNG 1 HÌNH, vẽ bằng công cụ tạo ảnh. Dòng đầu ghi số + tên file, vd "#07 dat_bang".
+  Vẽ xong dừng, chờ tôi gõ "tiếp". Chỉ #01–#03 và các "tờ sprite" được gộp nhiều thứ trong 1 ảnh.
+- Ảnh vẽ ra trong chat LÀ file giao.
+
+══ CHUẨN ══
+- TEXTURE MẶT ĐẤT (dat_*): vuông 1024×1024, nền đặc, NHÌN THẲNG TỪ TRÊN XUỐNG (không phối cảnh, không đường chân trời). Mặt đất đồng đều, họa tiết nhỏ rải đều,
+  KHÔNG có vật nổi bật ở giữa (sẽ được lặp lại nhiều lần), KHÔNG bóng đổ lớn, KHÔNG chữ. Sáng vừa phải để chữ trắng đặt lên vẫn đọc được.
+  (Không cần lặp liền mạch hoàn hảo: lập trình viên sẽ lật gương để nối.)
+- BIỂN (bien_*): vuông 1024×1024, nhìn từ trên xuống, nước xanh đậm có ánh sao/ánh trăng lấp lánh nhẹ, đồng đều.
+- TỜ SPRITE TRANG TRÍ (trangtri_*): ngang 1536×1024, nền TRONG SUỐT, đúng 6 vật nhỏ xếp lưới 3 cột × 2 hàng, mỗi vật nằm gọn trong ô của nó, cách nhau rộng,
+  KHÔNG chạm nhau, nhìn chéo từ trên cao như bản đồ game. Mỗi vật cao khoảng 60% ô.
+- QUÁI: 1024×1024, nền TRONG SUỐT, toàn thân, đứng giữa khung, chiếm ~75%, quay 3/4 về phía người xem, tư thế sẵn sàng chiến đấu vui nhộn.
+  Mỗi con 1 màu chủ đạo khác nhau, nhìn hình bóng là phân biệt được. MỖI LOÀI 2 HÌNH: bình thường `quai_x` và trúng đòn `quai_x_trung_don`
+  (cùng con đó, cùng tư thế, mắt nhắm tít, miệng há, hơi nghiêng về sau). Trạng thái "bị hạ" do code làm.
+- HERO: 1024×1536 dọc, nền TRONG SUỐT, nhìn nghiêng 3/4 sang PHẢI, toàn thân, đúng nhân vật + thú đồng hành trong 2 ảnh `nv_nam.png`, `nv_nu.png` (đính kèm).
+- NỀN MÀN ĐẤU (nen_dau_*): ngang 1672×941, nền đặc, nhìn NGANG (như sân khấu): trời + xa ở nửa trên, mặt đất bằng phẳng ở 1/3 dưới để đặt nhân vật (trái) và quái (phải).
+  KHÔNG nhân vật, KHÔNG quái, KHÔNG chữ. Nửa trên hơi tối nhẹ để thanh máu đặt lên vẫn rõ.
+- VẬT/HIỆU ỨNG: 512×512, nền TRONG SUỐT.
+- KHÔNG chữ, số, logo, khung trong MỌI hình (trừ chữ trong #01–#03 là không có).
+
+══ DANH SÁCH (đúng thứ tự ưu tiên) ══
+A. Duyệt phong cách — 3 ảnh toàn cảnh iPad ngang 1672×941 (mỗi ảnh 1 lượt)
+   #01 toan_canh_the_gioi   — bản đồ thế giới ban đêm: biển lớn, 5–6 lục địa hình dạng tự nhiên khác nhau (rừng, băng, núi lửa, sa mạc…), vài lục địa phủ sương mù,
+                              bờ biển có bọt sóng, la bàn góc phải dưới. Không chữ.
+   #02 toan_canh_chang      — màn chặng đường vùng RỪNG: con đường đất uốn lượn qua ngang màn, 4 bệ đá tròn dọc đường, mỗi bệ 1 đội 3 quái nhỏ đứng quanh 1 quái cuối TO có vương miện;
+                              pháp sư (nam) đứng đầu đường; 1 chặng đã cắm cờ, 1 chặng phủ sương. Không chữ.
+   #03 toan_canh_man_dau    — cảnh chiến đấu ngang: pháp sư bên trái đang tung phép, quái cuối đội vương miện bên phải, 2 quái nhỏ chờ phía sau, nền rừng phép thuật.
+                              → DỪNG, chờ Thùy duyệt cả 3 ảnh.
+B. Chất liệu mặt đất — 4 vùng CẦN NHẤT (rồi mới đến 4 vùng sau)
+   #04 dat_rung      — cỏ xanh đậm, rêu, lá rụng, nấm nhỏ phát sáng rải rác
+   #05 dat_bang      — tuyết xanh nhạt, băng nứt, pha lê nhỏ
+   #06 dat_nui_lua   — đá đen, vệt dung nham cam mảnh, tro
+   #07 dat_bien_dao  — cát vàng, san hô, vỏ sò, cỏ biển
+   #08 bien_dem      — biển ban đêm (dùng cho bản đồ thế giới và viền lục địa)
+C. Tờ sprite trang trí — 4 vùng đầu (6 vật/tờ, dùng rải trên lục địa và đường đi)
+   #09 trangtri_rung      — cây to, cây nhỏ, bụi cây, nấm phát sáng, khúc gỗ, cụm hoa
+   #10 trangtri_bang      — cây thông tuyết, tảng băng, người tuyết nhỏ, pha lê, đống tuyết, đá phủ tuyết
+   #11 trangtri_nui_lua   — núi lửa nhỏ, tảng đá đen, cột dung nham, cây khô, đá phát sáng cam, xương cá khô
+   #12 trangtri_bien_dao  — cây dừa, vỏ sò lớn, đá ngầm, thuyền buồm nhỏ, san hô, mỏm đá
+D. 8 quái đầu tiên (mỗi con 2 hình: thường + trúng đòn) — GIỮ tên file Đơn 6 (loài nào đã vẽ từ Đơn 6 thì chỉ vẽ thêm bản trúng đòn)
+   #13 quai_slime_la (xanh lá) · #14 quai_slime_lua (cam đỏ) · #15 quai_meo_bang (xanh băng) · #16 quai_rua_da (nâu đá)
+   #17 quai_cu_dem (tím) · #18 quai_ca_bong (xanh biển) · #19 quai_nam_ma (hồng tím) · #20 quai_chim_set (vàng)
+   (mỗi số trên là CẢ HAI hình, vẽ liền nhau; dòng đầu ghi "#13a quai_slime_la" rồi "#13b quai_slime_la_trung_don")
+E. Hero chiến đấu + hiệu ứng
+   #21 hero_nam_dung · #22 hero_nam_phep (tư thế tung phép, tay giơ về bên phải, có quầng sáng trên tay)
+   #23 hero_nu_dung  · #24 hero_nu_phep
+   #25 vuong_mien       — vương miện vàng nhỏ xinh, nhìn thẳng, gắn lên đầu BẤT KỲ quái nào (512×512 trong suốt)
+   #26 fx_chem          — vệt chém/tia phép vàng trắng cong (trong suốt)
+   #27 fx_trung_don     — vụ nổ sao lấp lánh vàng (trong suốt)
+   #28 fx_hoi_mau       — vòng sáng xanh lục + vài dấu cộng nhỏ bay lên (trong suốt; dấu cộng là hình, không phải chữ)
+   #29 be_da            — bệ đá tròn nhìn chéo từ trên cao, có vòng rune vàng mờ, quái đứng trên (trong suốt)
+   #30 co_chinh_phuc    — lá cờ đỏ cắm xuống đất (trong suốt) — bỏ qua nếu đã có từ Đơn 6
+   #31 may_suong        — 3 đám mây/sương mù trắng xanh, tơi xốp, mép mờ, xếp 3 đám trong 1 ảnh 1536×1024 trong suốt (phủ lên vùng chưa dạy)
+F. Nền màn đấu — 4 vùng đầu
+   #32 nen_dau_rung · #33 nen_dau_bang · #34 nen_dau_nui_lua · #35 nen_dau_bien_dao
+G. Mở rộng (làm nếu còn thời gian)
+   #36–#39 dat_sa_mac · dat_dam_lay · dat_thanh_co · dat_troi_sao        #40–#43 trangtri_ cho 4 vùng đó
+   #44–#47 nen_dau_ cho 4 vùng đó
+   #48–#63 thêm 8 quái × 2 hình: quai_tho_gio · quai_be_nham · quai_sao_bien · quai_ech_doc · quai_dom_dom · quai_soi_bang · quai_bo_giap · quai_ma_lua
+   #64 thuyen_buom_the_gioi (thuyền nhỏ trang trí trên biển, trong suốt) · #65 la_ban (la bàn góc bản đồ, trong suốt)
+
+GHI ĐÈ KIT §1: KHÔNG chữ trong mọi hình. KHÔNG khẩu hiệu.
+Bắt đầu với #01.
+```
+
+> **Khi hình về (Claude làm):** nén vào `public/bk-ui/hs/skin/rpg/phieuluu/` (đặt tên MỚI, không đè tên cũ — luật PWA ở `design/STYLE-HS.md`), khai trong `skin/styles/rpg.ts` (`phieuLuu: { dat, bien, trangTri, quai, hero, fx, nenDau }`),
+> thêm vào `check:style-hs` kiểm đủ file. Style 2 **Thị trấn** làm bộ y hệt (cùng danh sách, nét dễ thương hơn) SAU KHI bộ RPG được duyệt.
+> **Đổi từ Đơn 6 cũ:** mọi tên quái giữ nguyên nên `_phieu_luu_bo()` (DB) không đổi; biome DB (`rung, bang, nui_lua, bien_dao, sa_mac, dam_lay, thanh_co, troi_sao`) khớp `dat_*`/`trangtri_*`/`nen_dau_*`.
+
+
+---
+
+## Đơn 7 — Bản đồ phiêu lưu 2D: nền thế giới + bộ lục địa rời + nền vùng/chặng + nền màn đấu (style Anime RPG) — soạn 01/10 khuya, THAY hướng 3D
+
+> **Thùy chốt 01/10 khuya:** thế giới + lục địa dựng 3D "nặng máy không cần thiết và xấu, trong khi không cần tương tác" ⇒ **ChatGPT vẽ ảnh tĩnh, Claude code thêm hiệu ứng.**
+> Thế giới = **1 nền world map** + **vài chục lục địa rời** (nhiều dạng địa hình) do code đặt lên. Bố cục vùng trong lục địa và chặng trong vùng: code **làm sẵn
+> bố cục 3–10** (đo 01/10: mỗi khối 2–10 chủ đề · 1–8 chuyên đề/chủ đề · thường 3–10 dạng/chuyên đề). **Chặng đường cũng 2D.** Màn đấu **2.5D**
+> (nền vẽ + quái/hero là ảnh, code làm rung/chớp/máu/hạt/lớp trượt) — cùng hướng boss 2D. Quái + boss: Thùy thiết kế riêng, KHÔNG nằm trong đơn này.
+> Đơn 6 v2 vẫn HUỶ; từ Đơn 6 cũ còn dùng được #39 cờ.
+>
+> **Cách gửi:** context ChatGPT MỚI → dán `CHATGPT-UI-KIT.md` → dán khối đơn dưới → đính kèm 3 ảnh phong cách: `design/bk-ui-src/Nền app HS cấp 3_1.png`
+> (thành phố đêm) · `Nền app HS cấp 3_2.png` (đảo trời) · `Nền app HS cấp 3_5.png` (icon sách phép). Mỗi hình xong: tải về `design/bk-ui-src/Adventure2D/`,
+> gõ "tiếp". **Làm đúng thứ tự — dừng ở đâu cũng dùng được phần đã có** (deadline 06/10). Hình trùng / vẽ lệch danh sách: gõ lại số đó.
+
+```
+ĐƠN ĐẶT HÀNG
+App:            hs
+Màn:            adventure-2d (bản đồ phiêu lưu 2D: thế giới → lục địa → chặng đường → màn đấu)
+Mô tả:          App học Toán cho học sinh, chủ đề "Giải cứu thế giới — đánh quái vật". Học sinh xem BẢN ĐỒ THẾ GIỚI có nhiều lục địa
+                (mỗi lục địa = 1 chủ đề kiến thức) → bấm một lục địa → thấy các vùng (chuyên đề) → bấm một vùng → đi trên con đường
+                các chặng, mỗi chặng có quái → vào màn đấu, làm đúng câu hỏi = tung đòn.
+                Lập trình viên GHÉP các hình bạn vẽ lại với nhau và vẽ thêm nhãn, đường đi, sương mù, cờ, ánh sáng bằng code.
+                Thiết bị chính: iPad NGANG 1180×820 và máy tính.
+Phong cách:     đúng phong cách 3 ảnh đính kèm: anime fantasy, ánh vàng cổ, xanh tím đêm, lấp lánh sao, vẽ tay tỉ mỉ, sáng sủa dễ nhìn.
+                Nhìn từ trên cao CHÉO (kiểu bản đồ game phiêu lưu), KHÔNG nhìn thẳng từ trên xuống.
+Phiên bản kit:  v1
+
+══ CÁCH GIAO HÀNG (bắt buộc — khác kit) ══
+- KHÔNG đóng zip. KHÔNG viết DESIGN.md. KHÔNG dựng hình bằng code / SVG / HTML / ghép khối.
+- MỖI LƯỢT TRẢ LỜI = ĐÚNG 1 HÌNH, vẽ bằng công cụ tạo ảnh. Dòng đầu ghi số + tên file, vd "#05 luc_dia_rung_1".
+  Vẽ xong dừng, chờ tôi gõ "tiếp". KHÔNG gộp nhiều hình vào 1 ảnh (trừ #01–#03 ảnh toàn cảnh).
+- Ảnh vẽ ra trong chat LÀ file giao.
+
+══ CHUẨN ══
+- NỀN THẾ GIỚI (#04): ngang 1672×941, nền đặc: biển đêm xanh tím lấp lánh sao + vài dải mây mỏng ở mép. ĐỂ TRỐNG, KHÔNG có đảo/lục địa nào
+  (lục địa vẽ riêng rồi ghép vào). Giữa khung sáng hơn viền một chút.
+- LỤC ĐỊA RỜI (luc_dia_*): vuông 1024×1024, nền TRONG SUỐT, ĐÚNG 1 lục địa/hòn đảo nổi giữa biển nhìn chéo từ trên cao, chiếm ~80% khung,
+  mép đất có bờ cát/vách đá + 1 vòng bọt sóng mỏng quanh bờ (bọt sóng nằm TRONG hình), KHÔNG nước biển xung quanh ngoài vòng bọt đó.
+  Mỗi hình 1 HÌNH DÁNG KHÁC NHAU (dài, tròn, hình lưỡi liềm, nhiều mũi, có vịnh, có hồ giữa…) — không được giống nhau.
+  Địa hình trải khắp mặt đất, có 3–5 khoảng đất bằng phẳng rải rác (để đặt cờ/nhãn). KHÔNG chữ, KHÔNG người, KHÔNG quái, KHÔNG lâu đài to.
+- NỀN VÙNG ĐẤT (nen_vung_*): ngang 1672×941, nền đặc, cận cảnh MỘT lục địa nhìn chéo từ trên cao, địa hình trải đều cả khung,
+  có NHIỀU khoảng đất bằng phẳng rải khắp (để đặt 3–10 điểm mốc lên). KHÔNG đường đi vẽ sẵn, KHÔNG nhân vật, KHÔNG chữ. Viền hơi tối.
+- NỀN CHẶNG ĐƯỜNG (nen_chang_*): ngang 1672×941, nền đặc, cận cảnh hơn nữa — một thung lũng/khu rừng trải ngang, nửa dưới là mặt đất
+  thoáng rộng (để đặt 3–10 bệ đá có quái dọc đường), KHÔNG đường đi vẽ sẵn, KHÔNG nhân vật, KHÔNG chữ.
+- NỀN MÀN ĐẤU (nen_dau_*): ngang 1672×941, nền đặc, nhìn NGANG như sân khấu: trời + cảnh xa ở nửa trên, mặt đất bằng ở 1/3 dưới
+  (hero đứng trái, quái đứng phải). KHÔNG nhân vật, KHÔNG quái, KHÔNG chữ. Nửa trên hơi tối nhẹ để thanh máu đặt lên vẫn rõ.
+- MỐC (moc_*) + VẬT: 512×512, nền TRONG SUỐT, nhìn chéo từ trên cao, nằm giữa khung chiếm ~70%.
+- 8 VÙNG KHÍ HẬU (biome) — mã giữ nguyên: rung (rừng phép, cây khổng lồ, nấm phát sáng) · bang (băng tuyết, pha lê xanh) ·
+  nui_lua (núi lửa, dung nham cam — tươi sáng, không u ám) · bien_dao (quần đảo, cát vàng, san hô) · sa_mac (sa mạc, ốc đảo, đá đỏ) ·
+  dam_lay (đầm lầy xanh rêu, đom đóm) · thanh_co (tàn tích thành cổ, cột đá, dây leo) · troi_sao (đảo trời, pha lê tím, sao rơi).
+- KHÔNG chữ, số, logo, khung trong MỌI hình.
+
+══ DANH SÁCH (đúng thứ tự ưu tiên) ══
+A. Duyệt phong cách — 3 ảnh toàn cảnh iPad ngang 1672×941 (mỗi ảnh 1 lượt)  [02/10: THAY bằng Đơn 7-0 (4 hướng để chọn) — gửi Đơn 7 thì bỏ mục A, bắt đầu từ #04]
+   #01 toan_canh_the_gioi   — bản đồ thế giới ban đêm: biển lớn, 8 lục địa RỜI NHAU hình dạng khác hẳn nhau (mỗi cái 1 vùng khí hậu ở trên),
+                              to nhỏ khác nhau, cách nhau bằng biển; 2 lục địa phủ mây sương; 1 lục địa có lá cờ nhỏ; la bàn góc phải dưới.
+   #02 toan_canh_luc_dia    — cận cảnh 1 lục địa RỪNG: 6 điểm mốc (thành nhỏ, tháp, trại, đền, cổng đá, cầu) nối bằng đường mòn đứt nét;
+                              2 mốc đã cắm cờ, 2 mốc cuối phủ sương.
+   #03 toan_canh_chang      — chặng đường vùng RỪNG: con đường uốn lượn qua ngang màn, 5 bệ đá tròn dọc đường, mỗi bệ có 1 con quái nhỏ dễ thương;
+                              bệ cuối có quái to đội vương miện; pháp sư nhỏ đứng đầu đường; 1 bệ đã cắm cờ, 1 bệ phủ sương.
+                              → DỪNG, chờ Thùy duyệt cả 3 ảnh.
+B. Nền thế giới + lục địa rời đợt 1 (MỖI VÙNG KHÍ HẬU 1 LỤC ĐỊA)
+   #04 nen_the_gioi
+   #05 luc_dia_rung_1 · #06 luc_dia_bang_1 · #07 luc_dia_nui_lua_1 · #08 luc_dia_bien_dao_1
+   #09 luc_dia_sa_mac_1 · #10 luc_dia_dam_lay_1 · #11 luc_dia_thanh_co_1 · #12 luc_dia_troi_sao_1
+C. Nền vùng đất + nền chặng đường — 4 vùng CẦN NHẤT
+   #13 nen_vung_rung · #14 nen_vung_bang · #15 nen_vung_nui_lua · #16 nen_vung_bien_dao
+   #17 nen_chang_rung · #18 nen_chang_bang · #19 nen_chang_nui_lua · #20 nen_chang_bien_dao
+D. Mốc + vật nhỏ (512×512 trong suốt)
+   #21 moc_thanh (thành nhỏ) · #22 moc_thap (tháp phép) · #23 moc_trai (trại lều) · #24 moc_den (đền cổ) · #25 moc_cong (cổng đá) · #26 moc_cau (cây cầu)
+   #27 be_da (bệ đá tròn có vòng rune vàng mờ, để quái đứng lên) · #28 may_suong (1 đám mây sương trắng xanh tơi xốp, mép mờ)
+   #29 la_ban (la bàn cổ vàng) · #30 co_chinh_phuc (lá cờ đỏ cắm đất — bỏ qua nếu đã có từ Đơn 6 #39)
+E. Nền màn đấu — 4 vùng đầu
+   #31 nen_dau_rung · #32 nen_dau_bang · #33 nen_dau_nui_lua · #34 nen_dau_bien_dao
+F. Lục địa rời đợt 2 + 3 (MỖI VÙNG THÊM 2 HÌNH DÁNG KHÁC — tổng 24 lục địa, để 1 khối có tới 10 chủ đề vẫn không lặp)
+   #35–#42 luc_dia_<vùng>_2 (đủ 8 vùng, theo thứ tự ở mục B) · #43–#50 luc_dia_<vùng>_3
+G. 4 vùng còn lại (làm nếu còn thời gian)
+   #51–#54 nen_vung_sa_mac · nen_vung_dam_lay · nen_vung_thanh_co · nen_vung_troi_sao
+   #55–#58 nen_chang_ cho 4 vùng đó · #59–#62 nen_dau_ cho 4 vùng đó
+
+GHI ĐÈ KIT §1: KHÔNG chữ trong mọi hình. KHÔNG khẩu hiệu.
+Bắt đầu với #01.
+```
+
+> **Khi hình về (Claude làm):** kiểm từng hình đối chiếu danh sách (ghép tờ liên hoàn, soi hình trùng/lệch — bài học Đơn 1 Nhiệm vụ) · nén vào
+> `public/bk-ui/hs/skin/rpg/phieuluu2d/` (lục địa 640², nền 1672×941 JPG q82, mốc 256²) · khai trong `skin/styles/rpg.ts` (`banDo2d`) · bỏ hình tạm.
+> Style 2 Thị trấn làm bộ y hệt (cùng danh sách, nét dễ thương) SAU KHI bộ RPG được duyệt.
+
+
+---
+
+## Đơn 8 — MÀN ĐẤU (combat): khung câu hỏi + nút đáp án + HUD + hiệu ứng chiêu + tư thế nhân vật (style Anime RPG) — soạn 02/10, ĐỘC LẬP với Đơn 7
+
+> **Thùy 02/10:** "combat là cái riêng" ⇒ đơn riêng, gửi ở **context ChatGPT riêng**, chạy song song Đơn 7 được. Nền trận (nen_dau_*) ĐÃ nằm ở Đơn 7 mục E
+> (#31–34, #59–62) — đơn này KHÔNG vẽ lại. Quái + boss: Thùy thiết kế riêng, KHÔNG nằm trong đơn này.
+> Bố cục màn đấu đã chốt trong code (02/10): thanh HUD mỏng trên cùng (chân dung quái · thanh máu · đội hình · 3 ô combo) — câu hỏi chiếm gần trọn màn
+> (để đủ chỗ lời giải chi tiết) — cảnh trận chỉ bung xuống lúc tung chiêu. Mỗi 3 câu tung 1 chiêu: 3/3 TUYỆT KỸ · 2/3 mạnh · 1/3 nhẹ · 0/3 xịt.
+> Hiện code đang vẽ tạm bằng CSS (`skin/KhungTran.tsx`); hình về thì thay hình tạm, bố cục giữ nguyên.
+>
+> **Cách gửi:** context ChatGPT MỚI → dán `CHATGPT-UI-KIT.md` → dán khối đơn dưới → đính kèm: 3 ảnh phong cách `design/bk-ui-src/Nền app HS cấp 3_1.png`
+> · `Nền app HS cấp 3_2.png` · `Nền app HS cấp 3_5.png` + 2 ảnh nhân vật `public/bk-ui/hs/skin/rpg/nv_nam.png` · `nv_nu.png` + hoa văn góc
+> `public/bk-ui/hs/skin/rpg/corner.png`. Mỗi hình xong: tải về `design/bk-ui-src/Combat/`, gõ "tiếp". Làm đúng thứ tự — dừng ở đâu cũng dùng được phần đã có.
+
+```
+ĐƠN ĐẶT HÀNG
+App:            hs
+Màn:            combat (màn đấu: trả lời câu hỏi Toán = tung phép đánh quái)
+Mô tả:          App học Toán cho học sinh, chủ đề "Giải cứu thế giới — đánh quái vật". Trong màn đấu, học sinh đọc câu hỏi trên một
+                BẢNG PHÉP lớn, chọn 1 trong 4 PHIẾN ĐÁP ÁN. Cứ 3 câu thì pháp sư (nhân vật của học sinh) tung 1 chiêu vào quái:
+                đúng cả 3 = TUYỆT KỸ rất hoành tráng, đúng 2 = chiêu mạnh, đúng 1 = chiêu nhẹ, sai cả 3 = chiêu xịt.
+                Lập trình viên GHÉP các hình bạn vẽ và ĐẶT CHỮ, SỐ, CÔNG THỨC TOÁN lên bằng code.
+                Thiết bị chính: iPad NGANG 1180×820 và máy tính. Học sinh đọc chữ trên bảng phép rất lâu ⇒ RUỘT bảng phải YÊN, tối đều, không hoa văn.
+Phong cách:     đúng phong cách các ảnh đính kèm: anime fantasy, ánh vàng cổ, xanh tím đêm, lấp lánh sao, vẽ tay tỉ mỉ.
+                Khung và nút giống giao diện game nhập vai anime (kiểu Genshin Impact / Honkai Star Rail): viền vàng kim mảnh 2 lớp, góc hoa văn,
+                đá quý. Nút bấm có độ dày (gờ dưới) như nút game.
+Phiên bản kit:  v1
+
+══ CÁCH GIAO HÀNG (bắt buộc — khác kit) ══
+- KHÔNG đóng zip. KHÔNG viết DESIGN.md. KHÔNG dựng hình bằng code / SVG / HTML / ghép khối.
+- MỖI LƯỢT TRẢ LỜI = ĐÚNG 1 HÌNH, vẽ bằng công cụ tạo ảnh. Dòng đầu ghi số + tên file, vd "#02 khung_cau_hoi".
+  Vẽ xong dừng, chờ tôi gõ "tiếp". KHÔNG gộp nhiều hình vào 1 ảnh (trừ #01 ảnh toàn cảnh).
+- Ảnh vẽ ra trong chat LÀ file giao.
+
+══ CHUẨN ══
+- KHÔNG chữ, số, chữ cái A/B/C/D, logo trong MỌI hình (trừ #01 được có vạch mờ thay chữ). Mọi chữ do code đặt.
+- Nền TRONG SUỐT cho mọi hình trừ #01.
+- KHUNG + NÚT (#02–#16): vẽ để CẮT 9 MẢNH được — trang trí chỉ nằm ở 4 GÓC (mỗi góc trong ô ~12% cạnh ngắn), 4 CẠNH là đường viền
+  TRƠN ĐỀU (kéo dài không vỡ), RUỘT màu ĐỀU (không chuyển màu mạnh, không hoa văn). Hình nằm sát mép khung ảnh, không chừa lề thừa.
+- HIỆU ỨNG (#21–#29): một khoảnh khắc đẹp nhất của hiệu ứng, nằm giữa khung, mép tan dần vào trong suốt (code tự phóng to/thu nhỏ/mờ dần).
+  Màu phép của pháp sư = xanh tím + vàng kim. KHÔNG nền tối phía sau hiệu ứng.
+- NHÂN VẬT (#30–#33): giữ ĐÚNG nhân vật trong 2 ảnh nv_nam / nv_nu đính kèm (mặt, tóc, áo, gậy), cùng tỉ lệ, đứng nghiêng 3/4 quay về
+  BÊN PHẢI (quái đứng bên phải), chân chạm đáy khung, 1024×1024.
+
+══ DANH SÁCH (đúng thứ tự ưu tiên) ══
+A. Duyệt phong cách — 1 ảnh toàn cảnh
+   #01 toan_canh_man_dau — iPad ngang 1672×941: trên cùng 1 THANH HUD MỎNG (chân dung quái nhỏ trong khung tròn, thanh máu đỏ, 3 viên ngọc
+                           combo hình thoi); giữa là BẢNG PHÉP lớn chiếm gần hết màn (chữ thay bằng vạch mờ), trong có 4 phiến đáp án xếp 2×2,
+                           mỗi phiến có 1 viên ngọc hình thoi bên trái; dưới cùng 1 nút vàng dài. Nền sau bảng: xanh đêm có sao mờ.
+                           → DỪNG, chờ Thùy duyệt.
+B. Bảng câu hỏi + đáp án (dùng nhiều nhất)
+   #02 khung_cau_hoi       — 1600×1000. Bảng phép: viền vàng kim 2 lớp + 4 góc hoa văn (giống corner.png đính kèm), ruột xanh đêm đặc đều.
+   #03 phien_dap_an        — 800×180. Phiến đá xanh tím bo góc, viền vàng mảnh, gờ dày phía dưới (nút game), ruột đều.
+   #04 phien_dap_an_chon   — như #03, viền vàng sáng rực + hào quang vàng nhẹ quanh mép.
+   #05 phien_dap_an_dung   — như #03, viền + hào quang XANH LỤC ngọc.
+   #06 phien_dap_an_sai    — như #03, viền + hào quang ĐỎ, vài vết nứt nhỏ ở góc.
+   #07 ngoc_thuong         — 256×256. Viên ngọc HÌNH THOI rỗng ruột (để code đặt chữ A/B/C/D), viền vàng, ruột xanh đêm.
+   #08 ngoc_chon           — như #07, ruột vàng kim sáng.
+   #09 ngoc_dung           — như #07, ruột xanh lục ngọc phát sáng.
+   #10 ngoc_sai            — như #07, ruột đỏ ruby.
+   #11 nut_tung_phep       — 900×170. Nút vàng kim dài, bo góc, gờ dày dưới, 2 đầu có hoa văn nhỏ, ruột vàng đều (code đặt chữ).
+   #12 cuon_loi_giai       — 1600×900. Khung CUỘN GIẤY DA mở ngang (2 đầu cuộn gỗ/vàng), ruột giấy màu kem SÁNG ĐỀU (code đặt chữ tối lên).
+C. HUD (thanh trên cùng)
+   #13 khung_hud           — 1672×120. Dải ngang mỏng xanh đêm viền vàng mảnh ở cạnh dưới, 2 đầu hoa văn nhỏ, ruột đều.
+   #14 khung_chan_dung     — 256×256. Khung TRÒN viền vàng kim có 2 cánh nhỏ 2 bên, ruột TRỐNG trong suốt (code đặt chân dung quái vào).
+   #15 thanh_mau_vo        — 1000×70. Vỏ thanh máu: khung vàng mảnh, ruột tối (code đổ máu đỏ vào trong).
+   #16 o_combo             — 128×128. Ô combo hình thoi nhỏ RỖNG, viền vàng (code tô xanh/đỏ khi đúng/sai).
+D. Hiệu ứng chiêu (code ghép thành chuyển động)
+   #21 tia_phep            — 1024×256. Một tia phép bay ngang trái → phải: đầu tia sáng chói, đuôi tan thành sao nhỏ, xanh tím + vàng.
+   #22 no_trung            — 768×768. Vụ nổ khi trúng đòn: chớp sáng trắng giữa, tia vàng toả ra, sao nhỏ bắn ra.
+   #23 no_tuyet_ky         — 1024×1024. Vụ nổ TUYỆT KỸ: cột sáng vàng–tím, vòng sóng xung kích, rất nhiều sao, hoành tráng nhất bộ.
+   #24 vong_tu_luc         — 1024×1024. Vòng tròn phép thuật vàng kim nhìn CHÉO từ trên (hình elip nằm trên mặt đất), có hoa văn rune trang trí
+                             (KHÔNG phải chữ thật), vài cột sáng mảnh bốc lên — pháp sư đứng giữa vòng này khi tụ lực tuyệt kỹ.
+   #25 chieu_xit           — 512×512. Chiêu xịt: làn khói xám mỏng + vài tia lửa tắt, buồn cười dễ thương (không đáng sợ).
+   #26 hoi_mau             — 512×512. Quái hồi máu: hạt sáng xanh lục + lá nhỏ bay lên thành cột.
+   #27 sao_hat             — 128×128. MỘT ngôi sao lấp lánh 4 cánh màu vàng trắng (code nhân bản thành mưa sao).
+   #28 bang_ten_chieu      — 1200×260. Dải ruy băng vàng kim ngang, RUỘT TRỐNG (code đặt tên chiêu), 2 đầu xoè đuôi én.
+   #29 bang_tuyet_ky       — 1400×420. Như #28 nhưng lớn và hoành tráng hơn: có cánh/tia sáng toả sau dải, viên đá quý giữa trên.
+E. Tư thế pháp sư (giữ đúng nhân vật đính kèm)
+   #30 nv_nam_niem_phep    — pháp sư nam giơ gậy, đầu gậy tụ quả cầu sáng xanh tím, áo choàng tung nhẹ.
+   #31 nv_nu_niem_phep     — như #30, pháp sư nữ.
+   #32 nv_nam_tung_chieu   — pháp sư nam vung gậy về phía trước (bên phải), tư thế dứt khoát, vệt sáng theo gậy.
+   #33 nv_nu_tung_chieu    — như #32, pháp sư nữ.
+
+GHI ĐÈ KIT §1: KHÔNG chữ trong mọi hình. KHÔNG khẩu hiệu.
+Bắt đầu với #01.
+```
+
+> **Khi hình về (Claude làm):** kiểm từng hình đối chiếu danh sách (soi hình trùng/lệch, nhân vật #30–33 có đúng người trong nv_nam/nv_nu không) ·
+> cắt 9 mảnh + nén vào `public/bk-ui/hs/skin/rpg/dau/` (khung/nút PNG, hiệu ứng PNG ≤512², nhân vật 512²) · khai vào `skin/styles/rpg.ts` mục `tran`
+> (thêm trường ảnh: `border-image` cho khung/phiến/nút, ảnh cho ngọc · HUD · hiệu ứng) · `KhungTran.tsx` đọc ảnh, thiếu ảnh nào thì giữ hình tạm CSS chỗ đó ·
+> hiệu ứng #21–#29 vào cảnh trận (sprite quay mặt camera — cùng cách quaiAnh.ts) · đo lại máy yếu (iPad gen 7). Style "Tối giản" KHÔNG cần bộ này
+> (tắt hiệu ứng game).
+
+
+---
+
+## Đơn 7-0 — CHỌN HƯỚNG bản đồ phiêu lưu (thế giới → lục địa → chặng): 4 hướng × 3 tầng = 12 ảnh để Thùy chọn — soạn 02/10, ĐỨNG TRƯỚC Đơn 7
+
+> **Thùy 02/10:** "màn đấu để sau, cần world map trước — chủ đề → chuyên đề → dạng bài; cần đơn prompt thiết kế để t chọn".
+> Đơn này THAY mục A của Đơn 7 (3 ảnh toàn cảnh 1 hướng). Chọn xong hướng nào ⇒ Đơn 7 từ mục B vẽ theo hướng đó (tao sửa mô tả phong cách
+> trong Đơn 7 cho khớp trước khi gửi). Có thể chọn LAI (vd khung tầng 1 của hướng B + tầng 3 của hướng C) — ghi rõ khi chọn.
+> **Cách gửi:** context ChatGPT MỚI → dán `CHATGPT-UI-KIT.md` → dán khối đơn dưới → đính kèm 3 ảnh phong cách `design/bk-ui-src/Nền app HS cấp 3_1.png` ·
+> `Nền app HS cấp 3_2.png` · `Nền app HS cấp 3_11.png` (chỉ để hiểu app đang trông thế nào — các hướng KHÔNG bắt buộc giống). Mỗi ảnh tải về
+> `design/bk-ui-src/Adventure2D/chon_huong/`, gõ "tiếp". Đặt ảnh 3 tầng của cùng 1 hướng cạnh nhau để so.
+
+```
+ĐƠN ĐẶT HÀNG
+App:            hs
+Màn:            adventure-map-concept (CHỌN HƯỚNG thiết kế bản đồ phiêu lưu — chưa phải hình giao thật)
+Mô tả:          App học Toán cho học sinh lớp 4–12, chủ đề "Giải cứu thế giới — đánh quái vật". Kiến thức chia 3 tầng, mỗi tầng 1 màn bản đồ:
+                  TẦNG 1 — BẢN ĐỒ THẾ GIỚI: mỗi CHỦ ĐỀ là 1 LỤC ĐỊA / hòn đảo lớn (mỗi khối lớp có 2–10 chủ đề).
+                  TẦNG 2 — BẢN ĐỒ LỤC ĐỊA: bấm 1 lục địa ⇒ thấy các VÙNG bên trong; mỗi CHUYÊN ĐỀ là 1 VÙNG có 1 điểm mốc (1–8 vùng/lục địa).
+                  TẦNG 3 — CHẶNG ĐƯỜNG: bấm 1 vùng ⇒ thấy con đường đi qua các TRẠM; mỗi DẠNG BÀI là 1 TRẠM có quái canh (3–10 trạm/vùng).
+                Trên bản đồ học sinh phải NHÌN RA NGAY: chỗ nào đã chinh phục (cắm cờ, sáng), chỗ nào đang đánh (có quái), chỗ nào chưa tới (sương mù).
+                Lập trình viên GHÉP hình và vẽ thêm nhãn tên, số tiến độ, đường đi, sương, cờ bằng code ⇒ trong ảnh KHÔNG có chữ.
+                Thiết bị: iPad NGANG 1180×820 và máy tính. Học sinh mở màn này mỗi ngày ⇒ phải đẹp lâu không chán, rõ ràng, không rối mắt.
+Phiên bản kit:  v1
+
+══ CÁCH GIAO HÀNG (bắt buộc) ══
+- KHÔNG zip, KHÔNG DESIGN.md, KHÔNG dựng bằng code/SVG/HTML. MỖI LƯỢT = ĐÚNG 1 ẢNH vẽ bằng công cụ tạo ảnh, ngang 1672×941.
+- Dòng đầu ghi số + tên, vd "#B2 huong_B_luc_dia". Vẽ xong dừng, chờ tôi gõ "tiếp".
+- KHÔNG chữ, số, logo trong ảnh (nhãn tên = khung trống nhỏ hoặc vạch mờ).
+
+══ MỖI HƯỚNG VẼ ĐỦ 3 TẦNG — cùng 1 nội dung để so cho công bằng ══
+- Tầng 1 (thế giới): ĐÚNG 8 lục địa rời nhau, to nhỏ khác nhau, mỗi cái 1 vùng khí hậu khác (rừng phép · băng tuyết · núi lửa tươi sáng ·
+  quần đảo biển · sa mạc ốc đảo · đầm lầy đom đóm · thành cổ đổ nát · đảo trời pha lê). 3 lục địa đã chinh phục (cắm cờ, sáng hơn),
+  1 lục địa đang đánh (phát sáng nhẹ + nhân vật pháp sư nhỏ đứng trên), 4 lục địa chưa tới (phủ mây sương). Có chỗ trống quanh mỗi lục địa
+  để đặt nhãn tên.
+- Tầng 2 (lục địa RỪNG PHÉP cận cảnh): 6 điểm mốc (thành nhỏ · tháp phép · trại lều · đền cổ · cổng đá · cây cầu) nối bằng 1 con đường;
+  2 mốc đầu đã cắm cờ, mốc 3 đang có quái, 3 mốc cuối phủ sương.
+- Tầng 3 (chặng đường trong vùng rừng): con đường đi qua 7 trạm, mỗi trạm 1 bệ đá có 1 quái nhỏ dễ thương; trạm cuối quái to đội vương miện;
+  3 trạm đầu đã hạ (cờ, không còn quái), pháp sư nhỏ đứng ở trạm 4, 3 trạm cuối mờ trong sương.
+
+══ 4 HƯỚNG (mỗi hướng 3 ảnh, vẽ lần lượt A1 A2 A3 → B1 B2 B3 → …) ══
+HƯỚNG A — "Đảo trời đêm sao" (anime RPG, giống app hiện tại)
+   Lục địa là các đảo NỔI giữa bầu trời đêm xanh tím, dưới đảo là rễ đá + thác nước rơi vào mây, sao lấp lánh, ánh vàng cổ.
+   Nhìn chéo từ trên cao. Tham khảo cảm giác: Genshin Impact, Honkai Star Rail. Huyền ảo, lung linh.
+   #A1 huong_A_the_gioi · #A2 huong_A_luc_dia · #A3 huong_A_chang
+HƯỚNG B — "Bản đồ kho báu giấy da" (vẽ tay màu nước)
+   Cả màn là 1 tấm bản đồ giấy da cũ: biển xanh nhạt, lục địa vẽ mực nâu + tô màu nước, núi/rừng vẽ ký hiệu nhỏ, la bàn, đường đi nét đứt đỏ,
+   mép giấy sờn. Sáng, sạch, rất dễ đọc. Tham khảo cảm giác: bản đồ trong sách phiêu lưu, Zelda Wind Waker sea chart.
+   #B1 huong_B_the_gioi · #B2 huong_B_luc_dia · #B3 huong_B_chang
+HƯỚNG C — "Mô hình đồ chơi" (diorama 3D nhìn chéo, màu kẹo)
+   Mỗi lục địa như 1 mô hình đồ chơi khối tròn trịa đặt trên mặt nước phẳng, màu pastel tươi, bóng đổ mềm, chi tiết nhỏ xinh (cây kẹo bông,
+   nhà nấm). Ánh sáng ban ngày. Tham khảo cảm giác: Monument Valley, Animal Crossing, Mario overworld.
+   #C1 huong_C_the_gioi · #C2 huong_C_luc_dia · #C3 huong_C_chang
+HƯỚNG D — "Bàn cờ phiêu lưu" (board game)
+   Thế giới như 1 bàn cờ: các lục địa là những miếng bản đồ ghép, đường đi là các Ô TRÒN nối nhau như bàn cờ (mỗi trạm 1 ô to có bệ),
+   màu tươi đậm, viền rõ, rất "game". Tham khảo cảm giác: Mario Party, Candy Crush saga map, Duolingo path.
+   #D1 huong_D_the_gioi · #D2 huong_D_luc_dia · #D3 huong_D_chang
+
+GHI ĐÈ KIT §1: KHÔNG chữ trong mọi hình. KHÔNG khẩu hiệu.
+Bắt đầu với #A1.
+```
+
+> **Thùy chọn xong (Claude làm):** ghi hướng đã chọn vào `spec-v1-app-hs.md` §4.5 · sửa mô tả phong cách + chuẩn ảnh của Đơn 7 mục B–G theo hướng đó
+> (hướng B/D có thể cần thêm: tấm giấy nền / ô bàn cờ thay cho bệ đá) · khung code 2D (`phieuluu/ban2d/`) giữ nguyên, chỉ đổi hình + hiệu ứng cho hợp
+> (vd hướng B: sương = vết mực mờ, cờ = ghim đỏ; hướng D: đường = chuỗi ô tròn).
+
+
+---
+
+## Đơn 9 — BẢN ĐỒ PHIÊU LƯU theo ĐÚNG GIAO THỨC KIT: 3 kit (thế giới · lục địa · chặng), mỗi kit = ảnh toàn cảnh + thành phần vẽ lại từ chính ảnh đó + DESIGN.md bố cục — soạn 02/10, THAY Đơn 7 + Đơn 7-0
+
+> **Thùy 02/10:** "đơn đặt cho ChatGPT phải như lúc đầu thống nhất: ① vẽ 1 bức tranh chi tiết ② vẽ lại các thành phần bên trong bức ảnh đó ③ file mô tả bố cục.
+> Combo như này thì mới dựng lại đẹp được." — đúng `CHATGPT-UI-KIT.md` (§0 kit 3 phần, chốt 28/09). Đơn 7 đã LỆCH giao thức ("KHÔNG zip, KHÔNG DESIGN.md",
+> vẽ mảnh rời độc lập) ⇒ nền biển và lục địa rời không khớp nhau, ghép không ra ảnh toàn cảnh. Bài học: **không viết đơn ngoài giao thức kit.**
+> **Vì sao cần đủ 3 phần (đặc thù bản đồ):** số chủ đề/chuyên đề/dạng mỗi khối KHÁC nhau (đo 01/10: 2–10 chủ đề · 1–8 chuyên đề · 3–10 dạng). Tranh vẽ cho số
+> TỐI ĐA; code dựng nền + đặt N mảnh đầu theo đúng vị trí trong DESIGN.md, mảnh thừa thì KHÔNG đặt (biển/đường vẫn liền) — không phải phủ mây che như dùng ảnh phẳng.
+> **Cách gửi:** mỗi kit 1 context ChatGPT MỚI (bản app máy tính) → dán `CHATGPT-UI-KIT.md` → dán khối đơn của kit đó → đính kèm `design/bk-ui-src/Adnventure2D/chon_huong/01.png`
+> (Thùy ưng phong cách này) + `03.png` (cho kit 3). Làm đúng 4 pha của giao thức (duyệt toàn cảnh → kiểm kê → sinh asset → đóng zip). Zip về để
+> `design/handoff/hs-<man>-v1.zip`. Làm kit 1 trước; 2 và 3 song song được.
+> Đã có từ Đơn 7 (vẫn giữ, không bỏ): ảnh 01–10 trong `design/bk-ui-src/Adnventure2D/chon_huong/`; app đang tạm dùng #01 làm tranh thế giới (8 ô) tới khi kit 1 về.
+
+### Kit 1 — `hs-ban-do-the-gioi`
+
+```
+App:            hs
+Màn:            ban-do-the-gioi
+Mô tả màn:      Bản đồ THẾ GIỚI của app học Toán "Giải cứu thế giới — đánh quái vật". Mỗi CHỦ ĐỀ kiến thức là 1 LỤC ĐỊA nổi giữa biển đêm.
+                Học sinh bấm 1 lục địa để đi vào. Thiết bị: iPad NGANG 1180×820 và máy tính ⇒ vẽ khổ NGANG 1672×941.
+                Mockup vẽ ĐÚNG 10 lục địa (tối đa của 1 khối lớp); khối ít chủ đề hơn thì lập trình viên chỉ đặt N lục địa đầu.
+                ⇒ 10 lục địa phải TÁCH RỜI nhau bằng biển (không chạm, không đè), xếp thành 1 vòng đường đi đọc được 1→10,
+                  bỏ bớt lục địa cuối vẫn đẹp.
+Phần tử ĐỘNG:   tên chủ đề dưới mỗi lục địa · tiến độ "x/y chặng đạt" · nhãn "Em đang ở đây" · cờ trên lục địa đã chinh phục ·
+                quái nhỏ trên lục địa đang đánh · sương mù trên lục địa chưa tới · nhân vật pháp sư đứng ở lục địa đang học.
+                (Chữ và số = TEXT do code vẽ; cờ, sương, pháp sư, quái = asset riêng, KHÔNG vẽ dính vào lục địa.)
+Trạng thái:     1 ảnh reference: 3 lục địa đã chinh phục (cắm cờ) · 1 đang đánh (pháp sư đứng trên + quái nhỏ) · 6 chưa tới (phủ sương).
+Biến thể:       không.
+Phong cách:     đúng ảnh 01.png đính kèm: anime fantasy, biển đêm xanh tím lấp lánh sao, mây tím ở viền, lục địa vẽ tay chi tiết nhìn chéo
+                từ trên cao, ánh vàng cổ. 10 vùng khí hậu (mỗi lục địa 1): rừng phép cây khổng lồ · băng pha lê · núi lửa (tươi sáng) ·
+                quần đảo san hô · sa mạc ốc đảo · đầm lầy đom đóm · tàn tích thành cổ · đảo trời pha lê tím · hoa anh đào · cánh đồng gió núi đá.
+Giữ nguyên:     khổ ngang 1672×941; không có chữ trong tranh; mỗi lục địa có 1 khoảng trống ngay DƯỚI nó để code đặt nhãn tên.
+Phiên bản kit:  v1
+
+YÊU CẦU RIÊNG CHO KIT NÀY (thêm vào giao thức):
+- assets bắt buộc:
+  · backdrop/backdrop_bien.png — ĐÚNG biển + mây viền + sao của reference, KHÔNG có lục địa nào (vẽ lại cảnh đó như thể lục địa chưa từng có),
+    1672×941, cùng ánh sáng/màu nước với reference.
+  · decor/luc_dia_01.png … luc_dia_10.png — vẽ lại TỪNG lục địa đúng như trong reference (cùng hình dáng, cùng màu, cùng góc nhìn, cùng
+    ánh sáng), mỗi cái 1 file, nền TRONG SUỐT, kèm vòng bọt sóng sát bờ như trong reference, ≥1024px cạnh dài.
+  · decor/co_chinh_phuc.png · decor/may_suong.png (1 đám sương phủ vừa 1 lục địa) · decor/la_ban.png
+  · characters/character_phap_su.png — pháp sư nhỏ đứng trên lục địa trong reference.
+- DESIGN.md, cột "Vị trí & cỡ": với MỖI lục địa ghi tâm (≈% ngang, ≈% dọc của khung 1672×941), bề rộng (≈% khung) và số thứ tự trên đường đi.
+  Ví dụ: "luc_dia_03 — tâm ≈52% ngang, 16% dọc; rộng ≈24% khung; thứ 3 trên đường đi; nằm TRÊN backdrop".
+```
+
+### Kit 2 — `hs-ban-do-luc-dia`
+
+> ⛔ **ĐÃ THAY BỞI Đơn 12.** Kit 1 (thế giới) và Kit 3 (chặng) của Đơn 9 giữ nguyên.
+
+```
+App:            hs
+Màn:            ban-do-luc-dia
+Mô tả màn:      Bên trong 1 lục địa (vùng khí hậu RỪNG PHÉP — làm rừng trước, các vùng khác làm sau theo đúng bố cục này).
+                Mỗi CHUYÊN ĐỀ là 1 VÙNG có 1 CÔNG TRÌNH MỐC; các mốc nối nhau bằng 1 con đường. Học sinh bấm 1 mốc để vào chặng đường.
+                iPad NGANG ⇒ khổ 1672×941. Mockup vẽ ĐÚNG 8 mốc (tối đa); ít hơn thì code chỉ đặt N mốc đầu và đường dừng ở mốc N.
+Phần tử ĐỘNG:   tên chuyên đề dưới mốc · "x/y dạng đạt" · số thứ tự mốc · cờ ở mốc đã xong · quái nhỏ ở mốc đang đánh · sương ở mốc chưa tới ·
+                pháp sư đứng ở mốc đang học · đoạn đường đã đi (sáng vàng) / chưa đi (đứt nét).
+Trạng thái:     1 ảnh reference: 2 mốc đầu đã xong (cờ), mốc 3 đang đánh (pháp sư + quái nhỏ), 5 mốc cuối phủ sương.
+Biến thể:       không (vùng khí hậu khác = kit v-sau, cùng bố cục).
+Phong cách:     như ảnh 01.png đính kèm, cận cảnh lục địa rừng phép: cây khổng lồ phát sáng, nấm tím, thác nước, bờ đá nhìn chéo từ trên cao.
+Giữ nguyên:     khổ 1672×941; không chữ trong tranh; mỗi mốc có khoảng trống ngay dưới để đặt nhãn.
+Phiên bản kit:  v1
+
+YÊU CẦU RIÊNG:
+- assets bắt buộc: backdrop/backdrop_luc_dia_rung.png (ĐÚNG cảnh reference, KHÔNG có công trình mốc và KHÔNG có con đường — chỉ địa hình) ·
+  decor/moc_01.png … moc_08.png (8 công trình KHÁC nhau: thành nhỏ, tháp phép, trại lều, đền cổ, cổng đá, cầu, giếng phép, cây thần — vẽ lại đúng
+  như trong reference, nền trong suốt) · decor/be_moc.png (nền đất/đá dưới chân mốc nếu reference có) · decor/co_chinh_phuc.png · decor/may_suong.png ·
+  characters/character_phap_su.png.
+- DESIGN.md "Vị trí & cỡ": tâm (≈% ngang, % dọc) + bề rộng của TỪNG mốc, thứ tự 1→8, và mô tả đường đi qua các mốc (đi từ đâu, vòng qua đâu)
+  đủ để code vẽ lại đường bằng nét. Đường là SHAPE (code vẽ), KHÔNG xuất asset đường.
+```
+
+### Kit 3 — `hs-ban-do-chang`
+
+```
+App:            hs
+Màn:            ban-do-chang
+Mô tả màn:      Chặng đường trong 1 vùng (RỪNG PHÉP trước). Mỗi DẠNG BÀI là 1 TRẠM: 1 bệ đá tròn có quái canh. Đi lần lượt, trạm cuối có boss.
+                iPad NGANG ⇒ 1672×941; bên PHẢI có bảng chi tiết rộng ≈25% màn đè lên ⇒ các trạm nằm trong ≈72% bên trái.
+                Mockup vẽ ĐÚNG 10 trạm (tối đa); ít hơn thì code chỉ đặt N trạm đầu, trạm cuối cùng luôn là boss.
+Phần tử ĐỘNG:   tên dạng + "N quái · còn x đòn" dưới trạm · số thứ tự · cờ ở trạm đã hạ (quái biến mất) · quái thường / boss có vương miện ·
+                bóng đen + sương ở trạm chưa gặp · pháp sư đứng cạnh trạm đang tới · đường đã đi / chưa đi.
+Trạng thái:     1 ảnh reference: 3 trạm đầu đã hạ (cờ, không quái), pháp sư ở trạm 4 (có quái), trạm 5–9 quái bóng đen phủ sương, trạm 10 boss to.
+Biến thể:       không.
+Phong cách:     như ảnh 03.png đính kèm (thung lũng rừng, nấm tím, thác, bệ đá vòng rune vàng), nhìn chéo từ trên cao.
+Giữ nguyên:     khổ 1672×941; không chữ; quái chỉ là HÌNH GIỮ CHỖ (quái thật Thùy thiết kế riêng) — vẽ 2 con mẫu: 1 quái nhỏ dễ thương + 1 boss đội vương miện.
+Phiên bản kit:  v1
+
+YÊU CẦU RIÊNG:
+- assets bắt buộc: backdrop/backdrop_chang_rung.png (ĐÚNG cảnh reference, KHÔNG bệ, KHÔNG quái, KHÔNG người, KHÔNG con đường) · decor/be_da.png (bệ đá tròn
+  vòng rune như reference, nền trong suốt) · decor/co_chinh_phuc.png · decor/may_suong.png · characters/character_phap_su.png ·
+  characters/quai_mau.png · characters/boss_mau.png.
+- DESIGN.md "Vị trí & cỡ": tâm (≈% ngang, % dọc) + bề rộng của TỪNG bệ 1→10 (bệ xa nhỏ hơn bệ gần — ghi cỡ từng bệ) và mô tả con đường đi qua các bệ.
+```
+
+> **Kit về (Claude làm):** chạy mục 8 của giao thức như người kiểm (đếm ảnh toàn cảnh ↔ assets, alpha thật, backdrop sạch) · đối chiếu từng mảnh với reference
+> (dáng, màu, ánh sáng — lệch thì trả hàng theo mục 10) · nén vào `public/bk-ui/hs/skin/rpg/phieuluu2d/` · khai vị trí từ DESIGN.md vào `ban2d/hinh2d.ts`
+> (thế giới: thay `TOAN_CANH_THE_GIOI` bằng nền + 10 mảnh có toạ độ) · dựng lại so từng điểm với reference ở 1180×820.
+
+
+---
+
+## Đơn 10 — NỀN VÙNG + NỀN CHẶNG VẼ SẴN CON ĐƯỜNG + BỆ (bố cục làm sẵn theo số điểm dừng) — soạn 02/10, THAY nen_vung/nen_chang của Đơn 7 & kit 2–3 Đơn 9
+
+> **Thùy 02/10:** "căn toạ độ không đúng, lâu đài không vào ô đất trống — sao không làm luôn map có sẵn con đường cho nhanh?" ⇒ đúng: nền trơn + code tự đặt mốc
+> phụ thuộc toạ độ đo bằng mắt, lệch vài % là trượt khỏi bãi đất, mỗi ảnh lại đo lại. Vẽ SẴN đường + bệ trong tranh ⇒ đường và chỗ đặt khớp tuyệt đối;
+> code chỉ gắn nhãn tên, số, cờ, sương, pháp sư, quái, công trình mốc lên ĐÚNG các bệ (vị trí bệ lấy từ DESIGN.md, Claude kiểm lại trên ảnh).
+> **Số điểm dừng thay đổi** (1–8 chuyên đề/chủ đề · 3–10 dạng/chuyên đề) ⇒ LÀM SẴN BỐ CỤC: nền vùng 3 bản (4 · 6 · 8 bệ), nền chặng 4 bản (4 · 6 · 8 · 10 bệ);
+> code chọn bản nhỏ nhất đủ chỗ, bệ thừa (≤2) để trống + sương "chưa mở". Làm RỪNG trước (7 ảnh) → Thùy duyệt → nhân ra 7 vùng khí hậu còn lại cùng bố cục.
+> **Cách gửi:** context ChatGPT MỚI (app máy tính) → dán `CHATGPT-UI-KIT.md` → dán khối đơn dưới → đính kèm `chon_huong/02.png` (toàn cảnh lục địa có đường đã duyệt
+> phong cách) + `13.png` (nền vùng rừng) + `17.png` (nền chặng rừng) + `21.png` (mốc thành). Kit về để `design/handoff/hs-nen-duong-rung-v1.zip`.
+
+```
+App:            hs
+Màn:            nen-duong-rung (nền bản đồ CÓ VẼ SẴN CON ĐƯỜNG + BỆ, vùng khí hậu RỪNG PHÉP)
+Mô tả màn:      App học Toán "Giải cứu thế giới — đánh quái vật", iPad NGANG ⇒ mọi ảnh 1672×941.
+                2 loại nền:
+                (A) NỀN VÙNG — cận cảnh 1 lục địa rừng nhìn chéo từ trên cao; 1 CON ĐƯỜNG MÒN đất uốn lượn nối các BỆ ĐẤT TRÒN phẳng
+                    (mỗi bệ đủ rộng để đặt 1 công trình như 21.png lên trên). Đường bắt đầu ở mép dưới, đi qua bệ 1 → bệ cuối.
+                (B) NỀN CHẶNG — thung lũng rừng nhìn chéo thấp hơn (như 17.png), 1 con đường đất uốn qua các BỆ ĐÁ TRÒN có vòng rune vàng mờ
+                    (mỗi bệ đủ cho 1 con quái đứng). Bệ gần to, bệ xa nhỏ dần. Bên PHẢI ≈25% màn sẽ bị bảng thông tin che ⇒ đường và bệ
+                    nằm trong ≈72% bên trái; phần bên phải chỉ là cảnh rừng.
+                Lập trình viên đặt công trình, quái, cờ, nhãn chữ lên đúng các bệ ⇒ trong ảnh KHÔNG có công trình, quái, người, cờ, chữ, số.
+Phần tử ĐỘNG:   không (mọi thứ động do code đặt lên bệ).
+Trạng thái:     không.
+Biến thể:       theo SỐ BỆ — nen_vung_rung_4 · nen_vung_rung_6 · nen_vung_rung_8 · nen_chang_rung_4 · nen_chang_rung_6 · nen_chang_rung_8 · nen_chang_rung_10.
+                Cùng 1 cảnh rừng, chỉ đổi đường + số bệ (bệ cách đều nhau dọc đường, không bệ nào sát mép hay chồng lên nhau).
+Phong cách:     đúng các ảnh đính kèm: anime fantasy vẽ tay chi tiết, rừng phép cây khổng lồ, nấm tím phát sáng, pha lê xanh, thác nước,
+                ánh vàng ấm. Con đường + bệ phải NỔI RÕ trên nền (đất vàng nhạt viền đá), nhìn là biết đường đi.
+Giữ nguyên:     1672×941; không chữ; bệ để TRỐNG (không vật gì trên bệ).
+Phiên bản kit:  v1
+
+YÊU CẦU RIÊNG:
+- Kit = reference/ (7 ảnh trên — cũng chính là ảnh dùng) + DESIGN.md. Không cần assets/ ngoài 7 ảnh đó.
+- DESIGN.md, cột "Vị trí & cỡ": với MỖI ảnh, liệt kê TỪNG BỆ theo thứ tự đường đi: tâm (≈% ngang, ≈% dọc của khung 1672×941) + bề rộng bệ (≈% khung).
+  Ví dụ: "nen_vung_rung_6 · bệ 1: tâm ≈48% ngang, 84% dọc, rộng ≈11% · bệ 2: …".
+```
+
+> **Kit về (Claude làm):** kiểm mục 8 giao thức · tự đo lại tâm từng bệ trên ảnh (lưới 2%) đối chiếu DESIGN.md, lệch thì lấy số đo · nén JPG ·
+> `hinh2d.ts`: thay `CHO_MOC_VUNG` bằng bảng {biome, số bệ, toạ độ bệ} + hàm chọn bản nhỏ nhất ≥ N · LucDia2D/Chang2D bỏ đường vẽ bằng code khi nền có đường sẵn
+> (giữ lớp "đoạn đã đi" vàng phủ mờ lên đường vẽ) · bệ thừa phủ sương.
+
+
+---
+
+## Đơn 11 — TẦNG LỤC ĐỊA (chuyên đề) theo kịch bản chuẩn của world map: ẢNH TO → ẢNH THÀNH PHẦN → BỐ CỤC — soạn 02/10, THAY phần nền vùng của Đơn 7/10
+
+> ⛔ **ĐÃ THAY BỞI Đơn 12 (02/10, Thùy):** cố định 8 mốc + 8 loại công trình + nhân vật chibi chạy dọc đường + toạ độ đường theo điểm. Không gửi đơn này.
+
+> **Thùy 02/10:** tầng lục địa "độ nghiêng chưa đúng, đường đi xuyên địa hình, lâu đài trên nền không thật — vì làm riêng rẽ; làm lại theo kịch bản chuẩn của world map:
+> ảnh to – ảnh thành phần – bố cục thì mới tự nhiên". Bài học: nền trơn + code tự vẽ đường + dán công trình rời = 3 nguồn hình khác góc nhìn/ánh sáng ⇒ không bao giờ liền.
+> Tầng CHẶNG giữ cách hiện tại (Thùy: "chặng thì ổn hơn").
+> **Số mốc thay đổi** (1–8 chuyên đề/chủ đề, đo 01/10) ⇒ mỗi vùng khí hậu vẽ **3 bản bố cục: 4 · 6 · 8 mốc**; code chọn bản nhỏ nhất đủ chỗ, mốc thừa (≤2) phủ sương "chưa mở".
+> Làm **RỪNG trước** (bản 6 mốc) → Thùy duyệt → bản 4, 8 → 9 vùng còn lại (băng · núi lửa · quần đảo · sa mạc · đầm lầy · thành cổ · đảo trời · hoa anh đào · đảo cối xay).
+> **Cách gửi:** context ChatGPT MỚI (app máy tính) → dán `CHATGPT-UI-KIT.md` → dán khối dưới → đính kèm `Adnventure2D/V2/` ảnh lục địa rừng (exec-c6097c1c…, để giữ đúng
+> phong cách + dáng đất của lục địa đó) + `chon_huong/13.png` (nền vùng rừng cũ — chỉ tham khảo không khí) + `chon_huong/21–26.png` (6 công trình mốc). Kit về: `design/handoff/hs-luc-dia-rung-v1.zip`.
+
+```
+App:            hs
+Màn:            luc-dia-rung-6 (bên trong 1 lục địa RỪNG PHÉP, bố cục 6 mốc)
+Mô tả màn:      App học Toán "Giải cứu thế giới — đánh quái vật". Bấm 1 lục địa trên bản đồ thế giới ⇒ vào màn này: cận cảnh lục địa đó, nhìn CHÉO
+                từ trên cao (cùng góc nhìn với ảnh lục địa đính kèm). Mỗi CHUYÊN ĐỀ là 1 CÔNG TRÌNH MỐC đứng trên 1 bãi đất; 1 CON ĐƯỜNG MÒN đất
+                uốn lượn theo địa hình (vòng qua cây, men theo suối, có cầu/bậc đá khi qua vách) nối mốc 1 → mốc 6. iPad NGANG ⇒ 1672×941.
+Phần tử ĐỘNG:   tên chuyên đề + 5 sao dưới mỗi mốc · cờ trên mốc đã xong · quái nhỏ ở mốc đang đánh · sương phủ mốc chưa tới · mũi tên vàng ở mốc đang học
+                (tất cả do code đặt — KHÔNG vẽ vào ảnh).
+Trạng thái:     1 ảnh reference, mọi mốc ở trạng thái thường (không cờ, không sương, không quái).
+Biến thể:       không (bản 4 và 8 mốc làm sau, CÙNG cảnh — chỉ đổi số bãi/mốc và đường).
+Phong cách:     đúng ảnh lục địa rừng đính kèm: anime fantasy vẽ tay chi tiết, cây khổng lồ phát sáng, nấm tím, pha lê xanh, thác, ánh vàng ấm.
+                6 công trình mốc theo đúng kiểu các ảnh 21–26 đính kèm (thành nhỏ · tháp phép · trại lều · đền cổ · cổng đá · cầu đá) — vẽ chúng ĐỨNG
+                TRONG cảnh, cùng ánh sáng, cùng góc nhìn, có bóng đổ xuống đất.
+Giữ nguyên:     1672×941; không chữ; mỗi mốc có khoảng trống ngay dưới chân để code đặt nhãn tên; phía trên mỗi mốc chừa chỗ cho mũi tên.
+Phiên bản kit:  v1
+
+YÊU CẦU RIÊNG (kịch bản chuẩn — giống bộ bản đồ thế giới):
+- reference/: 1 ảnh TOÀN CẢNH đầy đủ (địa hình + đường mòn + 6 công trình).
+- assets/backdrop/backdrop_luc_dia_rung_6.png: ĐÚNG cảnh reference, CÓ con đường mòn, nhưng KHÔNG có 6 công trình (bãi đất trống ở chỗ công trình) — vẽ lại như thể
+  công trình chưa xây. Cùng khổ, cùng ánh sáng.
+- assets/decor/moc_1.png … moc_6.png: vẽ lại TỪNG công trình đúng như trong reference (cùng dáng, cùng góc, cùng ánh sáng), nền TRONG SUỐT, chân công trình chạm đáy ảnh.
+- DESIGN.md, cột "Vị trí & cỡ": với MỖI mốc ghi vị trí CHÂN công trình (≈% ngang, ≈% dọc của khung 1672×941) + bề rộng (≈% khung) + thứ tự trên đường đi.
+```
+
+> **Kit về (Claude làm):** kiểm mục 8 giao thức · đặt backdrop + 6 mốc theo DESIGN.md, ghép thử ra ảnh so với reference (lệch thì tự đo lại trên reference như bản thế giới) ·
+> tắt đường three.js ở tầng lục địa khi nền đã có đường vẽ sẵn (giữ ở tầng chặng) · thêm sổ `hinh2d` {biome, số mốc, ảnh nền, vị trí từng mốc} + chọn bản nhỏ nhất ≥ N.
+
+
+---
+
+## Đơn 12 — TẦNG LỤC ĐỊA (chuyên đề): 1 màn = 1 ĐƯỜNG XUYÊN SUỐT + 8 CÔNG TRÌNH + nhân vật chibi CHẠY theo đường — theo ĐÚNG giao thức kit — soạn 02/10, THAY Đơn 9 (Kit 2) + Đơn 11 + phần nền vùng của Đơn 10
+
+> **Thùy 02/10:** "màn lục địa — các chuyên đề: có background, có con đường xuyên suốt, trên đường có các địa điểm KHÁC LOẠI (nhà, lều, lâu đài, hầm ngục…), mỗi địa điểm = 1 chuyên đề;
+> bấm từ chuyên đề này sang chuyên đề khác thì nhân vật chạy theo đúng lộ trình đó. Cố định thiết kế **8 chuyên đề / 1 màn hình**; ít hơn 8 thì địa điểm thừa coi như CÓ SẴN
+> công trình, không cần tấn công. Quá 8 (số ít) thì con đường dẫn sang màn bên cạnh." Đơn phải theo giao thức đã thống nhất: **① ảnh toàn cảnh → ② ảnh từng thành phần vẽ lại từ chính ảnh đó → ③ file mô tả cấu trúc đặt.**
+> **Khác Đơn 11:** (a) cố định **8 mốc**, không còn bản 4/6/8 (b) 8 công trình là **8 LOẠI khác nhau theo thứ tự mạnh dần**, không phải 6 loại thay phiên (c) **thêm nhân vật chibi chạy** (đứng + 2 tư thế bước)
+> (d) DESIGN.md phải có **toạ độ ĐƯỜNG theo từng điểm** (để code cho nhân vật chạy dọc đường) và điểm vào/ra ở 2 mép (e) mép trái/phải khớp nhau để lật gương nối được màn kế.
+> **Chốt với Thùy (02/10):** màn thứ 9+ = kéo ngang sang màn kế, DÙNG LẠI ảnh màn 1 lật gương (không đặt ảnh riêng) · nhân vật = chibi nam/nữ của em · 8 công trình cùng 8 loại cho mọi vùng, chất liệu theo khí hậu.
+> **Cách gửi:** mỗi VÙNG KHÍ HẬU = 1 kit = 1 context ChatGPT MỚI (app máy tính). Làm **RỪNG trước** → Thùy duyệt → 9 vùng còn lại theo đúng bố cục đó. Dán `CHATGPT-UI-KIT.md` → dán khối đơn dưới (thay `<VÙNG>` + bảng chất liệu của vùng đó ở mục "8 CÔNG TRÌNH")
+> → đính kèm: ① `public/bk-ui/hs/skin/rpg/phieuluu2d/luc_dia_v2_<vùng>.webp` (lục địa của vùng đó trên bản đồ thế giới — giữ đúng dáng đất, màu, ánh sáng) ② `phieuluu2d/nen_vung_rung.jpg` (nền vùng cũ, chỉ lấy không khí)
+> ③ `phieuluu2d/moc_*.webp` (6 công trình cũ — chỉ tham khảo kiểu vẽ) ④ `public/bk-ui/hs/skin/rpg/boss_thuy_dung.png` (đúng PHONG CÁCH CHIBI cho nhân vật). Kit về: `design/handoff/hs-luc-dia-<vùng>-v1.zip`.
+> Vùng làm lần lượt (thứ tự trên bản đồ thế giới): rừng · anh đào · thành cổ · đầm lầy · sa mạc · băng · núi lửa · quần đảo (bien_dao) · đảo trời (troi_sao) · đảo cối xay (dong_gio).
+
+```
+App:            hs
+Màn:            luc-dia-<VÙNG>   (bên trong 1 lục địa, vùng khí hậu <VÙNG>; kit v1 = RỪNG PHÉP)
+Mô tả màn:      App học Toán "Giải cứu thế giới — đánh quái vật". Bấm 1 lục địa trên bản đồ thế giới ⇒ vào màn này: cận cảnh lục địa đó nhìn CHÉO từ trên cao
+                (cùng góc nhìn với ảnh lục địa đính kèm). Trên màn có MỘT CON ĐƯỜNG MÒN liền một mạch, uốn lượn theo địa hình, đi từ MÉP TRÁI vào, qua
+                8 CÔNG TRÌNH thứ tự 1→8 (mỗi công trình = 1 CHUYÊN ĐỀ), rồi đi ra MÉP PHẢI. Học sinh bấm 1 công trình ⇒ nhân vật chibi chạy dọc đường tới đó
+                rồi vào chặng đường. iPad NGANG ⇒ khổ 1672×941.
+                8 công trình là 8 LOẠI KHÁC NHAU, mạnh dần theo đường đi (xem mục "8 CÔNG TRÌNH") — nhìn vào là biết đi tới đâu thì "boss" to dần.
+                Màn luôn vẽ ĐỦ 8 công trình. Chủ đề có ít hơn 8 chuyên đề ⇒ code đặt chuyên đề vào N công trình đầu, các công trình còn lại vẫn đứng đó như
+                công trình có sẵn (KHÔNG tấn công được) ⇒ công trình nào cũng phải trông HOÀN CHỈNH, đẹp khi đứng một mình (không đổ nát dang dở, không "bãi đất chờ xây").
+                Chủ đề có hơn 8 chuyên đề (hiếm) ⇒ code kéo ngang sang màn kế, màn kế = CHÍNH ảnh này LẬT GƯƠNG NGANG ⇒ mép trái và mép phải của nền phải KHỚP
+                nhau (cùng cảnh, cùng độ cao và độ rộng đường, không có công trình hay cây to chạm mép) để lật gương vẫn liền.
+Phần tử ĐỘNG:   tên chuyên đề + 5 sao tiến độ dưới mỗi công trình · số thứ tự · cờ trên công trình đã xong · quái nhỏ ở công trình đang đánh · sương phủ
+                công trình chưa tới · mũi tên vàng nhấp nhô trên công trình đang học · đoạn đường ĐÃ ĐI sáng vàng / CHƯA ĐI mờ · nhân vật chibi chạy dọc đường
+                (tất cả do code đặt — KHÔNG vẽ vào ảnh toàn cảnh; chữ và số là TEXT; cờ, sương, mũi tên đã có bộ riêng, không vẽ lại).
+Trạng thái:     1 ảnh reference TOÀN CẢNH sạch (không cờ, không sương, không nhân vật, không quái, không mũi tên). Trạng thái do code thêm lên.
+Biến thể:       nhân vật: nam / nữ (chỉ 6 ảnh nhân vật, nền và công trình dùng chung). Vùng khí hậu khác = kit khác, CÙNG bố cục.
+Phong cách:     đúng ảnh lục địa đính kèm: anime fantasy vẽ tay chi tiết, ánh vàng ấm, nhìn chéo từ trên cao. Công trình đứng TRONG cảnh, cùng ánh sáng, cùng góc nhìn,
+                có bóng đổ xuống đất, công trình ở xa nhỏ hơn công trình ở gần (chiều sâu). Nhân vật chibi đầu to thân nhỏ, đúng nét ảnh boss_thuy_dung.png đính kèm.
+Giữ nguyên:     1672×941; không chữ trong tranh; phía DƯỚI chân mỗi công trình chừa khoảng trống rộng ≈ 12% khung để code đặt nhãn tên + 5 sao; phía TRÊN mỗi công trình
+                chừa chỗ cho mũi tên; vùng đầu trang (≈12% trên cùng) và đáy (≈8%) không đặt công trình (đè bởi thanh trên cùng); bên PHẢI không có bảng đè.
+Phiên bản kit:  v1
+
+8 CÔNG TRÌNH (thứ tự trên đường = thứ tự chuyên đề; mạnh dần; cùng 8 loại cho MỌI vùng, chất liệu theo khí hậu):
+  1 NHÀ làng (nhỏ, ấm) · 2 LỀU / trại · 3 THÁP CANH · 4 CẦU hoặc CỔNG đá · 5 ĐỀN · 6 HẦM NGỤC (cửa hang / cửa ngục) · 7 PHÁO ĐÀI · 8 LÂU ĐÀI LỚN (to nhất, hoành tráng nhất).
+  Cỡ trên màn (bề rộng ≈% khung): 1–2 nhỏ (8–10%), 3–5 vừa (10–13%), 6–7 lớn (13–15%), 8 to nhất (16–19%) — nhân với hệ số xa/gần theo vị trí trên màn.
+  Chất liệu theo vùng (v1 = RỪNG; vùng khác thay bảng này, GIỮ ĐÚNG 8 loại):
+  | vùng | 1 nhà | 2 lều | 3 tháp | 4 cầu/cổng | 5 đền | 6 hầm ngục | 7 pháo đài | 8 lâu đài |
+  | rừng | nhà gỗ rêu dưới tán cây | lều vải lá | tháp canh gỗ | cầu gỗ treo dây leo | đền cổ phủ rêu | cửa hang trong gốc cây khổng lồ | tường đá phủ dây leo | lâu đài phát sáng giữa cây khổng lồ |
+  | anh_dao | nhà mái cong hoa đào | lều vải hồng | tháp 3 tầng nhỏ | cầu vòm đỏ | đền cổng torii | hang dưới gốc đào | pháo đài đá trắng mái ngói | lâu đài nhiều tầng kiểu Á Đông |
+  | thanh_co | nhà đá cổ | lều lính | tháp canh tàn tích | cổng vòm đá | đền cột đá | hầm ngầm | tường thành | lâu đài cổ kính |
+  | dam_lay | nhà sàn | lều da | tháp gỗ mục nghiêng | cầu ván | đền phủ rêu đom đóm | hang bùn | pháo đài gỗ mục | lâu đài đen đom đóm |
+  | sa_mac | nhà gạch đất | lều du mục | tháp cát | cổng đá | đền kim tự tháp nhỏ | lăng mộ | pháo đài đất nung | cung điện lớn |
+  | bang | nhà tuyết / igloo | lều da thú | tháp băng | cầu băng | đền băng | hang băng | pháo đài băng | lâu đài băng pha lê |
+  | nui_lua | nhà đá đen | lều da | tháp dung nham | cầu đá qua dung nham | đền lửa | miệng núi lửa có cửa | pháo đài đá đen | lâu đài dung nham |
+  | bien_dao | nhà sàn trên biển | lều lá dừa | hải đăng | cầu gỗ | đền san hô | hang biển | pháo đài tàu đắm | lâu đài vỏ sò |
+  | troi_sao | nhà mây | lều lụa | tháp pha lê | cầu vồng | đền cổ trên mây | hang sao | pháo đài thiên thạch | lâu đài trời |
+  | dong_gio | nhà cối xay nhỏ | lều rơm | tháp gió | cầu đá | đền gió | hầm mỏ | pháo đài đá | lâu đài lớn có cối xay |
+
+YÊU CẦU RIÊNG (kịch bản chuẩn — ảnh to → thành phần → bố cục):
+- reference/reference_luc_dia_<vùng>.png: 1 ảnh TOÀN CẢNH đầy đủ 1672×941 (địa hình + con đường + 8 công trình). Duyệt TRƯỚC khi sinh bất kỳ asset nào (pha B).
+- assets/backdrop/backdrop_luc_dia_<vùng>.png: ĐÚNG cảnh reference, CÓ con đường mòn liền một mạch, nhưng KHÔNG có 8 công trình, KHÔNG nhân vật (vẽ lại như thể công trình chưa xây;
+  chỗ mỗi công trình là một bãi đất bằng gọn, đường đi xuyên qua hoặc rẽ vào sát bãi). Cùng khổ, cùng ánh sáng. Mép trái và mép phải khớp nhau (xem "Mô tả màn").
+  Con đường: rộng vừa phải (≈3–4% khung ở xa, 5–6% ở gần), mặt đất mòn rõ, không bị che bởi cây to, đi xuyên suốt không đứt đoạn.
+- assets/decor/moc_1.png … moc_8.png: vẽ lại TỪNG công trình đúng như trong reference (cùng dáng, cùng góc, cùng ánh sáng, cùng bóng đổ), nền TRONG SUỐT, chân công trình chạm đáy ảnh,
+  cạnh dài ≥1024px, mỗi công trình 1 file riêng sinh mới (KHÔNG cắt từ reference). Phải trông hoàn chỉnh khi đứng một mình.
+- assets/characters/: nhân vật CHIBI (đầu to thân nhỏ) nhìn nghiêng sang PHẢI, toàn thân, nền TRONG SUỐT, chân chạm đáy ảnh, cao ≥800px, đúng phong cách ảnh boss_thuy_dung.png:
+  · chibi_nam_dung.png · chibi_nam_chay_1.png (chân trái trước) · chibi_nam_chay_2.png (chân phải trước)
+  · chibi_nu_dung.png · chibi_nu_chay_1.png · chibi_nu_chay_2.png
+  Ba tư thế của MỖI giới phải cùng một nhân vật: cùng trang phục, cùng tỉ lệ, cùng chiều cao, cùng điểm chạm đất (code luân phiên 2 ảnh chạy + nhún để ra cảm giác chạy; chạy ngược thì lật ngang).
+- DESIGN.md — cột "Vị trí & cỡ" PHẢI có đủ, theo khung 1672×941 (toạ độ ≈% ngang, ≈% dọc, gốc ở góc trên trái):
+  · MỖI công trình 1→8: vị trí CHÂN (điểm chạm đất giữa chân công trình) + bề rộng (≈% khung) + loại + thứ tự trên đường.
+  · ĐƯỜNG: danh sách ≥ 24 điểm (x%, y%) theo thứ tự đi, từ điểm VÀO ở mép trái đến điểm RA ở mép phải, là TÂM đường, đi qua đúng chân 8 công trình theo thứ tự
+    (đánh dấu điểm nào là chân công trình số mấy). Điểm vào và điểm ra phải CÙNG độ cao y ± 1% (để lật gương nối liền) và ghi bề rộng đường tại vào/ra.
+  · NHÂN VẬT: chiều cao nhân vật tại 3 độ sâu (y≈30%, 55%, 80%) so với khung — để code thu phóng nhân vật theo xa/gần cho khớp công trình; điểm chạm đất = đáy ảnh nhân vật.
+  · Z-ORDER: công trình nào che công trình nào, cây/đá nào đứng TRƯỚC đường (nếu có) — để code biết lớp.
+  · Vùng cấm đặt chữ/nhãn (chỗ chừa dưới chân công trình), vùng cấm của thanh trên cùng.
+```
+
+> **Kit về (Claude làm):** kiểm mục 8 giao thức (đếm reference ↔ assets, alpha thật, backdrop sạch, mép trái/phải khớp khi lật gương) · đối chiếu từng mảnh với reference (dáng, màu, ánh sáng — lệch thì trả hàng theo mục 10) ·
+> nén WebP vào `public/bk-ui/hs/skin/rpg/phieuluu2d/` · khai vào sổ `ban2d/hinh2d.ts` {vùng, nền, 8 chân công trình, đường 24+ điểm, cỡ nhân vật theo độ sâu} ·
+> dựng lại `LucDia2D`: nền + 8 công trình đúng vị trí, N chuyên đề đầu tương tác (cờ/sương/mũi tên/5 sao do code), công trình thừa đứng yên; **nhân vật chibi chạy dọc đường** từ mốc này sang mốc kia
+> (đi theo điểm đường, tốc độ đều, luân phiên 2 ảnh chạy, thu phóng theo độ sâu, đổi hướng thì lật ngang) rồi mới vào chặng; >8 chuyên đề ⇒ kéo ngang sang màn kế = nền lật gương, đường nối ở mép ·
+> tắt đường three.js ở tầng lục địa · bỏ `CHO_MOC_VUNG`. So từng điểm với reference ở 1180×820.
+
+
+---
+
+## Đơn 13 — NHÂN VẬT CHÍNH ĐẤU TRƯỜNG: bộ TƯ THẾ CHIẾN ĐẤU 2D (nam + nữ) + đạn/hiệu ứng + nền sân đấu — theo ĐÚNG giao thức kit — soạn 02/10 đêm, cho màn Đấu trường (Thử thách 3 trận)
+
+> **Thùy 02/10:** "Nhân vật chính cần vẽ nhiều animation hơn. Style combat là 2D với nhiều animation khác nhau." Hai nhân vật cũ (bé trai + mèo đen · bé gái + cú trắng) chỉ là **NPC DẪN TRUYỆN** — KHÔNG phải nhân vật này.
+> Nhân vật chính = **2 nhà thám hiểm áo choàng xanh (nam / nữ) — cùng người với bộ CHẠY 2D đã chốt 02/10** (`design/bk-ui-src/AppHS/Animation/`). Đơn này là bộ **chiến đấu**: ĐỨNG · TÍCH NĂNG · NIỆM LÊN TRỜI · NÉM TRƯỚC · PHÁT NHỎ · BỊ ĐÁNH · GỤC · THẮNG · SUY NGHĨ.
+> **Cách chạy trên màn (để vẽ đúng ý):** học sinh làm xong 5 câu thì NHÂN VẬT tung đòn theo % đúng — 100% = sét đánh / thiên thạch (giơ 2 tay lên trời) · 80% = cầu lửa / cầu băng khổng lồ (ném cầu về phía trước) ·
+> 60% = cầu nhỏ / tia điện (phát nhẹ một tay). Thua thì boss ném ma thuật trúng nhân vật → bị đánh → gục. Thắng cả 3 trận → nhân vật nhảy mừng. **Chuyển động giữa các tư thế do CODE** (đổi ảnh + nhún + lao tới + lật + quầng sáng);
+> ảnh chỉ cần là các TƯ THẾ chốt hình, cùng một nhân vật, thay ảnh không giật.
+> **Cách gửi:** mỗi GIỚI = 1 kit = 1 context ChatGPT MỚI. **Làm NAM trước → Thùy duyệt → NỮ theo đúng bố cục đó.** Dán `CHATGPT-UI-KIT.md` → dán khối đơn dưới → đính kèm:
+> ① `design/bk-ui-src/AppHS/Animation/nam/nam_00_dung_yen.png` + `nam_01_chay_buoc_trai.png` (làm NỮ: `nu/nu_00_dung_yen.png` + `nu_01_chay_buoc_trai.png`) — NHÀ THÁM HIỂM áo choàng xanh, chốt 02/10 tối — **NHÂN VẬT PHẢI GIỐNG HỆT** (mặt, tóc, áo choàng, boots, tỉ lệ chibi) — hoặc bản mới Thùy đang làm nếu đã chốt;
+> ② `public/bk-ui/hs/skin/rpg/boss_thuy_dung.png` (đối thủ, chỉ để vẽ mockup cảnh đấu); ③ `public/bk-ui/hs/skin/rpg/bg_lau_dai_chibi_ngang.jpg` (không khí/ánh sáng của app — nền sân đấu cùng họ màu).
+> Kit về: `design/handoff/hs-chien-dau-nam-v1.zip` (+ `-nu-v1.zip`).
+
+```
+App:            hs
+Màn:            dau-truong-<GIỚI>   (kit v1 = NAM; kit kế = NỮ cùng bố cục)
+Mô tả màn:      Màn "Đấu trường" của Thử thách: học sinh làm 3 trận × 5 câu trắc nghiệm. Trên màn có SÂN ĐẤU (dải ngang phía trên) và khung câu hỏi (bên dưới, code dựng).
+                Sân đấu: NHÂN VẬT CHÍNH đứng bên TRÁI (hướng sang PHẢI), BOSS đứng bên PHẢI (hướng sang trái); giữa hai bên là khoảng trống để đạn bay.
+                Khi làm câu hỏi: nhân vật ĐỨNG / SUY NGHĨ (không đánh). Làm xong trận: nhân vật TÍCH NĂNG rồi TUNG ĐÒN (xem "Cách chạy trên màn"); thắng cả 3 trận thì NHẢY MỪNG;
+                thua thì bị boss đánh trúng → BỊ ĐÁNH → GỤC. iPad NGANG và điện thoại ngang là chính; dọc co nhỏ lại.
+                Nhân vật là chibi (đầu to thân nhỏ) CÙNG NGƯỜI với bộ chạy ở kit lục địa; phong cách anime fantasy chibi vẽ tay, ánh vàng, đúng ảnh đính kèm.
+Phần tử ĐỘNG:   chuyển động nhân vật (đổi tư thế, nhún, lao tới khi tung đòn, giật lùi khi bị đánh, nhảy) · quầng sáng quanh nhân vật theo loại đòn (lửa cam / băng xanh / điện trắng-xanh / ma thuật tím) ·
+                bóng đổ dưới chân · đạn bay + hiệu ứng nổ/cháy/đóng băng/điện (code vẽ bằng canvas — chỉ cần vài tấm đạn đẹp làm đầu đạn, xem assets/fx) · thanh máu boss, khung câu hỏi, nút đáp án (code).
+                KHÔNG vẽ vào ảnh nhân vật: bóng đổ, quầng sáng, tia điện, lửa, băng (code đè lên).
+Trạng thái:     ~15 TƯ THẾ nhân vật (mục "TƯ THẾ") + 5 tấm đạn/hiệu ứng + 1 nền sân đấu. Mỗi tư thế 1 ảnh riêng.
+Biến thể:       nam / nữ (2 kit, cùng danh sách tư thế, cùng bố cục, chỉ khác nhân vật).
+Phong cách:     đúng ảnh nhân vật đính kèm. Mỗi tư thế phải có DIỄN XUẤT rõ (thân nghiêng, tay, áo choàng và tóc bay theo hướng chuyển động, nét mặt đổi theo cảm xúc) — không phải cùng một dáng đứng đổi tay.
+Giữ nguyên:     nhân vật nhìn sang PHẢI ở mọi tư thế; cùng trang phục, tóc, màu, tỉ lệ đầu/thân trong cả bộ; KHÔNG chữ, KHÔNG nền, KHÔNG bóng đổ, KHÔNG vật thể thừa quanh nhân vật (đạn, quầng sáng do code).
+Phiên bản kit:  v1
+
+TƯ THẾ (mỗi tư thế = 1 PNG riêng sinh mới, nền TRONG SUỐT, cùng KHỔ 1024×1536, cùng tỉ lệ nhân vật, cùng ĐIỂM CHẠM ĐẤT; tên file: chinh_<nam|nu>_<tên>.png):
+  1  dung_1            đứng thủ thế nhẹ, thở ra (khung 1 của vòng thở) — tư thế mặc định lúc làm câu hỏi
+  2  dung_2            như dung_1 nhưng hít vào (vai/áo choàng nhích nhẹ) — code luân phiên 2 khung ~900ms
+  3  suy_nghi          tay chống cằm / ngón tay chạm má, mắt nhìn lên suy nghĩ, một dấu hỏi KHÔNG vẽ (code)
+  4  tich_nang_1       chụm tay trước ngực gom năng lượng, người hơi nhún xuống, mắt nhắm tập trung, áo choàng bắt đầu bay lên
+  5  tich_nang_2       gom mạnh hơn: người cong về trước, tay mở ra giữ một khoảng trống tròn (CHỖ NÀY ĐỂ TRỐNG — code vẽ quả cầu năng lượng), tóc và áo choàng bay ngược lên, mắt mở sáng
+  6  niem_troi_1       chuẩn bị: một tay giơ cao chỉ lên trời, người ngả nhẹ ra sau
+  7  niem_troi_2       NIỆM ĐÒN lên trời (cho SÉT ĐÁNH / THIÊN THẠCH): CẢ HAI TAY giơ thẳng lên cao, mặt ngẩng, miệng hô lớn, áo choàng tung mạnh
+  8  nem_truoc_1       chuẩn bị NÉM: thân xoay, tay đưa ra sau, trọng tâm dồn chân sau (như cầu thủ bóng chày lấy đà)
+  9  nem_truoc_2       NÉM/PHÓNG cầu lửa-băng KHỔNG LỒ về phía PHẢI: một tay duỗi thẳng về trước, bàn tay mở, thân lao tới, chân trước bước dài, áo choàng bay ra sau; ánh mắt dữ
+  10 phat_nho          PHÁT NHẸ (cho cầu nhỏ / tia điện nhỏ, mức 60%): một tay giơ ngang, ngón tay bật/búng, thân thẳng, vẻ mặt thoải mái
+  11 bi_danh_1         BỊ ĐÁNH TRÚNG: giật người ngả ra sau, hai mắt nhắm chặt/nhăn nhó, tay đưa lên che, áo choàng hất ngược về phía trước
+  12 bi_danh_2         bị hất bay: thân nghiêng mạnh ra sau gần ngã, một chân nhấc khỏi đất, mặt đau
+  13 guc               THUA: quỳ gối/ngồi phịch xuống đất, đầu gục, mắt xoáy hoặc nhắm, tay chống đất, sao quay quanh đầu KHÔNG vẽ (code)
+  14 thang_1           THẮNG — bật nhảy: hai chân rời đất, một nắm tay giơ lên trời, cười tươi, mắt cong
+  15 thang_2           THẮNG — đáp đất tạo dáng: giơ dấu chữ V (hoặc nắm tay), nháy mắt, cười toe, áo choàng phấp phới
+  (Code còn dùng ảnh ĐỨNG/CHẠY của kit lục địa ở màn khác — KHÔNG vẽ lại trong kit này.)
+
+ĐẠN / HIỆU ỨNG (assets/fx — nền TRONG SUỐT, KHÔNG nhân vật, đầu đạn nằm bên PHẢI ảnh, đuôi kéo sang TRÁI để code xoay/lật theo hướng bay):
+  fx_cau_lua.png      cầu lửa khổng lồ, lõi trắng vàng, ngọn lửa cam đỏ cuộn, đuôi lửa dài, 1024×512
+  fx_cau_bang.png     cầu băng khổng lồ, lõi trắng xanh, tinh thể băng nhọn xung quanh, hơi lạnh toả, đuôi băng/tuyết, 1024×512
+  fx_thien_thach.png  thiên thạch đang rơi chéo: tảng đá đen nứt phát sáng dung nham, đuôi lửa + khói, đầu ở phía DƯỚI-PHẢI, 1024×1024
+  fx_dan_ma.png       quả cầu ma thuật TÍM của boss (xoáy năng lượng tím đen, viền hồng tím, vài tia sét nhỏ), đuôi khói tím, 1024×512
+  fx_bang_boc.png     lớp tinh thể băng BỌC lên một nhân vật cao (các mảnh băng xanh nhạt chồng lên, trong suốt một phần, mép trắng sáng; KHÔNG có nhân vật bên trong), 1024×1280 — code căn theo hộp boss
+
+NỀN SÂN ĐẤU (assets/backdrop/backdrop_san_dau.png): 2400×860, góc nhìn ngang nhẹ từ trên cao, cùng họ màu/ánh sáng với nền app (đêm tím, lâu đài, đèn vàng — xem ảnh bg_lau_dai_chibi_ngang đính kèm).
+  Một ĐẤU TRƯỜNG đá cổ ngoài trời: mặt sân lát đá phẳng chiếm dải dưới (đường chân trời/mặt sân ở y≈62%), hai bên có cột đá + đuốc/đèn lồng, nền xa là cung điện mờ sương + trời sao.
+  Vùng GIỮA (x 25–75%) thoáng, không vật thể cao — đạn và đòn bay qua đây. KHÔNG nhân vật, KHÔNG chữ. Phía TRÁI mặt sân y≈78% là chỗ nhân vật chính đứng; phía PHẢI y≈78% là chỗ boss đứng.
+
+YÊU CẦU RIÊNG (kịch bản chuẩn — ảnh to → thành phần → bố cục):
+- reference/reference_chien_dau_<giới>.png: (a) BẢNG TƯ THẾ — 15 tư thế xếp lưới 5×3, mỗi ô ghi tên (chữ chỉ để đọc, KHÔNG nằm trong asset), nền xám trung tính; và (b) 1 ẢNH CẢNH 1672×941 mockup màn đấu: nền sân đấu, nhân vật (tư thế nem_truoc_2) bên trái,
+  boss (ảnh boss_thuy_dung đính kèm) bên phải, cầu lửa khổng lồ đang bay giữa hai bên, khung câu hỏi MỜ giữ chỗ phía dưới. Duyệt (a)+(b) TRƯỚC khi sinh asset (pha B).
+- assets/characters/chinh_<giới>_<tên>.png × 15: mỗi tư thế sinh MỚI riêng lẻ (KHÔNG cắt từ bảng, KHÔNG sprite sheet), alpha thật, khổ 1024×1536, nhân vật đứng/diễn cùng CỠ (chiều cao thân khi đứng ≈ 78% chiều cao ảnh; tư thế nhảy/ngã vẫn giữ tỉ lệ đó),
+  CHÂN CHẠM ĐẤT cùng một đường ngang ở ≈ 94% chiều cao ảnh (riêng thang_1 nhảy: vẫn ở cùng khổ, thân bay lên trên đường đó; guc: chạm đất đúng đường đó), TRỤC THÂN cùng một cột x (≈ 50% ngang) ở mọi tư thế để thay ảnh không giật.
+  Không để tay/áo choàng/tóc bị cắt ở mép ảnh.
+- assets/fx/ × 5, assets/backdrop/ × 1: như mô tả trên, sinh mới từng cái, alpha thật (fx) / ảnh đặc (backdrop).
+- DESIGN.md — bảng kiểm kê ĐỦ cột "Vị trí & cỡ" theo khổ ảnh từng asset (px) VÀ theo cảnh 1672×941:
+  · MỖI TƯ THẾ: tên file · khổ · điểm chạm đất (x%, y% trong CHÍNH ảnh) · trục thân x% · hộp bao thân (x, y, w, h px, bỏ quầng alpha mờ) · dùng cho đòn nào · lặp hay giữ khung cuối · thời gian gợi ý (ms) khi chạy trong chuỗi.
+  · CHUỖI TƯ THẾ cho từng ĐÒN (code đang chạy đúng thứ tự này — ghi lại để khớp):
+      làm câu hỏi: dung_1 ⇄ dung_2 (900ms) · có thể chèn suy_nghi
+      SÉT ĐÁNH / THIÊN THẠCH (100%): tich_nang_1 → tich_nang_2 (≈650ms, lặp) → niem_troi_1 (120ms) → niem_troi_2 (giữ tới hết đòn ≈1,6s) → dung_1
+      CẦU LỬA / BĂNG KHỔNG LỒ (80%): tich_nang_1 → tich_nang_2 (≈700ms, lặp) → nem_truoc_1 (150ms) → nem_truoc_2 (giữ ≈1,5s) → dung_1
+      CẦU NHỎ / TIA ĐIỆN NHỎ (60%): tich_nang_1 (≈330ms) → phat_nho (giữ ≈0,6s) → dung_1
+      BỊ ĐÁNH (thua trận): bi_danh_1 (250ms) → bi_danh_2 (500ms) → guc (giữ)
+      THẮNG CẢ LƯỢT: thang_1 ⇄ thang_2 luân phiên (≈550ms/khung, lặp)
+  · ĐIỂM TAY (để đạn bắt đầu bay): toạ độ (x%, y%) trong ảnh nem_truoc_2, phat_nho, tich_nang_2 (chỗ quả cầu năng lượng) và niem_troi_2 (hai bàn tay trên cao).
+  · ĐẠN: hướng đầu đạn, điểm đầu (x%, y%) trong ảnh, bề rộng gợi ý trên cảnh (% khung), điểm xoay.
+  · NỀN SÂN ĐẤU: y mặt sân, hai điểm đứng (x%, y%) của nhân vật và boss, vùng giữa thoáng (x–y), vùng cấm.
+  · Chiều cao nhân vật trên cảnh 1672×941: ≈ 34% chiều cao cảnh (từ chân tới đỉnh tóc), boss cao ≈ 38%.
+```
+
+> **Kit về (Claude làm):** kiểm mục 8 giao thức (đếm 15 tư thế + 5 fx + 1 nền ↔ reference; alpha thật; cùng khổ; **chồng 15 ảnh lên nhau xem chân + trục thân có trùng không** — lệch thì trả hàng theo mục 10) · nén WebP cắt chung 1 hộp như kit lục địa
+> (`scripts/anime-kit-lucdia.mjs` mẫu) vào `public/bk-ui/hs/skin/rpg/chiendau/` · khai vào `Skin.nhanVat` tách `nguoiDan` (bé gái + cú) và `chinh` {nam, nu, tư thế} · `hieuUng.ts`: `TtHero` đổi từ CSS-trên-1-ảnh sang chuỗi tư thế đúng bảng DESIGN.md ·
+> đạn canvas dùng fx_* làm đầu đạn (đuôi + nổ giữ code) · `fx_bang_boc` thay lớp băng vẽ code · nền sân đấu thay nền thẻ ở `DauTruongHS` · so với reference ở 1280×720 và 390×844.
+
+
+---
+
+## Đơn 14 — KHU HỌC TẬP: màn CHINH PHỤC BK (tháp tổng + tháp chủ đề) · 5 icon ô · bộ GIẢI VÔ ĐỊCH BK — theo ĐÚNG giao thức kit — soạn 03/10 tối
+
+> **Thùy 03/10:** ô Tự luyện ⇒ "Học tập", bấm vào ra 5 ô (Học theo chủ đề · Luyện dạng yếu · Đấu trường BK · Chinh phục BK · Giải Vô địch BK) — luật ở `spec-che-do-game.md` §7.
+> Demo đã chạy (`hs.html?xem=hoc_tap`), đang MƯỢN hình có sẵn. Màn tháp **"phải design thật ngầu — để ChatGPT design riêng"**.
+> **Cách gửi:** 3 kit = 3 context ChatGPT MỚI (app máy tính). Dán `CHATGPT-UI-KIT.md` → dán khối đơn → đính kèm `public/bk-ui/hs/skin/rpg/bg_lau_dai_chibi_ngang.jpg` (nền app, giữ không khí)
+> + `public/bk-ui/hs/skin/rpg/o_tu_luyen.png` · `o_cup.png` · `o_rank.png` (đúng nét icon ô hiện có) + `phieuluu2d/luc_dia_v2_rung.webp` (đúng nét tranh bản đồ).
+> Kit về: `design/handoff/hs-chinh-phuc-v1.zip` · `hs-dao-hoc-tap-v1.zip` · `hs-giai-vo-dich-v1.zip`. **Làm Kit A trước** (nặng nhất, Thùy duyệt hướng).
+
+### Kit A — màn CHINH PHỤC BK (leo tháp)
+```
+App:            hs
+Màn:            chinh-phuc-bk (chọn tháp để leo)
+Mô tả màn:      App học "Giải cứu thế giới — đánh quái vật". Màn này là nơi chọn THÁP để leo (thử thách kiến thức càng lên càng khó, có bảng xếp hạng).
+                CHÍNH GIỮA: 1 THÁP TỔNG thật to, hùng vĩ, ngầu nhất màn (biểu tượng của BK — đỉnh tháp toả sáng vàng, mây cuộn quanh thân, cao gần hết khung).
+                XUNG QUANH (vòng cung 2 bên, thấp hơn, xa hơn): 8 THÁP CHỦ ĐỀ nhỏ hơn, MỖI THÁP MỘT KIỂU khác nhau (pha lê, đá cổ, gỗ phép, sắt rèn, băng,
+                dung nham, cây cổ thụ, mây trời) — cùng phong cách, cùng ánh sáng, nhìn là biết "8 tháp khác nhau quanh 1 tháp chủ".
+                Cầu đá / đường ánh sáng nối các tháp chủ đề về tháp tổng. Trời đêm phép thuật, sương mù dưới chân, sao + ánh vàng ấm. iPad NGANG 1672×941.
+Phần tử ĐỘNG:   tên tháp + tầng cao nhất của em dưới chân mỗi tháp · tháp CHƯA MỞ (em chưa học đủ chủ đề) = code phủ xám + ổ khoá · 2 nút mode (Sinh tồn / Vô tận)
+                + công tắc Normal/Hard · bảng xếp hạng (tất cả do code — KHÔNG vẽ chữ/số/nút vào ảnh).
+Trạng thái:     1 ảnh reference, mọi tháp ở trạng thái thường (không khoá, không chữ).
+Phong cách:     anime fantasy vẽ tay chi tiết như ảnh lục địa đính kèm; nhìn ngang hơi từ dưới lên (tháp tổng sừng sững); KHÔNG 3D render, KHÔNG chữ.
+Giữ nguyên:     1672×941; dưới chân mỗi tháp chừa khoảng trống ≈10% khung cho nhãn; ≈12% trên cùng và ≈14% dưới cùng không đặt tháp (thanh trên + nút mode).
+Phiên bản kit:  v1
+
+YÊU CẦU RIÊNG (ảnh to → thành phần → bố cục):
+- reference/reference_chinh_phuc.png: TOÀN CẢNH đủ 1 tháp tổng + 8 tháp chủ đề + cầu nối + nền. Duyệt TRƯỚC khi sinh asset.
+- assets/backdrop/backdrop_chinh_phuc.png: đúng cảnh reference nhưng KHÔNG có 9 tháp (chỗ đặt tháp = nền đá/mây trống), giữ cầu nối + sương.
+- assets/decor/thap_tong.png + thap_cd_1.png … thap_cd_8.png: vẽ lại TỪNG tháp đúng như reference, nền TRONG SUỐT, chân tháp chạm đáy ảnh, cạnh dài ≥1024px.
+- DESIGN.md: vị trí CHÂN (≈% ngang, ≈% dọc) + bề rộng (≈% khung) của từng tháp; thứ tự lớp (tháp nào đứng trước); vùng nhãn dưới chân.
+```
+
+### Kit B — KHU HỌC TẬP = 5 ĐẢO LƠ LỬNG trên bầu trời sao (sửa 03/10 tối — Thùy: "giao diện game chibi, mỗi cái 1 lục địa trôi nổi trên bầu trời sao"; THAY bản 5 icon ô)
+
+> **Thùy 03/10 khuya (sau khi xem demo mượn hình):** "5 lục địa nên có DESIGN MỚI thay vì dùng lại cái của chuyên đề. Trời sao cần NHIỀU SAO, trông VŨ TRỤ hơn."
+> ⇒ **KHÔNG đính kèm ảnh lục địa của bản đồ thế giới** cho kit này (tránh ChatGPT vẽ lại y hệt). Chỉ đính kèm để lấy NÉT: `design/bk-ui-src/AppHS/lục địa rừng/reference/kien_truc_chibi_v4.png`
+> (công trình chibi) + `public/bk-ui/hs/skin/rpg/bg_dao_troi_chibi_ngang.jpg` (không khí trời). Ảnh chụp demo hiện tại (`hs.html?xem=hoc_tap`) đính kèm để thấy BỐ CỤC, ghi rõ "chỉ lấy bố cục, vẽ mới hoàn toàn".
+```
+App:            hs
+Màn:            hoc-tap (cổng vào 5 chế độ học)
+Mô tả màn:      VŨ TRỤ KỲ ẢO: nền xanh tím rất sâu, DÀY ĐẶC SAO nhiều cỡ (sao nhỏ li ti khắp nền + vài sao lớn lấp lánh có tia chữ thập),
+                một DẢI NGÂN HÀ chéo màn, 2–3 đám TINH VÂN tím–hồng–xanh ngọc mềm, 1–2 HÀNH TINH nhỏ xa xa có vành, vài sao băng mảnh. Không mây dày che sao.
+                Trôi nổi 5 HÒN ĐẢO chibi THIẾT KẾ MỚI (KHÔNG giống các lục địa bản đồ thế giới): mặt đảo nhỏ gọn, tròn trịa kiểu đảo game;
+                đáy đảo là khối đá treo lơ lửng nhọn dần, có rễ/thác nhỏ rủ xuống và vài mảnh đá vụn bay quanh, hào quang mờ bên dưới.
+                MỖI ĐẢO 1 chủ đề rõ ràng, 1 CÔNG TRÌNH đặc trưng to, chiếm phần lớn mặt đảo (nhìn hình là biết chế độ gì):
+                (1) Học theo chủ đề — đảo TO NHẤT ở giữa: rừng phép + quả cầu bản đồ thế giới phát sáng (cổng vào cuộc phiêu lưu đánh Ác quỷ "Phi Phai")
+                (2) Luyện dạng yếu — đảo lò rèn: đe + búa + lửa rèn, thanh kiếm đang được sửa
+                (3) Đấu trường BK — đảo có đấu trường tròn nhỏ (kiểu colosseum chibi), cờ hiệu 2 phe
+                (4) Chinh phục BK — đảo có ngọn THÁP cao xuyên mây, đỉnh toả sáng
+                (5) Giải Vô địch BK — đảo có bục vinh quang + cúp vàng khổng lồ, pháo hoa nhỏ
+                Bố cục iPad NGANG 1672×941: đảo (1) giữa hơi cao · (3) trái-trên · (4) phải-trên · (2) trái-dưới · (5) phải-dưới. Cầu ánh sáng mảnh nối các đảo về đảo giữa.
+Phần tử ĐỘNG:   tên + chú thích dưới mỗi đảo · đảo nhấp nhô lên xuống · sáng lên khi chạm (tất cả do code — KHÔNG chữ trong ảnh).
+Phong cách:     chibi game tươi, khối tròn mập, đúng nét các công trình chibi v4 đính kèm (lục địa rừng); nhìn chéo 3/4 từ trên; KHÔNG 3D render, KHÔNG chữ.
+Giữ nguyên:     1672×941; ≈12% trên cùng không đặt đảo (thanh tiêu đề); dưới mỗi đảo chừa ≈8% khung cho tên + chú thích.
+Phiên bản kit:  v1
+
+YÊU CẦU RIÊNG (ảnh to → thành phần → bố cục):
+- reference/reference_hoc_tap.png: TOÀN CẢNH đủ 5 đảo + cầu ánh sáng + trời sao. Duyệt TRƯỚC khi sinh asset.
+- assets/backdrop/troi_sao_hoc_tap.png: CHỈ vũ trụ (sao dày + ngân hà + tinh vân + hành tinh xa) + cầu ánh sáng mảnh — KHÔNG đảo. Thêm bản DỌC 941×1672 (troi_sao_hoc_tap_doc.png) cho điện thoại.
+- assets/decor/dao_hoc_chu_de.png · dao_luyen_yeu.png · dao_dau_truong.png · dao_chinh_phuc.png · dao_giai_vo_dich.png: vẽ lại TỪNG đảo (kèm công trình) đúng như reference,
+  nền TRONG SUỐT, cạnh dài ≥1024px, đảo nằm giữa ảnh, chừa lề trong suốt cho hào quang.
+- DESIGN.md: vị trí TÂM + bề rộng (≈% khung) từng đảo ở khổ ngang; gợi ý bố cục khổ dọc (1 đảo trên + 2 hàng đôi).
+```
+
+### Kit C — bộ GIẢI VÔ ĐỊCH BK
+```
+App:            hs
+Màn:            giai-vo-dich (lịch giải tuần, đăng ký, nhánh loại trực tiếp, vinh danh)
+Mô tả màn:      Nền màn giải: đấu trường lớn có khán đài, cờ hiệu, ánh đèn chiếu vào sàn giữa (chỗ code vẽ NHÁNH ĐẤU) — tối vừa đủ để chữ trắng đọc rõ.
+                Kèm bộ vật phẩm vinh danh: CÚP VÔ ĐỊCH to · huy chương Á quân (bạc) · huy chương Bán kết (đồng) · băng rôn "nhà vô địch" trống chữ.
+Phần tử ĐỘNG:   nhánh đấu (ô tên, đường nối), lịch, nút đăng ký, tên người thắng, số xu thưởng — tất cả do code.
+Phong cách:     anime fantasy như ảnh nền app đính kèm; KHÔNG chữ.
+Giữ nguyên:     nền 1672×941 ngang; vùng giữa ≈60% khung để trống/tối cho nhánh đấu; vật phẩm PNG trong suốt, cạnh dài ≥768px.
+Phiên bản kit:  v1
+- assets/backdrop/nen_giai_vo_dich.png · assets/decor/cup_vo_dich.png · huy_chuong_bac.png · huy_chuong_dong.png · bang_ron.png + reference ghép thử.
+```
+
+> **Kit về (Claude làm):** kiểm mục 8 giao thức · nén WebP vào `public/bk-ui/hs/skin/rpg/hoctap/` · Kit B thay nền + 5 đảo MƯỢN (mảnh lục địa) trong `Skin.hocTap` của `skin/styles/rpg.ts`, vị trí theo DESIGN.md (`VT_NGANG`/`VT_DOC` ở `hoctap/HocTapHS.tsx`); icon ô `hoc_chu_de`… có thể bỏ khi đảo đã có công trình ·
+> Kit A dựng màn Chinh phục BK theo DESIGN.md (tháp chủ đề gán theo chủ đề của khối, khoá theo luật "học ≥ 1/2 dạng") thay màn tháp mượn của Đấu Từ ·
+> Kit C làm nền + vinh danh cho `GiaiVoDichHS`. Style khác (Tối giản, Khối vuông) cần bộ icon riêng — đơn sau.

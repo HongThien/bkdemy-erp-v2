@@ -204,6 +204,7 @@ export async function taiTatCaAnhZip(
   list: { phuHuynhId: string; phTen: string; maPh: string; tenCon: string[] }[],
   ky: string,
   onProgress?: (done: number, total: number) => void,
+  tenGoi?: string, // nhãn phạm vi (vd "Lop-7A1", "Khoi-7") chèn vào tên file ZIP
 ): Promise<{ ok: number; loi: number }> {
   const mmYYYY = `${ky.slice(5, 7)}-${ky.slice(0, 4)}` // 'MM-YYYY' cho tên file
   const [{ default: JSZip }, { createRoot }, { default: html2canvas }] = await Promise.all([
@@ -246,7 +247,7 @@ export async function taiTatCaAnhZip(
     const zipBlob = await zip.generateAsync({ type: 'blob' })
     const url = URL.createObjectURL(zipBlob)
     const a = document.createElement('a')
-    a.href = url; a.download = `HocPhi_QR_${mmYYYY}.zip`; a.click()
+    a.href = url; a.download = `HocPhi_QR_${tenGoi ? safeFileName(tenGoi).replace(/\s+/g, '-') + '_' : ''}${mmYYYY}.zip`; a.click()
     URL.revokeObjectURL(url)
   }
   return { ok, loi }

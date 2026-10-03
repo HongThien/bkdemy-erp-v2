@@ -12,7 +12,7 @@ import {
   loadHinhForBuoiPhase, syncHinhProblems, danhSoLaiTheoDe, thuTuMTTheoDe, dongBoETOnline, type ETOnlineDongBo, dongBoBTVNOnline, type BTVNOnlineDongBo,
   type BuoiAo, type BuoiTim, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync, type EloExpRow,
 } from '../../lib/gami'
-import { getLiveSnapshot, phatHanhDang, thuHoiDang, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
+import { getLiveSnapshot, phatHanhDang, thuHoiDang, moCau, dongCau, moToanBo, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
 import type { MTPhanCaus } from '../../lib/mt'
 import { getOrCreateKyThiMTChoBuoi, listDiemThiByKyThi, upsertDiemThi, setKhungMT, tinhDiemMT, currentMua, type KyThi, type DiemThi } from '../../lib/thanhtich'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
@@ -1460,7 +1460,7 @@ function fmtGioVN(iso: string): string {
   const vn = new Date(new Date(iso).getTime() + 7 * 3600 * 1000)
   return `${String(vn.getUTCHours()).padStart(2, '0')}:${String(vn.getUTCMinutes()).padStart(2, '0')}`
 }
-function LiveTab({ buoiId, roster, mon }: { buoiId: string; roster: BuoiHocHS[]; mon: string }) {
+export function LiveTab({ buoiId, roster, mon }: { buoiId: string; roster: BuoiHocHS[]; mon: string }) {
   const [loading, setLoading] = useState(true)
   const [baiTest, setBaiTest] = useState<BaiTest | null>(null)
   const [caus, setCaus] = useState<BaiTestCau[]>([])
@@ -1469,6 +1469,7 @@ function LiveTab({ buoiId, roster, mon }: { buoiId: string; roster: BuoiHocHS[];
   const [dangDaMo, setDangDaMo] = useState<Record<string, string>>({})   // ma_dang → phat_hanh_at (Thùy 13/09)
   const [tenDangs, setTenDangs] = useState<Record<string, string>>({})   // header hiện tên dạng, khớp bản in
   const [busyDang, setBusyDang] = useState<string | null>(null)
+  const [cauLe, setCauLe] = useState<Record<string, boolean>>({})        // câu mở/đóng LẺ (bài từ đề thi mở theo PHẦN — CEO 02/10)
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten)) // 2 HS trùng tên rút gọn → bung đủ (Thùy 07-06)
 
@@ -1477,7 +1478,7 @@ function LiveTab({ buoiId, roster, mon }: { buoiId: string; roster: BuoiHocHS[];
     if (!found) { setLoading(false); return null }
     const snap = await getLiveSnapshot(found.baiTest.id)
     setBaiTest(found.baiTest); setCaus(found.caus)
-    setBaiLam(snap.baiLam); setAnswers(snap.answers); setDangDaMo(snap.dangDaMo); setLoading(false)
+    setBaiLam(snap.baiLam); setAnswers(snap.answers); setDangDaMo(snap.dangDaMo); setCauLe(snap.cauLe); setLoading(false)
     return found.baiTest.id
   }, [buoiId])
 
@@ -1499,6 +1500,24 @@ function LiveTab({ buoiId, roster, mon }: { buoiId: string; roster: BuoiHocHS[];
     } catch (e: any) { alert(e.message ?? String(e)) }
     finally { setBusyDang(null) }
   }
+  // Câu đang mở cho HS? — đúng thứ tự ưu tiên của `_btc_trang_thai` ở DB: dòng mở lẻ của câu trước, rồi mới tới dạng.
+  const cauDangMo = (c: BaiTestCau) => (c.id in cauLe ? cauLe[c.id] : c.ma_dang != null && !!dangDaMo[c.ma_dang])
+  // Bài gán từ ĐỀ THI: mở / thu hồi cả một PHẦN của đề (mở = mở các câu chưa mở của phần; mọi câu đã mở thì bấm = thu hồi).
+  async function togglePhan(key: string, cs: BaiTestCau[]) {
+    if (!baiTest || busyDang) return
+    setBusyDang(key)
+    try {
+      const chuaMo = cs.filter((c) => !cauDangMo(c)).map((c) => c.id)
+      if (chuaMo.length) await moCau(baiTest.id, chuaMo); else await dongCau(baiTest.id, cs.map((c) => c.id))
+      await refresh()
+    } catch (e: any) { alert(e.message ?? String(e)) }
+    finally { setBusyDang(null) }
+  }
+  async function moHet() {
+    if (!baiTest || busyDang) return
+    setBusyDang('__tat_ca__')
+    try { await moToanBo(baiTest.id); await refresh() } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusyDang(null) }
+  }
 
   // Fetch tên dạng cho header (giống builder/bản in — trước hiện `Câu N` cộng dồn nên khó khớp giấy)
   useEffect(() => {
@@ -1515,20 +1534,30 @@ function LiveTab({ buoiId, roster, mon }: { buoiId: string; roster: BuoiHocHS[];
 
   // Group câu theo ma_dang GIỮ THỨ TỰ xuất hiện (Thùy 13/09: khớp builder/bản in — RESET số câu qua mỗi
   // dạng thay vì đếm cộng dồn 1..N). Câu KHÔNG có ma_dang xếp vào nhóm '__none__' cuối.
+  // ⭐ Bài gán từ ĐỀ THI (câu mang tên PHẦN của đề): nhóm + phát hành theo PHẦN (Phần I / II / III), không theo dạng —
+  // một dạng rải ở nhiều phần của đề, mở theo dạng là lộ câu của phần chưa tới (CEO 02/10 "phát hành từng phần").
+  const theoPhan = caus.some((c) => !!c.phan)
   const groups: { ma_dang: string; caus: BaiTestCau[] }[] = []
   let cur: { ma_dang: string; caus: BaiTestCau[] } | null = null
   for (const c of caus) {
-    const key = c.ma_dang ?? '__none__'
+    const key = theoPhan ? (c.phan ?? '__none__') : (c.ma_dang ?? '__none__')
     if (!cur || cur.ma_dang !== key) { cur = { ma_dang: key, caus: [] }; groups.push(cur) }
     cur.caus.push(c)
   }
-  const tenCua = (ma_dang: string, i: number) => ma_dang === '__none__' ? `Nhóm ${i + 1}` : (tenDangs[ma_dang] ?? ma_dang)
+  const tenCua = (ma_dang: string, i: number) => ma_dang === '__none__' ? `Nhóm ${i + 1}` : theoPhan ? ma_dang : (tenDangs[ma_dang] ?? ma_dang)
+  const soCauMo = caus.filter(cauDangMo).length
 
   return (
     <div className="flex h-full flex-col">
-      <div className="mb-3 text-[12px] text-slate-400">
-        {caus.length} câu · {groups.length} dạng · {coMat.length} HS · tự làm mới ~7s. Số câu reset theo dạng (khớp bản in).
-        <span className="ml-2 text-slate-500">📣 Bấm nút <b className="text-emerald-600">Phát hành</b> ở header dạng để lớp bắt đầu dạng đó. HS chỉ thấy câu của dạng đã phát hành.</span>
+      <div className="mb-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] text-slate-400">
+        <span>{caus.length} câu · {groups.length} {theoPhan ? 'phần' : 'dạng'} · {coMat.length} HS · tự làm mới ~7s. Số câu reset theo {theoPhan ? 'phần (khớp đề)' : 'dạng (khớp bản in)'}.</span>
+        <span className="text-slate-500">📣 Bấm <b className="text-emerald-600">Phát hành</b> ở đầu {theoPhan ? 'phần' : 'dạng'} để lớp bắt đầu {theoPhan ? 'phần' : 'dạng'} đó. HS chỉ thấy câu đã phát hành ({soCauMo}/{caus.length} câu đang mở).</span>
+        {soCauMo < caus.length && (
+          <button onClick={moHet} disabled={!!busyDang} title="Mở mọi câu của bài cho học sinh — dùng khi cho lớp luyện tập cả bài"
+            className="rounded-md bg-white px-2 py-0.5 text-[11px] font-bold text-emerald-700 ring-1 ring-emerald-300 hover:bg-emerald-50 disabled:opacity-50">
+            {busyDang === '__tat_ca__' ? '…' : '▶▶ Mở toàn bộ'}
+          </button>
+        )}
       </div>
       <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-slate-200">
         <table className="w-auto border-collapse text-sm">
@@ -1537,21 +1566,24 @@ function LiveTab({ buoiId, roster, mon }: { buoiId: string; roster: BuoiHocHS[];
             <tr className="bg-slate-50">
               <th rowSpan={2} className="sticky left-0 top-0 z-30 whitespace-nowrap border border-slate-200 bg-slate-50 px-4 py-1.5 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
               {groups.map((g, i) => {
-                const daMo = g.ma_dang !== '__none__' && !!dangDaMo[g.ma_dang]
-                const canBtn = g.ma_dang !== '__none__'
+                // Theo PHẦN (bài từ đề): đã mở = MỌI câu của phần đang mở; mở dở thì hiện n/m. Theo DẠNG: như cũ (bảng dạng).
+                const soMo = g.caus.filter(cauDangMo).length
+                const daMo = theoPhan ? soMo === g.caus.length : g.ma_dang !== '__none__' && !!dangDaMo[g.ma_dang]
+                const canBtn = theoPhan || g.ma_dang !== '__none__'
                 const busy = busyDang === g.ma_dang
+                const nhanMo = theoPhan ? '✓ đã mở' : `✓ ${fmtGioVN(dangDaMo[g.ma_dang])}`
                 return (
                   <th key={g.ma_dang} colSpan={g.caus.length}
                     className={`sticky top-0 z-10 border border-slate-200 px-2 py-1.5 text-center text-[11.5px] font-bold ${daMo ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700'}`}
                     title={g.ma_dang === '__none__' ? '' : g.ma_dang}>
                     <div className="flex items-center justify-center gap-1.5">
-                      <span className={`rounded px-1.5 py-0.5 text-[10px] font-black ${daMo ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}`}>D{i + 1}</span>
+                      <span className={`rounded px-1.5 py-0.5 text-[10px] font-black ${daMo ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}`}>{theoPhan ? 'P' : 'D'}{i + 1}</span>
                       <span className="truncate">{tenCua(g.ma_dang, i)}</span>
                       {canBtn && (
-                        <button onClick={() => togglePhatHanh(g.ma_dang)} disabled={busy}
-                          title={daMo ? `Đã phát hành ${fmtGioVN(dangDaMo[g.ma_dang])} — bấm để thu hồi` : 'Bấm để phát hành dạng này cho HS'}
+                        <button onClick={() => (theoPhan ? togglePhan(g.ma_dang, g.caus) : togglePhatHanh(g.ma_dang))} disabled={busy}
+                          title={daMo ? `Đã phát hành — bấm để thu hồi` : `Bấm để phát hành ${theoPhan ? 'phần' : 'dạng'} này cho HS`}
                           className={`shrink-0 rounded-md px-2 py-0.5 text-[10.5px] font-bold shadow-sm transition ${daMo ? 'bg-emerald-600 text-white hover:bg-emerald-500' : 'bg-white text-emerald-700 ring-1 ring-emerald-300 hover:bg-emerald-100'} disabled:opacity-50`}>
-                          {busy ? '…' : daMo ? `✓ ${fmtGioVN(dangDaMo[g.ma_dang])}` : '▶ Phát hành'}
+                          {busy ? '…' : daMo ? nhanMo : theoPhan && soMo > 0 ? `▶ Mở nốt (${soMo}/${g.caus.length})` : '▶ Phát hành'}
                         </button>
                       )}
                     </div>

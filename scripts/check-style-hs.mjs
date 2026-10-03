@@ -47,7 +47,7 @@ for (const f of files) {
 // ② icon ô  ③ file hình
 const app = readFileSync(`${GOC}/HocSinhApp.tsx`, 'utf8')
 const khoiDs = (ten) => { const i = app.indexOf(`const ${ten}`); if (i < 0) return []; const j = app.indexOf(']\n', i); return [...app.slice(i, j).matchAll(/\{\s*id:\s*'([a-z_0-9]+)'/g)].map((m) => m[1]) }
-const oCan = [...new Set([...khoiDs('KHU:'), ...khoiDs('KHU_CAP2'), 'hoc_tu_dau'])]
+const oCan = [...new Set([...khoiDs('KHU:'), ...khoiDs('KHU_CAP2'), 'hoc_tu_dau', 'tu_luyen_rieng'])] // 2 ô rời (không nằm trong KHU)
 const DIR_STYLE = `${GOC}/skin/styles`
 for (const f of readdirSync(DIR_STYLE).filter((x) => x.endsWith('.ts'))) {
   const s = readFileSync(join(DIR_STYLE, f), 'utf8')

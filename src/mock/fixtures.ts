@@ -108,10 +108,12 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'chotxu',      nhom: 'Gamification', ten: 'Chốt xu tháng',            founderOnly: true }, // CEO chỉnh mốc + chốt (Thùy 08-29)
   { id: 'huyhieu',     nhom: 'Gamification', ten: 'Huy hiệu',                 founderOnly: false }, // ADMIN: chốt tháng · ma trận · (xem trao) — DB chặn chốt bằng co_quyen_ghi('huyhieu') · spec-huy-hieu-build.md
   { id: 'huyhieu_trao', nhom: 'Gamification', ten: 'Trao huy hiệu',           founderOnly: false }, // GV: CHỈ trao bản cứng lớp mình (Thùy 28/09: chốt không cần GV)
+  { id: 'chuoi_nghi',  nhom: 'Gamification', ten: 'Ngày nghỉ của chuỗi',    founderOnly: false }, // lễ/Tết/tuần thi không làm đứt chuỗi làm bài HS — DB chặn ghi bằng co_quyen_ghi('chuoi_nghi')
   { id: 'traogiai',    nhom: 'Gamification', ten: 'Trao giải',                founderOnly: false }, // thưởng tháng theo lớp (Xuất sắc/Tiến bộ/Chăm chỉ) — xem lib/traogiai.ts
 
   // ── HỌC THUẬT: kho + soạn tài liệu ──
   { id: 'bdkt',        nhom: 'Học thuật', ten: 'Bản đồ kiến thức (Kho)',      founderOnly: false },
+  { id: 'sotay',       nhom: 'Học thuật', ten: 'Sổ tay công thức',            founderOnly: false }, // thẻ công thức app HS: sửa · duyệt · gắn hình (spec-so-tay-cong-thuc.md)
   { id: 'tl',          nhom: 'Học thuật', ten: 'Kho tài liệu',                founderOnly: false },
   { id: 'nhapkho',     nhom: 'Học thuật', ten: 'Nhập kho (từ tài liệu)',      founderOnly: false }, // ingest-first: bóc PDF → gán dạng → đẩy kho
   { id: 'lamtailieu',  nhom: 'Học thuật', ten: 'Làm tài liệu',                founderOnly: false }, // hub: giáo trình·ET·đề thi·bổ trợ

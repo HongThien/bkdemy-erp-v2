@@ -288,7 +288,8 @@ export default function BanDo({ config, khoi }: { config: BranchConfig; khoi: st
                       className={`rounded-md border px-3 py-1.5 text-xs font-medium transition ${tone}`}>{label}</button>
                   )
                 })()}
-                {config.cauTbl && (
+                {/* Đúng/Sai: loại câu của Toán/KHTN (mỗi mệnh đề 1 dạng) — môn Anh không có (chèn câu thiếu dang_de) */}
+                {config.cauTbl && config.key !== 'anh' && (
                   <button onClick={() => setDungSaiT2({ t2Ma: t2.t2Ma, t2Ten: t2.t2Ten })} title="Kho câu Đúng/Sai (mỗi mệnh đề 1 dạng riêng) của chuyên đề"
                     className="rounded-md border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-xs font-medium text-indigo-700 transition hover:bg-indigo-100">📋 Đúng/Sai</button>
                 )}
@@ -387,7 +388,7 @@ function toggle<T>(set: Set<T>, v: T): Set<T> {
 }
 
 // 5 thang màu % : <20 đỏ · 20 cam · 40 nõn chuối · 60 xanh · 80 xanh đậm.
-function pctColor(pct: number | null): string {
+export function pctColor(pct: number | null): string {
   if (pct == null) return '#94a3b8'
   if (pct < 20) return '#f43f5e'   // rose-500 — đỏ
   if (pct < 40) return '#f97316'   // orange-500 — cam

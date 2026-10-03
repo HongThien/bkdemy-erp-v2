@@ -21,6 +21,8 @@ import { ganDang } from './noctorium_crosswalk.mjs'
 const A = {}; { const v = process.argv.slice(2); for (let i = 0; i < v.length; i++) if (v[i].startsWith('--')) { A[v[i].slice(2)] = v[i + 1] && !v[i + 1].startsWith('--') ? v[++i] : true } }
 if (!A.in || !A.khoi) { console.error('Cần --in <dir> --khoi <11|12> [--dry] [--chi sha8] [--limit N]'); process.exit(2) }
 const DRY = !!A.dry
+// --thu: chạy THẬT trên DB (chèn câu, đề, sổ) nhưng ROLLBACK từng đề và không tải ảnh — để thấy lỗi ràng buộc / số câu trùng trước khi ghi
+const THU = !!A.thu
 const env = {}
 for (const f of ['.env', '.env.local']) if (existsSync(f)) for (const l of readFileSync(f, 'utf8').split(/\r?\n/)) { const i = l.indexOf('='); if (i > 0 && !l.trim().startsWith('#')) env[l.slice(0, i).trim()] = l.slice(i + 1).trim().replace(/^["']|["']$/g, '') }
 const DB = process.env.DATABASE_URL_RW ?? env.DATABASE_URL
@@ -29,7 +31,7 @@ if (!DRY && !DB) { console.error('Thiếu DATABASE_URL (hoặc DATABASE_URL_RW)'
 // ── ảnh ──────────────────────────────────────────────────────────────────────
 let sb = null
 async function upAnh(pngPath, ten) {
-  if (DRY) return `dry://${ten}`
+  if (DRY || THU) return `dry://${ten}`
   if (!sb) { if (!env.VITE_SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE) throw new Error('thiếu VITE_SUPABASE_URL / SUPABASE_SERVICE_ROLE (.env.local)'); sb = createClient(env.VITE_SUPABASE_URL, env.SUPABASE_SERVICE_ROLE, { auth: { persistSession: false, autoRefreshToken: false } }) }
   const thang = new Date().toISOString().slice(0, 7)
   const path = `nhap_kho/${thang}/${randomUUID()}_${ten.replace(/[^a-zA-Z0-9_-]/g, '')}.png`
@@ -65,13 +67,23 @@ if (client) await client.connect()
 const daCo = new Set()
 // nhap_kho_log.folder có CHECK (co_giai/khong_giai…) ⇒ dùng 'co_giai' + ghi_chu 'noctorium de_thi:<id>' để nhận diện
 if (client) for (const r of (await client.query(`select sha256 from nhap_kho_log where ghi_chu like 'noctorium %'`)).rows) daCo.add(r.sha256)
+// 02/10: bộ zip tải lại có vân tay KHÁC bản đã nhập 24/09 (0/224 file trùng sha256) dù cùng đề ⇒ so thêm theo TÊN đề (khoá tự nhiên),
+// không thì nhập trùng cả đề. Chuẩn hoá: NFC, thường, bỏ ký tự không phải chữ / số.
+const chTen = (t) => String(t ?? '').normalize('NFC').toLowerCase().replace(/\.docx$/, '').replace(/[^\p{L}\p{N}]+/gu, ' ').trim()
+const daCoTen = new Set()
+if (client) for (const r of (await client.query(`select ten, cau_hinh -> 'deThi' ->> 'file' f from tai_lieu where loai = 'de_thi' and cau_hinh -> 'deThi' ->> 'nguon' = 'noctorium'`)).rows) { daCoTen.add(chTen(r.ten)); if (r.f) daCoTen.add(chTen(r.f)) }
 
 const tk = { de_nhap: 0, de_bo_qua: 0, de_skip_hinh11: 0, cau_moi: 0, cau_trung: 0, cau_chua_dang: 0, cau_co_dang: 0, anh: 0, theo_dang: {}, chua_ly_do: {}, loi: [] }
 for (const f of files) {
   const de = JSON.parse(readFileSync(join(dir, f), 'utf8'))
-  if (daCo.has(de.sha256)) { tk.de_bo_qua++; continue }
+  if (daCo.has(de.sha256) || daCoTen.has(chTen(de.ten)) || daCoTen.has(chTen(de.file))) { tk.de_bo_qua++; continue }
   // 1) gán dạng + kho
-  const items = de.cau.map((q) => ({ q, g: ganDang(de.khoi, q) }))
+  // "Câu MA": file gốc gõ lặp nhãn ("Câu 7.⇥Câu 5. Hệ bất phương trình…") ⇒ bộ bóc đẻ một câu RỖNG hoàn toàn đứng trước câu thật.
+  // Không nội dung, không ý, không phương án, không mệnh đề, không hình, không lời giải ⇒ không phải câu, bỏ (đếm lại để báo).
+  const laMa = (q) => !(q.noi_dung ?? '').trim() && !q.y?.length && !q.lua_chon?.length && !q.menh_de?.length && !q.anh?.length && !(q.loi_giai ?? '').trim()
+  const soMa = de.cau.filter(laMa).length
+  if (soMa) { tk.cau_ma_bo = (tk.cau_ma_bo ?? 0) + soMa; console.error(`  (bỏ ${soMa} câu rỗng do nhãn "Câu N." lặp trong file gốc: ${de.file.slice(0, 60)})`) }
+  const items = de.cau.filter((q) => !laMa(q)).map((q) => ({ q, g: ganDang(de.khoi, q) }))
   if (items.some((x) => x.g.subject === null)) { tk.de_skip_hinh11++; continue } // đề có câu chưa có kho đích ⇒ để nguyên cả đề
   for (const x of items) {
     if (x.g.dang === 'CHUA') { tk.cau_chua_dang++; tk.chua_ly_do[x.g.ly_do] = (tk.chua_ly_do[x.g.ly_do] ?? 0) + 1 }
@@ -90,7 +102,7 @@ for (const f of files) {
     await client.query('begin')
     // 3) insert câu theo kho, giữ ánh xạ vị trí → ma_cau
     const maCauOf = new Map()
-    for (const subject of ['dai', 'hgt']) {
+    for (const subject of ['dai', 'hgt', 'hinh_hoc']) {
       const grp = items.filter((x) => x.g.subject === subject)
       if (!grp.length) continue
       const cauList = grp.map((x) => payload(x.q, de, x.g.dang, ...(anh.get(x.q) ?? [null, null])))
@@ -99,7 +111,7 @@ for (const f of files) {
       tk.cau_trung += r.trung.length; tk.cau_moi += grp.length - r.trung.length
     }
     // 4) đề = tai_lieu + phần + câu
-    const nhanhByCau = {}; for (const [, v] of maCauOf) if (v.subject === 'hgt') nhanhByCau[v.ma_cau] = 'hinh_gt'
+    const nhanhByCau = {}; for (const [, v] of maCauOf) { if (v.subject === 'hgt') nhanhByCau[v.ma_cau] = 'hinh_gt'; else if (v.subject === 'hinh_hoc') nhanhByCau[v.ma_cau] = 'hinh_hoc' }
     const cauHinh = { deThi: { nguon: 'noctorium', nam: de.nam, truong: de.truong, thoiGianPhut: 90, thangDiem: 10, sha256: de.sha256, file: de.file, phan: de.phan }, ...(Object.keys(nhanhByCau).length ? { nhanhByCau } : {}) }
     const { rows: [tl] } = await client.query(
       `insert into tai_lieu (loai, ten, khoi, mon, cau_hinh) values ('de_thi', $1, $2, 'Toán', $3::jsonb) returning id`,
@@ -121,9 +133,9 @@ for (const f of files) {
     await client.query(
       `insert into nhap_kho_log (file_name, folder, sha256, so_cau_moi, ma_cau_list, ghi_chu) values ($1, 'co_giai', $2, $3, $4::jsonb, $5)`,
       [de.file, de.sha256, maList.length, JSON.stringify(maList), `noctorium de_thi:${tl.id}`])
-    await client.query('commit')
+    await client.query(THU ? 'rollback' : 'commit')
     tk.de_nhap++
-    console.error(`✓ ${de.file.slice(0, 70)} → tai_lieu ${tl.id} (${maList.length} câu)`)
+    console.error(`${THU ? '· thử' : '✓'} ${de.file.slice(0, 70)} → ${THU ? 'rollback' : 'tai_lieu ' + tl.id} (${maList.length} câu)`)
   } catch (e) {
     try { await client.query('rollback') } catch {}
     tk.loi.push(`${de.file}: ${e.message}`)

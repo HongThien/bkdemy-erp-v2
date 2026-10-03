@@ -22,6 +22,8 @@ function renameToIndex(): Plugin {
 // app chính — không tách DB, chỉ tách bundle/domain, xem DEVLOG 2026-08-21 "hs.bkacademy.edu.vn").
 // Lệnh: npm run build:hs
 export default defineConfig({
+  // Vercel đặt VERCEL_ENV = production | preview | development lúc build ⇒ app biết mình là bản THỬ NGHIỆM hay bản THẬT (phieuluu/coBat.ts — cờ tính năng mới).
+  define: { __VERCEL_ENV__: JSON.stringify(process.env.VERCEL_ENV ?? "") },
   plugins: [
     react(),
     tailwindcss(),
@@ -49,6 +51,9 @@ export default defineConfig({
         // App học tập — dữ liệu (câu hỏi/điểm) LUÔN phải mới, không cache API. Chỉ cache asset tĩnh
         // (JS/CSS/font) để load nhanh lần sau + cho phép cài ra màn hình chính (yêu cầu có SW).
         globPatterns: ['**/*.{js,css,html,png,svg,woff2}'],
+        // Hình huy hiệu + bậc rank (~4 MB, 116 file — chỉ hiện ở Album/Rank/Hồ sơ) KHÔNG cho vào bộ lưu sẵn: nếu không, mỗi lần app
+        // cập nhật mọi máy HS phải tải lại đủ 4 MB dù em chưa mở màn nào. Mở màn thì tải theo nhu cầu + cache trình duyệt (01/10).
+        globIgnores: ['**/bk-ui/hs/gami/huy-hieu/**', '**/bk-ui/hs/gami/rank/**'],
         navigateFallbackDenylist: [/^\/rest\//, /^\/auth\//],
       },
     }),
@@ -56,6 +61,7 @@ export default defineConfig({
   ],
   build: {
     outDir: 'dist-hs',
-    rollupOptions: { input: 'hs.html' },
+    // dautu.html = khung game 6 chế độ, app HS nhúng trong khung (khu Học tập — spec-che-do-game §7, 03/10) ⇒ build chung vào dist-hs
+    rollupOptions: { input: { hs: 'hs.html', dautu: 'dautu.html' } },
   },
 })

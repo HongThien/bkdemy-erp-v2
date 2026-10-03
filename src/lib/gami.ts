@@ -791,7 +791,8 @@ export async function loadDangTaiLieuBuoi(buoiId: string, nguon: NguonCanhBao, m
     if (error) throw error
     const lopId = (b as any).lop_id as string | null
     const doc = lopId ? await getGiaoTrinhBuoiDoc(lopId, (b as any).ngay) : null
-    if (doc) mds = (await getTaiLieuFull(doc.id)).phans.filter((p) => p.loai_phan === 'dang').map((p) => p.ref_ma)
+    // phần không trỏ dạng (ref_ma trống) = phần của ĐỀ THI gán làm bài trên lớp ⇒ dạng lấy theo từng câu
+    if (doc) mds = (await getTaiLieuFull(doc.id)).phans.filter((p) => p.loai_phan === 'dang').flatMap((p) => (p.ref_ma ? [p.ref_ma] : p.caus.map((c) => c.dang_chinh)))
   } else if (nguon === 'et') mds = (await loadETForBuoi(buoiId)).caus.map((c) => c.dang_chinh)
   else if (nguon === 'mt') mds = (await loadMTForBuoi(buoiId)).caus.map((c) => c.dang_chinh)
   else mds = (await loadBTVNForBuoi(buoiId)).caus.map((c) => c.dang_chinh)

@@ -4,6 +4,7 @@
 //   đầu trang (avatar · tên · nút HÌNH NỀN · hòm thư · ⋯) → VIỆC TIẾP THEO → widget đếm ngược kỳ thi (Elo bỏ khỏi Home — Thùy 29/09)
 //   → banner kiểm tra lại → lưới ô chức năng (danh sách ô do HocSinhApp truyền, giữ nguyên chức năng từng khối).
 // 01/10 (Thùy: "chọn môn Toán, KHTN, Tiếng Anh; chuyển môn là chuyển tính năng học tập, chơi thì không cần"): phần dưới
+//   03/10: thẻ Thế giới BK lên CAO NHẤT (dưới lời chào); Giải trí = Nhiệm vụ · Thư viện BK (Rank bên trong) · Thành tựu · May mắn · Ví xu.
 //   tách 2 KHỐI — "Học tập" (thanh chọn môn → ca bổ trợ của môn → lưới ô `nhom='hoc'`) và "Giải trí" (thẻ Thế giới BK →
 //   lưới ô `nhom='choi'`, chung mọi môn).
 // Skin: CHỈ đọc biến CSS `--sk-*` từ skin/registry.ts — không `if (skin === …)` ở đây.
@@ -20,16 +21,18 @@ import { LOAI_BO_TRO_TEN, type LichBoTro } from '../../lib/botro_yeu_ca'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { luuGiaoDien, type Home912 } from '../../lib/giaodien_hs'
 import { THE, HEAD, MAU, NhomHS, useHeThongToi, useManDoc, useMedia } from './skin/KhungHS'
+import { TamDoHoa } from './phieuluu/DoHoa'
 import type { TheGioiHome } from '../../lib/thegioi'
 import { TenLop, moTaTin } from './thegioi/TheGioiHS'
 import { SKINS, SKIN_MAC_DINH, laySkin, cheDoThat, bienCss, layHinhNen, nenCua, type GiaoDien, type CheDo, type Skin } from './skin/registry'
+import { BieuTuongBac, SaoBac } from './gami/HinhGami'
 
 const MAC_DINH: GiaoDien = { skin: SKIN_MAC_DINH, che_do: 'he_thong', hinh_nen: 'mac_dinh' }
 
 // Thẻ/tiêu đề/màu/hook màn hình lấy từ skin/KhungHS — 1 nguồn style cho Home và mọi màn (Thùy 29/09).
 
 function Badge({ n }: { n: number }) {
-  return <span className="flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[11px] font-extrabold" style={{ background: 'var(--sk-badge)', color: 'var(--sk-badge-ink)' }}>{n}</span>
+  return <span className="flex h-5 min-w-5 items-center justify-center px-1.5 text-[11px] font-extrabold" style={{ borderRadius: 'var(--sk-radius-pill)', background: 'var(--sk-badge)', color: 'var(--sk-badge-ink)' }}>{n}</span>
 }
 
 // ── Việc tiếp theo: ca bổ trợ gần nhất → ô đang có việc → Tự luyện ──────────
@@ -63,6 +66,7 @@ type HomeProps = {
   onHoSo?: () => void // có ⇒ bấm avatar mở HỒ SƠ (DON-HANG-GAMI-HS Đơn 4); đổi ảnh chuyển vào trong Hồ sơ
   gioiTinh?: 'nam' | 'nu' | null // chỉ để chọn NHÂN VẬT của style — không đổi màu theo giới tính
   theGioi?: TheGioiHome | null; onTheGioi?: () => void // thẻ Thế giới BK (thay thẻ "Việc cần làm" — Thùy 29/09)
+  rank?: { bac: number; ten: string; sao: number } | null; onRank?: () => void // bậc Rank của MÔN đang chọn — huy hiệu cạnh tên (Thùy 01/10)
 }
 
 // ── MÀN CHÍNH khổ DỌC (điện thoại · iPad dọc) — theo hàng dưới ảnh gốc style (RPG: Nền app HS cấp 3_11.png, Thùy 29/09):
@@ -79,6 +83,7 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
     <div className="relative mx-auto flex min-h-[100dvh] max-w-[430px] flex-col gap-3 px-4 pb-[calc(20px+env(safe-area-inset-bottom))] pt-[calc(12px+env(safe-area-inset-top))] md:max-w-[820px] md:gap-4 md:px-8">
       <div className="flex items-center gap-2.5">
         <AnhDaiDien p={p} size={44} />
+        <HuyHieuBac p={p} />
         <span className="flex-1" />
         <CumNut p={p} onHinhNen={onHinhNen} nutRef={nutRef} />
       </div>
@@ -90,7 +95,7 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
       {widgets.length > 0 && (
         <div className="flex flex-wrap items-center gap-2">
           {widgets.map((w) => (
-            <span key={w.nhan} className="flex items-baseline gap-1.5 rounded-full px-3.5 py-1.5" style={{ ...THE, borderRadius: '999px', clipPath: 'none' }}>
+            <span key={w.nhan} className="flex items-baseline gap-1.5 rounded-full px-3.5 py-1.5" style={{ ...THE, borderRadius: 'var(--sk-radius-pill)', clipPath: 'none' }}>
               <span className="text-[12px] font-semibold" style={{ color: 'var(--sk-muted)' }}>{w.nhan}</span>
               <b className="text-[16px] tabular-nums" style={HEAD}>{w.so}</b>
               <span className="text-[11.5px]" style={{ color: 'var(--sk-muted)' }}>{w.phu}</span>
@@ -98,6 +103,9 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
           ))}
         </div>
       )}
+
+      {/* THẾ GIỚI BK cao nhất màn chính (Thùy 03/10) */}
+      <TheTheGioi p={p} skin={skin} />
 
       {nv && (
         <div className="relative -mt-1 h-[230px] md:h-[380px]">
@@ -119,11 +127,17 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
       <LuoiDoc cards={hoc} skin={skin} />
 
       {/* ── GIẢI TRÍ — chung mọi môn, đổi môn không đổi ── */}
-      {(p.onTheGioi || choi.length > 0) && <NhomHS>Giải trí</NhomHS>}
-      <TheTheGioi p={p} skin={skin} />
+      {choi.length > 0 && <NhomHS>Giải trí</NhomHS>}
       <LuoiDoc cards={choi} skin={skin} />
     </div>
   )
+}
+
+// Icon ô: ảnh thường, hoặc MẶT NẠ tô màu chữ khi style đơn sắc (Skin.anhOMask — Tối giản). Ảnh riêng của ô (c.anh, vd bậc Rank) luôn là ảnh thường.
+function IconO({ src, mask, className }: { src: string; mask: boolean; className: string }) {
+  if (!mask) return <img src={src} alt="" className={`${className} object-contain`} />
+  const m = `url(${src}) center / contain no-repeat`
+  return <span aria-hidden className={`block ${className}`} style={{ background: 'var(--sk-ink)', WebkitMask: m, mask: m }} />
 }
 
 // LƯỚI Ô khổ dọc — 4 cột ô nhỏ như ảnh gốc (điện thoại), iPad dọc cùng lưới nhưng ô to
@@ -132,12 +146,12 @@ function LuoiDoc({ cards, skin }: { cards: HomeCard[]; skin: Skin }) {
   return (
     <div className="grid grid-cols-4 gap-2 md:gap-3">
       {cards.map((c) => {
-        const anh = skin.anhO?.[c.id]
+        const anh = c.anh ?? skin.anhO?.[c.id]
         return (
           <button key={c.id} disabled={c.disabled} onClick={c.onClick}
             className={`relative flex min-h-[104px] flex-col items-center justify-start gap-1 px-1 pb-2 pt-2.5 text-center transition md:min-h-[168px] md:gap-1.5 md:px-2 md:pt-4 ${c.disabled ? 'opacity-50' : 'active:scale-[0.97]'}`} style={THE}>
             {anh
-              ? <img src={anh} alt="" className="h-11 w-11 object-contain md:h-[76px] md:w-[76px]" />
+              ? <IconO src={anh} mask={!c.anh && !!skin.anhOMask} className="h-11 w-11 md:h-[76px] md:w-[76px]" />
               : <span className="text-[24px] leading-none md:text-[36px]" style={skin.dauThayIcon ? { color: 'var(--sk-acc)' } : undefined} aria-hidden>{skin.dauThayIcon ?? c.icon ?? c.emoji ?? '•'}</span>}
             <span className="text-[12px] font-bold leading-tight md:text-[16px]" style={HEAD}>{c.ten}</span>
             <span className="line-clamp-2 text-[10px] leading-snug md:text-[12.5px]" style={{ color: mauPhu(c), fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500 }}>{c.sub}</span>
@@ -156,11 +170,12 @@ function tachO(p: HomeProps) {
 }
 
 const mauPhu = (c: HomeCard) => c.subMau === 'do' ? MAU.sai : c.subMau === 'xanh' ? MAU.dung : c.subMau === 'ton' ? 'var(--sk-ink)' : 'var(--sk-muted)'
-const NUT_TRON: CSSProperties = { ...THE, clipPath: 'none', borderLeft: 'var(--sk-card-border)', borderRadius: '999px' }
+const NUT_TRON: CSSProperties = { ...THE, clipPath: 'none', borderLeft: 'var(--sk-card-border)', borderRadius: 'var(--sk-radius-pill)' }
 
 // Cụm nút đầu trang (Hình nền · hòm thư · ⋯) — chung cho bố cục dọc và ngang.
 function CumNut({ p, onHinhNen, nutRef }: { p: HomeProps; onHinhNen: () => void; nutRef: RefObject<HTMLButtonElement> }) {
   const [menu, setMenu] = useState(false)
+  const [doHoa, setDoHoa] = useState(false) // chỉnh đồ hoạ bản đồ 3D (spec-v1-app-hs §4.5)
   return (
     <>
         <button ref={nutRef} onClick={onHinhNen} className="flex h-10 shrink-0 items-center gap-1.5 px-3 text-[13px] font-bold active:scale-95"
@@ -181,11 +196,13 @@ function CumNut({ p, onHinhNen, nutRef }: { p: HomeProps; onHinhNen: () => void;
           <button onClick={() => setMenu((m) => !m)} className="flex h-10 w-10 items-center justify-center text-[20px] font-bold leading-none active:scale-95" style={NUT_TRON} aria-label="Thêm">⋯</button>
           {menu && (
             <div className="absolute right-0 top-12 z-20 flex w-44 flex-col overflow-hidden rounded-2xl text-[14px] shadow-xl" style={{ background: 'var(--sk-bg)', border: '1px solid var(--sk-line)' }}>
-              <button className="px-4 py-3 text-left" onClick={() => { setMenu(false); p.onDoiMK() }}>Đổi mật khẩu</button>
+              <button className="px-4 py-3 text-left" onClick={() => { setMenu(false); setDoHoa(true) }}>Đồ hoạ</button>
+              <button className="px-4 py-3 text-left" style={{ borderTop: '1px solid var(--sk-line)' }} onClick={() => { setMenu(false); p.onDoiMK() }}>Đổi mật khẩu</button>
               <button className="px-4 py-3 text-left" style={{ borderTop: '1px solid var(--sk-line)' }} onClick={() => { setMenu(false); p.onThoat() }}>Thoát</button>
             </div>
           )}
         </div>
+        {doHoa && <TamDoHoa onDong={() => setDoHoa(false)} />}
     </>
   )
 }
@@ -193,10 +210,10 @@ function CumNut({ p, onHinhNen, nutRef }: { p: HomeProps; onHinhNen: () => void;
 function AnhDaiDien({ p, size }: { p: HomeProps; size: number }) {
   const initials = p.hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()
   return (
-    <div className="shrink-0 rounded-full" style={{ boxShadow: '0 0 0 2px var(--sk-acc)' }}>
+    <div className="shrink-0" style={{ borderRadius: 'var(--sk-radius-pill)', boxShadow: '0 0 0 2px var(--sk-acc)' }}>
       {p.onHoSo
-        ? <button onClick={p.onHoSo} aria-label="Hồ sơ của em" className="flex items-center justify-center overflow-hidden rounded-full font-extrabold active:scale-95"
-            style={{ width: size, height: size, fontSize: size * 0.36, background: 'var(--sk-surface2)' }}>
+        ? <button onClick={p.onHoSo} aria-label="Hồ sơ của em" className="flex items-center justify-center overflow-hidden font-extrabold active:scale-95"
+            style={{ width: size, height: size, fontSize: size * 0.36, background: 'var(--sk-surface2)', borderRadius: 'var(--sk-radius-pill)' }}>
             {p.anhUrl ? <img src={p.anhUrl} alt="" className="h-full w-full object-cover" /> : initials}
           </button>
         : <AvatarHS anhUrl={p.anhUrl} initials={initials} size={size} fill="var(--sk-surface2)" badge="var(--sk-acc)" onChanged={p.onAnhChanged} />}
@@ -204,14 +221,32 @@ function AnhDaiDien({ p, size }: { p: HomeProps; size: number }) {
   )
 }
 
+// HUY HIỆU BẬC RANK cạnh thông tin em (Thùy 01/10) — biểu tượng bậc của MÔN đang chọn + tên bậc + sao; bấm ⇒ màn Rank.
+// Môn chưa mở rank / chưa tải xong ⇒ không vẽ (không giữ chỗ trống). trongTam = nằm trong tấm tên khổ ngang (vạch ngăn bên trái).
+function HuyHieuBac({ p, trongTam }: { p: HomeProps; trongTam?: boolean }) {
+  if (!p.rank) return null
+  const r = p.rank
+  return (
+    <button onClick={p.onRank} disabled={!p.onRank} aria-label={`Rank: ${r.ten}`}
+      className={`flex shrink-0 items-center gap-1.5 text-left active:scale-95 ${trongTam ? 'ml-1 border-l pl-3' : 'h-11 pl-1 pr-3'}`}
+      style={trongTam ? { borderColor: 'var(--sk-line)' } : NUT_TRON}>
+      <BieuTuongBac bac={r.bac} size={trongTam ? 44 : 38} nho />
+      <span className="leading-tight">
+        <span className="block whitespace-nowrap text-[13.5px] font-bold" style={HEAD}>{r.ten}</span>
+        {r.bac < 9 && <SaoBac n={r.sao} size={12} />}
+      </span>
+    </button>
+  )
+}
+
 // CHỌN MÔN — bản to, LUÔN hiện (em 1 môn thấy đúng môn của mình = nhãn khối học tập); màu đọc biến skin, không if theo skin
 function ChonMon({ p }: { p: HomeProps }) {
   return (
     <ThanhChonMon mons={p.mons} mon={p.mon} onChon={p.onChonMon} dem={p.demMon} to luonHien
-      khung={{ ...THE, clipPath: 'none', borderRadius: '999px' }}
+      khung={{ ...THE, clipPath: 'none', borderRadius: 'var(--sk-radius-pill)' }}
       nut={(chon) => chon
-        ? { background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)' }
-        : { background: 'transparent', color: 'var(--sk-ink)' }} />
+        ? { background: 'var(--sk-acc)', color: 'var(--sk-acc-ink)', borderRadius: 'var(--sk-radius-pill)' }
+        : { background: 'transparent', color: 'var(--sk-ink)', borderRadius: 'var(--sk-radius-pill)' }} />
   )
 }
 
@@ -262,7 +297,7 @@ function TheTheGioi({ p, skin, to }: { p: HomeProps; skin: Skin; to?: boolean })
   const so = (tt?.so ?? 0) + (g?.loi_moi ?? 0) + choKhoe
   return (
     <button onClick={p.onTheGioi} className={`relative flex w-full items-center gap-3 text-left active:scale-[0.99] ${to ? 'min-h-[92px] px-5 py-3.5' : 'px-3.5 py-3'}`} style={THE}>
-      {anh ? <img src={anh} alt="" className={`${to ? 'h-14 w-14' : 'h-12 w-12'} shrink-0 object-contain`} /> : <span className="text-[30px] leading-none" aria-hidden>🌏</span>}
+      {anh ? <IconO src={anh} mask={!!skin.anhOMask} className={`${to ? 'h-14 w-14' : 'h-12 w-12'} shrink-0`} /> : <span className="text-[30px] leading-none" aria-hidden>🌏</span>}
       <span className="min-w-0 flex-1">
         <span className={`block font-bold ${to ? 'text-[19px]' : 'text-[16px]'}`} style={HEAD}>Thế giới BK</span>
         <span className="block truncate text-[12px] italic leading-snug" style={{ color: 'var(--sk-acc)' }}>Xem học sinh BK đang khoe gì nào!</span>
@@ -300,12 +335,13 @@ function ManNgang({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
   return (
     <div className="relative mx-auto flex min-h-[100dvh] max-w-[1440px] flex-col px-8 pb-8 pt-5 xl:px-12">
       <div className="flex items-center gap-3">
-        <div className="flex min-w-0 items-center gap-3 rounded-full py-1 pl-1 pr-5" style={{ background: 'var(--sk-name-plate)' }}>
+        <div className="flex min-w-0 items-center gap-3 py-1 pl-1 pr-5" style={{ background: 'var(--sk-name-plate)', borderRadius: 'var(--sk-radius-pill)' }}>
           <AnhDaiDien p={p} size={52} />
           <span className="min-w-0 leading-tight">
             <span className="block truncate text-[17px] font-bold" style={HEAD}>{p.hoTen}</span>
             <span className="block truncate text-[12.5px]" style={{ color: 'var(--sk-muted)' }}>{p.maHS.toUpperCase()}{p.lopMon ? ` · ${p.lopMon}` : ''}</span>
           </span>
+          <HuyHieuBac p={p} trongTam />
         </div>
         <span className="flex-1" />
         <CumNut p={p} onHinhNen={onHinhNen} nutRef={nutRef} />
@@ -329,7 +365,7 @@ function ManNgang({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
           {widgets.length > 0 && (
             <div className="flex flex-wrap items-center gap-2.5">
               {widgets.map((w) => (
-                <span key={w.nhan} className="flex items-baseline gap-2 rounded-full px-4 py-2" style={{ ...THE, borderRadius: '999px', clipPath: 'none' }}>
+                <span key={w.nhan} className="flex items-baseline gap-2 rounded-full px-4 py-2" style={{ ...THE, borderRadius: 'var(--sk-radius-pill)', clipPath: 'none' }}>
                   <span className="text-[12.5px] font-semibold" style={{ color: 'var(--sk-muted)' }}>{w.nhan}</span>
                   <b className="text-[18px] tabular-nums" style={HEAD}>{w.so}</b>
                   <span className="text-[12px]" style={{ color: 'var(--sk-muted)' }}>{w.phu}</span>
@@ -337,6 +373,9 @@ function ManNgang({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
               ))}
             </div>
           )}
+
+          {/* THẾ GIỚI BK cao nhất (Thùy 03/10) */}
+          {p.onTheGioi && <div className="flex min-w-0"><TheTheGioi p={p} skin={skin} to /></div>}
 
           {/* ── GÓC HỌC TẬP của MÔN đang chọn (Thùy 01/10) ── */}
           <NhomHS>Học tập</NhomHS>
@@ -352,8 +391,7 @@ function ManNgang({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
           <LuoiNgang cards={hoc} skin={skin} />
 
           {/* ── GIẢI TRÍ — chung mọi môn ── */}
-          {(p.onTheGioi || choi.length > 0) && <NhomHS>Giải trí</NhomHS>}
-          {p.onTheGioi && <div className="flex min-w-0"><TheTheGioi p={p} skin={skin} to /></div>}
+          {choi.length > 0 && <NhomHS>Giải trí</NhomHS>}
           <LuoiNgang cards={choi} skin={skin} />
         </div>
       </div>
@@ -367,12 +405,12 @@ function LuoiNgang({ cards, skin }: { cards: HomeCard[]; skin: Skin }) {
   return (
     <div className={`grid gap-3 xl:gap-4 ${cards.length > 8 ? 'grid-cols-5' : 'grid-cols-4'}`}>
       {cards.map((c) => {
-        const anh = skin.anhO?.[c.id]
+        const anh = c.anh ?? skin.anhO?.[c.id]
         return (
           <button key={c.id} disabled={c.disabled} onClick={c.onClick}
             className={`relative flex min-h-[148px] flex-col items-center justify-center gap-1 px-2 py-3 text-center transition xl:min-h-[176px] xl:gap-1.5 xl:px-3 xl:py-4 ${c.disabled ? 'opacity-50' : 'hover:-translate-y-0.5 active:scale-[0.98]'}`} style={THE}>
             {anh
-              ? <img src={anh} alt="" className="h-16 w-16 object-contain xl:h-[84px] xl:w-[84px]" />
+              ? <IconO src={anh} mask={!c.anh && !!skin.anhOMask} className="h-16 w-16 xl:h-[84px] xl:w-[84px]" />
               : <span className="text-[40px] leading-none" style={skin.dauThayIcon ? { color: 'var(--sk-acc)' } : undefined} aria-hidden>{skin.dauThayIcon ?? c.icon ?? c.emoji ?? '•'}</span>}
             <span className="text-[15px] font-bold leading-tight xl:text-[17px]" style={HEAD}>{c.ten}</span>
             <span className="text-[12px] leading-snug xl:text-[13px]" style={{ color: mauPhu(c), fontWeight: c.subMau === 'ton' || c.subMau === 'do' ? 700 : 500 }}>{c.sub}</span>
@@ -392,7 +430,7 @@ function ChonGiaoDien({ gd, setGd, heThongToi, nutChinh, onNutChinh, onDong, dan
   const skin = laySkin(gd.skin)
   const cd = cheDoThat(skin, gd.che_do, heThongToi)
   const khoaCheDo = skin.cheDo.length === 1
-  const chonSkin = (s: Skin) => setGd({ skin: s.id, che_do: gd.che_do, hinh_nen: s.hinhNen.some((h) => h.id === gd.hinh_nen) ? gd.hinh_nen : s.hinhNen[0].id })
+  const chonSkin = (s: Skin) => setGd({ ...gd, skin: s.id, hinh_nen: s.hinhNen.some((h) => h.id === gd.hinh_nen) ? gd.hinh_nen : s.hinhNen[0].id })
   const CHE_DO: { id: CheDo; ten: string }[] = [{ id: 'sang', ten: 'Sáng' }, { id: 'toi', ten: 'Tối' }, { id: 'he_thong', ten: 'Theo máy' }]
   const nut = (chon: boolean): CSSProperties => ({ border: `2px solid ${chon ? 'var(--sk-acc)' : 'var(--sk-line)'}`, background: chon ? 'var(--sk-surface2)' : 'transparent' })
 
@@ -438,6 +476,22 @@ function ChonGiaoDien({ gd, setGd, heThongToi, nutChinh, onNutChinh, onDong, dan
                   <button key={c.id} onClick={() => setGd({ ...gd, che_do: c.id })} className="flex-1 rounded-xl px-2 py-2 text-[13.5px] font-semibold" style={nut(gd.che_do === c.id)} aria-pressed={gd.che_do === c.id}>{c.ten}</button>
                 ))}
               </div>}
+        </section>
+
+        <section className="flex flex-col gap-2">
+          <p className="text-[12px] font-bold uppercase tracking-[0.08em]" style={{ color: 'var(--sk-muted)' }}>Hiệu ứng game</p>
+          <div className="flex gap-2">
+            {([[true, 'Bật', 'Bản đồ phiêu lưu, đánh quái'], [false, 'Tắt', 'Làm bài dạng thường, gọn']] as const).map(([b, ten, mo]) => {
+              const chon = (gd.hieu_ung_game ?? true) === b
+              return (
+                <button key={ten} onClick={() => setGd({ ...gd, hieu_ung_game: b })} className="flex-1 rounded-xl px-3 py-2 text-left" style={nut(chon)} aria-pressed={chon}>
+                  <span className="block text-[13.5px] font-semibold">{ten}</span>
+                  <span className="block text-[11.5px] leading-tight" style={{ color: 'var(--sk-muted)' }}>{mo}</span>
+                </button>
+              )
+            })}
+          </div>
+          {!skin.the3d && <p className="text-[12px]" style={{ color: 'var(--sk-muted)' }}>Phong cách {skin.ten} không có bản đồ phiêu lưu — Tự luyện luôn là bài dạng thường.</p>}
         </section>
 
         <section className="flex flex-col gap-2">

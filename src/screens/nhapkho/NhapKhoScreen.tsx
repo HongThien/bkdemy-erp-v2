@@ -19,7 +19,7 @@ import DeThiScreen from '../tailieu/DeThiScreen'
 
 // Nhập kho = 2 LUỒNG cùng chiều (đổ nội dung VÀO kho), khác cấu trúc nguồn:
 //  · Nhập chuyên đề — 1 file cùng chủ đề (AI gợi ý dạng, verify low-conf).
-//  · Nhập đề thi    — đề thật giữ tổ hợp gốc (bóc câu người tự gán dạng, xem DeThiScreen).
+//  · Đề thi         — KHO ĐỀ THI: nơi lưu + sửa + duyệt + giao đề (KhoDeThi.tsx). Đề vào bằng Claude (/nhap-de-thi), không còn bóc PDF trong trình duyệt (CEO 01/10).
 // (Đề thi KHÔNG ở "Làm tài liệu" — đó là chỗ soạn TỪ kho có sẵn, ngược chiều với ingest.)
 export default function NhapKhoScreen() {
   const [mode, setMode] = useState<'chuyen_de' | 'de_thi'>('chuyen_de')
@@ -28,7 +28,7 @@ export default function NhapKhoScreen() {
     <div className="flex h-full min-h-0 flex-col overflow-hidden">
       <div className="flex flex-none items-center gap-1.5 border-b border-slate-200 bg-white px-6 py-2">
         <button onClick={() => setMode('chuyen_de')} className={tab(mode === 'chuyen_de')}>📚 Nhập chuyên đề</button>
-        <button onClick={() => setMode('de_thi')} className={tab(mode === 'de_thi')}>📝 Nhập đề thi</button>
+        <button onClick={() => setMode('de_thi')} className={tab(mode === 'de_thi')}>📝 Đề thi</button>
       </div>
       <div className="min-h-0 flex-1">{mode === 'chuyen_de' ? <NhapChuyenDe /> : <DeThiScreen />}</div>
     </div>

@@ -13,6 +13,7 @@ import { BuoiDuoiDetail } from './botro/BoTroDuoiScreen'
 import PersonalCard from '../components/PersonalCard'
 import NavTree from '../components/NavTree'
 import KhoScreen from './kho/KhoScreen'
+import SoTayCongThucScreen from './sotay/SoTayCongThucScreen'
 import NhapKhoScreen from './nhapkho/NhapKhoScreen'
 import TaiLieuScreen from './tailieu/TaiLieuScreen'
 import GiaoTrinhHinhEntry from './tailieu/GiaoTrinhHinhEntry'
@@ -45,6 +46,7 @@ import { hoiDapDuocDung } from '../lib/hoidap'
 import { listDotChoDuyetDuoi } from '../lib/botro_duoi'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
 import ChotXuScreen from './gami/ChotXuScreen'
+import NgayNghiChuoiScreen from './gami/NgayNghiChuoiScreen'
 import HuyHieuScreen from './gami/HuyHieuScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 import BaoLoiScreen from './baoloi/BaoLoiScreen'
@@ -642,6 +644,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       ) : staffLeaf === 'viec' ? (
         <section className="min-h-0 overflow-auto bg-[#f5f5f7] p-8"><VietCuaToi scope={scope} onOpenBuoi={setOpenBuoi} /></section>
       ) : staffLeaf === 'bdkt' ? <KhoScreen />
+      : staffLeaf === 'sotay' ? <SoTayCongThucScreen />
       : staffLeaf === 'nhapkho' ? <NhapKhoScreen />
       : (staffLeaf === 'lamtailieu' || staffLeaf === 'lamtailieu:giao_trinh') ? <TaiLieuScreen />
       : staffLeaf === 'lamtailieu:giao_trinh_hinh' ? <GiaoTrinhHinhEntry />
@@ -685,6 +688,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'duyetloigiai' ? <DuyetLoiGiaiScreen />
       : staffLeaf === 'quanlylevel' ? <QuanLyLevelScreen />
       : staffLeaf === 'chotxu' ? <ChotXuScreen />
+      : staffLeaf === 'chuoi_nghi' ? <NgayNghiChuoiScreen />
       : staffLeaf === 'huyhieu' ? <HuyHieuScreen />
       : staffLeaf === 'huyhieu_trao' ? <HuyHieuScreen chiTrao />
       : staffLeaf === 'phanquyen' ? <PhanQuyenScreen />

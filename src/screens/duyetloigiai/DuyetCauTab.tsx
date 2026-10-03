@@ -13,13 +13,16 @@
 // nhiên khi TA nhìn 20 câu cùng lúc. "Duyệt tất cả" gọi fn_kho_duyet_cau KHÔNG kèm sửa (bỏ qua state sửa cục bộ của thẻ).
 import { useEffect, useRef, useState } from 'react'
 import { nhanhCuaMon, NHANH_LABEL, LOAI_CAU, listHangDuyet, duyetCauHangDuyet, tuChoiCauHangDuyet, listCumBai, tenCum, khoTbls, HANG_DUYET_LABEL, laDangCho,
-  type CauHangDuyet, type KhoMon, type HangDuyetLoc, type CumBai, type SuaCauDuyet } from '../../lib/kho/api'
-import { MathText, inp } from '../kho/ui'
+  listNguLieuCuaCau, DANG_DE_ANH, type CauHangDuyet, type KhoMon, type HangDuyetLoc, type CumBai, type SuaCauDuyet, type NguLieu, type CauAnhThem } from '../../lib/kho/api'
+import { MathText, TextAnh, NguLieuBlock, inp } from '../kho/ui'
 import { SolutionField } from '../kho/DangHub'
 import DangPickerOne from '../../components/DangPickerOne'
 import { myNhanSuId } from '../../lib/giaoviec'
 
 type Row = CauHangDuyet & { mon: KhoMon }
+// Phần riêng câu Tiếng Anh (ngữ liệu dùng chung + dạng đề + unit) — RPC hàng duyệt dùng chung không trả các cột này.
+type AnhThem = { cau: Record<string, CauAnhThem>; nguLieu: Record<string, NguLieu> }
+const KHONG_ANH: AnhThem = { cau: {}, nguLieu: {} }
 const LOAI_LABEL = Object.fromEntries(LOAI_CAU.map((x) => [x.value, x.label])) as Record<string, string>
 const NHANH_HGT = 'hinh_gt' // nhánh của DangPickerOne/khoCuaMon cho kho hgt (registry tailieu.ts NHANH_CUA_MON)
 const NHANH_HINH_HOC = 'hinh_hoc' // nhánh của DangPickerOne/khoCuaMon cho kho hinh_hoc_cau_hoi (registry tailieu.ts NHANH_CUA_MON)
@@ -37,6 +40,7 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
   // Không tách nhánh trong hàng đợi gộp thì 24 câu HGT bị lẫn 58 câu Đại (K12), batch đầu toàn Đại,
   // HGT chỉ trồi lên sau khi duyệt hết Đại — quá phiền khi CEO nạp lô lớn theo nhánh (11/09).
   const [nhanh, setNhanh] = useState<KhoMon | 'all'>('all')
+  const [anhThem, setAnhThem] = useState<AnhThem>(KHONG_ANH)
   const reqId = useRef(0)
 
   async function reload() {
@@ -45,7 +49,17 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
     try {
       const lists = await Promise.all(kho.map((k) => listHangDuyet(k, loc, khoi)))
       if (my !== reqId.current) return
-      setRows(kho.flatMap((k, i) => lists[i].map((r) => ({ ...r, mon: k }))))
+      const all = kho.flatMap((k, i) => lists[i].map((r) => ({ ...r, mon: k })))
+      // Câu Anh: kéo ngữ liệu + dạng đề theo lô 100 mã (tránh URL .in() quá dài — CLAUDE.md §2 debug 400)
+      const maAnh = all.filter((r) => r.mon === 'anh').map((r) => r.ma_cau)
+      const them: AnhThem = { cau: {}, nguLieu: {} }
+      for (let i = 0; i < maAnh.length; i += 100) {
+        const x = await listNguLieuCuaCau(maAnh.slice(i, i + 100))
+        Object.assign(them.cau, x.cau); Object.assign(them.nguLieu, x.nguLieu)
+      }
+      if (my !== reqId.current) return
+      setAnhThem(them)
+      setRows(all)
     } catch (e: any) { if (my === reqId.current) setErr(e.message ?? String(e)) }
     finally { if (my === reqId.current) setLoading(false) }
   }
@@ -118,7 +132,8 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
           : rowsShown.length === 0 ? <p className="text-sm text-slate-400">Không có câu nào ở {mon}{nhanh !== 'all' ? ` · ${NHANH_LABEL[nhanh]}` : ''} · khối {khoi} · {HANG_DUYET_LABEL[loc]}. 🎉</p>
           : (
             <>
-              <ul className="space-y-4">{batch.map((r) => <The key={`${r.mon}:${r.ma_cau}`} r={r} mon={mon} busyAll={busyAll} onXong={(msg) => xong(r, msg)}
+              <ul className="space-y-4">{batch.map((r) => <The key={`${r.mon}:${r.ma_cau}`} r={r} mon={mon} busyAll={busyAll}
+                anh={r.mon === 'anh' ? { cau: anhThem.cau[r.ma_cau], nl: anhThem.cau[r.ma_cau]?.ngu_lieu ? anhThem.nguLieu[anhThem.cau[r.ma_cau].ngu_lieu!] : undefined } : undefined} onXong={(msg) => xong(r, msg)}
                 onSua={(s) => { if (s) suaRef.current.set(keyOf(r), s); else suaRef.current.delete(keyOf(r)) }} />)}</ul>
               {rowsShown.length > batch.length && (
                 <p className="mt-4 text-center text-[12px] text-slate-400">Còn <b>{rowsShown.length - batch.length}</b> câu — sẽ hiện sau khi duyệt/từ chối xong batch này.</p>
@@ -131,7 +146,9 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
 }
 
 // 1 thẻ duyệt: state sửa cục bộ, so với bản gốc để chỉ gửi key ĐÃ ĐỔI (DB: key vắng = giữ nguyên).
-function The({ r, mon, busyAll, onXong, onSua }: { r: Row; mon: string; busyAll: boolean; onXong: (msg: string) => void; onSua: (s: SuaCauDuyet | null) => void }) {
+function The({ r, mon, busyAll, onXong, onSua, anh }: { r: Row; mon: string; busyAll: boolean; onXong: (msg: string) => void; onSua: (s: SuaCauDuyet | null) => void; anh?: { cau?: CauAnhThem; nl?: NguLieu } }) {
+  const laAnh = r.mon === 'anh'
+  const Chu = laAnh ? TextAnh : MathText   // câu Anh: chữ thường + gạch chân, không công thức / tự in đậm
   const [de, setDe] = useState(r.noi_dung)
   const [dapAn, setDapAn] = useState(r.dap_an ?? '')
   const [loiGiai, setLoiGiai] = useState(r.loi_giai ?? '')
@@ -206,6 +223,7 @@ function The({ r, mon, busyAll, onXong, onSua }: { r: Row; mon: string; busyAll:
         <span className="rounded bg-violet-50 px-2 py-0.5 font-medium text-violet-700">{NHANH_LABEL[r.mon]}</span>
         <code className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">{r.ma_cau}</code>
         <span>Khối {r.khoi} · {LOAI_LABEL[r.loai_cau] ?? r.loai_cau}</span>
+        {laAnh && anh?.cau && <span className="rounded bg-sky-50 px-1.5 py-0.5 text-sky-700">{DANG_DE_ANH[anh.cau.dang_de] ?? anh.cau.dang_de}{anh.cau.unit_sgk ? ` · ${anh.cau.unit_sgk}` : ''}</span>}
         {r.nguon === 'clone' && <span className="rounded bg-amber-50 px-1.5 py-0.5 text-amber-700">clone</span>}
         {r.nguon_giai === 'ai' && <span className="rounded bg-sky-50 px-1.5 py-0.5 text-sky-700">lời giải AI{r.giai_method ? ` · ${r.giai_method}` : ''}</span>}
         {kiemBadge}
@@ -230,8 +248,8 @@ function The({ r, mon, busyAll, onXong, onSua }: { r: Row; mon: string; busyAll:
           📁 {dang.cd ? <span className="text-slate-400">{dang.cd} › </span> : null}{dang.ten} <code className="ml-1 text-[11px] text-slate-400">{dang.ma}</code>
         </button>
         {r.dang_ai_de_xuat && r.dang_ai_de_xuat !== r.dang_chinh && <span className="text-slate-400" title="Dạng AI gán lúc vào kho">AI đề xuất: <code>{r.dang_ai_de_xuat}</code></span>}
-        <span className="ml-2 text-slate-400">Cụm:</span>
-        {cums === null ? <span className="text-slate-400">…</span>
+        {!laAnh && <span className="ml-2 text-slate-400">Cụm:</span>}
+        {laAnh ? null : cums === null ? <span className="text-slate-400">…</span>
           : (
             <>
               <button onClick={() => setCum(null)} disabled={busy || busyAll}
@@ -250,7 +268,7 @@ function The({ r, mon, busyAll, onXong, onSua }: { r: Row; mon: string; busyAll:
           <div className="flex items-center justify-between"><span className={lbl}>Đề bài{doiDe ? ' · đã sửa' : ''}</span>
             <button onClick={() => setSuaDe((v) => !v)} className="text-[11px] font-medium text-slate-400 hover:text-indigo-600">{suaDe ? '✓ Xong' : '✎ Sửa'}</button></div>
           {suaDe ? <textarea value={de} onChange={(e) => setDe(e.target.value)} className={`${inp} min-h-[90px] font-mono text-[13px]`} />
-            : <div className={box}><MathText>{de}</MathText></div>}
+            : <div className={box}>{anh?.nl && <NguLieuBlock nl={anh.nl} thuTu={anh.cau?.thu_tu_trong_ngu_lieu} gon />}<Chu>{de}</Chu></div>}
           {hasOpts && (
             <div className="mt-1.5">
               <div className="flex items-center justify-between">
@@ -269,7 +287,7 @@ function The({ r, mon, busyAll, onXong, onSua }: { r: Row; mon: string; busyAll:
                 </ul>
               ) : (
                 <ul className="space-y-0.5 text-[13px] text-slate-600">
-                  {opts.map((o, i) => <li key={i} className={String.fromCharCode(65 + i) === (r.dap_an ?? '').trim().toUpperCase() ? 'font-medium text-emerald-700' : ''}>{String.fromCharCode(65 + i)}. <MathText>{o}</MathText></li>)}
+                  {opts.map((o, i) => <li key={i} className={String.fromCharCode(65 + i) === (r.dap_an ?? '').trim().toUpperCase() ? 'font-medium text-emerald-700' : ''}>{String.fromCharCode(65 + i)}. <Chu>{o}</Chu></li>)}
                 </ul>
               )}
             </div>

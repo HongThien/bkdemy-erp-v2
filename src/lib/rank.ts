@@ -1,13 +1,10 @@
 // ============================================================================
 // rank.ts — RANK + THỬ THÁCH (spec-thanh-tuu-nhiem-vu.md §0.2–0.3, mig 202609281711).
 // Mọi con số (Điểm Rank, bậc, sao, ghế thần, hạng, trần Thử thách) tính ở Postgres — ở đây CHỈ gọi RPC.
-// Thử thách = 1 lượt y hệt Tự luyện tổng hợp (L4): chọn DẠNG bằng đúng chonDangTuLuyen của Tổng hợp,
-// sinh câu bằng thu_thach_sinh (= tu_luyen_sinh + đánh dấu). Chấm pass / điểm / trần ở trigger lúc nộp.
+// Thử thách = 1 lượt y hệt Tự luyện tổng hợp (L4): SERVER chọn dạng (fn_thu_thach_sinh_tu_dong, mig 202610011547 — HS không còn chọn
+// được dạng dễ để lấy Điểm Rank), sinh câu bằng thu_thach_sinh (= tu_luyen_sinh + đánh dấu). Chấm pass / điểm / trần ở trigger lúc nộp.
 // ============================================================================
 import { supabase } from './supabase'
-import { chonDangTuLuyen } from './tuluyen'
-
-type RawEval = Parameters<typeof chonDangTuLuyen>[0][number]
 
 // Lượt Thử thách hôm nay còn dở (làm tiếp) — hoặc null.
 export async function thuThachLuotDo(mon: string): Promise<string | null> {
@@ -17,11 +14,7 @@ export async function thuThachLuotDo(mon: string): Promise<string | null> {
 }
 
 export async function sinhThuThach(mon: string): Promise<string> {
-  const { data: evals, error: e1 } = await supabase.rpc('hs_dang_evals', { p_mon: mon })
-  if (e1) throw e1
-  const dangs = chonDangTuLuyen((evals ?? []) as RawEval[])
-  if (!dangs.length) throw new Error('Chưa có dữ liệu học tập nào để làm Thử thách — học vài buổi đã rồi quay lại nhé.')
-  const { data, error } = await supabase.rpc('thu_thach_sinh', { p_mon: mon, p_dangs: dangs })
+  const { data, error } = await supabase.rpc('fn_thu_thach_sinh_tu_dong', { p_mon: mon })
   if (error) throw error
   return (data as { bai_test_id: string }).bai_test_id
 }
@@ -62,4 +55,18 @@ export async function rankCuaToi(mon: string): Promise<RankCuaToi | null> {
   const { data, error } = await supabase.rpc('fn_hs_rank_cua_toi', { p_mon: mon })
   if (error) throw error
   return (data as RankCuaToi | null) ?? null
+}
+
+// ── Lên bậc (mig rank_len_bac, 01/10) ─────────────────────────────────────────────────────────
+// Bậc là SUY ĐỘNG từ điểm mùa; DB ghi SỰ KIỆN "chạm bậc" (ngày chạm suy từ chuỗi điểm theo ngày). Mở Home/Rank gọi lenBacMoi() ⇒ danh sách bậc
+// em chưa xem hoạt cảnh (rỗng nếu không có). Xem xong gọi daXemLenBac(). Bậc đạt từ > 2 ngày trước đã coi là xem (không bật hoạt cảnh dữ liệu cũ).
+export type LenBacMoi = { bac: number; ten_bac: string; dat_ngay: string; mon: string }
+export async function lenBacMoi(mon: string): Promise<LenBacMoi[]> {
+  const { data, error } = await supabase.rpc('fn_hs_len_bac_moi', { p_mon: mon })
+  if (error) throw error
+  return (data ?? []) as LenBacMoi[]
+}
+export async function daXemLenBac(mon: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_hs_len_bac_da_xem', { p_mon: mon })
+  if (error) throw error
 }

@@ -181,6 +181,55 @@ const K11_THEO_BAI = {
   'Bài 7|Tìm một số hạng cụ thể hoặc số hạng tổng quát': 'T111060302',
 }
 
+// ── KHỐI 10 (02/10) ───────────────────────────────────────────────────────────
+// Bản đồ BK khối 10: Đại = Mệnh đề (3) · Tập hợp (6) · BPT (3) · Hệ BPT (4) · GTLG 0–180° (7); Hình giải tích = Véc tơ (4).
+// Chưa có dạng BK: Hệ thức lượng trong tam giác (bài 6) · tích véc tơ với số / tích vô hướng (bài 9, 11) · Hàm số (ch. VI) ⇒ CHUA.
+// Dạng của họ thô hơn BK ⇒ tách bằng dấu hiệu trong đề; không rõ ⇒ CHUA. Câu Đúng/Sai trộn nhiều ý ⇒ phần lớn CHUA.
+const laDS = (q) => q.loai_cau === 'dung_sai'
+const KHOANG = /\\infty|[\[(]\s*-?\d+\s*;\s*-?\d+\s*[\])]|\\left[\[(][^{}$]*;[^{}$]*\\right[\])]|\\mathbb\{R\}\s*\|/   // khoảng / đoạn / tập con của ℝ viết bằng tính chất
+const K10 = {
+  // Chương I
+  'Lập mệnh đề phủ định (mệnh đề chứa ∀, ∃)': 'T110010103',
+  'Mệnh đề kéo theo, đảo, tương đương; điều kiện cần và đủ': 'T110010102',
+  'Nhận biết mệnh đề, mệnh đề chứa biến và xét tính đúng sai': 'T110010101',
+  'Giải bài toán đếm bằng biểu đồ Ven': (q) => has(q, /cả ba|ba môn|\$3\$\s*(môn|bài|câu lạc bộ)|ba câu lạc bộ|ba bài/) ? 'T110010205' : 'T110010204',
+  'Xác định tập hợp và thực hiện các phép toán trên tập hợp': (q) =>
+    has(q, /tham số|Tìm \$?m\$?|\$m\\in|giá trị (của )?\$?m\b/) ? 'T110010206'
+      : has(q, KHOANG) ? 'T110010203'
+      : laDS(q) ? CHUA
+      : has(q, /\\cap|\\cup|\\setminus|\\backslash|giao |hợp của|hiệu của|phần bù|C_\{/) ? 'T110010202'
+      : has(q, /liệt kê|phần tử|tập con|\\subset|tập hợp rỗng|\\varnothing|\\emptyset|tính chất đặc trưng/) ? 'T110010201' : CHUA,
+  // Chương II
+  'Xác định miền nghiệm của bất phương trình bậc nhất hai ẩn': (q) =>
+    has(q, /là bất phương trình bậc nhất hai ẩn/) ? 'T110020101'
+      : laDS(q) ? CHUA
+      : has(q, /đồng|mua |bán |sản xuất|nguyên liệu|kg\b|tiền/) ? 'T110020104' : 'T110020102',
+  'Xác định miền nghiệm của hệ bất phương trình bậc nhất hai ẩn': (q) =>
+    has(q, /là hệ bất phương trình bậc nhất hai ẩn/) ? 'T110020201'
+      : laDS(q) ? CHUA
+      : has(q, /[Đđ]iểm nào|cặp số|là nghiệm|[Đđ]iểm \$[A-Z]|không thuộc miền nghiệm/) ? 'T110020203'
+      : has(q, /hình vẽ|gạch|tô |miền nghiệm|biểu diễn/) ? 'T110020202' : CHUA,
+  'Giải bài toán tối ưu thực tế bằng hệ bất phương trình': 'T110020204',
+  'Tìm giá trị lớn nhất, nhỏ nhất của biểu thức trên miền đa giác': CHUA,   // BK chỉ có bản THỰC TẾ của bài min–max
+  'Kiểm tra nhiều tính chất trong một bài toán miền nghiệm': CHUA,
+  // Chương III — bài 5 (BK tách 7 dạng; chỉ gán 3 ca rõ)
+  'Tính giá trị lượng giác của một góc từ 0 đến 180 độ': (q) => {
+    if (laDS(q) || has(q, /180\^\\circ\s*-|90\^\\circ\s*-|bù nhau|phụ nhau/)) return CHUA
+    const choMot = has(q, /Cho (biết )?(góc )?[^.]{0,60}\\(sin|cos|tan|cot) ?\\alpha ?=/)
+    // 107 = tính một BIỂU THỨC từ giá trị đã cho; 106 = tính các giá trị lượng giác còn lại (kể cả khi đáp số viết qua a, b rồi hỏi T = a² + b²)
+    if (choMot) return has(q, /biểu thức|[A-Z]\s*=\s*[^$]{0,40}\\(sin|cos|tan|cot)/) ? 'T110030107' : 'T110030106'
+    if (has(q, /góc tù|góc nhọn/) && has(q, /[Kk]hẳng định/)) return 'T110030102'
+    if (!has(q, /\\alpha|\\beta|tam giác/) && has(q, /\\(sin|cos|tan|cot) ?\d+\^\\circ/)) return 'T110030101'
+    return CHUA
+  },
+  'Giải bài toán thực tế bằng hệ thức lượng trong tam giác': CHUA,
+  'Giải tam giác bằng định lí sin-côsin; tính diện tích, bán kính đường tròn nội-ngoại tiếp, đường cao, trung tuyến': CHUA,
+  // Chương IV — véc tơ (kho Hình giải tích)
+  'Nhận biết véc tơ, véc tơ cùng phương và véc tơ bằng nhau': 'T310010101',
+  'Tính tổng, hiệu của hai véc tơ và độ dài véc tơ': (q) => laDS(q) ? CHUA : has(q, /độ dài|\|\s*\\overrightarrow|\\left\|/) ? 'T310010103' : 'T310010102',
+  'Giải bài toán tổng hợp lực': 'T310010104',
+}
+
 const chuongCua = (nhan) => nhan?.chuong?.match(/^Chương ([IVX]+)\./)?.[1] ?? null
 const baiCua = (nhan) => nhan?.bai?.match(/^(Bài \d+-?)/)?.[1] ?? '' // "Bài 17-" (thực tiễn) khác "Bài 17" (mặt cầu); KHÔNG kèm dấu chấm
 // Rào: mã dạng phải cùng kho với subject (T1… = dai, T3… = hgt) — lệch là lỗi crosswalk ⇒ dạng chờ, không đâm vào FK
@@ -193,6 +242,9 @@ const hopKho = (subject, dang) => dang === CHUA || (subject === 'dai' ? dang.sta
  */
 export function ganDang(khoi, q) {
   const ch = chuongCua(q.nhan); const bai = baiCua(q.nhan); const ten = q.nhan?.dang ?? ''
+  // Câu KHÔNG có câu dẫn (tự luận chỉ có ý a) b), Đ/S mệnh đề độc lập): bảng tra nhãn khoá theo câu dẫn ⇒ mọi câu dẫn rỗng dùng CHUNG một
+  // nhãn bất kỳ (đo 02/10: 8 câu khối 10 đều mang nhãn "Nhận biết mệnh đề…", 14 câu khối 11 mang "Biến đổi tổng ↔ tích") ⇒ nhãn không tin được.
+  if (!(q.noi_dung ?? '').trim()) return { subject: 'dai', dang: CHUA, ly_do: 'câu không có câu dẫn — nhãn dạng không tin được' }
   if (String(khoi) === '12') {
     const subject = ch === 'V' ? 'hgt' : 'dai'
     if (!['I', 'II', 'V'].includes(ch)) return { subject, dang: CHUA, ly_do: `chương ${ch ?? '?'} chưa gán` }
@@ -203,12 +255,21 @@ export function ganDang(khoi, q) {
     return { subject, dang, ly_do: dang === CHUA ? `crosswalk CHUA: ${ten}` : 'crosswalk' }
   }
   if (String(khoi) === '11') {
-    if (ch === 'IV' || ch === 'VII') return { subject: null, dang: CHUA, ly_do: 'hình không gian 11 — kho đích chưa chốt' }
+    // CEO 02/10: hình không gian 11 → KHO HÌNH HỌC, nằm ở dạng chờ HH11000000 (mig 202610021414), gán dạng thật sau
+    if (ch === 'IV' || ch === 'VII') return { subject: 'hinh_hoc', dang: CHUA, ly_do: 'hình không gian 11 — kho Hình học, chưa phân dạng' }
     const subject = 'dai'
     if (!['I', 'II'].includes(ch)) return { subject, dang: CHUA, ly_do: `chương ${ch ?? '?'} chưa gán` }
     const rule = K11_THEO_BAI[`${bai}|${ten}`] ?? K11[ten]
     if (rule === undefined) return { subject, dang: CHUA, ly_do: `dạng lạ: ${ten}` }
     const dang = typeof rule === 'function' ? rule(q) : rule
+    return { subject, dang, ly_do: dang === CHUA ? `crosswalk CHUA: ${ten}` : 'crosswalk' }
+  }
+  if (String(khoi) === '10') {
+    const subject = ch === 'IV' ? 'hgt' : 'dai'   // véc tơ khối 10 nằm ở kho Hình giải tích (T3100101xx), còn lại Đại
+    const rule = K10[ten]
+    if (rule === undefined) return { subject, dang: CHUA, ly_do: `BK chưa có dạng: ${ten}` }
+    const dang = typeof rule === 'function' ? rule(q) : rule
+    if (!hopKho(subject, dang)) return { subject, dang: CHUA, ly_do: `crosswalk lệch kho (${dang} vs ${subject}): ${ten}` }
     return { subject, dang, ly_do: dang === CHUA ? `crosswalk CHUA: ${ten}` : 'crosswalk' }
   }
   return { subject: 'dai', dang: CHUA, ly_do: `khối ${khoi} chưa có crosswalk` }

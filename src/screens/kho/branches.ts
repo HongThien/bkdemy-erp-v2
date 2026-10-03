@@ -3,7 +3,7 @@ import * as api from '../../lib/kho/api'
 import type { MapRow, LyThuyet } from '../../lib/kho/api'
 
 export type BranchConfig = {
-  key: 'dai' | 'hinh' | 'khtn' | 'hinhgt' | 'hinhhoc'
+  key: 'dai' | 'hinh' | 'khtn' | 'hinhgt' | 'hinhhoc' | 'anh' | 'tsa'
   cauTbl?: string                                    // bảng câu theo môn (dai_cau_hoi/khtn_cau_hoi). undefined = nhánh chưa có câu (Hình)
   labels: { t1: string; t2: string; leaf: string }  // tầng1 / tầng2 / lá
   hasMucDo: boolean
@@ -77,6 +77,27 @@ export const khtnBranch: BranchConfig = {
   lyThuyetT2: { list: api.listKhtnChuyenDeLyThuyet, upsert: api.upsertKhtnChuyenDeLyThuyet, remove: api.deleteKhtnChuyenDeLyThuyet },
 }
 
+// TSA (Tư duy ĐH Bách khoa) = Toán ĐỘC LẬP: clone Đại/KHTN (Chủ-đề→Chuyên-đề→Dạng + bậc + độ khó), bảng tsa_*, KHÔNG nhánh.
+export const tsaBranch: BranchConfig = {
+  key: 'tsa',
+  cauTbl: 'tsa_cau_hoi',
+  labels: { t1: 'Chủ đề', t2: 'Chuyên đề', leaf: 'Dạng' },
+  hasMucDo: true,
+  countLabel: 'câu',
+  chuan: api.CHUAN_SO_CAU,
+  list: api.listTsaMap,
+  count: api.countCauByDangTsa,
+  create: api.createTsaMap,
+  updateLeaf: api.updateTsaLeaf,
+  deleteLeaf: api.deleteTsaLeaf,
+  deleteLeaves: api.deleteTsaLeaves,
+  deleteCum: api.deleteTsaCum,
+  renameT1: api.renameTsaChuDe,
+  renameT2: api.renameTsaChuyenDe,
+  lyThuyet: { list: api.listTsaLyThuyet, upsert: api.upsertTsaLyThuyet, remove: api.deleteTsaLyThuyet },
+  lyThuyetT2: { list: api.listTsaChuyenDeLyThuyet, upsert: api.upsertTsaChuyenDeLyThuyet, remove: api.deleteTsaChuyenDeLyThuyet },
+}
+
 // Hình giải tích = nhánh thứ 3 của Toán (lượng giác, sau này Oxy/Oxyz) — TƯ DUY như Đại (chia
 // chuyên đề/dạng), khác Hình tổng hợp (mô hình/DAG). Clone shape Đại/KHTN, bảng RIÊNG hgt_*.
 export const hinhGiaiTichBranch: BranchConfig = {
@@ -97,6 +118,26 @@ export const hinhGiaiTichBranch: BranchConfig = {
   renameT2: api.renameHgtChuyenDe,
   lyThuyet: { list: api.listHgtLyThuyet, upsert: api.upsertHgtLyThuyet, remove: api.deleteHgtLyThuyet },
   lyThuyetT2: { list: api.listHgtChuyenDeLyThuyet, upsert: api.upsertHgtChuyenDeLyThuyet, remove: api.deleteHgtChuyenDeLyThuyet },
+}
+
+// Tiếng Anh (02/10): cây MẢNG → CHUYÊN ĐỀ → ĐIỂM KIẾN THỨC theo cách giới dạy tiếng Anh chia (spec-anh-ban-do-k9.md),
+// không phải khuôn Chủ đề/Dạng của Toán. Không lý thuyết cấp chuyên đề, không cụm/tiền đề (chưa có bảng).
+export const anhBranch: BranchConfig = {
+  key: 'anh',
+  cauTbl: 'anh_cau_hoi',
+  labels: { t1: 'Mảng', t2: 'Chuyên đề', leaf: 'Điểm kiến thức' },
+  hasMucDo: true,
+  countLabel: 'câu',
+  list: api.listAnhMap,
+  count: api.countCauByDangAnh,
+  create: api.createAnhMap,
+  updateLeaf: api.updateAnhLeaf,
+  deleteLeaf: api.deleteAnhLeaf,
+  deleteLeaves: api.deleteAnhLeaves,
+  deleteCum: api.deleteAnhCum,
+  renameT1: api.renameAnhChuDe,
+  renameT2: api.renameAnhChuyenDe,
+  lyThuyet: { list: api.listAnhLyThuyet, upsert: api.upsertAnhLyThuyet, remove: api.deleteAnhLyThuyet },
 }
 
 export const hinhBranch: BranchConfig = {

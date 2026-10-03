@@ -1,0 +1,1344 @@
+{
+ "khoi": "9",
+ "mon": "Hóa học",
+ "_ghi_chu": "Đề xuất ánh xạ dạng Hạt Mầm → bản đồ ERP, Hoá 9, Claude 03/10 theo đọc câu HM + câu mẫu ERP. CHƯA DUYỆT. ERP từ K090701 trở đi chưa có câu mẫu (so_cau = 0) nên phần hữu cơ chỉ so được theo tên + mức độ dạng ERP.",
+ "chuyen_de": [
+  {
+   "hm": "K090601",
+   "erp": "K090601",
+   "ly_do": "cùng Bài 18–19: tính chất kim loại, dãy HĐHH, tính theo PTHH"
+  },
+  {
+   "hm": "K090602",
+   "erp": "K090602",
+   "ly_do": "cùng Bài 20: tách kim loại, hợp kim, gang thép"
+  },
+  {
+   "hm": "K090603",
+   "erp": null,
+   "ly_do": "Bài 21 (sự khác nhau giữa phi kim và kim loại) không có chuyên đề ERP; chủ đề K0906 chỉ có 2 chuyên đề"
+  },
+  {
+   "hm": "K090701",
+   "erp": "K090701",
+   "ly_do": "cùng Bài 22: khái niệm HCHC, CTCT, lập CTPT"
+  },
+  {
+   "hm": "K090702",
+   "erp": "K090702",
+   "ly_do": "HM gộp alkane + alkene; ERP tách 2 chuyên đề K090702 (Alkane) và K090703 (Alkene) ⇒ câu alkene chuyển sang K090703"
+  },
+  {
+   "hm": "K090703",
+   "erp": "K090704",
+   "ly_do": "KHÁC MÃ: Nguồn nhiên liệu (Bài 25) trên ERP là K090704"
+  },
+  {
+   "hm": "K090801",
+   "erp": "K090801",
+   "ly_do": "cùng Bài 26 ethylic alcohol"
+  },
+  {
+   "hm": "K090802",
+   "erp": "K090802",
+   "ly_do": "cùng Bài 27 acetic acid"
+  },
+  {
+   "hm": "K090901",
+   "erp": "K090901",
+   "ly_do": "cùng Bài 28 lipid"
+  },
+  {
+   "hm": "K090902",
+   "erp": "K090902",
+   "ly_do": "cùng Bài 29–30 carbohydrate"
+  },
+  {
+   "hm": "K090903",
+   "erp": "K090903",
+   "ly_do": "HM gộp protein + polymer; ERP tách K090903 (Protein) và K090904 (Polymer) ⇒ câu polymer chuyển sang K090904"
+  },
+  {
+   "hm": "K091001",
+   "erp": "K091001",
+   "ly_do": "cùng Bài 33–34: vỏ Trái Đất, đá vôi, silicate"
+  },
+  {
+   "hm": "K091002",
+   "erp": null,
+   "ly_do": "Bài 35 (nhiên liệu hoá thạch, chu trình carbon, ấm lên toàn cầu) không có chuyên đề ERP; chủ đề K0910 chỉ có 1 chuyên đề K091001 không phủ nội dung này"
+  }
+ ],
+ "dang": [
+  {
+   "hm": "K09060101",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H060101-01-002",
+      "K09H060101-01-003",
+      "K09H060101-01-004",
+      "K09H060101-01-005",
+      "K09H060101-01-006",
+      "K09H060101-01-007",
+      "K09H060101-01-008"
+     ],
+     "erp_dang": "K09060101",
+     "ly_do": "cụm 1: nhận ra tính chất vật lí (dẫn điện, dẫn nhiệt, ánh kim, dẻo) từ hiện tượng — trùng câu mẫu ERP (dát vàng)"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H060101-02-002",
+      "K09H060101-02-003",
+      "K09H060101-02-004",
+      "K09H060101-02-005",
+      "K09H060101-02-006",
+      "K09H060101-02-007"
+     ],
+     "erp_dang": "K09060107",
+     "ly_do": "KHÁC MÃ: cụm 2 đi ngược từ yêu cầu sử dụng ⇒ chọn kim loại phù hợp (dây tóc W, mạ chống gỉ, trang sức không xỉn) — trùng câu mẫu ERP dây tóc tungsten"
+    }
+   ]
+  },
+  {
+   "hm": "K09060102",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H060102-01-001",
+      "K09H060102-01-002",
+      "K09H060102-01-003",
+      "K09H060102-02-001",
+      "K09H060102-02-002",
+      "K09H060102-02-003"
+     ],
+     "erp_dang": "K09060102",
+     "ly_do": "cụm 1–2: kim loại + phi kim / + nước, chọn PTHH đúng — trùng câu mẫu ERP"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H060102-03-002",
+      "K09H060102-03-003",
+      "K09H060102-04-001",
+      "K09H060102-04-002",
+      "K09H060102-04-003"
+     ],
+     "erp_dang": "K09060103",
+     "ly_do": "cụm 3–4: kim loại + dd acid / + dd muối — ERP tách riêng thành dạng 03"
+    }
+   ]
+  },
+  {
+   "hm": "K09060103",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H060103-02-002"
+     ],
+     "erp_dang": "K09060103",
+     "ly_do": "câu \"kim loại nào phản ứng với H2SO4 loãng\" gần y hệt câu mẫu ERP 03 (\"kim loại nào KHÔNG phản ứng với HCl loãng\")"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H060103-03-001",
+      "K09H060103-03-002"
+     ],
+     "erp_dang": "K09060104",
+     "ly_do": "KHÁC MÃ: dự đoán kim loại đẩy được kim loại khỏi dd muối theo dãy — trùng câu mẫu ERP 04 (không đẩy được Cu khỏi CuSO4)"
+    }
+   ]
+  },
+  {
+   "hm": "K09060104",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09060105",
+     "ly_do": "KHÁC MÃ: suy thứ tự hoạt động / chất rắn còn lại từ chuỗi thí nghiệm — trùng tên dạng ERP 05"
+    }
+   ]
+  },
+  {
+   "hm": "K09060105",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09060108",
+     "ly_do": "KHÁC MÃ: tính theo PTHH kim loại + dd acid (V H2, CM acid, hỗn hợp 1 kim loại phản ứng) — trùng câu mẫu ERP 08"
+    }
+   ]
+  },
+  {
+   "hm": "K09060106",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09060109",
+     "ly_do": "KHÁC MÃ: tính theo PTHH kim loại + dd muối (khối lượng kim loại bám, tăng/giảm khối lượng thanh, CM muối) — trùng câu mẫu ERP 09"
+    }
+   ]
+  },
+  {
+   "hm": "K09060201",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09060203",
+     "ly_do": "KHÁC MÃ: khái niệm, thành phần, ứng dụng hợp kim (gang, thép, inox, duralumin) — trùng tên + câu mẫu ERP 03"
+    }
+   ]
+  },
+  {
+   "hm": "K09060202",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H060202-01-002",
+      "K09H060202-01-003",
+      "K09H060202-01-004"
+     ],
+     "erp_dang": "K09060201",
+     "ly_do": "KHÁC MÃ: chọn phương pháp tách theo vị trí kim loại trong dãy — trùng câu mẫu ERP 01 (tách Al, Ag)"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H060202-02-001",
+      "K09H060202-02-002",
+      "K09H060202-02-003",
+      "K09H060202-02-004"
+     ],
+     "erp_dang": "K09060202",
+     "ly_do": "cụm 2: chọn PTHH đúng của điện phân nóng chảy / nhiệt luyện — trùng tên dạng ERP 02"
+    }
+   ]
+  },
+  {
+   "hm": "K09060203",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09060204",
+     "ly_do": "KHÁC MÃ: nguyên liệu, vai trò chất trong lò cao và lò luyện thép — trùng câu mẫu ERP 04 (thổi O2 vào gang)"
+    }
+   ]
+  },
+  {
+   "hm": "K09060204",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09060205",
+     "ly_do": "KHÁC MÃ: tính khối lượng kim loại tách được, có tạp chất quặng / hiệu suất — trùng câu mẫu ERP 05"
+    }
+   ]
+  },
+  {
+   "hm": "K09060205",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H060205-01-001",
+      "K09H060205-01-002",
+      "K09H060205-01-003",
+      "K09H060205-01-004",
+      "K09H060205-01-005",
+      "K09H060205-01-006",
+      "K09H060205-01-007",
+      "K09H060205-01-008"
+     ],
+     "erp_dang": "K09060205",
+     "ly_do": "cụm 1: quặng có tạp chất + hiệu suất ⇒ khối lượng kim loại — cùng phương pháp ERP 05 (chỉ ghép 2 bước)"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H060205-02-001",
+      "K09H060205-02-002",
+      "K09H060205-02-003",
+      "K09H060205-02-004",
+      "K09H060205-02-005",
+      "K09H060205-02-006",
+      "K09H060205-02-007"
+     ],
+     "erp_dang": "K09060206",
+     "ly_do": "KHÁC MÃ: cụm 2 đánh giá đề xuất tách kim loại theo dãy HĐHH (C/CO/H2 không khử được oxide kim loại mạnh…) — trùng tên dạng ERP 06 (vận dụng tổng hợp tách KL + dãy HĐHH)"
+    }
+   ]
+  },
+  {
+   "hm": "K09060301",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "so sánh tính chất vật lí kim loại – phi kim, xếp loại đơn chất theo tính chất vật lí; nội dung Bài 21 \"Sự khác nhau cơ bản giữa phi kim và kim loại\" — ERP chưa có chuyên đề; nên thêm chuyên đề mới vào chủ đề K0906 Kim loại & Hợp kim"
+    }
+   ]
+  },
+  {
+   "hm": "K09060302",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "loại oxide (base/acid) của kim loại – phi kim, xu hướng nhường/nhận electron; nội dung Bài 21 \"Sự khác nhau cơ bản giữa phi kim và kim loại\" — ERP chưa có chuyên đề; nên thêm chuyên đề mới vào chủ đề K0906 Kim loại & Hợp kim"
+    }
+   ]
+  },
+  {
+   "hm": "K09060303",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "thí nghiệm phân biệt kim loại – phi kim (dẫn điện, đốt + quỳ tím), giải thích ứng dụng; nội dung Bài 21 \"Sự khác nhau cơ bản giữa phi kim và kim loại\" — ERP chưa có chuyên đề; nên thêm chuyên đề mới vào chủ đề K0906 Kim loại & Hợp kim"
+    }
+   ]
+  },
+  {
+   "hm": "K09060304",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "suy luận từ electron lớp ngoài ⇒ kim loại/phi kim ⇒ loại oxide; đánh giá đề xuất cách phân biệt; nội dung Bài 21 \"Sự khác nhau cơ bản giữa phi kim và kim loại\" — ERP chưa có chuyên đề; nên thêm chuyên đề mới vào chủ đề K0906 Kim loại & Hợp kim"
+    }
+   ]
+  },
+  {
+   "hm": "K09070101",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09070101",
+     "ly_do": "nhận diện HCHC, phân loại hydrocarbon/dẫn xuất — lý thuyết 1 bước, vào dạng cơ bản ERP 01 (ERP chưa có câu mẫu)"
+    }
+   ]
+  },
+  {
+   "hm": "K09070102",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09070102",
+     "ly_do": "viết/chọn CTCT đúng hoá trị, nhận loại mạch carbon — cùng kĩ năng dạng ERP 02 \"Vẽ CTCT hợp chất hữu cơ\""
+    }
+   ]
+  },
+  {
+   "hm": "K09070103",
+   "nhom": [
+    {
+     "lan": "do",
+     "cau": [
+      "K09H070103-01-001",
+      "K09H070103-01-002",
+      "K09H070103-01-003",
+      "K09H070103-01-004",
+      "K09H070103-01-005",
+      "K09H070103-01-006"
+     ],
+     "erp_chuyen_de": "K090701",
+     "ly_do": "Cụm 1 chỉ tính % khối lượng nguyên tố từ CTPT cho sẵn (2 bước, chiều xuôi): để vào dạng cơ bản K09070101 hay vào K09070103 \"Lập CTPT dựa vào % khối lượng\" (chiều ngược)?"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H070103-02-001",
+      "K09H070103-02-002",
+      "K09H070103-02-003",
+      "K09H070103-02-004",
+      "K09H070103-02-005",
+      "K09H070103-02-006"
+     ],
+     "erp_dang": "K09070103",
+     "ly_do": "cụm 2: %C, %H, M ⇒ CTPT — trùng tên dạng ERP 03"
+    },
+    {
+     "lan": "vang",
+     "cau": [
+      "K09H070103-03-001",
+      "K09H070103-03-002",
+      "K09H070103-03-003",
+      "K09H070103-03-004",
+      "K09H070103-03-005",
+      "K09H070103-03-006"
+     ],
+     "erp_chuyen_de": "K090701",
+     "ten": "Lập CTPT hydrocarbon từ sản phẩm đốt cháy",
+     "mo_ta_ngan": "Cho số mol hydrocarbon và số mol CO2, H2O ⇒ tìm số C, số H (rồi CTPT/CTCT)",
+     "gan_nhat": "K09070103",
+     "ly_do": "ERP 03 lập CTPT từ % khối lượng + M; ở đây dùng tỉ lệ mol C = nCO2/nX, H = 2nH2O/nX — phương pháp khác, không qua %"
+    }
+   ]
+  },
+  {
+   "hm": "K09070104",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": [
+      "K09H070104-01-001",
+      "K09H070104-01-002",
+      "K09H070104-01-003",
+      "K09H070104-01-004",
+      "K09H070104-01-005",
+      "K09H070104-01-006",
+      "K09H070104-01-007",
+      "K09H070104-01-008"
+     ],
+     "erp_chuyen_de": "K090701",
+     "ten": "Lập CTPT hydrocarbon từ sản phẩm đốt cháy",
+     "mo_ta_ngan": "Cho số mol hydrocarbon và số mol CO2, H2O ⇒ tìm số C, số H (rồi CTPT/CTCT)",
+     "gan_nhat": "K09070103",
+     "ly_do": "cụm 1 = cùng phương pháp dạng mới (đốt cháy ⇒ CTPT) rồi thêm 1 bước chọn CTCT theo mạch nhánh/không nhánh (kĩ năng K09070102); ERP 03 lập CTPT từ % khối lượng + M; ở đây dùng tỉ lệ mol C = nCO2/nX, H = 2nH2O/nX — phương pháp khác, không qua %"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H070104-02-001",
+      "K09H070104-02-002",
+      "K09H070104-02-003",
+      "K09H070104-02-004",
+      "K09H070104-02-005",
+      "K09H070104-02-006",
+      "K09H070104-02-007"
+     ],
+     "erp_dang": "K09070103",
+     "ly_do": "cụm 2: %C, %H, M ⇒ CTPT rồi gọi tên loại hợp chất — phương pháp chính trùng ERP 03, bước phân loại là áp thẳng định nghĩa"
+    }
+   ]
+  },
+  {
+   "hm": "K09070201",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H070201-01-001",
+      "K09H070201-01-003",
+      "K09H070201-01-005",
+      "K09H070201-02-001",
+      "K09H070201-02-002",
+      "K09H070201-02-005",
+      "K09H070201-03-001",
+      "K09H070201-03-002",
+      "K09H070201-03-004",
+      "K09H070201-03-005"
+     ],
+     "erp_dang": "K09070201",
+     "ly_do": "câu về alkane (CH4, C2H6, C3H8, C4H10, CnH2n+2): nhận dạng, tên gọi, tính chất vật lí — dạng cơ bản alkane; câu 03-005 hỏi chung alkane + alkene C1–C4 xếp vào đây"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H070201-01-002",
+      "K09H070201-01-004",
+      "K09H070201-02-003",
+      "K09H070201-02-004",
+      "K09H070201-03-003"
+     ],
+     "erp_dang": "K09070301",
+     "ly_do": "câu về alkene (C2H4, C3H6, CnH2n): nhận dạng, tên gọi, tính chất vật lí — dạng cơ bản alkene"
+    }
+   ]
+  },
+  {
+   "hm": "K09070202",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H070202-01-001",
+      "K09H070202-01-002",
+      "K09H070202-01-003",
+      "K09H070202-01-005",
+      "K09H070202-02-001",
+      "K09H070202-02-002",
+      "K09H070202-02-003",
+      "K09H070202-02-004",
+      "K09H070202-02-005",
+      "K09H070202-02-006"
+     ],
+     "erp_dang": "K09070202",
+     "ly_do": "PTHH đốt cháy alkane và phản ứng thế chlorine — dạng viết PTHH alkane"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H070202-01-004",
+      "K09H070202-01-006",
+      "K09H070202-03-001",
+      "K09H070202-03-002",
+      "K09H070202-03-004",
+      "K09H070202-03-005",
+      "K09H070202-03-006"
+     ],
+     "erp_dang": "K09070302",
+     "ly_do": "PTHH đốt cháy alkene, cộng bromine/H2 — dạng viết PTHH alkene"
+    }
+   ]
+  },
+  {
+   "hm": "K09070203",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": "*",
+     "erp_chuyen_de": "K090703",
+     "ten": "Nhận biết, tách alkene khỏi alkane bằng dung dịch bromine",
+     "mo_ta_ngan": "Phân biệt hai khí alkane/alkene hoặc làm sạch alkane lẫn alkene: chọn thuốc thử (nước bromine) và hiện tượng",
+     "gan_nhat": "K09070302",
+     "ly_do": "ERP 02 chỉ viết PTHH; ở đây là kĩ năng chọn thuốc thử + suy hiện tượng để phân biệt/tách, ERP alkene chưa có dạng nhận biết"
+    }
+   ]
+  },
+  {
+   "hm": "K09070204",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H070204-01-001",
+      "K09H070204-01-003"
+     ],
+     "erp_dang": "K09070204",
+     "ly_do": "đốt cháy alkane (methane, propane) ⇒ V O2 — bài toán đốt cháy alkane"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H070204-01-002",
+      "K09H070204-01-004"
+     ],
+     "erp_dang": "K09070304",
+     "ly_do": "đốt cháy alkene (ethylene, propylene) ⇒ m H2O, m CO2 — bài toán đốt cháy alkene"
+    },
+    {
+     "lan": "vang",
+     "cau": [
+      "K09H070204-02-001",
+      "K09H070204-02-002",
+      "K09H070204-02-003",
+      "K09H070204-02-004"
+     ],
+     "erp_chuyen_de": "K090703",
+     "ten": "Tính theo PTHH alkene cộng bromine",
+     "mo_ta_ngan": "Cho lượng alkene qua dd bromine dư ⇒ tính khối lượng Br2 phản ứng hoặc sản phẩm cộng",
+     "gan_nhat": "K09070304",
+     "ly_do": "ERP alkene chỉ có bài toán đốt cháy (04); phản ứng cộng bromine là phương trình và tỉ lệ khác, không gộp được"
+    },
+    {
+     "lan": "do",
+     "cau": [
+      "K09H070204-03-001",
+      "K09H070204-03-002",
+      "K09H070204-03-003",
+      "K09H070204-03-004"
+     ],
+     "erp_chuyen_de": "K090703",
+     "ly_do": "Cụm 3 so sánh nCO2 với nH2O để kết luận hydrocarbon là alkane hay alkene (đáp án lẫn cả hai loại): xếp vào K09070204 (đốt cháy alkane), K09070304 (đốt cháy alkene), hay gộp vào dạng mới đề xuất \"Lập CTPT hydrocarbon từ sản phẩm đốt cháy\" (K090701)?"
+    }
+   ]
+  },
+  {
+   "hm": "K09070205",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": [
+      "K09H070205-01-002",
+      "K09H070205-01-003",
+      "K09H070205-01-004",
+      "K09H070205-01-005",
+      "K09H070205-01-006",
+      "K09H070205-01-007"
+     ],
+     "erp_chuyen_de": "K090703",
+     "ten": "Bài toán hỗn hợp alkane – alkene qua dung dịch bromine",
+     "mo_ta_ngan": "Hỗn hợp alkane + alkene dẫn qua dd bromine dư: khối lượng bình tăng = khối lượng alkene, khí thoát ra = alkane ⇒ tính %V, khối lượng",
+     "gan_nhat": "K09070304",
+     "ly_do": "phải tách hỗn hợp theo khả năng phản ứng với Br2 (độ tăng khối lượng bình) — khác hẳn bài toán đốt cháy ERP 04; mức cao hơn dạng cộng bromine 1 chất"
+    },
+    {
+     "lan": "do",
+     "cau": [
+      "K09H070205-02-001",
+      "K09H070205-02-002",
+      "K09H070205-02-004",
+      "K09H070205-02-005",
+      "K09H070205-02-006",
+      "K09H070205-02-007"
+     ],
+     "erp_chuyen_de": "K090703",
+     "ly_do": "Cụm 2 đốt cháy hỗn hợp 2 hydrocarbon, lập hệ 2 ẩn theo bảo toàn C/H (có cặp alkane–alkene và cả cặp alkane–alkane): gộp vào K09070204 \"Bài toán đốt cháy alkane\" / K09070304 \"Bài toán đốt cháy alkene\", hay tách dạng mới \"Bài toán đốt cháy hỗn hợp hydrocarbon\"?"
+    }
+   ]
+  },
+  {
+   "hm": "K09070301",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09070401",
+     "ly_do": "KHÁC MÃ: phân loại nhiên liệu, thành phần dầu mỏ/khí thiên nhiên — lý thuyết, dạng cơ bản nguồn nhiên liệu (ERP chưa có câu mẫu)"
+    }
+   ]
+  },
+  {
+   "hm": "K09070302",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09070402",
+     "ly_do": "KHÁC MÃ: điều kiện cháy hoàn toàn, sử dụng nhiên liệu an toàn, giảm ô nhiễm — giải thích tình huống thực tế, dạng \"Ứng dụng thực tế của nguồn nhiên liệu\""
+    }
+   ]
+  },
+  {
+   "hm": "K09070303",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09070402",
+     "ly_do": "KHÁC MÃ: cùng kiến thức điều kiện cháy hoàn toàn/an toàn cháy nổ, chỉ thêm bước nêu nguyên nhân trước biện pháp — cùng phương pháp dạng 02"
+    }
+   ]
+  },
+  {
+   "hm": "K09080101",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09080101",
+     "ly_do": "CTPT/CTCT, tính chất vật lí, ý nghĩa độ cồn — lý thuyết 1 bước, dạng cơ bản ethylic alcohol"
+    }
+   ]
+  },
+  {
+   "hm": "K09080102",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09080102",
+     "ly_do": "chọn PTHH đúng: cháy, tác dụng Na/K, điều chế (lên men glucose, ethylene + nước) — trùng tên dạng ERP 02"
+    }
+   ]
+  },
+  {
+   "hm": "K09080103",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09080103",
+     "ly_do": "tính độ cồn, V ethanol nguyên chất, pha loãng rượu — dạng \"tính thể tích và khối lượng cồn\""
+    }
+   ]
+  },
+  {
+   "hm": "K09080104",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": [
+      "K09H080104-01-001",
+      "K09H080104-01-002",
+      "K09H080104-01-003",
+      "K09H080104-02-001",
+      "K09H080104-02-002",
+      "K09H080104-02-003"
+     ],
+     "erp_chuyen_de": "K090801",
+     "ten": "Tính theo PTHH của ethylic alcohol",
+     "mo_ta_ngan": "Cho lượng ethanol (khối lượng, V + D, hoặc V rượu + độ cồn) đốt cháy / tác dụng Na ⇒ tính V khí O2, CO2, H2",
+     "gan_nhat": "K09080103",
+     "ly_do": "ERP 03 chỉ quy đổi độ cồn – thể tích – khối lượng, không có bước tính theo PTHH; ERP 04 là hiệu suất lên men"
+    },
+    {
+     "lan": "do",
+     "cau": [
+      "K09H080104-03-001",
+      "K09H080104-03-002",
+      "K09H080104-03-003",
+      "K09H080104-03-004"
+     ],
+     "erp_chuyen_de": "K090801",
+     "ly_do": "Cụm 3 lên men glucose có hiệu suất (1 giai đoạn) ⇒ khối lượng ethanol: ERP có 2 dạng trùng nội dung — K09080104 \"Bài toán hiệu suất phản ứng lên men rượu\" (md4) và K09090203 \"Bài toán lên men rượu từ glucose\" (md3); xếp vào dạng nào (hay gộp hai dạng ERP này)?"
+    }
+   ]
+  },
+  {
+   "hm": "K09080105",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09080101",
+     "ly_do": "ứng dụng (nhiên liệu, dung môi, sát trùng) và tác hại rượu bia — giải thích bằng 1 tính chất, lý thuyết ⇒ dạng cơ bản (ERP ethanol không có dạng ứng dụng riêng)"
+    }
+   ]
+  },
+  {
+   "hm": "K09080106",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": [
+      "K09H080106-01-001",
+      "K09H080106-01-002",
+      "K09H080106-01-003",
+      "K09H080106-01-004",
+      "K09H080106-01-005",
+      "K09H080106-01-006",
+      "K09H080106-01-007",
+      "K09H080106-01-008"
+     ],
+     "erp_chuyen_de": "K090801",
+     "ten": "Tính theo PTHH của ethylic alcohol",
+     "mo_ta_ngan": "Cho lượng ethanol (khối lượng, V + D, hoặc V rượu + độ cồn) đốt cháy / tác dụng Na ⇒ tính V khí O2, CO2, H2",
+     "gan_nhat": "K09080103",
+     "ly_do": "cụm 1 = dạng mới tính theo PTHH ethanol, chỉ thêm bước đầu đổi V rượu + độ cồn + D ⇒ m ethanol (kĩ năng K09080103); không gộp vào 03 vì phần chính là tính theo PTHH đốt cháy"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H080106-02-001",
+      "K09H080106-02-002",
+      "K09H080106-02-003",
+      "K09H080106-02-004",
+      "K09H080106-02-005",
+      "K09H080106-02-006",
+      "K09H080106-02-007"
+     ],
+     "erp_dang": "K09080104",
+     "ly_do": "cụm 2: lên men glucose có hiệu suất rồi pha thành rượu x° — đúng dạng \"Bài toán hiệu suất phản ứng lên men rượu\" (md4)"
+    }
+   ]
+  },
+  {
+   "hm": "K09080201",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09080201",
+     "ly_do": "CTPT/CTCT, nhóm –COOH, tính chất vật lí, ứng dụng giấm — lý thuyết, dạng cơ bản acetic acid"
+    }
+   ]
+  },
+  {
+   "hm": "K09080202",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09080202",
+     "ly_do": "tính chất acid, ester hoá, lên men giấm: chọn PTHH/điều kiện — trùng tên dạng ERP 02"
+    }
+   ]
+  },
+  {
+   "hm": "K09080203",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": [
+      "K09H080203-01-001",
+      "K09H080203-01-002",
+      "K09H080203-01-003",
+      "K09H080203-02-001",
+      "K09H080203-02-002",
+      "K09H080203-02-003"
+     ],
+     "erp_chuyen_de": "K090802",
+     "ten": "Tính theo PTHH của acetic acid",
+     "mo_ta_ngan": "Acetic acid trung hoà base, tác dụng kim loại/muối carbonate ⇒ tính thể tích dd, nồng độ, thể tích khí",
+     "gan_nhat": "K09080203",
+     "ly_do": "ERP 03 chỉ là bài toán hiệu suất ester hoá; trung hoà/tác dụng kim loại – muối là phản ứng và kiểu tính khác"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H080203-03-001",
+      "K09H080203-03-002",
+      "K09H080203-03-003",
+      "K09H080203-03-004"
+     ],
+     "erp_dang": "K09080203",
+     "ly_do": "cụm 3: ester hoá có hiệu suất (xuôi và ngược) — trùng tên dạng ERP 03"
+    }
+   ]
+  },
+  {
+   "hm": "K09080204",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H080204-01-001",
+      "K09H080204-01-003"
+     ],
+     "erp_dang": "K09080102",
+     "ly_do": "chuỗi chuyển hoá, câu hỏi bước tạo ethylic alcohol (ethylene + nước; lên men glucose) — viết PTHH ethylic alcohol"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H080204-01-002",
+      "K09H080204-01-004"
+     ],
+     "erp_dang": "K09080202",
+     "ly_do": "chuỗi chuyển hoá, câu hỏi bước của acetic acid (lên men giấm; ester hoá) — viết PTHH acetic acid"
+    },
+    {
+     "lan": "vang",
+     "cau": [
+      "K09H080204-02-001",
+      "K09H080204-02-002",
+      "K09H080204-02-003",
+      "K09H080204-02-004"
+     ],
+     "erp_chuyen_de": "K090802",
+     "ten": "Nhận biết ethylic alcohol, acetic acid và chất hữu cơ đã học",
+     "mo_ta_ngan": "Phân biệt các dung dịch mất nhãn (ethanol, acetic acid, glucose, ester) bằng quỳ tím, Na2CO3, Na…",
+     "gan_nhat": "K09080202",
+     "ly_do": "ERP 02 chỉ viết PTHH; nhận biết là kĩ năng chọn thuốc thử + suy hiện tượng cho nhiều chất, ERP chưa có dạng này"
+    }
+   ]
+  },
+  {
+   "hm": "K09080205",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": [
+      "K09H080205-01-001",
+      "K09H080205-01-002",
+      "K09H080205-01-003",
+      "K09H080205-01-004",
+      "K09H080205-01-005",
+      "K09H080205-01-006",
+      "K09H080205-01-007",
+      "K09H080205-01-008"
+     ],
+     "erp_chuyen_de": "K090802",
+     "ten": "Bài toán hỗn hợp ethylic alcohol – acetic acid",
+     "mo_ta_ngan": "Hỗn hợp ethanol + acetic acid (thường chia phần) tác dụng Na2CO3 / Na / NaOH ⇒ số mol, khối lượng, % từng chất",
+     "ly_do": "không dạng ERP nào xử lí hỗn hợp: phải tách theo chất nào phản ứng với thuốc thử nào (chỉ acid tạo CO2, cả hai tạo H2)"
+    },
+    {
+     "lan": "vang",
+     "cau": [
+      "K09H080205-02-001",
+      "K09H080205-02-002",
+      "K09H080205-02-003",
+      "K09H080205-02-004",
+      "K09H080205-02-005",
+      "K09H080205-02-006",
+      "K09H080205-02-007"
+     ],
+     "erp_chuyen_de": "K090802",
+     "ten": "Bài toán chuỗi chuyển hoá nhiều giai đoạn có hiệu suất (ethylene → ethanol → acetic acid → ester)",
+     "mo_ta_ngan": "Chuỗi 2–3 giai đoạn, mỗi giai đoạn một hiệu suất ⇒ hiệu suất chung, khối lượng sản phẩm cuối hoặc nguyên liệu",
+     "gan_nhat": "K09080203",
+     "ly_do": "ERP 03 chỉ ester hoá 1 giai đoạn; nhân chuỗi hiệu suất là phương pháp riêng (ERP đã tách dạng tương tự cho glucose K09090204 và polymer K09090405)"
+    }
+   ]
+  },
+  {
+   "hm": "K09090101",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09090101",
+     "ly_do": "khái niệm lipid/chất béo, công thức (RCOO)3C3H5, tính chất vật lí — dạng cơ bản lipid"
+    }
+   ]
+  },
+  {
+   "hm": "K09090102",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09090102",
+     "ly_do": "phương trình xà phòng hoá, sản phẩm, cơ chế làm sạch của xà phòng — trùng tên dạng ERP 02"
+    }
+   ]
+  },
+  {
+   "hm": "K09090103",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H090103-01-001",
+      "K09H090103-01-002",
+      "K09H090103-01-003",
+      "K09H090103-01-004",
+      "K09H090103-01-005",
+      "K09H090103-01-006",
+      "K09H090103-01-007",
+      "K09H090103-01-008",
+      "K09H090103-01-009",
+      "K09H090103-02-001",
+      "K09H090103-02-002",
+      "K09H090103-02-003",
+      "K09H090103-02-005",
+      "K09H090103-02-008"
+     ],
+     "erp_dang": "K09090103",
+     "ly_do": "tính theo tỉ lệ mol / bảo toàn khối lượng xà phòng hoá, phản ứng hoàn toàn — dạng \"Bài toán xà phòng hoá cơ bản\""
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H090103-02-004",
+      "K09H090103-02-006",
+      "K09H090103-02-007",
+      "K09H090103-02-009"
+     ],
+     "erp_dang": "K09090104",
+     "ly_do": "bảo toàn khối lượng rồi nhân hiệu suất ⇒ xà phòng thực tế — dạng \"hiệu suất sản xuất xà phòng\" (ERP tách hiệu suất khỏi bài cơ bản)"
+    }
+   ]
+  },
+  {
+   "hm": "K09090104",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H090104-01-001",
+      "K09H090104-01-002",
+      "K09H090104-01-003",
+      "K09H090104-01-004",
+      "K09H090104-01-005",
+      "K09H090104-01-006",
+      "K09H090104-01-007",
+      "K09H090104-01-008"
+     ],
+     "erp_dang": "K09090104",
+     "ly_do": "cụm 1: tính ngược khối lượng chất béo cần dùng với hiệu suất — dạng hiệu suất sản xuất xà phòng"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H090104-02-001",
+      "K09H090104-02-002",
+      "K09H090104-02-003",
+      "K09H090104-02-004",
+      "K09H090104-02-005",
+      "K09H090104-02-006",
+      "K09H090104-02-007"
+     ],
+     "erp_dang": "K09090102",
+     "ly_do": "cụm 2: đánh giá ý kiến về tính tan, cơ chế làm sạch, tách xà phòng bằng NaCl — kiến thức của dạng \"giải thích ứng dụng xà phòng\""
+    }
+   ]
+  },
+  {
+   "hm": "K09090201",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09090201",
+     "ly_do": "công thức, phân loại, trạng thái tự nhiên, ứng dụng carbohydrate — dạng cơ bản"
+    }
+   ]
+  },
+  {
+   "hm": "K09090202",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09090202",
+     "ly_do": "lên men, tráng bạc, thuỷ phân, phản ứng màu iodine: chọn PTHH/hiện tượng — dạng tính chất carbohydrate"
+    }
+   ]
+  },
+  {
+   "hm": "K09090203",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": "*",
+     "erp_chuyen_de": "K090902",
+     "ten": "Nhận biết các carbohydrate",
+     "mo_ta_ngan": "Phân biệt hồ tinh bột, glucose, saccharose, cellulose bằng iodine, đun với nước, tráng bạc",
+     "gan_nhat": "K09090202",
+     "ly_do": "ERP 02 chỉ viết PTHH/tính chất của từng chất; nhận biết nhiều chất mất nhãn là kĩ năng chọn thuốc thử + suy luận loại trừ, ERP chưa có"
+    }
+   ]
+  },
+  {
+   "hm": "K09090204",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H090204-01-001",
+      "K09H090204-01-002",
+      "K09H090204-01-003",
+      "K09H090204-01-004",
+      "K09H090204-02-001",
+      "K09H090204-02-002"
+     ],
+     "erp_dang": "K09090203",
+     "ly_do": "lên men glucose có hiệu suất ⇒ khối lượng ethanol hoặc V CO2 (2 câu 02-001/002 bị gắn nhầm cụm \"tráng bạc\" nhưng thực chất là lên men)"
+    },
+    {
+     "lan": "vang",
+     "cau": [
+      "K09H090204-02-003",
+      "K09H090204-02-004",
+      "K09H090204-03-001",
+      "K09H090204-03-002",
+      "K09H090204-03-003",
+      "K09H090204-03-004"
+     ],
+     "erp_chuyen_de": "K090902",
+     "ten": "Tính theo PTHH thuỷ phân và tráng bạc của carbohydrate",
+     "mo_ta_ngan": "Thuỷ phân tinh bột/saccharose (có hiệu suất) ⇒ glucose, fructose; glucose tráng bạc ⇒ khối lượng Ag hoặc ngược lại",
+     "gan_nhat": "K09090203",
+     "ly_do": "ERP 03 chỉ có lên men rượu; thuỷ phân và tráng bạc là phản ứng, tỉ lệ mol khác (1 glucose → 2 Ag, (C6H10O5)n → n glucose)"
+    }
+   ]
+  },
+  {
+   "hm": "K09090205",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09090204",
+     "ly_do": "KHÁC MÃ: tinh bột → glucose → ethanol, 2 hiệu suất, có tạp chất — trùng tên dạng ERP 04 \"Chuỗi phản ứng lên men glucose (đa hiệu suất)\""
+    }
+   ]
+  },
+  {
+   "hm": "K09090301",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H090301-01-001",
+      "K09H090301-01-002",
+      "K09H090301-01-003",
+      "K09H090301-01-004",
+      "K09H090301-01-005",
+      "K09H090301-01-006",
+      "K09H090301-01-007",
+      "K09H090301-01-008"
+     ],
+     "erp_dang": "K09090301",
+     "ly_do": "cụm 1: thành phần, amino acid, cấu tạo protein — dạng cơ bản protein"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H090301-02-001",
+      "K09H090301-02-002",
+      "K09H090301-02-003",
+      "K09H090301-02-004",
+      "K09H090301-02-005",
+      "K09H090301-02-006",
+      "K09H090301-02-007"
+     ],
+     "erp_dang": "K09090401",
+     "ly_do": "cụm 2: khái niệm polymer, monomer, mắt xích, phân loại — dạng cơ bản polymer (chuyên đề ERP K090904)"
+    }
+   ]
+  },
+  {
+   "hm": "K09090302",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": "*",
+     "erp_chuyen_de": "K090903",
+     "ten": "Nhận biết protein bằng cách đốt (phân biệt với polymer tổng hợp)",
+     "mo_ta_ngan": "Từ hiện tượng khi đốt (mùi khét như tóc cháy, tro vụn vs chảy dẻo, mùi nhựa) ⇒ vật liệu có protein hay chất dẻo/tơ tổng hợp",
+     "gan_nhat": "K09090302",
+     "ly_do": "ERP 02 \"Ứng dụng thực tế của protein\" không phải kĩ năng nhận biết qua hiện tượng đốt; ERP protein/polymer chưa có dạng nhận biết"
+    }
+   ]
+  },
+  {
+   "hm": "K09090303",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09090403",
+     "ly_do": "KHÁC CHUYÊN ĐỀ: chất dẻo, tơ, cao su và ứng dụng — dạng \"Ứng dụng thực tế và tác hại của polymer\" (K090904)"
+    }
+   ]
+  },
+  {
+   "hm": "K09090304",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09090403",
+     "ly_do": "biện pháp giảm rác thải nhựa — dạng \"Ứng dụng thực tế và tác hại của polymer\" (K090904)"
+    }
+   ]
+  },
+  {
+   "hm": "K09090305",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": [
+      "K09H090305-01-001",
+      "K09H090305-01-002",
+      "K09H090305-01-003",
+      "K09H090305-01-004",
+      "K09H090305-01-005",
+      "K09H090305-01-006",
+      "K09H090305-01-007",
+      "K09H090305-01-008"
+     ],
+     "erp_chuyen_de": "K090903",
+     "ten": "Nhận biết protein bằng cách đốt (phân biệt với polymer tổng hợp)",
+     "mo_ta_ngan": "Từ hiện tượng khi đốt (mùi khét như tóc cháy, tro vụn vs chảy dẻo, mùi nhựa) ⇒ vật liệu có protein hay chất dẻo/tơ tổng hợp",
+     "gan_nhat": "K09090302",
+     "ly_do": "cụm 1 cùng phương pháp HM K09090302 (suy loại vật liệu từ dấu hiệu khi đốt), chỉ nhiều phương án hơn; ERP chưa có dạng nhận biết"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H090305-02-001",
+      "K09H090305-02-002",
+      "K09H090305-02-003",
+      "K09H090305-02-004",
+      "K09H090305-02-005",
+      "K09H090305-02-006",
+      "K09H090305-02-007"
+     ],
+     "erp_dang": "K09090403",
+     "ly_do": "cụm 2: đánh giá đề xuất xử lí/giảm rác nhựa — dạng \"Ứng dụng thực tế và tác hại của polymer\" (K090904)"
+    }
+   ]
+  },
+  {
+   "hm": "K09100101",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09100101",
+     "ly_do": "thành phần nguyên tố vỏ Trái Đất, các loại tài nguyên — dạng cơ bản"
+    }
+   ]
+  },
+  {
+   "hm": "K09100102",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H100102-01-001",
+      "K09H100102-01-002",
+      "K09H100102-01-003"
+     ],
+     "erp_dang": "K09100102",
+     "ly_do": "PTHH nung đá vôi, loại phản ứng, khí sinh ra — dạng \"Viết PTHH trong lò nung công nghiệp\""
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H100102-02-002"
+     ],
+     "erp_dang": "K09100101",
+     "ly_do": "vôi sống: công thức, tên gọi — lý thuyết 1 bước, dạng cơ bản"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H100102-02-003"
+     ],
+     "erp_dang": "K09100103",
+     "ly_do": "vôi tôi khử chua đất (tính base) — ứng dụng sản phẩm khai thác tài nguyên"
+    }
+   ]
+  },
+  {
+   "hm": "K09100103",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09100101",
+     "ly_do": "nguyên liệu, công đoạn sản xuất gốm sứ, thuỷ tinh, xi măng — nhớ kiến thức 1 bước, dạng cơ bản của chuyên đề (ERP không có dạng silicate riêng; muốn tách thì là việc mở dạng mới)"
+    }
+   ]
+  },
+  {
+   "hm": "K09100104",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09100104",
+     "ly_do": "tính CaO, CO2 khi nung đá vôi (nguyên chất / có tạp chất + hiệu suất) — dạng tính toán duy nhất của chuyên đề ERP"
+    }
+   ]
+  },
+  {
+   "hm": "K09100105",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09100103",
+     "ly_do": "tác động môi trường của khai thác và biện pháp bền vững — dạng ERP 03"
+    }
+   ]
+  },
+  {
+   "hm": "K09100106",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H100106-01-001",
+      "K09H100106-01-002",
+      "K09H100106-01-003",
+      "K09H100106-01-004",
+      "K09H100106-01-005",
+      "K09H100106-01-006",
+      "K09H100106-01-007",
+      "K09H100106-01-008"
+     ],
+     "erp_dang": "K09100104",
+     "ly_do": "cụm 1: tính ngược khối lượng đá vôi với tạp chất + hiệu suất — dạng ERP 04"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H100106-02-001",
+      "K09H100106-02-002",
+      "K09H100106-02-003",
+      "K09H100106-02-006",
+      "K09H100106-02-007"
+     ],
+     "erp_dang": "K09100101",
+     "ly_do": "cụm 2 (silicate, thành phần vỏ Trái Đất): đánh giá ý kiến bằng kiến thức nguyên liệu gốm/thuỷ tinh/xi măng, hàm lượng nguyên tố — dạng cơ bản"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H100106-02-004",
+      "K09H100106-02-005"
+     ],
+     "erp_dang": "K09100103",
+     "ly_do": "cụm 2 (khai thác): đánh giá đề xuất khai thác/tái chế bền vững — dạng ERP 03"
+    }
+   ]
+  },
+  {
+   "hm": "K09100201",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "các dạng tồn tại của carbon, nguồn gốc nhiên liệu hoá thạch — nội dung Bài 35 chưa có chuyên đề ERP; nên mở chuyên đề \"Nhiên liệu hoá thạch, chu trình carbon và sự ấm lên toàn cầu\" trong chủ đề K0910 (Khai thác tài nguyên từ vỏ Trái Đất)"
+    }
+   ]
+  },
+  {
+   "hm": "K09100202",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "đọc chu trình carbon: quá trình thải/hấp thụ CO2 — nội dung Bài 35 chưa có chuyên đề ERP; nên mở chuyên đề \"Nhiên liệu hoá thạch, chu trình carbon và sự ấm lên toàn cầu\" trong chủ đề K0910 (Khai thác tài nguyên từ vỏ Trái Đất)"
+    }
+   ]
+  },
+  {
+   "hm": "K09100203",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": [
+      "K09H100203-01-001",
+      "K09H100203-01-002",
+      "K09H100203-01-003",
+      "K09H100203-01-004"
+     ],
+     "erp_chuyen_de": null,
+     "ly_do": "đốt than chứa % carbon ⇒ khối lượng CO2 (C + O2, có tạp chất) — nội dung Bài 35 chưa có chuyên đề ERP; nên mở chuyên đề \"Nhiên liệu hoá thạch, chu trình carbon và sự ấm lên toàn cầu\" trong chủ đề K0910 (Khai thác tài nguyên từ vỏ Trái Đất)"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09H100203-02-001",
+      "K09H100203-02-002",
+      "K09H100203-02-003",
+      "K09H100203-02-004"
+     ],
+     "erp_dang": "K09070204",
+     "ly_do": "cụm 2: đốt methane/ethane/propane/butane ⇒ khối lượng CO2 — phương pháp y hệt \"Bài toán đốt cháy alkane\" (khác chuyên đề nhưng cùng kĩ năng); nếu mở chuyên đề Bài 35 thì cân nhắc chuyển"
+    }
+   ]
+  },
+  {
+   "hm": "K09100204",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "hiệu ứng nhà kính, hậu quả ấm lên toàn cầu, biện pháp giảm phát thải — nội dung Bài 35 chưa có chuyên đề ERP; nên mở chuyên đề \"Nhiên liệu hoá thạch, chu trình carbon và sự ấm lên toàn cầu\" trong chủ đề K0910 (Khai thác tài nguyên từ vỏ Trái Đất)"
+    }
+   ]
+  },
+  {
+   "hm": "K09100205",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "tính ngược khối lượng than từ CO2 thải ra; đánh giá biện pháp giảm phát thải carbon — nội dung Bài 35 chưa có chuyên đề ERP; nên mở chuyên đề \"Nhiên liệu hoá thạch, chu trình carbon và sự ấm lên toàn cầu\" trong chủ đề K0910 (Khai thác tài nguyên từ vỏ Trái Đất)"
+    }
+   ]
+  }
+ ]
+}

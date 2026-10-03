@@ -501,6 +501,13 @@ function DanhSachTab() {
   const [chotting, setChotting] = useState<{ done: number; total: number } | null>(null)
   const [taiing, setTaiing] = useState<{ done: number; total: number } | null>(null)
   const [ketQuaChot, setKetQuaChot] = useState<string | null>(null)
+  // Phạm vi tải ảnh: cả trung tâm / 1 khối / 1 lớp (chỉ PH ĐÃ CHỐT; PH có con ở nhiều lớp → 1 ảnh gộp cả phiếu)
+  const [lops, setLops] = useState<Lop[]>([])
+  const [phamVi, setPhamVi] = useState<'tat_ca' | 'khoi' | 'lop'>('tat_ca')
+  const [khoiChon, setKhoiChon] = useState('')
+  const [lopChon, setLopChon] = useState('')
+  useEffect(() => { listLop().then(setLops).catch(() => setLops([])) }, [])
+  const khoiList = [...new Set(lops.map((l) => l.khoi).filter(Boolean) as string[])].sort((a, b) => parseInt(a) - parseInt(b) || a.localeCompare(b))
 
   async function reload() { setLoading(true); try { setRows(await listPhieuTheoKy(ky)) } finally { setLoading(false) } }
   useEffect(() => { reload() }, [ky]) // eslint-disable-line
@@ -528,16 +535,27 @@ function DanhSachTab() {
 
   // Tải HÀNG LOẠT ảnh phiếu (kèm QR) của mọi PH ĐÃ CHỐT trong kỳ → 1 file ZIP (Thùy: thay vì copy từng
   // ảnh gửi Zalo). Bỏ qua PH chưa chốt (chưa có QR/số tiền đóng băng). Tên file = TênPH_TêncáccHS_MM-YYYY.
+  const lopById = new Map(lops.map((l) => [l.id, l]))
+  const thuocPhamVi = (r: DongSoHang) => {
+    if (phamVi === 'tat_ca') return true
+    const ids = r.dong.map((d) => d.lop_id).filter(Boolean) as string[]
+    return phamVi === 'lop' ? !!lopChon && ids.includes(lopChon) : !!khoiChon && ids.some((id) => lopById.get(id)?.khoi === khoiChon)
+  }
+  const nhanPhamVi = phamVi === 'lop' ? `lớp ${lopById.get(lopChon)?.ten_lop ?? ''}` : phamVi === 'khoi' ? `khối ${khoiChon}` : 'toàn trung tâm'
+  const phamViHopLe = phamVi === 'tat_ca' || (phamVi === 'khoi' && !!khoiChon) || (phamVi === 'lop' && !!lopChon)
+  const soSeTai = rows.filter((r) => r.daChot && thuocPhamVi(r)).length
+
   async function taiAnhTatCa() {
-    const daChot = rows.filter((r) => r.daChot)
-    if (!daChot.length) { setKetQuaChot('Không có phụ huynh nào đã chốt trong kỳ để tải ảnh.'); setTimeout(() => setKetQuaChot(null), 6000); return }
-    if (!confirm(`Tải ảnh phiếu thông báo (kèm QR) cho ${daChot.length} phụ huynh đã chốt kỳ này, gói thành 1 file ZIP?`)) return
+    const daChot = rows.filter((r) => r.daChot && thuocPhamVi(r))
+    if (!daChot.length) { setKetQuaChot(`Không có phụ huynh nào đã chốt trong kỳ thuộc ${nhanPhamVi} để tải ảnh.`); setTimeout(() => setKetQuaChot(null), 6000); return }
+    if (!confirm(`Tải ảnh phiếu thông báo (kèm QR) cho ${daChot.length} phụ huynh đã chốt kỳ này (${nhanPhamVi}), gói thành 1 file ZIP?`)) return
     setTaiing({ done: 0, total: daChot.length })
     try {
       const { ok, loi } = await taiTatCaAnhZip(
         daChot.map((r) => ({ phuHuynhId: r.phu_huynh_id, phTen: r.ho_ten, maPh: r.ma_ph, tenCon: r.tenCon })),
         ky,
         (done, total) => setTaiing({ done, total }),
+        phamVi === 'lop' ? `Lop-${lopById.get(lopChon)?.ten_lop ?? ''}` : phamVi === 'khoi' ? `Khoi-${khoiChon}` : undefined,
       )
       setKetQuaChot(`✓ Đã tải ZIP ${ok}/${daChot.length} ảnh${loi ? ` · ${loi} lỗi (xem console)` : ''}.`)
     } catch (e: any) {
@@ -560,7 +578,22 @@ function DanhSachTab() {
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm phụ huynh / tên học sinh / mã…" className={`${inp} w-64`} />
         <button onClick={() => setMoAll((m) => !m)} className="rounded-lg border border-slate-200 px-3 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-300">{moAll ? '⊟ Thu gọn tất cả' : '⊞ Mở tất cả'}</button>
         <button onClick={chotTatCa} disabled={!!chotting || !!taiing || loading} className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[12px] font-semibold text-white hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50">{chotting ? `Đang chốt ${chotting.done}/${chotting.total}…` : '✓ Chốt tất cả'}</button>
-        <button onClick={taiAnhTatCa} disabled={!!taiing || !!chotting || loading} title="Tải ảnh phiếu (kèm QR) của mọi PH đã chốt kỳ này → 1 file ZIP" className="rounded-lg border border-indigo-300 bg-white px-3 py-1.5 text-[12px] font-semibold text-indigo-700 hover:bg-indigo-50 disabled:cursor-not-allowed disabled:opacity-50">{taiing ? `Đang tạo ảnh ${taiing.done}/${taiing.total}…` : '⬇ Tải ảnh QR (ZIP)'}</button>
+        <div className="flex items-center gap-1.5 rounded-lg border border-indigo-200 bg-indigo-50/40 px-2 py-1">
+          <select value={phamVi} onChange={(e) => setPhamVi(e.target.value as 'tat_ca' | 'khoi' | 'lop')} disabled={!!taiing} className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[12px]">
+            <option value="tat_ca">Toàn trung tâm</option><option value="khoi">Theo khối</option><option value="lop">Theo lớp</option>
+          </select>
+          {phamVi === 'khoi' && (
+            <select value={khoiChon} onChange={(e) => setKhoiChon(e.target.value)} disabled={!!taiing} className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[12px]">
+              <option value="">— chọn khối —</option>{khoiList.map((k) => <option key={k} value={k}>Khối {k}</option>)}
+            </select>
+          )}
+          {phamVi === 'lop' && (
+            <select value={lopChon} onChange={(e) => setLopChon(e.target.value)} disabled={!!taiing} className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[12px]">
+              <option value="">— chọn lớp —</option>{lops.filter((l) => l.trang_thai === 'dang_hoc').map((l) => <option key={l.id} value={l.id}>{l.ten_lop} · {l.mon}</option>)}
+            </select>
+          )}
+          <button onClick={taiAnhTatCa} disabled={!!taiing || !!chotting || loading || !phamViHopLe || !soSeTai} title={`Tải ảnh phiếu (kèm QR) của PH đã chốt kỳ này (${nhanPhamVi}) → 1 file ZIP`} className="rounded-lg border border-indigo-300 bg-white px-3 py-1.5 text-[12px] font-semibold text-indigo-700 hover:bg-indigo-50 disabled:cursor-not-allowed disabled:opacity-50">{taiing ? `Đang tạo ảnh ${taiing.done}/${taiing.total}…` : `⬇ Tải ảnh QR (ZIP) · ${phamViHopLe ? soSeTai : 0} PH`}</button>
+        </div>
         <span className="ml-auto text-[12px] text-slate-400">{filtered.length}/{rows.length} PH</span>
       </div>
       {ketQuaChot && <div className="mb-3 rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-2 text-[13px] font-medium text-indigo-700">{ketQuaChot}</div>}

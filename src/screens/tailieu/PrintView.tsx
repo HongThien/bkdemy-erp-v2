@@ -494,7 +494,7 @@ function Doc({ full, gv, scope, lt = true, onlyBuoiId, perHS = false, roster = [
 // Tách "Buổi N" khỏi tên chủ đề để dựng hero BK: eyebrow "Buổi N" + huy hiệu số N + tiêu đề = chủ đề.
 // Không khớp mẫu "Buổi N" (tên tự do) → không eyebrow/huy hiệu, tiêu đề = cả tên.
 function parseBuoiTitle(title: string): { eyebrow: string; num: string; heading: string } {
-  const m = title.match(/^\s*Bu[ổôổ]i\s*0*(\d+)\s*[:：.\-–—]?\s*(.*)$/iu)
+  const m = title.match(/^\s*Bu[ổôổ]i\s*0*(\d+)\s*[:：.\-–—·]?\s*(.*)$/iu) // "·" = dấu tieuDeBuoiLop chèn cho tiêu đề tự do ("Buổi 3 · Đề số 3…")
   if (!m) return { eyebrow: '', num: '', heading: title }
   const rest = (m[2] ?? '').trim()
   return rest
@@ -639,8 +639,9 @@ function DangBlock({ p, gv, lt = true, colByCau, hinhCheDoByCau }: { p: PhanReso
   return (
     <section className="pv-sec gtbk-card">
       <div className="gtbk-card-head">
-        <span className="gtbk-code">{p.ref_ma}</span>
-        <div className="gtbk-card-title">{p.dang?.ten_dang ?? p.ref_ma}</div>
+        {/* ref_ma trống = phần của ĐỀ THI gán vào buổi (không trỏ 1 dạng) ⇒ đầu card là tên phần của đề */}
+        {p.ref_ma && <span className="gtbk-code">{p.ref_ma}</span>}
+        <div className="gtbk-card-title">{p.dang?.ten_dang ?? p.ref_ma ?? p.tieu_de}</div>
         <span className="gtbk-pill">Bài luyện</span>
       </div>
       <div className="gtbk-card-body">
@@ -674,8 +675,8 @@ function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, linesByCau, co
         const dangBlock = (b: PhanResolved) => (
           <div key={b.id} className="pv-sec gtbk-card">
             <div className="gtbk-card-head">
-              <span className="gtbk-code">{b.ref_ma}</span>
-              <div className="gtbk-card-title">{b.dang?.ten_dang ?? b.ref_ma}</div>
+              {b.ref_ma && <span className="gtbk-code">{b.ref_ma}</span>}
+              <div className="gtbk-card-title">{b.dang?.ten_dang ?? b.ref_ma ?? b.tieu_de}</div>
               <span className="gtbk-pill">BTVN</span>
             </div>
             {/* Số câu đếm LIÊN TỤC xuyên các dạng (dạng 1: 1,2 → dạng 2: 3,4,5…) — KHÔNG reset mỗi dạng,
@@ -1017,14 +1018,17 @@ const CONTENT_CSS = `
 /* Trả lời ngắn dạng BẢNG (TLNTable, xem PrintView.tsx) — cột 1 đề, cột 2 chỗ điền đáp án. Mỗi hàng
    break-inside:avoid (không xé đôi 1 câu) nhưng cả khối vẫn CHẢY được giữa các hàng qua trang. */
 .pv-tlnt{margin:4px 0}
-.pv-tlnt-row{display:flex;align-items:stretch;border-bottom:1px solid #e2e8f0;break-inside:avoid;min-height:11mm}
-.pv-tlnt-row:first-child{border-top:1px solid #e2e8f0}
+/* ⭐ 01/10 (Thùy: "dòng kẻ quá mờ, cần in đậm lên") — border bảng Trả lời ngắn từ #e2e8f0 (slate-200,
+   quá mờ khi in giấy, HS khó thấy ranh ô) → #475569 (slate-600) + 1.4px. Rõ ràng trên giấy nhưng không
+   quá đậm phá khuôn SaaS. Áp cả 3 cạnh (top row đầu, bottom mỗi row, left cột đáp án). */
+.pv-tlnt-row{display:flex;align-items:stretch;border-bottom:1.4px solid #475569;break-inside:avoid;min-height:11mm}
+.pv-tlnt-row:first-child{border-top:1.4px solid #475569}
 /* flex-direction:column (KHÔNG phải row mặc định): questionOnlyContent trả về NHIỀU con (đề + <img> nếu
    câu có anh_de, vd câu trắc nghiệm bị ép hiển thị "trả lời ngắn" mà vẫn còn hình minh hoạ). row sẽ xếp
    đề/ảnh CẠNH NHAU → đề bị bóp còn 1 cột chữ hẹp dính từng từ (Thùy báo ảnh chụp, MT câu 7). column xếp
    đề rồi ảnh CHỒNG DỌC như cauItemParts vẫn làm, justify-content:center giữ nguyên ý "canh giữa" ban đầu. */
 .pv-tlnt-q{flex:1;min-width:0;padding:7px 10px 7px 0;display:flex;flex-direction:column;justify-content:center}
-.pv-tlnt-a{width:42mm;flex-shrink:0;border-left:1px solid #e2e8f0}
+.pv-tlnt-a{width:42mm;flex-shrink:0;border-left:1.4px solid #475569}
 .pv-img{display:block;margin:7px auto;max-height:60mm;max-width:100%}
 /* ⭐ 21/09 (CEO): ô "Vẽ hình" — chế độ o_trong (bản HS) chừa khung cho HS tự vẽ; bản GV vẫn dùng .pv-img
    để hiện ảnh đối chiếu. Soi khung tương đương .pv-img (max-height 60mm) để layout không nhảy.

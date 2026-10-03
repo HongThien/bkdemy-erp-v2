@@ -15,9 +15,9 @@ export const KEYFRAMES = `
 @keyframes gamiNay{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}`
 
 // ── Huy hiệu ─────────────────────────────────────────────────────────────────
-// sao = 0 ⇒ hình KHOÁ (bóng xám). kieu 'nho' = bản 48px cho danh sách.
+// sao = 0 ⇒ hình KHOÁ (bóng xám). Vẽ ≤ 64px (hoặc kieu 'nho') ⇒ PNG bản nhỏ 128px — đúng số sao đang có, không phải luôn ★1.
 export function HinhHuyHieu({ hhKey, sao, size = 64, kieu = 'sao', title }: { hhKey: string; sao: number; size?: number; kieu?: KieuHuyHieu; title?: string }) {
-  const src = anhHuyHieu(hhKey, sao, sao <= 0 ? 'khoa' : kieu)
+  const src = anhHuyHieu(hhKey, sao, kieu === 'khoa' ? 'khoa' : kieu === 'nho' || size <= 64 ? 'nho' : 'sao')
   if (src) return <img src={src} alt={title ?? ''} width={size} height={size} className="block shrink-0 object-contain" style={{ width: size, height: size }} />
   const m = mauHH(hhKey)
   const khoa = sao <= 0

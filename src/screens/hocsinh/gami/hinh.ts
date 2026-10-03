@@ -9,8 +9,9 @@
 //      (màu + emoji), nên app chạy được ngay cả khi mới có 1 nửa kit.
 //   3. Mở hs.html?xem=gami soát mọi màn × mọi trạng thái.
 // Cây file:
-//   huy-hieu/<key>/sao1..sao5.png · khoa.png · nho_48.png        huy-hieu/an.png
-//   rank/<bac 1..10>/bieu_tuong.png · bieu_tuong_64.png · khung_avatar.png · khung_avatar_96.png
+//   huy-hieu/<key>/sao1..sao5.png · khoa.png (384px) · nho_sao1..nho_sao5.png · nho_khoa.png (128px, cho chỗ vẽ ≤ 64px)
+//     khoa = Claude dựng từ ★1 (bóng xanh đêm + viền bạc, đúng mô tả Đơn 2 §KHOÁ) — gốc 1254px ở design/bk-ui-src/gami/hh_<key>_khoa.png
+//   rank/<bac 1..10>/bieu_tuong.png (384) · bieu_tuong_64.png (128) · khung_avatar.png · khung_avatar_96.png
 //   rank/sao.png · rank/hao_quang_than.png · rank/len_bac.png
 //   fx/sao_moi_sang.png (vầng sáng lớp phủ sao mới — Đơn 1)
 //   the-gioi/<tab_the_gioi|tab_ban_be|tab_lop|ket_ban|loi_moi|tang_s|tang_a|tang_b|ruy_bang_s|thay_co_khen|dang_hoc|avatar_an_danh>.png
@@ -24,21 +25,21 @@ export const GOC = '/bk-ui/hs/gami'
 
 // Bật từng bộ khi đã chép đủ file của bộ đó. Tách cờ vì 2 đơn design về 2 lúc khác nhau.
 export const KIT = {
-  huy_hieu: false,   // Đơn 2: 8 × (sao1..5, khoa, nho_48) + an
-  rank: false,       // Đơn 3: 10 × (bieu_tuong, bieu_tuong_64, khung_avatar, khung_avatar_96)
-  rank_chung: false, // Đơn 3: sao, hao_quang_than, len_bac
-  nhiem_vu: true,    // Đơn 1: icon nhiệm vụ + rương (nhiem-vu/<ma>.png) + fx/sao_moi_sang.png — kit về 29/09 (design/bk-ui-src/Mission, #09–24 + #28)
-  the_gioi: false,
-  sticker_tg: false, // bộ sticker bình luận Thế giới BK (Thùy mua — spec-the-gioi-bk §8) ⇒ the-gioi/sticker/<ma>.png; tắt = emoji to   // Đơn 5: Thế giới BK — the-gioi/*.png · the-gioi/tin/<kieu>.png · the-gioi/tuong-tac/<ma>.png
+  huy_hieu: true,         // Đơn 2: 8 × (sao1..5, khoa) + bản nhỏ nho_* — kit về 30/09 (design/bk-ui-src/gami/hh_*), khoá Claude dựng từ ★1 (01/10)
+  rank_bieu_tuong: true,  // Đơn 3 phần B: 10 × (bieu_tuong, bieu_tuong_64) — về 30/09 (rank_<n>_<ten>)
+  rank_khung: false,      // Đơn 3 phần C: 10 × (khung_avatar, khung_avatar_96) — CHƯA về ⇒ khung tạm vẽ bằng code. Tách cờ vì B về trước C.
+  rank_chung: false,      // Đơn 3 phần D: sao, hao_quang_than, len_bac — CHƯA về
+  nhiem_vu: true,         // Đơn 1: icon nhiệm vụ + rương (nhiem-vu/<ma>.png) + fx/sao_moi_sang.png — kit về 29/09 (design/bk-ui-src/Mission, #09–24 + #28)
+  the_gioi: false,        // Đơn 5: Thế giới BK — the-gioi/*.png · the-gioi/tin/<kieu>.png · the-gioi/tuong-tac/<ma>.png
+  sticker_tg: false,      // bộ sticker bình luận Thế giới BK (Thùy mua — spec-the-gioi-bk §8) ⇒ the-gioi/sticker/<ma>.png; tắt = emoji to
 }
 
 // ── Huy hiệu ─────────────────────────────────────────────────────────────────
 export type KieuHuyHieu = 'sao' | 'khoa' | 'nho'
 export function anhHuyHieu(key: string, sao: number, kieu: KieuHuyHieu = 'sao'): string | null {
   if (!KIT.huy_hieu) return null
-  if (kieu === 'khoa' || sao <= 0) return `${GOC}/huy-hieu/${key}/khoa.png`
-  if (kieu === 'nho') return `${GOC}/huy-hieu/${key}/nho_48.png`
-  return `${GOC}/huy-hieu/${key}/sao${Math.min(5, sao)}.png`
+  const ten = kieu === 'khoa' || sao <= 0 ? 'khoa' : `sao${Math.min(5, sao)}`
+  return `${GOC}/huy-hieu/${key}/${kieu === 'nho' ? 'nho_' : ''}${ten}.png`
 }
 
 // Màu chủ từng huy hiệu (màu GAME — cố định mọi skin). Kit về thì đổi ở đây cho khớp màu men của hình.
@@ -65,7 +66,27 @@ export const MAU_GAMI = {
   exp: '#7CF0B0',                                             // "+100 EXP" trên lớp phủ tối
   nutSang: '#FFFFFF', nutSangChu: '#1B1B2F',                  // nút "Tuyệt!" trên lớp phủ tối
   haoQuang: 'conic-gradient(#FF7A18aa,transparent 12%,#D7263Daa 25%,transparent 37%,#7B2FF7aa 50%,transparent 62%,#FF7A18aa 75%,transparent 87%,#FF7A18aa)',
+  // ── theo ảnh toàn cảnh Đơn 1 (design/handoff/gami-v1/reference/man_album_* · man_nhiem_vu_*, 30/09) ──
+  chuPhu: 'rgba(255,255,255,.8)',                              // chữ phụ trên thẻ huy hiệu (nền màu men tối)
+  saoRong: 'rgba(225,230,245,.6)',                             // sao chưa có (☆)
+  nenKhoa: 'linear-gradient(100deg,#1d2650,#141a33)',          // thẻ huy hiệu chưa mở
+  vienKhoa: 'rgba(170,185,220,.5)',
+  thanhNen: 'rgba(0,0,0,.32)', thanhVien: 'rgba(255,255,255,.28)', // rãnh thanh tiến độ trên thẻ huy hiệu
+  nenO: 'rgba(6,10,28,.34)', vienO: 'rgba(255,255,255,.18)',  // ô con "Tháng này" / "Các tháng" trong thẻ mở rộng
+  nenSapDat: 'linear-gradient(100deg,rgba(233,199,123,.24),rgba(20,26,51,.88) 62%)',
+  nhanVang: 'linear-gradient(180deg,#f8e2a0,#d9a94a)', nhanVangChu: '#3a2a08', // nhãn "SẮP ĐẠT"
+  hiem: 'linear-gradient(180deg,#3b7be0,#1f4fa6)',             // nhãn "Hiếm"
+  nutVang: 'linear-gradient(180deg,#fbe7a6,#e2b44f 55%,#c48a26)', nutVangChu: '#2a1c05', // nút "Tuyệt!" lớp phủ
+  nutThuThach: 'linear-gradient(180deg,#3a63b8,#1f3c7e)', nutTuLuyen: 'linear-gradient(180deg,#8a5a26,#5a3812)', // 2 nút màn Nhiệm vụ
 }
+
+// Pha màu men của huy hiệu với xanh đêm ⇒ nền thẻ đủ tối cho chữ trắng (kể cả men sáng như Zeus vàng). Không dùng color-mix (iPad cũ).
+function tron(hex: string, t: number, nen = [11, 16, 38]): string {
+  const c = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16))
+  return `rgb(${c.map((v, i) => Math.round(v * t + nen[i] * (1 - t))).join(',')})`
+}
+export const nenTheHH = (key: string) => { const d = mauHH(key).dam; return `linear-gradient(100deg,${tron(d, 0.62)} 0%,${tron(d, 0.42)} 55%,${tron(d, 0.28)} 100%)` }
+export const sangTheHH = (key: string) => `0 0 0 1px ${MAU_GAMI.vanh}, 0 0 20px ${tron(mauHH(key).dam, 0.9)}`
 
 // ── Rank: 10 bậc, 5 chương (DON-HANG Đơn 3 — màu chương là luật, không đổi theo skin) ─────────────
 export type Chuong = { ten: string; mau: string; dam: string }
@@ -94,7 +115,7 @@ export const chuongCua = (bac: number) => CHUONG[bacInfo(bac).chuong]
 export const laThan = (bac: number) => bac >= 9
 
 export function anhBac(bac: number, loai: 'bieu_tuong' | 'bieu_tuong_64' | 'khung_avatar' | 'khung_avatar_96'): string | null {
-  if (!KIT.rank) return null
+  if (!(loai.startsWith('khung') ? KIT.rank_khung : KIT.rank_bieu_tuong)) return null
   return `${GOC}/rank/${bacInfo(bac).bac}/${loai}.png`
 }
 export function anhRankChung(loai: 'sao' | 'hao_quang_than' | 'len_bac'): string | null {

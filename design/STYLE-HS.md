@@ -1,7 +1,9 @@
 # STYLE app Học sinh — gói style + luật cho mọi màn/tính năng mới
 
 > Thùy chốt 29/09/2026: *"lưu cái này thành 1 style, các file, icon phục vụ nó. Sau này có thêm nhiều tính năng mới cũng phải
-> tự cập nhật UI theo cái style này."* — Style đang dùng thật: **Anime RPG** (duy nhất). 4–5 style mới đang làm.
+> tự cập nhật UI theo cái style này."* — Style đang dùng thật: **Anime RPG** (duy nhất). Đang làm: **Thị trấn** (`spec-giao-dien-hs.md` §9) ·
+> **Khối vuông** — cảm hứng Minecraft, style SÁNG, ĐÃ DỰNG 03/10 (`skin/styles/khoi.ts`, `spec-giao-dien-hs.md` §10, đơn `design/DON-HANG-STYLE-KHOI.md`).
+> Biến mới cho style vuông: `radiusPill` ⇒ `--sk-radius-pill` — thứ dáng tròn/viên thuốc trong màn MỚI dùng biến này, đừng gõ `rounded-full`/`999px`.
 > Đổi style = đổi **hết**: Home + mọi màn bên trong + popup + trạng thái rỗng/lỗi.
 
 ## 1. Một style gồm những gì (gói trọn, 1 chỗ)
@@ -15,9 +17,10 @@
 | Nhân vật Home NGANG (PC/iPad) — nam + nữ, PNG trong suốt | `nv_nam.png` · `nv_nu.png` → `nhanVat` | Home ngang đứng nửa trái + bong bóng thoại (bố cục theo ảnh gốc style). Chọn theo giới tính HS, KHÔNG đổi màu theo giới tính. Không có ⇒ Home ngang trải hết bề ngang |
 | Trang trí (hoa văn góc, gạch phân cách) | `corner.png`, `divider.png` → `trangTri` | |
 | Font | `hs.html` (Google Fonts, có tiếng Việt) | chỉ khai font style thật sự dùng |
+| Bảng màu 3D của bản đồ phiêu lưu (thế giới · lục địa · chặng · màn đấu) | `skin/the3d/bangMau<id>.ts` → khai `the3d` trong style (hợp đồng `skin/the3d/kieuMau.ts`) | Cảnh 3D viết bằng CODE, chỉ đọc màu qua bảng này (không gõ hex trong màn). Thiếu `the3d` ⇒ màn phiêu lưu báo "style chưa có bản đồ 3D". Quái/boss cắm qua `skin/the3d/nguonQuai.ts` (Thùy thiết kế riêng) |
 | Ảnh gốc từ ChatGPT (chưa nén) | `design/bk-ui-src/…` · ảnh toàn cảnh chuẩn trong `design/handoff/<kit>/reference/` | nguồn để nén lại khi cần |
 
-Style RPG hiện tại: `skin/styles/rpg.ts` + `public/bk-ui/hs/skin/rpg/` (3 nền: Lâu đài — ảnh 37 bản dọc · Đảo trời · Đêm sao; 13 icon ô;
+Style RPG hiện tại (02/10: nền + nhân vật đã CHIBI — `bg_*_chibi_*.jpg`, `nv_*_chibi.png`; icon/banner còn anime cũ): `skin/styles/rpg.ts` + `public/bk-ui/hs/skin/rpg/` (3 nền: Lâu đài — ảnh 37 bản dọc · Đảo trời · Đêm sao; 13 icon ô;
 2 icon banner; hoa văn góc + gạch). Ảnh toàn cảnh chuẩn: `design/handoff/hs-skin-rpg-v1/reference/reference_rpg_ipad.png`.
 
 ## 2. Cách style chạy (đừng phá)
@@ -36,6 +39,14 @@ Style RPG hiện tại: `skin/styles/rpg.ts` + `public/bk-ui/hs/skin/rpg/` (3 n�
   `bg_bau_troi.jpg`/`ill_*.png` ⇒ máy còn bản 28/09 mất tranh nền. Muốn thay ảnh ⇒ **thêm file TÊN MỚI**, sửa style trỏ sang, giữ file cũ
   ≥ 1 tuần sau deploy rồi mới dọn (xoá vẫn theo Luật xoá — hỏi Thùy). Ảnh `.jpg` KHÔNG nằm trong bộ lưu sẵn của SW (chỉ png/svg/js/css) nên
   mất file là mất ngay.
+- **⭐ Menu vs màn riêng (Thùy 03/10).** Menu / danh sách / chọn chủ đề (các tầng đi xuống) = `ManHS` trên **tranh nền** như trên.
+  **Tầng CUỐI** — nơi em thật sự đọc hoặc làm — thì sang **màn riêng**, KHÔNG đặt ô mờ trên tranh nền (rất khó nhìn):
+  1. Bấm vào **1 câu hỏi / 1 bài** ⇒ màn làm bài riêng (`LamBai` và các màn đấu đã định nghĩa).
+  2. Bấm vào **1 kiến thức** (mục sổ tay, lý thuyết 1 dạng, …) ⇒ **màn đọc** `ManDocHS` (nền SÁNG trơn, thẻ trắng, chữ tối — mẫu file
+     gốc KHTN Pocket): `ManDocHS` (trang + nút quay lại + đường dẫn) · `TheDocHS` (chip → tiêu đề → tóm tắt → khối) · `ChipDocHS` ·
+     `KhoiDocHS` (`cong_thuc` · `vi_du` · `nham` · `luu_y` · `hinh` · `thuong`) · `TrongDocHS`. Màu đọc từ `--sk-doc-*` (registry
+     `DOC_MAC_DINH`, style muốn khác thì khai `Skin.doc`); **màu nhấn theo MÔN/phân môn** truyền vào `mau={mauDocMon(mon, phanMon)}` —
+     không tự chọn màu theo môn trong màn. Mẫu dùng: `DocMuc` / `DocDang` trong `SoTayHS.tsx`.
 - Màn đăng nhập (`src/auth/Login.tsx`, dùng chung mọi app) tự khoá `colorScheme: 'light'` — skin tối gắn lên `<html>` từ lúc khởi động
   từng làm chữ ô nhập thành trắng trên nền trắng (29/09).
 

@@ -6,13 +6,14 @@
 // ============================================================================
 import { useState, type ReactNode } from 'react'
 import { Khung, NutBack } from '../TuLuyenChuDe'
-import { MAU, THE, THE_TRON, HEAD, ManHS, DauTrangHS } from '../skin/KhungHS'
+import { MAU, THE, THE_TRON, HEAD, ManHS, DauTrangHS, useApSkinGoc } from '../skin/KhungHS'
+import { laySkin, type GiaoDien } from '../skin/registry'
 import { NhiemVuView } from '../NhiemVuHS'
 import { AlbumView, tieuDeAlbum } from '../AlbumHS'
 import { RankView } from '../RankHS'
 import { HoSoView, ChonKhoe, TheTVHS } from '../HoSoHS'
 import { HinhHuyHieu, BieuTuongBac, SaoBac, AvatarKhung, IconNV } from './HinhGami'
-import { KIT, BAC, MAU_HH, ICON_NV } from './hinh'
+import { KIT, BAC, MAU_HH, ICON_NV, anhBac } from './hinh'
 import * as M from './mauGami'
 import { TheGioiView, TamBinhLuan, TamCamXuc, TamKetBan, TamKhoe, LenSong, type BanPhim } from '../thegioi/TheGioiHS'
 import * as TG from '../thegioi/mauTheGioi'
@@ -68,19 +69,25 @@ function MauTheGioi({ tt }: { tt: number }) {
 }
 
 // Màn chính HS khối 6–12 (HomeHS912) — mở PC/iPad ngang để soát bố cục theo ảnh gốc style (Nền app HS cấp 3_11.png).
-const oHome = (id: string, ten: string, sub: string, badge?: number, subMau: HomeCard['subMau'] = 'xam') => ({ id, ten, sub, subMau, badge, doodle: '', ill: '', tone: {} } as unknown as HomeCard)
+const CHOI = new Set(['xep_hang', 'may_man', 'vi_xu', 'the_gioi']) // khối Giải trí (như KHU_CHOI của HocSinhApp)
+const oHome = (id: string, ten: string, sub: string, badge?: number, subMau: HomeCard['subMau'] = 'xam') => ({ id, ten, sub, subMau, badge, nhom: CHOI.has(id) ? 'choi' : 'hoc', doodle: '', ill: '', tone: {} } as unknown as HomeCard)
 const O_HOME: HomeCard[] = [
-  oHome('tu_luyen', 'Tự luyện', 'Luyện theo dạng yếu'), oHome('thong_tin', 'Thông tin học tập', 'Xem dạng đang yếu'), oHome('so_tay', 'Sổ tay kiến thức', 'Tra lý thuyết & bài mẫu'),
+  oHome('tu_luyen', 'Tự luyện', 'Luyện theo dạng yếu'), oHome('nhiem_vu', 'Nhiệm vụ', 'Hôm nay còn 2 nhiệm vụ', 2, 'ton'),
+  { ...oHome('rank', 'Rank', 'Captain ★★ · hạng 12/54', 0, 'ton'), anh: anhBac(3, 'bieu_tuong') ?? undefined }, oHome('thong_tin', 'Thông tin học tập', 'Xem dạng đang yếu'), oHome('so_tay', 'Sổ tay kiến thức', 'Tra lý thuyết & bài mẫu'),
   oHome('de_thi_thu', 'Làm đề thi thử', 'Sắp có'), oHome('bai_tap_giao', 'Bài tập được giao', '2 bài chưa làm', 2, 'ton'), oHome('xep_hang', 'Thành tựu', 'Xem giải thưởng của em'),
   oHome('may_man', 'May mắn', 'Có 1 lượt quay!', 1, 'ton'), oHome('vi_xu', 'Ví xu', '1.240 xu'), oHome('the_gioi', 'Thế giới BK', 'Khoe thành tích · kết bạn'),
 ]
 const CA: LichBoTro = { buoi_id: 'b1', loai: 'bo_tro_yeu', ngay: '2026-10-01', gio_bat_dau: '17:30:00', gio_ket_thuc: null, phong: '204', mon: 'Toán', nguoi: 'Cô Lan', diem_danh: null, hom_nay: false, vao_ca: false }
+// &skin=<id>[&nen=<id>] ⇒ xem mọi màn bằng style khác (vd skin=khoi) — không cần đăng nhập, không lưu DB.
+const Q_XEM = typeof location !== 'undefined' ? new URLSearchParams(location.search) : new URLSearchParams()
+const GD_XEM: GiaoDien = { skin: laySkin(Q_XEM.get('skin')).id, che_do: 'he_thong', hinh_nen: Q_XEM.get('nen') ?? '' }
 function MauHome({ tt }: { tt: number }) {
   return (
-    <HomeHS912 giaoDien={{ skin: 'rpg', che_do: 'toi', hinh_nen: 'lau_dai' }} onDaLuu={noop} data={{ elo: [{ mon: 'Toán', elo: 1240, hang: 3, so_hs: 18 }], thi: [] } as never}
+    <HomeHS912 giaoDien={GD_XEM} onDaLuu={noop} data={{ elo: [{ mon: 'Toán', elo: 1240, hang: 3, so_hs: 18 }], thi: [] } as never}
       hoTen="Nguyễn Minh Khang" maHS="hs0412" lopMon="9A1 Toán" anhUrl={null} onAnhChanged={noop} chuaDoc={3}
       mons={[]} mon="Toán" onChonMon={noop} lich={tt === 1 ? [CA] : []} soRetest={tt === 2 ? 2 : 0} cards={tt === 3 ? O_HOME.map((c) => ({ ...c, badge: 0 })) : O_HOME}
       onHopThu={noop} onDoiMK={noop} onThoat={noop} onLich={noop} onRetest={noop} onHoSo={noop} gioiTinh={tt === 2 ? 'nu' : 'nam'}
+      rank={tt === 2 ? { bac: 9, ten: 'God of War', sao: 0 } : { bac: 3, ten: 'Captain', sao: 2 }} onRank={noop}
       onTheGioi={noop} theGioi={tt === 3 ? { tuong_tac: { so: 0, so_nguoi: 0, nguoi: null }, loi_moi: 0, tin: TG.KENH_TG.tin.slice(0, 2) }
         : { tuong_tac: { so: 5, so_nguoi: 3, nguoi: { an: false, ten: 'Nguyễn Thu Hà', lop: '9A1' } }, loi_moi: 2, tin: TG.KENH_TG.tin.slice(0, 1), cho_khoe: TG.CHO_KHOE }} />
   )
@@ -138,14 +145,15 @@ function O({ nhan, children }: { nhan: string; children: ReactNode }) {
 function BoHinh() {
   return (
     <ManHS>
-      <DauTrangHS tieuDe="Bộ hình gamification" phu={`Kit: huy hiệu ${KIT.huy_hieu ? 'PNG' : 'hình tạm'} · rank ${KIT.rank ? 'PNG' : 'hình tạm'} · chung ${KIT.rank_chung ? 'PNG' : 'hình tạm'} · nhiệm vụ ${KIT.nhiem_vu ? 'PNG' : 'emoji'}`} />
+      <DauTrangHS tieuDe="Bộ hình gamification" phu={`Kit: huy hiệu ${KIT.huy_hieu ? 'PNG' : 'hình tạm'} · biểu tượng bậc ${KIT.rank_bieu_tuong ? 'PNG' : 'hình tạm'} · khung avatar ${KIT.rank_khung ? 'PNG' : 'hình tạm'} · chung ${KIT.rank_chung ? 'PNG' : 'hình tạm'} · nhiệm vụ ${KIT.nhiem_vu ? 'PNG' : 'emoji'}`} />
       <div className="p-4" style={THE}>
-        <p className="mb-3 text-[13px] font-extrabold" style={HEAD}>Huy hiệu — khoá · ★1…★5 · nhỏ 48</p>
+        <p className="mb-3 text-[13px] font-extrabold" style={HEAD}>Huy hiệu — khoá · ★1…★5 · bản nhỏ (≤ 64px)</p>
         <div className="flex flex-col gap-4">
           {Object.keys(MAU_HH).map((k) => (
             <div key={k} className="flex flex-wrap items-end gap-x-3 gap-y-2">
               {[0, 1, 2, 3, 4, 5].map((s) => <O key={s} nhan={s ? `${k} ★${s}` : `${k} khoá`}><HinhHuyHieu hhKey={k} sao={s} size={56} /></O>)}
-              <O nhan="nho_48"><HinhHuyHieu hhKey={k} sao={1} size={48} kieu="nho" /></O>
+              <O nhan="nhỏ khoá"><HinhHuyHieu hhKey={k} sao={0} size={40} /></O>
+              <O nhan="nhỏ ★3"><HinhHuyHieu hhKey={k} sao={3} size={40} /></O>
             </div>
           ))}
         </div>
@@ -176,6 +184,7 @@ function BoHinh() {
 
 export default function XemMauGami() {
   const q = new URLSearchParams(location.search)
+  useApSkinGoc(GD_XEM) // biến --sk-* của style đang xem cho MỌI màn trong trang mẫu
   const [man, setMan] = useState(q.get('man') ?? 'nhiem_vu')
   const [tt, setTt] = useState(Number(q.get('tt') ?? 1) || 1)
   const an = q.has('an')

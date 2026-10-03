@@ -1,23 +1,24 @@
 import { Fragment, useEffect, useState } from 'react'
-import { KHOI_OPTIONS, DEFAULT_KHOI, listDaiDeXuat, LO_GAN_MAU } from '../../lib/kho/api'
+import { KHOI_OPTIONS, DEFAULT_KHOI, listDeXuat, coDeXuatKho, LO_GAN_MAU, type KhoDeXuat } from '../../lib/kho/api'
 import { useStore } from '../../store/useStore'
 import { useMonScope } from '../../hooks/useMonScope'
 import BanDo from './BanDo'
 import SearchCau from './SearchCau'
 import KhoRac from './KhoRac'
+import McqCoverage from './McqCoverage'
 import DeXuatPanel from './DeXuatPanel'
 import GanMauPanel from './GanMauPanel'
-import { daiBranch, hinhBranch, hinhGiaiTichBranch, khtnBranch } from './branches'
+import { anhBranch, daiBranch, hinhBranch, hinhGiaiTichBranch, khtnBranch, tsaBranch } from './branches'
 import KhoHinhScreen from './hinh/KhoHinhScreen'
 import KhoHinhHocScreen from './hinh/KhoHinhHocScreen'
 
-type Tab = 'dai' | 'hinh' | 'hinhgt'
-type Mon = 'toan' | 'khtn'
+type Tab = 'dai' | 'hinh' | 'hinhgt' | 'mcq'
+type Mon = 'toan' | 'khtn' | 'anh' | 'tsa'
 // ⭐ 16/09 (CEO): tab Hình học tách 2 phase — Học kiến thức (Bài) vs Luyện tập (Mô hình/Dạng/Bổ đề cũ).
 // Toggle chỉ hiện khi tab='hinh'. Nhớ preference/localStorage riêng.
 type HinhPhase = 'hoc' | 'luyen'
-// Map môn-kho ↔ nhãn MON_LIST (nhan_su_mon lưu nhãn 'Toán'/'KHTN'). Kho mới hỗ trợ 2 môn này.
-const MON_TABS: { key: Mon; label: string }[] = [{ key: 'toan', label: 'Toán' }, { key: 'khtn', label: 'KHTN' }]
+// Map môn-kho ↔ nhãn MON_LIST (nhan_su_mon lưu nhãn 'Toán'/'KHTN'/'Tiếng Anh' — nhãn PHẢI khớp đúng, useMonScope so chuỗi).
+const MON_TABS: { key: Mon; label: string }[] = [{ key: 'toan', label: 'Toán' }, { key: 'khtn', label: 'KHTN' }, { key: 'anh', label: 'Tiếng Anh' }, { key: 'tsa', label: 'TSA' }]
 
 // Nhớ màn hình gần nhất (preference cá nhân → localStorage, không phải data dùng chung)
 const readKhoi = () => {
@@ -26,9 +27,9 @@ const readKhoi = () => {
 }
 const readTab = () => {
   const v = localStorage.getItem('kho.tab')
-  return (v === 'hinh' || v === 'hinhgt' ? v : 'dai') as Tab
+  return (v === 'hinh' || v === 'hinhgt' || v === 'mcq' ? v : 'dai') as Tab
 }
-const readMon = () => (localStorage.getItem('kho.mon') === 'khtn' ? 'khtn' : 'toan') as Mon
+const readMon = () => { const v = localStorage.getItem('kho.mon'); return (v === 'khtn' || v === 'anh' || v === 'tsa' ? v : 'toan') as Mon }
 const readHinhPhase = () => (localStorage.getItem('kho.hinh.phase') === 'luyen' ? 'luyen' : 'hoc') as HinhPhase
 
 export default function KhoScreen() {
@@ -41,24 +42,28 @@ export default function KhoScreen() {
   useEffect(() => { localStorage.setItem('kho.mon', mon) }, [mon])
   useEffect(() => { localStorage.setItem('kho.hinh.phase', hinhPhase) }, [hinhPhase])
   // môn KHTN = 1 cây (không nhánh Đại/Hình); Toán = nhánh tab → branch.
-  const config = mon === 'khtn' ? khtnBranch : tab === 'dai' ? daiBranch : tab === 'hinhgt' ? hinhGiaiTichBranch : hinhBranch
+  const config = mon === 'khtn' ? khtnBranch : mon === 'anh' ? anhBranch : mon === 'tsa' ? tsaBranch : tab === 'dai' ? daiBranch : tab === 'hinhgt' ? hinhGiaiTichBranch : hinhBranch
+  // Kho Anh hiện chỉ có bản đồ khối 9 ⇒ mở môn Anh thì nhảy về khối 9 (không mở ra màn trống).
+  useEffect(() => { if (mon === 'anh' && khoi !== '9') setKhoi('9') }, [mon]) // eslint-disable-line react-hooks/exhaustive-deps
+  // Kho TSA (Toán luyện thi Bách khoa) hiện chỉ có bản đồ khối 12 ⇒ mở môn TSA thì nhảy về khối 12.
+  useEffect(() => { if (mon === 'tsa' && khoi !== '12') setKhoi('12') }, [mon]) // eslint-disable-line react-hooks/exhaustive-deps
   const [timCau, setTimCau] = useState(false)
   const [rac, setRac] = useState(false)   // kho rác — câu đã xoá, vẫn resolve được cho tài liệu cũ
   // Đề xuất của dây chuyền (làn 🟡 🔴) — hiện chỉ nhánh Đại có bảng (mig 202609282236). Badge = số đề xuất đang chờ.
   const [deXuat, setDeXuat] = useState(false)
   const [soDeXuat, setSoDeXuat] = useState<number | null>(null)
   const [banDoVer, setBanDoVer] = useState(0) // nhận đề xuất ⇒ bản đồ có dạng mới ⇒ dựng lại cây khi đóng panel
-  const coDeXuat = config.key === 'dai'
+  const coDeXuat = coDeXuatKho(config.key) // registry DE_XUAT_KHO (Đại, KHTN — 03/10)
   // Gán mẫu: lô đang mở của khối này (registry LO_GAN_MAU) — học thuật gán tay mẫu để có bộ đề chấm cho skill gán dạng.
   const [ganMau, setGanMau] = useState(false)
-  const loGanMau = coDeXuat ? LO_GAN_MAU.find((l) => l.khoi === khoi) ?? null : null
+  const loGanMau = config.key === 'dai' ? LO_GAN_MAU.find((l) => l.khoi === khoi) ?? null : null // lô gán mẫu hiện chỉ có ở Đại
   useEffect(() => {
     if (!coDeXuat) { setSoDeXuat(null); return }
     let song = true
     setSoDeXuat(null)
-    listDaiDeXuat(khoi).then((r) => { if (song) setSoDeXuat(r.length) }).catch(() => { if (song) setSoDeXuat(null) })
+    listDeXuat(config.key as KhoDeXuat, khoi).then((r) => { if (song) setSoDeXuat(r.length) }).catch(() => { if (song) setSoDeXuat(null) })
     return () => { song = false }
-  }, [coDeXuat, khoi, deXuat, ganMau])
+  }, [coDeXuat, config.key, khoi, deXuat, ganMau])
 
   // Scope④ THEO MÔN (dùng chung useMonScope — xem lib/mon.ts): admin + Ops thấy tất; người khác chỉ thấy
   // môn được phân (nhan_su_mon). Chưa gán → không thấy môn nào.
@@ -90,6 +95,7 @@ export default function KhoScreen() {
             <TabBtn active={tab === 'dai'} onClick={() => setTab('dai')}>Đại số</TabBtn>
             <TabBtn active={tab === 'hinh'} onClick={() => setTab('hinh')}>Hình học</TabBtn>
             <TabBtn active={tab === 'hinhgt'} onClick={() => setTab('hinhgt')}>Hình giải tích</TabBtn>
+            <TabBtn active={tab === 'mcq'} onClick={() => setTab('mcq')}>Phủ MCQ</TabBtn>
           </div>
         )}
         {/* ⭐ Phase Hình học (CEO 16/09): chỉ hiện khi tab='hinh'. Học = Bài (mới); Luyện = Mô hình/Dạng cũ. */}
@@ -99,7 +105,7 @@ export default function KhoScreen() {
             <TabBtn active={hinhPhase === 'luyen'} onClick={() => setHinhPhase('luyen')}>🏋️ Luyện</TabBtn>
           </div>
         )}
-        {allowed.length > 0 && !profileLoading && <>
+        {allowed.length > 0 && !profileLoading && (mon !== 'toan' || tab !== 'mcq') && <>
         {/* Tìm câu (chỉ nhánh có câu: Đại/KHTN) */}
         {config.cauTbl && (
           <button onClick={() => setTimCau(true)}
@@ -160,6 +166,7 @@ export default function KhoScreen() {
               </div>
             </div>
           ) : mon === 'toan' && tab === 'hinh'
+
             // Nhánh HÌNH — 2 phase (CEO 16/09):
             //   · HỌC  → KhoHinhHocScreen (mới): Bài phẳng theo khối, có Lý thuyết + Cụm + Câu (clone Đại).
             //   · LUYỆN → KhoHinhScreen  (cũ): 4 tầng họ mô hình → lưới mô hình → lưới bài toán → kho bài.
@@ -167,13 +174,16 @@ export default function KhoScreen() {
             ? (hinhPhase === 'hoc'
                 ? <KhoHinhHocScreen key={`hh-${khoi}`} khoi={khoi} />
                 : <KhoHinhScreen key={`hinh-${khoi}`} khoi={khoi} />)
+            : mon === 'toan' && tab === 'mcq'
+            // Phủ MCQ (CEO 01/10) — xuyên TẤT CẢ khối cùng lúc (không theo khoi ở header), chỉ Đại/HGT.
+            ? <McqCoverage />
             : <BanDo key={`${config.key}-${khoi}-${banDoVer}`} config={config} khoi={khoi} />}
       </div>
 
       {timCau && config.cauTbl && allowed.length > 0 && <SearchCau cauTbl={config.cauTbl} onClose={() => setTimCau(false)} />}
       {rac && config.cauTbl && allowed.length > 0 && <KhoRac cauTbl={config.cauTbl} onClose={() => setRac(false)} />}
       {ganMau && loGanMau && allowed.length > 0 && <GanMauPanel lo={loGanMau} onClose={() => setGanMau(false)} onDoiBanDo={() => setBanDoVer((v) => v + 1)} />}
-      {deXuat && coDeXuat && allowed.length > 0 && <DeXuatPanel khoi={khoi} onClose={() => setDeXuat(false)} onDoiBanDo={() => setBanDoVer((v) => v + 1)} />}
+      {deXuat && coDeXuat && allowed.length > 0 && <DeXuatPanel kho={config.key as KhoDeXuat} khoi={khoi} onClose={() => setDeXuat(false)} onDoiBanDo={() => setBanDoVer((v) => v + 1)} />}
     </div>
   )
 }
