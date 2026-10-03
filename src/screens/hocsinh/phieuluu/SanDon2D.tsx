@@ -42,6 +42,7 @@ export const SanDon2D = forwardRef<SanApi, { nv: NvId; sanCao: number; ke: Ke; k
   const coAnhBoss = !!infoBoss
   const [clipBoss, setClipBoss] = useState<ClipBoss | null>(null) // chiêu riêng của boss có hoạt ảnh (Skin.boss[..].chieuRieng) đang phát
   const luotChieu = useRef(0)
+  const [lao, setLao] = useState(0) // boss LAO sang trái bấy nhiêu px (chiêu tia: tia trong ảnh có chiều dài cố định, boss phải áp sát thì mới chạm nhân vật)
   useEffect(() => { const src = skin.boss?.[ke.loai]?.trung; if (src) { const im = new Image(); im.src = src; anhBossImg.current = im } else anhBossImg.current = null }, [skin, ke.loai])
   const sanRef = useRef<HTMLDivElement>(null)
   const chuyenRef = useRef<HTMLDivElement>(null)
@@ -123,7 +124,12 @@ export const SanDon2D = forwardRef<SanApi, { nv: NvId; sanCao: number; ke: Ke; k
       window.setTimeout(() => im.remove(), ms + 800)
     }
     let het = tong
-    if (ch.kieu === 'tia') hen(ch.phongMs, () => { setHero('bi_danh'); rung(12, 1000) })
+    if (ch.kieu === 'tia') {
+      // tia dài `daiTia` px gốc (×k trên màn) tính từ neo chân (= tâm ô boss). Cách nhân vật > tia ⇒ lao tới sao cho đầu tia tới ngực nhân vật (chừa tối thiểu 170px thân boss).
+      const cach = bb.x + keCao / 2 - tam.x, can = cach - (ch.daiTia ?? 0) * k * 0.92
+      if (can > 0) { const dx = Math.min(can, Math.max(0, cach - 170)); hen(0, () => setLao(dx)) }
+      hen(ch.phongMs + 80, () => { setHero('bi_danh'); rung(12, 1000) })
+    }
     else if (ch.qua) {
       const q = ch.qua
       for (let i = 0; i < q.n; i++) {
@@ -136,14 +142,14 @@ export const SanDon2D = forwardRef<SanApi, { nv: NvId; sanCao: number; ke: Ke; k
     }
     await new Promise((r) => setTimeout(r, het + 200))
     dat.forEach((t) => window.clearTimeout(t))
-    setClipBoss(null)
+    setClipBoss(null); setLao(0)
   }
 
   useImperativeHandle(ref, () => ({
     phat: async (d) => {
       const rieng = d === 'boss_ma_thuat' ? infoBoss?.chieuRieng : undefined
       if (rieng?.length) {
-        try { await dienBoss(rieng[luotChieu.current++ % rieng.length]) } finally { setClipBoss(null); setHero('nghi') }
+        try { await dienBoss(rieng[luotChieu.current++ % rieng.length]) } finally { setClipBoss(null); setLao(0); setHero('nghi') }
         return
       }
       setDon(d)
@@ -179,7 +185,7 @@ export const SanDon2D = forwardRef<SanApi, { nv: NvId; sanCao: number; ke: Ke; k
         <div className="absolute right-[7%] z-10 flex flex-col items-center" style={{ bottom: day, width: keCao + 8 }}>
           <div key={keId} className={ha && !infoBoss?.khung ? 'sd-ha' : 'sd-vao'}>
             <div ref={bossRef} style={{ width: keCao, height: keCao }}>
-              <div ref={loc} style={{ transition: 'filter .08s' }} className="h-full w-full">
+              <div ref={loc} style={{ transition: 'filter .08s, transform .3s cubic-bezier(.2,.8,.3,1)', transform: lao ? `translateX(${-lao}px)` : undefined }} className="h-full w-full">
                 {coAnhBoss ? <BossAnhHS ma={ke.loai} tt={ha && infoBoss?.khung ? 'ha' : boss} cao={keCao} clip={clipBoss} /> : <QuaiTam b={b} loai={ke.loai} boss={ke.boss} co={keCao} />}
               </div>
             </div>

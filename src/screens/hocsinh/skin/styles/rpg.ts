@@ -26,7 +26,7 @@ const MQ = '/bk-ui/hs/skin/rpg/boss/mq'
 const mqClip = (ten: string, ms: number[], mo: Partial<ClipBoss> = {}): ClipBoss => ({ src: ms.map((_, i) => `${MQ}/${ten}_0${i + 1}.webp`), ms, ...mo })
 const MQ_TAY_TRAI: [number, number] = [150, 150]
 const MQ_CHIEU: ChieuBoss[] = [
-  { ten: 'Tia laser', kieu: 'tia', clip: mqClip('laser', [250, 350, 450, 300, 220, 300], { rong: 2048, px: 450, lat: true }), phongMs: 600 },
+  { ten: 'Tia laser', kieu: 'tia', clip: mqClip('laser', [250, 350, 450, 300, 220, 300], { rong: 2048, px: 450, lat: true }), phongMs: 600, daiTia: 1285 },
   { ten: 'Tên lửa đơn', kieu: 'don', clip: mqClip('missile_single', [250, 300, 450, 400, 350, 400]), phongMs: 1000, qua: { n: 1, cach: 0, bay: 650, nong: [MQ_TAY_TRAI] } },
   { ten: 'Mưa tên lửa', kieu: 'mua', clip: mqClip('missile_rain', [250, 350, 650, 1000, 1200, 600]), phongMs: 1250, qua: { n: 6, cach: 90, bay: 1200, nong: [[210, 110], [560, 130]] } },
 ]

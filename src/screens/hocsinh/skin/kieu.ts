@@ -53,6 +53,8 @@ export type ClipBoss = {
 /** 1 chiêu tấn công riêng của boss (thay đòn "ma thuật" chung). tia = laser vẽ sẵn trong ảnh · don/mua = tên lửa bay (ảnh FX riêng) */
 export type ChieuBoss = {
   ten: string; kieu: 'tia' | 'don' | 'mua'; clip: ClipBoss
+  /** tia: chiều dài tia trong ảnh gốc, tính từ neo chân tới đầu tia (px, khung gốc) — để biết boss phải LAO tới gần nhân vật bao nhiêu thì tia chạm */
+  daiTia?: number
   /** ms (từ lúc bắt đầu clip) đòn chạm nhân vật — tia: lúc tia chạm · tên lửa: lúc phóng */
   phongMs: number
   /** tên lửa: số quả · cách nhau (ms) · thời gian bay (ms) · điểm nòng trong ảnh (px, khung 768×640, đúng neo (384,580)) */
