@@ -35380,3 +35380,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Ảnh:** `scripts/anime-chinh-phuc.mjs` → `public/bk-ui/hs/skin/rpg/chinhphuc/` (1,7 MB) + `skin/styles/rpgChinhPhuc.ts` (hộp alpha 9 tháp); Skin thêm `chinhPhuc` (style không khai ⇒ menu leo tháp cũ).
 - **Sai → sửa:** (1) style đế truyền `{w,h}` thay `{width,height}` ⇒ ảnh đế hiện cỡ gốc phủ màn. (2) `useSan` dùng `useRef` + effect `[]` ⇒ vào game rồi lùi về, khung mới không được đo (ResizeObserver của khung cũ bắn 0) ⇒ mất hết tháp. Sửa: ref dạng hàm + đo lại khi khung đổi.
 - **Chưa làm:** Vô tận Hard (nút "sắp mở"), khoá tháp chủ đề theo tiến độ, tầng cao nhất dưới nhãn tháp. Thử ván trên máy dev đã ghi 1 lượt 0 tầng của hồ sơ "Claude Test" vào BXH tháp Số hữu tỉ (lớp 7).
+
+
+## 2026-10-03 [Kho Anh] Câu AI giải lại CHẮC ⇒ duyệt thẳng (Thùy: "những câu đã được duyệt lại cho thẳng vào kho — chỉ câu m ko chắc mới đưa GV")
+
+- `scripts/anh/duyet_sau_giai.mjs`: câu đang chờ mà bên A (giải mù) "chac" + không phương án 2 + không báo lỗi đề + đáp án = đáp án đang lưu ⇒ duyệt
+  (`duyet_nguon 'ai'`, `kiem_may 'khop'`). **+115 câu** ⇒ kho Anh **4.225 / 4.774 đã duyệt**, còn chờ 549.
+- Còn chờ, theo lý do: 249 A không chắc / 2 phương án · 54 lệch đáp án · 31 A báo lỗi đề · 13 thiếu đáp án (A/B lệch) — đều là "không chắc" ⇒ GV.
+  **Không tự gỡ** (không phải chuyện chắc/không chắc đáp án): 103 câu ở ĐIỂM CHỜ (trigger chặn duyệt khi chưa có điểm kiến thức) · 99 câu A+B
+  thấy NGOÀI PHẠM VI (luật CEO 02/10 loại khỏi kho luyện thi vào 10) — hỏi Thùy.
