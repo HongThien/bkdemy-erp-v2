@@ -71,6 +71,36 @@
 - **Điểm Rank chỉ từ Thử thách** (giữ D2). PvP / Tournament người / Tháp ⇒ **điểm season** theo môn (`spec-dau-tu-vung.md` §4: MMR ẩn + điểm season hiện, chống cày, quà cuối season).
 - EXP/điểm game **theo môn** (CLAUDE §1.6) — Đấu Từ hiện XP chung mọi môn, sửa khi ghép app HS.
 
+## 7. ⭐ GHÉP VÀO APP HS — khu HỌC TẬP (Thùy chốt 03/10 chiều — mục này ĐÈ các chỗ lệch ở §2–§5)
+
+**Ô "Tự luyện" ngoài Home ⇒ đổi thành "HỌC TẬP"**, chú thích *"Cùng BK chinh phục thế giới"*. Bấm vào ⇒ lưới 4 ô (kiểu 2, như lưới Home):
+
+| Ô | Chú thích | Là chế độ nào |
+|---|---|---|
+| **Học theo chủ đề** | Đánh bại Ác quỷ "Phi Phai", giải cứu BK | Luyện tập = bản đồ phiêu lưu (world map → lục địa → đường dạng bài) |
+| **Đấu trường BK** | Ai là người giỏi nhất | PvP + PvE: đấu online (ngẫu nhiên / mã phòng / mời bạn) + đấu bot Dễ/Vừa/Khó |
+| **Chinh phục BK** | Nơi một huyền thoại sinh ra | Leo tháp: **tháp tổng ở giữa, tháp chủ đề xung quanh** (đồ hoạ ChatGPT riêng, phải thật ngầu) |
+| **Giải Vô địch BK** | Con đường của nhà vô địch | Tournament, **2 chế độ: giải trực tiếp (đăng ký trước) · đấu với máy (= Thử thách cũ, giữ luật + Rank)** |
+
+**7.1 Chọn câu theo độ khó (đè §5):**
+- Đấu (Đấu trường PvP/PvE · Giải Vô địch): **chỉ câu đơn giản, làm nhanh**. Toán: **mức 1–2–3**; mức ≥4 cần suy nghĩ/chứng minh ⇒ KHÔNG vào đấu. KHTN: **dạng lý thuyết + tính toán đơn giản**, không bài phức tạp.
+- Tháp: **Vô tận Normal = mức 1–3 · Vô tận Hard = có mức 4–5** (mức 4–5 CHỈ xuất hiện ở tháp Hard).
+- **Bot PvE:** thời gian bot làm 1 câu = **thời gian trung bình HS thật làm đúng câu đó**; câu chưa có dữ liệu ⇒ trung bình **cụm** ⇒ **dạng**. Tỉ lệ đúng của bot = tỉ lệ đúng thật của câu (cụm/dạng). Giữ 3 mức: **Vừa = HS trung bình** · Dễ chậm hơn + sai nhiều hơn · Khó nhanh hơn + ít sai hơn.
+  (Thời gian từng câu: DB chưa lưu thẳng — suy từ hiệu `cham_at` giữa 2 câu liền nhau trong 1 lượt; câu đầu lượt không suy được.)
+
+**7.2 Luyện dạng yếu (Tự luyện tổng hợp cũ):** **80% câu từ dạng YẾU · 20% ngẫu nhiên** (trước: trộn nhiều hơn) — đã có nhiều chế độ ôn rà soát nên luồng này tập trung FIX YẾU.
+
+**7.3 Giải Vô địch BK — giải trực tiếp:**
+- Lịch cố định mỗi tuần; **đăng ký trước** (vd thứ 2–4), **thi đấu giờ cố định** (vd thứ 7). Chia bảng **theo môn + khối**.
+- Loại trực tiếp; số người lẻ ⇒ nhánh lũy thừa 2, ai không có đối thủ thì tự vào vòng trong; **đối thủ vắng ⇒ tự thắng**.
+- **Trận giải KHOÁ THỜI GIAN, không khoá số câu:** tổng **4 phút**, trả lời xong câu này hiện ngay câu kế (mỗi em tự đi theo tốc độ mình), hết giờ **ai nhiều điểm hơn thắng**. (Khác Đấu trường: không còn "ai đúng trước ăn câu".)
+- **Phần thưởng PHẢI có XU** (chuẩn thiết kế).
+
+**7.4 Chinh phục BK (tháp):**
+- **2 mode: Sinh tồn · Vô tận.** **Normal / Hard là chế độ TRONG Vô tận**, chuyển qua lại bằng 1 nút.
+- **Mỗi tháp 1 bảng xếp hạng riêng** (tháp tổng + từng tháp chủ đề; mỗi tháp tách Sinh tồn / Vô tận Normal / Vô tận Hard).
+- **Tháp chủ đề: em học tới đâu mở tới đó** — không chờ cả khối (có chủ đề lớp B/C không học, chỉ A/S học). ⇒ thay luật "phần lớn khối đã học" ở §3/§5.
+
 ---
 
 # PHẦN B — BÀN SAU (CTO điền mặc định, Thùy sửa)

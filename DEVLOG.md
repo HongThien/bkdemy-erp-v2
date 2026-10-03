@@ -35223,3 +35223,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   ô TSA, BXH qua RLS chạy.
 - **Ngoài phạm vi:** app Đấu từ (bảng người chơi riêng `dtv_*` — em test chơi sẽ lên BXH Đấu từ) · màn nhân sự "mọi trạng thái" hiện em test với nhãn `test` ·
   lớp test hiện ở chỗ nào liệt kê cả lớp đã đóng.
+
+- (03/10 chiều, Thiết kế) **Ghép các mảnh game vào app HS = khu HỌC TẬP** (Thùy) ⇒ `spec-che-do-game.md` §7: ô Tự luyện → "Học tập" + 4 ô (Học theo chủ đề = bản đồ · Đấu trường BK = PvP+PvE · Chinh phục BK = tháp tổng giữa + tháp chủ đề quanh · Giải Vô địch BK = giải trực tiếp đăng ký trước + đấu với máy = Thử thách cũ). Chọn câu: đấu chỉ Toán mức 1–3 / KHTN lý thuyết + tính đơn giản; tháp Normal 1–3, Hard có 4–5; bot = thời gian TB HS thật làm câu (lùi cụm → dạng), tỉ lệ đúng theo câu, giữ 3 mức. Luyện dạng yếu 80/20. Giải trực tiếp: theo môn+khối, khoá 4 phút không khoá số câu, ai nhiều điểm thắng, vắng = tự thắng, thưởng PHẢI có xu. Tháp: Sinh tồn + Vô tận (Normal/Hard 1 nút), mỗi tháp 1 BXH, tháp chủ đề em học tới đâu mở tới đó. Còn hỏi: luật điểm trận giải 4 phút · ngưỡng mở tháp chủ đề + đề chung · chỗ đặt Luyện dạng yếu.
