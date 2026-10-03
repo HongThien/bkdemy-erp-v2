@@ -35280,3 +35280,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - (03/10 khuya, Giao diện) Khu Học tập: chữ dưới đảo bị đảo che (Thùy). Gốc: ảnh đảo là phần tử có định vị (relative) nên vẽ ĐÈ lên dòng chữ tĩnh cùng nút, cộng margin âm kéo chữ lên ⇒ chữ thành relative z-10 + mt-1. Bài học: chữ đặt sau ảnh trong cùng khối KHÔNG đủ để nằm trên — phần tử positioned luôn vẽ sau phần tử tĩnh.
 
 - (03/10 khuya, Giao diện) Thùy: 5 đảo khu Học tập cần DESIGN MỚI (không dùng lại lục địa chuyên đề) + trời "nhiều sao, vũ trụ hơn" ⇒ Đơn 14 Kit B viết lại: vũ trụ (sao dày nhiều cỡ, ngân hà, tinh vân, hành tinh xa, sao băng) + 5 đảo mới mỗi đảo 1 công trình chiếm phần lớn mặt đảo; KHÔNG đính kèm ảnh lục địa bản đồ (tránh vẽ lại y hệt), chỉ nét công trình chibi v4 + nền đảo trời + ảnh chụp demo (chỉ lấy bố cục). Trong lúc chờ: Skin.hocTap.nen = 8 lớp sao lặp theo ô lệch cỡ + dải ngân hà + 3 tinh vân (CSS).
+- (03/10 tối, Sổ tay) **Thẻ Toán 12 theo khuôn mục KHTN** (Thùy: "Toán cũng kiểu thế" → chọn "Bổ sung nội dung"; "Toán và tiếng Anh sau này cũng style này";
+  phạm vi Claude chỉ sổ tay, màn khác Thùy làm). Viết tóm tắt + ví dụ từng bước + hay nhầm + xem thêm cho 77 thẻ (`toan12-bo-sung.mjs`, mỗi ví dụ tự tính lại,
+  ghi phép kiểm ở comment) · `sinh-bo-sung.mjs` chặn nếu thiếu mã / lq sai / KaTeX strict lỗi (bắt `\text{lỗi}` có dấu trong công thức ⇒ đổi sang kí hiệu $L$).
+  Mig `202610031221` ĐÃ ÁP — chỉ ghi thẻ chưa ai sửa (cap_nhat_boi null); dry-run: 77/77, 77 dòng nhật ký 'sua' kèm bản cũ, vẫn cho_duyet. Spec §9 ghi luật một khuôn mọi môn.

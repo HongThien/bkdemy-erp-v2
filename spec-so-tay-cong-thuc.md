@@ -92,3 +92,6 @@ Sau này: nối thẻ ↔ `ma_dang` (nhiều-nhiều) để từ thẻ bấm san
 | 1 | Màn đọc 1 kiến thức = màn RIÊNG nền sáng theo file gốc KHTN Pocket (`ManDocHS` — luật chung ở design/STYLE-HS.md §2 "Menu vs màn riêng"). | Thùy 03/10 |
 | 2 | **Toán và Tiếng Anh (và môn sau này) theo đúng khuôn này** — cùng màn đọc, cùng bộ phần của mục (tóm tắt · công thức · kí hiệu · ý chính · bảng · ví dụ từng bước · hay nhầm · liên quan). Nhãn loại theo đặc trưng môn. | Thùy 03/10 |
 | 3 | Phạm vi Claude: chỉ phần SỔ TAY của app HS. Các màn khác của app HS Thùy làm riêng. | Thùy 03/10 |
+- **03/10 — 77 thẻ Toán 12 đã theo khuôn mục** (mig `202610031221_sotay_toan12_bo_sung`, ĐÃ ÁP): công thức → `cong_thuc` · `noi_dung` = 1 câu tóm tắt ·
+  `vd` (ví dụ từng bước, đã tự tính lại) · `nham` · `bien` (3 thẻ thống kê) · `lq`. Nguồn: `scripts/sotay-cong-thuc/toan12-bo-sung.mjs` (+ `sinh-bo-sung.mjs` kiểm
+  đủ mã / lq / KaTeX strict). Vẫn `cho_duyet` — GV duyệt trên ERP. PDF `the-cong-thuc-toan12.pdf` là bản CŨ (trước bổ sung) — duyệt trên ERP, không theo PDF.
