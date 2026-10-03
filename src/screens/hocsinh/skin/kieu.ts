@@ -103,4 +103,15 @@ export type Skin = {
   // Không khai ⇒ khu Học tập là lưới ô thường (Tối giản…).
   // nenDoc: nền khổ dọc (điện thoại) · hop: hộp PHẦN NHÌN THẤY của từng đảo trong khung PNG (tỉ lệ) — có ⇒ đặt đảo theo tâm + bề rộng phần này (kit DESIGN.md).
   hocTap?: { nen: string; nenDoc?: string; dao: Record<string, string>; hop?: Record<string, { x0: number; y0: number; x1: number; y1: number }> }
+  // MÀN CHINH PHỤC BK (leo tháp — hoctap/ChinhPhucHS.tsx): nền + tháp tổng + 8 mẫu tháp chủ đề + đế đảo + cầu. Không khai ⇒ vào thẳng menu leo tháp của game.
+  chinhPhuc?: {
+    nen: string; thapTong: string; thapCd: string[]
+    /** hộp phần nhìn thấy của tháp trong khung PNG (khoá 'thap_tong' | 'thap_cd_<i>') — chân tháp = đáy hộp */
+    hop: Record<string, { x0: number; y0: number; x1: number; y1: number }>
+    /** đế đảo: tl = rộng/cao khung · mat = tâm mặt đá (tỉ lệ khung) — chân tháp đặt vào đây */
+    deTong: { src: string; tl: number; mat: [number, number] }
+    deCd: { src: string; tl: number; mat: [number, number] }
+    /** cầu: a/b = 2 đầu cầu (tỉ lệ khung) — kéo dãn từ a tới b */
+    cau: { src: string; tl: number; a: [number, number]; b: [number, number] }
+  }
 }

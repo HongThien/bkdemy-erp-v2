@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { DauTrangHS, ManHS, TrongHS } from '../skin/KhungHS'
 import { GameNhungHS, GiaiVoDichHS, HocTapHS } from './HocTapHS'
+import { ChinhPhucHS } from './ChinhPhucHS'
 import { ChonNhanVatHS } from './ChonNhanVatHS'
 import { laNvChon, type NvId } from '../skin/nhanVat'
 
@@ -16,7 +17,7 @@ export default function XemHocTap() {
   const ve = () => setMan('hub')
   if (man === 'nhan_vat') return <ChonNhanVatHS dangCo={nv} luu={async (id) => { try { localStorage.setItem('xem_nv', id) } catch { /* bỏ qua */ } }} onXong={(id) => { setNv(id); setMan('hub') }} onBack={ve} />
   if (man === 'dau_truong') return <GameNhungHS vao="chu_de" tieuDe="Đấu trường BK" mon={mon} khoi={khoi} onBack={ve} />
-  if (man === 'chinh_phuc') return <GameNhungHS vao="thap" tieuDe="Chinh phục BK" mon={mon} khoi={khoi} onBack={ve} />
+  if (man === 'chinh_phuc') return <ChinhPhucHS mon={mon} khoi={khoi} onBack={ve} />
   if (man === 'giai') return <GiaiVoDichHS onBack={ve} onDauMay={() => setMan('can_tk')} />
   if (man === 'can_tk') return <ManHS><DauTrangHS tieuDe="Cần đăng nhập" onBack={ve} /><TrongHS>Màn này dùng dữ liệu học thật của em — mở trong app đã đăng nhập (trang xem thử không có tài khoản).</TrongHS></ManHS>
   return <HocTapHS nhanVat={nv} onDoiNhanVat={() => setMan('nhan_vat')} onBack={() => history.back()} onChuDe={() => { location.search = '?xem=phieu_luu' }} onYeu={() => setMan('can_tk')}

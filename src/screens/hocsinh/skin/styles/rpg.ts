@@ -7,6 +7,7 @@
 import type { Skin } from '../kieu'
 import { RPG_3D } from '../the3d/bangMauRpg'
 import { HOC_TAP_RPG } from './rpgHocTap'
+import { CHINH_PHUC_RPG } from './rpgChinhPhuc'
 
 const A = '/bk-ui/hs/skin/rpg'
 const BVP = "'Be Vietnam Pro', system-ui, sans-serif"
@@ -67,6 +68,7 @@ export const RPG: Skin = {
   sanDau: '/bk-ui/hs/skin/rpg/dau_truong/nen_san_dau.jpg',
   // Khu Học tập: 5 đảo lơ lửng trong vũ trụ — kit hs-hoc-tap-v2 (Đơn 14 Kit B, Thùy duyệt 03/10), nén bằng scripts/anime-hoc-tap.mjs.
   hocTap: HOC_TAP_RPG,
+  chinhPhuc: CHINH_PHUC_RPG,
   // 02/10 (Thùy): bản CHIBI dễ thương thay bản anime cũ — nam + mèo đen · nữ + cú trắng, PNG trong suốt cắt sát, cao 900px.
   // Ảnh gốc design/bk-ui-src/New_anime/. Bản cũ nv_nam.png / nv_nu.png GIỮ trên đĩa (PWA cũ còn gọi) — dọn sau ≥1 tuần, hỏi Thùy.
   // 02/10 (Thùy): đây là 2 NPC DẪN TRUYỆN (bé trai + mèo đen · bé gái + cú trắng) — Home nói chuyện, tutorial, người dẫn ở Đấu trường. NHÂN VẬT CHÍNH của học sinh là 2 nhà thám hiểm áo choàng xanh (bộ chạy 2D: skin/heroChay.ts).

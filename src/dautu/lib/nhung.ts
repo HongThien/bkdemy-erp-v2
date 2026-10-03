@@ -8,4 +8,9 @@ export const NHUNG = Q.get('nhung') === '1'
 export const VAO_NHUNG: 'chu_de' | 'thap' | null = NHUNG ? (Q.get('vao') === 'thap' ? 'thap' : 'chu_de') : null
 export const MON_NHUNG = NHUNG ? Q.get('mon') : null
 export const KHOI_NHUNG = NHUNG ? Q.get('khoi') : null
+// CHINH PHỤC BK (màn tháp của app HS): bấm 1 tháp ⇒ mở thẳng ván leo. cd = mã chủ đề (tháp chủ đề; vắng = tháp tổng của khối) · tcd = tên tháp · che = song_con|vo_tan.
+//  Lùi từ ván leo ⇒ đóng khung về màn tháp của app HS (không qua menu chế độ của game).
+export const CD_NHUNG = NHUNG ? Q.get('cd') : null
+export const TCD_NHUNG = NHUNG ? Q.get('tcd') : null
+export const CHE_NHUNG: 'song_con' | 'vo_tan' | null = NHUNG ? (Q.get('che') === 'vo_tan' ? 'vo_tan' : Q.get('che') === 'song_con' ? 'song_con' : null) : null
 export const baoThoat = () => window.parent?.postMessage({ dtv: 'thoat' }, location.origin)

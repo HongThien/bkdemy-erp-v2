@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { THAP, MS_SONG_CON, PHAT_SAI_MS, bxhThap, ghiThap, giayVoTan, type BxhThap, type CheDoThap } from '../lib/thap'
 import { capNhatNho } from '../lib/hoSo'
-import { KHOI_NHUNG } from '../lib/nhung'
+import { CD_NHUNG, CHE_NHUNG, KHOI_NHUNG, TCD_NHUNG } from '../lib/nhung'
 import { doc, phat, useCaiDat } from '../lib/amThanh'
 import { ngayVN } from '../lib/tienich'
 import type { Cau, CapNguon, NguonCau } from '../nguon'
@@ -17,12 +17,12 @@ const PHIM = ['a', 's', 'z', 'x']
 export const ANH_THAP = '/bk-ui/hs/skin/rpg/phieuluu2d/moc_thap.webp'
 
 export function ManLeoThap({ toi, nguon, cap, setCap, onLui }: { toi: NguoiTran; nguon: NguonCau; cap: string; setCap: (c: string) => void; onLui: () => void }) {
-  const [che, setChe] = useState<CheDoThap | null>(null)
+  const [che, setChe] = useState<CheDoThap | null>(CHE_NHUNG) // màn tháp của app HS đã chọn chế độ ⇒ vào thẳng ván
   const [lan, setLan] = useState(0) // đổi key để leo lại
   const [dsCap, setDsCap] = useState<CapNguon[]>([])
   useEffect(() => { if (!nguon.coNhoTu) nguon.dsCap().then(setDsCap).catch(() => {}) }, [nguon])
-  const nhom = nguon.nhomThap(cap)
-  if (che) return <VanThap key={che + lan} che={che} toi={toi} nguon={nguon} cap={cap} onLeoLai={() => setLan((x) => x + 1)} onLui={() => setChe(null)} />
+  const nhom = nguon.nhomThap(cap, CD_NHUNG)
+  if (che) return <VanThap key={che + lan} che={che} toi={toi} nguon={nguon} cap={cap} onLeoLai={() => setLan((x) => x + 1)} onLui={() => (CHE_NHUNG ? onLui() : setChe(null))} />
   return (
     <div className="man">
       <DauMan tieuDe={<span className="tieu-thap"><img src={ANH_THAP} alt="" />Leo tháp · {nguon.icon} {nguon.ten}</span>}
@@ -110,7 +110,7 @@ function VanThap({ che, toi, nguon, cap, onLeoLai, onLui }: { che: CheDoThap; to
 
   // tháp hôm nay (tất định) → đếm ngược 3s
   useEffect(() => {
-    nguon.taoThap(che, ngayVN(), cap).then((d) => { setDs(d); setPha('dem') }).catch((e) => setLoiTai((e as Error).message))
+    nguon.taoThap(che, ngayVN(), cap, CD_NHUNG).then((d) => { setDs(d); setPha('dem') }).catch((e) => setLoiTai((e as Error).message))
   }, [che, nguon, cap])
   useEffect(() => {
     if (pha !== 'dem') return
@@ -269,7 +269,7 @@ function KetQuaThap({ che, nguon, cap, kq, onLeoLai, onLui }: { che: CheDoThap; 
   const [ghi, setGhi] = useState<Awaited<ReturnType<typeof ghiThap>> | null>(null)
   const [loi, setLoi] = useState('')
   const da = useRef(false)
-  const nhom = nguon.nhomThap(cap)
+  const nhom = nguon.nhomThap(cap, CD_NHUNG)
   useEffect(() => {
     if (da.current) return
     da.current = true
@@ -280,7 +280,7 @@ function KetQuaThap({ che, nguon, cap, kq, onLeoLai, onLui }: { che: CheDoThap; 
   const cauSai = kq.cauSai.filter((c, k, a) => a.findIndex((x) => x.id === c.id) === k)
   return (
     <div className="man">
-      <DauMan tieuDe={`${THAP[che].icon} ${THAP[che].ten} — kết quả`} phu={`${nguon.icon} ${nguon.ten}${nhom ? ` · Lớp ${nhom}` : ''}`} onLui={onLui} />
+      <DauMan tieuDe={`${THAP[che].icon} ${THAP[che].ten} — kết quả`} phu={`${nguon.icon} ${nguon.ten}${TCD_NHUNG ? ` · ${TCD_NHUNG}` : nhom ? ` · Lớp ${nhom}` : ''}`} onLui={onLui} />
       <div className="luoi-2">
         <div className="giay o-phong ket-thap">
           <div className="so-to">{kq.tang}</div>

@@ -26,6 +26,7 @@ import {
 import ThanhChonMon from './ThanhChonMon'
 import { ChonDangChuDe, ChonLoaiTuLuyen } from './TuLuyenChuDe'
 import { GameNhungHS, GiaiVoDichHS, HocTapHS } from './hoctap/HocTapHS'
+import { ChinhPhucHS } from './hoctap/ChinhPhucHS'
 import { ChonNhanVatHS } from './hoctap/ChonNhanVatHS'
 import { laNvChon, type NvId } from './skin/nhanVat'
 import { chonNhanVat, nhanVatCuaToi } from '../../lib/giaodien_hs'
@@ -535,7 +536,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onNhiemVu={() => { setTuHome(false); setDirect('nhiem_vu') }}
     onBack={() => setDirect(null)} />
   if (direct === 'dau_truong_bk') return <GameNhungHS vao="chu_de" tieuDe="Đấu trường BK" onBack={() => setDirect('tu_luyen_chon')} />
-  if (direct === 'chinh_phuc_bk') return <GameNhungHS vao="thap" tieuDe="Chinh phục BK" onBack={() => setDirect('tu_luyen_chon')} />
+  if (direct === 'chinh_phuc_bk') return <ChinhPhucHS onBack={() => setDirect('tu_luyen_chon')} />
   if (direct === 'giai_vo_dich') return <GiaiVoDichHS onBack={() => setDirect('tu_luyen_chon')} onDauMay={() => setDirect('thu_thach')} />
   if (direct === 'phieu_luu' && monChon) return <Suspense fallback={null}><PhieuLuuHS hocSinhId={hocSinhId} mon={monChon} gioiTinh={gioiTinh} nhanVat={nhanVat} skin={(giaoDien ?? GD_MAC_DINH).skin} LamBai={LamBai} onVe={() => setDirect(HOC_TAP ? 'tu_luyen_chon' : null)}
     onTongHop={() => { setChuDeDang(null); setDirect('tu_luyen') }} onThuThach={() => setDirect('thu_thach')} /></Suspense>

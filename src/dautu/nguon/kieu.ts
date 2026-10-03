@@ -38,7 +38,8 @@ export interface NguonCau {
   dsCap(): Promise<CapNguon[]>
   dsChuDe(cap: string): Promise<ChuDeNguon[]>
   taoBoDe(o: CauHinhBo): Promise<Cau[]>
-  taoThap(cheDo: CheDoThap, ngay: string, cap: string): Promise<Cau[]>
-  /** nhóm bảng xếp hạng tháp: Anh 1 tháp chung (''), môn kho tách theo khối */
-  nhomThap(cap: string): string
+  /** chuDe: tháp CHỦ ĐỀ (Chinh phục BK) — null = tháp tổng của khối */
+  taoThap(cheDo: CheDoThap, ngay: string, cap: string, chuDe?: string | null): Promise<Cau[]>
+  /** nhóm bảng xếp hạng tháp: Anh 1 tháp chung (''), môn kho tách theo khối; tháp chủ đề = 'khối|mã chủ đề' (mỗi tháp 1 BXH riêng) */
+  nhomThap(cap: string, chuDe?: string | null): string
 }

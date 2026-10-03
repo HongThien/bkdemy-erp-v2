@@ -35374,3 +35374,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   phương án trùng, đề dính sang câu sau, ngữ liệu cắt cụt EL000542, cau_so lệch…) · 13 câu A/B không thống nhất.
 - **Bài học:** Sonnet tự khai "chắc" vẫn sai ~2/700 (EC003747 "the chair of ___" chọn whose thay which) ⇒ với câu KHÔNG có đáp án đối chứng, phải
   có bên B độc lập; một bên giải không đủ để tự duyệt.
+## 03/10 — Chinh phục BK: màn tháp (kit hs-chinh-phuc-bk-v4)
+- **Làm:** Thùy báo "chưa vào được chỗ tháp BK". Dựng `hoctap/ChinhPhucHS.tsx` theo DESIGN.md kit v4: tháp tổng giữa (50%,64%) + N tháp chủ đề (N = `fn_dtv_kho_chu_de` của khối em, ≤8 mẫu tháp) theo preset N, đế đảo neo tâm mặt đá, cầu ánh sáng kéo từ mép đế phụ → mép đế tổng; chọn tháp (halo) → Sinh tồn / Vô tận Normal → phóng vào tháp rồi mở ván leo trong khung (`dautu.html?…&cd=&tcd=&che=`), lùi/“Về tháp” ⇒ về màn tháp. Nút BXH = menu leo tháp của game cho tháp đang chọn. Điện thoại dọc: sân 16:9 cao 62% màn, vuốt ngang.
+- **dautu:** `taoThap/nhomThap` nhận thêm `chuDe` — tháp chủ đề lấy câu của chủ đề đó, BXH riêng nhóm `khối|mã chủ đề` (cột `dtv_thap_luot.nhom` text tự do ⇒ không cần migration). `CHE_NHUNG` ⇒ vào thẳng ván.
+- **Ảnh:** `scripts/anime-chinh-phuc.mjs` → `public/bk-ui/hs/skin/rpg/chinhphuc/` (1,7 MB) + `skin/styles/rpgChinhPhuc.ts` (hộp alpha 9 tháp); Skin thêm `chinhPhuc` (style không khai ⇒ menu leo tháp cũ).
+- **Sai → sửa:** (1) style đế truyền `{w,h}` thay `{width,height}` ⇒ ảnh đế hiện cỡ gốc phủ màn. (2) `useSan` dùng `useRef` + effect `[]` ⇒ vào game rồi lùi về, khung mới không được đo (ResizeObserver của khung cũ bắn 0) ⇒ mất hết tháp. Sửa: ref dạng hàm + đo lại khi khung đổi.
+- **Chưa làm:** Vô tận Hard (nút "sắp mở"), khoá tháp chủ đề theo tiến độ, tầng cao nhất dưới nhãn tháp. Thử ván trên máy dev đã ghi 1 lượt 0 tầng của hồ sơ "Claude Test" vào BXH tháp Số hữu tỉ (lớp 7).

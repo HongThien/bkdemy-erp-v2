@@ -4,7 +4,7 @@
 // khi ghép thật sẽ dùng tài khoản HS + dựng lại bằng KhungHS (nợ ghi ở HANDOFF mục Đấu Từ).
 // Giao diện (Thùy 03/10 tối): kiểu GAME CHIBI — 5 ô = 5 HÒN ĐẢO trôi nổi trên bầu trời sao (Skin.hocTap: nền + ảnh đảo; style không khai ⇒ lưới ô thường).
 // Ảnh đảo + nền = kit hs-hoc-tap-v2 (Đơn 14 Kit B, Thùy duyệt 03/10): mỗi đảo 1 PNG trọn công trình; đường nối + chữ do code.
-import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useLayoutEffect, useState, type ReactNode } from 'react'
 import { DauTrangHS, HEAD, MAU, ManHS, NhanHS, NhomHS, NutHS, TheHS, THE_TRON, useManDoc, useMonHS } from '../skin/KhungHS'
 import { laySkin } from '../skin/registry'
 import { khoiCuaHS } from '../../../lib/tuluyen'
@@ -52,18 +52,19 @@ const CSS_DAO = `
 .ht-hien { animation: ht-hien .45s ease-out both }
 @media (prefers-reduced-motion: reduce) { .ht-dao, .ht-noi-sang, .ht-hien { animation: none } }
 `
-const CHU_NOI = { textShadow: '0 0 3px var(--sk-bg), 0 0 6px var(--sk-bg), 0 2px 10px var(--sk-bg)' }
+export const CHU_NOI = { textShadow: '0 0 3px var(--sk-bg), 0 0 6px var(--sk-bg), 0 2px 10px var(--sk-bg)' }
 const HOP_MAC_DINH = { x0: 0, y0: 0, x1: 1, y1: 1 }
 
 /** Sân tỉ lệ cố định lớn nhất vừa khung (contain), đơn vị px. */
-function useSan(doc: boolean) {
-  const ref = useRef<HTMLDivElement>(null)
+export function useSan(doc: boolean) {
+  // ref dạng HÀM: khung bị gỡ rồi gắn lại (vd Chinh phục BK: vào game rồi lùi về) ⇒ đo lại khung MỚI, không kẹt kích thước 0 của khung cũ
+  const [el, ref] = useState<HTMLDivElement | null>(null)
   const [kt, setKt] = useState({ w: 0, h: 0 })
   useLayoutEffect(() => {
-    const el = ref.current; if (!el) return
-    const f = () => setKt({ w: el.clientWidth, h: el.clientHeight }); f()
+    if (!el) return
+    const f = () => { if (el.isConnected) setKt({ w: el.clientWidth, h: el.clientHeight }) }; f()
     const ro = new ResizeObserver(f); ro.observe(el); return () => ro.disconnect()
-  }, [])
+  }, [el])
   const tl = doc ? 9 / 16 : 16 / 9
   const w = Math.min(kt.w, kt.h * tl), h = w / tl
   return { ref, san: { w, h, x: (kt.w - w) / 2, y: (kt.h - h) / 2 } }
@@ -184,7 +185,11 @@ export function HocTapHS({ onBack, onChuDe, onYeu, onDauTruong, onChinhPhuc, onG
 }
 
 /** Đấu trường BK / Chinh phục BK = khung game chung mọi môn (src/dautu) nhúng trong app HS. Lùi ở màn đầu của game ⇒ game báo `dtv: 'thoat'`. */
-export function GameNhungHS({ vao, tieuDe, onBack, mon: monEp, khoi: khoiEp }: { vao: 'chu_de' | 'thap'; tieuDe: string; onBack: () => void; mon?: string; khoi?: string }) {
+export function GameNhungHS({ vao, tieuDe, onBack, mon: monEp, khoi: khoiEp, them }: {
+  vao: 'chu_de' | 'thap'; tieuDe: string; onBack: () => void; mon?: string; khoi?: string
+  /** tham số thêm cho game (Chinh phục BK: cd = mã chủ đề của tháp · tcd = tên tháp · che = song_con|vo_tan) */
+  them?: Record<string, string>
+}) {
   const monHS = useMonHS(), mon = monEp ?? monHS // monEp/khoiEp: chỉ trang xem thử truyền
   // Khối của EM — game khoá theo khối này (Leo tháp không cho chọn khối khác, Thùy 03/10)
   const [khoi, setKhoi] = useState<string | null | undefined>(khoiEp ?? undefined)
@@ -194,7 +199,7 @@ export function GameNhungHS({ vao, tieuDe, onBack, mon: monEp, khoi: khoiEp }: {
     window.addEventListener('message', f); return () => window.removeEventListener('message', f)
   }, [onBack])
   if (khoi === undefined) return <div className="fixed inset-0 z-40" style={{ background: 'var(--sk-bg)' }} />
-  const src = `/dautu.html?nhung=1&vao=${vao}&mon=${encodeURIComponent(mon ?? 'Toán')}${khoi ? `&khoi=${encodeURIComponent(khoi)}` : ''}`
+  const src = `/dautu.html?nhung=1&vao=${vao}&mon=${encodeURIComponent(mon ?? 'Toán')}${khoi ? `&khoi=${encodeURIComponent(khoi)}` : ''}${Object.entries(them ?? {}).map(([k, v]) => `&${k}=${encodeURIComponent(v)}`).join('')}`
   return (
     <div className="fixed inset-0 z-40 flex flex-col" style={{ background: 'var(--sk-bg)', animation: 'ht-hien-mo .45s ease-out both' }}>
       <style>{'@keyframes ht-hien-mo { from { opacity: 0 } to { opacity: 1 } }'}</style>

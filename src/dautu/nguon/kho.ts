@@ -55,7 +55,7 @@ export function taoNguonKho(o: { mon: string; ten: string; icon: string; giayMoi
       return cdCache.get(cap)!
     },
     taoBoDe: (c) => layBo(c.cap, c.chuDe === 'tron' || c.chuDe === 'auto' ? null : c.chuDe, c.soCau, chuoiNgauNhien(12), false),
-    taoThap: (che, ngay, cap) => layBo(cap, null, 200, `thap|${che}|${o.mon}|${cap}|${ngay}`, true),
-    nhomThap: (cap) => cap,
+    taoThap: (che, ngay, cap, chuDe) => layBo(cap, chuDe ?? null, 200, `thap|${che}|${o.mon}|${cap}|${chuDe ? chuDe + '|' : ''}${ngay}`, true),
+    nhomThap: (cap, chuDe) => (chuDe ? `${cap}|${chuDe}` : cap),
   }
 }
