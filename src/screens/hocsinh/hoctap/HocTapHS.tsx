@@ -67,8 +67,8 @@ function TroiDao({ ds, dao }: { ds: OHocTap[]; dao: Record<string, string> }) {
                   : <span className="text-[28px]" style={{ color: 'var(--sk-acc)' }} aria-hidden>{skin.dauThayIcon ?? '✦'}</span>}
               </span>
             </span>
-            <span className={`-mt-[4%] block text-center font-bold leading-tight ${chinh ? 'text-[22px] md:text-[26px]' : 'text-[17px] md:text-[20px]'}`} style={{ ...HEAD, ...CHU_NOI, color: 'var(--sk-ink)' }}>{o.ten}</span>
-            <span className="mt-0.5 block max-w-[95%] text-center text-[12px] leading-snug md:text-[13.5px]" style={{ ...CHU_NOI, color: 'var(--sk-acc)' }}>{o.sub}</span>
+            <span className={`relative z-10 mt-1 block text-center font-bold leading-tight ${chinh ? 'text-[22px] md:text-[26px]' : 'text-[17px] md:text-[20px]'}`} style={{ ...HEAD, ...CHU_NOI, color: 'var(--sk-ink)' }}>{o.ten}</span>
+            <span className="relative z-10 mt-0.5 block max-w-[95%] text-center text-[12px] leading-snug md:text-[13.5px]" style={{ ...CHU_NOI, color: 'var(--sk-acc)' }}>{o.sub}</span>
           </button>
         )
       })}

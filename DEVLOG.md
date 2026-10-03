@@ -35275,3 +35275,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Bắt được: 645/807 mục KHTN có `<b>/<i>` mà MathText escape ⇒ app thật đang hiện NGUYÊN VĂN "<b>" (DEVLOG phiên trước ghi "MathText hiện
   thẳng" — chưa soi bằng mắt). Sửa ở chỗ hiển thị (`chuHtml`: <b>→**…**, bỏ <i>), dữ liệu gốc không đổi. Luật ghi vào design/STYLE-HS.md §2.
   Soi demo `hs.html?demo=sotay` (thêm mục mẫu "ohm" đủ phần): khổ dọc 430 + ngang 1180 (thẻ 728px giữa, không cuộn ngang). tsc ✔ · check:style-hs ✔.
+
+
+- (03/10 khuya, Giao diện) Khu Học tập: chữ dưới đảo bị đảo che (Thùy). Gốc: ảnh đảo là phần tử có định vị (relative) nên vẽ ĐÈ lên dòng chữ tĩnh cùng nút, cộng margin âm kéo chữ lên ⇒ chữ thành relative z-10 + mt-1. Bài học: chữ đặt sau ảnh trong cùng khối KHÔNG đủ để nằm trên — phần tử positioned luôn vẽ sau phần tử tĩnh.
