@@ -1,12 +1,13 @@
 // TẦNG 3 — CHẶNG ĐƯỜNG (các DẠNG của 1 chuyên đề) — Thùy 03/10 chốt "Hướng 1": 1 con đường GẦN THẲNG ngang giữa màn, nền THỜI TIẾT của vùng,
 // mỗi dạng = 1 trạm (bệ đá + quái) trên đường, KÉO NGANG như thanh tiến trình (không gom hết vào 1 màn), dạng cuối có CỜ ĐÍCH đơn giản.
 // Cảnh vẽ bằng three.js (canhChangThree.ts — nhiều lớp trượt khác tốc độ + hạt thời tiết); máy không có WebGL ⇒ nền ảnh chặng cũ / dải màu.
-// Trạm, nhãn, cờ, sương, mũi tên = DOM trên dải cuộn (bấm được, đọc được). Phải: chi tiết chặng + nút vào màn đấu. Cùng props với ChangView.
+// Trạm, nhãn, cờ, mũi tên = DOM trên dải cuộn (bấm được, đọc được). Thùy 03/10: BẤM THẲNG công trình = vào màn đấu (công trình sáng lên + nhấc lên rồi vào) — bỏ tấm chi tiết bên phải/dưới
+// và bỏ lớp sương/làm xám phủ lên công trình chưa đo (trông như bị khoá); tên dạng + sao to hơn. Cùng props với ChangView.
 // ⭐ NỀN TRANH (Thùy 03/10, kit hs-hoc-va-choi-luc-dia-bang-v2): biome có nen_dang_<biome>.jpg ⇒ nền nhìn ngang có ĐƯỜNG lát đá vẽ sẵn (≈74% chiều cao),
 //   lặp ngang nối GƯƠNG (ảnh lẻ lật ngang ⇒ mép khớp) theo bề dài dải cuộn; mỗi dạng = 1 CÔNG TRÌNH của chính lục địa đó (kit lục địa, 8 loại to dần —
 //   dạng i lấy công trình rải đều 1→8) đứng trên đường; biome chưa có kit công trình ⇒ bệ đá + quái. Không có nền tranh ⇒ cảnh three.js như trước.
 import { useEffect, useLayoutEffect, useRef, useState, type PointerEvent as PE } from 'react'
-import { DauTrangHS, HEAD, NhanHS, NutHS, THE, THE_TRON, useMedia } from '../../skin/KhungHS'
+import { DauTrangHS, HEAD, THE_TRON } from '../../skin/KhungHS'
 import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import type { ChangV, LucDiaV, VungV } from '../kieu'
 import type { BoCucChang, CanhChang } from './canhChangThree'
@@ -14,11 +15,10 @@ import { Fragment } from 'react'
 import { anhNenChang, anhNenDang, anhVat } from './hinh2d'
 import { KIT_LUC_DIA } from './kitLucDia'
 import { ANH_KIT } from './kitLucDia.anh'
-import { CHU_VIEN, Co, CssBan2D, MuiTen, Sao5, Suong, tenQuai2D, useChuyenDong } from './San2D'
+import { CHU_VIEN, Co, CssBan2D, MuiTen, Sao5, useChuyenDong } from './San2D'
 import { BeDaTam, QuaiTam } from './HinhTam'
 
 const RONG_MAC_DINH = [10, 10, 11, 12, 13, 16, 18, 20] // bề rộng công trình (% khung 1672) khi lục địa chưa có KIT_LUC_DIA — theo DESIGN.md kit băng
-const sao = (n: number) => '★'.repeat(Math.min(5, n)) + '☆'.repeat(Math.max(0, 5 - n))
 const moTa = (c: ChangV) => (c.trang_thai === 'dat' ? 'đã hạ' : c.trang_thai === 'yeu' ? (c.hp != null ? `còn ${c.hp} đòn` : 'còn quái') : 'chưa gặp')
 /** y của đường tại x — PHẢI cùng công thức `yDuong()` trong shader canhChangThree.ts. */
 const yTai = (v: Pick<BoCucChang, 'yDuong' | 'bienDo' | 'tanSo'>, x: number) => v.yDuong + v.bienDo * Math.sin(x * v.tanSo) + v.bienDo * 0.35 * Math.sin(x * v.tanSo * 2.7 + 1.3)
@@ -35,14 +35,13 @@ function boCuc(w: number, h: number, n: number, phai: number, duoi: number) {
 }
 
 export function Chang2D({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: VungV; b: BangMau3D; onVe: () => void; onVao: (c: ChangV) => void; gioi?: 'nam' | 'nu' }) {
-  const dai = useMedia('(min-width:1024px)')
   const dong = useChuyenDong() && !(typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)
   const goc = useRef<HTMLDivElement>(null), cuonRef = useRef<HTMLDivElement>(null), hostRef = useRef<HTMLDivElement>(null)
   const [kt, setKt] = useState({ w: 0, h: 0 })
   const [canh, setCanh] = useState<CanhChang | null>(null)
   const [loi, setLoi] = useState(false)
   const [mep, setMep] = useState({ trai: false, phai: false })
-  const [sel, setSel] = useState<string>(() => (vung.chang.find((c) => c.trang_thai === 'yeu') ?? vung.chang.find((c) => c.trang_thai !== 'dat') ?? vung.chang[0]).ma)
+  const [vao, setVao] = useState<string | null>(null) // công trình vừa bấm: nhấc lên + sáng rồi mới vào màn đấu
   const [hov, setHov] = useState<string | null>(null)
   const keo = useRef<{ x: number; sl: number; di: boolean } | null>(null)
 
@@ -55,7 +54,7 @@ export function Chang2D({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: Vun
   const n = vung.chang.length
   const toi = vung.chang.findIndex((c) => c.trang_thai !== 'dat')
   const xong = toi < 0
-  const phai = dai ? 330 : 0, duoi = dai ? 0 : Math.min(260, kt.h * 0.42)
+  const phai = 0, duoi = 0 // không còn tấm chi tiết ⇒ dải cuộn dùng cả màn
   const bc = boCuc(kt.w || 1, kt.h || 1, n, phai, duoi)
   const xDaDi = xong ? bc.xCo + bc.nua * 3 : toi > 0 ? bc.xs[toi] : -1
 
@@ -115,9 +114,14 @@ export function Chang2D({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: Vun
   const onDown = (e: PE) => { if (e.pointerType === 'mouse' && cuonRef.current) keo.current = { x: e.clientX, sl: cuonRef.current.scrollLeft, di: false } }
   const onMove = (e: PE) => { const k = keo.current, el = cuonRef.current; if (!k || !el) return; const dx = e.clientX - k.x; if (Math.abs(dx) > 5) k.di = true; if (k.di) el.scrollLeft = k.sl - dx }
   const onUp = () => { setTimeout(() => { keo.current = null }, 0) }
+  // bấm công trình ⇒ nhấc lên + sáng (~0,3s) rồi vào thẳng màn đấu; đang kéo cuộn thì không tính là bấm. Giảm chuyển động ⇒ vào ngay.
+  const bam = (x: ChangV) => {
+    if (keo.current?.di || vao) return
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { onVao(x); return }
+    setVao(x.ma); window.setTimeout(() => onVao(x), 320)
+  }
   const truot = (huong: 1 | -1) => cuonRef.current?.scrollBy({ left: huong * bc.gap * 2, behavior: 'smooth' })
 
-  const c = vung.chang.find((x) => x.ma === sel) ?? vung.chang[0]
   const m = b.biome[luc.biome] ?? Object.values(b.biome)[0]
   const coBe = bc.coBe
   const anhNen = anhNenChang(luc.biome)
@@ -134,33 +138,31 @@ export function Chang2D({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: Vun
         <div className="relative h-full" style={{ width: nenDang ? tongT : bc.tong }}>
           {nenDang && kt.w > 0 && (
             <>
-              <style>{'.dang-ct{transition:transform .2s ease,filter .2s ease;transform-origin:50% 100%}.dang-ct:hover,.dang-ct[aria-pressed=true]{transform:scale(1.05);filter:brightness(1.08) drop-shadow(0 0 14px rgba(255,216,106,.6))}'}</style>
+              <style>{`.dang-ct{transition:transform .24s cubic-bezier(.2,.8,.3,1),filter .24s ease;transform-origin:50% 100%;cursor:pointer}.dang-ct:hover{transform:translateY(-10px) scale(1.06);filter:brightness(1.1) drop-shadow(0 0 16px ${b.vang}bb)}.dang-ct[data-bam="1"]{transform:translateY(-24px) scale(1.12);filter:brightness(1.3) drop-shadow(0 0 30px ${b.vang})}`}</style>
               {Array.from({ length: soO }, (_, k) => (
                 <img key={'o' + k} src={nenDang} alt="" aria-hidden draggable={false} className="pointer-events-none absolute top-0 select-none"
                   style={{ left: k * tW, width: tW + 1, height: Hs, transform: k % 2 ? 'scaleX(-1)' : undefined }} />
               ))}
               {vung.chang.map((x, i) => {
-                const px = xsT[i], g = ct[i], chon = sel === x.ma, w = g?.w ?? bc.coBe * 1.2, h = g?.h ?? bc.coBe * 1.2
+                const px = xsT[i], g = ct[i], chon = hov === x.ma || vao === x.ma, w = g?.w ?? bc.coBe * 1.2, h = g?.h ?? bc.coBe * 1.2
                 const left = px - (g?.ax ?? 0.5) * w, top = ySan - (g?.ay ?? 0.92) * h, cuoi = x.quai[x.quai.length - 1]
                 return (
                   <Fragment key={x.ma}>
                     {chon && <span className="ban2d-sang pointer-events-none absolute rounded-full" style={{ left: px - w * 0.7, top: ySan - h * 0.12, width: w * 1.4, height: h * 0.3, background: `radial-gradient(closest-side, ${b.vang}cc, transparent)` }} />}
-                    <button onClick={() => { if (!keo.current?.di) setSel(x.ma) }} onPointerEnter={() => setHov(x.ma)} onPointerLeave={() => setHov(null)} aria-pressed={chon}
-                      aria-label={`Dạng ${i + 1}: ${x.ten}: ${moTa(x)}`} className="dang-ct absolute" style={{ left, top, width: w, height: h }}>
-                      {g ? <img src={g.src} alt="" draggable={false} className="h-full w-full select-none" style={{ filter: x.trang_thai === 'chua_do' ? 'saturate(.55) brightness(.82)' : 'drop-shadow(0 6px 6px rgba(0,0,0,.25))' }} />
+                    <button onClick={() => bam(x)} onPointerEnter={() => setHov(x.ma)} onPointerLeave={() => setHov(null)} data-bam={vao === x.ma ? '1' : undefined}
+                      aria-label={`Dạng ${i + 1}: ${x.ten}: ${moTa(x)} — bấm để vào`} className="dang-ct absolute" style={{ left, top, width: w, height: h }}>
+                      {g ? <img src={g.src} alt="" draggable={false} className="h-full w-full select-none" style={{ filter: 'drop-shadow(0 6px 6px rgba(0,0,0,.25))' }} />
                         : <>
                           <span className="absolute bottom-0 left-0 block w-full" style={{ height: h * 0.5 }}>{anhVat('be_da') ? <img src={anhVat('be_da')!} alt="" className="h-full w-full object-contain" draggable={false} /> : <BeDaTam b={b} />}</span>
                           {x.trang_thai !== 'dat' && cuoi && <span className="absolute left-1/2 -translate-x-1/2" style={{ bottom: h * 0.3, width: h * 0.62, height: h * 0.62 }}><QuaiTam b={b} loai={cuoi.loai} boss={cuoi.boss && x.quai.length > 1} bong={x.trang_thai === 'chua_do'} co={h * 0.6} /></span>}
                         </>}
                     </button>
-                    {x.trang_thai === 'chua_do' && <Suong mau={b.bot} anh={anhVat('may_suong')} style={{ left: left - w * 0.1, top: top + h * 0.25, width: w * 1.2, height: h * 0.7 }} />}
                     {x.trang_thai === 'dat' && <span className="pointer-events-none absolute" style={{ left: px + w * 0.18, top: top - h * 0.05 }}><Co mau={m.diem} anh={anhVat('co_chinh_phuc')} cao={Math.max(36, h * 0.38)} /></span>}
-                    {x.quai.length > 1 && x.trang_thai !== 'dat' && <span className="pointer-events-none absolute rounded-full px-1.5 text-[11px] font-extrabold" style={{ ...HEAD, left: left + w - 18, top: top + h * 0.1, background: 'var(--sk-surface)', color: 'var(--sk-ink)', border: 'var(--sk-card-border)' }}>×{x.quai.length}</span>}
                     {i === toi && <span className="pointer-events-none absolute -translate-x-1/2" style={{ left: px, top: top - Math.max(30, h * 0.3) - 6 }}><MuiTen co={Math.max(30, Math.min(52, h * 0.3))} /></span>}
                     <span className="pointer-events-none absolute flex -translate-x-1/2 flex-col items-center text-center"
-                      style={{ ...CHU_VIEN, left: px, top: Hs * 0.775, width: 'max-content', maxWidth: Math.max(110, Math.min(240, Math.min(i > 0 ? px - xsT[i - 1] : 1e9, i < n - 1 ? xsT[i + 1] - px : 1e9) - 16)), transform: chon || hov === x.ma ? 'scale(1.06)' : undefined /* đã có -translate-x-1/2 (thuộc tính translate) — không lặp translateX */ }}>
-                      <span className="block max-w-full text-[14px] font-bold leading-[1.15]" style={{ ...HEAD, color: 'var(--sk-ink)' }}><span style={{ color: 'var(--sk-acc)' }}>{i + 1}.</span> {x.ten}</span>
-                      <Sao5 ti={x.trang_thai === 'dat' ? 1 : x.mastery ?? 0} co={18} />
+                      style={{ ...CHU_VIEN, left: px, top: Hs * 0.775, width: 'max-content', maxWidth: Math.max(130, Math.min(280, Math.min(i > 0 ? px - xsT[i - 1] : 1e9, i < n - 1 ? xsT[i + 1] - px : 1e9) - 12)), transform: chon || hov === x.ma ? 'scale(1.06)' : undefined /* đã có -translate-x-1/2 (thuộc tính translate) — không lặp translateX */ }}>
+                      <span className="block max-w-full text-[19px] font-extrabold leading-[1.15]" style={{ ...HEAD, color: 'var(--sk-ink)' }}><span style={{ color: 'var(--sk-acc)' }}>{i + 1}.</span> {x.ten}</span>
+                      <Sao5 ti={x.trang_thai === 'dat' ? 1 : x.mastery ?? 0} co={28} />
                     </span>
                   </Fragment>
                 )
@@ -173,11 +175,11 @@ export function Chang2D({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: Vun
             </>
           )}
           {!nenDang && kt.w > 0 && vung.chang.map((x, i) => {
-            const px = bc.xs[i], py = yTai(bc, px), cuoi = x.quai[x.quai.length - 1], chon = sel === x.ma
+            const px = bc.xs[i], py = yTai(bc, px), cuoi = x.quai[x.quai.length - 1], chon = hov === x.ma || vao === x.ma
             return (
               <div key={x.ma} className="absolute" style={{ left: px, top: py, width: coBe, height: coBe, transform: 'translate(-50%,-80%)' }}>
-                <button onClick={() => { if (!keo.current?.di) setSel(x.ma) }} onPointerEnter={() => setHov(x.ma)} onPointerLeave={() => setHov(null)} aria-pressed={chon}
-                  aria-label={`Dạng ${i + 1}: ${x.ten}: ${moTa(x)}`} className="ban2d-o absolute left-1/2 top-1/2 h-full w-full" style={{ transform: 'translate(-50%,-50%)' }}>
+                <button onClick={() => bam(x)} onPointerEnter={() => setHov(x.ma)} onPointerLeave={() => setHov(null)}
+                  aria-label={`Dạng ${i + 1}: ${x.ten}: ${moTa(x)} — bấm để vào`} className="ban2d-o absolute left-1/2 top-1/2 h-full w-full" style={{ transform: vao === x.ma ? 'translate(-50%,-50%) translateY(-18px) scale(1.12)' : chon ? 'translate(-50%,-50%) translateY(-8px) scale(1.05)' : 'translate(-50%,-50%)', transition: 'transform .24s cubic-bezier(.2,.8,.3,1), filter .24s', filter: vao === x.ma ? 'brightness(1.3)' : chon ? 'brightness(1.1)' : undefined, cursor: 'pointer' }}>
                   {chon && <span className="ban2d-sang pointer-events-none absolute left-1/2 rounded-full" style={{ top: '88%', width: coBe * 1.35, height: coBe * 0.5, transform: 'translate(-50%,-50%)', background: `radial-gradient(closest-side, ${b.vang}cc, transparent)` }} />}
                   <span className="absolute left-0 block w-full" style={{ height: coBe * 0.55, bottom: -coBe * 0.08 }}>
                     {anhVat('be_da') ? <img src={anhVat('be_da')!} alt="" className="h-full w-full object-contain" draggable={false} /> : <BeDaTam b={b} />}
@@ -189,13 +191,11 @@ export function Chang2D({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: Vun
                   )}
                 </button>
                 {x.trang_thai === 'dat' && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ bottom: coBe * 0.22 }}><Co mau={m.diem} anh={anhVat('co_chinh_phuc')} cao={coBe * 0.6} /></span>}
-                {x.trang_thai === 'chua_do' && <Suong mau={b.bot} anh={anhVat('may_suong')} style={{ left: '-15%', top: '10%', width: '130%', height: '70%' }} />}
-                {x.quai.length > 1 && x.trang_thai !== 'dat' && <span className="pointer-events-none absolute right-0 top-0 rounded-full px-1.5 text-[11px] font-extrabold" style={{ ...HEAD, background: 'var(--sk-surface)', color: 'var(--sk-ink)', border: 'var(--sk-card-border)' }}>×{x.quai.length}</span>}
                 {i === toi && <span className="pointer-events-none absolute left-1/2 -translate-x-1/2" style={{ bottom: '100%', marginBottom: 2 }}><MuiTen co={Math.max(28, coBe * 0.4)} /></span>}
                 <span className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 flex-col items-center text-center"
-                  style={{ ...CHU_VIEN, top: '100%', marginTop: 4, width: 'max-content', maxWidth: Math.max(140, bc.gap * 0.84), transform: chon || hov === x.ma ? 'scale(1.06)' : undefined }}>
-                  <span className="block max-w-full text-[14px] font-bold leading-[1.15]" style={{ ...HEAD, color: 'var(--sk-ink)' }}><span style={{ color: 'var(--sk-acc)' }}>{i + 1}.</span> {x.ten}</span>
-                  <Sao5 ti={x.trang_thai === 'dat' ? 1 : x.mastery ?? 0} co={18} />
+                  style={{ ...CHU_VIEN, top: '100%', marginTop: 4, width: 'max-content', maxWidth: Math.max(160, bc.gap * 0.9), transform: chon || hov === x.ma ? 'scale(1.06)' : undefined }}>
+                  <span className="block max-w-full text-[19px] font-extrabold leading-[1.15]" style={{ ...HEAD, color: 'var(--sk-ink)' }}><span style={{ color: 'var(--sk-acc)' }}>{i + 1}.</span> {x.ten}</span>
+                  <Sao5 ti={x.trang_thai === 'dat' ? 1 : x.mastery ?? 0} co={28} />
                 </span>
               </div>
             )
@@ -214,32 +214,8 @@ export function Chang2D({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: Vun
       </div>
       {/* nút trượt 2 bên khi còn trạm ngoài màn */}
       {mep.trai && <NutTruot ben="trai" onClick={() => truot(-1)} />}
-      {mep.phai && <NutTruot ben="phai" onClick={() => truot(1)} style={{ right: phai + 12 }} />}
+      {mep.phai && <NutTruot ben="phai" onClick={() => truot(1)} />}
       <div className="pointer-events-none absolute left-0 right-0 top-0 p-3"><div className="pointer-events-auto"><DauTrangHS tieuDe={vung.ten} phu={`${luc.ten} · ${n} dạng`} onBack={onVe} /></div></div>
-      <aside className={`absolute flex flex-col gap-2.5 p-4 ${dai ? 'bottom-4 right-4 top-[72px] w-[300px]' : 'bottom-3 left-3 right-3 overflow-y-auto'}`} style={dai ? THE : { ...THE, maxHeight: duoi }}>
-        <div className="flex flex-wrap gap-1.5">
-          <NhanHS mau={c.trang_thai === 'dat' ? 'var(--sk-acc)' : 'var(--sk-muted)'}>{c.trang_thai === 'dat' ? 'Đã chinh phục' : c.trang_thai === 'yeu' ? 'Quái còn máu' : 'Phủ sương · vào được'}</NhanHS>
-          <NhanHS>{c.quai.length} quái</NhanHS>
-        </div>
-        <h3 className="text-[18px] font-bold leading-tight" style={{ ...HEAD, color: 'var(--sk-ink)' }}>{c.ten}</h3>
-        <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-0.5 text-[12.5px]">
-          <dt style={{ color: 'var(--sk-muted)' }}>Mức độ</dt><dd className="text-right">{sao(c.muc_do)}</dd>
-          <dt style={{ color: 'var(--sk-muted)' }}>Độ nắm dạng</dt><dd className="text-right">{c.mastery == null ? 'chưa đo' : `${Math.round(c.mastery * 100)}%`}</dd>
-          <dt style={{ color: 'var(--sk-muted)' }}>Một lượt</dt><dd className="text-right">{c.so_cau_luot != null ? `${c.so_cau_luot} câu` : '5–10 câu'}</dd>
-        </dl>
-        <div className="min-h-0 flex-1 overflow-y-auto">
-          <p className="mb-1 text-[11.5px]" style={{ color: 'var(--sk-muted)' }}>Đội hình · đánh lần lượt, hạ hết cả đội</p>
-          <div className="flex flex-col gap-1">
-            {c.quai.map((q, i) => (
-              <div key={i} className="flex items-center gap-2 px-2.5 py-1 text-[12.5px]" style={{ ...THE_TRON, borderRadius: 8, opacity: c.trang_thai === 'chua_do' ? 0.65 : 1 }}>
-                <span className="inline-block h-6 w-6 flex-none"><QuaiTam b={b} loai={q.loai} bong={c.trang_thai === 'chua_do'} co={24} /></span>
-                <span><b style={{ ...HEAD, color: 'var(--sk-ink)' }}>{tenQuai2D(q.loai)}</b> <span style={{ color: 'var(--sk-muted)' }}>· {q.boss ? 'Boss cuối' : `Elite ${i + 1}`}</span></span>
-              </div>
-            ))}
-          </div>
-        </div>
-        <NutHS onClick={() => onVao(c)}>{c.trang_thai === 'dat' ? 'Ôn lại chặng' : 'Vào màn đấu'}</NutHS>
-      </aside>
     </div>
   )
 }
