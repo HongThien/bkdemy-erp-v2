@@ -339,10 +339,14 @@ export function CaBuHS({ buoiId, onBack, onPickDang }: { buoiId: string; onBack:
           <p className="text-[13px]" style={{ color: MAU.muted }}>Chọn từng dạng: đọc lý thuyết → luyện tập → làm bài test.</p>
           <div className="flex flex-col gap-3 lg:grid lg:grid-cols-2">
             {d.dangs.map((x, i) => (
-              <button key={x.ma_dang} onClick={() => onPickDang(x, d.mon)} className="flex items-center gap-3 p-4 text-left" style={THE}>
+              // Bù = 100% trắc nghiệm (Thùy 03/10): dạng chưa có câu trắc nghiệm thì KHOÁ, ghi rõ học với thầy cô trên giấy.
+              <button key={x.ma_dang} disabled={!x.co_mcq} onClick={() => onPickDang(x, d.mon)} className="flex items-center gap-3 p-4 text-left disabled:opacity-60" style={THE}>
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[15px] font-extrabold" style={{ background: MAU.surface2, color: MAU.acc }}>{i + 1}</span>
-                <span className="min-w-0 flex-1 text-[15px] font-bold leading-snug" style={{ ...HEAD, color: NAVY }}>{x.ten_dang}</span>
-                <span className="text-[18px]" style={{ color: MAU.muted }}>›</span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-[15px] font-bold leading-snug" style={{ ...HEAD, color: NAVY }}>{x.ten_dang}</span>
+                  {!x.co_mcq && <span className="mt-0.5 block text-[12px]" style={{ color: MAU.muted }}>Chưa có câu trắc nghiệm — học dạng này với thầy cô trên giấy</span>}
+                </span>
+                {x.co_mcq && <span className="text-[18px]" style={{ color: MAU.muted }}>›</span>}
               </button>
             ))}
           </div>

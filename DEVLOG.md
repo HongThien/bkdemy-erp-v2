@@ -35412,3 +35412,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   ⇒ khung game hiện lại màn chính app HS. Chỉ lộ ở bản build có SW (Vercel / `preview:hs`); dev server không có SW nên không tái hiện (em test dev thấy game chạy tốt — bẫy). Mọi môn bị, không riêng Anh. Sửa: `vite.config.hs.ts` → `navigateFallbackDenylist` thêm `/^\/dautu\.html/`.
   Kiểm: build lại, `sw.js` có denylist mới; `preview:hs` (5180) có SW active, iframe `/dautu.html?nhung=1&vao=chu_de&mon=Tiếng Anh` nay nạp đúng game "BK Đấu Từ" (script `dautu-*.js`). Máy HS đang giữ SW cũ tự cập nhật sau deploy (registerType autoUpdate) — **Thùy phải DEPLOY bản này mới hết lỗi**.
   Còn lại (không phải bug, đã biết): lần đầu trong khung game hiện màn "Chào mừng chiến binh mới" (hồ sơ game THEO MÁY, chưa nối tài khoản HS / nhân vật chính) rồi mới vào chủ đề.
+
+## 2026-10-03 (17h15) — Bù 100% MCQ (Thùy: "bổ trợ bù phải 100% MCQ, m đang sai logic")
+
+- **Sai:** mig 202610031604 cho bù mượn bộ sinh câu Học từ đầu (htd_luyen/htd_test) — bộ đó dùng `_kho_dk_online_hs_sql` (mọi loại câu online)
+  + lùi "đề thật bất kỳ loại" khi dạng 0 MCQ ⇒ trái luật CLAUDE.md (mọi luồng bài làm bổ trợ chỉ `_kho_dk_mcq_sql`). t đã ghi luật đó mà vẫn
+  tái dùng bộ sinh khác điều kiện, không soát điều kiện chọn câu trước khi nối.
+- **Sửa (mig 202610031709):** bai_test.loai thêm `bu_luyen`/`bu_test` (bù TÁCH khỏi htd — không đánh dấu xong dạng Học từ đầu, không lùi);
+  `tu_luyen_chu_de_sinh` loai bu_* ⇒ `_kho_dk_mcq_sql`, dạng 0 MCQ ⇒ báo "học với thầy cô trên giấy"; `fn_hs_bu_dang` trả `co_mcq`. App HS:
+  dạng không có MCQ bị khoá + ghi rõ; luyện/test bù gọi loai bu_*. Chạy thử Duy Khoa (rollback): T107020401 luyện 10/10 trắc nghiệm ·
+  T107020303 test 5/5 trắc nghiệm · HH00099 (0 MCQ) chặn đúng · htd_luyen (đuổi) giữ nguyên hành vi cũ.
+- **Còn mở:** Học từ đầu (đuổi) vẫn lùi đề tự luận khi dạng 0 MCQ theo quyết định 21–22/09 — lệch dòng "yếu·bù·đuổi chỉ MCQ" của CLAUDE.md; chờ Thùy chốt.

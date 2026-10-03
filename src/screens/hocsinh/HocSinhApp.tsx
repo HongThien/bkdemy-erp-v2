@@ -588,7 +588,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'htd_ly_thuyet' && htdMon && htdDang) return <LyThuyetHTD mon={htdMon} dang={htdDang} gioiTinh={gt}
     onBack={() => setDirect('htd_dang')} />
   if ((direct === 'htd_luyen' || direct === 'htd_test') && htdMon && htdDang) return <LamHTD
-    key={direct} hocSinhId={hocSinhId} mon={htdMon} dang={htdDang} loai={direct === 'htd_luyen' ? 'htd_luyen' : 'htd_test'}
+    key={direct} hocSinhId={hocSinhId} mon={htdMon} dang={htdDang} loai={buCa ? (direct === 'htd_luyen' ? 'bu_luyen' : 'bu_test') : direct === 'htd_luyen' ? 'htd_luyen' : 'htd_test'} /* bù = 100% MCQ (Thùy 03/10) */
     desktop={!!cap1}
     onVeChiTiet={() => setDirect('htd_dang')}
     onSangTest={() => setDirect('htd_test')}
@@ -1296,7 +1296,7 @@ function KetQuaThuThachBox({ baiTestId, busy, err, onLuotMoi, onRank, desktop }:
 // "Xong dạng" tự ghi ở DB (trigger trg_htd_test_nop) khi nộp — ở đây chỉ điều hướng.
 function LamHTD({ hocSinhId, mon, dang, loai, desktop, onVeChiTiet, onSangTest, onXongDang }: {
   hocSinhId: string; mon: string; dang: { ma_dang: string; ten_dang: string; xong: boolean }
-  loai: 'htd_luyen' | 'htd_test'; desktop?: boolean
+  loai: 'htd_luyen' | 'htd_test' | 'bu_luyen' | 'bu_test'; desktop?: boolean
   onVeChiTiet: () => void; onSangTest: () => void; onXongDang: () => void
 }) {
   const [state, setState] = useState<'dang_tai' | 'san_sang' | 'loi'>('dang_tai')
@@ -1335,7 +1335,7 @@ function LamHTD({ hocSinhId, mon, dang, loai, desktop, onVeChiTiet, onSangTest, 
     </ManGiua>
   )
 
-  const laTest = loai === 'htd_test'
+  const laTest = loai === 'htd_test' || loai === 'bu_test'
   return (
     <LamBai
       key={baiTestId}
@@ -1343,7 +1343,7 @@ function LamHTD({ hocSinhId, mon, dang, loai, desktop, onVeChiTiet, onSangTest, 
       hocSinhId={hocSinhId}
       onXong={laTest ? onXongDang : onVeChiTiet}
       desktop={desktop}
-      doneCaption={laTest ? `Đã nộp bài test dạng "${dang.ten_dang}" — dạng này đã xong!` : `Em vừa luyện ${tongLuot} câu dạng "${dang.ten_dang}".`}
+      doneCaption={loai === 'bu_test' ? `Đã nộp bài test dạng "${dang.ten_dang}".` : laTest ? `Đã nộp bài test dạng "${dang.ten_dang}" — dạng này đã xong!` : `Em vừa luyện ${tongLuot} câu dạng "${dang.ten_dang}".`}
       doneExtra={
         <div className={`mt-3 w-full ${desktop ? 'max-w-sm' : ''}`}>
           {err && <p className="mb-2 text-[12.5px]" style={{ color: MAU.sai }}>{err}</p>}
@@ -1381,10 +1381,10 @@ function LamHTD({ hocSinhId, mon, dang, loai, desktop, onVeChiTiet, onSangTest, 
 // giấy/nói miệng, "xong dạng" chỉ tự ghi khi TRỢ GIẢNG chấm ĐCS + nộp bên app TA (fn_botro_giay_nop
 // → trg_htd_test_nop) — bên HS KHÔNG có nút nộp vì không có gì để nộp online.
 function XemDeKhongMCQ({ dang, loai, caus, desktop, onVeChiTiet, onSangTest }: {
-  dang: { ma_dang: string; ten_dang: string }; loai: 'htd_luyen' | 'htd_test'; caus: CauHTD[]; desktop?: boolean
+  dang: { ma_dang: string; ten_dang: string }; loai: 'htd_luyen' | 'htd_test' | 'bu_luyen' | 'bu_test'; caus: CauHTD[]; desktop?: boolean
   onVeChiTiet: () => void; onSangTest: () => void
 }) {
-  const laTest = loai === 'htd_test'
+  const laTest = loai === 'htd_test' || loai === 'bu_test'
   return (
     <ManHS rong="hep" className="!gap-0">
       <DauTrangHS tieuDe={dang.ten_dang} onBack={onVeChiTiet} theoMon />

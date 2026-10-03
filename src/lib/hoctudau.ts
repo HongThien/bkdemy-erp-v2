@@ -35,7 +35,8 @@ export async function htdLyThuyet(mon: string, maDang: string): Promise<{ noi_du
 
 // loai: 'htd_luyen' (vô hạn, không tính mastery) · 'htd_test' (1 lượt, tính mastery — trigger DB
 // tự ghi "xong dạng" khi nộp, xem trg_htd_test_nop).
-export async function htdSinh(mon: string, maDang: string, loai: 'htd_luyen' | 'htd_test'): Promise<SinhTuLuyenKetQua> {
+// Thùy 03/10: 'bu_luyen' | 'bu_test' = học BÙ — DB chỉ lấy câu trắc nghiệm (_kho_dk_mcq_sql), dạng không có trắc nghiệm thì báo học giấy.
+export async function htdSinh(mon: string, maDang: string, loai: 'htd_luyen' | 'htd_test' | 'bu_luyen' | 'bu_test'): Promise<SinhTuLuyenKetQua> {
   const { data, error } = await supabase.rpc('tu_luyen_chu_de_sinh', { p_mon: mon, p_ma_dang: maDang, p_loai: loai })
   if (error) throw error
   return { baiTestId: data.bai_test_id, them: data.them, tong: data.tong }
