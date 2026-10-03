@@ -70,7 +70,7 @@
         **Đầm lầy: đường thật đi cầu → hang bùn → đền rêu nên đã ĐỔI CHỖ chuyên đề 5↔6** so với DESIGN.md (kit ghi ngược).
       - **Hiển thị:** tên + số + **5 sao** đè cảnh, sao vàng rực viền tối trên viên thuốc tối (`KieuSao`); **LUẬT "KHÔNG ĐÈ NHAU"** (Thùy 02/10): `xepNhan()` đo nhãn thật (Range) rồi quét lưới chọn chỗ không đè công trình nào / nhãn khác / thanh trên-đáy;
         hover/chạm ⇒ công trình NỔI LÊN (phóng 1,08 + quầng sáng + lên đầu z); thêm viền sáng + quầng thở + đốm sáng bay cạnh công trình (tắt ở đồ hoạ Thấp / giảm chuyển động).
-      - **Nhân vật chính = 2 nhà thám hiểm áo choàng xanh (nam/nữ)** — bộ chạy 2D 6 khung × 100ms (`design/bk-ui-src/AppHS/Animation/` → `scripts/anime-chay-2d.mjs` → `skin/heroChay.ts` + `public/bk-ui/hs/skin/rpg/chay/`; neo đất ĐO từng khung, cỡ thân cùng tỉ lệ,
+      - **Nhân vật chính = EM TỰ CHỌN 1 trong 6 (từ 03/10 — xem khối KHU HỌC TẬP)**; 2 nhà thám hiểm áo choàng xanh (nam/nữ) là 2 trong 6 — bộ chạy 2D 6 khung × 100ms (`design/bk-ui-src/AppHS/Animation/` → `scripts/anime-chay-2d.mjs` → `skin/heroChay.ts` + `public/bk-ui/hs/skin/rpg/chay/`; neo đất ĐO từng khung, cỡ thân cùng tỉ lệ,
         `khungTheoMs` theo delta thời gian). Tốc độ chạy `TOC_DO_NV = 2,2` chiều-cao-người/giây, tối đa 4,5s (trước "như gió"). Cỡ nhân vật theo DESIGN chỉ ~35px ⇒ nhân `HE_SO_NV = 2,2`.
         **2 nhân vật cũ (bé trai+mèo, bé gái+cú; `Skin.nhanVat`) = NPC DẪN TRUYỆN** (Home, tutorial, người dẫn ở Đấu trường) — KHÔNG phải nhân vật của em.
       - **Xem thử:** `hs.html?xem=phieu_luu&tang=luc_dia&luc=C&biome=<rung|anh_dao|thanh_co|dam_lay|sa_mac>&gioi=nu|nam&nv=8` (`nv` = số chuyên đề giả để soi kit 6/8 mốc; `duong=1` vẽ đường dò; dev).
@@ -181,7 +181,7 @@
   `TROLY_PUSH_APP` + deploy · khung hỏi chưa nối 13 công cụ DB. Chi tiết: mục "⭐⭐ TRỢ LÝ" bên dưới.
 
 - **⭐⭐ KHUNG CHẾ ĐỘ GAME HỌC — DÙNG CHUNG MỌI MÔN (Thùy chốt 03/10): "các chế độ cho mọi môn, chỉ thay content, chế độ game giữ nguyên".** Bản đầu = game **Đấu Từ** (từ vựng Anh, `src/dautu/`, spec `spec-dau-tu-vung.md`).
-  - **6 chế độ chuẩn** (môn nào làm game cũng có đủ 6, luật y hệt):
+  - **6 chế độ chuẩn** (môn nào làm game cũng có đủ 6, luật y hệt) — ⚠ áp vào app HS 03/10 đã đổi: mỗi người 1 lần bấm/câu, Đấu đôi hoãn, Tournament ⇒ Giải Vô địch BK, Vô tận có Normal/Hard — xem khối KHU HỌC TẬP:
     1. **Luyện tập** — đấu với bot (3 mức Dễ/Vừa/Khó; bot = Boss Thùy), tạm dừng được.
     2. **PvP** — đấu online 1–1: ghép ngẫu nhiên (hàng chờ) · thách đấu bằng mã phòng 6 số / link / mời bạn đang online.
     3. **Đấu đôi** — 2 người 1 máy (iPad/PC, 2 khu trả lời đối diện, phím A S Z X / J K N M).
@@ -197,6 +197,30 @@
     - ⚠ Nợ: `fn_dtv_kho_*` mở cho anon (game chưa đăng nhập) — ai có anon key gọi được để lấy câu kho (trần 200 câu/lần) ⇒ khi ghép app HS chỉ `authenticated`. Toán mới cắm nhánh Đại (Hình/HGT: thêm `p_nhanh`). XP vẫn chung mọi môn (CLAUDE §1.6 muốn EXP theo môn) — sửa khi ghép app HS.
   - **Trạng thái 03/10:** chạy được, test local (`npm run dev:dautu` → http://localhost:5293/dautu.html, iPad cùng Wi-Fi `http://<IP máy>:5293/dautu.html`, `?may=2` = hồ sơ thứ 2 cùng trình duyệt). **KHÔNG deploy riêng — game nằm TRONG app HS** (entry `dautu.html` chỉ để test). DB: `dtv_nguoi_choi` · `dtv_tran` · `dtv_thap_luot` · `dtv_gop_tu` · `dtv_gop_y` + `fn_dtv_*` (mig 202610022343 · 202610030037 · 202610030056, đã áp).
   - **Nợ khi ghép vào app HS:** người chơi = thiết bị (uid ở máy) ⇒ đổi sang tài khoản HS; trọng tài = máy chủ phòng (tin client) ⇒ server chấm khi có thưởng; sổ nhớ từ ở localStorage ⇒ nhật ký DB; dựng lại UI bằng `skin/KhungHS` + `check:style-hs`; season/điểm season (spec-dau-tu-vung.md §4) chưa làm. Hồ sơ test "Claude Test"/"Claude Test 2" giữ lại (Thùy).
+- **⭐⭐ KHU HỌC TẬP + NHÂN VẬT CHÍNH + CHINH PHỤC BK (luồng Giao diện, chốt hết 03/10) — ĐỌC `spec-che-do-game.md` §7 trước khi sửa · TRÊN `main` + `thu-nghiem`, CHƯA DEPLOY · cờ `hoctap` MẶC ĐỊNH TẮT ở Production**
+  - **Logic (Thùy 03/10):** ô "Tự luyện" ngoài Home ⇒ **"Học tập"** → 5 ĐẢO trôi trên trời sao: **Học theo chủ đề** (bản đồ phiêu lưu) · **Luyện dạng yếu** · **Đấu trường BK** (PvP + PvE với bot) ·
+    **Chinh phục BK** (leo tháp) · **Giải Vô địch BK** (giải trực tiếp đăng ký trước + đấu với máy = Thử thách cũ giữ luật + Rank). Khối = khối em đang học, KHÔNG cho chọn khối khác (mọi chỗ).
+    **Mỗi người chỉ được bấm 1 lần/câu ở mọi môn** (không thành game nhanh tay; cả hai sai ⇒ hết câu). "2 người 1 máy" HOÃN với Toán; "Giải đấu 8 người" đã thành Giải Vô địch.
+  - **Code:** `screens/hocsinh/hoctap/` — `HocTapHS.tsx` (5 đảo: `TroiDao`, `useSan` sân 16:9/9:16 contain, `VT_NGANG`/`VT_DOC`, phóng vào đảo 480ms rồi mới chuyển màn; + `GameNhungHS` + `GiaiVoDichHS`) ·
+    `ChonNhanVatHS.tsx` · `ChinhPhucHS.tsx` · `XemHocTap.tsx`. Ảnh: `Skin.hocTap` (kit hs-hoc-tap-v2, `scripts/anime-hoc-tap.mjs` → `skin/styles/rpgHocTap.ts`) · `Skin.chinhPhuc` (kit hs-chinh-phuc-bk-v4,
+    `scripts/anime-chinh-phuc.mjs` → `rpgChinhPhuc.ts` + `public/bk-ui/hs/skin/rpg/chinhphuc/`). Style không khai ⇒ lưới ô thường / menu leo tháp cũ.
+  - **Cờ + thử nghiệm:** `phieuluu/coBat.ts` — `hocTapBat()`/`phieuLuuBat()`, ép bằng `?hoctap=1|0` · `?phieuluu=1|0`; `banThuNghiem()` đọc `__VERCEL_ENV__` (define ở `vite.config.hs.ts`) ⇒ bản **Preview** của Vercel
+    luôn BẬT, **Production** luôn TẮT. Nhánh thử = **`thu-nghiem`** (fast-forward theo `main`). ⚠ **Thùy phải sửa Ignored Build Step trên dashboard** thành
+    `[ "$VERCEL_ENV" = "production" ] || [ "$VERCEL_GIT_COMMIT_REF" = "thu-nghiem" ] && exit 1 || exit 0` — bản cũ huỷ mọi build Preview.
+    Xem thử không đăng nhập: `hs.html?xem=hoc_tap&mon=Toán|KHTN&khoi=7` (`&nv=0` xem lại màn chọn nhân vật) · `hs.html?xem=phieu_luu` (`&nd=N` số dạng giả). Tài khoản thử: TEST01–TEST10 (mig 202610031034).
+  - **NHÂN VẬT CHÍNH (6 = 2 nhà thám hiểm + 4 class mới su_tu · cao · ninja · elf):** chọn ngay lần đầu bấm "Học tập", dùng cho MỌI hoạt động (bản đồ chạy + Đấu trường 15 tư thế).
+    DB `hs_nhan_vat_chinh` (chưa chọn = KHÔNG có dòng) + trigger log `hs_nhan_vat_chinh_log` + RPC `fn_hs_nhan_vat_cua_toi()` / `fn_hs_chon_nhan_vat(p)` (mig 202610031334 + 202610031341, ĐÃ ÁP).
+    1 cửa vẽ: `skin/nhanVat.ts` (`NvId`, `NV_CHON`, `anhChayNv`/`hopVeNv`/`anhDauNv`/`hopDauNv`…); 4 class sinh từ kit 197MB `design/bk-ui-src/AppHS/Animation/nhan_vat_moi_v1` (KHÔNG commit) bằng `scripts/anime-nhan-vat-chinh.mjs` → `skin/nhanVatChinh.ts`.
+  - **Học theo chủ đề:** luôn mở bản đồ trong khu Học tập (không phụ thuộc cờ phiêu lưu). **Màn DẠNG BÀI (chặng) đã đổi sang NỀN TRANH:** biome có `nen_dang_<biome>.jpg` (7 biome, `scripts/anime-nen-dang.mjs`)
+    ⇒ nền ngang có đường vẽ sẵn, lặp gương theo bề dài; mỗi dạng = 1 công trình của chính lục địa đó (rải đều 8 loại, to dần), không dựng three.js. Lục địa → dạng: phóng 2,4× vào cửa công trình 460ms.
+    Lục địa có nút quay lại. Kit băng (`hs-luc-dia-bang-v1`) đã nén nhưng tầng lục địa băng CHƯA bật (chưa có `KIT_LUC_DIA.bang` + đường dò).
+  - **Đấu trường / Chinh phục = game `src/dautu` nhúng khung** `dautu.html?nhung=1&vao=chu_de|thap&mon=&khoi=` (`dautu/lib/nhung.ts`; lùi ở màn đầu ⇒ `postMessage({dtv:'thoat'})` đóng khung).
+    **Chinh phục BK** = màn tháp riêng: tháp tổng giữa + N tháp chủ đề (= `fn_dtv_kho_chu_de` của khối, ≤8 mẫu) theo preset N, đế đảo + cầu sáng; chọn tháp ⇒ Sinh tồn / Vô tận Normal vào thẳng ván
+    (`&cd=&tcd=&che=`). **Tháp chủ đề = câu của chủ đề đó + BXH riêng** (`nhom = 'khối|mã chủ đề'`, `taoThap/nhomThap` nhận `chuDe`). Điện thoại dọc: sân cao 62% màn, vuốt ngang.
+  - **CHƯA LÀM (logic đã chốt, xem spec §7):** chọn câu theo MỨC ĐỘ (đấu 1–3, Hard 4–5) · bot theo thời gian/độ đúng thật · Vô tận **Hard** (3 lượt/ngày cộng dồn — nút đang "sắp mở") · **khoá tháp chủ đề**
+    theo tiến độ học · Giải Vô địch thật (đăng ký DB, giành quyền trả lời, 4 phút, thưởng xu — hiện chỉ màn demo) · Luyện yếu 80% dạng yếu / 20% ngẫu nhiên · game nhúng vẫn dùng hồ sơ THEO MÁY
+    (chưa tài khoản HS, chưa nhân vật chính) · Thử thách thật (`LamThuThach`) chưa phải đấu trường 2D · `DauView` (màn đấu bản đồ) chưa có nhân vật mới · tầng cao nhất dưới nhãn tháp ·
+    "Đề thi đầu vào M9" hiện như 1 chủ đề Toán 7/8 (dữ liệu kho) · Đơn 14 (Kit A/B/C, `design/DON-HANG-SKIN-HS.md`) đã nhận A + B.
 - **⭐⭐ GAME BK ("BK World", tên tạm) — trạng thái cuối 02/10 tối (máy công ty). ĐỌC `spec-bk-world.md` (file TỔNG) → `spec-bat-thu.md` §0–§1 + §3.3–§3.5 TRƯỚC KHI LÀM.**
   - **Thiết kế tổng của CEO (01/10, `spec-bk-world.md`):**
     - học ⇒ **điểm học tập** (1 nguồn duy nhất = "lượt học thật", gộp luôn "điểm chăm chỉ" của Nông Trại);
@@ -2166,6 +2190,12 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
 - MT/Đề thi/Bổ trợ yếu/Đánh giá còn đọc `banDoTbl` theo `ma_chuyen_de` — `hinh_hoc_bai` có cột compat (rỗng) nên không vỡ, nhưng logic theo chuyên đề vô nghĩa với Hình học; chưa bật nhánh này ở đó.
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
+
+- **⭐ Giao diện game app HS (03/10):** ① khung đo kích thước phải là **ref dạng hàm** (`useState` làm ref + effect theo phần tử) — `useRef` + effect `[]` thì khung bị gỡ rồi gắn lại (vào game nhúng rồi lùi) không được đo lại,
+  ResizeObserver của khung cũ còn bắn 0 ⇒ màn trống (đã dính Chinh phục BK) · ② Tailwind v4 `-translate-x-1/2` dùng thuộc tính CSS `translate` riêng — thêm `transform: translateX(-50%)` là dịch 2 lần ·
+  ③ ảnh `absolute` vẽ đè chữ tĩnh đứng trước nó ⇒ nhãn để lớp riêng sau cùng (`relative z-10`) · ④ style ảnh truyền đúng `width/height`, không phải `w/h` (ảnh hiện cỡ gốc phủ màn) ·
+  ⑤ cờ Preview/Production đọc `VERCEL_ENV` lúc build (define), đừng đoán bằng hostname · ⑥ pane trình duyệt bị ẩn thì rAF/timer chậm ⇒ không kiểm hoạt cảnh chuyển màn bằng ảnh chụp được — kiểm bằng logic + để Thùy xem máy thật ·
+  ⑦ Bash: `cat > file` thiếu heredoc là treo chờ stdin; script vá nhiều dòng thì Write file `.cjs` vào scratchpad rồi `node` (xử CRLF bằng split/join).
 
 - **⭐ AI LÀM ĐÁP ÁN / ÁNH XẠ HÀNG LOẠT (chốt 03/10, kho Anh + Hạt Mầm KHTN):**
   - **Bên giải phải MÙ thật:** đáp án để ngoài thư mục bên giải đọc (thư mục anh em `<dir>_khoa/`), cổng là MÁY so — không phải agent tự so.
