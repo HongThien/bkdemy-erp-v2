@@ -35,7 +35,7 @@ type Man =
 type HopThoai = null | 'ho_so' | 'bxh' | 'cai_dat' | 'online'
 
 // Nhúng trong app HS: lib/nhung.ts. Đặt môn + khối của em ngay khi nạp.
-{ const m = MON_NHUNG, k = KHOI_NHUNG; if (m && NGUON[m]) { khoMon.dat(m); if (k) khoCap.dat((x) => ({ ...x, [m]: k })) } }
+{ const m = MON_NHUNG, k = KHOI_NHUNG; if (m && NGUON[m]) { khoMon.dat(m); if (k && !NGUON[m].coNhoTu) khoCap.dat((x) => ({ ...x, [m]: k })) /* môn theo KHỐI (kho DB); Anh lọc theo cấp độ từ, không theo lớp */ } }
 
 function docLinkMoi(): Man | null {
   const q = new URLSearchParams(location.search)

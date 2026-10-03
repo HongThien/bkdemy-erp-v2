@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import type { CapNguon, ChuDeNguon, NguonCau } from '../nguon'
 import { DauMan, Nut } from '../ui/Chung'
 import { BOT } from '../lib/bot'
-import { NHUNG } from '../lib/nhung'
+import { KHOI_NHUNG, NHUNG } from '../lib/nhung'
 import { HUONG_DO, khoHuong, useHuong } from '../lib/boDe'
 import type { MucBot } from '../lib/trongTai'
 
@@ -17,7 +17,7 @@ export function ChonChuDe({ nguon, cap, setCap, onChon, onLui }: { nguon: NguonC
     <div className="man">
       <DauMan tieuDe={<>{nguon.icon} {nguon.ten} — chọn nội dung</>} phu={nguon.coNhoTu ? 'Chọn một chủ đề hoặc để hệ thống trộn ngẫu nhiên' : 'Câu trắc nghiệm lấy từ kho câu đạt chuẩn của BK'} onLui={onLui} />
       {loi && <p className="loi bang-tin">{loi}</p>}
-      <div className="chip-hang cuon">
+      {!(KHOI_NHUNG && !nguon.coNhoTu) && /* trong app HS: chỉ khối em đang học (Thùy 03/10) */ <div className="chip-hang cuon">
         <span className="nhan-hang">{nguon.tenCap}:</span>
         {(dsCap ?? []).map((c) => (
           <button key={c.id} className={'chip' + (cap === c.id ? ' bat' : '')} onClick={() => setCap(c.id)}>
@@ -25,7 +25,7 @@ export function ChonChuDe({ nguon, cap, setCap, onChon, onLui }: { nguon: NguonC
           </button>
         ))}
         {!dsCap && !loi && <span className="mo">Đang tải…</span>}
-      </div>
+      </div>}
       <div className="luoi-chu-de">
         {!dsCd && !loi && <p className="mo">Đang tải chủ đề…</p>}
         {(dsCd ?? []).map((c) => (

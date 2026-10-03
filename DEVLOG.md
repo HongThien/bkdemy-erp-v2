@@ -35284,3 +35284,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   phạm vi Claude chỉ sổ tay, màn khác Thùy làm). Viết tóm tắt + ví dụ từng bước + hay nhầm + xem thêm cho 77 thẻ (`toan12-bo-sung.mjs`, mỗi ví dụ tự tính lại,
   ghi phép kiểm ở comment) · `sinh-bo-sung.mjs` chặn nếu thiếu mã / lq sai / KaTeX strict lỗi (bắt `\text{lỗi}` có dấu trong công thức ⇒ đổi sang kí hiệu $L$).
   Mig `202610031221` ĐÃ ÁP — chỉ ghi thẻ chưa ai sửa (cap_nhat_boi null); dry-run: 77/77, 77 dòng nhật ký 'sua' kèm bản cũ, vẫn cho_duyet. Spec §9 ghi luật một khuôn mọi môn.
+
+
+- (03/10 khuya, Đấu từ · nhúng) Thùy: "các chỗ học đều có filter lớp — chỉ nên hiện lớp nó đang học" ⇒ trong app HS (nhúng) ẩn hàng chọn khối cả ở màn chọn chủ đề Đấu trường (Leo tháp đã ẩn trước). Chỉ áp môn theo khối (kho DB); Tiếng Anh lọc theo CẤP ĐỘ từ (không phải lớp) nên không đặt khối vào kho cấp của Anh (đặt vào sẽ ra id cấp không tồn tại).
