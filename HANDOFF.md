@@ -103,6 +103,48 @@
   - Tutorial demo: `hs.html?xem=tutorial` (`src/screens/hocsinh/tutorial/`, lời thoại ở `noiDungTutorial.ts`).
   - ⚠ `.env` máy công ty: `DATABASE_URL` = `claude_build` (GHI được) dù chú thích ghi `claude_ro`.
 
+- **⭐⭐ APP HS THEO MÔN + KHO KHTN/ANH — trạng thái hết 03/10 (phiên worktree `home-hs-giai-tri`; mọi thứ dưới đây ĐÃ ÁP DB + PUSH `main`, app CHƯA deploy)**
+  - **Môn = trục ngoài cùng của app HS (mig `202610011120`):** thanh chọn môn Toán/KHTN/Tiếng Anh (`ThanhChonMon`, `MON_APP_HS` lib/mon.ts, môn đang chọn = 1 nguồn
+    module-level `layMonHienTai/ngheMonHienTai` trong tuluyen.ts). Đổi môn ⇒ đổi mọi tính năng HỌC (tự luyện, thông tin học tập, sổ tay, ET/BTVN theo `bai_test.mon`,
+    lịch bổ trợ, BXH); khu Giải trí đứng yên. Môn chưa có kho (`_kho_co_mon` = registry, hiện Toán + KHTN) ⇒ ô cần kho khoá "X chưa mở"; hàm sinh bài báo lỗi thay vì
+    rơi về kho Toán. 70 bài tự luyện gắn nhầm 'Tiếng Anh'/'Văn' đã sửa về Toán (mig `202610011207`). **Còn:** `_kho_*_tbl` vẫn fallback Toán cho môn lạ (luồng staff) —
+    Thùy: không sửa, TG sau này cũng cố định từng môn.
+  - **Màn chính HS (mig `202610030228`):** Thế giới BK lên đầu · bỏ ô "Bài tập được giao" (sau này là ô DERIVE — có bài giao mới hiện) · Nhiệm vụ xuống Giải trí ·
+    thẻ **Thư viện BK** ("Nơi tìm hiểu mọi thông tin trên app", `ThuVienHS.tsx`; Rank là thẻ con) · **TSA = ô riêng cho MỌI em khối 12** không cần ghi danh:
+    registry `mon_mo_ca_khoi(mon, khoi, lop_id)` + lớp neo `12 TSA · Tự luyện chung` (trạng thái `dong`) · `_hs_lop_tu_luyen(hs, mon)` · `hs_mon_rieng_cua_toi()` ·
+    app `datMonTam` (môn TẠM khi ở trong ô riêng). Icon `thu_vien`/`tu_luyen_rieng` đang TẠM (mượn ô cũ). **Treo:** việc (6) thay ảnh nhân vật/backdrop bằng bản AI —
+    Thùy chưa đẩy ảnh từ máy công ty.
+  - **10 HS TEST cô lập (mig `202610031034`):** TEST01…TEST10 (khối 3·5·6·7·8·9 nam·9 nữ·10·11·12 có TSA), đăng nhập mã = mật khẩu. `hoc_sinh.trang_thai='test'` +
+    15 lớp `TEST · <môn> <khối>` trạng thái `dong` + `_hs_hien(hs)` trong các hàm xếp hạng/album/huy hiệu/bạn bè/tin Thế giới ⇒ em thật không thấy em test.
+    Ngoài phạm vi: BXH Đấu từ (bảng `dtv_*` riêng) — em test chơi sẽ lên BXH. Tạo thêm: `scripts/tao_tk_hs_test.mjs` (idempotent).
+  - **Sổ tay KHTN (mig `202610031125` + `…1126`):** 807 mục Lý/Hoá/Sinh 6–9 từ artifact KHTN Pocket, nạp 1 lần vào `sotay_cong_thuc` (bảng mục CHUNG mọi môn, cột
+    `loai`/`y`/`bang`/`bien`/`vd`/`nham`/`lq`) trạng thái `da_duyet` (GV đã duyệt) — **ERP là gốc**, app chỉ đọc. Seed tự chặn nếu đã có mục KHTN (không nạp đè).
+    **Treo:** 109 hình (`sotay_ct_hinh` url null, mô tả giữ mã vẽ) chưa vẽ · nối mục ↔ dạng `khtn_ban_do`.
+  - **Kho KHTN — luồng ĐỀ XUẤT dạng/cụm = bản sao Toán Đại (mig `202610031258`):** `khtn_de_xuat(_cau,_quyet_dinh)` + `fn_khtn_de_xuat_ds/_quyet/_tao/_tk` +
+    `fn_khtn_sinh_ma_dang` + `khtn_cau_hoi.muc_cau` (1–5). ERP: registry `DE_XUAT_KHO` (lib/kho/api.ts) ⇒ `DeXuatPanel kho=…`; Kho › KHTN có nút Đề xuất.
+  - **Ngân hàng Hạt Mầm (KHTN, GV đã duyệt nội dung) → kho theo 3 làn (spec-luong-kho §5.3):** Hạt Mầm là PHIÊN BẢN BẢN ĐỒ KHÁC (trùng mã, khác dạng) ⇒ **CẤM nối
+    theo mã**; 9 agent ánh xạ theo NỘI DUNG câu ⇒ `scripts/khtn-hatmam/de-xuat/<khối>-<ly|hoa|sinh>.json` (kiểm độc lập `kiem-de-xuat.mjs` + đọc tay `soi-xanh.mjs`).
+    Tổng 5.709 câu khối 7–9: 🟢 3.217 vào dạng ERP · 🟡 409 dạng mới · 🔴 156 hỏi GV · ⚪ 1.927 ERP chưa có chuyên đề.
+    - **Đã nhập** (`nhap.mjs`, chạy thử rồi `--ghi`; `kiem-sau-nhap.mjs` đọc lại DB): **khối 7** 1.069 câu (907 vào dạng · 162 dạng chờ) + 25 thẻ đề xuất ·
+      **khối 9** 2.150 câu (1.854 · 296) + 38 thẻ · ảnh ở Storage `kho-anh/hat_mam/k<khối>/`. Câu `da_duyet=false`, `nguon='hat_mam'`, `ten_de_goc='Hạt Mầm · <mã HM>'`.
+      Thùy 03/10: **"KHTN để GV duyệt 1 đoạn"** ⇒ GV duyệt câu ở màn Duyệt + xử lý thẻ ở Đề xuất.
+    - **Treo:** (a) **⚪ 1.927 câu thiếu chuyên đề** (khối 8 chiếm 1.516 — ERP khối 8 thiếu gần hết chuyên đề; 7-Sinh thiếu Bài 28–42; 9 thiếu Dịch mã, Kính lúp) —
+      CTO đề xuất thêm loại đề xuất "chuyên đề mới", Thùy CHƯA chốt · (b) **khối 8 chưa nhập** (563 câu đã có chuyên đề; `nhap.mjs` chặn theo từng câu nên nhập phần ⚪
+      lượt sau được) · (c) khối 7 có **11 thẻ "dạng mới" cho 5 dạng** (nhập trước khi gộp tên) — dọn = chuyển câu sang thẻ giữ + XOÁ 6 dòng `khtn_de_xuat`, CHỜ Thùy gật ·
+      (d) khối 6 HOLD (zip thiếu 1 file) · (e) đề lỗi agent nêu nằm trong `ly_do` các thẻ 🔴.
+  - **Kho Tiếng Anh — AI làm đáp án + lời giải (Thùy 03/10: "tiếng Anh thống nhất, không bị tính local như Toán" · "chỉ dùng Sonnet hoặc thấp hơn"):**
+    - Chọn model bằng 64 câu mẫu giải mù: Sonnet câu "chắc" đúng 100% · Haiku có câu chắc mà sai + yếu phát âm ⇒ **Sonnet**.
+    - Luồng: `scripts/anh/giai_chuan_bi.mjs` (80 lô, câu cùng ngữ liệu chung lô, ảnh biển báo tải về để bên giải XEM; đáp án ở thư mục anh em `<dir>_khoa/`) → agent
+      Sonnet theo `scripts/anh/giai_prompt.md` → bên B giải lại độc lập câu thiếu đáp án (`giai_tach_b.mjs`) → **cổng `giai_cong.mjs`**: câu có đáp án ⇒ ghi lời giải khi A
+      ra ĐÚNG + chắc + không phương án 2; câu thiếu đáp án ⇒ A=B cùng chắc ⇒ nhận đáp án, tự duyệt nếu lý do chờ DUY NHẤT là "file GV không có đáp án".
+      Sau đó Thùy: "câu đã duyệt lại cho thẳng vào kho, chỉ câu m ko chắc mới lên GV" ⇒ `duyet_sau_giai.mjs` duyệt câu chờ mà A chắc + khớp + không lỗi đề.
+    - **Kho Anh hiện:** 4.774 câu · **4.225 đã duyệt** · **4.335 có lời giải** (`nguon_giai='ai'`, `giai_method='ai_giai_mu'`) · 13 thiếu đáp án.
+    - **549 còn chờ:** 347 KHÔNG CHẮC (249 A phân vân/2 phương án · 54 lệch đáp án — phần lớn đáp án NGUỒN nghi sai · 31 lỗi đề · 13 A/B lệch) ⇒ GV; biên bản
+      `scripts/anh/bien_ban/giai-ai-2026-10-03.json` (có cả 289 câu A báo lỗi đề, 97 trong đó đã duyệt — phương án trùng, đề dính câu sau, ngữ liệu EL000542 cắt cụt…).
+      **202 câu đáp án chắc nhưng chưa tự duyệt:** 103 ở ĐIỂM CHỜ (trigger chặn tới khi có điểm kiến thức) · 99 A+B thấy NGOÀI PHẠM VI (luật CEO 02/10 loại khỏi kho
+      luyện thi vào 10) — **đã hỏi Thùy có đổi không, CHƯA trả lời.**
+    - **Chưa kiểm:** app HS có hiện lời giải tiếng Anh sau khi làm bài không.
+
 - **⭐ BOSS RIÊNG (NPC boss cuối, mỗi GV 1 boss) — trạng thái 01/10 đêm: đọc `design/FLOW-NPC-BOSS-CUOI.md` (§0.5 + §A) + `design/DON-HANG-BOSS-THUY.md`.**
   - **Đã xong (boss mẫu = Thùy, chibi từ ảnh chân dung):** 6 tư thế + chân dung (ChatGPT, ảnh gốc `design/bk-ui-src/boss/thuy/01–08.png`; nén
     `public/bk-ui/hs/skin/rpg/boss_thuy_*.png`) · khai `Skin.boss[ma]` (kieu.ts + rpg.ts; khoá = `boss_<ma_gv>` = `loai_quai`) · hoạt ảnh 2D CSS
@@ -2124,6 +2166,15 @@ khuôn, vd `so_ben_ngoai`/`tap_uoc`/`tap_n`/`x`/`y`...). Trần DB nới 4→8 �
 - MT/Đề thi/Bổ trợ yếu/Đánh giá còn đọc `banDoTbl` theo `ma_chuyen_de` — `hinh_hoc_bai` có cột compat (rỗng) nên không vỡ, nhưng logic theo chuyên đề vô nghĩa với Hình học; chưa bật nhánh này ở đó.
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
+
+- **⭐ AI LÀM ĐÁP ÁN / ÁNH XẠ HÀNG LOẠT (chốt 03/10, kho Anh + Hạt Mầm KHTN):**
+  - **Bên giải phải MÙ thật:** đáp án để ngoài thư mục bên giải đọc (thư mục anh em `<dir>_khoa/`), cổng là MÁY so — không phải agent tự so.
+  - **Model tự khai "chắc" vẫn sai ~0,3%** (Sonnet: "the chair of ___ one leg" chọn whose thay which). Câu CÓ đáp án đối chứng ⇒ một bên giải + cổng so là đủ;
+    câu KHÔNG có đáp án ⇒ phải 2 bên độc lập trùng nhau mới nhận. Chọn model bằng đo trên mẫu có đáp án (Haiku: câu chắc mà sai ⇒ loại), không theo cảm giác.
+  - **Agent đặt CÙNG TÊN cho nhiều nhóm = ý muốn gom 1 dạng** ⇒ script nhập phải gộp theo (chuyên đề, tên) trước khi tạo thẻ, không thì học thuật thấy N thẻ cho 1 dạng.
+  - **Chặn nhập đè theo TỪNG CÂU (khoá tự nhiên `ten_de_goc`), không theo cả lô** ⇒ lượt sau vẫn nhập được phần còn treo mà không nhân bản.
+  - Ghi hàng nghìn dòng qua mạng: gom 1 lệnh `unnest(...)` — từng câu một ⇒ >5 phút cho ~1.000 dòng.
+  - Bên giải mù bắt được LỖI DỮ LIỆU người đọc code không thấy (phương án dính câu sau, ngữ liệu cắt cụt, cau_so lệch) ⇒ luôn gom `de_loi` thành danh sách cho GV.
 
 - **⭐ ĐỒ HOẠ APP HS / ĐƠN CHATGPT (chốt 02/10, luồng Giao diện — bản đồ phiêu lưu):**
   - **Đơn ChatGPT LUÔN theo giao thức kit** (`design/CHATGPT-UI-KIT.md`): ① 1 ảnh toàn cảnh chi tiết ② vẽ lại TỪNG thành phần của chính ảnh đó ③ file mô tả vị trí. Đơn 7 tự ghi "không DESIGN.md, không zip"
