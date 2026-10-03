@@ -18,6 +18,8 @@ const KITS = [
   { biome: 'dam_lay', dir: 'hs-luc-dia-dam_lay-v1', nen: 'assets/backdrop/backdrop_luc_dia_dam_lay.png',
     decor: ['decor_01_nha_san', 'decor_02_leu_da', 'decor_03_thap_canh', 'decor_04_cau_van', 'decor_06_hang_bun', 'decor_05_den_reu', /* ĐỔI chỗ 5↔6 theo ĐƯỜNG THẬT (cầu → hang bùn → đền rêu), xem DEVLOG 02/10 */ 'decor_07_phao_dai_go', 'decor_08_lau_dai_dom_dom'], neoCat: [0.5, 0.97], neoRieng: { 3: [0.5, 0.5] } /* cầu ván: neo ở TÂM mặt cầu */ },
   { biome: 'sa_mac', dir: 'hs-luc-dia-sa-mac-6-v1', nen: 'assets/backdrop/backdrop_luc_dia_sa_mac_6.png', decor: M(6), neoCat: [0.5, 0.995] },
+  // 03/10: BĂNG — mới dùng 8 công trình cho MÀN DẠNG BÀI (Chang2D nền tranh); tầng lục địa băng CHƯA bật (chưa có KIT_LUC_DIA.bang + đường dò)
+  { biome: 'bang', dir: 'hs-luc-dia-bang-v1', nen: 'assets/backdrop/backdrop_luc_dia_bang.png', decor: M(8), neoCat: [0.5, 0.97], neoRieng: { 3: [0.5, 0.5] } /* cầu băng: neo tâm lối qua cầu */ },
   { biome: 'anh_dao', dir: 'hs-luc-dia-and_dao-v4', nen: 'assets/backdrop/backdrop_luc_dia_and_dao.png', decor: M(8), neoCat: [0.5, 0.94],
     nam: ['chibi_nam_dung', 'chibi_nam_chay_1', 'chibi_nam_chay_2'], nu: ['chibi_nu_dung', 'chibi_nu_chay_1', 'chibi_nu_chay_2'] },
 ]

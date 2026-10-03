@@ -9,7 +9,7 @@ import { KIT_LUC_DIA, SAO_KIT } from './kitLucDia'
 import { ANH_KIT } from './kitLucDia.anh'
 import { HERO_CHAY } from '../../skin/heroChay'
 import { anhChayNv, hopVeNv, khungChayTheoMs, napChayNv, type NvId } from '../../skin/nhanVat'
-import { anhVat } from './hinh2d'
+import { anhNenDang, anhVat } from './hinh2d'
 import { Co, CssBan2D, MuiTen, Sao5, Suong, useChuyenDong, useKhung2D } from './San2D'
 import { QuaiTam } from './HinhTam'
 
@@ -99,6 +99,13 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
   const [khungChay, setKhungChay] = useState(0)
   const dong = useChuyenDong() // mức đồ hoạ Thấp ⇒ tắt đốm sáng bay
   const [hov, setHov] = useState<number | null>(null) // công trình đang trỏ vào ⇒ nổi lên
+  // CHUYỂN CẢNH vào màn dạng bài (Thùy 03/10: "chưa mượt"): chạy tới cửa ⇒ PHÓNG vào công trình + mờ dần rồi mới đổi màn (như world map → lục địa)
+  const [phong, setPhong] = useState<{ x: number; y: number } | null>(null)
+  const vao = (i: number, ma: string) => {
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { onChon(ma); return }
+    const m = kit.moc[i]; setPhong({ x: (m.x / 100) * khung.w, y: (m.y / 100) * khung.h - (m.w / 100) * khung.w * 0.25 })
+    window.setTimeout(() => onChon(ma), 460)
+  }
   const nhanRef = useRef<(HTMLSpanElement | null)[]>([])
   const [vtNhan, setVtNhan] = useState<({ x: number; y: number; pad: number } | null)[]>([]) // x,y = góc trái-trên của phần NHÌN THẤY (chữ + sao); pad = lề trống giữa hộp nhãn và phần nhìn thấy
   const raf = useRef(0)
@@ -113,14 +120,15 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
   const dien = (i: number, ma: string) => {
     if (chay) return
     const dich = sCua[i], s0 = sRef.current, qd = Math.abs(dich - s0)
-    if (qd < 0.004) { onChon(ma); return }
+    const nen = anhNenDang(luc.biome); if (nen) new Image().src = nen // nạp sẵn nền màn dạng bài trong lúc chạy ⇒ vào màn không trắng chớp
+    if (qd < 0.004) { vao(i, ma); return }
     // TỐC ĐỘ theo cỡ người (Thùy 02/10: "chạy quá nhanh như gió"): ≈ TOC_DO_NV chiều-cao-người mỗi giây (trước đó ~490px/s ≈ 6 người/s); đường dài thì tối đa 4,5 giây
     const ms = Math.min(4500, Math.max(600, (qd * khung.w) / (TOC_DO_NV * (caoRef.current || 80)) * 1000)), t0 = performance.now()
     const f = (now: number) => {
       const k = Math.min(1, (now - t0) / ms), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2
       setS(s0 + (dich - s0) * e); setChay({ huongPhai: dich >= s0 }); setKhungChay(khungChayTheoMs(gioi, now - t0))
       if (k < 1) raf.current = requestAnimationFrame(f)
-      else { setChay(null); setKhungChay(0); onChon(ma) }
+      else { setChay(null); setKhungChay(0); vao(i, ma) }
     }
     raf.current = requestAnimationFrame(f)
   }
@@ -167,7 +175,7 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
         <div className="relative h-full min-h-[300px] overflow-hidden rounded-xl" style={{ border: 'var(--sk-card-border)', background: 'var(--sk-bg)' }}>
           <img src={`${G}/${luc.biome}/nen.jpg`} alt="" aria-hidden className="absolute inset-0 h-full w-full scale-110 object-cover" style={{ filter: 'blur(14px) brightness(.55)' }} draggable={false} />
           <div ref={ref} className="absolute inset-0 flex items-center justify-center">
-            <div className="relative select-none" style={{ width: W, height: H }}>
+            <div className="relative select-none" style={{ width: W, height: H, ...(phong ? { transformOrigin: `${phong.x}px ${phong.y}px`, transform: 'scale(2.4)', opacity: 0, transition: 'transform .46s cubic-bezier(.55,0,.85,.35), opacity .46s ease-in' } : {}) }}>
               <img src={`${G}/${luc.biome}/nen.jpg`} alt="" className="absolute inset-0 h-full w-full" draggable={false} />
               {W > 0 && (
                 <>

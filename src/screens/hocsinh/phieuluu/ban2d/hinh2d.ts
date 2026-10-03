@@ -7,6 +7,8 @@ const G = '/bk-ui/hs/skin/rpg/phieuluu2d'
 const CO_SAN = {
   nenVung: ['rung', 'bang', 'nui_lua', 'bien_dao'] as string[],
   nenChang: ['rung', 'bang', 'nui_lua', 'bien_dao'] as string[],
+  /** NỀN MÀN DẠNG BÀI nhìn ngang, đường thẳng vẽ sẵn (Thùy 03/10, scripts/anime-nen-dang.mjs) — có ⇒ Chang2D dùng tranh thay cảnh three.js */
+  nenDang: ['anh_dao', 'bang', 'bien_dao', 'dam_lay', 'nui_lua', 'rung', 'sa_mac'] as string[],
   /** mốc công trình đã có (Đơn 7 #21–#26: thanh · thap · trai · den · cong · cau) — vòng lại trong số đã có */
   moc: ['thanh', 'thap', 'trai', 'den', 'cong', 'cau'] as string[],
   /** vật nhỏ đã có (Đơn 7 #27 bệ đá · #30 cờ cắm đất; V2 mây sương · la bàn) */
@@ -54,6 +56,7 @@ export const CHO_MOC_VUNG: Record<string, { x: number; y: number }[]> = {
   bien_dao: [{ x: 49.4, y: 77.7 }, { x: 26.2, y: 55.8 }, { x: 23.6, y: 28.5 }, { x: 56.3, y: 13.5 }, { x: 86.3, y: 29.3 }, { x: 73.2, y: 74.3 }],
 }
 export const anhNenVung = (biome: string) => (CO_SAN.nenVung.includes(biome) ? `${G}/nen_vung_${biome}.jpg` : null)
+export const anhNenDang = (biome: string) => (CO_SAN.nenDang.includes(biome) ? `${G}/nen_dang_${biome}.jpg` : null)
 export const anhNenChang = (biome: string) => (CO_SAN.nenChang.includes(biome) ? `${G}/nen_chang_${biome}.jpg` : null)
 export const LOAI_MOC = ['thanh', 'thap', 'trai', 'den', 'cong', 'cau'] as const
 export const anhMoc = (i: number) => (CO_SAN.moc.length ? `${G}/moc_${CO_SAN.moc[i % CO_SAN.moc.length]}.webp` : null)
