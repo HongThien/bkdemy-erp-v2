@@ -35233,3 +35233,24 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   authenticated được ⇒ đánh giá thẳng `co_chuc_nang/co_quyen_ghi` + gọi RPC). ERP: lá `sotay` (Học thuật) `SoTayCongThucScreen` — CHƯA mở
   bằng phiên đăng nhập thật (đăng nhập = gửi tài khoản thật lên Supabase, Claude không tự làm). App HS: thấy trên `hs.html?demo=sotay`
   — "bac hai" ra Công thức trước, Lý thuyết sau; mở thẻ đúng. Hình vẽ yêu cầu nền TRẮNG (skin tối).
+
+## 2026-10-03 [DB + App HS + ERP] Sổ tay KHTN lên app HS — ERP là gốc · mig 202610031125 + 202610031126 đã áp
+
+- **Thùy:** đưa sổ tay KHTN (artifact KHTN Pocket) lên app HS · "GV đã duyệt rồi, auto không cần duyệt lại" · "đưa lên ERP 1 lần làm gốc, từ đó tham chiếu lên app".
+- **Soi artifact:** là cả 1 app (vườn/biển, ngân hàng câu, luyện, quiz, duyệt…) gói 1 file JS 2,3 MB; sổ tay = module `wiki-*`: 807 mục Lý/Hoá/Sinh 6–9
+  (9 loại; 473 ví dụ từng bước · 399 hay nhầm · 139 bảng · 65 công thức + bảng kí hiệu · 109 hình vẽ bằng CODE 28 kiểu) + khung thứ tự 53 chủ đề.
+  Chữ thường (H₂O, →), HTML chỉ `<b>/<i>`, không `$` ⇒ MathText hiện thẳng. 98 `lq` trỏ "thẻ ôn tập" riêng của Pocket (`the-*`) ⇒ bỏ.
+- **Phát hiện:** phần Sổ tay công thức Toán (bảng `sotay_*`, màn ERP, app HS — mig 202610030214/0215 đã áp) nằm ở commit `7079f692` CHƯA PUSH trên `main`
+  máy này (phiên khác) ⇒ cherry-pick vào nhánh worktree để làm KHTN trên cùng khuôn (phiên kia rebase thì git tự bỏ commit trùng).
+- **Thiết kế (CTO, §1.6):** không đẻ bảng KHTN riêng — `sotay_cong_thuc` mở rộng thành bảng mục chung (`loai`, `cong_thuc`, `y`, `bang`, `bien`, `vd`, `nham`, `lq`;
+  thẻ Toán = `ct`, cột mới null). `_sotay_muc_json` = 1 nguồn nội dung mục cho tìm / cây / mở mục. Trigger hạ "đã duyệt" khi sửa nội dung tính cả cột mới.
+  Thân trigger + `hs_sotay_tim_ct` dựng từ pg_get_functiondef (`scripts/sotay-khtn/gen-mig-mo-rong.mjs`).
+- **Nạp:** `boc-wiki.mjs` chạy riêng module dữ liệu trong vm sandbox → JSON · `sinh-seed.mjs` → mig 763 KB (jsonb_populate_recordset), trạng thái `da_duyet`,
+  tự chặn nếu đã có mục KHTN (không nạp đè — ERP là gốc). 109 hình vào `sotay_ct_hinh` url null + mô tả giữ mã vẽ.
+- **Thử ROLLBACK** (`scripts/sotay-khtn/thu-mig.mjs`): 807 mục đúng 9 loại · Toán 77 thẻ nguyên · cây HS0557 khối 9 = 13 chủ đề · tìm không dấu "dinh luat ohm" ra
+  Định luật Ohm · mục liên quan nối đúng · sửa `y` ⇒ về chờ duyệt. **Sau áp**, đăng nhập thật TEST06 qua API (`kiem-app.mjs`): cây 13 chủ đề Lý/Hoá/Sinh,
+  mở h9-kim-loai đủ phần, tìm "kim loai" 16 mục có nhãn loại; Toán 0 chủ đề (0 thẻ duyệt ⇒ không hiện tab).
+- **App HS `SoTayHS`:** tab Sổ tay / Dạng bài (chỉ khi môn có mục), lọc phân môn + khối, chủ đề → mục nhóm theo loại, `DocMuc` (thay DocCongThuc) đọc đủ phần,
+  "Liên quan" mở chồng (Quay lại lùi 1 mục). **ERP:** phạm vi từ DB (`phamViSoTay`), chip loại, ô sửa công thức / ý chính / hay nhầm / bảng / kí hiệu (cột "|") /
+  ví dụ / liên quan, xem trước đủ phần. tsc sạch · check:style-hs ✔ · build:hs ✔. **Chưa soi bằng mắt** (dev server chỉ chạy được từ repo chính).
+- **Còn treo:** vẽ / xuất ảnh 109 hình · nối mục ↔ dạng `khtn_ban_do`.

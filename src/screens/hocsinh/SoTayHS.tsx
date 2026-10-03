@@ -26,8 +26,8 @@ import {
   type SoTayCay, type SoTayChuDe, type SoTayChuyenDe, type SoTayNhanh, type SoTayNhom,
   type SoTayTimRow, type SoTayNoiDung,
 } from '../../lib/sotay'
-import { soTayTimCt, type CtTimRow } from '../../lib/sotayCongThuc'
-import { ManHS, DauTrangHS, MAU, THE, THE_TRON, HEAD } from './skin/KhungHS'
+import { soTayTimCt, soTayMucCay, soTayMuc, MUC_LOAI, MUC_LOAI_THU_TU, type CtTimRow, type MucCay, type MucSoTay, type MucLoai } from '../../lib/sotayCongThuc'
+import { ManHS, DauTrangHS, NhomHS, MAU, THE, THE_TRON, HEAD } from './skin/KhungHS'
 
 // Thùy 29/09: mọi màn theo STYLE (skin) em đang chọn — bỏ nền mây + chồng sách + khẩu hiệu + màu theo giới tính.
 // `t` còn truyền qua các mảnh con nhưng mọi giá trị giờ là biến skin (1 bản cho cả nam/nữ).
@@ -74,10 +74,12 @@ function NhomChip({ nhom }: { nhom: SoTayNhom | null }) {
   return <span className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-black" style={{ background: m.nen, color: m.chu }}>{NHOM_TEN[nhom]}</span>
 }
 
-// Nhãn loại kết quả tìm (CEO 03/10): "Công thức" (thẻ công thức, xếp TRƯỚC) · "Lý thuyết" (dạng bài).
-function NhanLoai({ ct }: { ct: boolean }) {
+// Nhãn loại kết quả tìm (CEO 03/10): mục sổ tay (xếp TRƯỚC) mang tên LOẠI của nó — "Công thức", "Khái niệm"… (03/10, sổ tay KHTN);
+// dạng bài ⇒ "Lý thuyết".
+function NhanLoai({ loai }: { loai: MucLoai | 'ly_thuyet' }) {
+  const muc = loai !== 'ly_thuyet'
   return <span className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-black"
-    style={ct ? { background: MAU.acc, color: MAU.accInk } : { background: MAU.surface2, color: MAU.muted }}>{ct ? 'Công thức' : 'Lý thuyết'}</span>
+    style={muc ? { background: MAU.acc, color: MAU.accInk } : { background: MAU.surface2, color: MAU.muted }}>{muc ? MUC_LOAI[loai].ten : 'Lý thuyết'}</span>
 }
 
 // Dòng danh sách dùng chung cho cả 3 tầng + kết quả tìm.
@@ -113,8 +115,10 @@ function Trong({ icon, title, mo_ta }: { t?: Theme; icon: string; title: string;
 // — Claude không có mã+PIN của HS thật nên không tự mở app thật để soi layout được. Mặc định là
 // 3 RPC thật; đường chạy production KHÔNG có thêm nhánh if nào.
 // `timCt` (thẻ CÔNG THỨC, CEO 03/10) tuỳ chọn để mock cũ không vỡ — thiếu thì coi như không có thẻ nào.
-export type SoTayApi = { cay: typeof soTayCay; tim: typeof soTayTim; dang: typeof soTayDang; timCt?: typeof soTayTimCt; mon?: () => Promise<string | null> }
-const API_THAT: SoTayApi = { cay: soTayCay, tim: soTayTim, dang: soTayDang, timCt: soTayTimCt, mon: monCuaHS }
+// `mucCay`/`muc` (MỤC SỔ TAY theo chủ đề — sổ tay KHTN 03/10) cũng tuỳ chọn: thiếu thì không có tab "Sổ tay".
+export type SoTayApi = { cay: typeof soTayCay; tim: typeof soTayTim; dang: typeof soTayDang; timCt?: typeof soTayTimCt; mon?: () => Promise<string | null>
+  mucCay?: typeof soTayMucCay; muc?: typeof soTayMuc }
+const API_THAT: SoTayApi = { cay: soTayCay, tim: soTayTim, dang: soTayDang, timCt: soTayTimCt, mon: monCuaHS, mucCay: soTayMucCay, muc: soTayMuc }
 
 // ⚠ `e instanceof Error` KHÔNG bắt được lỗi Supabase: `supabase.rpc` trả `{ error }` là
 // PostgrestError — OBJECT THƯỜNG `{message, details, hint, code}`, không phải subclass của Error.
@@ -145,7 +149,16 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
   const [q, setQ] = useState('')
   // Kết quả tìm = 2 nguồn: thẻ công thức (`ct`) + dạng bài (`lt`). null = không đang tìm.
   const [ketQua, setKetQua] = useState<{ ct: CtTimRow[]; lt: SoTayTimRow[] } | null>(null)
-  const [ctMo, setCtMo] = useState<CtTimRow | null>(null)
+  // MỤC SỔ TAY đang đọc — NGĂN XẾP vì bấm "Liên quan" mở mục khác; Quay lại lùi đúng 1 mục.
+  const [mucMo, setMucMo] = useState<MucSoTay[]>([])
+  const moMuc = (r: MucSoTay) => setMucMo((s) => [...s, r])
+  // TAB: 'muc' = sổ tay theo chủ đề (khái niệm, công thức, hiện tượng… — có khi môn có mục đã duyệt) · 'dang' = lý thuyết theo dạng bài.
+  const [che, setChe] = useState<'muc' | 'dang' | null>(null) // null = chưa biết (chờ cây mục) ⇒ tự chọn 'muc' nếu môn có mục
+  const [mucCay, setMucCay] = useState<MucCay | null>(null)
+  const [mucKhoi, setMucKhoi] = useState<string | null>(null)
+  const [mucNhanh, setMucNhanh] = useState<string | null>(null)
+  const [mucChuDe, setMucChuDe] = useState<string | null>(null)
+  const [loiMuc, setLoiMuc] = useState<string | null>(null)
   const [loiTim, setLoiTim] = useState<string | null>(null) // tách khỏi `ketQua` — xem effect tìm
 
   // 01/10: bỏ đường lùi cứng 'Toán' — không xác định được môn thì báo, không tự mở sổ tay môn khác.
@@ -166,6 +179,17 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
     return () => { huy = true }
   }, [mon, nhanh, khoi])
 
+  // Cây MỤC SỔ TAY (chủ đề → mục) của môn + khối. Đổi khối = đổi ngữ cảnh ⇒ tải lại (giữ cây cũ tới khi có cây mới).
+  useEffect(() => {
+    if (!mon || !api.mucCay) { setChe((c) => c ?? 'dang'); return }
+    let huy = false
+    setLoiMuc(null)
+    api.mucCay(mon, mucKhoi)
+      .then((c) => { if (huy) return; setMucCay(c); setMucChuDe(null); setChe((x) => x ?? (c.chu_de.length ? 'muc' : 'dang')) })
+      .catch((e) => { ghiLoi('tải cây mục', e); if (!huy) { setLoiMuc(moTaLoi(e, 'Không tải được sổ tay.')); setChe((x) => x ?? 'dang') } })
+    return () => { huy = true }
+  }, [mon, mucKhoi])
+
   // Tìm kiếm: gõ <2 ký tự thì tắt hẳn kết quả (trả về cây). Debounce 250ms để mỗi phím không
   // bắn 1 RPC. `lanTim` chặn kết quả của lượt gõ CŨ về sau đè lên lượt mới (race khi mạng lag).
   // ⭐ RPC LỖI ≠ KHÔNG CÓ KẾT QUẢ — hai trạng thái TÁCH HẲN (bản trước gộp làm một:
@@ -178,7 +202,7 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
     if (!mon || tu.length < 2) { setKetQua(null); setLoiTim(null); return }
     const lan = ++lanTim.current
     const id = setTimeout(() => {
-      const k = khoi ?? cay?.khoi ?? null
+      const k = che === 'muc' ? (mucKhoi ?? mucCay?.khoi ?? null) : (khoi ?? cay?.khoi ?? null)
       // Hai RPC song song. Một bên hỏng ⇒ báo LỖI (không lặng lẽ hiện nửa kết quả như thể đủ).
       Promise.all([(api.timCt ?? (async () => []))(tu, mon, k), api.tim(tu, mon, nhanh, k)])
         .then(([ct, lt]) => { if (lan !== lanTim.current) return; setLoiTim(null); setKetQua({ ct, lt }) })
@@ -190,7 +214,7 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
         })
     }, 250)
     return () => clearTimeout(id)
-  }, [q, mon, nhanh, khoi, cay?.khoi])
+  }, [q, mon, nhanh, khoi, cay?.khoi, che, mucKhoi, mucCay?.khoi])
 
   // Lọc độ khó trên cây ĐÃ TẢI — lọc thuần tuý theo lựa chọn UI đang mở (§2.0 cho phép), và
   // đếm theo số dòng THỰC SỰ render để không hứa "(20)" rồi mở ra rỗng.
@@ -207,7 +231,8 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
   }, [cay, nhomLoc])
 
   // Đang mở 1 dạng → màn đọc. Back về đúng chỗ cũ (duong/nhomLoc/q giữ nguyên trong state).
-  if (ctMo) return <DocCongThuc t={t} r={ctMo} onBack={() => setCtMo(null)} />
+  if (mucMo.length) return <DocMuc key={mucMo[mucMo.length - 1].ma} r={mucMo[mucMo.length - 1]} api={api} onMo={moMuc}
+    onBack={() => setMucMo((s) => s.slice(0, -1))} />
   if (maDangMo && mon) {
     return <DocDang t={t} maDang={maDangMo} mon={mon} nhanh={nhanh} api={api} onBack={() => setMaDangMo(null)} />
   }
@@ -219,13 +244,27 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
   const chuyenDeLoc = chuyenDe && chuDeLoc ? chuDeLoc.con.find((c) => c.ma === chuyenDe.ma) ?? null : null
 
   const soKq = ketQua ? ketQua.ct.length + ketQua.lt.length : 0
-  const title = dangSearch ? 'Kết quả tìm' : chuyenDeLoc ? chuyenDeLoc.ten : chuDeLoc ? chuDeLoc.ten : 'Sổ tay kiến thức'
+  // Tab MỤC: chủ đề đang mở + lọc phân môn (Lý / Hóa / Sinh — chỉ khi môn có phân môn).
+  const coMuc = (mucCay?.chu_de.length ?? 0) > 0
+  const laMuc = che === 'muc' && coMuc
+  const nhanhMuc = [...new Set((mucCay?.chu_de ?? []).map((c) => c.nhanh).filter((x): x is string => !!x))]
+  const chuDeMucLoc = (mucCay?.chu_de ?? []).filter((c) => !mucNhanh || c.nhanh === mucNhanh)
+  const chuDeMuc = mucChuDe ? mucCay?.chu_de.find((c) => c.ma === mucChuDe) ?? null : null
+  const moMucMa = (ma: string) => {
+    if (!api.muc) return
+    api.muc(ma).then((r) => { if (r) moMuc(r) }).catch((e) => { ghiLoi('mở mục ' + ma, e); setLoiMuc(moTaLoi(e, 'Không mở được mục này.')) })
+  }
+
+  const title = dangSearch ? 'Kết quả tìm' : laMuc ? (chuDeMuc ? chuDeMuc.ten : 'Sổ tay kiến thức')
+    : chuyenDeLoc ? chuyenDeLoc.ten : chuDeLoc ? chuDeLoc.ten : 'Sổ tay kiến thức'
   const sub = dangSearch ? (loiTim ? 'Lỗi — xem bên dưới' : `${soKq} kết quả`)
+    : laMuc ? (chuDeMuc ? `${chuDeMuc.muc.length} mục${chuDeMuc.nhanh ? ` · ${chuDeMuc.nhanh}` : ''} · Khối ${mucCay?.khoi}` : 'Khái niệm, công thức, hiện tượng… theo chủ đề')
     : chuyenDeLoc ? `${chuyenDeLoc.dangs.length} dạng bài`
     : chuDeLoc ? `${chuDeLoc.con.length} chuyên đề`
     : 'Tra lý thuyết và bài mẫu theo dạng'
   const back = () => {
     if (dangSearch) { setQ(''); setKetQua(null); setLoiTim(null); return }
+    if (laMuc) { if (mucChuDe) { setMucChuDe(null); return } onXong(); return }
     if (chuyenDe) { setDuong({ chuDe, chuyenDe: null }); return }
     if (chuDe) { setDuong({ chuDe: null, chuyenDe: null }); return }
     onXong()
@@ -237,7 +276,7 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
       <div className="relative mt-2">
         <span className="pointer-events-none absolute left-3.5 top-1/2 z-[1] -translate-y-1/2 text-[15px]">🔍</span>
         <input value={q} onChange={(e) => setQ(e.target.value)} inputMode="search"
-          placeholder="Tìm công thức, dạng bài…"
+          placeholder={coMuc ? 'Tìm khái niệm, công thức, dạng bài…' : 'Tìm công thức, dạng bài…'}
           className="w-full py-3 pl-10 pr-10 text-[14px] outline-none"
           style={{ ...THE_TRON, color: NAVY }} />
         {q && (
@@ -245,8 +284,36 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
         )}
       </div>
 
+      {/* TAB Sổ tay / Dạng bài — chỉ khi môn có mục sổ tay đã duyệt (dữ liệu quyết định, không if theo môn). */}
+      {!dangSearch && coMuc && (
+        <div className="mt-3 grid grid-cols-2 gap-1 p-1" style={{ ...THE_TRON, borderRadius: '999px' }}>
+          {([['muc', 'Sổ tay'], ['dang', 'Dạng bài']] as const).map(([k, ten]) => (
+            <button key={k} onClick={() => setChe(k)} className="rounded-full py-2 text-[13px] font-bold transition"
+              style={che === k ? { background: MAU.acc, color: MAU.accInk } : { color: MAU.muted }}>{ten}</button>
+          ))}
+        </div>
+      )}
+
+      {/* Lọc của tab Sổ tay: phân môn + khối (chỉ khi đang ở danh sách chủ đề). */}
+      {!dangSearch && laMuc && !chuDeMuc && (
+        <>
+          {nhanhMuc.length > 1 && (
+            <div className="mt-3 flex flex-wrap gap-2">
+              <Chip t={t} ten="Tất cả" chon={mucNhanh === null} onClick={() => setMucNhanh(null)} />
+              {nhanhMuc.map((n) => <Chip key={n} t={t} ten={n} chon={mucNhanh === n} onClick={() => setMucNhanh(n)} />)}
+            </div>
+          )}
+          {(mucCay?.khoi_list.length ?? 0) > 1 && (
+            <div className="mt-2 flex flex-wrap items-center gap-2">
+              <span className="text-[11.5px] font-bold" style={{ color: MAU.muted }}>Khối</span>
+              {mucCay!.khoi_list.map((k) => <Chip key={k} t={t} ten={k} chon={mucCay!.khoi === k} onClick={() => setMucKhoi(k)} />)}
+            </div>
+          )}
+        </>
+      )}
+
       {/* Bộ lọc chỉ có nghĩa khi đang duyệt cây — lúc tìm thì ẩn đi cho gọn màn. */}
-      {!dangSearch && (
+      {!dangSearch && !laMuc && (
         <>
           <div className="mt-3 flex flex-wrap gap-2">
             {SOTAY_NHANH.map((n) => (
@@ -271,8 +338,9 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
         </>
       )}
 
-      {loi && <Trong t={t} icon="⚠️" title="Không tải được sổ tay" mo_ta={loi} />}
-      {!loi && cay === null && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
+      {laMuc && loiMuc && <Trong t={t} icon="⚠️" title="Không tải được sổ tay" mo_ta={loiMuc} />}
+      {!laMuc && loi && <Trong t={t} icon="⚠️" title="Không tải được sổ tay" mo_ta={loi} />}
+      {!laMuc && !loi && cay === null && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
 
       <div className="mt-4 flex flex-col gap-2.5">
         {/* ── Kết quả tìm ─────────────────────────────────────────────── */}
@@ -285,34 +353,49 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
         )}
         {/* Công thức TRƯỚC, lý thuyết dạng SAU (CEO 03/10) — thứ tự trong từng nhóm do DB xếp. */}
         {dangSearch && ketQua.ct.map((r) => (
-          <Dong key={'ct-' + r.ma} t={t} ten={r.ten} phu={<NhanLoai ct />}
-            duoi={`Khối ${r.khoi} · ${r.ten_chu_de}`} onClick={() => setCtMo(r)} />
+          <Dong key={'ct-' + r.ma} t={t} ten={r.ten} phu={<NhanLoai loai={r.loai ?? 'ct'} />}
+            duoi={`Khối ${r.khoi} · ${r.nhanh ? r.nhanh + ' · ' : ''}${r.ten_chu_de}`} onClick={() => moMuc(r)} />
         ))}
         {dangSearch && ketQua.lt.map((r) => (
-          <Dong key={r.ma_dang} t={t} ten={r.ten_dang} phu={<><NhanLoai ct={false} /><NhomChip nhom={r.nhom} /></>}
+          <Dong key={r.ma_dang} t={t} ten={r.ten_dang} phu={<><NhanLoai loai="ly_thuyet" /><NhomChip nhom={r.nhom} /></>}
             duoi={`Khối ${r.khoi} · ${r.ten_chu_de} › ${r.ten_chuyen_de}`}
             onClick={() => setMaDangMo(r.ma_dang)} />
         ))}
 
+        {/* ── TAB SỔ TAY: mục của 1 chủ đề, nhóm theo LOẠI ─────────────── */}
+        {!dangSearch && laMuc && chuDeMuc && MUC_LOAI_THU_TU.map((lo) => {
+          const ds = chuDeMuc.muc.filter((m) => m.loai === lo)
+          return ds.length > 0 && (
+            <div key={lo} className="flex flex-col gap-2">
+              <NhomHS>{MUC_LOAI[lo].nhom}</NhomHS>
+              {ds.map((m) => <Dong key={m.ma} t={t} ten={m.ten} onClick={() => moMucMa(m.ma)} />)}
+            </div>
+          )
+        })}
+        {/* ── TAB SỔ TAY: chủ đề ─────────────────────────────────────── */}
+        {!dangSearch && laMuc && !chuDeMuc && chuDeMucLoc.map((cd) => (
+          <Dong key={cd.ma} t={t} ten={cd.ten} duoi={`${cd.nhanh ? cd.nhanh + ' · ' : ''}${cd.muc.length} mục`} onClick={() => setMucChuDe(cd.ma)} />
+        ))}
+
         {/* ── Tầng 3: DẠNG ────────────────────────────────────────────── */}
-        {!dangSearch && chuyenDeLoc && chuyenDeLoc.dangs.map((d) => (
+        {!dangSearch && !laMuc && chuyenDeLoc && chuyenDeLoc.dangs.map((d) => (
           <Dong key={d.ma_dang} t={t} ten={d.ten_dang} phu={<NhomChip nhom={d.nhom} />} duoi={d.mo_ta_ngan}
             onClick={() => setMaDangMo(d.ma_dang)} />
         ))}
 
         {/* ── Tầng 2: CHUYÊN ĐỀ ───────────────────────────────────────── */}
-        {!dangSearch && !chuyenDeLoc && chuDeLoc && chuDeLoc.con.map((cde) => (
+        {!dangSearch && !laMuc && !chuyenDeLoc && chuDeLoc && chuDeLoc.con.map((cde) => (
           <Dong key={cde.ma} t={t} ten={cde.ten} duoi={`${cde.dangs.length} dạng bài`}
             onClick={() => setDuong({ chuDe: chuDeLoc, chuyenDe: cde })} />
         ))}
 
         {/* ── Tầng 1: CHỦ ĐỀ ──────────────────────────────────────────── */}
-        {!dangSearch && !chuDeLoc && cayLoc.map((cd) => (
+        {!dangSearch && !laMuc && !chuDeLoc && cayLoc.map((cd) => (
           <Dong key={cd.ma} t={t} ten={cd.ten} duoi={`${cd.con.length} chuyên đề · ${cd.so_dang} dạng`}
             onClick={() => setDuong({ chuDe: cd, chuyenDe: null })} />
         ))}
 
-        {!dangSearch && cay !== null && !loi && cayLoc.length === 0 && (
+        {!dangSearch && !laMuc && cay !== null && !loi && cayLoc.length === 0 && (
           <Trong t={t} icon="📭" title={nhomLoc ? 'Không có dạng nào ở mức này' : 'Khối này chưa có nội dung'}
             mo_ta={nhomLoc ? 'Chọn lại "Tất cả" ở mục Độ khó để xem hết nhé.' : 'Thầy cô đang soạn thêm, em thử chọn khối khác xem sao.'} />
         )}
@@ -360,14 +443,88 @@ function DocDang({ t, maDang, mon, nhanh, api, onBack }: { t: Theme; maDang: str
   )
 }
 
-// ── MÀN ĐỌC 1 THẺ CÔNG THỨC — dữ liệu có sẵn trong kết quả tìm, không gọi thêm RPC ─────────
-function DocCongThuc({ t, r, onBack }: { t: Theme; r: CtTimRow; onBack: () => void }) {
+// ── MÀN ĐỌC 1 MỤC SỔ TAY — thẻ công thức Toán (nội dung + lưu ý + mẹo nhớ) hoặc mục KHTN (tóm tắt · công thức · ý chính · bảng ·
+// kí hiệu · ví dụ từng bước · hay nhầm · liên quan). Dữ liệu = 1 hình từ DB (`_sotay_muc_json`); phần nào vắng thì không vẽ.
+function KhoiDoc({ ten, children }: { ten?: string; children: ReactNode }) {
   return (
-    <Kung t={t} decor={false} onBack={onBack} title={r.ten} sub={`Công thức · Khối ${r.khoi} · ${r.ten_chu_de}`}>
-      <div className="mt-2 p-4" style={THE}>
-        <div className="text-[15px] leading-[1.8]" style={{ color: NAVY }}><MathText>{r.noi_dung}</MathText></div>
+    <div className="mt-2.5 p-4" style={THE}>
+      {ten && <p className="mb-2 text-[12px] font-black uppercase tracking-[0.06em]" style={{ color: MAU.acc }}>{ten}</p>}
+      <div className="text-[14px] leading-[1.75]" style={{ color: NAVY }}>{children}</div>
+    </div>
+  )
+}
+function BangDoc({ hang, dauLaTieuDe = true }: { hang: string[][]; dauLaTieuDe?: boolean }) {
+  return (
+    <div className="-mx-1 overflow-x-auto">
+      <table className="w-full border-collapse text-[13px] leading-snug">
+        <tbody>
+          {hang.map((h, i) => (
+            <tr key={i} style={i === 0 && dauLaTieuDe ? { background: MAU.surface2 } : undefined}>
+              {h.map((o, j) => (
+                <td key={j} className={`px-2 py-1.5 align-top ${i === 0 && dauLaTieuDe ? 'font-bold' : ''}`} style={{ border: `1px solid ${MAU.line}` }}>
+                  <MathText>{o}</MathText>
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+function DocMuc({ r, api, onMo, onBack }: { r: MucSoTay; api: SoTayApi; onMo: (r: MucSoTay) => void; onBack: () => void }) {
+  const [loi, setLoi] = useState<string | null>(null)
+  const loai = r.loai ?? 'ct'
+  const moLq = (ma: string) => {
+    if (!api.muc) return
+    setLoi(null)
+    api.muc(ma).then((x) => { if (x) onMo(x) }).catch((e) => { ghiLoi('mở mục ' + ma, e); setLoi(moTaLoi(e, 'Không mở được mục này.')) })
+  }
+  return (
+    <Kung decor={false} onBack={onBack} title={r.ten}
+      sub={[MUC_LOAI[loai].ten, `Khối ${r.khoi}`, r.nhanh, r.ten_chu_de].filter(Boolean).join(' · ')}>
+      <KhoiDoc>
+        <div className="text-[15px] leading-[1.8]"><MathText>{r.noi_dung}</MathText></div>
+        {r.cong_thuc && (
+          <div className="mt-3 px-3 py-2.5 text-center text-[17px] font-bold" style={{ ...HEAD, background: MAU.surface2, borderRadius: '12px', color: NAVY }}>
+            <MathText>{r.cong_thuc}</MathText>
+          </div>
+        )}
         {r.hinh_url && <img src={r.hinh_url} alt="" className="mx-auto mt-3 max-h-64 w-auto max-w-full rounded-lg" />}
-      </div>
+      </KhoiDoc>
+      {r.bien?.length ? (
+        <KhoiDoc ten="Kí hiệu">
+          <BangDoc hang={r.bien} dauLaTieuDe={false} />
+        </KhoiDoc>
+      ) : null}
+      {r.y?.length ? (
+        <KhoiDoc ten="Ý chính">
+          <ul className="flex flex-col gap-1.5 pl-4" style={{ listStyleType: 'disc' }}>
+            {r.y.map((x, i) => <li key={i}><MathText>{x}</MathText></li>)}
+          </ul>
+        </KhoiDoc>
+      ) : null}
+      {r.bang?.length ? <KhoiDoc ten={loai === 'ss' ? 'So sánh' : 'Bảng'}><BangDoc hang={r.bang} /></KhoiDoc> : null}
+      {r.vd && (
+        <KhoiDoc ten="Ví dụ">
+          <p className="font-semibold"><MathText>{r.vd.de}</MathText></p>
+          {r.vd.buoc?.length ? (
+            <ol className="mt-2 flex flex-col gap-1 pl-5" style={{ listStyleType: 'decimal', color: MAU.muted }}>
+              {r.vd.buoc.map((b, i) => <li key={i}><span style={{ color: NAVY }}><MathText>{b}</MathText></span></li>)}
+            </ol>
+          ) : null}
+          {r.vd.kq && (
+            <p className="mt-2 font-bold"><span style={{ color: MAU.dung }}>Kết quả: </span><MathText>{r.vd.kq}</MathText></p>
+          )}
+        </KhoiDoc>
+      )}
+      {r.nham?.length ? (
+        <KhoiDoc ten="Hay nhầm">
+          <ul className="flex flex-col gap-1.5">
+            {r.nham.map((x, i) => <li key={i} className="flex gap-2"><span style={{ color: MAU.canhBao }} aria-hidden>⚠</span><span><MathText>{x}</MathText></span></li>)}
+          </ul>
+        </KhoiDoc>
+      ) : null}
       {r.luu_y && (
         <div className="mt-2.5 p-3.5 text-[13.5px] leading-relaxed" style={{ ...THE, color: NAVY }}>
           <span className="font-black" style={{ color: MAU.canhBao }}>Lưu ý: </span><MathText>{r.luu_y}</MathText>
@@ -378,6 +535,13 @@ function DocCongThuc({ t, r, onBack }: { t: Theme; r: CtTimRow; onBack: () => vo
           <span className="font-black" style={{ color: MAU.acc }}>Mẹo nhớ: </span><MathText>{r.cau_nho}</MathText>
         </div>
       )}
+      {r.lq?.length ? (
+        <div className="mt-4 flex flex-col gap-2">
+          <NhomHS>Liên quan</NhomHS>
+          {loi && <Trong icon="⚠️" title="Không mở được" mo_ta={loi} />}
+          {r.lq.map((x) => <Dong key={x.ma} ten={x.ten} phu={<NhanLoai loai={x.loai} />} onClick={() => moLq(x.ma)} />)}
+        </div>
+      ) : null}
     </Kung>
   )
 }

@@ -58,3 +58,18 @@ Sau này: nối thẻ ↔ `ma_dang` (nhiều-nhiều) để từ thẻ bấm san
 3. Nối thẻ ↔ `ma_dang` (từ thẻ bấm sang dạng bài và ngược lại).
 4. Thêm quyển nguồn thứ 2 (Phạm Phú Thứ) để đối chiếu; mở rộng lớp 10–11 nếu CEO muốn.
 5. `npm run smoke:sotay` sau mọi migration đụng RPC sổ tay (bài học 20/09) — chưa thêm `hs_sotay_tim_ct` vào smoke.
+
+## 7. Mở rộng thành MỤC SỔ TAY mọi môn + sổ tay KHTN (Thùy 03/10)
+| # | Quyết định | Ai / khi nào |
+|---|---|---|
+| 1 | Sổ tay KHTN (artifact "KHTN Pocket", Lý/Hoá/Sinh lớp 6–9, 807 mục) lên app HS. **GV đã duyệt ⇒ nạp ở trạng thái đã duyệt, không duyệt lại.** | Thùy 03/10 |
+| 2 | **ERP là GỐC**: nạp 1 lần, sau đó sửa trên màn Sổ tay ERP; app HS chỉ ĐỌC từ ERP. Không nạp lại đè. | Thùy 03/10 |
+| 3 | Không đẻ bảng riêng: `sotay_cong_thuc` mở rộng thành bảng MỤC sổ tay chung (cột `loai` 9 loại — thẻ Toán cũ = `ct`; `cong_thuc`, `y`, `bang`, `bien`, `vd`, `nham`, `lq`; `sotay_ct_chu_de.nhanh` = Lý/Hóa/Sinh). | CTO 03/10 (§1.6) |
+
+- Mig `202610031125_sotay_muc_mo_rong` (cột + `_sotay_muc_json` 1 nguồn nội dung mục + `hs_sotay_muc_cay` duyệt cây + `hs_sotay_muc` mở mục; trigger hạ "đã duyệt" tính cả cột mới) ·
+  `202610031126_sotay_khtn_nap` (807 mục · 53 chủ đề · 109 hình "chưa vẽ"). Bóc: `scripts/sotay-khtn/boc-wiki.mjs` (vm sandbox, chỉ module dữ liệu) → `sinh-seed.mjs`.
+  Mã mục = id của Pocket (`h7-nguyen-tu`). Bỏ 98 liên kết tới "thẻ ôn tập" riêng của Pocket.
+- App HS `SoTayHS`: tab **Sổ tay** (phân môn → chủ đề → mục nhóm theo loại → trang mục: tóm tắt · công thức · kí hiệu · ý chính · bảng · ví dụ từng bước ·
+  hay nhầm · liên quan) cạnh tab **Dạng bài**; tab chỉ hiện khi môn có mục đã duyệt. Kết quả tìm gắn nhãn theo loại.
+- ERP `SoTayCongThucScreen`: chọn phạm vi lấy từ DB (Toán 12 · KHTN 6–9), sửa đủ trường mới.
+- **Còn treo:** 109 hình KHTN Pocket vẽ bằng code ⇒ chưa có ảnh (app không hiện tới khi gắn ảnh ở tab Hình) · nối mục ↔ dạng bài `khtn_ban_do` (để từ dạng sai bấm sang mục).

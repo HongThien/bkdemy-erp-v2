@@ -12,18 +12,17 @@ import { MathText } from '../kho/ui'
 import { ImageSlot } from '../kho/DangHub'
 import { MathTextarea } from '../../components/math/MathTextarea'
 import {
-  taiBo, luuThe, duyetThe, traVeThe, boDuyetThe, xoaThe, khoiPhucThe, themThe, datAnhHinh, themHinh, lichSu,
-  CT_TRANG_THAI, HANH_DONG_TEN,
-  type CtBo, type CtThe, type CtHinh, type CtSua, type CtTrangThai, type CtLichSu,
+  taiBo, luuThe, duyetThe, traVeThe, boDuyetThe, xoaThe, khoiPhucThe, themThe, datAnhHinh, themHinh, lichSu, phamViSoTay,
+  CT_TRANG_THAI, HANH_DONG_TEN, MUC_LOAI, MUC_LOAI_THU_TU,
+  type CtBo, type CtThe, type CtHinh, type CtSua, type CtTrangThai, type CtLichSu, type CtPhamVi,
 } from '../../lib/sotayCongThuc'
 
-// Đợt 1 chỉ Toán 12 (Thùy 03/10). Thêm môn/khối = thêm vào đây; mọi thứ bên dưới chạy y hệt (§1.6 symmetry).
-const PHAM_VI = [{ mon: 'Toán', khoi: '12' }] as const
+// Phạm vi (môn × khối) đọc từ DB (phamViSoTay) — 03/10: Toán 12 + KHTN 6–9 (sổ tay KHTN). Mọi thứ bên dưới chạy y hệt mọi môn (§1.6).
 
 type Loc = 'tat_ca' | CtTrangThai | 'rac'
 type Tab = 'the' | 'hinh'
-const NHO: { pv: number; bo: CtBo | null; tab: Tab; loc: Loc; chuDe: string | null; q: string; ma: string | null } = {
-  pv: 0, bo: null, tab: 'the', loc: 'tat_ca', chuDe: null, q: '', ma: null,
+const NHO: { pvs: CtPhamVi[]; pv: string; boPv: string; bo: CtBo | null; tab: Tab; loc: Loc; chuDe: string | null; q: string; ma: string | null } = {
+  pvs: [], pv: '', boPv: '', bo: null, tab: 'the', loc: 'tat_ca', chuDe: null, q: '', ma: null,
 }
 
 const boDau = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase()
@@ -46,8 +45,9 @@ function Chip({ on, children, onClick, title }: { on: boolean; children: ReactNo
 }
 
 export default function SoTayCongThucScreen() {
-  const [pv] = useState(NHO.pv)
-  const { mon, khoi } = PHAM_VI[pv]
+  const [pvs, setPvs] = useState<CtPhamVi[]>(NHO.pvs)
+  const [pv, setPv] = useState(NHO.pv) // 'môn|khối'
+  const [mon, khoi] = pv ? pv.split('|') : ['', '']
   const [bo, setBo] = useState<CtBo | null>(NHO.bo)
   const [loi, setLoi] = useState<string | null>(null)
   const [tab, setTab] = useState<Tab>(NHO.tab)
@@ -58,16 +58,22 @@ export default function SoTayCongThucScreen() {
   const [taiLai, setTaiLai] = useState(0)
   const [them, setThem] = useState(false)
 
-  useEffect(() => { Object.assign(NHO, { pv, bo, tab, loc, chuDe, q, ma }) }, [pv, bo, tab, loc, chuDe, q, ma])
-
-  // Tải khi chưa có cache, hoặc bấm ↻. Refetch NỀN: giữ `bo` cũ tới khi có bộ mới (không chớp trắng).
+  useEffect(() => { Object.assign(NHO, { pvs, pv, bo, tab, loc, chuDe, q, ma }) }, [pvs, pv, bo, tab, loc, chuDe, q, ma])
   useEffect(() => {
-    if (bo && taiLai === 0) return
+    if (pvs.length) return
+    phamViSoTay().then((ds) => { setPvs(ds); setPv((x) => x || (ds[0] ? ds[0].mon + '|' + ds[0].khoi : '')) }).catch((e) => setLoi(loiMsg(e)))
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Tải khi chưa có cache / đổi phạm vi (đổi NGỮ CẢNH ⇒ quét lại là đúng) / bấm ↻. ↻ = refetch NỀN: giữ `bo` cũ tới khi có bộ mới.
+  useEffect(() => {
+    if (!pv) return
+    if (bo && NHO.boPv === pv && taiLai === 0) return
     let huy = false
     setLoi(null)
-    taiBo(mon, khoi).then((b) => { if (!huy) setBo(b) }).catch((e) => { if (!huy) setLoi(loiMsg(e)) })
+    if (NHO.boPv !== pv) { setBo(null); setChuDe(null); setMa(null) }
+    taiBo(mon, khoi).then((b) => { if (!huy) { NHO.boPv = pv; setBo(b) } }).catch((e) => { if (!huy) setLoi(loiMsg(e)) })
     return () => { huy = true }
-  }, [mon, khoi, taiLai]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [pv, taiLai]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const vaThe = (t: CtThe) => setBo((b) => b && ({ ...b, the: b.the.some((x) => x.ma === t.ma) ? b.the.map((x) => (x.ma === t.ma ? t : x)) : [...b.the, t] }))
   const vaHinh = (h: CtHinh) => setBo((b) => b && ({ ...b, hinh: b.hinh.some((x) => x.ma === h.ma) ? b.hinh.map((x) => (x.ma === h.ma ? h : x)) : [...b.hinh, h] }))
@@ -99,11 +105,14 @@ export default function SoTayCongThucScreen() {
     <section className="flex h-full min-h-0 flex-col bg-[#f5f5f7]">
       <header className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-5 py-3">
         <div>
-          <h1 className="text-[17px] font-bold text-slate-800">Sổ tay công thức</h1>
-          <p className="text-[12px] text-slate-500">{mon} · Khối {khoi} — HS chỉ thấy thẻ <b>đã duyệt</b>. Sửa nội dung thẻ đã duyệt ⇒ thẻ tự về <b>chờ duyệt</b>.</p>
+          <h1 className="text-[17px] font-bold text-slate-800">Sổ tay</h1>
+          <p className="text-[12px] text-slate-500">{mon} · Khối {khoi} — ERP là GỐC, app HS đọc từ đây. HS chỉ thấy mục <b>đã duyệt</b>. Sửa nội dung mục đã duyệt ⇒ tự về <b>chờ duyệt</b>.</p>
+        </div>
+        <div className="flex flex-wrap gap-1">
+          {pvs.map((x) => { const k = x.mon + '|' + x.khoi; return <Chip key={k} on={pv === k} onClick={() => setPv(k)}>{x.mon} {x.khoi}</Chip> })}
         </div>
         <div className="ml-4 flex gap-1 rounded-lg bg-slate-100 p-1">
-          {([['the', `Thẻ công thức (${dem.tat_ca})`], ['hinh', `Hình (${hinhDaVe}/${bo?.hinh.length ?? 0} đã vẽ)`]] as [Tab, string][]).map(([k, ten]) => (
+          {([['the', `Mục (${dem.tat_ca})`], ['hinh', `Hình (${hinhDaVe}/${bo?.hinh.length ?? 0} đã vẽ)`]] as [Tab, string][]).map(([k, ten]) => (
             <button key={k} onClick={() => setTab(k)}
               className={`rounded-md px-3 py-1.5 text-[13px] font-medium ${tab === k ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{ten}</button>
           ))}
@@ -131,7 +140,7 @@ export default function SoTayCongThucScreen() {
               </div>
               <div className="flex flex-wrap gap-1">
                 <Chip on={chuDe === null} onClick={() => setChuDe(null)}>Mọi chủ đề</Chip>
-                {bo.chuDe.map((c) => <Chip key={c.ma} on={chuDe === c.ma} onClick={() => setChuDe(c.ma)} title={c.ten}>{c.ten.split(/[—(]/)[0].trim()}</Chip>)}
+                {bo.chuDe.map((c) => <Chip key={c.ma} on={chuDe === c.ma} onClick={() => setChuDe(c.ma)} title={c.ten}>{c.nhanh ? c.nhanh + ' · ' : ''}{c.ten.split(/[—(]/)[0].trim()}</Chip>)}
               </div>
               <button onClick={() => setThem((v) => !v)} className="w-full rounded-md border border-dashed border-indigo-300 py-1.5 text-[12.5px] font-medium text-indigo-600 hover:bg-indigo-50">
                 {them ? 'Đóng' : '+ Thêm thẻ mới'}
@@ -155,7 +164,7 @@ export default function SoTayCongThucScreen() {
                         <Pill tt={t.trang_thai} />
                       </span>
                     </div>
-                    <div className="mt-0.5 text-[13px] font-medium leading-snug text-slate-800">{t.ten}</div>
+                    <div className="mt-0.5 text-[13px] font-medium leading-snug text-slate-800">{t.ten} <span className="text-[10.5px] font-normal text-slate-400">· {MUC_LOAI[t.loai]?.ten}</span></div>
                   </button>
                 )
               })}
@@ -177,13 +186,27 @@ export default function SoTayCongThucScreen() {
 const tuThe = (t: CtThe): CtSua => ({
   ten: t.ten, ten_khac: t.ten_khac, noi_dung: t.noi_dung, luu_y: t.luu_y, cau_nho: t.cau_nho, hinh: t.hinh,
   chu_de: t.chu_de, ct2018: t.ct2018, ghi_chu_kiem: t.ghi_chu_kiem, nguon: t.nguon,
+  loai: t.loai, cong_thuc: t.cong_thuc, y: t.y, bang: t.bang, bien: t.bien, vd: t.vd, nham: t.nham, lq: t.lq,
 })
 const rongLaNull = (s: string | null) => (s && s.trim() ? s : null)
+// Ô sửa dạng CHỮ cho trường mảng/bảng (mục sổ tay): mỗi dòng 1 ý · bảng: mỗi dòng 1 hàng, cột cách bằng "|". Rỗng ⇒ null (không áp dụng).
+const raDong = (a: string[] | null | undefined) => (a ?? []).join('\n')
+const vaoDong = (s: string) => { const a = s.split('\n').map((x) => x.trim()).filter(Boolean); return a.length ? a : null }
+const raBang = (b: string[][] | null | undefined) => (b ?? []).map((h) => h.join(' | ')).join('\n')
+const vaoBang = (s: string) => { const b = s.split('\n').map((x) => x.trim()).filter(Boolean).map((h) => h.split('|').map((o) => o.trim())); return b.length ? b : null }
 
 function SuaThe({ t, bo, onVa, onMoHinh }: { t: CtThe; bo: CtBo; onVa: (t: CtThe) => void; onMoHinh: () => void }) {
   const [nhap, setNhap] = useState<CtSua>(() => tuThe(t))
   const [tenKhac, setTenKhac] = useState(t.ten_khac.join('\n'))
   const [nguon, setNguon] = useState(t.nguon.join(', '))
+  const [chuY, setChuY] = useState(raDong(t.y))
+  const [chuNham, setChuNham] = useState(raDong(t.nham))
+  const [chuLq, setChuLq] = useState(t.lq.join('\n'))
+  const [chuBang, setChuBang] = useState(raBang(t.bang))
+  const [chuBien, setChuBien] = useState(raBang(t.bien))
+  const [vdDe, setVdDe] = useState(t.vd?.de ?? '')
+  const [vdBuoc, setVdBuoc] = useState(raDong(t.vd?.buoc))
+  const [vdKq, setVdKq] = useState(t.vd?.kq ?? '')
   const [dang, setDang] = useState<string | null>(null) // tên thao tác đang chạy
   const [bao, setBao] = useState<{ ok: boolean; chu: string } | null>(null)
   const [lyDo, setLyDo] = useState<string | null>(null) // != null ⇒ đang nhập lý do trả về
@@ -194,9 +217,16 @@ function SuaThe({ t, bo, onVa, onMoHinh }: { t: CtThe; bo: CtBo; onVa: (t: CtThe
     ten_khac: tenKhac.split('\n').map((s) => s.trim()).filter(Boolean),
     nguon: nguon.split(',').map((s) => s.trim()).filter(Boolean),
     luu_y: rongLaNull(nhap.luu_y), cau_nho: rongLaNull(nhap.cau_nho), ghi_chu_kiem: rongLaNull(nhap.ghi_chu_kiem),
+    cong_thuc: rongLaNull(nhap.cong_thuc),
+    y: vaoDong(chuY), nham: vaoDong(chuNham), lq: vaoDong(chuLq) ?? [], bang: vaoBang(chuBang), bien: vaoBang(chuBien),
+    vd: vdDe.trim() ? { de: vdDe.trim(), ...(vaoDong(vdBuoc) ? { buoc: vaoDong(vdBuoc)! } : {}), ...(vdKq.trim() ? { kq: vdKq.trim() } : {}) } : null,
   }
   const goc = tuThe(t)
-  const doi = JSON.stringify(sua) !== JSON.stringify({ ...goc, luu_y: rongLaNull(goc.luu_y), cau_nho: rongLaNull(goc.cau_nho), ghi_chu_kiem: rongLaNull(goc.ghi_chu_kiem) })
+  // So qua CÙNG bộ chuyển chữ ⇔ mảng để mục chưa sửa không bị coi là "đã đổi" (thứ tự khoá vd theo dữ liệu gốc).
+  const chuan = (x: CtSua) => JSON.stringify({ ...x, luu_y: rongLaNull(x.luu_y), cau_nho: rongLaNull(x.cau_nho), ghi_chu_kiem: rongLaNull(x.ghi_chu_kiem),
+    cong_thuc: rongLaNull(x.cong_thuc), y: vaoDong(raDong(x.y)), nham: vaoDong(raDong(x.nham)), lq: x.lq ?? [], bang: vaoBang(raBang(x.bang)), bien: vaoBang(raBang(x.bien)),
+    vd: x.vd ? { de: x.vd.de, buoc: x.vd.buoc?.length ? x.vd.buoc : undefined, kq: x.vd.kq || undefined } : null })
+  const doi = chuan(sua) !== chuan(goc)
   const thieu = !sua.ten.trim() ? 'Thiếu tên' : !sua.noi_dung.trim() ? 'Thiếu nội dung' : null
 
   const chay = async (ten: string, fn: () => Promise<CtThe>, xong: string) => {
@@ -277,7 +307,10 @@ function SuaThe({ t, bo, onVa, onMoHinh }: { t: CtThe; bo: CtBo; onVa: (t: CtThe
         {/* Trường sửa */}
         <div className="space-y-4">
           <div>
-            <label className={nhan}>Tên công thức</label>
+            <label className={nhan}>Tên mục</label>
+            <div className="mb-2 flex flex-wrap gap-1">
+              {MUC_LOAI_THU_TU.map((l) => <Chip key={l} on={nhap.loai === l} onClick={() => set('loai', l)}>{MUC_LOAI[l].ten}</Chip>)}
+            </div>
             <input value={nhap.ten} onChange={(e) => set('ten', e.target.value)} className={`${o} font-semibold`} />
           </div>
           <div className="grid gap-4 md:grid-cols-2">
@@ -306,7 +339,7 @@ function SuaThe({ t, bo, onVa, onMoHinh }: { t: CtThe; bo: CtBo; onVa: (t: CtThe
             </div>
           </div>
           <div>
-            <label className={nhan}>Nội dung — công thức trong $…$, mỗi dòng 1 ý</label>
+            <label className={nhan}>Nội dung / tóm tắt — công thức Toán trong $…$, mỗi dòng 1 ý</label>
             <MathTextarea value={nhap.noi_dung} onChange={(v) => set('noi_dung', v)} autoMaxPx={420} soanTitle={`Nội dung · ${t.ma}`}
               className={`${o} font-mono text-[12.5px]`} />
           </div>
@@ -319,6 +352,40 @@ function SuaThe({ t, bo, onVa, onMoHinh }: { t: CtThe; bo: CtBo; onVa: (t: CtThe
               <label className={nhan}>Câu nhớ</label>
               <MathTextarea value={nhap.cau_nho ?? ''} onChange={(v) => set('cau_nho', v)} autoMaxPx={200} className={`${o} font-mono text-[12.5px]`} />
             </div>
+          </div>
+          <div>
+            <label className={nhan}>Công thức (chữ thường, vd v = s/t — để trống nếu không có)</label>
+            <input value={nhap.cong_thuc ?? ''} onChange={(e) => set('cong_thuc', e.target.value)} className={`${o} font-mono`} />
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            <div>
+              <label className={nhan}>Ý chính — mỗi dòng 1 ý</label>
+              <textarea value={chuY} onChange={(e) => setChuY(e.target.value)} rows={5} className={`${o} text-[12.5px]`} />
+            </div>
+            <div>
+              <label className={nhan}>Hay nhầm — mỗi dòng 1 ý</label>
+              <textarea value={chuNham} onChange={(e) => setChuNham(e.target.value)} rows={5} className={`${o} text-[12.5px]`} />
+            </div>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            <div>
+              <label className={nhan}>Bảng — mỗi dòng 1 hàng, cột cách "|", dòng đầu là tiêu đề</label>
+              <textarea value={chuBang} onChange={(e) => setChuBang(e.target.value)} rows={5} className={`${o} font-mono text-[12px]`} />
+            </div>
+            <div>
+              <label className={nhan}>Kí hiệu — kí hiệu | đại lượng | đơn vị</label>
+              <textarea value={chuBien} onChange={(e) => setChuBien(e.target.value)} rows={5} className={`${o} font-mono text-[12px]`} />
+            </div>
+          </div>
+          <div className="rounded-lg bg-white p-3 ring-1 ring-slate-200">
+            <label className={nhan}>Ví dụ (để trống đề = không có ví dụ)</label>
+            <textarea value={vdDe} onChange={(e) => setVdDe(e.target.value)} rows={2} placeholder="Đề" className={`${o} mb-2 text-[12.5px]`} />
+            <textarea value={vdBuoc} onChange={(e) => setVdBuoc(e.target.value)} rows={3} placeholder="Các bước — mỗi dòng 1 bước" className={`${o} mb-2 text-[12.5px]`} />
+            <input value={vdKq} onChange={(e) => setVdKq(e.target.value)} placeholder="Kết quả" className={`${o} text-[12.5px]`} />
+          </div>
+          <div>
+            <label className={nhan}>Liên quan — mã mục, mỗi dòng 1 mã</label>
+            <textarea value={chuLq} onChange={(e) => setChuLq(e.target.value)} rows={3} className={`${o} font-mono text-[12px]`} />
           </div>
           <div>
             <label className={nhan}>Hình minh hoạ</label>
@@ -341,7 +408,7 @@ function SuaThe({ t, bo, onVa, onMoHinh }: { t: CtThe; bo: CtBo; onVa: (t: CtThe
           <div className="sticky top-16">
             <p className={nhan}>HS sẽ thấy</p>
             <XemTruoc ten={sua.ten} chuDe={bo.chuDe.find((c) => c.ma === sua.chu_de)?.ten ?? ''} noiDung={sua.noi_dung}
-              luuY={sua.luu_y} cauNho={sua.cau_nho} hinhUrl={hinh?.url ?? null} />
+              luuY={sua.luu_y} cauNho={sua.cau_nho} hinhUrl={hinh?.url ?? null} sua={sua} />
           </div>
         </div>
       </div>
@@ -349,13 +416,30 @@ function SuaThe({ t, bo, onVa, onMoHinh }: { t: CtThe; bo: CtBo; onVa: (t: CtThe
   )
 }
 
-function XemTruoc({ ten, chuDe, noiDung, luuY, cauNho, hinhUrl }: { ten: string; chuDe: string; noiDung: string; luuY: string | null; cauNho: string | null; hinhUrl: string | null }) {
+function XemTruoc({ ten, chuDe, noiDung, luuY, cauNho, hinhUrl, sua }: { ten: string; chuDe: string; noiDung: string; luuY: string | null; cauNho: string | null; hinhUrl: string | null; sua: CtSua }) {
+  const bangNho = (b: string[][]) => (
+    <table className="mt-2 w-full border-collapse text-[12px]"><tbody>
+      {b.map((h, i) => <tr key={i} className={i === 0 ? 'bg-slate-50 font-semibold' : ''}>{h.map((o, j) => <td key={j} className="border border-slate-200 px-1.5 py-1"><MathText>{o}</MathText></td>)}</tr>)}
+    </tbody></table>
+  )
   return (
     <div className="rounded-xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
-      <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[10.5px] font-bold text-indigo-700">Công thức</span>
+      <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[10.5px] font-bold text-indigo-700">{MUC_LOAI[sua.loai]?.ten}</span>
       <h3 className="mt-2 text-[15px] font-bold text-slate-800">{ten || '—'}</h3>
       <p className="text-[11.5px] text-slate-500">{chuDe}</p>
       <div className="mt-3 text-[14px] leading-[1.75] text-slate-800"><MathText>{noiDung}</MathText></div>
+      {sua.cong_thuc && <div className="mt-2 rounded-lg bg-slate-50 py-2 text-center font-mono text-[15px] font-bold text-slate-800">{sua.cong_thuc}</div>}
+      {sua.bien && bangNho(sua.bien)}
+      {sua.y && <ul className="mt-2 list-disc space-y-1 pl-5 text-[13px] text-slate-800">{sua.y.map((x, i) => <li key={i}><MathText>{x}</MathText></li>)}</ul>}
+      {sua.bang && bangNho(sua.bang)}
+      {sua.vd && (
+        <div className="mt-2 rounded-lg bg-slate-50 p-2.5 text-[12.5px] text-slate-800">
+          <b>Ví dụ: </b><MathText>{sua.vd.de}</MathText>
+          {sua.vd.buoc && <ol className="mt-1 list-decimal pl-5">{sua.vd.buoc.map((x, i) => <li key={i}><MathText>{x}</MathText></li>)}</ol>}
+          {sua.vd.kq && <p className="mt-1 font-semibold">Kết quả: <MathText>{sua.vd.kq}</MathText></p>}
+        </div>
+      )}
+      {sua.nham && <ul className="mt-2 space-y-1 text-[12.5px] text-amber-900">{sua.nham.map((x, i) => <li key={i}>⚠ <MathText>{x}</MathText></li>)}</ul>}
       {hinhUrl && <img src={hinhUrl} alt="" className="mx-auto mt-3 max-h-56 rounded border border-slate-100" />}
       {luuY && <div className="mt-3 rounded-lg bg-amber-50 p-2.5 text-[13px] text-amber-900"><b>Lưu ý: </b><MathText>{luuY}</MathText></div>}
       {cauNho && <div className="mt-2 rounded-lg bg-indigo-50 p-2.5 text-[13px] text-indigo-900"><b>Mẹo nhớ: </b><MathText>{cauNho}</MathText></div>}
