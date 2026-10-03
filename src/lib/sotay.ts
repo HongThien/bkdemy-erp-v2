@@ -44,7 +44,8 @@ export type SoTayCay = {
   thieu_ly_thuyet: number
   cay: SoTayChuDe[]
 }
-export type SoTayTimRow = SoTayDang & { khoi: string; ten_chu_de: string; ten_chuyen_de: string }
+// `nhanh` = nhánh của DẠNG đó (tìm chạy trên mọi nhánh của môn cùng lúc — mig 202610031141) ⇒ mở dạng đúng bảng.
+export type SoTayTimRow = SoTayDang & { khoi: string; ten_chu_de: string; ten_chuyen_de: string; nhanh?: SoTayNhanh }
 export type SoTayNoiDung = SoTayDang & {
   khoi: string
   ma_chu_de: string; ten_chu_de: string; ma_chuyen_de: string; ten_chuyen_de: string
@@ -58,18 +59,18 @@ const CAY_RONG: SoTayCay = {
 
 // Cây lọc Chủ đề → Chuyên đề → Dạng của MỘT khối, lấy 1 lần rồi lọc tại chỗ ở UI.
 // khoi = null ⇒ DB tự lấy khối của chính HS (và tự rơi về khối có nội dung nếu khối em còn trống).
-export async function soTayCay(mon: string, nhanh: SoTayNhanh, khoi: string | null): Promise<SoTayCay> {
-  const { data, error } = await supabase.rpc('hs_sotay_cay', { p_mon: mon, p_nhanh: nhanh, p_khoi: khoi })
+// Thùy 03/10: bỏ chọn khối — cây = lớp em đang học môn đó (lớp đó trống ⇒ lớp cao nhất ≤ lớp em có nội dung). Luật ở DB.
+export async function soTayCay(mon: string, nhanh: SoTayNhanh): Promise<SoTayCay> {
+  const { data, error } = await supabase.rpc('hs_sotay_cay_hs', { p_mon: mon, p_nhanh: nhanh })
   if (error) throw error
   return (data as SoTayCay | null) ?? CAY_RONG
 }
 
 // Gợi ý theo ký tự HS gõ. Bỏ dấu + xếp hạng chạy ở DB; `khoi` chỉ để CỘNG ĐIỂM ưu tiên chứ
 // không cắt — em gõ trúng tên một dạng ở khối khác thì vẫn phải thấy nó.
-export async function soTayTim(tuKhoa: string, mon: string, nhanh: SoTayNhanh, khoi: string | null): Promise<SoTayTimRow[]> {
-  const { data, error } = await supabase.rpc('hs_sotay_tim', {
-    p_tu_khoa: tuKhoa, p_mon: mon, p_nhanh: nhanh, p_khoi: khoi, p_limit: 20,
-  })
+// Thùy 03/10: tìm TOÀN BỘ lý thuyết dạng của môn (mọi nhánh), chỉ các lớp ≤ lớp em đang học — luật ở DB (`hs_sotay_tim_lt`).
+export async function soTayTim(tuKhoa: string, mon: string): Promise<SoTayTimRow[]> {
+  const { data, error } = await supabase.rpc('hs_sotay_tim_lt', { p_tu_khoa: tuKhoa, p_mon: mon, p_limit: 20 })
   if (error) throw error
   return (data as SoTayTimRow[] | null) ?? []
 }

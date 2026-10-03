@@ -73,3 +73,15 @@ Sau này: nối thẻ ↔ `ma_dang` (nhiều-nhiều) để từ thẻ bấm san
   hay nhầm · liên quan) cạnh tab **Dạng bài**; tab chỉ hiện khi môn có mục đã duyệt. Kết quả tìm gắn nhãn theo loại.
 - ERP `SoTayCongThucScreen`: chọn phạm vi lấy từ DB (Toán 12 · KHTN 6–9), sửa đủ trường mới.
 - **Còn treo:** 109 hình KHTN Pocket vẽ bằng code ⇒ chưa có ảnh (app không hiện tới khi gắn ảnh ở tab Hình) · nối mục ↔ dạng bài `khtn_ban_do` (để từ dạng sai bấm sang mục).
+
+## 8. Tìm theo LỚP, bỏ chọn khối (Thùy 03/10)
+| # | Quyết định | Ai / khi nào |
+|---|---|---|
+| 1 | **Bỏ chip Khối** ở cả tab Sổ tay lẫn Dạng bài. | Thùy 03/10 |
+| 2 | Ô tìm ra **toàn bộ kiến thức của môn** (mục sổ tay + lý thuyết mọi nhánh bản đồ kho), **chỉ các lớp ≤ lớp em đang học** (lớp 9 thấy 9, 8, 7, 6… không thấy 10). Đè quyết định 20/09 "chip khối lọc cứng kết quả". | Thùy 03/10 |
+| 3 | Mỗi kết quả có nhãn loại (**Công thức**/loại mục — từ sổ tay mới nhập; **Lý thuyết** — từ bản đồ kiến thức) + nhãn **Lớp X**. | Thùy 03/10 |
+
+- "Lớp em đang học" = lớp của MÔN đó (`_hs_lop_tu_luyen`), không có thì `hoc_sinh.khoi`; so bằng số (`_khoi_so`: '4T' → 4). Nhân sự: không giới hạn. Luật nằm ở DB (`_sotay_khoi_hs`), client không gửi khối.
+- Mig `202610031141_sotay_tim_theo_lop` (ĐÃ ÁP): `hs_sotay_tim_lt` (MỚI — lý thuyết mọi nhánh, kèm `nhanh` từng dòng) · `hs_sotay_cay_hs` (MỚI — cây dạng bài của lớp em; trống ⇒ lớp cao nhất ≤ lớp em) ·
+  `hs_sotay_tim_ct` + `hs_sotay_muc_cay` replace cùng luật. `hs_sotay_cay`/`hs_sotay_tim` cũ (owner postgres) để nguyên, app thôi gọi. Xếp: điểm khớp ↓ rồi lớp ↓.
+- Cây (không tìm) chỉ còn lớp của em; lớp dưới xem qua ô tìm. Kiểm: `scripts/_q_sotay_lop_dryrun.mjs` (HS thật lớp 6/9/12 + nhân sự, rollback).

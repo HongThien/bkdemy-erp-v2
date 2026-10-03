@@ -82,6 +82,11 @@ function NhanLoai({ loai }: { loai: MucLoai | 'ly_thuyet' }) {
     style={muc ? { background: MAU.acc, color: MAU.accInk } : { background: MAU.surface2, color: MAU.muted }}>{muc ? MUC_LOAI[loai].ten : 'Lý thuyết'}</span>
 }
 
+// Nhãn LỚP của kết quả tìm (Thùy 03/10: tìm ra mọi lớp ≤ lớp em ⇒ phải ghi rõ lớp mấy).
+function NhanLop({ khoi }: { khoi: string }) {
+  return <span className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-black" style={{ background: MAU.surface2, color: NAVY }}>Lớp {khoi}</span>
+}
+
 // Dòng danh sách dùng chung cho cả 3 tầng + kết quả tìm.
 function Dong({ ten, phu, duoi, onClick }: { t?: Theme; ten: string; phu?: ReactNode; duoi?: string | null; onClick: () => void }) {
   return (
@@ -140,12 +145,12 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
   const t = THEME[gioiTinh === 'nu' ? 'nu' : 'nam']
   const [mon, setMon] = useState<string | null>(null)
   const [nhanh, setNhanh] = useState<SoTayNhanh>(null)
-  const [khoi, setKhoi] = useState<string | null>(null)   // null = để DB chọn khối của HS
   const [cay, setCay] = useState<SoTayCay | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
   const [nhomLoc, setNhomLoc] = useState<SoTayNhom | null>(null)
   const [duong, setDuong] = useState<{ chuDe: SoTayChuDe | null; chuyenDe: SoTayChuyenDe | null }>({ chuDe: null, chuyenDe: null })
-  const [maDangMo, setMaDangMo] = useState<string | null>(null)
+  // Dạng đang mở + NHÁNH của nó (kết quả tìm có thể thuộc nhánh khác nhánh đang chọn ở cây).
+  const [maDangMo, setMaDangMo] = useState<{ ma: string; nhanh: SoTayNhanh } | null>(null)
   const [q, setQ] = useState('')
   // Kết quả tìm = 2 nguồn: thẻ công thức (`ct`) + dạng bài (`lt`). null = không đang tìm.
   const [ketQua, setKetQua] = useState<{ ct: CtTimRow[]; lt: SoTayTimRow[] } | null>(null)
@@ -155,7 +160,6 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
   // TAB: 'muc' = sổ tay theo chủ đề (khái niệm, công thức, hiện tượng… — có khi môn có mục đã duyệt) · 'dang' = lý thuyết theo dạng bài.
   const [che, setChe] = useState<'muc' | 'dang' | null>(null) // null = chưa biết (chờ cây mục) ⇒ tự chọn 'muc' nếu môn có mục
   const [mucCay, setMucCay] = useState<MucCay | null>(null)
-  const [mucKhoi, setMucKhoi] = useState<string | null>(null)
   const [mucNhanh, setMucNhanh] = useState<string | null>(null)
   const [mucChuDe, setMucChuDe] = useState<string | null>(null)
   const [loiMuc, setLoiMuc] = useState<string | null>(null)
@@ -167,28 +171,28 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
       .catch((e) => setLoi(e?.message ?? String(e)))
   }, [])
 
-  // Đổi NGỮ CẢNH (môn/nhánh/khối) ⇒ quét lại là đúng. Giữ `cay` cũ tới khi có cây mới thay vì
+  // Đổi NGỮ CẢNH (môn/nhánh) ⇒ quét lại là đúng. Không còn chọn khối (Thùy 03/10) — DB lấy lớp em đang học. Giữ `cay` cũ tới khi có cây mới thay vì
   // setCay(null) — không chớp trắng giữa hai lần đổi nhánh (CLAUDE.md §2).
   useEffect(() => {
     if (!mon) return
     let huy = false
     setLoi(null)
-    api.cay(mon, nhanh, khoi)
+    api.cay(mon, nhanh)
       .then((c) => { if (huy) return; setCay(c); setDuong({ chuDe: null, chuyenDe: null }) })
       .catch((e) => { ghiLoi('tải cây', e); if (!huy) setLoi(moTaLoi(e, 'Không tải được sổ tay.')) })
     return () => { huy = true }
-  }, [mon, nhanh, khoi])
+  }, [mon, nhanh])
 
-  // Cây MỤC SỔ TAY (chủ đề → mục) của môn + khối. Đổi khối = đổi ngữ cảnh ⇒ tải lại (giữ cây cũ tới khi có cây mới).
+  // Cây MỤC SỔ TAY (chủ đề → mục) của môn — lớp do DB chọn (lớp em; trống ⇒ lớp cao nhất ≤ lớp em).
   useEffect(() => {
     if (!mon || !api.mucCay) { setChe((c) => c ?? 'dang'); return }
     let huy = false
     setLoiMuc(null)
-    api.mucCay(mon, mucKhoi)
+    api.mucCay(mon)
       .then((c) => { if (huy) return; setMucCay(c); setMucChuDe(null); setChe((x) => x ?? (c.chu_de.length ? 'muc' : 'dang')) })
       .catch((e) => { ghiLoi('tải cây mục', e); if (!huy) { setLoiMuc(moTaLoi(e, 'Không tải được sổ tay.')); setChe((x) => x ?? 'dang') } })
     return () => { huy = true }
-  }, [mon, mucKhoi])
+  }, [mon])
 
   // Tìm kiếm: gõ <2 ký tự thì tắt hẳn kết quả (trả về cây). Debounce 250ms để mỗi phím không
   // bắn 1 RPC. `lanTim` chặn kết quả của lượt gõ CŨ về sau đè lên lượt mới (race khi mạng lag).
@@ -202,9 +206,9 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
     if (!mon || tu.length < 2) { setKetQua(null); setLoiTim(null); return }
     const lan = ++lanTim.current
     const id = setTimeout(() => {
-      const k = che === 'muc' ? (mucKhoi ?? mucCay?.khoi ?? null) : (khoi ?? cay?.khoi ?? null)
-      // Hai RPC song song. Một bên hỏng ⇒ báo LỖI (không lặng lẽ hiện nửa kết quả như thể đủ).
-      Promise.all([(api.timCt ?? (async () => []))(tu, mon, k), api.tim(tu, mon, nhanh, k)])
+      // Hai RPC song song, tìm TOÀN BỘ môn (mọi nhánh, mọi lớp ≤ lớp em — luật ở DB). Một bên hỏng ⇒ báo LỖI
+      // (không lặng lẽ hiện nửa kết quả như thể đủ).
+      Promise.all([(api.timCt ?? (async () => []))(tu, mon), api.tim(tu, mon)])
         .then(([ct, lt]) => { if (lan !== lanTim.current) return; setLoiTim(null); setKetQua({ ct, lt }) })
         .catch((e) => {
           ghiLoi('tìm', e)
@@ -214,7 +218,7 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
         })
     }, 250)
     return () => clearTimeout(id)
-  }, [q, mon, nhanh, khoi, cay?.khoi, che, mucKhoi, mucCay?.khoi])
+  }, [q, mon])
 
   // Lọc độ khó trên cây ĐÃ TẢI — lọc thuần tuý theo lựa chọn UI đang mở (§2.0 cho phép), và
   // đếm theo số dòng THỰC SỰ render để không hứa "(20)" rồi mở ra rỗng.
@@ -234,7 +238,7 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
   if (mucMo.length) return <DocMuc key={mucMo[mucMo.length - 1].ma} r={mucMo[mucMo.length - 1]} api={api} onMo={moMuc}
     onBack={() => setMucMo((s) => s.slice(0, -1))} />
   if (maDangMo && mon) {
-    return <DocDang t={t} maDang={maDangMo} mon={mon} nhanh={nhanh} api={api} onBack={() => setMaDangMo(null)} />
+    return <DocDang t={t} maDang={maDangMo.ma} mon={mon} nhanh={maDangMo.nhanh} api={api} onBack={() => setMaDangMo(null)} />
   }
 
   const dangSearch = ketQua !== null
@@ -258,7 +262,7 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
   const title = dangSearch ? 'Kết quả tìm' : laMuc ? (chuDeMuc ? chuDeMuc.ten : 'Sổ tay kiến thức')
     : chuyenDeLoc ? chuyenDeLoc.ten : chuDeLoc ? chuDeLoc.ten : 'Sổ tay kiến thức'
   const sub = dangSearch ? (loiTim ? 'Lỗi — xem bên dưới' : `${soKq} kết quả`)
-    : laMuc ? (chuDeMuc ? `${chuDeMuc.muc.length} mục${chuDeMuc.nhanh ? ` · ${chuDeMuc.nhanh}` : ''} · Khối ${mucCay?.khoi}` : 'Khái niệm, công thức, hiện tượng… theo chủ đề')
+    : laMuc ? (chuDeMuc ? `${chuDeMuc.muc.length} mục${chuDeMuc.nhanh ? ` · ${chuDeMuc.nhanh}` : ''} · Lớp ${mucCay?.khoi}` : 'Khái niệm, công thức, hiện tượng… theo chủ đề')
     : chuyenDeLoc ? `${chuyenDeLoc.dangs.length} dạng bài`
     : chuDeLoc ? `${chuDeLoc.con.length} chuyên đề`
     : 'Tra lý thuyết và bài mẫu theo dạng'
@@ -294,22 +298,12 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
         </div>
       )}
 
-      {/* Lọc của tab Sổ tay: phân môn + khối (chỉ khi đang ở danh sách chủ đề). */}
-      {!dangSearch && laMuc && !chuDeMuc && (
-        <>
-          {nhanhMuc.length > 1 && (
-            <div className="mt-3 flex flex-wrap gap-2">
-              <Chip t={t} ten="Tất cả" chon={mucNhanh === null} onClick={() => setMucNhanh(null)} />
-              {nhanhMuc.map((n) => <Chip key={n} t={t} ten={n} chon={mucNhanh === n} onClick={() => setMucNhanh(n)} />)}
-            </div>
-          )}
-          {(mucCay?.khoi_list.length ?? 0) > 1 && (
-            <div className="mt-2 flex flex-wrap items-center gap-2">
-              <span className="text-[11.5px] font-bold" style={{ color: MAU.muted }}>Khối</span>
-              {mucCay!.khoi_list.map((k) => <Chip key={k} t={t} ten={k} chon={mucCay!.khoi === k} onClick={() => setMucKhoi(k)} />)}
-            </div>
-          )}
-        </>
+      {/* Lọc của tab Sổ tay: phân môn (chỉ khi đang ở danh sách chủ đề). Không còn chọn khối — Thùy 03/10. */}
+      {!dangSearch && laMuc && !chuDeMuc && nhanhMuc.length > 1 && (
+        <div className="mt-3 flex flex-wrap gap-2">
+          <Chip t={t} ten="Tất cả" chon={mucNhanh === null} onClick={() => setMucNhanh(null)} />
+          {nhanhMuc.map((n) => <Chip key={n} t={t} ten={n} chon={mucNhanh === n} onClick={() => setMucNhanh(n)} />)}
+        </div>
       )}
 
       {/* Bộ lọc chỉ có nghĩa khi đang duyệt cây — lúc tìm thì ẩn đi cho gọn màn. */}
@@ -320,14 +314,6 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
               <Chip key={n.ten} t={t} ten={n.ten} chon={nhanh === n.id} onClick={() => { setNhanh(n.id); setNhomLoc(null) }} />
             ))}
           </div>
-          {(cay?.khoi_list?.length ?? 0) > 1 && (
-            <div className="mt-2 flex flex-wrap items-center gap-2">
-              <span className="text-[11.5px] font-bold" style={{ color: MAU.muted }}>Khối</span>
-              {cay!.khoi_list.map((k) => (
-                <Chip key={k} t={t} ten={k} chon={(khoi ?? cay!.khoi) === k} onClick={() => setKhoi(k)} />
-              ))}
-            </div>
-          )}
           <div className="mt-2 flex flex-wrap items-center gap-2">
             <span className="text-[11.5px] font-bold" style={{ color: MAU.muted }}>Độ khó</span>
             <Chip t={t} ten="Tất cả" chon={nhomLoc === null} onClick={() => setNhomLoc(null)} />
@@ -353,13 +339,13 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
         )}
         {/* Công thức TRƯỚC, lý thuyết dạng SAU (CEO 03/10) — thứ tự trong từng nhóm do DB xếp. */}
         {dangSearch && ketQua.ct.map((r) => (
-          <Dong key={'ct-' + r.ma} t={t} ten={r.ten} phu={<NhanLoai loai={r.loai ?? 'ct'} />}
-            duoi={`Khối ${r.khoi} · ${r.nhanh ? r.nhanh + ' · ' : ''}${r.ten_chu_de}`} onClick={() => moMuc(r)} />
+          <Dong key={'ct-' + r.ma} t={t} ten={r.ten} phu={<><NhanLoai loai={r.loai ?? 'ct'} /><NhanLop khoi={r.khoi} /></>}
+            duoi={`${r.nhanh ? r.nhanh + ' · ' : ''}${r.ten_chu_de}`} onClick={() => moMuc(r)} />
         ))}
         {dangSearch && ketQua.lt.map((r) => (
-          <Dong key={r.ma_dang} t={t} ten={r.ten_dang} phu={<><NhanLoai loai="ly_thuyet" /><NhomChip nhom={r.nhom} /></>}
-            duoi={`Khối ${r.khoi} · ${r.ten_chu_de} › ${r.ten_chuyen_de}`}
-            onClick={() => setMaDangMo(r.ma_dang)} />
+          <Dong key={(r.nhanh ?? 'dai') + r.ma_dang} t={t} ten={r.ten_dang} phu={<><NhanLoai loai="ly_thuyet" /><NhanLop khoi={r.khoi} /><NhomChip nhom={r.nhom} /></>}
+            duoi={`${r.ten_chu_de} › ${r.ten_chuyen_de}`}
+            onClick={() => setMaDangMo({ ma: r.ma_dang, nhanh: r.nhanh ?? null })} />
         ))}
 
         {/* ── TAB SỔ TAY: mục của 1 chủ đề, nhóm theo LOẠI ─────────────── */}
@@ -380,7 +366,7 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
         {/* ── Tầng 3: DẠNG ────────────────────────────────────────────── */}
         {!dangSearch && !laMuc && chuyenDeLoc && chuyenDeLoc.dangs.map((d) => (
           <Dong key={d.ma_dang} t={t} ten={d.ten_dang} phu={<NhomChip nhom={d.nhom} />} duoi={d.mo_ta_ngan}
-            onClick={() => setMaDangMo(d.ma_dang)} />
+            onClick={() => setMaDangMo({ ma: d.ma_dang, nhanh })} />
         ))}
 
         {/* ── Tầng 2: CHUYÊN ĐỀ ───────────────────────────────────────── */}
@@ -396,8 +382,8 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
         ))}
 
         {!dangSearch && !laMuc && cay !== null && !loi && cayLoc.length === 0 && (
-          <Trong t={t} icon="📭" title={nhomLoc ? 'Không có dạng nào ở mức này' : 'Khối này chưa có nội dung'}
-            mo_ta={nhomLoc ? 'Chọn lại "Tất cả" ở mục Độ khó để xem hết nhé.' : 'Thầy cô đang soạn thêm, em thử chọn khối khác xem sao.'} />
+          <Trong t={t} icon="📭" title={nhomLoc ? 'Không có dạng nào ở mức này' : 'Lớp của em chưa có nội dung'}
+            mo_ta={nhomLoc ? 'Chọn lại "Tất cả" ở mục Độ khó để xem hết nhé.' : 'Thầy cô đang soạn thêm — em gõ vào ô tìm để xem kiến thức các lớp dưới nhé.'} />
         )}
       </div>
     </Kung>
@@ -422,7 +408,7 @@ function DocDang({ t, maDang, mon, nhanh, api, onBack }: { t: Theme; maDang: str
   return (
     <Kung t={t} decor={false} onBack={onBack}
       title={d ? d.ten_dang : d === undefined ? 'Đang mở…' : 'Chưa có nội dung'}
-      sub={d ? `Khối ${d.khoi} · ${d.ten_chu_de} › ${d.ten_chuyen_de}` : undefined}>
+      sub={d ? `Lớp ${d.khoi} · ${d.ten_chu_de} › ${d.ten_chuyen_de}` : undefined}>
       {d === undefined && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
       {d === null && (
         <Trong t={t} icon={loi ? '⚠️' : '📭'} title={loi ? 'Không mở được' : 'Dạng này chưa có lý thuyết'}
@@ -482,7 +468,7 @@ function DocMuc({ r, api, onMo, onBack }: { r: MucSoTay; api: SoTayApi; onMo: (r
   }
   return (
     <Kung decor={false} onBack={onBack} title={r.ten}
-      sub={[MUC_LOAI[loai].ten, `Khối ${r.khoi}`, r.nhanh, r.ten_chu_de].filter(Boolean).join(' · ')}>
+      sub={[MUC_LOAI[loai].ten, `Lớp ${r.khoi}`, r.nhanh, r.ten_chu_de].filter(Boolean).join(' · ')}>
       <KhoiDoc>
         <div className="text-[15px] leading-[1.8]"><MathText>{r.noi_dung}</MathText></div>
         {r.cong_thuc && (

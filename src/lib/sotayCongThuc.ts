@@ -134,18 +134,19 @@ export type CtTimRow = {
   lq?: { ma: string; ten: string; loai: MucLoai }[]
 }
 export type MucSoTay = CtTimRow
-export async function soTayTimCt(tuKhoa: string, mon: string, khoi: string | null): Promise<CtTimRow[]> {
-  const { data, error } = await supabase.rpc('hs_sotay_tim_ct', { p_tu_khoa: tuKhoa, p_mon: mon, p_khoi: khoi, p_limit: 20 })
+// Lớp ≤ lớp em đang học môn đó — luật ở DB (mig 202610031141), client không gửi khối.
+export async function soTayTimCt(tuKhoa: string, mon: string): Promise<CtTimRow[]> {
+  const { data, error } = await supabase.rpc('hs_sotay_tim_ct', { p_tu_khoa: tuKhoa, p_mon: mon, p_khoi: null, p_limit: 20 })
   if (error) throw error
   return (data as CtTimRow[] | null) ?? []
 }
-// Cây mục sổ tay của 1 môn (chủ đề → mục). khoi null ⇒ DB chọn khối em đang học môn đó.
+// Cây mục sổ tay của 1 môn (chủ đề → mục) — lớp em đang học môn đó; lớp đó trống ⇒ lớp cao nhất ≤ lớp em có mục (DB chọn).
 export type MucCay = {
   khoi: string | null; khoi_list: string[]
   chu_de: { ma: string; ten: string; nhanh: string | null; muc: { ma: string; ten: string; loai: MucLoai }[] }[]
 }
-export async function soTayMucCay(mon: string, khoi: string | null): Promise<MucCay> {
-  const { data, error } = await supabase.rpc('hs_sotay_muc_cay', { p_mon: mon, p_khoi: khoi })
+export async function soTayMucCay(mon: string): Promise<MucCay> {
+  const { data, error } = await supabase.rpc('hs_sotay_muc_cay', { p_mon: mon, p_khoi: null })
   if (error) throw error
   return data as MucCay
 }
