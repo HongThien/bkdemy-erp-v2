@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from 'react'
-import { KHOI_OPTIONS, DEFAULT_KHOI, listDaiDeXuat, LO_GAN_MAU } from '../../lib/kho/api'
+import { KHOI_OPTIONS, DEFAULT_KHOI, listDeXuat, coDeXuatKho, LO_GAN_MAU, type KhoDeXuat } from '../../lib/kho/api'
 import { useStore } from '../../store/useStore'
 import { useMonScope } from '../../hooks/useMonScope'
 import BanDo from './BanDo'
@@ -53,17 +53,17 @@ export default function KhoScreen() {
   const [deXuat, setDeXuat] = useState(false)
   const [soDeXuat, setSoDeXuat] = useState<number | null>(null)
   const [banDoVer, setBanDoVer] = useState(0) // nhận đề xuất ⇒ bản đồ có dạng mới ⇒ dựng lại cây khi đóng panel
-  const coDeXuat = config.key === 'dai'
+  const coDeXuat = coDeXuatKho(config.key) // registry DE_XUAT_KHO (Đại, KHTN — 03/10)
   // Gán mẫu: lô đang mở của khối này (registry LO_GAN_MAU) — học thuật gán tay mẫu để có bộ đề chấm cho skill gán dạng.
   const [ganMau, setGanMau] = useState(false)
-  const loGanMau = coDeXuat ? LO_GAN_MAU.find((l) => l.khoi === khoi) ?? null : null
+  const loGanMau = config.key === 'dai' ? LO_GAN_MAU.find((l) => l.khoi === khoi) ?? null : null // lô gán mẫu hiện chỉ có ở Đại
   useEffect(() => {
     if (!coDeXuat) { setSoDeXuat(null); return }
     let song = true
     setSoDeXuat(null)
-    listDaiDeXuat(khoi).then((r) => { if (song) setSoDeXuat(r.length) }).catch(() => { if (song) setSoDeXuat(null) })
+    listDeXuat(config.key as KhoDeXuat, khoi).then((r) => { if (song) setSoDeXuat(r.length) }).catch(() => { if (song) setSoDeXuat(null) })
     return () => { song = false }
-  }, [coDeXuat, khoi, deXuat, ganMau])
+  }, [coDeXuat, config.key, khoi, deXuat, ganMau])
 
   // Scope④ THEO MÔN (dùng chung useMonScope — xem lib/mon.ts): admin + Ops thấy tất; người khác chỉ thấy
   // môn được phân (nhan_su_mon). Chưa gán → không thấy môn nào.
@@ -183,7 +183,7 @@ export default function KhoScreen() {
       {timCau && config.cauTbl && allowed.length > 0 && <SearchCau cauTbl={config.cauTbl} onClose={() => setTimCau(false)} />}
       {rac && config.cauTbl && allowed.length > 0 && <KhoRac cauTbl={config.cauTbl} onClose={() => setRac(false)} />}
       {ganMau && loGanMau && allowed.length > 0 && <GanMauPanel lo={loGanMau} onClose={() => setGanMau(false)} onDoiBanDo={() => setBanDoVer((v) => v + 1)} />}
-      {deXuat && coDeXuat && allowed.length > 0 && <DeXuatPanel khoi={khoi} onClose={() => setDeXuat(false)} onDoiBanDo={() => setBanDoVer((v) => v + 1)} />}
+      {deXuat && coDeXuat && allowed.length > 0 && <DeXuatPanel kho={config.key as KhoDeXuat} khoi={khoi} onClose={() => setDeXuat(false)} onDoiBanDo={() => setBanDoVer((v) => v + 1)} />}
     </div>
   )
 }

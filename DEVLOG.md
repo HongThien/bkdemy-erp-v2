@@ -35306,3 +35306,13 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   ⇒ khoảng 40% dạng cần người quyết; so tên tự động KHÔNG đủ (đảo mã lọt).
 
 - (03/10 trưa, Máy công ty) **Dọn worktree + gỡ bot hỏi–đáp nhân sự** (Thùy duyệt từng bước). Gỡ 20 worktree không dùng (gỡ junction node_modules trước, node_modules chính giữ 430 thư mục; nhánh GitHub giữ nguyên). SAI: xếp `wt-bot` vào nhóm bỏ không vì commit 5 tuần — thực ra là nơi chạy bot hỏi–đáp (Task Scheduler "BKdemy HoiDap Luoi Vot" 15' + listener tự khởi động `Startupkdemy-hoidap-listener.cmd`); khôi phục gấp rồi báo. Phát hiện kèm: lưới vớt 15' đã hỏng TỪ TRƯỚC (listener giữ khoá `bot.log` ⇒ `>>` của tác vụ không mở được file). Đo DB: `hoi_dap_nhan_su` cả đời 2 câu, câu cuối 29/08. Thùy: "xoá đi, luồng Trợ lý làm mới rồi" ⇒ dừng listener, xoá tác vụ hẹn giờ, xoá file tự khởi động, xoá `wt-bot`. GIỮ code `scripts/hoidap/` trong repo + bảng DB (CLAUDE.md còn nhắc catalog tools.mjs). Còn thư mục rỗng `.claude/worktrees/troly-hoi-duoc` bị tiến trình khác giữ.
+
+## 2026-10-03 [Kho KHTN] Luồng ĐỀ XUẤT dạng/cụm cho KHTN — y hệt Toán Đại (Thùy: "a đi. KHTN làm như toán ấy") · mig 202610031258 đã áp
+
+- **DB:** `khtn_de_xuat` · `khtn_de_xuat_cau` · `khtn_de_xuat_quyet_dinh` + `fn_khtn_de_xuat_ds/_quyet/_tao/_tk` = BẢN SAO luồng Đại (mig 202609282236):
+  DDL chép file, thân 4 hàm lấy từ pg_get_functiondef bản ĐANG CHẠY chỉ thay tên bảng (`scripts/khtn-hatmam/gen-mig-de-xuat.mjs`, chặn sót chữ `dai_`).
+  + `fn_khtn_sinh_ma_dang` (chuyên đề K<khối><cđ><ch> + 2 số) · `khtn_cau_hoi.muc_cau` 1–5 (mức CÂU của Hạt Mầm; câu cũ null = chưa đo).
+- **Thử ROLLBACK** (`thu-mig-de-xuat.mjs`, giả JWT Đào Xuân Thùy có quyền ghi bdkt): sinh mã K070203 → K07020304 · đề xuất dạng mới Nhận ⇒ dạng vào bản đồ,
+  2 câu dời khỏi dạng chờ · trao đổi Trả lời + dạng đích ⇒ câu dời · quyết lần 2 bị chặn.
+- **ERP:** registry `DE_XUAT_KHO` (lib/kho/api.ts — Đại, KHTN) · `DeXuatPanel` nhận `kho`, bộ chọn dạng truyền đúng môn · KhoScreen bật nút Đề xuất theo
+  registry (Gán mẫu vẫn chỉ Đại). tsc sạch.

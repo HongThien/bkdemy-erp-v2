@@ -2722,10 +2722,31 @@ export type DeXuatKetQua = {
   hanh_dong: DeXuatQuyetDinh['hanh_dong']; ket_qua_ma_dang: string | null; ket_qua_ma_cum: string | null
   so_cau_doi: number; so_cau_da_duyet_bo_qua: number
 }
-export async function listDaiDeXuat(khoi: string, chiCho = true): Promise<DeXuat[]> {
-  const { data, error } = await supabase.rpc('fn_dai_de_xuat_ds', { p_khoi: khoi, p_chi_cho: chiCho })
+// REGISTRY kho có luồng đề xuất (03/10: KHTN "làm như toán" — mig 202610031258 bản sao luồng Đại). Thêm kho = thêm 1 dòng
+// + migration bảng/hàm cùng khuôn; màn DeXuatPanel/KhoScreen không có if theo môn.
+export type KhoDeXuat = 'dai' | 'khtn'
+export const DE_XUAT_KHO: Record<KhoDeXuat, { ds: string; quyet: string; mon: string }> = {
+  dai: { ds: 'fn_dai_de_xuat_ds', quyet: 'fn_dai_de_xuat_quyet', mon: 'Toán' },
+  khtn: { ds: 'fn_khtn_de_xuat_ds', quyet: 'fn_khtn_de_xuat_quyet', mon: 'KHTN' },
+}
+export const coDeXuatKho = (k: string): k is KhoDeXuat => k in DE_XUAT_KHO
+export async function listDeXuat(kho: KhoDeXuat, khoi: string, chiCho = true): Promise<DeXuat[]> {
+  const { data, error } = await supabase.rpc(DE_XUAT_KHO[kho].ds, { p_khoi: khoi, p_chi_cho: chiCho })
   if (error) throw error
   return (data ?? []) as DeXuat[]
+}
+export async function quyetDeXuat(kho: KhoDeXuat, id: string, hanhDong: DeXuatHanhDong, opts: {
+  ten?: string | null; moTaNgan?: string | null; maDangDich?: string | null; traLoi?: string | null
+} = {}): Promise<DeXuatKetQua> {
+  const { data, error } = await supabase.rpc(DE_XUAT_KHO[kho].quyet, {
+    p_id: id, p_hanh_dong: hanhDong, p_ten: opts.ten ?? null, p_mo_ta_ngan: opts.moTaNgan ?? null,
+    p_ma_dang_dich: opts.maDangDich ?? null, p_tra_loi: opts.traLoi ?? null,
+  })
+  if (error) throw error
+  return data as DeXuatKetQua
+}
+export async function listDaiDeXuat(khoi: string, chiCho = true): Promise<DeXuat[]> {
+  return listDeXuat('dai', khoi, chiCho)
 }
 export async function quyetDaiDeXuat(id: string, hanhDong: DeXuatHanhDong, opts: {
   ten?: string | null; moTaNgan?: string | null; maDangDich?: string | null; traLoi?: string | null
