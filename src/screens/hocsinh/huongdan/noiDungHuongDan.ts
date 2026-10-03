@@ -71,7 +71,7 @@ export const CHU_DE: ChuDeHD[] = [
     ],
   },
   {
-    id: 'nhan_vat_giao_dien', nhom: 'bat_dau', ten: 'Nhân vật và giao diện', icon: { o: 'tu_luyen_rieng', emoji: '🎨' },
+    id: 'nhan_vat_giao_dien', nhom: 'bat_dau', ten: 'Nhân vật và giao diện', icon: { o: 'tu_luyen_rieng', emoji: '🎨' }, tutorial: 'giao_dien',
     tomTat: 'Chọn nhân vật, chọn giao diện và bật hoặc tắt hiệu ứng game.',
     game: { ten: 'Nhân vật & phong cách chơi', tomTat: 'Chọn người hùng của em và kiểu giao diện hợp gu.' },
     khoi: [
@@ -92,7 +92,7 @@ export const CHU_DE: ChuDeHD[] = [
 
   // ───────────────────────── HỌC TẬP ─────────────────────────
   {
-    id: 'luot_hoc_that', nhom: 'hoc', ten: 'Lượt học thật', icon: { o: 'tu_luyen', emoji: '✅' },
+    id: 'luot_hoc_that', nhom: 'hoc', ten: 'Lượt học thật', icon: { o: 'tu_luyen', emoji: '✅' }, tutorial: 'luot_that',
     tomTat: 'Điều kiện để một lượt luyện được tính vào chuỗi, nhiệm vụ và Điểm Rank.',
     game: { ten: 'Lượt luyện hợp lệ', tomTat: 'Luyện thế nào thì mới được ghi vào chiến tích.' },
     khoi: [
@@ -116,7 +116,7 @@ export const CHU_DE: ChuDeHD[] = [
     ],
   },
   {
-    id: 'hoc_tap', nhom: 'hoc', ten: 'Khu Học tập', icon: { o: 'tu_luyen', emoji: '🎯' }, tutorial: 'tu_luyen',
+    id: 'hoc_tap', nhom: 'hoc', ten: 'Khu Học tập', icon: { o: 'tu_luyen', emoji: '🎯' }, tutorial: 'hoc_tap',
     tomTat: 'Năm cách luyện: Học theo chủ đề, Luyện dạng yếu, Đấu trường BK, Chinh phục BK, Giải Vô địch BK.',
     game: { ten: 'Năm đảo phiêu lưu', tomTat: 'Mỗi đảo là một cách chiến đấu và luyện tập.' },
     khoi: [
@@ -191,7 +191,7 @@ export const CHU_DE: ChuDeHD[] = [
     ],
   },
   {
-    id: 'dau_chinh_phuc', nhom: 'hoc', ten: 'Đấu trường, Chinh phục, Giải vô địch', icon: { o: 'xep_hang', emoji: '🏟️' },
+    id: 'dau_chinh_phuc', nhom: 'hoc', ten: 'Đấu trường, Chinh phục, Giải vô địch', icon: { o: 'xep_hang', emoji: '🏟️' }, tutorial: 'dau_chinh_phuc',
     tomTat: 'Các chế độ thi đấu dùng game Đấu Từ: mỗi câu chỉ được trả lời một lần.',
     game: { ten: 'Sàn đấu BK', tomTat: 'Đấu, leo tháp và tranh ngôi vô địch.' },
     khoi: [
@@ -327,7 +327,7 @@ export const CHU_DE: ChuDeHD[] = [
     ] },
   },
   {
-    id: 'huy_hieu', nhom: 'thuong', ten: 'Huy hiệu, Thành tựu và Album', icon: { o: 'thanh_tuu', emoji: '🏅' },
+    id: 'huy_hieu', nhom: 'thuong', ten: 'Huy hiệu, Thành tựu và Album', icon: { o: 'thanh_tuu', emoji: '🏅' }, tutorial: 'huy_hieu',
     tomTat: 'Tám huy hiệu ghi nhận chuyên cần, bài tập và tiến bộ theo từng tháng.',
     game: { ten: 'Bộ sưu tập huy hiệu', tomTat: 'Tám huy hiệu thần thoại, mỗi cái nâng tới 5 sao.' },
     khoi: [
@@ -355,7 +355,7 @@ export const CHU_DE: ChuDeHD[] = [
     ],
   },
   {
-    id: 'exp_xu', nhom: 'thuong', ten: 'EXP, xu và Ví xu', icon: { o: 'vi_xu', emoji: '🪙' },
+    id: 'exp_xu', nhom: 'thuong', ten: 'EXP, xu và Ví xu', icon: { o: 'vi_xu', emoji: '🪙' }, tutorial: 'xu_may_man',
     tomTat: 'EXP tích luỹ từ việc học; cuối tháng đổi thành xu để đổi quà tại trung tâm.',
     game: { ten: 'Kho báu xu', tomTat: 'Gom EXP, đổi thành xu và rinh quà.' },
     khoi: [
@@ -375,7 +375,7 @@ export const CHU_DE: ChuDeHD[] = [
     ],
   },
   {
-    id: 'may_man', nhom: 'thuong', ten: 'Vòng quay May mắn', icon: { o: 'may_man', emoji: '🎰' },
+    id: 'may_man', nhom: 'thuong', ten: 'Vòng quay May mắn', icon: { o: 'may_man', emoji: '🎰' }, tutorial: 'xu_may_man',
     tomTat: 'Mỗi ngày một lượt quay miễn phí để nhận EXP.',
     game: { ten: 'Vòng quay may mắn', tomTat: 'Quay mỗi ngày một lần để rinh EXP.' },
     khoi: [

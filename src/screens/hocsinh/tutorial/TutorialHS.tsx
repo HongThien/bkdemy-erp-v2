@@ -1,7 +1,8 @@
 // ============================================================================
-// TUTORIAL "Hành trình tân thủ" app HS — kiểu hướng dẫn trong game (Thùy 30/09): bản đồ 6 chặng mở khoá dần →
+// TUTORIAL "Hành trình tân thủ" app HS — kiểu hướng dẫn trong game (Thùy 30/09): bản đồ các chặng mở khoá dần →
 // mỗi chặng: người dẫn đường (nhân vật của style) nói trong hộp thoại chữ chạy, màn mô phỏng phía trên sáng đúng phần đang nói →
-// hết chặng hiện "Mở khoá kỹ năng" → xong 6 chặng là "Hoàn thành".
+// hết chặng hiện "Mở khoá kỹ năng" → xong hết chặng là "Hoàn thành".
+// `chuong` (id chặng) = chế độ MỘT CHẶNG: mở thẳng chặng đó (từ nút "Xem hướng dẫn tương tác" trong Hướng dẫn chơi), xong chặng gọi onXong (về lại Hướng dẫn chơi), không qua bản đồ.
 // Nội dung (lời thoại, số liệu) ở noiDungTutorial.ts · màn mô phỏng ở MoPhongTutorial.tsx. Màu/hình CHỈ từ skin (design/STYLE-HS.md).
 // BẢN DEMO: tiến độ chỉ giữ trong bộ nhớ, chưa lưu DB; xem ở hs.html?xem=tutorial (&chang=N để vào thẳng chặng N).
 // ============================================================================
@@ -132,11 +133,13 @@ function ManMung({ tren, icon, tieuDe, dong, nut, onNut }: { tren: string; icon:
 }
 
 // ── VỎ ─────────────────────────────────────────────────────────────────────
-export default function TutorialHS({ onXong }: { onXong?: () => void }) {
+export default function TutorialHS({ onXong, chuong }: { onXong?: () => void; chuong?: string | null }) {
   const q = useMemo(() => new URLSearchParams(location.search), [])
-  const vaoChang = Math.min(Math.max(Number(q.get('chang')) || 0, 0), CHUONG.length)
+  const motChang = chuong ? CHUONG.findIndex((x) => x.id === chuong) : -1 // ≥ 0 ⇒ chế độ một chặng
+  const don = motChang >= 0
+  const vaoChang = don ? motChang + 1 : Math.min(Math.max(Number(q.get('chang')) || 0, 0), CHUONG.length)
   const [pha, setPha] = useState<Pha>(vaoChang ? 'chuong' : 'mo_dau')
-  const [xong, setXong] = useState(vaoChang ? vaoChang - 1 : 0) // số chặng đã qua (mở khoá tuần tự)
+  const [xong, setXong] = useState(don ? CHUONG.length : vaoChang ? vaoChang - 1 : 0) // số chặng đã qua (mở khoá tuần tự)
   const [ci, setCi] = useState(vaoChang ? vaoChang - 1 : 0)     // chặng đang xem
   const [bi, setBi] = useState(0)                               // câu thoại đang nói
   const ngang = useMedia('(min-width: 1024px) and (orientation: landscape)')
@@ -155,7 +158,7 @@ export default function TutorialHS({ onXong }: { onXong?: () => void }) {
     if (bi + 1 < c.buoc.length) setBi(bi + 1)
     else { setXong((x) => Math.max(x, ci + 1)); setPha('mo_khoa') }
   }
-  const sauMoKhoa = () => (ci + 1 >= CHUONG.length ? setPha('ket_thuc') : setPha('ban_do'))
+  const sauMoKhoa = () => (don ? onXong?.() : ci + 1 >= CHUONG.length ? setPha('ket_thuc') : setPha('ban_do'))
 
   return (
     <div data-tut className="relative min-h-[100dvh]" style={{ color: MAU.ink, fontFamily: 'var(--sk-font)' }}>
@@ -168,7 +171,7 @@ export default function TutorialHS({ onXong }: { onXong?: () => void }) {
       {pha === 'mo_dau' && <>
         <div className="fixed inset-0 z-[5]" style={{ background: 'rgba(0,0,0,0.45)' }} />
         <NhanVat ngang={ngang} />
-        <HopThoai loi={MO_DAU[bi]} onTiep={() => (bi + 1 < MO_DAU.length ? setBi(bi + 1) : (setBi(0), setPha('ban_do')))} />
+        <HopThoai loi={MO_DAU[bi].replace('{n}', String(CHUONG.length))} onTiep={() => (bi + 1 < MO_DAU.length ? setBi(bi + 1) : (setBi(0), setPha('ban_do')))} />
       </>}
 
       {(pha === 'chuong' || pha === 'mo_khoa') && (
@@ -177,10 +180,10 @@ export default function TutorialHS({ onXong }: { onXong?: () => void }) {
           <div className="flex items-center gap-3">
             <IconChuong c={c} className="h-11 w-11" />
             <div className="min-w-0 flex-1 leading-tight">
-              <p className="text-[11.5px] font-bold uppercase tracking-[0.08em]" style={{ color: MAU.acc, textShadow: `0 1px 8px ${MAU.bg}` }}>Chặng {ci + 1}/{CHUONG.length}</p>
+              <p className="text-[11.5px] font-bold uppercase tracking-[0.08em]" style={{ color: MAU.acc, textShadow: `0 1px 8px ${MAU.bg}` }}>{don ? 'Hướng dẫn tương tác' : `Chặng ${ci + 1}/${CHUONG.length}`}</p>
               <h1 className="truncate text-[20px] font-bold" style={{ ...HEAD, color: MAU.ink, textShadow: `0 1px 10px ${MAU.bg}` }}>{c.ten}</h1>
             </div>
-            <button onClick={() => setPha('ban_do')} className="rounded-full px-3 py-1.5 text-[13px] font-bold" style={{ ...THE, clipPath: 'none', color: MAU.muted, borderRadius: '999px' }}>Bản đồ</button>
+            <button onClick={() => (don ? onXong?.() : setPha('ban_do'))} className="rounded-full px-3 py-1.5 text-[13px] font-bold" style={{ ...THE, clipPath: 'none', color: MAU.muted, borderRadius: '999px' }}>{don ? 'Đóng' : 'Bản đồ'}</button>
           </div>
           <div key={c.id} style={{ animation: 'tut-noi .35s ease-out' }}>
             <MoPhongTutorial chuong={c.id} soi={soi} />
@@ -194,8 +197,8 @@ export default function TutorialHS({ onXong }: { onXong?: () => void }) {
       </>}
 
       {pha === 'mo_khoa' && (
-        <ManMung tren={`Hoàn thành chặng ${ci + 1}`} icon={<IconChuong c={c} className="h-20 w-20" />} tieuDe="Mở khoá kỹ năng!" dong={c.kyNang}
-          nut={ci + 1 >= CHUONG.length ? 'Xem kết quả' : 'Tiếp hành trình'} onNut={sauMoKhoa} />
+        <ManMung tren={don ? 'Đã xem xong' : `Hoàn thành chặng ${ci + 1}`} icon={<IconChuong c={c} className="h-20 w-20" />} tieuDe="Mở khoá kỹ năng!" dong={c.kyNang}
+          nut={don ? 'Xong' : ci + 1 >= CHUONG.length ? 'Xem kết quả' : 'Tiếp hành trình'} onNut={sauMoKhoa} />
       )}
 
       {pha === 'ket_thuc' && <>

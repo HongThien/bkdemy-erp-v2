@@ -1,14 +1,18 @@
 // ============================================================================
 // NỘI DUNG tutorial "Hành trình tân thủ" app HS — Thùy SỬA CHỮ Ở ĐÂY, không cần đụng code màn.
-// Mỗi chương = 1 tính năng. Mỗi `buoc` = 1 câu người dẫn đường nói; `soi` = phần nào trên màn mô phỏng sáng lên khi nói câu đó
-// (mã phần tử khai trong MoPhongTutorial.tsx — để trống = không soi phần nào).
-// Số liệu (10 câu, 80%, 30 điểm/ngày…) lấy theo luật ĐANG CHẠY 30/09 — đổi luật thì sửa cả ở đây.
+// Mỗi chương = 1 tính năng, KHỚP 1-1 với một mục trong "Hướng dẫn chơi" (huongdan/noiDungHuongDan.ts, trường `tutorial` = id chương ở đây):
+// hướng dẫn là bản ĐỌC đầy đủ, tutorial là bản TƯƠNG TÁC ngắn (< 1 phút/chặng). Đổi luật ⇒ sửa cả hai nơi.
+// Mỗi `buoc` = 1 câu người dẫn đường nói; `soi` = phần nào trên màn mô phỏng sáng lên khi nói câu đó (mã khai trong MoPhongTutorial.tsx — để trống = không soi).
+// Số liệu theo luật ĐANG CHẠY (kiểm kê code/DB 03/10/2026). Chưa chốt (Đấu trường 3 trận, ngưỡng điểm từng bậc, tỉ lệ vòng quay…) thì KHÔNG nêu số.
+// Giọng: thân thiện nhưng trung tính, không ví von game (style game đã có người dẫn đường là nhân vật của style).
+// Chuỗi làm bài CHƯA có chặng: DB đã xong nhưng màn ngọn lửa trên màn chính chưa có — thêm chặng khi màn có.
 // Icon: `o` = id ô trong anhO của style đang dùng (đổi style tự đổi icon) · `gami` = đường dẫn hình gamification (gami/hinh.ts).
 // ============================================================================
 
 export type BuocTutorial = { noi: string; soi?: string }
+export type IdChuong = 'giao_dien' | 'hoc_tap' | 'chu_de' | 'tu_luyen' | 'luot_that' | 'thu_thach' | 'dau_chinh_phuc' | 'nhiem_vu' | 'rank' | 'huy_hieu' | 'xu_may_man' | 'the_gioi'
 export type ChuongTutorial = {
-  id: 'tu_luyen' | 'chu_de' | 'thu_thach' | 'nhiem_vu' | 'rank' | 'the_gioi'
+  id: IdChuong
   ten: string
   phu: string            // 1 dòng dưới tên chương trên bản đồ
   icon: { o?: string; gami?: string }
@@ -18,78 +22,139 @@ export type ChuongTutorial = {
 
 export const NGUOI_DAN = 'Người dẫn đường'
 
+/** `{n}` = số chặng, thay lúc hiển thị */
 export const MO_DAU = [
   'Chào mừng em đến với BK Academy!',
-  'Mình sẽ dẫn em đi 6 chặng ngắn để biết app có gì. Mỗi chặng chưa tới 1 phút.',
+  'Mình sẽ dẫn em đi {n} chặng ngắn để biết app có gì. Mỗi chặng chưa tới 1 phút.',
   'Chạm vào màn hình để nghe tiếp nhé.',
 ]
 
 export const KET_THUC = {
   tieuDe: 'Hoàn thành hành trình tân thủ!',
-  noi: 'Vậy là em đã biết hết các khu trong app. Giờ vào luyện thật thôi — Thử thách hôm nay đang chờ em đấy.',
+  noi: 'Vậy là em đã biết các khu chính trong app. Muốn đọc lại bất cứ phần nào, vào Thư viện BK rồi chọn Hướng dẫn chơi.',
   nut: 'Vào app',
 }
 
 export const CHUONG: ChuongTutorial[] = [
   {
-    id: 'tu_luyen', ten: 'Tự luyện', phu: 'Luyện thêm ngoài giờ học', icon: { o: 'tu_luyen' },
-    kyNang: 'Tự luyện — 10 câu mỗi lượt, không giới hạn lượt',
+    id: 'giao_dien', ten: 'Nhân vật và giao diện', phu: 'Chọn cách dùng app hợp với em', icon: { o: 'thanh_tuu' },
+    kyNang: 'Giao diện — chọn kiểu mặc định hoặc kiểu game, đổi bất cứ lúc nào',
     buoc: [
-      { noi: 'Chặng 1: Tự luyện. Ở màn chính, chạm ô Tự luyện.', soi: 'o_home' },
-      { noi: 'Chọn Tổng hợp. Mỗi lượt có 10 câu.', soi: 'the_tong_hop' },
-      { noi: 'Máy tự chọn câu cho em: 6 câu ở dạng em đang yếu, 4 câu ôn lại dạng đã học. Em yếu chỗ nào thì luyện đúng chỗ đó.', soi: 'phan_bo' },
-      { noi: 'Làm xong là biết đúng sai ngay. Muốn luyện nữa thì bấm Luyện lượt mới — làm bao nhiêu lượt cũng được.', soi: 'ket_qua' },
+      { noi: 'Chặng 1: giao diện. App có hai cách dùng: kiểu mặc định gọn gàng, hoặc kiểu game có bản đồ, nhân vật và hiệu ứng.', soi: 'hai_kieu' },
+      { noi: 'Nội dung học và cách tính điểm giống hệt nhau ở cả hai kiểu. Em thích kiểu nào thì chọn kiểu đó.', soi: 'hai_kieu' },
+      { noi: 'Lần đầu vào khu Học tập, em chọn một trong 6 nhân vật chính. Đổi nhân vật không ảnh hưởng điểm hay tiến độ.', soi: 'nhan_vat' },
+      { noi: 'Muốn đổi giao diện, vào Hồ sơ rồi chọn Giao diện. Có công tắc Hiệu ứng game và mức đồ hoạ cho máy yếu.', soi: 'cong_tac' },
     ],
   },
   {
-    id: 'chu_de', ten: 'Tự luyện chủ đề', phu: 'Chọn đúng dạng muốn luyện', icon: { o: 'so_tay' },
-    kyNang: 'Tự luyện chủ đề — tự chọn dạng, 10 câu chỉ dạng đó',
+    id: 'hoc_tap', ten: 'Khu Học tập', phu: 'Năm cách luyện ở một chỗ', icon: { o: 'tu_luyen' },
+    kyNang: 'Khu Học tập — biết năm cách luyện và mỗi lượt có 10 câu',
     buoc: [
-      { noi: 'Chặng 2: muốn luyện đúng một dạng thì vào Tự luyện, chọn Theo chủ đề.', soi: 'the_chu_de' },
-      { noi: 'Số % cạnh mỗi dạng là mức em đang nắm dạng đó. Dạng yếu nhất luôn đứng đầu danh sách.', soi: 'ds_dang' },
-      { noi: 'Dạng ghi "Chưa đánh giá" là em chưa làm đủ để máy đo.', soi: 'chua_danh_gia' },
-      { noi: 'Bật Chỉ câu mới thì em không gặp lại câu đã làm trong khoảng 1 tháng gần đây.', soi: 'cau_moi' },
-      { noi: 'Chạm một dạng là vào 10 câu chỉ của dạng đó.', soi: 'dang_dau' },
+      { noi: 'Chặng 2: khu Học tập. Ở màn chính, chạm ô Học tập. Mọi cách luyện của em nằm ở đây.', soi: 'o_home' },
+      { noi: 'Có 5 ô: Học theo chủ đề, Luyện dạng yếu, Đấu trường BK, Chinh phục BK và Giải Vô địch BK.', soi: 'nam_o' },
+      { noi: 'Mỗi lượt luyện có 10 câu, làm bao nhiêu lượt cũng được. Làm xong là biết đúng sai và có lời giải ngay.', soi: 'luot_10' },
+      { noi: 'Môn nào chưa có kho câu hỏi, ví dụ Tiếng Anh, thì ô luyện bị khoá và có thông báo. Đó không phải lỗi.', soi: 'nam_o' },
+    ],
+  },
+  {
+    id: 'chu_de', ten: 'Học theo chủ đề', phu: 'Bản đồ: lục địa, chặng, quái vật', icon: { o: 'the_gioi' },
+    kyNang: 'Học theo chủ đề — đi qua bản đồ, mỗi dạng bài là một màn',
+    buoc: [
+      { noi: 'Chặng 3: Học theo chủ đề. Em thấy cả thế giới của môn đang học. Mỗi chủ đề là một lục địa.', soi: 'the_gioi_map' },
+      { noi: 'Chạm một lục địa để xem các chuyên đề, rồi chạm một chuyên đề để xem các dạng bài. Mỗi dạng là một công trình.', soi: 'cong_trinh' },
+      { noi: 'Chạm vào công trình là vào thẳng màn đấu. Dạng chưa đo vẫn vào học được, dạng yếu còn quái, dạng đạt có cờ.', soi: 'trang_thai' },
+      { noi: 'Trong màn đấu, cứ 3 câu thì tung một chiêu. Đúng cả 3 câu là chiêu mạnh nhất, đúng ít thì chiêu nhẹ, sai cả 3 thì quái đánh trả.', soi: 'combo' },
+    ],
+  },
+  {
+    id: 'tu_luyen', ten: 'Luyện dạng yếu', phu: 'Máy chọn câu cho đúng chỗ em yếu', icon: { o: 'tu_luyen_rieng' },
+    kyNang: 'Luyện dạng yếu — 10 câu, ưu tiên dạng em còn yếu',
+    buoc: [
+      { noi: 'Chặng 4: Luyện dạng yếu. Trong khu Học tập, chạm ô Luyện dạng yếu.', soi: 'o_home' },
+      { noi: 'Máy tự chọn 10 câu cho em. Phần lớn câu lấy từ dạng em đang yếu, số còn lại để ôn các dạng đã học.', soi: 'phan_bo' },
+      { noi: 'Em cần đã có số đo, tức đã làm bài ở lớp hoặc trên app. Chưa có thì app báo chưa có dữ liệu.', soi: 'the_tong_hop' },
+      { noi: 'Làm xong là biết đúng sai ngay. Muốn luyện nữa thì bấm Luyện lượt mới, làm bao nhiêu lượt cũng được.', soi: 'ket_qua' },
+    ],
+  },
+  {
+    id: 'luot_that', ten: 'Lượt học thật', phu: 'Khi nào lượt luyện được tính', icon: { o: 'et' },
+    kyNang: 'Lượt học thật — làm nghiêm túc thì lượt mới được tính',
+    buoc: [
+      { noi: 'Chặng 5: lượt học thật. Chuỗi, nhiệm vụ và Điểm Rank đều chỉ tính khi lượt luyện của em là lượt học thật.', soi: 'dk_cau' },
+      { noi: 'Một lượt được tính khi cùng đủ ba điều kiện: làm ít nhất 5 câu, đúng ít nhất một nửa, và trung bình mỗi câu từ 6 giây trở lên.', soi: 'dk_dung' },
+      { noi: 'Chỉ lượt luyện thêm trên app được tính: Luyện dạng yếu, Học theo chủ đề và Thử thách. ET, BTVN và bài trên lớp có cách tính riêng.', soi: 'loai_bai' },
+      { noi: 'Lượt không được tính thì em vẫn học bình thường, không bị phạt. App chỉ nhắc nhẹ vì sao chưa tính.', soi: 'khong_tinh' },
     ],
   },
   {
     id: 'thu_thach', ten: 'Thử thách', phu: 'Đúng từ 80% là có Điểm Rank', icon: { gami: 'nhiem-vu/N1.png' },
     kyNang: 'Thử thách — đúng 8/10 trở lên để lấy Điểm Rank',
     buoc: [
-      { noi: 'Chặng 3: Thử thách. Nó giống Tổng hợp — 10 câu — nhưng có điểm thưởng.', soi: 'the_thu_thach' },
+      { noi: 'Chặng 6: Thử thách. Nó giống Luyện dạng yếu, 10 câu, nhưng có điểm thưởng.', soi: 'the_thu_thach' },
       { noi: 'Đúng từ 8 câu trở lên là vượt Thử thách.', soi: 'cham_cau' },
       { noi: 'Đúng 8 câu được 10 Điểm Rank, 9 câu được 20, cả 10 câu được 30.', soi: 'bang_thuong' },
-      { noi: 'Mỗi ngày lấy tối đa 30 điểm, mỗi tháng 600. Hết phần điểm em vẫn làm tiếp được, câu làm vẫn tính là luyện tập.', soi: 'tien_do' },
+      { noi: 'Mỗi ngày và mỗi tháng có giới hạn Điểm Rank từ Thử thách. Hết phần điểm em vẫn làm tiếp được, chỉ là không có thêm điểm.', soi: 'tien_do' },
+    ],
+  },
+  {
+    id: 'dau_chinh_phuc', ten: 'Đấu trường, Chinh phục, Giải vô địch', phu: 'Ba chế độ thi đấu', icon: { o: 'xep_hang' },
+    kyNang: 'Thi đấu — mỗi câu chỉ được trả lời một lần',
+    buoc: [
+      { noi: 'Chặng 7: các chế độ thi đấu trong khu Học tập. Luật chung: mỗi câu chỉ bấm một lần, chọn sai là khoá cả câu.', soi: 'luat_chung' },
+      { noi: 'Câu hỏi là trắc nghiệm 4 đáp án, có giới hạn thời gian. Trả lời nhanh và đúng liên tiếp thì điểm cao hơn.', soi: 'luat_chung' },
+      { noi: 'Đấu trường BK để thi đấu. Chinh phục BK là leo tháp, mỗi tháp có bảng xếp hạng riêng. Giải Vô địch BK có đăng ký và nhánh đấu.', soi: 'ba_che_do' },
+      { noi: 'Điểm của các chế độ này hiện chưa cộng vào Rank, chuỗi hay nhiệm vụ. Đây là sân thi đấu riêng.', soi: 'khong_rank' },
     ],
   },
   {
     id: 'nhiem_vu', ten: 'Nhiệm vụ', phu: 'Việc ngày · tuần · tháng', icon: { gami: 'nhiem-vu/ruong_mo.png' },
     kyNang: 'Nhiệm vụ — xong việc lên Chặng, nhận EXP đổi xu',
     buoc: [
-      { noi: 'Chặng 4: Nhiệm vụ. Vào Tự luyện, chạm Nhiệm vụ ở dưới cùng. Nhiệm vụ mở từ ngày 01/10.', soi: 'link_nhiem_vu' },
-      { noi: 'Mỗi ngày có 3 việc nhỏ: vượt 1 Thử thách, luyện 20 câu, sửa 2 câu dạng em từng sai. Mỗi việc +10 Điểm Chặng.', soi: 'khoi_ngay' },
+      { noi: 'Chặng 8: Nhiệm vụ. Ở khối Giải trí trên màn chính, chạm ô Nhiệm vụ. Hiện nhiệm vụ mở cho môn Toán.', soi: 'link_nhiem_vu' },
+      { noi: 'Mỗi ngày có 3 việc nhỏ: vượt 1 Thử thách, luyện 20 câu đúng mới, sửa 2 câu dạng em từng sai. Mỗi việc +10 Điểm Chặng.', soi: 'khoi_ngay' },
       { noi: 'Hôm nào lỡ thì việc được giữ 3 ngày cho em làm bù. Xong 2 việc trong ngày là có 1 lượt quay May mắn.', soi: 'quay' },
-      { noi: 'Việc tuần mỗi việc +40, việc tháng mỗi việc +150. Xong 12 việc trong tuần thì mở rương tuần +75 EXP.', soi: 'khoi_tuan' },
-      { noi: 'Đủ 50 Điểm Chặng là lên 1 cấp, mỗi cấp +25 EXP. Cuối tháng EXP đổi ra xu.', soi: 'chang' },
+      { noi: 'Việc tuần mỗi việc +40, việc tháng mỗi việc +150. Xong 12 việc trong tuần thì mở rương tuần.', soi: 'khoi_tuan' },
+      { noi: 'Đủ 50 Điểm Chặng là lên 1 cấp, mỗi cấp được thêm EXP. Cuối tháng EXP đổi ra xu.', soi: 'chang' },
     ],
   },
   {
-    id: 'rank', ten: 'Rank và Bảng xếp hạng', phu: '10 bậc, đua cả mùa', icon: { o: 'xep_hang' },
+    id: 'rank', ten: 'Rank và Bảng xếp hạng', phu: '10 bậc, đua cả mùa', icon: { o: 'rank' },
     kyNang: 'Rank — tích Điểm Rank cả mùa, leo 10 bậc',
     buoc: [
-      { noi: 'Chặng 5: Rank. Vào Tự luyện, chạm Rank của em.', soi: 'the_bac' },
+      { noi: 'Chặng 9: Rank. Vào Thư viện BK, chạm Rank. Rank tính riêng từng môn, hiện mở cho môn Toán.', soi: 'the_bac' },
       { noi: 'Điểm Rank đến từ việc học thật: mỗi bài ET 100 điểm, BTVN đúng hạn 100 (muộn 50), Thử thách 10 đến 30, bài MT tới 1.000 điểm theo thứ hạng.', soi: 'nguon_diem' },
-      { noi: 'Điểm cộng dồn cả mùa để leo 10 bậc, từ Novice lên Supreme God. Mùa chạy từ 1/7 đến 30/6 năm sau.', soi: 'thang_bac' },
+      { noi: 'Điểm cộng dồn cả mùa để leo 10 bậc, từ Novice lên Supreme God. Mùa chạy từ 1/7 đến 30/6 năm sau. Đã lên bậc thì không tụt trong mùa.', soi: 'thang_bac' },
       { noi: 'Bảng đua tháng xếp em với các bạn cùng khối trong tháng này. Bảng tháng không làm đổi bậc của em.', soi: 'bang_thang' },
       { noi: 'Mỗi môn có Rank riêng. Đổi môn ở thanh chọn môn trên màn chính.', soi: 'mon' },
+    ],
+  },
+  {
+    id: 'huy_hieu', ten: 'Huy hiệu và Thành tựu', phu: '8 huy hiệu, nâng dần theo tháng', icon: { o: 'thanh_tuu' },
+    kyNang: 'Huy hiệu — tháng nào đạt chuẩn thì huy hiệu thêm một bước',
+    buoc: [
+      { noi: 'Chặng 10: Huy hiệu. Vào Hồ sơ hoặc ô Thành tựu để xem Album. Có 8 huy hiệu, mỗi huy hiệu ghi nhận một thói quen tốt.', soi: 'tam_huy_hieu' },
+      { noi: 'Ví dụ: Helios cho chuyên cần, Chronos cho BTVN đúng hạn, Athena cho ET tốt, Hercules cho vượt Thử thách nhiều ngày.', soi: 'tam_huy_hieu' },
+      { noi: 'Mỗi tháng đạt chuẩn thì huy hiệu được thêm một bước. Càng nhiều tháng đạt, càng nhiều sao, tối đa 5 sao. Đã đạt thì không bị mất.', soi: 'sao' },
+      { noi: 'Kết quả chốt sau ngày 10 của tháng kế tiếp. Trước đó em thấy chữ tạm tính.', soi: 'chot_thang' },
+      { noi: 'Em ghim tối đa 3 huy hiệu để khoe ở Hồ sơ.', soi: 'ghim' },
+    ],
+  },
+  {
+    id: 'xu_may_man', ten: 'EXP, xu và May mắn', phu: 'Từ EXP đến quà và vòng quay', icon: { o: 'vi_xu' },
+    kyNang: 'EXP và xu — cuối tháng EXP đổi ra xu để đổi quà ở trung tâm',
+    buoc: [
+      { noi: 'Chặng 11: EXP và xu. EXP đến từ việc học ở lớp và việc làm trên app như nhiệm vụ, vòng quay, huy hiệu.', soi: 'exp_xu' },
+      { noi: 'Cuối tháng, EXP đổi ra xu theo từng môn: cứ 100 EXP được 1 xu. Xu kiếm từ hoạt động trên app có giới hạn mỗi tháng.', soi: 'exp_xu' },
+      { noi: 'Ô Ví xu cho em xem số dư và lịch sử. Muốn đổi quà thì đến tủ quà tại trung tâm, app chưa có nút đổi.', soi: 'vi_xu' },
+      { noi: 'Ô May mắn là vòng quay miễn phí, mỗi ngày một lượt. Xong 2 nhiệm vụ ngày thì có lượt quay, giải thưởng là EXP.', soi: 'quay_so' },
     ],
   },
   {
     id: 'the_gioi', ten: 'Thế giới BK', phu: 'Khoe thành tích, thả tim bạn bè', icon: { o: 'the_gioi' },
     kyNang: 'Thế giới BK — khoe thành tích thật, tương tác với bạn',
     buoc: [
-      { noi: 'Chặng cuối: Thế giới BK — nơi xem các bạn ở BK vừa đạt gì. Có 3 kênh: Thế giới, Bạn bè, Lớp.', soi: 'tab' },
-      { noi: 'Khi em có thành tích — ET 10 điểm, luyện 50 câu đúng trong ngày, nhất buổi… — nó hiện ở mục Thành tích chờ em khoe.', soi: 'cho_khoe' },
+      { noi: 'Chặng cuối: Thế giới BK, nơi xem các bạn ở BK vừa đạt gì. Có 3 kênh: Thế giới, Bạn bè, Lớp.', soi: 'tab' },
+      { noi: 'Khi em có thành tích, ví dụ ET 10 điểm hay luyện 50 câu đúng trong ngày, nó hiện ở mục Thành tích chờ em khoe.', soi: 'cho_khoe' },
       { noi: 'Chạm Khoe để đăng lên. Mỗi ngày khoe được 3 lần, thành tích khoe được trong 3 ngày.', soi: 'nut_khoe' },
       { noi: 'Bấm Thích để thả cảm xúc, bấm Bình luận để chọn câu khen có sẵn hoặc sticker. Mỗi tin em bình luận tối đa 3 lần.', soi: 'tuong_tac' },
       { noi: 'Muốn kết bạn thì tìm theo tên, mã HS hoặc lớp. Bạn đồng ý là hai đứa thấy tin của nhau.', soi: 'ket_ban' },

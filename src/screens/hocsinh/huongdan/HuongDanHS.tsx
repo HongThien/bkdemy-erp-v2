@@ -5,7 +5,7 @@
 // `onTutorial(chuongId)` do cha cấp (mở tutorial đúng chương); không cấp ⇒ ẩn nút.
 // ============================================================================
 import { useMemo, useState } from 'react'
-import { ChipDocHS, DauTrangHS, HEAD, KhoiDocHS, MAU, ManDocHS, ManHS, NhanHS, NhomHS, TheDocHS, TheHS, useLoi, type KieuKhoiDoc } from '../skin/KhungHS'
+import { ChipDocHS, DauTrangHS, HEAD, KhoiDocHS, MAU, ManDocHS, ManHS, NhanHS, NhomHS, NutHS, TheDocHS, TheHS, useLoi, type KieuKhoiDoc } from '../skin/KhungHS'
 import { laySkin, mauDocMon } from '../skin/registry'
 import { useSkinDangAp } from '../skin/loi'
 import { IconO } from '../HomeHS912'
@@ -23,7 +23,7 @@ function Icon({ cd, className }: { cd: ChuDeHD; className: string }) {
     : <span className={`flex items-center justify-center text-[30px] ${className}`} aria-hidden>{cd.icon.emoji}</span>
 }
 
-export default function HuongDanHS({ onBack, onTutorial, moSan }: { onBack: () => void; onTutorial?: (chuong: string) => void; /** mở thẳng 1 chủ đề (id) */ moSan?: string }) {
+export default function HuongDanHS({ onBack, onTutorial, moSan }: { onBack: () => void; onTutorial?: (chuong: string | null) => void; /** mở thẳng 1 chủ đề (id) */ moSan?: string }) {
   const loi = useLoi()
   const [chon, setChon] = useState<string | null>(moSan ?? null)
   const [tim, setTim] = useState('')
@@ -68,6 +68,7 @@ export default function HuongDanHS({ onBack, onTutorial, moSan }: { onBack: () =
           </section>
         )
       })}
+      {onTutorial && <NutHS phu onClick={() => onTutorial(null)}>Xem hành trình tân thủ (hướng dẫn tương tác từng chặng)</NutHS>}
       <p className="pb-4 text-center text-[12px]" style={{ color: MAU.muted }}>{MO_DAU_HD.cuoi}</p>
     </ManHS>
   )
@@ -83,7 +84,7 @@ function Khoi({ k }: { k: KhoiHD }) {
   )
 }
 
-function TrangDoc({ cd, ten, tom, onBack, onDoi, onTutorial }: { cd: ChuDeHD; ten: string; tom: string; onBack: () => void; onDoi: (id: string) => void; onTutorial?: (chuong: string) => void }) {
+function TrangDoc({ cd, ten, tom, onBack, onDoi, onTutorial }: { cd: ChuDeHD; ten: string; tom: string; onBack: () => void; onDoi: (id: string) => void; onTutorial?: (chuong: string | null) => void }) {
   const i = CHU_DE.findIndex((c) => c.id === cd.id), truoc = CHU_DE[i - 1], sau = CHU_DE[i + 1]
   const nhom = NHOM.find((n) => n.id === cd.nhom)
   const nut = 'flex-1 rounded-[14px] px-3 py-2.5 text-left text-[13px] font-bold active:scale-[0.98]'
