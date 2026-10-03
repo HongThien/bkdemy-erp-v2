@@ -35324,3 +35324,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   bộ phận tế bào) — giữ nguyên. CSS 201 luật, 8 biến màu ⇒ nối vào `--sk-doc-*` trong `.so-tay-hinh`. `chep-hinh-ve.mjs` sinh `src/lib/sotayHinh/hinhVe.{js,css}`.
   Mig `202610031309` ĐÃ ÁP: cột `ve` + chép mã 109 hình + `_sotay_muc_json` trả `hinh_ve`. Dính: `HinhVe.tsx` trùng tên `hinhVe.js` khác hoa thường (Windows) ⇒ đổi
   `HinhBangMa.tsx`. Soi demo: đồ thị Ohm giống bản gốc; tế bào động vật chạm "Nhân" ⇒ tô đỏ + hiện chức năng. build:hs: chunk riêng 96 KB (35 KB gzip). ERP chưa soi (cần đăng nhập).
+- (03/10 tối, Sổ tay) **Kiểm hình vẽ lại so với gốc** (Thùy: "có giống hình chính không, 90%?"). Code vẽ chép nguyên văn ⇒ SVG giống 100%; chỗ có thể lệch là CSS
+  (chỉ bóc luật của hình, vì CSS gốc 248 KB chứa style cả app Pocket — chép nguyên sẽ đè giao diện BK). Phép so độ phủ CSS (mọi class trong 109 hình vs CSS gốc) bắt 2 lỗ:
+  thiếu luật `bh-*` (Bohr) và 4 biến màu `--acc-l/--acc-d/--line-strong/--navy` (bản đầu liệt kê tay 8 biến) ⇒ 6 hình Bohr ra chấm đen. Sửa `chep-hinh-ve.mjs`: lọc thêm
+  `bh-`, TỰ DÒ mọi biến `var(--x)` và lấy giá trị gốc (biến nền/chữ chính vẫn nối `--sk-doc-*`). Sau sửa: thiếu luật = 0; trang gom 28 kiểu ra đúng hết (Bohr có hạt nhân + lớp + e).

@@ -61,7 +61,8 @@ function luat(s) {
   }
   return ra
 }
-const hop = (chon) => /\.(bk-fig|bk-bohr|bohr\b|fg[0-9]*-|bp-|wk-fig)/.test(chon)
+// bh-* = mô hình Bohr (hạt nhân · lớp · electron) — bản đầu thiếu ⇒ 6 hình Bohr mất màu (bắt bằng phép so độ phủ CSS, 03/10).
+const hop = (chon) => /\.(bk-fig|bk-bohr|bohr\b|bh-|fg[0-9]*-|bp-|wk-fig)/.test(chon)
 const cssRa = []
 for (const r of luat(css)) {
   if (r.chon.startsWith('@media') || r.chon.startsWith('@supports')) {
@@ -69,14 +70,29 @@ for (const r of luat(css)) {
     if (con.length) cssRa.push(`${r.chon} {\n${con.map((x) => `  ${x.chon} {${x.than}}`).join('\n')}\n}`)
   } else if (!r.chon.startsWith('@') && hop(r.chon)) cssRa.push(`${r.chon} {${r.than}}`)
 }
+// Biến màu mà CSS hình dùng: TỰ DÒ (bản đầu liệt kê tay 8 biến ⇒ sót 4 biến của Bohr ⇒ hình Bohr mất màu, 03/10).
+// Biến nền/chữ chính nối vào biến MÀN ĐỌC; mọi biến khác lấy giá trị GỐC (chế độ sáng — định nghĩa đầu tiên trong CSS Pocket).
+const NOI_DOC = {
+  '--line': 'var(--sk-doc-line, #E5ECF6)', '--ink': 'var(--sk-doc-ink, #23314F)', '--ink-2': 'var(--sk-doc-muted, #64738F)',
+  '--surface': 'var(--sk-doc-giay, #FFFFFF)', '--surface-2': 'var(--sk-doc-vd, #F1F5FB)',
+  '--f-body': "var(--sk-doc-font, 'Be Vietnam Pro', system-ui, sans-serif)", '--f-mono': 'ui-monospace, SFMono-Regular, Consolas, monospace',
+}
+const bienDung = [...new Set([...cssRa.join('\n').matchAll(/var\((--[\w-]+)/g)].map((m) => m[1]))].sort()
+const thieuBien = []
+const khaiBien = bienDung.map((b) => {
+  if (NOI_DOC[b]) return `  ${b}: ${NOI_DOC[b]};`
+  const g = new RegExp(`${b}\\s*:\\s*([^;}]+)`).exec(css)
+  if (!g) { thieuBien.push(b); return `  /* ${b}: không thấy định nghĩa trong CSS gốc */` }
+  return `  ${b}: ${g[1].trim()};`
+})
+if (thieuBien.length) console.warn('⚠ biến không có định nghĩa gốc:', thieuBien.join(' '))
 fs.writeFileSync(path.join(RA, 'hinhVe.css'), `/* ============================================================================
    CSS HÌNH VẼ BẰNG MÃ — bóc từ KHTN Pocket bằng scripts/sotay-khtn/chep-hinh-ve.mjs. ĐỪNG SỬA TAY.
-   8 biến màu gốc của Pocket nối vào biến MÀN ĐỌC (registry DOC_MAC_DINH) — chỉ trong khung .so-tay-hinh, không lan ra app.
+   Biến màu khai trong khung .so-tay-hinh (không lan ra app): nền/chữ chính nối vào biến MÀN ĐỌC (registry DOC_MAC_DINH),
+   còn lại giữ giá trị gốc của Pocket (chế độ sáng).
    ============================================================================ */
 .so-tay-hinh {
-  --line: var(--sk-doc-line, #E5ECF6); --ink: var(--sk-doc-ink, #23314F); --ink-2: var(--sk-doc-muted, #64738F); --ink-3: #8D9BAE;
-  --surface: var(--sk-doc-giay, #FFFFFF); --surface-2: var(--sk-doc-vd, #F1F5FB);
-  --f-body: var(--sk-doc-font, 'Be Vietnam Pro', system-ui, sans-serif); --f-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+${khaiBien.join('\n')}
   max-width: 100%; overflow-x: auto;
 }
 .so-tay-hinh svg { max-width: 100%; height: auto; }

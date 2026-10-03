@@ -1,14 +1,32 @@
 /* ============================================================================
    CSS HÌNH VẼ BẰNG MÃ — bóc từ KHTN Pocket bằng scripts/sotay-khtn/chep-hinh-ve.mjs. ĐỪNG SỬA TAY.
-   8 biến màu gốc của Pocket nối vào biến MÀN ĐỌC (registry DOC_MAC_DINH) — chỉ trong khung .so-tay-hinh, không lan ra app.
+   Biến màu khai trong khung .so-tay-hinh (không lan ra app): nền/chữ chính nối vào biến MÀN ĐỌC (registry DOC_MAC_DINH),
+   còn lại giữ giá trị gốc của Pocket (chế độ sáng).
    ============================================================================ */
 .so-tay-hinh {
-  --line: var(--sk-doc-line, #E5ECF6); --ink: var(--sk-doc-ink, #23314F); --ink-2: var(--sk-doc-muted, #64738F); --ink-3: #8D9BAE;
-  --surface: var(--sk-doc-giay, #FFFFFF); --surface-2: var(--sk-doc-vd, #F1F5FB);
-  --f-body: var(--sk-doc-font, 'Be Vietnam Pro', system-ui, sans-serif); --f-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+  --acc-d: #237E72;
+  --acc-l: #DDF4EF;
+  --f-body: var(--sk-doc-font, 'Be Vietnam Pro', system-ui, sans-serif);
+  --f-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+  --ink: var(--sk-doc-ink, #23314F);
+  --ink-2: var(--sk-doc-muted, #64738F);
+  --ink-3: #8D9BAE;
+  --line: var(--sk-doc-line, #E5ECF6);
+  --line-strong: #D3DEEC;
+  --navy: #263A5E;
+  --surface: var(--sk-doc-giay, #FFFFFF);
+  --surface-2: var(--sk-doc-vd, #F1F5FB);
   max-width: 100%; overflow-x: auto;
 }
 .so-tay-hinh svg { max-width: 100%; height: auto; }
+/* Mô hình Bohr + sơ đồ liên kết */
+.bh-n {fill:var(--acc-l);stroke:var(--acc-d);stroke-width:1.5}
+.bh-s {font:800 11px var(--f-body);fill:var(--ink);text-anchor:middle}
+.bh-o {fill:none;stroke:var(--line-strong);stroke-width:1.4}
+.bh-o.empty {stroke-dasharray:3 3}
+.bh-e {fill:var(--navy)}
+.bh-e.acc {fill:#FF9600}
+.bh-l {font:800 16px var(--f-body);fill:var(--ink);text-anchor:middle}
 .bohr {display:block;flex:none}
 .bohr.sm {width:auto;height:auto;max-width:110px}
 .opts.pics .bohr.sm {max-width:120px}
