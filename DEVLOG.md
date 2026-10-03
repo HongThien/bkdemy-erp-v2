@@ -35254,3 +35254,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   "Liên quan" mở chồng (Quay lại lùi 1 mục). **ERP:** phạm vi từ DB (`phamViSoTay`), chip loại, ô sửa công thức / ý chính / hay nhầm / bảng / kí hiệu (cột "|") /
   ví dụ / liên quan, xem trước đủ phần. tsc sạch · check:style-hs ✔ · build:hs ✔. **Chưa soi bằng mắt** (dev server chỉ chạy được từ repo chính).
 - **Còn treo:** vẽ / xuất ảnh 109 hình · nối mục ↔ dạng `khtn_ban_do`.
+
+
+- (03/10 tối, Thiết kế) Thùy chốt thêm (spec-che-do-game §7): trận Giải Vô địch = kiểu giành quyền trả lời — cùng 1 câu, ai bấm trước là câu kết thúc; đúng ⇒ người bấm thắng lượt, sai ⇒ đối thủ thắng lượt nhưng ÍT điểm hơn · tháp chủ đề mở khi em học ≥1/2 dạng, đề chung toàn bộ dạng · Vô tận Hard thêm trần 3 lượt leo/ngày · Luyện dạng yếu = ô riêng (5 ô).

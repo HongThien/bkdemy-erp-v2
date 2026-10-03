@@ -73,7 +73,7 @@
 
 ## 7. ⭐ GHÉP VÀO APP HS — khu HỌC TẬP (Thùy chốt 03/10 chiều — mục này ĐÈ các chỗ lệch ở §2–§5)
 
-**Ô "Tự luyện" ngoài Home ⇒ đổi thành "HỌC TẬP"**, chú thích *"Cùng BK chinh phục thế giới"*. Bấm vào ⇒ lưới 4 ô (kiểu 2, như lưới Home):
+**Ô "Tự luyện" ngoài Home ⇒ đổi thành "HỌC TẬP"**, chú thích *"Cùng BK chinh phục thế giới"*. Bấm vào ⇒ lưới 5 ô (kiểu 2, như lưới Home) — 4 ô dưới + ô Luyện dạng yếu (§7.2b):
 
 | Ô | Chú thích | Là chế độ nào |
 |---|---|---|
@@ -93,13 +93,20 @@
 **7.3 Giải Vô địch BK — giải trực tiếp:**
 - Lịch cố định mỗi tuần; **đăng ký trước** (vd thứ 2–4), **thi đấu giờ cố định** (vd thứ 7). Chia bảng **theo môn + khối**.
 - Loại trực tiếp; số người lẻ ⇒ nhánh lũy thừa 2, ai không có đối thủ thì tự vào vòng trong; **đối thủ vắng ⇒ tự thắng**.
-- **Trận giải KHOÁ THỜI GIAN, không khoá số câu:** tổng **4 phút**, trả lời xong câu này hiện ngay câu kế (mỗi em tự đi theo tốc độ mình), hết giờ **ai nhiều điểm hơn thắng**. (Khác Đấu trường: không còn "ai đúng trước ăn câu".)
+- **Trận giải KHOÁ THỜI GIAN, không khoá số câu:** tổng **4 phút**, hết giờ **ai nhiều điểm hơn thắng**.
+- **Luật lượt (Thùy 03/10 tối) — kiểu "giành quyền trả lời"** (R7: rung chuông / Olympia "giành quyền" / Jeopardy buzzer): 2 em **cùng 1 câu**;
+  **AI BẤM TRƯỚC là câu đó KẾT THÚC** (đồng bộ cả 2): bấm đúng ⇒ người bấm thắng lượt · bấm sai ⇒ **ĐỐI THỦ thắng lượt nhưng ÍT điểm hơn** tự trả lời đúng.
+  Xong lượt ⇒ cả 2 sang câu kế ngay. (Đoán bừa ⇒ phần lớn là tặng điểm cho đối thủ ⇒ không còn là game nhanh tay.)
+
+**7.2b Luyện dạng yếu = Ô RIÊNG** (Thùy 03/10 tối) ⇒ khu Học tập có **5 ô**.
 - **Phần thưởng PHẢI có XU** (chuẩn thiết kế).
 
 **7.4 Chinh phục BK (tháp):**
 - **2 mode: Sinh tồn · Vô tận.** **Normal / Hard là chế độ TRONG Vô tận**, chuyển qua lại bằng 1 nút.
 - **Mỗi tháp 1 bảng xếp hạng riêng** (tháp tổng + từng tháp chủ đề; mỗi tháp tách Sinh tồn / Vô tận Normal / Vô tận Hard).
 - **Tháp chủ đề: em học tới đâu mở tới đó** — không chờ cả khối (có chủ đề lớp B/C không học, chỉ A/S học). ⇒ thay luật "phần lớn khối đã học" ở §3/§5.
+  Mở cho em khi em đã học **≥ 1/2 số dạng** của chủ đề; **đề tháp = toàn bộ dạng của chủ đề, giống nhau cho mọi người** (BXH công bằng).
+- **Vô tận Hard:** giới hạn giờ/câu như thường **+ giới hạn LƯỢT LEO: 3 lượt/ngày** (chống spam, rèn kiên trì) — giỏi thì 1 ngày leo được 3 tầng, không thì không được tầng nào.
 
 ---
 
