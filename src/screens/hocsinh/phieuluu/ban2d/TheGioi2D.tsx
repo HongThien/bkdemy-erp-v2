@@ -22,7 +22,7 @@ export function TheGioi2D(p: Props) {
 // phóng vào lục địa vừa bấm rồi mới chuyển tầng
 function usePhong(onChon: (ma: string) => void) {
   const [zoom, setZoom] = useState<{ ma: string; x: number; y: number } | null>(null)
-  const chon = (ma: string, x: number, y: number) => { if (zoom) return; setZoom({ ma, x, y }); window.setTimeout(() => onChon(ma), 430) }
+  const chon = (ma: string, x: number, y: number) => { if (zoom) return; setZoom({ ma, x, y }); window.setTimeout(() => onChon(ma), 260) /* gọi màn kế khi cú phóng còn ~40%: màn cũ (PhieuLuuHS giữ lớp) phóng nốt, màn mới hiện dần bên dưới */ }
   const style = { transformOrigin: zoom ? `${zoom.x}px ${zoom.y}px` : undefined, transform: zoom ? 'scale(2.4)' : undefined, opacity: zoom ? 0 : 1 }
   return { chon, style }
 }

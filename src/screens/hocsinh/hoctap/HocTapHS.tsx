@@ -137,12 +137,15 @@ function TroiDao({ ds, dao, hop }: { ds: OHocTap[]; dao: Record<string, string>;
   )
 }
 
-export function HocTapHS({ onBack, onChuDe, onYeu, onDauTruong, onChinhPhuc, onGiai, onNhiemVu, onRank, nhanVat, onDoiNhanVat }: {
+export function HocTapHS({ onNap, onBack, onChuDe, onYeu, onDauTruong, onChinhPhuc, onGiai, onNhiemVu, onRank, nhanVat, onDoiNhanVat }: {
   onBack: () => void; onChuDe: () => void; onYeu: () => void; onDauTruong: () => void; onChinhPhuc: () => void; onGiai: () => void
   onNhiemVu?: () => void; onRank?: () => void
   /** nhân vật chính đang dùng + mở màn đổi nhân vật (nút ở đầu trang) */
   nhanVat?: NvId | null; onDoiNhanVat?: () => void
+  /** gọi 1 lần lúc rảnh sau khi vào khu: nạp trước màn hay vào kế tiếp (chunk + bản đồ + ảnh) để lúc bấm đảo không còn khoảng trống (phieuluu/chuyenCanh.ts) */
+  onNap?: () => void
 }) {
+  useEffect(() => { if (!onNap) return; const id = window.setTimeout(onNap, 300); return () => window.clearTimeout(id) }, []) // eslint-disable-line react-hooks/exhaustive-deps
   const nutNv = onDoiNhanVat && (
     <button onClick={onDoiNhanVat} className="flex items-center gap-1.5 py-1 pl-1 pr-3 text-[13px] font-bold" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius-pill)' }} aria-label="Đổi nhân vật">
       {nhanVat ? <span className="relative block h-8 w-8 overflow-hidden rounded-full" style={{ background: 'var(--sk-surface2)' }}><img src={anhDauNv(nhanVat, 'dung_1')} alt="" className="absolute left-1/2 top-0 w-[150%] max-w-none -translate-x-1/2" /></span> : null}

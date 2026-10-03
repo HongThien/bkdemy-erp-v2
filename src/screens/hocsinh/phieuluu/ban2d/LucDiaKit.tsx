@@ -104,7 +104,7 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
   const vao = (i: number, ma: string) => {
     if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { onChon(ma); return }
     const m = kit.moc[i]; setPhong({ x: (m.x / 100) * khung.w, y: (m.y / 100) * khung.h - (m.w / 100) * khung.w * 0.25 })
-    window.setTimeout(() => onChon(ma), 460)
+    window.setTimeout(() => onChon(ma), 280)
   }
   const nhanRef = useRef<(HTMLSpanElement | null)[]>([])
   const [vtNhan, setVtNhan] = useState<({ x: number; y: number; pad: number } | null)[]>([]) // x,y = góc trái-trên của phần NHÌN THẤY (chữ + sao); pad = lề trống giữa hộp nhãn và phần nhìn thấy

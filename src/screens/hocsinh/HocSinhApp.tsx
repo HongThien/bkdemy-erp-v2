@@ -36,6 +36,7 @@ import { hocTapBat, phieuLuuBat } from './phieuluu/coBat'
 // Khu HỌC TẬP (5 đảo) — sau CỜ, mặc định TẮT ở bản thật (bật ở bản thử nghiệm / ?hoctap=1). Tắt ⇒ ô Tự luyện + màn chọn cũ như trước 03/10.
 const HOC_TAP = hocTapBat()
 const PhieuLuuHS = lazy(() => import('./phieuluu/PhieuLuuHS'))
+import { ManCho as ManChoChuyen, napPhieuLuu } from './phieuluu/chuyenCanh'
 import { laCap2HS, mayManHSCuaToi } from '../../lib/maymai_hs'
 import { htdCoMo, htdSinh, htdCauBaiTest, type CauHTD } from '../../lib/hoctudau'
 import { ChonChuDeHTD, ChonChuyenDeHTD, ChiTietDangHTD, LyThuyetHTD, LoTrinhDuoiHS, dangDangHoc, type ChuDeNhom, type ChuyenDeNhom } from './HocTuDau'
@@ -528,6 +529,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if ((direct === 'tu_luyen_chon' && nhanVat === null) || direct === 'doi_nhan_vat') return <ChonNhanVatHS dangCo={nhanVat ?? null} luu={chonNhanVat}
     onXong={(id) => { setNhanVat(id); setDirect('tu_luyen_chon') }} onBack={() => setDirect(direct === 'doi_nhan_vat' ? 'tu_luyen_chon' : null)} />
   if (direct === 'tu_luyen_chon') return <HocTapHS nhanVat={nhanVat ?? null} onDoiNhanVat={() => setDirect('doi_nhan_vat')}
+    onNap={monChon && laySkin((giaoDien ?? GD_MAC_DINH).skin).the3d ? () => napPhieuLuu(monChon) : undefined}
     // trong khu Học tập, đảo 'Học theo chủ đề' LUÔN là bản đồ (không cần cờ phieuluu riêng); chỉ lùi về danh sách dạng khi chưa có môn / style không có bản đồ
     onChuDe={() => { const g = giaoDien ?? GD_MAC_DINH; setDirect(monChon && laySkin(g.skin).the3d ? 'phieu_luu' : 'tu_luyen_chu_de_ds') }}
     onYeu={() => { setChuDeDang(null); setDirect('tu_luyen') }}
@@ -540,7 +542,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'dau_truong_bk') return <GameNhungHS vao="chu_de" tieuDe="Đấu trường BK" onBack={() => setDirect('tu_luyen_chon')} />
   if (direct === 'chinh_phuc_bk') return <ChinhPhucHS onBack={() => setDirect('tu_luyen_chon')} />
   if (direct === 'giai_vo_dich') return <GiaiVoDichHS onBack={() => setDirect('tu_luyen_chon')} onDauMay={() => setDirect('thu_thach')} />
-  if (direct === 'phieu_luu' && monChon) return <Suspense fallback={null}><PhieuLuuHS hocSinhId={hocSinhId} mon={monChon} gioiTinh={gioiTinh} nhanVat={nhanVat} skin={(giaoDien ?? GD_MAC_DINH).skin} LamBai={LamBai} onVe={() => setDirect(HOC_TAP ? 'tu_luyen_chon' : null)}
+  if (direct === 'phieu_luu' && monChon) return <Suspense fallback={<ManChoChuyen />}><PhieuLuuHS hocSinhId={hocSinhId} mon={monChon} gioiTinh={gioiTinh} nhanVat={nhanVat} skin={(giaoDien ?? GD_MAC_DINH).skin} LamBai={LamBai} onVe={() => setDirect(HOC_TAP ? 'tu_luyen_chon' : null)}
     onTongHop={() => { setChuDeDang(null); setDirect('tu_luyen') }} onThuThach={() => setDirect('thu_thach')} /></Suspense>
   if (direct === 'nhiem_vu') return <NhiemVuHS gioiTinh={gt} onBack={() => setDirect(tuHome ? null : 'tu_luyen_chon')}
     onThuThach={() => setDirect('thu_thach')} onTuLuyen={() => { setChuDeDang(null); setDirect('tu_luyen') }} onVongQuay={() => setDirect('may_man')} />

@@ -14,6 +14,7 @@ import { ganBiomeTheoTranh } from './ban2d/hinh2d'
 import { LucDia2D } from './ban2d/LucDia2D'
 import { Chang2D } from './ban2d/Chang2D'
 import { XemDau } from './XemDau'
+import XemThat from './XemThat'
 import { ChanDoan } from './ChanDoan'
 import { BaoDoHoa, NutDoHoa } from './DoHoa'
 import type { ChangV, LucDiaV } from './kieu'
@@ -38,7 +39,8 @@ function layBanDoGoc(): BanDoV {
 
 type Tang = { t: 'the_gioi' } | { t: 'luc_dia'; luc: string } | { t: 'chang'; luc: string; vung: string } | { t: 'dau'; luc: string; vung: string; chang: string }
 
-export default function XemPhieuLuu() {
+export default function XemPhieuLuu() { return new URLSearchParams(location.search).get('that') ? <XemThat /> : <XemBanDo /> }
+function XemBanDo() {
   const [MAU_BAN_DO] = useState(layBanDo)
   const b = laySkin(GD_MAC_DINH.skin).the3d!
   const q = new URLSearchParams(location.search)
