@@ -74,21 +74,12 @@ export function BeDaTam({ b }: { b: BangMau3D }) {
 }
 
 /** Quái tạm: boss riêng có chân dung thì dùng ảnh; còn lại là "slime" tròn màu loài + mắt (Thùy thiết kế quái riêng — đây chỉ giữ chỗ). */
-export function QuaiTam({ b, loai, boss, bong, co }: { b: BangMau3D; loai: string; boss?: boolean; bong?: boolean; co: number }) {
-  const a = anhBoss(loai)
-  const mq = b.quai[loai] ?? Object.values(b.quai)[0]
+/** Quái: boss riêng của style (Skin.boss) trước, rồi 7 quái CC0 tạm (quaiCc0.ts — thay hẳn hình SVG tạm cũ, Thùy 03/10). `b` giữ lại cho khớp chỗ gọi, không còn dùng. */
+export function QuaiTam({ loai, boss, bong, co }: { b?: BangMau3D; loai: string; boss?: boolean; bong?: boolean; co: number }) {
+  const a = anhBoss(loai)!
   return (
     <span className="ban2d-quai relative inline-block h-full w-full origin-bottom" style={bong ? { filter: 'brightness(0)', opacity: 0.5 } : undefined}>
-      {a ? <img src={a} alt="" className="h-full w-full object-contain" draggable={false} />
-        : (
-          <svg viewBox="0 0 100 100" className="h-full w-full overflow-visible" aria-hidden>
-            <path d="M14,88 C6,60 22,22 50,20 C78,22 94,60 86,88 Z" fill={mq.than} />
-            <path d="M28,86 C26,70 36,58 50,58 C64,58 74,70 72,86 Z" fill={mq.bung} opacity={0.55} />
-            <ellipse cx="38" cy="50" rx="6" ry="8" fill={b.troi} /><ellipse cx="62" cy="50" rx="6" ry="8" fill={b.troi} />
-            <circle cx="40" cy="47" r="2.2" fill={b.bot} /><circle cx="64" cy="47" r="2.2" fill={b.bot} />
-            <circle cx="30" cy="34" r="4" fill={mq.diem} opacity={0.8} />
-          </svg>
-        )}
+      <img src={a} alt="" className="h-full w-full object-contain" draggable={false} />
       {boss && <span className="absolute left-1/2 -translate-x-1/2 leading-none" style={{ top: -co * 0.22, fontSize: co * 0.32 }}>👑</span>}
     </span>
   )
