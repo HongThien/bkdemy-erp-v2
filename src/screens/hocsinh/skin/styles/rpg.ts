@@ -64,6 +64,15 @@ export const RPG: Skin = {
   the3d: RPG_3D,
   // Sân Đấu trường (Thùy 02/10, kit design/bk-ui-src/AppHS/Animation/chien_dau/ — nén bởi scripts/anime-chien-dau-2d.mjs)
   sanDau: '/bk-ui/hs/skin/rpg/dau_truong/nen_san_dau.jpg',
+  // Khu Học tập: 5 đảo lơ lửng trên trời sao — TẠM mượn mảnh lục địa của bản đồ thế giới (Đơn 14 Kit B đặt vẽ 5 đảo riêng).
+  hocTap: {
+    nen: 'radial-gradient(1.5px 1.5px at 12% 18%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 32% 8%, #fff 50%, transparent 51%), radial-gradient(1.2px 1.2px at 58% 22%, #e9c77b 50%, transparent 51%), radial-gradient(1px 1px at 78% 12%, #fff 50%, transparent 51%), radial-gradient(1.4px 1.4px at 90% 38%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 8% 62%, #fff 50%, transparent 51%), radial-gradient(1.2px 1.2px at 46% 70%, #e9c77b 50%, transparent 51%), radial-gradient(1px 1px at 70% 84%, #fff 50%, transparent 51%), radial-gradient(60% 45% at 30% 30%, rgba(124,92,214,.35), transparent 70%), radial-gradient(55% 40% at 75% 70%, rgba(64,120,214,.28), transparent 70%), radial-gradient(90% 70% at 50% 0%, #2c3a66 0%, #141a33 70%), #0e1228',
+    dao: {
+      hoc_chu_de: '/bk-ui/hs/skin/rpg/phieuluu2d/luc_dia_v2_rung.webp', luyen_yeu: '/bk-ui/hs/skin/rpg/phieuluu2d/luc_dia_v2_thanh_co.webp',
+      dau_truong: '/bk-ui/hs/skin/rpg/phieuluu2d/luc_dia_v2_nui_lua.webp', chinh_phuc: '/bk-ui/hs/skin/rpg/phieuluu2d/luc_dia_v2_troi_sao.webp',
+      giai_vo_dich: '/bk-ui/hs/skin/rpg/phieuluu2d/luc_dia_v2_sa_mac.webp',
+    },
+  },
   // 02/10 (Thùy): bản CHIBI dễ thương thay bản anime cũ — nam + mèo đen · nữ + cú trắng, PNG trong suốt cắt sát, cao 900px.
   // Ảnh gốc design/bk-ui-src/New_anime/. Bản cũ nv_nam.png / nv_nu.png GIỮ trên đĩa (PWA cũ còn gọi) — dọn sau ≥1 tuần, hỏi Thùy.
   // 02/10 (Thùy): đây là 2 NPC DẪN TRUYỆN (bé trai + mèo đen · bé gái + cú trắng) — Home nói chuyện, tutorial, người dẫn ở Đấu trường. NHÂN VẬT CHÍNH của học sinh là 2 nhà thám hiểm áo choàng xanh (bộ chạy 2D: skin/heroChay.ts).

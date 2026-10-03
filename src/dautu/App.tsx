@@ -1,7 +1,8 @@
 // BK ĐẤU TỪ — khung game học 6 chế độ cho MỌI MÔN (demo, Thùy 02–03/10): Anh (từ vựng) · Toán · KHTN (kho MCQ thật). Bố cục học theo
 // Bufopia; hình theo skin RPG + bộ chiến đấu 2D Đấu trường. Content cắm qua nguon/ (registry môn).
 import { useEffect, useMemo, useState } from 'react'
-import { DS_MON, NGUON, khoMon, nguonCua, useCap, useMon } from './nguon'
+import { DS_MON, NGUON, khoCap, khoMon, nguonCua, useCap, useMon } from './nguon'
+import { KHOI_NHUNG, MON_NHUNG, VAO_NHUNG, baoThoat } from './lib/nhung'
 import { useHoSo, tuYeu, tuDenHan } from './lib/hoSo'
 import { taiHoSo, bangXepHang, type DongBxh } from './lib/api'
 import { khoCaiDat, useCaiDat, phat } from './lib/amThanh'
@@ -33,13 +34,8 @@ type Man =
   | { ten: 'thap' }
 type HopThoai = null | 'ho_so' | 'bxh' | 'cai_dat' | 'online'
 
-// NHÚNG TRONG APP HS (khu Học tập — spec-che-do-game.md §7, Thùy 03/10): hs app mở dautu.html?nhung=1&mon=<môn>&vao=chu_de|thap trong khung.
-// ⇒ đặt môn theo app HS, mở thẳng màn được gọi; "lùi" từ màn đó báo app HS đóng khung (postMessage) thay vì về Home của game.
-const Q0 = new URLSearchParams(location.search)
-const NHUNG = Q0.get('nhung') === '1'
-const VAO_NHUNG: 'chu_de' | 'thap' | null = NHUNG ? (Q0.get('vao') === 'thap' ? 'thap' : 'chu_de') : null
-if (NHUNG && Q0.get('mon') && NGUON[Q0.get('mon')!]) khoMon.dat(Q0.get('mon')!)
-const baoThoat = () => window.parent?.postMessage({ dtv: 'thoat' }, location.origin)
+// Nhúng trong app HS: lib/nhung.ts. Đặt môn + khối của em ngay khi nạp.
+{ const m = MON_NHUNG, k = KHOI_NHUNG; if (m && NGUON[m]) { khoMon.dat(m); if (k) khoCap.dat((x) => ({ ...x, [m]: k })) } }
 
 function docLinkMoi(): Man | null {
   const q = new URLSearchParams(location.search)

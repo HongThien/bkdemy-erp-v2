@@ -1129,7 +1129,7 @@ YÊU CẦU RIÊNG (kịch bản chuẩn — ảnh to → thành phần → bố 
 > Demo đã chạy (`hs.html?xem=hoc_tap`), đang MƯỢN hình có sẵn. Màn tháp **"phải design thật ngầu — để ChatGPT design riêng"**.
 > **Cách gửi:** 3 kit = 3 context ChatGPT MỚI (app máy tính). Dán `CHATGPT-UI-KIT.md` → dán khối đơn → đính kèm `public/bk-ui/hs/skin/rpg/bg_lau_dai_chibi_ngang.jpg` (nền app, giữ không khí)
 > + `public/bk-ui/hs/skin/rpg/o_tu_luyen.png` · `o_cup.png` · `o_rank.png` (đúng nét icon ô hiện có) + `phieuluu2d/luc_dia_v2_rung.webp` (đúng nét tranh bản đồ).
-> Kit về: `design/handoff/hs-chinh-phuc-v1.zip` · `hs-icon-hoc-tap-v1.zip` · `hs-giai-vo-dich-v1.zip`. **Làm Kit A trước** (nặng nhất, Thùy duyệt hướng).
+> Kit về: `design/handoff/hs-chinh-phuc-v1.zip` · `hs-dao-hoc-tap-v1.zip` · `hs-giai-vo-dich-v1.zip`. **Làm Kit A trước** (nặng nhất, Thùy duyệt hướng).
 
 ### Kit A — màn CHINH PHỤC BK (leo tháp)
 ```
@@ -1154,16 +1154,29 @@ YÊU CẦU RIÊNG (ảnh to → thành phần → bố cục):
 - DESIGN.md: vị trí CHÂN (≈% ngang, ≈% dọc) + bề rộng (≈% khung) của từng tháp; thứ tự lớp (tháp nào đứng trước); vùng nhãn dưới chân.
 ```
 
-### Kit B — 5 ICON Ô khu Học tập
+### Kit B — KHU HỌC TẬP = 5 ĐẢO LƠ LỬNG trên bầu trời sao (sửa 03/10 tối — Thùy: "giao diện game chibi, mỗi cái 1 lục địa trôi nổi trên bầu trời sao"; THAY bản 5 icon ô)
 ```
 App:            hs
-Màn:            icon-o-hoc-tap (5 icon ô, dùng trong lưới ô như màn chính)
-Mô tả màn:      5 icon cho 5 ô: (1) Học theo chủ đề — quả cầu bản đồ thế giới phát sáng · (2) Luyện dạng yếu — búa rèn đang sửa thanh kiếm mẻ ·
-                (3) Đấu trường BK — hai thanh kiếm chéo trên khiên · (4) Chinh phục BK — ngọn tháp cao toả sáng đỉnh · (5) Giải Vô địch BK — cúp vô địch có vòng nguyệt quế.
-Phong cách:     ĐÚNG nét các icon ô đính kèm (o_tu_luyen · o_cup · o_rank): vật thể 3/4 nghiêng, viền vàng, bóng mềm, ánh tím–vàng; KHÔNG chữ.
-Giữ nguyên:     mỗi icon 1 file PNG nền TRONG SUỐT 512×512, vật thể chiếm ≈80% khung, căn giữa; 5 icon cùng cỡ thị giác.
+Màn:            hoc-tap (cổng vào 5 chế độ học)
+Mô tả màn:      Bầu trời đêm đầy sao, tinh vân tím–xanh nhạt, mây mỏng. Trôi nổi 5 HÒN ĐẢO chibi (đáy đảo là khối đá treo lơ lửng, có rễ/thác nhỏ rủ xuống,
+                hào quang mờ bên dưới), MỖI ĐẢO 1 chủ đề rõ ràng, có 1 CÔNG TRÌNH đặc trưng ở giữa đảo:
+                (1) Học theo chủ đề — đảo TO NHẤT ở giữa: rừng phép + quả cầu bản đồ thế giới phát sáng (cổng vào cuộc phiêu lưu đánh Ác quỷ "Phi Phai")
+                (2) Luyện dạng yếu — đảo lò rèn: đe + búa + lửa rèn, thanh kiếm đang được sửa
+                (3) Đấu trường BK — đảo có đấu trường tròn nhỏ (kiểu colosseum chibi), cờ hiệu 2 phe
+                (4) Chinh phục BK — đảo có ngọn THÁP cao xuyên mây, đỉnh toả sáng
+                (5) Giải Vô địch BK — đảo có bục vinh quang + cúp vàng khổng lồ, pháo hoa nhỏ
+                Bố cục iPad NGANG 1672×941: đảo (1) giữa hơi cao · (3) trái-trên · (4) phải-trên · (2) trái-dưới · (5) phải-dưới. Cầu ánh sáng mảnh nối các đảo về đảo giữa.
+Phần tử ĐỘNG:   tên + chú thích dưới mỗi đảo · đảo nhấp nhô lên xuống · sáng lên khi chạm (tất cả do code — KHÔNG chữ trong ảnh).
+Phong cách:     chibi game tươi, khối tròn mập, đúng nét các công trình chibi v4 đính kèm (lục địa rừng); nhìn chéo 3/4 từ trên; KHÔNG 3D render, KHÔNG chữ.
+Giữ nguyên:     1672×941; ≈12% trên cùng không đặt đảo (thanh tiêu đề); dưới mỗi đảo chừa ≈8% khung cho tên + chú thích.
 Phiên bản kit:  v1
-- assets/o_hoc_chu_de.png · o_luyen_yeu.png · o_dau_truong.png · o_chinh_phuc.png · o_giai_vo_dich.png + 1 ảnh reference xếp 5 icon cạnh nhau.
+
+YÊU CẦU RIÊNG (ảnh to → thành phần → bố cục):
+- reference/reference_hoc_tap.png: TOÀN CẢNH đủ 5 đảo + cầu ánh sáng + trời sao. Duyệt TRƯỚC khi sinh asset.
+- assets/backdrop/troi_sao_hoc_tap.png: CHỈ bầu trời sao + tinh vân + cầu ánh sáng mảnh (không đảo). Thêm bản DỌC 941×1672 (troi_sao_hoc_tap_doc.png) cho điện thoại.
+- assets/decor/dao_hoc_chu_de.png · dao_luyen_yeu.png · dao_dau_truong.png · dao_chinh_phuc.png · dao_giai_vo_dich.png: vẽ lại TỪNG đảo (kèm công trình) đúng như reference,
+  nền TRONG SUỐT, cạnh dài ≥1024px, đảo nằm giữa ảnh, chừa lề trong suốt cho hào quang.
+- DESIGN.md: vị trí TÂM + bề rộng (≈% khung) từng đảo ở khổ ngang; gợi ý bố cục khổ dọc (1 đảo trên + 2 hàng đôi).
 ```
 
 ### Kit C — bộ GIẢI VÔ ĐỊCH BK
@@ -1179,6 +1192,6 @@ Phiên bản kit:  v1
 - assets/backdrop/nen_giai_vo_dich.png · assets/decor/cup_vo_dich.png · huy_chuong_bac.png · huy_chuong_dong.png · bang_ron.png + reference ghép thử.
 ```
 
-> **Kit về (Claude làm):** kiểm mục 8 giao thức · nén WebP vào `public/bk-ui/hs/skin/rpg/hoctap/` · Kit B thay 5 hình MƯỢN trong `skin/styles/rpg.ts` (`hoc_chu_de` … `giai_vo_dich`) ·
+> **Kit về (Claude làm):** kiểm mục 8 giao thức · nén WebP vào `public/bk-ui/hs/skin/rpg/hoctap/` · Kit B thay nền + 5 đảo MƯỢN (mảnh lục địa) trong `Skin.hocTap` của `skin/styles/rpg.ts`, vị trí theo DESIGN.md (`VT_NGANG`/`VT_DOC` ở `hoctap/HocTapHS.tsx`); icon ô `hoc_chu_de`… có thể bỏ khi đảo đã có công trình ·
 > Kit A dựng màn Chinh phục BK theo DESIGN.md (tháp chủ đề gán theo chủ đề của khối, khoá theo luật "học ≥ 1/2 dạng") thay màn tháp mượn của Đấu Từ ·
 > Kit C làm nền + vinh danh cho `GiaiVoDichHS`. Style khác (Tối giản, Khối vuông) cần bộ icon riêng — đơn sau.

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import type { CapNguon, ChuDeNguon, NguonCau } from '../nguon'
 import { DauMan, Nut } from '../ui/Chung'
 import { BOT } from '../lib/bot'
+import { NHUNG } from '../lib/nhung'
 import { HUONG_DO, khoHuong, useHuong } from '../lib/boDe'
 import type { MucBot } from '../lib/trongTai'
 
@@ -51,7 +52,7 @@ export function ChonCheDo({ nguon, tenChuDe, onChon, onLui }: { nguon: NguonCau;
   return (
     <div className="man">
       <DauMan tieuDe="Chọn chế độ chơi" phu={<>{nguon.icon} {nguon.ten} · <b>{tenChuDe}</b> · {nguon.giayMoiCau} giây/câu</>} onLui={onLui}
-        phai={<div className="chip-hang nho">{[10, 15, 20].map((n) => <button key={n} className={'chip' + (soCau === n ? ' bat' : '')} onClick={() => setSoCau(n)}><b>{n} từ</b></button>)}</div>} />
+        phai={<div className="chip-hang nho">{[10, 15, 20].map((n) => <button key={n} className={'chip' + (soCau === n ? ' bat' : '')} onClick={() => setSoCau(n)}><b>{n} {nguon.coNhoTu ? 'từ' : 'câu'}</b></button>)}</div>} />
       {nguon.coDaoChieu && <div className="kieu-do giay">
         <b>Kiểu đố:</b>
         <div className="chip-hang nho">
@@ -82,6 +83,7 @@ export function ChonCheDo({ nguon, tenChuDe, onChon, onLui }: { nguon: NguonCau;
           <p>Tạo phòng có mã 6 số, gửi bạn hoặc mời bạn đang online.</p>
           <Nut mau="lam" to onClick={() => onChon({ loai: 'phong', soCau })}>Tạo / vào phòng</Nut>
         </div>
+        {!NHUNG && <>
         <div className="the-che-do giay noi-bat-vang">
           <div className="cd-icon">🏆</div>
           <h3>Giải đấu 8 người</h3>
@@ -94,6 +96,7 @@ export function ChonCheDo({ nguon, tenChuDe, onChon, onLui }: { nguon: NguonCau;
           <p>Hai bạn ngồi đối diện chung một iPad/máy tính.</p>
           <Nut mau="do" to onClick={() => onChon({ loai: 'doi', soCau })}>Đấu tay đôi</Nut>
         </div>
+        </>}
       </div>
     </div>
   )

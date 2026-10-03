@@ -2,10 +2,12 @@
 //   Học theo chủ đề (bản đồ phiêu lưu) · Luyện dạng yếu (80% dạng yếu / 20% ngẫu nhiên) · Đấu trường BK (PvP + PvE) · Chinh phục BK (leo tháp) · Giải Vô địch BK.
 // Đấu trường + Chinh phục = khung game 6 chế độ (src/dautu, chung mọi môn) NHÚNG bằng khung (dautu.html?nhung=1) — bản DEMO: game còn hồ sơ theo máy,
 // khi ghép thật sẽ dùng tài khoản HS + dựng lại bằng KhungHS (nợ ghi ở HANDOFF mục Đấu Từ).
-// Icon ô: Skin.anhO[id] của style; style chưa có icon cho ô mới ⇒ dấu thay của style (đơn ChatGPT: icon 5 ô).
+// Giao diện (Thùy 03/10 tối): kiểu GAME CHIBI — 5 ô = 5 HÒN ĐẢO trôi nổi trên bầu trời sao (Skin.hocTap: nền + ảnh đảo; style không khai ⇒ lưới ô thường).
+// Icon trên đảo = Skin.anhO[id]; thiếu ⇒ dấu thay của style. Ảnh đảo + icon đang MƯỢN — đơn ChatGPT: DON-HANG-SKIN-HS Đơn 14 Kit B.
 import { useEffect, useState, type ReactNode } from 'react'
-import { DauTrangHS, HEAD, MAU, ManHS, NhanHS, NhomHS, NutHS, TheHS, THE_TRON, useMonHS } from '../skin/KhungHS'
+import { DauTrangHS, HEAD, MAU, ManHS, NhanHS, NhomHS, NutHS, TheHS, THE_TRON, useManDoc, useMonHS } from '../skin/KhungHS'
 import { laySkin } from '../skin/registry'
+import { khoiCuaHS } from '../../../lib/tuluyen'
 
 type OHocTap = { id: string; ten: string; sub: string; onClick: () => void; nhan?: string }
 
@@ -33,6 +35,47 @@ function LuoiO({ ds }: { ds: OHocTap[] }) {
   )
 }
 
+// Vị trí TÂM đảo (% khung dưới đầu trang) + bề rộng đảo (% bề ngang) — ngang: đảo chính giữa, 2 đảo trên 2 bên, 2 đảo dưới; dọc: 1 trên + 2 hàng đôi.
+const VT_NGANG: Record<string, [number, number, number]> = { hoc_chu_de: [50, 40, 31], dau_truong: [17, 33, 21], chinh_phuc: [83, 33, 21], luyen_yeu: [28, 77, 18], giai_vo_dich: [72, 77, 18] }
+const VT_DOC: Record<string, [number, number, number]> = { hoc_chu_de: [50, 20, 64], dau_truong: [26, 47, 44], chinh_phuc: [74, 47, 44], luyen_yeu: [26, 75, 40], giai_vo_dich: [74, 75, 40] }
+const CSS_DAO = `
+@keyframes ht-noi { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-2.2%) } }
+.ht-dao { animation: ht-noi 5s ease-in-out infinite; transition: filter .2s }
+.ht-o:hover .ht-dao, .ht-o:focus-visible .ht-dao { filter: brightness(1.12) drop-shadow(0 0 18px rgba(233,199,123,.75)) }
+.ht-o:active .ht-dao { filter: brightness(1.2) }
+@media (prefers-reduced-motion: reduce) { .ht-dao { animation: none } }
+`
+const CHU_NOI = { textShadow: '0 0 3px var(--sk-bg), 0 0 6px var(--sk-bg), 0 2px 10px var(--sk-bg)' }
+
+function TroiDao({ ds, dao }: { ds: OHocTap[]; dao: Record<string, string> }) {
+  const doc = useManDoc()
+  const skin = laySkin(null)
+  const VT = doc ? VT_DOC : VT_NGANG
+  return (
+    <div className="relative min-h-0 flex-1">
+      <style>{CSS_DAO}</style>
+      {ds.map((o, i) => {
+        const [x, y, w] = VT[o.id] ?? [50, 50, 20], icon = skin.anhO?.[o.id], chinh = o.id === 'hoc_chu_de'
+        return (
+          <button key={o.id} onClick={o.onClick} className="ht-o absolute flex flex-col items-center outline-none" aria-label={`${o.ten}: ${o.sub}`}
+            style={{ left: `${x}%`, top: `${y}%`, width: doc ? `${w}%` : `min(${w}%, ${w * 1.9}vh)`, transform: 'translate(-50%,-50%)' }}>
+            <span className="ht-dao relative block w-full" style={{ animationDelay: `${-i * 1.1}s` }}>
+              <span className="absolute left-[8%] right-[8%] top-[78%] h-[30%] rounded-[50%]" style={{ background: 'radial-gradient(closest-side, rgba(124,92,214,.45), transparent)' }} aria-hidden />
+              {dao[o.id] && <img src={dao[o.id]} alt="" draggable={false} className="relative block w-full select-none" style={{ filter: 'drop-shadow(0 14px 18px rgba(0,0,0,.45))' }} />}
+              <span className="absolute left-1/2 top-[44%] flex -translate-x-1/2 -translate-y-1/2 items-center justify-center" style={{ width: chinh ? '30%' : '36%' }}>
+                {icon ? <img src={icon} alt="" draggable={false} className="w-full select-none" style={{ filter: 'drop-shadow(0 4px 8px rgba(0,0,0,.5))' }} />
+                  : <span className="text-[28px]" style={{ color: 'var(--sk-acc)' }} aria-hidden>{skin.dauThayIcon ?? '✦'}</span>}
+              </span>
+            </span>
+            <span className={`-mt-[4%] block text-center font-bold leading-tight ${chinh ? 'text-[22px] md:text-[26px]' : 'text-[17px] md:text-[20px]'}`} style={{ ...HEAD, ...CHU_NOI, color: 'var(--sk-ink)' }}>{o.ten}</span>
+            <span className="mt-0.5 block max-w-[95%] text-center text-[12px] leading-snug md:text-[13.5px]" style={{ ...CHU_NOI, color: 'var(--sk-acc)' }}>{o.sub}</span>
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
 export function HocTapHS({ onBack, onChuDe, onYeu, onDauTruong, onChinhPhuc, onGiai, onNhiemVu, onRank }: {
   onBack: () => void; onChuDe: () => void; onYeu: () => void; onDauTruong: () => void; onChinhPhuc: () => void; onGiai: () => void
   onNhiemVu?: () => void; onRank?: () => void
@@ -44,6 +87,19 @@ export function HocTapHS({ onBack, onChuDe, onYeu, onDauTruong, onChinhPhuc, onG
     { id: 'chinh_phuc', ten: 'Chinh phục BK', sub: 'Nơi một huyền thoại sinh ra', onClick: onChinhPhuc },
     { id: 'giai_vo_dich', ten: 'Giải Vô địch BK', sub: 'Con đường của nhà vô địch', onClick: onGiai },
   ]
+  const ht = laySkin(null).hocTap
+  if (ht) return (
+    <div className="fixed inset-0 flex flex-col overflow-hidden" style={{ background: ht.nen, color: 'var(--sk-ink)', fontFamily: 'var(--sk-font)' }}>
+      <div className="px-4 pt-[calc(12px+env(safe-area-inset-top))]"><DauTrangHS tieuDe="Học tập" phu="Cùng BK chinh phục thế giới" onBack={onBack} theoMon /></div>
+      <TroiDao ds={ds} dao={ht.dao} />
+      {(onNhiemVu || onRank) && (
+        <div className="flex justify-center gap-3 pb-[calc(12px+env(safe-area-inset-bottom))]">
+          {onNhiemVu && <button onClick={onNhiemVu} className="px-4 py-1.5 text-[13px] font-bold" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius-pill)' }}>Nhiệm vụ</button>}
+          {onRank && <button onClick={onRank} className="px-4 py-1.5 text-[13px] font-bold" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius-pill)' }}>Rank của em</button>}
+        </div>
+      )}
+    </div>
+  )
   return (
     <ManHS>
       <DauTrangHS tieuDe="Học tập" phu="Cùng BK chinh phục thế giới" onBack={onBack} theoMon />
@@ -59,13 +115,17 @@ export function HocTapHS({ onBack, onChuDe, onYeu, onDauTruong, onChinhPhuc, onG
 }
 
 /** Đấu trường BK / Chinh phục BK = khung game chung mọi môn (src/dautu) nhúng trong app HS. Lùi ở màn đầu của game ⇒ game báo `dtv: 'thoat'`. */
-export function GameNhungHS({ vao, tieuDe, onBack, mon: monEp }: { vao: 'chu_de' | 'thap'; tieuDe: string; onBack: () => void; mon?: string }) {
-  const monHS = useMonHS(), mon = monEp ?? monHS // monEp: chỉ trang xem thử truyền
+export function GameNhungHS({ vao, tieuDe, onBack, mon: monEp, khoi: khoiEp }: { vao: 'chu_de' | 'thap'; tieuDe: string; onBack: () => void; mon?: string; khoi?: string }) {
+  const monHS = useMonHS(), mon = monEp ?? monHS // monEp/khoiEp: chỉ trang xem thử truyền
+  // Khối của EM — game khoá theo khối này (Leo tháp không cho chọn khối khác, Thùy 03/10)
+  const [khoi, setKhoi] = useState<string | null | undefined>(khoiEp ?? undefined)
+  useEffect(() => { if (khoiEp === undefined) khoiCuaHS().then(setKhoi).catch(() => setKhoi(null)) }, [khoiEp])
   useEffect(() => {
     const f = (e: MessageEvent) => { if (e.origin === location.origin && (e.data as { dtv?: string } | null)?.dtv === 'thoat') onBack() }
     window.addEventListener('message', f); return () => window.removeEventListener('message', f)
   }, [onBack])
-  const src = `/dautu.html?nhung=1&vao=${vao}&mon=${encodeURIComponent(mon ?? 'Toán')}`
+  if (khoi === undefined) return <div className="fixed inset-0 z-40" style={{ background: 'var(--sk-bg)' }} />
+  const src = `/dautu.html?nhung=1&vao=${vao}&mon=${encodeURIComponent(mon ?? 'Toán')}${khoi ? `&khoi=${encodeURIComponent(khoi)}` : ''}`
   return (
     <div className="fixed inset-0 z-40 flex flex-col" style={{ background: 'var(--sk-bg)' }}>
       <iframe title={tieuDe} src={src} className="h-full w-full flex-1 border-0" allow="autoplay" />

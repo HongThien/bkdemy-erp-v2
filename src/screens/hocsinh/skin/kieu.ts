@@ -89,4 +89,7 @@ export type Skin = {
   tran?: { font: string; nen: string; vien: string; phien: string; phienDay: string }
   // Nền SÂN ĐẤU TRƯỜNG (Thử thách — ảnh ngang ~2,8:1, mặt sân ở ~60–100% chiều dọc). Không khai ⇒ sân là mảng màu của style (Tối giản).
   sanDau?: string
+  // KHU HỌC TẬP kiểu game (Thùy 03/10: "5 ô = mỗi cái 1 lục địa trôi nổi trên bầu trời sao"): nền trời + ảnh ĐẢO cho từng ô (khoá = id ô ở hoctap/HocTapHS.tsx).
+  // Không khai ⇒ khu Học tập là lưới ô thường (Tối giản…).
+  hocTap?: { nen: string; dao: Record<string, string> }
 }

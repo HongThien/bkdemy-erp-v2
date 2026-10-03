@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { THAP, MS_SONG_CON, PHAT_SAI_MS, bxhThap, ghiThap, giayVoTan, type BxhThap, type CheDoThap } from '../lib/thap'
 import { capNhatNho } from '../lib/hoSo'
+import { KHOI_NHUNG } from '../lib/nhung'
 import { doc, phat, useCaiDat } from '../lib/amThanh'
 import { ngayVN } from '../lib/tienich'
 import type { Cau, CapNguon, NguonCau } from '../nguon'
@@ -26,7 +27,7 @@ export function ManLeoThap({ toi, nguon, cap, setCap, onLui }: { toi: NguoiTran;
     <div className="man">
       <DauMan tieuDe={<span className="tieu-thap"><img src={ANH_THAP} alt="" />Leo tháp · {nguon.icon} {nguon.ten}</span>}
         phu={`Tháp hôm nay ${ngayVN().split('-').reverse().join('/')} — mọi người cùng một tháp, cùng câu hỏi. 0h tháp mới.`} onLui={onLui} />
-      {!nguon.coNhoTu && (
+      {!nguon.coNhoTu && !KHOI_NHUNG && (
         <div className="chip-hang cuon">
           <span className="nhan-hang">{nguon.tenCap}:</span>
           {dsCap.map((c) => <button key={c.id} className={'chip' + (cap === c.id ? ' bat' : '')} onClick={() => setCap(c.id)}><b>{c.ten}</b></button>)}

@@ -58,7 +58,7 @@ export default function XemPhieuLuu() {
       {tang.t === 'the_gioi' && (
         <>
           <TG banDo={MAU_BAN_DO} b={b} gioi={gioi} hienTai="C" onChon={(ma) => setTang({ t: 'luc_dia', luc: ma })} />
-          <div className="pointer-events-none absolute left-0 right-0 top-0 p-3"><div className="pointer-events-auto"><DauTrangHS tieuDe="Thế giới Toán" phu="Bấm một lục địa để đi vào" /></div></div>
+          <div className="pointer-events-none absolute left-0 right-0 top-0 p-3"><div className="pointer-events-auto"><DauTrangHS tieuDe="Thế giới Toán" phu="Bấm một lục địa để đi vào" onBack={() => history.back()} /></div></div>
         </>
       )}
       {tang.t === 'luc_dia' && luc && <LD luc={luc} b={b} gioi={gioi} onChon={(v) => setTang({ t: 'chang', luc: luc.ma, vung: v })} onVe={() => setTang({ t: 'the_gioi' })} />}
