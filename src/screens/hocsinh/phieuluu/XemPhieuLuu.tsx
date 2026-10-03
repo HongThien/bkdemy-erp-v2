@@ -17,6 +17,7 @@ import { XemDau } from './XemDau'
 import { ChanDoan } from './ChanDoan'
 import { BaoDoHoa, NutDoHoa } from './DoHoa'
 import type { ChangV, LucDiaV } from './kieu'
+import type { NvId } from '../skin/nhanVat'
 
 // Chỉ khi chạy dev: dán JSON thật của fn_ban_do_phieu_luu vào localStorage 'ban_do_pl' để soi dữ liệu thật qua bộ đổi tuBanDoPL.
 // &so=N: chỉ lấy N chủ đề đầu (thử bản đồ toàn cảnh với khối ít chủ đề)
@@ -66,7 +67,7 @@ export default function XemPhieuLuu() {
       <ChanDoan />
       {tang.t !== 'dau' && <div className="pointer-events-none absolute bottom-3 right-3 z-20"><NutDoHoa /></div>}
       <BaoDoHoa />
-      {tang.t === 'dau' && luc && vung && chang && <XemDau luc={luc} chang={chang} b={b} onRut={() => setTang({ t: 'chang', luc: luc.ma, vung: vung.ma })} />}
+      {tang.t === 'dau' && luc && vung && chang && <XemDau luc={luc} chang={chang} b={b} nv={(q.get('nvc') as NvId | null) ?? gioi} onRut={() => setTang({ t: 'chang', luc: luc.ma, vung: vung.ma })} />}
     </div>
   )
 }

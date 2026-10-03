@@ -14,7 +14,7 @@ import { ganBiomeTheoTranh } from './ban2d/hinh2d'
 import { TheGioi2D } from './ban2d/TheGioi2D'
 import { LucDia2D } from './ban2d/LucDia2D'
 import { Chang2D } from './ban2d/Chang2D'
-import { DauView } from './DauView'
+import { DauView2D } from './DauView2D'
 import type { NhungDau } from './nhungDau'
 import { BaoDoHoa, NutDoHoa } from './DoHoa'
 import type { NvId } from '../skin/nhanVat'
@@ -72,7 +72,7 @@ export default function PhieuLuuHS({ hocSinhId, mon, gioiTinh, nhanVat, skin, on
         {tang.t === 'luc_dia' && luc && <LucDia2D luc={luc} b={b} gioi={nhanVat ?? gioiTinh ?? 'nam'} onChon={(v) => setTang({ t: 'chang', luc: luc.ma, vung: v })} onVe={() => setTang({ t: 'the_gioi' })} />}
         {tang.t === 'chang' && luc && vung && <Chang2D luc={luc} vung={vung} b={b} gioi={gioiTinh ?? 'nam'} onVe={() => setTang({ t: 'luc_dia', luc: luc.ma })} onVao={(c) => setTang({ t: 'dau', luc: luc.ma, vung: vung.ma, chang: c.ma })} />}
         {tang.t === 'dau' && luc && vung && chang && (
-          <DauThat luc={luc} chang={chang} b={b} mon={mon} hocSinhId={hocSinhId} gioi={gioiTinh ?? 'nam'} LamBai={LamBai} onVe={() => { setTang({ t: 'chang', luc: luc.ma, vung: vung.ma }); tai() }} />
+          <DauThat luc={luc} chang={chang} b={b} mon={mon} hocSinhId={hocSinhId} gioi={nhanVat ?? gioiTinh ?? 'nam'} LamBai={LamBai} onVe={() => { setTang({ t: 'chang', luc: luc.ma, vung: vung.ma }); tai() }} />
         )}
       </div>
       {tang.t !== 'dau' && <div className="pointer-events-none absolute bottom-3 right-3 z-20"><NutDoHoa /></div>}
@@ -84,7 +84,7 @@ export default function PhieuLuuHS({ hocSinhId, mon, gioiTinh, nhanVat, skin, on
 
 // ── Màn đấu thật: sinh lượt (bài tự luyện đúng dạng) → DauView + LamBai nhúng → thẻ kết quả NGAY trong cảnh ──────
 function DauThat({ luc, chang, b, mon, hocSinhId, gioi, LamBai, onVe }: {
-  luc: LucDiaV; chang: ChangV; b: NonNullable<ReturnType<typeof laySkin>['the3d']>; mon: string; hocSinhId: string; gioi: 'nam' | 'nu'; LamBai: LamBaiCmp; onVe: () => void
+  luc: LucDiaV; chang: ChangV; b: NonNullable<ReturnType<typeof laySkin>['the3d']>; mon: string; hocSinhId: string; gioi: NvId; LamBai: LamBaiCmp; onVe: () => void
 }) {
   const [bai, setBai] = useState<{ id: string } | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
@@ -105,12 +105,12 @@ function DauThat({ luc, chang, b, mon, hocSinhId, gioi, LamBai, onVe }: {
   if (loi) return <ManHS><DauTrangHS tieuDe={chang.ten} onBack={onVe} /><TrongHS>Chưa mở được lượt luyện: {loi}</TrongHS><NutHS onClick={() => setLan((x) => x + 1)}>Thử lại</NutHS></ManHS>
   if (!bai) return <ManHS><DauTrangHS tieuDe={chang.ten} onBack={onVe} /><TrongHS>Đang gọi quái ra…</TrongHS></ManHS>
   return (
-    <DauView key={bai.id} luc={luc} chang={chang} b={b} gioi={gioi} tong={tong} daLam={daLam} onRut={onVe}>
+    <DauView2D key={bai.id} luc={luc} chang={chang} b={b} gioi={gioi} tong={tong} daLam={daLam} onRut={onVe}>
       {(api) => kq
         ? <KetQuaTrongDau chang={chang} kq={kq} heT={api.heT} onTiep={() => setLan((x) => x + 1)} onVe={onVe} />
         : <LamBai baiTestId={bai.id} hocSinhId={hocSinhId} onXong={onVe} desktop
             nhung={{ onTai: (t, d) => { setTong(t); setDaLam(d) }, onCau: (e) => { void api.tra(e.verdict === 'correct') }, onHet: setKq, ban: api.ban }} />}
-    </DauView>
+    </DauView2D>
   )
 }
 

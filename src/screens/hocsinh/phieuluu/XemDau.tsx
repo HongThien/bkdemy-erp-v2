@@ -5,7 +5,9 @@ import { MAU } from '../skin/KhungHS'
 import { TheTran, DaiTran, PHIEN, CLS_PHIEN, NgocChu, NUT_TRAN, HOP_LOI_GIAI, FONT_TRAN, type TtTran } from '../skin/KhungTran'
 import type { BangMau3D } from '../skin/the3d/kieuMau'
 import type { ChangV, LucDiaV } from './kieu'
-import { DauView, type ApiDau } from './DauView'
+import type { ApiDau } from './DauView'
+import { DauView2D } from './DauView2D'
+import type { NvId } from '../skin/nhanVat'
 
 const DEF: number[][] = [[1, 1, 1, -1, 3, 2], [2, 1, 1, -1, 2, 3], [1, 2, 3, -1, 1, 2], [2, -1, 1, 1, 4, 3], [3, 2, 1, -1, 2, 1], [1, -2, 2, 1, 3, -1], [2, 3, 1, -1, -1, 3], [4, 1, 2, -1, 1, -2], [1, 1, 2, -1, 4, 1], [3, -1, 1, 2, 2, 4]]
 const VT = [1, 0, 2, 3, 1, 0, 3, 2, 1, 2]
@@ -66,7 +68,7 @@ function Cau({ api, tong, onXong }: { api: ApiDau; tong: number; onXong: () => v
   )
 }
 
-export function XemDau({ luc, chang, b, onRut }: { luc: LucDiaV; chang: ChangV; b: BangMau3D; onRut: () => void }) {
+export function XemDau({ luc, chang, b, onRut, nv }: { luc: LucDiaV; chang: ChangV; b: BangMau3D; onRut: () => void; nv?: NvId }) {
   const tong = chang.so_cau_luot ?? 5
-  return <DauView luc={luc} chang={chang} b={b} tong={tong} onRut={onRut}>{(api) => <Cau api={api} tong={tong} onXong={onRut} />}</DauView>
+  return <DauView2D luc={luc} chang={chang} b={b} gioi={nv} tong={tong} onRut={onRut}>{(api) => <Cau api={api} tong={tong} onXong={onRut} />}</DauView2D>
 }

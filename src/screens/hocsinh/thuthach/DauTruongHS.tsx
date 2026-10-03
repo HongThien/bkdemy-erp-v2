@@ -425,3 +425,6 @@ function Vang() {
     </div>
   )
 }
+
+// Dùng chung cho sân 2D khác (phieuluu/SanDon2D.tsx — màn đấu của Học theo chủ đề): CSS động tác nhân vật, chuỗi tư thế, nạp trước ảnh, mặt đất sân.
+export { CSS as CSS_SAN_DAU, useTuThe, useNapTruoc, DAT as DAT_SAN_DAU }
