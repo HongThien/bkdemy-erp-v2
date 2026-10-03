@@ -1155,11 +1155,18 @@ YÊU CẦU RIÊNG (ảnh to → thành phần → bố cục):
 ```
 
 ### Kit B — KHU HỌC TẬP = 5 ĐẢO LƠ LỬNG trên bầu trời sao (sửa 03/10 tối — Thùy: "giao diện game chibi, mỗi cái 1 lục địa trôi nổi trên bầu trời sao"; THAY bản 5 icon ô)
+
+> **Thùy 03/10 khuya (sau khi xem demo mượn hình):** "5 lục địa nên có DESIGN MỚI thay vì dùng lại cái của chuyên đề. Trời sao cần NHIỀU SAO, trông VŨ TRỤ hơn."
+> ⇒ **KHÔNG đính kèm ảnh lục địa của bản đồ thế giới** cho kit này (tránh ChatGPT vẽ lại y hệt). Chỉ đính kèm để lấy NÉT: `design/bk-ui-src/AppHS/lục địa rừng/reference/kien_truc_chibi_v4.png`
+> (công trình chibi) + `public/bk-ui/hs/skin/rpg/bg_dao_troi_chibi_ngang.jpg` (không khí trời). Ảnh chụp demo hiện tại (`hs.html?xem=hoc_tap`) đính kèm để thấy BỐ CỤC, ghi rõ "chỉ lấy bố cục, vẽ mới hoàn toàn".
 ```
 App:            hs
 Màn:            hoc-tap (cổng vào 5 chế độ học)
-Mô tả màn:      Bầu trời đêm đầy sao, tinh vân tím–xanh nhạt, mây mỏng. Trôi nổi 5 HÒN ĐẢO chibi (đáy đảo là khối đá treo lơ lửng, có rễ/thác nhỏ rủ xuống,
-                hào quang mờ bên dưới), MỖI ĐẢO 1 chủ đề rõ ràng, có 1 CÔNG TRÌNH đặc trưng ở giữa đảo:
+Mô tả màn:      VŨ TRỤ KỲ ẢO: nền xanh tím rất sâu, DÀY ĐẶC SAO nhiều cỡ (sao nhỏ li ti khắp nền + vài sao lớn lấp lánh có tia chữ thập),
+                một DẢI NGÂN HÀ chéo màn, 2–3 đám TINH VÂN tím–hồng–xanh ngọc mềm, 1–2 HÀNH TINH nhỏ xa xa có vành, vài sao băng mảnh. Không mây dày che sao.
+                Trôi nổi 5 HÒN ĐẢO chibi THIẾT KẾ MỚI (KHÔNG giống các lục địa bản đồ thế giới): mặt đảo nhỏ gọn, tròn trịa kiểu đảo game;
+                đáy đảo là khối đá treo lơ lửng nhọn dần, có rễ/thác nhỏ rủ xuống và vài mảnh đá vụn bay quanh, hào quang mờ bên dưới.
+                MỖI ĐẢO 1 chủ đề rõ ràng, 1 CÔNG TRÌNH đặc trưng to, chiếm phần lớn mặt đảo (nhìn hình là biết chế độ gì):
                 (1) Học theo chủ đề — đảo TO NHẤT ở giữa: rừng phép + quả cầu bản đồ thế giới phát sáng (cổng vào cuộc phiêu lưu đánh Ác quỷ "Phi Phai")
                 (2) Luyện dạng yếu — đảo lò rèn: đe + búa + lửa rèn, thanh kiếm đang được sửa
                 (3) Đấu trường BK — đảo có đấu trường tròn nhỏ (kiểu colosseum chibi), cờ hiệu 2 phe
@@ -1173,7 +1180,7 @@ Phiên bản kit:  v1
 
 YÊU CẦU RIÊNG (ảnh to → thành phần → bố cục):
 - reference/reference_hoc_tap.png: TOÀN CẢNH đủ 5 đảo + cầu ánh sáng + trời sao. Duyệt TRƯỚC khi sinh asset.
-- assets/backdrop/troi_sao_hoc_tap.png: CHỈ bầu trời sao + tinh vân + cầu ánh sáng mảnh (không đảo). Thêm bản DỌC 941×1672 (troi_sao_hoc_tap_doc.png) cho điện thoại.
+- assets/backdrop/troi_sao_hoc_tap.png: CHỈ vũ trụ (sao dày + ngân hà + tinh vân + hành tinh xa) + cầu ánh sáng mảnh — KHÔNG đảo. Thêm bản DỌC 941×1672 (troi_sao_hoc_tap_doc.png) cho điện thoại.
 - assets/decor/dao_hoc_chu_de.png · dao_luyen_yeu.png · dao_dau_truong.png · dao_chinh_phuc.png · dao_giai_vo_dich.png: vẽ lại TỪNG đảo (kèm công trình) đúng như reference,
   nền TRONG SUỐT, cạnh dài ≥1024px, đảo nằm giữa ảnh, chừa lề trong suốt cho hào quang.
 - DESIGN.md: vị trí TÂM + bề rộng (≈% khung) từng đảo ở khổ ngang; gợi ý bố cục khổ dọc (1 đảo trên + 2 hàng đôi).

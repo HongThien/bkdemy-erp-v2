@@ -35278,3 +35278,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 
 - (03/10 khuya, Giao diện) Khu Học tập: chữ dưới đảo bị đảo che (Thùy). Gốc: ảnh đảo là phần tử có định vị (relative) nên vẽ ĐÈ lên dòng chữ tĩnh cùng nút, cộng margin âm kéo chữ lên ⇒ chữ thành relative z-10 + mt-1. Bài học: chữ đặt sau ảnh trong cùng khối KHÔNG đủ để nằm trên — phần tử positioned luôn vẽ sau phần tử tĩnh.
+
+- (03/10 khuya, Giao diện) Thùy: 5 đảo khu Học tập cần DESIGN MỚI (không dùng lại lục địa chuyên đề) + trời "nhiều sao, vũ trụ hơn" ⇒ Đơn 14 Kit B viết lại: vũ trụ (sao dày nhiều cỡ, ngân hà, tinh vân, hành tinh xa, sao băng) + 5 đảo mới mỗi đảo 1 công trình chiếm phần lớn mặt đảo; KHÔNG đính kèm ảnh lục địa bản đồ (tránh vẽ lại y hệt), chỉ nét công trình chibi v4 + nền đảo trời + ảnh chụp demo (chỉ lấy bố cục). Trong lúc chờ: Skin.hocTap.nen = 8 lớp sao lặp theo ô lệch cỡ + dải ngân hà + 3 tinh vân (CSS).
