@@ -35401,3 +35401,14 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Tam giác bằng nhau TH1; ca bù 20/09 → T107020401, T107020303.
 - **Hạn chế:** dạng 0 MCQ (vd Hình học) → luyện báo "kho câu tạm hết" (đúng luật MCQ); test bù ghi vào hoc_tu_dau_dang (xong dạng HTD).
 - **Git máy này:** `git fetch` chết vì ref hỏng `refs/codex/turn-diffs/…` (công cụ khác tạo) — đẩy qua clone sạch, KHÔNG xoá ref (chờ Thùy).
+
+- (03/10, Giao diện) **MÀN ĐẤU CỦA "HỌC THEO CHỦ ĐỀ" → 2D** (Thùy: "làm chỗ combat ở dạng bài thành dạng 2D"): `phieuluu/DauView2D.tsx` THAY `DauView` 3D (cùng hợp đồng: props + `children(api)` + `tra(dung)` + luật combo 3 câu = 1 chiêu, máu chia đều đội hình) +
+  `phieuluu/SanDon2D.tsx` (sân 2D dùng chung: nền `Skin.sanDau`, NHÂN VẬT CHÍNH em chọn — 15 tư thế chiến đấu `skin/nhanVat.ts` —, quái/boss bên phải (boss có ảnh ⇒ `BossAnhHS`, quái thường ⇒ `QuaiTam`), đòn canvas `thuthach/hieuUng.ts`). Combo 3/3 = TUYỆT KỸ (sét / thiên thạch) · 2/3 chiêu mạnh (cầu lửa / băng lớn) ·
+  1/3 chiêu nhẹ (cầu nhỏ / tia điện) · 0/3 XỊT (quái đánh trả, hồi 1 máu); quái ngã (`sd-ha`) rồi con kế trượt vào (`sd-vao`). `PhieuLuuHS.DauThat` truyền nhân vật đã chọn (`nhanVat ?? gioiTinh`). `DauView` 3D còn trong repo nhưng không ai gọi. Xem thử: `hs.html?xem=phieu_luu&tang=dau&luc=C&vung=C1` (`&nvc=ninja|su_tu|cao|elf|nam|nu`).
+  Đã kiểm: combo 3/3 ra sét đánh trên quái, sân 2D bung/thu, `tsc` + `check:style-hs` sạch. CHƯA: iPad thật; quái thường vẫn là hình tạm `QuaiTam` (Thùy tự thiết kế quái); luồng làm bài thật qua `LamBai` (tài khoản TEST01–TEST10).
+  Dọn: git báo ref hỏng `refs/codex/turn-diffs/...` (file ref hỏng do app Codex) làm mọi lệnh fetch/pull chết ⇒ Thùy cho xoá ĐÚNG ref đó (file loose, các ref codex khác giữ nguyên).
+
+- (03/10, Giao diện) **BUG "bấm Đấu trường BK (Tiếng Anh) là về Home" = SERVICE WORKER PWA nuốt khung game.** Đấu trường/Chinh phục nhúng game bằng `<iframe src="/dautu.html?nhung=1&…">`; `sw.js` của app HS có `navigateFallback` ⇒ trả `index.html` (CHÍNH app HS) cho mọi điều hướng không khớp bộ lưu sẵn, mà `dautu.html` được precache KHÔNG kèm query nên `?nhung=1…` không khớp
+  ⇒ khung game hiện lại màn chính app HS. Chỉ lộ ở bản build có SW (Vercel / `preview:hs`); dev server không có SW nên không tái hiện (em test dev thấy game chạy tốt — bẫy). Mọi môn bị, không riêng Anh. Sửa: `vite.config.hs.ts` → `navigateFallbackDenylist` thêm `/^\/dautu\.html/`.
+  Kiểm: build lại, `sw.js` có denylist mới; `preview:hs` (5180) có SW active, iframe `/dautu.html?nhung=1&vao=chu_de&mon=Tiếng Anh` nay nạp đúng game "BK Đấu Từ" (script `dautu-*.js`). Máy HS đang giữ SW cũ tự cập nhật sau deploy (registerType autoUpdate) — **Thùy phải DEPLOY bản này mới hết lỗi**.
+  Còn lại (không phải bug, đã biết): lần đầu trong khung game hiện màn "Chào mừng chiến binh mới" (hồ sơ game THEO MÁY, chưa nối tài khoản HS / nhân vật chính) rồi mới vào chủ đề.

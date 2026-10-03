@@ -198,6 +198,12 @@
       "port": 5186
     },
     {
+      "name": "dev-dautu",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev:dautu"],
+      "port": 5293
+    },
+    {
       "name": "games",
       "runtimeExecutable": "node",
       "runtimeArgs": [
