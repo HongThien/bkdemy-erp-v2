@@ -227,6 +227,10 @@ const XEM_BOSS3D = typeof location !== 'undefined' && new URLSearchParams(locati
 const XemThuThach = lazy(() => import('./screens/hocsinh/thuthach/XemThuThach'))
 const XEM_THU_THACH = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'thu_thach'
 
+// KHU HỌC TẬP (hs.html?xem=hoc_tap · &mon=Toán|KHTN|Tiếng Anh): 5 ô + game nhúng + Giải Vô địch — spec-che-do-game.md §7 (03/10).
+const XemHocTap = lazy(() => import('./screens/hocsinh/hoctap/XemHocTap'))
+const XEM_HOC_TAP = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'hoc_tap'
+
 export default function AppHS() {
   if (XEM_GAMI) return <Suspense fallback={null}><XemMauGami /></Suspense>
   if (XEM_TUTORIAL) return <Suspense fallback={null}><TutorialHS /></Suspense>
@@ -234,6 +238,7 @@ export default function AppHS() {
   if (XEM_BOSS) return <Suspense fallback={null}><XemBoss /></Suspense>
   if (XEM_BOSS3D) return <Suspense fallback={null}><XemMoHinh3D /></Suspense>
   if (XEM_THU_THACH) return <Suspense fallback={null}><XemThuThach /></Suspense>
+  if (XEM_HOC_TAP) return <Suspense fallback={null}><XemHocTap /></Suspense>
   const [session, setSession] = useState<Session | null | undefined>(undefined)
   const [hsId, setHsId] = useState<string | null | undefined>(undefined)
   if (import.meta.env.DEV && new URLSearchParams(location.search).has('demo')) return <DemoHome />

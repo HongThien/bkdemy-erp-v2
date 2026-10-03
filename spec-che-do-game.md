@@ -97,6 +97,7 @@
 - **Luật lượt (Thùy 03/10 tối) — kiểu "giành quyền trả lời"** (R7: rung chuông / Olympia "giành quyền" / Jeopardy buzzer): 2 em **cùng 1 câu**;
   **AI BẤM TRƯỚC là câu đó KẾT THÚC** (đồng bộ cả 2): bấm đúng ⇒ người bấm thắng lượt · bấm sai ⇒ **ĐỐI THỦ thắng lượt nhưng ÍT điểm hơn** tự trả lời đúng.
   Xong lượt ⇒ cả 2 sang câu kế ngay. (Đoán bừa ⇒ phần lớn là tặng điểm cho đối thủ ⇒ không còn là game nhanh tay.)
+  Mặc định (CTO, chỉnh được): tự bấm đúng **+100** · thắng nhờ đối thủ sai **+50** · mỗi câu vẫn có giờ riêng của môn (Toán 45s · KHTN 30s · Anh 12s), hết giờ câu không ai bấm ⇒ 0 điểm, sang câu · hết 4 phút giữa câu ⇒ bỏ câu · hoà ⇒ nhiều câu tự bấm đúng hơn, rồi ít sai hơn.
 
 **7.2b Luyện dạng yếu = Ô RIÊNG** (Thùy 03/10 tối) ⇒ khu Học tập có **5 ô**.
 - **Phần thưởng PHẢI có XU** (chuẩn thiết kế).
@@ -107,6 +108,7 @@
 - **Tháp chủ đề: em học tới đâu mở tới đó** — không chờ cả khối (có chủ đề lớp B/C không học, chỉ A/S học). ⇒ thay luật "phần lớn khối đã học" ở §3/§5.
   Mở cho em khi em đã học **≥ 1/2 số dạng** của chủ đề; **đề tháp = toàn bộ dạng của chủ đề, giống nhau cho mọi người** (BXH công bằng).
 - **Vô tận Hard:** giới hạn giờ/câu như thường **+ giới hạn LƯỢT LEO: 3 lượt/ngày** (chống spam, rèn kiên trì) — giỏi thì 1 ngày leo được 3 tầng, không thì không được tầng nào.
+  **1 tầng = 1 câu** (mức 4–5). Leo **cộng dồn qua các ngày**: mỗi lượt thử 1 tầng, đúng ⇒ lên 1 tầng và giữ; sai ⇒ mất lượt. BXH Hard = tầng cao nhất đã leo.
 
 ---
 
@@ -119,6 +121,10 @@
 - Giải 8 người thật có cộng Điểm Rank không (gợi ý: không — để Rank chỉ đo độ chính xác).
 - Tháp có cộng chút Điểm Rank + trần không (gợi ý: không).
 - Đấu đôi 1 máy cho môn có công thức: nếu mở lại ⇒ đề hiện 1 lần ở giữa nằm ngang, 2 khu bấm trái/phải (không đối diện).
+
+## Demo đã dựng (03/10 tối) — `hs.html?xem=hoc_tap`
+- Ô Home "Tự luyện" ⇒ "Học tập" + màn 5 ô (`hoctap/HocTapHS.tsx`, icon MƯỢN — Đơn 14 Kit B). Học theo chủ đề ⇒ bản đồ phiêu lưu · Luyện dạng yếu ⇒ Tự luyện tổng hợp cũ (CHƯA đổi tỉ lệ 80/20) · Đấu trường BK / Chinh phục BK ⇒ khung game Đấu Từ NHÚNG (`dautu.html?nhung=1&vao=chu_de|thap&mon=`, build chung dist-hs) · Giải Vô địch ⇒ màn mới (giải trực tiếp = dữ liệu mẫu, đăng ký chưa lưu) + Đấu với máy = Thử thách cũ.
+- CHƯA (logic): chọn câu theo mức độ (đấu 1–3, Hard 4–5) · bot theo thời gian/tỉ lệ đúng thật · luật giành quyền + 4 phút · Hard 3 lượt/ngày cộng dồn · tháp chủ đề theo khối + mở ≥1/2 dạng · Luyện yếu 80/20 · game nhúng còn hồ sơ theo máy (đổi sang tài khoản HS) · giải trực tiếp (đăng ký, lịch, nhánh, điểm danh, xu) ở DB.
 
 ## Việc kéo theo (đã biết chỗ)
 

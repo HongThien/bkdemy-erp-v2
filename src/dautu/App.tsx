@@ -33,6 +33,14 @@ type Man =
   | { ten: 'thap' }
 type HopThoai = null | 'ho_so' | 'bxh' | 'cai_dat' | 'online'
 
+// NHÚNG TRONG APP HS (khu Học tập — spec-che-do-game.md §7, Thùy 03/10): hs app mở dautu.html?nhung=1&mon=<môn>&vao=chu_de|thap trong khung.
+// ⇒ đặt môn theo app HS, mở thẳng màn được gọi; "lùi" từ màn đó báo app HS đóng khung (postMessage) thay vì về Home của game.
+const Q0 = new URLSearchParams(location.search)
+const NHUNG = Q0.get('nhung') === '1'
+const VAO_NHUNG: 'chu_de' | 'thap' | null = NHUNG ? (Q0.get('vao') === 'thap' ? 'thap' : 'chu_de') : null
+if (NHUNG && Q0.get('mon') && NGUON[Q0.get('mon')!]) khoMon.dat(Q0.get('mon')!)
+const baoThoat = () => window.parent?.postMessage({ dtv: 'thoat' }, location.origin)
+
 function docLinkMoi(): Man | null {
   const q = new URLSearchParams(location.search)
   const ng = nguonCua(q.get('mon'))
@@ -45,7 +53,7 @@ function docLinkMoi(): Man | null {
 
 export default function App() {
   const h = useHoSo()
-  const [man, setMan] = useState<Man>({ ten: 'home' })
+  const [man, setMan] = useState<Man>(VAO_NHUNG ? { ten: VAO_NHUNG } : { ten: 'home' })
   const [hop, setHop] = useState<HopThoai>(null)
   const nguon = useMon()
   const [cap, setCap] = useCap(nguon)
@@ -64,7 +72,7 @@ export default function App() {
   }, [db, linkCho])
 
   const toi: NguoiTran | null = db ? { ma: db.ma, ten: db.ten, nv: db.nv, cap: db.cap } : null
-  const veNha = () => setMan({ ten: 'home' })
+  const veNha = () => (VAO_NHUNG ? (man.ten === VAO_NHUNG ? baoThoat() : setMan({ ten: VAO_NHUNG })) : setMan({ ten: 'home' }))
 
   const chonCheDo = (chuDe: string, tenChuDe: string, c: LuaChonCheDo) => {
     if (!toi) return

@@ -1119,3 +1119,66 @@ YÊU CẦU RIÊNG (kịch bản chuẩn — ảnh to → thành phần → bố 
 > **Kit về (Claude làm):** kiểm mục 8 giao thức (đếm 15 tư thế + 5 fx + 1 nền ↔ reference; alpha thật; cùng khổ; **chồng 15 ảnh lên nhau xem chân + trục thân có trùng không** — lệch thì trả hàng theo mục 10) · nén WebP cắt chung 1 hộp như kit lục địa
 > (`scripts/anime-kit-lucdia.mjs` mẫu) vào `public/bk-ui/hs/skin/rpg/chiendau/` · khai vào `Skin.nhanVat` tách `nguoiDan` (bé gái + cú) và `chinh` {nam, nu, tư thế} · `hieuUng.ts`: `TtHero` đổi từ CSS-trên-1-ảnh sang chuỗi tư thế đúng bảng DESIGN.md ·
 > đạn canvas dùng fx_* làm đầu đạn (đuôi + nổ giữ code) · `fx_bang_boc` thay lớp băng vẽ code · nền sân đấu thay nền thẻ ở `DauTruongHS` · so với reference ở 1280×720 và 390×844.
+
+
+---
+
+## Đơn 14 — KHU HỌC TẬP: màn CHINH PHỤC BK (tháp tổng + tháp chủ đề) · 5 icon ô · bộ GIẢI VÔ ĐỊCH BK — theo ĐÚNG giao thức kit — soạn 03/10 tối
+
+> **Thùy 03/10:** ô Tự luyện ⇒ "Học tập", bấm vào ra 5 ô (Học theo chủ đề · Luyện dạng yếu · Đấu trường BK · Chinh phục BK · Giải Vô địch BK) — luật ở `spec-che-do-game.md` §7.
+> Demo đã chạy (`hs.html?xem=hoc_tap`), đang MƯỢN hình có sẵn. Màn tháp **"phải design thật ngầu — để ChatGPT design riêng"**.
+> **Cách gửi:** 3 kit = 3 context ChatGPT MỚI (app máy tính). Dán `CHATGPT-UI-KIT.md` → dán khối đơn → đính kèm `public/bk-ui/hs/skin/rpg/bg_lau_dai_chibi_ngang.jpg` (nền app, giữ không khí)
+> + `public/bk-ui/hs/skin/rpg/o_tu_luyen.png` · `o_cup.png` · `o_rank.png` (đúng nét icon ô hiện có) + `phieuluu2d/luc_dia_v2_rung.webp` (đúng nét tranh bản đồ).
+> Kit về: `design/handoff/hs-chinh-phuc-v1.zip` · `hs-icon-hoc-tap-v1.zip` · `hs-giai-vo-dich-v1.zip`. **Làm Kit A trước** (nặng nhất, Thùy duyệt hướng).
+
+### Kit A — màn CHINH PHỤC BK (leo tháp)
+```
+App:            hs
+Màn:            chinh-phuc-bk (chọn tháp để leo)
+Mô tả màn:      App học "Giải cứu thế giới — đánh quái vật". Màn này là nơi chọn THÁP để leo (thử thách kiến thức càng lên càng khó, có bảng xếp hạng).
+                CHÍNH GIỮA: 1 THÁP TỔNG thật to, hùng vĩ, ngầu nhất màn (biểu tượng của BK — đỉnh tháp toả sáng vàng, mây cuộn quanh thân, cao gần hết khung).
+                XUNG QUANH (vòng cung 2 bên, thấp hơn, xa hơn): 8 THÁP CHỦ ĐỀ nhỏ hơn, MỖI THÁP MỘT KIỂU khác nhau (pha lê, đá cổ, gỗ phép, sắt rèn, băng,
+                dung nham, cây cổ thụ, mây trời) — cùng phong cách, cùng ánh sáng, nhìn là biết "8 tháp khác nhau quanh 1 tháp chủ".
+                Cầu đá / đường ánh sáng nối các tháp chủ đề về tháp tổng. Trời đêm phép thuật, sương mù dưới chân, sao + ánh vàng ấm. iPad NGANG 1672×941.
+Phần tử ĐỘNG:   tên tháp + tầng cao nhất của em dưới chân mỗi tháp · tháp CHƯA MỞ (em chưa học đủ chủ đề) = code phủ xám + ổ khoá · 2 nút mode (Sinh tồn / Vô tận)
+                + công tắc Normal/Hard · bảng xếp hạng (tất cả do code — KHÔNG vẽ chữ/số/nút vào ảnh).
+Trạng thái:     1 ảnh reference, mọi tháp ở trạng thái thường (không khoá, không chữ).
+Phong cách:     anime fantasy vẽ tay chi tiết như ảnh lục địa đính kèm; nhìn ngang hơi từ dưới lên (tháp tổng sừng sững); KHÔNG 3D render, KHÔNG chữ.
+Giữ nguyên:     1672×941; dưới chân mỗi tháp chừa khoảng trống ≈10% khung cho nhãn; ≈12% trên cùng và ≈14% dưới cùng không đặt tháp (thanh trên + nút mode).
+Phiên bản kit:  v1
+
+YÊU CẦU RIÊNG (ảnh to → thành phần → bố cục):
+- reference/reference_chinh_phuc.png: TOÀN CẢNH đủ 1 tháp tổng + 8 tháp chủ đề + cầu nối + nền. Duyệt TRƯỚC khi sinh asset.
+- assets/backdrop/backdrop_chinh_phuc.png: đúng cảnh reference nhưng KHÔNG có 9 tháp (chỗ đặt tháp = nền đá/mây trống), giữ cầu nối + sương.
+- assets/decor/thap_tong.png + thap_cd_1.png … thap_cd_8.png: vẽ lại TỪNG tháp đúng như reference, nền TRONG SUỐT, chân tháp chạm đáy ảnh, cạnh dài ≥1024px.
+- DESIGN.md: vị trí CHÂN (≈% ngang, ≈% dọc) + bề rộng (≈% khung) của từng tháp; thứ tự lớp (tháp nào đứng trước); vùng nhãn dưới chân.
+```
+
+### Kit B — 5 ICON Ô khu Học tập
+```
+App:            hs
+Màn:            icon-o-hoc-tap (5 icon ô, dùng trong lưới ô như màn chính)
+Mô tả màn:      5 icon cho 5 ô: (1) Học theo chủ đề — quả cầu bản đồ thế giới phát sáng · (2) Luyện dạng yếu — búa rèn đang sửa thanh kiếm mẻ ·
+                (3) Đấu trường BK — hai thanh kiếm chéo trên khiên · (4) Chinh phục BK — ngọn tháp cao toả sáng đỉnh · (5) Giải Vô địch BK — cúp vô địch có vòng nguyệt quế.
+Phong cách:     ĐÚNG nét các icon ô đính kèm (o_tu_luyen · o_cup · o_rank): vật thể 3/4 nghiêng, viền vàng, bóng mềm, ánh tím–vàng; KHÔNG chữ.
+Giữ nguyên:     mỗi icon 1 file PNG nền TRONG SUỐT 512×512, vật thể chiếm ≈80% khung, căn giữa; 5 icon cùng cỡ thị giác.
+Phiên bản kit:  v1
+- assets/o_hoc_chu_de.png · o_luyen_yeu.png · o_dau_truong.png · o_chinh_phuc.png · o_giai_vo_dich.png + 1 ảnh reference xếp 5 icon cạnh nhau.
+```
+
+### Kit C — bộ GIẢI VÔ ĐỊCH BK
+```
+App:            hs
+Màn:            giai-vo-dich (lịch giải tuần, đăng ký, nhánh loại trực tiếp, vinh danh)
+Mô tả màn:      Nền màn giải: đấu trường lớn có khán đài, cờ hiệu, ánh đèn chiếu vào sàn giữa (chỗ code vẽ NHÁNH ĐẤU) — tối vừa đủ để chữ trắng đọc rõ.
+                Kèm bộ vật phẩm vinh danh: CÚP VÔ ĐỊCH to · huy chương Á quân (bạc) · huy chương Bán kết (đồng) · băng rôn "nhà vô địch" trống chữ.
+Phần tử ĐỘNG:   nhánh đấu (ô tên, đường nối), lịch, nút đăng ký, tên người thắng, số xu thưởng — tất cả do code.
+Phong cách:     anime fantasy như ảnh nền app đính kèm; KHÔNG chữ.
+Giữ nguyên:     nền 1672×941 ngang; vùng giữa ≈60% khung để trống/tối cho nhánh đấu; vật phẩm PNG trong suốt, cạnh dài ≥768px.
+Phiên bản kit:  v1
+- assets/backdrop/nen_giai_vo_dich.png · assets/decor/cup_vo_dich.png · huy_chuong_bac.png · huy_chuong_dong.png · bang_ron.png + reference ghép thử.
+```
+
+> **Kit về (Claude làm):** kiểm mục 8 giao thức · nén WebP vào `public/bk-ui/hs/skin/rpg/hoctap/` · Kit B thay 5 hình MƯỢN trong `skin/styles/rpg.ts` (`hoc_chu_de` … `giai_vo_dich`) ·
+> Kit A dựng màn Chinh phục BK theo DESIGN.md (tháp chủ đề gán theo chủ đề của khối, khoá theo luật "học ≥ 1/2 dạng") thay màn tháp mượn của Đấu Từ ·
+> Kit C làm nền + vinh danh cho `GiaiVoDichHS`. Style khác (Tối giản, Khối vuông) cần bộ icon riêng — đơn sau.

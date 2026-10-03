@@ -43,6 +43,8 @@ export const RPG: Skin = {
     nhiem_vu: `${A}/o_nhiem_vu.png`, rank: `${A}/o_rank.png`,
     // 03/10 — TẠM, chờ vẽ riêng: Thư viện BK dùng cuộn thư (hình của ô 'Bài tập được giao' đã bỏ) · ô Tự luyện riêng (TSA khối 12) dùng hình Tự luyện.
     thu_vien: `${A}/o_bai_tap_giao.png`, tu_luyen_rieng: `${A}/o_tu_luyen.png`,
+    // 03/10 — TẠM, chờ đơn ChatGPT vẽ riêng: 5 ô khu HỌC TẬP (spec-che-do-game §7) mượn hình có sẵn.
+    hoc_chu_de: `${A}/o_pha_le.png`, luyen_yeu: `${A}/o_tu_luyen.png`, dau_truong: `${A}/o_rank.png`, chinh_phuc: `${A}/o_thi_thu.png`, giai_vo_dich: `${A}/o_cup.png`,
   },
   dauThayIcon: '✦',
   trangTri: { goc: `${A}/corner.png`, gach: `${A}/divider.png` },

@@ -59,6 +59,7 @@ export default defineConfig({
   ],
   build: {
     outDir: 'dist-hs',
-    rollupOptions: { input: 'hs.html' },
+    // dautu.html = khung game 6 chế độ, app HS nhúng trong khung (khu Học tập — spec-che-do-game §7, 03/10) ⇒ build chung vào dist-hs
+    rollupOptions: { input: { hs: 'hs.html', dautu: 'dautu.html' } },
   },
 })
