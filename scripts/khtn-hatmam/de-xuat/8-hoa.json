@@ -1,0 +1,1101 @@
+{
+  "khoi": "8",
+  "mon": "Hóa học",
+  "chuyen_de": [
+    {
+      "hm": "K080101",
+      "erp": "K080102",
+      "ly_do": "Biến đổi vật lí – hoá học, phản ứng hoá học, toả/thu nhiệt = chuyên đề ERP \"Phản ứng Hóa học\" (KHÁC MÃ: ERP K080101 là Dung dịch)."
+    },
+    {
+      "hm": "K080102",
+      "erp": null,
+      "ly_do": "Mol và tỉ khối chất khí — ERP khối 8 chưa có chuyên đề này."
+    },
+    {
+      "hm": "K080103",
+      "erp": "K080101",
+      "ly_do": "Dung dịch và nồng độ = ERP \"Dung dịch - Nồng độ\" (KHÁC MÃ)."
+    },
+    {
+      "hm": "K080104",
+      "erp": "K080103",
+      "ly_do": "ĐLBTKL + lập/ý nghĩa PTHH = ERP \"Phương trình Hóa học\" (K08010301–03)."
+    },
+    {
+      "hm": "K080105",
+      "erp": "K080103",
+      "ly_do": "Tính theo PTHH = ERP \"Phương trình Hóa học\" (K08010304–05); ERP gộp chung một chuyên đề với ĐLBTKL."
+    },
+    {
+      "hm": "K080106",
+      "erp": null,
+      "ly_do": "Tốc độ phản ứng và chất xúc tác — ERP khối 8 chưa có."
+    },
+    {
+      "hm": "K080201",
+      "erp": null,
+      "ly_do": "Acid — ERP khối 8 chưa có chủ đề Acid–Base–Oxide–Muối–Phân bón; riêng bài tính theo PTHH/pha loãng gắn sang K080103/K080101 theo phương pháp."
+    },
+    {
+      "hm": "K080202",
+      "erp": null,
+      "ly_do": "Base và thang pH — ERP chưa có; bài tính trung hoà gắn K08010304."
+    },
+    {
+      "hm": "K080203",
+      "erp": null,
+      "ly_do": "Oxide — ERP chưa có; bài tính theo PTHH có oxide gắn K080103."
+    },
+    {
+      "hm": "K080204",
+      "erp": null,
+      "ly_do": "Muối — ERP chưa có; bài tính theo PTHH có muối gắn K080103."
+    },
+    {
+      "hm": "K080205",
+      "erp": null,
+      "ly_do": "Phân bón hoá học — ERP chưa có."
+    }
+  ],
+  "dang": [
+    {
+      "hm": "K08010101",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K08010201",
+          "ly_do": "Cùng việc: xét có chất mới tạo thành hay không để phân loại biến đổi; câu mẫu ERP (sắt gỉ, sữa chua, nước sôi) cùng khuôn."
+        }
+      ]
+    },
+    {
+      "hm": "K08010102",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010102-01-001",
+            "K08H010102-01-004",
+            "K08H010102-01-002",
+            "K08H010102-01-003",
+            "K08H010102-02-001",
+            "K08H010102-02-003",
+            "K08H010102-02-004",
+            "K08H010102-03-001",
+            "K08H010102-03-002",
+            "K08H010102-03-003"
+          ],
+          "erp_dang": "K08010202",
+          "ly_do": "Xác định chất đầu – sản phẩm, viết/đọc phương trình chữ — đúng nội dung và câu mẫu K08010202."
+        },
+        {
+          "lan": "vang",
+          "cau": [
+            "K08H010102-04-001",
+            "K08H010102-04-002",
+            "K08H010102-04-003",
+            "K08H010102-04-004",
+            "K08H010102-05-001",
+            "K08H010102-05-002"
+          ],
+          "erp_chuyen_de": "K080102",
+          "ten": "Diễn biến phản ứng ở mức phân tử: đếm nguyên tử, liên kết phá vỡ – hình thành",
+          "mo_ta_ngan": "Cho số phân tử hoặc mô hình chất đầu, hỏi số nguyên tử trước – sau, số phân tử sản phẩm theo tỉ lệ, hoặc liên kết nào bị phá vỡ / hình thành.",
+          "gan_nhat": "K08010202",
+          "ly_do": "K08010202 làm ở mức CHẤT (gọi tên chất đầu/sản phẩm, phương trình chữ); nhóm này làm ở mức nguyên tử – phân tử: đếm nguyên tử theo công thức × số phân tử, suy số phân tử theo tỉ lệ, đọc mô hình liên kết — kĩ năng khác."
+        }
+      ]
+    },
+    {
+      "hm": "K08010103",
+      "nhom": [
+        {
+          "lan": "vang",
+          "cau": "*",
+          "erp_chuyen_de": "K080102",
+          "ten": "Nhận biết dấu hiệu có phản ứng hoá học xảy ra",
+          "mo_ta_ngan": "Cho hiện tượng quan sát được (đổi màu, mùi, sủi khí, kết tủa, nóng lên/lạnh đi), hỏi dấu hiệu nào chứng tỏ có phản ứng hoặc trường hợp nào là phản ứng thật khi hai hiện tượng giống nhau bề ngoài.",
+          "gan_nhat": "K08010201",
+          "ly_do": "K08010201 phân loại một biến đổi đã mô tả; dạng này đọc từng DẤU HIỆU quan sát (màu, khí, kết tủa, nhiệt) và loại dấu hiệu giả (sủi bọt do sôi, nóng do rót nước nóng) — mục kiến thức riêng của Bài 2. Nếu GV thấy đủ gần thì gộp vào K08010201."
+        }
+      ]
+    },
+    {
+      "hm": "K08010104",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K08010203",
+          "ly_do": "Phân biệt toả/thu nhiệt (định nghĩa, đọc nhiệt kế) và ứng dụng nhiên liệu — câu mẫu ERP có cả \"nhiên liệu an toàn\", \"lò nung vôi\"."
+        }
+      ]
+    },
+    {
+      "hm": "K08010105",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010105-01-001",
+            "K08H010105-01-004",
+            "K08H010105-02-001"
+          ],
+          "erp_dang": "K08010201",
+          "ly_do": "Nướng bánh, luộc trứng, đinh gỉ: thực chất là phân loại biến đổi vật lí/hoá học qua chất mới — cùng khuôn câu mẫu \"sắt bị gỉ là biến đổi gì\"."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010105-03-002"
+          ],
+          "erp_dang": "K08010203",
+          "ly_do": "Không đốt than trong phòng kín = sử dụng nhiên liệu an toàn; câu mẫu K08010203 có \"Nêu hai biện pháp sử dụng nhiên liệu an toàn\"."
+        }
+      ]
+    },
+    {
+      "hm": "K08010106",
+      "nhom": [
+        {
+          "lan": "vang",
+          "cau": [
+            "K08H010106-01-003",
+            "K08H010106-01-006",
+            "K08H010106-01-007",
+            "K08H010106-02-001",
+            "K08H010106-02-002",
+            "K08H010106-02-003",
+            "K08H010106-02-006"
+          ],
+          "erp_chuyen_de": "K080102",
+          "ten": "Đề xuất và giải thích thí nghiệm chứng minh phản ứng hoá học",
+          "mo_ta_ngan": "Chọn hoá chất – dụng cụ – dấu hiệu cần đo để chứng minh có phản ứng hoặc phản ứng toả/thu nhiệt, hoặc giải thích vì sao thí nghiệm cho kết quả bất thường.",
+          "gan_nhat": "K08010203",
+          "ly_do": "K08010203 chỉ phân loại phản ứng toả/thu nhiệt đã cho; dạng này là kĩ năng thực nghiệm mức 4 (thiết kế, biện luận kết quả sai do nhầm hoá chất, lượng quá ít, phản ứng chưa hoàn toàn) và trải cả dấu hiệu kết tủa/khí, không riêng nhiệt."
+        },
+        {
+          "lan": "thieu_cd",
+          "cau": [
+            "K08H010106-02-007"
+          ],
+          "erp_chuyen_de": null,
+          "ly_do": "Đá vôi cục lớn phản ứng chậm vì diện tích tiếp xúc nhỏ — kiến thức tốc độ phản ứng (SGK Bài 7); ERP khối 8 chưa có chuyên đề Tốc độ phản ứng – chất xúc tác."
+        }
+      ]
+    },
+    {
+      "hm": "K08010201",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Khái niệm mol, khối lượng mol, số Avogadro. Mol và tỉ khối chất khí (SGK Bài 3) — chủ đề ERP \"Phản ứng Hóa học\" khối 8 chưa có chuyên đề này; nên mở chuyên đề Mol – tỉ khối chất khí trong chủ đề đó."
+        }
+      ]
+    },
+    {
+      "hm": "K08010202",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Chuyển đổi m ↔ n (n = m/M), tìm M/nguyên tố từ m và n. Mol và tỉ khối chất khí (SGK Bài 3) — chủ đề ERP \"Phản ứng Hóa học\" khối 8 chưa có chuyên đề này; nên mở chuyên đề Mol – tỉ khối chất khí trong chủ đề đó."
+        }
+      ]
+    },
+    {
+      "hm": "K08010203",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Chuyển đổi số mol ↔ số nguyên tử, phân tử (N = n × 6,022·10²³). Mol và tỉ khối chất khí (SGK Bài 3) — chủ đề ERP \"Phản ứng Hóa học\" khối 8 chưa có chuyên đề này; nên mở chuyên đề Mol – tỉ khối chất khí trong chủ đề đó."
+        }
+      ]
+    },
+    {
+      "hm": "K08010204",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Chuyển đổi số mol ↔ thể tích khí ở đkc (V = 24,79 n). Mol và tỉ khối chất khí (SGK Bài 3) — chủ đề ERP \"Phản ứng Hóa học\" khối 8 chưa có chuyên đề này; nên mở chuyên đề Mol – tỉ khối chất khí trong chủ đề đó."
+        }
+      ]
+    },
+    {
+      "hm": "K08010205",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Tỉ khối chất khí (so với khí khác, với không khí), tìm M từ tỉ khối. Mol và tỉ khối chất khí (SGK Bài 3) — chủ đề ERP \"Phản ứng Hóa học\" khối 8 chưa có chuyên đề này; nên mở chuyên đề Mol – tỉ khối chất khí trong chủ đề đó."
+        }
+      ]
+    },
+    {
+      "hm": "K08010206",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Chuỗi chuyển đổi m – n – V – số hạt, đổi đơn vị, M trung bình hỗn hợp khí. Mol và tỉ khối chất khí (SGK Bài 3) — chủ đề ERP \"Phản ứng Hóa học\" khối 8 chưa có chuyên đề này; nên mở chuyên đề Mol – tỉ khối chất khí trong chủ đề đó."
+        }
+      ]
+    },
+    {
+      "hm": "K08010301",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K08010101",
+          "ly_do": "Khái niệm dung dịch, chất tan, dung môi, bão hoà, cách hoà tan nhanh — lý thuyết cơ bản, khớp câu mẫu \"Dung dịch là\"."
+        }
+      ]
+    },
+    {
+      "hm": "K08010302",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010302-01-001",
+            "K08H010302-01-005"
+          ],
+          "erp_dang": "K08010101",
+          "ly_do": "Định nghĩa/ý nghĩa độ tan, áp thẳng — khớp câu mẫu K08010101 \"độ tan NaCl 36 g có nghĩa là\"."
+        },
+        {
+          "lan": "vang",
+          "cau": [
+            "K08H010302-01-002",
+            "K08H010302-01-003",
+            "K08H010302-01-004",
+            "K08H010302-01-006",
+            "K08H010302-02-001",
+            "K08H010302-02-002",
+            "K08H010302-02-003",
+            "K08H010302-02-004",
+            "K08H010302-02-005",
+            "K08H010302-03-001",
+            "K08H010302-03-002",
+            "K08H010302-03-003",
+            "K08H010302-03-004"
+          ],
+          "erp_chuyen_de": "K080101",
+          "ten": "Tính độ tan, đọc bảng – đồ thị độ tan",
+          "mo_ta_ngan": "Tính độ tan từ khối lượng chất tan và nước (hoặc dung dịch bão hoà), suy lượng chất tan tối đa, đọc đồ thị độ tan theo nhiệt độ, tính lượng tinh thể tách ra khi làm lạnh.",
+          "gan_nhat": "K08010101",
+          "ly_do": "K08010101 chỉ hỏi định nghĩa/ý nghĩa độ tan; nhóm này là bài TÍNH quy về 100 g nước, đọc đồ thị và tính kết tinh — K08010102/03 tính theo C%, C_M, không dùng độ tan."
+        }
+      ]
+    },
+    {
+      "hm": "K08010303",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010303-01-001",
+            "K08H010303-01-004"
+          ],
+          "erp_dang": "K08010101",
+          "ly_do": "Công thức và ý nghĩa của C% — lý thuyết, khớp câu mẫu \"C% càng lớn thì dung dịch càng\"."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010303-01-002",
+            "K08H010303-01-003",
+            "K08H010303-02-001",
+            "K08H010303-02-002",
+            "K08H010303-02-003"
+          ],
+          "erp_dang": "K08010102",
+          "ly_do": "Biết m chất tan và m dung dịch/m nước → tính C%; trùng câu mẫu \"20 g đường + 180 g nước\"."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010303-03-001",
+            "K08H010303-03-002",
+            "K08H010303-03-003",
+            "K08H010303-03-004",
+            "K08H010303-04-001",
+            "K08H010303-04-002",
+            "K08H010303-04-003"
+          ],
+          "erp_dang": "K08010103",
+          "ly_do": "Biết C% → tính m chất tan, m dung dịch, m nước cần pha; trùng câu mẫu \"15 g NaBr pha bao nhiêu g dd 3%\", \"pha 50 g dd 15% cần bao nhiêu nước\"."
+        }
+      ]
+    },
+    {
+      "hm": "K08010304",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010304-01-001"
+          ],
+          "erp_dang": "K08010101",
+          "ly_do": "Ý nghĩa của \"0,5 M\" — lý thuyết cơ bản."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010304-01-002",
+            "K08H010304-01-003",
+            "K08H010304-02-001",
+            "K08H010304-02-002",
+            "K08H010304-02-003"
+          ],
+          "erp_dang": "K08010102",
+          "ly_do": "Biết n (hoặc m) chất tan và V dung dịch → tính C_M; cùng phương pháp câu mẫu K08010102."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010304-03-001",
+            "K08H010304-03-002",
+            "K08H010304-03-003",
+            "K08H010304-03-004",
+            "K08H010304-04-001",
+            "K08H010304-04-002",
+            "K08H010304-04-003",
+            "K08H010304-04-004"
+          ],
+          "erp_dang": "K08010103",
+          "ly_do": "Biết C_M → tính n, m chất tan hoặc V dung dịch cần pha; trùng câu mẫu \"pha 2 L NaCl 0,1M cần bao nhiêu g NaCl\"."
+        }
+      ]
+    },
+    {
+      "hm": "K08010305",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010305-03-001",
+            "K08H010305-03-002"
+          ],
+          "erp_dang": "K08010104",
+          "ly_do": "Pha loãng bằng nước (C% sau pha, lượng nước cần thêm); trùng câu mẫu \"500 g NaOH 16% thêm bao nhiêu nước để còn 4%\"."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010305-04-001",
+            "K08H010305-05-001"
+          ],
+          "erp_dang": "K08010102",
+          "ly_do": "Chuyển C% ↔ C_M qua khối lượng riêng D; trùng câu mẫu K08010102 \"KOH 28%, D = 1,25 g/mL, tính C_M\"."
+        }
+      ]
+    },
+    {
+      "hm": "K08010306",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K08010104",
+          "ly_do": "Trộn hai dung dịch, thêm chất tan, làm bay hơi nước — pha trộn tổng hợp, đúng K08010104."
+        }
+      ]
+    },
+    {
+      "hm": "K08010401",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K08010302",
+          "ly_do": "Phát biểu, biểu thức và kiểm chứng định luật bảo toàn khối lượng — cùng kiến thức K08010302 (ERP không tách dạng lý thuyết riêng cho định luật)."
+        }
+      ]
+    },
+    {
+      "hm": "K08010402",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K08010302",
+          "ly_do": "Tính khối lượng một chất bằng m trước = m sau; trùng câu mẫu \"16 g BaCl₂ + 34 g Na₂SO₄ → 45 g BaSO₄ + ? NaCl\"."
+        }
+      ]
+    },
+    {
+      "hm": "K08010403",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010403-01-001"
+          ],
+          "erp_dang": "K08010301",
+          "ly_do": "Nhận diện \"hệ số\" trong PTHH đã cho — đọc hiểu PTHH, cùng câu mẫu \"hệ số của Al₂O₃ là\"."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010403-01-004",
+            "K08H010403-01-003",
+            "K08H010403-02-001",
+            "K08H010403-02-003",
+            "K08H010403-02-004",
+            "K08H010403-03-001",
+            "K08H010403-04-001",
+            "K08H010403-04-002",
+            "K08H010403-04-003"
+          ],
+          "erp_dang": "K08010303",
+          "ly_do": "Cân bằng sơ đồ, kiểm tra PTHH đã cân bằng chưa — trùng câu mẫu K08010303."
+        }
+      ]
+    },
+    {
+      "hm": "K08010404",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K08010301",
+          "ly_do": "Đọc tỉ lệ số phân tử / số mol / thể tích khí từ hệ số của PTHH đã cho (ý nghĩa PTHH) — đọc hiểu PTHH, chưa đổi m, V ↔ n nên chưa phải \"tính theo PTHH\"."
+        }
+      ]
+    },
+    {
+      "hm": "K08010405",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K08010303",
+          "ly_do": "Mô tả/phương trình chữ đã nêu đủ chất → viết công thức rồi cân bằng; điền chất còn thiếu bằng đếm nguyên tử — đều là lập PTHH (K08010303, câu mẫu có \"điền hệ số còn thiếu\")."
+        }
+      ]
+    },
+    {
+      "hm": "K08010406",
+      "nhom": [
+        {
+          "lan": "vang",
+          "cau": [
+            "K08H010406-01-001",
+            "K08H010406-01-002",
+            "K08H010406-01-005",
+            "K08H010406-01-006",
+            "K08H010406-01-007",
+            "K08H010406-01-008"
+          ],
+          "erp_chuyen_de": "K080103",
+          "ten": "Xác định công thức hoá học của chất chưa biết trong PTHH",
+          "mo_ta_ngan": "Cho PTHH đã có hệ số nhưng thiếu công thức một chất X, dùng bảo toàn số nguyên tử từng nguyên tố hai vế để tìm công thức X.",
+          "gan_nhat": "K08010303",
+          "ly_do": "K08010303 biết đủ công thức, đi tìm hệ số; dạng này ngược chiều — biết hệ số, đếm nguyên tử từng nguyên tố để dựng công thức chất lạ (mức 4). Bài \"điền chất còn thiếu\" dễ có sẵn lựa chọn (Hạt Mầm 1.4 dạng 5 cụm 3) vẫn để ở K08010303."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010406-02-001",
+            "K08H010406-02-002",
+            "K08H010406-02-006"
+          ],
+          "erp_dang": "K08010303",
+          "ly_do": "Biết sẵn một hệ số, cân bằng tìm các hệ số còn lại — vẫn là cân bằng PTHH."
+        }
+      ]
+    },
+    {
+      "hm": "K08010501",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010501-01-005",
+            "K08H010501-01-006",
+            "K08H010501-01-007",
+            "K08H010501-01-008",
+            "K08H010501-02-007",
+            "K08H010501-02-008"
+          ],
+          "erp_dang": "K08010301",
+          "ly_do": "Chỉ đọc tỉ lệ mol từ hệ số PTHH cho sẵn (2 mol Mg cần ? mol O₂), không đổi m ↔ n — cùng nhóm với Hạt Mầm 1.4 dạng 4 (đọc hiểu PTHH)."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010501-01-001",
+            "K08H010501-01-002",
+            "K08H010501-01-003",
+            "K08H010501-01-004",
+            "K08H010501-02-001",
+            "K08H010501-02-002",
+            "K08H010501-02-003",
+            "K08H010501-02-004",
+            "K08H010501-03-001",
+            "K08H010501-03-003",
+            "K08H010501-03-004"
+          ],
+          "erp_dang": "K08010304",
+          "ly_do": "m → n → tỉ lệ PTHH → m, một phản ứng hoàn toàn — đúng \"Tính toán theo PTHH (cơ bản)\"."
+        }
+      ]
+    },
+    {
+      "hm": "K08010502",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": [
+            "K08H010502-01-005",
+            "K08H010502-01-006",
+            "K08H010502-01-007"
+          ],
+          "erp_chuyen_de": null,
+          "ly_do": "Chỉ hỏi công thức n = m/M, n = V/24,79, m = n × M — kiến thức chuyển đổi mol (SGK Bài 3), không có phản ứng. Mol và tỉ khối chất khí (SGK Bài 3) — chủ đề ERP \"Phản ứng Hóa học\" khối 8 chưa có chuyên đề này; nên mở chuyên đề Mol – tỉ khối chất khí trong chủ đề đó."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010502-01-001",
+            "K08H010502-01-002",
+            "K08H010502-01-003",
+            "K08H010502-01-004",
+            "K08H010502-02-001",
+            "K08H010502-02-002",
+            "K08H010502-02-003",
+            "K08H010502-02-004",
+            "K08H010502-03-001",
+            "K08H010502-03-003",
+            "K08H010502-03-004"
+          ],
+          "erp_dang": "K08010304",
+          "ly_do": "Tính theo PTHH có đổi m ↔ n ↔ V khí đkc, một phản ứng hoàn toàn; câu mẫu K08010304 có \"7,437 L CO₂ → khối lượng CaCO₃\"."
+        }
+      ]
+    },
+    {
+      "hm": "K08010503",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K08010304",
+          "ly_do": "Một phản ứng hoàn toàn, chỉ thêm bước n = C_M·V hoặc m dd = m ct/C% — cùng mức với câu mẫu \"quặng 80% Fe₂O₃\" của K08010304 (thêm một bước quy đổi trước khi dùng tỉ lệ)."
+        }
+      ]
+    },
+    {
+      "hm": "K08010504",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K08010305",
+          "ly_do": "Chất dư – chất hết: so sánh tỉ lệ mol, tính theo chất hết; câu mẫu K08010305 có \"biết một trong hai chất có thể còn dư\"."
+        }
+      ]
+    },
+    {
+      "hm": "K08010505",
+      "nhom": [
+        {
+          "lan": "vang",
+          "cau": "*",
+          "erp_chuyen_de": "K080103",
+          "ten": "Tính hiệu suất phản ứng",
+          "mo_ta_ngan": "Đề cho hoặc hỏi hiệu suất H%: tính H từ lượng thực tế và lí thuyết, hoặc từ H tính lượng sản phẩm thực tế / lượng chất đầu cần dùng.",
+          "gan_nhat": "K08010304",
+          "ly_do": "Câu mẫu K08010304/05 đều coi phản ứng hoàn toàn; hiệu suất thêm khái niệm thực tế ↔ lí thuyết và lỗi đặc trưng nhân hay chia cho H (tính xuôi vs tính ngược) — SGK Bài 6 tách mục riêng."
+        }
+      ]
+    },
+    {
+      "hm": "K08010506",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010506-01-001"
+          ],
+          "erp_dang": "K08010304",
+          "ly_do": "Đá vôi chứa 80% CaCO₃ — trùng phương pháp câu mẫu K08010304 \"quặng chứa 80% Fe₂O₃\"."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H010506-02-001",
+            "K08H010506-02-002",
+            "K08H010506-03-001"
+          ],
+          "erp_dang": "K08010305",
+          "ly_do": "Nhiều giai đoạn nối tiếp (CaCO₃ → CaO → Ca(OH)₂; C → CO₂ → CaCO₃) và đổi đơn vị tấn + hiệu suất — đúng khuôn câu mẫu K08010305 (Na → Na₂O → NaOH)."
+        }
+      ]
+    },
+    {
+      "hm": "K08010601",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Khái niệm tốc độ phản ứng, so sánh nhanh – chậm qua thời gian/lượng khí. Tốc độ phản ứng và chất xúc tác (SGK Bài 7) — chủ đề ERP \"Phản ứng Hóa học\" khối 8 chưa có chuyên đề này; nên mở chuyên đề Tốc độ phản ứng – chất xúc tác."
+        }
+      ]
+    },
+    {
+      "hm": "K08010602",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Các yếu tố ảnh hưởng (nhiệt độ, nồng độ, diện tích tiếp xúc, xúc tác). Tốc độ phản ứng và chất xúc tác (SGK Bài 7) — chủ đề ERP \"Phản ứng Hóa học\" khối 8 chưa có chuyên đề này; nên mở chuyên đề Tốc độ phản ứng – chất xúc tác."
+        }
+      ]
+    },
+    {
+      "hm": "K08010603",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Phân tích thí nghiệm so sánh tốc độ, biến kiểm soát, đọc bảng số liệu thời gian. Tốc độ phản ứng và chất xúc tác (SGK Bài 7) — chủ đề ERP \"Phản ứng Hóa học\" khối 8 chưa có chuyên đề này; nên mở chuyên đề Tốc độ phản ứng – chất xúc tác."
+        }
+      ]
+    },
+    {
+      "hm": "K08010604",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Giải thích hiện tượng thực tế (tủ lạnh, quạt bếp than, than tổ ong, gỉ sắt) theo yếu tố ảnh hưởng tốc độ. Tốc độ phản ứng và chất xúc tác (SGK Bài 7) — chủ đề ERP \"Phản ứng Hóa học\" khối 8 chưa có chuyên đề này; nên mở chuyên đề Tốc độ phản ứng – chất xúc tác."
+        }
+      ]
+    },
+    {
+      "hm": "K08010605",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Thiết kế thí nghiệm kiểm chứng một yếu tố ảnh hưởng tốc độ phản ứng. Tốc độ phản ứng và chất xúc tác (SGK Bài 7) — chủ đề ERP \"Phản ứng Hóa học\" khối 8 chưa có chuyên đề này; nên mở chuyên đề Tốc độ phản ứng – chất xúc tác."
+        }
+      ]
+    },
+    {
+      "hm": "K08020101",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Nhận biết công thức acid, gọi tên acid, gốc acid và hoá trị gốc — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Acid."
+        }
+      ]
+    },
+    {
+      "hm": "K08020102",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Tính chất hoá học của acid (quỳ tím, kim loại, base, oxide base, muối carbonate) và viết PTHH — sản phẩm phải suy từ tính chất, không cho sẵn như K08010303 — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Acid."
+        }
+      ]
+    },
+    {
+      "hm": "K08020103",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H020103-01-001",
+            "K08H020103-01-002",
+            "K08H020103-01-004",
+            "K08H020103-01-005",
+            "K08H020103-01-006",
+            "K08H020103-02-001",
+            "K08H020103-02-002",
+            "K08H020103-02-003",
+            "K08H020103-02-005",
+            "K08H020103-02-006"
+          ],
+          "erp_dang": "K08010304",
+          "ly_do": "Phương pháp = tính theo PTHH một phản ứng hoàn toàn (kèm n = C_M·V); Hạt Mầm cũng đặt câu y hệt (Mg + H₂SO₄ 0,5 M) ở 1.5 dạng 3, câu mẫu ERP dùng phản ứng có acid. Phần viết PTHH của acid là kiến thức tiên quyết thuộc chuyên đề Acid (ERP chưa có)."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H020103-03-001",
+            "K08H020103-03-002",
+            "K08H020103-03-003",
+            "K08H020103-03-005"
+          ],
+          "erp_dang": "K08010305",
+          "ly_do": "Kim loại + dung dịch acid, xác định chất dư – chất hết — cùng phương pháp Hạt Mầm 1.5 dạng 4 và câu mẫu K08010305 có chất dư."
+        }
+      ]
+    },
+    {
+      "hm": "K08020104",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Ứng dụng, an toàn khi dùng acid (pha loãng acid đặc), mưa acid — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Acid."
+        }
+      ]
+    },
+    {
+      "hm": "K08020105",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H020105-01-001",
+            "K08H020105-01-002",
+            "K08H020105-01-003",
+            "K08H020105-01-004",
+            "K08H020105-01-005",
+            "K08H020105-01-007",
+            "K08H020105-01-008",
+            "K08H020105-01-009"
+          ],
+          "erp_dang": "K08010304",
+          "ly_do": "Bước nhận biết bằng quỳ chỉ để chỉ ra lọ acid; phần chấm điểm là n = C_M·V → tỉ lệ PTHH → V CO₂ — tính theo PTHH cơ bản có dung dịch (như Hạt Mầm 1.5 dạng 3)."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H020105-02-001",
+            "K08H020105-02-002",
+            "K08H020105-02-003",
+            "K08H020105-02-004",
+            "K08H020105-02-005",
+            "K08H020105-02-006",
+            "K08H020105-02-007"
+          ],
+          "erp_dang": "K08010104",
+          "ly_do": "Pha loãng dung dịch acid bằng nước, tính C_M sau pha (C₁V₁ = C₂V₂) — trùng câu mẫu K08010104 \"pha loãng KOH 0,5 M thành 0,2 M\"; bối cảnh \"an toàn\" không đổi phương pháp."
+        }
+      ]
+    },
+    {
+      "hm": "K08020201",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Nhận biết công thức base, gọi tên, phân loại base tan (kiềm) / không tan — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Base và thang pH."
+        }
+      ]
+    },
+    {
+      "hm": "K08020202",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Tính chất hoá học của base (chỉ thị, acid, oxide acid, nhiệt phân base không tan) và viết PTHH — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Base và thang pH."
+        }
+      ]
+    },
+    {
+      "hm": "K08020203",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Thang pH, xác định môi trường acid/base/trung tính, cách đo pH — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Base và thang pH."
+        }
+      ]
+    },
+    {
+      "hm": "K08020204",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": [
+            "K08H020204-01-001",
+            "K08H020204-01-002",
+            "K08H020204-01-003",
+            "K08H020204-01-006",
+            "K08H020204-01-007",
+            "K08H020204-02-001",
+            "K08H020204-02-002",
+            "K08H020204-02-003",
+            "K08H020204-02-005",
+            "K08H020204-02-006"
+          ],
+          "erp_chuyen_de": null,
+          "ly_do": "Vận dụng pH và phản ứng trung hoà trong thực tế (bón vôi, đất phèn, thuốc dạ dày, ong/kiến đốt) — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Base và thang pH."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H020204-03-001",
+            "K08H020204-03-002",
+            "K08H020204-03-003",
+            "K08H020204-03-004",
+            "K08H020204-03-005",
+            "K08H020204-03-006"
+          ],
+          "erp_dang": "K08010304",
+          "ly_do": "Tính lượng base/acid trung hoà vừa đủ: n = C_M·V → tỉ lệ PTHH → m hoặc V — tính theo PTHH cơ bản; Hạt Mầm 1.5 dạng 3 có câu trung hoà NaOH + HCl y hệt."
+        }
+      ]
+    },
+    {
+      "hm": "K08020205",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": [
+            "K08H020205-01-001",
+            "K08H020205-01-002",
+            "K08H020205-01-003",
+            "K08H020205-01-004",
+            "K08H020205-01-005",
+            "K08H020205-01-006",
+            "K08H020205-01-007",
+            "K08H020205-01-008"
+          ],
+          "erp_chuyen_de": null,
+          "ly_do": "Đọc màu quỳ tím/phenolphthalein (hình) để suy môi trường rồi chọn biện pháp xử lí — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Base và thang pH."
+        },
+        {
+          "lan": "do",
+          "cau": [
+            "K08H020205-02-001",
+            "K08H020205-02-002",
+            "K08H020205-02-003",
+            "K08H020205-02-004",
+            "K08H020205-02-005",
+            "K08H020205-02-006",
+            "K08H020205-02-007"
+          ],
+          "erp_chuyen_de": "K080103",
+          "ly_do": "Nung Cu(OH)₂ hỏi khối lượng chất rắn giảm (= khối lượng hơi nước thoát ra): xếp K08010304 (n Cu(OH)₂ → n H₂O theo PTHH) hay K08010302 (bảo toàn khối lượng: m giảm = m H₂O), hay để chờ chuyên đề Base vì mấu chốt là biết phản ứng nhiệt phân base không tan?"
+        }
+      ]
+    },
+    {
+      "hm": "K08020301",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Khái niệm, phân loại (acid/base/lưỡng tính/trung tính), gọi tên oxide — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Oxide."
+        }
+      ]
+    },
+    {
+      "hm": "K08020302",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Tính chất hoá học của oxide (với acid, base, nước) và viết PTHH — sản phẩm phải suy từ tính chất — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Oxide."
+        }
+      ]
+    },
+    {
+      "hm": "K08020303",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Nhận biết oxide bằng nước + quỳ tím (oxide base/acid/không tan) — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Oxide."
+        }
+      ]
+    },
+    {
+      "hm": "K08020304",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H020304-01-001",
+            "K08H020304-01-002",
+            "K08H020304-01-003",
+            "K08H020304-01-004",
+            "K08H020304-01-005",
+            "K08H020304-02-003",
+            "K08H020304-02-004"
+          ],
+          "erp_dang": "K08010304",
+          "ly_do": "Một phản ứng hoàn toàn, m/V → n → tỉ lệ → m; câu mẫu K08010304 \"7,437 L CO₂ vào Ca(OH)₂ dư → khối lượng CaCO₃\" trùng gần như nguyên văn câu 02. (Hạt Mầm gắn mức 4 nhưng thực chất là cơ bản.)"
+        },
+        {
+          "lan": "do",
+          "cau": [
+            "K08H020304-03-001",
+            "K08H020304-03-002",
+            "K08H020304-03-003",
+            "K08H020304-03-004",
+            "K08H020304-03-005"
+          ],
+          "erp_chuyen_de": "K080103",
+          "ly_do": "Hỗn hợp hai oxide + HCl, lập hệ hai ẩn từ tổng khối lượng và số mol HCl: gắn K08010305 (nâng cao/tổng hợp — nhưng câu mẫu chỉ có nhiều giai đoạn và dư – hết, chưa có hệ phương trình) hay mở dạng mới \"Bài toán hỗn hợp\" trong chuyên đề PTHH?"
+        }
+      ]
+    },
+    {
+      "hm": "K08020401",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Nhận biết công thức muối, gọi tên, lập công thức muối theo hoá trị kim loại – gốc acid — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Muối."
+        }
+      ]
+    },
+    {
+      "hm": "K08020402",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Bảng tính tan và điều kiện xảy ra phản ứng trao đổi (tạo kết tủa/khí) — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Muối."
+        }
+      ]
+    },
+    {
+      "hm": "K08020403",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Tính chất hoá học của muối (với acid, base, muối, kim loại) và viết PTHH — sản phẩm phải suy từ tính chất — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Muối."
+        }
+      ]
+    },
+    {
+      "hm": "K08020404",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Nhận biết gốc sulfate/chloride/carbonate, tách – làm sạch dung dịch muối — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Muối."
+        }
+      ]
+    },
+    {
+      "hm": "K08020405",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K08H020405-01-001",
+            "K08H020405-01-002",
+            "K08H020405-01-003",
+            "K08H020405-01-004",
+            "K08H020405-01-006",
+            "K08H020405-02-001",
+            "K08H020405-02-002",
+            "K08H020405-02-003",
+            "K08H020405-02-004",
+            "K08H020405-02-005",
+            "K08H020405-02-006"
+          ],
+          "erp_dang": "K08010304",
+          "ly_do": "Một phản ứng hoàn toàn (tạo kết tủa hoặc khí CO₂), n → tỉ lệ → m/V — tính theo PTHH cơ bản; CaCO₃ + HCl → V CO₂ cũng có ở Hạt Mầm 1.5 dạng 2."
+        },
+        {
+          "lan": "do",
+          "cau": [
+            "K08H020405-01-005"
+          ],
+          "erp_chuyen_de": "K080103",
+          "ly_do": "Đề tự mâu thuẫn: ghi \"0,1 mol NaOH (dư)\" nhưng 0,05 mol CuSO₄ cần đúng 0,1 mol NaOH (vừa đủ, không dư) và đề cũng viết \"phản ứng vừa đủ\" — sửa lại số liệu/chữ \"dư\" rồi gắn K08010304 được không?"
+        },
+        {
+          "lan": "do",
+          "cau": [
+            "K08H020405-03-001",
+            "K08H020405-03-002",
+            "K08H020405-03-003",
+            "K08H020405-03-005"
+          ],
+          "erp_chuyen_de": "K080103",
+          "ly_do": "Tính C%/C_M của dung dịch SAU phản ứng (m dd sau = tổng m dd trước − m khí/kết tủa): gắn K08010305 (nâng cao/tổng hợp) hay mở dạng mới \"Nồng độ dung dịch sau phản ứng\" trong chuyên đề PTHH, vì K08010304 chỉ tính lượng chất, chưa tính lại dung dịch?"
+        }
+      ]
+    },
+    {
+      "hm": "K08020501",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Phân loại phân bón (đạm, lân, kali, NPK, vi lượng) và vai trò nguyên tố dinh dưỡng — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Phân bón hoá học."
+        }
+      ]
+    },
+    {
+      "hm": "K08020502",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Tính %N trong phân đạm, khối lượng N/P₂O₅/K₂O trong bao NPK, so sánh độ giàu dinh dưỡng — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Phân bón hoá học."
+        }
+      ]
+    },
+    {
+      "hm": "K08020503",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Sử dụng phân bón hợp lí, bảo quản, tác hại môi trường khi bón thừa — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Phân bón hoá học."
+        }
+      ]
+    },
+    {
+      "hm": "K08020504",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Tính số bao NPK cần mua, lượng N dư/thiếu so với nhu cầu — ERP khối 8 chưa có chủ đề Acid – Base – pH – Oxide – Muối – Phân bón (SGK Chương II); nên mở chủ đề mới, chuyên đề Phân bón hoá học."
+        }
+      ]
+    }
+  ]
+}

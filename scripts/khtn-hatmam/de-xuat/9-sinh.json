@@ -1,0 +1,1276 @@
+{
+ "khoi": "9",
+ "mon": "Sinh học",
+ "chuyen_de": [
+  {
+   "hm": "K091101",
+   "erp": "K091101",
+   "ly_do": "Cùng nội dung quy luật Mendel; ERP tách xuôi/ngược × một/hai cặp nên dạng HM bị chia lại."
+  },
+  {
+   "hm": "K091102",
+   "erp": "K091102",
+   "ly_do": "Cùng nội dung Nucleic acid và gene; phần cấu trúc RNA, so sánh DNA–RNA ERP đặt ở K091105."
+  },
+  {
+   "hm": "K091103",
+   "erp": "K091105",
+   "ly_do": "KHÁC MÃ: Tái bản DNA và phiên mã trên ERP là K091105."
+  },
+  {
+   "hm": "K091104",
+   "erp": null,
+   "ly_do": "Dịch mã và mối quan hệ gene → tính trạng: ERP chưa có chuyên đề (K091103 đang trống; K091104 của ERP là Đột biến gene)."
+  },
+  {
+   "hm": "K091105",
+   "erp": "K091104",
+   "ly_do": "KHÁC MÃ: Đột biến gene trên ERP là K091104."
+  },
+  {
+   "hm": "K091201",
+   "erp": "K091201",
+   "ly_do": "HM gộp 2 chuyên đề ERP: K091201 (NST và bộ NST — dạng 1) + K091202 (Nguyên phân và giảm phân — dạng 2–5)."
+  },
+  {
+   "hm": "K091202",
+   "erp": "K091203",
+   "ly_do": "HM gộp 2 chuyên đề ERP: K091203 (NST giới tính — dạng 1, 2) + K091204 (Di truyền liên kết — dạng 3, 4); dạng 5 chia cho cả hai."
+  },
+  {
+   "hm": "K091203",
+   "erp": "K091205",
+   "ly_do": "KHÁC MÃ: Đột biến NST trên ERP là K091205."
+  },
+  {
+   "hm": "K091301",
+   "erp": "K091301",
+   "ly_do": "Cùng nội dung; ERP chỉ có 2 dạng (lý thuyết, phả hệ & nhóm máu) nên công nghệ di truyền và đạo đức sinh học dồn vào dạng lý thuyết."
+  },
+  {
+   "hm": "K091401",
+   "erp": "K091401",
+   "ly_do": "HM gộp 2 chuyên đề ERP: K091401 (Khái niệm tiến hoá & các hình thức chọn lọc) + K091402 (Cơ chế tiến hoá)."
+  },
+  {
+   "hm": "K091402",
+   "erp": "K091403",
+   "ly_do": "KHÁC MÃ: Sự phát sinh và phát triển sự sống trên ERP là K091403."
+  }
+ ],
+ "dang": [
+  {
+   "hm": "K09110101",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09110101",
+     "ly_do": "Thuật ngữ, kí hiệu di truyền (tính trạng, allele, đồng/dị hợp, P/F/G) — đúng dạng cơ bản; câu mẫu ERP cùng kiểu \"bao nhiêu cặp dị hợp\"."
+    }
+   ]
+  },
+  {
+   "hm": "K09110102",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110102-01-001",
+      "K09S110102-01-002",
+      "K09S110102-01-003",
+      "K09S110102-01-004",
+      "K09S110102-01-005",
+      "K09S110102-01-006",
+      "K09S110102-02-001",
+      "K09S110102-02-002",
+      "K09S110102-02-003",
+      "K09S110102-02-004",
+      "K09S110102-02-005",
+      "K09S110102-02-006"
+     ],
+     "erp_dang": "K09110102",
+     "ly_do": "Cho kiểu gene P, viết sơ đồ lai ra tỉ lệ kiểu gene/kiểu hình đời con — BT xuôi lai một cặp."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110102-03-002",
+      "K09S110102-03-003",
+      "K09S110102-03-005",
+      "K09S110102-03-006"
+     ],
+     "erp_dang": "K09110103",
+     "ly_do": "Lai phân tích: từ tỉ lệ đời con (100% trội / 1:1) suy kiểu gene cây đem lai — BT ngược lai một cặp; câu mẫu ERP \"102 đen : 98 trắng → kiểu gene P\" gần y hệt 03-006."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110102-03-001",
+      "K09S110102-03-004"
+     ],
+     "erp_dang": "K09110101",
+     "ly_do": "Hỏi định nghĩa / mục đích phép lai phân tích — áp thẳng 1 khái niệm, vào dạng cơ bản."
+    }
+   ]
+  },
+  {
+   "hm": "K09110103",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09110104",
+     "ly_do": "Viết giao tử AaBb, tỉ lệ 9:3:3:1, tỉ lệ 1 kiểu gene/kiểu hình ở F2 từ P cho sẵn — BT xuôi lai hai cặp; câu mẫu ERP cùng kiểu \"tỉ lệ cá thể mang hai tính trạng trội\"."
+    }
+   ]
+  },
+  {
+   "hm": "K09110104",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110104-01-001",
+      "K09S110104-01-002",
+      "K09S110104-01-004"
+     ],
+     "erp_dang": "K09110103",
+     "ly_do": "Từ tỉ lệ 3:1 / 1:1 / 100% lặn suy kiểu gene P — BT ngược MỘT cặp. KHÁC MÃ: ERP tách ngược 1 cặp (03) và 2 cặp (05)."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110104-02-001",
+      "K09S110104-02-002",
+      "K09S110104-02-003",
+      "K09S110104-02-004"
+     ],
+     "erp_dang": "K09110105",
+     "ly_do": "Từ tỉ lệ 9:3:3:1 / 1:1:1:1 / 3:3:1:1 suy kiểu gene P — BT ngược HAI cặp."
+    }
+   ]
+  },
+  {
+   "hm": "K09110105",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": [
+      "K09S110105-01-006",
+      "K09S110105-01-007",
+      "K09S110105-01-008"
+     ],
+     "erp_chuyen_de": "K091101",
+     "ten": "Bài toán tự thụ phấn qua nhiều thế hệ",
+     "mo_ta_ngan": "Cho Aa (hoặc nhóm AA/Aa) tự thụ phấn liên tiếp n thế hệ, tính tỉ lệ một kiểu gene ở thế hệ thứ n.",
+     "gan_nhat": "K09110102",
+     "ly_do": "Phải lặp sơ đồ lai qua nhiều thế hệ và cộng dồn có trọng số (Aa giảm 1/2 mỗi thế hệ) — khác BT xuôi 1 thế hệ của K09110102. Lưu ý: nội dung gần di truyền quần thể (lớp 12), giáo viên cân nhắc có giữ ở khối 9 không."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110105-02-007"
+     ],
+     "erp_dang": "K09110105",
+     "ly_do": "Từ số liệu đời con 901:301:299:101 ≈ 9:3:3:1 suy quy luật phân li độc lập rồi tính tỉ lệ — bước quyết định là phân tích tỉ lệ đời con (BT ngược hai cặp)."
+    }
+   ]
+  },
+  {
+   "hm": "K09110201",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110201-01-001",
+      "K09S110201-01-002",
+      "K09S110201-01-003",
+      "K09S110201-01-004",
+      "K09S110201-01-005",
+      "K09S110201-03-001",
+      "K09S110201-03-002",
+      "K09S110201-03-004",
+      "K09S110201-03-005"
+     ],
+     "erp_dang": "K09110201",
+     "ly_do": "Cấu trúc DNA (số mạch, đơn phân, xoắn kép) và nguyên tắc bổ sung trong DNA — lý thuyết cơ bản nucleic acid."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110201-02-001",
+      "K09S110201-02-002",
+      "K09S110201-02-003",
+      "K09S110201-02-004",
+      "K09S110201-02-005",
+      "K09S110201-03-003"
+     ],
+     "erp_dang": "K09110502",
+     "ly_do": "Cấu trúc RNA (mạch đơn, A-U-G-C, mRNA/tRNA/rRNA) và cặp A-U khi DNA làm khuôn tổng hợp RNA — ERP đặt \"Cấu trúc RNA\" vào dạng này của chuyên đề Tái bản & phiên mã."
+    }
+   ]
+  },
+  {
+   "hm": "K09110202",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110202-01-001",
+      "K09S110202-01-002",
+      "K09S110202-01-003"
+     ],
+     "erp_dang": "K09110201",
+     "ly_do": "Khái niệm và chức năng của gene — lý thuyết cơ bản nucleic acid và gene."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110202-02-002",
+      "K09S110202-02-003"
+     ],
+     "erp_dang": "K09110503",
+     "ly_do": "So sánh DNA – RNA (loại nucleotide, số mạch) — ERP có dạng riêng \"So sánh DNA - RNA\"."
+    }
+   ]
+  },
+  {
+   "hm": "K09110203",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110203-01-001",
+      "K09S110203-01-002",
+      "K09S110203-01-003",
+      "K09S110203-01-004",
+      "K09S110203-02-001",
+      "K09S110203-02-002",
+      "K09S110203-02-003",
+      "K09S110203-02-004"
+     ],
+     "erp_dang": "K09110208",
+     "ly_do": "Tính số/tỉ lệ từng loại nucleotide của gene (A=T, G=C, N=2A+2G, %A+%G=50%) — tính toán cơ bản; câu mẫu ERP \"N, H → G\", \"A1, T1 → A của gene\"."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110203-03-001",
+      "K09S110203-03-002",
+      "K09S110203-03-003",
+      "K09S110203-03-004"
+     ],
+     "erp_dang": "K09110202",
+     "ly_do": "Viết trình tự mạch bổ sung của 1 mạch DNA — đúng dạng \"Viết mạch bổ sung dựa vào NTBS\" (câu mẫu ERP cùng kiểu)."
+    }
+   ]
+  },
+  {
+   "hm": "K09110204",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09110208",
+     "ly_do": "Chiều dài (L = N/2 × 3,4), khối lượng (M = N × 300), số liên kết H (2A + 3G) — các công thức tính toán cơ bản của gene; câu mẫu ERP \"N = 2400, H = 3000 → G\"."
+    }
+   ]
+  },
+  {
+   "hm": "K09110205",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110205-01-001",
+      "K09S110205-01-002",
+      "K09S110205-01-003",
+      "K09S110205-01-004",
+      "K09S110205-01-006",
+      "K09S110205-01-007",
+      "K09S110205-01-008"
+     ],
+     "erp_dang": "K09110209",
+     "ly_do": "Bài tổng hợp 2 ẩn: từ %A và H (hoặc L, M) lập hệ suy N rồi suy tiếp L/M/G — vượt mức áp 1 công thức, vào dạng nâng cao (so_cau = 0)."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110205-02-001",
+      "K09S110205-02-002",
+      "K09S110205-02-003",
+      "K09S110205-02-006",
+      "K09S110205-02-007"
+     ],
+     "erp_dang": "K09110208",
+     "ly_do": "Tìm bước sai trong lời giải tính G, N, L, % — phương pháp nền vẫn là công thức cơ bản của gene; ERP xếp \"chỉ ra lỗi sai\" vào dạng của phương pháp gốc (vd câu mẫu K09110202)."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110205-02-004"
+     ],
+     "erp_dang": "K09110505",
+     "ly_do": "Tìm bước sai khi tính số ribonucleotide mRNA từ N của gene (rN = N/2) — phương pháp gốc là tính toán phiên mã."
+    }
+   ]
+  },
+  {
+   "hm": "K09110301",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09110501",
+     "ly_do": "Diễn biến và nguyên tắc tái bản DNA (khuôn mẫu, bổ sung, bán bảo toàn) — đúng dạng lý thuyết tái bản; câu mẫu ERP cùng kiểu."
+    }
+   ]
+  },
+  {
+   "hm": "K09110302",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110302-01-001",
+      "K09S110302-01-002",
+      "K09S110302-01-003",
+      "K09S110302-01-004",
+      "K09S110302-01-005",
+      "K09S110302-01-006"
+     ],
+     "erp_dang": "K09110502",
+     "ly_do": "Diễn biến phiên mã (mạch khuôn, nơi diễn ra, NTBS A-U, sản phẩm, kết thúc) — đúng dạng \"Cấu trúc RNA và quá trình phiên mã\"."
+    },
+    {
+     "lan": "do",
+     "cau": [
+      "K09S110302-02-001",
+      "K09S110302-02-002",
+      "K09S110302-02-003",
+      "K09S110302-02-004",
+      "K09S110302-02-005",
+      "K09S110302-02-006"
+     ],
+     "erp_chuyen_de": "K091105",
+     "ly_do": "Câu \"viết trình tự mRNA từ mạch gốc\" (thay T bằng U theo NTBS) nên xếp vào K09110502 (Cấu trúc RNA và quá trình phiên mã — đúng kiến thức) hay K09110202 (Viết mạch bổ sung dựa vào NTBS — đúng kĩ năng, nhưng nằm ở chuyên đề Nucleic acid và câu mẫu chỉ có DNA)?"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110302-03-002",
+      "K09S110302-03-003",
+      "K09S110302-03-004",
+      "K09S110302-03-005",
+      "K09S110302-03-006"
+     ],
+     "erp_dang": "K09110503",
+     "ly_do": "So sánh tái bản và phiên mã — ERP có dạng riêng \"So sánh DNA - RNA và tái bản - phiên mã\"."
+    }
+   ]
+  },
+  {
+   "hm": "K09110303",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09110504",
+     "ly_do": "Số DNA con 2^k, nucleotide môi trường N(2^k − 1), tìm k — đúng dạng \"Tính số liệu gene con sau k lần tái bản\"; câu mẫu ERP cùng kiểu."
+    }
+   ]
+  },
+  {
+   "hm": "K09110304",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09110505",
+     "ly_do": "rN = N/2, số từng loại ribonucleotide theo mạch gốc, phiên mã nhiều lần — đúng dạng tính toán phiên mã; câu mẫu ERP cùng kiểu."
+    }
+   ]
+  },
+  {
+   "hm": "K09110305",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110305-01-001",
+      "K09S110305-01-002",
+      "K09S110305-01-003",
+      "K09S110305-01-006",
+      "K09S110305-01-007",
+      "K09S110305-01-008"
+     ],
+     "erp_dang": "K09110504",
+     "ly_do": "Tái bản liên tiếp k lần: số DNA con, nucleotide môi trường (kể cả từng loại, từ L), số DNA mang nguyên liệu hoàn toàn mới — cùng phương pháp K09110504 (câu mẫu ERP có \"14 gene con mang nguyên liệu hoàn toàn mới\")."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110305-01-004"
+     ],
+     "erp_dang": "K09110501",
+     "ly_do": "Hỏi đặc điểm DNA con so với DNA mẹ (giống hệt) — lý thuyết tái bản, không tính toán."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110305-02-001",
+      "K09S110305-02-002",
+      "K09S110305-02-003",
+      "K09S110305-02-006"
+     ],
+     "erp_dang": "K09110505",
+     "ly_do": "Phiên mã nhiều lần, % ribonucleotide → số từng loại, tìm số lần phiên mã — dạng tính toán phiên mã."
+    },
+    {
+     "lan": "do",
+     "cau": [
+      "K09S110305-02-004"
+     ],
+     "erp_chuyen_de": "K091105",
+     "ly_do": "Câu \"viết trình tự mRNA từ mạch gốc\" (thay T bằng U theo NTBS) nên xếp vào K09110502 (Cấu trúc RNA và quá trình phiên mã — đúng kiến thức) hay K09110202 (Viết mạch bổ sung dựa vào NTBS — đúng kĩ năng, nhưng nằm ở chuyên đề Nucleic acid và câu mẫu chỉ có DNA)? (Câu này là bản \"tìm lỗi sai\" của cùng kĩ năng.)"
+    }
+   ]
+  },
+  {
+   "hm": "K09110401",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Mã di truyền, codon mở đầu/kết thúc, tính chất mã bộ ba — nội dung Bài \"Dịch mã và mối quan hệ từ gene đến tính trạng\". Bản đồ ERP chủ đề Di truyền học (K0911) không có chuyên đề này (mã K091103 đang trống) ⇒ đề nghị thêm chuyên đề \"Dịch mã và mối quan hệ từ gene đến tính trạng\"."
+    }
+   ]
+  },
+  {
+   "hm": "K09110402",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Sơ đồ gene → mRNA → protein → tính trạng; vai trò mRNA/tRNA/ribosome, anticodon, liên kết peptide trong dịch mã — thuộc chuyên đề Dịch mã mà ERP chưa có (nên thêm vào K0911, mã K091103 đang trống). K09110502 của ERP chỉ dừng ở gene → RNA."
+    }
+   ]
+  },
+  {
+   "hm": "K09110403",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Từ trình tự mRNA và bảng codon suy chuỗi amino acid — thuộc chuyên đề Dịch mã, ERP chưa có (nên thêm vào chủ đề K0911)."
+    }
+   ]
+  },
+  {
+   "hm": "K09110404",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Số codon = rN/3, số amino acid = codon − 1, đi ngược từ số amino acid ra N/L của gene — bài tập dịch mã, ERP chưa có chuyên đề (nên thêm vào chủ đề K0911; không gộp vào K09110208/K09110505 vì cần kiến thức codon mở đầu/kết thúc)."
+    }
+   ]
+  },
+  {
+   "hm": "K09110405",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Bài tổng hợp gene → mRNA → codon → amino acid (kèm L, H) và vận dụng sơ đồ gene → tính trạng — thuộc chuyên đề Dịch mã, ERP chưa có (nên thêm vào chủ đề K0911, khi có thì cụm 1 vào dạng tính toán nâng cao, cụm 2 vào dạng lý thuyết của chuyên đề mới)."
+    }
+   ]
+  },
+  {
+   "hm": "K09110501",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09110401",
+     "ly_do": "Khái niệm đột biến gene, đột biến điểm, các dạng mất/thêm/thay — lý thuyết cơ bản đột biến gene (so_cau = 0)."
+    }
+   ]
+  },
+  {
+   "hm": "K09110502",
+   "nhom": [
+    {
+     "lan": "do",
+     "cau": [
+      "K09S110502-01-001",
+      "K09S110502-01-002",
+      "K09S110502-01-003",
+      "K09S110502-01-004",
+      "K09S110502-01-005",
+      "K09S110502-01-006",
+      "K09S110502-01-007",
+      "K09S110502-01-008",
+      "K09S110502-01-009"
+     ],
+     "erp_chuyen_de": "K091104",
+     "ly_do": "Câu so sánh trình tự trước – sau để gọi tên dạng đột biến điểm (mất/thêm/thay 1 cặp) nên vào K09110401 (Lý thuyết cơ bản — chỉ áp định nghĩa) hay K09110402 (Giải thích sự thay đổi chiều dài, số liên kết H và nguyên nhân dẫn tới đột biến — nếu \"nguyên nhân\" ở đây nghĩa là \"dạng đột biến nào gây ra thay đổi\")?"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110502-02-001",
+      "K09S110502-02-002",
+      "K09S110502-02-003",
+      "K09S110502-02-004",
+      "K09S110502-02-005",
+      "K09S110502-02-006",
+      "K09S110502-02-007",
+      "K09S110502-02-008",
+      "K09S110502-02-009"
+     ],
+     "erp_dang": "K09110401",
+     "ly_do": "Hệ quả của từng dạng đột biến lên chuỗi amino acid (dịch khung, đổi 1 amino acid, xuất hiện bộ ba kết thúc) — lý thuyết, không tính toán."
+    }
+   ]
+  },
+  {
+   "hm": "K09110503",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09110401",
+     "ly_do": "Tác nhân gây đột biến (vật lí/hoá học/sinh học), hậu quả có lợi/hại/trung tính, vai trò với tiến hoá và chọn giống — lý thuyết cơ bản đột biến gene. (Hiểu \"nguyên nhân dẫn tới đột biến\" ở K09110402 là dạng đột biến gây ra thay đổi L/H, không phải tác nhân.)"
+    }
+   ]
+  },
+  {
+   "hm": "K09110504",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110504-01-001",
+      "K09S110504-01-002",
+      "K09S110504-01-003",
+      "K09S110504-01-004",
+      "K09S110504-01-005",
+      "K09S110504-01-006",
+      "K09S110504-01-007",
+      "K09S110504-01-008"
+     ],
+     "erp_dang": "K09110403",
+     "ly_do": "Tính số liên kết H sau đột biến mất/thêm/thay 1 cặp A-T hoặc G-C (có câu tính H gốc từ N, %A trước) — tính toán cơ bản đột biến gene (so_cau = 0)."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S110504-02-001",
+      "K09S110504-02-002",
+      "K09S110504-02-003",
+      "K09S110504-02-004",
+      "K09S110504-02-005",
+      "K09S110504-02-006",
+      "K09S110504-02-007"
+     ],
+     "erp_dang": "K09110402",
+     "ly_do": "Từ thay đổi số cặp nucleotide (chiều dài) và số liên kết H suy dạng đột biến — đúng dạng \"Giải thích sự thay đổi chiều dài, số liên kết H và nguyên nhân dẫn tới đột biến\"."
+    }
+   ]
+  },
+  {
+   "hm": "K09120101",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S120101-02-002",
+      "K09S120101-02-007"
+     ],
+     "erp_dang": "K09120102",
+     "ly_do": "Cho 2n của loài, hỏi bộ NST n của giao tử — quy đổi tế bào sinh dưỡng ↔ giao tử."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S120101-01-001",
+      "K09S120101-01-002",
+      "K09S120101-01-003",
+      "K09S120101-01-004",
+      "K09S120101-01-005",
+      "K09S120101-01-006",
+      "K09S120101-01-007",
+      "K09S120101-01-008",
+      "K09S120101-02-001",
+      "K09S120101-02-003",
+      "K09S120101-02-004",
+      "K09S120101-02-005",
+      "K09S120101-02-006"
+     ],
+     "erp_dang": "K09120101",
+     "ly_do": "Cấu trúc NST (chromatid, tâm động, dạng đơn/kép), NST tương đồng, đếm 2n và số cặp trên hình — lý thuyết cơ bản NST và bộ NST."
+    }
+   ]
+  },
+  {
+   "hm": "K09120102",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09120201",
+     "ly_do": "Diễn biến các kì nguyên phân, giảm phân I/II và nhận dạng kì qua hình — lý thuyết cơ bản nguyên phân & giảm phân."
+    }
+   ]
+  },
+  {
+   "hm": "K09120103",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09120201",
+     "ly_do": "So sánh kết quả, số lần nhân đôi NST, ý nghĩa của nguyên phân và giảm phân — lý thuyết cơ bản nguyên phân & giảm phân."
+    }
+   ]
+  },
+  {
+   "hm": "K09120104",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S120104-01-001",
+      "K09S120104-01-002",
+      "K09S120104-01-003",
+      "K09S120104-01-004",
+      "K09S120104-01-005",
+      "K09S120104-01-006",
+      "K09S120104-02-001",
+      "K09S120104-02-002",
+      "K09S120104-02-003",
+      "K09S120104-02-004",
+      "K09S120104-02-005",
+      "K09S120104-02-006"
+     ],
+     "erp_dang": "K09120202",
+     "ly_do": "Số tế bào con 2^k, số NST môi trường cung cấp 2n(2^k − 1) — tính toán cơ bản nguyên phân."
+    },
+    {
+     "lan": "do",
+     "cau": [
+      "K09S120104-03-001",
+      "K09S120104-03-002",
+      "K09S120104-03-003",
+      "K09S120104-03-004",
+      "K09S120104-03-005",
+      "K09S120104-03-006"
+     ],
+     "erp_chuyen_de": "K091202",
+     "ly_do": "Câu đếm số NST kép/đơn và số chromatid ở từng kì nguyên phân, giảm phân nên vào K09120202 (Tính toán cơ bản nguyên phân và giảm phân) hay K09120103 (Bài toán mối liên hệ giữa số phân tử DNA và số NST — vì số chromatid = số phân tử DNA)?"
+    }
+   ]
+  },
+  {
+   "hm": "K09120105",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09120203",
+     "ly_do": "Nguyên phân k lần rồi giảm phân: số tinh trùng/trứng/thể cực, hiệu suất thụ tinh → số hợp tử (và ngược lại) — bài nối nhiều giai đoạn, vào dạng tính toán nâng cao nguyên phân & giảm phân (so_cau = 0)."
+    }
+   ]
+  },
+  {
+   "hm": "K09120201",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09120301",
+     "ly_do": "NST thường vs NST giới tính, đếm số cặp NST thường, XX/XY ở người, tinh trùng quyết định giới tính — lý thuyết cơ bản NST giới tính."
+    }
+   ]
+  },
+  {
+   "hm": "K09120202",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S120202-01-001",
+      "K09S120202-01-002",
+      "K09S120202-01-003",
+      "K09S120202-01-004"
+     ],
+     "erp_dang": "K09120302",
+     "ly_do": "Giao tử của bố/mẹ theo NST giới tính, sơ đồ P: XX × XY → 1 XX : 1 XY, giải thích tỉ lệ 1 : 1 — đúng dạng \"Viết sơ đồ cơ chế xác định giới tính\"."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S120202-02-001",
+      "K09S120202-02-002",
+      "K09S120202-02-004"
+     ],
+     "erp_dang": "K09120301",
+     "ly_do": "Cơ sở khoa học của lọc tinh trùng X/Y để điều khiển giới tính vật nuôi — câu hiểu/vận dụng lý thuyết, ERP không có dạng ứng dụng riêng."
+    }
+   ]
+  },
+  {
+   "hm": "K09120203",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S120203-01-001",
+      "K09S120203-01-002",
+      "K09S120203-01-003",
+      "K09S120203-01-004",
+      "K09S120203-01-005",
+      "K09S120203-02-005"
+     ],
+     "erp_dang": "K09120401",
+     "ly_do": "Khái niệm di truyền liên kết, nhóm gene liên kết = n, khác biệt với phân li độc lập — lý thuyết cơ bản."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S120203-02-001",
+      "K09S120203-02-004"
+     ],
+     "erp_dang": "K09120402",
+     "ly_do": "Số loại giao tử của AaBb khi liên kết hoàn toàn (2) so với phân li độc lập (4) — dạng \"Viết giao tử và ý nghĩa của viết giao tử\"."
+    }
+   ]
+  },
+  {
+   "hm": "K09120204",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S120204-01-001",
+      "K09S120204-01-002",
+      "K09S120204-01-003",
+      "K09S120204-01-004",
+      "K09S120204-01-005",
+      "K09S120204-01-006",
+      "K09S120204-01-007",
+      "K09S120204-01-008",
+      "K09S120204-01-009"
+     ],
+     "erp_dang": "K09120402",
+     "ly_do": "Viết giao tử, số loại và tỉ lệ giao tử của AB/ab, Ab/aB khi liên kết hoàn toàn — đúng dạng \"Viết giao tử và ý nghĩa của viết giao tử\"."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S120204-02-002",
+      "K09S120204-02-003",
+      "K09S120204-02-004",
+      "K09S120204-02-005",
+      "K09S120204-02-007",
+      "K09S120204-02-008",
+      "K09S120204-02-009"
+     ],
+     "erp_dang": "K09120403",
+     "ly_do": "Tỉ lệ kiểu hình đời con của phép lai liên kết hoàn toàn (AB/ab × AB/ab, BV/bv × bv/bv…) — đúng dạng \"Vẽ sơ đồ lai di truyền liên kết\"."
+    }
+   ]
+  },
+  {
+   "hm": "K09120205",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S120205-01-001",
+      "K09S120205-01-002",
+      "K09S120205-01-003",
+      "K09S120205-01-007"
+     ],
+     "erp_dang": "K09120302",
+     "ly_do": "Nguồn gốc X/Y của con, vai trò bố quyết định giới tính, đối chiếu tỉ lệ 1 : 1 với số liệu thật, xác suất sinh con trai mỗi lần = 1/2 — đều suy từ sơ đồ cơ chế xác định giới tính."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S120205-01-004"
+     ],
+     "erp_dang": "K09120301",
+     "ly_do": "Cơ sở khoa học của phân tách tinh trùng X/Y trong chăn nuôi — lý thuyết NST giới tính (giống cụm 2 dạng 12.2.2)."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S120205-02-001"
+     ],
+     "erp_dang": "K09120402",
+     "ly_do": "Giao tử của AB/ab liên kết hoàn toàn — dạng viết giao tử."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S120205-02-002",
+      "K09S120205-02-006"
+     ],
+     "erp_dang": "K09120403",
+     "ly_do": "Tỉ lệ kiểu gene/số cây kiểu hình đời con của phép lai liên kết hoàn toàn — dạng sơ đồ lai liên kết."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S120205-02-003",
+      "K09S120205-02-004",
+      "K09S120205-02-007"
+     ],
+     "erp_dang": "K09120401",
+     "ly_do": "Đặc điểm liên kết so với phân li độc lập, ứng dụng duy trì tổ hợp gene quý, lai phân tích cho 1 : 1 gợi ý liên kết (thí nghiệm Morgan) — lý thuyết cơ bản di truyền liên kết."
+    }
+   ]
+  },
+  {
+   "hm": "K09120301",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09120501",
+     "ly_do": "Các dạng đột biến cấu trúc (mất/lặp/đảo/chuyển đoạn) và số lượng (lệch bội, đa bội, thể ba/một/không) — lý thuyết cơ bản đột biến NST."
+    }
+   ]
+  },
+  {
+   "hm": "K09120302",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09120501",
+     "ly_do": "Nhìn sơ đồ trình tự gene hoặc số NST từng cặp để gọi tên dạng đột biến — áp thẳng định nghĩa (≤ 2 bước), vào dạng cơ bản; ERP không có dạng nhận dạng riêng."
+    }
+   ]
+  },
+  {
+   "hm": "K09120303",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09120502",
+     "ly_do": "Tính tổng số NST của thể ba/một/không, tam bội/tứ bội từ 2n hoặc n — tính toán cơ bản đột biến NST."
+    }
+   ]
+  },
+  {
+   "hm": "K09120304",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09120501",
+     "ly_do": "Hội chứng Down/Turner/Klinefelter, nguyên nhân không phân li, ứng dụng đa bội trong trồng trọt — lý thuyết hậu quả & vai trò đột biến NST, ERP gộp trong dạng lý thuyết."
+    }
+   ]
+  },
+  {
+   "hm": "K09120305",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S120305-01-001",
+      "K09S120305-01-002",
+      "K09S120305-01-006",
+      "K09S120305-02-001",
+      "K09S120305-02-002",
+      "K09S120305-02-003",
+      "K09S120305-02-004",
+      "K09S120305-02-007"
+     ],
+     "erp_dang": "K09120501",
+     "ly_do": "Gọi tên dạng đột biến cấu trúc từ trình tự gene; phân tích hậu quả/ứng dụng (Down, dưa hấu tam bội, kết quả xét nghiệm NST đồ) — lý thuyết đột biến NST."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S120305-01-003",
+      "K09S120305-01-004",
+      "K09S120305-01-007",
+      "K09S120305-01-008"
+     ],
+     "erp_dang": "K09120502",
+     "ly_do": "Tính số NST thể ba, tứ bội và so sánh hiệu số NST giữa hai thể đột biến — tính toán cơ bản đột biến NST."
+    }
+   ]
+  },
+  {
+   "hm": "K09130101",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S130101-01-007"
+     ],
+     "erp_dang": "K09130102",
+     "ly_do": "Bố mẹ không bệnh sinh con bệnh (gene lặn NST thường) ⇒ bố mẹ đều Aa — đúng phép suy kiểu gene của bài toán phả hệ."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S130101-01-001",
+      "K09S130101-01-002",
+      "K09S130101-01-003",
+      "K09S130101-01-004",
+      "K09S130101-01-005",
+      "K09S130101-01-008",
+      "K09S130101-02-001",
+      "K09S130101-02-002",
+      "K09S130101-02-003",
+      "K09S130101-02-004",
+      "K09S130101-02-005",
+      "K09S130101-02-006",
+      "K09S130101-02-007"
+     ],
+     "erp_dang": "K09130101",
+     "ly_do": "Bệnh/tật di truyền do đột biến gene và NST (bạch tạng, máu khó đông, mù màu, Down, Turner, Klinefelter) — lý thuyết di truyền học với con người."
+    }
+   ]
+  },
+  {
+   "hm": "K09130102",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09130102",
+     "ly_do": "Đọc kí hiệu phả hệ, xác định trội – lặn và kiểu gene bố mẹ — đúng dạng \"Bài toán phả hệ và nhóm máu\"."
+    }
+   ]
+  },
+  {
+   "hm": "K09130103",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S130103-01-001",
+      "K09S130103-01-002",
+      "K09S130103-01-003"
+     ],
+     "erp_dang": "K09130101",
+     "ly_do": "Cơ sở di truyền của luật cấm kết hôn cận huyết — lý thuyết di truyền học với đời sống."
+    },
+    {
+     "lan": "do",
+     "cau": [
+      "K09S130103-02-001",
+      "K09S130103-02-003"
+     ],
+     "erp_chuyen_de": "K091301",
+     "ly_do": "Câu tư vấn di truyền cho sẵn bố mẹ Aa × Aa rồi hỏi xác suất con (không phải đọc phả hệ) nên xếp vào K09110102 (Lai một cặp tính trạng xuôi — câu mẫu ERP gần y hệt \"bố mẹ đều Aa, xác suất hai con đều trội\") hay K09130102 (Bài toán phả hệ và nhóm máu — giữ trong ngữ cảnh di truyền người)?"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S130103-02-002"
+     ],
+     "erp_dang": "K09130102",
+     "ly_do": "Bố mẹ bình thường đã sinh con bệnh ⇒ suy bố mẹ Aa rồi tính xác suất con tiếp theo — suy kiểu gene từ gia đình như bài phả hệ."
+    }
+   ]
+  },
+  {
+   "hm": "K09130104",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09130101",
+     "ly_do": "Khái niệm công nghệ di truyền, GMO, chuyển gene, ứng dụng trong nông nghiệp/y học/pháp y — phần \"đời sống\" của chuyên đề, ERP chỉ có dạng lý thuyết."
+    }
+   ]
+  },
+  {
+   "hm": "K09130105",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09130101",
+     "ly_do": "Đánh giá an toàn sinh học, đạo đức sinh học của GMO và chỉnh sửa gene — lý thuyết di truyền học với đời sống (câu nhận định, không tính toán)."
+    }
+   ]
+  },
+  {
+   "hm": "K09130106",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S130106-01-001",
+      "K09S130106-01-002",
+      "K09S130106-01-003",
+      "K09S130106-01-004",
+      "K09S130106-01-008"
+     ],
+     "erp_dang": "K09130102",
+     "ly_do": "Đọc phả hệ/gia đình suy bệnh do gene lặn, suy bố mẹ Aa, xác suất con tiếp theo, xác suất con bình thường mang Aa (2/3) — phương pháp bài toán phả hệ."
+    },
+    {
+     "lan": "do",
+     "cau": [
+      "K09S130106-01-007"
+     ],
+     "erp_chuyen_de": "K091301",
+     "ly_do": "Câu tư vấn di truyền cho sẵn bố mẹ Aa × Aa rồi hỏi xác suất con (không phải đọc phả hệ) nên xếp vào K09110102 (Lai một cặp tính trạng xuôi — câu mẫu ERP gần y hệt \"bố mẹ đều Aa, xác suất hai con đều trội\") hay K09130102 (Bài toán phả hệ và nhóm máu — giữ trong ngữ cảnh di truyền người)? (Câu này: 3 người con đều không bệnh = (3/4)^3.)"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S130106-02-001",
+      "K09S130106-02-002",
+      "K09S130106-02-003",
+      "K09S130106-02-004",
+      "K09S130106-02-006",
+      "K09S130106-02-007"
+     ],
+     "erp_dang": "K09130101",
+     "ly_do": "Đánh giá lợi ích/rủi ro GMO, cơ sở xét nghiệm DNA pháp y, đạo đức chỉnh sửa gene, cơ sở luật hôn nhân, mục đích tư vấn di truyền — lý thuyết."
+    }
+   ]
+  },
+  {
+   "hm": "K09140101",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09140101",
+     "ly_do": "Khái niệm tiến hoá, chọn lọc nhân tạo, chọn lọc tự nhiên và ví dụ — đúng dạng lý thuyết tiến hoá & các hình thức chọn lọc (so_cau = 0)."
+    }
+   ]
+  },
+  {
+   "hm": "K09140102",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09140101",
+     "ly_do": "So sánh và phân loại ví dụ chọn lọc nhân tạo / tự nhiên — vẫn là áp thẳng khái niệm 2 hình thức chọn lọc; ERP không có dạng so sánh riêng."
+    }
+   ]
+  },
+  {
+   "hm": "K09140103",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09140201",
+     "ly_do": "Quan điểm Darwin và quan điểm hiện đại về cơ chế tiến hoá — lý thuyết cơ bản về cơ chế tiến hoá."
+    }
+   ]
+  },
+  {
+   "hm": "K09140104",
+   "nhom": [
+    {
+     "lan": "do",
+     "cau": [
+      "K09S140104-01-001",
+      "K09S140104-01-002",
+      "K09S140104-01-003",
+      "K09S140104-01-004",
+      "K09S140104-01-005",
+      "K09S140104-01-007",
+      "K09S140104-01-008",
+      "K09S140104-01-009",
+      "K09S140104-02-001",
+      "K09S140104-02-002",
+      "K09S140104-02-007"
+     ],
+     "erp_chuyen_de": "K091402",
+     "ly_do": "Câu \"giải thích sự hình thành đặc điểm thích nghi\" (nguỵ trang, kháng thuốc: biến dị có sẵn → chọn lọc tự nhiên giữ lại → tích luỹ qua nhiều thế hệ) nên xếp vào K09140201 (Lý thuyết cơ bản về cơ chế tiến hoá) hay K09140202 (Phân tích các yếu tố ảnh hưởng tới tiến hoá)? Nếu cả hai đều không đúng ý thì có nên mở dạng mới \"Giải thích sự hình thành đặc điểm thích nghi\" trong K091402?"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S140104-02-003",
+      "K09S140104-02-004",
+      "K09S140104-02-008",
+      "K09S140104-02-009"
+     ],
+     "erp_dang": "K09140102",
+     "ly_do": "Biện pháp chống kháng thuốc (luân phiên thuốc, dùng kháng sinh đủ liều, không dùng kháng sinh liều thấp cho vật nuôi) — đúng dạng \"Ứng dụng thực tế của tiến hoá\"."
+    }
+   ]
+  },
+  {
+   "hm": "K09140105",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S140105-01-001",
+      "K09S140105-01-002",
+      "K09S140105-01-003",
+      "K09S140105-01-004",
+      "K09S140105-01-007"
+     ],
+     "erp_dang": "K09140101",
+     "ly_do": "Phân biệt chọn lọc tự nhiên / nhân tạo qua ví dụ, động lực chọn lọc, vai trò của chọn lọc nhân tạo — lý thuyết các hình thức chọn lọc."
+    },
+    {
+     "lan": "do",
+     "cau": [
+      "K09S140105-02-001",
+      "K09S140105-02-002"
+     ],
+     "erp_chuyen_de": "K091402",
+     "ly_do": "Câu \"giải thích sự hình thành đặc điểm thích nghi\" (nguỵ trang, kháng thuốc: biến dị có sẵn → chọn lọc tự nhiên giữ lại → tích luỹ qua nhiều thế hệ) nên xếp vào K09140201 (Lý thuyết cơ bản về cơ chế tiến hoá) hay K09140202 (Phân tích các yếu tố ảnh hưởng tới tiến hoá)? Nếu cả hai đều không đúng ý thì có nên mở dạng mới \"Giải thích sự hình thành đặc điểm thích nghi\" trong K091402?"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S140105-02-003",
+      "K09S140105-02-004"
+     ],
+     "erp_dang": "K09140102",
+     "ly_do": "Hậu quả dùng kháng sinh không đủ liều và biện pháp làm chậm kháng thuốc — ứng dụng thực tế của tiến hoá."
+    }
+   ]
+  },
+  {
+   "hm": "K09140201",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09140301",
+     "ly_do": "Ba giai đoạn tiến hoá hoá học – tiền sinh học – sinh học và các dạng người — lý thuyết phát sinh & phát triển sự sống (so_cau = 0)."
+    }
+   ]
+  },
+  {
+   "hm": "K09140202",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": [
+      "K09S140202-01-001",
+      "K09S140202-01-002",
+      "K09S140202-01-003",
+      "K09S140202-01-004",
+      "K09S140202-01-005",
+      "K09S140202-01-006",
+      "K09S140202-01-007",
+      "K09S140202-01-008",
+      "K09S140202-01-009"
+     ],
+     "erp_chuyen_de": "K091403",
+     "ten": "Đọc cây sự sống (cây phát sinh chủng loại)",
+     "mo_ta_ngan": "Cho hình cây sự sống, xác định nhóm nào họ hàng gần/xa nhất hoặc tách nhánh sớm nhất dựa vào điểm phân nhánh chung gần nhất.",
+     "gan_nhat": "K09140301",
+     "ly_do": "Kĩ năng ĐỌC SƠ ĐỒ (tìm điểm phân nhánh chung gần nhất) khác việc nhớ lại các giai đoạn ở K09140301; cũng không phải biện luận từ bằng chứng như K09140302. Chuyên đề ERP chỉ có 2 dạng nên không có chỗ khớp."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S140202-02-001",
+      "K09S140202-02-002",
+      "K09S140202-02-003",
+      "K09S140202-02-004",
+      "K09S140202-02-005",
+      "K09S140202-02-006",
+      "K09S140202-02-007",
+      "K09S140202-02-008",
+      "K09S140202-02-009"
+     ],
+     "erp_dang": "K09140301",
+     "ly_do": "Thang thời gian địa chất (đại Cổ/Trung/Tân sinh và sự kiện tiêu biểu) — ghi nhớ kiến thức, vào dạng lý thuyết."
+    }
+   ]
+  },
+  {
+   "hm": "K09140203",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S140203-01-001",
+      "K09S140203-01-002",
+      "K09S140203-01-003",
+      "K09S140203-01-004",
+      "K09S140203-01-005",
+      "K09S140203-01-006",
+      "K09S140203-01-007",
+      "K09S140203-01-008"
+     ],
+     "erp_dang": "K09140302",
+     "ly_do": "Từ bằng chứng (thí nghiệm tổng hợp amino acid, hoá thạch, cơ quan tương đồng, Archaeopteryx) suy giai đoạn/thứ tự xuất hiện/nguồn gốc — biện luận từ bằng chứng."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S140203-02-001",
+      "K09S140203-02-002",
+      "K09S140203-02-003",
+      "K09S140203-02-004",
+      "K09S140203-02-005",
+      "K09S140203-02-006",
+      "K09S140203-02-007",
+      "K09S140203-02-008",
+      "K09S140203-02-009"
+     ],
+     "erp_dang": "K09140301",
+     "ly_do": "Nhận dạng và so sánh đặc điểm các dạng người (vượn người phương Nam, người tối cổ, người cổ, người hiện đại) — lý thuyết phát sinh loài người."
+    }
+   ]
+  },
+  {
+   "hm": "K09140204",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": [
+      "K09S140204-01-001",
+      "K09S140204-01-002",
+      "K09S140204-01-006"
+     ],
+     "erp_chuyen_de": "K091403",
+     "ten": "Đọc cây sự sống (cây phát sinh chủng loại)",
+     "mo_ta_ngan": "Cho hình cây sự sống, xác định nhóm nào họ hàng gần/xa nhất hoặc tách nhánh sớm nhất dựa vào điểm phân nhánh chung gần nhất.",
+     "gan_nhat": "K09140301",
+     "ly_do": "Kĩ năng ĐỌC SƠ ĐỒ (tìm điểm phân nhánh chung gần nhất) khác việc nhớ lại các giai đoạn ở K09140301; cũng không phải biện luận từ bằng chứng như K09140302. Chuyên đề ERP chỉ có 2 dạng nên không có chỗ khớp."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09S140204-01-003",
+      "K09S140204-01-004",
+      "K09S140204-01-007",
+      "K09S140204-02-001",
+      "K09S140204-02-002",
+      "K09S140204-02-003",
+      "K09S140204-02-004",
+      "K09S140204-02-007"
+     ],
+     "erp_dang": "K09140302",
+     "ly_do": "Suy thứ tự xuất hiện từ số liệu hoá thạch/lớp đất đá/thể tích hộp sọ, đối chiếu hoá thạch với cây sự sống, phản biện nhận định sai — biện luận và phản biện."
+    }
+   ]
+  }
+ ]
+}

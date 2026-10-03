@@ -1,0 +1,986 @@
+{
+ "khoi": "8",
+ "mon": "Vật lí",
+ "chuyen_de": [
+  {
+   "hm": "K080301",
+   "erp": "K080201",
+   "ly_do": "Khối lượng riêng (Bài 13–14) = chuyên đề ERP Khối lượng riêng"
+  },
+  {
+   "hm": "K080302",
+   "erp": "K080202",
+   "ly_do": "Áp suất trên một bề mặt (Bài 15) = chuyên đề ERP Áp suất"
+  },
+  {
+   "hm": "K080303",
+   "erp": "K080203",
+   "ly_do": "Áp suất chất lỏng, khí quyển (Bài 16) = chuyên đề ERP cùng tên"
+  },
+  {
+   "hm": "K080304",
+   "erp": null,
+   "ly_do": "Lực đẩy Archimedes (SGK Bài 17) — ERP chưa có chuyên đề; nên mở chuyên đề mới trong chủ đề \"Khối lượng riêng và Áp suất\"."
+  },
+  {
+   "hm": "K080401",
+   "erp": null,
+   "ly_do": "Tác dụng làm quay của lực, moment lực (SGK Bài 18) — ERP khối 8 chưa có chủ đề \"Tác dụng làm quay của lực\"."
+  },
+  {
+   "hm": "K080402",
+   "erp": null,
+   "ly_do": "Đòn bẩy và ứng dụng (SGK Bài 19) — ERP chưa có chủ đề \"Tác dụng làm quay của lực\"."
+  },
+  {
+   "hm": "K080501",
+   "erp": null,
+   "ly_do": "Nhiễm điện do cọ xát (SGK Bài 20) — ERP khối 8 chưa có chủ đề Điện."
+  },
+  {
+   "hm": "K080502",
+   "erp": null,
+   "ly_do": "Dòng điện, nguồn điện, mạch điện (SGK Bài 21–22) — ERP chưa có chủ đề Điện."
+  },
+  {
+   "hm": "K080503",
+   "erp": null,
+   "ly_do": "Tác dụng của dòng điện (SGK Bài 23) — ERP chưa có chủ đề Điện."
+  },
+  {
+   "hm": "K080504",
+   "erp": null,
+   "ly_do": "Cường độ dòng điện và hiệu điện thế (SGK Bài 24–25) — ERP chưa có chủ đề Điện."
+  },
+  {
+   "hm": "K080601",
+   "erp": null,
+   "ly_do": "Năng lượng nhiệt và nội năng (SGK Bài 26–27) — ERP khối 8 chưa có chủ đề Nhiệt."
+  },
+  {
+   "hm": "K080602",
+   "erp": null,
+   "ly_do": "Sự truyền nhiệt (SGK Bài 28) — ERP chưa có chủ đề Nhiệt."
+  },
+  {
+   "hm": "K080603",
+   "erp": null,
+   "ly_do": "Sự nở vì nhiệt (SGK Bài 29) — ERP chưa có chủ đề Nhiệt."
+  }
+ ],
+ "dang": [
+  {
+   "hm": "K08030101",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K08020101",
+     "ly_do": "Định nghĩa D, đơn vị kg/m³ ↔ g/cm³, đọc bảng D các chất — đúng 3 câu mẫu ERP (công thức, định nghĩa, đọc bảng chất \"đặc\" nhất). Câu 03-003 chỉ tra bảng, không tính nên vẫn ở lý thuyết."
+    }
+   ]
+  },
+  {
+   "hm": "K08030102",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030102-01-001",
+      "K08L030102-01-002",
+      "K08L030102-01-004",
+      "K08L030102-01-003",
+      "K08L030102-01-005",
+      "K08L030102-01-006",
+      "K08L030102-04-003",
+      "K08L030102-04-004",
+      "K08L030102-04-005"
+     ],
+     "erp_dang": "K08020102",
+     "ly_do": "Tính D = m/V (có/không đổi đơn vị trước) — cùng phương pháp câu mẫu ERP đồng xu bạc, khối gỗ."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030102-02-001",
+      "K08L030102-02-002",
+      "K08L030102-02-004",
+      "K08L030102-02-003",
+      "K08L030102-02-005",
+      "K08L030102-02-006",
+      "K08L030102-03-001",
+      "K08L030102-03-002",
+      "K08L030102-03-004",
+      "K08L030102-03-003",
+      "K08L030102-03-005",
+      "K08L030102-03-006"
+     ],
+     "erp_dang": "K08020103",
+     "ly_do": "Biết D, tính m = D·V hoặc V = m/D — đúng câu mẫu ERP khối sắt/nhôm/tấm thép."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030102-04-001",
+      "K08L030102-04-002",
+      "K08L030102-04-006"
+     ],
+     "erp_dang": "K08020101",
+     "ly_do": "Chỉ đổi đơn vị g→kg, dm³/cm³→m³ (1 bước, chưa tính D) — đưa về dạng cơ bản như ERP đã làm với câu \"đổi mm² ra m²\" trong K08020201."
+    }
+   ]
+  },
+  {
+   "hm": "K08030103",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030103-01-003",
+      "K08L030103-01-004",
+      "K08L030103-02-001",
+      "K08L030103-02-002",
+      "K08L030103-02-003",
+      "K08L030103-02-004"
+     ],
+     "erp_dang": "K08020102",
+     "ly_do": "Lấy V (hiệu vạch bình chia độ) hoặc m (trừ khối lượng cốc) rồi D = m/V — lõi vẫn là tính D khi có m, V; thêm đúng 1 phép trừ."
+    },
+    {
+     "lan": "vang",
+     "cau": [
+      "K08L030103-01-002",
+      "K08L030103-03-001",
+      "K08L030103-03-002"
+     ],
+     "erp_chuyen_de": "K080201",
+     "ten": "Thực hành đo thể tích, khối lượng và xử lí số liệu khi xác định khối lượng riêng",
+     "mo_ta_ngan": "Bài chỉ hỏi bước đo: đọc thể tích vật rắn bằng hiệu hai vạch bình chia độ, hoặc lấy trung bình nhiều lần đo m/V — chưa tới bước chia D = m/V.",
+     "gan_nhat": "K08020102",
+     "ly_do": "K08020102 bắt đầu khi đã có m và V để chia; các câu này dừng ở kĩ năng thực hành (vạch sau − vạch trước, trung bình cộng nhiều lần đo, Bài 14 SGK) — không dùng công thức D nên không gộp được."
+    }
+   ]
+  },
+  {
+   "hm": "K08030104",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030104-01-001",
+      "K08L030104-01-002",
+      "K08L030104-01-003",
+      "K08L030104-01-005",
+      "K08L030104-02-001",
+      "K08L030104-02-002",
+      "K08L030104-02-004"
+     ],
+     "erp_dang": "K08020104",
+     "ly_do": "Tính D rồi đối chiếu bảng để gọi tên chất / kết luận \"nguyên chất hay không\" — y hệt câu mẫu ERP (bình chia độ + bảng; vòng \"bạch kim\")."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030104-02-003"
+     ],
+     "erp_dang": "K08020102",
+     "ly_do": "Đề hợp kim nhưng câu hỏi chỉ là \"khối lượng riêng của hợp kim là\" = m/V, không cần nhận biết chất."
+    },
+    {
+     "lan": "do",
+     "cau": [
+      "K08L030104-01-006"
+     ],
+     "erp_chuyen_de": "K080201",
+     "ly_do": "Câu hỏi thực chất chỉ cần V = 150 − 60 rồi cộng vào 200 cm³ dầu (phần tính D = 8,9 → đồng không dùng tới đáp án): thầy/cô xếp vào K08020104 (xác định chất) theo ngữ cảnh, xếp vào dạng mới \"Thực hành đo thể tích…\" (đề xuất vàng ở K08030103), hay sửa đề để câu hỏi chốt ở tên chất?"
+    },
+    {
+     "lan": "thieu_cd",
+     "cau": [
+      "K08L030104-03-001",
+      "K08L030104-03-002",
+      "K08L030104-03-004",
+      "K08L030104-03-005"
+     ],
+     "erp_chuyen_de": null,
+     "ly_do": "Dự đoán nổi/chìm bằng so sánh D vật với D chất lỏng = điều kiện vật nổi (SGK Bài 17 Lực đẩy Archimedes), không thuộc Bài 13 Khối lượng riêng; ERP chưa có chuyên đề Lực đẩy Archimedes — nên đi cùng dạng HM K08030403 khi mở chuyên đề đó trong chủ đề \"Khối lượng riêng và Áp suất\"."
+    }
+   ]
+  },
+  {
+   "hm": "K08030201",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030201-01-001",
+      "K08L030201-01-002",
+      "K08L030201-01-003",
+      "K08L030201-01-004",
+      "K08L030201-02-001",
+      "K08L030201-02-002",
+      "K08L030201-02-003",
+      "K08L030201-02-004",
+      "K08L030201-02-005",
+      "K08L030201-03-001",
+      "K08L030201-03-002",
+      "K08L030201-03-003",
+      "K08L030201-03-004",
+      "K08L030201-03-005"
+     ],
+     "erp_dang": "K08020201",
+     "ly_do": "Khái niệm áp lực (phương vuông góc), diện tích bị ép, đơn vị Pa/kPa/MPa — cùng câu mẫu ERP (đơn vị SI, áp lực lớn hơn thì…)."
+    },
+    {
+     "lan": "do",
+     "cau": [
+      "K08L030201-01-005"
+     ],
+     "erp_chuyen_de": "K080202",
+     "ly_do": "Thuộc K08020201, nhưng lời giải viết \"hai lực khác phương nên độ lớn khác nhau\" là suy luận sai (khác phương không kéo theo khác độ lớn; áp lực trên mặt nghiêng nhỏ hơn P vì chỉ là thành phần vuông góc) — thầy/cô sửa lời giải rồi xếp K08020201, hay bỏ câu vì vượt chương trình lớp 8?"
+    }
+   ]
+  },
+  {
+   "hm": "K08030202",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030202-01-001",
+      "K08L030202-01-002",
+      "K08L030202-01-003",
+      "K08L030202-01-004",
+      "K08L030202-04-001",
+      "K08L030202-04-002",
+      "K08L030202-04-003",
+      "K08L030202-04-004",
+      "K08L030202-04-005"
+     ],
+     "erp_dang": "K08020202",
+     "ly_do": "Tính p = F/S (có đổi cm² → m²) — cùng câu mẫu ERP tủ lạnh/ghế."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030202-02-001",
+      "K08L030202-02-002",
+      "K08L030202-02-003",
+      "K08L030202-02-004",
+      "K08L030202-03-001",
+      "K08L030202-03-002",
+      "K08L030202-03-003",
+      "K08L030202-03-004",
+      "K08L030202-03-005"
+     ],
+     "erp_dang": "K08020203",
+     "ly_do": "Biết p, tính F = p·S hoặc S = F/p — đúng câu mẫu ERP cánh cửa kính chịu áp suất gió."
+    }
+   ]
+  },
+  {
+   "hm": "K08030203",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030203-01-001",
+      "K08L030203-01-002",
+      "K08L030203-01-004",
+      "K08L030203-01-005",
+      "K08L030203-01-006",
+      "K08L030203-02-002",
+      "K08L030203-02-003",
+      "K08L030203-02-005",
+      "K08L030203-02-006"
+     ],
+     "erp_dang": "K08020204",
+     "ly_do": "Giải thích tăng/giảm áp suất bằng đổi diện tích bị ép (lưỡi dao, móng nhà, ván trượt) — trùng câu mẫu ERP lưỡi dao, chân lạc đà."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030203-03-001",
+      "K08L030203-03-002",
+      "K08L030203-03-003",
+      "K08L030203-03-004",
+      "K08L030203-03-005",
+      "K08L030203-03-006"
+     ],
+     "erp_dang": "K08020202",
+     "ly_do": "Người/đồ vật đứng trên sàn: P = 10m, chia số chân, đổi cm², p = F/S — cùng phương pháp câu mẫu ERP tủ lạnh 4 chân, người đứng 2 chân."
+    }
+   ]
+  },
+  {
+   "hm": "K08030204",
+   "nhom": [
+    {
+     "lan": "do",
+     "cau": "*",
+     "erp_chuyen_de": "K080202",
+     "ly_do": "Bài nhiều bước: tỉ số p₂/p₁ khi vừa đổi số chân vừa thêm khối lượng, và cộng khối lượng → p mỗi chân → so với ngưỡng nền chịu được — thầy/cô xếp vào K08020204 \"Bài toán thực tế và so sánh áp suất\" (tên khớp nhưng 3 câu mẫu ERP đều định tính), vào K08020202 (lõi vẫn p = F/S), hay mở dạng mới mức 4 cho so sánh định lượng nhiều bước?"
+    }
+   ]
+  },
+  {
+   "hm": "K08030301",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K08020301",
+     "ly_do": "Áp suất chất lỏng theo mọi phương, tăng theo độ sâu, bình thông nhau (định tính) — cùng câu mẫu ERP (3 áp kế cùng mức, thành bình có chịu áp suất). Lưu ý 01-001 và 01-002 trùng đề, chỉ khác phương án."
+    }
+   ]
+  },
+  {
+   "hm": "K08030302",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030302-01-001",
+      "K08L030302-01-002",
+      "K08L030302-01-003",
+      "K08L030302-01-004",
+      "K08L030302-01-005",
+      "K08L030302-02-001",
+      "K08L030302-02-002",
+      "K08L030302-02-003",
+      "K08L030302-02-004",
+      "K08L030302-02-005",
+      "K08L030302-03-003",
+      "K08L030302-03-004"
+     ],
+     "erp_dang": "K08020302",
+     "ly_do": "p = d·h / h = p/d, có đổi cm → m, kPa → Pa và tính độ sâu từ mặt thoáng (= chiều cao bể − khoảng cách tới đáy) — cùng câu mẫu ERP điểm ở độ sâu 0,8 m."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030302-03-001",
+      "K08L030302-03-002",
+      "K08L030302-03-005"
+     ],
+     "erp_dang": "K08020301",
+     "ly_do": "So sánh định tính \"sâu hơn ⇒ áp suất lớn hơn\" trong cùng chất lỏng, 1 bước — giống câu HM K08030301 cụm 2 (so sánh đáy hai bình), thuộc lý thuyết chung."
+    }
+   ]
+  },
+  {
+   "hm": "K08030303",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030303-01-001",
+      "K08L030303-01-002",
+      "K08L030303-01-003",
+      "K08L030303-03-001"
+     ],
+     "erp_dang": "K08020303",
+     "ly_do": "Sự tồn tại áp suất khí quyển (cốc nước úp ngược, hộp sữa bẹp) và giảm theo độ cao — đúng câu mẫu ERP đỉnh núi, càng lên cao."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030303-02-001",
+      "K08L030303-02-002",
+      "K08L030303-02-003",
+      "K08L030303-03-002",
+      "K08L030303-03-003"
+     ],
+     "erp_dang": "K08020304",
+     "ly_do": "Đổi mmHg → Pa và tính độ giảm mmHg theo độ cao — dạng \"đơn vị và tính toán áp suất khí quyển\". Lưu ý: HM dùng 1 mmHg ≈ 133,3 Pa, ERP dùng 136 Pa (d thuỷ ngân 136 000 N/m³) — nên thống nhất hệ số trước khi trộn câu."
+    }
+   ]
+  },
+  {
+   "hm": "K08030304",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": [
+      "K08L030304-01-001",
+      "K08L030304-01-002",
+      "K08L030304-01-004"
+     ],
+     "erp_chuyen_de": "K080203",
+     "ten": "Máy nén thuỷ lực – tính lực nâng, diện tích pit-tông",
+     "mo_ta_ngan": "Hai pit-tông nối bằng chất lỏng: dùng F₁/S₁ = F₂/S₂ (hoặc tỉ số diện tích = bình phương tỉ số đường kính) để tìm lực nâng hay diện tích.",
+     "gan_nhat": "K08020302",
+     "ly_do": "K08020302 tính p = d·h theo độ sâu; bài máy nén thuỷ lực không có d, h mà dùng nguyên lí áp suất truyền nguyên vẹn + tỉ lệ lực theo diện tích — phương pháp khác hẳn, ERP chưa có dạng nào."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030304-01-003",
+      "K08L030304-03-002"
+     ],
+     "erp_dang": "K08020301",
+     "ly_do": "Câu 1 bước nêu nguyên lí: áp suất chất lỏng truyền nguyên vẹn (máy nén thuỷ lực), áp suất tăng theo độ sâu (đập dày ở đáy) — lý thuyết chung áp suất chất lỏng."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030304-02-002",
+      "K08L030304-02-004",
+      "K08L030304-03-003"
+     ],
+     "erp_dang": "K08020303",
+     "ly_do": "Giải thích bằng chênh lệch áp suất khí quyển (giác mút, ống nhỏ giọt, ù tai) — cùng câu mẫu ERP ù tai khi máy bay cất cánh."
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030304-03-001",
+      "K08L030304-03-004"
+     ],
+     "erp_dang": "K08020302",
+     "ly_do": "p = d·h và Δp = d·Δh dưới nước biển — tính toán áp suất chất lỏng."
+    },
+    {
+     "lan": "do",
+     "cau": [
+      "K08L030304-02-003"
+     ],
+     "erp_chuyen_de": "K080203",
+     "ly_do": "Lực giữ giác mút F = (p khí quyển − p trong)·S: thầy/cô xếp vào K08020304 (tính toán áp suất khí quyển) hay coi lõi là F = p·S và đưa sang K08020203 (tính áp lực khi biết áp suất, chuyên đề Áp suất)?"
+    }
+   ]
+  },
+  {
+   "hm": "K08030305",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K08L030305-01-001",
+      "K08L030305-01-002",
+      "K08L030305-01-003",
+      "K08L030305-01-004",
+      "K08L030305-01-005",
+      "K08L030305-01-006",
+      "K08L030305-01-007",
+      "K08L030305-01-008"
+     ],
+     "erp_dang": "K08020305",
+     "ly_do": "Áp suất toàn phần = p khí quyển + d·h — trùng câu mẫu ERP điểm ở độ sâu 1,4 m dưới mặt thoáng hở."
+    },
+    {
+     "lan": "vang",
+     "cau": [
+      "K08L030305-02-001",
+      "K08L030305-02-002",
+      "K08L030305-02-003",
+      "K08L030305-02-004",
+      "K08L030305-02-005",
+      "K08L030305-02-006",
+      "K08L030305-02-007"
+     ],
+     "erp_chuyen_de": "K080203",
+     "ten": "Máy nén thuỷ lực – tính lực nâng, diện tích pit-tông",
+     "mo_ta_ngan": "Hai pit-tông nối bằng chất lỏng: dùng F₁/S₁ = F₂/S₂ (hoặc tỉ số diện tích = bình phương tỉ số đường kính) để tìm lực nâng hay diện tích.",
+     "gan_nhat": "K08020305",
+     "ly_do": "Cùng dạng mới đề xuất ở K08030304 (máy nén thuỷ lực), thêm bước tỉ số diện tích = bình phương tỉ số đường kính; K08020305 là cộng áp suất khí quyển + chất lỏng, không dùng tỉ lệ pit-tông."
+    }
+   ]
+  },
+  {
+   "hm": "K08030401",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Khái niệm và đặc điểm lực đẩy Archimedes: Lực đẩy Archimedes (SGK Bài 17) — ERP chưa có chuyên đề; nên mở chuyên đề mới trong chủ đề \"Khối lượng riêng và Áp suất\"."
+    }
+   ]
+  },
+  {
+   "hm": "K08030402",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Tính lực đẩy Archimedes F_A = d·V: Lực đẩy Archimedes (SGK Bài 17) — ERP chưa có chuyên đề; nên mở chuyên đề mới trong chủ đề \"Khối lượng riêng và Áp suất\"."
+    }
+   ]
+  },
+  {
+   "hm": "K08030403",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Điều kiện vật nổi, chìm, lơ lửng: Lực đẩy Archimedes (SGK Bài 17) — ERP chưa có chuyên đề; nên mở chuyên đề mới trong chủ đề \"Khối lượng riêng và Áp suất\"."
+    }
+   ]
+  },
+  {
+   "hm": "K08030404",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Bài toán vật nổi và ứng dụng thực tế: Lực đẩy Archimedes (SGK Bài 17) — ERP chưa có chuyên đề; nên mở chuyên đề mới trong chủ đề \"Khối lượng riêng và Áp suất\"."
+    }
+   ]
+  },
+  {
+   "hm": "K08040101",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Tác dụng làm quay của lực và khái niệm moment lực: Tác dụng làm quay của lực, moment lực (SGK Bài 18) — ERP khối 8 chưa có chủ đề \"Tác dụng làm quay của lực\"."
+    }
+   ]
+  },
+  {
+   "hm": "K08040102",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "So sánh tác dụng làm quay theo lực và cánh tay đòn: Tác dụng làm quay của lực, moment lực (SGK Bài 18) — ERP khối 8 chưa có chủ đề \"Tác dụng làm quay của lực\"."
+    }
+   ]
+  },
+  {
+   "hm": "K08040103",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng moment lực trong thực tế: Tác dụng làm quay của lực, moment lực (SGK Bài 18) — ERP khối 8 chưa có chủ đề \"Tác dụng làm quay của lực\"."
+    }
+   ]
+  },
+  {
+   "hm": "K08040104",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng cao: cân bằng hai moment lực và chọn cách bố trí đạt đủ moment với lực nhỏ nhất: Tác dụng làm quay của lực, moment lực (SGK Bài 18) — ERP khối 8 chưa có chủ đề \"Tác dụng làm quay của lực\"."
+    }
+   ]
+  },
+  {
+   "hm": "K08040201",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Cấu tạo và phân loại đòn bẩy: Đòn bẩy và ứng dụng (SGK Bài 19) — ERP chưa có chủ đề \"Tác dụng làm quay của lực\"."
+    }
+   ]
+  },
+  {
+   "hm": "K08040202",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Điều kiện cân bằng của đòn bẩy: Đòn bẩy và ứng dụng (SGK Bài 19) — ERP chưa có chủ đề \"Tác dụng làm quay của lực\"."
+    }
+   ]
+  },
+  {
+   "hm": "K08040203",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Đòn bẩy trong dụng cụ và trong cơ thể người: Đòn bẩy và ứng dụng (SGK Bài 19) — ERP chưa có chủ đề \"Tác dụng làm quay của lực\"."
+    }
+   ]
+  },
+  {
+   "hm": "K08040204",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Bài toán vận dụng đòn bẩy: Đòn bẩy và ứng dụng (SGK Bài 19) — ERP chưa có chủ đề \"Tác dụng làm quay của lực\"."
+    }
+   ]
+  },
+  {
+   "hm": "K08050101",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vật nhiễm điện và hai loại điện tích: Nhiễm điện do cọ xát (SGK Bài 20) — ERP khối 8 chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08050102",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Giải thích tương tác giữa các vật nhiễm điện: Nhiễm điện do cọ xát (SGK Bài 20) — ERP khối 8 chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08050103",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng hiện tượng nhiễm điện trong thực tế: Nhiễm điện do cọ xát (SGK Bài 20) — ERP khối 8 chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08050104",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng cao: suy luận chuỗi vật nhiễm điện và phát hiện giải thích sai: Nhiễm điện do cọ xát (SGK Bài 20) — ERP khối 8 chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08050201",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Dòng điện, nguồn điện, vật dẫn và vật cách điện: Dòng điện, nguồn điện, mạch điện (SGK Bài 21–22) — ERP chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08050202",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Kí hiệu và vẽ sơ đồ mạch điện: Dòng điện, nguồn điện, mạch điện (SGK Bài 21–22) — ERP chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08050203",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Mạch nối tiếp và mạch song song: Dòng điện, nguồn điện, mạch điện (SGK Bài 21–22) — ERP chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08050204",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Phân tích và xử lí lỗi mạch điện: Dòng điện, nguồn điện, mạch điện (SGK Bài 21–22) — ERP chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08050205",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng cao: phân tích mạch điện hỗn hợp (nối tiếp kết hợp song song): Dòng điện, nguồn điện, mạch điện (SGK Bài 21–22) — ERP chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08050301",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Các tác dụng của dòng điện: Tác dụng của dòng điện (SGK Bài 23) — ERP chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08050302",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Phân tích thí nghiệm minh hoạ từng tác dụng: Tác dụng của dòng điện (SGK Bài 23) — ERP chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08050303",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng và an toàn điện: Tác dụng của dòng điện (SGK Bài 23) — ERP chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08050304",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng cao: xếp hạng nguy cơ điện giật theo nhiều yếu tố và phát hiện mô tả sai về tác dụng dòng điện: Tác dụng của dòng điện (SGK Bài 23) — ERP chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08050401",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Khái niệm, kí hiệu, đơn vị của I và U: Cường độ dòng điện và hiệu điện thế (SGK Bài 24–25) — ERP chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08050402",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Sử dụng ampe kế và vôn kế: Cường độ dòng điện và hiệu điện thế (SGK Bài 24–25) — ERP chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08050403",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Cường độ dòng điện trong mạch nối tiếp và song song: Cường độ dòng điện và hiệu điện thế (SGK Bài 24–25) — ERP chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08050404",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Hiệu điện thế trong mạch nối tiếp và song song: Cường độ dòng điện và hiệu điện thế (SGK Bài 24–25) — ERP chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08050405",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Bài toán tổng hợp về mạch điện có I và U: Cường độ dòng điện và hiệu điện thế (SGK Bài 24–25) — ERP chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08050406",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng: đo và phân tích I, U trong mạch thực tế: Cường độ dòng điện và hiệu điện thế (SGK Bài 24–25) — ERP chưa có chủ đề Điện."
+    }
+   ]
+  },
+  {
+   "hm": "K08060101",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Năng lượng nhiệt, nội năng và nhiệt độ: Năng lượng nhiệt và nội năng (SGK Bài 26–27) — ERP khối 8 chưa có chủ đề Nhiệt."
+    }
+   ]
+  },
+  {
+   "hm": "K08060102",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Hai cách làm thay đổi nội năng: Năng lượng nhiệt và nội năng (SGK Bài 26–27) — ERP khối 8 chưa có chủ đề Nhiệt."
+    }
+   ]
+  },
+  {
+   "hm": "K08060103",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Đo năng lượng nhiệt bằng joulemeter: Năng lượng nhiệt và nội năng (SGK Bài 26–27) — ERP khối 8 chưa có chủ đề Nhiệt."
+    }
+   ]
+  },
+  {
+   "hm": "K08060104",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng nội năng trong đời sống: Năng lượng nhiệt và nội năng (SGK Bài 26–27) — ERP khối 8 chưa có chủ đề Nhiệt."
+    }
+   ]
+  },
+  {
+   "hm": "K08060105",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng cao: so sánh năng lượng nhiệt qua joulemeter và xác định cách thay đổi nội năng qua nhiều giai đoạn: Năng lượng nhiệt và nội năng (SGK Bài 26–27) — ERP khối 8 chưa có chủ đề Nhiệt."
+    }
+   ]
+  },
+  {
+   "hm": "K08060201",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Ba hình thức truyền nhiệt: Sự truyền nhiệt (SGK Bài 28) — ERP chưa có chủ đề Nhiệt."
+    }
+   ]
+  },
+  {
+   "hm": "K08060202",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "So sánh khả năng dẫn nhiệt của các chất: Sự truyền nhiệt (SGK Bài 28) — ERP chưa có chủ đề Nhiệt."
+    }
+   ]
+  },
+  {
+   "hm": "K08060203",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Phân tích thí nghiệm về truyền nhiệt: Sự truyền nhiệt (SGK Bài 28) — ERP chưa có chủ đề Nhiệt."
+    }
+   ]
+  },
+  {
+   "hm": "K08060204",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng truyền nhiệt trong đời sống và kĩ thuật: Sự truyền nhiệt (SGK Bài 28) — ERP chưa có chủ đề Nhiệt."
+    }
+   ]
+  },
+  {
+   "hm": "K08060205",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng cao: phối hợp nhiều hình thức truyền nhiệt trong một thiết bị và xếp hạng dẫn nhiệt từ số liệu thí nghiệm: Sự truyền nhiệt (SGK Bài 28) — ERP chưa có chủ đề Nhiệt."
+    }
+   ]
+  },
+  {
+   "hm": "K08060301",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Quy luật nở vì nhiệt của các chất: Sự nở vì nhiệt (SGK Bài 29) — ERP chưa có chủ đề Nhiệt."
+    }
+   ]
+  },
+  {
+   "hm": "K08060302",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Phân tích thí nghiệm và hiện tượng nở vì nhiệt: Sự nở vì nhiệt (SGK Bài 29) — ERP chưa có chủ đề Nhiệt."
+    }
+   ]
+  },
+  {
+   "hm": "K08060303",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng và phòng tránh tác hại của sự nở vì nhiệt: Sự nở vì nhiệt (SGK Bài 29) — ERP chưa có chủ đề Nhiệt."
+    }
+   ]
+  },
+  {
+   "hm": "K08060304",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "Vận dụng cao: suy luận chiều cong băng kép nóng-lạnh và phát hiện biện pháp phòng tránh sai: Sự nở vì nhiệt (SGK Bài 29) — ERP chưa có chủ đề Nhiệt."
+    }
+   ]
+  }
+ ]
+}

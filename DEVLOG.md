@@ -35331,3 +35331,21 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 
 - (03/10 chiều, Giao diện) **Ráp kit Đơn 14 Kit B (hs-hoc-tap-v2) vào khu Học tập**: `scripts/anime-hoc-tap.mjs` nén 2 nền vũ trụ (ngang/dọc, JPG) + 5 đảo (WebP 768, giữ khung vuông + lề alpha cho sét/hào quang) + đo HỘP PHẦN NHÌN THẤY (alpha>40) ⇒ `skin/styles/rpgHocTap.ts` (sinh). Màn đặt đảo theo TÂM + BỀ RỘNG phần nhìn thấy trong SÂN 16:9 / 9:16 contain (DESIGN.md mục 3), nền phủ cover; đường nối ánh sáng vàng→xanh ngọc bằng SVG (Bézier + glow + chấm sáng chạy), chữ lớp riêng trên mọi đảo. Chỉnh tay: tháp lên (85,30,14), cúp xuống (78,76,21) để chữ không đè pháo hoa; dọc tự xếp lại. **Chuyển cảnh** (Thùy: "tắt cái bụp, ít nhất như world map vào chuyên đề"): bấm đảo ⇒ phóng 2,6× vào tâm đảo + mờ 480ms rồi mới chuyển; màn vào hiện dần; bản đồ lúc tải không bật thẻ "Đang dựng bản đồ…" nữa (nền trơn + chữ mờ hiện dần). **Sửa:** trong khu Học tập, đảo Học theo chủ đề LUÔN mở bản đồ (trước phụ thuộc cờ phieuluu + giaoDien.skin ⇒ Preview cũ ra danh sách dạng). Chạy thật bằng TEST05 (khối 8, localhost): 5 đảo → thế giới Toán (dữ liệu thật) → lục địa → chuyên đề → 4 dạng → màn đấu → trúng đòn + lời giải.
+
+## 2026-10-03 [Kho KHTN] Hạt Mầm → kho: ánh xạ dạng bằng AI (9 file khối 7–9) + NHẬP khối 7, 9 theo 3 làn
+
+- **Ánh xạ:** `chuan-bi-gan.mjs` (đọc DB) dựng đầu vào theo (khối × môn) = dạng ERP + 3 câu mẫu ‖ dạng HM + toàn bộ câu. 9 agent đọc câu → file
+  `scripts/khtn-hatmam/de-xuat/<khối>-<ly|hoa|sinh>.json`: mỗi dạng HM tách nhóm theo câu, làn 🟢 xanh (vào dạng ERP) / 🟡 vàng (dạng mới) /
+  🔴 đỏ (hỏi GV) / ⚪ thieu_cd (ERP chưa có chuyên đề). **Không ghép theo mã/tên** — bản HM khác phiên bản bản đồ (vd HM K070302 = ERP K070303).
+- **Kiểm độc lập** `kiem-de-xuat.mjs` (phủ mỗi câu đúng 1 lần, mã ERP có thật, trường bắt buộc; `--nghi` liệt nhóm xanh khác tên hẳn để đọc tay)
+  + `soi-xanh.mjs` / `_tam/soi-nhom.mjs` đọc tay mẫu: 9/9 sạch, chưa thấy nhóm xanh sai. Tổng 5.709 câu: 🟢 3.217 · 🟡 409 · 🔴 156 · ⚪ 1.927
+  (⚪ dồn ở khối 8: 1.516 — ERP khối 8 thiếu gần hết chuyên đề Lý/Hoá/Sinh; 7-Sinh thiếu Bài 28–42; 9 thiếu Dịch mã, Kính lúp).
+- **Nhập** `nhap.mjs` (chạy thử rollback trước, rồi `--ghi`): câu qua `_kho_insert.mjs` (da_duyet=false, nguon `hat_mam`, ten_de_goc `Hạt Mầm · <mã HM>`,
+  lời giải + "Vì sao các phương án khác sai"), `muc_cau` = mức HM, ảnh → Storage `kho-anh/hat_mam/k<khối>/`, 🟡/🔴 ⇒ câu ở dạng chờ + `khtn_de_xuat`.
+  - Khối 7: 1.069 câu (907 vào dạng · 162 dạng chờ) · 25 đề xuất · 339 ảnh. Kiểm lại DB (`kiem-sau-nhap.mjs`): khớp, ảnh tải 200.
+  - **Sai:** khối 7 nhập trước khi gộp ⇒ nhóm vàng CÙNG (chuyên đề, tên) — agent cố ý đặt trùng để gom — thành **11 thẻ cho 5 dạng**. Đã sửa
+    nhap.mjs gộp theo (chuyên đề, tên) cho các khối sau; 6 thẻ thừa của khối 7 CHƯA dọn (xoá phải hỏi Thùy).
+  - Sửa: gán `muc_cau` 1 lệnh unnest (từng câu ⇒ >5 phút) · chặn nhập đè theo TỪNG CÂU thay vì cả lô (để lượt sau nhập được phần ⚪).
+  - Khối 9 (đã ghi): 2.150 câu (1.854 vào dạng · 296 dạng chờ) · 38 đề xuất (23 dạng mới sau gộp + 15 hỏi) · 224 ảnh. Kiểm DB khớp, 0 thẻ trùng tên,
+    `fn_khtn_de_xuat_ds` trả thẻ cho khối 7 và 9.
+- **Treo:** ⚪ 1.927 câu chờ Thùy chốt cách mở chuyên đề · khối 8 · câu GV cần soát (đề lỗi agent nêu trong `ly_do` các thẻ đỏ).

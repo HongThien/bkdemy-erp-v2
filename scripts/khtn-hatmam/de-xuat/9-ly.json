@@ -1,0 +1,1587 @@
+{
+ "khoi": "9",
+ "mon": "Vật lí",
+ "chuyen_de": [
+  {
+   "hm": "K090101",
+   "erp": "K090101",
+   "ly_do": "cùng nội dung Động năng (Bài 2)"
+  },
+  {
+   "hm": "K090102",
+   "erp": "K090102",
+   "ly_do": "cùng nội dung Thế năng (Bài 2)"
+  },
+  {
+   "hm": "K090103",
+   "erp": "K090103",
+   "ly_do": "cùng nội dung Cơ năng (Bài 3)"
+  },
+  {
+   "hm": "K090104",
+   "erp": "K090104",
+   "ly_do": "cùng nội dung Công và công suất (Bài 4); ERP có thêm máy cơ đơn giản"
+  },
+  {
+   "hm": "K090201",
+   "erp": "K090201",
+   "ly_do": "cùng nội dung Khúc xạ ánh sáng (Bài 5)"
+  },
+  {
+   "hm": "K090202",
+   "erp": "K090202",
+   "ly_do": "cùng nội dung Phản xạ toàn phần (Bài 6)"
+  },
+  {
+   "hm": "K090203",
+   "erp": "K090203",
+   "ly_do": "cùng Lăng kính (Bài 7); phần màu sắc của vật ERP chưa có dạng"
+  },
+  {
+   "hm": "K090204",
+   "erp": "K090204",
+   "ly_do": "cùng Thấu kính (Bài 8, 9)"
+  },
+  {
+   "hm": "K090205",
+   "erp": null,
+   "ly_do": "ERP chưa có chuyên đề Kính lúp (Bài 10); phần tính ảnh qua kính lúp dùng y công thức thấu kính nên gắn được vào K09020405, phần cấu tạo/số bội giác thì thiếu"
+  },
+  {
+   "hm": "K090301",
+   "erp": "K090301",
+   "ly_do": "cùng Điện trở, định luật Ohm (Bài 11)"
+  },
+  {
+   "hm": "K090302",
+   "erp": "K090302",
+   "ly_do": "cùng Đoạn mạch nối tiếp, song song (Bài 12)"
+  },
+  {
+   "hm": "K090303",
+   "erp": "K090303",
+   "ly_do": "cùng Năng lượng của dòng điện và công suất điện (Bài 13)"
+  },
+  {
+   "hm": "K090401",
+   "erp": "K090401",
+   "ly_do": "cùng Cảm ứng điện từ, dòng điện xoay chiều (Bài 14)"
+  },
+  {
+   "hm": "K090402",
+   "erp": "K090401",
+   "ly_do": "ERP gộp Bài 14 + Bài 15 vào một chuyên đề \"Cảm ứng điện từ & dòng điện xoay chiều\"; tác dụng của DĐXC rơi vào dạng cơ bản / ứng dụng thực tế của chuyên đề này"
+  },
+  {
+   "hm": "K090501",
+   "erp": "K090501",
+   "ly_do": "cùng Năng lượng với cuộc sống (Bài 16, 17)"
+  }
+ ],
+ "dang": [
+  {
+   "hm": "K09010101",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09010101",
+     "ly_do": "lý thuyết khái niệm, yếu tố ảnh hưởng, nhận biết vật có động năng — khớp câu mẫu ERP"
+    }
+   ]
+  },
+  {
+   "hm": "K09010102",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010102-01-001",
+      "K09L010102-01-002",
+      "K09L010102-01-003",
+      "K09L010102-01-004",
+      "K09L010102-04-001",
+      "K09L010102-04-002",
+      "K09L010102-04-003",
+      "K09L010102-04-004",
+      "K09L010102-04-005"
+     ],
+     "erp_dang": "K09010102",
+     "ly_do": "tính Wđ = ½mv² khi biết m, v (kể cả đổi g→kg, km/h→m/s như câu mẫu \"1 tạ\", \"4 000 gam\")"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010102-02-001",
+      "K09L010102-02-002",
+      "K09L010102-02-003",
+      "K09L010102-02-004",
+      "K09L010102-03-001",
+      "K09L010102-03-002",
+      "K09L010102-03-003",
+      "K09L010102-03-004",
+      "K09L010102-03-005"
+     ],
+     "erp_dang": "K09010103",
+     "ly_do": "bài ngược: biết Wđ tìm m hoặc v — ERP tách riêng dạng này"
+    }
+   ]
+  },
+  {
+   "hm": "K09010103",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09010104",
+     "ly_do": "KHÁC MÃ: so sánh tỉ lệ động năng khi m, v đổi k lần — khớp câu mẫu \"khối lượng gấp 6 lần, tốc độ gấp 2 lần\""
+    }
+   ]
+  },
+  {
+   "hm": "K09010104",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09010106",
+     "ly_do": "KHÁC MÃ: giải thích ứng dụng thực tế (an toàn giao thông, túi khí, búa máy) — khớp câu mẫu ERP"
+    }
+   ]
+  },
+  {
+   "hm": "K09010105",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010105-01-001",
+      "K09L010105-01-002",
+      "K09L010105-01-003",
+      "K09L010105-01-004",
+      "K09L010105-01-005"
+     ],
+     "erp_dang": "K09010102",
+     "ly_do": "một vật, đổi tấn/km/h rồi áp ½mv² — cùng phương pháp dạng tính Wđ (ERP cũng đặt câu đổi đơn vị vào đây), chỉ số to hơn"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010105-01-006",
+      "K09L010105-01-007",
+      "K09L010105-01-008",
+      "K09L010105-02-001",
+      "K09L010105-02-002",
+      "K09L010105-02-003",
+      "K09L010105-02-004",
+      "K09L010105-02-005",
+      "K09L010105-02-006",
+      "K09L010105-02-007"
+     ],
+     "erp_dang": "K09010107",
+     "ly_do": "tính Wđ hai trạng thái/hai vật rồi so sánh (hiệu hoặc tỉ số) — khớp câu mẫu \"A lớn hơn B bao nhiêu jun\", lời giải HM tính từng Wđ chứ không suy tỉ lệ"
+    }
+   ]
+  },
+  {
+   "hm": "K09010201",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09010201",
+     "ly_do": "lý thuyết thế năng trọng trường, mốc thế năng, thế năng đàn hồi"
+    }
+   ]
+  },
+  {
+   "hm": "K09010202",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010202-01-001",
+      "K09L010202-01-002",
+      "K09L010202-01-003",
+      "K09L010202-01-004",
+      "K09L010202-01-005",
+      "K09L010202-01-006",
+      "K09L010202-03-001",
+      "K09L010202-03-002",
+      "K09L010202-03-003",
+      "K09L010202-03-004",
+      "K09L010202-03-005",
+      "K09L010202-03-006"
+     ],
+     "erp_dang": "K09010202",
+     "ly_do": "tính Wt = P·h khi biết m, h; cụm \"đổi mốc\" chỉ thêm bước lấy h so với mốc mới (phép trừ) rồi áp cùng công thức"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010202-02-001",
+      "K09L010202-02-002",
+      "K09L010202-02-003",
+      "K09L010202-02-004",
+      "K09L010202-02-005",
+      "K09L010202-02-006"
+     ],
+     "erp_dang": "K09010203",
+     "ly_do": "bài ngược: biết Wt tìm m hoặc h"
+    }
+   ]
+  },
+  {
+   "hm": "K09010203",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09010204",
+     "ly_do": "KHÁC MÃ: tỉ lệ thế năng khi m, h đổi k lần"
+    }
+   ]
+  },
+  {
+   "hm": "K09010204",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09010206",
+     "ly_do": "KHÁC MÃ: giải thích ứng dụng/an toàn liên quan thế năng — khớp câu mẫu mũ bảo hộ nhà cao tầng"
+    }
+   ]
+  },
+  {
+   "hm": "K09010205",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09010207",
+     "ly_do": "tính thế năng hai vật (có đổi mốc) rồi so sánh — nhiều bước, khớp câu mẫu tổng hợp hai vật A, B của ERP"
+    }
+   ]
+  },
+  {
+   "hm": "K09010301",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09010301",
+     "ly_do": "lý thuyết cơ năng và chiều chuyển hoá Wđ ↔ Wt"
+    }
+   ]
+  },
+  {
+   "hm": "K09010302",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010302-01-001",
+      "K09L010302-01-002",
+      "K09L010302-01-003",
+      "K09L010302-01-004",
+      "K09L010302-01-005",
+      "K09L010302-01-006",
+      "K09L010302-01-007",
+      "K09L010302-01-008",
+      "K09L010302-01-009"
+     ],
+     "erp_dang": "K09010302",
+     "ly_do": "tính W = ½mv² + mgh khi biết m, v, h"
+    },
+    {
+     "lan": "vang",
+     "cau": [
+      "K09L010302-02-001",
+      "K09L010302-02-002",
+      "K09L010302-02-003",
+      "K09L010302-02-004",
+      "K09L010302-02-005",
+      "K09L010302-02-006",
+      "K09L010302-02-007",
+      "K09L010302-02-008",
+      "K09L010302-02-009"
+     ],
+     "erp_chuyen_de": "K090103",
+     "ten": "Tính động năng hoặc thế năng khi biết cơ năng",
+     "mo_ta_ngan": "Cho W và một thành phần (hoặc m, h / m, v để tính thành phần đó) ⇒ tìm thành phần còn lại theo W = Wđ + Wt.",
+     "gan_nhat": "K09010302",
+     "ly_do": "K09010302 chỉ đi xuôi (biết m, v, h ⇒ W); bài ngược W ⇒ thành phần chưa có dạng, trong khi ERP Động năng/Thế năng đều tách xuôi–ngược"
+    }
+   ]
+  },
+  {
+   "hm": "K09010303",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09010303",
+     "ly_do": "bảo toàn cơ năng giữa hai vị trí (rơi tự do chạm đất, ném lên độ cao cực đại, biết trạng thái ở A tìm ở B) — khớp câu mẫu \"4 m/s ở 6 m ⇒ tốc độ ở 1,5 m\""
+    }
+   ]
+  },
+  {
+   "hm": "K09010304",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09010305",
+     "ly_do": "KHÁC MÃ: giải thích chuyển hoá cơ năng trong thực tế (xích đu, thuỷ điện, búa máy)"
+    }
+   ]
+  },
+  {
+   "hm": "K09010305",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010305-01-003",
+      "K09L010305-01-004",
+      "K09L010305-01-005",
+      "K09L010305-01-006",
+      "K09L010305-01-007",
+      "K09L010305-01-008"
+     ],
+     "erp_dang": "K09010303",
+     "ly_do": "bảo toàn giữa hai vị trí (biết h₁, v₁ ⇒ v₂; ném lên ⇒ h max; ném xuống ⇒ v chạm đất) — 004/005/008 gần y câu mẫu ERP"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010305-01-001",
+      "K09L010305-01-002"
+     ],
+     "erp_dang": "K09010304",
+     "ly_do": "tìm đại lượng tại vị trí trung gian trên quỹ đạo tính từ điểm thả/ném — khớp câu mẫu \"thả rơi từ 1100 cm, tốc độ ở 400 cm\""
+    },
+    {
+     "lan": "vang",
+     "cau": [
+      "K09L010305-02-001",
+      "K09L010305-02-002",
+      "K09L010305-02-003",
+      "K09L010305-02-004",
+      "K09L010305-02-005",
+      "K09L010305-02-006",
+      "K09L010305-02-007"
+     ],
+     "erp_chuyen_de": "K090103",
+     "ten": "Tìm vị trí động năng gấp k lần thế năng",
+     "mo_ta_ngan": "Cho cơ năng (từ trạng thái đầu), tìm độ cao nơi Wđ = k·Wt (hoặc Wt = k·Wđ) bằng W = (k + 1)·Wt.",
+     "gan_nhat": "K09010304",
+     "ly_do": "cần thêm bước biểu diễn W = (k+1)·Wt; câu mẫu K09010304 (tỉ số tốc độ, tốc độ tại độ cao cho trước) không có điều kiện Wđ = k·Wt"
+    }
+   ]
+  },
+  {
+   "hm": "K09010401",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09010401",
+     "ly_do": "lý thuyết điều kiện có công, ý nghĩa công suất, đơn vị"
+    }
+   ]
+  },
+  {
+   "hm": "K09010402",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010402-01-001",
+      "K09L010402-01-002",
+      "K09L010402-01-003",
+      "K09L010402-03-001",
+      "K09L010402-03-002",
+      "K09L010402-03-003"
+     ],
+     "erp_dang": "K09010402",
+     "ly_do": "tính A = F·s (nâng vật: A = 10m·h) — khớp câu mẫu \"nâng đều vật 250 g lên 2 m\""
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010402-02-001",
+      "K09L010402-02-002",
+      "K09L010402-02-003"
+     ],
+     "erp_dang": "K09010404",
+     "ly_do": "bài ngược: biết A tìm F hoặc s"
+    }
+   ]
+  },
+  {
+   "hm": "K09010403",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010403-01-001",
+      "K09L010403-01-002",
+      "K09L010403-01-003",
+      "K09L010403-03-002"
+     ],
+     "erp_dang": "K09010405",
+     "ly_do": "tính P = A/t (03-002 đổi phút, ra kW)"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010403-02-001",
+      "K09L010403-02-002",
+      "K09L010403-02-003",
+      "K09L010403-03-001",
+      "K09L010403-03-003"
+     ],
+     "erp_dang": "K09010406",
+     "ly_do": "biết P tìm A hoặc t (có đổi kW, phút)"
+    }
+   ]
+  },
+  {
+   "hm": "K09010404",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010404-01-001",
+      "K09L010404-01-002",
+      "K09L010404-01-003",
+      "K09L010404-01-004",
+      "K09L010404-01-005"
+     ],
+     "erp_dang": "K09010403",
+     "ly_do": "so sánh công suất hai người/máy — khớp câu mẫu \"người nào làm việc khoẻ hơn\""
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010404-02-001",
+      "K09L010404-02-002",
+      "K09L010404-02-003",
+      "K09L010404-02-004",
+      "K09L010404-02-005",
+      "K09L010404-02-006",
+      "K09L010404-03-004"
+     ],
+     "erp_dang": "K09010412",
+     "ly_do": "P = F·v cho vật chuyển động đều (cả chiều ngược tìm F, v); 03-004 chọn động cơ cũng qua P = F·v"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010404-03-001",
+      "K09L010404-03-002",
+      "K09L010404-03-003",
+      "K09L010404-03-005",
+      "K09L010404-03-006"
+     ],
+     "erp_dang": "K09010407",
+     "ly_do": "nâng vật: tính P cần = 10m·h/t rồi chọn máy ≥ P — phần cốt lõi là tính xuôi đa bước khi nâng vật"
+    }
+   ]
+  },
+  {
+   "hm": "K09010405",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010405-01-001",
+      "K09L010405-01-002",
+      "K09L010405-01-003",
+      "K09L010405-01-004",
+      "K09L010405-01-005",
+      "K09L010405-01-006",
+      "K09L010405-01-007",
+      "K09L010405-01-008"
+     ],
+     "erp_dang": "K09010411",
+     "ly_do": "hiệu suất máy cơ đơn giản H = Ai/Atp (cả chiều ngược tìm Atp, F) — dạng ERP chưa có câu"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010405-02-001"
+     ],
+     "erp_dang": "K09010407",
+     "ly_do": "nâng vật (tấn, phút) ⇒ công suất — khớp câu mẫu \"cần cẩu nâng 2 tấn lên 9 m trong 1,5 phút\""
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L010405-02-002",
+      "K09L010405-02-003",
+      "K09L010405-02-006"
+     ],
+     "erp_dang": "K09010408",
+     "ly_do": "bài ngược: từ P suy m hoặc t khi nâng vật"
+    }
+   ]
+  },
+  {
+   "hm": "K09020101",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09020101",
+     "ly_do": "lý thuyết hiện tượng khúc xạ, các yếu tố trên hình, ý nghĩa chiết suất"
+    }
+   ]
+  },
+  {
+   "hm": "K09020102",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09020110",
+     "ly_do": "KHÁC MÃ: quan hệ n = c/v (tính n, tính v, tỉ số tốc độ hai môi trường)"
+    }
+   ]
+  },
+  {
+   "hm": "K09020103",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L020103-01-001",
+      "K09L020103-01-002",
+      "K09L020103-01-003"
+     ],
+     "erp_dang": "K09020108",
+     "ly_do": "KHÁC MÃ: biết góc tới + chiết suất ⇒ góc khúc xạ (n₁sin i = n₂sin r)"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L020103-02-001",
+      "K09L020103-02-002",
+      "K09L020103-02-003"
+     ],
+     "erp_dang": "K09020109",
+     "ly_do": "biết góc khúc xạ + chiết suất ⇒ góc tới"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L020103-03-001",
+      "K09L020103-03-002",
+      "K09L020103-03-003"
+     ],
+     "erp_dang": "K09020104",
+     "ly_do": "KHÁC MÃ: biết hai góc ⇒ chiết suất"
+    }
+   ]
+  },
+  {
+   "hm": "K09020104",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L020104-01-001",
+      "K09L020104-01-002",
+      "K09L020104-01-003",
+      "K09L020104-01-004",
+      "K09L020104-01-005",
+      "K09L020104-01-006",
+      "K09L020104-02-001",
+      "K09L020104-02-002",
+      "K09L020104-02-003",
+      "K09L020104-02-004",
+      "K09L020104-02-005"
+     ],
+     "erp_dang": "K09020107",
+     "ly_do": "KHÁC MÃ: so sánh chiết quang hai môi trường để biết tia khúc xạ lệch gần/xa pháp tuyến"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L020104-03-002",
+      "K09L020104-03-003",
+      "K09L020104-03-004",
+      "K09L020104-03-005",
+      "K09L020104-03-006"
+     ],
+     "erp_dang": "K09020106",
+     "ly_do": "KHÁC MÃ: giải thích hiện tượng thực tế (đũa gãy, cá, đồng xu) — câu mẫu ERP có \"nhìn vuông góc xuống viên sỏi\""
+    }
+   ]
+  },
+  {
+   "hm": "K09020105",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L020105-01-003",
+      "K09L020105-01-004",
+      "K09L020105-01-005",
+      "K09L020105-01-007"
+     ],
+     "erp_dang": "K09020105",
+     "ly_do": "nhiều lớp mặt song song: n₁sinθ₁ = n₃sinθ₃ — khớp câu mẫu ERP"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L020105-02-001",
+      "K09L020105-02-002",
+      "K09L020105-02-003",
+      "K09L020105-02-004",
+      "K09L020105-02-005",
+      "K09L020105-02-006",
+      "K09L020105-02-007",
+      "K09L020105-02-008"
+     ],
+     "erp_dang": "K09020106",
+     "ly_do": "KHÁC MÃ: độ sâu biểu kiến h/n — khớp câu mẫu \"chậu sâu 100 cm thấy 80 cm\""
+    }
+   ]
+  },
+  {
+   "hm": "K09020201",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09020201",
+     "ly_do": "lý thuyết nhận biết và hai điều kiện phản xạ toàn phần"
+    }
+   ]
+  },
+  {
+   "hm": "K09020202",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09020202",
+     "ly_do": "sin igh = n₂/n₁ (cả chiều ngược tìm n) — câu mẫu ERP cũng có chiều ngược"
+    }
+   ]
+  },
+  {
+   "hm": "K09020203",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09020203",
+     "ly_do": "so sánh góc tới với igh để kết luận có phản xạ toàn phần"
+    }
+   ]
+  },
+  {
+   "hm": "K09020204",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09020204",
+     "ly_do": "ứng dụng: sợi quang, ảo ảnh, kim cương"
+    }
+   ]
+  },
+  {
+   "hm": "K09020205",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09020203",
+     "ly_do": "tính igh từ hai chiết suất rồi so với góc tới (và xét chiều truyền trong sợi quang) — đúng phương pháp và câu mẫu K09020203; K09020205 \"nâng cao\" chưa có câu, không có lý do tách"
+    }
+   ]
+  },
+  {
+   "hm": "K09020301",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09020301",
+     "ly_do": "lý thuyết cấu tạo lăng kính, tán sắc ánh sáng trắng"
+    }
+   ]
+  },
+  {
+   "hm": "K09020302",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L020302-01-001",
+      "K09L020302-01-002",
+      "K09L020302-01-003",
+      "K09L020302-01-004"
+     ],
+     "erp_dang": "K09020303",
+     "ly_do": "KHÁC MÃ: đường đi tia đơn sắc qua lăng kính (khúc xạ 2 lần, lệch về đáy)"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L020302-02-001",
+      "K09L020302-02-002",
+      "K09L020302-02-003",
+      "K09L020302-02-004"
+     ],
+     "erp_dang": "K09020302",
+     "ly_do": "so sánh góc lệch các tia màu (đỏ ít nhất, tím nhiều nhất)"
+    }
+   ]
+  },
+  {
+   "hm": "K09020303",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": "*",
+     "erp_chuyen_de": "K090203",
+     "ten": "Màu sắc của vật dưới ánh sáng trắng và ánh sáng màu",
+     "mo_ta_ngan": "Xác định/giải thích màu nhìn thấy của vật dựa vào ánh sáng màu nào vật phản xạ, màu nào bị hấp thụ.",
+     "gan_nhat": null,
+     "ly_do": "chuyên đề Lăng kính (Bài 7) có mục màu sắc của vật nhưng 5 dạng ERP chỉ nói lăng kính/tán sắc; cơ chế phản xạ–hấp thụ màu là kiến thức khác, không gộp vào K09020301"
+    }
+   ]
+  },
+  {
+   "hm": "K09020304",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L020304-01-002",
+      "K09L020304-01-003",
+      "K09L020304-01-004",
+      "K09L020304-01-005",
+      "K09L020304-01-006",
+      "K09L020304-01-007",
+      "K09L020304-01-008",
+      "K09L020304-01-009"
+     ],
+     "erp_dang": "K09020304",
+     "ly_do": "cầu vồng, giọt sương, kim cương — hiện tượng tán sắc trong thực tế"
+    },
+    {
+     "lan": "vang",
+     "cau": [
+      "K09L020304-02-001",
+      "K09L020304-02-002",
+      "K09L020304-02-003",
+      "K09L020304-02-004",
+      "K09L020304-02-005",
+      "K09L020304-02-006",
+      "K09L020304-02-007",
+      "K09L020304-02-008",
+      "K09L020304-02-009"
+     ],
+     "erp_chuyen_de": "K090203",
+     "ten": "Màu sắc của vật dưới ánh sáng trắng và ánh sáng màu",
+     "mo_ta_ngan": "Xác định/giải thích màu nhìn thấy của vật dựa vào ánh sáng màu nào vật phản xạ, màu nào bị hấp thụ.",
+     "gan_nhat": null,
+     "ly_do": "giải thích chọn màu áo, biển báo, kính râm… đều dựa vào vật phản xạ/hấp thụ màu nào; không phải ứng dụng của lăng kính nên không vào K09020304"
+    }
+   ]
+  },
+  {
+   "hm": "K09020305",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": [
+      "K09L020305-01-001",
+      "K09L020305-01-002",
+      "K09L020305-01-003",
+      "K09L020305-01-004",
+      "K09L020305-01-005",
+      "K09L020305-01-006",
+      "K09L020305-01-007",
+      "K09L020305-01-008"
+     ],
+     "erp_chuyen_de": "K090203",
+     "ten": "Màu của vật khi ánh sáng qua tấm lọc màu",
+     "mo_ta_ngan": "Ánh sáng trắng qua tấm lọc màu rồi chiếu vào vật màu: tìm màu ló khỏi tấm lọc trước, rồi xét vật có phản xạ màu đó không.",
+     "gan_nhat": null,
+     "ly_do": "thêm kiến thức tấm lọc màu (bước 1) trước khi xét màu vật (bước 2); nếu GV muốn gộp với dạng \"Màu sắc của vật\" thì xếp làm mức vận dụng của dạng đó"
+    },
+    {
+     "lan": "do",
+     "cau": [
+      "K09L020305-02-001",
+      "K09L020305-02-002",
+      "K09L020305-02-003",
+      "K09L020305-02-004",
+      "K09L020305-02-005",
+      "K09L020305-02-006",
+      "K09L020305-02-007"
+     ],
+     "erp_chuyen_de": "K090203",
+     "ly_do": "Các câu \"tìm giải thích SAI\" trộn tán sắc (K09020301/K09020302/K09020303/K09020304) với màu sắc vật (dạng mới đề xuất) — xếp mỗi câu theo phương án sai của nó (vd 02-001 → K09020302, 02-005 → dạng màu sắc), hay gom cả cụm vào K09020301 \"cơ bản\"?"
+    }
+   ]
+  },
+  {
+   "hm": "K09020401",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09020401",
+     "ly_do": "lý thuyết phân loại thấu kính, tiêu điểm, ba tia đặc biệt"
+    }
+   ]
+  },
+  {
+   "hm": "K09020402",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09020402",
+     "ly_do": "KHÁC NỘI DUNG TÊN: tên HM là \"dựng ảnh\" nhưng lời giải là biện luận d so với f, 2f (và chiều ngược: từ tính chất ảnh suy loại thấu kính), không vẽ hình ⇒ không vào K09020403"
+    }
+   ]
+  },
+  {
+   "hm": "K09020403",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09020402",
+     "ly_do": "KHÁC MÃ: biện luận tính chất ảnh theo vị trí vật d so với f, 2f"
+    }
+   ]
+  },
+  {
+   "hm": "K09020404",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L020404-02-001",
+      "K09L020404-02-002",
+      "K09L020404-02-003",
+      "K09L020404-02-004"
+     ],
+     "erp_dang": "K09020405",
+     "ly_do": "tính h′ bằng h′/h = d′/d (tam giác đồng dạng)"
+    },
+    {
+     "lan": "vang",
+     "cau": [
+      "K09L020404-01-001",
+      "K09L020404-01-002",
+      "K09L020404-01-003",
+      "K09L020404-01-004",
+      "K09L020404-03-001",
+      "K09L020404-03-002",
+      "K09L020404-03-003",
+      "K09L020404-03-004",
+      "K09L020404-03-005",
+      "K09L020404-04-002",
+      "K09L020404-04-003",
+      "K09L020404-04-004",
+      "K09L020404-04-005"
+     ],
+     "erp_chuyen_de": "K090204",
+     "ten": "Vận dụng trường hợp ảnh thật bằng vật (d = d′ = 2f), đo tiêu cự",
+     "mo_ta_ngan": "Đề cho ảnh thật bằng vật hoặc d = 2f, hoặc khoảng cách vật–ảnh L trong thí nghiệm đo tiêu cự ⇒ suy d′, f bằng d = d′ = 2f, L = 4f.",
+     "gan_nhat": "K09020405",
+     "ly_do": "không dùng tam giác đồng dạng mà áp thẳng tính chất d = d′ = 2f (đo tiêu cự, Bài 9 thực hành); có thể gộp vào K09020405 nếu GV coi là trường hợp riêng"
+    }
+   ]
+  },
+  {
+   "hm": "K09020405",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L020405-01-001",
+      "K09L020405-01-002",
+      "K09L020405-01-003",
+      "K09L020405-01-004",
+      "K09L020405-01-006",
+      "K09L020405-01-007"
+     ],
+     "erp_dang": "K09020405",
+     "ly_do": "biết L = d + d′ và d′ = k·d ⇒ tìm d — dùng tỉ lệ đồng dạng"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L020405-02-001",
+      "K09L020405-02-002",
+      "K09L020405-02-003",
+      "K09L020405-02-004",
+      "K09L020405-02-007"
+     ],
+     "erp_dang": "K09020406",
+     "ly_do": "dời vật/thấu kính qua các mốc f, 2f ⇒ ảnh đổi thế nào"
+    }
+   ]
+  },
+  {
+   "hm": "K09020501",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "cấu tạo, công dụng, cách quan sát qua kính lúp (Bài 10) — ERP Quang học chưa có chuyên đề Kính lúp; nên thêm chuyên đề Kính lúp trong chủ đề Quang học (hoặc dạng mới trong K090204 Thấu kính)"
+    }
+   ]
+  },
+  {
+   "hm": "K09020502",
+   "nhom": [
+    {
+     "lan": "thieu_cd",
+     "cau": "*",
+     "erp_chuyen_de": null,
+     "ly_do": "số bội giác G = 25/f (tính G, tính f, so sánh hai kính) — công thức riêng của kính lúp, không dạng/chuyên đề ERP nào có; nên nằm ở chuyên đề Kính lúp mới thuộc chủ đề Quang học"
+    }
+   ]
+  },
+  {
+   "hm": "K09020503",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09020405",
+     "ly_do": "ERP thiếu chuyên đề Kính lúp nhưng lời giải chỉ dùng h′/h = d′/d (tam giác đồng dạng của thấu kính hội tụ, vật trong tiêu cự) — đúng phương pháp K09020405"
+    }
+   ]
+  },
+  {
+   "hm": "K09020504",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09020405",
+     "ly_do": "bước G ⇒ f chỉ để xác nhận vật trong tiêu cự; phần tính/so sánh chiều cao ảnh dùng h′ = h·d′/d — phương pháp K09020405"
+    }
+   ]
+  },
+  {
+   "hm": "K09030101",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09030101",
+     "ly_do": "lý thuyết ý nghĩa, đơn vị điện trở và sự phụ thuộc vào l, S, ρ"
+    }
+   ]
+  },
+  {
+   "hm": "K09030102",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09030102",
+     "ly_do": "tính U, I, R theo I = U/R (có đổi kΩ, mA)"
+    }
+   ]
+  },
+  {
+   "hm": "K09030103",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09030103",
+     "ly_do": "tính R, ρ, l, S theo R = ρl/S (có đổi mm², đường kính)"
+    }
+   ]
+  },
+  {
+   "hm": "K09030104",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09030104",
+     "ly_do": "đọc đồ thị I–U suy R, so sánh điện trở hai vật dẫn"
+    }
+   ]
+  },
+  {
+   "hm": "K09030105",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L030105-01-002",
+      "K09L030105-01-004",
+      "K09L030105-03-001",
+      "K09L030105-03-002",
+      "K09L030105-03-003",
+      "K09L030105-03-004"
+     ],
+     "erp_dang": "K09030107",
+     "ly_do": "cắt ngắn dây, kéo dài/gập dây giữ thể tích ⇒ tỉ lệ R theo l và S — đúng bài toán cắt – ghép dây"
+    },
+    {
+     "lan": "do",
+     "cau": [
+      "K09L030105-01-001",
+      "K09L030105-01-003"
+     ],
+     "erp_chuyen_de": "K090301",
+     "ly_do": "Câu ghi \"kéo dài dây thêm gấp 3 (5) lần, giữ nguyên tiết diện\" — kéo dài thật thì tiết diện giảm (giữ thể tích), và \"thêm gấp 3 lần\" dễ hiểu thành dài gấp 4; có sửa đề thành \"thay bằng dây cùng loại dài gấp 3 lần\" rồi xếp K09030107 không?"
+    },
+    {
+     "lan": "do",
+     "cau": [
+      "K09L030105-02-001",
+      "K09L030105-02-002",
+      "K09L030105-02-003",
+      "K09L030105-02-004"
+     ],
+     "erp_chuyen_de": "K090301",
+     "ly_do": "Thay bằng dây cùng l, cùng vật liệu nhưng tiết diện/đường kính gấp k lần (R ∝ 1/S, S ∝ d²) — xếp K09030103 (tính R, ρ, l, S) hay K09030107 (cắt – ghép dây), hay lập dạng \"tỉ lệ điện trở khi đổi l, S\"?"
+    }
+   ]
+  },
+  {
+   "hm": "K09030106",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09030105",
+     "ly_do": "KHÁC MÃ: kết hợp R = U/I (hoặc đọc đồ thị I–U) với R = ρl/S để suy l hoặc tỉ số S"
+    }
+   ]
+  },
+  {
+   "hm": "K09030201",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09030201",
+     "ly_do": "lý thuyết đặc điểm I, U, Rtđ trong mạch nối tiếp/song song"
+    }
+   ]
+  },
+  {
+   "hm": "K09030202",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09030203",
+     "ly_do": "KHÁC MÃ: tính Rtđ khi biết các R thành phần (bài xuôi)"
+    }
+   ]
+  },
+  {
+   "hm": "K09030203",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L030203-01-001",
+      "K09L030203-01-002",
+      "K09L030203-01-003",
+      "K09L030203-02-001",
+      "K09L030203-02-002",
+      "K09L030203-02-003"
+     ],
+     "erp_dang": "K09030203",
+     "ly_do": "biết R thành phần và U hoặc I ⇒ tính I, U từng điện trở (bài xuôi)"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L030203-03-001",
+      "K09L030203-03-002",
+      "K09L030203-03-003",
+      "K09L030203-03-004"
+     ],
+     "erp_dang": "K09030204",
+     "ly_do": "biết U, I mạch chính và R₁ ⇒ tìm R₂ (bài ngược)"
+    }
+   ]
+  },
+  {
+   "hm": "K09030204",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09030205",
+     "ly_do": "KHÁC MÃ: mạch hỗn hợp R₁ nt (R₂//R₃), (R₁ nt R₂)//R₃"
+    }
+   ]
+  },
+  {
+   "hm": "K09030205",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L030205-01-001",
+      "K09L030205-01-002",
+      "K09L030205-01-003",
+      "K09L030205-01-004",
+      "K09L030205-01-007"
+     ],
+     "erp_dang": "K09030205",
+     "ly_do": "mạch hỗn hợp có khoá K: tính lại Rtđ, I khi đóng/mở"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L030205-02-001",
+      "K09L030205-02-002",
+      "K09L030205-02-006"
+     ],
+     "erp_dang": "K09030204",
+     "ly_do": "đèn nối tiếp biến trở: tìm Rb để đèn sáng định mức = tìm R thành phần chưa biết"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L030205-02-004",
+      "K09L030205-02-007"
+     ],
+     "erp_dang": "K09030203",
+     "ly_do": "biết Rđ (từ U–I định mức) và Rb ⇒ tính I mạch nối tiếp (bài xuôi)"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L030205-02-003"
+     ],
+     "erp_dang": "K09030106",
+     "ly_do": "biện luận độ sáng đèn khi tăng biến trở — đúng tên dạng ERP"
+    }
+   ]
+  },
+  {
+   "hm": "K09030301",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09030301",
+     "ly_do": "lý thuyết ý nghĩa số ghi định mức, đơn vị kWh ↔ J"
+    }
+   ]
+  },
+  {
+   "hm": "K09030302",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": [
+      "K09L030302-01-001",
+      "K09L030302-01-002",
+      "K09L030302-01-003",
+      "K09L030302-01-004",
+      "K09L030302-01-005",
+      "K09L030302-01-006",
+      "K09L030302-02-001",
+      "K09L030302-02-002",
+      "K09L030302-02-003",
+      "K09L030302-02-004",
+      "K09L030302-02-005",
+      "K09L030302-02-006"
+     ],
+     "erp_chuyen_de": "K090303",
+     "ten": "Tính công suất điện khi biết U, I hoặc R",
+     "mo_ta_ngan": "Cho U và I (hoặc I và R, U và R) của một dụng cụ ⇒ tính P = U·I = I²R = U²/R.",
+     "gan_nhat": "K09030303",
+     "ly_do": "K09030303 đi từ số ghi định mức tìm R, I; ở đây tính P xuôi từ U, I, R thực tế; K09030301 là lý thuyết — ERP các chuyên đề khác đều có dạng tính toán riêng cho công thức chính"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L030302-03-001",
+      "K09L030302-03-002",
+      "K09L030302-03-003",
+      "K09L030302-03-004",
+      "K09L030302-03-005",
+      "K09L030302-03-006"
+     ],
+     "erp_dang": "K09030303",
+     "ly_do": "từ số ghi \"220V – P\" tính I hoặc R định mức"
+    }
+   ]
+  },
+  {
+   "hm": "K09030303",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09030304",
+     "ly_do": "KHÁC MÃ: điện năng A = P·t (kWh), nhiều thiết bị, số công tơ và tiền điện"
+    }
+   ]
+  },
+  {
+   "hm": "K09030304",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L030304-01-001",
+      "K09L030304-01-002",
+      "K09L030304-01-003",
+      "K09L030304-01-004"
+     ],
+     "erp_dang": "K09030304",
+     "ly_do": "so sánh/tính điện năng tiết kiệm khi thay đèn LED bằng A = P·t"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L030304-02-003",
+      "K09L030304-02-004"
+     ],
+     "erp_dang": "K09030301",
+     "ly_do": "lý thuyết biện pháp sử dụng điện tiết kiệm, an toàn"
+    }
+   ]
+  },
+  {
+   "hm": "K09030305",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09030307",
+     "ly_do": "so sánh U, P thực tế với định mức để biết đèn sáng bình thường, và so sánh độ sáng hai đèn nối tiếp/song song bằng P = U·I"
+    }
+   ]
+  },
+  {
+   "hm": "K09040101",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09040101",
+     "ly_do": "lý thuyết nhận biết hiện tượng cảm ứng điện từ và điều kiện xuất hiện dòng cảm ứng"
+    }
+   ]
+  },
+  {
+   "hm": "K09040102",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": "*",
+     "erp_chuyen_de": "K090401",
+     "ten": "Xác định khi nào xuất hiện dòng điện cảm ứng",
+     "mo_ta_ngan": "Cho các thao tác với nam châm/cuộn dây/nam châm điện (đưa lại gần, giữ yên, rút ra, đóng ngắt khoá) ⇒ xét số đường sức từ qua cuộn dây có biến thiên không để biết lúc nào có dòng cảm ứng.",
+     "gan_nhat": "K09040101",
+     "ly_do": "K09040101 là lý thuyết khái niệm; ở đây phải áp điều kiện \"số đường sức từ biến thiên\" vào từng giai đoạn thao tác — kĩ năng phân tích riêng, ERP chưa có dạng"
+    }
+   ]
+  },
+  {
+   "hm": "K09040103",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09040101",
+     "ly_do": "lý thuyết khái niệm dòng điện xoay chiều, cấu tạo – nguyên tắc máy phát điện"
+    }
+   ]
+  },
+  {
+   "hm": "K09040104",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": [
+      "K09L040104-01-001",
+      "K09L040104-01-002",
+      "K09L040104-01-003",
+      "K09L040104-01-004",
+      "K09L040104-01-005",
+      "K09L040104-01-006",
+      "K09L040104-01-007",
+      "K09L040104-01-008",
+      "K09L040104-01-009"
+     ],
+     "erp_chuyen_de": "K090401",
+     "ten": "Xác định khi nào xuất hiện dòng điện cảm ứng",
+     "mo_ta_ngan": "Cho các thao tác với nam châm/cuộn dây/nam châm điện (đưa lại gần, giữ yên, rút ra, đóng ngắt khoá) ⇒ xét số đường sức từ qua cuộn dây có biến thiên không để biết lúc nào có dòng cảm ứng.",
+     "gan_nhat": "K09040101",
+     "ly_do": "cùng phương pháp với dạng HM K09040102 (giai đoạn nào có dòng cảm ứng), chỉ nhiều giai đoạn hơn"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L040104-02-001",
+      "K09L040104-02-002",
+      "K09L040104-02-003",
+      "K09L040104-02-004",
+      "K09L040104-02-005",
+      "K09L040104-02-006",
+      "K09L040104-02-007",
+      "K09L040104-02-008",
+      "K09L040104-02-009"
+     ],
+     "erp_dang": "K09040102",
+     "ly_do": "giải thích dòng cảm ứng đổi chiều khi số đường sức từ chuyển từ tăng sang giảm"
+    }
+   ]
+  },
+  {
+   "hm": "K09040105",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09040102",
+     "ly_do": "xác định đèn LED nào sáng qua 4 giai đoạn = xác định chiều dòng cảm ứng đổi theo tăng/giảm đường sức từ"
+    }
+   ]
+  },
+  {
+   "hm": "K09040201",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L040201-01-002",
+      "K09L040201-01-003",
+      "K09L040201-01-004",
+      "K09L040201-01-005",
+      "K09L040201-01-006",
+      "K09L040201-01-007"
+     ],
+     "erp_dang": "K09040101",
+     "ly_do": "nhận biết tên tác dụng của DĐXC qua hiện tượng — lý thuyết cơ bản"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L040201-02-001",
+      "K09L040201-02-002",
+      "K09L040201-02-003",
+      "K09L040201-02-004",
+      "K09L040201-02-005",
+      "K09L040201-02-006",
+      "K09L040201-02-007"
+     ],
+     "erp_dang": "K09040103",
+     "ly_do": "ghép thiết bị thực tế với tác dụng được dùng — ứng dụng thực tế của DĐXC"
+    }
+   ]
+  },
+  {
+   "hm": "K09040202",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L040202-01-001",
+      "K09L040202-01-002",
+      "K09L040202-01-003",
+      "K09L040202-01-004",
+      "K09L040202-01-007",
+      "K09L040202-01-008"
+     ],
+     "erp_dang": "K09040101",
+     "ly_do": "phân biệt DĐXC – một chiều theo nguồn, kí hiệu AC trên dụng cụ đo — lý thuyết cơ bản"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L040202-02-001",
+      "K09L040202-02-002",
+      "K09L040202-02-003",
+      "K09L040202-02-004",
+      "K09L040202-02-007",
+      "K09L040202-02-008",
+      "K09L040202-02-009"
+     ],
+     "erp_dang": "K09040102",
+     "ly_do": "nhận biết DĐXC qua kim nam châm dao động, đèn sáng đều dù đổi chiều 100 lần/s — giải thích hiện tượng do dòng đổi chiều"
+    }
+   ]
+  },
+  {
+   "hm": "K09040203",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": "*",
+     "erp_chuyen_de": "K090401",
+     "ten": "An toàn khi sử dụng điện xoay chiều và xử lí khi bị điện giật",
+     "mo_ta_ngan": "Tình huống rò điện, dây hở, quá tải, có người bị điện giật ⇒ chọn biện pháp phòng tránh / thứ tự xử lí đúng.",
+     "gan_nhat": "K09040103",
+     "ly_do": "K09040103 là ứng dụng của tác dụng DĐXC trong thiết bị; an toàn điện/xử lí điện giật là kĩ năng tình huống khác, ERP chưa có dạng"
+    }
+   ]
+  },
+  {
+   "hm": "K09040204",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L040204-01-001",
+      "K09L040204-01-002",
+      "K09L040204-01-003",
+      "K09L040204-01-004",
+      "K09L040204-01-005",
+      "K09L040204-01-006",
+      "K09L040204-01-007",
+      "K09L040204-01-008"
+     ],
+     "erp_dang": "K09040103",
+     "ly_do": "mô tả tác dụng của DĐXC trong thiết bị (nam châm điện AC vẫn hút sắt) — ứng dụng thực tế"
+    },
+    {
+     "lan": "vang",
+     "cau": [
+      "K09L040204-02-001",
+      "K09L040204-02-002",
+      "K09L040204-02-003",
+      "K09L040204-02-004",
+      "K09L040204-02-005",
+      "K09L040204-02-006",
+      "K09L040204-02-007"
+     ],
+     "erp_chuyen_de": "K090401",
+     "ten": "An toàn khi sử dụng điện xoay chiều và xử lí khi bị điện giật",
+     "mo_ta_ngan": "Tình huống rò điện, dây hở, quá tải, có người bị điện giật ⇒ chọn biện pháp phòng tránh / thứ tự xử lí đúng.",
+     "gan_nhat": "K09040103",
+     "ly_do": "cùng nội dung xử lí điện giật như dạng HM K09040203"
+    }
+   ]
+  },
+  {
+   "hm": "K09050101",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09050101",
+     "ly_do": "lý thuyết nguồn gốc năng lượng, sơ đồ chuyển hoá"
+    }
+   ]
+  },
+  {
+   "hm": "K09050102",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09050101",
+     "ly_do": "lý thuyết nhiên liệu hoá thạch và tác động môi trường"
+    }
+   ]
+  },
+  {
+   "hm": "K09050103",
+   "nhom": [
+    {
+     "lan": "xanh",
+     "cau": "*",
+     "erp_dang": "K09050101",
+     "ly_do": "lý thuyết nguyên tắc, ưu nhược điểm năng lượng tái tạo (định tính — không phải K09050103 so sánh chi phí có số liệu)"
+    }
+   ]
+  },
+  {
+   "hm": "K09050104",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": [
+      "K09L050104-01-001",
+      "K09L050104-01-002",
+      "K09L050104-01-003",
+      "K09L050104-01-004",
+      "K09L050104-01-005",
+      "K09L050104-01-006",
+      "K09L050104-01-007",
+      "K09L050104-01-008",
+      "K09L050104-01-009"
+     ],
+     "erp_chuyen_de": "K090501",
+     "ten": "Lựa chọn nguồn năng lượng tái tạo phù hợp điều kiện tự nhiên",
+     "mo_ta_ngan": "Mô tả điều kiện tự nhiên của một vùng (nắng, gió, thác, suối nóng, sóng, sinh khối…) ⇒ chọn nguồn/cách phối hợp nguồn năng lượng tái tạo phù hợp.",
+     "gan_nhat": "K09050101",
+     "ly_do": "phải phân tích điều kiện vùng rồi chọn nguồn — kĩ năng vận dụng; ERP chỉ có dạng cơ bản và các dạng tính (hiệu suất, chi phí)"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L050104-02-007",
+      "K09L050104-02-008"
+     ],
+     "erp_dang": "K09050101",
+     "ly_do": "lý thuyết biện pháp tiết kiệm năng lượng"
+    }
+   ]
+  },
+  {
+   "hm": "K09050105",
+   "nhom": [
+    {
+     "lan": "vang",
+     "cau": [
+      "K09L050105-01-001",
+      "K09L050105-01-002",
+      "K09L050105-01-003",
+      "K09L050105-01-004",
+      "K09L050105-01-005",
+      "K09L050105-01-006",
+      "K09L050105-01-007",
+      "K09L050105-01-008"
+     ],
+     "erp_chuyen_de": "K090501",
+     "ten": "Lựa chọn nguồn năng lượng tái tạo phù hợp điều kiện tự nhiên",
+     "mo_ta_ngan": "Mô tả điều kiện tự nhiên của một vùng (nắng, gió, thác, suối nóng, sóng, sinh khối…) ⇒ chọn nguồn/cách phối hợp nguồn năng lượng tái tạo phù hợp.",
+     "gan_nhat": "K09050101",
+     "ly_do": "cùng phương pháp chọn nguồn theo điều kiện tự nhiên, phối hợp hai nguồn"
+    },
+    {
+     "lan": "xanh",
+     "cau": [
+      "K09L050105-02-001",
+      "K09L050105-02-002",
+      "K09L050105-02-003",
+      "K09L050105-02-004",
+      "K09L050105-02-005",
+      "K09L050105-02-006",
+      "K09L050105-02-007"
+     ],
+     "erp_dang": "K09050101",
+     "ly_do": "tìm phát biểu sai về nguồn gốc năng lượng (có từ Mặt Trời không) — lý thuyết nguồn gốc"
+    }
+   ]
+  }
+ ]
+}

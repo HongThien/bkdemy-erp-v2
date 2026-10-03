@@ -1,0 +1,645 @@
+{
+  "khoi": "7",
+  "mon": "Sinh học",
+  "_ghi_chu": "Đề xuất ánh xạ dạng Hạt Mầm → bản đồ ERP, khối 7 · Sinh học, lập 03/10 bằng đọc câu 2 bên (không ghép theo mã). CHƯA DUYỆT — giáo viên KHTN quyết. ERP khối 7 Sinh chỉ có 3 chuyên đề (K070701–K070703, Bài 21–27); nội dung Bài 28–42 chưa có trên ERP.",
+  "chuyen_de": [
+    {
+      "hm": "K070701",
+      "erp": "K070702",
+      "ly_do": "HM gộp 2 chuyên đề ERP: dạng 1 (khái quát trao đổi chất) → K070701, dạng 2–5 (quang hợp) → K070702."
+    },
+    {
+      "hm": "K070702",
+      "erp": "K070703",
+      "ly_do": "KHÁC MÃ: hô hấp tế bào trên ERP là K070703 (K070702 của ERP là quang hợp)."
+    },
+    {
+      "hm": "K070703",
+      "erp": null,
+      "ly_do": "ERP thiếu chuyên đề Trao đổi khí (Bài 28). Phần khí khổng và trao đổi khí ở động vật để thieu_cd; câu thực chất vận dụng quang hợp / hô hấp đã chia về K070702, K070703."
+    },
+    {
+      "hm": "K070704",
+      "erp": null,
+      "ly_do": "ERP thiếu chuyên đề Trao đổi nước và chất dinh dưỡng (Bài 29–32); chỉ 1 câu (rễ ngập thiếu oxygen) chia về K07070303, 2 câu đồ thị quang hợp – hô hấp để đỏ."
+    },
+    {
+      "hm": "K070801",
+      "erp": null,
+      "ly_do": "ERP khối 7 chưa có chủ đề Cảm ứng ở sinh vật và tập tính (Bài 33–35)."
+    },
+    {
+      "hm": "K070901",
+      "erp": null,
+      "ly_do": "ERP khối 7 chưa có chủ đề Sinh trưởng và phát triển ở sinh vật (Bài 36–38)."
+    },
+    {
+      "hm": "K071001",
+      "erp": null,
+      "ly_do": "ERP khối 7 chưa có chủ đề Sinh sản ở sinh vật (Bài 39–40)."
+    },
+    {
+      "hm": "K071002",
+      "erp": null,
+      "ly_do": "ERP khối 7 chưa có chủ đề Điều khiển sinh sản / Cơ thể sinh vật là một thể thống nhất (Bài 41–42)."
+    }
+  ],
+  "dang": [
+    {
+      "hm": "K07070101",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K07070101",
+          "ly_do": "Khái niệm, vai trò trao đổi chất và chuyển hoá năng lượng — trùng kiểu câu mẫu ERP (\"Trao đổi chất ở sinh vật là quá trình\", năng lượng toả ra khi vận động)."
+        }
+      ]
+    },
+    {
+      "hm": "K07070102",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07S070102-01-002",
+            "K07S070102-01-003",
+            "K07S070102-01-005",
+            "K07S070102-01-006",
+            "K07S070102-03-002",
+            "K07S070102-03-005"
+          ],
+          "erp_dang": "K07070201",
+          "ly_do": "Phương trình chữ, nguyên liệu – sản phẩm, điều kiện, vai trò của quang hợp (câu chuông kín: áp phương trình suy ra CO₂ giảm, O₂ tăng)."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07S070102-02-002",
+            "K07S070102-02-003"
+          ],
+          "erp_dang": "K07070202",
+          "ly_do": "Liên hệ cấu tạo (lục lạp chứa diệp lục) với chức năng quang hợp — cùng kiểu câu mẫu K07070202."
+        },
+        {
+          "lan": "do",
+          "cau": [
+            "K07S070102-03-001"
+          ],
+          "erp_chuyen_de": "K070702",
+          "ly_do": "Câu \"trong quang hợp năng lượng chuyển hoá theo chiều nào (quang năng → hoá năng)\" xếp vào K07070201 (khái niệm quang hợp) hay K07070102 (dạng chuyển hoá năng lượng trong trao đổi chất)?"
+        }
+      ]
+    },
+    {
+      "hm": "K07070103",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07S070103-01-001",
+            "K07S070103-01-002",
+            "K07S070103-01-003"
+          ],
+          "erp_dang": "K07070203",
+          "ly_do": "Nhận định định tính ảnh hưởng của ánh sáng, nước (khí khổng đóng), CO₂ — cùng kiểu câu mẫu K07070203."
+        },
+        {
+          "lan": "vang",
+          "cau": [
+            "K07S070103-02-001",
+            "K07S070103-02-002",
+            "K07S070103-02-003"
+          ],
+          "erp_chuyen_de": "K070702",
+          "ten": "Đọc đồ thị cường độ quang hợp theo yếu tố môi trường",
+          "mo_ta_ngan": "Cho đồ thị cường độ quang hợp theo ánh sáng / CO₂ / nhiệt độ (có thể 2 đường), yêu cầu nhận xét điểm cực đại, mức giới hạn, so sánh hai đường hoặc suy ra biện pháp trồng trọt.",
+          "gan_nhat": "K07070203",
+          "ly_do": "Cùng kiến thức với K07070203 nhưng lời giải phải ĐỌC ĐƯỜNG CONG (điểm cực đại, đoạn bão hoà, so hai đường, yếu tố nào đang giới hạn) — kĩ năng xử lí đồ thị mà câu K07070203 (nhận định định tính từng yếu tố, chọn biện pháp) không đòi; gộp thì độ khó trong dạng chênh hẳn."
+        }
+      ]
+    },
+    {
+      "hm": "K07070104",
+      "nhom": [
+        {
+          "lan": "vang",
+          "cau": [
+            "K07S070104-01-001",
+            "K07S070104-01-003",
+            "K07S070104-02-001",
+            "K07S070104-02-003"
+          ],
+          "erp_chuyen_de": "K070702",
+          "ten": "Thí nghiệm chứng minh quang hợp",
+          "mo_ta_ngan": "Đề mô tả thí nghiệm bịt lá bằng giấy đen + thử iodine, rong đuôi chó + que đóm, hoặc chuông kín có KOH; hỏi mục đích một bước, vai trò đối chứng, hiện tượng quan sát hoặc kết luận rút ra.",
+          "gan_nhat": "K07070201",
+          "ly_do": "Lời giải lập luận theo BỐ TRÍ thí nghiệm (để cây trong tối, phần lá bịt làm đối chứng, iodine nhận biết tinh bột, que đóm nhận biết oxygen, KOH hút CO₂) chứ không chỉ nhớ nguyên liệu – sản phẩm như K07070201; K070702 chưa có dạng thí nghiệm nào. Lưu ý đối xứng: bên hô hấp, ERP đã để câu thí nghiệm hạt nảy mầm trong K07070303 — giáo viên quyết giữ dạng riêng hay gộp."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07S070104-03-001",
+            "K07S070104-03-004"
+          ],
+          "erp_dang": "K07070203",
+          "ly_do": "Mật độ trồng dày, cỏ dại che lấp → thiếu ánh sáng → quang hợp giảm: vận dụng yếu tố ánh sáng."
+        }
+      ]
+    },
+    {
+      "hm": "K07070105",
+      "nhom": [
+        {
+          "lan": "vang",
+          "cau": [
+            "K07S070105-01-001",
+            "K07S070105-01-002",
+            "K07S070105-01-003",
+            "K07S070105-01-006"
+          ],
+          "erp_chuyen_de": "K070702",
+          "ten": "Đọc đồ thị cường độ quang hợp theo yếu tố môi trường",
+          "mo_ta_ngan": "Cho đồ thị cường độ quang hợp theo ánh sáng / CO₂ / nhiệt độ (có thể 2 đường), yêu cầu nhận xét điểm cực đại, mức giới hạn, so sánh hai đường hoặc suy ra biện pháp trồng trọt.",
+          "gan_nhat": "K07070203",
+          "ly_do": "Cùng kiến thức với K07070203 nhưng lời giải phải ĐỌC ĐƯỜNG CONG (điểm cực đại, đoạn bão hoà, so hai đường, yếu tố nào đang giới hạn) — kĩ năng xử lí đồ thị mà câu K07070203 (nhận định định tính từng yếu tố, chọn biện pháp) không đòi; gộp thì độ khó trong dạng chênh hẳn."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07S070105-01-004"
+          ],
+          "erp_dang": "K07070203",
+          "ly_do": "Không cần đọc đồ thị: chọn biện pháp nhà kính mùa đông theo ánh sáng, nhiệt độ, CO₂ — cùng kiểu câu mẫu \"biện pháp trong nhà kính\"."
+        },
+        {
+          "lan": "vang",
+          "cau": [
+            "K07S070105-02-001",
+            "K07S070105-02-002",
+            "K07S070105-02-003",
+            "K07S070105-02-004",
+            "K07S070105-02-006",
+            "K07S070105-02-007"
+          ],
+          "erp_chuyen_de": "K070702",
+          "ten": "Thí nghiệm chứng minh quang hợp",
+          "mo_ta_ngan": "Đề mô tả thí nghiệm bịt lá bằng giấy đen + thử iodine, rong đuôi chó + que đóm, hoặc chuông kín có KOH; hỏi mục đích một bước, vai trò đối chứng, hiện tượng quan sát hoặc kết luận rút ra.",
+          "gan_nhat": "K07070201",
+          "ly_do": "Lời giải lập luận theo BỐ TRÍ thí nghiệm (để cây trong tối, phần lá bịt làm đối chứng, iodine nhận biết tinh bột, que đóm nhận biết oxygen, KOH hút CO₂) chứ không chỉ nhớ nguyên liệu – sản phẩm như K07070201; K070702 chưa có dạng thí nghiệm nào. Lưu ý đối xứng: bên hô hấp, ERP đã để câu thí nghiệm hạt nảy mầm trong K07070303 — giáo viên quyết giữ dạng riêng hay gộp."
+        }
+      ]
+    },
+    {
+      "hm": "K07070201",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K07070301",
+          "ly_do": "KHÁC MÃ: khái niệm, phương trình, nơi diễn ra (ti thể), vai trò hô hấp tế bào — cùng kiểu câu mẫu K07070301."
+        }
+      ]
+    },
+    {
+      "hm": "K07070202",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K07070302",
+          "ly_do": "KHÁC MÃ: so sánh nguyên liệu – sản phẩm và mối quan hệ quang hợp – hô hấp, kể cả câu so cường độ hai quá trình."
+        }
+      ]
+    },
+    {
+      "hm": "K07070203",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": "*",
+          "erp_dang": "K07070303",
+          "ly_do": "KHÁC MÃ: yếu tố (nước, oxygen, nhiệt độ) ảnh hưởng hô hấp, bảo quản, thí nghiệm hạt nảy mầm + nước vôi trong — câu mẫu K07070303 có đúng thí nghiệm này."
+        }
+      ]
+    },
+    {
+      "hm": "K07070204",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07S070204-01-001",
+            "K07S070204-01-002",
+            "K07S070204-01-003",
+            "K07S070204-01-006",
+            "K07S070204-01-008",
+            "K07S070204-02-001",
+            "K07S070204-02-002",
+            "K07S070204-02-003",
+            "K07S070204-02-004",
+            "K07S070204-02-007"
+          ],
+          "erp_dang": "K07070303",
+          "ly_do": "Thí nghiệm hạt nảy mầm (nước vôi, nhiệt kế, que diêm, đối chứng hạt luộc) và bảo quản nông sản theo nhiệt độ / độ ẩm / oxygen — ERP để thí nghiệm hô hấp trong K07070303."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07S070204-01-004"
+          ],
+          "erp_dang": "K07070301",
+          "ly_do": "Đích hỏi là \"quá trình nào, phương trình chữ nào\" ⇒ phương trình hô hấp tế bào. Lưu ý đề mở bằng \"Ba thí nghiệm trên\" (dựa vào câu trước) — nên sửa cho câu đứng độc lập."
+        }
+      ]
+    },
+    {
+      "hm": "K07070301",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": [
+            "K07S070301-01-001",
+            "K07S070301-01-002",
+            "K07S070301-01-003",
+            "K07S070301-01-004",
+            "K07S070301-01-006",
+            "K07S070301-01-008",
+            "K07S070301-02-003"
+          ],
+          "erp_chuyen_de": null,
+          "ly_do": "Cấu tạo, vị trí, chức năng khí khổng và thoát hơi nước qua khí khổng — nên mở chuyên đề mới \"Trao đổi khí ở sinh vật\" (SGK KNTT Bài 28) trong chủ đề ERP \"Trao đổi chất & Chuyển hóa năng lượng ở sinh vật\"."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07S070301-02-001",
+            "K07S070301-02-002"
+          ],
+          "erp_dang": "K07070201",
+          "ly_do": "Hỏi khí nào vào / ra khi quang hợp ⇒ nhận biết nguyên liệu (CO₂) và sản phẩm (O₂) của quang hợp."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07S070301-02-004",
+            "K07S070301-02-006",
+            "K07S070301-02-007",
+            "K07S070301-02-009"
+          ],
+          "erp_dang": "K07070302",
+          "ly_do": "Chiều khí qua khí khổng khi quang hợp vs hô hấp, ban đêm / che tối chỉ còn hô hấp ⇒ so sánh nguyên liệu – sản phẩm hai quá trình."
+        }
+      ]
+    },
+    {
+      "hm": "K07070302",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Cơ quan trao đổi khí ở động vật (mang, da, phổi) và đường dẫn khí ở người — nên mở chuyên đề mới \"Trao đổi khí ở sinh vật\" (SGK KNTT Bài 28) trong chủ đề ERP \"Trao đổi chất & Chuyển hóa năng lượng ở sinh vật\"."
+        }
+      ]
+    },
+    {
+      "hm": "K07070303",
+      "nhom": [
+        {
+          "lan": "vang",
+          "cau": [
+            "K07S070303-01-001",
+            "K07S070303-01-003",
+            "K07S070303-01-005"
+          ],
+          "erp_chuyen_de": "K070702",
+          "ten": "Thí nghiệm chứng minh quang hợp",
+          "mo_ta_ngan": "Đề mô tả thí nghiệm bịt lá bằng giấy đen + thử iodine, rong đuôi chó + que đóm, hoặc chuông kín có KOH; hỏi mục đích một bước, vai trò đối chứng, hiện tượng quan sát hoặc kết luận rút ra.",
+          "gan_nhat": "K07070201",
+          "ly_do": "Lời giải lập luận theo BỐ TRÍ thí nghiệm (để cây trong tối, phần lá bịt làm đối chứng, iodine nhận biết tinh bột, que đóm nhận biết oxygen, KOH hút CO₂) chứ không chỉ nhớ nguyên liệu – sản phẩm như K07070201; K070702 chưa có dạng thí nghiệm nào. Lưu ý đối xứng: bên hô hấp, ERP đã để câu thí nghiệm hạt nảy mầm trong K07070303 — giáo viên quyết giữ dạng riêng hay gộp."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07S070303-01-002"
+          ],
+          "erp_dang": "K07070303",
+          "ly_do": "Thí nghiệm hạt nảy mầm + nước vôi trong chứng minh hô hấp thải CO₂ — cùng câu mẫu K07070303."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07S070303-02-001",
+            "K07S070303-02-002"
+          ],
+          "erp_dang": "K07070302",
+          "ly_do": "Ban đêm cây chỉ hô hấp (không quang hợp) ⇒ tiêu thụ O₂, thải CO₂: mối quan hệ quang hợp – hô hấp."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07S070303-02-003",
+            "K07S070303-02-005",
+            "K07S070303-02-006",
+            "K07S070303-03-003",
+            "K07S070303-03-005"
+          ],
+          "erp_dang": "K07070203",
+          "ly_do": "Ánh sáng yếu / thiếu nước (khí khổng đóng, CO₂ khó vào) ⇒ quang hợp giảm: yếu tố ảnh hưởng quang hợp."
+        }
+      ]
+    },
+    {
+      "hm": "K07070304",
+      "nhom": [
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07S070304-01-001",
+            "K07S070304-01-003",
+            "K07S070304-01-004",
+            "K07S070304-02-001",
+            "K07S070304-02-003",
+            "K07S070304-02-004",
+            "K07S070304-02-006"
+          ],
+          "erp_dang": "K07070302",
+          "ly_do": "Phòng kín / ao nuôi: ban đêm chỉ hô hấp, ban ngày quang hợp mạnh hơn hô hấp ⇒ suy chiều biến đổi O₂, CO₂ (câu 02-006 thêm yếu tố gió giúp O₂ hoà tan — lõi vẫn là hô hấp ban đêm)."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07S070304-01-002",
+            "K07S070304-01-006",
+            "K07S070304-01-008"
+          ],
+          "erp_dang": "K07070203",
+          "ly_do": "Đủ / thiếu nước ⇒ khí khổng mở / đóng ⇒ CO₂ vào lá ⇒ cường độ quang hợp: yếu tố nước ảnh hưởng quang hợp."
+        },
+        {
+          "lan": "thieu_cd",
+          "cau": [
+            "K07S070304-02-002",
+            "K07S070304-02-007"
+          ],
+          "erp_chuyen_de": null,
+          "ly_do": "Cơ quan trao đổi khí ở động vật phù hợp môi trường sống (cá – mang, ếch – phổi) — nên mở chuyên đề mới \"Trao đổi khí ở sinh vật\" (SGK KNTT Bài 28) trong chủ đề ERP \"Trao đổi chất & Chuyển hóa năng lượng ở sinh vật\"."
+        }
+      ]
+    },
+    {
+      "hm": "K07070401",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Vai trò của nước và các nhóm chất dinh dưỡng (Bài 29) — nên mở chuyên đề mới \"Trao đổi nước và chất dinh dưỡng ở sinh vật\" (SGK KNTT Bài 29–32) trong chủ đề ERP \"Trao đổi chất & Chuyển hóa năng lượng ở sinh vật\"."
+        }
+      ]
+    },
+    {
+      "hm": "K07070402",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": [
+            "K07S070402-01-001",
+            "K07S070402-01-002",
+            "K07S070402-01-003",
+            "K07S070402-01-006",
+            "K07S070402-02-001",
+            "K07S070402-02-005",
+            "K07S070402-02-006",
+            "K07S070402-03-001",
+            "K07S070402-03-002",
+            "K07S070402-03-005",
+            "K07S070402-03-006"
+          ],
+          "erp_chuyen_de": null,
+          "ly_do": "Hấp thụ ở rễ (lông hút), vận chuyển qua mạch gỗ / mạch rây, thoát hơi nước ở lá — nên mở chuyên đề mới \"Trao đổi nước và chất dinh dưỡng ở sinh vật\" (SGK KNTT Bài 29–32) trong chủ đề ERP \"Trao đổi chất & Chuyển hóa năng lượng ở sinh vật\"."
+        },
+        {
+          "lan": "xanh",
+          "cau": [
+            "K07S070402-01-005"
+          ],
+          "erp_dang": "K07070303",
+          "ly_do": "Ruộng ngập ⇒ rễ thiếu oxygen ⇒ hô hấp giảm ⇒ lông hút chết: cùng lập luận câu \"ruộng rau ngập, rễ thối\" và câu mẫu \"xới đất cho rễ hô hấp\" của K07070303."
+        }
+      ]
+    },
+    {
+      "hm": "K07070403",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Tiêu hoá, hấp thụ và vận chuyển chất ở người (ruột non, tuần hoàn, hồng cầu) — nên mở chuyên đề mới \"Trao đổi nước và chất dinh dưỡng ở sinh vật\" (SGK KNTT Bài 29–32) trong chủ đề ERP \"Trao đổi chất & Chuyển hóa năng lượng ở sinh vật\"."
+        }
+      ]
+    },
+    {
+      "hm": "K07070404",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Thí nghiệm thân vận chuyển nước (cành hoa + nước màu) và lá thoát hơi nước (trùm túi nilon) — nên mở chuyên đề mới \"Trao đổi nước và chất dinh dưỡng ở sinh vật\" (SGK KNTT Bài 29–32) trong chủ đề ERP \"Trao đổi chất & Chuyển hóa năng lượng ở sinh vật\"."
+        }
+      ]
+    },
+    {
+      "hm": "K07070405",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": [
+            "K07S070405-01-002",
+            "K07S070405-01-005",
+            "K07S070405-03-002"
+          ],
+          "erp_chuyen_de": null,
+          "ly_do": "Theo dòng chất qua hô hấp – tuần hoàn ở người, đường đi muối khoáng trong cây, thí nghiệm lông hút — nên mở chuyên đề mới \"Trao đổi nước và chất dinh dưỡng ở sinh vật\" (SGK KNTT Bài 29–32) trong chủ đề ERP \"Trao đổi chất & Chuyển hóa năng lượng ở sinh vật\"."
+        },
+        {
+          "lan": "do",
+          "cau": [
+            "K07S070405-02-002",
+            "K07S070405-02-005"
+          ],
+          "erp_chuyen_de": "K070703",
+          "ly_do": "Đồ thị quang hợp (A) và hô hấp (B), hỏi mức tích luỹ chất hữu cơ lớn nhất (= quang hợp trừ hô hấp): xếp vào K07070302 (mối quan hệ quang hợp – hô hấp) hay vào dạng mới \"Đọc đồ thị cường độ quang hợp theo yếu tố môi trường\" đề xuất ở K070702 (gần nhất K07070203)?"
+        }
+      ]
+    },
+    {
+      "hm": "K07080101",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Cảm ứng ở sinh vật và tập tính ở động vật (Bài 33–35) — ERP khối 7 chưa có chủ đề này; nên mở chủ đề mới \"Cảm ứng ở sinh vật\"."
+        }
+      ]
+    },
+    {
+      "hm": "K07080102",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Cảm ứng ở sinh vật và tập tính ở động vật (Bài 33–35) — ERP khối 7 chưa có chủ đề này; nên mở chủ đề mới \"Cảm ứng ở sinh vật\"."
+        }
+      ]
+    },
+    {
+      "hm": "K07080103",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Cảm ứng ở sinh vật và tập tính ở động vật (Bài 33–35) — ERP khối 7 chưa có chủ đề này; nên mở chủ đề mới \"Cảm ứng ở sinh vật\"."
+        }
+      ]
+    },
+    {
+      "hm": "K07080104",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Cảm ứng ở sinh vật và tập tính ở động vật (Bài 33–35) — ERP khối 7 chưa có chủ đề này; nên mở chủ đề mới \"Cảm ứng ở sinh vật\"."
+        }
+      ]
+    },
+    {
+      "hm": "K07090101",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Sinh trưởng và phát triển ở sinh vật (Bài 36–38) — ERP khối 7 chưa có chủ đề này; nên mở chủ đề mới \"Sinh trưởng và phát triển ở sinh vật\". (Vài câu nhắc quang hợp chỉ là mắt xích giải thích, lõi vẫn là sinh trưởng.)"
+        }
+      ]
+    },
+    {
+      "hm": "K07090102",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Sinh trưởng và phát triển ở sinh vật (Bài 36–38) — ERP khối 7 chưa có chủ đề này; nên mở chủ đề mới \"Sinh trưởng và phát triển ở sinh vật\". (Vài câu nhắc quang hợp chỉ là mắt xích giải thích, lõi vẫn là sinh trưởng.)"
+        }
+      ]
+    },
+    {
+      "hm": "K07090103",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Sinh trưởng và phát triển ở sinh vật (Bài 36–38) — ERP khối 7 chưa có chủ đề này; nên mở chủ đề mới \"Sinh trưởng và phát triển ở sinh vật\". (Vài câu nhắc quang hợp chỉ là mắt xích giải thích, lõi vẫn là sinh trưởng.)"
+        }
+      ]
+    },
+    {
+      "hm": "K07090104",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Sinh trưởng và phát triển ở sinh vật (Bài 36–38) — ERP khối 7 chưa có chủ đề này; nên mở chủ đề mới \"Sinh trưởng và phát triển ở sinh vật\". (Vài câu nhắc quang hợp chỉ là mắt xích giải thích, lõi vẫn là sinh trưởng.)"
+        }
+      ]
+    },
+    {
+      "hm": "K07100101",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Sinh sản vô tính và hữu tính, nhân giống, thụ phấn (Bài 39–40) — ERP khối 7 chưa có chủ đề này; nên mở chủ đề mới \"Sinh sản ở sinh vật\"."
+        }
+      ]
+    },
+    {
+      "hm": "K07100102",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Sinh sản vô tính và hữu tính, nhân giống, thụ phấn (Bài 39–40) — ERP khối 7 chưa có chủ đề này; nên mở chủ đề mới \"Sinh sản ở sinh vật\"."
+        }
+      ]
+    },
+    {
+      "hm": "K07100103",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Sinh sản vô tính và hữu tính, nhân giống, thụ phấn (Bài 39–40) — ERP khối 7 chưa có chủ đề này; nên mở chủ đề mới \"Sinh sản ở sinh vật\"."
+        }
+      ]
+    },
+    {
+      "hm": "K07100104",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Sinh sản vô tính và hữu tính, nhân giống, thụ phấn (Bài 39–40) — ERP khối 7 chưa có chủ đề này; nên mở chủ đề mới \"Sinh sản ở sinh vật\"."
+        }
+      ]
+    },
+    {
+      "hm": "K07100201",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Điều khiển sinh sản và cơ thể sinh vật là một thể thống nhất (Bài 41–42) — ERP khối 7 chưa có; nên nằm trong chủ đề mới \"Sinh sản ở sinh vật\". (Câu liên hệ quang hợp / hô hấp ở đây là chuỗi hệ quả giữa các quá trình sống — lõi Bài 42, không đưa về K0707.)"
+        }
+      ]
+    },
+    {
+      "hm": "K07100202",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Điều khiển sinh sản và cơ thể sinh vật là một thể thống nhất (Bài 41–42) — ERP khối 7 chưa có; nên nằm trong chủ đề mới \"Sinh sản ở sinh vật\". (Câu liên hệ quang hợp / hô hấp ở đây là chuỗi hệ quả giữa các quá trình sống — lõi Bài 42, không đưa về K0707.)"
+        }
+      ]
+    },
+    {
+      "hm": "K07100203",
+      "nhom": [
+        {
+          "lan": "thieu_cd",
+          "cau": "*",
+          "erp_chuyen_de": null,
+          "ly_do": "Điều khiển sinh sản và cơ thể sinh vật là một thể thống nhất (Bài 41–42) — ERP khối 7 chưa có; nên nằm trong chủ đề mới \"Sinh sản ở sinh vật\". (Câu liên hệ quang hợp / hô hấp ở đây là chuỗi hệ quả giữa các quá trình sống — lõi Bài 42, không đưa về K0707.)"
+        }
+      ]
+    }
+  ]
+}
