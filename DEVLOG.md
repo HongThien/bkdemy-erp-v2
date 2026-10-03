@@ -35316,3 +35316,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   2 câu dời khỏi dạng chờ · trao đổi Trả lời + dạng đích ⇒ câu dời · quyết lần 2 bị chặn.
 - **ERP:** registry `DE_XUAT_KHO` (lib/kho/api.ts — Đại, KHTN) · `DeXuatPanel` nhận `kho`, bộ chọn dạng truyền đúng môn · KhoScreen bật nút Đề xuất theo
   registry (Gán mẫu vẫn chỉ Đại). tsc sạch.
+
+- (03/10 chiều, Giao diện) Cờ tính năng HS nhận biết bản thử nghiệm CHẮC hơn: vite.config.hs.ts define __VERCEL_ENV__ (Vercel đặt VERCEL_ENV lúc build) ⇒ build Preview luôn BẬT khu Học tập + bản đồ, build Production luôn TẮT, không phụ thuộc domain Preview; build ngoài Vercel ⇒ bật trừ domain thật hs.bkacademy.edu.vn. Kiểm bằng build giả lập: preview ⇒ banThuNghiem bị gập thành return!0, production ⇒ return!1. Đẩy main + nhánh thu-nghiem.

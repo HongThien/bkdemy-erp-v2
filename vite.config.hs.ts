@@ -22,6 +22,8 @@ function renameToIndex(): Plugin {
 // app chính — không tách DB, chỉ tách bundle/domain, xem DEVLOG 2026-08-21 "hs.bkacademy.edu.vn").
 // Lệnh: npm run build:hs
 export default defineConfig({
+  // Vercel đặt VERCEL_ENV = production | preview | development lúc build ⇒ app biết mình là bản THỬ NGHIỆM hay bản THẬT (phieuluu/coBat.ts — cờ tính năng mới).
+  define: { __VERCEL_ENV__: JSON.stringify(process.env.VERCEL_ENV ?? "") },
   plugins: [
     react(),
     tailwindcss(),

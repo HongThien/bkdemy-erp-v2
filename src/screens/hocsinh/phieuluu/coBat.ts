@@ -1,17 +1,22 @@
 // CỜ BẬT tính năng game HS — MẶC ĐỊNH TẮT trên bản THẬT. Code đã nằm trong bản deploy nhưng học sinh không thấy cho tới khi Thùy chủ động bật cho tất cả.
 // · Bản đồ phiêu lưu (`?phieuluu=1|0`) · Khu HỌC TẬP 5 đảo (`?hoctap=1|0`, spec-che-do-game.md §7).
 // Thử trên 1 máy: mở app HS với đuôi `?phieuluu=1` / `?hoctap=1` một lần (máy nhớ), tắt lại bằng `=0`.
-// BẢN THỬ NGHIỆM (Thùy 03/10: "thử nghiệm trước rồi mới release, trên cả điện thoại và iPad"): link Preview của Vercel (*.vercel.app)
-// + máy dev (localhost / mạng LAN) ⇒ mặc định BẬT, mở là thấy — domain thật hs.bkacademy.edu.vn KHÔNG bị ảnh hưởng.
+// BẢN THỬ NGHIỆM (Thùy 03/10: "thử nghiệm trước rồi mới release, trên cả điện thoại và iPad"): bản build Preview của Vercel
+// (+ mọi domain khác hs.bkacademy.edu.vn khi không phải build Production) ⇒ mặc định BẬT, mở là thấy — bản Production / domain thật KHÔNG bị ảnh hưởng.
 // Khi duyệt xong và muốn bật cho mọi học sinh: đổi MAC_DINH của cờ đó thành true (1 dòng) rồi deploy.
 const MAC_DINH = { phieuluu: false, hoctap: false }
 
-/** Đang chạy ở bản thử nghiệm (Preview Vercel / máy dev / LAN), không phải domain thật của học sinh. */
+// Môi trường build Vercel (vite.config.hs.ts define): 'production' | 'preview' | 'development' | '' (build ngoài Vercel / bundle khác không define).
+const VERCEL_ENV = typeof __VERCEL_ENV__ !== 'undefined' ? __VERCEL_ENV__ : ''
+
+/** Đang chạy ở bản THỬ NGHIỆM, không phải bản thật của học sinh:
+ *  · bản build Preview của Vercel (chắc chắn nhất — không phụ thuộc domain Preview là gì);
+ *  · hoặc không phải bản Production và không phải domain thật hs.bkacademy.edu.vn (máy dev, LAN, *.vercel.app…).
+ *  Bản Production (VERCEL_ENV = 'production') hoặc domain thật ⇒ LUÔN tắt. */
 export function banThuNghiem(): boolean {
-  try {
-    const h = location.hostname
-    return h.endsWith('.vercel.app') || h === 'localhost' || h === '127.0.0.1' || /^192\.168\./.test(h) || /^10\./.test(h)
-  } catch { return false }
+  if (VERCEL_ENV === 'preview') return true
+  if (VERCEL_ENV === 'production') return false
+  try { return location.hostname !== 'hs.bkacademy.edu.vn' } catch { return false }
 }
 
 function co(ten: keyof typeof MAC_DINH): boolean {
