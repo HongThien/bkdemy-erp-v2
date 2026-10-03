@@ -35355,3 +35355,22 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - (03/10 chiều, Giao diện + DB) Nhân vật chính = **6** (Thùy: "tính cả 2 nhân vật ban đầu là 6"): thêm Nhà thám hiểm (nam) + Nữ thám hiểm (nu) vào màn chọn (đứng đầu), `NV_CHON`/`tenNv`/`moTaNv` ở skin/nhanVat.ts. Mig 202610031341 (Thùy duyệt bỏ+tạo lại CHECK): CHECK 4 → 6 mã + fn_hs_chon_nhan_vat nhận 6 (thân từ pg_get_functiondef). Kiểm thật TEST05: đổi Sư tử → Nhà thám hiểm lưu được, log 2 dòng (null→su_tu, su_tu→nam), ACL chỉ authenticated.
 
 - (03/10 chiều, Giao diện) **Màn DẠNG BÀI = nền tranh + công trình lục địa** (Thùy: kit hs-hoc-va-choi-luc-dia-bang-v2, 7 nền nhìn ngang có đường lát đá vẽ sẵn ≈74%): `scripts/anime-nen-dang.mjs` → nen_dang_<biome>.jpg; Chang2D có nền ⇒ không dựng three.js, nền lặp ngang nối GƯƠNG (ô lẻ lật) theo bề dài dải cuộn; dạng i = công trình kit lục địa rải đều 1→8 (to dần, cao 13%→24% sân), chân trên mép đường; khoảng cách theo bề rộng công trình; tên giới hạn theo khoảng cách 2 công trình. Thêm kit BĂNG vào anime-kit-lucdia.mjs (8 công trình, chỉ dùng cho màn dạng bài — tầng lục địa băng CHƯA bật). Sai rồi sửa: tên dạng đang chọn lệch trái gấp đôi (vừa -translate-x-1/2 của Tailwind = thuộc tính translate, vừa translateX(-50%) trong transform) ⇒ đè tên bên cạnh. **Chuyển cảnh lục địa → dạng bài**: chạy tới cửa ⇒ phóng 2,4× vào công trình + mờ 460ms rồi mới đổi màn; nền màn dạng bài nạp sẵn ngay khi bắt đầu chạy. (Chưa soi được hoạt ảnh chuyển cảnh trên pane — rAF đứng khi pane ẩn.)
+
+## 2026-10-03 [Kho Anh] AI tự làm đáp án + lời giải chi tiết cả kho (Thùy: "tiếng anh thống nhất, ko bị tính local như toán" · "chỉ dùng sonnet hoặc thấp hơn")
+
+- **Trước:** 4.774 câu · 3.990 duyệt · **0 lời giải** · 158 thiếu đáp án.
+- **Thử 64 câu mẫu (13 dạng đề), giải MÙ rồi chấm với đáp án đã duyệt:** Opus 49/49 đúng · **Sonnet 46/46 câu "chắc" đúng** (1 sai nhưng tự khai phân
+  vân) · Haiku 2 câu "chắc" mà SAI + yếu phát âm/trọng âm, lời giải ngắn nửa ⇒ **chốt Sonnet**. 12 câu thiếu đáp án: Sonnet = Opus 12/12.
+- **Luồng (người làm ≠ người kiểm):** `giai_chuan_bi.mjs` chia 80 lô (câu cùng ngữ liệu chung lô; ảnh biển báo tải từ Storage của mình để bên giải
+  XEM được) · đáp án để thư mục ANH EM `<dir>_khoa/` ngoài tầm bên giải · 40 agent Sonnet giải mù theo `giai_prompt.md` · bên B (agent riêng)
+  giải lại 158 câu thiếu đáp án · `giai_cong.mjs` (cổng, chạy thử rồi --ghi).
+  - ① câu có đáp án: A ra ĐÚNG đáp án + "chắc" + không phương án 2 ⇒ ghi lời giải (`nguon_giai='ai'`, `giai_method='ai_giai_mu'`). Lệch ⇒ không ghi.
+  - ② câu thiếu đáp án: A và B cùng chắc, cùng đáp án, không đề lỗi ⇒ ghi đáp án + lời giải; **tự duyệt** chỉ khi lý do chờ DUY NHẤT là "file GV
+    không có đáp án" (luật mới Thùy 03/10); còn lý do khác ⇒ giữ chờ GV.
+- **Kết quả (đã ghi, kiểm lại DB):** **4.335 câu có lời giải** (4.190 ① + 145 ②) · duyệt 3.990 → **4.110** (+120) · thiếu đáp án 158 → **13**.
+  Soi tay ngẫu nhiên 1 câu/dạng đề sắp ghi: 13/13 đúng (biển báo đọc từ ảnh).
+- **Còn cho GV** (`scripts/anh/bien_ban/giai-ai-2026-10-03.json`): 56 lệch đáp án (2 câu đã duyệt EC001221/EC003747 — đều Sonnet sai, khoá đúng;
+  54 câu chờ duyệt — phần lớn đáp án NGUỒN nghi sai) · 370 câu A không chắc / có 2 phương án (chưa có lời giải) · 289 câu A báo lỗi đề (97 đã duyệt:
+  phương án trùng, đề dính sang câu sau, ngữ liệu cắt cụt EL000542, cau_so lệch…) · 13 câu A/B không thống nhất.
+- **Bài học:** Sonnet tự khai "chắc" vẫn sai ~2/700 (EC003747 "the chair of ___" chọn whose thay which) ⇒ với câu KHÔNG có đáp án đối chứng, phải
+  có bên B độc lập; một bên giải không đủ để tự duyệt.
