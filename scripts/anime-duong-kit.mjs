@@ -13,6 +13,12 @@ const KIT = {
 // kit sa mạc: đường LÁT ĐÁ nhạt (hue 41–49, s .26–.39, v>.95) khác cát (s ≥ .43) · kit đầm lầy: đường đất cam (hue 27–38, s .5–.66)
 KIT.sa_mac = { nen: 'public/bk-ui/hs/skin/rpg/lucdia/sa_mac/nen.jpg', vao: [0, 88], ra: [100, 34], moc: [[14, 84], [19, 33], [41, 85], [55, 28], [82, 85], [88, 34]], mau: (h, s, v) => h > 40 && h < 50 && s > 0.26 && s < 0.39 && v > 0.95 }
 KIT.dam_lay = { nen: 'public/bk-ui/hs/skin/rpg/lucdia/dam_lay/nen.jpg', vao: [0, 38], ra: [100, 48], moc: [[11, 38], [21, 72], [35, 40], [48, 59], [69, 81], [58, 34], [83, 61], [90, 35]], mau: (h, s, v) => h > 24 && h < 38 && s > 0.38 && s < 0.62 && v > 0.82 }
+// 03/10 — 4 kit còn lại (feet = vị trí đã khớp với ảnh reference của kit). Mặt nạ đường: nui_lua đá be · dong_gio cát cam · bien_dao cát nhạt (cả mặt đảo cát) · troi_sao mây hồng trắng (cả mặt đảo mây)
+KIT.nui_lua = { nen: 'public/bk-ui/hs/skin/rpg/lucdia/nui_lua/nen.jpg', vao: [0, 51], ra: [100, 52], moc: [[7.7, 50], [24, 30], [36, 64], [46, 32], [63.7, 37], [57, 71], [81, 75.5], [88, 44]], mau: (h, s, v) => h > 21 && h < 30 && s > 0.2 && s < 0.42 && v > 0.74 }
+KIT.dong_gio = { nen: 'public/bk-ui/hs/skin/rpg/lucdia/dong_gio/nen.jpg', vao: [0, 53], ra: [100, 57], moc: [[7.7, 50], [24, 30], [36, 64], [46, 32], [63.7, 37], [57, 71], [81, 75.5], [88, 44]], mau: (h, s, v) => h > 30 && h < 41 && s > 0.42 && s < 0.64 && v > 0.9 }
+KIT.bien_dao = { nen: 'public/bk-ui/hs/skin/rpg/lucdia/bien_dao/nen.jpg', vao: [0, 35], ra: [100, 54], moc: [[9.6, 38], [23.3, 70], [34, 45.7], [47.3, 57], [56.8, 35.2], [66, 82.5], [74.7, 58], [90.4, 51]], mau: (h, s, v) => h > 33 && h < 41 && s > 0.26 && s < 0.4 && v > 0.95 }
+KIT.troi_sao = { nen: 'public/bk-ui/hs/skin/rpg/lucdia/troi_sao/nen.jpg', vao: [0, 40], ra: [100, 31], moc: [[10.7, 36], [23.4, 66], [37, 46.5], [50.7, 52], [58.7, 35.6], [67.8, 65.9], [84.6, 53], [90.2, 30.3]], mau: (h, s, v) => (h > 335 || h < 10) && s > 0.07 && s < 0.2 && v > 0.95 }
+const CHON = process.argv[3]?.split(',') // node scripts/anime-duong-kit.mjs <thư mục soi> nui_lua,dong_gio — kit khác giữ nguyên đường cũ trong kitLucDia.duong.ts
 const W = 1672, H = 941
 
 function hsv(r, g, b) {
@@ -36,6 +42,7 @@ class Heap {
 }
 
 for (const [biome, kit] of Object.entries(KIT)) {
+  if (CHON && !CHON.includes(biome)) continue
   const im = await loadImage(kit.nen), c = createCanvas(W, H), g = c.getContext('2d'); g.drawImage(im, 0, 0, W, H)
   const px = g.getImageData(0, 0, W, H).data, mask = new Uint8Array(W * H)
   for (let i = 0; i < W * H; i++) { const [h, s, v] = hsv(px[i * 4], px[i * 4 + 1], px[i * 4 + 2]); mask[i] = (kit.mau ? kit.mau(h, s, v) : h > 24 && h < 46 && s > 0.30 && s < 0.62 && v > 0.74) ? 1 : 0 }
@@ -85,7 +92,8 @@ for (const [biome, kit] of Object.entries(KIT)) {
 }
 
 // ghi file dữ liệu cho app
-const ts = {}
-for (const b of Object.keys(KIT)) ts[b] = JSON.parse(fs.readFileSync(`${OUT}/duong_${b}.json`, 'utf8'))
+const DUONG_TS = 'src/screens/hocsinh/phieuluu/ban2d/kitLucDia.duong.ts'
+const ts = CHON ? JSON.parse(fs.readFileSync(DUONG_TS, 'utf8').split('> = ')[1]) : {}
+for (const b of Object.keys(KIT)) if (!CHON || CHON.includes(b)) ts[b] = JSON.parse(fs.readFileSync(`${OUT}/duong_${b}.json`, 'utf8'))
 fs.writeFileSync('src/screens/hocsinh/phieuluu/ban2d/kitLucDia.duong.ts',
   `// SINH TỰ ĐỘNG bởi scripts/anime-duong-kit.mjs — đừng sửa tay. Tâm đường THẬT dò từ nền từng kit (x%, y% khung 16:9) + chỉ số điểm là mốc của 8 công trình.\nexport const DUONG_DO: Record<string, { duong: [number, number][]; diemMoc: number[] }> = ${JSON.stringify(ts)}\n`)

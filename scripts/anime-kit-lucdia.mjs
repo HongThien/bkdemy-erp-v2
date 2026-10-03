@@ -20,6 +20,11 @@ const KITS = [
   { biome: 'sa_mac', dir: 'hs-luc-dia-sa-mac-6-v1', nen: 'assets/backdrop/backdrop_luc_dia_sa_mac_6.png', decor: M(6), neoCat: [0.5, 0.995] },
   // 03/10: BĂNG — mới dùng 8 công trình cho MÀN DẠNG BÀI (Chang2D nền tranh); tầng lục địa băng CHƯA bật (chưa có KIT_LUC_DIA.bang + đường dò)
   { biome: 'bang', dir: 'hs-luc-dia-bang-v1', nen: 'assets/backdrop/backdrop_luc_dia_bang.png', decor: M(8), neoCat: [0.5, 0.97], neoRieng: { 3: [0.5, 0.5] } /* cầu băng: neo tâm lối qua cầu */ },
+  // 03/10 (Thùy: "đã cập nhật đủ các dạng địa hình"): 4 kit còn lại — công trình + nền, nhân vật dùng chung (nv bỏ qua)
+  { biome: 'nui_lua', dir: 'hs-luc-dia-nui_lua-v1', nen: 'assets/backdrop/backdrop_luc_dia_nui_lua.png', decor: ['decor_01_nha_da_den', 'decor_02_leu_da', 'decor_03_thap_dung_nham', 'decor_04_cau_da_dung_nham', 'decor_05_den_lua', 'decor_06_cua_mieng_nui_lua', 'decor_07_phao_dai_da_den', 'decor_08_lau_dai_dung_nham'], neoCat: [0.5, 0.95] },
+  { biome: 'dong_gio', dir: 'hs-luc-dia-dong_gio-v1', nen: 'assets/backdrop/backdrop_luc_dia_dong_gio.png', decor: ['decor_01_nha_coi_xay', 'decor_02_leu_trai', 'decor_03_thap_gio', 'decor_04_cau_da', 'decor_05_den_gio', 'decor_06_ham_mo', 'decor_07_phao_dai_da', 'decor_08_lau_dai_coi_xay'], neoCat: [0.5, 0.95] },
+  { biome: 'bien_dao', dir: 'hs-luc-dia-bien_dao-v1', nen: 'assets/backdrop/backdrop_luc_dia_bien_dao.png', decor: ['decor_01_nha_mai_xanh', 'decor_02_leu_vai', 'decor_03_hai_dang', 'decor_04_cau_da_voi', 'decor_05_den_dia_trung_hai', 'decor_06_hang_bien', 'decor_07_phao_dai_tau', 'decor_08_lau_dai_vo_so'], neoCat: [0.5, 0.95] },
+  { biome: 'troi_sao', dir: 'hs-luc-dia-troi_sao-v1', nen: 'assets/backdrop/backdrop_luc_dia_troi_sao.png', decor: ['decor_01_nha_may', 'decor_02_leu_lua', 'decor_03_thap_pha_le', 'decor_04_cau_vong', 'decor_05_den_may', 'decor_06_hang_sao', 'decor_07_phao_dai_thien_thach', 'decor_08_lau_dai_troi'], neoCat: [0.5, 0.95], neoRieng: { 3: [0.5, 0.5] } /* cầu vồng: neo tâm mặt cầu */ },
   { biome: 'anh_dao', dir: 'hs-luc-dia-and_dao-v4', nen: 'assets/backdrop/backdrop_luc_dia_and_dao.png', decor: M(8), neoCat: [0.5, 0.94],
     nam: ['chibi_nam_dung', 'chibi_nam_chay_1', 'chibi_nam_chay_2'], nu: ['chibi_nu_dung', 'chibi_nu_chay_1', 'chibi_nu_chay_2'] },
 ]
@@ -42,8 +47,11 @@ async function cat(a, b, k, ra) {
 // Kit rừng v4 (Thùy 02/10): neo chân lấy từ kien_truc_chibi_v4.json của kit (ground_anchor theo canvas gốc) thay cho bảng cũ trong DESIGN.md
 try { const j = JSON.parse(fs.readFileSync(path.join(SRC, 'lục địa rừng/assets/decor/kien_truc_chibi_v4.json'), 'utf8')); const r = KITS.find((k) => k.biome === 'rung'); r.neoGoc = r.decor.map((d) => j[d + '.png'].ground_anchor) } catch (e) { console.warn('không đọc được kien_truc_chibi_v4.json — dùng neo cũ', e.message) }
 
-const meta = {}
+const ANH_TS = 'src/screens/hocsinh/phieuluu/ban2d/kitLucDia.anh.ts'
+const CHON = process.argv[2]?.split(',')
+const meta = CHON ? JSON.parse(fs.readFileSync(ANH_TS, 'utf8').slice(fs.readFileSync(ANH_TS, 'utf8').indexOf('> = {') + 4)) : {}
 for (const kit of KITS) {
+  if (CHON && !CHON.includes(kit.biome)) continue
   const dir = path.join(SRC, kit.dir), out = path.join(OUT, kit.biome); fs.mkdirSync(out, { recursive: true })
   const nen = await loadImage(path.join(dir, kit.nen)), cn = createCanvas(nen.width, nen.height); cn.getContext('2d').drawImage(nen, 0, 0)
   fs.writeFileSync(path.join(out, 'nen.jpg'), cn.toBuffer('image/jpeg', 80))
@@ -69,5 +77,5 @@ for (const kit of KITS) {
   meta[kit.biome] = nv.nam ? { moc, nv } : { moc }
   console.log(kit.biome, 'ok', moc.map((m) => `${m.w}x${m.h}`).join(' '))
 }
-fs.writeFileSync('src/screens/hocsinh/phieuluu/ban2d/kitLucDia.anh.ts',
+fs.writeFileSync(ANH_TS,
   `// SINH TỰ ĐỘNG bởi scripts/anime-kit-lucdia.mjs — đừng sửa tay. Kích thước (px) + neo (0–1 trong hộp đã cắt) của ảnh công trình / nhân vật từng kit lục địa.\nexport interface AnhKit { w: number; h: number; ax: number; ay: number }\nexport const ANH_KIT: Record<string, { moc: AnhKit[]; nv?: { nam: AnhKit; nu: AnhKit } }> = ${JSON.stringify(meta, null, 2)}\n`)

@@ -62,6 +62,32 @@ export const KIT_LUC_DIA: Record<string, KitLucDia> = {
     ...duongCua('sa_mac', '0,88* 100,34*'),
     chu: { mau: '#50372D', vien: '#FFF3D6' }, nv: [5, 7, 9],
   },
+  // 03/10 — 4 kit còn lại (Thùy: "đã cập nhật đủ các dạng địa hình"). Chân + bề rộng = KHỚP ảnh reference của kit (xếp chồng công trình lên nền rồi so với reference); đường = dò thật từ nền.
+  // nui_lua + dong_gio cùng bố cục (DESIGN.md kit); bien_dao + troi_sao bố cục RIÊNG (kit không có DESIGN.md — tự đo từ reference): cầu ở mốc 4 là mốc chạy qua cầu.
+  nui_lua: {
+    biome: 'nui_lua',
+    moc: [{ x: 7.7, y: 50, w: 9.2 }, { x: 24, y: 30, w: 12.5 }, { x: 36, y: 64, w: 9.5 }, { x: 46, y: 32, w: 13 }, { x: 63.7, y: 37, w: 13.5 }, { x: 57, y: 71, w: 18 }, { x: 81, y: 75.5, w: 20 }, { x: 88, y: 44, w: 20 }],
+    ...duongCua('nui_lua', '0,51* 100,52*'),
+    chu: { mau: '#FFF0D4', vien: '#2A1A2E' }, nv: [5, 7, 9],
+  },
+  dong_gio: {
+    biome: 'dong_gio',
+    moc: [{ x: 7.7, y: 50, w: 9.2 }, { x: 24, y: 30, w: 12.5 }, { x: 36, y: 64, w: 9.5 }, { x: 46, y: 32, w: 13 }, { x: 63.7, y: 37, w: 13.5 }, { x: 57, y: 71, w: 18 }, { x: 81, y: 75.5, w: 20 }, { x: 88, y: 44, w: 20 }],
+    ...duongCua('dong_gio', '0,53* 100,57*'),
+    chu: { mau: '#FFF7DA', vien: '#243B25' }, nv: [5, 7, 9],
+  },
+  bien_dao: {
+    biome: 'bien_dao',
+    moc: [{ x: 9.6, y: 38, w: 10.3 }, { x: 23.3, y: 70, w: 9.5 }, { x: 34, y: 45.7, w: 6.2 }, { x: 47.3, y: 57, w: 11.5 }, { x: 56.8, y: 35.2, w: 9.3 }, { x: 66, y: 82.5, w: 13.5 }, { x: 74.7, y: 58, w: 13.5 }, { x: 90.4, y: 51, w: 18 }],
+    ...duongCua('bien_dao', '0,35* 100,54*'),
+    chu: { mau: '#FFF8E6', vien: '#1B3558' }, nv: [5, 7, 9],
+  },
+  troi_sao: {
+    biome: 'troi_sao',
+    moc: [{ x: 10.7, y: 36, w: 10 }, { x: 23.4, y: 66, w: 11.5 }, { x: 37, y: 46.5, w: 11.5 }, { x: 50.7, y: 52, w: 18 }, { x: 58.7, y: 35.6, w: 13 }, { x: 67.8, y: 65.9, w: 13 }, { x: 84.6, y: 53, w: 15.8 }, { x: 90.2, y: 30.3, w: 17.5 }],
+    ...duongCua('troi_sao', '0,40* 100,31*'),
+    chu: { mau: '#3A2D6B', vien: '#FFF6FF' }, nv: [5, 7, 9],
+  },
 }
 
 /** Màu 5 sao đè lên TRANH lục địa (chung mọi kit): vàng rực + viền tối + viên thuốc tối — tách khỏi nền xanh/vàng/cát. Đổi 1 chỗ. */
