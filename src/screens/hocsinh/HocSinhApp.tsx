@@ -27,7 +27,7 @@ import ThanhChonMon from './ThanhChonMon'
 import { ChonDangChuDe, ChonLoaiTuLuyen } from './TuLuyenChuDe'
 import { GameNhungHS, GiaiVoDichHS, HocTapHS } from './hoctap/HocTapHS'
 import { ChonNhanVatHS } from './hoctap/ChonNhanVatHS'
-import { laNvMoi, type NvMoi } from './skin/nhanVat'
+import { laNvChon, type NvId } from './skin/nhanVat'
 import { chonNhanVat, nhanVatCuaToi } from '../../lib/giaodien_hs'
 import { NhungHet, type NhungDau } from './phieuluu/nhungDau'
 import { TheTran, PHIEN, CLS_PHIEN, NgocChu, NUT_TRAN, HOP_LOI_GIAI, FONT_TRAN } from './skin/KhungTran'
@@ -436,8 +436,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [nhom912, setNhom912] = useState<boolean | null>(null)
   const [giaoDien, setGiaoDien] = useState<GiaoDien | null | undefined>(undefined)
   // NHÂN VẬT CHÍNH (Thùy 03/10): undefined = đang tải · null = chưa chọn ⇒ bấm Học tập hiện màn chọn · mã = dùng cho bản đồ/đấu trường
-  const [nhanVat, setNhanVat] = useState<NvMoi | null | undefined>(undefined)
-  useEffect(() => { if (HOC_TAP) nhanVatCuaToi().then((v) => setNhanVat(laNvMoi(v) ? v : null)).catch(() => setNhanVat(null)) }, [])
+  const [nhanVat, setNhanVat] = useState<NvId | null | undefined>(undefined)
+  useEffect(() => { if (HOC_TAP) nhanVatCuaToi().then((v) => setNhanVat(laNvChon(v) ? v : null)).catch(() => setNhanVat(null)) }, [])
   const [duLieu912, setDuLieu912] = useState<Home912 | null>(null)
   useEffect(() => { khoiCuaHS().then((k) => setNhom912(!!k && KHOI_CHON_SKIN.has(k))).catch(() => setNhom912(false)) }, [])
   useEffect(() => {

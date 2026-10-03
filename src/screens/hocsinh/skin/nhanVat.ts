@@ -1,7 +1,8 @@
 // NHÂN VẬT CHÍNH CỦA EM — 1 cửa cho mọi chỗ vẽ nhân vật (bản đồ: chạy/bay · Đấu trường: 15 tư thế chiến đấu). Thùy 03/10: "chọn nhân vật khi bấm Học tập,
 // nhân vật này dùng cho mọi hoạt động của app — coi như nhân vật chính". Mã nhân vật:
 //   · 4 class mới em chọn: su_tu · cao · ninja · elf (skin/nhanVatChinh.ts — sinh từ kit)
-//   · 'nam' | 'nu' = nhà thám hiểm cũ (heroChay.ts + heroDau.ts) — dùng khi em CHƯA chọn (theo giới tính)
+//   · 'nam' | 'nu' = 2 nhà thám hiểm ban đầu (heroChay.ts + heroDau.ts) — CŨNG chọn được (Thùy 03/10: "tính cả 2 nhân vật ban đầu là 6");
+//     em chưa chọn ⇒ tạm dùng nhà thám hiểm theo giới tính
 // Lựa chọn lưu ở DB (bảng hs_nhan_vat_chinh, RPC fn_hs_nhan_vat_cua_toi / fn_hs_chon_nhan_vat) — điện thoại và iPad cùng 1 nhân vật.
 import { HERO_CHAY, anhChay, hopVe } from './heroChay'
 import { HERO_DAU, THAN_DUNG, anhDau, hopDau, type TuTheDau } from './heroDau'
@@ -10,6 +11,15 @@ import { NHAN_VAT_CHINH, NV_MOI, type NvMoi } from './nhanVatChinh'
 export type NvId = 'nam' | 'nu' | NvMoi
 export { NV_MOI, NHAN_VAT_CHINH, type NvMoi }
 export const laNvMoi = (id: string | null | undefined): id is NvMoi => !!id && (NV_MOI as string[]).includes(id)
+/** 6 nhân vật em chọn được (thứ tự hiện trên màn chọn) — khớp CHECK bảng hs_nhan_vat_chinh. */
+export const NV_CHON: NvId[] = ['nam', 'nu', ...NV_MOI]
+export const laNvChon = (id: string | null | undefined): id is NvId => !!id && (NV_CHON as string[]).includes(id)
+const TT_CU: Record<'nam' | 'nu', { ten: string; moTa: string }> = {
+  nam: { ten: 'Nhà thám hiểm', moTa: 'Áo choàng xanh, gan dạ khám phá' },
+  nu: { ten: 'Nữ thám hiểm', moTa: 'Áo choàng xanh, nhanh nhẹn tinh ý' },
+}
+export const tenNv = (id: NvId) => (laNvMoi(id) ? NHAN_VAT_CHINH[id].ten : TT_CU[id].ten)
+export const moTaNv = (id: NvId) => (laNvMoi(id) ? NHAN_VAT_CHINH[id].moTa : TT_CU[id].moTa)
 const G = '/bk-ui/hs/skin/rpg/nhanvat'
 
 // ── CHẠY / BAY (bản đồ) ─────────────────────────────────────────────────────

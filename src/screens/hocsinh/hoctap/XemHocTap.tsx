@@ -4,14 +4,14 @@ import { useState } from 'react'
 import { DauTrangHS, ManHS, TrongHS } from '../skin/KhungHS'
 import { GameNhungHS, GiaiVoDichHS, HocTapHS } from './HocTapHS'
 import { ChonNhanVatHS } from './ChonNhanVatHS'
-import { laNvMoi, type NvMoi } from '../skin/nhanVat'
+import { laNvChon, type NvId } from '../skin/nhanVat'
 
 type Man = 'hub' | 'dau_truong' | 'chinh_phuc' | 'giai' | 'can_tk' | 'nhan_vat'
 
 export default function XemHocTap() {
   const q = new URLSearchParams(location.search), mon = q.get('mon') ?? 'Toán', khoi = q.get('khoi') ?? '7' // &khoi=: khối của em (giả)
   // nhân vật: trang xem thử nhớ trong máy (localStorage) — app thật lưu DB. &nv=0 xoá để xem lại màn chọn lần đầu.
-  const [nv, setNv] = useState<NvMoi | null>(() => { try { if (q.get('nv') === '0') localStorage.removeItem('xem_nv'); const v = localStorage.getItem('xem_nv'); return laNvMoi(v) ? v : null } catch { return null } })
+  const [nv, setNv] = useState<NvId | null>(() => { try { if (q.get('nv') === '0') localStorage.removeItem('xem_nv'); const v = localStorage.getItem('xem_nv'); return laNvChon(v) ? v : null } catch { return null } })
   const [man, setMan] = useState<Man>(nv ? 'hub' : 'nhan_vat')
   const ve = () => setMan('hub')
   if (man === 'nhan_vat') return <ChonNhanVatHS dangCo={nv} luu={async (id) => { try { localStorage.setItem('xem_nv', id) } catch { /* bỏ qua */ } }} onXong={(id) => { setNv(id); setMan('hub') }} onBack={ve} />

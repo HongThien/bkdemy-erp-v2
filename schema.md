@@ -2790,7 +2790,7 @@
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
-| nhan_vat | text |  |  |  | `su_tu` · `cao` · `ninja` · `elf` |
+| nhan_vat | text |  |  |  | `nam` · `nu` · `su_tu` · `cao` · `ninja` · `elf` |
 | chon_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
 
