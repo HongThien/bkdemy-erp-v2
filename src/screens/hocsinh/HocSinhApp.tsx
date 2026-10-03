@@ -24,11 +24,13 @@ import {
   TU_LUYEN_SO_CAU_MOI_LUOT, type XepHangRow, type LopMonHS,
 } from '../../lib/tuluyen'
 import ThanhChonMon from './ThanhChonMon'
-import { ChonDangChuDe } from './TuLuyenChuDe'
+import { ChonDangChuDe, ChonLoaiTuLuyen } from './TuLuyenChuDe'
 import { GameNhungHS, GiaiVoDichHS, HocTapHS } from './hoctap/HocTapHS'
 import { NhungHet, type NhungDau } from './phieuluu/nhungDau'
 import { TheTran, PHIEN, CLS_PHIEN, NgocChu, NUT_TRAN, HOP_LOI_GIAI, FONT_TRAN } from './skin/KhungTran'
-import { phieuLuuBat } from './phieuluu/coBat'
+import { hocTapBat, phieuLuuBat } from './phieuluu/coBat'
+// Khu HỌC TẬP (5 đảo) — sau CỜ, mặc định TẮT ở bản thật (bật ở bản thử nghiệm / ?hoctap=1). Tắt ⇒ ô Tự luyện + màn chọn cũ như trước 03/10.
+const HOC_TAP = hocTapBat()
 const PhieuLuuHS = lazy(() => import('./phieuluu/PhieuLuuHS'))
 import { laCap2HS, mayManHSCuaToi } from '../../lib/maymai_hs'
 import { htdCoMo, htdSinh, htdCauBaiTest, type CauHTD } from '../../lib/hoctudau'
@@ -100,7 +102,7 @@ const KHU: { id: KhuId; ten: string; icon: string; loai?: string; direct?: boole
   { id: 'giao_trinh', ten: 'Bài tập trên lớp', icon: '📓', loai: 'giao_trinh', mau: 'brand' },
   { id: 'et', ten: 'ET', icon: '📋', loai: 'et', mau: 'ph-purple' },
   { id: 'btvn', ten: 'BTVN', icon: '🏠', loai: 'btvn', mau: 'ph-orange' },
-  { id: 'tu_luyen', ten: 'Học tập', icon: '🎯', direct: true, mau: 'ph-green' }, // Thùy 03/10: Tự luyện ⇒ khu HỌC TẬP 5 ô (spec-che-do-game §7)
+  { id: 'tu_luyen', ten: HOC_TAP ? 'Học tập' : 'Tự luyện', icon: '🎯', direct: true, mau: 'ph-green' }, // Thùy 03/10: Tự luyện ⇒ khu HỌC TẬP 5 ô (spec-che-do-game §7)
   { id: 'nhiem_vu', ten: 'Nhiệm vụ', icon: '📜', direct: true, mau: 'ph-green' }, // Thùy 01/10: ra màn chính · 03/10: xuống khối Giải trí
   { id: 'thong_tin', ten: 'Thông tin học tập', icon: '📈', direct: true, mau: 'brand' },
   { id: 'so_tay', ten: 'Sổ tay kiến thức', icon: '📖', direct: true, mau: 'ph-purple' },
@@ -114,7 +116,7 @@ const KHU: { id: KhuId; ten: string; icon: string; loai?: string; direct?: boole
 //  vòng quay 4 EXP có điều kiện 10 câu tự luyện đúng ≥70% + tối đa 1 lượt/ngày.)
 // Cấp 3 (khối 10-12) — Thùy CHƯA nói đổi, giữ KHU cũ. Cấp 1 dùng HomeCap1 riêng, không đụng.
 const KHU_CAP2: { id: KhuId; ten: string; icon: string; direct?: boolean; sapCo?: boolean }[] = [
-  { id: 'tu_luyen',      ten: 'Học tập',            icon: '🎯', direct: true },
+  { id: 'tu_luyen',      ten: HOC_TAP ? 'Học tập' : 'Tự luyện', icon: '🎯', direct: true },
   { id: 'nhiem_vu',      ten: 'Nhiệm vụ',           icon: '📜', direct: true },  // Thùy 01/10: ra màn chính · 03/10: khối Giải trí
   { id: 'thong_tin',     ten: 'Thông tin học tập',  icon: '📈', direct: true },
   { id: 'so_tay',        ten: 'Sổ tay kiến thức',   icon: '📖', direct: true },
@@ -254,7 +256,7 @@ function Head({ title, sub, onBack }: { title: string; sub?: string; onBack: () 
 type BoxCap1DirectId = 'tu_luyen' | 'thong_tin' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu'
 type BoxCap1 = { id: BoxCap1DirectId; ten: string; mo_ta: string; icon: string; grad: string } | { id: string; ten: string; mo_ta: string; icon: string; grad: string; sapCo: true }
 const BOX_CAP1: BoxCap1[] = [
-  { id: 'tu_luyen',     ten: 'Học tập',            mo_ta: 'Cùng BK chinh phục thế giới.', icon: '🎯', grad: 'from-[#f0e9ff] to-[#faf8ff]' },
+  { id: 'tu_luyen',     ten: HOC_TAP ? 'Học tập' : 'Tự luyện', mo_ta: HOC_TAP ? 'Cùng BK chinh phục thế giới.' : 'Luyện theo dạng bài còn yếu hoặc chủ động chọn nội dung muốn ôn tập.', icon: '🎯', grad: 'from-[#f0e9ff] to-[#faf8ff]' },
   { id: 'thong_tin',    ten: 'Thông tin học tập',  mo_ta: 'Xem kết quả gần nhất, dạng đang yếu, nhận xét và gợi ý ôn tập.',      icon: '📘', grad: 'from-[#e9f9ff] to-[#f6fdff]' },
   { id: 'so_tay',       ten: 'Sổ tay kiến thức',   mo_ta: 'Tra lý thuyết và bài mẫu của từng dạng bài — tìm theo tên hoặc lọc dần.', icon: '📖', grad: 'from-[#f3ecff] to-[#fbf8ff]' },
   { id: 'de_thi_thu',   ten: 'Làm đề thi thử',     mo_ta: 'Đề trường/sở để em luyện làm bài thi thật — sắp mở.',                 icon: '📄', grad: 'from-[#eef2ff] to-[#f7f9ff]', sapCo: true },
@@ -506,6 +508,13 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (doiMK) return <DoiMatKhau maHS={maHS} batBuoc={false} onXong={() => setDoiMK(false)} />
 
   // KHU HỌC TẬP (Thùy 03/10, spec-che-do-game §7): 5 ô — giữ tên trạng thái 'tu_luyen_chon' để mọi nút "lùi" cũ về đúng khu này.
+  if (direct === 'tu_luyen_chon' && !HOC_TAP) return <ChonLoaiTuLuyen gioiTinh={gt}
+    onTongHop={() => { setChuDeDang(null); setDirect('tu_luyen') }}
+    onChuDe={() => setDirect(giaoDien?.skin && monChon && banDoBat() ? 'phieu_luu' : 'tu_luyen_chu_de_ds')}
+    onThuThach={() => setDirect('thu_thach')}
+    onRank={() => { setTuHoSo(false); setTuHome(false); setDirect('rank') }}
+    onNhiemVu={() => { setTuHome(false); setDirect('nhiem_vu') }}
+    onBack={() => setDirect(null)} />
   if (direct === 'tu_luyen_chon') return <HocTapHS
     onChuDe={() => setDirect(giaoDien?.skin && monChon && banDoBat() ? 'phieu_luu' : 'tu_luyen_chu_de_ds')}
     onYeu={() => { setChuDeDang(null); setDirect('tu_luyen') }}
@@ -518,7 +527,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'dau_truong_bk') return <GameNhungHS vao="chu_de" tieuDe="Đấu trường BK" onBack={() => setDirect('tu_luyen_chon')} />
   if (direct === 'chinh_phuc_bk') return <GameNhungHS vao="thap" tieuDe="Chinh phục BK" onBack={() => setDirect('tu_luyen_chon')} />
   if (direct === 'giai_vo_dich') return <GiaiVoDichHS onBack={() => setDirect('tu_luyen_chon')} onDauMay={() => setDirect('thu_thach')} />
-  if (direct === 'phieu_luu' && monChon) return <Suspense fallback={null}><PhieuLuuHS hocSinhId={hocSinhId} mon={monChon} gioiTinh={gioiTinh} skin={(giaoDien ?? GD_MAC_DINH).skin} LamBai={LamBai} onVe={() => setDirect('tu_luyen_chon')}
+  if (direct === 'phieu_luu' && monChon) return <Suspense fallback={null}><PhieuLuuHS hocSinhId={hocSinhId} mon={monChon} gioiTinh={gioiTinh} skin={(giaoDien ?? GD_MAC_DINH).skin} LamBai={LamBai} onVe={() => setDirect(HOC_TAP ? 'tu_luyen_chon' : null)}
     onTongHop={() => { setChuDeDang(null); setDirect('tu_luyen') }} onThuThach={() => setDirect('thu_thach')} /></Suspense>
   if (direct === 'nhiem_vu') return <NhiemVuHS gioiTinh={gt} onBack={() => setDirect(tuHome ? null : 'tu_luyen_chon')}
     onThuThach={() => setDirect('thu_thach')} onTuLuyen={() => { setChuDeDang(null); setDirect('tu_luyen') }} onVongQuay={() => setDirect('may_man')} />
@@ -638,7 +647,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   }
   const anO = new Set((['nhiem_vu', 'rank'] as KhuId[]).filter((id) => oGami(id) === null))
 
-  const CHU_DUOI: Partial<Record<KhuId, string>> = { tu_luyen: 'Cùng BK chinh phục thế giới', thong_tin: 'Dạng đang yếu', xep_hang: 'Thi đua tự luyện', so_tay: 'Tra lý thuyết & bài mẫu', the_gioi: 'Xem HS BK đang khoe gì', thu_vien: 'Tìm hiểu mọi thứ trên app' }
+  const CHU_DUOI: Partial<Record<KhuId, string>> = { tu_luyen: HOC_TAP ? 'Cùng BK chinh phục thế giới' : 'Luyện theo dạng yếu', thong_tin: 'Dạng đang yếu', xep_hang: 'Thi đua tự luyện', so_tay: 'Tra lý thuyết & bài mẫu', the_gioi: 'Xem HS BK đang khoe gì', thu_vien: 'Tìm hiểu mọi thứ trên app' }
 
   // ── MÀN CHÍNH: ô vuông (theo cấp/khối), 2 cột ─────────────────────────────
   if (!khu && (cap1 === null || cap2 === null || nhom912 === null || (nhom912 && giaoDien === undefined))) return <ManCho>Đang tải…</ManCho>
@@ -682,7 +691,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
             : k.id === 'thanh_tuu' ? ['Xem giải thưởng của em', 'xam']
             : k.id === 'may_man' ? (maymanCoLuot ? ['Có 1 lượt quay!', 'ton'] : ['Chưa có lượt hôm nay', 'xam'])
             : k.id === 'bai_tap_giao' ? ['Đang phát triển', 'xam']
-            : k.id === 'tu_luyen' ? ['Cùng BK chinh phục thế giới', 'xam']
+            : k.id === 'tu_luyen' ? [HOC_TAP ? 'Cùng BK chinh phục thế giới' : 'Luyện theo dạng yếu', 'xam']
             : k.id === 'thong_tin' ? ['Dạng đang yếu', 'xam']
             : k.id === 'so_tay' ? ['Tra lý thuyết & bài mẫu', 'xam']
             : k.id === 'vi_xu' ? ['Xem xu & lịch sử', 'xam']
@@ -693,7 +702,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
           return {
             id: k.id, ten: k.ten, icon: k.icon, sub, subMau, badge, disabled: !!k.sapCo, nhom: KHU_CHOI.has(k.id) ? 'choi' : 'hoc', ...KIT_O[k.id], ...(k.sapCo ? { ill: 'mock_exam_locked', emoji: undefined, doodle: 'Sắp ra mắt! Hãy chờ nhé!', tone: 'gray' as const } : {}),
             onClick: k.sapCo ? undefined : k.direct
-              ? () => setDirect(k.id === 'tu_luyen' ? 'tu_luyen_chon' : (k.id as 'thong_tin' | 'may_man' | 'thanh_tuu' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'thu_vien'))
+              ? () => setDirect(k.id === 'tu_luyen' ? (HOC_TAP || !(monChon && banDoBat()) ? 'tu_luyen_chon' : 'phieu_luu') : (k.id as 'thong_tin' | 'may_man' | 'thanh_tuu' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'thu_vien'))
               : () => { setKhu(k.id); setTab('chua') },
             ...khoaThieuKho(k.id),
             ...(oGami(k.id) ?? {}),

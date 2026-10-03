@@ -35287,3 +35287,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 
 - (03/10 khuya, Đấu từ · nhúng) Thùy: "các chỗ học đều có filter lớp — chỉ nên hiện lớp nó đang học" ⇒ trong app HS (nhúng) ẩn hàng chọn khối cả ở màn chọn chủ đề Đấu trường (Leo tháp đã ẩn trước). Chỉ áp môn theo khối (kho DB); Tiếng Anh lọc theo CẤP ĐỘ từ (không phải lớp) nên không đặt khối vào kho cấp của Anh (đặt vào sẽ ra id cấp không tồn tại).
+
+- (03/10 khuya, Giao diện) **Thử nghiệm trước khi release** (Thùy: "thử trên cả điện thoại và iPad, không ảnh hưởng học sinh"): khu Học tập đưa SAU CỜ (`phieuluu/coBat.ts` → `hocTapBat`, `?hoctap=1|0`, máy nhớ) — tắt ⇒ ô Tự luyện + màn chọn cũ y như trước 03/10. Cờ mặc định TẮT trên domain thật, TỰ BẬT ở bản thử nghiệm (`*.vercel.app` Preview · localhost · LAN 192.168/10.x) — áp cho cả bản đồ phiêu lưu. Tạo nhánh `thu-nghiem` để Thùy deploy Preview trên Vercel; đăng nhập bằng TEST01–TEST10 (lớp test cô lập). Lưu ý: Preview dùng CHUNG DB; game Đấu từ lưu theo máy ⇒ chơi thử lên BXH Đấu từ.
