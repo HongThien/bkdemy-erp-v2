@@ -85,3 +85,10 @@ Sau này: nối thẻ ↔ `ma_dang` (nhiều-nhiều) để từ thẻ bấm san
 - Mig `202610031141_sotay_tim_theo_lop` (ĐÃ ÁP): `hs_sotay_tim_lt` (MỚI — lý thuyết mọi nhánh, kèm `nhanh` từng dòng) · `hs_sotay_cay_hs` (MỚI — cây dạng bài của lớp em; trống ⇒ lớp cao nhất ≤ lớp em) ·
   `hs_sotay_tim_ct` + `hs_sotay_muc_cay` replace cùng luật. `hs_sotay_cay`/`hs_sotay_tim` cũ (owner postgres) để nguyên, app thôi gọi. Xếp: điểm khớp ↓ rồi lớp ↓.
 - Cây (không tìm) chỉ còn lớp của em; lớp dưới xem qua ô tìm. Kiểm: `scripts/_q_sotay_lop_dryrun.mjs` (HS thật lớp 6/9/12 + nhân sự, rollback).
+
+## 9. Một khuôn sổ tay cho MỌI môn (Thùy 03/10)
+| # | Quyết định | Ai / khi nào |
+|---|---|---|
+| 1 | Màn đọc 1 kiến thức = màn RIÊNG nền sáng theo file gốc KHTN Pocket (`ManDocHS` — luật chung ở design/STYLE-HS.md §2 "Menu vs màn riêng"). | Thùy 03/10 |
+| 2 | **Toán và Tiếng Anh (và môn sau này) theo đúng khuôn này** — cùng màn đọc, cùng bộ phần của mục (tóm tắt · công thức · kí hiệu · ý chính · bảng · ví dụ từng bước · hay nhầm · liên quan). Nhãn loại theo đặc trưng môn. | Thùy 03/10 |
+| 3 | Phạm vi Claude: chỉ phần SỔ TAY của app HS. Các màn khác của app HS Thùy làm riêng. | Thùy 03/10 |
