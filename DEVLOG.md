@@ -35318,3 +35318,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   registry (Gán mẫu vẫn chỉ Đại). tsc sạch.
 
 - (03/10 chiều, Giao diện) Cờ tính năng HS nhận biết bản thử nghiệm CHẮC hơn: vite.config.hs.ts define __VERCEL_ENV__ (Vercel đặt VERCEL_ENV lúc build) ⇒ build Preview luôn BẬT khu Học tập + bản đồ, build Production luôn TẮT, không phụ thuộc domain Preview; build ngoài Vercel ⇒ bật trừ domain thật hs.bkacademy.edu.vn. Kiểm bằng build giả lập: preview ⇒ banThuNghiem bị gập thành return!0, production ⇒ return!1. Đẩy main + nhánh thu-nghiem.
+- (03/10 tối, Sổ tay) **Hình KHTN: chép bộ vẽ bằng mã của KHTN Pocket vào app** (Thùy chọn B: "chép cả code lại vào app luôn mới chuẩn"). Lúc nạp KHTN, 109 hình
+  chỉ lưu mã trong câu mô tả, url null ⇒ app không hiện hình. Lấy bundle Pocket (artifact "Sổ tay KHTN 6–9") — bộ vẽ là `fig.js…fig8.js` (+ esc, bkBohr/shellsOf/bohrG),
+  sinh chuỗi SVG thuần, tô bằng class `fg-*`. Dò trong vm cô lập với 109 mã thật: 103 ngay, 6 Bohr cần thêm 3 hàm phụ ⇒ 109/109. Có `document.addEventListener` (chạm
+  bộ phận tế bào) — giữ nguyên. CSS 201 luật, 8 biến màu ⇒ nối vào `--sk-doc-*` trong `.so-tay-hinh`. `chep-hinh-ve.mjs` sinh `src/lib/sotayHinh/hinhVe.{js,css}`.
+  Mig `202610031309` ĐÃ ÁP: cột `ve` + chép mã 109 hình + `_sotay_muc_json` trả `hinh_ve`. Dính: `HinhVe.tsx` trùng tên `hinhVe.js` khác hoa thường (Windows) ⇒ đổi
+  `HinhBangMa.tsx`. Soi demo: đồ thị Ohm giống bản gốc; tế bào động vật chạm "Nhân" ⇒ tô đỏ + hiện chức năng. build:hs: chunk riêng 96 KB (35 KB gzip). ERP chưa soi (cần đăng nhập).

@@ -29,6 +29,7 @@ import {
 import { soTayTimCt, soTayMucCay, soTayMuc, MUC_LOAI, MUC_LOAI_THU_TU, type CtTimRow, type MucCay, type MucSoTay, type MucLoai } from '../../lib/sotayCongThuc'
 import { ManHS, DauTrangHS, NhomHS, MAU, THE, THE_TRON, HEAD, ManDocHS, TheDocHS, ChipDocHS, KhoiDocHS, TrongDocHS } from './skin/KhungHS'
 import { mauDocMon } from './skin/registry'
+import HinhBangMa from '../../lib/sotayHinh/HinhBangMa'
 
 // Thùy 29/09: mọi màn theo STYLE (skin) em đang chọn — bỏ nền mây + chồng sách + khẩu hiệu + màu theo giới tính.
 // `t` còn truyền qua các mảnh con nhưng mọi giá trị giờ là biến skin (1 bản cho cả nam/nữ).
@@ -502,7 +503,9 @@ function DocMuc({ r, monMo, api, onMo, onBack }: { r: MucSoTay; monMo: string | 
           </KhoiDocHS>
         )}
         {!congThuc && r.bien?.length ? <KhoiDocHS nhan="Kí hiệu"><BangDoc hang={r.bien} dauLaTieuDe={false} tieuDe={dauBien} /></KhoiDocHS> : null}
-        {r.hinh_url && <KhoiDocHS kieu="hinh"><img src={r.hinh_url} alt="" className="max-h-72 w-auto max-w-full rounded-lg" /></KhoiDocHS>}
+        {/* Ảnh người vẽ/tải lên ưu tiên; chưa có ảnh mà có MÃ VẼ (sổ tay KHTN) ⇒ app tự vẽ bằng bộ vẽ chép từ KHTN Pocket. */}
+        {r.hinh_url ? <KhoiDocHS kieu="hinh"><img src={r.hinh_url} alt="" className="max-h-72 w-auto max-w-full rounded-lg" /></KhoiDocHS>
+          : r.hinh_ve ? <HinhBangMa ma={r.hinh_ve} /> : null}
         {r.y?.length ? (
           <ul className="flex flex-col gap-2 text-[15px] leading-[1.7]">
             {r.y.map((x, i) => (

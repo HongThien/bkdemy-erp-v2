@@ -95,3 +95,12 @@ Sau này: nối thẻ ↔ `ma_dang` (nhiều-nhiều) để từ thẻ bấm san
 - **03/10 — 77 thẻ Toán 12 đã theo khuôn mục** (mig `202610031221_sotay_toan12_bo_sung`, ĐÃ ÁP): công thức → `cong_thuc` · `noi_dung` = 1 câu tóm tắt ·
   `vd` (ví dụ từng bước, đã tự tính lại) · `nham` · `bien` (3 thẻ thống kê) · `lq`. Nguồn: `scripts/sotay-cong-thuc/toan12-bo-sung.mjs` (+ `sinh-bo-sung.mjs` kiểm
   đủ mã / lq / KaTeX strict). Vẫn `cho_duyet` — GV duyệt trên ERP. PDF `the-cong-thuc-toan12.pdf` là bản CŨ (trước bổ sung) — duyệt trên ERP, không theo PDF.
+
+## 10. Hình VẼ BẰNG MÃ (Thùy 03/10 — "chép cả code lại vào app")
+- Hình sổ tay KHTN là MÃ `[kiểu:tham số]` (28 kiểu: tế bào, mạch, CTCT, thấu kính, DNA, đồ thị, Bohr, bảng tuần hoàn, Punnett…), không phải ảnh.
+  Bộ vẽ của KHTN Pocket được CHÉP NGUYÊN VĂN vào `src/lib/sotayHinh/hinhVe.js` + `hinhVe.css` bằng `scripts/sotay-khtn/chep-hinh-ve.mjs` (đừng sửa tay —
+  bản Pocket mới thì chạy lại). Giữ cả tương tác chạm bộ phận ⇒ hiện tên + chức năng. Màu hình nối vào biến màn đọc `--sk-doc-*`.
+- DB: `sotay_ct_hinh.ve` (mig `202610031309`, ĐÃ ÁP; CHECK khuôn `[kiểu:tham số]`) — 109 hình KHTN đã có mã. `url` (ảnh) ưu tiên nếu có cả hai.
+  `_sotay_muc_json` trả `hinh_ve`.
+- App: `HinhBangMa` (tải chậm — gói riêng ~35 KB gzip, chỉ nạp khi mở mục có hình). ERP tab Hình: ô sửa mã + xem trước; "đã vẽ" = có ảnh HOẶC có mã.
+- Kiểm: `node scripts/sotay-khtn/kiem-hinh-ve.mjs` (vẽ mọi mã trong DB, 109/109). Toán dùng chung được các kiểu `dothi`, `sodo`… (cú pháp ở đầu từng module trong hinhVe.js).

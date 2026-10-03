@@ -10,9 +10,10 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { MathText } from '../kho/ui'
 import { ImageSlot } from '../kho/DangHub'
+import HinhBangMa from '../../lib/sotayHinh/HinhBangMa'
 import { MathTextarea } from '../../components/math/MathTextarea'
 import {
-  taiBo, luuThe, duyetThe, traVeThe, boDuyetThe, xoaThe, khoiPhucThe, themThe, datAnhHinh, themHinh, lichSu, phamViSoTay,
+  taiBo, luuThe, duyetThe, traVeThe, boDuyetThe, xoaThe, khoiPhucThe, themThe, datAnhHinh, datMaVe, coHinh, themHinh, lichSu, phamViSoTay,
   CT_TRANG_THAI, HANH_DONG_TEN, MUC_LOAI, MUC_LOAI_THU_TU,
   type CtBo, type CtThe, type CtHinh, type CtSua, type CtTrangThai, type CtLichSu, type CtPhamVi,
 } from '../../lib/sotayCongThuc'
@@ -99,7 +100,7 @@ export default function SoTayCongThucScreen() {
     }
   }, [bo])
   const chon = bo?.the.find((t) => t.ma === ma) ?? null
-  const hinhDaVe = (bo?.hinh ?? []).filter((h) => h.url).length
+  const hinhDaVe = (bo?.hinh ?? []).filter(coHinh).length
 
   return (
     <section className="flex h-full min-h-0 flex-col bg-[#f5f5f7]">
@@ -151,7 +152,7 @@ export default function SoTayCongThucScreen() {
             <div className="min-h-0 flex-1 overflow-auto">
               {ds.length === 0 && <p className="p-4 text-[12.5px] text-slate-400">Không có thẻ nào khớp bộ lọc.</p>}
               {ds.map((t) => {
-                const thieuHinh = t.hinh && !bo.hinh.find((h) => h.ma === t.hinh)?.url
+                const thieuHinh = t.hinh && !coHinh(bo.hinh.find((h) => h.ma === t.hinh))
                 return (
                   <button key={t.ma} onClick={() => setMa(t.ma)}
                     className={`block w-full border-b border-slate-100 px-3 py-2 text-left hover:bg-slate-50 ${t.ma === ma ? 'bg-indigo-50' : ''}`}>
@@ -390,7 +391,7 @@ function SuaThe({ t, bo, onVa, onMoHinh }: { t: CtThe; bo: CtBo; onVa: (t: CtThe
           <div>
             <label className={nhan}>Hình minh hoạ</label>
             <ChonHinh hinh={bo.hinh} ma={nhap.hinh} onChon={(m) => set('hinh', m)} />
-            {hinh && !hinh.url && <p className="mt-1 text-[12px] text-amber-700">Hình {hinh.ma} chưa vẽ — gắn ảnh ở <button onClick={onMoHinh} className="underline">tab Hình</button>. HS thấy thẻ không có hình cho tới khi có ảnh.</p>}
+            {hinh && !coHinh(hinh) && <p className="mt-1 text-[12px] text-amber-700">Hình {hinh.ma} chưa vẽ — gắn ảnh ở <button onClick={onMoHinh} className="underline">tab Hình</button>. HS thấy thẻ không có hình cho tới khi có ảnh.</p>}
           </div>
           <div>
             <label className={nhan}>Ghi chú kiểm (chỗ nguồn sai, chỗ cần người duyệt chú ý)</label>
@@ -408,7 +409,7 @@ function SuaThe({ t, bo, onVa, onMoHinh }: { t: CtThe; bo: CtBo; onVa: (t: CtThe
           <div className="sticky top-16">
             <p className={nhan}>HS sẽ thấy</p>
             <XemTruoc ten={sua.ten} chuDe={bo.chuDe.find((c) => c.ma === sua.chu_de)?.ten ?? ''} noiDung={sua.noi_dung}
-              luuY={sua.luu_y} cauNho={sua.cau_nho} hinhUrl={hinh?.url ?? null} sua={sua} />
+              luuY={sua.luu_y} cauNho={sua.cau_nho} hinhUrl={hinh?.url ?? null} hinhVe={hinh?.ve ?? null} sua={sua} />
           </div>
         </div>
       </div>
@@ -416,7 +417,7 @@ function SuaThe({ t, bo, onVa, onMoHinh }: { t: CtThe; bo: CtBo; onVa: (t: CtThe
   )
 }
 
-function XemTruoc({ ten, chuDe, noiDung, luuY, cauNho, hinhUrl, sua }: { ten: string; chuDe: string; noiDung: string; luuY: string | null; cauNho: string | null; hinhUrl: string | null; sua: CtSua }) {
+function XemTruoc({ ten, chuDe, noiDung, luuY, cauNho, hinhUrl, hinhVe, sua }: { ten: string; chuDe: string; noiDung: string; luuY: string | null; cauNho: string | null; hinhUrl: string | null; hinhVe: string | null; sua: CtSua }) {
   const bangNho = (b: string[][]) => (
     <table className="mt-2 w-full border-collapse text-[12px]"><tbody>
       {b.map((h, i) => <tr key={i} className={i === 0 ? 'bg-slate-50 font-semibold' : ''}>{h.map((o, j) => <td key={j} className="border border-slate-200 px-1.5 py-1"><MathText>{o}</MathText></td>)}</tr>)}
@@ -440,7 +441,8 @@ function XemTruoc({ ten, chuDe, noiDung, luuY, cauNho, hinhUrl, sua }: { ten: st
         </div>
       )}
       {sua.nham && <ul className="mt-2 space-y-1 text-[12.5px] text-amber-900">{sua.nham.map((x, i) => <li key={i}>⚠ <MathText>{x}</MathText></li>)}</ul>}
-      {hinhUrl && <img src={hinhUrl} alt="" className="mx-auto mt-3 max-h-56 rounded border border-slate-100" />}
+      {hinhUrl ? <img src={hinhUrl} alt="" className="mx-auto mt-3 max-h-56 rounded border border-slate-100" />
+        : hinhVe ? <div className="mt-3"><HinhBangMa ma={hinhVe} /></div> : null}
       {luuY && <div className="mt-3 rounded-lg bg-amber-50 p-2.5 text-[13px] text-amber-900"><b>Lưu ý: </b><MathText>{luuY}</MathText></div>}
       {cauNho && <div className="mt-2 rounded-lg bg-indigo-50 p-2.5 text-[13px] text-indigo-900"><b>Mẹo nhớ: </b><MathText>{cauNho}</MathText></div>}
     </div>
@@ -460,7 +462,7 @@ function ChonHinh({ hinh, ma, onChon }: { hinh: CtHinh[]; ma: string | null; onC
         {cur ? (
           <span className="flex items-center gap-2 rounded-md bg-white px-2.5 py-1.5 text-[13px] ring-1 ring-slate-200">
             <span className="font-mono text-[11px] text-slate-400">{cur.ma}</span>{cur.ten}
-            {cur.url ? <span className="text-emerald-600">· đã vẽ</span> : <span className="text-amber-600">· chưa vẽ</span>}
+            {coHinh(cur) ? <span className="text-emerald-600">· đã vẽ</span> : <span className="text-amber-600">· chưa vẽ</span>}
             <button onClick={() => onChon(null)} className="text-slate-400 hover:text-rose-500" title="Bỏ hình">✕</button>
           </span>
         ) : <span className="text-[12.5px] text-slate-400">Không có hình</span>}
@@ -472,7 +474,7 @@ function ChonHinh({ hinh, ma, onChon }: { hinh: CtHinh[]; ma: string | null; onC
           {ds.map((h) => (
             <button key={h.ma} onMouseDown={() => { onChon(h.ma); setQ('') }} className="flex w-full items-center gap-2 px-3 py-1.5 text-left text-[13px] hover:bg-indigo-50">
               <span className="font-mono text-[11px] text-slate-400">{h.ma}</span>{h.ten}
-              <span className={`ml-auto text-[11px] ${h.url ? 'text-emerald-600' : 'text-amber-600'}`}>{h.url ? 'đã vẽ' : 'chưa vẽ'}</span>
+              <span className={`ml-auto text-[11px] ${coHinh(h) ? 'text-emerald-600' : 'text-amber-600'}`}>{coHinh(h) ? 'đã vẽ' : 'chưa vẽ'}</span>
             </button>
           ))}
         </div>
@@ -531,7 +533,7 @@ function TabHinh({ bo, mon, khoi, onVa, onMoThe }: { bo: CtBo; mon: string; khoi
   const [loc, setLoc] = useState<'tat_ca' | 'chua' | 'da'>('chua')
   const [loi, setLoi] = useState<string | null>(null)
   const [moi, setMoi] = useState<{ ten: string; mo_ta: string } | null>(null)
-  const ds = bo.hinh.filter((h) => loc === 'tat_ca' || (loc === 'da' ? !!h.url : !h.url))
+  const ds = bo.hinh.filter((h) => loc === 'tat_ca' || (loc === 'da' ? coHinh(h) : !coHinh(h)))
   const maKe = () => {
     const n = Math.max(0, ...bo.hinh.map((h) => Number(h.ma.replace(/\D/g, '')) || 0)) + 1
     return `H${String(n).padStart(2, '0')}`
@@ -539,8 +541,8 @@ function TabHinh({ bo, mon, khoi, onVa, onMoThe }: { bo: CtBo; mon: string; khoi
   return (
     <div className="min-h-0 flex-1 overflow-auto p-5">
       <div className="mb-4 flex flex-wrap items-center gap-2">
-        <Chip on={loc === 'chua'} onClick={() => setLoc('chua')}>Chưa vẽ {bo.hinh.filter((h) => !h.url).length}</Chip>
-        <Chip on={loc === 'da'} onClick={() => setLoc('da')}>Đã vẽ {bo.hinh.filter((h) => h.url).length}</Chip>
+        <Chip on={loc === 'chua'} onClick={() => setLoc('chua')}>Chưa vẽ {bo.hinh.filter((h) => !coHinh(h)).length}</Chip>
+        <Chip on={loc === 'da'} onClick={() => setLoc('da')}>Đã vẽ {bo.hinh.filter(coHinh).length}</Chip>
         <Chip on={loc === 'tat_ca'} onClick={() => setLoc('tat_ca')}>Tất cả</Chip>
         <span className="text-[12px] text-slate-500">Bản in kèm hình mẫu: <code>docs/so-tay-cong-thuc/hinh-can-ve-toan12.pdf</code></span>
         <button onClick={() => setMoi(moi ? null : { ten: '', mo_ta: '' })} className="ml-auto rounded-md border border-dashed border-indigo-300 px-3 py-1.5 text-[12.5px] text-indigo-600">+ Thêm hình</button>
@@ -564,11 +566,13 @@ function TabHinh({ bo, mon, khoi, onVa, onMoThe }: { bo: CtBo; mon: string; khoi
               <div className="flex items-center gap-2">
                 <span className="font-mono text-[12px] text-slate-400">{h.ma}</span>
                 <span className="text-[14px] font-semibold text-slate-800">{h.ten}</span>
-                <span className={`ml-auto text-[11.5px] ${h.url ? 'text-emerald-600' : 'text-amber-600'}`}>{h.url ? 'đã vẽ' : 'chưa vẽ'}</span>
+                <span className={`ml-auto text-[11.5px] ${coHinh(h) ? 'text-emerald-600' : 'text-amber-600'}`}>{h.url ? 'ảnh' : h.ve ? 'vẽ bằng mã' : 'chưa vẽ'}</span>
               </div>
               <p className="text-[12.5px] leading-snug text-slate-600">{h.mo_ta}</p>
+              {!h.url && h.ve && <HinhBangMa ma={h.ve} />}
               <ImageSlot url={h.url} label={`Ảnh ${h.ma}`}
                 onChange={(url) => { setLoi(null); datAnhHinh(h, url).then(onVa).catch((e) => setLoi(loiMsg(e))) }} />
+              <SuaMaVe h={h} onVa={onVa} onLoi={setLoi} />
               <div className="flex flex-wrap gap-1 pt-1">
                 {dung.map((t) => (
                   <button key={t.ma} onClick={() => onMoThe(t.ma)} className="rounded bg-slate-100 px-2 py-0.5 text-[11.5px] text-slate-600 hover:bg-indigo-100" title={t.ten}>{t.ma}</button>
@@ -579,6 +583,26 @@ function TabHinh({ bo, mon, khoi, onVa, onMoThe }: { bo: CtBo; mon: string; khoi
           )
         })}
       </div>
+    </div>
+  )
+}
+
+// Ô sửa MÃ VẼ của 1 hình (sổ tay KHTN: hình là mã [kiểu:tham số], app tự vẽ — mig 202610031309). Có ảnh thì ảnh được ưu tiên.
+// Gõ là xem trước ngay; Lưu mới ghi DB (DB chặn mã sai khuôn). Cú pháp từng kiểu: đầu các module trong src/lib/sotayHinh/hinhVe.js.
+function SuaMaVe({ h, onVa, onLoi }: { h: CtHinh; onVa: (h: CtHinh) => void; onLoi: (s: string | null) => void }) {
+  const [ma, setMa] = useState(h.ve ?? '')
+  const [dang, setDang] = useState(false)
+  const doi = (ma.trim() || null) !== (h.ve ?? null)
+  return (
+    <div className="flex flex-col gap-1.5">
+      <div className="flex items-center gap-2">
+        <input value={ma} onChange={(e) => setMa(e.target.value)} placeholder="Mã vẽ, vd [bohr:10:Ne]"
+          className="min-w-0 flex-1 rounded-md px-2.5 py-1.5 font-mono text-[12px] ring-1 ring-slate-200 outline-none focus:ring-indigo-400" />
+        <button disabled={!doi || dang}
+          onClick={() => { setDang(true); onLoi(null); datMaVe(h, ma).then(onVa).catch((e) => onLoi(loiMsg(e))).finally(() => setDang(false)) }}
+          className="rounded-md bg-indigo-600 px-3 py-1.5 text-[12.5px] font-semibold text-white disabled:opacity-40">{dang ? 'Đang lưu…' : 'Lưu mã'}</button>
+      </div>
+      {doi && ma.trim() && <div className="rounded-lg ring-1 ring-indigo-200"><p className="px-2 pt-1 text-[11px] text-indigo-600">Xem trước mã mới</p><HinhBangMa ma={ma.trim()} /></div>}
     </div>
   )
 }

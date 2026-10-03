@@ -1,0 +1,219 @@
+/* ============================================================================
+   CSS HÌNH VẼ BẰNG MÃ — bóc từ KHTN Pocket bằng scripts/sotay-khtn/chep-hinh-ve.mjs. ĐỪNG SỬA TAY.
+   8 biến màu gốc của Pocket nối vào biến MÀN ĐỌC (registry DOC_MAC_DINH) — chỉ trong khung .so-tay-hinh, không lan ra app.
+   ============================================================================ */
+.so-tay-hinh {
+  --line: var(--sk-doc-line, #E5ECF6); --ink: var(--sk-doc-ink, #23314F); --ink-2: var(--sk-doc-muted, #64738F); --ink-3: #8D9BAE;
+  --surface: var(--sk-doc-giay, #FFFFFF); --surface-2: var(--sk-doc-vd, #F1F5FB);
+  --f-body: var(--sk-doc-font, 'Be Vietnam Pro', system-ui, sans-serif); --f-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+  max-width: 100%; overflow-x: auto;
+}
+.so-tay-hinh svg { max-width: 100%; height: auto; }
+.bohr {display:block;flex:none}
+.bohr.sm {width:auto;height:auto;max-width:110px}
+.opts.pics .bohr.sm {max-width:120px}
+.shx-pic .bohr.sm {max-width:150px}
+.pv-a .bd-svg,.pv-a .bohr {max-width:220px}
+.bk-bohr {display:inline-block;vertical-align:middle;margin:2px 4px}
+.bk-bohr svg {display:block;width:auto;height:auto;max-width:96px;max-height:96px}
+.ls-p .bk-bohr svg {max-width:120px;max-height:120px}
+/* Hình vẽ bằng mã (fig.js) */
+.bk-fig {display:inline-block;vertical-align:middle;margin:4px 2px;max-width:100%}
+.bk-fig svg {display:block;max-width:100%;height:auto;overflow:visible}
+.opt .bk-fig svg {max-width:200px}
+.fg-grid {stroke:var(--line);stroke-width:1}
+.fg-ax {stroke:var(--ink-3);stroke-width:1.4;fill:none}
+.fg-t {font:600 10px var(--f-body);fill:var(--ink-2)}
+.fg-t.b {font-weight:800;fill:var(--ink)}
+.fg-line {fill:none;stroke-width:2.4;stroke-linejoin:round}
+.fg-dot {stroke:none}
+.s0.fg-line {stroke:#2E86C1}
+.s0.fg-dot,.s0.fg-t {fill:#2E86C1}
+.s1.fg-line {stroke:#E4572E}
+.s1.fg-dot,.s1.fg-t {fill:#E4572E}
+.s2.fg-line {stroke:#3BAE6A}
+.s2.fg-dot,.s2.fg-t {fill:#3BAE6A}
+.fg-mirror {stroke:var(--ink);stroke-width:3}
+.fg-norm {stroke:var(--ink-3);stroke-width:1.3;stroke-dasharray:5 4}
+.fg-ray {stroke:#E4572E;stroke-width:2;fill:none}
+.fg-arc {stroke:var(--ink-2);stroke-width:1.2;fill:none}
+.fg-obj {stroke:#2E86C1;stroke-width:2.6;fill:none}
+.fg-img {stroke:#9475C9;stroke-width:2.6;fill:none;stroke-dasharray:6 4}
+.fg-n {fill:#E4572E}
+.fg-s {fill:#2E86C1}
+.fg-q {fill:#9AA6B8}
+.fg-pole {font:900 15px var(--f-body);fill:#fff}
+.fg-field {stroke:var(--ink-3);stroke-width:1.2;fill:none}
+.fg-field.a {stroke:var(--ink-2);stroke-width:1.5}
+.fg-comp {fill:var(--surface);stroke:var(--ink-3);stroke-width:1.2}
+.fg-kn {fill:#E4572E}
+.fg-ks {fill:#8D9BAE}
+.fg-sun {fill:#F6C33A;stroke:#D9A036}
+.fg-block {fill:var(--ink-2)}
+.fg-lray {stroke:#F6C33A;stroke-width:1.2;stroke-dasharray:4 3}
+.fg-umb {fill:#23314F;opacity:.55}
+.fg-pen {fill:#23314F;opacity:.22}
+/* fig2.js: thấu kính, lăng kính, DNA */
+.fg-wrap {display:inline-flex;flex-direction:column;align-items:center;gap:4px;max-width:100%}
+.fg-wrap svg {max-width:100%;height:auto}
+.fg-cap {font-size:12.5px;color:var(--ink-2);text-align:center;line-height:1.4}
+.fg-lens {stroke:#3F82C4;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.fg-ext {stroke:#E4572E;stroke-width:1.4;stroke-dasharray:4 3;fill:none}
+.fg-fdot {fill:var(--ink)}
+.fg-imgr {stroke:#9475C9;stroke-width:2.6;fill:none}
+.fg-prism {fill:color-mix(in srgb,#3F82C4 14%,transparent);stroke:#3F82C4;stroke-width:1.6}
+.fg-white {stroke:var(--ink-2);stroke-width:2.6;fill:none}
+.fg-col {stroke-width:1.7;fill:none}
+.fg-hb {stroke:var(--ink-3);stroke-width:1.3}
+.fg-base {font:800 11px var(--f-mono,monospace);fill:#fff}
+/* fig3.js: mạch điện, đòn bẩy, tế bào, Punnett */
+.fg-wire {stroke:var(--ink);stroke-width:1.8;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.fg-node {fill:var(--ink)}
+.fg-bat {stroke:var(--ink);stroke-width:3}
+.fg-bat.s {stroke-width:5}
+.fg-res {fill:var(--surface);stroke:var(--ink);stroke-width:1.8}
+.fg-lamp {fill:var(--surface);stroke:var(--ink);stroke-width:1.8}
+.fg-lamp.on {fill:#FFE27A}
+.fg-glow {fill:#FFD84D;opacity:.35}
+.fg-meter {fill:var(--surface);stroke:var(--ink);stroke-width:1.8}
+.fg-cur {stroke:#E4572E;stroke-width:2;fill:none}
+.fg-beam {fill:#B8865B;stroke:#7A5534;stroke-width:1.2}
+.fg-pivot {fill:var(--ink-2)}
+.fg-f1 {stroke:#E4572E;stroke-width:2.4;fill:none}
+.fg-f2 {stroke:#2E86C1;stroke-width:2.4;fill:none}
+.fg-dim {stroke:var(--ink-3);stroke-width:1}
+.fg-thanh {fill:#9CCB86;stroke:#4E8A3A;stroke-width:2}
+.fg-tbc {fill:#EEF7E8}
+.fg-tbc.dv {fill:#FCE7EF}
+.fg-mang {fill:none;stroke:#C0507A;stroke-width:2}
+.fg-kb {fill:#CFE8F7;stroke:#6FA8D1;stroke-width:1.2}
+.fg-nhan {fill:#9B7BD4;stroke:#6A4BA8;stroke-width:1.5}
+.fg-ll {fill:#3E9B4F;stroke:#2B6E37;stroke-width:1}
+.fg-roi {fill:none;stroke:#8C6A4A;stroke-width:2}
+.fg-dnaloop {fill:none;stroke:#6A4BA8;stroke-width:1.8}
+.fg-lead {stroke:var(--ink-3);stroke-width:1}
+.fg-bp {cursor:pointer;transition:filter .15s,opacity .15s}
+.fg-bp:hover,.fg-bp.hl {filter:drop-shadow(0 0 4px #F6C33A) saturate(1.3)}
+.fg-bpl {cursor:pointer}
+.fg-bpl.hl {fill:#C2410C}
+.fg-cell .bp-info {min-height:2.8em;max-width:300px}
+.fg-pc {stroke:rgba(0,0,0,.12)}
+.fg-plg {display:flex;flex-wrap:wrap;gap:6px 12px;justify-content:center;font-size:12px;color:var(--ink-2)}
+.fg-pl {display:inline-flex;align-items:center;gap:5px}
+.fg-pl i {width:12px;height:12px;border-radius:3px;border:1px solid rgba(0,0,0,.15)}
+/* fig4.js: pH, Archimedes, áp suất chất lỏng, bình thông nhau, lưới thức ăn */
+.fg-phm {fill:var(--ink)}
+.fg-strip {stroke:rgba(0,0,0,.2);stroke-width:1}
+.fg-tube {fill:none;stroke:var(--ink-2);stroke-width:1.6}
+.fg-liq {fill:#9FD3F5;opacity:.75}
+.fg-cup {fill:none;stroke:var(--ink-2);stroke-width:2.2;stroke-linejoin:round}
+.fg-obj2 {fill:#B9C3CF;stroke:#5B6B7F;stroke-width:1.5}
+.fg-edge {stroke:#3BAE6A;stroke-width:1.6;fill:none}
+.fg-edge.off {stroke:var(--line);stroke-dasharray:3 3}
+.fg-sp {cursor:pointer}
+.fg-sp:hover .fg-spb {filter:drop-shadow(0 0 3px #F6C33A)}
+.fg-spb {fill:var(--surface);stroke:#3BAE6A;stroke-width:1.6}
+.fg-spb.sx {fill:#DDF3D6}
+.fg-sp.off .fg-spb {fill:var(--surface-2);stroke:#E4572E;stroke-dasharray:4 3}
+.fg-sp.off text {fill:var(--ink-3);text-decoration:line-through}
+.fg-luoi .luoi-info {max-width:330px;text-align:left}
+/* fig5.js: tuần hoàn, pha Mặt Trăng, nở vì nhiệt, con lắc, vòng đời */
+.fg-organ {fill:#FDE8EC;stroke:#C0507A;stroke-width:1.4}
+.fg-in {stroke:var(--ink-2);stroke-width:1.6;fill:none}
+.fg-sunray {stroke:#F2B705;stroke-width:2;fill:none}
+.fg-orbit {fill:none;stroke:var(--ink-3);stroke-width:1;stroke-dasharray:4 4}
+.fg-earth {fill:#1F3B73}
+.fg-earthlit {fill:#4AA3DF}
+.fg-moondark {fill:#3B4252}
+.fg-moonlit {fill:#F5E7A1}
+.fg-ghost {fill:none;stroke:var(--ink-3);stroke-dasharray:3 3}
+.fg-ghostc {fill:none;stroke:var(--ink-3);stroke-dasharray:3 3}
+.fg-metal {fill:#9AA6B5;stroke:#5B6B7F}
+.fg-liq2 {fill:#E4572E;opacity:.55}
+.fg-balloon {fill:#F6A5C0;opacity:.8;stroke:#C0507A}
+.fg-bob {fill:#2E86C1;stroke:#1B4F72}
+.fg-wt {fill:#2E86C1}
+.fg-wd {fill:#E4572E}
+.fg-w {fill:#3BAE6A}
+.fg-cyc {fill:none;stroke:#3BAE6A;stroke-width:2}
+.fg-st {cursor:pointer}
+.fg-stb {fill:var(--surface);stroke:#3BAE6A;stroke-width:1.6}
+.fg-st.hl .fg-stb {fill:#DDF3D6;stroke-width:2.4}
+.fg-st:hover .fg-stb {filter:drop-shadow(0 0 3px #F6C33A)}
+.fg-vd .fg-cap {min-height:2.8em;max-width:300px}
+/* Hình đợt 6 (fig6.js) */
+.fg6-track {fill:none;stroke:#8C6A4A;stroke-width:4;stroke-linecap:round}
+.fg6-moc {stroke:#C2410C;stroke-width:1.4;stroke-dasharray:6 4}
+.fg6-moct {fill:#C2410C}
+.fg6-ghost {fill:none;stroke:var(--ink-3);stroke-width:1.3;stroke-dasharray:3 3}
+.fg6-mnuoc {fill:color-mix(in srgb,#3F82C4 14%,transparent)}
+.fg6-mtt {fill:color-mix(in srgb,#2FA39A 20%,transparent)}
+.fg6-coil {fill:none;stroke:#B87333;stroke-width:2.2}
+.fg6-box {fill:var(--surface);stroke:var(--ink-2);stroke-width:1.4}
+.fg6-boxq {fill:color-mix(in srgb,#F6C33A 18%,transparent);stroke:#D9A036;stroke-width:1.6;stroke-dasharray:5 3}
+.fg6-bond {stroke:var(--ink);stroke-width:1.7}
+.fg6-at {font:800 15px var(--f-body);fill:var(--ink)}
+.fg6-at.h {font-weight:600;fill:var(--ink-2)}
+.fg6-ct {font:700 17px var(--f-body);fill:var(--ink)}
+.fg6-n {font-size:12px}
+.fg6-tube {fill:none;stroke:var(--ink-2);stroke-width:3;stroke-linejoin:round}
+.fg6-bub {fill:var(--surface);stroke:#3F82C4;stroke-width:1.2}
+.fg6-cell {fill:color-mix(in srgb,#9CCB86 12%,transparent);stroke:#4E8A3A;stroke-width:1.6}
+.fg6-nuc {fill:none;stroke:#6A4BA8;stroke-width:1.2;stroke-dasharray:4 3}
+.fg6-spin {stroke:var(--ink-3);stroke-width:.8;opacity:.7}
+.fg6-eq {stroke:var(--ink-3);stroke-width:1;stroke-dasharray:2 3}
+.fg6-cr {stroke:rgba(0,0,0,.25);stroke-width:.6}
+.fg6-cen {stroke:rgba(0,0,0,.35);stroke-width:.8}
+.fg6-ph0 {fill:var(--surface);stroke:var(--ink);stroke-width:1.6}
+.fg6-ph1 {fill:var(--ink);stroke:var(--ink);stroke-width:1.6}
+.fg6-water {fill:#6FB3E0;opacity:.45}
+/* đợt 8: hình giải phẫu / sinh thái Sinh 7–8 (fig8.js) */
+.fg8-ld {stroke:var(--ink-3);stroke-width:.9}
+.fg8-dot {fill:var(--ink-2)}
+.fg8-big {font-size:12px}
+.fg8-stem {fill:#6BAA4F;stroke:#3F7A2E;stroke-width:1}
+.fg8-sepal {fill:#8CC56E;stroke:#3F7A2E;stroke-width:1.2}
+.fg8-petal {fill:color-mix(in srgb,#F28CB1 55%,transparent);stroke:#C9507E;stroke-width:1.4}
+.fg8-recep {fill:#A7D88A;stroke:#3F7A2E;stroke-width:1.2}
+.fg8-fil {fill:none;stroke:#C9A227;stroke-width:1.8}
+.fg8-anth {fill:#F2C230;stroke:#A57C12;stroke-width:1.1}
+.fg8-pist {fill:#B6DB9C;stroke:#4E8A3A;stroke-width:1.1}
+.fg8-stig {fill:#E9A23B;stroke:#A0641A;stroke-width:1.1}
+.fg8-ovary {fill:#CDEAB8;stroke:#4E8A3A;stroke-width:1.5}
+.fg8-ovule {fill:#FFF6D8;stroke:#A57C12;stroke-width:1.1}
+.fg8-cut {fill:none;stroke:var(--ink-3);stroke-width:1.2;stroke-dasharray:4 3}
+.fg8-scl {fill:color-mix(in srgb,#9DB8D8 10%,transparent);stroke:var(--ink-2);stroke-width:3}
+.fg8-corn {fill:color-mix(in srgb,#8FD3F0 25%,transparent);stroke:#4BA3C7;stroke-width:1.6}
+.fg8-ret {fill:none;stroke:#E4572E;stroke-width:3;opacity:.8}
+.fg8-fovea {fill:#F2C230;stroke:#A57C12;stroke-width:1}
+.fg8-nerve {fill:#F2D16B;stroke:#B08A1E;stroke-width:1.1}
+.fg8-iris {stroke:#6B4A2B;stroke-width:5;stroke-linecap:round}
+.fg8-lens {fill:color-mix(in srgb,#BFE3F5 70%,transparent);stroke:#4BA3C7;stroke-width:1.5}
+.fg8-helix {fill:none;stroke:#B27B55;stroke-width:1.2}
+.fg8-skin {fill:#F4C9A8;stroke:#B27B55;stroke-width:1.4}
+.fg8-canal {fill:#FBE3D1;stroke:#B27B55;stroke-width:1.2}
+.fg8-drum {stroke:#C9507E;stroke-width:2.6;stroke-linecap:round}
+.fg8-cav {fill:color-mix(in srgb,#9DB8D8 18%,transparent);stroke:var(--ink-3);stroke-width:1.1}
+.fg8-bone {fill:#F3EBD8;stroke:#8C7A55;stroke-width:1.3}
+.fg8-semi {fill:none;stroke:#3F82C4;stroke-width:3.2}
+.fg8-vest {fill:color-mix(in srgb,#3F82C4 25%,transparent);stroke:#3F82C4;stroke-width:1}
+.fg8-coch {fill:none;stroke:#3F82C4;stroke-width:3.4;stroke-linecap:round}
+.fg8-caps {fill:none;stroke:#3F82C4;stroke-width:1.4;stroke-dasharray:4 3}
+.fg8-hand {fill:#F4C9A8;stroke:#B27B55;stroke-width:1.2}
+.fg8-ten {stroke:#C9B9A0;stroke-width:2.4;stroke-linecap:round}
+.fg8-mus {fill:color-mix(in srgb,#D9534F 55%,transparent);stroke:#A23A36;stroke-width:1.3}
+.fg8-body {fill:color-mix(in srgb,#F4C9A8 40%,transparent);stroke:#B27B55;stroke-width:1.4}
+.fg8-ghost {fill:none;stroke:var(--ink-3);stroke-width:1.1;stroke-dasharray:3 3}
+.fg8-gland {fill:#9B59B6;stroke:#6C3483;stroke-width:1}
+.fg8-art {fill:none;stroke:#D9534F;stroke-width:4;stroke-linecap:round}
+.fg8-art2 {fill:none;stroke:#A23A36;stroke-width:3.4;stroke-linecap:round}
+.fg8-caps2 {fill:none;stroke:#E0A43B;stroke-width:5;stroke-linecap:round}
+.fg8-glom {fill:color-mix(in srgb,#D9534F 45%,transparent);stroke:#A23A36;stroke-width:1.2}
+.fg8-tub {fill:none;stroke:#E0A43B;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.fg8-duct {stroke:#C98A1E;stroke-width:8;stroke-linecap:round}
+.fg8-age0 {fill:color-mix(in srgb,#3BAE6A 55%,transparent);stroke:#2B7E4D;stroke-width:1.2}
+.fg8-age1 {fill:color-mix(in srgb,#3F82C4 50%,transparent);stroke:#2D5F93;stroke-width:1.2}
+.fg8-age2 {fill:color-mix(in srgb,#E0A43B 55%,transparent);stroke:#A87519;stroke-width:1.2}
+.wk-fig {display:flex;justify-content:center;padding:8px;border-radius:14px;background:var(--surface-2)}
+.wk-fig {flex-wrap:wrap;gap:12px}
+.wk-fig .fg-wrap {flex:0 1 320px}

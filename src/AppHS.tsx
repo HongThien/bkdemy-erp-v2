@@ -59,10 +59,14 @@ const MOCK_CT: CtTimRow[] = [
   { ma: 'l9-dinh-luat-ohm', mon: 'KHTN', nhanh: 'Lý', loai: 'ct', ten: 'Định luật Ohm', khoi: '9', ten_chu_de: 'Điện trở – mạch điện',
     noi_dung: 'Cường độ dòng điện qua dây dẫn tỉ lệ thuận với hiệu điện thế và tỉ lệ nghịch với điện trở của dây.',
     cong_thuc: 'I = U/R', bien: [['I', 'cường độ dòng điện', 'A'], ['U', 'hiệu điện thế', 'V'], ['R', 'điện trở', 'Ω']],
+    hinh_ve: '[dothi:0 0; 3 1; 6 2 | U (V) | I (A)]', // mã thật của H-l9-dinh-luat-ohm — app tự vẽ (HinhBangMa)
     y: ['Đồ thị I theo U của một dây dẫn là <b>đường thẳng đi qua gốc tọa độ</b>.', 'Suy ra: U = I·R và R = U/I.'],
     vd: { de: 'Một bóng đèn có điện trở 24 Ω mắc vào hiệu điện thế 12 V. Tính cường độ dòng điện qua đèn.', buoc: ['I = U/R = 12 : 24'], kq: 'I = 0,5 A' },
     nham: ['Quên đổi mA sang A (1 mA = 0,001 A).'],
     lq: [{ ma: 'l9-dien-tro', ten: 'Điện trở', loai: 'dl' }, { ma: 'l9-noi-tiep', ten: 'Đoạn mạch nối tiếp', loai: 'ct' }] },
+  // Hình vẽ bằng mã có TƯƠNG TÁC (chạm bộ phận ⇒ hiện tên + chức năng) — gõ "te bao".
+  { ma: 's6-te-bao-dong-vat', mon: 'KHTN', nhanh: 'Sinh', loai: 'cq', ten: 'Tế bào động vật', khoi: '6', ten_chu_de: 'Tế bào',
+    noi_dung: 'Tế bào động vật gồm màng tế bào, tế bào chất và nhân; không có thành tế bào, không có lục lạp.', hinh_ve: '[tebao:dv]' },
 ]
 const MOCK_API: SoTayApi = {
   mon: async () => MOCK_CAY.mon,

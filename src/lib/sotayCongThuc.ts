@@ -17,7 +17,9 @@ export const CT_TRANG_THAI: Record<CtTrangThai, { ten: string; cls: string }> = 
 }
 
 export type CtChuDe = { mon: string; khoi: string; ma: string; ten: string; thu_tu: number; nhanh: string | null }
-export type CtHinh = { mon: string; khoi: string; ma: string; ten: string; mo_ta: string; url: string | null; cap_nhat_at: string }
+// url = ảnh người vẽ/tải lên (ưu tiên) · ve = mã vẽ [kiểu:tham số], app tự vẽ (mig 202610031309). Cả hai null = chưa có hình.
+export type CtHinh = { mon: string; khoi: string; ma: string; ten: string; mo_ta: string; url: string | null; ve: string | null; cap_nhat_at: string }
+export const coHinh = (h: Pick<CtHinh, 'url' | 've'> | null | undefined) => !!(h?.url || h?.ve)
 export type CtThe = {
   ma: string; mon: string; khoi: string; chu_de: string; thu_tu: number
   ten: string; ten_khac: string[]; noi_dung: string; luu_y: string | null; cau_nho: string | null
@@ -57,7 +59,7 @@ export async function phamViSoTay(): Promise<CtPhamVi[]> {
 export async function taiBo(mon: string, khoi: string): Promise<CtBo> {
   const [cd, h, t] = await Promise.all([
     supabase.from('sotay_ct_chu_de').select('*').eq('mon', mon).eq('khoi', khoi).order('thu_tu').limit(200),
-    supabase.from('sotay_ct_hinh').select('mon,khoi,ma,ten,mo_ta,url,cap_nhat_at').eq('mon', mon).eq('khoi', khoi).order('ma').limit(1000),
+    supabase.from('sotay_ct_hinh').select('mon,khoi,ma,ten,mo_ta,url,ve,cap_nhat_at').eq('mon', mon).eq('khoi', khoi).order('ma').limit(1000),
     supabase.from('sotay_cong_thuc').select(COT_THE).eq('mon', mon).eq('khoi', khoi).order('chu_de').order('thu_tu').limit(2000),
   ])
   for (const r of [cd, h, t]) if (r.error) throw r.error
@@ -87,15 +89,22 @@ export async function themThe(mon: string, khoi: string, chuDe: string, ten: str
   return data as unknown as CtThe
 }
 
+// Sửa MÃ VẼ của hình. Rỗng ⇒ null (hình hết mã). DB chặn mã sai khuôn [kiểu:tham số] bằng CHECK.
+export async function datMaVe(h: Pick<CtHinh, 'mon' | 'khoi' | 'ma'>, ve: string | null): Promise<CtHinh> {
+  const { data, error } = await supabase.from('sotay_ct_hinh').update({ ve: ve && ve.trim() ? ve.trim() : null })
+    .eq('mon', h.mon).eq('khoi', h.khoi).eq('ma', h.ma).select('mon,khoi,ma,ten,mo_ta,url,ve,cap_nhat_at').single()
+  if (error) throw error
+  return data as CtHinh
+}
 export async function datAnhHinh(h: Pick<CtHinh, 'mon' | 'khoi' | 'ma'>, url: string | null): Promise<CtHinh> {
   const { data, error } = await supabase.from('sotay_ct_hinh').update({ url })
-    .eq('mon', h.mon).eq('khoi', h.khoi).eq('ma', h.ma).select('mon,khoi,ma,ten,mo_ta,url,cap_nhat_at').single()
+    .eq('mon', h.mon).eq('khoi', h.khoi).eq('ma', h.ma).select('mon,khoi,ma,ten,mo_ta,url,ve,cap_nhat_at').single()
   if (error) throw error
   return data as CtHinh
 }
 export async function themHinh(mon: string, khoi: string, ma: string, ten: string, moTa: string): Promise<CtHinh> {
   const { data, error } = await supabase.from('sotay_ct_hinh').insert({ mon, khoi, ma, ten, mo_ta: moTa })
-    .select('mon,khoi,ma,ten,mo_ta,url,cap_nhat_at').single()
+    .select('mon,khoi,ma,ten,mo_ta,url,ve,cap_nhat_at').single()
   if (error) throw error
   return data as CtHinh
 }
@@ -129,6 +138,7 @@ export const MUC_LOAI_THU_TU: MucLoai[] = ['kn', 'ss', 'dl', 'ct', 'ht', 'cq', '
 export type CtTimRow = {
   ma: string; ten: string; khoi: string; ten_chu_de: string; loai?: MucLoai; nhanh?: string; mon?: string
   noi_dung: string; luu_y?: string | null; cau_nho?: string | null; hinh_url?: string | null
+  hinh_ve?: string | null   // mã vẽ [kiểu:tham số] — app tự vẽ (HinhBangMa) khi chưa có ảnh; mig 202610031309
   cong_thuc?: string; y?: string[]; bang?: string[][]; bien?: string[][]
   vd?: { de: string; buoc?: string[]; kq?: string }; nham?: string[]
   lq?: { ma: string; ten: string; loai: MucLoai }[]
