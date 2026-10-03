@@ -35206,3 +35206,20 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Icon TẠM: thu_vien = o_bai_tap_giao.png (RPG/Khối), tu_luyen_rieng = o_tu_luyen; Tối giản vẽ o_thu_vien.svg. check-style-hs ✔ (17 ô, mốc HocSinhApp 69→67).
 - **(6) CHƯA làm:** không có ảnh nào được đẩy chiều 03/10 (soi mọi nhánh remote + máy này) ⇒ Thùy đẩy từ máy công ty rồi làm.
 - **Chưa soi bằng mắt trong worktree:** cấu hình chạy dev chỉ đọc `launch.json` của repo chính (phiên bị khoá trong worktree) ⇒ soi sau khi lên main.
+
+## 2026-10-03 [DB] 10 HỌC SINH TEST cô lập (Thùy: "log vào TK học sinh lằng nhằng, muốn ~10 TK test mà không ảnh hưởng hoạt động học tập") · mig 202610031034 đã áp
+
+- **Cô lập 3 lớp:** (1) `hoc_sinh.trang_thai = 'test'` (nới CHECK) ⇒ mọi danh sách/báo cáo/học phí/cấp TK/xếp hạng lọc `dang_hoc` tự loại. Soi 03/10: hàm phía HS
+  (my_hoc_sinh_id) không đòi chính em `dang_hoc` (chỉ 2 hàm BXH, đã sửa) ⇒ em test dùng app đủ. (2) Ghi danh vào 15 LỚP TEST riêng `TEST · <môn> <khối>`
+  trạng thái `dong` (không buổi, không học phí, không hiện danh sách lớp đang học) ⇒ điểm danh/ET/BTVN/bổ trợ/giải tháng/trợ lý (đi theo lớp-buổi thật)
+  không thấy. (3) Chỗ tính CẢ KHỐI không xét trạng thái lớp: `_hs_hien(hs)` (em thật + nhân sự không thấy em test; em test thấy cả hai) chèn vào
+  fn_rank_mua · fn_rank_dua_thang · fn_hs_album · fn_huy_hieu_viec_trao · fn_ban_be_goi_y · hs_xep_hang_tu_luyen ×2 · fn_hs_xep_hang_ti_le_dat ·
+  `_the_gioi_tin` (bọc cả khối UNION 1 lớp lọc). Thân từ pg_get_functiondef (`scripts/_gen_mig_hs_test.mjs`, mỗi chỗ khớp đúng 1 lần).
+- **10 em:** TEST01 khối 3 · TEST02 khối 5 · TEST03 khối 6 · TEST04/05 khối 7/8 (Toán+KHTN+Anh) · TEST06/07 khối 9 nam/nữ (3 môn) · TEST08/09 khối 10/11 ·
+  TEST10 khối 12 nữ (có ô TSA). Đăng nhập app HS: mã `TEST01`…`TEST10`, mật khẩu = mã HS (quy ước cũ). TK tạo bằng `scripts/tao_tk_hs_test.mjs` (signUp khoá công khai
+  như nút Cấp TK trên ERP, idempotent).
+- **Kiểm:** chạy thử ROLLBACK (`scripts/_thu_mig_hs_test.mjs`): số liệu em thật trước = sau (Rank khối 9: 69 em · BXH tự luyện K9: 17 · tin Thế giới 7 ngày: 93 ·
+  343 HS đang học · 47 lớp đang học); em thật thấy 0 em test trong Rank, TEST06 thấy 2. Sau áp: đăng nhập thật qua API 3 em (TEST06/10/01) đúng môn, TEST10 có
+  ô TSA, BXH qua RLS chạy.
+- **Ngoài phạm vi:** app Đấu từ (bảng người chơi riêng `dtv_*` — em test chơi sẽ lên BXH Đấu từ) · màn nhân sự "mọi trạng thái" hiện em test với nhãn `test` ·
+  lớp test hiện ở chỗ nào liệt kê cả lớp đã đóng.
