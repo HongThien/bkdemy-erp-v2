@@ -134,7 +134,7 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
 }
 
 // Icon ô: ảnh thường, hoặc MẶT NẠ tô màu chữ khi style đơn sắc (Skin.anhOMask — Tối giản). Ảnh riêng của ô (c.anh, vd bậc Rank) luôn là ảnh thường.
-function IconO({ src, mask, className }: { src: string; mask: boolean; className: string }) {
+export function IconO({ src, mask, className }: { src: string; mask: boolean; className: string }) {
   if (!mask) return <img src={src} alt="" className={`${className} object-contain`} />
   const m = `url(${src}) center / contain no-repeat`
   return <span aria-hidden className={`block ${className}`} style={{ background: 'var(--sk-ink)', WebkitMask: m, mask: m }} />

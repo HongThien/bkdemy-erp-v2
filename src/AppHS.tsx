@@ -243,7 +243,12 @@ const XEM_THU_THACH = typeof location !== 'undefined' && new URLSearchParams(loc
 const XemHocTap = lazy(() => import('./screens/hocsinh/hoctap/XemHocTap'))
 const XEM_HOC_TAP = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'hoc_tap'
 
+// HƯỚNG DẪN CHƠI (hs.html?xem=huong_dan · &muc=<id chủ đề> · &gd=toi_gian|khoi: đổi style để soi giọng formal/game): không cần đăng nhập (03/10).
+const XemHuongDan = lazy(() => import('./screens/hocsinh/huongdan/XemHuongDan'))
+const XEM_HUONG_DAN = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'huong_dan'
+
 export default function AppHS() {
+  if (XEM_HUONG_DAN) return <Suspense fallback={null}><XemHuongDan /></Suspense>
   if (XEM_GAMI) return <Suspense fallback={null}><XemMauGami /></Suspense>
   if (XEM_TUTORIAL) return <Suspense fallback={null}><TutorialHS /></Suspense>
   if (XEM_PHIEU_LUU) return <Suspense fallback={null}><XemPhieuLuu /></Suspense>

@@ -10,6 +10,8 @@ import { useSyncExternalStore } from 'react'
 import type { SkinId } from './kieu'
 
 export type LoiHS = {
+  /** true ⇒ đang ở style GAME: các màn có chữ hai giọng (vd Hướng dẫn chơi) dùng bản "múa máy" cho phần được phép ghi đè */
+  giongGame: boolean
   /** nhãn 4 mức combo: [0/3, 1/3, 2/3, 3/3] */
   chieu: readonly [string, string, string, string]
   /** chữ nhỏ dưới nhãn mức: "2/3 câu đúng · −2 máu · Cầu lửa" */
@@ -32,6 +34,7 @@ export type LoiHS = {
 }
 
 export const LOI_FORMAL: LoiHS = {
+  giongGame: false,
   chieu: ['Chưa đạt mức nào', 'Mức 1/3', 'Mức 2/3', 'Hoàn thành tốt 3/3'],
   chieuChiTiet: (dung, tong, ten) => `${dung}/${tong} câu đúng${dung ? ` · tính ${dung} điểm` : ''} · ${ten}`,
   nhanCombo: 'Chuỗi',
@@ -47,6 +50,7 @@ export const LOI_FORMAL: LoiHS = {
 
 /** Giọng GAME — dùng chung cho các style game; style nào muốn giọng riêng thì khai `loi` của mình đè lên. */
 export const LOI_GAME: Partial<LoiHS> = {
+  giongGame: true,
   chieu: ['Chiêu xịt — quái đánh trả, hồi 1 máu', 'Chiêu nhẹ', 'Chiêu mạnh', 'TUYỆT KỸ!'],
   chieuChiTiet: (dung, tong, ten) => `${dung}/${tong} câu đúng${dung ? ` · −${dung} máu` : ''} · ${ten}`,
   nhanCombo: 'Chiêu',
