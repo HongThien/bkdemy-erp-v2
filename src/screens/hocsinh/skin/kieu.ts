@@ -38,7 +38,33 @@ export type MoHinhChibi = {
   /** hào quang thường · khi giận (pha 2) */
   hao: string; haoGian: string
 }
+/** 1 đoạn HOẠT ẢNH THEO KHUNG của boss có animation vẽ riêng (vd Minh Quân — design/bk-ui-src/AppHS/Animation/minh-quan-boss). Mọi khung cùng neo chân. */
+export type ClipBoss = {
+  src: string[]
+  /** thời gian từng khung (ms) */
+  ms: number[]
+  /** true = lặp (nói chuyện); false = phát 1 lần rồi GIỮ khung cuối (laser · trúng đòn · hạ gục) */
+  lap?: boolean
+  /** bề rộng khung ảnh + hoành độ neo chân trong ảnh (px). Mặc định 768 / 384; laser 2048 / 450 */
+  rong?: number; px?: number
+  /** lật ngang quanh neo — ảnh vẽ hướng PHẢI mà boss đứng bên phải nhìn sang TRÁI (laser) */
+  lat?: boolean
+}
+/** 1 chiêu tấn công riêng của boss (thay đòn "ma thuật" chung). tia = laser vẽ sẵn trong ảnh · don/mua = tên lửa bay (ảnh FX riêng) */
+export type ChieuBoss = {
+  ten: string; kieu: 'tia' | 'don' | 'mua'; clip: ClipBoss
+  /** ms (từ lúc bắt đầu clip) đòn chạm nhân vật — tia: lúc tia chạm · tên lửa: lúc phóng */
+  phongMs: number
+  /** tên lửa: số quả · cách nhau (ms) · thời gian bay (ms) · điểm nòng trong ảnh (px, khung 768×640, đúng neo (384,580)) */
+  qua?: { n: number; cach: number; bay: number; nong: [number, number][] }
+}
 export type BossAnh = {
+  /** boss có hoạt ảnh theo khung: tư thế nào có ở đây thì phát clip, không thì dùng ảnh tĩnh cùng tên */
+  khung?: Partial<Record<'dung' | 'noi' | 'chieu' | 'trung' | 'gian' | 'ha', ClipBoss>>
+  /** các chiêu riêng (xoay vòng mỗi lần boss tấn công) + ảnh FX tên lửa (mũi hướng PHẢI) */
+  chieuRieng?: ChieuBoss[]; anhTenLua?: string
+  /** màu hiệu ứng của chiêu riêng: nền tia nổ (CSS background) + màu quầng tên lửa */
+  fx?: { no: string; vet: string }
   /** Cách dựng boss trong cảnh trận 3D. 'anh' = tấm ảnh 2D quay mặt camera + hoạt ảnh code (quaiAnh.ts) — MẶC ĐỊNH, nhẹ, giống bản vẽ 100%.
    *  'relief' = phù điêu từ chính ảnh (quaiRelief.ts, có khối nhẹ) · 'chibi' = dựng khối bằng code (bossChibi3D.ts, cần mo3d; thô — chỉ để thử). */
   dang?: 'anh' | 'relief' | 'chibi'

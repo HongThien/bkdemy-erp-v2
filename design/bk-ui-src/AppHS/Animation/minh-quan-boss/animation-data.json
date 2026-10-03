@@ -1,0 +1,679 @@
+{
+  "version": 4,
+  "clips": {
+    "talk": {
+      "label": "Nói chuyện",
+      "cols": 3,
+      "rows": 2,
+      "durations": [
+        200,
+        160,
+        200,
+        160,
+        200,
+        200
+      ],
+      "loop": true,
+      "file": "talk.png",
+      "frames": [
+        {
+          "file": "assets/talk_01.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 200
+        },
+        {
+          "file": "assets/talk_02.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 160
+        },
+        {
+          "file": "assets/talk_03.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 200
+        },
+        {
+          "file": "assets/talk_04.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 160
+        },
+        {
+          "file": "assets/talk_05.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 200
+        },
+        {
+          "file": "assets/talk_06.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 200
+        }
+      ],
+      "referenceHeight": 520,
+      "width": 768,
+      "height": 640
+    },
+    "laser": {
+      "label": "Gồng & bắn laser",
+      "cols": 2,
+      "rows": 3,
+      "durations": [
+        250,
+        350,
+        450,
+        300,
+        220,
+        300
+      ],
+      "loop": false,
+      "file": "laser.png",
+      "frames": [
+        {
+          "file": "assets/laser_01.png",
+          "x": 0,
+          "y": 0,
+          "w": 2048,
+          "h": 640,
+          "pivot": {
+            "x": 450,
+            "y": 580
+          },
+          "durationMs": 250
+        },
+        {
+          "file": "assets/laser_02.png",
+          "x": 0,
+          "y": 0,
+          "w": 2048,
+          "h": 640,
+          "pivot": {
+            "x": 450,
+            "y": 580
+          },
+          "durationMs": 350
+        },
+        {
+          "file": "assets/laser_03.png",
+          "x": 0,
+          "y": 0,
+          "w": 2048,
+          "h": 640,
+          "pivot": {
+            "x": 450,
+            "y": 580
+          },
+          "durationMs": 450
+        },
+        {
+          "file": "assets/laser_04.png",
+          "x": 0,
+          "y": 0,
+          "w": 2048,
+          "h": 640,
+          "pivot": {
+            "x": 450,
+            "y": 580
+          },
+          "durationMs": 300
+        },
+        {
+          "file": "assets/laser_05.png",
+          "x": 0,
+          "y": 0,
+          "w": 2048,
+          "h": 640,
+          "pivot": {
+            "x": 450,
+            "y": 580
+          },
+          "durationMs": 220
+        },
+        {
+          "file": "assets/laser_06.png",
+          "x": 0,
+          "y": 0,
+          "w": 2048,
+          "h": 640,
+          "pivot": {
+            "x": 450,
+            "y": 580
+          },
+          "durationMs": 300
+        }
+      ],
+      "referenceHeight": 520,
+      "width": 2048,
+      "height": 640
+    },
+    "hit": {
+      "label": "Trúng đòn",
+      "cols": 3,
+      "rows": 2,
+      "durations": [
+        100,
+        100,
+        180,
+        170,
+        170,
+        250
+      ],
+      "loop": false,
+      "file": "hit.png",
+      "frames": [
+        {
+          "file": "assets/hit_01.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 100
+        },
+        {
+          "file": "assets/hit_02.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 100
+        },
+        {
+          "file": "assets/hit_03.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 180
+        },
+        {
+          "file": "assets/hit_04.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 170
+        },
+        {
+          "file": "assets/hit_05.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 170
+        },
+        {
+          "file": "assets/hit_06.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 250
+        }
+      ],
+      "referenceHeight": 520,
+      "width": 768,
+      "height": 640
+    },
+    "taunt": {
+      "label": "Khinh thường khi thắng",
+      "cols": 3,
+      "rows": 2,
+      "durations": [
+        220,
+        300,
+        400,
+        400,
+        550,
+        300
+      ],
+      "loop": false,
+      "file": "taunt.png",
+      "frames": [
+        {
+          "file": "assets/taunt_01.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 220
+        },
+        {
+          "file": "assets/taunt_02.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 300
+        },
+        {
+          "file": "assets/taunt_03.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 400
+        },
+        {
+          "file": "assets/taunt_04.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 400
+        },
+        {
+          "file": "assets/taunt_05.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 550
+        },
+        {
+          "file": "assets/taunt_06.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 300
+        }
+      ],
+      "referenceHeight": 520,
+      "width": 768,
+      "height": 640
+    },
+    "defeat": {
+      "label": "Bị hạ gục",
+      "cols": 3,
+      "rows": 2,
+      "durations": [
+        220,
+        300,
+        400,
+        450,
+        550,
+        700
+      ],
+      "loop": false,
+      "file": "defeat.png",
+      "frames": [
+        {
+          "file": "assets/defeat_01.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 220
+        },
+        {
+          "file": "assets/defeat_02.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 300
+        },
+        {
+          "file": "assets/defeat_03.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 400
+        },
+        {
+          "file": "assets/defeat_04.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 450
+        },
+        {
+          "file": "assets/defeat_05.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 550
+        },
+        {
+          "file": "assets/defeat_06.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 700
+        }
+      ],
+      "referenceHeight": 520,
+      "width": 768,
+      "height": 640
+    },
+    "missile_single": {
+      "label": "Bắn 1 tên lửa",
+      "cols": 3,
+      "rows": 2,
+      "durations": [
+        250,
+        300,
+        450,
+        400,
+        350,
+        400
+      ],
+      "loop": false,
+      "file": "missile_single.png",
+      "frames": [
+        {
+          "file": "assets/missile_single_01.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 250
+        },
+        {
+          "file": "assets/missile_single_02.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 300
+        },
+        {
+          "file": "assets/missile_single_03.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 450
+        },
+        {
+          "file": "assets/missile_single_04.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 400
+        },
+        {
+          "file": "assets/missile_single_05.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 350
+        },
+        {
+          "file": "assets/missile_single_06.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 400
+        }
+      ],
+      "referenceHeight": 520,
+      "width": 768,
+      "height": 640
+    },
+    "missile_rain": {
+      "label": "Mưa tên lửa",
+      "cols": 3,
+      "rows": 2,
+      "durations": [
+        250,
+        350,
+        650,
+        1000,
+        1200,
+        600
+      ],
+      "loop": false,
+      "file": "missile_rain.png",
+      "frames": [
+        {
+          "file": "assets/missile_rain_01.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 250
+        },
+        {
+          "file": "assets/missile_rain_02.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 350
+        },
+        {
+          "file": "assets/missile_rain_03.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 650
+        },
+        {
+          "file": "assets/missile_rain_04.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 1000
+        },
+        {
+          "file": "assets/missile_rain_05.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 1200
+        },
+        {
+          "file": "assets/missile_rain_06.png",
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 640,
+          "pivot": {
+            "x": 384,
+            "y": 580
+          },
+          "durationMs": 600
+        }
+      ],
+      "referenceHeight": 520,
+      "width": 768,
+      "height": 640
+    }
+  },
+  "portrait": {
+    "file": "assets/dialogue_upper.png",
+    "width": 1312,
+    "height": 1199
+  },
+  "projectile": {
+    "file": "assets/missile_projectile.png",
+    "noseDirection": "right",
+    "singleLaunchMs": 1000,
+    "rainLaunchMs": 1250,
+    "rainCount": 6,
+    "rainIntervalMs": 90,
+    "width": 536,
+    "height": 223,
+    "single": {
+      "launchMs": 1000,
+      "flightMs": 650,
+      "impactMs": 350,
+      "direction": "left"
+    },
+    "rain": {
+      "launchMs": 1250,
+      "count": 6,
+      "intervalMs": 90,
+      "flightMs": 1200,
+      "impactMs": 350,
+      "path": "quadratic arc, upward then descending"
+    }
+  },
+  "notes": "42 separate transparent frame PNGs plus dialogue portrait and missile projectile FX. All animation frames anchor feet at y580. Laser frames use a wider canvas. Six painted keyframes per clip; minor armor variation remains."
+}

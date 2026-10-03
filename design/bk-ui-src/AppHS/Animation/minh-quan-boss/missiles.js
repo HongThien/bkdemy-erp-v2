@@ -1,0 +1,11 @@
+// Projectile FX is separate from the boss pose PNGs. Positions are preview-stage pixels.
+window.MQ_MISSILES={lastDraw:{count:0,impacts:0},draw(ctx,id,time,anchorX,ground,image,meta){
+ let count=0,impacts=0;
+ function rocket(x,y,angle,size){ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.shadowColor='#54d9ff';ctx.shadowBlur=12;ctx.drawImage(image,-size/2,-size*image.height/image.width/2,size,size*image.height/image.width);ctx.restore();count++;}
+ function impact(x,y,p){if(p<0||p>1)return;ctx.save();ctx.globalAlpha=1-p;const radius=15+70*p;const glow=ctx.createRadialGradient(x,y,0,x,y,radius);glow.addColorStop(0,'#fff7d3');glow.addColorStop(.3,'#ffc461');glow.addColorStop(.65,'#50ceff90');glow.addColorStop(1,'#50ceff00');ctx.fillStyle=glow;ctx.beginPath();ctx.arc(x,y,radius,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#92eaff';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(x,y,radius*1.4,radius*.35,0,0,Math.PI*2);ctx.stroke();ctx.restore();impacts++;}
+ if(id==='missile_single'){const s=meta.single,t=time-s.launchMs,sx=anchorX-140,sy=ground-350,tx=80,ty=ground-280,p=t/s.flightMs;if(p>=0&&p<=1){const x=sx+(tx-sx)*p,y=sy+(ty-sy)*p;ctx.save();ctx.strokeStyle='#63dcff90';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(x+65,y-10);ctx.lineTo(x,y);ctx.stroke();ctx.restore();rocket(x,y,Math.atan2(ty-sy,tx-sx),92)}else if(p>1)impact(tx,ty,(t-s.flightMs)/s.impactMs);}
+ if(id==='missile_rain'){const s=meta.rain;for(let i=0;i<s.count;i++){const t=time-s.launchMs-i*s.intervalMs,p=t/s.flightMs,sx=anchorX+(i%2?95:-110),sy=ground-390,tx=625+i*45,ty=ground,cx=(sx+tx)/2,cy=-300-i*15;
+  if(p>=0&&p<=1){const point=q=>({x:(1-q)*(1-q)*sx+2*(1-q)*q*cx+q*q*tx,y:(1-q)*(1-q)*sy+2*(1-q)*q*cy+q*q*ty});const {x,y}=point(p),tail=point(Math.max(0,p-.045)),vx=2*(1-p)*(cx-sx)+2*p*(tx-cx),vy=2*(1-p)*(cy-sy)+2*p*(ty-cy);ctx.save();ctx.strokeStyle='#65dfff99';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(tail.x,tail.y);ctx.lineTo(x,y);ctx.stroke();if(p>.45){ctx.strokeStyle='#ffa85b99';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(tx,ty,22,7,0,0,Math.PI*2);ctx.stroke();}ctx.restore();rocket(x,y,Math.atan2(vy,vx),72);
+  }else if(p>1)impact(tx,ty,(t-s.flightMs)/s.impactMs);
+ }}this.lastDraw={count,impacts};return this.lastDraw;
+}};

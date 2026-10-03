@@ -53,6 +53,7 @@ export function DauView2D({ luc: _luc, chang, b, gioi = 'nam', tong, daLam = 0, 
   const [chu, setChu] = useState<{ id: number; to: string; nho?: string; mau: string } | null>(null)
   const refs = useRef({ hp, ei, ban: false, combo, n: 0 }); refs.current = { ...refs.current, hp, ei, ban, combo }
   const san = useRef<SanApi>(null)
+  useEffect(() => { if (import.meta.env.DEV) (window as unknown as { __san?: SanApi | null }).__san = san.current }) // chỉ dev: soi từng đòn từ console (window.__san.phat('boss_ma_thuat'))
   const sanCao = useCaoSan()
   const loi = useLoi()
   // Sân bung xuống DƯỚI thanh HUD (điện thoại dọc: HUD xuống 2 hàng ~100px, nếu sân bắt đầu từ y=0 thì bị HUD che mất gần nửa sân + tiêu đề chiêu)
@@ -71,7 +72,7 @@ export function DauView2D({ luc: _luc, chang, b, gioi = 'nam', tong, daLam = 0, 
     daChao.current = true
     setMo(true); setChu({ id: Date.now(), to: loi.moMan(tenQuai2D(doi[0].loai)), nho: loi.huongDan(CO_COMBO), mau: 'var(--sk-acc)' })
     const t = setTimeout(() => { setMo(false); setChu(null) }, 2000)
-    return () => clearTimeout(t)
+    return () => { clearTimeout(t); daChao.current = false } // StrictMode (dev) chạy effect 2 lần: cleanup xoá hẹn giờ thì phải mở khoá cho lần chạy thứ hai, không thì sân kẹt mở
   }, [doi]) // eslint-disable-line react-hooks/exhaustive-deps -- lời chỉ đọc lúc mở màn
 
   const heT = hp.every((x) => x === 0)
@@ -81,7 +82,7 @@ export function DauView2D({ luc: _luc, chang, b, gioi = 'nam', tong, daLam = 0, 
     daAn.current = true
     setMo(true); setChu({ id: Date.now(), to: loi.hetDoiHinh, mau: 'var(--sk-acc)' }); san.current?.thang()
     const t = setTimeout(() => { setMo(false); setChu(null) }, 2600)
-    return () => clearTimeout(t)
+    return () => { clearTimeout(t); daAn.current = false }
   }, [heT])
 
   const tungChieu = useCallback(async (cb: boolean[]) => {

@@ -5,6 +5,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { MAU, HEAD, THE } from '../skin/KhungHS'
 import { laySkin } from '../skin/registry'
+import type { ClipBoss } from '../skin/kieu'
 import { BOSS, cauCua, type Cau, type TinhHuong, type TuTheBoss } from './noiDungBoss'
 
 const TU_THE: TuTheBoss[] = ['dung', 'noi', 'chieu', 'trung', 'gian', 'ha']
@@ -29,10 +30,59 @@ const CSS = `
 @media (prefers-reduced-motion: reduce) { [data-bs], [data-bs] * { animation: none !important } [data-bs="ha"] { opacity: .35 } }
 `
 
-/** Dáng boss đứng trên màn 2D. Cả 6 ảnh nằm sẵn trong DOM (chỉ đổi opacity) ⇒ đổi tư thế không chớp, không tải lại. */
-export function BossAnhHS({ ma, tt, cao = 340, bong = false }: { ma: string; tt: TuTheBoss; cao?: number; bong?: boolean }) {
+// Khung PNG của boss có hoạt ảnh theo khung: 768×640, neo chân (384,580). Phóng sao cho phần thân (~520px cao) gần đầy ô vuông `cao`, chân đặt ở 98% chiều cao ô.
+const KHUNG_W = 768, KHUNG_H = 640, NEO_Y = 580
+const nho = new Set<string>()
+/** Nạp + giải mã trước mọi khung (1 lần/ảnh) để đổi clip không chớp. */
+function napKhung(a: { khung?: Record<string, ClipBoss | undefined>; chieuRieng?: { clip: ClipBoss }[]; anhTenLua?: string }) {
+  const ds = [...Object.values(a.khung ?? {}).flatMap((c) => c?.src ?? []), ...(a.chieuRieng ?? []).flatMap((c) => c.clip.src), ...(a.anhTenLua ? [a.anhTenLua] : [])]
+  for (const u of ds) if (!nho.has(u)) { nho.add(u); const im = new Image(); im.src = u; im.decode?.().catch(() => undefined) }
+}
+
+/** Phát 1 clip theo khung: mọi khung của clip nằm sẵn trong DOM, chỉ đổi opacity. lap ⇒ lặp; không ⇒ giữ khung cuối. Giảm chuyển động ⇒ 1 khung tĩnh (cuối với clip 1 lần). */
+function ClipHinh({ clip, cao, bong }: { clip: ClipBoss; cao: number; bong: boolean }) {
+  const giam = typeof window !== 'undefined' && !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+  const [i, setI] = useState(giam && !clip.lap ? clip.src.length - 1 : 0)
+  useEffect(() => {
+    if (giam) return
+    setI(0)
+    let k = 0, id = 0
+    const buoc = () => { id = window.setTimeout(() => { if (k + 1 < clip.src.length) { k++; setI(k); buoc() } else if (clip.lap) { k = 0; setI(0); buoc() } }, clip.ms[k]) }
+    if (clip.src.length > 1) buoc()
+    return () => window.clearTimeout(id)
+  }, [clip, giam])
+  const s = (cao * 1.25) / KHUNG_W, rong = clip.rong ?? KHUNG_W, px = clip.px ?? KHUNG_W / 2
+  return (
+    <>
+      {clip.src.map((u, k) => (
+        <img key={u} src={u} alt="" draggable={false} className="absolute max-w-none select-none"
+          style={{
+            width: rong * s, height: KHUNG_H * s, left: cao / 2 - px * s, top: cao * 0.98 - NEO_Y * s, opacity: k === i ? 1 : 0,
+            transform: clip.lat ? 'scaleX(-1)' : undefined, transformOrigin: clip.lat ? `${px * s}px 50%` : undefined,
+            filter: bong ? 'brightness(0) opacity(.85)' : undefined,
+          }} />
+      ))}
+    </>
+  )
+}
+
+/** Dáng boss đứng trên màn 2D. Boss thường: cả 6 ảnh nằm sẵn trong DOM (chỉ đổi opacity) ⇒ đổi tư thế không chớp. Boss có HOẠT ẢNH (Skin.boss[ma].khung): tư thế nào có clip thì phát clip;
+ *  `clip` = ép phát 1 clip cụ thể (chiêu riêng của boss) thay cho tư thế. */
+export function BossAnhHS({ ma, tt, cao = 340, bong = false, clip }: { ma: string; tt: TuTheBoss; cao?: number; bong?: boolean; clip?: ClipBoss | null }) {
   const a = laySkin(null).boss?.[ma]
+  useEffect(() => { if (a?.khung) napKhung(a) }, [a])
   if (!a) return null
+  const c = clip ?? a.khung?.[tt]
+  if (c) {
+    return (
+      <div className="relative mx-auto" style={{ height: cao, width: cao, maxWidth: '100%', overflow: 'visible' }}>
+        <style>{CSS}</style>
+        <div data-bs={tt === 'dung' && !clip ? 'dung' : undefined} className="absolute inset-0" style={{ overflow: 'visible' }}>
+          <ClipHinh key={clip ? clip.src[0] : tt} clip={c} cao={cao} bong={bong} />
+        </div>
+      </div>
+    )
+  }
   return (
     <div className="relative mx-auto" style={{ height: cao, width: cao, maxWidth: '100%' }}>
       <style>{CSS}</style>

@@ -5,6 +5,7 @@ import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useSta
 import { laySkin } from '../skin/registry'
 import { anhDauNv, hopDauNv, tayDauNv, type NvId } from '../skin/nhanVat'
 import type { TuTheDau } from '../skin/heroDau'
+import type { ChieuBoss, ClipBoss } from '../skin/kieu'
 import type { BangMau3D } from '../skin/the3d/kieuMau'
 import { BossAnhHS } from '../boss/BossSan'
 import type { TuTheBoss } from '../boss/noiDungBoss'
@@ -37,7 +38,10 @@ export const SanDon2D = forwardRef<SanApi, { nv: NvId; sanCao: number; ke: Ke; k
   const cao = Math.round(sanCao * 0.5)
   const skin = laySkin(null)
   const anhBossImg = useRef<HTMLImageElement | null>(null)
-  const coAnhBoss = !!skin.boss?.[ke.loai]
+  const infoBoss = skin.boss?.[ke.loai]
+  const coAnhBoss = !!infoBoss
+  const [clipBoss, setClipBoss] = useState<ClipBoss | null>(null) // chiêu riêng của boss có hoạt ảnh (Skin.boss[..].chieuRieng) đang phát
+  const luotChieu = useRef(0)
   useEffect(() => { const src = skin.boss?.[ke.loai]?.trung; if (src) { const im = new Image(); im.src = src; anhBossImg.current = im } else anhBossImg.current = null }, [skin, ke.loai])
   const sanRef = useRef<HTMLDivElement>(null)
   const chuyenRef = useRef<HTMLDivElement>(null)
@@ -86,8 +90,62 @@ export const SanDon2D = forwardRef<SanApi, { nv: NvId; sanCao: number; ke: Ke; k
     })
   }
 
+  // CHIÊU RIÊNG của boss có hoạt ảnh (vd Minh Quân: tia laser · tên lửa đơn · mưa tên lửa): phát clip, tới đúng khung "phóng" thì tia chạm / tên lửa bay (ảnh FX riêng) và nhân vật bị đánh.
+  const dienBoss = async (ch: ChieuBoss): Promise<void> => {
+    const goc = chuyenRef.current
+    if (!goc || !heroRef.current || !bossRef.current) return
+    const tong = ch.clip.ms.reduce((a, b) => a + b, 0)
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { setClipBoss(ch.clip); await new Promise((r) => setTimeout(r, 600)); return }
+    setClipBoss(ch.clip)
+    const h = hop(heroRef.current), bb = hop(bossRef.current), k = (keCao * 1.25) / 768
+    const tam = { x: h.x + h.w / 2, y: h.y + h.h * 0.5 }
+    const dat: number[] = []
+    const hen = (ms: number, f: () => void) => { dat.push(window.setTimeout(f, ms)) }
+    const trung = () => { setHero('bi_danh'); rung(9, 380) }
+    const no = (x: number, y: number) => {
+      const e = document.createElement('div')
+      Object.assign(e.style, { position: 'absolute', left: '0', top: '0', width: '96px', height: '96px', borderRadius: '50%', zIndex: '26', pointerEvents: 'none', background: infoBoss?.fx?.no ?? 'transparent' })
+      goc.appendChild(e)
+      const a = e.animate([{ transform: `translate(${x - 48}px, ${y - 48}px) scale(.3)`, opacity: 1 }, { transform: `translate(${x - 48}px, ${y - 48}px) scale(1.5)`, opacity: 0 }], { duration: 380, easing: 'ease-out', fill: 'forwards' })
+      a.onfinish = () => e.remove()
+      window.setTimeout(() => e.remove(), 1200) // tab nền không chạy hoạt ảnh ⇒ onfinish không bắn: dọn cưỡng bức
+    }
+    const bay = (sx: number, sy: number, tx: number, ty: number, ms: number, vong: boolean) => {
+      const anh = infoBoss?.anhTenLua; if (!anh) return
+      const w = keCao * 0.4, hh = (w * 223) / 536
+      const im = new Image(); im.src = anh
+      Object.assign(im.style, { position: 'absolute', left: '0', top: '0', width: `${w}px`, maxWidth: 'none', zIndex: '25', pointerEvents: 'none', filter: `drop-shadow(0 0 8px ${infoBoss?.fx?.vet ?? 'transparent'})` })
+      goc.appendChild(im)
+      const cx = (sx + tx) / 2, cy = Math.min(sy, ty) - (vong ? sanCao * 0.5 : 0)
+      const pt = (p: number) => ({ x: (1 - p) ** 2 * sx + 2 * (1 - p) * p * cx + p * p * tx, y: (1 - p) ** 2 * sy + 2 * (1 - p) * p * cy + p * p * ty })
+      const kf = Array.from({ length: 17 }, (_, i) => { const p = i / 16, a = pt(p), b = pt(Math.min(1, p + 0.02)); return { transform: `translate(${a.x - w / 2}px, ${a.y - hh / 2}px) rotate(${(Math.atan2(b.y - a.y, b.x - a.x) * 180) / Math.PI}deg)`, offset: p } })
+      im.animate(kf, { duration: ms, easing: 'linear', fill: 'forwards' }).onfinish = () => im.remove()
+      window.setTimeout(() => im.remove(), ms + 800)
+    }
+    let het = tong
+    if (ch.kieu === 'tia') hen(ch.phongMs, () => { setHero('bi_danh'); rung(12, 1000) })
+    else if (ch.qua) {
+      const q = ch.qua
+      for (let i = 0; i < q.n; i++) {
+        const [nx, ny] = q.nong[i % q.nong.length]
+        const sx = bb.x + keCao / 2 + (nx - 384) * k, sy = bb.y + keCao * 0.98 + (ny - 580) * k
+        const d = q.n === 1 ? tam : { x: h.x + h.w * (0.2 + 0.6 * ((i * 0.37) % 1)), y: h.y + h.h * (0.4 + 0.5 * ((i * 0.61) % 1)) }
+        hen(ch.phongMs + i * q.cach, () => { bay(sx, sy, d.x, d.y, q.bay, q.n > 1); hen(q.bay, () => { no(d.x, d.y); trung() }) })
+      }
+      het = Math.max(tong, ch.phongMs + (q.n - 1) * q.cach + q.bay + 400)
+    }
+    await new Promise((r) => setTimeout(r, het + 200))
+    dat.forEach((t) => window.clearTimeout(t))
+    setClipBoss(null)
+  }
+
   useImperativeHandle(ref, () => ({
     phat: async (d) => {
+      const rieng = d === 'boss_ma_thuat' ? infoBoss?.chieuRieng : undefined
+      if (rieng?.length) {
+        try { await dienBoss(rieng[luotChieu.current++ % rieng.length]) } finally { setClipBoss(null); setHero('nghi') }
+        return
+      }
       setDon(d)
       if (d === 'boss_ma_thuat') setBoss('chieu')
       await new Promise((r) => setTimeout(r, 60)) // chờ DOM cập nhật tư thế
@@ -119,10 +177,10 @@ export const SanDon2D = forwardRef<SanApi, { nv: NvId; sanCao: number; ke: Ke; k
           </div>
         </div>
         <div className="absolute right-[7%] z-10 flex flex-col items-center" style={{ bottom: day, width: keCao + 8 }}>
-          <div key={keId} className={ha ? 'sd-ha' : 'sd-vao'}>
+          <div key={keId} className={ha && !infoBoss?.khung ? 'sd-ha' : 'sd-vao'}>
             <div ref={bossRef} style={{ width: keCao, height: keCao }}>
               <div ref={loc} style={{ transition: 'filter .08s' }} className="h-full w-full">
-                {coAnhBoss ? <BossAnhHS ma={ke.loai} tt={boss} cao={keCao} /> : <QuaiTam b={b} loai={ke.loai} boss={ke.boss} co={keCao} />}
+                {coAnhBoss ? <BossAnhHS ma={ke.loai} tt={ha && infoBoss?.khung ? 'ha' : boss} cao={keCao} clip={clipBoss} /> : <QuaiTam b={b} loai={ke.loai} boss={ke.boss} co={keCao} />}
               </div>
             </div>
           </div>

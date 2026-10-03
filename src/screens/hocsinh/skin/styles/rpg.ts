@@ -4,7 +4,7 @@
 // design/handoff/hs-skin-rpg-v1/reference/reference_rpg_ipad.png. File cho app (đã nén): public/bk-ui/hs/skin/rpg/.
 // Quy ước tên file: bg_<nền>_ngang|doc*.jpg · o_<ô>.png · b_<banner>.png · corner.png/divider.png. Xem design/STYLE-HS.md.
 // ============================================================================
-import type { Skin } from '../kieu'
+import type { Skin, ClipBoss, ChieuBoss } from '../kieu'
 import { LOI_GAME } from '../loi'
 import { RPG_3D } from '../the3d/bangMauRpg'
 import { HOC_TAP_RPG } from './rpgHocTap'
@@ -20,6 +20,16 @@ const nen = (f: string) =>
 // (Nền app HS cấp 3_11.png) tối hơn nhiều: trên còn thấy lâu đài, dưới xanh đêm đậm ⇒ phủ tối cả tấm + đậm dần xuống đáy.
 const nenNgang = (f: string) =>
   `linear-gradient(180deg, rgba(20,26,51,0.12) 0%, rgba(20,26,51,0.3) 40%, rgba(16,20,42,0.72) 100%), url(${A}/${f}.jpg) center top / cover no-repeat, #141a33`
+
+// ── Boss MINH QUÂN (MQ): cơ giáp xanh–vàng, 44 ảnh hoạt ảnh Thùy đưa 03/10 (nén bởi scripts/anime-boss-mq.mjs → boss/mq/) ──
+const MQ = '/bk-ui/hs/skin/rpg/boss/mq'
+const mqClip = (ten: string, ms: number[], mo: Partial<ClipBoss> = {}): ClipBoss => ({ src: ms.map((_, i) => `${MQ}/${ten}_0${i + 1}.webp`), ms, ...mo })
+const MQ_TAY_TRAI: [number, number] = [150, 150]
+const MQ_CHIEU: ChieuBoss[] = [
+  { ten: 'Tia laser', kieu: 'tia', clip: mqClip('laser', [250, 350, 450, 300, 220, 300], { rong: 2048, px: 450, lat: true }), phongMs: 600 },
+  { ten: 'Tên lửa đơn', kieu: 'don', clip: mqClip('missile_single', [250, 300, 450, 400, 350, 400]), phongMs: 1000, qua: { n: 1, cach: 0, bay: 650, nong: [MQ_TAY_TRAI] } },
+  { ten: 'Mưa tên lửa', kieu: 'mua', clip: mqClip('missile_rain', [250, 350, 650, 1000, 1200, 600]), phongMs: 1250, qua: { n: 6, cach: 90, bay: 1200, nong: [[210, 110], [560, 130]] } },
+]
 
 export const RPG: Skin = {
   id: 'rpg', ten: 'Anime RPG', moTa: 'Trời sao, đảo nổi, viền vàng', giongGi: 'Genshin · Star Rail',
@@ -77,6 +87,18 @@ export const RPG: Skin = {
   nhanVat: { nam: `${A}/nv_nam_chibi.png`, nu: `${A}/nv_nu_chibi.png` },
   // Boss mẫu (01/10): chân dung Thùy vẽ chibi — ChatGPT, ảnh gốc design/bk-ui-src/boss/thuy/ (02..08), nén 1024px (chân dung 512px).
   boss: {
+    boss_mq: {
+      ten: 'Minh Quân', cao: 3.2, dang: 'anh',
+      khung: {
+        dung: { src: [`${MQ}/talk_01.webp`], ms: [1000], lap: true }, noi: mqClip('talk', [200, 160, 200, 160, 200, 200], { lap: true }),
+        chieu: MQ_CHIEU[0].clip, trung: mqClip('hit', [100, 100, 180, 170, 170, 250]), gian: mqClip('taunt', [220, 300, 400, 400, 550, 300]), ha: mqClip('defeat', [220, 300, 400, 450, 550, 700]),
+      },
+      chieuRieng: MQ_CHIEU, anhTenLua: `${MQ}/missile_projectile.webp`,
+      fx: { no: 'radial-gradient(closest-side, #fff7d3, #ff9a3c 45%, rgba(255,120,40,0) 75%)', vet: '#54d9ff' },
+      // 6 ảnh tĩnh (đường lùi khi chưa nạp được hoạt ảnh + cảnh 3D cũ dùng) = khung đại diện của từng clip
+      dung: `${MQ}/talk_01.webp`, noi: `${MQ}/talk_03.webp`, chieu: `${MQ}/missile_rain_04.webp`, trung: `${MQ}/hit_03.webp`, gian: `${MQ}/taunt_04.webp`, ha: `${MQ}/defeat_06.webp`,
+      chandung: `${MQ}/dialogue_upper.webp`,
+    },
     boss_thuy: {
       ten: 'Thùy', cao: 2.9, dang: 'anh',
       mo3d: { da: '#efc197', toc: '#17141c', kinh: true, ao: '#2a2143', aoLot: '#b88f4a', vien: '#e9c77b', ngoc: '#7a4dff', hao: '#9b6bff', haoGian: '#ffc94d' },
