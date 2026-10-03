@@ -50,6 +50,12 @@ Style RPG hiện tại (02/10: nền + nhân vật đã CHIBI — `bg_*_chibi_*.
 - Màn đăng nhập (`src/auth/Login.tsx`, dùng chung mọi app) tự khoá `colorScheme: 'light'` — skin tối gắn lên `<html>` từ lúc khởi động
   từng làm chữ ô nhập thành trắng trên nền trắng (29/09).
 
+## 2.5 ⭐ LỜI CHỮ: gốc FORMAL, style game được múa máy (Thùy 03/10)
+
+- Bản gốc của mọi câu chữ là **formal** (`skin/loi.ts` → `LOI_FORMAL`). Style game khai `Skin.loi` (vd `LOI_GAME`) ghi đè từng khoá bằng giọng game; khoá không ghi đè rơi về formal. Style mặc định/tối giản KHÔNG khai `loi`.
+- Màn đọc chữ qua `useLoi()` (KhungHS) — cấm gõ chữ giọng game (chiêu, quái, tuyệt kỹ…) thẳng trong màn, cấm so id style. Thêm khoá: viết bản formal trước.
+- Chỉ đổi câu chữ; logic/số liệu y hệt mọi style.
+
 ## 3. Thêm TÍNH NĂNG / MÀN mới (bắt buộc)
 
 1. Dựng màn bằng các mảnh ở mục 2 — không tự đặt màu. Màn làm bài full-height có thể dùng nền `var(--sk-page)` trực tiếp (mẫu `LamBai`).

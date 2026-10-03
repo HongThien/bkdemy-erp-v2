@@ -1,0 +1,73 @@
+// ============================================================================
+// LỜI CHỮ THEO STYLE (Thùy 03/10): "app có chế độ chọn — ai thích game chọn style game, ai không thích game chọn style mặc định.
+// Múa máy thêm từ ngữ được, nhưng BẢN GỐC phải là bản formal."
+//  • LOI_FORMAL = bản gốc, trung tính, nghe như app học tập — MỌI style không khai gì đều dùng bản này.
+//  • Style game (RPG, Khối vuông…) khai `Skin.loi` ghi đè TỪNG khoá bằng giọng game (chiêu, quái, tuyệt kỹ…). Khoá không ghi đè ⇒ rơi về formal.
+// Luật: màn mới có chữ mang giọng game ⇒ thêm khoá vào `LoiHS` + bản FORMAL ở đây trước, rồi mới viết bản game trong style. Không gõ chữ game thẳng trong màn.
+// Chỉ đổi CÂU CHỮ — logic/số liệu không phụ thuộc lời (đúng luật đối xứng: màn chạy y hệt ở mọi style).
+// ============================================================================
+import { useSyncExternalStore } from 'react'
+import type { SkinId } from './kieu'
+
+export type LoiHS = {
+  /** nhãn 4 mức combo: [0/3, 1/3, 2/3, 3/3] */
+  chieu: readonly [string, string, string, string]
+  /** chữ nhỏ dưới nhãn mức: "2/3 câu đúng · −2 máu · Cầu lửa" */
+  chieuChiTiet: (dung: number, tong: number, ten: string) => string
+  /** nhãn cạnh 3 ô combo trên thanh trên cùng */
+  nhanCombo: string
+  /** tên nhóm đội hình (aria + tiêu đề) */
+  doiHinh: string
+  /** nhãn đối tượng cuối chặng (boss) · đối tượng thường */
+  nhanBoss: string
+  nhanThuong: (n: number, tong: number) => string
+  /** mở màn */
+  moMan: (ten: string) => string
+  huongDan: (n: number) => string
+  /** còn lại / đã xong */
+  con: (n: number) => string
+  daXong: string
+  /** hoàn thành toàn bộ */
+  hetDoiHinh: string
+}
+
+export const LOI_FORMAL: LoiHS = {
+  chieu: ['Chưa đạt mức nào', 'Mức 1/3', 'Mức 2/3', 'Hoàn thành tốt 3/3'],
+  chieuChiTiet: (dung, tong, ten) => `${dung}/${tong} câu đúng${dung ? ` · tính ${dung} điểm` : ''} · ${ten}`,
+  nhanCombo: 'Chuỗi',
+  doiHinh: 'Các nhóm câu hỏi',
+  nhanBoss: 'CUỐI CHẶNG',
+  nhanThuong: (n, tong) => `NHÓM ${n}/${tong}`,
+  moMan: (ten) => `Bắt đầu: ${ten}`,
+  huongDan: (n) => `Cứ ${n} câu là một lượt tính; đúng cả ${n} câu đạt mức cao nhất`,
+  con: (n) => `Còn ${n} điểm`,
+  daXong: 'Đã hoàn thành',
+  hetDoiHinh: 'Hoàn thành toàn bộ!',
+}
+
+/** Giọng GAME — dùng chung cho các style game; style nào muốn giọng riêng thì khai `loi` của mình đè lên. */
+export const LOI_GAME: Partial<LoiHS> = {
+  chieu: ['Chiêu xịt — quái đánh trả, hồi 1 máu', 'Chiêu nhẹ', 'Chiêu mạnh', 'TUYỆT KỸ!'],
+  chieuChiTiet: (dung, tong, ten) => `${dung}/${tong} câu đúng${dung ? ` · −${dung} máu` : ''} · ${ten}`,
+  nhanCombo: 'Chiêu',
+  doiHinh: 'Đội hình',
+  nhanBoss: 'BOSS',
+  nhanThuong: (n, tong) => `ELITE ${n}/${tong}`,
+  moMan: (ten) => `${ten} xuất hiện!`,
+  huongDan: (n) => `Mỗi ${n} câu tung 1 chiêu — đúng cả ${n} là TUYỆT KỸ`,
+  con: (n) => `Còn ${n} đòn`,
+  daXong: 'Đã bị hạ',
+  hetDoiHinh: 'Hạ hết đội hình!',
+}
+
+// ── style đang áp (cùng chỗ gắn biến --sk-* ở KhungHS.ganBien) ─────────────────────────────────────────────────────
+// Màn cần LỜI mà không cần biết style là gì ⇒ chỉ đọc qua useLoi(), không so sánh id style.
+let skinDangAp: SkinId | null = null
+const nghe = new Set<() => void>()
+export function datSkinDangAp(id: SkinId) { if (skinDangAp === id) return; skinDangAp = id; nghe.forEach((f) => f()) }
+export const layLoi = (rieng?: Partial<LoiHS>): LoiHS => ({ ...LOI_FORMAL, ...rieng })
+
+/** Lời chữ của style đang áp. `loiCuaSkin` truyền từ registry để tránh import vòng (registry ↔ loi). */
+export function useSkinDangAp(): SkinId | null {
+  return useSyncExternalStore((f) => { nghe.add(f); return () => { nghe.delete(f) } }, () => skinDangAp, () => skinDangAp)
+}

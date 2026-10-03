@@ -10,6 +10,7 @@
 // Thiếu icon banner "kiểm tra lại" (#29, Thùy vẽ bù) — banner đang tắt (RETEST_BAT) nên không ảnh hưởng.
 // ============================================================================
 import type { Skin } from '../kieu'
+import { LOI_GAME } from '../loi'
 
 const A = '/bk-ui/hs/skin/khoi'
 const BALOO = "'Baloo 2', 'Be Vietnam Pro', system-ui, sans-serif"
@@ -24,6 +25,7 @@ export const KHOI: Skin = {
   id: 'khoi', ten: 'Khối vuông', moTa: 'Thế giới khối, vật phẩm pixel', giongGi: 'Minecraft · Roblox',
   font: BALOO, fontHead: PIXEL, headCase: 'none', headTrack: '0.02em',
   radius: '0px', radiusPill: '0px', cardClip: 'none', cardAccentLeft: 'none', blur: 'none',
+  loi: LOI_GAME,
   cheDo: ['sang'],
   // Túi đồ: tấm xám đá #c6c6c6 · ô lõm xám đậm · vát trắng trên-trái / xám đậm dưới-phải. acc = xanh cỏ ĐẬM (vừa làm nền nút chữ trắng,
   // vừa làm chữ tiêu đề lớn trên tấm xám — xanh cỏ sáng #5fa83a trên xám chỉ ~2:1, không đọc được).

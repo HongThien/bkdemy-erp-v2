@@ -4,6 +4,7 @@
 // ============================================================================
 
 import type { BangMau3D } from './the3d/kieuMau'
+import type { LoiHS } from './loi'
 
 
 // Thêm style mới: thêm id ở đây + file skin/styles/<id>.ts + đăng ký trong registry.ts + migration nới CHECK hs_giao_dien.skin.
@@ -66,6 +67,8 @@ export type Skin = {
   cardClip: string      // clip-path thẻ ('none' nếu không cắt góc)
   cardAccentLeft: string // viền trái nhấn — 'none' nếu không
   blur: string          // backdrop-filter của thẻ (skin nền ảnh cần mờ sau thẻ)
+  // LỜI CHỮ giọng game (skin/loi.ts): không khai ⇒ bản FORMAL gốc. Khai từng khoá để ghi đè (Thùy 03/10: bản gốc phải formal, style game được múa máy).
+  loi?: Partial<LoiHS>
   cheDo: ('sang' | 'toi')[] // chế độ skin hỗ trợ; 1 phần tử = khoá chế độ đó
   sang?: Mau
   toi?: Mau

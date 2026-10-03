@@ -5,6 +5,7 @@
 // Quy ước tên file: bg_<nền>_ngang|doc*.jpg · o_<ô>.png · b_<banner>.png · corner.png/divider.png. Xem design/STYLE-HS.md.
 // ============================================================================
 import type { Skin } from '../kieu'
+import { LOI_GAME } from '../loi'
 import { RPG_3D } from '../the3d/bangMauRpg'
 import { HOC_TAP_RPG } from './rpgHocTap'
 import { CHINH_PHUC_RPG } from './rpgChinhPhuc'
@@ -24,6 +25,7 @@ export const RPG: Skin = {
   id: 'rpg', ten: 'Anime RPG', moTa: 'Trời sao, đảo nổi, viền vàng', giongGi: 'Genshin · Star Rail',
   font: BVP, fontHead: "'Philosopher', 'Be Vietnam Pro', serif", headCase: 'none', headTrack: '0.01em',
   radius: '8px', cardClip: 'none', cardAccentLeft: 'none', blur: 'blur(6px)',
+  loi: LOI_GAME,
   cheDo: ['toi'],
   toi: { bg: '#141a33', surface: 'rgba(20,26,51,0.72)', surface2: 'rgba(233,199,123,0.12)', ink: '#f3ead0', muted: '#bfb08a', line: 'rgba(233,199,123,0.3)', acc: '#e9c77b', accInk: '#141a33', badge: '#e9c77b', badgeInk: '#141a33', cardBorder: '1px solid rgba(233,199,123,0.35)', cardShadow: 'none' },
   // Tranh vẽ riêng 2 khổ: ngang 1672×941 cho iPad/máy tính, dọc 940×1672 cho điện thoại.

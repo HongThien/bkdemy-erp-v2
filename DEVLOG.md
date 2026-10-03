@@ -35423,3 +35423,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   dạng không có MCQ bị khoá + ghi rõ; luyện/test bù gọi loai bu_*. Chạy thử Duy Khoa (rollback): T107020401 luyện 10/10 trắc nghiệm ·
   T107020303 test 5/5 trắc nghiệm · HH00099 (0 MCQ) chặn đúng · htd_luyen (đuổi) giữ nguyên hành vi cũ.
 - **Còn mở:** Học từ đầu (đuổi) vẫn lùi đề tự luận khi dạng 0 MCQ theo quyết định 21–22/09 — lệch dòng "yếu·bù·đuổi chỉ MCQ" của CLAUDE.md; chờ Thùy chốt.
+
+### 2026-10-03 (chiều) — Giao diện: sân đấu 2D né HUD · LỜI CHỮ theo style (formal gốc, game ghi đè)
+- **Sân 2D (`DauView2D`)** bung xuống DƯỚI thanh HUD (đo `offsetHeight` bằng ResizeObserver) — điện thoại dọc HUD cao 2 hàng, trước đó che gần nửa sân + tiêu đề chiêu. Tiêu đề chiêu hạ lên 16%.
+- **Luật Thùy chốt:** app có chế độ chọn — ai thích game chọn style game, ai không thích chọn style mặc định; chữ "múa máy" được nhưng **bản gốc phải formal**.
+  Dựng `skin/loi.ts`: `LOI_FORMAL` (gốc, mọi style không khai đều dùng) + `LOI_GAME` (giọng chiêu/quái/tuyệt kỹ) gắn qua `Skin.loi` (RPG, Khối vuông); màn đọc bằng `useLoi()` (KhungHS) — KHÔNG so id style (đúng symmetry). `DauView2D` đã chuyển hết chữ sang khoá `loi.*`.
+  Style Tối giản không khai `loi` ⇒ formal. Màn mới có chữ giọng game: thêm khoá + bản formal ở loi.ts TRƯỚC.
+- **Quái 2D:** Thùy yêu cầu bỏ `QuaiTam` (hình tạm), tìm gói quái miễn phí trên mạng. Đã tra nguồn CC0 (Kenney Monster Builder Pack, OpenGameArt "Cute characters, monsters…", Bevouliin Furry Monster); CHƯA tải gì — chờ Thùy gật (Luật tải file).

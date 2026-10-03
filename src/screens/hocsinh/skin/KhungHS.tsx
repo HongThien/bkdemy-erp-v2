@@ -8,8 +8,9 @@
 // KHÔNG `if (skin === …)`, KHÔNG gõ mã màu cố định cho nền/chữ/viền (trừ màu NGỮ NGHĨA đúng/sai/cảnh báo trong MAU).
 // Thùy 29/09: chỉ Anime RPG dùng thật (4 skin kia là thử) ⇒ mặc định RPG cho mọi em, kể cả cấp 1 (các màn bên trong).
 // ============================================================================
-import { useEffect, useState, useSyncExternalStore, type CSSProperties, type ReactNode } from 'react'
+import { useEffect, useMemo, useState, useSyncExternalStore, type CSSProperties, type ReactNode } from 'react'
 import { laySkin, cheDoThat, bienCss, type GiaoDien } from './registry'
+import { datSkinDangAp, layLoi, useSkinDangAp, type LoiHS } from './loi'
 import { layMonHienTai, ngheMonHienTai } from '../../../lib/tuluyen'
 
 export const GD_MAC_DINH: GiaoDien = { skin: 'rpg', che_do: 'toi', hinh_nen: 'mac_dinh' } // Thùy 29/09: chỉ RPG dùng thật
@@ -28,9 +29,12 @@ export function useMedia(q: string): boolean {
 }
 export const useHeThongToi = () => useMedia('(prefers-color-scheme: dark)')
 export const useManDoc = () => useMedia('(orientation: portrait)')
+/** Lời chữ của style đang áp — formal gốc + phần style game ghi đè (skin/loi.ts). Màn KHÔNG so sánh id style, chỉ đọc lời. */
+export function useLoi(): LoiHS { const id = useSkinDangAp(); return useMemo(() => layLoi(laySkin(id).loi), [id]) }
 
 function ganBien(gd: GiaoDien, heThongToi: boolean, manDoc: boolean) {
   const skin = laySkin(gd.skin)
+  datSkinDangAp(skin.id)
   const v = bienCss(skin, cheDoThat(skin, gd.che_do, heThongToi), gd.hinh_nen, manDoc)
   const el = document.documentElement
   for (const [k, val] of Object.entries(v)) {
