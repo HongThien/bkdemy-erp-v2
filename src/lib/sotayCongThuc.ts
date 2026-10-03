@@ -127,7 +127,7 @@ export const MUC_LOAI: Record<MucLoai, { ten: string; nhom: string }> = {
 }
 export const MUC_LOAI_THU_TU: MucLoai[] = ['kn', 'ss', 'dl', 'ct', 'ht', 'cq', 'ch', 'tn', 'ud']
 export type CtTimRow = {
-  ma: string; ten: string; khoi: string; ten_chu_de: string; loai?: MucLoai; nhanh?: string
+  ma: string; ten: string; khoi: string; ten_chu_de: string; loai?: MucLoai; nhanh?: string; mon?: string
   noi_dung: string; luu_y?: string | null; cau_nho?: string | null; hinh_url?: string | null
   cong_thuc?: string; y?: string[]; bang?: string[][]; bien?: string[][]
   vd?: { de: string; buoc?: string[]; kq?: string }; nham?: string[]

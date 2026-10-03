@@ -4,11 +4,11 @@
 // sinh ra (qua skin/KhungHS) — CẤM `if (skin === '…')` trong component (cùng luật đối xứng môn CLAUDE §1.6).
 // Cách thêm style / thêm tính năng mới cho đúng style: design/STYLE-HS.md · kiểm: npm run check:style-hs.
 // ============================================================================
-import type { Skin, CheDo, HinhNen, SkinId } from './kieu'
+import type { Skin, CheDo, HinhNen, SkinId, MauDoc } from './kieu'
 import { RPG } from './styles/rpg'
 import { TOI_GIAN } from './styles/toiGian'
 import { KHOI } from './styles/khoi'
-export type { Skin, SkinId, CheDo, GiaoDien, HinhNen, Mau } from './kieu'
+export type { Skin, SkinId, CheDo, GiaoDien, HinhNen, Mau, MauDoc } from './kieu'
 
 // Khối dùng Home mới + tự chọn skin. Thùy 28/09 tối: MỌI skin mở cho MỌI em, không giới hạn tuổi ("lớp 6 vẫn thích anime")
 // — nhóm tuổi chỉ là chuẩn để THIẾT KẾ skin. Cấp 1 (3–5) còn HomeCap1 riêng cho iPad, chưa chuyển. Khối lấy từ hs_khoi_cua_toi.
@@ -34,6 +34,26 @@ export function cheDoThat(skin: Skin, cheDo: CheDo, heThongToi: boolean): 'sang'
 
 export function layHinhNen(skin: Skin, id: string | null | undefined): HinhNen {
   return skin.hinhNen.find((h) => h.id === id) ?? skin.hinhNen[0]
+}
+
+// ── MÀN ĐỌC (tầng cuối tra cứu — Thùy 03/10, mẫu file gốc KHTN Pocket) ─────────────────────────────────────────────
+// Nền SÁNG trơn, chữ tối, thẻ trắng: đọc lâu không mỏi — khác hẳn menu (tranh nền + thẻ mờ). Style nào muốn khác thì khai `Skin.doc`.
+export const DOC_MAC_DINH: MauDoc = {
+  font: "'Be Vietnam Pro', system-ui, sans-serif",
+  nen: '#eef1f6', giay: '#ffffff', ink: '#1d2433', muted: '#5f6b80', line: '#e1e6ef', bong: '0 6px 24px rgba(29,36,51,0.08)',
+  vd: '#f3f5fa', nhamNen: '#fff5f3', nhamVien: '#f1aba3', nhamChu: '#c2412d', luuYNen: '#fff8e6', luuYChu: '#a8670f',
+}
+// Màu NHẤN của màn đọc theo MÔN và PHÂN MÔN (Lý/Hóa/Sinh) — màu có nghĩa, giống nhau ở mọi style. 1 registry, không `if (mon === …)`
+// ở component (§1.6). Phân môn có màu riêng thì ưu tiên, không thì màu môn, không nữa thì màu chung. nhat = nền khối công thức.
+const MAU_DOC_THEO: Record<string, { acc: string; nhat: string }> = {
+  'Toán': { acc: '#3b6fe0', nhat: '#edf2fe' }, 'TSA': { acc: '#c2771b', nhat: '#fdf3e4' },
+  'Tiếng Anh': { acc: '#d14776', nhat: '#fdeef3' }, 'Văn': { acc: '#b4532f', nhat: '#fbefe9' },
+  'KHTN': { acc: '#2c8f86', nhat: '#e8f6f4' },
+  'Lý': { acc: '#7357d6', nhat: '#f1edff' }, 'Hóa': { acc: '#2d7fd3', nhat: '#eaf3fd' }, 'Sinh': { acc: '#1f9a6a', nhat: '#e8f7f0' },
+}
+const MAU_DOC_CHUNG = { acc: '#4f5f86', nhat: '#eef1f7' }
+export function mauDocMon(mon: string | null | undefined, phanMon?: string | null): { acc: string; nhat: string } {
+  return (phanMon && MAU_DOC_THEO[phanMon]) || (mon && MAU_DOC_THEO[mon]) || MAU_DOC_CHUNG
 }
 
 // Biến CSS cho 1 (skin × chế độ × hình nền) — đặt lên thẻ gốc, mọi thứ bên trong đọc var(--sk-*).
@@ -62,6 +82,15 @@ export function bienCss(skin: Skin, cd: 'sang' | 'toi', hinhNenId: string | null
     '--sk-tran-vien': skin.tran?.vien ?? `0 0 0 1px ${m.line}`, '--sk-tran-phien': skin.tran?.phien ?? m.surface2, '--sk-tran-phien-day': skin.tran?.phienDay ?? m.line,
     '--sk-goc': skin.trangTri?.goc ? `url(${skin.trangTri.goc})` : 'none',
     '--sk-font': skin.font, '--sk-font-head': skin.fontHead, '--sk-head-case': skin.headCase, '--sk-head-track': skin.headTrack,
+    ...bienDoc({ ...DOC_MAC_DINH, ...skin.doc }),
     colorScheme: cd === 'toi' ? 'dark' : 'light',
+  }
+}
+
+function bienDoc(d: MauDoc): Record<string, string> {
+  return {
+    '--sk-doc-font': d.font, '--sk-doc-nen': d.nen, '--sk-doc-giay': d.giay, '--sk-doc-ink': d.ink, '--sk-doc-muted': d.muted,
+    '--sk-doc-line': d.line, '--sk-doc-bong': d.bong, '--sk-doc-vd': d.vd, '--sk-doc-nham-nen': d.nhamNen, '--sk-doc-nham-vien': d.nhamVien,
+    '--sk-doc-nham-chu': d.nhamChu, '--sk-doc-luuy-nen': d.luuYNen, '--sk-doc-luuy-chu': d.luuYChu,
   }
 }

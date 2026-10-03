@@ -39,6 +39,14 @@ Style RPG hiện tại (02/10: nền + nhân vật đã CHIBI — `bg_*_chibi_*.
   `bg_bau_troi.jpg`/`ill_*.png` ⇒ máy còn bản 28/09 mất tranh nền. Muốn thay ảnh ⇒ **thêm file TÊN MỚI**, sửa style trỏ sang, giữ file cũ
   ≥ 1 tuần sau deploy rồi mới dọn (xoá vẫn theo Luật xoá — hỏi Thùy). Ảnh `.jpg` KHÔNG nằm trong bộ lưu sẵn của SW (chỉ png/svg/js/css) nên
   mất file là mất ngay.
+- **⭐ Menu vs màn riêng (Thùy 03/10).** Menu / danh sách / chọn chủ đề (các tầng đi xuống) = `ManHS` trên **tranh nền** như trên.
+  **Tầng CUỐI** — nơi em thật sự đọc hoặc làm — thì sang **màn riêng**, KHÔNG đặt ô mờ trên tranh nền (rất khó nhìn):
+  1. Bấm vào **1 câu hỏi / 1 bài** ⇒ màn làm bài riêng (`LamBai` và các màn đấu đã định nghĩa).
+  2. Bấm vào **1 kiến thức** (mục sổ tay, lý thuyết 1 dạng, …) ⇒ **màn đọc** `ManDocHS` (nền SÁNG trơn, thẻ trắng, chữ tối — mẫu file
+     gốc KHTN Pocket): `ManDocHS` (trang + nút quay lại + đường dẫn) · `TheDocHS` (chip → tiêu đề → tóm tắt → khối) · `ChipDocHS` ·
+     `KhoiDocHS` (`cong_thuc` · `vi_du` · `nham` · `luu_y` · `hinh` · `thuong`) · `TrongDocHS`. Màu đọc từ `--sk-doc-*` (registry
+     `DOC_MAC_DINH`, style muốn khác thì khai `Skin.doc`); **màu nhấn theo MÔN/phân môn** truyền vào `mau={mauDocMon(mon, phanMon)}` —
+     không tự chọn màu theo môn trong màn. Mẫu dùng: `DocMuc` / `DocDang` trong `SoTayHS.tsx`.
 - Màn đăng nhập (`src/auth/Login.tsx`, dùng chung mọi app) tự khoá `colorScheme: 'light'` — skin tối gắn lên `<html>` từ lúc khởi động
   từng làm chữ ô nhập thành trắng trên nền trắng (29/09).
 

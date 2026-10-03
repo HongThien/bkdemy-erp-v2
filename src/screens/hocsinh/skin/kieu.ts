@@ -17,6 +17,12 @@ export type Mau = {
   acc: string; accInk: string; badge: string; badgeInk: string
   cardBorder: string; cardShadow: string
 }
+// Bảng màu MÀN ĐỌC (tầng cuối tra cứu — xem `Skin.doc`). nen = nền trang · giay = thẻ nội dung · vd = khối ví dụ ·
+// nham* = khối "hay nhầm" · luuY* = khối "lưu ý". Màu nhấn KHÔNG ở đây — theo môn (`mauDocMon`).
+export type MauDoc = {
+  font: string; nen: string; giay: string; ink: string; muted: string; line: string; bong: string
+  vd: string; nhamNen: string; nhamVien: string; nhamChu: string; luuYNen: string; luuYChu: string
+}
 // sangDoc/toiDoc: bản cho màn DỌC (điện thoại) — tranh vẽ riêng khổ 9:16, không có thì dùng bản thường.
 export type HinhNen = { id: string; ten: string; sang?: string; toi?: string; sangDoc?: string; toiDoc?: string }
 
@@ -87,6 +93,10 @@ export type Skin = {
   // THẺ CÂU HỎI TRONG MÀN ĐẤU (Thùy 02/10: "viền card + font chưa mang vibe game") — không khai ⇒ dùng thẻ thường của style.
   // font: chữ đề + đáp án · nen/vien: nền + khung thẻ (box-shadow nhiều lớp = viền kép) · phien/phienDay: phiến đáp án + gờ dưới (bấm lún)
   tran?: { font: string; nen: string; vien: string; phien: string; phienDay: string }
+  // MÀN ĐỌC — tầng CUỐI của luồng tra cứu (1 mục sổ tay, 1 lý thuyết dạng): màn riêng nền SÁNG trơn, KHÔNG tranh nền
+  // (Thùy 03/10: "menu vẫn hiện backdrop, vào lớp cuối cùng phải hiện màn riêng — ô trên nền backdrop rất khó nhìn";
+  // mẫu: file gốc KHTN Pocket). Không khai ⇒ dùng DOC_MAC_DINH (registry). Màu nhấn theo MÔN/phân môn: `mauDocMon` (registry).
+  doc?: Partial<MauDoc>
   // Nền SÂN ĐẤU TRƯỜNG (Thử thách — ảnh ngang ~2,8:1, mặt sân ở ~60–100% chiều dọc). Không khai ⇒ sân là mảng màu của style (Tối giản).
   sanDau?: string
   // KHU HỌC TẬP kiểu game (Thùy 03/10: "5 ô = mỗi cái 1 lục địa trôi nổi trên bầu trời sao"): nền trời + ảnh ĐẢO cho từng ô (khoá = id ô ở hoctap/HocTapHS.tsx).

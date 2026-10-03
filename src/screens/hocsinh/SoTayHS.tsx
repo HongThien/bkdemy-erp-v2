@@ -27,7 +27,8 @@ import {
   type SoTayTimRow, type SoTayNoiDung,
 } from '../../lib/sotay'
 import { soTayTimCt, soTayMucCay, soTayMuc, MUC_LOAI, MUC_LOAI_THU_TU, type CtTimRow, type MucCay, type MucSoTay, type MucLoai } from '../../lib/sotayCongThuc'
-import { ManHS, DauTrangHS, NhomHS, MAU, THE, THE_TRON, HEAD } from './skin/KhungHS'
+import { ManHS, DauTrangHS, NhomHS, MAU, THE, THE_TRON, HEAD, ManDocHS, TheDocHS, ChipDocHS, KhoiDocHS, TrongDocHS } from './skin/KhungHS'
+import { mauDocMon } from './skin/registry'
 
 // Thùy 29/09: mọi màn theo STYLE (skin) em đang chọn — bỏ nền mây + chồng sách + khẩu hiệu + màu theo giới tính.
 // `t` còn truyền qua các mảnh con nhưng mọi giá trị giờ là biến skin (1 bản cho cả nam/nữ).
@@ -235,10 +236,10 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
   }, [cay, nhomLoc])
 
   // Đang mở 1 dạng → màn đọc. Back về đúng chỗ cũ (duong/nhomLoc/q giữ nguyên trong state).
-  if (mucMo.length) return <DocMuc key={mucMo[mucMo.length - 1].ma} r={mucMo[mucMo.length - 1]} api={api} onMo={moMuc}
+  if (mucMo.length) return <DocMuc key={mucMo[mucMo.length - 1].ma} r={mucMo[mucMo.length - 1]} monMo={mon} api={api} onMo={moMuc}
     onBack={() => setMucMo((s) => s.slice(0, -1))} />
   if (maDangMo && mon) {
-    return <DocDang t={t} maDang={maDangMo.ma} mon={mon} nhanh={maDangMo.nhanh} api={api} onBack={() => setMaDangMo(null)} />
+    return <DocDang maDang={maDangMo.ma} mon={mon} nhanh={maDangMo.nhanh} api={api} onBack={() => setMaDangMo(null)} />
   }
 
   const dangSearch = ketQua !== null
@@ -390,8 +391,21 @@ export default function SoTayHS({ gioiTinh, onXong, api = API_THAT }: {
   )
 }
 
-// ── MÀN ĐỌC 1 DẠNG — lý thuyết + phương pháp + bài mẫu (gói chung trong `noi_dung`) ─────────
-function DocDang({ t, maDang, mon, nhanh, api, onBack }: { t: Theme; maDang: string; mon: string; nhanh: SoTayNhanh; api: SoTayApi; onBack: () => void }) {
+// ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+// MÀN ĐỌC (tầng cuối — Thùy 03/10): bấm vào 1 kiến thức ⇒ màn RIÊNG nền sáng (`ManDocHS`), không còn ô mờ trên tranh nền.
+// Bố cục theo file gốc KHTN Pocket: chip (loại · lớp · chủ đề) → tiêu đề → tóm tắt → khối công thức (+ bảng kí hiệu) → hình →
+// ý chính → bảng → ví dụ từng bước → hay nhầm → lưu ý / mẹo nhớ → xem thêm. Phần nào DB không có thì không vẽ.
+// ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+// Mục sổ tay KHTN (nạp từ KHTN Pocket) dùng <b>/<i> trong chữ (645/807 mục) — MathText escape HTML nên hiện NGUYÊN VĂN "<b>".
+// Đổi ở chỗ hiển thị: <b>…</b> ⇒ **…** (MathText in đậm sẵn) · <i> bỏ thẻ. Dữ liệu gốc không đổi (ERP vẫn sửa bản có thẻ).
+const chuHtml = (s: string) => s.replace(/<b>([\s\S]*?)<\/b>/g, '**$1**').replace(/<\/?i>/g, '')
+function Chu({ children }: { children: string }) {
+  return <MathText>{chuHtml(children)}</MathText>
+}
+
+// ── 1 DẠNG — lý thuyết + phương pháp + bài mẫu (gói chung trong `noi_dung`) ─────────
+function DocDang({ maDang, mon, nhanh, api, onBack }: { maDang: string; mon: string; nhanh: SoTayNhanh; api: SoTayApi; onBack: () => void }) {
   const [d, setD] = useState<SoTayNoiDung | null | undefined>(undefined) // undefined = đang tải · null = không có
   const [loi, setLoi] = useState<string | null>(null)
   useEffect(() => {
@@ -406,59 +420,60 @@ function DocDang({ t, maDang, mon, nhanh, api, onBack }: { t: Theme; maDang: str
   }, [maDang, mon, nhanh])
 
   return (
-    <Kung t={t} decor={false} onBack={onBack}
-      title={d ? d.ten_dang : d === undefined ? 'Đang mở…' : 'Chưa có nội dung'}
-      sub={d ? `Lớp ${d.khoi} · ${d.ten_chu_de} › ${d.ten_chuyen_de}` : undefined}>
-      {d === undefined && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
+    <ManDocHS onBack={onBack} mau={mauDocMon(mon)} duong={d ? `Sổ tay · ${mon} · ${d.ten_chu_de}` : 'Sổ tay'}>
+      {d === undefined && <TrongDocHS icon="📖" tieuDe="Đang mở…" />}
       {d === null && (
-        <Trong t={t} icon={loi ? '⚠️' : '📭'} title={loi ? 'Không mở được' : 'Dạng này chưa có lý thuyết'}
-          mo_ta={loi ?? 'Thầy cô chưa soạn phần này. Em chọn dạng khác hoặc quay lại sau nhé.'} />
+        <TrongDocHS icon={loi ? '⚠️' : '📭'} tieuDe={loi ? 'Không mở được' : 'Dạng này chưa có lý thuyết'}
+          moTa={loi ?? 'Thầy cô chưa soạn phần này. Em chọn dạng khác hoặc quay lại sau nhé.'} />
       )}
       {d && (
-        <div className="mt-2 p-4" style={THE}>
-          {d.nhom && <div className="mb-2"><NhomChip nhom={d.nhom} /></div>}
-          {d.mo_ta_ngan && <p className="mb-3 text-[12.5px] italic leading-snug" style={{ color: MAU.muted }}>{d.mo_ta_ngan}</p>}
-          {/* MathText = đúng trình render lý thuyết của màn Kho/trang in: LaTeX $…$ + ảnh ![](url).
-              Dùng lại để HS thấy y hệt bản thầy cô soạn, không đẻ bộ render thứ hai. */}
-          <div className="text-[14.5px] leading-[1.75]" style={{ color: NAVY }}>
-            <MathText>{d.noi_dung}</MathText>
-          </div>
-        </div>
+        <TheDocHS tieuDe={d.ten_dang}
+          chip={<>
+            <ChipDocHS dac>Lý thuyết</ChipDocHS>
+            <ChipDocHS>Lớp {d.khoi}</ChipDocHS>
+            {d.nhom && <ChipDocHS>{NHOM_TEN[d.nhom]}</ChipDocHS>}
+            <ChipDocHS>{d.ten_chuyen_de}</ChipDocHS>
+          </>}
+          tomTat={d.mo_ta_ngan ? <span style={{ color: 'var(--sk-doc-muted)' }}>{d.mo_ta_ngan}</span> : undefined}>
+          {/* MathText = đúng trình render lý thuyết của màn Kho/trang in: LaTeX $…$ + ảnh ![](url) — HS thấy y hệt bản thầy cô soạn. */}
+          <div className="text-[15px] leading-[1.8]"><Chu>{d.noi_dung}</Chu></div>
+        </TheDocHS>
       )}
-    </Kung>
+    </ManDocHS>
   )
 }
 
-// ── MÀN ĐỌC 1 MỤC SỔ TAY — thẻ công thức Toán (nội dung + lưu ý + mẹo nhớ) hoặc mục KHTN (tóm tắt · công thức · ý chính · bảng ·
-// kí hiệu · ví dụ từng bước · hay nhầm · liên quan). Dữ liệu = 1 hình từ DB (`_sotay_muc_json`); phần nào vắng thì không vẽ.
-function KhoiDoc({ ten, children }: { ten?: string; children: ReactNode }) {
-  return (
-    <div className="mt-2.5 p-4" style={THE}>
-      {ten && <p className="mb-2 text-[12px] font-black uppercase tracking-[0.06em]" style={{ color: MAU.acc }}>{ten}</p>}
-      <div className="text-[14px] leading-[1.75]" style={{ color: NAVY }}>{children}</div>
-    </div>
-  )
-}
-function BangDoc({ hang, dauLaTieuDe = true }: { hang: string[][]; dauLaTieuDe?: boolean }) {
+// Bảng trong màn đọc. tieuDe: hàng tiêu đề riêng (bảng kí hiệu) — không có thì hàng đầu của dữ liệu là tiêu đề (dauLaTieuDe).
+function BangDoc({ hang, dauLaTieuDe = true, tieuDe }: { hang: string[][]; dauLaTieuDe?: boolean; tieuDe?: string[] }) {
+  const dau = tieuDe ?? (dauLaTieuDe ? hang[0] : null)
+  const than = tieuDe || !dauLaTieuDe ? hang : hang.slice(1)
   return (
     <div className="-mx-1 overflow-x-auto">
-      <table className="w-full border-collapse text-[13px] leading-snug">
+      <table className="w-full border-collapse text-[13.5px] leading-snug">
+        {dau && (
+          <thead>
+            <tr>{dau.map((o, j) => (
+              <th key={j} className="px-2 py-1.5 text-left text-[11px] font-extrabold uppercase tracking-[0.06em]"
+                style={{ color: 'var(--sk-doc-muted)', borderBottom: '1px solid var(--sk-doc-line)' }}><Chu>{o}</Chu></th>
+            ))}</tr>
+          </thead>
+        )}
         <tbody>
-          {hang.map((h, i) => (
-            <tr key={i} style={i === 0 && dauLaTieuDe ? { background: MAU.surface2 } : undefined}>
-              {h.map((o, j) => (
-                <td key={j} className={`px-2 py-1.5 align-top ${i === 0 && dauLaTieuDe ? 'font-bold' : ''}`} style={{ border: `1px solid ${MAU.line}` }}>
-                  <MathText>{o}</MathText>
-                </td>
-              ))}
-            </tr>
+          {than.map((h, i) => (
+            <tr key={i}>{h.map((o, j) => (
+              <td key={j} className={`px-2 py-2 align-top ${j === 0 ? 'font-bold' : ''}`}
+                style={{ borderBottom: '1px solid var(--sk-doc-line)', ...(j === 0 ? { color: 'var(--doc-acc)' } : {}) }}><Chu>{o}</Chu></td>
+            ))}</tr>
           ))}
         </tbody>
       </table>
     </div>
   )
 }
-function DocMuc({ r, api, onMo, onBack }: { r: MucSoTay; api: SoTayApi; onMo: (r: MucSoTay) => void; onBack: () => void }) {
+
+// ── 1 MỤC SỔ TAY — thẻ công thức Toán (nội dung = công thức) hoặc mục KHTN (tóm tắt + công thức chữ + các phần) ─────────
+// monMo = môn đang mở ở màn sổ tay — dùng khi dòng không mang `mon` (màu nhấn theo môn).
+function DocMuc({ r, monMo, api, onMo, onBack }: { r: MucSoTay; monMo: string | null; api: SoTayApi; onMo: (r: MucSoTay) => void; onBack: () => void }) {
   const [loi, setLoi] = useState<string | null>(null)
   const loai = r.loai ?? 'ct'
   const moLq = (ma: string) => {
@@ -466,68 +481,73 @@ function DocMuc({ r, api, onMo, onBack }: { r: MucSoTay; api: SoTayApi; onMo: (r
     setLoi(null)
     api.muc(ma).then((x) => { if (x) onMo(x) }).catch((e) => { ghiLoi('mở mục ' + ma, e); setLoi(moTaLoi(e, 'Không mở được mục này.')) })
   }
+  // Thẻ công thức chưa tách "công thức chữ" (thẻ Toán) ⇒ `noi_dung` CHÍNH LÀ công thức ⇒ vào khối công thức, không làm tóm tắt.
+  const congThuc = r.cong_thuc ?? (loai === 'ct' ? r.noi_dung : null)
+  const tomTat = congThuc === r.noi_dung ? null : r.noi_dung
+  // Bảng kí hiệu 3 cột (kí hiệu · tên · đơn vị) ⇒ có hàng tiêu đề; kiểu khác thì vẽ trơn.
+  const dauBien = r.bien?.[0]?.length === 3 ? ['Kí hiệu', 'Tên', 'Đơn vị'] : undefined
   return (
-    <Kung decor={false} onBack={onBack} title={r.ten}
-      sub={[MUC_LOAI[loai].ten, `Lớp ${r.khoi}`, r.nhanh, r.ten_chu_de].filter(Boolean).join(' · ')}>
-      <KhoiDoc>
-        <div className="text-[15px] leading-[1.8]"><MathText>{r.noi_dung}</MathText></div>
-        {r.cong_thuc && (
-          <div className="mt-3 px-3 py-2.5 text-center text-[17px] font-bold" style={{ ...HEAD, background: MAU.surface2, borderRadius: '12px', color: NAVY }}>
-            <MathText>{r.cong_thuc}</MathText>
-          </div>
+    <ManDocHS onBack={onBack} mau={mauDocMon(r.mon ?? monMo, r.nhanh)} duong={['Sổ tay', r.nhanh ?? r.mon ?? monMo, r.ten_chu_de].filter(Boolean).join(' · ')}>
+      <TheDocHS tieuDe={r.ten}
+        chip={<>
+          <ChipDocHS dac>{MUC_LOAI[loai].ten}</ChipDocHS>
+          <ChipDocHS>{r.nhanh ? `${r.nhanh} · ` : ''}Lớp {r.khoi}</ChipDocHS>
+          <ChipDocHS>{r.ten_chu_de}</ChipDocHS>
+        </>}
+        tomTat={tomTat ? <Chu>{tomTat}</Chu> : undefined}>
+        {congThuc && (
+          <KhoiDocHS kieu="cong_thuc">
+            <div className="text-[18px] font-bold leading-[1.9]"><Chu>{congThuc}</Chu></div>
+            {r.bien?.length ? <div className="mt-2"><BangDoc hang={r.bien} dauLaTieuDe={false} tieuDe={dauBien} /></div> : null}
+          </KhoiDocHS>
         )}
-        {r.hinh_url && <img src={r.hinh_url} alt="" className="mx-auto mt-3 max-h-64 w-auto max-w-full rounded-lg" />}
-      </KhoiDoc>
-      {r.bien?.length ? (
-        <KhoiDoc ten="Kí hiệu">
-          <BangDoc hang={r.bien} dauLaTieuDe={false} />
-        </KhoiDoc>
-      ) : null}
-      {r.y?.length ? (
-        <KhoiDoc ten="Ý chính">
-          <ul className="flex flex-col gap-1.5 pl-4" style={{ listStyleType: 'disc' }}>
-            {r.y.map((x, i) => <li key={i}><MathText>{x}</MathText></li>)}
+        {!congThuc && r.bien?.length ? <KhoiDocHS nhan="Kí hiệu"><BangDoc hang={r.bien} dauLaTieuDe={false} tieuDe={dauBien} /></KhoiDocHS> : null}
+        {r.hinh_url && <KhoiDocHS kieu="hinh"><img src={r.hinh_url} alt="" className="max-h-72 w-auto max-w-full rounded-lg" /></KhoiDocHS>}
+        {r.y?.length ? (
+          <ul className="flex flex-col gap-2 text-[15px] leading-[1.7]">
+            {r.y.map((x, i) => (
+              <li key={i} className="flex gap-2.5">
+                <span className="mt-[0.62em] h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: 'var(--doc-acc)' }} aria-hidden />
+                <span className="min-w-0"><Chu>{x}</Chu></span>
+              </li>
+            ))}
           </ul>
-        </KhoiDoc>
-      ) : null}
-      {r.bang?.length ? <KhoiDoc ten={loai === 'ss' ? 'So sánh' : 'Bảng'}><BangDoc hang={r.bang} /></KhoiDoc> : null}
-      {r.vd && (
-        <KhoiDoc ten="Ví dụ">
-          <p className="font-semibold"><MathText>{r.vd.de}</MathText></p>
-          {r.vd.buoc?.length ? (
-            <ol className="mt-2 flex flex-col gap-1 pl-5" style={{ listStyleType: 'decimal', color: MAU.muted }}>
-              {r.vd.buoc.map((b, i) => <li key={i}><span style={{ color: NAVY }}><MathText>{b}</MathText></span></li>)}
-            </ol>
-          ) : null}
-          {r.vd.kq && (
-            <p className="mt-2 font-bold"><span style={{ color: MAU.dung }}>Kết quả: </span><MathText>{r.vd.kq}</MathText></p>
-          )}
-        </KhoiDoc>
-      )}
-      {r.nham?.length ? (
-        <KhoiDoc ten="Hay nhầm">
-          <ul className="flex flex-col gap-1.5">
-            {r.nham.map((x, i) => <li key={i} className="flex gap-2"><span style={{ color: MAU.canhBao }} aria-hidden>⚠</span><span><MathText>{x}</MathText></span></li>)}
-          </ul>
-        </KhoiDoc>
-      ) : null}
-      {r.luu_y && (
-        <div className="mt-2.5 p-3.5 text-[13.5px] leading-relaxed" style={{ ...THE, color: NAVY }}>
-          <span className="font-black" style={{ color: MAU.canhBao }}>Lưu ý: </span><MathText>{r.luu_y}</MathText>
-        </div>
-      )}
-      {r.cau_nho && (
-        <div className="mt-2.5 p-3.5 text-[13.5px] leading-relaxed" style={{ ...THE, color: NAVY }}>
-          <span className="font-black" style={{ color: MAU.acc }}>Mẹo nhớ: </span><MathText>{r.cau_nho}</MathText>
-        </div>
-      )}
-      {r.lq?.length ? (
-        <div className="mt-4 flex flex-col gap-2">
-          <NhomHS>Liên quan</NhomHS>
-          {loi && <Trong icon="⚠️" title="Không mở được" mo_ta={loi} />}
-          {r.lq.map((x) => <Dong key={x.ma} ten={x.ten} phu={<NhanLoai loai={x.loai} />} onClick={() => moLq(x.ma)} />)}
-        </div>
-      ) : null}
-    </Kung>
+        ) : null}
+        {r.bang?.length ? <KhoiDocHS nhan={loai === 'ss' ? 'So sánh' : 'Bảng'}><BangDoc hang={r.bang} /></KhoiDocHS> : null}
+        {r.vd && (
+          <KhoiDocHS kieu="vi_du" nhan="Ví dụ">
+            <p className="font-bold"><Chu>{r.vd.de}</Chu></p>
+            {r.vd.buoc?.length ? (
+              <ol className="mt-1.5 flex flex-col gap-1 pl-5" style={{ listStyleType: 'decimal' }}>
+                {r.vd.buoc.map((b, i) => <li key={i}><Chu>{b}</Chu></li>)}
+              </ol>
+            ) : null}
+            {r.vd.kq && <p className="mt-2 font-bold"><span style={{ color: 'var(--doc-acc)' }}>Đáp số: </span><Chu>{r.vd.kq}</Chu></p>}
+          </KhoiDocHS>
+        )}
+        {r.nham?.length ? (
+          <KhoiDocHS kieu="nham" nhan="Hay nhầm">
+            <ul className="flex flex-col gap-1 pl-4" style={{ listStyleType: 'disc' }}>
+              {r.nham.map((x, i) => <li key={i}><Chu>{x}</Chu></li>)}
+            </ul>
+          </KhoiDocHS>
+        ) : null}
+        {r.luu_y && <KhoiDocHS kieu="luu_y" nhan="Lưu ý"><Chu>{r.luu_y}</Chu></KhoiDocHS>}
+        {r.cau_nho && <KhoiDocHS kieu="vi_du" nhan="Mẹo nhớ"><Chu>{r.cau_nho}</Chu></KhoiDocHS>}
+        {r.lq?.length ? (
+          <KhoiDocHS nhan="Xem thêm">
+            {loi && <p className="mb-2 text-[13px]" style={{ color: 'var(--sk-doc-nham-chu)' }}>{loi}</p>}
+            <div className="flex flex-wrap gap-2">
+              {r.lq.map((x) => (
+                <button key={x.ma} onClick={() => moLq(x.ma)} className="rounded-full px-3 py-1 text-[13px] font-semibold transition active:scale-95"
+                  style={{ background: 'var(--sk-doc-giay)', color: 'var(--sk-doc-ink)', boxShadow: '0 0 0 1px var(--sk-doc-line)' }}>
+                  {x.ten} <span className="text-[11px] font-bold" style={{ color: 'var(--doc-acc)' }}>{MUC_LOAI[x.loai].ten}</span>
+                </button>
+              ))}
+            </div>
+          </KhoiDocHS>
+        ) : null}
+      </TheDocHS>
+    </ManDocHS>
   )
 }

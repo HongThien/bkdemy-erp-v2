@@ -55,6 +55,14 @@ const MOCK_CT: CtTimRow[] = [
   { ma: 'CT9-PT-01', ten: 'Công thức nghiệm phương trình bậc hai (delta)', khoi: '9', ten_chu_de: 'Phương trình bậc hai', hinh_url: null,
     luu_y: 'Nếu $b$ chẵn thì dùng $\\Delta\'$ cho gọn.', cau_nho: null,
     noi_dung: '$\\Delta=b^2-4ac$\n$\\Delta>0$: $x_{1,2}=\\dfrac{-b\\pm\\sqrt{\\Delta}}{2a}$' },
+  // Mục kiểu KHTN đủ mọi phần (gõ "ohm") — soi bố cục màn đọc: tóm tắt · công thức + kí hiệu · ý chính · ví dụ · hay nhầm · xem thêm.
+  { ma: 'l9-dinh-luat-ohm', mon: 'KHTN', nhanh: 'Lý', loai: 'ct', ten: 'Định luật Ohm', khoi: '9', ten_chu_de: 'Điện trở – mạch điện',
+    noi_dung: 'Cường độ dòng điện qua dây dẫn tỉ lệ thuận với hiệu điện thế và tỉ lệ nghịch với điện trở của dây.',
+    cong_thuc: 'I = U/R', bien: [['I', 'cường độ dòng điện', 'A'], ['U', 'hiệu điện thế', 'V'], ['R', 'điện trở', 'Ω']],
+    y: ['Đồ thị I theo U của một dây dẫn là <b>đường thẳng đi qua gốc tọa độ</b>.', 'Suy ra: U = I·R và R = U/I.'],
+    vd: { de: 'Một bóng đèn có điện trở 24 Ω mắc vào hiệu điện thế 12 V. Tính cường độ dòng điện qua đèn.', buoc: ['I = U/R = 12 : 24'], kq: 'I = 0,5 A' },
+    nham: ['Quên đổi mA sang A (1 mA = 0,001 A).'],
+    lq: [{ ma: 'l9-dien-tro', ten: 'Điện trở', loai: 'dl' }, { ma: 'l9-noi-tiep', ten: 'Đoạn mạch nối tiếp', loai: 'ct' }] },
 ]
 const MOCK_API: SoTayApi = {
   mon: async () => MOCK_CAY.mon,

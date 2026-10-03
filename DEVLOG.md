@@ -35266,3 +35266,12 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Dry-run HS thật lớp 6/9/12 + nhân sự đạt hết (rollback). App: bỏ 2 hàng chip Khối, kết quả có NhanLop, mở dạng theo nhánh của dòng.
 
 - (03/10 khuya, Giao diện) Thùy góp ý demo Học tập: ① "lục địa không có nút quay lại" — app thật có, thiếu ở TRANG XEM THỬ world map (DauTrangHS không onBack) ⇒ thêm history.back() ② 5 ô ⇒ GAME CHIBI: 5 đảo lơ lửng trên trời sao — `Skin.hocTap` {nen, dao} (RPG mượn mảnh lục địa rừng/thành cổ/núi lửa/đảo trời/sa mạc + icon ô đặt trên đảo, nhấp nhô lệch pha, sáng khi chạm; bố cục ngang/dọc riêng; style không khai ⇒ lưới ô cũ) · Đơn 14 Kit B đổi từ "5 icon" sang "5 đảo lơ lửng" ③ Đấu trường bỏ Giải đấu 8 người + 2 người 1 máy (chỉ khi nhúng — `src/dautu/lib/nhung.ts`) ④ Leo tháp KHÔNG chọn khối: app truyền khối của em (`&khoi=` từ khoiCuaHS), game đặt khối + ẩn hàng chip. Thêm: nút số câu ghi "câu" thay "từ" cho môn không phải Anh. Đấu trường vẫn còn chọn khối ở màn chủ đề (chưa hỏi Thùy).
+- (03/10 tối, App HS) **Cơ chế chung "menu vs màn riêng" + màn ĐỌC kiến thức** (Thùy: "menu vẫn hiện backdrop, vào lớp cuối cùng phải hiện màn
+  riêng — ô trên nền backdrop rất khó nhìn"; làm bài → màn làm bài riêng (đã có); tra cứu → màn riêng của kiến thức, học file gốc KHTN Pocket).
+  Nhãn kết quả tìm giữ theo đặc trưng môn (Thùy: "ghi theo đặc trưng môn"). Mở artifact gốc "Sổ tay KHTN 6–9" xem trang mục Định luật Ohm làm mẫu.
+  Làm: `Skin.doc` + `MauDoc` (kieu.ts) · `DOC_MAC_DINH` + `mauDocMon(mon, phanMon)` + biến `--sk-doc-*` (registry.ts — màu ở .ts, không vào
+  ratchet màu của .tsx) · `ManDocHS/TheDocHS/ChipDocHS/KhoiDocHS/TrongDocHS` (KhungHS) · `DocMuc`/`DocDang` (SoTayHS) viết lại theo khuôn:
+  chip loại·lớp·chủ đề → tiêu đề → tóm tắt → khối công thức + bảng kí hiệu → hình → ý chính → bảng → ví dụ → hay nhầm → lưu ý/mẹo → xem thêm.
+  Bắt được: 645/807 mục KHTN có `<b>/<i>` mà MathText escape ⇒ app thật đang hiện NGUYÊN VĂN "<b>" (DEVLOG phiên trước ghi "MathText hiện
+  thẳng" — chưa soi bằng mắt). Sửa ở chỗ hiển thị (`chuHtml`: <b>→**…**, bỏ <i>), dữ liệu gốc không đổi. Luật ghi vào design/STYLE-HS.md §2.
+  Soi demo `hs.html?demo=sotay` (thêm mục mẫu "ohm" đủ phần): khổ dọc 430 + ngang 1180 (thẻ 728px giữa, không cuộn ngang). tsc ✔ · check:style-hs ✔.
