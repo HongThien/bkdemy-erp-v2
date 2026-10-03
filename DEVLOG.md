@@ -35389,3 +35389,15 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Còn chờ, theo lý do: 249 A không chắc / 2 phương án · 54 lệch đáp án · 31 A báo lỗi đề · 13 thiếu đáp án (A/B lệch) — đều là "không chắc" ⇒ GV.
   **Không tự gỡ** (không phải chuyện chắc/không chắc đáp án): 103 câu ở ĐIỂM CHỜ (trigger chặn duyệt khi chưa có điểm kiến thức) · 99 câu A+B
   thấy NGOÀI PHẠM VI (luật CEO 02/10 loại khỏi kho luyện thi vào 10) — hỏi Thùy.
+
+## 2026-10-03 (16h) — Bù có "Vào ca" trên app HS (Bùi Duy Khoa, TA Nguyễn Hà Giang)
+
+- **Sự cố:** TA mở ca + điểm danh có mặt nhưng app HS không vào ca luyện được. App TA ĐÚNG (giả lập JWT Hà Giang: fn_bu_ca_cua_toi ra 6 ca
+  hôm nay gồm 2 ca 16:00 P101 Duy Khoa; tự kiểm 35 ca · 0 lỗi). Gốc: buổi BÙ chưa bao giờ có "Vào ca" ở app HS (vao_ca chỉ yếu/đuổi) — t
+  đã nêu 29/09 nhưng để chờ chốt nội dung, không làm ⇒ lỗi tái diễn ở ca thật.
+- **Sửa (mig 202610031604):** fn_hs_lich_bo_tro bật vao_ca cho 'bu' (dựng từ bản đang chạy); fn_hs_bu_dang(p_buoi) = dạng của buổi mẹ
+  (lưới ingame · ET · BTVN không ẩn + lưới đã chép riêng cho em ở ca bù) + tên dạng + môn. App HS: màn `CaBuHS` (danh sách dạng) → mở bằng
+  màn Học từ đầu sẵn có (Lý thuyết · Luyện · Test, MCQ theo kho). Giả lập Duy Khoa (rollback): 2 ca vao_ca=true; ca bù 27/09 → HH00099
+  Tam giác bằng nhau TH1; ca bù 20/09 → T107020401, T107020303.
+- **Hạn chế:** dạng 0 MCQ (vd Hình học) → luyện báo "kho câu tạm hết" (đúng luật MCQ); test bù ghi vào hoc_tu_dau_dang (xong dạng HTD).
+- **Git máy này:** `git fetch` chết vì ref hỏng `refs/codex/turn-diffs/…` (công cụ khác tạo) — đẩy qua clone sạch, KHÔNG xoá ref (chờ Thùy).

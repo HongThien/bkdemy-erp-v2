@@ -271,3 +271,11 @@ export async function seedBtvnBu(bhhId: string): Promise<number> {
   if (error) throw error
   return (data as number) ?? 0
 }
+
+// ── CA BÙ trên app HS (Thùy 03/10, mig 202610031604): "Vào ca" ⇒ các DẠNG của buổi em đã nghỉ; mở từng dạng bằng màn Học từ đầu.
+export type BuDangHS = { mon: string; ten_lop: string | null; ngay_me: string | null; ngay_bu: string; dangs: { ma_dang: string; ten_dang: string }[] }
+export async function buDangCuaToi(buoiId: string): Promise<BuDangHS> {
+  const { data, error } = await supabase.rpc('fn_hs_bu_dang', { p_buoi: buoiId })
+  if (error) throw error
+  return data as BuDangHS
+}
