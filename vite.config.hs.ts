@@ -54,7 +54,9 @@ export default defineConfig({
         // Hình huy hiệu + bậc rank (~4 MB, 116 file — chỉ hiện ở Album/Rank/Hồ sơ) KHÔNG cho vào bộ lưu sẵn: nếu không, mỗi lần app
         // cập nhật mọi máy HS phải tải lại đủ 4 MB dù em chưa mở màn nào. Mở màn thì tải theo nhu cầu + cache trình duyệt (01/10).
         globIgnores: ['**/bk-ui/hs/gami/huy-hieu/**', '**/bk-ui/hs/gami/rank/**'],
-        navigateFallbackDenylist: [/^\/rest\//, /^\/auth\//],
+        // /dautu.html = khung game nhúng bằng <iframe> trong app HS (khu Học tập). Service worker trả index.html (app HS) cho MỌI điều hướng không khớp bộ lưu sẵn — mà `dautu.html?nhung=1&…` có query nên
+        // KHÔNG khớp ⇒ khung game hiện lại màn chính app HS = "bấm Đấu trường BK là về Home" (Thùy 03/10; chỉ lộ ở bản có SW/PWA — dev server không có SW nên không tái hiện). Loại ra để đi thẳng mạng.
+        navigateFallbackDenylist: [/^\/rest\//, /^\/auth\//, /^\/dautu\.html/],
       },
     }),
     renameToIndex(),
