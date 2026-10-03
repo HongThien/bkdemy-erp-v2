@@ -41,6 +41,8 @@ export const RPG: Skin = {
     // 01/10 — 2 ô mới trên màn chính, hình lấy từ kit gamification cùng nét RPG (chưa đặt vẽ riêng): sổ nhiệm vụ (nv_tuan) · khiên Hero.
     // Ô Rank thường hiện BIỂU TƯỢNG BẬC của chính em (HomeCard.anh) — o_rank chỉ là hình dự phòng lúc chưa tải xong.
     nhiem_vu: `${A}/o_nhiem_vu.png`, rank: `${A}/o_rank.png`,
+    // 03/10 — TẠM, chờ vẽ riêng: Thư viện BK dùng cuộn thư (hình của ô 'Bài tập được giao' đã bỏ) · ô Tự luyện riêng (TSA khối 12) dùng hình Tự luyện.
+    thu_vien: `${A}/o_bai_tap_giao.png`, tu_luyen_rieng: `${A}/o_tu_luyen.png`,
   },
   dauThayIcon: '✦',
   trangTri: { goc: `${A}/corner.png`, gach: `${A}/divider.png` },

@@ -81,15 +81,18 @@ function Demo912() {
   const BAI: Record<string, { et: number; btvn: number }> = { 'Toán': { et: 1, btvn: 2 }, 'KHTN': { et: 0, btvn: 1 }, 'Tiếng Anh': { et: 0, btvn: 0 } }
   const LICH: LichBoTro[] = [{ buoi_id: 'x', loai: 'bo_tro_yeu', ngay: '2026-10-01', gio_bat_dau: '17:30:00', gio_ket_thuc: '18:30:00', phong: 'P102', mon: 'KHTN', nguoi: 'Cô Lan', diem_danh: null, hom_nay: true, vao_ca: false }]
   const khoa = (id: string): Partial<HomeCard> => ['tu_luyen', 'thong_tin', 'so_tay'].includes(id) && !coKho ? { sub: `${mon} chưa mở`, subMau: 'xam', disabled: true, onClick: undefined } : {}
-  const o = (id: string, ten: string, sub: string, extra: Partial<HomeCard> = {}): HomeCard => ({ id, ten, sub, subMau: 'xam', doodle: '', ill: 'self_practice_target', tone: 'blue', onClick: () => {}, nhom: ['the_gioi', 'may_man', 'thanh_tuu', 'vi_xu'].includes(id) ? 'choi' : 'hoc', ...extra, ...khoa(id) })
+  // 03/10: Nhiệm vụ + Thư viện BK ở Giải trí · bỏ "Bài tập được giao" · khối 12 (&khoi=10 dùng lưới cấp 3) có ô "Tự luyện TSA" ngay sau Tự luyện.
+  const o = (id: string, ten: string, sub: string, extra: Partial<HomeCard> = {}): HomeCard => ({ id, ten, sub, subMau: 'xam', doodle: '', ill: 'self_practice_target', tone: 'blue', onClick: () => {}, nhom: ['the_gioi', 'nhiem_vu', 'thu_vien', 'may_man', 'thanh_tuu', 'vi_xu'].includes(id) ? 'choi' : 'hoc', ...extra, ...khoa(id) })
   const b = BAI[mon] ?? { et: 0, btvn: 0 }
+  const nv = o('nhiem_vu', 'Nhiệm vụ', 'Hôm nay còn 2 nhiệm vụ', { badge: 2, subMau: 'ton' })
+  const tv = o('thu_vien', 'Thư viện BK', 'Tìm hiểu mọi thứ trên app')
   const cards: HomeCard[] = cap3
     ? [o('giao_trinh', 'Bài tập trên lớp', 'Chưa có bài'), o('et', 'ET', b.et ? `${b.et} bài chưa làm` : 'Chưa có bài', { badge: b.et, subMau: b.et ? 'ton' : 'xam' }),
        o('btvn', 'BTVN', b.btvn ? `${b.btvn} bài chưa làm` : 'Chưa có bài', { badge: b.btvn, subMau: b.btvn ? 'ton' : 'xam' }),
-       o('tu_luyen', 'Tự luyện', 'Luyện theo dạng yếu'), o('thong_tin', 'Thông tin học tập', 'Dạng đang yếu'), o('so_tay', 'Sổ tay kiến thức', 'Tra lý thuyết & bài mẫu'),
-       o('de_thi_thu', 'Làm đề thi thử', 'Chưa có bài'), o('the_gioi', 'Thế giới BK', 'Xem HS BK đang khoe gì')]
-    : [o('tu_luyen', 'Tự luyện', 'Luyện theo dạng yếu'), o('thong_tin', 'Thông tin học tập', 'Dạng đang yếu'), o('so_tay', 'Sổ tay kiến thức', 'Tra lý thuyết & bài mẫu'),
-       o('the_gioi', 'Thế giới BK', 'Xem HS BK đang khoe gì'), o('de_thi_thu', 'Làm đề thi thử', 'Sắp có', { disabled: true }), o('bai_tap_giao', 'Bài tập được giao', 'Đang phát triển'),
+       o('tu_luyen', 'Tự luyện', 'Luyện theo dạng yếu'), o('tu_luyen_rieng', 'Tự luyện TSA', 'Luyện theo từng dạng'), nv, o('thong_tin', 'Thông tin học tập', 'Dạng đang yếu'), o('so_tay', 'Sổ tay kiến thức', 'Tra lý thuyết & bài mẫu'),
+       o('the_gioi', 'Thế giới BK', 'Xem HS BK đang khoe gì'), o('de_thi_thu', 'Làm đề thi thử', 'Chưa có bài'), tv]
+    : [o('tu_luyen', 'Tự luyện', 'Luyện theo dạng yếu'), nv, o('thong_tin', 'Thông tin học tập', 'Dạng đang yếu'), o('so_tay', 'Sổ tay kiến thức', 'Tra lý thuyết & bài mẫu'),
+       o('the_gioi', 'Thế giới BK', 'Xem HS BK đang khoe gì'), o('de_thi_thu', 'Làm đề thi thử', 'Sắp có', { disabled: true }), tv,
        o('thanh_tuu', 'Thành tựu', 'Xem giải thưởng của em'), o('may_man', 'May mắn', 'Có 1 lượt quay!', { badge: 1, subMau: 'ton' }), o('vi_xu', 'Ví xu', 'Xem xu & lịch sử')]
   const dem = Object.fromEntries(mons.map((m) => [m.mon, (cap3 ? (BAI[m.mon]?.et ?? 0) + (BAI[m.mon]?.btvn ?? 0) : 0) + LICH.filter((l) => l.mon === m.mon).length]))
   return <HomeHS912 giaoDien={{ skin: 'rpg', che_do: 'toi', hinh_nen: 'mac_dinh' }} onDaLuu={() => {}} data={{ elo: [], thi: [{ ten: 'Thi vào 10', ngay: '2027-06-02', con_ngay: 244 }] }}

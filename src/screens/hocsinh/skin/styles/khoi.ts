@@ -45,6 +45,7 @@ export const KHOI: Skin = {
     bai_tap_giao: `${A}/o_bai_tap_giao.png`, thanh_tuu: `${A}/o_cup.png`, xep_hang: `${A}/o_cup.png`,
     may_man: `${A}/o_may_man.png`, vi_xu: `${A}/o_vi_xu.png`, hoc_tu_dau: `${A}/o_hoc_tu_dau.png`,
     the_gioi: `${A}/o_the_gioi.png`, nhiem_vu: `${A}/o_nhiem_vu.png`, rank: `${A}/o_rank.png`,
+    thu_vien: `${A}/o_bai_tap_giao.png`, tu_luyen_rieng: `${A}/o_tu_luyen.png`, // 03/10 TẠM — chờ vẽ riêng (như rpg.ts)
   },
   dauThayIcon: '■',
   trangTri: { goc: `${A}/corner.png`, gach: `${A}/divider.png` },

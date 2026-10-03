@@ -4,6 +4,7 @@
 //   đầu trang (avatar · tên · nút HÌNH NỀN · hòm thư · ⋯) → VIỆC TIẾP THEO → widget đếm ngược kỳ thi (Elo bỏ khỏi Home — Thùy 29/09)
 //   → banner kiểm tra lại → lưới ô chức năng (danh sách ô do HocSinhApp truyền, giữ nguyên chức năng từng khối).
 // 01/10 (Thùy: "chọn môn Toán, KHTN, Tiếng Anh; chuyển môn là chuyển tính năng học tập, chơi thì không cần"): phần dưới
+//   03/10: thẻ Thế giới BK lên CAO NHẤT (dưới lời chào); Giải trí = Nhiệm vụ · Thư viện BK (Rank bên trong) · Thành tựu · May mắn · Ví xu.
 //   tách 2 KHỐI — "Học tập" (thanh chọn môn → ca bổ trợ của môn → lưới ô `nhom='hoc'`) và "Giải trí" (thẻ Thế giới BK →
 //   lưới ô `nhom='choi'`, chung mọi môn).
 // Skin: CHỈ đọc biến CSS `--sk-*` từ skin/registry.ts — không `if (skin === …)` ở đây.
@@ -103,6 +104,9 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
         </div>
       )}
 
+      {/* THẾ GIỚI BK cao nhất màn chính (Thùy 03/10) */}
+      <TheTheGioi p={p} skin={skin} />
+
       {nv && (
         <div className="relative -mt-1 h-[230px] md:h-[380px]">
           <img src={nv} alt="" className="pointer-events-none absolute bottom-0 left-0 h-full max-w-none select-none object-contain md:left-[6%]"
@@ -123,8 +127,7 @@ function ManChinh({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
       <LuoiDoc cards={hoc} skin={skin} />
 
       {/* ── GIẢI TRÍ — chung mọi môn, đổi môn không đổi ── */}
-      {(p.onTheGioi || choi.length > 0) && <NhomHS>Giải trí</NhomHS>}
-      <TheTheGioi p={p} skin={skin} />
+      {choi.length > 0 && <NhomHS>Giải trí</NhomHS>}
       <LuoiDoc cards={choi} skin={skin} />
     </div>
   )
@@ -371,6 +374,9 @@ function ManNgang({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
             </div>
           )}
 
+          {/* THẾ GIỚI BK cao nhất (Thùy 03/10) */}
+          {p.onTheGioi && <div className="flex min-w-0"><TheTheGioi p={p} skin={skin} to /></div>}
+
           {/* ── GÓC HỌC TẬP của MÔN đang chọn (Thùy 01/10) ── */}
           <NhomHS>Học tập</NhomHS>
           <ChonMon p={p} />
@@ -385,8 +391,7 @@ function ManNgang({ p, skin, onHinhNen, nutRef }: { p: HomeProps; skin: Skin; on
           <LuoiNgang cards={hoc} skin={skin} />
 
           {/* ── GIẢI TRÍ — chung mọi môn ── */}
-          {(p.onTheGioi || choi.length > 0) && <NhomHS>Giải trí</NhomHS>}
-          {p.onTheGioi && <div className="flex min-w-0"><TheTheGioi p={p} skin={skin} to /></div>}
+          {choi.length > 0 && <NhomHS>Giải trí</NhomHS>}
           <LuoiNgang cards={choi} skin={skin} />
         </div>
       </div>

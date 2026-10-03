@@ -109,13 +109,31 @@ export async function lopMonCuaHS(): Promise<LopMonHS[]> {
 // (skin/KhungHS) để hiện nhãn môn ở đầu trang.
 const KHOA_MON_CHON = 'hs_mon_chon'
 let monHienTai: string | null = null
+// MÔN TẠM (03/10): em mở ô RIÊNG của một môn mở cho cả khối (TSA khối 12) ⇒ trong lúc ở trong ô đó, mọi màn con chạy theo
+// môn này mà KHÔNG đổi môn đã chọn ở thanh chọn môn (không ghi localStorage). Về màn chính thì HocSinhApp trả về null.
+let monTam: string | null = null
 const ngheMon = new Set<() => void>()
-export function layMonHienTai(): string | null { return monHienTai }
+export function layMonHienTai(): string | null { return monTam ?? monHienTai }
 export function ngheMonHienTai(f: () => void): () => void { ngheMon.add(f); return () => { ngheMon.delete(f) } }
 function datMonHienTai(mon: string | null) {
   if (mon === monHienTai) return
   monHienTai = mon
   ngheMon.forEach((f) => f())
+}
+export function layMonTam(): string | null { return monTam }
+export function datMonTam(mon: string | null): void {
+  if (mon === monTam) return
+  monTam = mon
+  ngheMon.forEach((f) => f())
+}
+
+// Môn mở cho CẢ KHỐI của em (registry `mon_mo_ca_khoi`, mig 202610030228 — TSA khối 12): KHÔNG vào thanh chọn môn,
+// mỗi môn thành 1 ô riêng "Tự luyện <môn>" ở khối Học tập.
+export type MonRiengHS = { mon: string; co_kho: boolean }
+export async function monRiengCuaHS(): Promise<MonRiengHS[]> {
+  const { data, error } = await supabase.rpc('hs_mon_rieng_cua_toi')
+  if (error) throw error
+  return ((data ?? []) as MonRiengHS[]).map((d) => ({ mon: String(d.mon), co_kho: d.co_kho !== false }))
 }
 export function chonMonHS(mon: string): void {
   try { localStorage.setItem(KHOA_MON_CHON, mon) } catch { /* chế độ riêng tư: mất nhớ, app vẫn chạy */ }
@@ -130,7 +148,7 @@ export function monDangChon(ds: LopMonHS[]): string | null {
   return m
 }
 export async function monCuaHS(): Promise<string | null> {
-  return monHienTai ?? monDangChon(await lopMonCuaHS())
+  return monTam ?? monHienTai ?? monDangChon(await lopMonCuaHS())
 }
 
 // Cấp 1 hay không — màn chính app HS cần ẨN 3 ô ET/BTVN/Bài tập trên lớp cho cấp 1 (Thùy: chỉ có

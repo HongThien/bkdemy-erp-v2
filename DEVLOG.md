@@ -35184,3 +35184,25 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   y · J(…; y₂+a₂t₂ …) in a₂ thay b₂. 10 thẻ `nghi_van` CT 2018 chờ GV. Spec: `spec-so-tay-cong-thuc.md`. Chưa đụng DB/app.
 
 - (03/10, Đấu Từ · mọi môn) **Mỗi người chỉ bấm 1 lần/câu** (Thùy: "không là thành game nhanh tay"). `trongTai.traLoi`: đã có 1 lần sai ⇒ bỏ qua mọi lần bấm sau; cả 2 cùng sai ⇒ hết câu ngay (thắng vòng = -1) · bot bỏ "bấm lại sau khi sai" (sai2 không còn dùng) · ManDau khoá cả 4 nút sau khi sai. Kiểm bằng mô phỏng trọng tài (tsx): sai rồi bấm lại ⇒ bị bỏ; 2 bên sai ⇒ pha ket ngay; A sai B đúng ⇒ B ăn 100. Leo tháp vốn đã 1 lần/câu; Góc luyện từ (tự ôn) giữ cho chọn lại.
+
+## 2026-10-03 [Giao diện + DB] App HS: sắp lại màn chính (Thùy 03/10, 6 việc) · mig 202610030228 đã áp
+
+- **Thùy:** (1) cập nhật code · tự luyện TSA thành 1 mục riêng trên app khối 12 · (2) bỏ "Bài tập được giao" — sau này là ô DERIVE, giao mới hiện ·
+  (3) Nhiệm vụ xuống Giải trí · (4) Thế giới BK lên cao nhất · (5) thêm thẻ "Thư viện BK" ở Giải trí ("Nơi tìm hiểu mọi thông tin trên app"), Rank là
+  thẻ con trong đó · (6) thay ảnh nhân vật/backdrop bằng bản AI làm chiều 03/10.
+- (1) Pull: 1 commit chưa push của phiên khác (Sổ tay công thức) va DEVLOG với origin ⇒ rebase, giữ cả 2 mục (log chỉ thêm). Phiên khác đang push song song ⇒
+  làm trong worktree `home-hs-giai-tri`.
+- **TSA (Thùy chọn "mọi em khối 12, không cần ghi danh"):** đo 03/10: 0 lớp TSA, 15 em khối 12 chỉ có lớp Toán; mọi hàm tự luyện bắt buộc "lớp đang học của
+  môn" (khối + `bai_test.lop_id` NOT NULL). Ghi danh hàng loạt thì dính học phí/sĩ số ⇒ **registry `mon_mo_ca_khoi(mon, khoi, lop_id)`** + 1 lớp neo
+  `12 TSA · Tự luyện chung` trạng thái `dong` (không ai ghi danh) · `_hs_lop_tu_luyen(hs, mon)` = lớp đang học của môn, không có thì lớp neo · 6 hàm
+  (tu_luyen_sinh, 3 bản tu_luyen_chu_de_sinh, tu_luyen_dien_sinh, tu_luyen_chu_de_ds_dang) thay đoạn tìm lớp bằng hàm này (thân từ pg_get_functiondef,
+  `scripts/_gen_mig_tsa_muc_rieng.mjs`, mỗi hàm khớp đúng 1 lần) · `hs_mon_rieng_cua_toi()` (nguồn ô riêng) · `hs_mon_hoc_cua_toi` loại môn đã là ô riêng.
+  Thử ROLLBACK (`scripts/_thu_mig_tsa_muc_rieng.mjs`): HS0037 khối 12 ⇒ ô riêng TSA, thanh môn chỉ Toán, 16 dạng TSA, sinh bài 10 câu; HS0557 khối 9
+  y hệt trước (57 dạng Toán, 3 môn), TSA rỗng. "Tổng hợp" TSA báo chưa có dữ liệu (em mới) ⇒ ô mở thẳng danh sách luyện theo dạng.
+- **App:** `datMonTam` (tuluyen.ts) = môn TẠM khi ở trong ô riêng — màn con chạy theo TSA, thanh chọn môn không đổi, về màn chính thì bỏ (effect đặt TRƯỚC
+  kiemHTD). Ô `tu_luyen_rieng` đứng ngay sau Tự luyện. `KHU_CHOI` thêm nhiem_vu + thu_vien; bỏ ô rank khỏi KHU/KHU_CAP2 (huy hiệu bậc cạnh tên vẫn còn,
+  bấm vào Rank); bỏ bai_tap_giao khỏi KHU_CAP2 + BOX_CAP1 (màn BaiTapGiaoHS để nguyên, không còn đường vào). `ThuVienHS.tsx` (thẻ kiểu 1: tên + mô tả +
+  trạng thái; thẻ Rank: bậc của môn đang chọn, quay lại về Thư viện). HomeHS912: thẻ Thế giới BK ngay dưới lời chào (cả dọc lẫn ngang), Giải trí chỉ còn lưới ô.
+  Icon TẠM: thu_vien = o_bai_tap_giao.png (RPG/Khối), tu_luyen_rieng = o_tu_luyen; Tối giản vẽ o_thu_vien.svg. check-style-hs ✔ (17 ô, mốc HocSinhApp 69→67).
+- **(6) CHƯA làm:** không có ảnh nào được đẩy chiều 03/10 (soi mọi nhánh remote + máy này) ⇒ Thùy đẩy từ máy công ty rồi làm.
+- **Chưa soi bằng mắt trong worktree:** cấu hình chạy dev chỉ đọc `launch.json` của repo chính (phiên bị khoá trong worktree) ⇒ soi sau khi lên main.

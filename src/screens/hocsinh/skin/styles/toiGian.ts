@@ -25,5 +25,6 @@ export const TOI_GIAN: Skin = {
     bai_tap_giao: `${A}/o_bai_tap_giao.svg`, thanh_tuu: `${A}/o_thanh_tuu.svg`, xep_hang: `${A}/o_xep_hang.svg`,
     may_man: `${A}/o_may_man.svg`, vi_xu: `${A}/o_vi_xu.svg`, hoc_tu_dau: `${A}/o_hoc_tu_dau.svg`,
     the_gioi: `${A}/o_the_gioi.svg`, nhiem_vu: `${A}/o_nhiem_vu.svg`, rank: `${A}/o_rank.svg`,
+    thu_vien: `${A}/o_thu_vien.svg`, tu_luyen_rieng: `${A}/o_tu_luyen.svg`, // 03/10
   },
 }
