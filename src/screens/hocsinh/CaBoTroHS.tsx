@@ -4,6 +4,7 @@
 // Không có nút đóng ca / nhận xét ở đây — đó là việc của TA (tách quyền, chốt 03/09).
 // LamBai/LamET truyền vào qua props (không import ngược HocSinhApp → tránh vòng import).
 import { useEffect, useRef, useState, type ComponentType, type CSSProperties, type ReactNode } from 'react'
+import { buDangCuaToi, type BuDangHS } from '../../lib/botro_yeu_ca'
 import { caCuaToi, sinhLoLuyen, layBaiTestCaNhan, retestCuaToi, LOAI_BO_TRO_TEN, type CaCuaToi, type DangCaHS, type CumCaHS, type RetestCuaToi, type LichBoTro } from '../../lib/botro_yeu_ca'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import type { BaiTestCuaHS } from '../../lib/testonline'
@@ -310,12 +311,43 @@ export function LichBoTroHS({ lich, coCa, onXong, onVaoCa }: { lich: LichBoTro[]
             {c.vao_ca && coCa && (
               <NutHS onClick={() => onVaoCa(c)} className="mt-3 w-full">Vào ca luyện →</NutHS>
             )}
-            {c.hom_nay && (c.loai === 'bo_tro_yeu' || c.loai === 'bo_tro_duoi') && !c.vao_ca && (
+            {c.hom_nay && !c.vao_ca && (
               <div className="mt-2 text-[12px]" style={{ color: MAU.muted }}>Đến phòng, thầy cô điểm danh xong là vào luyện được.</div>
             )}
           </div>
         ))}
       </div>
+    </ManHS>
+  )
+}
+
+// ── CA BÙ (Thùy 03/10: "TA bấm có mặt nhưng app HS không vào ca luyện được") — em học lại các DẠNG của buổi đã nghỉ.
+// Mỗi dạng mở bằng màn "Học từ đầu" sẵn có (Lý thuyết · Luyện tập · Test), câu theo luật kho (MCQ). Bấm dạng → cha điều hướng.
+export function CaBuHS({ buoiId, onBack, onPickDang }: { buoiId: string; onBack: () => void; onPickDang: (d: { ma_dang: string; ten_dang: string }, mon: string) => void }) {
+  const [d, setD] = useState<BuDangHS | null>(null)
+  const [loi, setLoi] = useState<string | null>(null)
+  useEffect(() => { buDangCuaToi(buoiId).then(setD).catch((e: any) => setLoi(e?.message ?? String(e))) }, [buoiId])
+  return (
+    <ManHS>
+      <DauTrangHS tieuDe="Học bù" phu={d ? `Buổi ${d.ten_lop ?? ''}${d.ngay_me ? ` · ${ddmmVN(d.ngay_me)}` : ''} em đã nghỉ` : 'Đang tải…'} onBack={onBack} />
+      {loi && <div className="p-4 text-[13px]" style={{ ...THE, color: MAU.sai }}>{loi}</div>}
+      {d && d.dangs.length === 0 && (
+        <div className="p-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Buổi này chưa có dạng bài nào trên app — em học cùng thầy cô trên giấy nhé.</div>
+      )}
+      {d && d.dangs.length > 0 && (
+        <>
+          <p className="text-[13px]" style={{ color: MAU.muted }}>Chọn từng dạng: đọc lý thuyết → luyện tập → làm bài test.</p>
+          <div className="flex flex-col gap-3 lg:grid lg:grid-cols-2">
+            {d.dangs.map((x, i) => (
+              <button key={x.ma_dang} onClick={() => onPickDang(x, d.mon)} className="flex items-center gap-3 p-4 text-left" style={THE}>
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[15px] font-extrabold" style={{ background: MAU.surface2, color: MAU.acc }}>{i + 1}</span>
+                <span className="min-w-0 flex-1 text-[15px] font-bold leading-snug" style={{ ...HEAD, color: NAVY }}>{x.ten_dang}</span>
+                <span className="text-[18px]" style={{ color: MAU.muted }}>›</span>
+              </button>
+            ))}
+          </div>
+        </>
+      )}
     </ManHS>
   )
 }

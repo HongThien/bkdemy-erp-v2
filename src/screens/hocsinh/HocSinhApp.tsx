@@ -26,7 +26,7 @@ import { laCap2HS, mayManHSCuaToi } from '../../lib/maymai_hs'
 import { htdCoMo, htdSinh, htdCauBaiTest, type CauHTD } from '../../lib/hoctudau'
 import { ChonChuDeHTD, ChonChuyenDeHTD, ChiTietDangHTD, LyThuyetHTD, LoTrinhDuoiHS, dangDangHoc, type ChuDeNhom, type ChuyenDeNhom } from './HocTuDau'
 import DoiMatKhau from './DoiMatKhau'
-import CaBoTroHS, { RetestHS, BoTroBanner, LichBoTroHS } from './CaBoTroHS'
+import CaBoTroHS, { RetestHS, BoTroBanner, LichBoTroHS, CaBuHS } from './CaBoTroHS'
 import { caCuaToi, retestCuaToi, lichBoTroCuaToi, RETEST_BAT, type LichBoTro, type RetestCuaToi } from '../../lib/botro_yeu_ca'
 import { listThongBaoHS, docTatCaThongBao, type ThongBaoHS } from '../../lib/thongbaohs'
 import { listBaiTraCuaToi, demBaiTraChuaXem, type BaiTraHS as BaiTraRow } from '../../lib/btvntra'
@@ -312,7 +312,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
-  const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'rank' | 'nhiem_vu' | 'album' | 'ho_so' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
+  const [direct, setDirect] = useState<'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'rank' | 'nhiem_vu' | 'album' | 'ho_so' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'bu_ca' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
   const [tuHoSo, setTuHoSo] = useState(false) // Rank/Album mở từ Hồ sơ ⇒ "Quay lại" về Hồ sơ
   const [chuDeDang, setChuDeDang] = useState<{ ma_dang: string; ten_dang: string; chiCauMoi?: boolean } | null>(null) // dạng đã chọn cho "Tự luyện theo chủ đề" (null = luồng tổng hợp)
   // "Học từ đầu" (Thùy 19/09) — ô CHỈ hiện khi HS có case bổ trợ đuổi ĐANG MỞ (tự suy
@@ -334,11 +334,13 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // TA bấm Có mặt ở buổi đuổi. Route vào đâu (CaBoTroHS hay Lộ trình đuổi) xem onVaoCaBoTro().
   const [boTro, setBoTro] = useState<{ coCa: boolean; soRetest: number; lich: LichBoTro[] }>({ coCa: false, soRetest: 0, lich: [] })
   const [duoiLoTrinhMon, setDuoiLoTrinhMon] = useState<string | null>(null)
+  const [buCa, setBuCa] = useState<string | null>(null) // Thùy 03/10: ca BÙ đang mở (buoi_id) — dạng của buổi đã nghỉ, học bằng màn Học từ đầu
   // Bấm "Bổ trợ" (banner cấp 1) hoặc "Vào ca luyện" (LichBoTroHS cấp 2/3, đã biết entry cụ thể): ca YẾU
   // luôn có sẵn đường CaBoTroHS riêng (tự fetch lại chi tiết) → ưu tiên đó nếu trùng cả 2 cùng lúc; ca
   // ĐUỔI thì mở "Lộ trình bổ trợ đuổi" (LoTrinhDuoiHS, mon lấy từ lịch — không cần RPC riêng).
   function onVaoCaBoTro(c?: LichBoTro) {
-    if (c && c.loai === 'bo_tro_duoi') { setDuoiLoTrinhMon(c.mon); setDirect('duoi_lo_trinh'); return }
+    if (c && c.loai === 'bu') { setBuCa(c.buoi_id); setDuoiLoTrinhMon(null); setDirect('bu_ca'); return }
+    if (c && c.loai === 'bo_tro_duoi') { setBuCa(null); setDuoiLoTrinhMon(c.mon); setDirect('duoi_lo_trinh'); return }
     setDirect('bo_tro')
   }
   // Hòm thư — chỉ cần SỐ chưa đọc để hiện badge chuông (đếm items đang render, không phải tính nghiệp vụ).
@@ -407,7 +409,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   useEffect(() => {
     // Hold retest (Thùy 29/09): không gọi — ô "Bài kiểm tra lại" không hiện (DB cũng trả rỗng).
     const tai = () => Promise.all([caCuaToi().catch(() => null), RETEST_BAT ? retestCuaToi().catch(() => []) : Promise.resolve([] as RetestCuaToi[]), lichBoTroCuaToi().catch(() => [] as LichBoTro[])])
-      .then(([ca, rt, lich]) => setBoTro({ coCa: !!ca || lich.some((l) => l.vao_ca && l.loai === 'bo_tro_duoi'), soRetest: rt.filter((r) => !r.da_nop).length, lich }))
+      .then(([ca, rt, lich]) => setBoTro({ coCa: !!ca || lich.some((l) => l.vao_ca && (l.loai === 'bo_tro_duoi' || l.loai === 'bu')), soRetest: rt.filter((r) => !r.da_nop).length, lich }))
     tai()
     const id = setInterval(() => { if (document.visibilityState === 'visible' && !direct && !khu) tai() }, 15000)
     return () => clearInterval(id)
@@ -448,7 +450,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onDoiDang={() => setDirect('tu_luyen_chu_de_ds')}
     desktop={!!cap1} />
   if (direct === 'htd_chu_de' && htdMon) return <ChonChuDeHTD mon={htdMon} gioiTinh={gt}
-    onPick={(cd) => { setDuoiLoTrinhMon(null); setHtdChuDe(cd); setDirect('htd_chuyen_de') }}
+    onPick={(cd) => { setDuoiLoTrinhMon(null); setBuCa(null); setHtdChuDe(cd); setDirect('htd_chuyen_de') }}
     onBack={() => setDirect(null)} />
   if (direct === 'htd_chuyen_de' && htdChuDe) return <ChonChuyenDeHTD chuDe={htdChuDe} gioiTinh={gt}
     onPick={(cde) => {
@@ -462,7 +464,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onLyThuyet={() => setDirect('htd_ly_thuyet')}
     onLuyenTap={() => setDirect('htd_luyen')}
     onTest={() => setDirect('htd_test')}
-    onBack={() => setDirect(duoiLoTrinhMon ? 'duoi_lo_trinh' : 'htd_chuyen_de')} />
+    onBack={() => setDirect(buCa ? 'bu_ca' : duoiLoTrinhMon ? 'duoi_lo_trinh' : 'htd_chuyen_de')} />
   if (direct === 'htd_ly_thuyet' && htdMon && htdDang) return <LyThuyetHTD mon={htdMon} dang={htdDang} gioiTinh={gt}
     onBack={() => setDirect('htd_dang')} />
   if ((direct === 'htd_luyen' || direct === 'htd_test') && htdMon && htdDang) return <LamHTD
@@ -470,10 +472,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     desktop={!!cap1}
     onVeChiTiet={() => setDirect('htd_dang')}
     onSangTest={() => setDirect('htd_test')}
-    onXongDang={() => setDirect(duoiLoTrinhMon ? 'duoi_lo_trinh' : 'htd_chu_de')} />
+    onXongDang={() => setDirect(buCa ? 'bu_ca' : duoiLoTrinhMon ? 'duoi_lo_trinh' : 'htd_chu_de')} />
   if (direct === 'thong_tin') return <ThongTinHocTap hocSinhId={hocSinhId} gioiTinh={gt} onXong={() => setDirect(null)} />
   if (direct === 'xep_hang') return <BangXepHang onXong={() => setDirect(null)} />
   if (direct === 'bo_tro') return <CaBoTroHS hocSinhId={hocSinhId} desktop={!!cap1} gioiTinh={gt} onXong={() => setDirect(null)} LamBai={LamBai} LamET={LamET} />
+  if (direct === 'bu_ca' && buCa) return <CaBuHS buoiId={buCa} onBack={() => { setBuCa(null); setDirect('lich_bo_tro') }}
+    onPickDang={(d, mon) => { setHtdMon(mon); setHtdChuyenDe(null); setHtdDang({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, xong: false }); setDirect('htd_dang') }} />
   if (direct === 'duoi_lo_trinh' && duoiLoTrinhMon) return <LoTrinhDuoiHS mon={duoiLoTrinhMon} gioiTinh={gt}
     onPickDang={(d, cde) => { setHtdMon(duoiLoTrinhMon); setHtdChuyenDe(cde); setHtdDang({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, xong: d.xong }); setDirect('htd_dang') }}
     onBack={() => setDirect(null)} />
