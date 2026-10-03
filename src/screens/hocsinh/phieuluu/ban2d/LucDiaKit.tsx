@@ -7,7 +7,8 @@ import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import { thongKeVung, type LucDiaV } from '../kieu'
 import { KIT_LUC_DIA, SAO_KIT } from './kitLucDia'
 import { ANH_KIT } from './kitLucDia.anh'
-import { HERO_CHAY, anhChay, hopVe, khungTheoMs } from '../../skin/heroChay'
+import { HERO_CHAY } from '../../skin/heroChay'
+import { anhChayNv, hopVeNv, khungChayTheoMs, napChayNv, type NvId } from '../../skin/nhanVat'
 import { anhVat } from './hinh2d'
 import { Co, CssBan2D, MuiTen, Sao5, Suong, useChuyenDong, useKhung2D } from './San2D'
 import { QuaiTam } from './HinhTam'
@@ -84,7 +85,7 @@ function diemTai(d: Duong, s: number) {
   return { x: a.x + (b.x - a.x) * k, y: a.y + (b.y - a.y) * k }
 }
 
-export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV; b: BangMau3D; gioi?: 'nam' | 'nu'; onChon: (ma: string) => void; onVe: () => void }) {
+export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV; b: BangMau3D; gioi?: NvId; onChon: (ma: string) => void; onVe: () => void }) {
   const kit = KIT_LUC_DIA[luc.biome], anh = ANH_KIT[luc.biome]
   const { ref, khung } = useKhung2D(false, true)
   const vungs = useMemo(() => luc.vung.map((v) => ({ v, t: thongKeVung(v) })), [luc])
@@ -105,7 +106,7 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
   const caoRef = useRef(0) // cao thân nhân vật hiện tại (px) — tốc độ chạy tính theo cỡ người, không theo bề ngang màn
   sRef.current = s
   useEffect(() => () => cancelAnimationFrame(raf.current), [])
-  useEffect(() => { for (const i of [0, 1, 2, 3, 4, 5, 'dung'] as const) new Image().src = anhChay(gioi, i) }, [gioi]) // nạp sẵn đủ khung chạy ⇒ không nháy lúc đổi khung
+  useEffect(() => { napChayNv(gioi) }, [gioi]) // nạp sẵn đủ khung chạy ⇒ không nháy lúc đổi khung (gioi = mã NHÂN VẬT CHÍNH của em — skin/nhanVat.ts)
   useEffect(() => { NHO_VI_TRI[luc.ma] = s }, [s, luc.ma])
 
   /** Chạy theo đường tới cửa công trình i rồi mở màn chặng. Tốc độ co theo quãng, tối đa ~2,4 giây. */
@@ -117,7 +118,7 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
     const ms = Math.min(4500, Math.max(600, (qd * khung.w) / (TOC_DO_NV * (caoRef.current || 80)) * 1000)), t0 = performance.now()
     const f = (now: number) => {
       const k = Math.min(1, (now - t0) / ms), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2
-      setS(s0 + (dich - s0) * e); setChay({ huongPhai: dich >= s0 }); setKhungChay(khungTheoMs(now - t0))
+      setS(s0 + (dich - s0) * e); setChay({ huongPhai: dich >= s0 }); setKhungChay(khungChayTheoMs(gioi, now - t0))
       if (k < 1) raf.current = requestAnimationFrame(f)
       else { setChay(null); setKhungChay(0); onChon(ma) }
     }
@@ -131,7 +132,7 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
   const cao = (() => { const [a, c, d] = kit.nv; const t = yPhanTram; const v = t <= 55 ? a + (c - a) * ((t - 30) / 25) : c + (d - c) * ((t - 55) / 25); return Math.max(4, Math.min(10, v)) / 100 * H * HE_SO_NV })()
   caoRef.current = cao
   // Bộ CHẠY 2D nhân vật chính (6 khung × 100ms theo thời gian, không đếm rAF) + khung đứng yên — skin/heroChay.ts, dùng chung MỌI kit
-  const hv = hopVe(gioi, chay ? khungChay : 'dung', cao, nvPx.x, nvPx.y)
+  const hv = hopVeNv(gioi, chay ? khungChay : 'dung', cao, nvPx.x, nvPx.y)
   const huongPhai = chay ? chay.huongPhai : true
   const sapXep = [...kit.moc.map((m, i) => ({ k: `m${i}`, y: m.y })), { k: 'nv', y: yPhanTram + 3.5 }].sort((a, c) => a.y - c.y)
   const z = (k: string) => (sapXep.findIndex((x) => x.k === k) + 1) * 10 // ×10: chừa số lẻ cho sương (ngay trên công trình của nó, dưới nhân vật cùng/ngoài hàng)
@@ -209,7 +210,7 @@ export function LucDiaKit({ luc, b, gioi = 'nam', onChon, onVe }: { luc: LucDiaV
                   })}
 
                   {/* nhân vật: chibi đứng / chạy 2 khung xen kẽ 120ms, lật ngang khi chạy về trái, đế chân neo vào tâm đường */}
-                  <img src={anhChay(gioi, chay ? khungChay : 'dung')} alt="" draggable={false} className="pointer-events-none absolute"
+                  <img src={anhChayNv(gioi, chay ? khungChay : 'dung')} alt="" draggable={false} className="pointer-events-none absolute"
                     style={{ left: hv.left, top: hv.top, width: hv.width, height: hv.height, zIndex: z('nv'), transform: huongPhai ? undefined : 'scaleX(-1)', transformOrigin: `${HERO_AX * 100}% 100%`, filter: 'drop-shadow(0 3px 3px rgba(0,0,0,.35))' }} />
                 </>
               )}

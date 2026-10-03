@@ -31,3 +31,15 @@ export async function home912(): Promise<Home912> {
   const d = (data ?? {}) as Partial<Home912>
   return { elo: d.elo ?? [], thi: d.thi ?? [] }
 }
+
+// NHÂN VẬT CHÍNH của em (Thùy 03/10 — chọn khi bấm Học tập, dùng cho mọi hoạt động). null = chưa chọn. Mã: su_tu · cao · ninja · elf (skin/nhanVatChinh.ts).
+export async function nhanVatCuaToi(): Promise<string | null> {
+  const { data, error } = await supabase.rpc('fn_hs_nhan_vat_cua_toi')
+  if (error) throw error
+  return (data as string | null) ?? null
+}
+export async function chonNhanVat(id: string): Promise<string> {
+  const { data, error } = await supabase.rpc('fn_hs_chon_nhan_vat', { p_nhan_vat: id })
+  if (error) throw error
+  return data as string
+}

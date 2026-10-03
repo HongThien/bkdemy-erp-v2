@@ -17,14 +17,15 @@ import { Chang2D } from './ban2d/Chang2D'
 import { DauView } from './DauView'
 import type { NhungDau } from './nhungDau'
 import { BaoDoHoa, NutDoHoa } from './DoHoa'
+import type { NvId } from '../skin/nhanVat'
 
 export type LamBaiCmp = (p: { baiTestId: string; hocSinhId: string; onXong: () => void; desktop?: boolean; nhung?: NhungDau }) => ReactElement
 
 type Tang = { t: 'the_gioi' } | { t: 'luc_dia'; luc: string } | { t: 'chang'; luc: string; vung: string } | { t: 'dau'; luc: string; vung: string; chang: string }
 const KHOA = (t: Tang) => (t.t === 'the_gioi' ? 'tg' : t.t === 'luc_dia' ? `ld${t.luc}` : t.t === 'chang' ? `ch${t.vung}` : `dau${t.chang}`)
 
-export default function PhieuLuuHS({ hocSinhId, mon, gioiTinh, skin, onVe, onTongHop, onThuThach, LamBai }: {
-  hocSinhId: string; mon: string; gioiTinh: 'nam' | 'nu' | null; skin: SkinId; onVe: () => void
+export default function PhieuLuuHS({ hocSinhId, mon, gioiTinh, nhanVat, skin, onVe, onTongHop, onThuThach, LamBai }: {
+  hocSinhId: string; mon: string; gioiTinh: 'nam' | 'nu' | null; /** nhân vật chính em đã chọn (skin/nhanVat.ts) — chưa chọn ⇒ nhà thám hiểm theo giới tính */ nhanVat?: NvId | null; skin: SkinId; onVe: () => void
   /** lối tắt từ thế giới: Tự luyện tổng hợp ("săn quái lang thang") và Thử thách ("đấu trường") */
   onTongHop?: () => void; onThuThach?: () => void
   LamBai: LamBaiCmp
@@ -68,7 +69,7 @@ export default function PhieuLuuHS({ hocSinhId, mon, gioiTinh, skin, onVe, onTon
             <div className="pointer-events-none absolute left-0 right-0 top-0 p-3"><div className="pointer-events-auto"><DauTrangHS tieuDe={`Thế giới ${banDo.mon}`} phu="Bấm một lục địa để đi vào" onBack={onVe} /></div></div>
           </>
         )}
-        {tang.t === 'luc_dia' && luc && <LucDia2D luc={luc} b={b} gioi={gioiTinh ?? 'nam'} onChon={(v) => setTang({ t: 'chang', luc: luc.ma, vung: v })} onVe={() => setTang({ t: 'the_gioi' })} />}
+        {tang.t === 'luc_dia' && luc && <LucDia2D luc={luc} b={b} gioi={nhanVat ?? gioiTinh ?? 'nam'} onChon={(v) => setTang({ t: 'chang', luc: luc.ma, vung: v })} onVe={() => setTang({ t: 'the_gioi' })} />}
         {tang.t === 'chang' && luc && vung && <Chang2D luc={luc} vung={vung} b={b} gioi={gioiTinh ?? 'nam'} onVe={() => setTang({ t: 'luc_dia', luc: luc.ma })} onVao={(c) => setTang({ t: 'dau', luc: luc.ma, vung: vung.ma, chang: c.ma })} />}
         {tang.t === 'dau' && luc && vung && chang && (
           <DauThat luc={luc} chang={chang} b={b} mon={mon} hocSinhId={hocSinhId} gioi={gioiTinh ?? 'nam'} LamBai={LamBai} onVe={() => { setTang({ t: 'chang', luc: luc.ma, vung: vung.ma }); tai() }} />

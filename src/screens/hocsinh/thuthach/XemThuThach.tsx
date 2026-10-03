@@ -1,10 +1,11 @@
 // TRANG XEM THỬ ĐẤU TRƯỜNG (hs.html?xem=thu_thach): dữ liệu giả, không gọi DB, không cần đăng nhập. Soi cổng + 3 trận + hoạt cảnh + bỏ cuộc + kết quả.
-//   &goi_y=1 đánh dấu đáp án đúng · &luot=0|1|2 số lượt còn hôm nay (mặc định 2) · &dang=3 chưa đủ dạng đã học (khoá) · &gioi=nu|nam (nhân vật chính) · &don=set|thien_thach|cau_lua_lon|cau_bang_lon|cau_lua_nho|cau_bang_nho|dien_nho ép đòn khi thắng
+//   &goi_y=1 đánh dấu đáp án đúng · &luot=0|1|2 số lượt còn hôm nay (mặc định 2) · &dang=3 chưa đủ dạng đã học (khoá) · &gioi=nu|nam|su_tu|cao|ninja|elf (nhân vật chính) · &don=set|thien_thach|cau_lua_lon|cau_bang_lon|cau_lua_nho|cau_bang_nho|dien_nho ép đòn khi thắng
 // Luật + việc DB: spec-thu-thach-dau-truong.md. Khi Số liệu có RPC (bắt đầu lượt / nộp trận / bỏ cuộc) thì thay hàm giả ở đây bằng lời gọi thật.
 import { useState } from 'react'
 import { DauTrangHS, HEAD, MAU, ManHS, NutHS, TheHS } from '../skin/KhungHS'
 import { BossAnhHS } from '../boss/BossSan'
 import { DauTruongHS } from './DauTruongHS'
+import { laNvMoi, type NvId } from '../skin/nhanVat'
 import { NGUONG, SO_CAU_TRAN, SO_TRAN, type CauTT } from './kieu'
 import { sinhBoCauGia } from './mau'
 import type { Don } from './hieuUng'
@@ -14,7 +15,7 @@ const LUOT_MOI_NGAY = 2
 
 export default function XemThuThach() {
   const q = new URLSearchParams(location.search)
-  const soDang = Number(q.get('dang') ?? 12), gioi = q.get('gioi') === 'nu' ? 'nu' : 'nam'
+  const soDang = Number(q.get('dang') ?? 12), gG = q.get('gioi'), gioi: NvId = laNvMoi(gG) ? gG : gG === 'nu' ? 'nu' : 'nam' // &gioi=su_tu|cao|ninja|elf: nhân vật chính mới
   const [luotCon, setLuotCon] = useState(Math.min(LUOT_MOI_NGAY, Math.max(0, Number(q.get('luot') ?? LUOT_MOI_NGAY))))
   const [bo, setBo] = useState<CauTT[][] | null>(null)
   const [lan, setLan] = useState(0)

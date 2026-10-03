@@ -11,13 +11,14 @@ import { CHU_VIEN, Co, CssBan2D, MuiTen, NenBien, Sao5, Suong, useKhung2D, viTri
 import { QuaiTam, VungDatTam } from './HinhTam'
 import { DuongThree } from './LopDuong'
 import { LucDiaKit, coKit } from './LucDiaKit'
+import type { NvId } from '../../skin/nhanVat'
 
 /** Có KIT lục địa (rừng · thành cổ · ảo đảo, ≤ 8 chuyên đề) ⇒ màn kit; còn lại dùng bản vẽ chung. */
-export function LucDia2D(p: { luc: LucDiaV; b: BangMau3D; onChon: (ma: string) => void; onVe: () => void; gioi?: 'nam' | 'nu' }) {
+export function LucDia2D(p: { luc: LucDiaV; b: BangMau3D; onChon: (ma: string) => void; onVe: () => void; gioi?: NvId }) {
   return coKit(p.luc.biome, p.luc.vung.length) ? <LucDiaKit {...p} /> : <LucDiaCu {...p} />
 }
 
-function LucDiaCu({ luc, b, onChon, onVe }: { luc: LucDiaV; b: BangMau3D; onChon: (ma: string) => void; onVe: () => void; gioi?: 'nam' | 'nu' }) {
+function LucDiaCu({ luc, b, onChon, onVe }: { luc: LucDiaV; b: BangMau3D; onChon: (ma: string) => void; onVe: () => void; gioi?: NvId }) {
   const anhNen = anhNenVung(luc.biome)
   // có tranh nền ⇒ khung luôn 16:9 đúng tỉ lệ tranh (không xoay) để toạ độ chỗ đặt mốc trùng tranh
   const { ref, khung } = useKhung2D(false, !!anhNen)

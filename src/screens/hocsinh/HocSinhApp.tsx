@@ -26,6 +26,9 @@ import {
 import ThanhChonMon from './ThanhChonMon'
 import { ChonDangChuDe, ChonLoaiTuLuyen } from './TuLuyenChuDe'
 import { GameNhungHS, GiaiVoDichHS, HocTapHS } from './hoctap/HocTapHS'
+import { ChonNhanVatHS } from './hoctap/ChonNhanVatHS'
+import { laNvMoi, type NvMoi } from './skin/nhanVat'
+import { chonNhanVat, nhanVatCuaToi } from '../../lib/giaodien_hs'
 import { NhungHet, type NhungDau } from './phieuluu/nhungDau'
 import { TheTran, PHIEN, CLS_PHIEN, NgocChu, NUT_TRAN, HOP_LOI_GIAI, FONT_TRAN } from './skin/KhungTran'
 import { hocTapBat, phieuLuuBat } from './phieuluu/coBat'
@@ -373,7 +376,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
-  const [direct, setDirect] = useState<'phieu_luu' | 'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'dau_truong_bk' | 'chinh_phuc_bk' | 'giai_vo_dich' | 'rank' | 'nhiem_vu' | 'album' | 'ho_so' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'thu_vien' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
+  const [direct, setDirect] = useState<'phieu_luu' | 'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'doi_nhan_vat' | 'dau_truong_bk' | 'chinh_phuc_bk' | 'giai_vo_dich' | 'rank' | 'nhiem_vu' | 'album' | 'ho_so' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'thu_vien' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
   const [tuHoSo, setTuHoSo] = useState(false) // Rank/Album mở từ Hồ sơ ⇒ "Quay lại" về Hồ sơ
   const [tuThuVien, setTuThuVien] = useState(false) // Rank mở từ Thư viện BK ⇒ "Quay lại" về Thư viện (03/10)
   const [tuHome, setTuHome] = useState(false) // Rank/Nhiệm vụ mở từ MÀN CHÍNH (ô / huy hiệu bậc) ⇒ "Quay lại" về màn chính
@@ -432,6 +435,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // giaoDien: undefined = đang tải · null = chưa có dòng hs_giao_dien ⇒ HomeHS912 mở hướng dẫn lần đầu.
   const [nhom912, setNhom912] = useState<boolean | null>(null)
   const [giaoDien, setGiaoDien] = useState<GiaoDien | null | undefined>(undefined)
+  // NHÂN VẬT CHÍNH (Thùy 03/10): undefined = đang tải · null = chưa chọn ⇒ bấm Học tập hiện màn chọn · mã = dùng cho bản đồ/đấu trường
+  const [nhanVat, setNhanVat] = useState<NvMoi | null | undefined>(undefined)
+  useEffect(() => { if (HOC_TAP) nhanVatCuaToi().then((v) => setNhanVat(laNvMoi(v) ? v : null)).catch(() => setNhanVat(null)) }, [])
   const [duLieu912, setDuLieu912] = useState<Home912 | null>(null)
   useEffect(() => { khoiCuaHS().then((k) => setNhom912(!!k && KHOI_CHON_SKIN.has(k))).catch(() => setNhom912(false)) }, [])
   useEffect(() => {
@@ -515,7 +521,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onRank={() => { setTuHoSo(false); setTuHome(false); setDirect('rank') }}
     onNhiemVu={() => { setTuHome(false); setDirect('nhiem_vu') }}
     onBack={() => setDirect(null)} />
-  if (direct === 'tu_luyen_chon') return <HocTapHS
+  // lần đầu vào khu Học tập (chưa có nhân vật) ⇒ chọn nhân vật trước · 'doi_nhan_vat' = đổi từ nút ở đầu khu Học tập
+  if ((direct === 'tu_luyen_chon' && nhanVat === null) || direct === 'doi_nhan_vat') return <ChonNhanVatHS dangCo={nhanVat ?? null} luu={chonNhanVat}
+    onXong={(id) => { setNhanVat(id); setDirect('tu_luyen_chon') }} onBack={() => setDirect(direct === 'doi_nhan_vat' ? 'tu_luyen_chon' : null)} />
+  if (direct === 'tu_luyen_chon') return <HocTapHS nhanVat={nhanVat ?? null} onDoiNhanVat={() => setDirect('doi_nhan_vat')}
     // trong khu Học tập, đảo 'Học theo chủ đề' LUÔN là bản đồ (không cần cờ phieuluu riêng); chỉ lùi về danh sách dạng khi chưa có môn / style không có bản đồ
     onChuDe={() => { const g = giaoDien ?? GD_MAC_DINH; setDirect(monChon && laySkin(g.skin).the3d ? 'phieu_luu' : 'tu_luyen_chu_de_ds') }}
     onYeu={() => { setChuDeDang(null); setDirect('tu_luyen') }}
@@ -528,7 +537,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'dau_truong_bk') return <GameNhungHS vao="chu_de" tieuDe="Đấu trường BK" onBack={() => setDirect('tu_luyen_chon')} />
   if (direct === 'chinh_phuc_bk') return <GameNhungHS vao="thap" tieuDe="Chinh phục BK" onBack={() => setDirect('tu_luyen_chon')} />
   if (direct === 'giai_vo_dich') return <GiaiVoDichHS onBack={() => setDirect('tu_luyen_chon')} onDauMay={() => setDirect('thu_thach')} />
-  if (direct === 'phieu_luu' && monChon) return <Suspense fallback={null}><PhieuLuuHS hocSinhId={hocSinhId} mon={monChon} gioiTinh={gioiTinh} skin={(giaoDien ?? GD_MAC_DINH).skin} LamBai={LamBai} onVe={() => setDirect(HOC_TAP ? 'tu_luyen_chon' : null)}
+  if (direct === 'phieu_luu' && monChon) return <Suspense fallback={null}><PhieuLuuHS hocSinhId={hocSinhId} mon={monChon} gioiTinh={gioiTinh} nhanVat={nhanVat} skin={(giaoDien ?? GD_MAC_DINH).skin} LamBai={LamBai} onVe={() => setDirect(HOC_TAP ? 'tu_luyen_chon' : null)}
     onTongHop={() => { setChuDeDang(null); setDirect('tu_luyen') }} onThuThach={() => setDirect('thu_thach')} /></Suspense>
   if (direct === 'nhiem_vu') return <NhiemVuHS gioiTinh={gt} onBack={() => setDirect(tuHome ? null : 'tu_luyen_chon')}
     onThuThach={() => setDirect('thu_thach')} onTuLuyen={() => { setChuDeDang(null); setDirect('tu_luyen') }} onVongQuay={() => setDirect('may_man')} />

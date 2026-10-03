@@ -8,7 +8,8 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react'
 import { DauTrangHS, HEAD, MAU, ManHS, NhanHS, NutHS, TheHS, THE } from '../skin/KhungHS'
 import { laySkin } from '../skin/registry'
-import { anhDau, hopDau, HERO_DAU, TU_THE_DAU, type TuTheDau } from '../skin/heroDau'
+import { TU_THE_DAU, type TuTheDau } from '../skin/heroDau'
+import { anhDauNv, hopDauNv, tayDauNv, type NvId } from '../skin/nhanVat'
 import { BossAnhHS } from '../boss/BossSan'
 import type { TuTheBoss } from '../boss/noiDungBoss'
 import { NGUONG, NHAN_DO_KHO, SO_CAU_TRAN, SO_TRAN, type CauTT, type KetThucLuot } from './kieu'
@@ -79,9 +80,9 @@ function useTuThe(tt: TtHero, don: Don | null): TuTheDau {
   return b[Math.min(i, b.length - 1)].p
 }
 /** Nạp + giải mã trước 15 tư thế của giới này (đổi tư thế = đổi src, không nháy) + ảnh FX. */
-function useNapTruoc(gioi: 'nam' | 'nu') {
+function useNapTruoc(gioi: NvId) {
   useEffect(() => {
-    for (const p of TU_THE_DAU) { const im = new Image(); im.src = anhDau(gioi, p); im.decode?.().catch(() => undefined) }
+    for (const p of TU_THE_DAU) { const im = new Image(); im.src = anhDauNv(gioi, p); im.decode?.().catch(() => undefined) }
     void napFx()
   }, [gioi])
 }
@@ -92,7 +93,8 @@ export interface DauTruongProps {
   /** 3 trận × 5 câu (server sinh một lần lúc bắt đầu lượt) */
   tran: CauTT[][]
   /** giới của nhân vật chính (học sinh nam/nữ) */
-  gioi?: 'nam' | 'nu'
+  /** NHÂN VẬT CHÍNH của em (skin/nhanVat.ts): su_tu · cao · ninja · elf · hoặc nam/nu (chưa chọn) */
+  gioi?: NvId
   /** hiện vòng gợi ý quanh đáp án đúng (chỉ trang xem thử) */
   goiY?: boolean
   /** ép đòn khi thắng (chỉ trang xem thử, để soi từng hiệu ứng) */
@@ -175,7 +177,7 @@ export function DauTruongHS({ tran, gioi = 'nam', goiY, epDon, diem, luotConSau,
     const s = sanRef.current.getBoundingClientRect()
     const h = hop(heroRef.current), b = hop(bossRef.current)
     // điểm tay theo ảnh tư thế (combat-data.json): tích năng = tâm cầu giữa 2 tay · tung = tay đẩy ra của tư thế phóng của đòn này
-    const tayCua = (p: TuTheDau) => { const v = hopDau(gioi, p, cao, h.w / 2, h.h), [tx, ty] = HERO_DAU[gioi][p].tay[0]; return { x: h.x + v.left + tx * v.width, y: h.y + v.top + ty * v.height } }
+    const tayCua = (p: TuTheDau) => { const v = hopDauNv(gioi, p, cao, h.w / 2, h.h), [tx, ty] = tayDauNv(gioi, p); return { x: h.x + v.left + tx * v.width, y: h.y + v.top + ty * v.height } }
     const pPhong: TuTheDau = d === 'cau_lua_lon' || d === 'cau_bang_lon' ? 'nem_truoc_2' : 'phat_nho'
     return phatDon(cvRef.current, d, { W: s.width, H: s.height, hero: h, boss: b, tay: tayCua('tich_nang_2'), phong: tayCua(pPhong), bossAnh: anhBoss.current }, {
       rung,
@@ -217,7 +219,7 @@ export function DauTruongHS({ tran, gioi = 'nam', goiY, epDon, diem, luotConSau,
   }
 
   const heroW = Math.round(cao * 0.62)
-  const hv = hopDau(gioi, pose, cao, heroW / 2, cao) // THÂN đứng cao đúng `cao`, chân tư thế hiện tại chạm đáy hộp
+  const hv = hopDauNv(gioi, pose, cao, heroW / 2, cao) // THÂN đứng cao đúng `cao`, chân tư thế hiện tại chạm đáy hộp
   const kqCuoi: KetThucLuot = { thang, lyDo }
   const soThang = thang.filter(Boolean).length
   const bossCao = Math.round(cao * 1.2)
@@ -253,7 +255,7 @@ export function DauTruongHS({ tran, gioi = 'nam', goiY, epDon, diem, luotConSau,
           } as CSSProperties}>
             <span className="pointer-events-none absolute left-1/2 rounded-[50%]" style={{ bottom: -cao * 0.03, width: cao * 0.5, height: cao * 0.08, transform: 'translateX(-50%)', background: 'radial-gradient(closest-side, rgba(0,0,0,.45), transparent)' }} />
             <div className="dt-hero relative h-full w-full" data-h={hero} key={`h-${hero}`}>
-              <img src={anhDau(gioi, pose)} alt="" draggable={false} className="absolute max-w-none select-none" style={{ left: hv.left, top: hv.top, width: hv.width, height: hv.height }} />
+              <img src={anhDauNv(gioi, pose)} alt="" draggable={false} className="absolute max-w-none select-none" style={{ left: hv.left, top: hv.top, width: hv.width, height: hv.height }} />
             </div>
           </div>
           <div className="absolute right-[5%] z-10 flex flex-col items-center" style={{ bottom: day, width: bossCao + 8 }}>

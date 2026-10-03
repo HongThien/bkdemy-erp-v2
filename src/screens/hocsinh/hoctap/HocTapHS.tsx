@@ -8,6 +8,7 @@ import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 're
 import { DauTrangHS, HEAD, MAU, ManHS, NhanHS, NhomHS, NutHS, TheHS, THE_TRON, useManDoc, useMonHS } from '../skin/KhungHS'
 import { laySkin } from '../skin/registry'
 import { khoiCuaHS } from '../../../lib/tuluyen'
+import { NHAN_VAT_CHINH, anhDauNv, type NvMoi } from '../skin/nhanVat'
 
 type OHocTap = { id: string; ten: string; sub: string; onClick: () => void; nhan?: string }
 
@@ -135,10 +136,18 @@ function TroiDao({ ds, dao, hop }: { ds: OHocTap[]; dao: Record<string, string>;
   )
 }
 
-export function HocTapHS({ onBack, onChuDe, onYeu, onDauTruong, onChinhPhuc, onGiai, onNhiemVu, onRank }: {
+export function HocTapHS({ onBack, onChuDe, onYeu, onDauTruong, onChinhPhuc, onGiai, onNhiemVu, onRank, nhanVat, onDoiNhanVat }: {
   onBack: () => void; onChuDe: () => void; onYeu: () => void; onDauTruong: () => void; onChinhPhuc: () => void; onGiai: () => void
   onNhiemVu?: () => void; onRank?: () => void
+  /** nhân vật chính đang dùng + mở màn đổi nhân vật (nút ở đầu trang) */
+  nhanVat?: NvMoi | null; onDoiNhanVat?: () => void
 }) {
+  const nutNv = onDoiNhanVat && (
+    <button onClick={onDoiNhanVat} className="flex items-center gap-1.5 py-1 pl-1 pr-3 text-[13px] font-bold" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius-pill)' }} aria-label="Đổi nhân vật">
+      {nhanVat ? <span className="relative block h-8 w-8 overflow-hidden rounded-full" style={{ background: 'var(--sk-surface2)' }}><img src={anhDauNv(nhanVat, 'dung_1')} alt="" className="absolute left-1/2 top-0 w-[150%] max-w-none -translate-x-1/2" /></span> : null}
+      {nhanVat ? NHAN_VAT_CHINH[nhanVat].ten : 'Chọn nhân vật'}
+    </button>
+  )
   const ds: OHocTap[] = [
     { id: 'hoc_chu_de', ten: 'Học theo chủ đề', sub: 'Đánh bại Ác quỷ "Phi Phai", giải cứu BK', onClick: onChuDe },
     { id: 'luyen_yeu', ten: 'Luyện dạng yếu', sub: 'Tập trung sửa dạng em còn yếu', onClick: onYeu },
@@ -151,7 +160,7 @@ export function HocTapHS({ onBack, onChuDe, onYeu, onDauTruong, onChinhPhuc, onG
   if (ht) return (
     <div className="fixed inset-0 overflow-hidden" style={{ background: (doc && ht.nenDoc) || ht.nen, color: 'var(--sk-ink)', fontFamily: 'var(--sk-font)' }}>
       <TroiDao ds={ds} dao={ht.dao} hop={ht.hop} />
-      <div className="pointer-events-none absolute left-0 right-0 top-0 px-4 pt-[calc(12px+env(safe-area-inset-top))]"><div className="pointer-events-auto"><DauTrangHS tieuDe="Học tập" phu="Cùng BK chinh phục thế giới" onBack={onBack} theoMon /></div></div>
+      <div className="pointer-events-none absolute left-0 right-0 top-0 px-4 pt-[calc(12px+env(safe-area-inset-top))]"><div className="pointer-events-auto"><DauTrangHS tieuDe="Học tập" phu="Cùng BK chinh phục thế giới" onBack={onBack} theoMon phai={nutNv} /></div></div>
       {(onNhiemVu || onRank) && (
         <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-3 pb-[calc(12px+env(safe-area-inset-bottom))]">
           {onNhiemVu && <button onClick={onNhiemVu} className="px-4 py-1.5 text-[13px] font-bold" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius-pill)' }}>Nhiệm vụ</button>}
