@@ -35289,3 +35289,18 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - (03/10 khuya, Đấu từ · nhúng) Thùy: "các chỗ học đều có filter lớp — chỉ nên hiện lớp nó đang học" ⇒ trong app HS (nhúng) ẩn hàng chọn khối cả ở màn chọn chủ đề Đấu trường (Leo tháp đã ẩn trước). Chỉ áp môn theo khối (kho DB); Tiếng Anh lọc theo CẤP ĐỘ từ (không phải lớp) nên không đặt khối vào kho cấp của Anh (đặt vào sẽ ra id cấp không tồn tại).
 
 - (03/10 khuya, Giao diện) **Thử nghiệm trước khi release** (Thùy: "thử trên cả điện thoại và iPad, không ảnh hưởng học sinh"): khu Học tập đưa SAU CỜ (`phieuluu/coBat.ts` → `hocTapBat`, `?hoctap=1|0`, máy nhớ) — tắt ⇒ ô Tự luyện + màn chọn cũ y như trước 03/10. Cờ mặc định TẮT trên domain thật, TỰ BẬT ở bản thử nghiệm (`*.vercel.app` Preview · localhost · LAN 192.168/10.x) — áp cho cả bản đồ phiêu lưu. Tạo nhánh `thu-nghiem` để Thùy deploy Preview trên Vercel; đăng nhập bằng TEST01–TEST10 (lớp test cô lập). Lưu ý: Preview dùng CHUNG DB; game Đấu từ lưu theo máy ⇒ chơi thử lên BXH Đấu từ.
+
+## 2026-10-03 [Kho KHTN] Ngân hàng trắc nghiệm Hạt Mầm (KHTN 6–9) — đọc + đối chiếu bản đồ ERP · CHƯA ghi DB
+
+- Thùy đưa `TracNghiem-KHTN-theo-ban-do.zip` + README (nguồn của bản đồ đề "Thử thách KHTN"). Bóc (`scripts/khtn-hatmam/boc-md.mjs`, không đụng DB):
+  **7.365 câu** MCQ 4 phương án (README ghi 7.615 — zip THIẾU 1 chủ đề khối 6 ≈ 250 câu), 0 thiếu trường, 100% có "vì sao sai", 7.255 có nhãn lỗi
+  (3.184 nhãn khác nhau), 559 câu có hình đề + 54 câu phương án là ảnh (ảnh app vẽ, không phải ảnh cắt). 7 câu mức 5 (`K07H020305-*`).
+- **Đối chiếu ERP** (`doi-chieu.mjs`, `do-giong-ten.mjs`): cây Hạt Mầm là PHIÊN BẢN BẢN ĐỒ KHÁC — trùng MÃ nhưng không trùng DẠNG.
+  Mã dạng trùng: K07 53 (cùng tên 16) · K08 32 (cùng tên 0 — đánh số khác hẳn) · K09 135 (cùng tên 9 + 24 mơ hồ). Chuyên đề 134: 37 cùng · 25 lệch · 72 không có.
+  Cụm 1.454 vs 528 ERP, khớp 24. Trùng nội dung với kho khtn_cau_hoi (5.442 câu): 14. ⇒ CẤM nối theo mã (CLAUDE §2 danh tính bám khoá tự nhiên).
+- **Thùy chốt:** (1) **B — giữ bản đồ ERP**, gán từng dạng Hạt Mầm vào dạng ERP theo luồng kho 3 làn · (2) **khối 6 HOLD** · (3) mức 5 giữ (thang ERP có 1–5).
+- **Cách làm (CTO):** ánh xạ ở tầng DẠNG (khối 7–9: 465 dạng HM ↔ 280 dạng ERP), câu đi theo dạng; dạng vắt 2 dạng ERP thì tách theo câu.
+  Bộ đối chiếu theo khối: `bo-doi-chieu-dang.mjs` (chuyên đề ERP ứng viên + dạng 2 bên + câu mẫu).
+- **Lô thử Hoá 7** (`de-xuat-k7-hoa.json`, 24 dạng, Claude đề xuất theo câu mẫu, CHƯA DUYỆT): 🟢 15 (6 dạng KHÁC MÃ — vd HM K07010303/04 ĐẢO với ERP 04/03,
+  HM K07010104 = ERP K07010103) · 🟡 4 đề xuất dạng mới · 🔴 5 tách theo câu (ERP tách theo loại liên kết / tìm hoá trị vs lập CT; 2 "dạng bổ sung" gom nhiều kiểu).
+  ⇒ khoảng 40% dạng cần người quyết; so tên tự động KHÔNG đủ (đảo mã lọt).

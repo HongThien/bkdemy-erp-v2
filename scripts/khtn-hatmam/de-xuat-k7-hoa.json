@@ -1,0 +1,29 @@
+{
+  "_ghi_chu": "LÔ THỬ ánh xạ dạng Hạt Mầm → khtn_ban_do, Hoá 7 (chuyên đề 1.1–2.3), Claude đề xuất 03/10 theo câu mẫu 2 bên (scripts/_tam/doichieu_k7.md). CHƯA DUYỆT — học thuật KHTN quyết. lan: xanh = cùng dạng · vang = đề xuất dạng mới · do = cần trao đổi / tách theo câu.",
+  "de_xuat": [
+    { "hm": "K07010101", "ten": "Cấu tạo nguyên tử và mô hình Rutherford – Bohr", "lan": "xanh", "erp": "K07010101", "ly_do": "trùng tên + câu mẫu cùng kiểu đọc mô hình" },
+    { "hm": "K07010102", "ten": "Số hạt và khối lượng nguyên tử", "lan": "xanh", "erp": "K07010102", "ly_do": "trùng tên, câu mẫu cùng p = e, khối lượng ≈ p + n" },
+    { "hm": "K07010103", "ten": "Xếp electron và vẽ mô hình nguyên tử", "lan": "xanh", "erp": "K07010105", "ly_do": "KHÁC MÃ: trên ERP là K07010105 (K07010103 của ERP là bài toán tổng số hạt)" },
+    { "hm": "K07010104", "ten": "Bài toán tổng số hạt", "lan": "xanh", "erp": "K07010103", "ly_do": "KHÁC MÃ: câu mẫu 2 bên gần như y hệt (tổng 34, mang điện hơn không mang điện 10)" },
+    { "hm": "K07010201", "ten": "Khái niệm nguyên tố và kí hiệu hoá học", "lan": "xanh", "erp": "K07010201", "ly_do": "trùng tên + câu mẫu" },
+    { "hm": "K07010202", "ten": "Xác định nguyên tố từ số hạt", "lan": "xanh", "erp": "K07010202", "ly_do": "trùng tên; vài câu thuần khái niệm (nguyên tử cùng nguyên tố giống nhau ở đâu) nên rà khi duyệt" },
+    { "hm": "K07010203", "ten": "Vận dụng: nguyên tố hoá học trong tình huống (dạng bổ sung)", "lan": "do", "erp": null, "ly_do": "dạng gom nhiều kiểu (đọc bảng KLNT–neutron, tỉ lệ khí trong không khí…) — không cùng một phương pháp ⇒ tách theo câu" },
+    { "hm": "K07010204", "ten": "Vận dụng cao: xác định nguyên tố và đọc số liệu hàm lượng (dạng bổ sung)", "lan": "do", "erp": "K07010202", "ly_do": "câu mẫu 'có 12 electron ⇒ tên + KHHH' thuộc K07010202; phần 'đọc số liệu hàm lượng' không có dạng ERP ⇒ tách theo câu" },
+    { "hm": "K07010301", "ten": "Cấu tạo bảng tuần hoàn: ô, chu kì, nhóm", "lan": "xanh", "erp": "K07010301", "ly_do": "trùng tên + câu mẫu" },
+    { "hm": "K07010302", "ten": "Liên hệ vị trí trong bảng với cấu tạo nguyên tử", "lan": "xanh", "erp": "K07010302", "ly_do": "trùng tên + câu mẫu" },
+    { "hm": "K07010303", "ten": "Dự đoán tính chất từ vị trí trong bảng", "lan": "xanh", "erp": "K07010304", "ly_do": "KHÁC MÃ: hai bên ĐẢO mã 03 ↔ 04" },
+    { "hm": "K07010304", "ten": "Xác định nguyên tố từ dữ kiện vị trí – cấu tạo", "lan": "xanh", "erp": "K07010303", "ly_do": "KHÁC MÃ: hai bên ĐẢO mã 03 ↔ 04" },
+    { "hm": "K07020101", "ten": "Phân biệt đơn chất, hợp chất và nhận diện phân tử", "lan": "xanh", "erp": "K07020101", "ly_do": "phần 'nhận diện phân tử từ mô hình' có thể thuộc K07020103 — rà khi duyệt" },
+    { "hm": "K07020102", "ten": "Tính khối lượng phân tử", "lan": "xanh", "erp": "K07020102", "ly_do": "trùng tên + câu mẫu" },
+    { "hm": "K07020103", "ten": "Xác định nguyên tố trong phân tử từ tổng số hạt", "lan": "vang", "erp": null, "gan_nhat": "K07020106", "ly_do": "ERP chưa có dạng giải hệ theo tổng số proton trong phân tử (K07020103 của ERP là đọc mô hình phân tử; K07020106 tìm KLNT từ KLPT — khác phương pháp)" },
+    { "hm": "K07020201", "ten": "Lớp electron bền của khí hiếm", "lan": "xanh", "erp": "K07020201", "ly_do": "ERP 'Quy tắc octet và xu hướng liên kết' — cùng nội dung, khác tên" },
+    { "hm": "K07020202", "ten": "Liên kết ion và liên kết cộng hoá trị", "lan": "xanh", "erp": "K07020202", "ly_do": "câu mẫu là phân biệt 2 loại liên kết ⇒ 'So sánh, phân biệt liên kết ion và cộng hoá trị'" },
+    { "hm": "K07020203", "ten": "Mô tả sự hình thành liên kết bằng sơ đồ", "lan": "do", "erp": null, "ly_do": "ERP tách theo LOẠI liên kết (K07020203 ion · K07020204 cộng hoá trị) ⇒ tách theo câu" },
+    { "hm": "K07020204", "ten": "Dự đoán liên kết và công thức hợp chất từ cấu tạo nguyên tử", "lan": "vang", "erp": null, "gan_nhat": "K07020202", "ly_do": "phương pháp Z ⇒ lớp ngoài cùng ⇒ kim loại/phi kim ⇒ loại liên kết ⇒ công thức: ERP chưa có dạng" },
+    { "hm": "K07020301", "ten": "Ý nghĩa công thức hoá học và hoá trị", "lan": "do", "erp": "K07020301", "ly_do": "phần hoá trị ⇒ K07020301; phần 'ý nghĩa CTHH' (đếm nguyên tử) không có dạng ERP ⇒ tách hoặc thêm dạng" },
+    { "hm": "K07020302", "ten": "Tìm hoá trị và lập công thức hoá học theo quy tắc hoá trị", "lan": "do", "erp": null, "ly_do": "ERP tách 2 dạng: tìm hoá trị (K07020301) · lập công thức (K07020302) ⇒ tách theo câu" },
+    { "hm": "K07020303", "ten": "Tính phần trăm khối lượng nguyên tố trong hợp chất", "lan": "vang", "erp": null, "gan_nhat": "K07020303", "ly_do": "ERP chỉ có chiều ngược (lập CT từ %) — tính % từ CT chưa có dạng" },
+    { "hm": "K07020304", "ten": "Xác định công thức hoá học khi biết phần trăm và khối lượng phân tử", "lan": "xanh", "erp": "K07020303", "ly_do": "KHÁC MÃ: = 'Lập công thức hoá học dựa vào phần trăm khối lượng'" },
+    { "hm": "K07020305", "ten": "Tìm nguyên tố, công thức từ dữ kiện gián tiếp", "lan": "vang", "erp": null, "gan_nhat": "K07020303", "ly_do": "mức 4–5 (7 câu mức 5): suy ngược từ KLPT / tỉ lệ khối lượng — ERP chưa có dạng" }
+  ]
+}
