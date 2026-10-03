@@ -6,6 +6,7 @@
 // ============================================================================
 import type { Skin } from '../kieu'
 import { RPG_3D } from '../the3d/bangMauRpg'
+import { HOC_TAP_RPG } from './rpgHocTap'
 
 const A = '/bk-ui/hs/skin/rpg'
 const BVP = "'Be Vietnam Pro', system-ui, sans-serif"
@@ -64,16 +65,8 @@ export const RPG: Skin = {
   the3d: RPG_3D,
   // Sân Đấu trường (Thùy 02/10, kit design/bk-ui-src/AppHS/Animation/chien_dau/ — nén bởi scripts/anime-chien-dau-2d.mjs)
   sanDau: '/bk-ui/hs/skin/rpg/dau_truong/nen_san_dau.jpg',
-  // Khu Học tập: 5 đảo lơ lửng trên trời sao — TẠM mượn mảnh lục địa của bản đồ thế giới (Đơn 14 Kit B đặt vẽ 5 đảo riêng).
-  hocTap: {
-    // Vũ trụ (TẠM, chờ Đơn 14 Kit B): 8 lớp sao lặp theo ô lệch cỡ + dải ngân hà + 3 đám tinh vân. Thùy 03/10: "nhiều sao, trông vũ trụ hơn".
-    nen: 'radial-gradient(1px 1px at 17px 23px, #fff 50%, transparent 51%) 0 0 / 97px 89px, radial-gradient(1px 1px at 61px 7px, rgba(255,255,255,.75) 50%, transparent 51%) 0 0 / 131px 113px, radial-gradient(1px 1px at 33px 71px, #cfe1ff 50%, transparent 51%) 0 0 / 163px 151px, radial-gradient(1.2px 1.2px at 88px 40px, #fff 50%, transparent 51%) 0 0 / 191px 173px, radial-gradient(1.5px 1.5px at 140px 120px, #fff 50%, transparent 51%) 0 0 / 241px 223px, radial-gradient(1.3px 1.3px at 20px 150px, #ffd9f2 50%, transparent 51%) 0 0 / 277px 251px, radial-gradient(2px 2px at 200px 60px, #e9c77b 50%, transparent 51%) 0 0 / 331px 307px, radial-gradient(2.2px 2.2px at 90px 260px, #fff 50%, transparent 51%) 0 0 / 409px 383px, linear-gradient(118deg, transparent 28%, rgba(150,130,255,.10) 42%, rgba(255,215,240,.13) 49%, rgba(150,200,255,.10) 56%, transparent 70%), radial-gradient(38% 28% at 22% 28%, rgba(176,90,220,.34), transparent 70%), radial-gradient(32% 26% at 80% 74%, rgba(60,170,214,.26), transparent 70%), radial-gradient(24% 20% at 70% 18%, rgba(255,120,190,.16), transparent 70%), radial-gradient(90% 70% at 50% 0%, #26305e 0%, #10142c 70%), #0a0d20',
-    dao: {
-      hoc_chu_de: '/bk-ui/hs/skin/rpg/phieuluu2d/luc_dia_v2_rung.webp', luyen_yeu: '/bk-ui/hs/skin/rpg/phieuluu2d/luc_dia_v2_thanh_co.webp',
-      dau_truong: '/bk-ui/hs/skin/rpg/phieuluu2d/luc_dia_v2_nui_lua.webp', chinh_phuc: '/bk-ui/hs/skin/rpg/phieuluu2d/luc_dia_v2_troi_sao.webp',
-      giai_vo_dich: '/bk-ui/hs/skin/rpg/phieuluu2d/luc_dia_v2_sa_mac.webp',
-    },
-  },
+  // Khu Học tập: 5 đảo lơ lửng trong vũ trụ — kit hs-hoc-tap-v2 (Đơn 14 Kit B, Thùy duyệt 03/10), nén bằng scripts/anime-hoc-tap.mjs.
+  hocTap: HOC_TAP_RPG,
   // 02/10 (Thùy): bản CHIBI dễ thương thay bản anime cũ — nam + mèo đen · nữ + cú trắng, PNG trong suốt cắt sát, cao 900px.
   // Ảnh gốc design/bk-ui-src/New_anime/. Bản cũ nv_nam.png / nv_nu.png GIỮ trên đĩa (PWA cũ còn gọi) — dọn sau ≥1 tuần, hỏi Thùy.
   // 02/10 (Thùy): đây là 2 NPC DẪN TRUYỆN (bé trai + mèo đen · bé gái + cú trắng) — Home nói chuyện, tutorial, người dẫn ở Đấu trường. NHÂN VẬT CHÍNH của học sinh là 2 nhà thám hiểm áo choàng xanh (bộ chạy 2D: skin/heroChay.ts).

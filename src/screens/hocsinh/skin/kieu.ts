@@ -101,5 +101,6 @@ export type Skin = {
   sanDau?: string
   // KHU HỌC TẬP kiểu game (Thùy 03/10: "5 ô = mỗi cái 1 lục địa trôi nổi trên bầu trời sao"): nền trời + ảnh ĐẢO cho từng ô (khoá = id ô ở hoctap/HocTapHS.tsx).
   // Không khai ⇒ khu Học tập là lưới ô thường (Tối giản…).
-  hocTap?: { nen: string; dao: Record<string, string> }
+  // nenDoc: nền khổ dọc (điện thoại) · hop: hộp PHẦN NHÌN THẤY của từng đảo trong khung PNG (tỉ lệ) — có ⇒ đặt đảo theo tâm + bề rộng phần này (kit DESIGN.md).
+  hocTap?: { nen: string; nenDoc?: string; dao: Record<string, string>; hop?: Record<string, { x0: number; y0: number; x1: number; y1: number }> }
 }

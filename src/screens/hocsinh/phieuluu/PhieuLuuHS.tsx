@@ -42,7 +42,12 @@ export default function PhieuLuuHS({ hocSinhId, mon, gioiTinh, skin, onVe, onTon
 
   if (!b) return <ManHS><DauTrangHS tieuDe="Bản đồ" onBack={onVe} /><TrongHS>Style này chưa có bản đồ 3D.</TrongHS></ManHS>
   if (loi) return <ManHS><DauTrangHS tieuDe="Bản đồ" onBack={onVe} /><TrongHS>Chưa tải được bản đồ: {loi}</TrongHS><NutHS onClick={tai}>Thử lại</NutHS></ManHS>
-  if (!banDo) return <ManHS><DauTrangHS tieuDe="Bản đồ" onBack={onVe} /><TrongHS>Đang dựng bản đồ…</TrongHS></ManHS>
+  if (!banDo) return (
+    <div className="fixed inset-0 z-10 flex items-center justify-center" style={{ background: 'var(--sk-page)', color: 'var(--sk-muted)', fontFamily: 'var(--sk-font)' }}>
+      <style>{'@keyframes pl-cho { 0%,30% { opacity: 0 } 100% { opacity: 1 } }'}</style>
+      <span className="text-[14px]" style={{ animation: 'pl-cho 1.2s ease-out both' }}>Đang mở bản đồ…</span>
+    </div>
+  )
   if (!banDo.luc_dia.length) return <ManHS><DauTrangHS tieuDe="Bản đồ" onBack={onVe} /><TrongHS>Chưa có chủ đề nào để luyện. Học vài buổi trên lớp rồi quay lại nhé.</TrongHS></ManHS>
 
   const luc: LucDiaV | undefined = tang.t === 'the_gioi' ? undefined : banDo.luc_dia.find((l) => l.ma === tang.luc)
