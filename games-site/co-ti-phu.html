@@ -193,10 +193,10 @@
     <button id="hbForce">⏭ Ép kết thúc lượt</button><button id="hbCam">🎥 Camera</button><button id="hbFinish">🏁 Kết thúc sau vòng này</button><button id="hbSave">💾 Lưu ván</button><button id="hbExport">📤 Xuất ván</button><button id="hbImport">📥 Nhập ván</button><button id="hbMusic">🎵 Nhạc</button><button id="hbNew">🔄 Ván mới</button><input type="file" id="hbFile" accept=".json" style="display:none">
   </div>
   <div id="lobbyTV">
-    <div class="row" style="justify-content:space-between"><h1 style="font-size:26px">Sảnh chờ · Phòng <span id="lbRoom"></span></h1><span class="muted" id="lbHint">Học sinh… à nhân sự mở iPad, chọn nhân vật rồi bấm SẴN SÀNG</span></div>
+    <div class="row" style="justify-content:space-between"><h1 style="font-size:26px">Sảnh chờ · Phòng <span id="lbRoom"></span></h1><span class="muted" id="lbHint">Nhân sự mở iPad, chọn nhân vật rồi bấm SẴN SÀNG</span></div>
     <div class="grid" id="lbGrid"></div>
     <div class="row" id="lbHot" style="display:none;justify-content:flex-start"><input id="hsName" placeholder="Tên người chơi" style="width:220px"><select id="hsChar"></select><button id="hsAdd">＋ Thêm</button></div>
-    <div class="row" style="justify-content:space-between"><div class="row"><span class="muted">Chế độ</span><select id="lbMode"><option value="easy">Easy</option><option value="standard">Standard</option><option value="hard">Hard (V2: chưa có trao đổi)</option></select><span class="muted" id="lbCfg"></span></div><div class="row"><button id="lbResume" style="display:none">▶ Tiếp ván cũ</button><button class="primary" id="lbStart">▶ BẮT ĐẦU VÁN</button></div></div>
+    <div class="row" style="justify-content:space-between"><div class="row"><span class="muted">Chế độ</span><select id="lbMode"><option value="easy">Easy</option><option value="standard">Standard</option><option value="hard">Hard (có trao đổi đất)</option></select><span class="muted" id="lbCfg"></span></div><div class="row"><button id="lbResume" style="display:none">▶ Tiếp ván cũ</button><button class="primary" id="lbStart">▶ BẮT ĐẦU VÁN</button></div></div>
   </div>
   <div id="endTV"><h1>🏆 Kết quả</h1><div id="endList"></div><button id="endNew" class="primary">Ván mới</button></div>
   <div id="hotseat" class="card"></div>
@@ -4575,7 +4575,7 @@ function makeDie(){const mats=[];const pips={1:[[0,0]],2:[[-1,-1],[1,1]],3:[[-1,
   [3,4,1,6,2,5].forEach(v=>mats.push(face(v)));const m=new T.Mesh(new T.BoxGeometry(1.5,1.5,1.5),mats);m.castShadow=true;return m}
 const PIPS={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]};
 function setPips(el,v){if(el.children.length!==9)el.innerHTML='<i></i>'.repeat(9);[...el.children].forEach((c,i)=>c.classList.toggle('on',PIPS[v].includes(i)))}
-const DIE_ROT={1:[0,0,0],6:[Math.PI,0,0],2:[-Math.PI/2,0,0],5:[Math.PI/2,0,0],3:[0,0,-Math.PI/2],4:[0,0,Math.PI/2]}; // xoay để mặt v hướng lên (+y)
+const DIE_ROT={1:[0,0,0],6:[Math.PI,0,0],2:[-Math.PI/2,0,0],5:[Math.PI/2,0,0],3:[0,0,Math.PI/2],4:[0,0,-Math.PI/2]}; // xoay để mặt v hướng lên (+y); mặt +x là 3 → quay z +π/2 (trước đây đảo 3↔4)
 function resize(){const w=innerWidth,h=innerHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}
 function lotWorld(i){const p=tilePos(i);const ti=TV.tiles[i];const dz=ti.d/2+(ti.lotD||LD)/2;const v=new T.Vector3(0,0,dz).applyAxisAngle(new T.Vector3(0,1,0),p.rot);return new T.Vector3(p.x+v.x,0,p.z+v.z)}
 function tileWorld(i,pi,n){const p=tilePos(i);const [ox,oz]=tokenOffset(pi,n);return new T.Vector3(p.x+ox,.34,p.z+oz)}
