@@ -370,7 +370,7 @@ export async function getHoaDonDong(hoaDonId: string): Promise<DongPhieu[]> {
     .select('loai, hoc_sinh_id, lop_id, mo_ta, so_luong, don_gia, he_so, thanh_tien, hoc_sinh:hoc_sinh_id(ho_ten), lop:lop_id(ten_lop)')
     .eq('hoa_don_id', hoaDonId).limit(LIMIT)
   if (error) throw error
-  return ((data ?? []) as any[]).map((r) => ({
+  return ((data ?? []) as any[]).filter((r) => !(r.loai === 'no_ky_truoc' && Number(r.thanh_tien) === 0)).map((r) => ({ // dòng nợ kỳ trước đã về 0đ (mig 20261006) → ẩn
     loai: r.loai, hoc_sinh_id: r.hoc_sinh_id, hoc_sinh_ten: r.hoc_sinh?.ho_ten, lop_id: r.lop_id, lop_ten: r.lop?.ten_lop,
     mo_ta: r.mo_ta, so_luong: r.so_luong, don_gia: r.don_gia, he_so: r.he_so, thanh_tien: Number(r.thanh_tien),
   }))
@@ -537,7 +537,7 @@ export async function listPhieuTheoKy(ky: string): Promise<DongSoHang[]> {
       supabase.from('hoa_don_dong').select('hoa_don_id, loai, hoc_sinh_id, lop_id, mo_ta, so_luong, don_gia, he_so, thanh_tien, hoc_sinh:hoc_sinh_id(ho_ten), lop:lop_id(ten_lop)').in('hoa_don_id', hdIds).limit(LIMIT),
     ])
     for (const t of (tts ?? []) as any[]) { const ph = hdToPh.get(t.hoa_don_id); if (ph) daThuByPH.set(ph, (daThuByPH.get(ph) ?? 0) + Number(t.so_tien)) }
-    for (const d of (dd ?? []) as any[]) { const ph = hdToPh.get(d.hoa_don_id); if (!ph) continue; const a = dongChotByPH.get(ph) ?? []; a.push({ loai: d.loai, hoc_sinh_id: d.hoc_sinh_id, hoc_sinh_ten: d.hoc_sinh?.ho_ten, lop_id: d.lop_id, lop_ten: d.lop?.ten_lop, mo_ta: d.mo_ta, so_luong: d.so_luong, don_gia: d.don_gia, he_so: d.he_so, thanh_tien: Number(d.thanh_tien) }); dongChotByPH.set(ph, a) }
+    for (const d of (dd ?? []) as any[]) { const ph = hdToPh.get(d.hoa_don_id); if (!ph) continue; if (d.loai === 'no_ky_truoc' && Number(d.thanh_tien) === 0) continue; const a = dongChotByPH.get(ph) ?? []; a.push({ loai: d.loai, hoc_sinh_id: d.hoc_sinh_id, hoc_sinh_ten: d.hoc_sinh?.ho_ten, lop_id: d.lop_id, lop_ten: d.lop?.ten_lop, mo_ta: d.mo_ta, so_luong: d.so_luong, don_gia: d.don_gia, he_so: d.he_so, thanh_tien: Number(d.thanh_tien) }); dongChotByPH.set(ph, a) }
   }
   // §2.0: chinh/duoi per PH từ fn_hocphi_tong_hop_ky (Σ ở DB) — không reduce tiền ở client.
   const { data: thRows, error: eTh } = await supabase.rpc('fn_hocphi_tong_hop_ky', { p_ky: ky.slice(0, 10) })
