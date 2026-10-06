@@ -115,3 +115,68 @@ Huy hiệu = đếm số THÁNG đạt các chỉ tiêu: tháng **chuẩn** = m�
 2. **Thành tích chờ khoe** ở Thế giới BK = tin tự sinh (ET điểm cao, 50 câu đúng trong ngày, nhất buổi, mốc chuỗi, lên bậc…), khoe 3/ngày, không thưởng.
 3. **Danh mục cũ `thanh_tich_loai`** (12 loại, 0 dòng ghim) đã `active=false`.
 4. **"Thành tựu làm một lần" của Thùy (tiến độ bản đồ: hạ dạng, chinh phục chuyên đề, qua lục địa…) — CHƯA có, chưa thiết kế.**
+
+---
+
+## 11. THÀNH TỰU — 3 loại (Thùy chốt cấu trúc 06/10; danh sách là ĐỀ XUẤT CTO chờ gật)
+**Định nghĩa [CEO]:** thành tựu khác nhiệm vụ ở chỗ **bắt buộc/không tự nguyện** hoặc **không lặp theo chu kỳ**. Có 3 loại:
+- **Loại 0 — THÀNH TỰU THÁNG:** lặp mỗi tháng, **reset đầu tháng**, gắn việc bắt buộc, có mức **Thấp / Cao**. Thay cho 14 "chỉ tiêu tháng" (`thanh_tuu`) cũ; vẫn là nguồn đếm của **huy hiệu**.
+- **Loại 1 — LIÊN TIẾP:** làm liên tục một việc, có bậc thang (30/60/90…), **không reset theo tháng nhưng ĐỨT là cày lại từ đầu**.
+- **Loại 2 — MỘT LẦN:** mốc đạt đúng một lần.
+Nhãn dữ liệu: ✅ DB đã đo được · 🔧 cần viết hàm/ghi sự kiện mới · ⛔ chặn bởi hệ thống chưa có.
+
+### Loại 0 — Thành tựu tháng (Thấp / Cao)
+| Việc | Thấp | Cao | Dữ liệu |
+|---|---|---|---|
+| BTVN | làm **≥ 7/8** bài | đủ 8/8, đúng hạn | ✅ `btvn_ket_qua` **[CEO ví dụ]** |
+| ET | làm **≥ 7/8** bài | đủ 8/8 | ✅ **[CEO ví dụ]** |
+| Chuyên cần | vắng ≤ 1 buổi | không vắng buổi nào | ✅ (A1) |
+| Chất lượng BTVN | đúng TB ≥ 85% | ≥ 90% | ✅ (B4/B5) |
+| Chất lượng ET | ≥ 80% ở ≥ ¾ số bài | ≥ 90% ở ≥ ¾ số bài | ✅ (B1) |
+| MT | top 30% khối | top 10% khối | ✅ (B2) |
+| Bứt phá MT | hạng tốt hơn tháng mốc | tốt hơn VÀ vào top 10% | ✅ (P1) |
+| Lấp lỗ | lấp ≥ 1 dạng yếu | lấp ≥ 3 dạng | ✅ (C3) |
+| Siêng việc ngày *(thay A5/A6/B6/Thử thách)* | hoàn thành việc ngày ≥ 15 ngày | ≥ 25 ngày | 🔧 từ nhiệm vụ mới |
+| Siêng luyện *(thay A4)* | ≥ 200 câu đúng Luyện dạng yếu | ≥ 400 | ✅ |
+| Dẫn đầu chăm *(thay D30/D10 vì Rank ẩn)* | top 30% khối về số lượt đạt trong tháng | top 10% | 🔧 |
+
+### Loại 1 — Liên tiếp (bậc thang, đứt = cày lại)
+| Thành tựu | Bậc | Dữ liệu |
+|---|---|---|
+| Vào app liên tiếp **[CEO]** | 30 / 60 / 90 / 120 / 180 / 365 ngày | 🔧 CHƯA có log mở app — cần ghi sự kiện "có mở app" theo ngày VN |
+| Nộp BTVN đúng hạn liên tiếp **[CEO]** | 10 / 20 / 30 / 50 bài | ✅ |
+| Nhất ET **[CEO — "5/10/15 lần": liên tiếp hay cộng dồn? hỏi]** | 5 / 10 / 15 lần | ✅ (hạng ET theo buổi trong `gami_grades`; cần kiểm) |
+| Không có dạng yếu liên tiếp **[CEO]** | 2 / 4 / 6 / 8 tuần | ✅ `fn_mastery_cells(p_den)` chụp cuối từng tuần; mất 1 tuần là về 0 |
+| *+ Chuỗi làm bài* | 7 / 14 / 30 / 50 / 100 / 200 / 365 ngày | ✅ `fn_chuoi_cua_toi` (đã có mốc) |
+| *+ Không vắng buổi liên tiếp* | 10 / 20 / 40 buổi | ✅ điểm danh |
+| *+ ET đạt ≥ 80% liên tiếp* | 3 / 5 / 10 bài | ✅ |
+| *+ Hoàn thành việc ngày liên tiếp* | 7 / 14 / 30 ngày | 🔧 từ nhiệm vụ mới |
+| *+ Hoàn thành việc tuần liên tiếp* | 4 / 8 / 12 tuần | 🔧 |
+| *+ Luyện dạng yếu đạt ≥ 7/10 liên tiếp* | 5 / 10 / 20 lượt | ✅ |
+**Loại 1b — TÍCH LUỸ (cộng dồn, không cần liên tiếp) [ĐỀ XUẤT mở rộng, chờ Thùy gật]:** tổng câu đúng 1.000 / 5.000 / 10.000 · tổng dạng lấp 10 / 30 / 50 · tổng quái hạ trên bản đồ 50 / 200 / 500 · tổng ngày hoàn thành việc ngày 30 / 100 / 200 ✅/🔧.
+
+### Loại 2 — Một lần
+| Thành tựu | Dữ liệu |
+|---|---|
+| MT tháng đạt **Top 5** khối **[CEO]** | ✅ `fn_mt_hang_thang` |
+| MT tháng đạt **Top 1** khối **[CEO]** | ✅ |
+| Quay May mắn **trúng giải cao nhất 2 lần liên tiếp [CEO]** | ✅ `may_man_hs_luot`. ⚠ Bảng giải mới: giải cao nhất (200 EXP) chỉ 1% ⇒ 2 lần liên tiếp ≈ 0,01%/cặp: gần như không ai đạt (hợp làm thành tựu huyền thoại). Muốn khả thi hơn: định nghĩa "giải ≥ 100 EXP" (5%) |
+| **Top 5 leo tháp** (Chinh phục BK) **[CEO]** | ⛔ game Đấu Từ lưu hồ sơ theo THIẾT BỊ, điểm do client khai — phải có hồ sơ theo tài khoản + xếp hạng server trước |
+| **Thắng tournament** (Giải Vô địch) **[CEO]** | ⛔ Giải trực tiếp mới là demo |
+| *+ Hạ dạng đầu tiên / chinh phục chuyên đề đầu tiên / qua lục địa đầu tiên* (bản đồ) | ✅ `fn_ban_do_phieu_luu` (trạng thái `dat`) |
+| *+ Chinh phục 1 / 3 / 5 / 10 lục địa* | ✅ |
+| *+ Hạ boss khu vực đầu tiên* | ✅ |
+| *+ ET 10 điểm lần đầu · MT 10 điểm lần đầu* | ✅ |
+| *+ Lên Level mốc (Level 5 / 10 / 15 / 21)* | ✅ hệ Level EXP (21 mốc) |
+| *+ Elo ET đạt 1200 / 1400* | ✅ |
+| *+ Lần đầu vượt Thử thách / thắng trận 1-2-3 Đấu trường* | 🔧 (khi Đấu trường có RPC) |
+| *+ Hoàn thành Hành trình tân thủ* | 🔧 cần cờ DB "đã xem tutorial" |
+| *+ Lần đầu: khoe lên Thế giới · kết 5 bạn · nhận 👑 khen của thầy cô* | ✅ / ✅ / 🔧 (nút 👑 ở app GV chưa làm) |
+| *+ Lần đầu đổi quà bằng xu* | ✅ `qlht_xu_ledger` |
+| *+ Nông trại: nhà cấp 5 / 10, thu hoạch 100 lần* | ⛔ Nông trại đang chỉ ở localStorage |
+
+### Câu hỏi MỞ (bước ②)
+1. **Huy hiệu ↔ thành tựu tháng:** giữ nguyên cấu trúc — huy hiệu đếm số THÁNG đạt (★1–5), "Thấp" = tháng đạt chuẩn, "Cao" = tháng hoàn hảo — và Thành tựu tháng thay 1:1 cho 14 chỉ tiêu? **[ĐỀ XUẤT: có]**.
+2. "Nhất ET 5/10/15 lần": liên tiếp hay cộng dồn?
+3. Có thêm Loại 1b (tích luỹ) không?
+4. Thưởng từng loại (EXP/xu/ĐHT/huy hiệu) và **trần xu của nguồn thành tựu** — bàn ở bước kế, sau khi chốt danh sách.
