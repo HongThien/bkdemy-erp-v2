@@ -10,6 +10,7 @@ import { anhChay } from '../../skin/heroChay'
 import { useDoHoa } from '../DoHoa'
 import type { Diem } from './boCuc'
 import { quaiCc0 } from './quaiCc0'
+import { TEN_LOAI } from '../../skin/the3d/loai'
 
 export type Khung = { w: number; h: number; doc: boolean }
 
@@ -46,9 +47,10 @@ export function useChuyenDong(): boolean {
   return useDoHoa().muc !== 'thap'
 }
 
-/** Tên quái không kéo three (nguonQuai.ts import three). Cùng luật: boss riêng của style trước, rồi 7 quái CC0 tạm (quaiCc0.ts). */
-export const tenQuai2D = (loai: string): string => laySkin(null).boss?.[loai]?.ten ?? quaiCc0(loai).ten
-export const anhBoss = (loai: string): string | null => laySkin(null).boss?.[loai]?.chandung ?? laySkin(null).boss?.[loai]?.dung ?? quaiCc0(loai).anh
+/** Tên quái không kéo three (nguonQuai.ts import three). Luật: boss riêng của style → quái vẽ riêng của style (`Skin.quai2d`, tên loài TEN_LOAI)
+ *  → 7 quái CC0 tạm (quaiCc0.ts). */
+export const tenQuai2D = (loai: string): string => { const s = laySkin(null); return s.boss?.[loai]?.ten ?? (s.quai2d?.[loai] ? TEN_LOAI[loai] : undefined) ?? quaiCc0(loai).ten }
+export const anhBoss = (loai: string): string | null => { const s = laySkin(null); return s.boss?.[loai]?.chandung ?? s.boss?.[loai]?.dung ?? s.quai2d?.[loai] ?? quaiCc0(loai).anh }
 /** Ảnh đứng của NHÂN VẬT CHÍNH (nhà thám hiểm áo choàng xanh — skin/heroChay.ts). `nhanVat` của style là NPC dẫn truyện, KHÔNG dùng cho em. */
 export const anhHero = (gioi: 'nam' | 'nu'): string | null => anhChay(gioi, 'dung')
 

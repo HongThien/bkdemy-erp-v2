@@ -5,12 +5,16 @@
 // Ảnh gốc ChatGPT (ngoài git, bản chính trên Drive): design/bk-ui-src/khoi/ · ảnh toàn cảnh: khoi/khoi_man_chinh_ipad.png.
 // File cho app (đã nén): public/bk-ui/hs/skin/khoi/ — bg_<nền>_ngang|doc.jpg · o_<ô>.png · b_lich.png · corner/divider.png · nv_nam|nu.png.
 // Style SÁNG duy nhất (Thùy 01/10: chưa cần bản tối) · giao diện kiểu TÚI ĐỒ: tấm xám đá vát nổi, góc vuông, viền đen 2px.
-// CHƯA có bản đồ phiêu lưu / Đấu trường (không khai the3d, sanDau, boss) ⇒ chạy như Tối giản: Tự luyện đi thẳng danh sách thường.
-// Hình bản đồ + quái khối vuông đã có (design/bk-ui-src/khoi/phieu-luu/, Đơn K2) — ghép khi luồng bản đồ làm bảng màu 3D cho style này.
+// 07/10 (Đơn K3): có KHU HỌC TẬP (5 đảo khối) · Chinh phục BK (9 tháp khối) · sân Đấu trường · BẢN ĐỒ PHIÊU LƯU 2D (đảo/nền vùng/nền dạng/mốc K2+K3)
+// · 20 quái khối (K2) · hình game nhúng. Nén: scripts/khoi-hoc-tap.mjs. Chưa có: boss riêng GV (dùng boss của style khác ⇒ rơi về quái thường) ·
+// kit lục địa Đơn 12 · nhân vật chính bản khối (6 nhân vật chính vẫn là bộ anime dùng chung).
 // Thiếu icon banner "kiểm tra lại" (#29, Thùy vẽ bù) — banner đang tắt (RETEST_BAT) nên không ảnh hưởng.
 // ============================================================================
 import type { Skin } from '../kieu'
 import { LOI_GAME } from '../loi'
+import { KHOI_3D } from '../the3d/bangMauKhoi'
+import { HOC_TAP_KHOI, CHINH_PHUC_KHOI } from './khoiHocTap'
+import { BAN_DO_KHOI, QUAI_KHOI } from './khoiBanDo2d'
 
 const A = '/bk-ui/hs/skin/khoi'
 const BALOO = "'Baloo 2', 'Be Vietnam Pro', system-ui, sans-serif"
@@ -49,6 +53,8 @@ export const KHOI: Skin = {
     the_gioi: `${A}/o_the_gioi.png`, nhiem_vu: `${A}/o_nhiem_vu.png`, rank: `${A}/o_rank.png`,
     thu_vien: `${A}/o_bai_tap_giao.png`, tu_luyen_rieng: `${A}/o_tu_luyen.png`,
     tro_choi: `${A}/o_may_man.png`, // 06/10 TẠM — chờ vẽ riêng (Đơn 14) // 03/10 TẠM — chờ vẽ riêng (như rpg.ts)
+    // 5 ô khu HỌC TẬP (Đơn K3 #02–#06, 07/10): địa cầu · búa rèn · 2 cờ hiệu · ngọn tháp · bục vinh quang
+    hoc_chu_de: `${A}/o_hoc_chu_de.png`, luyen_yeu: `${A}/o_luyen_yeu.png`, dau_truong: `${A}/o_dau_truong.png`, chinh_phuc: `${A}/o_chinh_phuc.png`, giai_vo_dich: `${A}/o_giai_vo_dich.png`,
   },
   dauThayIcon: '■',
   trangTri: { goc: `${A}/corner.png`, gach: `${A}/divider.png` },
@@ -60,4 +66,13 @@ export const KHOI: Skin = {
   nenTen: 'rgba(198,198,198,0.92)',
   // Nhân vật 1122×1402 PNG trong suốt ⇒ nén 640×800: nam = nhà thám hiểm + cáo con, nữ = nhà thám hiểm + cú mèo.
   nhanVat: { nam: `${A}/nv_nam.png`, nu: `${A}/nv_nu.png` },
+  // ── Khu Học tập + phiêu lưu (Đơn K3, 07/10) ──
+  hocTap: HOC_TAP_KHOI,
+  chinhPhuc: CHINH_PHUC_KHOI,
+  sanDau: `${A}/dau_truong/nen_san_dau.jpg`,
+  the3d: KHOI_3D,
+  banDo2d: BAN_DO_KHOI,
+  quai2d: QUAI_KHOI,
+  game: { nenMenu: `${A}/bg_anh_dao_ngang.jpg`, nenDau: `${A}/hoctap/nen_ngang.jpg`,
+    icon: { dau: `${A}/o_dau_truong.png`, giai: `${A}/o_giai_vo_dich.png`, thap: `${A}/o_chinh_phuc.png`, noi_tu: `${A}/o_so_tay.png`, goc: `${A}/o_nhiem_vu.png` } },
 }

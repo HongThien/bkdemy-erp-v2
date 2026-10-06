@@ -8,6 +8,7 @@ import type { Skin, CheDo, HinhNen, SkinId, MauDoc } from './kieu'
 import { RPG } from './styles/rpg'
 import { TOI_GIAN } from './styles/toiGian'
 import { KHOI } from './styles/khoi'
+import { skinDangApId } from './loi'
 export type { Skin, SkinId, CheDo, GiaoDien, HinhNen, Mau, MauDoc } from './kieu'
 
 // Khối dùng Home mới + tự chọn skin. Thùy 28/09 tối: MỌI skin mở cho MỌI em, không giới hạn tuổi ("lớp 6 vẫn thích anime")
@@ -21,8 +22,12 @@ export const SKINS: Skin[] = [RPG, KHOI, TOI_GIAN]
 
 export const SKIN_MAC_DINH: SkinId = 'rpg' // Thùy 29/09: chỉ Anime RPG dùng thật — em chưa chọn cũng ra RPG
 
+// id = null/undefined ⇒ style ĐANG ÁP (KhungHS.ganBien gắn khi app HS chạy; chưa gắn — vd trang game mở riêng — ⇒ mặc định).
+// 07/10: trước đây null rơi THẲNG về mặc định ⇒ mọi màn gọi laySkin(null) (khu Học tập, Chinh phục, quái/boss 2D…) luôn vẽ hình RPG
+// dù em chọn style khác. id sai/không có ⇒ mặc định.
 export function laySkin(id: string | null | undefined): Skin {
-  return SKINS.find((s) => s.id === id) ?? SKINS.find((s) => s.id === SKIN_MAC_DINH)!
+  const muon = id ?? skinDangApId()
+  return SKINS.find((s) => s.id === muon) ?? SKINS.find((s) => s.id === SKIN_MAC_DINH)!
 }
 
 // Chế độ thật đang vẽ: skin chỉ có 1 chế độ thì khoá; 'he_thong' theo điện thoại.

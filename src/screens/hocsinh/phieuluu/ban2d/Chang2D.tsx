@@ -12,7 +12,7 @@ import type { BangMau3D } from '../../skin/the3d/kieuMau'
 import type { ChangV, LucDiaV, VungV } from '../kieu'
 import type { BoCucChang, CanhChang } from './canhChangThree'
 import { Fragment } from 'react'
-import { anhNenChang, anhNenDang, anhVat } from './hinh2d'
+import { anhNenChang, anhNenDang, anhVat, coKitLucDia } from './hinh2d'
 import { KIT_LUC_DIA } from './kitLucDia'
 import { ANH_KIT } from './kitLucDia.anh'
 import { CHU_VIEN, Co, CssBan2D, MuiTen, Sao5, useChuyenDong } from './San2D'
@@ -77,7 +77,7 @@ export function Chang2D({ luc, vung, b, onVe, onVao }: { luc: LucDiaV; vung: Vun
 
   // ── chế độ NỀN TRANH: sân cao Hs (trên tấm chi tiết ở màn hẹp), ô tranh rộng tW, chân công trình trên mép đường ≈72,8% Hs
   const Hs = Math.max(1, kt.h - duoi), tW = Hs * (1672 / 941), ySan = Hs * 0.728
-  const kitCt = KIT_LUC_DIA[luc.biome], anhCt = ANH_KIT[luc.biome]
+  const kitCt = KIT_LUC_DIA[luc.biome], anhCt = coKitLucDia() ? ANH_KIT[luc.biome] : undefined // kit công trình vẽ theo nét của style có kit
   const ct = vung.chang.map((_, i) => {
     if (!anhCt?.moc?.length) return null
     const idx = n <= 1 ? 0 : Math.min(7, Math.round((i * 7) / (n - 1))) // rải đều 8 loại công trình ⇒ dạng sau "to" hơn dạng trước

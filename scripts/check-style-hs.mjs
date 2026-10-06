@@ -47,7 +47,8 @@ for (const f of files) {
 // ② icon ô  ③ file hình
 // checkout CRLF (autocrlf) ⇒ chuỗi ']\n' không khớp cuối mảng, khoiDs đọc lố sang mảng khác ⇒ chuẩn hoá về LF trước
 const app = readFileSync(`${GOC}/HocSinhApp.tsx`, 'utf8').replace(/\r\n/g, '\n')
-const khoiDs = (ten) => { const i = app.indexOf(`const ${ten}`); if (i < 0) return []; const j = app.indexOf(']\n', i); return [...app.slice(i, j).matchAll(/\{\s*id:\s*'([a-z_0-9]+)'/g)].map((m) => m[1]) }
+// không thấy cuối mảng ⇒ trả rỗng, KHÔNG cắt tới hết file (07/10: cắt lố gom nhầm id thẻ của màn khác, vd `huong_dan` của Thư viện BK)
+const khoiDs = (ten) => { const i = app.indexOf(`const ${ten}`); if (i < 0) return []; const j = app.indexOf(']\n', i); if (j < 0) return []; return [...app.slice(i, j).matchAll(/\{\s*id:\s*'([a-z_0-9]+)'/g)].map((m) => m[1]) }
 const oCan = [...new Set([...khoiDs('KHU:'), ...khoiDs('KHU_CAP2'), 'hoc_tu_dau', 'tu_luyen_rieng'])] // 2 ô rời (không nằm trong KHU)
 const DIR_STYLE = `${GOC}/skin/styles`
 for (const f of readdirSync(DIR_STYLE).filter((x) => x.endsWith('.ts'))) {
@@ -57,7 +58,7 @@ for (const f of readdirSync(DIR_STYLE).filter((x) => x.endsWith('.ts'))) {
   const coO = new Set([...khoiAnh.matchAll(/\b([a-z_0-9]+):\s*`/g)].map((m) => m[1]))
   const thieu = oCan.filter((o) => !coO.has(o))
   if (s.includes('anhO:') && thieu.length) rot.push(`style ${f}: thiếu icon cho ô ${thieu.join(', ')} — đặt hình (design/STYLE-HS.md §Thêm tính năng) rồi khai vào anhO`)
-  if (A) for (const m of s.matchAll(/\$\{A\}\/([A-Za-z0-9_.\-]+)/g)) {
+  if (A) for (const m of s.matchAll(/\$\{A\}\/([A-Za-z0-9_.\-\/]+)/g)) {
     const ten = m[1].includes('.') ? [m[1]] : [`${m[1]}.jpg`, `${m[1]}.png`] // nen('bg_x') không kèm đuôi
     if (!ten.some((t) => existsSync(join('public', A, t)))) rot.push(`style ${f}: không có file public${A}/${m[1]}`)
   }

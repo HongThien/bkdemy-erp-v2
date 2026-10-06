@@ -11,10 +11,11 @@ import { ChuMon } from '../../screens/kho/ui'
 import { anhDau, hopDau, type TuTheDau } from '../../screens/hocsinh/skin/heroDau'
 import { Avatar, DauMan, NHAN_VAT, Nut, nvChuan } from '../ui/Chung'
 import type { NguoiTran } from '../lib/trongTai'
+import { HINH_GAME } from '../hinhGame'
 
 const PHIM = ['a', 's', 'z', 'x']
 /** Biểu tượng Leo tháp = ngọn tháp pháp sư của bộ bản đồ phiêu lưu (tranh ChatGPT, cùng tông tím–vàng của game). */
-export const ANH_THAP = '/bk-ui/hs/skin/rpg/phieuluu2d/moc_thap.webp'
+export const ANH_THAP = HINH_GAME.icon.thap
 
 export function ManLeoThap({ toi, nguon, cap, setCap, onLui }: { toi: NguoiTran; nguon: NguonCau; cap: string; setCap: (c: string) => void; onLui: () => void }) {
   const [che, setChe] = useState<CheDoThap | null>(CHE_NHUNG) // màn tháp của app HS đã chọn chế độ ⇒ vào thẳng ván
@@ -200,7 +201,7 @@ function VanThap({ che, toi, nguon, cap, onLeoLai, onLui }: { che: CheDoThap; to
   const tongCau = giayVoTan(tang, goc) * 1000
   const dungTx = cau.opts.find((o) => o.id === cau.dung)?.text ?? ''
   return (
-    <div className="man man-thap" style={{ backgroundImage: 'url(/bk-ui/hs/skin/rpg/bg_dao_troi_chibi_ngang.jpg)' }}>
+    <div className="man man-thap" style={{ backgroundImage: `url(${HINH_GAME.nenDau})` }}>
       <div className="thap-hud">
         <button className="nut-lui" onClick={() => (pha === 'choi' ? ketThuc({ tang, sai }) : onLui())} aria-label="Dừng leo">‹</button>
         <div className="thap-ten"><b>{THAP[che].icon} {THAP[che].ten} · {nguon.ten}</b><small>Tháp hôm nay · {pha === 'choi' ? 'bấm ‹ để dừng và ghi kết quả' : ''}</small></div>

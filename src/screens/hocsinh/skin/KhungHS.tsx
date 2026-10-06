@@ -49,6 +49,16 @@ export function ganSkinMacDinh() {
   ganBien(GD_MAC_DINH, mm('(prefers-color-scheme: dark)'), mm('(orientation: portrait)'))
 }
 
+/** TRANG XEM THỬ (?xem=…, không đăng nhập): `&skin=<id>[&nen=<id>]` ⇒ gắn style đó NGAY (trước lần vẽ đầu — màn đọc `laySkin(null)` lúc khởi tạo
+ *  thấy đúng style) rồi trả GiaoDien để trang gọi tiếp `useApSkinGoc` (xoay máy vẫn gắn lại). Không có `skin` ⇒ style mặc định. */
+export function ganSkinXemThu(): GiaoDien {
+  const q = new URLSearchParams(location.search)
+  const gd: GiaoDien = { ...GD_MAC_DINH, skin: laySkin(q.get('skin') ?? GD_MAC_DINH.skin).id, hinh_nen: q.get('nen') ?? GD_MAC_DINH.hinh_nen }
+  const mm = (m: string) => !!window.matchMedia?.(m).matches
+  ganBien(gd, mm('(prefers-color-scheme: dark)'), mm('(orientation: portrait)'))
+  return gd
+}
+
 // Gắn biến skin lên <html> — mọi màn (kể cả màn con render ở nhánh khác) đọc được. Đổi skin/chế độ/xoay máy ⇒ gắn lại.
 export function useApSkinGoc(gd: GiaoDien) {
   const heThongToi = useHeThongToi()
