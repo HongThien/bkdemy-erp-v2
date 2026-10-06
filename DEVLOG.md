@@ -35567,3 +35567,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - (06/10) **Lọc dạng cho MỌI tab duyệt có dạng** (Thùy: "áp cho tất cả các môn"): tách thành `src/screens/duyetloigiai/LocDang.tsx` (`useLocDang` + `ChonDang`), dùng ở Duyệt câu (mọi bộ lọc: câu mới / lời giải mới / máy nghi / không kiểm được / tồn đọng / chưa phân dạng — Toán Đại·HGT·Hình học, KHTN, Tiếng Anh, TSA) · Đúng/Sai · Trắc nghiệm AI (phân trang chạy trên phần đã lọc). Không áp: Điền ô (form của bài Hình, không có dạng) · Chưa giải (đã gom nhóm theo dạng sẵn).
 
 - **Thùy (06/10):** thành tựu tính THEO NĂM. CTO tính lại: tối đa ≈355 xu/năm (≈30/tháng) · đều đặn ≈141 · nhẹ ≈33; năm 2+ ≈190 tối đa (xem spec §11 Ngân sách theo năm).
+
+- **Thùy (06/10):** thành tựu **RESET MỖI NĂM** ⇒ "lần đầu" = lần đầu trong mùa; mỗi năm ngân sách như nhau (tối đa ≈355 xu/năm, bỏ ý "năm 2 ≈190"). Đề xuất mốc reset 01/07 theo mùa Rank/huy hiệu; #14 bạn bè chỉ tính bạn kết MỚI trong mùa (tránh xu miễn phí).

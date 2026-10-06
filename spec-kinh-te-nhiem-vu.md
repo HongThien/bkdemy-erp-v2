@@ -149,7 +149,7 @@ Dữ liệu: ✅ đã đo được · 🔧 cần hàm/ghi sự kiện mới · �
 - Thành tựu không gắn môn (#4, #5, #6, #14) thưởng ghi vào **EXP chung** (không nhãn môn — §1.6: dữ liệu không-học-tập mới được chung; "vào app" và "bạn bè" đúng nhóm này; chuỗi/nhiệm vụ đã chốt chung mọi môn); còn lại ghi theo môn.
 
 ### Ngân sách thành tựu THEO NĂM (1 năm học = 10 tháng tính thành tựu tháng; đơn vị xu; 100 EXP = 1 xu)
-Thành tựu **liên tiếp / tích luỹ / một lần chỉ thưởng LẦN ĐẦU** ⇒ phần lớn là tiền "một lần trong đời" dồn vào năm đầu; từ năm 2 chỉ còn #1–3 lặp hằng tháng và #15 của khối mới.
+**[CEO 06/10] MỖI NĂM RESET:** toàn bộ thành tựu (liên tiếp / tích luỹ / một lần / ẩn) tính lại từ đầu mỗi **mùa** ⇒ "chỉ lần đầu" nghĩa là **lần đầu TRONG MÙA**, không phải trong đời. Mỗi năm một học sinh lại có đủ ngân sách dưới đây (không có chuyện năm 2 thấp hơn).
 
 | Nhóm | Tối đa / năm | Học sinh **đều đặn** (điển hình chăm) | Học sinh **nhẹ** |
 |---|---|---|---|
@@ -166,8 +166,15 @@ Thành tựu **liên tiếp / tích luỹ / một lần chỉ thưởng LẦN Đ
 
 - Thành phần lớn nhất ở mức tối đa: **#15 master (28%)** · **#1–3 tháng (25%)** · **#4+#5 liên tiếp (20%)**.
 - So với nguồn khác cùng 1 năm (mức tối đa): nhiệm vụ 20 × 12 = 240 xu · vòng quay 10 × 12 = 120 xu · **thành tựu ≈ 355 xu** ⇒ ở học sinh giỏi, thành tựu là nguồn xu app LỚN NHẤT.
-- Năm 2 trở đi (cùng khối cũ + khối mới): #1–3 ≈ 90 + #15 của khối mới ≤ 100 ⇒ tối đa ≈ 190 xu/năm.
+- **Mỗi năm đều như nhau** (đã reset): tối đa ≈ 355 · đều đặn ≈ 141 · nhẹ ≈ 33 xu/năm — **mọi năm**, không giảm dần.
 - Cần chốt trần: nếu muốn nguồn thành tựu ≤ N xu/năm thì chỉnh đòn bẩy lớn nhất là **#15 (1.000 → 500 EXP/chủ đề giảm 50 xu)** hoặc thưởng tháng #1–3 (300 → 200 giảm 30 xu).
+
+### Quy tắc RESET THEO MÙA [ĐỀ XUẤT — chờ Thùy gật]
+- **Mốc reset = 01/07** (khớp mùa Rank 01/07–30/06 và mùa huy hiệu 07→04; bảng  đã có). Dòng thành tựu đạt mang nhãn  (lịch sử các năm trước vẫn xem được trong album, KHÔNG xoá).
+- Reset gồm: cờ "đã đạt" của mọi bậc · bộ đếm tích luỹ (#8) · đếm liên tiếp (#4–#7) · chuỗi master #15 (bộ chủ đề đổi theo khối nên tự mới).
+- **Liên tiếp qua ranh giới mùa:** đếm lại từ 0 vào 01/07 (vì cày lại từ đầu mỗi mùa). Hệ quả: bậc **300 ngày** của #4/#5 gần như "không bỏ ngày nào cả mùa" (mùa 365 ngày, kể cả hè) — để làm thành tựu huyền thoại.
+- ⚠ **#14 bạn bè KHÔNG reset theo kiểu "đếm lại số bạn hiện có"** — nếu không, năm nào cũng nhận lại xu cho cùng các bạn cũ (xu miễn phí). **[ĐỀ XUẤT]** #14 chỉ tính **bạn kết MỚI trong mùa**.
+- ⚠ **#9–#13 (Top 5/Top 1/10 điểm lần đầu/100% dạng):** đã reset thì mỗi mùa nhận lại được — đúng ý Thùy, nhưng #12 MT 10 điểm (1.000 EXP) và #13 là khoản lớn; giữ nguyên số theo Thùy.
 
 ### Câu hỏi MỞ
 1. #11 / #12 "ET/MT 10 lần đầu": = lần đầu được **10 điểm**? (hay 10 lần đầu tiên làm?)
