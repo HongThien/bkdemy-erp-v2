@@ -35571,3 +35571,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Thùy (06/10):** thành tựu **RESET MỖI NĂM** ⇒ "lần đầu" = lần đầu trong mùa; mỗi năm ngân sách như nhau (tối đa ≈355 xu/năm, bỏ ý "năm 2 ≈190"). Đề xuất mốc reset 01/07 theo mùa Rank/huy hiệu; #14 bạn bè chỉ tính bạn kết MỚI trong mùa (tránh xu miễn phí).
 
 - **Thùy (06/10):** #11/#12 "10" = **10 ĐIỂM** (ET 10 điểm lần đầu · MT 10 điểm lần đầu trong mùa).
+
+- **Thùy (06/10):** thành tựu "tầm 300 xu/năm là đẹp" — thành tựu KHÓ nhưng cần chăm chỉ vẫn thưởng cao. CTO chỉnh: giữ #2 #3 #5 #6 #7 #8 #13 #15; cắt #1 (300→150), #4 (vào app: 30…400), Top5 (300), Top1 (700), MT 10đ (800), bậc 60/90 của #6 (600/800), bậc cuối #8 (400) ⇒ tối đa ≈305 xu/năm (xuất sắc ≈274, đều đặn ≈116, nhẹ ≈24). Đề xuất trần tháng 40 xu, vượt thì chuyển tháng sau.
