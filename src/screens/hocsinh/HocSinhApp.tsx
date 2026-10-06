@@ -68,6 +68,7 @@ import HuongDanHS from './huongdan/HuongDanHS'
 import TroChoiHS, { GameNongTraiHS } from './trochoi/TroChoiHS'
 import { rankBat } from './phieuluu/coBat'
 import GioiThieuYeu from './luyen/GioiThieuYeu'
+import ThongBaoLuot from './luyen/ThongBaoLuot'
 import TutorialHS from './tutorial/TutorialHS'
 import AlbumHS from './AlbumHS'
 import HoSoHS from './HoSoHS'
@@ -978,6 +979,7 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
         <div className={`flex items-center justify-center rounded-full ${desktop ? 'h-24 w-24 text-5xl' : 'h-20 w-20 text-4xl'}`} style={{ ...THE_TRON, borderRadius: '999px', background: NEN_DUNG }}>🏆</div>
         <p className={`mt-4 font-bold tracking-tight ${desktop ? 'text-3xl' : 'text-2xl'}`} style={{ ...HEAD, color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>{dung} / {total} đúng</p>
         <p className="mt-1 text-[16px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>{doneCaption ?? 'Làm lại được tới hạn nộp. Kết quả gửi thầy cô tham khảo.'}</p>
+        {doneExtra !== undefined && baiLamId && <ThongBaoLuot baiLamId={baiLamId} />}
         <button onClick={onXong} className={`mt-6 font-bold ${desktop ? 'px-8 py-3.5 text-[19px]' : 'px-6 py-3 text-[18px]'}`} style={NUT_CHINH}>Về danh sách</button>
         {doneExtra}
       </ManGiua>
