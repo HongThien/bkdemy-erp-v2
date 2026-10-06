@@ -35581,3 +35581,10 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Thùy (06/10):** (1) nguồn THÀNH TỰU **KHÔNG đặt trần xu** (tính theo năm); (2) #13 "100% đạt dạng bài" = tại một thời điểm mọi dạng ĐÃ ĐO đạt, **tối thiểu 10 dạng đã đo** mới tính. CTO nêu rủi ro: 10 dạng dễ → 1.000 EXP; đề xuất mỗi dạng ≥3 lần đo trong mùa. #15 master: dạng CHƯA ĐO = chưa đạt. Thành tựu CHỐT ⇒ bước kế HUY HIỆU, rồi THỬ THÁCH.
 
 - **Thùy làm rõ (06/10):** #13 = **100% TOÀN BỘ dạng bài của khối đạt cùng một thời điểm**, khối phải có **> 10 dạng** (bỏ đề xuất "≥3 lần đo/mùa"). Khác #15 (master từng chủ đề, nhận dần).
+
+## 2026-10-06 — Test đầu vào: đề = KHO theo khối × môn, chọn đề ở khâu nhập liệu
+
+**(CEO: HS không làm nổi đề tháng 9 ⇒ cho làm tháng 8, nhưng hệ chỉ nhận 1 đề gán nên không trả bài theo cấu trúc tháng 8 được. Đề xuất: đề test đầu vào là 1 KHO, khi nhập liệu/đánh giá/trả bài chọn đề trong kho, mặc định tháng mới nhất. "Ok thì làm luôn")**
+- Đánh giá (R2): khung đã có sẵn từ 21/09 — `tai_lieu` loại `de_test_dau_vao` nhiều bản / (khối × môn), "đang dùng" = coalesce(test_dang_dung_at, created_at) mới nhất, Điểm danh có dropdown mọi bản, phiếu trả bài đọc snapshot `ca_test_cau` của đề đã gán ⇒ trả bài TỰ theo đề. Thiếu đúng 1 chỗ: màn CHẤM (nhập liệu) không đổi đề được; và nhãn "đang dùng / lịch sử" làm đề tháng 8 trông như đã bỏ. KHÔNG cần đổi DB.
+- Làm: `ChamTestScreen.ChamCard` thêm dropdown 📘 kho đề (`listDeTestDauVao(mon)` lọc khối, mới nhất đánh "· mặc định"), đổi = `ganDeCaTest` (confirm nếu đã tích N câu — đổi đề xoá kết quả; khoá khi đã đóng chấm; tự đặt cờ lệch khối nếu chọn đề khối khác); màn "chưa có đề" cũng có dropdown chọn đề trong kho + nút "Gán đề mặc định". Đổi nhãn: Điểm danh option "· mặc định" (bỏ "lịch sử"); tab Đề test: badge "Mặc định", mục "Đề khác trong kho (n)", nút "↑ Đặt làm mặc định", mô tả kho.
+- Verify (server riêng 59538, admin): tsc sạch phần mình (2 lỗi còn lại ở `src/_xem_912.tsx`, `src/_xem_rank.tsx` — file nháp phiên khác); ca Bảo Sang K8 đã đóng chấm: dropdown 2 đề K8, chọn đúng đề đang gán "· mặc định", disabled; ca đang cần chấm: dropdown mở; tab Đề test nhãn mới. Không đổi đề thật ca nào.

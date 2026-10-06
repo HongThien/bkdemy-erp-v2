@@ -10,8 +10,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   listCanCham, listDaChamTheoThang, getCaTestCauKq, chamCauTest, dongChamTest, moLaiChamTest, getPhieuKetQua,
-  setDiemNhap, ganDeDangDung, dsThangGanDay, nhanThang,
-  type CaTestChoCham, type CaTestCau, type PhieuKetQua,
+  setDiemNhap, ganDeDangDung, ganDeCaTest, listDeTestDauVao, dsThangGanDay, nhanThang,
+  type CaTestChoCham, type CaTestCau, type PhieuKetQua, type DeTestRow,
 } from '../../lib/detest'
 import { useStore } from '../../store/useStore'
 import { SuaCaTheoIdModal, HuyCaTestModal, NutSuaHuy } from './CaTestSuaHuy'
@@ -191,6 +191,24 @@ function ChamCard({ item, daChamXong, onClose, onPatch, onDone, onReopen }: {
   const [loading, setLoading] = useState(true)
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
+  // ⭐ CEO 06/10: đề test đầu vào = KHO (nhiều đề / khối × môn, vd tháng 8 + tháng 9), mặc định đề MỚI NHẤT, người
+  // nhập liệu đổi được ngay đây (HS không làm nổi đề tháng 9 ⇒ cho làm tháng 8 ⇒ chấm + trả bài theo đề tháng 8).
+  // Phiếu trả bài tự theo đề đã gán cho ca (snapshot câu) nên chỉ cần đổi ở khâu này.
+  const [khoDe, setKhoDe] = useState<DeTestRow[]>([])
+  useEffect(() => { listDeTestDauVao(item.mon).then((ds) => setKhoDe(ds.filter((d) => !item.khoi || d.khoi === item.khoi))).catch(() => setKhoDe([])) }, [item.mon, item.khoi])
+  async function doiDe(id: string) {
+    if (!id || id === item.taiLieuId) return
+    const de = khoDe.find((d) => d.id === id); if (!de) return
+    const n = tong?.daCham ?? 0
+    if (n > 0 && !window.confirm(`Đổi sang đề "${de.ten}"?\n\n${n} câu đã tích trên đề hiện tại sẽ bị XOÁ, phải chấm lại từ đầu.`)) return
+    setBusy(true); setErr(null)
+    try {
+      await ganDeCaTest(item.id, id)
+      onPatch({ taiLieuId: id, thieuDe: false, deKhoi: de.khoi, deTen: de.ten, lechKhoi: !!item.khoi && de.khoi !== item.khoi })
+      setMoDe(new Set())
+      await reload()
+    } catch (e: any) { setErr(e.message ?? String(e)) } finally { setBusy(false) }
+  }
 
   async function reload() {
     setLoading(true)
@@ -257,11 +275,17 @@ function ChamCard({ item, daChamXong, onClose, onPatch, onDone, onReopen }: {
   if (!item.taiLieuId) return (
     <div className="mx-auto max-w-[600px] p-8 text-center">
       <div className="text-[15px] font-semibold text-slate-800">{item.hoTenHs} · {item.mon}{item.khoi ? ` · Lớp ${item.khoi}` : ''}</div>
-      <p className="mt-2 text-sm text-slate-500">Ca này đã hoàn thành nhưng chưa có đề nên chưa có câu để chấm. Gán đề đang dùng của khối × môn để chấm.</p>
+      <p className="mt-2 text-sm text-slate-500">Ca này đã hoàn thành nhưng chưa có đề nên chưa có câu để chấm. Gán đề mặc định (mới nhất) của khối × môn, hoặc chọn đề khác trong kho.</p>
+      {khoDe.length > 0 && (
+        <select value="" onChange={(e) => doiDe(e.target.value)} disabled={busy} className="mt-3 w-full max-w-[480px] rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-[13px]">
+          <option value="">— chọn đề trong kho —</option>
+          {khoDe.map((d) => <option key={d.id} value={d.id}>{d.ten}{d.laHienTai ? ' · mặc định' : ''}</option>)}
+        </select>
+      )}
       {err && <p className="mt-2 text-[12px] text-rose-600">{err}</p>}
       <div className="mt-4 flex justify-center gap-2">
         <button onClick={onClose} className="rounded-lg border border-slate-200 px-4 py-2 text-[13px]">← Quay lại</button>
-        <button onClick={ganDe} disabled={busy} className="rounded-lg bg-indigo-600 px-4 py-2 text-[13px] font-semibold text-white hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang gán…' : '📘 Gán đề đang dùng'}</button>
+        <button onClick={ganDe} disabled={busy} className="rounded-lg bg-indigo-600 px-4 py-2 text-[13px] font-semibold text-white hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang gán…' : '📘 Gán đề mặc định'}</button>
       </div>
     </div>
   )
@@ -272,6 +296,15 @@ function ChamCard({ item, daChamXong, onClose, onPatch, onDone, onReopen }: {
         <button onClick={onClose} className="text-[13px] font-medium text-indigo-600 hover:underline">← Quay lại</button>
         <span className="text-[14px] font-semibold text-slate-800">{item.hoTenHs}</span>
         <span className="text-[12px] text-slate-400">{item.mon}{item.khoi ? ` · Lớp ${item.khoi}` : ''}</span>
+        {khoDe.length > 0 && (
+          <label className="flex items-center gap-1 text-[12px] text-slate-500" title="Kho đề của khối × môn — mặc định đề mới nhất; HS làm đề khác (vd tháng 8) thì chọn ở đây, phiếu trả bài tự theo">
+            📘
+            <select value={item.taiLieuId ?? ''} onChange={(e) => doiDe(e.target.value)} disabled={busy || daChamXong} className="max-w-[360px] truncate rounded-md border border-slate-200 bg-white px-2 py-1 text-[12px] disabled:opacity-60">
+              {!item.taiLieuId && <option value="">— chọn đề —</option>}
+              {khoDe.map((d) => <option key={d.id} value={d.id}>{d.ten}{d.laHienTai ? ' · mặc định' : ''}</option>)}
+            </select>
+          </label>
+        )}
         {item.nguoiChamTen && <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-600">👤 {item.nguoiChamTen}</span>}
         {daChamXong && <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-700">✓ Đã đóng chấm</span>}
         <span className="ml-auto text-[13px] text-slate-500">

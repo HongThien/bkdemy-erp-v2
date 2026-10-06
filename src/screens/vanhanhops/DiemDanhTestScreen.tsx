@@ -233,7 +233,8 @@ function CaTestCard({ c, now, deList, onChanged, onInDe, onSua, onHuy }: { c: Ca
           <>
             <select className="min-h-[36px] rounded-md border border-slate-200 px-2 py-1.5 text-[12px]" value={taiLieuId ?? ''} onChange={(e) => ganDe(e.target.value)} disabled={busy} title="Chọn là lưu ngay">
               <option value="" disabled>{busy ? 'Đang gán đề…' : 'Chọn đề…'}</option>
-              {cands.map((d) => <option key={d.id} value={d.id}>{d.ten}{d.laHienTai ? ' · đang dùng' : ' · lịch sử'}</option>)}
+              {/* CEO 06/10: kho đề — mọi bản đều chọn được, mặc định bản mới nhất (HS không làm nổi tháng 9 ⇒ chọn tháng 8). */}
+              {cands.map((d) => <option key={d.id} value={d.id}>{d.ten}{d.laHienTai ? ' · mặc định' : ''}</option>)}
             </select>
           </>
         )}
@@ -356,7 +357,7 @@ function TaoCaTestModal({ onClose, onDone }: { onClose: () => void; onDone: (inN
             <input type="checkbox" checked={inDeNgay} onChange={(e) => doiInDe(e.target.checked)} className="mt-0.5 h-4 w-4 accent-indigo-600" />
             <span>
               <span className="block text-[13px] font-medium text-slate-700">🖨 In đề cho học sinh ngay sau khi tạo</span>
-              <span className="block text-[11px] text-slate-400">In đề đang dùng của khối × môn, tên học sinh in sẵn. Đề có nhiều mã thì chỉ in <b>mã đề 1</b>. In lại lúc nào cũng được bằng nút "In đề" trên thẻ ca.</span>
+              <span className="block text-[11px] text-slate-400">In đề mặc định (mới nhất) của khối × môn, tên học sinh in sẵn; đổi đề khác trong kho ngay trên thẻ ca. Đề có nhiều mã thì chỉ in <b>mã đề 1</b>. In lại lúc nào cũng được bằng nút "In đề" trên thẻ ca.</span>
             </span>
           </label>
 

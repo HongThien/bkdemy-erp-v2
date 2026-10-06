@@ -32,7 +32,7 @@ export default function QuanLyDeTestScreen() {
   const lamMoiNen = () => listDeTestDauVao().then(setRows).catch(() => {})
   async function xoa(d: DeTestRow) {
     setLoi(null)
-    if (d.soCa > 0) { setLoi(`"${d.ten}" đã có ${d.soCa} ca test dùng — không xoá được. Muốn ngừng dùng thì đặt bản khác làm "đang dùng".`); return }
+    if (d.soCa > 0) { setLoi(`"${d.ten}" đã có ${d.soCa} ca test dùng — không xoá được. Muốn ca mới không lấy đề này thì đặt bản khác làm "mặc định".`); return }
     if (!window.confirm(`Xoá hẳn đề "${d.ten}"?\n\nĐề chưa có ca test nào dùng. Xoá là mất đề này (đề nguồn MT vẫn còn, sinh lại được).`)) return
     try { await xoaDeTest(d.id); setRows((s) => s.filter((x) => x.id !== d.id)); lamMoiNen() } catch (e: any) { setLoi(e.message ?? String(e)) }
   }
@@ -63,7 +63,7 @@ export default function QuanLyDeTestScreen() {
         <div className="mb-4 flex flex-wrap items-center gap-2">
           <div>
             <h2 className="text-[20px] font-semibold text-slate-800">Đề test đầu vào</h2>
-            <p className="text-[12px] text-slate-400">Sinh đề từ nguồn MT · Đề thi trong Kho. Mỗi khối×môn có 1 đề đang dùng; sinh đề mới → đề cũ thành lịch sử.</p>
+            <p className="text-[12px] text-slate-400">Kho đề test đầu vào theo khối × môn (sinh từ MT · Đề thi). Ca mới tự lấy đề <b>mặc định</b> (mới nhất); mọi đề trong kho đều chọn được ở Điểm danh / Chấm test — phiếu trả bài theo đề đã chọn.</p>
           </div>
           <button onClick={() => setForm(true)} className="ml-auto rounded-xl bg-indigo-600 px-4 py-2 text-[14px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Tạo đề test đầu vào</button>
         </div>
@@ -112,7 +112,7 @@ function NhomCard({ n, hd }: { n: Nhom; hd: HanhDongDe }) {
       <div className="mb-1.5 flex items-center gap-2">
         <span className="text-[14px] font-semibold text-slate-800">Khối {n.khoi}</span>
         <span className="rounded-md bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium text-slate-500">{n.mon}</span>
-        <span className="ml-auto rounded-md bg-emerald-100 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-700">Đang dùng</span>
+        <span className="ml-auto rounded-md bg-emerald-100 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-700">Mặc định</span>
         <NutDe d={n.hienTai} hd={hd} />
       </div>
       <div className="text-[13px] font-medium text-slate-700">{n.hienTai.ten}</div>
@@ -123,14 +123,14 @@ function NhomCard({ n, hd }: { n: Nhom; hd: HanhDongDe }) {
       {n.lichSu.length > 0 && (
         <div className="mt-2 border-t border-slate-100 pt-2">
           <button onClick={() => setMoLichSu((v) => !v)} className="text-[11px] font-medium text-slate-500 hover:text-slate-700">
-            {moLichSu ? '▾' : '▸'} Lịch sử ({n.lichSu.length})
+            {moLichSu ? '▾' : '▸'} Đề khác trong kho ({n.lichSu.length})
           </button>
           {moLichSu && (
             <div className="mt-1.5 space-y-1">
               {n.lichSu.map((h) => (
                 <div key={h.id} className="flex items-center gap-1.5 rounded-lg bg-slate-50 px-2 py-1.5 text-[11px] text-slate-500">
                   <span className="min-w-0 flex-1">{h.ten} · {h.createdAt.slice(0, 10)} · {h.soCa} ca đã dùng</span>
-                  <button onClick={() => hd.onDatDangDung(h)} title="Đặt bản này làm đề đang dùng của khối × môn (ca test MỚI sẽ lấy bản này)" className="shrink-0 rounded-md border border-slate-200 bg-white px-1.5 py-0.5 text-[11px] font-medium text-slate-600 hover:border-emerald-300 hover:text-emerald-700">↑ Đặt làm đang dùng</button>
+                  <button onClick={() => hd.onDatDangDung(h)} title="Đặt bản này làm đề mặc định của khối × môn (ca test MỚI sẽ lấy bản này)" className="shrink-0 rounded-md border border-slate-200 bg-white px-1.5 py-0.5 text-[11px] font-medium text-slate-600 hover:border-emerald-300 hover:text-emerald-700">↑ Đặt làm mặc định</button>
                   <NutDe d={h} hd={hd} />
                 </div>
               ))}
@@ -194,7 +194,7 @@ function TaoDeModal({ onClose, onDone }: { onClose: () => void; onDone: () => vo
     <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/40 p-4" onClick={onClose}>
       <div className="w-full max-w-[560px] rounded-2xl bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="mb-1 text-[16px] font-semibold text-slate-800">Tạo đề test đầu vào</div>
-        <p className="mb-4 text-[12px] text-slate-400">Chọn khối × môn rồi chọn 1 nguồn — hệ sẽ sinh đề mới (copy nội dung nguồn). Đề này thành đề đang dùng của khối×môn đó.</p>
+        <p className="mb-4 text-[12px] text-slate-400">Chọn khối × môn rồi chọn 1 nguồn — hệ sẽ sinh đề mới (copy nội dung nguồn) vào kho. Đề mới nhất thành đề mặc định; đề cũ vẫn chọn được cho từng ca.</p>
         <div className="space-y-3">
           <div className="grid grid-cols-2 gap-3">
             <div><Lbl>Khối</Lbl><select className={inputCls} value={khoi} onChange={(e) => setKhoi(e.target.value)}>{KHOI_OPTIONS.map((k) => <option key={k} value={k}>{k}</option>)}</select></div>
