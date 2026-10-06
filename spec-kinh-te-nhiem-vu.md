@@ -118,75 +118,53 @@ Huy hiệu = đếm số THÁNG đạt các chỉ tiêu: tháng **chuẩn** = m�
 
 ---
 
-## 11. THÀNH TỰU — chốt cấu trúc 06/10 (danh sách: Thùy duyệt dần)
-**[CEO] Đạt là đạt, không đạt là thôi — KHÔNG có mức Thấp/Cao.** Mỗi bậc/ngưỡng là MỘT thành tựu riêng.
-**[CEO] Thành tựu có thể tham chiếu huy hiệu nhưng KHÔNG phải luôn là điều kiện của huy hiệu** (quan hệ chi tiết bàn SAU, khi chốt xong danh sách thành tựu).
-Khác nhiệm vụ: thành tựu là việc BẮT BUỘC hoặc không lặp theo chu kỳ. 4 loại:
-- **Loại 0 — THÀNH TỰU THÁNG:** reset đầu tháng, đạt/không đạt trong tháng, gắn việc bắt buộc.
-- **Loại 1 — LIÊN TIẾP:** làm liên tục, bậc thang; **đứt là cày lại từ đầu**; không reset theo tháng.
-- **Loại 1b — TÍCH LUỸ [CEO 'Có']:** cộng dồn tổng số, không cần liên tiếp, không mất.
-- **Loại 2 — MỘT LẦN:** mốc đạt đúng một lần.
-Dữ liệu: ✅ đã đo được · 🔧 cần viết hàm/ghi sự kiện · ⛔ chặn bởi hệ thống chưa có. [CEO] = Thùy nêu · [ĐỀ XUẤT] = CTO.
+## 11. THÀNH TỰU — CHỐT 15 LOẠI (Thùy 06/10; bản ~89 thành tựu cũ đã bỏ)
+**[CEO]** Đạt là đạt, không đạt là thôi — không có mức Thấp/Cao. Mỗi bậc/ngưỡng là một thành tựu riêng, **thưởng EXP riêng** (trừ #14 thưởng xu).
+**[CEO]** Thành tựu có thể tham chiếu huy hiệu nhưng KHÔNG luôn là điều kiện huy hiệu — quan hệ bàn SAU khi chốt xong thành tựu.
+Loại: **THÁNG** (reset mỗi tháng) · **LIÊN TIẾP** (đứt là cày lại) · **TÍCH LUỸ** (cộng dồn) · **MỘT LẦN**.
+Dữ liệu: ✅ đã đo được · 🔧 cần hàm/ghi sự kiện mới · ⛔ chờ hệ thống khác. [CEO] = Thùy nêu · [ĐỀ XUẤT] = CTO điền chỗ Thùy để "…".
 
-### Loại 0 — Thành tựu tháng (10)
-| # | Thành tựu (đạt trong tháng) | Dữ liệu | Nhãn |
-|---|---|---|---|
-| T1 | Làm BTVN **≥ 7/8** bài trong tháng | ✅ | [CEO] |
-| T2 | Làm ET **≥ 7/8** bài trong tháng | ✅ | [CEO] |
-| T3 | Không vắng buổi nào | ✅ | [ĐỀ XUẤT] |
-| T4 | BTVN đúng trung bình ≥ 85% | ✅ | [ĐỀ XUẤT] |
-| T5 | ET ≥ 80% ở ≥ ¾ số bài | ✅ | [ĐỀ XUẤT] |
-| T6 | MT top 30% khối | ✅ | [ĐỀ XUẤT] |
-| T7 | MT bứt phá: hạng tốt hơn tháng mốc đầu mùa | ✅ | [ĐỀ XUẤT] |
-| T8 | Lấp ≥ 1 dạng yếu trong tháng | ✅ | [ĐỀ XUẤT] |
-| T9 | Hoàn thành việc ngày ≥ 20 ngày trong tháng (thay 'vượt Thử thách ≥10/15 ngày') | 🔧 | [ĐỀ XUẤT] |
-| T10 | Top 30% khối về số lượt Luyện dạng yếu đạt trong tháng (thay Bảng đua tháng vì Rank ẩn) | 🔧 | [ĐỀ XUẤT — MỞ: giữ không?] |
+| # | Thành tựu | Loại | Bậc / ngưỡng → thưởng EXP | Dữ liệu | Nhãn |
+|---|---|---|---|---|---|
+| 1 | Làm BTVN **7 lần** trong tháng | Tháng | 300 | ✅ | [CEO] |
+| 2 | Làm đủ **7 BTVN** và **trung bình > 80%** trong tháng | Tháng | 300 | ✅ | [CEO] |
+| 3 | Làm đủ **7 ET** và **trung bình > 80%** trong tháng | Tháng | 300 | ✅ | [CEO] |
+| 4 | **Vào app** liên tiếp | Liên tiếp | 7 / 14 / 30 / 60 / 90 / 150 / 210 / 300 ngày → 100 / 200 / 300 / 400 / 500 / 600 / 700 / 800 | 🔧 chưa có log mở app | [CEO] |
+| 5 | **Chuỗi làm bài** liên tiếp | Liên tiếp | 7 / 14 / 30 / 60 / 90 / 150 / 210 / 300 ngày → 100 … 800 (như #4) | ✅ `fn_chuoi_cua_toi` | [CEO] |
+| 6 | Hoàn thành **Nhiệm vụ ngày** liên tiếp | Liên tiếp | 7 / 14 / 30 ngày → 100 / 200 / 500 (… bậc sau [ĐỀ XUẤT]: 60 / 90 ngày → 700 / 1.000) | 🔧 | [CEO] |
+| 7 | **Luyện dạng yếu đạt chuẩn** liên tiếp (lượt đúng ≥ 7/10) | Liên tiếp | 3 / 5 / 10 lượt → 200 / 300 / 1.000 | ✅ | [CEO] |
+| 8 | **Tổng số câu luyện đạt** (cộng dồn) | Tích luỹ | 1.000 / 2.000 / … → 100 / 200 / 300 / … ([ĐỀ XUẤT] 1.000 / 2.000 / 5.000 / 10.000 → 100 / 200 / 300 / 500) | ✅ | [CEO] |
+| 9 | **Top 5 khối** (MT tháng) | Một lần | 500 | ✅ `fn_mt_hang_thang` | [CEO] |
+| 10 | **Top 1 khối** (MT tháng) | Một lần | 1.000 | ✅ | [CEO] |
+| 11 | **ET 10 điểm lần đầu** | Một lần | 200 | ✅ | [CEO — hiểu là "lần đầu được 10 điểm", xác nhận] |
+| 12 | **MT 10 điểm lần đầu** | Một lần | 1.000 | ✅ | [CEO — như #11] |
+| 13 | **100% đạt dạng bài** | Một lần | 1.000 | ✅ | [CEO — nghĩa chính xác: xem câu hỏi 2] |
+| 14 | Có **10 / 20 / … bạn** ở BK | Tích luỹ | mỗi bậc **1 xu** (trả XU thẳng, không qua EXP) | ✅ | [CEO] |
+| 15 | **(Ẩn) Master 1 chủ đề kiến thức**: 100% dạng của chủ đề đều "đạt" | Một lần / chủ đề | **1.000 EXP mỗi chủ đề, chỉ lần đầu hoàn thành**; danh sách chủ đề khác nhau theo khối | ✅ `fn_ban_do_phieu_luu` | [CEO] |
 
-### Loại 1 — Liên tiếp (mỗi bậc = 1 thành tựu)
-| # | Thành tựu | Bậc | Dữ liệu | Nhãn |
-|---|---|---|---|---|
-| L1 | Vào app liên tiếp | 30 / 60 / 90 / 120 / 180 / 365 ngày | 🔧 chưa có log mở app | [CEO] (+bậc 180, 365 ĐỀ XUẤT) |
-| L2 | Nộp BTVN đúng hạn liên tiếp | 10 / 20 / 30 / 50 bài | ✅ | [CEO] |
-| L3 | Không có dạng yếu liên tiếp | 2 / 4 / 6 / 8 tuần | ✅ chụp mastery cuối mỗi tuần | [CEO] |
-| L4 | Chuỗi làm bài | 7 / 14 / 30 / 50 / 100 / 200 / 365 ngày | ✅ | [ĐỀ XUẤT] |
-| L5 | Không vắng buổi liên tiếp | 10 / 20 / 40 buổi | ✅ | [ĐỀ XUẤT] |
-| L6 | ET đạt ≥ 80% liên tiếp | 3 / 5 / 10 bài | ✅ | [ĐỀ XUẤT] |
-| L7 | Hoàn thành việc ngày liên tiếp | 7 / 14 / 30 ngày | 🔧 | [ĐỀ XUẤT] |
-| L8 | Hoàn thành việc tuần liên tiếp | 4 / 8 / 12 tuần | 🔧 | [ĐỀ XUẤT] |
-| L9 | Luyện dạng yếu đạt ≥ 7/10 liên tiếp | 5 / 10 / 20 lượt | ✅ | [ĐỀ XUẤT] |
-- **L3 định nghĩa [ĐỀ XUẤT]:** cuối mỗi tuần (CN 23:59 giờ VN) mastery của môn có **0 dạng yếu VÀ đã đo ≥ 10 dạng** (chưa-đo ≠ không-yếu, CLAUDE §5/§1.5 — không để em 'sạch' vì chưa đo gì). Mất 1 tuần ⇒ về 0.
+**Quy tắc chung [ĐỀ XUẤT, chờ gật]:**
+- Mỗi bậc thưởng **một lần duy nhất trong đời** — mất chuỗi cày lại tới bậc cũ KHÔNG thưởng lại.
+- Thành tựu **ẩn (#15)**: không liệt kê tên trước; hiện thẻ "Thành tựu ẩn · đã mở N/M", đạt xong mới lộ tên chủ đề.
+- Thành tựu tháng (#1–3) tính vào **tháng em đạt**, reset tháng sau (đạt lại mỗi tháng thì thưởng lại mỗi tháng).
+- Thành tựu không gắn môn (#4, #5, #6, #14) thưởng ghi vào **EXP chung** (không nhãn môn — §1.6: dữ liệu không-học-tập mới được chung; "vào app" và "bạn bè" đúng nhóm này; chuỗi/nhiệm vụ đã chốt chung mọi môn); còn lại ghi theo môn.
 
-### Loại 1b — Tích luỹ (cộng dồn)
-| # | Thành tựu | Bậc | Dữ liệu | Nhãn |
-|---|---|---|---|---|
-| C1 | Nhất ET | 5 / 10 / 15 lần (cộng dồn) | ✅ (hạng ET theo buổi — cần kiểm cột) | [CEO] |
-| C2 | Tổng câu đúng trên app | 1.000 / 5.000 / 10.000 | ✅ | [ĐỀ XUẤT] |
-| C3 | Tổng dạng yếu đã lấp | 10 / 30 / 50 | ✅ | [ĐỀ XUẤT] |
-| C4 | Tổng quái hạ trên bản đồ | 50 / 200 / 500 | ✅ | [ĐỀ XUẤT] |
-| C5 | Tổng ngày hoàn thành việc ngày | 30 / 100 / 200 | 🔧 | [ĐỀ XUẤT] |
-
-### Loại 2 — Một lần
-| Thành tựu | Dữ liệu | Nhãn |
+### Ngân sách thành tựu (tối đa, nếu một học sinh đạt hết)
+| Nhóm | EXP | Xu |
 |---|---|---|
-| MT tháng đạt Top 5 khối | ✅ | [CEO] |
-| MT tháng đạt Top 1 khối | ✅ | [CEO] |
-| Quay May mắn trúng giải CAO NHẤT 2 lần liên tiếp | ✅ . ⚠ giải 200 EXP chỉ 1% ⇒ 2 lần liên tiếp ≈ 0,01%/cặp (thành tựu huyền thoại); muốn khả thi: 'giải ≥ 100 EXP' (5%) | [CEO] |
-| Top 5 leo tháp (Chinh phục BK) | ⛔ Đấu Từ lưu hồ sơ theo THIẾT BỊ, điểm do client khai — cần hồ sơ theo tài khoản + xếp hạng server | [CEO] |
-| Thắng tournament (Giải Vô địch) | ⛔ Giải trực tiếp mới là demo | [CEO] |
-| Hạ dạng đầu tiên · chinh phục chuyên đề đầu tiên · qua lục địa đầu tiên · hạ boss khu vực đầu tiên | ✅  | [ĐỀ XUẤT] |
-| Chinh phục 1 / 3 / 5 / 10 lục địa (4 thành tựu) | ✅ | [ĐỀ XUẤT] |
-| ET 10 điểm lần đầu · MT 10 điểm lần đầu | ✅ | [ĐỀ XUẤT] |
-| Lên Level 5 / 10 / 15 / 21 (4 thành tựu) | ✅ hệ Level EXP | [ĐỀ XUẤT] |
-| Elo ET đạt 1.200 · 1.400 | ✅ | [ĐỀ XUẤT] |
-| Lần đầu vượt Thử thách · thắng trận 1/2/3 Đấu trường | 🔧 chờ Đấu trường có RPC | [ĐỀ XUẤT] |
-| Hoàn thành Hành trình tân thủ | 🔧 cờ DB 'đã xem tutorial' | [ĐỀ XUẤT] |
-| Lần đầu khoe lên Thế giới · kết 5 bạn · nhận 👑 khen của thầy cô | ✅ / ✅ / 🔧 (nút 👑 app GV chưa làm) | [ĐỀ XUẤT] |
-| Lần đầu đổi quà bằng xu | ✅  | [ĐỀ XUẤT] |
-| Nông trại: nhà cấp 5 / 10 · thu hoạch 100 lần | ⛔ Nông trại mới ở localStorage | [ĐỀ XUẤT] |
-
-**Quy mô (mỗi bậc đếm 1):** Loại 0 = 10 · Loại 1 = 36 · Loại 1b = 15 · Loại 2 ≈ 28 ⇒ **≈ 89 thành tựu**; đo được ngay (✅) khoảng **¾**, phần 🔧 cần hàm/sự kiện mới, phần ⛔ chờ hệ thống khác.
+| #1 + #2 + #3 mỗi tháng | 900 / tháng | 9 / tháng (≈ 90 / năm học 10 tháng) |
+| #4 + #5 (đủ 8 bậc mỗi cái, mất ≈ 300 ngày) | 3.600 + 3.600 | 72 |
+| #6 (3 bậc nêu) + #7 | 800 + 1.500 | 23 |
+| #8 (4 bậc đề xuất) | 1.100 | 11 |
+| #9 + #10 + #11 + #12 + #13 | 500 + 1.000 + 200 + 1.000 + 1.000 | 37 |
+| #14 (đến 50 bạn) | — | 5 xu thẳng |
+| #15 (≤ 10 chủ đề/khối đo 01/10) | tối đa 10.000 | **tối đa 100 / khối** |
+| **Cộng dồn một lần** (không tính #1–3, #15) | 14.300 | **143 + 5** |
+⇒ Nguồn thành tựu có thể rót **lệch thời điểm rất mạnh**: một tháng có 3 chủ đề master = 30 xu, một đợt mở bậc #4/#5 cao = 8 xu, v.v. Phải có **trần xu riêng của nguồn thành tựu** và **chính sách khi vượt trần** — câu hỏi 3.
 
 ### Câu hỏi MỞ
-1. Duyệt danh sách + ngưỡng (đặc biệt T3 'không vắng', T9 '≥ 20 ngày', T10 giữ/bỏ, L3 '≥ 10 dạng đã đo').
-2. **Ra mắt V1 đủ ~89 hay chỉ nhóm ✅ trước?** (đề xuất: ✅ trước, 🔧 theo sau, ⛔ khi game có hồ sơ theo tài khoản).
-3. Thưởng từng loại + trần xu nguồn thành tựu (bước kế), rồi mới bàn huy hiệu.
+1. #11 / #12 "ET/MT 10 lần đầu": = lần đầu được **10 điểm**? (hay 10 lần đầu tiên làm?)
+2. #13 "100% đạt dạng bài": = đạt 100% **TOÀN BỘ dạng bài của khối** (master cả khối)? Hay một dạng bài bất kỳ đạt 100% mastery? (nếu là cả khối thì gần như trùng #15 cộng lại — nên là mốc tổng ở cuối chuỗi #15).
+3. **Trần xu nguồn thành tựu** và khi vượt trần: (A) phần vượt **chuyển sang tháng sau** (không mất) — [ĐỀ XUẤT: A, vì thưởng chỉ-lần-đầu không nên bay mất; trần mỗi tháng 30 xu] · (B) mất phần vượt · (C) không trần (chỉ thành tựu lần-đầu) — rủi ro ví phình theo đợt.
+4. #6 / #8: bậc sau dấu "…" dùng đề xuất trên hay Thùy tự điền?
+5. Quy tắc chung 4 mục [ĐỀ XUẤT] ở trên: gật hay sửa?
+Sau khi chốt: **bước kế = HUY HIỆU** (quan hệ với thành tựu, EXP sao ★, trần xu), rồi **THỬ THÁCH**.
