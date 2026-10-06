@@ -15,7 +15,7 @@
 ## 2. Ba đồng
 | Đồng | Nguồn | Dùng | Trần | Nhãn |
 |---|---|---|---|---|
-| **EXP (nhiệm vụ)** | việc ngày/tuần/tháng | đổi xu cuối tháng (100 EXP = 1 xu — DB hiện tại) | **20 xu/tháng = 2.000 EXP** | [CEO] |
+| **EXP (nhiệm vụ)** | việc ngày/tuần/tháng | đổi xu **ngay, realtime** (Thùy 06/10 — không chốt cuối tháng nữa; 100 EXP = 1 xu tính trên tổng EXP tháng) | **20 xu/tháng = 2.000 EXP** | [CEO] |
 | **ĐHT** | việc ngày/tuần/tháng | vào chơi / mua trong game (Nông trại: hạt giống, ô, vé…) | kiếm tối đa **3.000/tháng** (do cấu trúc §4); **số dư tối đa 6.000** (= 2 tháng) | [CEO] |
 | **Xu** | EXP đổi + (b) + (c) | đổi quà tại trung tâm | mỗi hoạt động một trần: §7 | — |
 - **[CEO]** ĐHT tích luỹ được nhưng có giới hạn số dư; kiếm quá thì phần dư mất.
@@ -138,9 +138,9 @@ Dữ liệu: ✅ đã đo được · 🔧 cần hàm/ghi sự kiện mới · �
 | 10 | **Top 1 khối** (MT tháng) | Một lần | **700** | ✅ | [CEO] |
 | 11 | **ET 10 điểm lần đầu** (trong mùa) | Một lần | 200 | ✅ | [CEO xác nhận 06/10: "10" = 10 ĐIỂM] |
 | 12 | **MT 10 điểm lần đầu** (trong mùa) | Một lần | **800** | ✅ | [CEO xác nhận 06/10: 10 ĐIỂM] |
-| 13 | **100% đạt dạng bài** | Một lần | 1.000 | ✅ | [CEO — nghĩa chính xác: xem câu hỏi 2] |
+| 13 | **100% đạt dạng bài** — **tại một thời điểm**, mọi dạng bài ĐÃ ĐO của môn đều ở mức "đạt"; **chỉ bắt đầu tính khi đã đo ≥ 10 dạng** | Một lần | 1.000 | ✅ `fn_mastery_cells` | [CEO xác nhận 06/10] |
 | 14 | Có **10 / 20 / … bạn** ở BK | Tích luỹ | mỗi bậc **1 xu** (trả XU thẳng, không qua EXP) | ✅ | [CEO] |
-| 15 | **(Ẩn) Master 1 chủ đề kiến thức**: 100% dạng của chủ đề đều "đạt" | Một lần / chủ đề | **1.000 EXP mỗi chủ đề, chỉ lần đầu hoàn thành**; danh sách chủ đề khác nhau theo khối | ✅ `fn_ban_do_phieu_luu` | [CEO] |
+| 15 | **(Ẩn) Master 1 chủ đề kiến thức**: 100% dạng của chủ đề đều "đạt" (dạng CHƯA ĐO = chưa đạt — khác #13) | Một lần / chủ đề | **1.000 EXP mỗi chủ đề, chỉ lần đầu hoàn thành**; danh sách chủ đề khác nhau theo khối | ✅ `fn_ban_do_phieu_luu` | [CEO] |
 
 **Quy tắc chung [ĐỀ XUẤT, chờ gật]:**
 - Mỗi bậc thưởng **một lần duy nhất trong đời** — mất chuỗi cày lại tới bậc cũ KHÔNG thưởng lại.
@@ -177,7 +177,7 @@ Mỗi năm reset ⇒ mọi năm cùng ngân sách. 1 năm = 10 tháng tính thà
 | **Đều đặn** | ≈ 116 | mỗi tháng #1 + 1 trong #2/#3; chuỗi tới 60–90 ngày; master 3 chủ đề (30) |
 | **Nhẹ** | ≈ 24 | 3 tháng #1; vài bậc đầu; master 1 chủ đề |
 - So nguồn khác cùng năm (mức tối đa): nhiệm vụ 240 · vòng quay 120 · **thành tựu ≈ 305**. Thành tựu vẫn là nguồn lớn nhất ở học sinh giỏi nhưng phần "dễ nhận" (#1, #4) đã bị cắt, còn lại là việc khó cần bền bỉ.
-- **Trần xu nguồn thành tựu [ĐỀ XUẤT]:** theo NĂM = tổng tối đa tự nhiên (≈ 305, không cần cắt thêm); theo THÁNG **40 xu**, phần vượt **chuyển sang tháng sau** (thưởng chỉ-lần-đầu-trong-mùa không nên bay mất; 40 vì một tháng master 3 chủ đề + thành tựu tháng ≈ 37).
+- **[CEO 06/10] KHÔNG đặt trần xu cho nguồn thành tựu** — thành tựu tính theo NĂM, tổng tối đa tự nhiên ≈ 305/năm đã đủ chặn; không trần tháng, không chuyển tháng. (Kỹ thuật: nguồn `thanh_tuu` trần = không giới hạn trong bảng `xu_tran_nguon`; ví tháng có thể nhận một đợt lớn, ví dụ 3 chủ đề master = 30 xu.)
 
 ### Quy tắc RESET THEO MÙA [ĐỀ XUẤT — chờ Thùy gật]
 - **Mốc reset = 01/07** (khớp mùa Rank 01/07–30/06 và mùa huy hiệu 07→04; bảng `gami_mua` đã có). Dòng thành tựu đạt mang nhãn `mua` (lịch sử các năm trước vẫn xem được trong album, KHÔNG xoá).
@@ -187,9 +187,9 @@ Mỗi năm reset ⇒ mọi năm cùng ngân sách. 1 năm = 10 tháng tính thà
 - ⚠ **#9–#13 (Top 5/Top 1/10 điểm lần đầu/100% dạng):** đã reset thì mỗi mùa nhận lại được — đúng ý Thùy, nhưng #12 MT 10 điểm (1.000 EXP) và #13 là khoản lớn; giữ nguyên số theo Thùy.
 
 ### Câu hỏi MỞ
-1. ~~#11/#12 "10" là 10 điểm hay 10 lần?~~ **Đã chốt: 10 ĐIỂM** [CEO 06/10].
-2. #13 "100% đạt dạng bài": = đạt 100% **TOÀN BỘ dạng bài của khối** (master cả khối)? Hay một dạng bài bất kỳ đạt 100% mastery? (nếu là cả khối thì gần như trùng #15 cộng lại — nên là mốc tổng ở cuối chuỗi #15).
-3. **Trần xu nguồn thành tựu** và khi vượt trần: (A) phần vượt **chuyển sang tháng sau** (không mất) — [ĐỀ XUẤT: A, vì thưởng chỉ-lần-đầu không nên bay mất; trần mỗi tháng 30 xu] · (B) mất phần vượt · (C) không trần (chỉ thành tựu lần-đầu) — rủi ro ví phình theo đợt.
-4. #6 / #8: bậc sau dấu "…" dùng đề xuất trên hay Thùy tự điền?
-5. Quy tắc chung 4 mục [ĐỀ XUẤT] ở trên: gật hay sửa?
+1. ~~#11/#12 "10" là 10 điểm hay 10 lần?~~ **Chốt: 10 ĐIỂM** [CEO].
+2. ~~#13 "100% đạt dạng bài"~~ **Chốt [CEO 06/10]:** tại một thời điểm 100% dạng ĐÃ ĐO đạt, tối thiểu 10 dạng đã đo.
+   ⚠ **Rủi ro CTO nêu:** 10 dạng là mốc thấp so với 1.000 EXP (10 xu): học sinh chỉ làm 10 dạng dễ rồi đạt hết là nhận ngay. Đề xuất chặn: mỗi dạng tính phải có **≥ 3 lần đo TRONG MÙA** (độ tin ≥ trung bình) — không lấy mastery cũ. [chờ Thùy gật/bỏ]
+3. ~~Trần xu nguồn thành tựu~~ **Chốt [CEO]: KHÔNG trần** (tính theo năm).
+4. #6 / #8 bậc sau dấu "…" và 4 quy tắc chung [ĐỀ XUẤT] (thưởng 1 lần/mùa/bậc; thành tựu ẩn hiện "đã mở N/M"; thành tựu tháng thưởng lại mỗi tháng; thành tựu không gắn môn ghi EXP chung): **coi như đã gật** nếu Thùy không sửa.
 Sau khi chốt: **bước kế = HUY HIỆU** (quan hệ với thành tựu, EXP sao ★, trần xu), rồi **THỬ THÁCH**.
