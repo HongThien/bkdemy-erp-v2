@@ -31,6 +31,10 @@ export type LoiHS = {
   daXong: string
   /** hoàn thành toàn bộ */
   hetDoiHinh: string
+  /** MÀN GIỚI THIỆU Luyện dạng yếu */
+  yeu: { tieuDe: string; hoi: string; nut: string; dongLuat: (soCau: number) => string; dongDau: string; dangYeu: string }
+  /** thẻ kết quả sau lượt trong khung đấu */
+  ketQua: { duocTinh: string; ghiNhan: string; luyenTiep: string; veChang: string; veKhu: string }
 }
 
 export const LOI_FORMAL: LoiHS = {
@@ -46,6 +50,21 @@ export const LOI_FORMAL: LoiHS = {
   con: (n) => `Còn ${n} điểm`,
   daXong: 'Đã hoàn thành',
   hetDoiHinh: 'Hoàn thành toàn bộ!',
+  yeu: {
+    tieuDe: 'Luyện dạng yếu',
+    hoi: 'Em đã sẵn sàng cho lượt luyện này chưa?',
+    nut: 'Bắt đầu luyện',
+    dongLuat: (n) => `Mỗi lượt gồm ${n} câu, tập trung vào các dạng em còn yếu. Mục tiêu: đúng từ 7 câu.`,
+    dongDau: 'Hãy làm kỹ từng câu: lượt chỉ được tính khi em không bấm quá nhanh.',
+    dangYeu: 'Các dạng em đang yếu nhất',
+  },
+  ketQua: {
+    duocTinh: 'Lượt này được tính vào chuỗi và nhiệm vụ.',
+    ghiNhan: 'Độ nắm dạng được cập nhật theo kết quả thật khi em quay lại.',
+    luyenTiep: 'Luyện tiếp',
+    veChang: 'Về chặng đường',
+    veKhu: 'Về khu Học tập',
+  },
 }
 
 /** Giọng GAME — dùng chung cho các style game; style nào muốn giọng riêng thì khai `loi` của mình đè lên. */
@@ -62,6 +81,21 @@ export const LOI_GAME: Partial<LoiHS> = {
   con: (n) => `Còn ${n} đòn`,
   daXong: 'Đã bị hạ',
   hetDoiHinh: 'Hạ hết đội hình!',
+  yeu: {
+    tieuDe: 'Rèn lại điểm yếu',
+    hoi: 'Em đã sẵn sàng đối đầu quái vật điểm yếu chưa?',
+    nut: 'Vào trận!',
+    dongLuat: (n) => `Mỗi câu đúng là một đòn đánh. ${n} câu — đúng từ 7 câu là thắng trận.`,
+    dongDau: 'Ra đòn nhanh nhưng đừng bấm bừa — làm quá nhanh thì trận không được ghi nhận.',
+    dangYeu: 'Quái vật điểm yếu của em',
+  },
+  ketQua: {
+    duocTinh: 'Lượt này được tính: chuỗi, nhiệm vụ và quái đều ghi nhận.',
+    ghiNhan: 'Máu quái và độ nắm dạng cập nhật theo kết quả thật khi em quay lại.',
+    luyenTiep: 'Đánh tiếp',
+    veChang: 'Về chặng đường',
+    veKhu: 'Về khu Học tập',
+  },
 }
 
 // ── style đang áp (cùng chỗ gắn biến --sk-* ở KhungHS.ganBien) ─────────────────────────────────────────────────────

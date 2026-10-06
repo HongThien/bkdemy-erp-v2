@@ -27,10 +27,12 @@ export const TEN_LOAI: Record<string, string> = {
 
 /** Đội hình của 1 chặng (dạng): cụm thật + con tạm cho đủ 3, tối đa 7 (spec-v1-app-hs §4.5). Quái cuối = boss (loài thường + vương miện).
  *  Elite khác loài boss và khác nhau từng đôi một. Tất định theo mã dạng. */
+/** Boss TẠM (Thùy 06/10: "hiện tại để tất cả boss là t trước, sau này đổi"): mọi quái cuối đội hình dùng boss riêng này (Skin.boss). Style không khai ⇒ ảnh tạm theo loài. */
+export const LOAI_BOSS_TAM = 'boss_thuy'
 export function chonDoiHinh(maDang: string, soCum: number): { loai: string; boss: boolean }[] {
   const n = Math.min(7, Math.max(3, soCum)), boss = LOAI_THUONG[bam(maDang) % LOAI_THUONG.length]
   const pool = LOAI_THUONG.filter((l) => l !== boss), out: { loai: string; boss: boolean }[] = []
   for (let i = 0; i < n - 1; i++) out.push({ loai: pool[(bam(maDang + 'e') + i * 5) % pool.length], boss: false })
-  out.push({ loai: boss, boss: true })
+  out.push({ loai: LOAI_BOSS_TAM, boss: true })
   return out
 }

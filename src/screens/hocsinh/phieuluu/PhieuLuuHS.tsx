@@ -4,7 +4,7 @@
 import { useEffect, useMemo, useRef, useState, type ReactElement } from 'react'
 import { sinhTuLuyenChuDe } from '../../../lib/tuluyen'
 import { ketQuaLuotHocThat, loiLuotKhongTinh, type KetQuaLuot } from '../../../lib/chuoi'
-import { DauTrangHS, HEAD, MAU, ManHS, NutHS, TheHS, TrongHS } from '../skin/KhungHS'
+import { DauTrangHS, HEAD, MAU, ManHS, NutHS, TheHS, TrongHS, useLoi } from '../skin/KhungHS'
 import { laySkin } from '../skin/registry'
 import type { SkinId } from '../skin/kieu'
 import { tuBanDoPL, type BanDoV, type ChangV, type LucDiaV, type VungV } from './kieu'
@@ -110,8 +110,10 @@ export default function PhieuLuuHS({ hocSinhId, mon, gioiTinh, nhanVat, skin, on
 }
 
 // ── Màn đấu thật: sinh lượt (bài tự luyện đúng dạng) → DauView + LamBai nhúng → thẻ kết quả NGAY trong cảnh ──────
-function DauThat({ luc, chang, b, mon, hocSinhId, gioi, LamBai, onVe }: {
+// `sinh` = nguồn sinh lượt (mặc định: luyện đúng dạng của chặng); Luyện dạng yếu truyền nguồn riêng. `veKhu` ⇒ nút về ghi "Về khu Học tập" thay vì "Về chặng đường".
+export function DauThat({ luc, chang, b, mon, hocSinhId, gioi, LamBai, onVe, sinh, veKhu }: {
   luc: LucDiaV; chang: ChangV; b: NonNullable<ReturnType<typeof laySkin>['the3d']>; mon: string; hocSinhId: string; gioi: NvId; LamBai: LamBaiCmp; onVe: () => void
+  sinh?: () => Promise<{ baiTestId: string }>; veKhu?: boolean
 }) {
   const [bai, setBai] = useState<{ id: string } | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
@@ -126,7 +128,7 @@ function DauThat({ luc, chang, b, mon, hocSinhId, gioi, LamBai, onVe }: {
     if (daGoi.current === lan) return
     daGoi.current = lan
     setBai(null); setKq(null); setLoi(null)
-    sinhTuLuyenChuDe(mon, chang.ma, false).then((r) => setBai({ id: r.baiTestId })).catch((e) => setLoi(e?.message ?? String(e)))
+    void (sinh ? sinh() : sinhTuLuyenChuDe(mon, chang.ma, false)).then((r) => setBai({ id: r.baiTestId })).catch((e) => setLoi(e?.message ?? String(e)))
   }, [lan]) // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loi) return <ManHS><DauTrangHS tieuDe={chang.ten} onBack={onVe} /><TrongHS>Chưa mở được lượt luyện: {loi}</TrongHS><NutHS onClick={() => setLan((x) => x + 1)}>Thử lại</NutHS></ManHS>
@@ -134,29 +136,30 @@ function DauThat({ luc, chang, b, mon, hocSinhId, gioi, LamBai, onVe }: {
   return (
     <DauView2D key={bai.id} luc={luc} chang={chang} b={b} gioi={gioi} tong={tong} daLam={daLam} onRut={onVe}>
       {(api) => kq
-        ? <KetQuaTrongDau chang={chang} kq={kq} heT={api.heT} onTiep={() => setLan((x) => x + 1)} onVe={onVe} />
+        ? <KetQuaTrongDau chang={chang} kq={kq} heT={api.heT} veKhu={!!veKhu} onTiep={() => setLan((x) => x + 1)} onVe={onVe} />
         : <LamBai baiTestId={bai.id} hocSinhId={hocSinhId} onXong={onVe} desktop
             nhung={{ onTai: (t, d) => { setTong(t); setDaLam(d) }, onCau: (e) => { void api.tra(e.verdict === 'correct') }, onHet: setKq, ban: api.ban }} />}
     </DauView2D>
   )
 }
 
-function KetQuaTrongDau({ chang, kq, heT, onTiep, onVe }: { chang: ChangV; kq: { dung: number; tong: number; baiLamId: string | null }; heT: boolean; onTiep: () => void; onVe: () => void }) {
+function KetQuaTrongDau({ chang, kq, heT, veKhu, onTiep, onVe }: { chang: ChangV; kq: { dung: number; tong: number; baiLamId: string | null }; heT: boolean; veKhu: boolean; onTiep: () => void; onVe: () => void }) {
+  const loi = useLoi()
   const [r, setR] = useState<KetQuaLuot | null | undefined>(undefined)
   useEffect(() => { if (!kq.baiLamId) { setR(null); return } ketQuaLuotHocThat(kq.baiLamId).then(setR).catch(() => setR(null)) }, [kq.baiLamId])
   const khong = r ? loiLuotKhongTinh(r) : null
   return (
     <div className="mx-auto flex max-w-xl flex-col items-center gap-2 p-5 text-center">
       <p className="text-[13px]" style={{ color: MAU.muted }}>{chang.ten}</p>
-      <p className="text-[34px] font-bold leading-none" style={{ ...HEAD, color: MAU.ink }}>{heT ? 'Hạ hết đội hình!' : `${kq.dung}/${kq.tong} đúng`}</p>
+      <p className="text-[34px] font-bold leading-none" style={{ ...HEAD, color: MAU.ink }}>{heT ? loi.hetDoiHinh : `${kq.dung}/${kq.tong} đúng`}</p>
       {heT && <p className="text-[15px]" style={{ color: MAU.ink }}>{kq.dung}/{kq.tong} câu đúng</p>}
       <TheHS className="w-full px-4 py-3 text-[14px]">
         {r === undefined ? <span style={{ color: MAU.muted }}>Đang tính…</span>
-          : r?.tinh ? <span style={{ color: MAU.dung, fontWeight: 600 }}>Lượt này được tính: chuỗi, nhiệm vụ và quái đều ghi nhận.</span>
+          : r?.tinh ? <span style={{ color: MAU.dung, fontWeight: 600 }}>{loi.ketQua.duocTinh}</span>
           : <span style={{ color: MAU.canhBao }}>{khong ?? 'Lượt này chưa được tính.'}</span>}
       </TheHS>
-      <p className="text-[12.5px]" style={{ color: MAU.muted }}>Máu quái và độ nắm dạng cập nhật theo kết quả thật khi em quay lại bản đồ.</p>
-      <div className="mt-1 flex flex-wrap justify-center gap-2"><NutHS onClick={onTiep}>Đánh tiếp</NutHS><NutHS phu onClick={onVe}>Về chặng đường</NutHS></div>
+      <p className="text-[12.5px]" style={{ color: MAU.muted }}>{loi.ketQua.ghiNhan}</p>
+      <div className="mt-1 flex flex-wrap justify-center gap-2"><NutHS onClick={onTiep}>{loi.ketQua.luyenTiep}</NutHS><NutHS phu onClick={onVe}>{veKhu ? loi.ketQua.veKhu : loi.ketQua.veChang}</NutHS></div>
     </div>
   )
 }

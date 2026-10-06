@@ -36,6 +36,7 @@ import { hocTapBat, phieuLuuBat } from './phieuluu/coBat'
 // Khu HỌC TẬP (5 đảo) — sau CỜ, mặc định TẮT ở bản thật (bật ở bản thử nghiệm / ?hoctap=1). Tắt ⇒ ô Tự luyện + màn chọn cũ như trước 03/10.
 const HOC_TAP = hocTapBat()
 const PhieuLuuHS = lazy(() => import('./phieuluu/PhieuLuuHS'))
+const LuyenYeuDau = lazy(() => import('./luyen/LuyenYeuDau')) // khung đấu chung (kéo theo chunk PhieuLuuHS) — chỉ tải khi vào Luyện dạng yếu có hiệu ứng game
 import { ManCho as ManChoChuyen, napPhieuLuu } from './phieuluu/chuyenCanh'
 import { laCap2HS, mayManHSCuaToi } from '../../lib/maymai_hs'
 import { htdCoMo, htdSinh, htdCauBaiTest, type CauHTD } from '../../lib/hoctudau'
@@ -66,6 +67,7 @@ import ThuVienHS from './ThuVienHS'
 import HuongDanHS from './huongdan/HuongDanHS'
 import TroChoiHS, { GameNongTraiHS } from './trochoi/TroChoiHS'
 import { rankBat } from './phieuluu/coBat'
+import GioiThieuYeu from './luyen/GioiThieuYeu'
 import TutorialHS from './tutorial/TutorialHS'
 import AlbumHS from './AlbumHS'
 import HoSoHS from './HoSoHS'
@@ -387,6 +389,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [khu, setKhu] = useState<KhuId | null>(null) // null = màn chính, có ô
   const [tutChuong, setTutChuong] = useState<string | null | undefined>(undefined) // Hướng dẫn chơi → tutorial: id chặng · null = cả hành trình · undefined = không mở
   const [direct, setDirect] = useState<'phieu_luu' | 'tu_luyen' | 'tu_luyen_chon' | 'thu_thach' | 'doi_nhan_vat' | 'dau_truong_bk' | 'chinh_phuc_bk' | 'giai_vo_dich' | 'rank' | 'nhiem_vu' | 'album' | 'ho_so' | 'tu_luyen_chu_de_ds' | 'thong_tin' | 'xep_hang' | 'bo_tro' | 'duoi_lo_trinh' | 'bu_ca' | 'lich_bo_tro' | 'retest' | 'hop_thu' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'thu_vien' | 'huong_dan' | 'tro_choi' | 'nong_trai' | 'htd_chu_de' | 'htd_chuyen_de' | 'htd_dang' | 'htd_ly_thuyet' | 'htd_luyen' | 'htd_test' | null>(null)
+  const [yeuVao, setYeuVao] = useState(false) // Luyện dạng yếu: đã qua màn giới thiệu chưa (reset mỗi lần thoát)
   const [tuHoSo, setTuHoSo] = useState(false) // Rank/Album mở từ Hồ sơ ⇒ "Quay lại" về Hồ sơ
   const [tuThuVien, setTuThuVien] = useState(false) // Rank mở từ Thư viện BK ⇒ "Quay lại" về Thư viện (03/10)
   const [tuHome, setTuHome] = useState(false) // Rank/Nhiệm vụ mở từ MÀN CHÍNH (ô / huy hiệu bậc) ⇒ "Quay lại" về màn chính
@@ -586,10 +589,21 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'tu_luyen_chu_de_ds') return <ChonDangChuDe gioiTinh={gt}
     onPick={(d) => { setChuDeDang(d); setDirect('tu_luyen') }}
     onBack={() => setDirect(layMonTam() ? null : 'tu_luyen_chon')} />
-  if (direct === 'tu_luyen') return <LamTuLuyen hocSinhId={hocSinhId} chuDe={chuDeDang}
-    onXong={() => { setDirect(null); setChuDeDang(null) }}
-    onDoiDang={() => setDirect('tu_luyen_chu_de_ds')}
-    desktop={!!cap1} />
+  if (direct === 'tu_luyen') {
+    const g = giaoDien ?? GD_MAC_DINH, b3d = laySkin(g.skin).the3d
+    // Luyện dạng yếu (tổng hợp, không chọn dạng): MÀN GIỚI THIỆU trước → rồi vào khung đấu chung nếu "Hiệu ứng game" BẬT và style có hỗ trợ; tắt ⇒ làm bài dạng thường.
+    if (!chuDeDang && !yeuVao) return <GioiThieuYeu mon={monChon} nv={nhanVat ?? gioiTinh ?? 'nam'} khungGame={g.hieu_ung_game !== false && !!b3d}
+      onBatDau={() => setYeuVao(true)} onBack={() => setDirect('tu_luyen_chon')} />
+    if (!chuDeDang && yeuVao && monChon && b3d && g.hieu_ung_game !== false) return (
+      <Suspense fallback={<ManChoChuyen chu="Đang gọi quái ra…" />}>
+        <LuyenYeuDau mon={monChon} hocSinhId={hocSinhId} nv={nhanVat ?? gioiTinh ?? 'nam'} b={b3d} LamBai={LamBai} onVe={() => { setYeuVao(false); setDirect('tu_luyen_chon') }} />
+      </Suspense>
+    )
+    return <LamTuLuyen hocSinhId={hocSinhId} chuDe={chuDeDang}
+      onXong={() => { setYeuVao(false); setDirect(null); setChuDeDang(null) }}
+      onDoiDang={() => setDirect('tu_luyen_chu_de_ds')}
+      desktop={!!cap1} />
+  }
   if (direct === 'htd_chu_de' && htdMon) return <ChonChuDeHTD mon={htdMon} gioiTinh={gt}
     onPick={(cd) => { setDuoiLoTrinhMon(null); setBuCa(null); setHtdChuDe(cd); setDirect('htd_chuyen_de') }}
     onBack={() => setDirect(null)} />

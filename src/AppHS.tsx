@@ -251,7 +251,12 @@ const XEM_HUONG_DAN = typeof location !== 'undefined' && new URLSearchParams(loc
 const XemTroChoi = lazy(() => import('./screens/hocsinh/trochoi/XemTroChoi'))
 const XEM_TRO_CHOI = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'tro_choi'
 
+// MÀN GIỚI THIỆU Luyện dạng yếu (hs.html?xem=luyen_yeu · &gd=<skin> · &nv=<nhân vật>): không cần đăng nhập (06/10).
+const XemLuyenYeu = lazy(() => import('./screens/hocsinh/luyen/XemLuyenYeu'))
+const XEM_LUYEN_YEU = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'luyen_yeu'
+
 export default function AppHS() {
+  if (XEM_LUYEN_YEU) return <Suspense fallback={null}><XemLuyenYeu /></Suspense>
   if (XEM_TRO_CHOI) return <Suspense fallback={null}><XemTroChoi /></Suspense>
   if (XEM_HUONG_DAN) return <Suspense fallback={null}><XemHuongDan /></Suspense>
   if (XEM_GAMI) return <Suspense fallback={null}><XemMauGami /></Suspense>
