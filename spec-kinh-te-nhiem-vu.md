@@ -148,18 +148,26 @@ Dữ liệu: ✅ đã đo được · 🔧 cần hàm/ghi sự kiện mới · �
 - Thành tựu tháng (#1–3) tính vào **tháng em đạt**, reset tháng sau (đạt lại mỗi tháng thì thưởng lại mỗi tháng).
 - Thành tựu không gắn môn (#4, #5, #6, #14) thưởng ghi vào **EXP chung** (không nhãn môn — §1.6: dữ liệu không-học-tập mới được chung; "vào app" và "bạn bè" đúng nhóm này; chuỗi/nhiệm vụ đã chốt chung mọi môn); còn lại ghi theo môn.
 
-### Ngân sách thành tựu (tối đa, nếu một học sinh đạt hết)
-| Nhóm | EXP | Xu |
-|---|---|---|
-| #1 + #2 + #3 mỗi tháng | 900 / tháng | 9 / tháng (≈ 90 / năm học 10 tháng) |
-| #4 + #5 (đủ 8 bậc mỗi cái, mất ≈ 300 ngày) | 3.600 + 3.600 | 72 |
-| #6 (3 bậc nêu) + #7 | 800 + 1.500 | 23 |
-| #8 (4 bậc đề xuất) | 1.100 | 11 |
-| #9 + #10 + #11 + #12 + #13 | 500 + 1.000 + 200 + 1.000 + 1.000 | 37 |
-| #14 (đến 50 bạn) | — | 5 xu thẳng |
-| #15 (≤ 10 chủ đề/khối đo 01/10) | tối đa 10.000 | **tối đa 100 / khối** |
-| **Cộng dồn một lần** (không tính #1–3, #15) | 14.300 | **143 + 5** |
-⇒ Nguồn thành tựu có thể rót **lệch thời điểm rất mạnh**: một tháng có 3 chủ đề master = 30 xu, một đợt mở bậc #4/#5 cao = 8 xu, v.v. Phải có **trần xu riêng của nguồn thành tựu** và **chính sách khi vượt trần** — câu hỏi 3.
+### Ngân sách thành tựu THEO NĂM (1 năm học = 10 tháng tính thành tựu tháng; đơn vị xu; 100 EXP = 1 xu)
+Thành tựu **liên tiếp / tích luỹ / một lần chỉ thưởng LẦN ĐẦU** ⇒ phần lớn là tiền "một lần trong đời" dồn vào năm đầu; từ năm 2 chỉ còn #1–3 lặp hằng tháng và #15 của khối mới.
+
+| Nhóm | Tối đa / năm | Học sinh **đều đặn** (điển hình chăm) | Học sinh **nhẹ** |
+|---|---|---|---|
+| #1–3 tháng (mỗi cái 300 EXP × 10 tháng) | 90 | 48 (≈ 8 tháng × 2 cái) | 9 (3 tháng × 1 cái) |
+| #4 vào app liên tiếp | 36 (tới 300 ngày) | 15 (tới 90 ngày) | 6 (tới 30 ngày) |
+| #5 chuỗi làm bài liên tiếp | 36 | 10 (tới 60 ngày) | 3 (tới 14 ngày) |
+| #6 nhiệm vụ ngày liên tiếp | 25 (7/14/30/60/90) | 8 (tới 30 ngày) | 0 |
+| #7 luyện dạng yếu đạt chuẩn liên tiếp | 15 | 15 | 2 |
+| #8 tổng câu luyện đạt (4 bậc) | 11 | 3 (2.000 câu) | 1 (1.000 câu) |
+| #9–#13 (Top5 · Top1 · ET 10đ · MT 10đ · 100% dạng) | 37 | 7 (Top5 + ET 10đ) | 0 |
+| #14 bạn bè (đến 50 bạn) | 5 | 5 | 2 |
+| #15 master chủ đề (1.000 EXP/chủ đề, ≤ 10 chủ đề/khối) | 100 | 30 (3 chủ đề) | 10 (1 chủ đề) |
+| **Tổng / năm** | **≈ 355 xu** (≈ 30 xu/tháng) | **≈ 141 xu** (≈ 12/tháng) | **≈ 33 xu** (≈ 3/tháng) |
+
+- Thành phần lớn nhất ở mức tối đa: **#15 master (28%)** · **#1–3 tháng (25%)** · **#4+#5 liên tiếp (20%)**.
+- So với nguồn khác cùng 1 năm (mức tối đa): nhiệm vụ 20 × 12 = 240 xu · vòng quay 10 × 12 = 120 xu · **thành tựu ≈ 355 xu** ⇒ ở học sinh giỏi, thành tựu là nguồn xu app LỚN NHẤT.
+- Năm 2 trở đi (cùng khối cũ + khối mới): #1–3 ≈ 90 + #15 của khối mới ≤ 100 ⇒ tối đa ≈ 190 xu/năm.
+- Cần chốt trần: nếu muốn nguồn thành tựu ≤ N xu/năm thì chỉnh đòn bẩy lớn nhất là **#15 (1.000 → 500 EXP/chủ đề giảm 50 xu)** hoặc thưởng tháng #1–3 (300 → 200 giảm 30 xu).
 
 ### Câu hỏi MỞ
 1. #11 / #12 "ET/MT 10 lần đầu": = lần đầu được **10 điểm**? (hay 10 lần đầu tiên làm?)
