@@ -81,3 +81,37 @@ Chỉ Luyện dạng yếu tính nhiệm vụ. Học theo chủ đề / Thử th
 3. **App HS:** màn Nhiệm vụ viết lại; vòng quay bật tự động khi hoàn thành việc ngày + bỏ ô May mắn khỏi màn chính; hiện ĐHT ở Home; Hướng dẫn chơi + tutorial sửa theo.
 4. **Nông trại:** đọc/tiêu ĐHT qua RPC (hết localStorage cho tiền), đổi thang giá hạt/ô/vé theo ĐHT, chạy lại `tools/gia-lap.mjs` với nguồn cung mới (≈ 1.000–3.000 ĐHT/tháng thay vì ≤ 900 điểm cũ).
 5. **Huy hiệu:** Hercules + bộ đếm.
+
+---
+
+## 10. BƯỚC ② — Hiện trạng THÀNH TỰU ↔ HUY HIỆU (kiểm kê 06/10; nguồn `supabase/migrations/202609281846_huy_hieu.sql` seed Toán + `spec-huy-hieu-build.md`)
+**Tên gọi trong DB: "thành tựu" (`thanh_tuu`) = 14 CHỈ TIÊU ĐO THEO THÁNG** (lặp mỗi tháng) — KHÔNG phải "thành tựu làm một lần" như định nghĩa Thùy 06/10. Hai thứ khác nhau cùng tên.
+Huy hiệu = đếm số THÁNG đạt các chỉ tiêu: tháng **chuẩn** = mọi chỉ tiêu vai `chuẩn` đạt; tháng **hoàn hảo** = chuẩn + mọi chỉ tiêu vai `thêm` đạt. ★1/2/3/4/5 = 1/2/4/6/9 tháng (★4–5 cần tháng hoàn hảo + bản cứng GV trao); EXP ★3/4/5 = 100/200/300.
+
+| Chỉ tiêu (14) | Đo gì | Huy hiệu dùng (chuẩn ● / thêm ○) | Phụ thuộc hệ thống |
+|---|---|---|---|
+| A1 | không vắng buổi nào | Helios ● · Chronos ○ · Phoenix ○ · Nike ○ | điểm danh (bắt buộc) |
+| A2 | nộp đủ, đúng hạn mọi BTVN | Chronos ● · Helios ○ · Athena ○ · Phoenix ○ · Hercules ○ · Hephaestus ○ · Nike ○ (**7/8 huy hiệu**) | BTVN (bắt buộc) |
+| A4 | tự luyện ≥ 200 câu đúng/tháng | Chronos ○ | tự luyện (tự nguyện) |
+| A5 | vượt Thử thách ≥ 10 ngày | **Hercules ●** · Hephaestus ○ | **Thử thách cũ** |
+| A6 | vượt Thử thách ≥ 15 ngày | Helios ○ · Hercules ○ | **Thử thách cũ** |
+| B1 | ET ≥ 80% ở ≥ ¾ số bài | **Athena ●** · Zeus ○ | ET (bắt buộc) |
+| B2 | MT top 30% khối | **Zeus ●** | MT (bắt buộc) |
+| B4 | BTVN đúng TB ≥ 85% | Athena ○ | BTVN |
+| B5 | BTVN đúng TB ≥ 90% | Zeus ○ | BTVN |
+| B6 | ≥ 5 lượt Thử thách 10/10 | Hercules ○ | **Thử thách cũ** |
+| P1 | hạng MT tốt hơn đầu năm (hoặc top 10%) | **Phoenix ●** | MT |
+| C3 | lấp ≥ 1 dạng yếu → đạt | **Hephaestus ●** | mastery |
+| D30 | top 30% Bảng đua tháng | **Nike ●** | **Điểm Rank** |
+| D10 | top 10% Bảng đua tháng | Nike ○ | **Điểm Rank** |
+
+**Bị ảnh hưởng bởi quyết định 06/10:**
+- **Rank ẩn ⇒ D30/D10 ⇒ Nike mất cả chỉ tiêu chuẩn lẫn thêm** (Bảng đua tháng xếp theo Điểm Rank).
+- **Thử thách đổi ⇒ A5/A6/B6 ⇒ Hercules (chuẩn A5), Helios (thêm A6), Hephaestus (thêm A5)** mất nền đo.
+- Chỉ tiêu bắt buộc (A1, A2, B1, B2, B4, B5, P1) vẫn đo bình thường nhưng huy hiệu chỉ phản ánh việc bắt buộc (Helios, Chronos, Athena, Zeus, Phoenix) — 5/8 huy hiệu không có chút tự nguyện nào ở vai chuẩn; A2 là điều kiện "hoàn hảo" của 7/8.
+
+**Các hệ thống KHÁC cũng mang tên thành tựu/thành tích (không nuôi huy hiệu):**
+1. **Màn "Thành tựu" (app HS)** = giải thưởng cuối tháng nhân sự công bố (Xuất sắc / Tiến bộ / Chăm chỉ) — bảng `giai_thuong`.
+2. **Thành tích chờ khoe** ở Thế giới BK = tin tự sinh (ET điểm cao, 50 câu đúng trong ngày, nhất buổi, mốc chuỗi, lên bậc…), khoe 3/ngày, không thưởng.
+3. **Danh mục cũ `thanh_tich_loai`** (12 loại, 0 dòng ghim) đã `active=false`.
+4. **"Thành tựu làm một lần" của Thùy (tiến độ bản đồ: hạ dạng, chinh phục chuyên đề, qua lục địa…) — CHƯA có, chưa thiết kế.**
