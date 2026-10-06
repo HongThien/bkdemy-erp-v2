@@ -136,8 +136,8 @@ Dữ liệu: ✅ đã đo được · 🔧 cần hàm/ghi sự kiện mới · �
 | 8 | **Tổng số câu luyện đạt** (cộng dồn) | Tích luỹ | 1.000 / 2.000 / … → 100 / 200 / 300 / … ([ĐỀ XUẤT] 1.000 / 2.000 / 5.000 / 10.000 → 100 / 200 / 300 / 500) | ✅ | [CEO] |
 | 9 | **Top 5 khối** (MT tháng) | Một lần | 500 | ✅ `fn_mt_hang_thang` | [CEO] |
 | 10 | **Top 1 khối** (MT tháng) | Một lần | 1.000 | ✅ | [CEO] |
-| 11 | **ET 10 điểm lần đầu** | Một lần | 200 | ✅ | [CEO — hiểu là "lần đầu được 10 điểm", xác nhận] |
-| 12 | **MT 10 điểm lần đầu** | Một lần | 1.000 | ✅ | [CEO — như #11] |
+| 11 | **ET 10 điểm lần đầu** (trong mùa) | Một lần | 200 | ✅ | [CEO xác nhận 06/10: "10" = 10 ĐIỂM] |
+| 12 | **MT 10 điểm lần đầu** (trong mùa) | Một lần | 1.000 | ✅ | [CEO xác nhận 06/10: 10 ĐIỂM] |
 | 13 | **100% đạt dạng bài** | Một lần | 1.000 | ✅ | [CEO — nghĩa chính xác: xem câu hỏi 2] |
 | 14 | Có **10 / 20 / … bạn** ở BK | Tích luỹ | mỗi bậc **1 xu** (trả XU thẳng, không qua EXP) | ✅ | [CEO] |
 | 15 | **(Ẩn) Master 1 chủ đề kiến thức**: 100% dạng của chủ đề đều "đạt" | Một lần / chủ đề | **1.000 EXP mỗi chủ đề, chỉ lần đầu hoàn thành**; danh sách chủ đề khác nhau theo khối | ✅ `fn_ban_do_phieu_luu` | [CEO] |
@@ -170,14 +170,14 @@ Dữ liệu: ✅ đã đo được · 🔧 cần hàm/ghi sự kiện mới · �
 - Cần chốt trần: nếu muốn nguồn thành tựu ≤ N xu/năm thì chỉnh đòn bẩy lớn nhất là **#15 (1.000 → 500 EXP/chủ đề giảm 50 xu)** hoặc thưởng tháng #1–3 (300 → 200 giảm 30 xu).
 
 ### Quy tắc RESET THEO MÙA [ĐỀ XUẤT — chờ Thùy gật]
-- **Mốc reset = 01/07** (khớp mùa Rank 01/07–30/06 và mùa huy hiệu 07→04; bảng  đã có). Dòng thành tựu đạt mang nhãn  (lịch sử các năm trước vẫn xem được trong album, KHÔNG xoá).
+- **Mốc reset = 01/07** (khớp mùa Rank 01/07–30/06 và mùa huy hiệu 07→04; bảng `gami_mua` đã có). Dòng thành tựu đạt mang nhãn `mua` (lịch sử các năm trước vẫn xem được trong album, KHÔNG xoá).
 - Reset gồm: cờ "đã đạt" của mọi bậc · bộ đếm tích luỹ (#8) · đếm liên tiếp (#4–#7) · chuỗi master #15 (bộ chủ đề đổi theo khối nên tự mới).
 - **Liên tiếp qua ranh giới mùa:** đếm lại từ 0 vào 01/07 (vì cày lại từ đầu mỗi mùa). Hệ quả: bậc **300 ngày** của #4/#5 gần như "không bỏ ngày nào cả mùa" (mùa 365 ngày, kể cả hè) — để làm thành tựu huyền thoại.
 - ⚠ **#14 bạn bè KHÔNG reset theo kiểu "đếm lại số bạn hiện có"** — nếu không, năm nào cũng nhận lại xu cho cùng các bạn cũ (xu miễn phí). **[ĐỀ XUẤT]** #14 chỉ tính **bạn kết MỚI trong mùa**.
 - ⚠ **#9–#13 (Top 5/Top 1/10 điểm lần đầu/100% dạng):** đã reset thì mỗi mùa nhận lại được — đúng ý Thùy, nhưng #12 MT 10 điểm (1.000 EXP) và #13 là khoản lớn; giữ nguyên số theo Thùy.
 
 ### Câu hỏi MỞ
-1. #11 / #12 "ET/MT 10 lần đầu": = lần đầu được **10 điểm**? (hay 10 lần đầu tiên làm?)
+1. ~~#11/#12 "10" là 10 điểm hay 10 lần?~~ **Đã chốt: 10 ĐIỂM** [CEO 06/10].
 2. #13 "100% đạt dạng bài": = đạt 100% **TOÀN BỘ dạng bài của khối** (master cả khối)? Hay một dạng bài bất kỳ đạt 100% mastery? (nếu là cả khối thì gần như trùng #15 cộng lại — nên là mốc tổng ở cuối chuỗi #15).
 3. **Trần xu nguồn thành tựu** và khi vượt trần: (A) phần vượt **chuyển sang tháng sau** (không mất) — [ĐỀ XUẤT: A, vì thưởng chỉ-lần-đầu không nên bay mất; trần mỗi tháng 30 xu] · (B) mất phần vượt · (C) không trần (chỉ thành tựu lần-đầu) — rủi ro ví phình theo đợt.
 4. #6 / #8: bậc sau dấu "…" dùng đề xuất trên hay Thùy tự điền?

@@ -35569,3 +35569,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Thùy (06/10):** thành tựu tính THEO NĂM. CTO tính lại: tối đa ≈355 xu/năm (≈30/tháng) · đều đặn ≈141 · nhẹ ≈33; năm 2+ ≈190 tối đa (xem spec §11 Ngân sách theo năm).
 
 - **Thùy (06/10):** thành tựu **RESET MỖI NĂM** ⇒ "lần đầu" = lần đầu trong mùa; mỗi năm ngân sách như nhau (tối đa ≈355 xu/năm, bỏ ý "năm 2 ≈190"). Đề xuất mốc reset 01/07 theo mùa Rank/huy hiệu; #14 bạn bè chỉ tính bạn kết MỚI trong mùa (tránh xu miễn phí).
+
+- **Thùy (06/10):** #11/#12 "10" = **10 ĐIỂM** (ET 10 điểm lần đầu · MT 10 điểm lần đầu trong mùa).
