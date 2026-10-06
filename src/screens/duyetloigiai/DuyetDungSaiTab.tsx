@@ -5,6 +5,7 @@
 // Mệnh đề `con === null` = chưa có dòng bảng con (ma_dang jsonb rớt sau renumber 12/09) ⇒ tô vàng, bắt chọn dạng trước.
 // Sau mỗi mutation VÁ TẠI CHỖ (CLAUDE.md §2 — không reload list): duyệt mệnh đề ⇒ thay đúng phần tử; duyệt/từ chối câu ⇒ rút thẻ.
 import { useEffect, useRef, useState } from 'react'
+import { useLocDang, ChonDang } from './LocDang'
 import { nhanhCuaMon, NHANH_LABEL, listHangDuyetDs, duyetMenhDe, duyetCauDs, tuChoiCauHangDuyet, laDangCho,
   type CauDungSaiDuyet, type MenhDeHop, type MenhDeCon, type KhoMon, type SuaMenhDe, type SuaCauDuyet } from '../../lib/kho/api'
 import { MathText, inp } from '../kho/ui'
@@ -46,7 +47,7 @@ export default function DuyetDungSaiTab({ mon, khoi, onChanged }: { mon: string;
     } catch (e: any) { if (my === reqId.current) setErr(e.message ?? String(e)) }
     finally { if (my === reqId.current) setLoading(false) }
   }
-  useEffect(() => { setNhanh('all'); reload() }, [mon, khoi]) // eslint-disable-line
+  useEffect(() => { setNhanh('all'); locDang.reset(); reload() }, [mon, khoi]) // eslint-disable-line
 
   function bao(msg: string) { setThongBao(msg); setTimeout(() => setThongBao(null), 2500) }
   function rutThe(r: Row, msg: string) { setRows((a) => a.filter((x) => !(x.mon === r.mon && x.ma_cau === r.ma_cau))); bao(msg); onChanged?.() }
@@ -61,7 +62,10 @@ export default function DuyetDungSaiTab({ mon, khoi, onChanged }: { mon: string;
     }))
   }
 
-  const rowsShown = nhanh === 'all' ? rows : rows.filter((r) => r.mon === nhanh)
+  const rowsNhanh = nhanh === 'all' ? rows : rows.filter((r) => r.mon === nhanh)
+  // Lọc theo DẠNG của câu (Thùy 06/10, LocDang.tsx dùng chung mọi tab duyệt)
+  const locDang = useLocDang(rowsNhanh, (r) => ({ ma: r.dang_chinh, ten: r.ten_dang, cd: r.ten_chuyen_de }))
+  const rowsShown = locDang.loc
   const batch = rowsShown.slice(0, BATCH_SIZE)
   const demNhanh = (m: KhoMon) => rows.filter((r) => r.mon === m).length
   // Batch = ký hết mệnh đề theo hiện trạng + duyệt câu; câu có mệnh đề thiếu dạng bị DB từ chối ⇒ giữ lại trên màn.
@@ -82,7 +86,7 @@ export default function DuyetDungSaiTab({ mon, khoi, onChanged }: { mon: string;
   }
 
   const chip = (n: KhoMon | 'all', label: string, count: number) => (
-    <button key={n} onClick={() => setNhanh(n)}
+    <button key={n} onClick={() => { setNhanh(n); locDang.reset() }}
       className={`rounded-full px-3 py-0.5 text-[12px] font-medium transition ${nhanh === n ? 'bg-violet-600 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'} ${count === 0 && n !== 'all' ? 'opacity-50' : ''}`}>
       {label} <span className={nhanh === n ? 'text-violet-200' : 'text-slate-400'}>{count}</span>
     </button>
@@ -101,6 +105,7 @@ export default function DuyetDungSaiTab({ mon, khoi, onChanged }: { mon: string;
             {kho.map((n) => chip(n, NHANH_LABEL[n], demNhanh(n)))}
           </div>
         )}
+        <ChonDang opts={locDang.opts} value={locDang.dangChon} onChange={locDang.setChon} tong={locDang.tong} />
         <span className="text-[12px] text-slate-500">Mỗi mệnh đề là 1 dạng — duyệt từng mệnh đề, đủ hết mới duyệt được câu.</span>
         {thongBao && <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700">{thongBao}</span>}
         <button onClick={onDuyetTatCa} disabled={!batch.length || busyAll}

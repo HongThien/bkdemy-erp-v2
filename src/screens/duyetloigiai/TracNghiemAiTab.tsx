@@ -11,6 +11,7 @@
 // là luồng 1-câu riêng (fn_mcq_form_duyet), hàng loạt chỉ duyệt NGUYÊN VẸN qua fn_mcq_form_duyet_batch (mig 09/09).
 // Metric strip đọc fn_mcq_metric (tính ở DB §2.0) — client chỉ hiển thị.
 import { useEffect, useRef, useState } from 'react'
+import { useLocDang, ChonDang } from './LocDang'
 import { nhanhCuaMon, NHANH_LABEL, listFormTnChoDuyet, duyetFormTn, duyetFormTnBatch, tuChoiFormTn, listMcqRule, mcqMetric, type FormTnChoDuyet, type LuaChonTn, type KhoMon, type McqRule, type McqMetric } from '../../lib/kho/api'
 import { MathText, inp } from '../kho/ui'
 import { myNhanSuId } from '../../lib/giaoviec'
@@ -51,7 +52,7 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
     } catch (e: any) { if (my === reqId.current) setErr(e.message ?? String(e)) }
     finally { if (my === reqId.current) setLoading(false) }
   }
-  useEffect(() => { reload() }, [mon, khoi]) // eslint-disable-line
+  useEffect(() => { locDang.reset(); reload() }, [mon, khoi]) // eslint-disable-line
 
   function bao(msg: string) { setThongBao(msg); setTimeout(() => setThongBao(null), 2000) }
   async function onDuyet(r: Row) {
@@ -84,9 +85,12 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
     setLoai((s) => { const next = new Set(s); if (next.has(id)) next.delete(id); else next.add(id); return next })
   }
 
-  const totalPages = Math.max(1, Math.ceil(rows.length / pageSize))
+  // Lọc theo DẠNG (Thùy 06/10, LocDang.tsx dùng chung mọi tab duyệt) — phân trang chạy trên phần đã lọc
+  const locDang = useLocDang(rows, (r) => ({ ma: r.dang_chinh, ten: r.ten_dang }))
+  const rowsLoc = locDang.loc
+  const totalPages = Math.max(1, Math.ceil(rowsLoc.length / pageSize))
   const pageC = Math.min(page, totalPages - 1)
-  const pageRows = rows.slice(pageC * pageSize, pageC * pageSize + pageSize)
+  const pageRows = rowsLoc.slice(pageC * pageSize, pageC * pageSize + pageSize)
   const seDuyet = pageRows.filter((r) => !loai.has(r.id))
 
   async function onDuyetTatCa() {
@@ -125,8 +129,9 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
       {!loading && rows.length > 0 && (
         <div className="sticky top-0 z-10 mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white px-3 py-2 shadow-sm">
           <span className="text-[13px] text-slate-500">
-            Trang <b className="text-slate-800">{pageC + 1}</b>/{totalPages} — câu {pageC * pageSize + 1}–{Math.min((pageC + 1) * pageSize, rows.length)} / {rows.length}
+            Trang <b className="text-slate-800">{pageC + 1}</b>/{totalPages} — câu {pageC * pageSize + 1}–{Math.min((pageC + 1) * pageSize, rowsLoc.length)} / {rowsLoc.length}
           </span>
+          <ChonDang opts={locDang.opts} value={locDang.dangChon} onChange={(v) => { locDang.setChon(v); setPage(0) }} tong={locDang.tong} />
           <div className="flex items-center gap-1">
             <button onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={pageC === 0}
               className="rounded-md bg-white px-2 py-1 text-[12px] font-medium text-slate-600 ring-1 ring-slate-200 disabled:opacity-30">‹ Trước</button>
