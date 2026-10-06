@@ -449,12 +449,20 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
     ],
   },
   {
-    id: 'gop_y', nhom: 'cong_dong', ten: 'Góp ý và báo lỗi', icon: { o: 'so_tay', emoji: '💬' }, sap: true,
+    id: 'gop_y', nhom: 'cong_dong', ten: 'Góp ý và báo lỗi', icon: { o: 'so_tay', emoji: '💬' },
     tomTat: 'Gửi ý kiến hoặc báo lỗi trực tiếp tới đội phát triển.',
     khoi: [
-      { tieu: 'Dự kiến', y: [
-        'Mỗi ngày gửi được một số lượng góp ý nhất định, mỗi góp ý cần mô tả đủ rõ (từ 10 chữ).',
-        'Phần gửi góp ý trong app đang được hoàn thiện; trong lúc chờ, em báo cho thầy cô hoặc trung tâm.',
+      { tieu: 'Mở ở đâu', y: [
+        'Màn chính: nút ⋯ ở góc trên → "Góp ý & báo lỗi". Hoặc trong Hồ sơ của em.',
+      ] },
+      { tieu: 'Gửi thế nào', y: [
+        'Chọn "Báo lỗi" khi app chạy sai, hoặc "Góp ý tưởng" khi em muốn app có thêm điều gì.',
+        'Mô tả từ 10 đến 1.500 chữ; có thể đính kèm 1 ảnh chụp màn hình (chọn tệp hoặc dán vào ô chữ).',
+        'Mỗi ngày gửi tối đa 5 lần.',
+      ] },
+      { tieu: 'Theo dõi', y: [
+        'Mục "Góp ý của em" hiện trạng thái: Đã nhận · Đang xem · Đã xử lý · Chưa làm được, kèm lời trả lời của thầy cô.',
+        'Có lời trả lời mới thì nút ⋯ ở màn chính hiện chấm đỏ.',
       ] },
     ],
   },

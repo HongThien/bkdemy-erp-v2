@@ -63,6 +63,7 @@ type HomeProps = {
   demMon?: Record<string, number> // số việc đang chờ theo môn (HocSinhApp đếm) ⇒ chấm số trên nút môn khác
   chuaDoc: number; lich: LichBoTro[]; soRetest: number; cards: HomeCard[]; data: Home912 | null
   onHopThu: () => void; onDoiMK: () => void; onThoat: () => void; onLich: () => void; onRetest: () => void
+  onGopY?: () => void; gopYMoi?: number // Góp ý & báo lỗi (menu ⋯) + số lời trả lời em chưa đọc ⇒ chấm đỏ trên ⋯
   onHoSo?: () => void // có ⇒ bấm avatar mở HỒ SƠ (DON-HANG-GAMI-HS Đơn 4); đổi ảnh chuyển vào trong Hồ sơ
   gioiTinh?: 'nam' | 'nu' | null // chỉ để chọn NHÂN VẬT của style — không đổi màu theo giới tính
   theGioi?: TheGioiHome | null; onTheGioi?: () => void // thẻ Thế giới BK (thay thẻ "Việc cần làm" — Thùy 29/09)
@@ -194,9 +195,12 @@ function CumNut({ p, onHinhNen, nutRef }: { p: HomeProps; onHinhNen: () => void;
         </button>
         <div className="relative shrink-0">
           <button onClick={() => setMenu((m) => !m)} className="flex h-10 w-10 items-center justify-center text-[20px] font-bold leading-none active:scale-95" style={NUT_TRON} aria-label="Thêm">⋯</button>
+          {!!p.gopYMoi && <span className="pointer-events-none absolute -right-1 -top-1"><Badge n={p.gopYMoi} /></span>}
           {menu && (
             <div className="absolute right-0 top-12 z-20 flex w-44 flex-col overflow-hidden rounded-2xl text-[14px] shadow-xl" style={{ background: 'var(--sk-bg)', border: '1px solid var(--sk-line)' }}>
               <button className="px-4 py-3 text-left" onClick={() => { setMenu(false); setDoHoa(true) }}>Đồ hoạ</button>
+              {p.onGopY && <button className="flex items-center justify-between px-4 py-3 text-left" style={{ borderTop: '1px solid var(--sk-line)' }} onClick={() => { setMenu(false); p.onGopY!() }}>
+                Góp ý & báo lỗi {!!p.gopYMoi && <Badge n={p.gopYMoi} />}</button>}
               <button className="px-4 py-3 text-left" style={{ borderTop: '1px solid var(--sk-line)' }} onClick={() => { setMenu(false); p.onDoiMK() }}>Đổi mật khẩu</button>
               <button className="px-4 py-3 text-left" style={{ borderTop: '1px solid var(--sk-line)' }} onClick={() => { setMenu(false); p.onThoat() }}>Thoát</button>
             </div>
