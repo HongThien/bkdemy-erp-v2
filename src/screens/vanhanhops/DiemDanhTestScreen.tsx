@@ -13,7 +13,7 @@ import {
   khoiPhucCaTest, listCaTestDaHuy,
   type CaTest, type TaoCaTestInput, type MonTS,
 } from '../../lib/tuyensinh'
-import { ganDeCaTest, ganDeDangDung, listDeTestDauVao, type DeTestRow } from '../../lib/detest'
+import { ganDeCaTest, ganDeDangDung, listDeTestDauVao, gopDeTrung, type DeTestRow } from '../../lib/detest'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import { homNayVN, mucDeadline, nhanConLai, type DeadlineMuc } from '../../lib/tuan'
 import SearchSelect from '../../components/SearchSelect'
@@ -156,7 +156,8 @@ function CaTestCard({ c, now, deList, onChanged, onInDe, onSua, onHuy }: { c: Ca
   // Đề = đề test đầu vào ĐÃ SINH (tab "Đề test") khớp môn + khối ứng viên. listDeTestDauVao() sort desc →
   // đề ĐANG DÙNG (laHienTai) đứng đầu; lịch sử phía sau (Ops vẫn chọn được bản cũ nếu cần). Chưa có đề
   // nào cho khối×môn → báo nhờ học thuật tạo (không fallback MT thô — đề đầu vào phải do học thuật curate).
-  const cands = deList.filter((d) => d.mon === c.mon && (!c.ungVien.khoi || d.khoi === c.ungVien.khoi))
+  // Gộp bản trùng cùng nguồn — chỉ hiện bản mới nhất, bản đang gán luôn giữ (CEO 06/10).
+  const cands = gopDeTrung(deList.filter((d) => d.mon === c.mon && (!c.ungVien.khoi || d.khoi === c.ungVien.khoi)), [taiLieuId])
   const chuaCoDe = cands.length === 0
   const deDaGan = deList.find((d) => d.id === taiLieuId)
   const lechKhoi = !!deDaGan && !!c.ungVien.khoi && deDaGan.khoi !== c.ungVien.khoi
@@ -234,7 +235,7 @@ function CaTestCard({ c, now, deList, onChanged, onInDe, onSua, onHuy }: { c: Ca
             <select className="min-h-[36px] rounded-md border border-slate-200 px-2 py-1.5 text-[12px]" value={taiLieuId ?? ''} onChange={(e) => ganDe(e.target.value)} disabled={busy} title="Chọn là lưu ngay">
               <option value="" disabled>{busy ? 'Đang gán đề…' : 'Chọn đề…'}</option>
               {/* CEO 06/10: kho đề — mọi bản đều chọn được, mặc định bản mới nhất (HS không làm nổi tháng 9 ⇒ chọn tháng 8). */}
-              {cands.map((d) => <option key={d.id} value={d.id}>{d.ten}{d.laHienTai ? ' · mặc định' : ''}</option>)}
+              {cands.map((d) => <option key={d.id} value={d.id}>{d.ten}{d.laHienTai ? ' · mặc định' : d.laBanCu ? ` · bản cũ ${d.createdAt.slice(0, 10)}` : ''}</option>)}
             </select>
           </>
         )}

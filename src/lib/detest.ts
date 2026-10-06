@@ -74,6 +74,23 @@ export async function listDeTestDauVao(mon?: string): Promise<DeTestRow[]> {
       soCa: r.ca_test?.[0]?.count ?? 0, dangDungAt: r.test_dang_dung_at ?? null }
   })
 }
+// ⭐ CEO 06/10 "bài test trùng nhau thì chỉ hiện 1 cái": cùng (khối × môn) sinh lại từ CÙNG NGUỒN nhiều lần (K7 có 2 bản
+// "Khối 6 lên 7 - Tháng 9" 07/09 + 14/09) ⇒ kho hiển thị gộp theo nguồn, giữ bản MỚI NHẤT (rows đã sort mới → cũ).
+// `giuIds` = đề đang gán cho ca ⇒ luôn giữ (bản cũ hơn cũng giữ, đánh dấu `laBanCu`) để dropdown không mất lựa chọn.
+export type DeTestHienThi = DeTestRow & { laBanCu: boolean; soBanTrung: number }
+export function gopDeTrung(rows: DeTestRow[], giuIds: (string | null | undefined)[] = []): DeTestHienThi[] {
+  const giu = new Set(giuIds.filter(Boolean) as string[])
+  const dau = new Map<string, DeTestHienThi>()
+  const out: DeTestHienThi[] = []
+  for (const r of rows) {
+    const key = `${r.khoi}|${r.mon}|${r.nguonId ?? 'ten:' + r.ten}`
+    const d = dau.get(key)
+    if (!d) { const x = { ...r, laBanCu: false, soBanTrung: 0 }; dau.set(key, x); out.push(x); continue }
+    d.soBanTrung++
+    if (giu.has(r.id)) out.push({ ...r, laBanCu: true, soBanTrung: 0 })
+  }
+  return out
+}
 // SỬA / XOÁ / ĐẶT ĐANG DÙNG đề test (CEO 21/09 "mọi màn phải sửa xoá được card"). Xoá: DB chặn khi đề đã có ca dùng.
 export async function doiTenDeTest(id: string, ten: string): Promise<void> {
   if (!ten.trim()) throw new Error('Tên đề không được trống')

@@ -10,8 +10,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   listCanCham, listDaChamTheoThang, getCaTestCauKq, chamCauTest, dongChamTest, moLaiChamTest, getPhieuKetQua,
-  setDiemNhap, ganDeDangDung, ganDeCaTest, listDeTestDauVao, dsThangGanDay, nhanThang,
-  type CaTestChoCham, type CaTestCau, type PhieuKetQua, type DeTestRow,
+  setDiemNhap, ganDeDangDung, ganDeCaTest, listDeTestDauVao, gopDeTrung, dsThangGanDay, nhanThang,
+  type CaTestChoCham, type CaTestCau, type PhieuKetQua, type DeTestHienThi,
 } from '../../lib/detest'
 import { useStore } from '../../store/useStore'
 import { SuaCaTheoIdModal, HuyCaTestModal, NutSuaHuy } from './CaTestSuaHuy'
@@ -194,8 +194,9 @@ function ChamCard({ item, daChamXong, onClose, onPatch, onDone, onReopen }: {
   // ⭐ CEO 06/10: đề test đầu vào = KHO (nhiều đề / khối × môn, vd tháng 8 + tháng 9), mặc định đề MỚI NHẤT, người
   // nhập liệu đổi được ngay đây (HS không làm nổi đề tháng 9 ⇒ cho làm tháng 8 ⇒ chấm + trả bài theo đề tháng 8).
   // Phiếu trả bài tự theo đề đã gán cho ca (snapshot câu) nên chỉ cần đổi ở khâu này.
-  const [khoDe, setKhoDe] = useState<DeTestRow[]>([])
-  useEffect(() => { listDeTestDauVao(item.mon).then((ds) => setKhoDe(ds.filter((d) => !item.khoi || d.khoi === item.khoi))).catch(() => setKhoDe([])) }, [item.mon, item.khoi])
+  const [khoDe, setKhoDe] = useState<DeTestHienThi[]>([])
+  // Gộp bản trùng (cùng nguồn) — chỉ hiện bản mới nhất; bản đang gán cho ca luôn giữ (CEO 06/10).
+  useEffect(() => { listDeTestDauVao(item.mon).then((ds) => setKhoDe(gopDeTrung(ds.filter((d) => !item.khoi || d.khoi === item.khoi), [item.taiLieuId]))).catch(() => setKhoDe([])) }, [item.mon, item.khoi, item.taiLieuId])
   async function doiDe(id: string) {
     if (!id || id === item.taiLieuId) return
     const de = khoDe.find((d) => d.id === id); if (!de) return
@@ -279,7 +280,7 @@ function ChamCard({ item, daChamXong, onClose, onPatch, onDone, onReopen }: {
       {khoDe.length > 0 && (
         <select value="" onChange={(e) => doiDe(e.target.value)} disabled={busy} className="mt-3 w-full max-w-[480px] rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-[13px]">
           <option value="">— chọn đề trong kho —</option>
-          {khoDe.map((d) => <option key={d.id} value={d.id}>{d.ten}{d.laHienTai ? ' · mặc định' : ''}</option>)}
+          {khoDe.filter((d) => !d.laBanCu).map((d) => <option key={d.id} value={d.id}>{d.ten}{d.laHienTai ? ' · mặc định' : ''}</option>)}
         </select>
       )}
       {err && <p className="mt-2 text-[12px] text-rose-600">{err}</p>}
@@ -301,7 +302,7 @@ function ChamCard({ item, daChamXong, onClose, onPatch, onDone, onReopen }: {
             📘
             <select value={item.taiLieuId ?? ''} onChange={(e) => doiDe(e.target.value)} disabled={busy || daChamXong} className="max-w-[360px] truncate rounded-md border border-slate-200 bg-white px-2 py-1 text-[12px] disabled:opacity-60">
               {!item.taiLieuId && <option value="">— chọn đề —</option>}
-              {khoDe.map((d) => <option key={d.id} value={d.id}>{d.ten}{d.laHienTai ? ' · mặc định' : ''}</option>)}
+              {khoDe.map((d) => <option key={d.id} value={d.id}>{d.ten}{d.laHienTai ? ' · mặc định' : d.laBanCu ? ` · bản cũ ${d.createdAt.slice(0, 10)}` : ''}</option>)}
             </select>
           </label>
         )}

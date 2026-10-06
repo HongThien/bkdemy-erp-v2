@@ -3,14 +3,14 @@
 // 1 đề ĐANG DÙNG (bản mới nhất); sinh đề mới → thành đề hiện tại, bản cũ giữ làm LỊCH SỬ. Màn này liệt
 // kê đề đang dùng (theo khối×môn) + lịch sử. Điểm danh test lấy đề đang dùng khớp khối×môn (xem DiemDanhTestScreen).
 import { useEffect, useMemo, useState } from 'react'
-import { listDeTestDauVao, listNguonDe, sinhDeTestDauVao, doiTenDeTest, xoaDeTest, datDangDungDeTest, TEN_LOAI_DE, type DeTestRow } from '../../lib/detest'
+import { listDeTestDauVao, listNguonDe, sinhDeTestDauVao, doiTenDeTest, xoaDeTest, datDangDungDeTest, gopDeTrung, TEN_LOAI_DE, type DeTestRow } from '../../lib/detest'
 import MTPrintView from '../tailieu/MTPrintView'
 import type { TaiLieu } from '../../lib/tailieu'
 import { MON_OPTIONS, type MonTS } from '../../lib/tuyensinh'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import { useIsMobile } from '../../hooks/useIsMobile'
 
-type Nhom = { khoi: string; mon: string; hienTai: DeTestRow; lichSu: DeTestRow[] }
+type Nhom = { khoi: string; mon: string; hienTai: DeTestRow; lichSu: DeTestRow[]; trung: DeTestRow[] }
 
 export default function QuanLyDeTestScreen() {
   const [rows, setRows] = useState<DeTestRow[]>([])
@@ -52,7 +52,10 @@ export default function QuanLyDeTestScreen() {
     const out: Nhom[] = []
     for (const [, list] of by) {
       const hienTai = list.find((r) => r.laHienTai) ?? list[0]
-      out.push({ khoi: hienTai.khoi, mon: hienTai.mon, hienTai, lichSu: list.filter((r) => r.id !== hienTai.id) })
+      // CEO 06/10 "bài test trùng nhau chỉ hiện 1": gộp theo nguồn — bản cũ cùng nguồn xếp riêng (vẫn xoá được), không trộn vào kho.
+      const gop = gopDeTrung(list)
+      const giuId = new Set(gop.map((g) => g.id))
+      out.push({ khoi: hienTai.khoi, mon: hienTai.mon, hienTai, lichSu: gop.filter((r) => r.id !== hienTai.id), trung: list.filter((r) => !giuId.has(r.id)) })
     }
     return out.sort((a, b) => KHOI_OPTIONS.indexOf(a.khoi as any) - KHOI_OPTIONS.indexOf(b.khoi as any) || a.mon.localeCompare(b.mon))
   }, [rows, mon])
@@ -120,10 +123,10 @@ function NhomCard({ n, hd }: { n: Nhom; hd: HanhDongDe }) {
         Nguồn: {n.hienTai.nguonLoai ? `${TEN_LOAI_DE[n.hienTai.nguonLoai] ?? n.hienTai.nguonLoai} · ` : ''}{n.hienTai.nguonTen ?? '—'} · {n.hienTai.createdAt.slice(0, 10)} · {n.hienTai.soCa} ca đã dùng
       </div>
 
-      {n.lichSu.length > 0 && (
+      {(n.lichSu.length > 0 || n.trung.length > 0) && (
         <div className="mt-2 border-t border-slate-100 pt-2">
           <button onClick={() => setMoLichSu((v) => !v)} className="text-[11px] font-medium text-slate-500 hover:text-slate-700">
-            {moLichSu ? '▾' : '▸'} Đề khác trong kho ({n.lichSu.length})
+            {moLichSu ? '▾' : '▸'} Đề khác trong kho ({n.lichSu.length}){n.trung.length > 0 ? ` · ${n.trung.length} bản cũ trùng nguồn` : ''}
           </button>
           {moLichSu && (
             <div className="mt-1.5 space-y-1">
@@ -131,6 +134,13 @@ function NhomCard({ n, hd }: { n: Nhom; hd: HanhDongDe }) {
                 <div key={h.id} className="flex items-center gap-1.5 rounded-lg bg-slate-50 px-2 py-1.5 text-[11px] text-slate-500">
                   <span className="min-w-0 flex-1">{h.ten} · {h.createdAt.slice(0, 10)} · {h.soCa} ca đã dùng</span>
                   <button onClick={() => hd.onDatDangDung(h)} title="Đặt bản này làm đề mặc định của khối × môn (ca test MỚI sẽ lấy bản này)" className="shrink-0 rounded-md border border-slate-200 bg-white px-1.5 py-0.5 text-[11px] font-medium text-slate-600 hover:border-emerald-300 hover:text-emerald-700">↑ Đặt làm mặc định</button>
+                  <NutDe d={h} hd={hd} />
+                </div>
+              ))}
+              {/* Bản cũ sinh lại từ CÙNG nguồn — không hiện ở Điểm danh / Chấm (CEO 06/10), chỉ còn ở đây để dọn (xoá được khi chưa ca nào dùng). */}
+              {n.trung.map((h) => (
+                <div key={h.id} className="flex items-center gap-1.5 rounded-lg border border-dashed border-slate-200 px-2 py-1.5 text-[11px] text-slate-400">
+                  <span className="min-w-0 flex-1 truncate" title={h.ten}>bản cũ trùng nguồn · {h.createdAt.slice(0, 10)} · {h.soCa} ca đã dùng</span>
                   <NutDe d={h} hd={hd} />
                 </div>
               ))}
