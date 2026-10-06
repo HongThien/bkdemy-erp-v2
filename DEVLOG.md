@@ -35595,3 +35595,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Đã reset tay HS0733 (Vũ Trung Hiếu 10B1) bằng scripts/hs_reset_mk.mjs.
 
 - **Thùy chốt HUY HIỆU (06/10, 4 cái):** Phoenix = mỗi lần hạng MT tăng = 1 lần đạt, giữ top 10 cũng tính; Hercules = 100% hoàn thành 1 chủ đề, càng nhiều chủ đề càng nhiều sao; Hephaestus = ngày cuối mỗi tháng không còn dạng yếu; Nike = vượt tháp mỗi tháng thuộc top 30% (chặn bởi game chưa có hồ sơ theo tài khoản). Còn 6 câu [HỎI] trong spec §12; Helios/Chronos/Athena/Zeus chưa nói.
+
+- **Thùy chốt HUY HIỆU vòng 2 (06/10):** (1) Phoenix: top 10 = hạng 1–10, trụ được trong top 10 là đủ điều kiện; (2) Hercules sao theo % số chủ đề 10/20/40/70/100 làm tròn lên; (3) Hephaestus: ngày cuối tháng ≥80% dạng đạt và 0 dạng yếu; (4) **HUY HIỆU KHÔNG THƯỞNG — chỉ sưu tập** (điều kiện đã thưởng riêng ở thành tựu/nhiệm vụ). DB hiện đang trả EXP ★3/4/5 = 100/200/300 (mig 202609281846) ⇒ cần migration đặt exp=0; bỏ 48 xu/năm khỏi ngân sách.

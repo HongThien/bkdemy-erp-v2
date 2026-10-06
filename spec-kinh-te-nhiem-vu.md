@@ -63,7 +63,7 @@ Chỉ Luyện dạng yếu tính nhiệm vụ. Học theo chủ đề / Thử th
 |---|---|---|
 | Nhiệm vụ | **20 xu/tháng** (2.000 EXP) | [CEO] |
 | Vòng quay May mắn | **10 xu/tháng** (1.000 EXP) | [CEO] |
-| Huy hiệu (★3/4/5 = 100/200/300 EXP) | [MỞ] — bàn ở bước ② | |
+| Huy hiệu | **KHÔNG thưởng EXP/xu — chỉ sưu tập** (xem §12) | [CEO 06/10] |
 | Thành tựu / Thử thách | [MỞ] — bước ② | |
 | Game (Nông trại, Săn quái, Đấu trường…) | [MỞ] — bước ③ | |
 | EXP lớp (ET/BTVN/MT/bù/game buổi) | hiện **không trần** — xem lại ở bước ④ | |
@@ -198,38 +198,35 @@ Sau khi chốt: **bước kế = HUY HIỆU** (quan hệ với thành tựu, EXP
 
 ---
 
-## 12. HUY HIỆU — thiết kế lại từng cái (Thùy 06/10; chốt xong THÀNH TỰU rồi mới sang đây)
-Khung cũ giữ làm nền: **8 huy hiệu Hy Lạp, mỗi cái tối đa 5 sao, mùa 07→04, đạt rồi không mất, reset theo mùa**. Phần đổi là **cách đếm** của 4 huy hiệu Thùy đã nói; 4 huy hiệu còn lại chờ Thùy.
-Nguyên tắc [CEO]: **thành tựu có thể tham chiếu huy hiệu nhưng không luôn là điều kiện của huy hiệu** (một thành tựu chỉ là "gợi ý/nguồn đếm", huy hiệu có luật đếm riêng).
+## 12. HUY HIỆU — thiết kế lại (Thùy 06/10; chốt xong THÀNH TỰU rồi mới sang đây)
+**[CEO] Huy hiệu mang tính SƯU TẬP — KHÔNG thưởng EXP/xu.** Điều kiện để đạt huy hiệu (BTVN, ET, MT, chủ đề, dạng yếu…) đã được thưởng riêng ở thành tựu / nhiệm vụ / EXP lớp rồi. Huy hiệu chỉ là bộ sưu tập + khoe.
+**[CEO] Thành tựu có thể tham chiếu huy hiệu nhưng không luôn là điều kiện của huy hiệu.**
+Khung nền giữ: **8 huy hiệu Hy Lạp, tối đa 5 sao, mùa 07→04, đạt rồi không mất, reset theo mùa.**
+> ⚠ **Khác DB hiện tại:** `huy_hieu_thang_sao` (mig 202609281846) đang trả **EXP ★3/4/5 = 100/200/300** (nguồn `exp_thanh_tuu`, đã chảy vào xu + dòng `exp_huy_hieu` ở Ví xu mig 202610011601). Quyết định mới = **bỏ thưởng** ⇒ đặt `exp = 0` cho cả 5 sao (migration mới, không sửa file cũ); dòng `exp_huy_hieu` ở Ví xu chỉ còn là lịch sử. Hệ quả: **−48 xu/năm** khỏi ngân sách app (8 huy hiệu × 600 EXP) và **hết lo trùng thưởng** Hercules ↔ thành tựu #15.
 
-### 12.1 Bốn huy hiệu đã chốt [CEO 06/10]
-| Huy hiệu | Cách đếm (thay chỉ tiêu cũ) | Kiểu đếm | Dữ liệu |
+### 12.1 Bốn huy hiệu đã chốt [CEO]
+| Huy hiệu | Cách đếm | Kiểu đếm | Dữ liệu |
 |---|---|---|---|
-| **Phoenix** (bứt phá) | **Mỗi lần hạng MT TĂNG** so với kỳ MT trước = 1 lần đạt. **Học sinh đang ở top 10 mà GIỮ được trong top 10** = cũng tính 1 lần đạt | **Sự kiện** theo kỳ MT (không phải theo tháng lịch) | ✅ `fn_mt_hang_thang` |
-| **Hercules** | **100% hoàn thành 1 chủ đề** = 1 chủ đề. Càng nhiều chủ đề càng nhiều sao | **Đếm chủ đề** trong mùa | ✅ `fn_ban_do_phieu_luu` (đúng định nghĩa thành tựu ẩn #15) |
-| **Hephaestus** | **Ngày CUỐI mỗi tháng, học sinh không còn dạng yếu nào** = tháng đó đạt | Đếm **tháng** | ✅ `fn_mastery_cells(p_den)` chụp cuối tháng |
-| **Nike** | **Vượt tháp mỗi tháng, thuộc top 30%** = tháng đó đạt | Đếm **tháng** | ⛔ Chinh phục BK: Đấu Từ đang lưu hồ sơ theo THIẾT BỊ, điểm do client khai ⇒ cần hồ sơ theo tài khoản + xếp hạng server trước. Huy hiệu hiện thị "Sắp có" tới lúc đó |
+| **Phoenix** (bứt phá) | Mỗi **kỳ MT** em **có hạng tăng so với kỳ MT liền trước**, HOẶC **đang ở top 10 của khối (hạng 1–10)** ⇒ kỳ đó = 1 lần đạt. Trụ được trong top 10 là đạt luôn, không cần so kỳ trước. Một kỳ đủ cả hai chỉ tính 1 lần | **Lần đạt theo kỳ MT** | ✅ `fn_mt_hang_thang` |
+| **Hercules** | **100% hoàn thành 1 chủ đề** = 1 chủ đề (mọi dạng của chủ đề đều "đạt"; dạng chưa đo = chưa đạt). Số sao theo **% số chủ đề của khối**: ★1/2/3/4/5 = **10% / 20% / 40% / 70% / 100%**, **làm tròn LÊN** (tối thiểu 1) | **Đếm chủ đề** trong mùa | ✅ `fn_ban_do_phieu_luu` (cùng nguồn thành tựu ẩn #15) |
+| **Hephaestus** | **Ngày CUỐI tháng** (giờ VN), môn có **≥ 80% dạng ở mức "đạt" VÀ 0 dạng "yếu"** ⇒ tháng đó đạt. Mẫu số = **mọi dạng của khối** (dạng chưa đo không phải đạt ⇒ tự chặn trường hợp "chưa đo gì cũng sạch") | **Đếm tháng** | ✅ `fn_mastery_cells(p_den)` chụp cuối tháng |
+| **Nike** | **Vượt tháp** mỗi tháng, thuộc **top 30%** ⇒ tháng đó đạt | **Đếm tháng** | ⛔ Chinh phục BK: Đấu Từ đang lưu hồ sơ theo THIẾT BỊ, điểm do client khai ⇒ cần hồ sơ theo tài khoản + xếp hạng server. Huy hiệu hiện "Sắp có" tới lúc đó |
+**Ví dụ Hercules:** khối có 10 chủ đề ⇒ ★1/2/3/4/5 = 1 / 2 / 4 / 7 / 10 chủ đề. Khối 7 chủ đề ⇒ 1 / 2 / 3 / 5 / 7 (làm tròn lên).
 
-**Chỗ CTO chưa chắc — cần Thùy xác nhận (đã đánh dấu [HỎI]):**
-- **Phoenix [HỎI 1]:** "top 10" = hạng ≤ 10 trong khối, hay top 10% (bản cũ)? "Giữ" = tháng/kỳ này **và** kỳ liền trước đều trong top 10 (mỗi kỳ giữ được = 1 lần)? Và 1 kỳ vừa tăng hạng vừa trong top 10 chỉ tính **1 lần**.
-- **Hercules [HỎI 2]:** thang sao theo số chủ đề. **[ĐỀ XUẤT]** ★1/2/3/4/5 = **1 / 2 / 4 / 6 / 8 chủ đề**, kẹp theo số chủ đề của khối (khối có ít chủ đề hơn 8 thì ★5 = master hết). Chủ đề "100% hoàn thành" = mọi dạng của chủ đề đều "đạt" (giống #15; dạng chưa đo = chưa đạt).
-- **Hephaestus [HỎI 3]:** "không còn dạng yếu" cần điều kiện **đã đo ≥ 10 dạng** (nếu không học sinh chưa đo gì cũng "sạch" — CLAUDE §5 chưa-đo ≠ không-yếu). Yếu = mức `yeu` (<50%), không tính "cần luyện". Tháng không học thì không có dòng, không đạt.
-- **Nike [HỎI 4]:** "vượt tháp" đo bằng gì? **[ĐỀ XUẤT]** tầng cao nhất đạt được trong tháng ở **tháp tổng** (chế độ Vô tận); top 30% = xếp hạng theo khối × môn, chỉ xét em đã leo trong tháng.
+### 12.2 Bốn huy hiệu chưa đổi — Helios · Chronos · Athena · Zeus
+Giữ **một điều kiện chính** mỗi cái (đếm tháng): **Helios** không vắng buổi nào · **Chronos** nộp đủ BTVN đúng hạn · **Athena** ET ≥ 80% ở ≥ ¾ số bài · **Zeus** MT top 30% khối. **Bỏ** chỉ tiêu "thêm / tháng hoàn hảo" (dính Thử thách cũ + bỏ để khỏi rườm).
+[CHỜ THÙY] đổi cách đếm cái nào không.
 
-### 12.2 Bốn huy hiệu CHƯA nói — Helios · Chronos · Athena · Zeus
-Còn nguyên chỉ tiêu cũ: **Helios** không vắng buổi nào · **Chronos** nộp đủ BTVN đúng hạn · **Athena** ET ≥80% ở ≥¾ số bài · **Zeus** MT top 30% khối. Mỗi cái đều là **đếm tháng**.
-- Chỉ tiêu "THÊM" (vai hoàn hảo) của 4 cái này dính A6/A5/B6 (Thử thách cũ — đã bỏ) và A2 (BTVN đủ) — phải viết lại hoặc bỏ.
-- **[ĐỀ XUẤT]** giữ chỉ **một điều kiện chính** cho mỗi huy hiệu (đã có), **bỏ vai "thêm / tháng hoàn hảo"** vì Thùy đã chốt thành tựu "đạt là đạt"; sao tăng theo **số lần đạt**.
+### 12.3 Thang sao [ĐỀ XUẤT, chờ gật]
+Huy hiệu đếm tháng (Helios, Chronos, Athena, Zeus, Hephaestus, Nike) và Phoenix (đếm kỳ MT): ★1/2/3/4/5 = **1 / 2 / 4 / 6 / 9 lần đạt** (mùa 10 tháng). Hercules theo % chủ đề (12.1). **Bản cứng** (huy hiệu in, GV trao) giữ ở ★4–5 — là đồ vật sưu tập, không phải tiền thưởng; [HỎI: giữ hay bỏ?].
 
-### 12.3 Thang sao — [HỎI 5] chưa chốt
-Hiện: ★1/2/3/4/5 = 1/2/4/6/9 tháng; ★4–5 cần tháng hoàn hảo + bản cứng GV trao; EXP ★3/4/5 = 100/200/300.
-Sau khi bỏ "hoàn hảo": **[ĐỀ XUẤT]** ★1/2/3/4/5 = **1 / 2 / 4 / 6 / 9 lần đạt** (đếm tháng, kỳ MT, hoặc chủ đề tuỳ huy hiệu — Hercules theo bảng 12.1); **bản cứng giữ cho ★4–5** (không còn phụ thuộc "hoàn hảo", chỉ phụ thuộc số lần); **EXP giữ 100/200/300** (★3/4/5).
+### 12.4 Hệ quả
+- Không EXP/xu ⇒ **không cần trần xu** cho nguồn huy hiệu; hàng "Huy hiệu" ở bảng trần §7 = **không áp dụng**.
+- Tin Thế giới (★1–3 hạng A, ★4–5 hạng S) và tường khoe giữ nguyên.
+- Việc làm sau chốt: migration `exp = 0` cho 5 sao; viết lại `huy_hieu_dieu_kien` + chỉ số mới (`mt_tang_hang_hoac_top10`, `chu_de_master_pct`, `cuoi_thang_dat80_yeu0`, `thap_top_pct`), bỏ vai `them`, đổi thang sao Hercules (theo %); Album + Hướng dẫn chơi + tutorial sửa; Nike đặt `mo_tu` = ngày game có hồ sơ theo tài khoản; chỉnh `fn_huy_hieu_chot_thang` bỏ ghi EXP.
 
-### 12.4 Hệ quả cho kinh tế
-- 8 huy hiệu × (100 + 200 + 300) = **tối đa 4.800 EXP = 48 xu/năm** từ sao huy hiệu (mỗi năm reset).
-- ⚠ **Trùng thưởng Hercules ↔ thành tựu #15:** cùng một sự kiện "master 1 chủ đề" vừa trả **1.000 EXP (#15)** vừa góp sao Hercules (đạt ★ → thêm 100/200/300). **[HỎI 6]** chấp nhận cộng dồn, hay Hercules ★ không trả thêm EXP?
-- ⚠ **Phoenix ↔ thành tựu #9/#10** (Top5 / Top1 MT): trùng nguồn dữ liệu (hạng MT) nhưng khác sự kiện — chấp nhận.
-- Trần xu của nguồn huy hiệu: chưa bàn (thành tựu đã chốt KHÔNG trần).
-
-### 12.5 Việc làm sau khi chốt
-Viết lại `huy_hieu_dieu_kien` + các `loai_chi_so` mới (`mt_hang_tang_or_top10`, `chu_de_master`, `cuoi_thang_khong_yeu`, `thap_top_pct`), bỏ vai `them`, đổi `huy_hieu_thang_sao`, màn Album + Hướng dẫn chơi + tutorial sửa theo; Nike đặt `mo_tu` = ngày game có hồ sơ theo tài khoản.
+### 12.5 Câu hỏi MỞ
+1. **Nike:** "vượt tháp" đo bằng gì? [ĐỀ XUẤT] tầng cao nhất đạt trong tháng ở tháp tổng (Vô tận), xếp theo khối × môn, chỉ xét em đã leo trong tháng.
+2. Thang sao 1/2/4/6/9 cho các huy hiệu đếm tháng (12.3) gật hay sửa?
+3. Bản cứng ★4–5: giữ hay bỏ?
+4. Helios/Chronos/Athena/Zeus: đổi gì không?
