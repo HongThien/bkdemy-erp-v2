@@ -6,7 +6,7 @@ import {
   listLopCuaHS, ghiDanh, roiLop, setBandGhiDanh, setNgayVao, chuyenLop,
   listLop, listMucNangLuc, countLopActiveByHS,
   listPhuHuynh, createPhuHuynh, updatePhuHuynh, listConByPH, suggestMaHS, suggestMaPH, uploadAvatar, todayVN,
-  provisionTaiKhoanHS,
+  provisionTaiKhoanHS, datLaiMatKhauHS,
   type HocSinh, type GhiDanh, type Lop, type MucNangLuc, type PhuHuynh, type ProvisionHsResult,
 } from '../../lib/nhansu'
 import { Field, inp, Seg } from '../kho/ui'
@@ -253,6 +253,8 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
   const [phId, setPhId] = useState<string | null>(hocSinh?.phu_huynh_id ?? null)
   const [anh_url, setAnhUrl] = useState(hocSinh?.anh_url ?? '')
   const [uploading, setUploading] = useState(false)
+  const [mkBusy, setMkBusy] = useState(false)
+  const [mkMsg, setMkMsg] = useState<string | null>(null)
   const fileRef = useRef<HTMLInputElement>(null)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -316,6 +318,18 @@ function EditModal({ hocSinh, defaultKhoi, onClose, onSaved }: { hocSinh: HocSin
                   {uploading ? 'Đang tải…' : anh_url ? 'Đổi ảnh' : '+ Ảnh đại diện'}
                 </button>
                 {anh_url && <button onClick={() => setAnhUrl('')} className="ml-2 text-[12px] text-slate-400 hover:text-rose-600">gỡ</button>}
+                {cur && (
+                  <button disabled={mkBusy} onClick={async () => {
+                    if (!window.confirm(`Đặt lại mật khẩu của ${cur.ho_ten} về mã HS (${cur.ma_hs})?${['10', '11', '12'].includes(String(cur.khoi)) ? '\nEm sẽ phải đổi mật khẩu mới ở lần đăng nhập kế.' : ''}`)) return
+                    setMkBusy(true); setMkMsg(null)
+                    try { const r = await datLaiMatKhauHS(cur.id); setMkMsg(`✓ Đã đặt lại: mật khẩu = ${r.ma_hs}${r.buocDoi ? ' (buộc đổi khi đăng nhập)' : ''}`) }
+                    catch (e: any) { setMkMsg(`✗ ${e.message ?? String(e)}`) }
+                    finally { setMkBusy(false) }
+                  }} className="ml-2 rounded-md border border-slate-200 px-2.5 py-1.5 text-[12px] font-medium text-slate-600 hover:border-amber-300 hover:text-amber-700 disabled:opacity-40">
+                    {mkBusy ? 'Đang đặt…' : '🔑 Đặt lại mật khẩu'}
+                  </button>
+                )}
+                {mkMsg && <div className={`mt-1 text-[12px] ${mkMsg.startsWith('✓') ? 'text-emerald-600' : 'text-rose-600'}`}>{mkMsg}</div>}
                 <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={async (e) => {
                   const f = e.target.files?.[0]; e.target.value = ''
                   if (!f) return

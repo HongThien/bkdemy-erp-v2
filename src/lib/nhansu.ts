@@ -167,6 +167,22 @@ export async function provisionTaiKhoanHS(): Promise<ProvisionHsResult> {
   return { tao, boQua: (hs?.length ?? 0) - missing.length, loi }
 }
 
+// Đặt lại mật khẩu 1 HS về chính mã HS (khối 10–12 bị buộc đổi lại ở lần đăng nhập kế). Cần service role
+// nên chạy ở serverless `api/hs-reset-mk` — quyền do DB quyết (co_quyen_ghi('hs')) bằng phiên người bấm.
+export async function datLaiMatKhauHS(hocSinhId: string): Promise<{ ma_hs: string; buocDoi: boolean }> {
+  const { data: s } = await supabase.auth.getSession()
+  const token = s.session?.access_token
+  if (!token) throw new Error('Chưa đăng nhập.')
+  const r = await fetch('/api/hs-reset-mk', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify({ hoc_sinh_id: hocSinhId }),
+  })
+  const j = await r.json().catch(() => ({}))
+  if (!r.ok) throw new Error(j.error ?? `Lỗi ${r.status}`)
+  return { ma_hs: j.ma_hs, buocDoi: !!j.buocDoi }
+}
+
 // ── Hồ sơ CỦA TÔI (tài khoản nhân sự — Thùy chốt 06-11) ──────────
 // Link tài khoản: admin tạo user Auth (Dashboard) TRÙNG email nhân sự → lần đăng nhập đầu app TỰ LINK
 // (ghi tai_khoan id=auth.uid → nhan_su). NS tự sửa được ảnh/SĐT/email; team/vị trí/phân công CHỈ XEM.
