@@ -35579,3 +35579,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
   Đo: `fn_exp_app_thang` toàn trung tâm 2 tháng ≈6s, 1 HS ≈1,2s/tháng (nặng ở `fn_nhiem_vu_chang_thang`) ⇒ không làm view tính sống được; cửa sổ tự động = tháng trước + tháng này.
 
 - **Thùy (06/10):** (1) nguồn THÀNH TỰU **KHÔNG đặt trần xu** (tính theo năm); (2) #13 "100% đạt dạng bài" = tại một thời điểm mọi dạng ĐÃ ĐO đạt, **tối thiểu 10 dạng đã đo** mới tính. CTO nêu rủi ro: 10 dạng dễ → 1.000 EXP; đề xuất mỗi dạng ≥3 lần đo trong mùa. #15 master: dạng CHƯA ĐO = chưa đạt. Thành tựu CHỐT ⇒ bước kế HUY HIỆU, rồi THỬ THÁCH.
+
+- **Thùy làm rõ (06/10):** #13 = **100% TOÀN BỘ dạng bài của khối đạt cùng một thời điểm**, khối phải có **> 10 dạng** (bỏ đề xuất "≥3 lần đo/mùa"). Khác #15 (master từng chủ đề, nhận dần).

@@ -138,7 +138,7 @@ Dữ liệu: ✅ đã đo được · 🔧 cần hàm/ghi sự kiện mới · �
 | 10 | **Top 1 khối** (MT tháng) | Một lần | **700** | ✅ | [CEO] |
 | 11 | **ET 10 điểm lần đầu** (trong mùa) | Một lần | 200 | ✅ | [CEO xác nhận 06/10: "10" = 10 ĐIỂM] |
 | 12 | **MT 10 điểm lần đầu** (trong mùa) | Một lần | **800** | ✅ | [CEO xác nhận 06/10: 10 ĐIỂM] |
-| 13 | **100% đạt dạng bài** — **tại một thời điểm**, mọi dạng bài ĐÃ ĐO của môn đều ở mức "đạt"; **chỉ bắt đầu tính khi đã đo ≥ 10 dạng** | Một lần | 1.000 | ✅ `fn_mastery_cells` | [CEO xác nhận 06/10] |
+| 13 | **100% TOÀN BỘ dạng bài của khối đều "đạt" TẠI CÙNG MỘT THỜI ĐIỂM** (dạng chưa đo = chưa đạt); chỉ áp dụng khi khối có **> 10 dạng bài** | Một lần | 1.000 | ✅ `fn_mastery_cells` (+ Hình qua registry nhánh) | [CEO xác nhận 06/10] |
 | 14 | Có **10 / 20 / … bạn** ở BK | Tích luỹ | mỗi bậc **1 xu** (trả XU thẳng, không qua EXP) | ✅ | [CEO] |
 | 15 | **(Ẩn) Master 1 chủ đề kiến thức**: 100% dạng của chủ đề đều "đạt" (dạng CHƯA ĐO = chưa đạt — khác #13) | Một lần / chủ đề | **1.000 EXP mỗi chủ đề, chỉ lần đầu hoàn thành**; danh sách chủ đề khác nhau theo khối | ✅ `fn_ban_do_phieu_luu` | [CEO] |
 
@@ -188,8 +188,9 @@ Mỗi năm reset ⇒ mọi năm cùng ngân sách. 1 năm = 10 tháng tính thà
 
 ### Câu hỏi MỞ
 1. ~~#11/#12 "10" là 10 điểm hay 10 lần?~~ **Chốt: 10 ĐIỂM** [CEO].
-2. ~~#13 "100% đạt dạng bài"~~ **Chốt [CEO 06/10]:** tại một thời điểm 100% dạng ĐÃ ĐO đạt, tối thiểu 10 dạng đã đo.
-   ⚠ **Rủi ro CTO nêu:** 10 dạng là mốc thấp so với 1.000 EXP (10 xu): học sinh chỉ làm 10 dạng dễ rồi đạt hết là nhận ngay. Đề xuất chặn: mỗi dạng tính phải có **≥ 3 lần đo TRONG MÙA** (độ tin ≥ trung bình) — không lấy mastery cũ. [chờ Thùy gật/bỏ]
+2. ~~#13 "100% đạt dạng bài"~~ **Chốt [CEO 06/10]:** 100% **TOÀN BỘ** dạng bài của khối đạt **cùng một lúc**; điều kiện > 10 dạng là ngưỡng để thành tựu có nghĩa (khối ít hơn 10 dạng thì chưa áp dụng).
+   - Khác #15: #15 = từng chủ đề master (chỉ cần từng lúc, mỗi chủ đề 1.000, nhận dần); #13 = **giữ cả khối đạt đồng thời** (độ nắm tính theo 5 lần đo gần nhất nên dễ tụt) ⇒ rất khó, thưởng 1.000 chỉ là mốc chót. CTO ghi nhận: nếu thấy ít so với độ khó thì tăng (chỉnh số, không đổi cấu trúc).
+   - Hiểu "> 10" là số dạng bài CỦA KHỐI (không phải số dạng em đã đo) — báo lại nếu Thùy muốn khác.
 3. ~~Trần xu nguồn thành tựu~~ **Chốt [CEO]: KHÔNG trần** (tính theo năm).
 4. #6 / #8 bậc sau dấu "…" và 4 quy tắc chung [ĐỀ XUẤT] (thưởng 1 lần/mùa/bậc; thành tựu ẩn hiện "đã mở N/M"; thành tựu tháng thưởng lại mỗi tháng; thành tựu không gắn môn ghi EXP chung): **coi như đã gật** nếu Thùy không sửa.
 Sau khi chốt: **bước kế = HUY HIỆU** (quan hệ với thành tựu, EXP sao ★, trần xu), rồi **THỬ THÁCH**.
