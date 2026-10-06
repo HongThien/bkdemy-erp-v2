@@ -41,6 +41,8 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
   // HGT chỉ trồi lên sau khi duyệt hết Đại — quá phiền khi CEO nạp lô lớn theo nhánh (11/09).
   const [nhanh, setNhanh] = useState<KhoMon | 'all'>('all')
   const [anhThem, setAnhThem] = useState<AnhThem>(KHONG_ANH)
+  // Lọc theo DẠNG (Thùy 06/10: duyệt một loại các câu cùng dạng cho dễ) — danh sách = các dạng đang có câu trong hàng duyệt.
+  const [dangLoc, setDangLoc] = useState<string>('all')
   const reqId = useRef(0)
 
   async function reload() {
@@ -63,13 +65,24 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
     } catch (e: any) { if (my === reqId.current) setErr(e.message ?? String(e)) }
     finally { if (my === reqId.current) setLoading(false) }
   }
-  useEffect(() => { setNhanh('all'); reload() }, [mon, khoi, loc]) // eslint-disable-line
+  useEffect(() => { setNhanh('all'); setDangLoc('all'); reload() }, [mon, khoi, loc]) // eslint-disable-line
 
   function bao(msg: string) { setThongBao(msg); setTimeout(() => setThongBao(null), 2500) }
   function xong(r: Row, msg: string) { setRows((a) => a.filter((x) => !(x.mon === r.mon && x.ma_cau === r.ma_cau))); bao(msg); onChanged?.() }
 
   // Lọc theo chip nhánh; batch 20 câu / lần (CEO 11/09). Sau khi duyệt/từ chối trong batch, câu bị filter khỏi rows → batch tự dịch xuống.
-  const rowsShown = nhanh === 'all' ? rows : rows.filter((r) => r.mon === nhanh)
+  const rowsNhanh = nhanh === 'all' ? rows : rows.filter((r) => r.mon === nhanh)
+  // Lựa chọn dạng = dạng XUẤT HIỆN trong hàng duyệt (đã qua chip nhánh), kèm số câu đang chờ — chỉ để hiển thị bộ lọc.
+  const dangOpts = (() => {
+    const m = new Map<string, { ma: string; ten: string; cd: string; n: number }>()
+    for (const r of rowsNhanh) {
+      const o = m.get(r.dang_chinh) ?? { ma: r.dang_chinh, ten: r.ten_dang ?? r.dang_chinh, cd: r.ten_chuyen_de ?? '', n: 0 }
+      o.n++; m.set(r.dang_chinh, o)
+    }
+    return [...m.values()].sort((a, b) => a.cd.localeCompare(b.cd, 'vi') || a.ten.localeCompare(b.ten, 'vi'))
+  })()
+  const dangDangLoc = dangLoc !== 'all' && dangOpts.some((d) => d.ma === dangLoc) ? dangLoc : 'all' // dạng vừa duyệt hết ⇒ về "Tất cả"
+  const rowsShown = dangDangLoc === 'all' ? rowsNhanh : rowsNhanh.filter((r) => r.dang_chinh === dangDangLoc)
   const batch = rowsShown.slice(0, BATCH_SIZE)
   const demNhanh = (m: KhoMon) => rows.filter((r) => r.mon === m).length
   // ⭐ 13/09 (Thùy: "t phân vào toạ độ hoá nhiều nhưng kho chỉ có 1 câu"): batch cũ gọi duyệt với sua={} ⇒ dạng/đề/đáp số
@@ -95,7 +108,7 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
   }
 
   const chip = (n: KhoMon | 'all', label: string, count: number) => (
-    <button key={n} onClick={() => setNhanh(n)}
+    <button key={n} onClick={() => { setNhanh(n); setDangLoc('all') }}
       className={`rounded-full px-3 py-0.5 text-[12px] font-medium transition ${nhanh === n ? 'bg-violet-600 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'} ${count === 0 && n !== 'all' ? 'opacity-50' : ''}`}>
       {label} <span className={nhanh === n ? 'text-violet-200' : 'text-slate-400'}>{count}</span>
     </button>
@@ -113,6 +126,16 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
             {chip('all', 'Tất cả', rows.length)}
             {kho.map((n) => chip(n, NHANH_LABEL[n], demNhanh(n)))}
           </div>
+        )}
+        {dangOpts.length > 1 && (
+          <label className="flex items-center gap-1.5 text-[12px] text-slate-500">
+            Dạng
+            <select value={dangDangLoc} onChange={(e) => setDangLoc(e.target.value)}
+              className="max-w-[420px] rounded-md border border-slate-200 bg-white px-2 py-1 text-[12px] text-slate-700 focus:border-violet-400 focus:outline-none">
+              <option value="all">Tất cả dạng ({rowsNhanh.length})</option>
+              {dangOpts.map((d) => <option key={d.ma} value={d.ma}>{d.cd ? `${d.cd} › ` : ''}{d.ten} ({d.n})</option>)}
+            </select>
+          </label>
         )}
         {loc === 'nghi' && <span className="text-[12px] text-amber-700">Máy/AI tính ra khác đáp số kho. Xem đề, tự tính; kho sai thì sửa đáp số rồi Duyệt — form trắc nghiệm của câu sẽ tự thu hồi để sinh lại.</span>}
         {loc === 'cau_moi' && <span className="text-[12px] text-slate-500">Câu vào kho sau 08/09 — HS chưa thấy tới khi duyệt.</span>}

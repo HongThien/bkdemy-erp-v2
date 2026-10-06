@@ -35557,3 +35557,6 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Thùy chốt tiếp (06/10, vòng 2 phần nhiệm vụ):** (1) mỗi lần đạt = **20 EXP + 20 ĐHT**, ngày ≤4 lần ⇒ 80/ngày, 2.400/tháng; cộng tuần+tháng ⇒ **ĐHT tối đa 3.000/tháng** ("đẹp"). (2) **Vòng quay May mắn:** chỉ quay khi hoàn thành nhiệm vụ ngày; **ẩn ô May mắn khỏi Home**, vòng quay tự hiện lúc hoàn thành việc ngày; tối đa **10 xu/tháng = 30 lần quay** (CTO chỉnh số: 1 lượt/ngày, bảng giải EV≈26,5). (3) **Trần xu app đổi: MỖI HOẠT ĐỘNG CÓ TRẦN RIÊNG** (thay `tran_xu_app` chung 30). Spec: `spec-kinh-te-nhiem-vu.md` (thêm công thức cộng EXP đã cắt trần rồi `ceil` một lần — vá lỗ làm tròn nhiều nguồn). Mở: số dư ĐHT tối đa 6.000 hay 4.000; trần xu huy hiệu/thành tựu/game; Hercules.
 
 - **Thùy chốt (06/10):** số dư ĐHT tối đa = **6.000** (2 tháng × 3.000). Phần NHIỆM VỤ + VÒNG QUAY xong ⇒ sang bước ② THÀNH TỰU (đi liền huy hiệu).
+
+## 06/10
+- **Duyệt câu: lọc theo DẠNG** (Thùy: duyệt một loại các câu cùng dạng cho dễ). `DuyetCauTab.tsx`: dropdown "Dạng" — lựa chọn = các dạng ĐANG CÓ câu trong hàng duyệt (sau chip nhánh), kèm số câu, xếp theo chuyên đề › dạng; batch + "Duyệt tất cả batch" chỉ trong dạng đang chọn; dạng duyệt hết thì tự về "Tất cả"; đổi nhánh/môn/khối/bộ lọc thì reset. Kiểm trên trang xem-thử dữ liệu giả (3 dạng, 9 câu ⇒ chọn 1 dạng còn 4 câu, nút duyệt batch = 4).
