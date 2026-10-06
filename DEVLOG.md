@@ -35560,3 +35560,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 
 ## 06/10
 - **Duyệt câu: lọc theo DẠNG** (Thùy: duyệt một loại các câu cùng dạng cho dễ). `DuyetCauTab.tsx`: dropdown "Dạng" — lựa chọn = các dạng ĐANG CÓ câu trong hàng duyệt (sau chip nhánh), kèm số câu, xếp theo chuyên đề › dạng; batch + "Duyệt tất cả batch" chỉ trong dạng đang chọn; dạng duyệt hết thì tự về "Tất cả"; đổi nhánh/môn/khối/bộ lọc thì reset. Kiểm trên trang xem-thử dữ liệu giả (3 dạng, 9 câu ⇒ chọn 1 dạng còn 4 câu, nút duyệt batch = 4).
+
+- **Thùy chốt (06/10, thành tựu):** (1) chốt xong THÀNH TỰU rồi mới bàn chi tiết HUY HIỆU; (2) "Nhất ET 5/10/15" = **cộng dồn**; (3) có Loại 1b TÍCH LUỸ; (4) **không có Thấp/Cao** — thành tựu đạt là đạt; mỗi bậc là một thành tựu; thành tựu có thể tham chiếu huy hiệu nhưng KHÔNG phải luôn là điều kiện huy hiệu. Spec §11 đã viết lại (≈89 thành tựu: tháng 10 · liên tiếp 36 · tích luỹ 15 · một lần ≈28).
