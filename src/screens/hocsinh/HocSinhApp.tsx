@@ -31,6 +31,7 @@ import { ChonNhanVatHS } from './hoctap/ChonNhanVatHS'
 import { laNvChon, type NvId } from './skin/nhanVat'
 import { chonNhanVat, nhanVatCuaToi } from '../../lib/giaodien_hs'
 import { NhungHet, type NhungDau } from './phieuluu/nhungDau'
+import { BaoLuotHS } from './BaoLuot'
 import { TheTran, PHIEN, CLS_PHIEN, NgocChu, NUT_TRAN, HOP_LOI_GIAI, FONT_TRAN } from './skin/KhungTran'
 import { hocTapBat, phieuLuuBat } from './phieuluu/coBat'
 // Khu HỌC TẬP (5 đảo) — sau CỜ, mặc định TẮT ở bản thật (bật ở bản thử nghiệm / ?hoctap=1). Tắt ⇒ ô Tự luyện + màn chọn cũ như trước 03/10.
@@ -978,6 +979,8 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
         <div className={`flex items-center justify-center rounded-full ${desktop ? 'h-24 w-24 text-5xl' : 'h-20 w-20 text-4xl'}`} style={{ ...THE_TRON, borderRadius: '999px', background: NEN_DUNG }}>🏆</div>
         <p className={`mt-4 font-bold tracking-tight ${desktop ? 'text-3xl' : 'text-2xl'}`} style={{ ...HEAD, color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>{dung} / {total} đúng</p>
         <p className="mt-1 text-[16px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>{doneCaption ?? 'Làm lại được tới hạn nộp. Kết quả gửi thầy cô tham khảo.'}</p>
+        {/* lượt luyện thêm: báo có tính vào chuỗi/nhiệm vụ không (BTVN, giáo trình… tự ẩn) */}
+        <BaoLuotHS baiLamId={baiLamId} className={`mt-4 ${desktop ? 'max-w-sm' : ''}`} />
         <button onClick={onXong} className={`mt-6 font-bold ${desktop ? 'px-8 py-3.5 text-[19px]' : 'px-6 py-3 text-[18px]'}`} style={NUT_CHINH}>Về danh sách</button>
         {doneExtra}
       </ManGiua>

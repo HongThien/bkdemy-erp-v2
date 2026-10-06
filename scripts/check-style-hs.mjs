@@ -45,7 +45,8 @@ for (const f of files) {
 }
 
 // ② icon ô  ③ file hình
-const app = readFileSync(`${GOC}/HocSinhApp.tsx`, 'utf8')
+// checkout CRLF (autocrlf) ⇒ chuỗi ']\n' không khớp cuối mảng, khoiDs đọc lố sang mảng khác ⇒ chuẩn hoá về LF trước
+const app = readFileSync(`${GOC}/HocSinhApp.tsx`, 'utf8').replace(/\r\n/g, '\n')
 const khoiDs = (ten) => { const i = app.indexOf(`const ${ten}`); if (i < 0) return []; const j = app.indexOf(']\n', i); return [...app.slice(i, j).matchAll(/\{\s*id:\s*'([a-z_0-9]+)'/g)].map((m) => m[1]) }
 const oCan = [...new Set([...khoiDs('KHU:'), ...khoiDs('KHU_CAP2'), 'hoc_tu_dau', 'tu_luyen_rieng'])] // 2 ô rời (không nằm trong KHU)
 const DIR_STYLE = `${GOC}/skin/styles`
