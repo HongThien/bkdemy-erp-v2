@@ -66,6 +66,7 @@ Chỉ Luyện dạng yếu tính nhiệm vụ. Học theo chủ đề / Thử th
 | Huy hiệu | **KHÔNG thưởng EXP/xu — chỉ sưu tập** (xem §12) | [CEO 06/10] |
 | Thành tựu / Thử thách | [MỞ] — bước ② | |
 | Game (Nông trại, Săn quái, Đấu trường…) | [MỞ] — bước ③ | |
+| **Tháp tháng** (50 tầng) | thưởng riêng [CEO]: 5 xu/tầng + 10 xu tầng 50 — **chờ chốt cách đọc (§13.2)** | [CEO + MỞ] |
 | EXP lớp (ET/BTVN/MT/bù/game buổi) | hiện **không trần** — xem lại ở bước ④ | |
 - **[ĐỀ XUẤT] Công thức DB:** `xu_app = ceil( Σ_nguồn min(EXP_nguồn, trần_nguồn × 100) / 100 )` — **cộng EXP đã cắt trần của từng nguồn rồi mới `ceil` MỘT lần**. (Làm tròn lên riêng từng nguồn sẽ cộng thêm tối đa 1 xu/nguồn — lỗ hổng bản đồ kinh tế đã chỉ ra.) Trần lưu ở bảng cấu hình `xu_tran_nguon(nguon, mon, tran_xu_thang)`, thay `tran_xu_app` chung.
 
@@ -210,7 +211,7 @@ Khung nền giữ: **8 huy hiệu Hy Lạp, tối đa 5 sao, mùa 07→04, đạ
 | **Phoenix** (bứt phá) | Mỗi **kỳ MT** em **có hạng tăng so với kỳ MT liền trước**, HOẶC **đang ở top 10 của khối (hạng 1–10)** ⇒ kỳ đó = 1 lần đạt. Trụ được trong top 10 là đạt luôn, không cần so kỳ trước. Một kỳ đủ cả hai chỉ tính 1 lần | **Lần đạt theo kỳ MT** | ✅ `fn_mt_hang_thang` |
 | **Hercules** | **100% hoàn thành 1 chủ đề** = 1 chủ đề (mọi dạng của chủ đề đều "đạt"; dạng chưa đo = chưa đạt). Số sao theo **% số chủ đề của khối**: ★1/2/3/4/5 = **10% / 20% / 40% / 70% / 100%**, **làm tròn LÊN** (tối thiểu 1) | **Đếm chủ đề** trong mùa | ✅ `fn_ban_do_phieu_luu` (cùng nguồn thành tựu ẩn #15) |
 | **Hephaestus** | **Ngày CUỐI tháng** (giờ VN), môn có **≥ 80% dạng ở mức "đạt" VÀ 0 dạng "yếu"** ⇒ tháng đó đạt. Mẫu số = **mọi dạng của khối** (dạng chưa đo không phải đạt ⇒ tự chặn trường hợp "chưa đo gì cũng sạch") | **Đếm tháng** | ✅ `fn_mastery_cells(p_den)` chụp cuối tháng |
-| **Nike** | **Vượt tháp** mỗi tháng: đo bằng **tầng cao nhất ở Tháp tháng 50 tầng (§13)**, thuộc **top 30%** khối ⇒ tháng đó đạt | **Đếm tháng** | ⛔ Chinh phục BK: Đấu Từ đang lưu hồ sơ theo THIẾT BỊ, điểm do client khai ⇒ cần hồ sơ theo tài khoản + xếp hạng server. Huy hiệu hiện "Sắp có" tới lúc đó |
+| **Nike** | **Vượt hết 50 tầng của Tháp tháng (§13)** trong tháng ⇒ tháng đó đạt (không xét xếp hạng) | **Đếm tháng** | ⛔ Chinh phục BK: Đấu Từ đang lưu hồ sơ theo THIẾT BỊ, điểm do client khai ⇒ cần hồ sơ theo tài khoản + xếp hạng server. Huy hiệu hiện "Sắp có" tới lúc đó |
 **Ví dụ Hercules:** khối có 10 chủ đề ⇒ ★1/2/3/4/5 = 1 / 2 / 4 / 7 / 10 chủ đề. Khối 7 chủ đề ⇒ 1 / 2 / 3 / 5 / 7 (làm tròn lên).
 
 ### 12.2 Bốn huy hiệu chưa đổi — Helios · Chronos · Athena · Zeus
@@ -226,42 +227,52 @@ Huy hiệu đếm tháng (Helios, Chronos, Athena, Zeus, Hephaestus, Nike) và P
 - Việc làm sau chốt: migration `exp = 0` cho 5 sao; viết lại `huy_hieu_dieu_kien` + chỉ số mới (`mt_tang_hang_hoac_top10`, `chu_de_master_pct`, `cuoi_thang_dat80_yeu0`, `thap_top_pct`), bỏ vai `them`, đổi thang sao Hercules (theo %); Album + Hướng dẫn chơi + tutorial sửa; Nike đặt `mo_tu` = ngày game có hồ sơ theo tài khoản; chỉnh `fn_huy_hieu_chot_thang` bỏ ghi EXP.
 
 ### 12.5 Câu hỏi MỞ
-1. ~~Nike đo bằng gì?~~ **Chốt [CEO 06/10]: tháp có số tầng; thêm chế độ Tháp cố định 50 tầng, reset theo tháng** ⇒ Nike = top 30% theo tầng cao nhất ở tháp này (§13). Còn mở: "vượt tháp" = chỉ cần top 30% theo tầng, hay phải qua một tầng tối thiểu? (§13 câu 2)
+1. ~~Nike đo bằng gì?~~ **Chốt [CEO 06/10]: tháp có số tầng; thêm chế độ Tháp cố định 50 tầng, reset theo tháng** ⇒ Nike = **vượt hết 50 tầng trong tháng, không xét xếp hạng** (§13) [CEO 06/10 vòng 2].
 2. Thang sao 1/2/4/6/9 cho các huy hiệu đếm tháng (12.3) gật hay sửa?
 3. Bản cứng ★4–5: giữ hay bỏ?
 4. Helios/Chronos/Athena/Zeus: đổi gì không?
 
 ---
 
-## 13. THÁP THÁNG — tháp cố định 50 tầng, reset theo tháng (Thùy 06/10)
-**[CEO]** Tháp có **số tầng**. Cần thêm một chế độ: **tháp cố định 50 tầng, reset theo tháng.** Dùng làm thước đo **Nike** (top 30% mỗi tháng).
-Vị trí: một chế độ mới trong **Chinh phục BK** (khu Học tập), bên cạnh Sinh tồn / Vô tận Normal / Vô tận Hard (`spec-che-do-game.md` §3, §7.4).
+## 13. THÁP THÁNG — tháp cố định 50 tầng, reset theo tháng (Thùy 06/10, đã chốt vòng 2)
+Vị trí: một chế độ mới trong **Chinh phục BK** (khu Học tập), cạnh Sinh tồn / Vô tận Normal (`spec-che-do-game.md` §3, §7.4).
 
-### 13.1 Thiết kế đề xuất [ĐỀ XUẤT — chờ Thùy chỉnh]
-| Mục | Đề xuất | Lý do |
-|---|---|---|
-| Số tầng | **50, cố định** (không phải vô tận) | [CEO] |
-| Reset | **00:00 ngày 01 mỗi tháng (giờ VN)**: tầng về 0, bảng xếp hạng mới; lịch sử tháng cũ giữ lại | [CEO] |
-| Phạm vi | **Tháp tổng của môn × khối** (mọi dạng em đã học theo luật §5 spec-che-do-game: ≥ 1/2 số dạng); chưa có tháp chủ đề tháng | gọn, đủ cho Nike |
-| 1 tầng | **1 câu MCQ**, độ khó tăng dần: tầng 1–15 mức 1–2 · 16–35 mức 2–3 · 36–50 mức 4–5 (khớp quy ước "Hard = mức 4–5") | "tháp" phải khó dần |
-| Đề | **Cùng chuỗi 50 câu cho mọi học sinh cùng khối × môn trong cùng tháng** (cố định lúc đầu tháng) ⇒ bảng xếp hạng công bằng | luật công bằng của tháp |
-| Cách leo | Mỗi lượt thử **1 tầng kế tiếp**: đúng ⇒ lên 1 tầng và **giữ**; sai/hết giờ ⇒ mất lượt (không tụt tầng). Leo **cộng dồn qua các ngày** | giống Hard, chống cày 1 buổi |
-| Giới hạn lượt | **[HỎI] N lượt/ngày** (Hard hiện 3). Với 50 tầng và 30 ngày: 2 lượt/ngày ⇒ tối đa 60 ≥ 50, vừa đủ nên **đề xuất 3 lượt/ngày** (cho phép sai vài lần mà vẫn lên tới đỉnh) | |
-| Giờ/câu | Theo môn như các chế độ khác (Toán 45s, KHTN 30s, Anh 12s); không giảm dần | thống nhất |
-| Xếp hạng | Theo **tầng cao nhất tháng này**; hoà ⇒ ai **đạt tầng đó sớm hơn** | |
-| Chạm tầng 50 | "**Vượt tháp**" tháng đó; tháp khoá, không leo tiếp | |
+### 13.1 Luật đã chốt [CEO]
+| Mục | Chốt |
+|---|---|
+| Phạm vi | **Chỉ tháp tổng** (môn × khối, các dạng em đã học). Không có tháp tháng theo chủ đề |
+| Số tầng · reset | **50 tầng cố định.** Reset 00:00 ngày 01 mỗi tháng (giờ VN): tầng về 0, mọi thưởng tầng mở lại |
+| Lượt leo | **3 lượt/ngày.** Mỗi lượt thử **1 tầng kế tiếp**: đúng ⇒ lên 1 tầng và giữ; sai/hết giờ ⇒ mất lượt, **không tụt tầng**. Leo cộng dồn qua các ngày |
+| **Sai thì ĐỔI CÂU** | Lần thử sau ở tầng đó gặp **câu khác** (cùng tầng/mức). Câu sai **không hiện đáp án chi tiết** (chỉ báo sai) |
+| Thời gian | **Mọi câu đều có giới hạn thời gian** [đề xuất số: theo môn như các chế độ khác — Toán 45s · KHTN 30s · Anh 12s, không giảm dần] |
+| **Thưởng riêng** | **Mỗi tầng qua: 5 xu. Qua tầng 50: thêm 10 xu** ⚠ xem §13.2 — con số rất lớn so với cả hệ thống |
+| **Nike** | **Vượt hết 50 tầng trong tháng ⇒ tháng đó đạt.** Không xét xếp hạng (bỏ "top 30%") |
 
-### 13.2 Liên hệ với Nike và thưởng
-- **Nike (huy hiệu):** tháng đạt khi em **thuộc top 30%** khối × môn theo tầng cao nhất ở Tháp tháng — chỉ xét em **đã leo ≥ 1 tầng** trong tháng. Huy hiệu **không thưởng** [CEO], chỉ sưu tập.
-- **Thưởng của chính Tháp tháng (EXP/xu):** [MỞ — thuộc bước ③ GAME]. Gợi ý để Thùy cân: thưởng theo **mốc tầng** (10/20/30/40/50) hoặc không thưởng (chỉ xếp hạng + Nike). Chưa đề xuất số.
-- Thành tựu: [ĐỀ XUẤT] thêm thành tựu **một lần/mùa** "Chạm tầng 50 trong tháp tháng" nếu Thùy muốn (hiện danh sách 15 loại chưa có — xin ý kiến).
+Hệ quả thiết kế [CTO]:
+- Không còn xếp hạng để bảo vệ ⇒ **bỏ ý "cùng một chuỗi 50 câu cho cả khối"**. Mỗi tầng có **một kho câu** theo mức độ (MCQ, chọn qua `_kho_dk_mcq_sql`); mỗi lần thử rút **câu chưa gặp trong tháng** ở tầng đó. Độ khó tăng dần [ĐỀ XUẤT]: tầng 1–15 mức 1–2 · 16–35 mức 2–3 · 36–50 mức 4–5.
+- Kho cần đủ lớn: tầng nào cũng cần dư câu cho các lần "đổi câu" ⇒ **≥ 8 câu/tầng ⇒ ≥ 400 câu MCQ đã duyệt cho mỗi môn × khối** (cần đối chiếu số câu MCQ sẵn có trước khi bật).
+- Cần **trả thưởng ở máy chủ** (ghi sổ xu khi máy chủ chấm đúng), không để máy học sinh khai tầng.
+- Bị khoá/chưa mở nếu em học chưa đủ dạng (luật §5 spec-che-do-game: ≥ 1/2 số dạng) — không để tháp rỗng.
 
-### 13.3 Điều kiện kỹ thuật (để Nike chạy thật) ⛔
-Đấu Từ hiện lưu hồ sơ theo **thiết bị** và tin điểm do client khai ⇒ Tháp tháng bắt buộc có: (1) **hồ sơ theo tài khoản học sinh**; (2) **máy chủ giữ đáp án** — app chỉ nhận câu hỏi tầng kế tiếp, nộp đáp án, máy chủ chấm và ghi tầng (không cho client tự khai tầng); (3) bảng `thap_thang_tien_do(hoc_sinh_id, mon, khoi, thang, tang_cao_nhat, dat_tang_at)` + `thap_thang_luot(…)` ghi lượt (sự kiện thật, đúng §1.5); (4) hàm `fn_thap_thang_xep_hang(mon, khoi, ym)` cho Nike và bảng xếp hạng; (5) bộ đề 50 câu cố định mỗi tháng/khối/môn sinh ở DB (`fn_thap_thang_de`). Tính ở Postgres (§2.0), không tính ở client. Nike giữ "Sắp có" tới lúc xong.
+### 13.2 ⚠ Thưởng "mỗi tầng 5 xu" — tính thử (đọc đúng chữ)
+- Đọc đúng chữ: **50 tầng × 5 xu + 10 xu = 260 xu/tháng** nếu qua hết ⇒ ≈ **2.600 xu/năm học (10 tháng)**, ≈ **3.100/năm (12 tháng)**.
+- So sánh (tối đa mỗi tháng): nhiệm vụ 20 · vòng quay 10 · thành tựu ≈ 25 (305/năm) ⇒ **tổng mọi nguồn khác ≈ 55 xu/tháng**, mà **tháp một mình 260 xu ≈ 4,7 lần**. Giá quà trung vị **22 xu** ⇒ tháp cho ≈ **12 quà/tháng**/em.
+- Mức khó thực tế: dùng đủ 3 lượt × 30 ngày = 90 lần thử, phải **đúng ≥ 50** ⇒ cần đúng ≥ 56% (tháng 28 ngày: 84 lần ⇒ ≥ 60%), trong khi **tầng cao khó dần** ⇒ phần lớn học sinh dừng ở 20–35 tầng ⇒ mức thực tế vẫn 100–175 xu/tháng.
+- **Các cách đọc khác** (Thùy chọn):
+  | Cách | Công thức | /tháng (qua hết) | /năm (10 tháng) |
+  |---|---|---|---|
+  | **A** đúng chữ | 5 xu × 50 + 10 | **260** | 2.600 |
+  | **B** 5 xu mỗi mốc **10 tầng** (10/20/30/40/50) + 10 xu qua tầng 50 | 5 × 5 + 10 | **35** | 350 |
+  | **C** 5 **EXP** mỗi tầng + 10 xu qua tầng 50 | 250 EXP + 10 xu | **12,5** | 125 |
+  | **D** 0,5 xu mỗi tầng (= 50 EXP) + 10 xu qua tầng 50 | 25 + 10 | **35** | 350 |
+  [ĐỀ XUẤT: **B** hoặc **D** — ≈ 35 xu/tháng tối đa; vẫn lớn nhưng cùng cỡ các nguồn khác]
+- Ghi chú: quyết định nguyên tắc 06/10 là "mỗi hoạt động có trần riêng" ⇒ tháp phải có trần riêng (nếu giữ A thì trần tự nhiên 260 chính là trần).
+
+### 13.3 Kỹ thuật (để chạy thật) ⛔
+Đấu Từ đang lưu hồ sơ theo **thiết bị**, điểm do client khai ⇒ Tháp tháng bắt buộc có: (1) **hồ sơ theo tài khoản học sinh**; (2) **máy chủ giữ đáp án** — app chỉ nhận câu, nộp lựa chọn, máy chủ chấm/ghi tầng + trả xu; (3) bảng `thap_thang_tien_do(hoc_sinh_id, mon, khoi, thang, tang_hien_tai, qua_50_at)` + `thap_thang_luot(…, tang, cau_id, dung, thoi_gian)` (sự kiện thật, §1.5) + sổ cau đã gặp trong tháng; (4) hàm `fn_thap_thang_bat_dau_luot` (rút câu, trừ lượt) / `fn_thap_thang_nop` (chấm, lên tầng, ghi xu trong cùng transaction); (5) Nike đọc `qua_50_at` trong tháng. Tính ở Postgres (§2.0). Nike giữ "Sắp có" tới lúc xong.
 
 ### 13.4 Câu hỏi MỞ
-1. Phạm vi: chỉ **tháp tổng**, hay cũng có tháp tháng theo chủ đề? (đề xuất: chỉ tháp tổng)
-2. **"Vượt tháp" của Nike** = chỉ cần top 30% theo tầng (cả khi chưa tới tầng 50)? Hay phải đạt tầng tối thiểu (ví dụ ≥ 20)? (đề xuất: chỉ top 30%, nhưng phải leo ≥ 1 tầng)
-3. Số lượt leo mỗi ngày (đề xuất 3).
-4. Tháp tháng **thay** Vô tận Hard (vì quá giống: 1 tầng = 1 câu, cộng dồn, 3 lượt/ngày) hay đứng **cạnh** Hard? (đề xuất: thay Hard — bớt một chế độ gần như trùng; Hard chưa làm nên chưa mất gì)
-5. Thưởng của Tháp tháng (bước ③).
+1. **Thưởng: A, B, C hay D?** (§13.2) — đây là quyết định lớn nhất.
+2. Tháp tháng **thay** Vô tận Hard (quá giống) hay đứng **cạnh**? [ĐỀ XUẤT: thay]
+3. Còn bảng xếp hạng tháp (hiển thị "tầng cao nhất") không, dù Nike không cần?
+4. Giới hạn thời gian/câu: theo môn (45/30/12s) gật không?
