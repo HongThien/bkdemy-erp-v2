@@ -35593,3 +35593,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Làm: `api/hs-reset-mk.mjs` (service role; quyền = RPC `co_quyen_ghi('hs')` chạy bằng token người bấm; pass = mã HS; khối 10–12 buộc đổi) + `datLaiMatKhauHS` (`src/lib/nhansu.ts`) + nút trong modal sửa HS (`HocSinhScreen.tsx`).
 - Cần: ERP deploy ở project có `SUPABASE_SERVICE_ROLE` (cùng cron provision) — Thùy tự bấm Create Deployment. Chưa test end-to-end (cần deploy).
 - Đã reset tay HS0733 (Vũ Trung Hiếu 10B1) bằng scripts/hs_reset_mk.mjs.
+
+- **Thùy chốt HUY HIỆU (06/10, 4 cái):** Phoenix = mỗi lần hạng MT tăng = 1 lần đạt, giữ top 10 cũng tính; Hercules = 100% hoàn thành 1 chủ đề, càng nhiều chủ đề càng nhiều sao; Hephaestus = ngày cuối mỗi tháng không còn dạng yếu; Nike = vượt tháp mỗi tháng thuộc top 30% (chặn bởi game chưa có hồ sơ theo tài khoản). Còn 6 câu [HỎI] trong spec §12; Helios/Chronos/Athena/Zeus chưa nói.
