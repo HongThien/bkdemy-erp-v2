@@ -13,6 +13,7 @@
 | 2 | **Hiện top 20 + vị trí của chính em; vị trí của em CHỈ MÌNH THẤY.** ⇒ bỏ nguyên tắc "ẩn số hạng khi ở nửa dưới": em xếp hạng bao nhiêu cũng hiện số thật, nhưng riêng tư |
 | 3 | **Thẻ = 1 ô lớn trong lưới** (thay ô "Bảng xếp hạng" cũ; cả cấp 2 và cấp 3) — không còn "thẻ rộng dưới Thế giới BK" |
 | 4 | Cập nhật: bảng tuần/tháng mỗi ngày 05:00; bảng "hôm nay" của game cập nhật ngay |
+| 4b | **Theo MÔN** [CEO 06/10]: bảng đi theo môn như cả giao diện (đổi môn đổi bảng); bảng không gắn môn (A5 chuỗi, E1 huy hiệu) hiện ở MỌI môn. **B1 MT Toàn BK: so thẳng điểm** (tương đối, không quá quan trọng) |
 | 5 | Các nguyên tắc còn lại ở §2 (tên kèm lớp, ẩn tài khoản test, chỉ xếp em có dữ liệu thật, hoà hạng ai sớm hơn đứng trước, tính ở Postgres) **giữ** |
 
 **Hệ quả / điểm CTO cần làm rõ:**
