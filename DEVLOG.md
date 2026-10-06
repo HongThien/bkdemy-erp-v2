@@ -35601,3 +35601,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Thùy (06/10):** tháp có số tầng; thêm chế độ **Tháp cố định 50 tầng, reset theo tháng** (đo Nike). CTO viết spec §13: 1 tầng = 1 câu mức tăng dần, cùng đề cho cả khối, leo cộng dồn, 3 lượt/ngày (đề xuất), xếp theo tầng cao nhất; đề xuất thay Vô tận Hard (quá giống). Cần hồ sơ theo tài khoản + máy chủ giữ đáp án trước khi Nike chạy thật.
 
 - **Thùy chốt THÁP THÁNG (06/10):** chỉ tháp tổng; **Nike = vượt hết 50 tầng trong tháng, không xét xếp hạng**; 3 lượt/ngày, sai thì ĐỔI CÂU, không hiện đáp án chi tiết, mọi câu có giờ; **thưởng riêng: mỗi tầng 5 xu, qua tầng 50 thêm 10 xu** (đọc đúng chữ = 260 xu/tháng ≈ 4,7 lần mọi nguồn khác cộng lại ⇒ CTO hỏi lại, đề xuất 35 xu/tháng). Spec §13 viết lại.
+
+- **Thùy (06/10):** tạm ĐÓNG tháp Hard; tháp 50 tầng mở SAU; hiện chỉ mở tháp Survival (spec-kinh-te §13 giữ làm thiết kế, chưa build; Nike Sắp có). **Yêu cầu mới:** thẻ BẢNG XẾP HẠNG ở màn chính chứa mọi xếp hạng mọi hoạt động ở BK — CTO lập danh sách dự kiến ở spec-bang-xep-hang.md (5 nhóm A–E, ~25 bảng) để Thùy duyệt.

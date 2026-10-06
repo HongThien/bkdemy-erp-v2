@@ -237,6 +237,8 @@ Huy hiệu đếm tháng (Helios, Chronos, Athena, Zeus, Hephaestus, Nike) và P
 ## 13. THÁP THÁNG — tháp cố định 50 tầng, reset theo tháng (Thùy 06/10, đã chốt vòng 2)
 Vị trí: một chế độ mới trong **Chinh phục BK** (khu Học tập), cạnh Sinh tồn / Vô tận Normal (`spec-che-do-game.md` §3, §7.4).
 
+> **[CEO 06/10 vòng 3] ĐÓNG tháp Hard (mở sau). Tháp 50 tầng cũng MỞ SAU. Hiện chỉ mở tháp SINH TỒN (Survival).** ⇒ Mục 13 là thiết kế đã chốt nhưng **chưa build**; **Nike giữ "Sắp có"** và chưa cần hồ sơ theo tài khoản cho tháp 50 tầng. Câu hỏi thưởng A/B/C/D (§13.2) để sau, khi mở tháp.
+
 ### 13.1 Luật đã chốt [CEO]
 | Mục | Chốt |
 |---|---|
