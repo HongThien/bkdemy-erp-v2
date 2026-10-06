@@ -33,6 +33,8 @@ import { chonNhanVat, nhanVatCuaToi } from '../../lib/giaodien_hs'
 import { NhungHet, type NhungDau } from './phieuluu/nhungDau'
 import { BaoLuotHS } from './BaoLuot'
 import GopYHS from './GopYHS'
+import { MungMocChuoi } from './ChuoiHS'
+import { chuoiCuaToi, type Chuoi } from '../../lib/chuoi'
 import { soGopYChuaDoc } from '../../lib/gopy_hs'
 import { TheTran, PHIEN, CLS_PHIEN, NgocChu, NUT_TRAN, HOP_LOI_GIAI, FONT_TRAN } from './skin/KhungTran'
 import { hocTapBat, phieuLuuBat } from './phieuluu/coBat'
@@ -459,7 +461,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [duLieu912, setDuLieu912] = useState<Home912 | null>(null)
   // số lời trả lời góp ý em chưa đọc (chấm đỏ ở menu ⋯) — đọc 1 lần lúc mở app; mở màn Góp ý ⇒ DB đánh dấu đã đọc, về Home thì về 0
   const [gopYMoi, setGopYMoi] = useState(0)
+  // CHUỖI LÀM BÀI (spec-v1 §3): đọc lúc mở app + mỗi lần quay về màn chính (vừa luyện xong thì lửa sáng ngay). Tải lại NỀN — giữ số cũ tới khi có số mới.
+  const [chuoi, setChuoi] = useState<Chuoi | null | undefined>(undefined)
   useEffect(() => { soGopYChuaDoc().then(setGopYMoi).catch(() => {}) }, [])
+  useEffect(() => { if (direct === null) chuoiCuaToi().then(setChuoi).catch(() => setChuoi((c) => c ?? null)) }, [direct])
   useEffect(() => { khoiCuaHS().then((k) => setNhom912(!!k && KHOI_CHON_SKIN.has(k))).catch(() => setNhom912(false)) }, [])
   useEffect(() => {
     if (!nhom912) return
@@ -787,15 +792,16 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
           } satisfies HomeCard
         }), ...theCardHTD])
     // Lớp 9–12: cùng danh sách ô (giữ nguyên chức năng từng khối), khác màn vẽ — HomeHS912 + skin tự chọn.
-    if (nhom912 && giaoDien !== undefined) return <HomeHS912 giaoDien={giaoDien} onDaLuu={setGiaoDien} data={duLieu912}
+    if (nhom912 && giaoDien !== undefined) return <><MungMocChuoi c={chuoi} hsId={hocSinhId} /><HomeHS912 giaoDien={giaoDien} onDaLuu={setGiaoDien} data={duLieu912}
       hoTen={hoTen} maHS={maHS} lopMon={lopMon} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
       mons={lopMons} mon={monChon} onChonMon={doiMon} demMon={demMon}
       lich={lichMon} soRetest={boTro.soRetest} cards={cards}
       onHopThu={() => setDirect('hop_thu')} onDoiMK={() => setDoiMK(true)} onThoat={() => supabase.auth.signOut()}
       onLich={() => setDirect('lich_bo_tro')} onRetest={() => setDirect('retest')} onHoSo={() => setDirect('ho_so')} gioiTinh={gioiTinh}
       onGopY={() => { setTuHoSo(false); setDirect('gop_y') }} gopYMoi={gopYMoi}
+      chuoi={chuoi} onLuyenChuoi={() => setDirect('tu_luyen_chon')}
       theGioi={tgHome} onTheGioi={() => setDirect('the_gioi')}
-      rank={rankHome?.toi ? { bac: rankHome.toi.bac, ten: rankHome.toi.ten_bac, sao: rankHome.toi.sao } : null} onRank={moTuHome('rank')} />
+      rank={rankHome?.toi ? { bac: rankHome.toi.bac, ten: rankHome.toi.ten_bac, sao: rankHome.toi.sao } : null} onRank={moTuHome('rank')} /></>
     return <HomeHS hoTen={hoTen} maHS={maHS} lopMon={lopMon} gioiTinh={gt} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
       mons={lopMons} mon={monChon} onChonMon={doiMon}
       lich={lichMon} soRetest={boTro.soRetest} cards={cards}

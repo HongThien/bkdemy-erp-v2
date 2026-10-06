@@ -22,6 +22,8 @@ import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { luuGiaoDien, type Home912 } from '../../lib/giaodien_hs'
 import { THE, HEAD, MAU, NhomHS, useHeThongToi, useManDoc, useMedia } from './skin/KhungHS'
 import { TamDoHoa } from './phieuluu/DoHoa'
+import { NutChuoi, TamChuoi } from './ChuoiHS'
+import type { Chuoi } from '../../lib/chuoi'
 import type { TheGioiHome } from '../../lib/thegioi'
 import { TenLop, moTaTin } from './thegioi/TheGioiHS'
 import { SKINS, SKIN_MAC_DINH, laySkin, cheDoThat, bienCss, layHinhNen, nenCua, type GiaoDien, type CheDo, type Skin } from './skin/registry'
@@ -63,7 +65,8 @@ type HomeProps = {
   demMon?: Record<string, number> // số việc đang chờ theo môn (HocSinhApp đếm) ⇒ chấm số trên nút môn khác
   chuaDoc: number; lich: LichBoTro[]; soRetest: number; cards: HomeCard[]; data: Home912 | null
   onHopThu: () => void; onDoiMK: () => void; onThoat: () => void; onLich: () => void; onRetest: () => void
-  onGopY?: () => void; gopYMoi?: number // Góp ý & báo lỗi (menu ⋯) + số lời trả lời em chưa đọc ⇒ chấm đỏ trên ⋯
+  onGopY?: () => void; gopYMoi?: number
+  chuoi?: Chuoi | null; onLuyenChuoi?: () => void // chuỗi làm bài (spec-v1 §3): ngọn lửa đầu màn chính · undefined = đang tải, null = lỗi (ẩn) // Góp ý & báo lỗi (menu ⋯) + số lời trả lời em chưa đọc ⇒ chấm đỏ trên ⋯
   onHoSo?: () => void // có ⇒ bấm avatar mở HỒ SƠ (DON-HANG-GAMI-HS Đơn 4); đổi ảnh chuyển vào trong Hồ sơ
   gioiTinh?: 'nam' | 'nu' | null // chỉ để chọn NHÂN VẬT của style — không đổi màu theo giới tính
   theGioi?: TheGioiHome | null; onTheGioi?: () => void // thẻ Thế giới BK (thay thẻ "Việc cần làm" — Thùy 29/09)
@@ -177,8 +180,11 @@ const NUT_TRON: CSSProperties = { ...THE, clipPath: 'none', borderLeft: 'var(--s
 function CumNut({ p, onHinhNen, nutRef }: { p: HomeProps; onHinhNen: () => void; nutRef: RefObject<HTMLButtonElement> }) {
   const [menu, setMenu] = useState(false)
   const [doHoa, setDoHoa] = useState(false) // chỉnh đồ hoạ bản đồ 3D (spec-v1-app-hs §4.5)
+  const [moChuoi, setMoChuoi] = useState(false)
   return (
     <>
+        {'chuoi' in p && <NutChuoi c={p.chuoi} onClick={() => p.chuoi && setMoChuoi(true)} style={NUT_TRON} />}
+        {moChuoi && p.chuoi && <TamChuoi c={p.chuoi} onDong={() => setMoChuoi(false)} onLuyen={p.onLuyenChuoi && (() => { setMoChuoi(false); p.onLuyenChuoi!() })} />}
         <button ref={nutRef} onClick={onHinhNen} className="flex h-10 shrink-0 items-center gap-1.5 px-3 text-[13px] font-bold active:scale-95"
           style={NUT_TRON} aria-label="Đổi giao diện và hình nền">
           <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>

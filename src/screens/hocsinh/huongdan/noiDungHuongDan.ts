@@ -255,7 +255,7 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
 
   // ───────────────────────── THÀNH TÍCH & PHẦN THƯỞNG ─────────────────────────
   {
-    id: 'chuoi', nhom: 'thuong', ten: 'Chuỗi làm bài', icon: { o: 'btvn', emoji: '🔥' }, sap: true,
+    id: 'chuoi', nhom: 'thuong', ten: 'Chuỗi làm bài', icon: { o: 'btvn', emoji: '🔥' },
     tomTat: 'Số ngày liên tiếp em có ít nhất một lượt học thật.',
     game: { ten: 'Ngọn lửa chuỗi', tomTat: 'Giữ lửa mỗi ngày để lên mốc chuỗi.' },
     khoi: [
@@ -271,7 +271,11 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
         'Hết thẻ thì chuỗi đứt và bắt đầu lại.',
       ] },
       { tieu: 'Các mốc', y: ['Mốc chuỗi: 3, 7, 14, 30, 50, 100, 200 và 365 ngày. Các mốc lớn được đưa tin lên Thế giới BK.'] },
-      { tieu: 'Tình trạng', loai: 'luuy', y: ['Phần tính chuỗi đã hoạt động ở hệ thống; màn hiển thị ngọn lửa trên màn chính đang được hoàn thiện.'] },
+      { tieu: 'Xem chuỗi ở đâu', y: [
+        'Ngọn lửa và số ngày ở góc trên màn chính. Lửa xám nghĩa là hôm nay em chưa có lượt được tính.',
+        'Bấm vào ngọn lửa để xem 7 ngày gần nhất, kỷ lục, số thẻ đóng băng còn lại và ngày lỡ còn sửa được.',
+        'Chạm mốc thì app mừng em một lần.',
+      ] },
     ],
   },
   {
