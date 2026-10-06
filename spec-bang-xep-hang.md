@@ -4,14 +4,36 @@
 > Nhãn dữ liệu: ✅ đã có/đo được ngay · 🔧 cần viết hàm/ghi sự kiện · ⛔ chờ hệ thống khác · 🚫 đề xuất KHÔNG làm.
 > Nhãn: **[CÓ SẴN]** đã có màn/hàm · **[MỚI]** chưa có.
 
+## 0. ĐÃ DUYỆT (Thùy 06/10) — thay cho mọi chỗ mâu thuẫn bên dưới
+**8 bảng V1:** **A1** Siêng luyện · **A2** Tổng câu đúng · **A3** Tỉ lệ đạt · **A4** Master chủ đề · **A5** Chuỗi làm bài · **B1** MT tháng · **C1** Leo tháp Sinh tồn · **E1** Bộ sưu tập huy hiệu.
+**Chưa duyệt ⇒ ngoài V1:** A6, A7, B2–B6, C2–C7, D1–D4, E2, E3.
+| # | Quyết định [CEO] |
+|---|---|
+| 1 | **Phạm vi:** mỗi bảng **luôn có 2 tab: Khối mình · Toàn BK** (không có "Lớp mình") |
+| 2 | **Hiện top 20 + vị trí của chính em; vị trí của em CHỈ MÌNH THẤY.** ⇒ bỏ nguyên tắc "ẩn số hạng khi ở nửa dưới": em xếp hạng bao nhiêu cũng hiện số thật, nhưng riêng tư |
+| 3 | **Thẻ = 1 ô lớn trong lưới** (thay ô "Bảng xếp hạng" cũ; cả cấp 2 và cấp 3) — không còn "thẻ rộng dưới Thế giới BK" |
+| 4 | Cập nhật: bảng tuần/tháng mỗi ngày 05:00; bảng "hôm nay" của game cập nhật ngay |
+| 5 | Các nguyên tắc còn lại ở §2 (tên kèm lớp, ẩn tài khoản test, chỉ xếp em có dữ liệu thật, hoà hạng ai sớm hơn đứng trước, tính ở Postgres) **giữ** |
+
+**Hệ quả / điểm CTO cần làm rõ:**
+- **"Toàn BK"** của bảng gắn môn (A1–A4, B1, C1) = mọi khối của **môn đó**; của bảng không gắn môn (A5 chuỗi, E1 huy hiệu) = mọi học sinh.
+- **Riêng tư thứ hạng:** hàm trả **top 20 + hạng của CHÍNH người gọi**; không có đường xem hạng người khác ngoài top 20. Top 20 "Toàn BK" hiện tên + lớp của học sinh khối khác (cùng chuẩn hiển thị của Thế giới BK; có chế độ hiện Mã HS).
+- **B1 Toàn BK:** MT mỗi khối thi **đề khác nhau** ⇒ "Toàn BK" so điểm giữa các đề khác nhau — **[HỎI]** chấp nhận so thẳng điểm, hay xếp theo **phân vị trong khối của mình**? (đề xuất: so thẳng điểm cho đơn giản, ghi chú "đề mỗi khối khác nhau")
+- **A1** phụ thuộc định nghĩa "lượt đạt" (Luyện dạng yếu đúng ≥ 7/10, thoả lượt học thật) của hệ nhiệm vụ mới — **chưa build**; bảng tạm đếm trực tiếp từ bài tự luyện đủ điều kiện, sau đổi nguồn.
+- **C1 là bảng game DUY NHẤT của V1 và đang ⛔**: Đấu Từ lưu hồ sơ theo thiết bị, điểm do client khai ⇒ phải làm **hồ sơ Đấu Từ theo tài khoản + máy chủ chấm/ghi tầng tháp Sinh tồn** trước. Đây là việc **nặng nhất** của cả thẻ. Cho tới lúc đó C1 hiện "Sắp có".
+- **E1** = tổng sao huy hiệu trong mùa (huy hiệu không thưởng, chỉ sưu tập); đợi chốt luật huy hiệu (§12 spec-kinh-te-nhiem-vu.md).
+**Thứ tự build [ĐỀ XUẤT]:** ① DB: `bxh_loai` + `fn_bxh(loai, mon, pham_vi, ky)` + 7 bảng không-game (A1–A5, B1, E1) · ② app: ô lớn + màn Bảng xếp hạng (nhóm → bảng → Khối/Toàn BK) + Hướng dẫn chơi + tutorial · ③ C1 sau khi hồ sơ Đấu Từ theo tài khoản xong.
+
+---
+
 ## 1. Thẻ ở màn chính
-- **Vị trí [ĐỀ XUẤT]:** thẻ **rộng, nổi bật** ngay dưới thẻ Thế giới BK (không nằm lẫn trong lưới ô). Thay ô "Bảng xếp hạng" cũ (hiện chỉ cấp 3, "Thi đua tự luyện") — **áp cho cả cấp 2 lẫn cấp 3**.
+- ~~**Vị trí [ĐỀ XUẤT]:** thẻ rộng ngay dưới thẻ Thế giới BK~~ **[THAY bởi §0 #3: 1 ô lớn trong lưới]**. Thay ô "Bảng xếp hạng" cũ (hiện chỉ cấp 3, "Thi đua tự luyện") — **áp cho cả cấp 2 lẫn cấp 3**.
 - **Dòng trạng thái trên thẻ:** thứ hạng nổi bật nhất của em hôm nay (ví dụ "Em đứng hạng 4 khối ở Siêng luyện tháng này"), hoặc "Chưa có hạng — làm 1 lượt luyện để vào bảng".
 - **Bên trong:** chọn **nhóm** (Học tập · Kết quả lớp · Game · Lớp với lớp · Sưu tập) → chọn **bảng** → chọn **phạm vi** (Lớp mình · Khối mình · Toàn BK nếu bảng cho phép) và **kỳ** (Hôm nay · Tuần · Tháng · Mùa) → danh sách.
 
 ## 2. Nguyên tắc hiển thị [ĐỀ XUẤT — chờ gật]
-1. **Top 10 + vị trí của em** (kèm 1 người trên và 1 người dưới em). Không phô danh sách dài.
-2. **Không công khai hạng thấp** (đồng luật A8 của Thế giới BK "không hiện điểm kém/hạng thấp"): nếu em ở **nửa dưới** thì **không ghi số hạng**, chỉ ghi "Em cách top 30% còn N điểm" — tạo động lực, không gây xấu hổ.
+1. ~~**Top 10 + vị trí của em**~~ **[THAY: Top 20, §0 #2]** (kèm 1 người trên và 1 người dưới em). Không phô danh sách dài.
+2. ~~**Không công khai hạng thấp**~~ **[THAY bởi §0 #2: hiện hạng thật, riêng tư]** (đồng luật A8 của Thế giới BK "không hiện điểm kém/hạng thấp"): nếu em ở **nửa dưới** thì **không ghi số hạng**, chỉ ghi "Em cách top 30% còn N điểm" — tạo động lực, không gây xấu hổ.
 3. Tên luôn kèm **lớp**; có chế độ hiện **Mã HS** thay tên (đã có ở Thế giới BK). **Ẩn tài khoản test** (`_hs_hien`).
 4. **Theo môn × khối** là mặc định (một môn = một trung tâm, CLAUDE §1.6); bảng không-gắn-môn (chuỗi, vào app, game…) ghi "mọi môn".
 5. Chỉ xếp những em **có dữ liệu thật** trong kỳ (không có dòng = không có mặt trong bảng; không phải 0 điểm — §1.5).

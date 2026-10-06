@@ -35603,3 +35603,5 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Thùy chốt THÁP THÁNG (06/10):** chỉ tháp tổng; **Nike = vượt hết 50 tầng trong tháng, không xét xếp hạng**; 3 lượt/ngày, sai thì ĐỔI CÂU, không hiện đáp án chi tiết, mọi câu có giờ; **thưởng riêng: mỗi tầng 5 xu, qua tầng 50 thêm 10 xu** (đọc đúng chữ = 260 xu/tháng ≈ 4,7 lần mọi nguồn khác cộng lại ⇒ CTO hỏi lại, đề xuất 35 xu/tháng). Spec §13 viết lại.
 
 - **Thùy (06/10):** tạm ĐÓNG tháp Hard; tháp 50 tầng mở SAU; hiện chỉ mở tháp Survival (spec-kinh-te §13 giữ làm thiết kế, chưa build; Nike Sắp có). **Yêu cầu mới:** thẻ BẢNG XẾP HẠNG ở màn chính chứa mọi xếp hạng mọi hoạt động ở BK — CTO lập danh sách dự kiến ở spec-bang-xep-hang.md (5 nhóm A–E, ~25 bảng) để Thùy duyệt.
+
+- **Thùy DUYỆT thẻ BẢNG XẾP HẠNG (06/10):** 8 bảng V1 = A1 Siêng luyện · A2 Tổng câu đúng · A3 Tỉ lệ đạt · A4 Master chủ đề · A5 Chuỗi làm bài · B1 MT tháng · C1 Tháp Sinh tồn · E1 Huy hiệu. Mỗi bảng luôn có Khối mình + Toàn BK; hiện top 20 + hạng của chính mình (chỉ mình thấy); 1 ô lớn trong lưới; cập nhật hằng ngày 05:00. C1 chặn bởi hồ sơ Đấu Từ theo tài khoản. spec-bang-xep-hang.md §0.
