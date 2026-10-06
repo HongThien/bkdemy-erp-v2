@@ -130,7 +130,7 @@ export function HoSoView(p: HoSoViewProps) {
         <div className="grid grid-cols-3 gap-2 text-center">
           {([
             ['Đua tháng', p.rank?.dua_thang ? `#${p.rank.dua_thang.hang}` : '–', p.rank?.dua_thang ? `/${p.rank.dua_thang.so_em_co_diem}` : ''],
-            ['Chặng', nvMo ? `cấp ${nvMo.chang.cap}` : '–', nvMo ? `/${nvMo.cau_hinh.cap_max}` : ''],
+            ['Điểm học tập', nvMo ? nvMo.dht.so_du.toLocaleString('vi-VN') : '–', ''],
             ['Bản cứng', p.hs ? String(p.hs.ban_cung_da_nhan) : '–', ''],
           ] as const).map(([nhan, so1, phu]) => (
             <div key={nhan} className="rounded-2xl py-2.5" style={{ background: MAU.surface2 }}>

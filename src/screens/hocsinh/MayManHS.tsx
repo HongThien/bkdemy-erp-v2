@@ -22,13 +22,14 @@ const O_CU: O[] = [
   { exp: 50,  mau: '#FFEAA5', icon: '⭐', nhan: '50 EXP'  },
   { exp: 150, mau: '#D6C8FF', icon: '🎉', nhan: '150 EXP' },
 ]
-// Luật nhiệm vụ: 5 ô, jackpot 200 kẹp giữa 2 ô phổ biến.
+// Luật nhiệm vụ (06/10): 6 ô 10/20/30/50/100/200 — giải hiếm 200 và 100 xen giữa các ô phổ biến.
 const O_MOI: O[] = [
-  { exp: 30,  mau: '#BFE0FF', icon: '🎁', nhan: '30 EXP' },
-  { exp: 200, mau: '#FFD1E1', icon: '💎', nhan: '200 EXP' },
-  { exp: 20,  mau: '#FFEAA5', icon: '⭐', nhan: '20 EXP' },
-  { exp: 100, mau: '#D6C8FF', icon: '🎉', nhan: '100 EXP' },
-  { exp: 50,  mau: '#C9F2D5', icon: '🍭', nhan: '50 EXP' },
+  { exp: 10,  mau: '#C9F2D5', icon: '🍭', nhan: '10 EXP' },
+  { exp: 200, mau: O_CU[1].mau, icon: '💎', nhan: '200 EXP' },
+  { exp: 20,  mau: O_CU[2].mau, icon: '⭐', nhan: '20 EXP' },
+  { exp: 100, mau: O_CU[3].mau, icon: '🎉', nhan: '100 EXP' },
+  { exp: 30,  mau: O_CU[0].mau, icon: '🎁', nhan: '30 EXP' },
+  { exp: 50,  mau: O_CU[1].mau, icon: '🍀', nhan: '50 EXP' },
 ]
 
 function Wheel({ goc, size, O_LIST }: { goc: number; size: number; O_LIST: O[] }) {
@@ -104,7 +105,7 @@ export default function MayManHS({ onXong, onNhiemVu }: { gioiTinh: 'nam' | 'nu'
   return (
     <ManHS>
       <DauTrangHS tieuDe="May mắn hôm nay" onBack={onXong}
-        phu={d?.che_do === 'nhiem_vu' ? 'Mỗi ngày 1 lượt — xong 2 nhiệm vụ ngày để mở khoá' : 'Mỗi ngày 1 lượt — luyện chăm để mở khoá'} />
+        phu={d?.che_do === 'nhiem_vu' ? 'Mỗi ngày 1 lượt — có 1 lượt Luyện dạng yếu đạt để mở khoá' : 'Mỗi ngày 1 lượt — luyện chăm để mở khoá'} />
 
       {/* Trạng thái điều kiện — pill mềm (màu ngữ nghĩa: đủ = xanh, chưa = cam) */}
       <div className="px-3.5 py-2.5" style={{ ...THE_TRON, background: du ? 'rgba(34,160,107,0.16)' : 'rgba(224,144,30,0.16)', border: `1.5px solid ${du ? MAU.dung : MAU.canhBao}` }}>
@@ -112,8 +113,8 @@ export default function MayManHS({ onXong, onNhiemVu }: { gioiTinh: 'nam' | 'nu'
           : d.che_do === 'nhiem_vu' ? (
             <div className="flex items-center gap-2">
               <p className="min-w-0 flex-1 text-[12.5px] font-extrabold" style={{ color: du ? MAU.dung : MAU.canhBao }}>
-                {du ? `✓ Đã xong ${d.du_dieu_kien.so_nv} nhiệm vụ ngày hôm nay${daQuay ? ' · đã quay hôm nay' : ' · quay ngay!'}`
-                    : `🎯 Xong ${d.du_dieu_kien.can ?? 2} nhiệm vụ ngày hôm nay để mở khoá quay (đang ${d.du_dieu_kien.so_nv ?? 0}/${d.du_dieu_kien.can ?? 2}).`}
+                {du ? `✓ Hôm nay em đã có ${d.du_dieu_kien.so_nv} lượt Luyện dạng yếu đạt${daQuay ? ' · đã quay hôm nay' : ' · quay ngay!'}`
+                    : '🎯 Làm 1 lượt Luyện dạng yếu đạt (đúng từ 7/10 câu) để mở khoá quay.'}
               </p>
               {onNhiemVu && <button onClick={onNhiemVu} className="shrink-0 rounded-full px-3 py-1 text-[12px] font-extrabold" style={{ background: MAU.acc, color: MAU.accInk }}>Nhiệm vụ →</button>}
             </div>
@@ -196,7 +197,7 @@ export default function MayManHS({ onXong, onNhiemVu }: { gioiTinh: 'nam' | 'nu'
             </div>
             <p className="mt-3 text-[22px] font-extrabold" style={{ ...HEAD, color: MAU.ink }}>Chúc mừng!</p>
             <p className="text-[18px] font-black" style={{ color: MAU.acc }}>+{kq.exp} EXP May Mắn</p>
-            <p className="mt-2 text-[12.5px]" style={{ color: MAU.muted }}>{d?.che_do === 'nhiem_vu' ? 'EXP này đã được đổi ra xu trong Ví. Mai làm nhiệm vụ để quay tiếp nhé!' : 'Mai luyện tiếp để có thêm 1 lượt quay nhé!'}</p>
+            <p className="mt-2 text-[12.5px]" style={{ color: MAU.muted }}>{d?.che_do === 'nhiem_vu' ? 'EXP này đã được đổi ra xu trong Ví (tối đa 10 xu mỗi tháng từ vòng quay). Mai luyện tiếp để quay nhé!' : 'Mai luyện tiếp để có thêm 1 lượt quay nhé!'}</p>
             <NutHS onClick={() => setKq(null)} className="mt-4 w-full">Tuyệt! ♡</NutHS>
           </div>
         </div>

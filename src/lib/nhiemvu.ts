@@ -1,26 +1,26 @@
 // ============================================================================
-// nhiemvu.ts — NHIỆM VỤ theo môn (spec-thanh-tuu-nhiem-vu.md §0.4, mig 202609281810).
-// Hoàn thành / còn treo / chặng / rương / EXP đều SUY ĐỘNG ở Postgres (fn_nhiem_vu_hoan_thanh) — ở đây chỉ gọi RPC.
+// nhiemvu.ts — NHIỆM VỤ theo môn (Thùy chốt 06/10, mig 202610061915; spec-kinh-te-nhiem-vu.md §1–§9).
+// Điều kiện duy nhất = lượt LUYỆN DẠNG YẾU đạt (học thật + đúng ≥70%). Hoàn thành · EXP · ĐHT · trần đều SUY ở Postgres
+// (fn_nhiem_vu_hoan_thanh / fn_hs_nhiem_vu_cua_toi) — ở đây chỉ gọi RPC. ĐHT = điểm học tập để chơi game (sổ dht_tieu, số dư replay ở DB).
 // ============================================================================
 import { supabase } from './supabase'
 
-export type NvNgay = { xong_hom_nay: number; con_mo: number; tien_do: number; xong_thang: number }
-export type NvTuan = { xong_tuan_nay: number; con_mo: number; xong_thang: number }
+export type DhtCuaToi = { so_du: number; tran: number; tong_kiem: number; tong_tieu: number; mat_do_vuot_tran: number; kiem_thang: number }
 export type NhiemVuCuaToi =
   | { mon: string; mo: false; bat_dau: string }
   | {
-      mon: string; mo: true; thang: string; tuan: number
+      mon: string; mo: true; ym: string; tuan_so: number
       cau_hinh: {
-        song_ngay: number; n2_cau: number; n3_cau: number; t3_ngay: number; m2_ngay: number; ruong_can: number; ruong_exp: number
-        cap_diem: number; cap_max: number; exp_cap: number; moc: [number, number][]; vq_can: number
-        diem_ngay: number; diem_tuan: number; diem_thang: number
+        dat_ti_le: number; lan_ngay: number; exp_luot: number; dht_luot: number
+        w1_ngay: number; w1_exp: number; w1_dht: number; w2_luot: number; w2_exp: number; w2_dht: number
+        m1_ngay: number; m1_exp: number; m1_dht: number; tran_exp: number; dht_so_du_max: number
       }
-      ngay: Record<'N1' | 'N2' | 'N3', NvNgay>
-      tuan_nv: Record<'T1' | 'T2' | 'T3' | 'T4', NvTuan>
-      thang_nv: { M1: boolean; M2: boolean; ngay_pass: number }
-      ruong: { tuan: number; so_nv: number; mo: boolean }[]
-      chang: { diem: number; cap: number; exp: number; so_ruong: number }
-      vong_quay: { xong_hom_nay: number; can: number }
+      ngay: { luot_hom_nay: number; con_lai: number; luot_thang: number }
+      tuan: { ngay_co_luot: number; luot: number; w1_xong: boolean; w2_xong: boolean }
+      thang: { ngay_co_luot: number; m1_xong: boolean }
+      exp_thang: number; dht_thang: number
+      dht: DhtCuaToi
+      vong_quay: { du: boolean; da_quay: boolean }
     }
 
 // null = môn chưa bật nhiệm vụ.
@@ -28,4 +28,17 @@ export async function nhiemVuCuaToi(mon: string): Promise<NhiemVuCuaToi | null> 
   const { data, error } = await supabase.rpc('fn_hs_nhiem_vu_cua_toi', { p_mon: mon })
   if (error) throw error
   return (data as NhiemVuCuaToi | null) ?? null
+}
+
+export async function dhtCuaToi(): Promise<DhtCuaToi | null> {
+  const { data, error } = await supabase.rpc('fn_dht_cua_toi')
+  if (error) throw error
+  return (data as DhtCuaToi | null) ?? null
+}
+
+// Game TIÊU ĐHT — máy chủ kiểm số dư rồi ghi sổ; trả số dư mới.
+export async function dhtTieu(so: number, nguon: string, thamChieu?: string): Promise<DhtCuaToi> {
+  const { data, error } = await supabase.rpc('fn_dht_tieu', { p_so: so, p_nguon: nguon, p_tham_chieu: thamChieu ?? null })
+  if (error) throw error
+  return data as DhtCuaToi
 }

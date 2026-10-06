@@ -9,34 +9,30 @@ import type { RankCuaToi } from '../../../lib/rank'
 import type { HoSoGami } from '../../../lib/hosoGami'
 import { BAC } from './hinh'
 
-// ── Nhiệm vụ ─────────────────────────────────────────────────────────────────
+// ── Nhiệm vụ (hệ mới 06/10: lượt Luyện dạng yếu đạt · ĐHT) ─────────────────────
 const CAU_HINH = {
-  song_ngay: 3, n2_cau: 20, n3_cau: 2, t3_ngay: 4, m2_ngay: 15, ruong_can: 12, ruong_exp: 75,
-  cap_diem: 50, cap_max: 30, exp_cap: 25, moc: [[10, 100], [20, 150], [30, 200]] as [number, number][], vq_can: 2,
-  diem_ngay: 10, diem_tuan: 40, diem_thang: 150,
+  dat_ti_le: 0.7, lan_ngay: 4, exp_luot: 20, dht_luot: 20, w1_ngay: 5, w1_exp: 100, w1_dht: 50, w2_luot: 12, w2_exp: 100, w2_dht: 50,
+  m1_ngay: 20, m1_exp: 300, m1_dht: 200, tran_exp: 2000, dht_so_du_max: 6000,
 }
-const nvNgay = (xong: number, con = 0, tien = 0) => ({ xong_hom_nay: xong, con_mo: con, tien_do: tien, xong_thang: 0 })
-const nvTuan = (xong: number, con = 0) => ({ xong_tuan_nay: xong, con_mo: con, xong_thang: 0 })
-
 export const NV_GIUA_THANG: NhiemVuCuaToi = {
-  mon: 'Toán', mo: true, thang: '2026-10', tuan: 4, cau_hinh: CAU_HINH,
-  ngay: { N1: nvNgay(1), N2: nvNgay(1, 0, 23), N3: nvNgay(0, 2, 1) },
-  tuan_nv: { T1: nvTuan(1), T2: nvTuan(0, 1), T3: nvTuan(1), T4: nvTuan(0) },
-  thang_nv: { M1: false, M2: false, ngay_pass: 6 },
-  ruong: [{ tuan: 1, so_nv: 12, mo: true }, { tuan: 2, so_nv: 9, mo: false }, { tuan: 3, so_nv: 12, mo: true }, { tuan: 4, so_nv: 11, mo: false }],
-  chang: { diem: 620, cap: 12, exp: 475, so_ruong: 2 },
-  vong_quay: { xong_hom_nay: 2, can: 2 },
+  mon: 'Toán', mo: true, ym: '2026-10', tuan_so: 4, cau_hinh: CAU_HINH,
+  ngay: { luot_hom_nay: 2, con_lai: 2, luot_thang: 38 },
+  tuan: { ngay_co_luot: 3, luot: 7, w1_xong: false, w2_xong: false },
+  thang: { ngay_co_luot: 14, m1_xong: false },
+  exp_thang: 1160, dht_thang: 1000,
+  dht: { so_du: 1840, tran: 6000, tong_kiem: 2640, tong_tieu: 800, mat_do_vuot_tran: 0, kiem_thang: 1000 },
+  vong_quay: { du: true, da_quay: false },
 }
 export const NV_DAU_THANG: NhiemVuCuaToi = {
-  mon: 'Toán', mo: true, thang: '2026-11', tuan: 1, cau_hinh: CAU_HINH,
-  ngay: { N1: nvNgay(0), N2: nvNgay(0, 0, 0), N3: nvNgay(0, 0, 0) },
-  tuan_nv: { T1: nvTuan(0), T2: nvTuan(0), T3: nvTuan(0), T4: nvTuan(0) },
-  thang_nv: { M1: false, M2: false, ngay_pass: 0 },
-  ruong: [1, 2, 3, 4].map((t) => ({ tuan: t, so_nv: 0, mo: false })),
-  chang: { diem: 0, cap: 0, exp: 0, so_ruong: 0 },
-  vong_quay: { xong_hom_nay: 1, can: 2 },
+  mon: 'Toán', mo: true, ym: '2026-11', tuan_so: 1, cau_hinh: CAU_HINH,
+  ngay: { luot_hom_nay: 0, con_lai: 4, luot_thang: 0 },
+  tuan: { ngay_co_luot: 0, luot: 0, w1_xong: false, w2_xong: false },
+  thang: { ngay_co_luot: 0, m1_xong: false },
+  exp_thang: 0, dht_thang: 0,
+  dht: { so_du: 1840, tran: 6000, tong_kiem: 2640, tong_tieu: 800, mat_do_vuot_tran: 0, kiem_thang: 0 },
+  vong_quay: { du: false, da_quay: false },
 }
-export const NV_CHUA_MO: NhiemVuCuaToi = { mon: 'Toán', mo: false, bat_dau: '2026-10-01' }
+export const NV_CHUA_MO: NhiemVuCuaToi = { mon: 'Toán', mo: false, bat_dau: '2026-10-06' }
 
 // ── Album ────────────────────────────────────────────────────────────────────
 const THANG_SAO: Album['thang_sao'] = [

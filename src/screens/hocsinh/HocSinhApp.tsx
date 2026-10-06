@@ -54,6 +54,7 @@ import { useApSkinGoc, GD_MAC_DINH, GD_CAP1, ManHS, DauTrangHS, TheHS, TrongHS, 
 import { giaoDienCuaToi, home912, type Home912 } from '../../lib/giaodien_hs'
 import DanhSachHS, { type DsRow } from './DanhSachHS'
 import MayManHS from './MayManHS'
+import MoiQuayMayMan from './MoiQuayMayMan'
 import ThanhTuuHS from './ThanhTuuHS'
 import BaiTapGiaoHS from './BaiTapGiaoHS'
 import ThongTinHocTap from './ThongTinHocTap'
@@ -139,7 +140,6 @@ const KHU_CAP2: { id: KhuId; ten: string; icon: string; direct?: boolean; sapCo?
   { id: 'thu_vien',      ten: 'Thư viện BK',        icon: '📚', direct: true },  // 03/10: Rank thành thẻ con trong đây
   { id: 'tro_choi',      ten: 'Trò chơi',           icon: '🎮', direct: true },  // 06/10: Nông trại BK + game sắp ra mắt
   { id: 'thanh_tuu',     ten: 'Thành tựu',          icon: '🏆', direct: true },
-  { id: 'may_man',       ten: 'May mắn',            icon: '🎰', direct: true },
   { id: 'vi_xu',         ten: 'Ví xu',              icon: '🪙', direct: true },
 ]
 // Kit hs-home-v4: minh hoạ (PNG cutout ở public/bk-ui/hs) + doodle chữ tay (Itim, TEXT) + tông màu từng ô.
@@ -276,7 +276,6 @@ const BOX_CAP1: BoxCap1[] = [
   { id: 'so_tay',       ten: 'Sổ tay kiến thức',   mo_ta: 'Tra lý thuyết và bài mẫu của từng dạng bài — tìm theo tên hoặc lọc dần.', icon: '📖', grad: 'from-[#f3ecff] to-[#fbf8ff]' },
   { id: 'de_thi_thu',   ten: 'Làm đề thi thử',     mo_ta: 'Đề trường/sở để em luyện làm bài thi thật — sắp mở.',                 icon: '📄', grad: 'from-[#eef2ff] to-[#f7f9ff]', sapCo: true },
   { id: 'thanh_tuu',    ten: 'Thành tựu',          mo_ta: 'Xem giải thưởng cuối tháng, huy hiệu và mốc học tập đã đạt được.',    icon: '🏆', grad: 'from-[#fff8de] to-[#fffbef]' },
-  { id: 'may_man',      ten: 'May mắn',            mo_ta: 'Mỗi ngày đủ điều kiện → mở 1 lượt quay may mắn nhận EXP.', icon: '🎰', grad: 'from-[#ffedf5] to-[#fff8fb]' },
   { id: 'vi_xu',        ten: 'Ví xu',              mo_ta: 'Xem số xu hiện có, lịch sử đổi quà và các hoạt động kiếm điểm của em.', icon: '🪙', grad: 'from-[#fff8de] to-[#fffbef]' },
 ]
 // Thùy 22/08 gửi thẳng file mockup tỉ lệ đúng ý (`BK_Academy_Student_Desktop.html`) sau khi bản
@@ -558,7 +557,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'phieu_luu' && monChon) return <Suspense fallback={<ManChoChuyen />}><PhieuLuuHS hocSinhId={hocSinhId} mon={monChon} gioiTinh={gioiTinh} nhanVat={nhanVat} skin={(giaoDien ?? GD_MAC_DINH).skin} LamBai={LamBai} onVe={() => setDirect(HOC_TAP ? 'tu_luyen_chon' : null)}
     onTongHop={() => { setChuDeDang(null); setDirect('tu_luyen') }} onThuThach={() => setDirect('thu_thach')} /></Suspense>
   if (direct === 'nhiem_vu') return <NhiemVuHS gioiTinh={gt} onBack={() => setDirect(tuHome ? null : 'tu_luyen_chon')}
-    onThuThach={() => setDirect('thu_thach')} onTuLuyen={() => { setChuDeDang(null); setDirect('tu_luyen') }} onVongQuay={() => setDirect('may_man')} />
+    onLuyenYeu={() => { setChuDeDang(null); setDirect('tu_luyen') }} onVongQuay={() => setDirect('may_man')} />
   if (direct === 'thu_thach') return <LamThuThach hocSinhId={hocSinhId} desktop={!!cap1}
     onXong={() => setDirect('tu_luyen_chon')} onRank={rankBat() ? () => { setTuHoSo(false); setDirect('rank') } : undefined} />
   if (direct === 'rank') return <RankHS gioiTinh={gt} onBack={() => setDirect(tuHoSo ? 'ho_so' : tuThuVien ? 'thu_vien' : tuHome ? null : 'tu_luyen_chon')} onThuThach={() => setDirect('thu_thach')} />
@@ -684,9 +683,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
       if (!nhom912 || nvHome === null) return null
       if (nvHome === undefined) return { sub: '…', subMau: 'xam', onClick: moTuHome('nhiem_vu') }
       if (!nvHome.mo) return { sub: `Mở từ ${nvHome.bat_dau.split('-').reverse().slice(0, 2).join('/')}`, subMau: 'xam', onClick: moTuHome('nhiem_vu') }
-      const ngay = Object.values(nvHome.ngay)
-      const conLai = ngay.filter((n) => n.xong_hom_nay === 0).length
-      return { sub: conLai ? `Hôm nay còn ${conLai} nhiệm vụ` : 'Xong hết hôm nay!', subMau: conLai ? 'ton' : 'xanh', badge: conLai, onClick: moTuHome('nhiem_vu') }
+      const conLai = nvHome.ngay.con_lai
+      return { sub: conLai > 0 ? `Hôm nay còn ${conLai} lượt thưởng` : 'Đủ thưởng hôm nay!', subMau: conLai > 0 ? 'ton' : 'xanh', badge: nvHome.ngay.luot_hom_nay === 0 ? 1 : 0, onClick: moTuHome('nhiem_vu') }
     }
     if (id === 'rank') {
       if (!nhom912 || rankHome === null) return null
@@ -706,7 +704,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // desktop/iPad-first (grid 3 cột full màn theo mockup CEO), KHÔNG dùng HomeHS mobile centered
   // (max-w 430 hoang phí 2 bên trên iPad/laptop). BOX_CAP1 đã đồng bộ nội dung KHU_CAP2: Tự luyện ·
   // Thông tin học tập · Đề thi thử (sắp có) · Bài tập được giao · Thành tựu · May mắn.
-  if (!khu && cap1) return <HomeCap1 hoTen={hoTen} maHS={maHS} maymanCoLuot={maymanCoLuot}
+  // Lời mời quay tự hiện (06/10): có lượt (cũ: cap1/cap2 qua mayManHSCuaToi; mới: nvHome.vong_quay) và chưa quay hôm nay — ô May mắn đã ẩn khỏi màn chính
+  const coQuay = maymanCoLuot || (!!nvHome && nvHome.mo && nvHome.vong_quay.du && !nvHome.vong_quay.da_quay)
+  const moiQuay = <MoiQuayMayMan coLuot={coQuay} onQuay={() => setDirect('may_man')} />
+  if (!khu && cap1) return <>{moiQuay}<HomeCap1 hoTen={hoTen} maHS={maHS} maymanCoLuot={maymanCoLuot}
     onOpen={(d) => setDirect(d === 'tu_luyen' ? 'tu_luyen_chon' : d)} chuaDoc={chuaDoc} onHopThu={() => setDirect('hop_thu')}
     extra={<>
       <ThanhChonMon mons={lopMons} mon={monChon} onChon={doiMon} className="mt-5" dem={demMon} luonHien
@@ -714,7 +715,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
           ? { background: 'linear-gradient(135deg, #6549ea, #8368f7)', color: '#fff', boxShadow: '0 6px 16px rgba(101,73,234,.28)', fontSize: 15, padding: '9px 20px' }
           : { background: '#fff', color: '#576073', boxShadow: '0 6px 16px rgba(31,47,79,.06)', fontSize: 15, padding: '9px 20px' }} />
       <BoTroBanner lich={lichMon} coCa={boTro.coCa} soRetest={boTro.soRetest} desktop onLich={() => setDirect('lich_bo_tro')} onCa={() => onVaoCaBoTro(boTro.lich.find((l) => l.vao_ca))} onRetest={() => setDirect('retest')} />
-    </>} />
+    </>} /></>
   // CẤP 2 (khối 6-9) — HomeHS mobile-first + KHU_CAP2 (đã build cho phone: em cấp 2 có thể dùng
   // điện thoại). CẤP 3 (khối 10-12): giữ KHU cũ (BTL/ET/BTVN), không đụng flow đang chạy.
   // HomeHS thuần vẽ. Badge = việc CÒN LÀM ĐƯỢC (bài quá hạn không đếm vào badge — nhiễu).
@@ -780,19 +781,19 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
           } satisfies HomeCard
         }), ...theCardHTD])
     // Lớp 9–12: cùng danh sách ô (giữ nguyên chức năng từng khối), khác màn vẽ — HomeHS912 + skin tự chọn.
-    if (nhom912 && giaoDien !== undefined) return <HomeHS912 giaoDien={giaoDien} onDaLuu={setGiaoDien} data={duLieu912}
+    if (nhom912 && giaoDien !== undefined) return <>{moiQuay}<HomeHS912 giaoDien={giaoDien} onDaLuu={setGiaoDien} data={duLieu912}
       hoTen={hoTen} maHS={maHS} lopMon={lopMon} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
       mons={lopMons} mon={monChon} onChonMon={doiMon} demMon={demMon}
       lich={lichMon} soRetest={boTro.soRetest} cards={cards}
       onHopThu={() => setDirect('hop_thu')} onDoiMK={() => setDoiMK(true)} onThoat={() => supabase.auth.signOut()}
       onLich={() => setDirect('lich_bo_tro')} onRetest={() => setDirect('retest')} onHoSo={() => setDirect('ho_so')} gioiTinh={gioiTinh}
       theGioi={tgHome} onTheGioi={() => setDirect('the_gioi')}
-      rank={rankHome?.toi ? { bac: rankHome.toi.bac, ten: rankHome.toi.ten_bac, sao: rankHome.toi.sao } : null} onRank={moTuHome('rank')} />
-    return <HomeHS hoTen={hoTen} maHS={maHS} lopMon={lopMon} gioiTinh={gt} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
+      rank={rankHome?.toi ? { bac: rankHome.toi.bac, ten: rankHome.toi.ten_bac, sao: rankHome.toi.sao } : null} onRank={moTuHome('rank')} /></>
+    return <>{moiQuay}<HomeHS hoTen={hoTen} maHS={maHS} lopMon={lopMon} gioiTinh={gt} anhUrl={anhUrl} onAnhChanged={setAnhUrl} chuaDoc={chuaDoc}
       mons={lopMons} mon={monChon} onChonMon={doiMon}
       lich={lichMon} soRetest={boTro.soRetest} cards={cards}
       onHopThu={() => setDirect('hop_thu')} onDoiMK={() => setDoiMK(true)} onThoat={() => supabase.auth.signOut()}
-      onLich={() => setDirect('lich_bo_tro')} onRetest={() => setDirect('retest')} />
+      onLich={() => setDirect('lich_bo_tro')} onRetest={() => setDirect('retest')} /></>
   }
 
   // ── DANH SÁCH 1 KHU — dựng theo kit hs-bai-tap-tren-lop-v1 (DanhSachHS.tsx, dùng chung 3 khu). Ở đây CHỈ

@@ -9,6 +9,14 @@
 
 ## ① TRẠNG THÁI HIỆN TẠI
 
+- **⭐⭐⭐ KINH TẾ APP HS MỚI — build 06/10 khuya, ĐỌC TRƯỚC khi đụng nhiệm vụ / xu / vòng quay / ĐHT. Nguồn thiết kế: `spec-kinh-te-nhiem-vu.md` (§1–§9 nhiệm vụ·ĐHT·vòng quay·trần xu; §10–§13 thành tựu/huy hiệu/tháp) · `spec-bang-xep-hang.md` · `BUILD-BACKLOG-HS-06-10.md` (nhóm G/K/X/P/V).**
+  - **ĐÃ XONG + ĐÃ ÁP DB (commit 7bb813f5, chưa push):** mig `202610061915` — nhiệm vụ mới chỉ tính lượt **Luyện dạng yếu đạt** (`bai_test.luyen_yeu` + học thật + đúng ≥70%, ≤4 lượt/ngày): ngày 20 EXP+20 ĐHT/lượt · tuần W1 (5 ngày) & W2 (12 lượt) 100 EXP+50 ĐHT · tháng M1 (20 ngày) 300 EXP+200 ĐHT.
+    **ĐHT** = điểm để chơi game (kiếm SUY từ lượt đạt, tiêu = bảng `dht_tieu`, số dư replay, trần 6.000, `fn_dht_cua_toi`/`fn_dht_tieu`). **Trần xu theo nguồn nằm TRONG `fn_exp_app_thang`** (nhiệm vụ 2.000 EXP · vòng quay 1.000 EXP · thành tựu không trần · huy hiệu không thưởng) rồi ceil MỘT lần ở `fn_gami_exp_xu_thang` (owner postgres, không sửa). Vòng quay mới: 1 lượt/ngày mở khi có ≥1 lượt đạt, giải 10/20/30/50/100/200 = 35/30/20/10/4/1%.
+    Test: `scripts/_thu_mig_nv_moi.mjs` (rollback, 18 ✔). Chi tiết + bẫy: DEVLOG 06/10 khuya. Hệ nhiệm vụ cũ (N1–N3/T1–T4/M1–M2/rương/Chặng) đã bị THAY, không chạy song song.
+  - **APP đã sửa (commit kèm):** `NhiemVuHS` viết lại, `lib/nhiemvu.ts`, ô Nhiệm vụ Home, ô "Điểm học tập" ở Hồ sơ, `MayManHS` 6 ô, dữ liệu mẫu `mauGami`. tsc + `check:style-hs` sạch; **CHƯA verify trên preview**.
+  - **VIỆC TIẾP THEO (làm ở máy nhà, theo thứ tự):** ① ẩn ô May mắn khỏi màn chính + thêm `MoiQuayMayMan.tsx` (lời mời quay tự hiện, gắn 3 màn chính) — chi tiết ở DEVLOG; ② verify preview (tạo lượt Luyện dạng yếu thật → xem Nhiệm vụ/ĐHT/quay; nhớ `npm run migrate` luôn dùng `--only <file>`, 15 file treo của người khác, file đầu fail quyền); ③ cập nhật Hướng dẫn/tutorial; ④ chạy cron `202610061810` ở SQL Editor (Thùy); ⑤ tiếp backlog: X1–X3 Bảng xếp hạng theo môn (`bxh_loai` + `fn_bxh`), K7 thành tựu 15 loại + reset 01/07, K8 huy hiệu (cần Thùy chốt thang sao/bản cứng/Helios·Chronos·Athena·Zeus), K10 Thử thách, K11 game kiếm điểm, K12 tổng ngân sách, G1 boss thật (3 final-boss + Minh Quân), P1 Đấu Từ theo tài khoản, P2 Nông trại tiêu ĐHT.
+  - **Cùng ngày (đã commit, chưa push):** K1 ẩn Rank (`rankBat()`), G4 nền đơn sắc màn trong, G2/G3/G1-tạm màn giới thiệu Luyện dạng yếu + khung đấu chung + boss = boss Thùy, V4 báo lượt chưa tính. Cần push `main` + fast-forward `thu-nghiem`, rồi Thùy bấm Create Deployment.
+
 - **⭐⭐ RELEASE APP HS V1.0 — DEADLINE 06/10/2026 (Thùy chốt 01/10). ĐỌC `spec-v1-app-hs.md` TRƯỚC KHI LÀM BẤT KỲ VIỆC GÌ TRÊN APP HS.**
   - 8 hạng mục: tutorial · chuỗi + nhiệm vụ · Thế giới BK · Rank hoàn chỉnh · UI 100% "Giải cứu thế giới — đánh quái vật" · ≥2 style · game tổ hợp ·
     góp ý/báo lỗi HS. **Màn NGANG trước** (cấp 1–2 dùng iPad/PC); khổ dọc chỉ cần không vỡ. Giải đấu nhóm: đã thiết kế (§10), CHƯA làm.
