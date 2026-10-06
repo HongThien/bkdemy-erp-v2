@@ -114,7 +114,7 @@ export const CHUONG: ChuongTutorial[] = [
       { noi: 'Mỗi ngày có 3 việc nhỏ: vượt 1 Thử thách, luyện 20 câu đúng mới, sửa 2 câu dạng em từng sai. Mỗi việc +10 Điểm Chặng.', soi: 'khoi_ngay' },
       { noi: 'Hôm nào lỡ thì việc được giữ 3 ngày cho em làm bù. Xong 2 việc trong ngày là có 1 lượt quay May mắn.', soi: 'quay' },
       { noi: 'Việc tuần mỗi việc +40, việc tháng mỗi việc +150. Xong 12 việc trong tuần thì mở rương tuần.', soi: 'khoi_tuan' },
-      { noi: 'Đủ 50 Điểm Chặng là lên 1 cấp, mỗi cấp được thêm EXP. Cuối tháng EXP đổi ra xu.', soi: 'chang' },
+      { noi: 'Đủ 50 Điểm Chặng là lên 1 cấp, mỗi cấp được thêm EXP. EXP đổi ra xu ngay.', soi: 'chang' },
     ],
   },
   {
@@ -141,10 +141,10 @@ export const CHUONG: ChuongTutorial[] = [
   },
   {
     id: 'xu_may_man', ten: 'EXP, xu và May mắn', phu: 'Từ EXP đến quà và vòng quay', icon: { o: 'vi_xu' },
-    kyNang: 'EXP và xu — cuối tháng EXP đổi ra xu để đổi quà ở trung tâm',
+    kyNang: 'EXP và xu — EXP đổi ra xu ngay để đổi quà ở trung tâm',
     buoc: [
       { noi: 'Chặng 11: EXP và xu. EXP đến từ việc học ở lớp và việc làm trên app như nhiệm vụ, vòng quay, huy hiệu.', soi: 'exp_xu' },
-      { noi: 'Cuối tháng, EXP đổi ra xu theo từng môn: cứ 100 EXP được 1 xu. Xu kiếm từ hoạt động trên app có giới hạn mỗi tháng.', soi: 'exp_xu' },
+      { noi: 'Có EXP là đổi ra xu ngay, theo từng môn: cứ 100 EXP trong tháng được 1 xu. Xu kiếm từ hoạt động trên app có giới hạn mỗi tháng.', soi: 'exp_xu' },
       { noi: 'Ô Ví xu cho em xem số dư và lịch sử. Muốn đổi quà thì đến tủ quà tại trung tâm, app chưa có nút đổi.', soi: 'vi_xu' },
       { noi: 'Ô May mắn là vòng quay miễn phí, mỗi ngày một lượt. Xong 2 nhiệm vụ ngày thì có lượt quay, giải thưởng là EXP.', soi: 'quay_so' },
     ],

@@ -263,7 +263,7 @@ export default function NhiemVuHS({ gioiTinh, onBack, onThuThach, onTuLuyen, onV
     <Khung gioiTinh={gioiTinh}>
       <NutBack onBack={onBack} />
       <h1 className="text-[28px] font-bold leading-tight" style={{ ...HEAD, color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>Nhiệm vụ {d?.mon ?? ''}</h1>
-      <p className="mt-1 text-[13px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>Xong nhiệm vụ → Điểm Chặng → lên cấp nhận EXP (đổi ra xu cuối tháng).</p>
+      <p className="mt-1 text-[13px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>Xong nhiệm vụ → Điểm Chặng → lên cấp nhận EXP (đổi ra xu ngay).</p>
 
       {state === 'dang_tai' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
       {state === 'loi' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.sai }}>{err}</p>}

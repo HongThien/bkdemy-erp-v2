@@ -223,7 +223,7 @@ function MpNhiemVu() {
         <div className="p-3">
           <div className="flex justify-between text-[12.5px]"><span style={chu()}>Chặng tháng · cấp 7/30</span><b style={chu()}>30/50</b></div>
           <div className="mt-1 h-2.5 overflow-hidden rounded-full" style={{ background: MAU.surface2 }}><div className="h-full w-3/5 rounded-full" style={{ background: MAU.acc }} /></div>
-          <p className="mt-1 text-[11.5px]" style={mo}>Lên cấp +25 EXP · cuối tháng EXP đổi ra xu</p>
+          <p className="mt-1 text-[11.5px]" style={mo}>Lên cấp +25 EXP · EXP đổi ra xu ngay</p>
         </div>
       </Soi>
     </div>
@@ -487,7 +487,7 @@ function MpXuMayMan() {
         <div className="p-3">
           <div className="flex justify-between text-[12.5px]"><span style={chu()}>EXP tháng này · môn Toán</span><b style={chu()}>640</b></div>
           <div className="mt-1 h-2.5 overflow-hidden rounded-full" style={{ background: MAU.surface2 }}><div className="h-full w-2/3 rounded-full" style={{ background: MAU.acc }} /></div>
-          <p className="mt-1.5 text-[12px]" style={mo}>Cuối tháng: cứ 100 EXP được 1 xu → <b style={{ color: MAU.acc }}>7 xu</b></p>
+          <p className="mt-1.5 text-[12px]" style={mo}>Đổi ngay: cứ 100 EXP được 1 xu → <b style={{ color: MAU.acc }}>7 xu</b></p>
         </div>
       </Soi>
       <Soi id="vi_xu" style={THE}>

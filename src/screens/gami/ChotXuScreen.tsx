@@ -1,14 +1,11 @@
-// CHỐT XU THÁNG (CEO-only, leaf founderOnly) — Thùy chốt 08-29: quy EXP→xu TỪNG MÔN, cộng vào VÍ XU chung
-// của HS. Công thức hiện tại (Thùy chốt 07-09, dùng cái đơn giản trước): xu = EXP:100, làm tròn lên — CỐ
-// ĐỊNH ở DB (fn_xu_tu_exp), không phải bảng khúc luong_bac (mig 09-03 lũy tiến TẠM NGƯNG dùng, chưa xoá).
-// Đóng băng sau chốt; data trễ/sửa điểm làm lệch → nút chốt hiện "điều chỉnh ±" (dòng chot_lai, kiểu học phí).
-// ⭐ CHỐT THEO LỚP (Thùy chốt 07-09, siết lại 09-09: "ko có nút chốt theo lớp à, t có chốt toàn bộ
-// đâu"): BẮT BUỘC chọn đúng 1 lớp mới bấm Chốt (cả lớp) được — KHÔNG có đường chốt cả tháng/cả khối 1 lượt.
-// ⭐ CHỐT TỪNG HS (Thùy 09-09: "phải có cả chốt từng học sinh nữa chứ, tưởng nút Ghi là chốt theo
-// học sinh" — Ghi chỉ ghi PHÁT SINH tay, không phải chốt EXP→xu): mỗi dòng có nút Chốt RIÊNG, gọi
-// đúng chotXu(ym, [dòng đó]) — không cần lọc lớp, chốt lẻ 1 HS×môn bất cứ lúc nào.
+// XU THÁNG (CEO-only, leaf founderOnly). Thùy 06/10: KHÔNG CHỐT THEO THÁNG NỮA — từ tháng 9/2026 DB tự đổi
+// EXP→xu realtime (HS mở ví · tủ quà chọn HS · pg_cron mỗi giờ), xem `_xu_dong_bo` (mig 202610061809).
+// Màn này còn: THEO DÕI (EXP · xu theo công thức · đã vào ví · lệch chờ lượt đồng bộ kế) + nút "Đồng bộ ngay"
+// + PHÁT SINH tay. Công thức: xu = EXP:100 làm tròn lên, từng môn (fn_xu_tu_exp; bảng khúc luong_bac tạm ngưng).
+// Tháng < THANG_TU_DONG (tháng 8, đã chốt tay, đóng băng): vẫn giữ nút "Chốt lớp"/"Chốt" từng dòng như cũ
+// (Thùy 07-09/09: bắt buộc chọn 1 lớp), nhưng việc tính + ghi giờ cũng do DB làm (fn_xu_dong_bo theo từng HS).
 import { useEffect, useMemo, useState } from 'react'
-import { addBacXu, updateBacXu, deleteBacXu, previewChotXu, chotXu, themPhatSinh, listViXu, type BacXu, type ChotRow } from '../../lib/xu'
+import { addBacXu, updateBacXu, deleteBacXu, previewChotXu, dongBoXu, THANG_TU_DONG, themPhatSinh, listViXu, type BacXu, type ChotRow } from '../../lib/xu'
 
 // Các tháng của mùa từ tháng ĐẦU CHỐT (Thùy: tháng 8/2026) đến tháng VN hiện tại.
 const THANG_DAU = '2026-08'
@@ -40,13 +37,16 @@ export default function ChotXuScreen() {
   const [lopF, setLopF] = useState('')     // filter lớp
   const [search, setSearch] = useState('') // tìm tên/mã HS
 
-  const load = () => {
-    setRows(null); setMsg(null)
+  const tuDong = ym >= THANG_TU_DONG
+  // Đổi tháng = đổi ngữ cảnh ⇒ xoá + tải lại. Sau đồng bộ/phát sinh ⇒ tải NỀN, giữ bảng cũ tới khi có bảng mới.
+  const nap = (nen: boolean) => {
+    if (!nen) { setRows(null); setMsg(null) }
     Promise.all([previewChotXu(ym), listViXu()])
       .then(([p, v]) => { setRows(p.rows); setBacs(p.bacs); setVi(v) })
-      .catch((e) => { setRows([]); setMsg('Lỗi tải: ' + (e?.message ?? e)) })
+      .catch((e) => { if (!nen) setRows([]); setMsg('Lỗi tải: ' + (e?.message ?? e)) })
   }
-  useEffect(load, [ym])
+  const load = () => nap(true)
+  useEffect(() => nap(false), [ym]) // eslint-disable-line
 
   const khois = useMemo(() => [...new Set((rows ?? []).map((r) => r.khoi).filter(Boolean))].sort() as string[], [rows])
   const lops = useMemo(() => [...new Set((rows ?? []).filter((r) => !khoiF || r.khoi === khoiF).map((r) => r.tenLop).filter(Boolean))].sort() as string[], [rows, khoiF])
@@ -60,37 +60,48 @@ export default function ChotXuScreen() {
   const chuaChot = hienThi.filter((r) => !r.daChot && r.xu > 0)
   const lech = hienThi.filter((r) => r.daChot && r.lech !== 0)
   const onChot = async () => {
-    if (busy || !lopF) return
+    if (busy || (!tuDong && !lopF)) return
     setBusy(true); setMsg(null)
     try {
-      const kq = await chotXu(ym, hienThi.map((r) => ({ hoc_sinh_id: r.hoc_sinh_id, mon: r.mon })))
-      setMsg(`Đã chốt lớp ${lopF}: ${kq.moi} dòng mới · ${kq.dieuChinh} điều chỉnh · ${kq.tongXu >= 0 ? '+' : ''}${kq.tongXu} xu vào ví.`)
+      let soDong = 0, tongXu = 0
+      if (tuDong) ({ so_dong: soDong, tong_xu: tongXu } = await dongBoXu(null, ym))
+      // Tháng đóng băng: chốt lớp = đồng bộ từng HS của lớp đang lọc (mỗi lượt 1 request, DB tính + ghi).
+      else for (const hs of [...new Set(hienThi.map((r) => r.hoc_sinh_id))]) {
+        const kq = await dongBoXu(hs, ym); soDong += kq.so_dong; tongXu += kq.tong_xu
+      }
+      setMsg(`${tuDong ? 'Đã đồng bộ' : `Đã chốt lớp ${lopF}`}: ${soDong} dòng sổ · ${tongXu >= 0 ? '+' : ''}${tongXu} xu vào ví.`)
       load()
-    } catch (e: any) { setMsg('Lỗi chốt: ' + (e?.message ?? e)) } finally { setBusy(false) }
+    } catch (e: any) { setMsg('Lỗi: ' + (e?.message ?? e)) } finally { setBusy(false) }
   }
 
   return (
     <section className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto p-6">
       <div className="flex flex-wrap items-center gap-3">
-        <h1 className="text-lg font-bold text-slate-900">Chốt xu tháng</h1>
+        <h1 className="text-lg font-bold text-slate-900">{tuDong ? 'Xu tháng (tự động)' : 'Chốt xu tháng'}</h1>
         <select value={ym} onChange={(e) => setYm(e.target.value)} className="h-9 rounded-lg border border-slate-300 px-2 text-sm">
           {thangs.map((t) => <option key={t} value={t}>Tháng {Number(t.slice(5))}/{t.slice(0, 4)}</option>)}
         </select>
-        <button onClick={onChot} disabled={busy || !rows || !lopF || (chuaChot.length === 0 && lech.length === 0)}
+        <button onClick={onChot} disabled={busy || !rows || (!tuDong && (!lopF || (chuaChot.length === 0 && lech.length === 0)))}
           className="h-9 rounded-lg bg-indigo-600 px-4 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-slate-300">
-          {busy ? 'Đang chốt…' : !lopF ? 'Chọn 1 lớp để chốt' : chuaChot.length > 0 ? `Chốt lớp ${lopF} (${chuaChot.length} dòng)` : lech.length > 0 ? `Chốt lại lớp ${lopF} — ghi ${lech.length} điều chỉnh ±`
+          {busy ? 'Đang chạy…' : tuDong ? `↻ Đồng bộ ngay${chuaChot.length + lech.length > 0 ? ` (${chuaChot.length + lech.length} dòng lệch)` : ''}` : !lopF ? 'Chọn 1 lớp để chốt' : chuaChot.length > 0 ? `Chốt lớp ${lopF} (${chuaChot.length} dòng)` : lech.length > 0 ? `Chốt lại lớp ${lopF} — ghi ${lech.length} điều chỉnh ±`
             // Phân biệt 2 lý do nút tắt: EXP chưa đủ ra xu ≠ đã chốt thật sự (trong lớp đang chọn).
             : hienThi.some((r) => r.exp > 0 && !r.daChot) ? 'EXP hiện tại chưa đủ ra xu' : 'Lớp này đã chốt đủ'}
         </button>
         {msg && <span className={`text-[13px] font-medium ${msg.startsWith('Lỗi') ? 'text-rose-600' : 'text-emerald-700'}`}>{msg}</span>}
       </div>
-      <p className="text-[12px] text-slate-400">
-        Quy đổi TỪNG MÔN theo công thức cố định EXP:100 (làm tròn lên) rồi cộng ví chung. Chốt xong là đóng băng —
-        nếu EXP tháng đã chốt thay đổi (nhập trễ/sửa điểm), bảng hiện cột lệch và nút chuyển thành "Chốt lại" ghi dòng điều chỉnh ±.
-        "Phát sinh" = xu thưởng/phạt TAY, gõ trực tiếp ở cột cuối (KHÔNG phải chốt). <b>2 cách chốt:</b> nút
-        "Chốt lớp" trên đầu trang (bắt buộc chọn 1 LỚP, KHÔNG có đường chốt cả tháng/cả khối) — hoặc cột
-        "Chốt" ngay từng dòng để chốt lẻ 1 HS×môn bất kỳ lúc nào, không cần lọc lớp.
-      </p>
+      {tuDong ? (
+        <p className="text-[12px] text-slate-400">
+          <b>Tự động</b> (Thùy 06/10): EXP đổi ra xu TỪNG MÔN theo EXP:100 (làm tròn lên) ngay khi có — máy tự ghi sổ mỗi giờ,
+          khi HS mở Ví xu và khi chọn HS ở tủ quà. EXP giảm (phạt BTVN tháng, sửa điểm) thì xu bị trừ thật, ví có thể âm.
+          Cột "Lệch" ≠ 0 = EXP vừa đổi, chưa tới lượt đồng bộ kế — bấm "Đồng bộ ngay" nếu cần ngay.
+          "Phát sinh" = xu thưởng/phạt TAY, gõ trực tiếp ở cột cuối.
+        </p>
+      ) : (
+        <p className="text-[12px] text-slate-400">
+          Tháng {Number(ym.slice(5))} chốt TAY (trước khi chuyển sang tự động từ tháng {Number(THANG_TU_DONG.slice(5))}) — đã đóng băng.
+          Nếu EXP tháng này thay đổi, bảng hiện cột lệch: chọn 1 LỚP rồi "Chốt lại", hoặc bấm nút ở từng dòng. "Phát sinh" = xu thưởng/phạt TAY.
+        </p>
+      )}
       <div className="flex flex-wrap items-center gap-2">
         <select value={khoiF} onChange={(e) => { setKhoiF(e.target.value); setLopF('') }} className="h-8 rounded-lg border border-slate-300 px-2 text-[13px]">
           <option value="">Mọi khối</option>
@@ -137,7 +148,7 @@ export default function ChotXuScreen() {
                         <td className="px-3 py-1.5 text-right tabular-nums text-slate-500">{r.daChot ? r.xuDaPhat : '—'}</td>
                         <td className={`px-3 py-1.5 text-right font-semibold tabular-nums ${!r.daChot ? 'text-slate-300' : r.lech === 0 ? 'text-slate-300' : r.lech > 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
                           {!r.daChot || r.lech === 0 ? '—' : (r.lech > 0 ? '+' : '') + r.lech}</td>
-                        <td className="px-3 py-1.5 text-center"><ChotOneCell r={r} ym={ym} onDone={load} /></td>
+                        <td className="px-3 py-1.5 text-center"><ChotOneCell r={r} ym={ym} tuDong={tuDong} onDone={load} /></td>
                         <td className="px-3 py-1.5 text-right">
                           {first ? <PhatSinhCell hocSinhId={r.hoc_sinh_id} value={r.phatSinh} onDone={load} /> : <span className="text-slate-200">—</span>}</td>
                         <td className={`px-3 py-1.5 text-right tabular-nums text-amber-700 ${first ? '' : 'opacity-30'}`}>{(vi.get(r.hoc_sinh_id) ?? 0).toLocaleString('vi-VN')}</td>
@@ -168,15 +179,15 @@ export default function ChotXuScreen() {
   )
 }
 
-// ── CHỐT 1 HS×MÔN — nút riêng từng dòng, KHÔNG phụ thuộc filter lớp (khác nút Chốt-cả-lớp trên đầu trang).
-// Tái dùng đúng chotXu(ym, [1 dòng]) — cùng invariant chưa-chốt→chot_thang / lệch→chot_lai.
-function ChotOneCell({ r, ym, onDone }: { r: ChotRow; ym: string; onDone: () => void }) {
+// ── ĐỒNG BỘ / CHỐT 1 HS — nút riêng từng dòng, không phụ thuộc lọc lớp. DB đồng bộ MỌI môn của HS trong tháng
+// (fn_xu_dong_bo) — các dòng môn khác của HS này cũng khớp theo, bảng tải lại nền.
+function ChotOneCell({ r, ym, tuDong, onDone }: { r: ChotRow; ym: string; tuDong: boolean; onDone: () => void }) {
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
   const chot = async () => {
     if (busy) return
     setBusy(true); setErr(null)
-    try { await chotXu(ym, [{ hoc_sinh_id: r.hoc_sinh_id, mon: r.mon }]); onDone() }
+    try { await dongBoXu(r.hoc_sinh_id, ym); onDone() }
     catch (e: any) { setErr(e?.message ?? String(e)) } finally { setBusy(false) }
   }
   return (
@@ -184,11 +195,11 @@ function ChotOneCell({ r, ym, onDone }: { r: ChotRow; ym: string; onDone: () => 
       {!r.daChot ? (
         r.xu <= 0
           ? <span className="text-[11px] text-slate-300">0 xu</span>
-          : <button onClick={chot} disabled={busy} className="rounded bg-emerald-600 px-2 py-0.5 text-[11px] font-semibold text-white hover:bg-emerald-700 disabled:opacity-40">{busy ? '…' : 'Chốt'}</button>
+          : <button onClick={chot} disabled={busy} className="rounded bg-emerald-600 px-2 py-0.5 text-[11px] font-semibold text-white hover:bg-emerald-700 disabled:opacity-40">{busy ? '…' : tuDong ? 'Đồng bộ' : 'Chốt'}</button>
       ) : r.lech !== 0 ? (
-        <button onClick={chot} disabled={busy} className="rounded bg-amber-600 px-2 py-0.5 text-[11px] font-semibold text-white hover:bg-amber-700 disabled:opacity-40">{busy ? '…' : `Chốt lại ${r.lech > 0 ? '+' : ''}${r.lech}`}</button>
+        <button onClick={chot} disabled={busy} className="rounded bg-amber-600 px-2 py-0.5 text-[11px] font-semibold text-white hover:bg-amber-700 disabled:opacity-40">{busy ? '…' : `${tuDong ? 'Đồng bộ' : 'Chốt lại'} ${r.lech > 0 ? '+' : ''}${r.lech}`}</button>
       ) : (
-        <span className="text-[13px] text-emerald-600" title="Đã chốt">✓</span>
+        <span className="text-[13px] text-emerald-600" title="Đã vào ví">✓</span>
       )}
       {err && <span className="max-w-[90px] text-center text-[10px] text-rose-600">{err}</span>}
     </div>

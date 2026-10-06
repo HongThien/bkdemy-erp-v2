@@ -21,6 +21,15 @@ export type LichSuMua = {
 }
 export type ViXuCuaToi = { ym: string; so_du: number; lich_su_mua: LichSuMua[]; hoat_dong: HoatDongViXu[] }
 
+// Thùy 06/10: xu không chốt cuối tháng nữa — mở ví là DB quy đổi EXP mới nhất của em ra xu (ghi sổ ngay).
+// Trả số dòng sổ vừa ghi: > 0 thì ví cần đọc lại. Lỗi (vd SQL Editor chưa grant) ⇒ ném, màn tự bỏ qua.
+export async function dongBoXuCuaToi(): Promise<{ so_dong: number; tong_xu: number }> {
+  const { data, error } = await supabase.rpc('fn_xu_dong_bo_cua_toi')
+  if (error) throw error
+  const r = (Array.isArray(data) ? data[0] : data) ?? { so_dong: 0, tong_xu: 0 }
+  return { so_dong: Number(r.so_dong ?? 0), tong_xu: Number(r.tong_xu ?? 0) }
+}
+
 export async function viXuCuaToi(ym?: string): Promise<ViXuCuaToi> {
   const { data, error } = await supabase.rpc('fn_hs_vi_xu_cua_toi', { p_ym: ym ?? null })
   if (error) throw error

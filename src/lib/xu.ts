@@ -1,10 +1,8 @@
-// Data-layer CHỐT XU THÁNG (seam) — ghi vào SỔ XU CHUNG `qlht_xu_ledger` (hệ quà của Hải; BK chỉ có
-// 1 xu — Thùy chốt 08-29). Chốt tháng: EXP tháng per (HS×môn) → xu LŨY TIẾN theo khúc luong_bac (CEO chốt 09-03:
-// mỗi khúc 1 tỉ lệ xu/1000 EXP, cộng các khúc, làm tròn lên — tính ở DB: fn_xu_tu_exp / fn_gami_exp_xu_thang); đóng băng;
-// lệch (data trễ/sửa điểm) → CHỐT LẠI ghi dòng chênh ± 'chot_lai' (append-only, kiểu học phí).
+// Data-layer XU (seam) — sổ xu CHUNG `qlht_xu_ledger` (hệ quà của Hải; BK chỉ có 1 xu — Thùy chốt 08-29).
+// Thùy 06/10: KHÔNG chốt theo tháng nữa — EXP (HS×môn×tháng) đổi ra xu REALTIME ở DB (`_xu_dong_bo`: đích =
+// fn_gami_exp_xu_thang, ghi dòng chênh chot_thang/chot_lai, append-only). EXP giảm ⇒ trừ thật, ví được âm.
+// Màn Chốt xu còn lại = theo dõi + nút đồng bộ ngay + phát sinh tay.
 // Ví/số dư đọc qua view `qlht_v_so_du_xu` (hợp đồng chung với app Hải + trợ lý AI).
-// ⚠ CẦN SQL 1 LẦN (CEO chạy tay — bảng do postgres sở hữu): scripts/sql_chot_xu_qlht.sql
-//   (thêm cột mon/thang/exp_snapshot, nới CHECK loai, policy INSERT, sửa view bỏ công thức tạm exp/10).
 import { supabase } from './supabase'
 
 const LIMIT = 10000
@@ -96,30 +94,16 @@ export async function previewChotXu(ym: string): Promise<{ rows: ChotRow[]; bacs
   return { rows, bacs }
 }
 
-// ── CHỐT: dòng CHƯA chốt → 'chot_thang'; dòng ĐÃ chốt mà lệch → 'chot_lai' (amount = chênh ±). Idempotent:
-// chạy lại khi không đổi = 0 dòng. Unique index (SQL kèm) chặn race dòng gốc; 23505 = tab kia vừa chốt → bỏ qua.
-// nguoi_tao = nhan_su hiện tại (map auth.uid → tai_khoan.nhan_su_id — cùng pattern giaoviec.ts).
-// `chi` = chốt TỪNG LỚP (Thùy 07-09: chốt dần theo lớp, không phải cả tháng 1 lượt) — danh sách
-// (hoc_sinh_id, mon) đang hiển thị sau khi lọc khối/lớp/tìm kiếm trên màn; bỏ trống = chốt MỌI dòng của tháng.
-export async function chotXu(ym: string, chi?: { hoc_sinh_id: string; mon: string }[]): Promise<{ moi: number; dieuChinh: number; tongXu: number }> {
-  const { data: au } = await supabase.auth.getUser()
-  const { data: tk } = await supabase.from('tai_khoan').select('nhan_su_id').eq('id', au.user?.id ?? '').maybeSingle()
-  const nsId = (tk as any)?.nhan_su_id
-  if (!nsId) throw new Error('Tài khoản chưa gắn nhân sự — không ghi được sổ xu (nguoi_tao).')
-  const { rows: allRows } = await previewChotXu(ym)
-  const chiKeys = chi ? new Set(chi.map((r) => r.hoc_sinh_id + '|' + r.mon)) : null
-  const rows = chiKeys ? allRows.filter((r) => chiKeys.has(r.hoc_sinh_id + '|' + r.mon)) : allRows
-  const lyDo = (r: ChotRow, lai: boolean) => `${lai ? 'Chốt lại' : 'Chốt'} xu tháng ${ym} · ${r.mon || '?'} · ${r.exp.toLocaleString('vi-VN')} EXP`
-  const goc = rows.filter((r) => !r.daChot && r.xu > 0)
-    .map((r) => ({ hoc_sinh_id: r.hoc_sinh_id, loai: 'chot_thang', amount: r.xu, mon: r.mon, thang: ym, exp_snapshot: r.exp, ly_do: lyDo(r, false), nguoi_tao: nsId }))
-  const lai = rows.filter((r) => r.daChot && r.lech !== 0)
-    .map((r) => ({ hoc_sinh_id: r.hoc_sinh_id, loai: 'chot_lai', amount: r.lech, mon: r.mon, thang: ym, exp_snapshot: r.exp, ly_do: lyDo(r, true), nguoi_tao: nsId }))
-  for (const batch of [goc, lai]) {
-    if (!batch.length) continue
-    const { error } = await supabase.from('qlht_xu_ledger').insert(batch)
-    if (error && error.code !== '23505') throw error
-  }
-  return { moi: goc.length, dieuChinh: lai.length, tongXu: [...goc, ...lai].reduce((s, r) => s + r.amount, 0) }
+// ── ĐỒNG BỘ XU (Thùy 06/10: KHÔNG chốt theo tháng nữa — tính realtime). Thay hàm chotXu cũ (tính chênh ở
+// client rồi insert — vi phạm §2.0). Toàn bộ "đích − đã phát → ghi chot_thang/chot_lai" chạy ở DB (`_xu_dong_bo`,
+// khoá ví như tủ quà). Tự chạy: HS mở ví · pg_cron mỗi giờ (tháng trước + tháng này, từ 2026-09). Gọi tay ở đây:
+//   hocSinhId null = mọi HS · ym null = cửa sổ mặc định; ym tường minh = đồng bộ đúng tháng đó (kể cả tháng 8 đóng băng).
+export const THANG_TU_DONG = '2026-09' // tháng đầu quy đổi tự động — khớp hằng c_tu trong _xu_dong_bo
+export async function dongBoXu(hocSinhId: string | null, ym: string | null): Promise<{ so_dong: number; tong_xu: number }> {
+  const { data, error } = await supabase.rpc('fn_xu_dong_bo', { p_hoc_sinh_id: hocSinhId, p_thang: ym })
+  if (error) throw error
+  const r = (Array.isArray(data) ? data[0] : data) ?? { so_dong: 0, tong_xu: 0 }
+  return { so_dong: Number(r.so_dong ?? 0), tong_xu: Number(r.tong_xu ?? 0) }
 }
 
 // ── PHÁT SINH TAY: cộng/trừ xu ngay tại màn Chốt xu (loai suy từ dấu — cong_tay ≥0, tru_tay <0).

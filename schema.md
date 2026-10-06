@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-331 bảng · 20 view · 0 enum · 128 trigger · 794 function
+331 bảng · 20 view · 0 enum · 128 trigger · 797 function
 
 ## _app_secrets
 
@@ -3645,7 +3645,7 @@
 | ly_do | text | Y |  |  |  |
 | ref_id | uuid | Y |  |  |  |
 | ref_loai | text | Y |  |  | `doi_qua` · `order` |
-| nguoi_tao | uuid |  |  | FK→nhan_su.id |  |
+| nguoi_tao | uuid | Y |  | FK→nhan_su.id |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | mon | text | Y |  |  |  |
 | thang | text | Y |  |  |  |
@@ -6594,6 +6594,7 @@ WITH luot AS (
 - `_tu_luyen_chon_dang(p_hs uuid, p_mon text, p_so integer DEFAULT 10)` → jsonb
 - `_tu_luyen_dau_cua_so_truoc()` → timestamp with time zone
 - `_xep_chu_ten(p text)` → text
+- `_xu_dong_bo(p_hs uuid DEFAULT NULL::uuid, p_thang text[] DEFAULT NULL::text[], p_nguoi uuid DEFAULT NULL::uuid)` → TABLE(so_dong integer, tong_xu integer)
 - `bai_lam_cau_ghi_duoc(p_bai_lam uuid, p_cau uuid)` → boolean
 - `bai_test_con_han(p_bai_test uuid)` → boolean
 - `bao_cao_ph_preset_touch()` → trigger
@@ -7075,6 +7076,8 @@ WITH luot AS (
 - `fn_xep_chu_ghi(p_bo text, p_muc text, p_cau text, p_ten text, p_luot uuid, p_diem integer, p_ms integer, p_dung boolean, p_man_diem integer, p_man_ms integer, p_man_giai integer, p_man_xong integer)` → jsonb
 - `fn_xep_chu_sanh(p_bo text)` → jsonb
 - `fn_xephang_chung(p_ym text)` → jsonb
+- `fn_xu_dong_bo(p_hoc_sinh_id uuid DEFAULT NULL::uuid, p_thang text DEFAULT NULL::text)` → TABLE(so_dong integer, tong_xu integer)
+- `fn_xu_dong_bo_cua_toi()` → TABLE(so_dong integer, tong_xu integer)
 - `fn_xu_tu_exp(p_exp integer)` → integer
 - `giai_thuong_check_slot()` → trigger
 - `giaoviec_housekeeping()` → void
@@ -7187,8 +7190,8 @@ WITH luot AS (
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
@@ -7350,6 +7353,7 @@ WITH luot AS (
 | qlht_qua | qlht_qua_gia_xu_check | `CHECK ((gia_xu > 0))` |
 | qlht_qua_order | qlht_qua_order_gia_xu_check | `CHECK ((gia_xu > 0))` |
 | qlht_xu_ledger | qlht_xu_ledger_amount_check | `CHECK ((amount <> 0))` |
+| qlht_xu_ledger | qlht_xu_ledger_nguoi_tao_may | `CHECK (((nguoi_tao IS NOT NULL) OR (loai = ANY (ARRAY['chot_thang'::text, 'chot_lai'::text]))))` |
 | rank_bac | rank_bac_bac_check | `CHECK (((bac >= 1) AND (bac <= 10)))` |
 | rank_len_bac | rank_len_bac_bac_check | `CHECK (((bac >= 2) AND (bac <= 10)))` |
 | rank_thang_mat_et | rank_thang_mat_et_thang_check | `CHECK ((thang ~ '^\d{4}-\d{2}$'::text))` |

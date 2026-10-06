@@ -10,6 +10,7 @@ import {
   taoNhap, xacNhanNhap, huyNhap, listNhapChoXacNhan,
   type SoDuXu, type TonQua, type DoiQua, type QuaOrder, type QuaNhap, type XuLedgerRow,
 } from '../../lib/tuqua'
+import { dongBoXu } from '../../lib/xu'
 import SearchSelect, { norm, type Opt } from '../../components/SearchSelect'
 import { OpsHero } from '../../components/ops/OpsUI'
 
@@ -134,6 +135,16 @@ function DoiTab({ bao }: { bao: (m: string) => void }) {
     } catch (e: any) { setErr(e.message ?? String(e)) }
   }
   useEffect(() => { setSoDu(null); setLichSu([]); if (hsId) reloadHS(hsId) }, [hsId]) // eslint-disable-line
+  // Thùy 06/10 — xu realtime: chọn HS ⇒ DB đổi EXP mới nhất ra xu (nền ~2–3s). Có dòng mới thì đọc lại số dư
+  // của ĐÚNG HS đang chọn; lỗi đồng bộ ⇒ giữ số dư sổ hiện có (fn_tuqua_doi vẫn kiểm số dư thật khi đổi).
+  useEffect(() => {
+    if (!hsId) return
+    let huy = false
+    dongBoXu(hsId, null)
+      .then((r) => { if (!huy && r.so_dong > 0) return getSoDuXu(hsId).then((du) => { if (!huy) setSoDu(du) }) })
+      .catch(() => {})
+    return () => { huy = true }
+  }, [hsId])
 
   const hs = hsList.find((h) => h.hoc_sinh_id === hsId) ?? null
   const opts: Opt[] = hsList.map((h) => ({ id: h.hoc_sinh_id, label: h.ho_ten, sub: `${h.ma_hs ?? ''} · ${h.so_du} xu${h.khoi ? ` · K${h.khoi}` : ''}`, img: h.anh_url }))

@@ -356,7 +356,7 @@ export const CHU_DE: ChuDeHD[] = [
   },
   {
     id: 'exp_xu', nhom: 'thuong', ten: 'EXP, xu và Ví xu', icon: { o: 'vi_xu', emoji: '🪙' }, tutorial: 'xu_may_man',
-    tomTat: 'EXP tích luỹ từ việc học; cuối tháng đổi thành xu để đổi quà tại trung tâm.',
+    tomTat: 'EXP tích luỹ từ việc học, đổi thành xu ngay trong ngày để đổi quà tại trung tâm.',
     game: { ten: 'Kho báu xu', tomTat: 'Gom EXP, đổi thành xu và rinh quà.' },
     khoi: [
       { tieu: 'EXP đến từ đâu', y: [
@@ -365,7 +365,7 @@ export const CHU_DE: ChuDeHD[] = [
       ] },
       { tieu: 'Đổi sang xu', loai: 'luat', y: [
         'Xu được tính theo từng môn và từng tháng từ tổng EXP của tháng đó: cứ 100 EXP là 1 xu (làm tròn lên).',
-        'Việc chốt xu diễn ra cuối tháng.',
+        'Xu cập nhật ngay khi em có EXP, không đợi cuối tháng. Nếu EXP bị giảm (phạt BTVN, sửa điểm) thì xu cũng giảm theo.',
         'Xu kiếm từ hoạt động trên app có trần mỗi tháng cho mỗi môn; xu từ việc học trên lớp không bị tính vào trần này.',
       ] },
       { tieu: 'Dùng xu', y: [
@@ -387,7 +387,7 @@ export const CHU_DE: ChuDeHD[] = [
       { tieu: 'Phần thưởng', y: [
         'Giải thưởng là EXP; các mức và tỉ lệ nằm trong màn vòng quay.',
         'Kết quả luôn do hệ thống quyết định; hoạt hình chỉ minh hoạ.',
-        'EXP từ vòng quay được quy đổi thành xu cuối tháng theo quy tắc chung.',
+        'EXP từ vòng quay được quy đổi thành xu ngay theo quy tắc chung.',
       ] },
     ],
   },

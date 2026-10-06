@@ -112,6 +112,9 @@ function parseEnumCheck(def) {
   // Cột text -> `col = ANY`; cột varchar -> `(col)::text = ANY`. Cast là TÙY CHỌN, đừng bắt buộc.
   const col = def.match(/\(\(?([a-z_][a-z0-9_]*)\)?(?:::text)? = ANY/)?.[1]
   if (!col) return null
+  // Mọi nhánh OR phải nói về CÙNG cột (vd "x IS NULL OR x = ANY"). "y IS NOT NULL OR x = ANY(...)" KHÔNG phải
+  // tập giá trị của x — 06/10 từng in sai `qlht_xu_ledger.loai` chỉ còn 2 giá trị vì CHECK nguoi_tao_may.
+  if (def.split(/ OR /).some((nhanh) => !new RegExp(`\\b${col}\\b`).test(nhanh))) return null
   const vals = [...def.matchAll(/'((?:[^']|'')*)'::(?:text|character varying)/g)].map(m => m[1].replace(/''/g, "'"))
   return vals.length ? { col, vals } : null
 }

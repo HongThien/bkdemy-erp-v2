@@ -196,7 +196,7 @@ export default function MayManHS({ onXong, onNhiemVu }: { gioiTinh: 'nam' | 'nu'
             </div>
             <p className="mt-3 text-[22px] font-extrabold" style={{ ...HEAD, color: MAU.ink }}>Chúc mừng!</p>
             <p className="text-[18px] font-black" style={{ color: MAU.acc }}>+{kq.exp} EXP May Mắn</p>
-            <p className="mt-2 text-[12.5px]" style={{ color: MAU.muted }}>{d?.che_do === 'nhiem_vu' ? 'EXP này được đổi ra xu cuối tháng. Mai làm nhiệm vụ để quay tiếp nhé!' : 'Mai luyện tiếp để có thêm 1 lượt quay nhé!'}</p>
+            <p className="mt-2 text-[12.5px]" style={{ color: MAU.muted }}>{d?.che_do === 'nhiem_vu' ? 'EXP này đã được đổi ra xu trong Ví. Mai làm nhiệm vụ để quay tiếp nhé!' : 'Mai luyện tiếp để có thêm 1 lượt quay nhé!'}</p>
             <NutHS onClick={() => setKq(null)} className="mt-4 w-full">Tuyệt! ♡</NutHS>
           </div>
         </div>

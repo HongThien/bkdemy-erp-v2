@@ -101,7 +101,7 @@ function Man({ man, tt }: { man: string; tt: number }) {
   if (man === 'home') return <MauHome tt={tt} />
   if (man === 'nhiem_vu') {
     const d = [M.NV_GIUA_THANG, M.NV_DAU_THANG, M.NV_CHUA_MO][tt - 1] ?? M.NV_GIUA_THANG
-    return <Khung><Dau tieuDe="Nhiệm vụ Toán" phu="Xong nhiệm vụ → Điểm Chặng → lên cấp nhận EXP (đổi ra xu cuối tháng)." /><NhiemVuView d={d} onThuThach={noop} onTuLuyen={noop} onVongQuay={noop} /></Khung>
+    return <Khung><Dau tieuDe="Nhiệm vụ Toán" phu="Xong nhiệm vụ → Điểm Chặng → lên cấp nhận EXP (đổi ra xu ngay)." /><NhiemVuView d={d} onThuThach={noop} onTuLuyen={noop} onVongQuay={noop} /></Khung>
   }
   if (man === 'album') {
     const al = tt === 2 ? M.ALBUM_MOI : M.ALBUM_GIUA_NAM

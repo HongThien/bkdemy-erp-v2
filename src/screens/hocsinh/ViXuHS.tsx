@@ -5,8 +5,8 @@
 // màu theo giới tính. Xu dương/âm dùng màu ngữ nghĩa MAU.dung/MAU.sai.
 // Dữ liệu: fn_hs_vi_xu_cua_toi (RPC "của tôi", tự resolve HS — không cần hocSinhId).
 // ============================================================================
-import { useEffect, useState } from 'react'
-import { viXuCuaToi, type ViXuCuaToi, type HoatDongViXu, type LichSuMua } from '../../lib/vixu_hs'
+import { useEffect, useRef, useState } from 'react'
+import { viXuCuaToi, dongBoXuCuaToi, type ViXuCuaToi, type HoatDongViXu, type LichSuMua } from '../../lib/vixu_hs'
 import { homNayVN } from '../../lib/tuan'
 import { ManHS, DauTrangHS, TrongHS, MAU, THE, THE_TRON, HEAD } from './skin/KhungHS'
 
@@ -28,7 +28,7 @@ const NHAN_NGUON: Record<string, { icon: string; ten: string }> = {
   may_man: { icon: '🎰', ten: 'Vòng quay may mắn' },
   exp_nhiem_vu: { icon: '📜', ten: 'Nhiệm vụ (Chặng + rương)' },
   exp_huy_hieu: { icon: '🏅', ten: 'Huy hiệu' },
-  chot_thang: { icon: '🪙', ten: 'Chốt xu tháng' },
+  chot_thang: { icon: '🪙', ten: 'Xu đổi từ EXP' },   // Thùy 06/10: tự đổi hằng ngày, ví gộp 1 dòng / môn / tháng
   chot_lai: { icon: '🔄', ten: 'Điều chỉnh xu' },
   cong_tay: { icon: '➕', ten: 'Thầy cô cộng xu' },
   tru_tay: { icon: '➖', ten: 'Thầy cô trừ xu' },
@@ -48,7 +48,7 @@ const NHOM_META: Record<NhomKey, { icon: string; ten: string; donVi: 'exp' | 'xu
   hoat_dong_lop: { icon: '🎮', ten: 'Hoạt động trên lớp', donVi: 'exp' },
   cong_tay: { icon: '➕', ten: 'Thầy cô tặng', donVi: 'xu' },
   tru_tay: { icon: '➖', ten: 'Bị trừ (thầy cô)', donVi: 'xu' },
-  chot_xu: { icon: '🪙', ten: 'Chốt xu tháng', donVi: 'xu' },
+  chot_xu: { icon: '🪙', ten: 'Xu đổi từ EXP', donVi: 'xu' },
   khac: { icon: '✨', ten: 'Khác', donVi: 'exp' },
 }
 // Thứ tự hiện card — khớp ví dụ Thùy đưa (ET, BTVN, thầy cô tặng, may mắn, hoạt động lớp...).
@@ -80,8 +80,8 @@ const TRANG_THAI_MUA: Record<LichSuMua['trang_thai'], { ten: string; bg: string;
 }
 const O_ICON = { background: MAU.surface2 } // ô icon trong thẻ
 
-// Quy đổi HIỂN THỊ để em hình dung — công thức: xu = exp / 100 (chỉ để tham khảo, số xu THẬT chốt
-// cuối tháng theo bảng khúc luỹ tiến luong_bac, không tuyến tính — xem so_du ở đầu màn mới là số thật).
+// Quy đổi HIỂN THỊ để em hình dung — xu = exp / 100 (tham khảo). Số xu THẬT do DB đổi theo TỔNG EXP tháng
+// của từng môn (làm tròn lên, có trần xu app) ngay khi có EXP — xem so_du ở đầu màn mới là số thật.
 function fmtXuTuongDuong(exp: number): string {
   return (Math.abs(exp) / 100).toLocaleString('vi-VN', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
 }
@@ -161,10 +161,20 @@ export default function ViXuHS({ onXong }: { gioiTinh: 'nam' | 'nu' | null; onXo
   const [err, setErr] = useState<string | null>(null)
   const [nhomMo, setNhomMo] = useState<NhomKey | null>(null) // card đang bấm vào xem lịch sử — null = màn lưới card
 
+  const ymRef = useRef(ym); ymRef.current = ym
   useEffect(() => {
     setData(null); setErr(null); setNhomMo(null) // đổi tháng = đổi ngữ cảnh, về màn lưới card
     viXuCuaToi(ym).then(setData).catch((e) => { setErr(e?.message ?? String(e)); setData(null) })
   }, [ym])
+  // Thùy 06/10 — xu tính realtime: mở ví ⇒ DB đổi EXP mới nhất ra xu. Ví hiện NGAY số cũ, đồng bộ chạy nền
+  // (~2–3s); có dòng mới thì đọc lại ví tháng đang xem, KHÔNG xoá màn. Đồng bộ lỗi ⇒ im lặng giữ số sổ.
+  useEffect(() => {
+    let huy = false
+    dongBoXuCuaToi()
+      .then((r) => { if (!huy && r.so_dong > 0) return viXuCuaToi(ymRef.current).then((d) => { if (!huy && d.ym === ymRef.current) setData(d) }) })
+      .catch(() => {})
+    return () => { huy = true }
+  }, [])
 
   const nhomTong = data ? gomNhom(data.hoat_dong) : {}
   const coKhac = (nhomTong.khac?.soLuong ?? 0) > 0
@@ -178,6 +188,7 @@ export default function ViXuHS({ onXong }: { gioiTinh: 'nam' | 'nu' | null; onXo
       <div className="p-5 text-center" style={{ ...THE, background: MAU.acc, color: MAU.accInk }}>
         <p className="text-[12px] font-semibold uppercase tracking-wide" style={{ opacity: .8 }}>Số dư hiện tại</p>
         <p className="mt-1 text-[36px] font-black" style={HEAD}>🪙 {data ? data.so_du : '···'}</p>
+        <p className="mt-1 text-[11.5px]" style={{ opacity: .8 }}>Có EXP là đổi ra xu ngay — cứ 100 EXP được 1 xu</p>
       </div>
 
       {err && <p className="rounded-2xl px-3 py-2 text-center text-[12px] font-semibold" style={{ ...THE, color: MAU.sai }}>⚠ {err}</p>}

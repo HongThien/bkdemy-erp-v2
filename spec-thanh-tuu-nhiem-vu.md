@@ -129,6 +129,7 @@
 
 - **30 xu / HS / tháng / MÔN** = vòng quay **10** · nhiệm vụ **15** · thành tựu **5**.
 - Chặn ở **hàm chốt xu tháng:** `xu app môn X = min(30, ceil(EXP app môn X / 100))`. EXP vẫn ghi đủ.
+  *(Thùy 06/10: không chốt theo tháng nữa — `_xu_dong_bo` đổi EXP→xu realtime, vẫn dùng đúng hàm này nên trần giữ nguyên, tính trên EXP tháng tới thời điểm đó.)*
 - Xu từ học trên lớp (~25 / tháng) **không tính** vào trần.
 - Bảng đua tháng / đua lớp **không trả xu app** — vinh danh, giải tháng, thưởng tập thể.
 
@@ -311,7 +312,7 @@
 |---|---|---|
 | **Điểm Rank** | Leo bậc rank mùa, tranh ghế đỉnh, đua lớp | **Không** |
 | **Điểm Dạng** | Tranh danh hiệu top từng dạng | **Không** |
-| **EXP → xu** (hệ có sẵn) | Phần thưởng của nhiệm vụ / thành tựu | Có (chốt tháng như hiện nay) |
+| **EXP → xu** (hệ có sẵn) | Phần thưởng của nhiệm vụ / thành tựu | Có (realtime từ 06/10 — không chốt tháng nữa) |
 
 ### A1. ① ĐIỂM RANK — đúng 4 nguồn
 
