@@ -35536,3 +35536,16 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Toàn màn hình:** nút ⛶ trên TV, trên iPad, trong bảng 👁; phím F trên TV. Máy không hỗ trợ (iPhone) thì nút tự ẩn.
 - Thanh trên cùng TV: không cho xuống dòng, thanh tin co lại + "…" (ở 1280px từng đè chữ "Vòng 1/25").
 - **Bẫy khi thử:** máy thử vẽ bằng CPU (SwiftShader) nên camera toàn cảnh chậm hơn hẳn cận cảnh (không còn culling) — đừng đọc tốc độ ván thử như tốc độ TV thật; đo trên TV thật bằng ô "Đo độ mượt (FPS)".
+
+### 2026-10-06 — CHỐT KINH TẾ – NHIỆM VỤ – PHẦN THƯỞNG (phiên Planning, bắt đầu từ NHIỆM VỤ) — quyết định CEO
+- Bối cảnh: nhiều mode mới (Học theo chủ đề, Đấu trường/Chinh phục/Giải VĐ, Nông trại, Săn quái vật…) nên Thùy + CTO chốt lại 1 lần. Bản đồ hiện trạng do agent lập 06/10 (đối chiếu code/DB): Nông trại/Bắt thú KHÔNG có DB; chỉ Toán có Rank/Nhiệm vụ/Huy hiệu; 12 chỗ spec–code lệch; tổng xu/tháng 1 HS Toán điển hình ≈74 (tối đa ≈147), giá quà trung vị 22.
+- **Thùy chốt:**
+  1. **3 cách kiếm xu:** (a) cày NHIỆM VỤ · (b) hoàn thành các THỬ THÁCH của app · (c) chơi GAME. Thiết kế TỪNG CÁI MỘT, bắt đầu từ nhiệm vụ.
+  2. **KHOÁ TẠM hệ thống RANK (ẩn đi):** "khá khó hiểu và khá xa", impact giai đoạn này thấp hơn các phần khác.
+  3. **Nhiệm vụ cung cấp 3 thứ:** (i) EXP quy thẳng ra xu · (ii) ĐIỂM HỌC TẬP để chơi game · (iii) phần còn lại = điều kiện nhận HUY HIỆU.
+  4. Nhiệm vụ chia NGÀY / TUẦN / THÁNG — **tối đa 20 xu**.
+  5. Mẫu nhiệm vụ ngày: làm đúng **≥7/10** ở **Luyện dạng yếu** ⇒ +**100 điểm học tập**/lần, 1 ngày làm đi làm lại **4 lần**, "tổng là 2000 điểm học tập" (**chưa rõ 2000 là tổng của gì** — hỏi lại). "Đây là con số base để CTO quyết các con số phía sau."
+  6. **Việc BẮT BUỘC (BTVN đúng hạn T1 · ET đạt 80% T2 · MT tăng hạng M1) BỎ khỏi nhiệm vụ.**
+  7. **Huy hiệu Hercules: cần bàn lại** (gắn "vượt Thử thách" — Thử thách đang đổi).
+  8. **Phân biệt 2 hệ thống:** NHIỆM VỤ = lặp theo tần suất ngày/tuần/tháng · THÀNH TỰU = làm 1 lần. Tiến độ bản đồ (hạ dạng, chinh phục chuyên đề, qua lục địa) thuộc THÀNH TỰU, KHÔNG phải nhiệm vụ.
+- **Hệ quả CTO ghi nhận:** Rank ẩn ⇒ Thử thách mất phần thưởng duy nhất (Điểm Rank 10/20/30) ⇒ phải có câu chuyện thưởng mới cho "cách 2"; vòng quay May mắn đang cần "xong 2 nhiệm vụ ngày" ⇒ điều kiện đổi; N1/T3/M2 (gắn Thử thách) và T1/T2/M1 (bắt buộc) bỏ/viết lại; trần app 30 xu cũ (nhiệm vụ + vòng quay + huy hiệu) cần chia lại khi chốt ngân sách xu; Điểm học tập = "điểm chăm chỉ" của Nông trại nhưng thang cũ chỉ 30/ngày — game phải đổi thang theo ĐHT mới.
