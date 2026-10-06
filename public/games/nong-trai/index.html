@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Nông Trại">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#9fd8ff">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<title>Nông Trại BK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/game.css">
+<!-- bk-app-hs: ẩn nút thử -->
+<style>html.an-dev #btnTua,html.an-dev #btnDiem{display:none!important}</style>
+<script>if(!/[?&]dev=1/.test(location.search))document.documentElement.classList.add('an-dev')</script>
+</head>
+<body>
+<canvas id="c3d"></canvas>
+<div id="vien"></div>
+<div id="lopNhan"></div>
+<div id="lopBay"></div>
+
+<!-- thanh trên (gọn): cấp · ví (xu + EXP lẻ) · điểm chăm chỉ / mùa · lượt / nút thử -->
+<div id="hud">
+  <div id="hang1">
+    <div id="capBox"><div id="capSao"><img id="icXp" alt=""><b id="capSo">1</b></div><div id="xpThanh"><i id="xpDay"></i><span id="xpChu">0/5</span></div></div>
+    <div id="viBox" title="Ví: xu BK + EXP lẻ (100 EXP = 1 xu)"><img id="icXu" alt=""><b id="xuSo">0</b><span id="expThanh"><i id="expDay"></i><span id="expSo">0</span></span></div>
+    <div id="diemBox" title="Điểm chăm chỉ — có được khi làm bài"><img id="icDiem" alt=""><b id="diemSo">0</b></div>
+  </div>
+  <div id="hang2"><span class="chip" id="muaChu"></span><span class="chip" id="luotChu" title="Hôm nay còn: bịch hạt giống mua được · lượt giúp bạn · lượt hái trộm"></span></div>
+  <div id="nutDev">
+    <button id="btnTua" title="Sang ngày hôm sau (chỉ bản thử)">⏭ Ngày mới</button>
+    <button id="btnDiem" title="Giả lập làm 1 lượt bài (chỉ bản thử)">📘 +điểm</button>
+    <button id="btnAm" title="Bật/tắt âm thanh">🔊</button>
+    <button id="btnMenu" title="Tuỳ chọn">⚙</button>
+    <span class="chip mo" id="ngayChu"></span>
+  </div>
+</div>
+<div id="nutPhai">
+  <button id="btnShop" class="nutNho" title="Chợ"><img id="icShop" alt=""><span>Chợ</span></button>
+  <button id="btnKho" class="nutNho" title="Kho"><img id="icKho" alt=""><span>Kho</span></button>
+  <button id="btnBan" class="nutNho" title="Bạn cùng lớp"><span class="emo">👫</span><span>Bạn bè</span></button>
+  <button id="btnThu" class="nutNho" title="Hộp thư"><span class="emo">✉️</span><span>Thư</span><i id="chamThu" class="an"></i></button>
+</div>
+<div id="banBanner" class="an">🏡 Vườn của <b id="banTen"></b> <span class="nho">· cấp <span id="banCap"></span></span><button id="nutVe" class="nut vang">⬅ Về nhà</button></div>
+<div id="goiY"></div>
+<!-- việc hôm nay (ghim trái dưới HUD, kiểu Zoo Pet): chỉ đường, suy từ state — tắt bằng LUAT.viecHom -->
+<div id="viecBox" class="an"></div>
+<!-- thanh dụng cụ (kiểu Nông trại vui vẻ): chọn dụng cụ rồi chạm / vuốt qua các ô -->
+<div id="thanhCu"></div>
+
+<div id="bongMenu" class="an"></div>
+<div id="muiTen" class="an">👇</div>
+<div id="hdHop" class="an"></div>
+<div id="tam" class="an"><div id="bang" role="dialog" aria-modal="true"><div id="bangDau"><b id="bangTen"></b><button id="bangDong" aria-label="Đóng">✕</button></div><div id="bangThan"></div></div></div>
+<div id="thongBao"></div>
+<div id="hoaGiay"></div>
+<!-- cầm dọc trên điện thoại / iPad ⇒ nhắc xoay ngang (CEO 30/09: chơi màn ngang) — hiện bằng CSS -->
+<div id="xoayMay"><div class="xoayHinh">📱</div><b>Xoay ngang máy để chơi</b><span>Nông Trại BK chơi màn ngang — cả điện thoại lẫn iPad</span></div>
+
+<div id="manTai"><div class="tai"><h1>Nông Trại BK</h1><div class="taiThanh"><i id="taiDay"></i></div><p id="taiChu">Đang dựng nông trại…</p></div></div>
+
+<script src="js/three.min.js"></script>
+<script src="js/GLTFLoader.js"></script>
+<script src="js/am.js"></script>
+<script src="js/data.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/nhiemvu.js"></script>
+<script src="js/dohoa.js"></script>
+<script src="js/models.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

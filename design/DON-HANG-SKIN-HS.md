@@ -1202,3 +1202,7 @@ Phiên bản kit:  v1
 > **Kit về (Claude làm):** kiểm mục 8 giao thức · nén WebP vào `public/bk-ui/hs/skin/rpg/hoctap/` · Kit B thay nền + 5 đảo MƯỢN (mảnh lục địa) trong `Skin.hocTap` của `skin/styles/rpg.ts`, vị trí theo DESIGN.md (`VT_NGANG`/`VT_DOC` ở `hoctap/HocTapHS.tsx`); icon ô `hoc_chu_de`… có thể bỏ khi đảo đã có công trình ·
 > Kit A dựng màn Chinh phục BK theo DESIGN.md (tháp chủ đề gán theo chủ đề của khối, khoá theo luật "học ≥ 1/2 dạng") thay màn tháp mượn của Đấu Từ ·
 > Kit C làm nền + vinh danh cho `GiaiVoDichHS`. Style khác (Tối giản, Khối vuông) cần bộ icon riêng — đơn sau.
+
+## Đơn 14 (06/10) — icon ô "Trò chơi" (khối Giải trí)
+Ô mới `tro_choi` (danh sách game; hiện 1 game Nông trại BK + Săn lùng Quái Vật sắp ra mắt). Đang MƯỢN icon: RPG = rương `o_ruong.png`, Khối vuông = `o_may_man.png`; Tối giản đã có SVG riêng `o_tro_choi.svg` (tay cầm game).
+Cần vẽ riêng cho RPG + Khối vuông: 1 icon ô vuông PNG trong suốt 160–192px (tay cầm game / bàn cờ — cùng nét với các icon ô hiện có của style), tên file `o_tro_choi.png` ⇒ khai ở `anhO.tro_choi`.

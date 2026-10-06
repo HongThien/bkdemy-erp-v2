@@ -60,7 +60,7 @@ export const CHU_DE: ChuDeHD[] = [
       { tieu: 'Bố cục', y: [
         'Trên cùng là thẻ Thế giới BK, ngay dưới là thanh chọn môn (Toán, KHTN, Tiếng Anh).',
         'Khối “Học tập” thay đổi theo môn đang chọn: Học tập, Thông tin học tập, Sổ tay kiến thức, Làm đề thi thử và các ô bài của thầy cô.',
-        'Khối “Giải trí” dùng chung cho mọi môn: Thế giới BK, Nhiệm vụ, Thư viện BK, May mắn, Thành tựu, Ví xu. Đổi môn thì khối này không đổi.',
+        'Khối “Giải trí” dùng chung cho mọi môn: Thế giới BK, Nhiệm vụ, Thư viện BK, Trò chơi, May mắn, Thành tựu, Ví xu. Đổi môn thì khối này không đổi.',
       ] },
       { tieu: 'Các nút khác', y: [
         'Chạm ảnh đại diện để mở Hồ sơ (cấp bậc, huy hiệu, đổi ảnh, giao diện).',
@@ -388,6 +388,28 @@ export const CHU_DE: ChuDeHD[] = [
         'Giải thưởng là EXP; các mức và tỉ lệ nằm trong màn vòng quay.',
         'Kết quả luôn do hệ thống quyết định; hoạt hình chỉ minh hoạ.',
         'EXP từ vòng quay được quy đổi thành xu cuối tháng theo quy tắc chung.',
+      ] },
+    ],
+  },
+
+  {
+    id: 'tro_choi', nhom: 'thuong', ten: 'Trò chơi', icon: { o: 'tro_choi', emoji: '🎮' },
+    tomTat: 'Nơi chứa các game giải trí của BK; hiện có Nông trại BK.',
+    game: { ten: 'Khu trò chơi', tomTat: 'Giải lao với Nông trại BK, game mới sẽ lần lượt mở.' },
+    khoi: [
+      { tieu: 'Ô Trò chơi', y: [
+        'Ô Trò chơi nằm ở khối Giải trí trên màn chính và dùng chung cho mọi môn.',
+        'Mỗi game là một thẻ. Thẻ sáng thì chạm để chơi; thẻ mờ ghi “Sắp ra mắt” là game chưa mở.',
+        'Chạm nút ‹ ở góc dưới bên phải màn game để quay về danh sách.',
+      ] },
+      { tieu: 'Nông trại BK', y: [
+        'Trồng cây, nuôi gà và bò, sang vườn bạn bè. Mỗi ngày vào một lần, khoảng mười đến mười lăm phút là đủ.',
+        'Ngày trong game đổi lúc 5 giờ sáng giờ Việt Nam. Cây chín sau 1, 2 hoặc 3 ngày tuỳ loại.',
+        'Càng chăm vườn đều đặn thì càng mở thêm ô đất và loại cây mới.',
+      ] },
+      { tieu: 'Lưu ý', loai: 'luuy', y: [
+        'Nông trại BK hiện là bản thử: tiến độ được lưu ngay trên thiết bị đang dùng, chưa theo tài khoản và chưa nối với xu hay việc học. Đổi thiết bị thì vườn bắt đầu lại.',
+        'Săn lùng Quái Vật là game tiếp theo, chưa có ngày mở.',
       ] },
     ],
   },

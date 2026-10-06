@@ -247,7 +247,12 @@ const XEM_HOC_TAP = typeof location !== 'undefined' && new URLSearchParams(locat
 const XemHuongDan = lazy(() => import('./screens/hocsinh/huongdan/XemHuongDan'))
 const XEM_HUONG_DAN = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'huong_dan'
 
+// TRÒ CHƠI (hs.html?xem=tro_choi · &vao=nong_trai · &gd=<skin>): không cần đăng nhập (06/10).
+const XemTroChoi = lazy(() => import('./screens/hocsinh/trochoi/XemTroChoi'))
+const XEM_TRO_CHOI = typeof location !== 'undefined' && new URLSearchParams(location.search).get('xem') === 'tro_choi'
+
 export default function AppHS() {
+  if (XEM_TRO_CHOI) return <Suspense fallback={null}><XemTroChoi /></Suspense>
   if (XEM_HUONG_DAN) return <Suspense fallback={null}><XemHuongDan /></Suspense>
   if (XEM_GAMI) return <Suspense fallback={null}><XemMauGami /></Suspense>
   if (XEM_TUTORIAL) return <Suspense fallback={null}><TutorialHS /></Suspense>
