@@ -56,6 +56,10 @@ Style RPG hiện tại (02/10: nền + nhân vật đã CHIBI — `bg_*_chibi_*.
 - Màn đọc chữ qua `useLoi()` (KhungHS) — cấm gõ chữ giọng game (chiêu, quái, tuyệt kỹ…) thẳng trong màn, cấm so id style. Thêm khoá: viết bản formal trước.
 - Chỉ đổi câu chữ; logic/số liệu y hệt mọi style.
 
+## 2.6 ⭐ NỀN: màn NGOÀI dùng tranh, màn TRONG đơn sắc (Thùy 06/10)
+- **Màn NGOÀI** (có tranh nền của style): Home · khu Học tập (5 đảo) · bản đồ thế giới/lục địa/chặng (có cảnh riêng). Chỉ các màn này được xin tranh: `<ManHS nen="tranh">` hoặc dùng `var(--sk-page)`.
+- **Màn TRONG** (mọi màn còn lại — Nhiệm vụ, Thư viện, Hướng dẫn, Hồ sơ, Album, Thành tựu, Ví xu, Trò chơi, Thông tin học tập, danh sách bài, làm bài…): **nền ĐƠN SẮC/tối riêng** của style = biến `--sk-nen-trong` (mặc định `Mau.bg`; style khai `nenTrong` nếu muốn khác). `ManHS` MẶC ĐỊNH là màn trong; chữ không cần bóng. Cấm đặt tranh nền (`--sk-page`) ở màn trong.
+
 ## 3. Thêm TÍNH NĂNG / MÀN mới (bắt buộc)
 
 1. Dựng màn bằng các mảnh ở mục 2 — không tự đặt màu. Màn làm bài full-height có thể dùng nền `var(--sk-page)` trực tiếp (mẫu `LamBai`).

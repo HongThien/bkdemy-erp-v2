@@ -12,7 +12,7 @@ const CHU = ['A', 'B', 'C', 'D']
 // Thùy 29/09: màu theo skin em chọn (skin/KhungHS). Nền ngữ nghĩa đúng/sai/đang mở = trong suốt ⇒ đứng được trên skin tối.
 const BG_DUNG = 'rgba(34,160,107,0.16)', BG_SAI = 'rgba(229,72,77,0.16)', BG_CB = 'rgba(224,144,30,0.16)'
 const VIEN_DUNG = 'rgba(34,160,107,0.45)', VIEN_SAI = 'rgba(229,72,77,0.45)', VIEN_CB = 'rgba(224,144,30,0.4)'
-const NEN_TRANG: CSSProperties = { background: 'var(--sk-page)', backgroundAttachment: 'fixed', color: MAU.ink, fontFamily: 'var(--sk-font)' }
+const NEN_TRANG: CSSProperties = { background: 'var(--sk-nen-trong)', color: MAU.ink, fontFamily: 'var(--sk-font)' }
 type Chon = Record<string, number> // o.id → index đã chọn
 
 // Điền text vào chỗ ⟦oN⟧: nếu ⟦oN⟧ nằm trong $…$ thì bỏ dấu $ của phương án (đã là LaTeX), ngoài thì giữ nguyên chữ.

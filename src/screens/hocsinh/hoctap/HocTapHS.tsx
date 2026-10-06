@@ -175,7 +175,7 @@ export function HocTapHS({ onNap, onBack, onChuDe, onYeu, onDauTruong, onChinhPh
     </div>
   )
   return (
-    <ManHS>
+    <ManHS nen="tranh">
       <DauTrangHS tieuDe="Học tập" phu="Cùng BK chinh phục thế giới" onBack={onBack} theoMon />
       <LuoiO ds={ds} />
       {(onNhiemVu || onRank) && (

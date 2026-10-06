@@ -17,6 +17,8 @@ export type Mau = {
   bg: string; surface: string; surface2: string; ink: string; muted: string; line: string
   acc: string; accInk: string; badge: string; badgeInk: string
   cardBorder: string; cardShadow: string
+  /** NỀN MÀN TRONG (Thùy 06/10): đơn sắc/tối, thay tranh nền ở mọi màn bên trong. Không khai ⇒ dùng `bg`. */
+  nenTrong?: string
 }
 // Bảng màu MÀN ĐỌC (tầng cuối tra cứu — xem `Skin.doc`). nen = nền trang · giay = thẻ nội dung · vd = khối ví dụ ·
 // nham* = khối "hay nhầm" · luuY* = khối "lưu ý". Màu nhấn KHÔNG ở đây — theo môn (`mauDocMon`).

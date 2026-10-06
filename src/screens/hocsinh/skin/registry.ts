@@ -68,6 +68,7 @@ export function bienCss(skin: Skin, cd: 'sang' | 'toi', hinhNenId: string | null
   const hn = layHinhNen(skin, hinhNenId)
   return {
     '--sk-page': nenCua(hn, cd, doc) ?? m.bg,
+    '--sk-nen-trong': m.nenTrong ?? m.bg, // màn TRONG: đơn sắc, không tranh
     '--sk-bg': m.bg, '--sk-surface': m.surface, '--sk-surface2': m.surface2, '--sk-ink': m.ink, '--sk-muted': m.muted,
     '--sk-line': m.line, '--sk-acc': m.acc, '--sk-acc-ink': m.accInk, '--sk-badge': m.badge, '--sk-badge-ink': m.badgeInk,
     '--sk-card-border': m.cardBorder, '--sk-card-shadow': m.cardShadow, '--sk-card-clip': skin.cardClip,

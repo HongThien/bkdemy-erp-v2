@@ -164,7 +164,7 @@ export default function TutorialHS({ onXong, chuong }: { onXong?: () => void; ch
     <div data-tut className="relative min-h-[100dvh]" style={{ color: MAU.ink, fontFamily: 'var(--sk-font)' }}>
       <style>{CSS}</style>
       {/* Tranh nền = lớp cố định riêng (background-attachment: fixed hở dải đen khi cuộn trên điện thoại) */}
-      <div className="pointer-events-none fixed inset-0 -z-10" style={{ background: 'var(--sk-page)' }} />
+      <div className="pointer-events-none fixed inset-0 -z-10" style={{ background: 'var(--sk-nen-trong)' }} />
 
       {(pha === 'ban_do' || pha === 'mo_dau') && <BanDo xong={xong} onChon={vaoChuong} onBoQua={() => setPha('ket_thuc')} />}
 

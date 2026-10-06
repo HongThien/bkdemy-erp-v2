@@ -77,10 +77,14 @@ export const HEAD: CSSProperties = {
 
 // ── Khung trang ─────────────────────────────────────────────────────────────
 // Thay mọi `Khung`/THEME.bg + decor + quote cũ. rong: 'thuong' (điện thoại 430 · iPad 820 · PC 1180) | 'hep' (màn đọc/làm bài 720).
-export function ManHS({ children, rong = 'thuong', className = '' }: { children: ReactNode; rong?: 'thuong' | 'hep'; className?: string }) {
+// nen (Thùy 06/10): 'trong' = màn BÊN TRONG — nền ĐƠN SẮC/tối riêng của style (--sk-nen-trong), không tranh, cho đỡ rối (MẶC ĐỊNH) ·
+// 'tranh' = màn BÊN NGOÀI — tranh nền của style (Home, khu Học tập). Chỉ màn ngoài mới xin 'tranh'.
+export function ManHS({ children, rong = 'thuong', className = '', nen = 'trong' }: { children: ReactNode; rong?: 'thuong' | 'hep'; className?: string; nen?: 'trong' | 'tranh' }) {
   const w = rong === 'hep' ? 'max-w-[720px]' : 'max-w-[430px] md:max-w-[820px] lg:max-w-[1180px]'
   return (
-    <div className="min-h-[100dvh]" style={{ background: 'var(--sk-page)', backgroundAttachment: 'fixed', color: 'var(--sk-ink)', fontFamily: 'var(--sk-font)', textShadow: 'var(--sk-chu-bong)' }}>
+    <div className="min-h-[100dvh]" style={nen === 'tranh'
+      ? { background: 'var(--sk-page)', backgroundAttachment: 'fixed', color: 'var(--sk-ink)', fontFamily: 'var(--sk-font)', textShadow: 'var(--sk-chu-bong)' }
+      : { background: 'var(--sk-nen-trong)', color: 'var(--sk-ink)', fontFamily: 'var(--sk-font)' }}>
       <div className={`relative mx-auto flex ${w} flex-col gap-3 px-4 pb-[calc(24px+env(safe-area-inset-bottom))] pt-[calc(12px+env(safe-area-inset-top))] ${className}`}>
         {children}
       </div>

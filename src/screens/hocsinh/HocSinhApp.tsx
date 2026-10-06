@@ -165,7 +165,7 @@ const KIT_O: Record<KhuId, Pick<HomeCard, 'ill' | 'emoji' | 'doodle' | 'tone'>> 
 // Mọi nền/chữ/viền đọc biến --sk-* (skin/KhungHS). Màu cố định CHỈ còn màu ngữ nghĩa đúng/sai/cảnh báo — nền
 // ngữ nghĩa dạng TRONG SUỐT để đọc được cả skin sáng lẫn tối. KHÔNG dùng MAU.acc làm màu CHỮ trên nền thẻ
 // (Y2K sáng: acc = xanh chanh trên trắng, không đọc được) — chọn/nhấn = viền acc + nền pha acc + chữ ink.
-const NEN_MAN: CSSProperties = { background: 'var(--sk-page)', backgroundAttachment: 'fixed', color: MAU.ink, fontFamily: 'var(--sk-font)' }
+const NEN_MAN: CSSProperties = { background: 'var(--sk-nen-trong)', color: MAU.ink, fontFamily: 'var(--sk-font)' }
 const NEN_DUNG = 'rgba(34,160,107,0.16)', NEN_SAI = 'rgba(229,72,77,0.16)', NEN_CB = 'rgba(224,144,30,0.16)'
 const VIEN_DUNG = 'rgba(34,160,107,0.5)', VIEN_SAI = 'rgba(229,72,77,0.5)', VIEN_CB = 'rgba(224,144,30,0.45)'
 const NEN_ACC = 'color-mix(in srgb, var(--sk-acc) 16%, transparent)' // trình duyệt cũ bỏ qua ⇒ trong suốt, vẫn còn viền acc
