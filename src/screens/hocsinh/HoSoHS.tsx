@@ -8,6 +8,7 @@
 // ============================================================================
 import { useEffect, useState, type ReactNode } from 'react'
 import { rankCuaToi, type RankCuaToi } from '../../lib/rank'
+import { rankBat } from './phieuluu/coBat'
 import { nhiemVuCuaToi, type NhiemVuCuaToi } from '../../lib/nhiemvu'
 import { hoSoGamiCuaToi, datKhoe, type HoSoGami, type Khoe } from '../../lib/hosoGami'
 import type { LopMonHS } from '../../lib/tuluyen'
@@ -65,8 +66,8 @@ export function HoSoView(p: HoSoViewProps) {
       <ThanhChonMon mons={p.mons} mon={p.mon} onChon={p.onChonMon} className="justify-center"
         nut={(chon) => (chon ? { background: MAU.acc, color: MAU.accInk } : { ...THE_TRON, borderRadius: 999, color: MAU.ink })} />
 
-      {/* ③ RANK */}
-      <button onClick={p.onRank} disabled={!p.onRank} className="overflow-hidden text-left active:scale-[0.99]" style={THE}>
+      {/* ③ RANK — tạm khoá 06/10 (rankBat) */}
+      {rankBat() && <button onClick={p.onRank} disabled={!p.onRank} className="overflow-hidden text-left active:scale-[0.99]" style={THE}>
         <div className="flex items-center justify-between px-4 py-2" style={{ background: c.mau, color: MAU_GAMI.chu }}>
           <span className="text-[13px] font-extrabold" style={HEAD}>{than ? 'Thần' : `Chương ${c.ten}`}</span>
           {p.onRank && <span className="text-[12px] font-bold opacity-90">Xem Rank ›</span>}
@@ -91,7 +92,7 @@ export function HoSoView(p: HoSoViewProps) {
             </>
           ) : <p className="text-[13px]" style={{ color: MAU.muted }}>{p.rank === null ? 'Rank chưa mở cho môn này.' : 'Em chưa có điểm Rank mùa này.'}</p>}
         </div>
-      </button>
+      </button>}
 
       {/* ④ 3 HUY HIỆU KHOE */}
       <Nhom tieuDe="Huy hiệu khoe" phai={p.onDoiKhoe && <button onClick={p.onDoiKhoe} className="rounded-full px-3 py-1 text-[12.5px] font-bold" style={{ background: MAU.surface2, color: MAU.acc }}>Đổi</button>}>
@@ -216,7 +217,8 @@ export default function HoSoHS({ hoTen, anhUrl, avatar, mons, mon, onChonMon, on
     if (!mon) return
     setRank(undefined); setNv(null); setHs(null); setLoi(null)
     const baoLoi = (e: any) => setLoi(e?.message ?? String(e))
-    rankCuaToi(mon).then(setRank).catch((e) => { setRank(null); baoLoi(e) })
+    if (rankBat()) rankCuaToi(mon).then(setRank).catch((e) => { setRank(null); baoLoi(e) })
+    else setRank(null) // Rank tạm khoá 06/10
     nhiemVuCuaToi(mon).then(setNv).catch(() => setNv(null))
     hoSoGamiCuaToi(mon).then(setHs).catch(baoLoi)
   }, [mon])

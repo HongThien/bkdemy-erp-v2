@@ -48,7 +48,11 @@ async function rpc<T>(fn: string, args?: Record<string, unknown>): Promise<T> {
   return data as T
 }
 
-export const layKenh = (k: KenhId) => rpc<KenhTG>('fn_the_gioi_kenh', { p_kenh: k })
+// Rank tạm khoá (Thùy 06/10): tin "lên bậc" (kieu='len_bac') do DB vẫn sinh — lọc ở đây để học sinh không thấy Rank qua Thế giới BK.
+const RANK_BAT = () => { try { return localStorage.getItem('hs_rank') === '1' } catch { return false } }
+const bo = (t: TinTG) => t.kieu === 'len_bac' && !RANK_BAT()
+const locKenh = (k: KenhTG): KenhTG => (RANK_BAT() ? k : { ...k, tin: k.tin.filter((t) => !bo(t)), gop: k.gop.map((g) => ({ ...g, ds: g.ds.filter((t) => !bo(t)) })).filter((g) => g.kieu !== 'len_bac' && g.ds.length > 0) })
+export const layKenh = (k: KenhId) => rpc<KenhTG>('fn_the_gioi_kenh', { p_kenh: k }).then(locKenh)
 export const thaCamXuc = (khoa: string, icon: string | null) => rpc<KhenTG>('fn_the_gioi_tha', { p_khoa: khoa, p_icon: icon })   // null = bỏ thả
 export const guiBinhLuan = (khoa: string, ma: string) => rpc<{ bl: BinhLuanTG; khen: KhenTG }>('fn_the_gioi_binh_luan', { p_khoa: khoa, p_ma: ma })
 export const goBinhLuan = (id: string) => rpc<KhenTG>('fn_the_gioi_go_binh_luan', { p_id: id })
@@ -72,9 +76,9 @@ export async function layDanhMuc(): Promise<DanhMucTG[]> {
 // ĐĂNG BÀI KHOE (Thùy 29/09 — tính năng chính): thành tích đạt trong 3 ngày, chưa khoe · tối đa 3 bài / em / ngày.
 export type ThanhTichKhoe = Pick<TinTG, 'khoa' | 'tang' | 'nhom' | 'kieu' | 'mon' | 'at' | 'chi_tiet' | 'lop'>
 export type ChoKhoe = { gioi_han: number; da_khoe_hom_nay: number; tin: ThanhTichKhoe[] }
-export const layChoKhoe = () => rpc<ChoKhoe | null>('fn_the_gioi_cho_khoe')
+export const layChoKhoe = () => rpc<ChoKhoe | null>('fn_the_gioi_cho_khoe').then((c) => (c ? { ...c, tin: c.tin.filter((t) => !bo(t as TinTG)) } : c))
 export const dangKhoe = (khoa: string, cau: string | null) => rpc<{ gioi_han: number; da_khoe_hom_nay: number }>('fn_the_gioi_khoe', { p_khoa: khoa, p_cau: cau })
 export const goKhoe = (khoa: string) => rpc<void>('fn_the_gioi_go_khoe', { p_khoa: khoa })
 
 export type TheGioiHome = { tuong_tac: { so: number; so_nguoi: number; nguoi: NguoiTG | null }; loi_moi: number; tin: TinTG[]; cho_khoe?: ChoKhoe | null }
-export const theGioiHome = () => rpc<TheGioiHome | null>('fn_the_gioi_home')
+export const theGioiHome = () => rpc<TheGioiHome | null>('fn_the_gioi_home').then((h) => (h ? { ...h, tin: h.tin.filter((t) => !bo(t)) } : h))

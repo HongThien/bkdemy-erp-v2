@@ -33,3 +33,14 @@ function co(ten: keyof typeof MAC_DINH): boolean {
 
 export const phieuLuuBat = () => co('phieuluu')
 export const hocTapBat = () => co('hoctap')
+
+/** RANK (cấp bậc + Điểm Rank + Bảng đua tháng): TẠM KHOÁ (Thùy 06/10 — "khá khó hiểu và khá xa, ẩn đi"). Ẩn ở MỌI bản (kể cả thử nghiệm); DB vẫn tính ngầm.
+ *  Bật lại trên 1 máy để soi: `?rank=1` (máy nhớ), tắt `?rank=0`. Muốn bật cho mọi học sinh sau này: đổi hàm thành `return true`. */
+export function rankBat(): boolean {
+  try {
+    const q = new URLSearchParams(location.search).get('rank')
+    if (q === '1') localStorage.setItem('hs_rank', '1')
+    else if (q === '0') localStorage.setItem('hs_rank', '0')
+    return localStorage.getItem('hs_rank') === '1'
+  } catch { return false }
+}

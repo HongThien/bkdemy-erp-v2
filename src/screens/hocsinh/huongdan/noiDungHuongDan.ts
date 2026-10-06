@@ -50,7 +50,9 @@ export const MO_DAU_HD = {
   cuoi: 'Số liệu trong hướng dẫn là luật đang áp dụng. Khi trung tâm thay đổi luật, màn tương ứng trong app luôn hiển thị số mới nhất.',
 }
 
-export const CHU_DE: ChuDeHD[] = [
+import { rankBat } from '../phieuluu/coBat'
+
+const CHU_DE_TAT_CA: ChuDeHD[] = [
   // ───────────────────────── BẮT ĐẦU ─────────────────────────
   {
     id: 'man_chinh', nhom: 'bat_dau', ten: 'Màn chính', icon: { o: 'thu_vien', emoji: '🏠' },
@@ -457,3 +459,6 @@ export const CHU_DE: ChuDeHD[] = [
     ],
   },
 ]
+
+/** Rank tạm khoá (06/10) ⇒ bỏ mục Rank khỏi Hướng dẫn chơi. */
+export const CHU_DE: ChuDeHD[] = CHU_DE_TAT_CA.filter((c) => c.id !== 'rank' || rankBat())

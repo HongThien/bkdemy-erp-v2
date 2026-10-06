@@ -11,6 +11,7 @@
 // không cần, đây là màn chọn/điều hướng nên vẫn cần. Bỏ cờ `desktop` (không còn khác
 // nội dung theo cấp, chỉ còn bề rộng do md:/lg: lo).
 // ============================================================================
+import { rankBat } from './phieuluu/coBat'
 import { useEffect, useState } from 'react'
 import { layDangChuDe, monCuaHS, type DangChuDe } from '../../lib/tuluyen'
 import { ManHS, MAU, THE, THE_TRON, HEAD, NhanHS, useMonHS } from './skin/KhungHS'
@@ -61,7 +62,7 @@ export function ChonLoaiTuLuyen({ onTongHop, onChuDe, onThuThach, onRank, onNhie
         {onThuThach && (
           <button onClick={onThuThach} className="p-4 text-left transition active:scale-[0.98]" style={THE}>
             <span className="block text-[15px] font-extrabold" style={{ color: NAVY }}>⚔️ Thử thách</span>
-            <span className="mt-1 block text-[12.5px]" style={{ color: t.sec }}>Như Tổng hợp, nhưng đúng từ 80% trở lên là được cộng Điểm Rank để leo bậc.</span>
+            <span className="mt-1 block text-[12.5px]" style={{ color: t.sec }}>{rankBat() ? 'Như Tổng hợp, nhưng đúng từ 80% trở lên là được cộng Điểm Rank để leo bậc.' : 'Như Tổng hợp, nhưng đúng từ 80% trở lên là vượt Thử thách.'}</span>
           </button>
         )}
         {(onRank || onNhiemVu) && (

@@ -5,6 +5,7 @@
 // Giao diện (Thùy 03/10 tối): kiểu GAME CHIBI — 5 ô = 5 HÒN ĐẢO trôi nổi trên bầu trời sao (Skin.hocTap: nền + ảnh đảo; style không khai ⇒ lưới ô thường).
 // Ảnh đảo + nền = kit hs-hoc-tap-v2 (Đơn 14 Kit B, Thùy duyệt 03/10): mỗi đảo 1 PNG trọn công trình; đường nối + chữ do code.
 import { useEffect, useLayoutEffect, useState, type ReactNode } from 'react'
+import { rankBat } from '../phieuluu/coBat'
 import { DauTrangHS, HEAD, MAU, ManHS, NhanHS, NhomHS, NutHS, TheHS, THE_TRON, useManDoc, useMonHS } from '../skin/KhungHS'
 import { laySkin } from '../skin/registry'
 import { khoiCuaHS } from '../../../lib/tuluyen'
@@ -237,7 +238,7 @@ export function GiaiVoDichHS({ onBack, onDauMay }: { onBack: () => void; onDauMa
           <p className="text-[11px]" style={{ color: MAU.muted }}>Bản demo: đăng ký chưa lưu, lịch và nhánh là dữ liệu mẫu.</p>
         </TheHS>
         <TheHS onClick={onDauMay} className="flex flex-col gap-2 p-4">
-          <div className="flex items-center gap-2"><span className="text-[18px] font-bold" style={HEAD}>Đấu với máy</span><NhanHS>Cộng Điểm Rank</NhanHS></div>
+          <div className="flex items-center gap-2"><span className="text-[18px] font-bold" style={HEAD}>Đấu với máy</span>{rankBat() && <NhanHS>Cộng Điểm Rank</NhanHS>}</div>
           <p className="text-[13px] leading-snug" style={{ color: MAU.muted }}>3 trận liên tiếp với Boss, càng vào sâu càng khó (đúng 60% · 80% · 100%). Thua trận nào là dừng. 2 lượt mỗi ngày.</p>
           <span className="mt-auto self-end text-[14px] font-bold" style={{ color: MAU.acc }}>Vào đấu ›</span>
         </TheHS>

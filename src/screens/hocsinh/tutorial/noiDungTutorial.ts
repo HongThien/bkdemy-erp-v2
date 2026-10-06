@@ -35,7 +35,9 @@ export const KET_THUC = {
   nut: 'Vào app',
 }
 
-export const CHUONG: ChuongTutorial[] = [
+import { rankBat } from '../phieuluu/coBat'
+
+const CHUONG_TAT_CA: ChuongTutorial[] = [
   {
     id: 'giao_dien', ten: 'Nhân vật và giao diện', phu: 'Chọn cách dùng app hợp với em', icon: { o: 'thanh_tuu' },
     kyNang: 'Giao diện — chọn kiểu mặc định hoặc kiểu game, đổi bất cứ lúc nào',
@@ -161,3 +163,6 @@ export const CHUONG: ChuongTutorial[] = [
     ],
   },
 ]
+
+/** Rank tạm khoá (06/10) ⇒ bỏ chặng Rank khỏi hành trình. */
+export const CHUONG: ChuongTutorial[] = CHUONG_TAT_CA.filter((c) => c.id !== 'rank' || rankBat())

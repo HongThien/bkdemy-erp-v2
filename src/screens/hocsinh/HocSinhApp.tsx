@@ -65,6 +65,7 @@ import NhiemVuHS from './NhiemVuHS'
 import ThuVienHS from './ThuVienHS'
 import HuongDanHS from './huongdan/HuongDanHS'
 import TroChoiHS, { GameNongTraiHS } from './trochoi/TroChoiHS'
+import { rankBat } from './phieuluu/coBat'
 import TutorialHS from './tutorial/TutorialHS'
 import AlbumHS from './AlbumHS'
 import HoSoHS from './HoSoHS'
@@ -468,7 +469,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   useEffect(() => {
     if (!nhom912 || direct || khu || !monChon) return
     let bo = false
-    rankCuaToi(monChon).then((r) => { if (!bo) setRankHome(r) }).catch(() => {})
+    if (rankBat()) rankCuaToi(monChon).then((r) => { if (!bo) setRankHome(r) }).catch(() => {})
+    else setRankHome(null) // Rank tạm khoá (06/10): null ⇒ ẩn ô + huy hiệu bậc cạnh tên
     nhiemVuCuaToi(monChon).then((r) => { if (!bo) setNvHome(r) }).catch(() => {})
     return () => { bo = true }
   }, [nhom912, direct, khu, monChon])
@@ -529,7 +531,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onTongHop={() => { setChuDeDang(null); setDirect('tu_luyen') }}
     onChuDe={() => setDirect(giaoDien?.skin && monChon && banDoBat() ? 'phieu_luu' : 'tu_luyen_chu_de_ds')}
     onThuThach={() => setDirect('thu_thach')}
-    onRank={() => { setTuHoSo(false); setTuHome(false); setDirect('rank') }}
+    onRank={rankBat() ? () => { setTuHoSo(false); setTuHome(false); setDirect('rank') } : undefined}
     onNhiemVu={() => { setTuHome(false); setDirect('nhiem_vu') }}
     onBack={() => setDirect(null)} />
   // lần đầu vào khu Học tập (chưa có nhân vật) ⇒ chọn nhân vật trước · 'doi_nhan_vat' = đổi từ nút ở đầu khu Học tập
@@ -543,7 +545,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onDauTruong={() => setDirect('dau_truong_bk')}
     onChinhPhuc={() => setDirect('chinh_phuc_bk')}
     onGiai={() => setDirect('giai_vo_dich')}
-    onRank={() => { setTuHoSo(false); setTuHome(false); setDirect('rank') }}
+    onRank={rankBat() ? () => { setTuHoSo(false); setTuHome(false); setDirect('rank') } : undefined}
     onNhiemVu={() => { setTuHome(false); setDirect('nhiem_vu') }}
     onBack={() => setDirect(null)} />
   if (direct === 'dau_truong_bk') return <GameNhungHS vao="chu_de" tieuDe="Đấu trường BK" onBack={() => setDirect('tu_luyen_chon')} />
@@ -554,20 +556,20 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'nhiem_vu') return <NhiemVuHS gioiTinh={gt} onBack={() => setDirect(tuHome ? null : 'tu_luyen_chon')}
     onThuThach={() => setDirect('thu_thach')} onTuLuyen={() => { setChuDeDang(null); setDirect('tu_luyen') }} onVongQuay={() => setDirect('may_man')} />
   if (direct === 'thu_thach') return <LamThuThach hocSinhId={hocSinhId} desktop={!!cap1}
-    onXong={() => setDirect('tu_luyen_chon')} onRank={() => { setTuHoSo(false); setDirect('rank') }} />
+    onXong={() => setDirect('tu_luyen_chon')} onRank={rankBat() ? () => { setTuHoSo(false); setDirect('rank') } : undefined} />
   if (direct === 'rank') return <RankHS gioiTinh={gt} onBack={() => setDirect(tuHoSo ? 'ho_so' : tuThuVien ? 'thu_vien' : tuHome ? null : 'tu_luyen_chon')} onThuThach={() => setDirect('thu_thach')} />
   // THƯ VIỆN BK (Thùy 03/10): "nơi tìm hiểu mọi thông tin trên app" — thẻ con: Rank (của môn đang chọn).
   if (direct === 'thu_vien') {
     const r = rankHome?.toi
     return <ThuVienHS onBack={() => { setTuThuVien(false); setDirect(null) }} the={[{
-      id: 'huong_dan', ten: 'Hướng dẫn chơi', icon: '📖', moTa: 'Mọi chức năng của app và cách vận hành: nhiệm vụ, chuỗi, Rank, huy hiệu, xu…', trangThai: null,
+      id: 'huong_dan', ten: 'Hướng dẫn chơi', icon: '📖', moTa: 'Mọi chức năng của app và cách vận hành: nhiệm vụ, chuỗi, huy hiệu, xu…', trangThai: null,
       onClick: () => setDirect('huong_dan'),
     }, {
       id: 'rank', ten: 'Rank', icon: '🛡️', moTa: 'Cấp bậc chiến binh của em theo từng môn — làm Thử thách để leo bậc.',
       anh: (r ? anhBac(r.bac, 'bieu_tuong') : null) ?? laySkin((giaoDien ?? GD_MAC_DINH).skin).anhO?.rank ?? null,
       trangThai: rankHome === undefined ? undefined : r ? `${monChon ?? ''} · ${r.ten_bac}${r.sao ? ` ${'★'.repeat(r.sao)}` : ''} · hạng ${r.hang_khoi}/${r.so_em_khoi}` : 'Chưa có điểm mùa này',
       onClick: () => { setTuThuVien(true); setTuHoSo(false); setTuHome(false); setDirect('rank') },
-    }]} />
+    }].filter((t) => t.id !== 'rank' || rankBat())} />
   }
   // TRÒ CHƠI (06/10): danh sách game; Nông trại BK nhúng iframe (public/games/nong-trai — scripts/dong-bo-nong-trai.mjs)
   if (direct === 'nong_trai') return <GameNongTraiHS onBack={() => setDirect('tro_choi')} />
@@ -580,7 +582,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'ho_so') return <HoSoHS hoTen={hoTen} anhUrl={anhUrl} mons={lopMons} mon={monChon} onChonMon={doiMon}
     avatar={<AvatarHS anhUrl={anhUrl} initials={hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()} size={82} fill="var(--sk-surface2)" badge="var(--sk-acc)" onChanged={setAnhUrl} />}
     onBack={() => { setTuHoSo(false); setDirect(null) }}
-    onRank={() => { setTuHoSo(true); setTuHome(false); setDirect('rank') }} onAlbum={() => { setTuHoSo(true); setDirect('album') }} />
+    onRank={rankBat() ? () => { setTuHoSo(true); setTuHome(false); setDirect('rank') } : undefined} onAlbum={() => { setTuHoSo(true); setDirect('album') }} />
   if (direct === 'tu_luyen_chu_de_ds') return <ChonDangChuDe gioiTinh={gt}
     onPick={(d) => { setChuDeDang(d); setDirect('tu_luyen') }}
     onBack={() => setDirect(layMonTam() ? null : 'tu_luyen_chon')} />
@@ -1230,7 +1232,7 @@ function LamTuLuyen({ hocSinhId, onXong, desktop, chuDe, onDoiDang }: { hocSinhI
 
 // ── THỬ THÁCH (spec-thanh-tuu-nhiem-vu.md A2, mig 202609281711): 1 lượt y hệt Tổng hợp, bọc NGOÀI LamBai
 // giống LamTuLuyen. Khác: màn xong hiện kết quả Thử thách (pass ≥ 80%, điểm, trần ngày) — chấm + trần ở DB.
-function LamThuThach({ hocSinhId, onXong, onRank, desktop }: { hocSinhId: string; onXong: () => void; onRank: () => void; desktop?: boolean }) {
+function LamThuThach({ hocSinhId, onXong, onRank, desktop }: { hocSinhId: string; onXong: () => void; onRank?: () => void; desktop?: boolean }) {
   const [state, setState] = useState<'dang_tai' | 'san_sang' | 'loi'>('dang_tai')
   const [mon, setMon] = useState<string | null>(null)
   const [baiTestId, setBaiTestId] = useState<string | null>(null)
@@ -1280,7 +1282,7 @@ function LamThuThach({ hocSinhId, onXong, onRank, desktop }: { hocSinhId: string
   )
 }
 
-function KetQuaThuThachBox({ baiTestId, busy, err, onLuotMoi, onRank, desktop }: { baiTestId: string; busy: boolean; err: string | null; onLuotMoi: () => void; onRank: () => void; desktop?: boolean }) {
+function KetQuaThuThachBox({ baiTestId, busy, err, onLuotMoi, onRank, desktop }: { baiTestId: string; busy: boolean; err: string | null; onLuotMoi: () => void; onRank?: () => void; desktop?: boolean }) {
   const [kq, setKq] = useState<KetQuaThuThach | null | undefined>(undefined)
   useEffect(() => { setKq(undefined); ketQuaThuThach(baiTestId).then(setKq).catch(() => setKq(null)) }, [baiTestId])
   const nut = `w-full font-medium ${desktop ? 'px-6 py-3.5 text-[15px]' : 'px-6 py-3 text-sm'}`
@@ -1296,16 +1298,16 @@ function KetQuaThuThachBox({ baiTestId, busy, err, onLuotMoi, onRank, desktop }:
           </p>
           <p className="mt-1 text-[13px]" style={{ color: MAU.ink }}>
             {kq.pass
-              ? (kq.diem > 0 ? `+${kq.diem} Điểm Rank` : 'Hôm nay em đã lấy đủ điểm Thử thách — làm tiếp vẫn tính vào luyện tập')
+              ? (!rankBat() ? 'Em đã vượt Thử thách hôm nay' : kq.diem > 0 ? `+${kq.diem} Điểm Rank` : 'Hôm nay em đã lấy đủ điểm Thử thách — làm tiếp vẫn tính vào luyện tập')
               : 'Làm lượt mới nhé, không giới hạn số lượt'}
-            {kq.pass && kq.diem > 0 && kq.diem < kq.diem_goc ? ` (chạm trần ngày)` : ''}
+            {rankBat() && kq.pass && kq.diem > 0 && kq.diem < kq.diem_goc ? ` (chạm trần ngày)` : ''}
           </p>
-          <p className="mt-1 text-[12px]" style={{ color: MAU.muted }}>Hôm nay {kq.hom_nay}/{kq.tran_ngay} · tháng này {kq.thang}/{kq.tran_thang}</p>
+          {rankBat() && <p className="mt-1 text-[12px]" style={{ color: MAU.muted }}>Hôm nay {kq.hom_nay}/{kq.tran_ngay} · tháng này {kq.thang}/{kq.tran_thang}</p>}
         </div>
       )}
       {err && <p className="mb-2 text-[12.5px]" style={{ color: MAU.sai }}>{err}</p>}
       <button onClick={onLuotMoi} disabled={busy} className={`${nut} disabled:opacity-40`} style={NUT_PHU}>{busy ? 'Đang tạo lượt mới…' : 'Thử thách lượt mới'}</button>
-      <button onClick={onRank} className={`${nut} mt-2`} style={NUT_PHU}>🏆 Xem Rank</button>
+      {onRank && <button onClick={onRank} className={`${nut} mt-2`} style={NUT_PHU}>🏆 Xem Rank</button>}
     </div>
   )
 }
