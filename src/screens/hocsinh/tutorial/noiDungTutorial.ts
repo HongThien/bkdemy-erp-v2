@@ -144,11 +144,11 @@ const CHUONG_TAT_CA: ChuongTutorial[] = [
     id: 'huy_hieu', ten: 'Thành tựu', phu: 'Mỗi bậc đạt được thưởng EXP một lần mỗi mùa', icon: { o: 'thanh_tuu' },
     kyNang: 'Thành tựu — đạt bậc nào, nhận EXP bậc đó',
     buoc: [
-      { noi: 'Chặng 10: Thành tựu. Vào ô Thành tựu để xem các thành tựu của mùa này. Đạt là đạt, mỗi bậc có phần thưởng EXP riêng.', soi: 'tam_huy_hieu' },
+      { noi: 'Chặng 10: Thành tựu. Vào ô Thành tựu để xem các thành tựu của mùa này. Mỗi thành tựu là một thẻ, chỉ hiện bậc gần nhất em cần đạt, kèm phần thưởng EXP.', soi: 'tam_huy_hieu' },
       { noi: 'Có chuỗi làm bài liên tiếp, nhiệm vụ ngày liên tiếp, luyện dạng yếu đạt liên tiếp, tổng số câu luyện đạt, và top đầu khối ở Mock Test.', soi: 'tam_huy_hieu' },
       { noi: 'Mỗi bậc chỉ thưởng một lần trong mùa. Mất chuỗi rồi cày lại tới bậc cũ thì không thưởng lại. Mùa mới bắt đầu ngày 1 tháng 7.', soi: 'sao' },
       { noi: 'Có những thành tựu ẩn. Em đạt được mới biết tên, trước đó chỉ thấy ổ khoá.', soi: 'chot_thang' },
-      { noi: 'Khi em về màn chính, thành tựu mới đạt sẽ hiện ra chúc mừng. EXP được đổi ra xu như mọi EXP khác.', soi: 'ghim' },
+      { noi: 'Đạt điều kiện thì thẻ sáng lên và có nút Nhận quà. Ô Thành tựu ở màn chính hiện số quà đang chờ. Nhận xong, thẻ chuyển sang bậc kế tiếp, EXP đổi ra xu như mọi EXP khác.', soi: 'ghim' },
     ],
   },
   {

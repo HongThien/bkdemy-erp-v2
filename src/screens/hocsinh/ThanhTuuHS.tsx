@@ -7,7 +7,7 @@
 import { useEffect, useState } from 'react'
 import { thanhTuuCuaToi, LOAI_GIAI_TEN, THANH_TUU_ICON, THANH_TUU_MAU, type ThanhTuuHS as TT } from '../../lib/thanhtuu_hs'
 import { ManHS, DauTrangHS, NhomHS, TrongHS, MAU, THE, HEAD } from './skin/KhungHS'
-import { thanhTuuChot, thanhTuuMoiCuaToi, type TtCuaToi, type TtMoi } from '../../lib/thanhtuu_moi'
+import { thanhTuuMoiCuaToi, thanhTuuNhan, type TtCuaToi, type TtNhan } from '../../lib/thanhtuu_moi'
 import { MungThanhTuu, ThanhTuuMoiView } from './thanhtuu/ThanhTuuMoiView'
 
 function labelThang(ym: string): string { const [y, m] = ym.split('-'); return `Tháng ${parseInt(m, 10)}/${y}` }
@@ -15,13 +15,25 @@ function labelThang(ym: string): string { const [y, m] = ym.split('-'); return `
 export default function ThanhTuuHS({ onXong, onAlbum }: { gioiTinh: 'nam' | 'nu' | null; onXong: () => void; onAlbum?: () => void }) {
   const [items, setItems] = useState<TT[] | null>(null)
   const [err, setErr] = useState<string | null>(null)
-  // Thành tựu 15 loại (06/10): chốt các bậc mới rồi đọc lại — chốt idempotent nên mở màn nhiều lần không thưởng lại
+  // Thành tựu 15 loại (Thùy 07/10): mỗi thẻ chỉ hiện bậc gần nhất; đạt ⇒ nút "Nhận quà". Nhận xong VÁ TẠI CHỖ (không tải lại cả màn).
   const [tt, setTt] = useState<TtCuaToi | null>(null)
-  const [moi, setMoi] = useState<TtMoi[]>([])
-  useEffect(() => {
-    thanhTuuChot().catch(() => [] as TtMoi[]).then((m) => { setMoi(m); return thanhTuuMoiCuaToi() })
-      .then(setTt).catch((e) => setErr(e?.message ?? String(e)))
-  }, [])
+  const [vuaNhan, setVuaNhan] = useState<TtNhan | null>(null)
+  const [dangNhan, setDangNhan] = useState<string | null>(null)
+  useEffect(() => { thanhTuuMoiCuaToi().then(setTt).catch((e) => setErr(e?.message ?? String(e))) }, [])
+  const nhanQua = async (ma: string, bac: number) => {
+    if (dangNhan) return
+    setDangNhan(`${ma}-${bac}`); setErr(null)
+    try {
+      const r = await thanhTuuNhan(ma, bac)
+      setVuaNhan(r)
+      setTt((p) => {
+        if (!p) return p
+        const loai = p.loai.map((l) => (l.ma !== ma ? l : { ...l, bac: l.bac.map((b) => (b.bac === bac ? { ...b, dat: true, co_the_nhan: false } : b)) }))
+        const conCho = loai.filter((l) => l.bac.some((b) => b.co_the_nhan)).length
+        return { ...p, loai, cho_nhan: conCho, tong_exp_mua: p.tong_exp_mua + r.exp }
+      })
+    } catch (e: any) { setErr(e?.message ?? String(e)) } finally { setDangNhan(null) }
+  }
   useEffect(() => {
     thanhTuuCuaToi().then(setItems).catch((e) => { setErr(e?.message ?? String(e)); setItems([]) })
   }, [])
@@ -34,8 +46,8 @@ export default function ThanhTuuHS({ onXong, onAlbum }: { gioiTinh: 'nam' | 'nu'
   return (
     <ManHS>
       <DauTrangHS tieuDe="Thành tựu của em" phu="Thành tựu mùa · giải thưởng cuối tháng · huy hiệu" onBack={onXong} />
-      <MungThanhTuu moi={moi} onDong={() => setMoi([])} />
-      {tt ? <ThanhTuuMoiView d={tt} /> : !err && <TrongHS>Đang tải…</TrongHS>}
+      <MungThanhTuu nhan={vuaNhan} onDong={() => setVuaNhan(null)} />
+      {tt ? <ThanhTuuMoiView d={tt} onNhan={nhanQua} dangNhan={dangNhan} /> : !err && <TrongHS>Đang tải…</TrongHS>}
       <NhomHS>Giải thưởng cuối tháng</NhomHS>
 
       {items === null && !tt && <TrongHS>Đang tải…</TrongHS>}

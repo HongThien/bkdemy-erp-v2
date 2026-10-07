@@ -292,7 +292,8 @@ Chuỗi làm bài, nhiệm vụ và Bảng xếp hạng đều dựa trên “l�
 - Một số thành tựu khác ghi “Sắp có”, và có thành tựu ẩn: đạt rồi mới biết tên.
 
 **Nhận thưởng**
-- Khi em về màn chính, thành tựu mới đạt hiện ra để chúc mừng. Xem toàn bộ ở ô Thành tựu.
+- Mỗi thành tựu là một thẻ, chỉ hiện bậc gần nhất. Đạt điều kiện thì thẻ sáng lên và có nút Nhận quà; chạm nút mới nhận EXP.
+- Ô Thành tựu ở màn chính hiện số thẻ đang chờ em nhận quà. Nhận xong, thẻ chuyển sang bậc kế tiếp.
 
 **Album huy hiệu và giải thưởng cuối tháng**
 - Giải thưởng cuối tháng (Xuất sắc, Tiến bộ, Chăm chỉ) do thầy cô công bố và hiện cùng màn Thành tựu.
@@ -480,11 +481,11 @@ Chuỗi làm bài, nhiệm vụ và Bảng xếp hạng đều dựa trên “l�
 ### Chặng 10: Thành tựu (`huy_hieu`)
 *Mỗi bậc đạt được thưởng EXP một lần mỗi mùa* · Mở khoá: Thành tựu — đạt bậc nào, nhận EXP bậc đó
 
-1. Chặng 10: Thành tựu. Vào ô Thành tựu để xem các thành tựu của mùa này. Đạt là đạt, mỗi bậc có phần thưởng EXP riêng.
+1. Chặng 10: Thành tựu. Vào ô Thành tựu để xem các thành tựu của mùa này. Mỗi thành tựu là một thẻ, chỉ hiện bậc gần nhất em cần đạt, kèm phần thưởng EXP.
 2. Có chuỗi làm bài liên tiếp, nhiệm vụ ngày liên tiếp, luyện dạng yếu đạt liên tiếp, tổng số câu luyện đạt, và top đầu khối ở Mock Test.
 3. Mỗi bậc chỉ thưởng một lần trong mùa. Mất chuỗi rồi cày lại tới bậc cũ thì không thưởng lại. Mùa mới bắt đầu ngày 1 tháng 7.
 4. Có những thành tựu ẩn. Em đạt được mới biết tên, trước đó chỉ thấy ổ khoá.
-5. Khi em về màn chính, thành tựu mới đạt sẽ hiện ra chúc mừng. EXP được đổi ra xu như mọi EXP khác.
+5. Đạt điều kiện thì thẻ sáng lên và có nút Nhận quà. Ô Thành tựu ở màn chính hiện số quà đang chờ. Nhận xong, thẻ chuyển sang bậc kế tiếp, EXP đổi ra xu như mọi EXP khác.
 
 ### Chặng 11: EXP, xu và May mắn (`xu_may_man`)
 *Từ EXP đến quà và vòng quay* · Mở khoá: EXP và xu — EXP đổi ra xu ngay để đổi quà ở trung tâm

@@ -372,7 +372,8 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
         'Một số thành tựu khác ghi “Sắp có”, và có thành tựu ẩn: đạt rồi mới biết tên.',
       ] },
       { tieu: 'Nhận thưởng', y: [
-        'Khi em về màn chính, thành tựu mới đạt hiện ra để chúc mừng. Xem toàn bộ ở ô Thành tựu.',
+        'Mỗi thành tựu là một thẻ, chỉ hiện bậc gần nhất. Đạt điều kiện thì thẻ sáng lên và có nút Nhận quà; chạm nút mới nhận EXP.',
+        'Ô Thành tựu ở màn chính hiện số thẻ đang chờ em nhận quà. Nhận xong, thẻ chuyển sang bậc kế tiếp.',
       ] },
       { tieu: 'Album huy hiệu và giải thưởng cuối tháng', y: [
         'Giải thưởng cuối tháng (Xuất sắc, Tiến bộ, Chăm chỉ) do thầy cô công bố và hiện cùng màn Thành tựu.',

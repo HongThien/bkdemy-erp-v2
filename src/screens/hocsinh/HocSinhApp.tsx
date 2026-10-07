@@ -60,8 +60,7 @@ import { giaoDienCuaToi, home912, type Home912 } from '../../lib/giaodien_hs'
 import DanhSachHS, { type DsRow } from './DanhSachHS'
 import MayManHS from './MayManHS'
 import MoiQuayMayMan from './MoiQuayMayMan'
-import { ghiMoApp, thanhTuuChot, type TtMoi } from '../../lib/thanhtuu_moi'
-import { MungThanhTuu } from './thanhtuu/ThanhTuuMoiView'
+import { ghiMoApp, thanhTuuChoNhan } from '../../lib/thanhtuu_moi'
 import BangXepHangHS from './bxh/BangXepHangHS'
 import ThanhTuuHS from './ThanhTuuHS'
 import BaiTapGiaoHS from './BaiTapGiaoHS'
@@ -293,7 +292,7 @@ const BOX_CAP1: BoxCap1[] = [
 // Bỏ khoá `h-screen overflow-hidden` — mockup gốc của Thùy vốn là trang cuộn tự nhiên theo nội dung
 // (không ép vừa 1 màn hình), thân trang cao hơn viewport 13-14" thì cuộn nhẹ là đúng theo THIẾT KẾ
 // gốc, không phải bug — khác hẳn bug 21/08 (cuộn do zoom 1.15 lỗi, xem main-hs.tsx).
-export function HomeCap1({ hoTen, maHS, onOpen, extra, chuaDoc, onHopThu, maymanCoLuot }: { hoTen: string; maHS: string; onOpen: (d: BoxCap1DirectId) => void; extra?: React.ReactNode; chuaDoc: number; onHopThu: () => void; maymanCoLuot?: boolean }) {
+export function HomeCap1({ hoTen, maHS, onOpen, extra, chuaDoc, onHopThu, maymanCoLuot, thanhTuuCho }: { hoTen: string; maHS: string; onOpen: (d: BoxCap1DirectId) => void; extra?: React.ReactNode; chuaDoc: number; onHopThu: () => void; maymanCoLuot?: boolean; thanhTuuCho?: number }) {
   const initials = hoTen.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase()
   return (
     <div className="min-h-screen" style={{ background: 'radial-gradient(circle at 85% 5%, rgba(115,87,245,.10), transparent 24rem), radial-gradient(circle at 8% 25%, rgba(47,128,237,.08), transparent 22rem), #f4f7fb' }}>
@@ -359,7 +358,7 @@ export function HomeCap1({ hoTen, maHS, onOpen, extra, chuaDoc, onHopThu, mayman
             {BOX_CAP1.map((b) => {
               const sapCo = 'sapCo' in b && b.sapCo
               // Badge May mắn: có 1 lượt quay khi đủ điều kiện + chưa quay hôm nay (giống HomeHS cấp 2).
-              const badgeSo = !sapCo && b.id === 'may_man' && maymanCoLuot ? 1 : 0
+              const badgeSo = !sapCo && b.id === 'may_man' && maymanCoLuot ? 1 : !sapCo && b.id === 'thanh_tuu' ? (thanhTuuCho ?? 0) : 0
               return (
                 <button key={b.id} disabled={sapCo} onClick={() => !sapCo && onOpen(b.id as BoxCap1DirectId)}
                   className={`group relative flex min-h-[208px] flex-col items-start rounded-[26px] border border-white/76 bg-gradient-to-br p-6 text-left shadow-[0_16px_40px_rgba(31,47,79,0.08)] transition ${b.grad} ${sapCo ? 'opacity-60' : 'hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(31,47,79,0.12)]'}`}>
@@ -413,7 +412,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [htdDang, setHtdDang] = useState<{ ma_dang: string; ten_dang: string; xong: boolean } | null>(null)
   const [cap1, setCap1] = useState<boolean | null>(null) // null = chưa biết — chờ trước khi vẽ lưới ô
   const [cap2, setCap2] = useState<boolean | null>(null) // Thùy 11/09: cấp 2 (lớp 6-9) có layout KHU riêng
-  const [ttMoi, setTtMoi] = useState<TtMoi[]>([]) // bậc thành tựu vừa ghi sổ (chúc mừng ở màn chính)
+  const [ttCho, setTtCho] = useState(0) // số THẺ thành tựu đang chờ nhận quà — chỉ số trên ô Thành tựu
   const [maymanCoLuot, setMaymanCoLuot] = useState<boolean>(false) // badge ô "May mắn" (đủ điều kiện + chưa quay hôm nay)
   const [gioiTinh, setGioiTinh] = useState<'nam' | 'nu' | null>(null) // theme nam/nữ màn chính cấp 2/3 (kit hs-home-v4)
   const [anhUrl, setAnhUrl] = useState<string | null>(null) // avatar HS (đổi ngay trong app — ốp từ TA, mig 202609080215)
@@ -487,10 +486,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     document.addEventListener('visibilitychange', ghi)
     return () => document.removeEventListener('visibilitychange', ghi)
   }, [])
-  // Thành tựu mới (06/10): mỗi lần về màn chính chốt các bậc mới (server idempotent — bậc đã ghi KHÔNG trả lại) rồi chúc mừng
+  // Thành tựu (Thùy 07/10): mỗi lần về màn chính đếm số thẻ đang chờ "Nhận quà" để ô Thành tựu hiện chỉ số (lỗi mạng giữ số cũ)
   useEffect(() => {
     if (direct || khu) return
-    thanhTuuChot().then((m) => { if (m.length) setTtMoi((x) => [...x, ...m]) }).catch(() => undefined)
+    let bo = false
+    thanhTuuChoNhan().then((n) => { if (!bo) setTtCho(n) }).catch(() => undefined)
+    return () => { bo = true }
   }, [direct, khu])
   // RANK + NHIỆM VỤ của MÔN đang chọn trên màn chính (Thùy 01/10: ô Nhiệm vụ · ô Rank · huy hiệu bậc cạnh tên).
   // undefined = đang tải (ô hiện "…") · null = môn chưa mở rank/nhiệm vụ ⇒ ẩn ô + huy hiệu (dữ liệu quyết định, không if theo môn).
@@ -716,6 +717,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
       const conLai = nvHome.ngay.con_lai
       return { sub: conLai > 0 ? `Hôm nay còn ${conLai} lượt thưởng` : 'Đủ thưởng hôm nay!', subMau: conLai > 0 ? 'ton' : 'xanh', badge: nvHome.ngay.luot_hom_nay === 0 ? 1 : 0, onClick: moTuHome('nhiem_vu') }
     }
+    if (id === 'thanh_tuu') return ttCho > 0 ? { sub: `${ttCho} quà chờ nhận!`, subMau: 'ton', badge: ttCho } : { sub: 'Xem thành tựu của em', subMau: 'xam' }
     if (id === 'rank') {
       if (!nhom912 || rankHome === null) return null
       const t = rankHome?.toi
@@ -736,8 +738,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Thông tin học tập · Đề thi thử (sắp có) · Bài tập được giao · Thành tựu · May mắn.
   // Lời mời quay tự hiện (06/10): có lượt (cũ: cap1/cap2 qua mayManHSCuaToi; mới: nvHome.vong_quay) và chưa quay hôm nay — ô May mắn đã ẩn khỏi màn chính
   const coQuay = maymanCoLuot || (!!nvHome && nvHome.mo && nvHome.vong_quay.du && !nvHome.vong_quay.da_quay)
-  const moiQuay = <><MoiQuayMayMan coLuot={coQuay} onQuay={() => setDirect('may_man')} /><MungThanhTuu moi={ttMoi} onDong={() => setTtMoi([])} /></>
-  if (!khu && cap1) return <>{moiQuay}<HomeCap1 hoTen={hoTen} maHS={maHS} maymanCoLuot={maymanCoLuot}
+  const moiQuay = <MoiQuayMayMan coLuot={coQuay} onQuay={() => setDirect('may_man')} />
+  if (!khu && cap1) return <>{moiQuay}<HomeCap1 hoTen={hoTen} maHS={maHS} maymanCoLuot={maymanCoLuot} thanhTuuCho={ttCho}
     onOpen={(d) => setDirect(d === 'tu_luyen' ? 'tu_luyen_chon' : d)} chuaDoc={chuaDoc} onHopThu={() => setDirect('hop_thu')}
     extra={<>
       <ThanhChonMon mons={lopMons} mon={monChon} onChon={doiMon} className="mt-5" dem={demMon} luonHien

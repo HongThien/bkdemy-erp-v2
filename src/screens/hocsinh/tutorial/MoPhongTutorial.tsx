@@ -469,7 +469,7 @@ function MpHuyHieu() {
         <div className="flex items-center gap-2 p-3 text-[13px]" style={chu()}><span aria-hidden>🔒</span><b>Thành tựu ẩn</b><span style={mo}>· đạt mới biết tên</span></div>
       </Soi>
       <Soi id="ghim" style={THE}>
-        <p className="p-3 text-[12.5px]" style={chu()}>Thành tựu mới! <span style={mo}>· +200 EXP, đổi ra xu trong Ví</span></p>
+        <div className="flex items-center gap-2 p-3 text-[12.5px]" style={chu()}><span className="flex-1">Đạt rồi! <span style={mo}>· +200 EXP, đổi ra xu trong Ví</span></span><b className="rounded-lg px-3 py-1.5" style={{ background: MAU.acc, color: MAU.accInk }}>Nhận quà</b></div>
       </Soi>
     </div>
   )
