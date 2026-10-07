@@ -26,7 +26,8 @@ const NHAN_NGUON: Record<string, { icon: string; ten: string }> = {
   attend_floor: { icon: '✅', ten: 'Điểm tham dự' },
   exp_tren_lop: { icon: '🎮', ten: 'Game trên lớp' },
   may_man: { icon: '🎰', ten: 'Vòng quay may mắn' },
-  exp_nhiem_vu: { icon: '📜', ten: 'Nhiệm vụ (Chặng + rương)' },
+  exp_nhiem_vu: { icon: '📜', ten: 'Nhiệm vụ' },
+  exp_thanh_tuu: { icon: '🏅', ten: 'Thành tựu' },
   exp_huy_hieu: { icon: '🏅', ten: 'Huy hiệu' },
   chot_thang: { icon: '🪙', ten: 'Xu đổi từ EXP' },   // Thùy 06/10: tự đổi hằng ngày, ví gộp 1 dòng / môn / tháng
   chot_lai: { icon: '🔄', ten: 'Điều chỉnh xu' },
@@ -36,12 +37,13 @@ const NHAN_NGUON: Record<string, { icon: string; ten: string }> = {
 
 // ── Card theo NHÓM nguồn (Thùy 27/09: "để hs theo dõi nguồn nào ít-nhiều") — bấm 1 card mới hiện
 // lịch sử chi tiết của nhóm đó (HoatDongRow), thay vì 1 danh sách phẳng lẫn lộn mọi nguồn.
-type NhomKey = 'et' | 'btvn' | 'nhiem_vu' | 'huy_hieu' | 'may_man' | 'attend_floor' | 'hoat_dong_lop' | 'cong_tay' | 'tru_tay' | 'chot_xu' | 'khac'
+type NhomKey = 'et' | 'btvn' | 'nhiem_vu' | 'thanh_tuu' | 'huy_hieu' | 'may_man' | 'attend_floor' | 'hoat_dong_lop' | 'cong_tay' | 'tru_tay' | 'chot_xu' | 'khac'
 const NHOM_META: Record<NhomKey, { icon: string; ten: string; donVi: 'exp' | 'xu' }> = {
   et: { icon: '📋', ten: 'ET', donVi: 'exp' },
   btvn: { icon: '🏠', ten: 'BTVN', donVi: 'exp' },
   nhiem_vu: { icon: '📜', ten: 'Nhiệm vụ', donVi: 'exp' },
-  huy_hieu: { icon: '🏅', ten: 'Huy hiệu', donVi: 'exp' },
+  thanh_tuu: { icon: '🏅', ten: 'Thành tựu', donVi: 'exp' },
+  huy_hieu: { icon: '🎖️', ten: 'Huy hiệu (lịch sử)', donVi: 'exp' },
   may_man: { icon: '🎰', ten: 'Vòng quay may mắn', donVi: 'exp' },
   attend_floor: { icon: '✅', ten: 'Điểm tham dự', donVi: 'exp' },
   // Nối 27/09: nguồn 'exp_tren_lop' = EXP game trong buổi học (xếp hạng buổi → lượt game, spec-game-buoi-hoc §5b).
@@ -52,10 +54,10 @@ const NHOM_META: Record<NhomKey, { icon: string; ten: string; donVi: 'exp' | 'xu
   khac: { icon: '✨', ten: 'Khác', donVi: 'exp' },
 }
 // Thứ tự hiện card — khớp ví dụ Thùy đưa (ET, BTVN, thầy cô tặng, may mắn, hoạt động lớp...).
-const THU_TU_NHOM: NhomKey[] = ['et', 'btvn', 'nhiem_vu', 'huy_hieu', 'may_man', 'attend_floor', 'hoat_dong_lop', 'cong_tay', 'tru_tay', 'chot_xu']
+const THU_TU_NHOM: NhomKey[] = ['et', 'btvn', 'nhiem_vu', 'thanh_tuu', 'huy_hieu', 'may_man', 'attend_floor', 'hoat_dong_lop', 'cong_tay', 'tru_tay', 'chot_xu']
 const NGUON_TOI_NHOM: Record<string, NhomKey> = {
   exp_et: 'et', exp_btvn: 'btvn', exp_btvn_thang: 'btvn',
-  exp_nhiem_vu: 'nhiem_vu', exp_huy_hieu: 'huy_hieu',
+  exp_nhiem_vu: 'nhiem_vu', exp_thanh_tuu: 'thanh_tuu', exp_huy_hieu: 'huy_hieu',
   attend_floor: 'attend_floor', may_man: 'may_man', exp_tren_lop: 'hoat_dong_lop',
   cong_tay: 'cong_tay', tru_tay: 'tru_tay', chot_thang: 'chot_xu', chot_lai: 'chot_xu',
   // Nguồn cũ/một-lần (exp_thang trước khi tách ET/BTVN, rank_et/rank_ingame/btvn — data lịch sử 06-08/2026)
@@ -92,7 +94,8 @@ function HoatDongRow({ h }: { h: HoatDongViXu }) {
   const donVi = laExp ? 'EXP' : 'xu'
   const duong = h.so >= 0
   // Dòng GỘP THEO THÁNG (nhiệm vụ) hiện cấp + rương thay vì 1 ngày cụ thể; huy hiệu hiện tên + sao.
-  const phu = h.nguon === 'exp_nhiem_vu' ? `Cấp ${h.cap ?? 0}${h.so_ruong ? ` · ${h.so_ruong} rương` : ''}`
+  const phu = h.nguon === 'exp_nhiem_vu' ? `Luyện dạng yếu${h.dht ? ` · +${h.dht.toLocaleString('vi-VN')} điểm học tập` : ''}`
+    : h.nguon === 'exp_thanh_tuu' ? `${h.ten ?? 'Thành tựu'} · bậc ${h.bac ?? ''}`
     : h.nguon === 'exp_huy_hieu' ? `${h.ten ?? 'Huy hiệu'} ★${h.sao ?? ''}`
     : (h.ngay ? ddmm(h.ngay) : ddmm(h.created_at))
   return (

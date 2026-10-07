@@ -35707,3 +35707,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - Lỗi: dòng liên hệ ở `@bottom-center` rớt "Geleximco" xuống dòng 2. Nguyên nhân: có ô giữa + ô phải (số trang), ô phải không khai `max-width` ⇒ paged.js 0.4.3 ước tỉ lệ, cho ô giữa chỉ ~284px.
 - Sửa: `max-width:24mm` cho `@bottom-right` (gtPageCss, PrintView.tsx) ⇒ paged.js chia "24mm | còn lại | 24mm", ô giữa 514px, 1 dòng, vẫn căn giữa. `white-space:nowrap` trong @bottom-center KHÔNG ăn (paged.js không chép sang ô lề).
 - Verify: Chrome headless + paged.js với khối @page rút thẳng từ file: 284px/2 dòng → 514px/1 dòng.
+
+### 2026-10-07 (đêm) — dọn phần còn lại không chờ quyết định: K9 Ví xu · V7 tin chuỗi · V11 giảm chuyển động
+- **K9 — mig `202610071216_vi_xu_nguon_moi.sql` ĐÃ ÁP** (sinh từ định nghĩa LIVE của `fn_hs_vi_xu_cua_toi` rồi patch, không chép tay): dòng nhiệm vụ trả `dht` (ĐHT kiếm trong tháng) thay cho cấp/rương (luôn 0 từ 06/10); thêm nguồn **exp_thanh_tuu** (mỗi bậc đã NHẬN, theo tháng nhận; kèm tên + bậc). ViXuHS: thêm nhóm "Thành tựu", đổi nhãn "Nhiệm vụ", "Huy hiệu (lịch sử)". Test `scripts/_thu_mig_vixu.mjs` (rollback 4 ✔; ĐHT 190 = 7 lượt×20 + việc tuần W1 50).
+- **V7:** tin Thế giới `kieu='chuoi'` trước đây rơi vào default và hiện chữ thô "chuoi" ⇒ thêm `case 'chuoi'` ("giữ chuỗi làm bài N ngày liên tiếp 🔥") ở `moTaTin`. len_bac đã lọc theo cờ Rank từ trước.
+- **V11 (một phần):** nút "Nhận quà" nhấp nháy có `motion-reduce:animate-none`; các màn mới (BXH, Nhiệm vụ, Thành tựu) không có animation nào khác ngoài xoay mũi tên dropdown. Còn lại của V11 (bản dọc toàn bộ, đồ hoạ Thấp) cần soát trên máy thật.

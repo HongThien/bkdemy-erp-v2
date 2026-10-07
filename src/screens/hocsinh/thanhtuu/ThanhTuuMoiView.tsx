@@ -52,7 +52,7 @@ function The({ x, onNhan, dangNhan }: { x: Buoc; onNhan?: (ma: string, bac: numb
               {x.chua > 1 && <span className="font-medium" style={{ color: MAU.muted }}> · còn {x.chua - 1} bậc nữa</span>}
             </span>
             {nhan ? (
-              <NutHS onClick={() => onNhan?.(l.ma, hien!.bac)} tat={dangNhan === key} className="!h-10 shrink-0 px-5 !text-[14px] animate-pulse">{dangNhan === key ? 'Đang nhận…' : 'Nhận quà'}</NutHS>
+              <NutHS onClick={() => onNhan?.(l.ma, hien!.bac)} tat={dangNhan === key} className="!h-10 shrink-0 px-5 !text-[14px] animate-pulse motion-reduce:animate-none">{dangNhan === key ? 'Đang nhận…' : 'Nhận quà'}</NutHS>
             ) : (
               <span className="shrink-0 rounded-full px-3 py-1.5 text-[12px] font-bold" style={{ border: `1px solid ${MAU.line}`, color: MAU.muted }}>Chưa đạt</span>
             )}

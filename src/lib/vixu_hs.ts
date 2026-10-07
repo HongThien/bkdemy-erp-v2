@@ -11,8 +11,9 @@ export type HoatDongViXu = {
   created_at: string
   ngay: string | null
   lop: string | null
-  cap?: number; so_ruong?: number   // exp_nhiem_vu: cấp Chặng + số rương của THÁNG (dòng gộp theo tháng)
-  sao?: number; ten?: string        // exp_huy_hieu: sao + tên huy hiệu
+  dht?: number                      // exp_nhiem_vu: ĐHT kiếm được trong THÁNG (dòng gộp theo tháng)
+  sao?: number; ten?: string        // exp_huy_hieu: sao + tên huy hiệu · exp_thanh_tuu: tên thành tựu
+  bac?: number                      // exp_thanh_tuu: bậc đã nhận
 }
 export type TrangThaiMua = 'cho_giao' | 'da_giao' | 'huy'
 export type LichSuMua = {

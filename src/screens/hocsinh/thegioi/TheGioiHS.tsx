@@ -54,6 +54,7 @@ export function moTaTin(t: TinTG): ReactNode {
     case 'giai_thang': return <>nhận giải <b>{TEN_GIAI[String(c.loai_giai)] ?? 'tháng'} tháng {Number(String(c.thang).slice(5, 7))}</b> · {t.mon}</>
     case 'et_cao': return <>đạt <b>ET {String(c.diem).replace('.', ',')} điểm</b> ({c.so_cau} câu) · {t.mon} {ddmm(c.ngay)}</>
     case 'tu_luyen': return <>luyện đúng <b>{c.so_dung} câu</b> trong ngày · {t.mon}</>
+    case 'chuoi': return <>giữ chuỗi làm bài <b>{c.so_ngay} ngày liên tiếp</b> 🔥</>
     default: return <>{t.kieu}</>
   }
 }
