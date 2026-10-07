@@ -114,13 +114,25 @@ export type PhanLoai = 'buoi' | 'lt_chuyen_de' | 'dang' | 'btvn' | 'ontap' | 'cu
 // ⭐ 21/09 (CEO): áp cho GIÁO TRÌNH nhánh 'hinh_hoc' — mỗi câu có ảnh 3 chế độ in
 //   hien (in ảnh) · o_trong (chừa ô Vẽ hình, GV vẫn thấy ảnh đối chiếu) · khong (không ảnh, không ô).
 //   Kế thừa enum + xoay vòng từ builder Hình Luyện cũ (lib/kho/hinhGiaoTrinh.ts).
-// diemByCau (MT — Thùy 30/09) = điểm CHO TỪNG CÂU (per ma_cau, bao gồm mã Hình `HINH:<uuid>`).
+// diemByCau (MT — Thùy 30/09) = điểm CHO TỪNG CÂU (per ma_cau; Hình: per Ý `HINH:<uuid>#<i>` từ 07/10 — xem diemBaiHinh).
 // Dropdown 8 mức 0.25→2.0 (bước 0.25). Thiếu key → DEFAULT_DIEM_MT = 1.0. Tổng in trên đầu đề MT
 // (Tổng: N điểm) = sum diemByCau ?? default cho MỌI câu đang có trong phần. Chỉ MT dùng — ET/BTVN
 // không có ràng buộc điểm số (ET chỉ ngưỡng làm được, BTVN không chấm điểm).
 export type CauHinh = { header?: 'wave' | 'none'; footer?: 'wave' | 'none'; watermark?: 'logo' | 'none'; mau?: string; inLyThuyet?: boolean; btvnLinesByCau?: Record<string, number>; etFormByCau?: Record<string, string>; phanBac?: Record<string, string>; etMaDe?: Record<string, (string | null)[]>; hsMaDe?: Record<string, number>; etColByGroup?: Record<number, string>; colByCau?: Record<string, number>; nhanhByCau?: Record<string, string>; hinhCheDoByCau?: Record<string, 'hien' | 'o_trong' | 'khong'>; hinhBuoiId?: string; hinhByMa?: Record<string, HinhRowInfo>; hinhMaDe?: Record<string, [HinhBanRefLite | null, HinhBanRefLite | null]>; mtMeta?: { loaiDe?: string | null; thang?: string | null }; diemByCau?: Record<string, number> }
 export const DEFAULT_DIEM_MT = 1
 export const MT_DIEM_OPTS: number[] = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
+// ⭐ 07/10 (Thùy): điểm bài HÌNH do người soạn đặt THEO TỪNG Ý — key `HINH:<uuid>#<i>` (i = thứ tự ý từ 0, đúng thứ
+// tự "Câu 19, 20…" trên phiếu) — KHÔNG tự chia đều điểm bài. Ý chưa đặt ⇒ DEFAULT_DIEM_MT như câu Đại.
+// Đề CŨ (trước 07/10) chỉ có key cả bài `HINH:<uuid>` mà chưa có key ý nào ⇒ `cu`: giữ nguyên tổng bài, từng ý CHƯA
+// có điểm (null) — người chấm tự cho trong khung điểm bài, người soạn đặt lại từng ý khi cần. Không đoán.
+export const maYHinh = (ma: string, i: number): string => `${ma}#${i}`
+export function diemBaiHinh(dbc: Record<string, number> | undefined, ma: string, soY: number): { yDiem: (number | null)[]; tong: number; cu: boolean } {
+  const d = dbc ?? {}
+  const coY = Object.keys(d).some((k) => k.startsWith(ma + '#'))
+  if (!coY && d[ma] != null) return { yDiem: Array.from({ length: soY }, () => null), tong: d[ma], cu: true }
+  const yDiem = Array.from({ length: soY }, (_, i) => d[maYHinh(ma, i)] ?? DEFAULT_DIEM_MT)
+  return { yDiem, tong: yDiem.reduce((s, x) => s + x, 0), cu: false }
+}
 // hinhByMa (MT) = nội dung bài HÌNH của hàng `HINH:<uuid>` (xem laMaHinh). hinhMaDe = mã đề 2/3 của bài Hình, khoá =
 // chuoiSig(nodeIds) (khuôn ET Hình). hinhBuoiId = DI SẢN (buổi Hình mẫu, bản 02/09 sáng) — chỉ còn để deleteMT dọn.
 // mtMeta (MT) = phân loại đề (loaiDe: xem MTLoaiDe/mt.ts) + tháng dự kiến dùng ('YYYY-MM', gắn tay, KHÔNG

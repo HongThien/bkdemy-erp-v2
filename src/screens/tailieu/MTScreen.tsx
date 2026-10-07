@@ -13,7 +13,7 @@ import {
 import { homNayVN } from '../../lib/tuan'
 import {
   getTaiLieuFull, deletePhan, setCauOfPhan, suggestCauForDang, khoCuaMon, updateTaiLieu, nhanhCuaMon, tenNhanh, nhanhCuaCau, fetchCausCuaTaiLieu, coKhoHinh, laMaHinh, HINH_PREFIX,
-  ET_FORMS, etFormOf, coFormTn, MT_DIEM_OPTS, DEFAULT_DIEM_MT, type PhanResolved, type CauHinh, type ETForm as ETFormKind, type HinhRowInfo,
+  ET_FORMS, etFormOf, coFormTn, MT_DIEM_OPTS, DEFAULT_DIEM_MT, maYHinh, diemBaiHinh, type PhanResolved, type CauHinh, type ETForm as ETFormKind, type HinhRowInfo,
 } from '../../lib/tailieu'
 import { supabase } from '../../lib/supabase'
 // Hình (mô hình) trong MT = 1 HÀNG câu như Đại (Thùy 02/09: "pick câu hình phải như ET, có dòng, là câu đấy, in
@@ -439,6 +439,16 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
     const next: CauHinh = { ...ch, diemByCau: cur }
     setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved()
   }
+  // ⭐ 07/10 (Thùy) — điểm bài Hình đặt THEO TỪNG Ý (xem diemBaiHinh). Đặt ý đầu tiên trên đề cũ (key cả bài) ⇒ bỏ
+  // key cả bài, các ý còn lại về mặc định — người soạn đặt nốt.
+  async function setDiemY(ma: string, i: number, n: number) {
+    const cur = { ...(ch.diemByCau ?? {}) }
+    delete cur[ma]
+    const k = maYHinh(ma, i)
+    if (n === DEFAULT_DIEM_MT) delete cur[k]; else cur[k] = n
+    const next: CauHinh = { ...ch, diemByCau: cur }
+    setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved()
+  }
   // Số cột khi in — RIÊNG TỪNG CÂU (cau_hinh.colByCau, autosave). Câu tag cột liền nhau tự xếp cạnh nhau.
   const setColCau = (maCau: string, n: number) => saveCh({ ...ch, colByCau: { ...(ch.colByCau ?? {}), [maCau]: n } })
 
@@ -516,16 +526,20 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   if (loading || !d) return <div className="p-8 text-sm text-slate-400">Đang tải…</div>
   const soCau = Object.values(rowsByPhan).reduce((s, rows) => s + rows.filter((r) => r.maCau).length, 0)
   // ⭐ 30/09 (Thùy) — TỔNG ĐIỂM MT: cộng diemByCau[maCau] cho MỌI hàng có maCau (thiếu key = DEFAULT_DIEM_MT).
-  // Câu Hình bằng mã 'HINH:<uuid>' cũng dùng chung diemByCau (setDiem áp cho mọi mã). Format bỏ trailing 0.
-  const tongDiem = Object.values(rowsByPhan).flat().reduce((s, r) => s + (r.maCau ? (ch.diemByCau?.[r.maCau] ?? DEFAULT_DIEM_MT) : 0), 0)
+  // Hàng Hình: tổng điểm các ý (07/10 — diemBaiHinh; đề cũ = điểm cả bài). Format bỏ trailing 0.
+  const soYHinh = (ma: string): number => { const m = hinhMuc[ma]; return Math.max(1, m && m.kieu === 'de' ? m.ys.length : 1) }
+  const tongDiem = Object.values(rowsByPhan).flat().reduce((s, r) => s + (!r.maCau ? 0
+    : r.nhanh === 'hinh' ? diemBaiHinh(ch.diemByCau, r.maCau, soYHinh(r.maCau)).tong
+    : (ch.diemByCau?.[r.maCau] ?? DEFAULT_DIEM_MT)), 0)
   const fmtDiem = (n: number) => (n % 1 === 0 ? String(n) : n.toFixed(2).replace(/0+$/, '').replace(/\.$/, ''))
   // Số câu HIỆN TRÊN PHIẾU cho từng hàng (Thùy 02/09: đếm theo thứ tự builder, bài Hình = 1 số/ý): "17" hoặc "17–19".
   const nhanSo: Record<string, string> = {}
+  const soDau: Record<string, number> = {} // số câu của ý ĐẦU mỗi hàng — nhãn ô điểm từng ý Hình ("C19", "C20")
   { let n = 0
     for (const p of phans) (rowsByPhan[p.id] ?? []).forEach((r, i) => {
       if (!r.maCau) { nhanSo[`${p.id}:${i}`] = ''; return }
-      const m = hinhMuc[r.maCau]
-      const soY = r.nhanh === 'hinh' ? Math.max(1, m && m.kieu === 'de' ? m.ys.length : 1) : 1
+      const soY = r.nhanh === 'hinh' ? soYHinh(r.maCau) : 1
+      soDau[`${p.id}:${i}`] = n + 1
       nhanSo[`${p.id}:${i}`] = soY > 1 ? `${n + 1}–${n + soY}` : String(n + 1)
       n += soY
     }) }
@@ -628,10 +642,23 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                               <label className="ml-auto flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ cho HS viết (bản in) — trống = mặc định như ET">dòng
                                 <input type="number" min={0} max={50} value={h?.soDong ?? DONG_BTVN} onChange={(e) => setHinhInfo(ma, { soDong: e.target.value === '' ? null : Math.max(0, Math.min(50, +e.target.value || 0)) })} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
                               </label>
-                              <select value={ch.diemByCau?.[ma] ?? DEFAULT_DIEM_MT} onChange={(e) => setDiem(ma, +e.target.value)}
-                                title="Điểm bài Hình này" className="h-7 shrink-0 rounded border border-slate-300 bg-white px-1 text-[12px] font-medium text-slate-700">
-                                {MT_DIEM_OPTS.map((n) => <option key={n} value={n}>{n} đ</option>)}
-                              </select>
+                              {/* ⭐ 07/10 (Thùy) — điểm TỪNG Ý (mỗi ý = 1 câu trên phiếu), không chia đều điểm bài. Đề cũ đặt
+                                  cả bài: giữ tổng, nhắc đặt lại (ô ý để "—" tới khi chọn). */}
+                              {(() => { const db = diemBaiHinh(ch.diemByCau, ma, soYHinh(ma)); const dau = soDau[`${p.id}:${i}`] ?? 1
+                                return (
+                                  <span className="flex shrink-0 flex-wrap items-center gap-1" title="Điểm từng ý của bài Hình (mỗi ý = 1 câu trên phiếu)">
+                                    {db.cu && <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[10.5px] font-medium text-amber-800" title="Đề soạn trước 07/10 đặt điểm cho cả bài — chọn điểm từng ý để thay">cũ: {fmtDiem(db.tong)}đ cả bài — đặt lại từng ý</span>}
+                                    {db.yDiem.map((v, yi) => (
+                                      <label key={yi} className="flex items-center gap-0.5 text-[10.5px] text-slate-400">C{dau + yi}
+                                        <select value={v ?? ''} onChange={(e) => setDiemY(ma, yi, +e.target.value)}
+                                          className="h-7 rounded border border-slate-300 bg-white px-1 text-[12px] font-medium text-slate-700">
+                                          {v == null && <option value="">—</option>}
+                                          {MT_DIEM_OPTS.map((n) => <option key={n} value={n}>{n} đ</option>)}
+                                        </select>
+                                      </label>
+                                    ))}
+                                  </span>
+                                ) })()}
                               <button onClick={() => doiHinh(ma)} title="Đổi bản khác (cùng node, ít dùng nhất)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
                               <button onClick={() => setHinhPicker({ phanId: p.id, idx: i })} className="rounded-md border border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">✎ Chọn</button>
                               <button onClick={() => xoaRow(p.id, i)} title="Xoá hàng" className="shrink-0 px-1 text-[13px] text-slate-300 hover:text-rose-600">✕</button>

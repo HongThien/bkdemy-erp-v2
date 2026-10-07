@@ -18,7 +18,7 @@ import { chuanBiLuoiMT, listProblems, listGrades, gradeMTChiTiet, deleteGrade } 
 import { tenHienThiDs } from '../../lib/hoten'
 import { supabase } from '../../lib/supabase'
 import type { MTPhanCaus } from '../../lib/mt'
-import { DEFAULT_DIEM_MT, laMaHinh } from '../../lib/tailieu'
+import { DEFAULT_DIEM_MT, laMaHinh, diemBaiHinh } from '../../lib/tailieu'
 
 // Chỉ môn CÓ KHO mới suy được mastery (khoCuaMon dispatch dai_/khtn_). Anh/Văn chưa có kho.
 const MON_CO_KHO = ['Toán', 'KHTN']
@@ -1735,10 +1735,11 @@ function DiemMTEditModal({ thang, hsId, hoTen, getDiem, onClose, onSaved }: {
 // bài Hình (HINH:<uuid>) rụng hẳn, số "Câu 1.." đếm lại từ đầu MỖI PHẦN (lệch số trên phiếu), và buổi chưa ai
 // mở tab MT thì không có ô nào để ghi. Nay duyệt CHÍNH các ô chấm (gami_session_problems phase='mt') theo
 // problem_no = đúng số in trên phiếu (MTPrintView đếm 1 bộ, Hình mỗi ý 1 câu), gồm cả ô Hình; lưới dựng qua
-// chuanBiLuoiMT (chung với tab MT ở buổi học). Điểm tối đa 1 ý Hình = điểm CẢ BÀI (diemByCau['HINH:…']) chia
-// đều số ý (CEO 07/10).
+// chuanBiLuoiMT (chung với tab MT ở buổi học). Điểm tối đa 1 ý Hình = điểm người soạn đặt cho ĐÚNG ý đó
+// (diemBaiHinh — Thùy 07/10: không tự chia đều). Đề cũ chỉ đặt điểm cả bài ⇒ ý "chưa đặt điểm": Đ/C không gợi ý điểm,
+// người chấm tự chọn trong khung điểm bài, tổng các ý vượt điểm bài thì báo đỏ.
 type BuoiMTOption = { buoiId: string; ngay: string; tenMT: string; taiLieuId: string; dongMT: boolean }
-type DongCham = { p: Problem; nhom: string; hinh: boolean; nhanPhu: string | null; maxDiem: number }
+type DongCham = { p: Problem; nhom: string; hinh: boolean; nhanPhu: string | null; maxDiem: number; baiK: number | null; chuaDatY: boolean }
 
 function ChamMTChiTietView() {
   const [mon, setMon] = useState('Toán')
@@ -1822,7 +1823,7 @@ function ChamMTChiTietView() {
   const fmtDiem = (n: number) => (n % 1 === 0 ? String(n) : Number(n.toFixed(2)).toString())
 
   // ── Dòng chấm = ô chấm theo problem_no (= số trên phiếu). Ô Đại → phần chứa ma_cau; ô Hình → hàng Hình thứ k
-  // (hinh_nhan bắt đầu bằng k, cùng quy ước thuTuMTTheoDe) → phần chứa hàng đó + điểm cả bài chia đều số ý.
+  // (hinh_nhan bắt đầu bằng k, cùng quy ước thuTuMTTheoDe) → phần chứa hàng đó + điểm của đúng ý thứ i (diemBaiHinh).
   const hinhHang: { ma: string; nhom: string }[] = []
   const phanCuaCau = new Map<string, string>()
   for (const ph of phans) {
@@ -1839,15 +1840,15 @@ function ChamMTChiTietView() {
       const n = soYCuaBai.get(k) ?? 1
       const i = daGapY.get(k) ?? 0
       daGapY.set(k, i + 1)
-      const diemBai = h ? (diemByCau[h.ma] ?? DEFAULT_DIEM_MT) : DEFAULT_DIEM_MT
+      const db = diemBaiHinh(h ? diemByCau : {}, h?.ma ?? '', n)
       return {
-        p, hinh: true, nhom: h?.nhom ?? 'Hình (thêm ở buổi học)',
+        p, hinh: true, nhom: h?.nhom ?? 'Hình (thêm ở buổi học)', baiK: k, chuaDatY: db.cu,
         nhanPhu: `Hình · bài ${Number.isNaN(k) ? '?' : k}${n > 1 ? ` · ý ${String.fromCharCode(97 + i)}` : ''}`,
-        maxDiem: Math.round((diemBai / n) * 100) / 100,
+        maxDiem: db.cu ? db.tong : (db.yDiem[i] ?? DEFAULT_DIEM_MT),
       }
     }
     const nhom = p.ma_cau ? phanCuaCau.get(p.ma_cau) : undefined
-    return { p, hinh: false, nhom: nhom ?? '⚠ Ô không còn trong đề', nhanPhu: null, maxDiem: (p.ma_cau && diemByCau[p.ma_cau]) || DEFAULT_DIEM_MT }
+    return { p, hinh: false, nhom: nhom ?? '⚠ Ô không còn trong đề', nhanPhu: null, maxDiem: (p.ma_cau && diemByCau[p.ma_cau]) || DEFAULT_DIEM_MT, baiK: null, chuaDatY: false }
   })
   // Gộp dòng liền nhau cùng phần (Hình xen giữa 2 đoạn Đại thì đúng như trên phiếu — vẫn nằm trong phần của nó).
   const nhoms: { ten: string; dongs: DongCham[] }[] = []
@@ -1876,7 +1877,8 @@ function ChamMTChiTietView() {
       }
       // Đổi Đ/C/S ⇒ điểm TÍNH LẠI theo kết quả mới (chỉnh tay sau). ⚠ 07/10: đời trước giữ điểm cũ nếu đã có ⇒
       // chấm C (0.13) rồi sửa Đ vẫn 0.13, chấm Đ rồi sửa S vẫn 0.25 — điểm ngược kết quả (đã thấy ở 9A1, 9A2).
-      const diemDat = result === 'correct' ? d.maxDiem : result === 'partial' ? Math.round(d.maxDiem * 50) / 100 : 0
+      // Ý Hình đề cũ chưa đặt điểm ⇒ Đ/C không gợi ý (null — người chấm chọn), S vẫn = 0.
+      const diemDat = suggestDiem(result, d)
       await gradeMTChiTiet({ buoiId, problemId: d.p.id, hocSinhId: hsId, result, diemDat, loi: [] })
       patchGrade(d.p.id, { result, diem_dat: diemDat, loi: [] })
     } catch (e) { baoLoi(e) }
@@ -1899,19 +1901,32 @@ function ChamMTChiTietView() {
   // ⭐ Grade cũ (chấm qua MTTab matrix trước khi có diem_dat) có result='correct/partial/wrong' nhưng
   // diem_dat = null. Suy điểm đề xuất theo cùng luật (Đ = full · C = ½ · S = 0) để Tổng đạt + dropdown
   // reflect ĐÚNG kết quả đã chấm. User chỉnh dropdown ⇒ ghi diem_dat thật, đè suy này về sau.
-  const suggestDiem = (result: string | null | undefined, maxDiem: number): number | null => {
-    if (result === 'correct') return maxDiem
-    if (result === 'partial') return Math.round(maxDiem * 50) / 100
+  function suggestDiem(result: string | null | undefined, d: DongCham): number | null {
     if (result === 'wrong') return 0
+    if (d.chuaDatY) return null
+    if (result === 'correct') return d.maxDiem
+    if (result === 'partial') return Math.round(d.maxDiem * 50) / 100
     return null
   }
   const diemThuc = (d: DongCham): number | null => {
     const g = gradeByProb.get(d.p.id)
     if (g?.diem_dat != null) return g.diem_dat
-    return suggestDiem(g?.result, d.maxDiem)
+    return suggestDiem(g?.result, d)
   }
   const tongDiem = dongs.reduce((s, d) => s + (diemThuc(d) ?? 0), 0)
-  const tongMax = dongs.reduce((s, d) => s + d.maxDiem, 0)
+  // Bài Hình đề cũ: khung điểm là CẢ BÀI ⇒ tính 1 lần/bài, không cộng theo từng ý.
+  const baiCuDaTinh = new Set<number>()
+  const tongMax = dongs.reduce((s, d) => {
+    if (!d.chuaDatY) return s + d.maxDiem
+    if (d.baiK == null || baiCuDaTinh.has(d.baiK)) return s
+    baiCuDaTinh.add(d.baiK); return s + d.maxDiem
+  }, 0)
+  // Bài Hình đề cũ mà tổng điểm các ý đã cho vượt điểm cả bài ⇒ báo đỏ ở các ý của bài đó.
+  const baiVuot = new Set<number>()
+  for (const k of baiCuDaTinh) {
+    const cac = dongs.filter((d) => d.chuaDatY && d.baiK === k)
+    if (cac.reduce((s, d) => s + (diemThuc(d) ?? 0), 0) > cac[0].maxDiem + 1e-9) baiVuot.add(k)
+  }
   // Mức điểm: 0 → max bước 0.25, LUÔN có đúng mốc max (ý Hình chia lẻ, vd 1đ/3 ý = 0.33) và giá trị đang lưu.
   const mucDiem = (max: number, cur: number | null): number[] => {
     const s = new Set<number>([0, max])
@@ -1973,7 +1988,7 @@ function ChamMTChiTietView() {
                           {nh.dongs.map((d) => {
                             const grade = gradeByProb.get(d.p.id) ?? null
                             const daGhi = grade?.diem_dat != null
-                            const goiY = daGhi ? null : suggestDiem(grade?.result, d.maxDiem)
+                            const goiY = daGhi ? null : suggestDiem(grade?.result, d)
                             const val = daGhi ? String(grade!.diem_dat) : (goiY != null ? String(goiY) : '')
                             const chuaCham = !grade
                             // ⭐ 30/09 (Thùy) — MỘT DÒNG / câu: [Câu N | Đ|C|S | dropdown điểm | nhận xét]. Số câu = số
@@ -1982,6 +1997,9 @@ function ChamMTChiTietView() {
                               <div key={d.p.id} className={`flex items-center gap-2 rounded-lg border px-2 py-1 ${d.hinh ? 'border-amber-100 bg-amber-50/50' : 'border-slate-100 bg-slate-50/60'}`}>
                                 <span className="w-14 shrink-0 text-center text-[12.5px] font-bold text-violet-600" title={`${d.p.ma_cau ?? d.nhanPhu ?? ''} · Max ${fmtDiem(d.maxDiem)} đ`}>Câu {d.p.problem_no}</span>
                                 {d.nhanPhu && <span className="shrink-0 rounded bg-amber-100 px-1.5 text-[10.5px] font-medium text-amber-700">{d.nhanPhu}</span>}
+                                {d.chuaDatY && <span className={`shrink-0 rounded px-1.5 text-[10.5px] font-medium ${d.baiK != null && baiVuot.has(d.baiK) ? 'bg-rose-100 text-rose-700' : 'bg-slate-100 text-slate-500'}`}
+                                  title="Đề soạn trước 07/10 chỉ đặt điểm cho cả bài — chọn điểm từng ý tay; người soạn đặt lại điểm từng ý ở màn soạn MT">
+                                  {d.baiK != null && baiVuot.has(d.baiK) ? `vượt ${fmtDiem(d.maxDiem)}đ cả bài` : `chưa đặt điểm ý · bài ${fmtDiem(d.maxDiem)}đ`}</span>}
                                 <div className="flex shrink-0 overflow-hidden rounded border border-slate-300">
                                   {(['correct', 'partial', 'wrong'] as ETResult[]).map((r) => {
                                     const on = grade?.result === r
