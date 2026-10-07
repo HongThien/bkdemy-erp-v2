@@ -35702,3 +35702,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ### 2026-10-07 (tối) — Đơn 16: nền màn TRONG cho ChatGPT
 - Thùy yêu cầu đơn ChatGPT cho 3 nền màn trong (Bảng xếp hạng · Nhiệm vụ · Thành tựu): đơn giản, trời đêm/vũ trụ có chút ánh sáng + sao, KHÔNG nhiều màu, chung vibe chibi–adventure–fantasy. Đã viết \`design/DON-HANG-SKIN-HS.md\` **Đơn 16**: 3 ảnh × (ngang 1672×941 + dọc 941×1672), JPG ≤450KB, chỉ 3 họ màu (navy/chàm · vàng ấm · xanh ngọc nhạt), 80% giữa khung phẳng-tối để chữ đọc rõ, điểm nhấn ở rìa (BXH: vầng sáng góc trên phải · Nhiệm vụ: đèn lồng góc dưới trái · Thành tựu: sao băng mảnh rìa trên), kèm ảnh ghép duyệt "cùng họ" và DESIGN.md.
 - **Tích hợp khi kit về (chưa làm, chưa có ảnh):** khoá \`nenMan\` trong định nghĩa style + prop \`nenAnh\` ở \`ManHS\` (phủ lên \`--sk-nen-trong\`; không có ảnh ⇒ giữ nền đơn sắc). Style Khối vuông làm sau.
+
+## 2026-10-07 — Footer PDF giáo trình BK bị 2 dòng
+- Lỗi: dòng liên hệ ở `@bottom-center` rớt "Geleximco" xuống dòng 2. Nguyên nhân: có ô giữa + ô phải (số trang), ô phải không khai `max-width` ⇒ paged.js 0.4.3 ước tỉ lệ, cho ô giữa chỉ ~284px.
+- Sửa: `max-width:24mm` cho `@bottom-right` (gtPageCss, PrintView.tsx) ⇒ paged.js chia "24mm | còn lại | 24mm", ô giữa 514px, 1 dòng, vẫn căn giữa. `white-space:nowrap` trong @bottom-center KHÔNG ăn (paged.js không chép sang ô lề).
+- Verify: Chrome headless + paged.js với khối @page rút thẳng từ file: 284px/2 dòng → 514px/1 dòng.
