@@ -48,12 +48,12 @@ App có hai cách dùng: kiểu mặc định (nền trơn, chữ gọn, không 
 *Các cách luyện và làm bài*
 
 ### 3. Lượt học thật
-**Tóm tắt:** Điều kiện để một lượt luyện được tính vào chuỗi, nhiệm vụ và Điểm Rank.
+**Tóm tắt:** Điều kiện để một lượt luyện được tính vào chuỗi, nhiệm vụ và Bảng xếp hạng.
 *Giọng game:* **Lượt luyện hợp lệ** — Luyện thế nào thì mới được ghi vào chiến tích.
 *Tutorial tương ứng:* chặng `luot_that`
 
 **Khái niệm**
-Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa trên “lượt học thật”. Một lượt luyện (10 câu) chỉ được tính khi em thực sự làm bài, không làm cho có.
+Chuỗi làm bài, nhiệm vụ và Bảng xếp hạng đều dựa trên “lượt học thật”. Một lượt luyện (10 câu) chỉ được tính khi em thực sự làm bài, không làm cho có.
 
 **[LUẬT] Ba điều kiện (cùng đúng)**
 - Làm ít nhất 5 câu.
@@ -65,7 +65,7 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 - ET, BTVN, bài trên lớp và Học từ đầu không nằm trong nhóm này (chúng có cách tính riêng).
 
 **Khi lượt không được tính**
-- Em vẫn học được và vẫn có kết quả đúng sai, chỉ là lượt đó không cộng vào chuỗi, nhiệm vụ hay Điểm Rank. Không có hình phạt.
+- Em vẫn học được và vẫn có kết quả đúng sai, chỉ là lượt đó không cộng vào chuỗi, nhiệm vụ hay Bảng xếp hạng. Không có hình phạt.
 - App hiển thị lý do nhẹ nhàng: ít câu, đúng chưa đủ, hoặc làm quá nhanh.
 
 **[MẸO] Câu hỏi không lặp**
@@ -84,7 +84,7 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 **Quy ước chung của một lượt luyện**
 - Mỗi lượt gồm 10 câu; làm bao nhiêu lượt cũng được.
 - Làm xong là biết đúng sai và có lời giải ngay.
-- Lượt có được tính vào chuỗi, nhiệm vụ hay Rank hay không do điều kiện “Lượt học thật” quyết định.
+- Lượt có được tính vào chuỗi, nhiệm vụ hay Bảng xếp hạng hay không do điều kiện “Lượt học thật” quyết định.
 
 **[LƯU Ý] Môn chưa có kho câu hỏi**
 - Môn nào chưa có kho câu hỏi (ví dụ Tiếng Anh) thì ô luyện tương ứng bị khoá và có thông báo; ô bài do thầy cô phát hành vẫn dùng được.
@@ -127,19 +127,18 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 - Mức độ nắm: Đạt từ 80% trở lên, Cần luyện từ 50% đến 80%, Yếu dưới 50%.
 
 ### 7. Thử thách
-**Tóm tắt:** Lượt luyện có điểm thưởng: đúng từ 80% là vượt Thử thách và có Điểm Rank.
-*Giọng game:* **Đấu trường thử thách** — Vượt thử thách để nhận điểm Rank và mở rương nhiệm vụ.
+**Tóm tắt:** Lượt luyện khó hơn: đúng từ 80% là vượt Thử thách.
+*Giọng game:* **Đấu trường thử thách** — Vượt thử thách để chứng tỏ bản lĩnh.
 *Tutorial tương ứng:* chặng `thu_thach`
 
 **[LUẬT] Luật đang áp dụng**
 - Một lượt gồm 10 câu do hệ thống chọn dạng; em không tự chọn dạng.
 - Đúng từ 8 câu trở lên là vượt Thử thách.
-- Điểm Rank: 8 câu đúng được 10 điểm, 9 câu được 20 điểm, 10 câu được 30 điểm.
-- Mỗi ngày và mỗi tháng có trần Điểm Rank từ Thử thách. Hết trần vẫn làm tiếp được nhưng không có thêm điểm.
+- Phần thưởng riêng của Thử thách đang được hoàn thiện; kết quả mỗi lượt vẫn được ghi lại.
 
 **Liên quan đến phần khác**
-- Vượt Thử thách là điều kiện của nhiều nhiệm vụ và của huy hiệu Hercules.
-- Lượt phải đạt điều kiện “Lượt học thật” thì điểm mới được tính.
+- Thử thách là một lượt học thật nên được tính vào chuỗi làm bài khi đạt điều kiện “Lượt học thật”.
+- Nhiệm vụ ngày chỉ tính lượt Luyện dạng yếu, không tính Thử thách.
 
 **[LƯU Ý] Sắp thay đổi**
 - Thử thách đang được nâng cấp thành đấu trường nhiều trận. Khi chính thức đổi, luật mới sẽ được cập nhật tại đây và trong màn Thử thách.
@@ -178,7 +177,7 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 
 **[LƯU Ý] Lưu ý**
 - Bài trong ca bù chỉ dùng câu trắc nghiệm. Dạng nào chưa có câu trắc nghiệm thì app báo em học dạng đó trên giấy với thầy cô.
-- Các lượt trong ca này không được tính vào chuỗi, nhiệm vụ và Điểm Rank.
+- Các lượt trong ca này không được tính vào chuỗi, nhiệm vụ và Bảng xếp hạng.
 
 ### 10. Bài của thầy cô và công cụ học
 **Tóm tắt:** ET, BTVN, bài trên lớp, đề thi thử, Sổ tay kiến thức và Thông tin học tập.
@@ -196,12 +195,12 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 **Thông tin học tập**
 - Dạng đang yếu của em.
 - Lịch sử làm bài 30 ngày gần nhất.
-- Bảng xếp hạng với ba tab; “đạt” ở bảng này nghĩa là làm ít nhất 3 câu và đúng từ 75% trở lên.
+- Bảng tỉ lệ dạng đạt; “đạt” ở bảng này nghĩa là làm ít nhất 3 câu và đúng từ 75% trở lên.
 
 ## Nhóm: Thành tích & phần thưởng
-*Điểm, cấp bậc, huy hiệu, xu*
+*Nhiệm vụ, bảng xếp hạng, thành tựu, xu*
 
-### 11. Chuỗi làm bài  — *(Sắp có)*
+### 11. Chuỗi làm bài
 **Tóm tắt:** Số ngày liên tiếp em có ít nhất một lượt học thật.
 *Giọng game:* **Ngọn lửa chuỗi** — Giữ lửa mỗi ngày để lên mốc chuỗi.
 
@@ -219,93 +218,115 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 **Các mốc**
 - Mốc chuỗi: 3, 7, 14, 30, 50, 100, 200 và 365 ngày. Các mốc lớn được đưa tin lên Thế giới BK.
 
-**[LƯU Ý] Tình trạng**
-- Phần tính chuỗi đã hoạt động ở hệ thống; màn hiển thị ngọn lửa trên màn chính đang được hoàn thiện.
+**Xem chuỗi ở đâu**
+- Ngọn lửa và số ngày ở góc trên màn chính. Lửa xám nghĩa là hôm nay em chưa có lượt được tính.
+- Bấm vào ngọn lửa để xem 7 ngày gần nhất, kỷ lục, số thẻ đóng băng còn lại và ngày lỡ còn sửa được.
+- Chạm mốc thì app mừng em một lần.
 
 ### 12. Nhiệm vụ
-**Tóm tắt:** Việc theo ngày, tuần và tháng; hoàn thành để lấy Điểm Chặng, EXP và mở rương.
-*Giọng game:* **Bảng nhiệm vụ** — Nhận việc mỗi ngày, mở rương mỗi tuần, chạm chặng mỗi tháng.
+**Tóm tắt:** Luyện dạng yếu mỗi ngày để nhận EXP và điểm học tập; có việc ngày, tuần và tháng.
+*Giọng game:* **Bảng nhiệm vụ** — Luyện mỗi ngày, gom EXP và điểm để chơi game.
 *Tutorial tương ứng:* chặng `nhiem_vu`
 
-**Nhiệm vụ ngày**
-- N1: vượt một Thử thách (từ 80%, lượt được tính).
-- N2: cứ 20 câu đúng mới (câu em chưa từng làm đúng) trong các lượt được tính là một việc.
-- N3: cứ 2 câu đúng ở dạng em từng làm sai trong 14 ngày gần đây là một việc.
-- Việc ngày chưa làm có thể treo lại tối đa 3 ngày.
+**[LUẬT] Một việc duy nhất: Luyện dạng yếu**
+- Chỉ lượt Luyện dạng yếu mới được tính. Lượt đó phải là lượt học thật và em làm đúng từ 7 trên 10 câu thì mới là lượt đạt.
+- Mỗi lượt đạt được 20 EXP và 20 điểm học tập. Mỗi ngày tính tối đa 4 lượt đạt.
 
-**Nhiệm vụ tuần**
-- T1: nộp BTVN đúng hạn cả tuần.
-- T2: có ít nhất một bài ET đạt từ 80%.
-- T3: vượt Thử thách ở 4 ngày khác nhau.
-- T4: lấp một lỗ hổng: dạng yếu đầu tháng đã lên mức đạt.
-- Một tháng chia 4 tuần (ngày 1 đến 7, 8 đến 14, 15 đến 21, 22 đến hết tháng); việc chưa xong được dồn đến hết tháng.
+**Việc tuần và tháng**
+- Một tháng chia 4 tuần (ngày 1 đến 7, 8 đến 14, 15 đến 21, 22 đến hết tháng).
+- Việc tuần 1: có lượt đạt ở 5 ngày khác nhau trong tuần, thưởng 100 EXP và 50 điểm học tập.
+- Việc tuần 2: đủ 12 lượt đạt trong tuần, thưởng 100 EXP và 50 điểm học tập.
+- Việc tháng: có lượt đạt ở 20 ngày trong tháng, thưởng 300 EXP và 200 điểm học tập.
 
-**Nhiệm vụ tháng**
-- M1: Mock Test (MT) tăng hạng so với lần trước, hoặc vào top 30% khối.
-- M2: vượt Thử thách ở 15 ngày trong tháng.
+**Điểm học tập**
+- Điểm học tập dùng để chơi game. Kho chứa tối đa 6.000 điểm; đầy kho thì phần thêm không được cộng.
+- Điểm học tập không đổi ra xu. EXP thì đổi ra xu như bình thường.
 
-**[PHẦN THƯỞNG] Phần thưởng**
-- Mỗi việc cộng Điểm Chặng. Cứ 50 Điểm Chặng lên 1 cấp của Chặng tháng (tối đa 30 cấp); mỗi cấp thưởng EXP, các mốc cấp 10, 20, 30 thưởng thêm.
-- Rương tuần mở khi hoàn thành 12 việc trong tuần: thêm Điểm Chặng và EXP.
-- Một lượt luyện chỉ hoàn thành một việc và ưu tiên việc cũ nhất còn treo.
+**[PHẦN THƯỞNG] Trần EXP**
+- EXP từ nhiệm vụ có trần 2.000 mỗi tháng cho mỗi môn (tương đương 20 xu).
+- Có ít nhất một lượt đạt trong ngày là em được quay may mắn một lần.
 
 **[LƯU Ý] Lưu ý**
-- Nhiệm vụ hiện mở cho môn Toán; các môn khác sẽ mở sau. Nhiệm vụ không cộng Điểm Rank.
+- Nhiệm vụ hiện mở cho môn Toán; các môn khác sẽ mở sau. Nhiệm vụ tính từ ngày 06/10/2026.
 
-### 13. Huy hiệu, Thành tựu và Album
-**Tóm tắt:** Tám huy hiệu ghi nhận chuyên cần, bài tập và tiến bộ theo từng tháng.
-*Giọng game:* **Bộ sưu tập huy hiệu** — Tám huy hiệu thần thoại, mỗi cái nâng tới 5 sao.
+### 13. Bảng xếp hạng
+**Tóm tắt:** Xem em đứng thứ mấy so với các bạn cùng khối hoặc toàn trung tâm.
+*Giọng game:* **Bảng vinh danh** — Xem chiến binh nào đứng đầu bảng.
+*Tutorial tương ứng:* chặng `bxh`
+
+**Cách xem**
+- Ở màn chính, chạm ô lớn Bảng xếp hạng. Bảng đi theo môn em đang chọn (bảng chuỗi làm bài hiện ở mọi môn).
+- Có ba ô chọn xổ xuống: loại bảng, phạm vi (Khối mình hoặc Toàn BK) và thời gian (Tuần hoặc Tháng, tuỳ bảng).
+- Danh sách hiện 20 bạn đứng đầu kèm lớp. Có thể bật Mã HS để hiện mã thay cho tên.
+
+**Các bảng hiện có**
+- Siêng luyện: số lượt Luyện dạng yếu đạt trong tuần hoặc tháng.
+- Tổng câu đúng: số câu đúng trong các lượt luyện được tính.
+- Tỉ lệ đạt: phần trăm dạng bài em đã đạt.
+- Chuỗi làm bài: số ngày liên tiếp có lượt luyện được tính.
+- Mock Test tháng: điểm Mock Test gần nhất; đề mỗi khối khác nhau nên Toàn BK so trực tiếp điểm.
+- Một số bảng khác đang ghi “Sắp có”.
+
+**[LUẬT] Quy ước**
+- Chỉ em nào có kết quả thật trong kỳ mới có tên trong bảng. Chưa có dữ liệu không có nghĩa là 0 điểm.
+- Hạng của chính em hiện ở dải phía trên và chỉ mình em thấy, kể cả khi em ở cuối bảng.
+- Hòa điểm thì ai đạt mốc sớm hơn đứng trước.
+
+### 14. Thành tựu
+**Tóm tắt:** Đạt bậc nào nhận EXP bậc đó; mỗi bậc thưởng một lần trong mùa.
+*Giọng game:* **Bộ thành tựu** — Chinh phục từng bậc để rinh EXP.
 *Tutorial tương ứng:* chặng `huy_hieu`
 
-**Tám huy hiệu**
-- Helios: chuyên cần, đi học đủ các buổi.
-- Chronos: nộp đủ BTVN đúng hạn.
-- Athena: kết quả ET tốt.
-- Zeus: Mock Test (MT) thuộc nhóm đầu khối.
-- Phoenix: bứt phá, hạng MT tiến bộ so với đầu mùa.
-- Hercules: vượt Thử thách nhiều ngày trong tháng.
-- Hephaestus: lấp lỗ hổng, đưa dạng yếu lên mức đạt.
-- Nike: nằm trong nhóm đầu Bảng đua tháng.
+**[LUẬT] Luật chung**
+- Đạt là đạt, không có mức thấp hay cao. Mỗi bậc là một thành tựu riêng và có phần thưởng EXP riêng.
+- Mỗi bậc chỉ thưởng một lần trong mùa. Mất chuỗi rồi cày lại tới bậc cũ thì không thưởng lại.
+- Mùa chạy từ 1 tháng 7 đến 30 tháng 6 năm sau. Sang mùa mới, các bậc tính lại từ đầu.
+- EXP thành tựu không có trần và đổi ra xu như EXP khác.
 
-**Cách tính**
-- Mùa huy hiệu chạy từ tháng 7 đến tháng 4.
-- Mỗi tháng đạt chuẩn là thêm một bước; càng nhiều tháng đạt, huy hiệu càng nhiều sao, tối đa 5 sao. Đã đạt thì không bị mất.
-- Kết quả chốt sau ngày 10 của tháng kế tiếp (chờ kết quả MT); trước đó hiển thị “tạm tính”.
-- Các sao cao có phần thưởng EXP; điều kiện chi tiết của từng huy hiệu do trung tâm cấu hình và có thể điều chỉnh.
+**Các thành tựu đang mở**
+- Chuỗi làm bài liên tiếp: 7, 14, 30, 60, 90, 150, 210, 300 ngày.
+- Nhiệm vụ ngày liên tiếp: 7, 14, 30, 60, 90 ngày.
+- Luyện dạng yếu đạt liên tiếp: 3, 5, 10 lượt (một lượt dưới ngưỡng sẽ cắt chuỗi).
+- Tổng số câu luyện đạt trong mùa: 1.000, 2.000, 5.000, 10.000 câu.
+- Top 5 khối và Top 1 khối ở Mock Test tháng; Mock Test 10 điểm lần đầu trong mùa.
+- Một số thành tựu khác ghi “Sắp có”, và có thành tựu ẩn: đạt rồi mới biết tên.
 
-**Thành tựu và Album**
-- Thành tựu: giải thưởng cuối tháng đã công bố (Xuất sắc, Tiến bộ, Chăm chỉ).
-- Album: nơi xem toàn bộ huy hiệu; em có thể ghim tối đa 3 huy hiệu để khoe ở Hồ sơ.
+**Nhận thưởng**
+- Khi em về màn chính, thành tựu mới đạt hiện ra để chúc mừng. Xem toàn bộ ở ô Thành tựu.
+
+**Album huy hiệu và giải thưởng cuối tháng**
+- Giải thưởng cuối tháng (Xuất sắc, Tiến bộ, Chăm chỉ) do thầy cô công bố và hiện cùng màn Thành tựu.
+- Album huy hiệu là bộ sưu tập, hiện không thưởng EXP và đang được làm mới.
 
 **[LƯU Ý] Lưu ý**
-- Huy hiệu hiện mở cho môn Toán; các môn khác sẽ mở sau.
+- Thành tựu hiện mở cho môn Toán; các môn khác sẽ mở sau.
 
-### 14. EXP, xu và Ví xu
+### 15. EXP, xu và Ví xu
 **Tóm tắt:** EXP tích luỹ từ việc học, đổi thành xu ngay trong ngày để đổi quà tại trung tâm.
 *Giọng game:* **Kho báu xu** — Gom EXP, đổi thành xu và rinh quà.
 *Tutorial tương ứng:* chặng `xu_may_man`
 
 **EXP đến từ đâu**
 - Việc học ở lớp: ET, BTVN, buổi bù và bổ trợ, game trong buổi học.
-- Việc học trên app: Chặng nhiệm vụ, rương tuần, vòng quay May mắn, các sao huy hiệu.
+- Việc học trên app: nhiệm vụ, vòng quay May mắn, thành tựu.
 
 **[LUẬT] Đổi sang xu**
 - Xu được tính theo từng môn và từng tháng từ tổng EXP của tháng đó: cứ 100 EXP là 1 xu (làm tròn lên).
 - Xu cập nhật ngay khi em có EXP, không đợi cuối tháng. Nếu EXP bị giảm (phạt BTVN, sửa điểm) thì xu cũng giảm theo.
-- Xu kiếm từ hoạt động trên app có trần mỗi tháng cho mỗi môn; xu từ việc học trên lớp không bị tính vào trần này.
+- Xu từ nhiệm vụ có trần 20 xu mỗi tháng cho mỗi môn, từ vòng quay có trần 10 xu mỗi tháng; thành tựu không có trần. Xu từ việc học trên lớp không bị tính vào các trần này.
 
 **Dùng xu**
 - Xu dùng để đổi quà ở tủ quà tại trung tâm. App chỉ hiện số dư và lịch sử; việc đổi quà thực hiện trực tiếp tại trung tâm.
 - Danh mục và giá quà do trung tâm thông báo.
 
-### 15. Vòng quay May mắn
+### 16. Vòng quay May mắn
 **Tóm tắt:** Mỗi ngày một lượt quay miễn phí để nhận EXP.
 *Giọng game:* **Vòng quay may mắn** — Quay mỗi ngày một lần để rinh EXP.
 *Tutorial tương ứng:* chặng `xu_may_man`
 
 **Cách có lượt quay**
 - Vòng quay miễn phí, không tốn xu; mỗi em tối đa một lượt mỗi ngày.
-- Với môn đã mở Nhiệm vụ: hoàn thành từ 2 nhiệm vụ ngày trong hôm nay để có lượt.
+- Với môn đã mở Nhiệm vụ: có ít nhất 1 lượt Luyện dạng yếu đạt trong hôm nay thì lượt quay tự hiện ra.
 - Với môn chưa mở Nhiệm vụ: làm một lượt tự luyện 10 câu đúng từ 70% để có lượt (luật cũ).
 
 **Phần thưởng**
@@ -313,7 +334,7 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 - Kết quả luôn do hệ thống quyết định; hoạt hình chỉ minh hoạ.
 - EXP từ vòng quay được quy đổi thành xu ngay theo quy tắc chung.
 
-### 16. Trò chơi
+### 17. Trò chơi
 **Tóm tắt:** Nơi chứa các game giải trí của BK; hiện có Nông trại BK.
 *Giọng game:* **Khu trò chơi** — Giải lao với Nông trại BK, game mới sẽ lần lượt mở.
 
@@ -334,7 +355,7 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 ## Nhóm: Cộng đồng & hỗ trợ
 *Thế giới BK, hồ sơ, góp ý*
 
-### 17. Thế giới BK
+### 18. Thế giới BK
 **Tóm tắt:** Bảng tin thành tích của em, bạn bè và lớp; em không phải gõ chữ tự do.
 *Giọng game:* **Quảng trường Thế giới BK** — Khoe chiến tích, thả tim và kết bạn.
 *Tutorial tương ứng:* chặng `the_gioi`
@@ -351,7 +372,7 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 - Tương tác không cộng EXP. Thầy cô và trợ giảng có thể gửi lời khen.
 - Kết bạn: tìm theo tên, mã học sinh hoặc lớp. Tên hiển thị luôn kèm lớp; có thể chọn hiện mã học sinh thay cho tên.
 
-### 18. Hồ sơ và thông báo
+### 19. Hồ sơ và thông báo
 **Tóm tắt:** Ảnh đại diện, cấp bậc, huy hiệu khoe, giao diện và hòm thư.
 
 **Hồ sơ**
@@ -362,18 +383,26 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 - Chuông là Hòm thư: thông báo từ trung tâm và từ app.
 - Nút ⋯ có đổi mật khẩu.
 
-### 19. Góp ý và báo lỗi  — *(Sắp có)*
+### 20. Góp ý và báo lỗi
 **Tóm tắt:** Gửi ý kiến hoặc báo lỗi trực tiếp tới đội phát triển.
 
-**Dự kiến**
-- Mỗi ngày gửi được một số lượng góp ý nhất định, mỗi góp ý cần mô tả đủ rõ (từ 10 chữ).
-- Phần gửi góp ý trong app đang được hoàn thiện; trong lúc chờ, em báo cho thầy cô hoặc trung tâm.
+**Mở ở đâu**
+- Màn chính: nút ⋯ ở góc trên → "Góp ý & báo lỗi". Hoặc trong Hồ sơ của em.
+
+**Gửi thế nào**
+- Chọn "Báo lỗi" khi app chạy sai, hoặc "Góp ý tưởng" khi em muốn app có thêm điều gì.
+- Mô tả từ 10 đến 1.500 chữ; có thể đính kèm 1 ảnh chụp màn hình (chọn tệp hoặc dán vào ô chữ).
+- Mỗi ngày gửi tối đa 5 lần.
+
+**Theo dõi**
+- Mục "Góp ý của em" hiện trạng thái: Đã nhận · Đang xem · Đã xử lý · Chưa làm được, kèm lời trả lời của thầy cô.
+- Có lời trả lời mới thì nút ⋯ ở màn chính hiện chấm đỏ.
 
 ---
 
 ## Tutorial "Hành trình tân thủ"
 
-**Mở đầu:** Chào mừng em đến với BK Academy! Mình sẽ dẫn em đi 11 chặng ngắn để biết app có gì. Mỗi chặng chưa tới 1 phút. Chạm vào màn hình để nghe tiếp nhé.
+**Mở đầu:** Chào mừng em đến với BK Academy! Mình sẽ dẫn em đi 12 chặng ngắn để biết app có gì. Mỗi chặng chưa tới 1 phút. Chạm vào màn hình để nghe tiếp nhé.
 
 ### Chặng 1: Nhân vật và giao diện (`giao_dien`)
 *Chọn cách dùng app hợp với em* · Mở khoá: Giao diện — chọn kiểu mặc định hoặc kiểu game, đổi bất cứ lúc nào
@@ -410,18 +439,18 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 ### Chặng 5: Lượt học thật (`luot_that`)
 *Khi nào lượt luyện được tính* · Mở khoá: Lượt học thật — làm nghiêm túc thì lượt mới được tính
 
-1. Chặng 5: lượt học thật. Chuỗi, nhiệm vụ và Điểm Rank đều chỉ tính khi lượt luyện của em là lượt học thật.
+1. Chặng 5: lượt học thật. Chuỗi, nhiệm vụ và Bảng xếp hạng đều chỉ tính khi lượt luyện của em là lượt học thật.
 2. Một lượt được tính khi cùng đủ ba điều kiện: làm ít nhất 5 câu, đúng ít nhất một nửa, và trung bình mỗi câu từ 6 giây trở lên.
 3. Chỉ lượt luyện thêm trên app được tính: Luyện dạng yếu, Học theo chủ đề và Thử thách. ET, BTVN và bài trên lớp có cách tính riêng.
 4. Lượt không được tính thì em vẫn học bình thường, không bị phạt. App chỉ nhắc nhẹ vì sao chưa tính.
 
 ### Chặng 6: Thử thách (`thu_thach`)
-*Đúng từ 80% là có Điểm Rank* · Mở khoá: Thử thách — đúng 8/10 trở lên để lấy Điểm Rank
+*Đúng từ 80% là vượt Thử thách* · Mở khoá: Thử thách — đúng 8/10 trở lên để vượt Thử thách
 
-1. Chặng 6: Thử thách. Nó giống Luyện dạng yếu, 10 câu, nhưng có điểm thưởng.
+1. Chặng 6: Thử thách. Nó giống Luyện dạng yếu, 10 câu, nhưng đòi hỏi cao hơn.
 2. Đúng từ 8 câu trở lên là vượt Thử thách.
-3. Đúng 8 câu được 10 Điểm Rank, 9 câu được 20, cả 10 câu được 30.
-4. Mỗi ngày và mỗi tháng có giới hạn Điểm Rank từ Thử thách. Hết phần điểm em vẫn làm tiếp được, chỉ là không có thêm điểm.
+3. Thử thách cũng là lượt học thật, nên được tính vào chuỗi làm bài của em.
+4. Phần thưởng riêng của Thử thách đang được hoàn thiện. Em cứ thử sức trước, kết quả vẫn được ghi lại.
 
 ### Chặng 7: Đấu trường, Chinh phục, Giải vô địch (`dau_chinh_phuc`)
 *Ba chế độ thi đấu* · Mở khoá: Thi đấu — mỗi câu chỉ được trả lời một lần
@@ -440,16 +469,24 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 4. Việc tuần: có lượt đạt ở 5 ngày khác nhau, hoặc đủ 12 lượt đạt trong tuần, mỗi việc +100 EXP và +50 điểm. Việc tháng: có lượt đạt ở 20 ngày, +300 EXP và +200 điểm.
 5. Điểm học tập tích lại để em chơi game, kho chứa tối đa 6.000 điểm. EXP thì đổi ra xu ngay.
 
-### Chặng 9: Huy hiệu và Thành tựu (`huy_hieu`)
-*8 huy hiệu, nâng dần theo tháng* · Mở khoá: Huy hiệu — tháng nào đạt chuẩn thì huy hiệu thêm một bước
+### Chặng 9: Bảng xếp hạng (`bxh`)
+*Em đứng thứ mấy so với các bạn* · Mở khoá: Bảng xếp hạng — chọn bảng, chọn Khối hoặc Toàn BK, chọn tuần hoặc tháng
 
-1. Chặng 10: Huy hiệu. Vào Hồ sơ hoặc ô Thành tựu để xem Album. Có 8 huy hiệu, mỗi huy hiệu ghi nhận một thói quen tốt.
-2. Ví dụ: Helios cho chuyên cần, Chronos cho BTVN đúng hạn, Athena cho ET tốt, Hercules cho vượt Thử thách nhiều ngày.
-3. Mỗi tháng đạt chuẩn thì huy hiệu được thêm một bước. Càng nhiều tháng đạt, càng nhiều sao, tối đa 5 sao. Đã đạt thì không bị mất.
-4. Kết quả chốt sau ngày 10 của tháng kế tiếp. Trước đó em thấy chữ tạm tính.
-5. Em ghim tối đa 3 huy hiệu để khoe ở Hồ sơ.
+1. Chặng 9: Bảng xếp hạng. Ở màn chính, chạm ô lớn Bảng xếp hạng. Bảng đi theo môn em đang chọn.
+2. Có ba ô chọn xổ xuống: loại bảng (Siêng luyện, Tổng câu đúng, Chuỗi làm bài, Mock Test…), phạm vi Khối mình hoặc Toàn BK, và thời gian Tuần hoặc Tháng.
+3. Dải phía trên cho em biết em đứng hạng mấy. Chỉ mình em thấy hạng của chính em, kể cả khi em ở cuối bảng.
+4. Danh sách hiện 20 bạn đứng đầu, kèm lớp. Chỉ bạn nào có kết quả thật mới có tên. Hòa điểm thì ai đạt trước đứng trước.
 
-### Chặng 10: EXP, xu và May mắn (`xu_may_man`)
+### Chặng 10: Thành tựu (`huy_hieu`)
+*Mỗi bậc đạt được thưởng EXP một lần mỗi mùa* · Mở khoá: Thành tựu — đạt bậc nào, nhận EXP bậc đó
+
+1. Chặng 10: Thành tựu. Vào ô Thành tựu để xem các thành tựu của mùa này. Đạt là đạt, mỗi bậc có phần thưởng EXP riêng.
+2. Có chuỗi làm bài liên tiếp, nhiệm vụ ngày liên tiếp, luyện dạng yếu đạt liên tiếp, tổng số câu luyện đạt, và top đầu khối ở Mock Test.
+3. Mỗi bậc chỉ thưởng một lần trong mùa. Mất chuỗi rồi cày lại tới bậc cũ thì không thưởng lại. Mùa mới bắt đầu ngày 1 tháng 7.
+4. Có những thành tựu ẩn. Em đạt được mới biết tên, trước đó chỉ thấy ổ khoá.
+5. Khi em về màn chính, thành tựu mới đạt sẽ hiện ra chúc mừng. EXP được đổi ra xu như mọi EXP khác.
+
+### Chặng 11: EXP, xu và May mắn (`xu_may_man`)
 *Từ EXP đến quà và vòng quay* · Mở khoá: EXP và xu — EXP đổi ra xu ngay để đổi quà ở trung tâm
 
 1. Chặng 11: EXP và xu. EXP đến từ việc học ở lớp và việc làm trên app như nhiệm vụ, vòng quay, huy hiệu.
@@ -457,7 +494,7 @@ Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa
 3. Ô Ví xu cho em xem số dư và lịch sử. Muốn đổi quà thì đến tủ quà tại trung tâm, app chưa có nút đổi.
 4. Vòng quay may mắn mỗi ngày một lượt, mở khi em có ít nhất 1 lượt Luyện dạng yếu đạt. Giải thưởng là EXP.
 
-### Chặng 11: Thế giới BK (`the_gioi`)
+### Chặng 12: Thế giới BK (`the_gioi`)
 *Khoe thành tích, thả tim bạn bè* · Mở khoá: Thế giới BK — khoe thành tích thật, tương tác với bạn
 
 1. Chặng cuối: Thế giới BK, nơi xem các bạn ở BK vừa đạt gì. Có 3 kênh: Thế giới, Bạn bè, Lớp.

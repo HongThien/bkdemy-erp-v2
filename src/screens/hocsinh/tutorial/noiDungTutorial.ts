@@ -10,7 +10,7 @@
 // ============================================================================
 
 export type BuocTutorial = { noi: string; soi?: string }
-export type IdChuong = 'giao_dien' | 'hoc_tap' | 'chu_de' | 'tu_luyen' | 'luot_that' | 'thu_thach' | 'dau_chinh_phuc' | 'nhiem_vu' | 'rank' | 'huy_hieu' | 'xu_may_man' | 'the_gioi'
+export type IdChuong = 'giao_dien' | 'hoc_tap' | 'chu_de' | 'tu_luyen' | 'luot_that' | 'thu_thach' | 'dau_chinh_phuc' | 'nhiem_vu' | 'bxh' | 'rank' | 'huy_hieu' | 'xu_may_man' | 'the_gioi'
 export type ChuongTutorial = {
   id: IdChuong
   ten: string
@@ -82,20 +82,20 @@ const CHUONG_TAT_CA: ChuongTutorial[] = [
     id: 'luot_that', ten: 'Lượt học thật', phu: 'Khi nào lượt luyện được tính', icon: { o: 'et' },
     kyNang: 'Lượt học thật — làm nghiêm túc thì lượt mới được tính',
     buoc: [
-      { noi: 'Chặng 5: lượt học thật. Chuỗi, nhiệm vụ và Điểm Rank đều chỉ tính khi lượt luyện của em là lượt học thật.', soi: 'dk_cau' },
+      { noi: 'Chặng 5: lượt học thật. Chuỗi, nhiệm vụ và Bảng xếp hạng đều chỉ tính khi lượt luyện của em là lượt học thật.', soi: 'dk_cau' },
       { noi: 'Một lượt được tính khi cùng đủ ba điều kiện: làm ít nhất 5 câu, đúng ít nhất một nửa, và trung bình mỗi câu từ 6 giây trở lên.', soi: 'dk_dung' },
       { noi: 'Chỉ lượt luyện thêm trên app được tính: Luyện dạng yếu, Học theo chủ đề và Thử thách. ET, BTVN và bài trên lớp có cách tính riêng.', soi: 'loai_bai' },
       { noi: 'Lượt không được tính thì em vẫn học bình thường, không bị phạt. App chỉ nhắc nhẹ vì sao chưa tính.', soi: 'khong_tinh' },
     ],
   },
   {
-    id: 'thu_thach', ten: 'Thử thách', phu: 'Đúng từ 80% là có Điểm Rank', icon: { gami: 'nhiem-vu/N1.png' },
-    kyNang: 'Thử thách — đúng 8/10 trở lên để lấy Điểm Rank',
+    id: 'thu_thach', ten: 'Thử thách', phu: 'Đúng từ 80% là vượt Thử thách', icon: { gami: 'nhiem-vu/N1.png' },
+    kyNang: 'Thử thách — đúng 8/10 trở lên để vượt Thử thách',
     buoc: [
-      { noi: 'Chặng 6: Thử thách. Nó giống Luyện dạng yếu, 10 câu, nhưng có điểm thưởng.', soi: 'the_thu_thach' },
+      { noi: 'Chặng 6: Thử thách. Nó giống Luyện dạng yếu, 10 câu, nhưng đòi hỏi cao hơn.', soi: 'the_thu_thach' },
       { noi: 'Đúng từ 8 câu trở lên là vượt Thử thách.', soi: 'cham_cau' },
-      { noi: 'Đúng 8 câu được 10 Điểm Rank, 9 câu được 20, cả 10 câu được 30.', soi: 'bang_thuong' },
-      { noi: 'Mỗi ngày và mỗi tháng có giới hạn Điểm Rank từ Thử thách. Hết phần điểm em vẫn làm tiếp được, chỉ là không có thêm điểm.', soi: 'tien_do' },
+      { noi: 'Thử thách cũng là lượt học thật, nên được tính vào chuỗi làm bài của em.', soi: 'bang_thuong' },
+      { noi: 'Phần thưởng riêng của Thử thách đang được hoàn thiện. Em cứ thử sức trước, kết quả vẫn được ghi lại.', soi: 'tien_do' },
     ],
   },
   {
@@ -120,6 +120,16 @@ const CHUONG_TAT_CA: ChuongTutorial[] = [
     ],
   },
   {
+    id: 'bxh', ten: 'Bảng xếp hạng', phu: 'Em đứng thứ mấy so với các bạn', icon: { o: 'xep_hang' },
+    kyNang: 'Bảng xếp hạng — chọn bảng, chọn Khối hoặc Toàn BK, chọn tuần hoặc tháng',
+    buoc: [
+      { noi: 'Chặng 9: Bảng xếp hạng. Ở màn chính, chạm ô lớn Bảng xếp hạng. Bảng đi theo môn em đang chọn.', soi: 'bxh_loc' },
+      { noi: 'Có ba ô chọn xổ xuống: loại bảng (Siêng luyện, Tổng câu đúng, Chuỗi làm bài, Mock Test…), phạm vi Khối mình hoặc Toàn BK, và thời gian Tuần hoặc Tháng.', soi: 'bxh_loc' },
+      { noi: 'Dải phía trên cho em biết em đứng hạng mấy. Chỉ mình em thấy hạng của chính em, kể cả khi em ở cuối bảng.', soi: 'bxh_hang' },
+      { noi: 'Danh sách hiện 20 bạn đứng đầu, kèm lớp. Chỉ bạn nào có kết quả thật mới có tên. Hòa điểm thì ai đạt trước đứng trước.', soi: 'bxh_top' },
+    ],
+  },
+  {
     id: 'rank', ten: 'Rank và Bảng xếp hạng', phu: '10 bậc, đua cả mùa', icon: { o: 'rank' },
     kyNang: 'Rank — tích Điểm Rank cả mùa, leo 10 bậc',
     buoc: [
@@ -131,14 +141,14 @@ const CHUONG_TAT_CA: ChuongTutorial[] = [
     ],
   },
   {
-    id: 'huy_hieu', ten: 'Huy hiệu và Thành tựu', phu: '8 huy hiệu, nâng dần theo tháng', icon: { o: 'thanh_tuu' },
-    kyNang: 'Huy hiệu — tháng nào đạt chuẩn thì huy hiệu thêm một bước',
+    id: 'huy_hieu', ten: 'Thành tựu', phu: 'Mỗi bậc đạt được thưởng EXP một lần mỗi mùa', icon: { o: 'thanh_tuu' },
+    kyNang: 'Thành tựu — đạt bậc nào, nhận EXP bậc đó',
     buoc: [
-      { noi: 'Chặng 10: Huy hiệu. Vào Hồ sơ hoặc ô Thành tựu để xem Album. Có 8 huy hiệu, mỗi huy hiệu ghi nhận một thói quen tốt.', soi: 'tam_huy_hieu' },
-      { noi: 'Ví dụ: Helios cho chuyên cần, Chronos cho BTVN đúng hạn, Athena cho ET tốt, Hercules cho vượt Thử thách nhiều ngày.', soi: 'tam_huy_hieu' },
-      { noi: 'Mỗi tháng đạt chuẩn thì huy hiệu được thêm một bước. Càng nhiều tháng đạt, càng nhiều sao, tối đa 5 sao. Đã đạt thì không bị mất.', soi: 'sao' },
-      { noi: 'Kết quả chốt sau ngày 10 của tháng kế tiếp. Trước đó em thấy chữ tạm tính.', soi: 'chot_thang' },
-      { noi: 'Em ghim tối đa 3 huy hiệu để khoe ở Hồ sơ.', soi: 'ghim' },
+      { noi: 'Chặng 10: Thành tựu. Vào ô Thành tựu để xem các thành tựu của mùa này. Đạt là đạt, mỗi bậc có phần thưởng EXP riêng.', soi: 'tam_huy_hieu' },
+      { noi: 'Có chuỗi làm bài liên tiếp, nhiệm vụ ngày liên tiếp, luyện dạng yếu đạt liên tiếp, tổng số câu luyện đạt, và top đầu khối ở Mock Test.', soi: 'tam_huy_hieu' },
+      { noi: 'Mỗi bậc chỉ thưởng một lần trong mùa. Mất chuỗi rồi cày lại tới bậc cũ thì không thưởng lại. Mùa mới bắt đầu ngày 1 tháng 7.', soi: 'sao' },
+      { noi: 'Có những thành tựu ẩn. Em đạt được mới biết tên, trước đó chỉ thấy ổ khoá.', soi: 'chot_thang' },
+      { noi: 'Khi em về màn chính, thành tựu mới đạt sẽ hiện ra chúc mừng. EXP được đổi ra xu như mọi EXP khác.', soi: 'ghim' },
     ],
   },
   {
@@ -165,4 +175,6 @@ const CHUONG_TAT_CA: ChuongTutorial[] = [
 ]
 
 /** Rank tạm khoá (06/10) ⇒ bỏ chặng Rank khỏi hành trình. */
-export const CHUONG: ChuongTutorial[] = CHUONG_TAT_CA.filter((c) => c.id !== 'rank' || rankBat())
+export const CHUONG: ChuongTutorial[] = CHUONG_TAT_CA.filter((c) => c.id !== 'rank' || rankBat()).map((c, i) => ({
+  ...c, buoc: c.buoc.map((b, j) => (j === 0 ? { ...b, noi: b.noi.replace(/^Chặng \d+:/, `Chặng ${i + 1}:`) } : b)),
+}))

@@ -39,7 +39,7 @@ export type ChuDeHD = {
 export const NHOM: { id: NhomHD; ten: string; phu: string }[] = [
   { id: 'bat_dau', ten: 'Bắt đầu', phu: 'Làm quen màn hình, nhân vật và giao diện' },
   { id: 'hoc', ten: 'Học tập', phu: 'Các cách luyện và làm bài' },
-  { id: 'thuong', ten: 'Thành tích & phần thưởng', phu: 'Điểm, cấp bậc, huy hiệu, xu' },
+  { id: 'thuong', ten: 'Thành tích & phần thưởng', phu: 'Nhiệm vụ, bảng xếp hạng, thành tựu, xu' },
   { id: 'cong_dong', ten: 'Cộng đồng & hỗ trợ', phu: 'Thế giới BK, hồ sơ, góp ý' },
 ]
 
@@ -95,11 +95,11 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
   // ───────────────────────── HỌC TẬP ─────────────────────────
   {
     id: 'luot_hoc_that', nhom: 'hoc', ten: 'Lượt học thật', icon: { o: 'tu_luyen', emoji: '✅' }, tutorial: 'luot_that',
-    tomTat: 'Điều kiện để một lượt luyện được tính vào chuỗi, nhiệm vụ và Điểm Rank.',
+    tomTat: 'Điều kiện để một lượt luyện được tính vào chuỗi, nhiệm vụ và Bảng xếp hạng.',
     game: { ten: 'Lượt luyện hợp lệ', tomTat: 'Luyện thế nào thì mới được ghi vào chiến tích.' },
     khoi: [
       { tieu: 'Khái niệm', doan: true, y: [
-        'Chuỗi làm bài, nhiệm vụ và Điểm Rank của Thử thách đều dựa trên “lượt học thật”. Một lượt luyện (10 câu) chỉ được tính khi em thực sự làm bài, không làm cho có.',
+        'Chuỗi làm bài, nhiệm vụ và Bảng xếp hạng đều dựa trên “lượt học thật”. Một lượt luyện (10 câu) chỉ được tính khi em thực sự làm bài, không làm cho có.',
       ] },
       { tieu: 'Ba điều kiện (cùng đúng)', loai: 'luat', y: [
         'Làm ít nhất 5 câu.',
@@ -111,7 +111,7 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
         'ET, BTVN, bài trên lớp và Học từ đầu không nằm trong nhóm này (chúng có cách tính riêng).',
       ] },
       { tieu: 'Khi lượt không được tính', y: [
-        'Em vẫn học được và vẫn có kết quả đúng sai, chỉ là lượt đó không cộng vào chuỗi, nhiệm vụ hay Điểm Rank. Không có hình phạt.',
+        'Em vẫn học được và vẫn có kết quả đúng sai, chỉ là lượt đó không cộng vào chuỗi, nhiệm vụ hay Bảng xếp hạng. Không có hình phạt.',
         'App hiển thị lý do nhẹ nhàng: ít câu, đúng chưa đủ, hoặc làm quá nhanh.',
       ] },
       { tieu: 'Câu hỏi không lặp', loai: 'meo', y: ['Hệ thống không ra lại câu em đã gặp khi dạng đó còn câu mới. Hết câu mới thì mới ra lại câu em gặp lâu nhất.'] },
@@ -130,7 +130,7 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
       { tieu: 'Quy ước chung của một lượt luyện', y: [
         'Mỗi lượt gồm 10 câu; làm bao nhiêu lượt cũng được.',
         'Làm xong là biết đúng sai và có lời giải ngay.',
-        'Lượt có được tính vào chuỗi, nhiệm vụ hay Rank hay không do điều kiện “Lượt học thật” quyết định.',
+        'Lượt có được tính vào chuỗi, nhiệm vụ hay Bảng xếp hạng hay không do điều kiện “Lượt học thật” quyết định.',
       ] },
       { tieu: 'Môn chưa có kho câu hỏi', loai: 'luuy', y: ['Môn nào chưa có kho câu hỏi (ví dụ Tiếng Anh) thì ô luyện tương ứng bị khoá và có thông báo; ô bài do thầy cô phát hành vẫn dùng được.'] },
     ],
@@ -176,18 +176,17 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
   },
   {
     id: 'thu_thach', nhom: 'hoc', ten: 'Thử thách', icon: { o: 'rank', emoji: '⚔️' }, tutorial: 'thu_thach',
-    tomTat: 'Lượt luyện có điểm thưởng: đúng từ 80% là vượt Thử thách và có Điểm Rank.',
-    game: { ten: 'Đấu trường thử thách', tomTat: 'Vượt thử thách để nhận điểm Rank và mở rương nhiệm vụ.' },
+    tomTat: 'Lượt luyện khó hơn: đúng từ 80% là vượt Thử thách.',
+    game: { ten: 'Đấu trường thử thách', tomTat: 'Vượt thử thách để chứng tỏ bản lĩnh.' },
     khoi: [
       { tieu: 'Luật đang áp dụng', loai: 'luat', y: [
         'Một lượt gồm 10 câu do hệ thống chọn dạng; em không tự chọn dạng.',
         'Đúng từ 8 câu trở lên là vượt Thử thách.',
-        'Điểm Rank: 8 câu đúng được 10 điểm, 9 câu được 20 điểm, 10 câu được 30 điểm.',
-        'Mỗi ngày và mỗi tháng có trần Điểm Rank từ Thử thách. Hết trần vẫn làm tiếp được nhưng không có thêm điểm.',
+        'Phần thưởng riêng của Thử thách đang được hoàn thiện; kết quả mỗi lượt vẫn được ghi lại.',
       ] },
       { tieu: 'Liên quan đến phần khác', y: [
-        'Vượt Thử thách là điều kiện của nhiều nhiệm vụ và của huy hiệu Hercules.',
-        'Lượt phải đạt điều kiện “Lượt học thật” thì điểm mới được tính.',
+        'Thử thách là một lượt học thật nên được tính vào chuỗi làm bài khi đạt điều kiện “Lượt học thật”.',
+        'Nhiệm vụ ngày chỉ tính lượt Luyện dạng yếu, không tính Thử thách.',
       ] },
       { tieu: 'Sắp thay đổi', loai: 'luuy', y: ['Thử thách đang được nâng cấp thành đấu trường nhiều trận. Khi chính thức đổi, luật mới sẽ được cập nhật tại đây và trong màn Thử thách.'] },
     ],
@@ -227,7 +226,7 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
       ] },
       { tieu: 'Lưu ý', loai: 'luuy', y: [
         'Bài trong ca bù chỉ dùng câu trắc nghiệm. Dạng nào chưa có câu trắc nghiệm thì app báo em học dạng đó trên giấy với thầy cô.',
-        'Các lượt trong ca này không được tính vào chuỗi, nhiệm vụ và Điểm Rank.',
+        'Các lượt trong ca này không được tính vào chuỗi, nhiệm vụ và Bảng xếp hạng.',
       ] },
     ],
   },
@@ -248,7 +247,7 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
       { tieu: 'Thông tin học tập', y: [
         'Dạng đang yếu của em.',
         'Lịch sử làm bài 30 ngày gần nhất.',
-        'Bảng xếp hạng với ba tab; “đạt” ở bảng này nghĩa là làm ít nhất 3 câu và đúng từ 75% trở lên.',
+        'Bảng tỉ lệ dạng đạt; “đạt” ở bảng này nghĩa là làm ít nhất 3 câu và đúng từ 75% trở lên.',
       ] },
     ],
   },
@@ -280,32 +279,53 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
   },
   {
     id: 'nhiem_vu', nhom: 'thuong', ten: 'Nhiệm vụ', icon: { o: 'nhiem_vu', emoji: '📜' }, tutorial: 'nhiem_vu',
-    tomTat: 'Việc theo ngày, tuần và tháng; hoàn thành để lấy Điểm Chặng, EXP và mở rương.',
-    game: { ten: 'Bảng nhiệm vụ', tomTat: 'Nhận việc mỗi ngày, mở rương mỗi tuần, chạm chặng mỗi tháng.' },
+    tomTat: 'Luyện dạng yếu mỗi ngày để nhận EXP và điểm học tập; có việc ngày, tuần và tháng.',
+    game: { ten: 'Bảng nhiệm vụ', tomTat: 'Luyện mỗi ngày, gom EXP và điểm để chơi game.' },
     khoi: [
-      { tieu: 'Nhiệm vụ ngày', y: [
-        'N1: vượt một Thử thách (từ 80%, lượt được tính).',
-        'N2: cứ 20 câu đúng mới (câu em chưa từng làm đúng) trong các lượt được tính là một việc.',
-        'N3: cứ 2 câu đúng ở dạng em từng làm sai trong 14 ngày gần đây là một việc.',
-        'Việc ngày chưa làm có thể treo lại tối đa 3 ngày.',
+      { tieu: 'Một việc duy nhất: Luyện dạng yếu', loai: 'luat', y: [
+        'Chỉ lượt Luyện dạng yếu mới được tính. Lượt đó phải là lượt học thật và em làm đúng từ 7 trên 10 câu thì mới là lượt đạt.',
+        'Mỗi lượt đạt được 20 EXP và 20 điểm học tập. Mỗi ngày tính tối đa 4 lượt đạt.',
       ] },
-      { tieu: 'Nhiệm vụ tuần', y: [
-        'T1: nộp BTVN đúng hạn cả tuần.',
-        'T2: có ít nhất một bài ET đạt từ 80%.',
-        'T3: vượt Thử thách ở 4 ngày khác nhau.',
-        'T4: lấp một lỗ hổng: dạng yếu đầu tháng đã lên mức đạt.',
-        'Một tháng chia 4 tuần (ngày 1 đến 7, 8 đến 14, 15 đến 21, 22 đến hết tháng); việc chưa xong được dồn đến hết tháng.',
+      { tieu: 'Việc tuần và tháng', y: [
+        'Một tháng chia 4 tuần (ngày 1 đến 7, 8 đến 14, 15 đến 21, 22 đến hết tháng).',
+        'Việc tuần 1: có lượt đạt ở 5 ngày khác nhau trong tuần, thưởng 100 EXP và 50 điểm học tập.',
+        'Việc tuần 2: đủ 12 lượt đạt trong tuần, thưởng 100 EXP và 50 điểm học tập.',
+        'Việc tháng: có lượt đạt ở 20 ngày trong tháng, thưởng 300 EXP và 200 điểm học tập.',
       ] },
-      { tieu: 'Nhiệm vụ tháng', y: [
-        'M1: Mock Test (MT) tăng hạng so với lần trước, hoặc vào top 30% khối.',
-        'M2: vượt Thử thách ở 15 ngày trong tháng.',
+      { tieu: 'Điểm học tập', y: [
+        'Điểm học tập dùng để chơi game. Kho chứa tối đa 6.000 điểm; đầy kho thì phần thêm không được cộng.',
+        'Điểm học tập không đổi ra xu. EXP thì đổi ra xu như bình thường.',
       ] },
-      { tieu: 'Phần thưởng', loai: 'thuong', y: [
-        'Mỗi việc cộng Điểm Chặng. Cứ 50 Điểm Chặng lên 1 cấp của Chặng tháng (tối đa 30 cấp); mỗi cấp thưởng EXP, các mốc cấp 10, 20, 30 thưởng thêm.',
-        'Rương tuần mở khi hoàn thành 12 việc trong tuần: thêm Điểm Chặng và EXP.',
-        'Một lượt luyện chỉ hoàn thành một việc và ưu tiên việc cũ nhất còn treo.',
+      { tieu: 'Trần EXP', loai: 'thuong', y: [
+        'EXP từ nhiệm vụ có trần 2.000 mỗi tháng cho mỗi môn (tương đương 20 xu).',
+        'Có ít nhất một lượt đạt trong ngày là em được quay may mắn một lần.',
       ] },
-      { tieu: 'Lưu ý', loai: 'luuy', y: ['Nhiệm vụ hiện mở cho môn Toán; các môn khác sẽ mở sau. Nhiệm vụ không cộng Điểm Rank.'] },
+      { tieu: 'Lưu ý', loai: 'luuy', y: ['Nhiệm vụ hiện mở cho môn Toán; các môn khác sẽ mở sau. Nhiệm vụ tính từ ngày 06/10/2026.'] },
+    ],
+  },
+  {
+    id: 'bxh', nhom: 'thuong', ten: 'Bảng xếp hạng', icon: { o: 'xep_hang', emoji: '🏆' }, tutorial: 'bxh',
+    tomTat: 'Xem em đứng thứ mấy so với các bạn cùng khối hoặc toàn trung tâm.',
+    game: { ten: 'Bảng vinh danh', tomTat: 'Xem chiến binh nào đứng đầu bảng.' },
+    khoi: [
+      { tieu: 'Cách xem', y: [
+        'Ở màn chính, chạm ô lớn Bảng xếp hạng. Bảng đi theo môn em đang chọn (bảng chuỗi làm bài hiện ở mọi môn).',
+        'Có ba ô chọn xổ xuống: loại bảng, phạm vi (Khối mình hoặc Toàn BK) và thời gian (Tuần hoặc Tháng, tuỳ bảng).',
+        'Danh sách hiện 20 bạn đứng đầu kèm lớp. Có thể bật Mã HS để hiện mã thay cho tên.',
+      ] },
+      { tieu: 'Các bảng hiện có', y: [
+        'Siêng luyện: số lượt Luyện dạng yếu đạt trong tuần hoặc tháng.',
+        'Tổng câu đúng: số câu đúng trong các lượt luyện được tính.',
+        'Tỉ lệ đạt: phần trăm dạng bài em đã đạt.',
+        'Chuỗi làm bài: số ngày liên tiếp có lượt luyện được tính.',
+        'Mock Test tháng: điểm Mock Test gần nhất; đề mỗi khối khác nhau nên Toàn BK so trực tiếp điểm.',
+        'Một số bảng khác đang ghi “Sắp có”.',
+      ] },
+      { tieu: 'Quy ước', loai: 'luat', y: [
+        'Chỉ em nào có kết quả thật trong kỳ mới có tên trong bảng. Chưa có dữ liệu không có nghĩa là 0 điểm.',
+        'Hạng của chính em hiện ở dải phía trên và chỉ mình em thấy, kể cả khi em ở cuối bảng.',
+        'Hòa điểm thì ai đạt mốc sớm hơn đứng trước.',
+      ] },
     ],
   },
   {
@@ -333,31 +353,32 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
     ] },
   },
   {
-    id: 'huy_hieu', nhom: 'thuong', ten: 'Huy hiệu, Thành tựu và Album', icon: { o: 'thanh_tuu', emoji: '🏅' }, tutorial: 'huy_hieu',
-    tomTat: 'Tám huy hiệu ghi nhận chuyên cần, bài tập và tiến bộ theo từng tháng.',
-    game: { ten: 'Bộ sưu tập huy hiệu', tomTat: 'Tám huy hiệu thần thoại, mỗi cái nâng tới 5 sao.' },
+    id: 'huy_hieu', nhom: 'thuong', ten: 'Thành tựu', icon: { o: 'thanh_tuu', emoji: '🏅' }, tutorial: 'huy_hieu',
+    tomTat: 'Đạt bậc nào nhận EXP bậc đó; mỗi bậc thưởng một lần trong mùa.',
+    game: { ten: 'Bộ thành tựu', tomTat: 'Chinh phục từng bậc để rinh EXP.' },
     khoi: [
-      { tieu: 'Tám huy hiệu', y: [
-        'Helios: chuyên cần, đi học đủ các buổi.',
-        'Chronos: nộp đủ BTVN đúng hạn.',
-        'Athena: kết quả ET tốt.',
-        'Zeus: Mock Test (MT) thuộc nhóm đầu khối.',
-        'Phoenix: bứt phá, hạng MT tiến bộ so với đầu mùa.',
-        'Hercules: vượt Thử thách nhiều ngày trong tháng.',
-        'Hephaestus: lấp lỗ hổng, đưa dạng yếu lên mức đạt.',
-        'Nike: nằm trong nhóm đầu Bảng đua tháng.',
+      { tieu: 'Luật chung', loai: 'luat', y: [
+        'Đạt là đạt, không có mức thấp hay cao. Mỗi bậc là một thành tựu riêng và có phần thưởng EXP riêng.',
+        'Mỗi bậc chỉ thưởng một lần trong mùa. Mất chuỗi rồi cày lại tới bậc cũ thì không thưởng lại.',
+        'Mùa chạy từ 1 tháng 7 đến 30 tháng 6 năm sau. Sang mùa mới, các bậc tính lại từ đầu.',
+        'EXP thành tựu không có trần và đổi ra xu như EXP khác.',
       ] },
-      { tieu: 'Cách tính', y: [
-        'Mùa huy hiệu chạy từ tháng 7 đến tháng 4.',
-        'Mỗi tháng đạt chuẩn là thêm một bước; càng nhiều tháng đạt, huy hiệu càng nhiều sao, tối đa 5 sao. Đã đạt thì không bị mất.',
-        'Kết quả chốt sau ngày 10 của tháng kế tiếp (chờ kết quả MT); trước đó hiển thị “tạm tính”.',
-        'Các sao cao có phần thưởng EXP; điều kiện chi tiết của từng huy hiệu do trung tâm cấu hình và có thể điều chỉnh.',
+      { tieu: 'Các thành tựu đang mở', y: [
+        'Chuỗi làm bài liên tiếp: 7, 14, 30, 60, 90, 150, 210, 300 ngày.',
+        'Nhiệm vụ ngày liên tiếp: 7, 14, 30, 60, 90 ngày.',
+        'Luyện dạng yếu đạt liên tiếp: 3, 5, 10 lượt (một lượt dưới ngưỡng sẽ cắt chuỗi).',
+        'Tổng số câu luyện đạt trong mùa: 1.000, 2.000, 5.000, 10.000 câu.',
+        'Top 5 khối và Top 1 khối ở Mock Test tháng; Mock Test 10 điểm lần đầu trong mùa.',
+        'Một số thành tựu khác ghi “Sắp có”, và có thành tựu ẩn: đạt rồi mới biết tên.',
       ] },
-      { tieu: 'Thành tựu và Album', y: [
-        'Thành tựu: giải thưởng cuối tháng đã công bố (Xuất sắc, Tiến bộ, Chăm chỉ).',
-        'Album: nơi xem toàn bộ huy hiệu; em có thể ghim tối đa 3 huy hiệu để khoe ở Hồ sơ.',
+      { tieu: 'Nhận thưởng', y: [
+        'Khi em về màn chính, thành tựu mới đạt hiện ra để chúc mừng. Xem toàn bộ ở ô Thành tựu.',
       ] },
-      { tieu: 'Lưu ý', loai: 'luuy', y: ['Huy hiệu hiện mở cho môn Toán; các môn khác sẽ mở sau.'] },
+      { tieu: 'Album huy hiệu và giải thưởng cuối tháng', y: [
+        'Giải thưởng cuối tháng (Xuất sắc, Tiến bộ, Chăm chỉ) do thầy cô công bố và hiện cùng màn Thành tựu.',
+        'Album huy hiệu là bộ sưu tập, hiện không thưởng EXP và đang được làm mới.',
+      ] },
+      { tieu: 'Lưu ý', loai: 'luuy', y: ['Thành tựu hiện mở cho môn Toán; các môn khác sẽ mở sau.'] },
     ],
   },
   {
@@ -367,12 +388,12 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
     khoi: [
       { tieu: 'EXP đến từ đâu', y: [
         'Việc học ở lớp: ET, BTVN, buổi bù và bổ trợ, game trong buổi học.',
-        'Việc học trên app: Chặng nhiệm vụ, rương tuần, vòng quay May mắn, các sao huy hiệu.',
+        'Việc học trên app: nhiệm vụ, vòng quay May mắn, thành tựu.',
       ] },
       { tieu: 'Đổi sang xu', loai: 'luat', y: [
         'Xu được tính theo từng môn và từng tháng từ tổng EXP của tháng đó: cứ 100 EXP là 1 xu (làm tròn lên).',
         'Xu cập nhật ngay khi em có EXP, không đợi cuối tháng. Nếu EXP bị giảm (phạt BTVN, sửa điểm) thì xu cũng giảm theo.',
-        'Xu kiếm từ hoạt động trên app có trần mỗi tháng cho mỗi môn; xu từ việc học trên lớp không bị tính vào trần này.',
+        'Xu từ nhiệm vụ có trần 20 xu mỗi tháng cho mỗi môn, từ vòng quay có trần 10 xu mỗi tháng; thành tựu không có trần. Xu từ việc học trên lớp không bị tính vào các trần này.',
       ] },
       { tieu: 'Dùng xu', y: [
         'Xu dùng để đổi quà ở tủ quà tại trung tâm. App chỉ hiện số dư và lịch sử; việc đổi quà thực hiện trực tiếp tại trung tâm.',
@@ -387,7 +408,7 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
     khoi: [
       { tieu: 'Cách có lượt quay', y: [
         'Vòng quay miễn phí, không tốn xu; mỗi em tối đa một lượt mỗi ngày.',
-        'Với môn đã mở Nhiệm vụ: hoàn thành từ 2 nhiệm vụ ngày trong hôm nay để có lượt.',
+        'Với môn đã mở Nhiệm vụ: có ít nhất 1 lượt Luyện dạng yếu đạt trong hôm nay thì lượt quay tự hiện ra.',
         'Với môn chưa mở Nhiệm vụ: làm một lượt tự luyện 10 câu đúng từ 70% để có lượt (luật cũ).',
       ] },
       { tieu: 'Phần thưởng', y: [

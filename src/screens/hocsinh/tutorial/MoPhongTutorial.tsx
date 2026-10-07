@@ -144,7 +144,7 @@ function MpThuThach() {
     <div className="grid gap-3">
       <Soi id="the_thu_thach" style={THE}>
         <div className="flex items-center gap-3 p-3"><span className="text-[26px]">⚔️</span>
-          <div><b className="text-[15px]" style={{ ...HEAD, ...chu() }}>Thử thách</b><p className="text-[12px]" style={mo}>Như Luyện dạng yếu, đúng từ 80% được cộng Điểm Rank</p></div></div>
+          <div><b className="text-[15px]" style={{ ...HEAD, ...chu() }}>Thử thách</b><p className="text-[12px]" style={mo}>Như Luyện dạng yếu, đúng từ 8/10 câu là vượt</p></div></div>
       </Soi>
       <Soi id="cham_cau" style={THE}>
         <div className="p-3">
@@ -158,13 +158,7 @@ function MpThuThach() {
         </div>
       </Soi>
       <Soi id="bang_thuong" style={THE}>
-        <div className="grid grid-cols-3 gap-2 p-3 text-center">
-          {[['8 câu', 10], ['9 câu', 20], ['10 câu', 30]].map(([c, d]) => (
-            <div key={c} className="rounded-lg py-2" style={{ background: MAU.surface2 }}>
-              <p className="text-[12px]" style={mo}>Đúng {c}</p><b className="text-[18px]" style={{ ...HEAD, color: MAU.acc }}>+{d}</b><p className="text-[10.5px]" style={mo}>Điểm Rank</p>
-            </div>
-          ))}
-        </div>
+        <p className="p-3 text-[12.5px]" style={chu()}>Lượt Thử thách là lượt học thật <span style={mo}>· được tính vào chuỗi làm bài</span></p>
       </Soi>
       <Soi id="tien_do" style={THE}>
         <div className="grid gap-2 p-3">
@@ -453,27 +447,60 @@ function MpDauChinhPhuc() {
 
 // ── Huy hiệu ─────────────────────────────────────────────────────────────────
 function MpHuyHieu() {
-  const hh = ['Helios', 'Chronos', 'Athena', 'Zeus', 'Phoenix', 'Hercules', 'Hephaestus', 'Nike']
+  const tt: [string, string, number, number][] = [['Chuỗi làm bài', 'ngày', 7, 100], ['Luyện yếu đạt liên tiếp', 'lượt', 3, 200], ['Tổng câu luyện đạt', 'câu', 1000, 100], ['Top 5 khối', 'hạng', 5, 300]]
   return (
     <div className="grid gap-3">
       <Soi id="tam_huy_hieu" style={THE}>
-        <div className="grid grid-cols-4 gap-2 p-3 text-center">
-          {hh.map((h, i) => (
-            <div key={h} className="rounded-lg px-1 py-2" style={{ background: MAU.surface2 }}>
-              <span className="block text-[20px] leading-none">🏅</span><b className="block text-[11px]" style={chu()}>{h}</b>
-              <span className="text-[10px]" style={{ color: i < 3 ? MAU.acc : MAU.muted }}>{'★'.repeat(i < 3 ? 3 - i : 0) || '–'}</span>
+        <div className="grid gap-1.5 p-3">
+          {tt.map(([ten, dv, ng, exp], i) => (
+            <div key={ten} className="flex items-center gap-2 rounded-lg px-2.5 py-1.5" style={{ background: MAU.surface2 }}>
+              <span className="text-[18px]" aria-hidden>{i < 2 ? '🏅' : '🔒'}</span>
+              <b className="min-w-0 flex-1 text-[12.5px]" style={chu()}>{ten}</b>
+              <span className="text-[11px]" style={mo}>{ng} {dv}</span>
+              <b className="text-[11.5px]" style={{ color: i < 2 ? MAU.acc : MAU.muted }}>+{exp} EXP</b>
             </div>
           ))}
         </div>
       </Soi>
       <Soi id="sao" style={THE}>
-        <div className="flex items-center justify-between p-3"><b className="text-[13.5px]" style={chu()}>Athena</b><span className="text-[18px]" style={{ color: MAU.acc }}>★★★☆☆</span></div>
+        <div className="flex items-center justify-between p-3"><b className="text-[13.5px]" style={chu()}>Chuỗi làm bài</b><span className="text-[12.5px]" style={{ color: MAU.acc }}>✓ 7 ngày · ✓ 14 ngày · 30 ngày</span></div>
       </Soi>
       <Soi id="chot_thang" style={THE}>
-        <p className="p-3 text-[12.5px]" style={chu()}>Tháng 10 <span style={mo}>· tạm tính, chốt sau ngày 10 tháng 11</span></p>
+        <div className="flex items-center gap-2 p-3 text-[13px]" style={chu()}><span aria-hidden>🔒</span><b>Thành tựu ẩn</b><span style={mo}>· đạt mới biết tên</span></div>
       </Soi>
       <Soi id="ghim" style={THE}>
-        <div className="flex items-center gap-2 p-3 text-[13px]" style={chu()}><b>Hồ sơ</b><span style={mo}>· ghim tối đa 3 huy hiệu:</span><span>🏅🏅🏅</span></div>
+        <p className="p-3 text-[12.5px]" style={chu()}>Thành tựu mới! <span style={mo}>· +200 EXP, đổi ra xu trong Ví</span></p>
+      </Soi>
+    </div>
+  )
+}
+
+// ── Bảng xếp hạng ────────────────────────────────────────────────────────────
+function MpBxh() {
+  const hs: [number, string, number][] = [[1, 'Nguyễn Khôi Nguyên', 24], [2, 'Trịnh Bảo Ngọc', 22], [3, 'Lê Minh Anh', 20], [4, 'Em', 18]]
+  return (
+    <div className="grid gap-3">
+      <Soi id="bxh_loc" style={THE}>
+        <div className="grid grid-cols-3 gap-1.5 p-2.5 text-center text-[12px] font-bold" style={chu()}>
+          {['Siêng luyện', 'Khối mình', 'Tháng này'].map((t) => (
+            <span key={t} className="flex items-center justify-between rounded-lg px-2 py-2" style={{ background: MAU.surface2 }}>{t}<span style={{ color: MAU.acc }}>▾</span></span>
+          ))}
+        </div>
+      </Soi>
+      <Soi id="bxh_hang" style={THE}>
+        <div className="flex items-center gap-2 p-3 text-[13px]" style={chu()}>
+          <b className="rounded-full px-2 py-0.5 text-[12.5px]" style={{ background: MAU.acc, color: MAU.accInk }}>#4</b>
+          <span>Em hạng 4/78 khối 9 · 18 lượt</span><span style={mo}>· chỉ mình em thấy</span>
+        </div>
+      </Soi>
+      <Soi id="bxh_top" style={THE}>
+        <div className="p-3">
+          {hs.map(([h, t, d]) => (
+            <div key={h} className="flex items-center gap-2 py-1 text-[13px]" style={chu({ fontWeight: t === 'Em' ? 800 : 500 })}>
+              <span className="w-6 text-center" style={{ color: MAU.acc }}>{h <= 3 ? ['🥇', '🥈', '🥉'][h - 1] : h}</span><span className="flex-1">{t}</span><span>{d} lượt</span>
+            </div>
+          ))}
+        </div>
       </Soi>
     </div>
   )
@@ -503,7 +530,7 @@ function MpXuMayMan() {
 
 const MAN: Record<ChuongTutorial['id'], () => JSX.Element> = {
   giao_dien: MpGiaoDien, hoc_tap: MpHocTap, chu_de: MpChuDe, tu_luyen: MpTuLuyen, luot_that: MpLuotThat, thu_thach: MpThuThach, dau_chinh_phuc: MpDauChinhPhuc,
-  nhiem_vu: MpNhiemVu, rank: MpRank, huy_hieu: MpHuyHieu, xu_may_man: MpXuMayMan, the_gioi: MpTheGioi,
+  nhiem_vu: MpNhiemVu, bxh: MpBxh, rank: MpRank, huy_hieu: MpHuyHieu, xu_may_man: MpXuMayMan, the_gioi: MpTheGioi,
 }
 
 export default function MoPhongTutorial({ chuong, soi }: { chuong: ChuongTutorial['id']; soi?: string }) {
