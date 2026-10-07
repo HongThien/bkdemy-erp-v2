@@ -114,9 +114,11 @@ Bản đồ 4T được dựng từ chính quyển này: **chuyên đề 1–22 
 Luật gán:
 
 1. Câu trong LUYỆN TẬP của chuyên đề $k$ ⇒ tìm dạng **trong chủ đề cùng số** trước; chỉ khi không khớp mới nhìn chủ đề khác.
+   **Nhưng PHƯƠNG PHÁP thắng chủ đề** (điều 3): giải bằng tổng–hiệu thì vào dạng tổng–hiệu dù câu nằm ở chuyên đề Chu vi (CEO 07/10).
 2. Câu trong PHIẾU TỰ LUYỆN / PHIẾU CUỐI TUẦN ⇒ không có chủ đề gợi ý, gán theo **dấu hiệu đề** (bảng dưới).
 3. Khớp **tên dạng** chưa đủ: phải khớp **phương pháp giải** (lời giải dùng khuôn nào). Vd "Tìm hai số" mà giải bằng
-   "hiệu số phần" ⇒ CĐ22 dù đề không nhắc chữ "tỉ số".
+   "hiệu số phần" ⇒ CĐ22 dù đề không nhắc chữ "tỉ số". **Bài chu vi/diện tích mà lõi là tổng–hiệu** (nửa chu vi + hơn kém;
+   "tăng rộng thêm $k$ thì thành hình vuông") ⇒ `T14T080101`, kể cả khi bước cuối là tính diện tích (CEO 07/10, LT 5.4).
 4. Không có dạng ⇒ `T14T000000` + ghi vào danh sách thiếu (bên dưới), **không ép** vào dạng gần giống.
 5. Bài nhiều ý độc lập ⇒ tách rồi gán từng ý (vd LT 6.6: a → `060101`, b → `060103`, c → `060104`).
 
@@ -154,11 +156,11 @@ Luật gán:
 | `T14T03` Đo lường (chỉ có "đổi đơn vị khối lượng") | đổi đơn vị độ dài / diện tích / thời gian · phép tính với số đo · lịch–thế kỉ · cân đĩa | LT 3.1–3.15, PCT 5, 7, 8 |
 | `T14T04` Tính toán | tính giá trị biểu thức chứa chữ · tính thuận tiện **cộng trừ** (kết hợp, trừ một tổng/hiệu, 19+199+1999) · tìm $y$ với số tự nhiên · điền chữ số vào dấu * | LT 4.1–4.9, 4.20, hầu hết PCT |
 | `T14T09` Quan hệ đại lượng (chỉ có "phép cộng") | thay đổi thành phần phép **trừ / nhân / chia** · tích riêng thẳng cột · viết nhầm thừa số · số dư lớn nhất | LT 4.12–4.19, LT 9.1–9.19, PCT 14 |
-| `T14T05` Chu vi diện tích (chỉ có "chu vi cơ bản") | diện tích HCN/HV · thay đổi kích thước (tăng rộng ⇒ diện tích tăng) · hình ghép / tô màu trên lưới ô vuông · lát gạch | LT 5.2–5.20, PCT 7, 8, 12, 13 |
+| `T14T05` Chu vi diện tích (chỉ có "chu vi cơ bản") | diện tích HCN/HV · thay đổi kích thước **không quy về tổng–hiệu** (vd LT 5.7 "tăng rộng 5 dm thì diện tích tăng 45 dm²"; còn "tăng rộng thành hình vuông" ⇒ `080101`) · hình ghép / cắt góc / tô màu trên lưới ô vuông · lát gạch | LT 5.2–5.20, PCT 7, 8, 12, 13 |
 | `T14T08` Tổng hiệu (chỉ "cơ bản") | tổng–hiệu **ẩn** (tuổi, giữa chúng có k số, xoá chữ số, ba số) | LT 8.4–8.20 |
 | `T14T12` Cấu tạo số (chỉ "thêm bên trái") | thêm/xoá chữ số **bên phải** · thêm **vào giữa** · thay chữ số · $\overline{ab}=k\times(a+b)+r$ | LT 12.1–12.18 |
 | `T14T13` TBC (chỉ "của một nhóm") | hơn/kém TBC · bằng TBC · TBC dãy cách đều · thêm số thứ n đổi TBC | LT 13.2–13.20 |
-| `T14T14` Rút về đơn vị (chỉ "một đại lượng") | dạng 2 (tìm số phần) · hai đại lượng ("dép và giày") · năng suất thay đổi (14.14–14.20) | LT 14.4–14.20 |
+| `T14T14` Rút về đơn vị (chỉ "một đại lượng" — gồm cả dạng 1 và dạng 2 "tìm số phần", CEO 07/10) | hai đại lượng ("dép và giày") · năng suất thay đổi (14.14–14.20) | LT 14.4–14.20 |
 | `T14T15` Thống kê (chỉ "đại lượng cơ bản") | xác suất / liệt kê sự kiện · "bốc ít nhất bao nhiêu để chắc chắn" | LT 15.11–15.15 |
 | `T14T17` So sánh | **phần hơn** (sách tách phần hơn và phần bù). Tra kho 07/10: `170203`/`170204` cùng TÊN "phần bù" nhưng câu thật khác nhau — `170203` = phần bù cùng tử 1 ($dfrac{33}{34}$ và $dfrac{34}{35}$), `170204` = phần bù khác tử, phải so tiếp ($dfrac{4}{5}$ và $dfrac{7}{9}$) ⇒ nên đổi tên `170204`, và phần hơn vẫn thiếu · viết phân số nằm giữa hai phân số | LT 17.9–17.10, 17.15–17.16 |
 | `T14T16` Phân số | tìm $y$ từ hai phân số bằng nhau · phân số bằng nhau / tối giản (nhận biết) · lập phân số theo điều kiện | LT 16.1–16.4, 16.11–16.15 |
@@ -183,3 +185,6 @@ Luật gán:
 | 07/10 | Lô 1, câu 8 (tổng–hiệu) | CEO hỏi *"m có vẽ được hình không"* ⇒ sơ đồ đoạn thẳng phải là HÌNH, không chỉ mô tả bằng lời. | Có máy vẽ: `scripts/kho/so-do-doan-thang.mjs` (mô tả JSON → SVG). §1.5 sửa: bài có sơ đồ ⇒ Phần 2 ghi `Ta có sơ đồ:` + **hình SVG** (lưu `anh_dap_an`), dòng mô tả bằng lời giữ lại làm alt. |
 | 07/10 | Cả lô | *"Sau mỗi câu thì phải xuống dòng."* | §3: mỗi câu lời giải / mỗi phép tính **một dòng riêng** (dòng trống giữa các dòng), kể cả khi trích dẫn trong chat. |
 | 07/10 | Cả lô | *"Còn lại khá ổn."* 11/13 câu không sửa. | Giữ nguyên luật §1, §1.5, §2 (trừ CĐ6). |
+| 07/10 | Lô 2, câu 4 (LT 5.4 chu vi → tổng–hiệu) | Trả lời câu hỏi gán dạng: *"Giải bằng tổng hiệu thì phải nằm trong dạng tổng hiệu."* | §5 điều 1 + 3: phương pháp thắng chủ đề cùng số. Áp luôn câu 5 (LT 5.9, "tăng rộng thành hình vuông" ⇒ tổng–hiệu rồi tính diện tích): từ dạng chờ ⇒ `080101`. |
+| 07/10 | Lô 2, câu 13 (LT 14.13 rút về đơn vị dạng 2) | *"Chung dạng."* | Dạng 1 và dạng 2 của sách cùng `T14T140101`; bỏ "dạng 2" khỏi bảng thiếu §5. |
+| 07/10 | Lô 2 cả lô | *"Khá ok rồi."* Không sửa nội dung lời giải câu nào. | Lô 2 = lô đầu tiên không bị sửa trình bày. Chờ CEO quyết lên v1 hay chạy thêm lô 3. |

@@ -35775,3 +35775,7 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Lô 2** = 20 câu (LT 3.1 3.6 3.13 · 5.4 5.9 5.19 · 10.5b 10.12 10.14 · 11.9 11.12 · 14.4 14.13 · 15.4 15.14a/b · 16.6c 16.8e · 17.9c 17.12a), append vào `kho-rules/dai/k4T-mau-thu.md`. Đáp số máy tính lại / vét cạn hết, 20/20 khớp. 2 sơ đồ mới `so-do/k4T-lo2-cau4|5`.
 - **Phát hiện:** `170203`/`170204` cùng tên "phần bù" nhưng câu trong kho khác nhau (cùng tử 1 / khác tử) — §5 k4T.md cũ đoán sai "một trong hai nên là phần hơn", đã sửa. 8/20 câu vào dạng chờ (lịch, lời văn số đo, thay đổi kích thước, hình cắt, rút về đơn vị 2 đại lượng, bốc ít nhất, phần hơn).
 - **Hỏi CEO:** (1) LT 5.4 chu vi → tổng–hiệu: gán theo phương pháp `080101` hay giữ chủ đề 05? (2) "dạng 2 — tìm số phần" của rút về đơn vị: tách dạng riêng hay để chung `140101`?
+
+## 07/10 (tiếp) — 4T lô 2: CEO duyệt "khá ok", chốt 2 luật gán dạng
+- (1) "Giải bằng tổng hiệu thì phải nằm trong dạng tổng hiệu" ⇒ §5 k4T.md: phương pháp thắng chủ đề cùng số. Áp thêm câu 5 (LT 5.9) từ dạng chờ ⇒ `080101` (em tự áp theo luật, đã báo CEO). (2) Rút về đơn vị dạng 1 + dạng 2 chung `140101`. Ghi §7, sửa §5 + lô 2 + README.
+- Lô 2 không bị sửa lời giải câu nào ⇒ đủ điều kiện v1 theo README; chờ CEO quyết v1 hay lô 3.

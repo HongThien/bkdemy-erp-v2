@@ -443,7 +443,7 @@ Khối lượng của chai rỗng là: $750-550=200$ (g)
 
 ## Câu 4 — LT 5.4 · Một hình chữ nhật có chu vi bằng chu vi của một hình vuông có cạnh 16 cm. Biết chiều dài hơn chiều rộng 6 cm. Tìm chiều dài, chiều rộng của hình chữ nhật.
 
-**Dạng:** `T14T080101` — tổng hiệu cơ bản (tổng ẩn = nửa chu vi). *(theo luật gán `k4T.md` §5 điều 3 "khớp phương pháp": giải bằng tổng–hiệu; chủ đề cùng số `T14T05` chỉ có "chu vi cơ bản" — **xin CEO chốt** gán theo phương pháp `080101` hay để chủ đề `05`)*
+**Dạng:** `T14T080101` — tổng hiệu cơ bản (tổng ẩn = nửa chu vi). *(giải bằng tổng–hiệu ⇒ dạng tổng–hiệu — CEO chốt 07/10)*
 
 **Phần 1. Hướng dẫn**
 
@@ -471,7 +471,7 @@ Chiều dài hình chữ nhật là: $13+6=19$ (cm)
 
 ## Câu 5 — LT 5.9 · Một hình chữ nhật có chu vi là 44 cm. Nếu tăng chiều rộng thêm 4 cm thì hình chữ nhật đó trở thành hình vuông. Tính diện tích của hình chữ nhật ban đầu.
 
-**Dạng:** `T14T000000` — **dạng chờ.** Đích là **diện tích**, mấu chốt là "thay đổi kích thước thành hình vuông" — `k4T.md` §5 đã ghi thiếu dạng này ở `T14T05`.
+**Dạng:** `T14T080101` — tổng hiệu cơ bản. *(sửa 07/10 theo luật CEO chốt ở câu 4: lõi là tổng–hiệu — "tăng rộng thành hình vuông" ⇒ hiệu 4 cm, nửa chu vi là tổng; diện tích chỉ là bước cuối. Bản gửi duyệt ghi dạng chờ)*
 
 **Phần 1. Hướng dẫn**
 
@@ -675,7 +675,7 @@ Mua $3$ đôi dép và $1$ đôi giày vải hết số tiền là: $180000+1250
 
 ## Câu 13 — LT 14.13 · Để chuẩn bị cho một hội nghị người ta kê 15 hàng ghế đủ chỗ cho 180 người ngồi. Trên thực tế có 204 người đến dự. Hỏi phải kê thêm bao nhiêu hàng ghế nữa? Biết rằng mỗi hàng ghế có số chỗ ngồi như nhau.
 
-**Dạng:** `T14T140101` — rút về đơn vị một đại lượng. *(bước 2 là phép CHIA = "dạng 2" của sách; bản đồ chưa tách dạng 1 / dạng 2 và tên dạng "một đại lượng" bao cả hai ⇒ gán đây. **Xin CEO chốt:** có tách "dạng 2 — tìm số phần" thành dạng riêng không; §5 k4T.md đang ghi là thiếu)*
+**Dạng:** `T14T140101` — rút về đơn vị một đại lượng. *(bước 2 là phép CHIA = "dạng 2" của sách; dạng 1 và dạng 2 chung một dạng — CEO chốt 07/10)*
 
 **Phần 1. Hướng dẫn**
 
@@ -876,8 +876,8 @@ Vậy $\dfrac{41}{42}>\dfrac{37}{39}$.
 | 1 | LT 3.1 | `030101` | 1 kg 512 g ; 1 kg 51 dag ; 1 kg 5 hg ; 10 hg 50 g | |
 | 2 | LT 3.6 | `000000` chờ | Chủ nhật | thiếu dạng lịch |
 | 3 | LT 3.13 | `000000` chờ | 200 g | thiếu dạng lời văn với số đo |
-| 4 | LT 5.4 | `080101` ❓ | dài 19 cm, rộng 13 cm | gán theo phương pháp; hỏi CEO |
-| 5 | LT 5.9 | `000000` chờ | 117 cm² | thiếu "thay đổi kích thước" |
+| 4 | LT 5.4 | `080101` | dài 19 cm, rộng 13 cm | CEO chốt: tổng–hiệu ⇒ dạng tổng–hiệu |
+| 5 | LT 5.9 | `080101` | 117 cm² | sửa từ dạng chờ theo luật câu 4 |
 | 6 | LT 5.19 | `000000` chờ | 40 cm ; 84 cm² | thiếu "hình cắt/ghép"; có ảnh đề |
 | 7 | LT 10.5b | `100103` | 360 ; 630 | tách ý |
 | 8 | LT 10.12 | `100102` | a=2,b=2 hoặc a=7,b=6 | 2 đáp số |
@@ -885,7 +885,7 @@ Vậy $\dfrac{41}{42}>\dfrac{37}{39}$.
 | 10 | LT 11.9 | `110104` | N, từ ĐỒNG | |
 | 11 | LT 11.12 | `110105` | 421 | dạng 0 câu |
 | 12 | LT 14.4 | `000000` chờ | 305000 đồng | thiếu "hai đại lượng" |
-| 13 | LT 14.13 | `140101` ❓ | 2 hàng ghế | dạng 2 của sách; hỏi CEO có tách không |
+| 13 | LT 14.13 | `140101` | 2 hàng ghế | CEO chốt: dạng 1 và 2 chung dạng |
 | 14 | LT 15.4 | `150101` | 10 lớp ; 44 cuốn ; 5 lớp | dạng 0 câu; không tách (c dùng b) |
 | 15a | LT 15.14a | `000000` chờ | 23 viên | tách |
 | 15b | LT 15.14b | `000000` chờ | 26 viên | tách |
@@ -894,4 +894,6 @@ Vậy $\dfrac{41}{42}>\dfrac{37}{39}$.
 | 18 | LT 17.9c | `000000` chờ | $\dfrac{2026}{2023}>\dfrac{2027}{2024}$ | phần hơn chưa có dạng |
 | 19 | LT 17.12a | `170204` | $\dfrac{41}{42}>\dfrac{37}{39}$ | phần bù khác tử |
 
-**Đếm:** 20 câu (19 bài, LT 15.14 tách 2) · 6 câu vào dạng đang **0 câu** (`030101` `110105` `140101` `150101` `160202` `160103`) · **8 câu dạng chờ** ⇒ thêm bằng chứng cho bảng thiếu `k4T.md` §5 · 2 câu ❓ chờ CEO chốt cách gán.
+**Đếm:** 20 câu (19 bài, LT 15.14 tách 2) · 6 câu vào dạng đang **0 câu** (`030101` `110105` `140101` `150101` `160202` `160103`) · **7 câu dạng chờ** (câu 5 chuyển sang `080101` sau khi CEO chốt) ⇒ thêm bằng chứng cho bảng thiếu `k4T.md` §5.
+
+**CEO duyệt 07/10:** *"khá ok rồi"* — không sửa lời giải câu nào; 2 câu hỏi gán dạng đã chốt (ghi `k4T.md` §7).

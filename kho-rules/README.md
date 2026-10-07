@@ -64,6 +64,6 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
 
 | Khối | File | Phiên bản | Lô đã duyệt | Nguồn luật |
 |---|---|---|---|---|
-| 4T | `dai/k4T.md` | v0 (07/10, đã nhận 1 vòng sửa) | lô 1: 13 câu, CEO sửa 2 chỗ (câu 7 dãy số, câu 8 sơ đồ) | Toán arc 4 quyển 1 (Archimedes 2023) |
+| 4T | `dai/k4T.md` | v0 (07/10, đã nhận 2 vòng) | lô 1: 13 câu, CEO sửa 2 chỗ (câu 7 dãy số, câu 8 sơ đồ) · lô 2: 20 câu, không sửa lời giải, chốt 2 luật gán dạng | Toán arc 4 quyển 1 (Archimedes 2023) |
 | 5T | `dai/k5T.md` | v0 (04/10) | lô 1: 12 câu | kho 5T sẵn có (chuyên đề Số thập phân) |
 | 6–12 | — | chưa | — | chờ CEO đưa sách mẫu từng khối |
