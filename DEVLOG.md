@@ -35769,3 +35769,9 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 - **Bẫy test:** Browser pane ẩn ⇒ `el.blur()` không phát focusout ⇒ tưởng nhận xét không lưu; phát `FocusEvent('focusout')` mới đúng.
 - **Dữ liệu test còn lại (chờ Thùy quyết xoá):** 2 dòng `gami_grades` admin tạo: Quỳnh Anh Câu 2 (id 051f216c…) + Câu 19 (91c492f0…). Câu 1 đã trả về 0.25 (graded_by đổi sang admin). 9B1 có thêm 20 ô chấm (cấu trúc, đúng như mở tab MT).
 - **Dọn test (Thùy duyệt "Xóa đi"):** xoá 2 dòng `gami_grades` test của Quỳnh Anh · 9A1 · MT 04/10 (Câu 2 Đ 0.25 · Câu 19 C 0.75), 1 transaction, kiểm đúng 2 dòng mới commit. Quỳnh Anh còn lại đúng 8 dòng như trước test.
+
+## 07/10 (tiếp) — 4T lô 2: 20 câu, 8 chuyên đề chưa có trong lô 1, gửi CEO duyệt (chưa ghi DB)
+- **Đọc lại sách** bằng `doc-docx.mjs` (2.842 dòng, 1.095 công thức, 0 hỏng). Tra bản đồ 4T trên DB live (phiên read only): 8 chủ đề (03 05 10 11 14 15 16 17) có 22 dạng, 10 dạng đang 0 câu.
+- **Lô 2** = 20 câu (LT 3.1 3.6 3.13 · 5.4 5.9 5.19 · 10.5b 10.12 10.14 · 11.9 11.12 · 14.4 14.13 · 15.4 15.14a/b · 16.6c 16.8e · 17.9c 17.12a), append vào `kho-rules/dai/k4T-mau-thu.md`. Đáp số máy tính lại / vét cạn hết, 20/20 khớp. 2 sơ đồ mới `so-do/k4T-lo2-cau4|5`.
+- **Phát hiện:** `170203`/`170204` cùng tên "phần bù" nhưng câu trong kho khác nhau (cùng tử 1 / khác tử) — §5 k4T.md cũ đoán sai "một trong hai nên là phần hơn", đã sửa. 8/20 câu vào dạng chờ (lịch, lời văn số đo, thay đổi kích thước, hình cắt, rút về đơn vị 2 đại lượng, bốc ít nhất, phần hơn).
+- **Hỏi CEO:** (1) LT 5.4 chu vi → tổng–hiệu: gán theo phương pháp `080101` hay giữ chủ đề 05? (2) "dạng 2 — tìm số phần" của rút về đơn vị: tách dạng riêng hay để chung `140101`?

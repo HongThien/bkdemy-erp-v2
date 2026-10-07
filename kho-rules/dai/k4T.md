@@ -138,7 +138,7 @@ Luật gán:
 | `070101` / `070102` | đường thẳng (2 đầu, 1 đầu, không đầu, cắt gỗ) / khép kín (xung quanh sân, ao) |
 | `100101` / `100102` / `100103` | nhận biết trong danh sách / tìm chữ số $a,b$ trong $\overline{2a3b}$ / lập số từ chữ số cho trước |
 | `110101`…`110105` | nhận biết số dư / tìm $\overline{56a}$ chia 5 dư 3 / đếm số chia hết–có dư trong đoạn / dãy lặp (bi, chữ) / chia cho nhiều số cùng dư |
-| `170101`…`170205` | quy đồng mẫu / quy đồng tử / so với 1 / trung gian / phần bù (và phần hơn — xem thiếu) / sắp xếp |
+| `170101`…`170205` | quy đồng mẫu / quy đồng tử / so với 1 / trung gian / phần bù cùng tử 1 (`170203`) / phần bù khác tử (`170204`) / sắp xếp. Phần hơn ⇒ dạng chờ |
 | `180101`…`180302` | cộng trừ 2 phân số / nhiều phân số / thuận tiện tổng hiệu / chuỗi tích / thuận tiện nhân / biểu thức nhân / biểu thức chia / thuận tiện chia |
 | `190101`…`190204` | dãy tích đơn ($\dfrac{2\times 3\times 4}{3\times 4\times 5}$) / dãy tích kép / hiệu-tích chuẩn ($\dfrac{1}{2\times 3}$) / tử chưa chuẩn ($\dfrac{3}{1\times 4}$) / mẫu chưa chuẩn ($\dfrac{1}{6}+\dfrac{1}{12}$) / tìm $x$ |
 | `200101` / `200102` | một bước "$\dfrac{m}{n}$ của a" / nhiều bước ("còn lại", "của số còn lại") |
@@ -160,7 +160,7 @@ Luật gán:
 | `T14T13` TBC (chỉ "của một nhóm") | hơn/kém TBC · bằng TBC · TBC dãy cách đều · thêm số thứ n đổi TBC | LT 13.2–13.20 |
 | `T14T14` Rút về đơn vị (chỉ "một đại lượng") | dạng 2 (tìm số phần) · hai đại lượng ("dép và giày") · năng suất thay đổi (14.14–14.20) | LT 14.4–14.20 |
 | `T14T15` Thống kê (chỉ "đại lượng cơ bản") | xác suất / liệt kê sự kiện · "bốc ít nhất bao nhiêu để chắc chắn" | LT 15.11–15.15 |
-| `T14T17` So sánh | **phần hơn** (sách tách phần hơn và phần bù; bản đồ có 2 dạng cùng tên "phần bù" `170203`/`170204` — một trong hai nên là phần hơn) · viết phân số nằm giữa hai phân số | LT 17.9–17.10, 17.15–17.16 |
+| `T14T17` So sánh | **phần hơn** (sách tách phần hơn và phần bù). Tra kho 07/10: `170203`/`170204` cùng TÊN "phần bù" nhưng câu thật khác nhau — `170203` = phần bù cùng tử 1 ($dfrac{33}{34}$ và $dfrac{34}{35}$), `170204` = phần bù khác tử, phải so tiếp ($dfrac{4}{5}$ và $dfrac{7}{9}$) ⇒ nên đổi tên `170204`, và phần hơn vẫn thiếu · viết phân số nằm giữa hai phân số | LT 17.9–17.10, 17.15–17.16 |
 | `T14T16` Phân số | tìm $y$ từ hai phân số bằng nhau · phân số bằng nhau / tối giản (nhận biết) · lập phân số theo điều kiện | LT 16.1–16.4, 16.11–16.15 |
 | CĐ 23 "Bài toán cơ bản về phân số" | không có chủ đề riêng; câu rơi về `T14T20`/`T14T21`/`T14T22` theo phương pháp | LT 23.1–23.15 |
 | `T14T23` Tính ngược (chỉ "chuỗi phép tính") | chuyển qua lại giữa 2–3 người · tính ngược với phân số · bảng (VD 24.3) | LT 24.4–24.17 |
