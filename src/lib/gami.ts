@@ -691,6 +691,16 @@ export async function gradeMTChiTiet(p: {
   if (p.diemDat !== undefined) row.diem_dat = p.diemDat
   if (p.nhanXet !== undefined) row.nhan_xet = p.nhanXet
   if (p.loi !== undefined) row.loi = p.loi
+  if (p.result === undefined) {
+    // ⚠ BUG THẬT 07/10: chỉ sửa điểm/nhận xét mà đi đường upsert ⇒ Postgres kiểm NOT NULL của dòng INSERT đề xuất
+    // (thiếu result/points) TRƯỚC khi xét ON CONFLICT ⇒ từ chối, kể cả khi dòng đã tồn tại — điểm/nhận xét chưa
+    // từng lưu được từ 30/09. Không có Đ/C/S thì chỉ được SỬA dòng sẵn có (§1.5: dòng chấm ra đời là đã có kết quả).
+    const { problem_id, hoc_sinh_id, buoi_hoc_id: _b, presentation: _p, speed: _s, ...patch } = row
+    const { data, error } = await supabase.from('gami_grades').update(patch).match({ problem_id, hoc_sinh_id }).select('id')
+    if (error) throw error
+    if (!data?.length) throw new Error('Câu này chưa có Đ/C/S — chọn Đ/C/S trước rồi mới ghi điểm/nhận xét.')
+    return
+  }
   const { error } = await supabase.from('gami_grades').upsert(row, { onConflict: 'problem_id,hoc_sinh_id' })
   if (error) throw error
 }

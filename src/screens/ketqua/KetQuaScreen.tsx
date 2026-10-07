@@ -1755,6 +1755,7 @@ function ChamMTChiTietView() {
   const [grades, setGrades] = useState<Grade[]>([])
   const [loadingMT, setLoadingMT] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
+  const [lanLoi, setLanLoi] = useState(0) // tăng mỗi lần lưu lỗi ⇒ ô nhận xét dựng lại theo giá trị THẬT đã lưu
 
   useEffect(() => {
     listLop().then((l) => setLops((l as Lop[]).filter((x) => x.trang_thai === 'dang_hoc' && x.mon === mon))).catch(() => setLops([]))
@@ -1860,7 +1861,7 @@ function ChamMTChiTietView() {
     const base: Grade = cur ?? { id: '', problem_id: probId, hoc_sinh_id: hsId!, result: '', presentation: 'clean', speed: 'normal', points: 0, loi: [] }
     return [...others, { ...base, ...patch }]
   })
-  const baoLoi = (e: unknown) => setLoi('Lưu không được: ' + ((e as { message?: string })?.message ?? String(e)))
+  const baoLoi = (e: unknown) => { setLoi('Lưu không được: ' + ((e as { message?: string })?.message ?? String(e))); setLanLoi((n) => n + 1) }
 
   async function setResult(d: DongCham, result: ETResult) {
     if (!hsId || !buoiId || dongMT) return
@@ -1873,8 +1874,9 @@ function ChamMTChiTietView() {
         setGrades((gs) => gs.filter((g) => g.problem_id !== d.p.id))
         return
       }
-      const suggest = result === 'correct' ? d.maxDiem : result === 'partial' ? Math.round(d.maxDiem * 50) / 100 : 0
-      const diemDat = grade?.diem_dat == null ? suggest : grade.diem_dat
+      // Đổi Đ/C/S ⇒ điểm TÍNH LẠI theo kết quả mới (chỉnh tay sau). ⚠ 07/10: đời trước giữ điểm cũ nếu đã có ⇒
+      // chấm C (0.13) rồi sửa Đ vẫn 0.13, chấm Đ rồi sửa S vẫn 0.25 — điểm ngược kết quả (đã thấy ở 9A1, 9A2).
+      const diemDat = result === 'correct' ? d.maxDiem : result === 'partial' ? Math.round(d.maxDiem * 50) / 100 : 0
       await gradeMTChiTiet({ buoiId, problemId: d.p.id, hocSinhId: hsId, result, diemDat, loi: [] })
       patchGrade(d.p.id, { result, diem_dat: diemDat, loi: [] })
     } catch (e) { baoLoi(e) }
@@ -1999,9 +2001,10 @@ function ChamMTChiTietView() {
                                   {mucDiem(d.maxDiem, grade?.diem_dat ?? null).map((v) => <option key={v} value={v}>{fmtDiem(v)} đ</option>)}
                                 </select>
                                 {/* key gồm HS + giá trị đã lưu: đổi HS/tải xong điểm ⇒ ô dựng lại đúng nội dung (ô không kiểm soát). */}
-                                <input key={`${hsId}|${d.p.id}|${grade?.nhan_xet ?? ''}|${chuaCham ? 0 : 1}`} type="text" defaultValue={grade?.nhan_xet ?? ''}
+                                <input key={`${hsId}|${d.p.id}|${grade?.nhan_xet ?? ''}|${chuaCham ? 0 : 1}|${lanLoi}`} type="text" defaultValue={grade?.nhan_xet ?? ''}
                                   placeholder={chuaCham ? 'Chọn Đ/C/S trước' : 'Nhận xét (tuỳ chọn)'} disabled={chuaCham}
                                   onBlur={(e) => { if (e.target.value.trim() !== (grade?.nhan_xet ?? '')) setNhanXet(d, e.target.value) }}
+                                  onKeyDown={(e) => { if (e.key === 'Enter') e.currentTarget.blur() }}
                                   className="h-7 min-w-0 flex-1 rounded border border-slate-300 bg-white px-2 text-[12.5px] text-slate-700 disabled:bg-slate-100" />
                               </div>
                             )
