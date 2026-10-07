@@ -4,7 +4,8 @@
 // + MungThanhTuu: lớp phủ vừa nhận quà. Chữ gốc FORMAL. Thành tựu ẩn chưa đạt: server đã che tên/mô tả.
 // ============================================================================
 import type { TtCuaToi, TtLoai, TtNhan } from '../../../lib/thanhtuu_moi'
-import { HEAD, MAU, NhomHS, NutHS, THE_TRON, TheHS } from '../skin/KhungHS'
+import { HEAD, MAU, NhomHS, NutHS, THE_TRON, TheHS, useSkinHT } from '../skin/KhungHS'
+import { MungThanhTuuArt, ThanhTuuViewArt } from './ThanhTuuArt'
 
 const sl = (n: number) => n.toLocaleString('vi-VN')
 
@@ -64,6 +65,8 @@ function The({ x, onNhan, dangNhan }: { x: Buoc; onNhan?: (ma: string, bac: numb
 }
 
 export function ThanhTuuMoiView({ d, onNhan, dangNhan = null }: { d: TtCuaToi; onNhan?: (ma: string, bac: number) => void; dangNhan?: string | null }) {
+  const anh = useSkinHT().anhTt
+  if (anh) return <ThanhTuuViewArt d={d} a={anh} onNhan={onNhan} dangNhan={dangNhan} />
   const sanSang = d.loai.filter((l) => l.san_sang).map(buoc)
   const sapCo = d.loai.filter((l) => !l.san_sang)
   // Thứ tự: có quà chờ nhận → đang tiến hành (gần xong trước) → đã nhận hết
@@ -105,7 +108,9 @@ export function ThanhTuuMoiView({ d, onNhan, dangNhan = null }: { d: TtCuaToi; o
 
 // Lớp phủ vừa NHẬN quà
 export function MungThanhTuu({ nhan, onDong }: { nhan: TtNhan | null; onDong: () => void }) {
+  const anh = useSkinHT().anhTt
   if (!nhan) return null
+  if (anh) return <MungThanhTuuArt a={anh} nhan={nhan} onDong={onDong} />
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 px-4 pb-6 sm:items-center" onClick={onDong}>
       <div className="w-full max-w-[400px] p-6 text-center" onClick={(e) => e.stopPropagation()} style={{ ...THE_TRON, background: MAU.bg }}>

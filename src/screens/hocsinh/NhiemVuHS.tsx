@@ -8,7 +8,8 @@ import { useEffect, useState, type ReactNode } from 'react'
 import { nhiemVuCuaToi, type NhiemVuCuaToi } from '../../lib/nhiemvu'
 import { monCuaHS } from '../../lib/tuluyen'
 import { Khung, NutBack } from './TuLuyenChuDe'
-import { MAU, THE, HEAD } from './skin/KhungHS'
+import { MAU, THE, HEAD, useSkinHT } from './skin/KhungHS'
+import { NhiemVuViewArt, DauNhiemVuArt } from './NhiemVuArt'
 import { IconNV } from './gami/HinhGami'
 
 const O_CON = { background: MAU.surface2, border: `1px solid ${MAU.line}`, borderRadius: 'calc(var(--sk-radius) * 0.75)' }
@@ -72,6 +73,8 @@ const homNay = () => new Date().toLocaleDateString('vi-VN', { weekday: 'long', d
 
 // ── VIEW: chỉ vẽ ──
 export function NhiemVuView({ d, onLuyenYeu, onVongQuay }: { d: NhiemVuCuaToi; onLuyenYeu?: () => void; onVongQuay?: () => void }) {
+  const anh = useSkinHT().anhNv
+  if (anh) return <div className="mt-4"><NhiemVuViewArt d={d} a={anh} onLuyenYeu={onLuyenYeu} onVongQuay={onVongQuay} /></div>
   if (!d.mo) {
     return (
       <div className="mx-auto mt-10 flex w-full max-w-[420px] flex-col items-center px-5 py-6 text-center" style={{ ...THE, boxShadow: '0 0 22px var(--sk-acc)' }}>
@@ -180,11 +183,14 @@ export default function NhiemVuHS({ gioiTinh, onBack, onLuyenYeu, onVongQuay }: 
       .catch((e) => { setErr(e?.message ?? String(e)); setState('loi') })
   }, [])
 
+  const anh = useSkinHT().anhNv
   return (
     <Khung gioiTinh={gioiTinh} nenAnh="nhiem_vu">
-      <NutBack onBack={onBack} />
-      <h1 className="text-[28px] font-bold leading-tight" style={{ ...HEAD, color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>Nhiệm vụ {d?.mon ?? ''}</h1>
-      <p className="mt-1 text-[13px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>Luyện dạng yếu mỗi ngày → nhận EXP (đổi ra xu) và điểm học tập (để chơi game).</p>
+      {anh ? <DauNhiemVuArt a={anh} mon={d?.mon ?? ''} onBack={onBack} /> : <>
+        <NutBack onBack={onBack} />
+        <h1 className="text-[28px] font-bold leading-tight" style={{ ...HEAD, color: MAU.ink, textShadow: '0 1px 8px var(--sk-bg)' }}>Nhiệm vụ {d?.mon ?? ''}</h1>
+        <p className="mt-1 text-[13px]" style={{ color: MAU.muted, textShadow: '0 1px 8px var(--sk-bg)' }}>Luyện dạng yếu mỗi ngày → nhận EXP (đổi ra xu) và điểm học tập (để chơi game).</p>
+      </>}
 
       {state === 'dang_tai' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p>}
       {state === 'loi' && <p className="mt-6 px-4 py-5 text-center text-[13px]" style={{ ...THE, color: MAU.sai }}>{err}</p>}

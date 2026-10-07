@@ -6,9 +6,10 @@
 // ============================================================================
 import { useState, type ReactNode } from 'react'
 import { Khung, NutBack } from '../TuLuyenChuDe'
-import { MAU, THE, THE_TRON, HEAD, ManHS, DauTrangHS, useApSkinGoc } from '../skin/KhungHS'
+import { MAU, THE, THE_TRON, HEAD, ManHS, DauTrangHS, useApSkinGoc, useSkinHT } from '../skin/KhungHS'
 import { laySkin, type GiaoDien } from '../skin/registry'
 import { NhiemVuView } from '../NhiemVuHS'
+import { DauNhiemVuArt } from '../NhiemVuArt'
 import { AlbumView, tieuDeAlbum } from '../AlbumHS'
 import { RankView } from '../RankHS'
 import { HoSoView, ChonKhoe, TheTVHS } from '../HoSoHS'
@@ -39,6 +40,10 @@ const MAN: { id: string; ten: string; tt: string[] }[] = [
   { id: 'the_gioi', ten: 'Thế giới BK', tt: ['Thế giới', 'Thế giới (thẻ gộp mở)', 'Bạn bè', 'Kết bạn', 'Lớp + giữ nút Thích', 'Lớp + menu ⋯', 'Bình luận', 'Bình luận · chọn câu', 'Bình luận · sticker', 'Ai đã bày tỏ cảm xúc', 'Tất cả cảm xúc (＋)', 'Tấm đăng bài khoe', 'Lên sóng!'] },
 ]
 
+function DauNv() {
+  const a = useSkinHT().anhNv
+  return a ? <DauNhiemVuArt a={a} mon="Toán" onBack={noop} /> : <Dau tieuDe="Nhiệm vụ Toán" phu="Luyện dạng yếu mỗi ngày → nhận EXP (đổi ra xu) và điểm học tập (để chơi game)." />
+}
 function Dau({ tieuDe, phu }: { tieuDe: string; phu: string }) {
   return (
     <>
@@ -150,7 +155,7 @@ function Man({ man, tt }: { man: string; tt: number }) {
   if (man === 'home') return <MauHome tt={tt} />
   if (man === 'nhiem_vu') {
     const d = [M.NV_GIUA_THANG, M.NV_DAU_THANG, M.NV_CHUA_MO][tt - 1] ?? M.NV_GIUA_THANG
-    return <Khung nenAnh="nhiem_vu"><Dau tieuDe="Nhiệm vụ Toán" phu="Luyện dạng yếu mỗi ngày → nhận EXP (đổi ra xu) và điểm học tập (để chơi game)." /><NhiemVuView d={d} onLuyenYeu={noop} onVongQuay={noop} /></Khung>
+    return <Khung nenAnh="nhiem_vu"><DauNv /><NhiemVuView d={d} onLuyenYeu={noop} onVongQuay={noop} /></Khung>
   }
   if (man === 'bxh') return <MauBxh tt={tt} />
   if (man === 'thanh_tuu') {
