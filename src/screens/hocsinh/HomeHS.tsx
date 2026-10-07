@@ -36,6 +36,8 @@ export type HomeCard = {
   /** 'hoc' = ô thuộc GÓC HỌC TẬP của môn đang chọn (đổi môn ⇒ đổi nội dung) · 'choi' = ô chung không theo môn (thế giới,
    *  may mắn, thành tựu, ví xu — Thùy 01/10 "chơi thì không cần"). Không khai = 'hoc'. HomeHS912 tách 2 khối theo cờ này. */
   nhom?: 'hoc' | 'choi'
+  /** Ô LỚN: chiếm 2 cột trong lưới (Bảng xếp hạng — Thùy 06/10 "1 ô lớn trong lưới"). */
+  lon?: boolean
   doodle: string
   /** Nếu có emoji thì render emoji trong khung 31% thay cho ảnh PNG (dùng cho ô cấp 2 mới chưa có cutout PNG:
    *  Thành tựu · May mắn · Bài tập được giao). ill vẫn giữ để backward-compat với cards cũ có PNG. */
@@ -193,7 +195,7 @@ export default function HomeHS({ hoTen, maHS, lopMon, mons, mon, onChonMon, gioi
             const subColor = c.subMau === 'ton' ? tone.c : c.subMau === 'do' ? '#e64040' : c.subMau === 'xanh' ? '#20A886' : SEC
             return (
               <button key={c.id} disabled={c.disabled} onClick={c.onClick}
-                className={`relative flex flex-col overflow-hidden rounded-[22px] p-3 text-left transition lg:p-5 ${c.disabled ? 'opacity-75 saturate-50' : 'active:scale-[0.98]'}`}
+                className={`relative flex flex-col overflow-hidden rounded-[22px] p-3 text-left transition lg:p-5 ${c.lon ? 'col-span-2 md:col-span-3' : ''} ${c.disabled ? 'opacity-75 saturate-50' : 'active:scale-[0.98]'}`}
                 style={{ background: tone.bg, boxShadow: c.disabled ? 'none' : SHADOW, aspectRatio: '417 / 280' }}>
                 <span className="flex w-[31%] shrink-0 items-center justify-center rounded-[15px] lg:w-[26%]" style={{ background: tone.ill, aspectRatio: '1 / 1' }}>
                   {c.emoji

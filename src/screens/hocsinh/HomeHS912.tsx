@@ -149,7 +149,7 @@ function LuoiDoc({ cards, skin }: { cards: HomeCard[]; skin: Skin }) {
         const anh = c.anh ?? skin.anhO?.[c.id]
         return (
           <button key={c.id} disabled={c.disabled} onClick={c.onClick}
-            className={`relative flex min-h-[104px] flex-col items-center justify-start gap-1 px-1 pb-2 pt-2.5 text-center transition md:min-h-[168px] md:gap-1.5 md:px-2 md:pt-4 ${c.disabled ? 'opacity-50' : 'active:scale-[0.97]'}`} style={THE}>
+            className={`${c.lon ? 'col-span-2' : ''} relative flex min-h-[104px] flex-col items-center justify-start gap-1 px-1 pb-2 pt-2.5 text-center transition md:min-h-[168px] md:gap-1.5 md:px-2 md:pt-4 ${c.disabled ? 'opacity-50' : 'active:scale-[0.97]'}`} style={THE}>
             {anh
               ? <IconO src={anh} mask={!c.anh && !!skin.anhOMask} className="h-11 w-11 md:h-[76px] md:w-[76px]" />
               : <span className="text-[24px] leading-none md:text-[36px]" style={skin.dauThayIcon ? { color: 'var(--sk-acc)' } : undefined} aria-hidden>{skin.dauThayIcon ?? c.icon ?? c.emoji ?? '•'}</span>}
@@ -408,7 +408,7 @@ function LuoiNgang({ cards, skin }: { cards: HomeCard[]; skin: Skin }) {
         const anh = c.anh ?? skin.anhO?.[c.id]
         return (
           <button key={c.id} disabled={c.disabled} onClick={c.onClick}
-            className={`relative flex min-h-[148px] flex-col items-center justify-center gap-1 px-2 py-3 text-center transition xl:min-h-[176px] xl:gap-1.5 xl:px-3 xl:py-4 ${c.disabled ? 'opacity-50' : 'hover:-translate-y-0.5 active:scale-[0.98]'}`} style={THE}>
+            className={`${c.lon ? 'col-span-2' : ''} relative flex min-h-[148px] flex-col items-center justify-center gap-1 px-2 py-3 text-center transition xl:min-h-[176px] xl:gap-1.5 xl:px-3 xl:py-4 ${c.disabled ? 'opacity-50' : 'hover:-translate-y-0.5 active:scale-[0.98]'}`} style={THE}>
             {anh
               ? <IconO src={anh} mask={!c.anh && !!skin.anhOMask} className="h-16 w-16 xl:h-[84px] xl:w-[84px]" />
               : <span className="text-[40px] leading-none" style={skin.dauThayIcon ? { color: 'var(--sk-acc)' } : undefined} aria-hidden>{skin.dauThayIcon ?? c.icon ?? c.emoji ?? '•'}</span>}

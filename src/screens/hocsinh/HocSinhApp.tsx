@@ -55,6 +55,7 @@ import { giaoDienCuaToi, home912, type Home912 } from '../../lib/giaodien_hs'
 import DanhSachHS, { type DsRow } from './DanhSachHS'
 import MayManHS from './MayManHS'
 import MoiQuayMayMan from './MoiQuayMayMan'
+import BangXepHangHS from './bxh/BangXepHangHS'
 import ThanhTuuHS from './ThanhTuuHS'
 import BaiTapGiaoHS from './BaiTapGiaoHS'
 import ThongTinHocTap from './ThongTinHocTap'
@@ -97,14 +98,15 @@ const THI_LOAI = new Set(['et', 'de_thi', 'bo_tro_test', 'retest'])
 // 2 CỘT — màn điện thoại dọc (Thùy: "màn hình điện thoại là dọc mà").
 // Bảng xếp hạng (Thùy 21/08: "ko phải chỉ 5T. Hiện cho các khối tiểu học") — mọi khối cấp 1, MỖI
 // EM xếp hạng với ĐÚNG khối của mình (BangXepHang tự đọc khoiCuaHS(), không hardcode '5T' nữa).
-const KHU_CHI_CAP1 = new Set<KhuId>(['xep_hang'])
+// 07/10: Bảng xếp hạng MỚI (bxh/BangXepHangHS) dùng cho cấp 2–3; cấp 1 vẫn BangXepHang cũ ⇒ không còn ô nào chỉ-cấp-1 ở đây.
+const KHU_CHI_CAP1 = new Set<KhuId>([])
 // MÔN LÀ TRỤC NGOÀI CÙNG (Thùy 01/10: "chuyển môn là phải chuyển các tính năng học tập tương ứng. Chơi thì không cần"):
 // ô CHƠI = chung mọi môn (khối "Giải trí" ở Home, đổi môn không đổi); mọi ô còn lại thuộc góc học tập của môn đang chọn.
 // 03/10 (Thùy): Nhiệm vụ xuống Giải trí · thêm Thư viện BK (Rank là thẻ con trong đó).
 const KHU_CHOI = new Set<KhuId>(['the_gioi', 'nhiem_vu', 'thu_vien', 'tro_choi', 'may_man', 'thanh_tuu', 'vi_xu'])
 // Ô học tập rút câu từ KHO của môn — môn chưa có kho (co_kho=false, vd Tiếng Anh) thì khoá + báo, KHÔNG gọi RPC.
 // (Ô bài trên lớp/ET/BTVN/đề thi không cần kho: đọc bài thầy cô phát hành, môn nào cũng chạy.)
-const KHU_CAN_KHO = new Set<KhuId>(['tu_luyen', 'thong_tin', 'so_tay', 'xep_hang'])
+const KHU_CAN_KHO = new Set<KhuId>(['tu_luyen', 'thong_tin', 'so_tay'])
 type KhuId = 'giao_trinh' | 'et' | 'btvn' | 'tu_luyen' | 'thong_tin' | 'de_thi_thu' | 'xep_hang' | 'may_man' | 'thanh_tuu' | 'bai_tap_giao' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'nhiem_vu' | 'rank' | 'thu_vien' | 'tro_choi'
 // direct = ô này KHÔNG đi qua màn "danh sách nhiều bài" (setKhu+tab) — bấm vào thẳng 1 màn riêng.
 // Tự luyện là 1 PHIÊN đang-tiếp-diễn trong ngày (không phải danh sách bài đã phát hành theo ngày
@@ -132,6 +134,7 @@ const KHU: { id: KhuId; ten: string; icon: string; loai?: string; direct?: boole
 const KHU_CAP2: { id: KhuId; ten: string; icon: string; direct?: boolean; sapCo?: boolean }[] = [
   { id: 'tu_luyen',      ten: HOC_TAP ? 'Học tập' : 'Tự luyện', icon: '🎯', direct: true },
   { id: 'nhiem_vu',      ten: 'Nhiệm vụ',           icon: '📜', direct: true },  // Thùy 01/10: ra màn chính · 03/10: khối Giải trí
+  { id: 'xep_hang',      ten: 'Bảng xếp hạng',      icon: '🏅', direct: true },  // 07/10: 1 ô LỚN, theo môn (spec-bang-xep-hang.md)
   { id: 'thong_tin',     ten: 'Thông tin học tập',  icon: '📈', direct: true },
   { id: 'so_tay',        ten: 'Sổ tay kiến thức',   icon: '📖', direct: true },
   { id: 'the_gioi',      ten: 'Thế giới BK',        icon: '🌏', direct: true },
@@ -629,7 +632,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onSangTest={() => setDirect('htd_test')}
     onXongDang={() => setDirect(buCa ? 'bu_ca' : duoiLoTrinhMon ? 'duoi_lo_trinh' : 'htd_chu_de')} />
   if (direct === 'thong_tin') return <ThongTinHocTap hocSinhId={hocSinhId} gioiTinh={gt} onXong={() => setDirect(null)} />
-  if (direct === 'xep_hang') return <BangXepHang onXong={() => setDirect(null)} />
+  if (direct === 'xep_hang') return cap1 ? <BangXepHang onXong={() => setDirect(null)} /> : <BangXepHangHS onBack={() => setDirect(null)} />
   if (direct === 'bo_tro') return <CaBoTroHS hocSinhId={hocSinhId} desktop={!!cap1} gioiTinh={gt} onXong={() => setDirect(null)} LamBai={LamBai} LamET={LamET} />
   if (direct === 'bu_ca' && buCa) return <CaBuHS buoiId={buCa} onBack={() => { setBuCa(null); setDirect('lich_bo_tro') }}
     onPickDang={(d, mon) => { setHtdMon(mon); setHtdChuyenDe(null); setHtdDang({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, xong: false }); setDirect('htd_dang') }} />
@@ -696,7 +699,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   }
   const anO = new Set((['nhiem_vu', 'rank'] as KhuId[]).filter((id) => oGami(id) === null))
 
-  const CHU_DUOI: Partial<Record<KhuId, string>> = { tu_luyen: HOC_TAP ? 'Cùng BK chinh phục thế giới' : 'Luyện theo dạng yếu', thong_tin: 'Dạng đang yếu', tro_choi: 'Nông trại BK và các game khác', xep_hang: 'Thi đua tự luyện', so_tay: 'Tra lý thuyết & bài mẫu', the_gioi: 'Xem HS BK đang khoe gì', thu_vien: 'Tìm hiểu mọi thứ trên app' }
+  const CHU_DUOI: Partial<Record<KhuId, string>> = { tu_luyen: HOC_TAP ? 'Cùng BK chinh phục thế giới' : 'Luyện theo dạng yếu', thong_tin: 'Dạng đang yếu', tro_choi: 'Nông trại BK và các game khác', xep_hang: 'Xem em đứng hạng mấy', so_tay: 'Tra lý thuyết & bài mẫu', the_gioi: 'Xem HS BK đang khoe gì', thu_vien: 'Tìm hiểu mọi thứ trên app' }
 
   // ── MÀN CHÍNH: ô vuông (theo cấp/khối), 2 cột ─────────────────────────────
   if (!khu && (cap1 === null || cap2 === null || nhom912 === null || (nhom912 && giaoDien === undefined))) return <ManCho>Đang tải…</ManCho>
@@ -750,12 +753,13 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
             : k.id === 'the_gioi' ? ['Xem HS BK đang khoe gì', 'xam']
             : k.id === 'thu_vien' ? ['Tìm hiểu mọi thứ trên app', 'xam']
             : k.id === 'tro_choi' ? ['Nông trại BK và các game khác', 'xam']
+            : k.id === 'xep_hang' ? ['Xem em đứng hạng mấy', 'xam']
             : ['', 'xam']
           const badge = k.id === 'may_man' && maymanCoLuot ? 1 : 0
           return {
-            id: k.id, ten: k.ten, icon: k.icon, sub, subMau, badge, disabled: !!k.sapCo, nhom: KHU_CHOI.has(k.id) ? 'choi' : 'hoc', ...KIT_O[k.id], ...(k.sapCo ? { ill: 'mock_exam_locked', emoji: undefined, doodle: 'Sắp ra mắt! Hãy chờ nhé!', tone: 'gray' as const } : {}),
+            id: k.id, ten: k.ten, icon: k.icon, sub, subMau, badge, disabled: !!k.sapCo, lon: k.id === 'xep_hang', nhom: KHU_CHOI.has(k.id) ? 'choi' : 'hoc', ...KIT_O[k.id], ...(k.sapCo ? { ill: 'mock_exam_locked', emoji: undefined, doodle: 'Sắp ra mắt! Hãy chờ nhé!', tone: 'gray' as const } : {}),
             onClick: k.sapCo ? undefined : k.direct
-              ? () => setDirect(k.id === 'tu_luyen' ? (HOC_TAP || !(monChon && banDoBat()) ? 'tu_luyen_chon' : 'phieu_luu') : (k.id as 'thong_tin' | 'may_man' | 'thanh_tuu' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'thu_vien' | 'tro_choi'))
+              ? () => setDirect(k.id === 'tu_luyen' ? (HOC_TAP || !(monChon && banDoBat()) ? 'tu_luyen_chon' : 'phieu_luu') : (k.id as 'thong_tin' | 'xep_hang' | 'may_man' | 'thanh_tuu' | 'so_tay' | 'vi_xu' | 'the_gioi' | 'thu_vien' | 'tro_choi'))
               : () => { setKhu(k.id); setTab('chua') },
             ...khoaThieuKho(k.id),
             ...(oGami(k.id) ?? {}),

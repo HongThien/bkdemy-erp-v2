@@ -18,12 +18,15 @@ import * as M from './mauGami'
 import { TheGioiView, TamBinhLuan, TamCamXuc, TamKetBan, TamKhoe, LenSong, type BanPhim } from '../thegioi/TheGioiHS'
 import * as TG from '../thegioi/mauTheGioi'
 import HomeHS912 from '../HomeHS912'
+import { BangXepHangView } from '../bxh/BangXepHangHS'
+import type { BxhKetQua, BxhLoai } from '../../../lib/bxh'
 import type { HomeCard } from '../HomeHS'
 import type { LichBoTro } from '../../../lib/botro_yeu_ca'
 
 const noop = () => {}
 const MAN: { id: string; ten: string; tt: string[] }[] = [
   { id: 'nhiem_vu', ten: 'Nhiệm vụ', tt: ['Giữa tháng', 'Đầu tháng', 'Chưa mở'] },
+  { id: 'bxh', ten: 'Bảng xếp hạng', tt: ['Em hạng 6 (khối)', 'Chưa có hạng', 'Bảng sắp có'] },
   { id: 'album', ten: 'Album', tt: ['Giữa năm (1 thẻ mở)', 'Mới vào (0 sao)', 'Lớp phủ sao mới'] },
   { id: 'rank', ten: 'Rank', tt: ['Captain giữa mùa', 'Novice đầu mùa', 'God of War', 'Lớp phủ lên bậc'] },
   { id: 'ho_so', ten: 'Hồ sơ', tt: ['Em khá (Captain)', 'Em mới (Novice)', 'Em bậc thần', 'Chọn 3 huy hiệu khoe'] },
@@ -69,12 +72,13 @@ function MauTheGioi({ tt }: { tt: number }) {
 }
 
 // Màn chính HS khối 6–12 (HomeHS912) — mở PC/iPad ngang để soát bố cục theo ảnh gốc style (Nền app HS cấp 3_11.png).
-const CHOI = new Set(['xep_hang', 'may_man', 'vi_xu', 'the_gioi']) // khối Giải trí (như KHU_CHOI của HocSinhApp)
+const CHOI = new Set(['thanh_tuu', 'may_man', 'vi_xu', 'the_gioi']) // khối Giải trí (như KHU_CHOI của HocSinhApp)
 const oHome = (id: string, ten: string, sub: string, badge?: number, subMau: HomeCard['subMau'] = 'xam') => ({ id, ten, sub, subMau, badge, nhom: CHOI.has(id) ? 'choi' : 'hoc', doodle: '', ill: '', tone: {} } as unknown as HomeCard)
 const O_HOME: HomeCard[] = [
   oHome('tu_luyen', 'Tự luyện', 'Luyện theo dạng yếu'), oHome('nhiem_vu', 'Nhiệm vụ', 'Hôm nay còn 2 lượt thưởng', 1, 'ton'),
   { ...oHome('rank', 'Rank', 'Captain ★★ · hạng 12/54', 0, 'ton'), anh: anhBac(3, 'bieu_tuong') ?? undefined }, oHome('thong_tin', 'Thông tin học tập', 'Xem dạng đang yếu'), oHome('so_tay', 'Sổ tay kiến thức', 'Tra lý thuyết & bài mẫu'),
-  oHome('de_thi_thu', 'Làm đề thi thử', 'Sắp có'), oHome('bai_tap_giao', 'Bài tập được giao', '2 bài chưa làm', 2, 'ton'), oHome('xep_hang', 'Thành tựu', 'Xem giải thưởng của em'),
+  oHome('de_thi_thu', 'Làm đề thi thử', 'Sắp có'), oHome('bai_tap_giao', 'Bài tập được giao', '2 bài chưa làm', 2, 'ton'), oHome('thanh_tuu', 'Thành tựu', 'Xem giải thưởng của em'),
+  { ...oHome('xep_hang', 'Bảng xếp hạng', 'Xem em đứng hạng mấy'), lon: true },
   oHome('vi_xu', 'Ví xu', '1.240 xu'), oHome('the_gioi', 'Thế giới BK', 'Khoe thành tích · kết bạn'),
 ]
 const CA: LichBoTro = { buoi_id: 'b1', loai: 'bo_tro_yeu', ngay: '2026-10-01', gio_bat_dau: '17:30:00', gio_ket_thuc: null, phong: '204', mon: 'Toán', nguoi: 'Cô Lan', diem_danh: null, hom_nay: false, vao_ca: false }
@@ -93,6 +97,31 @@ function MauHome({ tt }: { tt: number }) {
   )
 }
 
+// Bảng xếp hạng — dữ liệu giả cùng hình dạng fn_bxh (mig 202610070954)
+const BXH_DM: BxhLoai[] = [
+  { ma: 'A1', nhom: 'hoc_tap', ten: 'Siêng luyện', mo_ta: 'Số lượt Luyện dạng yếu đạt (đúng từ 7/10 câu)', don_vi: 'lượt', gan_mon: true, ky_cho_phep: ['tuan', 'thang'], ky_mac_dinh: 'thang', san_sang: true, ghi_chu: null },
+  { ma: 'A2', nhom: 'hoc_tap', ten: 'Tổng câu đúng', mo_ta: 'Số câu đúng trong các lượt luyện được tính', don_vi: 'câu', gan_mon: true, ky_cho_phep: ['thang', 'mua'], ky_mac_dinh: 'thang', san_sang: true, ghi_chu: null },
+  { ma: 'A5', nhom: 'hoc_tap', ten: 'Chuỗi làm bài', mo_ta: 'Số ngày liên tiếp có lượt luyện được tính (mọi môn)', don_vi: 'ngày', gan_mon: false, ky_cho_phep: ['hien_tai'], ky_mac_dinh: 'hien_tai', san_sang: true, ghi_chu: null },
+  { ma: 'B1', nhom: 'ket_qua_lop', ten: 'Mock Test tháng', mo_ta: 'Điểm Mock Test gần nhất (đề mỗi khối khác nhau)', don_vi: 'điểm', gan_mon: true, ky_cho_phep: ['thang'], ky_mac_dinh: 'thang', san_sang: true, ghi_chu: null },
+  { ma: 'C1', nhom: 'game', ten: 'Leo tháp Sinh tồn', mo_ta: 'Tầng cao nhất trong 5 phút', don_vi: 'tầng', gan_mon: true, ky_cho_phep: ['hien_tai'], ky_mac_dinh: 'hien_tai', san_sang: false, ghi_chu: 'Sắp có' },
+]
+const TEN_MAU = ['Nguyễn Khôi Nguyên', 'Trịnh Bảo Ngọc', 'Lê Minh Anh', 'Phạm Gia Hân', 'Đỗ Quang Huy', 'Vũ Thảo Vy', 'Bùi Đức Anh', 'Hoàng Mai Chi']
+const BXH_TOP = (toiHang: number | null) => Array.from({ length: 12 }, (_, i) => ({
+  hang: i + 1, ten: TEN_MAU[i % TEN_MAU.length], ma_hs: `HS0${500 + i * 7}`, lop: i % 2 ? '9B2' : '9A2', gia_tri: 24 - i * 2, la_toi: toiHang === i + 1,
+}))
+function MauBxh({ tt }: { tt: number }) {
+  const [loai, setLoai] = useState(tt === 3 ? 'C1' : 'A1')
+  const [pv, setPv] = useState<'khoi' | 'toan_bk'>('khoi')
+  const [ky, setKy] = useState<'tuan' | 'thang' | 'mua' | 'hien_tai'>('thang')
+  const [hienMa, setHienMa] = useState(false)
+  const d = BXH_DM.find((x) => x.ma === loai) ?? BXH_DM[0]
+  const kq: BxhKetQua = !d.san_sang ? { ma: d.ma, ten: d.ten, san_sang: false, ghi_chu: d.ghi_chu ?? 'Sắp có' }
+    : { ma: d.ma, ten: d.ten, san_sang: true, don_vi: d.don_vi, ky, pham_vi: pv, khoi: '9', tong: pv === 'khoi' ? 78 : 339,
+        top: BXH_TOP(tt === 1 ? 6 : null), toi: tt === 1 ? { hang: pv === 'khoi' ? 6 : 41, gia_tri: 14 } : null }
+  return <BangXepHangView dm={BXH_DM} loai={loai} onLoai={(m) => { setLoai(m); setKy(BXH_DM.find((x) => x.ma === m)?.ky_mac_dinh ?? 'thang') }} pv={pv} onPv={setPv} ky={ky} onKy={setKy}
+    kq={kq} dangTai={false} loi={null} hienMa={hienMa} onHienMa={setHienMa} mon="Toán" />
+}
+
 function Man({ man, tt }: { man: string; tt: number }) {
   const [mo, setMo] = useState<string | null>(tt === 1 ? 'athena' : null)
   const [mon, setMon] = useState('Toán')
@@ -103,6 +132,7 @@ function Man({ man, tt }: { man: string; tt: number }) {
     const d = [M.NV_GIUA_THANG, M.NV_DAU_THANG, M.NV_CHUA_MO][tt - 1] ?? M.NV_GIUA_THANG
     return <Khung><Dau tieuDe="Nhiệm vụ Toán" phu="Luyện dạng yếu mỗi ngày → nhận EXP (đổi ra xu) và điểm học tập (để chơi game)." /><NhiemVuView d={d} onLuyenYeu={noop} onVongQuay={noop} /></Khung>
   }
+  if (man === 'bxh') return <MauBxh tt={tt} />
   if (man === 'album') {
     const al = tt === 2 ? M.ALBUM_MOI : M.ALBUM_GIUA_NAM
     return <Khung><Dau tieuDe="Huy hiệu Toán" phu={tieuDeAlbum(al)} />
