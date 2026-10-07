@@ -12,7 +12,8 @@ import { khoiCuaHS } from '../../../lib/tuluyen'
 import { supabase } from '../../../lib/supabase'
 import { anhDauNv, tenNv, type NvId } from '../skin/nhanVat'
 
-type OHocTap = { id: string; ten: string; sub: string; onClick: () => void; nhan?: string }
+// sapRa = ô CHƯA mở (công tắc tính năng đóng): vẫn hiện nhưng mờ + "Sắp ra mắt", không bấm được — khác ô ẩn hẳn ở màn chính.
+type OHocTap = { id: string; ten: string; sub: string; onClick: () => void; nhan?: string; sapRa?: boolean }
 
 /** Ô kiểu 2 (icon trong khối bo tròn + tiêu đề + 1 dòng phụ + chevron) — lưới như Home. */
 function LuoiO({ ds }: { ds: OHocTap[] }) {
@@ -22,15 +23,15 @@ function LuoiO({ ds }: { ds: OHocTap[] }) {
       {ds.map((o) => {
         const anh = skin.anhO?.[o.id]
         return (
-          <TheHS key={o.id} onClick={o.onClick} className="relative flex min-h-[150px] flex-col items-start gap-2 p-3.5 md:min-h-[190px] md:p-4">
+          <TheHS key={o.id} onClick={o.sapRa ? undefined : o.onClick} className="relative flex min-h-[150px] flex-col items-start gap-2 p-3.5 md:min-h-[190px] md:p-4" style={o.sapRa ? { opacity: 0.55, filter: 'saturate(0.5)' } : undefined}>
             <span className="flex h-14 w-14 items-center justify-center md:h-[72px] md:w-[72px]" style={{ ...THE_TRON, borderRadius: 'var(--sk-radius)', background: 'var(--sk-surface2)' }}>
               {anh ? <img src={anh} alt="" className="h-11 w-11 object-contain md:h-14 md:w-14" />
                 : <span className="text-[26px] leading-none" style={{ color: 'var(--sk-acc)' }} aria-hidden>{skin.dauThayIcon ?? '✦'}</span>}
             </span>
             <span className="text-[16px] font-bold leading-tight md:text-[19px]" style={HEAD}>{o.ten}</span>
-            <span className="line-clamp-2 pr-5 text-[12px] leading-snug md:text-[13.5px]" style={{ color: MAU.muted }}>{o.sub}</span>
-            {o.nhan && <span className="absolute right-2.5 top-2.5"><NhanHS>{o.nhan}</NhanHS></span>}
-            <span className="absolute bottom-2.5 right-3 text-[18px]" style={{ color: MAU.muted }} aria-hidden>›</span>
+            <span className="line-clamp-2 pr-5 text-[12px] leading-snug md:text-[13.5px]" style={{ color: MAU.muted }}>{o.sapRa ? 'Sắp ra mắt' : o.sub}</span>
+            {(o.nhan || o.sapRa) && <span className="absolute right-2.5 top-2.5"><NhanHS>{o.sapRa ? 'Sắp ra mắt' : o.nhan}</NhanHS></span>}
+            {!o.sapRa && <span className="absolute bottom-2.5 right-3 text-[18px]" style={{ color: MAU.muted }} aria-hidden>›</span>}
           </TheHS>
         )
       })}
@@ -79,7 +80,7 @@ function TroiDao({ ds, dao, hop }: { ds: OHocTap[]; dao: Record<string, string>;
   const { ref, san } = useSan(doc)
   const [phong, setPhong] = useState<{ x: number; y: number } | null>(null)
   const bam = (d: { cx: number; cy: number; o: OHocTap }) => {
-    if (phong) return
+    if (phong || d.o.sapRa) return
     if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { d.o.onClick(); return }
     setPhong({ x: d.cx, y: d.cy }); window.setTimeout(d.o.onClick, MS_PHONG)
   }
@@ -118,9 +119,9 @@ function TroiDao({ ds, dao, hop }: { ds: OHocTap[]; dao: Record<string, string>;
             </svg>
           )}
           {dat.map((d, i) => (
-            <button key={d.o.id} onClick={() => bam(d)} className="ht-o absolute outline-none" aria-label={`${d.o.ten}: ${d.o.sub}`}
-              style={{ left: d.left, top: d.top, width: d.khung, height: d.khung }}>
-              <span className="ht-dao block h-full w-full" style={{ animationDelay: `${-i * 1.1}s` }}>
+            <button key={d.o.id} onClick={() => bam(d)} className="ht-o absolute outline-none" aria-label={`${d.o.ten}: ${d.o.sapRa ? 'Sắp ra mắt' : d.o.sub}`} aria-disabled={d.o.sapRa || undefined}
+              style={{ left: d.left, top: d.top, width: d.khung, height: d.khung, cursor: d.o.sapRa ? 'default' : undefined }}>
+              <span className="ht-dao block h-full w-full" style={{ animationDelay: `${-i * 1.1}s`, ...(d.o.sapRa ? { filter: 'grayscale(0.85) brightness(0.55)', animation: 'none' } : {}) }}>
                 {dao[d.o.id] && <img src={dao[d.o.id]} alt="" draggable={false} className="block h-full w-full select-none" />}
               </span>
             </button>
@@ -130,7 +131,7 @@ function TroiDao({ ds, dao, hop }: { ds: OHocTap[]; dao: Record<string, string>;
             <button key={'n' + d.o.id} onClick={() => bam(d)} tabIndex={-1} className="absolute flex -translate-x-1/2 flex-col items-center"
               style={{ left: d.cx, top: d.day - san.h * 0.012, maxWidth: Math.max(160, san.w * 0.24) }}>
               <span className={`block text-center font-bold leading-tight ${d === giua ? 'text-[19px] md:text-[26px]' : 'text-[15px] md:text-[20px]'}`} style={{ ...HEAD, ...CHU_NOI, color: 'var(--sk-ink)' }}>{d.o.ten}</span>
-              <span className="mt-0.5 block text-center text-[11px] leading-snug md:text-[13.5px]" style={{ ...CHU_NOI, color: 'var(--sk-acc)' }}>{d.o.sub}</span>
+              <span className="mt-0.5 block text-center text-[11px] leading-snug md:text-[13.5px]" style={{ ...CHU_NOI, color: d.o.sapRa ? 'var(--sk-muted)' : 'var(--sk-acc)' }}>{d.o.sapRa ? '🔒 Sắp ra mắt' : d.o.sub}</span>
             </button>
           ))}
         </>
@@ -139,7 +140,9 @@ function TroiDao({ ds, dao, hop }: { ds: OHocTap[]; dao: Record<string, string>;
   )
 }
 
-export function HocTapHS({ onNap, onBack, onChuDe, onYeu, onDauTruong, onChinhPhuc, onGiai, onNhiemVu, onRank, nhanVat, onDoiNhanVat }: {
+export function HocTapHS({ onNap, onBack, onChuDe, onYeu, onDauTruong, onChinhPhuc, onGiai, onNhiemVu, onRank, nhanVat, onDoiNhanVat, sapRa }: {
+  /** mã ô chưa mở ('chinh_phuc' | 'giai_vo_dich'…) — hiện "Sắp ra mắt" */
+  sapRa?: Record<string, boolean>
   onBack: () => void; onChuDe: () => void; onYeu: () => void; onDauTruong: () => void; onChinhPhuc: () => void; onGiai: () => void
   onNhiemVu?: () => void; onRank?: () => void
   /** nhân vật chính đang dùng + mở màn đổi nhân vật (nút ở đầu trang) */
@@ -158,8 +161,8 @@ export function HocTapHS({ onNap, onBack, onChuDe, onYeu, onDauTruong, onChinhPh
     { id: 'hoc_chu_de', ten: 'Học theo chủ đề', sub: 'Đánh bại Ác quỷ "Phi Phai", giải cứu BK', onClick: onChuDe },
     { id: 'luyen_yeu', ten: 'Luyện dạng yếu', sub: 'Tập trung sửa dạng em còn yếu', onClick: onYeu },
     { id: 'dau_truong', ten: 'Đấu trường BK', sub: 'Ai là người giỏi nhất', onClick: onDauTruong },
-    { id: 'chinh_phuc', ten: 'Chinh phục BK', sub: 'Nơi một huyền thoại sinh ra', onClick: onChinhPhuc },
-    { id: 'giai_vo_dich', ten: 'Giải Vô địch BK', sub: 'Con đường của nhà vô địch', onClick: onGiai },
+    { id: 'chinh_phuc', ten: 'Chinh phục BK', sub: 'Nơi một huyền thoại sinh ra', onClick: onChinhPhuc, sapRa: !!sapRa?.chinh_phuc },
+    { id: 'giai_vo_dich', ten: 'Giải Vô địch BK', sub: 'Con đường của nhà vô địch', onClick: onGiai, sapRa: !!sapRa?.giai_vo_dich },
   ]
   const ht = laySkin(null).hocTap
   const doc = useManDoc()

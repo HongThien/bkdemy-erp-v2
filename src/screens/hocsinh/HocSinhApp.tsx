@@ -585,6 +585,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onDauTruong={() => setDirect('dau_truong_bk')}
     onChinhPhuc={() => setDirect('chinh_phuc_bk')}
     onGiai={() => setDirect('giai_vo_dich')}
+    sapRa={{ chinh_phuc: !moTN('chinh_phuc'), giai_vo_dich: !moTN('giai_vo_dich') }}
     onRank={rankMo() ? () => { setTuHoSo(false); setTuHome(false); setDirect('rank') } : undefined}
     onNhiemVu={() => { setTuHome(false); setDirect('nhiem_vu') }}
     onBack={() => setDirect(null)} />

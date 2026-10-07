@@ -134,7 +134,7 @@ export function NhiemVuView({ d, onLuyenYeu, onVongQuay }: { d: NhiemVuCuaToi; o
       </div>
       <div className="mt-2.5 grid gap-2 sm:grid-cols-2">
         {onLuyenYeu
-          ? <button onClick={onLuyenYeu} className={nut} style={{ background: MAU.acc, color: MAU.accInk, boxShadow: '0 0 12px var(--sk-acc)' }}><IconNV ma="tu_luyen" size={20} /> Luyện dạng yếu ›</button>
+          ? <button onClick={onLuyenYeu} className={nut} style={{ background: MAU.acc, color: MAU.accInk, boxShadow: '0 0 12px var(--sk-acc)' }}><IconNV ma="tu_luyen" size={20} /> Làm luôn ›</button>
           : <span />}
         <button onClick={onVongQuay} disabled={!onVongQuay || !d.vong_quay.du || d.vong_quay.da_quay} className={nut}
           style={d.vong_quay.du && !d.vong_quay.da_quay ? { background: MAU.acc, color: MAU.accInk, boxShadow: '0 0 12px var(--sk-acc)' } : { background: MAU.surface2, color: MAU.muted, border: `1px dashed ${MAU.line}` }}>

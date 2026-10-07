@@ -22,5 +22,6 @@ export default function XemHocTap() {
   if (man === 'giai') return <GiaiVoDichHS onBack={ve} onDauMay={() => setMan('can_tk')} />
   if (man === 'can_tk') return <ManHS><DauTrangHS tieuDe="Cần đăng nhập" onBack={ve} /><TrongHS>Màn này dùng dữ liệu học thật của em — mở trong app đã đăng nhập (trang xem thử không có tài khoản).</TrongHS></ManHS>
   return <HocTapHS nhanVat={nv} onDoiNhanVat={() => setMan('nhan_vat')} onBack={() => history.back()} onChuDe={() => { location.search = `?xem=phieu_luu&skin=${gd.skin}` }} onYeu={() => setMan('can_tk')}
-    onDauTruong={() => setMan('dau_truong')} onChinhPhuc={() => setMan('chinh_phuc')} onGiai={() => setMan('giai')} />
+    onDauTruong={() => setMan('dau_truong')} onChinhPhuc={() => setMan('chinh_phuc')} onGiai={() => setMan('giai')}
+    sapRa={new URLSearchParams(location.search).get('sap') ? { chinh_phuc: true, giai_vo_dich: true } : undefined} /> // &sap=1 ⇒ xem trạng thái "Sắp ra mắt" (đợt 1)
 }
