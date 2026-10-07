@@ -544,6 +544,19 @@ export async function danhSoLaiTheoDe(buoiId: string, phase: Phase, thuTu: Probl
   for (const x of doi) { const { error } = await supabase.from('gami_session_problems').update({ problem_no: x.no }).eq('id', x.p.id); if (error) throw error }
   void buoiId; void phase
 }
+/** Dựng lưới chấm MT của buổi (Đại theo ma_cau + Hình theo node, đánh số theo đề) — MỘT đường duy nhất cho mọi
+ *  màn chấm MT (tab MT ở Buổi học · Chấm MT chi tiết ở Kết quả học tập). Trước 07/10 chỉ tab MT làm việc này nên
+ *  buổi chưa ai mở tab MT thì màn Chấm chi tiết không có ô nào để ghi. Phase đã đóng ⇒ không đụng cấu trúc. */
+export async function chuanBiLuoiMT(buoiId: string, daDong: boolean): Promise<{ mtId: string | null; phans: MTPhanCaus[]; coHinh: boolean }> {
+  const { mtId, phans, caus } = await loadMTForBuoi(buoiId)
+  if (mtId) await syncMTProblems(buoiId, caus, daDong)
+  // TUẦN TỰ sau Đại — chia sẻ slot problem_no cùng (buổi,'mt'), xem ghi chú domain-partition ở syncHinhProblems.
+  const { dapAn } = await loadHinhForBuoiPhase(buoiId, 'mt')
+  if (dapAn.length) await syncHinhProblems(buoiId, 'mt', dapAn, daDong)
+  // ⭐ 02/09: số ô = thứ tự trong đề (Hình xen giữa Đại thì số xen theo) — khớp số trên phiếu in.
+  await danhSoLaiTheoDe(buoiId, 'mt', thuTuMTTheoDe(await listProblems(buoiId, 'mt'), phans), daDong)
+  return { mtId, phans, coHinh: dapAn.length > 0 }
+}
 export const syncBTVNProblems = (buoiId: string, caus: CauHoi[], daDong?: boolean) => syncDocProblems(buoiId, 'btvn', caus, daDong)
 
 // ── CHẤM Hình (mô hình) — nạp từ giáo trình Hình đã gán (lớp+ngày) ─────────────────

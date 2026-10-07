@@ -8,7 +8,7 @@ import {
   loadBTVNForBuoi, syncBTVNProblems, getBtvnKetQua, setBtvnKetQua, listCanhBao, closeBTVN, reopenBTVN,
   type BtvnKQ, type CanhBao, type BtvnTrangThai, type BtvnThaiDo,
   getDanhGia, setDanhGiaDang, setNhanXet, setMuc, MUC_OPTS, MUC_CATALOG, nhanMuc, dongDanhGia, moLaiDanhGia, setNoiDungBuoi,
-  loadLiveTestForBuoi, getDangTen, loadMTForBuoi, syncMTProblems, getBangEloExp,
+  loadLiveTestForBuoi, getDangTen, chuanBiLuoiMT, getBangEloExp,
   loadHinhForBuoiPhase, syncHinhProblems, danhSoLaiTheoDe, thuTuMTTheoDe, dongBoETOnline, type ETOnlineDongBo, dongBoBTVNOnline, type BTVNOnlineDongBo,
   type BuoiAo, type BuoiTim, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type Phase, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync, type EloExpRow,
 } from '../../lib/gami'
@@ -1677,18 +1677,13 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
   useEffect(() => { (async () => {
     setLoading(true)
     try {
-      const { mtId, phans: ps, caus: c } = await loadMTForBuoi(buoiId)
       // Lưới MT cũng bám đề qua ma_cau (chung syncDocProblems với ET) — xem ghi chú bug 07-21.
       // Hình đọc từ tài liệu MT Hình RIÊNG (không phải giáo trình — 21/08 sửa lại sau khi nhầm 1 lần:
-      // "MT là 1 thực thể, Đại Hình chỉ là 1 phần của nó" — không tách tài liệu như ET). TUẦN TỰ sau
-      // Đại — chia sẻ slot problem_no cùng (buổi,'mt'), xem ghi chú domain-partition ở syncHinhProblems.
-      if (mtId) await syncMTProblems(buoiId, c, !!buoi.mt_dong_at)
+      // "MT là 1 thực thể, Đại Hình chỉ là 1 phần của nó" — không tách tài liệu như ET). Dùng chung
+      // chuanBiLuoiMT với màn Chấm MT chi tiết (Kết quả học tập).
+      const { mtId, phans: ps, coHinh } = await chuanBiLuoiMT(buoiId, !!buoi.mt_dong_at)
       setPhans(ps)
-      const { dapAn: hinhDapAn } = await loadHinhForBuoiPhase(buoiId, 'mt')
-      if (hinhDapAn.length) await syncHinhProblems(buoiId, 'mt', hinhDapAn, !!buoi.mt_dong_at)
-      // ⭐ 02/09: số ô = thứ tự trong đề (Hình xen giữa Đại thì số xen theo) — khớp số trên phiếu in.
-      await danhSoLaiTheoDe(buoiId, 'mt', thuTuMTTheoDe(await listProblems(buoiId, 'mt'), ps), !!buoi.mt_dong_at)
-      setMtMissing(!mtId && !hinhDapAn.length)
+      setMtMissing(!mtId && !coHinh)
       await reloadP()
     } catch { setMtMissing(true); setPhans([]) } finally { setLoading(false) }
   })() }, [buoiId]) // eslint-disable-line

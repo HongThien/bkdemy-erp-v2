@@ -14,12 +14,11 @@ import {
 } from '../../lib/thanhtich'
 import { BuoiDetail } from '../gami/BuoiHocScreen'
 import type { TabKey, Problem, Grade, ETResult } from '../../lib/gami'
-import { loadMTForBuoi, listProblems, listGrades, gradeMTChiTiet, deleteGrade } from '../../lib/gami'
+import { chuanBiLuoiMT, listProblems, listGrades, gradeMTChiTiet, deleteGrade } from '../../lib/gami'
 import { tenHienThiDs } from '../../lib/hoten'
 import { supabase } from '../../lib/supabase'
-import type { CauHoi } from '../../lib/kho/api'
 import type { MTPhanCaus } from '../../lib/mt'
-import { DEFAULT_DIEM_MT } from '../../lib/tailieu'
+import { DEFAULT_DIEM_MT, laMaHinh } from '../../lib/tailieu'
 
 // Chỉ môn CÓ KHO mới suy được mastery (khoCuaMon dispatch dai_/khtn_). Anh/Văn chưa có kho.
 const MON_CO_KHO = ['Toán', 'KHTN']
@@ -1729,11 +1728,17 @@ function DiemMTEditModal({ thang, hsId, hoTen, getDiem, onClose, onSaved }: {
 }
 
 // ⭐ 30/09 (Thùy) — CHẤM MT CHI TIẾT per-HS-per-câu (khác NhapDiemMTView bulk-per-tháng). Filter Môn +
-// Lớp + HS → chọn buổi MT của lớp → hiện cấu trúc MT gán buổi đó (phần → câu kho). Mỗi câu: 3 nút DCS,
+// Lớp + HS → chọn buổi MT của lớp → hiện cấu trúc MT gán buổi đó (phần → câu). Mỗi câu: 3 nút DCS,
 // dropdown điểm (0.25 → điểm tối đa câu — từ tai_lieu(mt_buoi).cau_hinh.diemByCau), nhận xét text.
-// Đ = auto full điểm; C = auto ½; S = 0. User chỉnh sau. Autosave từng ô qua gradeMTChiTiet. Hình
-// (HINH:<uuid>) KHÔNG hiện — phan.caus chỉ có câu kho; chấm Hình tiếp tục qua MTTab matrix ở buổi học.
-type BuoiMTOption = { buoiId: string; ngay: string; tenMT: string; taiLieuId: string }
+// Đ = auto full điểm; C = auto ½; S = 0. User chỉnh sau. Autosave từng ô qua gradeMTChiTiet.
+// ⭐ 07/10 (Thùy: "danh sách từng câu chưa thấy phần hình học") — đời trước chỉ duyệt phan.caus (câu KHO) nên
+// bài Hình (HINH:<uuid>) rụng hẳn, số "Câu 1.." đếm lại từ đầu MỖI PHẦN (lệch số trên phiếu), và buổi chưa ai
+// mở tab MT thì không có ô nào để ghi. Nay duyệt CHÍNH các ô chấm (gami_session_problems phase='mt') theo
+// problem_no = đúng số in trên phiếu (MTPrintView đếm 1 bộ, Hình mỗi ý 1 câu), gồm cả ô Hình; lưới dựng qua
+// chuanBiLuoiMT (chung với tab MT ở buổi học). Điểm tối đa 1 ý Hình = điểm CẢ BÀI (diemByCau['HINH:…']) chia
+// đều số ý (CEO 07/10).
+type BuoiMTOption = { buoiId: string; ngay: string; tenMT: string; taiLieuId: string; dongMT: boolean }
+type DongCham = { p: Problem; nhom: string; hinh: boolean; nhanPhu: string | null; maxDiem: number }
 
 function ChamMTChiTietView() {
   const [mon, setMon] = useState('Toán')
@@ -1745,11 +1750,11 @@ function ChamMTChiTietView() {
   const [buoiId, setBuoiId] = useState<string | null>(null)
   const [loadingBuoi, setLoadingBuoi] = useState(false)
   const [phans, setPhans] = useState<MTPhanCaus[]>([])
-  const [caus, setCaus] = useState<CauHoi[]>([])
   const [diemByCau, setDiemByCau] = useState<Record<string, number>>({})
   const [probs, setProbs] = useState<Problem[]>([])
   const [grades, setGrades] = useState<Grade[]>([])
   const [loadingMT, setLoadingMT] = useState(false)
+  const [loi, setLoi] = useState<string | null>(null)
 
   useEffect(() => {
     listLop().then((l) => setLops((l as Lop[]).filter((x) => x.trang_thai === 'dang_hoc' && x.mon === mon))).catch(() => setLops([]))
@@ -1764,35 +1769,89 @@ function ChamMTChiTietView() {
       const { data } = await supabase.from('tai_lieu').select('id, ten, ngay, nguon_id').eq('loai', 'mt_buoi').eq('lop_id', lopId).order('ngay', { ascending: false }).limit(200)
       const rows = (data ?? []) as { id: string; ten: string; ngay: string; nguon_id: string }[]
       if (!rows.length) { setBuoiMTs([]); return }
-      const { data: buois } = await supabase.from('buoi_hoc').select('id, ngay').eq('lop_id', lopId).eq('loai', 'thuong').in('ngay', rows.map((r) => r.ngay)).limit(200)
-      const buoiByNgay = new Map(((buois ?? []) as { id: string; ngay: string }[]).map((b) => [b.ngay, b.id]))
-      setBuoiMTs(rows.map((r) => ({ buoiId: buoiByNgay.get(r.ngay) ?? '', ngay: r.ngay, tenMT: r.ten, taiLieuId: r.id })).filter((r) => r.buoiId))
+      const { data: buois } = await supabase.from('buoi_hoc').select('id, ngay, mt_dong_at').eq('lop_id', lopId).eq('loai', 'thuong').neq('trang_thai', 'huy').in('ngay', rows.map((r) => r.ngay)).limit(200)
+      const buoiByNgay = new Map(((buois ?? []) as { id: string; ngay: string; mt_dong_at: string | null }[]).map((b) => [b.ngay, b]))
+      // 1 buổi chỉ chấm 1 MT (getMTInstanceByBuoi lấy bản mới nhất theo lớp+ngày) — lỡ 2 doc trùng ngày thì chỉ giữ 1 lựa chọn.
+      const daCo = new Set<string>()
+      const opts: BuoiMTOption[] = []
+      for (const r of rows) {
+        const b = buoiByNgay.get(r.ngay)
+        if (!b || daCo.has(b.id)) continue
+        daCo.add(b.id)
+        opts.push({ buoiId: b.id, ngay: r.ngay, tenMT: r.ten, taiLieuId: r.id, dongMT: !!b.mt_dong_at })
+      }
+      setBuoiMTs(opts)
     })().finally(() => setLoadingBuoi(false))
   }, [lopId])
 
-  useEffect(() => {
-    if (!buoiId) { setPhans([]); setCaus([]); setDiemByCau({}); setProbs([]); setGrades([]); return }
-    setLoadingMT(true)
-    ;(async () => {
-      const { phans: ps, caus: cs, mtId } = await loadMTForBuoi(buoiId)
-      setPhans(ps); setCaus(cs)
-      if (mtId) {
-        const { data: tl } = await supabase.from('tai_lieu').select('cau_hinh').eq('id', mtId).maybeSingle()
-        setDiemByCau(((tl as { cau_hinh?: { diemByCau?: Record<string, number> } })?.cau_hinh?.diemByCau) ?? {})
-      } else setDiemByCau({})
-      setProbs(await listProblems(buoiId, 'mt'))
-    })().catch(() => { setPhans([]); setCaus([]); setDiemByCau({}); setProbs([]) }).finally(() => setLoadingMT(false))
-  }, [buoiId])
+  const buoiChon = buoiMTs.find((b) => b.buoiId === buoiId) ?? null
+  const dongMT = !!buoiChon?.dongMT
 
   useEffect(() => {
-    if (!buoiId || !hsId) { setGrades([]); return }
-    listGrades(buoiId).then((gs) => setGrades(gs.filter((g) => g.hoc_sinh_id === hsId))).catch(() => setGrades([]))
+    setPhans([]); setDiemByCau({}); setProbs([]); setLoi(null)
+    if (!buoiId) return
+    let alive = true
+    setLoadingMT(true)
+    ;(async () => {
+      // Dựng/đồng bộ lưới (Đại + Hình, đánh số theo đề) — y hệt mở tab MT ở buổi học. MT đã đóng ⇒ chỉ đọc.
+      const { mtId, phans: ps } = await chuanBiLuoiMT(buoiId, dongMT)
+      let dbc: Record<string, number> = {}
+      if (mtId) {
+        const { data: tl } = await supabase.from('tai_lieu').select('cau_hinh').eq('id', mtId).maybeSingle()
+        dbc = ((tl as { cau_hinh?: { diemByCau?: Record<string, number> } })?.cau_hinh?.diemByCau) ?? {}
+      }
+      const pr = await listProblems(buoiId, 'mt')
+      if (!alive) return
+      setPhans(ps); setDiemByCau(dbc); setProbs(pr)
+    })().catch((e) => { if (alive) setLoi('Không tải được lưới MT: ' + (e?.message ?? String(e))) })
+      .finally(() => { if (alive) setLoadingMT(false) })
+    return () => { alive = false }
+  }, [buoiId]) // eslint-disable-line
+
+  useEffect(() => {
+    setGrades([]) // reset NGAY khi đổi HS/buổi — không để điểm HS trước nằm trên màn HS sau
+    if (!buoiId || !hsId) return
+    let alive = true
+    listGrades(buoiId).then((gs) => { if (alive) setGrades(gs.filter((g) => g.hoc_sinh_id === hsId)) }).catch(() => {})
+    return () => { alive = false }
   }, [buoiId, hsId])
 
   const tenHT = tenHienThiDs(roster.map((r) => r.hoc_sinh?.ho_ten))
-  const probByMa = new Map(probs.filter((p) => p.ma_cau).map((p) => [p.ma_cau!, p]))
   const gradeByProb = new Map(grades.map((g) => [g.problem_id, g]))
   const fmtDiem = (n: number) => (n % 1 === 0 ? String(n) : Number(n.toFixed(2)).toString())
+
+  // ── Dòng chấm = ô chấm theo problem_no (= số trên phiếu). Ô Đại → phần chứa ma_cau; ô Hình → hàng Hình thứ k
+  // (hinh_nhan bắt đầu bằng k, cùng quy ước thuTuMTTheoDe) → phần chứa hàng đó + điểm cả bài chia đều số ý.
+  const hinhHang: { ma: string; nhom: string }[] = []
+  const phanCuaCau = new Map<string, string>()
+  for (const ph of phans) {
+    for (const ma of ph.maCaus) if (laMaHinh(ma)) hinhHang.push({ ma, nhom: ph.tieuDe })
+    for (const c of ph.caus) if (!phanCuaCau.has(c.ma_cau)) phanCuaCau.set(c.ma_cau, ph.tieuDe)
+  }
+  const soYCuaBai = new Map<number, number>()
+  for (const p of probs) if (p.hinh_baitoan_id) { const k = parseInt(p.hinh_nhan ?? '', 10); soYCuaBai.set(k, (soYCuaBai.get(k) ?? 0) + 1) }
+  const daGapY = new Map<number, number>()
+  const dongs: DongCham[] = [...probs].sort((a, b) => a.problem_no - b.problem_no).map((p) => {
+    if (p.hinh_baitoan_id) {
+      const k = parseInt(p.hinh_nhan ?? '', 10)
+      const h = hinhHang[k - 1]
+      const n = soYCuaBai.get(k) ?? 1
+      const i = daGapY.get(k) ?? 0
+      daGapY.set(k, i + 1)
+      const diemBai = h ? (diemByCau[h.ma] ?? DEFAULT_DIEM_MT) : DEFAULT_DIEM_MT
+      return {
+        p, hinh: true, nhom: h?.nhom ?? 'Hình (thêm ở buổi học)',
+        nhanPhu: `Hình · bài ${Number.isNaN(k) ? '?' : k}${n > 1 ? ` · ý ${String.fromCharCode(97 + i)}` : ''}`,
+        maxDiem: Math.round((diemBai / n) * 100) / 100,
+      }
+    }
+    const nhom = p.ma_cau ? phanCuaCau.get(p.ma_cau) : undefined
+    return { p, hinh: false, nhom: nhom ?? '⚠ Ô không còn trong đề', nhanPhu: null, maxDiem: (p.ma_cau && diemByCau[p.ma_cau]) || DEFAULT_DIEM_MT }
+  })
+  // Gộp dòng liền nhau cùng phần (Hình xen giữa 2 đoạn Đại thì đúng như trên phiếu — vẫn nằm trong phần của nó).
+  const nhoms: { ten: string; dongs: DongCham[] }[] = []
+  for (const d of dongs) { const last = nhoms[nhoms.length - 1]; if (last && last.ten === d.nhom) last.dongs.push(d); else nhoms.push({ ten: d.nhom, dongs: [d] }) }
+  const soHinh = dongs.filter((d) => d.hinh).length
 
   // Optimistic patch: merge partial grade upsert vào state grades
   const patchGrade = (probId: string, patch: Partial<Grade>) => setGrades((gs) => {
@@ -1801,31 +1860,38 @@ function ChamMTChiTietView() {
     const base: Grade = cur ?? { id: '', problem_id: probId, hoc_sinh_id: hsId!, result: '', presentation: 'clean', speed: 'normal', points: 0, loi: [] }
     return [...others, { ...base, ...patch }]
   })
+  const baoLoi = (e: unknown) => setLoi('Lưu không được: ' + ((e as { message?: string })?.message ?? String(e)))
 
-  async function setResult(cau: CauHoi, result: ETResult) {
-    const prob = probByMa.get(cau.ma_cau); if (!prob || !hsId || !buoiId) return
-    const grade = gradeByProb.get(prob.id)
-    if (grade?.result === result) {
-      await deleteGrade(prob.id, hsId)
-      setGrades((gs) => gs.filter((g) => g.problem_id !== prob.id))
-      return
-    }
-    const maxDiem = diemByCau[cau.ma_cau] ?? DEFAULT_DIEM_MT
-    const suggest = result === 'correct' ? maxDiem : result === 'partial' ? Math.round(maxDiem * 50) / 100 : 0
-    const diemDat = grade?.diem_dat == null ? suggest : grade.diem_dat
-    await gradeMTChiTiet({ buoiId, problemId: prob.id, hocSinhId: hsId, result, diemDat, loi: [] })
-    patchGrade(prob.id, { result, diem_dat: diemDat, loi: [] })
+  async function setResult(d: DongCham, result: ETResult) {
+    if (!hsId || !buoiId || dongMT) return
+    const grade = gradeByProb.get(d.p.id)
+    setLoi(null)
+    try {
+      if (grade?.result === result) {
+        if (grade.nhan_xet && !confirm('Bỏ chấm câu này sẽ xoá luôn nhận xét đã ghi. Tiếp tục?')) return
+        await deleteGrade(d.p.id, hsId)
+        setGrades((gs) => gs.filter((g) => g.problem_id !== d.p.id))
+        return
+      }
+      const suggest = result === 'correct' ? d.maxDiem : result === 'partial' ? Math.round(d.maxDiem * 50) / 100 : 0
+      const diemDat = grade?.diem_dat == null ? suggest : grade.diem_dat
+      await gradeMTChiTiet({ buoiId, problemId: d.p.id, hocSinhId: hsId, result, diemDat, loi: [] })
+      patchGrade(d.p.id, { result, diem_dat: diemDat, loi: [] })
+    } catch (e) { baoLoi(e) }
   }
-  async function setDiem(cau: CauHoi, diem: number) {
-    const prob = probByMa.get(cau.ma_cau); if (!prob || !hsId || !buoiId) return
-    await gradeMTChiTiet({ buoiId, problemId: prob.id, hocSinhId: hsId, diemDat: diem })
-    patchGrade(prob.id, { diem_dat: diem })
+  // Điểm/nhận xét chỉ ghi lên dòng ĐÃ có Đ/C/S (gami_grades.result NOT NULL — dòng chấm ra đời là đã có kết quả, §1.5).
+  async function setDiem(d: DongCham, diem: number | null) {
+    if (!hsId || !buoiId || !gradeByProb.get(d.p.id)) return
+    setLoi(null)
+    try { await gradeMTChiTiet({ buoiId, problemId: d.p.id, hocSinhId: hsId, diemDat: diem }); patchGrade(d.p.id, { diem_dat: diem }) }
+    catch (e) { baoLoi(e) }
   }
-  async function setNhanXet(cau: CauHoi, text: string) {
-    const prob = probByMa.get(cau.ma_cau); if (!prob || !hsId || !buoiId) return
+  async function setNhanXet(d: DongCham, text: string) {
+    if (!hsId || !buoiId || !gradeByProb.get(d.p.id)) return
     const v = text.trim() || null
-    await gradeMTChiTiet({ buoiId, problemId: prob.id, hocSinhId: hsId, nhanXet: v })
-    patchGrade(prob.id, { nhan_xet: v })
+    setLoi(null)
+    try { await gradeMTChiTiet({ buoiId, problemId: d.p.id, hocSinhId: hsId, nhanXet: v }); patchGrade(d.p.id, { nhan_xet: v }) }
+    catch (e) { baoLoi(e) }
   }
 
   // ⭐ Grade cũ (chấm qua MTTab matrix trước khi có diem_dat) có result='correct/partial/wrong' nhưng
@@ -1837,13 +1903,20 @@ function ChamMTChiTietView() {
     if (result === 'wrong') return 0
     return null
   }
-  const diemThuc = (c: CauHoi): number | null => {
-    const prob = probByMa.get(c.ma_cau); const g = prob ? gradeByProb.get(prob.id) : null
+  const diemThuc = (d: DongCham): number | null => {
+    const g = gradeByProb.get(d.p.id)
     if (g?.diem_dat != null) return g.diem_dat
-    return suggestDiem(g?.result, diemByCau[c.ma_cau] ?? DEFAULT_DIEM_MT)
+    return suggestDiem(g?.result, d.maxDiem)
   }
-  const tongDiem = caus.reduce((s, c) => s + (diemThuc(c) ?? 0), 0)
-  const tongMax = caus.reduce((s, c) => s + (diemByCau[c.ma_cau] ?? DEFAULT_DIEM_MT), 0)
+  const tongDiem = dongs.reduce((s, d) => s + (diemThuc(d) ?? 0), 0)
+  const tongMax = dongs.reduce((s, d) => s + d.maxDiem, 0)
+  // Mức điểm: 0 → max bước 0.25, LUÔN có đúng mốc max (ý Hình chia lẻ, vd 1đ/3 ý = 0.33) và giá trị đang lưu.
+  const mucDiem = (max: number, cur: number | null): number[] => {
+    const s = new Set<number>([0, max])
+    for (let v = 0.25; v <= max + 1e-9; v += 0.25) s.add(Math.round(v * 100) / 100)
+    if (cur != null) s.add(cur)
+    return [...s].sort((a, b) => a - b)
+  }
   const hsIdx = hsId ? roster.findIndex((r) => r.hoc_sinh_id === hsId) : -1
   const sortedLops = [...lops].sort((a, b) => (a.khoi ?? '').localeCompare(b.khoi ?? '', 'vi', { numeric: true }) || a.ten_lop.localeCompare(b.ten_lop, 'vi', { numeric: true }))
 
@@ -1879,34 +1952,34 @@ function ChamMTChiTietView() {
                 <div className="text-[15px] font-semibold text-slate-800">{hsIdx >= 0 ? tenHT[hsIdx] : '?'}</div>
                 <select value={buoiId ?? ''} onChange={(e) => setBuoiId(e.target.value || null)} className="h-8 min-w-[300px] rounded border border-slate-300 px-2 text-[13px]">
                   <option value="">{loadingBuoi ? 'Đang tải…' : '— chọn buổi MT —'}</option>
-                  {buoiMTs.map((b) => <option key={b.buoiId} value={b.buoiId}>{b.tenMT} · {b.ngay.split('-').reverse().join('/')}</option>)}
+                  {buoiMTs.map((b) => <option key={b.buoiId} value={b.buoiId}>{b.tenMT} · {b.ngay.split('-').reverse().join('/')}{b.dongMT ? ' · đã đóng' : ''}</option>)}
                 </select>
-                {buoiId && caus.length > 0 && <span className="ml-auto text-[13px] text-slate-600">Tổng đạt: <b className="text-violet-700">{fmtDiem(tongDiem)}</b> / {fmtDiem(tongMax)} đ</span>}
+                {buoiId && dongs.length > 0 && <span className="text-[12px] text-slate-400">{dongs.length} câu{soHinh ? ` (gồm ${soHinh} ý Hình)` : ''}</span>}
+                {buoiId && dongs.length > 0 && <span className="ml-auto text-[13px] text-slate-600">Tổng đạt: <b className="text-violet-700">{fmtDiem(tongDiem)}</b> / {fmtDiem(tongMax)} đ</span>}
               </div>
+              {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">{loi}</div>}
+              {dongMT && <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-[12.5px] text-amber-800">MT buổi này <b>đã đóng</b> (Elo đã tính) — Đ/C/S khoá; điểm và nhận xét vẫn sửa được. Muốn sửa Đ/C/S: vào tab MT trong buổi học → ↩ Mở lại.</div>}
               {!buoiId ? <div className="rounded-xl border border-dashed border-slate-200 py-12 text-center text-[13px] text-slate-500">{buoiMTs.length === 0 ? 'Lớp này chưa có buổi MT nào được gán.' : 'Chọn buổi MT ở trên.'}</div>
                 : loadingMT ? <p className="text-sm text-slate-500">Đang tải cấu trúc MT…</p>
-                : caus.length === 0 ? <div className="rounded-xl border border-dashed border-rose-200 bg-rose-50/40 py-12 text-center text-[13px] text-rose-700">Không tìm thấy câu KHO trong MT này (có thể chỉ có bài Hình). Chấm Hình tiếp tục qua tab MT trong buổi học.</div>
+                : dongs.length === 0 ? <div className="rounded-xl border border-dashed border-rose-200 bg-rose-50/40 py-12 text-center text-[13px] text-rose-700">{dongMT ? 'MT đã đóng mà chưa có ô chấm nào — mở lại ở tab MT trong buổi học để dựng lưới.' : 'MT gán cho buổi này chưa có câu nào (cả Đại lẫn Hình).'}</div>
                 : (
                   <div className="space-y-4">
-                    {phans.map((p, pi) => (
-                      <div key={pi} className="rounded-xl border border-slate-200 bg-white p-3">
-                        <div className="mb-2 text-[13px] font-semibold text-slate-700">{p.tieuDe} <span className="ml-2 text-[11px] font-normal text-slate-400">{p.caus.length} câu</span></div>
+                    {nhoms.map((nh, ni) => (
+                      <div key={ni} className="rounded-xl border border-slate-200 bg-white p-3">
+                        <div className="mb-2 text-[13px] font-semibold text-slate-700">{nh.ten} <span className="ml-2 text-[11px] font-normal text-slate-400">{nh.dongs.length} câu</span></div>
                         <div className="space-y-2">
-                          {p.caus.map((c, ci) => {
-                            const prob = probByMa.get(c.ma_cau)
-                            const grade = prob ? gradeByProb.get(prob.id) : null
-                            const maxDiem = diemByCau[c.ma_cau] ?? DEFAULT_DIEM_MT
-                            const opts: number[] = []
-                            for (let d = 0.25; d <= maxDiem + 1e-9; d += 0.25) opts.push(Math.round(d * 100) / 100)
+                          {nh.dongs.map((d) => {
+                            const grade = gradeByProb.get(d.p.id) ?? null
                             const daGhi = grade?.diem_dat != null
-                            const goiY = daGhi ? null : suggestDiem(grade?.result, maxDiem)
+                            const goiY = daGhi ? null : suggestDiem(grade?.result, d.maxDiem)
                             const val = daGhi ? String(grade!.diem_dat) : (goiY != null ? String(goiY) : '')
-                            // ⭐ 30/09 (Thùy) — MỘT DÒNG / câu: [Câu N | Đ|C|S | dropdown điểm | nhận xét].
-                            // Bỏ mã câu / mã dạng / đề bài / Max — GV chấm theo phiếu giấy đã có số câu,
-                            // chỉ cần điền kết quả. Preview đề chi tiết đi qua Buổi học nếu cần.
+                            const chuaCham = !grade
+                            // ⭐ 30/09 (Thùy) — MỘT DÒNG / câu: [Câu N | Đ|C|S | dropdown điểm | nhận xét]. Số câu = số
+                            // trên phiếu giấy (problem_no đã đánh theo đề). Ô Hình có thêm nhãn bài/ý nhỏ.
                             return (
-                              <div key={c.ma_cau} className="flex items-center gap-2 rounded-lg border border-slate-100 bg-slate-50/60 px-2 py-1">
-                                <span className="w-10 shrink-0 text-center text-[12.5px] font-bold text-violet-600" title={`${c.ma_cau} · Max ${fmtDiem(maxDiem)} đ`}>Câu {ci + 1}</span>
+                              <div key={d.p.id} className={`flex items-center gap-2 rounded-lg border px-2 py-1 ${d.hinh ? 'border-amber-100 bg-amber-50/50' : 'border-slate-100 bg-slate-50/60'}`}>
+                                <span className="w-14 shrink-0 text-center text-[12.5px] font-bold text-violet-600" title={`${d.p.ma_cau ?? d.nhanPhu ?? ''} · Max ${fmtDiem(d.maxDiem)} đ`}>Câu {d.p.problem_no}</span>
+                                {d.nhanPhu && <span className="shrink-0 rounded bg-amber-100 px-1.5 text-[10.5px] font-medium text-amber-700">{d.nhanPhu}</span>}
                                 <div className="flex shrink-0 overflow-hidden rounded border border-slate-300">
                                   {(['correct', 'partial', 'wrong'] as ETResult[]).map((r) => {
                                     const on = grade?.result === r
@@ -1916,20 +1989,20 @@ function ChamMTChiTietView() {
                                       : r === 'partial'
                                         ? (on ? 'bg-amber-500 text-white' : 'text-amber-600 hover:bg-amber-50')
                                         : (on ? 'bg-rose-600 text-white' : 'text-rose-600 hover:bg-rose-50')
-                                    return <button key={r} onClick={() => setResult(c, r)} disabled={!prob} className={`h-7 w-9 border-r border-slate-200 text-[12.5px] font-bold last:border-r-0 disabled:opacity-40 ${tone}`}>{lbl}</button>
+                                    return <button key={r} onClick={() => setResult(d, r)} disabled={dongMT} className={`h-7 w-9 border-r border-slate-200 text-[12.5px] font-bold last:border-r-0 disabled:cursor-not-allowed ${dongMT && !on ? 'opacity-40' : ''} ${tone}`}>{lbl}</button>
                                   })}
                                 </div>
-                                <select value={val} onChange={(e) => setDiem(c, +e.target.value)} disabled={!prob}
-                                  className={`h-7 shrink-0 rounded border border-slate-300 bg-white px-1 text-[12.5px] font-medium ${daGhi ? 'text-slate-700' : 'text-slate-400 italic'}`}
-                                  title={daGhi ? `Điểm HS đạt (Max ${fmtDiem(maxDiem)} đ)` : 'Đề xuất từ Đ/C/S — chọn 1 mức để ghi chính thức'}>
+                                <select value={val} onChange={(e) => setDiem(d, e.target.value === '' ? null : +e.target.value)} disabled={chuaCham}
+                                  className={`h-7 shrink-0 rounded border border-slate-300 bg-white px-1 text-[12.5px] font-medium disabled:bg-slate-100 ${daGhi ? 'text-slate-700' : 'text-slate-400 italic'}`}
+                                  title={chuaCham ? 'Chọn Đ/C/S trước' : daGhi ? `Điểm HS đạt (Max ${fmtDiem(d.maxDiem)} đ)` : 'Đề xuất từ Đ/C/S — chọn 1 mức để ghi chính thức'}>
                                   <option value="">—</option>
-                                  <option value="0">0 đ</option>
-                                  {opts.map((v) => <option key={v} value={v}>{fmtDiem(v)} đ</option>)}
+                                  {mucDiem(d.maxDiem, grade?.diem_dat ?? null).map((v) => <option key={v} value={v}>{fmtDiem(v)} đ</option>)}
                                 </select>
-                                <input type="text" defaultValue={grade?.nhan_xet ?? ''} placeholder="Nhận xét (tuỳ chọn)" disabled={!prob}
-                                  onBlur={(e) => { if (e.target.value.trim() !== (grade?.nhan_xet ?? '')) setNhanXet(c, e.target.value) }}
+                                {/* key gồm HS + giá trị đã lưu: đổi HS/tải xong điểm ⇒ ô dựng lại đúng nội dung (ô không kiểm soát). */}
+                                <input key={`${hsId}|${d.p.id}|${grade?.nhan_xet ?? ''}|${chuaCham ? 0 : 1}`} type="text" defaultValue={grade?.nhan_xet ?? ''}
+                                  placeholder={chuaCham ? 'Chọn Đ/C/S trước' : 'Nhận xét (tuỳ chọn)'} disabled={chuaCham}
+                                  onBlur={(e) => { if (e.target.value.trim() !== (grade?.nhan_xet ?? '')) setNhanXet(d, e.target.value) }}
                                   className="h-7 min-w-0 flex-1 rounded border border-slate-300 bg-white px-2 text-[12.5px] text-slate-700 disabled:bg-slate-100" />
-                                {!prob && <span className="shrink-0 rounded bg-rose-100 px-1.5 text-[10px] font-medium text-rose-600" title="Chưa sync problems — mở tab MT trong buổi học 1 lần">⚠</span>}
                               </div>
                             )
                           })}
