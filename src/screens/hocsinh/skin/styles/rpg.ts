@@ -10,6 +10,7 @@ import { RPG_3D } from '../the3d/bangMauRpg'
 import { HOC_TAP_RPG } from './rpgHocTap'
 import { CHINH_PHUC_RPG } from './rpgChinhPhuc'
 import { BAN_DO_RPG } from './rpgBanDo2d'
+import { ANH_NV, ANH_TT } from './rpgGiaoDien'
 
 const A = '/bk-ui/hs/skin/rpg'
 const BVP = "'Be Vietnam Pro', system-ui, sans-serif"
@@ -53,6 +54,7 @@ export const RPG: Skin = {
     nhiem_vu: { ngang: `${A}/nen/nen_nhiem_vu_ngang.jpg`, doc: `${A}/nen/nen_nhiem_vu_doc.jpg` },
     thanh_tuu: { ngang: `${A}/nen/nen_thanh_tuu_ngang.jpg`, doc: `${A}/nen/nen_thanh_tuu_doc.jpg` },
   },
+  anhNv: ANH_NV, anhTt: ANH_TT,
   anhBxh: {
     huyChuong: [`${A}/bxh/huy_chuong_1.png`, `${A}/bxh/huy_chuong_2.png`, `${A}/bxh/huy_chuong_3.png`],
     khien: `${A}/bxh/khien_hang.png`, muiTen: `${A}/bxh/mui_ten.png`, huyHieu: `${A}/bxh/huy_hieu_bxh.png`, trong: `${A}/bxh/trong.png`,

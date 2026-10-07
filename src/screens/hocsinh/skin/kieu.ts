@@ -59,6 +59,7 @@ export type MoHinhChibi = {
   /** hào quang thường · khi giận (pha 2) */
   hao: string; haoGian: string
 }
+import type { AnhNv, AnhTt } from './anhGiaoDien'
 export type NenManId = 'bxh' | 'nhiem_vu' | 'thanh_tuu'
 /** Khung 9-slice: cat = độ dày góc (px trên ảnh GỐC w×h; 4 cạnh bằng nhau theo file .slice.json của kit) */
 export type Khung9 = { src: string; w: number; h: number; cat: number }
@@ -138,6 +139,9 @@ export type Skin = {
   nenMan?: Partial<Record<NenManId, { ngang: string; doc: string }>>
   // BỘ ĐỒ HOẠ màn Bảng xếp hạng (Đơn 15) — không khai ⇒ màn tự vẽ bằng code (khung đơn sắc + huy chương emoji).
   anhBxh?: AnhBxh
+  // Bộ đồ hoạ màn Nhiệm vụ (Đơn hs-nhiem-vu-v1) + Thành tựu (hs-thanh-tuu-v1) — không khai ⇒ vẽ bằng code
+  anhNv?: AnhNv
+  anhTt?: AnhTt
   // true ⇒ icon ô là nét đơn sắc dùng làm MẶT NẠ, tô bằng màu chữ của style (style đơn sắc: 1 bộ icon đúng cả sáng lẫn tối)
   anhOMask?: boolean
   // Ô thiếu icon ⇒ hiện DẤU này (màu nhấn) thay vì emoji — emoji lẫn icon vẽ tay trông lệch (Thùy 28/09).
