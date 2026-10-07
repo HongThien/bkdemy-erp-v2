@@ -1,4 +1,4 @@
-# 4T · LÔ GIẢI THỬ — lô 1 (13 câu, CEO đã duyệt 07/10) + lô 2 (20 câu, chờ duyệt) · sách "Toán arc 4 quyển 1" theo luật `k4T.md` (CHƯA ghi DB)
+# 4T · LÔ GIẢI THỬ — lô 1 (13 câu, CEO duyệt 07/10) + lô 2 (20 câu, CEO duyệt 07/10) + lô 3 (20 câu, chờ duyệt) · sách "Toán arc 4 quyển 1" theo luật `k4T.md` (CHƯA ghi DB)
 
 > Mỗi câu: **gán dạng** (mã + lý do) → **Phần 1. Hướng dẫn** → **Phần 2. Trình bày**. Chọn câu để phủ nhiều khuôn (lập luận · đếm ·
 > tính thuận tiện · thay đổi thành phần · dãy số · tổng–hiệu · cấu tạo số · phân số · tổng–tỉ · tính ngược) và ưu tiên dạng đang
@@ -897,3 +897,517 @@ Vậy $\dfrac{41}{42}>\dfrac{37}{39}$.
 **Đếm:** 20 câu (19 bài, LT 15.14 tách 2) · 6 câu vào dạng đang **0 câu** (`030101` `110105` `140101` `150101` `160202` `160103`) · **7 câu dạng chờ** (câu 5 chuyển sang `080101` sau khi CEO chốt) ⇒ thêm bằng chứng cho bảng thiếu `k4T.md` §5.
 
 **CEO duyệt 07/10:** *"khá ok rồi"* — không sửa lời giải câu nào; 2 câu hỏi gán dạng đã chốt (ghi `k4T.md` §7).
+
+
+---
+---
+
+# 4T · LÔ GIẢI THỬ 3 — 20 câu: các chuyên đề lô 1–2 chưa đụng + phiếu (07/10, CHƯA ghi DB)
+
+> Chuyên đề: 7 Trồng cây · 13 Trung bình cộng · 18–19 Phép tính phân số + dãy phân số · 20 Giá trị phân số · 23 Bài toán cơ bản về phân số
+> · Phiếu tự luyện 5 · Phiếu cuối tuần 10, 24 (Phần I trắc nghiệm). Áp luật sau lô 2: **phương pháp thắng chủ đề** (§5 điều 1, 3).
+> Đáp số máy tính lại bằng phân số chính xác (không làm tròn) — 20/20 khớp. Sơ đồ mới: `so-do/k4T-lo3-cau6`, `k4T-lo3-cau17`
+> (máy vẽ thêm kiểu `bot` = đoạn còn thiếu, nét đứt — cho bài "kém/hơn trung bình cộng").
+
+---
+
+## Câu 1 — LT 7.5 · Dọc quãng đường từ một trường tiểu học đến bệnh viện, người ta mắc 150 đèn cao áp hai bên đường, đèn nọ cách đèn kia 45 m. Tính quãng đường từ trường đến cổng bệnh viện, biết trước cổng bệnh viện có đèn còn cổng trường không có đèn.
+
+**Dạng:** `T14T070101` — trồng cây trên đường thẳng (một đầu có đèn).
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: $150$ đèn là của **hai bên** đường, nên mỗi bên $75$ đèn. Chỉ **một đầu** có đèn (cổng bệnh viện) nên số khoảng cách **bằng** số đèn. Quãng đường = số khoảng cách × $45$ m.
+
+Chú ý: hay quên chia $2$ cho hai bên đường, hoặc lấy số khoảng = số đèn − 1 như trường hợp hai đầu.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Số đèn ở mỗi bên đường là: $150:2=75$ (đèn)
+
+Cổng bệnh viện có đèn, cổng trường không có đèn nên số khoảng cách ở mỗi bên đường bằng số đèn và bằng $75$ khoảng cách.
+
+Quãng đường từ trường đến cổng bệnh viện dài là: $75\times 45=3375$ (m)
+
+Đáp số: $3375$ m
+
+---
+
+## Câu 2 — LT 7.8 · Một người thợ mộc cưa một cây gỗ dài 5 m 4 dm thành những đoạn 45 cm. Mỗi lần cưa hết 3 phút. Cứ sau mỗi lần cưa, người thợ lại nghỉ 2 phút rồi mới cưa tiếp. Hỏi người thợ cưa xong cây gỗ đó hết bao nhiêu phút?
+
+**Dạng:** `T14T070101` — trồng cây trên đường thẳng (cưa gỗ = "không trồng ở hai đầu").
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: đổi $5$ m $4$ dm $=540$ cm, chia ra $12$ đoạn. Cưa thành $12$ đoạn chỉ cần $12-1=11$ lần cưa (như trồng cây không trồng ở hai đầu). **Bẫy thứ hai:** chỉ nghỉ khi còn cưa tiếp, nên sau lần cưa cuối **không nghỉ**: số lần nghỉ $=11-1=10$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+$5$ m $4$ dm $=540$ cm
+
+Số đoạn gỗ cưa được là: $540:45=12$ (đoạn)
+
+Số lần cưa là: $12-1=11$ (lần)
+
+Sau lần cưa cuối cùng người thợ không nghỉ nên số lần nghỉ là: $11-1=10$ (lần)
+
+Thời gian cưa là: $3\times 11=33$ (phút)
+
+Thời gian nghỉ là: $2\times 10=20$ (phút)
+
+Thời gian cưa xong cây gỗ là: $33+20=53$ (phút)
+
+Đáp số: $53$ phút
+
+---
+
+## Câu 3 — LT 7.13 · (*) Một khu vườn hình chữ nhật có chiều dài 32 m, chiều rộng 16 m. Người ta đóng cọc rào xung quanh vườn, cách 2 m đóng một cọc và chỉ trừ một cửa ra vào rộng 4 m. Tính số cọc cần dùng, biết hai cọc ở cửa chính là hai cọc rào và bốn góc vườn đều đóng cọc.
+
+**Dạng:** `T14T070102` — trồng cây khép kín.
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: vòng rào khép kín nhưng **bị cửa cắt hở** $4$ m, nên phần rào còn lại là một **đường thẳng gấp khúc có hai đầu** (hai cọc ở cửa) — đều đóng cọc. Độ dài phần rào $=$ chu vi $-4$ m; số cọc $=$ số khoảng $+1$. "Bốn góc đều đóng cọc" để chắc các cạnh chia đều $2$ m.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Chu vi khu vườn là: $\left(32+16\right)\times 2=96$ (m)
+
+Độ dài phần rào (không kể cửa) là: $96-4=92$ (m)
+
+Số khoảng cách giữa các cọc là: $92:2=46$ (khoảng)
+
+Hai cọc ở cửa đều là cọc rào nên số cọc cần dùng là: $46+1=47$ (cọc)
+
+Đáp số: $47$ cọc
+
+---
+
+## Câu 4 — LT 13.2 · Một nhà máy ngày thứ nhất sản xuất được 270 sản phẩm, nhiều hơn ngày thứ hai 18 sản phẩm và ít hơn ngày thứ ba 36 sản phẩm. Hỏi trung bình mỗi ngày nhà máy đó sản xuất được bao nhiêu sản phẩm?
+
+**Dạng:** `T14T130101` — tính trung bình cộng của một nhóm. *(dạng đang 0 câu)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: tìm đủ số sản phẩm từng ngày rồi lấy tổng chia $3$. Đọc kĩ chiều so sánh: ngày thứ nhất **nhiều hơn** ngày thứ hai ⇒ ngày thứ hai **ít** hơn ($270-18$); ngày thứ nhất **ít hơn** ngày thứ ba ⇒ ngày thứ ba **nhiều** hơn ($270+36$).
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Ngày thứ hai nhà máy sản xuất được số sản phẩm là: $270-18=252$ (sản phẩm)
+
+Ngày thứ ba nhà máy sản xuất được số sản phẩm là: $270+36=306$ (sản phẩm)
+
+Trung bình mỗi ngày nhà máy sản xuất được số sản phẩm là: $\left(270+252+306\right):3=276$ (sản phẩm)
+
+Đáp số: $276$ sản phẩm
+
+---
+
+## Câu 5 — LT 13.5 · Biết tuổi trung bình của 32 học sinh trong lớp là 9 tuổi. Nếu tính cả cô giáo thì tuổi trung bình của cô và 32 học sinh là 10 tuổi. Hỏi cô giáo bao nhiêu tuổi?
+
+**Dạng:** `T14T000000` — **dạng chờ** ("thêm một số làm đổi trung bình cộng", khuôn VD 13.2 — `k4T.md` §5 đã ghi thiếu).
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: biết trung bình cộng và số người thì biết **tổng** (TBC × số người). Tổng tuổi $33$ người (có cô) trừ tổng tuổi $32$ học sinh là tuổi cô.
+
+Chú ý: tính cả cô là $33$ người, không phải $32$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Tổng số tuổi của $32$ học sinh là: $9\times 32=288$ (tuổi)
+
+Tổng số tuổi của cô giáo và $32$ học sinh là: $10\times 33=330$ (tuổi)
+
+Tuổi của cô giáo là: $330-288=42$ (tuổi)
+
+Đáp số: $42$ tuổi
+
+---
+
+## Câu 6 — LT 13.19 · Vườn nhà bác Phi trồng ba loại cây: cam, bưởi, chanh. Trong đó có 25 cây cam và 21 cây bưởi, số cây chanh nhiều hơn trung bình cộng của cả ba loại cây là 4 cây. Hỏi trong vườn có bao nhiêu cây chanh?
+
+**Dạng:** `T14T000000` — **dạng chờ** ("hơn / kém trung bình cộng", khuôn VD 13.5 — `k4T.md` §5 đã ghi thiếu).
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: tổng ba loại $=3$ lần TBC. Cây chanh $=1$ lần TBC **thêm** $4$ cây, nên cam và bưởi phải bù lại: cam + bưởi $=2$ lần TBC **bớt** $4$ cây. Vậy **hai lần TBC $=25+21+4$**. (Nếu là "ít hơn TBC" thì trừ $4$.)
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Ta có sơ đồ:
+
+![Sơ đồ: Trung bình cộng 1 đoạn; Cây chanh 1 đoạn và 4 cây; Cam và bưởi 2 đoạn còn thiếu 4 cây](so-do/k4T-lo3-cau6.svg)
+
+Hai lần trung bình cộng số cây của ba loại là: $25+21+4=50$ (cây)
+
+Trung bình cộng số cây của ba loại là: $50:2=25$ (cây)
+
+Số cây chanh trong vườn là: $25+4=29$ (cây)
+
+Đáp số: $29$ cây chanh
+
+---
+
+## Câu 7 — LT 18.12 · Tìm một phân số, biết nếu lấy phân số đó cộng với $\dfrac{4}{5}$ rồi trừ đi $\dfrac{1}{4}$ thì được kết quả là $\dfrac{7}{10}$.
+
+**Dạng:** `T14T230101` — tính ngược từ cuối. *(câu ở chuyên đề 18 nhưng giải bằng **tính ngược** ⇒ dạng tính ngược, theo luật CEO chốt lô 2: phương pháp thắng chủ đề)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: đi **ngược từ kết quả**, mỗi phép đổi thành phép ngược: bước cuối "trừ $\dfrac{1}{4}$" ⇒ ngược lại **cộng** $\dfrac{1}{4}$; bước trước "cộng $\dfrac{4}{5}$" ⇒ ngược lại **trừ** $\dfrac{4}{5}$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Phân số cần tìm cộng với $\dfrac{4}{5}$ thì được: $\dfrac{7}{10}+\dfrac{1}{4}=\dfrac{14}{20}+\dfrac{5}{20}=\dfrac{19}{20}$
+
+Phân số cần tìm là: $\dfrac{19}{20}-\dfrac{4}{5}=\dfrac{19}{20}-\dfrac{16}{20}=\dfrac{3}{20}$
+
+Đáp số: $\dfrac{3}{20}$
+
+---
+
+## Câu 8 — LT 19.2d · Tính: $\dfrac{5}{4}:\dfrac{25}{4}+\dfrac{5}{2}:\dfrac{25}{8}$
+
+**Dạng:** `T14T180301` — tính biểu thức phân số chứa phép chia. *(dạng đang 0 câu; LT 19.2 có 4 ý độc lập ⇒ tách, đây là ý d)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: làm **chia trước, cộng sau**. Chia cho một phân số = nhân với phân số **đảo ngược**; nhân xong rút gọn ngay. Hai kết quả $\dfrac{1}{5}$ và $\dfrac{4}{5}$ cùng mẫu nên cộng ra $1$.
+
+**Phần 2. Trình bày**
+
+$\dfrac{5}{4}:\dfrac{25}{4}+\dfrac{5}{2}:\dfrac{25}{8}$
+
+$=\dfrac{5}{4}\times\dfrac{4}{25}+\dfrac{5}{2}\times\dfrac{8}{25}$
+
+$=\dfrac{1}{5}+\dfrac{4}{5}$
+
+$=1$
+
+---
+
+## Câu 9 — LT 19.4b · Tính bằng cách thuận tiện: $\dfrac{7}{8}\times\dfrac{5}{3}-\dfrac{7}{8}\times\dfrac{2}{3}$
+
+**Dạng:** `T14T180202` — tính thuận tiện phân số kết hợp phép nhân. *(dạng đang 0 câu; tách ý b)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: hai tích có **chung thừa số** $\dfrac{7}{8}$ ⇒ đưa ra ngoài: một số nhân với một hiệu (VD 19.1b). Trong ngoặc $\dfrac{5}{3}-\dfrac{2}{3}=1$ — dấu hiệu cho biết đề muốn làm thuận tiện.
+
+**Phần 2. Trình bày**
+
+$\dfrac{7}{8}\times\dfrac{5}{3}-\dfrac{7}{8}\times\dfrac{2}{3}$
+
+$=\dfrac{7}{8}\times\left(\dfrac{5}{3}-\dfrac{2}{3}\right)$
+
+$=\dfrac{7}{8}\times 1$
+
+$=\dfrac{7}{8}$
+
+---
+
+## Câu 10 — LT 19.6b · Tính bằng cách thuận tiện: $\dfrac{46}{27}:\dfrac{7}{8}-\dfrac{21}{27}:\dfrac{7}{8}+\dfrac{2}{27}:\dfrac{7}{8}$
+
+**Dạng:** `T14T180302` — tính thuận tiện phân số kết hợp phép chia. *(dạng đang 0 câu; tách ý b)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: ba thương có **chung số chia** $\dfrac{7}{8}$ ⇒ gộp các số bị chia lại rồi chia một lần: $a:c-b:c+d:c=(a-b+d):c$. Trong ngoặc ra $\dfrac{27}{27}=1$.
+
+**Phần 2. Trình bày**
+
+$\dfrac{46}{27}:\dfrac{7}{8}-\dfrac{21}{27}:\dfrac{7}{8}+\dfrac{2}{27}:\dfrac{7}{8}$
+
+$=\left(\dfrac{46}{27}-\dfrac{21}{27}+\dfrac{2}{27}\right):\dfrac{7}{8}$
+
+$=\dfrac{27}{27}:\dfrac{7}{8}$
+
+$=1:\dfrac{7}{8}$
+
+$=\dfrac{8}{7}$
+
+---
+
+## Câu 11 — LT 18.14 B · Tính: $B=\dfrac{2}{3\times 5}+\dfrac{2}{5\times 7}+\dfrac{2}{7\times 9}+\dfrac{2}{9\times 11}+\dfrac{2}{11\times 13}+\dfrac{2}{13\times 15}$
+
+**Dạng:** `T14T190201` — dãy phân số dạng hiệu tích chuẩn. *(dạng đang 0 câu; LT 18.14 có A, B, C độc lập ⇒ tách, đây là B)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: mỗi mẫu là tích **hai số hơn kém nhau $2$**, và tử cũng bằng $2$ ⇒ tử **đúng bằng hiệu** hai thừa số ở mẫu (dạng chuẩn). Viết tử thành hiệu ($5-3$, $7-5$, …) thì mỗi phân số tách thành hiệu hai phân số, các số giữa **triệt tiêu**, chỉ còn số đầu trừ số cuối (VD 19.3a).
+
+**Phần 2. Trình bày**
+
+$B=\dfrac{5-3}{3\times 5}+\dfrac{7-5}{5\times 7}+\dfrac{9-7}{7\times 9}+\dfrac{11-9}{9\times 11}+\dfrac{13-11}{11\times 13}+\dfrac{15-13}{13\times 15}$
+
+$B=\dfrac{1}{3}-\dfrac{1}{5}+\dfrac{1}{5}-\dfrac{1}{7}+\dfrac{1}{7}-\dfrac{1}{9}+\dfrac{1}{9}-\dfrac{1}{11}+\dfrac{1}{11}-\dfrac{1}{13}+\dfrac{1}{13}-\dfrac{1}{15}$
+
+$B=\dfrac{1}{3}-\dfrac{1}{15}$
+
+$B=\dfrac{4}{15}$
+
+---
+
+## Câu 12 — LT 19.15 E · Tính: $E=\dfrac{4}{1\times 3}+\dfrac{4}{3\times 5}+\dfrac{4}{5\times 7}+.....+\dfrac{4}{99\times 101}$
+
+**Dạng:** `T14T190202` — dãy hiệu tích có **tử chưa chuẩn**. *(dạng đang 0 câu; LT 19.15 có A–F độc lập ⇒ tách, đây là E)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: hai thừa số ở mẫu hơn kém nhau $2$ nhưng tử là $4$ — **chưa bằng hiệu**. Vì $4=2\times 2$ nên đưa $2$ ra ngoài, trong ngoặc còn tử $2$ đúng bằng hiệu ⇒ thành dạng chuẩn rồi triệt tiêu.
+
+Chú ý: đừng quên nhân lại với $2$ ở cuối.
+
+**Phần 2. Trình bày**
+
+$E=2\times\left(\dfrac{2}{1\times 3}+\dfrac{2}{3\times 5}+\dfrac{2}{5\times 7}+.....+\dfrac{2}{99\times 101}\right)$
+
+$E=2\times\left(\dfrac{3-1}{1\times 3}+\dfrac{5-3}{3\times 5}+\dfrac{7-5}{5\times 7}+.....+\dfrac{101-99}{99\times 101}\right)$
+
+$E=2\times\left(1-\dfrac{1}{3}+\dfrac{1}{3}-\dfrac{1}{5}+\dfrac{1}{5}-\dfrac{1}{7}+.....+\dfrac{1}{99}-\dfrac{1}{101}\right)$
+
+$E=2\times\left(1-\dfrac{1}{101}\right)$
+
+$E=2\times\dfrac{100}{101}$
+
+$E=\dfrac{200}{101}$
+
+---
+
+## Câu 13 — LT 19.15 D · Tính: $D=\dfrac{1}{2}+\dfrac{1}{6}+\dfrac{1}{12}+\dfrac{1}{20}+.....+\dfrac{1}{90}$
+
+**Dạng:** `T14T190203` — dãy hiệu tích có **mẫu chưa chuẩn**. *(dạng đang 0 câu; tách D)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: mẫu chưa viết thành tích — phải **nhận ra** $2=1\times 2$; $6=2\times 3$; $12=3\times 4$; $20=4\times 5$; …; $90=9\times 10$ (tích hai số liên tiếp). Viết lại xong thì tử $1$ đúng bằng hiệu, triệt tiêu như dạng chuẩn.
+
+**Phần 2. Trình bày**
+
+$D=\dfrac{1}{1\times 2}+\dfrac{1}{2\times 3}+\dfrac{1}{3\times 4}+\dfrac{1}{4\times 5}+.....+\dfrac{1}{9\times 10}$
+
+$D=1-\dfrac{1}{2}+\dfrac{1}{2}-\dfrac{1}{3}+\dfrac{1}{3}-\dfrac{1}{4}+\dfrac{1}{4}-\dfrac{1}{5}+.....+\dfrac{1}{9}-\dfrac{1}{10}$
+
+$D=1-\dfrac{1}{10}$
+
+$D=\dfrac{9}{10}$
+
+---
+
+## Câu 14 — Phiếu tự luyện 5, bài 5b · Tính bằng cách thuận tiện: $\left(1-\dfrac{1}{2}\right)\times\left(1-\dfrac{1}{3}\right)\times\left(1-\dfrac{1}{4}\right)\times.....\times\left(1-\dfrac{1}{20}\right)$
+
+**Dạng:** `T14T190101` — dãy phân số dạng tích, dãy đơn. *(dạng đang 0 câu; bài 5 có 4 ý độc lập ⇒ tách ý b. Phiếu không có chủ đề gợi ý ⇒ gán theo dấu hiệu đề)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: tính từng ngoặc trước: $1-\dfrac{1}{2}=\dfrac{1}{2}$; $1-\dfrac{1}{3}=\dfrac{2}{3}$; … ; $1-\dfrac{1}{20}=\dfrac{19}{20}$. Mẫu phân số này **bằng tử phân số sau** ⇒ gộp thành một phân số, rút gọn hết các số giống nhau ở tử và mẫu, còn $\dfrac{1}{20}$.
+
+**Phần 2. Trình bày**
+
+$\left(1-\dfrac{1}{2}\right)\times\left(1-\dfrac{1}{3}\right)\times\left(1-\dfrac{1}{4}\right)\times.....\times\left(1-\dfrac{1}{20}\right)$
+
+$=\dfrac{1}{2}\times\dfrac{2}{3}\times\dfrac{3}{4}\times.....\times\dfrac{19}{20}$
+
+$=\dfrac{1\times 2\times 3\times.....\times 19}{2\times 3\times 4\times.....\times 20}$
+
+$=\dfrac{1}{20}$
+
+---
+
+## Câu 15 — LT 20.3 · Một hình chữ nhật có chiều dài 36 m, chiều rộng bằng $\dfrac{5}{6}$ chiều dài. Tính chu vi và diện tích hình chữ nhật đó.
+
+**Dạng:** `T14T200101` — ứng dụng tính giá trị phân số của một số (một bước). *(dạng đang 0 câu. Một câu, không tách: chu vi và diện tích cùng dùng chiều rộng vừa tìm)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: "chiều rộng bằng $\dfrac{5}{6}$ chiều dài" ⇒ chiều rộng $=36\times\dfrac{5}{6}$. Có đủ hai cạnh thì tính chu vi, diện tích như bình thường.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Chiều rộng hình chữ nhật là: $36\times\dfrac{5}{6}=30$ (m)
+
+Chu vi hình chữ nhật là: $\left(36+30\right)\times 2=132$ (m)
+
+Diện tích hình chữ nhật là: $36\times 30=1080$ ($m^2$)
+
+Đáp số: Chu vi: $132$ m; Diện tích: $1080$ $m^2$
+
+---
+
+## Câu 16 — LT 20.13 · Một người bán hết 60 quả trứng trong ba lần. Lần thứ nhất người đó bán $\dfrac{3}{4}$ số trứng, lần thứ hai bán $\dfrac{1}{3}$ số trứng còn lại sau lần thứ nhất. Hỏi lần thứ ba người đó bán được bao nhiêu quả trứng?
+
+**Dạng:** `T14T200102` — giá trị phân số nhiều bước ("của số còn lại"). *(dạng đang 0 câu)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: $\dfrac{3}{4}$ là của **cả $60$ quả**, còn $\dfrac{1}{3}$ là của **số còn lại** sau lần một — khác "tổng". Phải tìm số còn lại trước rồi mới lấy $\dfrac{1}{3}$ (khuôn VD 23.1).
+
+Chú ý: lỗi hay gặp là lấy $60\times\dfrac{1}{3}$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Lần thứ nhất người đó bán được số quả trứng là: $60\times\dfrac{3}{4}=45$ (quả)
+
+Số quả trứng còn lại sau lần thứ nhất là: $60-45=15$ (quả)
+
+Lần thứ hai người đó bán được số quả trứng là: $15\times\dfrac{1}{3}=5$ (quả)
+
+Lần thứ ba người đó bán được số quả trứng là: $60-45-5=10$ (quả)
+
+Đáp số: $10$ quả trứng
+
+---
+
+## Câu 17 — LT 23.4 · Tìm hai số có hiệu là 320, biết $\dfrac{1}{3}$ số thứ nhất bằng $\dfrac{3}{7}$ số thứ hai.
+
+**Dạng:** `T14T220203` — tỉ số: cho phân số của các đại lượng bằng nhau. *(chuyên đề 23 không có chủ đề riêng ⇒ về `T14T22` theo phương pháp)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: hai phân số khác tử nên **quy đồng tử số**: $\dfrac{1}{3}=\dfrac{3}{9}$. Khi đó "$3$ phần trong $9$ phần" của số thứ nhất bằng "$3$ phần trong $7$ phần" của số thứ hai ⇒ một phần của hai số bằng nhau: số thứ nhất $9$ phần, số thứ hai $7$ phần (VD 23.3). Có hiệu $320$ ⇒ bài hiệu–tỉ.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Vì $\dfrac{1}{3}=\dfrac{3}{9}$ nên $\dfrac{3}{9}$ số thứ nhất bằng $\dfrac{3}{7}$ số thứ hai.
+
+Ta có sơ đồ:
+
+![Sơ đồ: Số thứ nhất 9 phần; Số thứ hai 7 phần; hiệu 320](so-do/k4T-lo3-cau17.svg)
+
+Hiệu số phần bằng nhau là: $9-7=2$ (phần)
+
+Số thứ nhất là: $320:2\times 9=1440$
+
+Số thứ hai là: $1440-320=1120$
+
+Đáp số: Số thứ nhất: $1440$; Số thứ hai: $1120$
+
+---
+
+## Câu 18 — LT 23.13 · Một đội công nhân nhận sửa một đoạn đường trong ba ngày. Ngày thứ nhất đội sửa được $\dfrac{5}{9}$ đoạn đường. Ngày thứ hai đội sửa được $\dfrac{1}{4}$ đoạn đường. Ngày thứ ba đội sửa nốt 700 m còn lại. Hỏi đoạn đường đó dài bao nhiêu mét?
+
+**Dạng:** `T14T210102` — tìm một số biết giá trị phân số, ba đại lượng. *(chuyên đề 23 ⇒ về `T14T21` theo phương pháp)*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: cả hai phân số đều là của **cả đoạn đường** (cùng một "tổng") ⇒ cộng lại được phần đã sửa trong hai ngày; $700$ m **ứng với** phần còn lại. Biết $\dfrac{7}{36}$ đoạn đường là $700$ m thì $1$ phần là $700:7$, cả đoạn $36$ phần.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Hai ngày đầu đội sửa được số phần đoạn đường là: $\dfrac{5}{9}+\dfrac{1}{4}=\dfrac{20}{36}+\dfrac{9}{36}=\dfrac{29}{36}$ (đoạn đường)
+
+$700$ m đường còn lại chiếm số phần đoạn đường là: $1-\dfrac{29}{36}=\dfrac{7}{36}$ (đoạn đường)
+
+Đoạn đường đó dài là: $700:7\times 36=3600$ (m)
+
+Đáp số: $3600$ m
+
+---
+
+## Câu 19 — Phiếu cuối tuần 24, Phần I bài 8 · Biết rằng: $\dfrac{35}{49}=\dfrac{5}{a}=\dfrac{b}{14}$. Tính $a+b$.
+
+**Dạng:** `T14T000000` — **dạng chờ** ("tìm số từ các phân số bằng nhau" — `k4T.md` §5 đã ghi thiếu ở `T14T16`). *Phần I trắc nghiệm: sách chỉ yêu cầu ghi đáp số; kho vẫn cần lời giải — ❓ xem câu hỏi cuối lô.*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: rút gọn $\dfrac{35}{49}$ về phân số có tử $5$ (chia cả tử và mẫu cho $7$) ⇒ ra $a$. Rồi viết $\dfrac{5}{7}$ thành phân số có mẫu $14$ (nhân cả tử và mẫu với $2$) ⇒ ra $b$.
+
+**Phần 2. Trình bày**
+
+$\dfrac{35}{49}=\dfrac{35:7}{49:7}=\dfrac{5}{7}$ nên $a=7$.
+
+$\dfrac{5}{7}=\dfrac{5\times 2}{7\times 2}=\dfrac{10}{14}$ nên $b=10$.
+
+$a+b=7+10=17$
+
+Đáp số: $17$
+
+---
+
+## Câu 20 — Phiếu cuối tuần 10, Phần I bài 10 · Viết các số lẻ liên tiếp liền với nhau tạo thành một số có nhiều chữ số $A=1357911131517192123....$ Hỏi chữ số thứ 545 của A là chữ số nào? Của số nào?
+
+**Dạng:** `T14T000000` — **dạng chờ** (đếm chữ số khi viết liền dãy số — `T14T02` chỉ có "đếm số lập được"; `T14T06` không có "chữ số thứ $n$"). *Phần I trắc nghiệm — ❓ như câu 19.*
+
+**Phần 1. Hướng dẫn**
+
+Mấu chốt: chia các số lẻ theo **số chữ số**: loại $1$ chữ số, loại $2$ chữ số, loại $3$ chữ số. Đếm xem viết hết loại $1$ và loại $2$ tốn bao nhiêu chữ số ($95$), phần còn lại $545-95=450$ chữ số thuộc các số lẻ $3$ chữ số; $450:3=150$ **chia hết** ⇒ chữ số thứ $545$ là chữ số **cuối** của số lẻ $3$ chữ số thứ $150$. Tìm số đó bằng công thức số hạng thứ $n$ của dãy cách đều.
+
+Chú ý: phép chia dư $0$ ⇒ chữ số **cuối** của số thứ $150$, không phải chữ số đầu của số thứ $151$.
+
+**Phần 2. Trình bày**
+
+Bài giải
+
+Các số lẻ có $1$ chữ số là $1$ ; $3$ ; $5$ ; $7$ ; $9$, viết hết $5$ chữ số.
+
+Các số lẻ có $2$ chữ số có: $\left(99-11\right):2+1=45$ (số)
+
+Viết các số lẻ có $2$ chữ số cần: $45\times 2=90$ (chữ số)
+
+Viết hết các số lẻ có $1$ và $2$ chữ số cần: $5+90=95$ (chữ số)
+
+Số chữ số còn lại để viết các số lẻ có $3$ chữ số là: $545-95=450$ (chữ số)
+
+Ta có: $450:3=150$ nên chữ số thứ $545$ là chữ số cuối cùng của số lẻ có $3$ chữ số thứ $150$.
+
+Số lẻ có $3$ chữ số thứ $150$ là: $101+\left(150-1\right)\times 2=399$
+
+Vậy chữ số thứ $545$ của A là chữ số $9$ của số $399$.
+
+Đáp số: chữ số $9$, của số $399$
+
+---
+
+## Bảng tóm tắt lô 3
+
+| # | Nguồn | Dạng | Đáp số | Ghi chú |
+|---|---|---|---|---|
+| 1 | LT 7.5 | `070101` | 3375 m | một đầu có đèn |
+| 2 | LT 7.8 | `070101` | 53 phút | bẫy: lần cưa cuối không nghỉ |
+| 3 | LT 7.13 | `070102` | 47 cọc | khép kín bị cửa cắt hở |
+| 4 | LT 13.2 | `130101` | 276 sản phẩm | dạng 0 câu |
+| 5 | LT 13.5 | `000000` chờ | 42 tuổi | thiếu "thêm một số đổi TBC" |
+| 6 | LT 13.19 | `000000` chờ | 29 cây | thiếu "hơn/kém TBC"; sơ đồ kiểu mới `bot` |
+| 7 | LT 18.12 | `230101` | $\dfrac{3}{20}$ | phương pháp (tính ngược) thắng chủ đề |
+| 8 | LT 19.2d | `180301` | 1 | dạng 0 câu |
+| 9 | LT 19.4b | `180202` | $\dfrac{7}{8}$ | dạng 0 câu |
+| 10 | LT 19.6b | `180302` | $\dfrac{8}{7}$ | dạng 0 câu |
+| 11 | LT 18.14B | `190201` | $\dfrac{4}{15}$ | dạng 0 câu |
+| 12 | LT 19.15E | `190202` | $\dfrac{200}{101}$ | dạng 0 câu |
+| 13 | LT 19.15D | `190203` | $\dfrac{9}{10}$ | dạng 0 câu |
+| 14 | PTL 5.5b | `190101` | $\dfrac{1}{20}$ | dạng 0 câu; câu phiếu |
+| 15 | LT 20.3 | `200101` | 132 m ; 1080 m² | dạng 0 câu |
+| 16 | LT 20.13 | `200102` | 10 quả | dạng 0 câu |
+| 17 | LT 23.4 | `220203` | 1440 ; 1120 | dạng 0 câu; sơ đồ hiệu |
+| 18 | LT 23.13 | `210102` | 3600 m | dạng 0 câu |
+| 19 | PCT 24 I.8 | `000000` chờ | 17 | trắc nghiệm ❓ |
+| 20 | PCT 10 I.10 | `000000` chờ | chữ số 9 của số 399 | trắc nghiệm ❓ |
+
+**Đếm:** 20 câu · **13 câu vào dạng đang 0 câu** · 4 câu dạng chờ · 1 câu áp luật "phương pháp thắng chủ đề" (câu 7).
+
+**❓ Một câu hỏi cho CEO:** câu Phần I của phiếu cuối tuần (sách: "chỉ ghi đáp số, không cần giải thích") — kho vẫn cần lời giải
+cho HS xem sau khi làm. Em đang viết **đủ 2 phần như tự luận** (câu 19, 20). Giữ vậy, hay Phần 2 của câu trắc nghiệm chỉ cần
+các dòng tính ngắn (không câu lời giải)?

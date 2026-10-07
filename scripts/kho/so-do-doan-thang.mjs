@@ -8,6 +8,7 @@
 //   "hang": [                                          // mỗi hàng = một đại lượng
 //     { "nhan": "Tuổi con", "phan": 1 },               // phan = số phần bằng nhau (số nguyên ≥ 1)
 //     { "nhan": "Tuổi mẹ",  "phan": 1, "them": "25 tuổi" }   // them = đoạn thêm (tổng–hiệu), ghi nhãn trên đoạn
+//     { "nhan": "Cam và bưởi", "phan": 2, "bot": "4 cây" }   // bot = đoạn THIẾU ở cuối (nét đứt): "kém 2 lần TBC 4 cây"
 //   ],
 //   "tong": "41 tuổi",                                 // tuỳ chọn: ngoặc nhọn bên phải gộp tất cả hàng
 //   "hieu": "27 tuổi",                                 // tuỳ chọn: ngoặc đứng giữa 2 hàng cho phần chênh (hiệu–tỉ)
@@ -20,8 +21,10 @@ import { readFileSync, writeFileSync } from 'node:fs'
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
 export function veSoDo(m) {
-  const PHAN = 56, THEM = 36, H = 44, LEFT = 110, TOP = m.tieu_de ? 34 : 14, TICK = 7
+  const PHAN = 56, THEM = 36, BOT = 24, H = 44, TOP = m.tieu_de ? 34 : 14, TICK = 7
   const hang = m.hang || []
+  // lề trái nới theo nhãn dài nhất (≈7,6 px/ký tự cỡ 14) để nhãn như "Trung bình cộng:" không bị cắt
+  const LEFT = Math.max(110, Math.ceil(Math.max(...hang.map((h) => String(h.nhan).length + 1)) * 7.6) + 20)
   if (!hang.length) throw new Error('hang rỗng')
   const maxPhan = Math.max(...hang.map((h) => (h.phan || 1)))
   const maxLen = Math.max(...hang.map((h) => (h.phan || 1) * PHAN + (h.them ? THEM : 0)))
@@ -36,10 +39,17 @@ export function veSoDo(m) {
     const n = h.phan || 1
     const len = n * PHAN
     out.push(`<text x="${LEFT - 10}" y="${y + 5}" text-anchor="end" fill="#0f172a">${esc(h.nhan)}:</text>`)
-    // đoạn chính chia phần
-    out.push(`<line x1="${LEFT}" y1="${y}" x2="${LEFT + len}" y2="${y}" stroke="#0f172a" stroke-width="2"/>`)
-    for (let k = 0; k <= n; k++) out.push(`<line x1="${LEFT + k * PHAN}" y1="${y - TICK}" x2="${LEFT + k * PHAN}" y2="${y + TICK}" stroke="#0f172a" stroke-width="2"/>`)
+    // đoạn chính chia phần; có "bot" thì khúc cuối dài BOT vẽ nét đứt (phần còn thiếu) và đoạn thật dừng trước nó
+    const lien = h.bot ? len - BOT : len
+    out.push(`<line x1="${LEFT}" y1="${y}" x2="${LEFT + lien}" y2="${y}" stroke="#0f172a" stroke-width="2"/>`)
+    for (let k = 0; k <= n; k++) out.push(`<line x1="${LEFT + k * PHAN}" y1="${y - TICK}" x2="${LEFT + k * PHAN}" y2="${y + TICK}" stroke="#0f172a" stroke-width="${h.bot && k === n ? 1 : 2}"/>`)
     let end = LEFT + len
+    if (h.bot) {
+      out.push(`<line x1="${LEFT + lien}" y1="${y}" x2="${LEFT + len}" y2="${y}" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4 3"/>`)
+      out.push(`<line x1="${LEFT + lien}" y1="${y - TICK}" x2="${LEFT + lien}" y2="${y + TICK}" stroke="#0f172a" stroke-width="2"/>`)
+      out.push(`<text x="${LEFT + lien + BOT / 2}" y="${y - 10}" text-anchor="middle" font-size="12" fill="#b45309">${esc(h.bot)}</text>`)
+      end = LEFT + lien
+    }
     if (h.them) {
       out.push(`<line x1="${end}" y1="${y}" x2="${end + THEM}" y2="${y}" stroke="#0f172a" stroke-width="2"/>`)
       out.push(`<line x1="${end + THEM}" y1="${y - TICK}" x2="${end + THEM}" y2="${y + TICK}" stroke="#0f172a" stroke-width="2"/>`)

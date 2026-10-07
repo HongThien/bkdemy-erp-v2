@@ -35779,3 +35779,8 @@ log sửa 2 · câu trả lời 12 · bài làm 5 · câu trong bài 19 · bài 
 ## 07/10 (tiếp) — 4T lô 2: CEO duyệt "khá ok", chốt 2 luật gán dạng
 - (1) "Giải bằng tổng hiệu thì phải nằm trong dạng tổng hiệu" ⇒ §5 k4T.md: phương pháp thắng chủ đề cùng số. Áp thêm câu 5 (LT 5.9) từ dạng chờ ⇒ `080101` (em tự áp theo luật, đã báo CEO). (2) Rút về đơn vị dạng 1 + dạng 2 chung `140101`. Ghi §7, sửa §5 + lô 2 + README.
 - Lô 2 không bị sửa lời giải câu nào ⇒ đủ điều kiện v1 theo README; chờ CEO quyết v1 hay lô 3.
+
+## 07/10 (tiếp) — 4T lô 3: 20 câu (CĐ 7, 13, 18–20, 23 + phiếu tự luyện 5 + phiếu cuối tuần 10, 24), chờ CEO duyệt
+- CEO: "chạy thêm đủ các lô đi, khi nào hoàn hảo đã" ⇒ chưa lên v1. Lô 3 nhắm dạng 0 câu: 13/20 câu vào dạng đang 0 câu (130101, 230101, 180202/0301/0302, 190101/0201/0202/0203, 200101/0102, 210102, 220203). 1 câu áp luật mới "phương pháp thắng chủ đề" (LT 18.12 ⇒ tính ngược).
+- Máy vẽ sơ đồ thêm `bot` (đoạn thiếu, nét đứt) cho bài hơn/kém TBC + lề trái tự nới theo nhãn dài ("Trung bình cộng:" bị cắt). Vẽ lại 5 sơ đồ cũ: byte y hệt. Xem ảnh Chrome headless.
+- Đáp số máy tính bằng phân số chính xác (BigInt), 20/20 khớp. Hỏi CEO: câu Phần I trắc nghiệm của phiếu cuối tuần viết lời giải đủ 2 phần hay rút gọn.

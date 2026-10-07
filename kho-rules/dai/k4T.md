@@ -53,7 +53,7 @@ thẳng, số phần bằng nhau, tính ngược, lập bảng, thử chọn có
 - Bài **có tỉ số / số phần** (tổng–hiệu, tổng–tỉ, hiệu–tỉ, TBC, tính ngược): Phần 2 PHẢI có dòng `Ta có sơ đồ:` + **HÌNH sơ đồ
   đoạn thẳng** (CEO 07/10: "có vẽ được hình không" ⇒ phải vẽ). Hình do máy vẽ từ mô tả có cấu trúc:
   `node scripts/kho/so-do-doan-thang.mjs mo-ta.json --out so-do.svg` (mô tả: hàng = đại lượng, `phan` = số phần bằng nhau,
-  `them` = đoạn thêm của tổng–hiệu, `tong`/`hieu` = ngoặc, `dau_hoi` = hàng cần tìm, `tieu_de` = thời điểm "Sau 5 năm nữa").
+  `them` = đoạn thêm của tổng–hiệu, `bot` = đoạn còn THIẾU vẽ nét đứt (bài hơn/kém trung bình cộng: "cam và bưởi = 2 lần TBC bớt 4"), `tong`/`hieu` = ngoặc, `dau_hoi` = hàng cần tìm, `tieu_de` = thời điểm "Sau 5 năm nữa").
   Khi ghi kho: SVG lên storage → `anh_dap_an`; mô tả bằng lời (`Tuổi con: 1 phần; Tuổi mẹ: 4 phần`) vẫn ghi ngay sau
   `Ta có sơ đồ:` để làm alt và để in giấy khi chưa có hình. Hạn chế hiện tại: app HS hiển thị `anh_dap_an` **dưới** lời giải,
   không đúng vị trí dòng "Ta có sơ đồ:" — việc sửa app ghi ở `kho-rules/README.md` §4.
