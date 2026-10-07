@@ -23,3 +23,9 @@ export async function thanhTuuMoiCuaToi(): Promise<TtCuaToi> {
   if (error) throw error
   return data as TtCuaToi
 }
+
+// Ghi "hôm nay em có mở app" (1 dòng/ngày, idempotent) — nguồn của thành tựu TT04. Lỗi mạng bỏ qua, không chặn gì.
+export async function ghiMoApp(): Promise<void> {
+  const { error } = await supabase.rpc('fn_hs_mo_app')
+  if (error) throw error
+}

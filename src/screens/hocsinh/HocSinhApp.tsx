@@ -60,7 +60,7 @@ import { giaoDienCuaToi, home912, type Home912 } from '../../lib/giaodien_hs'
 import DanhSachHS, { type DsRow } from './DanhSachHS'
 import MayManHS from './MayManHS'
 import MoiQuayMayMan from './MoiQuayMayMan'
-import { thanhTuuChot, type TtMoi } from '../../lib/thanhtuu_moi'
+import { ghiMoApp, thanhTuuChot, type TtMoi } from '../../lib/thanhtuu_moi'
 import { MungThanhTuu } from './thanhtuu/ThanhTuuMoiView'
 import BangXepHangHS from './bxh/BangXepHangHS'
 import ThanhTuuHS from './ThanhTuuHS'
@@ -480,6 +480,13 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Thẻ Thế giới BK ở màn chính — tải lại mỗi lần về Home (quay từ Thế giới về là thấy số mới); lỗi thì thẻ vẫn hiện, không số.
   const [tgHome, setTgHome] = useState<TheGioiHome | null>(null)
   useEffect(() => { if (nhom912 && !direct && !khu) theGioiHome().then(setTgHome).catch(() => {}) }, [nhom912, direct, khu])
+  // Log mở app (TT04 "Vào app liên tiếp"): ghi khi mở app và mỗi lần quay lại tab (server idempotent: 1 dòng/ngày)
+  useEffect(() => {
+    const ghi = () => { if (document.visibilityState === 'visible') ghiMoApp().catch(() => undefined) }
+    ghi()
+    document.addEventListener('visibilitychange', ghi)
+    return () => document.removeEventListener('visibilitychange', ghi)
+  }, [])
   // Thành tựu mới (06/10): mỗi lần về màn chính chốt các bậc mới (server idempotent — bậc đã ghi KHÔNG trả lại) rồi chúc mừng
   useEffect(() => {
     if (direct || khu) return
